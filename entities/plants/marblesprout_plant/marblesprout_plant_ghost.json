@@ -6,16 +6,15 @@
       },
       "model_variants": {
          "default": {
-            "models":	[
-			{
+            "models": [
+               {
                   "type": "one_of",
                   "items": [
-               "file(marblesprout_plant_tame.qb)",
-			   "file(marblesprout_plant_tame_2.qb)"
-
-			               ]
-            }
-						]
+                     "file(marblesprout_plant_tame.qb)",
+                     "file(marblesprout_plant_tame_2.qb)"
+                  ]
+               }
+            ]
          }
       },
       "mob": {
@@ -25,9 +24,9 @@
    },
    "entity_data": {
       "stonehearth:catalog": {
-         "description": "i18n(ace_amnaa:entities.marblesprout_plant.moonbell_plant_ghost.description)",
+         "description": "i18n(stonehearth_ace:entities.plants.marblesprout_plant.description)",
          "icon": "file(marblesprout_plant_wild.png)",
-         "display_name": "i18n(ace_amnaa:entities.marblesprout_plant.moonbell_plant_ghost.display_name)",
+         "display_name": "i18n(stonehearth_ace:entities.plants.marblesprout_plant.display_name)",
          "material_tags": "plant decoration stockpile_plant"
       }
    }

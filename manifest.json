@@ -1,21 +1,25 @@
 {
-   "info" : {
-      "name" : "ACE",
-      "namespace": "ace_amnaa",
-      "version" : 3
+   "info": {
+      "name": "Stonehearth Ace",
+      "namespace": "stonehearth_ace",
+      "version": 3
    },
-   "aliases" : {
-	  "consumables:seeds:moonbell_seeds": "file(entities/consumables/seeds/moonbell_seeds)",
-	  "plants:moonbell": "file(entities/plants/moonbell_plant)",
+   "default_locale": "en",
+   "aliases": {
+      "biome:sample_biome": "file(data/biome/sample_biome.json)",
+
+
+      "consumables:seeds:moonbell_seeds": "file(entities/consumables/seeds/moonbell_seeds)",
+      "crop:moonbell_crop" : "file(entities/crops/moonbell_crop)",
+
+      "plants:marblesprout": "file(entities/plants/marblesprout_plant)",
+
+      "plants:moonbell": "file(entities/plants/moonbell_plant)",
       "plants:moonbell:bud": "file(entities/plants/moonbell_plant/bud/moonbell_plant_bud.json)",
       "plants:moonbell:seed": "file(entities/plants/moonbell_plant/seed/moonbell_plant_seed.json)",
       "plants:moonbell:sprout": "file(entities/plants/moonbell_plant/sprout/moonbell_plant_sprout.json)",
       "plants:moonbell:stem": "file(entities/plants/moonbell_plant/stem/moonbell_plant_stem.json)",
-	  "resources:herb:moonbell": "file(entities/resources/herb/moonbell)",
-	  "plants:marblesprout": "file(entities/plants/marblesprout_plant)"
-	  
-	  
-	  
-		
+
+      "resources:herb:moonbell": "file(entities/resources/herb/moonbell)"
    }
 }

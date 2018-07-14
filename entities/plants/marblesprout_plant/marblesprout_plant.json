@@ -10,10 +10,11 @@
          }
       },
 	        "stonehearth:renewable_resource_node": {
-         "resource": "ace_amnaa:resources:herb:moonbell",
+         "resource": "stonehearth_ace:resources:herb:moonbell",
+         "__comment" : "Not correct URI^",
          "category": "harvest",
          "harvest_overlay_effect": "stonehearth:effects:harvest_plant_overlay_effect",
-         "unripe_description": "i18n(ace_amnaa:entities.plants.marblesprout_plant.unripe_description)",
+         "unripe_description": "i18n(stonehearth_ace:entities.plants.marblesprout_plant.unripe_description)",
          "renewal_time": "22h+2h",
          "resource_loot_table": {
             "entries": {
@@ -28,7 +29,8 @@
                         "weight": 4
                      },
                      "pelt": {
-                        "uri": "ace_amnaa:plants:moonbell:seed",
+                        "uri": "stonehearth_ace:plants:moonbell:seed",
+                        "__comment" : "Not correct URI^", 
                         "weight": 1
                      }
                   }

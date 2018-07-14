@@ -1,14 +1,80 @@
 {
-   "entities": {
-      "sample_object": {
-         "display_name": "Sample Object",
-         "description": "Sample description."
+  "entities" : {
+    "plants" : {
+      "moonbell_plant" : {
+         "display_name" : "Wild Moonbell",
+         "description"  : "Can be harvested for healing herbs",
+        "unripe_description" : "Enter Moonbell plant description here",
+        "seed" : {
+          "moonbell_plant_seed_ghost" : {
+            "display_name" : "Moonbell Plant Seed Ghost Display Name",
+            "description" : "Moonbell Plant seed Ghost Description"
+          },
+          "moonbell_plant_sprout" : {
+            "display_name" : "Moonbell Plant Sprout Display Name",
+            "description" : "Moonbell Plant Sprout Description"
+          }
+        },
+        "stem" : {
+         "moonbell_plant_stem" : {
+            "display_name" : "Wild Moonbell Stemming Plant",
+            "description"  : "Still Growing!"
+         },
+         "moonbell_plant_bud" : {
+            "display_name" : "Wild Moonbell Budding Plant",
+            "description"  : "Its almost there! Look, it has buds!"
+         }
+        }
       },
-      "piggy_bank": {
-         "piggy_bank_ghost": {
-            "display_name": "Wooden Piggy Bank",
-            "description": "Reminder to be responsible."
+      "marblesprout_plant" : {
+         "display_name" : "Wild Marblesprout",
+         "description"  : "Marblesprout description",
+         "unripe_description" : "Enter Marblesprout Plant Description Here"
+      }
+    },
+    "resources" : {
+      "herb" : {
+        "moonbell" : {
+          "display_name" : "moonbell herb display name",
+          "description"  : "moonbell herb description"
+        },
+        "marblesprout" : {
+         "display_name" : "marblesprout herb display name",
+         "description"  : "marblesprout herb description"
+        }
+      }
+    },
+    "crops" : {
+      "moonbell_crop" : {
+         "display_name" : "Moonbell Flower",
+         "description"  : "",
+         "growth_stage" : {
+            "000" : {
+               "name" : "Moonbell Seedling",
+               "description" : "Moonbell Seedling Description"
+            },
+            "001" : {
+               "name" : "Moonbell Sprout",
+               "description" : "Moonbell Sprout Description Stage 1"
+            },
+            "002" : {
+               "name" : "Moonbell Bud",
+               "description" : "Moonbell Bud Description"
+              },
+            "003" : {
+               "name" : "Moonbell",
+               "description" : "Moonbell Description"
+            }
+            }
+         }
+      },
+      "consumables" : {
+         "seeds" : {
+            "moonbell_seeds" : {
+               "display_name" : "Moonbell Seeds",
+               "description"  : "Learn to grow moonbells."
+            }
          }
       }
-   }
-}
+    }
+  }
