@@ -1,0 +1,33 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "stonehearth:evolve": {},
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(../../../crops/moonbell_crop/moonbell_1.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "mob_collision_type": "clutter"
+      }
+   },
+   "entity_data": {
+      "stonehearth:evolve_data": {
+         "next_stage": "ace_amnaa:plants:moonbell:stem",
+         "evolve_time": "15h+2h"
+      },
+      "stonehearth:catalog": {
+         "material_tags": "stockpile_plant",
+         "display_name": "i18n(ace_amnaa:entities.plants.moonbell_plant.seed.moonbell_plant_sprout.display_name)",
+         "description": "i18n(ace_amnaa:entities.plants.moonbell_plant.seed.moonbell_plant_sprout.description)",
+         "category": "plants"
+      },
+      "stonehearth:appeal": {
+         "appeal": 1
+      }
+   }
+}
