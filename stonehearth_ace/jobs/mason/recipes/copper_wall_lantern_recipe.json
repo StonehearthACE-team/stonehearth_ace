@@ -1,0 +1,22 @@
+{
+   "type": "recipe",
+   "effort": 110,
+   "work_units": 15,
+   "recipe_name": "i18n(stonehearth_ace_ace:jobs.blacksmith.recipes.copper_wall_lantern_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.blacksmith.recipes.copper_wall_lantern_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.blacksmith.recipes.copper_wall_lantern_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/decoration/copper_wall_lantern/copper_wall_lantern.png",
+   "workshop": "stonehearth:blacksmith:workbench",
+   "level_requirement": 2,
+   "ingredients": [
+      {
+         "uri": "stonehearth:refined:copper_ingot",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:decorations:copper_wall_lantern"
+      }
+   ]
+}

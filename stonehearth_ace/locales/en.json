@@ -40,6 +40,20 @@
           "flavor" : "Only a skilled hand can harvest the weaker seeds, but the stone is lost in the process."
         }
       }
+    },
+    "blacksmith" : {
+      "recipes" : {
+        "copper_wall_lantern_recipe" : {
+          "recipe_name" : "Copper Wall-Mounted Lantern",
+          "description" : "A beautiful lantern. Place on buildings to provide light at night.",
+          "flavor" : "Almost magical..."
+        },
+        "copper_garden_lantern_recipe" : {
+          "recipe_name" : "Copper Garden Lantern",
+          "description" : "A small lantern that's placed on the ground. Suitable for lighting paths or small gardens.",
+          "flavor" : "Almost magical..."
+        }
+      }
     }
   },
   "entities" : {
@@ -98,6 +112,20 @@
             "name" : "Marblesprout",
             "description" : "Beauty is its won reward (Rock solid)"
           }
+        }
+      }
+    },
+    "decorations" : {
+      "copper_wall_lantern" : {
+        "copper_wall_lantern_ghost" : {
+          "display_name" : "Copper Wall Lantern",
+          "description" : "TBD"
+        }
+      },
+      "copper_garden_lantern" : {
+        "copper_garden_lantern_ghost" : {
+          "display_name" : "Copper Garden Lantern",
+          "description" : "TBD"
         }
       }
     },
@@ -203,7 +231,7 @@
       },
       "marblesprout_plant" : {
         "display_name" : "Wild Marblesprout",
-        "description" : "Marblesprout description",
+        "description" : "Can be harvested for marble stones",
         "unripe_description" : "This plant has been harvested and has not grown back yet",
         "seed" : {
           "marblesprout_plant_seed_ghost" : {

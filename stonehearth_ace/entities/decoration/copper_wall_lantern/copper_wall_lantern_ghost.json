@@ -1,0 +1,37 @@
+{
+  "mixins" : "stonehearth:mixins:placed_object",
+  "components" : {
+    "model_variants" : {
+      "default" : {
+        "models" : [
+          "file(copper_wall_lantern.qb)"
+        ]
+      }
+    },
+    "mob" : {
+      "model_origin" : {
+        "x" : 0,
+        "y" : 0,
+        "z" : 0
+      },
+      "region_origin" : {
+        "x" : 0.5,
+        "y" : 0,
+        "z" : 0.5
+      },
+      "allow_vertical_adjacent" : true
+    },
+    "render_info" : {
+      "scale" : 0.15
+    }
+  },
+  "entity_data" : {
+    "stonehearth:catalog" : {
+      "display_name" : "i18n(stonehearth_ace:entities.decoration.copper_wall_lantern.copper_wall_lantern_ghost.display_name)",
+      "description" : "i18n(stonehearth_ace:entities.decoration.copper_wall_lantern.copper_wall_lantern_ghost.description)",
+      "icon" : "file(copper_wall_lantern.png)",
+      "category" : "decoration",
+      "material_tags" : "light_source crafted copper stockpile_decoration"
+    }
+  }
+}

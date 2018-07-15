@@ -1,95 +1,111 @@
 {
-   "type": "entity",
-   "components": {
-      "model_variants": {
-         "default": {
-            "models": [
-               "file(../../plants/marblesprout_plant/marblesprout_plant.qb)"
-            ]
-         },
-         "marblesprout_1": {
-            "models": [
-               "file(marblesprout_1.qb)"
-            ]
-         },
-         "marblesprout_2": {
-            "models": [
-               "file(marblesprout_2.qb)"
-            ]
-         },
-         "marblesprout_3": {
-            "models": [
-               "file(marblesprout_3.qb)"
-            ]
-         },
-         "marblesprout_4": {
-            "models": [
-               "file(marblesprout_4.qb)"
-            ]
-         }
+  "type" : "entity",
+  "components" : {
+    "model_variants" : {
+      "default" : {
+        "models" : [
+          "file(../../plants/marblesprout_plant/marblesprout_plant.qb)"
+        ]
       },
-      "render_info": {
-         "scale": 0.13
+      "marblesprout_1" : {
+        "models" : [
+          "file(marblesprout_1.qb)"
+        ]
       },
-      "mob": {
-         "model_origin": { "x": -0.05, "y": 0, "z": 0.05 },
-         "mob_collision_type": "clutter"
+      "marblesprout_2" : {
+        "models" : [
+          "file(marblesprout_2.qb)"
+        ]
       },
-      "stonehearth:crop": {
-         "resource_pairings": {
-            "marblesprout_4": "stonehearth_ace:resources:stone:marble_stone"
-         },
-         "harvest_threshhold": "marblesprout_4",
-         "plant_overlay_effect": "stonehearth_ace:effects:plant_crop_overlay_effect"
+      "marblesprout_3" : {
+        "models" : [
+          "file(marblesprout_3.qb)"
+        ]
       },
-      "stonehearth:growing": {
-         "growth_period": "12h",
-         "preferred_seasons": {
-            "stonehearth:biome:temperate": ["spring"],
-            "stonehearth:biome:desert": ["spring"],
-            "stonehearth:biome:arctic": ["spring"]
-         },
-         "growth_stages": [
-            {
-               "model_name": "marblesprout_1",
-               "name": "i18n(stonehearth_ace:entities.crops.marblesprout_crop.growth_stage.000.name)",
-               "description": "i18n(stonehearth_ace:entities.crops.marblesprout_crop.growth_stage.000.description)"
-            },
-            {
-               "model_name": "marblesprout_2",
-               "name": "i18n(stonehearth_ace:entities.crops.marblesprout_crop.growth_stage.001.name)",
-               "description": "i18n(stonehearth_ace:entities.crops.marblesprout_crop.growth_stage.001.description)"
-            },
-            {
-               "model_name": "marblesprout_3",
-               "name": "i18n(stonehearth_ace:entities.crops.marblesprout_crop.growth_stage.002.name)",
-               "description": "i18n(stonehearth_ace:entities.crops.marblesprout_crop.growth_stage.002.description)"
-            },
-            {
-               "model_name": "marblesprout_4",
-               "name": "i18n(stonehearth_ace:entities.crops.marblesprout_crop.growth_stage.003.name)",
-               "description": "i18n(stonehearth_ace:entities.crops.marblesprout_crop.growth_stage.003.description)"
-            }
-         ]
+      "marblesprout_4" : {
+        "models" : [
+          {
+            "type" : "one_of",
+            "items" : [
+              "file(marblesprout_4.qb)",
+              "file(marblesprout_5.qb)"
+            ]
+          }
+        ]
       }
-   },
-   "entity_data": {
-      "stonehearth:net_worth": {
-         "value_in_gold": 1,
-         "rarity": "common",
-         "shop_info": {
-            "buyable": false,
-            "sellable": false
-         }
+    },
+    "render_info" : {
+      "scale" : 0.13
+    },
+    "mob" : {
+      "model_origin" : {
+        "x" : -0.05,
+        "y" : 0,
+        "z" : 0.05
       },
-      "stonehearth:catalog": {
-         "display_name": "i18n(stonehearth_ace:entities.crops.marblesprout_crop.display_name)",
-         "description": "i18n(stonehearth_ace:entities.crops.marblesprout_crop.description)",
-         "icon": "file(../../plants/marblesprout_plant/marblesprout_plant.png)",
-         "material_tags": "crop marblesprout"
+      "mob_collision_type" : "clutter"
+    },
+    "stonehearth:crop" : {
+      "resource_pairings" : {
+        "marblesprout_4" : "stonehearth_ace:resources:stone:marble_stone"
       },
-      "stonehearth:appeal": {
-         "appeal": 4
+      "harvest_threshhold" : "marblesprout_4",
+      "plant_overlay_effect" : "stonehearth_ace:effects:plant_crop_overlay_effect"
+    },
+    "stonehearth:growing" : {
+      "growth_period" : "12h",
+      "preferred_seasons" : {
+        "stonehearth:biome:temperate" : [
+          "spring"
+        ],
+        "stonehearth:biome:desert" : [
+          "spring"
+        ],
+        "stonehearth:biome:arctic" : [
+          "spring"
+        ]
+      },
+      "growth_stages" : [
+        {
+          "model_name" : "marblesprout_1",
+          "name" : "i18n(stonehearth_ace:entities.crops.marblesprout_crop.growth_stage.000.name)",
+          "description" : "i18n(stonehearth_ace:entities.crops.marblesprout_crop.growth_stage.000.description)"
+        },
+        {
+          "model_name" : "marblesprout_2",
+          "name" : "i18n(stonehearth_ace:entities.crops.marblesprout_crop.growth_stage.001.name)",
+          "description" : "i18n(stonehearth_ace:entities.crops.marblesprout_crop.growth_stage.001.description)"
+        },
+        {
+          "model_name" : "marblesprout_3",
+          "name" : "i18n(stonehearth_ace:entities.crops.marblesprout_crop.growth_stage.002.name)",
+          "description" : "i18n(stonehearth_ace:entities.crops.marblesprout_crop.growth_stage.002.description)"
+        },
+        {
+          "model_name" : "marblesprout_4",
+          "name" : "i18n(stonehearth_ace:entities.crops.marblesprout_crop.growth_stage.003.name)",
+          "description" : "i18n(stonehearth_ace:entities.crops.marblesprout_crop.growth_stage.003.description)"
+        }
+      ]
+    }
+  },
+  "entity_data" : {
+    "stonehearth:net_worth" : {
+      "value_in_gold" : 1,
+      "rarity" : "common",
+      "shop_info" : {
+        "buyable" : false,
+        "sellable" : false
       }
-   }
+    },
+    "stonehearth:catalog" : {
+      "display_name" : "i18n(stonehearth_ace:entities.crops.marblesprout_crop.display_name)",
+      "description" : "i18n(stonehearth_ace:entities.crops.marblesprout_crop.description)",
+      "icon" : "file(../../plants/marblesprout_plant/marblesprout_plant.png)",
+      "material_tags" : "crop marblesprout"
+    },
+    "stonehearth:appeal" : {
+      "appeal" : 4
+    }
+  }
 }
