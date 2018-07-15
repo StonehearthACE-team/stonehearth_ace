@@ -1,0 +1,66 @@
+{
+   "type": "entity",
+   "mixins": "file(water_gate_on_ghost.json)",
+   "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(water_gate_on_iconic.json)",
+         "ghost_form": "file(water_gate_on_ghost.json)",
+         "placeable_on_ground": true
+      },
+    "region_collision_shape": {
+      "region": [
+        {
+          "min": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "max": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          }
+        },
+        {
+          "min": {
+            "x": 0,
+            "y": 2,
+            "z": 0
+          },
+          "max": {
+            "x": 1,
+            "y": 3,
+            "z": 1
+          }
+        }
+      ]
+    },
+    "stonehearth:commands": {
+      "commands": [
+        "stonehearth_ace:commands:toggle_water_gate_off"
+      ]
+    }
+   },
+   "entity_data": {
+    "stonehearth_ace:engineering:modes": {
+      "current_mode": "on",
+      "toggle": "stonehearth_ace:gizmos:water_gate:off"
+    },
+      "stonehearth:net_worth": {
+         "value_in_gold": 4,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 1,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 6
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

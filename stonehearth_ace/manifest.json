@@ -43,7 +43,11 @@
       "plants:moonbell:sprout": "file(entities/plants/moonbell_plant/sprout/moonbell_plant_sprout.json)",
       "plants:moonbell:stem": "file(entities/plants/moonbell_plant/stem/moonbell_plant_stem.json)",
 	  "plants:marblesprout": "file(entities/plants/marblesprout_plant)",
-	  "plants:marblesprout:wild": "file(entities/plants/marblesprout_plant/marblesprout_plant_wild.json)"
+    "plants:marblesprout:wild": "file(entities/plants/marblesprout_plant/marblesprout_plant_wild.json)",
+    "gizmos:water_gate:off": "file(entities/gizmos/water_gate/water_gate.json)",
+    "gizmos:water_gate:on": "file(entities/gizmos/water_gate_on/water_gate_on.json)",
+    "commands:toggle_water_gate_off": "file(data/commands/toggle_water_gate/toggle_off.json)",
+    "commands:toggle_water_gate_on": "file(data/commands/toggle_water_gate/toggle_on.json)"
    },
    "mixintos": {
       "stonehearth:biome:index": "file(mixins/data/biome/index.json)",
@@ -52,5 +56,15 @@
    },
    "overrides": {},
    "components": {},
-   "controllers": {}
+  "controllers": { },
+  "functions": {
+    "toggle_water_gate_command": {
+      "controller": "file(call_handlers/water_tools_call_handler.lua)",
+      "endpoint": "client"
+    },
+    "toggle_water_gate": {
+      "controller": "file(call_handlers/water_tools_call_handler.lua)",
+      "endpoint": "server"
+    }
+  }
 }
