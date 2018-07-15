@@ -10,9 +10,16 @@
 
 
       "consumables:seeds:moonbell_seeds": "file(entities/consumables/seeds/moonbell_seeds)",
+      "consumables:seeds:marblesprout_seeds" : "file(entities/consumables/seeds/marblesprout_seeds)",
+
       "crop:moonbell_crop" : "file(entities/crops/moonbell_crop)",
+      "crop:marblesprout_crop" : "file(entities/crops/marblesprout_crop)",
 
       "plants:marblesprout": "file(entities/plants/marblesprout_plant)",
+      "plants:marblesprout:bud": "file(entities/plants/marblesprout_plant/bud/marblesprout_plant_bud.json)",
+      "plants:marblesprout:seed": "file(entities/plants/marblesprout_plant/seed/marblesprout_plant_seed.json)",
+      "plants:marblesprout:sprout": "file(entities/plants/marblesprout_plant/sprout/marblesprout_plant_sprout.json)",
+      "plants:marblesprout:stem": "file(entities/plants/marblesprout_plant/stem/marblesprout_plant_stem.json)",
 
       "plants:moonbell": "file(entities/plants/moonbell_plant)",
       "plants:moonbell:bud": "file(entities/plants/moonbell_plant/bud/moonbell_plant_bud.json)",
@@ -20,6 +27,11 @@
       "plants:moonbell:sprout": "file(entities/plants/moonbell_plant/sprout/moonbell_plant_sprout.json)",
       "plants:moonbell:stem": "file(entities/plants/moonbell_plant/stem/moonbell_plant_stem.json)",
 
-      "resources:herb:moonbell": "file(entities/resources/herb/moonbell)"
+      "resources:herb:moonbell": "file(entities/resources/herb/moonbell)",
+      "resources:stone:marble_stone" : "file(entities/resources/stone/marble_stone)"
+   },
+   "mixintos" : {
+      "stonehearth/jobs/herbalist/recipes/recipes.json" : "file(jobs/herbalist/recipes/recipes.json)",
+      "stonehearth/services/server/farming/data/all_crops.json" : "file(serives/server/farming/data/all_crops.json)"
    }
 }

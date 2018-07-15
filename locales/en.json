@@ -1,80 +1,144 @@
 {
+  "jobs" : {
+    "herbalist" : {
+      "recipes" : {
+        "moonbell_transmute_recipe" : {
+          "recipe_name" : "Moonbell Seeds (x3)",
+          "description" : "Separate seeds from the herbs",
+          "flavor" : "Only a skilled hand can harvest the weaker seeds, but the herbs are lost in the process."
+        },
+        "marblesprout_transmute_recipe" : {
+          "recipe_name" : "Marblesprout Seeds (x3)",
+          "description" : "Separate seeds from the stone",
+          "flavor" : "Only a skilled hand can harvest the weaker seeds, but the stone is lost in the process."
+        }
+      }
+    }
+  },
   "entities" : {
     "plants" : {
       "moonbell_plant" : {
-         "display_name" : "Wild Moonbell",
-         "description"  : "Can be harvested for healing herbs",
-        "unripe_description" : "Enter Moonbell plant description here",
+        "display_name" : "Wild Moonbell",
+        "description" : "Can be harvested for healing herbs",
+        "unripe_description" : "This plant has been harvested and has not grown back yet",
         "seed" : {
           "moonbell_plant_seed_ghost" : {
-            "display_name" : "Moonbell Plant Seed Ghost Display Name",
-            "description" : "Moonbell Plant seed Ghost Description"
+            "display_name" : "Wild Moonbell Seed",
+            "description" : "Once planted, it will grow into healing herbs"
           },
           "moonbell_plant_sprout" : {
-            "display_name" : "Moonbell Plant Sprout Display Name",
-            "description" : "Moonbell Plant Sprout Description"
+            "display_name" : "Wild Moonbell Sproutling",
+            "description" : "Just need some time and care."
           }
         },
         "stem" : {
-         "moonbell_plant_stem" : {
+          "moonbell_plant_stem" : {
             "display_name" : "Wild Moonbell Stemming Plant",
-            "description"  : "Still Growing!"
-         },
-         "moonbell_plant_bud" : {
+            "description" : "Still Growing!"
+          },
+          "moonbell_plant_bud" : {
             "display_name" : "Wild Moonbell Budding Plant",
-            "description"  : "Its almost there! Look, it has buds!"
-         }
+            "description" : "Its almost there! Look, it has buds!"
+          }
         }
       },
       "marblesprout_plant" : {
-         "display_name" : "Wild Marblesprout",
-         "description"  : "Marblesprout description",
-         "unripe_description" : "Enter Marblesprout Plant Description Here"
+        "display_name" : "Wild Marblesprout",
+        "description" : "Marblesprout description",
+        "unripe_description" : "This plant has been harvested and has not grown back yet",
+        "seed" : {
+          "marblesprout_plant_seed_ghost" : {
+            "display_name" : "Wild Marblesprout Seed",
+            "description" : "Once planted, it will grow into healing herbs"
+          },
+          "marblesprout_plant_sprout" : {
+            "display_name" : "Wild Marblesprout Sproutling",
+            "description" : "Just need some time and care."
+          }
+        },
+        "stem" : {
+          "marblesprout_plant_stem" : {
+            "display_name" : "Wild Marblesprout Stemming Plant",
+            "description" : "Still Growing!"
+          },
+          "marblesprout_plant_bud" : {
+            "display_name" : "Wild Marblesprout Budding Plant",
+            "description" : "Its almost there! Look, it has buds!"
+          }
+        }
       }
     },
     "resources" : {
       "herb" : {
         "moonbell" : {
-          "display_name" : "moonbell herb display name",
-          "description"  : "moonbell herb description"
-        },
-        "marblesprout" : {
-         "display_name" : "marblesprout herb display name",
-         "description"  : "marblesprout herb description"
+          "display_name" : "Moonbell Flowers",
+          "description" : "An herb commonly used for medicinal purposes"
+        }
+      },
+      "stone" : {
+        "marble_stone" : {
+          "display_name" : "Marble Stone",
+          "description" : "A marb(velous) stone!"
         }
       }
     },
     "crops" : {
       "moonbell_crop" : {
-         "display_name" : "Moonbell Flower",
-         "description"  : "",
-         "growth_stage" : {
-            "000" : {
-               "name" : "Moonbell Seedling",
-               "description" : "Moonbell Seedling Description"
-            },
-            "001" : {
-               "name" : "Moonbell Sprout",
-               "description" : "Moonbell Sprout Description Stage 1"
-            },
-            "002" : {
-               "name" : "Moonbell Bud",
-               "description" : "Moonbell Bud Description"
-              },
-            "003" : {
-               "name" : "Moonbell",
-               "description" : "Moonbell Description"
-            }
-            }
-         }
+        "display_name" : "Moonbell Flower",
+        "description" : "Can be used as a healing herb",
+        "growth_stage" : {
+          "000" : {
+            "name" : "Moonbell Seedling",
+            "description" : "Full of potential."
+          },
+          "001" : {
+            "name" : "Moonbell Sprout",
+            "description" : "Stubby"
+          },
+          "002" : {
+            "name" : "Moonbell Bud",
+            "description" : "Awkward, gangly stage."
+          },
+          "003" : {
+            "name" : "Moonbell",
+            "description" : "Beauty is its own reward. (So shiny!)"
+          }
+        }
       },
-      "consumables" : {
-         "seeds" : {
-            "moonbell_seeds" : {
-               "display_name" : "Moonbell Seeds",
-               "description"  : "Learn to grow moonbells."
-            }
-         }
+      "marblesprout_crop" : {
+        "display_name" : "Marblesprout Flower",
+        "description" : "Marblesprout Crop Description",
+        "growth_stage" : {
+          "000" : {
+            "name" : "Marblesprout Seedling",
+            "description" : "Full of potential."
+          },
+          "001" : {
+            "name" : "Marblesprout Sprout",
+            "description" : "Stubby"
+          },
+          "002" : {
+            "name" : "Marblesprout Bud",
+            "description" : "Awkward, gangly stage."
+          },
+          "003" : {
+            "name" : "Marblesprout",
+            "description" : "Beauty is its won reward (Rock solid)"
+          }
+        }
+      }
+    },
+    "consumables" : {
+      "seeds" : {
+        "moonbell_seeds" : {
+          "display_name" : "Moonbell Seeds",
+          "description" : "Learn to grow moonbells."
+        },
+        "marblesprout_seeds" : {
+          "display_name" : "Marblesprout Seeds",
+          "description" : "Learn to grow marblesprouts."
+        }
       }
     }
   }
+}

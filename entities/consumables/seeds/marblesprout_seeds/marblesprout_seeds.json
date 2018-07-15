@@ -1,14 +1,14 @@
 {
   "mixins" : [
     "stonehearth:mixins:item_properties",
-    "file(moonbell_seeds_ghost.json)"
+    "file(marblesprout_seeds_ghost.json)"
   ],
   "type" : "entity",
   "components" : {
     "model_variants" : {
       "default" : {
         "models" : [
-          "file(moonbell_seeds.qb)"
+          "file(marblesprout_seeds.qb)"
         ]
       }
     },
@@ -18,8 +18,8 @@
       ]
     },
     "stonehearth:entity_forms" : {
-      "iconic_form" : "file(moonbell_seeds_iconic.json)",
-      "ghost_form" : "file(moonbell_seeds_ghost.json)",
+      "iconic_form" : "file(marblesprout_seeds_iconic.json)",
+      "ghost_form" : "file(marblesprout_seeds_ghost.json)",
       "placeable_on_ground" : true
     },
     "mob" : {
@@ -41,12 +41,12 @@
     },
     "stonehearth:consumable" : {
       "script" : "stonehearth:consumables:scripts:unlock_crop",
-      "crop" : "moonbell"
+      "crop" : "marblesprout"
     },
     "stonehearth:catalog" : {
-      "display_name" : "i18n(stonehearth_ace:entities.consumables.seeds.moonbell_seeds.display_name)",
-      "description" : "i18n(stonehearth_ace:entities.consumables.seeds.moonbell_seeds.description)",
-      "icon" : "file(moonbell_seeds.png)",
+      "display_name" : "i18n(stonehearth_ace:entities.consumables.seeds.marblesprout_seeds.display_name)",
+      "description" : "i18n(stonehearth_ace:entities.consumables.seeds.marblesprout_seeds.description)",
+      "icon" : "file(marblesprout_seeds.png)",
       "category" : "consumable",
       "material_tags" : "seeds small consumable stockpile_consumable"
     }
