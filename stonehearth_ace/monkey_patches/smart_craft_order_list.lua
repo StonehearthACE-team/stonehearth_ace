@@ -3,10 +3,6 @@ local SmartCraftOrderList = class()
 
 local log = radiant.log.create_logger('craft_order_list')
 
---TODO: Ensure when making an order that requires a craftable ingredient which is being maintained,
---      that the order isn't making more of that ingredient than necessary.
---      E.g. When maintaining m Spool of thread and then making n Bolt of cloth, make max(3-m, 0)*n more Spool of thread.
-
 SmartCraftOrderList._ace_old_add_order = CraftOrderList.add_order
 -- In addition to the original add_order function (from craft_order_list.lua),
 -- here it's also checking if the order has enough of the required ingredients and,
@@ -111,7 +107,7 @@ function SmartCraftOrderList:add_order(player_id, recipe, condition, is_recursiv
             old_order_index = self:find_index_of(order:get_id())
             self:remove_order(order)
          else
-            log:debug('an order already exists that fulfills what is asked of')
+            log:debug('an order already exists which fulfills the request')
             return true
          end
       end
