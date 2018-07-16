@@ -1,0 +1,49 @@
+{
+   "mixins" : "stonehearth:mining:base_loot_table",
+   "mineable_blocks" : {
+      "dirt" : {
+         "entries": {
+            "default": {
+               "items" : {
+                  "none": {
+                     "uri": "",
+                     "weight": 10000
+                  },
+                  "hunk_of_stone": {
+                     "uri": "stonehearth:resources:stone:hunk_of_stone",
+                     "weight": 400
+                  },
+                  "clay_mound": {
+                     "uri": "stonehearth:resources:clay:clay_mound",
+                     "weight": 100
+                  },
+                  "copper_ore": {
+                     "uri": "stonehearth:resources:copper:ore",
+                     "weight": 20
+                  },
+                  "tin_ore": {
+                     "uri": "stonehearth:resources:tin:ore",
+                     "weight": 20
+                  },
+                  "iron_ore": {
+                     "uri": "stonehearth:resources:iron:ore",
+                     "weight": 14
+                  },
+                  "lump_of_coal": {
+                     "uri": "stonehearth:resources:coal:lump_of_coal",
+                     "weight": 14
+                  },
+                  "silver_ore": {
+                     "uri": "stonehearth:resources:silver:ore",
+                     "weight": 10
+                  },
+                  "gold_ore": {
+                     "uri": "stonehearth:resources:gold:ore",
+                     "weight": 5
+                  }
+               }
+            }
+         }
+      }
+   }
+}
