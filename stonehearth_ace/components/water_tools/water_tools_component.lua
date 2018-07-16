@@ -127,14 +127,15 @@ function WaterToolsComponent:_on_tick()
 	-- pull water up from the lowest depth first
 	local total_volume_in = 0
 	for depth = self._sv.depth, 0, -1 do
-		local water_body = self:_get_water_body(location + Point3(0, -depth, 0))
+		local source_location = location + Point3(0, -depth, 0)
+		local water_body = self:_get_water_body(source_location)
 
 		if water_body then
 			-- first we need to identify the destination for the water
 			local output_location = location + Point3(0, self._sv.height, 0)
 
 			-- then we need to remove water from where the entity is
-			local volume, info = stonehearth.hydrology:remove_water(self._sv.rate - total_volume_in, location, water_body)
+			local volume, info = stonehearth.hydrology:remove_water(self._sv.rate - total_volume_in, source_location, water_body)
 			total_volume_in = total_volume_in + volume
 
 			-- then we need to try adding the same amount of water that was removed to a position above the entity
@@ -144,7 +145,7 @@ function WaterToolsComponent:_on_tick()
 
 			-- finally, if we output less volume than we input, output the difference back at the source location
 			if volume_left > 0 then
-				stonehearth.hydrology:add_water(volume_left, location, water_body)
+				stonehearth.hydrology:add_water(volume_left, source_location, water_body)
 				break
 			end
 		end
