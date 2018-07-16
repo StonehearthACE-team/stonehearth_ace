@@ -15,6 +15,7 @@ function WaterToolsComponent:initialize()
 	self._sv.off_command = json.off_command
 	self._sv.rate = math.max(json and json.rate or 1, 0)
 	self._sv.height = math.max(json and json.height or 1, 1) + 1
+	self._sv.depth = math.max(json and json.depth or 0, 0)
 end
 
 function WaterToolsComponent:post_activate()
@@ -27,7 +28,7 @@ function WaterToolsComponent:post_activate()
 	end
 end
 
-function WaterToolsComponent:apply_settings(enabled_changed, height_changed)
+function WaterToolsComponent:apply_settings(enabled_changed)
 	if enabled_changed then
 		-- swap commands
 		local commands_component = self._entity:get_component('stonehearth:commands')
@@ -93,15 +94,17 @@ function WaterToolsComponent:get_height()
 end
 
 function WaterToolsComponent:set_height(value)
-	if self._sv.height ~= value then
-		local old_height = self._sv.height
-		self._sv.height = math.max(value, 1) + 1
-		self.__saved_variables:mark_changed()
+	self._sv.height = math.max(value, 1) + 1
+	self.__saved_variables:mark_changed()
+end
 
-		self:apply_settings(false, true)
+function WaterToolsComponent:get_depth()
+	return self._sv.depth
+end
 
-		radiant.events.trigger(radiant, 'stonehearth_ace:on_water_tools_height_changed', { entity = self._entity, old_height = old_height })
-	end
+function WaterToolsComponent:set_depth(value)
+	self._sv.depth = math.max(value, 0)
+	self.__saved_variables:mark_changed()
 end
 
 function WaterToolsComponent:destroy()
@@ -113,33 +116,41 @@ end
 
 function WaterToolsComponent:_on_tick()
 	if not self._sv.enabled or self._sv.rate <= 0 then
-		log:error('water pump is disabled or has negative/zero rate')
 		return
 	end
 
 	local location = radiant.entities.get_world_grid_location(self._entity)
 	if not location then
-		log:error('water pump entity has invalid location')
 		return
 	end
-   
-	local water_body = self:_get_water_body(location)
+	
+	-- pull water up from the lowest depth first
+	local total_volume_in = 0
+	for depth = self._sv.depth, 0, -1 do
+		local water_body = self:_get_water_body(location + Point3(0, -depth, 0))
 
-	if water_body then
-		-- first we need to identify the destination for the water
-		local output_location = location + Point3(0, self._sv.height, 0)
+		if water_body then
+			-- first we need to identify the destination for the water
+			local output_location = location + Point3(0, self._sv.height, 0)
 
-		-- then we need to remove water from where the entity is
-		local volume, info = stonehearth.hydrology:remove_water(self._sv.rate, location, water_body)
+			-- then we need to remove water from where the entity is
+			local volume, info = stonehearth.hydrology:remove_water(self._sv.rate - total_volume_in, location, water_body)
+			total_volume_in = total_volume_in + volume
 
-		-- then we need to try adding the same amount of water that was removed to a position above the entity
-		local out_volume, info = stonehearth.hydrology:add_water(volume, output_location)
+			-- then we need to try adding the same amount of water that was removed to a position above the entity
+			local volume_left, info = stonehearth.hydrology:add_water(volume, output_location)
 
-		log:error('water pump removed %d water and added %d water', volume, out_volume)
+			log:error('water pump removed %d water and added %d water', volume, volume - volume_left)
 
-		-- finally, if we output less volume than we input, output the difference back at the source location
-		if out_volume < volume then
-			stonehearth.hydrology:add_water(volume - out_volume, location, water_body)
+			-- finally, if we output less volume than we input, output the difference back at the source location
+			if volume_left > 0 then
+				stonehearth.hydrology:add_water(volume_left, location, water_body)
+				break
+			end
+		end
+
+		if total_volume_in >= self._sv.rate then
+			break
 		end
 	end
 end
