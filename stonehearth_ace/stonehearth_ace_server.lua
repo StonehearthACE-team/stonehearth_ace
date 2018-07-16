@@ -6,20 +6,16 @@ local service_creation_order = {
    'crafter_info',
 }
 
+local monkey_patches = {
+   smart_craft_order_list = 'stonehearth.components.workshop.craft_order_list',
+   smart_craft_order = 'stonehearth.components.workshop.craft_order',
+}
+
 local function monkey_patching()
-   local smart_craft_order_list = require('patches.smart_craft_order_list')
-   local craft_order_list = radiant.mods.require('stonehearth.components.workshop.craft_order_list')
-   radiant.mixin(craft_order_list, smart_craft_order_list)
-
-
-   local smart_craft_order = require('patches.smart_craft_order')
-   local craft_order = radiant.mods.require('stonehearth.components.workshop.craft_order')
-   radiant.mixin(craft_order, smart_craft_order)
-
-
-   local job_info_controller = radiant.mods.require('stonehearth.services.server.job.job_info_controller')
-   job_info_controller.get_recipe_list = function(self)
-      return self._sv.recipe_list
+   for from, into in pairs(monkey_patches) do
+      local monkey_see = require('monkey_patches.' .. from)
+      local monkey_do = radiant.mods.require(into)
+      radiant.mixin(monkey_do, monkey_see)
    end
 end
 
@@ -42,12 +38,13 @@ local function create_service(name)
 end
 
 function stonehearth_ace:_on_init()
-   radiant.log.write_('stonehearth_ace', 0, 'ACE server initialized')
    stonehearth_ace._sv = stonehearth_ace.__saved_variables:get_data()
 
    for _, name in ipairs(service_creation_order) do
       create_service(name)
    end
+
+   radiant.log.write_('stonehearth_ace', 0, 'ACE server initialized')
 end
 
 function stonehearth_ace:_on_required_loaded()
