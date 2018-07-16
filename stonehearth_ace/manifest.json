@@ -55,9 +55,10 @@
     "plants:marblesprout:sprout" : "file(entities/plants/marblesprout_plant/sprout/marblesprout_plant_sprout.json)",
     "plants:marblesprout:stem" : "file(entities/plants/marblesprout_plant/stem/marblesprout_plant_stem.json)",
     "plants:marblesprout:wild" : "file(entities/plants/marblesprout_plant/marblesprout_plant_wild.json)",
-    "gizmos:water_gate" : "file(entities/gizmos/water_gate/water_gate.json)",
-    "commands:toggle_water_gate_on" : "file(data/commands/toggle_water_gate/toggle_on.json)",
-    "commands:toggle_water_gate_off" : "file(data/commands/toggle_water_gate/toggle_off.json)"
+    "gizmos:water_gate": "file(entities/gizmos/water_gate/water_gate.json)",
+    "gizmos:water_pump": "file(entities/gizmos/water_pump/water_pump.json)",
+    "commands:toggle_water_tool_on" : "file(data/commands/toggle_water_tool/toggle_on.json)",
+    "commands:toggle_water_tool_off" : "file(data/commands/toggle_water_tool/toggle_off.json)"
   },
   "mixintos" : {
     "stonehearth:biome:index" : "file(mixins/data/biome/index.json)",
@@ -69,12 +70,14 @@
     "stonehearth:farmer:initial_crops" : "file(services/server/farming/data/initial_crops.json)"
   },
   "overrides" : {},
-  "components" : {},
+  "components": {
+    "water_tools": "file(components/water_tools/water_tools_component.lua)"
+  },
   "controllers" : {},
   "functions" : {
-    "toggle_water_gate_command" : {
-      "controller" : "file(call_handlers/water_tools_call_handler.lua)",
-      "endpoint" : "server"
+    "toggle_water_tools_command": {
+      "controller": "file(call_handlers/water_tools_call_handler.lua)",
+      "endpoint": "server"
     }
   }
 }
