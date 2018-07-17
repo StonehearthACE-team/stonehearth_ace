@@ -1,0 +1,26 @@
+{
+   "type": "entity",
+   "components": {
+      "mob": {
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      },
+    "region_collision_shape": {
+      "region": [
+        {
+          "min": { "x": 0, "y": 0, "z": 0 },
+          "max": { "x": 1, "y": 1, "z": 1 }
+        }
+      ],
+      "region_collision_type": "solid"
+    },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": 0, "y": 0, "z": 0 },
+               "max": { "x": 1, "y": 1, "z": 1 }
+            }
+         ]
+      }
+   },
+   "entity_data": {}
+}
