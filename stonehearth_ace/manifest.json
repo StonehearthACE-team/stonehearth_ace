@@ -59,7 +59,8 @@
     "gizmos:water_gate": "file(entities/gizmos/water_gate/water_gate.json)",
     "gizmos:water_pump": "file(entities/gizmos/water_pump/water_pump.json)",
     "commands:toggle_water_tool_on" : "file(data/commands/toggle_water_tool/toggle_on.json)",
-    "commands:toggle_water_tool_off" : "file(data/commands/toggle_water_tool/toggle_off.json)"
+    "commands:toggle_water_tool_off" : "file(data/commands/toggle_water_tool/toggle_off.json)",
+    "furniture:patrol_point": "file(entities/furniture/patrol_point)"
   },
   "mixintos" : {
     "stonehearth:biome:index" : "file(mixins/data/biome/index.json)",
@@ -68,7 +69,13 @@
     "stonehearth/jobs/herbalist/recipes/recipes.json" : "file(jobs/herbalist/recipes/recipes.json)",
     "stonehearth/jobs/blacksmith/recipes/recipes.json" : "file(jobs/blacksmith/recipes/recipes.json)",
     "stonehearth:farmer:all_crops" : "file(services/server/farming/data/all_crops.json)",
-    "stonehearth:farmer:initial_crops" : "file(services/server/farming/data/initial_crops.json)"
+    "stonehearth:farmer:initial_crops" : "file(services/server/farming/data/initial_crops.json)",
+    "stonehearth/jobs/carpenter/recipes/recipes.json" : "file(mixins/recipes/carpenter/recipes.json)",
+    "stonehearth:containers:large_crate": "file(mixins/disable_entity_auto_patrol.json)",
+    "stonehearth:containers:large_crate:fine": "file(mixins/disable_entity_auto_patrol.json)",
+    "stonehearth:containers:large_urn": "file(mixins/disable_entity_auto_patrol.json)",
+    "stonehearth:stockpile": "file(mixins/disable_entity_auto_patrol.json)",
+    "stonehearth:farmer:field": "file(mixins/disable_entity_auto_patrol.json)"
   },
   "overrides" : {},
   "components": {
