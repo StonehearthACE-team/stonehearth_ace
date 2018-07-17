@@ -1,0 +1,95 @@
+{
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(../../plants/moonbell_plant/moonbell_plant.qb)"
+            ]
+         },
+         "moonbell_1": {
+            "models": [
+               "file(moonbell_1.qb)"
+            ]
+         },
+         "moonbell_2": {
+            "models": [
+               "file(moonbell_2.qb)"
+            ]
+         },
+         "moonbell_3": {
+            "models": [
+               "file(moonbell_3.qb)"
+            ]
+         },
+         "moonbell_4": {
+            "models": [
+               "file(moonbell_4.qb)"
+            ]
+         }
+      },
+      "render_info": {
+         "scale": 0.13
+      },
+      "mob": {
+         "model_origin": { "x": -0.05, "y": 0, "z": 0.05 },
+         "mob_collision_type": "clutter"
+      },
+      "stonehearth:crop": {
+         "resource_pairings": {
+            "moonbell_4": "stonehearth_ace:resources:herb:moonbell"
+         },
+         "harvest_threshhold": "moonbell_4",
+         "plant_overlay_effect": "stonehearth_ace:effects:plant_crop_overlay_effect"
+      },
+      "stonehearth:growing": {
+         "growth_period": "12h",
+         "preferred_seasons": {
+            "stonehearth:biome:temperate": ["spring"],
+            "stonehearth:biome:desert": ["spring"],
+            "stonehearth:biome:arctic": ["spring"]
+         },
+         "growth_stages": [
+            {
+               "model_name": "moonbell_1",
+               "name": "i18n(stonehearth_ace:entities.crops.moonbell_crop.growth_stage.000.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.moonbell_crop.growth_stage.000.description)"
+            },
+            {
+               "model_name": "moonbell_2",
+               "name": "i18n(stonehearth_ace:entities.crops.moonbell_crop.growth_stage.001.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.moonbell_crop.growth_stage.001.description)"
+            },
+            {
+               "model_name": "moonbell_3",
+               "name": "i18n(stonehearth_ace:entities.crops.moonbell_crop.growth_stage.002.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.moonbell_crop.growth_stage.002.description)"
+            },
+            {
+               "model_name": "moonbell_4",
+               "name": "i18n(stonehearth_ace:entities.crops.moonbell_crop.growth_stage.003.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.moonbell_crop.growth_stage.003.description)"
+            }
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 1,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.crops.moonbell_crop.display_name)",
+         "description": "i18n(stonehearth_ace:entities.crops.moonbell_crop.description)",
+         "icon": "file(../../plants/moonbell_plant/moonbell_plant.png)",
+         "material_tags": "crop moonbell"
+      },
+      "stonehearth:appeal": {
+         "appeal": 4
+      }
+   }
+}

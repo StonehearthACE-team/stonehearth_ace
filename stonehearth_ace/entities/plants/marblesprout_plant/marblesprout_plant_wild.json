@@ -3,11 +3,6 @@
    "mixins" : "file(marblesprout_plant_ghost.json)",
    "components" : {
          "model_variants": {
-		 "default": {
-            "models":	[
-				"file(marblesprout_plant_wild.qb)"
-						]
-         },
          "depleted": {
             "models": [
                "file(marblesprout_plant_harvested.qb)"
@@ -15,7 +10,7 @@
          }
       },
 	        "stonehearth:renewable_resource_node": {
-         "resource": "stonehearth_ace:resources:herb:moonbell",
+         "resource": "stonehearth_ace:resources:stone:marble_stone",
          "category": "harvest",
          "harvest_overlay_effect": "stonehearth:effects:harvest_plant_overlay_effect",
          "unripe_description": "i18n(stonehearth_ace:entities.plants.marblesprout_plant.unripe_description)",
@@ -33,7 +28,7 @@
                         "weight": 4
                      },
                      "pelt": {
-                        "uri": "stonehearth_ace:plants:moonbell:seed",
+                        "uri": "stonehearth_ace:plants:marblesprout:seed",
                         "weight": 1
                      }
                   }
