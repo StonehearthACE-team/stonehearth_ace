@@ -7,8 +7,8 @@ local service_creation_order = {
 }
 
 local monkey_patches = {
-   smart_craft_order_list = 'stonehearth.components.workshop.craft_order_list',
-   smart_craft_order = 'stonehearth.components.workshop.craft_order',
+   ace_craft_order_list = 'stonehearth.components.workshop.craft_order_list',
+   ace_craft_order = 'stonehearth.components.workshop.craft_order',
 }
 
 local function monkey_patching()
