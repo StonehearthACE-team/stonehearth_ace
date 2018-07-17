@@ -63,15 +63,15 @@ function CrafterInfoController:post_activate()
                            valid_recipe = false
                            break
                         end
-                        keys = keys .. ' ' .. producing.item
+                        keys = keys ..' '.. producing.item
                      end
 
                      if valid_recipe then
                         -- It's a valid recipe, so store it
                         formatted_recipe.product_info = radiant.resources.load_json(formatted_recipe.product_uri)
-                        local product_material_tags = formatted_recipe.product_info.entity_data["stonehearth:catalog"].material_tags
-                        if product_material_tags then
-                           keys = keys .. ' ' .. product_material_tags
+                        local product_catalog = formatted_recipe.product_info.entity_data["stonehearth:catalog"]
+                        if product_catalog and product_catalog.material_tags then
+                           keys = keys ..' '.. product_catalog.material_tags
                         end
                         self._recipe_map:add(keys, {
                            order_list = order_list,
