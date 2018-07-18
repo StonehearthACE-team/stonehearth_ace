@@ -1,0 +1,30 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(automaton_restocking.qb)"
+            ]
+         }
+      },
+      "render_info": {
+         "animation_table": "/stonehearth/data/rigs/entities/golems/golem_beetle",
+         "scale": 0.1
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0, "y": 0, "z": 0 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "Cricket Golem",
+         "description": "Item-Carrying Golem, constructed of stone and empowered by ancient knowledge!",
+         "icon": "file(automaton_restocking.png)",
+         "category": "tools",
+         "material_tags": "stone crafted stockpile_tool"
+      }
+   }
+}
