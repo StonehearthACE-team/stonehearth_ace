@@ -8,7 +8,8 @@
                {
                   "type": "one_of",
                   "items": [
-                     "file(medium_birch_tree.qb)"
+                     "file(medium_birch_tree.qb)",
+                     "file(medium_birch_tree_2.qb)"
                   ]
                }
             ]
@@ -18,7 +19,9 @@
                {
                   "type": "one_of",
                   "items": [
-                     "file(medium_birch_tree_autumn.qb)"
+                     "file(medium_birch_tree_autumn.qb)",
+                     "file(medium_birch_tree_autumn_2.qb)",
+                     "file(medium_birch_tree_autumn_3.qb)"
                   ]
                }
             ]
@@ -28,7 +31,8 @@
                {
                   "type": "one_of",
                   "items": [
-                     "file(medium_birch_tree_summer.qb)"
+                     "file(medium_birch_tree_summer.qb)",
+                     "file(medium_birch_tree_summer_2.qb)"
                   ]
                }
             ]
@@ -77,12 +81,8 @@
          }
       },
       "mob": {
-         "model_origin": { "x": -0.5, "y": 0, "z": 0.5 },
-         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 },
-         "align_to_grid": [
-            "x",
-            "z"
-         ]
+         "model_origin": { "x": 0.1, "y": 0, "z": 0.1 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
       },
       "render_info": {
          "scale": 0.2

@@ -3,7 +3,7 @@
    "mixins": "stonehearth:mixins:placed_object",
    "components": {
       "render_info": {
-         "scale": 0.4
+         "scale": 0.3
       },
       "stonehearth:evolve": {},
       "model_variants": {
@@ -12,11 +12,6 @@
                "file(tree_birch_bud.qb)"
             ]
          }
-      },
-      "mob": {
-         "model_origin": { "x": -0.2, "y": 0, "z": 0.2 },
-         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 },
-         "mob_collision_type": "clutter"
       },
       "destination": {
          "region": [

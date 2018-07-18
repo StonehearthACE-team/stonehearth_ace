@@ -1,9 +1,9 @@
 local CraftOrderList = radiant.mods.require('stonehearth.components.workshop.craft_order_list')
-local SmartCraftOrderList = class()
+local AceCraftOrderList = class()
 
 local log = radiant.log.create_logger('craft_order_list')
 
-SmartCraftOrderList._ace_old_add_order = CraftOrderList.add_order
+AceCraftOrderList._ace_old_add_order = CraftOrderList.add_order
 -- In addition to the original add_order function (from craft_order_list.lua),
 -- here it's also checking if the order has enough of the required ingredients and,
 -- if it can be crafted, adds those ingredients as orders as well.
@@ -11,7 +11,7 @@ SmartCraftOrderList._ace_old_add_order = CraftOrderList.add_order
 -- Furthermore, when maintaining orders, it makes sure that there are no more than
 -- one instance of each recipe that's maintained.
 --
-function SmartCraftOrderList:add_order(player_id, recipe, condition, is_recursive_call)
+function AceCraftOrderList:add_order(player_id, recipe, condition, is_recursive_call)
    local inv = stonehearth.inventory:get_inventory(player_id)
    local crafter_info = stonehearth_ace.crafter_info:get_crafter_info(player_id)
 
@@ -135,12 +135,12 @@ function SmartCraftOrderList:add_order(player_id, recipe, condition, is_recursiv
    return result
 end
 
-SmartCraftOrderList._ace_old_delete_order_command = CraftOrderList.delete_order_command
+AceCraftOrderList._ace_old_delete_order_command = CraftOrderList.delete_order_command
 -- In addition to the original delete_order_command function (from craft_order_list.lua),
 -- here it's also making sure that the ingredients needed for the order is removed
 -- from the reserved ingredients table.
 --
-function SmartCraftOrderList:delete_order_command(session, response, order_id)
+function AceCraftOrderList:delete_order_command(session, response, order_id)
    local order = self._sv.orders[ self:find_index_of(order_id) ]
    local condition = order:get_condition()
 
@@ -157,7 +157,7 @@ end
 -- `multiple` says by how much the ingredients' count will be multiplied by,
 -- if it's not specified it will get the value of 1.
 --
-function SmartCraftOrderList:remove_from_reserved_ingredients(ingredients, order_id, player_id, multiple)
+function AceCraftOrderList:remove_from_reserved_ingredients(ingredients, order_id, player_id, multiple)
    multiple = multiple or 1
    local crafter_info = stonehearth_ace.crafter_info:get_crafter_info(player_id)
    for _, ingredient in pairs(ingredients) do
@@ -172,7 +172,7 @@ end
 -- Used to get a recipe if it can be used to craft `ingredient`.
 -- Returns information such as what the recipe itself and the order list used for it.
 --
-function SmartCraftOrderList:_ace_get_recipe_info_from_ingredient(ingredient, crafter_info)
+function AceCraftOrderList:_ace_get_recipe_info_from_ingredient(ingredient, crafter_info)
    local item = ingredient.uri or ingredient.material
    local chosen_recipe = nil
    local chosen_recipe_cost = 0
@@ -193,7 +193,7 @@ end
 -- the amount of ingredients used and their respective value,
 -- how many ingredients are missing and how much it would cost to craft them.
 --
-function SmartCraftOrderList:_ace_get_recipe_cost(recipe_info, crafter_info)
+function AceCraftOrderList:_ace_get_recipe_cost(recipe_info, crafter_info)
    local total_cost = 0
 
    local ingredients = recipe_info.recipe.ingredients
@@ -214,7 +214,7 @@ end
 
 -- Get the lowest valued entity, and its cost, from a list of uris.
 --
-function SmartCraftOrderList:_ace_get_least_valued_entity(uris)
+function AceCraftOrderList:_ace_get_least_valued_entity(uris)
    local least_valued_uri = nil
    local lowest_value = 0
    for _, uri in ipairs(uris) do
@@ -229,7 +229,7 @@ end
 
 -- Checking `inventory` to see how much of `ingredient` is available.
 --
-function SmartCraftOrderList:_ace_get_ingredient_amount_in_storage(ingredient, inventory)
+function AceCraftOrderList:_ace_get_ingredient_amount_in_storage(ingredient, inventory)
    local tracking_data = inventory:get_item_tracker('stonehearth:usable_item_tracker')
                                        :get_tracking_data()
    local ingredient_count = 0
@@ -259,7 +259,7 @@ end
 -- The optional `to_order_id` says that any orders with their id,
 -- that are at least as great as that number, will be ignored.
 --
-function SmartCraftOrderList:ace_get_ingredient_amount_in_order_list(ingredient, to_order_id)
+function AceCraftOrderList:ace_get_ingredient_amount_in_order_list(ingredient, to_order_id)
    local ingredient_count = {
       make = 0,
       maintain = 0,
@@ -298,7 +298,7 @@ end
 -- Checks to see if `tags_string1` is a sub-set of `tags_string2`.
 -- Returns true if it is, else false.
 --
-function SmartCraftOrderList:_ace_matching_tags(tags_string1, tags_string2)
+function AceCraftOrderList:_ace_matching_tags(tags_string1, tags_string2)
    -- Hack!
    -- Add a space at the end to make the frontier pattern search succeed at all times
    tags_string2 = tags_string2 .. ' '
@@ -318,7 +318,7 @@ end
 -- is defined, then it will also check for a match against it.
 -- Returns nil if no match was found.
 --
-function SmartCraftOrderList:_ace_find_craft_order(recipe_name, order_type)
+function AceCraftOrderList:_ace_find_craft_order(recipe_name, order_type)
    log:debug('finding a recipe for "%s"', recipe_name)
    log:debug('There are %d orders', radiant.size(self._sv.orders) - 1)
 
@@ -336,4 +336,4 @@ function SmartCraftOrderList:_ace_find_craft_order(recipe_name, order_type)
    return nil
 end
 
-return SmartCraftOrderList
+return AceCraftOrderList
