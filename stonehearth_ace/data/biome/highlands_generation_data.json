@@ -249,12 +249,10 @@
         }
       },
       "stonehearth_ace:trees:birch:medium" : {
-        "placement_type" : "dense",
-        "parameters" : {
-          "grid_multiple" : 2,
-          "__comment" : "Makes sure that trees don't get placed inside of this area. Def 4",
-          "item_density" : 0.5,
-          "exclusion_radius" : 6
+        "placement_type" : "single",
+         "parameters" : {
+          "ground_radius" : 3,
+          "exclusion_radius" : 5
         }
       },
       "stonehearth_ace:trees:birch:large" : {
@@ -391,7 +389,7 @@
           "item_density" : 0.9
         }
       },
-      "stonehearth:boulder:small" : {
+      "stonehearth_ace:boulder:highlands:small" : {
         "placement_type" : "dense",
         "parameters" : {
           "__comment" : "Unsure what this does... Def 1",
@@ -400,7 +398,7 @@
           "exclusion_radius" : 2
         }
       },
-      "stonehearth:boulder:medium_1" : {
+      "stonehearth_ace:boulder:highlands:medium_1" : {
         "placement_type" : "single",
         "parameters" : {
           "__comment" : "Unsure what this does... Def 2",
@@ -408,28 +406,28 @@
           "exclusion_radius" : 2
         }
       },
-      "stonehearth:boulder:medium_2" : {
+      "stonehearth_ace:boulder:highlands:medium_2" : {
         "placement_type" : "single",
         "parameters" : {
           "ground_radius" : 1,
           "exclusion_radius" : 2
         }
       },
-      "stonehearth:boulder:medium_3" : {
+      "stonehearth_ace:boulder:highlands:medium_3" : {
         "placement_type" : "single",
         "parameters" : {
           "ground_radius" : 1,
           "exclusion_radius" : 2
         }
       },
-      "stonehearth:boulder:large_1" : {
+      "stonehearth_ace:boulder:highlands:large_1" : {
         "placement_type" : "single",
         "parameters" : {
           "ground_radius" : 2,
           "exclusion_radius" : 2
         }
       },
-      "stonehearth:boulder:large_2" : {
+      "stonehearth_ace:boulder:highlands:large_2" : {
         "placement_type" : "single",
         "parameters" : {
           "ground_radius" : 2,
@@ -635,7 +633,7 @@
         }
       },
       "boulders" : {
-        "namespace" : "stonehearth:boulder",
+        "namespace" : "stonehearth_ace:boulder:highlands",
         "noise_map_parameters" : {
           "__comment" : "Same as noise map parameters of plants. this is after trees, water, berries and plants are generated",
           "terrain_based" : {
