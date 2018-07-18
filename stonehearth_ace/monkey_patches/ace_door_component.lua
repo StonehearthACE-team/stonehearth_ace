@@ -12,7 +12,7 @@ function AceDoorComponent:_add_collision_shape()
    if portal then
       local mob = self._entity:add_component('mob')
       local mgs = self._entity:add_component('movement_guard_shape')
-	  local depth = math.max(1, portal.depth or 1)
+	  local depth = math.max(1, portal:get_depth() or 1)
 
       local region2 = portal:get_portal_region()
       local region3 = mgs:get_region()
