@@ -12,6 +12,11 @@ AceCraftOrderList._ace_old_add_order = CraftOrderList.add_order
 -- one instance of each recipe that's maintained.
 --
 function AceCraftOrderList:add_order(player_id, recipe, condition, is_recursive_call)
+   local auto_craft_recipe_dependencies = radiant.util.get_config('auto_craft_recipe_dependencies', true)
+   if not auto_craft_recipe_dependencies then
+      return self:_ace_old_add_order(player_id, recipe, condition)
+   end
+
    local inv = stonehearth.inventory:get_inventory(player_id)
    local crafter_info = stonehearth_ace.crafter_info:get_crafter_info(player_id)
 
