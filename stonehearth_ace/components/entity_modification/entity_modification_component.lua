@@ -123,4 +123,35 @@ function EntityModificationComponent:reset_movement_modifier_shape_modifier(move
 	end
 end
 
+function EntityModificationComponent:set_model_variant(model_variant, override_original)
+	local component = self._entity:add_component('render_info')
+	if component then
+		-- for this one we want to back up the original/previous model_variant for resetting
+		-- since it could've been a random 'one_of'; but only back it up if it's the original (or we specify to override)
+		if not self._sv.original_model_variant or override_original then
+			self._sv.original_model_variant = component:get_model_variant()
+			self.__saved_variables:mark_changed()
+		end
+
+		model_variant = self._json_values[model_variant] or model_variant
+		if model_variant then
+			component:set_model_variant(model_variant)
+		end
+	end
+end
+
+function EntityModificationComponent:reset_model_variant()
+	local component = self._entity:add_component('render_info')
+	if component then
+		local model_variant self._sv.original_model_variant
+		if model_variant then
+			component:set_model_variant(model_variant)
+			-- once we've 'reset', whatever model_variant was stored is considered the new original
+			-- so we don't need to store it unless/until it gets set again
+			self._sv.original_model_variant = nil
+			self.__saved_variables:mark_changed()
+		end
+	end
+end
+
 return EntityModificationComponent
