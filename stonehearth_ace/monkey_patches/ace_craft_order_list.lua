@@ -152,10 +152,15 @@ AceCraftOrderList._ace_old_delete_order_command = CraftOrderList.delete_order_co
 --
 function AceCraftOrderList:delete_order_command(session, response, order_id)
    local order = self._sv.orders[ self:find_index_of(order_id) ]
-   local condition = order:get_condition()
+   if order then
+      local condition = order:get_condition()
 
-   if condition.type == 'make' and condition.remaining > 0 then
-      self:remove_from_reserved_ingredients(order:get_recipe().ingredients, order_id, session.player_id, condition.remaining)
+      if condition.type == 'make' and condition.remaining > 0 then
+         self:remove_from_reserved_ingredients(order:get_recipe().ingredients,
+                                               order_id,
+                                               session.player_id,
+                                               condition.remaining)
+      end
    end
 
    return self:_ace_old_delete_order_command(session, response, order_id)
