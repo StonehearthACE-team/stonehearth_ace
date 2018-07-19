@@ -14,7 +14,7 @@ AceCraftOrderList._ace_old_add_order = CraftOrderList.add_order
 function AceCraftOrderList:add_order(player_id, recipe, condition, is_recursive_call)
    local auto_craft_recipe_dependencies = radiant.util.get_config('auto_craft_recipe_dependencies', true)
    if not auto_craft_recipe_dependencies then
-      return self:_ace_old_add_order(player_id, recipe, condition)
+      return self:insert_order(player_id, recipe, condition)
    end
 
    local inv = stonehearth.inventory:get_inventory(player_id)
@@ -88,7 +88,7 @@ function AceCraftOrderList:add_order(player_id, recipe, condition, is_recursive_
    end
 
    local old_order_index
-   if condition.type == 'maintain' then
+   if condition.type == 'maintain' and not condition.order_index then
       -- See if the order_list already contains a maintain order for the recipe:
       --    if it does, remake the order if its amount is lower than `missing`, otherwise ignore it;
       --    if it doesn't, simply add it as usual
@@ -118,26 +118,31 @@ function AceCraftOrderList:add_order(player_id, recipe, condition, is_recursive_
       end
    end
 
-   local result = self:_ace_old_add_order(player_id, recipe, condition)
-
-   if old_order_index then
-      -- Change the order of the recipe to what its predecessor had
-
-      -- Note: We could call the function `change_order_position` for this one,
-      --       but it uses an order's id to find its index in the table. And since
-      --       we know that the newly created order is in the last index; it seems
-      --       like a waste of resources to just do that sort of operation. So
-      --       we just copy that function's body here with that change in mind.
-
-      local new_order_index = radiant.size(self._sv.orders) - 1
-      local order = self._sv.orders[new_order_index]
-      table.remove(self._sv.orders, new_order_index)
-      table.insert(self._sv.orders, old_order_index, order)
-
-      self:_on_order_list_changed()
-   end
+   local result = self:insert_order(player_id, recipe, condition, old_order_index)
 
    return result
+end
+
+function AceCraftOrderList:insert_order(player_id, recipe, condition, maintain_order_index)
+	local result = self:_ace_old_add_order(player_id, recipe, condition)
+
+	local old_order_index = condition.order_index or maintain_order_index
+	if old_order_index then
+		-- Change the order of the recipe to what its predecessor had
+
+		-- Note: We could call the function `change_order_position` for this one,
+		--       but it uses an order's id to find its index in the table. And since
+		--       we know that the newly created order is in the last index; it seems
+		--       like a waste of resources to just do that sort of operation. So
+		--       we just copy that function's body here with that change in mind.
+
+		local new_order_index = radiant.size(self._sv.orders) - 1
+		local order = self._sv.orders[new_order_index]
+		table.remove(self._sv.orders, new_order_index)
+		table.insert(self._sv.orders, old_order_index, order)
+
+		self:_on_order_list_changed()
+	end
 end
 
 AceCraftOrderList._ace_old_delete_order_command = CraftOrderList.delete_order_command
