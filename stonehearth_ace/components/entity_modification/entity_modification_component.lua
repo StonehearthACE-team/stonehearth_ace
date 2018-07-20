@@ -1,3 +1,4 @@
+local rng = _radiant.math.get_default_rng()
 local csg_lib = require 'lib.csg.csg_lib'
 local Point3 = _radiant.csg.Point3
 local Cube3 = _radiant.csg.Cube3
@@ -9,7 +10,7 @@ local EntityModificationComponent = class()
 function EntityModificationComponent:initialize()
 	local json = radiant.entities.get_json(self)
 	-- load up any points/regions/settings we want to store
-	if json.values then
+	if json and json.values then
 		self._json_values = radiant.shallow_copy(json.values)
 	else
 		self._json_values = {}
@@ -17,19 +18,27 @@ function EntityModificationComponent:initialize()
 end
 
 function EntityModificationComponent:set_region3s(component_name, regions)
-	-- if we weren't passed a key to our own values, assume we were passed an array of Region3 objects
+	-- if we weren't passed a key to our own values, assume we were passed [an array of] Region3 objects
 	regions = self._json_values[regions] or regions
 	local region3s = nil
 	if regions then
 		region3s = {}
+		-- first check if it's an array; if not, make it one
+		-- can't do a simple table type check because you could be passing in a json region
+		if radiant.util.is_a(regions, Cube3) or radiant.util.is_a(regions, Region3)
+				or regions.get and type(regions.get) == 'function' then
+			regions = { regions }
+		end
+
 		for _, r in pairs(regions) do
 			if radiant.util.is_a(r, Cube3) then
 				table.insert(region3s, Region3(r))
 			elseif radiant.util.is_a(r, Region3) then
 				table.insert(region3s, r)
-			elseif radiant.util.typename(r) == 'class radiant::dm::Boxed<class radiant::csg::Region<double,3>,1026>' then
-				-- there has to be a better way of checking if this is a a c++ Region3...
-				
+			elseif r.get and type(r.get) == 'function' then
+				-- assume that this is a a c++ Region3 if it has .get(), rather than having to do the following check:
+				-- if radiant.util.typename(r) == 'class radiant::dm::Boxed<class radiant::csg::Region<double,3>,1026>' then
+				table.insert(region3s, r:get())
 			else
 				local cube = radiant.util.to_cube3(r)
 				if cube then
@@ -54,12 +63,9 @@ function EntityModificationComponent:set_region3s(component_name, regions)
 end
 
 function EntityModificationComponent:reset_region3s(component_name)
-	local component = self._entity:add_component(component_name)
-	if component then
-		local json = radiant.entities.get_json(component)
-		if json then
-			self:set_region3s(component_name, json.region)
-		end
+	local json = radiant.entities.get_component_data(self._entity, component_name)
+	if json then
+		self:set_region3s(component_name, json.region)
 	end
 end
 
@@ -84,12 +90,9 @@ function EntityModificationComponent:set_region_collision_type(type)
 end
 
 function EntityModificationComponent:reset_region_collision_type(type)
-	local component = self._entity:add_component('region_collision_shape')
-	if component then
-		local json = radiant.entities.get_json(component)
-		if json then
-			self:set_region_collision_type(component_name, json.region_collision_type)
-		end
+	local json = radiant.entities.get_component_data(self._entity, 'region_collision_shape')
+	if json then
+		self:set_region_collision_type(component_name, json.region_collision_type)
 	end
 end
 
@@ -109,16 +112,13 @@ function EntityModificationComponent:set_movement_modifier_shape_modifier(moveme
 end
 
 function EntityModificationComponent:reset_movement_modifier_shape_modifier(movement_modifier, nav_preference_modifier)
-	local component = self._entity:add_component('movement_modifier_shape')
-	if component then
-		local json = radiant.entities.get_json(component)
-		if json then
-			if movement_modifier then
-				self:set_modifier(component_name, json.modifier)
-			end
-			if movement_modifier then
-				self:set_nav_preference_modifier(component_name, json.nav_preference_modifier)
-			end
+	local json = radiant.entities.get_component_data(self._entity, 'movement_modifier_shape')
+	if json then
+		if movement_modifier then
+			self:set_modifier(component_name, json.modifier)
+		end
+		if movement_modifier then
+			self:set_nav_preference_modifier(component_name, json.nav_preference_modifier)
 		end
 	end
 end
@@ -126,15 +126,42 @@ end
 function EntityModificationComponent:set_model_variant(model_variant, override_original)
 	local component = self._entity:add_component('render_info')
 	if component then
-		-- for this one we want to back up the original/previous model_variant for resetting
-		-- since it could've been a random 'one_of'; but only back it up if it's the original (or we specify to override)
-		if not self._sv.original_model_variant or override_original then
-			self._sv.original_model_variant = component:get_model_variant()
-			self.__saved_variables:mark_changed()
+		local current_model_variant = component:get_model_variant()
+		-- always default to our key if present
+		model_variant = self._json_values[model_variant] or model_variant
+		
+		-- check if the model_variant (our key) is actually an array of variants
+		-- if so, check if it specified a type of 'one_of'
+		-- if so, choose a random variant from the array
+		-- otherwise, check if the current model is in the list
+		-- if so, choose the next model in the sequence, looping around to start; otherwise, choose the first model
+		if model_variant.models and type(model_variant.models) == 'table' and #model_variant.models > 0 then
+			local index = 1
+			if model_variant.type == 'one_of' then
+				index = rng:get_int(1, #model_variant.models)
+			else
+				-- see if the current model is in this list; if so, get the next entry
+				for i = 1, #model_variant.models do
+					if model_variant.models[i] == current_model_variant then
+						index = (i % #model_variant.models) + 1
+						break
+					end
+				end
+			end
+			log:debug('setting model_variant to index %d (of %d): %s', index, #model_variant.models, model_variant.models[index])
+			model_variant = model_variant.models[index]
 		end
 
-		model_variant = self._json_values[model_variant] or model_variant
-		if model_variant then
+		if model_variant and model_variant ~= current_model_variant then
+			-- for this one we want to back up the original/previous model_variant for resetting
+			-- since it could've been a random 'one_of'; but only back it up if it's the original (or we specify to override)
+			-- unfortunately render_info doesn't give us the specific current model_variant, so we can only reliably back up after our first change
+			if not self._sv.original_model_variant or override_original then
+				self._sv.original_model_variant = current_model_variant
+			end
+
+			self.__saved_variables:mark_changed()
+
 			component:set_model_variant(model_variant)
 		end
 	end
@@ -143,7 +170,7 @@ end
 function EntityModificationComponent:reset_model_variant()
 	local component = self._entity:add_component('render_info')
 	if component then
-		local model_variant self._sv.original_model_variant
+		local model_variant = self._sv.original_model_variant
 		if model_variant then
 			component:set_model_variant(model_variant)
 			-- once we've 'reset', whatever model_variant was stored is considered the new original
