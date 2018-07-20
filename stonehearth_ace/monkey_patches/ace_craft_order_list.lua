@@ -12,8 +12,7 @@ AceCraftOrderList._ace_old_add_order = CraftOrderList.add_order
 -- one instance of each recipe that's maintained.
 --
 function AceCraftOrderList:add_order(player_id, recipe, condition, is_recursive_call)
-   local auto_craft_recipe_dependencies = radiant.util.get_config('auto_craft_recipe_dependencies', true)
-   if not auto_craft_recipe_dependencies then
+   if not radiant.util.get_config('auto_craft_recipe_dependencies', true) then
       return self:insert_order(player_id, recipe, condition)
    end
 
@@ -151,15 +150,17 @@ AceCraftOrderList._ace_old_delete_order_command = CraftOrderList.delete_order_co
 -- from the reserved ingredients table.
 --
 function AceCraftOrderList:delete_order_command(session, response, order_id)
-   local order = self._sv.orders[ self:find_index_of(order_id) ]
-   if order then
-      local condition = order:get_condition()
+   if radiant.util.get_config('auto_craft_recipe_dependencies', true) then
+      local order = self._sv.orders[ self:find_index_of(order_id) ]
+      if order then
+         local condition = order:get_condition()
 
-      if condition.type == 'make' and condition.remaining > 0 then
-         self:remove_from_reserved_ingredients(order:get_recipe().ingredients,
-                                               order_id,
-                                               session.player_id,
-                                               condition.remaining)
+         if condition.type == 'make' and condition.remaining > 0 then
+            self:remove_from_reserved_ingredients(order:get_recipe().ingredients,
+                                                  order_id,
+                                                  session.player_id,
+                                                  condition.remaining)
+         end
       end
    end
 
