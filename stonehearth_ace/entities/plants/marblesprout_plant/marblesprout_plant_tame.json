@@ -1,16 +1,11 @@
 {
   "type" : "entity",
-  "mixins" : "file(marblesprout_plant_ghost.json)",
+  "mixins" : "file(marblesprout_plant_tame_ghost.json)",
   "components" : {
     "model_variants" : {
-      "default" : {
-        "models" : [
-          "file(marblesprout_plant_wild.qb)"
-        ]
-      },
       "depleted" : {
         "models" : [
-          "file(marblesprout_plant_harvested_wild.qb)"
+          "file(marblesprout_plant_harvested_tame.qb)"
         ]
       }
     },
@@ -43,7 +38,7 @@
     },
     "stonehearth:entity_forms" : {
       "iconic_form" : "file(marblesprout_plant_iconic.json)",
-      "ghost_form" : "file(marblesprout_plant_ghost.json)",
+      "ghost_form" : "file(marblesprout_plant_tame_ghost.json)",
       "placeable_on_ground" : true
     },
     "region_collision_shape" : {
