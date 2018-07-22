@@ -122,14 +122,14 @@ function WaterToolsComponent:_on_enabled_changed()
 		local new_collision_type = self._sv.enabled and 'enabled' or 'disabled'
 		
 		self._entity:add_component('stonehearth_ace:entity_modification'):set_region_collision_type(new_collision_type)
+
+		-- JohnnyTendo's experiment:
+		if self._sv.enabled then
+			self:_opened_gate()
+		else
+			self:_closed_gate()
+		end
 	end
-	
-	-- JohnnyTendo's experiment:
-	if self._sv.enabled then
-		self:_opened_gate()
-    else
-		self:_closed_gate()
-    end
 end
 
 function WaterToolsComponent:_opened_gate()
@@ -263,7 +263,12 @@ function WaterToolsComponent:_on_tick_water_pump(destination_pump)
 	if destination_pump then
 		volume_not_added = destination_pump:add_water(amount)
 	else
-		volume_not_added = stonehearth.hydrology:add_water(amount, output_location)
+		-- check to see if the output_location block is solid; if it is, don't pump anything
+		if self:_is_location_solid(output_location) then
+			volume_not_added = amount
+		else
+			volume_not_added = stonehearth.hydrology:add_water(amount, output_location)
+		end
 	end
 
 	if volume_not_added > 0 then
@@ -324,6 +329,22 @@ function WaterToolsComponent:_get_water_body(location)
 	end
 
 	return nil
+end
+
+function WaterToolsComponent:_is_location_solid(location)
+	if not location then
+		return nil
+	end
+
+	local entities = radiant.terrain.get_entities_at_point(location)
+
+	for id, entity in pairs(entities) do
+		if entity:add_component('region_collision_shape'):get_region_collision_type() == _radiant.om.RegionCollisionShape.SOLID then
+			return true
+		end
+	end
+
+	return false
 end
 
 return WaterToolsComponent

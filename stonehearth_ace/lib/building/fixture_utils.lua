@@ -30,7 +30,7 @@ local function _load_cutter(components)
    region2:load(portal.cutter)
    local bounds = region2:get_bounds()
 
-   if portal:is_horizontal() then
+   if portal.horizontal then
       return Region3(Cube3(Point3(bounds.min.x, 0, bounds.min.y),
                            Point3(bounds.max.x, 1, bounds.max.y)))
    else
