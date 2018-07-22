@@ -48,9 +48,18 @@
    "mixintos": {
       "stonehearth:biome:index": "file(mixins/data/biome/index.json)",
 	  "stonehearth:playable_kingdom_index": "file(mountain_folk/data/mf_playable_kingdom_index.json)",
-	  "stonehearth/data/ui/start_menu.json": "file(data/ui/start_menu.json)"
+	  "stonehearth/data/ui/start_menu.json": "file(data/ui/start_menu.json)",
+	  "stonehearth/entities/weapons/wooden_sword/wooden_sword.json" : "stonehearth_ace/entities/weapons/wooden_sword/wooden_sword.json",
+	  "stonehearth/entities/weapons/bronze_sword/bronze_sword.json" : "stonehearth_ace/entities/weapons/bronze_sword/bronze_sword.json",
+	  "stonehearth/entities/weapons/short_sword/short_sword.json" : "stonehearth_ace/entities/weapons/short_sword/short_sword.json",
+	  "stonehearth/entities/weapons/long_sword/long_sword.json" : "stonehearth_ace/entities/weapons/long_sword/long_sword.json",
+	  "stonehearth/entities/weapons/iron_pike/iron_pike.json" : "stonehearth_ace/entities/weapons/iron_pike/iron_pike.json"
    },
-   "overrides": {},
+   "overrides": {
+   "stonehearth/data/rigs/entities/humans/animations/male/combat_1h_thrust.json"	: "stonehearth_ace/data/rigs/entities/humans/animations/male/combat_1h_thrust.json",
+	"stonehearth/data/rigs/entities/humans/animations/female/combat_1h_thrust.json"	: "stonehearth_ace/data/rigs/entities/humans/animations/female/combat_1h_thrust.json",
+	"stonehearth/data/rigs/entities/humans/effects/combat_1h_thrust.json"			: "stonehearth_ace/data/rigs/entities/humans/effects/combat_1h_thrust.json"
+	},
    "components": {},
    "controllers": {}
 }
