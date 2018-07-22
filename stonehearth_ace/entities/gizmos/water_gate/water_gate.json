@@ -55,6 +55,18 @@
         "enabled": "platform",
         "disabled": "solid"
       }
+    },
+    "effect_list": {
+       "default": "file(/data/rigs/entities/gizmos/water_gate/effects/closed.json)",
+       "initial_pose_animation": "closed.json"
+    },
+    "stonehearth:bone_transform": {
+       "bones": [
+         "ATTOVERCOG",
+         "frame",
+         "gate",
+         "root"
+       ]
     }
   },
    "entity_data": {

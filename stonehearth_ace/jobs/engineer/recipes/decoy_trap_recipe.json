@@ -1,0 +1,30 @@
+{
+   "type": "recipe",
+   "effort": 150,
+   "work_units": 12,
+   "recipe_name": "i18n(stonehearth_ace:entities.gizmos.decoy_trap.display_name)",
+   "description": "i18n(stonehearth_ace:entities.gizmos.decoy_trap.description)",
+   "flavor": "i18n(stonehearth_ace:entities.gizmos.decoy_trap.flavor)",
+   "portrait": "/stonehearth_ace/entities/gizmos/decoy_trap/decoy_trap.png",
+   "workshop": "stonehearth:engineer:workbench",
+   "level_requirement": 3,
+   "ingredients": [
+      {
+         "material": "wood resource",
+         "count": 2
+      },
+      {
+         "uri": "stonehearth:armor:wooden_shield",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth:footman:wooden_sword_talisman",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:gizmos:decoy_trap"
+      }
+   ]
+}

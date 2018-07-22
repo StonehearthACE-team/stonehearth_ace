@@ -1,0 +1,25 @@
+{
+   "type": "entity",
+   "mixins": [
+      "stonehearth_ace:mixins:portals:diagonal_hatch:ghost",
+      "stonehearth:mixins:placed_object"
+   ],
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(diagonal_hatch_stone.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.construction.diagonal_hatch_stone.display_name)",
+         "description": "i18n(stonehearth_ace:entities.construction.diagonal_hatch_stone.description)",
+         "icon": "file(diagonal_hatch_stone.png)",
+         "category": "door",
+         "material_tags": "wood portal crafted door stockpile_portal"
+      }
+   }
+}

@@ -71,6 +71,19 @@
         }
       ]
       }
+    },
+    "effect_list": {
+       "default": "file(/data/rigs/entities/gizmos/water_pump/effects/closed.json)",
+       "initial_pose_animation": "closed.json"
+    },
+    "stonehearth:bone_transform": {
+       "bones": [
+         "ATTOVERCOG",
+    		 "pipe",
+    		 "pump",
+    		 "root",
+    		 "water"
+       ]
     }
   },
    "entity_data": {
