@@ -1,20 +1,29 @@
 {
    "craftable_recipes": {
-      "building_parts": {
-         "recipes": {
-            "diagonal_hatch_wooden": {
-               "recipe": "file(diagonal_hatch_wooden_recipe.json)"
-            },
-            "simple_hatch_wooden": {
-                "recipe": "file(simple_hatch_wooden_recipe.json)"
-            },
-            "hidden_hatch_wooden": {
-                "recipe": "file(hidden_hatch_wooden_recipe.json)"
-            },
-            "reinforced_wooden_door_lockable": {
-                "recipe": "file(reinforced_wooden_door_lockable_recipe.json)"
-            }
-         }
+    "building_parts": {
+      "recipes": {
+        "diagonal_hatch_wooden": {
+          "recipe": "file(diagonal_hatch_wooden_recipe.json)"
+        },
+        "simple_hatch_wooden": {
+          "recipe": "file(simple_hatch_wooden_recipe.json)"
+        },
+        "hidden_hatch_wooden": {
+          "recipe": "file(hidden_hatch_wooden_recipe.json)"
+        },
+        "reinforced_wooden_door_lockable": {
+          "recipe": "file(reinforced_wooden_door_lockable_recipe.json)"
+        }
       }
+    },
+    "utility": {
+      "ordinal": 4,
+      "name": "i18n(stonehearth:jobs.carpenter.recipes.utility_name)",
+      "recipes": {
+        "patrol_point": {
+          "recipe": "file(patrol_point_recipe.json)"
+        }
+      }
+    }
    }
 }

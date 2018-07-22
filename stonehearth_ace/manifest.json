@@ -134,17 +134,16 @@
     "stonehearth:containers:large_urn" : "file(mixins/disable_entity_auto_patrol.json)",
     "stonehearth:farmer:field" : "file(mixins/disable_entity_auto_patrol.json)",
     "stonehearth:stockpile" : "file(mixins/disable_entity_auto_patrol.json)",
-    "stonehearth/jobs/carpenter/recipes/recipes.json" : "file(mixins/recipes/carpenter/recipes.json)",
     "stonehearth/jobs/carpenter/recipes/recipes.json": "file(jobs/carpenter/recipes/recipes.json)",
     "stonehearth/jobs/potter/recipes/recipes.json": "file(jobs/potter/recipes/recipes.json)",
-    "stonehearth/jobs/blacksmith/recipes/recipes.json": "file(jobs/blacksmith/recipes/recipes.json)",
     "stonehearth/jobs/mason/recipes/recipes.json": "file(jobs/mason/recipes/recipes.json)",
     "stonehearth/jobs/engineer/recipes/recipes.json": "file(jobs/engineer/recipes/recipes.json)"
   },
   "overrides" : {
     "stonehearth/data/rigs/entities/humans/animations/male/combat_1h_thrust.json" : "stonehearth_ace/data/rigs/entities/humans/animations/male/combat_1h_thrust.json",
     "stonehearth/data/rigs/entities/humans/animations/female/combat_1h_thrust.json" : "stonehearth_ace/data/rigs/entities/humans/animations/female/combat_1h_thrust.json",
-    "stonehearth/data/rigs/entities/humans/effects/combat_1h_thrust.json" : "stonehearth_ace/data/rigs/entities/humans/effects/combat_1h_thrust.json"
+    "stonehearth/data/rigs/entities/humans/effects/combat_1h_thrust.json" : "stonehearth_ace/data/rigs/entities/humans/effects/combat_1h_thrust.json",
+    "stonehearth/lib/building/fixture_utils.lua": "stonehearth_ace/lib/building/fixture_utils.lua"
   },
   "components" : {
     "water_tools" : "file(components/water_tools/water_tools_component.lua)",

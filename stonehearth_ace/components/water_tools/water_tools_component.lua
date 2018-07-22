@@ -126,7 +126,7 @@ function WaterToolsComponent:_on_enabled_changed()
 	
 	-- JohnnyTendo's experiment:
 	if self._sv.enabled then
-		self:_opened_gate();
+		self:_opened_gate()
     else
 		self:_closed_gate()
     end
