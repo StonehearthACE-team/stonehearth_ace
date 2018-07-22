@@ -7,6 +7,9 @@
   "default_locale": "en",
   "server_init_script": "file(stonehearth_ace_server)",
   "aliases": {
+    "ai_pack:training": "file(ai/packs/training_ai_pack.json)",
+    "actions:train": "file(ai/actions/training/train_action.lua)",
+    "task_groups:training": "file(ai/task_groups/training_task_group.lua)",
     "biome:highlands": "file(data/biome/highlands.json)",
     "boulder:highlands:large_1": "file(entities/boulders/large_boulder/larger_boulder_1.json)",
     "boulder:highlands:large_2": "file(entities/boulders/large_boulder/large_boulder_2.json)",
@@ -22,14 +25,15 @@
     "crops:marblesprout_crop": "file(entities/crops/marblesprout_crop)",
     "crops:moonbell_crop": "file(entities/crops/moonbell_crop)",
     "furniture:patrol_point": "file(entities/furniture/patrol_point)",
-    "gizmos:water_pump_topper": "file(entities/gizmos/water_pump/water_pump_topper.json)",
     "decorations:copper_garden_lantern": "file(entities/decoration/copper_garden_lantern/copper_garden_lantern.json)",
     "decorations:copper_wall_lantern": "file(entities/decoration/copper_wall_lantern/copper_wall_lantern.json)",
-    "effects:moonbell_garden" : "file(/data/effects/moonbell_glow/moonbell_effect_garden.json)",
+    "effects:moonbell_garden": "file(/data/effects/moonbell_glow/moonbell_effect_garden.json)",
     "effects:moonbell_glow": "file(/data/effects/moonbell_glow/moonbell_glow.json)",
-    "effects:moonbell_wall" : "file(/data/effects/moonbell_glow/moonbell_effect_wall.json)",
+    "effects:moonbell_wall": "file(/data/effects/moonbell_glow/moonbell_effect_wall.json)",
+    "gizmos:training_dummy": "file(entities/gizmos/training_dummy/training_dummy.json)",
     "gizmos:water_gate": "file(entities/gizmos/water_gate/water_gate.json)",
     "gizmos:water_pump": "file(entities/gizmos/water_pump/water_pump.json)",
+    "gizmos:water_pump_topper": "file(entities/gizmos/water_pump/water_pump_topper.json)",
     "monsters:automatons:automaton_restocking": "file(entities/monsters/automatons/automaton_restocking/automaton_restocking.json)",
     "mountain_folk:mixins:base_dwarf": "file(mountain_folk/mixins/base_dwarf/base_dwarf.json)",
     "mountain_folk:dwarves:female:customizations": "file(mountain_folk/entities/dwarves/female/female_customizations.json)",
@@ -83,7 +87,7 @@
     "trees:birch:small": "file(entities/trees/birch_tree/small_birch_tree/small_birch_tree.json)",
     "trees:birch:sprout": "file(entities/trees/birch_tree/sprout/tree_birch_sprout.json)",
     "trees:birch:stem": "file(entities/trees/birch_tree/stem/tree_birch_plant_stem.json)",
-    "trees:yew_tree" : "file(entities/trees/yew_tree/ancient_yew_tree.json)"
+    "trees:yew_tree": "file(entities/trees/yew_tree/ancient_yew_tree.json)"
   },
   "mixintos": {
     "stonehearth:biome:index": "file(mixins/data/biome/index.json)",
@@ -108,7 +112,8 @@
     "water_tools": "file(components/water_tools/water_tools_component.lua)",
     "water_signal": "file(components/signals/water_signal_component.lua)",
     "entity_modification": "file(components/entity_modification/entity_modification_component.lua)",
-    "entity_kingdom": "file(components/entity_modification/entity_kingdom_component.lua)"
+    "entity_kingdom": "file(components/entity_modification/entity_kingdom_component.lua)",
+    "training_dummy": "file(components/training/training_dummy_component.lua)"
   },
   "controllers": {
     "crafter_info_controller": "file(services/server/crafter_info/crafter_info_controller.lua)",

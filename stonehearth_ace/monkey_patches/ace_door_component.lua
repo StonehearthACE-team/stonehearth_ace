@@ -12,9 +12,9 @@ function AceDoorComponent:_add_collision_shape()
    if portal then
       local mob = self._entity:add_component('mob')
       local mgs = self._entity:add_component('movement_guard_shape')
-	  local depth = math.max(1, portal:get_depth() or 1)
 
       local region2 = portal:get_portal_region()
+	  local is_horizontal = portal:is_horizontal()
       local region3 = mgs:get_region()
       if not region3 then
          region3 = radiant.alloc_region3()
@@ -23,9 +23,12 @@ function AceDoorComponent:_add_collision_shape()
       region3:modify(function(cursor)
             cursor:clear()
             for rect in region2:each_cube() do
-				for z = 1, depth, 1 do
-					cursor:add_unique_cube(Cube3(Point3(rect.min.x, rect.min.y,  z - 1),
-												 Point3(rect.max.x, rect.max.y,  z)))
+				if is_horizontal then
+					cursor:add_unique_cube(Cube3(Point3(rect.min.x, 0, rect.min.y),
+												 Point3(rect.max.x, 1, rect.max.y)))
+				else
+					cursor:add_unique_cube(Cube3(Point3(rect.min.x, rect.min.y, 0),
+												 Point3(rect.max.x, rect.max.y, 1)))
 				end
             end
          end)

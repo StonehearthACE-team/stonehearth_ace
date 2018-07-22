@@ -6,12 +6,12 @@ AcePortalComponent._old_initialize = PortalComponent.initialize
 function AcePortalComponent:initialize()
    self:_old_initialize()
 
-   local json = radiant.entities.get_json(self)
-   self._depth = json.depth
+   local json = radiant.entities.get_json(self) or {}
+   self._horizontal = json.horizontal or false
 end
 
-function AcePortalComponent:get_depth()
-	return self._depth
+function AcePortalComponent:is_horizontal()
+	return self._horizontal
 end
 
 return AcePortalComponent

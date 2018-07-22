@@ -73,7 +73,7 @@ function WaterToolsComponent:_startup()
 
 		if not self._sv._pump_child_entity then
 			-- if we don't already have a child entity for this pump, create it
-			self._entity:get_component('stonehearth_ace:entity_modification'):set_region3s('region_collision_shape', 'region_with_topper')
+			self._entity:add_component('stonehearth_ace:entity_modification'):set_region3s('region_collision_shape', 'region_with_topper')
 			self._sv._pump_child_entity = radiant.entities.create_entity('stonehearth_ace:gizmos:water_pump_topper', { owner = self._entity })
 			radiant.terrain.place_entity_at_exact_location(self._sv._pump_child_entity, child_location)
 		else
@@ -92,7 +92,7 @@ function WaterToolsComponent:_shutdown()
 		if self._sv._pump_child_entity then
 			radiant.entities.destroy_entity(self._sv._pump_child_entity)
 			self._sv._pump_child_entity = nil
-			self._entity:get_component('stonehearth_ace:entity_modification'):reset_region3s('region_collision_shape')
+			self._entity:add_component('stonehearth_ace:entity_modification'):reset_region3s('region_collision_shape')
 		end
 		self._sv.location = nil
 		self.__saved_variables:mark_changed()
@@ -121,7 +121,7 @@ function WaterToolsComponent:_on_enabled_changed()
 	if self._sv.type == 'water_gate' then
 		local new_collision_type = self._sv.enabled and 'enabled' or 'disabled'
 		
-		self._entity:get_component('stonehearth_ace:entity_modification'):set_region_collision_type(new_collision_type)
+		self._entity:add_component('stonehearth_ace:entity_modification'):set_region_collision_type(new_collision_type)
 	end
 
 	-- do anything else here like playing animations?
