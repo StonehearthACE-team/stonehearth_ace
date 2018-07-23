@@ -27,8 +27,8 @@ function AceDecorationTool:_setup_entity(uri)
    self._allow_ground = self.entity_forms:is_placeable_on_ground()
    self._allow_walls = self.entity_forms:is_placeable_on_wall()
    local portal = self.placement_test_entity:get('stonehearth:portal')
-   self._embedded = portal and not portal.horizontal
-   self._in_floor = portal and portal.horizontal
+   self._embedded = portal and not portal._horizontal
+   self._in_floor = portal and portal._horizontal
    self._fence = self.entity_forms:is_fence()
    radiant.entities.destroy_entity(self.placement_test_entity)
 end
@@ -62,6 +62,7 @@ function AceDecorationTool:_set_fixture_data(owner, location_w, normal, rotation
    if owner_bid ~= -1 then
       local owner_data = stonehearth.building:get_data(owner_bid)
       origin = owner_data:get_origin()
+	  log:error('hatch owner origin: %s %s', tostring(owner_bid), tostring(origin))
    end
    if normal.y == 0 then
       rotation = build_util.normal_to_rotation(normal)

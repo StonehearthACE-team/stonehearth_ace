@@ -7,7 +7,8 @@ local service_creation_order = {
 }
 
 local monkey_patches = {
-   ace_decoration_tool = 'stonehearth.services.client.building.decoration_tool'
+   ace_decoration_tool = 'stonehearth.services.client.building.decoration_tool',
+   ace_portal_component = 'stonehearth.components.portal.portal_component'
 }
 
 local function monkey_patching()

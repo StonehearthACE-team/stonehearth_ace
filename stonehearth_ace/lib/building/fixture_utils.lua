@@ -294,7 +294,7 @@ function fixture_utils.find_fixture_placement(p, entity, is_portal, is_fence, fi
    local results = _radiant.client.query_scene(p.x, p.y)
    local widget_id = entity and entity:get_id() or nil
    local bid = entity and entity:get('stonehearth:build2:fixture_widget'):get_bid() or nil
-
+   
    for r in results:each_result() do
       local res = fixture_utils.filter_for_fixture_placement(r.entity, r.normal, widget_id, allow_ground, allow_wall)
 
@@ -379,7 +379,7 @@ function fixture_utils.find_fixture_placement(p, entity, is_portal, is_fence, fi
                if not is_hatch and (not is_portal or (allow_ground and r.normal.y == 1)) then
                   brick = brick + r.normal
                end
-
+			   
                return brick, e, r.normal
             end
          end
