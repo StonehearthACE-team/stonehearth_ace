@@ -2,7 +2,7 @@
    "type": "mixin",
    "components": {
       "mob": {
-         "model_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
          "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
       },
       "render_info": {
@@ -16,7 +16,7 @@
          "cutter": [
             {
               "min": { "x": -1, "y": -1 },
-              "max": { "x": 1, "y": 1 }
+              "max": { "x": 2, "y": 2 }
             }
          ],
          "horizontal": true
