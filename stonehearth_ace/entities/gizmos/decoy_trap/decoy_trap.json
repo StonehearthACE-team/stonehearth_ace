@@ -46,8 +46,8 @@
          "entries": {
             "default": {
                "num_rolls": {
-                  "min": 1,
-                  "max": 3
+                  "min": 0,
+                  "max": 1
                },
                "items": {
                   "iron_ingot": {
@@ -61,6 +61,12 @@
                   }
                }
             }
+         }
+      },
+      "stonehearth:attributes": {
+         "menace": {
+            "type": "basic",
+            "value": 25
          }
       }
    },
