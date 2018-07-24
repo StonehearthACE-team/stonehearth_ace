@@ -40,16 +40,15 @@
       ],
       "region_collision_type": "platform"
     },
-    "stonehearth:commands": {
-      "commands": [
-        "stonehearth_ace:commands:toggle_water_tool_on"
-      ]
-    },
-    "stonehearth_ace:water_tools": {
-      "type": "water_pump",
-      "off_command": "stonehearth_ace:commands:toggle_water_tool_off",
-      "on_command": "stonehearth_ace:commands:toggle_water_tool_on",
+    "stonehearth_ace:toggle_enabled": {
       "enabled": false,
+      "alert_on_reload": true
+    },
+    "stonehearth_ace:container": {
+      "type": "stonehearth:water",
+      "capacity": 2
+    },
+    "stonehearth_ace:water_pump": {
       "rate": 1,
       "height": 2,
       "depth": 0

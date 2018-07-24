@@ -202,6 +202,15 @@ function fixture_utils.is_portal(uri)
    return json.components['stonehearth:portal'] ~= nil
 end
 
+function fixture_utils.is_hatch(uri)
+	local json = _get_fixture_json(uri)
+	local portal = json.components['stonehearth:portal']
+	if portal then
+		return portal.horizontal
+	end
+	return false
+end
+
 
 fixture_utils.filter = {}
 fixture_utils.filter._ignored_uris = {
@@ -290,11 +299,16 @@ function fixture_utils.filter_for_fixture_placement(e, normal, ignore_id, allow_
 end
 
 -- paulthegreat: this function was actually changed
-function fixture_utils.find_fixture_placement(p, entity, is_portal, is_fence, fixture_bounds, region_origin, allow_ground, rotation, allow_wall, is_hatch)
+function fixture_utils.find_fixture_placement(p, entity, is_portal, is_fence, fixture_bounds, region_origin, allow_ground, rotation, allow_wall)
    local results = _radiant.client.query_scene(p.x, p.y)
    local widget_id = entity and entity:get_id() or nil
    local bid = entity and entity:get('stonehearth:build2:fixture_widget'):get_bid() or nil
-   
+   local is_hatch = false
+   local uri = entity and entity:get_uri()
+   if uri then
+      is_hatch = fixture_utils.is_hatch(uri)
+   end
+
    for r in results:each_result() do
       local res = fixture_utils.filter_for_fixture_placement(r.entity, r.normal, widget_id, allow_ground, allow_wall)
 

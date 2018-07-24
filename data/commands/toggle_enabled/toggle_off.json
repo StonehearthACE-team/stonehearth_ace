@@ -1,0 +1,13 @@
+{
+   "type": "command",
+   "name": "toggle_enabled_off",
+   "display_name": "i18n(stonehearth_ace:data.commands.toggle_enabled_off.display_name)",
+   "description": "i18n(stonehearth_ace:data.commands.toggle_enabled_off.description)",
+   "icon": "file(toggle_off.png)",
+   "ordinal": 1,
+   "action": "call",
+   "function": "stonehearth_ace:toggle_enabled_command",
+  "args": [
+    false
+  ]
+}
