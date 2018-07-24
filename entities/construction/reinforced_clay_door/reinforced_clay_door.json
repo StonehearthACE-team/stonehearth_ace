@@ -9,7 +9,9 @@
       "stonehearth:entity_forms": {
          "iconic_form": "file(reinforced_clay_door_iconic.json)",
          "ghost_form": "file(reinforced_clay_door_ghost.json)",
-         "hide_placement_ui": true
+         "placeable_on_walls": true,
+         "placeable_on_ground": true,
+         "hide_placement_ui": false
       }
    },
    "entity_data": {

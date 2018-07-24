@@ -9,7 +9,9 @@
       "stonehearth:entity_forms": {
          "iconic_form": "file(reinforced_stone_door_lockable_iconic.json)",
          "ghost_form": "file(reinforced_stone_door_lockable_ghost.json)",
-         "hide_placement_ui": true
+         "placeable_on_walls": true,
+         "placeable_on_ground": true,
+         "hide_placement_ui": false
       },
       "stonehearth:commands": {
          "commands": [
