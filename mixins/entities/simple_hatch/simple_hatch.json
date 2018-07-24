@@ -2,7 +2,7 @@
    "type": "mixin",
    "components": {
       "stonehearth:entity_forms": {
-         "placeable_on_walls": false,
+         "placeable_on_walls": true,
          "placeable_on_ground": true
       },
       "sensor_list": {
@@ -20,7 +20,7 @@
          "region": [
             {
               "min": { "x": -1, "y": 0, "z": -1 },
-              "max": { "x": 1, "y": 6, "z": 1 }
+              "max": { "x": 2, "y": 2, "z": 2 }
             }
          ]
       },
@@ -29,12 +29,9 @@
          "region": [
             {
                "min": { "x": -1, "y": 0, "z": -1 },
-               "max": { "x": 1, "y": 1, "z": 1 }
+               "max": { "x": 2, "y": 1, "z": 2 }
             }
          ]
       }
-   },
-   "entity_data": {
-      "stonehearth:entity_radius": 0.5
    }
 }
