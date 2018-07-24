@@ -1,0 +1,40 @@
+{
+   "type": "entity",
+   "mixins": [
+      "file(reinforced_wooden_door_lockable_ghost.json)",
+      "stonehearth:mixins:portals:single_door",
+      "stonehearth:mixins:destructable_reinforced_door"
+   ],
+   "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(reinforced_wooden_door_lockable_iconic.json)",
+         "ghost_form": "file(reinforced_wooden_door_lockable_ghost.json)",
+         "placeable_on_walls": true,
+         "placeable_on_ground": true,
+         "hide_placement_ui": true
+      },
+      "stonehearth:commands": {
+         "commands": [
+            "stonehearth:commands:toggle_lock"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 22,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 1,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 10
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}
