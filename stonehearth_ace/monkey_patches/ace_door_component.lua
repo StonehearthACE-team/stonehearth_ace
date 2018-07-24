@@ -6,6 +6,7 @@ local Cube3 = _radiant.csg.Cube3
 
 -- we're not actually using this, but let's keep it around just in case
 AceDoorComponent._old_add_collision_shape = DoorComponent._add_collision_shape
+AceDoorComponent._old_toggle_lock = DoorComponent.toggle_lock
 
 function AceDoorComponent:_add_collision_shape()
    local portal = self._entity:get_component('stonehearth:portal')
@@ -33,6 +34,18 @@ function AceDoorComponent:_add_collision_shape()
             end
          end)
    end
+end
+
+function AceDoorComponent:toggle_lock()
+	self:_old_toggle_lock()
+
+	-- now adjust its collision type
+	local mod = self._entity:add_component('stonehearth_ace:entity_modification')
+	if self._sv.locked then
+		mod:set_region_collision_type('solid')
+	else
+		mod:reset_region_collision_type()
+	end
 end
 
 return AceDoorComponent

@@ -89,10 +89,10 @@ function EntityModificationComponent:set_region_collision_type(type)
 	end
 end
 
-function EntityModificationComponent:reset_region_collision_type(type)
+function EntityModificationComponent:reset_region_collision_type()
 	local json = radiant.entities.get_component_data(self._entity, 'region_collision_shape')
 	if json then
-		self:set_region_collision_type(component_name, json.region_collision_type)
+		self:set_region_collision_type(json.region_collision_type)
 	end
 end
 
