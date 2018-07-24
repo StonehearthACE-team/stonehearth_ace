@@ -1,0 +1,139 @@
+{
+   "mixins": "stonehearth:mixins:tree",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(small_birch_tree.qb)",
+                     "file(small_birch_tree_2.qb)"
+                  ]
+               }
+            ]
+         },
+         "autumn": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(small_birch_tree_autumn.qb)",
+                     "file(small_birch_tree_autumn_2.qb)",
+                     "file(small_birch_tree_autumn_3.qb)"
+                  ]
+               }
+            ]
+         },
+         "summer": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(small_birch_tree_summer.qb)",
+                     "file(small_birch_tree_summer_2.qb)"
+                  ]
+               }
+            ]
+         },
+         "winter": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(small_birch_tree_winter.qb)"
+                  ]
+               }
+            ]
+         }
+      },
+      "stonehearth:seasonal_model_switcher": {
+         "stonehearth_ace:biome:highlands": {
+            "spring": "default",
+            "summer": "summer",
+            "autumn": "autumn",
+            "winter": "winter"
+         },
+         "stonehearth:biome:temperate": {
+            "spring": "default",
+            "summer": "summer",
+            "autumn": "autumn",
+            "winter": "winter"
+         },
+         "stonehearth:biome:arctic": {
+            "spring": "summer",
+            "summer": "autumn",
+            "autumn": "winter",
+            "winter": "winter"
+         },
+         "stonehearth:biome:desert": {
+            "spring": "autumn",
+            "summer": "winter",
+            "autumn": "summer",
+            "winter": "default"
+         }
+      },
+      "stonehearth:resource_node": {
+         "durability": 2,
+         "resource": "stonehearth_ace:resources:wood:birch_log",
+         "resource_loot_table": {
+            "entries": {
+               "optional": {
+                  "num_rolls": {
+                     "min": 1,
+                     "max": 1
+                  },
+                  "items": {
+                     "none": {
+                        "uri": "",
+                        "weight": 5
+                     },
+                     "pelt": {
+                        "uri": "stonehearth_ace:trees:birch:seed",
+                        "weight": 1
+                     }
+                  }
+               }
+            }
+         }
+      },
+      "mob": {
+         "model_origin": { "x": -0.1, "y": 0, "z": -0.1 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      },
+      "render_info": {
+         "scale": 0.2
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": 0, "y": 0, "z": 0 },
+               "max": { "x": 1, "y": 1, "z": 1 }
+            }
+         ]
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": 0, "y": 0, "z": 0 },
+               "max": { "x": 1, "y": 17, "z": 1 }
+            }
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:evolve_data": {
+         "next_stage": "stonehearth_ace:trees:birch:medium",
+         "evolve_time": "3d"
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.trees.birch_tree.small_birch_tree.display_name)",
+         "description": "i18n(stonehearth_ace:entities.trees.birch_tree.small_birch_tree.description)",
+         "subject_override": "stonehearth_ace:trees:birch:large"
+      },
+      "stonehearth:appeal": {
+         "appeal": 2
+      }
+   }
+}
