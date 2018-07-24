@@ -1,0 +1,37 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "type": "entity",
+   "components": {
+     "mob": {
+        "model_origin": { "x": 0, "y": 0, "z": 0 },
+        "region_origin": { "x": 0, "y": 0, "z": 0 },
+          "align_to_grid": [
+             "x"
+          ]
+     },
+      "render_info": {
+         "scale": 0.1,
+         "animation_table": "file(/data/rigs/entities/gizmos/decoy_trap/decoy_trap.json)"
+      },
+      "effect_list": {
+         "default": "file(/data/rigs/entities/gizmos/decoy_trap/effects/idle.json)",
+         "initial_pose_animation": "idle.json"
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(decoy_trap.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.gizmos.decoy_trap.display_name)",
+         "description": "i18n(stonehearth_ace:entities.gizmos.decoy_trap.description)",
+         "icon": "file(decoy_trap.png)",
+         "category": "defense",
+         "material_tags": "wood defense stockpile_defense"
+      }
+   }
+}

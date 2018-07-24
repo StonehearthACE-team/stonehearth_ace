@@ -1,0 +1,46 @@
+{
+   "type": "entity",
+   "components": {
+      "stonehearth:equipment_piece": {
+         "slot": "mainhand",
+         "render_type": "none"
+      }
+   },
+   "entity_data": {
+      "stonehearth:combat:weapon_data": {
+         "base_damage": 1,
+         "reach": 1.5
+      },
+      "stonehearth:combat:melee_attacks": [
+         {
+            "name": "close",
+            "effect": "close",
+            "active_frame": 30,
+            "cooldown": 200,
+            "priority": 0,
+            "aggro_addition": 100,
+            "damage_multiplier": 0,
+            "minimum_damage": 0,
+            "inflictable_debuffs": {
+               "infection": {
+                  "uri": "stonehearth_ace:buffs:gizmos:decoy",
+                  "chance": 1.0
+               }
+            },
+            "aoe_effect": {
+               "aoe_range": 100,
+               "damage_multiplier": 0,
+               "minimum_damage": 0,
+               "aggro_addition": 100,
+               "aoe_target_limit": 10,
+               "inflictable_debuffs": {
+                  "infection": {
+                     "uri": "stonehearth_ace:buffs:gizmos:decoy",
+                     "chance": 1.0
+                  }
+               }
+            }
+         }
+      ]
+   }
+}
