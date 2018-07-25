@@ -22,7 +22,7 @@ function Train:start_thinking(ai, entity, args)
 		ai:reject('entity is max level, cannot train')
 		return
 	end
-	if radiant.entities.get_attribute(entity, 'stonehearth_ace:training_enabled', 'true') ~= 'true' then
+	if radiant.entities.get_attribute(entity, 'stonehearth_ace:training_enabled', 1) ~= 1 then
 		ai:reject('training is disabled for this entity')
 		return
 	end
@@ -30,7 +30,7 @@ function Train:start_thinking(ai, entity, args)
 end
 
 function find_training_dummy(entity)
-	stonehearth.ai:filter_from_key('stonehearth_ace:training_dummy', entity:get_player_id(),
+	return stonehearth.ai:filter_from_key('stonehearth_ace:training_dummy', entity:get_player_id(),
 		function(target)
 			if stonehearth.player:are_entities_friendly(entity, target) then
 				log:error('checking for training_dummy component')
@@ -50,14 +50,14 @@ function find_training_location(entity, target)
 		max_range = combat:get_weapon_range(entity, weapon)
 	else
 		-- otherwise it's melee so get the reach
-		min_range, max_range = get_melee_range(entity, weapon_data, self._entity)
+		min_range, max_range = combat:get_melee_range(entity, weapon_data, target)
 	end
 
 	-- determine the direction the target is facing
 	-- get a location at max_range in front of the target
 	-- test and go closer until it's a valid location (i.e., it has line of sight; don't worry about reachability for now)
 
-	local location
+	local location = radiant.entities.get_world_grid_location(target)
 
 	return location
 end
@@ -73,6 +73,6 @@ return ai:create_compound_action(Train)
          :execute('stonehearth:find_best_reachable_entity_by_type', 
 					{ filter_fn = ai.CALL(find_training_dummy, ai.ENTITY), target = ai.ENTITY})
          :execute('stonehearth:reserve_entity', { entity = ai.PREV.item })
-         :execute('stonehearth:find_path_to_location', { location = ai.CALL(find_training_location, ai.ENTITY, ai.BACK(2).item) })
+         :execute('stonehearth:find_path_to_location', { location = ai.CALL(find_training_location, ai.ENTITY, ai.BACK(2).item), entity = ai.ENTITY })
 		 :execute('stonehearth:follow_path', { path = ai.PREV.path })
 	-- now can we just tell our entity to attack the target, even though it's not an enemy?
