@@ -1,0 +1,39 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(mf_town_banner_balance_iconic.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 }
+      },
+      "stonehearth:town_bonus_granter": {
+         "town_bonus_uri": "stonehearth_ace:mountain_folk:town_bonus:balance"
+      }
+   },
+   "entity_data": {
+      "stonehearth:item": {
+         "clearable": false
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 100,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:mountain_folk.entities.gizmos.mf_town_banner_balance.mf_town_banner_balance_token_iconic.display_name)",
+         "description": "i18n(stonehearth_ace:mountain_folk.entities.gizmos.mf_town_banner_balance.mf_town_banner_balance_token_iconic.description)",
+         "icon": "file(mf_town_banner_balance.png)",
+         "category": "trophy",
+         "material_tags": "bronze cloth decoration stockpile_decoration"
+      }
+   }
+}
