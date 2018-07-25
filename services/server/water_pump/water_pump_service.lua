@@ -21,10 +21,6 @@ function WaterPumpService:destroy()
 end
 
 function WaterPumpService:register_water_pump(water_pump, elevation)
-	if water_pump:get_type() ~= 'water_pump' then
-		return
-	end
-
 	local id = water_pump:get_entity_id()
 	
 	-- adjust min and max elevation as necessary	
@@ -75,31 +71,16 @@ function WaterPumpService:_on_tick()
 	
 	local new_min, new_max
 
-	for elevation = self._min_elevation, self._max_elevation, 1 do
+	for elevation = self._max_elevation, self._min_elevation, -1 do
 		local bucket = self._water_pump_buckets[elevation]
-		if bucket and next(bucket) ~= nil then
-			if not new_min then
-				new_min = elevation
+		if bucket and next(bucket) then
+			if not new_max then
+				new_max = elevation
 			end
-			new_max = elevation
+			new_min = elevation
 
 			for _, water_pump in pairs(bucket) do
-				-- check for a destination pump for this pump for outputting water directly into it
-				local location = water_pump:get_location()
-
-				local destination_bucket = self._water_pump_buckets[elevation + water_pump:get_height()]
-				local destination_pump = nil
-				if destination_bucket then
-					for _, pump in pairs(destination_bucket) do
-						local destination_location = pump:get_location()
-						if location.x == destination_location.x and location.z == destination_location.z then
-							destination_pump = pump
-							break
-						end
-					end
-				end
-				
-				water_pump:_on_tick_water_pump(destination_pump)
+				water_pump:_on_tick_water_pump()
 			end
 		end
 	end
