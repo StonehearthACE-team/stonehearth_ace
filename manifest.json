@@ -147,11 +147,6 @@
       "stonehearth:biome:desert:applied_manifest": "file(mixins/data/biome/desert/applied_desert_manifest.json)",
       "stonehearth/data/biome/arctic/manifest.json": "file(mixins/data/biome/arctic/applied_arctic_manifest.json)",
       "stonehearth:worker:outfit": "file(mountain_folk/mixins/worker_outfit/worker_outfit_dwarf.json)",
-      "stonehearth:containers:large_crate": "file(mixins/disable_entity_auto_patrol.json)",
-      "stonehearth:containers:large_crate:fine": "file(mixins/disable_entity_auto_patrol.json)",
-      "stonehearth:containers:large_urn": "file(mixins/disable_entity_auto_patrol.json)",
-      "stonehearth:farmer:field": "file(mixins/disable_entity_auto_patrol.json)",
-      "stonehearth:stockpile": "file(mixins/disable_entity_auto_patrol.json)",
       "stonehearth/jobs/carpenter/recipes/recipes.json": "file(jobs/carpenter/recipes/recipes.json)",
       "stonehearth/jobs/potter/recipes/recipes.json": "file(jobs/potter/recipes/recipes.json)",
       "stonehearth/jobs/mason/recipes/recipes.json": "file(jobs/mason/recipes/recipes.json)",
@@ -164,7 +159,8 @@
       "stonehearth/data/rigs/entities/humans/animations/male/combat_1h_thrust.json": "stonehearth_ace/data/rigs/entities/humans/animations/male/combat_1h_thrust.json",
       "stonehearth/data/rigs/entities/humans/animations/female/combat_1h_thrust.json": "stonehearth_ace/data/rigs/entities/humans/animations/female/combat_1h_thrust.json",
       "stonehearth/data/rigs/entities/humans/effects/combat_1h_thrust.json": "stonehearth_ace/data/rigs/entities/humans/effects/combat_1h_thrust.json",
-      "stonehearth/lib/building/fixture_utils.lua": "stonehearth_ace/lib/building/fixture_utils.lua"
+      "stonehearth/lib/building/fixture_utils.lua": "stonehearth_ace/lib/building/fixture_utils.lua",
+      "stonehearth/ai/actions/find_path_to_location_action.lua": "stonehearth_ace/ai/actions/find_path_to_location_action.lua"
    },
    "components": {
       "toggle_enabled": "file(components/toggle_enabled/toggle_enabled_component.lua)",
