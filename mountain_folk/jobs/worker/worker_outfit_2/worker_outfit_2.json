@@ -1,0 +1,71 @@
+{
+   "mixins": "stonehearth:mixins:worker_outfit_2",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "layer": "clothing",
+            "transparent": false,
+            "models": [
+               "file(worker_outfit_2_male.qb)"
+            ]
+         },
+         "female": {
+            "layer": "clothing",
+            "models": [
+               "file(worker_outfit_2_female.qb)"
+            ]
+         },
+         "rabbit_male": {
+            "layer": "clothing",
+            "models": [
+               "file(worker_outfit_2_rabbit_male.qb)"
+            ]
+         },
+         "rabbit_female": {
+            "layer": "clothing",
+            "models": [
+               "file(worker_outfit_2_rabbit_female.qb)"
+            ]
+         },
+         "orc_male": {
+            "layer": "clothing",
+            "models": [
+               "file(worker_outfit_2_orc_male.qb)"
+            ]
+         },
+         "orc_female": {
+            "layer": "clothing",
+            "models": [
+               "file(worker_outfit_2_orc_female.qb)"
+            ]
+         },
+		 "dwarf": {
+            "layer": "clothing",
+            "models": [
+               "file(worker_outfit_2.qb)"
+            ]
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(worker_outfit_2_iconic.json)"
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 21,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 1,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "icon": "file(worker_outfit_2.png)",
+         "category": "armor",
+         "material_tags": "worker_outfit cloth dwarf_made stockpile_equipment"
+      }
+   }
+}

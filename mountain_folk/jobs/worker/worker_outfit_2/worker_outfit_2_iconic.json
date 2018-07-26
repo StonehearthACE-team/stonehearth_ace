@@ -1,0 +1,20 @@
+{
+   "mixins": "stonehearth:mixins:worker_outfit_2_iconic",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(worker_outfit_2_iconic.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "icon": "file(worker_outfit_2.png)",
+         "is_item": true,
+         "category": "armor"
+      }
+   }
+}
