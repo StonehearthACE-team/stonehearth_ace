@@ -125,7 +125,7 @@ function WaterPumpComponent:set_depth(value)
 end
 
 function WaterPumpComponent:_on_tick_water_pump()
-	if not self._enabled:get_enabled() or self._sv.rate <= 0 then
+	if not self._enabled or not self._enabled:get_enabled() or self._sv.rate <= 0 then
 		return
 	end
 
