@@ -1,0 +1,89 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "layer": "hat",
+            "transparent": false,
+            "models": [
+               "file(mining_helmet_male.qb)"
+            ]
+         },
+         "female": {
+            "layer": "hat",
+            "transparent": false,
+            "models": [
+               "file(mining_helmet_female.qb)"
+            ]
+         },
+         "rabbit_male": {
+            "layer": "hat",
+            "transparent": false,
+            "models": [
+               "file(mining_helmet_rabbit_male.qb)"
+            ]
+         },
+         "rabbit_female": {
+            "layer": "hat",
+            "transparent": false,
+            "models": [
+               "file(mining_helmet_rabbit_female.qb)"
+            ]
+         },
+         "orc_male": {
+            "layer": "hat",
+            "transparent": false,
+            "models": [
+               "file(mining_helmet_orc_male.qb)"
+            ]
+         },
+         "orc_female": {
+            "layer": "hat",
+            "transparent": false,
+            "models": [
+               "file(mining_helmet_orc_female.qb)"
+            ]
+         },
+         "dwarf": {
+            "layer": "hat",
+            "transparent": false,
+            "models": [
+               "file(mining_helmet.qb)"
+            ]
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(mining_helmet_iconic.json)"
+      },
+      "stonehearth:equipment_piece": {
+         "slot": "helmet",
+         "render_type": "merge_with_model",
+         "roles": "worker_job",
+         "ilevel": 2,
+         "injected_buffs": [
+            "stonehearth_ace:buffs:mining_helmet"
+         ],
+         "equip_effect": "stonehearth:effects:weapon_level_up"
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 45,
+         "rarity": "rare",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 2,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:jobs.worker.mining_helmet.display_name)",
+         "description": "i18n(stonehearth_ace:jobs.worker.mining_helmet.description)",
+         "icon": "file(mining_helmet.png)",
+         "category": "armor",
+         "material_tags": "iron worker_outfit dwarf_made stockpile_equipment"
+      }
+   }
+}
