@@ -47,11 +47,26 @@ function TrainAttack:_check_conditions(ai, entity, args)
 		return 'training is disabled or unavailable for this entity'
 	end
 
+	local weapon = stonehearth.combat:get_main_weapon(entity)
+	if not weapon or not radiant.entities.get_entity_data(weapon, 'stonehearth:combat:weapon_data') then
+		return 'entity has no weapon equipped'
+	end
+
 	return nil
 end
 
 function TrainAttack:run(ai, entity, args)
-	ai:execute('stonehearth:combat:attack', { target = args.target })
+	-- check if it's a healer class do a heal action instead of attacking
+	-- if it's a ranged class, attack from range
+	--if entity:get_component('stonehearth:job'):has_ai_pack('stonehearth:ai_pack:healing_combat') then
+	if next(stonehearth.combat:get_combat_actions(entity, 'stonehearth:combat:healing_spells')) then
+		ai:execute('stonehearth:combat:execute_heal', { target = args.target })
+	elseif radiant.entities.get_entity_data(stonehearth.combat:get_main_weapon(entity), 'stonehearth:combat:weapon_data').range then
+		ai:execute('stonehearth:combat:attack_ranged', { target = args.target })
+	else
+		ai:execute('stonehearth:combat:attack', { target = args.target })
+	end
+
 	radiant.events.trigger_async(entity, 'stonehearth_ace:training_performed')
 end
 

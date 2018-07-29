@@ -69,6 +69,45 @@ function AceJobComponent:demote(old_job_json, dont_drop_talisman)
 	radiant.events.trigger(self._entity, 'stonehearth_ace:on_demote', { old_job_json = old_job_json, dont_drop_talisman = dont_drop_talisman })
 end
 
+function AceJobComponent:has_ai_action(action_uri)
+	local job_equipment = self:get_job_equipment()
+
+	for _, equipment in pairs(job_equipment) do
+		local equipment_piece = equipment:get_component('stonehearth:equipment_piece')
+		if equipment_piece:has_ai_action(action_uri) then
+			return true
+		end
+	end
+
+	return false
+end
+
+function AceJobComponent:has_ai_pack(pack_uri)
+	local job_equipment = self:get_job_equipment()
+
+	for _, equipment in pairs(job_equipment) do
+		local equipment_piece = equipment:get_component('stonehearth:equipment_piece')
+		if equipment_piece:has_ai_pack(pack_uri) then
+			return true
+		end
+	end
+
+	return false
+end
+
+function AceJobComponent:has_ai_task_group(task_group_uri)
+	local job_equipment = self:get_job_equipment()
+
+	for _, equipment in pairs(job_equipment) do
+		local equipment_piece = equipment:get_component('stonehearth:equipment_piece')
+		if equipment_piece:has_ai_task_group(task_group_uri) then
+			return true
+		end
+	end
+
+	return false
+end
+
 function AceJobComponent:is_combat_job()
 	local job_info = self:get_job_info()
 	return job_info and job_info:is_combat_job()

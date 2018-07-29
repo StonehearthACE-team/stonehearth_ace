@@ -121,13 +121,13 @@ return ai:create_compound_action(Train)
 		 :execute('stonehearth:set_posture', { posture = 'stonehearth:combat' })
          :execute('stonehearth:find_best_reachable_entity_by_type', 
 					{ filter_fn = ai.CALL(find_training_dummy, ai.ENTITY)})
-         :execute('stonehearth:reserve_entity', { entity = ai.PREV.item })
-         :execute('stonehearth:find_path_to_location', { location = ai.CALL(find_training_location, ai, ai.ENTITY, ai.BACK(2).item) })
+         --:execute('stonehearth:reserve_entity', { entity = ai.PREV.item })
+         :execute('stonehearth:find_path_to_location', { location = ai.CALL(find_training_location, ai, ai.ENTITY, ai.BACK(1).item) })
 		 :execute('stonehearth:follow_path', { path = ai.PREV.path })
 		 --:execute('stonehearth:combat:move_to_targetable_location', { target = ai.BACK(4).item })
 	-- now can we just tell our entity to attack the target, even though it's not an enemy? yes!
 	-- queue up four attacks so the unit doesn't think about running away and repositioning after every attack
+		 :execute('stonehearth_ace:train_attack', { target = ai.BACK(3).item })
 		 :execute('stonehearth_ace:train_attack', { target = ai.BACK(4).item })
 		 :execute('stonehearth_ace:train_attack', { target = ai.BACK(5).item })
 		 :execute('stonehearth_ace:train_attack', { target = ai.BACK(6).item })
-		 :execute('stonehearth_ace:train_attack', { target = ai.BACK(7).item })

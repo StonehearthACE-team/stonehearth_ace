@@ -73,4 +73,28 @@ function AceEquipmentPieceComponent:_get_conditional_value(condition_type, condi
 	return 0
 end
 
+function AceEquipmentPieceComponent:_get_injected_ai()
+	return (self._injected_ai and self._injected_ai._injected) or {}
+end
+
+function AceEquipmentPieceComponent:has_ai_action(action_uri)
+	local injected = self:_get_injected_ai()
+	return injected.actions and injected.actions[action_uri]
+end
+
+function AceEquipmentPieceComponent:has_ai_pack(pack_uri)
+	local ai_packs = (self._json and self._json.injected_ai and self._json.injected_ai.ai_packs) or {}
+	for _, ai_pack in ipairs(ai_packs) do
+		if ai_pack == pack_uri then
+			return true
+		end
+	end
+	return false
+end
+
+function AceEquipmentPieceComponent:has_ai_task_group(task_group_uri)
+	local injected = self:_get_injected_ai()
+	return injected.task_groups and injected.task_groups[task_group_uri]
+end
+
 return AceEquipmentPieceComponent
