@@ -1,0 +1,41 @@
+{
+   "type": "entity",
+   "mixins": [
+      "file(iron_portcullis_ghost.json)",
+      "stonehearth:mixins:portals:door_portcullis",
+      "stonehearth:mixins:strong_destructable_door"
+   ],
+   "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(iron_portcullis_iconic.json)",
+         "ghost_form": "file(iron_portcullis_ghost.json)",
+         "placeable_on_walls": true,
+         "placeable_on_ground": true,
+         "hide_placement_ui": false
+      },
+      "stonehearth:commands": {
+         "commands": [
+            "stonehearth:commands:toggle_lock"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:entity_radius": 0.5,
+      "stonehearth:net_worth": {
+         "value_in_gold": 40,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_type": "caravan",
+            "shopkeeper_level": 2
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 20
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

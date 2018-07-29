@@ -1,0 +1,36 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(greater_water_gate.qb)"
+            ]
+         }
+      },
+      "render_info": {
+         "scale": 0.1,
+         "animation_table": "file(/data/rigs/entities/gizmos/greater_water_gate/greater_water_gate.json)"
+      },
+      "effect_list": {
+         "default": "file(/data/rigs/entities/gizmos/greater_water_gate/effects/closed.json)"
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0, "y": 0, "z": 0 },
+         "allow_vertical_adjacent": true,
+         "align_to_grid": [
+           "x"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.furniture.greater_water_gate.greater_water_gate_ghost.display_name)",
+         "description": "i18n(stonehearth_ace:entities.furniture.greater_water_gate.greater_water_gate_ghost.description)",
+         "icon": "file(greater_water_gate.png)",
+         "category": "gizmos",
+         "material_tags": "gizmos crafted"
+      }
+   }
+}

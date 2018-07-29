@@ -1,0 +1,88 @@
+{
+   "type": "entity",
+   "mixins": "file(greater_water_gate_ghost.json)",
+  "components": {
+    "stonehearth:entity_forms": {
+      "iconic_form": "file(greater_water_gate_iconic.json)",
+      "ghost_form": "file(greater_water_gate_ghost.json)",
+      "placeable_on_ground": true
+    },
+    "destination": {
+      "region": [
+        {
+          "min": {
+            "x": -2,
+            "y": 0,
+            "z": 0
+          },
+          "max": {
+            "x": 2,
+            "y": 4,
+            "z": 1
+          }
+        }
+      ]
+    },
+    "region_collision_shape": {
+      "region": [
+        {
+          "min": {
+            "x": -2,
+            "y": 0,
+            "z": 0
+          },
+          "max": {
+            "x": 2,
+            "y": 4,
+            "z": 1
+          }
+        }
+      ]
+    },
+    "stonehearth_ace:toggle_enabled": {
+      "enabled": false,
+      "alert_on_reload": true,
+      "enable_effect": "opened",
+      "disable_effect": "closed"
+    },
+    "stonehearth_ace:water_gate": {},
+    "stonehearth_ace:entity_modification": {
+      "values": {
+        "enabled": "platform",
+        "disabled": "solid"
+      }
+    },
+    "effect_list": {
+       "default": "/data/rigs/entities/gizmos/greater_water_gate/effects/closed.json",
+       "initial_pose_animation": "closed.json"
+    },
+    "stonehearth:bone_transform": {
+       "bones": [
+         "ATTOVERCOG",
+    		 "chain",
+    		 "doorLeft",
+    		 "doorRight",
+    		 "frame",
+    		 "root"
+       ]
+    }
+  },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 4,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 1,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 6
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}
