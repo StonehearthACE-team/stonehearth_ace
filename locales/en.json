@@ -24,6 +24,42 @@
                }
             }
          }
+      },
+      "weather": {
+         "snow": {
+            "snow_early": {
+               "display_name": "Early Snow",
+               "description": "Snow has come earlier this year...<ul><li>Plant growth speed is slightly reduced.</li><li>Unsheltered hearthlings are too cold to work as effectively.</li></ul>"
+            },
+            "snow_late": {
+               "display_name": "Late Snow",
+               "description": "There's still snow to fall this year...<ul><li>Plant growth speed is somewhat reduced.</li><li>Unsheltered hearthlings are too cold to work as effectively.</li><li>Unsheltered pasture animals are hurt by the cold.</li></ul>"
+            }
+         }
+      },
+      "happiness": {
+         "thoughts": {
+            "weather": {
+               "values": {
+                  "snow_early_positive": {
+                     "display_name": "Snow season is upon us!",
+                     "tooltip": "I've waited the whole year for this, the snow season is finally upon us!"
+                  },
+                  "snow_early_negative": {
+                     "display_name": "Winter is coming!",
+                     "tooltip": "Can't believe we're getting snow this early, darkness and cold approaches!"
+                  },
+                  "snow_late_positive": {
+                     "display_name": "One last snow day!",
+                     "tooltip": "I'm glad we can enjoy one more day of snow before the snow season ends!"
+                  },
+                  "snow_late_negative": {
+                     "display_name": "It's snowing again!",
+                     "tooltip": "Winter should be over already, can't believe we're getting such late snowfall..."
+                  }
+               }
+            }
+         }
       }
    },
    "jobs": {
@@ -360,6 +396,58 @@
                   "description": "TBD"
                }
             }
+         },
+         "yew_tree": {
+            "ancient_yew_tree": {
+               "display_name": "Ancient Yew Tree",
+               "description": "As beautiful as it is old, it feels almost magical..."
+            },
+            "bud": {
+               "tree_yew_plant_bud": {
+                  "display_name": "Budding Yew Tree",
+                  "description": "TBD"
+               }
+            },
+            "large_yew_tree": {
+               "display_name": "Large Yew Tree",
+               "description": "TBD"
+            },
+            "medium_yew_tree": {
+               "display_name": "Yew Tree",
+               "description": "TBD"
+            },
+            "sapling_yew_tree": {
+               "description": "TBD",
+               "sapling_yew_tree_iconic": {
+                  "description": "TBD"
+               },
+               "sapling_yew_tree_ghost": {
+                  "description": "TBD",
+                  "display_name": "Yew Tree Sapling"
+               }
+            },
+            "seed": {
+               "tree_yew_seed_ghost": {
+                  "display_name": "Yew Tree Seed",
+                  "description": "TBD"
+               }
+            },
+            "small_yew_tree": {
+               "display_name": "Small Yew Tree",
+               "description": "TBD"
+            },
+            "sprout": {
+               "tree_yew_sprout": {
+                  "display_name": "Yew Tree Sproutling",
+                  "description": "TBD"
+               }
+            },
+            "stem": {
+               "tree_yew_plant_stem": {
+                  "display_name": "Stemming Yew Tree",
+                  "description": "TBD"
+               }
+            }
          }
       },
       "furniture": {
@@ -429,6 +517,35 @@
                   "description": "Its almost there! Look, it has buds!"
                }
             }
+         },
+         "cherry_bush": {
+            "unripe_description": "Not yet ripe for harvest.",
+            "display_name": "Cherry Bush",
+            "description": "Harvest for delicious cherry plums.",
+            "bud": {
+               "cherry_bush_plant_bud": {
+                  "display_name": "Budding Cherry Bush",
+                  "description": "It's almost there! Look, it has buds!"
+               }
+            },
+            "seed": {
+               "cherry_bush_plant_seed_ghost": {
+                  "display_name": "Cherry Bush Seed",
+                  "description": "Can be planted to grow a bush of delicious cherry plums."
+               }
+            },
+            "sprout": {
+               "cherry_bush_plant_sprout": {
+                  "display_name": "Cherry Bush Sproutling",
+                  "description": "Just needs some time and care."
+               }
+            },
+            "stem": {
+               "cherry_bush_plant_stem": {
+                  "description": "Still growing!",
+                  "display_name": "Stemming Cherry Bush"
+               }
+            }
          }
       },
       "decoration": {
@@ -450,6 +567,18 @@
       "critters": {
          "wombat": {
             "species": "wombat"
+         }
+      },
+      "food": {
+         "cherries": {
+            "cherry_basket": {
+               "display_name": "Basket of Cherries",
+               "description": "Sweet or sour, a tasty fruit for any hour."
+            },
+            "cherry_serving": {
+               "display_name": "Plate of Cherries",
+               "description": "A cherry is always on top, even when there's nothing below."
+            }
          }
       }
    },

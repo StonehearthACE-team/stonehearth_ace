@@ -1,0 +1,27 @@
+{
+   "type": "effect",
+   "tracks": {
+      "snow": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/snow/snow_minor.cubemitter.json",
+         "start_time": 0,
+         "loop": true,
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "snow_flake": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/snow/snow_flake_minor.cubemitter.json",
+         "start_time": 0,
+         "loop": true,
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0
+         }
+      }
+   }
+}
