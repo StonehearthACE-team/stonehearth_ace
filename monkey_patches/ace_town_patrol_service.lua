@@ -138,6 +138,7 @@ function AceTownPatrol:_get_auto_patrol(player_id)
 
 	if auto_patrol == nil then
 		self._sv._auto_patrol[player_id] = true
+		auto_patrol = true
 	end
 
 	return auto_patrol
