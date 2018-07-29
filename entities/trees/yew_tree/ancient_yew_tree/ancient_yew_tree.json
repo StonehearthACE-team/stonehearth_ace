@@ -1,0 +1,90 @@
+{
+   "mixins": "stonehearth:mixins:tree",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(ancient_yew_tree.qb)"
+            ]
+         }
+      },
+      "stonehearth:resource_node": {
+         "resource": "stonehearth_ace:resources:wood:yew_log",
+         "durability": 31,
+         "resource_loot_table": {
+            "entries": {
+               "optional": {
+                  "num_rolls": {
+                     "min": 1,
+                     "max": 1
+                  },
+                  "items": {
+                     "none": {
+                        "uri": "",
+                        "weight": 6
+                     },
+                     "pelt": {
+                        "uri": "stonehearth_ace:trees:yew:seed",
+                        "weight": 1
+                     }
+                  }
+               }
+            }
+         }
+      },
+      "mob": {
+         "align_to_grid": [
+            "x",
+            "z"
+         ],
+         "model_origin": { "x": 0, "y": 0, "z": 1 },
+         "region_origin": { "x": 0, "y": 0, "z": 0 }
+      },
+      "render_info": {
+         "scale": 0.5
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -3, "y": 0, "z": -3 },
+               "max": { "x": 3, "y": 1, "z": 3 }
+            }
+         ]
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -3, "y": 0, "z": -3 },
+               "max": { "x": 3, "y": 16, "z": 3 }
+            },
+            {
+               "min": { "x": 9, "y": 0, "z": 3 },
+               "max": { "x": 21, "y": 1, "z": 5 }
+            },
+            {
+               "min": { "x": 1, "y": 0, "z": 15 },
+               "max": { "x": 2, "y": 1, "z": 21 }
+            },
+            {
+               "min": { "x": -25, "y": 0, "z": -3 },
+               "max": { "x": -13, "y": 1, "z": -1 }
+            },
+            {
+               "min": { "x": -2, "y": 0, "z": -25 },
+               "max": { "x": -1, "y": 1, "z": -21 }
+            }
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.trees.yew_tree.ancient_yew_tree.display_name)",
+         "description": "i18n(stonehearth_ace:entities.trees.yew_tree.ancient_yew_tree.description)",
+         "subject_override": "stonehearth_ace:trees:yew:large"
+      },
+      "stonehearth:appeal": {
+         "appeal": 2
+      }
+   }
+}

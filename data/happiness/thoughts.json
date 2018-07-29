@@ -1,0 +1,38 @@
+{
+   "type": "index",
+   "thoughts": {
+      "weather": {
+         "mutually_exclusive": false,
+         "values": {
+            "snow_early_positive": {
+               "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.weather.values.snow_early_positive.display_name)",
+               "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.weather.values.snow_early_positive.tooltip)",
+               "duration": "1d",
+               "happiness_delta": 6,
+               "stackable": false
+            },
+            "snow_early_negative": {
+               "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.weather.values.snow_early_negative.display_name)",
+               "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.weather.values.snow_early_negative.tooltip)",
+               "duration": "1d",
+               "happiness_delta": -4,
+               "stackable": false
+            },
+            "snow_late_positive": {
+               "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.weather.values.snow_late_positive.display_name)",
+               "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.weather.values.snow_late_positive.tooltip)",
+               "duration": "1d",
+               "happiness_delta": 5,
+               "stackable": false
+            },
+            "snow_late_negative": {
+               "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.weather.values.snow_late_negative.display_name)",
+               "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.weather.values.snow_late_negative.tooltip)",
+               "duration": "1d",
+               "happiness_delta": -8,
+               "stackable": false
+            }
+         }
+      }
+   }
+}

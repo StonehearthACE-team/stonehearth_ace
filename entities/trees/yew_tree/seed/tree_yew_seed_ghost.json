@@ -1,0 +1,37 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "type": "entity",
+   "components": {
+      "render_info": {
+         "scale": 0.33
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(../large_yew_tree/large_yew_tree.qb)"
+                  ]
+               }
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": -0.5, "y": 0, "z": 0.5 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "align_to_grid": [
+            "x",
+            "z"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.trees.yew_tree.seed.tree_yew_seed_ghost.display_name)",
+         "description": "i18n(stonehearth_ace:entities.trees.yew_tree.seed.tree_yew_seed_ghost.description)",
+         "icon": "file(tree_yew_seed.png)",
+         "category": "seed"
+      }
+   }
+}

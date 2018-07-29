@@ -1,0 +1,19 @@
+{
+   "display_name": "i18n(stonehearth_ace:data.weather.snow.snow_early.display_name)",
+   "description": "i18n(stonehearth_ace:data.weather.snow.snow_early.description)",
+   "icon": "file(snow_early.png)",
+   "sky_settings": "stonehearth:sky_settings:sunny",
+   "thoughts": [
+      "stonehearth:thoughts:weather:snow_early_negative",
+      "stonehearth:thoughts:weather:snow_early_positive"
+   ],
+   "ambient_sound_key": "snow",
+   "unsheltered_resistance_buff": "stonehearth:buffs:weather:cold_resist",
+   "unsheltered_debuff": "stonehearth:buffs:weather:cold",
+   "camera_attached_effect": "stonehearth_ace:effects:snow_effect_minor",
+   "subject_matter": "stonehearth_ace:subjects:weather:snow_early",
+   "plant_growth_time_multiplier": 2,
+   "hide_cloud_shadows": false,
+   "snow_accumulation_per_minute": 0.0001,
+   "is_dark_during_daytime": false
+}
