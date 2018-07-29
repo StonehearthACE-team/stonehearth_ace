@@ -1,0 +1,70 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(sapling_yew_tree.qb)"
+            ]
+         },
+         "autumn": {
+            "models": [
+               "file(sapling_yew_tree_autumn.qb)"
+            ]
+         },
+         "summer": {
+            "models": [
+               "file(sapling_yew_tree_summer.qb)"
+            ]
+         },
+         "winter": {
+            "models": [
+               "file(sapling_yew_tree_winter.qb)"
+            ]
+         }
+      },
+      "stonehearth:seasonal_model_switcher": {
+         "stonehearth_ace:biome:highlands": {
+            "spring": "default",
+            "summer": "summer",
+            "autumn": "autumn",
+            "winter": "winter"
+         },
+         "stonehearth:biome:arctic": {
+            "spring": "default",
+            "summer": "autumn",
+            "autumn": "winter",
+            "winter": "winter"
+         },
+         "stonehearth:biome:temperate": {
+            "spring": "default",
+            "summer": "summer",
+            "autumn": "autumn",
+            "winter": "winter"
+         },
+         "stonehearth:biome:desert": {
+            "spring": "default",
+            "summer": "summer",
+            "autumn": "summer",
+            "winter": "autumn"
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0, "y": 0, "z": 0 },
+         "align_to_grid": [
+            "x",
+            "z"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.trees.yew_tree.sapling_yew_tree.sapling_yew_tree_ghost.display_name)",
+         "description": "i18n(stonehearth_ace:entities.trees.yew_tree.sapling_yew_tree.sapling_yew_tree_ghost.description)",
+         "icon": "file(sapling_yew_tree.png)",
+         "category": "plants"
+      }
+   }
+}

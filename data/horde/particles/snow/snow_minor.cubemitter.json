@@ -1,0 +1,167 @@
+{
+   "name": "fire",
+   "duration": 2000,
+   "material": "materials/cubemitter_height_shadowed.material.json",
+   "loops": true,
+   "mesh": {
+      "file": "",
+      "matrix": "",
+      "offset": {
+         "x": 0,
+         "y": 0,
+         "z": 0
+      }
+   },
+   "emission": {
+      "rate": {
+         "kind": "CONSTANT",
+         "values": [50]
+      },
+      "angle": {
+         "kind": "CONSTANT",
+         "values": [0]
+      },
+      "origin": {
+         "surface": "CUBOID",
+         "values": [80, 80, 80, 0, 0, 0]
+      }
+   },
+   "particle": {
+      "lifetime": {
+         "start": {
+            "kind": "RANDOM_BETWEEN",
+            "values": [5000, 5500]
+         }
+      },
+      "speed": {
+         "start": {
+            "kind": "CONSTANT",
+            "values": [0]
+         }
+      },
+      "acceleration": {
+         "over_lifetime_y": {
+            "kind": "CONSTANT",
+            "values": [-0.5]
+         }
+      },
+      "velocity": {
+         "over_lifetime_y": {
+            "kind": "CONSTANT",
+            "values": [-1]
+         },
+         "over_lifetime_z": {
+            "kind": "RANDOM_BETWEEN_CURVES",
+            "values": [
+               [
+                  [0, 0],
+                  [1, -2]
+               ],
+               [
+                  [0, 0],
+                  [1, 0]
+               ]
+            ]
+         }
+      },
+      "rotation": {
+         "over_lifetime_x": {
+            "kind": "RANDOM_BETWEEN_CURVES",
+            "values": [
+               [
+                  [0, 139.20000000000002],
+                  [1, 148.2335999999999]
+               ],
+               [
+                  [0, 156.00383999999997],
+                  [1, 185.1648]
+               ]
+            ]
+         },
+         "over_lifetime_y": {
+            "kind": "RANDOM_BETWEEN_CURVES",
+            "values": [
+               [
+                  [0, 139.20000000000002],
+                  [1, 360]
+               ],
+               [
+                  [0, 398.304],
+                  [1, 412.8]
+               ]
+            ]
+         },
+         "over_lifetime_z": {
+            "kind": "RANDOM_BETWEEN_CURVES",
+            "values": [
+               [
+                  [0, 139.20000000000002],
+                  [1, 146.70143999999988]
+               ],
+               [
+                  [0, 161.36639999999994],
+                  [1, 182.10048]
+               ]
+            ]
+         }
+      },
+      "scale": {
+         "start": {
+            "kind": "RANDOM_BETWEEN",
+            "values": [0.1, 0.2]
+         },
+         "over_lifetime": {
+            "kind": "RANDOM_BETWEEN_CURVES",
+            "values": [
+               [
+                  [0, 0.4],
+                  [1, 0.5]
+               ],
+               [
+                  [0, 0.1],
+                  [1, 0.2]
+               ]
+            ]
+         },
+         "start_x": {
+            "kind": "CONSTANT",
+            "values": [2]
+         },
+         "start_y": {
+            "kind": "CONSTANT",
+            "values": [0.5]
+         },
+         "start_z": {
+            "kind": "CONSTANT",
+            "values": [2]
+         }
+      },
+      "color": {
+         "over_lifetime": {
+            "kind": "CURVE",
+            "values": [
+               [0, 0.77, 0.797, 0.838],
+               [0.5, 0.92, 0.957, 0.978],
+               [1, 0.746, 0.781, 0.838]
+            ]
+         },
+         "over_lifetime_a": {
+            "kind": "CURVE",
+            "values": [
+               [0, 0],
+               [0.1153039264678955, 0],
+               [0.2794999885559082, 0.6333333333333333],
+               [0.5, 1],
+               [0.7278721618652344, 0.9],
+               [0.8110942840576172, 0.7287158203125002],
+               [0.8860675811767578, 0.5296172587076823],
+               [0.9537569427490235, 0.28166931152343755],
+               [1, 0]
+            ]
+         }
+      }
+   },
+   "unculled": true,
+   "max_particles": 1600,
+   "emitter_space_tiling": 80
+}

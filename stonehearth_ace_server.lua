@@ -12,11 +12,13 @@ local monkey_patches = {
    ace_craft_order = 'stonehearth.components.workshop.craft_order',
    ace_door_component = 'stonehearth.components.door.door_component',
    ace_portal_component = 'stonehearth.components.portal.portal_component',
-   ace_town_patrol_service = 'stonehearth.services.server.town_patrol.town_patrol_service'
+   ace_town_patrol_service = 'stonehearth.services.server.town_patrol.town_patrol_service',
+   ace_job_component = 'stonehearth.components.job.job_component'
 }
 
 local function monkey_patching()
    for from, into in pairs(monkey_patches) do
+      
       local monkey_see = require('monkey_patches.' .. from)
       local monkey_do = radiant.mods.require(into)
       radiant.mixin(monkey_do, monkey_see)

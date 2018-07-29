@@ -1,0 +1,13 @@
+{
+   "type": "command",
+   "name": "toggle_training_on",
+   "display_name": "i18n(stonehearth_ace:data.commands.toggle_training_on.display_name)",
+   "description": "i18n(stonehearth_ace:data.commands.toggle_training_on.description)",
+   "icon": "file(toggle_on.png)",
+   "ordinal": 1,
+   "action": "call",
+   "function": "stonehearth_ace:toggle_training_command",
+  "args": [
+    true
+  ]
+}

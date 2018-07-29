@@ -1,0 +1,22 @@
+{
+   "display_name": "i18n(stonehearth_ace:data.weather.snow.snow_late.display_name)",
+   "description": "i18n(stonehearth_ace:data.weather.snow.snow_late.description)",
+   "icon": "file(snow_late.png)",
+   "sky_settings": "stonehearth:sky_settings:windy",
+   "thoughts": [
+      "stonehearth:thoughts:weather:snow_late_negative",
+      "stonehearth:thoughts:weather:snow_late_negative",
+      "stonehearth:thoughts:weather:snow_late_negative",
+      "stonehearth:thoughts:weather:snow_late_positive"
+   ],
+   "ambient_sound_key": "snow",
+   "unsheltered_resistance_buff": "stonehearth:buffs:weather:cold_resist",
+   "unsheltered_debuff": "stonehearth:buffs:weather:cold",
+   "unsheltered_animal_debuff": "stonehearth:buffs:weather:cold:animal",
+   "camera_attached_effect": "stonehearth:effects:snow_effect",
+   "subject_matter": "stonehearth_ace:subjects:weather:snow_late",
+   "plant_growth_time_multiplier": 3,
+   "hide_cloud_shadows": false,
+   "snow_accumulation_per_minute": 0.0003,
+   "is_dark_during_daytime": false
+}

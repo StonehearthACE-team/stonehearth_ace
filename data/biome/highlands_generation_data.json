@@ -269,7 +269,7 @@
           "exclusion_radius" : 8
         }
       },
-      "stonehearth:trees:juniper:small" : {
+      "stonehearth_ace:trees:yew:small" : {
         "placement_type" : "dense",
         "parameters" : {
           "__comment" : "Not sure what this is doing... Def 2",
@@ -286,26 +286,19 @@
           }
         }
       },
-      "stonehearth:trees:juniper:medium" : {
+      "stonehearth_ace:trees:yew:medium" : {
         "placement_type" : "single",
         "parameters" : {
           "ground_radius" : 0,
           "exclusion_radius" : 4
         }
       },
-      "stonehearth:trees:juniper:large" : {
+      "stonehearth_ace:trees:yew:large" : {
         "placement_type" : "single",
         "parameters" : {
           "__comment" : "Not sure what this is doing... Def 1",
           "ground_radius" : 1,
           "exclusion_radius" : 4
-        }
-      },
-      "stonehearth:trees:juniper:ancient" : {
-        "placement_type" : "single",
-        "parameters" : {
-          "ground_radius" : 1,
-          "exclusion_radius" : 5
         }
       },
       "stonehearth:trees:pine:small" : {
@@ -377,16 +370,16 @@
           "exclusion_radius" : 0
         }
       },
-      "stonehearth:plants:berry_bush" : {
+      "stonehearth_ace:plants:cherry_bush" : {
         "placement_type" : "pattern",
         "parameters" : {
           "__comment" : "This value is a percentage of the rows and columns above. Def 0.9, Values 0 to 1",
-          "min_rows" : 2,
+          "min_rows" : 1,
           "max_rows" : 2,
-          "min_cols" : 2,
+          "min_cols" : 1,
           "max_cols" : 3,
-          "item_spacing" : 5,
-          "item_density" : 0.9
+          "item_spacing" : 6,
+          "item_density" : 0.6
         }
       },
       "stonehearth_ace:boulder:highlands:small" : {
@@ -440,21 +433,17 @@
       "sizes" : {
         "stonehearth_ace:trees:birch" : {
           "small" : 0,
-          "medium" : 0,
+          "medium" : 6,
           "large" : 8,
           "ancient" : {
             "__comment" : "Percentage of large trees that will be ancient",
             "percentage" : 15
           }
         },
-        "stonehearth:trees:juniper" : {
+        "stonehearth_ace:trees:yew" : {
           "small" : 0,
           "medium" : 4,
-          "large" : 8,
-          "ancient" : {
-            "__comment" : "Percentage of large trees that will be ancient",
-            "percentage" : 5
-          }
+          "large" : 8
         },
         "stonehearth:trees:pine" : {
           "small" : 0,
@@ -466,25 +455,25 @@
         "plains" : {
           "1" : {
             "stonehearth_ace:trees:birch" : 3,
-            "stonehearth:trees:juniper" : 1
+            "stonehearth_ace:trees:yew" : 2
           }
         },
         "foothills" : {
           "1" : {
             "stonehearth_ace:trees:birch" : 2,
-            "stonehearth:trees:juniper" : 5,
+            "stonehearth_ace:trees:yew" : 1,
             "stonehearth:trees:pine" : 3
           },
           "2" : {
             "stonehearth_ace:trees:birch" : 1,
-            "stonehearth:trees:juniper" : 4,
+            "stonehearth_ace:trees:yew" : 1,
             "stonehearth:trees:pine" : 4
           }
         },
         "mountains" : {
           "1" : {
-            "stonehearth:trees:juniper" : 3,
-            "stonehearth:trees:pine" : 7
+            "stonehearth_ace:trees:yew" : 2,
+            "stonehearth:trees:pine" : 5
           },
           "2" : {
             "stonehearth:trees:pine" : 1
@@ -547,7 +536,7 @@
     },
     "berries" : {
       "placement" : {
-        "uri" : "stonehearth:plants:berry_bush",
+        "uri" : "stonehearth_ace:plants:cherry_bush",
         "function" : "gaussian",
         "mean" : -50,
         "std_dev" : 30,
@@ -558,8 +547,8 @@
           "boundary" : 0
         },
         "density" : {
-          "plains" : 0.6,
-          "foothills" : 0.8,
+          "plains" : 0.8,
+          "foothills" : 0.4,
           "mountains" : 0
         }
       }

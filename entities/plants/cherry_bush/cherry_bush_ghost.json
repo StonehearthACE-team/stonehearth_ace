@@ -1,0 +1,32 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "type": "entity",
+   "components": {
+      "render_info": {
+         "scale": 0.15
+      },
+      "mob": {
+         "model_origin": { "x": -0.075, "y": 0, "z": 0.075 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(cherry_bush.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.plants.cherry_bush.display_name)",
+         "description": "i18n(stonehearth_ace:entities.plants.cherry_bush.description)",
+         "icon": "file(cherry_bush.png)",
+         "category": "plants",
+         "material_tags": "plant stockpile_plant",
+         "subjects": [
+            "plants"
+         ]
+      }
+   }
+}
