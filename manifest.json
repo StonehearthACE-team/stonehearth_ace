@@ -9,6 +9,7 @@
    "server_init_script": "file(stonehearth_ace_server)",
    "aliases": {
       "actions:train": "file(ai/actions/training/train_action.lua)",
+      "actions:train_attack": "file(ai/actions/training/train_attack_action.lua)",
       "ai_pack:training": "file(ai/packs/training_ai_pack.json)",
       "biome:highlands": "file(data/biome/highlands.json)",
       "boulder:highlands:large_1": "file(entities/boulders/large_boulder/larger_boulder_1.json)",
@@ -22,6 +23,8 @@
       "color_map:ace": "file(data/materials/color_maps/stonehearth_ace_color_map.json)",
       "commands:toggle_enabled_off": "file(data/commands/toggle_enabled/toggle_off.json)",
       "commands:toggle_enabled_on": "file(data/commands/toggle_enabled/toggle_on.json)",
+      "commands:toggle_training_off": "file(data/commands/toggle_training/toggle_off.json)",
+      "commands:toggle_training_on": "file(data/commands/toggle_training/toggle_on.json)",
       "consumables:seeds:marblesprout_seeds": "file(entities/consumables/seeds/marblesprout_seeds)",
       "consumables:seeds:moonbell_seeds": "file(entities/consumables/seeds/moonbell_seeds)",
       "crops:marblesprout_crop": "file(entities/crops/marblesprout_crop)",
@@ -115,7 +118,7 @@
       "resources:herb:moonbell": "file(entities/resources/herb/moonbell/moonbell.json)",
       "resources:stone:marble_stone": "file(entities/resources/stone/marble_stone)",
       "resources:wood:birch_log": "file(entities/resources/wood/birch_log/birch_log.json)",
-	  "resources:wood:yew_log": "file(entities/resources/wood/yew_log/yew_log.json)",
+	    "resources:wood:yew_log": "file(entities/resources/wood/yew_log/yew_log.json)",
       "resources:wood:parana_pine_log": "file(entities/resources/wood/parana_pine_log/parana_pine_log.json)",
       "task_groups:training": "file(ai/task_groups/training_task_group.lua)",
       "trees:birch:ancient": "file(entities/trees/birch_tree/ancient_birch_tree/ancient_birch_tree.json)",
@@ -157,15 +160,22 @@
       "stonehearth/jobs/potter/recipes/recipes.json": "file(jobs/potter/recipes/recipes.json)",
       "stonehearth/jobs/mason/recipes/recipes.json": "file(jobs/mason/recipes/recipes.json)",
       "stonehearth/jobs/engineer/recipes/recipes.json": "file(jobs/engineer/recipes/recipes.json)",
+      "stonehearth/jobs/engineer/engineer_description.json": "file(jobs/engineer/engineer_description.json)",
       "stonehearth/jobs/footman/footman_abilities/footman_abilities.json": "file(jobs/footman/footman_abilities/footman_abilities.json)",
       "stonehearth/jobs/footman/footman_description.json": "file(jobs/footman/footman_description.json)",
+      "stonehearth/jobs/knight/knight_abilities/knight_abilities.json": "file(jobs/knight/knight_abilities/knight_abilities.json)",
+      "stonehearth/jobs/knight/knight_description.json": "file(jobs/knight/knight_description.json)",
+      "stonehearth/jobs/archer/archer_abilities/archer_abilities.json": "file(jobs/archer/archer_abilities/archer_abilities.json)",
+      "stonehearth/jobs/archer/archer_description.json": "file(jobs/archer/archer_description.json)",
+      "stonehearth/jobs/cleric/cleric_abilities/cleric_abilities.json": "file(jobs/cleric/cleric_abilities/cleric_abilities.json)",
+      "stonehearth/jobs/cleric/cleric_description.json": "file(jobs/cleric/cleric_description.json)",
       "stonehearth/services/server/population/data/player_task_groups.json": "file(services/server/population/data/player_task_groups.json)",
-	  "stonehearth/entities/resources/wood/acacia_log/acacia_log.json": "file(mixins/entities/resources/wood/acacia_log/acacia_log.json)",
-	  "stonehearth/entities/resources/wood/cactus_log/cactus_log.json": "file(mixins/entities/resources/wood/cactus_log/cactus_log.json)",
-	  "stonehearth/entities/resources/wood/juniper_log/juniper_log.json": "file(mixins/entities/resources/wood/juniper_log/juniper_log.json)",
-	  "stonehearth/entities/resources/wood/oak_log/oak_log.json": "file(mixins/entities/resources/wood/oak_log/oak_log.json)",
-	  "stonehearth/entities/resources/wood/palm_log/palm_log.json": "file(mixins/entities/resources/wood/palm_log/palm_log.json)",
-	  "stonehearth/entities/resources/wood/pine_log/pine_log.json": "file(mixins/entities/resources/wood/pine_log/pine_log.json)"
+	    "stonehearth/entities/resources/wood/acacia_log/acacia_log.json": "file(mixins/entities/resources/wood/acacia_log/acacia_log.json)",
+	    "stonehearth/entities/resources/wood/cactus_log/cactus_log.json": "file(mixins/entities/resources/wood/cactus_log/cactus_log.json)",
+	    "stonehearth/entities/resources/wood/juniper_log/juniper_log.json": "file(mixins/entities/resources/wood/juniper_log/juniper_log.json)",
+	    "stonehearth/entities/resources/wood/oak_log/oak_log.json": "file(mixins/entities/resources/wood/oak_log/oak_log.json)",
+	    "stonehearth/entities/resources/wood/palm_log/palm_log.json": "file(mixins/entities/resources/wood/palm_log/palm_log.json)",
+	    "stonehearth/entities/resources/wood/pine_log/pine_log.json": "file(mixins/entities/resources/wood/pine_log/pine_log.json)"
    },
    "overrides": {
       "stonehearth/entities/resources/wood/juniper_log/juniper_log.qb": "file(mixins/entities/resources/wood/juniper_log/juniper_log.qb)",
@@ -195,7 +205,11 @@
    },
    "functions": {
       "toggle_enabled_command": {
-         "controller": "file(call_handlers/toggle_enabled_call_handler.lua)",
+        "controller": "file(call_handlers/toggle_enabled_call_handler.lua)",
+        "endpoint": "server"
+      },
+      "toggle_training_command": {
+         "controller": "file(call_handlers/toggle_training_call_handler.lua)",
          "endpoint": "server"
       }
    },

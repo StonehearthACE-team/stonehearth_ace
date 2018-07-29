@@ -5,7 +5,7 @@ Train.name = 'train'
 Train.status_text_key = 'stonehearth_ace:ai.actions.status_text.train'
 Train.does = 'stonehearth_ace:train'
 Train.args = {}
-Train.priority = 1
+Train.priority = 0.6
 
 local log = radiant.log.create_logger('training_action')
 local combat = stonehearth.combat
@@ -18,20 +18,39 @@ local combat = stonehearth.combat
 
 function Train:start_thinking(ai, entity, args)
 	-- check if we're eligible (below level 6, training enabled)
-	local job_component = entity:get_component('stonehearth:job')
-	if job_component:is_max_level() then
+	local job = entity:get_component('stonehearth:job')
+	if job:is_max_level() then
 		ai:reject('entity is max level, cannot train')
 		return
 	end
-	if radiant.entities.get_attribute(entity, 'stonehearth_ace:training_enabled', 1) ~= 1 then
-		ai:reject('training is disabled for this entity')
+	
+	if not job:get_training_enabled() then
+		ai:reject('training is disabled or unavailable for this entity')
 		return
 	end
+
 	ai:set_think_output()
 end
 
-function Train:stop_thinking(ai, entity, args)
-	
+function Train:start(ai, entity, args)
+	-- add listener for training disabled
+	self._training_enabled_listener = radiant.events.listen(entity, 'stonehearth_ace:training_enabled_changed', 
+				function(enabled) 
+					self:_on_training_enabled_changed(ai, enabled)
+				end)
+end
+
+function Train:stop(ai, entity, args)
+	if self._training_enabled_listener then
+		self._training_enabled_listener:destroy()
+		self._training_enabled_listener = nil
+	end
+end
+
+function Train:_on_training_enabled_changed(ai, enabled)
+	if not enabled then
+		ai:abort('training was disabled for this entity')
+	end
 end
 
 function find_training_dummy(entity)
@@ -83,7 +102,7 @@ function find_training_location(ai, entity, target)
 	if best_location then
 		return best_location
 	else
-		ai:abort('cannot find suitable training location for this training dummy')
+		ai:clear_think_output()	--'cannot find suitable training location for this training dummy')
 	end
 end
 
@@ -105,7 +124,10 @@ return ai:create_compound_action(Train)
          :execute('stonehearth:reserve_entity', { entity = ai.PREV.item })
          :execute('stonehearth:find_path_to_location', { location = ai.CALL(find_training_location, ai, ai.ENTITY, ai.BACK(2).item) })
 		 :execute('stonehearth:follow_path', { path = ai.PREV.path })
+		 --:execute('stonehearth:combat:move_to_targetable_location', { target = ai.BACK(4).item })
 	-- now can we just tell our entity to attack the target, even though it's not an enemy? yes!
-		 :execute('stonehearth:combat:attack_melee_adjacent', { target = ai.BACK(4).item })	-- need to use ranged attack call if entity is ranged
-		 -- but we want them to keep attacking (and gaining experience) until it's "dead" or they find something better to do
-		 -- JobComponent:add_exp(value, add_curiosity_addition)
+	-- queue up four attacks so the unit doesn't think about running away and repositioning after every attack
+		 :execute('stonehearth_ace:train_attack', { target = ai.BACK(4).item })
+		 :execute('stonehearth_ace:train_attack', { target = ai.BACK(5).item })
+		 :execute('stonehearth_ace:train_attack', { target = ai.BACK(6).item })
+		 :execute('stonehearth_ace:train_attack', { target = ai.BACK(7).item })

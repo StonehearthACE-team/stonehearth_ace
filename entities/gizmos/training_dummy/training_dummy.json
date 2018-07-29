@@ -35,26 +35,33 @@
         }
       ]
     },
-    "stonehearth_ace:training_dummy": {
-
-    }
+    "stonehearth_ace:training_dummy": { },
+    "stonehearth:attributes": {
+        "max_health": {
+          "type": "basic",
+          "value": 1000
+        },
+        "menace": {
+          "type": "basic",
+          "value": 0
+        }
+      }
    },
    "entity_data": {
-      "stonehearth:safety_point": true,
-    "stonehearth:net_worth": {
-      "value_in_gold": 0,
-      "rarity": "common",
-      "shop_info": {
-        "buyable": false,
-        "sellable": false
-      }
-    },
-    "stonehearth:item_placement_limit": {
-      "tag": "training",
-      "default": 1
-    },
-    "stonehearth:siege_object": {
-         "repair_work_units": 3
+      "stonehearth:net_worth": {
+        "value_in_gold": 0,
+        "rarity": "common",
+        "shop_info": {
+          "buyable": false,
+          "sellable": false
+        }
+      },
+      "stonehearth:item_placement_limit": {
+        "tag": "training",
+        "default": 1
+      },
+      "stonehearth:siege_object": {
+         "repair_work_units": 5
       },
       "stonehearth:killable": {
          "killable_by_anyone": true
