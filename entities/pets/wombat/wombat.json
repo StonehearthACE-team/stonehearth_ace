@@ -1,0 +1,71 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:pet",
+   "components": {
+      "render_info": {
+         "animation_table": "file(../../../../stonehearth/data/rigs/entities/pets/collie/collie.json)"
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(wombat.qb)"
+            ]
+         }
+      },
+      "stonehearth:attributes": {
+         "max_health": {
+            "type": "basic",
+            "value": 15
+         },
+         "speed": {
+            "type": "basic",
+            "value": 50
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:entity_radius": 0.4,
+      "stonehearth:species": {
+         "id": "wombat",
+         "display_name": "i18n(stonehearth_ace:entities.critters.wombat.species)"
+      },
+      "stonehearth:diet": {
+         "food_material": "vegetarian"
+      },
+      "stonehearth:portrait": {
+         "portrait_types": {
+            "headshot": {
+               "camera": {
+                  "pos": [
+                     24,
+                     1.2,
+                     -27
+                  ],
+                  "look_at": [
+                     0,
+                     1.0,
+                     0
+                  ],
+                  "fov": 65
+               }
+            }
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.pets.wombat.display_name)",
+         "description": "i18n(stonehearth_ace:entities.pets.wombat.description)",
+         "icon": "file(wombat.png)",
+         "category": "pets"
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 1000,
+         "rarity": "rare",
+         "shop_info": {
+            "buyable": true,
+            "sellable": false,
+            "shopkeeper_level": 3,
+            "shopkeeper_type": "pet"
+         }
+      }
+   }
+}
