@@ -8,6 +8,7 @@
    "client_init_script": "file(stonehearth_ace_client)",
    "server_init_script": "file(stonehearth_ace_server)",
    "aliases": {
+      "actions:pet:eat_from_storage": "file(ai/actions/pet/pet_eat_from_storage_action.lua)", 
       "actions:train": "file(ai/actions/training/train_action.lua)",
       "actions:train_attack": "file(ai/actions/training/train_attack_action.lua)",
       "ai_pack:training": "file(ai/packs/training_ai_pack.json)",
@@ -168,6 +169,7 @@
       "weather:snow:late": "file(data/weather/snow/snow_late.json)"
    },
    "mixintos": {
+      "stonehearth/entities/critters/collars/pet_collar.json": "stonehearth_ace/entities/critters/collars/pet_collar.json",
       "stonehearth/entities/weapons/wooden_sword/wooden_sword.json": "stonehearth_ace/entities/weapons/wooden_sword/wooden_sword.json",
       "stonehearth/entities/weapons/bronze_sword/bronze_sword.json": "stonehearth_ace/entities/weapons/bronze_sword/bronze_sword.json",
       "stonehearth/entities/weapons/short_sword/short_sword.json": "stonehearth_ace/entities/weapons/short_sword/short_sword.json",

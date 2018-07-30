@@ -1,0 +1,16 @@
+{
+   "type": "entity",
+   "components": {
+      "stonehearth:equipment_piece": {
+         "injected_ai": {
+            "actions": [
+              "stonehearth_ace:actions:pet:eat_from_storage",
+              "stonehearth:actions:get_food_container_from_storage",
+              "stonehearth:actions:get_food_from_storage",
+              "stonehearth:actions:find_reachable_storage_containing_best_entity_type",
+              "stonehearth:actions:pickup_item_type_from_storage"
+            ]
+         }
+      }
+   }
+}
