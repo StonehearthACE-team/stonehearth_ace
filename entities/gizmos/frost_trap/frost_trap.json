@@ -1,0 +1,75 @@
+{
+   "type": "entity",
+   "mixins": [
+      "file(frost_trap_ghost.json)",
+      "stonehearth:mixins:siege_trap"
+   ],
+   "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(frost_trap_iconic.json)",
+         "ghost_form": "file(frost_trap_ghost.json)",
+         "placeable_on_ground": true
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 2, "y": 1, "z": 2 }
+            }
+         ]
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": 0, "y": 0, "z": 0 },
+               "max": { "x": 1, "y": 1, "z": 1 }
+            }
+         ]
+      },
+      "stonehearth:siege_weapon": {
+         "max_uses": 1
+      },
+      "stonehearth:equipment": {
+         "items": [
+            "stonehearth_ace:gizmos:frost_trap:weapon"
+         ]
+      },
+      "sensor_list": {
+         "sensors": {
+            "sight": {
+               "type": "sensor",
+               "radius": 5
+            }
+         }
+      },
+      "stonehearth:loot_drops": {
+         "entries": {
+            "default": {
+               "num_rolls": {
+                  "min": 1,
+                  "max": 3
+               },
+               "items": {
+                  "iron_ingot": {
+                     "uri": "stonehearth:refined:steel_ingot"
+                  }
+               }
+            }
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 75,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": -8
+      }
+   }
+}

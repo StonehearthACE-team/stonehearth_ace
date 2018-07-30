@@ -1,0 +1,23 @@
+{
+   "type" : "effect",
+   "tracks": {
+      "animation": {
+         "type": "animation_effect",
+         "start_time": 0,
+         "animation": "close.json",
+         "loop": false
+      },
+      "bite": {
+         "type": "cubemitter",
+         "start_time": 20,
+         "end_time": 30,
+         "loop": false,
+         "cubemitter": "particles/sparks/clamp_trap_spark.cubemitter.json",
+         "transforms": { "x": 0, "y": 2.2, "z": 0,
+            "rx": 90,
+            "ry": 90,
+            "rz": 0
+         }
+      }
+   }
+}

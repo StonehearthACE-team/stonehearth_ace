@@ -8,7 +8,7 @@
    "client_init_script": "file(stonehearth_ace_client)",
    "server_init_script": "file(stonehearth_ace_server)",
    "aliases": {
-      "actions:pet:eat_from_storage": "file(ai/actions/pet/pet_eat_from_storage_action.lua)", 
+      "actions:pet:eat_from_storage": "file(ai/actions/pet/pet_eat_from_storage_action.lua)",
       "actions:train": "file(ai/actions/training/train_action.lua)",
       "actions:train_attack": "file(ai/actions/training/train_attack_action.lua)",
       "ai_pack:training": "file(ai/packs/training_ai_pack.json)",
@@ -21,6 +21,8 @@
       "boulder:highlands:small": "file(entities/boulders/small_boulder/small_boulder.json)",
       "buffs:gizmos:decoy": "file(data/buffs/decoy/decoy_buff.json)",
       "buffs:mining_helmet": "file(data/buffs/devoted/mining_helmet_buff.json)",
+      "buffs:ice_trap": "file(data/buffs/ice_trap/ice_trap_buff.json)",
+      
       "color_map:ace": "file(data/materials/color_maps/stonehearth_ace_color_map.json)",
       "commands:toggle_enabled_off": "file(data/commands/toggle_enabled/toggle_off.json)",
       "commands:toggle_enabled_on": "file(data/commands/toggle_enabled/toggle_on.json)",
@@ -48,6 +50,9 @@
       "gizmos:greater_water_gate": "file(entities/gizmos/greater_water_gate/greater_water_gate.json)",
       "gizmos:water_pump": "file(entities/gizmos/water_pump/water_pump.json)",
       "gizmos:water_pump_topper": "file(entities/gizmos/water_pump/water_pump_topper.json)",
+      "gizmos:frost_trap:weapon": "file(entities/gizmos/frost_trap/frost_trap_weapon.json)",
+      "gizmos:frost_trap": "file(entities/gizmos/frost_trap/frost_trap.json)",
+
       "mixins:portals:diagonal_hatch": "file(mixins/entities/diagonal_hatch/diagonal_hatch.json)",
       "mixins:portals:diagonal_hatch:ghost": "file(mixins/entities/diagonal_hatch/diagonal_hatch_ghost.json)",
       "mixins:portals:simple_hatch": "file(mixins/entities/simple_hatch/simple_hatch.json)",
