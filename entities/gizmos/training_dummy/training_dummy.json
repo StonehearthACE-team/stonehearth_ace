@@ -35,7 +35,9 @@
         }
       ]
     },
-    "stonehearth_ace:training_dummy": { },
+    "stonehearth_ace:training_dummy": {
+        "combat_time": 2
+    },
     "stonehearth:attributes": {
         "max_health": {
           "type": "basic",
@@ -61,7 +63,7 @@
         "default": 1
       },
       "stonehearth:siege_object": {
-         "repair_work_units": 5
+         "repair_work_units": 1
       },
       "stonehearth:killable": {
          "killable_by_anyone": true

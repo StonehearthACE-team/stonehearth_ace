@@ -92,18 +92,20 @@ function find_training_location(ai, entity, target)
 
 	for distance = max_range, min_range, -0.5 do
 		local temp_location = get_location_in_front(location, facing, distance)
-		local line_of_sight = _physics:has_line_of_sight(target, Point3(temp_location.x, temp_location.y + 2, temp_location.z))
-		if line_of_sight then
-			best_location = temp_location
-			break
+		if not next(radiant.terrain.get_entities_at_point(temp_location)) then
+			local line_of_sight = _physics:has_line_of_sight(target, Point3(temp_location.x, temp_location.y + 2, temp_location.z))
+			if line_of_sight then
+				best_location = temp_location
+				break
+			end
 		end
 	end
 
-	if best_location then
-		return best_location
-	else
-		ai:clear_think_output()	--'cannot find suitable training location for this training dummy')
+	if not best_location then
+		best_location = get_location_in_front(location, facing, min_range)
 	end
+
+	return best_location
 end
 
 function get_location_in_front(location, facing, distance)
