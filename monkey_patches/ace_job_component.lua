@@ -6,6 +6,7 @@ AceJobComponent._old_activate = JobComponent.activate
 function AceJobComponent:activate(value, add_curiosity_addition)
 	self:_old_activate(value, add_curiosity_addition)
 
+	self._max_level_from_training = 3
 	self._training_performed_listener = radiant.events.listen(self._entity, 'stonehearth_ace:training_performed', self, self._on_training_performed)
 end
 
@@ -31,7 +32,7 @@ function AceJobComponent:level_up(skip_visual_effects)
 	self:_old_level_up(skip_visual_effects)
 
 	-- remove the training toggle command if we reach max level
-	if self:is_combat_job() and self:is_max_level() then
+	if not self:is_trainable() then
 		self:_remove_training_toggle()
 	end
 
@@ -50,7 +51,7 @@ function AceJobComponent:promote_to(job_uri, options)
 	self:_old_promote_to(job_uri, options)
 
 	-- add the training toggle command if not max level
-	if self:is_combat_job() and not self:is_max_level() then
+	if self:is_trainable() then
 		self:_add_training_toggle()
 	end
 
@@ -111,6 +112,10 @@ end
 function AceJobComponent:is_combat_job()
 	local job_info = self:get_job_info()
 	return job_info and job_info:is_combat_job()
+end
+
+function AceJobComponent:is_trainable()
+	return self:is_combat_job() and self:get_current_job_level() < self._max_level_from_training
 end
 
 function AceJobComponent:get_training_enabled()

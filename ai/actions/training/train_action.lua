@@ -19,8 +19,8 @@ local combat = stonehearth.combat
 function Train:start_thinking(ai, entity, args)
 	-- check if we're eligible (below level 6, training enabled)
 	local job = entity:get_component('stonehearth:job')
-	if job:is_max_level() then
-		ai:reject('entity is max level, cannot train')
+	if not job:is_trainable() then
+		ai:reject('entity cannot train')
 		return
 	end
 	
@@ -89,9 +89,11 @@ function find_training_location(ai, entity, target)
 	local facing = radiant.math.round(mob:get_facing() / 90) * 90
 	local location = mob:get_world_grid_location()
 	local best_location = nil
+	local rng = _radiant.math.get_default_rng()
 
 	for distance = max_range, min_range, -0.5 do
-		local temp_location = get_location_in_front(location, facing, distance)
+		local varied_facing = facing + rng:get_int(-20, 20)
+		local temp_location = get_location_in_front(location, varied_facing, distance)
 		if not next(radiant.terrain.get_entities_at_point(temp_location)) then
 			local line_of_sight = _physics:has_line_of_sight(target, Point3(temp_location.x, temp_location.y + 2, temp_location.z))
 			if line_of_sight then

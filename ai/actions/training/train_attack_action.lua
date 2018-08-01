@@ -40,8 +40,8 @@ function TrainAttack:_check_conditions(ai, entity, args)
 	end
 
 	local job = entity:get_component('stonehearth:job')
-	if job:is_max_level() then
-		return 'entity is max level, cannot train'
+	if not job:is_trainable() then
+		return 'entity cannot train'
 	end
 	
 	if not job:get_training_enabled() then
