@@ -10,5 +10,13 @@
       "speed": {
          "multiply": 0.001
       }
+   },
+   "script": "stonehearth:buff_scripts:aura",
+   "script_info": {
+      "pulse": "15m",
+      "pulse_effect": "stonehearth_ace:effects:iced_ground",
+      "radius": 20,
+      "affect_self": false,
+      "target_type": "mob"
    }
 }

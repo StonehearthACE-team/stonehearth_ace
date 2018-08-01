@@ -1,0 +1,674 @@
+{
+   "data": {
+      "biome": {
+         "temperate": {
+            "display_name": "Hochland",
+            "description": "TBD. Default home of the TBD.",
+            "random_location_names": {
+               "000": "TBD"
+            }
+         },
+         "highlands": {
+            "seasons": {
+               "spring": {
+                  "display_name": "Frühling"
+               },
+               "summer": {
+                  "display_name": "Sommer"
+               },
+               "autumn": {
+                  "display_name": "Herbst"
+               },
+               "winter": {
+                  "display_name": "Winter"
+               }
+            }
+         }
+      },
+      "weather": {
+         "snow": {
+            "snow_early": {
+               "display_name": "Frühschnee",
+               "description": "Der Schnee ist dieses Jahr früher gekommen...<ul><li>Die Pflanzenwachstumsgeschwindigkeit ist leicht reduziert.</li><li>Ungeschützten Hearthlingen ist es zu kalt, um effektiv zu arbeiten.</li></ul>"
+            },
+            "snow_late": {
+               "display_name": "Spätschnee",
+               "description": "Der Schnee fällt immernoch in diesem Jahr...<ul><li>Die Pflanzenwachstumsgeschwindigkeit ist etwas reduziert.</li><li>Ungeschützten Hearthlingen ist es zu kalt, um effektiv zu arbeiten.</li><li>Ungeschützte Weidetiere werden durch die Kälte verletzt.</li></ul>"
+            }
+         }
+      },
+      "happiness": {
+         "thoughts": {
+            "weather": {
+               "values": {
+                  "snow_early_positive": {
+                     "display_name": "Die Schneesaison steht vor der Tür!",
+                     "tooltip": "Ich habe das ganze Jahr darauf gewartet, das die Schneesaison endlich kommt!"
+                  },
+                  "snow_early_negative": {
+                     "display_name": "Der Winter kommt!",
+                     "tooltip": "Ich kann nicht glauben, dass wir so früh Schnee bekommen, sowie Dunkelheit und Kälte!"
+                  },
+                  "snow_late_positive": {
+                     "display_name": "Ein letzter Schneetag!",
+                     "tooltip": "Ich bin froh, dass wir noch einen weiteren Schneetag genießen können, bevor die Schneesaison endet!"
+                  },
+                  "snow_late_negative": {
+                     "display_name": "Es schneit schon wieder!",
+                     "tooltip": "Der Winter sollte schon vorbei sein, ich kann nicht glauben, dass esr so spät immernoch schneit..."
+                  }
+               }
+            }
+         }
+      }
+   },
+   "jobs": {
+      "herbalist": {
+         "recipes": {
+            "moonbell_transmute_recipe": {
+               "recipe_name": "Mondglocken Samen (x3)",
+               "description": "Trennt Samen von den Kräutern",
+               "flavor": "Nur eine geschickte Hand kann die schwächeren Samen ernten, aber die Kräuter gehen dabei verloren."
+            },
+            "marblesprout_transmute_recipe": {
+               "recipe_name": "Marmorsprossen Samen (x3)",
+               "description": "Trennt Samen von den Steinen",
+               "flavor": "Nur eine geschickte Hand kann die schwächeren Samen ernten, aber die Steine gehen dabei verloren."
+            }
+         }
+      },
+      "blacksmith": {
+         "recipes": {
+            "copper_wall_lantern_recipe": {
+               "recipe_name": "Kupferne Wandlaterne",
+               "description": "Eine schöne Laterne. Platziere Sie an Gebäuden, um nachts Licht zu spenden.",
+               "flavor": "Fast magisch..."
+            },
+            "copper_garden_lantern_recipe": {
+               "recipe_name": "Kupferne Gartenlaterne",
+               "description": "Eine kleine Laterne, die auf den Boden gelegt wird. Geeignet um Wege oder kleine Gärten zu beleuchten.",
+               "flavor": "Fast magisch..."
+            }
+         }
+      },
+      "worker": {
+         "mining_helmet": {
+            "display_name": "Bergbauhelm",
+            "description": "Ein schützender Eisenhut, der auch eine Lichtquelle enthält.",
+            "mining_helmet_iconic": {
+               "display_name": "Bergbauhelm",
+               "description": "Kann von einem Arbeiter für zusätzliche Effizienz verwendet werden. Stellt auch Licht zur Verfügung."
+            }
+         }
+      }
+   },
+   "entities": {
+      "consumables": {
+         "seeds": {
+            "moonbell_seeds": {
+               "display_name": "Mondglocken Samen",
+               "description": "Lerne Mondglocken zu züchten."
+            },
+            "marblesprout_seeds": {
+               "display_name": "Marmorsprossen Samen",
+               "description": "Lerne Marmorsprossen zu züchten."
+            }
+         }
+      },
+      "construction": {
+         "simple_hatch_wooden": {
+            "display_name": "Einfache Holzluke",
+            "description": "Eine einfache Luke für vertikale Türöffnungen.",
+            "flavor": ""
+         },
+         "simple_hatch_clay": {
+            "display_name": "Einfache Lehmluke",
+            "description": "Eine einfache Luke für vertikale Türöffnungen.",
+            "flavor": ""
+         },
+         "simple_hatch_stone": {
+            "display_name": "Einfache Steinluke",
+            "description": "Eine einfache Luke für vertikale Türöffnungen.",
+            "flavor": ""
+         },
+         "simple_hatch_iron": {
+            "display_name": "Einfache Eisenluke",
+            "description": "Eine einfache, aber robuste, Luke für vertikale Türöffnungen.",
+            "flavor": ""
+         },
+         "hidden_hatch_wooden": {
+            "display_name": "Versteckte Holzluke",
+            "description": "Eine gut versteckte Luke.",
+            "flavor": ""
+         },
+         "hidden_hatch_clay": {
+            "display_name": "Versteckte Lehmluke",
+            "description": "Eine gut versteckte Luke.",
+            "flavor": ""
+         },
+         "hidden_hatch_stone": {
+            "display_name": "Versteckte Steinluke",
+            "description": "Eine gut versteckte Luke.",
+            "flavor": ""
+         },
+         "hidden_hatch_iron": {
+            "display_name": "Versteckte Eisenluke",
+            "description": "Eine gut versteckte Luke.",
+            "flavor": ""
+         },
+         "diagonal_hatch_wooden": {
+            "display_name": "Hölzerne Scheunenluke",
+            "description": "Holzluke für deinen Keller.",
+            "flavor": ""
+         },
+         "diagonal_hatch_clay": {
+            "display_name": "Lehmerne Scheunenluke",
+            "description": "Lehmluke für deinen Keller.",
+            "flavor": ""
+         },
+         "diagonal_hatch_stone": {
+            "display_name": "Steinerne Scheunenluke",
+            "description": "Steinluke für deinen Keller.",
+            "flavor": ""
+         },
+         "diagonal_hatch_iron": {
+            "display_name": "Eiserne Scheunenluke",
+            "description": "Dicke, robuste Eisenluke für deinen Keller.",
+            "flavor": ""
+         },
+         "reinforced_clay_door": {
+            "display_name": "Verstärkte Lehmtür",
+            "description": "Stärker als eine durchschnittliche Tür.",
+            "flavor": ""
+         },
+         "reinforced_wooden_door_lockable": {
+            "display_name": "Abschließbare verstärkte Holztür",
+            "description": "Stärker als eine durchschnittliche Tür und abschließbar.",
+            "flavor": ""
+         },
+         "reinforced_clay_door_lockable": {
+            "display_name": "Abschließbare verstärkte Lehmtür",
+            "description": "Stärker als eine durchschnittliche Tür und abschließbar.",
+            "flavor": ""
+         },
+         "reinforced_stone_door_lockable": {
+            "display_name": "Abschließbare verstärkte Steintür",
+            "description": "Stärker als eine durchschnittliche Tür und abschließbar.",
+            "flavor": ""
+         }
+      },
+      "crops": {
+         "moonbell_crop": {
+            "display_name": "Mondglockenblume",
+            "description": "Kann als Heilkraut verwendet werden",
+            "growth_stage": {
+               "000": {
+                  "name": "Mondglocken Sämling",
+                  "description": "Voller Potenzial."
+               },
+               "001": {
+                  "name": "Mondglocken Sprosse",
+                  "description": "Stummlig"
+               },
+               "002": {
+                  "name": "Mondglocken Knospe",
+                  "description": "Unbeholfene, schlaksige Phase."
+               },
+               "003": {
+                  "name": "Mondglocken",
+                  "description": "Schönheit ist ihre eigene Belohnung. (So glänzend!)"
+               }
+            }
+         },
+         "marblesprout_crop": {
+            "display_name": "Marmorsprossenblume",
+            "description": "Marblesprout Crop Description",
+            "growth_stage": {
+               "000": {
+                  "name": "Marmorsprossen Sämling",
+                  "description": "Voller Potenzial."
+               },
+               "001": {
+                  "name": "Marmorsprossen Sprosse",
+                  "description": "Stummlig"
+               },
+               "002": {
+                  "name": "Marmorsprossen Knospe",
+                  "description": "Unbeholfene, schlaksige Phase."
+               },
+               "003": {
+                  "name": "Marmorsprossen",
+                  "description": "Schönheit ist ihre eigene Belohnung. (Felsenfest)"
+               }
+            }
+         }
+      },
+      "decorations": {
+         "copper_wall_lantern": {
+            "copper_wall_lantern_ghost": {
+               "display_name": "Kupferne Wandlaterne",
+               "description": "TBD"
+            }
+         },
+         "copper_garden_lantern": {
+            "copper_garden_lantern_ghost": {
+               "display_name": "Kupferne Gartenlaterne",
+               "description": "TBD"
+            }
+         }
+      },
+      "resources": {
+         "wood": {
+            "birch_log": {
+               "description": "Ein Holzklotz. Aus Holz gemacht.",
+               "display_name": "Birkenholz"
+            },
+            "yew_log": {
+               "display_name": "Eibenholz",
+               "description": "Ein Holzklotz. Aus Holz gemacht."
+            },
+            "parana_pine_log": {
+               "description": "Ein Holzklotz. Aus Holz gemacht.",
+               "display_name": "Parana-Kiefern-Holz"
+            }
+         },
+         "herb": {
+            "moonbell": {
+               "display_name": "Mondglockenblume",
+               "description": "An herb commonly used for medicinal purposes"
+            }
+         },
+         "stone": {
+            "marble_stone": {
+               "display_name": "Marmorstein",
+               "description": "Ein marmorner Stein!"
+            }
+         }
+      },
+      "refined": {
+         "lock": {
+            "display_name": "Sperren",
+            "description": "Wird für verschließbare Türen benötigt",
+            "flavor": "Pass auf, dass du niemanden aussperrst"
+         }
+      },
+      "trees": {
+         "ancient_yew_tree": {
+            "display_name": "Uralter Eibenbaum",
+            "description": "So schön wie alt"
+         },
+         "birch_tree": {
+            "ancient_birch_tree": {
+               "display_name": "Uralter Birkenbaum",
+               "description": "TBD"
+            },
+            "large_birch_tree": {
+               "display_name": "Großer Birkenbaum",
+               "description": "TBD"
+            },
+            "medium_birch_tree": {
+               "description": "TBD",
+               "display_name": "Birkenbaum"
+            },
+            "sapling_birch_tree": {
+               "description": "TBD",
+               "sapling_birch_tree_iconic": {
+                  "description": "TBD"
+               },
+               "sapling_birch_tree_ghost": {
+                  "description": "TBD",
+                  "display_name": "Birkenbaum Sämling"
+               }
+            },
+            "seed": {
+               "tree_birch_seed_ghost": {
+                  "description": "Kann gepflanzt werden, um einen riesigen Baum zu züchten",
+                  "display_name": "Birkenbaum Samen"
+               }
+            },
+            "small_birch_tree": {
+               "display_name": "Kleiner Birkenbaum",
+               "description": "TBD"
+            },
+            "bud": {
+               "tree_birch_plant_bud": {
+                  "display_name": "Angehende Birke",
+                  "description": "TBD"
+               }
+            },
+            "sprout": {
+               "tree_birch_sprout": {
+                  "description": "TBD",
+                  "display_name": "Birkenbaum-Sprössling"
+               }
+            },
+            "stem": {
+               "tree_birch_plant_stem": {
+                  "description": "TBD",
+                  "display_name": "Stummliger Birkenbaum"
+               }
+            }
+         },
+         "parana_pine_tree": {
+            "seed": {
+               "tree_parana_pine_seed_ghost": {
+                  "display_name": "Paranakiefernkern",
+                  "description": "TBD"
+               }
+            },
+            "sprout": {
+               "tree_parana_pine_sprout": {
+                  "display_name": "Paranakiefern-Sprössling",
+                  "description": "TBD"
+               }
+            },
+            "stem": {
+               "tree_parana_pine_plant_stem": {
+                  "display_name": "Stummlige Paranakiefer",
+                  "description": "TBD"
+               }
+            },
+            "bud": {
+               "tree_parana_pine_plant_bud": {
+                  "description": "TBD",
+                  "display_name": "Angehende Paranakiefer"
+               }
+            },
+            "small_parana_pine_tree": {
+               "display_name": "Kleine Paranakiefer",
+               "description": "TBD"
+            },
+            "large_parana_pine_tree": {
+               "display_name": "Große Paranakiefer",
+               "description": "TBD"
+            },
+            "medium_parana_pine_tree": {
+               "display_name": "Paranakiefer",
+               "description": "TBD"
+            },
+            "sapling_parana_pine_tree": {
+               "description": "TBD",
+               "sapling_parana_pine_tree_iconic": {
+                  "description": "TBD"
+               },
+               "sapling_parana_pine_tree_ghost": {
+                  "display_name": "Paranakiefern Sämling",
+                  "description": "TBD"
+               }
+            }
+         },
+         "yew_tree": {
+            "ancient_yew_tree": {
+               "display_name": "Uralter Eibenbaum",
+               "description": "So schön wie alt ist, fühlt sich fast magisch an..."
+            },
+            "bud": {
+               "tree_yew_plant_bud": {
+                  "display_name": "Angehender Eibenbaum",
+                  "description": "TBD"
+               }
+            },
+            "large_yew_tree": {
+               "display_name": "Großer Eibenbaum",
+               "description": "TBD"
+            },
+            "medium_yew_tree": {
+               "display_name": "Eibenbaum",
+               "description": "TBD"
+            },
+            "sapling_yew_tree": {
+               "description": "TBD",
+               "sapling_yew_tree_iconic": {
+                  "description": "TBD"
+               },
+               "sapling_yew_tree_ghost": {
+                  "description": "TBD",
+                  "display_name": "Eibenbaum Sämling"
+               }
+            },
+            "seed": {
+               "tree_yew_seed_ghost": {
+                  "display_name": "Eibenbaum Samen",
+                  "description": "TBD"
+               }
+            },
+            "small_yew_tree": {
+               "display_name": "Kleiner Eibenbaum",
+               "description": "TBD"
+            },
+            "sprout": {
+               "tree_yew_sprout": {
+                  "display_name": "Eibenbaum Sprössling",
+                  "description": "TBD"
+               }
+            },
+            "stem": {
+               "tree_yew_plant_stem": {
+                  "display_name": "Stummliger Eibenbaum",
+                  "description": "TBD"
+               }
+            }
+         }
+      },
+      "furniture": {
+         "patrol_point": {
+            "patrol_point_ghost": {
+               "display_name": "Patrouillenpunkt",
+               "description": "Lass deine Fußsoldaten patrollieren!"
+            }
+         }
+      },
+      "recipes": {
+         "carpenter": {
+            "patrol_point_recipe": {
+               "recipe_name": "Patrouillenpunkt",
+               "description": "Lass deine Fußsoldaten patrollieren!",
+               "flavor": "Hiermit kannst du nun deine Fußsoldaten kontrollieren :D"
+            }
+         }
+      },
+      "plants": {
+         "moonbell_plant": {
+            "display_name": "Wilde Mondglocke",
+            "description": "Kann für Heilkräuter geerntet werden",
+            "unripe_description": "Diese Pflanze wurde geerntet und ist noch nicht nachgewachsen",
+            "seed": {
+               "moonbell_plant_seed_ghost": {
+                  "display_name": "Wilde Mondglocken Samen",
+                  "description": "Einmal gepflanzt, wird es zu Heilkräutern wachsen"
+               },
+               "moonbell_plant_sprout": {
+                  "display_name": "Wilder Mondglocken Sprössling",
+                  "description": "Braucht nur etwas Zeit und Sorgfalt."
+               }
+            },
+            "stem": {
+               "moonbell_plant_stem": {
+                  "display_name": "Wilde stummlige Mondglocke",
+                  "description": "Immernoch wachsend!"
+               },
+               "moonbell_plant_bud": {
+                  "display_name": "Wilde Mondglockenknospe",
+                  "description": "Es ist fast da! Schau, es hat Knospen!"
+               }
+            }
+         },
+         "marblesprout_plant": {
+            "display_name": "Wilde Marmorsprosse",
+            "description": "Diese Pflanze kann für Marmorsteine geerntet werden!",
+            "unripe_description": "Diese Pflanze wurde geerntet und ist noch nicht nachgewachsen",
+            "seed": {
+               "marblesprout_plant_seed_ghost": {
+                  "display_name": "Wilde Marmorsprossen Samen",
+                  "description": "Einmal gepflanzt, wird es zu Marmorsprossen wachsen"
+               },
+               "marblesprout_plant_sprout": {
+                  "display_name": "Wilder Marmorsprossen Sprössling",
+                  "description": "Braucht nur etwas Zeit und Sorgfalt."
+               }
+            },
+            "stem": {
+               "marblesprout_plant_stem": {
+                  "display_name": "Wilde stummlige Marmorsprosse",
+                  "description": "Immernoch wachsend!"
+               },
+               "marblesprout_plant_bud": {
+                  "display_name": "Wild Marmorsprossenknospe",
+                  "description": "Es ist fast da! Schau, es hat Knospen!"
+               }
+            }
+         },
+         "cherry_bush": {
+            "unripe_description": "Noch nicht reif für die Ernte.",
+            "display_name": "Kirschbusch",
+            "description": "Ernte für köstliche Kirschpflaumen.",
+            "bud": {
+               "cherry_bush_plant_bud": {
+                  "display_name": "Kirschbusch Knospe",
+                  "description": "Es ist fast da! Schau, es hat Knospen!"
+               }
+            },
+            "seed": {
+               "cherry_bush_plant_seed_ghost": {
+                  "display_name": "Kirschbusch Samen",
+                  "description": "Kann gepflanzt werden, um einen Strauch mit köstlichen Kirschpflaumen anzubauen."
+               }
+            },
+            "sprout": {
+               "cherry_bush_plant_sprout": {
+                  "display_name": "Kirschbusch Sprössling",
+                  "description": "Braucht nur etwas Zeit und Sorgfalt."
+               }
+            },
+            "stem": {
+               "cherry_bush_plant_stem": {
+                  "description": "Wächst noch!",
+                  "display_name": "Stummliger Kirschbusch"
+               }
+            }
+         }
+      },
+      "decoration": {
+         "statue": {
+            "statue_anji_the_horrendous": {
+               "statue_anji_the_horrendous_ghost": {
+                  "display_name": "Anji die entsetzliche Statue",
+                  "description": "Es heißt, dass Anji unter der letzten strahlenden Sonne tapfer gegen ein Rudel Wölfe gekämpft hat."
+               }
+            }
+         }
+      },
+      "pets": {
+         "wombat": {
+            "display_name": "Wombat",
+            "description": "Seine Flaumigkeit inspirierte die Kunstschule, die als Plüschinismus bekannt ist. Es isst nur Grünes."
+         }
+      },
+      "critters": {
+         "wombat": {
+            "species": "Wombat"
+         }
+      },
+      "food": {
+         "cherries": {
+            "cherry_basket": {
+               "display_name": "Korb mit Kirschen",
+               "description": "Süß oder sauer, eine leckere Frucht für jede Stunde."
+            },
+            "cherry_serving": {
+               "display_name": "Teller mit Kirschen",
+               "description": "Eine Kirsche ist immer oben, auch wenn nichts drunter ist."
+            }
+         }
+      }
+   },
+   "mountain_folk": {
+      "data": {
+         "mountain_folk_population": {
+            "display_name": "Bergvolk"
+         }
+      },
+      "kingdom": {
+         "quote": "TBD",
+         "long_description": "TBD",
+         "post_selection_description": "TBD",
+         "initial_town_name": "Embarkment [str(town_number)]"
+      },
+      "jobs": {
+         "grower": {
+            "grower_description": {
+               "display_name": "Erzeuger"
+            }
+         },
+         "artificer": {
+            "artificer_description": {
+               "display_name": "Feuerwerker"
+            }
+         },
+         "druid": {
+            "druid_description": {
+               "display_name": "Druide"
+            }
+         }
+      },
+      "entities": {
+         "gizmos": {
+            "mf_camp_standard": {
+               "mf_camp_standard_ghost": {
+                  "display_name": "Siedlungs-Banner",
+                  "description": "Ein Zeichen des Heimes für alle Bergvölker!"
+               }
+            },
+            "mf_town_banner_balance": {
+               "mf_town_banner_balance_ghost": {
+                  "display_name": "Banner der Balance",
+                  "description": "Für einige ist es ein Zwischenweg zwischen dem Alten und dem Neuen, sodass die Bergvölker Ruhm finden!"
+               },
+               "mf_town_banner_balance_token_iconic": {
+                  "description": "Ein Fetzen vom Banner der Balance, der seinen Segen mit sich trägt.",
+                  "display_name": "Banner der Balance Fetzen"
+               }
+            },
+            "mf_town_banner_might": {
+               "mf_town_banner_might_ghost": {
+                  "display_name": "Banner der Stärke",
+                  "description": "Es ist der Glaube vieler Bergvölker, dass Fortschritt nur durch Feuer und Industrie gibt."
+               },
+               "mf_town_banner_might_token_iconic": {
+                  "description": "Ein Fetzen vom Banner der Stärke, der seinen Segen mit sich trägt.",
+                  "display_name": "Banner der Stärke Fetzen"
+               }
+            },
+            "mf_town_banner_nature": {
+               "mf_town_banner_nature_ghost": {
+                  "display_name": "Banner der Vitalität",
+                  "description": "Viele der Bergbewohner werden immer den alten Wegen folgen."
+               },
+               "mf_town_banner_nature_token_iconic": {
+                  "description": "Ein Fetzen vom Banner der Vitalität, der seinen Segen mit sich trägt.",
+                  "display_name": "Banner der Vitalität Fetzen"
+               }
+            }
+         }
+      }
+   },
+   "plants": {
+      "moonbell_plant": {
+         "seed": {
+            "moonbell_plant_seed_ghost": {
+               "display_name": "Mondglocken Samen"
+            }
+         }
+      }
+   },
+   "ui": {
+      "shell": {
+         "settings": {
+            "gameplayTab": {
+               "auto_craft_recipe_dependencies": "Automatische Rezepteinstellung",
+               "auto_craft_recipe_dependencies_description": "Beim Herstellen eines Gegenstands überprüfen die Handwerker das Stadtlager, um zu sehen, ob genügend Zutaten vorhanden sind. Wenn nicht, werden Sie der Warteschlange automatisch weitere Aufträge hinzufügen, um den Auftrag erfüllen zu können."
+            }
+         }
+      }
+   }
+}
