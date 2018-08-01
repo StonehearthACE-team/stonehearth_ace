@@ -4,7 +4,8 @@ local TrainingDummyComponent = class()
 function TrainingDummyComponent:initialize()
 	self._json = radiant.entities.get_json(self) or {}
 	self._sv.enabled = true
-	self._sv.combat_time = calendar:realtime_to_game_seconds(self._json.combat_time or 2)
+	self._sv.combat_time = calendar:realtime_to_game_seconds(self._json.combat_time or 5)
+	self._sv.disable_health_percentage = self._json.disable_health_percentage or 0.3
 	self.__saved_variables:mark_changed()
 end
 
@@ -38,6 +39,8 @@ end
 
 function TrainingDummyComponent:_disable()
 	self._sv.enabled = false
+	self:_destroy_combat_timer()
+	self:_reset_combat_state()
 	self.__saved_variables:mark_changed()
 end
 
@@ -65,10 +68,14 @@ function TrainingDummyComponent:_on_combat_timer()
 	local current_time = calendar:get_elapsed_time()
 	local ooc_time = (self._sv._entered_combat_time or 0) + self._sv.combat_time
 	if ooc_time <= current_time then
-		self._entity:add_component('stonehearth:combat_state'):set_primary_target(nil)
+		self:_reset_combat_state()
 	else
 		self:_create_combat_timer(ooc_time - current_time)
 	end
+end
+
+function TrainingDummyComponent:_reset_combat_state()
+	self._entity:add_component('stonehearth:combat_state'):set_primary_target(nil)
 end
 
 function TrainingDummyComponent:_create_combat_timer(ooc_time)
@@ -80,7 +87,7 @@ function TrainingDummyComponent:_on_health_changed(e)
 
 	if percentage >= 1 then
 		self:_enable()
-	elseif percentage < 0.3 then
+	elseif percentage < self._sv.disable_health_percentage then
 		self:_disable()
 	end
 end
