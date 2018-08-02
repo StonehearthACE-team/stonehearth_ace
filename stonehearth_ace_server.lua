@@ -16,7 +16,9 @@ local monkey_patches = {
    ace_job_component = 'stonehearth.components.job.job_component',
    ace_equipment_piece_component = 'stonehearth.components.equipment_piece.equipment_piece_component',
    ace_farmer_field_component = 'stonehearth.components.farmer_field.farmer_field_component',
-   ace_growing_component = 'stonehearth.components.growing.growing_component'
+   ace_growing_component = 'stonehearth.components.growing.growing_component',
+   ace_shepherd_pasture_component = 'stonehearth.components.shepherd_pasture.shepherd_pasture_component',
+   ace_shepherd_service = 'stonehearth.services.server.shepherd.shepherd_service'
 }
 
 local function monkey_patching()

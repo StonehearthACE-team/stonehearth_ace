@@ -8,6 +8,7 @@ function AceGrowingComponent:initialize()
 
 	self._sv.local_water_modifier = 1
 	self._sv.is_flooded = false
+	self._sv.current_growth_recalculate_progress = 0
 	self.__saved_variables:mark_changed()
 end
 
@@ -84,11 +85,19 @@ function AceGrowingComponent:_recalculate_duration()
       local old_expire_time = self._sv.growth_timer:get_expire_time()
       local old_start_time = old_expire_time - old_duration
       local growth_period = self:_get_base_growth_period()
-      local time_remaining = math.max(0, growth_period * (stonehearth.calendar:get_elapsed_time() - old_start_time) / old_duration)
+	  
+	  local old_progress = self:_get_current_growth_recalculate_progress()
+	  local new_progress = (1 - old_progress) * (stonehearth.calendar:get_elapsed_time() - old_start_time) / old_duration
+	  self._sv.current_growth_recalculate_progress = old_progress + new_progress
+      local time_remaining = math.max(0, growth_period * (1 - self._sv.current_growth_recalculate_progress))
       local scaled_time_remaining = self:_calculate_growth_period(time_remaining)
       self._sv.growth_timer:destroy()
       self._sv.growth_timer = stonehearth.calendar:set_persistent_timer("GrowingComponent grow_callback", scaled_time_remaining, radiant.bind(self, '_grow'))
    end
+end
+
+function AceGrowingComponent:_get_current_growth_recalculate_progress()
+	return self._sv.current_growth_recalculate_progress or 0
 end
 
 function AceGrowingComponent:_calculate_growth_period(growth_period)
@@ -109,6 +118,13 @@ function AceGrowingComponent:_set_growth_timer()
       self._sv.growth_timer = nil
    end
    self._sv.growth_timer = stonehearth.calendar:set_persistent_timer("GrowingComponent grow_callback", growth_period, radiant.bind(self, '_grow'))
+end
+
+AceGrowingComponent._old__grow = GrowingComponent._grow
+function AceGrowingComponent:_grow()
+	self:_old__grow()
+
+	self._sv.current_growth_recalculate_progress = 0
 end
 
 return AceGrowingComponent
