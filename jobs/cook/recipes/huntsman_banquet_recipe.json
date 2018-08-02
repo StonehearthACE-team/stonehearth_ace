@@ -1,0 +1,26 @@
+{
+   "type": "recipe",
+   "effort": 75,
+   "work_units": 6,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.huntsman_banquet_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.huntsman_banquet_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.huntsman_banquet_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/huntsman_banquet/huntsman_banquet/huntsman_banquet.png",
+   "workshop": "stonehearth:cook:oven",
+   "level_requirement": 5,
+   "ingredients": [
+      {
+         "uri": "stonehearth:food:venison",
+         "count": 1
+      },
+	  {
+         "material": "raw_food fruit",
+         "count": 3
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:huntsman_banquet"
+      }
+   ]
+}

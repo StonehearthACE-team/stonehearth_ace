@@ -1,0 +1,26 @@
+{
+   "type": "recipe",
+   "effort": 70,
+   "work_units": 6,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.nutty_poultry_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.nutty_poultry_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.nutty_poultry_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/nutty_poultry/nutty_poultry/nutty_poultry.png",
+   "workshop": "stonehearth:cook:oven",
+   "level_requirement": 4,
+   "ingredients": [
+      {
+         "uri": "stonehearth:food:poultry_large",
+         "count": 1
+      },
+	  {
+         "uri": "stonehearth_ace:food:cooked_nuts",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:nutty_poultry"
+      }
+   ]
+}
