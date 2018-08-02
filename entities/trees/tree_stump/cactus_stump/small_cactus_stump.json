@@ -1,0 +1,54 @@
+{
+	"mixins": "stonehearth:mixins:tree",
+	"type": "entity",
+	"components": {
+		"model_variants": {
+			"default": {
+				"models": [
+					{
+						"type": "one_of",
+						"items": [
+							"file(small_cactus_stump.qb)"
+						]
+					}
+				]
+			}
+		},
+		"render_info": {
+			"scale": 0.75
+		},
+		"stonehearth:resource_node": {
+			"resource": "stonehearth:resources:wood:cactus_log"
+		},
+		"mob": {
+			"model_origin": { "x": 0, "y": 0, "z": 0 },
+			"region_origin": { "x": 0, "y": 0, "z": 0 },
+			"align_to_grid": [
+				"x",
+				"z"
+			]
+		},
+		"destination": {
+			"region": [
+				{
+					"min": { "x": -2, "y": 0, "z": -2 },
+					"max": { "x": 2, "y": 1, "z": 2 }
+				}
+			]
+		},
+		"region_collision_shape": {
+			"region": [
+				{
+					"min": { "x": -2, "y": 0, "z": -2 },
+					"max": { "x": 2, "y": 3, "z": 2 }
+				}
+			]
+		}
+	},
+	"entity_data": {
+		"stonehearth:catalog": {
+			"display_name": "i18n(stonehearth_ace:entities.trees.stump)",
+			"description": "i18n(stonehearth_ace:entities.trees.stump_description)"
+		}
+	}
+}
