@@ -1,5 +1,6 @@
 local GrowingComponent = require 'stonehearth.components.growing.growing_component'
 local AceGrowingComponent = class()
+local log = radiant.log.create_logger('growing')
 
 AceGrowingComponent._old_initialize = GrowingComponent.initialize
 function AceGrowingComponent:initialize()
@@ -83,7 +84,7 @@ function AceGrowingComponent:_recalculate_duration()
       local old_expire_time = self._sv.growth_timer:get_expire_time()
       local old_start_time = old_expire_time - old_duration
       local growth_period = self:_get_base_growth_period()
-      local time_remaining = math.max(0, old_start_time + growth_period - stonehearth.calendar:get_elapsed_time())
+      local time_remaining = math.max(0, growth_period * (stonehearth.calendar:get_elapsed_time() - old_start_time) / old_duration)
       local scaled_time_remaining = self:_calculate_growth_period(time_remaining)
       self._sv.growth_timer:destroy()
       self._sv.growth_timer = stonehearth.calendar:set_persistent_timer("GrowingComponent grow_callback", scaled_time_remaining, radiant.bind(self, '_grow'))

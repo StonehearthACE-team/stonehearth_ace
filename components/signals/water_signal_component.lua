@@ -67,7 +67,7 @@ end
 function WaterSignalComponent:set_water_exists(water_entities)
 	local exists = next(water_entities) ~= nil
 
-	local prev_exists = self._water_exists
+	local prev_exists = self._sv._water_exists
 	self._sv._water_exists = exists
 	
 	if exists ~= prev_exists then
@@ -85,7 +85,7 @@ function WaterSignalComponent:set_water_volume(water_entities)
 		volume = volume + w:get_volume()
 	end
 
-	local prev_volume = self._water_volume
+	local prev_volume = self._sv._water_volume
 	self._sv._water_volume = volume
 
 	if volume ~= prev_volume then
@@ -100,7 +100,7 @@ end
 function WaterSignalComponent:set_waterfall_exists(waterfall_components)
 	local exists = next(waterfall_components) ~= nil
 
-	local prev_exists = self._waterfall_exists
+	local prev_exists = self._sv._waterfall_exists
 	self._sv._waterfall_exists = exists
 	
 	if exists ~= prev_exists then
@@ -118,7 +118,7 @@ function WaterSignalComponent:set_waterfall_volume(waterfall_entities)
 		volume = volume + w:get_volume()
 	end
 
-	local prev_volume = self._waterfall_volume
+	local prev_volume = self._sv._waterfall_volume
 	self._sv._waterfall_volume = volume
 
 	if volume ~= prev_volume then
