@@ -1,0 +1,26 @@
+{
+   "type": "recipe",
+   "effort": 50,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.nut_pralines_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.nut_pralines_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.nut_pralines_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/nut_pralines/nut_pralines.png",
+   "level_requirement": 4,
+   "workshop": "stonehearth:cook:oven",
+   "ingredients": [
+      {
+         "uri": "stonehearth:food:sugar",
+         "count": 2
+      },
+      {
+         "material": "raw_food seed_hard",
+         "count": 5
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:nut_pralines"
+      }
+   ]
+}

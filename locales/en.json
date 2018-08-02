@@ -352,7 +352,7 @@
          "parana_pine_tree": {
             "seed": {
                "tree_parana_pine_seed_ghost": {
-                  "display_name": "Parana Pine Nut",
+                  "display_name": "Parana Pine Seed",
                   "description": "TBD"
                }
             },
@@ -579,6 +579,64 @@
                "display_name": "Plate of Cherries",
                "description": "A cherry is always on top, even when there's nothing below."
             }
+         },
+         "cooked_nuts": {
+            "display_name": "Basket of Cooked Nuts",
+            "description": "TBD",
+            "cooked_nuts_serving": {
+               "display_name": "Plate of Cooked Nuts",
+               "description": "TBD"
+            }
+         },
+         "cherry_tart": {
+            "cherry_tart": {
+               "display_name": "Cherry Tart",
+               "description": "TBD"
+            },
+            "cherry_tart_serving": {
+               "display_name": "Slice of Cherry Tart",
+               "description": "TBD"
+            }
+         },
+         "huntsman_banquet": {
+            "huntsman_banquet": {
+               "display_name": "Huntsman's Banquet",
+               "description": "A perfectly roasted venison prepared with a bittersweet woodland sauce."
+            },
+            "huntsman_banquet_serving": {
+               "display_name": "Serving of Huntsman's Banquet",
+               "description": "Still warm and tasty!"
+            }
+         },
+         "nutty_poultry": {
+            "nutty_poultry": {
+               "display_name": "Stirred Poultry & Nuts",
+               "description": "TBD"
+            },
+            "nutty_poultry_serving": {
+               "display_name": "Plate of Stirred Poultry & Nuts",
+               "description": "A very colorful dish."
+            }
+         },
+         "pie_cherry": {
+            "pie_cherry": {
+               "display_name": "Sweet Cherry Pie",
+               "description": "TBD"
+            },
+            "pie_cherry_serving": {
+               "display_name": "Piece of Cherry Pie",
+               "description": "Sweet, red and glistening."
+            }
+         },
+         "nut_pralines": {
+            "nut_pralines": {
+               "display_name": "Nut Pralines",
+               "description": "TBD"
+            },
+            "nut_pralines_serving": {
+               "display_name": "Plate of Nut Pralines",
+               "description": "Crispy, sweet and crunchy!"
+            }
          }
       }
    },
@@ -649,6 +707,18 @@
                   "display_name": "Banner of Vitality Shred"
                }
             }
+         },
+         "food": {
+            "sweet_varanus": {
+               "sweet_varanus": {
+                  "display_name": "Sweetened Varanus",
+                  "description": "An exotic specialty of the dwarven cuisine."
+               },
+               "sweet_varanus_serving": {
+                  "display_name": "Serving of Sweetened Varanus",
+                  "description": "A delicious and traditional meat dish."
+               }
+            }
          }
       }
    },
@@ -668,6 +738,12 @@
                "auto_craft_recipe_dependencies": "Auto Craft Recipe Dependencies",
                "auto_craft_recipe_dependencies_description": "When crafting an item, the crafters will check the inventory to see if there is sufficient of ingredients to use. If not, then they will add more orders to the queue should they need to to fulfill the original order."
             }
+         }
+      },
+      "data": {
+         "constants": {
+            "edible_nuts_resource_name": "Edible Nut",
+            "fruits_resource_name": "Fruit"
          }
       }
    }

@@ -1,0 +1,34 @@
+{
+   "type": "recipe",
+   "effort": 100,
+   "work_units": 10,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.pie_cherry_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.pie_cherry_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.pie_cherry_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/pie_cherry/pie_cherry/pie_cherry.png",
+   "level_requirement": 5,
+   "workshop": "stonehearth:cook:oven",
+   "ingredients": [
+      {
+         "uri": "stonehearth:food:flour",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth:food:sugar",
+         "count": 2
+      },
+      {
+         "uri": "stonehearth:food:egg",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth_ace:food:cherries:cherry_basket",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:pie_cherry"
+      }
+   ]
+}
