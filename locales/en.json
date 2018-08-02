@@ -100,6 +100,40 @@
                "description": "Can be used by a Worker for additional efficiency. Also provides light."
             }
          }
+      },
+      "cook": {
+         "recipes": {
+            "nutty_poultry_recipe": {
+               "recipe_name": "Stirred Poultry & Nuts",
+			   "description": "Stirred and fried large poultry slices with spices and nuts.",
+			   "flavor": "Very popular among the hearthlings from the East!"
+            },
+			"cherry_tart_recipe": {
+               "recipe_name": "Cherry Tart",
+			   "description": "A delicious and fresh dessert for lazy afternoons.",
+			   "flavor": ""
+            },
+			"pie_cherry_recipe": {
+               "recipe_name": "Sweet Cherry Pie",
+			   "description": "A tasty pie that is quite difficult to make.",
+			   "flavor": "Slightly sour."
+            },
+			"nut_pralines_recipe": {
+               "recipe_name": "Nut Pralines",
+			   "description": "Crunchy nuts baked with a delightful caramelized sugar crust.",
+			   "flavor": "'This is SO GOOD' - Mer Burlyhands"
+            },
+			"huntsman_banquet_recipe": {
+               "recipe_name": "Huntsman's Banquet",
+			   "description": "An exquisite cut of venison seasoned with fruity forest flavors.",
+			   "flavor": ""
+            },
+			"cooked_nuts_recipe": {
+               "recipe_name": "Cooked Nuts",
+			   "description": "Shaven and tenderly cooked edible seeds like pines and acorns.",
+			   "flavor": ""
+            }
+         }
       }
    },
    "entities": {
@@ -293,10 +327,8 @@
          }
       },
       "trees": {
-         "ancient_yew_tree": {
-            "display_name": "Ancient Yew Tree",
-            "description": "As beautiful as its old"
-         },
+         "stump": "Tree Stump",
+         "stump_description": "Not a tree anymore...",
          "birch_tree": {
             "ancient_birch_tree": {
                "display_name": "Ancient Birch Tree",
@@ -666,6 +698,15 @@
          "druid": {
             "druid_description": {
                "display_name": "Druid"
+            }
+         },
+         "cook": {
+            "recipes": {
+               "sweet_varanus_recipe": {
+                  "recipe_name": "Sweetened Varanus",
+                  "description": "A highly traditional dwarven meal made with varanus meat and local cherries.",
+                  "flavor": ""
+               }
             }
          }
       },

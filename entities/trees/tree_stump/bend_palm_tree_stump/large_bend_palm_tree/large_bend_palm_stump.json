@@ -1,0 +1,43 @@
+{
+	"type": "entity",
+	"components": {
+		"model_variants": {
+			"default": {
+				"models": [
+					"file(large_bend_palm_stump.qb)"
+				]
+			}
+		},
+		"stonehearth:resource_node": {
+			"harvest_overlay_effect": "stonehearth:effects:chop_overlay_effect",
+			"harvester_effect": "chop",
+			"resource": "stonehearth:resources:wood:oak_log"
+		},
+		"mob": {
+			"model_origin": {"x": -4, "y": 0, "z": 0 },
+			"region_origin": {"x": -3.5, "y": 0, "z": 0.5 }
+		},
+		"destination": {
+			"region": [
+				{
+					"min": {"x": 0, "y": 0, "z": 0 },
+					"max": {"x": 1, "y": 1, "z": 1 }
+				}
+			]
+		},
+		"region_collision_shape": {
+			"region": [
+				{
+					"min": {"x": 0, "y": 0, "z": 0 },
+					"max": {"x": 1, "y": 1, "z": 1 }
+				}
+			]
+		}
+	},
+	"entity_data": {
+		"stonehearth:catalog": {
+			"display_name": "i18n(tree_stump:entities.trees.stump)",
+			"description": "i18n(tree_stump:entities.trees.stump_description)"
+		}
+	}
+}

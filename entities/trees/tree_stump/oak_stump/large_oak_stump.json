@@ -1,0 +1,44 @@
+{
+	"mixins": "stonehearth:mixins:tree",
+	"type": "entity",
+	"components": {
+		"model_variants": {
+			"default": {
+				"models": [
+					"file(large_oak_stump.qb)"
+				]
+			}
+		},
+		"render_info": {
+			"scale": 0.5
+		},
+		"stonehearth:resource_node": {
+			"resource": "stonehearth:resources:wood:oak_log"
+		},
+		"mob": {
+			"region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+		},
+		"destination": {
+			"region": [
+				{
+					"min": { "x": -3, "y": 0, "z": -3 },
+					"max": { "x": 4, "y": 1, "z": 4 }
+				}
+			]
+		},
+		"region_collision_shape": {
+			"region": [
+				{
+					"min": { "x": -3, "y": 0, "z": -3 },
+					"max": { "x": 4, "y": 3, "z": 4 }
+				}
+			]
+		}
+	},
+	"entity_data": {
+		"stonehearth:catalog": {
+			"display_name": "i18n(stonehearth_ace:entities.trees.stump)",
+			"description": "i18n(stonehearth_ace:entities.trees.stump_description)"
+		}
+	}
+}
