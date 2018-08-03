@@ -5,9 +5,10 @@ local Cube3 = _radiant.csg.Cube3
 local Region3 = _radiant.csg.Region3
 local log = radiant.log.create_logger('shepherd_pasture')
 
-AceShepherdPastureComponent._old_destroy = ShepherdPastureComponent.destroy
-function AceShepherdPastureComponent:destroy()
-	self:_old_destroy()
+-- for some reason, overriding the destroy function doesn't work, so we have to override this one that only gets called during destroy
+AceShepherdPastureComponent._old__unregister_with_town = ShepherdPastureComponent._unregister_with_town
+function AceShepherdPastureComponent:_unregister_with_town()
+	self:_old__unregister_with_town()
 
 	-- destroy the add_grass timer and also destroy any grass entities in the pasture
 	self:_destroy_grass_spawn_timer()
@@ -67,7 +68,7 @@ end
 function AceShepherdPastureComponent:_setup_grass_spawn_timer()
 	self:_destroy_grass_spawn_timer()
 	
-	local grass_spawn_period = radiant.entities.get_json(self).grass_spawn_period or '4h+1h'
+	local grass_spawn_period = radiant.entities.get_json(self).grass_spawn_period or '11h+2h'
 	self._grass_spawn_timer = stonehearth.calendar:set_interval('spawn grass', grass_spawn_period, function() self:_spawn_grass() end)
 end
 
