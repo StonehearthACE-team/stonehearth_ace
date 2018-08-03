@@ -14,11 +14,11 @@ end
 
 AceGrowingComponent._old_activate = GrowingComponent.activate
 function AceGrowingComponent:activate()
-	self:_old_activate()
-
 	local json = radiant.entities.get_json(self)
 	self._water_affinity = self:_load_water_affinity_table(json and json.water_affinity)
 	self._flood_period_multiplier = (json and json.flood_period_multiplier) or 2
+
+	self:_old_activate()
 
 	self:_create_water_listener()
 end
@@ -31,7 +31,7 @@ function AceGrowingComponent:destroy()
 end
 
 function AceGrowingComponent:_create_water_listener()
-	self._entity:add_component('stonehearth_ace:water_signal'):set_ticks_per_check(20)
+	self._entity:add_component('stonehearth_ace:water_signal')
 	self._flood_listener = radiant.events.listen(self._entity, 'stonehearth_ace:water_signal:water_exists_changed', self, self._on_water_exists_changed)
 end
 

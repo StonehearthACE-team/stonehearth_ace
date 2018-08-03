@@ -9,7 +9,7 @@ local WaterSignalComponent = class()
 function WaterSignalComponent:initialize()
 	local json = radiant.entities.get_json(self)
 	self._sv._signal_region = json and json.signal_region and Region3(json.signal_region)
-	self._sv.ticks_per_check = math.max((json and json.ticks_per_check) or 2, 1)
+	self._sv.is_urgent = json and json.is_urgent or false
 	self.__saved_variables:mark_changed()
 end
 
@@ -28,18 +28,19 @@ function WaterSignalComponent:post_activate()
 			end
 		end
 	end
-   
-	self._current_tick = 0
-	self._tick_listener = radiant.events.listen(stonehearth.hydrology, 'stonehearth:hydrology:tick', function()
-			self:_on_tick()
-		end)
+	self:_startup()
 end
 
 function WaterSignalComponent:destroy()
-	if self._tick_listener then
-		self._tick_listener:destroy()
-		self._tick_listener = nil
-	end
+	self:_shutdown()
+end
+
+function WaterSignalComponent:_startup()
+	stonehearth_ace.water_signal:register_water_signal(self, self._sv.is_urgent)
+end
+
+function WaterSignalComponent:_shutdown()
+	stonehearth_ace.water_signal:unregister_water_signal(self)
 end
 
 function WaterSignalComponent:_reset()
@@ -50,14 +51,13 @@ function WaterSignalComponent:_reset()
 	self.__saved_variables:mark_changed()
 end
 
+function WaterSignalComponent:get_entity_id()
+	return self._entity:get_id()
+end
+
 function WaterSignalComponent:set_region(region)
 	self._sv._signal_region = region
 	self:_reset()
-end
-
-function WaterSignalComponent:set_ticks_per_check(ticks)
-	self._sv.ticks_per_check = math.max(ticks, 1)
-	self.__saved_variables:mark_changed()
 end
 
 function WaterSignalComponent:get_water_exists()
@@ -126,13 +126,8 @@ function WaterSignalComponent:set_waterfall_volume(waterfall_entities)
 	end
 end
 
-function WaterSignalComponent:_on_tick()
+function WaterSignalComponent:_on_tick_water_signal()
 	if not self._sv._signal_region then
-		return
-	end
-	
-	self._current_tick = self._current_tick + 1
-	if self._current_tick % self._sv.ticks_per_check ~= 0 then
 		return
 	end
 	
