@@ -1,0 +1,92 @@
+{
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(short_pasture_grass.qb)"
+            ]
+         },
+         "full_green": {
+            "models": [
+               "file(short_pasture_grass_full_green.qb)"
+            ]
+         },
+         "full_dry": {
+            "models": [
+               "file(short_pasture_grass_full_dry.qb)"
+            ]
+         },
+         "tuft_green": {
+            "models": [
+               "file(short_pasture_grass_tuft_green.qb)"
+            ]
+         },
+         "tuft_dry": {
+            "models": [
+               "file(short_pasture_grass_tuft_dry.qb)"
+            ]
+         }
+      },
+      "stonehearth:seasonal_model_switcher": {
+         "stonehearth:biome:temperate": {
+            "spring": "default",
+            "summer": "default",
+            "autumn": "full_green",
+            "winter": "full_dry"
+         },
+         "stonehearth:biome:desert": {
+            "spring": "tuft_green",
+            "summer": "tuft_dry",
+            "autumn": "tuft_dry",
+            "winter": "tuft_dry"
+         },
+         "stonehearth:biome:arctic": {
+            "spring": "tuft_green",
+            "summer": "tuft_green",
+            "autumn": "tuft_dry",
+            "winter": "tuft_dry"
+         },
+         "stonehearth_ace:biome:highlands": {
+            "spring": "full_green",
+            "summer": "default",
+            "autumn": "full_dry",
+            "winter": "full_dry"
+         }
+      },
+      "render_info": {
+         "scale": 0.1
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 }
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": 0, "y": 0, "z": 0 },
+               "max": { "x": 1, "y": 1, "z": 1 }
+            }
+         ],
+         "region_collision_type": "none"
+      },
+      "stonehearth:stacks": {
+         "max_stacks": 2
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.terrain.short_pasture_grass.display_name)",
+         "description": "i18n(stonehearth_ace:entities.terrain.short_pasture_grass.description)"
+      },
+      "stonehearth:evolve_data": {
+         "next_stage": "stonehearth_ace:terrain:pasture_grass",
+         "evolve_time": "16h+8h"
+      },
+      "stonehearth:animal_feed": {
+         "calorie_gain": 3
+      },
+      "stonehearth:appeal": {
+         "appeal": 1
+      }
+   }
+}

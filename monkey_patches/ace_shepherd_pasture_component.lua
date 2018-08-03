@@ -112,7 +112,7 @@ function AceShepherdPastureComponent:_spawn_grass(count, grass)
 end
 
 function AceShepherdPastureComponent:_get_grass_uri()
-	return radiant.entities.get_json(self).grass_uri or 'stonehearth:terrain:tall_grass'
+	return radiant.entities.get_json(self).grass_uri or 'stonehearth_ace:terrain:pasture_grass:sprouting'
 end
 
 function AceShepherdPastureComponent:_is_valid_grass_spawn_location(location)

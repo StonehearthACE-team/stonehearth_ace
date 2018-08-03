@@ -8,8 +8,8 @@
    "client_init_script": "file(stonehearth_ace_client)",
    "server_init_script": "file(stonehearth_ace_server)",
    "aliases": {
-      "actions:pet:eat_from_storage": "file(ai/actions/pet/pet_eat_from_storage_action.lua)",
       "actions:pasture_animal:graze_on_grass": "file(ai/actions/pasture_animal/graze_on_grass_action.lua)",
+      "actions:pet:eat_from_storage": "file(ai/actions/pet/pet_eat_from_storage_action.lua)",
       "actions:train": "file(ai/actions/training/train_action.lua)",
       "actions:train_attack": "file(ai/actions/training/train_attack_action.lua)",
       "ai_pack:training": "file(ai/packs/training_ai_pack.json)",
@@ -151,6 +151,7 @@
       "refined:lock": "file(entities/refined/lock/lock.json)",
       "resources:herb:moonbell": "file(entities/resources/herb/moonbell/moonbell.json)",
       "resources:stone:marble_stone": "file(entities/resources/stone/marble_stone)",
+      "resources:thatch_bale": "file(entities/resources/thatch_bale/thatch_bale.json)",
       "resources:wood:birch_log": "file(entities/resources/wood/birch_log/birch_log.json)",
       "resources:wood:parana_pine_log": "file(entities/resources/wood/parana_pine_log/parana_pine_log.json)",
       "resources:wood:yew_log": "file(entities/resources/wood/yew_log/yew_log.json)",
@@ -158,6 +159,10 @@
       "subjects:weather:snow_early": "file(data/weather/snow/snow_early_subject.json)",
       "subjects:weather:snow_late": "file(data/weather/snow/snow_late_subject.json)",
       "task_groups:training": "file(ai/task_groups/training_task_group.lua)",
+      "terrain:pasture_grass": "file(entities/terrain/pasture_grass/pasture_grass.json)",
+      "terrain:pasture_grass:overgrown": "file(entities/terrain/overgrown_pasture_grass/overgrown_pasture_grass.json)",
+      "terrain:pasture_grass:short": "file(entities/terrain/short_pasture_grass/short_pasture_grass.json)",
+      "terrain:pasture_grass:sprouting": "file(entities/terrain/sprouting_pasture_grass/sprouting_pasture_grass.json)",
       "trees:acacia:large:stump": "file(entities/trees/tree_stump/acacia_stump/large_acacia_stump.json)",
       "trees:acacia:small:stump": "file(entities/trees/tree_stump/acacia_stump/small_acacia_stump.json)",
       "trees:bend_palm:large:stump": "file(entities/trees/tree_stump/bend_palm_tree_stump/large_bend_palm_tree/large_bend_palm_stump.json)",
@@ -258,6 +263,7 @@
       "stonehearth/entities/trees/pine_tree_silver/seed/tree_pine_seed_iconic.json": "file(mixins/entities/resources/edible_nuts/edible_nuts.json)",
       "stonehearth/entities/trees/pine_tree_snowy/seed/tree_pine_seed_iconic.json": "file(mixins/entities/resources/edible_nuts/edible_nuts.json)",
       "stonehearth/entities/food/prickly_pear/prickly_pear_basket/prickly_pear_basket.json": "file(mixins/entities/resources/fruit/prickly_pear_basket.json)",
+      "stonehearth/entities/food/wheat_bale/wheat_bale.json": "file(mixins/entities/resources/thatch/wheat_bale.json)",
       "stonehearth:mixins:tree": "file(components/tree_stump/add_stump.json)",
       "stonehearth:trees:acacia:small": "file(mixins/entities/trees/acacia_tree/small_acacia_tree.json)",
       "stonehearth:trees:acacia:large": "file(mixins/entities/trees/acacia_tree/large_acacia_tree.json)",
@@ -294,8 +300,7 @@
       "archipelago_biome:trees:palm:small": "file(mixins/entities/trees/palm_tree/small_palm_tree)",
       "archipelago_biome:trees:palm:sapling": "file(mixins/entities/trees/palm_tree/sapling_palm_tree)",
       "archipelago_biome:trees:papaya": "file(mixins/entities/trees/papaya)",
-      "archipelago_biome:trees:smalea:small": "file(mixins/entities/trees/smalea)",
-      "stonehearth/entities/terrain/tall_grass/tall_grass.json": "file(entities/terrain/tall_grass/tall_grass.json)"
+      "archipelago_biome:trees:smalea:small": "file(mixins/entities/trees/smalea)"
    },
    "overrides": {
       "stonehearth/entities/resources/wood/juniper_log/juniper_log.qb": "file(mixins/entities/resources/wood/juniper_log/juniper_log.qb)",
