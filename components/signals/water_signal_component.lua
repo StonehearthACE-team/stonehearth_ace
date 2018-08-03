@@ -60,6 +60,14 @@ function WaterSignalComponent:set_region(region)
 	self:_reset()
 end
 
+function WaterSignalComponent:set_urgency(is_urgent)
+	if is_urgent ~= self._sv.is_urgent then
+		self._sv.is_urgent = is_urgent
+		self:_shutdown()
+		self:_startup()
+	end
+end
+
 function WaterSignalComponent:get_water_exists()
 	return self._sv._water_exists
 end
