@@ -11,26 +11,26 @@ GrazeOnGround.args = {
 GrazeOnGround.priority = 0
 
 function GrazeOnGround:start_thinking(ai, entity, args)
-	if radiant.entities.get_resource(entity, 'calories') == nil then
-		ai:set_debug_progress('dead: have no calories resource')
-		return
-	end
+   if radiant.entities.get_resource(entity, 'calories') == nil then
+      ai:set_debug_progress('dead: have no calories resource')
+      return
+   end
 
-	-- Constant state
-	self._ai = ai
-	self._entity = entity
-	self._grass_uri = args.grass_uri or 'stonehearth:terrain:tall_grass'
+   -- Constant state
+   self._ai = ai
+   self._entity = entity
+   self._grass_uri = args.grass_uri or 'stonehearth_ace:terrain:pasture_grass'
 
-	-- Mutable state
-	self._ready = false
-	self._food_filter_fn = stonehearth.ai:filter_from_key('food_filter', 'grazing grass', function(item)
-			return item:get_uri() == self._grass_uri
-		end)
-	self._food_rating_fn = function(item) return 1 end
+   -- Mutable state
+   self._ready = false
+   self._food_filter_fn = stonehearth.ai:filter_from_key('food_filter', 'grazing grass', function(item)
+         return item:get_uri() == self._grass_uri
+      end)
+   self._food_rating_fn = function(item) return 1 end
    
-	self._calorie_listener = radiant.events.listen(self._entity, 'stonehearth:expendable_resource_changed:calories', self, self._rethink)
-	self._timer = stonehearth.calendar:set_interval("eat_action hourly", '10m+5m', function() self:_rethink() end, '20m')
-	self:_rethink()  -- Safe to do sync since it can't call both clear_think_output and set_think_output.
+   self._calorie_listener = radiant.events.listen(self._entity, 'stonehearth:expendable_resource_changed:calories', self, self._rethink)
+   self._timer = stonehearth.calendar:set_interval("eat_action hourly", '10m+5m', function() self:_rethink() end, '20m')
+   self:_rethink()  -- Safe to do sync since it can't call both clear_think_output and set_think_output.
 end
 
 function GrazeOnGround:stop_thinking(ai, entity, args)
@@ -45,29 +45,29 @@ function GrazeOnGround:stop_thinking(ai, entity, args)
 end
 
 function GrazeOnGround:_rethink()
-	-- if there's feed out, don't do any grazing
-	local pasture_tag = self._entity:get_component('stonehearth:equipment'):has_item_type('stonehearth:pasture_equipment:tag')
-	if pasture_tag then
-		local pasture = pasture_tag:get_component('stonehearth:shepherded_animal'):get_pasture()
-		if pasture and pasture:is_valid() then
-			local feed_entity = pasture:get_component('stonehearth:shepherd_pasture'):get_feed()
-			if feed_entity then
-				self:_mark_unready()
-				return
-			end
-		end
-	end
+   -- if there's feed out, don't do any grazing
+   local pasture_tag = self._entity:get_component('stonehearth:equipment'):has_item_type('stonehearth:pasture_equipment:tag')
+   if pasture_tag then
+      local pasture = pasture_tag:get_component('stonehearth:shepherded_animal'):get_pasture()
+      if pasture and pasture:is_valid() then
+         local feed_entity = pasture:get_component('stonehearth:shepherd_pasture'):get_feed()
+         if feed_entity then
+            self:_mark_unready()
+            return
+         end
+      end
+   end
 
-	local consumption = self._entity:get_component('stonehearth:consumption')
-	local hunger_score = consumption:get_hunger_score()
-	local min_hunger_to_eat = consumption:get_min_hunger_to_eat_now()
+   local consumption = self._entity:get_component('stonehearth:consumption')
+   local hunger_score = consumption:get_hunger_score()
+   local min_hunger_to_eat = consumption:get_min_hunger_to_eat_now()
    
-	self._ai:set_debug_progress(string.format('hunger = %s; min to eat now = %s', hunger_score, min_hunger_to_eat))
-	if hunger_score >= min_hunger_to_eat then
-		self:_mark_ready()
-	else
-		self:_mark_unready()
-	end
+   self._ai:set_debug_progress(string.format('hunger = %s; min to eat now = %s', hunger_score, min_hunger_to_eat))
+   if hunger_score >= min_hunger_to_eat then
+      self:_mark_ready()
+   else
+      self:_mark_unready()
+   end
 end
 
 function GrazeOnGround:_mark_ready()

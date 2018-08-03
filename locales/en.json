@@ -105,33 +105,33 @@
          "recipes": {
             "nutty_poultry_recipe": {
                "recipe_name": "Stirred Poultry & Nuts",
-			   "description": "Stirred and fried large poultry slices with spices and nuts.",
-			   "flavor": "Very popular among the hearthlings from the East!"
+               "description": "Stirred and fried large poultry slices with spices and nuts.",
+               "flavor": "Very popular among the hearthlings from the East!"
             },
-			"cherry_tart_recipe": {
+            "cherry_tart_recipe": {
                "recipe_name": "Cherry Tart",
-			   "description": "A delicious and fresh dessert for lazy afternoons.",
-			   "flavor": ""
+               "description": "A delicious and fresh dessert for lazy afternoons.",
+               "flavor": ""
             },
-			"pie_cherry_recipe": {
+            "pie_cherry_recipe": {
                "recipe_name": "Sweet Cherry Pie",
-			   "description": "A tasty pie that is quite difficult to make.",
-			   "flavor": "Slightly sour."
+               "description": "A tasty pie that is quite difficult to make.",
+               "flavor": "Slightly sour."
             },
-			"nut_pralines_recipe": {
+            "nut_pralines_recipe": {
                "recipe_name": "Nut Pralines",
-			   "description": "Crunchy nuts baked with a delightful caramelized sugar crust.",
-			   "flavor": "'This is SO GOOD' - Mer Burlyhands"
+               "description": "Crunchy nuts baked with a delightful caramelized sugar crust.",
+               "flavor": "'This is SO GOOD' - Mer Burlyhands"
             },
-			"huntsman_banquet_recipe": {
+            "huntsman_banquet_recipe": {
                "recipe_name": "Huntsman's Banquet",
-			   "description": "An exquisite cut of venison seasoned with fruity forest flavors.",
-			   "flavor": ""
+               "description": "An exquisite cut of venison seasoned with fruity forest flavors.",
+               "flavor": ""
             },
-			"cooked_nuts_recipe": {
+            "cooked_nuts_recipe": {
                "recipe_name": "Cooked Nuts",
-			   "description": "Shaven and tenderly cooked edible seeds like pines and acorns.",
-			   "flavor": ""
+               "description": "Shaven and tenderly cooked edible seeds like pines and acorns.",
+               "flavor": ""
             }
          }
       }
@@ -317,6 +317,10 @@
                "display_name": "Marble Stone",
                "description": "A marb(velous) stone!"
             }
+         },
+         "thatch_bale": {
+            "display_name": "Bundle of Thatch",
+            "description": "Dry grass that can be turned into fodder or used as thatch in crafting."
          }
       },
       "refined": {
@@ -670,6 +674,24 @@
                "description": "Crispy, sweet and crunchy!"
             }
          }
+      },
+      "terrain": {
+         "pasture_grass": {
+            "display_name": "Grass",
+            "description": "Tall grass can be grazed on by animals or harvested for later use."
+         },
+         "overgrown_pasture_grass": {
+            "display_name": "Overgrown Grass",
+            "description": "Overgrown grass can be grazed on by animals or harvested for later use."
+         },
+         "short_pasture_grass": {
+            "display_name": "Short Grass",
+            "description": "Short grass can be grazed on by animals but isn't long enough for thatching."
+         },
+         "sprouting_pasture_grass": {
+            "display_name": "Sprouting Grass",
+            "description": "Grass has just started germinating here, not yet as efficient for grazing."
+         }
       }
    },
    "mountain_folk": {
@@ -784,7 +806,8 @@
       "data": {
          "constants": {
             "edible_nuts_resource_name": "Edible Nut",
-            "fruits_resource_name": "Fruit"
+            "fruits_resource_name": "Fruit",
+            "thatch_resource_name": "Thatching"
          }
       }
    }
