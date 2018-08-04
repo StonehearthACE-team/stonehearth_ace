@@ -31,7 +31,10 @@ end
 -- Paul the Great: the trace callbacks aren't asynchronous, are they? do we have to worry about race conditions here?
 function AceTownPatrol:_switch_to_manual(player_id)
 	self._sv._auto_patrol[player_id] = false
-	self:_get_auto_patrollable_objects(player_id) = self:_get_patrollable_objects(player_id)
+	if not self._sv._auto_patrollable_objects then
+		self._sv._auto_patrollable_objects = {}
+	end
+	self._sv._auto_patrollable_objects[player_id] = self:_get_patrollable_objects(player_id)
 	self._sv._patrollable_objects[player_id] = {}
 
 	-- saved variables will get set by the calling function, don't need to set them here
