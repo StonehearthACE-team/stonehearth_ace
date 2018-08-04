@@ -3,35 +3,35 @@
    "type": "entity",
    "components": {
       "render_info": {
-         "scale": 0.1
+         "scale": 0.33
       },
       "model_variants": {
          "default": {
             "models": [
-               "file(medium_birch_stump.qb)"
+               "file(medium_yew_stump.qb)"
             ]
          }
       },
       "stonehearth:resource_node": {
-         "resource": "stonehearth_ace:resources:wood:birch_log"
+         "resource": "stonehearth_ace:resources:wood:yew_log"
       },
       "mob": {
-         "model_origin": { "x": 0, "y": 0, "z": 0 },
-         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+         "model_origin": { "x": -0.17, "y": 0, "z": 0.17 },
+         "region_origin": { "x": -0.17, "y": 0, "z": 0.17 }
       },
       "destination": {
          "region": [
             {
-               "min": { "x": 0, "y": 0, "z": 0 },
-               "max": { "x": 1, "y": 1, "z": 1 }
+               "min": { "x": -2, "y": 0, "z": -1 },
+               "max": { "x": 1, "y": 1, "z": 2 }
             }
          ]
       },
       "region_collision_shape": {
          "region": [
             {
-               "min": { "x": 0, "y": 0, "z": 0 },
-               "max": { "x": 1, "y": 2, "z": 1 }
+               "min": { "x": -2, "y": 0, "z": -1 },
+               "max": { "x": 1, "y": 2, "z": 2 }
             }
          ]
       }
