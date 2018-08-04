@@ -24,7 +24,7 @@ function GrazeOnGround:start_thinking(ai, entity, args)
    -- Mutable state
    self._ready = false
    self._food_filter_fn = stonehearth.ai:filter_from_key('food_filter', 'grazing grass', function(item)
-         return item:get_uri() == self._grass_uri
+         return string.sub(item:get_uri(), 1, string.len(self._grass_uri)) == self._grass_uri
       end)
    self._food_rating_fn = function(item) return 1 end
    

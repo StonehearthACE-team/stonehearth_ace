@@ -1,0 +1,91 @@
+{
+  "type": "index",
+  "constants": {
+    "climates": {
+      "tropical": {
+        "plant_water_affinity": "HIGH"
+      },
+      "tropical_savanna": {
+        "plant_water_affinity": "MEDIUM"
+      },
+      "dry": {
+        "plant_water_affinity": "LOW"
+      },
+      "temperate": {
+        "plant_water_affinity": "MEDIUM"
+      },
+      "temperate_wet": {
+        "plant_water_affinity": "HIGH"
+      },
+      "continental": {
+        "plant_water_affinity": "MEDIUM"
+      },
+      "continental_dry": {
+        "plant_water_affinity": "LOW"
+      },
+      "polar": {
+        "plant_water_affinity": "LOW"
+      }
+    },
+    "plant_water_affinity": {
+      "LOW": [
+        {
+          "min_water": 0,
+          "period_multiplier": 1
+        },
+        {
+          "min_water": 0.1,
+          "period_multiplier": 0.8
+        },
+        {
+          "min_water": 0.5,
+          "period_multiplier": 1.2
+        },
+        {
+          "min_water": 1,
+          "period_multiplier": 1.5
+        }
+      ],
+      "MEDIUM": [
+        {
+          "min_water": 0,
+          "period_multiplier": 1.5
+        },
+        {
+          "min_water": 0.1,
+          "period_multiplier": 1.2
+        },
+        {
+          "min_water": 0.5,
+          "period_multiplier": 1
+        },
+        {
+          "min_water": 1,
+          "period_multiplier": 0.8
+        },
+        {
+          "min_water": 2,
+          "period_multiplier": 1.2
+        }
+      ],
+      "HIGH": [
+        {
+          "min_water": 0,
+          "period_multiplier": 2
+        },
+        {
+          "min_water": 0.5,
+          "period_multiplier": 1.5
+        },
+        {
+          "min_water": 1,
+          "period_multiplier": 1.2
+        },
+        {
+          "min_water": 2,
+          "period_multiplier": 0.8
+        }
+      ]
+    }
+  }
+}

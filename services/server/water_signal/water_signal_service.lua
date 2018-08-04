@@ -7,7 +7,7 @@ function WaterSignalService:initialize()
 	self._urgent_water_signals = {} -- contains all the urgent water signals
 	self._water_signals_in_buckets = {}	-- contains all the water signals with references to their buckets
 	self._current_bucket_index = 1
-	self._max_buckets = 50
+	self._max_buckets = 20	-- hydrology service ticks happen ~10/second, so our normal checks will happen once every two seconds
 	self._current_tick_index = 1
 	self._tick_listener = radiant.events.listen(stonehearth.hydrology, 'stonehearth:hydrology:tick', function()
 		self:_on_tick()
@@ -82,7 +82,7 @@ function WaterSignalService:_on_tick()
 			water_signal:_on_tick_water_signal()
 		end
 	end
-	
+	log:error('current water tick index: %s', self._current_tick_index)
 	self._current_tick_index = (self._current_tick_index % self._max_buckets) + 1
 end
 

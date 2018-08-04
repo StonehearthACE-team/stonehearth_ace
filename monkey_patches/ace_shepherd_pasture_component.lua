@@ -18,7 +18,7 @@ end
 function AceShepherdPastureComponent:_destroy_grass()
 	local grass_uri = self:_get_grass_uri()
 	local filter_fn = function(entity)
-		return entity:get_uri() == grass_uri
+		return string.sub(entity:get_uri(), 1, string.len(grass_uri)) == grass_uri
 	end
 
 	local size = self:get_size()
@@ -66,10 +66,23 @@ function AceShepherdPastureComponent:_create_pasture_tasks()
 end
 
 function AceShepherdPastureComponent:_setup_grass_spawn_timer()
-	self:_destroy_grass_spawn_timer()
+	-- if the timer already existed, we want to consider the time spent to really be spent
+	local time_remaining = nil
+	if self._grass_spawn_timer then
+		local old_duration = self._sv._grass_spawn_timer:get_duration()
+		local old_expire_time = self._sv._grass_spawn_timer:get_expire_time()
+		local old_start_time = old_expire_time - old_duration
+		local growth_period = self:_get_base_grass_spawn_period()
+	  
+		local old_progress = self:_get_current_growth_recalculate_progress()
+		local new_progress = (1 - old_progress) * (stonehearth.calendar:get_elapsed_time() - old_start_time) / old_duration
+		self._sv.grass_growth_recalculate_progress = old_progress + new_progress
+		time_remaining = math.max(0, growth_period * (1 - self._sv.grass_growth_recalculate_progress))
+	end
+	local scaled_time_remaining = self:_calculate_grass_spawn_period(time_remaining)
 	
-	local grass_spawn_period = radiant.entities.get_json(self).grass_spawn_period or '11h+2h'
-	self._grass_spawn_timer = stonehearth.calendar:set_interval('spawn grass', grass_spawn_period, function() self:_spawn_grass() end)
+	self:_destroy_grass_spawn_timer()
+	self._grass_spawn_timer = stonehearth.calendar:set_interval('spawn grass', scaled_time_remaining, function() self:_spawn_grass() end)
 end
 
 function AceShepherdPastureComponent:_destroy_grass_spawn_timer()
@@ -79,9 +92,25 @@ function AceShepherdPastureComponent:_destroy_grass_spawn_timer()
 	end
 end
 
+function AceShepherdPastureComponent:_get_current_growth_recalculate_progress()
+	return self._sv.grass_growth_recalculate_progress or 0
+end
+
+function AceShepherdPastureComponent:_calculate_grass_spawn_period(growth_period)
+	if not growth_period then
+		growth_period = self:_get_base_grass_spawn_period()
+	end
+	return stonehearth.town:calculate_growth_period(self._entity:get_player_id(), growth_period)
+end
+
+function AceShepherdPastureComponent:_get_base_grass_spawn_period()
+	local spawn_period = radiant.entities.get_json(self).grass_spawn_period or '11h+2h'
+	return stonehearth.calendar:parse_duration(spawn_period)
+end
+
 function AceShepherdPastureComponent:_spawn_grass(count, grass)
 	if not count then
-		count = math.ceil(self:get_num_animals() / 2)
+		count = math.ceil(math.sqrt(self:get_num_animals()))
 	end
 	if count < 1 then
 		return
@@ -93,10 +122,10 @@ function AceShepherdPastureComponent:_spawn_grass(count, grass)
 		return
 	end
 	
-	local grass_uri = self:_get_grass_uri()
+	local grass_uri = self:_get_spawn_grass_uri()
 
 	local rng = _radiant.math.get_default_rng()
-	for i = 1, count do
+	for i = 1, math.min(#grass, count) do
 		-- try to find an unoccupied space in the bounds; if 20 attempts fail, oh well, don't spawn it
 		for attempt = 1, math.min(#grass, 20) do
 			local location = grass[rng:get_int(1, #grass)] + Point3(0, 1, 0)
@@ -112,7 +141,11 @@ function AceShepherdPastureComponent:_spawn_grass(count, grass)
 end
 
 function AceShepherdPastureComponent:_get_grass_uri()
-	return radiant.entities.get_json(self).grass_uri or 'stonehearth_ace:terrain:pasture_grass:sprouting'
+	return radiant.entities.get_json(self).grass_uri or 'stonehearth_ace:terrain:pasture_grass'
+end
+
+function AceShepherdPastureComponent:_get_spawn_grass_uri()
+	return radiant.entities.get_json(self).spawn_grass_uri or 'stonehearth_ace:terrain:pasture_grass:sprouting'
 end
 
 function AceShepherdPastureComponent:_is_valid_grass_spawn_location(location)

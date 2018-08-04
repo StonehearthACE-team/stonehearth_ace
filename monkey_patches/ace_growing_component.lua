@@ -15,7 +15,8 @@ end
 AceGrowingComponent._old_activate = GrowingComponent.activate
 function AceGrowingComponent:activate()
 	local json = radiant.entities.get_json(self)
-	self._water_affinity = self:_load_water_affinity_table(json and json.water_affinity)
+	self._preferred_climate = json and json.preferred_climate
+	self._water_affinity = stonehearth.town:get_water_affinity_table(self._preferred_climate)
 	self._flood_period_multiplier = (json and json.flood_period_multiplier) or 2
 
 	self:_old_activate()
@@ -44,21 +45,8 @@ end
 
 function AceGrowingComponent:_on_water_exists_changed(exists)
 	self._sv.is_flooded = exists
-	self.__saved_variables:mark_changed()
 	self:_recalculate_duration()
-end
-
-function AceGrowingComponent:_load_water_affinity_table(affinity_table)
-	if not affinity_table or not type(affinity_table) == 'table' then
-		affinity_table = {}
-		table.insert(affinity_table, {min_water = 0, period_multiplier = 1.5})
-		table.insert(affinity_table, {min_water = 0.1, period_multiplier = 1.2})
-		table.insert(affinity_table, {min_water = 0.5, period_multiplier = 1})
-		table.insert(affinity_table, {min_water = 1, period_multiplier = 0.8})
-		--table.insert(affinity_table, {min_water = 2, period_multiplier = 1.2})
-	end
-
-	return affinity_table
+	self.__saved_variables:mark_changed()
 end
 
 function AceGrowingComponent:set_water_level(water_level)
@@ -74,26 +62,31 @@ function AceGrowingComponent:set_water_level(water_level)
 	local prev_modifier = self._sv.local_water_modifier
 	if multiplier ~= prev_modifier then
 		self._sv.local_water_modifier = multiplier
-		self.__saved_variables:mark_changed()
 		self:_recalculate_duration()
+		self.__saved_variables:mark_changed()
 	end
 end
 
+-- returns the best affinity and then the next one so you can see the range until it would apply (and its effect)
+function AceGrowingComponent:get_best_water_level()
+	return stonehearth.town:get_best_water_level(self._water_affinity)
+end
+
 function AceGrowingComponent:_recalculate_duration()
-   if self._sv.growth_timer then
-      local old_duration = self._sv.growth_timer:get_duration()
-      local old_expire_time = self._sv.growth_timer:get_expire_time()
-      local old_start_time = old_expire_time - old_duration
-      local growth_period = self:_get_base_growth_period()
+	if self._sv.growth_timer then
+		local old_duration = self._sv.growth_timer:get_duration()
+		local old_expire_time = self._sv.growth_timer:get_expire_time()
+		local old_start_time = old_expire_time - old_duration
+		local growth_period = self:_get_base_growth_period()
 	  
-	  local old_progress = self:_get_current_growth_recalculate_progress()
-	  local new_progress = (1 - old_progress) * (stonehearth.calendar:get_elapsed_time() - old_start_time) / old_duration
-	  self._sv.current_growth_recalculate_progress = old_progress + new_progress
-      local time_remaining = math.max(0, growth_period * (1 - self._sv.current_growth_recalculate_progress))
-      local scaled_time_remaining = self:_calculate_growth_period(time_remaining)
-      self._sv.growth_timer:destroy()
-      self._sv.growth_timer = stonehearth.calendar:set_persistent_timer("GrowingComponent grow_callback", scaled_time_remaining, radiant.bind(self, '_grow'))
-   end
+		local old_progress = self:_get_current_growth_recalculate_progress()
+		local new_progress = (1 - old_progress) * (stonehearth.calendar:get_elapsed_time() - old_start_time) / old_duration
+		self._sv.current_growth_recalculate_progress = old_progress + new_progress
+		local time_remaining = math.max(0, growth_period * (1 - self._sv.current_growth_recalculate_progress))
+		local scaled_time_remaining = self:_calculate_growth_period(time_remaining)
+		self._sv.growth_timer:destroy()
+		self._sv.growth_timer = stonehearth.calendar:set_persistent_timer("GrowingComponent grow_callback", scaled_time_remaining, radiant.bind(self, '_grow'))
+	end
 end
 
 function AceGrowingComponent:_get_current_growth_recalculate_progress()

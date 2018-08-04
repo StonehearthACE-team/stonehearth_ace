@@ -73,6 +73,17 @@ function AceFarmerFieldComponent:_on_water_volume_changed(volume)
 	end
 end
 
+-- returns the best affinity and then the next one so you can see the range until it would apply (and its effect)
+function AceFarmerFieldComponent:get_best_water_level()
+	if self:_is_fallow() then
+		return nil
+	end
+	
+	local json = radiant.resources.load_json(self._sv.current_crop_alias)
+	self._preferred_climate = json and json.preferred_climate
+	return stonehearth.town:get_best_water_level_from_climate(self._preferred_climate)
+end
+
 AceFarmerFieldComponent._old__on_destroy = FarmerFieldComponent._on_destroy
 function AceFarmerFieldComponent:_on_destroy()
 	self:_old__on_destroy()

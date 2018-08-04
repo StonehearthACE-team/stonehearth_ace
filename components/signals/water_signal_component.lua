@@ -26,6 +26,7 @@ function WaterSignalComponent:post_activate()
 			else
 				self._sv._signal_region = Region3(Cube3(Point3.zero, Point3.one))
 			end
+			self.__saved_variables:mark_changed()
 		end
 	end
 	self:_startup()
