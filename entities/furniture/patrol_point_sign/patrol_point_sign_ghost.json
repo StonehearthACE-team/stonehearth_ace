@@ -1,0 +1,25 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(patrol_point_sign.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "description": "i18n(stonehearth_ace:entities.furniture.patrol_point_sign.patrol_point_sign_ghost.description)",
+         "icon": "file(patrol_point_sign.png)",
+         "display_name": "i18n(stonehearth_ace:entities.furniture.patrol_point_sign.patrol_point_sign_ghost.display_name)",
+         "category": "furniture",
+         "material_tags": "wood cloth furniture crafted stockpile_furniture"
+      }
+   }
+}
