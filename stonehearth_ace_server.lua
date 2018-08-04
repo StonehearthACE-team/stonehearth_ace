@@ -13,7 +13,6 @@ local monkey_patches = {
    ace_craft_order = 'stonehearth.components.workshop.craft_order',
    ace_door_component = 'stonehearth.components.door.door_component',
    ace_portal_component = 'stonehearth.components.portal.portal_component',
-   ace_town_patrol_service = 'stonehearth.services.server.town_patrol.town_patrol_service',
    ace_job_component = 'stonehearth.components.job.job_component',
    ace_equipment_piece_component = 'stonehearth.components.equipment_piece.equipment_piece_component',
    ace_farmer_field_component = 'stonehearth.components.farmer_field.farmer_field_component',

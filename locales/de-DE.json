@@ -100,6 +100,40 @@
                "description": "Kann von einem Arbeiter für zusätzliche Effizienz verwendet werden. Stellt auch Licht zur Verfügung."
             }
          }
+      },
+      "cook": {
+         "recipes": {
+            "nutty_poultry_recipe": {
+               "recipe_name": "Stirred Poultry & Nuts",
+               "description": "Stirred and fried large poultry slices with spices and nuts.",
+               "flavor": "Very popular among the hearthlings from the East!"
+            },
+            "cherry_tart_recipe": {
+               "recipe_name": "Cherry Tart",
+               "description": "A delicious and fresh dessert for lazy afternoons.",
+               "flavor": ""
+            },
+            "pie_cherry_recipe": {
+               "recipe_name": "Sweet Cherry Pie",
+               "description": "A tasty pie that is quite difficult to make.",
+               "flavor": "Slightly sour."
+            },
+            "nut_pralines_recipe": {
+               "recipe_name": "Nut Pralines",
+               "description": "Crunchy nuts baked with a delightful caramelized sugar crust.",
+               "flavor": "'This is SO GOOD' - Mer Burlyhands"
+            },
+            "huntsman_banquet_recipe": {
+               "recipe_name": "Huntsman's Banquet",
+               "description": "An exquisite cut of venison seasoned with fruity forest flavors.",
+               "flavor": ""
+            },
+            "cooked_nuts_recipe": {
+               "recipe_name": "Cooked Nuts",
+               "description": "Shaven and tenderly cooked edible seeds like pines and acorns.",
+               "flavor": ""
+            }
+         }
       }
    },
    "entities": {
@@ -283,6 +317,10 @@
                "display_name": "Marmorstein",
                "description": "Ein marmorner Stein!"
             }
+         },
+         "thatch_bale": {
+            "display_name": "Strohbündel",
+            "description": "Trockenes Gras, das zu Futter verarbeitet oder als beim herstellen verwendet werden kann."
          }
       },
       "refined": {
@@ -293,10 +331,8 @@
          }
       },
       "trees": {
-         "ancient_yew_tree": {
-            "display_name": "Uralter Eibenbaum",
-            "description": "So schön wie alt"
-         },
+         "stump": "Baumstumpf",
+         "stump_description": "Kein Baum mehr...",
          "birch_tree": {
             "ancient_birch_tree": {
                "display_name": "Uralter Birkenbaum",
@@ -456,11 +492,37 @@
                "display_name": "Patrouillenpunkt",
                "description": "Lass deine Fußsoldaten patrollieren!"
             }
+         },
+         "patrol_point_sign":{
+            "patrol_point_sign_ghost": {
+               "display_name": "Patrouillenpunkt",
+               "description": "Lass deine Fußsoldaten patrollieren!"
+            }
+         },
+         "patrol_point_tower":{
+            "patrol_point_tower_ghost": {
+               "display_name": "Patrouillenpunkt",
+               "description": "Lass deine Fußsoldaten patrollieren!"
+            }
          }
       },
       "recipes": {
          "carpenter": {
             "patrol_point_recipe": {
+               "recipe_name": "Patrouillenpunkt",
+               "description": "Lass deine Fußsoldaten patrollieren!",
+               "flavor": "Hiermit kannst du nun deine Fußsoldaten kontrollieren :D"
+            }
+         },
+         "mason": {
+            "patrol_point_tower_recipe": {
+               "recipe_name": "Patrouillenpunkt",
+               "description": "Lass deine Fußsoldaten patrollieren!",
+               "flavor": "Hiermit kannst du nun deine Fußsoldaten kontrollieren :D"
+            }
+         },
+         "potter": {
+            "patrol_point_sign_recipe": {
                "recipe_name": "Patrouillenpunkt",
                "description": "Lass deine Fußsoldaten patrollieren!",
                "flavor": "Hiermit kannst du nun deine Fußsoldaten kontrollieren :D"
@@ -579,6 +641,82 @@
                "display_name": "Teller mit Kirschen",
                "description": "Eine Kirsche ist immer oben, auch wenn nichts drunter ist."
             }
+         },
+         "cooked_nuts": {
+            "display_name": "Basket of Cooked Nuts",
+            "description": "TBD",
+            "cooked_nuts_serving": {
+               "display_name": "Plate of Cooked Nuts",
+               "description": "TBD"
+            }
+         },
+         "cherry_tart": {
+            "cherry_tart": {
+               "display_name": "Cherry Tart",
+               "description": "TBD"
+            },
+            "cherry_tart_serving": {
+               "display_name": "Slice of Cherry Tart",
+               "description": "TBD"
+            }
+         },
+         "huntsman_banquet": {
+            "huntsman_banquet": {
+               "display_name": "Huntsman's Banquet",
+               "description": "A perfectly roasted venison prepared with a bittersweet woodland sauce."
+            },
+            "huntsman_banquet_serving": {
+               "display_name": "Serving of Huntsman's Banquet",
+               "description": "Still warm and tasty!"
+            }
+         },
+         "nutty_poultry": {
+            "nutty_poultry": {
+               "display_name": "Stirred Poultry & Nuts",
+               "description": "TBD"
+            },
+            "nutty_poultry_serving": {
+               "display_name": "Plate of Stirred Poultry & Nuts",
+               "description": "A very colorful dish."
+            }
+         },
+         "pie_cherry": {
+            "pie_cherry": {
+               "display_name": "Sweet Cherry Pie",
+               "description": "TBD"
+            },
+            "pie_cherry_serving": {
+               "display_name": "Piece of Cherry Pie",
+               "description": "Sweet, red and glistening."
+            }
+         },
+         "nut_pralines": {
+            "nut_pralines": {
+               "display_name": "Nut Pralines",
+               "description": "TBD"
+            },
+            "nut_pralines_serving": {
+               "display_name": "Plate of Nut Pralines",
+               "description": "Crispy, sweet and crunchy!"
+            }
+         }
+      },
+      "terrain": {
+         "pasture_grass": {
+            "display_name": "Grass",
+            "description": "Tall grass can be grazed on by animals or harvested for later use."
+         },
+         "overgrown_pasture_grass": {
+            "display_name": "Overgrown Grass",
+            "description": "Overgrown grass can be grazed on by animals or harvested for later use."
+         },
+         "short_pasture_grass": {
+            "display_name": "Short Grass",
+            "description": "Short grass can be grazed on by animals but isn't long enough for thatching."
+         },
+         "sprouting_pasture_grass": {
+            "display_name": "Sprouting Grass",
+            "description": "Grass has just started germinating here, not yet as efficient for grazing."
          }
       }
    },
@@ -608,6 +746,15 @@
          "druid": {
             "druid_description": {
                "display_name": "Druide"
+            }
+         },
+         "cook": {
+            "recipes": {
+               "sweet_varanus_recipe": {
+                  "recipe_name": "Sweetened Varanus",
+                  "description": "A highly traditional dwarven meal made with varanus meat and local cherries.",
+                  "flavor": ""
+               }
             }
          }
       },
@@ -649,6 +796,18 @@
                   "display_name": "Banner der Vitalität Fetzen"
                }
             }
+         },
+         "food": {
+            "sweet_varanus": {
+               "sweet_varanus": {
+                  "display_name": "Sweetened Varanus",
+                  "description": "An exotic specialty of the dwarven cuisine."
+               },
+               "sweet_varanus_serving": {
+                  "display_name": "Serving of Sweetened Varanus",
+                  "description": "A delicious and traditional meat dish."
+               }
+            }
          }
       }
    },
@@ -668,6 +827,13 @@
                "auto_craft_recipe_dependencies": "Automatische Rezepteinstellung",
                "auto_craft_recipe_dependencies_description": "Beim Herstellen eines Gegenstands überprüfen die Handwerker das Stadtlager, um zu sehen, ob genügend Zutaten vorhanden sind. Wenn nicht, werden Sie der Warteschlange automatisch weitere Aufträge hinzufügen, um den Auftrag erfüllen zu können."
             }
+         }
+      },
+      "data": {
+         "constants": {
+            "edible_nuts_resource_name": "Edible Nut",
+            "fruits_resource_name": "Fruit",
+            "thatch_resource_name": "Thatching"
          }
       }
    }
