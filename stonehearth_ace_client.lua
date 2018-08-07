@@ -1,3 +1,8 @@
+
+-- Why this is a copy of the server script?
+-- Shouldn't this be a client script?
+-- Like the one in Rayya or NA mods?
+
 stonehearth_ace = {}
 
 stonehearth_ace.util = require("lib.util")
