@@ -321,6 +321,20 @@
          "thatch_bale": {
             "display_name": "Bundle of Thatch",
             "description": "Dry grass that can be turned into fodder or used as thatch in crafting."
+         },
+         "pelt": {
+            "bitsy_spider_pelt": {
+               "display_name": "Spider Chitin",
+               "description": "Hard, shiny, and quite dead"
+            },
+            "grasshopper_pelt": {
+               "display_name": "Grasshopper Chitin",
+               "description": "Hard, shiny, and quite dead"
+            },
+            "scorpion_pelt": {
+               "display_name": "Scorpion Chitin",
+               "description": "Hard, shiny, and quite dead"
+            }
          }
       },
       "refined": {
@@ -493,13 +507,13 @@
                "description": "Let your footmen patrol!"
             }
          },
-         "patrol_point_sign":{
+         "patrol_point_sign": {
             "patrol_point_sign_ghost": {
                "display_name": "Patrol Point",
                "description": "Let your footmen patrol!"
             }
          },
-         "patrol_point_tower":{
+         "patrol_point_tower": {
             "patrol_point_tower_ghost": {
                "display_name": "Patrol Point",
                "description": "Let your footmen patrol!"
@@ -629,6 +643,42 @@
       "critters": {
          "wombat": {
             "species": "wombat"
+         },
+         "bitsy_spider": {
+            "species": "bitsy spider",
+            "display_name": "Bitsy Spider",
+            "description": "Creepy little creature.",
+            "bitsy_spider_jerky": {
+               "display_name": "Spider Bug Meat"
+            }
+         },
+         "grasshopper": {
+            "grasshopper_jerky": {
+               "display_name": "Grasshopper Bug Meat"
+            },
+            "species": "grasshopper",
+            "description": "Cute little insect",
+            "display_name": "Grasshopper"
+         },
+         "scorpion": {
+            "scorpion_jerky": {
+               "display_name": "Scorpion Bug Meat"
+            },
+            "species": "scorpion",
+            "display_name": "Scorpion",
+            "description": "Creepy little creature."
+         },
+         "ladybug_beetle": {
+            "display_name": "Ladybug Beetle",
+            "description": "Cute little insect"
+         },
+         "scarab_beetle": {
+            "display_name": "Scarab Beetle",
+            "description": "Creepy little insect"
+         },
+         "stag_beetle": {
+            "display_name": "Stag Beetle",
+            "description": "Creepy little insect"
          }
       },
       "food": {

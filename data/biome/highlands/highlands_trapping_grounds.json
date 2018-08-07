@@ -1,0 +1,25 @@
+{
+   "components": {
+      "stonehearth:trapping_grounds": {
+         "trappable_animal_weights": {
+            "bugs": {
+               "stonehearth:doodles": 100,
+               "stonehearth_ace:ladybug_beetle": 100,
+               "stonehearth_ace:grasshopper": 100,
+			   "stonehearth:bitsy_ant": 0,
+			   "stonehearth:beetle": 0
+            }
+         },
+         "terrain_spawn_intervals": {
+            "rock": {
+               "spawn_interval_min": "60m",
+               "spawn_interval_max": "90m"
+            },
+            "default": {
+               "spawn_interval_min": "50m",
+               "spawn_interval_max": "70m"
+            }
+         }
+      }
+   }
+}

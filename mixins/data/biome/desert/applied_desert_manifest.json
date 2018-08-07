@@ -1,18 +1,12 @@
 {
    "mixintos" : {
-	  "stonehearth:bitsy_ant": "file(critters/scorpion)",
-	  "stonehearth/entities/critters/bitsy_ant/bitsy_ant_bug_meat/bitsy_ant_bug_meat.json": "/stonehearth_ace/entities/critters/scorpion/bug_meat/scorpion_bug_meat.json",
-	  "stonehearth/entities/resources/chitin/bitsy_ant_chitin/bitsy_ant_chitin.json": "/stonehearth_ace/entities/critters/scorpion/chitin/scorpion_chitin.json",
-	  
-	  "stonehearth:beetle": "file(critters/scarab_beetle)",
-	  "stonehearth/entities/critters/beetle/beetle_bug_meat/beetle_bug_meat.json": "/stonehearth_ace/entities/critters/scarab_beetle/bug_meat/scarab_beetle_bug_meat.json",
-	  "stonehearth/entities/resources/chitin/beetle_chitin/beetle_chitin.json": "/stonehearth_ace/entities/critters/scarab_beetle/chitin/scarab_beetle_chitin.json"	  
+	  "stonehearth:trapper:trapping_grounds": "file(desert_trapping_grounds.json)"
    },
    "overrides" : {
-      "stonehearth/entities/critters/bitsy_ant/bitsy_ant.qb": "/stonehearth_ace/entities/critters/scorpion/scorpion.qb",
-	  "stonehearth/entities/critters/bitsy_ant/bitsy_ant.png": "/stonehearth_ace/entities/critters/scorpion/scorpion.png",
+	  "stonehearth/entities/critters/squirrel/squirrel.qb": "file(critters/squirrel/squirrel.qb)",
+	  "stonehearth/entities/critters/squirrel/squirrel.png": "file(critters/squirrel/squirrel.png)",
 	  
-	  "stonehearth/entities/critters/beetle/beetle.qb": "/stonehearth_ace/entities/critters/scarab_beetle/scarab_beetle.qb",
-	  "stonehearth/entities/critters/beetle/beetle.png": "/stonehearth_ace/entities/critters/scarab_beetle/scarab_beetle.png"
+	  "stonehearth/entities/critters/rabbit/rabbit.qb": "file(critters/rabbit/rabbit.qb)",
+	  "stonehearth/entities/critters/rabbit/rabbit.png": "file(critters/rabbit/rabbit.png)"
    }
 }

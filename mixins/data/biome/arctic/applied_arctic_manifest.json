@@ -1,11 +1,15 @@
 {
    "mixintos" : {
-	  "stonehearth:bitsy_ant": "file(critters/bitsy_spider)",
-	  "stonehearth/entities/critters/bitsy_ant/bitsy_ant_bug_meat/bitsy_ant_bug_meat.json": "/stonehearth_ace/entities/critters/bitsy_spider/bug_meat/bitsy_spider_bug_meat.json",
-	  "stonehearth/entities/resources/chitin/bitsy_ant_chitin/bitsy_ant_chitin.json": "/stonehearth_ace/entities/critters/bitsy_spider/chitin/bitsy_spider_chitin.json"
+	  "stonehearth:trapper:trapping_grounds": "file(arctic_trapping_grounds.json)"
    },
    "overrides" : {
-      "stonehearth/entities/critters/bitsy_ant/bitsy_ant.qb": "/stonehearth_ace/entities/critters/bitsy_spider/bitsy_spider.qb",
-	  "stonehearth/entities/critters/bitsy_ant/bitsy_ant.png": "/stonehearth_ace/entities/critters/bitsy_spider/bitsy_spider.png"
+      "stonehearth/entities/critters/squirrel/squirrel.qb": "file(critters/squirrel/squirrel.qb)",
+	  "stonehearth/entities/critters/squirrel/squirrel.png": "file(critters/squirrel/squirrel.png)",
+	  
+	  "stonehearth/entities/critters/red_fox_wolf/red_fox_wolf.qb": "file(critters/red_fox_wolf/red_fox_wolf.qb)",
+	  "stonehearth/entities/critters/red_fox_wolf/red_fox_wolf.png": "file(critters/red_fox_wolf/red_fox_wolf.png)",
+	  
+	  "stonehearth/entities/critters/rabbit/rabbit.qb": "file(critters/rabbit/rabbit.qb)",
+	  "stonehearth/entities/critters/rabbit/rabbit.png": "file(critters/rabbit/rabbit.png)"
    }
 }

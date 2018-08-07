@@ -1,0 +1,144 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:critter",
+   "components": {
+      "render_info": {
+         "animation_table": "file(../../../../stonehearth/data/rigs/entities/critters/rabbit)",
+         "scale": 0.06
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(grasshopper.qb)"
+            ]
+         }
+      },
+      "stonehearth:resource_node": {
+         "category": "herding",
+         "harvest_overlay_effect": "stonehearth:effects:chop_overlay_effect",
+         "harvester_effect": "fiddle",
+         "description": "harvest_animal",
+         "harvestable_by_harvest_tool": false,
+         "resource_loot_table": {
+            "entries": {
+               "pelt": {
+                  "num_rolls": {
+                     "min": 1,
+                     "max": 1
+                  },
+                  "items": {
+                     "pelt": {
+                        "uri": "stonehearth_ace:resources:grasshopper_chitin",
+                        "weight": 1
+                     },
+                     "none": {
+                        "uri": "",
+                        "weight": 3
+                     }
+                  }
+               }
+            }
+         }
+      },
+      "stonehearth:attributes": {
+         "speed": {
+            "type": "basic",
+            "value": 80
+         }
+      },
+      "stonehearth:loot_drops": {
+         "force_auto_loot": true,
+         "entries": {
+            "default": {
+               "items": {
+                  "skin": {
+                     "uri": "stonehearth_ace:grasshopper_bug_meat",
+                     "weight": 1
+                  }
+               }
+            }
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:species": {
+         "id": "grasshopper",
+         "display_name": "i18n(stonehearth_ace:entities.critters.grasshopper.species)"
+      },
+      "stonehearth:entity_radius": 0.3,
+      "stonehearth:bait_trap": {
+         "can_trap": true,
+         "catch_chance": 0.6,
+         "trigger_trap_on_failure_chance": 0.4
+      },
+      "stonehearth:harvest_beast_loot_table": {
+         "entries": {
+            "default": {
+               "num_rolls": {
+                  "min": 1,
+                  "max": 1
+               },
+               "items": {
+                  "jerky": {
+                     "uri": "stonehearth_ace:grasshopper_bug_meat",
+                     "weight": 3
+                  },
+                  "pelt": {
+                     "uri": "stonehearth_ace:resources:grasshopper_chitin",
+                     "weight": 1
+                  }
+               }
+            }
+         }
+      },
+      "stonehearth:pasture_animal": {
+         "added_equipment": [
+            "stonehearth:pasture_equipment:adult_animal_collar"
+         ],
+         "food_material": "bitsy_ant_feed_edible"
+      },
+      "stonehearth:calories": {
+         "hungry_threshold": 0,
+         "famished_threshold": 0,
+         "malnourished_threshold": -10,
+         "hourly_calorie_loss": 0.5
+      },
+      "stonehearth:portrait": {
+         "portrait_types": {
+            "headshot": {
+               "camera": {
+                  "pos": [
+                     17,
+                     0.8,
+                     -27
+                  ],
+                  "look_at": [
+                     0,
+                     0.6,
+                     0
+                  ],
+                  "fov": 45
+               }
+            }
+         }
+      },
+      "stonehearth:conversation_type": "animal",
+      "stonehearth:catalog": {
+         "player_id": "animals",
+         "display_name": "i18n(stonehearth_ace:entities.critters.grasshopper.display_name)",
+         "description": "i18n(stonehearth_ace:entities.critters.grasshopper.description)",
+         "icon": "file(grasshopper.png)",
+         "category": "pets"
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 500,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": true,
+            "sellable": false,
+            "shopkeeper_level": 2,
+            "shopkeeper_type": "pet"
+         }
+      }
+   }
+}

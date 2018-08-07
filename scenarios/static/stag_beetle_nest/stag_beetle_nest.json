@@ -1,0 +1,21 @@
+{
+   "mixins": "/stonehearth/scenarios/static/critter_nest/critter_nest.json",
+   "name": "stag_beetle_nest",
+   "habitat_types": [
+      "forest",
+      "plains",
+      "foothills"
+   ],
+   "biomes": [
+      "stonehearth:biome:arctic"
+   ],
+   "data": {
+      "num_critters": {
+         "min": 1,
+         "max": 2
+      },
+      "critter_type": [
+         "stonehearth_ace:stag_beetle"
+      ]
+   }
+}

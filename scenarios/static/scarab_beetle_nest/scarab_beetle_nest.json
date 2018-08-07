@@ -1,0 +1,21 @@
+{
+   "mixins": "/stonehearth/scenarios/static/critter_nest/critter_nest.json",
+   "name": "scarab_beetle_nest",
+   "habitat_types": [
+      "forest",
+      "plains",
+      "foothills"
+   ],
+   "biomes": [
+      "stonehearth:biome:desert"
+   ],
+   "data": {
+      "num_critters": {
+         "min": 2,
+         "max": 5
+      },
+      "critter_type": [
+         "stonehearth_ace:scarab_beetle"
+      ]
+   }
+}

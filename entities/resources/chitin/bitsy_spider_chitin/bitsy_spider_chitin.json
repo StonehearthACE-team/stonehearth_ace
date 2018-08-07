@@ -1,0 +1,41 @@
+{
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(bitsy_spider_chitin.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 2,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true,
+            "shopkeeper_level": 1,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.resources.pelt.bitsy_spider_pelt.display_name)",
+         "description": "i18n(stonehearth_ace:entities.resources.pelt.bitsy_spider_pelt.description)",
+         "icon": "file(bitsy_spider_chitin.png)",
+         "is_item": true,
+         "category": "resources",
+         "material_tags": "stockpile_animal_part resource animal_part chitin hard_pelt"
+      },
+      "stonehearth:appeal": {
+         "appeal": -2
+      }
+   },
+   "stonehearth:net_worth": {
+      "value_in_gold": 1
+   },
+   "shop_info": {
+      "sellable": true
+   }
+}
