@@ -82,7 +82,7 @@ function WaterSignalService:_on_tick()
 			water_signal:_on_tick_water_signal()
 		end
 	end
-	log:error('current water tick index: %s', self._current_tick_index)
+	log:spam('current water tick index: %s', self._current_tick_index)
 	self._current_tick_index = (self._current_tick_index % self._max_buckets) + 1
 end
 
