@@ -5,13 +5,20 @@
       "model_variants": {
          "default": {
             "models": [
-               "file(bone_material.qb)"
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(bone_material.qb)",
+                     "file(bone_material_2.qb)",
+                     "file(bone_material_3.qb)"
+                  ]
+               }
             ]
          }
+      },
+      "mob": {
+         "model_origin": { "x": 0.05, "y": 0, "z": 0.05 }
       }
-   },
-   "mob": {
-      "model_origin": { "x": 0.05, "y": 0, "z": 0 }
    },
    "entity_data": {
       "stonehearth:net_worth": {
