@@ -1,12 +1,35 @@
 {
    "mixintos" : {
-	  "stonehearth:trapper:trapping_grounds": "file(desert_trapping_grounds.json)"
+	  "stonehearth:trapper:trapping_grounds": "file(desert_trapping_grounds.json)",
+	  "stonehearth:mixins:boulder": "file(boulders/desert_boulder.json)"
    },
    "overrides" : {
+      "stonehearth/entities/boulders/small_boulder/small_boulder_1.qb": "file(boulders/small_boulder/desert_small_boulder_1.qb)",  
+      "stonehearth/entities/boulders/medium_boulder/medium_boulder_1.qb": "file(boulders/medium_boulder/desert_medium_boulder_1.qb)",
+      "stonehearth/entities/boulders/medium_boulder/medium_boulder_2.qb": "file(boulders/medium_boulder/desert_medium_boulder_2.qb)",
+      "stonehearth/entities/boulders/medium_boulder/medium_boulder_3.qb": "file(boulders/medium_boulder/desert_medium_boulder_3.qb)",
+      "stonehearth/entities/boulders/large_boulder/large_boulder_1.qb": "file(boulders/large_boulder/desert_large_boulder_1.qb)",
+      "stonehearth/entities/boulders/large_boulder/large_boulder_2.qb": "file(boulders/large_boulder/desert_large_boulder_2.qb)",	  
+   
 	  "stonehearth/entities/critters/squirrel/squirrel.qb": "file(critters/squirrel/squirrel.qb)",
 	  "stonehearth/entities/critters/squirrel/squirrel.png": "file(critters/squirrel/squirrel.png)",
 	  
 	  "stonehearth/entities/critters/rabbit/rabbit.qb": "file(critters/rabbit/rabbit.qb)",
-	  "stonehearth/entities/critters/rabbit/rabbit.png": "file(critters/rabbit/rabbit.png)"
+	  "stonehearth/entities/critters/rabbit/rabbit.png": "file(critters/rabbit/rabbit.png)",
+	  
+	  "stonehearth/entities/resources/copper/copper_ore/copper_ore.qb": "stonehearth_ace/entities/resources/copper/copper_ore/sandstone_copper_ore.qb",
+	  "stonehearth/entities/resources/copper/copper_ore/copper_ore.png": "stonehearth_ace/entities/resources/copper/copper_ore/sandstone_copper_ore.png",
+	  
+	  "stonehearth/entities/resources/tin/tin_ore/tin_ore.qb": "stonehearth_ace/entities/resources/tin/tin_ore/sandstone_tin_ore.qb",
+	  "stonehearth/entities/resources/tin/tin_ore/tin_ore.png": "stonehearth_ace/entities/resources/tin/tin_ore/sandstone_tin_ore.png",
+	  
+	  "stonehearth/entities/resources/iron/iron_ore/iron_ore.qb": "stonehearth_ace/entities/resources/iron/iron_ore/sandstone_iron_ore.qb",
+	  "stonehearth/entities/resources/iron/iron_ore/iron_ore.png": "stonehearth_ace/entities/resources/iron/iron_ore/sandstone_iron_ore.png",
+	  
+	  "stonehearth/entities/resources/silver/silver_ore/silver_ore.qb": "stonehearth_ace/entities/resources/silver/silver_ore/sandstone_silver_ore.qb",
+	  "stonehearth/entities/resources/silver/silver_ore/silver_ore.png": "stonehearth_ace/entities/resources/silver/silver_ore/sandstone_silver_ore.png",
+	  
+	  "stonehearth/entities/resources/gold/gold_ore/gold_ore.qb": "stonehearth_ace/entities/resources/gold/gold_ore/sandstone_gold_ore.qb",
+	  "stonehearth/entities/resources/gold/gold_ore/gold_ore.png": "stonehearth_ace/entities/resources/gold/gold_ore/sandstone_gold_ore.png"
    }
 }

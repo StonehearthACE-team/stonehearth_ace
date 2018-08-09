@@ -2,12 +2,18 @@
    "craftable_recipes": {
       "ingredients": {
          "recipes": {
+			"broth": {
+               "recipe": "file(broth_recipe.json)"
+            }
          }
       },
       "food": {
          "recipes": {
             "cooked_nuts": {
                "recipe": "file(cooked_nuts_recipe.json)"
+            },
+			"bone_marrow": {
+               "recipe": "file(bone_marrow_recipe.json)"
             }
          }
       },

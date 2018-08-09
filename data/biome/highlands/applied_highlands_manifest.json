@@ -1,0 +1,33 @@
+{
+   "info" : {
+      "name" : "highlands_manifest",
+      "deferred_load": true,
+      "version" : 3
+   },
+   "aliases" : {},
+   "mixintos" :  {
+      "stonehearth:trapper:trapping_grounds": "file(highlands_trapping_grounds.json)"
+   },
+   "overrides" : {
+      "stonehearth/entities/critters/squirrel/squirrel.qb": "file(critters/squirrel/squirrel.qb)",
+	  "stonehearth/entities/critters/squirrel/squirrel.png": "file(critters/squirrel/squirrel.png)",
+	  
+	  "stonehearth/entities/critters/rabbit/rabbit.qb": "file(critters/rabbit/rabbit.qb)",
+	  "stonehearth/entities/critters/rabbit/rabbit.png": "file(critters/rabbit/rabbit.png)",
+	  
+	  "stonehearth/entities/resources/copper/copper_ore/copper_ore.qb": "stonehearth_ace/entities/resources/copper/copper_ore/limestone_copper_ore.qb",
+	  "stonehearth/entities/resources/copper/copper_ore/copper_ore.png": "stonehearth_ace/entities/resources/copper/copper_ore/limestone_copper_ore.png",
+	  
+	  "stonehearth/entities/resources/tin/tin_ore/tin_ore.qb": "stonehearth_ace/entities/resources/tin/tin_ore/limestone_tin_ore.qb",
+	  "stonehearth/entities/resources/tin/tin_ore/tin_ore.png": "stonehearth_ace/entities/resources/tin/tin_ore/limestone_tin_ore.png",
+	  
+	  "stonehearth/entities/resources/iron/iron_ore/iron_ore.qb": "stonehearth_ace/entities/resources/iron/iron_ore/limestone_iron_ore.qb",
+	  "stonehearth/entities/resources/iron/iron_ore/iron_ore.png": "stonehearth_ace/entities/resources/iron/iron_ore/limestone_iron_ore.png",
+	  
+	  "stonehearth/entities/resources/silver/silver_ore/silver_ore.qb": "stonehearth_ace/entities/resources/silver/silver_ore/limestone_silver_ore.qb",
+	  "stonehearth/entities/resources/silver/silver_ore/silver_ore.png": "stonehearth_ace/entities/resources/silver/silver_ore/limestone_silver_ore.png",
+	  
+	  "stonehearth/entities/resources/gold/gold_ore/gold_ore.qb": "stonehearth_ace/entities/resources/gold/gold_ore/limestone_gold_ore.qb",
+	  "stonehearth/entities/resources/gold/gold_ore/gold_ore.png": "stonehearth_ace/entities/resources/gold/gold_ore/limestone_gold_ore.png"
+   }
+}

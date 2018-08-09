@@ -73,7 +73,21 @@
             "marblesprout_transmute_recipe": {
                "recipe_name": "Marblesprout Seeds (x3)",
                "description": "Separate seeds from the stone",
-               "flavor": "Only a skilled hand can harvest the weaker seeds, but the stone is lost in the process."
+               "flavor": "Only a skilled hand can harvest the weaker seeds, but the flower is lost in the process."
+            },
+            "marblesprout_drying_recipe": {
+               "recipe_name": "Marble Stone",
+               "description": "Dry marblesprout flowers to form a hunk of stone used in ornate furniture.",
+               "flavor": "It is a marbelous stone!"
+            }
+         }
+      },
+      "potter": {
+         "recipes": {
+            "bone_clay_recipe": {
+               "recipe_name": "Mound of Bone Clay",
+               "description": "Required for creating porcelain and beautiful ornate ceramics.",
+               "flavor": ""
             }
          }
       },
@@ -132,6 +146,16 @@
                "recipe_name": "Cooked Nuts",
                "description": "Shaven and tenderly cooked edible seeds like pines and acorns.",
                "flavor": ""
+            },
+            "broth_recipe": {
+               "recipe_name": "Broth",
+               "description": "A very nutritious and filling simmer, broth is both an ingredient or a meal on its own.",
+               "flavor": "It isn't exactly tasty, though..."
+            },
+            "bone_marrow_recipe": {
+               "recipe_name": "Bone Marrow",
+               "description": "Extremely nutritious roast made with animal bones.",
+               "flavor": "A meal for desperate times."
             }
          }
       }
@@ -310,12 +334,32 @@
             "moonbell": {
                "display_name": "Moonbell Flowers",
                "description": "An herb commonly used for medicinal purposes"
+            },
+            "marblesprout": {
+               "display_name": "Marblesprout Flower",
+               "description": "An uncommon herb that will harden and turn into marble when dried."
             }
          },
          "stone": {
             "marble_stone": {
-               "display_name": "Marble Stone",
-               "description": "A marb(velous) stone!"
+               "display_name": "Hunk 'o Marble",
+               "description": "Used by masons to make really pretty stone works!"
+            },
+            "feldspar_stone": {
+               "display_name": "Hunk 'o Feldspar",
+               "description": "A not so ordinary rock, feldspar can be used to create porcelain"
+            },
+            "limestone_stone": {
+               "display_name": "Hunk 'o Limestone",
+               "description": "A heavy, ordinary rock"
+            },
+            "sandstone_stone": {
+               "display_name": "Hunk 'o Sandstone",
+               "description": "A heavy, ordinary rock"
+            },
+            "slate_stone": {
+               "display_name": "Hunk 'o Slate",
+               "description": "A heavy, ordinary rock"
             }
          },
          "thatch_bale": {
@@ -334,6 +378,16 @@
             "scorpion_pelt": {
                "display_name": "Scorpion Chitin",
                "description": "Hard, shiny, and quite dead"
+            }
+         },
+         "bone_material": {
+            "display_name": "Bone Material",
+            "description": "Common bone from an average creature"
+         },
+         "clay": {
+            "bone_clay_mound": {
+               "display_name": "Mound of Bone Clay",
+               "description": "Use it in pottery to make really pretty porcelain!"
             }
          }
       },
@@ -749,6 +803,26 @@
                "display_name": "Plate of Nut Pralines",
                "description": "Crispy, sweet and crunchy!"
             }
+         },
+         "broth": {
+            "broth_serving": {
+               "description": "",
+               "display_name": "Bowl of Broth"
+            },
+            "broth": {
+               "display_name": "Broth",
+               "description": "Very nutritious but not really exciting."
+            }
+         },
+         "bone_marrow": {
+            "bone_marrow_serving": {
+               "description": "",
+               "display_name": "Serving of Bone Marrow"
+            },
+            "bone_marrow": {
+               "display_name": "Bone Marrow",
+               "description": "Extremely nutritious but definitely not satisfying."
+            }
          }
       },
       "terrain": {
@@ -883,7 +957,8 @@
          "constants": {
             "edible_nuts_resource_name": "Edible Nut",
             "fruits_resource_name": "Fruit",
-            "thatch_resource_name": "Thatching"
+            "thatch_resource_name": "Thatching",
+            "bone_resource_name": "Bone"
          }
       }
    }

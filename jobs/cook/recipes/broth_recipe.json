@@ -1,0 +1,30 @@
+{
+   "type": "recipe",
+   "effort": 40,
+   "work_units": 2,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.broth_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.broth_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.broth_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/broth/broth/broth.png",
+   "workshop": "stonehearth:cook:workbench",
+   "level_requirement": 0,
+   "ingredients": [
+      {
+         "material": "bone resource",
+         "count": 1
+      },
+	  {
+         "material": "food_container raw_food vegetable",
+         "count": 1
+      },
+      {
+         "material": "food meat raw",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:broth"
+      }
+   ]
+}
