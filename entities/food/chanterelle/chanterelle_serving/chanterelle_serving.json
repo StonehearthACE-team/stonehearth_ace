@@ -1,0 +1,34 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(chanterelle_serving.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:item": {
+         "category": "food",
+         "destroy_on_uncarry": true
+      },
+      "stonehearth:food": {
+         "stonehearth:sitting_on_chair": {
+            "satisfaction": 22
+         },
+         "default": {
+            "satisfaction": 18
+         },
+         "quality": 1
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth:entities.food.sweet_potato.sweet_potato_serving.display_name)",
+         "description": "i18n(stonehearth:entities.food.sweet_potato.sweet_potato_serving.description)",
+         "material_tags": "food vegetarian",
+         "subject_override": "stonehearth_ace:fungi:chanterelle"
+      }
+   }
+}

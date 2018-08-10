@@ -346,7 +346,7 @@
           "exclusion_radius" : 1
         }
       },
-      "stonehearth:plants:silkweed" : {
+      "stonehearth_ace:plants:cotton_plant" : {
         "placement_type" : "dense",
         "parameters" : {
           "grid_multiple" : 2.5,
@@ -362,10 +362,10 @@
           "exclusion_radius" : 2
         }
       },
-      "stonehearth:plants:carrot" : {
+      "stonehearth_ace:fungi:chanterelle" : {
         "placement_type" : "dense",
         "parameters" : {
-          "grid_multiple" : 2.5,
+          "grid_multiple" : 4,
           "item_density" : 0.2,
           "exclusion_radius" : 0
         }
@@ -560,31 +560,32 @@
           "plains" : {
             "1" : {
               "stonehearth_ace:plants:moonbell" : 1,
-              "stonehearth:plants:silkweed" : 1.5,
+              "stonehearth_ace:plants:cotton_plant" : 1.5,
               "stonehearth_ace:plants:marblesprout:wild" : 0.1,
-              "stonehearth:plants:carrot" : 0.2
+              "stonehearth_ace:fungi:chanterelle" : 1
             }
           },
           "foothills" : {
             "1" : {
               "stonehearth:plants:frostsnap" : 1,
               "stonehearth_ace:plants:moonbell" : 7,
-              "stonehearth:plants:silkweed" : 1,
+              "stonehearth_ace:plants:cotton_plant" : 1,
               "stonehearth_ace:plants:marblesprout:wild" : 2,
-              "stonehearth:plants:carrot" : 1
+              "stonehearth_ace:fungi:chanterelle" : 1.2
             },
             "2" : {
               "stonehearth:plants:frostsnap" : 1,
               "stonehearth_ace:plants:moonbell" : 1,
               "stonehearth_ace:plants:marblesprout:wild" : 0.5,
-              "stonehearth:plants:carrot" : 0.5
+              "stonehearth_ace:fungi:chanterelle" : 0.4
             }
           },
           "mountains" : {
             "1" : {
               "stonehearth:plants:frostsnap" : 1,
               "stonehearth_ace:plants:moonbell" : 2,
-              "stonehearth_ace:plants:marblesprout:wild" : 3
+              "stonehearth_ace:plants:marblesprout:wild" : 3,
+			  "stonehearth_ace:fungi:chanterelle" : 0.2
             },
             "3" : {
               "stonehearth_ace:plants:moonbell" : 0.5,

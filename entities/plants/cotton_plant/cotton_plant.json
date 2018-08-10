@@ -1,0 +1,60 @@
+{
+   "type": "entity",
+   "mixins": "file(cotton_plant_ghost.json)",
+   "components": {
+      "model_variants": {
+         "depleted": {
+            "models": [
+               "file(cotton_plant_harvested.qb)"
+            ]
+         }
+      },
+      "stonehearth:renewable_resource_node": {
+         "resource": "stonehearth_ace:resources:fiber:cotton_bundle",
+         "category": "harvest",
+         "harvest_overlay_effect": "stonehearth:effects:harvest_plant_overlay_effect",
+         "unripe_description": "i18n(stonehearth_ace:entities.plants.cotton_plant.cotton_plant.unripe_description)",
+         "renewal_time": "30h",
+         "resource_loot_table": {
+            "entries": {
+               "optional": {
+                  "num_rolls": {
+                     "min": 1,
+                     "max": 1
+                  },
+                  "items": {
+                     "none": {
+                        "uri": "",
+                        "weight": 4
+                     },
+                     "pelt": {
+                        "uri": "stonehearth_ace:plants:cotton_plant:seed",
+                        "weight": 1
+                     }
+                  }
+               }
+            }
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(cotton_plant_iconic.json)",
+         "ghost_form": "file(cotton_plant_ghost.json)",
+         "placeable_on_ground": true,
+         "hide_undeploy_ui": false
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 1,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 1
+      }
+   }
+}

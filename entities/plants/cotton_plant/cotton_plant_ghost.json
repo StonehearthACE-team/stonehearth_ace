@@ -1,0 +1,30 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "type": "entity",
+   "components": {
+      "render_info": {
+         "scale": 0.1
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "mob_collision_type": "clutter",
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(cotton_plant.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.plants.cotton_plant.cotton_plant.display_name)",
+         "description": "i18n(stonehearth_ace:entities.plants.cotton_plant.cotton_plant.description)",
+         "icon": "file(cotton_plant.png)",
+         "category": "plants",
+         "material_tags": "plant stockpile_plant"
+      }
+   }
+}

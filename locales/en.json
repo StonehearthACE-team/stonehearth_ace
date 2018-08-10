@@ -168,6 +168,10 @@
             "marblesprout_seeds": {
                "display_name": "Marblesprout Seeds",
                "description": "Learn to grow marblesprouts."
+            },
+            "cotton_seeds": {
+               "display_name": "Cotton Seeds",
+               "description": "Learn to grow cotton."
             }
          }
       },
@@ -297,6 +301,43 @@
                   "description": "Beauty is its own reward (Rock solid)"
                }
             }
+         },
+         "cotton_crop": {
+            "display_name": "Cotton",
+            "description": "This plant's fiber can be spun into thread",
+            "growth_stage": {
+               "000": {
+                  "name": "Cotton Seedling",
+                  "description": "A long journey ahead for this one."
+               },
+               "001": {
+                  "name": "Cotton Sprout",
+                  "description": "Life is just starting..."
+               },
+               "002": {
+                  "name": "Cotton Bud",
+                  "description": "Growing steadily! Should start blooming anytime!"
+               },
+               "003": {
+                  "name": "Cotton Bloom",
+                  "description": "It's flowering! Enjoy it while it lasts..."
+               },
+               "004": {
+                  "name": "Cotton Fading Bloom",
+                  "description": "The flowers are already fading..."
+               },
+               "005": {
+                  "name": "Immature Cotton",
+                  "description": "The plant is drying and the cotton should be mature soon!"
+               },
+               "006": {
+                  "name": "Mature Cotton",
+                  "description": "Ready for harvest!"
+               },
+               "022": {
+                  "name": "Rotten Cotton"
+               }
+            }
          }
       },
       "decorations": {
@@ -386,6 +427,12 @@
             "bone_clay_mound": {
                "display_name": "Mound of Bone Clay",
                "description": "Use it in pottery to make really pretty porcelain!"
+            }
+         },
+         "fiber": {
+            "cotton_bundle": {
+               "display_name": "Cotton Bundle",
+               "description": "Soft to the touch. Spinnable into thread"
             }
          }
       },
@@ -674,6 +721,41 @@
                   "display_name": "Stemming Cherry Bush"
                }
             }
+         },
+         "cotton_plant": {
+            "cotton_plant": {
+               "unripe_description": "This plant has been harvested and hasn't grown back yet.",
+               "display_name": "Wild Cotton",
+               "description": "This plant's fiber can be spun into thread."
+            },
+            "cotton_plant_bud": {
+               "display_name": "Budding Cotton",
+               "description": "It's almost there! Should start blooming soon."
+            },
+            "cotton_plant_stem": {
+               "display_name": "Stemming Cotton",
+               "description": "Still growing!"
+            },
+            "cotton_plant_sprout": {
+               "display_name": "Cotton Sproutling",
+               "description": "Just needs some time and care."
+            },
+            "cotton_plant_seed": {
+               "display_name": "Wild Cotton Seed",
+               "description": "Can be planted to grow fiber which can be spun into thread."
+            },
+            "cotton_plant_bloom": {
+               "display_name": "Blooming Cotton",
+               "description": "Look at all the blooms! They shall fade away quickly..."
+            },
+            "cotton_plant_fading": {
+               "display_name": "Fading Cotton",
+               "description": "The blooms are fading... But it shall give cotton buds soon!"
+            },
+            "cotton_plant_maturing": {
+               "display_name": "Maturing Cotton",
+               "description": "The cotton buds have started maturing and shall be ready soon enough!"
+            }
          }
       },
       "decoration": {
@@ -821,6 +903,12 @@
                "display_name": "Bone Marrow",
                "description": "Extremely nutritious but definitely not satisfying."
             }
+         },
+         "chanterelle": {
+            "chanterelle_basket": {
+               "display_name": "Basket of Chanterelles",
+               "description": "Delicious mushrooms ready to be eaten!"
+            }
          }
       },
       "terrain": {
@@ -839,6 +927,32 @@
          "sprouting_pasture_grass": {
             "display_name": "Sprouting Grass",
             "description": "Grass has just started germinating here, not yet as efficient for grazing."
+         }
+      },
+      "fungi": {
+         "chanterelle": {
+            "chanterelle_ghost": {
+               "display_name": "Chanterelle",
+               "description": "A delicious edible mushroom"
+            },
+            "colony": {
+               "chanterelle_colony": {
+                  "display_name": "Colony of Chanterelle",
+                  "description": "Can be placed to grow into larger, edible mushrooms."
+               }
+            },
+            "spreading": {
+               "chanterelle_spreading": {
+                  "display_name": "Spreading Chanterelle",
+                  "description": "The spores have dispersed from the colony and the mushrooms started growing."
+               }
+            },
+            "developing": {
+               "chanterelle_developing": {
+                  "display_name": "Developing Chanterelle",
+                  "description": "The fungi are sprawling and will soon be large enough!"
+               }
+            }
          }
       }
    },
