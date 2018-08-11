@@ -5,7 +5,7 @@
       "model_variants": {
          "default": {
             "models": [
-               "file(chanterelle_serving.qb)"
+               "file(boiled_shrooms_serving.qb)"
             ]
          }
       }
@@ -17,18 +17,18 @@
       },
       "stonehearth:food": {
          "stonehearth:sitting_on_chair": {
-            "satisfaction": 22
+            "satisfaction": 42
          },
          "default": {
-            "satisfaction": 18
+            "satisfaction": 38
          },
-         "quality": 1
+         "quality": 3
       },
       "stonehearth:catalog": {
-         "display_name": "i18n(stonehearth_ace:entities.food.chanterelle.chanterelle_serving.display_name)",
-         "description": "i18n(stonehearth_ace:entities.food.chanterelle.chanterelle_serving.description)",
-         "material_tags": "food vegetarian",
-         "subject_override": "stonehearth_ace:fungi:chanterelle"
+         "display_name": "i18n(stonehearth_ace:entities.food.boiled_shrooms.boiled_shrooms_serving.display_name)",
+         "description": "i18n(stonehearth_ace:entities.food.boiled_shrooms.boiled_shrooms_serving.description)",
+         "material_tags": "food fungi meat",
+         "subject_override": "stonehearth_ace:food:boiled_shrooms"
       }
    }
 }

@@ -1,0 +1,22 @@
+{
+   "type": "recipe",
+   "effort": 40,
+   "work_units": 2,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.boiled_shrooms_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.boiled_shrooms_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.boiled_shrooms_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/boiled_shrooms/boiled_shrooms/boiled_shrooms.png",
+   "workshop": "stonehearth:cook:workbench",
+   "level_requirement": 0,
+   "ingredients": [
+      {
+         "material": "raw_food fungi",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:boiled_shrooms"
+      }
+   ]
+}

@@ -1,0 +1,28 @@
+{
+   "type": "recipe",
+   "effort": 55,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.herbalist.recipes.chanterelle_colony_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.chanterelle_colony_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.chanterelle_colony_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/fungi/chanterelle/colony/chanterelle_colony.png",
+   "workshop": "stonehearth:herbalist:workbench",
+   "level_requirement": 2,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:fungi:chanterelle",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:fungi:chanterelle:colony"
+      },
+      {
+         "item": "stonehearth_ace:fungi:chanterelle:colony"
+      },
+      {
+         "item": "stonehearth_ace:fungi:chanterelle:colony"
+      }
+   ]
+}

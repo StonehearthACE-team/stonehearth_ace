@@ -1,0 +1,28 @@
+{
+   "type": "recipe",
+   "effort": 55,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.herbalist.recipes.winter_morel_colony_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.winter_morel_colony_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.winter_morel_colony_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/fungi/winter_morel/colony/winter_morel_colony.png",
+   "workshop": "stonehearth:herbalist:workbench",
+   "level_requirement": 2,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:fungi:winter_morel",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:fungi:winter_morel:colony"
+      },
+      {
+         "item": "stonehearth_ace:fungi:winter_morel:colony"
+      },
+      {
+         "item": "stonehearth_ace:fungi:winter_morel:colony"
+      }
+   ]
+}

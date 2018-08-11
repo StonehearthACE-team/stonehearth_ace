@@ -1,0 +1,26 @@
+{
+   "type": "recipe",
+   "effort": 65,
+   "work_units": 1,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.shroom_omelette_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.shroom_omelette_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.shroom_omelette_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/shroom_omelette/shroom_omelette/shroom_omelette.png",
+   "level_requirement": 2,
+   "workshop": "stonehearth:cook:workbench",
+   "ingredients": [
+      {
+         "uri": "stonehearth:food:egg",
+         "count": 2
+      },
+      {
+         "material": "raw_food fungi",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:shroom_omelette"
+      }
+   ]
+}

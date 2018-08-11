@@ -1,0 +1,38 @@
+{
+   "landscape": {
+      "placement_table": {
+         "stonehearth_ace:fungi:bolete": {
+            "placement_type": "dense",
+            "parameters": {
+               "grid_multiple": 2.6,
+               "item_density": 0.3,
+               "exclusion_radius": 0
+            }
+         }
+      },
+      "scattered": {
+         "plants": {
+            "weights": {
+               "plains": {
+                  "1": {
+                     "stonehearth_ace:fungi:bolete": 0.2
+                  }
+               },
+               "foothills": {
+                  "1": {
+                     "stonehearth_ace:fungi:bolete": 0.6
+                  },
+                  "2": {
+                     "stonehearth_ace:fungi:bolete": 1
+                  }
+               },
+               "mountains": {
+                  "1": {
+                     "stonehearth_ace:fungi:bolete": 0.2
+                  }
+               }
+            }
+         }
+      }
+   }
+}

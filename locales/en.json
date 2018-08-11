@@ -63,6 +63,7 @@
    "jobs": {
       "herbalist": {
          "recipes": {
+            "refined_fungi_name": "Fungal Refinement",
             "moonbell_transmute_recipe": {
                "recipe_name": "Moonbell Seeds (x3)",
                "description": "Separate seeds from the herbs",
@@ -77,6 +78,26 @@
                "recipe_name": "Marble Stone",
                "description": "Dry marblesprout flowers to form a hunk of stone used in ornate furniture.",
                "flavor": "It is a marbelous stone!"
+            },
+            "bolete_colony_recipe": {
+               "recipe_name": "Bolete Colony (x3)",
+               "description": "Use existing fungus to create more colonies to grow into new fungi.",
+               "flavor": ""
+            },
+            "chanterelle_colony_recipe": {
+               "recipe_name": "Chanterelle Colony (x3)",
+               "description": "Use existing fungus to create more colonies to grow into new fungi.",
+               "flavor": ""
+            },
+            "winter_morel_colony_recipe": {
+               "recipe_name": "Winter Morel Colony (x3)",
+               "description": "Use existing fungus to create more colonies to grow into new fungi.",
+               "flavor": ""
+            },
+            "desert_truffle_colony_recipe": {
+               "recipe_name": "Desert Truffle Colony (x3)",
+               "description": "Use existing fungus to create more colonies to grow into new fungi.",
+               "flavor": ""
             }
          }
       },
@@ -154,6 +175,16 @@
                "recipe_name": "Bone Marrow",
                "description": "Extremely nutritious roast made with animal bones.",
                "flavor": "A meal for desperate times."
+            },
+			"boiled_shrooms_recipe": {
+               "recipe_name": "Boiled Shrooms",
+               "description": "Boiling mushrooms will remove most of their impurities and improve their consistency.",
+               "flavor": ""
+            },
+            "shroom_omelette_recipe": {
+               "recipe_name": "Shroom Omelette",
+               "description": "A satisfying and tasty dish that is also easy to make.",
+               "flavor": ""
             }
          }
       }
@@ -908,6 +939,60 @@
             "chanterelle_basket": {
                "display_name": "Basket of Chanterelles",
                "description": "Delicious mushrooms ready to be eaten!"
+            },
+            "chanterelle_serving": {
+               "display_name": "Serving of Chanterelles",
+               "description": "Tasty fungi!"
+            }
+         },
+         "desert_truffle": {
+            "desert_truffle_basket": {
+               "display_name": "Basket of Desert Truffles",
+               "description": "Delicious mushrooms ready to be eaten!"
+            },
+            "desert_truffle_serving": {
+               "display_name": "Serving of Desert Truffles",
+               "description": "Tasty fungi!"
+            }
+         },
+         "bolete": {
+            "bolete_basket": {
+               "display_name": "Basket of Boletes",
+               "description": "Delicious mushrooms ready to be eaten!"
+            },
+            "bolete_serving": {
+               "display_name": "Serving of Boletes",
+               "description": "Tasty fungi!"
+            }
+         },
+         "winter_morel": {
+            "winter_morel_basket": {
+               "display_name": "Basket of Winter Morels",
+               "description": "Delicious mushrooms ready to be eaten!"
+            },
+            "winter_morel_serving": {
+               "display_name": "Serving of Winter Morels",
+               "description": "Tasty fungi!"
+            }
+         },
+         "boiled_shrooms": {
+            "boiled_shrooms": {
+               "display_name": "Boiled Shrooms",
+               "description": "A simple yet satisfying boiling of diverse mushrooms."
+            },
+            "boiled_shrooms_serving": {
+               "display_name": "Bowl of Boiled Shrooms",
+               "description": ""
+            }
+         },
+         "shroom_omelette": {
+            "shroom_omelette": {
+               "display_name": "Shroom Omelette",
+               "description": "Slightly more satisfying than your regular omelette."
+            },
+            "shroom_omelette_serving": {
+               "display_name": "Serving of Shroom Omelette",
+               "description": ""
             }
          }
       },
@@ -932,24 +1017,96 @@
       "fungi": {
          "chanterelle": {
             "chanterelle_ghost": {
-               "display_name": "Chanterelle",
-               "description": "A delicious edible mushroom"
+               "display_name": "Chanterelles",
+               "description": "A group of delicious edible mushrooms"
             },
             "colony": {
                "chanterelle_colony": {
-                  "display_name": "Colony of Chanterelle",
-                  "description": "Can be placed to grow into larger, edible mushrooms."
+                  "display_name": "Colony of Chanterelles",
+                  "description": "Can be placed to grow into larger, edible mushrooms"
                }
             },
             "spreading": {
                "chanterelle_spreading": {
-                  "display_name": "Spreading Chanterelle",
-                  "description": "The spores have dispersed from the colony and the mushrooms started growing."
+                  "display_name": "Spreading Chanterelles",
+                  "description": "The spores have dispersed from the colony and the mushrooms started growing"
                }
             },
             "developing": {
                "chanterelle_developing": {
-                  "display_name": "Developing Chanterelle",
+                  "display_name": "Developing Chanterelles",
+                  "description": "The fungi are sprawling and will soon be large enough!"
+               }
+            }
+         },
+         "desert_truffle": {
+            "desert_truffle_ghost": {
+               "display_name": "Desert Truffles",
+               "description": "Hearty mushrooms that can thrive among the roots of flowers"
+            },
+            "colony": {
+               "desert_truffle_colony": {
+                  "display_name": "Colony of Desert Truffles",
+                  "description": "Can be placed to grow into larger, edible mushrooms"
+               }
+            },
+            "developing": {
+               "desert_truffle_developing": {
+                  "display_name": "Developing Desert Truffles",
+                  "description": "The fungi are sprawling and will soon be large enough!"
+               }
+            },
+            "spreading": {
+               "desert_truffle_spreading": {
+                  "display_name": "Spreading Desert Truffles",
+                  "description": "The spores have dispersed from the colony and the mushrooms started growing"
+               }
+            }
+         },
+         "bolete": {
+            "bolete_ghost": {
+               "display_name": "Boletes",
+               "description": "A tasty and coveted forest delicacy"
+            },
+            "colony": {
+               "bolete_colony": {
+                  "display_name": "Colony of Boletes",
+                  "description": "Can be placed to grow into larger, edible mushrooms"
+               }
+            },
+            "spreading": {
+               "bolete_spreading": {
+                  "display_name": "Spreading Boletes",
+                  "description": "The spores have dispersed from the colony and the mushrooms started growing"
+               }
+            },
+            "developing": {
+               "bolete_developing": {
+                  "display_name": "Developing Boletes",
+                  "description": "The fungi are sprawling and will soon be large enough!"
+               }
+            }
+         },
+         "winter_morel": {
+            "winter_morel_ghost": {
+               "display_name": "Winter Morels",
+               "description": "A very sought of northern fungi that tastes great!"
+            },
+            "colony": {
+               "winter_morel_colony": {
+                  "display_name": "Colony of Winter Morels",
+                  "description": "Can be placed to grow into larger, edible mushrooms"
+               }
+            },
+            "spreading": {
+               "winter_morel_spreading": {
+                  "display_name": "Spreading Winter Morels",
+                  "description": "The spores have dispersed from the colony and the mushrooms started growing"
+               }
+            },
+            "developing": {
+               "winter_morel_developing": {
+                  "display_name": "Developing Winter Morels",
                   "description": "The fungi are sprawling and will soon be large enough!"
                }
             }
@@ -1070,7 +1227,8 @@
             "edible_nuts_resource_name": "Edible Nut",
             "fruits_resource_name": "Fruit",
             "thatch_resource_name": "Thatching",
-            "bone_resource_name": "Bone"
+            "bone_resource_name": "Bone",
+            "fungi_resource_name": "Fungi"
          }
       }
    }
