@@ -1,0 +1,222 @@
+#stonehearthTerrainVision {
+   position: absolute;
+   bottom: 5px;
+   right: 300px;
+
+   #visionButton {
+      .control;
+      display: inline-block;
+      height: 55px;
+      padding-right: 10px;
+      width: 52px;
+      bottom: 0px;
+      background: url(./images/building_normal.png) center no-repeat;
+   }
+
+   #visionButton.normal {
+      background: url(./images/building_normal.png) center no-repeat;
+   }
+
+   #visionButton.xray {
+      background: url(./images/building_xray.png) center no-repeat;
+   }
+
+   #visionButton.rpg {
+      background: url(./images/building_rpg.png) center no-repeat;
+   }
+
+   .buttonLabel {
+      position: relative;
+      top: 24px;
+      font-size: 15px;
+      color: #aaaaaa;
+      padding-left: 5px;
+   }
+
+   .terrainButton {
+      .control;
+      display: inline-block;
+      height: 55px;
+      min-width: 52px;
+      text-align: center;
+      transition: filter 0.50s;
+      &:hover {
+         filter: brightness(1.4);
+      }
+   }
+
+   #sliceButton {
+      background: url(./images/normal.png) center no-repeat;
+   }
+
+   #sliceButton.normal {
+      .buttonLabel {
+         color: #aaaaaa;
+      }
+      background-image: url(./images/normal.png);
+   }
+
+   #sliceButton.clip {
+      .buttonLabel {
+         color: #ffc000;
+      }
+      background-image: url(./images/clip.png);
+   }
+
+   #xrayButton {
+      background: url(./images/xray.png) center no-repeat;
+   }
+
+   #xrayButton.full {
+      .buttonLabel {
+         color: #ffc000;
+      }
+      background-image: url(./images/clip.png);
+   }
+
+   #xrayButton.flat {
+      .buttonLabel {
+         color: #ffc000;
+      }
+      background-image: url(./images/clip.png);
+   }
+
+   .palette {
+      position: absolute;
+      bottom: 60px;
+      text-align: center;
+      padding: 4px;
+      background: rgba(0,0,0,0.5);
+      visibility:hidden;
+
+      .button {
+         .button;
+         min-width: 50px;
+         height: 31px;
+      }
+   }
+
+   #slicePalette {
+      #depth {
+         .controlFont;
+         padding: 10px 0px 10px 0px;
+         width: 70px;
+         font-size: 22px;
+         color: #ff7200;
+         background: #000;
+         vertical-align: middle;
+      }
+
+      #clipUp {
+         background: url(./images/clip_up.png);
+      }
+
+      #clipUpSingle {
+         background: url(./images/clip_up_single.png);
+      }
+
+      #clipDownSingle {
+         background: url(./images/clip_down_single.png);
+      }
+
+      #clipDown {
+         background: url(./images/clip_down.png);
+      }
+   }
+
+   #slicePalette.clip {
+      visibility:visible;
+   }
+
+   #slicePalette.noclip {
+      visibility:hidden;
+   }
+
+   #xrayPalette {
+      top: -84px;
+      visibility:hidden;
+      text-align: center;
+
+      .xrayButton {
+         .control;
+         color: #aaa;
+         font-size: 18px;
+         background: #000;
+         padding: 4px 6px 0px 6px;
+      }
+
+      #xrayFull.full {
+         color: #ffc000;
+      }
+
+      #xrayFlat.flat {
+         color: #ffc000;
+      }
+   }
+
+   #xrayPalette.full {
+      visibility:visible;
+   }
+
+   #xrayPalette.flat {
+      visibility:visible;
+   }
+
+   #appealHeatmapButton {
+      background: url(./images/heatmap_button_disabled.png) center no-repeat;
+   }
+
+   #appealHeatmapButton.active {
+      .buttonLabel {
+         color: #ffc000;
+      }
+      background-image: url(./images/heatmap_button.png);
+   }
+
+   #appealCursorReadout {
+      position: fixed;
+      pointer-events: none;
+      text-align: center;
+
+      &.inactive {
+         display: none;
+      }
+         
+      .handle {
+         position: absolute;
+         top: 41.5px;
+         left: 43px;
+         width: 28px;
+         height: 11px;
+      }
+
+      .content {
+         padding: 3px 8px;
+         
+         position: relative;
+         top: 50px;
+
+         background-color: #ebebeb;
+         border: 3px #3a3431 solid;
+         border-radius: 8px;
+
+         font-family: 'GroboldRegular';
+         font-size: 18px;
+         color: #545454;
+
+         .header {
+            margin: auto;
+         }
+
+         .icon {
+            width: 48px;
+            height: 48px;
+            vertical-align: middle;
+         }
+
+         .label {
+            font-size: 17px;
+         }
+      }
+   }
+}

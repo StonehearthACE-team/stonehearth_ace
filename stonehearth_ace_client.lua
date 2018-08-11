@@ -2,13 +2,19 @@
 -- Why this is a copy of the server script?
 -- Shouldn't this be a client script?
 -- Like the one in Rayya or NA mods?
+-- Paul: as far as I can tell, the only stuff it was really missing from the stonehearth_client.lua script
+--    was the on_server_ready stuff that I just now added. (The other stuff is generic stuff, but if you
+--    see something else we should add, by all means, go ahead. I didn't look at RC or NA.)
+--    So the thing about the monkey-patches is that if you use a component (like the portal_component below)
+--    with both server and client services/scripts, you have to monkey-patch it in both places. The alternative
+--    is to replace the file completely in the manifest, but as we know that limits compatibility with other mods.
 
 stonehearth_ace = {}
 
 stonehearth_ace.util = require("lib.util")
 
 local service_creation_order = {
-   
+   'heatmap'
 }
 
 local monkey_patches = {
@@ -47,6 +53,14 @@ function stonehearth_ace:_on_init()
    for _, name in ipairs(service_creation_order) do
       create_service(name)
    end
+
+   radiant.events.listen(radiant, 'radiant:client:server_ready', function()
+      for _, name in ipairs(service_creation_order) do
+         if stonehearth_ace[name].on_server_ready then
+            stonehearth_ace[name]:on_server_ready()
+         end
+      end
+   end)
 
    radiant.log.write_('stonehearth_ace', 0, 'ACE client initialized')
 end

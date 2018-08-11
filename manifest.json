@@ -112,6 +112,7 @@
       "gizmos:water_pump_topper": "file(entities/gizmos/water_pump/water_pump_topper.json)",
       "grasshopper": "file(entities/critters/grasshopper/grasshopper.json)",
       "grasshopper_bug_meat": "file(entities/critters/grasshopper/grasshopper_bug_meat/grasshopper_bug_meat.json)",
+      "heatmap:keys": "file(services/client/heatmap/data/keys.json)",
       "ladybug_beetle": "file(entities/critters/ladybug_beetle/ladybug_beetle.json)",
       "mining:arctic_loot_table": "file(data/biome/arctic_mining_loot_table.json)",
       "mining:base_loot_table": "file(services/server/mining/mining_loot_tables.json)",
@@ -400,9 +401,9 @@
       "stonehearth:mining:base_loot_table": "stonehearth_ace:mining:base_loot_table",
       "stonehearth/data/biome/arctic_mining_loot_table.json": "stonehearth_ace:mining:arctic_loot_table",
       "stonehearth/data/biome/desert_mining_loot_table.json": "stonehearth_ace:mining:desert_loot_table",
-	  "stonehearth/data/biome/desert_generation_data.json": "file(data/biome/desert_generation_data.json)",
-	  "stonehearth/data/biome/arctic_generation_data.json": "file(data/biome/arctic_generation_data.json)",
-	  "stonehearth/data/biome/temperate_generation_data.json": "file(data/biome/temperate_generation_data.json)"
+	    "stonehearth/data/biome/desert_generation_data.json": "file(data/biome/desert_generation_data.json)",
+	    "stonehearth/data/biome/arctic_generation_data.json": "file(data/biome/arctic_generation_data.json)",
+	    "stonehearth/data/biome/temperate_generation_data.json": "file(data/biome/temperate_generation_data.json)"
    },
    "overrides": {
       "stonehearth/data/rigs/entities/humans/animations/male/combat_1h_thrust.json": "stonehearth_ace/data/rigs/entities/humans/animations/male/combat_1h_thrust.json",
@@ -438,12 +439,28 @@
       "toggle_training_command": {
          "controller": "file(call_handlers/toggle_training_call_handler.lua)",
          "endpoint": "server"
+      },
+      "get_service": {
+         "controller": "file(call_handlers/services_call_handler.lua)",
+         "endpoint": "server"
+      },
+      "get_client_service": {
+         "controller": "file(call_handlers/services_call_handler.lua)",
+         "endpoint": "client"
       }
+   },
+   "object_commands": {
+      "heatmap": [
+         "show_heatmap_command",
+         "hide_heatmap_command",
+         "is_heatmap_active_command"
+      ]
    },
    "ui": {
       "js": [
          "file(ui/shell/settings/settings.js)",
-         "file(ui/game/show_workshop/show_team_workshop.js)"
+         "file(ui/game/show_workshop/show_team_workshop.js)",
+         "file(ui/game/widgets/terrain_vision/terrain_vision.js)"
       ]
    }
 }

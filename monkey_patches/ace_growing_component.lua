@@ -101,7 +101,7 @@ function AceGrowingComponent:_calculate_growth_period(growth_period)
 	if self._sv.is_flooded then
 		scaled_growth_period = scaled_growth_period * self._flood_period_multiplier
 	end
-	return scaled_growth_period * self._sv.local_water_modifier
+	return scaled_growth_period * (self._sv.local_water_modifier or 1)
 end
 
 function AceGrowingComponent:_set_growth_timer()
