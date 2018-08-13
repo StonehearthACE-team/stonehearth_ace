@@ -1,91 +1,121 @@
 {
-  "type": "index",
-  "constants": {
-    "climates": {
-      "tropical": {
-        "plant_water_affinity": "HIGH"
+   "type": "index",
+   "constants": {
+      "climates": {
+         "tropical": {
+            "plant_water_affinity": "HIGH"
+         },
+         "tropical_savanna": {
+            "plant_water_affinity": "MEDIUM"
+         },
+         "dry": {
+            "plant_water_affinity": "LOW"
+         },
+         "temperate": {
+            "plant_water_affinity": "MEDIUM"
+         },
+         "temperate_wet": {
+            "plant_water_affinity": "HIGH"
+         },
+         "continental": {
+            "plant_water_affinity": "MEDIUM"
+         },
+         "continental_dry": {
+            "plant_water_affinity": "LOW"
+         },
+         "polar": {
+            "plant_water_affinity": "LOW"
+         }
       },
-      "tropical_savanna": {
-        "plant_water_affinity": "MEDIUM"
+      "plant_water_affinity": {
+         "LOW": [
+            {
+               "min_water": 0,
+               "period_multiplier": 1
+            },
+            {
+               "min_water": 0.1,
+               "period_multiplier": 0.8
+            },
+            {
+               "min_water": 0.5,
+               "period_multiplier": 1.2
+            },
+            {
+               "min_water": 1,
+               "period_multiplier": 1.5
+            }
+         ],
+         "MEDIUM": [
+            {
+               "min_water": 0,
+               "period_multiplier": 1.5
+            },
+            {
+               "min_water": 0.1,
+               "period_multiplier": 1.2
+            },
+            {
+               "min_water": 0.5,
+               "period_multiplier": 1
+            },
+            {
+               "min_water": 1,
+               "period_multiplier": 0.8
+            },
+            {
+               "min_water": 2,
+               "period_multiplier": 1.2
+            }
+         ],
+         "HIGH": [
+            {
+               "min_water": 0,
+               "period_multiplier": 2
+            },
+            {
+               "min_water": 0.5,
+               "period_multiplier": 1.5
+            },
+            {
+               "min_water": 1,
+               "period_multiplier": 1.2
+            },
+            {
+               "min_water": 2,
+               "period_multiplier": 0.8
+            }
+         ]
       },
-      "dry": {
-        "plant_water_affinity": "LOW"
-      },
-      "temperate": {
-        "plant_water_affinity": "MEDIUM"
-      },
-      "temperate_wet": {
-        "plant_water_affinity": "HIGH"
-      },
-      "continental": {
-        "plant_water_affinity": "MEDIUM"
-      },
-      "continental_dry": {
-        "plant_water_affinity": "LOW"
-      },
-      "polar": {
-        "plant_water_affinity": "LOW"
+      "heatmaps": {
+         "ore": {
+            "LEVELS": [
+               {
+                  "ui_label": "i18n(stonehearth_ace:data.heatmaps.ore.thresholds.none.display_name)",
+                  "icon": "/stonehearth_ace/ui/images/heatmaps/ore_none.png",
+                  "max": 0.01,
+                  "heatmap_color": [128, 128, 128, 200]
+               },
+               {
+                  "ui_label": "i18n(stonehearth_ace:data.heatmaps.ore.thresholds.some.display_name)",
+                  "icon": "/stonehearth_ace/ui/images/heatmaps/ore_some.png",
+                  "max": 0.6,
+                  "heatmap_color": [183, 128, 71, 200]
+               },
+               {
+                  "ui_label": "i18n(stonehearth_ace:data.heatmaps.ore.thresholds.lots.display_name)",
+                  "icon": "/stonehearth_ace/ui/images/heatmaps/ore_lots.png",
+                  "max": 2,
+                  "heatmap_color": [227, 128, 27, 200]
+               },
+               {
+                  "ui_label": "i18n(stonehearth_ace:data.heatmaps.ore.thresholds.tons.display_name)",
+                  "icon": "/stonehearth_ace/ui/images/heatmaps/ore_tons.png",
+                  "max": 999999,
+                  "heatmap_color": [255, 128, 0, 200]
+               }
+            ]
+         }
       }
-    },
-    "plant_water_affinity": {
-      "LOW": [
-        {
-          "min_water": 0,
-          "period_multiplier": 1
-        },
-        {
-          "min_water": 0.1,
-          "period_multiplier": 0.8
-        },
-        {
-          "min_water": 0.5,
-          "period_multiplier": 1.2
-        },
-        {
-          "min_water": 1,
-          "period_multiplier": 1.5
-        }
-      ],
-      "MEDIUM": [
-        {
-          "min_water": 0,
-          "period_multiplier": 1.5
-        },
-        {
-          "min_water": 0.1,
-          "period_multiplier": 1.2
-        },
-        {
-          "min_water": 0.5,
-          "period_multiplier": 1
-        },
-        {
-          "min_water": 1,
-          "period_multiplier": 0.8
-        },
-        {
-          "min_water": 2,
-          "period_multiplier": 1.2
-        }
-      ],
-      "HIGH": [
-        {
-          "min_water": 0,
-          "period_multiplier": 2
-        },
-        {
-          "min_water": 0.5,
-          "period_multiplier": 1.5
-        },
-        {
-          "min_water": 1,
-          "period_multiplier": 1.2
-        },
-        {
-          "min_water": 2,
-          "period_multiplier": 0.8
-        }
-      ]
-    }
-  }
+   }
 }

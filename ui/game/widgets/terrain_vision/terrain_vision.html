@@ -18,10 +18,22 @@
          </label>
       </div>
 
-      <div id="appealHeatmapButton" hotkey_action="vision:appeal:toggle" class="normal terrainButton" {{bind-attr class="view.appeal_heatmap_active:active:inactive"}}>
+      <div id="heatmapButton" class="normal terrainButton" {{bind-attr class="view.heatmap_active:active:inactive"}}>
          <label class="buttonLabel">
-            {{i18n stonehearth:ui.game.visions.appeal_vision_icon_name}}
+            {{i18n stonehearth_ace:ui.game.visions.heatmap}}
          </label>
+         <div id="heatmapList" class="paper">
+            {{#each h in view.heatMaps}}
+            <div class="heatmap" {{ bind-attr data-key=h.key }}>
+               <div class="heatmapRepresentation">
+                  <img class="heatmapImage" {{ bind-attr src=h.icon }} />
+                  <div class="heatmapName">
+                     {{i18n h.name}}
+                  </div>
+               </div>
+            </div>
+            {{/each}}
+         </div>
       </div>
 
       <div id="slicePalette" class='palette' {{bind-attr class=view.clip_enabled:clip:noclip}}>
@@ -36,17 +48,16 @@
          <div id="xrayFull" hotkey_action="vision:xray:full" class='xrayButton button' mode="full" {{bind-attr class=view.xray_mode}}>{{i18n stonehearth:ui.game.visions.terrain_xray_vision_full}}</div>
          <div id="xrayFlat" hotkey_action="vision:xray:flat" class='xrayButton button' mode="flat" {{bind-attr class=view.xray_mode}}>{{i18n stonehearth:ui.game.visions.terrain_xray_vision_flat}}</div>
       </div>
-
-      <div id="appealCursorReadout" {{bind-attr class="view.appeal_heatmap_active:active:inactive"}}>
+   
+      <div id="heatmapCursorReadout" {{bind-attr class="view.heatmap_active:active:inactive"}}>
          <div class="content">
-            <div class="header">
-               <img class="icon" {{bind-attr src=view.currentAppealIcon}} />
-               <span class="value">{{view.currentAppeal}}</span>
-            </div>
-            <div class="label">{{{view.currentAppealLabel}}}</div>
+               <div class="header">
+                  <img class="icon" {{bind-attr src=view.currentHeatValueIcon}} />
+                  <span class="value">{{view.currentHeatValue}}</span>
+               </div>
+               <div class="label">{{{view.currentHeatValueLabel}}}</div>
          </div>
          <img class="handle" src="/stonehearth/ui/game/widgets/terrain_vision/images/ear.png" />
       </div>
-
    </div>
 </script>

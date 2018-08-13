@@ -17,27 +17,38 @@
 
 local Color4 = _radiant.csg.Color4
 local Point3 = _radiant.csg.Point3
-local log = radiant.log.create_logger('appeal_heatmap')
-local get_entity_data = radiant.entities.get_entity_data
+local Cube3 = _radiant.csg.Cube3
+local Region3 = _radiant.csg.Region3
+local log = radiant.log.create_logger('ore_heatmap')
+local get_block_kind_at = radiant.terrain.get_block_kind_at
+local to_color4 = radiant.util.to_color4
 
-local AppealHeatmap = class()
+local OreHeatmap = class()
 
-AppealHeatmap.name = 'appeal_heatmap'
-AppealHeatmap.valuation_mode = 'entity'
-AppealHeatmap.radius = stonehearth.constants.appeal.APPEAL_SAMPLE_RADIUS
-AppealHeatmap.sample_denominator = stonehearth.constants.appeal.APPEAL_SAMPLE_DENOMINATOR
-AppealHeatmap._vitality_multiplier = stonehearth.constants.town_progression.bonuses.VITALITY_PLANT_APPEAL_MULTIPLIER
+OreHeatmap.name = 'ore_heatmap'
+OreHeatmap.valuation_mode = 'location'
+OreHeatmap.radius = 12
+OreHeatmap._base_depth = 10
+OreHeatmap._max_heat_value = 3
+OreHeatmap._base_color = Point3(255, 128, 0) -- this gets combined with an alpha value based on the heat value
 
-function AppealHeatmap:initialize(fn_callback)
+function OreHeatmap:initialize(fn_callback)
    if self:_check_initialized_done(fn_callback) then
       return
    elseif self._initializing then
       return
    end
    
-   -- Get the town entity so we can see whether we have the "vitality" town bonus which affects the appeal of plants.
-   -- If we ever have more town bonuses that affect appeal, we'll need a generic hook, but for now, let's keep it light.
    self._initializing = true
+
+   -- stolen from stonehearth.services.client.terrain_highlight_service
+   self._kind_to_entity_map = {}
+   local config = radiant.terrain.get_config()
+   for kind, entity_name in pairs(config.selectable_kinds) do
+      self._kind_to_entity_map[kind] = radiant.entities.create_entity(entity_name)
+   end
+
+   -- Get the town entity so we can see whether we have bonuses that modify ore detection
    self._town = nil
    self._catalog_data = nil
    local player_id = _radiant.client.get_player_id()
@@ -50,7 +61,7 @@ function AppealHeatmap:initialize(fn_callback)
    end
 end
 
-function AppealHeatmap:_do_initialization(player_id, fn_callback)
+function OreHeatmap:_do_initialization(player_id, fn_callback)
    _radiant.call_obj('stonehearth.town', 'get_town_entity_command', player_id)
       :done(function(response)
          self._town = response.town
@@ -64,7 +75,7 @@ function AppealHeatmap:_do_initialization(player_id, fn_callback)
       end)
 end
 
-function AppealHeatmap:_check_initialized_done(fn_callback)
+function OreHeatmap:_check_initialized_done(fn_callback)
    if self._town and self._catalog_data then
       self._initializing = nil
       if fn_callback then
@@ -77,59 +88,38 @@ function AppealHeatmap:_check_initialized_done(fn_callback)
    return false
 end
 
-function AppealHeatmap:fn_get_heat_value(entity)
-   local appeal_data = radiant.entities.get_entity_data(entity, 'stonehearth:appeal')
-   local appeal = appeal_data and appeal_data.appeal
-
-   if not appeal then
-      return nil
+function OreHeatmap:fn_get_heat_value(location)
+   local depth = self._base_depth
+   if self._town and self._town:get_data().town_bonuses['stonehearth:town_bonus:ore_detection'] then
+      depth = depth * 2
    end
 
-   local item_quality = radiant.entities.get_item_quality(entity)
-   appeal = radiant.entities.apply_item_quality_bonus('appeal', appeal, item_quality)
+   -- we're using a subset of the harmonic series to represent ore at each depth n
+   -- at reasonable depths (up to 50+) this shouldn't be maxing out (to 3) unless there's a ton of ore right at the surface
+   local ore_count = 0
+   for i = 0, -depth, -1 do
+      local brick = location + Point3(0, i, 0)
+      local kind = get_block_kind_at(brick)
+      local ore_entity = self._kind_to_entity_map[kind]
 
-   -- Apply the "vitality" town bonus if it's applicable. If we ever have more of these,
-   -- we'll need a generic hook, but for now, let's keep it light.
-   if self._town and self._town:get_data().town_bonuses['stonehearth:town_bonus:vitality'] then
-      local uri = type(entity) == 'string' and entity or entity:get_uri()
-      local catalog_data = self._catalog_data[uri]
-      if catalog_data and catalog_data.category == 'plants' then
-         appeal = radiant.math.round(appeal * self._vitality_multiplier)
+      if ore_entity then
+         ore_count = ore_count + 1 / math.max(0.1, location.y - brick.y)
+         if ore_count >= self._max_heat_value then
+            break
+         end
       end
    end
 
-   return appeal
+   return math.min(ore_count, self._max_heat_value)
 end
 
-function AppealHeatmap:fn_heat_value_to_color(appeal)
-   for _, level in ipairs(stonehearth.constants.appeal.LEVELS) do
-      if appeal < level.max then
-         return Color4(unpack(level.heatmap_color))
-      end
-   end
-end
-
-function AppealHeatmap:fn_heat_value_to_hilight(appeal)
-   local color
-   if appeal > 60 then
-      color = Point3(0.90, 0.65, 0.20)
-   elseif appeal > 0 then
-      color = Point3(1.00, 0.55, 0.00)
-   elseif appeal > -10 then
-      color = Point3(0.46, 0.49, 1.00)
-   else
-      color = Point3(0.20, 0.20, 0.60)
-   end
-   return color
-end
-
-function AppealHeatmap:fn_is_entity_relevant(item)
-   local appeal_data = get_entity_data(item, 'stonehearth:appeal')
-   return appeal_data and rawget(appeal_data, 'appeal') and rawget(appeal_data, 'appeal') ~= 0
+function OreHeatmap:fn_heat_value_to_color(heat_value)
+   -- scale our color by scaling the transparency value (hopefully this works!) with _max_heat_value => 255
+   return to_color4(self._base_color, heat_value * 255 / self._max_heat_value)
 end
 
 -- return values are [this rank, max rank value]: if you just want to say use this location, return 1, 1
-function AppealHeatmap:fn_filter_query_scene(best_location, query_result)
+function OreHeatmap:fn_filter_query_scene(best_location, query_result)
    local is_building = (query_result.entity:get_component('stonehearth:construction_data') or
                         query_result.entity:get_component('stonehearth:build2:structure') or
                         query_result.entity:get_component('stonehearth:floor'))
@@ -142,4 +132,4 @@ function AppealHeatmap:fn_filter_query_scene(best_location, query_result)
    return 0, 1
 end
 
-return AppealHeatmap
+return OreHeatmap

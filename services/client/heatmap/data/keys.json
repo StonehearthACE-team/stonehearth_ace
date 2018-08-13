@@ -2,11 +2,20 @@
    "type": "index",
    "heatmaps": {
       "appeal": {
-         "name": "i18(stonehearth_ace:heatmaps:appeal.display_name)",
-         "description": "i18(stonehearth_ace:heatmaps:appeal.description)",
-         "icon": "file(appeal_heatmap_icon.png)",
+         "name": "stonehearth:ui.game.visions.appeal_vision",
+         "description": "stonehearth:ui.game.visions.appeal_vision_description",
+         "icon": "/stonehearth_ace/ui/game/widgets/terrain_vision/images/appeal_heatmap_icon.png",
          "ordinal": 1,
-         "settings_file": "file(appeal_heatmap.lua)"
+         "settings_file": "file(appeal_heatmap.lua)",
+         "constants_key": "appeal"
+      },
+      "ore": {
+         "name": "stonehearth_ace:ui.game.heatmaps.ore.display_name",
+         "description": "stonehearth_ace:ui.game.heatmaps.ore.description",
+         "icon": "/stonehearth_ace/ui/game/widgets/terrain_vision/images/ore_heatmap_icon.png",
+         "ordinal": 20,
+         "settings_file": "file(ore_heatmap.lua)",
+         "constants_key": "heatmaps.ore"
       }
-	}
+   }
 }

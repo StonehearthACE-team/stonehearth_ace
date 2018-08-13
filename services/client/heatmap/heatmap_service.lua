@@ -14,7 +14,7 @@ function HeatmapService:initialize()
    self._heatmap_keys = radiant.resources.load_json('stonehearth_ace:heatmap:keys').heatmaps or {}
    self._heatmaps = {}
    for key, heatmap in pairs(self._heatmap_keys) do
-      self:_import_settings(key)
+      self:_import_settings(key, heatmap)
    end
    
    -- Set when the heatmap is shown or hidden.
@@ -32,13 +32,13 @@ function HeatmapService:initialize()
    self:hide_heatmap_command()  -- Make sure it's off by default.
 end
 
-function HeatmapService:_import_settings(key)
+function HeatmapService:_import_settings(key, settings_key)
    -- if we already have this heatmap loaded up, return the settings for it
    -- otherwise, check the heatmap key data and load the settings file
    local settings = self._heatmaps[key]
    
    if not settings then
-      local settings_key = self._heatmap_keys[key]
+      settings_key = settings_key or self._heatmap_keys[key]
       if settings_key and settings_key.settings_file then
          settings = radiant.mods.load_script(settings_key.settings_file)
          self._heatmaps[key] = settings
@@ -50,7 +50,7 @@ function HeatmapService:_import_settings(key)
       end
    end
    
-   if not settings and settings.name then
+   if not (settings and settings.name) then
       return nil
    end
    
@@ -124,11 +124,21 @@ function HeatmapService:hide_heatmap_command(session, request)
 end
 
 function HeatmapService:is_heatmap_active_command(session, request, map_type)
-   return self._heatmap_node ~= nil or self.map_type ~= map_type
+   return { is_active = (self._heatmap_node ~= nil or self.map_type ~= map_type) }
 end
 
 function HeatmapService:destroy()
    self:hide_command()
+end
+
+-- TODO: change this to be a datastore like the clock object so heatmaps can be added/removed dynamically?
+function HeatmapService:get_heatmaps_command(session, request)
+   local heatmaps = {}
+   for key, _ in pairs(self._heatmaps) do
+      heatmaps[key] = self._heatmap_keys[key]
+   end
+
+   return { heatmaps = heatmaps }
 end
 
 function HeatmapService:_heat_value_to_color(value, min_value, max_value)
@@ -219,7 +229,8 @@ function HeatmapService:_update_tiles(origin)
                heat_value = self:_get_aggregate_heat_value_of_items(items)
                self._saved_tiles[key] = heat_value
             elseif self._settings.valuation_mode == 'location' then  -- if we're evaluating a location, just pass the location to the evaluator function
-               self._saved_tiles[key] = self:_get_heat_value(point)
+               heat_value = self:_get_heat_value(point)
+               self._saved_tiles[key] = heat_value
             end
             
             if point == origin then

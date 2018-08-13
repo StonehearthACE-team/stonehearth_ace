@@ -410,7 +410,8 @@
       "stonehearth/data/rigs/entities/humans/animations/female/combat_1h_thrust.json": "stonehearth_ace/data/rigs/entities/humans/animations/female/combat_1h_thrust.json",
       "stonehearth/data/rigs/entities/humans/effects/combat_1h_thrust.json": "stonehearth_ace/data/rigs/entities/humans/effects/combat_1h_thrust.json",
       "stonehearth/lib/building/fixture_utils.lua": "stonehearth_ace/lib/building/fixture_utils.lua",
-      "stonehearth/ai/actions/find_path_to_location_action.lua": "stonehearth_ace/ai/actions/find_path_to_location_action.lua"
+      "stonehearth/ai/actions/find_path_to_location_action.lua": "stonehearth_ace/ai/actions/find_path_to_location_action.lua",
+      "stonehearth/ui/game/widgets/terrain_vision/terrain_vision.html": "stonehearth_ace/ui/game/widgets/terrain_vision/terrain_vision.html"
    },
    "components": {
       "toggle_enabled": "file(components/toggle_enabled/toggle_enabled_component.lua)",
@@ -461,6 +462,9 @@
          "file(ui/shell/settings/settings.js)",
          "file(ui/game/show_workshop/show_team_workshop.js)",
          "file(ui/game/widgets/terrain_vision/terrain_vision.js)"
+      ],
+      "less": [
+         "file(ui/game/widgets/terrain_vision/terrain_vision.less)"
       ]
    }
 }

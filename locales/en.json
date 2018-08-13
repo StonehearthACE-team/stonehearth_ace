@@ -58,6 +58,28 @@
                }
             }
          }
+      },
+      "heatmaps": {
+         "ore":{
+            "thresholds": {
+               "none": {
+                  "display_name": "No Ore",
+                  "description": "There's no ore in detection range below this point."
+               },
+               "some": {
+                  "display_name": "Some Ore",
+                  "description": "There's some ore below this point, but it might be pretty far down."
+               },
+               "lots": {
+                  "display_name": "Lots of Ore",
+                  "description": "There's a lot of ore below this point, or it's very close to the surface."
+               },
+               "tons": {
+                  "display_name": "Tons of Ore!",
+                  "description": "You're sitting on a gold mine! (But possibly other ores than gold.)"
+               }
+            }
+         }
       }
    },
    "jobs": {
@@ -1219,6 +1241,17 @@
             "gameplayTab": {
                "auto_craft_recipe_dependencies": "Auto Craft Recipe Dependencies",
                "auto_craft_recipe_dependencies_description": "When crafting an item, the crafters will check the inventory to see if there is sufficient of ingredients to use. If not, then they will add more orders to the queue should they need to to fulfill the original order."
+            }
+         }
+      },
+      "game": {
+         "visions": {
+            "heatmap": "heatmap"
+         },
+         "heatmaps": {
+            "ore": {
+               "display_name": "Ore Heatmap",
+               "description": "Detect ore beneath the surface: areas appear brighter where ore is abundant or close to the surface."
             }
          }
       },
