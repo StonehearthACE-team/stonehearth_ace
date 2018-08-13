@@ -27,8 +27,8 @@ local OreHeatmap = class()
 
 OreHeatmap.name = 'ore_heatmap'
 OreHeatmap.valuation_mode = 'location'
-OreHeatmap.radius = 12
-OreHeatmap._base_depth = 10
+OreHeatmap.radius = stonehearth.constants.heatmaps.ore.SAMPLE_RADIUS
+OreHeatmap._base_depth = stonehearth.constants.heatmaps.ore.BASE_DEPTH
 OreHeatmap._max_heat_value = 3
 OreHeatmap._base_color = Point3(255, 128, 0) -- this gets combined with an alpha value based on the heat value
 
@@ -90,7 +90,7 @@ end
 
 function OreHeatmap:fn_get_heat_value(location)
    local depth = self._base_depth
-   if self._town and self._town:get_data().town_bonuses['stonehearth:town_bonus:ore_detection'] then
+   if self._town and self._town:get_data().town_bonuses['stonehearth_ace:town_bonus:ore_detection'] then
       depth = depth * 2
    end
 
