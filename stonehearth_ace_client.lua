@@ -47,7 +47,35 @@ local function create_service(name)
    stonehearth_ace[name] = service
 end
 
+local player_service_trace = nil
+
 function stonehearth_ace:_on_init()
+   local function check_override_ui(players, player_id)
+      -- Load ui mod
+      if not player_id then
+         player_id = _radiant.client.get_player_id()
+      end
+      
+      local client_player = players[player_id]
+      if client_player then
+         if client_player.kingdom == "stonehearth_ace:kingdoms:mountain_folk" then
+            -- hot load stonehearth_ace ui mod
+            _radiant.res.apply_manifest("/stonehearth_ace/mountain_folk/manifest.json")
+         end
+      end
+   end
+   radiant.events.listen(radiant, 'radiant:client:server_ready', function()
+      _radiant.call('stonehearth:get_service', 'player')
+         :done(function(r)
+            local player_service = r.result
+            check_override_ui(player_service:get_data().players)
+            player_service_trace = player_service:trace('stonehearth_ace ui change')
+                  :on_changed(function(o)
+                        check_override_ui(player_service:get_data().players)
+                     end)
+            end)
+   end)
+
    stonehearth_ace._sv = stonehearth_ace.__saved_variables:get_data()
 
    for _, name in ipairs(service_creation_order) do
