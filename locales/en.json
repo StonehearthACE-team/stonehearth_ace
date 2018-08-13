@@ -198,7 +198,7 @@
                "description": "Extremely nutritious roast made with animal bones.",
                "flavor": "A meal for desperate times."
             },
-			"boiled_shrooms_recipe": {
+            "boiled_shrooms_recipe": {
                "recipe_name": "Boiled Shrooms",
                "description": "Boiling mushrooms will remove most of their impurities and improve their consistency.",
                "flavor": ""
@@ -1236,6 +1236,24 @@
       }
    },
    "ui": {
+      "game":{
+         "menu":{
+            "crafter_menu":{
+               "items":{
+                  "artificer":{
+                     "display_name": "Artificer Craft Menu",
+                     "description": "Build wooden furniture and decor.",
+                     "required_job_text": "Requires a carpenter"
+                  },
+                  "grower":{
+                     "display_name": "Grower Craft Menu",
+                     "description": "Build wooden furniture and decor.",
+                     "required_job_text": "Requires a carpenter"
+                  }
+               }
+            }
+         }
+      },
       "shell": {
          "settings": {
             "gameplayTab": {
