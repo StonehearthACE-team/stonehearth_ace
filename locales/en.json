@@ -1265,13 +1265,37 @@
       }
    },
    "ui": {
+<<<<<<< HEAD
       "game": {
+=======
+      "game":{
+         "menu":{
+            "crafter_menu":{
+               "items":{
+                  "artificer":{
+                     "display_name": "Artificer Craft Menu",
+                     "description": "Build wooden furniture and decor.",
+                     "required_job_text": "Requires a carpenter"
+                  },
+                  "grower":{
+                     "display_name": "Grower Craft Menu",
+                     "description": "Build wooden furniture and decor.",
+                     "required_job_text": "Requires a carpenter"
+                  }
+               }
+            }
+         },
+>>>>>>> 5128d16f6306b8376710eb1898f14e2b6dab0601
          "visions": {
             "heatmap": "heatmap"
          },
          "heatmaps": {
             "ore": {
+<<<<<<< HEAD
                "display_name": "Ore Heatmap",
+=======
+               "display_name": "Ore Detector",
+>>>>>>> 5128d16f6306b8376710eb1898f14e2b6dab0601
                "description": "Detect ore beneath the surface: areas appear brighter where ore is abundant or close to the surface."
             }
          }
