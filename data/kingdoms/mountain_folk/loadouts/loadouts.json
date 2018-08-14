@@ -8,50 +8,51 @@
          "content": {
             "mixintypes": {
                "farmer" : "remove",
-               "berries" : "remove"
+               "berries" : "remove",
+			   "carrots" : "remove"
             },
-            "trapper": {
+            "grower": {
                "ordinal": 1,
-               "display_name": "i18n(stonehearth:jobs.trapper.trapper_description.display_name)",
+               "display_name": "i18n(stonehearth_ace:mountain_folk.jobs.grower.grower_description.display_name)",
                "type": "entity",
-               "uri": "stonehearth:trapper:talisman",
-               "icon": "/stonehearth/data/loadouts/images/items/trapper_knife.png",
+               "uri": "stonehearth_ace:mountain_folk:grower:talisman",
+               "icon": "/stonehearth_ace/jobs/mf_grower/grower_trowel/grower_trowel.png",
                "amount": 1
             },
-            "cook": {
+            "chanterelles": {
                "ordinal": 2,
-               "display_name": "i18n(stonehearth:jobs.cook.cook_description.display_name)",
+               "display_name": "i18n(stonehearth_ace:entities.food.chanterelle.display_name)",
                "type": "entity",
-               "uri": "stonehearth:cook:talisman",
-               "icon": "/stonehearth/data/loadouts/images/items/cook_spoon.png",
-               "amount": 1
+               "uri": "stonehearth_ace:food:chanterelle:chanterelle_basket",
+               "icon": "/stonehearth_ace/entities/food/chanterelle/chanterelle_basket/chanterelle_basket.png",
+               "amount": 10
             },
-            "sweet_potatoes": {
-               "ordinal": 2.5,
-               "display_name": "i18n(stonehearth:data.loadouts.items.sweet_potatoes)",
+            "cherries": {
+               "ordinal": 3,
+               "display_name": "i18n(stonehearth_ace:entities.food.cherries.display_name)",
                "type": "entity",
-               "uri": "stonehearth:food:sweet_potato:sweet_potato_basket",
-               "icon": "/stonehearth/data/loadouts/images/items/sweet_potato_basket.png",
+               "uri": "stonehearth_ace:food:cherries:cherry_basket",
+               "icon": "/stonehearth_ace/entities/food/cherries/cherry_basket/cherry_basket.png",
                "amount": 10
             }
          }
       },
-      "hunting_party": {
+      "craftsdwarf_party": {
          "ordinal": 1.5,
-         "alias": "mountain_folk:data:loadouts:hunting_party",
-         "display_name": "i18n(mountain_folk:loadouts.hunting_party.display_name)",
-         "description": "i18n(mountain_folk:loadouts.hunting_party.description)",
-         "tooltip": "i18n(mountain_folk:loadouts.hunting_party.tooltip)",
-         "splash": "/mountain_folk/data/loadouts/images/hunting_party/splash.png",
-         "seal": "/mountain_folk/data/loadouts/images/hunting_party/seal.png",
+         "alias": "stonehearth_ace:mountain_folk:data:loadouts:craftsdwarf_party",
+         "display_name": "i18n(stonehearth_ace:mountain_folk.loadouts.craftsdwarf_party.display_name)",
+         "description": "i18n(stonehearth_ace:mountain_folk.loadouts.craftsdwarf_party.description)",
+         "tooltip": "i18n(stonehearth_ace:mountain_folk.loadouts.craftsdwarf_party.tooltip)",
+         "splash": "file(images/craftsdwarf_party/splash.png)",
+         "seal": "file(images/craftsdwarf_party/seal.png)",
          "content": {
-            "archer": {
+            "artificer": {
                "ordinal": 1,
-               "display_name": "i18n(stonehearth:jobs.archer.archer_description.display_name)",
+               "display_name": "i18n(stonehearth_ace:mountain_folk.jobs.artificer.artificer_description.display_name)",
                "type": "entity",
-               "uri": "stonehearth:archer:talisman",
-               "icon": "/stonehearth/data/loadouts/images/items/archer_bow.png",
-               "amount": 2
+               "uri": "stonehearth_ace:mountain_folk:artificer:talisman",
+               "icon": "/stonehearth_ace/jobs/mf_artificer/artificer_staff/artificer_staff.png",
+               "amount": 1
             },
             "cook": {
                "ordinal": 2,
@@ -61,21 +62,29 @@
                "icon": "/stonehearth/data/loadouts/images/items/cook_spoon.png",
                "amount": 1
             },
-            "jerky": {
+			"footman": {
                "ordinal": 3,
-               "display_name": "i18n(stonehearth:data.loadouts.items.jerky)",
+               "display_name": "i18n(stonehearth:jobs.footman.footman_description.display_name)",
                "type": "entity",
-               "uri": "stonehearth:rabbit_jerky",
-               "icon": "/stonehearth/data/loadouts/images/items/jerky.png",
+               "uri": "stonehearth:footman:wooden_sword_talisman",
+               "icon": "/stonehearth/entities/weapons/wooden_sword/wooden_sword.png",
+               "amount": 1
+            },
+            "cherries": {
+               "ordinal": 4,
+               "display_name": "i18n(stonehearth_ace:entities.food.cherries.display_name)",
+               "type": "entity",
+               "uri": "stonehearth_ace:food:cherries:cherry_basket",
+               "icon": "/stonehearth_ace/entities/food/cherries/cherry_basket/cherry_basket.png",
                "amount": 15
             },
             "gold": {
-               "ordinal": 4,
+               "ordinal": 5,
                "display_name": "i18n(stonehearth:data.loadouts.items.gold)",
                "type": "gold",
                "icon": "/stonehearth/data/loadouts/images/items/gold.png",
                "uri": "stonehearth:loot:gold",
-               "amount": 20
+               "amount": 10
             }
          }
       },
@@ -84,23 +93,23 @@
          "seal": "/stonehearth/data/loadouts/images/merchant_caravan/seal.png",
          "content": {
             "mixintypes": {
-               "footman" : "remove",
-               "berries" : "remove"
+               "berries" : "remove",
+			   "herbalist" : "remove"
             },
-            "archer": {
-               "ordinal": 1,
-               "display_name": "i18n(stonehearth:jobs.archer.archer_description.display_name)",
+			"mason": {
+               "ordinal": 3,
+               "display_name": "i18n(stonehearth:jobs.mason.mason_description.display_name)",
                "type": "entity",
-               "uri": "stonehearth:archer:talisman",
-               "icon": "/stonehearth/data/loadouts/images/items/archer_bow.png",
+               "uri": "stonehearth:mason:talisman",
+               "icon": "/stonehearth/jobs/mason/mason_chisel/mason_chisel.png",
                "amount": 1
             },
-            "sweet_potatoes": {
+            "chanterelles": {
                "ordinal": 4,
-               "display_name": "i18n(stonehearth:data.loadouts.items.sweet_potatoes)",
+               "display_name": "i18n(stonehearth_ace:entities.food.chanterelle.display_name)",
                "type": "entity",
-               "uri": "stonehearth:food:sweet_potato:sweet_potato_basket",
-               "icon": "/stonehearth/data/loadouts/images/items/sweet_potato_basket.png",
+               "uri": "stonehearth_ace:food:chanterelle:chanterelle_basket",
+               "icon": "/stonehearth_ace/entities/food/chanterelle/chanterelle_basket/chanterelle_basket.png",
                "amount": 10
             }
          }
@@ -110,14 +119,23 @@
          "seal": "/stonehearth/data/loadouts/images/money_solves_all_problems/seal.png",
          "content": {
             "mixintypes": {
-               "berries" : "remove"
+               "berries" : "remove",
+			   "jerky" : "remove"
             },
-            "sweet_potatoes": {
+            "chanterelles": {
                "ordinal": 2,
-               "display_name": "i18n(stonehearth:data.loadouts.items.sweet_potatoes)",
+               "display_name": "i18n(stonehearth_ace:entities.food.chanterelle.display_name)",
                "type": "entity",
-               "uri": "stonehearth:food:sweet_potato:sweet_potato_basket",
-               "icon": "/stonehearth/data/loadouts/images/items/sweet_potato_basket.png",
+               "uri": "stonehearth_ace:food:chanterelle:chanterelle_basket",
+               "icon": "/stonehearth_ace/entities/food/chanterelle/chanterelle_basket/chanterelle_basket.png",
+               "amount": 10
+            },
+            "cherries": {
+               "ordinal": 3,
+               "display_name": "i18n(stonehearth_ace:entities.food.cherries.display_name)",
+               "type": "entity",
+               "uri": "stonehearth_ace:food:cherries:cherry_basket",
+               "icon": "/stonehearth_ace/entities/food/cherries/cherry_basket/cherry_basket.png",
                "amount": 10
             }
          }

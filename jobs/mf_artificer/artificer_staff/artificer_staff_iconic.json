@@ -1,0 +1,23 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:item_properties",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(artificer_staff.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:mountain_folk.jobs.artificer.artificer_staff.artificer_staff_talisman.display_name)",
+         "description": "i18n(stonehearth_ace:mountain_folk.jobs.artificer.artificer_staff.artificer_staff_talisman.description)",
+         "icon": "file(artificer_staff.png)",
+         "is_item": true,
+         "category": "tools",
+         "material_tags": "tool"
+      }
+   }
+}
