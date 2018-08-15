@@ -352,4 +352,34 @@ function AceCraftOrderList:_ace_find_craft_order(recipe_name, order_type)
    return nil
 end
 
+-- overrides this base function in order to support multiple crafters on the same order
+function AceCraftOrderList:get_next_order(crafter)
+   --log:debug('craft_order_list: There are %s orders', #self._sv.orders)
+
+   --log:debug('trying to feed order to %s', crafter)
+   for i, order in ipairs(self._sv.orders) do
+      --log:debug('craft_order_list: evaluating order with recipe %s', order:get_recipe().recipe_name)
+      local order_id = order:get_id()
+      local craftable = self._craftable_orders[order_id]
+      if craftable ~= false then
+         if order:should_execute_order(crafter) then
+            --log:debug('given order %d back to crafter %s', i, crafter)
+
+            local craftable = self._craftable_orders[order_id]
+            if craftable == nil then
+               craftable = order:conditions_fulfilled(crafter) and order:has_ingredients()
+               self._craftable_orders[order_id] = craftable
+            end
+            if craftable then
+               return order
+            end
+         end
+      end
+      -- This is a hot path. Commenting out the debug logs for now. -yshan
+      --log:debug('craft_order_list: We are not going to continue this order of recipe %s', order:get_recipe().recipe_name)
+      --log:debug('craft_order_list: Current crafter should be %s and crafter id is %s', order:get_current_crafter_id(), crafter:get_id())
+      --log:debug('craft_order_list: Crafting status is %s', order:get_crafting_status())
+   end
+end
+
 return AceCraftOrderList

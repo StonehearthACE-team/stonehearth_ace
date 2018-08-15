@@ -21,7 +21,13 @@ local monkey_patches = {
    ace_shepherd_pasture_component = 'stonehearth.components.shepherd_pasture.shepherd_pasture_component',
    ace_shepherd_service = 'stonehearth.services.server.shepherd.shepherd_service',
    ace_town_service = 'stonehearth.services.server.town.town_service',
-   ace_evolve_component = 'stonehearth.components.evolve.evolve_component'
+   ace_evolve_component = 'stonehearth.components.evolve.evolve_component',
+   ace_crafting_progress = 'stonehearth.components.workshop.crafting_progress',
+   ace_workshop_component = 'stonehearth.components.workshop.workshop_component',
+   ace_craft_items_orchestrator = 'stonehearth.services.server.town.orchestrators.craft_items_orchestrator',
+   ace_collect_ingredients_orchestrator = 'stonehearth.services.server.town.orchestrators.collect_ingredients_orchestrator',
+   ace_drop_crafting_ingredients = 'stonehearth.ai.actions.drop_crafting_ingredients',
+   ace_produce_crafted_items = 'stonehearth.ai.actions.produce_crafted_items'
 }
 
 local function monkey_patching()
