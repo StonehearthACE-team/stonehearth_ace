@@ -9,7 +9,13 @@ local WaterSignalComponent = class()
 function WaterSignalComponent:initialize()
 	local json = radiant.entities.get_json(self)
 	self._sv._signal_region = json and json.signal_region and Region3(json.signal_region)
-	self._sv.is_urgent = json and json.is_urgent or false
+   self._sv.is_urgent = json and json.is_urgent or false
+   self._sv.monitor_types = {}
+   if json and json.monitor_types then
+      self:add_monitor_types(json.monitor_types)
+   else
+      -- default to monitoring nothing
+   end
 	self.__saved_variables:mark_changed()
 end
 
@@ -27,7 +33,11 @@ function WaterSignalComponent:post_activate()
 				self._sv._signal_region = Region3(Cube3(Point3.zero, Point3.one))
 			end
 			self.__saved_variables:mark_changed()
-		end
+      end
+   elseif not self._sv.monitor_types then
+      -- backwards compatibility with existing water signals that monitored everything
+      self._sv.monitor_types = {}
+      self:add_monitor_types(stonehearth.constants.water_signal.MONITOR_TYPES)
 	end
 	self:_startup()
 end
@@ -48,7 +58,7 @@ function WaterSignalComponent:_reset()
 	self._sv._water_exists = nil
 	self._sv._water_volume = nil
 	self._sv._waterfall_exists = nil
-	self._sv._waterfall_volume = nil
+   self._sv._waterfall_volume = nil
 	self.__saved_variables:mark_changed()
 end
 
@@ -67,6 +77,29 @@ function WaterSignalComponent:set_urgency(is_urgent)
 		self:_shutdown()
 		self:_startup()
 	end
+end
+
+function WaterSignalComponent:has_monitor_type(monitor_type)
+   return self._sv.monitor_types[monitor_type] ~= nil
+end
+
+function WaterSignalComponent:add_monitor_types(monitor_types)
+   for _, monitor_type in ipairs(monitor_types) do
+      self._sv.monitor_types[monitor_type] = true
+   end
+	self.__saved_variables:mark_changed()
+end
+
+function WaterSignalComponent:remove_monitor_types(monitor_types)
+   if monitor_types then
+      for _, monitor_type in ipairs(monitor_types) do
+         self._sv.monitor_types[monitor_type] = nil
+      end
+   else
+      -- if we passed in nil, clear out the whole thing
+      self._sv.monitor_types = {}
+   end
+	self.__saved_variables:mark_changed()
 end
 
 function WaterSignalComponent:get_water_exists()
@@ -136,7 +169,7 @@ function WaterSignalComponent:set_waterfall_volume(waterfall_entities)
 end
 
 function WaterSignalComponent:_on_tick_water_signal()
-	if not self._sv._signal_region then
+	if not self._sv._signal_region or not next(self._sv.monitor_types) then
 		return
 	end
 	
@@ -151,10 +184,18 @@ function WaterSignalComponent:_on_tick_water_signal()
 	local region = self._sv._signal_region and self._sv._signal_region:translated(location)
 	local water_components, waterfall_components = self:_get_water(region)
 
-	self:set_water_exists(water_components)
-	self:set_water_volume(water_components)
-	self:set_waterfall_exists(waterfall_components)
-	self:set_waterfall_volume(waterfall_components)
+   if self:has_monitor_type('water_exists') then
+      self:set_water_exists(water_components)
+   end
+   if self:has_monitor_type('water_volume') then
+      self:set_water_volume(water_components)
+   end
+   if self:has_monitor_type('waterfall_exists') then
+      self:set_waterfall_exists(waterfall_components)
+   end
+   if self:has_monitor_type('waterfall_volume') then
+      self:set_waterfall_volume(waterfall_components)
+   end
 	
 	self.__saved_variables:mark_changed()
 end
@@ -168,15 +209,19 @@ function WaterSignalComponent:_get_water(region)
 	local water_components = {}
 	local waterfall_components = {}
 	for _, e in pairs(entities) do
-		local water_component = e:get_component('stonehearth:water')
-		if water_component then
-			table.insert(water_components, water_component)
-		end
+      if self:has_monitor_type('water_exists') or self:has_monitor_type('water_volume') then
+         local water_component = e:get_component('stonehearth:water')
+         if water_component then
+            table.insert(water_components, water_component)
+         end
+      end
 
-		local waterfall_component = e:get_component('stonehearth:waterfall')
-		if waterfall_component then
-			table.insert(waterfall_components, waterfall_component)
-		end
+      if self:has_monitor_type('waterfall_exists') or self:has_monitor_type('waterfall_volume') then
+         local waterfall_component = e:get_component('stonehearth:waterfall')
+         if waterfall_component then
+            table.insert(waterfall_components, waterfall_component)
+         end
+      end
 	end
 
 	return water_components, waterfall_components
