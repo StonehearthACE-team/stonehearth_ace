@@ -60,7 +60,7 @@
          }
       },
       "heatmaps": {
-         "ore":{
+         "ore": {
             "thresholds": {
                "none": {
                   "display_name": "No Ore",
@@ -870,6 +870,7 @@
       },
       "food": {
          "cherries": {
+			"display_name": "Cherries",
             "cherry_basket": {
                "display_name": "Basket of Cherries",
                "description": "Sweet or sour, a tasty fruit for any hour."
@@ -958,6 +959,7 @@
             }
          },
          "chanterelle": {
+			"display_name": "Shrooms",
             "chanterelle_basket": {
                "display_name": "Basket of Chanterelles",
                "description": "Delicious mushrooms ready to be eaten!"
@@ -1141,6 +1143,13 @@
             "display_name": "Mountain Folk"
          }
       },
+      "loadouts": {
+		 "craftsdwarf_party": {
+			"display_name": "Craftsdwarf Company",
+			"description": "An industrious folk will never let go of their most prized advancements on embarkment and the Artificer is definitely the top of craftsdwarvenship.",
+			"tooltip": "Gets you started early with the most advanced crafts."
+		 }
+      },
       "kingdom": {
          "quote": "TBD",
          "long_description": "TBD",
@@ -1151,11 +1160,31 @@
          "grower": {
             "grower_description": {
                "display_name": "Grower"
+            },
+            "grower_trowel": {
+               "grower_trowel_talisman": {
+                  "display_name": "Grower's Trowel",
+                  "description": "Required to promote a hearthling into a Grower"
+               },
+               "grower_trowel_equipped": {
+                  "display_name": "Grower's Trowel",
+                  "description": "Can be used by a Grower for their crafts and to tend plant and fungus alike."
+               }
             }
          },
          "artificer": {
             "artificer_description": {
                "display_name": "Artificer"
+            },
+            "artificer_staff": {
+               "artificer_staff_talisman": {
+                  "display_name": "Artificer's Staff",
+                  "description": "Required to promote a hearthling into an Artificer"
+               },
+               "artificer_staff_equipped": {
+                  "display_name": "Artificer's Staff",
+                  "description": "An advanced device that can channel both the powers of the Hearth and of machines."
+               }
             }
          },
          "druid": {
