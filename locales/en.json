@@ -391,6 +391,50 @@
                   "name": "Rotten Cotton"
                }
             }
+         },
+         "birch_tree_crop": {
+            "growth_stage": {
+               "000": {
+                  "name": "Birch Seed",
+                  "description": "Even a beautiful birch has humble beginnings."
+               },
+               "001": {
+                  "name": "Birch Seedling",
+                  "description": "A delicate stage of growth."
+               },
+               "002": {
+                  "name": "Birch Sprout",
+                  "description": "Up, up, up it goes!"
+               },
+               "003": {
+                  "name": "Birch Sapling",
+                  "description": "Ready to be transferred to a bigger plot."
+               }
+            },
+            "display_name": "Birch Sapling",
+            "description": "Out of trees? Get ready to participate in reforestation."
+         },
+         "yew_tree_crop": {
+            "growth_stage": {
+               "000": {
+                  "description": "Even a large tree has humble beginnings.",
+                  "name": "Yew Seed"
+               },
+               "001": {
+                  "description": "It's just getting started.",
+                  "name": "Yew Seedling"
+               },
+               "002": {
+                  "description": "Getting closer and closer...",
+                  "name": "Yew Sprout"
+               },
+               "003": {
+                  "description": "Ready to be transferred to a bigger plot.",
+                  "name": "Yew Sapling"
+               }
+            },
+            "description": "Needs more Yew wood? Prepare your plots for reforestation!",
+            "display_name": "Yew Tree Sapling"
          }
       },
       "decorations": {
@@ -870,7 +914,7 @@
       },
       "food": {
          "cherries": {
-			"display_name": "Cherries",
+            "display_name": "Cherries",
             "cherry_basket": {
                "display_name": "Basket of Cherries",
                "description": "Sweet or sour, a tasty fruit for any hour."
@@ -959,7 +1003,7 @@
             }
          },
          "chanterelle": {
-			"display_name": "Shrooms",
+            "display_name": "Shrooms",
             "chanterelle_basket": {
                "display_name": "Basket of Chanterelles",
                "description": "Delicious mushrooms ready to be eaten!"
@@ -1144,11 +1188,11 @@
          }
       },
       "loadouts": {
-		 "craftsdwarf_party": {
-			"display_name": "Craftsdwarf Company",
-			"description": "An industrious folk will never let go of their most prized advancements on embarkment and the Artificer is definitely the top of craftsdwarvenship.",
-			"tooltip": "Gets you started early with the most advanced crafts."
-		 }
+         "craftsdwarf_party": {
+            "display_name": "Craftsdwarf Company",
+            "description": "An industrious folk will never let go of their most prized advancements on embarkment and the Artificer is definitely the top of craftsdwarvenship.",
+            "tooltip": "Gets you started early with the most advanced crafts."
+         }
       },
       "kingdom": {
          "quote": "TBD",
@@ -1265,16 +1309,16 @@
       }
    },
    "ui": {
-      "game":{
-         "menu":{
-            "crafter_menu":{
-               "items":{
-                  "artificer":{
+      "game": {
+         "menu": {
+            "crafter_menu": {
+               "items": {
+                  "artificer": {
                      "display_name": "Artificer Craft Menu",
                      "description": "Build wooden furniture and decor.",
                      "required_job_text": "Requires a carpenter"
                   },
-                  "grower":{
+                  "grower": {
                      "display_name": "Grower Craft Menu",
                      "description": "Build wooden furniture and decor.",
                      "required_job_text": "Requires a carpenter"
@@ -1289,6 +1333,12 @@
             "ore": {
                "display_name": "Ore Detector",
                "description": "Detect ore beneath the surface: areas appear brighter where ore is abundant or close to the surface."
+            }
+         },
+         "zones_mode": {
+            "underfarm": {
+               "substrate_name": "Substrate",
+               "substrate_description": "You need a layer of organic material to plant undercrops."
             }
          }
       },

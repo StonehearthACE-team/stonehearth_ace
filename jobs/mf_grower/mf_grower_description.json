@@ -1,7 +1,163 @@
 {
    "type": "job",
-   "mixins": "stonehearth:jobs:farmer",
-   "job_id": "grower",
+   "enabled": true,
+   "display_order": 6,
+   "alias": "stonehearth_ace:mountain_folk:jobs:grower",
+   "job_id": "mf_grower",
    "display_name": "i18n(stonehearth_ace:mountain_folk.jobs.grower.grower_description.display_name)",
-   "icon": "file(images/icon.png)"
+   "controller": "stonehearth_ace:mountain_folk:class:grower",
+   "description": "i18n(stonehearth_ace:mountain_folk.jobs.grower.grower_description.description)",
+   "requirements": "i18n(stonehearth_ace:mountain_folk.jobs.grower.grower_description.requirements)",
+   "abilities": "file(grower_abilities)",
+   "equipment": {
+      "torso": "file(grower_outfit)",
+      "mainhand": "stonehearth_ace:mountain_folk:grower:trowel"
+   },
+   "roles": "grower_job crafter",
+   "talisman_uri": "stonehearth_ace:mountain_folk:grower:talisman",
+   "default_stance": "passive",
+   "icon": "file(images/icon.png)",
+   "promotion_activity_name": "promote_grower",
+   "task_groups": [
+      "stonehearth:task_groups:common_tasks",
+      "stonehearth:task_groups:restock",
+      "stonehearth:task_groups:placement",
+      "stonehearth:task_groups:farming",
+      "stonehearth_ace:task_groups:underfarming",
+      "stonehearth:task_groups:healing",
+      "stonehearth:task_groups:harvest",
+      "stonehearth:task_groups:rescue",
+      "stonehearth:task_groups:crafting",
+      "stonehearth:task_groups:town_alert"
+   ],
+   "crafter": {
+      "work_effect": "herbalist_grind",
+      "recipe_list": "/stonehearth_ace/jobs/mf_grower/recipes/recipes.json"
+   },
+   "workshop": {
+      "name": "i18n(stonehearth_ace:mountain_folk.jobs.grower.grower_description.workshop.name)",
+      "description": "i18n(stonehearth_ace:mountain_folk.jobs.grower.grower_description.workshop.description)",
+      "long_description": "i18n(stonehearth_ace:mountain_folk.jobs.grower.grower_description.workshop.long_description)",
+      "portrait": "file(/jobs/mf_grower/grower_workbench/grower_workbench.png)",
+      "workbench_type": "stonehearth_ace:mountain_folk:grower:workbench",
+      "skin_class": "grower",
+      "open_sound": "stonehearth:sounds:ui:carpenter_menu:menu_open",
+      "close_sound": "stonehearth:sounds:ui:carpenter_menu:menu_closed"
+   },
+   "parent_job": "stonehearth:jobs:worker",
+   "parent_level_requirement": 0,
+   "xp_rewards": {
+      "craft_level_0": 4,
+      "craft_level_1": 5,
+      "craft_level_2": 6,
+      "craft_level_3": 7,
+      "craft_level_4": 8,
+      "craft_level_5": 9,
+      "craft_level_6": 11,
+      "heal_entity": 13,
+      "base_exp_per_harvest": 2,
+      "stonehearth:pumpkin_crop": 5,
+      "stonehearth:corn_crop": 15,
+      "stonehearth:crops:tester_crop": 120,
+      "stonehearth:crops:tester_crop_2": 120
+   },
+   "max_level": 6,
+   "level_data": {
+      "1": {
+         "perks": [
+            {
+               "type": "increase_attended_hearthlings",
+               "name": "i18n(stonehearth:jobs.herbalist.herbalist_description.level_1_data.perk_000_name)",
+               "id": "herbalist_increase_attended",
+               "icon": "file(images/level_0.png)",
+               "description": "i18n(stonehearth:jobs.herbalist.herbalist_description.level_1_data.perk_000_description)",
+               "max_num_attended_hearthlings": 2,
+               "level": 1
+            },
+            {
+               "type": "apply_buff",
+               "name": "i18n(stonehearth:jobs.herbalist.herbalist_description.level_1_data.perk_001_name)",
+               "id": "herbalist_willpower_up_1",
+               "icon": "file(images/level_1.png)",
+               "buff_name": "stonehearth:buffs:herbalist:willpower_1",
+               "description": "i18n(stonehearth:jobs.herbalist.herbalist_description.level_1_data.perk_001_description)",
+               "level": 1,
+               "demote_fn": "remove_buff"
+            },
+            {
+               "type": "apply_buff",
+               "name": "i18n(stonehearth:jobs.farmer.farmer_description.level_1_data.perk_000_name)",
+               "id": "farmer_speed_up_1",
+               "icon": "file(images/speed_up.png)",
+               "buff_name": "stonehearth:buffs:farmer:speed_1",
+               "description": "i18n(stonehearth:jobs.farmer.farmer_description.level_1_data.perk_000_description)",
+               "level": 1,
+               "demote_fn": "remove_buff"
+            }
+         ]
+      },
+      "2": {
+         "perks": [
+            {
+               "name": "i18n(stonehearth:jobs.herbalist.herbalist_description.level_2_data.perk_000_name)",
+               "id": "crafter_recipe_unlock_2",
+               "icon": "file(../../../stonehearth/jobs/common/images/collaborative_insight.png)",
+               "description": "i18n(stonehearth:jobs.herbalist.herbalist_description.level_2_data.perk_000_description)",
+               "level": 2
+            },
+            {
+               "name": "i18n(stonehearth:jobs.farmer.farmer_description.level_2_data.perk_000_name)",
+               "id": "farmer_job_opportunities",
+               "icon": "file(images/farmerLv2.png)",
+               "description": "i18n(stonehearth:jobs.farmer.farmer_description.level_2_data.perk_000_description)",
+               "level": 2
+            }
+         ]
+      },
+      "3": {
+         "perks": [
+            {
+               "name": "i18n(stonehearth:jobs.herbalist.herbalist_description.level_3_data.perk_000_name)",
+               "id": "increase_healing_item_effect_50_percent",
+               "icon": "file(images/level_3.png)",
+               "description": "i18n(stonehearth:jobs.herbalist.herbalist_description.level_3_data.perk_000_description)",
+               "level": 3
+            },
+            {
+               "name": "i18n(stonehearth:jobs.farmer.farmer_description.level_3_data.perk_000_name)",
+               "id": "farmer_harvest_increase",
+               "icon": "file(images/farmerLv3.png)",
+               "description": "i18n(stonehearth:jobs.farmer.farmer_description.level_3_data.perk_000_description)",
+               "level": 3
+            }
+         ]
+      },
+      "4": {
+         "perks": [
+            {
+               "type": "increase_attended_hearthlings",
+               "name": "i18n(stonehearth:jobs.herbalist.herbalist_description.level_4_data.perk_000_name)",
+               "id": "herbalist_increase_attended",
+               "icon": "file(images/level_4.png)",
+               "description": "i18n(stonehearth:jobs.herbalist.herbalist_description.level_4_data.perk_000_description)",
+               "max_num_attended_hearthlings": 4,
+               "level": 4
+            }
+         ]
+      },
+      "5": {
+         "perks": [
+            {
+               "name": "i18n(stonehearth:jobs.farmer.farmer_description.level_5_data.perk_000_name)",
+               "id": "farmer_unlock_trees",
+               "icon": "file(images/farmerLv5.png)",
+               "description": "i18n(stonehearth:jobs.farmer.farmer_description.level_5_data.perk_000_description)",
+               "level": 5
+            }
+         ]
+      },
+      "6": {
+         "title": "i18n(stonehearth:jobs.herbalist.herbalist_description.level_6_data.title)"
+      }
+   }
 }

@@ -1,0 +1,71 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "layer": "clothing",
+            "transparent": false,
+            "models": [
+               "file(grower_outfit_male.qb)"
+            ]
+         },
+         "female": {
+            "layer": "clothing",
+            "transparent": "false",
+            "models": [
+               "file(grower_outfit_female.qb)"
+            ]
+         },
+         "rabbit_male": {
+            "layer": "clothing",
+            "transparent": "false",
+            "models": [
+               "file(grower_outfit_rabbit_male.qb)",
+               "file(grower_outfit_hood_rabbit_male.qb)"
+            ]
+         },
+         "rabbit_female": {
+            "layer": "clothing",
+            "transparent": "false",
+            "models": [
+               "file(grower_outfit_rabbit_female.qb)",
+               "file(grower_outfit_hood_rabbit_female.qb)"
+            ]
+         },
+         "orc_male": {
+            "layer": "clothing",
+            "transparent": "false",
+            "models": [
+               "file(grower_outfit_orc_male.qb)"
+            ]
+         },
+         "orc_female": {
+            "layer": "clothing",
+            "transparent": "false",
+            "models": [
+               "file(grower_outfit_orc_female.qb)"
+            ]
+         },
+         "dwarf": {
+            "layer": "clothing",
+            "transparent": "false",
+            "models": [
+               "file(grower_outfit.qb)"
+            ]
+         }
+      },
+      "stonehearth:equipment_piece": {
+         "slot": "torso",
+         "render_type": "merge_with_model"
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth:jobs.worker.grower_outfit.display_name)",
+         "description": "i18n(stonehearth:jobs.worker.grower_outfit.description)",
+         "icon": "file(grower_outfit.png)",
+         "material_tags": "cloth grower_outfit dwarf_made stockpile_equipment"
+      }
+   }
+}
