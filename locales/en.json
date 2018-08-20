@@ -79,6 +79,30 @@
                   "description": "You're sitting on a gold mine! (But possibly other ores than gold.)"
                }
             }
+         },
+         "wilderness": {
+            "thresholds": {
+               "none": {
+                  "display_name": "No Wilderness",
+                  "description": "Either there's no wilderness here, or it's eclipsed by buildings."
+               },
+               "little": {
+                  "display_name": "A Little Wild",
+                  "description": "This area is very tame. Try planting trees to *spruce* it up a bit."
+               },
+               "some": {
+                  "display_name": "Somewhat Wild",
+                  "description": "There's some wilderness here, but it won't attract many animals. A few more or larger plants could help."
+               },
+               "lots": {
+                  "display_name": "Getting Wilder",
+                  "description": "This area is rather wild, and plenty of animals should be attracted to it."
+               },
+               "tons": {
+                  "display_name": "Very Wild",
+                  "description": "It's a veritable Garden of Eden!"
+               }
+            }
          }
       }
    },

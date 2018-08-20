@@ -2,6 +2,7 @@ local RaycastLib = require 'ai.lib.raycast_lib'
 local Color4 = _radiant.csg.Color4
 local Point3 = _radiant.csg.Point3
 local Cube3 = _radiant.csg.Cube3
+local Region3 = _radiant.csg.Region3
 local Point2 = _radiant.csg.Point2
 local log = radiant.log.create_logger('heatmap')
 
@@ -60,7 +61,8 @@ end
 -- you must register a valid Lua 'class' file with the service to use for a heatmap; it must have the following properties: (* is always required, + is sometimes required)
 -- *  name:                a string key used to identify/distinguish this heatmap from others
 -- *  valuation_mode:      a string key used to identify how valuations are made: accepted values are 'entity' or 'location'
--- *  fn_get_heat_value:   a function that returns a heat 'value' when passed an entity or location point
+-- +  fn_get_entity_heat_value:      a function that returns a heat 'value' when passed an entity
+-- +  fn_get_location_heat_value:    a function that returns a heat 'value' when passed a location point
 --    default_heat_value:  optional; the default heat value for 'invalid' entities/locations
 -- *  fn_heat_value_to_color: a function that returns a color when passed a heat value and the min and max recorded heat values
 -- +  fn_heat_value_to_hilight:  a function that returns a highlight color (Point3) when passed a heat value and the min and max recorded heat values for 'entity' valuation_mode
@@ -69,10 +71,11 @@ end
 --    fn_combine_heat_values: optional; a function that returns a combination of two heat values passed to it; if not specified, + is used
 -- +  fn_is_entity_relevant:  a function that returns whether surrounding entities are important for heat value calculation in 'entity' valuation_mode
 --    radius:              an integer that specifies how far from the central location to draw the heatmap; squared is the further distance for entity calculation
--- *  fn_filter_query_scene:  determine the best moused-over entity to use as the heatmap origin location; passed the current best location and one entity/location at a time
+--    fn_filter_query_scene:  optional; determine the best moused-over entity to use as the heatmap origin location; passed the current best location and one entity/location at a time
 --    sample_denominator:  optional; a divisor by which an aggregate sum is divided when using 'entity' valuation_mode
 --    raycast_origin:      optional; only for 'entity' valuation_mode
 --    initialize:          optional; a function run when a heatmap is shown, with a callback function parameter
+--    shape:               optional; defaults to 'square', only other supported option is 'circle'
 function HeatmapService:show_heatmap_command(session, request, settings_key)
    self._settings = self:_import_settings(settings_key)
    -- if we fail to import the settings, abort
@@ -80,13 +83,16 @@ function HeatmapService:show_heatmap_command(session, request, settings_key)
       return
    end
    
+   self._settings.fn_get_entity_heat_value = self._settings.fn_get_entity_heat_value or function() end
+   self._settings.fn_get_location_heat_value = self._settings.fn_get_location_heat_value or function() end
    self._settings.default_heat_value = self._settings.default_heat_value or 0
    self._settings.default_color = self._settings.default_color or Color4(255, 0, 255, 255) -- bright magenta should clue you in that there's a problem, because who would use that color normally?
    self._settings.radius = self._settings.radius or 0
    self._settings.MAX_SQUARED_RADIUS = self._settings.radius * self._settings.radius
    self._settings.sample_denominator = (self._settings.sample_denominator ~= 0 and self._settings.sample_denominator) or 1
    self._settings.raycast_origin = self._settings.raycast_origin or Point3(0, stonehearth.constants.raycast.STANDING_RAYCAST_HEIGHT, 0)
-   
+   self._settings.shape = self._settings.shape or 'square'
+
    self._heatmap_node = RenderRootNode:add_debug_shapes_node(self._settings.name .. ' heatmap for ' .. tostring(self._entity))
    self._heatmap_node:set_use_custom_alpha(true)
    self._saved_tiles = {}
@@ -184,8 +190,7 @@ function HeatmapService:_on_mouse_event(e)
    local cur_rank, new_rank, max_rank
    for result in _radiant.client.query_scene(e.x, e.y):each_result() do
       if radiant.entities.exists(result.entity) then
-         new_rank, max_rank = self._settings:fn_filter_query_scene(best_brick, result)
-         log:error('finding best brick: %s / %s', new_rank, max_rank)
+         new_rank, max_rank = self:fn_filter_query_scene(best_brick, result)
          if new_rank >= max_rank then
             best_brick = result.brick
             break
@@ -207,6 +212,24 @@ function HeatmapService:_on_mouse_event(e)
    end
 end
 
+-- return values are [this rank, max rank value]: if you just want to say use this location, return 1, 1
+function HeatmapService:fn_filter_query_scene(best_location, query_result)
+   if self._settings.fn_filter_query_scene then
+      self._settings:fn_filter_query_scene(best_location, query_result)
+   else
+      local is_building = (query_result.entity:get_component('stonehearth:construction_data') or
+                           query_result.entity:get_component('stonehearth:build2:structure') or
+                           query_result.entity:get_component('stonehearth:floor'))
+      if is_building and query_result.normal.y > 0.5 then  -- floor
+         return 1, 1
+      elseif query_result.entity:get_id() == radiant._root_entity_id then  -- terrain
+         return 1, 1
+      end
+      
+      return 0, 1
+   end
+end
+
 function HeatmapService:_update_tiles(origin)
    self._heatmap_node:clear()
    
@@ -219,17 +242,17 @@ function HeatmapService:_update_tiles(origin)
          local y = origin.y
          local z = origin.z + dz
          local point = Point3(x, y, z)
-         if point:distance_to(origin) <= radius then
+         if self._settings.shape ~= 'circle' or point:distance_to(origin) <= radius then
             local key = string.format('%f,%f,%f', x, y, z)
             local heat_value
             if self._saved_tiles[key] then   -- if we already have a value for this space, no need to calculate a new one
                heat_value = self._saved_tiles[key]
             elseif self._settings.valuation_mode == 'entity' then -- if we're evaluating entities, use an aggregate of the entities in the surrounding area
                local items = self:_get_surrounding_items(point)
-               heat_value = self:_get_aggregate_heat_value_of_items(items)
+               heat_value = self:_get_location_heat_value(point) + self:_get_aggregate_heat_value_of_items(items)
                self._saved_tiles[key] = heat_value
             elseif self._settings.valuation_mode == 'location' then  -- if we're evaluating a location, just pass the location to the evaluator function
-               heat_value = self:_get_heat_value(point)
+               heat_value = self:_get_location_heat_value(point)
                self._saved_tiles[key] = heat_value
             end
             
@@ -239,7 +262,8 @@ function HeatmapService:_update_tiles(origin)
             end
             
             local color = self:_heat_value_to_color(heat_value, min_val, max_val)
-            self._heatmap_node:add_filled_xz_quad(Point3(x - 0.5, y + 1.5, z - 0.5), Point2(1, 1), color)
+            -- this used to be "x - 0.5" but it looked incorrectly offset
+            self._heatmap_node:add_filled_xz_quad(Point3(x, y + 1.5, z - 0.5), Point2(1, 1), color)
          end
       end
    end
@@ -267,9 +291,11 @@ function HeatmapService:_update_item_highlights(origin)
    self._hilighted_item_ids = {}
    
    local min_val, max_val = self:_get_min_max_heat_values()
-   for _, item in ipairs(self:_get_surrounding_items(Point3(origin.x, origin.y, origin.z), 1)) do
-      local heat_value = self:_get_heat_value(item)
+   for _, sampled_item in ipairs(self:_get_surrounding_items(Point3(origin.x, origin.y, origin.z), 1)) do
+      local item = sampled_item.item
+      local heat_value = self:_get_entity_heat_value(item, sampled_item.sampling_region)
       local color = self:_heat_value_to_hilight(heat_value)
+      --log:error('hilighting %s color %s', item:get_uri(), tostring(color))
       _radiant.client.hilight_entity(item, color)
       table.insert(self._hilighted_item_ids, item:get_id())
    end
@@ -284,7 +310,7 @@ function HeatmapService:_get_surrounding_items(origin, extra_radius)
    local table_insert = table.insert
    for _, item in pairs(radiant.terrain.get_entities_in_cube(sampling_cube)) do
       if self:_is_entity_relevant(item, raycast_origin) then
-         table_insert(result, item)
+         table_insert(result, {item = item, sampling_region = Region3(sampling_cube)})
       end
    end
    return result
@@ -292,10 +318,14 @@ end
 
 function HeatmapService:_is_entity_relevant(item, raycast_origin)
    if self._settings:fn_is_entity_relevant(item) then
-      local target_point = item:get_component('mob'):get_world_location()
-      if target_point then
-         if raycast_origin:distance_to_squared(target_point) <= self._settings.MAX_SQUARED_RADIUS then
-            return true
+      if self._settings.shape ~= 'circle' then
+         return true
+      else
+         local target_point = item:get_component('mob'):get_world_location()
+         if target_point then
+            if raycast_origin:distance_to_squared(target_point) <= self._settings.MAX_SQUARED_RADIUS then
+               return true
+            end
          end
       end
    end
@@ -305,14 +335,18 @@ end
 
 function HeatmapService:_get_aggregate_heat_value_of_items(items)
    local total_heat_value = 0
-   for _, item in ipairs(items) do
-      total_heat_value = self:_combine_heat_values(total_heat_value, self:_get_heat_value(item))
+   for _, sampled_item in ipairs(items) do
+      total_heat_value = self:_combine_heat_values(total_heat_value, self:_get_entity_heat_value(sampled_item.item, sampled_item.sampling_region))
    end
    return total_heat_value / self._settings.sample_denominator
 end
 
-function HeatmapService:_get_heat_value(item)
-   return self._settings:fn_get_heat_value(item) or self._settings.default_heat_value
+function HeatmapService:_get_entity_heat_value(item, sampling_region)
+   return self._settings:fn_get_entity_heat_value(item, sampling_region) or self._settings.default_heat_value
+end
+
+function HeatmapService:_get_location_heat_value(item)
+   return self._settings:fn_get_location_heat_value(item) or self._settings.default_heat_value
 end
 
 return HeatmapService

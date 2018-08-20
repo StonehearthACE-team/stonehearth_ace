@@ -1,0 +1,73 @@
+<script type="text/x-handlebars" data-template-name="stonehearthTrappingGrounds">
+   <div id="trappingGroundsWindow" class="gui">
+      <div class="window">
+         <div class="title">
+            {{ view.unit_name }}<div class="closeButton"></div>
+         </div>
+
+         <p>{{i18n stonehearth:ui.game.zones_mode.trapping_grounds.help}}</p>
+         <center>
+            <h2>{{i18n stonehearth:ui.game.zones_mode.trapping_grounds.choose_trapping_grounds_type}}</h2>
+            <div id="chooseTrappingGroundsType">
+               <a id="chooseTrappingGroundsLink" {{action "chooseTrappingGroundsTypeLinkClicked" target="view"}}>
+                  <div class="currentTrappingGroundsType">
+                     <img id="trappingGroundsTypeImage" {{bind-attr src="view.currentTrappingGroundsData.icon"}} />
+                  </div>
+               </a>
+            </div>
+            <div id="trappingGroundsWildernessLevel" {{bind-attr style="view.wildernessBackgroundColorStyle"}}>
+               <img id="trappingGroundsWildernessImage" {{bind-attr src="view.currentWildernessLevel.icon"}} />
+               <div id="trappingGroundsWildernessLevelText">
+                  <h2>{{view.currentWildernessLevel.ui_label}}</h2>
+                  <p>{{view.currentWildernessLevel.description}}</p>
+               </div>
+            </div>
+         </center>
+
+         <button class="warn">{{i18n stonehearth:ui.game.common.remove}}</button>
+         <!--TODO(yshan) make this work-->
+         <!--<button id="disableButton">{{i18n stonehearth:ui.game.zones_mode.trapping_grounds.disable}}</button>-->
+         <button class="ok"></button>
+      </div>
+   </div>
+</script>
+
+<script type="text/x-handlebars" data-template-name="stonehearthTrappingGroundsTypePalette">
+   <div id="trappingGroundsTypePalette" class="gui">
+      <div class="window">
+         <div class="title">{{i18n stonehearth:ui.game.zones_mode.trapping_grounds.choose_trapping_grounds_type}}</div>
+
+         <div class="list downSection">
+            <table>
+               <tbody>
+               {{#each view.trappingGroundsTypes}}
+                  <tr {{bind-attr trappingGroundsType=this.type locked=is_locked class="row this.is_locked:disabled this.is_locked:is-locked"}}>
+                     <td>
+                        <div class="icon">
+                           <img class="image" {{bind-attr src=this.icon}} />
+                        </div>
+                     </td>
+                     <td>
+                        <div class="info">
+                           <div class="name">{{i18n_key this.name}} {{i18n stonehearth:ui.game.zones_mode.trapping_grounds.trapping_ground}}</div>
+                           {{#if this.is_locked}}
+                              <div class="description">
+                                 {{i18n stonehearth:ui.game.show_workshop.level_requirement_needed}}
+                                 {{i18n stonehearth:jobs.trapper.trapper_description.display_name}}
+                                 {{i18n stonehearth:ui.game.show_workshop.level_requirement_level}}
+                                 {{this.level_requirement}}
+                              </div>
+                           {{else}}
+                              <div class="description">{{i18n_key this.description}}</div>
+                           {{/if}}
+                        </div>
+                     </td>
+                  </tr>
+               {{/each}}
+               </tbody>
+            </table>
+         </div>
+      </div>
+   </div>
+</script>
+

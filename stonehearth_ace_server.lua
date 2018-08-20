@@ -27,7 +27,8 @@ local monkey_patches = {
    ace_craft_items_orchestrator = 'stonehearth.services.server.town.orchestrators.craft_items_orchestrator',
    ace_collect_ingredients_orchestrator = 'stonehearth.services.server.town.orchestrators.collect_ingredients_orchestrator',
    ace_drop_crafting_ingredients = 'stonehearth.ai.actions.drop_crafting_ingredients',
-   ace_produce_crafted_items = 'stonehearth.ai.actions.produce_crafted_items'
+   ace_produce_crafted_items = 'stonehearth.ai.actions.produce_crafted_items',
+   ace_trapping_grounds_component = 'stonehearth.components.trapping.trapping_grounds_component'
 }
 
 local function monkey_patching()

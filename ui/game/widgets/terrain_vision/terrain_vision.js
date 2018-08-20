@@ -20,8 +20,10 @@ App.StonehearthTerrainVisionWidget.reopen({
                 heatmap.key = key;
             });
             self._heatmaps = heatmaps;
-            // TODO: order by ordinal value
-            self.set('heatMaps', radiant.map_to_array(heatmaps));
+            
+            var heatmapArray = radiant.map_to_array(heatmaps)
+            radiant.sortByOrdinal(heatmapArray);
+            self.set('heatMaps', heatmapArray);
          });
       });
    },

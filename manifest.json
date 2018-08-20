@@ -406,7 +406,10 @@
       "stonehearth/data/biome/desert_mining_loot_table.json": "stonehearth_ace:mining:desert_loot_table",
       "stonehearth/data/biome/desert_generation_data.json": "file(data/biome/desert_generation_data.json)",
       "stonehearth/data/biome/arctic_generation_data.json": "file(data/biome/arctic_generation_data.json)",
-      "stonehearth/data/biome/temperate_generation_data.json": "file(data/biome/temperate_generation_data.json)"
+      "stonehearth/data/biome/temperate_generation_data.json": "file(data/biome/temperate_generation_data.json)",
+      "stonehearth/mixins/critter/critter.json": "file(mixins/critter/critter.json)",
+      "stonehearth/data/trapping/all_trappable_animals.json": "file(data/trapping/all_trappable_animals.json)",
+      "stonehearth/jobs/trapper/trapping_grounds/trapping_grounds.json": "file(jobs/trapper/trapping_grounds/trapping_grounds.json)"
    },
    "overrides": {
       "stonehearth/data/rigs/entities/humans/animations/male/combat_1h_thrust.json": "stonehearth_ace/data/rigs/entities/humans/animations/male/combat_1h_thrust.json",
@@ -425,7 +428,9 @@
       "entity_modification": "file(components/entity_modification/entity_modification_component.lua)",
       "entity_kingdom": "file(components/entity_modification/entity_kingdom_component.lua)",
       "training_dummy": "file(components/training/training_dummy_component.lua)",
-      "add_stump": "file(components/tree_stump/add_stump.lua)"
+      "add_stump": "file(components/tree_stump/add_stump.lua)",
+      "wilderness": "file(components/wilderness/wilderness_component.lua)",
+      "wilderness_signal": "file(components/signals/wilderness_signal_component.lua)"
    },
    "controllers": {
       "crafter_info_controller": "file(services/server/crafter_info/crafter_info_controller.lua)",
@@ -458,17 +463,25 @@
          "show_heatmap_command",
          "hide_heatmap_command",
          "is_heatmap_active_command"
+      ],
+      "trapping_grounds": [
+         "get_wilderness_level_command"
       ]
    },
    "ui": {
+      "html": [
+         "file(ui/game/modes/zones_mode/trapping_grounds/trapping_grounds.html)"
+      ],
       "js": [
          "file(ui/root/js/helpers.js)",
          "file(ui/shell/settings/settings.js)",
          "file(ui/game/show_workshop/show_team_workshop.js)",
-         "file(ui/game/widgets/terrain_vision/terrain_vision.js)"
+         "file(ui/game/widgets/terrain_vision/terrain_vision.js)",
+         "file(ui/game/modes/zones_mode/trapping_grounds/trapping_grounds.js)"
       ],
       "less": [
-         "file(ui/game/widgets/terrain_vision/terrain_vision.less)"
+         "file(ui/game/widgets/terrain_vision/terrain_vision.less)",
+         "file(ui/game/modes/zones_mode/trapping_grounds/trapping_grounds.less)"
       ]
    }
 }
