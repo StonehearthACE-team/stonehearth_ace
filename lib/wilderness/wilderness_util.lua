@@ -74,7 +74,7 @@ function wilderness._get_region(entity)
 end
 
 function wilderness.has_wilderness_value(entity, catalog_fn)
-   local component = entity:get_component('stonehearth_ace:wilderness')
+   local component = entity:get_component('stonehearth_ace:wilderness') or entity:get_component('stonehearth:build2:structure')
    if component then
       return true
    else
