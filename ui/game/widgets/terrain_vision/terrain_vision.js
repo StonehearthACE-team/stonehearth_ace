@@ -32,6 +32,8 @@ App.StonehearthTerrainVisionWidget.reopen({
       var self = this;
       self._super();
 
+      //self.$('#heatmapButton').tooltipster();
+
       // when the user clicks the heatmap menu button, hide the current heatmap and the menu
       self.$('#heatmapButton').on('click', function() {
          self.setHeatmapActive();
@@ -45,6 +47,13 @@ App.StonehearthTerrainVisionWidget.reopen({
          heatmapList.hide();
          heatmapList.attr('style', '');
       });
+   },
+
+   willDestroyElement: function() {
+      var self = this;
+      self._super();
+
+      //self.$().find('.tooltipstered').tooltipster('destroy');
    },
 
    setHeatmapActive: function (heatmapKey, isActive) {

@@ -18,13 +18,13 @@
          </label>
       </div>
 
-      <div id="heatmapButton" class="normal terrainButton" {{bind-attr class="view.heatmap_active:active:inactive"}}>
+      <div id="heatmapButton" class="normal terrainButton" title="{{i18n stonehearth_ace:ui.game.visions.heatmap.description}}" {{bind-attr class="view.heatmap_active:active:inactive"}}>
          <label class="buttonLabel">
-            {{i18n stonehearth_ace:ui.game.visions.heatmap}}
+            {{i18n stonehearth_ace:ui.game.visions.heatmap.title}}
          </label>
-         <div id="heatmapList" class="paper">
+         <div id="heatmapList" class="paper gui">
             {{#each h in view.heatMaps}}
-            <div class="heatmap" {{ bind-attr data-key=h.key }}>
+            <div class="heatmap" title="{{i18nv description}}" {{ bind-attr data-key=h.key }}>
                <div class="heatmapRepresentation">
                   <img class="heatmapImage" {{ bind-attr src=h.icon }} />
                   <div class="heatmapName">

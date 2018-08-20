@@ -1317,13 +1317,20 @@
             }
          },
          "visions": {
-            "heatmap": "heatmap"
+            "heatmap": {
+               "title": "heatmap",
+               "description": "This is the heatmap tooltip. TODO: put something useful here."
+            }
          },
          "heatmaps": {
             "ore": {
                "display_name": "Ore Detector",
                "description": "Detect ore beneath the surface: areas appear brighter where ore is abundant or close to the surface."
-            }
+            },
+            "wilderness": {
+                "display_name": "Wilderness",
+                "description": "See where the world is wilder (or tamer)."
+             }
          }
       },
       "shell": {
