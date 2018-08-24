@@ -53,24 +53,26 @@ end
 
 function WildernessComponent:_perform_location_check()
    local location = get_world_grid_location(self._entity)
-   local signals = get_entities_at_point(location, wilderness_signal_filter_fn)
+   local signals = location and get_entities_at_point(location, wilderness_signal_filter_fn)
 
-   -- then check our current signals to see if we've left any (or if they no longer exist)
+   -- first check our current signals to see if we've left any (or if they no longer exist)
    for id, entity in pairs(self._sv.current_signals) do
       local component = entity:get_component('stonehearth_ace:wilderness_signal')
       if not component then
          self._sv.current_signals[id] = nil
-      elseif not signals[id] then
+      elseif not location or not signals[id] then  -- if there's no location, it must not be in the world, so remove it from signals
          component:remove_entity(self._entity)
          self._sv.current_signals[id] = nil
       end
    end
-
-   -- then check the new ones to see if we've entered any
-   for id, entity in pairs(signals) do
-      if not self._sv.current_signals[id] then
-         self._sv.current_signals[id] = entity
-         entity:get_component('stonehearth_ace:wilderness_signal'):add_entity(self._entity)
+   
+   if signals then
+      -- then check the new ones to see if we've entered any
+      for id, entity in pairs(signals) do
+         if not self._sv.current_signals[id] then
+            self._sv.current_signals[id] = entity
+            entity:get_component('stonehearth_ace:wilderness_signal'):add_entity(self._entity)
+         end
       end
    end
 end
