@@ -12,8 +12,6 @@ App.StonehearthTrappingGroundsView.reopen({
       var currentWildernessLevel = self.get('model.stonehearth:trapping_grounds.wilderness_level');
       
       if (currentWildernessLevel) {
-         currentWildernessLevel.ui_label = i18n.t(currentWildernessLevel.ui_label)
-         currentWildernessLevel.description = i18n.t(currentWildernessLevel.description)
          var color = currentWildernessLevel.heatmap_color;
          // use the heatmap color, except use a standard (reduced) alpha
          self.set('wildernessBackgroundColorStyle', `background-color: rgba(${color[0]},${color[1]},${color[2]},0.75)`)

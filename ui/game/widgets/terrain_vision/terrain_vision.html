@@ -24,11 +24,11 @@
          </label>
          <div id="heatmapList" class="paper gui">
             {{#each h in view.heatMaps}}
-            <div class="heatmap" title="{{i18nv description}}" {{ bind-attr data-key=h.key }}>
+            <div class="heatmap" {{ bind-attr title=h.description }} {{ bind-attr data-key=h.key }}>
                <div class="heatmapRepresentation">
                   <img class="heatmapImage" {{ bind-attr src=h.icon }} />
                   <div class="heatmapName">
-                     {{i18nv name}}
+                     {{i18n_key h.name}}
                   </div>
                </div>
             </div>
