@@ -18,6 +18,7 @@ App.StonehearthTerrainVisionWidget.reopen({
             var heatmaps = response.heatmaps;
             radiant.each(heatmaps, function(key, heatmap) {
                 heatmap.key = key;
+                heatmap.description = i18n.t(heatmap.description);
             });
             self._heatmaps = heatmaps;
             
