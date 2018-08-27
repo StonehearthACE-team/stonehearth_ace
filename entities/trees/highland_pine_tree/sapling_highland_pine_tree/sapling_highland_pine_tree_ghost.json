@@ -1,0 +1,28 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "type": "entity",
+   "components": {
+      "render_info": {
+         "scale": 0.8
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(sapling_highland_pine_tree.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": -0.5, "y": 0, "z": 0.5 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.trees.highland_pine_tree.sapling_highland_pine_tree.sapling_highland_pine_tree_ghost.display_name)",
+         "description": "i18n(stonehearth_ace:entities.trees.highland_pine_tree.sapling_highland_pine_tree.sapling_highland_pine_tree_ghost.description)",
+         "icon": "file(sapling_highland_pine_tree.png)",
+         "category": "plants"
+      }
+   }
+}

@@ -106,14 +106,14 @@
          }
       },
       "trapping": {
-          "all_trappable_animals": {
-              "trappable_animals": {
-                "big_game": {
-                    "name": "Big Game",
-                    "description": "Large animals produce large cuts of meat, jerky, pelts, and other useful items"
-                }
-              }
-          }
+         "all_trappable_animals": {
+            "trappable_animals": {
+               "big_game": {
+                  "name": "Big Game",
+                  "description": "Large animals produce large cuts of meat, jerky, pelts, and other useful items"
+               }
+            }
+         }
       }
    },
    "jobs": {
@@ -454,6 +454,10 @@
             "parana_pine_log": {
                "description": "A log. Made of wood.",
                "display_name": "Parana Pine Log"
+            },
+            "highland_pine_log": {
+               "description": "A log. Made of wood.",
+               "display_name": "Highland Pine Log"
             }
          },
          "herb": {
@@ -684,6 +688,60 @@
                   "description": "TBD"
                }
             }
+         },
+         "highland_pine_tree": {
+            "bud": {
+               "tree_highland_pine_bud": {
+                  "display_name": "Budding Highland Pine",
+                  "description": "TBD"
+               }
+            },
+            "large": {
+               "large_highland_pine": {
+                  "display_name": "Large Highland Pine",
+                  "description": "TBD"
+               }
+            },
+            "medium": {
+               "medium_highland_pine": {
+                  "display_name": "Highland Pine",
+                  "description": "TBD"
+               }
+            },
+            "seed": {
+               "tree_highland_pine_seed_ghost": {
+                  "display_name": "Highland Pine Seed",
+                  "description": "TBD"
+               }
+            },
+            "small": {
+               "small_highland_pine": {
+                  "display_name": "Small Highland Pine",
+                  "description": "TBD"
+               }
+            },
+            "sprout": {
+               "tree_highland_pine_sprout": {
+                  "display_name": "Highland Pine Sproutling",
+                  "description": "TBD"
+               }
+            },
+            "stem": {
+               "tree_highland_pine_stem": {
+                  "display_name": "Stemming Highland Pine",
+                  "description": "TBD"
+               }
+            },
+            "sapling_highland_pine_tree": {
+               "description": "TBD",
+               "sapling_highland_pine_tree_iconic": {
+                  "description": "TBD"
+               },
+               "sapling_highland_pine_tree_ghost": {
+                  "description": "TBD",
+                  "display_name": "Highland Pine Sapling"
+               }
+            }
          }
       },
       "furniture": {
@@ -904,7 +962,7 @@
       },
       "food": {
          "cherries": {
-			"display_name": "Cherries",
+            "display_name": "Cherries",
             "cherry_basket": {
                "display_name": "Basket of Cherries",
                "description": "Sweet or sour, a tasty fruit for any hour."
@@ -993,7 +1051,7 @@
             }
          },
          "chanterelle": {
-			"display_name": "Shrooms",
+            "display_name": "Shrooms",
             "chanterelle_basket": {
                "display_name": "Basket of Chanterelles",
                "description": "Delicious mushrooms ready to be eaten!"
@@ -1178,11 +1236,11 @@
          }
       },
       "loadouts": {
-		 "craftsdwarf_party": {
-			"display_name": "Craftsdwarf Company",
-			"description": "An industrious folk will never let go of their most prized advancements on embarkment and the Artificer is definitely the top of craftsdwarvenship.",
-			"tooltip": "Gets you started early with the most advanced crafts."
-		 }
+         "craftsdwarf_party": {
+            "display_name": "Craftsdwarf Company",
+            "description": "An industrious folk will never let go of their most prized advancements on embarkment and the Artificer is definitely the top of craftsdwarvenship.",
+            "tooltip": "Gets you started early with the most advanced crafts."
+         }
       },
       "kingdom": {
          "quote": "TBD",
@@ -1299,16 +1357,16 @@
       }
    },
    "ui": {
-      "game":{
-         "menu":{
-            "crafter_menu":{
-               "items":{
-                  "artificer":{
+      "game": {
+         "menu": {
+            "crafter_menu": {
+               "items": {
+                  "artificer": {
                      "display_name": "Artificer Craft Menu",
                      "description": "Build wooden furniture and decor.",
                      "required_job_text": "Requires a carpenter"
                   },
-                  "grower":{
+                  "grower": {
                      "display_name": "Grower Craft Menu",
                      "description": "Build wooden furniture and decor.",
                      "required_job_text": "Requires a carpenter"
@@ -1328,9 +1386,9 @@
                "description": "Detect ore beneath the surface: areas appear brighter where ore is abundant or close to the surface."
             },
             "wilderness": {
-                "display_name": "Wilderness",
-                "description": "See where the world is wilder (or tamer)."
-             }
+               "display_name": "Wilderness",
+               "description": "See where the world is wilder (or tamer)."
+            }
          }
       },
       "shell": {

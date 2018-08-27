@@ -41,13 +41,13 @@
       "unknown" : "#25221A",
       "bedrock" : "#8c8c8c",
       "rock_layer_1" : "#FFFAD8",
-      "rock_layer_2" : "#FFFFE8",
-      "rock_layer_3" : "#fffff1",
-      "rock_layer_4" : "#fffff5",
-      "rock_layer_5" : "#FFFFFF",
-      "rock_layer_6" : "#FFFFFF",
-      "rock_layer_7" : "#FFFFFF",
-      "rock_layer_8" : "#FFFFFF",
+      "rock_layer_2" : "#fffbdf",
+      "rock_layer_3" : "#fffbe3",
+      "rock_layer_4" : "#fffce7",
+      "rock_layer_5" : "#fffceb",
+      "rock_layer_6" : "#fffdef",
+      "rock_layer_7" : "#fffdf3",
+      "rock_layer_8" : "#fffef7",
       "soil_light" : "#FFF1C8",
       "soil_dark" : "#e5d8b4",
       "dirt" : "#B3A16E",
@@ -70,13 +70,13 @@
       "unknown" : "#25221A",
       "bedrock" : "#8c8c8c",
       "rock_layer_1" : "#FFFAD8",
-      "rock_layer_2" : "#FFFFE8",
-      "rock_layer_3" : "#fffff1",
-      "rock_layer_4" : "#fffff5",
-      "rock_layer_5" : "#FFFFFF",
-      "rock_layer_6" : "#FFFFFF",
-      "rock_layer_7" : "#FFFFFF",
-      "rock_layer_8" : "#FFFFFF",
+      "rock_layer_2" : "#fffbdf",
+      "rock_layer_3" : "#fffbe3",
+      "rock_layer_4" : "#fffce7",
+      "rock_layer_5" : "#fffceb",
+      "rock_layer_6" : "#fffdef",
+      "rock_layer_7" : "#fffdf3",
+      "rock_layer_8" : "#fffef7",
       "soil_light" : "#FFF1C8",
       "soil_dark" : "#e5d8b4",
       "dirt" : "#B3A16E",
@@ -99,13 +99,13 @@
       "unknown" : "#25221A",
       "bedrock" : "#8c8c8c",
       "rock_layer_1" : "#FFFAD8",
-      "rock_layer_2" : "#FFFFE8",
-      "rock_layer_3" : "#fffff1",
-      "rock_layer_4" : "#fffff5",
-      "rock_layer_5" : "#FFFFFF",
-      "rock_layer_6" : "#FFFFFF",
-      "rock_layer_7" : "#FFFFFF",
-      "rock_layer_8" : "#FFFFFF",
+      "rock_layer_2" : "#fffbdf",
+      "rock_layer_3" : "#fffbe3",
+      "rock_layer_4" : "#fffce7",
+      "rock_layer_5" : "#fffceb",
+      "rock_layer_6" : "#fffdef",
+      "rock_layer_7" : "#fffdf3",
+      "rock_layer_8" : "#fffef7",
       "soil_light" : "#FFF1C8",
       "soil_dark" : "#e5d8b4",
       "dirt" : "#B3A16E",
@@ -128,13 +128,13 @@
       "unknown" : "#25221A",
       "bedrock" : "#8c8c8c",
       "rock_layer_1" : "#FFFAD8",
-      "rock_layer_2" : "#FFFFE8",
-      "rock_layer_3" : "#fffff1",
-      "rock_layer_4" : "#fffff5",
-      "rock_layer_5" : "#FFFFFF",
-      "rock_layer_6" : "#FFFFFF",
-      "rock_layer_7" : "#FFFFFF",
-      "rock_layer_8" : "#FFFFFF",
+      "rock_layer_2" : "#fffbdf",
+      "rock_layer_3" : "#fffbe3",
+      "rock_layer_4" : "#fffce7",
+      "rock_layer_5" : "#fffceb",
+      "rock_layer_6" : "#fffdef",
+      "rock_layer_7" : "#fffdf3",
+      "rock_layer_8" : "#fffef7",
       "soil_light" : "#FFF1C8",
       "soil_dark" : "#e5d8b4",
       "dirt" : "#B3A16E",
@@ -301,33 +301,32 @@
           "exclusion_radius" : 4
         }
       },
-      "stonehearth:trees:pine:small" : {
-        "placement_type" : "dense",
-        "parameters" : {
-          "grid_multiple" : 2,
-          "item_density" : 0.5,
-          "exclusion_radius" : 2
+      "stonehearth_ace:trees:highland_pine:small" : {
+        "placement_type" : "single",
+         "parameters" : {
+          "ground_radius" : 2,
+          "exclusion_radius" : 5
         },
         "mountains" : {
           "placement_type" : "single",
           "parameters" : {
-            "ground_radius" : 0,
-            "exclusion_radius" : 3
+            "ground_radius" : 2,
+            "exclusion_radius" : 5
           }
         }
       },
-      "stonehearth:trees:pine:medium" : {
-        "placement_type" : "single",
-        "parameters" : {
-          "ground_radius" : 1,
-          "exclusion_radius" : 4
-        }
-      },
-      "stonehearth:trees:pine:large" : {
+      "stonehearth_ace:trees:highland_pine:medium" : {
         "placement_type" : "single",
         "parameters" : {
           "ground_radius" : 2,
-          "exclusion_radius" : 5
+          "exclusion_radius" : 6
+        }
+      },
+      "stonehearth_ace:trees:highland_pine:large" : {
+        "placement_type" : "single",
+        "parameters" : {
+          "ground_radius" : 3,
+          "exclusion_radius" : 8
         }
       },
       "stonehearth_ace:plants:moonbell" : {
@@ -445,38 +444,39 @@
           "medium" : 4,
           "large" : 8
         },
-        "stonehearth:trees:pine" : {
+        "stonehearth_ace:trees:highland_pine" : {
           "small" : 0,
           "medium" : 6,
-          "large" : 4
+          "large" : 3
         }
       },
       "weights" : {
         "plains" : {
           "1" : {
             "stonehearth_ace:trees:birch" : 3,
-            "stonehearth_ace:trees:yew" : 2
+            "stonehearth_ace:trees:yew" : 2,
+			"stonehearth_ace:trees:highland_pine" : 0.5
           }
         },
         "foothills" : {
           "1" : {
             "stonehearth_ace:trees:birch" : 2,
             "stonehearth_ace:trees:yew" : 1,
-            "stonehearth:trees:pine" : 3
+            "stonehearth_ace:trees:highland_pine" : 3
           },
           "2" : {
             "stonehearth_ace:trees:birch" : 1,
             "stonehearth_ace:trees:yew" : 1,
-            "stonehearth:trees:pine" : 4
+            "stonehearth_ace:trees:highland_pine" : 5
           }
         },
         "mountains" : {
           "1" : {
-            "stonehearth_ace:trees:yew" : 2,
-            "stonehearth:trees:pine" : 5
+            "stonehearth_ace:trees:yew" : 1,
+            "stonehearth_ace:trees:highland_pine" : 2
           },
           "2" : {
-            "stonehearth:trees:pine" : 1
+            "stonehearth_ace:trees:highland_pine" : 1
           }
         }
       },
@@ -629,8 +629,8 @@
           "terrain_based" : {
             "plains" : {
               "1" : {
-                "probability" : 0.4,
-                "density" : 0.3
+                "probability" : 0.6,
+                "density" : 0.1
               },
               "2" : {
                 "probability" : 0.55,
@@ -639,13 +639,13 @@
             },
             "foothills" : {
               "1" : {
-                "probability" : 0.15,
-                "density" : 0.3
+                "probability" : 0.35,
+                "density" : 0.2
               }
             },
             "mountains" : {
               "1" : {
-                "probability" : 0.1,
+                "probability" : 0.3,
                 "density" : 0.2
               }
             }
@@ -655,7 +655,8 @@
         "cutoffs" : {
           "__comment" : "Def 0.2.",
           "small" : 0.2,
-          "medium" : 0.5
+          "medium" : 0.5,
+		  "large" : 0.6
         }
       }
     },

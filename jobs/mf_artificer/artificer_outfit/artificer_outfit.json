@@ -1,0 +1,28 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:item_properties",
+   "components": {
+      "render_info": {},
+      "model_variants": {
+         "default": {
+            "layer": "clothing",
+            "transparent": "false",
+            "models": [
+               "file(artificer_outfit.qb)"
+            ]
+         }
+      },
+      "stonehearth:equipment_piece": {
+         "slot": "torso",
+         "render_type": "merge_with_model"
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:mountain_folk.jobs.artificer.artificer_outfit.display_name)",
+         "description": "i18n(stonehearth_ace:mountain_folk.jobs.artificer.artificer_outfit.description)",
+         "icon": "file(artificer_outfit.png)",
+         "material_tags": "cloth"
+      }
+   }
+}

@@ -9,8 +9,8 @@
    "image": "file(images/highlands_400x300.png)",
    "story_board_image": "file(images/highlands_story_board.jpg)",
    "game_mode_images": {
-		"stonehearth:game_mode:normal": "/stonehearth/data/biome/images/desert_story_normal.png",
-		"stonehearth:game_mode:hard": "/stonehearth/data/biome/images/desert_story_normal.png"
+      "stonehearth:game_mode:normal": "/stonehearth/data/biome/images/desert_story_normal.png",
+      "stonehearth:game_mode:hard": "/stonehearth/data/biome/images/desert_story_normal.png"
    },
    "mining_loot_table": "file(highlands_mining_loot_table.json)",
    "applied_manifests": {
@@ -27,8 +27,36 @@
          "start_day": 7,
          "weather": [
             {
-               "uri": "stonehearth_ace:weather:snow:late",
+               "uri": "stonehearth:weather:windy",
+               "weight": 6
+            },
+            {
+               "uri": "stonehearth:weather:sunny",
+               "weight": 3
+            },
+            {
+               "uri": "stonehearth:weather:rain:sunny",
+               "weight": 4
+            },
+            {
+               "uri": "stonehearth:weather:rain",
+               "weight": 3
+            },
+            {
+               "uri": "stonehearth:weather:cloudy",
+               "weight": 6
+            },
+            {
+               "uri": "stonehearth_ace:weather:foggy:highlands",
                "weight": 1
+            },
+            {
+               "uri": "stonehearth_ace:weather:snow:late",
+               "weight": 0.5
+            },
+            {
+               "uri": "stonehearth:weather:lucky",
+               "weight": 0.04
             }
          ]
       },
@@ -39,7 +67,31 @@
          "weather": [
             {
                "uri": "stonehearth:weather:sunny",
-               "weight": 1
+               "weight": 8
+            },
+            {
+               "uri": "stonehearth:weather:windy",
+               "weight": 10
+            },
+            {
+               "uri": "stonehearth:weather:cloudy",
+               "weight": 6
+            },
+            {
+               "uri": "stonehearth:weather:rain",
+               "weight": 5
+            },
+            {
+               "uri": "stonehearth:weather:rain:sunny",
+               "weight": 5
+            },
+            {
+               "uri": "stonehearth:weather:thunderstorm",
+               "weight": 2
+            },
+            {
+               "uri": "stonehearth:weather:lucky",
+               "weight": 0.05
             }
          ]
       },
@@ -49,8 +101,32 @@
          "start_day": 42,
          "weather": [
             {
-               "uri": "stonehearth_ace:weather:snow:early",
+               "uri": "stonehearth:weather:windy",
+               "weight": 10
+            },
+            {
+               "uri": "stonehearth:weather:cloudy",
+               "weight": 12
+            },
+            {
+               "uri": "stonehearth:weather:rain",
+               "weight": 6
+            },
+            {
+               "uri": "stonehearth:weather:thunderstorm",
                "weight": 1
+            },
+            {
+               "uri": "stonehearth_ace:weather:foggy:highlands",
+               "weight": 1
+            },
+            {
+               "uri": "stonehearth_ace:weather:snow:early",
+               "weight": 0.5
+            },
+            {
+               "uri": "stonehearth:weather:lucky",
+               "weight": 0.04
             }
          ]
       },
@@ -60,8 +136,36 @@
          "start_day": 63,
          "weather": [
             {
+               "uri": "stonehearth:weather:sunny",
+               "weight": 4
+            },
+            {
+               "uri": "stonehearth:weather:cloudy",
+               "weight": 2
+            },
+            {
+               "uri": "stonehearth:weather:windy",
+               "weight": 3
+            },
+            {
+               "uri": "stonehearth:weather:snow",
+               "weight": 5
+            },
+            {
+               "uri": "stonehearth:weather:snow:sunny",
+               "weight": 5
+            },
+            {
+               "uri": "stonehearth:weather:blizzard",
+               "weight": 3
+            },
+            {
                "uri": "stonehearth_ace:weather:foggy:highlands",
                "weight": 1
+            },
+            {
+               "uri": "stonehearth:weather:lucky",
+               "weight": 0.03
             }
          ]
       }

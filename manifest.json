@@ -15,8 +15,6 @@
       "actions:train": "file(ai/actions/training/train_action.lua)",
       "actions:train_attack": "file(ai/actions/training/train_attack_action.lua)",
       "ai_pack:training": "file(ai/packs/training_ai_pack.json)",
-      "mountain_folk:artificer:staff": "file(jobs/mf_artificer/artificer_staff/artificer_staff.json)",
-      "mountain_folk:artificer:talisman": "file(jobs/mf_artificer/artificer_staff/artificer_staff_talisman.json)",
       "biome:highlands": "file(data/biome/highlands.json)",
       "bitsy_spider": "file(entities/critters/bitsy_spider/bitsy_spider.json)",
       "bitsy_spider_bug_meat": "file(entities/critters/bitsy_spider/bitsy_spider_bug_meat/bitsy_spider_bug_meat.json)",
@@ -115,8 +113,6 @@
       "gizmos:water_pump_topper": "file(entities/gizmos/water_pump/water_pump_topper.json)",
       "grasshopper": "file(entities/critters/grasshopper/grasshopper.json)",
       "grasshopper_bug_meat": "file(entities/critters/grasshopper/grasshopper_bug_meat/grasshopper_bug_meat.json)",
-      "mountain_folk:grower:talisman": "file(jobs/mf_grower/grower_trowel/grower_trowel_talisman.json)",
-      "mountain_folk:grower:trowel": "file(jobs/mf_grower/grower_trowel/grower_trowel.json)",
       "heatmap:keys": "file(services/client/heatmap/data/keys.json)",
       "kingdoms:mountain_folk": "file(data/kingdoms/mountain_folk/mountain_folk_population.json)",
       "ladybug_beetle": "file(entities/critters/ladybug_beetle/ladybug_beetle.json)",
@@ -130,6 +126,10 @@
       "mixins:portals:simple_hatch": "file(mixins/simple_hatch/simple_hatch.json)",
       "mixins:portals:simple_hatch:ghost": "file(mixins/simple_hatch/simple_hatch_ghost.json)",
       "monsters:automatons:automaton_restocking": "file(entities/monsters/automatons/automaton_restocking/automaton_restocking.json)",
+      "mountain_folk:artificer:helm": "file(jobs/mf_artificer/artificer_helm/artificer_helm.json)",
+      "mountain_folk:artificer:outfit": "file(jobs/mf_artificer/artificer_outfit/artificer_outfit.json)",
+      "mountain_folk:artificer:staff": "file(jobs/mf_artificer/artificer_staff/artificer_staff.json)",
+      "mountain_folk:artificer:talisman": "file(jobs/mf_artificer/artificer_staff/artificer_staff_talisman.json)",
       "mountain_folk:banner:balance": "file(entities/gizmos/mf_town_banner_balance/mf_town_banner_balance.json)",
       "mountain_folk:banner:balance:token": "file(entities/gizmos/mf_town_banner_balance/mf_town_banner_balance_token.json)",
       "mountain_folk:banner:strength": "file(entities/gizmos/mf_town_banner_might/mf_town_banner_might.json)",
@@ -150,6 +150,8 @@
       "mountain_folk:effects:candle_mining_helmet": "file(data/effects/candle_mining_helmet/candle_mining_helmet.json)",
       "mountain_folk:food:sweet_varanus": "file(entities/food/sweet_varanus/sweet_varanus/sweet_varanus.json)",
       "mountain_folk:food:sweet_varanus:sweet_varanus_serving": "file(entities/food/sweet_varanus/sweet_varanus_serving/sweet_varanus_serving.json)",
+      "mountain_folk:grower:talisman": "file(jobs/mf_grower/grower_trowel/grower_trowel_talisman.json)",
+      "mountain_folk:grower:trowel": "file(jobs/mf_grower/grower_trowel/grower_trowel.json)",
       "mountain_folk:jobs:archer": "file(jobs/mf_archer/mf_archer_description.json)",
       "mountain_folk:jobs:artificer": "file(jobs/mf_artificer/mf_artificer_description.json)",
       "mountain_folk:jobs:blacksmith": "file(jobs/mf_blacksmith/mf_blacksmith_description.json)",
@@ -230,6 +232,7 @@
       "resources:stone:slate_stone": "file(entities/resources/stone/slate_stone/slate_stone.json)",
       "resources:thatch_bale": "file(entities/resources/thatch_bale/thatch_bale.json)",
       "resources:wood:birch_log": "file(entities/resources/wood/birch_log/birch_log.json)",
+      "resources:wood:highland_pine_log": "file(entities/resources/wood/highland_pine_log/highland_pine_log.json)",
       "resources:wood:parana_pine_log": "file(entities/resources/wood/parana_pine_log/parana_pine_log.json)",
       "resources:wood:yew_log": "file(entities/resources/wood/yew_log/yew_log.json)",
       "scarab_beetle": "file(entities/critters/scarab_beetle/scarab_beetle.json)",
@@ -270,6 +273,14 @@
       "trees:cactus:large:stump": "file(entities/trees/tree_stump/cactus_stump/large_cactus_stump.json)",
       "trees:cactus:small:stump": "file(entities/trees/tree_stump/cactus_stump/small_cactus_stump.json)",
       "trees:dranden:small:stump": "file(entities/trees/tree_stump/dranden_stump/dranden_stump.json)",
+      "trees:highland_pine:bud": "file(entities/trees/highland_pine_tree/bud/tree_highland_pine_plant_bud.json)",
+      "trees:highland_pine:large": "file(entities/trees/highland_pine_tree/large_highland_pine_tree/large_highland_pine_tree.json)",
+      "trees:highland_pine:medium": "file(entities/trees/highland_pine_tree/medium_highland_pine_tree/medium_highland_pine_tree.json)",
+      "trees:highland_pine:sapling": "file(entities/trees/highland_pine_tree/sapling_highland_pine_tree/sapling_highland_pine_tree.json)",
+      "trees:highland_pine:seed": "file(entities/trees/highland_pine_tree/seed/tree_highland_pine_seed.json)",
+      "trees:highland_pine:small": "file(entities/trees/highland_pine_tree/small_highland_pine_tree/small_highland_pine_tree.json)",
+      "trees:highland_pine:sprout": "file(entities/trees/highland_pine_tree/sprout/tree_highland_pine_sprout.json)",
+      "trees:highland_pine:stem": "file(entities/trees/highland_pine_tree/stem/tree_highland_pine_plant_stem.json)",
       "trees:juniper:large:stump": "file(entities/trees/tree_stump/juniper_stump/large_juniper_stump.json)",
       "trees:juniper:medium:stump": "file(entities/trees/tree_stump/juniper_stump/medium_juniper_stump.json)",
       "trees:juniper:small:stump": "file(entities/trees/tree_stump/juniper_stump/small_juniper_stump.json)",
@@ -439,7 +450,8 @@
       "mountain_folk:town_bonus:balance": "file(data/town_bonuses/balance_town_bonus.lua)",
       "mountain_folk:town_bonus:might": "file(data/town_bonuses/might_town_bonus.lua)",
       "mountain_folk:town_bonus:nature": "file(data/town_bonuses/nature_town_bonus.lua)",
-      "recipe_map": "file(services/server/crafter_info/recipe_map.lua)"
+      "recipe_map": "file(services/server/crafter_info/recipe_map.lua)",
+      "mountain_folk:class:artificer": "file(jobs/mf_artificer/mf_artificer.lua)"
    },
    "functions": {
       "toggle_enabled_command": {
@@ -482,7 +494,8 @@
       ],
       "less": [
          "file(ui/game/widgets/terrain_vision/terrain_vision.less)",
-         "file(ui/game/modes/zones_mode/trapping_grounds/trapping_grounds.less)"
+         "file(ui/game/modes/zones_mode/trapping_grounds/trapping_grounds.less)",
+         "file(jobs/mf_artificer/skin/workshop.less)"
       ]
    }
 }
