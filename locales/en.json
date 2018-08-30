@@ -1408,5 +1408,23 @@
             "fungi_resource_name": "Fungi"
          }
       }
+   },
+   "commands": {
+      "toggle_training_off": {
+         "display_name": "Disable Training",
+         "description": "Turn off training for this soldier. They will still patrol and fight as normal."
+      },
+      "toggle_training_on": {
+         "display_name": "Enable Training",
+         "description": "Enable training for this soldier. They will still fight as normal, but will prefer training on training dummies over patrolling up to level 3."
+      },
+      "toggle_enabled_off": {
+         "display_name": "Disable",
+         "description": "Disable this entity's functionality."
+      },
+      "toggle_enabled_on": {
+         "display_name": "Enable",
+         "description": "Enable this entity's functionality."
+      }
    }
 }
