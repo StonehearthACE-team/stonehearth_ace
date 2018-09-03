@@ -6,8 +6,69 @@
       "model_variants": {
          "default": {
             "models": [
-               "file(tree_highland_pine_stem.qb)"
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(tree_highland_pine_stem.qb)"
+                  ]
+               }
             ]
+         },
+         "autumn": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(tree_highland_pine_stem_autumn.qb)"
+                  ]
+               }
+            ]
+         },
+         "spring": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(tree_highland_pine_stem_spring.qb)"
+                  ]
+               }
+            ]
+         },
+         "winter": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(tree_highland_pine_stem_winter.qb)"
+                  ]
+               }
+            ]
+         }
+      },
+      "stonehearth:seasonal_model_switcher": {
+         "stonehearth:biome:temperate": {
+            "spring": "spring",
+            "summer": "default",
+            "autumn": "autumn",
+            "winter": "winter"
+         },
+         "stonehearth:biome:arctic": {
+            "spring": "spring",
+            "summer": "default",
+            "autumn": "winter",
+            "winter": "winter"
+         },
+         "stonehearth:biome:desert": {
+            "spring": "autumn",
+            "summer": "autumn",
+            "autumn": "autumn",
+            "winter": "default"
+         },
+         "stonehearth_ace:biome:highlands": {
+            "spring": "spring",
+            "summer": "default",
+            "autumn": "autumn",
+            "winter": "winter"
          }
       },
       "render_info": {
