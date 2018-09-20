@@ -1,0 +1,32 @@
+{
+   "type": "monster_tuning",
+   "estimated_difficulty": 1,
+   "scale": 0.09,
+   "attributes": {
+      "max_health": 260,
+      "muscle": 1,
+      "menace": 50,
+      "courage": 60,
+      "speed": 50,
+      "additive_armor_modifier": 2,
+      "exp_reward": 35
+   },
+   "equipment": {
+      "weapon": [
+         "stonehearth_ace:weapons:animals:weak_bear_teeth"
+      ]
+   },
+   "stonehearth:loot_drops": {
+      "entries": {
+         "default": {
+            "items": {
+               "skin": {
+                  "type": "bag",
+                  "uri": "stonehearth_ace:loot_bag:bear_small",
+                  "weight": 1
+               }
+            }
+         }
+      }
+   }
+}

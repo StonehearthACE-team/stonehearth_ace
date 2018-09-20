@@ -1,0 +1,100 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:monster",
+   "player_id": "forest",
+   "components": {
+      "render_info": {
+         "animation_table": "file(/data/rigs/entities/critters/bear)",
+         "scale": 0.12
+      },
+      "sensor_list": {
+         "sensors": {
+            "sight": {
+               "type": "sensor",
+               "radius": 15
+            }
+         }
+      },
+      "stonehearth:equipment": {
+         "items": [
+            "stonehearth_ace:weapons:animals:weak_bear_teeth"
+         ]
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(bear.qb)"
+            ]
+         }
+      },
+      "stonehearth:attributes": {
+         "max_health": {
+            "type": "basic",
+            "value": 140
+         },
+         "muscle": {
+            "type": "basic",
+            "value": 10
+         },
+         "menace": {
+            "type": "basic",
+            "value": 35
+         },
+         "courage": {
+            "type": "basic",
+            "value": 50
+         },
+         "speed": {
+            "type": "basic",
+            "value": 75
+         },
+         "exp_reward": {
+            "type": "basic",
+            "value": 10
+         }
+      },
+      "stonehearth:loot_drops": {
+         "entries": {
+            "default": {
+               "items": {
+                  "skin": {
+                     "type": "bag",
+                     "uri": "stonehearth_ace:loot_bag:bear_default",
+                     "weight": 1
+                  }
+               }
+            }
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:portrait": {
+         "portrait_types": {
+            "headshot": {
+               "camera": {
+                  "pos": [
+                     24,
+                     1.2,
+                     -27
+                  ],
+                  "look_at": [
+                     -1,
+                     1.3,
+                     0
+                  ],
+                  "fov": 55
+               }
+            }
+         }
+      },
+      "stonehearth:catalog": {
+         "player_id": "forest",
+         "display_name": "i18n(stonehearth_ace:entities.monsters.forest.bear.display_name)",
+         "description": "i18n(stonehearth_ace:entities.monsters.forest.bear.description)",
+         "icon": "file(bear.png)"
+      },
+      "stonehearth:diet": {
+         "food_material": "meat"
+      }
+   }
+}

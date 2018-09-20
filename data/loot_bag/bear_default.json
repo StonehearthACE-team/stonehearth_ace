@@ -1,0 +1,56 @@
+{
+   "entries": {
+      "default": {
+         "roll_type": "some_of",
+         "num_rolls": {
+            "min": 1,
+            "max": 4
+         },
+         "items": {
+            "meat": {
+               "uri": "stonehearth_ace:food:steak",
+               "weight": 1
+            }
+         }
+      },
+      "meat": {
+         "roll_type": "some_of",
+         "num_rolls": {
+            "min": 2,
+            "max": 4
+         },
+         "items": {
+            "meat": {
+               "uri": "stonehearth_ace:bear_jerky",
+               "weight": 1
+            }
+         }
+      },
+      "pelt": {
+         "roll_type": "some_of",
+         "num_rolls": {
+            "min": 1,
+            "max": 3
+         },
+         "items": {
+            "skin": {
+               "uri": "stonehearth_ace:resources:bear_pelt",
+               "weight": 1
+            }
+         }
+      },
+      "bone": {
+         "roll_type": "some_of",
+         "num_rolls": {
+            "min": 2,
+            "max": 4
+         },
+         "items": {
+            "bones": {
+               "uri": "stonehearth_ace:resources:bone:bone_material",
+               "weight": 1
+            }
+         }
+      }
+   }
+}

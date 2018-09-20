@@ -1,0 +1,21 @@
+{
+   "type": "encounter",
+   "mixins": "stonehearth_ace:mixins:encounter:bear_attack",
+   "encounter_type": "create_mission",
+   "in_edge": "bear_raid_small",
+   "out_edge": "wait_to_destroy_raiding_party",
+   "create_mission_info": {
+      "mission": {
+         "ctx_entity_registration_path": "bear_raid_small",
+         "members": {
+            "bears": {
+               "from_population": {
+                  "min": 1,
+                  "max": 1
+               },
+               "tuning": "stonehearth_ace:monster_tuning:forest:small_bear"
+            }
+         }
+      }
+   }
+}

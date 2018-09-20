@@ -1,0 +1,12 @@
+{
+   "type": "command",
+   "name": "slaughter",
+   "display_name": "i18n(stonehearth_ace:data.commands.slaughter.display_name)",
+   "description": "i18n(stonehearth_ace:data.commands.slaughter.description)",
+   "disabled_description": "i18n(stonehearth_ace:data.commands.slaughter.disabled_description)",
+   "icon": "file(slaughter.png)",
+   "visible_to_all_players": true,
+   "action": "call",
+   "function": "stonehearth:permanently_harvest_entity",
+   "args": []
+}

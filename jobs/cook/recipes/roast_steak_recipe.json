@@ -1,0 +1,22 @@
+{
+   "type": "recipe",
+   "effort": 60,
+   "work_units": 10,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.roast_steak_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.roast_steak_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.roast_steak_recipe..flavor)",
+   "portrait": "/stonehearth_ace/entities/food/roast_steak/roast_steak/roast_steak.png",
+   "workshop": "stonehearth:cook:oven",
+   "level_requirement": 3,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:food:steak",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:roast_steak"
+      }
+   ]
+}

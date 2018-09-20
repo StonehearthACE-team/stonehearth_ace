@@ -3,22 +3,26 @@
       "biome": {
          "highlands": {
             "display_name": "Highlands",
-            "description": "TBD. Default home of the TBD.",
+            "description": "Uneven valleys and tall cliffs with many lakes and rivers. Default home of the Mountain Folk.",
             "random_location_names": {
-               "000": "TBD"
+               "000": "The Whiterock Plateau"
             },
             "seasons": {
                "spring": {
-                  "display_name": "Spring"
+                  "display_name": "Spring",
+                  "description": "Spring in the Highlands is a time of renewal, usually full of windy days and a good time to start sowing. Late snow may rarely occur."
                },
                "summer": {
-                  "display_name": "Summer"
+                  "display_name": "Summer",
+                  "description": "Summer in the Highlands is a warm and wet season, often with days of rain and maybe even storms. Strong winds and a cloudless sky will probably prevail, however."
                },
                "autumn": {
-                  "display_name": "Autumn"
+                  "display_name": "Autumn",
+                  "description": "Autumn in the Highlands marks the end of the farming season, with several rainy or cloudy days and perhaps even an early snowfall."
                },
                "winter": {
-                  "display_name": "Winter"
+                  "display_name": "Winter",
+                  "description": "Winter in the Highlands can be harsh and severe, lasting slightly longer than the other seasons and with an almost daily snowfall. Get your warm clothes ready!"
                }
             }
          }
@@ -113,6 +117,36 @@
                   "description": "Large animals produce large cuts of meat, jerky, pelts, and other useful items"
                }
             }
+         }
+      },
+      "monster_tuning": {
+         "forest": {
+            "rabid_bear": {
+               "description": "There is something unnatural and wrong with this animal..."
+            },
+            "large_bear": {
+               "description": "This is a very large bear."
+            }
+         }
+      },
+      "gm": {
+         "campaigns": {
+            "ambient_threats": {
+               "bear_attack": {
+                  "mission": {
+                     "sighted_bulletin": {
+                        "title": "Feral Bear Approaching!"
+                     }
+                  }
+               }
+            }
+         }
+      },
+      "commands": {
+         "slaughter": {
+            "display_name": "Harvest Wild Animal",
+            "description": "Harvest this wild animal for some of its resources.",
+            "disabled_description": "This wild animal is unfit for slaughtering."
          }
       }
    },
@@ -240,6 +274,11 @@
             "shroom_omelette_recipe": {
                "recipe_name": "Shroom Omelette",
                "description": "A satisfying and tasty dish that is also easy to make.",
+               "flavor": ""
+            },
+            "roast_steak_recipe": {
+               "recipe_name": "Roast Steak",
+               "description": "The most prized and delicious cut of meat, slowly grilled on fire.",
                "flavor": ""
             }
          }
@@ -508,6 +547,10 @@
             "scorpion_pelt": {
                "display_name": "Scorpion Chitin",
                "description": "Hard, shiny, and quite dead"
+            },
+            "bear_pelt": {
+               "display_name": "Bear Pelt",
+               "description": "A large fur from a ferocious creature."
             }
          },
          "bone_material": {
@@ -1110,6 +1153,22 @@
                "display_name": "Serving of Shroom Omelette",
                "description": ""
             }
+         },
+         "bear_jerky": {
+            "display_name": "Bear Jerky"
+         },
+         "steak": {
+            "display_name": "Raw Steak",
+            "description": "A high quality piece of raw prime meat."
+         },
+         "roast_steak": {
+            "roast_steak": {
+               "display_name": "Roast Steak",
+               "description": "A very fine and premium piece of roasted meat."
+            },
+            "roast_steak_serving": {
+               "display_name": "Serving of Roast Steak"
+            }
          }
       },
       "terrain": {
@@ -1225,6 +1284,18 @@
                   "display_name": "Developing Winter Morels",
                   "description": "The fungi are sprawling and will soon be large enough!"
                }
+            }
+         }
+      },
+      "monsters": {
+         "forest": {
+            "bear": {
+               "display_name": "Feral Bear",
+               "description": "They seem quite angry."
+            },
+            "bear_cub": {
+               "display_name": "Bear Cub",
+               "description": "Awww."
             }
          }
       }

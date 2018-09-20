@@ -1,0 +1,23 @@
+{
+   "mixins": "/stonehearth/scenarios/static/critter_nest/critter_nest.json",
+   "name": "poyo_nest",
+   "habitat_types": [
+      "plains",
+      "foothills"
+   ],
+   "biomes": [
+      "stonehearth_ace:biome:highlands",
+      "stonehearth:biome:temperate",
+      "stonehearth:biome:desert"
+   ],
+   "data": {
+      "num_critters": {
+         "min": 4,
+         "max": 10
+      },
+      "critter_type": [
+         "stonehearth_ace:poyo:wild",
+         "stonehearth_ace:poyo:wild:young"
+      ]
+   }
+}

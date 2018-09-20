@@ -1,0 +1,17 @@
+{
+   "mixins": "/stonehearth/scenarios/static/critter_nest/critter_nest.json",
+   "name": "sheep_nest",
+   "habitat_types": [
+      "plains",
+      "foothills"
+   ],
+   "data": {
+      "num_critters": {
+         "min": 3,
+         "max": 6
+      },
+      "critter_type": [
+         "stonehearth_ace:sheep:wild"
+      ]
+   }
+}
