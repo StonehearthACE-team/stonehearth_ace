@@ -11,6 +11,7 @@ local service_creation_order = {
 local monkey_patches = {
    ace_craft_order_list = 'stonehearth.components.workshop.craft_order_list',
    ace_craft_order = 'stonehearth.components.workshop.craft_order',
+   ace_crafter_component = 'stonehearth.components.crafter.crafter_component',
    ace_door_component = 'stonehearth.components.door.door_component',
    ace_portal_component = 'stonehearth.components.portal.portal_component',
    ace_job_component = 'stonehearth.components.job.job_component',
