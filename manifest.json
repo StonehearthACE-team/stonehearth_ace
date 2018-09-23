@@ -452,6 +452,9 @@
       "water_pump": "file(components/water_tools/water_pump_component.lua)",
       "water_signal": "file(components/signals/water_signal_component.lua)"
    },
+   "component_renderers": {
+      "grower_underfield": "file(renderers/grower_underfield/grower_underfield_renderer.lua)"
+   },
    "controllers": {
       "crafter_info_controller": "file(services/server/crafter_info/crafter_info_controller.lua)",
       "material_map": "file(services/server/crafter_info/material_map.lua)",
@@ -503,16 +506,22 @@
       ]
    },
    "ui": {
+      "html": [
+         "file(ui/game/modes/zones_mode/underfarm/underfarm.html)"
+      ],
       "js": [
          "file(ui/root/js/helpers.js)",
          "file(ui/shell/settings/settings.js)",
          "file(ui/game/show_workshop/show_team_workshop.js)",
          "file(ui/game/widgets/terrain_vision/terrain_vision.js)",
-         "file(ui/game/underfarming_start_menu.js)"
+         "file(ui/game/underfarming_start_menu.js)",
+         "file(ui/game/modes/zones_mode/zones_mode.js)",
+         "file(ui/game/modes/zones_mode/underfarm/underfarm.js)"
       ],
       "less": [
          "file(ui/game/widgets/terrain_vision/terrain_vision.less)",
-         "file(jobs/mf_grower/skin/workshop.less)"
+         "file(jobs/mf_grower/skin/workshop.less)",
+         "file(ui/game/modes/zones_mode/underfarm/underfarm.less)"
       ]
    }
 }
