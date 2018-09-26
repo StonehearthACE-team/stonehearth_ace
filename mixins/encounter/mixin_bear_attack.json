@@ -1,0 +1,41 @@
+{
+   "type": "mixin",
+   "encounter_type": "create_mission",
+   "rarity": "common",
+   "out_edge": "wait_to_destroy_raiding_party",
+   "create_mission_info": {
+      "spawn_range": {
+         "min": 60,
+         "max": 180
+      },
+      "on_searcher_failure": {
+         "destroy_tree": {
+            "root": "generate_random_raiding_party",
+            "destroy_root": false
+         }
+      },
+      "mission": {
+         "npc_player_id": "forest",
+         "role": "pillage",
+         "offset": { "x": 0, "y": 0, "z": 0 },
+         "pillage_radius": {
+            "min": 0,
+            "max": 50
+         },
+         "sighted_bulletin": {
+            "title": "i18n(stonehearth_ace:data.gm.campaigns.ambient_threats.bear_attack.mission.sighted_bulletin.title)"
+         },
+         "members": {
+            "bears": {
+               "from_population": {
+                  "role": "bear",
+                  "location": { "x": 0, "z": 0 },
+                  "min": 1,
+                  "max": 1,
+                  "range": 20
+               }
+            }
+         }
+      }
+   }
+}

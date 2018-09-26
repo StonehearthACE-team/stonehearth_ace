@@ -1,0 +1,23 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:item_properties",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(grower_trowel.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:mountain_folk.jobs.grower.grower_trowel.grower_trowel_talisman.display_name)",
+         "description": "i18n(stonehearth_ace:mountain_folk.jobs.grower.grower_trowel.grower_trowel_talisman.description)",
+         "icon": "file(grower_trowel.png)",
+         "is_item": true,
+         "category": "tools",
+         "material_tags": "tool"
+      }
+   }
+}

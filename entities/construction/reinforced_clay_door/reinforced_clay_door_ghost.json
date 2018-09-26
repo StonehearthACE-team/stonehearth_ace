@@ -1,0 +1,44 @@
+{
+   "type": "entity",
+   "mixins": [
+      "stonehearth:mixins:portals:single_door:ghost",
+      "stonehearth:mixins:placed_object"
+   ],
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(reinforced_clay_door.qb)"
+            ]
+         }
+      },
+      "stonehearth:fixture": {
+         "valign": "bottom",
+         "cursor": "stonehearth:cursors:create_door",
+         "margin": {
+            "left": 1,
+            "right": 1,
+            "top": 1
+         },
+         "bounds": {
+            "min": {
+               "x": -1,
+               "y": 0
+            },
+            "max": {
+               "x": 2,
+               "y": 4
+            }
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.construction.reinforced_clay_door.display_name)",
+         "description": "i18n(stonehearth_ace:entities.construction.reinforced_clay_door.description)",
+         "icon": "file(reinforced_clay_door.png)",
+         "category": "door",
+         "material_tags": "clay portal crafted door stockpile_portal"
+      }
+   }
+}

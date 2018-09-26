@@ -1,0 +1,25 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(winter_worker_outfit_iconic.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": -0.05, "y": 0, "z": 0.05 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth:jobs.worker.winter_worker_outfit.winter_worker_outfit_iconic.display_name)",
+         "description": "i18n(stonehearth:jobs.worker.winter_worker_outfit.winter_worker_outfit_iconic.description)",
+         "icon": "file(winter_worker_outfit.png)",
+         "is_item": true,
+         "category": "armor"
+      }
+   }
+}

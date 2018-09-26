@@ -1,0 +1,39 @@
+{
+   "mixintypes": {
+		"loot_drops": "override"
+   },
+   "loot_drops": {
+      "entries": {
+         "default": {
+            "num_rolls": {
+               "min": 1,
+               "max": 3
+            },
+            "items": {
+               "stone": {
+                  "uri": "stonehearth_ace:resources:stone:slate_stone",
+                  "weight": 5
+               },
+               "coal": {
+                  "uri": "stonehearth:resources:coal:lump_of_coal"
+               },
+               "tin_ore": {
+                  "uri": "stonehearth:resources:gold:ore"
+               },
+               "iron_ore": {
+                  "uri": "stonehearth:resources:silver:ore"
+               },
+               "copper_ore": {
+                  "uri": "stonehearth:resources:copper:ore"
+               },
+               "healing_tonic": {
+                  "uri": "stonehearth:consumables:healing_tonic:small"
+               },
+               "strength_tonic": {
+                  "uri": "stonehearth:consumables:strength_tonic"
+               }
+            }
+         }
+      }
+   }
+}

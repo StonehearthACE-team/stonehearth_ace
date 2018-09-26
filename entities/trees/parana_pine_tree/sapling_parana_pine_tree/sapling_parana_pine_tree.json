@@ -1,0 +1,61 @@
+{
+   "type": "entity",
+   "mixins": [
+      "stonehearth:mixins:tree",
+      "file(sapling_parana_pine_tree_ghost.json)"
+   ],
+   "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(sapling_parana_pine_tree_iconic.json)",
+         "ghost_form": "file(sapling_parana_pine_tree_ghost.json)",
+         "placeable_on_ground": true,
+         "hide_placement_ui": true
+      },
+      "stonehearth:evolve": {},
+      "stonehearth:resource_node": {
+         "resource": "stonehearth_ace:resources:wood:parana_pine_log",
+         "durability": 1
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -2, "y": 0, "z": -2 },
+               "max": { "x": 1, "y": 1, "z": 1 }
+            }
+         ]
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -2, "y": 0, "z": -2 },
+               "max": { "x": 1, "y": 10, "z": 1 }
+            }
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:evolve_data": {
+         "next_stage": "stonehearth_ace:trees:parana_pine:small",
+         "evolve_time": "1d"
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 4,
+         "rarity": "rare",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 3,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "description": "i18n(stonehearth_ace:entities.trees.parana_pine_tree.sapling_parana_pine_tree.description)",
+         "category": "plants",
+         "material_tags": "plant tree stockpile_plant",
+         "subject_override": "stonehearth_ace:trees:parana_pine:large"
+      },
+      "stonehearth:appeal": {
+         "appeal": 1
+      }
+   }
+}

@@ -1,0 +1,173 @@
+{
+   "type": "biome",
+   "alias": "stonehearth_ace:biome:highlands",
+   "display_name": "i18n(stonehearth_ace:data.biome.highlands.display_name)",
+   "description": "i18n(stonehearth_ace:data.biome.highlands.description)",
+   "random_location_names": [
+      "i18n(stonehearth_ace:data.biome.highlands.random_location_names.000)"
+   ],
+   "image": "file(images/highlands_400x300.png)",
+   "story_board_image": "file(images/highlands_story_board.jpg)",
+   "game_mode_images": {
+      "stonehearth:game_mode:normal": "/stonehearth/data/biome/images/desert_story_normal.png",
+      "stonehearth:game_mode:hard": "/stonehearth/data/biome/images/desert_story_normal.png"
+   },
+   "mining_loot_table": "file(highlands_mining_loot_table.json)",
+   "applied_manifests": {
+      "highlands": "file(highlands/applied_highlands_manifest.json)"
+   },
+   "generation_file": "file(highlands_generation_data.json)",
+   "growth_duration_multiplier": 1.1,
+   "decay_multiplier": 0.9,
+   "default_starting_season": "spring",
+   "seasons": {
+      "spring": {
+         "display_name": "i18n(stonehearth_ace:data.biome.highlands.seasons.spring.display_name)",
+         "description": "i18n(stonehearth_ace:data.biome.highlands.seasons.spring.description)",
+         "start_day": 7,
+         "weather": [
+            {
+               "uri": "stonehearth:weather:windy",
+               "weight": 6
+            },
+            {
+               "uri": "stonehearth:weather:sunny",
+               "weight": 3
+            },
+            {
+               "uri": "stonehearth:weather:rain:sunny",
+               "weight": 4
+            },
+            {
+               "uri": "stonehearth:weather:rain",
+               "weight": 3
+            },
+            {
+               "uri": "stonehearth:weather:cloudy",
+               "weight": 6
+            },
+            {
+               "uri": "stonehearth_ace:weather:foggy:highlands",
+               "weight": 1
+            },
+            {
+               "uri": "stonehearth_ace:weather:snow:late",
+               "weight": 0.5
+            },
+            {
+               "uri": "stonehearth:weather:lucky",
+               "weight": 0.04
+            }
+         ]
+      },
+      "summer": {
+         "display_name": "i18n(stonehearth_ace:data.biome.highlands.seasons.summer.display_name)",
+         "description": "i18n(stonehearth_ace:data.biome.highlands.seasons.summer.description)",
+         "start_day": 28,
+         "weather": [
+            {
+               "uri": "stonehearth:weather:sunny",
+               "weight": 8
+            },
+            {
+               "uri": "stonehearth:weather:windy",
+               "weight": 10
+            },
+            {
+               "uri": "stonehearth:weather:cloudy",
+               "weight": 6
+            },
+            {
+               "uri": "stonehearth:weather:rain",
+               "weight": 5
+            },
+            {
+               "uri": "stonehearth:weather:rain:sunny",
+               "weight": 5
+            },
+            {
+               "uri": "stonehearth:weather:thunderstorm",
+               "weight": 2
+            },
+            {
+               "uri": "stonehearth:weather:lucky",
+               "weight": 0.05
+            }
+         ]
+      },
+      "autumn": {
+         "display_name": "i18n(stonehearth_ace:data.biome.highlands.seasons.autumn.display_name)",
+         "description": "i18n(stonehearth_ace:data.biome.highlands.seasons.autumn.description)",
+         "start_day": 42,
+         "weather": [
+            {
+               "uri": "stonehearth:weather:windy",
+               "weight": 10
+            },
+            {
+               "uri": "stonehearth:weather:cloudy",
+               "weight": 12
+            },
+            {
+               "uri": "stonehearth:weather:rain",
+               "weight": 6
+            },
+            {
+               "uri": "stonehearth:weather:thunderstorm",
+               "weight": 1
+            },
+            {
+               "uri": "stonehearth_ace:weather:foggy:highlands",
+               "weight": 1
+            },
+            {
+               "uri": "stonehearth_ace:weather:snow:early",
+               "weight": 0.5
+            },
+            {
+               "uri": "stonehearth:weather:lucky",
+               "weight": 0.04
+            }
+         ]
+      },
+      "winter": {
+         "display_name": "i18n(stonehearth_ace:data.biome.highlands.seasons.winter.display_name)",
+         "description": "i18n(stonehearth_ace:data.biome.highlands.seasons.winter.description)",
+         "start_day": 63,
+         "weather": [
+            {
+               "uri": "stonehearth:weather:sunny",
+               "weight": 4
+            },
+            {
+               "uri": "stonehearth:weather:cloudy",
+               "weight": 2
+            },
+            {
+               "uri": "stonehearth:weather:windy",
+               "weight": 3
+            },
+            {
+               "uri": "stonehearth:weather:snow",
+               "weight": 5
+            },
+            {
+               "uri": "stonehearth:weather:snow:sunny",
+               "weight": 5
+            },
+            {
+               "uri": "stonehearth:weather:blizzard",
+               "weight": 3
+            },
+            {
+               "uri": "stonehearth_ace:weather:foggy:highlands",
+               "weight": 1
+            },
+            {
+               "uri": "stonehearth:weather:lucky",
+               "weight": 0.03
+            }
+         ]
+      }
+   }
+}

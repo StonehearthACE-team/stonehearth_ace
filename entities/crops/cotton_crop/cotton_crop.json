@@ -1,0 +1,156 @@
+{
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(cotton_6.qb)"
+            ]
+         },
+         "cotton_1": {
+            "models": [
+               "file(cotton_1.qb)"
+            ]
+         },
+         "cotton_2": {
+            "models": [
+               "file(cotton_2.qb)"
+            ]
+         },
+         "cotton_3": {
+            "models": [
+               "file(cotton_3.qb)"
+            ]
+         },
+         "cotton_4": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(cotton_4.qb)",
+                     "file(cotton_4_2.qb)"
+                  ]
+               }
+            ]
+         },
+         "cotton_5": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(cotton_5.qb)",
+                     "file(cotton_5_2.qb)"
+                  ]
+               }
+            ]
+         },
+         "cotton_6": {
+            "models": [
+               "file(cotton_6.qb)"
+            ]
+         },
+         "cotton_7": {
+            "models": [
+               "file(../../plants/cotton_plant/cotton_plant.qb)"
+            ]
+         },
+         "cotton_22": {
+            "models": [
+               "file(cotton_22.qb)"
+            ]
+         }
+      },
+      "render_info": {
+         "scale": 0.1
+      },
+      "mob": {
+         "model_origin": { "x": -0.05, "y": -0.3, "z": 0.05 },
+         "mob_collision_type": "clutter"
+      },
+      "stonehearth:crop": {
+         "resource_pairings": {
+            "cotton_7": "stonehearth_ace:resources:fiber:cotton_bundle",
+            "cotton_22": ""
+         },
+         "harvest_threshhold": "cotton_7",
+         "plant_overlay_effect": "stonehearth:effects:plant_crop_overlay_effect"
+      },
+      "stonehearth:growing": {
+         "growth_period": "10h",
+         "growth_stages": [
+            {
+               "model_name": "cotton_1",
+               "name": "i18n(stonehearth_ace:entities.crops.cotton_crop.growth_stage.000.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.cotton_crop.growth_stage.000.description)"
+            },
+            {
+               "model_name": "cotton_2",
+               "name": "i18n(stonehearth_ace:entities.crops.cotton_crop.growth_stage.001.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.cotton_crop.growth_stage.001.description)"
+            },
+            {
+               "model_name": "cotton_3",
+               "name": "i18n(stonehearth_ace:entities.crops.cotton_crop.growth_stage.002.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.cotton_crop.growth_stage.002.description)"
+            },
+            {
+               "model_name": "cotton_4",
+               "name": "i18n(stonehearth_ace:entities.crops.cotton_crop.growth_stage.003.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.cotton_crop.growth_stage.003.description)"
+            },
+            {
+               "model_name": "cotton_5",
+               "name": "i18n(stonehearth_ace:entities.crops.cotton_crop.growth_stage.004.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.cotton_crop.growth_stage.004.description)"
+            },
+            {
+               "model_name": "cotton_6",
+               "name": "i18n(stonehearth_ace:entities.crops.cotton_crop.growth_stage.005.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.cotton_crop.growth_stage.005.description)"
+            },
+            {
+               "model_name": "cotton_7",
+               "name": "i18n(stonehearth_ace:entities.crops.cotton_crop.growth_stage.006.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.cotton_crop.growth_stage.006.description)"
+            },
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {
+               "model_name": "cotton_22",
+               "name": "i18n(stonehearth_ace:entities.crops.cotton_crop.growth_stage.022.name)"
+            }
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 1,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.crops.cotton_crop.display_name)",
+         "description": "i18n(stonehearth_ace:entities.crops.cotton_crop.description)",
+         "icon": "file(icon.png)",
+         "material_tags": "crop cotton"
+      },
+      "stonehearth:appeal": {
+         "appeal": 1
+      }
+   }
+}

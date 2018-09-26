@@ -1,0 +1,30 @@
+{
+   "type": "recipe",
+   "effort": 70,
+   "work_units": 10,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.cherry_tart_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.cherry_tart_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.cherry_tart_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/cherry_tart/cherry_tart/cherry_tart.png",
+   "level_requirement": 4,
+   "workshop": "stonehearth:cook:oven",
+   "ingredients": [
+      {
+         "uri": "stonehearth:food:flour",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth:food:sugar",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth_ace:food:cherries:cherry_basket",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:cherry_tart"
+      }
+   ]
+}

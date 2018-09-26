@@ -1,0 +1,26 @@
+{
+   "type": "recipe",
+   "effort": 75,
+   "work_units": 12,
+   "recipe_name": "i18n(stonehearth_ace:entities.construction.reinforced_wooden_door_lockable.display_name)",
+   "description": "i18n(stonehearth_ace:entities.construction.reinforced_wooden_door_lockable.description)",
+   "flavor": "i18n(stonehearth_ace:entities.construction.reinforced_wooden_door_lockable.flavor)",
+   "portrait": "/stonehearth_ace/entities/construction/reinforced_wooden_door_lockable/reinforced_wooden_door_lockable.png",
+   "workshop": "stonehearth:carpenter:toolbench",
+   "level_requirement": 6,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:refined:lock",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth:portals:wooden_door_2",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:portals:reinforced_wooden_door_lockable"
+      }
+   ]
+}

@@ -1,0 +1,63 @@
+{
+   "type": "entity",
+   "mixins": [
+      "stonehearth:mixins:tree",
+      "file(sapling_birch_tree_ghost.json)"
+   ],
+   "components": {
+      "render_info": {
+         "scale": 0.1
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(sapling_birch_tree_iconic.json)",
+         "ghost_form": "file(sapling_birch_tree_ghost.json)",
+         "placeable_on_ground": true,
+         "hide_placement_ui": true
+      },
+      "stonehearth:evolve": {},
+      "stonehearth:resource_node": {
+         "resource": "stonehearth_ace:resources:wood:birch_log",
+         "durability": 2
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": 0, "y": 0, "z": -1 },
+               "max": { "x": 1, "y": 1, "z": 0 }
+            }
+         ]
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": 0, "y": 0, "z": -1 },
+               "max": { "x": 1, "y": 6, "z": 0 }
+            }
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:evolve_data": {
+         "next_stage": "stonehearth_ace:trees:birch:small",
+         "evolve_time": "1d"
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 1,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "description": "i18n(stonehearth_ace:entities.trees.birch_tree.sapling_birch_tree.description)",
+         "category": "plants",
+         "material_tags": "plant tree stockpile_plant",
+         "subject_override": "stonehearth_ace:trees:birch:large"
+      },
+      "stonehearth:appeal": {
+         "appeal": 1
+      }
+   }
+}

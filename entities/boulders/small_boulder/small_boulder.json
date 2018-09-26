@@ -1,0 +1,49 @@
+{
+   "mixins": "stonehearth:mixins:boulder",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(small_boulder_1.qb)"
+            ]
+         }
+      },
+      "stonehearth:resource_node": {
+         "resource": "stonehearth_ace:resources:stone:limestone_stone",
+         "durability": 1
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": -0.5, "y": 0, "z": 0.5 }
+      },
+      "render_info": {
+         "scale": 0.1
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": 0 },
+               "max": { "x": 0, "y": 1, "z": 1 }
+            }
+         ]
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": 0 },
+               "max": { "x": 0, "y": 2, "z": 1 }
+            }
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth:entities.boulders.small_boulder.display_name)",
+         "description": "i18n(stonehearth:entities.boulders.small_boulder.description)"
+      },
+      "stonehearth:appeal": {
+         "appeal": -1
+      }
+   }
+}

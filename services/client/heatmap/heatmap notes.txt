@@ -1,0 +1,25 @@
+heatmaps:
+	- appeal (reworked to use generic heatmap service)
+	- wilderness
+	- ore-scouter
+		- _get_heatmap_value function looks down X units from terrain point; value is sum of 1/depth for each ore found
+
+should be flexible enough with passed functions and values to allow many uses
+	- e.g., values could be tables, so 'default value' must be specifiable and not restricted by type
+
+,
+      "wilderness": {
+         "name": "i18(stonehearth_ace:heatmaps:wilderness.display_name)",
+         "description": "i18(stonehearth_ace:heatmaps:wilderness.description)",
+		 "icon": "file(wilderness_heatmap_icon.png)",
+		 "ordinal": 10,
+         "settings": "file(wilderness_heatmap.lua)"
+      },
+	  "ore": {
+         "name": "i18(stonehearth_ace:heatmaps:ore.display_name)",
+         "description": "i18(stonehearth_ace:heatmaps:ore.description)",
+		 "icon": "file(ore_heatmap_icon.png)",
+		 "ordinal": 20,
+         "settings": "file(ore_heatmap.lua)"
+      }
+   }

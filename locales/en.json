@@ -1,0 +1,1501 @@
+{
+   "data": {
+      "biome": {
+         "highlands": {
+            "display_name": "Highlands",
+            "description": "Uneven valleys and tall cliffs with many lakes and rivers. Default home of the Mountain Folk.",
+            "random_location_names": {
+               "000": "The Whiterock Plateau"
+            },
+            "seasons": {
+               "spring": {
+                  "display_name": "Spring",
+                  "description": "Spring in the Highlands is a time of renewal, usually full of windy days and a good time to start sowing. Late snow may rarely occur."
+               },
+               "summer": {
+                  "display_name": "Summer",
+                  "description": "Summer in the Highlands is a warm and wet season, often with days of rain and maybe even storms. Strong winds and a cloudless sky will probably prevail, however."
+               },
+               "autumn": {
+                  "display_name": "Autumn",
+                  "description": "Autumn in the Highlands marks the end of the farming season, with several rainy or cloudy days and perhaps even an early snowfall."
+               },
+               "winter": {
+                  "display_name": "Winter",
+                  "description": "Winter in the Highlands can be harsh and severe, lasting slightly longer than the other seasons and with an almost daily snowfall. Get your warm clothes ready!"
+               }
+            }
+         }
+      },
+      "weather": {
+         "snow": {
+            "snow_early": {
+               "display_name": "Early Snow",
+               "description": "Snow has come earlier this year...<ul><li>Plant growth speed is slightly reduced.</li><li>Unsheltered hearthlings are too cold to work as effectively.</li></ul>"
+            },
+            "snow_late": {
+               "display_name": "Late Snow",
+               "description": "There's still snow to fall this year...<ul><li>Plant growth speed is somewhat reduced.</li><li>Unsheltered hearthlings are too cold to work as effectively.</li><li>Unsheltered pasture animals are hurt by the cold.</li></ul>"
+            }
+         }
+      },
+      "happiness": {
+         "thoughts": {
+            "weather": {
+               "values": {
+                  "snow_early_positive": {
+                     "display_name": "Snow season is upon us!",
+                     "tooltip": "I've waited the whole year for this, the snow season is finally upon us!"
+                  },
+                  "snow_early_negative": {
+                     "display_name": "Winter is coming!",
+                     "tooltip": "Can't believe we're getting snow this early, darkness and cold approaches!"
+                  },
+                  "snow_late_positive": {
+                     "display_name": "One last snow day!",
+                     "tooltip": "I'm glad we can enjoy one more day of snow before the snow season ends!"
+                  },
+                  "snow_late_negative": {
+                     "display_name": "It's snowing again!",
+                     "tooltip": "Winter should be over already, can't believe we're getting such late snowfall..."
+                  }
+               }
+            }
+         }
+      },
+      "heatmaps": {
+         "ore": {
+            "thresholds": {
+               "none": {
+                  "display_name": "No Ore",
+                  "description": "There's no ore in detection range below this point."
+               },
+               "some": {
+                  "display_name": "Some Ore",
+                  "description": "There's some ore below this point, but it might be pretty far down."
+               },
+               "lots": {
+                  "display_name": "Lots of Ore",
+                  "description": "There's a lot of ore below this point, or it's very close to the surface."
+               },
+               "tons": {
+                  "display_name": "Tons of Ore!",
+                  "description": "You're sitting on a gold mine! (But possibly other ores than gold.)"
+               }
+            }
+         },
+         "wilderness": {
+            "thresholds": {
+               "none": {
+                  "display_name": "No Wilderness",
+                  "description": "Either there's no wilderness here, or it's eclipsed by buildings."
+               },
+               "little": {
+                  "display_name": "A Little Wild",
+                  "description": "This area is very tame. Try planting trees to *spruce* it up a bit."
+               },
+               "some": {
+                  "display_name": "Somewhat Wild",
+                  "description": "There's some wilderness here, but it won't attract many animals. A few more or larger plants could help."
+               },
+               "lots": {
+                  "display_name": "Getting Wilder",
+                  "description": "This area is rather wild, and plenty of animals should be attracted to it."
+               },
+               "tons": {
+                  "display_name": "Very Wild",
+                  "description": "It's a veritable Garden of Eden!"
+               }
+            }
+         }
+      },
+      "trapping": {
+         "all_trappable_animals": {
+            "trappable_animals": {
+               "big_game": {
+                  "name": "Big Game",
+                  "description": "Large animals produce large cuts of meat, jerky, pelts, and other useful items"
+               }
+            }
+         }
+      },
+      "monster_tuning": {
+         "forest": {
+            "rabid_bear": {
+               "description": "There is something unnatural and wrong with this animal..."
+            },
+            "large_bear": {
+               "description": "This is a very large bear."
+            }
+         }
+      },
+      "gm": {
+         "campaigns": {
+            "ambient_threats": {
+               "bear_attack": {
+                  "mission": {
+                     "sighted_bulletin": {
+                        "title": "Feral Bear Approaching!"
+                     }
+                  }
+               }
+            }
+         }
+      },
+      "commands": {
+         "slaughter": {
+            "display_name": "Harvest Wild Animal",
+            "description": "Harvest this wild animal for some of its resources.",
+            "disabled_description": "This wild animal is unfit for slaughtering."
+         }
+      }
+   },
+   "jobs": {
+      "herbalist": {
+         "recipes": {
+            "refined_fungi_name": "Fungal Refinement",
+            "moonbell_transmute_recipe": {
+               "recipe_name": "Moonbell Seeds (x3)",
+               "description": "Separate seeds from the herbs",
+               "flavor": "Only a skilled hand can harvest the weaker seeds, but the herbs are lost in the process."
+            },
+            "marblesprout_transmute_recipe": {
+               "recipe_name": "Marblesprout Seeds (x3)",
+               "description": "Separate seeds from the stone",
+               "flavor": "Only a skilled hand can harvest the weaker seeds, but the flower is lost in the process."
+            },
+            "marblesprout_drying_recipe": {
+               "recipe_name": "Marble Stone",
+               "description": "Dry marblesprout flowers to form a hunk of stone used in ornate furniture.",
+               "flavor": "It is a marbelous stone!"
+            },
+            "bolete_colony_recipe": {
+               "recipe_name": "Bolete Colony (x3)",
+               "description": "Use existing fungus to create more colonies to grow into new fungi.",
+               "flavor": ""
+            },
+            "chanterelle_colony_recipe": {
+               "recipe_name": "Chanterelle Colony (x3)",
+               "description": "Use existing fungus to create more colonies to grow into new fungi.",
+               "flavor": ""
+            },
+            "winter_morel_colony_recipe": {
+               "recipe_name": "Winter Morel Colony (x3)",
+               "description": "Use existing fungus to create more colonies to grow into new fungi.",
+               "flavor": ""
+            },
+            "desert_truffle_colony_recipe": {
+               "recipe_name": "Desert Truffle Colony (x3)",
+               "description": "Use existing fungus to create more colonies to grow into new fungi.",
+               "flavor": ""
+            }
+         }
+      },
+      "potter": {
+         "recipes": {
+            "bone_clay_recipe": {
+               "recipe_name": "Mound of Bone Clay",
+               "description": "Required for creating porcelain and beautiful ornate ceramics.",
+               "flavor": ""
+            }
+         }
+      },
+      "blacksmith": {
+         "recipes": {
+            "copper_wall_lantern_recipe": {
+               "recipe_name": "Copper Wall-Mounted Lantern",
+               "description": "A beautiful lantern. Place on buildings to provide light at night.",
+               "flavor": "Almost magical..."
+            },
+            "copper_garden_lantern_recipe": {
+               "recipe_name": "Copper Garden Lantern",
+               "description": "A small lantern that's placed on the ground. Suitable for lighting paths or small gardens.",
+               "flavor": "Almost magical..."
+            }
+         }
+      },
+      "worker": {
+         "mining_helmet": {
+            "display_name": "Mining Helmet",
+            "description": "A protective iron hat that also includes a light source.",
+            "mining_helmet_iconic": {
+               "display_name": "Mining Helmet",
+               "description": "Can be used by a Worker for additional efficiency. Also provides light."
+            }
+         }
+      },
+      "cook": {
+         "recipes": {
+            "nutty_poultry_recipe": {
+               "recipe_name": "Stirred Poultry & Nuts",
+               "description": "Stirred and fried large poultry slices with spices and nuts.",
+               "flavor": "Very popular among the hearthlings from the East!"
+            },
+            "cherry_tart_recipe": {
+               "recipe_name": "Cherry Tart",
+               "description": "A delicious and fresh dessert for lazy afternoons.",
+               "flavor": ""
+            },
+            "pie_cherry_recipe": {
+               "recipe_name": "Sweet Cherry Pie",
+               "description": "A tasty pie that is quite difficult to make.",
+               "flavor": "Slightly sour."
+            },
+            "nut_pralines_recipe": {
+               "recipe_name": "Nut Pralines",
+               "description": "Crunchy nuts baked with a delightful caramelized sugar crust.",
+               "flavor": "'This is SO GOOD' - Mer Burlyhands"
+            },
+            "huntsman_banquet_recipe": {
+               "recipe_name": "Huntsman's Banquet",
+               "description": "An exquisite cut of venison seasoned with fruity forest flavors.",
+               "flavor": ""
+            },
+            "cooked_nuts_recipe": {
+               "recipe_name": "Cooked Nuts",
+               "description": "Shaven and tenderly cooked edible seeds like pines and acorns.",
+               "flavor": ""
+            },
+            "broth_recipe": {
+               "recipe_name": "Broth",
+               "description": "A very nutritious and filling simmer, broth is both an ingredient or a meal on its own.",
+               "flavor": "It isn't exactly tasty, though..."
+            },
+            "bone_marrow_recipe": {
+               "recipe_name": "Bone Marrow",
+               "description": "Extremely nutritious roast made with animal bones.",
+               "flavor": "A meal for desperate times."
+            },
+            "boiled_shrooms_recipe": {
+               "recipe_name": "Boiled Shrooms",
+               "description": "Boiling mushrooms will remove most of their impurities and improve their consistency.",
+               "flavor": ""
+            },
+            "shroom_omelette_recipe": {
+               "recipe_name": "Shroom Omelette",
+               "description": "A satisfying and tasty dish that is also easy to make.",
+               "flavor": ""
+            },
+            "roast_steak_recipe": {
+               "recipe_name": "Roast Steak",
+               "description": "The most prized and delicious cut of meat, slowly grilled on fire.",
+               "flavor": ""
+            }
+         }
+      }
+   },
+   "entities": {
+      "consumables": {
+         "seeds": {
+            "moonbell_seeds": {
+               "display_name": "Moonbell Seeds",
+               "description": "Learn to grow moonbells."
+            },
+            "marblesprout_seeds": {
+               "display_name": "Marblesprout Seeds",
+               "description": "Learn to grow marblesprouts."
+            },
+            "cotton_seeds": {
+               "display_name": "Cotton Seeds",
+               "description": "Learn to grow cotton."
+            }
+         }
+      },
+      "construction": {
+         "simple_hatch_wooden": {
+            "display_name": "Simple Wooden Hatch",
+            "description": "A simple hatch for vertical doorways.",
+            "flavor": ""
+         },
+         "simple_hatch_clay": {
+            "display_name": "Simple Clay Hatch",
+            "description": "A simple hatch for vertical doorways.",
+            "flavor": ""
+         },
+         "simple_hatch_stone": {
+            "display_name": "Simple Stone Hatch",
+            "description": "A simple hatch for vertical doorways.",
+            "flavor": ""
+         },
+         "simple_hatch_iron": {
+            "display_name": "Simple Iron Hatch",
+            "description": "A simple, but sturdy, hatch for vertical doorways.",
+            "flavor": ""
+         },
+         "hidden_hatch_wooden": {
+            "display_name": "Hidden Wooden Hatch",
+            "description": "A well hidden hatch.",
+            "flavor": ""
+         },
+         "hidden_hatch_clay": {
+            "display_name": "Hidden Clay Hatch",
+            "description": "A well hidden hatch.",
+            "flavor": ""
+         },
+         "hidden_hatch_stone": {
+            "display_name": "Hidden Stone Hatch",
+            "description": "A well hidden hatch.",
+            "flavor": ""
+         },
+         "hidden_hatch_iron": {
+            "display_name": "Hidden Iron Hatch",
+            "description": "A well hidden hatch.",
+            "flavor": ""
+         },
+         "diagonal_hatch_wooden": {
+            "display_name": "Wooden Barn Hatch",
+            "description": "Wooden hatch for your cellar.",
+            "flavor": "Good for storing potatoes"
+         },
+         "diagonal_hatch_clay": {
+            "display_name": "Clay Barn Hatch",
+            "description": "Clay hatch for your cellar.",
+            "flavor": "Good for storing potatoes"
+         },
+         "diagonal_hatch_stone": {
+            "display_name": "Stone Barn Hatch",
+            "description": "Stone hatch for your cellar.",
+            "flavor": "Good for storing potatoes"
+         },
+         "diagonal_hatch_iron": {
+            "display_name": "Iron Barn Hatch",
+            "description": "Thick, sturdy iron hatch for your cellar.",
+            "flavor": "Good for storing potatoes"
+         },
+         "reinforced_clay_door": {
+            "display_name": "Reinforced Clay Door",
+            "description": "Stronger than your average door.",
+            "flavor": "Gives a slight feeling of safety"
+         },
+         "reinforced_wooden_door_lockable": {
+            "display_name": "Lockable Reinforced Wooden Door",
+            "description": "Stronger than your average door and lockable.",
+            "flavor": "Gives a feeling of safety"
+         },
+         "reinforced_clay_door_lockable": {
+            "display_name": "Lockable Reinforced Clay Door",
+            "description": "Stronger than your average door and lockable.",
+            "flavor": "Gives a feeling of safety"
+         },
+         "reinforced_stone_door_lockable": {
+            "display_name": "Lockable Reinforced Stone Door",
+            "description": "Stronger than your average door and lockable.",
+            "flavor": "Gives a feeling of safety"
+         }
+      },
+      "crops": {
+         "moonbell_crop": {
+            "display_name": "Moonbell Flower",
+            "description": "Can be used as a healing herb",
+            "growth_stage": {
+               "000": {
+                  "name": "Moonbell Seedling",
+                  "description": "Full of potential."
+               },
+               "001": {
+                  "name": "Moonbell Sprout",
+                  "description": "Stubby"
+               },
+               "002": {
+                  "name": "Moonbell Bud",
+                  "description": "Awkward, gangly stage."
+               },
+               "003": {
+                  "name": "Moonbell",
+                  "description": "Beauty is its own reward. (So shiny!)"
+               }
+            }
+         },
+         "marblesprout_crop": {
+            "display_name": "Marblesprout Flower",
+            "description": "Marblesprout Crop Description",
+            "growth_stage": {
+               "000": {
+                  "name": "Marblesprout Seedling",
+                  "description": "Full of potential."
+               },
+               "001": {
+                  "name": "Marblesprout Sprout",
+                  "description": "Stubby"
+               },
+               "002": {
+                  "name": "Marblesprout Bud",
+                  "description": "Awkward, gangly stage."
+               },
+               "003": {
+                  "name": "Marblesprout",
+                  "description": "Beauty is its own reward (Rock solid)"
+               }
+            }
+         },
+         "cotton_crop": {
+            "display_name": "Cotton",
+            "description": "This plant's fiber can be spun into thread",
+            "growth_stage": {
+               "000": {
+                  "name": "Cotton Seedling",
+                  "description": "A long journey ahead for this one."
+               },
+               "001": {
+                  "name": "Cotton Sprout",
+                  "description": "Life is just starting..."
+               },
+               "002": {
+                  "name": "Cotton Bud",
+                  "description": "Growing steadily! Should start blooming anytime!"
+               },
+               "003": {
+                  "name": "Cotton Bloom",
+                  "description": "It's flowering! Enjoy it while it lasts..."
+               },
+               "004": {
+                  "name": "Cotton Fading Bloom",
+                  "description": "The flowers are already fading..."
+               },
+               "005": {
+                  "name": "Immature Cotton",
+                  "description": "The plant is drying and the cotton should be mature soon!"
+               },
+               "006": {
+                  "name": "Mature Cotton",
+                  "description": "Ready for harvest!"
+               },
+               "022": {
+                  "name": "Rotten Cotton"
+               }
+            }
+         }
+      },
+      "decorations": {
+         "copper_wall_lantern": {
+            "copper_wall_lantern_ghost": {
+               "display_name": "Copper Wall Lantern",
+               "description": "TBD"
+            }
+         },
+         "copper_garden_lantern": {
+            "copper_garden_lantern_ghost": {
+               "display_name": "Copper Garden Lantern",
+               "description": "TBD"
+            }
+         }
+      },
+      "resources": {
+         "wood": {
+            "birch_log": {
+               "description": "A log. Made of wood.",
+               "display_name": "Birch Log"
+            },
+            "yew_log": {
+               "display_name": "Yew Log",
+               "description": "A log. Made of wood."
+            },
+            "parana_pine_log": {
+               "description": "A log. Made of wood.",
+               "display_name": "Parana Pine Log"
+            },
+            "highland_pine_log": {
+               "description": "A log. Made of wood.",
+               "display_name": "Highland Pine Log"
+            }
+         },
+         "herb": {
+            "moonbell": {
+               "display_name": "Moonbell Flowers",
+               "description": "An herb commonly used for medicinal purposes"
+            },
+            "marblesprout": {
+               "display_name": "Marblesprout Flower",
+               "description": "An uncommon herb that will harden and turn into marble when dried."
+            }
+         },
+         "stone": {
+            "marble_stone": {
+               "display_name": "Hunk 'o Marble",
+               "description": "Used by masons to make really pretty stone works!"
+            },
+            "feldspar_stone": {
+               "display_name": "Hunk 'o Feldspar",
+               "description": "A not so ordinary rock, feldspar can be used to create porcelain"
+            },
+            "limestone_stone": {
+               "display_name": "Hunk 'o Limestone",
+               "description": "A heavy, ordinary rock"
+            },
+            "sandstone_stone": {
+               "display_name": "Hunk 'o Sandstone",
+               "description": "A heavy, ordinary rock"
+            },
+            "slate_stone": {
+               "display_name": "Hunk 'o Slate",
+               "description": "A heavy, ordinary rock"
+            }
+         },
+         "thatch_bale": {
+            "display_name": "Bundle of Thatch",
+            "description": "Dry grass that can be turned into fodder or used as thatch in crafting."
+         },
+         "pelt": {
+            "bitsy_spider_pelt": {
+               "display_name": "Spider Chitin",
+               "description": "Hard, shiny, and quite dead"
+            },
+            "grasshopper_pelt": {
+               "display_name": "Grasshopper Chitin",
+               "description": "Hard, shiny, and quite dead"
+            },
+            "scorpion_pelt": {
+               "display_name": "Scorpion Chitin",
+               "description": "Hard, shiny, and quite dead"
+            },
+            "bear_pelt": {
+               "display_name": "Bear Pelt",
+               "description": "A large fur from a ferocious creature."
+            }
+         },
+         "bone_material": {
+            "display_name": "Bone Material",
+            "description": "Common bones from an average creature"
+         },
+         "clay": {
+            "bone_clay_mound": {
+               "display_name": "Mound of Bone Clay",
+               "description": "Use it in pottery to make really pretty porcelain!"
+            }
+         },
+         "fiber": {
+            "cotton_bundle": {
+               "display_name": "Cotton Bundle",
+               "description": "Soft to the touch. Spinnable into thread"
+            }
+         }
+      },
+      "refined": {
+         "lock": {
+            "display_name": "Lock",
+            "description": "Needed for lockable doors",
+            "flavor": "Look out to not lock someone out"
+         }
+      },
+      "trees": {
+         "stump": "Tree Stump",
+         "stump_description": "Not a tree anymore...",
+         "birch_tree": {
+            "ancient_birch_tree": {
+               "display_name": "Ancient Birch Tree",
+               "description": "TBD"
+            },
+            "large_birch_tree": {
+               "display_name": "Large Birch Tree",
+               "description": "TBD"
+            },
+            "medium_birch_tree": {
+               "description": "TBD",
+               "display_name": "Birch Tree"
+            },
+            "sapling_birch_tree": {
+               "description": "TBD",
+               "sapling_birch_tree_iconic": {
+                  "description": "TBD"
+               },
+               "sapling_birch_tree_ghost": {
+                  "description": "TBD",
+                  "display_name": "Birch Tree Sapling"
+               }
+            },
+            "seed": {
+               "tree_birch_seed_ghost": {
+                  "description": "Can be planted to grow a giant tree",
+                  "display_name": "Birch Tree Seed"
+               }
+            },
+            "small_birch_tree": {
+               "display_name": "Small Birch Tree",
+               "description": "TBD"
+            },
+            "bud": {
+               "tree_birch_plant_bud": {
+                  "display_name": "Budding Birch Tree",
+                  "description": "TBD"
+               }
+            },
+            "sprout": {
+               "tree_birch_sprout": {
+                  "description": "TBD",
+                  "display_name": "Birch Tree Sproutling"
+               }
+            },
+            "stem": {
+               "tree_birch_plant_stem": {
+                  "description": "TBD",
+                  "display_name": "Stemming Birch Tree"
+               }
+            }
+         },
+         "parana_pine_tree": {
+            "seed": {
+               "tree_parana_pine_seed_ghost": {
+                  "display_name": "Parana Pine Seed",
+                  "description": "TBD"
+               }
+            },
+            "sprout": {
+               "tree_parana_pine_sprout": {
+                  "display_name": "Parana Pine Sproutling",
+                  "description": "TBD"
+               }
+            },
+            "stem": {
+               "tree_parana_pine_plant_stem": {
+                  "display_name": "Stemming Parana Pine",
+                  "description": "TBD"
+               }
+            },
+            "bud": {
+               "tree_parana_pine_plant_bud": {
+                  "description": "TBD",
+                  "display_name": "Budding Parana Pine"
+               }
+            },
+            "small_parana_pine_tree": {
+               "display_name": "Small Parana Pine",
+               "description": "TBD"
+            },
+            "large_parana_pine_tree": {
+               "display_name": "Large Parana Pine",
+               "description": "TBD"
+            },
+            "medium_parana_pine_tree": {
+               "display_name": "Parana Pine",
+               "description": "TBD"
+            },
+            "sapling_parana_pine_tree": {
+               "description": "TBD",
+               "sapling_parana_pine_tree_iconic": {
+                  "description": "TBD"
+               },
+               "sapling_parana_pine_tree_ghost": {
+                  "display_name": "Parana Pine Sapling",
+                  "description": "TBD"
+               }
+            }
+         },
+         "yew_tree": {
+            "ancient_yew_tree": {
+               "display_name": "Ancient Yew Tree",
+               "description": "As beautiful as it is old, it feels almost magical..."
+            },
+            "bud": {
+               "tree_yew_plant_bud": {
+                  "display_name": "Budding Yew Tree",
+                  "description": "TBD"
+               }
+            },
+            "large_yew_tree": {
+               "display_name": "Large Yew Tree",
+               "description": "TBD"
+            },
+            "medium_yew_tree": {
+               "display_name": "Yew Tree",
+               "description": "TBD"
+            },
+            "sapling_yew_tree": {
+               "description": "TBD",
+               "sapling_yew_tree_iconic": {
+                  "description": "TBD"
+               },
+               "sapling_yew_tree_ghost": {
+                  "description": "TBD",
+                  "display_name": "Yew Tree Sapling"
+               }
+            },
+            "seed": {
+               "tree_yew_seed_ghost": {
+                  "display_name": "Yew Tree Seed",
+                  "description": "TBD"
+               }
+            },
+            "small_yew_tree": {
+               "display_name": "Small Yew Tree",
+               "description": "TBD"
+            },
+            "sprout": {
+               "tree_yew_sprout": {
+                  "display_name": "Yew Tree Sproutling",
+                  "description": "TBD"
+               }
+            },
+            "stem": {
+               "tree_yew_plant_stem": {
+                  "display_name": "Stemming Yew Tree",
+                  "description": "TBD"
+               }
+            }
+         },
+         "highland_pine_tree": {
+            "bud": {
+               "tree_highland_pine_bud": {
+                  "display_name": "Budding Highland Pine",
+                  "description": "TBD"
+               }
+            },
+            "large": {
+               "large_highland_pine": {
+                  "display_name": "Large Highland Pine",
+                  "description": "TBD"
+               }
+            },
+            "medium": {
+               "medium_highland_pine": {
+                  "display_name": "Highland Pine",
+                  "description": "TBD"
+               }
+            },
+            "seed": {
+               "tree_highland_pine_seed_ghost": {
+                  "display_name": "Highland Pine Seed",
+                  "description": "TBD"
+               }
+            },
+            "small": {
+               "small_highland_pine": {
+                  "display_name": "Small Highland Pine",
+                  "description": "TBD"
+               }
+            },
+            "sprout": {
+               "tree_highland_pine_sprout": {
+                  "display_name": "Highland Pine Sproutling",
+                  "description": "TBD"
+               }
+            },
+            "stem": {
+               "tree_highland_pine_stem": {
+                  "display_name": "Stemming Highland Pine",
+                  "description": "TBD"
+               }
+            },
+            "sapling_highland_pine_tree": {
+               "description": "TBD",
+               "sapling_highland_pine_tree_iconic": {
+                  "description": "TBD"
+               },
+               "sapling_highland_pine_tree_ghost": {
+                  "description": "TBD",
+                  "display_name": "Highland Pine Sapling"
+               }
+            }
+         }
+      },
+      "furniture": {
+         "patrol_point": {
+            "patrol_point_ghost": {
+               "display_name": "Patrol Point",
+               "description": "Let your footmen patrol!"
+            }
+         },
+         "patrol_point_sign": {
+            "patrol_point_sign_ghost": {
+               "display_name": "Patrol Point",
+               "description": "Let your footmen patrol!"
+            }
+         },
+         "patrol_point_tower": {
+            "patrol_point_tower_ghost": {
+               "display_name": "Patrol Point",
+               "description": "Let your footmen patrol!"
+            }
+         }
+      },
+      "recipes": {
+         "carpenter": {
+            "patrol_point_recipe": {
+               "recipe_name": "Patrol Point",
+               "description": "Let your footmen patrol!",
+               "flavor": "With this you can now control your footmens :D"
+            }
+         },
+         "mason": {
+            "patrol_point_tower_recipe": {
+               "recipe_name": "Patrol Point",
+               "description": "Let your footmen patrol!",
+               "flavor": "With this you can now control your footmens :D"
+            }
+         },
+         "potter": {
+            "patrol_point_sign_recipe": {
+               "recipe_name": "Patrol Point",
+               "description": "Let your footmen patrol!",
+               "flavor": "With this you can now control your footmens :D"
+            }
+         }
+      },
+      "plants": {
+         "moonbell_plant": {
+            "display_name": "Wild Moonbell",
+            "description": "Can be harvested for healing herbs",
+            "unripe_description": "This plant has been harvested and has not grown back yet",
+            "seed": {
+               "moonbell_plant_seed_ghost": {
+                  "display_name": "Wild Moonbell Seed",
+                  "description": "Once planted, it will grow into healing herbs"
+               },
+               "moonbell_plant_sprout": {
+                  "display_name": "Wild Moonbell Sproutling",
+                  "description": "Just need some time and care."
+               }
+            },
+            "stem": {
+               "moonbell_plant_stem": {
+                  "display_name": "Wild Moonbell Stemming Plant",
+                  "description": "Still Growing!"
+               },
+               "moonbell_plant_bud": {
+                  "display_name": "Wild Moonbell Budding Plant",
+                  "description": "Its almost there! Look, it has buds!"
+               }
+            }
+         },
+         "marblesprout_plant": {
+            "display_name": "Wild Marblesprout",
+            "description": "This plant can be harvested for Marble Stones!",
+            "unripe_description": "This plant has been harvested and has not grown back yet",
+            "seed": {
+               "marblesprout_plant_seed_ghost": {
+                  "display_name": "Wild Marblesprout Seed",
+                  "description": "Once planted, it will grow into a Marblesprout"
+               },
+               "marblesprout_plant_sprout": {
+                  "display_name": "Wild Marblesprout Sproutling",
+                  "description": "Just need some time and care."
+               }
+            },
+            "stem": {
+               "marblesprout_plant_stem": {
+                  "display_name": "Wild Marblesprout Stemming Plant",
+                  "description": "Still Growing!"
+               },
+               "marblesprout_plant_bud": {
+                  "display_name": "Wild Marblesprout Budding Plant",
+                  "description": "Its almost there! Look, it has buds!"
+               }
+            }
+         },
+         "cherry_bush": {
+            "unripe_description": "Not yet ripe for harvest.",
+            "display_name": "Cherry Bush",
+            "description": "Harvest for delicious cherry plums.",
+            "bud": {
+               "cherry_bush_plant_bud": {
+                  "display_name": "Budding Cherry Bush",
+                  "description": "It's almost there! Look, it has buds!"
+               }
+            },
+            "seed": {
+               "cherry_bush_plant_seed_ghost": {
+                  "display_name": "Cherry Bush Seed",
+                  "description": "Can be planted to grow a bush of delicious cherry plums."
+               }
+            },
+            "sprout": {
+               "cherry_bush_plant_sprout": {
+                  "display_name": "Cherry Bush Sproutling",
+                  "description": "Just needs some time and care."
+               }
+            },
+            "stem": {
+               "cherry_bush_plant_stem": {
+                  "description": "Still growing!",
+                  "display_name": "Stemming Cherry Bush"
+               }
+            }
+         },
+         "cotton_plant": {
+            "cotton_plant": {
+               "unripe_description": "This plant has been harvested and hasn't grown back yet.",
+               "display_name": "Wild Cotton",
+               "description": "This plant's fiber can be spun into thread."
+            },
+            "cotton_plant_bud": {
+               "display_name": "Budding Cotton",
+               "description": "It's almost there! Should start blooming soon."
+            },
+            "cotton_plant_stem": {
+               "display_name": "Stemming Cotton",
+               "description": "Still growing!"
+            },
+            "cotton_plant_sprout": {
+               "display_name": "Cotton Sproutling",
+               "description": "Just needs some time and care."
+            },
+            "cotton_plant_seed": {
+               "display_name": "Wild Cotton Seed",
+               "description": "Can be planted to grow fiber which can be spun into thread."
+            },
+            "cotton_plant_bloom": {
+               "display_name": "Blooming Cotton",
+               "description": "Look at all the blooms! They shall fade away quickly..."
+            },
+            "cotton_plant_fading": {
+               "display_name": "Fading Cotton",
+               "description": "The blooms are fading... But it shall give cotton buds soon!"
+            },
+            "cotton_plant_maturing": {
+               "display_name": "Maturing Cotton",
+               "description": "The cotton buds have started maturing and shall be ready soon enough!"
+            }
+         }
+      },
+      "decoration": {
+         "statue": {
+            "statue_anji_the_horrendous": {
+               "statue_anji_the_horrendous_ghost": {
+                  "display_name": "Anji the Horrendous Statue",
+                  "description": "It is said that Anji bravely fought a pack of wolves under the last radiant sun."
+               }
+            }
+         }
+      },
+      "pets": {
+         "wombat": {
+            "display_name": "Wombat",
+            "description": "Its fluffiness inspired the art school known as plushinism. It only eats greens."
+         }
+      },
+      "critters": {
+         "wombat": {
+            "species": "wombat"
+         },
+         "bitsy_spider": {
+            "species": "bitsy spider",
+            "display_name": "Bitsy Spider",
+            "description": "Creepy little creature.",
+            "bitsy_spider_jerky": {
+               "display_name": "Spider Bug Meat"
+            }
+         },
+         "grasshopper": {
+            "grasshopper_jerky": {
+               "display_name": "Grasshopper Bug Meat"
+            },
+            "species": "grasshopper",
+            "description": "Cute little insect",
+            "display_name": "Grasshopper"
+         },
+         "scorpion": {
+            "scorpion_jerky": {
+               "display_name": "Scorpion Bug Meat"
+            },
+            "species": "scorpion",
+            "display_name": "Scorpion",
+            "description": "Creepy little creature."
+         },
+         "ladybug_beetle": {
+            "display_name": "Ladybug Beetle",
+            "description": "Cute little insect"
+         },
+         "scarab_beetle": {
+            "display_name": "Scarab Beetle",
+            "description": "Creepy little insect"
+         },
+         "stag_beetle": {
+            "display_name": "Stag Beetle",
+            "description": "Creepy little insect"
+         }
+      },
+      "food": {
+         "cherries": {
+            "display_name": "Cherries",
+            "cherry_basket": {
+               "display_name": "Basket of Cherries",
+               "description": "Sweet or sour, a tasty fruit for any hour."
+            },
+            "cherry_serving": {
+               "display_name": "Plate of Cherries",
+               "description": "A cherry is always on top, even when there's nothing below."
+            }
+         },
+         "cooked_nuts": {
+            "display_name": "Basket of Cooked Nuts",
+            "description": "TBD",
+            "cooked_nuts_serving": {
+               "display_name": "Plate of Cooked Nuts",
+               "description": "TBD"
+            }
+         },
+         "cherry_tart": {
+            "cherry_tart": {
+               "display_name": "Cherry Tart",
+               "description": "TBD"
+            },
+            "cherry_tart_serving": {
+               "display_name": "Slice of Cherry Tart",
+               "description": "TBD"
+            }
+         },
+         "huntsman_banquet": {
+            "huntsman_banquet": {
+               "display_name": "Huntsman's Banquet",
+               "description": "A perfectly roasted venison prepared with a bittersweet woodland sauce."
+            },
+            "huntsman_banquet_serving": {
+               "display_name": "Serving of Huntsman's Banquet",
+               "description": "Still warm and tasty!"
+            }
+         },
+         "nutty_poultry": {
+            "nutty_poultry": {
+               "display_name": "Stirred Poultry & Nuts",
+               "description": "TBD"
+            },
+            "nutty_poultry_serving": {
+               "display_name": "Plate of Stirred Poultry & Nuts",
+               "description": "A very colorful dish."
+            }
+         },
+         "pie_cherry": {
+            "pie_cherry": {
+               "display_name": "Sweet Cherry Pie",
+               "description": "TBD"
+            },
+            "pie_cherry_serving": {
+               "display_name": "Piece of Cherry Pie",
+               "description": "Sweet, red and glistening."
+            }
+         },
+         "nut_pralines": {
+            "nut_pralines": {
+               "display_name": "Nut Pralines",
+               "description": "TBD"
+            },
+            "nut_pralines_serving": {
+               "display_name": "Plate of Nut Pralines",
+               "description": "Crispy, sweet and crunchy!"
+            }
+         },
+         "broth": {
+            "broth_serving": {
+               "description": "",
+               "display_name": "Bowl of Broth"
+            },
+            "broth": {
+               "display_name": "Broth",
+               "description": "Very nutritious but not really exciting."
+            }
+         },
+         "bone_marrow": {
+            "bone_marrow_serving": {
+               "description": "",
+               "display_name": "Serving of Bone Marrow"
+            },
+            "bone_marrow": {
+               "display_name": "Bone Marrow",
+               "description": "Extremely nutritious but definitely not satisfying."
+            }
+         },
+         "chanterelle": {
+            "display_name": "Shrooms",
+            "chanterelle_basket": {
+               "display_name": "Basket of Chanterelles",
+               "description": "Delicious mushrooms ready to be eaten!"
+            },
+            "chanterelle_serving": {
+               "display_name": "Serving of Chanterelles",
+               "description": "Tasty fungi!"
+            }
+         },
+         "desert_truffle": {
+            "desert_truffle_basket": {
+               "display_name": "Basket of Desert Truffles",
+               "description": "Delicious mushrooms ready to be eaten!"
+            },
+            "desert_truffle_serving": {
+               "display_name": "Serving of Desert Truffles",
+               "description": "Tasty fungi!"
+            }
+         },
+         "bolete": {
+            "bolete_basket": {
+               "display_name": "Basket of Boletes",
+               "description": "Delicious mushrooms ready to be eaten!"
+            },
+            "bolete_serving": {
+               "display_name": "Serving of Boletes",
+               "description": "Tasty fungi!"
+            }
+         },
+         "winter_morel": {
+            "winter_morel_basket": {
+               "display_name": "Basket of Winter Morels",
+               "description": "Delicious mushrooms ready to be eaten!"
+            },
+            "winter_morel_serving": {
+               "display_name": "Serving of Winter Morels",
+               "description": "Tasty fungi!"
+            }
+         },
+         "boiled_shrooms": {
+            "boiled_shrooms": {
+               "display_name": "Boiled Shrooms",
+               "description": "A simple yet satisfying boiling of diverse mushrooms."
+            },
+            "boiled_shrooms_serving": {
+               "display_name": "Bowl of Boiled Shrooms",
+               "description": ""
+            }
+         },
+         "shroom_omelette": {
+            "shroom_omelette": {
+               "display_name": "Shroom Omelette",
+               "description": "Slightly more satisfying than your regular omelette."
+            },
+            "shroom_omelette_serving": {
+               "display_name": "Serving of Shroom Omelette",
+               "description": ""
+            }
+         },
+         "bear_jerky": {
+            "display_name": "Bear Jerky"
+         },
+         "steak": {
+            "display_name": "Raw Steak",
+            "description": "A high quality piece of raw prime meat."
+         },
+         "roast_steak": {
+            "roast_steak": {
+               "display_name": "Roast Steak",
+               "description": "A very fine and premium piece of roasted meat."
+            },
+            "roast_steak_serving": {
+               "display_name": "Serving of Roast Steak"
+            }
+         }
+      },
+      "terrain": {
+         "pasture_grass": {
+            "display_name": "Grass",
+            "description": "Tall grass can be grazed on by animals or harvested for later use."
+         },
+         "overgrown_pasture_grass": {
+            "display_name": "Overgrown Grass",
+            "description": "Overgrown grass can be grazed on by animals or harvested for later use."
+         },
+         "short_pasture_grass": {
+            "display_name": "Short Grass",
+            "description": "Short grass can be grazed on by animals but isn't long enough for thatching."
+         },
+         "sprouting_pasture_grass": {
+            "display_name": "Sprouting Grass",
+            "description": "Grass has just started germinating here, not yet as efficient for grazing."
+         }
+      },
+      "fungi": {
+         "chanterelle": {
+            "chanterelle_ghost": {
+               "display_name": "Chanterelles",
+               "description": "A group of delicious edible mushrooms"
+            },
+            "colony": {
+               "chanterelle_colony": {
+                  "display_name": "Colony of Chanterelles",
+                  "description": "Can be placed to grow into larger, edible mushrooms"
+               }
+            },
+            "spreading": {
+               "chanterelle_spreading": {
+                  "display_name": "Spreading Chanterelles",
+                  "description": "The spores have dispersed from the colony and the mushrooms started growing"
+               }
+            },
+            "developing": {
+               "chanterelle_developing": {
+                  "display_name": "Developing Chanterelles",
+                  "description": "The fungi are sprawling and will soon be large enough!"
+               }
+            }
+         },
+         "desert_truffle": {
+            "desert_truffle_ghost": {
+               "display_name": "Desert Truffles",
+               "description": "Hearty mushrooms that can thrive among the roots of flowers"
+            },
+            "colony": {
+               "desert_truffle_colony": {
+                  "display_name": "Colony of Desert Truffles",
+                  "description": "Can be placed to grow into larger, edible mushrooms"
+               }
+            },
+            "developing": {
+               "desert_truffle_developing": {
+                  "display_name": "Developing Desert Truffles",
+                  "description": "The fungi are sprawling and will soon be large enough!"
+               }
+            },
+            "spreading": {
+               "desert_truffle_spreading": {
+                  "display_name": "Spreading Desert Truffles",
+                  "description": "The spores have dispersed from the colony and the mushrooms started growing"
+               }
+            }
+         },
+         "bolete": {
+            "bolete_ghost": {
+               "display_name": "Boletes",
+               "description": "A tasty and coveted forest delicacy"
+            },
+            "colony": {
+               "bolete_colony": {
+                  "display_name": "Colony of Boletes",
+                  "description": "Can be placed to grow into larger, edible mushrooms"
+               }
+            },
+            "spreading": {
+               "bolete_spreading": {
+                  "display_name": "Spreading Boletes",
+                  "description": "The spores have dispersed from the colony and the mushrooms started growing"
+               }
+            },
+            "developing": {
+               "bolete_developing": {
+                  "display_name": "Developing Boletes",
+                  "description": "The fungi are sprawling and will soon be large enough!"
+               }
+            }
+         },
+         "winter_morel": {
+            "winter_morel_ghost": {
+               "display_name": "Winter Morels",
+               "description": "A very sought of northern fungi that tastes great!"
+            },
+            "colony": {
+               "winter_morel_colony": {
+                  "display_name": "Colony of Winter Morels",
+                  "description": "Can be placed to grow into larger, edible mushrooms"
+               }
+            },
+            "spreading": {
+               "winter_morel_spreading": {
+                  "display_name": "Spreading Winter Morels",
+                  "description": "The spores have dispersed from the colony and the mushrooms started growing"
+               }
+            },
+            "developing": {
+               "winter_morel_developing": {
+                  "display_name": "Developing Winter Morels",
+                  "description": "The fungi are sprawling and will soon be large enough!"
+               }
+            }
+         }
+      },
+      "monsters": {
+         "forest": {
+            "bear": {
+               "display_name": "Feral Bear",
+               "description": "They seem quite angry."
+            },
+            "bear_cub": {
+               "display_name": "Bear Cub",
+               "description": "Awww."
+            }
+         }
+      }
+   },
+   "mountain_folk": {
+      "data": {
+         "mountain_folk_population": {
+            "display_name": "Mountain Folk"
+         }
+      },
+      "loadouts": {
+         "craftsdwarf_party": {
+            "display_name": "Craftsdwarf Company",
+            "description": "An industrious folk will never let go of their most prized advancements on embarkment and the Artificer is definitely the top of craftsdwarvenship.",
+            "tooltip": "Gets you started early with the most advanced crafts."
+         }
+      },
+      "kingdom": {
+         "quote": "TBD",
+         "long_description": "TBD",
+         "post_selection_description": "TBD",
+         "initial_town_name": "Embarkment [str(town_number)]"
+      },
+      "jobs": {
+         "grower": {
+            "grower_description": {
+               "display_name": "Grower"
+            },
+            "grower_trowel": {
+               "grower_trowel_talisman": {
+                  "display_name": "Grower's Trowel",
+                  "description": "Required to promote a hearthling into a Grower"
+               },
+               "grower_trowel_equipped": {
+                  "display_name": "Grower's Trowel",
+                  "description": "Can be used by a Grower for their crafts and to tend plant and fungus alike."
+               }
+            }
+         },
+         "artificer": {
+            "artificer_description": {
+               "display_name": "Artificer"
+            },
+            "artificer_staff": {
+               "artificer_staff_talisman": {
+                  "display_name": "Artificer's Staff",
+                  "description": "Required to promote a hearthling into an Artificer"
+               },
+               "artificer_staff_equipped": {
+                  "display_name": "Artificer's Staff",
+                  "description": "An advanced device that can channel both the powers of the Hearth and of machines."
+               }
+            }
+         },
+         "druid": {
+            "druid_description": {
+               "display_name": "Druid"
+            }
+         },
+         "cook": {
+            "recipes": {
+               "sweet_varanus_recipe": {
+                  "recipe_name": "Sweetened Varanus",
+                  "description": "A highly traditional dwarven meal made with varanus meat and local cherries.",
+                  "flavor": ""
+               }
+            }
+         }
+      },
+      "entities": {
+         "gizmos": {
+            "mf_camp_standard": {
+               "mf_camp_standard_ghost": {
+                  "display_name": "Settlement Banner",
+                  "description": "A sign of home for all of the mountain folk!"
+               }
+            },
+            "mf_town_banner_balance": {
+               "mf_town_banner_balance_ghost": {
+                  "display_name": "Banner of Balance",
+                  "description": "For some it is between the old ways and the new that the mountain folk will find glory!"
+               },
+               "mf_town_banner_balance_token_iconic": {
+                  "description": "A shred from the Banner of Balance, carrying along its blessing.",
+                  "display_name": "Banner of Balance Shred"
+               }
+            },
+            "mf_town_banner_might": {
+               "mf_town_banner_might_ghost": {
+                  "display_name": "Banner of Strength",
+                  "description": "It is the belief of many of the mountain folk that only through fire and industry there is progress."
+               },
+               "mf_town_banner_might_token_iconic": {
+                  "description": "A shred from the Banner of Strength, carrying along its blessing.",
+                  "display_name": "Banner of Strength Shred"
+               }
+            },
+            "mf_town_banner_nature": {
+               "mf_town_banner_nature_ghost": {
+                  "display_name": "Banner of Vitality",
+                  "description": "Many of the mountain folk will always follow the old ways."
+               },
+               "mf_town_banner_nature_token_iconic": {
+                  "description": "A shred from the Banner of Vitality, carrying along its blessing.",
+                  "display_name": "Banner of Vitality Shred"
+               }
+            }
+         },
+         "food": {
+            "sweet_varanus": {
+               "sweet_varanus": {
+                  "display_name": "Sweetened Varanus",
+                  "description": "An exotic specialty of the dwarven cuisine."
+               },
+               "sweet_varanus_serving": {
+                  "display_name": "Serving of Sweetened Varanus",
+                  "description": "A delicious and traditional meat dish."
+               }
+            }
+         }
+      }
+   },
+   "plants": {
+      "moonbell_plant": {
+         "seed": {
+            "moonbell_plant_seed_ghost": {
+               "display_name": "Moonbell Seed"
+            }
+         }
+      }
+   },
+   "ui": {
+      "game": {
+         "menu": {
+            "crafter_menu": {
+               "items": {
+                  "artificer": {
+                     "display_name": "Artificer Craft Menu",
+                     "description": "Build wooden furniture and decor.",
+                     "required_job_text": "Requires a carpenter"
+                  },
+                  "grower": {
+                     "display_name": "Grower Craft Menu",
+                     "description": "Build wooden furniture and decor.",
+                     "required_job_text": "Requires a carpenter"
+                  }
+               }
+            }
+         },
+         "visions": {
+            "heatmap": {
+               "title": "heatmap",
+               "description": "This is the heatmap tooltip. TODO: put something useful here."
+            }
+         },
+         "heatmaps": {
+            "ore": {
+               "display_name": "Ore Detector",
+               "description": "Detect ore beneath the surface: areas appear brighter where ore is abundant or close to the surface."
+            },
+            "wilderness": {
+               "display_name": "Wilderness",
+               "description": "See where the world is wilder (or tamer)."
+            }
+         }
+      },
+      "shell": {
+         "settings": {
+            "gameplayTab": {
+               "auto_craft_recipe_dependencies": "Auto Craft Recipe Dependencies",
+               "auto_craft_recipe_dependencies_description": "When crafting an item, the crafters will check the inventory to see if there is sufficient of ingredients to use. If not, then they will add more orders to the queue should they need to to fulfill the original order."
+            }
+         }
+      },
+      "data": {
+         "constants": {
+            "edible_nuts_resource_name": "Edible Nut",
+            "fruits_resource_name": "Fruit",
+            "thatch_resource_name": "Thatching",
+            "bone_resource_name": "Bone",
+            "fungi_resource_name": "Fungi"
+         }
+      }
+   },
+   "commands": {
+      "toggle_training_off": {
+         "display_name": "Disable Training",
+         "description": "Turn off training for this soldier. They will still patrol and fight as normal."
+      },
+      "toggle_training_on": {
+         "display_name": "Enable Training",
+         "description": "Enable training for this soldier. They will still fight as normal, but will prefer training on training dummies over patrolling up to level 3."
+      },
+      "toggle_enabled_off": {
+         "display_name": "Disable",
+         "description": "Disable this entity's functionality."
+      },
+      "toggle_enabled_on": {
+         "display_name": "Enable",
+         "description": "Enable this entity's functionality."
+      }
+   }
+}

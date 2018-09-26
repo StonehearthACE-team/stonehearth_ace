@@ -1,0 +1,22 @@
+{
+   "type": "recipe",
+   "effort": 40,
+   "work_units": 2,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.cooked_nuts_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.cooked_nuts_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.cooked_nuts_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/cooked_nuts/cooked_nuts.png",
+   "workshop": "stonehearth:cook:workbench",
+   "level_requirement": 0,
+   "ingredients": [
+      {
+         "material": "seed_hard raw_food",
+         "count": 5
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:cooked_nuts"
+      }
+   ]
+}

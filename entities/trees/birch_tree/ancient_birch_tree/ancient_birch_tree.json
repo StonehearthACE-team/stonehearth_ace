@@ -1,0 +1,150 @@
+{
+   "mixins": "stonehearth:mixins:tree",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(ancient_birch_tree.qb)",
+                     "file(ancient_birch_tree_2.qb)"
+                  ]
+               }
+            ]
+         },
+         "autumn": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(ancient_birch_tree_autumn.qb)",
+                     "file(ancient_birch_tree_autumn_2.qb)",
+                     "file(ancient_birch_tree_autumn_3.qb)",
+                     "file(ancient_birch_tree_winter.qb)"
+                  ]
+               }
+            ]
+         },
+         "summer": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(ancient_birch_tree_summer.qb)",
+                     "file(ancient_birch_tree_summer_2.qb)"
+                  ]
+               }
+            ]
+         },
+         "winter": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(ancient_birch_tree_winter.qb)"
+                  ]
+               }
+            ]
+         }
+      },
+      "stonehearth:seasonal_model_switcher": {
+         "stonehearth_ace:biome:highlands": {
+            "spring": "default",
+            "summer": "summer",
+            "autumn": "autumn",
+            "winter": "winter"
+         },
+         "stonehearth:biome:temperate": {
+            "spring": "default",
+            "summer": "summer",
+            "autumn": "autumn",
+            "winter": "winter"
+         },
+         "stonehearth:biome:arctic": {
+            "spring": "summer",
+            "summer": "autumn",
+            "autumn": "winter",
+            "winter": "winter"
+         },
+         "stonehearth:biome:desert": {
+            "spring": "autumn",
+            "summer": "winter",
+            "autumn": "summer",
+            "winter": "default"
+         }
+      },
+      "stonehearth:resource_node": {
+         "durability": 23,
+         "resource_loot_table": {
+            "entries": {
+               "mandatory": {
+                  "items": {
+                     "none": {
+                        "uri": "stonehearth_ace:resources:wood:birch_log",
+                        "weight": 1
+                     }
+                  }
+               },
+               "optional": {
+                  "num_rolls": {
+                     "min": 1,
+                     "max": 1
+                  },
+                  "items": {
+                     "none": {
+                        "uri": "",
+                        "weight": 8
+                     },
+                     "pelt": {
+                        "uri": "stonehearth_ace:trees:birch:seed",
+                        "weight": 1
+                     }
+                  }
+               }
+            }
+         }
+      },
+      "mob": {
+         "align_to_grid": [
+            "x",
+            "z"
+         ],
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0, "y": 0, "z": 0 }
+      },
+      "render_info": {
+         "scale": 0.2
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 1, "y": 1, "z": 1 }
+            }
+         ]
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 1, "y": 24, "z": 1 }
+            }
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.trees.birch_tree.ancient_birch_tree.display_name)",
+         "description": "i18n(stonehearth_ace:entities.trees.birch_tree.ancient_birch_tree.description)",
+         "subject_override": "stonehearth_ace:trees:birch:large"
+      },
+      "stonehearth_ace:stump_data": {
+         "stump_alias": "stonehearth_ace:trees:birch:large:stump"
+      },
+      "stonehearth:appeal": {
+         "appeal": 2
+      }
+   }
+}

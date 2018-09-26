@@ -1,0 +1,18 @@
+{
+   "mixins": "stonehearth:mixins:worker_outfit",
+   "components": {
+      "model_variants": {
+         "dwarf": {
+            "layer": "clothing",
+            "models": [
+               "file(worker_outfit.qb)"
+            ]
+         }
+	  }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "icon": "file(worker_outfit.png)"
+      }
+   }
+}

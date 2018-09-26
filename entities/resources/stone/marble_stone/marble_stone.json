@@ -1,0 +1,45 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(marble_stone.qb)",
+                     "file(marble_stone_2.qb)"
+                  ]
+               }
+            ]
+         }
+      },
+      "stonehearth:stacks": {
+         "max_stacks": 60
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 18,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 3,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.resources.stone.marble_stone.display_name)",
+         "description": "i18n(stonehearth_ace:entities.resources.stone.marble_stone.description)",
+         "icon": "file(marble_stone.png)",
+         "is_item": true,
+         "category": "resources",
+         "material_tags": "stockpile_stone stone resource"
+      },
+      "stonehearth:appeal": {
+         "appeal": -2
+      }
+   }
+}

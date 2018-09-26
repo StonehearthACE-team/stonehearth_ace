@@ -1,0 +1,20 @@
+{
+   "mixins": "/stonehearth/scenarios/static/critter_nest/critter_nest.json",
+   "name": "ladybug_beetle_nest",
+   "habitat_types": [
+      "forest",
+      "foothills"
+   ],
+   "biomes": [
+      "stonehearth_ace:biome:highlands"
+   ],
+   "data": {
+      "num_critters": {
+         "min": 1,
+         "max": 4
+      },
+      "critter_type": [
+         "stonehearth_ace:ladybug_beetle"
+      ]
+   }
+}

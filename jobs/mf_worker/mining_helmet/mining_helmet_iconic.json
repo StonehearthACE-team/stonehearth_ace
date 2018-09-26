@@ -1,0 +1,25 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(mining_helmet_iconic.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:jobs.worker.mining_helmet.mining_helmet_iconic.display_name)",
+         "description": "i18n(stonehearth_ace:jobs.worker.mining_helmet.mining_helmet_iconic.description)",
+         "icon": "file(mining_helmet.png)",
+         "is_item": true,
+         "category": "armor"
+      }
+   }
+}

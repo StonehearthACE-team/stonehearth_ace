@@ -1,0 +1,104 @@
+{
+   "mixintos": {
+      "stonehearth:trapper:trapping_grounds": "file(arctic_trapping_grounds.json)",
+	  
+      "/stonehearth/entities/rabbit/rabbit_statue/rabbit_statue.json": "file(rabbit/rabbit_statue/rabbit_statue.json)",
+	  
+      "/stonehearth/entities/monsters/forest/entling/entling.json": "file(monsters/forest/entling/monster_log_replacer.json)",
+      "/stonehearth/data/monster_tuning/forest/easy_entling.json": "file(monsters/forest/entling/monster_tuning_log_replacer.json)",
+	  
+      "/stonehearth/entities/monsters/forest/little_stone_golem/little_stone_golem.json": "file(monsters/forest/stone_golem/monster_stone_replacer.json)",
+      "/stonehearth/data/monster_tuning/forest/little_stone_golem.json": "file(monsters/forest/stone_golem/monster_tuning_stone_replacer.json)",
+      "/stonehearth/data/monster_tuning/forest/easy_stone_golem.json": "file(monsters/forest/stone_golem/monster_tuning_stone_replacer_2.json)",
+      "/stonehearth/data/loot_bag/random_stone_ore.json": "file(monsters/forest/stone_golem/loot_bag_stone_replacer.json)"
+   },
+   "overrides": {
+      "/stonehearth/entities/rabbit/rabbit_statue/rabbit_statue_01.qb": "file(rabbit/rabbit_statue/rabbit_statue_01.qb)",
+	  
+      "/stonehearth/entities/critters/squirrel/squirrel.qb": "file(critters/squirrel/squirrel.qb)",
+      "/stonehearth/entities/critters/squirrel/squirrel.png": "file(critters/squirrel/squirrel.png)",
+	  
+      "/stonehearth/entities/critters/red_fox_wolf/red_fox_wolf.qb": "file(critters/red_fox_wolf/red_fox_wolf.qb)",
+      "/stonehearth/entities/critters/red_fox_wolf/red_fox_wolf.png": "file(critters/red_fox_wolf/red_fox_wolf.png)",
+	  
+      "/stonehearth/entities/critters/rabbit/rabbit.qb": "file(critters/rabbit/rabbit.qb)",
+      "/stonehearth/entities/critters/rabbit/rabbit.png": "file(critters/rabbit/rabbit.png)",
+	  
+      "/stonehearth/entities/critters/racoon/racoon.qb": "file(critters/racoon/racoon.qb)",
+      "/stonehearth/entities/critters/racoon/racoon.png": "file(critters/racoon/racoon.png)",
+	  
+      "/stonehearth/entities/monsters/avian/duckduck/duckduck.qb": "file(monsters/avian/duckduck/duckduck.qb)",
+      "/stonehearth/entities/monsters/avian/duckduck/duckduck.png": "file(monsters/avian/duckduck/duckduck.png)",
+	  
+      "/stonehearth/entities/monsters/avian/duckduck_young/duckduck_young.qb": "file(monsters/avian/duckduck/duckduck.qb)",
+      "/stonehearth/entities/monsters/avian/duckduck_young/duckduck_young.png": "file(monsters/avian/duckduck/duckduck.png)",
+	  
+      "/stonehearth/entities/monsters/avian/ostrich/ostrich.qb": "file(monsters/avian/ostrich/ostrich.qb)",
+      "/stonehearth/entities/monsters/avian/ostrich/ostrich.png": "file(monsters/avian/ostrich/ostrich.png)",
+	  
+      "/stonehearth/entities/monsters/avian/ostrich_young/ostrich_young.qb": "file(monsters/avian/ostrich/ostrich.qb)",
+      "/stonehearth/entities/monsters/avian/ostrich_young/ostrich_young.png": "file(monsters/avian/ostrich/ostrich.png)",
+	  
+      "/stonehearth/entities/critters/deer_horned/deer_horned.qb": "file(critters/deer_horned/deer_horned.qb)",
+      "/stonehearth/entities/critters/deer_horned/deer_horned.png": "file(critters/deer_horned/deer_horned.png)",
+	  
+      "/stonehearth/entities/critters/deer/deer.qb": "file(critters/deer/deer.qb)",
+      "/stonehearth/entities/critters/deer/deer.png": "file(critters/deer/deer.png)",
+	  
+      "/stonehearth/entities/monsters/forest/boar/boar.qb": "file(monsters/forest/boar/boar.qb)",
+      "/stonehearth/entities/monsters/forest/boar/boar.png": "file(monsters/forest/boar/boar.png)",
+	  
+      "/stonehearth/entities/critters/sheep/sheep.qb": "file(critters/sheep/sheep.qb)",
+      "/stonehearth/entities/critters/sheep/sheep_shorn.qb": "file(critters/sheep/sheep_shorn.qb)",
+      "/stonehearth/entities/critters/sheep/sheep_young.qb": "file(critters/sheep/sheep_young.qb)",
+      "/stonehearth/entities/critters/sheep/sheep.png": "file(critters/sheep/sheep.png)",
+	  
+      "/stonehearth/entities/critters/poyo/poyo.qb": "file(critters/poyo/poyo_gray.qb)",
+      "/stonehearth/entities/critters/poyo/poyo_red.qb": "file(critters/poyo/poyo_angola.qb)",
+      "/stonehearth/entities/critters/poyo/poyo_brown.qb": "file(critters/poyo/poyo_dark.qb)",
+      "/stonehearth/entities/critters/poyo/young/poyo_young.qb": "file(critters/poyo/poyo_young.qb)",
+      "/stonehearth/entities/critters/poyo/poyo.png": "file(critters/poyo/poyo.png)",
+      "/stonehearth/entities/critters/poyo/young/poyo_young.png": "file(critters/poyo/poyo_young.png)",
+	  
+      "/stonehearth/entities/monsters/forest/entling/entling.qb": "file(monsters/forest/entling/entling.qb)",
+      "/stonehearth/entities/monsters/forest/entling/entling.png": "file(monsters/forest/entling/entling.png)",
+	  
+      "/stonehearth/entities/monsters/forest/little_stone_golem/little_stone_golem.qb": "file(monsters/forest/little_stone_golem/little_stone_golem.qb)",
+      "/stonehearth/entities/monsters/forest/little_stone_golem/little_stone_golem.png": "file(monsters/forest/little_stone_golem/little_stone_golem.png)",
+	  
+      "/stonehearth/entities/monsters/forest/stone_golem/stone_golem.qb": "file(monsters/forest/stone_golem/stone_golem.qb)",
+      "/stonehearth/entities/monsters/forest/stone_golem/stone_golem.png": "file(monsters/forest/stone_golem/stone_golem.png)",
+	  
+      "/stonehearth/entities/resources/fiber/wool_bundle/wool_bundle.qb": "file(critters/sheep/wool/wool.qb)",
+      "/stonehearth/entities/resources/fiber/wool_bundle/wool_bundle.png": "file(critters/sheep/wool/wool.png)",
+      "/stonehearth/mixins/resources/fur_pelt/fur_pelt.qb": "file(critters/deer/pelt/pelt.qb)",
+      "/stonehearth/mixins/resources/fur_pelt/fur_pelt.png": "file(critters/deer/pelt/pelt.png)",
+      "/stonehearth/entities/resources/pelt/deer_horn/deer_horn.qb": "file(critters/deer_horned/pelt/pelt.qb)",
+      "/stonehearth/entities/resources/pelt/deer_horn/deer_horn.png": "file(critters/deer_horned/pelt/pelt.png)",
+      "/stonehearth/entities/resources/pelt/boar_pelt/boar_pelt.qb": "file(monsters/forest/boar/pelt/pelt.qb)",
+      "/stonehearth/entities/resources/pelt/boar_pelt/boar_pelt.png": "file(monsters/forest/boar/pelt/pelt.png)",
+      "/stonehearth/entities/resources/pelt/rabbit_pelt/fur_pelt.qb": "file(critters/rabbit/pelt/pelt.qb)",
+      "/stonehearth/entities/resources/pelt/rabbit_pelt/rabbit_pelt.png": "file(critters/rabbit/pelt/pelt.png)",
+      "/stonehearth/entities/resources/pelt/racoon_pelt/racoon_pelt.qb": "file(critters/racoon/pelt/pelt.qb)",
+      "/stonehearth/entities/resources/pelt/racoon_pelt/racoon_pelt.png": "file(critters/racoon/pelt/pelt.png)",
+      "/stonehearth/entities/resources/pelt/red_fox_pelt/fur_pelt.qb": "file(critters/red_fox_wolf/pelt/pelt.qb)",
+      "/stonehearth/entities/resources/pelt/red_fox_pelt/red_fox_pelt.png": "file(critters/red_fox_wolf/pelt/pelt.png)",
+      "/stonehearth/entities/resources/pelt/squirrel_pelt/fur_pelt.qb": "file(critters/squirrel/pelt/pelt.qb)",
+      "/stonehearth/entities/resources/pelt/squirrel_pelt/squirrel_pelt.png": "file(critters/squirrel/pelt/pelt.png)",
+	  
+      "/stonehearth/entities/resources/copper/copper_ore/copper_ore.qb": "/stonehearth_ace/entities/resources/copper/copper_ore/slate_copper_ore.qb",
+      "/stonehearth/entities/resources/copper/copper_ore/copper_ore.png": "/stonehearth_ace/entities/resources/copper/copper_ore/slate_copper_ore.png",
+	  
+      "/stonehearth/entities/resources/tin/tin_ore/tin_ore.qb": "/stonehearth_ace/entities/resources/tin/tin_ore/slate_tin_ore.qb",
+      "/stonehearth/entities/resources/tin/tin_ore/tin_ore.png": "/stonehearth_ace/entities/resources/tin/tin_ore/slate_tin_ore.png",
+	  
+      "/stonehearth/entities/resources/iron/iron_ore/iron_ore.qb": "/stonehearth_ace/entities/resources/iron/iron_ore/slate_iron_ore.qb",
+      "/stonehearth/entities/resources/iron/iron_ore/iron_ore.png": "/stonehearth_ace/entities/resources/iron/iron_ore/slate_iron_ore.png",
+	  
+      "/stonehearth/entities/resources/silver/silver_ore/silver_ore.qb": "/stonehearth_ace/entities/resources/silver/silver_ore/slate_silver_ore.qb",
+      "/stonehearth/entities/resources/silver/silver_ore/silver_ore.png": "/stonehearth_ace/entities/resources/silver/silver_ore/slate_silver_ore.png",
+	  
+      "/stonehearth/entities/resources/gold/gold_ore/gold_ore.qb": "/stonehearth_ace/entities/resources/gold/gold_ore/slate_gold_ore.qb",
+      "/stonehearth/entities/resources/gold/gold_ore/gold_ore.png": "/stonehearth_ace/entities/resources/gold/gold_ore/slate_gold_ore.png"
+   }
+}

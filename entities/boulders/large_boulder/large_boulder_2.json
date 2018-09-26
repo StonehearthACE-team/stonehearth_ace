@@ -1,0 +1,85 @@
+{
+   "mixins": "stonehearth:mixins:boulder",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(large_boulder_2.qb)"
+            ]
+         }
+      },
+      "stonehearth:resource_node": {
+         "resource": "stonehearth_ace:resources:stone:limestone_stone",
+         "durability": 12
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0, "y": 0, "z": 0 },
+         "align_to_grid": [
+            "x",
+            "z"
+         ]
+      },
+      "render_info": {
+         "scale": 0.1
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -2, "y": 0, "z": -2 },
+               "max": { "x": 2, "y": 5, "z": 2 }
+            }
+         ]
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -2, "y": 0, "z": -2 },
+               "max": { "x": 2, "y": 1, "z": 1 }
+            },
+            {
+               "min": { "x": 0, "y": 0, "z": 1 },
+               "max": { "x": 2, "y": 2, "z": 2 }
+            },
+            {
+               "min": { "x": -2, "y": 1, "z": -1 },
+               "max": { "x": 2, "y": 2, "z": 1 }
+            },
+            {
+               "min": { "x": -1, "y": 1, "z": 1 },
+               "max": { "x": 0, "y": 5, "z": 2 }
+            },
+            {
+               "min": { "x": -2, "y": 2, "z": -1 },
+               "max": { "x": 1, "y": 3, "z": 1 }
+            },
+            {
+               "min": { "x": -2, "y": 2, "z": 1 },
+               "max": { "x": -1, "y": 4, "z": 2 }
+            },
+            {
+               "min": { "x": 0, "y": 2, "z": 1 },
+               "max": { "x": 1, "y": 5, "z": 2 }
+            },
+            {
+               "min": { "x": -2, "y": 3, "z": 0 },
+               "max": { "x": 1, "y": 4, "z": 1 }
+            },
+            {
+               "min": { "x": -1, "y": 4, "z": 0 },
+               "max": { "x": 1, "y": 5, "z": 1 }
+            }
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth:entities.boulders.large_boulder.large_boulder_2.display_name)",
+         "description": "i18n(stonehearth:entities.boulders.large_boulder.large_boulder_2.description)"
+      },
+      "stonehearth:appeal": {
+         "appeal": -3
+      }
+   }
+}

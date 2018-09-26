@@ -1,0 +1,36 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "render_info": {
+         "scale": 0.05,
+         "material": "materials/shiny.material.json"
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(lock.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 16,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.refined.lock.display_name)",
+         "description": "i18n(stonehearth_ace:entities.refined.lock.description)",
+         "icon": "file(lock.png)",
+         "is_item": true,
+         "category": "refined",
+         "material_tags": "stockpile_refined_ore steel lock resource stockpile_refined_craftable"
+      }
+   }
+}

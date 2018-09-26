@@ -1,0 +1,145 @@
+{
+   "mixins": [
+      "stonehearth:mixins:tree"
+   ],
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(small_yew_tree.qb)"
+                  ]
+               }
+            ]
+         },
+         "autumn": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(small_yew_tree_autumn.qb)"
+                  ]
+               }
+            ]
+         },
+         "summer": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(small_yew_tree_summer.qb)"
+                  ]
+               }
+            ]
+         },
+         "winter": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(small_yew_tree_winter.qb)",
+                     "file(small_yew_tree_winter_2.qb)"
+                  ]
+               }
+            ]
+         }
+      },
+      "stonehearth:seasonal_model_switcher": {
+         "stonehearth_ace:biome:highlands": {
+            "spring": "default",
+            "summer": "summer",
+            "autumn": "autumn",
+            "winter": "winter"
+         },
+         "stonehearth:biome:arctic": {
+            "spring": "default",
+            "summer": "autumn",
+            "autumn": "winter",
+            "winter": "winter"
+         },
+         "stonehearth:biome:temperate": {
+            "spring": "default",
+            "summer": "summer",
+            "autumn": "autumn",
+            "winter": "winter"
+         },
+         "stonehearth:biome:desert": {
+            "spring": "default",
+            "summer": "summer",
+            "autumn": "summer",
+            "winter": "autumn"
+         }
+      },
+      "stonehearth:resource_node": {
+         "durability": 6,
+         "resource": "stonehearth_ace:resources:wood:yew_log",
+         "resource_loot_table": {
+            "entries": {
+               "optional": {
+                  "num_rolls": {
+                     "min": 1,
+                     "max": 1
+                  },
+                  "items": {
+                     "none": {
+                        "uri": "",
+                        "weight": 8
+                     },
+                     "pelt": {
+                        "uri": "stonehearth_ace:trees:yew:seed",
+                        "weight": 1
+                     }
+                  }
+               }
+            }
+         }
+      },
+      "mob": {
+         "model_origin": { "x": -0.17, "y": 0, "z": 0.17 },
+         "region_origin": { "x": -0.17, "y": 0, "z": 0.17 }
+      },
+      "render_info": {
+         "scale": 0.33
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -2, "y": 0, "z": -1 },
+               "max": { "x": 1, "y": 1, "z": 2 }
+            }
+         ]
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -2, "y": 0, "z": -1 },
+               "max": { "x": 1, "y": 3, "z": 2 }
+            },
+            {
+               "min": { "x": -5, "y": 3, "z": -4 },
+               "max": { "x": 4, "y": 12, "z": 5 }
+            }
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:evolve_data": {
+         "next_stage": "stonehearth_ace:trees:yew:medium",
+         "evolve_time": "3d"
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.trees.yew_tree.small_yew_tree.display_name)",
+         "description": "i18n(stonehearth_ace:entities.trees.yew_tree.small_yew_tree.description)",
+         "subject_override": "stonehearth_ace:trees:yew:large"
+      },
+      "stonehearth_ace:stump_data": {
+         "stump_alias": "stonehearth_ace:trees:yew:small:stump"
+      },
+      "stonehearth:appeal": {
+         "appeal": 2
+      }
+   }
+}

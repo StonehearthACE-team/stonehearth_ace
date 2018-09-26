@@ -1,0 +1,34 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(boiled_shrooms_serving.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:item": {
+         "category": "food",
+         "destroy_on_uncarry": true
+      },
+      "stonehearth:food": {
+         "stonehearth:sitting_on_chair": {
+            "satisfaction": 42
+         },
+         "default": {
+            "satisfaction": 38
+         },
+         "quality": 3
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.boiled_shrooms.boiled_shrooms_serving.display_name)",
+         "description": "i18n(stonehearth_ace:entities.food.boiled_shrooms.boiled_shrooms_serving.description)",
+         "material_tags": "food fungi meat",
+         "subject_override": "stonehearth_ace:food:boiled_shrooms"
+      }
+   }
+}

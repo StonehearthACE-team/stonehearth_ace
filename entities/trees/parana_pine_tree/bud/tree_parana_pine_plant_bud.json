@@ -1,0 +1,53 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "stonehearth:evolve": {},
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(tree_parana_pine_bud.qb)"
+            ]
+         }
+      },
+      "render_info": {
+         "scale": 0.08
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "mob_collision_type": "clutter"
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": 0, "y": 0, "z": 0 },
+               "max": { "x": 1, "y": 1, "z": 1 }
+            }
+         ]
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": 0, "y": 0, "z": 0 },
+               "max": { "x": 1, "y": 7, "z": 1 }
+            }
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:evolve_data": {
+         "next_stage": "stonehearth_ace:trees:parana_pine:small",
+         "evolve_time": "14h+2h"
+      },
+      "stonehearth:catalog": {
+         "material_tags": "stockpile_plant",
+         "display_name": "i18n(stonehearth_ace:entities.trees.parana_pine_tree.bud.tree_parana_pine_plant_bud.display_name)",
+         "description": "i18n(stonehearth_ace:entities.trees.parana_pine_tree.bud.tree_parana_pine_plant_bud.description)",
+         "category": "plants"
+      },
+      "stonehearth:appeal": {
+         "appeal": 1
+      }
+   }
+}

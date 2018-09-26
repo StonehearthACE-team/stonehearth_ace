@@ -1,0 +1,38 @@
+{
+   "landscape": {
+      "placement_table": {
+         "stonehearth_ace:fungi:winter_morel": {
+            "placement_type": "dense",
+            "parameters": {
+               "grid_multiple": 2,
+               "item_density": 0.2,
+               "exclusion_radius": 0
+            }
+         }
+      },
+      "scattered": {
+         "plants": {
+            "weights": {
+               "plains": {
+                  "1": {
+                     "stonehearth_ace:fungi:winter_morel": 0.4
+                  }
+               },
+               "foothills": {
+                  "1": {
+                     "stonehearth_ace:fungi:winter_morel": 0.8
+                  },
+                  "2": {
+                     "stonehearth_ace:fungi:winter_morel": 0.4
+                  }
+               },
+               "mountains": {
+                  "1": {
+                     "stonehearth_ace:fungi:winter_morel": 0.2
+                  }
+               }
+            }
+         }
+      }
+   }
+}

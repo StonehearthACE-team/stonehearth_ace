@@ -1,0 +1,33 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(water_pump.qb)"
+            ]
+         }
+      },
+      "render_info": {
+         "scale": 0.05,
+         "animation_table": "file(/data/rigs/entities/gizmos/water_pump/water_pump.json)"
+      },
+      "effect_list": {
+         "default": "file(/data/rigs/entities/gizmos/water_pump/effects/closed.json)"
+      },
+      "mob": {
+         "model_origin": { "x": 0.0, "y": 0, "z": 0.0 },
+         "region_origin": { "x": -0.5, "y": 0, "z": 0.5 },
+         "allow_vertical_adjacent": true
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.furniture.water_pump.water_pump_ghost.display_name)",
+         "description": "i18n(stonehearth_ace:entities.furniture.water_pump.water_pump_ghost.description)",
+         "icon": "file(water_pump.png)",
+         "category": "gizmos",
+         "material_tags": "gizmos crafted"
+      }
+   }
+}

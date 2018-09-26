@@ -1,0 +1,21 @@
+{	
+   "components": {
+      "model_variants": {
+         "default": {
+		    "mixintypes": {
+			   "models": "override"
+			},
+            "models": [
+               "/stonehearth/entities/resources/pelt/deer_horn/deer_horn.qb"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "is_item": true,
+         "category": "resources",
+         "material_tags": "stockpile_animal_part bone resource animal_part"
+      }
+   }
+}

@@ -1,0 +1,28 @@
+{
+   "type": "recipe",
+   "effort": 55,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.herbalist.recipes.desert_truffle_colony_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.desert_truffle_colony_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.desert_truffle_colony_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/fungi/desert_truffle/colony/desert_truffle_colony.png",
+   "workshop": "stonehearth:herbalist:workbench",
+   "level_requirement": 2,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:fungi:desert_truffle",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:fungi:desert_truffle:colony"
+      },
+      {
+         "item": "stonehearth_ace:fungi:desert_truffle:colony"
+      },
+      {
+         "item": "stonehearth_ace:fungi:desert_truffle:colony"
+      }
+   ]
+}

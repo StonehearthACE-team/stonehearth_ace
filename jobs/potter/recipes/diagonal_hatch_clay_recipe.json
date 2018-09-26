@@ -1,0 +1,22 @@
+{
+   "type": "recipe",
+   "effort": 70,
+   "work_units": 12,
+   "recipe_name": "i18n(stonehearth_ace:entities.construction.diagonal_hatch_clay.display_name)",
+   "description": "i18n(stonehearth_ace:entities.construction.diagonal_hatch_clay.description)",
+   "flavor": "i18n(stonehearth_ace:entities.construction.diagonal_hatch_clay.flavor)",
+   "portrait": "/stonehearth_ace/entities/construction/diagonal_hatch_clay/diagonal_hatch_clay.png",
+   "workshop": "stonehearth:potter:workbench",
+   "level_requirement": 3,
+   "ingredients": [
+      {
+         "material": "clay resource",
+         "count": 3
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:portals:diagonal_hatch_clay"
+      }
+   ]
+}

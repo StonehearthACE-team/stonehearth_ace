@@ -1,0 +1,26 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(mf_town_banner_might.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": -0.05, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:mountain_folk.entities.gizmos.mf_town_banner_might.mf_town_banner_might_ghost.display_name)",
+         "description": "i18n(stonehearth_ace:mountain_folk.entities.gizmos.mf_town_banner_might.mf_town_banner_might_ghost.description)",
+         "icon": "file(mf_town_banner_might.png)",
+         "category": "decoration",
+         "material_tags": "bronze cloth decoration stockpile_decoration"
+      }
+   }
+}

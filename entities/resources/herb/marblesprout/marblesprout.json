@@ -1,0 +1,39 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:item_properties",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(marblesprout.qb)"
+            ]
+         }
+      },
+      "stonehearth:stacks": {
+         "max_stacks": 6
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 4,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 2,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.resources.herb.marblesprout.display_name)",
+         "description": "i18n(stonehearth_ace:entities.resources.herb.marblesprout.description)",
+         "icon": "file(marblesprout.png)",
+         "is_item": true,
+         "category": "resources",
+         "material_tags": "plant herb resource marblesprout stockpile_plant"
+      },
+      "stonehearth:appeal": {
+         "appeal": 1
+      }
+   }
+}

@@ -1,0 +1,30 @@
+{
+   "type": "recipe",
+   "effort": 65,
+   "work_units": 6,
+   "recipe_name": "i18n(stonehearth_ace:mountain_folk.jobs.cook.recipes.sweet_varanus_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:mountain_folk.jobs.cook.recipes.sweet_varanus_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:mountain_folk.jobs.cook.recipes.sweet_varanus_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/sweet_varanus/sweet_varanus/sweet_varanus.png",
+   "workshop": "stonehearth:cook:oven",
+   "level_requirement": 3,
+   "ingredients": [
+      {
+         "uri": "stonehearth:food:varanus_meat",
+         "count": 1
+      },
+      {
+         "material": "herb resource",
+         "count": 2
+      },
+      {
+         "uri": "stonehearth_ace:food:cherries:cherry_basket",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:mountain_folk:food:sweet_varanus"
+      }
+   ]
+}

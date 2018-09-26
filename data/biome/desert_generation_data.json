@@ -1,0 +1,33 @@
+{
+   "landscape": {
+      "placement_table": {
+         "stonehearth_ace:fungi:desert_truffle": {
+            "placement_type": "dense",
+            "parameters": {
+               "grid_multiple": 2,
+               "item_density": 0.18,
+               "exclusion_radius": 0
+            }
+         }
+      },
+      "scattered": {
+         "plants": {
+            "weights": {
+               "plains": {
+                  "1": {
+                     "stonehearth_ace:fungi:desert_truffle": 0.2
+                  }
+               },
+               "foothills": {
+                  "1": {
+                     "stonehearth_ace:fungi:desert_truffle": 0.3
+                  },
+                  "2": {
+                     "stonehearth_ace:fungi:desert_truffle": 0.6
+                  }
+               }
+            }
+         }
+      }
+   }
+}

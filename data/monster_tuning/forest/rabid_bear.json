@@ -1,0 +1,35 @@
+{
+   "type": "monster_tuning",
+   "estimated_difficulty": 5,
+   "unit_info": {
+      "description": "i18n(stonehearth_ace:data.monster_tuning.forest.rabid_bear.description)"
+   },
+   "scale": 0.2,
+   "attributes": {
+      "max_health": 1500,
+      "muscle": 100,
+      "menace": 40,
+      "courage": 60,
+      "speed": 60,
+      "additive_armor_modifier": 5,
+      "exp_reward": 90
+   },
+   "equipment": {
+      "weapon": [
+         "stonehearth_ace:weapons:animals:bear_teeth"
+      ]
+   },
+   "stonehearth:loot_drops": {
+      "entries": {
+         "default": {
+            "items": {
+               "skin": {
+                  "type": "bag",
+                  "uri": "stonehearth_ace:loot_bag:bear_large",
+                  "weight": 1
+               }
+            }
+         }
+      }
+   }
+}

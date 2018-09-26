@@ -1,0 +1,19 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:poyo",
+   "player_id": "animals",
+   "components": {
+      "stonehearth:resource_node": {
+         "category": "harvest",
+         "check_owner": false
+      },
+      "stonehearth:renewable_resource_node": {
+         "renewal_time": "120h+48h"
+      },
+      "stonehearth:commands": {
+         "commands": [
+            "stonehearth_ace:commands:slaughter:wild_animal"
+         ]
+      }
+   }
+}

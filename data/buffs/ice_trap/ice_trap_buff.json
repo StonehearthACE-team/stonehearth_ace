@@ -1,0 +1,22 @@
+{
+   "type": "buff",
+   "axis": "debuff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.stunned.ice_trap.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.stunned.ice_trap.description)",
+   "icon": "file(ice_trap.png)",
+   "duration": "30m",
+   "repeat_add_action": "renew_duration",
+   "modifiers": {
+      "speed": {
+         "multiply": 0.001
+      }
+   },
+   "script": "stonehearth:buff_scripts:aura",
+   "script_info": {
+      "pulse": "15m",
+      "pulse_effect": "stonehearth_ace:effects:iced_ground",
+      "radius": 20,
+      "affect_self": false,
+      "target_type": "mob"
+   }
+}

@@ -1,0 +1,92 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "layer": "clothing",
+            "transparent": false,
+            "models": [
+               "file(winter_worker_outfit_male.qb)"
+            ]
+         },
+         "female": {
+            "layer": "clothing",
+            "transparent": "false",
+            "models": [
+               "file(winter_worker_outfit_female.qb)"
+            ]
+         },
+         "rabbit_male": {
+            "layer": "clothing",
+            "transparent": "false",
+            "models": [
+               "file(winter_worker_outfit_rabbit_male.qb)",
+               "file(winter_worker_outfit_hood_rabbit_male.qb)"
+            ]
+         },
+         "rabbit_female": {
+            "layer": "clothing",
+            "transparent": "false",
+            "models": [
+               "file(winter_worker_outfit_rabbit_female.qb)",
+               "file(winter_worker_outfit_hood_rabbit_female.qb)"
+            ]
+         },
+         "orc_male": {
+            "layer": "clothing",
+            "transparent": "false",
+            "models": [
+               "file(winter_worker_outfit_orc_male.qb)"
+            ]
+         },
+         "orc_female": {
+            "layer": "clothing",
+            "transparent": "false",
+            "models": [
+               "file(winter_worker_outfit_orc_female.qb)"
+            ]
+         },
+         "dwarf": {
+            "layer": "clothing",
+            "transparent": "false",
+            "models": [
+               "file(winter_worker_outfit.qb)"
+            ]
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(winter_worker_outfit_iconic.json)"
+      },
+      "stonehearth:equipment_piece": {
+         "slot": "torso helmet",
+         "render_type": "merge_with_model",
+         "roles": "worker_job",
+         "ilevel": 2,
+         "injected_buffs": [
+            "stonehearth:buffs:devoted",
+            "stonehearth:buffs:weather:cold_resist"
+         ],
+         "equip_effect": "stonehearth:effects:weapon_level_up"
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 23,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 1,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth:jobs.worker.winter_worker_outfit.display_name)",
+         "description": "i18n(stonehearth:jobs.worker.winter_worker_outfit.description)",
+         "icon": "file(winter_worker_outfit.png)",
+         "category": "armor",
+         "material_tags": "cloth worker_outfit dwarf_made stockpile_equipment"
+      }
+   }
+}

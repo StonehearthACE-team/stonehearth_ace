@@ -1,0 +1,35 @@
+{
+  "craftable_recipes" : {
+    "refinement" : {
+      "recipes" : {
+        "moonbell_herbalist" : {
+          "recipe" : "file(moonbell_transmute_recipe.json)"
+        },
+        "marblesprout_herbalist" : {
+          "recipe" : "file(marblesprout_transmute_recipe.json)"
+        },
+		"marblesprout_drying" : {
+          "recipe" : "file(marblesprout_drying_recipe.json)"
+        }
+      }
+    },
+	"refinement_fungi": {
+         "ordinal": 31,
+         "name": "i18n(stonehearth_ace:jobs.herbalist.recipes.refined_fungi_name)",
+         "recipes": {
+            "bolete_colony_recipe": {
+               "recipe": "file(bolete_colony_recipe.json)"
+            },
+            "winter_morel_colony_recipe": {
+               "recipe": "file(winter_morel_colony_recipe.json)"
+            },
+            "desert_truffle_colony_recipe": {
+               "recipe": "file(desert_truffle_colony_recipe.json)"
+            },
+            "chanterelle_colony_recipe": {
+               "recipe": "file(chanterelle_colony_recipe.json)"
+            }
+		 }
+	}
+  }
+}

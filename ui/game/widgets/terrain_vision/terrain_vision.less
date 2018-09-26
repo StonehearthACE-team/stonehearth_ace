@@ -1,0 +1,123 @@
+#stonehearthTerrainVision {
+   #heatmapButton {
+      position: relative;
+      background: url(./images/heatmap_button_disabled.png) center no-repeat;
+   }
+
+   #heatmapButton:hover #heatmapList {
+      display: block;
+   }
+
+   #heatmapButton.active {
+      .buttonLabel {
+         color: #ffc000;
+      }
+      background-image: url(./images/heatmap_button.png);
+   }
+
+   #heatmapCursorReadout {
+      position: fixed;
+      pointer-events: none;
+      text-align: center;
+
+      &.inactive {
+         display: none;
+      }
+         
+      .handle {
+         position: absolute;
+         top: 41.5px;
+         left: 43px;
+         width: 28px;
+         height: 11px;
+      }
+
+      .content {
+         padding: 3px 8px;
+         
+         position: relative;
+         top: 50px;
+
+         background-color: #ebebeb;
+         border: 3px #3a3431 solid;
+         border-radius: 8px;
+
+         font-family: 'GroboldRegular';
+         font-size: 18px;
+         color: #545454;
+
+         .header {
+            margin: auto;
+         }
+
+         .icon {
+            width: 48px;
+            height: 48px;
+            vertical-align: middle;
+         }
+
+         .label {
+            font-size: 17px;
+         }
+      }
+   }
+
+   #heatmapList {
+      border: none;
+      overflow-x: hidden;
+      overflow-y: scroll;
+      width: 180px;
+      display: none;
+      position: absolute;
+      bottom: 55px;
+      left: 50%;
+      transform: translateX(-50%);
+
+      ::-webkit-scrollbar-track {
+         margin-top: 1px;
+         margin-bottom: 0px;
+      }
+
+      .heatmap {
+         position: relative;
+
+         &:hover {
+            background-color: @paperBorderBlue;
+         }
+
+         .heatmapRepresentation {
+            display: inline-block;
+            background-color: transparent;
+            width: 100%;
+
+            .heatmapName {
+               .noOutline;
+               position: absolute;
+               top:10px;
+               left: 60px;
+               display:block;
+               width: 60%;
+               padding-top: 10px;
+               padding-left: 10px;
+               padding-bottom: 5px;
+               color: @paperWhite;
+               font-family: @builderBasicFamily;
+               background-color: transparent;
+            }
+
+            .heatmapImage {
+               display: inline-block;
+               background-size: contain;
+               height: 70px;
+               width: 70px;
+               float:left;
+               background-color: transparent;
+            }
+         }
+      }:nth-child(odd) {
+         background-color: @paperDarkBlue;
+      }:nth-child(even) {
+         background-color: @paperDarkBlue;
+      }
+   }
+}

@@ -1,0 +1,34 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(bone_marrow_serving.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:item": {
+         "category": "food",
+         "destroy_on_uncarry": true
+      },
+      "stonehearth:food": {
+         "stonehearth:sitting_on_chair": {
+            "satisfaction": 120
+         },
+         "default": {
+            "satisfaction": 70
+         },
+         "quality": 3
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.bone_marrow.bone_marrow_serving.display_name)",
+         "description": "i18n(stonehearth_ace:entities.food.bone_marrow.bone_marrow_serving.description)",
+         "material_tags": "food bone_marrow_serving meat",
+         "subject_override": "stonehearth_ace:food:bone_marrow"
+      }
+   }
+}

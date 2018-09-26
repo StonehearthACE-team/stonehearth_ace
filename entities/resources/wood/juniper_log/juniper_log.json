@@ -1,0 +1,20 @@
+{
+   "type": "entity",
+	"components": {
+		"mixintypes": {
+			"model_variants": "override"
+		},
+		"model_variants": {
+			"default": {
+				"models": [
+					"file(juniper_log.qb)"
+				]
+			}
+		}
+	},
+   "entity_data": {
+      "stonehearth:catalog": {
+         "icon": "file(juniper_log.png)"
+      }
+   }
+}
