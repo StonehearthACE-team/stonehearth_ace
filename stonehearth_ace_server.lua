@@ -22,6 +22,7 @@ local monkey_patches = {
    ace_shepherd_pasture_component = 'stonehearth.components.shepherd_pasture.shepherd_pasture_component',
    ace_shepherd_service = 'stonehearth.services.server.shepherd.shepherd_service',
    ace_town_service = 'stonehearth.services.server.town.town_service',
+   ace_town = 'stonehearth.services.server.town.town',
    ace_evolve_component = 'stonehearth.components.evolve.evolve_component',
    ace_crafting_progress = 'stonehearth.components.workshop.crafting_progress',
    ace_workshop_component = 'stonehearth.components.workshop.workshop_component',
