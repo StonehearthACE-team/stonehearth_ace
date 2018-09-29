@@ -1,0 +1,49 @@
+{
+   "components": {
+      "stonehearth:loot_drops": {
+         "entries": {
+            "bones": {
+               "num_rolls": {
+                  "min": 0,
+                  "max": 1
+               },
+               "items": {
+                  "bones": {
+                     "uri": "stonehearth_ace:resources:bone:bone_material"
+                  }
+               }
+            }
+         }
+      },
+      "stonehearth:resource_node": {
+         "resource_loot_table": {
+            "entries": {
+               "bones": {
+                  "items": {
+                     "bones": {
+                        "uri": "stonehearth_ace:resources:bone:bone_material"
+                     }
+                  }
+               }
+            }
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:harvest_beast_loot_table": {
+         "entries": {
+            "bones": {
+               "num_rolls": {
+                  "min": 0,
+                  "max": 1
+               },
+               "items": {
+                  "bones": {
+                     "uri": "stonehearth_ace:resources:bone:bone_material"
+                  }
+               }
+            }
+         }
+      }
+   }
+}
