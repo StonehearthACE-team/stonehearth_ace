@@ -5,7 +5,7 @@ App.StonehearthAceUnderfarmView = App.StonehearthBaseZonesModeView.extend({
    components: {
       "stonehearth:unit_info": {},
       "stonehearth_ace:grower_underfield" : {
-         "current_crop_alias": {}
+         "current_undercrop_alias": {}
       }
    },
 
@@ -60,11 +60,11 @@ App.StonehearthAceUnderfarmView = App.StonehearthBaseZonesModeView.extend({
 
    _onFieldChanged: function() {
       var field = this.get('model.stonehearth_ace:grower_underfield');
-      if (field && field.has_set_crop || this.hasShownPaletteOnce) {
+      if (field && field.has_set_undercrop || this.hasShownPaletteOnce) {
          return;
       }
       this._createPalette();
-   }.observes('model.stonehearth_ace:grower_underfield.has_set_crop'),
+   }.observes('model.stonehearth_ace:grower_underfield.has_set_undercrop'),
 
    _tracedFieldChanged: function() {
       this.hasShownPaletteOnce = false;
@@ -108,13 +108,13 @@ App.StonehearthAceUnderfarmCropPalette = App.View.extend({
       this._super();
       radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:ui:action_click'} );
 
-      //Get the crops available for this farm
-      radiant.call('stonehearth:get_all_crops')
+      //Get the undercrops available for this farm
+      radiant.call('stonehearth:get_all_undercrops')
          .done(function (o) {
             if (self.isDestroyed || self.isDestroying) return;
-            self.set('crops', radiant.map_to_array(o.all_crops, function (k, v) {
-               if (v.crop_info.preferred_seasons) {
-                  v.crop_info.preferred_seasons = _.map(v.crop_info.preferred_seasons, i18n.t).join(', ');
+            self.set('undercrops', radiant.map_to_array(o.all_undercrops, function (k, v) {
+               if (v.undercrop_info.preferred_seasons) {
+                  v.undercrop_info.preferred_seasons = _.map(v.undercrop_info.preferred_seasons, i18n.t).join(', ');
                }
                return v;
             }));
@@ -122,30 +122,30 @@ App.StonehearthAceUnderfarmCropPalette = App.View.extend({
          });
    },
 
-   _isCropLocked: function(crop) {
+   _isCropLocked: function(undercrop) {
       var highest_level = this.get('model.highest_level');
       if (!highest_level) {
          highest_level = 0;
       }
-      return crop.crop_level_requirement > highest_level;
+      return undercrop.undercrop_level_requirement > highest_level;
    },
 
-   _isCropHidden: function (crop) {
-      if (!this.get('model') || !crop.crop_key) return false; // Too early. We'll recheck later.
+   _isCropHidden: function (undercrop) {
+      if (!this.get('model') || !undercrop.undercrop_key) return false; // Too early. We'll recheck later.
       var manually_unlocked = this.get('model.manually_unlocked');
-      return !crop.initial_crop && !manually_unlocked[crop.crop_key];
+      return !undercrop.initial_undercrop && !manually_unlocked[undercrop.undercrop_key];
    },
 
    _updateLockedCrops: function() {
-      var crops = this.get('crops');
-      if (crops) {
-         radiant.sortByOrdinal(crops);
-         for (var crop_id = 0; crop_id < crops.length; crop_id++) {
-            var crop = crops[crop_id];
-            var is_locked = this._isCropLocked(crop);
-            var is_hidden = this._isCropHidden(crop);
-            Ember.set(crop, 'is_locked', is_locked);
-            Ember.set(crop, 'is_hidden', is_hidden)
+      var undercrops = this.get('undercrops');
+      if (undercrops) {
+         radiant.sortByOrdinal(undercrops);
+         for (var undercrop_id = 0; undercrop_id < undercrops.length; undercrop_id++) {
+            var undercrop = undercrops[undercrop_id];
+            var is_locked = this._isCropLocked(undercrop);
+            var is_hidden = this._isCropHidden(undercrop);
+            Ember.set(undercrop, 'is_locked', is_locked);
+            Ember.set(undercrop, 'is_hidden', is_hidden)
          }
       }
    },
@@ -162,19 +162,19 @@ App.StonehearthAceUnderfarmCropPalette = App.View.extend({
             })
          });
       });
-   }.observes('crops'),
+   }.observes('undercrops'),
 
    didInsertElement: function() {
       this._super();
       var self = this;
 
-      this.$().on( 'click', '[crop]', function() {
+      this.$().on( 'click', '[undercrop]', function() {
          if ($(this).attr('locked')) {
             return;
          }
-         var cropId = $(this).attr('crop');
-         if (cropId) {
-            radiant.call_obj(self.field, 'set_crop', cropId);
+         var undercropId = $(this).attr('undercrop');
+         if (undercropId) {
+            radiant.call_obj(self.field, 'set_undercrop', undercropId);
             self.farm_view.hasShownPaletteOnce = true;
          }
          self.destroy();
@@ -189,7 +189,7 @@ App.StonehearthAceUnderfarmCropPalette = App.View.extend({
    },
 
    willDestroyElement: function() {
-      this.$().off('click', '[crop]');
+      this.$().off('click', '[undercrop]');
       this._super();
    }
 });
