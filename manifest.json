@@ -10,11 +10,20 @@
    "client_init_script": "file(stonehearth_ace_client)",
    "server_init_script": "file(stonehearth_ace_server)",
    "aliases": {
+      "actions:harvest_undercrop_adjacent": "file(ai/actions/harvest_undercrop_adjacent.lua)",
+      "actions:harvest_underfield": "file(ai/actions/harvest_underfield_action.lua)",
       "actions:pasture_animal:graze_on_grass": "file(ai/actions/pasture_animal/graze_on_grass_action.lua)",
       "actions:pet:eat_from_storage": "file(ai/actions/pet/pet_eat_from_storage_action.lua)",
+      "actions:plant_undercrop": "file(ai/actions/plant_undercrop.lua)",
+      "actions:plant_underfield_adjacent": "file(ai/actions/plant_underfield_adjacent_action.lua)",
+      "actions:register_underfarm_underfield_worker": "file(ai/actions/register_underfarm_underfield_worker_action.lua)",
+      "actions:till_entire_underfield": "file(ai/actions/till_entire_underfield_action.lua)",
+      "actions:till_underfield_adjacent": "file(ai/actions/till_underfield_adjacent_action.lua)",
       "actions:train": "file(ai/actions/training/train_action.lua)",
       "actions:train_attack": "file(ai/actions/training/train_attack_action.lua)",
+      "ai_pack:harvest_underfarm": "file(ai/packs/harvest_underfarm_ai_pack.json)",
       "ai_pack:training": "file(ai/packs/training_ai_pack.json)",
+      "ai_pack:underfarming": "file(ai/packs/underfarming_ai_pack.json)",
       "bear_jerky": "file(entities/food/bear_jerky/bear_jerky.json)",
       "biome:highlands": "file(data/biome/highlands.json)",
 	  "biome:highlands:applied_manifest": "file(data/biome/highlands/applied_highlands_manifest.json)",
@@ -40,9 +49,12 @@
       "consumables:seeds:cotton_seeds": "file(entities/consumables/seeds/cotton_seeds/cotton_seeds.json)",
       "consumables:seeds:marblesprout_seeds": "file(entities/consumables/seeds/marblesprout_seeds)",
       "consumables:seeds:moonbell_seeds": "file(entities/consumables/seeds/moonbell_seeds)",
+      "crops:birch_tree_crop": "file(entities/crops/birch_tree_crop/birch_tree_crop.json)",
       "crops:cotton_crop": "file(entities/crops/cotton_crop/cotton_crop.json)",
+      "crops:highland_pine_crop": "file(entities/crops/highland_pine_crop/highland_pine_crop.json)",
       "crops:marblesprout_crop": "file(entities/crops/marblesprout_crop)",
       "crops:moonbell_crop": "file(entities/crops/moonbell_crop)",
+      "crops:yew_tree_crop": "file(entities/crops/yew_tree_crop/yew_tree_crop.json)",
       "data:resource_constants": "file(data/resource_constants.json)",
       "data:thoughts": "file(data/happiness/thoughts.json)",
       "decoration:statue:anji_the_horrendous": "file(entities/decoration/statue/statue_anji_the_horrendous/statue_anji_the_horrendous.json)",
@@ -54,6 +66,7 @@
       "effects:moonbell_glow": "file(/data/effects/moonbell_glow/moonbell_glow.json)",
       "effects:moonbell_wall": "file(/data/effects/moonbell_glow/moonbell_effect_wall.json)",
       "effects:snow_effect_minor": "file(data/effects/snow_effect_minor/snow_effect_minor.json)",
+      "extractors:underfield_layer": "file(data/interactions/extractors/underfield_layer_extractor.lua)",
       "farmer:all_crops": "file(services/server/farming/data/all_crops.json)",
       "farmer:initial_crops": "file(services/server/farming/data/initial_crops.json)",
       "farmer:northern_alliance_initial_crops": "file(services/server/farming/data/na_initial_crops.json)",
@@ -169,6 +182,14 @@
       "mountain_folk:effects:candle_mining_helmet": "file(data/effects/candle_mining_helmet/candle_mining_helmet.json)",
       "mountain_folk:food:sweet_varanus": "file(entities/food/sweet_varanus/sweet_varanus/sweet_varanus.json)",
       "mountain_folk:food:sweet_varanus:sweet_varanus_serving": "file(entities/food/sweet_varanus/sweet_varanus_serving/sweet_varanus_serving.json)",
+      "mountain_folk:grower:all_undercrops": "file(services/server/underfarming/data/all_undercrops.json)",
+      "mountain_folk:grower:initial_undercrops": "file(services/server/underfarming/data/initial_undercrops.json)",
+      "mountain_folk:grower:talisman": "file(jobs/mf_grower/grower_trowel/grower_trowel_talisman.json)",
+      "mountain_folk:grower:trowel": "file(jobs/mf_grower/grower_trowel/grower_trowel.json)",
+      "mountain_folk:grower:underfield": "file(jobs/mf_grower/underfield/underfield.json)",
+      "mountain_folk:grower:underfield_layer:harvestable": "file(entities/underfarming/harvest_underfield_layer/harvest_underfield_layer.json)",
+      "mountain_folk:grower:underfield_layer:plantable": "file(entities/underfarming/plant_underfield_layer/plant_underfield_layer.json)",
+      "mountain_folk:grower:underfield_layer:tillable": "file(entities/underfarming/till_underfield_layer/till_underfield_layer.json)",
       "mountain_folk:grower:talisman": "file(jobs/mf_grower/grower_trowel/grower_trowel_talisman.json)",
       "mountain_folk:grower:trowel": "file(jobs/mf_grower/grower_trowel/grower_trowel.json)",
       "mountain_folk:jobs:archer": "file(jobs/mf_archer/mf_archer_description.json)",
@@ -275,6 +296,8 @@
       "subjects:weather:snow_early": "file(data/weather/snow/snow_early_subject.json)",
       "subjects:weather:snow_late": "file(data/weather/snow/snow_late_subject.json)",
       "task_groups:training": "file(ai/task_groups/training_task_group.lua)",
+      "task_groups:underfarming": "file(ai/task_groups/underfarming_task_group.lua)",
+      "task_groups:underfarming_harvest": "file(ai/task_groups/underfarming_harvest_task_group.lua)",
       "terrain:pasture_grass": "file(entities/terrain/pasture_grass/pasture_grass.json)",
       "terrain:pasture_grass:overgrown": "file(entities/terrain/overgrown_pasture_grass/overgrown_pasture_grass.json)",
       "terrain:pasture_grass:short": "file(entities/terrain/short_pasture_grass/short_pasture_grass.json)",
@@ -523,14 +546,22 @@
       "stonehearth/ui/game/promotion_tree/promotion_tree.html": "stonehearth_ace/ui/game/promotion_tree/promotion_tree.html"
    },
    "components": {
-      "toggle_enabled": "file(components/toggle_enabled/toggle_enabled_component.lua)",
+      "add_stump": "file(components/tree_stump/add_stump.lua)",
       "container": "file(components/container/container_component.lua)",
+      "entity_kingdom": "file(components/entity_modification/entity_kingdom_component.lua)",
+      "entity_modification": "file(components/entity_modification/entity_modification_component.lua)",
+      "grower_underfield": "file(components/grower_underfield/grower_underfield_component.lua)",
+      "grower_underfield_layer": "file(components/grower_underfield_layer/grower_underfield_layer_component.lua)",
+      "substrate_plot": "file(components/grower_underfield/substrate_plot_component.lua)",
+      "toggle_enabled": "file(components/toggle_enabled/toggle_enabled_component.lua)",
+      "training_dummy": "file(components/training/training_dummy_component.lua)",
+      "undercrop": "file(components/undercrop/underundercrop_component.lua)",
       "water_gate": "file(components/water_tools/water_gate_component.lua)",
       "water_pump": "file(components/water_tools/water_pump_component.lua)",
-      "water_signal": "file(components/signals/water_signal_component.lua)",
-      "entity_modification": "file(components/entity_modification/entity_modification_component.lua)",
-      "entity_kingdom": "file(components/entity_modification/entity_kingdom_component.lua)",
-      "training_dummy": "file(components/training/training_dummy_component.lua)",
+      "water_signal": "file(components/signals/water_signal_component.lua)"
+   },
+   "component_renderers": {
+      "grower_underfield": "file(renderers/grower_underfield/grower_underfield_renderer.lua)",
       "add_stump": "file(components/tree_stump/add_stump.lua)",
       "wilderness": "file(components/wilderness/wilderness_component.lua)",
       "wilderness_signal": "file(components/signals/wilderness_signal_component.lua)"
@@ -542,6 +573,7 @@
       "mountain_folk:town_bonus:might": "file(data/town_bonuses/might_town_bonus.lua)",
       "mountain_folk:town_bonus:nature": "file(data/town_bonuses/nature_town_bonus.lua)",
       "recipe_map": "file(services/server/crafter_info/recipe_map.lua)",
+      "mountain_folk:class:grower": "file(jobs/mf_grower/mf_grower.lua)",
       "mountain_folk:class:artificer": "file(jobs/mf_artificer/mf_artificer.lua)"
    },
    "functions": {
@@ -560,6 +592,22 @@
       "get_client_service": {
          "controller": "file(call_handlers/services_call_handler.lua)",
          "endpoint": "client"
+      },
+      "choose_new_underfield_location": {
+         "controller": "file(call_handlers/underfarming_call_handler.lua)",
+         "endpoint": "client"
+      },
+      "create_new_underfield": {
+         "controller": "file(call_handlers/underfarming_call_handler.lua)",
+         "endpoint": "server"
+      },
+      "plant_undercrop": {
+         "controller": "file(call_handlers/underfarming_call_handler.lua)",
+         "endpoint": "server"
+      },
+      "get_all_undercrops": {
+         "controller": "file(call_handlers/underfarming_call_handler.lua)",
+         "endpoint": "server"
       }
    },
    "object_commands": {
@@ -574,12 +622,21 @@
    },
    "ui": {
       "html": [
+         "file(ui/game/modes/zones_mode/underfarm/underfarm.html)",
          "file(ui/game/modes/zones_mode/trapping_grounds/trapping_grounds.html)"
       ],
       "js": [
          "file(ui/shell/settings/settings.js)",
          "file(ui/game/show_workshop/show_team_workshop.js)",
          "file(ui/game/widgets/terrain_vision/terrain_vision.js)",
+         "file(ui/game/underfarming_start_menu.js)",
+         "file(ui/game/modes/zones_mode/zones_mode.js)",
+         "file(ui/game/modes/zones_mode/underfarm/underfarm.js)"
+      ],
+      "less": [
+         "file(ui/game/widgets/terrain_vision/terrain_vision.less)",
+         "file(jobs/mf_grower/skin/workshop.less)",
+         "file(ui/game/modes/zones_mode/underfarm/underfarm.less)",
          "file(ui/game/modes/zones_mode/trapping_grounds/trapping_grounds.js)",
          "file(ui/game/promotion_tree/promotion_tree.js)"
       ],

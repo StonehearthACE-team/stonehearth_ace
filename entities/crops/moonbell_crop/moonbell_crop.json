@@ -40,14 +40,23 @@
             "moonbell_4": "stonehearth_ace:resources:herb:moonbell"
          },
          "harvest_threshhold": "moonbell_4",
-         "plant_overlay_effect": "stonehearth_ace:effects:plant_crop_overlay_effect"
+         "plant_overlay_effect": "stonehearth:effects:plant_crop_overlay_effect"
       },
       "stonehearth:growing": {
          "growth_period": "12h",
          "preferred_seasons": {
-            "stonehearth:biome:temperate": ["spring"],
-            "stonehearth:biome:desert": ["spring"],
-            "stonehearth:biome:arctic": ["spring"]
+            "stonehearth_ace:biome:highlands": [
+               "spring"
+            ],
+            "stonehearth:biome:temperate": [
+               "spring"
+            ],
+            "stonehearth:biome:desert": [
+               "spring"
+            ],
+            "stonehearth:biome:arctic": [
+               "spring"
+            ]
          },
          "growth_stages": [
             {

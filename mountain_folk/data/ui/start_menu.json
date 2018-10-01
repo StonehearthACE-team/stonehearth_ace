@@ -1,4 +1,22 @@
 {
+	"zone_menu": {
+      "items": {
+         "create_farm": {
+            "required_job": "stonehearth_ace:mountain_folk:jobs:grower",
+            "required_job_text": "i18n(stonehearth_ace:ui.game.menu.zone_menu.items.create_farm.required_job_text)"
+         },
+		 "create_underfarm": {
+            "name": "i18n(stonehearth_ace:ui.game.menu.zone_menu.items.create_underfarm.display_name)",
+            "description": "i18n(stonehearth_ace:ui.game.menu.zone_menu.items.create_underfarm.description)",
+            "required_job": "stonehearth_ace:mountain_folk:jobs:grower",
+            "required_job_text": "i18n(stonehearth_ace:ui.game.menu.zone_menu.items.create_underfarm.required_job_text)",
+            "class": "button",
+            "icon": "/stonehearth/ui/game/start_menu/images/zone_farm.png",
+            "sticky": true,
+            "hotkey_action": "zone:underfarm"
+         }
+		}
+    },
 	"crafter_menu": {
 		"items": {
 			"artificer": {
@@ -10,7 +28,7 @@
 				"icon": "/stonehearth_ace/jobs/mf_artificer/images/artificer_menu_icon.png",
 				"sticky": true,
 				"menu_action": "show_crafter_ui",
-				"hotkey_action": "craft:artificer",
+				"hotkey_action": "craft:artificer"
 			},
 			"grower": {
 				"name": "i18n(stonehearth_ace:ui.game.menu.crafter_menu.items.grower.display_name)",
@@ -21,7 +39,7 @@
 				"icon": "/stonehearth_ace/jobs/mf_grower/images/grower_menu_icon.png",
 				"sticky": true,
 				"menu_action": "show_crafter_ui",
-				"hotkey_action": "craft:grower",
+				"hotkey_action": "craft:grower"
 			}
 		}
 	}
