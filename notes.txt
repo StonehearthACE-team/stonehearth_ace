@@ -1,0 +1,21 @@
+To specify multiple parent jobs for a job, do something like this in the description json:
+"parent_jobs": [
+      {
+         "job": "stonehearth:jobs:mason",
+         "level_requirement": 4
+      },
+      {
+         "job": "stonehearth:jobs:carpenter",
+         "level_requirement": 3
+      },
+      {
+         "job": "stonehearth:jobs:trapper",
+         "level_requirement": 1,
+         "one_of": true
+      },
+      {
+         "job": "stonehearth:jobs:magmasmith",
+         "level_requirement": 2,
+         "one_of": true
+      }
+   ]

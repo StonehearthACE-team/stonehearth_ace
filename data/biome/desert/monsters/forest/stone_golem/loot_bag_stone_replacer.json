@@ -1,0 +1,52 @@
+{
+   "mixintypes": {
+		"entries": "override"
+   },
+   "entries": {
+      "default": {
+         "roll_type": "some_of",
+         "num_rolls": {
+            "min": 2,
+            "max": 3
+         },
+         "items": {
+            "stone": {
+               "uri": "stonehearth_ace:resources:stone:sandstone_stone",
+               "weight": 10,
+               "num_rolls": {
+                  "min": 1,
+                  "max": 3
+               }
+            },
+            "lump_of_coal": {
+               "uri": "stonehearth:resources:coal:lump_of_coal",
+               "weight": 3,
+               "num_rolls": {
+                  "min": 1,
+                  "max": 2
+               }
+            },
+            "ore1": {
+               "uri": "stonehearth:resources:iron:ore",
+               "weight": 2
+            },
+            "ore2": {
+               "uri": "stonehearth:resources:silver:ore",
+               "weight": 2
+            },
+            "ore3": {
+               "uri": "stonehearth:resources:gold:ore",
+               "weight": 1
+            },
+            "ore4": {
+               "uri": "stonehearth:resources:tin:ore",
+               "weight": 3
+            },
+            "ore5": {
+               "uri": "stonehearth:resources:copper:ore",
+               "weight": 3
+            }
+         }
+      }
+   }
+}

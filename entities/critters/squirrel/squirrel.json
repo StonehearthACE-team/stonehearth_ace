@@ -1,0 +1,37 @@
+{
+   "components": {
+      "stonehearth:loot_drops": {
+         "force_auto_loot": true,
+         "entries": {
+            "bones": {
+               "num_rolls": {
+                  "min": 0,
+                  "max": 1
+               },
+               "items": {
+                  "bones": {
+                     "uri": "stonehearth_ace:resources:bone:bone_material"
+                  }
+               }
+            }
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:harvest_beast_loot_table": {
+         "entries": {
+            "bones": {
+               "num_rolls": {
+                  "min": 0,
+                  "max": 1
+               },
+               "items": {
+                  "bones": {
+                     "uri": "stonehearth_ace:resources:bone:bone_material"
+                  }
+               }
+            }
+         }
+      }
+   }
+}

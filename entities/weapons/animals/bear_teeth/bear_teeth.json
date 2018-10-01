@@ -1,0 +1,36 @@
+{
+   "type": "entity",
+   "components": {
+      "stonehearth:equipment_piece": {
+         "slot": "mainhand",
+         "render_type": "none"
+      }
+   },
+   "entity_data": {
+      "stonehearth:combat:weapon_data": {
+         "base_damage": 13,
+         "reach": 2
+      },
+      "stonehearth:combat:melee_attacks": [
+         {
+            "name": "swing",
+            "effect": "swing",
+            "active_frame": 14,
+            "cooldown": 0,
+            "priority": 0
+         },
+         {
+            "name": "pounce",
+            "effect": "pounce",
+            "active_frame": 35,
+            "cooldown": 6000,
+            "priority": 1,
+            "damage_multiplier": 2.0,
+            "aoe_effect": {
+               "damage_multiplier": 0.75,
+               "aoe_target_limit": 4
+            }
+         }
+      ]
+   }
+}

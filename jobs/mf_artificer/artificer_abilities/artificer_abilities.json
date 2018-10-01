@@ -1,0 +1,32 @@
+{
+   "type": "entity",
+   "components": {
+      "stonehearth:equipment_piece": {
+         "injected_ai": {
+            "actions": [
+				"stonehearth:actions:place_summon_stone",
+				"stonehearth:actions:place_summon_stone_type"
+			],
+            "ai_packs": [
+               "stonehearth:ai_pack:crafting",
+               "stonehearth:ai_pack:repairing",
+               "stonehearth:ai_pack:ladders",
+               "stonehearth:ai_pack:place_item",
+               "stonehearth:ai_pack:construction",
+               "stonehearth:ai_pack:mining",
+               "stonehearth:ai_pack:town_alert",
+               "stonehearth:ai_pack:wimpy",
+               "stonehearth:ai_pack:panic",
+               "stonehearth:ai_pack:panic:flee",
+               "stonehearth:ai_pack:panic:cower"
+            ]
+         },
+         "injected_commands": []
+      }
+   },
+   "entity_data": {
+      "stonehearth:combat:siege_repair_data": {
+         "can_repair": true
+      }
+   }
+}

@@ -1,0 +1,99 @@
+<script type="text/x-handlebars" data-template-name="promotionTree">
+<div id="promotionTree" class="gui">
+   <div class="window">
+      <div class="title">{{i18n stonehearth:ui.game.promotion_tree.title}}
+         {{i18n_key view.citizen.stonehearth:unit_info.display_name self=view.citizen}}
+         <div class="closeButton"></div>
+      </div>
+      <div id="content" class="downSection">
+      </div>
+      <div id="scroll">
+         <div id="promoteTitle">
+            {{#if view.selectedJob}}
+               {{i18n_key "stonehearth:ui.game.promotion_tree.promotion_title" job_name=view.selectedJob.display_name}}
+            {{/if}}
+         </div>
+
+         <div id="innerCur">
+            {{i18n stonehearth:ui.game.promotion_tree.text_current}}
+         </div>
+         <div id="innerNew">
+            {{i18n stonehearth:ui.game.promotion_tree.text_1}}
+            <div id="citizenName">{{i18n_key view.citizen.stonehearth:unit_info.display_name self=view.citizen}}</div>
+            {{i18n stonehearth:ui.game.promotion_tree.text_2 date=dateString}}
+         </div>
+
+         <div id='approveStamp'>
+            {{i18n stonehearth:ui.game.promotion_tree.approve}}
+         </div>
+
+         <div id='deniedStamp'>
+            {{i18n stonehearth:ui.game.promotion_tree.denied}}
+         </div>
+
+         <div id='approvedStamp'>
+            {{i18n stonehearth:ui.game.promotion_tree.approved}}
+         </div>
+
+         <div id='approveStamper'>
+            <div id='approveStamperTopText'>{{i18n stonehearth:ui.game.promotion_tree.stamper_top_text}}</div>
+            <div id='approveStamperBottomText'>{{i18n stonehearth:ui.game.promotion_tree.stamper_bottom_text}}</div>
+         </div>
+
+      </div>
+      <div id="info">
+         <div class="block">
+            <h2 id="jobName">{{i18n_key view.selectedJob.display_name}}</h2>
+            <div id="jobDescription">{{{ formatted_i18n_key view.selectedJob.description }}}</div>
+            {{#each view.allJobData}}
+               <div class="jobData" {{bind-attr uri=this.description.alias}}>
+                  <div class="jobPerks">
+                     {{#each this.description.levelArray}}
+                        {{#each this.perks}}
+                        <div class="perkDiv tooltip" locked="true" {{bind-attr name=this.name description=this.description divLevel=this.level}}>
+                           <img {{bind-attr src=this.icon imgLevel=this.level}} />
+                           <span class="levelLabel" {{bind-attr lbLevel=this.level}}>{{i18n stonehearth:ui.game.citizen_character_sheet.level_abbreviation}} <span class="levelText">{{this.level}}</span></span>
+                        </div>
+                        {{/each}}
+                     {{/each}}
+                  </div>
+               </div>
+            {{/each}}
+      </div>
+         <div class="block">
+            <h2 id="requires">{{i18n stonehearth:ui.game.promotion_tree.requires}}</h2>
+            {{#if view.selectedJobTalisman}}
+               <div id='requiredTalisman'>
+                  <img {{bind-attr src=view.selectedJobTalisman.icon}}></image>
+                  <div id='talismanName' {{bind-attr class=view.requirementsMet:requirementsMet:requirementsUnmet}}>
+                        {{i18n_key view.selectedJobTalisman.display_name}}
+                  </div>
+                  <div id='talismanDescription' >{{i18n_key view.selectedJob.requirements}}</div>
+               </div>
+            {{else}}
+               <div id="requiredDescription">{{i18n_key view.selectedJob.requirements}}</div>
+            {{/if}}
+            <div id="parentRequiredLevel">
+               {{#each view.parentJobs}}
+                  <div {{bind-attr class="this.requirement_met:requirementsMet:requirementsUnmet"}}>
+                     {{i18n_key "stonehearth:ui.game.promotion_tree.parent_level" parent_level=this.level_requirement parent_name=this.display_name}}
+                  </div>
+               {{/each}}
+               {{#if view.oneOfJobs.length}}
+               <table><tr>
+                  <td style="padding: 0px 10px 0px 0px; text-align:left">One of:</td>
+                  <td>
+                     {{#each view.oneOfJobs}}
+                        <div {{bind-attr class="this.requirement_met:requirementsMet:requirementsUnmet"}} style="font-style: italic;">
+                           {{i18n_key "stonehearth:ui.game.promotion_tree.parent_level" parent_level=this.level_requirement parent_name=this.display_name}}
+                        </div>
+                     {{/each}}
+                  </td>
+               </tr></table>
+               {{/if}}
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+</script>

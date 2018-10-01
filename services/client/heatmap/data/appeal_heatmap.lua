@@ -1,7 +1,8 @@
 -- you must register a valid Lua 'class' file with the service to use for a heatmap; it must have the following properties: (* is always required, + is sometimes required)
 -- *  name:                a string key used to identify/distinguish this heatmap from others
 -- *  valuation_mode:      a string key used to identify how valuations are made: accepted values are 'entity' or 'location'
--- *  fn_get_heat_value:   a function that returns a heat 'value' when passed an entity or location point
+-- +  fn_get_entity_heat_value:      a function that returns a heat 'value' when passed an entity
+-- +  fn_get_location_heat_value:    a function that returns a heat 'value' when passed a location point
 --    default_heat_value:  optional; the default heat value for 'invalid' entities/locations
 -- *  fn_heat_value_to_color: a function that returns a color when passed a heat value and the min and max recorded heat values
 -- +  fn_heat_value_to_hilight:  a function that returns a highlight color (Point3) when passed a heat value and the min and max recorded heat values for 'entity' valuation_mode
@@ -14,6 +15,7 @@
 --    sample_denominator:  optional; a divisor by which an aggregate sum is divided when using 'entity' valuation_mode
 --    raycast_origin:      optional; only for 'entity' valuation_mode
 --    initialize:          optional; a function run when a heatmap is shown, with a callback function parameter
+--    shape:               optional; defaults to 'square', only other supported option is 'circle'
 
 local Color4 = _radiant.csg.Color4
 local Point3 = _radiant.csg.Point3
@@ -24,6 +26,7 @@ local AppealHeatmap = class()
 
 AppealHeatmap.name = 'appeal_heatmap'
 AppealHeatmap.valuation_mode = 'entity'
+AppealHeatmap.shape = 'circle'
 AppealHeatmap.radius = stonehearth.constants.appeal.APPEAL_SAMPLE_RADIUS
 AppealHeatmap.sample_denominator = stonehearth.constants.appeal.APPEAL_SAMPLE_DENOMINATOR
 AppealHeatmap._vitality_multiplier = stonehearth.constants.town_progression.bonuses.VITALITY_PLANT_APPEAL_MULTIPLIER
@@ -126,20 +129,6 @@ end
 function AppealHeatmap:fn_is_entity_relevant(item)
    local appeal_data = get_entity_data(item, 'stonehearth:appeal')
    return appeal_data and rawget(appeal_data, 'appeal') and rawget(appeal_data, 'appeal') ~= 0
-end
-
--- return values are [this rank, max rank value]: if you just want to say use this location, return 1, 1
-function AppealHeatmap:fn_filter_query_scene(best_location, query_result)
-   local is_building = (query_result.entity:get_component('stonehearth:construction_data') or
-                        query_result.entity:get_component('stonehearth:build2:structure') or
-                        query_result.entity:get_component('stonehearth:floor'))
-   if is_building and query_result.normal.y > 0.5 then  -- floor
-      return 1, 1
-   elseif query_result.entity:get_id() == radiant._root_entity_id then  -- terrain
-      return 1, 1
-   end
-   
-   return 0, 1
 end
 
 return AppealHeatmap

@@ -1,0 +1,39 @@
+{
+   "mixins": "stonehearth:mixins:food_decay",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(steak.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": -0.05, "y": 0, "z": 0.05 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 16,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 2,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.steak.display_name)",
+         "description": "i18n(stonehearth_ace:entities.food.steak.description)",
+         "icon": "file(steak.png)",
+         "is_item": true,
+         "category": "cooking_ingredient",
+         "material_tags": "stockpile_cooking_ingredient cooking_ingredient meat raw steak"
+      },
+      "stonehearth:appeal": {
+         "appeal": 0
+      }
+   }
+}

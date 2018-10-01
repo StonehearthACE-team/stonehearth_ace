@@ -126,6 +126,93 @@
             "waterfall_exists",
             "waterfall_volume"
          ]
+      },
+      "wilderness": {   "__comment": "To avoid duplicating data, the wilderness heatmap data is stored here.",
+         "SAMPLE_RADIUS": 7,
+         "SAMPLE_DENOMINATOR": 225, "__comment": "This is how many voxels are in a square of that 'radius'.",
+         "LEVELS": [
+            {
+               "ui_label": "i18n(stonehearth_ace:data.heatmaps.wilderness.thresholds.none.display_name)",
+               "description": "i18n(stonehearth_ace:data.heatmaps.wilderness.thresholds.none.description)",
+               "icon": "/stonehearth_ace/ui/images/heatmaps/wilderness_none.png",
+               "max": 0.0001,
+               "heatmap_color": [240, 0, 0, 200],
+               "heatmap_hilight": [1.0, 0, 0],
+               "spawn_duration_multiplier": 5
+            },
+            {
+               "ui_label": "i18n(stonehearth_ace:data.heatmaps.wilderness.thresholds.little.display_name)",
+               "description": "i18n(stonehearth_ace:data.heatmaps.wilderness.thresholds.little.description)",
+               "icon": "/stonehearth_ace/ui/images/heatmaps/wilderness_little.png",
+               "max": 0.02,
+               "heatmap_color": [240, 128, 0, 200],
+               "heatmap_hilight": [1.0, 0.5, 0],
+               "spawn_duration_multiplier": 3
+            },
+            {
+               "ui_label": "i18n(stonehearth_ace:data.heatmaps.wilderness.thresholds.some.display_name)",
+               "description": "i18n(stonehearth_ace:data.heatmaps.wilderness.thresholds.some.description)",
+               "icon": "/stonehearth_ace/ui/images/heatmaps/wilderness_some.png",
+               "max": 0.05,
+               "heatmap_color": [240, 240, 0, 200],
+               "heatmap_hilight": [1.0, 1.0, 0],
+               "spawn_duration_multiplier": 1.5
+            },
+            {
+               "ui_label": "i18n(stonehearth_ace:data.heatmaps.wilderness.thresholds.lots.display_name)",
+               "description": "i18n(stonehearth_ace:data.heatmaps.wilderness.thresholds.lots.description)",
+               "icon": "/stonehearth_ace/ui/images/heatmaps/wilderness_lots.png",
+               "max": 0.1,
+               "heatmap_color": [0, 240, 0, 200],
+               "heatmap_hilight": [0, 1.0, 0],
+               "spawn_duration_multiplier": 0.9
+            },
+            {
+               "ui_label": "i18n(stonehearth_ace:data.heatmaps.wilderness.thresholds.tons.display_name)",
+               "description": "i18n(stonehearth_ace:data.heatmaps.wilderness.thresholds.tons.description)",
+               "icon": "/stonehearth_ace/ui/images/heatmaps/wilderness_tons.png",
+               "max": 999999,
+               "heatmap_color": [0, 180, 64, 200],
+               "heatmap_hilight": [0, 0.75, 0.25],
+               "spawn_duration_multiplier": 0.5
+            }
+         ]
+      },
+      "game_master": {
+         "quests": {
+            "filler_materials": {
+               "stonehearth:biome:temperate": {
+                  "default": [
+                     "stonehearth:resources:wood:oak_log",
+                     "stonehearth:resources:wood:juniper_log"
+                  ]
+               },
+               "stonehearth:biome:desert": {
+                  "default": [
+                     "stonehearth:resources:wood:acacia_log",
+                     "stonehearth:resources:clay:clay_mound"
+                  ]
+               },
+               "stonehearth:biome:arctic": {
+                  "default": [
+                     "stonehearth:resources:wood:pine_log",
+                     "stonehearth:resources:stone:hunk_of_stone"
+                  ]
+               },
+               "stonehearth_ace:biome:highlands": {
+                  "default": [
+                     "stonehearth:resources:stone:hunk_of_stone",
+                     "stonehearth_ace:resources:wood:birch_log",
+                     "stonehearth_ace:resources:wood:yew_log"
+                  ],
+                  "stonehearth_ace:kingdoms:mountain_folk": [
+                     "stonehearth:resources:stone:hunk_of_stone",
+                     "stonehearth:resources:copper:ore",
+                     "stonehearth:resources:tin:ore"
+                  ]
+               }
+            }
+         }
       }
    }
 }

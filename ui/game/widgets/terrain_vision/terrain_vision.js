@@ -18,10 +18,13 @@ App.StonehearthTerrainVisionWidget.reopen({
             var heatmaps = response.heatmaps;
             radiant.each(heatmaps, function(key, heatmap) {
                 heatmap.key = key;
+                heatmap.description = i18n.t(heatmap.description);
             });
             self._heatmaps = heatmaps;
-            // TODO: order by ordinal value
-            self.set('heatMaps', radiant.map_to_array(heatmaps));
+            
+            var heatmapArray = radiant.map_to_array(heatmaps)
+            radiant.sortByOrdinal(heatmapArray);
+            self.set('heatMaps', heatmapArray);
          });
       });
    },
@@ -29,6 +32,8 @@ App.StonehearthTerrainVisionWidget.reopen({
    didInsertElement: function() {
       var self = this;
       self._super();
+
+      //self.$('#heatmapButton').tooltipster();
 
       // when the user clicks the heatmap menu button, hide the current heatmap and the menu
       self.$('#heatmapButton').on('click', function() {
@@ -43,6 +48,13 @@ App.StonehearthTerrainVisionWidget.reopen({
          heatmapList.hide();
          heatmapList.attr('style', '');
       });
+   },
+
+   willDestroyElement: function() {
+      var self = this;
+      self._super();
+
+      //self.$().find('.tooltipstered').tooltipster('destroy');
    },
 
    setHeatmapActive: function (heatmapKey, isActive) {

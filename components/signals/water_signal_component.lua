@@ -28,11 +28,15 @@ function WaterSignalComponent:post_activate()
 		if not self._sv._signal_region then
 			local component = self._entity:get_component('region_collision_shape')
 			if component then
-				self._sv._signal_region = component:get_region():get()
-			else
-				self._sv._signal_region = Region3(Cube3(Point3.zero, Point3.one))
-			end
-			self.__saved_variables:mark_changed()
+            self:set_region(component:get_region():get())
+         else
+            component = self._entity:get_component('destination')
+            if component then
+               self:set_region(component:get_region():get())
+            else
+               self:set_region(Region3(Cube3(Point3.zero, Point3.one)))
+            end
+         end
       end
    elseif not self._sv.monitor_types then
       -- backwards compatibility with existing water signals that monitored everything
@@ -83,6 +87,7 @@ function WaterSignalComponent:has_monitor_type(monitor_type)
    return self._sv.monitor_types[monitor_type] ~= nil
 end
 
+-- should these be filtered on stonehearth.constants.water_signal.MONITOR_TYPES?
 function WaterSignalComponent:add_monitor_types(monitor_types)
    for _, monitor_type in ipairs(monitor_types) do
       self._sv.monitor_types[monitor_type] = true
@@ -113,8 +118,10 @@ function WaterSignalComponent:set_water_exists(water_entities)
 	self._sv._water_exists = exists
 	
 	if exists ~= prev_exists then
-		radiant.events.trigger(self._entity, 'stonehearth_ace:water_signal:water_exists_changed', exists)
-	end
+      radiant.events.trigger(self._entity, 'stonehearth_ace:water_signal:water_exists_changed', exists)
+      return true
+   end
+   return false
 end
 
 function WaterSignalComponent:get_water_volume()
@@ -131,8 +138,10 @@ function WaterSignalComponent:set_water_volume(water_entities)
 	self._sv._water_volume = volume
 
 	if volume ~= prev_volume then
-		radiant.events.trigger(self._entity, 'stonehearth_ace:water_signal:water_volume_changed', volume)
-	end
+      radiant.events.trigger(self._entity, 'stonehearth_ace:water_signal:water_volume_changed', volume)
+      return true
+   end
+   return false
 end
 
 function WaterSignalComponent:get_waterfall_exists()
@@ -146,8 +155,10 @@ function WaterSignalComponent:set_waterfall_exists(waterfall_components)
 	self._sv._waterfall_exists = exists
 	
 	if exists ~= prev_exists then
-		radiant.events.trigger(self._entity, 'stonehearth_ace:water_signal:waterfall_exists_changed', exists)
-	end
+      radiant.events.trigger(self._entity, 'stonehearth_ace:water_signal:waterfall_exists_changed', exists)
+      return true
+   end
+   return false
 end
 
 function WaterSignalComponent:get_waterfall_volume()
@@ -164,8 +175,10 @@ function WaterSignalComponent:set_waterfall_volume(waterfall_entities)
 	self._sv._waterfall_volume = volume
 
 	if volume ~= prev_volume then
-		radiant.events.trigger(self._entity, 'stonehearth_ace:water_signal:waterfall_volume_changed', volume)
-	end
+      radiant.events.trigger(self._entity, 'stonehearth_ace:water_signal:waterfall_volume_changed', volume)
+      return true
+   end
+   return false
 end
 
 function WaterSignalComponent:_on_tick_water_signal()
@@ -183,21 +196,24 @@ function WaterSignalComponent:_on_tick_water_signal()
 	
 	local region = self._sv._signal_region and self._sv._signal_region:translated(location)
 	local water_components, waterfall_components = self:_get_water(region)
+   local changed = false
 
    if self:has_monitor_type('water_exists') then
-      self:set_water_exists(water_components)
+      changed = self:set_water_exists(water_components) or changed
    end
    if self:has_monitor_type('water_volume') then
-      self:set_water_volume(water_components)
+      changed = self:set_water_volume(water_components) or changed
    end
    if self:has_monitor_type('waterfall_exists') then
-      self:set_waterfall_exists(waterfall_components)
+      changed = self:set_waterfall_exists(waterfall_components) or changed
    end
    if self:has_monitor_type('waterfall_volume') then
-      self:set_waterfall_volume(waterfall_components)
+      changed = self:set_waterfall_volume(waterfall_components) or changed
    end
-	
-	self.__saved_variables:mark_changed()
+   
+   if changed then
+      self.__saved_variables:mark_changed()
+   end
 end
 
 function WaterSignalComponent:_get_water(region)

@@ -3,22 +3,26 @@
       "biome": {
          "highlands": {
             "display_name": "Highlands",
-            "description": "TBD. Default home of the TBD.",
+            "description": "Uneven valleys and tall cliffs with many lakes and rivers. Default home of the Mountain Folk.",
             "random_location_names": {
-               "000": "TBD"
+               "000": "The Whiterock Plateau"
             },
             "seasons": {
                "spring": {
-                  "display_name": "Spring"
+                  "display_name": "Spring",
+                  "description": "Spring in the Highlands is a time of renewal, usually full of windy days and a good time to start sowing. Late snow may rarely occur."
                },
                "summer": {
-                  "display_name": "Summer"
+                  "display_name": "Summer",
+                  "description": "Summer in the Highlands is a warm and wet season, often with days of rain and maybe even storms. Strong winds and a cloudless sky will probably prevail, however."
                },
                "autumn": {
-                  "display_name": "Autumn"
+                  "display_name": "Autumn",
+                  "description": "Autumn in the Highlands marks the end of the farming season, with several rainy or cloudy days and perhaps even an early snowfall."
                },
                "winter": {
-                  "display_name": "Winter"
+                  "display_name": "Winter",
+                  "description": "Winter in the Highlands can be harsh and severe, lasting slightly longer than the other seasons and with an almost daily snowfall. Get your warm clothes ready!"
                }
             }
          }
@@ -79,6 +83,70 @@
                   "description": "You're sitting on a gold mine! (But possibly other ores than gold.)"
                }
             }
+         },
+         "wilderness": {
+            "thresholds": {
+               "none": {
+                  "display_name": "No Wilderness",
+                  "description": "Either there's no wilderness here, or it's eclipsed by buildings."
+               },
+               "little": {
+                  "display_name": "A Little Wild",
+                  "description": "This area is very tame. Try planting trees to *spruce* it up a bit."
+               },
+               "some": {
+                  "display_name": "Somewhat Wild",
+                  "description": "There's some wilderness here, but it won't attract many animals. A few more or larger plants could help."
+               },
+               "lots": {
+                  "display_name": "Getting Wilder",
+                  "description": "This area is rather wild, and plenty of animals should be attracted to it."
+               },
+               "tons": {
+                  "display_name": "Very Wild",
+                  "description": "It's a veritable Garden of Eden!"
+               }
+            }
+         }
+      },
+      "trapping": {
+         "all_trappable_animals": {
+            "trappable_animals": {
+               "big_game": {
+                  "name": "Big Game",
+                  "description": "Large animals produce large cuts of meat, jerky, pelts, and other useful items"
+               }
+            }
+         }
+      },
+      "monster_tuning": {
+         "forest": {
+            "rabid_bear": {
+               "description": "There is something unnatural and wrong with this animal..."
+            },
+            "large_bear": {
+               "description": "This is a very large bear."
+            }
+         }
+      },
+      "gm": {
+         "campaigns": {
+            "ambient_threats": {
+               "bear_attack": {
+                  "mission": {
+                     "sighted_bulletin": {
+                        "title": "Feral Bear Approaching!"
+                     }
+                  }
+               }
+            }
+         }
+      },
+      "commands": {
+         "slaughter": {
+            "display_name": "Harvest Wild Animal",
+            "description": "Harvest this wild animal for some of its resources.",
+            "disabled_description": "This wild animal is unfit for slaughtering."
          }
       }
    },
@@ -206,6 +274,11 @@
             "shroom_omelette_recipe": {
                "recipe_name": "Shroom Omelette",
                "description": "A satisfying and tasty dish that is also easy to make.",
+               "flavor": ""
+            },
+            "roast_steak_recipe": {
+               "recipe_name": "Roast Steak",
+               "description": "The most prized and delicious cut of meat, slowly grilled on fire.",
                "flavor": ""
             }
          }
@@ -464,6 +537,10 @@
             "parana_pine_log": {
                "description": "A log. Made of wood.",
                "display_name": "Parana Pine Log"
+            },
+            "highland_pine_log": {
+               "description": "A log. Made of wood.",
+               "display_name": "Highland Pine Log"
             }
          },
          "herb": {
@@ -514,6 +591,10 @@
             "scorpion_pelt": {
                "display_name": "Scorpion Chitin",
                "description": "Hard, shiny, and quite dead"
+            },
+            "bear_pelt": {
+               "display_name": "Bear Pelt",
+               "description": "A large fur from a ferocious creature."
             }
          },
          "bone_material": {
@@ -692,6 +773,60 @@
                "tree_yew_plant_stem": {
                   "display_name": "Stemming Yew Tree",
                   "description": "TBD"
+               }
+            }
+         },
+         "highland_pine_tree": {
+            "bud": {
+               "tree_highland_pine_bud": {
+                  "display_name": "Budding Highland Pine",
+                  "description": "TBD"
+               }
+            },
+            "large": {
+               "large_highland_pine": {
+                  "display_name": "Large Highland Pine",
+                  "description": "TBD"
+               }
+            },
+            "medium": {
+               "medium_highland_pine": {
+                  "display_name": "Highland Pine",
+                  "description": "TBD"
+               }
+            },
+            "seed": {
+               "tree_highland_pine_seed_ghost": {
+                  "display_name": "Highland Pine Seed",
+                  "description": "TBD"
+               }
+            },
+            "small": {
+               "small_highland_pine": {
+                  "display_name": "Small Highland Pine",
+                  "description": "TBD"
+               }
+            },
+            "sprout": {
+               "tree_highland_pine_sprout": {
+                  "display_name": "Highland Pine Sproutling",
+                  "description": "TBD"
+               }
+            },
+            "stem": {
+               "tree_highland_pine_stem": {
+                  "display_name": "Stemming Highland Pine",
+                  "description": "TBD"
+               }
+            },
+            "sapling_highland_pine_tree": {
+               "description": "TBD",
+               "sapling_highland_pine_tree_iconic": {
+                  "description": "TBD"
+               },
+               "sapling_highland_pine_tree_ghost": {
+                  "description": "TBD",
+                  "display_name": "Highland Pine Sapling"
                }
             }
          }
@@ -1062,6 +1197,22 @@
                "display_name": "Serving of Shroom Omelette",
                "description": ""
             }
+         },
+         "bear_jerky": {
+            "display_name": "Bear Jerky"
+         },
+         "steak": {
+            "display_name": "Raw Steak",
+            "description": "A high quality piece of raw prime meat."
+         },
+         "roast_steak": {
+            "roast_steak": {
+               "display_name": "Roast Steak",
+               "description": "A very fine and premium piece of roasted meat."
+            },
+            "roast_steak_serving": {
+               "display_name": "Serving of Roast Steak"
+            }
          }
       },
       "terrain": {
@@ -1177,6 +1328,18 @@
                   "display_name": "Developing Winter Morels",
                   "description": "The fungi are sprawling and will soon be large enough!"
                }
+            }
+         }
+      },
+      "monsters": {
+         "forest": {
+            "bear": {
+               "display_name": "Feral Bear",
+               "description": "They seem quite angry."
+            },
+            "bear_cub": {
+               "display_name": "Bear Cub",
+               "description": "Awww."
             }
          }
       }
@@ -1327,12 +1490,19 @@
             }
          },
          "visions": {
-            "heatmap": "heatmap"
+            "heatmap": {
+               "title": "heatmap",
+               "description": "This is the heatmap tooltip. TODO: put something useful here."
+            }
          },
          "heatmaps": {
             "ore": {
                "display_name": "Ore Detector",
                "description": "Detect ore beneath the surface: areas appear brighter where ore is abundant or close to the surface."
+            },
+            "wilderness": {
+               "display_name": "Wilderness",
+               "description": "See where the world is wilder (or tamer)."
             }
          },
          "zones_mode": {
@@ -1358,6 +1528,24 @@
             "bone_resource_name": "Bone",
             "fungi_resource_name": "Fungi"
          }
+      }
+   },
+   "commands": {
+      "toggle_training_off": {
+         "display_name": "Disable Training",
+         "description": "Turn off training for this soldier. They will still patrol and fight as normal."
+      },
+      "toggle_training_on": {
+         "display_name": "Enable Training",
+         "description": "Enable training for this soldier. They will still fight as normal, but will prefer training on training dummies over patrolling up to level 3."
+      },
+      "toggle_enabled_off": {
+         "display_name": "Disable",
+         "description": "Disable this entity's functionality."
+      },
+      "toggle_enabled_on": {
+         "display_name": "Enable",
+         "description": "Enable this entity's functionality."
       }
    }
 }

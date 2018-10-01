@@ -1,0 +1,34 @@
+{
+   "components": {
+	  "mixintypes": {
+	     "model_variants": "override"
+	  },
+      "model_variants": {
+         "default": {		
+            "models": [
+               "/stonehearth/entities/monsters/goblins/goblin/goblin_body.qb",
+               {
+                  "type": "one_of",
+                  "items": [
+                     "/stonehearth/entities/monsters/goblins/goblin/goblin_head_1.qb",
+                     "/stonehearth/entities/monsters/goblins/goblin/goblin_head_2.qb",
+                     "/stonehearth/entities/monsters/goblins/goblin/goblin_head_3.qb",
+                     "/stonehearth/entities/monsters/goblins/goblin/goblin_head_4.qb",
+                     "/stonehearth/entities/monsters/goblins/goblin/goblin_head_5.qb",
+					 "/stonehearth/entities/monsters/goblins/goblin/goblin_head_6.qb"
+                  ]
+               },
+               {
+                  "type": "one_of",
+                  "items": [
+                     "/stonehearth/entities/monsters/goblins/goblin/goblin_armor_none.qb",
+                     "/stonehearth/entities/monsters/goblins/goblin/goblin_armor_vest.qb",
+					 "/stonehearth/entities/monsters/goblins/goblin/goblin_armor_leather.qb",
+                     "/stonehearth/entities/monsters/goblins/goblin/goblin_armor_breastplate.qb"
+                  ]
+               }
+            ]
+         }
+      }
+   }
+}

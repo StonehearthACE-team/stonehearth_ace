@@ -12,6 +12,7 @@ local service_creation_order = {
 local monkey_patches = {
    ace_craft_order_list = 'stonehearth.components.workshop.craft_order_list',
    ace_craft_order = 'stonehearth.components.workshop.craft_order',
+   ace_crafter_component = 'stonehearth.components.crafter.crafter_component',
    ace_door_component = 'stonehearth.components.door.door_component',
    ace_portal_component = 'stonehearth.components.portal.portal_component',
    ace_job_component = 'stonehearth.components.job.job_component',
@@ -22,13 +23,16 @@ local monkey_patches = {
    ace_shepherd_pasture_component = 'stonehearth.components.shepherd_pasture.shepherd_pasture_component',
    ace_shepherd_service = 'stonehearth.services.server.shepherd.shepherd_service',
    ace_town_service = 'stonehearth.services.server.town.town_service',
+   ace_town = 'stonehearth.services.server.town.town',
    ace_evolve_component = 'stonehearth.components.evolve.evolve_component',
    ace_crafting_progress = 'stonehearth.components.workshop.crafting_progress',
    ace_workshop_component = 'stonehearth.components.workshop.workshop_component',
    ace_craft_items_orchestrator = 'stonehearth.services.server.town.orchestrators.craft_items_orchestrator',
    ace_collect_ingredients_orchestrator = 'stonehearth.services.server.town.orchestrators.collect_ingredients_orchestrator',
    ace_drop_crafting_ingredients = 'stonehearth.ai.actions.drop_crafting_ingredients',
-   ace_produce_crafted_items = 'stonehearth.ai.actions.produce_crafted_items'
+   ace_produce_crafted_items = 'stonehearth.ai.actions.produce_crafted_items',
+   ace_trapping_grounds_component = 'stonehearth.components.trapping.trapping_grounds_component',
+   ace_collection_quest_shakedown = 'stonehearth.services.server.game_master.controllers.scripts.collection_quest_shakedown'
 }
 
 local function monkey_patching()
