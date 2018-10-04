@@ -5,7 +5,8 @@ stonehearth_ace.util = require("lib.util")
 local service_creation_order = {
    'crafter_info',
    'water_pump',
-   'water_signal'
+   'water_signal',
+   'underfarming'
 }
 
 local monkey_patches = {

@@ -1,0 +1,90 @@
+{
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(../../trees/yew_tree/bud/tree_yew_plant_bud.qb)"
+            ]
+         },
+         "yew_tree_1": {
+            "models": [
+               "file(../../trees/yew_tree/seed/tree_yew_seed_iconic.qb)"
+            ]
+         },
+         "yew_tree_2": {
+            "models": [
+               "file(../../trees/yew_tree/sprout/tree_yew_sprout.qb)"
+            ]
+         },
+         "yew_tree_3": {
+            "models": [
+               "file(../../trees/yew_tree/stem/tree_yew_plant_stem.qb)"
+            ]
+         },
+         "yew_tree_4": {
+            "models": [
+               "file(../../trees/yew_tree/bud/tree_yew_plant_bud.qb)"
+            ]
+         }
+      },
+      "render_info": {
+         "scale": 0.07
+      },
+      "mob": {
+         "model_origin": { "x": -0.05, "y": 0, "z": 0.05 },
+         "mob_collision_type": "clutter"
+      },
+      "stonehearth:crop": {
+         "resource_pairings": {
+            "yew_tree_4": "stonehearth_ace:trees:yew:sapling"
+         },
+         "harvest_threshhold": "yew_tree_4",
+         "plant_overlay_effect": "stonehearth:effects:plant_crop_overlay_effect"
+      },
+      "stonehearth:growing": {
+         "growth_period": "18h",
+         "growth_stages": [
+            {
+               "model_name": "yew_tree_1",
+               "name": "i18n(stonehearth_ace:entities.crops.yew_tree_crop.growth_stage.000.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.yew_tree_crop.growth_stage.000.description)"
+            },
+            {
+               "model_name": "yew_tree_2",
+               "name": "i18n(stonehearth_ace:entities.crops.yew_tree_crop.growth_stage.001.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.yew_tree_crop.growth_stage.001.description)"
+            },
+            {
+               "model_name": "yew_tree_3",
+               "name": "i18n(stonehearth_ace:entities.crops.yew_tree_crop.growth_stage.002.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.yew_tree_crop.growth_stage.002.description)"
+            },
+            {
+               "model_name": "yew_tree_4",
+               "name": "i18n(stonehearth_ace:entities.crops.yew_tree_crop.growth_stage.003.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.yew_tree_crop.growth_stage.003.description)"
+            }
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 1,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.crops.yew_tree_crop.display_name)",
+         "description": "i18n(stonehearth_ace:entities.crops.yew_tree_crop.description)",
+         "icon": "file(yew_tree_crop.png)",
+         "material_tags": "crop yew_tree_sapling"
+      },
+      "stonehearth:appeal": {
+         "appeal": 1
+      }
+   }
+}

@@ -464,6 +464,50 @@
                   "name": "Rotten Cotton"
                }
             }
+         },
+         "birch_tree_crop": {
+            "growth_stage": {
+               "000": {
+                  "name": "Birch Seed",
+                  "description": "Even a beautiful birch has humble beginnings."
+               },
+               "001": {
+                  "name": "Birch Seedling",
+                  "description": "A delicate stage of growth."
+               },
+               "002": {
+                  "name": "Birch Sprout",
+                  "description": "Up, up, up it goes!"
+               },
+               "003": {
+                  "name": "Birch Sapling",
+                  "description": "Ready to be transferred to a bigger plot."
+               }
+            },
+            "display_name": "Birch Sapling",
+            "description": "Out of trees? Get ready to participate in reforestation."
+         },
+         "yew_tree_crop": {
+            "growth_stage": {
+               "000": {
+                  "description": "Even a large tree has humble beginnings.",
+                  "name": "Yew Seed"
+               },
+               "001": {
+                  "description": "It's just getting started.",
+                  "name": "Yew Seedling"
+               },
+               "002": {
+                  "description": "Getting closer and closer...",
+                  "name": "Yew Sprout"
+               },
+               "003": {
+                  "description": "Ready to be transferred to a bigger plot.",
+                  "name": "Yew Sapling"
+               }
+            },
+            "description": "Needs more Yew wood? Prepare your plots for reforestation!",
+            "display_name": "Yew Tree Sapling"
          }
       },
       "decorations": {
@@ -1459,6 +1503,12 @@
             "wilderness": {
                "display_name": "Wilderness",
                "description": "See where the world is wilder (or tamer)."
+            }
+         },
+         "zones_mode": {
+            "underfarm": {
+               "substrate_name": "Substrate",
+               "substrate_description": "You need a layer of organic material to plant undercrops."
             }
          }
       },

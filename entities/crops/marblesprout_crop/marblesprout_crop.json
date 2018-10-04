@@ -46,19 +46,22 @@
             "marblesprout_4": "stonehearth_ace:resources:herb:marblesprout"
          },
          "harvest_threshhold": "marblesprout_4",
-         "plant_overlay_effect": "stonehearth_ace:effects:plant_crop_overlay_effect"
+         "plant_overlay_effect": "stonehearth:effects:plant_crop_overlay_effect"
       },
       "stonehearth:growing": {
          "growth_period": "12h",
          "preferred_seasons": {
+            "stonehearth_ace:biome:highlands": [
+               "summer"
+            ],
             "stonehearth:biome:temperate": [
-               "spring"
+               "summer"
             ],
             "stonehearth:biome:desert": [
-               "spring"
+               "summer"
             ],
             "stonehearth:biome:arctic": [
-               "spring"
+               "summer"
             ]
          },
          "growth_stages": [
