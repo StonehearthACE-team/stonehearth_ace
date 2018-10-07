@@ -25,12 +25,12 @@ function ConnectionService:initialize()
    end
 end
 
-function ConnectionService:register_entity(entity)
+function ConnectionService:register_entity(entity, connections)
    -- register this entity with the proper player's connections
    local player_id = entity:get_player_id()
    local player_connections = self:get_player_connections(player_id)
 
-   player_connections:register_entity(entity)
+   player_connections:register_entity(entity, connections)
 end
 
 function ConnectionService:unregister_entity(entity)

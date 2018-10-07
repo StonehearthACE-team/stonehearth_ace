@@ -190,8 +190,6 @@
       "mountain_folk:grower:underfield_layer:harvestable": "file(entities/underfarming/harvest_underfield_layer/harvest_underfield_layer.json)",
       "mountain_folk:grower:underfield_layer:plantable": "file(entities/underfarming/plant_underfield_layer/plant_underfield_layer.json)",
       "mountain_folk:grower:underfield_layer:tillable": "file(entities/underfarming/till_underfield_layer/till_underfield_layer.json)",
-      "mountain_folk:grower:talisman": "file(jobs/mf_grower/grower_trowel/grower_trowel_talisman.json)",
-      "mountain_folk:grower:trowel": "file(jobs/mf_grower/grower_trowel/grower_trowel.json)",
       "mountain_folk:jobs:archer": "file(jobs/mf_archer/mf_archer_description.json)",
       "mountain_folk:jobs:artificer": "file(jobs/mf_artificer/mf_artificer_description.json)",
       "mountain_folk:jobs:blacksmith": "file(jobs/mf_blacksmith/mf_blacksmith_description.json)",
@@ -547,6 +545,7 @@
    },
    "components": {
       "add_stump": "file(components/tree_stump/add_stump.lua)",
+      "connection": "file(components/connection/connection_component.lua)",
       "container": "file(components/container/container_component.lua)",
       "entity_kingdom": "file(components/entity_modification/entity_kingdom_component.lua)",
       "entity_modification": "file(components/entity_modification/entity_modification_component.lua)",
@@ -574,7 +573,8 @@
       "mountain_folk:town_bonus:nature": "file(data/town_bonuses/nature_town_bonus.lua)",
       "recipe_map": "file(services/server/crafter_info/recipe_map.lua)",
       "mountain_folk:class:grower": "file(jobs/mf_grower/mf_grower.lua)",
-      "mountain_folk:class:artificer": "file(jobs/mf_artificer/mf_artificer.lua)"
+      "mountain_folk:class:artificer": "file(jobs/mf_artificer/mf_artificer.lua)",
+      "player_connections": "file(services/server/connection/player_connections.lua)"
    },
    "functions": {
       "toggle_enabled_command": {
@@ -631,17 +631,14 @@
          "file(ui/game/widgets/terrain_vision/terrain_vision.js)",
          "file(ui/game/underfarming_start_menu.js)",
          "file(ui/game/modes/zones_mode/zones_mode.js)",
-         "file(ui/game/modes/zones_mode/underfarm/underfarm.js)"
-      ],
-      "less": [
-         "file(ui/game/widgets/terrain_vision/terrain_vision.less)",
-         "file(jobs/mf_grower/skin/workshop.less)",
-         "file(ui/game/modes/zones_mode/underfarm/underfarm.less)",
+         "file(ui/game/modes/zones_mode/underfarm/underfarm.js)",
          "file(ui/game/modes/zones_mode/trapping_grounds/trapping_grounds.js)",
          "file(ui/game/promotion_tree/promotion_tree.js)"
       ],
       "less": [
          "file(ui/game/widgets/terrain_vision/terrain_vision.less)",
+         "file(jobs/mf_grower/skin/workshop.less)",
+         "file(ui/game/modes/zones_mode/underfarm/underfarm.less)",
          "file(ui/game/modes/zones_mode/trapping_grounds/trapping_grounds.less)",
          "file(jobs/mf_artificer/skin/workshop.less)"
       ]

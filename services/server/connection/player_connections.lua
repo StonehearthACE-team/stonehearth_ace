@@ -5,6 +5,7 @@ these are grouped by connection type; entities can have multiple connection type
 
 local Cube3 = _radiant.csg.Cube3
 local Point3 = _radiant.csg.Point3
+local Region3 = _radiant.csg.Region3
 local region_utils = require 'stonehearth.lib.building.region_utils'
 
 local PlayerConnections = class()
@@ -17,7 +18,7 @@ function PlayerConnections:initialize()
    self._sv.chunk_region_size = 8
    self._sv.entities = {} -- list of all the entities being tracked: [entity id]{id, entity, (location,) connections}
    -- connections: [type]{(entity_struct,) (type,) max_connections, (num_connections,) connectors}
-   -- connectors: [name]{(connections,) max_connections, (num_connections,) region, chunk_region_keys, region_intersection_threshold, (connected_to)}
+   -- connectors: [name]{(connections,) max_connections, (num_connections,) region, (chunk_region_keys,) region_intersection_threshold, (connected_to)}
    self._sv.connection_tables = {} -- list of connections by type: [type]{type, entity_connectors, connector_locations, graphs}
    -- entity_connectors: [entity_id]{connector_1, connector_2}
    -- connector_locations: [chunk_region_key]{connector_1, connector_2}
@@ -27,6 +28,85 @@ end
 function PlayerConnections:create(player_id)
    self._sv.player_id = player_id
    self.__saved_variables:mark_changed()
+   self:pre_activate()
+end
+
+function PlayerConnections:restore()
+   self:pre_activate()
+   self._is_restore = true
+end
+
+function PlayerConnections:pre_activate()
+   -- add traces for the already-registered entities
+   self._traces = {}
+   self:_start_all_traces()
+end
+
+function PlayerConnections:post_activate()
+
+end
+
+function PlayerConnections:destroy()
+   self:_stop_all_traces()
+end
+
+function PlayerConnections:_start_all_traces()
+   for _, entity_struct in pairs(self._sv.entities) do
+      self:_start_entity_traces(entity_struct)
+   end
+end
+
+function PlayerConnections:_stop_all_traces()
+   for _, entity_struct in pairs(self._sv.entities) do
+      self:_stop_entity_traces(entity_struct)
+   end
+end
+
+function PlayerConnections:_start_entity_traces(entity_struct)
+   if not self._traces[entity_struct.id] then
+      local entity = entity_struct.entity
+      local traces = {}
+      traces._parent_trace = entity:add_component('mob'):trace_parent('connection entity added or removed', _radiant.dm.TraceCategories.SYNC_TRACE)
+      :on_changed(function(parent_entity)
+            if not parent_entity then
+               --we were just removed from the world
+               self:_remove_entity_from_graphs(entity_struct)
+               self:_update_connector_locations(entity_struct, false, false)
+            else
+               --we were just added to the world
+               self:_update_connector_locations(entity_struct)
+               self:_add_entity_to_graphs(entity_struct)
+            end
+            self.__saved_variables:mark_changed()
+         end)
+
+      traces._location_trace = entity:add_component('mob'):trace_transform('connection entity moved', _radiant.dm.TraceCategories.SYNC_TRACE)
+      :on_changed(function()
+            self:_remove_entity_from_graphs(entity_struct)
+            self:_update_connector_locations(entity_struct)
+            self:_add_entity_to_graphs(entity_struct)
+            self.__saved_variables:mark_changed()
+         end)
+      
+      self._traces[entity_struct.id] = traces
+   end
+end
+
+function PlayerConnections:_stop_entity_traces(entity_struct)
+   local traces = self._traces[entity_struct.id]
+
+   if traces then
+      if traces._parent_trace then
+         traces._parent_trace:destroy()
+         traces._parent_trace = nil
+      end
+      if traces._location_trace then
+         traces._location_trace:destroy()
+         traces._location_trace = nil
+      end
+
+      self._traces[entity_struct.id] = nil
+   end
 end
 
 function PlayerConnections:register_entity(entity, connections)
@@ -34,26 +114,7 @@ function PlayerConnections:register_entity(entity, connections)
    if not self._sv.entities[id] then
       local entity_struct = {id = id, entity = entity, connections = connections}
       self._sv.entities[id] = entity_struct
-      entity_struct._parent_trace = entity:add_component('mob'):trace_parent('connection entity added or removed', _radiant.dm.TraceCategories.SYNC_TRACE)
-         :on_changed(function(parent_entity)
-               if not parent_entity then
-                  --we were just removed from the world
-                  self:_remove_entity_from_graphs(entity_struct)
-                  self:_update_connector_locations(entity_struct, false, false)
-               else
-                  --we were just added to the world
-                  self:_update_connector_locations(entity_struct)
-                  self:_add_entity_to_graphs(entity_struct)
-               end
-            end)
-
-            entity_struct._location_trace = entity:add_component('mob'):trace_transform('connection entity moved', _radiant.dm.TraceCategories.SYNC_TRACE)
-         :on_changed(function()
-               self:_remove_entity_from_graphs(entity_struct)
-               self:_update_connector_locations(entity_struct)
-               self:_add_entity_to_graphs(entity_struct)
-            end)
-
+      
       -- organize connections by type
       for type, connection in pairs(connections) do
          connection.entity_struct = entity_struct
@@ -68,6 +129,7 @@ function PlayerConnections:register_entity(entity, connections)
             connector.connections = connections
             connector.connected_to = {}
             connector.region_intersection_threshold = connector.region_intersection_threshold or 0
+            connector.chunk_region_keys = {}
          end
          
          local conn_tbl = self:get_connections(type)
@@ -79,43 +141,40 @@ function PlayerConnections:register_entity(entity, connections)
 
       self.__saved_variables:mark_changed()
    end
+
+   self:_start_entity_traces(self._sv.entities[id])
 end
 
 function PlayerConnections:unregister_entity(entity)
    local id = entity:get_id()
    local entity_struct = self._sv.entities[id]
 
-   -- destroy traces
-   if entity_struct._parent_trace then
-      entity_struct._parent_trace:destroy()
-      entity_struct._parent_trace = nil
-   end
-   if entity_struct._location_trace then
-      entity_struct._location_trace:destroy()
-      entity_struct._location_trace = nil
-   end
-   
-   self:_remove_entity_from_graphs(entity_struct)
+   if entity_struct then
+      -- destroy traces
+      self:_stop_entity_traces(entity_struct)
 
-   -- remove all of the entity's connectors from the connector locations tables
-   for type, connectors in pairs(entity_struct.connections) do
-      local conn_tbl = self:get_connections(type)
-      conn_tbl.entity_structs[id] = nil
-      -- remove connectors from index
-      for key, connector in pairs(connectors) do
-         for _, chunk_region_key in ipairs(connector.chunk_region_keys) do
-            local conn_locs = conn_tbl.connector_locations[chunk_region_key]
-            for i = #conn_locs, 1, -1 do
-               if conn_locs[i].connections.entity_struct == entity_struct then
-                  table.remove(conn_locs, i)
+      self:_remove_entity_from_graphs(entity_struct)
+
+      -- remove all of the entity's connectors from the connector locations tables
+      for type, connection in pairs(entity_struct.connections) do
+         local conn_tbl = self:get_connections(type)
+         conn_tbl.entity_structs[id] = nil
+         -- remove connectors from index
+         for key, connector in pairs(connection.connectors) do
+            for _, chunk_region_key in ipairs(connector.chunk_region_keys) do
+               local conn_locs = conn_tbl.connector_locations[chunk_region_key]
+               for i = #conn_locs, 1, -1 do
+                  if conn_locs[i].connections.entity_struct == entity_struct then
+                     table.remove(conn_locs, i)
+                  end
                end
             end
          end
       end
-   end
 
-   self._sv.entities[id] = nil
-   self.__saved_variables:mark_changed()
+      self._sv.entities[id] = nil
+      self.__saved_variables:mark_changed()
+   end
 end
 
 function PlayerConnections:get_connections(type)
@@ -139,14 +198,14 @@ function PlayerConnections:_add_entity_to_graphs(entity_struct)
          end
 
          if connector.num_connections < connector.max_connections then
-            local potential_connectors = self:_find_best_potential_connectors(entity_struct.id, type, connector)
+            local potential_connectors = self:_find_best_potential_connectors(entity_struct, type, connector)
 
             for _, target_connector in ipairs(potential_connectors) do
                if connection.num_connections >= connection.max_connections or connector.num_connections >= connector.max_connections then
                   break
                end
 
-               self:_try_connecting_connectors(connector, potential_connectors)
+               self:_try_connecting_connectors(connector, target_connector.connector)
             end
          end
       end
@@ -168,7 +227,7 @@ end
 
 function PlayerConnections:_try_connecting_connector(connector)
    local connection = connector.connection
-   local potential_connectors = self:_find_best_potential_connectors(entity_struct.id, type, connector)
+   local potential_connectors = self:_find_best_potential_connectors(entity_struct, type, connector)
    local result = nil
 
    for _, target_connector in ipairs(potential_connectors) do
@@ -176,7 +235,7 @@ function PlayerConnections:_try_connecting_connector(connector)
          return result
       end
 
-      local connection_result = self:_try_connecting_connectors(connector, potential_connectors)
+      local connection_result = self:_try_connecting_connectors(connector, target_connector.connector)
       if connection_result then
          -- if this connection happened, trigger an event?
 
@@ -306,15 +365,15 @@ function PlayerConnections:_try_disconnecting_connectors(c1, c2)
    return true
 end
 
-function PlayerConnections:_find_best_potential_connectors(entity_id, type, connector)
+function PlayerConnections:_find_best_potential_connectors(entity_struct, type, connector)
    local result = {}
    local conn_locs = self:get_connections(type).connector_locations
-   local r = connector.region
+   local r = Region3(connector.region)
    -- we only need to check other connectors that are in region chunks that this one intersects
    for _, crk in ipairs(connector.chunk_region_keys) do
       for _, conn in pairs(conn_locs[crk]) do
-         if conn.entity_id ~= entity_id and conn.num_connections < conn.max_connections then
-            local intersection = r:intersect_region(conn.region):get_area()
+         if conn.connections.entity_struct ~= entity_struct and conn.num_connections < conn.max_connections then
+            local intersection = r:intersect_region(Region3(conn.region)):get_area()
             if intersection > 0 then
                -- rank potential connectors by how closely their regions intersect
                local rank_connector = intersection / r:get_area()
@@ -350,10 +409,10 @@ function PlayerConnections:_update_connector_locations(entity_struct, new_locati
    -- if we have a previous location for the entity, subtract out that location from the new one
    -- rotate according to the entity's facing direction, then translate to the new location
 
-   for type, connectors in pairs(entity_struct.connections) do
+   for type, connection in pairs(entity_struct.connections) do
       local conn_locs = self:get_connections(type).connector_locations
       
-      for _, connector in pairs(connectors) do
+      for _, connector in pairs(connection.connectors) do
          local r = connector.region
          if old_location then
             r = r:translated(Point3.zero - old_location)

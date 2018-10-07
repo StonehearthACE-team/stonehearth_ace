@@ -3,6 +3,7 @@ stonehearth_ace = {}
 stonehearth_ace.util = require("lib.util")
 
 local service_creation_order = {
+   'connection',
    'crafter_info',
    'water_pump',
    'water_signal',
