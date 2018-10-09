@@ -1,0 +1,69 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(silver_mace_equipped.qb)"
+            ]
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(silver_mace_iconic.json)"
+      },
+      "stonehearth:equipment_piece": {
+         "slot": "mainhand",
+         "render_type": "attach_to_bone",
+         "postures": [
+            "stonehearth:combat",
+            "stonehearth:patrol"
+         ],
+         "ilevel": 16,
+         "roles": "knight_job",
+         "equip_effect": "stonehearth:effects:weapon_level_up",
+         "equipment_types": "mainhand"
+      }
+   },
+   "entity_data": {
+      "stonehearth:buffs": {
+         "inflictable_debuffs": {
+            "open_wounds": {
+               "uri": "stonehearth_ace:buffs:major_fracture",
+               "chance": 0.66
+            }
+         }
+      },
+      "stonehearth:combat:weapon_data": {
+         "base_damage": 16,
+         "reach": 1.5
+      },
+      "stonehearth:combat:melee_attacks": [
+         {
+            "name": "combat_1h_forehand",
+            "effect": "combat_1h_forehand",
+            "active_frame": 16,
+            "cooldown": 0,
+            "priority": 0,
+            "aggro_multiplier": 2.5
+         }
+      ],
+      "stonehearth:net_worth": {
+         "value_in_gold": 78,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 3,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.weapons.silver_mace.display_name)",
+         "description": "i18n(stonehearth_ace:entities.weapons.silver_mace.description)",
+         "icon": "file(silver_mace.png)",
+         "category": "weapons",
+         "material_tags": "silver melee_weapon crafted silver_mace stockpile_weapon"
+      }
+   }
+}

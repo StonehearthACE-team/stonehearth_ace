@@ -1,0 +1,25 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(iron_platemail_iconic.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": -0.05, "y": 0, "z": 0.05 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.armor.iron_platemail.display_name)",
+         "description": "i18n(stonehearth_ace:entities.armor.iron_platemail.description)",
+         "icon": "file(iron_platemail.png)",
+         "is_item": true,
+         "category": "armor"
+      }
+   }
+}

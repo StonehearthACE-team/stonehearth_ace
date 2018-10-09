@@ -1,0 +1,88 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(silver_short_sword_equipped.qb)"
+            ]
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(silver_short_sword_iconic.json)"
+      },
+      "stonehearth:equipment_piece": {
+         "slot": "mainhand",
+         "render_type": "attach_to_bone",
+         "postures": [
+            "stonehearth:combat",
+            "stonehearth:patrol"
+         ],
+         "ilevel": 18,
+         "roles": "knight_job",
+         "required_job_level": 5,
+         "equip_effect": "stonehearth:effects:weapon_level_up",
+         "equipment_types": "mainhand"
+      }
+   },
+   "entity_data": {
+      "stonehearth:combat:weapon_data": {
+         "base_damage": 18,
+         "reach": 1.5
+      },
+      "stonehearth:combat:melee_attacks": [
+         {
+            "name": "combat_1h_backhand",
+            "effect": "combat_1h_backhand",
+            "active_frame": 17,
+            "cooldown": 0,
+            "priority": 0,
+            "aggro_multiplier": 4.0
+         },
+         {
+            "name": "combat_1h_forehand",
+            "effect": "combat_1h_forehand",
+            "active_frame": 16,
+            "cooldown": 0,
+            "priority": 0,
+            "aggro_multiplier": 4.0
+         },
+         {
+            "name": "combat_1h_thrust",
+            "effect": "combat_1h_thrust",
+            "active_frame": 16,
+            "cooldown": 0,
+            "priority": 0,
+            "aggro_multiplier": 4.0
+         }
+      ],
+      "stonehearth:combat:melee_defenses": [
+         {
+            "name": "combat_1h_parry",
+            "effect": "combat_1h_parry",
+            "active_frame": 4,
+            "cooldown": 8000,
+            "priority": 0,
+            "chance_of_success": 0.65
+         }
+      ],
+      "stonehearth:net_worth": {
+         "value_in_gold": 58,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 3,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.weapons.silver_short_sword.display_name)",
+         "description": "i18n(stonehearth_ace:entities.weapons.silver_short_sword.description)",
+         "icon": "file(silver_short_sword.png)",
+         "category": "weapons",
+         "material_tags": "silver melee_weapon crafted silver_short_sword stockpile_weapon"
+      }
+   }
+}

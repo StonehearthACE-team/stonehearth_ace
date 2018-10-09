@@ -1,0 +1,62 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(light_steel_shield.qb)"
+            ]
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(light_steel_shield_iconic.json)"
+      },
+      "stonehearth:equipment_piece": {
+         "slot": "offhand",
+         "render_type": "attach_to_bone",
+         "postures": [
+            "stonehearth:combat",
+            "stonehearth:patrol",
+            "stonehearth:have_shield"
+         ],
+         "ilevel": 4,
+         "roles": "footman_job",
+         "required_job_level": 4,
+         "equip_effect": "stonehearth:effects:weapon_level_up",
+         "equipment_types": "shield"
+      }
+   },
+   "entity_data": {
+      "stonehearth:combat:armor_data": {
+         "base_damage_reduction": 4
+      },
+      "stonehearth:combat:melee_defenses": [
+         {
+            "name": "simple_shield_block",
+            "effect": "combat_1h_shield_block",
+            "active_frame": 4,
+            "cooldown": 10000,
+            "priority": 0,
+            "chance_of_success": 0.4
+         }
+      ],
+      "stonehearth:net_worth": {
+         "value_in_gold": 44,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 2,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.armor.light_steel_shield.display_name)",
+         "description": "i18n(stonehearth_ace:entities.armor.light_steel_shield.description)",
+         "icon": "file(light_steel_shield.png)",
+         "category": "armor",
+         "material_tags": "steel shield armor medium_armor light_steel_shield stockpile_equipment"
+      }
+   }
+}

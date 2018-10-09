@@ -1,0 +1,81 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(silver_halberd_equipped.qb)"
+            ]
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(silver_halberd_iconic.json)"
+      },
+      "stonehearth:equipment_piece": {
+         "slot": "mainhand",
+         "additional_equipment": {
+            "stonehearth:armor:offhand_placeholder": true
+         },
+         "render_type": "attach_to_bone",
+         "postures": [
+            "stonehearth:combat",
+            "stonehearth:patrol"
+         ],
+         "ilevel": 24,
+         "roles": "knight_job",
+         "required_job_level": 6,
+         "equip_effect": "stonehearth:effects:weapon_level_up",
+         "equipment_types": "twohanded"
+      }
+   },
+   "entity_data": {
+      "stonehearth:buffs": {
+         "inflictable_debuffs": {
+            "open_wounds": {
+               "uri": "stonehearth_ace:buffs:major_shaken",
+               "chance": 0.66
+            }
+         }
+      },
+      "stonehearth:combat:weapon_data": {
+         "base_damage": 24,
+         "reach": 3.2
+      },
+      "stonehearth:combat:melee_attacks": [
+         {
+            "name": "combat_2h_attack",
+            "effect": "combat_2h_attack",
+            "active_frame": 21,
+            "cooldown": 0,
+            "priority": 2,
+            "aggro_multiplier": 3.0
+         },
+         {
+            "name": "combat_1h_thrust",
+            "effect": "combat_1h_thrust",
+            "active_frame": 16,
+            "cooldown": 0,
+            "priority": 0,
+            "aggro_multiplier": 3.0
+         }
+      ],
+      "stonehearth:net_worth": {
+         "value_in_gold": 48,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 3,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.weapons.silver_halberd.display_name)",
+         "description": "i18n(stonehearth_ace:entities.weapons.silver_halberd.description)",
+         "icon": "file(silver_halberd.png)",
+         "category": "weapons",
+         "material_tags": "twohanded silver melee_weapon crafted silver_halberd stockpile_weapon"
+      }
+   }
+}

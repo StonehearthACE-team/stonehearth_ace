@@ -1,8 +1,6 @@
 {
   "craftable_recipes" : {
     "decoration" : {
-      "ordinal" : 80,
-      "name" : "i18n(stonehearth:jobs.blacksmith.recipes.decoration_name)",
       "recipes" : {
         "copper_wall_lantern" : {
           "recipe" : "file(copper_wall_lantern_recipe.json)"
@@ -12,6 +10,77 @@
         }
       }
     },
+	"weapons": {
+	  "recipes" : {
+        "bronze_axe" : {
+          "recipe" : "file(bronze_axe_recipe.json)"
+        },
+		"iron_battle_axe" : {
+          "recipe" : "file(iron_battle_axe_recipe.json)"
+        },
+		"iron_sword" : {
+          "recipe" : "file(iron_sword_recipe.json)"
+        },
+		"iron_short_sword" : {
+          "recipe" : "file(iron_short_sword_recipe.json)"
+        },
+		"steel_mace" : {
+          "recipe" : "file(steel_mace_recipe.json)"
+        },
+		"iron_axe" : {
+          "recipe" : "file(iron_axe_recipe.json)"
+        },
+		"steel_axe" : {
+          "recipe" : "file(steel_axe_recipe.json)"
+        },
+		"bronze_hatchet" : {
+          "recipe" : "file(bronze_hatchet_recipe.json)"
+        },
+		"iron_hatchet" : {
+          "recipe" : "file(iron_hatchet_recipe.json)"
+        },
+		"steel_dagger" : {
+          "recipe" : "file(steel_dagger_recipe.json)"
+        },
+		"steel_lance" : {
+          "recipe" : "file(steel_lance_recipe.json)"
+        },
+		"silver_halberd" : {
+          "recipe" : "file(silver_halberd_recipe.json)"
+        },
+		"silver_short_sword" : {
+          "recipe" : "file(silver_short_sword_recipe.json)"
+        },
+		"silver_mace" : {
+          "recipe" : "file(silver_mace_recipe.json)"
+        }
+      }
+	},
+	"armor": {
+	  "recipes" : {
+        "iron_platemail" : {
+          "recipe" : "file(iron_platemail_recipe.json)"
+        },
+		"iron_helmet" : {
+          "recipe" : "file(iron_helmet_recipe.json)"
+        },
+		"steel_chainmail" : {
+          "recipe" : "file(steel_chainmail_recipe.json)"
+        },
+		"steel_helm" : {
+          "recipe" : "file(steel_helm_recipe.json)"
+        },
+		"light_iron_shield" : {
+          "recipe" : "file(light_iron_shield_recipe.json)"
+        },
+		"light_steel_shield" : {
+          "recipe" : "file(light_steel_shield_recipe.json)"
+        },
+		"silver_shield" : {
+          "recipe" : "file(silver_shield_recipe.json)"
+        }
+      }
+	},
     "building_parts" : {
       "recipes" : {
         "bronze_portcullis" : {

@@ -1,0 +1,12 @@
+{
+   "type": "command",
+   "name": "crossbow_archer",
+   "display_name": "i18n(stonehearth_ace:data.commands.job_equipment_roles.crossbow_archer.display_name)",
+   "description": "i18n(stonehearth_ace:data.commands.job_equipment_roles.crossbow_archer.description)",
+   "icon": "file(crossbow_archer.png)",
+   "action": "call",
+   "function": "stonehearth_ace:change_job_equipment_role",
+   "args": [
+      "crossbow_archer"
+   ]
+}

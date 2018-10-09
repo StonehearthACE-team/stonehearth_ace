@@ -1,0 +1,30 @@
+{
+   "type": "recipe",
+   "effort": 140,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.blacksmith.recipes.steel_chainmail_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.blacksmith.recipes.steel_chainmail_recipe.description)",
+   "flavor": "",
+   "portrait": "/stonehearth_ace/entities/armor/steel_chainmail/steel_chainmail.png",
+   "workshop": "stonehearth:blacksmith:workbench",
+   "level_requirement": 5,
+   "ingredients": [
+      {
+         "uri": "stonehearth:refined:steel_ingot",
+         "count": 4
+      },
+      {
+         "material": "leather resource",
+         "count": 1
+      },
+      {
+         "material": "thread resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:armor:steel_chainmail"
+      }
+   ]
+}

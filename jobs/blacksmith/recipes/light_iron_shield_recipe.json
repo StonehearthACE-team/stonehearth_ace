@@ -1,0 +1,26 @@
+{
+   "type": "recipe",
+   "effort": 90,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.blacksmith.recipes.light_iron_shield_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.blacksmith.recipes.light_iron_shield_recipe.description)",
+   "flavor": "",
+   "portrait": "/stonehearth_ace/entities/armor/light_iron_shield/light_iron_shield.png",
+   "workshop": "stonehearth:blacksmith:workbench",
+   "level_requirement": 4,
+   "ingredients": [
+      {
+         "uri": "stonehearth:refined:iron_ingot",
+         "count": 2
+      },
+      {
+         "material": "leather resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:armor:light_iron_shield"
+      }
+   ]
+}

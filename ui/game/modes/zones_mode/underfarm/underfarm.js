@@ -14,7 +14,7 @@ App.StonehearthAceUnderfarmView = App.StonehearthBaseZonesModeView.extend({
 
       var self = this;
 
-      radiant.call_obj('stonehearth.job', 'get_job_call', 'stonehearth:jobs:farmer')
+      radiant.call_obj('stonehearth.job', 'get_job_call', 'stonehearth_ace:mountain_folk:jobs:grower')
                .done(function (response) {
                   if (self.isDestroying || self.isDestroyed) {
                      return;
@@ -70,7 +70,7 @@ App.StonehearthAceUnderfarmView = App.StonehearthBaseZonesModeView.extend({
       this.hasShownPaletteOnce = false;
    }.observes('uri'),
 
-   _tracedFarmerJobInfo: function() {
+   _tracedUnderfarmerJobInfo: function() {
       if (this.palette) {
          this.palette.set('uri', this.get('grower_job_info'));
       }
@@ -80,9 +80,9 @@ App.StonehearthAceUnderfarmView = App.StonehearthBaseZonesModeView.extend({
       if (!this.palette) {
          var self = this;
          if (!self.get('model.stonehearth_ace:grower_underfield')) return;
-         self.palette = App.gameView.addView(App.StonehearthFarmCropPalette, {
+         self.palette = App.gameView.addView(App.StonehearthAceUnderfarmCropPalette, {
                         field: self.get('model.stonehearth_ace:grower_underfield').__self,
-                        farm_view: self,
+                        underfarm_view: self,
                         uri: self.get('grower_job_info')
                      });
       }
@@ -108,7 +108,7 @@ App.StonehearthAceUnderfarmCropPalette = App.View.extend({
       this._super();
       radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:ui:action_click'} );
 
-      //Get the undercrops available for this farm
+      //Get the undercrops available for this underfarm
       radiant.call('stonehearth:get_all_undercrops')
          .done(function (o) {
             if (self.isDestroyed || self.isDestroying) return;
@@ -150,7 +150,7 @@ App.StonehearthAceUnderfarmCropPalette = App.View.extend({
       }
    },
 
-   _tracedMaxFarmerLevel: function () {
+   _tracedMaxUnderfarmerLevel: function () {
       Ember.run.scheduleOnce('afterRender', this, '_updateLockedCrops')
    }.observes('model.highest_level', 'model.manually_unlocked'),
 
@@ -175,15 +175,15 @@ App.StonehearthAceUnderfarmCropPalette = App.View.extend({
          var undercropId = $(this).attr('undercrop');
          if (undercropId) {
             radiant.call_obj(self.field, 'set_undercrop', undercropId);
-            self.farm_view.hasShownPaletteOnce = true;
+            self.underfarm_view.hasShownPaletteOnce = true;
          }
          self.destroy();
       });
    },
 
    destroy: function() {
-      if (this.farm_view) {
-         this.farm_view.palette = null;
+      if (this.underfarm_view) {
+         this.underfarm_view.palette = null;
       }
       this._super();
    },

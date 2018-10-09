@@ -1,0 +1,22 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(iron_hatchet.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.weapons.iron_hatchet.display_name)",
+         "description": "i18n(stonehearth_ace:entities.weapons.iron_hatchet.description)",
+         "icon": "file(iron_hatchet.png)",
+         "is_item": true,
+         "category": "weapons"
+      }
+   }
+}

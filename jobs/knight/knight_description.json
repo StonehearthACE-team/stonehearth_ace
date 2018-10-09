@@ -1,9 +1,31 @@
 {
    "type": "job",
+   "equipment": {
+      "torso": "file(knight_outfit)",
+      "helmet": "file(knight_helm)",
+	  "mainhand": "stonehearth:weapons:wooden_sword"
+   },
    "task_groups": [
       "stonehearth_ace:task_groups:training"
    ],
    "xp_rewards": {
       "training": 0.5
+   },
+   "equipment_preferences": {
+      "roles": {
+         "one_handed_knight": {
+            "command": "stonehearth_ace:commands:toggle_job_role:one_handed_knight",
+            "types": [
+               "mainhand", "shield"
+            ]
+         },
+         "two_handed_knight": {
+            "command": "stonehearth_ace:commands:toggle_job_role:two_handed_knight",
+            "types": [
+               "twohanded"
+            ]
+         }
+      },
+      "default_role": "one_handed_knight"
    }
 }
