@@ -155,4 +155,12 @@ function AceShepherdPastureComponent:_is_valid_grass_spawn_location(location)
 	return not next(radiant.terrain.get_entities_at_point(location, filter_fn))
 end
 
+-- overrides original to only create harvest task if auto-harvest is enabled for them
+function AceShepherdPastureComponent:_create_harvest_task(target)
+   local renewable_resource_component = target:get_component('stonehearth:renewable_resource_node')
+   if renewable_resource_component and renewable_resource_component:get_auto_harvest_enabled() then
+      renewable_resource_component:request_harvest(radiant.entities.get_player_id(self._entity))
+   end
+end
+
 return AceShepherdPastureComponent

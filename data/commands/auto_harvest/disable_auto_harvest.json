@@ -1,0 +1,14 @@
+{
+   "type": "command",
+   "name": "disable_auto_harvest",
+   "display_name": "i18n(stonehearth_ace:data.commands.disable_auto_harvest.display_name)",
+   "description": "i18n(stonehearth_ace:data.commands.disable_auto_harvest.description)",
+   "disabled_description": "i18n(stonehearth_ace:data.commands.disable_auto_harvest.disabled_description)",
+   "default_enabled": true,
+   "ordinal": 80,
+   "icon": "file(disable_auto_harvest.png)",
+   "action": "call",
+   "function": "stonehearth_ace:commands:toggle_auto_harvest",
+   "args": [
+   ]
+}
