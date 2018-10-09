@@ -19,15 +19,25 @@
             "stonehearth:combat",
             "stonehearth:patrol"
          ],
-         "ilevel": 14,
+         "ilevel": 11,
          "roles": "footman_job",
-         "equip_effect": "stonehearth:effects:weapon_level_up"
+         "required_job_level": 3,
+         "equip_effect": "stonehearth:effects:weapon_level_up",
+         "equipment_types": "offhand"
       }
    },
    "entity_data": {
+      "stonehearth:buffs": {
+         "inflictable_debuffs": {
+            "open_wounds": {
+               "uri": "stonehearth_ace:buffs:out_of_balance",
+               "chance": 0.5
+            }
+         }
+      },
       "stonehearth:combat:weapon_data": {
-         "base_damage": 14,
-         "reach": 1
+         "base_damage": 11,
+         "reach": 1.5
       },
       "stonehearth:combat:melee_attacks": [
          {
@@ -49,7 +59,7 @@
          }
       ],
       "stonehearth:net_worth": {
-         "value_in_gold": 25,
+         "value_in_gold": 28,
          "rarity": "common",
          "shop_info": {
             "buyable": true,
@@ -63,7 +73,7 @@
          "description": "i18n(stonehearth_ace:entities.weapons.iron_hatchet.description)",
          "icon": "file(iron_hatchet.png)",
          "category": "weapons",
-         "material_tags": "offhand iron melee_weapon crafted stockpile_weapon"
+         "material_tags": "offhand iron melee_weapon crafted iron_hatchet stockpile_weapon"
       }
    }
 }

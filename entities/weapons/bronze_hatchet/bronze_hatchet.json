@@ -21,10 +21,20 @@
          ],
          "ilevel": 8,
          "roles": "footman_job",
-         "equip_effect": "stonehearth:effects:weapon_level_up"
+         "required_job_level": 1,
+         "equip_effect": "stonehearth:effects:weapon_level_up",
+         "equipment_types": "offhand"
       }
    },
    "entity_data": {
+      "stonehearth:buffs": {
+         "inflictable_debuffs": {
+            "open_wounds": {
+               "uri": "stonehearth_ace:buffs:minor_out_of_balance",
+               "chance": 0.33
+            }
+         }
+      },
       "stonehearth:combat:weapon_data": {
          "base_damage": 8,
          "reach": 1.5
@@ -63,7 +73,7 @@
          "description": "i18n(stonehearth_ace:entities.weapons.bronze_hatchet.description)",
          "icon": "file(bronze_hatchet.png)",
          "category": "weapons",
-         "material_tags": "offhand bronze melee_weapon crafted stockpile_weapon"
+         "material_tags": "offhand bronze melee_weapon bronze_hatchet crafted stockpile_weapon"
       }
    }
 }

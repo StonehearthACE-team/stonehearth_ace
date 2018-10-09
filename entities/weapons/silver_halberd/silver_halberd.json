@@ -22,16 +22,25 @@
             "stonehearth:combat",
             "stonehearth:patrol"
          ],
-         "ilevel": 20,
+         "ilevel": 24,
          "roles": "knight_job",
-         "required_job_level": 4,
-         "equip_effect": "stonehearth:effects:weapon_level_up"
+         "required_job_level": 6,
+         "equip_effect": "stonehearth:effects:weapon_level_up",
+         "equipment_types": "twohanded"
       }
    },
    "entity_data": {
+      "stonehearth:buffs": {
+         "inflictable_debuffs": {
+            "open_wounds": {
+               "uri": "stonehearth_ace:buffs:major_shaken",
+               "chance": 0.66
+            }
+         }
+      },
       "stonehearth:combat:weapon_data": {
-         "base_damage": 20,
-         "reach": 3.0
+         "base_damage": 24,
+         "reach": 3.2
       },
       "stonehearth:combat:melee_attacks": [
          {
@@ -39,16 +48,25 @@
             "effect": "combat_2h_attack",
             "active_frame": 21,
             "cooldown": 0,
-            "priority": 2
+            "priority": 2,
+            "aggro_multiplier": 3.0
+         },
+         {
+            "name": "combat_1h_thrust",
+            "effect": "combat_1h_thrust",
+            "active_frame": 16,
+            "cooldown": 0,
+            "priority": 0,
+            "aggro_multiplier": 3.0
          }
       ],
       "stonehearth:net_worth": {
-         "value_in_gold": 14,
+         "value_in_gold": 48,
          "rarity": "common",
          "shop_info": {
             "buyable": true,
             "sellable": true,
-            "shopkeeper_level": 2,
+            "shopkeeper_level": 3,
             "shopkeeper_type": "caravan"
          }
       },
@@ -57,7 +75,7 @@
          "description": "i18n(stonehearth_ace:entities.weapons.silver_halberd.description)",
          "icon": "file(silver_halberd.png)",
          "category": "weapons",
-         "material_tags": "iron melee_weapon crafted stockpile_weapon"
+         "material_tags": "twohanded silver melee_weapon crafted silver_halberd stockpile_weapon"
       }
    }
 }

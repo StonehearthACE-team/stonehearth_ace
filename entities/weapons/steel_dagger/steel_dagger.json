@@ -19,15 +19,25 @@
             "stonehearth:combat",
             "stonehearth:patrol"
          ],
-         "ilevel": 16,
+         "ilevel": 14,
          "roles": "footman_job",
-         "equip_effect": "stonehearth:effects:weapon_level_up"
+         "required_job_level": 5,
+         "equip_effect": "stonehearth:effects:weapon_level_up",
+         "equipment_types": "offhand"
       }
    },
    "entity_data": {
+      "stonehearth:buffs": {
+         "inflictable_debuffs": {
+            "open_wounds": {
+               "uri": "stonehearth_ace:buffs:major_out_of_balance",
+               "chance": 0.66
+            }
+         }
+      },
       "stonehearth:combat:weapon_data": {
-         "base_damage": 16,
-         "reach": 1
+         "base_damage": 14,
+         "reach": 1.5
       },
       "stonehearth:combat:melee_attacks": [
          {
@@ -63,7 +73,7 @@
          "description": "i18n(stonehearth_ace:entities.weapons.steel_dagger.description)",
          "icon": "file(steel_dagger.png)",
          "category": "weapons",
-         "material_tags": "offhand steel melee_weapon crafted stockpile_weapon"
+         "material_tags": "offhand steel melee_weapon crafted steel_dagger stockpile_weapon"
       }
    }
 }

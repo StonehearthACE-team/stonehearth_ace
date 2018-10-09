@@ -13,7 +13,7 @@
          "iconic_form": "file(light_steel_shield_iconic.json)"
       },
       "stonehearth:equipment_piece": {
-         "slot": "leftArm",
+         "slot": "offhand",
          "render_type": "attach_to_bone",
          "postures": [
             "stonehearth:combat",
@@ -22,8 +22,9 @@
          ],
          "ilevel": 4,
          "roles": "footman_job",
-         "required_job_level": 5,
-         "equip_effect": "stonehearth:effects:weapon_level_up"
+         "required_job_level": 4,
+         "equip_effect": "stonehearth:effects:weapon_level_up",
+         "equipment_types": "shield"
       }
    },
    "entity_data": {
@@ -41,7 +42,7 @@
          }
       ],
       "stonehearth:net_worth": {
-         "value_in_gold": 22,
+         "value_in_gold": 44,
          "rarity": "common",
          "shop_info": {
             "buyable": true,
@@ -55,7 +56,7 @@
          "description": "i18n(stonehearth_ace:entities.armor.light_steel_shield.description)",
          "icon": "file(light_steel_shield.png)",
          "category": "armor",
-         "material_tags": "steel armor medium_armor shield stockpile_equipment"
+         "material_tags": "steel shield armor medium_armor light_steel_shield stockpile_equipment"
       }
    }
 }

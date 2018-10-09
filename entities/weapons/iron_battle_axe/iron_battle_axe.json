@@ -22,16 +22,25 @@
             "stonehearth:combat",
             "stonehearth:patrol"
          ],
-         "ilevel": 22,
+         "ilevel": 21,
          "roles": "footman_job",
-         "required_job_level": 3,
-         "equip_effect": "stonehearth:effects:weapon_level_up"
+         "required_job_level": 4,
+         "equip_effect": "stonehearth:effects:weapon_level_up",
+         "equipment_types": "twohanded"
       }
    },
    "entity_data": {
+      "stonehearth:buffs": {
+         "inflictable_debuffs": {
+            "open_wounds": {
+               "uri": "stonehearth_ace:buffs:open_wounds",
+               "chance": 0.5
+            }
+         }
+      },
       "stonehearth:combat:weapon_data": {
-         "base_damage": 22,
-         "reach": 2.2
+         "base_damage": 21,
+         "reach": 2
       },
       "stonehearth:combat:melee_attacks": [
          {
@@ -43,7 +52,7 @@
          }
       ],
       "stonehearth:net_worth": {
-         "value_in_gold": 16,
+         "value_in_gold": 32,
          "rarity": "common",
          "shop_info": {
             "buyable": true,
@@ -57,7 +66,7 @@
          "description": "i18n(stonehearth_ace:entities.weapons.iron_battle_axe.description)",
          "icon": "file(iron_battle_axe.png)",
          "category": "weapons",
-         "material_tags": "iron melee_weapon crafted stockpile_weapon"
+         "material_tags": "twohanded iron melee_weapon crafted iron_battle_axe stockpile_weapon"
       }
    }
 }

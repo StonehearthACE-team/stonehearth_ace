@@ -24,8 +24,9 @@
          ],
          "ilevel": 17,
          "roles": "footman_job",
-         "required_job_level": 1,
-         "equip_effect": "stonehearth:effects:weapon_level_up"
+         "required_job_level": 2,
+         "equip_effect": "stonehearth:effects:weapon_level_up",
+         "equipment_types": "twohanded"
       }
    },
    "entity_data": {
@@ -33,7 +34,7 @@
          "inflictable_debuffs": {
             "open_wounds": {
                "uri": "stonehearth_ace:buffs:minor_open_wounds",
-               "chance": 0.5
+               "chance": 0.33
             }
          }
       },
@@ -51,7 +52,7 @@
          }
       ],
       "stonehearth:net_worth": {
-         "value_in_gold": 9,
+         "value_in_gold": 28,
          "rarity": "common",
          "shop_info": {
             "buyable": true,
@@ -65,7 +66,7 @@
          "description": "i18n(stonehearth_ace:entities.weapons.bronze_axe.description)",
          "icon": "file(bronze_axe.png)",
          "category": "weapons",
-         "material_tags": "bronze melee_weapon crafted stockpile_weapon"
+         "material_tags": "twohanded bronze melee_weapon bronze_axe crafted stockpile_weapon"
       }
    }
 }

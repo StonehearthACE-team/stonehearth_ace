@@ -13,22 +13,23 @@
          "iconic_form": "file(silver_shield_iconic.json)"
       },
       "stonehearth:equipment_piece": {
-         "slot": "leftArm",
+         "slot": "offhand",
          "render_type": "attach_to_bone",
          "postures": [
             "stonehearth:combat",
             "stonehearth:patrol",
             "stonehearth:have_shield"
          ],
-         "required_job_level": 5,
-         "ilevel": 9,
+         "required_job_level": 6,
+         "ilevel": 8,
          "roles": "knight_job",
-         "equip_effect": "stonehearth:effects:weapon_level_up"
+         "equip_effect": "stonehearth:effects:weapon_level_up",
+         "equipment_types": "shield"
       }
    },
    "entity_data": {
       "stonehearth:combat:armor_data": {
-         "base_damage_reduction": 9
+         "base_damage_reduction": 8
       },
       "stonehearth:combat:melee_defenses": [
          {
@@ -37,11 +38,11 @@
             "active_frame": 4,
             "cooldown": 1000,
             "priority": 0,
-            "chance_of_success": 0.75
+            "chance_of_success": 0.8
          }
       ],
       "stonehearth:net_worth": {
-         "value_in_gold": 90,
+         "value_in_gold": 105,
          "rarity": "common",
          "shop_info": {
             "buyable": true,
@@ -55,7 +56,7 @@
          "description": "i18n(stonehearth_ace:entities.armor.silver_shield.description)",
          "icon": "file(silver_shield.png)",
          "category": "armor",
-         "material_tags": "metal armor heavy_armor stockpile_equipment"
+         "material_tags": "silver shield armor heavy_armor silver_shield stockpile_equipment"
       }
    }
 }

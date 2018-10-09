@@ -19,15 +19,24 @@
             "stonehearth:combat",
             "stonehearth:patrol"
          ],
-         "ilevel": 18,
+         "ilevel": 15,
          "roles": "footman_job",
-         "required_job_level": 3,
-         "equip_effect": "stonehearth:effects:weapon_level_up"
+         "required_job_level": 4,
+         "equip_effect": "stonehearth:effects:weapon_level_up",
+         "equipment_types": "mainhand"
       }
    },
    "entity_data": {
+      "stonehearth:buffs": {
+         "inflictable_debuffs": {
+            "open_wounds": {
+               "uri": "stonehearth_ace:buffs:hamstrung",
+               "chance": 0.5
+            }
+         }
+      },
       "stonehearth:combat:weapon_data": {
-         "base_damage": 18,
+         "base_damage": 15,
          "reach": 1.8
       },
       "stonehearth:combat:melee_attacks": [
@@ -54,7 +63,7 @@
          }
       ],
       "stonehearth:net_worth": {
-         "value_in_gold": 70,
+         "value_in_gold": 38,
          "rarity": "common",
          "shop_info": {
             "buyable": true,
@@ -68,7 +77,7 @@
          "description": "i18n(stonehearth_ace:entities.weapons.iron_sword.description)",
          "icon": "file(iron_sword.png)",
          "category": "weapons",
-         "material_tags": "iron melee_weapon crafted stockpile_weapon"
+         "material_tags": "iron melee_weapon crafted iron_sword stockpile_weapon"
       }
    }
 }

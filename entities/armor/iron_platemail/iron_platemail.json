@@ -24,7 +24,7 @@
       "stonehearth:equipment_piece": {
          "render_type": "merge_with_model",
          "slot": "torso",
-         "ilevel": 6,
+         "ilevel": 7,
          "roles": "plate_wearer",
          "required_job_level": 1,
          "equip_effect": "stonehearth:effects:weapon_level_up"
@@ -32,10 +32,10 @@
    },
    "entity_data": {
       "stonehearth:combat:armor_data": {
-         "base_damage_reduction": 6
+         "base_damage_reduction": 7
       },
       "stonehearth:net_worth": {
-         "value_in_gold": 58,
+         "value_in_gold": 75,
          "rarity": "common",
          "shop_info": {
             "buyable": true,
@@ -49,7 +49,7 @@
          "description": "i18n(stonehearth_ace:entities.armor.iron_platemail.description)",
          "icon": "file(iron_platemail.png)",
          "category": "armor",
-         "material_tags": "iron armor heavy_armor stockpile_equipment"
+         "material_tags": "iron armor heavy_armor iron_platemail stockpile_equipment"
       }
    }
 }

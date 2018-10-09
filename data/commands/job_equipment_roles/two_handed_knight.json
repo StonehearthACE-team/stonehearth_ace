@@ -1,0 +1,12 @@
+{
+   "type": "command",
+   "name": "two_handed_knight",
+   "display_name": "i18n(stonehearth_ace:data.commands.job_equipment_roles.two_handed_knight.display_name)",
+   "description": "i18n(stonehearth_ace:data.commands.job_equipment_roles.two_handed_knight.description)",
+   "icon": "file(two_handed_knight.png)",
+   "action": "call",
+   "function": "stonehearth_ace:change_job_equipment_role",
+   "args": [
+      "two_handed_knight"
+   ]
+}

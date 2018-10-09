@@ -7,11 +7,15 @@
    "flavor": "i18n(stonehearth_ace:jobs.blacksmith.recipes.iron_short_sword_recipe.flavor)",
    "portrait": "/stonehearth_ace/entities/weapons/iron_short_sword/iron_short_sword.png",
    "workshop": "stonehearth:blacksmith:workbench",
-   "level_requirement": 3,
+   "level_requirement": 2,
    "ingredients": [
       {
          "uri": "stonehearth:refined:iron_ingot",
-         "count": 2
+         "count": 1
+      },
+	  {
+         "material": "leather resource",
+         "count": 1
       }
    ],
    "produces": [

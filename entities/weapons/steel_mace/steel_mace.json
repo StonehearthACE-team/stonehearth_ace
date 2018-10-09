@@ -19,15 +19,25 @@
             "stonehearth:combat",
             "stonehearth:patrol"
          ],
-         "ilevel": 18,
+         "ilevel": 14,
          "roles": "knight_job",
-         "equip_effect": "stonehearth:effects:weapon_level_up"
+         "required_job_level": 4,
+         "equip_effect": "stonehearth:effects:weapon_level_up",
+         "equipment_types": "mainhand"
       }
    },
    "entity_data": {
+      "stonehearth:buffs": {
+         "inflictable_debuffs": {
+            "open_wounds": {
+               "uri": "stonehearth_ace:buffs:fracture",
+               "chance": 0.5
+            }
+         }
+      },
       "stonehearth:combat:weapon_data": {
-         "base_damage": 18,
-         "reach": 1
+         "base_damage": 14,
+         "reach": 1.5
       },
       "stonehearth:combat:melee_attacks": [
          {
@@ -36,7 +46,7 @@
             "active_frame": 16,
             "cooldown": 0,
             "priority": 0,
-            "aggro_multiplier": 4.0
+            "aggro_multiplier": 2.0
          }
       ],
       "stonehearth:net_worth": {
@@ -54,7 +64,7 @@
          "description": "i18n(stonehearth_ace:entities.weapons.steel_mace.description)",
          "icon": "file(steel_mace.png)",
          "category": "weapons",
-         "material_tags": "steel melee_weapon crafted stockpile_weapon"
+         "material_tags": "steel melee_weapon crafted steel_mace stockpile_weapon"
       }
    }
 }
