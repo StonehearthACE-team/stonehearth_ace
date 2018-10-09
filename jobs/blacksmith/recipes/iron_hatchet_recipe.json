@@ -1,0 +1,22 @@
+{
+   "type": "recipe",
+   "effort": 80,
+   "work_units": 4,
+   "recipe_name": "i18n(stonehearth_ace:jobs.blacksmith.recipes.iron_hatchet_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.blacksmith.recipes.iron_hatchet_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.blacksmith.recipes.iron_hatchet_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/weapons/iron_hatchet/iron_hatchet.png",
+   "workshop": "stonehearth:blacksmith:workbench",
+   "level_requirement": 4,
+   "ingredients": [
+      {
+         "uri": "stonehearth:refined:iron_ingot",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:weapons:iron_hatchet"
+      }
+   ]
+}

@@ -148,6 +148,78 @@
             "description": "Harvest this wild animal for some of its resources.",
             "disabled_description": "This wild animal is unfit for slaughtering."
          }
+      },
+      "buffs": {
+         "hamstrung": {
+            "display_name": "Hamstrung",
+            "description": "Moving slower because of precisely aimed wounds."
+         },
+         "out_of_balance": {
+            "description": "Inflicting less damage due to being out of balance.",
+            "display_name": "Out of Balance"
+         },
+         "lightweight_gear": {
+            "display_name": "Lightly Geared",
+            "description": "This hearthling is wearing lighter and more agile equipment!"
+         },
+         "fracture": {
+            "description": "Armor reduced due to shattering damage.",
+            "display_name": "Fracture"
+         },
+         "open_wounds": {
+            "description": "Bleeding 6 health points every 10 minutes for 40 minutes.",
+            "display_name": "Open Wounds"
+         },
+         "shaken": {
+            "description": "Courage is reduced, more likely to despair and run away.",
+            "display_name": "Shaken"
+         },
+         "major_fracture": {
+            "display_name": "Major Fracture",
+            "description": "Armor greatly reduced due to shattering damage."
+         },
+         "minor_fracture": {
+            "display_name": "Minor Fracture",
+            "description": "Armor slightly reduced due to shattering damage."
+         },
+         "major_hamstrung": {
+            "display_name": "Major Hamstrung",
+            "description": "Moving much slower because of precisely aimed wounds."
+         },
+         "minor_hamstrung": {
+            "display_name": "Minor Hamstrung",
+            "description": "Moving slightly slower because of precisely aimed wounds."
+         },
+         "minor_open_wounds": {
+            "display_name": "Minor Open Wounds",
+            "description": "Bleeding 3 health points every 10 minutes for 40 minutes."
+         },
+         "major_open_wounds": {
+            "display_name": "Major Open Wounds",
+            "description": "Bleeding 10 health points every 10 minutes for 40 minutes."
+         },
+         "minor_out_of_balance": {
+            "display_name": "Slightly Out of Balance",
+            "description": "Inflicting a bit less damage due to being out of balance."
+         },
+         "major_out_of_balance": {
+            "display_name": "Very Out of Balance",
+            "description": "Inflicting a lot less damage due to being out of balance."
+         },
+         "major_shaken": {
+            "display_name": "Very Shaken",
+            "description": "Courage is greatly reduced, very likely to despair and run away."
+         },
+         "minor_shaken": {
+            "display_name": "Slightly Shaken",
+            "description": "Courage is mildly reduced, might despair and run away."
+         },
+         "stunned": {
+            "ice_trap": {
+               "display_name": "Frozen!",
+               "description": "Can't move! Stunned by an ice trap!"
+            }
+         }
       }
    },
    "jobs": {
@@ -211,6 +283,105 @@
                "recipe_name": "Copper Garden Lantern",
                "description": "A small lantern that's placed on the ground. Suitable for lighting paths or small gardens.",
                "flavor": "Almost magical..."
+            },
+            "iron_helmet_recipe": {
+               "recipe_name": "Iron Helmet",
+               "description": "Even more protection for one's head."
+            },
+            "iron_platemail_recipe": {
+               "recipe_name": "Iron Platemail",
+               "description": "A full suit of iron designed for a new and promising knight.",
+               "flavor": "Every Knight starts somewhere..."
+            },
+            "steel_helm_recipe": {
+               "recipe_name": "Steel Helm",
+               "description": "Strong and not so heavy protection for one's head."
+            },
+            "steel_chainmail_recipe": {
+               "recipe_name": "Steel Mail",
+               "description": "A very fancy and strong chainmail suit of armor for a Footman."
+            },
+            "light_iron_shield_recipe": {
+               "recipe_name": "Light Iron Shield",
+               "description": "Not so heavy but also not so strong."
+            },
+            "light_steel_shield_recipe": {
+               "recipe_name": "Light Steel Shield",
+               "description": "Perfect balance between protection and weight.",
+               "flavor": "The finest defense for a Footman!"
+            },
+            "silver_shield_recipe": {
+               "recipe_name": "Silver Shield",
+               "description": "A very strong Knight's shield made with silver.",
+               "flavor": "Almost a legendary defense..."
+            },
+            "bronze_axe_recipe": {
+               "recipe_name": "Bronze Axe",
+               "description": "A heavier alternative for a starting metal weapon."
+            },
+            "iron_battle_axe_recipe": {
+               "recipe_name": "Iron Battle Axe",
+               "description": "Extra large for when you need some extra punch.",
+               "flavor": "'Are these all of them?' shouted Rovnar 'They might as well make a line'"
+            },
+            "iron_sword_recipe": {
+               "recipe_name": "Iron Sword",
+               "description": "A strong and well balanced weapon.",
+               "flavor": "'I AM YOUR KING!' screamed Regnar Icevulf brandishing his sword."
+            },
+            "iron_short_sword_recipe": {
+               "recipe_name": "Iron Short Sword",
+               "description": "A short but efficient sidearm.",
+               "flavor": "A Knight's first companion"
+            },
+            "steel_mace_recipe": {
+               "recipe_name": "Steel Mace",
+               "description": "A powerful and reliable weapon for a Knight.",
+               "flavor": "It can break through armor!"
+            },
+            "iron_axe_recipe": {
+               "recipe_name": "Iron Axe",
+               "description": "A short and cheap but efficient weapon.",
+               "flavor": "Short. Fast. Edgy."
+            },
+            "steel_axe_recipe": {
+               "recipe_name": "Steel Axe",
+               "description": "Very good for hacking and slashing.",
+               "flavor": "'...and one hearthling after the other they all drew their axes above the shieldwall.' - The Valin Saga"
+            },
+            "bronze_hatchet_recipe": {
+               "recipe_name": "Off-hand Bronze Hatchet",
+               "description": "For parrying attacks and attempting counter-attacks.",
+               "flavor": ""
+            },
+            "iron_hatchet_recipe": {
+               "recipe_name": "Off-hand Iron Hatchet",
+               "description": "A sturdy small axe used for parrying and attacking.",
+               "flavor": ""
+            },
+            "steel_dagger_recipe": {
+               "recipe_name": "Off-hand Steel Dagger",
+               "description": "A small and sharp weapon for both offense and defense.",
+               "flavor": "'There are few things as useful that you can conceal as easily' - O.A.E Guidelines"
+            },
+            "steel_lance_recipe": {
+               "recipe_name": "Steel Lance",
+               "description": "A long and strong Knight's polearm for harassing multiple enemies."
+            },
+            "silver_halberd_recipe": {
+               "recipe_name": "Silver Halberd",
+               "description": "An intricate and powerful Knight's weapon.",
+               "flavor": ""
+            },
+            "silver_short_sword_recipe": {
+               "recipe_name": "Silver Short Sword",
+               "description": "A reliable sidearm for an experienced Knight.",
+               "flavor": "'And so his blade shone under the sun for it was made not of steel but of the purest silver' - The Walks of Cid"
+            },
+            "silver_mace_recipe": {
+               "recipe_name": "Silver Hammer",
+               "description": "Blunt. Strong. Unstoppable. Can break armor.",
+               "flavor": "Lightbringer"
             }
          }
       },
@@ -1341,6 +1512,94 @@
                "display_name": "Bear Cub",
                "description": "Awww."
             }
+         }
+      },
+      "armor": {
+         "iron_platemail": {
+            "description": "A full suit of knightly iron armor.",
+            "display_name": "Iron Platemail"
+         },
+         "iron_helmet": {
+            "display_name": "Iron Helmet",
+            "description": "Protection for your entire head."
+         },
+         "steel_chainmail": {
+            "display_name": "Steel Mail",
+            "description": "A very fancy and strong chainmail suit of armor."
+         },
+         "steel_helm": {
+            "display_name": "Steel Helm",
+            "description": "Strong and not so heavy protection for your head."
+         },
+         "light_iron_shield": {
+            "display_name": "Light Iron Shield",
+            "description": "Not so heavy but also not so strong, better than a bronze buckler."
+         },
+         "light_steel_shield": {
+            "description": "Perfect balance between protection and weight for a Footman.",
+            "display_name": "Light Steel Shield"
+         },
+         "silver_shield": {
+            "display_name": "Silver Shield",
+            "description": "A very strong and light shield made with silver."
+         }
+      },
+      "weapons": {
+         "iron_battle_axe": {
+            "description": "Extra large for when you need some extra punch. (Two-handed)",
+            "display_name": "Iron Battle Axe"
+         },
+         "bronze_axe": {
+            "display_name": "Bronze Axe",
+            "description": "A heavier alternative for a starting metal weapon. (Two-handed)"
+         },
+         "iron_short_sword": {
+            "display_name": "Iron Short Sword",
+            "description": "A short but efficient knight's sidearm."
+         },
+         "iron_sword": {
+            "display_name": "Iron Sword",
+            "description": "A strong and well balanced weapon for foot soldiers."
+         },
+         "steel_mace": {
+            "display_name": "Steel Mace",
+            "description": "A powerful weapon that will break through armor."
+         },
+         "iron_axe": {
+            "display_name": "Iron Axe",
+            "description": "Short, fast, edgy."
+         },
+         "steel_axe": {
+            "display_name": "Steel Axe",
+            "description": "For hacking and slashing onto victory."
+         },
+         "bronze_hatchet": {
+            "description": "For parrying attacks and attempting counter-attacks. (Off-hand)",
+            "display_name": "Bronze Hatchet"
+         },
+         "iron_hatchet": {
+            "display_name": "Iron Hatchet",
+            "description": "A sturdy small axe used for parrying and attacking. (Off-hand)"
+         },
+         "steel_dagger": {
+            "display_name": "Steel Dagger",
+            "description": "A small and sharp weapon for both offense and defense. (Off-hand)"
+         },
+         "steel_lance": {
+            "display_name": "Steel Lance",
+            "description": "A long and strong polearm for harassing multiple enemies. (Two-handed)"
+         },
+         "silver_halberd": {
+            "display_name": "Silver Halberd",
+            "description": "An intricate and powerful weapon. (Two-handed)"
+         },
+         "silver_mace": {
+            "display_name": "Silver Hammer",
+            "description": "Blunt. Strong. Unstoppable. Wear it to tear down enemy armor!"
+         },
+         "silver_short_sword": {
+            "display_name": "Silver Short Sword",
+            "description": "A very reliable and efficient sidearm."
          }
       }
    },

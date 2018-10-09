@@ -1,0 +1,14 @@
+{
+   "type": "buff",
+   "axis": "debuff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.fracture.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.fracture.description)",
+   "icon": "file(fracture.png)",
+   "duration": "1h",
+   "repeat_add_action": "renew_duration",
+   "modifiers": {
+      "multiplicative_armor_modifier": {
+         "add": -0.2
+      }
+   }
+}

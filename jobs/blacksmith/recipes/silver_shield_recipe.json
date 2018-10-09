@@ -1,0 +1,30 @@
+{
+   "type": "recipe",
+   "effort": 120,
+   "work_units": 20,
+   "recipe_name": "i18n(stonehearth_ace:jobs.blacksmith.recipes.silver_shield_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.blacksmith.recipes.silver_shield_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.blacksmith.recipes.silver_shield_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/armor/silver_shield/silver_shield.png",
+   "workshop": "stonehearth:blacksmith:workbench",
+   "level_requirement": 6,
+   "ingredients": [
+      {
+         "uri": "stonehearth:refined:steel_ingot",
+         "count": 2
+      },
+      {
+         "uri": "stonehearth:refined:silver_ingot",
+         "count": 2
+      },
+      {
+         "material": "leather resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:armor:silver_shield"
+      }
+   ]
+}

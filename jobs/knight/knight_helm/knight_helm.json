@@ -1,0 +1,30 @@
+{
+   "type": "entity",
+   "mixins": "/stonehearth/jobs/knight/knight_helm/knight_helm.json",
+   "components": {
+      "mixintypes": {
+		 "model_variants": "override"
+	  },
+      "model_variants": {
+         "default": {
+            "layer": "clothing",
+            "transparent": "true",
+            "models": [
+               "file(knight_helm.qb)"
+            ]
+         },
+         "female": {
+            "layer": "clothing",
+            "transparent": "true",
+            "models": [
+               "file(knight_helm_female.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:combat:armor_data": {
+         "base_damage_reduction": 3
+      }
+	}
+}

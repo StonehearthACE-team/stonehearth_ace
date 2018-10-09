@@ -1,0 +1,22 @@
+{
+   "type": "recipe",
+   "effort": 120,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.blacksmith.recipes.iron_axe_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.blacksmith.recipes.iron_axe_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.blacksmith.recipes.iron_axe_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/weapons/iron_axe/iron_axe.png",
+   "workshop": "stonehearth:blacksmith:workbench",
+   "level_requirement": 2,
+   "ingredients": [
+      {
+         "uri": "stonehearth:refined:iron_ingot",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:weapons:iron_axe"
+      }
+   ]
+}

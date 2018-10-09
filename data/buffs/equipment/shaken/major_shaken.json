@@ -1,0 +1,14 @@
+{
+   "type": "buff",
+   "axis": "debuff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.major_shaken.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.major_shaken.description)",
+   "icon": "file(shaken.png)",
+   "duration": "30m",
+   "repeat_add_action": "renew_duration",
+   "modifiers": {
+      "courage": {
+         "multiply": 0.3
+      }
+   }
+}

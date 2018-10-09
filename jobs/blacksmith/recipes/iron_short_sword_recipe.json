@@ -1,0 +1,22 @@
+{
+   "type": "recipe",
+   "effort": 120,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.blacksmith.recipes.iron_short_sword_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.blacksmith.recipes.iron_short_sword_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.blacksmith.recipes.iron_short_sword_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/weapons/iron_short_sword/iron_short_sword.png",
+   "workshop": "stonehearth:blacksmith:workbench",
+   "level_requirement": 3,
+   "ingredients": [
+      {
+         "uri": "stonehearth:refined:iron_ingot",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:weapons:iron_short_sword"
+      }
+   ]
+}

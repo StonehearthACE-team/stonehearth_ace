@@ -1,0 +1,22 @@
+{
+   "type": "recipe",
+   "effort": 70,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.blacksmith.recipes.steel_helm_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.blacksmith.recipes.steel_helm_recipe.description)",
+   "flavor": "",
+   "portrait": "/stonehearth_ace/entities/armor/steel_helm/steel_helm.png",
+   "workshop": "stonehearth:blacksmith:workbench",
+   "level_requirement": 5,
+   "ingredients": [
+      {
+         "uri": "stonehearth:refined:steel_ingot",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:armor:steel_helm"
+      }
+   ]
+}
