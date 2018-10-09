@@ -1,0 +1,12 @@
+{
+   "type": "command",
+   "name": "one_handed_footman",
+   "display_name": "i18n(stonehearth_ace:data.commands.job_equipment_roles.one_handed_footman.display_name)",
+   "description": "i18n(stonehearth_ace:data.commands.job_equipment_roles.one_handed_footman.description)",
+   "icon": "file(one_handed_footman.png)",
+   "action": "call",
+   "function": "stonehearth_ace:change_job_equipment_role",
+   "args": [
+      "one_handed_footman"
+   ]
+}

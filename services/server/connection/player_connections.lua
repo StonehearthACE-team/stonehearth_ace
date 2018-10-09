@@ -198,15 +198,7 @@ function PlayerConnections:_add_entity_to_graphs(entity_struct)
          end
 
          if connector.num_connections < connector.max_connections then
-            local potential_connectors = self:_find_best_potential_connectors(entity_struct, type, connector)
-
-            for _, target_connector in ipairs(potential_connectors) do
-               if connection.num_connections >= connection.max_connections or connector.num_connections >= connector.max_connections then
-                  break
-               end
-
-               self:_try_connecting_connectors(connector, target_connector.connector)
-            end
+            self:_try_connecting_connector(connector)
          end
       end
    end

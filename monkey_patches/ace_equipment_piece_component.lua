@@ -2,6 +2,8 @@ local EquipmentPieceComponent = require 'stonehearth.components.equipment_piece.
 local AceEquipmentPieceComponent = class()
 local log = radiant.log.create_logger('equipment_piece')
 
+AceEquipmentPieceComponent.EQUIPMENT_PREFERENCE_MULTIPLIER = 3
+
 function AceEquipmentPieceComponent:is_upgrade_for(unit)
    -- upgradable items have a slot.  if there's not slot (e.g. the job outfits that
    -- just contain abilities), there's no possibility for upgrade
@@ -32,8 +34,8 @@ function AceEquipmentPieceComponent:is_upgrade_for(unit)
    -- if we're not better than what's currently equipped, bail
    local equipped = equipment_component:get_item_in_slot(slot)
    if equipped and equipped:is_valid() then
-      local current_value = equipped:get_component('stonehearth:equipment_piece'):get_value()
-      if not current_value or current_value >= self:get_value() then
+      local current_value = equipped:get_component('stonehearth:equipment_piece'):get_value(job_component)
+      if not current_value or current_value >= self:get_value(job_component) then
          -- if current value is nil, that means the item is not unequippable. It's linked to another item
          return false
       end
@@ -44,7 +46,7 @@ function AceEquipmentPieceComponent:is_upgrade_for(unit)
 end
 
 -- returns nil if the item is not unequippable; returns a numeric value otherwise
-function AceEquipmentPieceComponent:get_value()
+function AceEquipmentPieceComponent:get_value(job_component)
 	-- evaluate the value of this item for the purposes of comparing to others for upgrading
 	local value = self:get_ilevel()
 	-- if current ilevel is < 0, that means the item is not unequippable. It's linked to another item
@@ -59,6 +61,17 @@ function AceEquipmentPieceComponent:get_value()
 		end
 	end
 
+   local equipment_types = self:_get_equipment_types()
+   local job_equip_prefs = job_component and job_component:get_equipment_preferences()
+   if job_equip_prefs then
+      for _, pref_type in ipairs(job_equip_prefs.types) do
+         if equipment_types[pref_type] then
+            value = value * (job_equip_prefs.multiplier or AceEquipmentPieceComponent.EQUIPMENT_PREFERENCE_MULTIPLIER)
+            break
+         end
+      end
+   end
+
 	return value
 end
 
@@ -71,6 +84,36 @@ function AceEquipmentPieceComponent:_get_conditional_value(condition_type, condi
 	end
 
 	return 0
+end
+
+function AceEquipmentPieceComponent:_get_equipment_types()
+   if not self._equipment_types then
+      self._equipment_types = {}
+      local types = self._json.equipment_types or self:_get_default_equipment_types()
+      for _, type in ipairs(types) do
+         self._equipment_types[type] = true
+      end
+   end
+
+   return self._equipment_types
+end
+
+-- other mods that want to add in additional default types can easily patch this to first call this version of the function
+-- and then additionally insert their other types into the resulting table before returning it
+function AceEquipmentPieceComponent:_get_default_equipment_types()
+   -- if equipment types aren't specified, evaluate other properties to see what they should probably be
+   local types = {}
+   if self._json.slot == 'mainhand' then
+      if self._json.additional_equipment and self._json.additional_equipment['stonehearth:armor:offhand_placeholder'] then
+         table.insert(types, 'twohand')
+      else
+         table.insert(types, 'mainhand')
+      end
+   else
+      table.insert(types, self._json.slot)
+   end
+
+   return types
 end
 
 function AceEquipmentPieceComponent:_get_injected_ai()

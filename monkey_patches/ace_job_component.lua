@@ -53,7 +53,11 @@ function AceJobComponent:promote_to(job_uri, options)
 	-- add the training toggle command if not max level
 	if self:is_trainable() then
 		self:_add_training_toggle()
-	end
+   end
+   
+   if self:has_multiple_equipment_preferences() then
+      self:_add_equipment_preferences_toggle()
+   end
 
 	radiant.events.trigger(self._entity, 'stonehearth_ace:on_promote', { job_uri = job_uri, options = options })
 end
@@ -65,9 +69,39 @@ function AceJobComponent:demote(old_job_json, dont_drop_talisman)
 	-- remove the training toggle command if it exists
 	if self:is_combat_job() then
 		self:_remove_training_toggle()
-	end
+   end
+   
+   self:_remove_equipment_preferences_toggle()
 
 	radiant.events.trigger(self._entity, 'stonehearth_ace:on_demote', { old_job_json = old_job_json, dont_drop_talisman = dont_drop_talisman })
+end
+
+function AceJobComponent:has_multiple_equipment_preferences()
+   local job_controller = self:get_curr_job_controller()
+   local count = job_controller and #job_controller:get_equipment_roles()
+
+   return count and count > 1
+end
+
+function AceJobComponent:get_all_equipment_preferences()
+   local job_controller = self:get_curr_job_controller()
+   local prefs = job_controller and job_controller:get_all_equipment_preferences()
+end
+
+function AceJobComponent:get_equipment_preferences()
+   local job_controller = self:get_curr_job_controller()
+   local prefs = job_controller and job_controller:get_equipment_preferences()
+
+   return prefs
+end
+
+function AceJobComponent:set_next_equipment_role(from_role)
+   local job_controller = self:get_curr_job_controller()
+   if job_controller then
+      job_controller:set_next_equipment_role(from_role)
+      self:update_equipment_preferences_toggle()
+      return job_controller:get_equipment_role()
+   end
 end
 
 function AceJobComponent:has_ai_action(action_uri)
@@ -195,6 +229,30 @@ function AceJobComponent:_on_training_performed()
    local exp = job._xp_rewards['training']
    if exp then
       self:add_exp(exp)
+   end
+end
+
+function AceJobComponent:update_equipment_preferences_toggle()
+   self:_remove_equipment_preferences_toggle()
+   self:_add_equipment_preferences_toggle()
+end
+
+function AceJobComponent:_add_equipment_preferences_toggle()
+   local job_controller = self:get_curr_job_controller()
+   local data = job_controller and job_controller:get_equipment_preferences()
+   if data then
+      local commands_component = self._entity:add_component('stonehearth:commands')
+      self._sv.current_equipment_preferences_command = data.command
+      commands_component:add_command(data.command)
+
+      self.__saved_variables:mark_changed()
+   end
+end
+
+function AceJobComponent:_remove_equipment_preferences_toggle()
+   local commands_component = self._entity:add_component('stonehearth:commands')
+   if commands_component and self._sv.current_equipment_preferences_command then
+      commands_component:remove_command(self._sv.current_equipment_preferences_command)
    end
 end
 
