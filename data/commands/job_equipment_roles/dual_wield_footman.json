@@ -1,0 +1,12 @@
+{
+   "type": "command",
+   "name": "dual_wield_footman",
+   "display_name": "i18n(stonehearth_ace:data.commands.job_equipment_roles.dual_wield_footman.display_name)",
+   "description": "i18n(stonehearth_ace:data.commands.job_equipment_roles.dual_wield_footman.description)",
+   "icon": "file(dual_wield_footman.png)",
+   "action": "call",
+   "function": "stonehearth_ace:change_job_equipment_role",
+   "args": [
+      "dual_wield_footman"
+   ]
+}

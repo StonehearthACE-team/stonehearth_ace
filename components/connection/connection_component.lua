@@ -1,7 +1,7 @@
 --[[
 connection json structure:
 connector regions are typically a 2-voxel region, including one voxel inside the entity and another outside it
-"connections": {
+"stonehearth_ace:connection": {
    "type1": {
       "connectors": {
          "connector1": {
@@ -31,7 +31,7 @@ local ConnectionComponent = class()
 
 function ConnectionComponent:initialize()
    local json = radiant.entities.get_json(self)
-   self._connections = (json and json.connections) or {}
+   self._connections = json or {}
 end
 
 -- this is performed in activate rather than post_activate so that all specific connection services can use it in post_activate

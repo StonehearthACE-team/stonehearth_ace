@@ -3,6 +3,7 @@ stonehearth_ace = {}
 stonehearth_ace.util = require("lib.util")
 
 local service_creation_order = {
+   'connection',
    'crafter_info',
    'water_pump',
    'water_signal',
@@ -16,7 +17,9 @@ local monkey_patches = {
    ace_door_component = 'stonehearth.components.door.door_component',
    ace_portal_component = 'stonehearth.components.portal.portal_component',
    ace_job_component = 'stonehearth.components.job.job_component',
+   ace_find_equipment_upgrade_action = 'stonehearth.ai.actions.upgrade_equipment.find_equipment_upgrade_action',
    ace_town_patrol_service = 'stonehearth.services.server.town_patrol.town_patrol_service',
+   ace_equipment_component = 'stonehearth.components.equipment.equipment_component',
    ace_equipment_piece_component = 'stonehearth.components.equipment_piece.equipment_piece_component',
    ace_farmer_field_component = 'stonehearth.components.farmer_field.farmer_field_component',
    ace_growing_component = 'stonehearth.components.growing.growing_component',
