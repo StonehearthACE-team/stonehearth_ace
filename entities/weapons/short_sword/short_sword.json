@@ -1,4 +1,10 @@
 {
+	"components": {
+      "stonehearth:equipment_piece": {
+         "required_job_level": 3,
+         "equipment_types": ["mainhand"]
+      }
+	},
 	"entity_data": {
 		"stonehearth:combat:melee_attacks": [
 			{
@@ -9,6 +15,9 @@
 				"priority": 0,
 				"aggro_multiplier": 3.0
 			}
-		]
+		],
+		"stonehearth:catalog": {
+         "material_tags": "steel melee_weapon crafted short_sword stockpile_weapon"
+        }
 	}
 }

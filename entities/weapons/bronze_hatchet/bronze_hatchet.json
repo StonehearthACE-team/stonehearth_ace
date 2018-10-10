@@ -23,13 +23,15 @@
          "roles": "footman_job",
          "required_job_level": 1,
          "equip_effect": "stonehearth:effects:weapon_level_up",
-         "equipment_types": "offhand"
+         "equipment_types": [
+            "offhand"
+         ]
       }
    },
    "entity_data": {
       "stonehearth:buffs": {
          "inflictable_debuffs": {
-            "open_wounds": {
+            "out_of_balance": {
                "uri": "stonehearth_ace:buffs:minor_out_of_balance",
                "chance": 0.33
             }

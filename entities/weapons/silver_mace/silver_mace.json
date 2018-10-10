@@ -22,13 +22,15 @@
          "ilevel": 16,
          "roles": "knight_job",
          "equip_effect": "stonehearth:effects:weapon_level_up",
-         "equipment_types": "mainhand"
+         "equipment_types": [
+            "mainhand"
+         ]
       }
    },
    "entity_data": {
       "stonehearth:buffs": {
          "inflictable_debuffs": {
-            "open_wounds": {
+            "fracture": {
                "uri": "stonehearth_ace:buffs:major_fracture",
                "chance": 0.66
             }

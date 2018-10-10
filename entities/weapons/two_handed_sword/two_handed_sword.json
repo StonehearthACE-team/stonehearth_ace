@@ -1,0 +1,24 @@
+{
+   "components": {
+      "stonehearth:equipment_piece": {
+         "required_job_level": 6,
+         "equipment_types": ["twohanded"]
+      }
+   },
+   "entity_data": {
+      "stonehearth:buffs": {
+         "inflictable_debuffs": {
+            "open_wounds": {
+               "uri": "stonehearth_ace:buffs:major_open_wounds",
+               "chance": 0.66
+            }
+         }
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 80
+      },
+      "stonehearth:catalog": {
+         "material_tags": "twohanded steel melee_weapon crafted two_handed_sword stockpile_weapon"
+      }
+   }
+}
