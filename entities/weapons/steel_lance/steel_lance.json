@@ -26,13 +26,15 @@
          "roles": "knight_job",
          "required_job_level": 4,
          "equip_effect": "stonehearth:effects:weapon_level_up",
-         "equipment_types": "twohanded"
+         "equipment_types": [
+            "twohanded"
+         ]
       }
    },
    "entity_data": {
       "stonehearth:buffs": {
          "inflictable_debuffs": {
-            "open_wounds": {
+            "shaken": {
                "uri": "stonehearth_ace:buffs:shaken",
                "chance": 0.5
             }

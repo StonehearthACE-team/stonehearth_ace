@@ -1,0 +1,25 @@
+{
+   "components": {
+      "stonehearth:equipment_piece": {
+         "required_job_level": 6,
+         "equipment_types": ["twohanded"]
+      }
+   },
+   "entity_data": {
+      "stonehearth:buffs": {
+         "inflictable_debuffs": {
+            "open_wounds": {
+               "uri": "stonehearth_ace:buffs:major_open_wounds",
+               "chance": 0.66
+            },
+			"hamstrung": {
+               "uri": "stonehearth_ace:buffs:major_hamstrung",
+               "chance": 0.66
+            }
+         }
+      },
+      "stonehearth:catalog": {
+         "material_tags": "twohanded legendary melee_weapon crafted legendary_sword stockpile_weapon"
+      }
+   }
+}

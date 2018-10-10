@@ -1,6 +1,11 @@
 {
-	"entity_data": {
-		"stonehearth:combat:melee_attacks": [
+   "components": {
+      "stonehearth:equipment_piece": {
+         "equipment_types": [ "mainhand" ]
+      }
+   },
+   "entity_data": {
+	  "stonehearth:combat:melee_attacks": [
 			{
 				"name": "combat_1h_thrust",
 				"effect": "combat_1h_thrust",
@@ -10,5 +15,5 @@
 				"aggro_multiplier": 3.0
 			}
 		]
-	}
+   }
 }

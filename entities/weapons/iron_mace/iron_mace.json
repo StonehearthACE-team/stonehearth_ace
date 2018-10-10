@@ -1,0 +1,52 @@
+{
+   "components": {
+      "mixintypes": {
+		 "stonehearth:equipment_piece": "override"
+	  },
+      "stonehearth:equipment_piece": {
+         "slot": "mainhand",
+         "render_type": "attach_to_bone",
+         "postures": [
+            "stonehearth:combat",
+            "stonehearth:patrol"
+         ],
+         "ilevel": 12,
+         "roles": "knight_job",
+		 "required_job_level": 2,
+         "equip_effect": "stonehearth:effects:weapon_level_up",
+		 "equipment_types": ["mainhand"]
+      }
+   },
+   "entity_data": {
+      "stonehearth:buffs": {
+         "inflictable_debuffs": {
+            "fracture": {
+               "uri": "stonehearth_ace:buffs:minor_fracture",
+               "chance": 0.33
+            }
+         }
+      },
+      "stonehearth:combat:weapon_data": {
+         "base_damage": 12
+      },
+	  "mixintypes": {
+		 "stonehearth:combat:melee_attacks": "override"
+	  },
+      "stonehearth:combat:melee_attacks": [
+         {
+            "name": "combat_1h_forehand",
+            "effect": "combat_1h_forehand",
+            "active_frame": 16,
+            "cooldown": 0,
+            "priority": 0,
+			"aggro_multiplier": 1.0
+         }
+      ],
+      "stonehearth:net_worth": {
+         "value_in_gold": 38
+      },
+      "stonehearth:catalog": {
+         "material_tags": "iron melee_weapon crafted iron_mace stockpile_weapon"
+      }
+   }
+}

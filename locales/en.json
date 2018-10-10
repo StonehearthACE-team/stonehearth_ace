@@ -363,16 +363,20 @@
             },
             "bronze_axe_recipe": {
                "recipe_name": "Bronze Axe",
-               "description": "A heavier alternative for a starting metal weapon."
+               "description": "A heavier alternative for a starting metal weapon. Can open wounds."
+            },
+			"bronze_sword_recipe": {
+               "recipe_name": "Bronze Sword",
+               "description": "Basic, but better than a sharpened stick. Can hamstring opponents."
             },
             "iron_battle_axe_recipe": {
                "recipe_name": "Iron Battle Axe",
-               "description": "Extra large for when you need some extra punch.",
+               "description": "Extra large for when you need some extra punch. Can open wounds.",
                "flavor": "'Are these all of them?' shouted Rovnar 'They might as well make a line'"
             },
             "iron_sword_recipe": {
                "recipe_name": "Iron Sword",
-               "description": "A strong and well balanced weapon.",
+               "description": "A strong and well balanced weapon. Can hamstring opponents.",
                "flavor": "'I AM YOUR KING!' screamed Regnar Icevulf brandishing his sword."
             },
             "iron_short_sword_recipe": {
@@ -397,26 +401,26 @@
             },
             "bronze_hatchet_recipe": {
                "recipe_name": "Off-hand Bronze Hatchet",
-               "description": "For parrying attacks and attempting counter-attacks.",
+               "description": "For parrying attacks and attempting counter-attacks. Puts enemies out of balance.",
                "flavor": ""
             },
             "iron_hatchet_recipe": {
                "recipe_name": "Off-hand Iron Hatchet",
-               "description": "A sturdy small axe used for parrying and attacking.",
+               "description": "A sturdy small axe used for parrying and attacking. Puts enemies out of balance.",
                "flavor": ""
             },
             "steel_dagger_recipe": {
                "recipe_name": "Off-hand Steel Dagger",
-               "description": "A small and sharp weapon for both offense and defense.",
+               "description": "A small and sharp weapon for both offense and defense. Puts enemies out of balance.",
                "flavor": "'There are few things as useful that you can conceal as easily' - O.A.E Guidelines"
             },
             "steel_lance_recipe": {
                "recipe_name": "Steel Lance",
-               "description": "A long and strong Knight's polearm for harassing multiple enemies."
+               "description": "A long and strong Knight's polearm for harassing multiple enemies. Shakes their hearts!"
             },
             "silver_halberd_recipe": {
                "recipe_name": "Silver Halberd",
-               "description": "An intricate and powerful Knight's weapon.",
+               "description": "An intricate and powerful Knight's weapon. Shakes their hearts!",
                "flavor": ""
             },
             "silver_short_sword_recipe": {
@@ -428,6 +432,10 @@
                "recipe_name": "Silver Hammer",
                "description": "Blunt. Strong. Unstoppable. Can break armor.",
                "flavor": "Lightbringer"
+            },
+			"silver_mail_recipe": {
+               "recipe_name": "Silver Platemail",
+               "description": "Become the real Knight in shiny armor."
             }
          }
       },
@@ -1588,6 +1596,10 @@
          "silver_shield": {
             "display_name": "Silver Shield",
             "description": "A very strong and light shield made with silver."
+         },
+		 "silver_mail": {
+            "display_name": "Silver Platemail",
+            "description": "A shiny and strong suit of armor, worthy of the best Knight!"
          }
       },
       "weapons": {
