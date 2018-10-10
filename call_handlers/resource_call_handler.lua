@@ -16,7 +16,7 @@ function ResourceCallHandler:box_move(session, response)
       :set_cursor('stonehearth:cursors:move_cursor')
       :allow_unselectable_support_entities(true)
       :done(function(selector, box)
-            _radiant.call('stonehearth_ace:box_get_commandable_entities', box, {'stonehearth:commands:move_item'})
+            _radiant.call('stonehearth_ace:box_get_commandable_entities', box, {'stonehearth:commands:move_item'}, true)
                :done(function(result)
                   boxed_entities = result.entities
                   _radiant.call('stonehearth_ace:move_item', 1)
@@ -36,7 +36,7 @@ function ResourceCallHandler:box_undeploy(session, response)
       :set_cursor('stonehearth:cursors:move_cursor')
       :allow_unselectable_support_entities(true)
       :done(function(selector, box)
-            _radiant.call('stonehearth_ace:box_get_commandable_entities', box, {'stonehearth:commands:undeploy_item'})
+            _radiant.call('stonehearth_ace:box_get_commandable_entities', box, {'stonehearth:commands:undeploy_item'}, true)
                :done(function(result)
                   _radiant.call('stonehearth_ace:undeploy_items', result.entities)
                end)
@@ -47,7 +47,47 @@ function ResourceCallHandler:box_undeploy(session, response)
       :go()
 end
 
-function ResourceCallHandler:box_get_commandable_entities(session, response, box, commands)
+function ResourceCallHandler:box_enable_auto_harvest(session, response)
+   stonehearth.selection:select_xz_region('box_undeploy')
+      :set_max_size(50)
+      :require_supported(false)
+      :use_outline_marquee(Color4(72, 255, 96, 32), Color4(72, 255, 96, 255))
+      :set_cursor('stonehearth:cursors:move_cursor')
+      :allow_unselectable_support_entities(true)
+      :done(function(selector, box)
+            _radiant.call('stonehearth_ace:box_get_commandable_entities', box, 
+               {'stonehearth_ace:commands:enable_auto_harvest', 'stonehearth_ace:commands:disable_auto_harvest'}, false)
+               :done(function(result)
+                  _radiant.call('stonehearth_ace:set_items_auto_harvest', result.entities, true)
+               end)
+         end)
+      :fail(function(selector)
+            response:reject('no region')
+         end)
+      :go()
+end
+
+function ResourceCallHandler:box_disable_auto_harvest(session, response)
+   stonehearth.selection:select_xz_region('box_undeploy')
+      :set_max_size(50)
+      :require_supported(false)
+      :use_outline_marquee(Color4(255, 96, 72, 32), Color4(255, 96, 72, 255))
+      :set_cursor('stonehearth:cursors:move_cursor')
+      :allow_unselectable_support_entities(true)
+      :done(function(selector, box)
+            _radiant.call('stonehearth_ace:box_get_commandable_entities', box,
+               {'stonehearth_ace:commands:enable_auto_harvest', 'stonehearth_ace:commands:disable_auto_harvest'}, false)
+               :done(function(result)
+                  _radiant.call('stonehearth_ace:set_items_auto_harvest', result.entities, false)
+               end)
+         end)
+      :fail(function(selector)
+            response:reject('no region')
+         end)
+      :go()
+end
+
+function ResourceCallHandler:box_get_commandable_entities(session, response, box, commands, allow_neutral_player_ids)
    validator.expect_argument_types({'Cube3', 'table'}, box, commands)
 
    local cube = Cube3(Point3(box.min.x, box.min.y, box.min.z),
@@ -58,7 +98,7 @@ function ResourceCallHandler:box_get_commandable_entities(session, response, box
    local tbl = {}
    for _, entity in pairs(entities) do
       local player_id = entity:get_player_id()
-      if player_id == session.player_id or player_id == '' then
+      if player_id == session.player_id or (allow_neutral_player_ids and player_id == '') then
          if not next(commands) then
             table.insert(tbl, entity)
             break
@@ -99,6 +139,14 @@ end
 function ResourceCallHandler:undeploy_items(session, response, entities)
    for _, entity in ipairs(entities) do
       _radiant.call('stonehearth:undeploy_item', entity)
+   end
+
+   response:resolve(true)
+end
+
+function ResourceCallHandler:set_items_auto_harvest(session, response, entities, enabled)
+   for _, entity in ipairs(entities) do
+      _radiant.call('stonehearth:toggle_auto_harvest', entity, enabled)
    end
 
    response:resolve(true)
