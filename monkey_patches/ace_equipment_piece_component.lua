@@ -2,7 +2,7 @@ local EquipmentPieceComponent = require 'stonehearth.components.equipment_piece.
 local AceEquipmentPieceComponent = class()
 local log = radiant.log.create_logger('equipment_piece')
 
-AceEquipmentPieceComponent.EQUIPMENT_PREFERENCE_MULTIPLIER = 3
+AceEquipmentPieceComponent.EQUIPMENT_PREFERENCE_MULTIPLIER = 10
 
 function AceEquipmentPieceComponent:is_upgrade_for(unit)
    -- upgradable items have a slot.  if there's not slot (e.g. the job outfits that

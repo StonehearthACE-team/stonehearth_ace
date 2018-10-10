@@ -66,6 +66,8 @@
       "commands:slaughter:wild_animal": "file(data/commands/slaughter/slaughter.json)",
       "commands:toggle_enabled_off": "file(data/commands/toggle_enabled/toggle_off.json)",
       "commands:toggle_enabled_on": "file(data/commands/toggle_enabled/toggle_on.json)",
+      "commands:enable_auto_harvest": "file(data/commands/auto_harvest/enable_auto_harvest.json)",
+      "commands:disable_auto_harvest": "file(data/commands/auto_harvest/disable_auto_harvest.json)",
       "commands:toggle_training_off": "file(data/commands/toggle_training/toggle_off.json)",
       "commands:toggle_training_on": "file(data/commands/toggle_training/toggle_on.json)",
       "commands:toggle_job_role:one_handed_footman": "file(data/commands/job_equipment_roles/one_handed_footman.json)",
@@ -669,6 +671,14 @@
       },
       "change_job_equipment_role": {
          "controller": "file(call_handlers/job_equipment_roles_call_handler.lua)",
+         "endpoint": "server"
+      },
+      "toggle_auto_harvest": {
+         "controller": "file(call_handlers/auto_harvest_call_handler.lua)",
+         "endpoint": "server"
+      },
+      "update_auto_harvest_setting": {
+         "controller": "file(call_handlers/auto_harvest_call_handler.lua)",
          "endpoint": "server"
       }
    },

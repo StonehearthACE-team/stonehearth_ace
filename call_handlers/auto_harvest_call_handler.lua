@@ -12,4 +12,8 @@ function AutoHarvestCallHandler:toggle_auto_harvest(session, response, entity)
    end
 end
 
+function AutoHarvestCallHandler:update_auto_harvest_setting(session, response, enabled)
+   radiant.events.trigger(stonehearth_ace, 'stonehearth_ace:auto_harvest_setting_update', session.player_id)
+end
+
 return AutoHarvestCallHandler
