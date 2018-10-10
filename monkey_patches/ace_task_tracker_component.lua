@@ -11,7 +11,7 @@ function AceTaskTrackerComponent:cancel_current_task(should_reconsider_ai, keep_
       renewable:set_auto_harvest_enabled(false)
    end
    
-   self:_old_cancel_current_task(should_reconsider_ai)
+   return self:_old_cancel_current_task(should_reconsider_ai)
 end
 
 return AceTaskTrackerComponent

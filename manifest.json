@@ -414,7 +414,8 @@
       "weather:snow:late": "file(data/weather/snow/snow_late.json)"
    },
    "mixintos": {
-      "stonehearth:data:constants": "stonehearth_ace/data/constants.json",
+      "stonehearth:data:constants": "file(data/constants.json)",
+      "stonehearth/data/ui/start_menu.json": "file(data/ui/start_menu.json)",
       "stonehearth:pet_collar": "stonehearth_ace/entities/critters/collars/pet_collar.json",
       "stonehearth:pasture_equipment:adult_animal_collar": "stonehearth_ace/entities/critters/collars/adult_animal_collar.json",
       "stonehearth:pasture_equipment:young_animal_collar": "stonehearth_ace/entities/critters/collars/young_animal_collar.json",
@@ -718,6 +719,38 @@
       "update_auto_harvest_setting": {
          "controller": "file(call_handlers/auto_harvest_call_handler.lua)",
          "endpoint": "server"
+      },
+      "box_move": {
+         "controller": "file(call_handlers/resource_call_handler.lua)",
+         "endpoint": "client"
+      },
+      "move_item": {
+         "controller": "file(call_handlers/resource_call_handler.lua)",
+         "endpoint": "client"
+      },
+      "box_undeploy": {
+         "controller": "file(call_handlers/resource_call_handler.lua)",
+         "endpoint": "client"
+      },
+      "undeploy_items": {
+         "controller": "file(call_handlers/resource_call_handler.lua)",
+         "endpoint": "client"
+      },
+      "box_enable_auto_harvest": {
+         "controller": "file(call_handlers/resource_call_handler.lua)",
+         "endpoint": "client"
+      },
+      "box_disable_auto_harvest": {
+         "controller": "file(call_handlers/resource_call_handler.lua)",
+         "endpoint": "client"
+      },
+      "set_items_auto_harvest": {
+         "controller": "file(call_handlers/resource_call_handler.lua)",
+         "endpoint": "client"
+      },
+      "box_get_commandable_entities": {
+         "controller": "file(call_handlers/resource_call_handler.lua)",
+         "endpoint": "server"
       }
    },
    "object_commands": {
@@ -739,10 +772,10 @@
          "file(ui/shell/settings/settings.js)",
          "file(ui/game/show_workshop/show_team_workshop.js)",
          "file(ui/game/widgets/terrain_vision/terrain_vision.js)",
-         "file(ui/game/underfarming_start_menu.js)",
+         "file(ui/game/start_menu/start_menu.js)",
          "file(ui/game/modes/zones_mode/zones_mode.js)",
          "file(ui/game/modes/zones_mode/underfarm/underfarm.js)",
-	 "file(ui/game/promotion_tree/promotion_tree.js)",
+	      "file(ui/game/promotion_tree/promotion_tree.js)",
          "file(ui/game/modes/zones_mode/trapping_grounds/trapping_grounds.js)"
       ],
       "less": [
