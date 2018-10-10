@@ -56,7 +56,7 @@ function AceRenewableResourceNodeComponent:get_auto_harvest_enabled()
    local auto_harvest = self._sv.manual_auto_harvest
    if auto_harvest == nil then
       auto_harvest = self._sv.default_auto_harvest
-      if auto_harvest == nil then
+      if auto_harvest == nil and self._entity:get_player_id() ~= '' then
          auto_harvest = radiant.util.get_config('auto_enable_auto_harvest', false)
       end
    end
@@ -96,7 +96,7 @@ function AceRenewableResourceNodeComponent:_update_auto_harvest_commands()
    commands:remove_command(DISABLE_AUTO_HARVEST_COMMAND)
    if enabled then
       commands:add_command(DISABLE_AUTO_HARVEST_COMMAND)
-   else
+   elseif enabled == false then
       commands:add_command(ENABLE_AUTO_HARVEST_COMMAND)
    end
 end
