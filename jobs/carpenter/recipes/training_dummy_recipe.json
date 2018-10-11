@@ -1,0 +1,34 @@
+{
+   "type": "recipe",
+   "effort": 200,
+   "work_units": 25,
+   "recipe_name": "i18n(stonehearth_ace:jobs.carpenter.recipes.training_dummy_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.carpenter.recipes.training_dummy_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.carpenter.recipes.training_dummy_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/gizmos/training_dummy/training_dummy.png",
+   "workshop": "stonehearth:carpenter:toolbench",
+   "level_requirement": 2,
+   "ingredients": [
+      {
+         "material": "wood resource",
+         "count": 4
+      },
+	  {
+         "material": "thatch resource",
+         "count": 4
+      },
+	  {
+         "material": "cloth resource",
+         "count": 1
+      },
+      {
+         "material": "thread resource",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:gizmos:training_dummy"
+      }
+   ]
+}

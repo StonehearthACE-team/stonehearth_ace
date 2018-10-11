@@ -2,13 +2,10 @@
    "mixins": "stonehearth:mixins:placed_object",
    "type": "entity",
    "components": {
-     "mob": {
-        "model_origin": { "x": 0, "y": 0, "z": 0 },
-        "region_origin": { "x": 0, "y": 0, "z": 0 },
-          "align_to_grid": [
-             "x"
-          ]
-     },
+      "mob": {
+         "model_origin": { "x": -0.05, "y": 0, "z": 0.45 },
+         "region_origin": { "x": -0.5, "y": 0, "z": 0.5 }
+      },
       "render_info": {
          "scale": 0.1,
          "animation_table": "file(/data/rigs/entities/gizmos/decoy_trap/decoy_trap.json)"

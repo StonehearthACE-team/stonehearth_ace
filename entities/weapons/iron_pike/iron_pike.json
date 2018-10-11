@@ -42,7 +42,14 @@
             "active_frame": 21,
             "cooldown": 0,
             "priority": 0,
-			"aggro_multiplier": 1.5
+			"aggro_multiplier": 1.5,
+			"aoe_effect": {
+               "aoe_range": 22,
+               "damage_multiplier": 0.2,
+               "minimum_damage": 0,
+               "aggro_addition": 90,
+               "aoe_target_limit": 12,
+            }
          },
 		 {
 			"name": "combat_1h_thrust",
@@ -50,7 +57,14 @@
 			"active_frame": 16,
 			"cooldown": 0,
 			"priority": 0,
-			"aggro_multiplier": 1.5
+			"aggro_multiplier": 1.5,
+			"aoe_effect": {
+               "aoe_range": 22,
+               "damage_multiplier": 0.2,
+               "minimum_damage": 0,
+               "aggro_addition": 90,
+               "aoe_target_limit": 12,
+            }
 		 }
       ],
       "stonehearth:catalog": {

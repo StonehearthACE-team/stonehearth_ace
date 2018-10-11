@@ -1,0 +1,51 @@
+{
+   "mixins": "stonehearth:mixins:tree",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(medium_highland_pine_stump.qb)"
+                  ]
+               }
+            ]
+         }
+      },
+      "stonehearth:resource_node": {
+         "resource": "stonehearth_ace:resources:wood:highland_pine_log"
+      },
+      "mob": {
+         "align_to_grid": [
+            "x",
+            "z"
+         ],
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 1, "y": 0, "z": 0 }
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": 0, "y": 0, "z": -1 },
+               "max": { "x": 2, "y": 1, "z": 1 }
+            }
+         ]
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": 0, "y": 0, "z": -1 },
+               "max": { "x": 2, "y": 2, "z": 1 }
+            }
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.trees.stump)",
+         "description": "i18n(stonehearth_ace:entities.trees.stump_description)"
+      }
+   }
+}

@@ -1,4 +1,11 @@
 {
+   "ai": {
+      "actions": {
+         "status_text": {
+            "train": "Going for training"
+         }
+      }
+   },
    "data": {
       "biome": {
          "highlands": {
@@ -273,6 +280,14 @@
                "display_name": "Frozen!",
                "description": "Can't move! Stunned by an ice trap!"
             }
+         },
+         "using_crossbow": {
+            "display_name": "Using Crossbows",
+            "description": "Armor penetration is increased!"
+         },
+         "decoy": {
+            "display_name": "Distracted",
+            "description": "Distracted by a decoy trap!"
          }
       }
    },
@@ -317,13 +332,13 @@
             }
          }
       },
-	  "engineer": {
+      "engineer": {
          "recipes": {
             "bronze_crossbow_recipe": {
                "recipe_name": "Bronze Crossbow",
                "description": "A strong ranged weapon that is slow but efficient in cracking enemy armor."
             },
-			"steel_crossbow_recipe": {
+            "steel_crossbow_recipe": {
                "recipe_name": "Steel Crossbow",
                "description": "Not fast but a strong, powerful mechanical weapon that can pierce through armor."
             }
@@ -542,6 +557,11 @@
                "recipe_name": "Composite Bow",
                "description": "With a core made of bone and muscle fibers, the stretch allows for powerful arrows.",
                "flavor": "The Hunter and the Hunt as One"
+            },
+            "training_dummy_recipe": {
+               "recipe_name": "Training Dummy",
+               "description": "It's best to practice with this friendly guy.",
+               "flavor": "Requires an engineer for repairs."
             }
          }
       }
@@ -889,51 +909,51 @@
          "birch_tree": {
             "ancient_birch_tree": {
                "display_name": "Ancient Birch Tree",
-               "description": "TBD"
+               "description": "A tree as old as time."
             },
             "large_birch_tree": {
                "display_name": "Large Birch Tree",
-               "description": "TBD"
+               "description": "Tall and strong entity of the forest."
             },
             "medium_birch_tree": {
-               "description": "TBD",
+               "description": "Beautiful with its unique bark coloring.",
                "display_name": "Birch Tree"
             },
             "sapling_birch_tree": {
-               "description": "TBD",
+               "description": "Baby Birch tree.",
                "sapling_birch_tree_iconic": {
-                  "description": "TBD"
+                  "description": "Plant it in the earth and watch it grow."
                },
                "sapling_birch_tree_ghost": {
-                  "description": "TBD",
+                  "description": "Baby Birch tree.",
                   "display_name": "Birch Tree Sapling"
                }
             },
             "seed": {
                "tree_birch_seed_ghost": {
-                  "description": "Can be planted to grow a giant tree",
+                  "description": "Can be planted to grow a pretty tree",
                   "display_name": "Birch Tree Seed"
                }
             },
             "small_birch_tree": {
                "display_name": "Small Birch Tree",
-               "description": "TBD"
+               "description": "A beautiful and young forest birch."
             },
             "bud": {
                "tree_birch_plant_bud": {
                   "display_name": "Budding Birch Tree",
-                  "description": "TBD"
+                  "description": "It's already a little tree!"
                }
             },
             "sprout": {
                "tree_birch_sprout": {
-                  "description": "TBD",
+                  "description": "Just needs some time and care.",
                   "display_name": "Birch Tree Sproutling"
                }
             },
             "stem": {
                "tree_birch_plant_stem": {
-                  "description": "TBD",
+                  "description": "Still growing!",
                   "display_name": "Stemming Birch Tree"
                }
             }
@@ -942,47 +962,47 @@
             "seed": {
                "tree_parana_pine_seed_ghost": {
                   "display_name": "Parana Pine Seed",
-                  "description": "TBD"
+                  "description": "Can be planted to grow an unique, beautiful tree."
                }
             },
             "sprout": {
                "tree_parana_pine_sprout": {
                   "display_name": "Parana Pine Sproutling",
-                  "description": "TBD"
+                  "description": "Just needs some time and care."
                }
             },
             "stem": {
                "tree_parana_pine_plant_stem": {
                   "display_name": "Stemming Parana Pine",
-                  "description": "TBD"
+                  "description": "Still growing!"
                }
             },
             "bud": {
                "tree_parana_pine_plant_bud": {
-                  "description": "TBD",
+                  "description": "It's a little pine, although not really a pine...",
                   "display_name": "Budding Parana Pine"
                }
             },
             "small_parana_pine_tree": {
                "display_name": "Small Parana Pine",
-               "description": "TBD"
+               "description": "Still mostly a pine, but with pretty, stingy leaves."
             },
             "large_parana_pine_tree": {
                "display_name": "Large Parana Pine",
-               "description": "TBD"
+               "description": "Look at those stool buds! Glorious!"
             },
             "medium_parana_pine_tree": {
                "display_name": "Parana Pine",
-               "description": "TBD"
+               "description": "So many fluffy canopies!"
             },
             "sapling_parana_pine_tree": {
-               "description": "TBD",
+               "description": "Baby Parana Pine tree.",
                "sapling_parana_pine_tree_iconic": {
-                  "description": "TBD"
+                  "description": "Plant it in the earth and watch it grow."
                },
                "sapling_parana_pine_tree_ghost": {
                   "display_name": "Parana Pine Sapling",
-                  "description": "TBD"
+                  "description": "Baby Parana Pine tree."
                }
             }
          },
@@ -994,47 +1014,47 @@
             "bud": {
                "tree_yew_plant_bud": {
                   "display_name": "Budding Yew Tree",
-                  "description": "TBD"
+                  "description": "Already looks ancient but it is so young!"
                }
             },
             "large_yew_tree": {
                "display_name": "Large Yew Tree",
-               "description": "TBD"
+               "description": "Large and bulky tree."
             },
             "medium_yew_tree": {
                "display_name": "Yew Tree",
-               "description": "TBD"
+               "description": "A beautiful tree with pretty little fruits during Autumn!"
             },
             "sapling_yew_tree": {
-               "description": "TBD",
+               "description": "Baby Yew tree.",
                "sapling_yew_tree_iconic": {
-                  "description": "TBD"
+                  "description": "Plant it in the earth and watch it grow."
                },
                "sapling_yew_tree_ghost": {
-                  "description": "TBD",
+                  "description": "Baby Yew tree.",
                   "display_name": "Yew Tree Sapling"
                }
             },
             "seed": {
                "tree_yew_seed_ghost": {
                   "display_name": "Yew Tree Seed",
-                  "description": "TBD"
+                  "description": "Can be planted to grow a bulky, strong tree."
                }
             },
             "small_yew_tree": {
                "display_name": "Small Yew Tree",
-               "description": "TBD"
+               "description": "Stubby and strong."
             },
             "sprout": {
                "tree_yew_sprout": {
                   "display_name": "Yew Tree Sproutling",
-                  "description": "TBD"
+                  "description": "Just needs some time and care."
                }
             },
             "stem": {
                "tree_yew_plant_stem": {
                   "display_name": "Stemming Yew Tree",
-                  "description": "TBD"
+                  "description": "Still growing!"
                }
             }
          },
@@ -1042,52 +1062,52 @@
             "bud": {
                "tree_highland_pine_bud": {
                   "display_name": "Budding Highland Pine",
-                  "description": "TBD"
+                  "description": "Growing so tall!"
                }
             },
             "large": {
                "large_highland_pine": {
                   "display_name": "Large Highland Pine",
-                  "description": "TBD"
+                  "description": "So tall the wind bends it!"
                }
             },
             "medium": {
                "medium_highland_pine": {
                   "display_name": "Highland Pine",
-                  "description": "TBD"
+                  "description": "Tall and beautiful mountain tree."
                }
             },
             "seed": {
                "tree_highland_pine_seed_ghost": {
                   "display_name": "Highland Pine Seed",
-                  "description": "TBD"
+                  "description": "Can be planted to grow a large mountain tree."
                }
             },
             "small": {
                "small_highland_pine": {
                   "display_name": "Small Highland Pine",
-                  "description": "TBD"
+                  "description": "A short one for the highlands but still quite talll..."
                }
             },
             "sprout": {
                "tree_highland_pine_sprout": {
                   "display_name": "Highland Pine Sproutling",
-                  "description": "TBD"
+                  "description": "Just needs some time and care."
                }
             },
             "stem": {
                "tree_highland_pine_stem": {
                   "display_name": "Stemming Highland Pine",
-                  "description": "TBD"
+                  "description": "Still growing!"
                }
             },
             "sapling_highland_pine_tree": {
-               "description": "TBD",
+               "description": "Baby Highland Pine tree.",
                "sapling_highland_pine_tree_iconic": {
-                  "description": "TBD"
+                  "description": "Plant it in the earth and watch it grow."
                },
                "sapling_highland_pine_tree_ghost": {
-                  "description": "TBD",
+                  "description": "Baby Highland Pine tree.",
                   "display_name": "Highland Pine Sapling"
                }
             }
@@ -1715,6 +1735,20 @@
          "composite_bow": {
             "display_name": "Composite Bow",
             "description": "With a core made of bone and muscle fibers, the stretch allows for powerful arrows."
+         }
+      },
+      "gizmos": {
+         "dummy_training": {
+            "dummy_training_ghost": {
+               "description": "It's best to practice with this friendly guy. Requires an engineer for repairs.",
+               "display_name": "Training Dummy",
+               "training_limit_tag": "Training Equipment"
+            }
+         },
+         "decoy_trap": {
+            "display_name": "Decoy Trap",
+            "description": "Distract your enemies with this extra hearthling! Wait, it is a hearthling... right?",
+            "flavor": "Mer Splinterhands is very threatening."
          }
       }
    },

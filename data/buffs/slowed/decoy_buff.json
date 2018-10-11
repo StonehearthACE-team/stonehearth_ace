@@ -1,0 +1,14 @@
+{
+   "type": "buff",
+   "axis": "debuff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.decoy.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.decoy.description)",
+   "icon": "file(decoy_buff.png)",
+   "duration": "20m",
+   "repeat_add_action": "renew_duration",
+   "modifiers": {
+      "speed": {
+         "multiply": 0.8
+      }
+   }
+}
