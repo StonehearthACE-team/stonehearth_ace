@@ -19,18 +19,43 @@ function AceRenewableResourceNodeComponent:post_activate()
    end
 
    --radiant.events.trigger(stonehearth_ace, 'stonehearth_ace:auto_harvest_setting_update', {player_id = session.player_id, enabled = enabled})
-   self._auto_harvest_setting_update_listener = 
-      radiant.events.listen(stonehearth_ace, 'stonehearth_ace:auto_harvest_setting_update', self, self._on_auto_harvest_setting_update)
+   self._player_id_listener = 
+         radiant.events.listen(self._entity, 'stonehearth:player_id_changed', self, self._on_player_id_changed)
+   self:_setup_auto_harvest_setting_listener()
 end
 
 AceRenewableResourceNodeComponent._old_destroy = RenewableResourceNodeComponent.destroy
 function AceRenewableResourceNodeComponent:destroy()
    self:_old_destroy()
 
+   if self._player_id_listener then
+      self._player_id_listener:destroy()
+      self._player_id_listener = nil
+   end
+
    if self._auto_harvest_setting_update_listener then
       self._auto_harvest_setting_update_listener:destroy()
       self._auto_harvest_setting_update_listener = nil
    end
+end
+
+function AceRenewableResourceNodeComponent:_setup_auto_harvest_setting_listener()
+   if self._entity:get_player_id() ~= '' and not self._auto_harvest_setting_update_listener then
+      self._auto_harvest_setting_update_listener = 
+         radiant.events.listen(stonehearth_ace, 'stonehearth_ace:auto_harvest_setting_update', self, self._on_auto_harvest_setting_update)
+   elseif self._auto_harvest_setting_update_listener then
+      self._auto_harvest_setting_update_listener:destroy()
+      self._auto_harvest_setting_update_listener = nil
+   end
+end
+
+function AceRenewableResourceNodeComponent:_on_player_id_changed(args)
+   if args.player_id == '' then
+      -- if it's back to nothing, clear out auto-harvest settings
+      self._sv.manual_auto_harvest = nil
+   end
+   self:_setup_auto_harvest_setting_listener()
+   self:_update_auto_harvest_commands()
 end
 
 function AceRenewableResourceNodeComponent:_on_auto_harvest_setting_update(player_id)
