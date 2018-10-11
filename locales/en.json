@@ -164,6 +164,14 @@
             "description": "This hearthling is currently not allowed to train. Click to allow it!",
             "display_name": "Allow Training"
          },
+         "enable_auto_harvest": {
+            "display_name": "Enable Auto-Harvest",
+            "description": "Enable auto-harvesting of this renewable resource whenever it becomes ready again."
+         },
+         "disable_auto_harvest": {
+            "display_name": "Disable Auto-Harvest",
+            "description": "Disable auto-harvesting of this renewable resource."
+         },
          "job_equipment_roles": {
             "one_handed_footman": {
                "display_name": "Prefer Weapon & Shield",
@@ -1853,6 +1861,34 @@
                      "required_job_text": "Requires a carpenter"
                   }
                }
+            },
+            "harvest_menu": {
+               "items": {
+                  "box_move": {
+                     "display_name": "Move Items",
+                     "description": "Move items to another location",
+                     "tip_title": "Click and drag to select the items to move, then click new locations for each of them as prompted.",
+                     "tip_description": "Right click to exit this mode"
+                  },
+                  "box_undeploy": {
+                     "display_name": "Undeploy Items",
+                     "description": "Undeploy these items and return them to a stockpile.",
+                     "tip_title": "Click and drag to select the items to undeploy.",
+                     "tip_description": "Right click to exit this mode"
+                  },
+                  "box_enable_auto_harvest": {
+                     "display_name": "Enable Auto-Harvest",
+                     "description": "Enable auto-harvesting of renewable resources that you own (you'll still need to instruct your hearthlings to harvest them).",
+                     "tip_title": "Click and drag to select renewable resources you own to enable auto-harvesting.",
+                     "tip_description": "Right click to exit this mode"
+                  },
+                  "box_disable_auto_harvest": {
+                     "display_name": "Disable Auto-Harvest",
+                     "description": "Disable auto-harvesting of renewable resources that you own.",
+                     "tip_title": "Click and drag to select renewable resources you own to disable auto-harvesting.",
+                     "tip_description": "Right click to exit this mode"
+                  }
+               }
             }
          },
          "visions": {
@@ -1896,24 +1932,6 @@
             "bone_resource_name": "Bone",
             "fungi_resource_name": "Fungi"
          }
-      }
-   },
-   "commands": {
-      "toggle_training_off": {
-         "display_name": "Disable Training",
-         "description": "Turn off training for this soldier. They will still patrol and fight as normal."
-      },
-      "toggle_training_on": {
-         "display_name": "Enable Training",
-         "description": "Enable training for this soldier. They will still fight as normal, but will prefer training on training dummies over patrolling up to level 3."
-      },
-      "toggle_enabled_off": {
-         "display_name": "Disable",
-         "description": "Disable this entity's functionality."
-      },
-      "toggle_enabled_on": {
-         "display_name": "Enable",
-         "description": "Enable this entity's functionality."
       }
    }
 }
