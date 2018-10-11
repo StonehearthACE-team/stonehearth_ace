@@ -1,0 +1,69 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(long_bow_equipped.qb)"
+            ]
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(long_bow_iconic.json)"
+      },
+      "stonehearth:equipment_piece": {
+         "slot": "mainhand",
+         "render_type": "attach_to_bone",
+         "postures": [
+            "stonehearth:combat",
+            "stonehearth:patrol"
+         ],
+         "ilevel": 24,
+         "roles": "archer_job",
+         "required_job_level": 1,
+         "equip_effect": "stonehearth:effects:weapon_level_up",
+         "equipment_types": [
+            "bow"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:combat:weapon_data": {
+         "base_damage": 24,
+         "base_ranged_damage": 24,
+         "range": 32,
+         "projectile_speed": 40,
+         "projectile_uri": "stonehearth:weapons:arrow"
+      },
+      "stonehearth:combat:melee_attacks": [
+         {
+            "name": "combat_1h_forehand",
+            "effect": "combat_1h_forehand",
+            "active_frame": 16,
+            "cooldown": 0,
+            "priority": 0
+         }
+      ],
+      "stonehearth:combat:idle:ready": {
+         "name": "archer_1h_idle"
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 13,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 3,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.weapons.long_bow.display_name)",
+         "description": "i18n(stonehearth_ace:entities.weapons.long_bow.description)",
+         "icon": "file(long_bow.png)",
+         "category": "weapons",
+         "material_tags": "wood bow ranged_weapon long_bow stockpile_weapon"
+      }
+   }
+}

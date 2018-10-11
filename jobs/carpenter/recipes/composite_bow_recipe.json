@@ -1,0 +1,34 @@
+{
+   "type": "recipe",
+   "effort": 120,
+   "work_units": 20,
+   "recipe_name": "i18n(stonehearth_ace:jobs.carpenter.recipes.composite_bow_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.carpenter.recipes.composite_bow_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.carpenter.recipes.composite_bow_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/weapons/composite_bow/composite_bow.png",
+   "workshop": "stonehearth:carpenter:toolbench",
+   "level_requirement": 6,
+   "ingredients": [
+      {
+         "material": "wood resource",
+         "count": 6
+      },
+	  {
+         "material": "bone resource",
+         "count": 3
+      },
+	  {
+         "material": "leather resource",
+         "count": 2
+      },
+      {
+         "material": "thread resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:weapons:composite_bow"
+      }
+   ]
+}

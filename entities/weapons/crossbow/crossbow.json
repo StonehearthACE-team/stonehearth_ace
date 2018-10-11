@@ -1,0 +1,83 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "render_info": {
+         "scale": 0.08
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(crossbow_equipped.qb)"
+            ]
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(crossbow_iconic.json)"
+      },
+      "stonehearth:equipment_piece": {
+         "slot": "mainhand",
+         "render_type": "attach_to_bone",
+         "postures": [
+            "stonehearth:combat",
+            "stonehearth:patrol"
+         ],
+         "ilevel": 26,
+         "roles": "archer_job",
+         "required_job_level": 2,
+         "equip_effect": "stonehearth:effects:weapon_level_up",
+         "equipment_types": [
+            "crossbow"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:combat:weapon_data": {
+         "base_damage": 26,
+         "base_ranged_damage": 26,
+         "range": 35,
+         "projectile_speed": 75,
+         "projectile_uri": "stonehearth:weapons:bolt",
+         "projectile_start_offset": { "x": -0.2, "y": 1.5, "z": -1 },
+         "projectile_end_offset": { "x": 0, "y": 1.5, "z": 0 }
+      },
+      "stonehearth:combat:ranged_attacks": [
+         {
+            "name": "archer_xbow_shoot",
+            "effect": "archer_xbow_shoot",
+            "active_frame": 17,
+            "cooldown": 0,
+            "priority": 10000
+         }
+      ],
+      "stonehearth:combat:melee_attacks": [
+         {
+            "name": "combat_1h_forehand",
+            "effect": "combat_1h_forehand",
+            "active_frame": 16,
+            "cooldown": 0,
+            "priority": 0
+         }
+      ],
+      "stonehearth:combat:idle:ready": {
+         "name": "archer_1h_idle"
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 16,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 2,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.weapons.crossbow.display_name)",
+         "description": "i18n(stonehearth_ace:entities.weapons.crossbow.description)",
+         "icon": "file(crossbow.png)",
+         "category": "weapons",
+         "material_tags": "wood crossbow ranged_weapon crossbow stockpile_weapon"
+      }
+   }
+}

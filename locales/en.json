@@ -309,6 +309,18 @@
             }
          }
       },
+	  "engineer": {
+         "recipes": {
+            "bronze_crossbow_recipe": {
+               "recipe_name": "Bronze Crossbow",
+               "description": "A strong ranged weapon that is slow but efficient in cracking enemy armor."
+            },
+			"steel_crossbow_recipe": {
+               "recipe_name": "Steel Crossbow",
+               "description": "Not fast but a strong, powerful mechanical weapon that can pierce through armor."
+            }
+         }
+      },
       "potter": {
          "recipes": {
             "bone_clay_recipe": {
@@ -365,7 +377,7 @@
                "recipe_name": "Bronze Axe",
                "description": "A heavier alternative for a starting metal weapon. Can open wounds."
             },
-			"bronze_sword_recipe": {
+            "bronze_sword_recipe": {
                "recipe_name": "Bronze Sword",
                "description": "Basic, but better than a sharpened stick. Can hamstring opponents."
             },
@@ -433,7 +445,7 @@
                "description": "Blunt. Strong. Unstoppable. Can break armor.",
                "flavor": "Lightbringer"
             },
-			"silver_mail_recipe": {
+            "silver_mail_recipe": {
                "recipe_name": "Silver Platemail",
                "description": "Become the real Knight in shiny armor."
             }
@@ -505,6 +517,23 @@
                "recipe_name": "Roast Steak",
                "description": "The most prized and delicious cut of meat, slowly grilled on fire.",
                "flavor": ""
+            }
+         }
+      },
+      "carpenter": {
+         "recipes": {
+            "long_bow_recipe": {
+               "recipe_name": "Long Bow",
+               "description": "A longer cross-section makes it more efficient than an average bow."
+            },
+            "crossbow_recipe": {
+               "recipe_name": "Simple Crossbow",
+               "description": "Not as reliable as a crossbow made with gears but still strong enough to pierce armor."
+            },
+            "composite_bow_recipe": {
+               "recipe_name": "Composite Bow",
+               "description": "With a core made of bone and muscle fibers, the stretch allows for powerful arrows.",
+               "flavor": "The Hunter and the Hunt as One"
             }
          }
       }
@@ -842,7 +871,7 @@
       "refined": {
          "lock": {
             "display_name": "Lock",
-            "description": "Needed for lockable doors",
+            "description": "Used to craft locked doors and mechanisms",
             "flavor": "Look out to not lock someone out"
          }
       },
@@ -1597,7 +1626,7 @@
             "display_name": "Silver Shield",
             "description": "A very strong and light shield made with silver."
          },
-		 "silver_mail": {
+         "silver_mail": {
             "display_name": "Silver Platemail",
             "description": "A shiny and strong suit of armor, worthy of the best Knight!"
          }
@@ -1658,6 +1687,26 @@
          "silver_short_sword": {
             "display_name": "Silver Short Sword",
             "description": "A very reliable and efficient sidearm."
+         },
+         "steel_crossbow": {
+            "display_name": "Steel Crossbow",
+            "description": "Not fast but a strong, powerful and piercing mechanical weapon."
+         },
+         "bronze_crossbow": {
+            "display_name": "Bronze Crossbow",
+            "description": "A strong ranged weapon that is slow but efficient."
+         },
+         "crossbow": {
+            "display_name": "Simple Crossbow",
+            "description": "Not as reliable as an Engineer's crossbow but still strong enough."
+         },
+         "long_bow": {
+            "display_name": "Long Bow",
+            "description": "A longer cross-section makes it more efficient than an average bow."
+         },
+         "composite_bow": {
+            "display_name": "Composite Bow",
+            "description": "With a core made of bone and muscle fibers, the stretch allows for powerful arrows."
          }
       }
    },

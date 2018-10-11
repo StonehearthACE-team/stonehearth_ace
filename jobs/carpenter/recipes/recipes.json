@@ -16,12 +16,16 @@
         }
       }
     },
-    "utility": {
-      "ordinal": 4,
-      "name": "i18n(stonehearth:jobs.carpenter.recipes.utility_name)",
+    "armor": {
       "recipes": {
-        "patrol_point": {
-          "recipe": "file(patrol_point_recipe.json)"
+        "long_bow": {
+          "recipe": "file(long_bow_recipe.json)"
+        },
+		"crossbow": {
+          "recipe": "file(crossbow_recipe.json)"
+        },
+		"composite_bow": {
+          "recipe": "file(composite_bow_recipe.json)"
         }
       }
     }
