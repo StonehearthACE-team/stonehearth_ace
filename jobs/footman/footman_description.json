@@ -28,5 +28,22 @@
          }
       },
       "default_role": "one_handed_footman"
-   }
+   },
+   "level_data": {
+      "1": {
+         "perks": [
+            {
+               "type": "increase_max_placeable_training",
+			   "name": "i18n(stonehearth_ace:jobs.footman.footman_description.level_1_data.training_perk_name)",
+			   "description": "i18n(stonehearth_ace:jobs.footman.footman_description.level_1_data.training_perk_description)",
+               "id": "increase_max_placeable_training",
+			   "icon": "file(images/training.png)",
+               "max_num_training": {
+                  "training": 2
+               },
+               "level": 1
+            }
+         ]
+      }
+	}
 }

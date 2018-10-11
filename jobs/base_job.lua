@@ -15,6 +15,8 @@ function BaseJob:initialize()
    self._sv.is_current_class = false
    self._sv.equipment = {}
    self._sv.attained_perks = {}
+   -- ADDED FOR ACE
+   self._sv.max_num_training = {}
 
    -- These are for the UI only
    self._sv.is_max_level = false
@@ -95,7 +97,10 @@ function BaseJob:promote(json_path)
    if self._create_listeners then
       self:_create_listeners()
    end
-
+   
+   -- ADDED FOR ACE
+   self._sv.max_num_training = { training = 0 }
+   self:_register_with_town()
    self.__saved_variables:mark_changed()
 end
 
@@ -143,6 +148,14 @@ function BaseJob:demote()
    end
 
    self.__saved_variables:mark_changed()
+   
+   -- ADDED FOR ACE
+   local player_id = radiant.entities.get_player_id(self._sv._entity)
+   local town = stonehearth.town:get_town(player_id)
+   if town then
+      town:remove_placement_slot_entity(self._sv._entity)
+   end
+   
 end
 
 function BaseJob:destroy()
@@ -269,6 +282,20 @@ function BaseJob:set_next_equipment_role(from_role)
    end
 
    return self:set_equipment_role(new_role or first)
+end
+
+function BaseJob:increase_max_placeable_training(args)
+   self._sv.max_num_training = args.max_num_training
+   self:_register_with_town()
+   self.__saved_variables:mark_changed()
+end
+
+function BaseJob:_register_with_town()
+   local player_id = radiant.entities.get_player_id(self._sv._entity)
+   local town = stonehearth.town:get_town(player_id)
+   if town then
+      town:add_placement_slot_entity(self._sv._entity, self._sv.max_num_training)
+   end
 end
 
 return BaseJob

@@ -22,5 +22,22 @@
          }
       },
       "default_role": "bow_archer"
-   }
+   },
+   "level_data": {
+      "1": {
+         "perks": [
+            {
+               "type": "increase_max_placeable_training",
+			   "name": "i18n(stonehearth_ace:jobs.archer.archer_description.level_1_data.training_perk_name)",
+			   "description": "i18n(stonehearth_ace:jobs.archer.archer_description.level_1_data.training_perk_description)",
+               "id": "increase_max_placeable_training",
+			   "icon": "file(images/training.png)",
+               "max_num_training": {
+                  "training": 1
+               },
+               "level": 1
+            }
+         ]
+      }
+	}
 }

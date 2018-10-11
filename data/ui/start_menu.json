@@ -1,6 +1,6 @@
 {
-   "harvest_menu": {
-      "items": {
+   "place_menu": {
+	  "items": {
          "box_move": {
             "name": "i18n(stonehearth_ace:ui.game.menu.harvest_menu.items.box_move.display_name)",
             "description": "i18n(stonehearth_ace:ui.game.menu.harvest_menu.items.box_move.description)",
@@ -16,7 +16,11 @@
             "icon": "/stonehearth_ace/data/commands/box_selection/box_selection_undeploy_menu.png",
             "sticky": true,
             "hotkey_action": "harvest:box_undeploy"
-         },
+         }
+      }
+   },
+   "harvest_menu": {
+      "items": {
          "box_enable_auto_harvest": {
             "name": "i18n(stonehearth_ace:ui.game.menu.harvest_menu.items.box_enable_auto_harvest.display_name)",
             "description": "i18n(stonehearth_ace:ui.game.menu.harvest_menu.items.box_enable_auto_harvest.description)",
