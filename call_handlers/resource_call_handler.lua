@@ -39,6 +39,7 @@ function ResourceCallHandler:box_undeploy(session, response)
             _radiant.call('stonehearth_ace:box_get_commandable_entities', box, {'stonehearth:commands:undeploy_item'}, true)
                :done(function(result)
                   _radiant.call('stonehearth_ace:undeploy_items', result.entities)
+                  response:resolve(true)
                end)
          end)
       :fail(function(selector)
@@ -59,6 +60,7 @@ function ResourceCallHandler:box_enable_auto_harvest(session, response)
                {'stonehearth_ace:commands:enable_auto_harvest', 'stonehearth_ace:commands:disable_auto_harvest'}, false)
                :done(function(result)
                   _radiant.call('stonehearth_ace:set_items_auto_harvest', result.entities, true)
+                  response:resolve(true)
                end)
          end)
       :fail(function(selector)
@@ -79,6 +81,7 @@ function ResourceCallHandler:box_disable_auto_harvest(session, response)
                {'stonehearth_ace:commands:enable_auto_harvest', 'stonehearth_ace:commands:disable_auto_harvest'}, false)
                :done(function(result)
                   _radiant.call('stonehearth_ace:set_items_auto_harvest', result.entities, false)
+                  response:resolve(true)
                end)
          end)
       :fail(function(selector)
@@ -140,16 +143,12 @@ function ResourceCallHandler:undeploy_items(session, response, entities)
    for _, entity in ipairs(entities) do
       _radiant.call('stonehearth:undeploy_item', entity)
    end
-
-   response:resolve(true)
 end
 
 function ResourceCallHandler:set_items_auto_harvest(session, response, entities, enabled)
    for _, entity in ipairs(entities) do
-      _radiant.call('stonehearth:toggle_auto_harvest', entity, enabled)
+      _radiant.call('stonehearth_ace:toggle_auto_harvest', entity, enabled)
    end
-
-   response:resolve(true)
 end
 
 return ResourceCallHandler
