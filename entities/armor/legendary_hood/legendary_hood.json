@@ -1,0 +1,69 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "layer": "clothing",
+            "transparent": "false",
+            "models": [
+               "file(legendary_hood.qb)",
+               "file(legendary_hood_hat.qb)"
+            ]
+         },
+         "female": {
+            "layer": "clothing",
+            "transparent": "false",
+            "models": [
+               "file(legendary_hood_female.qb)",
+               "file(legendary_hood_hat_female.qb)"
+            ]
+         },
+         "rabbit_male": {
+            "layer": "clothing",
+            "models": [
+               "file(legendary_hood_rabbit.qb)",
+               "file(legendary_hood_rabbit_hat.qb)"
+            ]
+         },
+         "rabbit_female": {
+            "layer": "clothing",
+            "models": [
+               "file(legendary_hood_rabbit.qb)",
+               "file(legendary_hood_rabbit_hat.qb)"
+            ]
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(legendary_hood_iconic.json)"
+      },
+      "stonehearth:equipment_piece": {
+         "render_type": "merge_with_model",
+         "slot": "torso",
+         "ilevel": 10,
+         "roles": "archer_job",
+         "required_job_level": 6,
+         "equip_effect": "stonehearth:effects:weapon_level_up"
+      }
+   },
+   "entity_data": {
+      "stonehearth:combat:armor_data": {
+         "base_damage_reduction": 4
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 80,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.armor.legendary_hood.display_name)",
+         "description": "i18n(stonehearth_ace:entities.armor.legendary_hood.description)",
+         "icon": "file(legendary_hood.png)",
+         "category": "armor",
+         "material_tags": "legendary armor light_armor legendary_hood stockpile_equipment"
+      }
+   }
+}

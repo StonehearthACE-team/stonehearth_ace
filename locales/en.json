@@ -293,29 +293,29 @@
    },
    "jobs": {
       "footman": {
-		 "footman_description": {
-			"level_1_data": {
-				"training_perk_name": "Combat Training",
-				"training_perk_description": "A footman can use Dummies to train up to Level 3 and will increase the allowed limit of Training Equipment by 2"
-			}
-		 }
-	  },
-	  "archer": {
-		 "archer_description": {
-			"level_1_data": {
-				"training_perk_name": "Archery Training",
-				"training_perk_description": "An archer can use Dummies to train up to Level 3 and will increase the allowed limit of Training Equipment by 1"
-			}
-		 }
-	  },
-	  "knight": {
-		 "knight_description": {
-			"level_1_data": {
-				"training_perk_name": "Squire Training",
-				"training_perk_description": "A knight can use Dummies to train up to Level 3 and will increase the allowed limit of Training Equipment by 1"
-			}
-		 }
-	  },
+         "footman_description": {
+            "level_1_data": {
+               "training_perk_name": "Combat Training",
+               "training_perk_description": "A footman can use Dummies to train up to Level 3 and will increase the allowed limit of Training Equipment by 2"
+            }
+         }
+      },
+      "archer": {
+         "archer_description": {
+            "level_1_data": {
+               "training_perk_name": "Archery Training",
+               "training_perk_description": "An archer can use Dummies to train up to Level 3 and will increase the allowed limit of Training Equipment by 1"
+            }
+         }
+      },
+      "knight": {
+         "knight_description": {
+            "level_1_data": {
+               "training_perk_name": "Squire Training",
+               "training_perk_description": "A knight can use Dummies to train up to Level 3 and will increase the allowed limit of Training Equipment by 1"
+            }
+         }
+      },
       "herbalist": {
          "recipes": {
             "refined_fungi_name": "Fungal Refinement",
@@ -925,6 +925,38 @@
             "display_name": "Lock",
             "description": "Used to craft locked doors and mechanisms",
             "flavor": "Look out to not lock someone out"
+         },
+         "legendary_silk": {
+            "display_name": "Woodland Silk",
+            "description": "Gold and silk woven as one through ancient elven technique."
+         },
+         "legendary_buckle": {
+            "display_name": "Ornate Buckle",
+            "description": "A beautifully engraved set of buckles and straps."
+         },
+         "legendary_cape": {
+            "display_name": "Imperial Cape",
+            "description": "A majestic cape tailored by the Empire's standards."
+         },
+         "legendary_chainmail": {
+            "display_name": "Silver Chainmail Links",
+            "description": "Pieces of legendary silver chainmail linked together to form a hauberk."
+         },
+         "legendary_handle": {
+            "display_name": "Sturdy Handle",
+            "description": "A long and ornate wooden handle strapped in high quality fabric."
+         },
+         "legendary_headpiece": {
+            "display_name": "Fallen Star",
+            "description": "A strong and deadly headpiece for a mace from beyond this world."
+         },
+         "legendary_ink": {
+            "display_name": "Sacred Ink",
+            "description": "Special and gilded ink for illuminated manuscripts."
+         },
+         "legendary_parchment": {
+            "display_name": "Gilded Paper",
+            "description": "Delicate and precious sheets of decorated parchment."
          }
       },
       "trees": {
@@ -1681,6 +1713,14 @@
          "silver_mail": {
             "display_name": "Silver Platemail",
             "description": "A shiny and strong suit of armor, worthy of the best Knight!"
+         },
+         "legendary_hood": {
+            "display_name": "Elven King Hood",
+            "description": "A beautiful hood worthy of the finest archer."
+         },
+         "legendary_mail": {
+            "display_name": "Vanguard's Chainmail",
+            "description": "Chain armor akin to the ones from the Empire's royal vanguard."
          }
       },
       "weapons": {
@@ -1759,6 +1799,14 @@
          "composite_bow": {
             "display_name": "Composite Bow",
             "description": "With a core made of bone and muscle fibers, the stretch allows for powerful arrows."
+         },
+         "legendary_mace": {
+            "display_name": "The Ascendant Star",
+            "description": "An impressive and powerful knight's weapon."
+         },
+         "legendary_tome": {
+            "display_name": "'The Walk of Cid'",
+            "description": "A legendary tome for the followers of the Church of Plenty."
          }
       },
       "gizmos": {
@@ -1773,6 +1821,10 @@
             "display_name": "Decoy Trap",
             "description": "Distract your enemies with this extra hearthling! Wait, it is a hearthling... right?",
             "flavor": "Mer Splinterhands is very threatening."
+         },
+         "target_training": {
+            "display_name": "Archery Target",
+            "description": "Less dangerous than shooting apples on someone's head."
          }
       }
    },

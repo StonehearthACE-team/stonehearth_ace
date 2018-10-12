@@ -1,0 +1,64 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:item_properties",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(legendary_tome_equipped.qb)"
+            ]
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(legendary_tome_iconic.json)"
+      },
+      "stonehearth:equipment_piece": {
+         "slot": "mainhand",
+         "render_type": "attach_to_bone",
+         "postures": [
+            "stonehearth:combat",
+            "stonehearth:patrol"
+         ],
+         "ilevel": 25,
+         "roles": "cleric_job",
+         "required_job_level": 6,
+         "equip_effect": "stonehearth:effects:weapon_level_up",
+         "equipment_types": [
+            "cleric_tome"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:combat:weapon_data": {
+         "base_damage": 6,
+         "range": 30,
+         "reach": 1.5
+      },
+      "stonehearth:combat:healing_data": {
+         "base_healing": 12
+      },
+      "stonehearth:combat:melee_attacks": [
+         {
+            "name": "combat_1h_forehand",
+            "effect": "combat_1h_forehand",
+            "active_frame": 16,
+            "cooldown": 0,
+            "priority": 0
+         }
+      ],
+      "stonehearth:net_worth": {
+         "value_in_gold": 0,
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.weapons.legendary_tome.display_name)",
+         "description": "i18n(stonehearth_ace:entities.weapons.legendary_tome.description)",
+         "icon": "file(legendary_tome.png)",
+         "category": "weapons",
+         "material_tags": "legendary tome crafted legendary_tome stockpile_weapon"
+      }
+   }
+}

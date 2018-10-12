@@ -1,0 +1,22 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(legendary_mace.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.weapons.legendary_mace.display_name)",
+         "description": "i18n(stonehearth_ace:entities.weapons.legendary_mace.description)",
+         "icon": "file(legendary_mace.png)",
+         "is_item": true,
+         "category": "weapons"
+      }
+   }
+}

@@ -1,0 +1,28 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "type": "entity",
+   "components": {
+      "stonehearth:material": {
+         "tags": "wood cloth decoration training_target stockpile_decoration"
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(training_target.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0, "y": 0, "z": 0 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.gizmos.target_training.display_name)",
+         "description": "i18n(stonehearth_ace:entities.gizmos.target_training.description)",
+         "icon": "file(training_target.png)",
+         "category": "decoration"
+      }
+   }
+}

@@ -1,0 +1,32 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(legendary_buckle.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 100,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.refined.legendary_buckle.display_name)",
+         "description": "i18n(stonehearth_ace:entities.refined.legendary_buckle.description)",
+         "icon": "file(legendary_buckle.png)",
+         "is_item": true,
+         "category": "refined",
+         "material_tags": "legendary_buckle resource refined stockpile_refined_blacksmith"
+      }
+   }
+}

@@ -1,0 +1,22 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:item_properties",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(legendary_tome.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.weapons.legendary_tome.display_name)",
+         "description": "i18n(stonehearth_ace:entities.weapons.legendary_tome.description)",
+         "icon": "file(legendary_tome.png)",
+         "is_item": true,
+         "category": "weapons"
+      }
+   }
+}
