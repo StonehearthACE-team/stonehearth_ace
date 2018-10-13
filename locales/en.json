@@ -7,6 +7,27 @@
       }
    },
    "data": {
+      "gm": {
+         "campaigns": {
+            "ambient_threats": {
+               "bear_attack": {
+                  "mission": {
+                     "sighted_bulletin": {
+                        "title": "Feral Bear Approaching!"
+                     }
+                  }
+               }
+            },
+            "trader": {
+               "valor_tier_2_reached": {
+                  "recipe_unlock_weapons_5": "New Legendary Hood recipe - Blacksmith, Geomancer, and Weaver collaboration!",
+                  "recipe_unlock_weapons_6": "New Legendary Mace recipe - Mason, Carpenter, and Engineer collaboration!",
+                  "recipe_unlock_weapons_7": "New Legendary Tome recipe - Cook, Herbalist, and Geomancer collaboration!",
+                  "recipe_unlock_weapons_8": "New Legendary Mail recipe - Weaver, Engineer, and Blacksmith collaboration!"
+               }
+            }
+         }
+      },
       "biome": {
          "highlands": {
             "display_name": "Highlands",
@@ -133,19 +154,6 @@
             },
             "large_bear": {
                "description": "This is a very large bear."
-            }
-         }
-      },
-      "gm": {
-         "campaigns": {
-            "ambient_threats": {
-               "bear_attack": {
-                  "mission": {
-                     "sighted_bulletin": {
-                        "title": "Feral Bear Approaching!"
-                     }
-                  }
-               }
             }
          }
       },
@@ -353,6 +361,11 @@
                "recipe_name": "Desert Truffle Colony (x3)",
                "description": "Use existing fungus to create more colonies to grow into new fungi.",
                "flavor": ""
+            },
+            "legendary_parchment_recipe": {
+               "recipe_name": "Gilded Paper",
+               "description": "Delicate and precious sheets of decorated parchment for 'The Walk of Cid'.",
+               "flavor": "So intricate and yet so fragile..."
             }
          }
       },
@@ -365,6 +378,16 @@
             "steel_crossbow_recipe": {
                "recipe_name": "Steel Crossbow",
                "description": "Not fast but a strong, powerful mechanical weapon that can pierce through armor."
+            },
+            "legendary_chainmail_recipe": {
+               "recipe_name": "Silver Chainmail Links",
+               "description": "Pieces of legendary silver chainmail linked together for the Vanguard's Chainmail.",
+               "flavor": "May contain traces of gold"
+            },
+            "legendary_mace_recipe": {
+               "recipe_name": "The Ascendant Star",
+               "description": "An impressive and powerful knight's weapon.",
+               "flavor": "Engineered to shatter any piece of armor"
             }
          }
       },
@@ -374,6 +397,29 @@
                "recipe_name": "Mound of Bone Clay",
                "description": "Required for creating porcelain and beautiful ornate ceramics.",
                "flavor": ""
+            }
+         }
+      },
+      "geomancer": {
+         "recipes": {
+            "legendary_silk_recipe": {
+               "recipe_name": "Woodland Silk",
+               "description": "Gold and silk woven as one for the Elven King Hood.",
+               "flavor": "No regular weaver can weave with natural magic like elves do"
+            },
+            "legendary_tome_recipe": {
+               "recipe_name": "Cleric Tome, 'The Walk of Cid'",
+               "description": "A legendary tome for the followers of the Church of Plenty.",
+               "flavor": "Through the ways of Cid healing shall be done"
+            }
+         }
+      },
+      "mason": {
+         "recipes": {
+            "legendary_headpiece_recipe": {
+               "recipe_name": "Fallen Star",
+               "description": "A strong and deadly headpiece for the Ascendant Star.",
+               "flavor": "Made out of rock extracted straight from a meteorite... or not"
             }
          }
       },
@@ -495,6 +541,16 @@
             "silver_mail_recipe": {
                "recipe_name": "Silver Platemail",
                "description": "Become the real Knight in shiny armor."
+            },
+            "legendary_buckle_recipe": {
+               "recipe_name": "Ornate Buckle",
+               "description": "A beautifully engraved set of buckles for the Elven King Hood.",
+               "flavor": "Can also be used for an extremely expensive belt"
+            },
+            "legendary_mail_recipe": {
+               "recipe_name": "Vanguard's Chainmail",
+               "description": "Chain armor akin to the ones from the Empire's royal vanguard.",
+               "flavor": "It is said the cape was their demise"
             }
          }
       },
@@ -564,6 +620,11 @@
                "recipe_name": "Roast Steak",
                "description": "The most prized and delicious cut of meat, slowly grilled on fire.",
                "flavor": ""
+            },
+            "legendary_ink_recipe": {
+               "recipe_name": "Sacred Ink",
+               "description": "Special and gilded ink for illuminated manuscripts in 'The Walk of Cid'.",
+               "flavor": "It is a very... complicated mixture. Don't ask"
             }
          }
       },
@@ -586,6 +647,25 @@
                "recipe_name": "Training Dummy",
                "description": "It's best to practice with this friendly guy.",
                "flavor": "Requires an engineer for repairs."
+            },
+            "legendary_handle_recipe": {
+               "recipe_name": "Sturdy Handle",
+               "description": "The strong arm of the Ascendant Star.",
+               "flavor": "Long and ornate wooden handle strapped in high quality leather"
+            }
+         }
+      },
+      "weaver": {
+         "recipes": {
+            "legendary_hood_recipe": {
+               "recipe_name": "Elven King Hood",
+               "description": "A beautiful hood worthy of the finest archer.",
+               "flavor": "No one can really read what is written on it. Looks cool, though."
+            },
+            "legendary_cape_recipe": {
+               "recipe_name": "Imperial Cape",
+               "description": "A majestic cape tailored for the Vanguard's Chainmail.",
+               "flavor": "Capes like these were proudly worn by the Vanguard"
             }
          }
       }
@@ -928,35 +1008,35 @@
          },
          "legendary_silk": {
             "display_name": "Woodland Silk",
-            "description": "Gold and silk woven as one through ancient elven technique."
+            "description": "Gold and silk woven as one for the Elven King Hood."
          },
          "legendary_buckle": {
             "display_name": "Ornate Buckle",
-            "description": "A beautifully engraved set of buckles and straps."
+            "description": "A beautifully engraved set of buckles for the Elven King Hood."
          },
          "legendary_cape": {
             "display_name": "Imperial Cape",
-            "description": "A majestic cape tailored by the Empire's standards."
+            "description": "A majestic cape tailored for the Vanguard's Chainmail."
          },
          "legendary_chainmail": {
             "display_name": "Silver Chainmail Links",
-            "description": "Pieces of legendary silver chainmail linked together to form a hauberk."
+            "description": "Pieces of legendary silver chainmail linked together for the Vanguard's Chainmail."
          },
          "legendary_handle": {
             "display_name": "Sturdy Handle",
-            "description": "A long and ornate wooden handle strapped in high quality fabric."
+            "description": "The strong arm of the Ascendant Star."
          },
          "legendary_headpiece": {
             "display_name": "Fallen Star",
-            "description": "A strong and deadly headpiece for a mace from beyond this world."
+            "description": "A strong and deadly headpiece for the Ascendant Star."
          },
          "legendary_ink": {
             "display_name": "Sacred Ink",
-            "description": "Special and gilded ink for illuminated manuscripts."
+            "description": "Special and gilded ink for illuminated manuscripts in 'The Walk of Cid'."
          },
          "legendary_parchment": {
             "display_name": "Gilded Paper",
-            "description": "Delicate and precious sheets of decorated parchment."
+            "description": "Delicate and precious sheets of decorated parchment for 'The Walk of Cid'."
          }
       },
       "trees": {
@@ -1801,12 +1881,18 @@
             "description": "With a core made of bone and muscle fibers, the stretch allows for powerful arrows."
          },
          "legendary_mace": {
-            "display_name": "The Ascendant Star",
+            "display_name": "Ascendant Star",
             "description": "An impressive and powerful knight's weapon."
          },
          "legendary_tome": {
             "display_name": "'The Walk of Cid'",
             "description": "A legendary tome for the followers of the Church of Plenty."
+         },
+         "rc_legendary_bow": {
+            "display_name": "Zephyr Bow"
+         },
+         "rc_legendary_sword": {
+            "display_name": "Desert Fang"
          }
       },
       "gizmos": {
@@ -2040,7 +2126,9 @@
             "fruits_resource_name": "Fruit",
             "thatch_resource_name": "Thatching",
             "bone_resource_name": "Bone",
-            "fungi_resource_name": "Fungi"
+            "fungi_resource_name": "Fungi",
+            "chitin_resource_name": "Chitin",
+            "coal_resource_name": "Any Coal"
          }
       }
    }

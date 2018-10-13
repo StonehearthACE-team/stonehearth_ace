@@ -1,0 +1,35 @@
+{
+   "type": "recipe",
+   "effort": 60,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.herbalist.recipes.legendary_parchment_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.legendary_parchment_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.legendary_parchment_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/refined/legendary_parchment/legendary_parchment.png",
+   "workshop": "stonehearth:herbalist:workbench",
+   "level_requirement": 4,
+   "manual_unlock": true,
+   "ingredients": [
+      {
+         "material": "wood resource",
+         "count": 6
+      },
+      {
+         "material": "leather resource",
+         "count": 3
+      },
+	  {
+         "material": "pelt resource",
+         "count": 8
+      },
+      {
+         "uri": "stonehearth:refined:gold_flakes",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:refined:legendary:parchment"
+      }
+   ]
+}

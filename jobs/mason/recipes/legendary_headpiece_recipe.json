@@ -1,0 +1,35 @@
+{
+   "type": "recipe",
+   "effort": 80,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.mason.recipes.legendary_headpiece_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.mason.recipes.legendary_headpiece_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.mason.recipes.legendary_headpiece_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/refined/legendary_headpiece/legendary_headpiece.png",
+   "workshop": "stonehearth:mason:pedestal",
+   "level_requirement": 4,
+   "manual_unlock": true,
+   "ingredients": [
+      {
+         "material": "stone resource",
+         "count": 6
+      },
+	  {
+         "uri": "stonehearth:refined:silver_ingot",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth:refined:gold_ingot",
+         "count": 1
+      },
+	  {
+         "uri": "stonehearth:refined:steel_ingot",
+         "count": 4
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:refined:legendary:headpiece"
+      }
+   ]
+}

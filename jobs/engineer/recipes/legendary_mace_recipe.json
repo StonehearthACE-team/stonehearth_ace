@@ -1,0 +1,39 @@
+{
+   "type": "recipe",
+   "effort": 90,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.engineer.recipes.legendary_mace_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.engineer.recipes.legendary_mace_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.engineer.recipes.legendary_mace_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/weapons/legendary_mace/legendary_mace.png",
+   "workshop": "stonehearth:engineer:workbench",
+   "level_requirement": 6,
+   "manual_unlock": true,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:refined:legendary:handle",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth_ace:refined:legendary:headpiece",
+         "count": 1
+      },
+      {
+         "material": "leather resource",
+         "count": 4
+      },
+      {
+         "uri": "stonehearth:refined:gold_ingot",
+         "count": 2
+      },
+	  {
+         "uri": "stonehearth:refined:steel_ingot",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:weapons:legendary:mace"
+      }
+   ]
+}

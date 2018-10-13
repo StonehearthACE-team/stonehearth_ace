@@ -1,0 +1,31 @@
+{
+   "type": "recipe",
+   "effort": 80,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.engineer.recipes.legendary_chainmail_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.engineer.recipes.legendary_chainmail_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.engineer.recipes.legendary_chainmail_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/refined/legendary_chainmail/legendary_chainmail.png",
+   "workshop": "stonehearth:engineer:workbench",
+   "level_requirement": 4,
+   "manual_unlock": true,
+   "ingredients": [
+	  {
+         "uri": "stonehearth:refined:silver_ingot",
+         "count": 3
+      },
+      {
+         "uri": "stonehearth:refined:gold_ingot",
+         "count": 1
+      },
+	  {
+         "uri": "stonehearth:refined:steel_ingot",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:refined:legendary:chainmail"
+      }
+   ]
+}

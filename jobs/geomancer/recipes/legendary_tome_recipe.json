@@ -1,0 +1,39 @@
+{
+   "type": "recipe",
+   "effort": 120,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.geomancer.recipes.legendary_tome_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.geomancer.recipes.legendary_tome_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.geomancer.recipes.legendary_tome_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/weapons/legendary_tome/legendary_tome.png",
+   "workshop": "stonehearth:geomancer:workbench",
+   "level_requirement": 6,
+   "manual_unlock": true,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:refined:legendary:ink",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth_ace:refined:legendary:parchment",
+         "count": 1
+      },
+      {
+         "material": "leather resource",
+         "count": 6
+      },
+      {
+         "uri": "stonehearth:refined:gold_flakes",
+         "count": 3
+      },
+	  {
+         "material": "thread resource",
+         "count": 4
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:weapons:legendary:tome"
+      }
+   ]
+}

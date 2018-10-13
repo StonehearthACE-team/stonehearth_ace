@@ -1,0 +1,35 @@
+{
+   "type": "recipe",
+   "effort": 75,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.weaver.recipes.legendary_hood_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.weaver.recipes.legendary_hood_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.weaver.recipes.legendary_hood_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/armor/legendary_hood/legendary_hood.png",
+   "workshop": "stonehearth:weaver:workbench",
+   "level_requirement": 6,
+   "manual_unlock": true,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:refined:legendary:silk",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth_ace:refined:legendary:buckle",
+         "count": 1
+      },
+      {
+         "material": "leather resource",
+         "count": 5
+      },
+      {
+         "material": "thread resource",
+         "count": 8
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:armor:legendary:hood"
+      }
+   ]
+}

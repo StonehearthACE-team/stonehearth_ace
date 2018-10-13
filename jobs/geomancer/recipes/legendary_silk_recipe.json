@@ -1,0 +1,35 @@
+{
+   "type": "recipe",
+   "effort": 70,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.geomancer.recipes.legendary_silk_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.geomancer.recipes.legendary_silk_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.geomancer.recipes.legendary_silk_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/refined/legendary_silk/legendary_silk.png",
+   "workshop": "stonehearth:geomancer:workbench",
+   "level_requirement": 4,
+   "manual_unlock": true,
+   "ingredients": [
+      {
+         "material": "thread resource",
+         "count": 12
+      },
+	  {
+         "uri": "stonehearth:resources:fiber:silkweed_bundle",
+         "count": 4
+      },
+      {
+         "uri": "stonehearth:refined:gold_flakes",
+         "count": 9
+      },
+	  {
+         "material": "earth_essence resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:refined:legendary:silk"
+      }
+   ]
+}

@@ -1,0 +1,35 @@
+{
+   "type": "recipe",
+   "effort": 60,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.weaver.recipes.legendary_cape_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.weaver.recipes.legendary_cape_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.weaver.recipes.legendary_cape_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/refined/legendary_cape/legendary_cape.png",
+   "workshop": "stonehearth:weaver:loom",
+   "level_requirement": 4,
+   "manual_unlock": true,
+   "ingredients": [
+      {
+         "material": "thread resource",
+         "count": 4
+      },
+	  {
+         "material": "cloth resource",
+         "count": 6
+      },
+      {
+         "uri": "stonehearth:refined:gold_flakes",
+         "count": 1
+      },
+	  {
+         "uri": "stonehearth:resources:herb:frostsnap",
+         "count": 6
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:refined:legendary:cape"
+      }
+   ]
+}

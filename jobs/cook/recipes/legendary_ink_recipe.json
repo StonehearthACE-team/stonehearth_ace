@@ -1,0 +1,39 @@
+{
+   "type": "recipe",
+   "effort": 60,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.legendary_ink_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.legendary_ink_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.legendary_ink_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/refined/legendary_ink/legendary_ink.png",
+   "workshop": "stonehearth:cook:workbench",
+   "level_requirement": 4,
+   "manual_unlock": true,
+   "ingredients": [
+	  {
+         "material": "herb resource",
+         "count": 8
+      },
+      {
+         "material": "chitin resource",
+         "count": 6
+      },
+	  {
+         "material": "raw_food fungi",
+         "count": 4
+      },
+	  {
+         "material": "food bug_meat raw",
+         "count": 4
+      },
+	  {
+         "uri": "stonehearth:resources:coal:lump_of_coal",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:refined:legendary:ink"
+      }
+   ]
+}

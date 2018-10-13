@@ -1,5 +1,12 @@
 {
    "craftable_recipes": {
+	  "legendary": {
+         "recipes": {
+            "legendary_headpiece": {
+               "recipe": "file(legendary_headpiece_recipe.json)"
+            }
+	     }
+      },
       "building_parts": {
          "recipes": {
             "simple_hatch_stone": {
@@ -13,9 +20,6 @@
             },
             "reinforced_stone_door_lockable": {
                "recipe": "file(reinforced_stone_door_lockable_recipe.json)"
-            },            
-            "patrol_point_tower": {
-            	"recipe": "file(patrol_point_tower_recipe.json)"
             }
          }
       }

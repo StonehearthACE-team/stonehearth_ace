@@ -1,0 +1,39 @@
+{
+   "type": "recipe",
+   "effort": 90,
+   "work_units": 9,
+   "recipe_name": "i18n(stonehearth_ace:jobs.blacksmith.recipes.legendary_mail_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.blacksmith.recipes.legendary_mail_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.blacksmith.recipes.legendary_mail_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/armor/legendary_mail/legendary_mail.png",
+   "workshop": "stonehearth:blacksmith:workbench",
+   "level_requirement": 6,
+   "manual_unlock": true,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:refined:legendary:cape",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth_ace:refined:legendary:chainmail",
+         "count": 1
+      },
+	  {
+         "uri": "stonehearth:refined:gold_ingot",
+         "count": 2
+      },
+      {
+         "material": "leather resource",
+         "count": 4
+      },
+      {
+         "material": "thread resource",
+         "count": 6
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:armor:legendary:mail"
+      }
+   ]
+}

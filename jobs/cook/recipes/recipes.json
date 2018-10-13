@@ -1,5 +1,14 @@
 {
    "craftable_recipes": {
+      "legendary": {
+         "ordinal": 2,
+         "name": "i18n(stonehearth:jobs.common.recipes.legendary_name)",
+         "recipes": {
+            "legendary_ink": {
+               "recipe": "file(legendary_ink_recipe.json)"
+            }
+         }
+      },
       "ingredients": {
          "recipes": {
 			"broth": {
