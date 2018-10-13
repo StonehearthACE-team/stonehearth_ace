@@ -83,7 +83,10 @@ function TrainAttack:run(ai, entity, args)
 		ai:execute('stonehearth:combat:attack_ranged', { target = args.target })
 	else
 		ai:execute('stonehearth:combat:attack', { target = args.target })
-	end
+   end
+   
+   -- the attack may have taken a long time, so set in combat again
+   dummy:set_in_combat()
 
 	radiant.events.trigger_async(entity, 'stonehearth_ace:training_performed')
 end

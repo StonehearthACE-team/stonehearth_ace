@@ -64,4 +64,36 @@ function AceTown:_requirements_met(person, job_uri)
    return one_of ~= false
 end
 
+function AceTown:register_entity_type(type, entity)
+   if not self._sv._registered_entity_types then
+      self._sv._registered_entity_types = {}
+   end
+   if not self._sv._registered_entity_types[type] then
+      self._sv._registered_entity_types[type] = {}
+   end
+   self._sv._registered_entity_types[type][entity:get_id()] = true
+   self.__saved_variables:mark_changed()
+end
+
+function AceTown:unregister_entity_type(type, entity)
+   if self._sv._registered_entity_types and self._sv._registered_entity_types[type] then
+      self._sv._registered_entity_types[type][entity:get_id()] = nil
+      self.__saved_variables:mark_changed()
+   end
+end
+
+function AceTown:unregister_entity_types(entity)
+   if self._sv._registered_entity_types then
+      for _, type_tbl in pairs(self._sv._registered_entity_types) do
+         type_tbl[entity:get_id()] = nil
+      end
+   end
+   self.__saved_variables:mark_changed()
+end
+
+function AceTown:is_entity_type_registered(type)
+   local registered = self._sv._registered_entity_types and self._sv._registered_entity_types[type]
+   return registered and next(registered) ~= nil
+end
+
 return AceTown

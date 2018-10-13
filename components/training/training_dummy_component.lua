@@ -1,3 +1,4 @@
+local Point3 = _radiant.csg.Point3
 local calendar = stonehearth.calendar
 local TrainingDummyComponent = class()
 
@@ -152,9 +153,12 @@ function TrainingDummyComponent:_on_health_changed(e)
 	local percentage = radiant.entities.get_health_percentage(self._entity)
 
 	if percentage >= 1 then
-		self:_enable()
+      self:_enable()
 	elseif percentage < self._sv.disable_health_percentage then
-		self:_disable()
+      local town = stonehearth.town:get_town(self._entity)
+      if town and town:is_entity_type_registered('stonehearth_ace:can_repair') then
+         self:_disable()
+      end
 	end
 end
 

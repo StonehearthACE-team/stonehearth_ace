@@ -59,6 +59,8 @@ function AceJobComponent:promote_to(job_uri, options)
       self:_add_equipment_preferences_toggle()
    end
 
+   self:_register_entity_types()
+
 	radiant.events.trigger(self._entity, 'stonehearth_ace:on_promote', { job_uri = job_uri, options = options })
 end
 
@@ -73,7 +75,26 @@ function AceJobComponent:demote(old_job_json, dont_drop_talisman)
    
    self:_remove_equipment_preferences_toggle()
 
+   self:_unregister_entity_types()
+
 	radiant.events.trigger(self._entity, 'stonehearth_ace:on_demote', { old_job_json = old_job_json, dont_drop_talisman = dont_drop_talisman })
+end
+
+function AceJobComponent:_register_entity_types()
+   -- register all types we care about (this can easily be patched to support more)
+   local town = stonehearth.town:get_town(self._entity)
+   if town then
+      if self:has_ai_pack('stonehearth:ai_pack:repairing') then
+         town:register_entity_type('stonehearth_ace:can_repair', self._entity)
+      end
+   end
+end
+
+function AceJobComponent:_unregister_entity_types()
+   local town = stonehearth.town:get_town(self._entity)
+   if town then
+      town:unregister_entity_types(self._entity)
+   end
 end
 
 function AceJobComponent:has_multiple_equipment_preferences()
