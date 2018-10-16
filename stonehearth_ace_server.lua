@@ -41,7 +41,9 @@ local monkey_patches = {
    ace_firepit_component = 'stonehearth.components.firepit.firepit_component',
    ace_client_state_service = 'stonehearth.services.server.client_state.client_state_service',
    ace_client_state = 'stonehearth.services.server.client_state.client_state',
-   ace_loot_drops_component = 'stonehearth.components.loot_drops.loot_drops_component'
+   ace_loot_drops_component = 'stonehearth.components.loot_drops.loot_drops_component',
+   ace_incapacitation_component = 'stonehearth.components.incapacitation.incapacitation_component',
+   ace_crafter_jobs_node = 'stonehearth.components.building2.plan.nodes.crafter_jobs_node'
 }
 
 local function monkey_patching()

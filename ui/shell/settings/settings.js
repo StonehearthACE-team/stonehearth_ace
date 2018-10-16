@@ -163,6 +163,7 @@ $(top).on('stonehearthReady', function(cc) {
             case 'boolean':
                newDiv = document.createElement('div');
                newDiv.classList.add('setting');
+
                var input = document.createElement('input');
                input.type = 'checkbox';
                input.id = settingElementID;
@@ -170,6 +171,7 @@ $(top).on('stonehearthReady', function(cc) {
                label.setAttribute('for', settingElementID);
                self._addTooltip(label, setting.description);
                label.innerHTML = i18n.t(setting.display_name);
+
                newDiv.appendChild(input);
                newDiv.appendChild(label);
 
@@ -180,9 +182,58 @@ $(top).on('stonehearthReady', function(cc) {
                   return input.checked = value;
                };
                break;
+
+            case 'number':
+               var ns = self._getNumberSettings(setting.number_settings);
+               newDiv = document.createElement('div');
+               newDiv.classList.add('setting');
+
+               var title = document.createElement('div');
+               title._addTooltip(title, setting.description);
+               title.innerHTML = i18n.t(setting.display_name);
+               var slider = document.createElement('div');
+               var description = document.createElement('div');
+               description.classList.add('sliderDescription');
+
+               newDiv.appendChild(title);
+               newDiv.appendChild(slider);
+               newDiv.appendChild(description);
+
+               $(slider).slider({
+                  value: setting.value,
+                  min: ns.min,
+                  max: ns.max,
+                  step: ns.step,
+                  change: function(event, ui) {
+                     radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:ui:action_hover' });
+                     description.innerHTML(ui.value);
+                  },
+                  slide: function(event, ui) {
+                     description.innerHTML(ui.value);
+                  }
+               });
+               
+               setting.getValue = function() {
+                  return $(slider).slider('value');
+               };
+               setting.setValue = function(value) {
+                  $(slider).slider({value: value});
+                  description.innerHTML(value);
+               }
+               
+               break;
          }
 
          return newDiv;
+      },
+
+      _getNumberSettings(ns) {
+         ns = ns || {};
+         ns.min = ns.min || 0;
+         ns.max = ns.max || Math.max(1, 1 + ns.min);
+         ns.step = ns.step || 1;
+
+         return ns;
       },
 
       _addTooltip: function(itemEl, title) {
