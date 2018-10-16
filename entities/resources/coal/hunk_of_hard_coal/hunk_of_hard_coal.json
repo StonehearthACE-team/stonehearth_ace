@@ -1,0 +1,36 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(hunk_of_hard_coal.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 4,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 2,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.resources.coal.hunk_of_hard_coal.display_name)",
+         "description": "i18n(stonehearth_ace:entities.resources.coal.hunk_of_hard_coal.description)",
+         "icon": "file(hunk_of_hard_coal.png)",
+         "is_item": true,
+         "category": "resources",
+         "material_tags": "stockpile_coal coal hard_coal high_fuel any_fuel resource"
+      },
+      "stonehearth:appeal": {
+         "appeal": -2
+      }
+   }
+}

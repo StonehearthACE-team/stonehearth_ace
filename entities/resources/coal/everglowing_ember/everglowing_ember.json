@@ -1,0 +1,40 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(everglowing_ember.qb)"
+            ]
+         }
+      },
+      "render_info": {
+         "color_map": "stonehearth:color_map:mob",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/mob_material_map.json"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 1,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.resources.coal.everglowing_ember.display_name)",
+         "description": "i18n(stonehearth_ace:entities.resources.coal.everglowing_ember.description)",
+         "icon": "file(everglowing_ember.png)",
+         "is_item": true,
+         "category": "resources",
+         "material_tags": "stockpile_coal coal everglowing_ember stockpile_fuel high_fuel any_fuel resource"
+      },
+      "stonehearth:appeal": {
+         "appeal": 6
+      }
+   }
+}

@@ -381,7 +381,7 @@
             },
             "legendary_chainmail_recipe": {
                "recipe_name": "Silver Chainmail Links",
-               "description": "Pieces of legendary silver chainmail linked together for the Vanguard's Chainmail.",
+               "description": "Pieces of silver chainmail linked together for the Vanguard's Chainmail.",
                "flavor": "May contain traces of gold"
             },
             "legendary_mace_recipe": {
@@ -998,6 +998,42 @@
                "display_name": "Cotton Bundle",
                "description": "Soft to the touch. Spinnable into thread"
             }
+         },
+         "coal": {
+            "piece_of_charcoal": {
+               "display_name": "Piece 'o Charcoal",
+               "description": "A block of slowly burnt wood that can be used as a good grade fuel."
+            },
+            "everglowing_ember": {
+               "display_name": "Everglowing Ember",
+               "description": "So pretty... It never stops glowing! Used as a higher grade fuel or by the Magmasmith."
+            },
+            "lump_of_coal": {
+               "display_name": "Lumps 'o Coal",
+               "description": "Sizable chunks of solid coal that can be used as a good grade fuel."
+            },
+            "hunk_of_hard_coal": {
+               "display_name": "Hunk 'o Hard Coal",
+               "description": "A large bit of black coal, full of energy to be used as a higher grade fuel."
+            },
+            "slab_of_coke": {
+               "display_name": "Slab 'o Coke",
+               "description": "An efficient good grade fuel refined from regular coal."
+            },
+            "chunk_of_brown_coal": {
+               "display_name": "Chunk 'o Brown Coal",
+               "description": "A soft and less efficient kind of coal that can be used as a lower grade fuel."
+            }
+         },
+         "fuel": {
+            "bundle_of_firewood": {
+               "description": "Split blocks of wood that can be efficiently used as a lower grade fuel.",
+               "display_name": "Bundle 'o Firewood"
+            },
+            "bit_of_peat": {
+               "display_name": "Bit 'o Peat",
+               "description": "Organic residue found in bogs and moors. Can be used as a lower grade fuel."
+            }
          }
       },
       "refined": {
@@ -1020,7 +1056,7 @@
          },
          "legendary_chainmail": {
             "display_name": "Silver Chainmail Links",
-            "description": "Pieces of legendary silver chainmail linked together for the Vanguard's Chainmail."
+            "description": "Pieces of silver chainmail linked together for the Vanguard's Chainmail."
          },
          "legendary_handle": {
             "display_name": "Sturdy Handle",
@@ -2107,6 +2143,30 @@
             "underfarm": {
                "substrate_name": "Substrate",
                "substrate_description": "You need a layer of organic material to plant undercrops."
+            },
+            "stockpile": {
+               "filters": {
+                  "tooltip_coal": "Coal",
+                  "tooltip_fuel": "Other Fuels",
+                  "tooltip_bones": "Bones",
+                  "tooltip_fungi": "Fungi",
+                  "tooltip_refined_goods": "Finished Goods",
+                  "tooltip_drinks": "Drinks",
+                  "tooltip_animal_feed": "Animal Feed",
+                  "tooltip_cooking_ingredients": "Cooking Ingredients",
+                  "tooltip_precious_metals": "Precious Metals",
+                  "tooltip_weapons": "Melee Weapons",
+                  "tooltip_equipment": "Armor & Protection",
+                  "tooltip_shield": "Shields",
+                  "tooltip_ranged_weapon": "Ranged Weapons",
+                  "tooltip_exotic_gear": "Other Equipment & Gear",
+                  "tooltip_gems": "Gems",
+                  "weapons_and_armor": "Combat Equipment",
+                  "tooltip_consumables": "Healing Items",
+                  "tooltip_consumables_other": "Other Consumables",
+                  "tooltip_bulk_resources": "Bulk Resources",
+                  "tooltip_civillian_equipment": "Clothing & Accessories"
+               }
             }
          }
       },
@@ -2128,7 +2188,12 @@
             "bone_resource_name": "Bone",
             "fungi_resource_name": "Fungi",
             "chitin_resource_name": "Chitin",
-            "coal_resource_name": "Any Coal"
+            "coal_resource_name": "Any Coal",
+            "any_fuel_resource_name": "Any Fuel",
+            "common_fuel_resource_name": "Any Common Fuel",
+            "weak_fuel_resource_name": "Lower Grade Fuel",
+            "fuel_resource_name": "Good Grade Fuel",
+            "high_fuel_resource_name": "Higher Grade Fuel"
          }
       }
    }

@@ -1,0 +1,19 @@
+{
+   "mixins": "/stonehearth/scenarios/static/landmarks/qb_to_terrain.json",
+   "biomes": ["stonehearth:biome:temperate","stonehearth:biome:desert","stonehearth:biome:arctic","stonehearth_ace:biome:highlands"],
+   "name": "peatland_2",
+   "category": "terrain_feature_common",
+   "unique" : false,
+   "size": {
+      "width": 96,
+      "length": 96
+   },
+   "habitat_types": ["plains","foothills","water"],
+   "overwrite_occupied_size": 5,
+   "weight" : 1,
+   "data": {
+      "brush" : "/stonehearth_ace/data/models/landmark/96x_peatland_2.qb",
+	  "brush_mask": "/stonehearth_ace/data/models/landmark/96x_peatland_2_mask.qb",
+      "landmark_block_types": "stonehearth:landmark_blocks"
+   }
+}

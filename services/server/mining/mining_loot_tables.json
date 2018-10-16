@@ -4,9 +4,38 @@
       "grass": {
          "entries": {
             "default": {
+               "num_rolls": 1,
                "items": {
+                  "none": {
+                     "uri": "",
+                     "weight": 100
+                  },
                   "thatch_bale": {
                      "uri": "stonehearth_ace:resources:thatch_bale",
+                     "weight": 5
+                  }
+               }
+            }
+         }
+      },
+      "dirt": {
+         "entries": {
+            "default": {
+               "items": {
+                  "brown_coal": {
+                     "uri": "stonehearth_ace:resources:coal:chunk_of_brown_coal",
+                     "weight": 0.6
+                  }
+               }
+            }
+         }
+      },
+      "coal": {
+         "entries": {
+            "default": {
+               "items": {
+                  "hard_coal": {
+                     "uri": "stonehearth_ace:resources:coal:hunk_of_hard_coal",
                      "weight": 10
                   }
                }

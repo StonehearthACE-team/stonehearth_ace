@@ -1,0 +1,25 @@
+{
+   "components": {
+	  "mixintypes": {
+		 "model_variants": "override"
+	  },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(lump_of_coal.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 2
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.resources.coal.lump_of_coal.display_name)",
+         "description": "i18n(stonehearth_ace:entities.resources.coal.lump_of_coal.description)",
+		 "icon": "file(lump_of_coal.png)",
+         "material_tags": "stockpile_coal coal lump_of_coal stockpile_fuel fuel any_fuel common_fuel resource"
+      }
+   }
+}

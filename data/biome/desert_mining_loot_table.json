@@ -1,6 +1,17 @@
 {
    "mixins": "stonehearth:mining:base_loot_table",
    "mineable_blocks": {
+      "grass": {
+         "entries": {
+            "default": {
+               "items": {
+                  "none": {
+                     "weight": 1000
+                  }
+               }
+            }
+         }
+      },
       "dirt": {
          "entries": {
             "default": {

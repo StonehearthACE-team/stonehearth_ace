@@ -1,0 +1,34 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(slab_of_coke.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 1,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.resources.coal.slab_of_coke.display_name)",
+         "description": "i18n(stonehearth_ace:entities.resources.coal.slab_of_coke.description)",
+         "icon": "file(slab_of_coke.png)",
+         "is_item": true,
+         "category": "resources",
+         "material_tags": "stockpile_coal coal slab_of_coke fuel any_fuel common_fuel resource"
+      },
+      "stonehearth:appeal": {
+         "appeal": -2
+      }
+   }
+}

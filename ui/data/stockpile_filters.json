@@ -1,0 +1,147 @@
+{
+   "stockpile": {
+      "resources": {
+         "categories": {
+            "clay": {
+               "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/earth.png"
+            },
+            "coals": {
+               "ordinal": 4.1,
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_coal)",
+               "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/coals.png",
+               "filter": "stockpile_coal"
+            },
+            "fuels": {
+               "ordinal": 4.2,
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_fuel)",
+               "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/fuels.png",
+               "filter": "stockpile_fuel"
+            },
+            "bones": {
+               "ordinal": 5.1,
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_bones)",
+               "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/bones.png",
+               "filter": "stockpile_bone"
+            },
+            "fungi": {
+               "ordinal": 6.1,
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_fungi)",
+               "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/fungi.png",
+               "filter": "stockpile_fungi"
+            }
+         }
+      },
+      "construction": {
+         "categories": {}
+      },
+      "goods": {
+         "categories": {
+            "refined_goods": {
+               "ordinal": 3.1,
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_refined_goods)",
+               "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/refined_goods.png",
+               "filter": "stockpile_refined_goods"
+            },
+            "consumables": {
+               "ordinal": 5,
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_consumables)",
+               "filter": "stockpile_consumable healing_item"
+            },
+            "consumables_other": {
+               "ordinal": 6,
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_consumables_other)",
+               "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/consumables_other.png",
+               "filter": "stockpile_consumable"
+            },
+            "bulk_resources": {
+               "ordinal": 7,
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_bulk_resources)",
+               "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/resource_pile.png",
+               "filter": "resource_pile"
+            },
+            "civillian_equipment": {
+               "ordinal": 8,
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_civillian_equipment)",
+               "icon": "/stonehearth/ui/game/modes/zones_mode/stockpile/images/taxonomy/light_armor.png",
+               "filter": "stockpile_equipment cloth"
+            }
+         }
+      },
+      "weapons_and_armor": {
+         "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.weapons_and_armor)",
+         "filter": "weapons_and_armor",
+         "ordinal": 3.1,
+         "categories": {
+            "equipment": {
+               "ordinal": 1,
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_equipment)",
+               "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/armor.png",
+               "filter": "stockpile_equipment armor"
+            },
+            "weapons": {
+               "ordinal": 2,
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_weapons)",
+               "icon": "/stonehearth/ui/game/modes/zones_mode/stockpile/images/taxonomy/melee_weapon.png",
+               "filter": "stockpile_weapon melee_weapon"
+            },
+            "ranged_weapon": {
+               "ordinal": 3,
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_ranged_weapon)",
+               "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/ranged_weapon.png",
+               "filter": "stockpile_weapon ranged_weapon"
+            },
+            "shield": {
+               "ordinal": 4,
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_shield)",
+               "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/shield.png",
+               "filter": "stockpile_equipment shield"
+            },
+            "exotic_gear": {
+               "ordinal": 5,
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_exotic_gear)",
+               "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/exotic_gear.png",
+               "filter": "stockpile_exotic_equipment"
+            }
+         }
+      },
+      "food_and_drink": {
+         "categories": {
+            "drinks": {
+               "ordinal": 3,
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_drinks)",
+               "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/drink.png",
+               "filter": "stockpile_drinks"
+            },
+            "animal_feed": {
+               "ordinal": 4,
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_animal_feed)",
+               "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/animal_feed.png",
+               "filter": "stockpile_fodder"
+            },
+            "cooking_ingredient": {
+               "ordinal": 1.1,
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_cooking_ingredients)"
+            }
+         }
+      },
+      "wealth": {
+         "categories": {
+            "trophy": {
+               "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/trophy.png"
+            },
+            "precious_metals": {
+               "ordinal": 3,
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_precious_metals)",
+               "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/precious_metals.png",
+               "filter": "stockpile_precious_metal"
+            },
+            "gems": {
+               "ordinal": 4,
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_gems)",
+               "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/gem.png",
+               "filter": "stockpile_gem"
+            }
+         }
+      }
+   }
+}
