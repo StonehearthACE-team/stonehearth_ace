@@ -142,7 +142,7 @@ $(top).on('stonehearthReady', function(cc) {
             if(settings) {
                // if there are actually settings, create the elements for them
                radiant.each(settings, function(name, setting) {
-                  var element = self._createGameplaySettingElements(name, setting);
+                  var element = self._createGameplaySettingElements(mod, name, setting);
                   if(element) {
                      newSection.appendChild(element);
                   }
@@ -153,11 +153,11 @@ $(top).on('stonehearthReady', function(cc) {
          }
       },
 
-      _createGameplaySettingElements: function(name, setting) {
+      _createGameplaySettingElements: function(mod, name, setting) {
          var self = this;
          // create the elements and functions for getting/setting the setting value
          var newDiv;
-         var settingElementID = 'opt__' + name;
+         var settingElementID = 'opt__' + mod + '__' + name;
 
          switch(setting.type) {
             case 'boolean':

@@ -18,7 +18,6 @@ function AceRenewableResourceNodeComponent:post_activate()
       --self:_auto_request_harvest()
    end
 
-   --radiant.events.trigger(stonehearth_ace, 'stonehearth_ace:auto_harvest_setting_update', {player_id = session.player_id, enabled = enabled})
    self._player_id_listener = 
          radiant.events.listen(self._entity, 'stonehearth:player_id_changed', self, self._on_player_id_changed)
    self:_setup_auto_harvest_setting_listener()
