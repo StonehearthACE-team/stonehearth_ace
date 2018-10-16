@@ -51,21 +51,6 @@ $(top).on('stonehearthReady', function(cc) {
                      self._updateModifiedGameplayTabPage();
                   });
             });
-         
-            return;
-         // Adding a toggle button to turn on/off the Auto Craft Recipe Dependencies feature
-         this.autoCraftDiv = this._addSimpleGameplaySetting(
-            {type: 'checkbox', id: 'opt_autoCraftRecipeDependencies'},
-            {display_name: "stonehearth_ace:ui.shell.settings.gameplayTab.auto_craft_recipe_dependencies",
-               description: "stonehearth_ace:ui.shell.settings.gameplayTab.auto_craft_recipe_dependencies_description"},
-               5);
-
-         // adding a toggle button for whether auto-harvest is automatically enabled for anything that doesn't specify a setting for it
-         this.autoEnableAutoHarvest = this._addSimpleGameplaySetting(
-            {type: 'checkbox', id: 'opt_autoHarvestAfterFirstHarvest'},
-            {display_name: "stonehearth_ace:ui.shell.settings.gameplayTab.auto_harvest_enabled",
-               description: "stonehearth_ace:ui.shell.settings.gameplayTab.auto_harvest_enabled_description"},
-               6);
       },
 
       _updateModifiedGameplayTabPage: function() {
@@ -91,28 +76,6 @@ $(top).on('stonehearthReady', function(cc) {
             });
       },
 
-      _updateGameplayTabPage: function() {
-         var self = this;
-         this._super();
-
-         return;
-         radiant.call('radiant:get_config', 'mods.stonehearth_ace')
-            .done(function(response) {
-               var aceOptions = response['mods.stonehearth_ace'] || {};
-               if (aceOptions) {
-                  self.autoCraftDiv.childNodes[0].checked = aceOptions.auto_craft_recipe_dependencies === false ? false : true;
-                  self.autoEnableAutoHarvest.childNodes[0].checked = ~~aceOptions.auto_enable_auto_harvest;
-               } else {
-                  self.autoCraftDiv.childNodes[0].checked = true;
-                  self.autoEnableAutoHarvest.childNodes[0].checked = false;
-               }
-               var oldOpts = self.get('oldGameplayOptions');
-               oldOpts['auto_craft_recipe_dependencies'] = aceOptions.auto_craft_recipe_dependencies;
-               oldOpts['auto_enable_auto_harvest'] = aceOptions.auto_enable_auto_harvest;
-               self.set('oldGameplayOptions', oldOpts);
-            });
-      },
-
       _getGameplayConfig: function() {
          var self = this;
          var result = self._super();
@@ -135,10 +98,20 @@ $(top).on('stonehearthReady', function(cc) {
          self._super();
 
          radiant.each(self._settings, function(mod, modSettings){
-            if(mod != 'stonehearth') {
+            if(mod == 'stonehearth') {
+               // if it's the stonehearth mod, we need to get the values from _getGameplayConfig
+               var shSettings = self._getGameplayConfig();
+               radiant.each(modSettings, function(name, setting){
+                  if(shSettings[name] != undefined) {
+                     setting.value = shSettings[name];
+                  }
+               });
+            }
+            else {
                radiant.each(modSettings, function(name, setting){
                   if(setting.getValue) {
                      var value = setting.getValue();
+                     setting.value = value;
                      radiant.call('radiant:set_config', 'mods.'+mod+'.'+name, value);
                      if(setting.on_change) {
                         var call = setting.on_change.call;
@@ -152,22 +125,6 @@ $(top).on('stonehearthReady', function(cc) {
          });
 
          radiant.call('stonehearth_ace:set_client_gameplay_settings_command', self._settings);
-      },
-
-      _getGameplayConfig_1: function() {
-         var res = this._super();
-         res['auto_craft_recipe_dependencies'] = $('#opt_autoCraftRecipeDependencies').is(':checked');
-         res['auto_enable_auto_harvest'] = $('#opt_autoHarvestAfterFirstHarvest').is(':checked');
-         return res;
-      },
-
-      _applyGameplaySettings_1: function() {
-         this._super();
-
-         radiant.call('radiant:set_config', 'mods.stonehearth_ace.auto_craft_recipe_dependencies', $('#opt_autoCraftRecipeDependencies').is(':checked'));
-         var auto_harvest = $('#opt_autoHarvestAfterFirstHarvest').is(':checked');
-         radiant.call('radiant:set_config', 'mods.stonehearth_ace.auto_enable_auto_harvest', auto_harvest);
-         radiant.call('stonehearth_ace:update_auto_harvest_setting', auto_harvest);
       },
 
       _createGameplayDivForMod: function(mod, settings) {
@@ -204,7 +161,7 @@ $(top).on('stonehearthReady', function(cc) {
 
          switch(setting.type) {
             case 'boolean':
-               newDiv = document.createElement('p');
+               newDiv = document.createElement('div');
                newDiv.classList.add('setting');
                var input = document.createElement('input');
                input.type = 'checkbox';
@@ -225,29 +182,6 @@ $(top).on('stonehearthReady', function(cc) {
                break;
          }
 
-         return newDiv;
-      },
-
-      // Adds a single gameplay setting.
-      // Not to be used for more complex settings, or for other setting tabs such as sound.
-      _addSimpleGameplaySetting: function(inputData, labelData, position) {
-         if (!position) position = 0;
-         $gameplayTab = $('#gameplayTab');
-         var newDiv = null;
-         if ($gameplayTab) {
-            newDiv = document.createElement('div');
-            newDiv.classList.add('setting');
-            var input = document.createElement('input');
-            input.type = inputData.type;
-            input.id = inputData.id;
-            var label = document.createElement('label');
-            label.setAttribute('for', inputData.id);
-            this._addTooltip(label, labelData.description);
-            label.innerHTML = i18n.t(labelData.display_name);
-            newDiv.appendChild(input);
-            newDiv.appendChild(label);
-            $gameplayTab[0].insertBefore(newDiv, $gameplayTab[0].childNodes[6+2*position])
-         }
          return newDiv;
       },
 

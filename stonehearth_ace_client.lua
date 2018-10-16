@@ -19,8 +19,7 @@ local service_creation_order = {
 }
 
 local monkey_patches = {
-   ace_portal_component = 'stonehearth.components.portal.portal_component',
-   ace_mod_service = 'stonehearth.services.client.mod.mod_service'
+   ace_portal_component = 'stonehearth.components.portal.portal_component'
 }
 
 local function monkey_patching()

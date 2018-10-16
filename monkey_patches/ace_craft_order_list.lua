@@ -3,6 +3,10 @@ local AceCraftOrderList = class()
 
 local log = radiant.log.create_logger('craft_order_list')
 
+function AceCraftOrderList:_should_auto_craft_recipe_dependencies(player_id)
+   return stonehearth.client_state:get_client_gameplay_setting(player_id, 'stonehearth_ace', 'auto_craft_recipe_dependencies', true)
+end
+
 AceCraftOrderList._ace_old_add_order = CraftOrderList.add_order
 -- In addition to the original add_order function (from craft_order_list.lua),
 -- here it's also checking if the order has enough of the required ingredients and,
@@ -12,7 +16,7 @@ AceCraftOrderList._ace_old_add_order = CraftOrderList.add_order
 -- one instance of each recipe that's maintained.
 --
 function AceCraftOrderList:add_order(player_id, recipe, condition, is_recursive_call)
-   if not radiant.util.get_config('auto_craft_recipe_dependencies', true) then
+   if not self:_should_auto_craft_recipe_dependencies(player_id) then
       return self:insert_order(player_id, recipe, condition)
    end
 
@@ -150,7 +154,7 @@ AceCraftOrderList._ace_old_delete_order_command = CraftOrderList.delete_order_co
 -- from the reserved ingredients table.
 --
 function AceCraftOrderList:delete_order_command(session, response, order_id)
-   if radiant.util.get_config('auto_craft_recipe_dependencies', true) then
+   if self:_should_auto_craft_recipe_dependencies(session.player_id) then
       local order = self._sv.orders[ self:find_index_of(order_id) ]
       if order then
          local condition = order:get_condition()

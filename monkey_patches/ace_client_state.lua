@@ -48,17 +48,28 @@ function AceClientState:set_gameplay_settings(settings)
       
       -- don't delete any unspecified settings (i.e., nil); just set whatever's included
       for field, setting in pairs(mod_settings) do
-         my_settings[field] = setting
+         if not my_settings[field] then
+            my_settings[field] = setting
+         else
+            self:_set_gameplay_setting(my_settings, field, setting.value)
+         end
       end
    end
 end
 
 function AceClientState:set_gameplay_setting(mod, field, value)
-   local my_settings = self:get_gameplay_setting(mod)
-   if not my_settings[field] then
-      my_settings[field] = {}
+   local my_settings = self:get_gameplay_settings(mod)
+   self:_set_gameplay_setting(my_settings, field, value)
+end
+
+function AceClientState:_set_gameplay_setting(settings, field, value)
+   local setting = settings[field]
+   if not setting then
+      setting = {}
+      settings[field] = setting
    end
-   my_settings[field].value = value
+   setting.value = value
+   return setting
 end
 
 function AceClientState:reset_gameplay_setting()

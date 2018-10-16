@@ -820,10 +820,6 @@
       "set_client_gameplay_setting_command": {
          "controller": "file(call_handlers/settings_call_handler.lua)",
          "endpoint": "server"
-      },
-      "update_gameplay_settings_from_config_command": {
-         "controller": "file(call_handlers/settings_call_handler.lua)",
-         "endpoint": "client"
       }
    },
    "object_commands": {

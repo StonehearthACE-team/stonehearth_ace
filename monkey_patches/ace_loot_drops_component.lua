@@ -14,7 +14,10 @@ function AceLootDropsComponent:_on_kill_event()
    if loot_table then
       local location = radiant.entities.get_world_grid_location(self._entity)
       if location then
-         local auto_loot = stonehearth.client_state:get_client_gameplay_setting(self._sv.auto_loot_player_id, 'stonehearth', 'auto_loot', false)
+         local auto_loot
+         if self._sv.auto_loot_player_id then
+            auto_loot = stonehearth.client_state:get_client_gameplay_setting(self._sv.auto_loot_player_id, 'stonehearth', 'auto_loot', false)
+         end
          local town = stonehearth.town:get_town(self._sv.auto_loot_player_id)
 
          local items = LootTable(loot_table)
