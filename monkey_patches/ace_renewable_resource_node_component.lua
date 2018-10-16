@@ -81,8 +81,9 @@ function AceRenewableResourceNodeComponent:get_auto_harvest_enabled()
    local auto_harvest = self._sv.manual_auto_harvest
    if auto_harvest == nil then
       auto_harvest = self._sv.default_auto_harvest
-      if auto_harvest == nil and self._entity:get_player_id() ~= '' then
-         auto_harvest = radiant.util.get_config('auto_enable_auto_harvest', false)
+      local player_id = self._entity:get_player_id()
+      if auto_harvest == nil and player_id ~= '' then
+         auto_harvest = stonehearth.client_state:get_client_gameplay_setting(player_id, 'stonehearth_ace', 'auto_enable_auto_harvest', false)
       end
    end
    return auto_harvest

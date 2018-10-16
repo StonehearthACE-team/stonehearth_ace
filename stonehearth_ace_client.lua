@@ -14,11 +14,13 @@ stonehearth_ace = {}
 stonehearth_ace.util = require("lib.util")
 
 local service_creation_order = {
-   'heatmap'
+   'heatmap',
+   'gameplay_settings'
 }
 
 local monkey_patches = {
-   ace_portal_component = 'stonehearth.components.portal.portal_component'
+   ace_portal_component = 'stonehearth.components.portal.portal_component',
+   ace_mod_service = 'stonehearth.services.client.mod.mod_service'
 }
 
 local function monkey_patching()

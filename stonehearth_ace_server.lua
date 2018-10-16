@@ -37,7 +37,10 @@ local monkey_patches = {
    ace_drop_crafting_ingredients = 'stonehearth.ai.actions.drop_crafting_ingredients',
    ace_produce_crafted_items = 'stonehearth.ai.actions.produce_crafted_items',
    ace_trapping_grounds_component = 'stonehearth.components.trapping.trapping_grounds_component',
-   ace_collection_quest_shakedown = 'stonehearth.services.server.game_master.controllers.scripts.collection_quest_shakedown'
+   ace_collection_quest_shakedown = 'stonehearth.services.server.game_master.controllers.scripts.collection_quest_shakedown',
+   ace_client_state_service = 'stonehearth.services.server.client_state.client_state_service',
+   ace_client_state = 'stonehearth.services.server.client_state.client_state',
+   ace_loot_drops_component = 'stonehearth.components.loot_drops.loot_drops_component'
 }
 
 local function monkey_patching()

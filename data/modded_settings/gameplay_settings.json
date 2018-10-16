@@ -1,0 +1,24 @@
+{
+   "stonehearth": {
+      "auto_loot": {},
+      "building_auto_queue_crafters": {},
+      "auto_rescue": {}
+   },
+   "stonehearth_ace": {
+      "auto_craft_recipe_dependencies": {
+         "type": "boolean",
+         "display_name": "stonehearth_ace:ui.shell.settings.gameplayTab.auto_craft_recipe_dependencies",
+         "description": "stonehearth_ace:ui.shell.settings.gameplayTab.auto_craft_recipe_dependencies_description",
+         "default": true
+      },
+      "auto_enable_auto_harvest": {
+         "type": "boolean",
+         "display_name": "stonehearth_ace:ui.shell.settings.gameplayTab.auto_harvest_enabled",
+         "description": "stonehearth_ace:ui.shell.settings.gameplayTab.auto_harvest_enabled_description",
+         "default": false,
+         "on_change": {
+            "call": "update_auto_harvest_setting"
+         }
+      }
+   }
+}
