@@ -43,6 +43,14 @@ function BaseJob:activate()
       if self._create_listeners then
          self:_create_listeners()
       end
+
+      self:_register_with_town()
+   end
+end
+
+function BaseJob:restore()
+   if self._sv.is_current_class then
+      self:_register_with_town()
    end
 end
 
@@ -97,11 +105,9 @@ function BaseJob:promote(json_path)
    if self._create_listeners then
       self:_create_listeners()
    end
-   
+
    -- ADDED FOR ACE
-   self._sv.max_num_training = { training = 0 }
    self:_register_with_town()
-   self.__saved_variables:mark_changed()
 end
 
 function BaseJob:level_up()
