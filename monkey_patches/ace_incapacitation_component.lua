@@ -15,8 +15,10 @@ local STATES = {
 AceIncapacitationComponent._old__declare_state_transitions = IncapacitationComponent._declare_state_transitions
 function AceIncapacitationComponent:_declare_state_transitions(sm)
    self:_old__declare_state_transitions(sm)
-
-   sm:on_state_transition(STATES.NORMAL, STATES.AWAITING_RESCUE, function()
+   
+   -- we're overriding a transition we just set up, and apparently the state machine doesn't allow that,
+   -- nor does it allow removing a state transition! so we'll just have to manually hack it in
+   sm._full_transitions[STATES.NORMAL][STATES.AWAITING_RESCUE] = function()
          local entity = self._entity
 
          self:_drop_carried()
@@ -44,7 +46,7 @@ function AceIncapacitationComponent:_declare_state_transitions(sm)
             self:_toggle_rescue()
          end
 
-      end)
+      end
 end
 
 return AceIncapacitationComponent
