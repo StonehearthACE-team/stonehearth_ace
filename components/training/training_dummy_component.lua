@@ -1,11 +1,9 @@
 local Point3 = _radiant.csg.Point3
-local calendar = stonehearth.calendar
 local TrainingDummyComponent = class()
 
 function TrainingDummyComponent:initialize()
 	self._json = radiant.entities.get_json(self) or {}
 	self._sv.enabled = true
-	self._sv.combat_time = calendar:realtime_to_game_seconds(self._json.combat_time or 5)
    self._sv.disable_health_percentage = self._json.disable_health_percentage or 0.3
    
    local limit_data = radiant.entities.get_entity_data(self._entity, 'stonehearth:item_placement_limit')
@@ -18,6 +16,7 @@ function TrainingDummyComponent:create()
 end
 
 function TrainingDummyComponent:activate()
+   self._sv.combat_time = stonehearth.calendar:realtime_to_game_seconds(self._json.combat_time or 5)
    self._health_listener = radiant.events.listen(self._entity, 'stonehearth:expendable_resource_changed:health', self, self._on_health_changed)
    self._parent_trace = self._entity:get_component('mob'):trace_parent('siege weapon added or removed')
                   :on_changed(function(parent_entity)
@@ -92,7 +91,7 @@ function TrainingDummyComponent:set_in_combat()
 end
 
 function TrainingDummyComponent:_refresh_combat_timer()
-	self._sv._entered_combat_time = calendar:get_elapsed_time()
+	self._sv._entered_combat_time = stonehearth.calendar:get_elapsed_time()
 	if not self._sv._combat_timer then
 		self:_create_combat_timer(self._sv.combat_time)
 	end
@@ -102,7 +101,7 @@ function TrainingDummyComponent:_on_combat_timer()
 	self:_destroy_combat_timer()
 
 	-- check if we've been out of combat for long enough
-	local current_time = calendar:get_elapsed_time()
+	local current_time = stonehearth.calendar:get_elapsed_time()
 	local ooc_time = (self._sv._entered_combat_time or 0) + self._sv.combat_time
 	if ooc_time <= current_time then
 		self:_reset_combat_state()
@@ -116,7 +115,7 @@ function TrainingDummyComponent:_reset_combat_state()
 end
 
 function TrainingDummyComponent:_create_combat_timer(ooc_time)
-	self._sv._combat_timer = calendar:set_timer('training dummy combat', ooc_time, function() self:_on_combat_timer() end)
+	self._sv._combat_timer = stonehearth.calendar:set_timer('training dummy combat', ooc_time, function() self:_on_combat_timer() end)
 end
 
 function TrainingDummyComponent:_on_health_changed(e)
