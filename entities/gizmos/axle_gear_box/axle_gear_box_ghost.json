@@ -1,0 +1,50 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(axle_gear_box.qb)"
+            ]
+         }
+      },
+      "render_info": {
+         "scale": 0.1
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "allow_vertical_adjacent": true
+      },
+      "stonehearth:fixture": {
+         "cursor": "stonehearth:cursors:create_window",
+         "margin": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+         },
+         "bounds": {
+            "min": { "x": 0, "y": 0 },
+            "max": { "x": 1, "y": 1 }
+         }
+      },
+      "stonehearth:portal": {
+         "cutter": [
+            {
+               "min": { "x": 0, "y": 0 },
+               "max": { "x": 1, "y": 1 }
+            }
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.gizmos.axle_gear_box.display_name)",
+         "description": "i18n(stonehearth_ace:entities.gizmos.axle_gear_box.description)",
+         "icon": "file(axle_gear_box.png)",
+         "category": "construction",
+         "material_tags": "axle axle_gear_box gizmos crafted stockpile_gizmos"
+      }
+   }
+}

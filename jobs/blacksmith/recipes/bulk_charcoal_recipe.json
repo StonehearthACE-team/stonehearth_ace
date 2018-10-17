@@ -1,0 +1,44 @@
+{
+   "type": "recipe",
+   "effort": 240,
+   "work_units": 12,
+   "recipe_name": "i18n(stonehearth_ace:jobs.blacksmith.recipes.bulk_charcoal_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.blacksmith.recipes.bulk_charcoal_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.blacksmith.recipes.bulk_charcoal_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/resources/coal/piece_of_charcoal/piece_of_charcoal.png",
+   "workshop": "stonehearth_ace:blacksmith:fuel_oven",
+   "work_effect": "work_wait",
+   "level_requirement": 5,
+   "ingredients": [
+      {
+         "material": "wood resource",
+         "count": 10
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:resources:coal:piece_of_charcoal"
+      },
+	  {
+         "item": "stonehearth_ace:resources:coal:piece_of_charcoal"
+      },
+	  {
+         "item": "stonehearth_ace:resources:coal:piece_of_charcoal"
+      },
+	  {
+         "item": "stonehearth_ace:resources:coal:piece_of_charcoal"
+      },
+	  {
+         "item": "stonehearth_ace:resources:coal:piece_of_charcoal"
+      },
+	  {
+         "item": "stonehearth_ace:resources:coal:piece_of_charcoal"
+      },
+	  {
+         "item": "stonehearth_ace:resources:coal:piece_of_charcoal"
+      },
+	  {
+         "item": "stonehearth_ace:resources:coal:piece_of_charcoal"
+      }
+   ]
+}

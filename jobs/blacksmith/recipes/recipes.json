@@ -1,5 +1,15 @@
 {
   "craftable_recipes" : {
+	"workbenches": {
+	  "recipes" : {
+		"fuel_oven" : {
+		  "recipe" : "file(fuel_oven_recipe.json)"
+		},
+		"crucible" : {
+		  "recipe" : "file(crucible_recipe.json)"
+		}
+	  }
+	},
     "legendary" : {
 	  "recipes" : {
         "legendary_mail" : {
@@ -19,6 +29,24 @@
           "recipe" : "file(copper_garden_lantern_recipe.json)"
         }
       }
+    },
+	"refined": {
+        "ordinal": 35,
+        "name": "i18n(stonehearth_ace:jobs.blacksmith.recipes.refined_name)",
+        "recipes": {
+            "charcoal": {
+               "recipe": "file(charcoal_recipe.json)"
+            },
+			"coke": {
+               "recipe": "file(coke_recipe.json)"
+            },
+			"bulk_charcoal": {
+               "recipe": "file(bulk_charcoal_recipe.json)"
+            },
+			"bulk_coke": {
+               "recipe": "file(bulk_coke_recipe.json)"
+            }
+        }
     },
 	"weapons": {
 	  "recipes" : {

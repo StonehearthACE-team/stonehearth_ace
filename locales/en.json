@@ -425,6 +425,36 @@
       },
       "blacksmith": {
          "recipes": {
+            "blacksmith_fuel_oven_recipe": {
+               "recipe_name": "Blacksmith Kiln",
+               "description": "Required for refining certain materials like wood and coal.",
+               "flavor": "A strong fire requires the purest fuel. And that starts with hard work. -Lucan Varius, Artifex Ignis"
+            },
+            "blacksmith_crucible_recipe": {
+               "recipe_name": "Blacksmith Crucible",
+               "description": "Can be used for melting and working metals or creating alloys.",
+               "flavor": "Fire and stone shall give you metal, but with metal and metal you shall... Well, get even more metal. -Lucan Varius, Artifex Ignis"
+            },
+            "charcoal_recipe": {
+               "recipe_name": "Piece 'o Charcoal (x3)",
+               "description": "Heat wood in the absence of oxygen to acquire charcoal, a good grade fuel.",
+               "flavor": "Experts call it 'slow pyrolysis'. I call it BIG BONFIRE!"
+            },
+            "coke_recipe": {
+               "recipe_name": "Slab 'o Coke (x3)",
+               "description": "Heat Lumps 'o Coal without burning them to efficiently produce coke, a good grade fuel.",
+               "flavor": "Cook with coal or coke coal to cook with coke."
+            },
+            "bulk_charcoal_recipe": {
+               "recipe_name": "Piece 'o Charcoal (x8)",
+               "description": "Skill allows the Blacksmith to more efficiently burn wood, producing more charcoal.",
+               "flavor": "It's 5% less waste!"
+            },
+            "bulk_coke_recipe": {
+               "recipe_name": "Slab 'o Coke (x10)",
+               "description": "Mastery of the craft allows the Blacksmith to achieve maximum efficiency in coking coal.",
+               "flavor": "Coke for everyone!"
+            },
             "copper_wall_lantern_recipe": {
                "recipe_name": "Copper Wall-Mounted Lantern",
                "description": "A beautiful lantern. Place on buildings to provide light at night.",
@@ -551,6 +581,19 @@
                "recipe_name": "Vanguard's Chainmail",
                "description": "Chain armor akin to the ones from the Empire's royal vanguard.",
                "flavor": "It is said the cape was their demise"
+            },
+            "refined_name": "Refinement"
+         },
+         "blacksmith_fuel_oven": {
+            "blacksmith_fuel_oven_ghost": {
+               "display_name": "Blacksmith's Kiln",
+               "description": "Used by the Blacksmith for refining materials through controlled heating."
+            }
+         },
+         "blacksmith_crucible": {
+            "blacksmith_crucible_ghost": {
+               "display_name": "Blacksmith's Crucible",
+               "description": "Used by the Blacksmith for melting and working metals or creating alloys."
             }
          }
       },
@@ -1947,6 +1990,18 @@
          "target_training": {
             "display_name": "Archery Target",
             "description": "Less dangerous than shooting apples on someone's head."
+         },
+         "axle_vertical": {
+            "description": "A rotating shaft that can take mechanical power vertically.",
+            "display_name": "Vertical Axle"
+         },
+         "axle_horizontal": {
+            "display_name": "Horizontal Axle",
+            "description": "A rotating shaft that can take mechanical power forward."
+         },
+         "axle_gear_box": {
+            "display_name": "Gear Box",
+            "description": "This device allows you to redirect mechanical power to any direction."
          }
       }
    },
