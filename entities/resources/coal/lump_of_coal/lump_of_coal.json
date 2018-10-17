@@ -6,7 +6,15 @@
       "model_variants": {
          "default": {
             "models": [
-               "file(lump_of_coal.qb)"
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(lump_of_coal.qb)",
+                     "file(lump_of_coal_2.qb)",
+					 "file(lump_of_coal_3.qb)",
+                     "file(lump_of_coal_4.qb)"
+                  ]
+               }
             ]
          }
       }
