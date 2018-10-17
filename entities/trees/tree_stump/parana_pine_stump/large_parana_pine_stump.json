@@ -1,5 +1,4 @@
 {
-   "mixins": "stonehearth:mixins:tree",
    "type": "entity",
    "components": {
       "render_info": {
@@ -13,7 +12,10 @@
          }
       },
       "stonehearth:resource_node": {
-         "resource": "stonehearth_ace:resources:wood:parana_pine_log"
+         "resource": "stonehearth_ace:resources:wood:parana_pine_log",
+         "harvest_overlay_effect": "stonehearth:effects:chop_overlay_effect",
+         "harvester_effect": "hoe",
+         "description": "chop_tree"
       },
       "mob": {
          "align_to_grid": [
