@@ -19,7 +19,6 @@ end
 
 function TrainingDummyComponent:activate()
    self._health_listener = radiant.events.listen(self._entity, 'stonehearth:expendable_resource_changed:health', self, self._on_health_changed)
-   self._kill_listener = radiant.events.listen(self._entity, 'stonehearth:kill_event', self, self._on_kill_event)
    self._parent_trace = self._entity:get_component('mob'):trace_parent('siege weapon added or removed')
                   :on_changed(function(parent_entity)
                         if not parent_entity then
@@ -46,10 +45,6 @@ function TrainingDummyComponent:_destroy_listeners()
 		self._health_listener:destroy()
 		self._health_listener = nil
    end
-   if self._kill_listener then
-		self._kill_listener:destroy()
-		self._kill_listener = nil
-   end
    if self._parent_trace then
 		self._parent_trace:destroy()
 		self._parent_trace = nil
@@ -71,31 +66,6 @@ function TrainingDummyComponent:_register_with_town(register)
          town:register_limited_placement_item(self._entity, self._dummy_type)
       else
          town:unregister_limited_placement_item(self._entity, self._dummy_type)
-      end
-   end
-end
-
-function TrainingDummyComponent:_on_kill_event(args)
-   local kill_data = args.kill_data
-   local player_id = radiant.entities.get_player_id(self._entity)
-   if kill_data and kill_data.source_id == player_id then
-      return -- don't replace with ghost if destroyed/cleared by the user
-   end
-   local town = stonehearth.town:get_town(player_id)
-   local limit_data = radiant.entities.get_entity_data(self._entity:get_uri(), 'stonehearth:item_placement_limit')
-   if town then
-      if town:is_placeable(limit_data) then
-         local location = radiant.entities.get_world_grid_location(self._entity)
-         local parent = radiant.entities.get_parent(self._entity)
-         if location and parent and radiant.terrain.is_standable(self._entity, location) then -- make sure location is valid
-            local placement_info = {
-                  location = location,
-                  normal = Point3(0, 1, 0),
-                  rotation = self._entity:get_component('mob'):get_facing(),
-                  structure = parent,
-               }
-            local ghost_entity = town:place_item_type(self._entity:get_uri(), nil, placement_info)
-         end
       end
    end
 end

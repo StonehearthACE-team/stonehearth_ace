@@ -13,15 +13,17 @@ function AceFirepitComponent:_extinguish()
    local is_wood = false
    
    for id, child in ec:each_child() do
-	  if radiant.entities.is_material(child, 'wood resource') then
-	  is_wood = true
-	  end
+      if radiant.entities.is_material(child, 'wood resource') then
+         is_wood = true
+         break
+      end
    end
    
    self:_old_extinguish()
+
    if was_lit and is_wood then
       self:_create_charcoal()
-	  self._log:debug('creating a charcoal...')
+	   self._log:debug('creating a charcoal...')
    end
 end
 
@@ -33,16 +35,16 @@ function AceFirepitComponent:_create_charcoal()
 end
 
 function AceFirepitComponent:_retrieve_charcoal()
-    local entity_container = self._entity:get_component('entity_container')
-    local location = radiant.entities.get_world_grid_location(self._entity)
+   local entity_container = self._entity:get_component('entity_container')
+   local location = radiant.entities.get_world_grid_location(self._entity)
 
-    for id, child in entity_container:each_child() do
-		if child and child:is_valid() and child:get_uri() == CHARCOAL_URI then
-		entity_container:remove_child(id)
-		location = radiant.terrain.find_placement_point(location, 0, 3)
-		radiant.terrain.place_entity(child, location)
-		end
-    end
+   for id, child in entity_container:each_child() do
+      if child and child:is_valid() and child:get_uri() == CHARCOAL_URI then
+         entity_container:remove_child(id)
+         location = radiant.terrain.find_placement_point(location, 0, 3)
+         radiant.terrain.place_entity(child, location)
+      end
+   end
 end
 
 return AceFirepitComponent
