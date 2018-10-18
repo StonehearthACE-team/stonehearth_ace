@@ -94,6 +94,7 @@
       "crops:marblesprout_crop": "file(entities/crops/marblesprout_crop)",
       "crops:moonbell_crop": "file(entities/crops/moonbell_crop)",
       "crops:yew_tree_crop": "file(entities/crops/yew_tree_crop/yew_tree_crop.json)",
+      "data:connection_types": "file(data/connections/connection_types.json)",
       "data:modded_settings": "file(data/gameplay_settings/gameplay_settings.json)",
       "data:resource_constants": "file(data/resource_constants.json)",
       "data:thoughts": "file(data/happiness/thoughts.json)",
@@ -843,6 +844,10 @@
       ],
       "trapping_grounds": [
          "get_wilderness_level_command"
+      ],
+      "connection": [
+         "get_connection_types_command",
+         "get_connections_datastore_command"
       ]
    },
    "ui": {

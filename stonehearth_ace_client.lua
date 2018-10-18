@@ -15,7 +15,8 @@ stonehearth_ace.util = require("lib.util")
 
 local service_creation_order = {
    'heatmap',
-   'gameplay_settings'
+   'gameplay_settings',
+   'connection_client'
 }
 
 local monkey_patches = {

@@ -6,9 +6,14 @@ these are grouped by connection type; entities can have multiple connection type
 local Cube3 = _radiant.csg.Cube3
 local Point3 = _radiant.csg.Point3
 local Region3 = _radiant.csg.Region3
-local region_utils = require 'stonehearth.lib.building.region_utils'
+--local region_utils = require 'stonehearth.lib.building.region_utils'
+local log = radiant.log.create_logger('connection')
 
 local PlayerConnections = class()
+
+local rotate_region = function(region, origin, rotation)
+   return region:rotated(rotation)
+end
 
 function PlayerConnections:__init()
    
@@ -18,11 +23,14 @@ function PlayerConnections:initialize()
    self._sv.chunk_region_size = 8
    self._sv.entities = {} -- list of all the entities being tracked: [entity id]{id, entity, (location,) connections}
    -- connections: [type]{(entity_struct,) (type,) max_connections, (num_connections,) connectors}
-   -- connectors: [name]{(connections,) max_connections, (num_connections,) region, (chunk_region_keys,) region_intersection_threshold, (connected_to)}
+   -- connectors: [name]{(name,) (connection,) max_connections, (num_connections,) region, (chunk_region_keys,) region_intersection_threshold, (connected_to)}
    self._sv.connection_tables = {} -- list of connections by type: [type]{type, entity_connectors, connector_locations, graphs}
    -- entity_connectors: [entity_id]{connector_1, connector_2}
    -- connector_locations: [chunk_region_key]{connector_1, connector_2}
    -- graphs: {nodes: [entity_id]{entity_struct, connected_nodes}}
+   self._sv.connections = {}
+   self._sv.connections_ds = radiant.create_datastore()
+   self._sv.connections_ds:set_data({})
 end
 
 function PlayerConnections:create(player_id)
@@ -48,6 +56,21 @@ end
 
 function PlayerConnections:destroy()
    self:_stop_all_traces()
+end
+
+function PlayerConnections:get_connections_datastore()
+   return self._sv.connections_ds
+end
+
+function PlayerConnections:_update_connections_datastore()
+   self._sv.connections_ds:set_data(self._sv.connections)
+end
+
+function PlayerConnections:_update_connection_for_datastore(type, conn_id, connected)
+   local conns = self._sv.connections[type]
+   if conns then
+      conns[conn_id] = connected
+   end
 end
 
 function PlayerConnections:_start_all_traces()
@@ -80,6 +103,7 @@ function PlayerConnections:_start_entity_traces(entity_struct)
             self.__saved_variables:mark_changed()
          end)
 
+         --[[
       traces._location_trace = entity:add_component('mob'):trace_transform('connection entity moved', _radiant.dm.TraceCategories.SYNC_TRACE)
       :on_changed(function()
             self:_remove_entity_from_graphs(entity_struct)
@@ -87,6 +111,7 @@ function PlayerConnections:_start_entity_traces(entity_struct)
             self:_add_entity_to_graphs(entity_struct)
             self.__saved_variables:mark_changed()
          end)
+         ]]
       
       self._traces[entity_struct.id] = traces
    end
@@ -112,24 +137,33 @@ end
 function PlayerConnections:register_entity(entity, connections)
    local id = entity:get_id()
    if not self._sv.entities[id] then
-      local entity_struct = {id = id, entity = entity, connections = connections}
+      local conns = {}
+      local entity_struct = {id = id, entity = entity, connections = conns}
       self._sv.entities[id] = entity_struct
       
       -- organize connections by type
       for type, connection in pairs(connections) do
-         connection.entity_struct = entity_struct
-         connection.num_connections = 0
-         connection.type = type
+         local conn = {}
+         conns[type] = conn
+         conn.entity_struct = entity_struct
+         conn.num_connections = 0
+         conn.max_connections = connection.max_connections
+         conn.type = type
+         conn.connectors = {}
 
          for key, connector in pairs(connection.connectors) do
-            -- transform all the region JSON data into Cube3 structures
-            connector.region = radiant.util.to_cube3(connector.region)
-
-            connector.num_connections = 0
-            connector.connections = connections
-            connector.connected_to = {}
-            connector.region_intersection_threshold = connector.region_intersection_threshold or 0
-            connector.chunk_region_keys = {}
+            local connect = {}
+            conn.connectors[key] = connect
+            connect.name = key
+            connect.id = id..'|'..key
+            connect.info = connector.info
+            connect.num_connections = 0
+            connect.max_connections = connector.max_connections
+            connect.connection = conn
+            connect.connected_to = {}
+            connect.region = Cube3(connector.region)
+            connect.region_intersection_threshold = connector.region_intersection_threshold or 0
+            connect.chunk_region_keys = {}
          end
          
          local conn_tbl = self:get_connections(type)
@@ -163,11 +197,7 @@ function PlayerConnections:unregister_entity(entity)
          for key, connector in pairs(connection.connectors) do
             for _, chunk_region_key in ipairs(connector.chunk_region_keys) do
                local conn_locs = conn_tbl.connector_locations[chunk_region_key]
-               for i = #conn_locs, 1, -1 do
-                  if conn_locs[i].connections.entity_struct == entity_struct then
-                     table.remove(conn_locs, i)
-                  end
-               end
+               conn_locs[connector.id] = nil
             end
          end
       end
@@ -183,6 +213,7 @@ function PlayerConnections:get_connections(type)
    if not conn_tbl then
       conn_tbl = {type = type, entity_structs = {}, connector_locations = {}, graphs = {}}
       self._sv.connection_tables[type] = conn_tbl
+      self._sv.connections[type] = {}
       self.__saved_variables:mark_changed()
    end
 
@@ -190,6 +221,7 @@ function PlayerConnections:get_connections(type)
 end
 
 function PlayerConnections:_add_entity_to_graphs(entity_struct)
+   local changed = false
    -- for each connection type, determine if the entity's connector regions intersect with any other valid connector regions
    for type, connection in pairs(entity_struct.connections) do
       for _, connector in pairs(connection.connectors) do
@@ -197,42 +229,51 @@ function PlayerConnections:_add_entity_to_graphs(entity_struct)
             break
          end
 
-         if connector.num_connections < connector.max_connections then
-            self:_try_connecting_connector(connector)
+         if connector.num_connections < connector.max_connections and self:_try_connecting_connector(connector) then
+            changed = true
          end
       end
+   end
+
+   if changed then
+      self:_update_connections_datastore()
    end
 end
 
 function PlayerConnections:_remove_entity_from_graphs(entity_struct)
+   local changed = false
    for type, connection in pairs(entity_struct.connections) do
       for _, connector in pairs(connection.connectors) do
          for id, connected in pairs(connector.connected_to) do
             if self:_try_disconnecting_connectors(connector, connected) then
-               -- if this connection was successfully disconnected, trigger an event?
-
+               changed = true
+               self:_update_connection_for_datastore(type, connector.id, false)
+               self:_update_connection_for_datastore(type, connected.id, false)
             end
          end
       end
+   end
+
+   if changed then
+      self:_update_connections_datastore()
    end
 end
 
 function PlayerConnections:_try_connecting_connector(connector)
    local connection = connector.connection
-   local potential_connectors = self:_find_best_potential_connectors(entity_struct, type, connector)
-   local result = nil
+   local potential_connectors = self:_find_best_potential_connectors(connection, connector)
+   local result = false
 
    for _, target_connector in ipairs(potential_connectors) do
-      if connection.num_connections >= connection.max_connections or connection.num_connections >= connection.max_connections then
+      if connector.num_connections >= connector.max_connections or connection.num_connections >= connection.max_connections then
          return result
       end
 
-      local connection_result = self:_try_connecting_connectors(connector, target_connector.connector)
-      if connection_result then
-         -- if this connection happened, trigger an event?
-
+      if self:_try_connecting_connectors(connector, target_connector.connector) then
+         result = true
+         self:_update_connection_for_datastore(connection.type, connector.id, true)
+         self:_update_connection_for_datastore(connection.type, target_connector.connector.id, true)
       end
-      result = result or connection_result
    end
 
    return result
@@ -251,8 +292,8 @@ function PlayerConnections:_try_connecting_connectors(c1, c2)
       return nil
    end
    
-   local conn1 = c1.connections
-   local conn2 = c2.connections
+   local conn1 = c1.connection
+   local conn2 = c2.connection
    local e1 = conn1.entity_struct
    local e2 = conn2.entity_struct
 
@@ -311,8 +352,8 @@ function PlayerConnections:_try_connecting_connectors(c1, c2)
       end
 
       -- make sure both newly-connected nodes are members of the current graph
-      graph[e1.id] = graph_entity_1
-      graph[e2.id] = graph_entity_2
+      graph.nodes[e1.id] = graph_entity_1
+      graph.nodes[e2.id] = graph_entity_2
 
       c1.connected_to[c2] = true
       c2.connected_to[c1] = true
@@ -337,8 +378,8 @@ function PlayerConnections:_try_disconnecting_connectors(c1, c2)
       return nil
    end
    
-   local conn1 = c1.connections
-   local conn2 = c2.connections
+   local conn1 = c1.connection
+   local conn2 = c2.connection
    local e1 = conn1.entity_struct
    local e2 = conn2.entity_struct
 
@@ -357,22 +398,31 @@ function PlayerConnections:_try_disconnecting_connectors(c1, c2)
    return true
 end
 
-function PlayerConnections:_find_best_potential_connectors(entity_struct, type, connector)
+function PlayerConnections:_find_best_potential_connectors(connection, connector)
    local result = {}
-   local conn_locs = self:get_connections(type).connector_locations
-   local r = Region3(connector.region)
-   -- we only need to check other connectors that are in region chunks that this one intersects
-   for _, crk in ipairs(connector.chunk_region_keys) do
-      for _, conn in pairs(conn_locs[crk]) do
-         if conn.connections.entity_struct ~= entity_struct and conn.num_connections < conn.max_connections then
-            local intersection = r:intersect_region(Region3(conn.region)):get_area()
-            if intersection > 0 then
-               -- rank potential connectors by how closely their regions intersect
-               local rank_connector = intersection / r:get_area()
-               local rank_conn = intersection / conn.region:get_area()
-               -- the rank has to meet the threshold for each connector
-               if rank_connector >= connector.region_intersection_threshold and rank_conn >= conn.region_intersection_threshold then
-                  table.insert(result, {connector = conn, rank = rank_connector})
+   
+   if connector.trans_region then
+      local r = Region3(connector.trans_region)
+      local conn_locs = self:get_connections(connection.type).connector_locations
+      
+      -- we only need to check other connectors that are in region chunks that this one intersects
+      for _, crk in ipairs(connector.chunk_region_keys) do
+         log:debug('testing crk %s', crk)
+         for id, conn in pairs(conn_locs[crk]) do
+            log:debug('seeing if %s can connect to %s', connector.id, id)
+            log:debug('conn %s: %s, %s', id, conn.connection.entity_struct.id, connection.entity_struct.id)
+            if conn.connection.entity_struct.id ~= connection.entity_struct.id and conn.num_connections < conn.max_connections and conn.trans_region then
+               local intersection = r:intersect_region(Region3(conn.trans_region)):get_area()
+               log:debug('checking intersection of connection regions %s and %s', connector.trans_region, conn.trans_region)
+               if intersection > 0 then
+                  -- rank potential connectors by how closely their regions intersect
+                  local rank_connector = intersection / r:get_area()
+                  local rank_conn = intersection / conn.trans_region:get_area()
+                  log:debug('they intersect! %s and %s', rank_connector, rank_conn)
+                  -- the rank has to meet the threshold for each connector
+                  if rank_connector >= connector.region_intersection_threshold and rank_conn >= conn.region_intersection_threshold then
+                     table.insert(result, {connector = conn, rank = rank_connector})
+                  end
                end
             end
          end
@@ -386,8 +436,6 @@ function PlayerConnections:_find_best_potential_connectors(entity_struct, type, 
 end
 
 function PlayerConnections:_update_connector_locations(entity_struct, new_location, new_rotation)
-   local old_location = entity_struct.location
-   
    -- when the location is nil, request it; if it's false, it's because the entity is being removed
    if new_location == nil then
       new_location = radiant.entities.get_world_grid_location(entity_struct.entity)
@@ -396,39 +444,36 @@ function PlayerConnections:_update_connector_locations(entity_struct, new_locati
    if new_rotation == nil then
       new_rotation = radiant.entities.get_facing(entity_struct.entity)
    end
-   new_rotation = new_rotation or 0
+   new_rotation = (new_rotation and (new_rotation % 360 + 360) % 360) or 0
 
-   -- if we have a previous location for the entity, subtract out that location from the new one
    -- rotate according to the entity's facing direction, then translate to the new location
 
    for type, connection in pairs(entity_struct.connections) do
       local conn_locs = self:get_connections(type).connector_locations
       
       for _, connector in pairs(connection.connectors) do
-         local r = connector.region
-         if old_location then
-            r = r:translated(Point3.zero - old_location)
+         --log:debug('rotating region %s by %s°, then translating by %s', connector.region, new_rotation, new_location or '[NIL]')
+         if new_location then
+            connector.trans_region = rotate_region(connector.region, Point3(0.5, 0, 0.5), new_rotation):translated(new_location)
+         else
+            connector.trans_region = nil
          end
-         connector.region = region_utils.rotate(r, new_rotation, Point3.zero, new_location)
+         --log:debug('resulting region: %s', connector.trans_region or '[NIL]')
 
          -- remove old connector location keys
          for _, key in ipairs(connector.chunk_region_keys) do
-            local chunk_conn_locs = conn_locs[key]
-            for i = #chunk_conn_locs, 1, -1 do
-               if chunk_conn_locs[i].connections.entity_struct == entity_struct then
-                  table.remove(chunk_conn_locs, i)
-               end
-            end
+            conn_locs[key][connector.id] = nil
          end
 
-         connector.chunk_region_keys = self:_get_region_keys(connector.region)
+         connector.chunk_region_keys = self:_get_region_keys(connector.trans_region)
 
          -- add in new connector location keys
          for _, key in ipairs(connector.chunk_region_keys) do
+            log:debug('adding crk %s for entity %s connector %s', key, entity_struct.id, connector.name)
             if not conn_locs[key] then
                conn_locs[key] = {}
             end
-            table.insert(conn_locs[key], connector)
+            conn_locs[key][connector.id] = connector
          end
       end
    end
@@ -438,13 +483,15 @@ end
 -- these are 
 function PlayerConnections:_get_region_keys(cube)
    local keys = {}
-   local min = cube.min
-   local max = cube.max
-   local chunk_region_size = self._sv.chunk_region_size
-   for x = math.floor(min.x/chunk_region_size), math.floor(max.x/chunk_region_size) do
-      for y = math.floor(min.y/chunk_region_size), math.floor(max.y/chunk_region_size) do
-         for z = math.floor(min.z/chunk_region_size), math.floor(max.z/chunk_region_size) do
-            table.insert(keys, string.format('%f,%f,%f', x, y, z))
+   if cube then
+      local min = cube.min
+      local max = cube.max
+      local chunk_region_size = self._sv.chunk_region_size
+      for x = math.floor(min.x/chunk_region_size), math.floor(max.x/chunk_region_size) do
+         for y = math.floor(min.y/chunk_region_size), math.floor(max.y/chunk_region_size) do
+            for z = math.floor(min.z/chunk_region_size), math.floor(max.z/chunk_region_size) do
+               table.insert(keys, string.format('%d,%d,%d', x, y, z))
+            end
          end
       end
    end

@@ -23,6 +23,8 @@ function ConnectionService:initialize()
          CONNECTIONS_BY_PLAYER_ID[k] = v
       end
    end
+   local json = radiant.resources.load_json('stonehearth_ace:data:connection_types')
+   self._registered_types = (json and json.types) or {}
 end
 
 function ConnectionService:register_entity(entity, connections)
@@ -38,6 +40,15 @@ function ConnectionService:unregister_entity(entity)
    local player_connections = self:get_player_connections(player_id)
 
    player_connections:unregister_entity(entity)
+end
+
+function ConnectionService:get_connection_types_command(session, response)
+   return {types = self._registered_types}
+end
+
+function ConnectionService:get_connections_datastore_command(session, response)
+   local connections = self:get_player_connections(session.player_id)
+   return {connections = connections:get_connections_datastore()}
 end
 
 function ConnectionService:get_player_connections(player_id)
