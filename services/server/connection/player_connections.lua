@@ -16,8 +16,10 @@ local log = radiant.log.create_logger('connection')
 
 local PlayerConnections = class()
 
+-- basically taken from 'stonehearth.lib.building.region_utils.rotate(...)'
+local MIDDLE_OFFSET = Point3(0.5, 0, 0.5)
 local rotate_region = function(region, origin, rotation)
-   return region:rotated(rotation)
+   return region:translated(origin - MIDDLE_OFFSET):rotated(rotation):translated(MIDDLE_OFFSET - origin)
 end
 
 function PlayerConnections:__init()
@@ -146,7 +148,7 @@ function PlayerConnections:register_entity(entity, connections)
    local id = entity:get_id()
    if not self._sv.entities[id] then
       local conns = {}
-      local entity_struct = {id = id, entity = entity, connections = conns}
+      local entity_struct = {id = id, entity = entity, connections = conns, origin = entity:get_component('mob'):get_model_origin()}
       self._sv.entities[id] = entity_struct
       
       -- organize connections by type
@@ -525,7 +527,7 @@ function PlayerConnections:_update_connector_locations(entity_struct, new_locati
       for _, connector in pairs(connection.connectors) do
          --log:debug('rotating region %s by %s°, then translating by %s', connector.region, new_rotation, new_location or '[NIL]')
          if new_location then
-            connector.trans_region = rotate_region(connector.region, Point3(0.5, 0, 0.5), new_rotation):translated(new_location)
+            connector.trans_region = rotate_region(connector.region, entity_struct.origin, new_rotation):translated(new_location)
          else
             connector.trans_region = nil
          end

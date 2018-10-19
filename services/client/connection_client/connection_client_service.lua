@@ -10,6 +10,7 @@ local ConnectionClientService = class()
 function ConnectionClientService:initialize()
    self._connection_colors = {}
    self._connections = {}
+   self._connected_entities = {}
 
    radiant.events.listen(radiant, 'radiant:client:server_ready', function()
       self:_setup_connection_types()
@@ -18,7 +19,7 @@ function ConnectionClientService:initialize()
             local connections = response.connections
             self._connections_trace = connections:trace_data('client connections')
             :on_changed(function()
-                  self._connections = connections:get_data()
+                  self:_update_connections(connections:get_data())
                end)
             :push_object_state()
          end)
@@ -51,6 +52,31 @@ function ConnectionClientService:_setup_connection_types()
             self._connection_colors[name] = colors
          end
       end)
+end
+
+function ConnectionClientService:_update_connections(connections)
+   local connected_entities = {}
+   local changed_entities = {}
+   for type, conns in pairs(connections) do
+      for id, _ in pairs(conns) do
+         local e_id = string.match(id, '(%w+)|')
+         connected_entities[e_id] = true
+         changed_entities[e_id] = true
+      end
+   end
+
+   for prev_connected, _ in pairs(self._connected_entities) do
+      changed_entities[prev_connected] = true
+   end
+
+   self._connections = connections
+   self._connected_entities = connected_entities
+
+   for e, _ in pairs(changed_entities) do
+      --log:debug('triggering entity_updated event for %s', e)
+      -- this is used by the connection_renderer to know that connections have been updated and they need to be redrawn
+      radiant.events.trigger(e, 'stonehearth_ace:connections:entity_updated')
+   end
 end
 
 function ConnectionClientService:get_connection_type_colors(type)

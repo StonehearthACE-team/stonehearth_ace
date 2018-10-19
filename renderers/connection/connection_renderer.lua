@@ -16,6 +16,7 @@ function ConnectionRenderer:initialize(render_entity, datastore)
 
    self._ui_view_mode = stonehearth.renderer:get_ui_mode()
    self._ui_mode_listener = radiant.events.listen(radiant, 'stonehearth:ui_mode_changed', self, self._on_ui_mode_changed)
+   self._connection_update_listener = radiant.events.listen(self._entity:get_id(), 'stonehearth_ace:connections:entity_updated', self, self._update)
    self._boxed_region = radiant.alloc_region3()
 end
 
