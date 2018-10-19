@@ -37,19 +37,16 @@ end
 
 function GameplaySettingsService:_update_gameplay_settings_from_config()
    self._settings_are_up_to_date = false
-   _radiant.call('radiant:get_config', 'mods')
-      :done(function(response)
-         for mod, settings in pairs(self._settings) do
-            local values = response.mods[mod] or {}
-            for name, setting in pairs(settings) do
-               setting.value = values[name]
-            end
-         end
+   
+   for mod, settings in pairs(self._settings) do
+      for name, setting in pairs(settings) do
+         setting.value = radiant.util.get_global_config('mods.'..mod..'.'..name, setting.default)
+      end
+   end
 
-         self._settings_are_up_to_date = true
-         -- let the server know what all the client settings are
-         _radiant.call('stonehearth_ace:set_client_gameplay_settings_command', self._settings)
-      end)
+   self._settings_are_up_to_date = true
+   -- let the server know what all the client settings are
+   _radiant.call('stonehearth_ace:set_client_gameplay_settings_command', self._settings)
 end
 
 return GameplaySettingsService

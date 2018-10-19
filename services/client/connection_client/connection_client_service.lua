@@ -45,8 +45,8 @@ function ConnectionClientService:_setup_connection_types()
       :done(function(response)
          for name, type in pairs(response.types) do
             local colors = {}
-            colors.connected = type.connected_color or Point3(64, 240, 0)
-            colors.disconnected = type.disconnected_color or Point3(colors.connected.x / 2, colors.connected.y / 2, colors.connected.z / 2)
+            colors.connected = Point3(unpack(type.connected_color)) or Point3(64, 240, 0)
+            colors.disconnected = Point3(unpack(type.disconnected_color)) or Point3(colors.connected.x / 2, colors.connected.y / 2, colors.connected.z / 2)
 
             self._connection_colors[name] = colors
          end

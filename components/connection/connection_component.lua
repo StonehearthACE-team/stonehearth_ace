@@ -37,17 +37,22 @@ end
 
 -- this is performed in activate rather than post_activate so that all specific connection services can use it in post_activate
 function ConnectionComponent:activate()
-   stonehearth_ace.connection:register_entity(self._entity, self._connections)
+   if radiant.is_server then
+      stonehearth_ace.connection:register_entity(self._entity, self._connections)
+   end
 end
 
 function ConnectionComponent:destroy()
-   stonehearth_ace.connection:unregister_entity(self._entity)
+   if radiant.is_server then
+      stonehearth_ace.connection:unregister_entity(self._entity)
+   end
 end
 
 function ConnectionComponent:_format_connections()
    for type, connections in pairs(self._connections) do
       for name, connector in pairs(connections.connectors) do
          -- transform all the region JSON data into Cube3 structures
+         -- TODO: since this is a cached table, this really only needs to happen once; simple type check? does it matter?
          connector.region = radiant.util.to_cube3(connector.region)
       end
    end

@@ -732,8 +732,12 @@
       "wilderness": "file(components/wilderness/wilderness_component.lua)",
       "wilderness_signal": "file(components/signals/wilderness_signal_component.lua)"
    },
+   "client_components": {
+      "connection": "file(components/connection/connection_component.lua)"
+   },
    "component_renderers": {
-      "grower_underfield": "file(renderers/grower_underfield/grower_underfield_renderer.lua)"
+      "grower_underfield": "file(renderers/grower_underfield/grower_underfield_renderer.lua)",
+      "connection": "file(renderers/connection/connection_renderer.lua)"
    },
    "controllers": {
       "crafter_info_controller": "file(services/server/crafter_info/crafter_info_controller.lua)",
