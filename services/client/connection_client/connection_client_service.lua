@@ -54,22 +54,18 @@ function ConnectionClientService:_setup_connection_types()
       end)
 end
 
-function ConnectionClientService:_update_connections(connections)
-   local connected_entities = {}
+function ConnectionClientService:_update_connections(connection_data)
+   local connected_entities = connection_data.connected_entities or {}
    local changed_entities = {}
-   for type, conns in pairs(connections) do
-      for id, _ in pairs(conns) do
-         local e_id = string.match(id, '(%w+)|')
-         connected_entities[e_id] = true
-         changed_entities[e_id] = true
-      end
+   for id, _ in pairs(connected_entities) do
+      changed_entities[id] = true
    end
 
    for prev_connected, _ in pairs(self._connected_entities) do
-      changed_entities[prev_connected] = true
+      changed_entities[prev_connected] = not changed_entities[prev_connected]
    end
 
-   self._connections = connections
+   self._connections = connection_data.connections or {}
    self._connected_entities = connected_entities
 
    for e, _ in pairs(changed_entities) do
@@ -87,6 +83,10 @@ function ConnectionClientService:is_connector_connected(type, entity_id, connect
    -- look it up in the _connections table; if it's not there, assume it's disconnected
    local connections = self._connections[type]
    return connections and connections[entity_id..'|'..connector_id]
+end
+
+function ConnectionClientService:is_entity_connected(entity_id)
+   return self._connected_entities[entity_id]
 end
 
 return ConnectionClientService

@@ -36,8 +36,9 @@ function PlayerConnections:initialize()
    -- connector_locations: [chunk_region_key]{connector_1, connector_2}
    -- graphs: {nodes: [entity_id]{entity_struct, connected_nodes}}
    self._sv.connections = {}
+   self._sv.connected_entities = {}
    self._sv.connections_ds = radiant.create_datastore()
-   self._sv.connections_ds:set_data({})
+   self:_connections_updated({})
 end
 
 function PlayerConnections:create(player_id)
@@ -70,18 +71,33 @@ function PlayerConnections:get_connections_datastore()
 end
 
 function PlayerConnections:_connections_updated(changed_types)
-   self._sv.connections_ds:set_data(self._sv.connections)
+   -- go through and make a list of all connected entities for quick render updates
+   local entities = {}
+   for e_id, connections in pairs(self._sv.connected_entities) do
+      entities[e_id] = next(connections) ~= nil
+   end
+
+   self._sv.connections_ds:set_data({connections = self._sv.connections, connected_entities = entities})
+
    for type, _ in pairs(changed_types) do
       -- this could be improved to be more specific so the systems using it don't have to think/search too much
       radiant.events.trigger(self, 'stonehearth_ace:connections:'..type..':changed')
    end
 end
 
-function PlayerConnections:_update_connection_for_datastore(type, conn_id, connected)
+function PlayerConnections:_update_connection_for_datastore(type, entity_id, conn_id, connected)
    local conns = self._sv.connections[type]
    if conns then
       conns[conn_id] = connected or nil
    end
+   
+   local connected_entities = self._sv.connected_entities[entity_id]
+   if connected and not connected_entities then
+      connected_entities = {}
+      self._sv.connected_entities[entity_id] = connected_entities
+      self.__saved_variables:mark_changed()
+   end
+   connected_entities[conn_id] = connected or nil
 end
 
 function PlayerConnections:_start_all_traces()
@@ -257,8 +273,8 @@ function PlayerConnections:_remove_entity_from_graphs(entity_struct)
          for id, connected in pairs(connector.connected_to) do
             if self:_try_disconnecting_connectors(connector, connected) then
                changed_types[type] = true
-               self:_update_connection_for_datastore(type, connector.id, false)
-               self:_update_connection_for_datastore(type, connected.id, false)
+               self:_update_connection_for_datastore(type, entity_struct.id, connector.id, false)
+               self:_update_connection_for_datastore(type, entity_struct.id, connected.id, false)
             end
          end
       end
@@ -281,8 +297,8 @@ function PlayerConnections:_try_connecting_connector(connector)
 
       if self:_try_connecting_connectors(connector, target_connector.connector) then
          result = true
-         self:_update_connection_for_datastore(connection.type, connector.id, true)
-         self:_update_connection_for_datastore(connection.type, target_connector.connector.id, true)
+         self:_update_connection_for_datastore(connection.type, connection.entity_struct.id, connector.id, true)
+         self:_update_connection_for_datastore(connection.type, connection.entity_struct.id, target_connector.connector.id, true)
       end
    end
 
