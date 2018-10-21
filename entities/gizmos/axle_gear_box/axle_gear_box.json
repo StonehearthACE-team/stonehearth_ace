@@ -25,8 +25,7 @@
                      "max": { "x": 1, "y": 1, "z": 1 }
                   },
                   "max_connections": 1,
-                  "region_intersection_threshold": 1,
-                  "info": {}
+                  "region_intersection_threshold": 1
                },
                "xhigh": {
                   "region": {
@@ -34,8 +33,7 @@
                      "max": { "x": 2, "y": 1, "z": 1 }
                   },
                   "max_connections": 1,
-                  "region_intersection_threshold": 1,
-                  "info": {}
+                  "region_intersection_threshold": 1
                },
                "ylow": {
                   "region": {
@@ -43,8 +41,7 @@
                      "max": { "x": 1, "y": 1, "z": 1 }
                   },
                   "max_connections": 1,
-                  "region_intersection_threshold": 1,
-                  "info": {}
+                  "region_intersection_threshold": 1
                },
                "yhigh": {
                   "region": {
@@ -52,8 +49,7 @@
                      "max": { "x": 1, "y": 2, "z": 1 }
                   },
                   "max_connections": 1,
-                  "region_intersection_threshold": 1,
-                  "info": {}
+                  "region_intersection_threshold": 1
                },
                "zlow": {
                   "region": {
@@ -61,8 +57,7 @@
                      "max": { "x": 1, "y": 1, "z": 1 }
                   },
                   "max_connections": 1,
-                  "region_intersection_threshold": 1,
-                  "info": {}
+                  "region_intersection_threshold": 1
                },
                "zhigh": {
                   "region": {
@@ -70,12 +65,14 @@
                      "max": { "x": 1, "y": 1, "z": 2 }
                   },
                   "max_connections": 1,
-                  "region_intersection_threshold": 1,
-                  "info": {}
+                  "region_intersection_threshold": 1
                }
             },
-            "max_connections": 2
+            "max_connections": 4
          }
+      },
+      "stonehearth_ace:mechanical": {
+         "resistance": 4
       }
    },
    "entity_data": {

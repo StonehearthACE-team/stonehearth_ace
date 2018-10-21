@@ -10,16 +10,14 @@ connector regions are typically a 2-voxel region, including one voxel inside the
                "max": { "x": 1, "y": 1, "z": 1 }
             },
             "max_connections": 1,
-            "region_intersection_threshold": 1,
-            "info": {}
+            "region_intersection_threshold": 1
          },
          "connector2": {
             "region": {
                "min": { "x": 0, "y": 0, "z": 0 },
                "max": { "x": 2, "y": 1, "z": 1 }
             },
-            "max_connections": 1,
-            "info": {}
+            "max_connections": 1
          }
       },
       "max_connections": 1
@@ -37,15 +35,12 @@ end
 
 -- this is performed in activate rather than post_activate so that all specific connection services can use it in post_activate
 function ConnectionComponent:activate()
-   if radiant.is_server then
-      stonehearth_ace.connection:register_entity(self._entity, self._connections)
-   end
+   stonehearth_ace.connection:register_entity(self._entity, self._connections)
+   -- also need to set up a listener in case this entity changes ownership to then unregister it and re-register it
 end
 
 function ConnectionComponent:destroy()
-   if radiant.is_server then
-      stonehearth_ace.connection:unregister_entity(self._entity)
-   end
+   stonehearth_ace.connection:unregister_entity(self._entity)
 end
 
 function ConnectionComponent:_format_connections()

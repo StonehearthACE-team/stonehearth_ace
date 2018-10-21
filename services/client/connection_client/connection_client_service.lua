@@ -31,10 +31,6 @@ function ConnectionClientService:destroy()
 end
 
 function ConnectionClientService:destroy_listeners()
-   if self._connections_listener then
-      self._connections_listener:destroy()
-      self._connections_listener = nil
-   end
    if self._connections_trace then
       self._connections_trace:destroy()
       self._connections_trace = nil

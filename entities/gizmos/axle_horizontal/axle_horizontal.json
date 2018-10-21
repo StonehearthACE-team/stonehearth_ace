@@ -25,8 +25,7 @@
                      "max": { "x": 1, "y": 1, "z": 1 }
                   },
                   "max_connections": 1,
-                  "region_intersection_threshold": 1,
-                  "info": {}
+                  "region_intersection_threshold": 1
                },
                "xhigh": {
                   "region": {
@@ -34,12 +33,14 @@
                      "max": { "x": 1, "y": 1, "z": 2 }
                   },
                   "max_connections": 1,
-                  "region_intersection_threshold": 1,
-                  "info": {}
+                  "region_intersection_threshold": 1
                }
             },
             "max_connections": 2
          }
+      },
+      "stonehearth_ace:mechanical": {
+         "consumes": 5
       }
    },
    "entity_data": {
