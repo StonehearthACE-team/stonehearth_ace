@@ -1,0 +1,28 @@
+{
+   "type": "recipe",
+   "effort": 60,
+   "work_units": 6,
+   "recipe_name": "i18n(stonehearth_ace:jobs.engineer.recipes.axle_vertical_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.engineer.recipes.axle_vertical_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.engineer.recipes.axle_vertical_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/gizmos/axle_vertical/axle_vertical.png",
+   "workshop": "stonehearth:engineer:workbench",
+   "level_requirement": 2,
+   "ingredients": [
+      {
+         "uri": "stonehearth:refined:bronze_ingot",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:gizmos:axles:vertical"
+      },
+	  {
+         "item": "stonehearth_ace:gizmos:axles:vertical"
+      },
+	  {
+         "item": "stonehearth_ace:gizmos:axles:vertical"
+      }
+   ]
+}

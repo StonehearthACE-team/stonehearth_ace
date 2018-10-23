@@ -1,0 +1,34 @@
+{
+   "type": "recipe",
+   "effort": 60,
+   "work_units": 6,
+   "recipe_name": "i18n(stonehearth_ace:jobs.blacksmith.recipes.blacksmith_forge_advanced_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.blacksmith.recipes.blacksmith_forge_advanced_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.blacksmith.recipes.blacksmith_forge_advanced_recipe.flavor)",
+   "portrait": "/stonehearth_ace/jobs/blacksmith/blacksmith_forge_advanced/blacksmith_forge_advanced.png",
+   "workshop": "stonehearth_ace:blacksmith:workbench_advanced",
+   "level_requirement": 4,
+   "ingredients": [
+      {
+         "material": "stone resource",
+         "count": 4
+      },
+	  {
+         "uri": "stonehearth:refined:iron_ingot",
+         "count": 2
+      },
+	  {
+         "uri": "stonehearth:refined:bronze_ingot",
+         "count": 1
+      },
+	  {
+         "material": "leather resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:blacksmith:forge_advanced"
+      }
+   ]
+}

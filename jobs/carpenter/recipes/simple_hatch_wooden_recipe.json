@@ -1,21 +1,17 @@
 {
    "type": "recipe",
    "effort": 50,
-   "work_units": 12,
+   "work_units": 6,
    "recipe_name": "i18n(stonehearth_ace:entities.construction.simple_hatch_wooden.display_name)",
    "description": "i18n(stonehearth_ace:entities.construction.simple_hatch_wooden.description)",
    "flavor": "i18n(stonehearth_ace:entities.construction.simple_hatch_wooden.flavor)",
    "portrait": "/stonehearth_ace/entities/construction/simple_hatch_wooden/simple_hatch_wooden.png",
-   "workshop": "stonehearth:carpenter:workbench",
+   "workshop": "stonehearth:carpenter:toolbench",
    "level_requirement": 2,
    "ingredients": [
       {
          "material": "wood resource",
          "count": 2
-      },
-      {
-         "uri": "stonehearth_ace:refined:lock",
-         "count": 1
       }
    ],
    "produces": [

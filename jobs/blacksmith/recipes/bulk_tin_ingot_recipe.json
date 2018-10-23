@@ -1,0 +1,30 @@
+{
+   "type": "recipe",
+   "effort": 50,
+   "work_units": 40,
+   "recipe_name": "i18n(stonehearth_ace:jobs.blacksmith.recipes.bulk_tin_ingot_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.blacksmith.recipes.bulk_tin_ingot_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.blacksmith.recipes.bulk_tin_ingot_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/refined/bulk_tin_ingot.png",
+   "workshop": "stonehearth_ace:blacksmith:forge_advanced",
+   "work_effect": "work_wait",
+   "level_requirement": 4,
+   "ingredients": [
+      {
+         "uri": "stonehearth:resources:tin:ore",
+         "count": 3
+      },
+      {
+         "material": "fuel resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth:refined:tin_ingot"
+      },
+	  {
+         "item": "stonehearth:refined:tin_ingot"
+      }
+   ]
+}

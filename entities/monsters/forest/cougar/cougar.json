@@ -1,2 +1,41 @@
 {
+   "player_id": "forest",
+   "components": {
+      "stonehearth:attributes": {
+         "max_health": {
+            "type": "basic",
+            "value": 90
+         },
+         "speed": {
+            "type": "basic",
+            "value": 110
+         }
+      },
+      "stonehearth:loot_drops": {
+         "entries": {
+            "default": {
+               "items": {
+                  "skin": {
+					 "type": "bag",
+                     "uri": "stonehearth_ace:loot_bag:cougar_default",
+                     "weight": 1
+                  }
+               }
+            }
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+	     "player_id": "forest",
+         "display_name": "i18n(stonehearth_ace:entities.monsters.forest.cougar.display_name)",
+         "description": "i18n(stonehearth_ace:entities.monsters.forest.cougar.description)"
+      },
+	  "stonehearth:diet": {
+         "food_material": "meat"
+      }
+   }
 }
+
+
+

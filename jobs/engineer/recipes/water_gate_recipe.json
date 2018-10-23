@@ -1,0 +1,26 @@
+{
+   "type": "recipe",
+   "effort": 90,
+   "work_units": 9,
+   "recipe_name": "i18n(stonehearth_ace:jobs.engineer.recipes.water_gate_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.engineer.recipes.water_gate_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.engineer.recipes.water_gate_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/gizmos/water_gate/water_gate.png",
+   "workshop": "stonehearth:engineer:workbench",
+   "level_requirement": 1,
+   "ingredients": [
+      {
+         "uri": "stonehearth:refined:copper_ingot",
+         "count": 2
+      },
+      {
+        "uri": "stonehearth:refined:bronze_gear",
+        "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:gizmos:water_gate"
+      }
+   ]
+}

@@ -1,0 +1,30 @@
+{
+   "type": "recipe",
+   "effort": 60,
+   "work_units": 6,
+   "recipe_name": "i18n(stonehearth_ace:jobs.blacksmith.recipes.blacksmith_workbench_advanced_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.blacksmith.recipes.blacksmith_workbench_advanced_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.blacksmith.recipes.blacksmith_workbench_advanced_recipe.flavor)",
+   "portrait": "/stonehearth_ace/jobs/blacksmith/blacksmith_workbench_advanced/blacksmith_workbench_advanced.png",
+   "workshop": "stonehearth:blacksmith:workbench",
+   "level_requirement": 4,
+   "ingredients": [
+	  {
+         "uri": "stonehearth:refined:iron_ingot",
+         "count": 2
+      },
+	  {
+         "uri": "stonehearth:refined:steel_ingot",
+         "count": 1
+      },
+	  {
+         "uri": "stonehearth_ace:resources:coal:hunk_of_hard_coal",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:blacksmith:workbench_advanced"
+      }
+   ]
+}

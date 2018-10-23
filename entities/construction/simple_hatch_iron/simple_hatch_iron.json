@@ -19,17 +19,22 @@
                   "max": 2
                },
                "items": {
-                 "oak_log": {
-                    "uri": "stonehearth:refined:iron_ingot"
+                  "iron_ingot": {
+                     "uri": "stonehearth:refined:iron_ingot"
                   }
                }
             }
          }
+      },
+      "stonehearth:commands": {
+         "commands": [
+            "stonehearth:commands:toggle_lock"
+         ]
       }
    },
    "entity_data": {
       "stonehearth:net_worth": {
-         "value_in_gold": 16,
+         "value_in_gold": 60,
          "rarity": "common",
          "shop_info": {
             "buyable": true,

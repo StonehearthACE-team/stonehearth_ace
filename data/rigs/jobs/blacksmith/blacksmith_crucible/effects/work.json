@@ -65,6 +65,24 @@
             "ry":0,
             "rz":0
          }
-      }  	  
+      },
+	  "sound_1": {
+         "type": "sound_effect",
+         "loop": true,
+         "start_time": 0,
+         "min_distance": 20,
+         "falloff": 5,
+         "volume": 40,
+        "track": "stonehearth:sounds:jobs_potter_wheel"
+      },
+	  "sound_2": {
+         "type": "sound_effect",
+         "loop" : true,
+         "start_time":  0,
+         "min_distance": 20,
+         "falloff" : 5,
+         "volume": 30,
+        "track": "stonehearth:sounds:jobs_blacksmith_forge_work_01"
+      }    	  
    }
 }

@@ -34,7 +34,31 @@
 			}
 		 }
 	  },
-      "decorations": {
+	  "mechanisms": {
+         "ordinal": 65,
+         "name": "i18n(stonehearth_ace:jobs.engineer.recipes.mechanisms_name)",
+         "recipes": {
+            "axle_horizontal": {
+               "recipe": "file(axle_horizontal_recipe.json)"
+            },
+            "axle_vertical": {
+               "recipe": "file(axle_vertical_recipe.json)"
+            },
+			"axle_gear_box": {
+               "recipe": "file(axle_gear_box_recipe.json)"
+            },
+            "water_gate": {
+               "recipe": "file(water_gate_recipe.json)"
+            },
+			"water_pump": {
+               "recipe": "file(water_pump_recipe.json)"
+            },
+            "water_gate_greater": {
+               "recipe": "file(water_gate_greater_recipe.json)"
+            }
+         }
+      },
+      "building_parts": {
          "recipes": {
             "iron_door": {
                "recipe": "file(iron_door_recipe.json)"
@@ -49,6 +73,13 @@
                "recipe": "file(diagonal_hatch_iron_recipe.json)"
             }
          }
-      }
+      },
+	  "decorations": {
+		 "recipes": {
+			"mixintypes": {
+				"iron_door": "remove"
+			}
+		 }
+	  }
    }
 }

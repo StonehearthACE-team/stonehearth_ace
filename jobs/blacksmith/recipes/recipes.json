@@ -2,11 +2,17 @@
   "craftable_recipes" : {
 	"workbenches": {
 	  "recipes" : {
-		"fuel_oven" : {
-		  "recipe" : "file(fuel_oven_recipe.json)"
+		"blacksmith_fuel_oven" : {
+		  "recipe" : "file(blacksmith_fuel_oven_recipe.json)"
 		},
-		"crucible" : {
-		  "recipe" : "file(crucible_recipe.json)"
+		"blacksmith_crucible" : {
+		  "recipe" : "file(blacksmith_crucible_recipe.json)"
+		},
+		"blacksmith_forge_advanced" : {
+		  "recipe" : "file(blacksmith_forge_advanced_recipe.json)"
+		},
+		"blacksmith_workbench_advanced" : {
+		  "recipe" : "file(blacksmith_workbench_advanced_recipe.json)"
 		}
 	  }
 	},
@@ -20,14 +26,21 @@
         }
       }
 	},
+	"smelt": {
+      "recipes": {
+        "bulk_copper_ingot": {
+          "recipe": "file(bulk_copper_ingot_recipe.json)"
+        },
+        "bulk_tin_ingot": {
+          "recipe": "file(bulk_tin_ingot_recipe.json)"
+        },
+        "bulk_iron_ingot": {
+          "recipe": "file(bulk_iron_ingot_recipe.json)"
+        }
+      }
+    },
     "decoration" : {
       "recipes" : {
-        "copper_wall_lantern" : {
-          "recipe" : "file(copper_wall_lantern_recipe.json)"
-        },
-        "copper_garden_lantern" : {
-          "recipe" : "file(copper_garden_lantern_recipe.json)"
-        }
       }
     },
 	"refined": {

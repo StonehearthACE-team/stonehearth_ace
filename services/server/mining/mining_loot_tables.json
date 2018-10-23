@@ -12,7 +12,7 @@
                   },
                   "thatch_bale": {
                      "uri": "stonehearth_ace:resources:thatch_bale",
-                     "weight": 5
+                     "weight": 1.6
                   }
                }
             }
@@ -22,9 +22,49 @@
          "entries": {
             "default": {
                "items": {
+                  "clay_mound": {
+                     "weight": 3.6
+                  },
                   "brown_coal": {
                      "uri": "stonehearth_ace:resources:coal:chunk_of_brown_coal",
-                     "weight": 0.6
+                     "weight": 0.4
+                  },
+                  "fossils": {
+                     "uri": "stonehearth_ace:resources:bone:bone_material",
+                     "weight": 0.1
+                  }
+               }
+            }
+         }
+      },
+      "rock": {
+         "entries": {
+            "default": {
+               "items": {
+                  "hunk_of_stone": {
+                     "weight": 280
+                  },
+                  "clay_mound": {
+                     "uri": "stonehearth:resources:clay:clay_mound",
+                     "weight": 25
+                  },
+                  "copper_ore": {
+                     "weight": 8
+                  },
+                  "tin_ore": {
+                     "weight": 7
+                  },
+                  "iron_ore": {
+                     "weight": 4
+                  },
+                  "lump_of_coal": {
+                     "weight": 2.4
+                  },
+                  "silver_ore": {
+                     "weight": 1.6
+                  },
+                  "gold_ore": {
+                     "weight": 0.3
                   }
                }
             }
@@ -42,13 +82,49 @@
             }
          }
       },
+      "copper_ore": {
+         "entries": {
+            "default": {
+               "items": {
+                  "ore": {
+                     "weight": 75
+                  }
+               }
+            }
+         }
+      },
+      "tin_ore": {
+         "entries": {
+            "default": {
+               "items": {
+                  "ore": {
+                     "weight": 80
+                  }
+               }
+            }
+         }
+      },
+      "iron_ore": {
+         "entries": {
+            "default": {
+               "items": {
+                  "ore": {
+                     "weight": 65
+                  }
+               }
+            }
+         }
+      },
       "silver_ore": {
          "entries": {
             "default": {
                "items": {
+                  "ore": {
+                     "weight": 60
+                  },
                   "marble": {
                      "uri": "stonehearth_ace:resources:stone:marble_stone",
-                     "weight": 20
+                     "weight": 16
                   }
                }
             }
@@ -60,7 +136,7 @@
                "items": {
                   "feldspar": {
                      "uri": "stonehearth_ace:resources:stone:feldspar_stone",
-                     "weight": 20
+                     "weight": 16
                   }
                }
             }

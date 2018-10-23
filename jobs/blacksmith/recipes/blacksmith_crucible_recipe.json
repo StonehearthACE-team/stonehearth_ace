@@ -1,0 +1,30 @@
+{
+   "type": "recipe",
+   "effort": 40,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.blacksmith.recipes.blacksmith_crucible_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.blacksmith.recipes.blacksmith_crucible_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.blacksmith.recipes.blacksmith_crucible_recipe.flavor)",
+   "portrait": "/stonehearth_ace/jobs/blacksmith/blacksmith_crucible/blacksmith_crucible.png",
+   "work_effect": "work",
+   "level_requirement": 2,
+   "ingredients": [
+      {
+         "material": "stone resource",
+         "count": 2
+      },
+	  {
+         "material": "wood resource",
+         "count": 1
+      },
+	  {
+         "uri": "stonehearth:refined:iron_ingot",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:blacksmith:crucible"
+      }
+   ]
+}

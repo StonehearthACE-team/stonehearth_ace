@@ -1,0 +1,40 @@
+{
+   "type": "monster_tuning",
+   "estimated_difficulty": 3,
+   "scale": 0.23,
+   "attributes": {
+      "max_health": 780,
+      "muscle": 30,
+      "menace": 40,
+      "courage": 130,
+      "speed": 120,
+      "additive_armor_modifier": 3,
+      "exp_reward": 100
+   },
+   "unit_info": {
+      "display_name": "i18n(stonehearth_ace:data.gm.campaigns.ambient_threats.giant_cougar_raid.cougar.display_name)",
+      "description": "i18n(stonehearth_ace:data.gm.campaigns.ambient_threats.giant_cougar_raid.cougar.description)"
+   },
+   "equipment": {
+      "weapon": [
+         "stonehearth_ace:weapons:animals:cougar_teeth"
+      ]
+   },
+   "loot_drops": {
+      "entries": {
+         "default": {
+            "num_rolls": {
+               "min": 1,
+               "max": 2
+            },
+            "items": {
+               "skin": {
+                  "type": "bag",
+                  "uri": "stonehearth_ace:loot_bag:cougar_default",
+                  "weight": 10
+               }
+            }
+         }
+      }
+   }
+}

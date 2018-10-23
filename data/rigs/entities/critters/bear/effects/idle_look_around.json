@@ -1,11 +1,28 @@
 {
-	"type" : "effect",
-	"tracks": {
-		"animation": {
-			"type": "animation_effect",
-			"start_time": 0,
-			"animation": "idle_breathe.json",
-			"loop": true
-		}
-	}
+   "type" : "effect",
+   "tracks": {
+      "animation": {
+            "type": "animation_effect",
+            "start_time": 0,
+            "animation": "idle_breathe.json",
+            "loop": true
+      },
+      "sound": {
+         "type": "sound_effect",
+         "duration": 1000,
+         "start_time": 0,
+         "min_distance": 30,
+         "falloff" : 12,
+         "volume": 50,
+         "track" : {
+            "type": "one_of",
+            "items": [
+               "stonehearth:sounds:wolf_growl_01",
+               "stonehearth:sounds:wolf_growl_02",
+               "stonehearth:sounds:wolf_growl_03",
+               "stonehearth:sounds:wolf_growl_04"
+            ]    
+         }
+      }
+   }
 }

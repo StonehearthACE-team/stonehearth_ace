@@ -1,0 +1,66 @@
+{
+   "type" : "effect",
+   "tracks": {
+      "coals": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/fire/forge_coals.cubemitter.json",
+         "loop": true,
+         "transforms": {
+            "x":0,
+            "y":1.1,
+            "z":0.0,
+            "rx":70,
+            "ry":0,
+            "rz":0
+         }
+      },
+      "embers": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/fire/forge_embers.cubemitter.json",
+         "loop": true,
+         "transforms": {
+            "x":0,
+            "y":1.2,
+            "z": -1.1,
+            "rx":70,
+            "ry":0,
+            "rz":0
+         }
+      },
+	  "smoke": {
+         "type": "cubemitter",
+         "loop" : true,
+         "cubemitter": "/stonehearth_ace/data/horde/particles/fire/forge_smoke.cubemitter.json",
+         "transforms": {
+            "x":0,
+            "y":5.5,
+            "z":0.3,
+            "rx":90,
+            "ry":0,
+            "rz":0
+         }
+      },
+      "fire_light": {
+         "type": "light",
+         "light": "/stonehearth_ace/data/horde/animatedlights/lamp/forge_light.animatedlight.json",
+		 "shadows": true,
+         "transforms": {
+            "x":0,
+            "y":2.2,
+            "z":0.3,
+            "rx":90,
+            "ry":0,
+            "rz":0
+         }
+      },
+	  "sound": {
+         "type": "sound_effect",
+         "loop" : true,
+         "start_time":  0,
+         "min_distance": 20,
+         "falloff" : 5,
+         "volume": 40,
+         "track": "stonehearth:sounds:firepit_loop_sound"
+      }  
+   }
+}

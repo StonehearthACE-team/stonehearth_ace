@@ -1,102 +1,76 @@
 {
    "type": "entity",
    "mixins": "file(water_pump_ghost.json)",
-  "components": {
-    "stonehearth:entity_forms": {
-      "iconic_form": "file(water_pump_iconic.json)",
-      "ghost_form": "file(water_pump_ghost.json)",
-      "placeable_on_ground": true
-    },
-    "destination": {
-      "region": [
-        {
-          "min": {
-            "x": -1,
-            "y": 0,
-            "z": 0
-          },
-          "max": {
-            "x": 0,
-            "y": 2,
-            "z": 1
-          }
-        }
-      ]
-    },
-    "region_collision_shape": {
-      "region": [
-        {
-          "min": {
-            "x": -1,
-            "y": 0,
-            "z": 0
-          },
-          "max": {
-            "x": 0,
-            "y": 2,
-            "z": 1
-          }
-        }
-      ],
-      "region_collision_type": "platform"
-    },
-    "stonehearth_ace:toggle_enabled": {
-      "enabled": false,
-      "alert_on_reload": true,
-      "enable_effect": "opened",
-      "disable_effect": "closed"
-    },
-    "stonehearth_ace:container": {
-      "type": "stonehearth:water",
-      "capacity": 2
-    },
-    "stonehearth_ace:water_pump": {
-      "rate": 1,
-      "height": 2,
-      "depth": 0
-    },
-    "stonehearth_ace:entity_modification": {
-      "values": {
-        "region_with_topper": [
-        {
-          "min": {
-            "x": -1,
-            "y": 0,
-            "z": 0
-          },
-          "max": {
-            "x": 0,
-            "y": 1,
-            "z": 1
-          }
-        }
-      ]
+   "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(water_pump_iconic.json)",
+         "ghost_form": "file(water_pump_ghost.json)",
+         "placeable_on_ground": true
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": 0 },
+               "max": { "x": 0, "y": 2, "z": 1 }
+            }
+         ]
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": 0 },
+               "max": { "x": 0, "y": 2, "z": 1 }
+            }
+         ],
+         "region_collision_type": "platform"
+      },
+      "stonehearth_ace:toggle_enabled": {
+         "enabled": false,
+         "alert_on_reload": true,
+         "enable_effect": "opened",
+         "disable_effect": "closed"
+      },
+      "stonehearth_ace:container": {
+         "type": "stonehearth:water",
+         "capacity": 2
+      },
+      "stonehearth_ace:water_pump": {
+         "rate": 1,
+         "height": 2,
+         "depth": 0
+      },
+      "stonehearth_ace:entity_modification": {
+         "values": {
+            "region_with_topper": [
+               {
+                  "min": { "x": -1, "y": 0, "z": 0 },
+                  "max": { "x": 0, "y": 1, "z": 1 }
+               }
+            ]
+         }
+      },
+      "effect_list": {
+         "default": "file(/data/rigs/entities/gizmos/water_pump/effects/closed.json)",
+         "initial_pose_animation": "closed.json"
+      },
+      "stonehearth:bone_transform": {
+         "bones": [
+            "ATTOVERCOG",
+            "gear",
+            "pipe",
+            "root",
+            "slitCover",
+            "water"
+         ]
       }
-    },
-    "effect_list": {
-       "default": "file(/data/rigs/entities/gizmos/water_pump/effects/closed.json)",
-       "initial_pose_animation": "closed.json"
-    },
-    "stonehearth:bone_transform": {
-       "bones": [
-         "ATTOVERCOG",
-    		 "gear",
-    		 "pipe",
-    		 "root",
-    		 "slitCover",
-    		 "water"
-       ]
-    }
-  },
+   },
    "entity_data": {
       "stonehearth:net_worth": {
-         "value_in_gold": 4,
+         "value_in_gold": 75,
          "rarity": "common",
          "shop_info": {
-            "buyable": true,
-            "sellable": true,
-            "shopkeeper_level": 1,
-            "shopkeeper_type": "caravan"
+            "buyable": false,
+            "sellable": true
          }
       },
       "stonehearth:appeal": {

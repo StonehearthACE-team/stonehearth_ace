@@ -1,0 +1,34 @@
+{
+   "type": "recipe",
+   "effort": 180,
+   "work_units": 18,
+   "recipe_name": "i18n(stonehearth_ace:jobs.engineer.recipes.water_gate_greater_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.engineer.recipes.water_gate_greater_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.engineer.recipes.water_gate_greater_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/gizmos/greater_water_gate/greater_water_gate.png",
+   "workshop": "stonehearth:engineer:workbench",
+   "level_requirement": 5,
+   "ingredients": [
+      {
+         "uri": "stonehearth:portals:stone_tunnel_door",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth:refined:copper_ingot",
+         "count": 2
+      },
+      {
+         "uri": "stonehearth:refined:steel_ingot",
+         "count": 2
+      },
+      {
+        "uri": "stonehearth:refined:iron_gear",
+        "count": 3
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:gizmos:greater_water_gate"
+      }
+   ]
+}

@@ -1,0 +1,19 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+		 "mixintypes": {
+			"default" : "override"
+		 },
+         "default": {
+            "models": [
+               "file(blacksmith_forge_iconic.qb)"
+            ]
+         }
+      },
+      "effect_list": {
+         "default": "stonehearth:effects:talisman_glow"
+      }
+   }
+}

@@ -19,17 +19,25 @@
                   "max": 2
                },
                "items": {
-                 "oak_log": {
-                    "uri": "stonehearth:refined:iron_ingot"
+                  "iron_ingot": {
+                     "uri": "stonehearth:refined:iron_ingot"
+                  },
+                  "gilded_crimson_rug": {
+                     "uri": "stonehearth:decoration:gilded_crimson_rug"
                   }
                }
             }
          }
+      },
+      "stonehearth:commands": {
+         "commands": [
+            "stonehearth:commands:toggle_lock"
+         ]
       }
    },
    "entity_data": {
       "stonehearth:net_worth": {
-         "value_in_gold": 200,
+         "value_in_gold": 140,
          "rarity": "common",
          "shop_info": {
             "buyable": true,
