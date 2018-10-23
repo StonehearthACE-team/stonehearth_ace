@@ -8,6 +8,30 @@
                "item_density": 0.3,
                "exclusion_radius": 0
             }
+         },
+		 "stonehearth_ace:terrain:pasture_grass": {
+            "placement_type": "dense",
+            "parameters": {
+               "grid_multiple": 4,
+               "item_density": 0.2,
+               "exclusion_radius": 2
+            }
+         },
+		 "stonehearth_ace:terrain:pasture_grass:short": {
+            "placement_type": "dense",
+            "parameters": {
+               "grid_multiple": 5,
+               "item_density": 0.3,
+               "exclusion_radius": 1
+            }
+         },
+		 "stonehearth_ace:terrain:pasture_grass:overgrown": {
+            "placement_type": "dense",
+            "parameters": {
+               "grid_multiple": 2,
+               "item_density": 0.2,
+               "exclusion_radius": 1
+            }
          }
       },
       "scattered": {
@@ -15,15 +39,24 @@
             "weights": {
                "plains": {
                   "1": {
-                     "stonehearth_ace:fungi:bolete": 0.2
+                     "stonehearth_ace:fungi:bolete": 0.2,
+					 "stonehearth_ace:terrain:pasture_grass:overgrown": 0.2,
+					 "stonehearth_ace:terrain:pasture_grass": 0.8,
+					 "stonehearth_ace:terrain:pasture_grass:short": 0.4
                   }
                },
                "foothills": {
                   "1": {
-                     "stonehearth_ace:fungi:bolete": 0.6
+                     "stonehearth_ace:fungi:bolete": 0.6,
+					 "stonehearth_ace:terrain:pasture_grass:overgrown": 0.2,
+					 "stonehearth_ace:terrain:pasture_grass": 0.8,
+					 "stonehearth_ace:terrain:pasture_grass:short": 0.4
                   },
                   "2": {
-                     "stonehearth_ace:fungi:bolete": 1
+                     "stonehearth_ace:fungi:bolete": 1,
+					 "stonehearth_ace:terrain:pasture_grass:overgrown": 0.2,
+					 "stonehearth_ace:terrain:pasture_grass": 0.8,
+					 "stonehearth_ace:terrain:pasture_grass:short": 0.4
                   }
                },
                "mountains": {
