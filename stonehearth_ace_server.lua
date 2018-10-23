@@ -7,7 +7,8 @@ local service_creation_order = {
    'crafter_info',
    'water_pump',
    'water_signal',
-   'underfarming'
+   'underfarming',
+   'mechanical'
 }
 
 local monkey_patches = {
@@ -43,7 +44,8 @@ local monkey_patches = {
    ace_client_state = 'stonehearth.services.server.client_state.client_state',
    ace_loot_drops_component = 'stonehearth.components.loot_drops.loot_drops_component',
    ace_incapacitation_component = 'stonehearth.components.incapacitation.incapacitation_component',
-   ace_crafter_jobs_node = 'stonehearth.components.building2.plan.nodes.crafter_jobs_node'
+   ace_crafter_jobs_node = 'stonehearth.components.building2.plan.nodes.crafter_jobs_node',
+   ace_habitat_manager = 'stonehearth.services.server.world_generation.habitat_manager'
 }
 
 local function monkey_patching()

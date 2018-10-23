@@ -1,3 +1,5 @@
+local Point3 = _radiant.csg.Point3
+
 local AutoReplaceComponent = class()
 
 function AutoReplaceComponent:initialize()
@@ -10,9 +12,6 @@ function AutoReplaceComponent:activate()
 
    if json.on_kill ~= false then
       self._kill_listener = radiant.events.listen(self._entity, 'stonehearth:kill_event', self, self._on_kill_event)
-   end
-   if json.on_consume then
-      
    end
 
    if json.reset_facing then

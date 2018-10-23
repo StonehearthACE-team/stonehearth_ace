@@ -5,7 +5,8 @@
       "stonehearth:entity_forms": {
          "iconic_form": "file(axle_vertical_iconic.json)",
          "ghost_form": "file(axle_vertical_ghost.json)",
-         "placeable_on_ground": true
+         "placeable_on_ground": true,
+         "placeable_on_walls": true
       },
       "region_collision_shape": {
          "region": [
@@ -14,6 +15,32 @@
                "max": { "x": 1, "y": 1, "z": 1 }
             }
          ]
+      },
+      "stonehearth_ace:connection": {
+         "mechanical": {
+            "connectors": {
+               "ylow": {
+                  "region": {
+                     "min": { "x": 0, "y": -1, "z": 0 },
+                     "max": { "x": 1, "y": 1, "z": 1 }
+                  },
+                  "max_connections": 1,
+                  "region_intersection_threshold": 1
+               },
+               "yhigh": {
+                  "region": {
+                     "min": { "x": 0, "y": 0, "z": 0 },
+                     "max": { "x": 1, "y": 2, "z": 1 }
+                  },
+                  "max_connections": 1,
+                  "region_intersection_threshold": 1
+               }
+            },
+            "max_connections": 2
+         }
+      },
+      "stonehearth_ace:mechanical": {
+         "produces": 40
       }
    },
    "entity_data": {

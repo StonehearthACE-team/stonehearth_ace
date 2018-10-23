@@ -98,6 +98,7 @@
       "crops:marblesprout_crop": "file(entities/crops/marblesprout_crop)",
       "crops:moonbell_crop": "file(entities/crops/moonbell_crop)",
       "crops:yew_tree_crop": "file(entities/crops/yew_tree_crop/yew_tree_crop.json)",
+      "data:connection_types": "file(data/connections/connection_types.json)",
       "data:modded_settings": "file(data/gameplay_settings/gameplay_settings.json)",
       "data:resource_constants": "file(data/resource_constants.json)",
       "data:thoughts": "file(data/happiness/thoughts.json)",
@@ -747,6 +748,12 @@
       "stonehearth/entities/refined/silver_ingot/silver_ingot.json": "file(entities/refined/silver_ingot/silver_ingot.json)",
       "stonehearth/entities/refined/gold_ingot/gold_ingot.json": "file(entities/refined/gold_ingot/gold_ingot.json)",
 	  "stonehearth/jobs/cook/cook_mill/cook_mill.json": "file(jobs/cook/cook_mill/cook_mill.json)"
+	  "stonehearth/jobs/cook/cook_mill/cook_mill.json": "file(jobs/cook/cook_mill/cook_mill.json)",
+      "stonehearth/data/loot_bag/chest_mystery_high_random.json": "file(data/loot_bag/chest_mystery_high_random.json)",
+      "stonehearth:consumables:courage_tonic": "file(entities/consumables/courage_tonic/courage_tonic.json)",
+      "stonehearth:consumables:energy_tonic": "file(entities/consumables/energy_tonic/energy_tonic.json)",
+      "stonehearth:consumables:stamina_tonic": "file(entities/consumables/stamina_tonic/stamina_tonic.json)",
+      "stonehearth:consumables:strength_tonic": "file(entities/consumables/strength_tonic/strength_tonic.json)"
    },
    "overrides": {
       "stonehearth/data/rigs/entities/humans/animations/male/combat_1h_thrust.json": "stonehearth_ace/data/rigs/entities/humans/animations/male/combat_1h_thrust.json",
@@ -803,6 +810,7 @@
       "entity_modification": "file(components/entity_modification/entity_modification_component.lua)",
       "grower_underfield": "file(components/grower_underfield/grower_underfield_component.lua)",
       "grower_underfield_layer": "file(components/grower_underfield_layer/grower_underfield_layer_component.lua)",
+      "mechanical": "file(components/mechanical/mechanical_component.lua)",
       "substrate_plot": "file(components/grower_underfield/substrate_plot_component.lua)",
       "toggle_enabled": "file(components/toggle_enabled/toggle_enabled_component.lua)",
       "training_dummy": "file(components/training/training_dummy_component.lua)",
@@ -814,7 +822,8 @@
       "wilderness_signal": "file(components/signals/wilderness_signal_component.lua)"
    },
    "component_renderers": {
-      "grower_underfield": "file(renderers/grower_underfield/grower_underfield_renderer.lua)"
+      "grower_underfield": "file(renderers/grower_underfield/grower_underfield_renderer.lua)",
+      "connection": "file(renderers/connection/connection_renderer.lua)"
    },
    "controllers": {
       "crafter_info_controller": "file(services/server/crafter_info/crafter_info_controller.lua)",
@@ -925,6 +934,10 @@
       ],
       "trapping_grounds": [
          "get_wilderness_level_command"
+      ],
+      "connection": [
+         "get_connection_types_command",
+         "get_connections_datastore_command"
       ]
    },
    "ui": {
