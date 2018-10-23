@@ -1,0 +1,80 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:monster",
+   "player_id": "animals",
+   "components": {
+      "render_info": {
+         "animation_table": "/stonehearth/data/rigs/entities/critters/wolf",
+         "scale": 0.08
+      },
+      "sensor_list": {
+         "sensors": {
+            "sight": {
+               "type": "sensor",
+               "radius": 10
+            }
+         }
+      },
+      "stonehearth:equipment": {
+         "items": [
+            "stonehearth:weapons:animals:weak_wolf_teeth"
+         ]
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "/stonehearth/entities/monsters/forest/wolf/wolf.qb"
+            ]
+         }
+      },
+      "stonehearth:attributes": {
+         "max_health": {
+            "type": "basic",
+            "value": 40
+         },
+         "muscle": {
+            "type": "basic",
+            "value": 1
+         },
+         "menace": {
+            "type": "basic",
+            "value": 1
+         },
+         "courage": {
+            "type": "basic",
+            "value": 1
+         },
+         "speed": {
+            "type": "basic",
+            "value": 40
+         },
+         "exp_reward": {
+            "type": "basic",
+            "value": 2
+         }
+      },
+      "stonehearth:loot_drops": {
+         "entries": {
+            "default": {
+               "items": {
+                  "meat": {
+                     "uri": "stonehearth:wolf_jerky",
+                     "weight": 1
+                  }
+               }
+            }
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "player_id": "animals",
+         "display_name": "i18n(stonehearth_ace:entities.monsters.forest.wolf_cub.display_name)",
+         "description": "i18n(stonehearth_ace:entities.monsters.forest.wolf_cub.description)",
+         "icon": "/stonehearth/entities/monsters/forest/wolf/wolf.png"
+      },
+      "stonehearth:diet": {
+         "food_material": "meat"
+      }
+   }
+}

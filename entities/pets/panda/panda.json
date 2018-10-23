@@ -1,0 +1,69 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:pet",
+   "components": {
+      "render_info": {
+         "animation_table": "/stonehearth_ace/data/rigs/entities/critters/bear/bear.json",
+         "scale": 0.06
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(panda.qb)"
+            ]
+         }
+      },
+      "stonehearth:attributes": {
+         "max_health": {
+            "type": "basic",
+            "value": 80
+         },
+         "speed": {
+            "type": "basic",
+            "value": 40
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:entity_radius": 0.4,
+      "stonehearth:species": {
+         "id": "bear",
+         "display_name": "i18n(stonehearth_ace:entities.critters.bear.species)"
+      },
+      "stonehearth:portrait": {
+         "portrait_types": {
+            "headshot": {
+               "camera": {
+                  "pos": [
+                     24,
+                     1.2,
+                     -27
+                  ],
+                  "look_at": [
+                     0,
+                     1.0,
+                     0
+                  ],
+                  "fov": 65
+               }
+            }
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.pets.panda.display_name)",
+         "description": "i18n(stonehearth_ace:entities.pets.panda.description)",
+         "icon": "file(panda.png)",
+         "category": "pets"
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 1000,
+         "rarity": "rare",
+         "shop_info": {
+            "buyable": true,
+            "sellable": false,
+            "shopkeeper_level": 3,
+            "shopkeeper_type": "pet"
+         }
+      }
+   }
+}

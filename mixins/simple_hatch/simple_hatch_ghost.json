@@ -7,17 +7,17 @@
          "allow_vertical_adjacent": true
       },
       "render_info": {
-         "animation_table": "stonehearth_ace/data/rigs/entities/construction/simple_hatch/simple_hatch.json"
+         "animation_table": "/stonehearth_ace/data/rigs/entities/construction/simple_hatch/simple_hatch.json"
       },
       "effect_list": {
-         "default": "stonehearth_ace/data/rigs/entities/construction/simple_hatch/effects/closed.json",
+         "default": "/stonehearth_ace/data/rigs/entities/construction/simple_hatch/effects/closed.json",
          "initial_pose_animation": "closed.json"
       },
       "stonehearth:portal": {
          "cutter": [
             {
-              "min": { "x": -1, "y": -1 },
-              "max": { "x": 2, "y": 2 }
+               "min": { "x": -1, "y": -1 },
+               "max": { "x": 2, "y": 2 }
             }
          ],
          "horizontal": true

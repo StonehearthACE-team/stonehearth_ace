@@ -1,0 +1,26 @@
+{
+   "type": "recipe",
+   "effort": 90,
+   "work_units": 9,
+   "recipe_name": "i18n(stonehearth_ace:jobs.engineer.recipes.axle_gear_box_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.engineer.recipes.axle_gear_box_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.engineer.recipes.axle_gear_box_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/gizmos/axle_gear_box/axle_gear_box.png",
+   "workshop": "stonehearth:engineer:workbench",
+   "level_requirement": 3,
+   "ingredients": [
+      {
+         "uri": "stonehearth:refined:bronze_ingot",
+         "count": 2
+      },
+	  {
+         "uri": "stonehearth:refined:bronze_gear",
+         "count": 3
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:gizmos:axles:gear_box"
+      }
+   ]
+}

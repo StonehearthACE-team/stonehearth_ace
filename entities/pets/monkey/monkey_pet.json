@@ -1,0 +1,81 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:pet",
+   "components": {
+      "stonehearth:loot_drops": {
+         "entries": {
+            "default": {
+               "items": {
+                  "skin": {
+                     "uri": "stonehearth_ace:resources:bone:bone_material",
+                     "weight": 1
+                  }
+               }
+            }
+         }
+      },
+      "render_info": {
+         "animation_table": "/stonehearth/data/rigs/entities/critters/rabbit/rabbit.json"
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(monkey.qb)"
+            ]
+         }
+      },
+      "stonehearth:attributes": {
+         "speed": {
+            "type": "basic",
+            "value": 165
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:species": {
+         "id": "monkey",
+         "display_name": "i18n(stonehearth_ace:entities.critters.monkey.species)"
+      },
+      "stonehearth:entity_radius": 0.3,
+      "stonehearth:diet": {
+         "food_material": "vegetarian"
+      },
+      "stonehearth:portrait": {
+         "portrait_types": {
+            "headshot": {
+               "camera": {
+                  "pos": [
+                     17,
+                     0.8,
+                     -27
+                  ],
+                  "look_at": [
+                     0,
+                     0.6,
+                     0
+                  ],
+                  "fov": 45
+               }
+            }
+         }
+      },
+      "stonehearth:conversation_type": "animal",
+      "stonehearth:catalog": {
+         "player_id": "animals",
+         "display_name": "i18n(stonehearth_ace:entities.pets.monkey.display_name)",
+         "description": "i18n(stonehearth_ace:entities.pets.monkey.description)",
+         "icon": "file(monkey.png)",
+         "category": "pets"
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 300,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": true,
+            "sellable": false,
+            "shopkeeper_level": 1,
+            "shopkeeper_type": "pet"
+         }
+      }
+   }
+}

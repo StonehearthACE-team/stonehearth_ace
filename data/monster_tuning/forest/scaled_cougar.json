@@ -1,0 +1,51 @@
+{
+   "type": "monster_tuning",
+   "estimated_difficulty": "s0",
+   "attributes": {
+      "max_health": {
+         "base": 130,
+         "net_worth_effect": {
+            "increase_by": 5,
+            "per": 600
+         },
+         "max": 300
+      },
+      "muscle": {
+         "base": 10,
+         "net_worth_effect": {
+            "increase_by": 1,
+            "per": 400
+         },
+         "max": 400
+      },
+      "menace": 20,
+      "courage": 120,
+      "speed": 115,
+      "additive_armor_modifier": 2,
+      "exp_reward": {
+         "base": 15,
+         "net_worth_effect": {
+            "increase_by": 5,
+            "per": 500
+         },
+         "max": 90
+      }
+   },
+   "equipment": {
+      "weapon": [
+         "stonehearth:weapons:animals:weak_cougar_teeth"
+      ]
+   },
+   "loot_drops": {
+      "entries": {
+         "default": {
+            "items": {
+               "wolf_pelt": {
+                  "type": "bag",
+                  "uri": "stonehearth_ace:loot_bag:cougar_default"
+               }
+            }
+         }
+      }
+   }
+}

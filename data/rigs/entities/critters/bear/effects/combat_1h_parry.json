@@ -1,0 +1,30 @@
+{
+   "type" : "effect",
+   "tracks": {
+      "animation": {
+            "type": "animation_effect",
+            "start_time": 0,
+            "animation": "combat_bite.json",
+            "loop": true
+      },
+       "sound": {
+         "type": "sound_effect",
+         "duration": 1000,
+         "start_time": 800,
+         "min_distance": 30,
+         "max_instances" : 2,
+         "falloff" : 12,
+         "volume": 30,
+         "track" : {
+            "type": "one_of",
+            "items": [
+               "stonehearth:sounds:wolf_bite_01",
+               "stonehearth:sounds:wolf_bite_02",
+               "stonehearth:sounds:wolf_bite_03",
+               "stonehearth:sounds:wolf_bite_04"
+            ]
+         }
+      }          
+   }
+}      
+

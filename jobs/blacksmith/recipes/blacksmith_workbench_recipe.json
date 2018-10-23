@@ -1,0 +1,20 @@
+{
+   "effort": 40,
+   "recipe_name": "i18n(stonehearth_ace:jobs.blacksmith.recipes.blacksmith_workbench_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.blacksmith.recipes.blacksmith_workbench_recipe.description)",
+   "portrait": "/stonehearth_ace/jobs/blacksmith/blacksmith_workbench/blacksmith_workbench.png",
+   "level_requirement": 2,
+   "mixintypes": {
+	  "ingredients": "override"
+   },
+   "ingredients": [
+      {
+         "material": "wood resource",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth:refined:iron_ingot",
+         "count": 1
+      }
+   ]
+}

@@ -1,21 +1,17 @@
 {
    "type": "recipe",
    "effort": 50,
-   "work_units": 12,
+   "work_units": 6,
    "recipe_name": "i18n(stonehearth_ace:entities.construction.simple_hatch_stone.display_name)",
    "description": "i18n(stonehearth_ace:entities.construction.simple_hatch_stone.description)",
    "flavor": "i18n(stonehearth_ace:entities.construction.simple_hatch_stone.flavor)",
    "portrait": "/stonehearth_ace/entities/construction/simple_hatch_stone/simple_hatch_stone.png",
-   "workshop": "stonehearth:engineer:workbench",
+   "workshop": "stonehearth:mason:pedestal",
    "level_requirement": 2,
    "ingredients": [
       {
          "material": "stone resource",
          "count": 2
-      },
-      {
-         "uri": "stonehearth_ace:refined:lock",
-         "count": 1
       }
    ],
    "produces": [

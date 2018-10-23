@@ -1,0 +1,33 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "render_info": {
+         "scale": 0.1,
+         "color_map": "stonehearth:color_map:mob",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/mob_material_map.json"
+         ]
+      },
+      "mob": {
+         "model_origin": { "x": 0.5, "y": 0, "z": 0.45 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(blacksmith_workbench_advanced.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:hide_child_entities_from_pathfinder": true,
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:jobs.blacksmith.blacksmith_workbench_advanced.blacksmith_workbench_advanced_ghost.display_name)",
+         "description": "i18n(stonehearth_ace:jobs.blacksmith.blacksmith_workbench_advanced.blacksmith_workbench_advanced_ghost.description)",
+         "icon": "file(blacksmith_workbench_advanced.png)",
+         "category": "workshops",
+         "material_tags": "stockpile_tool"
+      }
+   }
+}

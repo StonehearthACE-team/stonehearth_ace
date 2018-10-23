@@ -1,0 +1,18 @@
+{
+   "recipe_name": "i18n(stonehearth_ace:jobs.blacksmith.recipes.blacksmith_forge_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.blacksmith.recipes.blacksmith_forge_recipe.description)",
+   "portrait": "/stonehearth_ace/jobs/blacksmith/blacksmith_forge/blacksmith_forge.png",
+   "mixintypes": {
+	  "ingredients": "override"
+   },
+   "ingredients": [
+      {
+         "material": "stone resource",
+         "count": 3
+      },
+	  {
+         "material": "ore resource",
+         "count": 1
+      }
+   ]
+}

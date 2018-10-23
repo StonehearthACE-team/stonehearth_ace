@@ -19,17 +19,25 @@
                   "max": 2
                },
                "items": {
-                 "oak_log": {
-                    "uri": "stonehearth:resources:wood:oak_log"
+                  "hunk_of_stone": {
+                     "uri": "stonehearth:resources:stone:hunk_of_stone"
+                  },
+                  "fur_rug": {
+                     "uri": "stonehearth:decoration:fur_rug"
                   }
                }
             }
          }
+      },
+      "stonehearth:commands": {
+         "commands": [
+            "stonehearth:commands:toggle_lock"
+         ]
       }
    },
    "entity_data": {
       "stonehearth:net_worth": {
-         "value_in_gold": 24,
+         "value_in_gold": 55,
          "rarity": "common",
          "shop_info": {
             "buyable": true,

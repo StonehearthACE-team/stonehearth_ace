@@ -16,6 +16,12 @@
                         "title": "Feral Bear Approaching!"
                      }
                   }
+               },
+               "giant_cougar_raid": {
+                  "cougar": {
+                     "display_name": "Giant Cat",
+                     "description": "Definitely not a house cat. Terrifying!"
+                  }
                }
             },
             "trader": {
@@ -371,6 +377,7 @@
       },
       "engineer": {
          "recipes": {
+            "mechanisms_name": "Machines & Mechanisms",
             "bronze_crossbow_recipe": {
                "recipe_name": "Bronze Crossbow",
                "description": "A strong ranged weapon that is slow but efficient in cracking enemy armor."
@@ -388,6 +395,36 @@
                "recipe_name": "The Ascendant Star",
                "description": "An impressive and powerful knight's weapon.",
                "flavor": "Engineered to shatter any piece of armor"
+            },
+            "water_gate_recipe": {
+               "recipe_name": "Copper Water Gate",
+               "description": "Create a small six-way gate that can be toggled open or closed for controlled fluid flow.",
+               "flavor": ""
+            },
+            "water_pump_recipe": {
+               "recipe_name": "Copper Water Pump",
+               "description": "Make a pump that will take fluids from the placement level to be released on its upper shaft.",
+               "flavor": "You can stack up pumps to get water higher and higher!"
+            },
+            "water_gate_greater_recipe": {
+               "recipe_name": "Greater Water Gate",
+               "description": "Build a larger and more resistant gate for controlling the flow of fluids.",
+               "flavor": ""
+            },
+            "axle_horizontal_recipe": {
+               "recipe_name": "Horizontal Axle (x3)",
+               "description": "Create a rotating shaft that can take mechanical power forward.",
+               "flavor": ""
+            },
+            "axle_vertical_recipe": {
+               "recipe_name": "Vertical Axle (x3)",
+               "description": "Create a rotating shaft that can take mechanical power vertically.",
+               "flavor": ""
+            },
+            "axle_gear_box_recipe": {
+               "recipe_name": "Gear Box",
+               "description": "Build a device that allows you to redirect mechanical power to any direction.",
+               "flavor": "It can be placed in walls during building - like windows or doors."
             }
          }
       },
@@ -435,6 +472,20 @@
                "description": "Can be used for melting and working metals or creating alloys.",
                "flavor": "Fire and stone shall give you metal, but with metal and metal you shall... Well, get even more metal. -Lucan Varius, Artifex Ignis"
             },
+            "blacksmith_forge_recipe": {
+               "recipe_name": "Blacksmith Furnace",
+               "description": "Used to heat and smelt ore into usable metal ingots."
+            },
+            "blacksmith_forge_advanced_recipe": {
+               "recipe_name": "Enhanced Blacksmith Furnace",
+               "description": "Improved and more efficient than regular furnaces, this furnace is hot enough to smelt precious metals.",
+               "flavor": "All that is gold does not glitter; but if it does, a good furnace will smelt it. -Lucan Varius, Artifex Ignis"
+            },
+            "blacksmith_workbench_advanced_recipe": {
+               "recipe_name": "Enhanced Blacksmith Anvil",
+               "description": "This incredible anvil can keep the metal hot for the most intricate and powerful crafts.",
+               "flavor": "Balance between heating and hammering is essential. Or just do both at once. -Lucan Varius, Artifex Ignis"
+            },
             "charcoal_recipe": {
                "recipe_name": "Piece 'o Charcoal (x3)",
                "description": "Heat wood in the absence of oxygen to acquire charcoal, a good grade fuel.",
@@ -454,6 +505,21 @@
                "recipe_name": "Slab 'o Coke (x10)",
                "description": "Mastery of the craft allows the Blacksmith to achieve maximum efficiency in coking coal.",
                "flavor": "Coke for everyone!"
+            },
+            "bulk_copper_ingot_recipe": {
+               "recipe_name": "Copper Ingot (x2)",
+               "description": "An Enhanced Furnace will allow the Blacksmith to use copper ores more efficiently.",
+               "flavor": ""
+            },
+            "bulk_tin_ingot_recipe": {
+               "recipe_name": "Tin Ingot (x2)",
+               "description": "An Enhanced Furnace will allow the Blacksmith to use tin ores more efficiently.",
+               "flavor": ""
+            },
+            "bulk_iron_ingot_recipe": {
+               "recipe_name": "Iron Ingot (x2)",
+               "description": "An Enhanced Furnace will allow the Blacksmith to use iron ores more efficiently.",
+               "flavor": ""
             },
             "copper_wall_lantern_recipe": {
                "recipe_name": "Copper Wall-Mounted Lantern",
@@ -582,18 +648,39 @@
                "description": "Chain armor akin to the ones from the Empire's royal vanguard.",
                "flavor": "It is said the cape was their demise"
             },
-            "refined_name": "Refinement"
+            "refined_name": "Refinement",
+            "blacksmith_workbench_recipe": {
+               "recipe_name": "Blacksmith Anvil",
+               "description": "Used by the Blacksmith to creating most of their goods."
+            }
          },
          "blacksmith_fuel_oven": {
             "blacksmith_fuel_oven_ghost": {
-               "display_name": "Blacksmith's Kiln",
+               "display_name": "Blacksmith Kiln",
                "description": "Used by the Blacksmith for refining materials through controlled heating."
             }
          },
          "blacksmith_crucible": {
             "blacksmith_crucible_ghost": {
-               "display_name": "Blacksmith's Crucible",
+               "display_name": "Blacksmith Crucible",
                "description": "Used by the Blacksmith for melting and working metals or creating alloys."
+            }
+         },
+         "blacksmith_forge": {
+            "blacksmith_forge_ghost": {
+               "display_name": "Blacksmith Furnace"
+            }
+         },
+         "blacksmith_workbench_advanced": {
+            "blacksmith_workbench_advanced_ghost": {
+               "display_name": "Enhanced Blacksmith Anvil",
+               "description": "Enhanced version of the anvil used by the Blacksmith for crafting."
+            }
+         },
+         "blacksmith_forge_advanced": {
+            "blacksmith_forge_advanced_ghost": {
+               "display_name": "Enhanced Blacksmith Furnace",
+               "description": "An improved and more efficient oven for smelting metals."
             }
          }
       },
@@ -668,6 +755,12 @@
                "recipe_name": "Sacred Ink",
                "description": "Special and gilded ink for illuminated manuscripts in 'The Walk of Cid'.",
                "flavor": "It is a very... complicated mixture. Don't ask"
+            }
+         },
+         "cook_mill_powered": {
+            "cook_mill_powered_ghost": {
+               "display_name": "Powered Mill Grinder",
+               "description": "Can be used by a Cook for milling. Requires mechanical power to work."
             }
          }
       },
@@ -753,22 +846,22 @@
          },
          "hidden_hatch_wooden": {
             "display_name": "Hidden Wooden Hatch",
-            "description": "A well hidden hatch.",
+            "description": "A well hidden hatch. Can be locked for passage control.",
             "flavor": ""
          },
          "hidden_hatch_clay": {
             "display_name": "Hidden Clay Hatch",
-            "description": "A well hidden hatch.",
+            "description": "A well hidden hatch. Can be locked for passage control.",
             "flavor": ""
          },
          "hidden_hatch_stone": {
             "display_name": "Hidden Stone Hatch",
-            "description": "A well hidden hatch.",
+            "description": "A well hidden hatch. Can be locked for passage control.",
             "flavor": ""
          },
          "hidden_hatch_iron": {
             "display_name": "Hidden Iron Hatch",
-            "description": "A well hidden hatch.",
+            "description": "A well hidden hatch. Can be locked for passage control.",
             "flavor": ""
          },
          "diagonal_hatch_wooden": {
@@ -788,7 +881,7 @@
          },
          "diagonal_hatch_iron": {
             "display_name": "Iron Barn Hatch",
-            "description": "Thick, sturdy iron hatch for your cellar.",
+            "description": "Thick, sturdy iron hatch for your cellar. Can be locked for passage control.",
             "flavor": "Good for storing potatoes"
          },
          "reinforced_clay_door": {
@@ -797,18 +890,18 @@
             "flavor": "Gives a slight feeling of safety"
          },
          "reinforced_wooden_door_lockable": {
-            "display_name": "Lockable Reinforced Wooden Door",
-            "description": "Stronger than your average door and lockable.",
+            "display_name": "Wooden Door with Lock",
+            "description": "Sturdier than your average door. Can be locked for passage control.",
             "flavor": "Gives a feeling of safety"
          },
          "reinforced_clay_door_lockable": {
-            "display_name": "Lockable Reinforced Clay Door",
-            "description": "Stronger than your average door and lockable.",
+            "display_name": "Clay Door with Lock",
+            "description": "Stronger than your average door. Can be locked for passage control.",
             "flavor": "Gives a feeling of safety"
          },
          "reinforced_stone_door_lockable": {
-            "display_name": "Lockable Reinforced Stone Door",
-            "description": "Stronger than your average door and lockable.",
+            "display_name": "Stone Door with Lock",
+            "description": "Sturdier than your average door. Can be locked for passage control.",
             "flavor": "Gives a feeling of safety"
          }
       },
@@ -1081,8 +1174,8 @@
       },
       "refined": {
          "lock": {
-            "display_name": "Lock",
-            "description": "Used to craft locked doors and mechanisms",
+            "display_name": "Steel Lock",
+            "description": "Used to craft locked doors and mechanisms.",
             "flavor": "Look out to not lock someone out"
          },
          "legendary_silk": {
@@ -1346,6 +1439,24 @@
                "display_name": "Patrol Point",
                "description": "Let your footmen patrol!"
             }
+         },
+         "water_pump": {
+            "water_pump_ghost": {
+               "display_name": "Copper Water Pump",
+               "description": "It will take fluids from the placement level to be released on its upper shaft. "
+            }
+         },
+         "water_gate": {
+            "water_gate_ghost": {
+               "display_name": "Copper Water Gate",
+               "description": "This six-way gate can be toggled open or closed for controlling fluid flow."
+            }
+         },
+         "greater_water_gate": {
+            "greater_water_gate_ghost": {
+               "display_name": "Greater Water Gate",
+               "description": "A larger and more resistant gate for controlling the flow of fluids."
+            }
          }
       },
       "recipes": {
@@ -1495,12 +1606,46 @@
                   "description": "It is said that Anji bravely fought a pack of wolves under the last radiant sun."
                }
             }
+         },
+         "wall_axe": {
+            "wall_axe_ghost": {
+               "display_name": "Iron Axe Plaque",
+               "description": "A good retirement for your old friend."
+            }
+         },
+         "wall_shield": {
+            "wall_shield_ghost": {
+               "display_name": "Wooden Shield Display",
+               "description": "Giving an use to your training equipment."
+            }
+         },
+         "workshop": {
+            "master_hammer": {
+               "master_hammer_ghost": {
+                  "display_name": "Blacksmith Hammer Display",
+                  "description": "This beautiful and ancient kind of hammer was used by the first smiths of old."
+               }
+            },
+            "quenching_station": {
+               "quenching_station_ghost": {
+                  "display_name": "Quenching Station",
+                  "description": "It gets cool really fast."
+               }
+            }
          }
       },
       "pets": {
          "wombat": {
             "display_name": "Wombat",
             "description": "Its fluffiness inspired the art school known as plushinism. It only eats greens."
+         },
+         "monkey": {
+            "display_name": "Monkey",
+            "description": "It's a sacred monkey! This little fellow eats only vegetables."
+         },
+         "panda": {
+            "display_name": "Panda Cub",
+            "description": "Cute bear from east beyond Pal'Mun. It prefers vegetables but can eat anything."
          }
       },
       "critters": {
@@ -1542,6 +1687,12 @@
          "stag_beetle": {
             "display_name": "Stag Beetle",
             "description": "Creepy little insect"
+         },
+         "monkey": {
+            "species": "monkey"
+         },
+         "bear": {
+            "species": "bear"
          }
       },
       "food": {
@@ -1710,6 +1861,9 @@
             "roast_steak_serving": {
                "display_name": "Serving of Roast Steak"
             }
+         },
+         "cougar_jerky": {
+            "display_name": "Big Cat Jerky"
          }
       },
       "terrain": {
@@ -1831,12 +1985,24 @@
       "monsters": {
          "forest": {
             "bear": {
-               "display_name": "Feral Bear",
-               "description": "They seem quite angry."
+               "display_name": "Bear",
+               "description": "It seems quite angry."
             },
             "bear_cub": {
                "display_name": "Bear Cub",
                "description": "Awww."
+            },
+            "cougar": {
+               "display_name": "Big Cat",
+               "description": "A large, graceful feline. It's a meat eating hunter."
+            },
+            "cougar_cub": {
+               "display_name": "Big Cat Cub",
+               "description": "Not so big, still a cat."
+            },
+            "wolf_cub": {
+               "display_name": "Wolf Cub",
+               "description": "Like a little doggo that wants to eat you!"
             }
          }
       },
@@ -2010,6 +2176,10 @@
          "axle_vertical_switch": {
             "display_name": "Vertical Switch",
             "description": "Allows you to toggle the flow of mechanical power on a vertical axle."
+         },
+         "source_water_wheel_wooden": {
+            "display_name": "Wooden Water Wheel",
+            "description": "This device can generate mechanical power if placed on water."
          }
       }
    },
@@ -2228,7 +2398,8 @@
                   "tooltip_consumables": "Healing Items",
                   "tooltip_consumables_other": "Other Consumables",
                   "tooltip_bulk_resources": "Bulk Resources",
-                  "tooltip_civillian_equipment": "Clothing & Accessories"
+                  "tooltip_civillian_equipment": "Clothing & Accessories",
+                  "tooltip_gizmos_equipment": "Gizmos & Utilities"
                }
             }
          }
@@ -2256,7 +2427,9 @@
             "common_fuel_resource_name": "Any Common Fuel",
             "weak_fuel_resource_name": "Lower Grade Fuel",
             "fuel_resource_name": "Good Grade Fuel",
-            "high_fuel_resource_name": "Higher Grade Fuel"
+            "high_fuel_resource_name": "Higher Grade Fuel",
+            "soft_metal_resource_name": "Any Soft Metal",
+            "hard_metal_resource_name": "Any Hard Metal"
          }
       }
    }

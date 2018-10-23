@@ -1,0 +1,26 @@
+{
+   "type": "recipe",
+   "effort": 150,
+   "work_units": 15,
+   "recipe_name": "i18n(stonehearth_ace:jobs.engineer.recipes.water_pump_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.engineer.recipes.water_pump_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.engineer.recipes.water_pump_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/gizmos/water_pump/water_pump.png",
+   "workshop": "stonehearth:engineer:workbench",
+   "level_requirement": 4,
+   "ingredients": [
+      {
+         "uri": "stonehearth:refined:copper_ingot",
+         "count": 4
+      },
+      {
+        "uri": "stonehearth:refined:iron_gear",
+        "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:gizmos:water_pump"
+      }
+   ]
+}
