@@ -76,7 +76,8 @@ end
 --    raycast_origin:      optional; only for 'entity' valuation_mode
 --    initialize:          optional; a function run when a heatmap is shown, with a callback function parameter
 --    shape:               optional; defaults to 'square', only other supported option is 'circle'
-function HeatmapService:show_heatmap_command(session, request, settings_key)
+--    checkerboard:        optional; whether only alternating grid coords should be calculated and the rest smoothed; defaults to false
+function HeatmapService:show_heatmap_command(session, response, settings_key)
    self._settings = self:_import_settings(settings_key)
    -- if we fail to import the settings, abort
    if not self._settings and self._settings.name then
@@ -92,15 +93,19 @@ function HeatmapService:show_heatmap_command(session, request, settings_key)
    self._settings.sample_denominator = (self._settings.sample_denominator ~= 0 and self._settings.sample_denominator) or 1
    self._settings.raycast_origin = self._settings.raycast_origin or Point3(0, stonehearth.constants.raycast.STANDING_RAYCAST_HEIGHT, 0)
    self._settings.shape = self._settings.shape or 'square'
+   self._settings.checkerboard = self._settings.checkerboard or false
 
    self._heatmap_node = RenderRootNode:add_debug_shapes_node(self._settings.name .. ' heatmap for ' .. tostring(self._entity))
    self._heatmap_node:set_use_custom_alpha(true)
    self._saved_tiles = {}
+   self._saved_checkerboard = {}
    
    -- if this heatmap has other things it needs to set up, let it do that now, with a callback in case they need to do deferred calls
    if self._settings.initialize then
       self._settings:initialize(function() self:_on_initialized() end)
    end
+
+   self._deferred = response
 end
 
 function HeatmapService:_on_initialized()
@@ -108,11 +113,14 @@ function HeatmapService:_on_initialized()
                               :on_mouse_event(function(e)
                                     return self:_on_mouse_event(e)
                                  end)
+                              :on_keyboard_event(function(e)
+                                    return self:_on_keyboard_event(e)
+                                 end)
    _radiant.renderer.set_global_uniform('global_desaturate_multiplier', 1.0)
    _radiant.renderer.set_pipeline_stage_enabled('FillBasedSelection', true)
 end
 
-function HeatmapService:hide_heatmap_command(session, request)
+function HeatmapService:hide_heatmap_command(session, response)
    if self._mouse_trace then
       self._mouse_trace:destroy()
       self._mouse_trace = nil
@@ -120,6 +128,10 @@ function HeatmapService:hide_heatmap_command(session, request)
    if self._heatmap_node then
       self._heatmap_node:destroy()
       self._heatmap_node = nil
+   end
+   if self._deferred then
+      self._deferred:resolve({hidden = true})
+      self._deferred = nil
    end
    self._last_probe_coordinates = nil
    for _, item_id in ipairs(self._hilighted_item_ids) do
@@ -129,16 +141,16 @@ function HeatmapService:hide_heatmap_command(session, request)
    _radiant.renderer.set_pipeline_stage_enabled('FillBasedSelection', false)
 end
 
-function HeatmapService:is_heatmap_active_command(session, request, map_type)
+function HeatmapService:is_heatmap_active_command(session, response, map_type)
    return { is_active = (self._heatmap_node ~= nil or self.map_type ~= map_type) }
 end
 
 function HeatmapService:destroy()
-   self:hide_command()
+   self:hide_heatmap_command()
 end
 
 -- TODO: change this to be a datastore like the clock object so heatmaps can be added/removed dynamically?
-function HeatmapService:get_heatmaps_command(session, request)
+function HeatmapService:get_heatmaps_command(session, response)
    local heatmaps = {}
    for key, _ in pairs(self._heatmaps) do
       heatmaps[key] = self._heatmap_keys[key]
@@ -186,6 +198,12 @@ function HeatmapService:_on_mouse_event(e)
       return
    end
 
+   -- if the user right-clicked or pressed escape, cancel out of the heatmap mode
+   if e:down(2) then
+      self:hide_heatmap_command()
+      return
+   end
+
    local best_brick = nil
    local cur_rank, new_rank, max_rank
    for result in _radiant.client.query_scene(e.x, e.y):each_result() do
@@ -210,6 +228,11 @@ function HeatmapService:_on_mouse_event(e)
          self._last_probe_coordinates = current_coordinates
       end
    end
+end
+
+function HeatmapService:_on_keyboard_event(e)
+   -- if the user right-clicked or pressed escape, cancel out of the heatmap mode
+   -- how to detect escape press? do we have to set up a hotkey? or it could be implemented in js
 end
 
 -- return values are [this rank, max rank value]: if you just want to say use this location, return 1, 1
@@ -242,33 +265,116 @@ function HeatmapService:_update_tiles(origin)
          local y = origin.y
          local z = origin.z + dz
          local point = Point3(x, y, z)
-         if self._settings.shape ~= 'circle' or point:distance_to(origin) <= radius then
-            local key = string.format('%f,%f,%f', x, y, z)
-            local heat_value
-            if self._saved_tiles[key] then   -- if we already have a value for this space, no need to calculate a new one
-               heat_value = self._saved_tiles[key]
-            elseif self._settings.valuation_mode == 'entity' then -- if we're evaluating entities, use an aggregate of the entities in the surrounding area
-               local items = self:_get_surrounding_items(point)
-               heat_value = self:_get_location_heat_value(point) + self:_get_aggregate_heat_value_of_items(items)
-               self._saved_tiles[key] = heat_value
-            elseif self._settings.valuation_mode == 'location' then  -- if we're evaluating a location, just pass the location to the evaluator function
-               heat_value = self:_get_location_heat_value(point)
-               self._saved_tiles[key] = heat_value
+         if not self._settings.checkerboard or (x + z) % 2 == 0 then
+            if self._settings.shape ~= 'circle' or point:distance_to(origin) <= radius then
+               local key = self:_get_location_key(x, y, z)
+               local heat_value
+               if self._saved_tiles[key] then   -- if we already have a value for this space, no need to calculate a new one
+                  heat_value = self._saved_tiles[key]
+               elseif self._settings.valuation_mode == 'entity' then -- if we're evaluating entities, use an aggregate of the entities in the surrounding area
+                  local items = self:_get_surrounding_items(point)
+                  heat_value = self:_get_location_heat_value(point) + self:_get_aggregate_heat_value_of_items(items)
+                  self._saved_tiles[key] = heat_value
+               elseif self._settings.valuation_mode == 'location' then  -- if we're evaluating a location, just pass the location to the evaluator function
+                  heat_value = self:_get_location_heat_value(point)
+                  self._saved_tiles[key] = heat_value
+               end
+               
+               if point == origin then
+                  self._sv.current_probe_value = heat_value
+                  self.__saved_variables:mark_changed()
+               end
+               
+               local color = self:_heat_value_to_color(heat_value, min_val, max_val)
+               -- this used to be "x - 0.5" but it looked incorrectly offset
+               self._heatmap_node:add_filled_xz_quad(Point3(x, y + 1.5, z - 0.5), Point2(1, 1), color)
             end
-            
-            if point == origin then
-               self._sv.current_probe_value = heat_value
-               self.__saved_variables:mark_changed()
+         end
+      end
+   end
+
+   if self._settings.checkerboard then
+      for dx = -radius, radius do
+         for dz = -radius, radius do
+            local x = origin.x + dx
+            local y = origin.y
+            local z = origin.z + dz
+            local point = Point3(x, y, z)
+            if (x + z) % 2 == 1 then
+               if self._settings.shape ~= 'circle' or point:distance_to(origin) <= radius then
+                  local key = self:_get_location_key(x, y, z)
+                  local heat_value
+                  if not self._saved_checkerboard[key] or not self._saved_checkerboard[key].mode then
+                     -- if we don't have a saved value, combine all the neighboring saved tile values into a sequence to find the mode
+                     local neighbor_values = {}
+                     self._saved_checkerboard[key] = neighbor_values
+                     table.insert(neighbor_values, self._saved_tiles[self:_get_location_key(x - 1, y, z)])
+                     table.insert(neighbor_values, self._saved_tiles[self:_get_location_key(x + 1, y, z)])
+                     table.insert(neighbor_values, self._saved_tiles[self:_get_location_key(x, y, z - 1)])
+                     table.insert(neighbor_values, self._saved_tiles[self:_get_location_key(x, y, z + 1)])
+                  end
+                  heat_value = self:_get_mode_heat_value(self._saved_checkerboard[key])
+                  
+                  if point == origin then
+                     self._sv.current_probe_value = heat_value
+                     self.__saved_variables:mark_changed()
+                  end
+                  
+                  local color = self:_heat_value_to_color(heat_value, min_val, max_val)
+                  -- this used to be "x - 0.5" but it looked incorrectly offset
+                  self._heatmap_node:add_filled_xz_quad(Point3(x, y + 1.5, z - 0.5), Point2(1, 1), color)
+               end
             end
-            
-            local color = self:_heat_value_to_color(heat_value, min_val, max_val)
-            -- this used to be "x - 0.5" but it looked incorrectly offset
-            self._heatmap_node:add_filled_xz_quad(Point3(x, y + 1.5, z - 0.5), Point2(1, 1), color)
          end
       end
    end
 
    self._heatmap_node:create_buffers()
+end
+
+function HeatmapService:_get_location_key(x, y, z)
+   return string.format('%f,%f,%f', x, y, z)
+end
+
+function HeatmapService:_get_mode_heat_value(values)
+   -- this is used for checkerboard mode, where alternating coords' values are determined by their four cardinal neighboring coords
+   if not values or not next(values) then
+      return self._settings.default_heat_value
+   end
+
+   if values.mode then
+      return values.mode
+   end
+   
+   local max = 1
+   local freq = {[1] = 1}
+   for i = 2, #values do
+      local matched = false
+      for id, _ in pairs(freq) do
+         if self:_compare_heat_values(values[i], values[id]) == 0 then
+            freq[id] = freq[id] + 1
+            max = math.max(max, freq[id])
+            matched = true
+            break
+         end
+      end
+      if not matched then
+         freq[i] = 1
+      end
+   end
+
+   local best_value
+   for id, value in ipairs(values) do
+      if freq[id] and freq[id] >= max and (not best_value or self:_compare_heat_values(value, best_value) > 0) then
+         best_value = value
+      end
+   end
+   if #values >= 4 then -- this value could perhaps be variable if we want to "generify" this function
+      -- if we have all our neighboring values, go ahead and set the mode here so we don't have to recalculate it
+      values.mode = best_value
+   end
+
+   return best_value
 end
 
 function HeatmapService:_get_min_max_heat_values()

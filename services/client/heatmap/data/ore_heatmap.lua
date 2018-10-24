@@ -16,6 +16,7 @@
 --    raycast_origin:      optional; only for 'entity' valuation_mode
 --    initialize:          optional; a function run when a heatmap is shown, with a callback function parameter
 --    shape:               optional; defaults to 'square', only other supported option is 'circle'
+--    checkerboard:        optional; whether only alternating grid coords should be calculated and the rest smoothed; defaults to false
 
 local Color4 = _radiant.csg.Color4
 local Point3 = _radiant.csg.Point3
@@ -29,6 +30,7 @@ local OreHeatmap = class()
 
 OreHeatmap.name = 'ore_heatmap'
 OreHeatmap.valuation_mode = 'location'
+OreHeatmap.checkerboard = true
 OreHeatmap.radius = stonehearth.constants.heatmaps.ore.SAMPLE_RADIUS
 OreHeatmap._base_depth = stonehearth.constants.heatmaps.ore.BASE_DEPTH
 OreHeatmap._max_heat_value = 3

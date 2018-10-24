@@ -67,7 +67,12 @@ App.StonehearthTerrainVisionWidget.reopen({
       }
       var heatmapData = self._heatmaps && self._heatmaps[heatmapKey];
       if (isActive && heatmapData) {
-         radiant.call_obj('stonehearth_ace.heatmap', 'show_heatmap_command', heatmapKey);
+         radiant.call_obj('stonehearth_ace.heatmap', 'show_heatmap_command', heatmapKey)
+            .done(function(response) {
+               if(heatmapKey != null && response.hidden) {
+                  self.setHeatmapActive(heatmapKey, false);
+               }
+            });
          self._currentTip = App.stonehearthClient.showTip(heatmapData.name, heatmapData.description, { i18n: true });
          self._heatmapValueTrace = new RadiantTrace();
          self._heatmapValueTrace.traceUri(self._heatmapServiceAddress, {}).progress(function (response) {

@@ -105,10 +105,17 @@ function ConnectionRenderer:_update()
             FACE_COLOR_ALPHA = FACE_COLOR_ALPHA / 2
          end
 
-         local region = Region3(radiant.util.to_cube3(connector.region):inflated(Point3(-0.3, -0.3, -0.3)))
+         local cube = radiant.util.to_cube3(connector.region)
+         local inflation = Point3(-0.8, -0.8, -0.8)
+         for _, dir in ipairs({'x', 'y', 'z'}) do
+            if cube.max[dir] - cube.min[dir] <= 1 then
+               inflation[dir] = -0.4
+            end
+         end
+         local region = Region3(cube:inflated(inflation))
          region:optimize('connector region')
-
-         local render_node = _radiant.client.create_region_outline_node(self._parent_node, region,
+         
+         local render_node = _radiant.client.create_region_outline_node(self._parent_node, region, --self._parent_node
             radiant.util.to_color4(color, EDGE_COLOR_ALPHA), radiant.util.to_color4(color, FACE_COLOR_ALPHA),
             '/stonehearth/data/horde/materials/transparent_box_nodepth.material.json', '/stonehearth/data/horde/materials/debug_shape_nodepth.material.json', 0)
 

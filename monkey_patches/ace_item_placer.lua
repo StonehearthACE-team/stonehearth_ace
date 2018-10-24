@@ -1,5 +1,5 @@
-local build_util = require 'lib.build_util'
-local entity_forms_lib = require 'lib.entity_forms.entity_forms_lib'
+local build_util = require 'stonehearth.lib.build_util'
+local entity_forms_lib = require 'stonehearth.lib.entity_forms.entity_forms_lib'
 
 local log = radiant.log.create_logger('build_editor')
 
@@ -64,6 +64,14 @@ function AceItemPlacer:go(session, response, item_to_place, quality, transaction
             :push_object_state()
    end
 
+   -- ACE (Paul): for advanced placement options, it just makes sense to initialize extra settings *after* all this other stuff is loaded
+   -- so we don't have to duplicate uri parsing or something; also allow for that initialization to cancel the selector early
+   if not self:_perform_additional_initialization() then
+      self:_fail_fn(self.location_selector)
+      self:_always_fn()
+      return
+   end
+
    self.location_selector
       :use_ghost_entity_cursor(cursor_uri)
       :set_rotation_disabled(rotation_disabled)
@@ -85,14 +93,6 @@ function AceItemPlacer:go(session, response, item_to_place, quality, transaction
          end)
       :go()
 
-   -- ACE (Paul): for advanced placement options, it just makes sense to initialize extra settings *after* all this other stuff is loaded
-   -- so we don't have to duplicate uri parsing or something; also allow for that initialization to cancel the selector early
-   if not self:_perform_additional_initialization() then
-      self:_fail_fn(self.location_selector)
-      self:_always_fn()
-      return
-   end
-
    stonehearth.selection:register_tool(self, true)
 
    -- Report that the item_placer is setup, this is for the auto tests.
@@ -102,10 +102,13 @@ function AceItemPlacer:go(session, response, item_to_place, quality, transaction
 end
 
 function AceItemPlacer:_perform_additional_initialization()
-   local advanced_placement = radiant.entities.get_entity_data(self.placement_test_entity, 'stonehearth_ace:advanced_placement')
+   local advanced_placement = radiant.entities.get_entity_data(self.entity_forms._entity, 'stonehearth_ace:advanced_placement')
    if advanced_placement then
       self._requires_support = advanced_placement.requires_support ~= false
       self._required_components = advanced_placement.required_components or {}
+   else
+      self._requires_support = true
+      self._required_components = {}
    end
 
    return true
@@ -165,6 +168,9 @@ function AceItemPlacer:_location_filter(result, selector)
 
    -- If not placed on building, then see if placed on an object that is solid
    if not self.placement_structure then
+      if not next(entities) then
+         log:debug('no placement structure entities found at %s (shifted by normal %s)', location - normal, normal)
+      end
       for _, e in pairs(entities) do
          if radiant.entities.is_solid_entity(e) and e ~= self.specific_item_to_place then
             local bp = build_util.get_blueprint_for(e)
@@ -244,6 +250,7 @@ function AceItemPlacer:_location_filter(result, selector)
       return true
    end
 
+   -- ACE optional conditions
    local return_val = self:_compute_additional_optional_placement_conditions(result, selector)
 
    return return_val or stonehearth.selection.FILTER_IGNORE
