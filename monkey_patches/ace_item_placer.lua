@@ -168,9 +168,6 @@ function AceItemPlacer:_location_filter(result, selector)
 
    -- If not placed on building, then see if placed on an object that is solid
    if not self.placement_structure then
-      if not next(entities) then
-         log:debug('no placement structure entities found at %s (shifted by normal %s)', location - normal, normal)
-      end
       for _, e in pairs(entities) do
          if radiant.entities.is_solid_entity(e) and e ~= self.specific_item_to_place then
             local bp = build_util.get_blueprint_for(e)
