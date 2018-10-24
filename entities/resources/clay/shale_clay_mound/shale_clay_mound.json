@@ -5,7 +5,7 @@
       "model_variants": {
          "default": {
             "models": [
-               "file(limestone_stone.qb)"
+               "file(shale_clay_mound.qb)"
             ]
          }
       },
@@ -15,7 +15,7 @@
    },
    "entity_data": {
       "stonehearth:net_worth": {
-         "value_in_gold": 1,
+         "value_in_gold": 3,
          "rarity": "common",
          "shop_info": {
             "buyable": true,
@@ -25,12 +25,12 @@
          }
       },
       "stonehearth:catalog": {
-         "display_name": "i18n(stonehearth_ace:entities.resources.stone.limestone_stone.display_name)",
-         "description": "i18n(stonehearth_ace:entities.resources.stone.limestone_stone.description)",
-         "icon": "file(limestone_stone.png)",
+         "display_name": "i18n(stonehearth_ace:entities.resources.clay.shale_clay_mound.display_name)",
+         "description": "i18n(stonehearth_ace:entities.resources.clay.shale_clay_mound.description)",
+         "icon": "file(shale_clay_mound.png)",
          "is_item": true,
          "category": "resources",
-         "material_tags": "stockpile_stone limestone_stone stone resource"
+         "material_tags": "stockpile_clay shale_clay stone clay resource"
       },
       "stonehearth:appeal": {
          "appeal": -2

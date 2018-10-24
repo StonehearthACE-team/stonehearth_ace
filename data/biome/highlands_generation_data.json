@@ -425,7 +425,31 @@
           "ground_radius" : 2,
           "exclusion_radius" : 2
         }
-      }
+      },
+		 "stonehearth_ace:terrain:pasture_grass": {
+            "placement_type": "dense",
+            "parameters": {
+               "grid_multiple": 3,
+               "item_density": 0.2,
+               "exclusion_radius": 2
+            }
+         },
+		 "stonehearth_ace:terrain:pasture_grass:short": {
+            "placement_type": "dense",
+            "parameters": {
+               "grid_multiple": 4,
+               "item_density": 0.3,
+               "exclusion_radius": 1
+            }
+         },
+		 "stonehearth_ace:terrain:pasture_grass:overgrown": {
+            "placement_type": "dense",
+            "parameters": {
+               "grid_multiple": 1,
+               "item_density": 0.2,
+               "exclusion_radius": 1
+            }
+         }
     },
     "trees" : {
       "__comment" : "tree size variance. anything above 0 will be considered as tree placement, and the size of the tree is determined within the sizes node declared above",
@@ -562,7 +586,10 @@
               "stonehearth_ace:plants:moonbell" : 1,
               "stonehearth_ace:plants:cotton_plant" : 1.5,
               "stonehearth_ace:plants:marblesprout:wild" : 0.1,
-              "stonehearth_ace:fungi:chanterelle" : 1
+              "stonehearth_ace:fungi:chanterelle" : 1,
+			  "stonehearth_ace:terrain:pasture_grass:overgrown": 0.2,
+			  "stonehearth_ace:terrain:pasture_grass": 1,
+			  "stonehearth_ace:terrain:pasture_grass:short": 0.4
             }
           },
           "foothills" : {
@@ -571,13 +598,19 @@
               "stonehearth_ace:plants:moonbell" : 7,
               "stonehearth_ace:plants:cotton_plant" : 1,
               "stonehearth_ace:plants:marblesprout:wild" : 2,
-              "stonehearth_ace:fungi:chanterelle" : 1.2
+              "stonehearth_ace:fungi:chanterelle" : 1.2,
+			  "stonehearth_ace:terrain:pasture_grass:overgrown": 0.1,
+			  "stonehearth_ace:terrain:pasture_grass": 0.7,
+			  "stonehearth_ace:terrain:pasture_grass:short": 0.3
             },
             "2" : {
               "stonehearth:plants:frostsnap" : 1,
               "stonehearth_ace:plants:moonbell" : 1,
               "stonehearth_ace:plants:marblesprout:wild" : 0.5,
-              "stonehearth_ace:fungi:chanterelle" : 0.4
+              "stonehearth_ace:fungi:chanterelle" : 0.4,
+			  "stonehearth_ace:terrain:pasture_grass:overgrown": 0.1,
+			  "stonehearth_ace:terrain:pasture_grass": 0.6,
+			  "stonehearth_ace:terrain:pasture_grass:short": 0.2
             }
           },
           "mountains" : {

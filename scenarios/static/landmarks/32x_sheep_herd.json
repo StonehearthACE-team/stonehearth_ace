@@ -1,17 +1,17 @@
 {
    "mixins": "/stonehearth/scenarios/static/landmarks/qb_to_terrain.json",
    "biomes": ["stonehearth:biome:temperate","stonehearth:biome:arctic","stonehearth:biome:desert", "stonehearth_ace:biome:highlands"],
-   "name": "32x_bear_den",
+   "name": "32x_sheep_herd",
    "category": "terrain_feature_common",
    "unique" : false,
    "size": {
       "width": 32,
       "length": 32
    },
-   "habitat_types": ["foothills", "forest"],
-   "weight" : 0.8,
+   "habitat_types": ["plains"],
+   "weight" : 1,
    "data": {
-      "brush" : "/stonehearth_ace/data/models/landmark/32x_bear_den.qb",
+      "brush" : "/stonehearth_ace/data/models/landmark/32x_sheep_herd.qb",
       "landmark_block_types": "stonehearth:landmark_blocks"
    }
 }
