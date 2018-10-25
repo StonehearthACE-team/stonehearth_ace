@@ -259,8 +259,9 @@ function AceItemPlacer:_compute_additional_required_placement_conditions(result,
          local component = result.entity:get_component(component_name)
          if component then
             if check_fn and check_fn ~= '' then
-               -- should be equivalent to calling self:check_fn() in the component
-               if component[check_fn](component) then
+               -- should be equivalent to calling self:check_fn(selector:get_cursor_entity()) in the component
+               -- we pass the cursor (ghost) entity to this function so the targeted component can check if the specific placement is acceptable
+               if component[check_fn](component, selector:get_cursor_entity()) then
                   return true
                end
             else

@@ -58,6 +58,12 @@ function MechanicalComponent:set_resistance(amount)
    self:_updated()
 end
 
+function MechanicalComponent:can_place_axle(axle)
+   -- checks against connection client service to see if the positioning of the axle entity
+   -- matches a connector from that entity with an available connector on this entity
+   
+end
+
 function MechanicalComponent:_updated()
    radiant.events.trigger(self._entity, 'stonehearth_ace:mechanical:changed', self._entity)
 end

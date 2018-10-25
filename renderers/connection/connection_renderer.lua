@@ -16,19 +16,18 @@ function ConnectionRenderer:initialize(render_entity, datastore)
 
    self._ui_view_mode = stonehearth.renderer:get_ui_mode()
    self._ui_mode_listener = radiant.events.listen(radiant, 'stonehearth:ui_mode_changed', self, self._on_ui_mode_changed)
-   self._connection_update_listener = radiant.events.listen(self._entity:get_id(), 'stonehearth_ace:connections:entity_updated', self, self._update)
-   self._boxed_region = radiant.alloc_region3()
-end
 
-function ConnectionRenderer:activate()
-   self._position_trace = radiant.entities.trace_grid_location(self._entity, 'connection entity position trace')
-         -- since the event is async, new_location might be off by one cycle
-         :on_changed(function(new_location)
-            if radiant.entities.is_entity_suspended(self._entity) then
-               return
-            end
+   self._datastore_trace = self._datastore:trace_data('entity connection available and connector status')
+      :on_changed(function()
             self:_update()
-         end)
+         end
+      )
+      :push_object_state()
+
+   self._position_trace = radiant.entities.trace_grid_location(self._entity, 'connection entity position trace')
+      :on_changed(function(new_location)
+         self:_update()
+      end)
 end
 
 function ConnectionRenderer:destroy()
@@ -84,8 +83,13 @@ function ConnectionRenderer:_update()
    --local location = radiant.entities.get_world_grid_location(self._entity)
    --local facing = radiant.entities.get_facing(self._entity)
 
+   local data = self._datastore:get_data().connected_stats
+
    -- go through each connector this entity has and render stuff for it
    for type, connection in pairs(self._connections) do
+      local type_data = data[type] or {}
+      local available = type_data.available
+      
       local nodes = {}
       self._outline_nodes[type] = nodes
 
@@ -93,39 +97,41 @@ function ConnectionRenderer:_update()
          {connected = Point3(255, 0, 255), disconnected = Point3(192, 64, 192)}
       
       for name, connector in pairs(connection.connectors) do
+         local conn_data = type_data.connected_connectors or {}
+         
          local color = colors.disconnected
-         local EDGE_COLOR_ALPHA = 24
-         local FACE_COLOR_ALPHA = 8
-
-         local connected = stonehearth_ace.connection_client:is_connector_connected(type, self._entity:get_id(), name)
+         local EDGE_COLOR_ALPHA = 20
+         local FACE_COLOR_ALPHA = 10
+         
+         local connected = conn_data[name]
          if connected then
             color = colors.connected
-         else
-            EDGE_COLOR_ALPHA = EDGE_COLOR_ALPHA / 2
-            FACE_COLOR_ALPHA = FACE_COLOR_ALPHA / 2
          end
 
-         local cube = radiant.util.to_cube3(connector.region)
-         local inflation = Point3(-0.8, -0.8, -0.8)
-         for _, dir in ipairs({'x', 'y', 'z'}) do
-            if cube.max[dir] - cube.min[dir] <= 1 then
-               inflation[dir] = -0.4
+         -- only render connected or available connectors
+         if connected or available then
+            local cube = radiant.util.to_cube3(connector.region)
+            local inflation = Point3(-0.5, -0.5, -0.5)
+            for _, dir in ipairs({'x', 'y', 'z'}) do
+               if cube.max[dir] - cube.min[dir] <= 1 then
+                  inflation[dir] = -0.4
+               end
             end
-         end
-         local region = Region3(cube:inflated(inflation))
-         region:optimize('connector region')
-         
-         local render_node = _radiant.client.create_region_outline_node(self._parent_node, region, --self._parent_node
-            radiant.util.to_color4(color, EDGE_COLOR_ALPHA), radiant.util.to_color4(color, FACE_COLOR_ALPHA),
-            '/stonehearth/data/horde/materials/transparent_box_nodepth.material.json', '/stonehearth/data/horde/materials/debug_shape_nodepth.material.json', 0)
+            local region = Region3(cube:inflated(inflation))
+            region:optimize('connector region')
+            
+            local render_node = _radiant.client.create_region_outline_node(self._parent_node, region, --self._parent_node
+               radiant.util.to_color4(color, EDGE_COLOR_ALPHA * 8), radiant.util.to_color4(color, FACE_COLOR_ALPHA * 5),
+               '/stonehearth/data/horde/materials/transparent_box_nodepth.material.json', '/stonehearth/data/horde/materials/debug_shape_nodepth.material.json', 0)
 
-         local face_render_node = _radiant.client.create_region_outline_node(RenderRootNode, region,
-            radiant.util.to_color4(color, EDGE_COLOR_ALPHA * 8), radiant.util.to_color4(color, FACE_COLOR_ALPHA * 5),
-            '/stonehearth/data/horde/materials/transparent_box.material.json', '/stonehearth/data/horde/materials/debug_shape.material.json', 0)
-         
-         face_render_node:set_parent(render_node)
-         render_node:add_reference_to(face_render_node)
-         table.insert(nodes, render_node)
+            local face_render_node = _radiant.client.create_region_outline_node(RenderRootNode, region,
+               radiant.util.to_color4(color, EDGE_COLOR_ALPHA * 8), radiant.util.to_color4(color, FACE_COLOR_ALPHA * 5),
+               '/stonehearth/data/horde/materials/transparent_box.material.json', '/stonehearth/data/horde/materials/debug_shape.material.json', 0)
+            
+            face_render_node:set_parent(render_node)
+            render_node:add_reference_to(face_render_node)
+            table.insert(nodes, render_node)
+         end
       end
    end
 end

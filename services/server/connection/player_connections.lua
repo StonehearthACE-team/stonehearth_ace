@@ -41,8 +41,7 @@ function PlayerConnections:initialize()
    -- entity_connectors: [entity_id]{connector_1, connector_2}
    -- connector_locations: [chunk_region_key]{connector_1, connector_2}
    -- graphs: {nodes: [entity_id]{entity_struct, connected_nodes}}
-   self._sv.connections = {}
-   self._sv.connected_entities = {}
+   self._entity_changes_cache = {}
 end
 
 function PlayerConnections:create(player_id)
@@ -62,32 +61,29 @@ function PlayerConnections:destroy()
    
 end
 
-function PlayerConnections:_get_connected_entities_for_ds()
-   local entities = {}
-   for e_id, connections in pairs(self._sv.connected_entities) do
-      entities[e_id] = next(connections) ~= nil
-   end
-   return entities
+function PlayerConnections:_get_and_clear_entity_changes_cache()
+   local changes = self._entity_changes_cache
+   --log:debug('_get_and_clear_entity_changes_cache data: %s', radiant.util.table_tostring(changes))
+
+   self._entity_changes_cache = {}
+   return changes
 end
 
-function PlayerConnections:_get_connections_for_ds()
-   return self._sv.connections
-end
+function PlayerConnections:_update_entity_changes_connector(entity, type, entity_available, conn_id, connected)
+   local changes = self._entity_changes_cache[entity]
+   if not changes then
+      changes = {}
+      self._entity_changes_cache[entity] = changes
+   end
+   local type_changes = changes[type]
+   if not type_changes then
+      type_changes = {connected_connectors = {}}
+      changes[type] = type_changes
+   end
+   type_changes.available = entity_available
 
-function PlayerConnections:_update_connection_for_datastore(type, entity_id, conn_id, connected)
-   local conns = self._sv.connections[type]
-   if conns then
-      conns[conn_id] = connected or nil
-   end
-   
-   local connected_entities = self._sv.connected_entities[entity_id]
-   if connected and not connected_entities then
-      connected_entities = {}
-      self._sv.connected_entities[entity_id] = connected_entities
-      self.__saved_variables:mark_changed()
-   end
-   if connected_entities then
-      connected_entities[conn_id] = connected or nil
+   if conn_id and connected ~= nil then
+      type_changes.connected_connectors[conn_id] = connected
    end
 end
 
@@ -109,12 +105,7 @@ function PlayerConnections:update_entity(entity_id, add_only)
 
    self.__saved_variables:mark_changed()
 
-   return {
-      changed_types = changed_types, 
-      graphs_changed = graphs_changed, 
-      connected_entities = self:_get_connected_entities_for_ds(),
-      connections = self:_get_connections_for_ds()
-   }
+   return self:_get_changes(changed_types, graphs_changed)
 end
 
 function PlayerConnections:remove_entity(entity_id)
@@ -123,11 +114,14 @@ function PlayerConnections:remove_entity(entity_id)
    self:_update_connector_locations(entity_struct, false, false)
    self.__saved_variables:mark_changed()
    
+   return self:_get_changes(changed_types, graphs_changed)
+end
+
+function PlayerConnections:_get_changes(changed_types, graphs_changed)
    return {
-      changed_types = changed_types, 
-      graphs_changed = graphs_changed, 
-      connected_entities = self:_get_connected_entities_for_ds(),
-      connections = self:_get_connections_for_ds()
+      changed_types = changed_types or {},
+      graphs_changed = graphs_changed or {},
+      entity_changes = self:_get_and_clear_entity_changes_cache()
    }
 end
 
@@ -170,6 +164,8 @@ function PlayerConnections:register_entity(entity, connections, separated_by_pla
                connect.chunk_region_keys = {}
                conn_tbl.entity_connectors[id][connect.id] = connect
             end
+
+            self:_update_entity_changes_connector(entity, type, connection.max_connections > 0)
          end
       end
 
@@ -210,7 +206,6 @@ function PlayerConnections:get_connections(type)
    if not conn_tbl then
       conn_tbl = {type = type, entity_connectors = {}, connector_locations = {}, graphs = {}}
       self._sv.connection_tables[type] = conn_tbl
-      self._sv.connections[type] = {}
       self.__saved_variables:mark_changed()
    end
 
@@ -262,10 +257,8 @@ function PlayerConnections:_remove_entity_from_graphs(entity_struct)
 
                if next(changes) then
                   changed_types[type] = true
-                  log:debug('_update_connection_for_datastore for type %s: entity %s, connector %s, [false]', type, entity_struct.id, connector.id)
-                  log:debug('_update_connection_for_datastore for type %s: entity %s, connector %s, [false]', type, connected.connection.entity_struct.id, connected.id)
-                  self:_update_connection_for_datastore(type, entity_struct.id, connector.id, false)
-                  self:_update_connection_for_datastore(type, connected.connection.entity_struct.id, connected.id, false)
+                  self:_update_entity_changes_connector(entity_struct.entity, type, true, connector.name, false)
+                  self:_update_entity_changes_connector(connected.connection.entity_struct.entity, type, true, connected.name, false)
                end
 
                -- when removing an entity from graphs, anything it was connected to should search for new connections
@@ -298,10 +291,10 @@ function PlayerConnections:_try_connecting_connector(connector, entity_id_to_ign
          combine_tables(graphs_changed, changes)
 
          if next(changes) then
-            log:debug('_update_connection_for_datastore for type %s: entity %s, connector %s, [true]', connection.type, connection.entity_struct.id, connector.id)
-            log:debug('_update_connection_for_datastore for type %s: entity %s, connector %s, [true]', connection.type, target.connection.entity_struct.id, target.id)
-            self:_update_connection_for_datastore(connection.type, connection.entity_struct.id, connector.id, true)
-            self:_update_connection_for_datastore(connection.type, target.connection.entity_struct.id, target.id, true)
+            self:_update_entity_changes_connector(connection.entity_struct.entity,
+                  connection.type, connection.num_connections < connection.max_connections, connector.name, true)
+            self:_update_entity_changes_connector(target.connection.entity_struct.entity,
+                  connection.type, target.connection.num_connections < target.connection.max_connections, target.name, true)
          end
       end
    end

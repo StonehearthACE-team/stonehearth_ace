@@ -19,6 +19,7 @@ local ALL_PLAYERS = '_all_players_'
 
 local combine_tables = ConnectionUtils.combine_tables
 local combine_type_tables = ConnectionUtils.combine_type_tables
+local combine_entity_tables = ConnectionUtils.combine_entity_tables
 
 function ConnectionService:initialize()
    local json = radiant.resources.load_json('stonehearth_ace:data:connection_types')
@@ -181,15 +182,14 @@ end
 function ConnectionService:_perform_update(player_id, res1, res2)
    combine_tables(res1.changed_types, res2.changed_types)
    res1.graphs_changed = combine_type_tables(res1.graphs_changed, res2.graphs_changed)
-   combine_tables(res1.connected_entities, res2.connected_entities)
-   res1.connections = combine_type_tables(res1.connections, res2.connections)
-   self:_update_datastore(player_id, res1)
+   res1.entity_changes = combine_entity_tables(res1.entity_changes, res2.entity_changes)
+   self:_communicate_update(player_id, res1)
 end
 
-function ConnectionService:_update_datastore(player_id, args)
-   local ds = self:get_connections_datastore(player_id)
-   
-   ds:set_data({connections = args.connections, connected_entities = args.connected_entities})
+function ConnectionService:_communicate_update(player_id, args)
+   for entity, stats in pairs(args.entity_changes) do
+      entity:get_component('stonehearth_ace:connection'):set_connected_stats(stats)
+   end
 
    for type, _ in pairs(args.changed_types) do
       radiant.events.trigger(self, 'stonehearth_ace:connections:'..type..':changed', args.graphs_changed[type] or {})
@@ -227,12 +227,12 @@ function ConnectionService:_start_entity_traces(entity, player_connections, all_
             if new_player_id ~= player_id then
                local result = player_connections:unregister_entity(entity)
                if result then
-                  self:_update_datastore(player_id, result)
+                  self:_communicate_update(player_id, result)
                end
 
                local connections = entity:get_component('stonehearth_ace:connection'):get_connections()
                result = self:get_player_connections(new_player_id):register_entity(entity, connections, true)  -- separated by player
-               self:_update_datastore(new_player_id, result)
+               self:_communicate_update(new_player_id, result)
             end
          end)
       

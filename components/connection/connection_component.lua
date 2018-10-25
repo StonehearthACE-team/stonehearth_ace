@@ -24,13 +24,14 @@ connector regions are typically a 2-voxel region, including one voxel inside the
    }
 }
 ]]
-
+local log = radiant.log.create_logger('connection_component')
 local ConnectionComponent = class()
 
 function ConnectionComponent:initialize()
    local json = radiant.entities.get_json(self)
    self._connections = json or {}
    self:_format_connections()
+   self._sv.connected_stats = {}
 end
 
 -- this is performed in activate rather than post_activate so that all specific connection services can use it in post_activate
@@ -59,6 +60,28 @@ function ConnectionComponent:get_connections(type)
    else
       return self._connections
    end
+end
+
+-- this is called by the connection service when this entity has any of its connectors change status
+function ConnectionComponent:set_connected_stats(stats)
+   for type, type_stats in pairs(stats) do
+      local these_stats = self._sv.connected_stats[type]
+      if not these_stats then
+         these_stats = {connected_connectors = {}}
+         self._sv.connected_stats[type] = these_stats
+      end
+      if type_stats.available ~= nil then
+         these_stats.available = type_stats.available
+      end
+      
+      if type_stats.connected_connectors then
+         for id, connected in pairs(type_stats.connected_connectors) do
+            these_stats.connected_connectors[id] = connected or nil
+         end
+      end
+   end
+   
+   self.__saved_variables:mark_changed()
 end
 
 return ConnectionComponent
