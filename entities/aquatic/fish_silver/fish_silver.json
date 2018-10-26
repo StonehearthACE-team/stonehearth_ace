@@ -1,0 +1,123 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:critter",
+   "components": {
+      "stonehearth:loot_drops": {
+         "force_auto_loot": true,
+         "entries": {
+            "jerky": {
+               "num_rolls": {
+                  "min": 0,
+                  "max": 1
+               },
+               "items": {
+                  "jerky": {
+                     "uri": "stonehearth:rabbit_jerky"
+                  }
+               }
+            },
+            "pelt": {
+               "num_rolls": {
+                  "min": 0,
+                  "max": 1
+               },
+               "items": {
+                  "pelt": {
+                     "uri": "stonehearth:resources:rabbit_pelt"
+                  }
+               }
+            }
+         }
+      },
+      "render_info": {
+         "scale": 0.08
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(fish_silver.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:entity_radius": 0.25,
+      "stonehearth:species": {
+         "id": "fish",
+         "display_name": "i18n(stonehearth_ace:entities.aquatic.fish.species)"
+      },
+      "stonehearth:bait_trap": {
+         "can_trap": true,
+         "catch_chance": 0.5,
+         "trigger_trap_on_failure_chance": 0.4
+      },
+      "stonehearth:harvest_beast_loot_table": {
+         "entries": {
+            "jerky": {
+               "num_rolls": {
+                  "min": 0,
+                  "max": 1
+               },
+               "items": {
+                  "jerky": {
+                     "uri": "stonehearth:rabbit_jerky"
+                  }
+               }
+            },
+            "pelt": {
+               "num_rolls": {
+                  "min": 0,
+                  "max": 1
+               },
+               "items": {
+                  "pelt": {
+                     "uri": "stonehearth:resources:rabbit_pelt"
+                  }
+               }
+            }
+         }
+      },
+      "stonehearth:calories": {
+         "hungry_threshold": 0,
+         "famished_threshold": 0,
+         "malnourished_threshold": -10,
+         "hourly_calorie_loss": 0.5
+      },
+      "stonehearth:diet": {
+         "food_material": "vegetarian"
+      },
+      "stonehearth:portrait": {
+         "portrait_types": {
+            "headshot": {
+               "camera": {
+                  "pos": [
+                     17,
+                     0.6,
+                     -27
+                  ],
+                  "look_at": [
+                     0,
+                     0.6,
+                     0
+                  ],
+                  "fov": 50
+               }
+            }
+         }
+      },
+      "stonehearth:catalog": {
+         "player_id": "animals",
+         "display_name": "i18n(stonehearth_ace:entities.aquatic.fish_silver.display_name)",
+         "description": "i18n(stonehearth_ace:entities.aquatic.fish_silver.description)",
+         "icon": "file(fish_silver.png)"
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 5,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      }
+   }
+}

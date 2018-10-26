@@ -5,14 +5,13 @@
       "stonehearth:entity_forms": {
          "iconic_form": "file(source_water_wheel_wooden_iconic.json)",
          "ghost_form": "file(source_water_wheel_wooden_ghost.json)",
-         "placeable_on_ground": true,
          "placeable_on_walls": true
       },
       "region_collision_shape": {
          "region": [
             {
-               "min": { "x": -3, "y": -3, "z": -2 },
-               "max": { "x": 4, "y": 3, "z": 1 }
+               "min": { "x": -3, "y": -3, "z": -1 },
+               "max": { "x": 4, "y": 4, "z": 1 }
             }
          ]
       },
@@ -21,8 +20,8 @@
             "connectors": {
                "zlow": {
                   "region": {
-                     "min": { "x": 0, "y": 0, "z": -4 },
-                     "max": { "x": 1, "y": 1, "z": -2 }
+                     "min": { "x": 0, "y": 0, "z": -3 },
+                     "max": { "x": 1, "y": 1, "z": 0 }
                   },
                   "max_connections": 1,
                   "region_intersection_threshold": 1
@@ -30,7 +29,7 @@
                "zhigh": {
                   "region": {
                      "min": { "x": 0, "y": 0, "z": -1 },
-                     "max": { "x": 1, "y": 1, "z": 1 }
+                     "max": { "x": 1, "y": 1, "z": 2 }
                   },
                   "max_connections": 1,
                   "region_intersection_threshold": 1

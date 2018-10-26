@@ -8,9 +8,15 @@
          "check_owner": false
       },
       "stonehearth:renewable_resource_node": {
-         "renewal_time": "120h+48h"
+         "renewal_time": "120h+48h",
+         "mixintypes": {
+            "resource_loot_table": "remove"
+         }
       },
       "stonehearth:commands": {
+         "mixintypes": {
+            "commands": "override"
+         },
          "commands": [
             "stonehearth_ace:commands:slaughter:wild_animal"
          ]

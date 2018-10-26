@@ -1,6 +1,12 @@
 {
    "type" : "effect",
    "tracks": {
+      "animation": {
+         "type": "animation_effect",
+         "start_time": 0,
+         "animation": "bellows.json",
+         "loop": true
+      },
       "coals": {
          "type": "cubemitter",
          "cubemitter": "/stonehearth_ace/data/horde/particles/fire/forge_advanced_coals_work.cubemitter.json",
@@ -8,7 +14,7 @@
          "transforms": {
             "x":0.1,
             "y":1,
-            "z":-0.9,
+            "z":-0.8,
             "rx":70,
             "ry":0,
             "rz":0

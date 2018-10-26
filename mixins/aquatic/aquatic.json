@@ -1,0 +1,118 @@
+{
+   "type": "mixin",
+   "mixins": "stonehearth:mixins:mob",
+   "player_id": "animals",
+   "components": {
+      "stonehearth:ai": {},
+      "mob": {
+         "mob_collision_type": "tiny"
+      },
+      "stonehearth:posture": {},
+      "stonehearth:trivial_death": {},
+      "stonehearth:attributes": {
+         "max_health": {
+            "type": "basic",
+            "value": 10
+         },
+         "speed": {
+            "type": "basic",
+            "value": 120
+         },
+         "courage": {
+            "type": "basic",
+            "value": 1
+         },
+         "min_calories": {
+            "type": "basic",
+            "value": -30
+         },
+         "max_calories": {
+            "type": "basic",
+            "value": 30
+         },
+         "min_sleepiness": {
+            "type": "basic",
+            "value": 0
+         },
+         "max_sleepiness": {
+            "type": "basic",
+            "value": 32
+         },
+         "max_social_satisfaction": {
+            "type": "basic",
+            "value": 72
+         },
+         "menace": {
+            "type": "basic",
+            "value": 0.001
+         }
+      },
+      "stonehearth:expendable_resources": {
+         "resources": {
+            "calories": {
+               "min": {
+                  "linked_attribute": "min_calories"
+               },
+               "max": {
+                  "linked_attribute": "max_calories"
+               },
+               "initial_value": "max_value"
+            },
+            "sleepiness": {
+               "min": {
+                  "linked_attribute": "min_sleepiness"
+               },
+               "max": {
+                  "linked_attribute": "max_sleepiness"
+               },
+               "initial_value": 0
+            },
+            "social_satisfaction": {
+               "min": {
+                  "value": 0
+               },
+               "max": {
+                  "linked_attribute": "max_social_satisfaction"
+               },
+               "initial_value": {
+                  "type": "random_between",
+                  "min": 61,
+                  "max": "max_value"
+               }
+            }
+         }
+      },
+      "sensor_list": {
+         "sensors": {
+            "sight": {
+               "radius": 16
+            }
+         }
+      }
+   },
+   "entity_data": {
+      "navgrid": {
+         "has_physics": true
+      },
+      "stonehearth:catalog": {
+         "player_id": "animals"
+      },
+      "stonehearth:observers:avoid_threatening_entities": {
+         "treat_neutral_as_hostile": true,
+         "min_avoidance_distance": 16,
+         "max_avoidance_distance": 16
+      },
+      "stonehearth:conversation_type": "animal",
+      "stonehearth:ai_packs": {
+         "packs": [
+            "stonehearth:ai_pack:critter",
+            "stonehearth:ai_pack:wimpy",
+            "stonehearth:ai_pack:panic:flee",
+            "stonehearth:ai_pack:death",
+            "stonehearth:ai_pack:idle",
+            "stonehearth:ai_pack:idle:bored:idle_effects",
+            "stonehearth:ai_pack:idle:bored:wander"
+         ]
+      }
+   }
+}
