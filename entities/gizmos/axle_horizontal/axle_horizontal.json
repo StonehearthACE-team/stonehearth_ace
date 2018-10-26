@@ -19,7 +19,7 @@
       "stonehearth_ace:connection": {
          "mechanical": {
             "connectors": {
-               "xlow": {
+               "zlow": {
                   "region": {
                      "min": { "x": 0, "y": 0, "z": -1 },
                      "max": { "x": 1, "y": 1, "z": 1 }
@@ -27,7 +27,7 @@
                   "max_connections": 1,
                   "region_intersection_threshold": 1
                },
-               "xhigh": {
+               "zhigh": {
                   "region": {
                      "min": { "x": 0, "y": 0, "z": 0 },
                      "max": { "x": 1, "y": 1, "z": 2 }
@@ -57,12 +57,6 @@
       },
       "stonehearth:item_quality": {
          "variable_quality": true
-      },
-      "stonehearth_ace:advanced_placement": {
-         "requires_support": false,
-         "required_components": {
-            "stonehearth_ace:mechanical": ""
-         }
       }
    }
 }

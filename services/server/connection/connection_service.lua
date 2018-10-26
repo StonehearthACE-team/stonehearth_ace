@@ -20,6 +20,7 @@ local ALL_PLAYERS = '_all_players_'
 local combine_tables = ConnectionUtils.combine_tables
 local combine_type_tables = ConnectionUtils.combine_type_tables
 local combine_entity_tables = ConnectionUtils.combine_entity_tables
+local _update_entity_connection_data = ConnectionUtils._update_entity_connection_data
 
 function ConnectionService:initialize()
    local json = radiant.resources.load_json('stonehearth_ace:data:connection_types')
@@ -187,9 +188,21 @@ function ConnectionService:_perform_update(player_id, res1, res2)
 end
 
 function ConnectionService:_communicate_update(player_id, args)
+   local ds = self:get_connections_datastore(player_id)
+   local cur_data = ds:get_data()
+   
    for entity, stats in pairs(args.entity_changes) do
       entity:get_component('stonehearth_ace:connection'):set_connected_stats(stats)
+      
+      local entity_data = cur_data[entity:get_id()]
+      if not entity_data then
+         entity_data = {}
+         cur_data[entity:get_id()] = entity_data
+      end
+      _update_entity_connection_data(entity_data, stats)
    end
+
+   ds:set_data(cur_data)
 
    for type, _ in pairs(args.changed_types) do
       radiant.events.trigger(self, 'stonehearth_ace:connections:'..type..':changed', args.graphs_changed[type] or {})

@@ -255,14 +255,15 @@ end
 
 function AceItemPlacer:_compute_additional_required_placement_conditions(result, selector)
    if next(self._required_components) then
-      for component_name, check_fn in pairs(self._required_components) do
+      for component_name, check_script in pairs(self._required_components) do
          local component = result.entity:get_component(component_name)
          if component then
-            if check_fn and check_fn ~= '' then
-               -- should be equivalent to calling self:check_fn(selector:get_cursor_entity()) in the component
-               -- we pass the cursor (ghost) entity to this function so the targeted component can check if the specific placement is acceptable
-               if component[check_fn](component, selector:get_cursor_entity()) then
-                  return true
+            if check_script and check_script ~= '' then
+               local script = radiant.mods.require(check_script)
+               if script then
+                  if script._item_placer_can_place(self.item_uri_to_place, self:_get_entity_table(selector:get_cursor_entity()), self:_get_entity_table(result.entity)) then
+                     return true
+                  end
                end
             else
                return true
@@ -274,6 +275,14 @@ function AceItemPlacer:_compute_additional_required_placement_conditions(result,
    end
 
    return true
+end
+
+function AceItemPlacer:_get_entity_table(entity)
+   return {
+      entity = entity,
+      location = radiant.entities.get_world_grid_location(entity),
+      facing = radiant.entities.get_facing(entity)
+   }
 end
 
 function AceItemPlacer:_compute_additional_optional_placement_conditions(result, selector)

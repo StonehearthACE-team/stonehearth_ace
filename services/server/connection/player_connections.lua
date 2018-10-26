@@ -18,12 +18,7 @@ local log = radiant.log.create_logger('player_connections')
 
 local PlayerConnections = class()
 
--- basically taken from 'stonehearth.lib.building.region_utils.rotate(...)'
-local MIDDLE_OFFSET = Point3(0.5, 0, 0.5)
-local rotate_region = function(region, origin, rotation)
-   return region:translated(origin - MIDDLE_OFFSET):rotated(rotation):translated(MIDDLE_OFFSET - origin)
-end
-
+local rotate_region = ConnectionUtils.rotate_region
 local combine_tables = ConnectionUtils.combine_tables
 local combine_type_tables = ConnectionUtils.combine_type_tables
 
@@ -69,7 +64,7 @@ function PlayerConnections:_get_and_clear_entity_changes_cache()
    return changes
 end
 
-function PlayerConnections:_update_entity_changes_connector(entity, type, entity_available, conn_id, connected)
+function PlayerConnections:_update_entity_changes_connector(entity, type, entity_available, conn_id, connector_available)
    local changes = self._entity_changes_cache[entity]
    if not changes then
       changes = {}
@@ -77,13 +72,13 @@ function PlayerConnections:_update_entity_changes_connector(entity, type, entity
    end
    local type_changes = changes[type]
    if not type_changes then
-      type_changes = {connected_connectors = {}}
+      type_changes = {available_connectors = {}}
       changes[type] = type_changes
    end
    type_changes.available = entity_available
 
-   if conn_id and connected ~= nil then
-      type_changes.connected_connectors[conn_id] = connected
+   if conn_id and connector_available ~= nil then
+      type_changes.available_connectors[conn_id] = connector_available
    end
 end
 
@@ -163,9 +158,9 @@ function PlayerConnections:register_entity(entity, connections, separated_by_pla
                connect.region_intersection_threshold = connector.region_intersection_threshold or 0
                connect.chunk_region_keys = {}
                conn_tbl.entity_connectors[id][connect.id] = connect
-            end
 
-            self:_update_entity_changes_connector(entity, type, connection.max_connections > 0)
+               self:_update_entity_changes_connector(entity, type, connection.max_connections > 0, key, connector.max_connections > 0)
+            end
          end
       end
 
@@ -257,8 +252,8 @@ function PlayerConnections:_remove_entity_from_graphs(entity_struct)
 
                if next(changes) then
                   changed_types[type] = true
-                  self:_update_entity_changes_connector(entity_struct.entity, type, true, connector.name, false)
-                  self:_update_entity_changes_connector(connected.connection.entity_struct.entity, type, true, connected.name, false)
+                  self:_update_entity_changes_connector(entity_struct.entity, type, true, connector.name, true)
+                  self:_update_entity_changes_connector(connected.connection.entity_struct.entity, type, true, connected.name, true)
                end
 
                -- when removing an entity from graphs, anything it was connected to should search for new connections
@@ -292,9 +287,11 @@ function PlayerConnections:_try_connecting_connector(connector, entity_id_to_ign
 
          if next(changes) then
             self:_update_entity_changes_connector(connection.entity_struct.entity,
-                  connection.type, connection.num_connections < connection.max_connections, connector.name, true)
+                  connection.type, connection.num_connections < connection.max_connections,
+                  connector.name, connector.max_connections > connector.num_connections)
             self:_update_entity_changes_connector(target.connection.entity_struct.entity,
-                  connection.type, target.connection.num_connections < target.connection.max_connections, target.name, true)
+                  connection.type, target.connection.num_connections < target.connection.max_connections,
+                  target.name, target.max_connections > target.num_connections)
          end
       end
    end

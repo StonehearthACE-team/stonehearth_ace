@@ -42,19 +42,16 @@ end
 
 function MechanicalComponent:set_power_produced(amount)
    self._sv.produces = amount
-   self.__saved_variables:mark_changed()
    self:_updated()
 end
 
 function MechanicalComponent:set_power_consumed(amount)
    self._sv.consumes = amount
-   self.__saved_variables:mark_changed()
    self:_updated()
 end
 
 function MechanicalComponent:set_resistance(amount)
    self._sv.resistance = amount
-   self.__saved_variables:mark_changed()
    self:_updated()
 end
 
@@ -65,6 +62,7 @@ function MechanicalComponent:can_place_axle(axle)
 end
 
 function MechanicalComponent:_updated()
+   self.__saved_variables:mark_changed()
    radiant.events.trigger(self._entity, 'stonehearth_ace:mechanical:changed', self._entity)
 end
 

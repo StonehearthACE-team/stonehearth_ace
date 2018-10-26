@@ -94,22 +94,24 @@ function ConnectionRenderer:_update()
       self._outline_nodes[type] = nodes
 
       local colors = stonehearth_ace.connection_client:get_connection_type_colors(type) or
-         {connected = Point3(255, 0, 255), disconnected = Point3(192, 64, 192)}
+         stonehearth_ace.connection_client:get_connection_type_colors('default')
       
       for name, connector in pairs(connection.connectors) do
-         local conn_data = type_data.connected_connectors or {}
+         local conn_data = type_data.available_connectors or {}
          
-         local color = colors.disconnected
+         local color = colors.connected_color
          local EDGE_COLOR_ALPHA = 20
          local FACE_COLOR_ALPHA = 10
          
-         local connected = conn_data[name]
-         if connected then
-            color = colors.connected
+         local connector_available = conn_data[name]
+         local is_available = available and connector_available
+         local is_connected = not connector_available
+         if is_available then
+            color = colors.available_color
          end
 
-         -- only render connected or available connectors
-         if connected or available then
+         -- only render actually available or connected connectors
+         if is_available or is_connected then
             local cube = radiant.util.to_cube3(connector.region)
             local inflation = Point3(-0.5, -0.5, -0.5)
             for _, dir in ipairs({'x', 'y', 'z'}) do
@@ -120,7 +122,7 @@ function ConnectionRenderer:_update()
             local region = Region3(cube:inflated(inflation))
             region:optimize('connector region')
             
-            local render_node = _radiant.client.create_region_outline_node(self._parent_node, region, --self._parent_node
+            local render_node = _radiant.client.create_region_outline_node(self._parent_node, region,
                radiant.util.to_color4(color, EDGE_COLOR_ALPHA * 8), radiant.util.to_color4(color, FACE_COLOR_ALPHA * 5),
                '/stonehearth/data/horde/materials/transparent_box_nodepth.material.json', '/stonehearth/data/horde/materials/debug_shape_nodepth.material.json', 0)
 

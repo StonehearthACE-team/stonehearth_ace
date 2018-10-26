@@ -24,6 +24,9 @@ connector regions are typically a 2-voxel region, including one voxel inside the
    }
 }
 ]]
+local ConnectionUtils = require 'lib.connection.connection_utils'
+local _update_entity_connection_data = ConnectionUtils._update_entity_connection_data
+
 local log = radiant.log.create_logger('connection_component')
 local ConnectionComponent = class()
 
@@ -31,17 +34,23 @@ function ConnectionComponent:initialize()
    local json = radiant.entities.get_json(self)
    self._connections = json or {}
    self:_format_connections()
-   self._sv.connected_stats = {}
+
+   if radiant.is_server then
+      self._sv.connected_stats = {}
+   end
 end
 
 -- this is performed in activate rather than post_activate so that all specific connection services can use it in post_activate
 function ConnectionComponent:activate()
-   stonehearth_ace.connection:register_entity(self._entity, self._connections)
-   -- also need to set up a listener in case this entity changes ownership to then unregister it and re-register it
+   if radiant.is_server then
+      stonehearth_ace.connection:register_entity(self._entity, self._connections)
+   end
 end
 
 function ConnectionComponent:destroy()
-   stonehearth_ace.connection:unregister_entity(self._entity)
+   if radiant.is_server then
+      stonehearth_ace.connection:unregister_entity(self._entity)
+   end
 end
 
 function ConnectionComponent:_format_connections()
@@ -64,23 +73,7 @@ end
 
 -- this is called by the connection service when this entity has any of its connectors change status
 function ConnectionComponent:set_connected_stats(stats)
-   for type, type_stats in pairs(stats) do
-      local these_stats = self._sv.connected_stats[type]
-      if not these_stats then
-         these_stats = {connected_connectors = {}}
-         self._sv.connected_stats[type] = these_stats
-      end
-      if type_stats.available ~= nil then
-         these_stats.available = type_stats.available
-      end
-      
-      if type_stats.connected_connectors then
-         for id, connected in pairs(type_stats.connected_connectors) do
-            these_stats.connected_connectors[id] = connected or nil
-         end
-      end
-   end
-   
+   _update_entity_connection_data(self._sv.connected_stats, stats)
    self.__saved_variables:mark_changed()
 end
 
