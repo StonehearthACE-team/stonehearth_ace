@@ -27,6 +27,24 @@
             }
          ]
       },
+      "stonehearth_ace:connection": {
+         "mechanical": {
+            "connectors": {
+               "input": {
+                  "region": {
+                     "min": { "x": 0, "y": 1, "z": 0 },
+                     "max": { "x": 1, "y": 2, "z": 2 }
+                  },
+                  "max_connections": 1,
+                  "region_intersection_threshold": 1
+               }
+            },
+            "max_connections": 1
+         }
+      },
+      "stonehearth_ace:mechanical": {
+         "consumes": 20
+      },
       "stonehearth:entity_forms": {
          "iconic_form": "file(cook_mill_powered_iconic.json)",
          "ghost_form": "file(cook_mill_powered_ghost.json)",
