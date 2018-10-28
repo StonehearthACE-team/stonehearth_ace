@@ -8,7 +8,7 @@ local WaterSignalComponent = class()
 
 function WaterSignalComponent:initialize()
 	local json = radiant.entities.get_json(self)
-	self._sv._signal_region = json and json.signal_region and Region3(json.signal_region)
+	self._sv._signal_region = json and json.signal_region and Region3(radiant.util.to_cube3(json.signal_region))
    self._sv.is_urgent = json and json.is_urgent or false
    self._sv.monitor_types = {}
    if json and json.monitor_types then
