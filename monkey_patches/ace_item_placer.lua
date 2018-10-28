@@ -260,7 +260,7 @@ function AceItemPlacer:_compute_additional_required_placement_conditions(result,
          if component then
             if check_script and check_script ~= '' then
                local script = radiant.mods.require(check_script)
-               if script then
+               if script and script._item_placer_can_place then
                   if script._item_placer_can_place(self.item_uri_to_place, self:_get_entity_table(selector:get_cursor_entity()), self:_get_entity_table(result.entity)) then
                      return true
                   end

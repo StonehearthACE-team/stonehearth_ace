@@ -34,7 +34,7 @@ function WaterSignalComponent:post_activate()
             if component then
                self:set_region(component:get_region():get())
             else
-               self:set_region(Region3(Cube3(Point3.zero, Point3.one)))
+               self:set_region(Region3(Cube3(Point3.zero))) --", Point3.one" is essentially automatically added by the Cube3 constructor
             end
          end
       end
@@ -111,8 +111,8 @@ function WaterSignalComponent:get_water_exists()
 	return self._sv._water_exists
 end
 
-function WaterSignalComponent:set_water_exists(water_entities)
-	local exists = next(water_entities) ~= nil
+function WaterSignalComponent:set_water_exists(water_components)
+	local exists = next(water_components) ~= nil
 
 	local prev_exists = self._sv._water_exists
 	self._sv._water_exists = exists
@@ -128,10 +128,11 @@ function WaterSignalComponent:get_water_volume()
 	return self._sv._water_volume
 end
 
-function WaterSignalComponent:set_water_volume(water_entities)
+function WaterSignalComponent:set_water_volume(water_components)
 	local volume = 0
-	for i, w in pairs(water_entities) do
-		volume = volume + w:get_volume()
+	for i, w in pairs(water_components) do
+      --volume = volume + w:get_volume()
+      volume = volume + self:_get_intersection_volume(w)
 	end
 
 	local prev_volume = self._sv._water_volume
@@ -143,6 +144,28 @@ function WaterSignalComponent:set_water_volume(water_entities)
    end
    return false
 end
+
+function WaterSignalComponent:_get_intersection_volume(water_comp)
+   -- self._trans_region gets set by _on_tick_water_signal before this gets called from set_water_volume
+   -- apparently regions (at least the way the water component uses them) are integer-bounded
+   -- and the top layer region overlaps the main region layer (see commented get_volume() below)
+   local top_region = water_comp._sv._top_layer:get()
+   local top_height = water_comp:get_height() % 1
+   local base_intersection = self._trans_region:intersect_region(water_comp:get_region():get() - top_region)
+   local top_intersection = self._trans_region:intersect_region(top_region)
+   local volume = base_intersection:get_area() + top_intersection:get_area() * top_height
+   return volume
+end
+
+--[[
+function WaterComponent:get_volume()
+   local top = self._sv._top_layer:get()
+   local bottom = self._sv.region:get() - top
+   local top_height = self._sv.height % 1
+   local volume = top_height * top:get_area() + bottom:get_area()
+   return volume
+end
+]]
 
 function WaterSignalComponent:get_waterfall_exists()
 	return self._sv._waterfall_exists
@@ -165,9 +188,9 @@ function WaterSignalComponent:get_waterfall_volume()
 	return self._sv._waterfall_volume
 end
 
-function WaterSignalComponent:set_waterfall_volume(waterfall_entities)
+function WaterSignalComponent:set_waterfall_volume(waterfall_components)
 	local volume = 0
-	for i, w in pairs(waterfall_entities) do
+	for i, w in pairs(waterfall_components) do
 		volume = volume + w:get_volume()
 	end
 
@@ -194,8 +217,8 @@ function WaterSignalComponent:_on_tick_water_signal()
 		return
 	end
 	
-	local region = self._sv._signal_region and self._sv._signal_region:translated(location)
-	local water_components, waterfall_components = self:_get_water(region)
+	self._trans_region = self._sv._signal_region and self._sv._signal_region:translated(location)
+	local water_components, waterfall_components = self:_get_water(self._trans_region)
    local changed = false
 
    if self:has_monitor_type('water_exists') then

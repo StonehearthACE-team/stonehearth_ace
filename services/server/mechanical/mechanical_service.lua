@@ -112,7 +112,6 @@ function MechanicalService:_enable_network(network, graph)
       resistance = resistance + mech_comp:get_resistance()
    end
 
-   -- finally, go through all the entities and set their power percentage
    local percentage = math.min(1, (produced - resistance) / math.max(1, consumed)) * 100
    if percentage < 1 then
       percentage = 0
@@ -122,6 +121,7 @@ function MechanicalService:_enable_network(network, graph)
    network.resistance = resistance
    network.power_percentage = percentage
 
+   -- finally, go through all the entities and set their power percentage
    for id, entity in pairs(network.entities) do
       local mech_comp = entity:get_component('stonehearth_ace:mechanical')
       mech_comp:set_power_percentage(percentage)
