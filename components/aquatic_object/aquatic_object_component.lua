@@ -85,20 +85,25 @@ end
 function AquaticObjectComponent:float(level)
 	if not self._floating_object then
 		return
-	end
+   end
    
 	local vertical_offset = self._floating_object.vertical_offset or 0
 	local location = self._sv.original_y
 	if not location then
-		location = radiant.entities.get_world_grid_location(self._entity)
-		self._sv.original_y = location
-		self.__saved_variables:mark_changed()
+		location = radiant.entities.get_world_location(self._entity)
+      if not location then
+         self._sv.original_y = location
+         self.__saved_variables:mark_changed()
+      end
 	end
-	if level then
-		location.y = location.y + level + vertical_offset
-	end
-	radiant.entities.move_to(self._entity, location)
-	self._entity:add_component('mob'):set_ignore_gravity(level ~= nil)
+   
+   if location then
+      if level then
+         location.y = location.y + level + vertical_offset
+      end
+      radiant.entities.move_to(self._entity, location)
+      self._entity:add_component('mob'):set_ignore_gravity(level ~= nil)
+   end
 end
 
 function AquaticObjectComponent:timers_resume(resume)

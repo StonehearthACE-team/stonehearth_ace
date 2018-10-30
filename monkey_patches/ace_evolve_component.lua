@@ -11,7 +11,7 @@ function AceEvolveComponent:initialize()
    self._sv.current_growth_recalculate_progress = 0
    
    -- allow for additional checks for whether evolve should happen by specifying a script in the json
-   local json = radiant.entities.get_json(self)
+   local json = radiant.entities.get_json(self) or {}
    self._sv.evolve_check_script = json.evolve_check_script
 
 	self.__saved_variables:mark_changed()
