@@ -6,15 +6,17 @@ local AquaticObjectComponent = class()
 function AquaticObjectComponent:initialize()
 	self._sv.in_the_water = nil
 	self._sv.original_y = nil
-	self.__saved_variables:mark_changed()
 end
 
-function AquaticObjectComponent:post_activate()
-	local json = radiant.entities.get_json(self)
+function AquaticObjectComponent:activate()
+   local json = radiant.entities.get_json(self)
 	self._require_water_to_grow = json.require_water_to_grow
 	self._destroy_if_out_of_water = json.destroy_if_out_of_water
 	self._suffocate_if_out_of_water = json.suffocate_if_out_of_water
-	self._floating_object = json.floating_object
+   self._floating_object = json.floating_object
+end
+
+function AquaticObjectComponent:post_activate()
 	self:_create_listeners()
 	self:_on_water_exists_changed()
 	self:_on_water_surface_level_changed()
@@ -101,21 +103,20 @@ function AquaticObjectComponent:float(level)
    end
    
 	local vertical_offset = self._floating_object.vertical_offset or 0
-	local location = self._sv.original_y
-	if not location then
-		location = radiant.entities.get_world_location(self._entity)
-		if location then
-        self._sv.original_y = location
-        self.__saved_variables:mark_changed()
-      end
-	end
-   
+	local location = radiant.entities.get_world_location(self._entity)
    if location then
-      if level then
-         location.y = location.y + level + vertical_offset
+      if not self._sv.original_y then
+         self._sv.original_y = location.y
+         self.__saved_variables:mark_changed()
       end
-      radiant.entities.move_to(self._entity, location)
+
+      if level then
+         location.y = math.max(self._sv.original_y, level + vertical_offset)
+      else
+         location.y = self._sv.original_y
+      end
       self._entity:add_component('mob'):set_ignore_gravity(level ~= nil)
+      radiant.entities.move_to(self._entity, location)
    end
 end
 
