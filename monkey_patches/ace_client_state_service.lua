@@ -4,12 +4,12 @@ local AceClientStateService = class()
 
 function AceClientStateService:get_client_gameplay_settings(player_id, mod)
    local state = self:get_client_state(player_id)
-   return state:get_gameplay_settings(mod)
+   return state and state:get_gameplay_settings(mod)
 end
 
 function AceClientStateService:get_client_gameplay_setting(player_id, mod, field, default)
    local state = self:get_client_state(player_id)
-   local setting = state:get_gameplay_setting(mod, field)
+   local setting = state and state:get_gameplay_setting(mod, field)
    if setting == nil then
       return default
    else

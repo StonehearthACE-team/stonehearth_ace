@@ -1,0 +1,22 @@
+{
+   "type": "recipe",
+   "effort": 60,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.raw_rice_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.raw_rice_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.raw_rice_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/rice/raw_rice/raw_rice.png",
+   "workshop": "stonehearth:cook:mill",
+   "level_requirement": 2,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:food:rice:paddy_basket",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:rice:raw_rice"
+      }
+   ]
+}

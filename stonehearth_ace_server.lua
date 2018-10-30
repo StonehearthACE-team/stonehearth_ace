@@ -28,6 +28,7 @@ local monkey_patches = {
    ace_task_tracker_component = 'stonehearth.components.task_tracker.task_tracker_component',
    ace_shepherd_pasture_component = 'stonehearth.components.shepherd_pasture.shepherd_pasture_component',
    ace_shepherd_service = 'stonehearth.services.server.shepherd.shepherd_service',
+   ace_swimming_service = 'stonehearth.services.server.swimming.swimming_service',
    ace_town_service = 'stonehearth.services.server.town.town_service',
    ace_town = 'stonehearth.services.server.town.town',
    ace_evolve_component = 'stonehearth.components.evolve.evolve_component',

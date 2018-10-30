@@ -1,0 +1,37 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:item_properties",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(dried_algae.qb)"
+            ]
+         }
+      },
+      "stonehearth:stacks": {
+         "max_stacks": 6
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 3,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.resources.herb.dried_algae.display_name)",
+         "description": "i18n(stonehearth_ace:entities.resources.herb.dried_algae.description)",
+         "icon": "file(dried_algae.png)",
+         "is_item": true,
+         "category": "resources",
+         "material_tags": "algae herb resource dried_algae stockpile_plant"
+      },
+      "stonehearth:appeal": {
+         "appeal": 1
+      }
+   }
+}

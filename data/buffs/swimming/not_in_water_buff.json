@@ -1,0 +1,18 @@
+{
+   "type": "buff",
+   "axis": "debuff",
+   "invisible_to_player": true,
+   "modifiers": {
+      "speed": {
+         "multiply": 0.1
+      }
+   },
+   "script": "stonehearth:buff_scripts:periodic_health_modification",
+   "script_info": {
+      "health_change": -1,
+      "pulse": "5m",
+      "pulse_immediately": true,
+      "pulse_on_destroy": false
+   },
+   "set_posture": "stonehearth_ace:not_in_water"
+}

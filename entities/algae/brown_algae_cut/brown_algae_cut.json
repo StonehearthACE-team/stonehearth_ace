@@ -1,0 +1,74 @@
+{
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(brown_algae_cut.qb)"
+            ]
+         }
+      },
+      "stonehearth:evolve": {},
+      "stonehearth:resource_node": {
+         "category": "harvest",
+         "durability": 1,
+         "harvester_effect": "fiddle",
+         "harvest_overlay_effect": "stonehearth:effects:harvest_plant_overlay_effect",
+         "resource_spawn_effect": "stonehearth:effects:harvest_plants_effect",
+         "resource": "stonehearth_ace:resources:algae:brown_algae"
+      },
+      "mob": {
+         "align_to_grid": [
+            "x",
+            "z"
+         ],
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0, "y": 0, "z": 0 }
+      },
+      "render_info": {
+         "scale": 0.1
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 1, "y": 1, "z": 1 }
+            }
+         ]
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 1, "y": 1, "z": 1 }
+            }
+         ],
+         "region_collision_type": "none"
+      },
+      "stonehearth_ace:aquatic_object": {},
+      "stonehearth_ace:water_signal": {
+         "signal_region": {
+            "min": { "x": -1, "y": 0, "z": -1 },
+            "max": { "x": 1, "y": 1, "z": 1 }
+         },
+         "monitor_types": [
+            "water_exists"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:evolve_data": {
+         "next_stage": "stonehearth_ace:algae:brown",
+         "evolve_time": "1d"
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.algae.brown_algae.brown_algae_cut.display_name)",
+         "description": "i18n(stonehearth_ace:entities.algae.brown_algae.brown_algae_cut.description)",
+         "icon": "file(brown_algae_cut.png)",
+         "category": "algae"
+      },
+      "stonehearth:appeal": {
+         "appeal": -2
+      }
+   }
+}

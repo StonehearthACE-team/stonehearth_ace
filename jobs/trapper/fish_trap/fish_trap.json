@@ -1,0 +1,57 @@
+{
+   "type": "entity",
+   "mixins": "file(fish_trap_ghost.json)",
+   "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(fish_trap_iconic.json)",
+         "ghost_form": "file(fish_trap_ghost.json)",
+         "placeable_on_ground": true
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": 0, "y": 0, "z": 0 },
+               "max": { "x": 1, "y": 2, "z": 1 }
+            }
+         ]
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": 0, "y": 0, "z": 0 },
+               "max": { "x": 1, "y": 1, "z": 1 }
+            }
+         ]
+      },
+      "stonehearth:bait_trap": {
+         "range": 16,
+         "trigger_on_failure_chance": 0.6
+      },
+      "sensor_list": {
+         "sensors": {
+            "interaction_sensor": {
+               "radius": 32
+            }
+         }
+      },
+      "stonehearth:sensor_ai_injector": {
+         "sensor": "interaction_sensor",
+         "ai": {
+            "actions": [
+               "stonehearth:actions:trapping:try_steal_bait",
+               "stonehearth:actions:trapping:trigger_trap"
+            ],
+            "observers": []
+         }
+      },
+      "stonehearth_ace:aquatic_object": {
+         "floating_object": true
+      }
+   },
+   "entity_data": {
+      "stonehearth:item_placement_limit": {
+         "tag": "animal_traps",
+         "default": 0
+      }
+   }
+}

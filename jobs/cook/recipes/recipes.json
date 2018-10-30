@@ -13,6 +13,9 @@
          "recipes": {
 			"broth": {
                "recipe": "file(broth_recipe.json)"
+            },
+			"raw_rice": {
+               "recipe": "file(raw_rice_recipe.json)"
             }
          }
       },
@@ -29,6 +32,9 @@
             },
 			"shroom_omelette": {
                "recipe": "file(shroom_omelette_recipe.json)"
+            },
+			"cooked_rice": {
+               "recipe": "file(cooked_rice_recipe.json)"
             }
          }
       },
@@ -42,7 +48,13 @@
             },
 			"roast_steak": {
 			   "recipe": "file(roast_steak_recipe.json)"
-			}
+			},
+			"sushi": {
+			   "recipe": "file(sushi_recipe.json)"
+			},
+			"roast_fish": {
+               "recipe": "file(roast_fish_recipe.json)"
+            }
          }
       },
       "chefs_desserts": {

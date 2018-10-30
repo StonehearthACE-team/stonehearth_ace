@@ -1,0 +1,30 @@
+{
+   "type": "recipe",
+   "effort": 80,
+   "work_units": 8,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.sushi_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.sushi_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.sushi_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/sushi/sushi/sushi.png",
+   "workshop": "stonehearth:cook:workbench",
+   "level_requirement": 5,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:food:fish_meat",
+         "count": 2
+      },
+	  {
+         "uri": "stonehearth_ace:food:rice:cooked_rice",
+         "count": 1
+      },
+	  {
+         "uri": "stonehearth_ace:resources:herb:dried_algae",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:sushi"
+      }
+   ]
+}

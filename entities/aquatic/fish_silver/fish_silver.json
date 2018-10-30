@@ -1,42 +1,55 @@
 {
    "type": "entity",
-   "mixins": "stonehearth:mixins:critter",
+   "mixins": "stonehearth_ace:mixins:aquatic",
    "components": {
       "stonehearth:loot_drops": {
          "force_auto_loot": true,
          "entries": {
-            "jerky": {
+            "meat": {
                "num_rolls": {
                   "min": 0,
                   "max": 1
                },
                "items": {
-                  "jerky": {
-                     "uri": "stonehearth:rabbit_jerky"
-                  }
-               }
-            },
-            "pelt": {
-               "num_rolls": {
-                  "min": 0,
-                  "max": 1
-               },
-               "items": {
-                  "pelt": {
-                     "uri": "stonehearth:resources:rabbit_pelt"
+                  "meat": {
+                     "uri": "stonehearth_ace:food:fish_meat"
                   }
                }
             }
          }
       },
       "render_info": {
-         "scale": 0.08
+         "scale": 0.09,
+         "animation_table": "file(/data/rigs/entities/aquatic/fish)"
       },
       "model_variants": {
          "default": {
             "models": [
                "file(fish_silver.qb)"
             ]
+         }
+      },
+      "stonehearth:renewable_resource_node": {
+         "renewal_time": "40h+24h",
+         "start_unharvestable": true,
+         "spawn_resource_immediately": true,
+         "check_owner": true,
+         "resource_loot_table": {
+            "entries": {
+               "roe": {
+                  "roll_type": "some_of",
+                  "num_rolls": {
+                     "min": 0,
+                     "max": 1
+                  },
+                  "items": {
+                     "roe": {
+                        "uri": "stonehearth_ace:fish:silver:roe",
+                        "weight": 1
+                     }
+                  }
+               }
+            }
          }
       }
    },
@@ -53,25 +66,14 @@
       },
       "stonehearth:harvest_beast_loot_table": {
          "entries": {
-            "jerky": {
+            "meat": {
                "num_rolls": {
                   "min": 0,
                   "max": 1
                },
                "items": {
-                  "jerky": {
-                     "uri": "stonehearth:rabbit_jerky"
-                  }
-               }
-            },
-            "pelt": {
-               "num_rolls": {
-                  "min": 0,
-                  "max": 1
-               },
-               "items": {
-                  "pelt": {
-                     "uri": "stonehearth:resources:rabbit_pelt"
+                  "meat": {
+                     "uri": "stonehearth_ace:food:fish_meat"
                   }
                }
             }
@@ -109,7 +111,8 @@
          "player_id": "animals",
          "display_name": "i18n(stonehearth_ace:entities.aquatic.fish_silver.display_name)",
          "description": "i18n(stonehearth_ace:entities.aquatic.fish_silver.description)",
-         "icon": "file(fish_silver.png)"
+         "icon": "file(fish_silver.png)",
+         "category": "aquatic"
       },
       "stonehearth:net_worth": {
          "value_in_gold": 5,
@@ -117,6 +120,12 @@
          "shop_info": {
             "buyable": false,
             "sellable": false
+         }
+      },
+      "stonehearth:food_decay": {
+         "initial_decay": {
+            "min": 166,
+            "max": 240
          }
       }
    }

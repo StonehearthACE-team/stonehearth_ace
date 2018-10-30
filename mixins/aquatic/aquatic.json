@@ -5,7 +5,8 @@
    "components": {
       "stonehearth:ai": {},
       "mob": {
-         "mob_collision_type": "tiny"
+         "mob_collision_type": "tiny",
+         "ignore_gravity": true
       },
       "stonehearth:posture": {},
       "stonehearth:trivial_death": {},
@@ -16,7 +17,7 @@
          },
          "speed": {
             "type": "basic",
-            "value": 120
+            "value": 70
          },
          "courage": {
             "type": "basic",
@@ -29,18 +30,6 @@
          "max_calories": {
             "type": "basic",
             "value": 30
-         },
-         "min_sleepiness": {
-            "type": "basic",
-            "value": 0
-         },
-         "max_sleepiness": {
-            "type": "basic",
-            "value": 32
-         },
-         "max_social_satisfaction": {
-            "type": "basic",
-            "value": 72
          },
          "menace": {
             "type": "basic",
@@ -57,28 +46,6 @@
                   "linked_attribute": "max_calories"
                },
                "initial_value": "max_value"
-            },
-            "sleepiness": {
-               "min": {
-                  "linked_attribute": "min_sleepiness"
-               },
-               "max": {
-                  "linked_attribute": "max_sleepiness"
-               },
-               "initial_value": 0
-            },
-            "social_satisfaction": {
-               "min": {
-                  "value": 0
-               },
-               "max": {
-                  "linked_attribute": "max_social_satisfaction"
-               },
-               "initial_value": {
-                  "type": "random_between",
-                  "min": 61,
-                  "max": "max_value"
-               }
             }
          }
       },
@@ -92,15 +59,17 @@
    },
    "entity_data": {
       "navgrid": {
-         "has_physics": true
+         "ignore_gravity": true,
+         "has_physics": false
       },
       "stonehearth:catalog": {
-         "player_id": "animals"
+         "player_id": "animals",
+         "category": "aquatic"
       },
       "stonehearth:observers:avoid_threatening_entities": {
          "treat_neutral_as_hostile": true,
-         "min_avoidance_distance": 16,
-         "max_avoidance_distance": 16
+         "min_avoidance_distance": 4,
+         "max_avoidance_distance": 8
       },
       "stonehearth:conversation_type": "animal",
       "stonehearth:ai_packs": {

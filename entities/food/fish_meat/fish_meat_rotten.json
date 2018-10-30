@@ -1,0 +1,47 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(fish_meat_rotten.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": -0.05, "y": 0, "z": 0.05 }
+      },
+      "render_info": {
+         "scale": 0.09
+      },
+      "effect_list": {
+         "default": "stonehearth:effects:rotten_food"
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 0,
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:food_decay": {
+         "initial_decay": {
+            "min": 10,
+            "max": 10
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.fish_meat.rotten.display_name)",
+         "description": "i18n(stonehearth_ace:entities.food.fish_meat.rotten.description)",
+         "icon": "file(fish_meat_rotten.png)",
+         "is_item": true,
+         "category": "uncategorized"
+      },
+      "stonehearth:appeal": {
+         "appeal": -30
+      }
+   }
+}

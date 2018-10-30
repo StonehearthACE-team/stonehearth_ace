@@ -1,0 +1,34 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:item_properties",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(green_algae.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 2,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.resources.algae.green_algae.display_name)",
+         "description": "i18n(stonehearth_ace:entities.resources.algae.green_algae.description)",
+         "icon": "file(green_algae.png)",
+         "is_item": true,
+         "category": "resources",
+         "material_tags": "plant algae resource green_algae stockpile_plant"
+      },
+      "stonehearth:appeal": {
+         "appeal": 1
+      }
+   }
+}

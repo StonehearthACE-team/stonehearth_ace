@@ -348,6 +348,11 @@
                "description": "Dry marblesprout flowers to form a hunk of stone used in ornate furniture.",
                "flavor": "It is a marbelous stone!"
             },
+            "algae_drying_recipe": {
+               "recipe_name": "Dried Algae",
+               "description": "Dry and press thin sheets of algae that can be used as a herb.",
+               "flavor": "It is also used in cooking!"
+            },
             "bolete_colony_recipe": {
                "recipe_name": "Bolete Colony (x3)",
                "description": "Use existing fungus to create more colonies to grow into new fungi.",
@@ -751,6 +756,26 @@
                "description": "The most prized and delicious cut of meat, slowly grilled on fire.",
                "flavor": "Yum..."
             },
+			"roast_fish_recipe": {
+               "recipe_name": "Slice of Roast Fish",
+               "description": "A nutritious and flavorful meal.",
+               "flavor": "Straight from the sea! Or lake. Or the nearby stream..."
+            },
+            "raw_rice_recipe": {
+               "recipe_name": "Sack of Raw Rice",
+               "description": "Delicious grains ready to be used in other recipes.",
+               "flavor": "Who knew grass could be so tasty?"
+            },
+            "cooked_rice_recipe": {
+               "recipe_name": "Cooked Rice",
+               "description": "Boiled to perfection and sticky enough.",
+               "flavor": ""
+            },
+            "sushi_recipe": {
+               "recipe_name": "Sushi",
+               "description": "A delicious specialty from hearthlings of a very distant land.",
+               "flavor": "A recipe made popular by Rayya's Children caravans that crossed the Pal'Mun"
+            },
             "legendary_ink_recipe": {
                "recipe_name": "Sacred Ink",
                "description": "Special and gilded ink for illuminated manuscripts in 'The Walk of Cid'.",
@@ -803,6 +828,12 @@
                "description": "A majestic cape tailored for the Vanguard's Chainmail.",
                "flavor": "Capes like these were proudly worn by the Vanguard"
             }
+         }
+      },
+      "trapper": {
+         "fish_trap": {
+            "display_name": "Fish Trap",
+            "description": "Safely capture fish. Will float when placed in the water."
          }
       }
    },
@@ -1073,6 +1104,10 @@
             "marblesprout": {
                "display_name": "Marblesprout Flower",
                "description": "An uncommon herb that will harden and turn into marble when dried."
+            },
+            "dried_algae": {
+               "display_name": "Dried Algae",
+               "description": "In their dried and pressed form, algae can be used as a herb."
             }
          },
          "stone": {
@@ -1177,6 +1212,20 @@
             "bit_of_peat": {
                "display_name": "Bit 'o Peat",
                "description": "Organic residue found in bogs and moors. Can be used as a lower grade fuel."
+            }
+         },
+         "algae": {
+            "green_algae": {
+               "display_name": "Green Algae",
+               "description": "Algae have many uses, especially in cooking and herbalism."
+            },
+            "red_algae": {
+               "display_name": "Red Algae",
+               "description": "Much coveted for cooking, red algae has several uses."
+            },
+            "brown_algae": {
+               "display_name": "Brown Algae",
+               "description": "Also known as kelp, has many uses in herbalism and cooking."
             }
          }
       },
@@ -1872,6 +1921,58 @@
          },
          "cougar_jerky": {
             "display_name": "Big Cat Jerky"
+         },
+         "fish_meat": {
+            "display_name": "Fish Meat",
+            "rotten": {
+               "display_name": "Rotten Fish Meat",
+               "description": "It stinks even more than before."
+            },
+            "description": "Smells fishy... "
+         },
+         "fish_roe": {
+            "fish_roe_basket": {
+               "display_name": "Basket of Fish Roe",
+               "description": "Edible fish eggs, tiny and shiny!"
+            },
+            "fish_roe_serving": {
+               "display_name": "Serving of Fish Roe"
+            }
+         },
+         "sushi": {
+            "sushi": {
+               "display_name": "Sushi",
+               "description": "A delicious specialty from hearthlings of a very distant land."
+            },
+            "sushi_serving": {
+               "display_name": "Serving of Sushi"
+            }
+         },
+         "cooked_rice": {
+            "cooked_rice_serving": {
+               "display_name": "Bowl of Cooked Rice"
+            },
+            "display_name": "Cooked Rice",
+            "description": "Boiled and sticky enough."
+         },
+         "rice": {
+            "paddy_basket": {
+               "display_name": "Basket of Paddy",
+               "description": "Unmilled grass seeds. Can be turned into raw rice with a mill."
+            },
+            "raw_rice": {
+               "display_name": "Sack of Raw Rice",
+               "description": "Delicious grains ready to be used in cooking."
+            }
+         },
+         "roast_fish": {
+            "roast_fish_serving": {
+               "display_name": "Serving of Roast Fish"
+            },
+            "roast_fish": {
+               "display_name": "Slice of Roast Fish",
+               "description": "A nutritious and flavorful meal."
+            }
          }
       },
       "terrain": {
@@ -2149,6 +2250,9 @@
          }
       },
       "gizmos": {
+         "animal_traps": {
+            "animal_traps_limit_tag": "Animal Traps"
+         },
          "dummy_training": {
             "dummy_training_ghost": {
                "description": "It's best to practice with this friendly guy. Requires an engineer for repairs.",
@@ -2197,6 +2301,82 @@
          "fish_silver": {
             "display_name": "Silver Fish",
             "description": "A slippery aquatic little creature."
+         },
+         "fish_silver_fry": {
+            "display_name": "Silver Fishling",
+            "description": "A tiny water creature. Will grow into larger fish!"
+         },
+         "fish_roe": {
+            "display_name": "Fish Roe",
+            "placed_description": "These eggs can be harvested or left alone to hatch."
+         }
+      },
+      "algae": {
+         "green_algae": {
+            "green_large_algae": {
+               "display_name": "Large Green Alga",
+               "description": "A quite tall water weed."
+            },
+            "green_medium_algae": {
+               "display_name": "Medium Green Alga",
+               "description": "A good sized water weed."
+            },
+            "green_small_algae": {
+               "display_name": "Green Alga",
+               "description": "Not the smallest nor the largest specimen."
+            },
+            "green_algae": {
+               "display_name": "Small Green Alga",
+               "description": "A tiny water weed."
+            },
+            "green_algae_cut": {
+               "display_name": "Green Alga Stub",
+               "description": "The remains of a larger green alga. Will grow again if left undisturbed."
+            }
+         },
+         "brown_algae": {
+            "brown_algae": {
+               "display_name": "Small Brown Alga",
+               "description": "A tiny water weed."
+            },
+            "brown_algae_cut": {
+               "display_name": "Brown Alga Stub",
+               "description": "The remains of a larger brown alga. Will grow again if left undisturbed."
+            },
+            "brown_large_algae": {
+               "display_name": "Large Brown Alga",
+               "description": "Also known as kelp, it is a quite tall water weed."
+            },
+            "brown_medium_algae": {
+               "display_name": "Medium Brown Alga",
+               "description": "Also called kelp, this is a good sized water weed."
+            },
+            "brown_small_algae": {
+               "display_name": "Brown Alga",
+               "description": "Alternatively called kelp, this is not a particularly large water weed."
+            }
+         },
+         "red_algae": {
+            "red_algae": {
+               "display_name": "Small Red Alga",
+               "description": "A tiny water weed."
+            },
+            "red_algae_cut": {
+               "display_name": "Red Alga Stub",
+               "description": "The remains of a larger red alga. Will grow again if left undisturbed."
+            },
+            "red_large_algae": {
+               "display_name": "Large Red Alga",
+               "description": "A tall and peculiar water weed."
+            },
+            "red_medium_algae": {
+               "display_name": "Medium Red Alga",
+               "description": "A nice water weed."
+            },
+            "red_small_algae": {
+               "display_name": "Red Alga",
+               "description": "There are taller water weeds out there..."
+            }
          }
       }
    },
@@ -2447,7 +2627,8 @@
             "high_fuel_resource_name": "Higher Grade Fuel",
             "soft_metal_resource_name": "Any Soft Metal",
             "hard_metal_resource_name": "Any Hard Metal",
-            "precious_metal_resource_name": "Any Precious Metal"
+            "precious_metal_resource_name": "Any Precious Metal",
+            "algae_resource_name": "Any Water Weed"
          }
       }
    }
