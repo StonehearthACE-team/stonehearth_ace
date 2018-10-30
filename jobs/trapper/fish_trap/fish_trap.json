@@ -45,7 +45,13 @@
          }
       },
       "stonehearth_ace:aquatic_object": {
-         "floating_object": true
+         "floating_object": {}
+      },
+      "stonehearth_ace:water_signal": {
+         "monitor_types": [
+            "water_exists",
+            "water_surface_level"
+         ]
       }
    },
    "entity_data": {

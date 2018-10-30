@@ -50,8 +50,26 @@
             "/stonehearth_ace/data/rigs/entities/algae/effects/idle.json"
          ]
       },
+      "stonehearth:loot_drops": {
+         "entries": {
+            "meat": {
+               "num_rolls": {
+                  "min": 1,
+                  "max": 2
+               },
+               "items": {
+                  "meat": {
+                     "uri": "stonehearth_ace:resources:algae:green_algae"
+                  }
+               }
+            }
+         }
+      },
       "stonehearth_ace:add_stump": {},
-      "stonehearth_ace:aquatic_object": {},
+      "stonehearth_ace:aquatic_object": {
+         "require_water_to_grow": true,
+         "destroy_if_out_of_water": true
+      },
       "stonehearth_ace:water_signal": {
          "signal_region": {
             "min": { "x": -1, "y": 2, "z": -1 },
@@ -65,7 +83,7 @@
    "entity_data": {
       "stonehearth:evolve_data": {
          "next_stage": "stonehearth_ace:algae:green:medium",
-         "evolve_time": "2d"
+         "evolve_time": "2h"
       },
       "stonehearth:catalog": {
          "display_name": "i18n(stonehearth_ace:entities.algae.green_algae.green_small_algae.display_name)",

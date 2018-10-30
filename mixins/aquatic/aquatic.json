@@ -6,7 +6,7 @@
       "stonehearth:ai": {},
       "mob": {
          "mob_collision_type": "tiny",
-         "ignore_gravity": true
+         "ignore_gravity": false
       },
       "stonehearth:posture": {},
       "stonehearth:trivial_death": {},
@@ -59,12 +59,12 @@
    },
    "entity_data": {
       "navgrid": {
-         "ignore_gravity": true,
-         "has_physics": false
+         "ignore_gravity": false,
+         "has_physics": true
       },
       "stonehearth:catalog": {
          "player_id": "animals",
-         "category": "aquatic"
+         "category": "sgsg"
       },
       "stonehearth:observers:avoid_threatening_entities": {
          "treat_neutral_as_hostile": true,

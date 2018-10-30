@@ -51,6 +51,18 @@
                }
             }
          }
+      },
+      "stonehearth_ace:aquatic_object": {
+         "suffocate_if_out_of_water": true
+      },
+      "stonehearth_ace:water_signal": {
+         "signal_region": {
+            "min": { "x": -0.5, "y": 1, "z": -0.5 },
+            "max": { "x": 0.5, "y": 2, "z": 0.5 }
+         },
+         "monitor_types": [
+            "water_exists"
+         ]
       }
    },
    "entity_data": {
@@ -112,7 +124,7 @@
          "display_name": "i18n(stonehearth_ace:entities.aquatic.fish_silver.display_name)",
          "description": "i18n(stonehearth_ace:entities.aquatic.fish_silver.description)",
          "icon": "file(fish_silver.png)",
-         "category": "aquatic"
+         "category": "sgsg"
       },
       "stonehearth:net_worth": {
          "value_in_gold": 5,

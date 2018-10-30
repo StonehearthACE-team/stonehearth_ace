@@ -9,10 +9,11 @@ function AquaticObjectComponent:initialize()
 	self.__saved_variables:mark_changed()
 end
 
-function AquaticObjectComponent:activate()
+function AquaticObjectComponent:post_activate()
 	local json = radiant.entities.get_json(self)
 	self._require_water_to_grow = json.require_water_to_grow
 	self._destroy_if_out_of_water = json.destroy_if_out_of_water
+	self._suffocate_if_out_of_water = json.suffocate_if_out_of_water
 	self._floating_object = json.floating_object
 	self:_create_listeners()
 	self:_on_water_exists_changed()
@@ -39,8 +40,14 @@ function AquaticObjectComponent:_on_water_exists_changed(exists)
 	if self._require_water_to_grow then
 		self:timers_resume(exists)
 	end
-	-- do whatever else you want to have happen when its "in water" status changes
-	-- perhaps add a buff and create a timer to kill something if it's out of water (and cancel the buff and timer if it's back in)?
+	
+	if self._suffocate_if_out_of_water then 
+		self:suffocate_entity(exists)
+	end
+	
+	if self._destroy_if_out_of_water then
+		self:destroy_entity(exists)	
+	end
 end
 
 function AquaticObjectComponent:_on_water_surface_level_changed(level)
@@ -50,6 +57,28 @@ function AquaticObjectComponent:_on_water_surface_level_changed(level)
 
 	if self._floating_object then
 		self:float(level)
+	end
+end
+
+function AquaticObjectComponent:suffocate_entity(suffocate)
+	if not self._suffocate_if_out_of_water then 
+		return
+	end
+	
+	if suffocate == false then
+		radiant.entities.add_buff(self._entity, 'stonehearth_ace:buffs:not_in_water')
+	else 
+		radiant.entities.remove_buff(self._entity, 'stonehearth_ace:buffs:not_in_water')
+	end
+end
+
+function AquaticObjectComponent:destroy_entity(destroy)
+	if not self._destroy_if_out_of_water then 
+		return
+	end
+	
+	if destroy == false then
+		radiant.entities.kill_entity(self._entity)			
 	end
 end
 
@@ -66,7 +95,7 @@ function AquaticObjectComponent:float(level)
 		self.__saved_variables:mark_changed()
 	end
 	if level then
-		location = location + level + vertical_offset
+		location.y = location.y + level + vertical_offset
 	end
 	radiant.entities.move_to(self._entity, location)
 	self._entity:add_component('mob'):set_ignore_gravity(level ~= nil)
@@ -87,9 +116,9 @@ function AquaticObjectComponent:timers_resume(resume)
 	
 	if evolve_component then
 		if resume then
-			evolve_component:start_evolve_timer()
+			evolve_component:_start_evolve_timer()
 		else
-			evolve_component:stop_evolve_timer()
+			evolve_component:_stop_evolve_timer()
 		end
 	end
 	
