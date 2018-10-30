@@ -8,7 +8,12 @@ function AceEvolveComponent:initialize()
 	self._sv.local_water_modifier = 1
 	-- would need to set up a child entity with its own water component for detecting flooding in a smaller region
 	--self._sv.is_flooded = false
-	self._sv.current_growth_recalculate_progress = 0
+   self._sv.current_growth_recalculate_progress = 0
+   
+   -- allow for additional checks for whether evolve should happen by specifying a script in the json
+   local json = radiant.entities.get_json(self)
+   self._sv.evolve_check_script = json.evolve_check_script
+
 	self.__saved_variables:mark_changed()
 end
 
@@ -16,10 +21,11 @@ AceEvolveComponent._old_activate = EvolveComponent.activate
 function AceEvolveComponent:activate()
 	self:_old_activate()
 
+   local json = radiant.entities.get_json(self)
+
 	-- we don't care about water for animals, only for plants
 	local catalog_data = stonehearth.catalog:get_catalog_data(self._entity:get_uri())
 	if catalog_data.category == 'seed' or catalog_data.category == 'plants' then
-		local json = radiant.entities.get_json(self)
 		self._preferred_climate = json and json.preferred_climate
 		self._water_affinity = stonehearth.town:get_water_affinity_table(self._preferred_climate)
 		--self._flood_period_multiplier = (json and json.flood_period_multiplier) or 2
@@ -27,7 +33,7 @@ function AceEvolveComponent:activate()
 		self._water_reach = (json and json.water_reach) or 1
 
 		self:_create_water_listener()
-	end
+   end
 end
 
 AceEvolveComponent._old_destroy = EvolveComponent.destroy
@@ -35,6 +41,11 @@ function AceEvolveComponent:destroy()
    self:_old_destroy()
 
    self:_destroy_water_listener()
+end
+
+function AceEvolveComponent:set_check_evolve_script(path)
+   self._sv.evolve_check_script = path
+   self.__saved_variables:mark_changed()
 end
 
 function AceEvolveComponent:_create_water_listener()
@@ -110,6 +121,19 @@ function AceEvolveComponent:get_best_water_level()
 	end
 
 	return best_affinity, next_affinity
+end
+
+AceEvolveComponent._old_evolve = EvolveComponent.evolve
+function AceEvolveComponent:evolve()
+   if self._sv.evolve_check_script then
+      local script = radiant.mods.require(self._sv.evolve_check_script)
+      if script and not script._should_evolve(self) then
+         self:_start_evolve_timer()
+         return
+      end
+   end
+
+   self:_old_evolve()
 end
 
 function AceEvolveComponent:_start_evolve_timer()
