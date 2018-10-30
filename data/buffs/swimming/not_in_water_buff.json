@@ -1,18 +1,19 @@
 {
    "type": "buff",
    "axis": "debuff",
-   "invisible_to_player": true,
+   "display_name": "i18n(stonehearth_ace:data.buffs.not_in_water.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.not_in_water.description)",
+   "icon": "file(not_in_water_buff.png)",
    "modifiers": {
       "speed": {
-         "multiply": 0.1
+         "multiply": 0.4
+      },
+      "courage": {
+         "multiply": 0.6
+      },
+      "menace": {
+         "multiply": 0.5
       }
-   },
-   "script": "stonehearth:buff_scripts:periodic_health_modification",
-   "script_info": {
-      "health_change": -1,
-      "pulse": "5m",
-      "pulse_immediately": true,
-      "pulse_on_destroy": false
    },
    "set_posture": "stonehearth_ace:not_in_water"
 }

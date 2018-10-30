@@ -42,7 +42,7 @@ function AquaticObjectComponent:_on_water_exists_changed(exists)
 	end
 	
 	if self._suffocate_if_out_of_water then 
-		self:suffocate_entity(exists)
+		self:suffocate_entity()
 	end
 	
 	if self._destroy_if_out_of_water then
@@ -58,17 +58,30 @@ function AquaticObjectComponent:_on_water_surface_level_changed(level)
 	if self._floating_object then
 		self:float(level)
 	end
+	
+	if self._suffocate_if_out_of_water then 
+		self:suffocate_entity(level)
+	end
 end
 
-function AquaticObjectComponent:suffocate_entity(suffocate)
+function AquaticObjectComponent:suffocate_entity(level)
 	if not self._suffocate_if_out_of_water then 
 		return
 	end
 	
-	if suffocate == false then
-		radiant.entities.add_buff(self._entity, 'stonehearth_ace:buffs:not_in_water')
-	else 
-		radiant.entities.remove_buff(self._entity, 'stonehearth_ace:buffs:not_in_water')
+	local entity_height = self._suffocate_if_out_of_water.entity_height or 1
+	local entity_location = radiant.entities.get_world_location(self._entity)
+	local entity_breathing_line = nil
+	
+	if entity_location then
+		entity_breathing_line = entity_location.y + entity_height
+		if level == nil then
+			radiant.entities.add_buff(self._entity, 'stonehearth_ace:buffs:suffocating')
+		elseif level < entity_breathing_line then
+			radiant.entities.add_buff(self._entity, 'stonehearth_ace:buffs:suffocating')
+		else 
+			radiant.entities.remove_buff(self._entity, 'stonehearth_ace:buffs:suffocating')
+		end
 	end
 end
 
@@ -91,9 +104,9 @@ function AquaticObjectComponent:float(level)
 	local location = self._sv.original_y
 	if not location then
 		location = radiant.entities.get_world_location(self._entity)
-      if not location then
-         self._sv.original_y = location
-         self.__saved_variables:mark_changed()
+		if location then
+        self._sv.original_y = location
+        self.__saved_variables:mark_changed()
       end
 	end
    

@@ -53,14 +53,13 @@
          }
       },
       "stonehearth_ace:aquatic_object": {
-         "suffocate_if_out_of_water": true
+         "suffocate_if_out_of_water": {
+            "entity_height": 0.5
+         }
       },
       "stonehearth_ace:water_signal": {
-         "signal_region": {
-            "min": { "x": -0.5, "y": 1, "z": -0.5 },
-            "max": { "x": 0.5, "y": 2, "z": 0.5 }
-         },
          "monitor_types": [
+            "water_surface_level",
             "water_exists"
          ]
       }
