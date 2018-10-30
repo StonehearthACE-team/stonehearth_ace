@@ -59,10 +59,11 @@ function WaterSignalComponent:_shutdown()
 end
 
 function WaterSignalComponent:_reset()
-	self._sv._water_exists = nil
-	self._sv._water_volume = nil
-	self._sv._waterfall_exists = nil
-   self._sv._waterfall_volume = nil
+	self._sv.water_exists = nil
+	self._sv.water_volume = nil
+	self._sv.waterfall_exists = nil
+   self._sv.waterfall_volume = nil
+   self._sv.water_surface_level = nil
 	self.__saved_variables:mark_changed()
 end
 
@@ -108,14 +109,14 @@ function WaterSignalComponent:remove_monitor_types(monitor_types)
 end
 
 function WaterSignalComponent:get_water_exists()
-	return self._sv._water_exists
+	return self._sv.water_exists
 end
 
 function WaterSignalComponent:set_water_exists(water_components)
 	local exists = next(water_components) ~= nil
 
-	local prev_exists = self._sv._water_exists
-	self._sv._water_exists = exists
+	local prev_exists = self._sv.water_exists
+	self._sv.water_exists = exists
 	
 	if exists ~= prev_exists then
       radiant.events.trigger(self._entity, 'stonehearth_ace:water_signal:water_exists_changed', exists)
@@ -125,7 +126,7 @@ function WaterSignalComponent:set_water_exists(water_components)
 end
 
 function WaterSignalComponent:get_water_volume()
-	return self._sv._water_volume
+	return self._sv.water_volume
 end
 
 function WaterSignalComponent:set_water_volume(water_components)
@@ -135,8 +136,8 @@ function WaterSignalComponent:set_water_volume(water_components)
       volume = volume + self:_get_intersection_volume(w)
 	end
 
-	local prev_volume = self._sv._water_volume
-	self._sv._water_volume = volume
+	local prev_volume = self._sv.water_volume
+	self._sv.water_volume = volume
 
 	if volume ~= prev_volume then
       radiant.events.trigger(self._entity, 'stonehearth_ace:water_signal:water_volume_changed', volume)
@@ -167,15 +168,39 @@ function WaterComponent:get_volume()
 end
 ]]
 
+function WaterSignalComponent:get_water_surface_level()
+   return self._sv.water_surface_level
+end
+
+function WaterSignalComponent:set_water_surface_level(water_components)
+   -- find the highest water level of components in the signal region
+   local level
+   for i, w in pairs(water_components) do
+      local this_level = w:get_water_level()
+      if not level then
+         level = this_level
+      else
+         level = math.max(level, this_level)
+      end
+   end
+
+   if level ~= self._sv.water_surface_level then
+      self._sv.water_surface_level = level
+      radiant.events.trigger(self._entity, 'stonehearth_ace:water_signal:water_surface_level_changed', level)
+      return true
+   end
+   return false
+end
+
 function WaterSignalComponent:get_waterfall_exists()
-	return self._sv._waterfall_exists
+	return self._sv.waterfall_exists
 end
 
 function WaterSignalComponent:set_waterfall_exists(waterfall_components)
 	local exists = next(waterfall_components) ~= nil
 
-	local prev_exists = self._sv._waterfall_exists
-	self._sv._waterfall_exists = exists
+	local prev_exists = self._sv.waterfall_exists
+	self._sv.waterfall_exists = exists
 	
 	if exists ~= prev_exists then
       radiant.events.trigger(self._entity, 'stonehearth_ace:water_signal:waterfall_exists_changed', exists)
@@ -185,7 +210,7 @@ function WaterSignalComponent:set_waterfall_exists(waterfall_components)
 end
 
 function WaterSignalComponent:get_waterfall_volume()
-	return self._sv._waterfall_volume
+	return self._sv.waterfall_volume
 end
 
 function WaterSignalComponent:set_waterfall_volume(waterfall_components)
@@ -194,8 +219,8 @@ function WaterSignalComponent:set_waterfall_volume(waterfall_components)
 		volume = volume + w:get_volume()
 	end
 
-	local prev_volume = self._sv._waterfall_volume
-	self._sv._waterfall_volume = volume
+	local prev_volume = self._sv.waterfall_volume
+	self._sv.waterfall_volume = volume
 
 	if volume ~= prev_volume then
       radiant.events.trigger(self._entity, 'stonehearth_ace:water_signal:waterfall_volume_changed', volume)
@@ -227,6 +252,9 @@ function WaterSignalComponent:_on_tick_water_signal()
    if self:has_monitor_type('water_volume') then
       changed = self:set_water_volume(water_components) or changed
    end
+   if self:has_monitor_type('water_surface_level') then
+      changed = self:set_water_surface_level(water_components) or changed
+   end
    if self:has_monitor_type('waterfall_exists') then
       changed = self:set_waterfall_exists(waterfall_components) or changed
    end
@@ -246,16 +274,19 @@ function WaterSignalComponent:_get_water(region)
 
 	local entities = radiant.terrain.get_entities_in_region(region)
 	local water_components = {}
-	local waterfall_components = {}
+   local waterfall_components = {}
+   local check_water = self:has_monitor_type('water_exists') or self:has_monitor_type('water_volume') or self:has_monitor_type('water_surface_level')
+   local check_waterfall = self:has_monitor_type('waterfall_exists') or self:has_monitor_type('waterfall_volume')
+
 	for _, e in pairs(entities) do
-      if self:has_monitor_type('water_exists') or self:has_monitor_type('water_volume') then
+      if check_water then
          local water_component = e:get_component('stonehearth:water')
          if water_component then
             table.insert(water_components, water_component)
          end
       end
 
-      if self:has_monitor_type('waterfall_exists') or self:has_monitor_type('waterfall_volume') then
+      if check_waterfall then
          local waterfall_component = e:get_component('stonehearth:waterfall')
          if waterfall_component then
             table.insert(waterfall_components, waterfall_component)
