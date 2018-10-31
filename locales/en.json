@@ -1065,6 +1065,35 @@
             },
             "description": "Needs more Yew wood? Prepare your plots for reforestation!",
             "display_name": "Yew Tree Sapling"
+         },
+         "paddy_crop": {
+            "display_name": "Paddy Field",
+            "description": "Rice grows slowly but is widely appreciated! Requires a flooded Farm Plot to grow.",
+            "growth_stage": {
+               "000": {
+                  "name": "Paddy Stub",
+                  "description": "Recently planted rice, will need a lot of water to grow up."
+               },
+               "001": {
+                  "name": "Paddy Tuft",
+                  "description": "It's growing taller by the minute!"
+               },
+               "002": {
+                  "name": "Paddy Weed",
+                  "description": "Long grasses have emerged and will flower anytime."
+               },
+               "003": {
+                  "name": "Flowering Paddy",
+                  "description": "The grasses are bright green and the windsown seeds will dry soon."
+               },
+               "004": {
+                  "name": "Mature Paddy",
+                  "description": "The ears have dried and the paddy is ready for harvest!"
+               },
+               "019": {
+                  "name": "Rotten Paddy"
+               }
+            }
          }
       },
       "decorations": {
