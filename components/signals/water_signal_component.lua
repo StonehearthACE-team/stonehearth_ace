@@ -4,6 +4,9 @@ local Cube3 = _radiant.csg.Cube3
 local Region3 = _radiant.csg.Region3
 local log = radiant.log.create_logger('water_signal')
 
+local get_entities_in_region = radiant.terrain.get_entities_in_region
+local get_world_grid_location = radiant.entities.get_world_grid_location
+
 local WaterSignalComponent = class()
 
 function WaterSignalComponent:initialize()
@@ -236,7 +239,7 @@ function WaterSignalComponent:_on_tick_water_signal()
 	
 	-- do we really need to update the water regions we're checking every single tick?
 	-- not sure how expensive this is
-	local location = radiant.entities.get_world_grid_location(self._entity)
+	local location = get_world_grid_location(self._entity)
 	if not location then
 		self:_reset()
 		return
@@ -272,7 +275,7 @@ function WaterSignalComponent:_get_water(region)
 		return {}, {}
 	end
 
-	local entities = radiant.terrain.get_entities_in_region(region)
+	local entities = get_entities_in_region(region)
 	local water_components = {}
    local waterfall_components = {}
    local check_water = self:has_monitor_type('water_exists') or self:has_monitor_type('water_volume') or self:has_monitor_type('water_surface_level')

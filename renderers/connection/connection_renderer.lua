@@ -111,7 +111,7 @@ function ConnectionRenderer:_update()
          end
 
          -- only render actually available or connected connectors
-         if is_available or is_connected then
+         if color and (is_available or is_connected) then
             local cube = radiant.util.to_cube3(connector.region)
             local inflation = Point3(-0.5, -0.5, -0.5)
             for _, dir in ipairs({'x', 'y', 'z'}) do

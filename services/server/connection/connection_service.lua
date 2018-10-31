@@ -133,6 +133,10 @@ function ConnectionService:get_connections_datastore(player_id)
    return ds
 end
 
+function ConnectionService:get_disconnected_entities(player_id, type)
+   return get_player_connections(player_id or ALL_PLAYERS):get_disconnected_entities(type)
+end
+
 function ConnectionService:get_player_connections(player_id)
    local connections = rawget(CONNECTIONS_BY_PLAYER_ID, player_id)
    
@@ -205,7 +209,7 @@ function ConnectionService:_communicate_update(player_id, args)
    ds:set_data(cur_data)
 
    for type, _ in pairs(args.changed_types) do
-      radiant.events.trigger(self, 'stonehearth_ace:connections:'..type..':changed', args.graphs_changed[type] or {})
+      radiant.events.trigger(self, 'stonehearth_ace:connections:'..type..':changed', type, args.graphs_changed[type] or {})
    end
 end
 

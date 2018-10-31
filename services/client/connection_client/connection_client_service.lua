@@ -48,8 +48,12 @@ function ConnectionClientService:_setup_connection_types()
       :done(function(response)
          for name, type in pairs(response.types) do
             local colors = {}
-            colors.available_color = Point3(unpack(type.available_color)) or Point3(64, 240, 0)
-            colors.connected_color = Point3(unpack(type.connected_color)) or colors.available_color / 2
+            if type.available_color then
+               colors.available_color = Point3(unpack(type.available_color))
+            end
+            if type.connected_color then
+               colors.connected_color = Point3(unpack(type.connected_color))
+            end
 
             self._connection_colors[name] = colors
          end

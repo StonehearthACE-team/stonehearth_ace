@@ -17,7 +17,8 @@ function AceGrowingComponent:activate()
 	local json = radiant.entities.get_json(self)
 	self._preferred_climate = json and json.preferred_climate
 	self._water_affinity = stonehearth.town:get_water_affinity_table(self._preferred_climate)
-	self._flood_period_multiplier = (json and json.flood_period_multiplier) or 2
+   self._flood_period_multiplier = (json and json.flood_period_multiplier) or 2
+   self._flooded_growth_only = (json and json.flooded_growth_only) or false   -- if true, only grow when flooded; otherwise normal
 
 	self:_old_activate()
 
@@ -73,7 +74,7 @@ function AceGrowingComponent:get_best_water_level()
 end
 
 function AceGrowingComponent:_recalculate_duration()
-	if self._sv.growth_timer then
+   if self._sv.growth_timer then
 		local old_duration = self._sv.growth_timer:get_duration()
 		local old_expire_time = self._sv.growth_timer:get_expire_time()
 		local old_start_time = old_expire_time - old_duration
@@ -97,10 +98,14 @@ function AceGrowingComponent:_calculate_growth_period(growth_period)
 	if not growth_period then
 		growth_period = self:_get_base_growth_period()
 	end
-	local scaled_growth_period = stonehearth.town:calculate_growth_period(self._entity:get_player_id(), growth_period)
-	if self._sv.is_flooded then
+   local scaled_growth_period = stonehearth.town:calculate_growth_period(self._entity:get_player_id(), growth_period)
+   
+   if self._flooded_growth_only ~= self._sv.is_flooded then
+      scaled_growth_period = scaled_growth_period * 10000
+   elseif self._sv.is_flooded then
 		scaled_growth_period = scaled_growth_period * self._flood_period_multiplier
-	end
+   end
+
 	return scaled_growth_period * (self._sv.local_water_modifier or 1)
 end
 
