@@ -50,8 +50,25 @@
             "/stonehearth_ace/data/rigs/entities/algae/effects/idle.json"
          ]
       },
+      "stonehearth:loot_drops": {
+         "entries": {
+            "meat": {
+               "num_rolls": {
+                  "min": 2,
+                  "max": 4
+               },
+               "items": {
+                  "meat": {
+                     "uri": "stonehearth_ace:resources:algae:brown_algae"
+                  }
+               }
+            }
+         }
+      },
       "stonehearth_ace:add_stump": {},
-      "stonehearth_ace:aquatic_object": {},
+      "stonehearth_ace:aquatic_object": {
+         "destroy_if_out_of_water": true
+      },
       "stonehearth_ace:water_signal": {
          "signal_region": {
             "min": { "x": -1, "y": 3, "z": -1 },

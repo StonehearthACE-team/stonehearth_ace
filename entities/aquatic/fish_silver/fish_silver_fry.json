@@ -13,7 +13,18 @@
             ]
          }
       },
-      "stonehearth:evolve": {}
+      "stonehearth:evolve": {},
+      "stonehearth_ace:aquatic_object": {
+         "suffocate_if_out_of_water": {
+            "entity_height": 0.6
+         }
+      },
+      "stonehearth_ace:water_signal": {
+         "monitor_types": [
+            "water_surface_level",
+            "water_exists"
+         ]
+      }
    },
    "entity_data": {
       "stonehearth:evolve_data": {

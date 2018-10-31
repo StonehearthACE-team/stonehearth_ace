@@ -1,0 +1,179 @@
+{
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(paddy_1.qb)"
+            ]
+         },
+         "paddy_1": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(paddy_1.qb)",
+                     "file(paddy_1_2.qb)"
+                  ]
+               }
+            ]
+         },
+         "paddy_2": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(paddy_2.qb)",
+                     "file(paddy_2_2.qb)"
+                  ]
+               }
+            ]
+         },
+         "paddy_3": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(paddy_3.qb)",
+                     "file(paddy_3_2.qb)"
+                  ]
+               }
+            ]
+         },
+         "paddy_4": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(paddy_4.qb)",
+                     "file(paddy_4_2.qb)"
+                  ]
+               }
+            ]
+         },
+         "paddy_5": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(paddy_5.qb)",
+                     "file(paddy_5_2.qb)"
+                  ]
+               }
+            ]
+         },
+         "paddy_20": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(paddy_20.qb)",
+                     "file(paddy_20_2.qb)"
+                  ]
+               }
+            ]
+         }
+      },
+      "render_info": {
+         "scale": 0.09
+      },
+      "mob": {
+         "model_origin": { "x": -0.05, "y": -0.3, "z": 0.05 },
+         "mob_collision_type": "clutter"
+      },
+      "stonehearth:crop": {
+         "resource_pairings": {
+            "paddy_5": "stonehearth_ace:food:rice:paddy_basket",
+            "paddy_20": ""
+         },
+         "harvest_threshhold": "paddy_5",
+         "plant_overlay_effect": "stonehearth:effects:plant_crop_overlay_effect"
+      },
+      "stonehearth:growing": {
+         "growth_period": "1h",
+         "preferred_seasons": {
+            "stonehearth:biome:temperate": [
+               "spring",
+               "summer"
+            ],
+            "stonehearth:biome:desert": [
+               "spring",
+               "summer"
+            ],
+            "stonehearth:biome:arctic": [
+               "summer"
+            ],
+            "stonehearth_ace:biome:highlands": [
+               "summer"
+            ]
+         },
+         "growth_stages": [
+            {
+               "model_name": "paddy_1",
+               "name": "i18n(stonehearth_ace:entities.crops.paddy_crop.growth_stage.000.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.paddy_crop.growth_stage.000.description)"
+            },
+            {
+               "model_name": "paddy_2",
+               "name": "i18n(stonehearth_ace:entities.crops.paddy_crop.growth_stage.001.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.paddy_crop.growth_stage.001.description)"
+            },
+            {
+               "model_name": "paddy_3",
+               "name": "i18n(stonehearth_ace:entities.crops.paddy_crop.growth_stage.002.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.paddy_crop.growth_stage.002.description)"
+            },
+            {
+               "model_name": "paddy_4",
+               "name": "i18n(stonehearth_ace:entities.crops.paddy_crop.growth_stage.003.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.paddy_crop.growth_stage.003.description)"
+            },
+            {
+               "model_name": "paddy_5",
+               "name": "i18n(stonehearth_ace:entities.crops.paddy_crop.growth_stage.004.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.paddy_crop.growth_stage.004.description)"
+            },
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {
+               "model_name": "paddy_20",
+               "name": "i18n(stonehearth_ace:entities.crops.paddy_crop.growth_stage.019.name)"
+            }
+         ]
+      },
+      "stonehearth_ace:aquatic_object": {
+         "require_water_to_grow": true
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 1,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.crops.paddy_crop.display_name)",
+         "description": "i18n(stonehearth_ace:entities.crops.paddy_crop.description)",
+         "icon": "file(icon.png)",
+         "material_tags": "crop paddy"
+      },
+      "stonehearth:appeal": {
+         "appeal": 1
+      }
+   }
+}
