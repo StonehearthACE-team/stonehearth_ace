@@ -1,0 +1,39 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:item_properties",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(water_lily_purple.qb)"
+            ]
+         }
+      },
+      "stonehearth:stacks": {
+         "max_stacks": 6
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 2,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 2,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.resources.herb.water_lily_purple.display_name)",
+         "description": "i18n(stonehearth_ace:entities.resources.herb.water_lily_purple.description)",
+         "icon": "file(water_lily_purple.png)",
+         "is_item": true,
+         "category": "resources",
+         "material_tags": "plant herb resource flower water_lily_purple stockpile_plant"
+      },
+      "stonehearth:appeal": {
+         "appeal": 2
+      }
+   }
+}
