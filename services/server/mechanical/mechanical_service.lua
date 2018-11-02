@@ -10,7 +10,7 @@ end
 
 function MechanicalService:activate()
    -- query connection service for connection info and listen for changes
-   self._graphs = stonehearth_ace.connection:get_graphs_by_type('mechanical')
+   self:_update_graphs()
    self._connections_changed_listener = radiant.events.listen(stonehearth_ace.connection, 'stonehearth_ace:connections:mechanical:changed', self, self._on_connections_changed)
    for id, _ in pairs(self._graphs) do
       self:_update_network(id)
@@ -31,7 +31,12 @@ function MechanicalService:_destroy_listeners()
    end
 end
 
-function MechanicalService:_on_connections_changed(graphs_changed)
+function MechanicalService:_update_graphs()
+   self._graphs = stonehearth_ace.connection:get_graphs_by_type('mechanical')
+end
+
+function MechanicalService:_on_connections_changed(type, graphs_changed)
+   self:_update_graphs()
    for id, _ in pairs(graphs_changed) do
       self:_update_network(id)
    end

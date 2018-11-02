@@ -56,6 +56,27 @@ function PlayerConnections:destroy()
    
 end
 
+function PlayerConnections:get_disconnected_entities(type)
+   local entities = {}
+   local count = 0
+   local conn_tbl = self:get_connections(type)
+   for id, _ in pairs(conn_tbl.entity_connectors) do
+      local in_graph = false
+      for _, graph in pairs(conn_tbl.graphs) do
+         if graph.nodes[id] then
+            in_graph = true
+            break
+         end
+      end
+      if not in_graph then
+         entities[id] = self._sv.entities[id].entity
+         count = count + 1
+      end
+   end
+   entities.count = count
+   return entities
+end
+
 function PlayerConnections:_get_and_clear_entity_changes_cache()
    local changes = self._entity_changes_cache
    --log:debug('_get_and_clear_entity_changes_cache data: %s', radiant.util.table_tostring(changes))

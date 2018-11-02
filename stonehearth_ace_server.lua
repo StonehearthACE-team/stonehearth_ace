@@ -8,7 +8,8 @@ local service_creation_order = {
    'water_pump',
    'water_signal',
    'underfarming',
-   'mechanical'
+   'mechanical',
+   'vine'
 }
 
 local monkey_patches = {

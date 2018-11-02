@@ -1,0 +1,41 @@
+{
+   "types": {
+      "stonehearth_ace:plants:vine": {
+         "grows_on_ground": true,
+         "growth_directions": {
+            "x-": 12,
+            "x+": 12,
+            "z-": 12,
+            "z+": 12,
+            "y-": 30,
+            "y+": 22
+         },
+         "growth_times": [
+            {
+               "threshold": 0,
+               "time": "16h+4h"
+            },
+            {
+               "threshold": 2,
+               "time": "30h+6h"
+            },
+            {
+               "threshold": 10,
+               "time": "20h+4h"
+            },
+            {
+               "threshold": 20,
+               "time": "40h+8h"
+            },
+            {
+               "threshold": 40,
+               "time": "90h+6h"
+            },
+            {
+               "threshold": 60,
+               "time": ""
+            }
+         ]
+      }
+   }
+}
