@@ -2649,6 +2649,10 @@
             }
          },
          "zones_mode": {
+            "farm": {
+               "water_affinity_range": "Fastest growth happens with <b>[str(i18n_data.min)] - [str(i18n_data.max)]</b> water around the perimeter of this farm. Current water level: <b>[str(i18n_data.water_level)]</b>.",
+               "water_affinity_min_only": "Fastest growth happens with at least <b>[str(i18n_data.min)]</b> water around the perimeter of this farm. Current water level: <b>[str(i18n_data.water_level)]</b>."
+            },
             "underfarm": {
                "substrate_name": "Substrate",
                "substrate_description": "You need a layer of organic material to plant undercrops."

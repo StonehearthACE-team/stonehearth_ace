@@ -21,7 +21,6 @@ local monkey_patches = {
    ace_job_component = 'stonehearth.components.job.job_component',
    ace_find_equipment_upgrade_action = 'stonehearth.ai.actions.upgrade_equipment.find_equipment_upgrade_action',
    ace_town_patrol_service = 'stonehearth.services.server.town_patrol.town_patrol_service',
-   ace_equipment_component = 'stonehearth.components.equipment.equipment_component',
    ace_equipment_piece_component = 'stonehearth.components.equipment_piece.equipment_piece_component',
    ace_farmer_field_component = 'stonehearth.components.farmer_field.farmer_field_component',
    ace_growing_component = 'stonehearth.components.growing.growing_component',
@@ -46,8 +45,7 @@ local monkey_patches = {
    ace_client_state = 'stonehearth.services.server.client_state.client_state',
    ace_loot_drops_component = 'stonehearth.components.loot_drops.loot_drops_component',
    ace_incapacitation_component = 'stonehearth.components.incapacitation.incapacitation_component',
-   ace_crafter_jobs_node = 'stonehearth.components.building2.plan.nodes.crafter_jobs_node',
-   ace_habitat_manager = 'stonehearth.services.server.world_generation.habitat_manager'
+   ace_crafter_jobs_node = 'stonehearth.components.building2.plan.nodes.crafter_jobs_node'
 }
 
 local function monkey_patching()

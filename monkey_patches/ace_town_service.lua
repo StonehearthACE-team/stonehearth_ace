@@ -60,9 +60,9 @@ function AceTownService:get_best_water_level(water_affinity)
 
 	local best_affinity = water_affinity[1]
 	local next_affinity = water_affinity[2]
-	for i = 2, water_affinity.n do
+	for i = 2, #water_affinity do
 		local affinity = water_affinity[i]
-		if water_level >= affinity.min_water and affinity.min_water > best_affinity.min_water then
+		if affinity.period_multiplier < best_affinity.period_multiplier then
 			best_affinity = affinity
 			next_affinity = water_affinity[i + 1]
 		end

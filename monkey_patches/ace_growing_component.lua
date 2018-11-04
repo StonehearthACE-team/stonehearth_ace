@@ -100,9 +100,9 @@ function AceGrowingComponent:_calculate_growth_period(growth_period)
 	end
    local scaled_growth_period = stonehearth.town:calculate_growth_period(self._entity:get_player_id(), growth_period)
    
-   if self._flooded_growth_only ~= self._sv.is_flooded then
+   if self._flooded_growth_only and not self._sv.is_flooded then
       scaled_growth_period = scaled_growth_period * 10000
-   elseif self._sv.is_flooded then
+   elseif not self._flooded_growth_only and self._sv.is_flooded then
 		scaled_growth_period = scaled_growth_period * self._flood_period_multiplier
    end
 

@@ -25,7 +25,7 @@ function FarmerFieldComponent:plant_crop_at(x_offset, z_offset)
 	local crop = self:_old_plant_crop_at(x_offset, z_offset)
 
 	if crop then
-		crop:add_component('stonehearth:growing'):set_water_level(self._sv._water_level or 0)
+		crop:add_component('stonehearth:growing'):set_water_level(self._sv.water_level or 0)
 	end
 end
 
@@ -57,7 +57,7 @@ function AceFarmerFieldComponent:_on_water_volume_changed(volume)
 	-- we compare that to our current volume to crop ratio
 	local ideal_ratio = 4/11
 	local this_ratio = volume / (math.ceil(self._sv.size.x/2) * self._sv.size.y)
-	self._sv._water_level = this_ratio / ideal_ratio
+	self._sv.water_level = this_ratio / ideal_ratio
 	self.__saved_variables:mark_changed()
 
 	if self:_is_fallow() then
@@ -68,7 +68,7 @@ function AceFarmerFieldComponent:_on_water_volume_changed(volume)
 		for y=1, self._sv.size.y do
 			local dirt_plot = self._sv.contents[x][y]
 			if dirt_plot and dirt_plot.contents then
-				dirt_plot.contents:add_component('stonehearth:growing'):set_water_level(self._sv._water_level)
+				dirt_plot.contents:add_component('stonehearth:growing'):set_water_level(self._sv.water_level)
 			end
 		end
 	end

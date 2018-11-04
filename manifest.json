@@ -878,7 +878,8 @@
       "stonehearth/jobs/blacksmith/blacksmith_outfit/blacksmith_outfit.png": "file(jobs/blacksmith/blacksmith_outfit/blacksmith_outfit.png)",
       "stonehearth/jobs/blacksmith/blacksmith_outfit/blacksmith_outfit.qb": "file(jobs/blacksmith/blacksmith_outfit/blacksmith_outfit.qb)",
       "stonehearth/jobs/blacksmith/blacksmith_outfit/blacksmith_outfit_female.qb": "file(jobs/blacksmith/blacksmith_outfit/blacksmith_outfit_female.qb)",
-      "stonehearth/jobs/herbalist/skin/saw.png": "file(jobs/herbalist/skin/saw.png)"
+      "stonehearth/jobs/herbalist/skin/saw.png": "file(jobs/herbalist/skin/saw.png)",
+      "stonehearth/ui/game/modes/zones_mode/farm/farm.html": "file(ui/game/modes/zones_mode/farm/farm.html)"
    },
    "components": {
       "add_stump": "file(components/tree_stump/add_stump.lua)",
@@ -1004,6 +1005,10 @@
       "set_client_gameplay_setting_command": {
          "controller": "file(call_handlers/settings_call_handler.lua)",
          "endpoint": "server"
+      },
+      "get_growth_preferences_command": {
+         "controller": "file(call_handlers/growing_call_handler.lua)",
+         "endpoint": "server"
       }
    },
    "object_commands": {
@@ -1033,7 +1038,8 @@
          "file(ui/game/modes/zones_mode/zones_mode.js)",
          "file(ui/game/modes/zones_mode/underfarm/underfarm.js)",
          "file(ui/game/promotion_tree/promotion_tree.js)",
-         "file(ui/game/modes/zones_mode/trapping_grounds/trapping_grounds.js)"
+         "file(ui/game/modes/zones_mode/trapping_grounds/trapping_grounds.js)",
+         "file(ui/game/modes/zones_mode/farm/farm.js)"
       ],
       "less": [
          "file(ui/shell/settings/settings.less)",
@@ -1041,7 +1047,8 @@
          "file(jobs/mf_grower/skin/workshop.less)",
          "file(ui/game/modes/zones_mode/underfarm/underfarm.less)",
          "file(ui/game/modes/zones_mode/trapping_grounds/trapping_grounds.less)",
-         "file(jobs/mf_artificer/skin/workshop.less)"
+         "file(jobs/mf_artificer/skin/workshop.less)",
+         "file(ui/game/modes/zones_mode/farm/farm.less)"
       ]
    }
 }
