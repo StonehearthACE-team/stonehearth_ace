@@ -1,3 +1,4 @@
+local Point3 = _radiant.csg.Point3
 local Region3 = _radiant.csg.Region3
 local log = radiant.log.create_logger('farmer_field')
 local FarmerFieldComponent = require 'stonehearth.components.farmer_field.farmer_field_component'
@@ -36,8 +37,8 @@ function AceFarmerFieldComponent:_create_water_listener()
 
 	local region = self._entity:get_component('destination'):get_region():get()
 						:extruded('x', 1, 1)
-						:extruded('z', 1, 1)
-						:extruded('y', 1, 0)
+                  :extruded('z', 1, 1)
+                  :extruded('y', 1, 0)
    local water_component = self._entity:add_component('stonehearth_ace:water_signal')
 	water_component:set_region(region)
    water_component:add_monitor_types({'water_volume'})

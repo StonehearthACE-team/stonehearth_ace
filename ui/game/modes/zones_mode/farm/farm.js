@@ -9,9 +9,13 @@ App.StonehearthFarmView.reopen({
       }
       self.set('current_crop_details', details);
 
-      if (details.uri) {
+      if(details.uri) {
          radiant.call('stonehearth_ace:get_growth_preferences_command', details.uri)
             .done(function (response) {
+               if (self.isDestroyed || self.isDestroying) {
+                  return;
+               }
+               
                var size = field_sv.size;
                var water_level = field_sv.water_level || 0;
                var affinities = response.water_affinity;
@@ -22,16 +26,35 @@ App.StonehearthFarmView.reopen({
                   water_affinity.description = 'stonehearth_ace:ui.game.zones_mode.farm.water_affinity_range';
                   water_affinity.i18n_data = {min: Math.round(affinities.best_affinity.min_water * size_mult),
                                               max: Math.round(affinities.next_affinity.min_water * size_mult),
-                                              water_level: water_level};
+                                              water_level: Math.round(water_level * size_mult)};
                }
                else {
                   water_affinity.description = 'stonehearth_ace:ui.game.zones_mode.farm.water_affinity_min_only';
                   water_affinity.i18n_data = {min: Math.round(affinities.best_affinity.min_water * size_mult),
-                                              water_level: water_level};
+                                              water_level: Math.round(water_level * size_mult)};
                }
 
                self.set('water_affinity', water_affinity);
+
+               var requireFlooding = response.require_flooding_to_grow;
+               var floodingMultiplier = response.flood_period_multiplier;
+               var floodPreference;
+               if (requireFlooding) {
+                  floodPreference = 'stonehearth_ace:ui.game.zones_mode.farm.requires_flooding';
+               }
+               else if (floodingMultiplier < 1) {
+                  floodPreference = 'stonehearth_ace:ui.game.zones_mode.farm.prefers_flooding';
+               }
+               else if (floodingMultiplier > 1) {
+                  floodPreference = 'stonehearth_ace:ui.game.zones_mode.farm.prefers_no_flooding';
+               }
+
+               self.set('flood_preference', floodPreference);
             });
+      }
+      else {
+         self.set('water_affinity', null);
+         self.set('flood_preference', null);
       }
    }.observes('model.stonehearth:farmer_field.current_crop_details')
 });

@@ -2650,8 +2650,11 @@
          },
          "zones_mode": {
             "farm": {
-               "water_affinity_range": "Fastest growth happens with <b>[str(i18n_data.min)] - [str(i18n_data.max)]</b> water around the perimeter of this farm. Current water level: <b>[str(i18n_data.water_level)]</b>.",
-               "water_affinity_min_only": "Fastest growth happens with at least <b>[str(i18n_data.min)]</b> water around the perimeter of this farm. Current water level: <b>[str(i18n_data.water_level)]</b>."
+               "water_affinity_range": "Fastest growth happens with <span class='water'><span class='value'>[str(i18n_data.min)] - [str(i18n_data.max)]</span> water</span> within or around the perimeter of this farm. Current <span class='water'>water</span> level: <span class='water value'>[str(i18n_data.water_level)]</span>.",
+               "water_affinity_min_only": "Fastest growth happens with at least <span class='water'><span class='value'>[str(i18n_data.min)]</span> water</span> within or around the perimeter of this farm. Current <span class='water'>water</span> level: <span class='water value'>[str(i18n_data.water_level)]</span>.",
+               "requires_flooding": "This crop must be flooded to grow.",
+               "prefers_flooding": "This crop grows more quickly when flooded.",
+               "prefers_no_flooding": "This crop grows more slowly when flooded."
             },
             "underfarm": {
                "substrate_name": "Substrate",

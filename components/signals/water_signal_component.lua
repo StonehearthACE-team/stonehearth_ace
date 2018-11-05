@@ -153,9 +153,10 @@ function WaterSignalComponent:_get_intersection_volume(water_comp)
    -- self._trans_region gets set by _on_tick_water_signal before this gets called from set_water_volume
    -- apparently regions (at least the way the water component uses them) are integer-bounded
    -- and the top layer region overlaps the main region layer (see commented get_volume() below)
-   local top_region = water_comp._sv._top_layer:get()
+   local location = water_comp:get_location()
+   local top_region = water_comp._sv._top_layer:get():translated(location)
    local top_height = water_comp:get_height() % 1
-   local base_intersection = self._trans_region:intersect_region(water_comp:get_region():get() - top_region)
+   local base_intersection = self._trans_region:intersect_region(water_comp:get_region():get():translated(location) - top_region)
    local top_intersection = self._trans_region:intersect_region(top_region)
    local volume = base_intersection:get_area() + top_intersection:get_area() * top_height
    return volume

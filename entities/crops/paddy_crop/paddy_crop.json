@@ -90,7 +90,7 @@
          "plant_overlay_effect": "stonehearth:effects:plant_crop_overlay_effect"
       },
       "stonehearth:growing": {
-         "growth_period": "1h",
+         "growth_period": "12h",
          "preferred_seasons": {
             "stonehearth:biome:temperate": [
                "spring",
@@ -151,7 +151,9 @@
                "model_name": "paddy_20",
                "name": "i18n(stonehearth_ace:entities.crops.paddy_crop.growth_stage.019.name)"
             }
-         ]
+         ],
+         "flood_period_multiplier": 1,
+         "preferred_climate": "temperate_wet"
       },
       "stonehearth_ace:aquatic_object": {
          "require_water_to_grow": true

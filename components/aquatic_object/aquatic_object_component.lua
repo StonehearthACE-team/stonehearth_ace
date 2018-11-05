@@ -14,6 +14,24 @@ function AquaticObjectComponent:activate()
 	self._destroy_if_out_of_water = json.destroy_if_out_of_water
 	self._suffocate_if_out_of_water = json.suffocate_if_out_of_water
    self._floating_object = json.floating_object
+
+   local monitor_types = {}
+   if self._require_water_to_grow or self._destroy_if_out_of_water or self._suffocate_if_out_of_water then
+      table.insert(monitor_types, 'water_exists')
+   end
+   if self._suffocate_if_out_of_water or self._floating_object then
+      table.insert(monitor_types, 'water_surface_level')
+   end
+   
+   if next(monitor_types) then
+      local water_signal = self._entity:add_component('stonehearth_ace:water_signal')
+      water_signal:add_monitor_types(monitor_types)
+      if self._floating_object then
+         water_signal:set_urgency(true)
+      else
+         water_signal:set_urgency(false)
+      end
+   end
 end
 
 function AquaticObjectComponent:post_activate()
@@ -33,7 +51,7 @@ end
 
 function AquaticObjectComponent:_on_water_exists_changed(exists)
 	if exists == nil then
-		exists = self._entity:add_component('stonehearth_ace:water_signal'):get_water_exists()
+		exists = self._entity:get_component('stonehearth_ace:water_signal'):get_water_exists()
 	end
 
 	self._sv.in_the_water = exists

@@ -1,115 +1,31 @@
 #farmWindow {
-   position: absolute;
-   left: 20px;
-   top: 200px;
-
    #cropRotation {
-      position: relative;
-      display: inline-block;
-      width: 320px;
-      //height: 80px;
+      td {
+         vertical-align: top;
+         padding: 4px;
+         margin: 4px;
+      }
+
+      .name {
+         .controlFont;
+      }
 
       #cropDetails {
-         display: block;
-      }
-   }
+         .preferredSeasons, .waterAffinity {
+            font-size: 90%;
+            
+            .label {
+               color: #bca058;
+               font-family: 'groboldregular';
+            }
 
-   //Temporary
-   .targetCrop {
-      display: flex;
-      width: 110px;
-      height: 110px;
-      margin: auto;
-   }
+            .water {
+               color: #88aaff
+            }
 
-   .cropImage {
-      width: 100px;
-      height: 100px;
-      margin: auto;
-   }
-
-   .cropRotationSlot:nth-of-type(1) {
-      top: 0px;
-      left: 00px;
-   }
-
-   .cropRotationSlot:nth-of-type(2) {
-      top: 0px;
-      left: 80px;
-   }
-
-   .cropRotationSlot:nth-of-type(3) {
-      top: 0px;
-      left: 160px;
-   }
-
-   .cropRotationSlot:nth-of-type(4) {
-      top: 0px;
-      left: 240px;
-   }
-
-   .cropRotationSlot {
-      position: absolute;
-      display: flex;
-      width: 68px;
-      height: 68px;
-   }
-
-   .crop {
-      background: url(../images/crop_rotation_slot.png);
-   }
-
-   #addCropButton {
-      clear: both;
-   }
-}
-
-#cropPalette {
-   position: absolute;
-   left: 28px;
-   top: 208px;
-
-   .window {
-      width: 450px;
-      height: 600px;
-   }
-
-   .list {
-      height: 506px;
-      overflow-y: scroll;
-
-      tr {
-         .button;
-      }
-
-      tr.disabled {
-         .disabled;
-      }
-
-      tr.is-hidden {
-         display: none;
-      }
-
-      tr.is-locked {
-         -webkit-filter: grayscale(75%);
-      }
-
-      .icon {
-         margin-right: 10px;
-         img {
-            width: 72px;
-            height: 72px;
-         }
-      }
-
-      .info {
-         .name {
-            .controlFont;
-         }
-
-         .preferredSeasons .label {
-            color: #bca058;
-            font-family: 'groboldregular';
+            .value {
+               font-family: 'groboldregular'
+            }
          }
       }
    }
