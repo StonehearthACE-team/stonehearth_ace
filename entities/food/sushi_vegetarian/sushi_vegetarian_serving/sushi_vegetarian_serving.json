@@ -1,0 +1,34 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(sushi_vegetarian_serving.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:item": {
+         "category": "food",
+         "destroy_on_uncarry": true
+      },
+      "stonehearth:food": {
+         "stonehearth:sitting_on_chair": {
+            "satisfaction": 150
+         },
+         "default": {
+            "satisfaction": 100
+         },
+         "quality": 6
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.sushi_vegetarian.sushi_vegetarian_serving.display_name)",
+         "description": "",
+         "material_tags": "food vegetarian sushi_vegetarian_serving",
+         "subject_override": "stonehearth_ace:food:sushi_vegetarian"
+      }
+   }
+}

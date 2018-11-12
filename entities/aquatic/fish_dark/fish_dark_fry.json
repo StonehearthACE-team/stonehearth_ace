@@ -1,0 +1,82 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth_ace:mixins:aquatic",
+   "components": {
+      "render_info": {
+         "scale": 0.07,
+         "animation_table": "file(/data/rigs/entities/aquatic/fish)"
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(fish_dark_fry.qb)"
+            ]
+         }
+      },
+      "stonehearth:evolve": {},
+      "stonehearth_ace:aquatic_object": {
+         "suffocate_if_out_of_water": {
+            "entity_height": 0.6
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:evolve_data": {
+         "current_stage": "fry",
+         "next_stage": "stonehearth_ace:fish:dark",
+         "evolve_time": "3d"
+      },
+      "stonehearth:entity_radius": 0.25,
+      "stonehearth:species": {
+         "id": "fish",
+         "display_name": "i18n(stonehearth_ace:entities.aquatic.fish.species)"
+      },
+      "stonehearth:bait_trap": {
+         "can_trap": true,
+         "catch_chance": 0.5,
+         "trigger_trap_on_failure_chance": 0.4
+      },
+      "stonehearth:calories": {
+         "hungry_threshold": 0,
+         "famished_threshold": 0,
+         "malnourished_threshold": -10,
+         "hourly_calorie_loss": 0.5
+      },
+      "stonehearth:diet": {
+         "food_material": "vegetarian"
+      },
+      "stonehearth:portrait": {
+         "portrait_types": {
+            "headshot": {
+               "camera": {
+                  "pos": [
+                     17,
+                     0.6,
+                     -27
+                  ],
+                  "look_at": [
+                     0,
+                     0.6,
+                     0
+                  ],
+                  "fov": 50
+               }
+            }
+         }
+      },
+      "stonehearth:catalog": {
+         "player_id": "animals",
+         "display_name": "i18n(stonehearth_ace:entities.aquatic.fish_dark_fry.display_name)",
+         "description": "i18n(stonehearth_ace:entities.aquatic.fish_dark_fry.description)",
+         "icon": "file(fish_dark_fry.png)"
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 5,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      }
+   }
+}

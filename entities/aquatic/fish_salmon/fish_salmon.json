@@ -1,0 +1,130 @@
+{
+   "type": "entity",
+   "mixins": [
+      "stonehearth_ace:mixins:aquatic",
+      "file(fish_salmon_ghost.json)"
+   ],
+   "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(fish_salmon_iconic.json)",
+         "ghost_form": "file(fish_salmon_ghost.json)",
+         "placeable_on_ground": true,
+         "must_parent_to_terrain": true,
+         "hide_move_ui": true,
+         "hide_undeploy_ui": false
+      },
+      "stonehearth:loot_drops": {
+         "force_auto_loot": true,
+         "entries": {
+            "meat": {
+               "num_rolls": {
+                  "min": 0,
+                  "max": 1
+               },
+               "items": {
+                  "meat": {
+                     "uri": "stonehearth_ace:food:fish_meat:salmon"
+                  }
+               }
+            }
+         }
+      },
+      "stonehearth:renewable_resource_node": {
+         "renewal_time": "40h+24h",
+         "start_unharvestable": true,
+         "spawn_resource_immediately": true,
+         "check_owner": true,
+         "resource_loot_table": {
+            "entries": {
+               "roe": {
+                  "roll_type": "some_of",
+                  "num_rolls": {
+                     "min": 0,
+                     "max": 1
+                  },
+                  "items": {
+                     "roe": {
+                        "uri": "stonehearth_ace:fish:salmon:roe",
+                        "weight": 1
+                     }
+                  }
+               }
+            }
+         }
+      },
+      "stonehearth_ace:aquatic_object": {
+         "suffocate_if_out_of_water": {
+            "entity_height": 0.5
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:entity_radius": 0.25,
+      "stonehearth:species": {
+         "id": "fish",
+         "display_name": "i18n(stonehearth_ace:entities.aquatic.fish.species)"
+      },
+      "stonehearth:bait_trap": {
+         "can_trap": true,
+         "catch_chance": 0.5,
+         "trigger_trap_on_failure_chance": 0.4
+      },
+      "stonehearth:harvest_beast_loot_table": {
+         "entries": {
+            "meat": {
+               "num_rolls": {
+                  "min": 0,
+                  "max": 1
+               },
+               "items": {
+                  "meat": {
+                     "uri": "stonehearth_ace:food:fish_meat:salmon"
+                  }
+               }
+            }
+         }
+      },
+      "stonehearth:calories": {
+         "hungry_threshold": 0,
+         "famished_threshold": 0,
+         "malnourished_threshold": -10,
+         "hourly_calorie_loss": 0.5
+      },
+      "stonehearth:diet": {
+         "food_material": "vegetarian"
+      },
+      "stonehearth:portrait": {
+         "portrait_types": {
+            "headshot": {
+               "camera": {
+                  "pos": [
+                     17,
+                     0.6,
+                     -27
+                  ],
+                  "look_at": [
+                     0,
+                     0.6,
+                     0
+                  ],
+                  "fov": 50
+               }
+            }
+         }
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 5,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:food_decay": {
+         "initial_decay": {
+            "min": 166,
+            "max": 240
+         }
+      }
+   }
+}

@@ -9,14 +9,170 @@
          "file(static/ladybug_beetle_nest)",
          "file(static/sheep_nest)",
          "file(static/poyo_nest)",
+         "file(static/fish_silver_nest)",
+         "file(static/fish_dark_nest)",
+         "file(static/fish_long_nest)",
+         "file(static/fish_big_nest)",
+         "file(static/fish_carp_nest)",
+         "file(static/fish_catfish_nest)",
+         "file(static/fish_salmon_nest)",
+         "file(static/fish_trout_nest)",
+         "file(static/landmarks/16x_water_bottom_1.json)",
+         "file(static/landmarks/16x_water_bottom_2.json)",
+         "file(static/landmarks/16x_water_bottom_3.json)",
+         "file(static/landmarks/16x_water_bottom_4.json)",
+         "file(static/landmarks/16x_water_bottom_5.json)",
+         "file(static/landmarks/16x_water_bottom_6.json)",
+         "file(static/landmarks/16x_water_bottom_treasure.json)",
+         "file(static/landmarks/32x_water_bottom_1.json)",
+         "file(static/landmarks/32x_water_bottom_2.json)",
+         "file(static/landmarks/32x_water_bottom_3.json)",
+         "file(static/landmarks/32x_water_bottom_4.json)",
+         "file(static/landmarks/32x_water_bottom_5.json)",
+         "file(static/landmarks/32x_water_bottom_6.json)",
+         "file(static/landmarks/32x_water_bottom_treasure.json)",
+         "file(static/landmarks/128x_water_bottom_1.json)",
          "file(static/landmarks/32x_bear_den.json)",
-		 "file(static/landmarks/32x_cougar_den.json)",
-		 "file(static/landmarks/32x_wolf_den.json)",
-		 "file(static/landmarks/32x_poyo_land.json)",
-		 "file(static/landmarks/32x_sheep_herd.json)",
-		 "file(static/landmarks/96x_peatland_1.json)",
-		 "file(static/landmarks/96x_peatland_2.json)",
-		 "file(static/landmarks/96x_peatland_3.json)"
-      ]
+         "file(static/landmarks/32x_cougar_den.json)",
+         "file(static/landmarks/32x_wolf_den.json)",
+         "file(static/landmarks/32x_poyo_land.json)",
+         "file(static/landmarks/32x_sheep_herd.json)",
+         "file(static/landmarks/96x_peatland_1.json)",
+         "file(static/landmarks/96x_peatland_2.json)",
+         "file(static/landmarks/96x_peatland_3.json)"
+      ],
+      "categories": {
+         "terrain_feature_underground": {
+            "max_count": [
+               10,
+               11,
+               12,
+               13,
+               14,
+               15,
+               16,
+               17,
+               18,
+               19,
+               20
+            ]
+         },
+         "terrain_feature_common": {
+            "max_count": [
+               2,
+               2,
+               3,
+               3,
+               4,
+               4,
+               4,
+               5,
+               5,
+               6,
+               7,
+               8
+            ],
+            "prevents_categories_in_same_tile": [
+               "npc_settlements",
+               "npc_settlements_hostile"
+            ]
+         },
+         "terrain_feature_rare": {
+            "max_count": [
+               0,
+               0,
+               0,
+               0,
+               1,
+               1,
+               1,
+               2,
+               2
+            ],
+            "prevents_categories_in_same_tile": [
+               "npc_settlements",
+               "npc_settlements_hostile"
+            ]
+         },
+         "underwater_feature_common": {
+            "density": 10,
+            "max_count": [
+               15,
+               25,
+               30,
+               45
+            ],
+            "prevents_categories_in_same_tile": [
+               "underwater_feature_common",
+               "underwater_feature_rare"
+            ],
+            "priority": "random",
+            "location_type": "surface",
+            "activation_type": "immediate"
+         },
+         "underwater_feature_rare": {
+            "density": 45,
+            "max_count": [
+               0,
+               0,
+               0,
+               0,
+               1,
+               1,
+               1,
+               1,
+               2,
+               2,
+               3
+            ],
+            "prevents_categories_in_same_tile": [
+               "underwater_feature_common",
+               "underwater_feature_rare"
+            ],
+            "priority": "random",
+            "location_type": "surface",
+            "activation_type": "immediate"
+         },
+         "npc_settlements": {
+            "density": 100,
+            "max_count": [
+               0,
+               0,
+               0,
+               0,
+               1
+            ],
+            "prevents_categories_in_same_tile": [
+               "terrain_feature_common",
+               "terrain_feature_rare",
+               "npc_settlements",
+               "npc_settlements_hostile"
+            ],
+            "priority": "random",
+            "location_type": "surface",
+            "activation_type": "immediate"
+         },
+         "npc_settlements_hostile": {
+            "density": 100,
+            "max_count": [
+               0,
+               0,
+               0,
+               0,
+               1,
+               1,
+               2
+            ],
+            "prevents_categories_in_same_tile": [
+               "terrain_feature_common",
+               "terrain_feature_rare",
+               "npc_settlements",
+               "npc_settlements_hostile"
+            ],
+            "priority": "random",
+            "location_type": "surface",
+            "activation_type": "immediate"
+         }
+      }
    }
 }

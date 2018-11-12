@@ -1,0 +1,34 @@
+{
+   "type": "recipe",
+   "effort": 70,
+   "work_units": 2,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.dumpling_salmon_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.dumpling_salmon_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.dumpling_salmon_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/dumpling_salmon/dumpling_salmon/dumpling_salmon.png",
+   "level_requirement": 4,
+   "workshop": "stonehearth:cook:workbench",
+   "ingredients": [
+      {
+         "uri": "stonehearth:food:flour",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth:food:egg",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth_ace:food:fish_meat:salmon",
+         "count": 1
+      },
+      {
+         "material": "herb resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:dumpling_salmon"
+      }
+   ]
+}

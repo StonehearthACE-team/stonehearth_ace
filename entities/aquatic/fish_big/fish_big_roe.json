@@ -1,0 +1,73 @@
+{
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(../fish_roe/fish_big_roe.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0, "y": 0, "z": 0 }
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 0, "y": 2, "z": 0 }
+            }
+         ]
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 0, "y": 2, "z": 0 }
+            }
+         ],
+         "region_collision_type": "none"
+      },
+      "stonehearth:evolve": {},
+      "stonehearth_ace:aquatic_object": {
+         "destroy_if_out_of_water": true
+      },
+      "stonehearth:resource_node": {
+         "category": "harvest",
+         "durability": 1,
+         "harvester_effect": "fiddle",
+         "harvest_overlay_effect": "stonehearth_ace:effects:harvest_roe_overlay_effect",
+         "resource_spawn_effect": "stonehearth:effects:harvest_plants_effect",
+         "resource": "stonehearth_ace:food:fish_roe:fish_big_roe_basket"
+      },
+      "stonehearth_ace:water_signal": {
+         "signal_region": {
+            "min": { "x": -1, "y": 1, "z": -1 },
+            "max": { "x": 0, "y": 2, "z": 0 }
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:evolve_data": {
+         "current_stage": "roe",
+         "next_stage": "stonehearth_ace:fish:big:fry",
+         "evolve_time": "24h",
+         "evolve_effect": "stonehearth:effects:fursplosion_effect"
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 10,
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.aquatic.fish_big_roe.display_name)",
+         "description": "i18n(stonehearth_ace:entities.aquatic.fish_big_roe.placed_description)",
+         "icon": "file(../fish_roe/fish_big_roe.png)",
+         "category": "aquatic",
+         "material_tags": "fertilized_egg fish_big_roe"
+      }
+   }
+}

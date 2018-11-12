@@ -1,0 +1,24 @@
+{
+   "mixins": "/stonehearth/scenarios/static/critter_nest/critter_nest.json",
+   "name": "fish_carp_nest",
+   "habitat_types": [
+      "water"
+   ],
+   "size": {
+      "width": 8,
+      "length": 8
+   },
+   "biomes": [
+      "stonehearth:biome:temperate"
+   ],
+   "data": {
+      "num_critters": {
+         "min": 1,
+         "max": 6
+      },
+      "critter_type": [
+         "stonehearth_ace:fish:carp:fry",
+         "stonehearth_ace:fish:carp:roe"
+      ]
+   }
+}

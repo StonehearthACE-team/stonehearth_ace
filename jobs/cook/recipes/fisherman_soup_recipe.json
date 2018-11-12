@@ -1,0 +1,34 @@
+{
+   "type": "recipe",
+   "effort": 90,
+   "work_units": 1,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.fisherman_soup_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.fisherman_soup_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.fisherman_soup_recipe.flavor)",
+   "portrait": "/stonehearth/entities/food/fisherman_soup/fisherman_soup/fisherman_soup.png",
+   "workshop": "stonehearth:cook:workbench",
+   "level_requirement": 4,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:food:broth",
+         "count": 1
+      },
+	  {
+         "uri": "stonehearth_ace:food:fish_meat:carp",
+         "count": 2
+      },
+      {
+         "material": "food_container raw_food vegetable",
+         "count": 1
+      },
+	  {
+         "material": "raw fish_roe",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:fisherman_soup"
+      }
+   ]
+}

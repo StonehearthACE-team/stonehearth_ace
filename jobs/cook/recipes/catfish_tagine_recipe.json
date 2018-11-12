@@ -1,0 +1,26 @@
+{
+   "type": "recipe",
+   "effort": 50,
+   "work_units": 1,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.catfish_tagine_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.catfish_tagine_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.catfish_tagine_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/catfish_tagine/catfish_tagine/catfish_tagine.png",
+   "workshop": "stonehearth:cook:workbench",
+   "level_requirement": 4,
+   "ingredients": [
+      {
+         "material": "food_container raw_food vegetable",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth_ace:food:fish_meat:catfish",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:catfish_tagine"
+      }
+   ]
+}
