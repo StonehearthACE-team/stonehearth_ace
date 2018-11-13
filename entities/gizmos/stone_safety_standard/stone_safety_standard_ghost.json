@@ -1,0 +1,26 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(stone_safety_standard.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": -0.05, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.gizmos.safety_standard.stone_safety_standard.display_name)",
+         "description": "i18n(stonehearth:entities.gizmos.safety_standard.description)",
+         "icon": "file(stone_safety_standard.png)",
+         "category": "decoration",
+         "material_tags": "stone cloth decoration stockpile_decoration"
+      }
+   }
+}

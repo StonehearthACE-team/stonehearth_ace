@@ -462,10 +462,20 @@
       },
       "mason": {
          "recipes": {
+            "utility_name": "Utility",
             "legendary_headpiece_recipe": {
                "recipe_name": "Fallen Star",
                "description": "A strong and deadly headpiece for the Ascendant Star.",
                "flavor": "Made out of rock extracted straight from a meteorite... or not"
+            },
+            "stone_market_stall_recipe": {
+               "recipe_name": "Stone Market Stall",
+               "description": "Merchants can visit this stall to buy and sell goods",
+               "flavor": "All the lonely merchants... where do they all come from?"
+            },
+            "stone_safety_standard_recipe": {
+               "recipe_name": "Stone Safety Standard",
+               "description": "Use to designate a safety point."
             }
          }
       },
@@ -765,6 +775,16 @@
                "description": "A nutritious and flavorful meal.",
                "flavor": "Straight from the sea! Or lake. Or the nearby stream..."
             },
+			"fish_stew_recipe": {
+               "recipe_name": "Peculiar Fish Stew",
+               "description": "Warm and nutritious.",
+               "flavor": "Don't smell it, just eat!"
+            },
+			"fish_pot_pie_recipe": {
+               "recipe_name": "Fish Pot Pie",
+               "description": "A delicious pie with a fish meat and mushroom filling.",
+               "flavor": "Better if made with all-'porpoise' flour"
+            },
             "raw_rice_recipe": {
                "recipe_name": "Sack of Raw Rice",
                "description": "Delicious grains ready to be used in other recipes.",
@@ -775,10 +795,30 @@
                "description": "Boiled to perfection and sticky enough.",
                "flavor": ""
             },
+			"dumpling_salmon_recipe": {
+               "recipe_name": "Salmon Dumpling",
+               "description": "A little bread pocket with steamed salmon stuffed inside.",
+               "flavor": "A tasty delicacy of the Northern Alliance"
+            },
+			"fisherman_soup_recipe": {
+               "recipe_name": "Fisherman's Soup",
+               "description": "A hearty and spicy soup that is quite filling.",
+               "flavor": "Very traditional to the Ascendancy"
+            },
+			"catfish_tagine_recipe": {
+               "recipe_name": "Catfish Tagine",
+               "description": "Catfish meat and vegetables simmered in a clay pot.",
+               "flavor": "A Rayya's Children oasis specialty"
+            },
             "sushi_recipe": {
                "recipe_name": "Sushi",
                "description": "A delicious specialty from hearthlings of a very distant land.",
                "flavor": "A recipe made popular by Rayya's Children caravans that crossed the Pal'Mun"
+            },
+			"sushi_vegetarian_recipe": {
+               "recipe_name": "Veggie Sushi",
+               "description": "A vegetarian alternative to an exotic dish.",
+               "flavor": "Now everyone can enjoy sushi!"
             },
             "legendary_ink_recipe": {
                "recipe_name": "Sacred Ink",
@@ -1768,6 +1808,12 @@
                   "description": "It gets cool really fast."
                }
             }
+         },
+         "stone_market_stall": {
+            "stone_market_stall_ghost": {
+               "display_name": "Stone Market Stall",
+               "description": "Merchants can set up shop here"
+            }
          }
       },
       "pets": {
@@ -2002,7 +2048,7 @@
             "display_name": "Big Cat Jerky"
          },
          "fish_meat": {
-            "display_name": "Fish Meat",
+            "display_name": "Fish Fillet",
             "rotten": {
                "display_name": "Rotten Fish Meat",
                "description": "It stinks even more than before."
@@ -2016,6 +2062,13 @@
             },
             "fish_roe_serving": {
                "display_name": "Serving of Fish Roe"
+            },
+            "fish_big_roe_serving": {
+               "display_name": "Serving of Caviar"
+            },
+            "fish_big_roe_basket": {
+               "display_name": "Basket of Caviar",
+               "description": "Smaller eggs from bigger and sturdier fish are a very valuable delicacy."
             }
          },
          "sushi": {
@@ -2051,6 +2104,85 @@
             "roast_fish": {
                "display_name": "Slice of Roast Fish",
                "description": "A nutritious and flavorful meal."
+            }
+         },
+         "fish_carp_meat": {
+            "display_name": "Carp Fillet",
+            "description": "Carp can be very tasty if taken from clear water."
+         },
+         "fish_catfish_meat": {
+            "display_name": "Catfish Fillet",
+            "description": "Catfish has a particular, earthen flavor."
+         },
+         "fish_salmon_meat": {
+            "display_name": "Salmon Fillet",
+            "description": "Salmon is a very coveted and tasty fish!"
+         },
+         "fish_trout_meat": {
+            "display_name": "Trout Fillet",
+            "description": "Trouts have a tender, sweet flavor."
+         },
+         "sushi_vegetarian": {
+            "sushi_vegetarian": {
+               "display_name": "Veggie Sushi",
+               "description": "A vegetarian alternative to an exotic dish."
+            },
+            "sushi_vegetarian_serving": {
+               "display_name": "Serving of Veggie Sushi"
+            }
+         },
+         "highland_trout": {
+            "highland_trout": {
+               "display_name": "Highlander Trout",
+               "description": "An exquisite meal from mountainous regions."
+            },
+            "highland_trout_serving": {
+               "display_name": "Serving of Highlander Trout"
+            }
+         },
+         "fisherman_soup": {
+            "fisherman_soup_serving": {
+               "display_name": "Bowl of Fisherman's Soup"
+            },
+            "fisherman_soup": {
+               "display_name": "Fisherman's Soup",
+               "description": "A hearty and spicy soup traditional to the Ascendancy."
+            }
+         },
+         "fish_stew": {
+            "fish_stew": {
+               "display_name": "Peculiar Fish Stew",
+               "description": "Don't smell, just eat!"
+            },
+            "fish_stew_serving": {
+               "display_name": "Bowl of Peculiar Fish Stew"
+            }
+         },
+         "fish_pot_pie": {
+            "fish_pot_pie": {
+               "display_name": "Fish Pot Pie",
+               "description": "A delicious pie with a fish meat and mushroom filling."
+            },
+            "fish_pot_pie_serving": {
+               "display_name": "Serving of Fish Pot Pie"
+            }
+         },
+         "dumpling_salmon": {
+            "dumpling_salmon": {
+               "display_name": "Salmon Dumpling",
+               "description": "A little bread pocket with steamed salmon stuffed inside."
+            },
+            "dumpling_salmon_serving": {
+               "display_name": "Serving of Salmon Dumpling"
+            }
+         },
+         "catfish_tagine": {
+            "catfish_tagine": {
+               "display_name": "Catfish Tagine",
+               "description": "Catfish meat and vegetables simmered in a clay pot."
+            },
+            "catfish_tagine_serving": {
+               "display_name": "Serving of Catfish Tagine"
             }
          }
       },
@@ -2379,7 +2511,11 @@
          },
          "fish_silver": {
             "display_name": "Silver Fish",
-            "description": "A slippery aquatic little creature."
+            "description": "A slippery aquatic little creature.",
+            "iconic": {
+               "display_name": "Captive Silver Fish",
+               "description": "Won't last more than a couple days. Better to release it somewhere!"
+            }
          },
          "fish_silver_fry": {
             "display_name": "Silver Fishling",
@@ -2388,6 +2524,94 @@
          "fish_roe": {
             "display_name": "Fish Roe",
             "placed_description": "These eggs can be harvested or left alone to hatch."
+         },
+         "fish_long_fry": {
+            "display_name": "Long Fishling",
+            "description": "Still short but sleek."
+         },
+         "fish_long": {
+            "display_name": "Long Fish",
+            "description": "Is it a pike? Could be a pike.",
+            "iconic": {
+               "description": "Won't last more than a couple days. Better to release it somewhere!",
+               "display_name": "Captive Long Fish"
+            }
+         },
+         "fish_big": {
+            "display_name": "Big Fish",
+            "description": "Larger and stronger fish, might be harder to catch!",
+            "iconic": {
+               "description": "Won't last more than a couple days. Better to release it somewhere!",
+               "display_name": "Captive Big Fish"
+            }
+         },
+         "fish_big_fry": {
+            "display_name": "Big Fishling",
+            "description": "Eventually a big fish."
+         },
+         "fish_carp": {
+            "display_name": "Forest Carp",
+            "description": "An agile fish unique to the temperate woodlands.",
+            "iconic": {
+               "description": "Won't last more than a couple days. Better to release it somewhere!",
+               "display_name": "Captive Forest Carp"
+            }
+         },
+         "fish_carp_fry": {
+            "display_name": "Forest Carpling",
+            "description": "Will grow into a beautiful carp."
+         },
+         "fish_catfish": {
+            "display_name": "Desert Catfish",
+            "description": "A sluggish fish unique to the desert regions.",
+            "iconic": {
+               "description": "Won't last more than a couple days. Better to release it somewhere!",
+               "display_name": "Captive Desert Catfish"
+            }
+         },
+         "fish_catfish_fry": {
+            "display_name": "Desert Catfishling",
+            "description": "Also known as a kitten fish."
+         },
+         "fish_dark": {
+            "display_name": "Dark Fish",
+            "description": "They're just literally darker, not evil... of course.",
+            "iconic": {
+               "description": "Won't last more than a couple days. Better to release it somewhere!",
+               "display_name": "Captive Dark Fish"
+            }
+         },
+         "fish_dark_fry": {
+            "display_name": "Dark Fishling",
+            "description": "Still growing into a larger fish."
+         },
+         "fish_salmon": {
+            "display_name": "Arctic Salmon",
+            "description": "A delicious fish unique to the northern tundra.",
+            "iconic": {
+               "display_name": "Captive Arctic Salmon",
+               "description": "Won't last more than a couple days. Better to release it somewhere!"
+            }
+         },
+         "fish_salmon_fry": {
+            "display_name": "Arctic Salmonling",
+            "description": "Will be a great salmon one day."
+         },
+         "fish_big_roe": {
+            "display_name": "Big Fish Roe",
+            "placed_description": "Big fish eggs can be harvested as caviar or left alone to hatch."
+         },
+         "fish_trout": {
+            "display_name": "Highland Trout",
+            "description": "A colorful cool water fish that is unique to the highlands.",
+            "iconic": {
+               "description": "Won't last more than a couple days. Better to release it somewhere!",
+               "display_name": "Captive Highland Trout"
+            }
+         },
+         "fish_trout_fry": {
+            "display_name": "Highland Troutling",
+            "description": "Still going for the colors of the rainbow."
          }
       },
       "algae": {
@@ -2520,6 +2744,11 @@
                   "recipe_name": "Sweetened Varanus",
                   "description": "A highly traditional dwarven meal made with varanus meat and local cherries.",
                   "flavor": ""
+               },
+			   "highlander_trout_recipe": {
+                  "recipe_name": "Highlander Trout",
+                  "description": "An exquisite meal favorite among the mountain folk.",
+                  "flavor": "Be sure to cut off the trout's head"
                }
             }
          }
@@ -2714,7 +2943,9 @@
             "soft_metal_resource_name": "Any Soft Metal",
             "hard_metal_resource_name": "Any Hard Metal",
             "precious_metal_resource_name": "Any Precious Metal",
-            "algae_resource_name": "Any Water Weed"
+            "algae_resource_name": "Any Water Weed",
+            "fish_roe_resource_name": "Any Fish Roe",
+            "fish_meat_resource_name": "Any Fish Meat"
          }
       }
    }

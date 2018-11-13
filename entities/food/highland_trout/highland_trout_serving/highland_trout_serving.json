@@ -1,0 +1,34 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(highland_trout_serving.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:item": {
+         "category": "food",
+         "destroy_on_uncarry": true
+      },
+      "stonehearth:food": {
+         "stonehearth:sitting_on_chair": {
+            "satisfaction": 150
+         },
+         "default": {
+            "satisfaction": 80
+         },
+         "quality": 6
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.highland_trout.highland_trout_serving.display_name)",
+         "description": "",
+         "material_tags": "food highland_trout_serving meat",
+         "subject_override": "stonehearth_ace:mountain_folk:food:highland_trout"
+      }
+   }
+}

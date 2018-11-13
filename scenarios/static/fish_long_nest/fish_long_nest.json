@@ -1,0 +1,27 @@
+{
+   "mixins": "/stonehearth/scenarios/static/critter_nest/critter_nest.json",
+   "name": "fish_long_nest",
+   "habitat_types": [
+      "water"
+   ],
+   "size": {
+      "width": 8,
+      "length": 8
+   },
+   "biomes": [
+      "stonehearth_ace:biome:highlands",
+      "stonehearth:biome:temperate",
+      "stonehearth:biome:desert",
+      "stonehearth:biome:arctic"
+   ],
+   "data": {
+      "num_critters": {
+         "min": 1,
+         "max": 6
+      },
+      "critter_type": [
+         "stonehearth_ace:fish:long:fry",
+         "stonehearth_ace:fish:long:roe"
+      ]
+   }
+}

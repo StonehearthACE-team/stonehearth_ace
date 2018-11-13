@@ -1,0 +1,34 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(fish_pot_pie_serving.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:item": {
+         "category": "food",
+         "destroy_on_uncarry": true
+      },
+      "stonehearth:food": {
+         "stonehearth:sitting_on_chair": {
+            "satisfaction": 240
+         },
+         "default": {
+            "satisfaction": 200
+         },
+         "quality": 6
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.fish_pot_pie.fish_pot_pie_serving.display_name)",
+         "description": "",
+         "material_tags": "food meat",
+         "subject_override": "stonehearth_ace:food:fish_pot_pie"
+      }
+   }
+}

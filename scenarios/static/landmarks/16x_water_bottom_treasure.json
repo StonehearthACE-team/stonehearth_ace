@@ -1,0 +1,17 @@
+{
+   "mixins": "/stonehearth/scenarios/static/landmarks/qb_to_terrain.json",
+   "biomes": ["stonehearth:biome:temperate","stonehearth:biome:arctic","stonehearth:biome:desert", "stonehearth_ace:biome:highlands"],
+   "name": "16x_water_bottom_treasure",
+   "category": "underwater_feature_rare",
+   "unique" : false,
+   "size": {
+      "width": 16,
+      "length": 16
+   },
+   "habitat_types": ["water"],
+   "weight" : 1,
+   "data": {
+      "brush" : "/stonehearth_ace/data/models/landmark/16x_water_bottom_treasure.qb",
+      "landmark_block_types": "stonehearth:landmark_blocks"
+   }
+}

@@ -7,6 +7,28 @@
             }
 	     }
       },
+	  "storage": {
+		 "recipes": {
+			"mixintypes": {
+			"market_shelf_tall_ground_stone": "remove"
+			}
+		 }
+	  },
+	  "utility": {
+         "ordinal": 60,
+         "name": "i18n(stonehearth_ace:jobs.mason.recipes.utility_name)",
+         "recipes": {
+            "stone_safety_standard": {
+               "recipe": "file(stone_safety_standard_recipe.json)"
+            },
+            "stone_market_stall": {
+               "recipe": "file(stone_market_stall_recipe.json)"
+            },
+            "market_shelf_tall_ground_wood": {
+               "recipe": "/stonehearth/jobs/mason/recipes/market_shelf_tall_ground_stone.json"
+            }
+         }
+      },
       "building_parts": {
          "recipes": {
             "simple_hatch_stone": {

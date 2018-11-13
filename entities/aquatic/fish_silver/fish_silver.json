@@ -1,7 +1,18 @@
 {
    "type": "entity",
-   "mixins": "stonehearth_ace:mixins:aquatic",
+   "mixins": [
+      "stonehearth_ace:mixins:aquatic",
+      "file(fish_silver_ghost.json)"
+   ],
    "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(fish_silver_iconic.json)",
+         "ghost_form": "file(fish_silver_ghost.json)",
+         "placeable_on_ground": true,
+         "must_parent_to_terrain": true,
+         "hide_move_ui": true,
+         "hide_undeploy_ui": false
+      },
       "stonehearth:loot_drops": {
          "force_auto_loot": true,
          "entries": {
@@ -16,17 +27,6 @@
                   }
                }
             }
-         }
-      },
-      "render_info": {
-         "scale": 0.09,
-         "animation_table": "file(/data/rigs/entities/aquatic/fish)"
-      },
-      "model_variants": {
-         "default": {
-            "models": [
-               "file(fish_silver.qb)"
-            ]
          }
       },
       "stonehearth:renewable_resource_node": {
@@ -111,13 +111,6 @@
                }
             }
          }
-      },
-      "stonehearth:catalog": {
-         "player_id": "animals",
-         "display_name": "i18n(stonehearth_ace:entities.aquatic.fish_silver.display_name)",
-         "description": "i18n(stonehearth_ace:entities.aquatic.fish_silver.description)",
-         "icon": "file(fish_silver.png)",
-         "category": "sgsg"
       },
       "stonehearth:net_worth": {
          "value_in_gold": 5,

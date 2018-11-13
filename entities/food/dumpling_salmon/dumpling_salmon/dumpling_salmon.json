@@ -1,0 +1,50 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(dumpling_salmon.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0.05 }
+      },
+      "stonehearth:stacks": {
+         "max_stacks": 4
+      }
+   },
+   "entity_data": {
+      "stonehearth:food_container": {
+         "effect": "fiddle",
+         "food": "stonehearth_ace:food:dumpling_salmon:dumpling_salmon_serving",
+         "stacks_per_serving": 1
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 40,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 2,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.dumpling_salmon.dumpling_salmon.display_name)",
+         "description": "i18n(stonehearth_ace:entities.food.dumpling_salmon.dumpling_salmon.description)",
+         "icon": "file(dumpling_salmon.png)",
+         "is_item": true,
+         "category": "food",
+         "material_tags": "food_container prepared_food dumpling_salmon fried refined stockpile_prepared_food meat"
+      },
+      "stonehearth:appeal": {
+         "appeal": 5
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

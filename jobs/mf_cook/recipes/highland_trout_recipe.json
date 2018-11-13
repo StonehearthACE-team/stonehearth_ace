@@ -1,0 +1,30 @@
+{
+   "type": "recipe",
+   "effort": 65,
+   "work_units": 6,
+   "recipe_name": "i18n(stonehearth_ace:mountain_folk.jobs.cook.recipes.highland_trout_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:mountain_folk.jobs.cook.recipes.highland_trout_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:mountain_folk.jobs.cook.recipes.highland_trout_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/highland_trout/highland_trout/highland_trout.png",
+   "workshop": "stonehearth:cook:oven",
+   "level_requirement": 4,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:food:fish_meat:trout",
+         "count": 2
+      },
+	  {
+         "uri": "stonehearth_ace:food:chanterelle:chanterelle_basket",
+         "count": 2
+      },
+      {
+         "material": "raw_food fungi",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:mountain_folk:food:highland_trout"
+      }
+   ]
+}

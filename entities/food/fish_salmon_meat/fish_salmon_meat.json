@@ -1,0 +1,59 @@
+{
+   "mixins": "stonehearth:mixins:food_decay",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(fish_salmon_meat.qb)"
+            ]
+         },
+         "decay_1": {
+            "models": [
+               "file(fish_salmon_meat_rotting.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": -0.05, "y": 0, "z": 0.05 }
+      },
+      "render_info": {
+         "scale": 0.09
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 4,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 3,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:food_decay": {
+         "initial_decay": {
+            "min": 200,
+            "max": 225
+         },
+         "decay_stages": {
+            "decay_1": {
+               "description": "i18n(stonehearth:stonehearth_mixins.food.food_decay.egg.decay_1.description)"
+            }
+         },
+         "rotten_entity_alias": "stonehearth_ace:food:rotten:fish_meat"
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.fish_salmon_meat.display_name)",
+         "description": "i18n(stonehearth_ace:entities.food.fish_salmon_meat.description)",
+         "icon": "file(fish_salmon_meat.png)",
+         "is_item": true,
+         "category": "cooking_ingredient",
+         "material_tags": "stockpile_cooking_ingredient cooking_ingredient meat raw fish_meat fish_salmon_meat"
+      },
+      "stonehearth:appeal": {
+         "appeal": 0
+      }
+   }
+}
