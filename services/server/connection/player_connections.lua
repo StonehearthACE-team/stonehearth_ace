@@ -73,8 +73,8 @@ function PlayerConnections:get_disconnected_entities(type)
          count = count + 1
       end
    end
-   entities.count = count
-   return entities
+   
+   return entities, count
 end
 
 function PlayerConnections:_get_and_clear_entity_changes_cache()
@@ -163,6 +163,7 @@ function PlayerConnections:register_entity(entity, connections, separated_by_pla
             conn.num_connections = 0
             conn.max_connections = connection.max_connections
             conn.type = type
+            conn.origin_offset = radiant.util.to_point3(connection.origin_offset) or Point3.zero
             conn.connectors = {}
 
             for key, connector in pairs(connection.connectors) do
@@ -580,7 +581,7 @@ function PlayerConnections:_update_connector_locations(entity_struct, new_locati
       for _, connector in pairs(connection.connectors) do
          --log:debug('rotating region %s by %s°, then translating by %s', connector.region, new_rotation, new_location or '[NIL]')
          if new_location then
-            connector.trans_region = rotate_region(connector.region, entity_struct.origin, new_rotation):translated(new_location)
+            connector.trans_region = rotate_region(connector.region, entity_struct.origin - connection.origin_offset, new_rotation):translated(new_location)
          else
             connector.trans_region = nil
          end

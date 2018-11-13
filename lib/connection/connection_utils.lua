@@ -4,6 +4,7 @@ local log = radiant.log.create_logger('connection_utils')
 local connection_utils = {}
 
 local MIDDLE_OFFSET = Point3(0.5, 0, 0.5)
+
 function connection_utils.rotate_region(region, origin, rotation)
    return region:translated(origin - MIDDLE_OFFSET):rotated(rotation):translated(MIDDLE_OFFSET - origin)
 end

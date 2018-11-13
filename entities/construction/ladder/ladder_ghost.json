@@ -1,0 +1,28 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(ladder.qb)"
+            ]
+         }
+      },
+      "render_info": {
+         "scale": 0.1
+      },
+      "mob": {
+         "model_origin": { "x": 0.0, "y": 0, "z": 0.0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth:data.build.prototypes.ladder.display_name)",
+         "description": "i18n(stonehearth:data.build.prototypes.ladder.description)",
+         "icon": "file(ladder.png)",
+         "category": "construction",
+         "material_tags": "wood crafted"
+      }
+   }
+}

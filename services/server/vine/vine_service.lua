@@ -12,9 +12,7 @@ function VineService:initialize()
    self._vine_types = json.types or {}
 
    self._sv = self.__saved_variables:get_data()
-end
 
-function VineService:post_activate()
    if not self._sv.graph_tbls then
       self._sv.graph_tbls = {}
       self:_update_graphs()
@@ -60,7 +58,7 @@ function VineService:_update_graphs()
 end
 
 function VineService:_on_connections_changed(type, graphs_changed)
-   local graphs = stonehearth_ace.connections:get_graphs_by_type(type)
+   local graphs = stonehearth_ace.connection:get_graphs_by_type(type)
    for id, _ in pairs(graphs_changed) do
       self:_update_graph(id, graphs[id])
    end
@@ -91,6 +89,11 @@ end
 function VineService:_update_graph_growth_timer(id, expired)
    -- this function gets called if we're creating/updating/recreating growth timers
    local graph_tbl = self._sv.graph_tbls[id]
+   -- if the graph table no longer exists, it's because this graph was merged or destroyed since the timer was set
+   if not graph_tbl then
+      return
+   end
+
    local count = #graph_tbl.graph
 
    -- update timer duration based on number of entities
@@ -129,15 +132,15 @@ end
 function VineService:_get_growth_period(type, count)
    local time = ''
    for _, growth_time in pairs(self._vine_types[type].growth_times) do
-      if growth_time.threshold <= count then
+      if count >= growth_time.threshold then
          time = growth_time.time
       else
          break
       end
    end
    time = stonehearth.calendar:parse_duration(time)
-   if time ~= 0 then
-      time = stonehearth.town:calculate_growth_period('', time / count)
+   if time > 0 then
+      time = stonehearth.town:calculate_growth_period('', time / math.max(1, count))
    end
    return time
 end
@@ -150,9 +153,11 @@ function VineService:_update_disconnected_growth_timers()
 end
 
 function VineService:_update_disconnected_growth_timer(type, expired)
+   local dc_count = 0
    if expired then
-      local entities = stonehearth.connection:get_disconnected_entities(nil, type)
-      local index = rng:get_int(1, entities.count)
+      local entities, count = stonehearth_ace.connection:get_disconnected_entities(nil, type)
+      dc_count = count
+      local index = rng:get_int(1, count)
       local i = 1
       for id, entity in pairs(entities) do
          if i >= index then
@@ -172,7 +177,7 @@ function VineService:_update_disconnected_growth_timer(type, expired)
    end
    
    if not self._sv.disconnected_growth_timers[type] then
-      local period = self:_get_growth_period(type, 1)
+      local period = self:_get_growth_period(type, dc_count)
       if period > 0 then
          self._sv.disconnected_growth_timers[type] = stonehearth.calendar:set_persistent_timer("disconnected vine grow_callback",
                period, radiant.bind(self, '_update_disconnected_growth_timer', type, true))

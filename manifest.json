@@ -107,6 +107,7 @@
       "consumables:seeds:cotton_seeds": "file(entities/consumables/seeds/cotton_seeds/cotton_seeds.json)",
       "consumables:seeds:marblesprout_seeds": "file(entities/consumables/seeds/marblesprout_seeds)",
       "consumables:seeds:moonbell_seeds": "file(entities/consumables/seeds/moonbell_seeds)",
+      "construction:ladder": "file(entities/construction/ladder)",
       "cook:mill_powered": "file(jobs/cook/cook_mill_powered/cook_mill_powered.json)",
       "cougar_jerky": "file(entities/food/cougar_jerky/cougar_jerky.json)",
       "crops:birch_tree_crop": "file(entities/crops/birch_tree_crop/birch_tree_crop.json)",
@@ -117,7 +118,6 @@
       "crops:paddy_crop": "file(entities/crops/paddy_crop/paddy_crop.json)",
       "crops:yew_tree_crop": "file(entities/crops/yew_tree_crop/yew_tree_crop.json)",
       "data:connection_types": "file(data/connections/connection_types.json)",
-      "data:vine_types": "file(data/vines/vine_types.json)",
       "data:modded_settings": "file(data/gameplay_settings/gameplay_settings.json)",
       "data:resource_constants": "file(data/resource_constants.json)",
       "data:thoughts": "file(data/happiness/thoughts.json)",
@@ -249,6 +249,7 @@
       "mixins:portals:diagonal_hatch:ghost": "file(mixins/diagonal_hatch/diagonal_hatch_ghost.json)",
       "mixins:portals:simple_hatch": "file(mixins/simple_hatch/simple_hatch.json)",
       "mixins:portals:simple_hatch:ghost": "file(mixins/simple_hatch/simple_hatch_ghost.json)",
+      "mixins:vine": "file(mixins/vine/vine.json)",
       "monster_tuning:forest:giant_cougar": "file(data/monster_tuning/forest/giant_cougar.json)",
       "monster_tuning:forest:large_bear": "file(data/monster_tuning/forest/large_bear.json)",
       "monster_tuning:forest:rabid_bear": "file(data/monster_tuning/forest/rabid_bear.json)",
@@ -504,6 +505,8 @@
       "trees:yew:stem": "file(entities/trees/yew_tree/stem/tree_yew_plant_stem.json)",
       "ui:input_box:filters": "file(ui/data/input_box_filters.json)",
       "ui:stockpile:filters": "file(ui/data/stockpile_filters.json)",
+      "vines:highland_vine": "file(entities/vines/highland_vine/highland_vine.json)",
+      "vines:highland_vine:seed": "file(entities/vines/highland_vine/seed/highland_vine_seed.json)",
       "weapons:animals:bear_teeth": "file(entities/weapons/animals/bear_teeth/bear_teeth.json)",
       "weapons:animals:cougar_teeth": "file(entities/weapons/animals/cougar_teeth/cougar_teeth.json)",
       "weapons:animals:weak_bear_teeth": "file(entities/weapons/animals/bear_teeth/weak_bear_teeth.json)",
@@ -896,6 +899,8 @@
       "toggle_enabled": "file(components/toggle_enabled/toggle_enabled_component.lua)",
       "training_dummy": "file(components/training/training_dummy_component.lua)",
       "undercrop": "file(components/undercrop/undercrop_component.lua)",
+      "vertical_pathing_region": "file(components/vertical_pathing_region/vertical_pathing_region_component.lua)",
+      "vine": "file(components/vine/vine_component.lua)",
       "water_gate": "file(components/water_tools/water_gate_component.lua)",
       "water_pump": "file(components/water_tools/water_pump_component.lua)",
       "water_signal": "file(components/signals/water_signal_component.lua)",
@@ -904,7 +909,8 @@
    },
    "component_renderers": {
       "grower_underfield": "file(renderers/grower_underfield/grower_underfield_renderer.lua)",
-      "connection": "file(renderers/connection/connection_renderer.lua)"
+      "connection": "file(renderers/connection/connection_renderer.lua)",
+      "vine": "file(renderers/vine/vine_renderer.lua)"
    },
    "controllers": {
       "crafter_info_controller": "file(services/server/crafter_info/crafter_info_controller.lua)",

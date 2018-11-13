@@ -1,0 +1,58 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth_ace:mixins:vine",
+   "components": {
+      "stonehearth_ace:connection": {
+         "stonehearth_ace:vines:highland_vine": {
+            "connectors": {
+               "x": {
+                  "region": {
+                     "min": { "x": -1, "y": 0, "z": 0 },
+                     "max": { "x": 2, "y": 1, "z": 1 }
+                  },
+                  "max_connections": 2,
+                  "region_intersection_threshold": 0.5
+               },
+               "y": {
+                  "region": {
+                     "min": { "x": 0, "y": -1, "z": 0 },
+                     "max": { "x": 1, "y": 2, "z": 1 }
+                  },
+                  "max_connections": 2,
+                  "region_intersection_threshold": 0.5
+               },
+               "z": {
+                  "region": {
+                     "min": { "x": 0, "y": 0, "z": -1 },
+                     "max": { "x": 1, "y": 1, "z": 2 }
+                  },
+                  "max_connections": 2,
+                  "region_intersection_threshold": 0.5
+               }
+            },
+            "max_connections": 6,
+            "origin_offset": { "x": 0.5, "y": 0, "z": 0.5 }
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth_ace:vine_render_info": {
+         "bottom_model": "file(highland_vine_ground.qb)",
+         "top_model": "file(highland_vine_ground.qb)",
+         "side_model": "file(highland_vine_wall.qb)",
+         "scale": 0.1,
+         "origin": { "x": 5, "y": 0, "z": 5 }
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 1,
+         "rarity": "common"
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.vines.highland_vine.display_name)",
+         "description": "i18n(stonehearth_ace:entities.vines.highland_vine.description)"
+      },
+      "stonehearth:appeal": {
+         "appeal": 1
+      }
+   }
+}

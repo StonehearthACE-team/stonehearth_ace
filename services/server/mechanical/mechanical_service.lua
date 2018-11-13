@@ -6,9 +6,7 @@ function MechanicalService:initialize()
    self._networks = {}
    self._entity_listeners = {}
    self._networks_by_entity = {}
-end
 
-function MechanicalService:activate()
    -- query connection service for connection info and listen for changes
    self:_update_graphs()
    self._connections_changed_listener = radiant.events.listen(stonehearth_ace.connection, 'stonehearth_ace:connections:mechanical:changed', self, self._on_connections_changed)

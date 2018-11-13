@@ -134,7 +134,7 @@ function ConnectionService:get_connections_datastore(player_id)
 end
 
 function ConnectionService:get_disconnected_entities(player_id, type)
-   return get_player_connections(player_id or ALL_PLAYERS):get_disconnected_entities(type)
+   return self:get_player_connections(player_id or ALL_PLAYERS):get_disconnected_entities(type)
 end
 
 function ConnectionService:get_player_connections(player_id)
@@ -229,6 +229,9 @@ function ConnectionService:_start_entity_traces(entity, player_connections, all_
             else
                --we were just added to the world
                -- this will get handled by the (location) trace_transform
+               local res1 = player_connections:update_entity(id)
+               local res2 = all_players_connections:update_entity(id)
+               self:_perform_update(player_id, res1, res2)
             end
          end)
 

@@ -89,6 +89,8 @@ function ConnectionRenderer:_update()
    for type, connection in pairs(self._connections) do
       local type_data = data[type] or {}
       local available = type_data.available
+
+      local origin_offset = radiant.util.to_point3(connection.origin_offset) or Point3.zero
       
       local nodes = {}
       self._outline_nodes[type] = nodes
@@ -112,7 +114,7 @@ function ConnectionRenderer:_update()
 
          -- only render actually available or connected connectors
          if color and (is_available or is_connected) then
-            local cube = radiant.util.to_cube3(connector.region)
+            local cube = radiant.util.to_cube3(connector.region):translated(origin_offset)
             local inflation = Point3(-0.5, -0.5, -0.5)
             for _, dir in ipairs({'x', 'y', 'z'}) do
                if cube.max[dir] - cube.min[dir] <= 1 then

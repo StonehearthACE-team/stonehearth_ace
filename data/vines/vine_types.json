@@ -1,7 +1,11 @@
 {
    "types": {
-      "stonehearth_ace:plants:vine": {
+      "stonehearth_ace:vines:highland_vine": {
          "grows_on_ground": true,
+         "grows_on_ceiling": true,
+         "grows_on_wall": true,
+         "grows_hanging": true,
+         "grows_on_structure": true,
          "growth_directions": {
             "x-": 12,
             "x+": 12,
@@ -13,23 +17,19 @@
          "growth_times": [
             {
                "threshold": 0,
-               "time": "16h+4h"
-            },
-            {
-               "threshold": 2,
-               "time": "30h+6h"
+               "time": "1m"
             },
             {
                "threshold": 10,
-               "time": "20h+4h"
+               "time": "2m"
             },
             {
                "threshold": 20,
-               "time": "40h+8h"
+               "time": "4m"
             },
             {
                "threshold": 40,
-               "time": "90h+6h"
+               "time": "9m"
             },
             {
                "threshold": 60,
