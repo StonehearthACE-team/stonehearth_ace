@@ -170,9 +170,11 @@ function VineService:_update_disconnected_growth_timer(type, expired)
       dc_count = #entities
       local index = rng:get_int(1, dc_count)
       local entity = entities[index]
-      local comp = entity:get_component('stonehearth_ace:vine')
-      if comp then
-         comp:try_grow()
+      if entity then
+         local comp = entity:get_component('stonehearth_ace:vine')
+         if comp then
+            comp:try_grow()
+         end
       end
 
       if self._sv.disconnected_growth_timers[type] then
