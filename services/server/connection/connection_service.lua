@@ -63,14 +63,6 @@ function ConnectionService:initialize()
    end
 end
 
-function ConnectionService:activate()
-   
-end
-
-function ConnectionService:destroy()
-
-end
-
 function ConnectionService:_stop_all_traces()
    for id, traces in pairs(self._traces) do
       self:_stop_entity_traces(id)
@@ -84,6 +76,14 @@ function ConnectionService:get_graphs_by_type(type)
       GRAPHS_BY_TYPE[type] = graphs
    end
    return graphs
+end
+
+function ConnectionService:get_graph_by_id(id)
+   for type, graphs in pairs(GRAPHS_BY_TYPE) do
+      if graphs[id] then
+         return graphs[id]
+      end
+   end
 end
 
 function ConnectionService:is_separated_by_player(type)
@@ -118,16 +118,15 @@ function ConnectionService:get_connection_types_command(session, response)
    return {types = self._registered_types}
 end
 
-function ConnectionService:get_connections_datastore_command(session, response)
-   return { connections = self:get_connections_datastore(session.player_id) }
+function ConnectionService:get_connections_data_command(session, response)
+   return { connections = self:get_connections_data(session.player_id) }
 end
 
-function ConnectionService:get_connections_datastore(player_id)
+function ConnectionService:get_connections_data(player_id)
    local ds = self._sv.connections_ds[player_id]
    if not ds then
-      ds = radiant.create_datastore()
+      ds = {}
       self._sv.connections_ds[player_id] = ds
-      ds:set_data({})
       self.__saved_variables:mark_changed()
    end
    return ds
@@ -185,15 +184,21 @@ function ConnectionService:_remove_graph(id)
 end
 
 function ConnectionService:_perform_update(player_id, res1, res2)
-   combine_tables(res1.changed_types, res2.changed_types)
-   res1.graphs_changed = combine_type_tables(res1.graphs_changed, res2.graphs_changed)
-   res1.entity_changes = combine_entity_tables(res1.entity_changes, res2.entity_changes)
-   self:_communicate_update(player_id, res1)
+   if not res1 or not res2 then
+      res1 = res1 or res2
+   end
+   if res1 then
+      if res2 then
+         combine_tables(res1.changed_types, res2.changed_types)
+         res1.graphs_changed = combine_type_tables(res1.graphs_changed, res2.graphs_changed)
+         res1.entity_changes = combine_entity_tables(res1.entity_changes, res2.entity_changes)
+      end
+      self:_communicate_update(player_id, res1)
+   end
 end
 
 function ConnectionService:_communicate_update(player_id, args)
-   local ds = self:get_connections_datastore(player_id)
-   local cur_data = ds:get_data()
+   local cur_data = self:get_connections_data(player_id)
    
    for entity, stats in pairs(args.entity_changes) do
       entity:get_component('stonehearth_ace:connection'):set_connected_stats(stats)
@@ -205,8 +210,6 @@ function ConnectionService:_communicate_update(player_id, args)
       end
       _update_entity_connection_data(entity_data, stats)
    end
-
-   ds:set_data(cur_data)
 
    for type, _ in pairs(args.changed_types) do
       radiant.events.trigger(self, 'stonehearth_ace:connections:'..type..':changed', type, args.graphs_changed[type] or {})

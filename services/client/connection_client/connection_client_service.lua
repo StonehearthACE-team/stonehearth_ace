@@ -17,19 +17,7 @@ function ConnectionClientService:initialize()
    self._connection_colors = {}
    self._connections = {}
 
-   radiant.events.listen(radiant, 'radiant:client:server_ready', function()
-         self:_setup_connection_types()
-
-         _radiant.call_obj('stonehearth_ace.connection', 'get_connections_datastore_command')
-            :done(function (response)
-               local connections = response.connections
-               self._connections_trace = connections:trace_data('client connections')
-               :on_changed(function()
-                     self._connections = connections:get_data()
-                  end)
-               :push_object_state()
-            end)
-      end)
+   self:_setup_connection_types()
 end
 
 function ConnectionClientService:destroy()
@@ -41,6 +29,13 @@ function ConnectionClientService:destroy_listeners()
       self._connections_trace:destroy()
       self._connections_trace = nil
    end
+end
+
+function ConnectionClientService:update_client_connections()
+   _radiant.call_obj('stonehearth_ace.connection', 'get_connections_data_command')
+      :done(function (response)
+         self._connections = response.connections
+      end)
 end
 
 function ConnectionClientService:_setup_connection_types()

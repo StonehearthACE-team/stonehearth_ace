@@ -106,6 +106,12 @@ function AceItemPlacer:_perform_additional_initialization()
    if advanced_placement then
       self._requires_support = advanced_placement.requires_support ~= false
       self._required_components = advanced_placement.required_components or {}
+      for comp, options in pairs(self._required_components) do
+         -- if we need to tell other things to update in advance of item placement, do that here
+         if options.run_init_script then
+            _radiant.call(options.run_init_script, options.run_init_args)
+         end
+      end
    else
       self._requires_support = true
       self._required_components = {}
@@ -255,9 +261,10 @@ end
 
 function AceItemPlacer:_compute_additional_required_placement_conditions(result, selector)
    if next(self._required_components) then
-      for component_name, check_script in pairs(self._required_components) do
+      for component_name, options in pairs(self._required_components) do
          local component = result.entity:get_component(component_name)
          if component then
+            local check_script = options.check_script
             if check_script and check_script ~= '' then
                local script = radiant.mods.require(check_script)
                if script and script._item_placer_can_place then

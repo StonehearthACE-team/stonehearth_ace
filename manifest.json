@@ -1082,6 +1082,10 @@
       "get_growth_preferences_command": {
          "controller": "file(call_handlers/growing_call_handler.lua)",
          "endpoint": "server"
+      },
+      "update_client_connections_command": {
+         "controller": "file(call_handlers/advanced_placement_call_handler.lua)",
+         "endpoint": "client"
       }
    },
    "object_commands": {
@@ -1095,7 +1099,7 @@
       ],
       "connection": [
          "get_connection_types_command",
-         "get_connections_datastore_command"
+         "get_connections_data_command"
       ]
    },
    "ui": {

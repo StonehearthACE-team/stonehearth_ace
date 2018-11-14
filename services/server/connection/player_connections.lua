@@ -32,10 +32,11 @@ function PlayerConnections:initialize()
    self._sv.entities = {} -- list of all the entities being tracked: [entity id]{id, entity, (location,) connections}
    -- connections: [type]{(entity_struct,) (type,) max_connections, (num_connections,) connectors}
    -- connectors: [name]{(name,) (connection,) (id,) max_connections, (num_connections,) region, (chunk_region_keys,) region_intersection_threshold, (connected_to)}
-   self._sv.connection_tables = {} -- list of connections by type: [type]{type, entity_connectors, connector_locations, graphs}
+   self._sv.connection_tables = {} -- list of connections by type: [type]{type, entity_connectors, connector_locations, graphs, entity_graphs}
    -- entity_connectors: [entity_id]{connector_1, connector_2}
    -- connector_locations: [chunk_region_key]{connector_1, connector_2}
    -- graphs: {nodes: [entity_id]{entity_struct, connected_nodes}}
+   -- entity_graphs: [entity_id]{graph_ids}
    self._entity_changes_cache = {}
 end
 
@@ -61,20 +62,12 @@ function PlayerConnections:get_disconnected_entities(type)
    local count = 0
    local conn_tbl = self:get_connections(type)
    for id, _ in pairs(conn_tbl.entity_connectors) do
-      local in_graph = false
-      for _, graph in pairs(conn_tbl.graphs) do
-         if graph.nodes[id] then
-            in_graph = true
-            break
-         end
-      end
-      if not in_graph then
-         entities[id] = self._sv.entities[id].entity
-         count = count + 1
+      if not conn_tbl.entities_in_graphs[id] then
+         table.insert(entities, self._sv.entities[id].entity)
       end
    end
    
-   return entities, count
+   return entities
 end
 
 function PlayerConnections:_get_and_clear_entity_changes_cache()
@@ -221,7 +214,7 @@ function PlayerConnections:get_connections(type)
    local conn_tbl = self._sv.connection_tables[type]
    
    if not conn_tbl then
-      conn_tbl = {type = type, entity_connectors = {}, connector_locations = {}, graphs = {}}
+      conn_tbl = {type = type, entity_connectors = {}, connector_locations = {}, graphs = {}, entities_in_graphs = {}}
       self._sv.connection_tables[type] = conn_tbl
       self.__saved_variables:mark_changed()
    end
@@ -236,6 +229,8 @@ function PlayerConnections:_add_entity_to_graphs(entity_struct, only_type, entit
    -- for each connection type, determine if the entity's connector regions intersect with any other valid connector regions
    for type, connection in pairs(entity_struct.connections) do
       if not only_type or type == only_type then
+         local conn_tbl = self:get_connections(type)
+         
          local type_graphs = {}
          graphs_changed[type] = type_graphs
 
@@ -247,6 +242,7 @@ function PlayerConnections:_add_entity_to_graphs(entity_struct, only_type, entit
             if connector.num_connections < connector.max_connections then
                local changes = self:_try_connecting_connector(connector, entity_id_to_ignore)
                if changes and next(changes) then
+                  conn_tbl.entities_in_graphs[entity_struct.id] = true
                   combine_tables(type_graphs, changes)
                   changed_types[type] = true
                end
@@ -263,6 +259,9 @@ function PlayerConnections:_remove_entity_from_graphs(entity_struct)
    local graphs_changed = {}
 
    for type, connection in pairs(entity_struct.connections) do
+      local conn_tbl = self:get_connections(type)
+      conn_tbl.entities_in_graphs[entity_struct.id] = nil
+      
       local type_graphs = {}
       graphs_changed[type] = type_graphs
 

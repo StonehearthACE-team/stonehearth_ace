@@ -76,7 +76,7 @@ function VineRenderer:_update_render()
       elseif dir == 'y-' then
          self:_create_node(self._bottom_model, 0)
       else
-         self:_create_node(self._side_model, _rotations[dir])
+         self:_create_node(self._side_model, _rotations[dir] or 0)
       end
    end
 end

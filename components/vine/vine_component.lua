@@ -26,7 +26,17 @@ local _directions = {
    ['y-'] = Point3(0, -1, 0),
    ['y+'] = Point3(0, 1, 0)
 }
+local _opposite_direction = {
+   ['x-'] = 'x+',
+   ['x+'] = 'x-',
+   ['z-'] = 'z+',
+   ['z+'] = 'z-',
+   ['y-'] = 'y+',
+   ['y+'] = 'y-'
+}
 local STRUCTURE_URI = 'stonehearth:build2:entities:structure'
+local FIXTURE_URI = 'stonehearth:build2:entities:fixture_blueprint'
+local IGNORE_GROWTH_ATTEMPTS = 10
 
 function VineComponent:initialize()
    if not self._sv.render_directions then
@@ -37,13 +47,18 @@ end
 
 function VineComponent:activate()
    self._uri = self._entity:get_uri()
+   self._ignore_growth_attempts = 0
    self._growth_data = stonehearth_ace.vine:get_growth_data(self._uri) or {}
+   self._growth_roller = WeightedSet(rng)
+   self._corner_roller = WeightedSet(rng)
    for dir, chance in pairs(self._growth_data.growth_directions or {}) do
       if chance <= 0 then
          self._growth_data.growth_directions[dir] = nil
       end
    end
-   self._growth_roller = WeightedSet(rng)
+   self._growth_data.spreads_on_ground = self._growth_data.spreads_on_ground ~= false
+   self._growth_data.spreads_on_ceiling = self._growth_data.spreads_on_ceiling ~= false
+   self._growth_data.spreads_on_wall = self._growth_data.spreads_on_wall ~= false
 
    self._connection_data = self._entity:get_component('stonehearth_ace:connection'):get_connections(self._uri)
 
@@ -75,10 +90,7 @@ function VineComponent:_set_render_directions()
    local render_dirs = {}
    -- the vine should render anywhere it's alongside terrain and anywhere it's connecting to another vine
    for dir, neighbor in pairs(neighbors) do
-      local dir_permitted = (dir == 'y-' and self._growth_data.grows_on_ground) or
-                           (dir == 'y+' and self._growth_data.grows_on_ceiling) or
-                           (dir ~= 'y-' and dir ~= 'y+' and self._growth_data.grows_on_wall)
-      if dir_permitted then
+      if self:_is_growth_dir_permitted(dir) then
          if neighbor.is_growable_surface then
             render_dirs[dir] = true
          elseif neighbor.vine and dir == 'y+' then
@@ -99,15 +111,38 @@ function VineComponent:_set_render_directions()
    self.__saved_variables:mark_changed()
 end
 
+function VineComponent:_is_growth_dir_permitted(dir)
+   return (dir == 'y-' and self._growth_data.grows_on_ground) or
+         (dir == 'y+' and self._growth_data.grows_on_ceiling) or
+         (dir ~= 'y-' and dir ~= 'y+' and self._growth_data.grows_on_wall)
+end
+
 -- try to grow another vine of the same type in a random direction; returns the new entity if successful
 function VineComponent:try_grow()
+   local attempts = self._ignore_growth_attempts or 0
+   if attempts > 0 then
+      self._ignore_growth_attempts = attempts - 1
+      return
+   end
+
    local neighbors = self:get_neighbors(true)
    if not next(neighbors) then
       return
    end
 
    self._growth_roller:clear()
-   for dir, point in pairs(_directions) do
+   for dir, chance in pairs(self._growth_data.growth_directions) do
+      self._growth_roller:add(dir, chance)
+   end
+
+   local new_vine
+
+   -- evaluate each direction as we try it so we're not doing extra processing
+   while not self._growth_roller:is_empty() do
+      local dir = self._growth_roller:choose_random()
+      self._growth_roller:remove(dir)
+
+      local point = _directions[dir]
       local neighbor = neighbors[dir]
       local dir_chance = self._growth_data.growth_directions
       if dir_chance and dir_chance[dir] and neighbor and not neighbor.blocked then
@@ -121,49 +156,79 @@ function VineComponent:try_grow()
          -- or be downward growth with grows_hanging is true
          
          local add_dir = false
+         local add_location = neighbor.location
 
          if dir == 'y-' and self._growth_data.grows_hanging then
             add_dir = true
          else
-            local new_neighbors = self:_eval_neighbors_at(neighbor.location, 0)
-            if dir ~= 'y-' and dir ~= 'y+' and self._growth_data.grows_on_ground and neighbors['y-'] and neighbors['y-'].is_growable_surface
+            local new_neighbors = self:_eval_neighbors_at(add_location, 0)
+
+            if dir ~= 'y-' and dir ~= 'y+' and self._growth_data.grows_on_ground and self._growth_data.spreads_on_ground
+                  and neighbors['y-'] and neighbors['y-'].is_growable_surface
                   and new_neighbors['y-'] and new_neighbors['y-'].is_growable_surface then
                add_dir = true
-            elseif dir ~= 'y-' and dir ~= 'y+' and self._growth_data.grows_on_ceiling and neighbors['y+'] and neighbors['y+'].is_growable_surface
+            elseif dir ~= 'y-' and dir ~= 'y+' and self._growth_data.grows_on_ceiling and self._growth_data.spreads_on_ceiling
+                  and neighbors['y+'] and neighbors['y+'].is_growable_surface
                   and new_neighbors['y+'] and new_neighbors['y+'].is_growable_surface then
                add_dir = true
-            elseif self._growth_data.grows_on_wall then
-               for grow_dir, _ in pairs(_directions) do
-                  if neighbors[grow_dir] and neighbors[grow_dir].is_growable_surface and new_neighbors[grow_dir] and new_neighbors[grow_dir].is_growable_surface then
-                     add_dir = true
-                     break
+            elseif self._growth_data.grows_on_wall and self._growth_data.spreads_on_wall then
+               -- make sure the new position has a wall it'll be growing on
+               if (new_neighbors['x-'] and new_neighbors['x-'].is_growable_surface) or 
+                     (new_neighbors['x+'] and new_neighbors['x+'].is_growable_surface) or 
+                     (new_neighbors['z-'] and new_neighbors['z-'].is_growable_surface) or 
+                     (new_neighbors['z+'] and new_neighbors['z+'].is_growable_surface) then
+                  for grow_dir, _ in pairs(_directions) do
+                     if neighbors[grow_dir] and neighbors[grow_dir].is_growable_surface and 
+                           new_neighbors[grow_dir] and new_neighbors[grow_dir].is_growable_surface then
+                        add_dir = true
+                        break
+                     end
                   end
+               end
+            end
+
+            -- if we aren't already adding in this direction (and it's not blocked), consider growing around a corner in this direction
+            if not add_dir then
+               self._corner_roller:clear()
+               for grow_dir, grow_chance in pairs(self._growth_data.growth_directions) do
+                  -- don't check the same (or opposite) direction, only orthogonally
+                  if string.sub(dir, 1, 1) ~= string.sub(grow_dir, 1, 1) then
+                     if not new_neighbors[grow_dir].blocked and neighbors[grow_dir].is_growable_surface and self:_is_growth_dir_permitted(_opposite_direction[dir]) then
+                        self._corner_roller:add(add_location + _directions[grow_dir], grow_chance)
+                     end
+                  end
+               end
+               if not self._corner_roller:is_empty() then
+                  add_dir = true
+                  add_location = self._corner_roller:choose_random()
                end
             end
          end
 
          if add_dir then
             --log:spam('adding growth dir chance for %s %s (%s)', self._entity, dir, dir_chance[dir])
-            self._growth_roller:add(neighbor.location, dir_chance[dir])
+            new_vine = radiant.entities.create_entity(self._uri, { owner = self._entity:get_player_id(), ignore_gravity = true })
+            radiant.terrain.place_entity_at_exact_location(new_vine, add_location, {force_iconic = false})
+            break
          end
       end
    end
 
-   if not self._growth_roller:is_empty() then
-      local grow_location = self._growth_roller:choose_random()
-      local new_vine = radiant.entities.create_entity(self._uri, { owner = self._entity:get_player_id() })
-      radiant.terrain.place_entity_at_exact_location(new_vine, grow_location, {force_iconic = false})
-      return new_vine
+   if self._growth_roller:is_empty() then
+      -- if we explored all growth options, ignore the next X growth attempts on this entity
+      self._ignore_growth_attempts = IGNORE_GROWTH_ATTEMPTS
    end
+
+   return new_vine
 end
 
 function VineComponent:get_neighbors(force_eval)
-   force_eval = force_eval or not self._sv.neighbors
+   force_eval = force_eval or not self._neighbors
    if force_eval then
       self:_eval_neighbors()
    end
 
-   return self._sv.neighbors
+   return self._neighbors
 end
 
 function VineComponent:_eval_neighbors()
@@ -171,11 +236,10 @@ function VineComponent:_eval_neighbors()
 
    if location then
       local facing = radiant.entities.get_facing(self._entity)
-      self._sv.neighbors = self:_eval_neighbors_at(location, facing)
+      self._neighbors = self:_eval_neighbors_at(location, facing)
    else
-      self._sv.neighbors = {}
+      self._neighbors = {}
    end
-   self.__saved_variables:mark_changed()
 end
 
 function VineComponent:_eval_neighbors_at(location, facing)
@@ -205,6 +269,9 @@ function VineComponent:_eval_neighbors_at(location, facing)
                if self._growth_data.grows_on_structure then
                   neighbor.is_growable_surface = true
                end
+               neighbor.blocked = true
+               break
+            elseif entity:get_uri() == FIXTURE_URI then
                neighbor.blocked = true
                break
             else
