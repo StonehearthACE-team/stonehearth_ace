@@ -15,13 +15,15 @@ function VineService:initialize()
 
    self._sv = self.__saved_variables:get_data()
 
-   if not self._sv.graph_tbls then
-      self._sv.graph_tbls = {}
-      self:_update_graphs()
-   end
    if not self._sv.disconnected_growth_timers then
       self._sv.disconnected_growth_timers = {}
    end
+   if not self._sv.graph_growth_timers then
+      self._sv.graph_growth_timers = {}
+   end
+   
+   self._graph_tbls = {}
+   self:_update_graphs()
 
    -- query connection service for connection info and listen for changes
    for type, _ in pairs(self._vine_types) do
@@ -63,33 +65,39 @@ function VineService:_on_connections_changed(type, graphs_changed)
    for id, _ in pairs(graphs_changed) do
       self:_update_graph(id, stonehearth_ace.connection:get_graph_by_id(id))
    end
-   self.__saved_variables:mark_changed()
 end
 
 function VineService:_update_graph(id, graph)
-   local g = self._sv.graph_tbls[id]
+   local g = self._graph_tbls[id]
    if graph then
       if not g then
          g = {type = graph.type}
-         self._sv.graph_tbls[id] = g   
+         self._graph_tbls[id] = g   
       end
       g.graph = {}
-      for e_id, e in pairs(graph.nodes) do
-         table.insert(g.graph, e.entity_struct.entity)
+      for e_id, _ in pairs(graph.nodes) do
+         table.insert(g.graph, e_id)
       end
 
       self:_update_graph_growth_timer(id)
    else
-      if g and g.growth_timer then
-         g.growth_timer:destroy()
+      g = self._sv.graph_growth_timers[id]
+      if g then
+         g:destroy()
+         self._sv.graph_growth_timers[id] = nil
       end
-      self._sv.graph_tbls[id] = nil
+      self._graph_tbls[id] = nil
    end
 end
 
 function VineService:_update_graph_growth_timer(id, expired)
    -- this function gets called if we're creating/updating/recreating growth timers
-   local graph_tbl = self._sv.graph_tbls[id]
+   -- don't actually update existing timers; only create new ones or recreate expired ones
+   if self._sv.graph_growth_timers[id] and not expired then
+      return
+   end
+
+   local graph_tbl = self._graph_tbls[id]
    -- if the graph table no longer exists, it's because this graph was merged or destroyed since the timer was set
    if not graph_tbl then
       return
@@ -107,29 +115,32 @@ function VineService:_update_graph_growth_timer(id, expired)
    end
    
    if expired then
-      if graph_tbl.growth_timer then
-         graph_tbl.growth_timer:destroy()
-         graph_tbl.growth_timer = nil
+      if self._sv.graph_growth_timers[id] then
+         self._sv.graph_growth_timers[id]:destroy()
+         self._sv.graph_growth_timers[id] = nil
       end
       
       -- try to grow at most as many times as there are entities in the graph
       local grew = false
       for i = 1, count do
          local index = rng:get_int(1, count)
-         local comp = graph_tbl.graph[i]:get_component('stonehearth_ace:vine')
-         if comp and comp:try_grow() then
-            grew = true
-            break
+         local entity = radiant.entities.get_entity(graph_tbl.graph[i])
+         if entity then
+            local comp = entity:get_component('stonehearth_ace:vine')
+            if comp and comp:try_grow() then
+               grew = true
+               break
+            end
          end
       end
       -- don't try to grow for a while if we fail to grow
-      if not grew then
+      if not grew and period and period > 0 then
          period = period + stonehearth.calendar:parse_duration(FAILED_GROWTH_DELAY)
       end
    end
 
-   if period and period > 0 and not graph_tbl.growth_timer then
-      graph_tbl.growth_timer = stonehearth.calendar:set_persistent_timer("vine grow_callback",
+   if period and period > 0 and not self._sv.graph_growth_timers[id] then
+      self._sv.graph_growth_timers[id] = stonehearth.calendar:set_persistent_timer("vine grow_callback",
             period, function()
                self:_update_graph_growth_timer(id, true)
             end)

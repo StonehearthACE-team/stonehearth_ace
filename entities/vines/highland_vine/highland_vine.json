@@ -33,16 +33,40 @@
             "max_connections": 6,
             "origin_offset": { "x": 0.5, "y": 0, "z": 0.5 }
          }
+      },
+      "stonehearth_ace:vine": {
+         "render_models": {
+            "bottom": {
+               "default": [
+                  "file(highland_vine_ground.qb)"
+               ]
+            },
+            "top": {
+               "default": [
+                  "file(highland_vine_ground.qb)"
+               ]
+            },
+            "side": {
+               "default": [
+                  "file(highland_vine_wall.qb)"
+               ]
+            }
+         },
+         "render_options": {
+            "scale": 0.1,
+            "origin": { "x": 5, "y": 0, "z": 5 }
+         },
+         "seasonal_model_switcher": {
+            "stonehearth:biome:temperate": {
+               "spring": "default",
+               "summer": "default",
+               "autumn": "default",
+               "winter": "default"
+            }
+         }
       }
    },
    "entity_data": {
-      "stonehearth_ace:vine_render_info": {
-         "bottom_model": "file(highland_vine_ground.qb)",
-         "top_model": "file(highland_vine_ground.qb)",
-         "side_model": "file(highland_vine_wall.qb)",
-         "scale": 0.1,
-         "origin": { "x": 5, "y": 0, "z": 5 }
-      },
       "stonehearth:net_worth": {
          "value_in_gold": 1,
          "rarity": "common"

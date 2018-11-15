@@ -39,9 +39,39 @@ local FIXTURE_URI = 'stonehearth:build2:entities:fixture_blueprint'
 local IGNORE_GROWTH_ATTEMPTS = 10
 
 function VineComponent:initialize()
+   self._current_season = nil
+   
    if not self._sv.render_directions then
       self._sv.render_directions = {}
       self.__saved_variables:mark_changed()
+   end
+
+   if not self._sv.render_options or not self._sv.render_models then
+      local json = radiant.entities.get_json(self)
+      local options = json.render_options or {}
+      options.models = {}
+      options.scale = options.scale or 0.1
+      if options.origin then
+         options.origin = radiant.util.to_point3(options.origin)
+      else
+         options.origin = Point3.zero
+      end
+      self._sv.render_options = options
+
+      local models = {}
+      for position, seasons in pairs(json.render_models or {}) do
+         models[position] = {}
+         for season, qbs in pairs(seasons) do
+            models[position][season] = qbs[rng:get_int(1, #qbs)]
+         end
+      end
+      self._sv.render_models = models
+   end
+end
+
+function VineComponent:create()
+   if self._sv.render_options.seasonal_model_switcher then
+      self._sv.switch_season_time = rng:get_real(0, 1)  -- Choose a point in the transition at which this instance switches.
    end
 end
 
@@ -68,10 +98,57 @@ function VineComponent:activate()
    end)
 end
 
+function VineComponent:post_activate()
+   if self._sv.render_options.seasonal_model_switcher then
+      self._transition_listener = radiant.events.listen(stonehearth.seasons, 'stonehearth:seasons:transition', self, self._update_season)
+      self:_update_season(stonehearth.seasons:get_current_transition())
+   else
+      self:_update_models('default')
+   end
+end
+
 function VineComponent:destroy()
    if self._parent_trace then
       self._parent_trace:destroy()
       self._parent_trace = nil
+   end
+   if self._transition_listener then
+      self._transition_listener:destroy()
+      self._transition_listener = nil
+   end
+end
+
+function VineComponent:_update_models(season)
+   for position, seasons in pairs(self._sv.render_models) do
+      self._sv.render_options.models[position] = seasons[season]
+   end
+
+   self.__saved_variables:mark_changed()
+end
+
+function VineComponent:_update_season(transition)
+   if self._current_season == transition.to then
+      return  -- Already switched.
+   elseif transition.t < self._sv.switch_season_time then
+      if not self._current_season then
+         self._current_season = transition.from
+      end
+      return  -- Not yet.
+   elseif stonehearth.calendar:is_daytime() and transition.t < 1 then
+      return  -- Try to swap at night, as long as it's not the final transition.
+   end
+   
+   self._current_season = transition.to
+   
+   local biome_uri = stonehearth.world_generation:get_biome_alias()
+   local biome_seasons = self._json[biome_uri] or self._json['*']
+   if not biome_seasons then
+      return
+   end
+
+   local new_variant = biome_seasons[self._current_season]
+   if new_variant then
+      self:_update_models(new_variant)
    end
 end
 
@@ -193,7 +270,8 @@ function VineComponent:try_grow()
                for grow_dir, grow_chance in pairs(self._growth_data.growth_directions) do
                   -- don't check the same (or opposite) direction, only orthogonally
                   if string.sub(dir, 1, 1) ~= string.sub(grow_dir, 1, 1) then
-                     if not new_neighbors[grow_dir].blocked and neighbors[grow_dir].is_growable_surface and self:_is_growth_dir_permitted(_opposite_direction[dir]) then
+                     if not new_neighbors[grow_dir].blocked and neighbors[grow_dir].is_growable_surface and
+                           (self:_is_growth_dir_permitted(_opposite_direction[dir]) or (grow_dir == 'y-' and self._growth_data.grows_hanging)) then
                         self._corner_roller:add(add_location + _directions[grow_dir], grow_chance)
                      end
                   end

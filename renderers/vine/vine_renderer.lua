@@ -19,18 +19,6 @@ function VineRenderer:initialize(render_entity, datastore)
 
    self._datastore = datastore
    self._vine_nodes = {}
-
-   -- Pull some render parameters out of the entity data
-   local ed = radiant.entities.get_entity_data(self._entity, 'stonehearth_ace:vine_render_info')
-   self._bottom_model = ed.bottom_model
-   self._top_model = ed.top_model
-   self._side_model = ed.side_model
-   self._scale = ed.scale and ed.scale or 0.1
-   if ed.origin then
-      self._origin = Point3(ed.origin.x, ed.origin.y, ed.origin.z)
-   else
-      self._origin = Point3(0, 0, 0)
-   end
    self._facing = radiant.entities.get_facing(self._entity)
 
    self._datastore_trace = self._datastore:trace('drawing vines')
@@ -61,7 +49,9 @@ end
 function VineRenderer:_update_render()
    self:_destroy_vine_nodes()
    
-   local render_dirs = self._datastore:get_data().render_directions
+   local data = self._datastore:get_data()
+   local options = data.render_options
+   local render_dirs = data.render_directions
    if not render_dirs or not next(render_dirs) then
       return
    end
@@ -72,22 +62,22 @@ function VineRenderer:_update_render()
    --log:error('render_directions: %s', radiant.util.table_tostring(render_dirs))
    for dir, _ in pairs(render_dirs) do
       if dir == 'y+' then
-         self:_create_node(self._top_model, 0, true)
+         self:_create_node(options, options.models.top, 0, true)
       elseif dir == 'y-' then
-         self:_create_node(self._bottom_model, 0)
+         self:_create_node(options, options.models.bottom, 0)
       else
-         self:_create_node(self._side_model, _rotations[dir] or 0)
+         self:_create_node(options, options.models.side, _rotations[dir] or 0)
       end
    end
 end
 
-function VineRenderer:_create_node(model, rotation, is_top)
+function VineRenderer:_create_node(options, model, rotation, is_top)
    if model then
       rotation = (360 - self._facing + rotation) % 360
-      local node = _radiant.client.create_qubicle_matrix_node(self._node, model, 'background', self._origin)
+      local node = _radiant.client.create_qubicle_matrix_node(self._node, model, 'background', options.origin)
       if node then
-         local offset = self._origin:scaled(self._scale)
-         node:set_transform(offset.x, offset.y + (is_top and 1 or 0), offset.z, is_top and 180 or 0, rotation, 0, self._scale, self._scale, self._scale)
+         local offset = options.origin:scaled(options.scale)
+         node:set_transform(offset.x, offset.y + (is_top and 1 or 0), offset.z, is_top and 180 or 0, rotation, 0, options.scale, options.scale, options.scale)
          node:set_material('materials/voxel.material.json')
          --node:set_visible(true)
          table.insert(self._vine_nodes, node)
