@@ -1,9 +1,21 @@
 local Point3 = _radiant.csg.Point3
+local Region3 = _radiant.csg.Region3
 
 local log = radiant.log.create_logger('connection_utils')
 local connection_utils = {}
 
 local MIDDLE_OFFSET = Point3(0.5, 0, 0.5)
+
+function connection_utils.import_region(region)
+   local r = Region3()
+   for _, cube in pairs(region) do
+      local c = radiant.util.to_cube3(cube)
+      if c then
+         r:add_cube(c)
+      end
+   end
+   return r
+end
 
 function connection_utils.rotate_region(region, origin, rotation)
    return region:translated(origin - MIDDLE_OFFSET):rotated(rotation):translated(MIDDLE_OFFSET - origin)

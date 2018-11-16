@@ -162,7 +162,7 @@ function VineService:_get_growth_period(type, count)
    end
    time = stonehearth.calendar:parse_duration(time)
    if time > 0 then
-      time = stonehearth.town:calculate_growth_period('', time / math.max(1, count))
+      time = stonehearth.town:calculate_growth_period('', time / math.sqrt(math.max(1, count)))
    end
    return time
 end
@@ -180,7 +180,7 @@ function VineService:_update_disconnected_growth_timer(type, expired)
       local entities = stonehearth_ace.connection:get_disconnected_entities(nil, type)
       dc_count = #entities
       local index = rng:get_int(1, dc_count)
-      local entity = entities[index]
+      local entity = radiant.entities.get_entity(entities[index])
       if entity then
          local comp = entity:get_component('stonehearth_ace:vine')
          if comp then

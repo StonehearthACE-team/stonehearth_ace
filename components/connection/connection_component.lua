@@ -5,18 +5,22 @@ connector regions are typically a 2-voxel region, including one voxel inside the
    "type1": {
       "connectors": {
          "connector1": {
-            "region": {
-               "min": { "x": -1, "y": 0, "z": 0 },
-               "max": { "x": 1, "y": 1, "z": 1 }
-            },
+            "region": [
+               {
+                  "min": { "x": -1, "y": 0, "z": 0 },
+                  "max": { "x": 1, "y": 1, "z": 1 }
+               }
+            ],
             "max_connections": 1,
             "region_intersection_threshold": 1
          },
          "connector2": {
-            "region": {
-               "min": { "x": 0, "y": 0, "z": 0 },
-               "max": { "x": 2, "y": 1, "z": 1 }
-            },
+            "region": [
+               {
+                  "min": { "x": 0, "y": 0, "z": 0 },
+                  "max": { "x": 2, "y": 1, "z": 1 }
+               }
+            ],
             "max_connections": 1
          }
       },
@@ -26,6 +30,7 @@ connector regions are typically a 2-voxel region, including one voxel inside the
 ]]
 local ConnectionUtils = require 'lib.connection.connection_utils'
 local _update_entity_connection_data = ConnectionUtils._update_entity_connection_data
+local import_region = ConnectionUtils.import_region
 
 local log = radiant.log.create_logger('connection_component')
 local ConnectionComponent = class()
@@ -54,11 +59,14 @@ function ConnectionComponent:destroy()
 end
 
 function ConnectionComponent:_format_connections()
-   for type, connections in pairs(self._connections) do
-      for name, connector in pairs(connections.connectors) do
+   for _, connections in pairs(self._connections) do
+      for _, connector in pairs(connections.connectors) do
          -- transform all the region JSON data into Cube3 structures
-         -- TODO: since this is a cached table, this really only needs to happen once; simple type check? does it matter?
-         connector.region = radiant.util.to_cube3(connector.region)
+         -- since this is a cached table, this really only needs to happen once; simple type check?
+         if type(connector.region) == 'table' then
+            connector.region = import_region(connector.region)
+            connector.region:optimize('connector region')
+         end
       end
    end
 end

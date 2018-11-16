@@ -3,7 +3,11 @@ local Point3 = _radiant.csg.Point3
 local Region3 = _radiant.csg.Region3
 local Color4 = _radiant.csg.Color4
 
+local ConnectionUtils = require 'lib.connection.connection_utils'
+local import_region = ConnectionUtils.import_region
+
 local log = radiant.log.create_logger('connection_renderer')
+
 local ConnectionRenderer = class()
 
 function ConnectionRenderer:initialize(render_entity, datastore)
@@ -102,8 +106,8 @@ function ConnectionRenderer:_update()
          local conn_data = type_data.available_connectors or {}
          
          local color = colors.connected_color
-         local EDGE_COLOR_ALPHA = 20
-         local FACE_COLOR_ALPHA = 10
+         local EDGE_COLOR_ALPHA = 12
+         local FACE_COLOR_ALPHA = 6
          
          local connector_available = conn_data[name]
          local is_available = available and connector_available
@@ -114,14 +118,16 @@ function ConnectionRenderer:_update()
 
          -- only render actually available or connected connectors
          if color and (is_available or is_connected) then
-            local cube = radiant.util.to_cube3(connector.region):translated(origin_offset)
-            local inflation = Point3(-0.5, -0.5, -0.5)
+            local r = import_region(connector.region):translated(origin_offset)
+            local inflation = Point3(-0.4, -0.4, -0.4) --Point3(-0.5, -0.5, -0.5)
+            --[[
             for _, dir in ipairs({'x', 'y', 'z'}) do
                if cube.max[dir] - cube.min[dir] <= 1 then
                   inflation[dir] = -0.4
                end
             end
-            local region = Region3(cube:inflated(inflation))
+            ]]
+            local region = r:inflated(inflation)
             region:optimize('connector region')
             
             local render_node = _radiant.client.create_region_outline_node(self._parent_node, region,

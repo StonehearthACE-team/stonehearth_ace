@@ -96,7 +96,7 @@ function MechanicalService:_enable_network(network, graph)
    -- make sure all our new entities exist
    for id, node in pairs(graph.nodes) do
       if not network.entities[id] then
-         local entity = node.entity_struct.entity
+         local entity = radiant.entities.get_entity(node.entity_id)
          network.entities[id] = entity
          self:_create_entity_listener(entity)
       end
