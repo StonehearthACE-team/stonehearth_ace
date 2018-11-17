@@ -775,12 +775,12 @@
                "description": "A nutritious and flavorful meal.",
                "flavor": "Straight from the sea! Or lake. Or the nearby stream..."
             },
-			"fish_stew_recipe": {
+            "fish_stew_recipe": {
                "recipe_name": "Peculiar Fish Stew",
                "description": "Warm and nutritious.",
                "flavor": "Don't smell it, just eat!"
             },
-			"fish_pot_pie_recipe": {
+            "fish_pot_pie_recipe": {
                "recipe_name": "Fish Pot Pie",
                "description": "A delicious pie with a fish meat and mushroom filling.",
                "flavor": "Better if made with all-'porpoise' flour"
@@ -795,17 +795,17 @@
                "description": "Boiled to perfection and sticky enough.",
                "flavor": ""
             },
-			"dumpling_salmon_recipe": {
+            "dumpling_salmon_recipe": {
                "recipe_name": "Salmon Dumpling",
                "description": "A little bread pocket with steamed salmon stuffed inside.",
                "flavor": "A tasty delicacy of the Northern Alliance"
             },
-			"fisherman_soup_recipe": {
+            "fisherman_soup_recipe": {
                "recipe_name": "Fisherman's Soup",
                "description": "A hearty and spicy soup that is quite filling.",
                "flavor": "Very traditional to the Ascendancy"
             },
-			"catfish_tagine_recipe": {
+            "catfish_tagine_recipe": {
                "recipe_name": "Catfish Tagine",
                "description": "Catfish meat and vegetables simmered in a clay pot.",
                "flavor": "A Rayya's Children oasis specialty"
@@ -815,7 +815,7 @@
                "description": "A delicious specialty from hearthlings of a very distant land.",
                "flavor": "A recipe made popular by Rayya's Children caravans that crossed the Pal'Mun"
             },
-			"sushi_vegetarian_recipe": {
+            "sushi_vegetarian_recipe": {
                "recipe_name": "Veggie Sushi",
                "description": "A vegetarian alternative to an exotic dish.",
                "flavor": "Now everyone can enjoy sushi!"
@@ -1167,6 +1167,10 @@
             "highland_pine_log": {
                "description": "A log. Made of wood.",
                "display_name": "Highland Pine Log"
+            },
+            "willow_log": {
+               "display_name": "Willow Log",
+               "description": "A log. Made of wood."
             }
          },
          "herb": {
@@ -1563,6 +1567,54 @@
                "sapling_highland_pine_tree_ghost": {
                   "description": "Baby Highland Pine tree.",
                   "display_name": "Highland Pine Sapling"
+               }
+            }
+         },
+         "willow_tree": {
+            "large_willow_tree": {
+               "display_name": "Large Willow Tree",
+               "description": "Look how it weeps!"
+            },
+            "bud": {
+               "tree_willow_plant_bud": {
+                  "display_name": "Budding Willow Tree",
+                  "description": "Growing nicely..."
+               }
+            },
+            "medium_willow_tree": {
+               "display_name": "Willow Tree",
+               "description": "Gently sways on the wind..."
+            },
+            "small_willow_tree": {
+               "display_name": "Small Willow Tree",
+               "description": "Looks elder than it is."
+            },
+            "sprout": {
+               "tree_willow_sprout": {
+                  "display_name": "Willow Tree Sproutling",
+                  "description": "Just needs some time and care."
+               }
+            },
+            "stem": {
+               "tree_willow_plant_stem": {
+                  "display_name": "Stemming Willow Tree",
+                  "description": "Still growing!"
+               }
+            },
+            "seed": {
+               "tree_willow_seed_ghost": {
+                  "display_name": "Willow Tree Seed",
+                  "description": "Can be planted to grow a weeping willow."
+               }
+            },
+            "sapling_willow_tree": {
+               "description": "Baby Willow tree.",
+               "sapling_willow_tree_iconic": {
+                  "description": "Plant it in the earth and watch it grow."
+               },
+               "sapling_willow_tree_ghost": {
+                  "display_name": "Willow Tree Sapling",
+                  "description": "Babe Willow tree."
                }
             }
          }
@@ -2745,7 +2797,7 @@
                   "description": "A highly traditional dwarven meal made with varanus meat and local cherries.",
                   "flavor": ""
                },
-			   "highlander_trout_recipe": {
+               "highlander_trout_recipe": {
                   "recipe_name": "Highlander Trout",
                   "description": "An exquisite meal favorite among the mountain folk.",
                   "flavor": "Be sure to cut off the trout's head"

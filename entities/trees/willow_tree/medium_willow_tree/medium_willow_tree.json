@@ -8,8 +8,8 @@
                {
                   "type": "one_of",
                   "items": [
-                     "file(large_willow_tree.qb)",
-                     "file(large_willow_tree_2.qb)"
+                     "file(medium_willow_tree.qb)",
+                     "file(medium_willow_tree_2.qb)"
                   ]
                }
             ]
@@ -19,8 +19,8 @@
                {
                   "type": "one_of",
                   "items": [
-                     "file(large_willow_tree_autumn.qb)",
-                     "file(large_willow_tree_autumn_2.qb)"
+                     "file(medium_willow_tree_autumn.qb)",
+                     "file(medium_willow_tree_autumn_2.qb)"
                   ]
                }
             ]
@@ -30,8 +30,8 @@
                {
                   "type": "one_of",
                   "items": [
-                     "file(large_willow_tree_spring.qb)",
-                     "file(large_willow_tree_spring_2.qb)"
+                     "file(medium_willow_tree_spring.qb)",
+                     "file(medium_willow_tree_spring_2.qb)"
                   ]
                }
             ]
@@ -41,9 +41,9 @@
                {
                   "type": "one_of",
                   "items": [
-                     "file(large_willow_tree_winter.qb)",
-                     "file(large_willow_tree_winter_2.qb)",
-                     "file(large_willow_tree_winter_3.qb)"
+                     "file(medium_willow_tree_winter.qb)",
+                     "file(medium_willow_tree_winter_2.qb)",
+                     "file(medium_willow_tree_winter_3.qb)"
                   ]
                }
             ]
@@ -77,7 +77,7 @@
       },
       "stonehearth:resource_node": {
          "resource": "stonehearth_ace:resources:wood:willow_log",
-         "durability": 8,
+         "durability": 6,
          "resource_loot_table": {
             "entries": {
                "optional": {
@@ -104,7 +104,7 @@
             "x",
             "z"
          ],
-         "model_origin": { "x": -2, "y": 0, "z": 0 },
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
          "region_origin": { "x": 0, "y": 0, "z": 0 }
       },
       "render_info": {
@@ -122,21 +122,25 @@
          "region": [
             {
                "min": { "x": -2, "y": 0, "z": -2 },
-               "max": { "x": 2, "y": 20, "z": 2 }
+               "max": { "x": 2, "y": 18, "z": 2 }
             }
          ]
       }
    },
    "entity_data": {
-      "stonehearth:catalog": {
-         "display_name": "i18n(stonehearth_ace:entities.trees.willow_tree.large_willow_tree.display_name)",
-         "description": "i18n(stonehearth_ace:entities.trees.willow_tree.large_willow_tree.description)"
+      "stonehearth:evolve_data": {
+         "next_stage": "stonehearth_ace:trees:willow:large",
+         "evolve_time": "42h+8h"
       },
       "stonehearth_ace:stump_data": {
          "stump_alias": "stonehearth_ace:trees:willow:stump"
       },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.trees.willow_tree.medium_willow_tree.display_name)",
+         "description": "i18n(stonehearth_ace:entities.trees.willow_tree.medium_willow_tree.description)"
+      },
       "stonehearth:appeal": {
-         "appeal": 12
+         "appeal": 8
       }
    }
 }

@@ -26,18 +26,19 @@ function StumpComponent:add_stump()
    --Create the entity and put it on the ground
    if not self._stump_data.stump_alias then
       return
-   end
-   local the_stump = radiant.entities.create_entity(self._stump_data.stump_alias, {})
-   if not the_stump then
-      return
-   end
-   radiant.terrain.place_entity_at_exact_location(the_stump, location)
+   else
+      local the_stump = radiant.entities.create_entity(self._stump_data.stump_alias, {})
+      if not the_stump then
+         return
+      end
+      radiant.terrain.place_entity_at_exact_location(the_stump, location)
 
-   --turn it to correct rotation
-   local rotation = self._entity:get_component('mob'):get_facing()
-   radiant.entities.turn_to(the_stump, rotation)
+      --turn it to correct rotation
+      local rotation = self._entity:get_component('mob'):get_facing()
+      radiant.entities.turn_to(the_stump, rotation)
 
-   the_stump:remove_component("stonehearth_ace:add_stump")
+      the_stump:remove_component("stonehearth_ace:add_stump")
+   end
 end
 
 return StumpComponent

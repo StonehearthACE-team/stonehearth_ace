@@ -2,43 +2,43 @@
    "type": "entity",
    "mixins": [
       "stonehearth:mixins:tree",
-      "file(sapling_highland_pine_tree_ghost.json)"
+      "file(sapling_willow_tree_ghost.json)"
    ],
    "components": {
       "render_info": {
-         "scale": 0.8
+         "scale": 0.5
       },
       "stonehearth:entity_forms": {
-         "iconic_form": "file(sapling_highland_pine_tree_iconic.json)",
-         "ghost_form": "file(sapling_highland_pine_tree_ghost.json)",
+         "iconic_form": "file(sapling_willow_tree_iconic.json)",
+         "ghost_form": "file(sapling_willow_tree_ghost.json)",
          "placeable_on_ground": true,
          "hide_placement_ui": true
       },
       "stonehearth:evolve": {},
       "stonehearth:resource_node": {
-         "resource": "stonehearth_ace:resources:wood:highland_pine_log",
+         "resource": "stonehearth_ace:resources:wood:willow_log",
          "durability": 2
       },
       "destination": {
          "region": [
             {
-               "min": { "x": 0, "y": 0, "z": 0 },
-               "max": { "x": 1, "y": 1, "z": 1 }
+               "min": { "x": -2, "y": 0, "z": -2 },
+               "max": { "x": 2, "y": 1, "z": 2 }
             }
          ]
       },
       "region_collision_shape": {
          "region": [
             {
-               "min": { "x": 0, "y": 0, "z": 0 },
-               "max": { "x": 1, "y": 20, "z": 1 }
+               "min": { "x": -2, "y": 0, "z": -2 },
+               "max": { "x": 2, "y": 10, "z": 2 }
             }
          ]
       }
    },
    "entity_data": {
       "stonehearth:evolve_data": {
-         "next_stage": "stonehearth_ace:trees:highland_pine:small",
+         "next_stage": "stonehearth_ace:trees:willow:small",
          "evolve_time": "1d"
       },
       "stonehearth:net_worth": {
@@ -47,18 +47,17 @@
          "shop_info": {
             "buyable": false,
             "sellable": true,
-            "shopkeeper_level": 1,
             "shopkeeper_type": "caravan"
          }
       },
-      "mixintypes": {
-         "stonehearth_ace:stump_data": "remove"
-      },
       "stonehearth:catalog": {
-         "description": "i18n(stonehearth_ace:entities.trees.highland_pine_tree.sapling_highland_pine_tree.description)",
+         "description": "i18n(stonehearth_ace:entities.trees.willow_tree.sapling_willow_tree.description)",
          "category": "plants",
          "material_tags": "plant tree stockpile_plant",
-         "subject_override": "stonehearth_ace:trees:highland_pine:large"
+         "subject_override": "stonehearth_ace:trees:willow:large"
+      },
+      "mixintypes": {
+         "stonehearth_ace:stump_data": "remove"
       },
       "stonehearth:appeal": {
          "appeal": 1
