@@ -3,7 +3,11 @@ local Point3 = _radiant.csg.Point3
 local Region3 = _radiant.csg.Region3
 local Color4 = _radiant.csg.Color4
 
+local ConnectionUtils = require 'lib.connection.connection_utils'
+local import_region = ConnectionUtils.import_region
+
 local log = radiant.log.create_logger('connection_renderer')
+
 local ConnectionRenderer = class()
 
 function ConnectionRenderer:initialize(render_entity, datastore)
@@ -89,6 +93,7 @@ function ConnectionRenderer:_update()
    for type, connection in pairs(self._connections) do
       local type_data = data[type] or {}
       local available = type_data.available
+      local connected = type_data.connected
 
       local origin_offset = radiant.util.to_point3(connection.origin_offset) or Point3.zero
       
@@ -99,29 +104,32 @@ function ConnectionRenderer:_update()
          stonehearth_ace.connection_client:get_connection_type_colors('default')
       
       for name, connector in pairs(connection.connectors) do
-         local conn_data = type_data.available_connectors or {}
+         local color = nil
+         local EDGE_COLOR_ALPHA = 12
+         local FACE_COLOR_ALPHA = 6
          
-         local color = colors.connected_color
-         local EDGE_COLOR_ALPHA = 20
-         local FACE_COLOR_ALPHA = 10
-         
-         local connector_available = conn_data[name]
+         local connector_available = (type_data.available_connectors or {})[name]
+         local connector_connected = (type_data.connected_connectors or {})[name]
          local is_available = available and connector_available
-         local is_connected = not connector_available
-         if is_available then
+         local is_connected = connected and connector_connected
+         if is_available and colors.available_color then
             color = colors.available_color
+         elseif is_connected and colors.connected_color then
+            color = colors.connected_color
          end
 
          -- only render actually available or connected connectors
          if color and (is_available or is_connected) then
-            local cube = radiant.util.to_cube3(connector.region):translated(origin_offset)
-            local inflation = Point3(-0.5, -0.5, -0.5)
+            local r = import_region(connector.region):translated(origin_offset)
+            local inflation = Point3(-0.4, -0.4, -0.4)
+            --[[
             for _, dir in ipairs({'x', 'y', 'z'}) do
                if cube.max[dir] - cube.min[dir] <= 1 then
                   inflation[dir] = -0.4
                end
             end
-            local region = Region3(cube:inflated(inflation))
+            ]]
+            local region = r:inflated(inflation)
             region:optimize('connector region')
             
             local render_node = _radiant.client.create_region_outline_node(self._parent_node, region,

@@ -7,6 +7,8 @@
          "grows_hanging": true,
          "grows_on_structure": true,
          "spreads_on_ground": false,
+         "spreads_on_ceiling": false,
+         "spreads_on_wall": true,
          "growth_directions": {
             "x-": 12,
             "x+": 12,
@@ -18,19 +20,19 @@
          "growth_times": [
             {
                "threshold": 0,
-               "time": "1m"
+               "time": "20m"
             },
             {
                "threshold": 10,
-               "time": "2m"
+               "time": "15m"
             },
             {
                "threshold": 20,
-               "time": "4m"
+               "time": "30m"
             },
             {
                "threshold": 40,
-               "time": "9m"
+               "time": "1h"
             },
             {
                "threshold": 60,

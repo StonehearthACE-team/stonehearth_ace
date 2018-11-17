@@ -1,9 +1,21 @@
 local Point3 = _radiant.csg.Point3
+local Region3 = _radiant.csg.Region3
 
 local log = radiant.log.create_logger('connection_utils')
 local connection_utils = {}
 
 local MIDDLE_OFFSET = Point3(0.5, 0, 0.5)
+
+function connection_utils.import_region(region)
+   local r = Region3()
+   for _, cube in pairs(region) do
+      local c = radiant.util.to_cube3(cube)
+      if c then
+         r:add_cube(c)
+      end
+   end
+   return r
+end
 
 function connection_utils.rotate_region(region, origin, rotation)
    return region:translated(origin - MIDDLE_OFFSET):rotated(rotation):translated(MIDDLE_OFFSET - origin)
@@ -51,7 +63,12 @@ function connection_utils.combine_entity_tables(t1, t2)
             if not t[entity][type].available_connectors then
                t[entity][type].available_connectors = {}
             end
+            t[entity][type].connected = type_data.connected
+            if not t[entity][type].connected_connectors then
+               t[entity][type].connected_connectors = {}
+            end
             connection_utils.combine_tables(t[entity][type].available_connectors, type_data.available_connectors or {})
+            connection_utils.combine_tables(t[entity][type].connected_connectors, type_data.connected_connectors or {})
          end
       end
    end
@@ -99,16 +116,24 @@ function connection_utils._update_entity_connection_data(data, stats)
    for type, type_stats in pairs(stats) do
       local these_stats = data[type]
       if not these_stats then
-         these_stats = {available_connectors = {}}
+         these_stats = {available_connectors = {}, connected_connectors = {}}
          data[type] = these_stats
       end
       if type_stats.available ~= nil then
          these_stats.available = type_stats.available
       end
+      if type_stats.connected ~= nil then
+         these_stats.connected = type_stats.connected
+      end
       
       if type_stats.available_connectors then
-         for id, connected in pairs(type_stats.available_connectors) do
-            these_stats.available_connectors[id] = connected or nil
+         for id, available in pairs(type_stats.available_connectors) do
+            these_stats.available_connectors[id] = available or nil
+         end
+      end
+      if type_stats.connected_connectors then
+         for id, connected in pairs(type_stats.connected_connectors) do
+            these_stats.connected_connectors[id] = connected or nil
          end
       end
    end
