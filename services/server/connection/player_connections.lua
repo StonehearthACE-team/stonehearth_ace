@@ -80,7 +80,7 @@ function PlayerConnections:_get_and_clear_entity_changes_cache()
    return changes
 end
 
-function PlayerConnections:_update_entity_changes_connector(entity, type, entity_available, conn_id, connector_available)
+function PlayerConnections:_update_entity_changes_connector(entity, type, entity_available, entity_connected, conn_id, connector_available, connector_connected)
    local changes = self._entity_changes_cache[entity]
    if not changes then
       changes = {}
@@ -88,13 +88,19 @@ function PlayerConnections:_update_entity_changes_connector(entity, type, entity
    end
    local type_changes = changes[type]
    if not type_changes then
-      type_changes = {available_connectors = {}}
+      type_changes = {available_connectors = {}, connected_connectors = {}}
       changes[type] = type_changes
    end
    type_changes.available = entity_available
+   type_changes.connected = entity_connected
 
-   if conn_id and connector_available ~= nil then
-      type_changes.available_connectors[conn_id] = connector_available
+   if conn_id then
+      if connector_available ~= nil then
+         type_changes.available_connectors[conn_id] = connector_available
+      end
+      if connector_connected ~= nil then
+         type_changes.connected_connectors[conn_id] = connector_connected
+      end
    end
 end
 
@@ -182,7 +188,7 @@ function PlayerConnections:register_entity(entity, connections, separated_by_pla
                   conn_tbl.entity_connectors[id][connect.id] = connect.id
                   self._sv.connectors[connect.id] = connect
 
-                  self:_update_entity_changes_connector(entity, type, connection.max_connections > 0, key, connector.max_connections > 0)
+                  self:_update_entity_changes_connector(entity, type, connection.max_connections > 0, false, key, connector.max_connections > 0, false)
                end
             end
          end
@@ -300,8 +306,10 @@ function PlayerConnections:_remove_entity_from_graphs(entity_struct)
 
                if next(changes) then
                   changed_types[type] = true
-                  self:_update_entity_changes_connector(entity_struct.entity, type, true, connector.name, true)
-                  self:_update_entity_changes_connector(connected_entity_struct.entity, type, true, connected.name, true)
+                  self:_update_entity_changes_connector(entity_struct.entity, type, true, connection.num_connections > 0,
+                        connector.name, true, connector.num_connections > 0)
+                  self:_update_entity_changes_connector(connected_entity_struct.entity, type, true,
+                        connected_entity_struct.connections[type].num_connections > 0, connected.name, true, connected.num_connections > 0)
                end
 
                -- when removing an entity from graphs, anything it was connected to should search for new connections
@@ -337,11 +345,11 @@ function PlayerConnections:_try_connecting_connector(connection, connector, enti
             local target_entity_struct = self._entities[target.entity_id]
             local target_connection = target_entity_struct.connections[target.connection]
             self:_update_entity_changes_connector(entity_struct.entity,
-                  connection.type, connection.num_connections < connection.max_connections,
-                  connector.name, connector.max_connections > connector.num_connections)
+                  connection.type, connection.num_connections < connection.max_connections, connection.num_connections > 0,
+                  connector.name, connector.num_connections < connector.max_connections, connector.num_connections > 0)
             self:_update_entity_changes_connector(target_entity_struct.entity,
-                  connection.type, target_connection.num_connections < target_connection.max_connections,
-                  target.name, target.max_connections > target.num_connections)
+                  connection.type, target_connection.num_connections < target_connection.max_connections, target_connection.num_connections > 0,
+                  target.name, target.num_connections < target.max_connections, target.num_connections > 0)
          end
       end
    end
@@ -364,6 +372,11 @@ function PlayerConnections:_try_connecting_connectors(c1, c2)
    
    local e1 = self._entities[c1.entity_id]
    local e2 = self._entities[c2.entity_id]
+
+   if not e1 or not e2 then
+      return nil
+   end
+   
    local conn1 = e1.connections[c1.connection]
    local conn2 = e2.connections[c2.connection]
 
@@ -457,6 +470,11 @@ function PlayerConnections:_try_disconnecting_connectors(c1, c2)
    
    local e1 = self._entities[c1.entity_id]
    local e2 = self._entities[c2.entity_id]
+
+   if not e1 or not e2 then
+      return nil
+   end
+
    local conn1 = e1.connections[c1.connection]
    local conn2 = e2.connections[c2.connection]
 

@@ -188,6 +188,7 @@ function ConnectionService:_perform_update(player_id, res1, res2)
       res1 = res1 or res2
    end
    if res1 then
+      --log:debug('_perform_update res1: %s\n_perform_update res2: %s', radiant.util.table_tostring(res1.entity_changes), res2 and radiant.util.table_tostring(res2.entity_changes))
       if res2 then
          combine_tables(res1.changed_types, res2.changed_types)
          res1.graphs_changed = combine_type_tables(res1.graphs_changed, res2.graphs_changed)

@@ -39,10 +39,7 @@ function ConnectionComponent:initialize()
    local json = radiant.entities.get_json(self)
    self._connections = json or {}
    self:_format_connections()
-
-   if radiant.is_server then
-      self._sv.connected_stats = {}
-   end
+   self._sv.connected_stats = {}
 end
 
 -- this is performed in activate rather than post_activate so that all specific connection services can use it in post_activate

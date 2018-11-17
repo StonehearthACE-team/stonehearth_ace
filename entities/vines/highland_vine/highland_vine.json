@@ -5,22 +5,34 @@
       "stonehearth_ace:connection": {
          "stonehearth_ace:vines:highland_vine": {
             "connectors": {
-               "all": {
+               "~x": {
                   "region": [
-                     {
-                        "min": { "x": -1, "y": 0, "z": -1 },
-                        "max": { "x": 2, "y": 1, "z": 2 }
-                     },
-                     {
-                        "min": { "x": -1, "y": -1, "z": 0 },
-                        "max": { "x": 2, "y": 2, "z": 1 }
-                     },
                      {
                         "min": { "x": 0, "y": -1, "z": -1 },
                         "max": { "x": 1, "y": 2, "z": 2 }
                      }
                   ],
-                  "max_connections": 18,
+                  "max_connections": 6,
+                  "region_intersection_threshold": 0.4
+               },
+               "~y": {
+                  "region": [
+                     {
+                        "min": { "x": -1, "y": 0, "z": -1 },
+                        "max": { "x": 2, "y": 1, "z": 2 }
+                     }
+                  ],
+                  "max_connections": 6,
+                  "region_intersection_threshold": 0.4
+               },
+               "~z": {
+                  "region": [
+                     {
+                        "min": { "x": -1, "y": -1, "z": 0 },
+                        "max": { "x": 2, "y": 2, "z": 1 }
+                     }
+                  ],
+                  "max_connections": 6,
                   "region_intersection_threshold": 0.4
                }
             },
@@ -29,26 +41,34 @@
          }
       },
       "stonehearth_ace:vine": {
-         "render_models": {
+         "render_options": {
             "bottom": {
-               "default": [
-                  "file(highland_vine_ground.qb)"
-               ]
+               "scale": 0.1,
+               "origin": { "x": 5, "y": 0, "z": 5 },
+               "models": {
+                  "default": [
+                     "file(highland_vine_ground.qb)"
+                  ]
+               }
             },
             "top": {
-               "default": [
-                  "file(highland_vine_ground.qb)"
-               ]
+               "scale": 0.1,
+               "origin": { "x": 5, "y": 7, "z": 5 },
+               "models": {
+                  "default": [
+                     "file(highland_vine_ceiling.qb)"
+                  ]
+               }
             },
             "side": {
-               "default": [
-                  "file(highland_vine_wall.qb)"
-               ]
+               "scale": 0.1,
+               "origin": { "x": 5, "y": 0, "z": 5 },
+               "models": {
+                  "default": [
+                     "file(highland_vine_wall.qb)"
+                  ]
+               }
             }
-         },
-         "render_options": {
-            "scale": 0.1,
-            "origin": { "x": 5, "y": 0, "z": 5 }
          },
          "seasonal_model_switcher": {
             "stonehearth:biome:temperate": {

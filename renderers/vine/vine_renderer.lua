@@ -62,22 +62,23 @@ function VineRenderer:_update_render()
    --log:error('render_directions: %s', radiant.util.table_tostring(render_dirs))
    for dir, _ in pairs(render_dirs) do
       if dir == 'y+' then
-         self:_create_node(options, options.models.top, 0, true)
+         self:_create_node(options.faces.top, 0)
       elseif dir == 'y-' then
-         self:_create_node(options, options.models.bottom, 0)
+         self:_create_node(options.faces.bottom, 0)
       else
-         self:_create_node(options, options.models.side, _rotations[dir] or 0)
+         self:_create_node(options.faces.side, _rotations[dir] or 0)
       end
    end
 end
 
-function VineRenderer:_create_node(options, model, rotation, is_top)
-   if model then
+function VineRenderer:_create_node(options, rotation)
+   if options and options.model then
       rotation = (360 - self._facing + rotation) % 360
-      local node = _radiant.client.create_qubicle_matrix_node(self._node, model, 'background', options.origin)
+      local node = _radiant.client.create_qubicle_matrix_node(self._node, options.model, 'background',
+            Point3(options.origin.x, 0, options.origin.z))
       if node then
          local offset = options.origin:scaled(options.scale)
-         node:set_transform(offset.x, offset.y + (is_top and 1 or 0), offset.z, is_top and 180 or 0, rotation, 0, options.scale, options.scale, options.scale)
+         node:set_transform(offset.x, offset.y, offset.z, 0, rotation, 0, options.scale, options.scale, options.scale)
          node:set_material('materials/voxel.material.json')
          --node:set_visible(true)
          table.insert(self._vine_nodes, node)

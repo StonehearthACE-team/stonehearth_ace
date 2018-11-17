@@ -48,23 +48,25 @@ function VineComponent:initialize()
 
    if not self._sv.render_options or not self._sv.render_models then
       local json = radiant.entities.get_json(self)
-      local options = json.render_options or {}
-      options.models = {}
-      options.scale = options.scale or 0.1
-      if options.origin then
-         options.origin = radiant.util.to_point3(options.origin)
-      else
-         options.origin = Point3.zero
-      end
-      self._sv.render_options = options
+      local json_options = json.render_options or {}
 
+      local options = {faces = {}, seasonal_model_switcher = json_options.seasonal_model_switcher}
       local models = {}
-      for position, seasons in pairs(json.render_models or {}) do
-         models[position] = {}
-         for season, qbs in pairs(seasons) do
-            models[position][season] = qbs[rng:get_int(1, #qbs)]
+      local faces = {'bottom', 'top', 'side'}
+
+      for _, face in ipairs(faces) do
+         local j_o = json_options[face] or {}
+         options.faces[face] = {
+            scale = j_o.scale or 0.1,
+            origin = radiant.util.to_point3(j_o.origin) or Point3.zero
+         }
+         models[face] = {}
+         for season, qbs in pairs(j_o.models) do
+            models[face][season] = qbs[rng:get_int(1, #qbs)]
          end
       end
+
+      self._sv.render_options = options
       self._sv.render_models = models
    end
 end
@@ -120,7 +122,7 @@ end
 
 function VineComponent:_update_models(season)
    for position, seasons in pairs(self._sv.render_models) do
-      self._sv.render_options.models[position] = seasons[season]
+      self._sv.render_options.faces[position].model = seasons[season]
    end
 
    self.__saved_variables:mark_changed()
@@ -141,7 +143,8 @@ function VineComponent:_update_season(transition)
    self._current_season = transition.to
    
    local biome_uri = stonehearth.world_generation:get_biome_alias()
-   local biome_seasons = self._json[biome_uri] or self._json['*']
+   local biomes = self._sv.render_options.seasonal_model_switcher
+   local biome_seasons = biomes[biome_uri] or biomes['*']
    if not biome_seasons then
       return
    end
