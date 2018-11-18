@@ -1,0 +1,31 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:weaver:outfit",
+   "components": {
+      "model_variants": {
+         "mixintypes": {
+            "default": "override",
+            "female": "override"
+         },
+         "default": {
+            "layer": "clothing",
+            "transparent": "false",
+            "models": [
+               "file(na_weaver_outfit.qb)"
+            ]
+         },
+         "female": {
+            "layer": "clothing",
+            "transparent": "false",
+            "models": [
+               "file(na_weaver_outfit_female.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "icon": "file(na_weaver_outfit.png)"
+      }
+   }
+}

@@ -1,0 +1,30 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:carpenter:outfit",
+   "components": {
+      "model_variants": {
+         "mixintypes": {
+            "default": "override",
+            "female": "override"
+         },
+         "default": {
+            "layer": "clothing",
+            "models": [
+               "file(na_carpenter_outfit.qb)"
+            ]
+         },
+         "female": {
+            "layer": "clothing",
+            "transparent": false,
+            "models": [
+               "file(na_carpenter_outfit_female.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "icon": "file(na_carpenter_outfit.png)"
+      }
+   }
+}

@@ -1,0 +1,42 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "layer": "hat",
+            "transparent": "false",
+            "models": [
+               "file(rc_knight_helm.qb)"
+            ]
+         },
+         "female": {
+            "layer": "hat",
+            "transparent": "false",
+            "models": [
+               "file(rc_knight_helm_female.qb)"
+            ]
+         }
+      },
+      "stonehearth:equipment_piece": {
+         "render_type": "merge_with_model",
+         "slot": "helmet",
+         "ilevel": 4,
+         "roles": "knight_job",
+         "no_drop": true
+      }
+   },
+   "entity_data": {
+      "stonehearth:combat:armor_data": {
+         "base_damage_reduction": 4
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth:jobs.knight.knight_helm.display_name)",
+         "description": "i18n(stonehearth:jobs.knight.knight_helm.description)",
+         "icon": "file(rc_knight_helm.png)",
+         "is_item": true,
+         "category": "armor",
+         "material_tags": "iron armor heavy_armor"
+      }
+   }
+}

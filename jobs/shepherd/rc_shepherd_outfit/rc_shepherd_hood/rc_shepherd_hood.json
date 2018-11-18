@@ -1,0 +1,36 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:item_properties",
+   "components": {
+      "render_info": {},
+      "model_variants": {
+         "default": {
+            "layer": "hat",
+            "transparent": "false",
+            "models": [
+               "file(rc_shepherd_hood.qb)"
+            ]
+         },
+         "female": {
+            "layer": "hat",
+            "transparent": "false",
+            "models": [
+               "file(rc_shepherd_hood_female.qb)"
+            ]
+         }
+      },
+      "stonehearth:equipment_piece": {
+         "render_type": "merge_with_model",
+         "slot": "helmet",
+         "ilevel": 1,
+         "no_drop": true
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:jobs.shepherd.shepherd_outfit.shepherd_hood.display_name)",
+         "description": "i18n(stonehearth_ace:jobs.shepherd.shepherd_outfit.shepherd_hood.description)",
+         "icon": "file(rc_shepherd_hood.png)"
+      }
+   }
+}

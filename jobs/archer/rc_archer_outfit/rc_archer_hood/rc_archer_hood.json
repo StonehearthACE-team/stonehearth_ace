@@ -1,0 +1,53 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:item_properties",
+   "components": {
+      "render_info": {},
+      "model_variants": {
+         "default": {
+            "layer": "hat",
+            "transparent": "false",
+            "models": [
+               "file(rc_archer_hood.qb)"
+            ]
+         },
+         "female": {
+            "layer": "hat",
+            "transparent": "false",
+            "models": [
+               "file(rc_archer_hood_female.qb)"
+            ]
+         },
+         "rabbit_male": {
+            "layer": "hat",
+            "transparent": "false",
+            "models": [
+               "/stonehearth/jobs/archer/archer_outfit/archer_hood/archer_outfit_hood_rabbit.qb"
+            ]
+         },
+         "rabbit_female": {
+            "layer": "hat",
+            "transparent": "false",
+            "models": [
+               "/stonehearth/jobs/archer/archer_outfit/archer_hood/archer_outfit_hood_rabbit.qb"
+            ]
+         }
+      },
+      "stonehearth:equipment_piece": {
+         "render_type": "merge_with_model",
+         "slot": "helmet",
+         "ilevel": 2,
+         "no_drop": true
+      }
+   },
+   "entity_data": {
+      "stonehearth:combat:armor_data": {
+         "base_damage_reduction": 2
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth:jobs.archer.archer_outfit.archer_hood.display_name)",
+         "description": "i18n(stonehearth:jobs.archer.archer_outfit.archer_hood.description)",
+         "icon": "file(rc_archer_hood.png)"
+      }
+   }
+}

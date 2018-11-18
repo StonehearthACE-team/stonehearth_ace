@@ -13,11 +13,13 @@ function AceSwimmingService:_set_swimming(entity, swimming)
       if swimming then
 		 if radiant.entities.get_category(entity) == 'aquatic' then
 		 radiant.entities.remove_buff(entity, 'stonehearth_ace:buffs:not_in_water')
+		 radiant.entities.add_buff(entity, 'stonehearth_ace:buffs:in_water')
 		 else
          radiant.entities.add_buff(entity, 'stonehearth:buffs:swimming')
 		 end
       elseif radiant.entities.get_category(entity) == 'aquatic' then
 		 radiant.entities.add_buff(entity, 'stonehearth_ace:buffs:not_in_water')
+		 radiant.entities.remove_buff(entity, 'stonehearth_ace:buffs:in_water')
 	  else
          radiant.entities.remove_buff(entity, 'stonehearth:buffs:swimming')
       end

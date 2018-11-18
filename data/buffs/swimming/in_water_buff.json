@@ -1,0 +1,13 @@
+{
+   "type": "buff",
+   "axis": "debuff",
+   "invisible_to_player": true,
+   "script": "stonehearth:buff_scripts:periodic_health_modification",
+   "script_info": {
+      "health_change": 0.1,
+      "pulse": "1h",
+      "is_percentage": true,
+      "pulse_immediately": true,
+      "pulse_on_destroy": false
+   }
+}

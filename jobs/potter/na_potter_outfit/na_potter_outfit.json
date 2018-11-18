@@ -1,0 +1,29 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:potter:outfit",
+   "components": {
+      "model_variants": {
+         "mixintypes": {
+            "default": "override",
+            "female": "override"
+         },
+         "default": {
+            "layer": "clothing",
+            "models": [
+               "file(na_potter_outfit.qb)"
+            ]
+         },
+         "female": {
+            "layer": "clothing",
+            "models": [
+               "file(na_potter_outfit_female.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "icon": "file(na_potter_outfit.png)"
+      }
+   }
+}
