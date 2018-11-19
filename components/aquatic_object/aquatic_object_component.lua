@@ -1,6 +1,9 @@
 local Point3 = _radiant.csg.Point3
 local Cube3 = _radiant.csg.Cube3
 
+local ConnectionUtils = require 'lib.connection.connection_utils'
+local log = radiant.log.create_logger('aquatic_object')
+
 local AquaticObjectComponent = class()
 
 function AquaticObjectComponent:initialize()
@@ -15,6 +18,11 @@ function AquaticObjectComponent:activate()
 	self._suffocate_if_out_of_water = json.suffocate_if_out_of_water
    self._floating_object = json.floating_object
 
+   local signal_region = json.water_signal_region
+   if signal_region then
+      signal_region = ConnectionUtils.import_region(signal_region)
+   end
+
    local monitor_types = {}
    if self._require_water_to_grow or self._destroy_if_out_of_water or self._suffocate_if_out_of_water then
       table.insert(monitor_types, 'water_exists')
@@ -23,35 +31,43 @@ function AquaticObjectComponent:activate()
       table.insert(monitor_types, 'water_surface_level')
    end
    
-   if next(monitor_types) then
-      local water_signal = self._entity:add_component('stonehearth_ace:water_signal')
-      water_signal:add_monitor_types(monitor_types)
-      if self._floating_object then
-         water_signal:set_urgency(true)
-      else
-         water_signal:set_urgency(false)
-      end
+   local water_signal = self._entity:add_component('stonehearth_ace:water_signal')
+   self._water_signal = water_signal:set_signal('aquatic_object', signal_region, monitor_types, function(changes) self:_on_water_signal_changed(changes) end)
+   if self._floating_object then
+      water_signal:set_urgency(true)
+   else
+      water_signal:set_urgency(false)
    end
 end
 
 function AquaticObjectComponent:post_activate()
-	self:_create_listeners()
+	--self:_create_listeners()
 	self:_on_water_exists_changed()
 	self:_on_water_surface_level_changed()
 end
 
 function AquaticObjectComponent:_create_listeners()
-	if not self._water_listener then
-		self._water_listener = radiant.events.listen(self._entity, 'stonehearth_ace:water_signal:water_exists_changed', self, self._on_water_exists_changed)
-	end
-	if not self._water_surface_level_listener then
-		self._water_surface_level_listener = radiant.events.listen(self._entity, 'stonehearth_ace:water_signal:water_surface_level_changed', self, self._on_water_surface_level_changed)
-	end
+   if self._water_signal then
+      self._water_signal:set_change_callback(function(changes) self:_on_water_signal_changed(changes) end)
+   end
+   --if not self._water_listener then
+	--	self._water_listener = radiant.events.listen(self._entity, 'stonehearth_ace:water_signal:water_signal_changed', self, self._on_water_signal_changed)
+	--end
+end
+
+function AquaticObjectComponent:_on_water_signal_changed(changes)
+   if changes.water_exists then
+      self:_on_water_exists_changed(changes.water_exists.value)
+   end
+
+   if changes.water_surface_level then
+      self:_on_water_surface_level_changed(changes.water_surface_level.value)
+   end
 end
 
 function AquaticObjectComponent:_on_water_exists_changed(exists)
 	if exists == nil then
-		exists = self._entity:get_component('stonehearth_ace:water_signal'):get_water_exists()
+		exists = self._water_signal:get_water_exists()
 	end
 
 	self._sv.in_the_water = exists
@@ -72,7 +88,7 @@ end
 
 function AquaticObjectComponent:_on_water_surface_level_changed(level)
 	if level == nil then
-		level = self._entity:add_component('stonehearth_ace:water_signal'):get_water_surface_level()
+		level = self._water_signal:get_water_surface_level()
 	end
 
 	if self._floating_object then
@@ -176,10 +192,6 @@ function AquaticObjectComponent:_destroy_listeners()
 	if self._water_listener then
 		self._water_listener:destroy()
 		self._water_listener = nil
-	end
-	if self._water_surface_level_listener then
-		self._water_surface_level_listener:destroy()
-		self._water_surface_level_listener = nil
 	end
 end
 

@@ -13,6 +13,16 @@ function MechanicalComponent:initialize()
    self._has_reverse_effects = self._json.has_reverse_effects or false
 end
 
+function MechanicalComponent:restore()
+   self._is_restore = true
+end
+
+function MechanicalComponent:post_activate()
+   if self._is_restore then
+      self:set_power_percentage(self._sv.power_percentage)
+   end
+end
+
 function MechanicalComponent:destroy()
    self:_destroy_listeners()
 end
