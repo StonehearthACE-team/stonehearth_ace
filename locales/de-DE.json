@@ -1,26 +1,62 @@
 {
+   "ai": {
+      "actions": {
+         "status_text": {
+            "train": "Geht zum Training"
+         }
+      }
+   },
    "data": {
-      "biome": {
-         "temperate": {
-            "display_name": "Hochland",
-            "description": "TBD. Default home of the TBD.",
-            "random_location_names": {
-               "000": "TBD"
+      "gm": {
+         "campaigns": {
+            "ambient_threats": {
+               "bear_attack": {
+                  "mission": {
+                     "sighted_bulletin": {
+                        "title": "Ein wilder Bär nähert sich!"
+                     }
+                  }
+               },
+               "giant_cougar_raid": {
+                  "cougar": {
+                     "display_name": "Gigantische Katze",
+                     "description": "Definitiv keine Hauskatze. Furchterregend!"
+                  }
+               }
+            },
+            "trader": {
+               "valor_tier_2_reached": {
+                  "recipe_unlock_weapons_5": "Neues legendäres Kapuzen-Rezept - Zusammenarbeit von Schmied, Geomant und Weber!",
+                  "recipe_unlock_weapons_6": "Neues legendäres Streitkolben-Rezept - Zusammenarbeit von Steinmetz, Schreiner und Ingenieur!",
+                  "recipe_unlock_weapons_7": "Neues legendäres Foliant-Rezept - Zusammenarbeit von Koch, Kräuterarzt und Geomant!",
+                  "recipe_unlock_weapons_8": "Neues legendäres Kettenpanzer-Rezept - Zusammenarbeit von Weber, Ingenieur und Schmied!"
+               }
             }
-         },
+         }
+      },
+      "biome": {
          "highlands": {
+            "display_name": "Hochland",
+            "description": "Ungleiche Täler und hohe Klippen mit vielen Seen und Flüssen. Standardheimat des Bergvolkes.",
+            "random_location_names": {
+               "000": "Das weiße Felsenplateau"
+            },
             "seasons": {
                "spring": {
-                  "display_name": "Frühling"
+                  "display_name": "Frühling",
+                  "description": "Der Frühling im Hochland ist eine Zeit der Erneuerung, meistens voller windiger Tage und eine gute Zeit, um mit der Aussaat zu beginnen. Spätschnee kommt selten vor.."
                },
                "summer": {
-                  "display_name": "Sommer"
+                  "display_name": "Sommer",
+                  "description": "Der Sommer im Hochland ist eine warme und feuchte Jahreszeit, oft mit Regentagen und ab und zu sogar Stürmen. Starke Winde und ein wolkenloser Himmel herrschen aber meistens vor."
                },
                "autumn": {
-                  "display_name": "Herbst"
+                  "display_name": "Herbst",
+                  "description": "Der Herbst im Hochland markiert das Ende der Landwirtschaftssaison mit mehreren regnerischen oder bewölkten Tagen und möglicherweise sogar einem frühen Schneefall."
                },
                "winter": {
-                  "display_name": "Winter"
+                  "display_name": "Winter",
+                  "description": "Der Winter im Hochland kann hart und streng sein, er ist etwas länger als die anderen Jahreszeiten und mit fast täglichem Schneefall. Mach deine warmen Sachen bereit!"
                }
             }
          }
@@ -60,11 +96,247 @@
                }
             }
          }
+      },
+      "heatmaps": {
+         "ore": {
+            "thresholds": {
+               "none": {
+                  "display_name": "Kein Erz",
+                  "description": "Unter diesem Punkt befindet sich kein Erz im Erfassungsbereich."
+               },
+               "some": {
+                  "display_name": "Etwas Erz",
+                  "description": "Es gibt etwas Erz unter diesem Punkt, aber es könnte ziemlich weit unten sein."
+               },
+               "lots": {
+                  "display_name": "Viel Erz",
+                  "description": "Unter diesem Punkt gibt es viel Erz oder es ist sehr nahe an der Oberfläche."
+               },
+               "tons": {
+                  "display_name": "Tonnen von Erz!",
+                  "description": "Du sitzt auf einer Goldmine! (Aber möglicherweise andere Erze als Gold.)"
+               }
+            }
+         },
+         "wilderness": {
+            "thresholds": {
+               "none": {
+                  "display_name": "Keine Wild",
+                  "description": "Entweder gibt es hier keine Wild oder sie wird von Gebäuden in den Schatten gestellt."
+               },
+               "little": {
+                  "display_name": "Ein bisschen Wild",
+                  "description": "Dieser Bereich ist sehr zahm. Versuche, Bäume zu pflanzen, um sie ein wenig anzulocken."
+               },
+               "some": {
+                  "display_name": "Etwas Wild",
+                  "description": "Hier ist etwas Wild, aber es werden nicht viele Tiere angezogen. Größere oder mehr Pflanzen könnten helfen."
+               },
+               "lots": {
+                  "display_name": "Wild",
+                  "description": "Diese Gegend ist eher wild und es sollten viele Tiere angezogen werden."
+               },
+               "tons": {
+                  "display_name": "Sehr Wild",
+                  "description": "Es ist ein wahrer Garten Eden!"
+               }
+            }
+         }
+      },
+      "trapping": {
+         "all_trappable_animals": {
+            "trappable_animals": {
+               "big_game": {
+                  "name": "Großes Wild",
+                  "description": "Große Tiere produzieren große Fleischstücke, Trockenfleisch, Felle und andere nützliche Gegenstände"
+               }
+            }
+         }
+      },
+      "monster_tuning": {
+         "forest": {
+            "rabid_bear": {
+               "description": "An diesem Tier ist etwas Unnatürliches und Falsches..."
+            },
+            "large_bear": {
+               "description": "Dies ist ein sehr großer Bär."
+            }
+         }
+      },
+      "commands": {
+         "slaughter": {
+            "display_name": "Wildes Tier ernten",
+            "description": "Ernte dieses wilde Tier für einige seiner Ressourcen.",
+            "disabled_description": "Dieses wilde Tier eignet sich nicht zum Schlachten."
+         },
+         "toggle_enabled_off": {
+            "display_name": "Aktiviert",
+            "description": "Klicken zum deaktivieren!"
+         },
+         "toggle_enabled_on": {
+            "display_name": "Deaktiviert",
+            "description": "Klicken zum aktivieren!"
+         },
+         "toggle_training_off": {
+            "display_name": "Training verbieten",
+            "description": "Dieser Hearthling kann derzeit trainiert werden. Klicke um es zu verbieten!"
+         },
+         "toggle_training_on": {
+            "description": "Dieser Hearthling darf momentan nicht trainiert werden. Klicke um es zu zulassen!",
+            "display_name": "Training zulassen"
+         },
+         "enable_auto_harvest": {
+            "display_name": "Aktiviere Auto-Ernten",
+            "description": "Aktivieren Sie die automatische Ernte dieser erneuerbaren Ressource, sobald sie wieder bereit ist."
+         },
+         "disable_auto_harvest": {
+            "display_name": "Deaktiviere Auto-Ernten",
+            "description": "Deaktivieren Sie die automatische Ernte dieser erneuerbaren Ressource."
+         },
+         "job_equipment_roles": {
+            "one_handed_footman": {
+               "display_name": "Waffe und Schild bevorzugen",
+               "description": "Dieser Fußsoldat bevorzugt derzeit die Verwendung einer Haupthandwaffe und eines Schildes. Klick um zu ändern!"
+            },
+            "two_handed_footman": {
+               "display_name": "Zweihandwaffen bevorzugen",
+               "description": "Dieser Fußsoldat bevorzugt derzeit eine Zweihandwaffe. Klick um zu ändern!"
+            },
+            "dual_wield_footman": {
+               "display_name": "Zwei Waffen bevorzugen",
+               "description": "Dieser Fußsoldat bevorzugt derzeit die Verwendung einer Haupthandwaffe mit einer Nebenhandwaffe. Klick um zu ändern!"
+            },
+            "one_handed_knight": {
+               "display_name": "Waffe und Schild bevorzugen",
+               "description": "Dieser Ritter bevorzugt derzeit die Verwendung einer Haupthandwaffe und eines Schildes. Klick um zu ändern!"
+            },
+            "two_handed_knight": {
+               "display_name": "Stangenwaffen bevorzugen",
+               "description": "Dieser Ritter bevorzugt derzeit eine Zweihandwaffe. Klick um zu ändern!"
+            },
+            "bow_archer": {
+               "display_name": "Bögen bevorzugen",
+               "description": "Dieser Bogenschütze bevorzugt derzeit einen Bogen. Klick um zu ändern!"
+            },
+            "crossbow_archer": {
+               "display_name": "Armbrüste bevorzugen",
+               "description": "Dieser Bogenschütze bevorzugt derzeit eine Armbrust. Klick um zu ändern!"
+            }
+         }
+      },
+      "buffs": {
+         "hamstrung": {
+            "display_name": "Gelähmt",
+            "description": "Langsame Bewegung durch präzise gezielte Wunden."
+         },
+         "out_of_balance": {
+            "description": "Verursacht weniger Schaden durch Ungleichgewicht.",
+            "display_name": "Aus dem Gleichgewicht"
+         },
+         "lightweight_gear": {
+            "display_name": "Leichte Ausrüstung",
+            "description": "Dieser Hearthling trägt eine leichtere und agilere Ausrüstung!"
+         },
+         "fracture": {
+            "description": "Die Rüstung wurde durch einen Schmetterschaden reduziert.",
+            "display_name": "Bruch"
+         },
+         "open_wounds": {
+            "description": "Blutet alle 10 Minuten 6 Gesundheitspunkte für 40 Minuten.",
+            "display_name": "Offene Wunden"
+         },
+         "shaken": {
+            "description": "Mut wurde reduziert, es ist wahrscheinlicher das er verzweifelt und weggeläuft.",
+            "display_name": "Erschüttert"
+         },
+         "major_fracture": {
+            "display_name": "Großer Bruch",
+            "description": "Die Rüstung wurde durch einen Schmetterschaden stark reduziert."
+         },
+         "minor_fracture": {
+            "display_name": "Kleiner Bruch",
+            "description": "Die Rüstung wurde durch einen Schmetterschaden leicht reduziert."
+         },
+         "major_hamstrung": {
+            "display_name": "Starke Lähmunh",
+            "description": "Sehr langsame Bewegung durch präzise gezielte Wunden."
+         },
+         "minor_hamstrung": {
+            "display_name": "Geringe Lähmung",
+            "description": "Etwas langsamere Bewegung durch präzise gezielte Wunden."
+         },
+         "minor_open_wounds": {
+            "display_name": "Kleine offene Wunden",
+            "description": "Blutet alle 10 Minuten 3 Gesundheitspunkte für 40 Minuten."
+         },
+         "major_open_wounds": {
+            "display_name": "Große offene Wunden",
+            "description": "Blutet alle 10 Minuten 10 Gesundheitspunkte für 40 Minuten."
+         },
+         "minor_out_of_balance": {
+            "display_name": "Etwas aus dem Gleichgewicht",
+            "description": "Verursacht etwas weniger Schaden durch Ungleichgewicht."
+         },
+         "major_out_of_balance": {
+            "display_name": "Stark aus dem Gleichgewicht",
+            "description": "Verursacht wesentlich weniger Schaden durch Ungleichgewicht."
+         },
+         "major_shaken": {
+            "display_name": "Sehr erschüttert",
+            "description": "Mut wurde stark reduziert, es ist sehr wahrscheinlich das er verzweifelt und weggeläuft."
+         },
+         "minor_shaken": {
+            "display_name": "Leicht erschüttert",
+            "description": "Mut wurde leicht reduziert, es könnte passieren, dass er verzweifelt und wegläuft."
+         },
+         "stunned": {
+            "ice_trap": {
+               "display_name": "Gefroren!",
+               "description": "Kann sich nicht bewegen! Betäubt von einer Eisfalle!"
+            }
+         },
+         "using_crossbow": {
+            "display_name": "Verwendet eine Armbrust",
+            "description": "Die Rüstungsdurchdringung ist erhöht!"
+         },
+         "decoy": {
+            "display_name": "Abgelenkt",
+            "description": "Abgelenkt von einer Lockfalle!"
+         },
+         "not_in_water": {
+            "display_name": "Auf dem Land",
+            "description": "Diese Kreatur ist nicht wirklich an Land angepasst ... Das hat Konsequenzen!"
+         }
       }
    },
    "jobs": {
+      "footman": {
+         "footman_description": {
+            "level_1_data": {
+               "training_perk_name": "Kampftraining",
+               "training_perk_description": "Ein Fußsoldat kann mit Dummies bis zu Level 3 trainieren und das zulässige Limit der Trainingsausrüstung um 2 erhöhen"
+            }
+         }
+      },
+      "archer": {
+         "archer_description": {
+            "level_1_data": {
+               "training_perk_name": "Bogenschießen Training",
+               "training_perk_description": "Ein Bogenschütze kann mit Dummies bis zu Level 3 trainieren und erhöht das zulässige Limit der Trainingsausrüstung um 1"
+            }
+         }
+      },
+      "knight": {
+         "knight_description": {
+            "level_1_data": {
+               "training_perk_name": "Knappen Training",
+               "training_perk_description": "Ein Ritter kann mit Dummies bis zu Level 3 trainieren und das zulässige Limit der Trainingsausrüstung um 1 erhöhen"
+            }
+         }
+      },
       "herbalist": {
          "recipes": {
+            "refined_fungi_name": "Pilzverfeinerung",
             "moonbell_transmute_recipe": {
                "recipe_name": "Mondglocken Samen (x3)",
                "description": "Trennt Samen von den Kräutern",
@@ -74,11 +346,204 @@
                "recipe_name": "Marmorsprossen Samen (x3)",
                "description": "Trennt Samen von den Steinen",
                "flavor": "Nur eine geschickte Hand kann die schwächeren Samen ernten, aber die Steine gehen dabei verloren."
+            },
+            "marblesprout_drying_recipe": {
+               "recipe_name": "Marmorstein",
+               "description": "Trockene Marmorsprossenblüten bilden ein Stück Stein, das in kunstvollen Möbeln verwendet wird.",
+               "flavor": "Es ist ein wunderbarer Stein!"
+            },
+            "algae_drying_recipe": {
+               "recipe_name": "Getrocknete Alge",
+               "description": "Getrocknete und dünn gepresste Algenblätter, die als Kraut verwendet werden können.",
+               "flavor": "Es wird auch beim Kochen verwendet!"
+            },
+            "bolete_colony_recipe": {
+               "recipe_name": "Röhrling-Kolonie (x3)",
+               "description": "Verwende vorhandene Pilze, um weitere Kolonien zu bilden, die zu neuen Pilzen heranwachsen können.",
+               "flavor": ""
+            },
+            "chanterelle_colony_recipe": {
+               "recipe_name": "Pfifferling-Kolonie (x3)",
+               "description": "Verwende vorhandene Pilze, um weitere Kolonien zu bilden, die zu neuen Pilzen heranwachsen können.",
+               "flavor": ""
+            },
+            "winter_morel_colony_recipe": {
+               "recipe_name": "Wintermorchel-Kolonie (x3)",
+               "description": "Verwende vorhandene Pilze, um weitere Kolonien zu bilden, die zu neuen Pilzen heranwachsen können.",
+               "flavor": ""
+            },
+            "desert_truffle_colony_recipe": {
+               "recipe_name": "Wüstentrüffel-Kolonie (x3)",
+               "description": "Verwende vorhandene Pilze, um weitere Kolonien zu bilden, die zu neuen Pilzen heranwachsen können.",
+               "flavor": ""
+            },
+            "legendary_parchment_recipe": {
+               "recipe_name": "Vergoldetes Papier",
+               "description": "Zarte und kostbare Blätter mit dekoriertem Pergament für 'Der Spaziergang von Cid'.",
+               "flavor": "So kompliziert und doch so zerbrechlich..."
+            }
+         },
+         "herbalist_hood": {
+            "display_name": "Kräuterarzt Kapuze",
+            "description": "Eine schützende Kopfbedeckung für Wüstenärzte."
+         }
+      },
+      "engineer": {
+         "recipes": {
+            "mechanisms_name": "Maschinen & Mechanismen",
+            "bronze_crossbow_recipe": {
+               "recipe_name": "Bronzearmbrust",
+               "description": "Eine starke Fernkampfwaffe, die langsam aber effizient ist, um feindliche Rüstungen zu knacken."
+            },
+            "steel_crossbow_recipe": {
+               "recipe_name": "Stahlarmbrust",
+               "description": "Nicht schnell, aber eine starke, mächtige mechanische Waffe, um Rüstungen zu durchdringen."
+            },
+            "legendary_chainmail_recipe": {
+               "recipe_name": "Silberhettenhemd Glied",
+               "description": "Für den Kettenpanzer der Vanguard zusammengebundene silberne Kettenhemdteile.",
+               "flavor": "Kann Spuren von Gold enthalten"
+            },
+            "legendary_mace_recipe": {
+               "recipe_name": "Der aufsteigende Stern",
+               "description": "Eine beeindruckende und mächtige Ritterwaffe.",
+               "flavor": "Konstruiert um jedes Rüstungsstück zu zerstören"
+            },
+            "water_gate_recipe": {
+               "recipe_name": "Kupfernes Wassertor",
+               "description": "Erstelle ein kleines Sechs-Wege-Tor, das für einen kontrollierten Flüssigkeitsfluss geöffnet oder geschlossen werden kann.",
+               "flavor": ""
+            },
+            "water_pump_recipe": {
+               "recipe_name": "Kupferne Wasserpumpe",
+               "description": "Erstelle eine Pumpe, die Flüssigkeiten aus der Ablageebene entnimmt und an ihrem oberen Schaft entlässt.",
+               "flavor": "Sie können Pumpen stapeln, um Wasser höher und höher zu transportieren!"
+            },
+            "water_gate_greater_recipe": {
+               "recipe_name": "Größeres Wassertor",
+               "description": "Bauen ein größeres und widerstandsfähigeres Tor zur Steuerung des Flüssigkeitsflusses.",
+               "flavor": ""
+            },
+            "axle_horizontal_recipe": {
+               "recipe_name": "Horizontale Achse (x3)",
+               "description": "Erstelle eine rotierende Welle, die mechanische Kraft horizontal bringen kann.",
+               "flavor": ""
+            },
+            "axle_vertical_recipe": {
+               "recipe_name": "Vertikale Achse (x3)",
+               "description": "Erstelle eine rotierende Welle, die mechanische Kraft vertikal aufnehmen kann.",
+               "flavor": ""
+            },
+            "axle_gear_box_recipe": {
+               "recipe_name": "Getriebe",
+               "description": "Erstelle ein Gerät, mit dem Sie die mechanische Leistung in jede Richtung umleiten können.",
+               "flavor": "Es kann während des Baus in Wände platziert werden - wie Fenster oder Türen."
+            }
+         }
+      },
+      "potter": {
+         "recipes": {
+            "bone_clay_recipe": {
+               "recipe_name": "Hügel aus Knochenlehm",
+               "description": "Erforderlich für die Herstellung von Porzellan und wunderschön verzierter Keramik.",
+               "flavor": ""
+            }
+         }
+      },
+      "geomancer": {
+         "recipes": {
+            "legendary_silk_recipe": {
+               "recipe_name": "Waldseide",
+               "description": "Gold und Seide zusammengewebt für den Umhang des Elfenkönigs.",
+               "flavor": "No regular weaver can weave with natural magic like elves do"
+            },
+            "legendary_tome_recipe": {
+               "recipe_name": "Klerikerfoliant, 'Der Spaziergang von Cid'",
+               "description": "Ein legendärer Foliant für die Anhänger der Kirche des Überflusses.",
+               "flavor": "Auf den Wegen von Cid soll Heilung erfolgen"
+            }
+         }
+      },
+      "mason": {
+         "recipes": {
+            "utility_name": "Werkzeuge",
+            "legendary_headpiece_recipe": {
+               "recipe_name": "Gefallener Stern",
+               "description": "Eine starke und tödliche Kopfbedeckung für den aufsteigenden Stern.",
+               "flavor": "Hergestellt aus Gestein, das direkt aus einem Meteoriten gewonnen wurde ... oder auch nicht"
+            },
+            "stone_market_stall_recipe": {
+               "recipe_name": "Steinmarktstand",
+               "description": "Händler können diesen Stand besuchen, um Waren zu kaufen und zu verkaufen",
+               "flavor": "All diese einsamen Kaufleute ... woher kommen sie alle?"
+            },
+            "stone_safety_standard_recipe": {
+               "recipe_name": "Steinsicherheitsstandard",
+               "description": "Wird verwendet, um ein Sicherheitspunkt festzulegen."
             }
          }
       },
       "blacksmith": {
          "recipes": {
+            "blacksmith_fuel_oven_recipe": {
+               "recipe_name": "Brennofen",
+               "description": "Benötigt für die Veredlung bestimmte Materialien wie Holz und Kohle.",
+               "flavor": "Ein starkes Feuer erfordert den reinsten Brennstoff. Und das fängt mit harter Arbeit an. -Lucan Varius, Feuerkünstler"
+            },
+            "blacksmith_crucible_recipe": {
+               "recipe_name": "Tiegel",
+               "description": "Kann zum Schmelzen und Bearbeiten von Metallen oder zum Erstellen von Legierungen verwendet werden.",
+               "flavor": "Feuer und Stein sollen dir Metall geben, aber mit Metall und Metall sollst du ... Nun, noch mehr Metall erhalten. -Lucan Varius, Feuerkünstler"
+            },
+            "blacksmith_forge_recipe": {
+               "recipe_name": "Schmiedeofen",
+               "description": "Wird verwendet zum Erhitzen und Schmelzen von Erz in Metallbarren."
+            },
+            "blacksmith_forge_advanced_recipe": {
+               "recipe_name": "Verbesserter Schmiedeofen",
+               "description": "Verbessert und effizienter als herkömmliche Öfen, ist dieser Ofen heiß genug, um Edelmetalle zu schmelzen.",
+               "flavor": "Alles, was Gold ist, glitzert nicht; aber wenn doch, wird es in einem guter Ofen schmelzen. -Lucan Varius, Feuerkünstler"
+            },
+            "blacksmith_workbench_advanced_recipe": {
+               "recipe_name": "Verbesserter Schmiedeamboss",
+               "description": "Dieser unglaubliche Amboss kann das Metall lange genug heiß halten, selbst für die kompliziertesten und anspruchsvollsteb Handwerke.",
+               "flavor": "Die Balance zwischen Heizen und Hämmern ist von wesentlicher Bedeutung. Oder mach einfach beide auf einmal. -Lucan Varius, Feuerkünstler"
+            },
+            "charcoal_recipe": {
+               "recipe_name":  "Holzkohlestück (x3)",
+               "description": "Heizen Sie Holz in Abwesenheit von Sauerstoff, um Holzkohle zu gewinnen, einen guten Brennstoff.",
+               "flavor": "Experten nennen es 'langsame Pyrolyse'. Ich nenne es GROßES LEUCHTFEUER!"
+            },
+            "coke_recipe": {
+               "recipe_name": "Großes Koksstück (x3)",
+               "description": "Heize Kohleklumpen, ohne sie zu verbrennen, um Koks, einen guten Brennstoff, herzustellen.",
+               "flavor": "Kochen Sie mit Kohle oder Kokskohle, um mit Koks zu kochen."
+            },
+            "bulk_charcoal_recipe": {
+               "recipe_name": "Holzkohlestück (x8)",
+               "description": "Dank seinen Fähigkeiten kann der Schmied effizienter Holz verbrennen, wodurch mehr Holzkohle entsteht.",
+               "flavor": "Es wird 5% weniger verschwendet!"
+            },
+            "bulk_coke_recipe": {
+               "recipe_name": "Großes Koksstück (x10)",
+               "description": "Durch die Beherrschung des Handwerks hat der Schmied maximale Effizienz beim Kochen von Kohle erreicht.",
+               "flavor": "Koks für alle!"
+            },
+            "bulk_copper_ingot_recipe": {
+               "recipe_name": "Kupferbarren (x2)",
+               "description": "Mit einem verbesserten Ofen kann der Schmied Kupfererz effizienter einschmelzen.",
+               "flavor": ""
+            },
+            "bulk_tin_ingot_recipe": {
+               "recipe_name": "Zinnbarren (x2)",
+               "description": "Mit einem verbesserten Ofen kann der Schmied Zinnerz effizienter einschmelzen.",
+               "flavor": ""
+            },
+            "bulk_iron_ingot_recipe": {
+               "recipe_name": "Eisenbarren (x2)",
+               "description": "Mit einem verbesserten Ofen kann der Schmied Eisenerze effizienter einschmelzen.",
+               "flavor": ""
+            },
             "copper_wall_lantern_recipe": {
                "recipe_name": "Kupferne Wandlaterne",
                "description": "Eine schöne Laterne. Platziere Sie an Gebäuden, um nachts Licht zu spenden.",
@@ -88,6 +553,157 @@
                "recipe_name": "Kupferne Gartenlaterne",
                "description": "Eine kleine Laterne, die auf den Boden gelegt wird. Geeignet um Wege oder kleine Gärten zu beleuchten.",
                "flavor": "Fast magisch..."
+            },
+            "iron_helmet_recipe": {
+               "recipe_name": "Eisenhelm",
+               "description": "Noch mehr Schutz für den Kopf."
+            },
+            "iron_platemail_recipe": {
+               "recipe_name": "Eiserner Plattenpanzer",
+               "description": "Ein voller Eisenanzug für einen neuen, vielversprechenden Ritter.",
+               "flavor": "Jeder Ritter beginnt irgendwo..."
+            },
+            "steel_helm_recipe": {
+               "recipe_name": "Stahlhelm",
+               "description": "Starker und nicht so schwerer Schutz für den Kopf."
+            },
+            "steel_chainmail_recipe": {
+               "recipe_name": "Stählerner Kettenpanzer",
+               "description": "Ein sehr schicker und starker Kettenpanzer für einen Fußsoldat."
+            },
+            "light_iron_shield_recipe": {
+               "recipe_name": "Leichter Eisenschild",
+               "description": "Nicht so schwer, aber auch nicht so stark."
+            },
+            "light_steel_shield_recipe": {
+               "recipe_name": "Leichter Stahlschild",
+               "description": "Perfektes Gleichgewicht zwischen Schutz und Gewicht.",
+               "flavor": "Die beste Verteidigung für einen Fußsoldat!"
+            },
+            "silver_shield_recipe": {
+               "recipe_name": "Silberner Schild",
+               "description": "Ein sehr starker Ritterschild aus Silber.",
+               "flavor": "Fast schon eine legendäre Verteidigung..."
+            },
+            "bronze_axe_recipe": {
+               "recipe_name": "Bronzeaxt",
+               "description": "Eine schwerere Alternative als Startwaffe. Kann Wunden öffnen."
+            },
+            "bronze_sword_recipe": {
+               "recipe_name": "Bronzeschwert",
+               "description": "Einfach, aber besser als ein geschärfter Stock. Kann Gegner lähmen."
+            },
+            "iron_battle_axe_recipe": {
+               "recipe_name": "Eiserne Streitaxt",
+               "description": "Besonders groß, wenn du etwas mehr Schlagkraft brauchst. Kann Wunden öffnen.",
+               "flavor": "'Sind das alle?' schrie Rovnar 'Sie könnten genauso gut eine Linie machen'"
+            },
+            "iron_sword_recipe": {
+               "recipe_name": "Eisenschwert",
+               "description": "Eine starke und ausgewogene Waffe. Kann Gegner lähmen.",
+               "flavor": "'ICH BIN EUER KÖNIG!' schrie Regnar Icevulf und schwang sein Schwert."
+            },
+            "iron_short_sword_recipe": {
+               "recipe_name": "Eisernes Kurzschwert",
+               "description": "Eine kurze, aber effiziente Zweitwaffe.",
+               "flavor": "Der erste Gefährte eines Ritters"
+            },
+            "steel_mace_recipe": {
+               "recipe_name": "Stahl-Streitkolben",
+               "description": "Eine starke und zuverlässige Waffe für einen Ritter.",
+               "flavor": "Es kann Rüstung durchbrechen!"
+            },
+            "iron_axe_recipe": {
+               "recipe_name": "Eisenaxt",
+               "description": "Eine kurze und billige, aber effiziente Waffe.",
+               "flavor": "Kurz. Schnell. Eckig."
+            },
+            "steel_axe_recipe": {
+               "recipe_name": "Stahlaxt",
+               "description": "Sehr gut zum Hacken und Schlitzen.",
+               "flavor": "'...und ein Hearthling nach dem anderen warf sie über die Schildmauer.' - Die Valin-Saga"
+            },
+            "bronze_hatchet_recipe": {
+               "recipe_name": "Zweithand Bronzebeil",
+               "description": "Für das Parieren von Angriffen und für den Versuch von Gegenangriffen. Bringt Gegner aus dem Gleichgewicht.",
+               "flavor": ""
+            },
+            "iron_hatchet_recipe": {
+               "recipe_name": "Zweithand Eisenbeil",
+               "description": "Eine robuste kleine Axt zum Parieren und Angreifen. Bringt Gegner aus dem Gleichgewicht.",
+               "flavor": ""
+            },
+            "steel_dagger_recipe": {
+               "recipe_name": "Zweithand Stahldolch",
+               "description": "Eine kleine und scharfe Waffe für Angriff und Verteidigung. Bringt Gegner aus dem Gleichgewicht.",
+               "flavor": "'Es gibt nur wenige Dinge, die Sie so leicht verbergen können' - O.A.E Richtlinien"
+            },
+            "steel_lance_recipe": {
+               "recipe_name": "Stahllanze",
+               "description": "Eine lange und starke Ritterstangenwaffe, die mehrere Gegner beunruhigt. Erschüttert ihre Herzens!"
+            },
+            "silver_halberd_recipe": {
+               "recipe_name": "Silberne Hellebarde",
+               "description": "Eine komplizierte und mächtige Ritterwaffe. Erschüttert ihre Herzen!",
+               "flavor": ""
+            },
+            "silver_short_sword_recipe": {
+               "recipe_name": "Silbernes Kurzschwert",
+               "description": "Eine zuverlässige Waffe für einen erfahrenen Ritter.",
+               "flavor": "'Und so glänzte seine Klinge unter der Sonne, denn sie bestand nicht aus Stahl, sondern aus reinstem Silber' - Die Spaziergänge von Cid"
+            },
+            "silver_mace_recipe": {
+               "recipe_name": "Silberhammer",
+               "description": "Stumpf. Stark. Nicht zu stoppen. Kann Rüstung brechen.",
+               "flavor": "Lichtbringer"
+            },
+            "silver_mail_recipe": {
+               "recipe_name": "Silberner Plattenpanzer",
+               "description": "Werde zum echten Ritter in glänzender Rüstung."
+            },
+            "legendary_buckle_recipe": {
+               "recipe_name": "Verzierte Schnalle",
+               "description": "Ein wunderschön Satz gravierterSchnallen für den Umhang des Elfenkönigs.",
+               "flavor": "Kann auch für einen extrem teuren Gürtel verwendet werden"
+            },
+            "legendary_mail_recipe": {
+               "recipe_name": "Kettenhemd der Vorhut",
+               "description": "Kettenrüstung, die denen der königlichen Vorhut des Imperiums ähnelt.",
+               "flavor": "Man sagt, der Umhang war ihr Untergang"
+            },
+            "refined_name": "Verbesserung",
+            "blacksmith_workbench_recipe": {
+               "recipe_name": "Schmiedeamboss",
+               "description": "Wird vom Schmied benutzt, um die meisten ihrer Waren herzustellen."
+            }
+         },
+         "blacksmith_fuel_oven": {
+            "blacksmith_fuel_oven_ghost": {
+               "display_name": "Brennofen",
+               "description": "Wird vom Schmied zur Veredelung von Materialien, durch kontrolliertes Erhitzen, verwendet."
+            }
+         },
+         "blacksmith_crucible": {
+            "blacksmith_crucible_ghost": {
+               "display_name": "Tiegel",
+               "description": "Wird vom Schmied zum Schmelzen und Bearbeiten von Metallen oder zum Herstellen von Legierungen verwendet."
+            }
+         },
+         "blacksmith_forge": {
+            "blacksmith_forge_ghost": {
+               "display_name": "Schmiedeofen"
+            }
+         },
+         "blacksmith_workbench_advanced": {
+            "blacksmith_workbench_advanced_ghost": {
+               "display_name": "Verbesserter Schmiedeamboss",
+               "description": "Verbesserte Version des Ambosses, der vom Schmied zum Herstellen verwendet wird."
+            }
+         },
+         "blacksmith_forge_advanced": {
+            "blacksmith_forge_advanced_ghost": {
+               "display_name": "Verbesserter Schmiedeofen",
+               "description": "Ein verbesserter und effizienterer Ofen zum Schmelzen von Metallen."
             }
          }
       },
@@ -104,34 +720,175 @@
       "cook": {
          "recipes": {
             "nutty_poultry_recipe": {
-               "recipe_name": "Stirred Poultry & Nuts",
-               "description": "Stirred and fried large poultry slices with spices and nuts.",
-               "flavor": "Very popular among the hearthlings from the East!"
+               "recipe_name": "Verrührtes Geflügel mit Nüsse",
+               "description": "Verrührte und gebratene große Geflügelscheiben mit Gewürzen und Nüssen.",
+               "flavor": "Sehr beliebt bei Hearthlingen aus dem Osten!"
             },
             "cherry_tart_recipe": {
-               "recipe_name": "Cherry Tart",
-               "description": "A delicious and fresh dessert for lazy afternoons.",
+               "recipe_name": "Kirschtorte",
+               "description": "Ein köstlicher und frischer Nachtisch für entspannte Nachmittage.",
                "flavor": ""
             },
             "pie_cherry_recipe": {
-               "recipe_name": "Sweet Cherry Pie",
-               "description": "A tasty pie that is quite difficult to make.",
-               "flavor": "Slightly sour."
+               "recipe_name": "Süßer Kirschkuchen",
+               "description": "Eine leckere Torte, die ziemlich schwierig zu machen ist.",
+               "flavor": "Etwas sauer"
             },
             "nut_pralines_recipe": {
-               "recipe_name": "Nut Pralines",
-               "description": "Crunchy nuts baked with a delightful caramelized sugar crust.",
-               "flavor": "'This is SO GOOD' - Mer Burlyhands"
+               "recipe_name": "Nuss-Pralinen",
+               "description": "Knusprige Nüsse mit einer herrlich karamellisierten Zuckerkruste gebacken.",
+               "flavor": "'Das ist SO GUT' - Mer Burlyhands"
             },
             "huntsman_banquet_recipe": {
-               "recipe_name": "Huntsman's Banquet",
-               "description": "An exquisite cut of venison seasoned with fruity forest flavors.",
+               "recipe_name": "Bankett des Jägers",
+               "description": "Ein exquisiter Wildbret mit fruchtigen Waldaromen.",
                "flavor": ""
             },
             "cooked_nuts_recipe": {
-               "recipe_name": "Cooked Nuts",
-               "description": "Shaven and tenderly cooked edible seeds like pines and acorns.",
+               "recipe_name": "Gekochte Nüsse",
+               "description": "Geschälte und zart gekochte essbare Samen wie Kiefern und Eicheln.",
                "flavor": ""
+            },
+            "broth_recipe": {
+               "recipe_name": "Brühe",
+               "description": "Eine sehr nahrhafte und sättigende Brühe und ist sowohl eine Zutat als auch eine Mahlzeit für sich.",
+               "flavor": "Es ist jedoch nicht gerade lecker..."
+            },
+            "bone_marrow_recipe": {
+               "recipe_name": "Knochenmark",
+               "description": "Extrem nahrhafter Braten aus Tierknochen.",
+               "flavor": "Eine Mahlzeit für verzweifelte Zeiten."
+            },
+            "boiled_shrooms_recipe": {
+               "recipe_name": "Gekochte Pilze",
+               "description": "Durch das Kochen von Pilzen werden die meisten Unreinheiten entfernt und ihre Konsistenz verbessert.",
+               "flavor": ""
+            },
+            "shroom_omelette_recipe": {
+               "recipe_name": "Pilz-Omelett",
+               "description": "Ein sättigendes und leckeres Gericht, das auch leicht zubereitet werden kann.",
+               "flavor": ""
+            },
+            "roast_steak_recipe": {
+               "recipe_name": "Gebratenes Steak",
+               "description": "Das wertvollste und leckerste Stück Fleisch, langsam am Feuer gegrillt.",
+               "flavor": "Yum..."
+            },
+            "roast_fish_recipe": {
+               "recipe_name": "Stück gebratener Fisch",
+               "description": "Eine nahrhafte und würzige Mahlzeit.",
+               "flavor": "Direkt aus dem Meer! Oder See. Oder dem nahegelegensten Bach..."
+            },
+            "fish_stew_recipe": {
+               "recipe_name": "Eigenartiger Fischeintopf",
+               "description": "Warm und nahrhaft.",
+               "flavor": "Nicht riechen, einfach essen!"
+            },
+            "fish_pot_pie_recipe": {
+               "recipe_name": "Fischpastete",
+               "description": "Eine köstliche Torte mit Fischfleisch und Pilzfüllung.",
+               "flavor": ""
+            },
+            "raw_rice_recipe": {
+               "recipe_name": "Sack roher Reis",
+               "description": "Leckere Körner, bereit in anderen Rezepten verwendet zu werden.",
+               "flavor": "Wer wusste, dass Gras so lecker sein könnte?"
+            },
+            "cooked_rice_recipe": {
+               "recipe_name": "Gekochter Reis",
+               "description": "Perfekt gekocht und klebrig genug.",
+               "flavor": ""
+            },
+            "dumpling_salmon_recipe": {
+               "recipe_name": "Lachsknödel",
+               "description": "Eine kleine Brottasche gefüllt mit Lachs.",
+               "flavor": "Eine leckere Delikatesse der Nordallianz"
+            },
+            "fisherman_soup_recipe": {
+               "recipe_name": "Fischersuppe",
+               "description": "Eine herzhafte und würzige Suppe, die recht sättigend ist.",
+               "flavor": "Sehr traditionell von den Ascendancy"
+            },
+            "catfish_tagine_recipe": {
+               "recipe_name": "Wels Eintopf",
+               "description": "Welsfleisch und Gemüse brodelten in einem Tontopf.",
+               "flavor": "Eine Oasen-Spezialität der Kinder von Rayya"
+            },
+            "sushi_recipe": {
+               "recipe_name": "Sushi",
+               "description": "Eine köstliche Spezialität aus dem Herzen eines weit entfernten Landes.",
+               "flavor": "Ein Rezept, das von den Karawanen Rayyas Kinder-Karawanen bekannt gemacht wurde, die den Pal'Mun überquerten"
+            },
+            "sushi_vegetarian_recipe": {
+               "recipe_name": "Gemüse-Sushi",
+               "description": "Eine vegetarische Alternative des exotischen Gerichts.",
+               "flavor": "Jetzt kann jeder Sushi genießen!"
+            },
+            "legendary_ink_recipe": {
+               "recipe_name": "Heilige Tinte",
+               "description": "Spezielle und vergoldete Tinte für illuminierte Handschriften in 'Der Spaziergang von Cid'.",
+               "flavor": "Es ist eine sehr komplizierte Mischung. Frag einfach nicht"
+            }
+         },
+         "cook_mill_powered": {
+            "cook_mill_powered_ghost": {
+               "display_name": "Angetriebene Mühle",
+               "description": "Kann von einem Koch zum Mahlen verwendet werden. Erfordert mechanische Arbeitskraft."
+            }
+         }
+      },
+      "carpenter": {
+         "recipes": {
+            "long_bow_recipe": {
+               "recipe_name": "Langbogen",
+               "description": "Ein längerer Querschnitt macht ihn effizienter als einen durchschnittlichen Bogen."
+            },
+            "crossbow_recipe": {
+               "recipe_name": "Einfache Armbrust",
+               "description": "Nicht so zuverlässig wie eine mit Zahnrädern gefertigte Armbrust, aber dennoch stark genug, um eine Rüstung zu durchdringen."
+            },
+            "composite_bow_recipe": {
+               "recipe_name": "Verbundbogen",
+               "description": "Mit einem Kern aus Knochen und Muskelfasern ermöglicht die Dehnung kraftvolle Pfeile.",
+               "flavor": "Der Jäger und die Jagd als eins"
+            },
+            "training_dummy_recipe": {
+               "recipe_name": "Trainingspuppe",
+               "description": "Es ist am besten, mit diesem freundlichen Kerl zu üben.",
+               "flavor": "Erfordert einen Ingenieur für Reparaturen."
+            },
+            "legendary_handle_recipe": {
+               "recipe_name": "Stabiler Griff",
+               "description": "Der starke Arm des aufsteigenden Sterns.",
+               "flavor": "Langer und kunstvoller Holzgriff mit hochwertigem Leder"
+            }
+         }
+      },
+      "weaver": {
+         "recipes": {
+            "legendary_hood_recipe": {
+               "recipe_name": "Umhang des Elfenkönigs",
+               "description": "Eine wunderschöne Kapuze, die den besten Bogenschützen verdient.",
+               "flavor": "Niemand kann wirklich lesen, was darauf steht. Sieht aber cool aus."
+            },
+            "legendary_cape_recipe": {
+               "recipe_name": "Kaiserlicher Umhang",
+               "description": "Ein majestätischer Umhang für den Kettenpanzer der Vorhut.",
+               "flavor": "Umhänge wie diese wurden von der Vorhut stolz getragen"
+            }
+         }
+      },
+      "trapper": {
+         "fish_trap": {
+            "display_name": "Fischfalle",
+            "description": "Fische sicher fangen. Schwimmt, wenn es im Wasser platziert wird."
+         }
+      },
+      "shepherd": {
+         "shepherd_outfit": {
+            "shepherd_hood": {
+               "display_name": "Hirtenhaube",
+               "description": "Eine wollene Kapuze, die der Hirte benutzt."
             }
          }
       }
@@ -141,11 +898,15 @@
          "seeds": {
             "moonbell_seeds": {
                "display_name": "Mondglocken Samen",
-               "description": "Lerne Mondglocken zu züchten."
+               "description": "Lerne Mondglocken anzubauen."
             },
             "marblesprout_seeds": {
                "display_name": "Marmorsprossen Samen",
-               "description": "Lerne Marmorsprossen zu züchten."
+               "description": "Lerne Marmorsprossen anzubauen."
+            },
+            "cotton_seeds": {
+               "display_name": "Baumwollsamen",
+               "description": "Lerne Baumwolle anzubauen."
             }
          }
       },
@@ -259,20 +1020,130 @@
             "description": "Marblesprout Crop Description",
             "growth_stage": {
                "000": {
-                  "name": "Marmorsprossen Sämling",
+                  "name": "Marmorsproßen Sämling",
                   "description": "Voller Potenzial."
                },
                "001": {
-                  "name": "Marmorsprossen Sprosse",
+                  "name": "Marmorsproßen Sprosse",
                   "description": "Stummlig"
                },
                "002": {
-                  "name": "Marmorsprossen Knospe",
+                  "name": "Marmorsproßen Knospe",
                   "description": "Unbeholfene, schlaksige Phase."
                },
                "003": {
-                  "name": "Marmorsprossen",
+                  "name": "Marmorsproßen",
                   "description": "Schönheit ist ihre eigene Belohnung. (Felsenfest)"
+               }
+            }
+         },
+         "cotton_crop": {
+            "display_name": "Baumwolle",
+            "description": "Die Faser dieser Pflanze kann in einen Faden gesponnen werden",
+            "growth_stage": {
+               "000": {
+                  "name": "Baumwolle Sämling",
+                  "description": "Hat eine lange Reise in die Zukunft."
+               },
+               "001": {
+                  "name": "Baumwolle Sprosse",
+                  "description": "Das Leben fängt gerade erst an..."
+               },
+               "002": {
+                  "name": "Baumwolle Knospe",
+                  "description": "Stetig wachsend! Sollte bald anfangen zu blühen!"
+               },
+               "003": {
+                  "name": "Baumwollblüte",
+                  "description": "Es blüht! Genieße es solange es geht..."
+               },
+               "004": {
+                  "name": "Verblassende Baumwollblüte",
+                  "description": "Die Blumen verblassen bereits..."
+               },
+               "005": {
+                  "name": "Unreife Baumwolle",
+                  "description": "Die Pflanze trocknet und die Baumwolle sollte bald reif sein!"
+               },
+               "006": {
+                  "name": "Reife Baumwolle",
+                  "description": "Bereit für die Ernte!"
+               },
+               "022": {
+                  "name": "Verrottende Baumwolle"
+               }
+            }
+         },
+         "birch_tree_crop": {
+            "growth_stage": {
+               "000": {
+                  "name": "Birkensamen",
+                  "description": "Sogar eine schöne Birke hat bescheidene Anfänge."
+               },
+               "001": {
+                  "name": "Birken Sämling",
+                  "description": "Eine empfindliche Phase des Wachstums."
+               },
+               "002": {
+                  "name": "Birken Sproße",
+                  "description": "Auf, auf, auf geht es!"
+               },
+               "003": {
+                  "name": "Birken Schössling",
+                  "description": "Bereit auf ein größeres Grundstück übertragen zu werden."
+               }
+            },
+            "display_name": "Birken Schössling",
+            "description": "Keine Bäumen mehr? Mach dich bereit für die Wiederaufforstung!"
+         },
+         "yew_tree_crop": {
+            "growth_stage": {
+               "000": {
+                  "description": "Sogar ein großer Baum hat bescheidene Anfänge.",
+                  "name": "Eibensamen"
+               },
+               "001": {
+                  "description": "Es fängt gerade erst an.",
+                  "name": "Eiben Sämling"
+               },
+               "002": {
+                  "description": "Es ist nahe dran, sehr nah...",
+                  "name": "Eiben Sproße"
+               },
+               "003": {
+                  "description": "Bereit auf ein größeres Grundstück übertragen zu werden.",
+                  "name": "Eiben Schössling"
+               }
+            },
+            "description": "Du brauchst mehr Eibenholz? Mach dich bereit für die Wiederaufforstung!",
+            "display_name": "Eiben Schössling"
+         },
+         "paddy_crop": {
+            "display_name": "Reisfeld",
+            "description": "Reis wächst langsam, wird aber allgemein geschätzt! Erfordert ein überflutetes Farm-Grundstück, um zu wachsen.",
+            "growth_stage": {
+               "000": {
+                  "name": "Reisstummel",
+                  "description": "Vor kurzem gepflanzter Reis, braucht viel Wasser, um aufzuwachsen."
+               },
+               "001": {
+                  "name": "Reisbüschel",
+                  "description": "Es wird von Minute zu Minute größer!"
+               },
+               "002": {
+                  "name": "Reisgras",
+                  "description": "Lange Gräser sind aufgetaucht und werden bald blühen."
+               },
+               "003": {
+                  "name": "Blühender Reis",
+                  "description": "Die Gräser sind hellgrün und die windgesäten Samen trocknen bald aus."
+               },
+               "004": {
+                  "name": "Reifer Reis",
+                  "description": "Die Ohren sind getrocknet und der Reist ist bereit zur Ernte!"
+               },
+               "019": {
+                  "name": "Verrotterter Reis"
                }
             }
          }
@@ -294,40 +1165,212 @@
       "resources": {
          "wood": {
             "birch_log": {
-               "description": "Ein Holzklotz. Aus Holz gemacht.",
+               "description": "Ein Block. Gemacht aus Holz.0",
                "display_name": "Birkenholz"
             },
             "yew_log": {
                "display_name": "Eibenholz",
-               "description": "Ein Holzklotz. Aus Holz gemacht."
+               "description": "Ein Block. Gemacht aus Holz."
             },
             "parana_pine_log": {
-               "description": "Ein Holzklotz. Aus Holz gemacht.",
+               "description": "Ein Block. Gemacht aus Holz.",
                "display_name": "Parana-Kiefern-Holz"
+            },
+            "highland_pine_log": {
+               "description": "Ein Block. Gemacht aus Holz.",
+               "display_name": "Hochlandkiefernholz"
+            },
+            "willow_log": {
+               "display_name": "Weideholz",
+               "description": "Ein Block. Gemacht aus Holz."
             }
          },
          "herb": {
             "moonbell": {
                "display_name": "Mondglockenblume",
-               "description": "An herb commonly used for medicinal purposes"
+               "description": "Ein Kraut das üblicherweise für medizinische Zwecke verwendet wird"
+            },
+            "marblesprout": {
+               "display_name": "Marmorsproßen Blume",
+               "description": "Ein ungewöhnliches Kraut, das nach dem Trocknen aushärtet und zu Marmor wird."
+            },
+            "dried_algae": {
+               "display_name": "Getrocknete Alge",
+               "description": "n ihrer getrockneten und gepressten Form können Algen als Kraut verwendet werden."
+            },
+            "water_lily_white": {
+               "display_name": "Weiße Seerose",
+               "description": "Diese wunderschöne Blume aus den Feuchtgebieten kann als Kraut verwendet werden."
+            },
+            "water_lily_yellow": {
+               "description": "Diese wunderschöne Blume aus den Feuchtgebieten kann als Kraut verwendet werden.",
+               "display_name": "Gelbe Seerose"
+            },
+            "water_lily_purple": {
+               "display_name": "Lila Seerose",
+               "description": "Diese wunderschöne Blume aus den Feuchtgebieten kann als Kraut verwendet werden."
+            },
+            "water_lily_pink": {
+               "display_name": "Rosa Seerose",
+               "description": "Diese wunderschöne Blume aus den Feuchtgebieten kann als Kraut verwendet werden."
             }
          },
          "stone": {
             "marble_stone": {
                "display_name": "Marmorstein",
-               "description": "Ein marmorner Stein!"
+               "description": "Wird vom Steinmetz verwendet, um wirklich schöne Steinarbeiten zu machen!"
+            },
+            "feldspar_stone": {
+               "display_name": "Feldspat",
+               "description": "Ein nicht ganz so gewöhnlicher Fels, Feldspat kann zur Herstellung von Porzellan verwendet werden"
+            },
+            "limestone_stone": {
+               "display_name": "Kalkstein",
+               "description": "Ein schwerer, gewöhnlicher Felsen"
+            },
+            "sandstone_stone": {
+               "display_name": "Sandstein",
+               "description": "Ein schwerer, gewöhnlicher Felsen"
+            },
+            "slate_stone": {
+               "display_name": "Schiefer",
+               "description": "Ein schwerer, gewöhnlicher Felsen"
             }
          },
          "thatch_bale": {
             "display_name": "Strohbündel",
             "description": "Trockenes Gras, das zu Futter verarbeitet oder als beim herstellen verwendet werden kann."
+         },
+         "pelt": {
+            "bitsy_spider_pelt": {
+               "display_name": "Spinnenchitin",
+               "description": "Hart, glänzend und ganz tot"
+            },
+            "grasshopper_pelt": {
+               "display_name": "Grashüpferchitin",
+               "description": "Hart, glänzend und ganz tot"
+            },
+            "scorpion_pelt": {
+               "display_name": "Skorpionchitin",
+               "description": "Hart, glänzend und ganz tot"
+            },
+            "bear_pelt": {
+               "display_name": "Bärenfell",
+               "description": "Ein großes Fell von einer wilden Kreatur."
+            }
+         },
+         "bone_material": {
+            "display_name": "Knochenmaterial",
+            "description": "Normale Knochen einer durchschnittlichen Kreatur"
+         },
+         "clay": {
+            "bone_clay_mound": {
+               "display_name": "Hügel aus Knochenlehm",
+               "description": "Verwende es in Keramik, um wirklich hübsches Porzellan herzustellen!"
+            },
+            "ball_clay_mound": {
+               "display_name": "Hügel aus Kugellehm",
+               "description": "Ein glatter, heller Ton, der häufig in der Nähe von Wasser gefunden wird. Kann zur Herstellung von Knochenlehm verwendet werden."
+            },
+            "shale_clay_mound": {
+               "display_name": "Hügel aus Schieferlehm",
+               "description": "Ist es stein? Ist es Lehm? Es kann sicherlich als beides verwendet werden!"
+            }
+         },
+         "fiber": {
+            "cotton_bundle": {
+               "display_name": "Baumwollbündel",
+               "description": "Anschmiegsam. In Faden spinnbar"
+            }
+         },
+         "coal": {
+            "piece_of_charcoal": {
+               "display_name": "Kohlestück",
+               "description": "Ein Block aus langsam gebranntem Holz, das als guter Brennstoff verwendet werden kann."
+            },
+            "everglowing_ember": {
+               "display_name": "Immerglühende Kohle",
+               "description": "So hübsch ... Es hört nie auf zu leuchten! Wird als höherwertiger Kraftstoff oder vom Magmaschmied verwendet."
+            },
+            "lump_of_coal": {
+               "display_name": "Kohleklumpen",
+               "description": "Großer Brocken fester Kohle, der als Kraftstoff guter Qualität verwendet werden kann."
+            },
+            "hunk_of_hard_coal": {
+               "display_name": "Steinkohlestück",
+               "description": "Ein großes Stück Steinkohle, Energiegeladen genug um als Kraftstoff höherer Qualität verwendet zu werden."
+            },
+            "slab_of_coke": {
+               "display_name": "Koksplatte",
+               "description": "Ein effizienter Kraftstoff guter Qualität, der aus normaler Kohle gewonnen wird."
+            },
+            "chunk_of_brown_coal": {
+               "display_name": "Braunkohlestück",
+               "description": "Eine weiche und weniger effiziente Art von Kohle, die als Brennstoff niedrigerer Qualität verwendet werden kann."
+            }
+         },
+         "fuel": {
+            "bundle_of_firewood": {
+               "description": "Holzspaltblöcke, die als Brennstoff niedrigerer Qualität verwendet werden können.",
+               "display_name": "Brennholzbündel"
+            },
+            "bit_of_peat": {
+               "display_name": "Ein bisschen Torf",
+               "description": "Organischer Rückstand in Sümpfen und Mooren. Kann als Kraftstoff niedrigerer Qualität verwendet werden."
+            }
+         },
+         "algae": {
+            "green_algae": {
+               "display_name": "Grüne Alge",
+               "description": "Algen haben viele Anwendungen, vor allem beim Kochen und bei der Kräuterkunde."
+            },
+            "red_algae": {
+               "display_name": "Rote Alge",
+               "description": "Die zum Kochen sehr begehrten roten Algen sind vielfältig einsetzbar."
+            },
+            "brown_algae": {
+               "display_name": "Braune Alge",
+               "description": "Auch als Seetang bekannt, hat viele Anwendungen in der Kräuterkunde und beim Kochen."
+            }
          }
       },
       "refined": {
          "lock": {
-            "display_name": "Sperren",
-            "description": "Wird für verschließbare Türen benötigt",
+            "display_name": "Stahlschloss",
+            "description": "Wird verwendet, um verschlossene Türen und Mechanismen herzustellen",
             "flavor": "Pass auf, dass du niemanden aussperrst"
+         },
+         "legendary_silk": {
+            "display_name": "Waldseide",
+            "description": "Gold und Seide zusammengewebt für den Umhang des Elfenkönigs."
+         },
+         "legendary_buckle": {
+            "display_name": "Verzierte Schnalle",
+            "description": "Ein wunderschön gravierter Satz Schnallen für den Umhang des Elfenkönigs."
+         },
+         "legendary_cape": {
+            "display_name": "Imperialer Umhang",
+            "description": "Ein majestätischer Umhang für die Kettenpanzer der Vorhut."
+         },
+         "legendary_chainmail": {
+            "display_name": "Silberhettenhemd Glied",
+            "description": "Für die Kettenpanzer der Vorhut zusammengebundene silberne Kettenhemdstücke."
+         },
+         "legendary_handle": {
+            "display_name": "Stabiler Griff",
+            "description": "Der starke Arm des aufsteigenden Sterns."
+         },
+         "legendary_headpiece": {
+            "display_name": "Gefallener Stern",
+            "description": "Eine starke und tödliche Kopfbedeckung für den aufsteigenden Stern."
+         },
+         "legendary_ink": {
+            "display_name": "Heilige Tinte",
+            "description": "Spezielle und vergoldete Tinte für illuminierte Handschriften in 'Der Spaziergang von Cid'."
+         },
+         "legendary_parchment": {
+            "display_name": "Vergoldetes Papier",
+            "description": "Zarte und kostbare Blätter mit dekoriertem Pergament für 'Der Spaziergang von Cid'."
          }
       },
       "trees": {
@@ -336,51 +1379,51 @@
          "birch_tree": {
             "ancient_birch_tree": {
                "display_name": "Uralter Birkenbaum",
-               "description": "TBD"
+               "description": "Ein Baum so alt wie die Zeit."
             },
             "large_birch_tree": {
                "display_name": "Großer Birkenbaum",
-               "description": "TBD"
+               "description": "Hohe und starke Einheit des Waldes."
             },
             "medium_birch_tree": {
-               "description": "TBD",
+               "description": "Schön mit seiner einzigartigen Rindenfärbung.",
                "display_name": "Birkenbaum"
             },
             "sapling_birch_tree": {
-               "description": "TBD",
+               "description": "Baby-Birke.",
                "sapling_birch_tree_iconic": {
-                  "description": "TBD"
+                  "description": "Pflanze sie in die Erde und schau zu wie sie wächst."
                },
                "sapling_birch_tree_ghost": {
-                  "description": "TBD",
+                  "description": "Baby-Birke.",
                   "display_name": "Birkenbaum Sämling"
                }
             },
             "seed": {
                "tree_birch_seed_ghost": {
                   "description": "Kann gepflanzt werden, um einen riesigen Baum zu züchten",
-                  "display_name": "Birkenbaum Samen"
+                  "display_name": "Birkenbaumsamen"
                }
             },
             "small_birch_tree": {
                "display_name": "Kleiner Birkenbaum",
-               "description": "TBD"
+               "description": "Eine schöne und junge Waldbirke."
             },
             "bud": {
                "tree_birch_plant_bud": {
                   "display_name": "Angehende Birke",
-                  "description": "TBD"
+                  "description": "Es ist schon ein kleiner Baum!"
                }
             },
             "sprout": {
                "tree_birch_sprout": {
-                  "description": "TBD",
+                  "description": "Braucht nur etwas Zeit und Pflege.",
                   "display_name": "Birkenbaum-Sprössling"
                }
             },
             "stem": {
                "tree_birch_plant_stem": {
-                  "description": "TBD",
+                  "description": "Immernoch wachsend!",
                   "display_name": "Stummliger Birkenbaum"
                }
             }
@@ -389,47 +1432,47 @@
             "seed": {
                "tree_parana_pine_seed_ghost": {
                   "display_name": "Paranakiefernkern",
-                  "description": "TBD"
+                  "description": "Kann gepflanzt werden, um einen einzigartigen, schönen Baum zu züchten."
                }
             },
             "sprout": {
                "tree_parana_pine_sprout": {
                   "display_name": "Paranakiefern-Sprössling",
-                  "description": "TBD"
+                  "description": "Braucht nur etwas Zeit und Pflege."
                }
             },
             "stem": {
                "tree_parana_pine_plant_stem": {
                   "display_name": "Stummlige Paranakiefer",
-                  "description": "TBD"
+                  "description": "Immernoch wachsend!"
                }
             },
             "bud": {
                "tree_parana_pine_plant_bud": {
-                  "description": "TBD",
+                  "description": "Es ist eine kleine Kiefer, obwohl sie nicht wirklich eine Kiefer ist...",
                   "display_name": "Angehende Paranakiefer"
                }
             },
             "small_parana_pine_tree": {
                "display_name": "Kleine Paranakiefer",
-               "description": "TBD"
+               "description": "Meistens eine Kiefer, aber mit schönen, kleinen Blättern."
             },
             "large_parana_pine_tree": {
                "display_name": "Große Paranakiefer",
-               "description": "TBD"
+               "description": "Schau dir diese Hockerknopsen an! Herrlich!"
             },
             "medium_parana_pine_tree": {
                "display_name": "Paranakiefer",
-               "description": "TBD"
+               "description": "So viele flauschige Sonnendächer!"
             },
             "sapling_parana_pine_tree": {
-               "description": "TBD",
+               "description": "Baby-Paranakiefer.",
                "sapling_parana_pine_tree_iconic": {
-                  "description": "TBD"
+                  "description": "Pflanze sie in die Erde und schau zu wie sie wächst."
                },
                "sapling_parana_pine_tree_ghost": {
                   "display_name": "Paranakiefern Sämling",
-                  "description": "TBD"
+                  "description": "Baby-Paranakiefer."
                }
             }
          },
@@ -441,47 +1484,149 @@
             "bud": {
                "tree_yew_plant_bud": {
                   "display_name": "Angehender Eibenbaum",
-                  "description": "TBD"
+                  "description": "Sieht schon uralt aus, ist aber noch so jung!"
                }
             },
             "large_yew_tree": {
                "display_name": "Großer Eibenbaum",
-               "description": "TBD"
+               "description": "Großer und sperriger Baum."
             },
             "medium_yew_tree": {
                "display_name": "Eibenbaum",
-               "description": "TBD"
+               "description": "Ein schöner Baum mit ziemlich kleinen Früchten im Herbst!"
             },
             "sapling_yew_tree": {
-               "description": "TBD",
+               "description": "Baby-Eibe.",
                "sapling_yew_tree_iconic": {
-                  "description": "TBD"
+                  "description": "Pflanze sie in die Erde und schau zu wie sie wächst.."
                },
                "sapling_yew_tree_ghost": {
-                  "description": "TBD",
+                  "description": "Baby-Eibe.",
                   "display_name": "Eibenbaum Sämling"
                }
             },
             "seed": {
                "tree_yew_seed_ghost": {
-                  "display_name": "Eibenbaum Samen",
-                  "description": "TBD"
+                  "display_name": "Eibenbaumsamen",
+                  "description": "Kann gepflanzt werden, um einen sperrigen, starken Baum zu züchten."
                }
             },
             "small_yew_tree": {
                "display_name": "Kleiner Eibenbaum",
-               "description": "TBD"
+               "description": "Stummelig und stark."
             },
             "sprout": {
                "tree_yew_sprout": {
                   "display_name": "Eibenbaum Sprössling",
-                  "description": "TBD"
+                  "description": "Braucht nur etwas Zeit und Pflege."
                }
             },
             "stem": {
                "tree_yew_plant_stem": {
                   "display_name": "Stummliger Eibenbaum",
-                  "description": "TBD"
+                  "description": "Immernoch wachsend!"
+               }
+            }
+         },
+         "highland_pine_tree": {
+            "bud": {
+               "tree_highland_pine_bud": {
+                  "display_name": "Hochlandkiefer Knospe",
+                  "description": "Wird richtig groß wachsen!"
+               }
+            },
+            "large": {
+               "large_highland_pine": {
+                  "display_name": "Große Hochlandkiefer",
+                  "description": "So groß, dass der Wind sie biegt!"
+               }
+            },
+            "medium": {
+               "medium_highland_pine": {
+                  "display_name": "Hochlandkiefer",
+                  "description": "Hoher und schöner Bergbaum."
+               }
+            },
+            "seed": {
+               "tree_highland_pine_seed_ghost": {
+                  "display_name": "Hochlandkiefersamen",
+                  "description": "Kann gepflanzt werden, um einen großen Bergbaum wachsen zu lassen."
+               }
+            },
+            "small": {
+               "small_highland_pine": {
+                  "display_name": "Kleine Hochlandkiefer",
+                  "description": "Eine eher kurze Hochlandkiefer für das Hochland, aber immer noch recht groß..."
+               }
+            },
+            "sprout": {
+               "tree_highland_pine_sprout": {
+                  "display_name": "Hochlandkiefer Sproße",
+                  "description": "Braucht nur etwas Zeit und Pflege."
+               }
+            },
+            "stem": {
+               "tree_highland_pine_stem": {
+                  "display_name": "Stemming Highland Pine",
+                  "description": "Still growing!"
+               }
+            },
+            "sapling_highland_pine_tree": {
+               "description": "Baby Highland Pine tree.",
+               "sapling_highland_pine_tree_iconic": {
+                  "description": "Plant it in the earth and watch it grow."
+               },
+               "sapling_highland_pine_tree_ghost": {
+                  "description": "Baby Highland Pine tree.",
+                  "display_name": "Highland Pine Sapling"
+               }
+            }
+         },
+         "willow_tree": {
+            "large_willow_tree": {
+               "display_name": "Large Willow Tree",
+               "description": "Look how it weeps!"
+            },
+            "bud": {
+               "tree_willow_plant_bud": {
+                  "display_name": "Budding Willow Tree",
+                  "description": "Growing nicely..."
+               }
+            },
+            "medium_willow_tree": {
+               "display_name": "Willow Tree",
+               "description": "Gently sways on the wind..."
+            },
+            "small_willow_tree": {
+               "display_name": "Small Willow Tree",
+               "description": "Looks elder than it is."
+            },
+            "sprout": {
+               "tree_willow_sprout": {
+                  "display_name": "Willow Tree Sproutling",
+                  "description": "Just needs some time and care."
+               }
+            },
+            "stem": {
+               "tree_willow_plant_stem": {
+                  "display_name": "Stemming Willow Tree",
+                  "description": "Still growing!"
+               }
+            },
+            "seed": {
+               "tree_willow_seed_ghost": {
+                  "display_name": "Willow Tree Seed",
+                  "description": "Can be planted to grow a weeping willow."
+               }
+            },
+            "sapling_willow_tree": {
+               "description": "Baby Willow tree.",
+               "sapling_willow_tree_iconic": {
+                  "description": "Plant it in the earth and watch it grow."
+               },
+               "sapling_willow_tree_ghost": {
+                  "display_name": "Willow Tree Sapling",
+                  "description": "Babe Willow tree."
                }
             }
          }
@@ -493,16 +1638,34 @@
                "description": "Lass deine Fußsoldaten patrollieren!"
             }
          },
-         "patrol_point_sign":{
+         "patrol_point_sign": {
             "patrol_point_sign_ghost": {
                "display_name": "Patrouillenpunkt",
                "description": "Lass deine Fußsoldaten patrollieren!"
             }
          },
-         "patrol_point_tower":{
+         "patrol_point_tower": {
             "patrol_point_tower_ghost": {
                "display_name": "Patrouillenpunkt",
                "description": "Lass deine Fußsoldaten patrollieren!"
+            }
+         },
+         "water_pump": {
+            "water_pump_ghost": {
+               "display_name": "Copper Water Pump",
+               "description": "It will take fluids from the placement level to be released on its upper shaft. "
+            }
+         },
+         "water_gate": {
+            "water_gate_ghost": {
+               "display_name": "Copper Water Gate",
+               "description": "This six-way gate can be toggled open or closed for controlling fluid flow."
+            }
+         },
+         "greater_water_gate": {
+            "greater_water_gate_ghost": {
+               "display_name": "Greater Water Gate",
+               "description": "A larger and more resistant gate for controlling the flow of fluids."
             }
          }
       },
@@ -608,6 +1771,71 @@
                   "display_name": "Stummliger Kirschbusch"
                }
             }
+         },
+         "cotton_plant": {
+            "cotton_plant": {
+               "unripe_description": "This plant has been harvested and hasn't grown back yet.",
+               "display_name": "Wild Cotton",
+               "description": "This plant's fiber can be spun into thread."
+            },
+            "cotton_plant_bud": {
+               "display_name": "Budding Cotton",
+               "description": "It's almost there! Should start blooming soon."
+            },
+            "cotton_plant_stem": {
+               "display_name": "Stemming Cotton",
+               "description": "Still growing!"
+            },
+            "cotton_plant_sprout": {
+               "display_name": "Cotton Sproutling",
+               "description": "Just needs some time and care."
+            },
+            "cotton_plant_seed": {
+               "display_name": "Wild Cotton Seed",
+               "description": "Can be planted to grow fiber which can be spun into thread."
+            },
+            "cotton_plant_bloom": {
+               "display_name": "Blooming Cotton",
+               "description": "Look at all the blooms! They shall fade away quickly..."
+            },
+            "cotton_plant_fading": {
+               "display_name": "Fading Cotton",
+               "description": "The blooms are fading... But it shall give cotton buds soon!"
+            },
+            "cotton_plant_maturing": {
+               "display_name": "Maturing Cotton",
+               "description": "The cotton buds have started maturing and shall be ready soon enough!"
+            }
+         },
+         "water_lily_white": {
+            "water_lily_white_ghost": {
+               "display_name": "White Flowered Lily Pads",
+               "description": "A pretty flower that can be used as an ornamental decoration or harvested."
+            }
+         },
+         "water_lily_pad": {
+            "water_lily_pad_ghost": {
+               "display_name": "Lily Pads",
+               "description": "Beautiful floating leaves that form an exotic decoration."
+            }
+         },
+         "water_lily_pink": {
+            "water_lily_pink_ghost": {
+               "display_name": "Pink Flowered Lily Pads",
+               "description": "A pretty flower that can be used as an ornamental decoration or harvested."
+            }
+         },
+         "water_lily_purple": {
+            "water_lily_purple_ghost": {
+               "display_name": "Purple Flowered Lily Pads",
+               "description": "A pretty flower that can be used as an ornamental decoration or harvested."
+            }
+         },
+         "water_lily_yellow": {
+            "water_lily_yellow_ghost": {
+               "display_name": "Yellow Flowered Lily Pads",
+               "description": "A pretty flower that can be used as an ornamental decoration or harvested."
+            }
          }
       },
       "decoration": {
@@ -618,21 +1846,104 @@
                   "description": "Es heißt, dass Anji unter der letzten strahlenden Sonne tapfer gegen ein Rudel Wölfe gekämpft hat."
                }
             }
+         },
+         "wall_axe": {
+            "wall_axe_ghost": {
+               "display_name": "Iron Axe Plaque",
+               "description": "A good retirement for your old friend."
+            }
+         },
+         "wall_shield": {
+            "wall_shield_ghost": {
+               "display_name": "Wooden Shield Display",
+               "description": "Giving an use to your training equipment."
+            }
+         },
+         "workshop": {
+            "master_hammer": {
+               "master_hammer_ghost": {
+                  "display_name": "Blacksmith Hammer Display",
+                  "description": "This beautiful and ancient kind of hammer was used by the first smiths of old."
+               }
+            },
+            "quenching_station": {
+               "quenching_station_ghost": {
+                  "display_name": "Quenching Station",
+                  "description": "It gets cool really fast."
+               }
+            }
+         },
+         "stone_market_stall": {
+            "stone_market_stall_ghost": {
+               "display_name": "Stone Market Stall",
+               "description": "Merchants can set up shop here"
+            }
          }
       },
       "pets": {
          "wombat": {
             "display_name": "Wombat",
             "description": "Seine Flaumigkeit inspirierte die Kunstschule, die als Plüschinismus bekannt ist. Es isst nur Grünes."
+         },
+         "monkey": {
+            "display_name": "Monkey",
+            "description": "It's a sacred monkey! This little fellow eats only vegetables."
+         },
+         "panda": {
+            "display_name": "Panda Cub",
+            "description": "Cute bear from east beyond Pal'Mun. It prefers vegetables but can eat anything."
          }
       },
       "critters": {
          "wombat": {
             "species": "Wombat"
+         },
+         "bitsy_spider": {
+            "species": "bitsy spider",
+            "display_name": "Bitsy Spider",
+            "description": "Creepy little creature.",
+            "bitsy_spider_jerky": {
+               "display_name": "Spider Bug Meat"
+            }
+         },
+         "grasshopper": {
+            "grasshopper_jerky": {
+               "display_name": "Grasshopper Bug Meat"
+            },
+            "species": "grasshopper",
+            "description": "Cute little insect",
+            "display_name": "Grasshopper"
+         },
+         "scorpion": {
+            "scorpion_jerky": {
+               "display_name": "Scorpion Bug Meat"
+            },
+            "species": "scorpion",
+            "display_name": "Scorpion",
+            "description": "Creepy little creature."
+         },
+         "ladybug_beetle": {
+            "display_name": "Ladybug Beetle",
+            "description": "Cute little insect"
+         },
+         "scarab_beetle": {
+            "display_name": "Scarab Beetle",
+            "description": "Creepy little insect"
+         },
+         "stag_beetle": {
+            "display_name": "Stag Beetle",
+            "description": "Creepy little insect"
+         },
+         "monkey": {
+            "species": "Affe"
+         },
+         "bear": {
+            "species": "Bär"
          }
       },
       "food": {
          "cherries": {
+            "display_name": "Kirschen",
             "cherry_basket": {
                "display_name": "Korb mit Kirschen",
                "description": "Süß oder sauer, eine leckere Frucht für jede Stunde."
@@ -699,6 +2010,244 @@
                "display_name": "Plate of Nut Pralines",
                "description": "Crispy, sweet and crunchy!"
             }
+         },
+         "broth": {
+            "broth_serving": {
+               "description": "",
+               "display_name": "Bowl of Broth"
+            },
+            "broth": {
+               "display_name": "Broth",
+               "description": "Very nutritious but not really exciting."
+            }
+         },
+         "bone_marrow": {
+            "bone_marrow_serving": {
+               "description": "",
+               "display_name": "Serving of Bone Marrow"
+            },
+            "bone_marrow": {
+               "display_name": "Bone Marrow",
+               "description": "Extremely nutritious but definitely not satisfying."
+            }
+         },
+         "chanterelle": {
+            "display_name": "Shrooms",
+            "chanterelle_basket": {
+               "display_name": "Basket of Chanterelles",
+               "description": "Delicious mushrooms ready to be eaten!"
+            },
+            "chanterelle_serving": {
+               "display_name": "Serving of Chanterelles",
+               "description": "Tasty fungi!"
+            }
+         },
+         "desert_truffle": {
+            "desert_truffle_basket": {
+               "display_name": "Basket of Desert Truffles",
+               "description": "Delicious mushrooms ready to be eaten!"
+            },
+            "desert_truffle_serving": {
+               "display_name": "Serving of Desert Truffles",
+               "description": "Tasty fungi!"
+            }
+         },
+         "bolete": {
+            "bolete_basket": {
+               "display_name": "Basket of Boletes",
+               "description": "Delicious mushrooms ready to be eaten!"
+            },
+            "bolete_serving": {
+               "display_name": "Serving of Boletes",
+               "description": "Tasty fungi!"
+            }
+         },
+         "winter_morel": {
+            "winter_morel_basket": {
+               "display_name": "Basket of Winter Morels",
+               "description": "Delicious mushrooms ready to be eaten!"
+            },
+            "winter_morel_serving": {
+               "display_name": "Serving of Winter Morels",
+               "description": "Tasty fungi!"
+            }
+         },
+         "boiled_shrooms": {
+            "boiled_shrooms": {
+               "display_name": "Boiled Shrooms",
+               "description": "A simple yet satisfying boiling of diverse mushrooms."
+            },
+            "boiled_shrooms_serving": {
+               "display_name": "Bowl of Boiled Shrooms",
+               "description": ""
+            }
+         },
+         "shroom_omelette": {
+            "shroom_omelette": {
+               "display_name": "Shroom Omelette",
+               "description": "Slightly more satisfying than your regular omelette."
+            },
+            "shroom_omelette_serving": {
+               "display_name": "Serving of Shroom Omelette",
+               "description": ""
+            }
+         },
+         "bear_jerky": {
+            "display_name": "Bear Jerky"
+         },
+         "steak": {
+            "display_name": "Raw Steak",
+            "description": "A high quality piece of raw prime meat."
+         },
+         "roast_steak": {
+            "roast_steak": {
+               "display_name": "Roast Steak",
+               "description": "A very fine and premium piece of roasted meat."
+            },
+            "roast_steak_serving": {
+               "display_name": "Serving of Roast Steak"
+            }
+         },
+         "cougar_jerky": {
+            "display_name": "Big Cat Jerky"
+         },
+         "fish_meat": {
+            "display_name": "Fish Fillet",
+            "rotten": {
+               "display_name": "Rotten Fish Meat",
+               "description": "It stinks even more than before."
+            },
+            "description": "Smells fishy... "
+         },
+         "fish_roe": {
+            "fish_roe_basket": {
+               "display_name": "Basket of Fish Roe",
+               "description": "Edible fish eggs, tiny and shiny!"
+            },
+            "fish_roe_serving": {
+               "display_name": "Serving of Fish Roe"
+            },
+            "fish_big_roe_serving": {
+               "display_name": "Serving of Caviar"
+            },
+            "fish_big_roe_basket": {
+               "display_name": "Basket of Caviar",
+               "description": "Smaller eggs from bigger and sturdier fish are a very valuable delicacy."
+            }
+         },
+         "sushi": {
+            "sushi": {
+               "display_name": "Sushi",
+               "description": "A delicious specialty from hearthlings of a very distant land."
+            },
+            "sushi_serving": {
+               "display_name": "Serving of Sushi"
+            }
+         },
+         "cooked_rice": {
+            "cooked_rice_serving": {
+               "display_name": "Bowl of Cooked Rice"
+            },
+            "display_name": "Cooked Rice",
+            "description": "Boiled and sticky enough."
+         },
+         "rice": {
+            "paddy_basket": {
+               "display_name": "Basket of Paddy",
+               "description": "Unmilled grass seeds. Can be turned into raw rice with a mill."
+            },
+            "raw_rice": {
+               "display_name": "Sack of Raw Rice",
+               "description": "Delicious grains ready to be used in cooking."
+            }
+         },
+         "roast_fish": {
+            "roast_fish_serving": {
+               "display_name": "Serving of Roast Fish"
+            },
+            "roast_fish": {
+               "display_name": "Slice of Roast Fish",
+               "description": "A nutritious and flavorful meal."
+            }
+         },
+         "fish_carp_meat": {
+            "display_name": "Carp Fillet",
+            "description": "Carp can be very tasty if taken from clear water."
+         },
+         "fish_catfish_meat": {
+            "display_name": "Catfish Fillet",
+            "description": "Catfish has a particular, earthen flavor."
+         },
+         "fish_salmon_meat": {
+            "display_name": "Salmon Fillet",
+            "description": "Salmon is a very coveted and tasty fish!"
+         },
+         "fish_trout_meat": {
+            "display_name": "Trout Fillet",
+            "description": "Trouts have a tender, sweet flavor."
+         },
+         "sushi_vegetarian": {
+            "sushi_vegetarian": {
+               "display_name": "Veggie Sushi",
+               "description": "A vegetarian alternative to an exotic dish."
+            },
+            "sushi_vegetarian_serving": {
+               "display_name": "Serving of Veggie Sushi"
+            }
+         },
+         "highland_trout": {
+            "highland_trout": {
+               "display_name": "Highlander Trout",
+               "description": "An exquisite meal from mountainous regions."
+            },
+            "highland_trout_serving": {
+               "display_name": "Serving of Highlander Trout"
+            }
+         },
+         "fisherman_soup": {
+            "fisherman_soup_serving": {
+               "display_name": "Bowl of Fisherman's Soup"
+            },
+            "fisherman_soup": {
+               "display_name": "Fisherman's Soup",
+               "description": "A hearty and spicy soup traditional to the Ascendancy."
+            }
+         },
+         "fish_stew": {
+            "fish_stew": {
+               "display_name": "Peculiar Fish Stew",
+               "description": "Don't smell, just eat!"
+            },
+            "fish_stew_serving": {
+               "display_name": "Bowl of Peculiar Fish Stew"
+            }
+         },
+         "fish_pot_pie": {
+            "fish_pot_pie": {
+               "display_name": "Fish Pot Pie",
+               "description": "A delicious pie with a fish meat and mushroom filling."
+            },
+            "fish_pot_pie_serving": {
+               "display_name": "Serving of Fish Pot Pie"
+            }
+         },
+         "dumpling_salmon": {
+            "dumpling_salmon": {
+               "display_name": "Salmon Dumpling",
+               "description": "A little bread pocket with steamed salmon stuffed inside."
+            },
+            "dumpling_salmon_serving": {
+               "display_name": "Serving of Salmon Dumpling"
+            }
+         },
+         "catfish_tagine": {
+            "catfish_tagine": {
+               "display_name": "Catfish Tagine",
+               "description": "Catfish meat and vegetables simmered in a clay pot."
+            },
+            "catfish_tagine_serving": {
+               "display_name": "Serving of Catfish Tagine"
+            }
          }
       },
       "terrain": {
@@ -718,12 +2267,497 @@
             "display_name": "Sprouting Grass",
             "description": "Grass has just started germinating here, not yet as efficient for grazing."
          }
+      },
+      "fungi": {
+         "chanterelle": {
+            "chanterelle_ghost": {
+               "display_name": "Chanterelles",
+               "description": "A group of delicious edible mushrooms"
+            },
+            "colony": {
+               "chanterelle_colony": {
+                  "display_name": "Colony of Chanterelles",
+                  "description": "Can be placed to grow into larger, edible mushrooms"
+               }
+            },
+            "spreading": {
+               "chanterelle_spreading": {
+                  "display_name": "Spreading Chanterelles",
+                  "description": "The spores have dispersed from the colony and the mushrooms started growing"
+               }
+            },
+            "developing": {
+               "chanterelle_developing": {
+                  "display_name": "Developing Chanterelles",
+                  "description": "The fungi are sprawling and will soon be large enough!"
+               }
+            }
+         },
+         "desert_truffle": {
+            "desert_truffle_ghost": {
+               "display_name": "Desert Truffles",
+               "description": "Hearty mushrooms that can thrive among the roots of flowers"
+            },
+            "colony": {
+               "desert_truffle_colony": {
+                  "display_name": "Colony of Desert Truffles",
+                  "description": "Can be placed to grow into larger, edible mushrooms"
+               }
+            },
+            "developing": {
+               "desert_truffle_developing": {
+                  "display_name": "Developing Desert Truffles",
+                  "description": "The fungi are sprawling and will soon be large enough!"
+               }
+            },
+            "spreading": {
+               "desert_truffle_spreading": {
+                  "display_name": "Spreading Desert Truffles",
+                  "description": "The spores have dispersed from the colony and the mushrooms started growing"
+               }
+            }
+         },
+         "bolete": {
+            "bolete_ghost": {
+               "display_name": "Boletes",
+               "description": "A tasty and coveted forest delicacy"
+            },
+            "colony": {
+               "bolete_colony": {
+                  "display_name": "Colony of Boletes",
+                  "description": "Can be placed to grow into larger, edible mushrooms"
+               }
+            },
+            "spreading": {
+               "bolete_spreading": {
+                  "display_name": "Spreading Boletes",
+                  "description": "The spores have dispersed from the colony and the mushrooms started growing"
+               }
+            },
+            "developing": {
+               "bolete_developing": {
+                  "display_name": "Developing Boletes",
+                  "description": "The fungi are sprawling and will soon be large enough!"
+               }
+            }
+         },
+         "winter_morel": {
+            "winter_morel_ghost": {
+               "display_name": "Winter Morels",
+               "description": "A very sought of northern fungi that tastes great!"
+            },
+            "colony": {
+               "winter_morel_colony": {
+                  "display_name": "Colony of Winter Morels",
+                  "description": "Can be placed to grow into larger, edible mushrooms"
+               }
+            },
+            "spreading": {
+               "winter_morel_spreading": {
+                  "display_name": "Spreading Winter Morels",
+                  "description": "The spores have dispersed from the colony and the mushrooms started growing"
+               }
+            },
+            "developing": {
+               "winter_morel_developing": {
+                  "display_name": "Developing Winter Morels",
+                  "description": "The fungi are sprawling and will soon be large enough!"
+               }
+            }
+         }
+      },
+      "monsters": {
+         "forest": {
+            "bear": {
+               "display_name": "Bear",
+               "description": "It seems quite angry."
+            },
+            "bear_cub": {
+               "display_name": "Bear Cub",
+               "description": "Awww."
+            },
+            "cougar": {
+               "display_name": "Big Cat",
+               "description": "A large, graceful feline. It's a meat eating hunter."
+            },
+            "cougar_cub": {
+               "display_name": "Big Cat Cub",
+               "description": "Not so big, still a cat."
+            },
+            "wolf_cub": {
+               "display_name": "Wolf Cub",
+               "description": "Like a little doggo that wants to eat you!"
+            }
+         }
+      },
+      "armor": {
+         "iron_platemail": {
+            "description": "A full suit of knightly iron armor.",
+            "display_name": "Iron Platemail"
+         },
+         "iron_helmet": {
+            "display_name": "Iron Helmet",
+            "description": "Protection for your entire head."
+         },
+         "steel_chainmail": {
+            "display_name": "Steel Mail",
+            "description": "A very fancy and strong chainmail suit of armor."
+         },
+         "steel_helm": {
+            "display_name": "Steel Helm",
+            "description": "Strong and not so heavy protection for your head."
+         },
+         "light_iron_shield": {
+            "display_name": "Light Iron Shield",
+            "description": "Not so heavy but also not so strong, better than a bronze buckler."
+         },
+         "light_steel_shield": {
+            "description": "Perfect balance between protection and weight for a Footman.",
+            "display_name": "Light Steel Shield"
+         },
+         "silver_shield": {
+            "display_name": "Silver Shield",
+            "description": "A very strong and light shield made with silver."
+         },
+         "silver_mail": {
+            "display_name": "Silver Platemail",
+            "description": "A shiny and strong suit of armor, worthy of the best Knight!"
+         },
+         "legendary_hood": {
+            "display_name": "Elven King Hood",
+            "description": "A beautiful hood worthy of the finest archer."
+         },
+         "legendary_mail": {
+            "display_name": "Vanguard's Chainmail",
+            "description": "Chain armor akin to the ones from the Empire's royal vanguard."
+         }
+      },
+      "weapons": {
+         "iron_battle_axe": {
+            "description": "Extra large for when you need some extra punch. (Two-handed)",
+            "display_name": "Iron Battle Axe"
+         },
+         "bronze_axe": {
+            "display_name": "Bronze Axe",
+            "description": "A heavier alternative for a starting metal weapon. (Two-handed)"
+         },
+         "iron_short_sword": {
+            "display_name": "Iron Short Sword",
+            "description": "A short but efficient knight's sidearm."
+         },
+         "iron_sword": {
+            "display_name": "Iron Sword",
+            "description": "A strong and well balanced weapon for foot soldiers."
+         },
+         "steel_mace": {
+            "display_name": "Steel Mace",
+            "description": "A powerful weapon that will break through armor."
+         },
+         "iron_axe": {
+            "display_name": "Iron Axe",
+            "description": "Short, fast, edgy."
+         },
+         "steel_axe": {
+            "display_name": "Steel Axe",
+            "description": "For hacking and slashing onto victory."
+         },
+         "bronze_hatchet": {
+            "description": "For parrying attacks and attempting counter-attacks. (Off-hand)",
+            "display_name": "Bronze Hatchet"
+         },
+         "iron_hatchet": {
+            "display_name": "Iron Hatchet",
+            "description": "A sturdy small axe used for parrying and attacking. (Off-hand)"
+         },
+         "steel_dagger": {
+            "display_name": "Steel Dagger",
+            "description": "A small and sharp weapon for both offense and defense. (Off-hand)"
+         },
+         "steel_lance": {
+            "display_name": "Steel Lance",
+            "description": "A long and strong polearm for harassing multiple enemies. (Two-handed)"
+         },
+         "silver_halberd": {
+            "display_name": "Silver Halberd",
+            "description": "An intricate and powerful weapon. (Two-handed)"
+         },
+         "silver_mace": {
+            "display_name": "Silver Hammer",
+            "description": "Blunt. Strong. Unstoppable. Wear it to tear down enemy armor!"
+         },
+         "silver_short_sword": {
+            "display_name": "Silver Short Sword",
+            "description": "A very reliable and efficient sidearm."
+         },
+         "steel_crossbow": {
+            "display_name": "Steel Crossbow",
+            "description": "Not fast but a strong, powerful and piercing mechanical weapon."
+         },
+         "bronze_crossbow": {
+            "display_name": "Bronze Crossbow",
+            "description": "A strong ranged weapon that is slow but efficient."
+         },
+         "crossbow": {
+            "display_name": "Simple Crossbow",
+            "description": "Not as reliable as an Engineer's crossbow but still strong enough."
+         },
+         "long_bow": {
+            "display_name": "Long Bow",
+            "description": "A longer cross-section makes it more efficient than an average bow."
+         },
+         "composite_bow": {
+            "display_name": "Composite Bow",
+            "description": "With a core made of bone and muscle fibers, the stretch allows for powerful arrows."
+         },
+         "legendary_mace": {
+            "display_name": "Ascendant Star",
+            "description": "An impressive and powerful knight's weapon."
+         },
+         "legendary_tome": {
+            "display_name": "'The Walk of Cid'",
+            "description": "A legendary tome for the followers of the Church of Plenty."
+         },
+         "rc_legendary_bow": {
+            "display_name": "Zephyr Bow"
+         },
+         "rc_legendary_sword": {
+            "display_name": "Desert Fang"
+         }
+      },
+      "gizmos": {
+         "animal_traps": {
+            "animal_traps_limit_tag": "Tierfallen"
+         },
+         "dummy_training": {
+            "dummy_training_ghost": {
+               "description": "It's best to practice with this friendly guy. Requires an engineer for repairs.",
+               "display_name": "Training Dummy",
+               "training_limit_tag": "Training Equipment"
+            }
+         },
+         "decoy_trap": {
+            "display_name": "Decoy Trap",
+            "description": "Distract your enemies with this extra hearthling! Wait, it is a hearthling... right?",
+            "flavor": "Mer Splinterhands is very threatening."
+         },
+         "target_training": {
+            "display_name": "Archery Target",
+            "description": "Less dangerous than shooting apples on someone's head."
+         },
+         "axle_vertical": {
+            "description": "A rotating shaft that can take mechanical power vertically.",
+            "display_name": "Vertical Axle"
+         },
+         "axle_horizontal": {
+            "display_name": "Horizontal Axle",
+            "description": "A rotating shaft that can take mechanical power forward."
+         },
+         "axle_gear_box": {
+            "display_name": "Gear Box",
+            "description": "This device allows you to redirect mechanical power to any direction."
+         },
+         "axle_horizontal_switch": {
+            "display_name": "Horizontal Switch",
+            "description": "Allows you to toggle the flow of mechanical power on a horizontal axle."
+         },
+         "axle_vertical_switch": {
+            "display_name": "Vertical Switch",
+            "description": "Allows you to toggle the flow of mechanical power on a vertical axle."
+         },
+         "source_water_wheel_wooden": {
+            "display_name": "Wooden Water Wheel",
+            "description": "This device can generate mechanical power if placed on water."
+         }
+      },
+      "aquatic": {
+         "fish": {
+            "species": "fish"
+         },
+         "fish_silver": {
+            "display_name": "Silver Fish",
+            "description": "A slippery aquatic little creature.",
+            "iconic": {
+               "display_name": "Captive Silver Fish",
+               "description": "Won't last more than a couple days. Better to release it somewhere!"
+            }
+         },
+         "fish_silver_fry": {
+            "display_name": "Silver Fishling",
+            "description": "A tiny water creature. Will grow into larger fish!"
+         },
+         "fish_roe": {
+            "display_name": "Fish Roe",
+            "placed_description": "These eggs can be harvested or left alone to hatch."
+         },
+         "fish_long_fry": {
+            "display_name": "Long Fishling",
+            "description": "Still short but sleek."
+         },
+         "fish_long": {
+            "display_name": "Long Fish",
+            "description": "Is it a pike? Could be a pike.",
+            "iconic": {
+               "description": "Won't last more than a couple days. Better to release it somewhere!",
+               "display_name": "Captive Long Fish"
+            }
+         },
+         "fish_big": {
+            "display_name": "Big Fish",
+            "description": "Larger and stronger fish, might be harder to catch!",
+            "iconic": {
+               "description": "Won't last more than a couple days. Better to release it somewhere!",
+               "display_name": "Captive Big Fish"
+            }
+         },
+         "fish_big_fry": {
+            "display_name": "Big Fishling",
+            "description": "Eventually a big fish."
+         },
+         "fish_carp": {
+            "display_name": "Forest Carp",
+            "description": "An agile fish unique to the temperate woodlands.",
+            "iconic": {
+               "description": "Won't last more than a couple days. Better to release it somewhere!",
+               "display_name": "Captive Forest Carp"
+            }
+         },
+         "fish_carp_fry": {
+            "display_name": "Forest Carpling",
+            "description": "Will grow into a beautiful carp."
+         },
+         "fish_catfish": {
+            "display_name": "Desert Catfish",
+            "description": "A sluggish fish unique to the desert regions.",
+            "iconic": {
+               "description": "Won't last more than a couple days. Better to release it somewhere!",
+               "display_name": "Captive Desert Catfish"
+            }
+         },
+         "fish_catfish_fry": {
+            "display_name": "Desert Catfishling",
+            "description": "Also known as a kitten fish."
+         },
+         "fish_dark": {
+            "display_name": "Dark Fish",
+            "description": "They're just literally darker, not evil... of course.",
+            "iconic": {
+               "description": "Won't last more than a couple days. Better to release it somewhere!",
+               "display_name": "Captive Dark Fish"
+            }
+         },
+         "fish_dark_fry": {
+            "display_name": "Dark Fishling",
+            "description": "Still growing into a larger fish."
+         },
+         "fish_salmon": {
+            "display_name": "Arctic Salmon",
+            "description": "A delicious fish unique to the northern tundra.",
+            "iconic": {
+               "display_name": "Captive Arctic Salmon",
+               "description": "Won't last more than a couple days. Better to release it somewhere!"
+            }
+         },
+         "fish_salmon_fry": {
+            "display_name": "Arctic Salmonling",
+            "description": "Will be a great salmon one day."
+         },
+         "fish_big_roe": {
+            "display_name": "Big Fish Roe",
+            "placed_description": "Big fish eggs can be harvested as caviar or left alone to hatch."
+         },
+         "fish_trout": {
+            "display_name": "Highland Trout",
+            "description": "A colorful cool water fish that is unique to the highlands.",
+            "iconic": {
+               "description": "Won't last more than a couple days. Better to release it somewhere!",
+               "display_name": "Captive Highland Trout"
+            }
+         },
+         "fish_trout_fry": {
+            "display_name": "Highland Troutling",
+            "description": "Still going for the colors of the rainbow."
+         }
+      },
+      "algae": {
+         "green_algae": {
+            "green_large_algae": {
+               "display_name": "Large Green Alga",
+               "description": "A quite tall water weed."
+            },
+            "green_medium_algae": {
+               "display_name": "Medium Green Alga",
+               "description": "A good sized water weed."
+            },
+            "green_small_algae": {
+               "display_name": "Green Alga",
+               "description": "Not the smallest nor the largest specimen."
+            },
+            "green_algae": {
+               "display_name": "Small Green Alga",
+               "description": "A tiny water weed."
+            },
+            "green_algae_cut": {
+               "display_name": "Green Alga Stub",
+               "description": "The remains of a larger green alga. Will grow again if underwater and undisturbed."
+            }
+         },
+         "brown_algae": {
+            "brown_algae": {
+               "display_name": "Small Brown Alga",
+               "description": "A tiny water weed."
+            },
+            "brown_algae_cut": {
+               "display_name": "Brown Alga Stub",
+               "description": "The remains of a larger brown alga. Will grow again if underwater and undisturbed."
+            },
+            "brown_large_algae": {
+               "display_name": "Large Brown Alga",
+               "description": "Also known as kelp, it is a quite tall water weed."
+            },
+            "brown_medium_algae": {
+               "display_name": "Medium Brown Alga",
+               "description": "Also called kelp, this is a good sized water weed."
+            },
+            "brown_small_algae": {
+               "display_name": "Brown Alga",
+               "description": "Alternatively called kelp, this is not a particularly large water weed."
+            }
+         },
+         "red_algae": {
+            "red_algae": {
+               "display_name": "Small Red Alga",
+               "description": "A tiny water weed."
+            },
+            "red_algae_cut": {
+               "display_name": "Red Alga Stub",
+               "description": "The remains of a larger red alga. Will grow again if underwater and undisturbed."
+            },
+            "red_large_algae": {
+               "display_name": "Large Red Alga",
+               "description": "A tall and peculiar water weed."
+            },
+            "red_medium_algae": {
+               "display_name": "Medium Red Alga",
+               "description": "A nice water weed."
+            },
+            "red_small_algae": {
+               "display_name": "Red Alga",
+               "description": "There are taller water weeds out there..."
+            }
+         }
       }
    },
    "mountain_folk": {
       "data": {
          "mountain_folk_population": {
             "display_name": "Bergvolk"
+         }
+      },
+      "loadouts": {
+         "craftsdwarf_party": {
+            "display_name": "Craftsdwarf Company",
+            "description": "An industrious folk will never let go of their most prized advancements on embarkment and the Artificer is definitely the top of craftsdwarvenship.",
+            "tooltip": "Gets you started early with the most advanced crafts."
          }
       },
       "kingdom": {
@@ -736,11 +2770,31 @@
          "grower": {
             "grower_description": {
                "display_name": "Erzeuger"
+            },
+            "grower_trowel": {
+               "grower_trowel_talisman": {
+                  "display_name": "Grower's Trowel",
+                  "description": "Required to promote a hearthling into a Grower"
+               },
+               "grower_trowel_equipped": {
+                  "display_name": "Grower's Trowel",
+                  "description": "Can be used by a Grower for their crafts and to tend plant and fungus alike."
+               }
             }
          },
          "artificer": {
             "artificer_description": {
                "display_name": "Feuerwerker"
+            },
+            "artificer_staff": {
+               "artificer_staff_talisman": {
+                  "display_name": "Artificer's Staff",
+                  "description": "Required to promote a hearthling into an Artificer"
+               },
+               "artificer_staff_equipped": {
+                  "display_name": "Artificer's Staff",
+                  "description": "An advanced device that can channel both the powers of the Hearth and of machines."
+               }
             }
          },
          "druid": {
@@ -754,6 +2808,11 @@
                   "recipe_name": "Sweetened Varanus",
                   "description": "A highly traditional dwarven meal made with varanus meat and local cherries.",
                   "flavor": ""
+               },
+               "highlander_trout_recipe": {
+                  "recipe_name": "Highlander Trout",
+                  "description": "An exquisite meal favorite among the mountain folk.",
+                  "flavor": "Be sure to cut off the trout's head"
                }
             }
          }
@@ -821,11 +2880,113 @@
       }
    },
    "ui": {
+      "game": {
+         "menu": {
+            "crafter_menu": {
+               "items": {
+                  "artificer": {
+                     "display_name": "Artificer Craft Menu",
+                     "description": "Build wooden furniture and decor.",
+                     "required_job_text": "Requires a carpenter"
+                  },
+                  "grower": {
+                     "display_name": "Grower Craft Menu",
+                     "description": "Build wooden furniture and decor.",
+                     "required_job_text": "Requires a carpenter"
+                  }
+               }
+            },
+            "harvest_menu": {
+               "items": {
+                  "box_move": {
+                     "display_name": "Move Items",
+                     "description": "Move items to another location",
+                     "tip_title": "Click and drag to select the items to move, then click new locations for each of them as prompted.",
+                     "tip_description": "Right click to exit this mode"
+                  },
+                  "box_undeploy": {
+                     "display_name": "Undeploy Items",
+                     "description": "Undeploy these items and return them to a stockpile.",
+                     "tip_title": "Click and drag to select the items to undeploy.",
+                     "tip_description": "Right click to exit this mode"
+                  },
+                  "box_enable_auto_harvest": {
+                     "display_name": "Enable Auto-Harvest",
+                     "description": "Enable auto-harvesting of renewable resources that you own (you'll still need to instruct your hearthlings to harvest them).",
+                     "tip_title": "Click and drag to select renewable resources you own to enable auto-harvesting.",
+                     "tip_description": "Right click to exit this mode"
+                  },
+                  "box_disable_auto_harvest": {
+                     "display_name": "Disable Auto-Harvest",
+                     "description": "Disable auto-harvesting of renewable resources that you own.",
+                     "tip_title": "Click and drag to select renewable resources you own to disable auto-harvesting.",
+                     "tip_description": "Right click to exit this mode"
+                  }
+               }
+            }
+         },
+         "visions": {
+            "heatmap": {
+               "title": "Wärmekarte",
+               "description": "Dies ist das Wärmekarte-Tooltip. TODO: hier etwas Nützliches einfügen."
+            }
+         },
+         "heatmaps": {
+            "ore": {
+               "display_name": "Erzdetektor",
+               "description": "Erkenne Erze unter der Oberfläche: Bereiche, in denen Erze reichlich sind oder sich in der Nähe der Oberfläche befinden, erscheinen heller."
+            },
+            "wilderness": {
+               "display_name": "Wildnis",
+               "description": "Sehe wo die Welt wilder ist (oder zahmer)."
+            }
+         },
+         "zones_mode": {
+            "farm": {
+               "water_affinity_range": "Fastest growth happens with <span class='water'><span class='value'>[str(i18n_data.min)] - [str(i18n_data.max)]</span> water</span> within or around the perimeter of this farm. Current <span class='water'>water</span> level: <span class='water value'>[str(i18n_data.water_level)]</span>.",
+               "water_affinity_min_only": "Fastest growth happens with at least <span class='water'><span class='value'>[str(i18n_data.min)]</span> water</span> within or around the perimeter of this farm. Current <span class='water'>water</span> level: <span class='water value'>[str(i18n_data.water_level)]</span>.",
+               "requires_flooding": "This crop must be flooded to grow.",
+               "prefers_flooding": "This crop grows more quickly when flooded.",
+               "prefers_no_flooding": "This crop grows more slowly when flooded."
+            },
+            "underfarm": {
+               "substrate_name": "Substrate",
+               "substrate_description": "You need a layer of organic material to plant undercrops."
+            },
+            "stockpile": {
+               "filters": {
+                  "tooltip_coal": "Coal",
+                  "tooltip_fuel": "Other Fuels",
+                  "tooltip_bones": "Bones",
+                  "tooltip_fungi": "Fungi",
+                  "tooltip_refined_goods": "Finished Goods",
+                  "tooltip_drinks": "Drinks",
+                  "tooltip_animal_feed": "Animal Feed",
+                  "tooltip_cooking_ingredients": "Cooking Ingredients",
+                  "tooltip_precious_metals": "Precious Metals",
+                  "tooltip_weapons": "Melee Weapons",
+                  "tooltip_equipment": "Armor & Protection",
+                  "tooltip_shield": "Shields",
+                  "tooltip_ranged_weapon": "Ranged Weapons",
+                  "tooltip_exotic_gear": "Other Equipment & Gear",
+                  "tooltip_gems": "Gems",
+                  "weapons_and_armor": "Combat Equipment",
+                  "tooltip_consumables": "Healing Items",
+                  "tooltip_consumables_other": "Other Consumables",
+                  "tooltip_bulk_resources": "Bulk Resources",
+                  "tooltip_civillian_equipment": "Clothing & Accessories",
+                  "tooltip_gizmos_equipment": "Gizmos & Utilities"
+               }
+            }
+         }
+      },
       "shell": {
          "settings": {
             "gameplayTab": {
                "auto_craft_recipe_dependencies": "Automatische Rezepteinstellung",
-               "auto_craft_recipe_dependencies_description": "Beim Herstellen eines Gegenstands überprüfen die Handwerker das Stadtlager, um zu sehen, ob genügend Zutaten vorhanden sind. Wenn nicht, werden Sie der Warteschlange automatisch weitere Aufträge hinzufügen, um den Auftrag erfüllen zu können."
+               "auto_craft_recipe_dependencies_description": "Beim Herstellen eines Gegenstands überprüfen die Handwerker das Stadtlager, um zu sehen, ob genügend Zutaten vorhanden sind. Wenn nicht, werden Sie der Warteschlange automatisch weitere Aufträge hinzufügen, um den Auftrag erfüllen zu können.",
+               "auto_harvest_enabled": "Auto-Harvest Renewable Resources",
+               "auto_harvest_enabled_description": "When harvesting a renewable resource, if not otherwise specified, automatically enable Auto-Harvest on that resource."
             }
          }
       },
@@ -833,7 +2994,22 @@
          "constants": {
             "edible_nuts_resource_name": "Edible Nut",
             "fruits_resource_name": "Fruit",
-            "thatch_resource_name": "Thatching"
+            "thatch_resource_name": "Thatching",
+            "bone_resource_name": "Bone",
+            "fungi_resource_name": "Fungi",
+            "chitin_resource_name": "Chitin",
+            "coal_resource_name": "Any Coal",
+            "any_fuel_resource_name": "Any Fuel",
+            "common_fuel_resource_name": "Any Common Fuel",
+            "weak_fuel_resource_name": "Lower Grade Fuel",
+            "fuel_resource_name": "Good Grade Fuel",
+            "high_fuel_resource_name": "Higher Grade Fuel",
+            "soft_metal_resource_name": "Any Soft Metal",
+            "hard_metal_resource_name": "Any Hard Metal",
+            "precious_metal_resource_name": "Any Precious Metal",
+            "algae_resource_name": "Any Water Weed",
+            "fish_roe_resource_name": "Any Fish Roe",
+            "fish_meat_resource_name": "Any Fish Meat"
          }
       }
    }
