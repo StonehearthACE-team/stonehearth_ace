@@ -486,7 +486,7 @@
       "blacksmith": {
          "recipes": {
             "blacksmith_fuel_oven_recipe": {
-               "recipe_name": "Schmiedebrennofen",
+               "recipe_name": "Brennofen",
                "description": "Benötigt für die Veredlung bestimmte Materialien wie Holz und Kohle.",
                "flavor": "Ein starkes Feuer erfordert den reinsten Brennstoff. Und das fängt mit harter Arbeit an. -Lucan Varius, Feuerkünstler"
             },
@@ -679,7 +679,7 @@
          },
          "blacksmith_fuel_oven": {
             "blacksmith_fuel_oven_ghost": {
-               "display_name": "Schmiedebrennofen",
+               "display_name": "Brennofen",
                "description": "Wird vom Schmied zur Veredelung von Materialien, durch kontrolliertes Erhitzen, verwendet."
             }
          },
@@ -720,7 +720,7 @@
       "cook": {
          "recipes": {
             "nutty_poultry_recipe": {
-               "recipe_name": "Verrührte Geflügel & Nüsse",
+               "recipe_name": "Verrührtes Geflügel mit Nüsse",
                "description": "Verrührte und gebratene große Geflügelscheiben mit Gewürzen und Nüssen.",
                "flavor": "Sehr beliebt bei Hearthlingen aus dem Osten!"
             },
@@ -1020,19 +1020,19 @@
             "description": "Marblesprout Crop Description",
             "growth_stage": {
                "000": {
-                  "name": "Marmorsprossen Sämling",
+                  "name": "Marmorsproßen Sämling",
                   "description": "Voller Potenzial."
                },
                "001": {
-                  "name": "Marmorsprossen Sprosse",
+                  "name": "Marmorsproßen Sprosse",
                   "description": "Stummlig"
                },
                "002": {
-                  "name": "Marmorsprossen Knospe",
+                  "name": "Marmorsproßen Knospe",
                   "description": "Unbeholfene, schlaksige Phase."
                },
                "003": {
-                  "name": "Marmorsprossen",
+                  "name": "Marmorsproßen",
                   "description": "Schönheit ist ihre eigene Belohnung. (Felsenfest)"
                }
             }
@@ -1081,69 +1081,69 @@
                   "description": "Sogar eine schöne Birke hat bescheidene Anfänge."
                },
                "001": {
-                  "name": "Birch Seedling",
-                  "description": "A delicate stage of growth."
+                  "name": "Birken Sämling",
+                  "description": "Eine empfindliche Phase des Wachstums."
                },
                "002": {
-                  "name": "Birch Sprout",
-                  "description": "Up, up, up it goes!"
+                  "name": "Birken Sproße",
+                  "description": "Auf, auf, auf geht es!"
                },
                "003": {
-                  "name": "Birch Sapling",
-                  "description": "Ready to be transferred to a bigger plot."
+                  "name": "Birken Schössling",
+                  "description": "Bereit auf ein größeres Grundstück übertragen zu werden."
                }
             },
-            "display_name": "Birch Sapling",
-            "description": "Out of trees? Get ready to participate in reforestation."
+            "display_name": "Birken Schössling",
+            "description": "Keine Bäumen mehr? Mach dich bereit für die Wiederaufforstung!"
          },
          "yew_tree_crop": {
             "growth_stage": {
                "000": {
-                  "description": "Even a large tree has humble beginnings.",
-                  "name": "Yew Seed"
+                  "description": "Sogar ein großer Baum hat bescheidene Anfänge.",
+                  "name": "Eibensamen"
                },
                "001": {
-                  "description": "It's just getting started.",
-                  "name": "Yew Seedling"
+                  "description": "Es fängt gerade erst an.",
+                  "name": "Eiben Sämling"
                },
                "002": {
-                  "description": "Getting closer and closer...",
-                  "name": "Yew Sprout"
+                  "description": "Es ist nahe dran, sehr nah...",
+                  "name": "Eiben Sproße"
                },
                "003": {
-                  "description": "Ready to be transferred to a bigger plot.",
-                  "name": "Yew Sapling"
+                  "description": "Bereit auf ein größeres Grundstück übertragen zu werden.",
+                  "name": "Eiben Schössling"
                }
             },
-            "description": "Needs more Yew wood? Prepare your plots for reforestation!",
-            "display_name": "Yew Tree Sapling"
+            "description": "Du brauchst mehr Eibenholz? Mach dich bereit für die Wiederaufforstung!",
+            "display_name": "Eiben Schössling"
          },
          "paddy_crop": {
-            "display_name": "Paddy Field",
-            "description": "Rice grows slowly but is widely appreciated! Requires a flooded Farm Plot to grow.",
+            "display_name": "Reisfeld",
+            "description": "Reis wächst langsam, wird aber allgemein geschätzt! Erfordert ein überflutetes Farm-Grundstück, um zu wachsen.",
             "growth_stage": {
                "000": {
-                  "name": "Paddy Stub",
-                  "description": "Recently planted rice, will need a lot of water to grow up."
+                  "name": "Reisstummel",
+                  "description": "Vor kurzem gepflanzter Reis, braucht viel Wasser, um aufzuwachsen."
                },
                "001": {
-                  "name": "Paddy Tuft",
-                  "description": "It's growing taller by the minute!"
+                  "name": "Reisbüschel",
+                  "description": "Es wird von Minute zu Minute größer!"
                },
                "002": {
-                  "name": "Paddy Weed",
-                  "description": "Long grasses have emerged and will flower anytime."
+                  "name": "Reisgras",
+                  "description": "Lange Gräser sind aufgetaucht und werden bald blühen."
                },
                "003": {
-                  "name": "Flowering Paddy",
-                  "description": "The grasses are bright green and the windsown seeds will dry soon."
+                  "name": "Blühender Reis",
+                  "description": "Die Gräser sind hellgrün und die windgesäten Samen trocknen bald aus."
                },
                "004": {
-                  "name": "Mature Paddy",
-                  "description": "The ears have dried and the paddy is ready for harvest!"
+                  "name": "Reifer Reis",
+                  "description": "Die Ohren sind getrocknet und der Reist ist bereit zur Ernte!"
                },
                "019": {
-                  "name": "Rotten Paddy"
+                  "name": "Verrotterter Reis"
                }
             }
          }
@@ -1165,76 +1165,76 @@
       "resources": {
          "wood": {
             "birch_log": {
-               "description": "Ein Holzklotz. Aus Holz gemacht.",
+               "description": "Ein Block. Gemacht aus Holz.0",
                "display_name": "Birkenholz"
             },
             "yew_log": {
                "display_name": "Eibenholz",
-               "description": "Ein Holzklotz. Aus Holz gemacht."
+               "description": "Ein Block. Gemacht aus Holz."
             },
             "parana_pine_log": {
-               "description": "Ein Holzklotz. Aus Holz gemacht.",
+               "description": "Ein Block. Gemacht aus Holz.",
                "display_name": "Parana-Kiefern-Holz"
             },
             "highland_pine_log": {
-               "description": "A log. Made of wood.",
-               "display_name": "Highland Pine Log"
+               "description": "Ein Block. Gemacht aus Holz.",
+               "display_name": "Hochlandkiefernholz"
             },
             "willow_log": {
-               "display_name": "Willow Log",
-               "description": "A log. Made of wood."
+               "display_name": "Weideholz",
+               "description": "Ein Block. Gemacht aus Holz."
             }
          },
          "herb": {
             "moonbell": {
                "display_name": "Mondglockenblume",
-               "description": "An herb commonly used for medicinal purposes"
+               "description": "Ein Kraut das üblicherweise für medizinische Zwecke verwendet wird"
             },
             "marblesprout": {
-               "display_name": "Marblesprout Flower",
-               "description": "An uncommon herb that will harden and turn into marble when dried."
+               "display_name": "Marmorsproßen Blume",
+               "description": "Ein ungewöhnliches Kraut, das nach dem Trocknen aushärtet und zu Marmor wird."
             },
             "dried_algae": {
-               "display_name": "Dried Algae",
-               "description": "In their dried and pressed form, algae can be used as a herb."
+               "display_name": "Getrocknete Alge",
+               "description": "n ihrer getrockneten und gepressten Form können Algen als Kraut verwendet werden."
             },
             "water_lily_white": {
-               "display_name": "White Water Lily",
-               "description": "This beautiful flower from the wetlands can be used as a herb."
+               "display_name": "Weiße Seerose",
+               "description": "Diese wunderschöne Blume aus den Feuchtgebieten kann als Kraut verwendet werden."
             },
             "water_lily_yellow": {
-               "description": "This beautiful flower from the wetlands can be used as a herb.",
-               "display_name": "Yellow Water Lily"
+               "description": "Diese wunderschöne Blume aus den Feuchtgebieten kann als Kraut verwendet werden.",
+               "display_name": "Gelbe Seerose"
             },
             "water_lily_purple": {
-               "display_name": "Purple Water Lily",
-               "description": "This beautiful flower from the wetlands can be used as a herb."
+               "display_name": "Lila Seerose",
+               "description": "Diese wunderschöne Blume aus den Feuchtgebieten kann als Kraut verwendet werden."
             },
             "water_lily_pink": {
-               "display_name": "Pink Water Lily",
-               "description": "This beautiful flower from the wetlands can be used as a herb."
+               "display_name": "Rosa Seerose",
+               "description": "Diese wunderschöne Blume aus den Feuchtgebieten kann als Kraut verwendet werden."
             }
          },
          "stone": {
             "marble_stone": {
                "display_name": "Marmorstein",
-               "description": "Used by masons to make really pretty stone works!"
+               "description": "Wird vom Steinmetz verwendet, um wirklich schöne Steinarbeiten zu machen!"
             },
             "feldspar_stone": {
-               "display_name": "Hunk 'o Feldspar",
-               "description": "A not so ordinary rock, feldspar can be used to create porcelain"
+               "display_name": "Feldspat",
+               "description": "Ein nicht ganz so gewöhnlicher Fels, Feldspat kann zur Herstellung von Porzellan verwendet werden"
             },
             "limestone_stone": {
-               "display_name": "Hunk 'o Limestone",
-               "description": "A heavy, ordinary rock"
+               "display_name": "Kalkstein",
+               "description": "Ein schwerer, gewöhnlicher Felsen"
             },
             "sandstone_stone": {
-               "display_name": "Hunk 'o Sandstone",
-               "description": "A heavy, ordinary rock"
+               "display_name": "Sandstein",
+               "description": "Ein schwerer, gewöhnlicher Felsen"
             },
             "slate_stone": {
-               "display_name": "Hunk 'o Slate",
-               "description": "A heavy, ordinary rock"
+               "display_name": "Schiefer",
+               "description": "Ein schwerer, gewöhnlicher Felsen"
             }
          },
          "thatch_bale": {
@@ -1243,94 +1243,94 @@
          },
          "pelt": {
             "bitsy_spider_pelt": {
-               "display_name": "Spider Chitin",
-               "description": "Hard, shiny, and quite dead"
+               "display_name": "Spinnenchitin",
+               "description": "Hart, glänzend und ganz tot"
             },
             "grasshopper_pelt": {
-               "display_name": "Grasshopper Chitin",
-               "description": "Hard, shiny, and quite dead"
+               "display_name": "Grashüpferchitin",
+               "description": "Hart, glänzend und ganz tot"
             },
             "scorpion_pelt": {
-               "display_name": "Scorpion Chitin",
-               "description": "Hard, shiny, and quite dead"
+               "display_name": "Skorpionchitin",
+               "description": "Hart, glänzend und ganz tot"
             },
             "bear_pelt": {
-               "display_name": "Bear Pelt",
-               "description": "A large fur from a ferocious creature."
+               "display_name": "Bärenfell",
+               "description": "Ein großes Fell von einer wilden Kreatur."
             }
          },
          "bone_material": {
-            "display_name": "Bone Material",
-            "description": "Common bones from an average creature"
+            "display_name": "Knochenmaterial",
+            "description": "Normale Knochen einer durchschnittlichen Kreatur"
          },
          "clay": {
             "bone_clay_mound": {
-               "display_name": "Mound of Bone Clay",
-               "description": "Use it in pottery to make really pretty porcelain!"
+               "display_name": "Hügel aus Knochenlehm",
+               "description": "Verwende es in Keramik, um wirklich hübsches Porzellan herzustellen!"
             },
             "ball_clay_mound": {
-               "display_name": "Mound of Ball Clay",
-               "description": "A smooth, pale clay often found near water. Can be used to make Bone Clay."
+               "display_name": "Hügel aus Kugellehm",
+               "description": "Ein glatter, heller Ton, der häufig in der Nähe von Wasser gefunden wird. Kann zur Herstellung von Knochenlehm verwendet werden."
             },
             "shale_clay_mound": {
-               "display_name": "Mound of Shale Clay",
-               "description": "Is it stone? Is it clay? It can surely be used as either!"
+               "display_name": "Hügel aus Schieferlehm",
+               "description": "Ist es stein? Ist es Lehm? Es kann sicherlich als beides verwendet werden!"
             }
          },
          "fiber": {
             "cotton_bundle": {
-               "display_name": "Cotton Bundle",
-               "description": "Soft to the touch. Spinnable into thread"
+               "display_name": "Baumwollbündel",
+               "description": "Anschmiegsam. In Faden spinnbar"
             }
          },
          "coal": {
             "piece_of_charcoal": {
-               "display_name": "Piece 'o Charcoal",
-               "description": "A block of slowly burnt wood that can be used as a good grade fuel."
+               "display_name": "Kohlestück",
+               "description": "Ein Block aus langsam gebranntem Holz, das als guter Brennstoff verwendet werden kann."
             },
             "everglowing_ember": {
-               "display_name": "Everglowing Ember",
-               "description": "So pretty... It never stops glowing! Used as a higher grade fuel or by the Magmasmith."
+               "display_name": "Immerglühende Kohle",
+               "description": "So hübsch ... Es hört nie auf zu leuchten! Wird als höherwertiger Kraftstoff oder vom Magmaschmied verwendet."
             },
             "lump_of_coal": {
-               "display_name": "Lumps 'o Coal",
-               "description": "Sizable chunks of solid coal that can be used as a good grade fuel."
+               "display_name": "Kohleklumpen",
+               "description": "Großer Brocken fester Kohle, der als Kraftstoff guter Qualität verwendet werden kann."
             },
             "hunk_of_hard_coal": {
-               "display_name": "Hunk 'o Hard Coal",
-               "description": "A large bit of black coal, full of energy to be used as a higher grade fuel."
+               "display_name": "Steinkohlestück",
+               "description": "Ein großes Stück Steinkohle, Energiegeladen genug um als Kraftstoff höherer Qualität verwendet zu werden."
             },
             "slab_of_coke": {
-               "display_name": "Slab 'o Coke",
-               "description": "An efficient good grade fuel refined from regular coal."
+               "display_name": "Koksplatte",
+               "description": "Ein effizienter Kraftstoff guter Qualität, der aus normaler Kohle gewonnen wird."
             },
             "chunk_of_brown_coal": {
-               "display_name": "Chunk 'o Brown Coal",
-               "description": "A soft and less efficient kind of coal that can be used as a lower grade fuel."
+               "display_name": "Braunkohlestück",
+               "description": "Eine weiche und weniger effiziente Art von Kohle, die als Brennstoff niedrigerer Qualität verwendet werden kann."
             }
          },
          "fuel": {
             "bundle_of_firewood": {
-               "description": "Split blocks of wood that can be efficiently used as a lower grade fuel.",
-               "display_name": "Bundle 'o Firewood"
+               "description": "Holzspaltblöcke, die als Brennstoff niedrigerer Qualität verwendet werden können.",
+               "display_name": "Brennholzbündel"
             },
             "bit_of_peat": {
-               "display_name": "Bit 'o Peat",
-               "description": "Organic residue found in bogs and moors. Can be used as a lower grade fuel."
+               "display_name": "Ein bisschen Torf",
+               "description": "Organischer Rückstand in Sümpfen und Mooren. Kann als Kraftstoff niedrigerer Qualität verwendet werden."
             }
          },
          "algae": {
             "green_algae": {
-               "display_name": "Green Algae",
-               "description": "Algae have many uses, especially in cooking and herbalism."
+               "display_name": "Grüne Alge",
+               "description": "Algen haben viele Anwendungen, vor allem beim Kochen und bei der Kräuterkunde."
             },
             "red_algae": {
-               "display_name": "Red Algae",
-               "description": "Much coveted for cooking, red algae has several uses."
+               "display_name": "Rote Alge",
+               "description": "Die zum Kochen sehr begehrten roten Algen sind vielfältig einsetzbar."
             },
             "brown_algae": {
-               "display_name": "Brown Algae",
-               "description": "Also known as kelp, has many uses in herbalism and cooking."
+               "display_name": "Braune Alge",
+               "description": "Auch als Seetang bekannt, hat viele Anwendungen in der Kräuterkunde und beim Kochen."
             }
          }
       },
@@ -1341,36 +1341,36 @@
             "flavor": "Pass auf, dass du niemanden aussperrst"
          },
          "legendary_silk": {
-            "display_name": "Woodland Silk",
-            "description": "Gold and silk woven as one for the Elven King Hood."
+            "display_name": "Waldseide",
+            "description": "Gold und Seide zusammengewebt für den Umhang des Elfenkönigs."
          },
          "legendary_buckle": {
-            "display_name": "Ornate Buckle",
-            "description": "A beautifully engraved set of buckles for the Elven King Hood."
+            "display_name": "Verzierte Schnalle",
+            "description": "Ein wunderschön gravierter Satz Schnallen für den Umhang des Elfenkönigs."
          },
          "legendary_cape": {
-            "display_name": "Imperial Cape",
-            "description": "A majestic cape tailored for the Vanguard's Chainmail."
+            "display_name": "Imperialer Umhang",
+            "description": "Ein majestätischer Umhang für die Kettenpanzer der Vorhut."
          },
          "legendary_chainmail": {
-            "display_name": "Silver Chainmail Links",
-            "description": "Pieces of silver chainmail linked together for the Vanguard's Chainmail."
+            "display_name": "Silberhettenhemd Glied",
+            "description": "Für die Kettenpanzer der Vorhut zusammengebundene silberne Kettenhemdstücke."
          },
          "legendary_handle": {
-            "display_name": "Sturdy Handle",
-            "description": "The strong arm of the Ascendant Star."
+            "display_name": "Stabiler Griff",
+            "description": "Der starke Arm des aufsteigenden Sterns."
          },
          "legendary_headpiece": {
-            "display_name": "Fallen Star",
-            "description": "A strong and deadly headpiece for the Ascendant Star."
+            "display_name": "Gefallener Stern",
+            "description": "Eine starke und tödliche Kopfbedeckung für den aufsteigenden Stern."
          },
          "legendary_ink": {
-            "display_name": "Sacred Ink",
-            "description": "Special and gilded ink for illuminated manuscripts in 'The Walk of Cid'."
+            "display_name": "Heilige Tinte",
+            "description": "Spezielle und vergoldete Tinte für illuminierte Handschriften in 'Der Spaziergang von Cid'."
          },
          "legendary_parchment": {
-            "display_name": "Gilded Paper",
-            "description": "Delicate and precious sheets of decorated parchment for 'The Walk of Cid'."
+            "display_name": "Vergoldetes Papier",
+            "description": "Zarte und kostbare Blätter mit dekoriertem Pergament für 'Der Spaziergang von Cid'."
          }
       },
       "trees": {
@@ -1379,51 +1379,51 @@
          "birch_tree": {
             "ancient_birch_tree": {
                "display_name": "Uralter Birkenbaum",
-               "description": "A tree as old as time."
+               "description": "Ein Baum so alt wie die Zeit."
             },
             "large_birch_tree": {
                "display_name": "Großer Birkenbaum",
-               "description": "Tall and strong entity of the forest."
+               "description": "Hohe und starke Einheit des Waldes."
             },
             "medium_birch_tree": {
-               "description": "Beautiful with its unique bark coloring.",
+               "description": "Schön mit seiner einzigartigen Rindenfärbung.",
                "display_name": "Birkenbaum"
             },
             "sapling_birch_tree": {
-               "description": "Baby Birch tree.",
+               "description": "Baby-Birke.",
                "sapling_birch_tree_iconic": {
-                  "description": "Plant it in the earth and watch it grow."
+                  "description": "Pflanze sie in die Erde und schau zu wie sie wächst."
                },
                "sapling_birch_tree_ghost": {
-                  "description": "Baby Birch tree.",
+                  "description": "Baby-Birke.",
                   "display_name": "Birkenbaum Sämling"
                }
             },
             "seed": {
                "tree_birch_seed_ghost": {
                   "description": "Kann gepflanzt werden, um einen riesigen Baum zu züchten",
-                  "display_name": "Birkenbaum Samen"
+                  "display_name": "Birkenbaumsamen"
                }
             },
             "small_birch_tree": {
                "display_name": "Kleiner Birkenbaum",
-               "description": "A beautiful and young forest birch."
+               "description": "Eine schöne und junge Waldbirke."
             },
             "bud": {
                "tree_birch_plant_bud": {
                   "display_name": "Angehende Birke",
-                  "description": "It's already a little tree!"
+                  "description": "Es ist schon ein kleiner Baum!"
                }
             },
             "sprout": {
                "tree_birch_sprout": {
-                  "description": "Just needs some time and care.",
+                  "description": "Braucht nur etwas Zeit und Pflege.",
                   "display_name": "Birkenbaum-Sprössling"
                }
             },
             "stem": {
                "tree_birch_plant_stem": {
-                  "description": "Still growing!",
+                  "description": "Immernoch wachsend!",
                   "display_name": "Stummliger Birkenbaum"
                }
             }
@@ -1432,47 +1432,47 @@
             "seed": {
                "tree_parana_pine_seed_ghost": {
                   "display_name": "Paranakiefernkern",
-                  "description": "Can be planted to grow an unique, beautiful tree."
+                  "description": "Kann gepflanzt werden, um einen einzigartigen, schönen Baum zu züchten."
                }
             },
             "sprout": {
                "tree_parana_pine_sprout": {
                   "display_name": "Paranakiefern-Sprössling",
-                  "description": "Just needs some time and care."
+                  "description": "Braucht nur etwas Zeit und Pflege."
                }
             },
             "stem": {
                "tree_parana_pine_plant_stem": {
                   "display_name": "Stummlige Paranakiefer",
-                  "description": "Still growing!"
+                  "description": "Immernoch wachsend!"
                }
             },
             "bud": {
                "tree_parana_pine_plant_bud": {
-                  "description": "It's a little pine, although not really a pine...",
+                  "description": "Es ist eine kleine Kiefer, obwohl sie nicht wirklich eine Kiefer ist...",
                   "display_name": "Angehende Paranakiefer"
                }
             },
             "small_parana_pine_tree": {
                "display_name": "Kleine Paranakiefer",
-               "description": "Still mostly a pine, but with pretty, stingy leaves."
+               "description": "Meistens eine Kiefer, aber mit schönen, kleinen Blättern."
             },
             "large_parana_pine_tree": {
                "display_name": "Große Paranakiefer",
-               "description": "Look at those stool buds! Glorious!"
+               "description": "Schau dir diese Hockerknopsen an! Herrlich!"
             },
             "medium_parana_pine_tree": {
                "display_name": "Paranakiefer",
-               "description": "So many fluffy canopies!"
+               "description": "So viele flauschige Sonnendächer!"
             },
             "sapling_parana_pine_tree": {
-               "description": "Baby Parana Pine tree.",
+               "description": "Baby-Paranakiefer.",
                "sapling_parana_pine_tree_iconic": {
-                  "description": "Plant it in the earth and watch it grow."
+                  "description": "Pflanze sie in die Erde und schau zu wie sie wächst."
                },
                "sapling_parana_pine_tree_ghost": {
                   "display_name": "Paranakiefern Sämling",
-                  "description": "Baby Parana Pine tree."
+                  "description": "Baby-Paranakiefer."
                }
             }
          },
@@ -1484,85 +1484,85 @@
             "bud": {
                "tree_yew_plant_bud": {
                   "display_name": "Angehender Eibenbaum",
-                  "description": "TBD"
+                  "description": "Sieht schon uralt aus, ist aber noch so jung!"
                }
             },
             "large_yew_tree": {
                "display_name": "Großer Eibenbaum",
-               "description": "Large and bulky tree."
+               "description": "Großer und sperriger Baum."
             },
             "medium_yew_tree": {
                "display_name": "Eibenbaum",
-               "description": "A beautiful tree with pretty little fruits during Autumn!"
+               "description": "Ein schöner Baum mit ziemlich kleinen Früchten im Herbst!"
             },
             "sapling_yew_tree": {
-               "description": "Baby Yew tree.",
+               "description": "Baby-Eibe.",
                "sapling_yew_tree_iconic": {
-                  "description": "Plant it in the earth and watch it grow."
+                  "description": "Pflanze sie in die Erde und schau zu wie sie wächst.."
                },
                "sapling_yew_tree_ghost": {
-                  "description": "Baby Yew tree.",
+                  "description": "Baby-Eibe.",
                   "display_name": "Eibenbaum Sämling"
                }
             },
             "seed": {
                "tree_yew_seed_ghost": {
-                  "display_name": "Eibenbaum Samen",
-                  "description": "Can be planted to grow a bulky, strong tree."
+                  "display_name": "Eibenbaumsamen",
+                  "description": "Kann gepflanzt werden, um einen sperrigen, starken Baum zu züchten."
                }
             },
             "small_yew_tree": {
                "display_name": "Kleiner Eibenbaum",
-               "description": "Stubby and strong."
+               "description": "Stummelig und stark."
             },
             "sprout": {
                "tree_yew_sprout": {
                   "display_name": "Eibenbaum Sprössling",
-                  "description": "Just needs some time and care."
+                  "description": "Braucht nur etwas Zeit und Pflege."
                }
             },
             "stem": {
                "tree_yew_plant_stem": {
                   "display_name": "Stummliger Eibenbaum",
-                  "description": "Still growing!"
+                  "description": "Immernoch wachsend!"
                }
             }
          },
          "highland_pine_tree": {
             "bud": {
                "tree_highland_pine_bud": {
-                  "display_name": "Budding Highland Pine",
-                  "description": "Growing so tall!"
+                  "display_name": "Hochlandkiefer Knospe",
+                  "description": "Wird richtig groß wachsen!"
                }
             },
             "large": {
                "large_highland_pine": {
-                  "display_name": "Large Highland Pine",
-                  "description": "So tall the wind bends it!"
+                  "display_name": "Große Hochlandkiefer",
+                  "description": "So groß, dass der Wind sie biegt!"
                }
             },
             "medium": {
                "medium_highland_pine": {
-                  "display_name": "Highland Pine",
-                  "description": "Tall and beautiful mountain tree."
+                  "display_name": "Hochlandkiefer",
+                  "description": "Hoher und schöner Bergbaum."
                }
             },
             "seed": {
                "tree_highland_pine_seed_ghost": {
-                  "display_name": "Highland Pine Seed",
-                  "description": "Can be planted to grow a large mountain tree."
+                  "display_name": "Hochlandkiefersamen",
+                  "description": "Kann gepflanzt werden, um einen großen Bergbaum wachsen zu lassen."
                }
             },
             "small": {
                "small_highland_pine": {
-                  "display_name": "Small Highland Pine",
-                  "description": "A short one for the highlands but still quite talll..."
+                  "display_name": "Kleine Hochlandkiefer",
+                  "description": "Eine eher kurze Hochlandkiefer für das Hochland, aber immer noch recht groß..."
                }
             },
             "sprout": {
                "tree_highland_pine_sprout": {
-                  "display_name": "Highland Pine Sproutling",
-                  "description": "Just needs some time and care."
+                  "display_name": "Hochlandkiefer Sproße",
+                  "description": "Braucht nur etwas Zeit und Pflege."
                }
             },
             "stem": {
@@ -2927,18 +2927,18 @@
          },
          "visions": {
             "heatmap": {
-               "title": "heatmap",
-               "description": "This is the heatmap tooltip. TODO: put something useful here."
+               "title": "Wärmekarte",
+               "description": "Dies ist das Wärmekarte-Tooltip. TODO: hier etwas Nützliches einfügen."
             }
          },
          "heatmaps": {
             "ore": {
-               "display_name": "Ore Detector",
-               "description": "Detect ore beneath the surface: areas appear brighter where ore is abundant or close to the surface."
+               "display_name": "Erzdetektor",
+               "description": "Erkenne Erze unter der Oberfläche: Bereiche, in denen Erze reichlich sind oder sich in der Nähe der Oberfläche befinden, erscheinen heller."
             },
             "wilderness": {
-               "display_name": "Wilderness",
-               "description": "See where the world is wilder (or tamer)."
+               "display_name": "Wildnis",
+               "description": "Sehe wo die Welt wilder ist (oder zahmer)."
             }
          },
          "zones_mode": {
