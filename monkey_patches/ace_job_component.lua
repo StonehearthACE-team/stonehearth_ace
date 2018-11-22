@@ -130,7 +130,7 @@ function AceJobComponent:has_ai_action(action_uri)
 
 	for _, equipment in pairs(job_equipment) do
 		local equipment_piece = equipment:get_component('stonehearth:equipment_piece')
-		if equipment_piece:has_ai_action(action_uri) then
+		if equipment_piece and equipment_piece:has_ai_action(action_uri) then
 			return true
 		end
 	end
@@ -143,7 +143,7 @@ function AceJobComponent:has_ai_pack(pack_uri)
 
 	for _, equipment in pairs(job_equipment) do
 		local equipment_piece = equipment:get_component('stonehearth:equipment_piece')
-		if equipment_piece:has_ai_pack(pack_uri) then
+		if equipment_piece and equipment_piece:has_ai_pack(pack_uri) then
 			return true
 		end
 	end
@@ -156,7 +156,7 @@ function AceJobComponent:has_ai_task_group(task_group_uri)
 
 	for _, equipment in pairs(job_equipment) do
 		local equipment_piece = equipment:get_component('stonehearth:equipment_piece')
-		if equipment_piece:has_ai_task_group(task_group_uri) then
+		if equipment_piece and equipment_piece:has_ai_task_group(task_group_uri) then
 			return true
 		end
 	end
