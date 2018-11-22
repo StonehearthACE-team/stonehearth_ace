@@ -54,8 +54,8 @@ function AceEvolveComponent:_create_water_listener()
 	end
 
 	local reach = self._water_reach
-	local region = self._entity:get_component('destination') or self._entity:get_component('region_collision_shape')
-	-- if there's no destination or collision region, oh well, guess we're not creating a listener
+	local region = self._entity:get_component('region_collision_shape')
+	-- if there's no collision region, oh well, guess we're not creating a listener
 	if not region then
 		return
 	end
