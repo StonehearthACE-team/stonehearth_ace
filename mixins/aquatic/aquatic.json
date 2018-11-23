@@ -1,7 +1,7 @@
 {
    "type": "mixin",
    "mixins": "stonehearth:mixins:mob",
-   "player_id": "animals",
+   "player_id": "aquatic_animals",
    "components": {
       "stonehearth:ai": {},
       "mob": {
@@ -63,7 +63,7 @@
          "has_physics": true
       },
       "stonehearth:catalog": {
-         "player_id": "animals",
+         "player_id": "aquatic_animals",
          "category": "aquatic"
       },
       "stonehearth:observers:avoid_threatening_entities": {

@@ -1,0 +1,26 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "mob": {
+         "model_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(na_cook_oven.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:hide_child_entities_from_pathfinder": true,
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth:jobs.cook.cook_oven.cook_oven_ghost.display_name)",
+         "description": "i18n(stonehearth:jobs.cook.cook_oven.cook_oven_ghost.description)",
+         "icon": "file(na_cook_oven.png)",
+         "category": "workshops",
+         "material_tags": "stockpile_tool"
+      }
+   }
+}

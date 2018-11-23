@@ -1,0 +1,46 @@
+{
+   "mixins": "/stonehearth_ace/scenarios/static/plantlife_nest/plantlife_nest.json",
+   "name": "algae_random_nest_large",
+   "mixintypes": {
+      "habitat_types": "override"
+   },
+   "habitat_types": [
+      "water"
+   ],
+   "size": {
+      "width": 64,
+      "length": 64
+   },
+   "biomes": [
+      "stonehearth_ace:biome:highlands",
+      "stonehearth:biome:temperate",
+      "stonehearth:biome:desert",
+      "stonehearth:biome:arctic"
+   ],
+   "data": {
+      "critter_type": [
+         "stonehearth_ace:algae:green",
+         "stonehearth_ace:algae:green:small",
+         "stonehearth_ace:algae:brown",
+         "stonehearth_ace:algae:brown:small",
+         "stonehearth_ace:algae:red",
+         "stonehearth_ace:algae:red:small",
+         "stonehearth_ace:boulder:ball_clay:large_1",
+         "stonehearth_ace:boulder:ball_clay:large_2",
+         "stonehearth_ace:boulder:ball_clay:medium_1",
+         "stonehearth_ace:boulder:ball_clay:medium_2",
+         "stonehearth_ace:boulder:ball_clay:medium_3",
+         "stonehearth_ace:boulder:ball_clay:small",
+         "stonehearth_ace:boulder:underwater:large_1",
+         "stonehearth_ace:boulder:underwater:large_2",
+         "stonehearth_ace:boulder:underwater:medium_1",
+         "stonehearth_ace:boulder:underwater:medium_2",
+         "stonehearth_ace:boulder:underwater:medium_3",
+         "stonehearth_ace:boulder:underwater:small"
+      ],
+      "num_critters": {
+         "min": 4,
+         "max": 24
+      }
+   }
+}

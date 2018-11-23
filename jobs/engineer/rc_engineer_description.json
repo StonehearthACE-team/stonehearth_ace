@@ -1,6 +1,9 @@
 {
    "type": "job",
    "mixins": "stonehearth:jobs:engineer",
+   "crafter": {
+      "recipe_list": "file(recipes/rc_recipes.json)"
+   },
    "equipment": {
       "helmet": "file(rc_engineer_outfit/rc_engineer_helm)",
       "torso": "file(rc_engineer_outfit)"

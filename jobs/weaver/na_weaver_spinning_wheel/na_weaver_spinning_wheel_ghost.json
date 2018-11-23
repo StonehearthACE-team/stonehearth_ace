@@ -1,0 +1,33 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "mob": {
+         "model_origin": { "x": 0.5, "y": 0, "z": -0.15 },
+         "region_origin": { "x": 0.5, "y": 0, "z": -0.15 }
+      },
+      "render_info": {
+         "animation_table": "/stonehearth/data/rigs/jobs/weaver/weaver_spinning_wheel/weaver_spinning_wheel.json",
+         "scale": 0.1
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(na_weaver_spinning_wheel.qb)"
+            ]
+         }
+      },
+      "effect_list": {
+         "default": "/stonehearth/data/rigs/jobs/weaver/weaver_spinning_wheel/effects/idle.json"
+      }
+   },
+   "entity_data": {
+      "stonehearth:hide_child_entities_from_pathfinder": true,
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth:jobs.weaver.weaver_spinning_wheel.weaver_spinning_wheel_ghost.display_name)",
+         "description": "i18n(stonehearth:jobs.weaver.weaver_spinning_wheel.weaver_spinning_wheel_ghost.description)",
+         "icon": "file(na_weaver_spinning_wheel.png)",
+         "category": "workshops",
+         "material_tags": "wood tool stockpile_tool"
+      }
+   }
+}

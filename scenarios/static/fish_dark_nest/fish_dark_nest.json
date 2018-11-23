@@ -1,6 +1,9 @@
 {
    "mixins": "/stonehearth/scenarios/static/critter_nest/critter_nest.json",
    "name": "fish_dark_nest",
+   "mixintypes": {
+      "habitat_types": "override"
+   },
    "habitat_types": [
       "water"
    ],

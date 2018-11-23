@@ -1,6 +1,9 @@
 {
    "type": "job",
    "mixins": "rayyas_children:jobs:carpenter",
+   "crafter": {
+      "recipe_list": "file(recipes/rc_recipes.json)"
+   },
    "equipment": {
       "torso": "file(rc_carpenter_outfit)"
    }

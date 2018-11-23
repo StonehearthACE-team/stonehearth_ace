@@ -1,0 +1,13 @@
+{
+   "type": "recipe",
+   "mixins": "/stonehearth/jobs/cook/recipes/cook_workbench_recipe.json",
+   "portrait": "/stonehearth_ace/jobs/cook/rc_cook_workbench/rc_cook_workbench.png",
+   "mixintypes": {
+	  "produces": "override"
+   },
+   "produces": [
+      {
+         "item": "stonehearth_ace:rayyas_children:cook:workbench"
+      }
+   ]
+}

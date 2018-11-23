@@ -17,6 +17,12 @@
          "file(static/fish_catfish_nest)",
          "file(static/fish_salmon_nest)",
          "file(static/fish_trout_nest)",
+         "file(static/algae_random_nest)",
+         "file(static/algae_random_nest_small)",
+         "file(static/algae_random_nest_large)",
+         "file(static/algae_red_nest)",
+         "file(static/algae_brown_nest)",
+         "file(static/algae_green_nest)",
          "file(static/landmarks/16x_water_bottom_1.json)",
          "file(static/landmarks/16x_water_bottom_2.json)",
          "file(static/landmarks/16x_water_bottom_3.json)",
@@ -42,6 +48,15 @@
          "file(static/landmarks/96x_peatland_3.json)"
       ],
       "categories": {
+         "plantlife": {
+            "density": 6,
+            "priority": 0,
+            "location_type": "surface",
+            "activation_type": "immediate"
+         },
+         "ore": {
+            "density": 8
+         },
          "terrain_feature_underground": {
             "max_count": [
                10,
@@ -95,15 +110,14 @@
             ]
          },
          "underwater_feature_common": {
-            "density": 10,
+            "density": 3,
             "max_count": [
-               15,
-               25,
-               30,
+               20,
+               28,
+               36,
                45
             ],
             "prevents_categories_in_same_tile": [
-               "underwater_feature_common",
                "underwater_feature_rare"
             ],
             "priority": "random",
@@ -111,7 +125,7 @@
             "activation_type": "immediate"
          },
          "underwater_feature_rare": {
-            "density": 45,
+            "density": 1,
             "max_count": [
                0,
                0,
@@ -126,7 +140,6 @@
                3
             ],
             "prevents_categories_in_same_tile": [
-               "underwater_feature_common",
                "underwater_feature_rare"
             ],
             "priority": "random",

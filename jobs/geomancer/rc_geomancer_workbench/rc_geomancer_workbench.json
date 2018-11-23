@@ -1,0 +1,65 @@
+{
+   "type": "entity",
+   "mixins": "file(rc_geomancer_workbench_ghost.json)",
+   "components": {
+      "stonehearth:entity_forms": {
+         "ghost_form": "file(rc_geomancer_workbench_ghost.json)",
+         "iconic_form": "file(rc_geomancer_workbench_iconic.json)",
+         "placeable_on_ground": true
+      },
+      "render_info": {
+         "scale": 0.1,
+         "color_map": "stonehearth:color_map:geomancer",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/geomancer_material_map.json"
+         ]
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": 0, "y": 0, "z": -1 },
+               "max": { "x": 1, "y": 1, "z": 1 }
+            }
+         ],
+         "adjacency_flags": [
+            "front"
+         ]
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 2, "y": 1, "z": 1 }
+            },
+            {
+               "min": { "x": -1, "y": 0, "z": 1 },
+               "max": { "x": 2, "y": 3, "z": 2 }
+            }
+         ]
+      },
+      "stonehearth:workshop": {
+         "job_alias": "stonehearth:jobs:geomancer",
+         "workshop_effect": "/stonehearth/data/rigs/jobs/geomancer/geomancer_workbench/effects/work.json"
+      }
+   },
+   "entity_data": {
+      "stonehearth:table": {
+         "drop_effect": "carry_putdown_on_table",
+         "drop_offset": { "x": 0, "y": 1, "z": -0.5 }
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 40,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 6
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

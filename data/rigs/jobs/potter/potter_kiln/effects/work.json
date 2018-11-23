@@ -1,0 +1,74 @@
+{
+   "type" : "effect",
+   "tracks": {
+      "coals": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth/data/horde/particles/fire/forge_coals.cubemitter.json",
+         "loop": true,
+         "transforms": {
+            "x":-0.1,
+            "y":0.2,
+            "z":-0.8,
+            "rx":90,
+            "ry":0,
+            "rz":0
+         }
+      },      
+      "fire_light": {
+         "type": "light",
+         "light": "/stonehearth/data/horde/animatedlights/lamp/oil_lamp.animatedlight.json",
+         "transforms": {
+            "x":-0.1,
+            "y":0.2,
+            "z":-1.4,
+            "rx":90,
+            "ry":0,
+            "rz":0
+        }
+      },  
+      "kiln_body": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth/data/horde/particles/fire/small_fire.cubemitter.json",
+         "loop": true,
+         "transforms": {
+            "x":-0.1,
+            "y": 0.2,
+            "z":-1.2,
+            "rx":90,
+            "ry":0,
+            "rz":0
+         }
+      },
+      "light": {
+         "type": "light",
+         "light": "/stonehearth/data/horde/animatedlights/lamp/lamp.animatedlight.json",
+         "transforms": {
+            "x":0,
+            "y":1.0,
+            "z":-1.0
+        }
+      },
+      "smoke": {
+         "type": "cubemitter",
+         "loop" : true,
+         "cubemitter": "/stonehearth/data/horde/particles/fire/smoke_plume.cubemitter.json",
+         "transforms": {
+            "x":0,
+            "y":4.1,
+            "z":1.6,
+            "rx":90,
+            "ry":0,
+            "rz":0
+         }
+      },
+      "sound": {
+         "type": "sound_effect",
+         "loop" : true,
+         "start_time":  0,
+         "min_distance": 38,
+         "falloff" : 7,
+         "volume": 6,
+         "track" : "stonehearth:sounds:kiln_work"
+      }
+   }
+}

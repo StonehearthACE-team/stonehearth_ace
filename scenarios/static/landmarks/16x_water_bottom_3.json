@@ -1,6 +1,6 @@
 {
    "mixins": "/stonehearth/scenarios/static/landmarks/qb_to_terrain.json",
-   "biomes": ["stonehearth:biome:temperate","stonehearth:biome:arctic","stonehearth:biome:desert", "stonehearth_ace:biome:highlands"],
+   "biomes": ["stonehearth:biome:temperate","stonehearth:biome:arctic", "stonehearth_ace:biome:highlands"],
    "name": "16x_water_bottom_3",
    "category": "underwater_feature_common",
    "unique" : false,
@@ -9,6 +9,7 @@
       "length": 16
    },
    "habitat_types": ["water"],
+   "allow_nonflat": false,
    "weight" : 1,
    "data": {
       "brush" : "/stonehearth_ace/data/models/landmark/16x_water_bottom_3.qb",

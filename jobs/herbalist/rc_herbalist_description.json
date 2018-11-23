@@ -1,6 +1,9 @@
 {
    "type": "job",
    "mixins": "rayyas_children:jobs:herbalist",
+   "crafter": {
+      "recipe_list": "file(recipes/rc_recipes.json)"
+   },
    "equipment": {
       "helmet": "file(rc_herbalist_outfit/rc_herbalist_hood)",
       "torso": "file(rc_herbalist_outfit)"

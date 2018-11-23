@@ -1,6 +1,9 @@
 {
    "type": "job",
    "mixins": "stonehearth:jobs:geomancer",
+   "crafter": {
+      "recipe_list": "file(recipes/rc_recipes.json)"
+   },
    "equipment": {
       "torso": "file(rc_geomancer_outfit)"
    }

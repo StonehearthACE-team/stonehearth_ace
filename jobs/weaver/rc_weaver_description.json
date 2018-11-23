@@ -1,6 +1,9 @@
 {
    "type": "job",
    "mixins": "rayyas_children:jobs:weaver",
+   "crafter": {
+      "recipe_list": "file(recipes/rc_recipes.json)"
+   },
    "equipment": {
       "torso": "file(rc_weaver_outfit)"
    }

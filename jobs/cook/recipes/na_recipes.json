@@ -1,6 +1,19 @@
 {
    "mixins": "/northern_alliance/jobs/cook/recipes/recipes.json",
    "craftable_recipes": {
+	  "workbenches": {
+         "recipes": {
+            "cook_workbench": {
+               "recipe": "file(na_cook_workbench_recipe.json)"
+            },
+            "cook_mill": {
+               "recipe": "file(na_cook_mill_recipe.json)"
+            },
+			"cook_oven": {
+               "recipe": "file(na_cook_oven_recipe.json)"
+            }
+         }
+	  },
       "chefs_specials": {
          "recipes": {
 			"faction_fish_dish": {

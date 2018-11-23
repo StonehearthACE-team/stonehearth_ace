@@ -1,6 +1,9 @@
 {
    "type": "job",
    "mixins": "stonehearth:jobs:engineer",
+   "crafter": {
+      "recipe_list": "file(recipes/na_recipes.json)"
+   },
    "equipment": {
       "helmet": "file(na_engineer_outfit/na_engineer_helm)",
       "torso": "file(na_engineer_outfit)"

@@ -1,6 +1,9 @@
 {
    "type": "job",
    "mixins": "stonehearth:jobs:herbalist",
+   "crafter": {
+      "recipe_list": "file(recipes/na_recipes.json)"
+   },
    "equipment": {
       "torso": "file(na_herbalist_outfit)"
    }

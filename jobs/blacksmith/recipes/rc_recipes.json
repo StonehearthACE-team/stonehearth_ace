@@ -1,0 +1,27 @@
+{
+   "mixins": "/rayyas_children/jobs/blacksmith/recipes/recipes.json",
+   "craftable_recipes": {
+	  "workbenches": {
+         "recipes": {
+            "blacksmith_forge": {
+				"recipe" : "file(rc_blacksmith_forge_recipe.json)"
+            },
+            "blacksmith_workbench": {
+				"recipe" : "file(rc_blacksmith_workbench_recipe.json)"
+            },
+			"blacksmith_fuel_oven" : {
+				"recipe" : "file(rc_blacksmith_fuel_oven_recipe.json)"
+			},
+			"blacksmith_crucible" : {
+				"recipe" : "file(rc_blacksmith_crucible_recipe.json)"
+			},
+			"blacksmith_forge_advanced" : {
+				"recipe" : "file(rc_blacksmith_forge_advanced_recipe.json)"
+			},
+			"blacksmith_workbench_advanced" : {
+				"recipe" : "file(rc_blacksmith_workbench_advanced_recipe.json)"
+			}
+         }
+	  }
+   }
+}

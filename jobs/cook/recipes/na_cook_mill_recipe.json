@@ -1,0 +1,13 @@
+{
+   "type": "recipe",
+   "mixins": "/stonehearth/jobs/cook/recipes/cook_mill_recipe.json",
+   "portrait": "/stonehearth_ace/jobs/cook/na_cook_mill/na_cook_mill.png",
+   "mixintypes": {
+	  "produces": "override"
+   },
+   "produces": [
+      {
+         "item": "stonehearth_ace:northern_alliance:cook:mill"
+      }
+   ]
+}

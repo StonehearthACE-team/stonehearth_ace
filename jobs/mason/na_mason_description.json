@@ -1,6 +1,9 @@
 {
    "type": "job",
    "mixins": "northern_alliance:jobs:mason",
+   "crafter": {
+      "recipe_list": "file(recipes/na_recipes.json)"
+   },
    "equipment": {
       "torso": "file(na_mason_outfit)"
    }

@@ -1,0 +1,13 @@
+{
+   "type": "recipe",
+   "mixins": "file(blacksmith_fuel_oven_recipe.json)",
+   "portrait": "/stonehearth_ace/jobs/blacksmith/rc_blacksmith_fuel_oven/rc_blacksmith_fuel_oven.png",
+   "mixintypes": {
+	  "produces": "override"
+   },
+   "produces": [
+      {
+         "item": "stonehearth_ace:rayyas_children:blacksmith:fuel_oven"
+      }
+   ]
+}

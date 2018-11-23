@@ -1,6 +1,9 @@
 {
    "type": "job",
    "mixins": "northern_alliance:jobs:potter",
+   "crafter": {
+      "recipe_list": "file(recipes/na_recipes.json)"
+   },
    "equipment": {
       "torso": "file(na_potter_outfit)"
    }

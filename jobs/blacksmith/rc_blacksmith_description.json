@@ -1,6 +1,9 @@
 {
    "type": "job",
    "mixins": "rayyas_children:jobs:blacksmith",
+   "crafter": {
+      "recipe_list": "file(recipes/rc_recipes.json)"
+   },
    "equipment": {
       "torso": "file(rc_blacksmith_outfit)"
    }

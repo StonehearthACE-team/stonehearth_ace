@@ -1,0 +1,13 @@
+{
+   "type": "recipe",
+   "mixins": "/stonehearth/jobs/potter/recipes/potter_kiln_recipe.json",
+   "portrait": "/stonehearth_ace/jobs/potter/rc_potter_kiln/rc_potter_kiln.png",
+   "mixintypes": {
+	  "produces": "override"
+   },
+   "produces": [
+      {
+         "item": "stonehearth_ace:rayyas_children:potter:kiln"
+      }
+   ]
+}

@@ -1,0 +1,18 @@
+{
+   "mixins": "/northern_alliance/jobs/weaver/recipes/recipes.json",
+   "craftable_recipes": {
+      "workbenches": {
+         "recipes": {
+            "weaver_workbench": {
+               "recipe": "file(na_weaver_workbench_recipe.json)"
+            },
+			"weaver_spinning_wheel": {
+               "recipe": "file(na_weaver_spinning_wheel_recipe.json)"
+            },
+            "weaver_loom": {
+               "recipe": "file(na_weaver_loom_recipe.json)"
+            }
+         }
+	  }
+   }
+}
