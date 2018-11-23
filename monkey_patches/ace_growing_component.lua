@@ -36,8 +36,10 @@ function AceGrowingComponent:destroy()
 end
 
 function AceGrowingComponent:_create_water_listener()
-	self._entity:add_component('stonehearth_ace:water_signal'):add_monitor_types({'water_exists'})
-	self._flood_listener = radiant.events.listen(self._entity, 'stonehearth_ace:water_signal:water_exists_changed', self, self._on_water_exists_changed)
+   local water_component = self._entity:add_component('stonehearth_ace:water_signal')
+   self._water_signal = water_component:set_signal('growing', nil, {'water_exists'})
+   self._water_signal:set_change_callback(function(changes) self:_on_water_signal_changed(changes) end)
+	--self._flood_listener = radiant.events.listen(self._entity, 'stonehearth_ace:water_signal:water_signal_changed', self, self._on_water_signal_changed)
 end
 
 function AceGrowingComponent:_destroy_water_listener()
@@ -47,8 +49,8 @@ function AceGrowingComponent:_destroy_water_listener()
 	end
 end
 
-function AceGrowingComponent:_on_water_exists_changed(exists)
-	self._sv.is_flooded = exists
+function AceGrowingComponent:_on_water_signal_changed(changes)
+   self._sv.is_flooded = changes.water_exists.value
 	self:_recalculate_duration()
 	self.__saved_variables:mark_changed()
 end

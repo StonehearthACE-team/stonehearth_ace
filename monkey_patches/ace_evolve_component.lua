@@ -54,8 +54,8 @@ function AceEvolveComponent:_create_water_listener()
 	end
 
 	local reach = self._water_reach
-	local region = self._entity:get_component('destination') or self._entity:get_component('region_collision_shape')
-	-- if there's no destination or collision region, oh well, guess we're not creating a listener
+	local region = self._entity:get_component('region_collision_shape')
+	-- if there's no collision region, oh well, guess we're not creating a listener
 	if not region then
 		return
 	end
@@ -63,11 +63,14 @@ function AceEvolveComponent:_create_water_listener()
 	self._water_region = region:get_region():get()
 						:extruded('x', reach, reach)
 						:extruded('z', reach, reach)
-						:extruded('y', reach, 0)
+                  :extruded('y', reach, 0)
+   
    local water_component = self._entity:add_component('stonehearth_ace:water_signal')
-	water_component:set_region(self._water_region)
-   water_component:add_monitor_types({'water_volume'})
-	self._water_listener = radiant.events.listen(self._entity, 'stonehearth_ace:water_signal:water_volume_changed', self, self._on_water_volume_changed)
+   self._water_signal = water_component:set_signal('evolve', region, {'water_volume'})
+   self._water_signal:set_change_callback(function(changes) self:_on_water_signal_changed(changes) end)
+	--water_component:set_region(self._water_region)
+   --water_component:add_monitor_types({'water_volume'})
+	--self._water_listener = radiant.events.listen(self._entity, 'stonehearth_ace:water_signal:water_volume_changed', self, self._on_water_volume_changed)
 end
 
 function AceEvolveComponent:_destroy_water_listener()
@@ -77,7 +80,12 @@ function AceEvolveComponent:_destroy_water_listener()
 	end
 end
 
-function AceEvolveComponent:_on_water_volume_changed(volume)
+function AceEvolveComponent:_on_water_signal_changed(changes)
+   local volume = changes.water_volume.value
+   if not volume then
+      return
+   end
+
 	-- water level is a ratio of volume to "normal ideal volume for this plant"
 	-- we consider the normal ideal ratio for a plant to be 1 water per square root of its detection area
 	local area = self._water_region:get_area()

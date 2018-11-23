@@ -40,9 +40,9 @@ function AceFarmerFieldComponent:_create_water_listener()
                   :extruded('z', 1, 1)
                   :extruded('y', 1, 0)
    local water_component = self._entity:add_component('stonehearth_ace:water_signal')
-	water_component:set_region(region)
-   water_component:add_monitor_types({'water_volume'})
-	self._water_listener = radiant.events.listen(self._entity, 'stonehearth_ace:water_signal:water_volume_changed', self, self._on_water_volume_changed)
+   self._water_signal = water_component:set_signal('farmer_field', region, {'water_volume'})
+   self._water_signal:set_change_callback(function(changes) self:_on_water_signal_changed(changes) end)
+	--self._water_listener = radiant.events.listen(self._entity, 'stonehearth_ace:water_signal:water_signal_changed', self, self._on_water_signal_changed)
 end
 
 function AceFarmerFieldComponent:_destroy_water_listener()
@@ -52,8 +52,13 @@ function AceFarmerFieldComponent:_destroy_water_listener()
 	end
 end
 
-function AceFarmerFieldComponent:_on_water_volume_changed(volume)
-	-- we consider the normal ideal water volume to crop ratio to be a filled half perimeter around an 11x11 farm of 66 crops
+function AceFarmerFieldComponent:_on_water_signal_changed(changes)
+   local volume = changes.water_volume.value
+   if not volume then
+      return
+   end
+   
+   -- we consider the normal ideal water volume to crop ratio to be a filled half perimeter around an 11x11 farm of 66 crops
 	-- i.e., 24 water / 66 crops = 4/11
 	-- we compare that to our current volume to crop ratio
 	local ideal_ratio = 4/11

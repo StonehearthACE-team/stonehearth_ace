@@ -19,18 +19,22 @@
          "mechanical": {
             "connectors": {
                "zlow": {
-                  "region": {
-                     "min": { "x": 0, "y": 0, "z": -3 },
-                     "max": { "x": 1, "y": 1, "z": 0 }
-                  },
+                  "region": [
+                     {
+                        "min": { "x": 0, "y": 0, "z": -3 },
+                        "max": { "x": 1, "y": 1, "z": 0 }
+                     }
+                  ],
                   "max_connections": 1,
                   "region_intersection_threshold": 1
                },
                "zhigh": {
-                  "region": {
-                     "min": { "x": 0, "y": 0, "z": -1 },
-                     "max": { "x": 1, "y": 1, "z": 2 }
-                  },
+                  "region": [
+                     {
+                        "min": { "x": 0, "y": 0, "z": -1 },
+                        "max": { "x": 1, "y": 1, "z": 2 }
+                     }
+                  ],
                   "max_connections": 1,
                   "region_intersection_threshold": 1
                }

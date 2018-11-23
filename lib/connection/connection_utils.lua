@@ -14,7 +14,11 @@ function connection_utils.import_region(region)
          r:add_cube(c)
       end
    end
-   return r
+   if r:get_area() > 0 then
+      return r
+   else
+      return nil
+   end
 end
 
 function connection_utils.rotate_region(region, origin, rotation)

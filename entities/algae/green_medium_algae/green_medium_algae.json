@@ -68,13 +68,13 @@
       "stonehearth_ace:add_stump": {},
       "stonehearth_ace:aquatic_object": {
          "require_water_to_grow": true,
-         "destroy_if_out_of_water": true
-      },
-      "stonehearth_ace:water_signal": {
-         "signal_region": {
-            "min": { "x": -1, "y": 3, "z": -1 },
-            "max": { "x": 1, "y": 4, "z": 1 }
-         }
+         "destroy_if_out_of_water": true,
+         "water_signal_region": [
+            {
+               "min": { "x": -1, "y": 3, "z": -1 },
+               "max": { "x": 1, "y": 4, "z": 1 }
+            }
+         ]
       }
    },
    "entity_data": {
