@@ -82,11 +82,7 @@ function ConnectionService:get_graphs_by_type(type)
 end
 
 function ConnectionService:get_graph_by_id(id)
-   for type, graphs in pairs(GRAPHS_BY_TYPE) do
-      if graphs[id] then
-         return graphs[id]
-      end
-   end
+   return self._sv.graphs[id]
 end
 
 function ConnectionService:is_separated_by_player(type)
@@ -162,14 +158,14 @@ function ConnectionService:_destroy_player_connections(player_id)
    end
 end
 
-function ConnectionService:_create_new_graph(type)
+function ConnectionService:_create_new_graph(type, player_id)
    local id = self._sv.new_graph_id
    local graphs = self._sv.graphs
    while graphs[id] do
       id = id + 1
    end
    self._sv.new_graph_id = id
-   local graph = {id = id, type = type, nodes = {}}
+   local graph = {id = id, type = type, player_id = player_id, nodes = {}}
    graphs[id] = graph
    self:get_graphs_by_type(type)[id] = graph
    self.__saved_variables:mark_changed()

@@ -115,8 +115,8 @@ function MechanicalService:_enable_network(network, graph)
       resistance = resistance + mech_comp:get_resistance()
    end
 
-   local percentage = math.min(1, (produced - resistance) / math.max(1, consumed)) * 100
-   if percentage < 1 then
+   local percentage = math.min(1, (produced - resistance) / math.max(1, consumed))
+   if percentage < 0.01 then
       percentage = 0
    end
    network.produced = produced
