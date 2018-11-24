@@ -312,7 +312,8 @@ function PlayerConnections:_remove_entity_from_graphs(entity_struct)
                   -- we're already removing *this* entity from the entities_in_graphs table, but we may also need to remove the entity it was connected to
                   if conn_tbl.entities_in_graphs[connected.entity_id] then
                      for is_connected_id, _ in pairs(conn_tbl.entity_connectors) do
-                        if self:get_entity_connector(is_connected_id).num_connections < 1 then
+                        local ec = self:get_entity_connector(is_connected_id)
+                        if ec and ec.num_connections < 1 then
                            conn_tbl.entities_in_graphs[connected.entity_id] = nil
                         end
                      end
