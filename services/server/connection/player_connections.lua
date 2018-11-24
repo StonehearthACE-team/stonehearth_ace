@@ -434,8 +434,8 @@ function PlayerConnections:_try_connecting_connectors(c1, c2)
       if not graph_entity_2 then
          graph_entity_2 = {entity_id = e2.id, connected_nodes = {}}
       end
-      graph_entity_1.connected_nodes[e2.id] = graph_entity_2
-      graph_entity_2.connected_nodes[e1.id] = graph_entity_1
+      graph_entity_1.connected_nodes[e2.id] = e1.id
+      graph_entity_2.connected_nodes[e1.id] = e2.id
 
       local graph = nil
       if #graphs_to_merge == 0 then
@@ -546,7 +546,7 @@ function PlayerConnections:_try_disconnecting_connectors(c1, c2)
          -- they both have other connections; check recursively to see if they're still connected to one another
          -- if not, we have to split the graph
          local checked = {}
-         if not self:_is_deep_connected(n1, n2, checked) then
+         if not self:_is_deep_connected(graph, n1, n2, checked) then
             -- remove all the nodes in [checked] from this graph and put them in a new one
             local new_graph = stonehearth_ace.connection:_create_new_graph(conn1.type)
             graphs[new_graph.id] = new_graph
@@ -564,17 +564,17 @@ function PlayerConnections:_try_disconnecting_connectors(c1, c2)
 end
 
 -- recursively processes through 'connected_nodes' for n1 to see if it can find n2, ignoring previously checked nodes
-function PlayerConnections:_is_deep_connected(n1, n2, checked)
+function PlayerConnections:_is_deep_connected(graph, n1, n2, checked)
    log:debug('trying to split a graph')
    checked[n1.entity_id] = n1
 
-   for _, n in pairs(n1.connected_nodes) do
-      if n1 == n2 then
-         log:debug('found a match: %s = %s', n1.entity_id, n2.entity_id)
+   for n_id, _ in pairs(n1.connected_nodes) do
+      if n_id == n2.entity_id then
+         log:debug('found a match: %s = %s', n_id, n2.entity_id)
          return true
       end
-      if not checked[n.entity_id] then
-         if self:_is_deep_connected(n, n2, checked) then
+      if not checked[n_id] then
+         if self:_is_deep_connected(graph, graph.nodes[n_id], n2, checked) then
             return true
          end
       end
