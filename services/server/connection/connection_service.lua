@@ -32,6 +32,7 @@ function ConnectionService:initialize()
    
    self._sv = self.__saved_variables:get_data()
    local sv_needs_fix = not self._sv.connections or not self._sv.graphs or not self._sv.new_graph_id or not self._sv.connections_ds
+   sv_needs_fix = sv_needs_fix or next(self._sv.connections_ds) and type(self._sv.connections_ds[next(self._sv.connections_ds)]) ~= 'table'
    if sv_needs_fix then
       -- First time around or something was improperly configured before.
       self._sv.connections = self._sv.connections or {}
@@ -48,7 +49,9 @@ function ConnectionService:initialize()
       end
 
       for k, v in pairs(self._sv.connections_ds) do
-         v:destroy()
+         if type(v.destroy) == 'function' then
+            v:destroy()
+         end
          self._sv.connections_ds[k] = nil
       end
    else
@@ -79,11 +82,7 @@ function ConnectionService:get_graphs_by_type(type)
 end
 
 function ConnectionService:get_graph_by_id(id)
-   for type, graphs in pairs(GRAPHS_BY_TYPE) do
-      if graphs[id] then
-         return graphs[id]
-      end
-   end
+   return self._sv.graphs[id]
 end
 
 function ConnectionService:is_separated_by_player(type)
@@ -159,14 +158,14 @@ function ConnectionService:_destroy_player_connections(player_id)
    end
 end
 
-function ConnectionService:_create_new_graph(type)
+function ConnectionService:_create_new_graph(type, player_id)
    local id = self._sv.new_graph_id
    local graphs = self._sv.graphs
    while graphs[id] do
       id = id + 1
    end
    self._sv.new_graph_id = id
-   local graph = {id = id, type = type, nodes = {}}
+   local graph = {id = id, type = type, player_id = player_id, nodes = {}}
    graphs[id] = graph
    self:get_graphs_by_type(type)[id] = graph
    self.__saved_variables:mark_changed()

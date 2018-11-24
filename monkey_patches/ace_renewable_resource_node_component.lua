@@ -117,11 +117,11 @@ function AceRenewableResourceNodeComponent:_update_auto_harvest_commands()
    local enabled = self:get_auto_harvest_enabled()
 
    local commands = self._entity:add_component('stonehearth:commands')
-   commands:remove_command(ENABLE_AUTO_HARVEST_COMMAND)
-   commands:remove_command(DISABLE_AUTO_HARVEST_COMMAND)
    if enabled then
+      commands:remove_command(ENABLE_AUTO_HARVEST_COMMAND)
       commands:add_command(DISABLE_AUTO_HARVEST_COMMAND)
    elseif enabled == false then
+      commands:remove_command(DISABLE_AUTO_HARVEST_COMMAND)
       commands:add_command(ENABLE_AUTO_HARVEST_COMMAND)
    end
 end

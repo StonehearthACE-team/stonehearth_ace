@@ -27,6 +27,7 @@ function VineController:activate()
 
    self._networks_by_entity = {}
    self._graphs = {}
+   self._changed_graphs = {}
    self:_update_graphs()
    self:_update_disconnected_growth_timer()
 end
@@ -59,8 +60,16 @@ end
 
 function VineController:_on_connections_changed(type, graphs_changed)
    for id, _ in pairs(graphs_changed) do
-      self:_update_graph(id, stonehearth_ace.connection:get_graph_by_id(id))
+      if self._graphs[id] then
+         self._changed_graphs[id] = true
+      else
+         self:_force_update_graph(id)
+      end
    end
+end
+
+function VineController:_force_update_graph(id)
+   self:_update_graph(id, stonehearth_ace.connection:get_graph_by_id(id))
 end
 
 function VineController:_update_graph(id, graph)
@@ -92,6 +101,15 @@ function VineController:_update_graph_growth_timer(id, expired)
    -- if the graph table no longer exists, it's because this graph was merged or destroyed since the timer was set
    if not graph then
       return
+   end
+
+   if self._changed_graphs[id] then
+      self._changed_graphs[id] = nil
+      self:_force_update_graph(id)
+      graph = self._graphs[id]
+      if not graph then
+         return
+      end
    end
 
    local count = #graph

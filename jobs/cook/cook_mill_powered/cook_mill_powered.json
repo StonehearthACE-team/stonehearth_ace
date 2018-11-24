@@ -31,10 +31,12 @@
          "mechanical": {
             "connectors": {
                "input": {
-                  "region": {
-                     "min": { "x": 0, "y": 1, "z": 0 },
-                     "max": { "x": 1, "y": 2, "z": 2 }
-                  },
+                  "region": [
+                     {
+                        "min": { "x": 0, "y": 1, "z": 0 },
+                        "max": { "x": 1, "y": 2, "z": 2 }
+                     }
+                  ],
                   "max_connections": 1,
                   "region_intersection_threshold": 1
                }
@@ -43,7 +45,8 @@
          }
       },
       "stonehearth_ace:mechanical": {
-         "consumes": 20
+         "consumes": 40,
+         "set_power_script": "stonehearth_ace.data.mechanical.cook_mill_powered_script"
       },
       "stonehearth:entity_forms": {
          "iconic_form": "file(cook_mill_powered_iconic.json)",

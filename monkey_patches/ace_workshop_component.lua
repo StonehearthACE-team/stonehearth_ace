@@ -1,6 +1,22 @@
 local WorkshopComponent = radiant.mods.require('stonehearth.components.workshop.workshop_component')
 local AceWorkshopComponent = class()
 
+--AceWorkshopComponent._old_activate = WorkshopComponent.activate -- doesn't exist!
+function AceWorkshopComponent:activate()
+   --self:_old_activate()
+
+   local json = radiant.entities.get_json(self) or {}
+   self._sv.crafting_time_modifier = self._sv.crafting_time_modifier or json.crafting_time_modifier
+end
+
+function AceWorkshopComponent:set_crafting_time_modifier(modifier)
+   self._sv.crafting_time_modifier = modifier
+end
+
+function AceWorkshopComponent:get_crafting_time_modifier()
+   return self._sv.crafting_time_modifier or 1
+end
+
 -- Create a progress item that tracks the progress of the order item being crafted
 function AceWorkshopComponent:start_crafting_progress(order, crafter)
    if order and not self._sv.crafting_progress then
