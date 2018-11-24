@@ -14,7 +14,7 @@
          "category": "harvest",
          "harvest_overlay_effect": "stonehearth:effects:harvest_plant_overlay_effect",
          "unripe_description": "i18n(stonehearth_ace:entities.plants.marblesprout_plant.unripe_description)",
-         "renewal_time": "2d+12h",
+         "renewal_time": "1d+24h",
          "resource_loot_table": {
             "entries": {
                "optional": {
@@ -40,14 +40,6 @@
          "iconic_form": "file(marblesprout_plant_iconic.json)",
          "ghost_form": "file(marblesprout_plant_tame_ghost.json)",
          "placeable_on_ground": true
-      },
-      "region_collision_shape": {
-         "region": [
-            {
-               "min": { "x": 0, "y": 0, "z": 0 },
-               "max": { "x": 2, "y": 2, "z": 2 }
-            }
-         ]
       }
    },
    "entity_data": {

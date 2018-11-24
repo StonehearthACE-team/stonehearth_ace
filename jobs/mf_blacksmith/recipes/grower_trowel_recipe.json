@@ -1,0 +1,26 @@
+{
+   "type": "recipe",
+   "effort": 30,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:mountain_folk.jobs.blacksmith.recipes.grower_trowel_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:mountain_folk.jobs.blacksmith.recipes.grower_trowel_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:mountain_folk.jobs.blacksmith.recipes.grower_trowel_recipe.flavor)",
+   "portrait": "/stonehearth_ace/jobs/mf_grower/grower_trowel/grower_trowel.png",
+   "workshop": "stonehearth:blacksmith:workbench",
+   "level_requirement": 2,
+   "ingredients": [
+      {
+         "uri": "stonehearth:refined:bronze_ingot",
+         "count": 1
+      },
+      {
+         "material": "wood resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:mountain_folk:grower:talisman"
+      }
+   ]
+}

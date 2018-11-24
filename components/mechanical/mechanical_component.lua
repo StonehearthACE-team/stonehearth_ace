@@ -101,7 +101,7 @@ function MechanicalComponent:set_power_percentage(percentage)
 
    local script = self._set_power_script
    if script then
-      script = radiant.mods.require(script)
+      local script = radiant.mods.require(script)
 
       if not script then
          radiant.verify(false, "Could not find script %s for mechanical entity %s", self._set_power_script, self._entity)

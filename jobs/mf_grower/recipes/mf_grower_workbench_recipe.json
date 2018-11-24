@@ -1,0 +1,26 @@
+{
+   "type": "recipe",
+   "effort": 25,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:mountain_folk.jobs.grower.recipes.grower_workbench_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:mountain_folk.jobs.grower.recipes.grower_workbench_recipe.description)",
+   "flavor": "",
+   "portrait": "/stonehearth_ace/jobs/mf_grower/grower_workbench/grower_workbench.png",
+   "work_effect": "work",
+   "level_requirement": 3,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:refined:brass_plate",
+         "count": 2
+      },
+      {
+         "material": "herb resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:mountain_folk:grower:workbench"
+      }
+   ]
+}

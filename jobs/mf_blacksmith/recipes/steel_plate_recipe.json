@@ -1,0 +1,35 @@
+{
+   "type": "recipe",
+   "effort": 45,
+   "work_units": 25,
+   "recipe_name": "i18n(stonehearth_ace:mountain_folk.jobs.blacksmith.recipes.steel_plate_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:mountain_folk.jobs.blacksmith.recipes.steel_plate_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:mountain_folk.jobs.blacksmith.recipes.steel_plate_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/refined/steel_plate/steel_plate_bulk.png",
+   "workshop": "stonehearth_ace:blacksmith:crucible",
+   "level_requirement": 4,
+   "ingredients": [
+      {
+         "uri": "stonehearth:refined:steel_ingot",
+         "count": 2
+      },
+      {
+         "material": "common_fuel resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:refined:steel_plate"
+      },
+      {
+         "item": "stonehearth_ace:refined:steel_plate"
+      },
+      {
+         "item": "stonehearth_ace:refined:steel_plate"
+      },
+      {
+         "item": "stonehearth_ace:refined:steel_plate"
+      }
+   ]
+}

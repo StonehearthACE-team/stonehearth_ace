@@ -1,0 +1,25 @@
+{
+   "type": "recipe",
+   "mixins": "/stonehearth/jobs/blacksmith/recipes/blacksmith_workbench_recipe.json",
+   "portrait": "/stonehearth_ace/jobs/mf_blacksmith/mf_blacksmith_workbench/mf_blacksmith_workbench.png",
+   "level_requirement": 1,
+   "mixintypes": {
+      "ingredients": "override",
+      "produces": "override"
+   },
+   "ingredients": [
+      {
+         "material": "stone resource",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth:refined:iron_ingot",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:mountain_folk:blacksmith:workbench"
+      }
+   ]
+}

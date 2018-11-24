@@ -1,0 +1,39 @@
+{
+   "type": "recipe",
+   "effort": 30,
+   "work_units": 25,
+   "recipe_name": "i18n(stonehearth_ace:mountain_folk.jobs.blacksmith.recipes.brass_plate_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:mountain_folk.jobs.blacksmith.recipes.brass_plate_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:mountain_folk.jobs.blacksmith.recipes.brass_plate_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/refined/brass_plate/brass_plate_bulk.png",
+   "workshop": "stonehearth_ace:blacksmith:crucible",
+   "level_requirement": 1,
+   "ingredients": [
+      {
+         "uri": "stonehearth:refined:copper_ingot",
+         "count": 1
+      },
+      {
+         "material": "ingot soft_metal",
+         "count": 1
+      },
+      {
+         "material": "common_fuel resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:refined:brass_plate"
+      },
+      {
+         "item": "stonehearth_ace:refined:brass_plate"
+      },
+      {
+         "item": "stonehearth_ace:refined:brass_plate"
+      },
+      {
+         "item": "stonehearth_ace:refined:brass_plate"
+      }
+   ]
+}

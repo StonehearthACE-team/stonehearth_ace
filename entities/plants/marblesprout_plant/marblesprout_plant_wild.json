@@ -39,13 +39,24 @@
       "stonehearth:entity_forms": {
          "iconic_form": "file(marblesprout_plant_iconic.json)",
          "ghost_form": "file(marblesprout_plant_ghost.json)",
-         "placeable_on_ground": true
+         "placeable_on_ground": true,
+         "hide_undeploy_ui": true,
+         "hide_move_ui": true
       },
       "region_collision_shape": {
          "region": [
             {
-               "min": { "x": 0, "y": 0, "z": 0 },
-               "max": { "x": 2, "y": 2, "z": 2 }
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 1, "y": 1, "z": 1 }
+            }
+         ],
+         "region_collision_type": "none"
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 1, "y": 1, "z": 1 }
             }
          ]
       }

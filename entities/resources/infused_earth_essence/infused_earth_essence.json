@@ -1,0 +1,40 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "render_info": {
+         "color_map": "stonehearth_ace:color_map:ace",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/mob_material_map.json"
+         ]
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(infused_earth_essence.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 35,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.resources.infused_earth_essence.display_name)",
+         "description": "i18n(stonehearth_ace:entities.resources.infused_earth_essence.description)",
+         "icon": "file(infused_earth_essence.png)",
+         "is_item": true,
+         "category": "resources",
+         "material_tags": "stockpile_plant infused_earth_essence resource"
+      },
+      "stonehearth:appeal": {
+         "appeal": 1
+      }
+   }
+}

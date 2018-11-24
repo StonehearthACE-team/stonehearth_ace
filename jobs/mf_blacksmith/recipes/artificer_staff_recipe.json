@@ -1,0 +1,26 @@
+{
+   "type": "recipe",
+   "effort": 35,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:mountain_folk.jobs.blacksmith.recipes.artificer_staff_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:mountain_folk.jobs.blacksmith.recipes.artificer_staff_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:mountain_folk.jobs.blacksmith.recipes.artificer_staff_recipe.flavor)",
+   "portrait": "/stonehearth_ace/jobs/mf_artificer/artificer_staff/artificer_staff.png",
+   "workshop": "stonehearth:blacksmith:workbench",
+   "level_requirement": 3,
+   "ingredients": [
+      {
+         "uri": "stonehearth:refined:bronze_ingot",
+         "count": 2
+      },
+      {
+         "uri": "stonehearth_ace:resources:infused_earth_essence",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:mountain_folk:artificer:talisman"
+      }
+   ]
+}

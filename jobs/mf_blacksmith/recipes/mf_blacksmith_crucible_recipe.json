@@ -1,0 +1,25 @@
+{
+   "type": "recipe",
+   "mixins": "/stonehearth_ace/jobs/blacksmith/recipes/blacksmith_crucible_recipe.json",
+   "portrait": "/stonehearth_ace/jobs/mf_blacksmith/mf_blacksmith_crucible/mf_blacksmith_crucible.png",
+   "level_requirement": 1,
+   "mixintypes": {
+      "ingredients": "override",
+      "produces": "override"
+   },
+   "ingredients": [
+      {
+         "material": "stone resource",
+         "count": 3
+      },
+      {
+         "uri": "stonehearth:refined:iron_ingot",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:mountain_folk:blacksmith:crucible"
+      }
+   ]
+}
