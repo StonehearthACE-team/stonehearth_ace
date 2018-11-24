@@ -3,9 +3,13 @@ local MechanicalComponent = class()
 function MechanicalComponent:initialize()
    local json = radiant.entities.get_json(self)
    self._json = json or {}
-   self._sv.produces = self._json.produces or 0
-   self._sv.consumes = self._json.consumes or 0
-   self._sv.resistance = self._json.resistance or 0
+   self._def_produces = self._json.produces or 0
+   self._def_consumes = self._json.consumes or 0
+   self._def_resistance = self._json.resistance or 0
+
+   self._sv.produces = self._def_produces
+   self._sv.consumes = self._def_consumes
+   self._sv.resistance = self._def_resistance
    self._sv.power_percentage = 0
    self._set_power_script = self._json.set_power_script
    self._enabled_effect_names = self._json.enabled_effects or {}
@@ -50,9 +54,16 @@ function MechanicalComponent:get_resistance()
    return self._sv.resistance
 end
 
-function MechanicalComponent:set_power_produced(amount)
+function MechanicalComponent:set_power_produced(amount, should_reverse)
    self._sv.produces = amount
+   if should_reverse ~= nil then
+      self._sv.should_reverse_override = should_reverse
+   end
    self:_updated()
+end
+
+function MechanicalComponent:set_power_produced_percent(percent, should_reverse)
+   self:set_power_produced(percent * self._def_produces, should_reverse)
 end
 
 function MechanicalComponent:set_power_consumed(amount)
@@ -60,9 +71,17 @@ function MechanicalComponent:set_power_consumed(amount)
    self:_updated()
 end
 
+function MechanicalComponent:set_power_consumed_percent(percent)
+   self:set_power_consumed(percent * self._def_consumes)
+end
+
 function MechanicalComponent:set_resistance(amount)
    self._sv.resistance = amount
    self:_updated()
+end
+
+function MechanicalComponent:set_resistance_percent(percent)
+   self:set_resistance(percent * self._def_resistance)
 end
 
 function MechanicalComponent:_updated()

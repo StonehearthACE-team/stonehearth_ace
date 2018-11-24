@@ -4,11 +4,12 @@ local WaterSignalService = class()
 
 function WaterSignalService:initialize()
 	self._water_signal_buckets = {}	-- contains all the low-priority water signals
-	self._urgent_water_signals = {} -- contains all the urgent water signals
+   self._urgent_water_signals = {} -- contains all the urgent water signals
+   self._next_tick_signals = {} -- contains ids for the water signals that have been re-registered since the last tick; gets cleared out every tick
 	self._water_signals_in_buckets = {}	-- contains all the water signals with references to their buckets
 	self._current_bucket_index = 1
 	self._max_buckets = 20	-- hydrology service ticks happen ~10/second, so our normal checks will happen once every two seconds
-	self._current_tick_index = 1
+   self._current_tick_index = 1
 	self._tick_listener = radiant.events.listen(stonehearth.hydrology, 'stonehearth:hydrology:tick', function()
 		self:_on_tick()
 	end)
@@ -21,18 +22,23 @@ function WaterSignalService:destroy()
 	end
 end
 
-function WaterSignalService:register_water_signal(water_signal, is_urgent)
+function WaterSignalService:register_water_signal(water_signal, is_urgent, just_created)
 	local id = water_signal:get_entity_id()
 	
 	-- if it's urgent, don't bother with the buckets
 	if is_urgent then
 		self._urgent_water_signals[id] = water_signal
 	else
-		-- check to see if this water signal is already registered; if so, exit
+		-- check to see if this water signal is already registered
 		if self._water_signals_in_buckets[id] then
-			return
-		end
-		
+         return
+      end
+
+      -- if the signal was just created, we should queue this signal for computation on the next tick
+      if just_created then
+         table.insert(self._next_tick_signals, id)
+      end
+      
 		-- keep a list of signals by their id so we can find their bucket to remove them later
 		self._water_signals_in_buckets[id] = self._current_bucket_index
 		
@@ -70,13 +76,24 @@ function WaterSignalService:unregister_water_signal(water_signal)
 end
 
 function WaterSignalService:_on_tick()
-	-- first process urgent signals
+   local bucket = self._water_signal_buckets[self._current_tick_index]
+   
+   -- first process signals that were created since last tick and aren't already scheduled to be processed
+   if next(self._next_tick_signals) then
+      for _, id in ipairs(self._next_tick_signals) do
+         if not self._urgent_water_signals[id] and (not bucket or not bucket[id]) then
+            self._water_signals_in_buckets[id]:_on_tick_water_signal()
+         end
+      end
+      self._next_tick_signals = {}
+   end
+   
+   -- then process urgent signals
 	for _, water_signal in pairs(self._urgent_water_signals) do
 		water_signal:_on_tick_water_signal()
 	end
 
 	-- then process the signals for the current tick index
-	local bucket = self._water_signal_buckets[self._current_tick_index]
 	if bucket and next(bucket) then
 		for _, water_signal in pairs(bucket) do
 			water_signal:_on_tick_water_signal()

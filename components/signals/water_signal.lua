@@ -1,5 +1,6 @@
 local get_entities_in_region = radiant.terrain.get_entities_in_region
 local get_world_grid_location = radiant.entities.get_world_grid_location
+local log = radiant.log.create_logger('water_signal')
 
 local WaterSignal = class()
 
@@ -226,7 +227,8 @@ function WaterSignal:_on_tick_water_signal()
 		self:_reset()
 		return
 	end
-	
+   
+   --log:debug('on_tick for %s with signal_region %s', self._sv.entity, type(self._sv.signal_region) == 'table' and radiant.util.table_tostring(self._sv.signal_region) or 'NIL')
 	self._trans_region = self._sv.signal_region and self._sv.signal_region:translated(location)
 	local water_components, waterfall_components = self:_get_water(self._trans_region)
    local changes = {}

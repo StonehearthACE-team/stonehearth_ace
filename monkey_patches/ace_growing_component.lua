@@ -37,8 +37,7 @@ end
 
 function AceGrowingComponent:_create_water_listener()
    local water_component = self._entity:add_component('stonehearth_ace:water_signal')
-   self._water_signal = water_component:set_signal('growing', nil, {'water_exists'})
-   self._water_signal:set_change_callback(function(changes) self:_on_water_signal_changed(changes) end)
+   self._water_signal = water_component:set_signal('growing', nil, {'water_exists'}, function(changes) self:_on_water_signal_changed(changes) end)
 	--self._flood_listener = radiant.events.listen(self._entity, 'stonehearth_ace:water_signal:water_signal_changed', self, self._on_water_signal_changed)
 end
 

@@ -40,7 +40,8 @@ function WaterSignalComponent:destroy()
 end
 
 function WaterSignalComponent:_startup()
-	stonehearth_ace.water_signal:register_water_signal(self, self._sv.is_urgent)
+   stonehearth_ace.water_signal:register_water_signal(self, self._sv.is_urgent, self._is_create)
+   self._is_create = nil
 end
 
 function WaterSignalComponent:_shutdown()
@@ -57,12 +58,7 @@ function WaterSignalComponent:set_signal(name, region, monitor_types, change_cal
       if component then
          region = component:get_region():get()
       else
-         component = self._entity:get_component('destination')
-         if component then
-            region = component:get_region():get()
-         else
-            region = Region3(Cube3(Point3.zero)) --", Point3.one" is essentially automatically added by the Cube3 constructor
-         end
+         region = Region3(Cube3(Point3.zero)) --", Point3.one" is essentially automatically added by the Cube3 constructor
       end
    end
 
@@ -86,6 +82,22 @@ end
 
 function WaterSignalComponent:get_signal(name)
    return self._sv.signals[name]
+end
+
+function WaterSignalComponent:remove_signal(name)
+   if self._sv.signals[name] then
+      self._sv.signals[name]:destroy()
+      self._sv.signals[name] = nil
+      self.__saved_variables:mark_changed()
+   end
+end
+
+function WaterSignalComponent:clear_signals()
+   for name, signal in pairs(self._sv.signals) do
+      signal:destroy()
+      self._sv.signals[name] = nil
+   end
+   self.__saved_variables:mark_changed()
 end
 
 function WaterSignalComponent:set_urgency(is_urgent)

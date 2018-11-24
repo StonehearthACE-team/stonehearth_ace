@@ -32,6 +32,7 @@ function ConnectionService:initialize()
    
    self._sv = self.__saved_variables:get_data()
    local sv_needs_fix = not self._sv.connections or not self._sv.graphs or not self._sv.new_graph_id or not self._sv.connections_ds
+   sv_needs_fix = sv_needs_fix or next(self._sv.connections_ds) and type(self._sv.connections_ds[next(self._sv.connections_ds)]) ~= 'table'
    if sv_needs_fix then
       -- First time around or something was improperly configured before.
       self._sv.connections = self._sv.connections or {}
@@ -48,7 +49,9 @@ function ConnectionService:initialize()
       end
 
       for k, v in pairs(self._sv.connections_ds) do
-         v:destroy()
+         if type(v.destroy) == 'function' then
+            v:destroy()
+         end
          self._sv.connections_ds[k] = nil
       end
    else

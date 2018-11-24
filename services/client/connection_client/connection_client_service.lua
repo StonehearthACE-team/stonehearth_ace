@@ -60,7 +60,7 @@ function ConnectionClientService:get_connection_type_colors(type)
 end
 
 function ConnectionClientService:get_entity_connection_stats(entity_id)
-   return self._connections[entity_id] or {}
+   return self._connections[tostring(entity_id)] or {}
 end
 
 return ConnectionClientService
