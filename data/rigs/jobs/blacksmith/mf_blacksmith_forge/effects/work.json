@@ -1,0 +1,86 @@
+{
+   "type" : "effect",
+   "tracks": {
+      "animation": {
+         "type": "animation_effect",
+         "start_time": 0,
+		 "speed": 2,
+         "animation": "work.json",
+         "loop": true
+       },
+      "coals": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth/data/horde/particles/fire/forge_coals.cubemitter.json",
+         "loop": true,
+         "transforms": {
+            "x":0,
+            "y":1.3,
+            "z":0.0,
+            "rx":90,
+            "ry":0,
+            "rz":0
+         }
+      },
+      "fire": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth/data/horde/particles/fire/large_fire.cubemitter.json",
+         "loop": true,
+         "transforms": {
+            "x":0,
+            "y":1,
+            "z":0.0,
+            "rx":90,
+            "ry":0,
+          "rz": 0
+            }
+         },
+		 "embers_top": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/fire/mf_forge_embers_work.cubemitter.json",
+         "loop": true,
+         "transforms": {
+            "x":0,
+            "y":1.2,
+            "z": 0,
+            "rx":90,
+            "ry":0,
+            "rz":0
+         }
+      },
+	  "smoke": {
+         "type": "cubemitter",
+         "loop" : true,
+         "cubemitter": "/stonehearth_ace/data/horde/particles/fire/mf_forge_smoke_work.cubemitter.json",
+         "transforms": {
+            "x":0,
+            "y":2,
+            "z":0,
+            "rx":90,
+            "ry":0,
+            "rz":0
+         }
+      },
+      "fire_light": {
+         "type": "light",
+         "light": "/stonehearth_ace/data/horde/animatedlights/lamp/forge_light_work.animatedlight.json",
+		 "shadows": true,
+         "transforms": {
+            "x":0,
+            "y":4.2,
+            "z":0,
+            "rx":90,
+            "ry":0,
+            "rz":0
+         }
+      },
+      "sound": {
+         "type": "sound_effect",
+         "loop" : true,
+         "start_time":  0,
+         "min_distance": 20,
+         "falloff" : 5,
+         "volume": 40,
+        "track": "stonehearth:sounds:jobs_blacksmith_forge_work_01"
+      }      
+   }
+}

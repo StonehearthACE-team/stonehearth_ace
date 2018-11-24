@@ -1,0 +1,75 @@
+{
+   "mixins": "/stonehearth/jobs/blacksmith/recipes/recipes.json",
+   "craftable_recipes": {
+      "workbenches": {
+         "recipes": {
+            "blacksmith_forge": {
+               "recipe": "file(mf_blacksmith_forge_recipe.json)"
+            },
+            "blacksmith_workbench": {
+               "recipe": "file(mf_blacksmith_workbench_recipe.json)"
+            },
+            "blacksmith_fuel_oven": {
+               "recipe": "file(mf_blacksmith_fuel_oven_recipe.json)"
+            },
+            "blacksmith_crucible": {
+               "recipe": "file(mf_blacksmith_crucible_recipe.json)"
+            },
+            "blacksmith_forge_advanced": {
+               "recipe": "file(mf_blacksmith_forge_advanced_recipe.json)"
+            },
+            "blacksmith_workbench_advanced": {
+               "recipe": "file(mf_blacksmith_workbench_advanced_recipe.json)"
+            }
+         }
+      },
+      "legendary": {
+         "recipes": {}
+      },
+      "tools": {
+         "recipes": {
+            "engineer_wrench": {
+               "recipe": "file(artificer_staff_recipe.json)"
+            },
+            "grower_trowel": {
+               "recipe": "file(grower_trowel_recipe.json)"
+            },
+            "golem_pick": {
+               "recipe": "file(automaton_pick_recipe.json)"
+            }
+         }
+      },
+      "storage": {
+         "recipes": {}
+      },
+      "smelt": {
+         "recipes": {
+            "brass_plate": {
+               "recipe": "file(brass_plate_recipe.json)"
+            },
+            "steel_plate": {
+               "recipe": "file(steel_plate_recipe.json)"
+            }
+         }
+      },
+      "weapons": {
+         "recipes": {}
+      },
+      "armor": {
+         "recipes": {}
+      },
+      "building_parts": {
+         "recipes": {}
+      },
+      "furniture": {
+         "recipes": {}
+      },
+      "decoration": {
+         "recipes": {
+            "wooden_sign_blacksmith": {
+               "recipe": "file(brass_sign_blacksmith_recipe.json)"
+            }
+         }
+      }
+   }
+}

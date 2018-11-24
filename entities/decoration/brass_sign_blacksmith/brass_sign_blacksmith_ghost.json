@@ -1,0 +1,29 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(brass_sign_blacksmith.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": -0.5, "y": -0.5, "z": -0.5 },
+         "region_origin": { "x": -0.5, "y": 0, "z": 0.5 }
+      },
+      "render_info": {
+         "scale": 0.1,
+         "material": "materials/shiny.material.json"
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.decoration.brass_sign_blacksmith.display_name)",
+         "description": "i18n(stonehearth_ace:entities.decoration.brass_sign_blacksmith.description)",
+         "icon": "file(brass_sign_blacksmith.png)",
+         "category": "decoration",
+         "material_tags": "decoration brass crafted sign stockpile_decoration"
+      }
+   }
+}

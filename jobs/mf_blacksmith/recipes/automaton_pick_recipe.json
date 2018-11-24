@@ -1,0 +1,22 @@
+{
+   "type": "recipe",
+   "effort": 30,
+   "work_units": 8,
+   "recipe_name": "i18n(stonehearth:jobs.blacksmith.recipes.golem_pick_recipe.recipe_name)",
+   "description": "i18n(stonehearth:jobs.blacksmith.recipes.golem_pick_recipe.description)",
+   "flavor": "",
+   "portrait": "/stonehearth/entities/refined/golem_pick/golem_pick.png",
+   "workshop": "stonehearth:blacksmith:workbench",
+   "level_requirement": 3,
+   "ingredients": [
+      {
+         "uri": "stonehearth:refined:steel_ingot",
+         "count": 6
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth:refined:golem_pick"
+      }
+   ]
+}

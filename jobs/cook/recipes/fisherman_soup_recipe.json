@@ -5,7 +5,7 @@
    "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.fisherman_soup_recipe.recipe_name)",
    "description": "i18n(stonehearth_ace:jobs.cook.recipes.fisherman_soup_recipe.description)",
    "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.fisherman_soup_recipe.flavor)",
-   "portrait": "/stonehearth/entities/food/fisherman_soup/fisherman_soup/fisherman_soup.png",
+   "portrait": "/stonehearth_ace/entities/food/fisherman_soup/fisherman_soup/fisherman_soup.png",
    "workshop": "stonehearth:cook:workbench",
    "level_requirement": 4,
    "ingredients": [
@@ -15,6 +15,10 @@
       },
 	  {
          "uri": "stonehearth_ace:food:fish_meat:carp",
+         "count": 2
+      },
+	  {
+         "uri": "stonehearth_ace:resources:algae:red_algae",
          "count": 2
       },
       {

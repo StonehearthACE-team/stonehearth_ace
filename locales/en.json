@@ -1337,6 +1337,10 @@
                "display_name": "Brown Algae",
                "description": "Also known as kelp, has many uses in herbalism and cooking."
             }
+         },
+         "infused_earth_essence": {
+            "display_name": "Infused Hearth Essence",
+            "description": "The essence of the Hearth infused with industrial fire."
          }
       },
       "refined": {
@@ -1376,6 +1380,14 @@
          "legendary_parchment": {
             "display_name": "Gilded Paper",
             "description": "Delicate and precious sheets of decorated parchment for 'The Walk of Cid'."
+         },
+         "brass_plate": {
+            "display_name": "Brass Plate",
+            "description": "A sheet of cheap but durable metal."
+         },
+         "steel_plate": {
+            "display_name": "Steel Plate",
+            "description": "A sheet of strong and valuable metal."
          }
       },
       "trees": {
@@ -1889,6 +1901,10 @@
                "display_name": "Stone Market Stall",
                "description": "Merchants can set up shop here"
             }
+         },
+         "brass_sign_blacksmith": {
+            "display_name": "Blacksmith's Brass Plaque",
+            "description": "A wall sign with the mark of the Blacksmith."
          }
       },
       "pets": {
@@ -2781,8 +2797,8 @@
          "large_ball_clay_boulder": {
             "display_name": "Huge Chunk of Ball Clay",
             "description": "Harvestable for many mounds of ball clay"
-		 }
-	  },
+         }
+      },
       "vines": {
          "highland_vine": {
             "display_name": "Highland Vine",
@@ -2804,15 +2820,17 @@
          }
       },
       "kingdom": {
-         "quote": "TBD",
-         "long_description": "TBD",
-         "post_selection_description": "TBD",
+         "quote": "Nature, balance and mighty shall always be the one and only struggle.",
+         "long_description": "The strong (and definitely stubborn!) folk of the mountains have thrived in their isolation for centuries and now set out to face a new world with powers and technologies that might come for good or woe...",
+         "post_selection_description": ", reclusive dwarves on the brink of change.",
          "initial_town_name": "Embarkment [str(town_number)]"
       },
       "jobs": {
          "grower": {
             "grower_description": {
-               "display_name": "Grower"
+               "display_name": "Grower",
+               "requirements": "Crafted by Blacksmith",
+               "description": "Growers will tend to plants and fungi alike, caring for underground or surface farms, crafting with herbs and looking after the wounded."
             },
             "grower_trowel": {
                "grower_trowel_talisman": {
@@ -2822,6 +2840,29 @@
                "grower_trowel_equipped": {
                   "display_name": "Grower's Trowel",
                   "description": "Can be used by a Grower for their crafts and to tend plant and fungus alike."
+               }
+            },
+            "grower_workbench": {
+               "grower_workbench_ghost": {
+                  "display_name": "Grower's Lab",
+                  "description": "Used by the Grower for drying, refining and crafting."
+               }
+            },
+            "grower_terrarium": {
+               "grower_terrarium_ghost": {
+                  "display_name": "Grower's Terrarium",
+                  "description": "Used by the Grower to create cultivars, fungal colonies and prepare plants."
+               }
+            },
+            "recipes": {
+               "grower_workbench_recipe": {
+                  "recipe_name": "Grower's Lab",
+                  "description": "Required for drying, refining and crafting."
+               },
+               "grower_terrarium_recipe": {
+                  "recipe_name": "Grower's Terrarium",
+                  "description": "Can be used to create cultivars and unlock new seeds or spores, fungal colonies and prepare plants.",
+                  "flavor": "Place cultivars anywhere on the world and wait for them to develop into usable forms!"
                }
             }
          },
@@ -2852,10 +2893,39 @@
                   "description": "A highly traditional dwarven meal made with varanus meat and local cherries.",
                   "flavor": ""
                },
-               "highlander_trout_recipe": {
+               "highland_trout_recipe": {
                   "recipe_name": "Highlander Trout",
                   "description": "An exquisite meal favorite among the mountain folk.",
                   "flavor": "Be sure to cut off the trout's head"
+               }
+            }
+         },
+         "blacksmith": {
+            "recipes": {
+               "brass_plate_recipe": {
+                  "recipe_name": "Brass Plate (x4)",
+                  "description": "Create sheets of cheap but durable metal for furniture and construction.",
+                  "flavor": "The trick is to melt anything alongside copper"
+               },
+               "steel_plate_recipe": {
+                  "recipe_name": "Steel Plate (x4)",
+                  "description": "Create sheets of strong and valuable metal for ornate furniture and construction.",
+                  "flavor": ""
+               },
+               "artificer_staff_recipe": {
+                  "recipe_name": "Artificer Staff",
+                  "description": "Required to promote a hearthling into an Artificer.",
+                  "flavor": "'And from twisted fires and earthly energies, Brovik whispered life into metal' Artificer Compendium I"
+               },
+               "brass_sign_blacksmith_recipe": {
+                  "recipe_name": "Blacksmith's Brass Plaque",
+                  "description": "A brass plaque with the mark of the Blacksmith to be placed on walls.",
+                  "flavor": "Specializing in heavy, pointy, dense things!"
+               },
+               "grower_trowel_recipe": {
+                  "description": "Required to promote a hearthling into a Grower.",
+                  "recipe_name": "Grower's Trowel",
+                  "flavor": ""
                }
             }
          }

@@ -1,0 +1,54 @@
+{
+   "type": "entity",
+   "mixins": "file(grower_workbench_ghost.json)",
+   "components": {
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 2, "y": 1, "z": 2 }
+            }
+         ],
+         "adjacency_flags": [
+            "front"
+         ]
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": 0 },
+               "max": { "x": 2, "y": 1.2, "z": 2 }
+            }
+         ]
+      },
+      "stonehearth:workshop": {
+         "job_alias": "stonehearth_ace:mountain_folk:jobs:grower"
+      },
+      "stonehearth:entity_forms": {
+         "ghost_form": "file(grower_workbench_ghost.json)",
+         "iconic_form": "file(grower_workbench_iconic.json)",
+         "placeable_on_ground": true
+      }
+   },
+   "entity_data": {
+      "stonehearth:table": {
+         "drop_effect": "carry_putdown_on_table",
+         "drop_offset": { "x": 0, "y": 1.3, "z": 0 }
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 7,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 6
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

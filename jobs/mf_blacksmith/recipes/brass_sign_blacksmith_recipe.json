@@ -1,0 +1,22 @@
+{
+   "type": "recipe",
+   "effort": 10,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:mountain_folk.jobs.blacksmith.recipes.brass_sign_blacksmith_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:mountain_folk.jobs.blacksmith.recipes.brass_sign_blacksmith_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:mountain_folk.jobs.blacksmith.recipes.brass_sign_blacksmith_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/decoration/brass_sign_blacksmith/brass_sign_blacksmith.png",
+   "workshop": "stonehearth:blacksmith:workbench",
+   "level_requirement": 1,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:refined:brass_plate",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:decoration:brass_sign_blacksmith"
+      }
+   ]
+}

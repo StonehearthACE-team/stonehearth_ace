@@ -1,0 +1,32 @@
+{
+   "type": "recipe",
+   "mixins": "/stonehearth_ace/jobs/blacksmith/recipes/blacksmith_forge_advanced_recipe.json",
+   "portrait": "/stonehearth_ace/jobs/mf_blacksmith/mf_blacksmith_forge_advanced/mf_blacksmith_forge_advanced.png",
+   "mixintypes": {
+	  "ingredients": "override",
+      "produces": "override"
+   },
+   "ingredients": [
+      {
+         "material": "stone resource",
+         "count": 4
+      },
+	  {
+         "uri": "stonehearth:refined:iron_ingot",
+         "count": 2
+      },
+	  {
+         "uri": "stonehearth_ace:refined:brass_plate",
+         "count": 2
+      },
+      {
+         "material": "leather resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:mountain_folk:blacksmith:forge_advanced"
+      }
+   ]
+}

@@ -1,0 +1,24 @@
+{
+   "type": "recipe",
+   "mixins": "/stonehearth_ace/jobs/blacksmith/recipes/blacksmith_fuel_oven_recipe.json",
+   "portrait": "/stonehearth_ace/jobs/mf_blacksmith/mf_blacksmith_fuel_oven/mf_blacksmith_fuel_oven.png",
+   "mixintypes": {
+	  "ingredients": "override",
+      "produces": "override"
+   },
+   "ingredients": [
+      {
+         "material": "stone resource",
+         "count": 3
+      },
+      {
+         "uri": "stonehearth_ace:refined:brass_plate",
+         "count": 3
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:mountain_folk:blacksmith:fuel_oven"
+      }
+   ]
+}

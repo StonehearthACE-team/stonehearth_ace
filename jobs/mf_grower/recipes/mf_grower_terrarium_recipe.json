@@ -1,0 +1,26 @@
+{
+   "type": "recipe",
+   "effort": 45,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:mountain_folk.jobs.grower.recipes.grower_terrarium_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:mountain_folk.jobs.grower.recipes.grower_terrarium_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:mountain_folk.jobs.grower.recipes.grower_terrarium_recipe.flavor)",
+   "portrait": "/stonehearth_ace/jobs/mf_grower/grower_terrarium/grower_terrarium.png",
+   "work_effect": "work",
+   "level_requirement": 1,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:refined:brass_plate",
+         "count": 1
+      },
+      {
+         "material": "clay resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:mountain_folk:grower:terrarium"
+      }
+   ]
+}

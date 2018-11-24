@@ -1,3 +1,15 @@
 {
-   "mixins": "/stonehearth/jobs/herbalist/recipes/recipes.json"
+   "mixins": "/stonehearth/jobs/herbalist/recipes/recipes.json",
+   "craftable_recipes": {
+      "workbenches": {
+         "recipes": {
+            "herbalist_workbench": {
+               "recipe": "file(mf_grower_workbench_recipe.json)"
+            },
+			"grower_terrarium": {
+               "recipe": "file(mf_grower_terrarium_recipe.json)"
+            }
+         }
+	  }
+   }
 }
