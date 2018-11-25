@@ -1337,10 +1337,6 @@
                "display_name": "Braunalge",
                "description": "Auch als Seetang bekannt, hat viele Anwendungen in der Kräuterkunde und beim Kochen."
             }
-         },
-         "infused_earth_essence": {
-            "display_name": "Erfüllte Herz-Essenz",
-            "description": "Die Essenz des Herzens mit industriellem Feuer erfüllt."
          }
       },
       "refined": {
@@ -1380,14 +1376,6 @@
          "legendary_parchment": {
             "display_name": "Vergoldetes Papier",
             "description": "Zarte und kostbare Blätter mit dekoriertem Pergament für 'Der Spaziergang von Cid'."
-         },
-         "brass_plate": {
-            "display_name": "Messingplatte",
-            "description": "Ein Blech aus billigem, aber langlebigem Metall."
-         },
-         "steel_plate": {
-            "display_name": "Stahlplatte",
-            "description": "Ein Blech aus starkem und wertvollem Metall."
          }
       },
       "trees": {
@@ -1901,10 +1889,6 @@
                "display_name": "Steinerner Marktstand",
                "description": "Händler können sich hier niederlassen"
             }
-         },
-         "brass_sign_blacksmith": {
-            "display_name": "Schmiedetafel aus Messing",
-            "description": "Ein Wandschild mit dem Zeichen des Schmiedes."
          }
       },
       "pets": {
@@ -2797,8 +2781,8 @@
          "large_ball_clay_boulder": {
             "display_name": "Riesiges Stück Kugellehm",
             "description": "Erntbar für viele Kugellehmhügel"
-         }
-      },
+		 }
+	  },
       "vines": {
          "highland_vine": {
             "display_name": "Hochlandrebe",
@@ -2820,17 +2804,15 @@
          }
       },
       "kingdom": {
-         "quote": "Natur, Gleichgewicht und Stärke wird immer der einzige Kampf sein.",
-         "long_description": "Das starke (und definitiv hartnäckige!) Volk der Berge blüht seit Jahrhunderten in ihrer Isolation auf und begeben sich nun in eine neue Welt mit Kräften und Technologien, zum Guten oder Schlechten",
-         "post_selection_description": ", zurückgezogen Zwerge am Rande des Wandels.",
-         "initial_town_name": "Zwergengruppe [str(town_number)]"
+         "quote": "TBD",
+         "long_description": "TBD",
+         "post_selection_description": "TBD",
+         "initial_town_name": "Expedition [str(town_number)]"
       },
       "jobs": {
          "grower": {
             "grower_description": {
-               "display_name": "Züchter",
-               "requirements": "Wird hergestellt vom Schmied",
-               "description": "Züchter pflegen Pflanzen und Pilze gleichermaßen, kümmern sich um unterirdische oder oberirdische Farmen, arbeiten mit Kräutern und kümmern sich um die Verwundeten."
+               "display_name": "Erzeuger"
             },
             "grower_trowel": {
                "grower_trowel_talisman": {
@@ -2840,29 +2822,6 @@
                "grower_trowel_equipped": {
                   "display_name": "Züchterkelle",
                   "description": "Kann von einem Züchter für sein Handwerk und pflegen von Pflanzen und Pilzen gleichermaßen verwendet werden."
-               }
-            },
-            "grower_workbench": {
-               "grower_workbench_ghost": {
-                  "display_name": "Züchter-Labor",
-                  "description": "Wird vom Züchter zum Trocknen, Veredeln und Herstellen verwendet."
-               }
-            },
-            "grower_terrarium": {
-               "grower_terrarium_ghost": {
-                  "display_name": "Züchter-Terrarium",
-                  "description": "Wird vom Züchter verwendet zum kultivieren von Pilzkolonien und zum anbauen von Pflanzen."
-               }
-            },
-            "recipes": {
-               "grower_workbench_recipe": {
-                  "recipe_name": "Züchter-Labor",
-                  "description": "Erforderlich zum Trocknen, Verfeinern und Verarbeiten."
-               },
-               "grower_terrarium_recipe": {
-                  "recipe_name": "Züchter-Terrarium",
-                  "description": "Kann verwendet werden zum kulitivieren neuer Samen oder Sporen und um Pilzkolonien und Pflanzen vorzubereiten.",
-                  "flavor": "Platziere Kulturen überall auf der Welt und warte darauf, dass sie sich zu brauchbaren Farmen entwickeln!"
                }
             }
          },
@@ -2893,39 +2852,10 @@
                   "description": "Ein sehr traditionelles Zwergenmahl mit Varanusfleisch und lokalen Kirschen.",
                   "flavor": ""
                },
-               "highland_trout_recipe": {
+               "highlander_trout_recipe": {
                   "recipe_name": "Hochlandforelle",
                   "description": "Ein exquisites Lieblingsessen unter den Bergvölkern.",
                   "flavor": "Stell sicher den Kopf der Forelle abzuschneiden"
-               }
-            }
-         },
-         "blacksmith": {
-            "recipes": {
-               "brass_plate_recipe": {
-                  "recipe_name": "Messingplatte (x4)",
-                  "description": "Erstelle Bleche aus billigem, aber langlebigem Metall, für Möbel und zum bauen.",
-                  "flavor": "Der Trick besteht darin, eteas mit dem Kupfer zu verschmelzen"
-               },
-               "steel_plate_recipe": {
-                  "recipe_name": "Stahlplattte (x4)",
-                  "description": "Erstelle Bleche aus starkem und wertvollem Metall, für verzierte Möbel und zum bauen.",
-                  "flavor": ""
-               },
-               "artificer_staff_recipe": {
-                  "recipe_name": "Kunsthandwerkerstab",
-                  "description": "Wird benätigt um einen Hearthling in einen Kunsthandwerker zu ernennen.",
-                  "flavor": "'Und mit verdrehten Feuern und irdischen Energien flüsterte Brovik das Leben in Metall' Kunsthandwerker Kompendium I"
-               },
-               "brass_sign_blacksmith_recipe": {
-                  "recipe_name": "Schmiedetafel aus Messing",
-                  "description": "Eine Messingplatte mit dem Zeichen des Schmiedes, die an Wänden angebracht werden kann.",
-                  "flavor": "Spezialisiert auf schwere, spitze und dichte Dinge!"
-               },
-               "grower_trowel_recipe": {
-                  "description": "Wird benötigt um einen Hearthling zu einem Züchter zu ernennen.",
-                  "recipe_name": "Züchterkelle",
-                  "flavor": ""
                }
             }
          }
