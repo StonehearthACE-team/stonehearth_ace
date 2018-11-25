@@ -250,6 +250,14 @@ function PlayerConnections:_get_graph(id)
    return stonehearth_ace.connection:get_graph_by_id(id)
 end
 
+function PlayerConnections:_get_graphs(graph_ids)
+   local graphs = {}
+   for id, _ in pairs(graph_ids) do
+      graphs[id] = self:_get_graph(id)
+   end
+   return graphs
+end
+
 function PlayerConnections:get_entity_connector(id)
    return self._sv.connectors[id]
 end
@@ -411,28 +419,26 @@ function PlayerConnections:_try_connecting_connectors(c1, c2)
       -- we create a separate graph for each separate group of connected entities
       -- if this connection connects entities from two separate graphs, we need to merge those graphs
       local graph_indexes = self:get_connections(conn1.type).graphs
-      local graphs = stonehearth_ace.connection:get_graphs_by_type(conn1.type)
+      local graphs = self:_get_graphs(graph_indexes)
       local graphs_changed = {}
       local graphs_to_merge = {}
       local graph_entity_1 = nil
       local graph_entity_2 = nil
 
       for id, graph in pairs(graphs) do
-         if not graph.player_id or graph.player_id == self._sv.player_id then
-            if graph.nodes[e1.id] then
-               graph_entity_1 = graph.nodes[e1.id]
-               if graph_entity_1.connected_nodes[e2.id] then
-                  -- if these two entities are already connected in the same graph, this connection is redundant and should be canceled
-                  return false
-               elseif graph.nodes[e2.id] then
-                  -- both entities are in the same graph, just not directly connected to one another yet
-                  graph_entity_2 = graph.nodes[e2.id]
-               end
-               table.insert(graphs_to_merge, id)
+         if graph.nodes[e1.id] then
+            graph_entity_1 = graph.nodes[e1.id]
+            if graph_entity_1.connected_nodes[e2.id] then
+               -- if these two entities are already connected in the same graph, this connection is redundant and should be canceled
+               return false
             elseif graph.nodes[e2.id] then
+               -- both entities are in the same graph, just not directly connected to one another yet
                graph_entity_2 = graph.nodes[e2.id]
-               table.insert(graphs_to_merge, id)
             end
+            table.insert(graphs_to_merge, id)
+         elseif graph.nodes[e2.id] then
+            graph_entity_2 = graph.nodes[e2.id]
+            table.insert(graphs_to_merge, id)
          end
       end
 
@@ -521,7 +527,7 @@ function PlayerConnections:_try_disconnecting_connectors(c1, c2)
    -- if not, remove c1 and all connections it has to a new graph
 
    local graph_indexes = self:get_connections(conn1.type).graphs
-   local graphs = stonehearth_ace.connection:get_graphs_by_type(conn1.type)
+   local graphs = self:_get_graphs(graph_indexes)
    local graphs_changed = {}
 
    for id, graph in pairs(graphs) do
