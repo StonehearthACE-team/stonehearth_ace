@@ -73,6 +73,7 @@ function AceCraftItemsOrchestrator:run(town, args)
    self._crafter = args.crafter
    local job_component = self._crafter:get_component('stonehearth:job')
    self._job_uri = job_component:get_job_uri()
+   self._bulletins = {} -- list of unreachable ingredient notifications
 
    --Find the order_list from the job_controller
    self._craft_order_list = job_component:get_job_info():get_order_list()
@@ -83,6 +84,7 @@ function AceCraftItemsOrchestrator:run(town, args)
    self._inventory = stonehearth.inventory:get_inventory(town:get_player_id())
    self._order_changed_listener = radiant.events.listen(self._craft_order_list, 'stonehearth:order_list_changed', self, self._on_order_list_changed)
    self:_on_order_list_changed()
+   self._usable_item_tracker = self._inventory:get_item_tracker('stonehearth:usable_item_tracker')
 
    --Listen to level up in case leveling now allows us to make an item
    self._level_up_listener = radiant.events.listen(self._crafter, 'stonehearth:level_up', self, self._on_order_list_changed)
@@ -90,6 +92,7 @@ function AceCraftItemsOrchestrator:run(town, args)
    -- Listen to incapacitation changes
    self._became_incapacitated_listener = radiant.events.listen(self._crafter, 'stonehearth:entity:became_incapacitated', self, self._on_became_incapacitated)
    self._incapacitated_changed_listener = radiant.events.listen(self._crafter, 'stonehearth:entity:incapacitate_state_changed', self, self._on_incapacitate_changed)
+   self._unreachable_ingredients_listener = radiant.events.listen(self._craft_order_list, 'stonehearth:cant_reach_ingredients', self, self._show_unreachable_ingredients_notification)
 
    local crafter_component = self._crafter:get_component('stonehearth:crafter')
 
@@ -131,6 +134,10 @@ function AceCraftItemsOrchestrator:run(town, args)
             order:set_crafting_status(self._crafter, false) -- Paul: this line was changed
             crafter_component:set_current_order(nil)
          end
+      else
+         -- Collecting ingredients failed, we need to reset the current order here.
+         -- Player will be notified once a day if there are still unreachable ingredients.
+         crafter_component:clean_up_order()
       end
    end
 end

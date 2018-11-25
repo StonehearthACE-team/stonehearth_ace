@@ -16,6 +16,7 @@ function AceCollectIngredients:run(town, args)
    end
 
    self._became_incapacitated_listener = radiant.events.listen(self._crafter, 'stonehearth:entity:became_incapacitated', self, self._on_became_incapacitated)
+   self._abort_listener = radiant.events.listen(self._crafter, 'stonehearth:entity:stopped_looking_for_ingredients', self, self._on_aborted_looking_for_ingredients)
 
    --If the order was unstarted, then move it to Collecting, and get the next phase
    if self._order:get_progress(self._crafter) == stonehearth.constants.crafting_status.UNSTARTED then
