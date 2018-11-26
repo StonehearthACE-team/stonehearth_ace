@@ -1,0 +1,32 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(porcelain_display_cupboard.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": -0.575, "y": 0, "z": -0.85 },
+         "region_origin": { "x": -0.5, "y": 0, "z": -0.5 }
+      },
+      "render_info": {
+         "scale": 0.15,
+         "color_map": "stonehearth_ace:color_map:ace",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/glass_material_map.json"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.furniture.porcelain_display_cupboard.porcelain_display_cupboard_ghost.display_name)",
+         "description": "i18n(stonehearth_ace:entities.furniture.porcelain_display_cupboard.porcelain_display_cupboard_ghost.description)",
+         "icon": "file(porcelain_display_cupboard.png)",
+         "category": "furniture",
+         "material_tags": "wood furniture crafted stockpile_furniture"
+      }
+   }
+}

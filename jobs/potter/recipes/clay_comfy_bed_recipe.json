@@ -1,0 +1,30 @@
+{
+   "type": "recipe",
+   "effort": 20,
+   "work_units": 10,
+   "recipe_name": "i18n(stonehearth_ace:jobs.potter.recipes.clay_comfy_bed_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.potter.recipes.clay_comfy_bed_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.potter.recipes.clay_comfy_bed_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/furniture/clay_comfy_bed/clay_comfy_bed.png",
+   "workshop": "stonehearth:potter:workbench",
+   "level_requirement": 3,
+   "ingredients": [
+      {
+         "material": "clay resource",
+         "count": 2
+      },
+      {
+         "material": "cloth resource",
+         "count": 1
+      },
+	  {
+         "material": "feather resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:furniture:clay_comfy_bed"
+      }
+   ]
+}

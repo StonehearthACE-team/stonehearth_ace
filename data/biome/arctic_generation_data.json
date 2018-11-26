@@ -4,7 +4,7 @@
          "stonehearth_ace:fungi:winter_morel": {
             "placement_type": "dense",
             "parameters": {
-               "grid_multiple": 2,
+               "grid_multiple": 0.8,
                "item_density": 0.2,
                "exclusion_radius": 0
             }
@@ -12,7 +12,7 @@
 		 "stonehearth_ace:terrain:pasture_grass": {
             "placement_type": "dense",
             "parameters": {
-               "grid_multiple": 3,
+               "grid_multiple": 1.4,
                "item_density": 0.2,
                "exclusion_radius": 5
             }
@@ -20,7 +20,7 @@
 		 "stonehearth_ace:terrain:pasture_grass:short": {
             "placement_type": "dense",
             "parameters": {
-               "grid_multiple": 4,
+               "grid_multiple": 2.4,
                "item_density": 0.3,
                "exclusion_radius": 3
             }
@@ -28,7 +28,7 @@
 		 "stonehearth_ace:terrain:pasture_grass:overgrown": {
             "placement_type": "dense",
             "parameters": {
-               "grid_multiple": 1,
+               "grid_multiple": 1.2,
                "item_density": 0.2,
                "exclusion_radius": 7
             }
@@ -40,17 +40,17 @@
                "plains": {
                   "1": {
                      "stonehearth_ace:fungi:winter_morel": 0.4,
-					 "stonehearth_ace:terrain:pasture_grass:overgrown": 0.3,
-					 "stonehearth_ace:terrain:pasture_grass": 0.8,
-					 "stonehearth_ace:terrain:pasture_grass:short": 0.4
+					 "stonehearth_ace:terrain:pasture_grass:overgrown": 0.1,
+					 "stonehearth_ace:terrain:pasture_grass": 0.2,
+					 "stonehearth_ace:terrain:pasture_grass:short": 0.1
                   }
                },
                "foothills": {
                   "1": {
                      "stonehearth_ace:fungi:winter_morel": 0.8,
 					 "stonehearth_ace:terrain:pasture_grass:overgrown": 0.1,
-					 "stonehearth_ace:terrain:pasture_grass": 0.5,
-					 "stonehearth_ace:terrain:pasture_grass:short": 0.2
+					 "stonehearth_ace:terrain:pasture_grass": 0.2,
+					 "stonehearth_ace:terrain:pasture_grass:short": 0.1
                   },
                   "2": {
                      "stonehearth_ace:fungi:winter_morel": 0.4

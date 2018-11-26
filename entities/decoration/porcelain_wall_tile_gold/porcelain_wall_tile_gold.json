@@ -1,0 +1,42 @@
+{
+   "type": "entity",
+   "mixins": "file(porcelain_wall_tile_gold_ghost.json)",
+   "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(porcelain_wall_tile_gold_iconic.json)",
+         "ghost_form": "file(porcelain_wall_tile_gold_ghost.json)",
+         "placeable_on_walls": true
+      },
+      "region_collision_shape": {
+         "region_collision_type": "none",
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": 0 },
+               "max": { "x": 2, "y": 2, "z": 1 }
+            }
+         ]
+      },
+      "stonehearth:traveler_attraction": {}
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 14,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 1,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "material_tags": "decoration porcelain crafted clay stockpile_decoration"
+      },
+      "stonehearth:appeal": {
+         "appeal": 10
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

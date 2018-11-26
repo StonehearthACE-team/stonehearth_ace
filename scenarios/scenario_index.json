@@ -23,6 +23,9 @@
          "file(static/algae_red_nest)",
          "file(static/algae_brown_nest)",
          "file(static/algae_green_nest)",
+         "file(static/daisy_flowers_nest)",
+         "file(static/highland_vine_nest)",
+         "file(static/chanterelle_nest)",
          "file(static/landmarks/16x_water_bottom_1.json)",
          "file(static/landmarks/16x_water_bottom_2.json)",
          "file(static/landmarks/16x_water_bottom_3.json)",
@@ -50,6 +53,21 @@
       "categories": {
          "plantlife": {
             "density": 6,
+            "priority": 0,
+            "location_type": "surface",
+            "activation_type": "immediate"
+         },
+         "terrain_spreader": {
+            "density": 8,
+            "max_count": [
+               4,
+               8,
+               12,
+               16
+            ],
+            "prevents_categories_in_same_tile": [
+               "terrain_spreader"
+            ],
             "priority": 0,
             "location_type": "surface",
             "activation_type": "immediate"

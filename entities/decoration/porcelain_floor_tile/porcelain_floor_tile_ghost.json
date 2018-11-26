@@ -1,0 +1,25 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(porcelain_floor_tile.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": -0.5, "y": 0, "z": -0.5 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:floor_decor": {},
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.decoration.porcelain_floor_tile.porcelain_floor_tile_ghost.display_name)",
+         "description": "i18n(stonehearth_ace:entities.decoration.porcelain_floor_tile.porcelain_floor_tile_ghost.description)",
+         "icon": "file(porcelain_floor_tile.png)",
+         "category": "decoration"
+      }
+   }
+}

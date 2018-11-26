@@ -1,0 +1,66 @@
+{
+   "type": "entity",
+   "mixins": "file(stone_comfy_bed_ghost.json)",
+   "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(stone_comfy_bed_iconic.json)",
+         "ghost_form": "file(stone_comfy_bed_ghost.json)",
+         "placeable_on_ground": true
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 2, "y": 1, "z": 2 }
+            }
+         ],
+         "adjacency_flags": [
+            "left",
+            "right"
+         ]
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -2 },
+               "max": { "x": 2, "y": 1, "z": 2 }
+            },
+            {
+               "min": { "x": -1, "y": 0, "z": 2 },
+               "max": { "x": 2, "y": 2, "z": 3 }
+            }
+         ]
+      },
+      "stonehearth:mount": {
+         "mount_offset": { "x": 0, "y": 1, "z": -0.75 },
+         "mounted_model_variant": "sleeping"
+      },
+      "stonehearth:ownable_object": {
+         "ownership_type": "bed"
+      }
+   },
+   "entity_data": {
+      "stonehearth:bed": {
+         "shelter": {
+            "contribution_threshold": 80,
+            "score": 9
+         }
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 14,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 1,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 15
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

@@ -1,0 +1,28 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(porcelain_wall_tile_gold.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": -0.38 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "allow_vertical_adjacent": true
+      },
+      "render_info": {
+         "scale": 0.15
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.decoration.porcelain_wall_tile_gold.porcelain_wall_tile_gold_ghost.display_name)",
+         "description": "i18n(stonehearth_ace:entities.decoration.porcelain_wall_tile_gold.porcelain_wall_tile_gold_ghost.description)",
+         "icon": "file(porcelain_wall_tile_gold.png)",
+         "category": "decoration"
+      }
+   }
+}

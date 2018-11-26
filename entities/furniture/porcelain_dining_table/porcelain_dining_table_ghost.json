@@ -1,0 +1,27 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(porcelain_dining_table.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      },
+      "render_info": {}
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.furniture.porcelain_dining_table.porcelain_dining_table_ghost.display_name)",
+         "description": "i18n(stonehearth_ace:entities.furniture.porcelain_dining_table.porcelain_dining_table_ghost.description)",
+         "icon": "file(porcelain_dining_table.png)",
+         "category": "furniture",
+         "material_tags": "clay porcelain furniture crafted stockpile_furniture"
+      }
+   }
+}

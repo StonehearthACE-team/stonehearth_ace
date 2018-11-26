@@ -20,7 +20,7 @@
 		 "stonehearth_ace:terrain:pasture_grass:short": {
             "placement_type": "dense",
             "parameters": {
-               "grid_multiple": 3,
+               "grid_multiple": 2,
                "item_density": 0.3,
                "exclusion_radius": 1
             }
@@ -39,22 +39,22 @@
             "weights": {
                "plains": {
                   "1": {
-                     "stonehearth_ace:fungi:desert_truffle": 0.3,
-					 "stonehearth_ace:terrain:pasture_grass:overgrown": 0.2,
-					 "stonehearth_ace:terrain:pasture_grass": 0.8,
-					 "stonehearth_ace:terrain:pasture_grass:short": 0.4
+                     "stonehearth_ace:fungi:desert_truffle": 0.6,
+					 "stonehearth_ace:terrain:pasture_grass:overgrown": 0.1,
+					 "stonehearth_ace:terrain:pasture_grass": 0.3,
+					 "stonehearth_ace:terrain:pasture_grass:short": 0.1
                   }
                },
                "foothills": {
                   "1": {
-                     "stonehearth_ace:fungi:desert_truffle": 0.4,
+                     "stonehearth_ace:fungi:desert_truffle": 0.8,
 					 "stonehearth_ace:terrain:pasture_grass:overgrown": 0.1,
-					 "stonehearth_ace:terrain:pasture_grass": 1,
-					 "stonehearth_ace:terrain:pasture_grass:short": 0.6
+					 "stonehearth_ace:terrain:pasture_grass": 0.4,
+					 "stonehearth_ace:terrain:pasture_grass:short": 0.2
                   },
                   "2": {
-                     "stonehearth_ace:fungi:desert_truffle": 0.7,
-					 "stonehearth_ace:terrain:pasture_grass:short": 0.8
+                     "stonehearth_ace:fungi:desert_truffle": 1,
+					 "stonehearth_ace:terrain:pasture_grass:short": 0.3
                   }
                }
             }

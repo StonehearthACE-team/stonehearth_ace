@@ -1,0 +1,26 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(porcelain_fencepost.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      },
+      "render_info": {}
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.construction.porcelain_fence_end.porcelain_fence_end_ghost.display_name)",
+         "description": "i18n(stonehearth_ace:entities.construction.porcelain_fence_end.porcelain_fence_end_ghost.description)",
+         "icon": "file(porcelain_fencepost.png)",
+         "category": "construction",
+         "material_tags": "clay porcelain defense crafted fence stockpile_defense"
+      }
+   }
+}

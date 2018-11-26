@@ -1,0 +1,114 @@
+{
+   "type": "entity",
+   "components": {
+      "stonehearth_ace:connection": {
+         "stonehearth_ace:vines:daisies": {
+            "connectors": {
+               "~x": {
+                  "region": [
+                     {
+                        "min": { "x": 0, "y": 0, "z": -3 },
+                        "max": { "x": 1, "y": 1, "z": 4 }
+                     }
+                  ],
+                  "max_connections": 6,
+                  "region_intersection_threshold": 0.4
+               },
+               "~y": {
+                  "region": [
+                     {
+                        "min": { "x": 0, "y": -1, "z": 0 },
+                        "max": { "x": 1, "y": 2, "z": 1 }
+                     }
+                  ],
+                  "max_connections": 0,
+                  "region_intersection_threshold": 0
+               },
+               "~z": {
+                  "region": [
+                     {
+                        "min": { "x": -3, "y": 0, "z": 0 },
+                        "max": { "x": 4, "y": 1, "z": 1 }
+                     }
+                  ],
+                  "max_connections": 6,
+                  "region_intersection_threshold": 0.4
+               }
+            },
+            "max_connections": 8,
+            "origin_offset": { "x": 0.5, "y": 0, "z": 0.5 }
+         }
+      },
+      "stonehearth_ace:vine": {
+         "render_options": {
+            "bottom": {
+               "scale": 0.1,
+               "origin": { "x": 5, "y": 0, "z": 5 },
+               "models": [
+                  "file(daisies.qb)",
+                  "file(daisies_2.qb)",
+                  "file(daisies_3.qb)",
+                  "file(daisies_4.qb)",
+                  "file(daisies_5.qb)"
+               ]
+            },
+            "top": {
+               "scale": 0.1,
+               "origin": { "x": 5, "y": 7, "z": 5 },
+               "models": [
+                  "file(daisies.qb)",
+                  "file(daisies_2.qb)",
+                  "file(daisies_3.qb)",
+                  "file(daisies_4.qb)",
+                  "file(daisies_5.qb)"
+               ]
+            },
+            "side": {
+               "scale": 0.1,
+               "origin": { "x": 5, "y": 0, "z": 5 },
+               "models": [
+                  "file(daisies.qb)",
+                  "file(daisies_2.qb)",
+                  "file(daisies_3.qb)",
+                  "file(daisies_4.qb)",
+                  "file(daisies_5.qb)"
+               ]
+            }
+         }
+      },
+      "stonehearth:resource_node": {
+         "durability": 1,
+         "resource": "stonehearth_ace:resources:herb:daisy",
+         "harvest_overlay_effect": "stonehearth:effects:harvest_plant_overlay_effect"
+      },
+      "mob": {
+         "model_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "align_to_grid": [
+            "x",
+            "z"
+         ]
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": 0, "y": 0, "z": 0 },
+               "max": { "x": 1, "y": 1, "z": 1 }
+            }
+         ],
+         "region_collision_type": "none"
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.terrain.daisies.display_name)",
+         "description": "i18n(stonehearth_ace:entities.terrain.daisies.description)"
+      },
+      "stonehearth:animal_feed": {
+         "calorie_gain": 2
+      },
+      "stonehearth:appeal": {
+         "appeal": 4
+      }
+   }
+}

@@ -1,0 +1,19 @@
+{
+   "name": "terrain_spreader_nest",
+   "category": "terrain_spreader",
+   "size": {
+      "width": 8,
+      "length": 8
+   },
+   "weight": 10,
+   "unique": false,
+   "allow_nonflat": true,
+   "script": "/stonehearth/scenarios/static/entity_cluster/entity_cluster.lua",
+   "data": {
+      "entity_footprint_length": 1,
+      "quantity": {
+         "min": 1,
+         "max": 6
+      }
+   }
+}

@@ -447,6 +447,11 @@
                "recipe_name": "Mound of Bone Clay",
                "description": "Required for creating porcelain and beautiful ornate ceramics.",
                "flavor": ""
+            },
+            "clay_comfy_bed_recipe": {
+               "recipe_name": "Clay Comfy Bed",
+               "description": "It has a lot less sand on the mattress.",
+               "flavor": "For a good night of sleep..."
             }
          }
       },
@@ -480,6 +485,11 @@
             "stone_safety_standard_recipe": {
                "recipe_name": "Stone Safety Standard",
                "description": "Use to designate a safety point."
+            },
+            "stone_comfy_bed_recipe": {
+               "recipe_name": "Stone Comfy Bed",
+               "description": "Much warmer and softer than the stone itself.",
+               "flavor": "Warm furs!"
             }
          }
       },
@@ -995,6 +1005,24 @@
             "display_name": "Stone Door with Lock",
             "description": "Sturdier than your average door. Can be locked for passage control.",
             "flavor": "Gives a feeling of safety"
+         },
+         "porcelain_fence_bar_double": {
+            "porcelain_fence_bar_double_ghost": {
+               "display_name": "Porcelain Fence Large",
+               "description": "A bit of privacy..."
+            }
+         },
+         "porcelain_fence_bar_single": {
+            "porcelain_fence_bar_single_ghost": {
+               "display_name": "Porcelain Fence Small",
+               "description": "A bit of privacy..."
+            }
+         },
+         "porcelain_fence_end": {
+            "porcelain_fence_end_ghost": {
+               "display_name": "Porcelain Fence Post",
+               "description": "A bit of privacy..."
+            }
          }
       },
       "crops": {
@@ -1218,6 +1246,10 @@
             "water_lily_pink": {
                "display_name": "Pink Water Lily",
                "description": "This beautiful flower from the wetlands can be used as a herb."
+            },
+            "daisy": {
+               "display_name": "Daisy Flowers",
+               "description": "A common herb often used for decorations."
             }
          },
          "stone": {
@@ -1684,6 +1716,84 @@
                "display_name": "Greater Water Gate",
                "description": "A larger and more resistant gate for controlling the flow of fluids."
             }
+         },
+         "porcelain_bench": {
+            "porcelain_bench_ghost": {
+               "display_name": "Porcelain Park Bench",
+               "description": "Be careful with the cushions when it rains!"
+            }
+         },
+         "porcelain_bench_comfy": {
+            "porcelain_bench_comfy_ghost": {
+               "display_name": "Porcelain Large Couch",
+               "description": "Makes for a comfortable living room."
+            }
+         },
+         "porcelain_display_cabinet": {
+            "porcelain_display_cabinet_ghost": {
+               "display_name": "Porcelain Display Cabinet",
+               "description": "A cabinet to show off all the boring pottery that was made before porcelain!"
+            }
+         },
+         "porcelain_display_cupboard": {
+            "porcelain_display_cupboard_ghost": {
+               "display_name": "Porcelain Display Cupboard",
+               "description": "Displays a nice collection."
+            }
+         },
+         "porcelain_chair": {
+            "porcelain_chair_ghost": {
+               "display_name": "Porcelain Chair",
+               "description": "Can also be used as a foot stool!"
+            }
+         },
+         "porcelain_chair_comfy": {
+            "porcelain_chair_comfy_ghost": {
+               "display_name": "Porcelain Couch",
+               "description": "Pillow fight!"
+            }
+         },
+         "porcelain_dining_table": {
+            "porcelain_dining_table_ghost": {
+               "display_name": "Porcelain Dining Table",
+               "description": "The tablecloth allows you to see your porcelain plates."
+            }
+         },
+         "porcelain_dresser": {
+            "porcelain_dresser_ghost": {
+               "display_name": "Porcelain Dresser",
+               "description": "Living in luxury."
+            }
+         },
+         "porcelain_end_table": {
+            "porcelain_end_table_ghost": {
+               "display_name": "Porcelain End Table",
+               "description": "Decoration can be placed on top of it."
+            }
+         },
+         "porcelain_shelf": {
+            "porcelain_shelf_ghost": {
+               "display_name": "Porcelain Wall Shelf",
+               "description": "Decorations can be put on top of shelves."
+            }
+         },
+         "porcelain_table": {
+            "porcelain_table_ghost": {
+               "display_name": "Porcelain Table for One",
+               "description": "Even in luxury one might want to eat alone."
+            }
+         },
+         "clay_comfy_bed": {
+            "clay_comfy_bed_ghost": {
+               "display_name": "Clay Comfy Bed",
+               "description": "It has a lot less sand on the mattress."
+            }
+         },
+         "stone_comfy_bed": {
+            "stone_comfy_bed_ghost": {
+               "display_name": "Stone Comfy Bed",
+               "description": "Much warmer and softer than the stone itself."
+            }
          }
       },
       "recipes": {
@@ -1737,7 +1847,7 @@
          },
          "marblesprout_plant": {
             "display_name": "Wild Marblesprout",
-            "description": "This plant can be harvested for Marble Stones!",
+            "description": "This plant can be harvested and dried for marble stones!",
             "unripe_description": "This plant has been harvested and has not grown back yet",
             "seed": {
                "marblesprout_plant_seed_ghost": {
@@ -1905,6 +2015,72 @@
          "brass_sign_blacksmith": {
             "display_name": "Blacksmith's Brass Plaque",
             "description": "A wall sign with the mark of the Blacksmith."
+         },
+         "porcelain_lamp": {
+            "porcelain_lamp_ghost": {
+               "display_name": "Porcelain Standing Lamp",
+               "description": "Goes really well on a porcelain table."
+            }
+         },
+         "porcelain_wall_lamp": {
+            "porcelain_wall_lamp_ghost": {
+               "display_name": "Porcelain Wall Lamp",
+               "description": "For lighting up a beautiful place."
+            }
+         },
+         "porcelain_curtains": {
+            "porcelain_curtains_ghost": {
+               "display_name": "Porcelain Curtains",
+               "description": "Looks good with other porcelain furniture!"
+            }
+         },
+         "porcelain_floor_tile": {
+            "porcelain_floor_tile_ghost": {
+               "display_name": "Porcelain Tile Floor",
+               "description": "Step gently."
+            }
+         },
+         "porcelain_planter": {
+            "porcelain_planter_ghost": {
+               "display_name": "Porcelain Flower Planter",
+               "description": "Very beautiful and delicate daisies."
+            }
+         },
+         "porcelain_teapot": {
+            "porcelain_teapot_ghost": {
+               "display_name": "Porcelain Teapot",
+               "description": "A nicely decorated piece of decoration."
+            }
+         },
+         "porcelain_urn_short": {
+            "porcelain_urn_short_ghost": {
+               "display_name": "Porcelain Small Urn",
+               "description": "A beautiful piece of decoration."
+            }
+         },
+         "porcelain_urn_tall": {
+            "porcelain_urn_tall_ghost": {
+               "display_name": "Porcelain Urn",
+               "description": "Very fancy and well painted piece of porcelain."
+            }
+         },
+         "porcelain_wall_tile_blue": {
+            "porcelain_wall_tile_blue_ghost": {
+               "display_name": "Porcelain Tile Wall",
+               "description": "Masterfully assembled tile by tile."
+            }
+         },
+         "porcelain_wall_tile_gold": {
+            "porcelain_wall_tile_gold_ghost": {
+               "display_name": "Porcelain Golden Tile Wall",
+               "description": "Even fancier with gildings!"
+            }
+         },
+         "porcelain_curtains_small": {
+            "porcelain_curtains_small_ghost": {
+               "display_name": "Small Porcelain Curtains",
+               "description": "Softly lets the light in."
+            }
          }
       },
       "pets": {
@@ -2293,6 +2469,10 @@
          "sprouting_pasture_grass": {
             "display_name": "Sprouting Grass",
             "description": "Grass has just started germinating here, not yet as efficient for grazing."
+         },
+         "daisies": {
+            "display_name": "Daisies",
+            "description": "This delicate flowering cover will gently spread over time."
          }
       },
       "fungi": {
@@ -2594,6 +2774,11 @@
          "source_water_wheel_wooden": {
             "display_name": "Wooden Water Wheel",
             "description": "This device can generate mechanical power if placed on water."
+         },
+         "safety_standard": {
+            "stone_safety_standard": {
+               "display_name": "Stone Safety Standard"
+            }
          }
       },
       "aquatic": {

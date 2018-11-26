@@ -1,0 +1,28 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(porcelain_chair_comfy.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0.05 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      },
+      "render_info": {
+         "scale": 0.11
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.furniture.porcelain_chair_comfy.porcelain_chair_comfy_ghost.display_name)",
+         "description": "i18n(stonehearth_ace:entities.furniture.porcelain_chair_comfy.porcelain_chair_comfy_ghost.description)",
+         "icon": "file(porcelain_chair_comfy.png)",
+         "category": "furniture",
+         "material_tags": "clay porcelain furniture crafted chair stockpile_furniture"
+      }
+   }
+}
