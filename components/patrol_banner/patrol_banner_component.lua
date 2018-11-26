@@ -8,8 +8,6 @@ function PatrolBannerComponent:initialize()
 end
 
 function PatrolBannerComponent:activate()
-   self._sv.combat_time = stonehearth.calendar:realtime_to_game_seconds(self._json.combat_time or 5)
-   self._health_listener = radiant.events.listen(self._entity, 'stonehearth:expendable_resource_changed:health', self, self._on_health_changed)
    self._location_trace = self._entity:add_component('mob'):trace_transform('patrol banner moved', _radiant.dm.TraceCategories.SYNC_TRACE)
       :on_changed(function()
             self:_recalc_path_to_next_banner()
