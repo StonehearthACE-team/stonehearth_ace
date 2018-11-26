@@ -34,7 +34,12 @@
          ]
       },
       "stonehearth_ace:training_dummy": {
-         "combat_time": 5
+         "combat_time": 5,
+         "allowed_jobs": {
+            "stonehearth:jobs:footman": true,
+            "stonehearth:jobs:knight": true,
+            "stonehearth:jobs:cleric": true
+         }
       },
       "stonehearth_ace:auto_replace": {},
       "stonehearth:attributes": {

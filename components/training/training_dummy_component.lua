@@ -2,7 +2,9 @@ local Point3 = _radiant.csg.Point3
 local TrainingDummyComponent = class()
 
 function TrainingDummyComponent:initialize()
-	self._json = radiant.entities.get_json(self) or {}
+   self._json = radiant.entities.get_json(self) or {}
+   self._allowed_jobs = self._json.allowed_jobs or {}
+
 	self._sv.enabled = true
    self._sv.disable_health_percentage = self._json.disable_health_percentage or 0.3
    
@@ -67,6 +69,13 @@ function TrainingDummyComponent:_register_with_town(register)
          town:unregister_limited_placement_item(self._entity, self._dummy_type)
       end
    end
+end
+
+function TrainingDummyComponent:can_train_entity(entity)
+   local job = entity:get_component('stonehearth:job')
+   local uri = job and job:get_job_uri()
+
+   return uri and self._allowed_jobs[uri]
 end
 
 function TrainingDummyComponent:get_enabled()

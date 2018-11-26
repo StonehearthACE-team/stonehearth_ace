@@ -1,0 +1,57 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:align_to_grid",
+   "components": {
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -0.5, "y": 0, "z": 0 },
+               "max": { "x": 1.5, "y": 2.8, "z": 1 }
+            }
+         ],
+         "region_collision_type": "none"
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(patrol_banner_1.qb)"
+            ]
+         },
+         "party_2": {
+            "models": [
+               "file(patrol_banner_2.qb)"
+            ]
+         },
+         "party_3": {
+            "models": [
+               "file(patrol_banner_3.qb)"
+            ]
+         },
+         "party_4": {
+            "models": [
+               "file(patrol_banner_4.qb)"
+            ]
+         }
+      },
+      "stonehearth_ace:patrol_banner": {
+         "models": {
+            "party_1_model": "default",
+            "party_2_model": "party_2",
+            "party_3_model": "party_3",
+            "party_4_model": "party_4"
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "description": "i18n(stonehearth_ace:entities.gizmos.patrol_banner.description)",
+         "icon": "file(patrol_banner.png)",
+         "display_name": "i18n(stonehearth_ace:entities.gizmos.patrol_banner.display_name)",
+         "category": "military"
+      }
+   }
+}

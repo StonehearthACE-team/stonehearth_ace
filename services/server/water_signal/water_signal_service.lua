@@ -83,7 +83,7 @@ function WaterSignalService:_on_tick()
       for _, id in ipairs(self._next_tick_signals) do
          if not self._urgent_water_signals[id] and (not bucket or not bucket[id]) then
             local this_bucket = self._water_signal_buckets[self._water_signals_in_buckets[id]]
-            bucket[id]:_on_tick_water_signal()
+            this_bucket[id]:_on_tick_water_signal()
          end
       end
       self._next_tick_signals = {}

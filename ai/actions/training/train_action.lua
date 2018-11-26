@@ -57,7 +57,8 @@ function find_training_dummy(entity)
 	return stonehearth.ai:filter_from_key('stonehearth_ace:training_dummy', entity:get_player_id(),
 		function(target)
 			if stonehearth.player:are_entities_friendly(entity, target) then
-				return target:get_component('stonehearth_ace:training_dummy') ~= nil
+            local training_dummy = target:get_component('stonehearth_ace:training_dummy')
+            return training_dummy and training_dummy:can_train_entity(entity)
 			end
 			return false
 		end)
@@ -89,18 +90,22 @@ function find_training_location(ai, entity, target)
 	local facing = radiant.math.round(mob:get_facing() / 90) * 90
 	local location = mob:get_world_grid_location()
 	local best_location = nil
-	local rng = _radiant.math.get_default_rng()
+   local rng = _radiant.math.get_default_rng()
+   local min_dist = min_range * min_range
+   local max_dist = max_range * max_range
 
-	for distance = max_range, min_range, -0.5 do
-		local varied_facing = facing + rng:get_int(-20, 20)
+   -- give it 10 tries; if it hasn't found a spot, move on
+   for i = 1, 10 do
+      local distance = math.sqrt(rng:get_real(min_dist, max_dist))
+		local varied_facing = facing + rng:get_real(-18, 18)
 		local temp_location = get_location_in_front(location, varied_facing, distance)
-		if not next(radiant.terrain.get_entities_at_point(temp_location)) then
+		--if not next(radiant.terrain.get_entities_at_point(temp_location)) then
 			local line_of_sight = _physics:has_line_of_sight(target, Point3(temp_location.x, temp_location.y + 2, temp_location.z))
 			if line_of_sight then
 				best_location = temp_location
 				break
 			end
-		end
+		--end
 	end
 
 	if not best_location then
