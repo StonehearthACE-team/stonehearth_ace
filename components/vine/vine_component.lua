@@ -55,14 +55,16 @@ function VineComponent:initialize()
       local faces = {'bottom', 'top', 'side'}
 
       for _, face in ipairs(faces) do
-         local j_o = json_options[face] or {}
-         options.faces[face] = {
-            scale = j_o.scale or 0.1,
-            origin = radiant.util.to_point3(j_o.origin) or Point3.zero
-         }
-         models[face] = {}
-         for season, qbs in pairs(j_o.models) do
-            models[face][season] = qbs[rng:get_int(1, #qbs)]
+         local j_o = json_options[face]
+         if j_o then
+            options.faces[face] = {
+               scale = j_o.scale or 0.1,
+               origin = radiant.util.to_point3(j_o.origin) or Point3.zero
+            }
+            models[face] = {}
+            for season, qbs in pairs(j_o.models) do
+               models[face][season] = qbs[rng:get_int(1, #qbs)]
+            end
          end
       end
 
