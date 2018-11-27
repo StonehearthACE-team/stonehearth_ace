@@ -1,9 +1,8 @@
 {
    "type": "entity",
-   "mixins": "stonehearth:mixins:align_to_grid",
    "components": {
       "mob": {
-         "model_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
          "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
       },
       "model_variants": {
@@ -36,10 +35,30 @@
             "party_4": "party_4"
          },
          "path_colors": {
-            "party_1": [240, 40, 40, 255],
-            "party_2": [40, 200, 40, 255],
-            "party_3": [40, 40, 240, 255],
-            "party_4": [128, 20, 128, 255]
+            "party_1": [
+               240,
+               40,
+               40,
+               255
+            ],
+            "party_2": [
+               40,
+               200,
+               40,
+               255
+            ],
+            "party_3": [
+               40,
+               40,
+               240,
+               255
+            ],
+            "party_4": [
+               128,
+               20,
+               128,
+               255
+            ]
          }
       }
    },
