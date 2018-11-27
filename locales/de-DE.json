@@ -447,6 +447,11 @@
                "recipe_name": "Hügel aus Knochenlehm",
                "description": "Erforderlich für die Herstellung von Porzellan und wunderschön verzierter Keramik.",
                "flavor": ""
+            },
+            "clay_comfy_bed_recipe": {
+               "recipe_name": "Bequemes Bett aus Ton",
+               "description": "Es hat viel weniger Sand auf der Matratze.",
+               "flavor": "Für eine gute Nachtruhe..."
             }
          }
       },
@@ -480,6 +485,11 @@
             "stone_safety_standard_recipe": {
                "recipe_name": "Steinsicherheitsstandard",
                "description": "Wird verwendet, um ein Sicherheitspunkt festzulegen."
+            },
+            "stone_comfy_bed_recipe": {
+               "recipe_name": "Bequemes Bett aus Stein",
+               "description": "Viel wärmer und weicher als der Stein selbst.",
+               "flavor": "Warme Felle!"
             }
          }
       },
@@ -828,6 +838,11 @@
                "recipe_name": "Heilige Tinte",
                "description": "Spezielle und vergoldete Tinte für illuminierte Handschriften in 'Der Spaziergang von Cid'.",
                "flavor": "Es ist eine sehr komplizierte Mischung. Frag einfach nicht"
+            },
+            "thatch_pile_recipe": {
+               "recipe_name": "Großes Stroh-Bündel",
+               "description": "Bewahren Sie eine große Menge Stroh für die spätere Verwendung auf.",
+               "flavor": ""
             }
          },
          "cook_mill_powered": {
@@ -866,6 +881,11 @@
                "recipe_name": "Kleine Leiter",
                "description": "Es ist eine Leiter, die als Teil von Bauplänen platziert werden kann.",
                "flavor": "Nützlich zum Erreichen von obenstehenden Keksdosen."
+            },
+	    "bundle_of_firewood_recipe": {
+               "recipe_name": "Feuerholzbündel (x2)",
+               "description": "Teile die Holzblöcke, um doppelt soviel Kraftstoff zu bekommen!",
+               "flavor": "Brennholz ist ein üblicher Kraftstoff mit niedrigerer Qualität"
             }
          }
       },
@@ -995,6 +1015,24 @@
             "display_name": "Abschließbare verstärkte Steintür",
             "description": "Stärker als eine durchschnittliche Tür und abschließbar.",
             "flavor": ""
+         },
+         "porcelain_fence_bar_double": {
+            "porcelain_fence_bar_double_ghost": {
+               "display_name": "Großer Porzellanzaun",
+               "description": "Ein bisschen Privatsphäre..."
+            }
+         },
+         "porcelain_fence_bar_single": {
+            "porcelain_fence_bar_single_ghost": {
+               "display_name": "Kleiner Porzellanzaun",
+               "description": "Ein bisschen Privatsphäre..."
+            }
+         },
+         "porcelain_fence_end": {
+            "porcelain_fence_end_ghost": {
+               "display_name": "Porzellan-Zaunpfosten",
+               "description": "Ein bisschen Privatsphäre..."
+            }
          }
       },
       "crops": {
@@ -1218,6 +1256,10 @@
             "water_lily_pink": {
                "display_name": "Rosa Seerose",
                "description": "Diese wunderschöne Blume aus den Feuchtgebieten kann als Kraut verwendet werden."
+            },
+            "daisy": {
+               "display_name": "Gänseblümchen-Blumen",
+               "description": "Ein gewöhnliches Kraut, das häufig für Dekorationen verwendet wird."
             }
          },
          "stone": {
@@ -1684,6 +1726,90 @@
                "display_name": "Größeres Wassertor",
                "description": "Ein größeres und widerstandsfähigeres Tor zur Steuerung des Flüssigkeitsflusses."
             }
+         },
+         "porcelain_bench": {
+            "porcelain_bench_ghost": {
+               "display_name": "Parkbank aus Porzellan",
+               "description": "Sei vorsichtig mit den Kissen, wenn es regnet!"
+            }
+         },
+         "porcelain_bench_comfy": {
+            "porcelain_bench_comfy_ghost": {
+               "display_name": "Große Porzellancouch",
+               "description": "Für ein gemütliches Wohnzimmer."
+            }
+         },
+         "porcelain_display_cabinet": {
+            "porcelain_display_cabinet_ghost": {
+               "display_name": "Vitrine aus Porzellan",
+               "description": "Ein Schrank, um all die langweiligen Keramiken zu zeigen, die vor dem Porzellan hergestellt wurden!"
+            }
+         },
+         "porcelain_display_cupboard": {
+            "porcelain_display_cupboard_ghost": {
+               "display_name": "Schaukasten aus Porzellan",
+               "description": "Zeigt eine schöne Sammlung."
+            }
+         },
+         "porcelain_chair": {
+            "porcelain_chair_ghost": {
+               "display_name": "Stuhl aus Porzellan",
+               "description": "Kann auch als Fußhocker verwendet werden!"
+            }
+         },
+         "porcelain_chair_comfy": {
+            "porcelain_chair_comfy_ghost": {
+               "display_name": "Porzellancouch",
+               "description": "Kissenschlacht!"
+            }
+         },
+         "porcelain_dining_table": {
+            "porcelain_dining_table_ghost": {
+               "display_name": "Esstisch aus Porzellan",
+               "description": "Mit der Tischdecke kannst du deine Porzellanplatten sehen."
+            }
+         },
+         "porcelain_dresser": {
+            "porcelain_dresser_ghost": {
+               "display_name": "Porzellankommode",
+               "description": "In Luxus leben."
+            }
+         },
+         "porcelain_end_table": {
+            "porcelain_end_table_ghost": {
+               "display_name": "Porzellan-Beistelltisch",
+               "description": "Dekoration kann darüber platziert werden."
+            }
+         },
+         "porcelain_shelf": {
+            "porcelain_shelf_ghost": {
+               "display_name": "Wandregal aus Porzellan",
+               "description": "Dekorationen können auf Regalen platziert werden."
+            }
+         },
+         "porcelain_table": {
+            "porcelain_table_ghost": {
+               "display_name": "Porzellantisch für einen",
+               "description": "Selbst im Luxus möchte man vielleicht alleine essen."
+            }
+         },
+         "clay_comfy_bed": {
+            "clay_comfy_bed_ghost": {
+               "display_name": "Bequemes Bett aus Ton",
+               "description": "Es hat viel weniger Sand auf der Matratze."
+            }
+         },
+         "stone_comfy_bed": {
+            "stone_comfy_bed_ghost": {
+               "display_name": "Bequemes Bett aus Stein",
+               "description": "Viel wärmer und weicher als der Stein selbst."
+            }
+         },
+         "porcelain_comfy_bed": {
+            "porcelain_comfy_bed_ghost": {
+               "display_name": "Bequemes Bett aus Porzellan",
+               "description": "Für diejenigen, die auch im Schlaf schick aussehen wollen."
+            }
          }
       },
       "recipes": {
@@ -1737,7 +1863,7 @@
          },
          "marblesprout_plant": {
             "display_name": "Wilde Marmorsprosse",
-            "description": "Diese Pflanze kann für Marmorsteine geerntet werden!",
+            "description": "Diese Pflanze kann für Marmorsteine geerntet und getrocknet werden!",
             "unripe_description": "Diese Pflanze wurde geerntet und ist noch nicht nachgewachsen",
             "seed": {
                "marblesprout_plant_seed_ghost": {
@@ -1905,6 +2031,78 @@
          "brass_sign_blacksmith": {
             "display_name": "Schmiedetafel aus Messing",
             "description": "Ein Wandschild mit dem Zeichen des Schmiedes."
+         },
+         "porcelain_lamp": {
+            "porcelain_lamp_ghost": {
+               "display_name": "Porzellan Stehlampe",
+               "description": "Passt sehr gut auf einen Porzellantisch."
+            }
+         },
+         "porcelain_wall_lamp": {
+            "porcelain_wall_lamp_ghost": {
+               "display_name": "Wandleuchte aus Porzellan",
+               "description": "Zur Beleuchtung eines schönen Ortes."
+            }
+         },
+         "porcelain_curtains": {
+            "porcelain_curtains_ghost": {
+               "display_name": "Vorhänge aus Porzellan",
+               "description": "Sieht mit anderen Porzellanmöbeln verdammt gut aus!"
+            }
+         },
+         "porcelain_floor_tile": {
+            "porcelain_floor_tile_ghost": {
+               "display_name": "Porzellanfliesen",
+               "description": "Vorsichtig auftreten."
+            }
+         },
+         "porcelain_planter": {
+            "porcelain_planter_ghost": {
+               "display_name": "Blumentopf aus Porzellan",
+               "description": "Sehr schöne und zarte Gänseblümchen."
+            }
+         },
+         "porcelain_teapot": {
+            "porcelain_teapot_ghost": {
+               "display_name": "Teekanne aus Porzellan",
+               "description": "Ein hübsch dekoriertes Dekorationsstück."
+            }
+         },
+         "porcelain_urn_short": {
+            "porcelain_urn_short_ghost": {
+               "display_name": "Kleine Urne aus Porzellan",
+               "description": "Ein wunderschönes Schmuckstück."
+            }
+         },
+         "porcelain_urn_tall": {
+            "porcelain_urn_tall_ghost": {
+               "display_name": "Urne aus Porzellan",
+               "description": "Sehr schickes und gut bemaltes Stück Porzellan."
+            }
+         },
+         "porcelain_wall_tile_blue": {
+            "porcelain_wall_tile_blue_ghost": {
+               "display_name": "Wandfliese aus Porzellan",
+               "description": "Meisterhaft zusammengesetzte Fliesen."
+            }
+         },
+         "porcelain_wall_tile_gold": {
+            "porcelain_wall_tile_gold_ghost": {
+               "display_name": "Goldene Wandfliesen aus Porzellan",
+               "description": "Noch schicker mit Vergoldungen!"
+            }
+         },
+         "porcelain_curtains_small": {
+            "porcelain_curtains_small_ghost": {
+               "display_name": "Kleine Porzellanvorhänge",
+               "description": "Lässt das Licht sanft herein."
+            }
+         },
+         "porcelain_jar_of_feathers": {
+            "porcelain_jar_of_feathers_ghost": {
+               "display_name": "Porzellangefäß mit Federn",
+               "description": "Herrlich riesige Federn aus Porzellan und Textilien."
+            }
          }
       },
       "pets": {
@@ -2293,6 +2491,10 @@
          "sprouting_pasture_grass": {
             "display_name": "Sprießendes Gras",
             "description": "Das Gras hat gerade angefangen zu keimen, noch nicht so effizient zum Weiden."
+         },
+         "daisies": {
+            "display_name": "Gänseblümchen",
+            "description": "Dieser zarte Blütenüberzug wird sich mit der Zeit sanft ausbreiten."
          }
       },
       "fungi": {
@@ -2594,6 +2796,11 @@
          "source_water_wheel_wooden": {
             "display_name": "Hölzernes Wasserrad",
             "description": "Dieses Gerät kann mechanische Energie erzeugen, wenn es im Wasser platziert wird."
+         },
+         "safety_standard": {
+            "stone_safety_standard": {
+               "display_name": "Steinernes Sicherheitsbanner"
+            }
          }
       },
       "aquatic": {
@@ -2803,6 +3010,13 @@
          "highland_vine": {
             "display_name": "Hochlandrebe",
             "description": "Die im Hochland beheimatete Rebe wächst und verbreitet sich über Wände und Decken. Sie wächst sogar auf Gebäudestrukturen, breitet sich jedoch nicht über den Boden aus."
+         }
+      },
+      "containers": {
+         "thatch_pile": {
+            "display_name": "Großes Stroh-Bündel",
+            "description": "Ernte für Stroh-Bündel.",
+            "iconic_description": "Kann für Stroh-Bündel geerntet werden, wenn es platziert wurde."
          }
       }
    },
