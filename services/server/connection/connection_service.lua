@@ -126,7 +126,7 @@ function ConnectionService:get_connections_data(player_id)
    if not ds then
       ds = {}
       self._sv.connections_ds[player_id] = ds
-      self.__saved_variables:mark_changed()
+      --self.__saved_variables:mark_changed()
    end
    return ds
 end
@@ -142,7 +142,7 @@ function ConnectionService:get_player_connections(player_id)
       connections = radiant.create_controller('stonehearth_ace:player_connections', player_id)
       CONNECTIONS_BY_PLAYER_ID[player_id] = connections
       self._sv.connections[player_id] = connections
-      self.__saved_variables:mark_changed()
+      --self.__saved_variables:mark_changed()
       radiant.events.trigger(self, 'stonehearth:ace:connections:player_connections_created', player_id)
    end
 
@@ -168,7 +168,7 @@ function ConnectionService:_create_new_graph(type, player_id)
    local graph = {id = id, type = type, player_id = player_id, nodes = {}}
    graphs[id] = graph
    self:get_graphs_by_type(type)[id] = graph
-   self.__saved_variables:mark_changed()
+   --self.__saved_variables:mark_changed()
 
    return graph
 end
@@ -178,7 +178,7 @@ function ConnectionService:_remove_graph(id)
    if graph then
       self:get_graphs_by_type(graph.type)[id] = nil
       self._sv.graphs[id] = nil
-      self.__saved_variables:mark_changed()
+      --self.__saved_variables:mark_changed()
    end
 end
 
@@ -282,6 +282,13 @@ function ConnectionService:_stop_entity_traces(id)
 
       self._traces[id] = nil
    end
+end
+
+function ConnectionService:saved_variables_mark_changed()
+   for _, controller in pairs(self._sv.connections) do
+      controller.__saved_variables:mark_changed()
+   end
+   self.__saved_variables:mark_changed()
 end
 
 return ConnectionService

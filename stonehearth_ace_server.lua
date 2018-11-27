@@ -82,6 +82,8 @@ function stonehearth_ace:_on_init()
       create_service(name)
    end
 
+   _radiant.call('stonehearth_ace:register_pre_save_calls_command')
+
    radiant.log.write_('stonehearth_ace', 0, 'ACE server initialized')
 end
 

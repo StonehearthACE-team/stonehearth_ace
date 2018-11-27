@@ -143,6 +143,7 @@
       "crops:yew_tree_crop": "file(entities/crops/yew_tree_crop/yew_tree_crop.json)",
       "data:connection_types": "file(data/connections/connection_types.json)",
       "data:modded_settings": "file(data/gameplay_settings/gameplay_settings.json)",
+      "data:pre_save_calls": "file(data/pre_save/pre_save_calls.json)",
       "data:resource_constants": "file(data/resource_constants.json)",
       "data:thoughts": "file(data/happiness/thoughts.json)",
       "data:vine_types": "file(data/vines/vine_types.json)",
@@ -1336,6 +1337,22 @@
       "update_client_connections_command": {
          "controller": "file(call_handlers/advanced_placement_call_handler.lua)",
          "endpoint": "client"
+      },
+      "register_pre_save_calls_command": {
+         "controller": "file(call_handlers/pre_save_call_handler.lua)",
+         "endpoint": "server"
+      },
+      "ace_pre_save_command": {
+         "controller": "file(call_handlers/pre_save_call_handler.lua)",
+         "endpoint": "server"
+      },
+      "perform_pre_save_calls_command": {
+         "controller": "file(call_handlers/pre_save_call_handler.lua)",
+         "endpoint": "server"
+      },
+      "save_game_command": {
+         "controller": "file(call_handlers/pre_save_call_handler.lua)",
+         "endpoint": "client"
       }
    },
    "object_commands": {
@@ -1366,7 +1383,8 @@
          "file(ui/game/modes/zones_mode/underfarm/underfarm.js)",
          "file(ui/game/promotion_tree/promotion_tree.js)",
          "file(ui/game/modes/zones_mode/trapping_grounds/trapping_grounds.js)",
-         "file(ui/game/modes/zones_mode/farm/farm.js)"
+         "file(ui/game/modes/zones_mode/farm/farm.js)",
+         "file(ui/game/save_view/save_view.js)"
       ],
       "less": [
          "file(ui/shell/settings/settings.less)",

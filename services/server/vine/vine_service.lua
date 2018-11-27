@@ -35,4 +35,10 @@ function VineService:_update_controllers()
    end
 end
 
+function VineService:saved_variables_mark_changed()
+   for _, controller in pairs(self._sv.controllers) do
+      controller.__saved_variables:mark_changed()
+   end
+end
+
 return VineService
