@@ -43,7 +43,6 @@ function VineComponent:initialize()
    
    if not self._sv.render_directions then
       self._sv.render_directions = {}
-      self.__saved_variables:mark_changed()
    end
 
    if not self._sv.render_options or not self._sv.render_models then
