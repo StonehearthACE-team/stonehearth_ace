@@ -1,0 +1,22 @@
+{
+   "type": "recipe",
+   "effort": 3,
+   "work_units": 2,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.thatch_pile_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.thatch_pile_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.thatch_pile_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/containers/thatch_pile/thatch_pile.png",
+   "workshop": "stonehearth:cook:mill",
+   "level_requirement": 0,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:resources:thatch_bale",
+         "count": 20
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:containers:thatch_pile"
+      }
+   ]
+}
