@@ -838,6 +838,11 @@
                "recipe_name": "Sacred Ink",
                "description": "Special and gilded ink for illuminated manuscripts in 'The Walk of Cid'.",
                "flavor": "It is a very... complicated mixture. Don't ask"
+            },
+            "thatch_pile_recipe": {
+               "recipe_name": "Large Thatch Bundle",
+               "description": "Store a large amount of thatching for later use.",
+               "flavor": ""
             }
          },
          "cook_mill_powered": {
@@ -876,6 +881,11 @@
                "recipe_name": "Small Ladder",
                "description": "It's a ladder that can be placed as part of building blueprints.",
                "flavor": "Useful for reaching elevated cookie jars."
+            },
+			"bundle_of_firewood_recipe": {
+               "recipe_name": "Bundle 'o Firewood (x2)",
+               "description": "Split that log into blocks for twice the fuel!",
+               "flavor": "Firewood is a common, lower grade fuel"
             }
          }
       },
@@ -1794,6 +1804,12 @@
                "display_name": "Stone Comfy Bed",
                "description": "Much warmer and softer than the stone itself."
             }
+         },
+         "porcelain_comfy_bed": {
+            "porcelain_comfy_bed_ghost": {
+               "display_name": "Porcelain Comfy Bed",
+               "description": "For those that want to look fancy even when asleep."
+            }
          }
       },
       "recipes": {
@@ -2080,6 +2096,12 @@
             "porcelain_curtains_small_ghost": {
                "display_name": "Small Porcelain Curtains",
                "description": "Softly lets the light in."
+            }
+         },
+         "porcelain_jar_of_feathers": {
+            "porcelain_jar_of_feathers_ghost": {
+               "display_name": "Porcelain Jar of Feathers",
+               "description": "Gloriously giant feathers made of porcelain and textiles."
             }
          }
       },
@@ -2988,6 +3010,13 @@
          "highland_vine": {
             "display_name": "Highland Vine",
             "description": "Native to the Highlands, this vine grows and spreads across walls and ceilings, even growing on building structures, but won't spread across the ground."
+         }
+      },
+      "containers": {
+         "thatch_pile": {
+            "display_name": "Large Thatch Bundle",
+            "description": "Harvest for bundles of thatch.",
+            "iconic_description": "Can be harvested for bundles of thatch when placed."
          }
       }
    },
