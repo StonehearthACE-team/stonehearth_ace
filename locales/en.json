@@ -527,7 +527,7 @@
             "coke_recipe": {
                "recipe_name": "Slab 'o Coke (x3)",
                "description": "Heat Lumps 'o Coal without burning them to efficiently produce coke, a good grade fuel.",
-               "flavor": "Cook with coal or coke coal to cook with coke."
+               "flavor": "Cook with coal or coke coal to cook with coke?"
             },
             "bulk_charcoal_recipe": {
                "recipe_name": "Piece 'o Charcoal (x8)",
@@ -884,8 +884,13 @@
             },
             "bundle_of_firewood_recipe": {
                "recipe_name": "Bundle 'o Firewood (x2)",
-               "description": "Split that log into blocks for twice the fuel!",
+               "description": "Split that log into blocks for twice their efficiency!",
                "flavor": "Firewood is a common, lower grade fuel"
+            },
+			"splitting_block_recipe": {
+               "recipe_name": "Splitting Block",
+               "description": "Create a sturdy block for splitting logs.",
+               "flavor": ""
             }
          }
       },

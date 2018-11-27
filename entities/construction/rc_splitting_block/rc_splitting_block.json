@@ -1,10 +1,10 @@
 {
    "type": "entity",
-   "mixins": "file(splitting_block_ghost.json)",
+   "mixins": "file(rc_splitting_block_ghost.json)",
    "components": {
       "stonehearth:entity_forms": {
-         "ghost_form": "file(splitting_block_ghost.json)",
-         "iconic_form": "file(splitting_block_iconic.json)",
+         "ghost_form": "file(rc_splitting_block_ghost.json)",
+         "iconic_form": "file(rc_splitting_block_iconic.json)",
          "placeable_on_ground": true
       },
       "destination": {
@@ -24,7 +24,7 @@
          ]
       },
       "stonehearth:workshop": {
-         "job_alias": "stonehearth:jobs:carpenter",
+         "job_alias": "stonehearth:jobs:potter",
          "workshop_effect": "/stonehearth_ace/data/rigs/jobs/carpenter/splitting_block/effects/work.json"
       },
       "effect_list": {
@@ -32,13 +32,6 @@
       }
    },
    "entity_data": {
-      "stonehearth:workshop": {
-         "equivalents": [
-            "stonehearth_ace:mf_splitting_block",
-            "stonehearth_ace:na_splitting_block",
-            "stonehearth_ace:rc_splitting_block"
-         ]
-      },
       "stonehearth:table": {
          "drop_effect": "carry_putdown_on_table",
          "drop_offset": { "x": -0.5, "y": 0.8, "z": -0.5 }

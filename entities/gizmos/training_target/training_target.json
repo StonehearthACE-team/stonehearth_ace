@@ -23,6 +23,9 @@
                "min": { "x": -1, "y": 0, "z": -1 },
                "max": { "x": 1, "y": 1, "z": 1 }
             }
+         ],
+         "adjacency_flags": [
+            "front"
          ]
       },
       "region_collision_shape": {
@@ -36,8 +39,7 @@
       "stonehearth_ace:training_dummy": {
          "combat_time": 5,
          "allowed_jobs": {
-            "stonehearth:jobs:archer": true,
-            "stonehearth:jobs:cleric": true
+            "stonehearth:jobs:archer": true
          }
       },
       "stonehearth_ace:auto_replace": {},

@@ -8,8 +8,18 @@
             },
             "mason_pedestal": {
                "recipe": "file(na_mason_pedestal_recipe.json)"
+            },
+            "splitting_block": {
+               "recipe": "file(na_splitting_block_recipe.json)"
             }
          }
-	  }
+      },
+      "utility": {
+         "recipes": {
+            "bundle_of_firewood": {
+               "recipe": "file(../../carpenter/recipes/bundle_of_firewood_recipe.json)"
+            }
+         }
+      }
    }
 }
