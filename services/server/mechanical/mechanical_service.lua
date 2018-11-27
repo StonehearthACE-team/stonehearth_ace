@@ -172,4 +172,8 @@ function MechanicalService:_destroy_entity_listener(id)
    end
 end
 
+function MechanicalService:saved_variables_mark_changed()
+   self.__saved_variables:mark_changed()
+end
+
 return MechanicalService

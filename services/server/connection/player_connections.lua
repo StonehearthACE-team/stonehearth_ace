@@ -44,7 +44,7 @@ end
 
 function PlayerConnections:create(player_id)
    self._sv.player_id = player_id
-   self.__saved_variables:mark_changed()
+   --self.__saved_variables:mark_changed()
 end
 
 function PlayerConnections:restore()
@@ -120,7 +120,7 @@ function PlayerConnections:update_entity(entity_id, add_only)
       graphs_changed = combine_type_tables(graphs_changed, graphs_changed_2)
    end
 
-   self.__saved_variables:mark_changed()
+   --self.__saved_variables:mark_changed()
 
    return self:_get_changes(changed_types, graphs_changed)
 end
@@ -130,7 +130,7 @@ function PlayerConnections:remove_entity(entity_id)
    self._sv.entities[entity_id] = nil
    local changed_types, graphs_changed = self:_remove_entity_from_graphs(entity_struct)
    self:_update_connector_locations(entity_struct, false, false)
-   self.__saved_variables:mark_changed()
+   --self.__saved_variables:mark_changed()
    
    return self:_get_changes(changed_types, graphs_changed)
 end
@@ -228,7 +228,7 @@ function PlayerConnections:unregister_entity(entity)
       end
 
       self._entities[id] = nil
-      self.__saved_variables:mark_changed()
+      --self.__saved_variables:mark_changed()
 
       return result
    end
@@ -240,7 +240,7 @@ function PlayerConnections:get_connections(type)
    if not conn_tbl then
       conn_tbl = {type = type, entity_connectors = {}, connector_locations = {}, graphs = {}, entities_in_graphs = {}}
       self._sv.connection_tables[type] = conn_tbl
-      self.__saved_variables:mark_changed()
+      --self.__saved_variables:mark_changed()
    end
 
    return conn_tbl

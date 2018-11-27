@@ -7,35 +7,15 @@
                "~x": {
                   "region": [
                      {
-                        "min": { "x": 0, "y": 0, "z": -3 },
-                        "max": { "x": 1, "y": 1, "z": 4 }
+                        "min": { "x": -2, "y": 0, "z": -2 },
+                        "max": { "x": 3, "y": 1, "z": 3 }
                      }
                   ],
-                  "max_connections": 6,
-                  "region_intersection_threshold": 0.4
-               },
-               "~y": {
-                  "region": [
-                     {
-                        "min": { "x": 0, "y": -1, "z": 0 },
-                        "max": { "x": 1, "y": 2, "z": 1 }
-                     }
-                  ],
-                  "max_connections": 0,
-                  "region_intersection_threshold": 0
-               },
-               "~z": {
-                  "region": [
-                     {
-                        "min": { "x": -3, "y": 0, "z": 0 },
-                        "max": { "x": 4, "y": 1, "z": 1 }
-                     }
-                  ],
-                  "max_connections": 6,
-                  "region_intersection_threshold": 0.4
+                  "max_connections": 24,
+                  "region_intersection_threshold": 0.44
                }
             },
-            "max_connections": 8,
+            "max_connections": 24,
             "origin_offset": { "x": 0.5, "y": 0, "z": 0.5 }
          }
       },
@@ -56,24 +36,6 @@
                      "file(empty_1.qb)",
                      "file(empty_2.qb)",
                      "file(empty_3.qb)"
-                  ]
-               }
-            },
-            "top": {
-               "scale": 0.12,
-               "origin": { "x": 5, "y": 7, "z": 5 },
-               "models": {
-                  "default": [
-                     "file(empty_1.qb)"
-                  ]
-               }
-            },
-            "side": {
-               "scale": 0.12,
-               "origin": { "x": 5, "y": 0, "z": 5 },
-               "models": {
-                  "default": [
-                     "file(empty_1.qb)"
                   ]
                }
             }

@@ -148,7 +148,7 @@ function VineController:_update_graph_growth_timer(id, expired)
    end
 
    if expired then
-      self.__saved_variables:mark_changed()
+      --self.__saved_variables:mark_changed()
    end
 end
 
@@ -198,7 +198,7 @@ function VineController:_update_disconnected_growth_timer(expired)
       end
    end
 
-   self.__saved_variables:mark_changed()
+   --self.__saved_variables:mark_changed()
 end
 
 return VineController

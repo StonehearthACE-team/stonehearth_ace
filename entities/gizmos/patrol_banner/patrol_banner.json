@@ -2,17 +2,8 @@
    "type": "entity",
    "mixins": "stonehearth:mixins:align_to_grid",
    "components": {
-      "region_collision_shape": {
-         "region": [
-            {
-               "min": { "x": -0.5, "y": 0, "z": 0 },
-               "max": { "x": 1.5, "y": 2.8, "z": 1 }
-            }
-         ],
-         "region_collision_type": "none"
-      },
       "mob": {
-         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "model_origin": { "x": 0.5, "y": 0, "z": 0.5 },
          "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
       },
       "model_variants": {
@@ -39,10 +30,16 @@
       },
       "stonehearth_ace:patrol_banner": {
          "models": {
-            "party_1_model": "default",
-            "party_2_model": "party_2",
-            "party_3_model": "party_3",
-            "party_4_model": "party_4"
+            "party_1": "default",
+            "party_2": "party_2",
+            "party_3": "party_3",
+            "party_4": "party_4"
+         },
+         "path_colors": {
+            "party_1": [240, 40, 40, 255],
+            "party_2": [40, 200, 40, 255],
+            "party_3": [40, 40, 240, 255],
+            "party_4": [128, 20, 128, 255]
          }
       }
    },
