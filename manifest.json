@@ -313,6 +313,7 @@
       "gizmos:frost_trap": "file(entities/gizmos/frost_trap/frost_trap.json)",
       "gizmos:frost_trap:weapon": "file(entities/gizmos/frost_trap/frost_trap_weapon.json)",
       "gizmos:greater_water_gate": "file(entities/gizmos/greater_water_gate/greater_water_gate.json)",
+      "gizmos:patrol_banner": "file(entities/gizmos/patrol_banner/patrol_banner.json)",
       "gizmos:sources:water_wheel_wooden": "file(entities/gizmos/source_water_wheel_wooden/source_water_wheel_wooden.json)",
       "gizmos:training_dummy": "file(entities/gizmos/training_dummy/training_dummy.json)",
       "gizmos:training_target": "file(entities/gizmos/training_target/training_target.json)",
@@ -1210,6 +1211,7 @@
       "grower_underfield": "file(components/grower_underfield/grower_underfield_component.lua)",
       "grower_underfield_layer": "file(components/grower_underfield_layer/grower_underfield_layer_component.lua)",
       "mechanical": "file(components/mechanical/mechanical_component.lua)",
+      "patrol_banner": "file(components/patrol_banner/patrol_banner_component.lua)",
       "substrate_plot": "file(components/grower_underfield/substrate_plot_component.lua)",
       "toggle_enabled": "file(components/toggle_enabled/toggle_enabled_component.lua)",
       "training_dummy": "file(components/training/training_dummy_component.lua)",
@@ -1226,6 +1228,7 @@
    "component_renderers": {
       "grower_underfield": "file(renderers/grower_underfield/grower_underfield_renderer.lua)",
       "connection": "file(renderers/connection/connection_renderer.lua)",
+      "patrol_banner": "file(renderers/patrol_banner/patrol_banner_renderer.lua)",
       "vine": "file(renderers/vine/vine_renderer.lua)"
    },
    "controllers": {

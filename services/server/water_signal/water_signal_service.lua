@@ -33,24 +33,27 @@ function WaterSignalService:register_water_signal(water_signal, is_urgent, just_
 		if self._water_signals_in_buckets[id] then
          return
       end
+      
+      local bucket_index = self._current_bucket_index
+
+		-- keep a list of signals by their id so we can find their bucket to remove them later
+		self._water_signals_in_buckets[id] = bucket_index
+		
+		-- if we don't already have a bucket, add one
+		local bucket = self._water_signal_buckets[bucket_index]
+		if not bucket then
+         bucket = {}
+         self._water_signal_buckets[bucket_index] = bucket
+		end
+		bucket[id] = water_signal
 
       -- if the signal was just created, we should queue this signal for computation on the next tick
       if just_created then
          table.insert(self._next_tick_signals, id)
       end
-      
-		-- keep a list of signals by their id so we can find their bucket to remove them later
-		self._water_signals_in_buckets[id] = self._current_bucket_index
-		
-		-- if we don't already have a bucket, add one
-		local bucket = self._water_signal_buckets[self._current_bucket_index]
-		if not bucket then
-			self._water_signal_buckets[self._current_bucket_index] = {}
-		end
-		self._water_signal_buckets[self._current_bucket_index][id] = water_signal
 
 		-- increment our current bucket index, wrapping around when we reach our max (keeping it 1-indexed)
-		self._current_bucket_index = (self._current_bucket_index % self._max_buckets) + 1
+		self._current_bucket_index = (bucket_index % self._max_buckets) + 1
 	end
 end
 
@@ -81,9 +84,14 @@ function WaterSignalService:_on_tick()
    -- first process signals that were created since last tick and aren't already scheduled to be processed
    if next(self._next_tick_signals) then
       for _, id in ipairs(self._next_tick_signals) do
-         if not self._urgent_water_signals[id] and (not bucket or not bucket[id]) then
+         if not self._urgent_water_signals[id] and not (bucket and bucket[id]) then
             local this_bucket = self._water_signal_buckets[self._water_signals_in_buckets[id]]
-            this_bucket[id]:_on_tick_water_signal()
+            local water_signal = this_bucket and this_bucket[id]
+            if water_signal then
+               water_signal:_on_tick_water_signal()
+            else
+               -- this should never happen...
+            end
          end
       end
       self._next_tick_signals = {}

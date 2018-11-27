@@ -1,12 +1,14 @@
 local Point3 = _radiant.csg.Point3
 local Cube3 = _radiant.csg.Cube3
 local Region3 = _radiant.csg.Region3
+local Color4 = _radiant.csg.Color4
 
 local PatrolBannerRenderer = class()
 local log = radiant.log.create_logger('patrol_banner_renderer')
 
 local Y_OFFSET = 0.5
 local HILIGHT_COLOR = Point3(0.5, 0.5, 0.5)
+local PATH_COLOR = {255, 255, 255, 224}
 
 function PatrolBannerRenderer:initialize(render_entity, datastore)
    self._entity = render_entity:get_entity()
@@ -40,8 +42,8 @@ function PatrolBannerRenderer:destroy()
    end
 end
 
-function ConnectionRenderer:_in_appropriate_mode()
-   return self._ui_view_mode == 'military' or self._ui_view_mode == 'hud' or self._ui_view_mode == 'build'
+function PatrolBannerRenderer:_in_appropriate_mode()
+   return true --self._ui_view_mode == 'military' or self._ui_view_mode == 'hud' or self._ui_view_mode == 'build'
 end
 
 function PatrolBannerRenderer:_on_ui_mode_changed()
@@ -50,7 +52,7 @@ function PatrolBannerRenderer:_on_ui_mode_changed()
    if self._ui_view_mode ~= mode then
       self._ui_view_mode = mode
 
-      self:_update()
+      self:_update_render()
    end
 end
 
@@ -61,6 +63,7 @@ function PatrolBannerRenderer:_update_render()
       local data = self._datastore:get_data()
       --local options = data.render_options
       local path = data.path_to_next_banner or {}
+      local path_color = Color4(unpack(data.path_color or PATH_COLOR))
 
       --local entity_node_pos = self._entity_node:get_position()
       --self._entity_node:set_aabb(Cube3(Point3.zero + entity_node_pos, Point3.one + entity_node_pos))
@@ -69,7 +72,7 @@ function PatrolBannerRenderer:_update_render()
       
       self._entity_node:set_visible(true)
       _radiant.client.hilight_entity(self._entity, HILIGHT_COLOR)
-      self:_create_path(path)
+      self:_create_path(path, path_color)
    else
       self._entity_node:set_visible(false)
    end
@@ -77,6 +80,7 @@ function PatrolBannerRenderer:_update_render()
    self._path_node:create_buffers()
 end
 
+--[[
 function PatrolBannerRenderer:_create_node(options, rotation)
    if options and options.model then
       rotation = (360 - self._facing + rotation) % 360
@@ -91,8 +95,9 @@ function PatrolBannerRenderer:_create_node(options, rotation)
       end
    end
 end
+]]
 
-function PatrolBannerRenderer:_create_path(path)
+function PatrolBannerRenderer:_create_path(path, path_color)
    if path and stonehearth.subterranean_view:is_visible(self._entity) then
       local last_point = Point3()
       local point = Point3()
@@ -104,7 +109,7 @@ function PatrolBannerRenderer:_create_path(path)
          for i, path_point in ipairs(path) do
             x, y, z = path_point:get_xyz()
             point:set(x, y + Y_OFFSET, z)
-            self._path_node:add_line(last_point, point, self._color)
+            self._path_node:add_line(last_point, point, path_color)
             last_point, point = point, last_point
          end
       end
