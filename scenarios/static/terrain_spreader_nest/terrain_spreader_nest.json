@@ -2,12 +2,13 @@
    "name": "terrain_spreader_nest",
    "category": "terrain_spreader",
    "size": {
-      "width": 8,
-      "length": 8
+      "width": 16,
+      "length": 16
    },
    "weight": 10,
    "unique": false,
    "allow_nonflat": true,
+   "overwrite_occupied_size": 5,
    "script": "/stonehearth/scenarios/static/entity_cluster/entity_cluster.lua",
    "data": {
       "entity_footprint_length": 1,

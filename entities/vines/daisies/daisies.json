@@ -42,47 +42,70 @@
       "stonehearth_ace:vine": {
          "render_options": {
             "bottom": {
-               "scale": 0.1,
+               "scale": 0.12,
                "origin": { "x": 5, "y": 0, "z": 5 },
-               "models": [
-                  "file(daisies.qb)",
-                  "file(daisies_2.qb)",
-                  "file(daisies_3.qb)",
-                  "file(daisies_4.qb)",
-                  "file(daisies_5.qb)"
-               ]
+               "models": {
+                  "default": [
+                     "file(daisies.qb)",
+                     "file(daisies_2.qb)",
+                     "file(daisies_3.qb)",
+                     "file(daisies_4.qb)",
+                     "file(daisies_5.qb)",
+                     "file(daisies_6.qb)",
+                     "file(daisies_7.qb)",
+                     "file(empty_1.qb)",
+                     "file(empty_2.qb)",
+                     "file(empty_3.qb)"
+                  ]
+               }
             },
             "top": {
-               "scale": 0.1,
+               "scale": 0.12,
                "origin": { "x": 5, "y": 7, "z": 5 },
-               "models": [
-                  "file(daisies.qb)",
-                  "file(daisies_2.qb)",
-                  "file(daisies_3.qb)",
-                  "file(daisies_4.qb)",
-                  "file(daisies_5.qb)"
-               ]
+               "models": {
+                  "default": [
+                     "file(empty_1.qb)"
+                  ]
+               }
             },
             "side": {
-               "scale": 0.1,
+               "scale": 0.12,
                "origin": { "x": 5, "y": 0, "z": 5 },
-               "models": [
-                  "file(daisies.qb)",
-                  "file(daisies_2.qb)",
-                  "file(daisies_3.qb)",
-                  "file(daisies_4.qb)",
-                  "file(daisies_5.qb)"
-               ]
+               "models": {
+                  "default": [
+                     "file(empty_1.qb)"
+                  ]
+               }
             }
          }
       },
       "stonehearth:resource_node": {
          "durability": 1,
-         "resource": "stonehearth_ace:resources:herb:daisy",
-         "harvest_overlay_effect": "stonehearth:effects:harvest_plant_overlay_effect"
+         "resource": "",
+         "harvest_overlay_effect": "stonehearth:effects:harvest_plant_overlay_effect",
+         "resource_loot_table": {
+            "entries": {
+               "optional": {
+                  "num_rolls": {
+                     "min": 1,
+                     "max": 1
+                  },
+                  "items": {
+                     "none": {
+                        "uri": "",
+                        "weight": 4
+                     },
+                     "flower": {
+                        "uri": "stonehearth_ace:resources:herb:daisy",
+                        "weight": 1
+                     }
+                  }
+               }
+            }
+         }
       },
       "mob": {
-         "model_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "model_origin": { "x": 0.5, "y": 0.119, "z": 0.5 },
          "region_origin": { "x": 0.5, "y": 0, "z": 0.5 },
          "align_to_grid": [
             "x",
