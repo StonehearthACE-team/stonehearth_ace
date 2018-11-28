@@ -8,6 +8,11 @@
       "model_variants": {
          "default": {
             "models": [
+               "file(patrol_banner.qb)"
+            ]
+         },
+         "party_1": {
+            "models": [
                "file(patrol_banner_1.qb)"
             ]
          },
@@ -29,7 +34,7 @@
       },
       "stonehearth_ace:patrol_banner": {
          "models": {
-            "party_1": "default",
+            "party_1": "party_1",
             "party_2": "party_2",
             "party_3": "party_3",
             "party_4": "party_4"

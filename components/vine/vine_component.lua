@@ -16,7 +16,6 @@ local log = radiant.log.create_logger('vine_component')
 
 local VineComponent = class()
 
-local _origin = Point3(0.5, 0, 0.5)
 local _region = Region3(Cube3(Point3.zero, Point3.one))
 local _directions = {
    ['x-'] = Point3(-1, 0, 0),

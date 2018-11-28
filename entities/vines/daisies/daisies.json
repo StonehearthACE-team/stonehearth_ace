@@ -15,8 +15,7 @@
                   "region_intersection_threshold": 0.44
                }
             },
-            "max_connections": 24,
-            "origin_offset": { "x": 0.5, "y": 0, "z": 0.5 }
+            "max_connections": 24
          }
       },
       "stonehearth_ace:vine": {
@@ -72,21 +71,8 @@
          "material": "materials/structure.material.json"
       },
       "mob": {
-         "model_origin": { "x": 0.5, "y": 0.119, "z": 0.5 },
-         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 },
-         "align_to_grid": [
-            "x",
-            "z"
-         ]
-      },
-      "region_collision_shape": {
-         "region": [
-            {
-               "min": { "x": 0, "y": 0, "z": 0 },
-               "max": { "x": 1, "y": 1, "z": 1 }
-            }
-         ],
-         "region_collision_type": "none"
+         "model_origin": { "x": 0, "y": 0.119, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
       }
    },
    "entity_data": {

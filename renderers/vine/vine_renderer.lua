@@ -75,10 +75,9 @@ function VineRenderer:_create_node(options, rotation)
    if options and options.model then
       rotation = (360 - self._facing + rotation) % 360
       local node = _radiant.client.create_qubicle_matrix_node(self._node, options.model, 'background',
-            Point3(options.origin.x, 0, options.origin.z))
+            Point3(options.origin.x, options.origin.y, options.origin.z))
       if node then
-         local offset = options.origin:scaled(options.scale)
-         node:set_transform(offset.x, offset.y, offset.z, 0, rotation, 0, options.scale, options.scale, options.scale)
+         node:set_transform(0, 0, 0, 0, rotation, 0, options.scale, options.scale, options.scale)
          node:set_material('materials/voxel.material.json')
          --node:set_visible(true)
          table.insert(self._vine_nodes, node)
