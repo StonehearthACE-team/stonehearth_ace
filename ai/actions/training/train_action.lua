@@ -59,7 +59,7 @@ function find_training_dummy(entity)
    
    return stonehearth.ai:filter_from_key('stonehearth_ace:training_dummy:'..job_uri, player_id,
 		function(target)
-			if stonehearth.player:are_player_ids_friendly(player_id, target) then
+			if stonehearth.player:are_player_ids_friendly(player_id, target:get_player_id()) then
             local training_dummy = target:get_component('stonehearth_ace:training_dummy')
             return training_dummy and training_dummy:can_train_entity(job_uri) or false
 			end

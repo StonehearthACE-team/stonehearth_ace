@@ -66,11 +66,19 @@ function PatrolBannerComponent:_destroy_next_banner_listener()
    end
 end
 
+function PatrolBannerComponent:get_party()
+   return self._sv.party_id
+end
+
 function PatrolBannerComponent:set_party(party_id)
    self._sv.party_id = party_id
    self._sv.path_color = self._path_colors[party_id]
    self._entity:add_component('render_info'):set_model_variant(self._models[party_id])
    self.__saved_variables:mark_changed()
+end
+
+function PatrolBannerComponent:get_next_banner()
+   return self._sv.next_banner
 end
 
 function PatrolBannerComponent:set_next_banner(banner)

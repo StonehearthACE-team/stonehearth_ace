@@ -19,6 +19,77 @@ function AceTownPatrol:initialize()
 	end
 end
 
+AceTownPatrol._old_get_patrollable_objects = TownPatrol.get_patrollable_objects
+function AceTownPatrol:get_patrollable_objects(entity, town_player_id)
+   local ordered_objects = self:_old_get_patrollable_objects(entity, town_player_id)
+   
+   -- check to see if there are any 'patrol_banner' objects in here for the entity's combat party
+   -- if so, start with the top such 'patrol_banner' and use it to find the rest in order
+   -- otherwise, filter out all 'patrol_banner' objects from the list
+   
+   local party_member = entity:get_component('stonehearth:party_member')
+   local party_comp
+   if party_member then
+      party_comp = party_member:get_party():get_component('stonehearth:party')
+   else
+      party_comp = entity:get_component('stonehearth:party')
+   end
+   
+   local patrol_banners = {}
+   local best_banner
+
+   if party_comp then
+      local party_id = party_comp:get_banner_variant()
+      for _, object in ipairs(ordered_objects) do
+         local pb_comp = object:get_banner()
+         if pb_comp and pb_comp:get_party() == party_id then
+            patrol_banners[object:get_id()] = object
+            if not best_banner then
+               best_banner = object
+            end
+         end
+      end
+   end
+
+   if best_banner then
+      local new_list = {}
+      local check_list = {[best_banner:get_id()] = true}
+      local cur_banner = best_banner
+
+      while true do
+         if not cur_banner then
+            break
+         end
+         table.insert(new_list, cur_banner)
+
+         local next_banner = cur_banner:get_banner():get_next_banner()
+         if not next_banner then
+            break
+         end
+         local next_id = next_banner:get_id()
+         if check_list[next_id] then
+            break
+         end
+
+         cur_banner = patrol_banners[next_id]
+         if cur_banner then
+            check_list[next_id] = true
+         end
+      end
+
+      ordered_objects = new_list
+   else
+      for i = #ordered_objects, 1, -1 do
+         local pb_comp = ordered_objects[i]:get_banner()
+         if pb_comp then
+            table.remove(ordered_objects, i)
+         end
+      end
+   end
+
+   return ordered_objects
+end
+
 function AceTownPatrol:_is_patrollable(object)
    if object == nil or not object:is_valid() then
       return false
