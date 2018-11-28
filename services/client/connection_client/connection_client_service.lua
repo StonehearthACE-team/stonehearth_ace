@@ -16,8 +16,11 @@ local ConnectionClientService = class()
 function ConnectionClientService:initialize()
    self._connection_colors = {}
    self._connections = {}
+   self._last_selected = {}
 
    self:_setup_connection_types()
+
+   self._selection_changed_listener = radiant.events.listen(radiant, 'stonehearth:selection_changed', self, self._on_selection_changed)
 end
 
 function ConnectionClientService:destroy()
@@ -29,6 +32,34 @@ function ConnectionClientService:destroy_listeners()
       self._connections_trace:destroy()
       self._connections_trace = nil
    end
+end
+
+function ConnectionClientService:_on_selection_changed()
+   local selected = stonehearth.selection:get_selected()
+   local selected_id = selected and selected:get_id()
+   _radiant.call_obj('stonehearth_ace.connection', 'get_entities_in_selected_graphs_command', selected_id)
+      :done(function(response)
+         local diff = {}
+         for id, _ in pairs(response.entities) do
+            if not self._last_selected[id] then
+               diff[id] = true
+            end
+         end
+         for id, _ in pairs(self._last_selected) do
+            if not response.entities[id] then
+               diff[id] = false
+            end
+         end
+         if selected_id then
+            diff[selected_id] = nil
+         end
+         self._last_selected = response.entities
+
+         for id, in_selected_graphs in pairs(diff) do
+            local entity = radiant.entities.get_entity(tonumber(id))
+            radiant.events.trigger(entity, 'stonehearth_ace:entity_in_selected_graphs_changed', in_selected_graphs)
+         end
+      end)
 end
 
 function ConnectionClientService:update_client_connections()
@@ -49,6 +80,10 @@ function ConnectionClientService:_setup_connection_types()
             if type.connected_color then
                colors.connected_color = Point3(unpack(type.connected_color))
             end
+            if type.graph_hilight_color then
+               colors.graph_hilight_color = Point3(unpack(type.graph_hilight_color))
+            end
+            colors.graph_hilight_priority = type.graph_hilight_priority or 0
 
             self._connection_colors[name] = colors
          end

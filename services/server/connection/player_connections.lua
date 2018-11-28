@@ -448,8 +448,8 @@ function PlayerConnections:_try_connecting_connectors(c1, c2)
       if not graph_entity_2 then
          graph_entity_2 = {entity_id = e2.id, connected_nodes = {}}
       end
-      graph_entity_1.connected_nodes[e2.id] = e1.id
-      graph_entity_2.connected_nodes[e1.id] = e2.id
+      graph_entity_1.connected_nodes[e2.id] = true
+      graph_entity_2.connected_nodes[e1.id] = true
 
       local graph = nil
       if #graphs_to_merge == 0 then
@@ -584,12 +584,12 @@ end
 
 -- recursively processes through 'connected_nodes' for n1 to see if it can find n2, ignoring previously checked nodes
 function PlayerConnections:_is_deep_connected(graph, n1, n2, checked)
-   log:debug('trying to split a graph')
+   --log:debug('trying to split a graph')
    checked[n1.entity_id] = n1
 
    for n_id, _ in pairs(n1.connected_nodes) do
       if n_id == n2.entity_id then
-         log:debug('found a match: %s = %s', n_id, n2.entity_id)
+         --log:debug('found a match: %s = %s', n_id, n2.entity_id)
          return true
       end
       if not checked[n_id] then

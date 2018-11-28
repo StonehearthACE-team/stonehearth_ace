@@ -10,7 +10,8 @@
             255,
             0,
             255
-         ]
+         ],
+         "graph_hilight_color": [1, 0, 1]
       },
       "mechanical": {
          "separated_by_player": false,
@@ -23,23 +24,19 @@
             240,
             240,
             32
-         ]
+         ],
+         "graph_hilight_color": [0.9, 0.9, 0.2],
+         "graph_hilight_priority": 50
       },
       "stonehearth_ace:vines:highland_vine": {
          "separated_by_player": false,
-         "available_color": [
-            60,
-            240,
-            60
-         ]
+         "graph_hilight_color": [0.3, 0.9, 0.3],
+         "graph_hilight_priority": 1
       },
       "stonehearth_ace:vines:daisies": {
          "separated_by_player": false,
-         "available_color": [
-            240,
-            240,
-            240
-         ]
+         "graph_hilight_color": [0.9, 0.9, 0.9],
+         "graph_hilight_priority": 1
       }
    }
 }

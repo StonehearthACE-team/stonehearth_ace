@@ -152,7 +152,8 @@ function VineController:_update_graph_growth_timer(id, expired)
    end
 end
 
-function VineController:_get_growth_period(count)
+function VineController:_get_growth_period(count, divisor)
+   divisor = math.sqrt(math.max(1, divisor or count))
    local time = ''
    for _, growth_time in pairs(self._sv.type_data.growth_times) do
       if count >= growth_time.threshold then
@@ -163,7 +164,7 @@ function VineController:_get_growth_period(count)
    end
    time = stonehearth.calendar:parse_duration(time)
    if time > 0 then
-      time = math.max(MIN_GROWTH_PERIOD, stonehearth.town:calculate_growth_period('', time / math.sqrt(math.max(1, count))))
+      time = math.max(MIN_GROWTH_PERIOD, stonehearth.town:calculate_growth_period('', time / divisor))
    end
    return time
 end
@@ -191,7 +192,7 @@ function VineController:_update_disconnected_growth_timer(expired)
    end
    
    if not self._sv.disconnected_growth_timer then
-      local period = self:_get_growth_period(dc_count)
+      local period = self:_get_growth_period(1, dc_count)
       if period > 0 then
          self._sv.disconnected_growth_timer = stonehearth.calendar:set_persistent_timer("disconnected vine grow_callback",
                period, radiant.bind(self, '_update_disconnected_growth_timer', true))

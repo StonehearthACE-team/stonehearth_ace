@@ -46,13 +46,17 @@ end
 function PreSaveCallHandler:save_game_command(session, response, save_id, args)
    _radiant.call('stonehearth_ace:perform_pre_save_calls_command')
       :done(function(result)
+         response:resolve({})
+         --[[
+         log:debug('calling radiant:client:save_game for id %s with timestamp: %s (%s)', save_id, args.timestamp, type(args.timestamp))
          _radiant.call('radiant:client:save_game', save_id, args)
-            :done(function(result)
-               response:resolve({})
+            :done(function(r)
+               response:resolve(r)
             end)
-            :fail(function(result)
-               response:reject({})
+            :fail(function(r)
+               response:reject(r)
             end)
+            ]]
       end)
 end
 

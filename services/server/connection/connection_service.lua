@@ -131,6 +131,20 @@ function ConnectionService:get_connections_data(player_id)
    return ds
 end
 
+function ConnectionService:get_entities_in_selected_graphs_command(session, response, selected_id)
+   local entities = {}
+   if selected_id then
+      for _, graph in pairs(self._sv.graphs) do
+         if graph.nodes[selected_id] then
+            for id, _ in pairs(graph.nodes) do
+               entities[id] = true
+            end
+         end
+      end
+   end
+   response:resolve({entities = entities})
+end
+
 function ConnectionService:get_disconnected_entities(player_id, type)
    return self:get_player_connections(player_id or ALL_PLAYERS):get_disconnected_entities(type)
 end
