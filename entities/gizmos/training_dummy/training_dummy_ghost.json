@@ -2,8 +2,11 @@
    "mixins": "stonehearth:mixins:placed_object",
    "type": "entity",
    "components": {
-      "stonehearth:material": {
-         "tags": "wood cloth decoration training_dummy stockpile_decoration"
+      "render_info": {
+         "animation_table": "/stonehearth/data/rigs/entities/gizmos/dummy_training/dummy_training.json"
+      },
+      "effect_list": {
+         "default": "/stonehearth/data/rigs/entities/gizmos/dummy_training/effects/idle.json"
       },
       "model_variants": {
          "default": {
@@ -13,7 +16,7 @@
          }
       },
       "mob": {
-         "model_origin": { "x": 0.05, "y": 0, "z": -0.05 },
+         "model_origin": { "x": 0.1, "y": 0, "z": 0 },
          "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
       }
    },
@@ -22,7 +25,7 @@
          "display_name": "i18n(stonehearth_ace:entities.gizmos.dummy_training.dummy_training_ghost.display_name)",
          "description": "i18n(stonehearth_ace:entities.gizmos.dummy_training.dummy_training_ghost.description)",
          "icon": "file(training_dummy.png)",
-         "category": "decoration"
+         "category": "stockpíle_gizmos stockpile_defense training_dummy decoration"
       }
    }
 }

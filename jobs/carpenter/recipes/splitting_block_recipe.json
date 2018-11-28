@@ -1,0 +1,22 @@
+{
+   "type": "recipe",
+   "effort": 25,
+   "work_units": 20,
+   "recipe_name": "i18n(stonehearth_ace:jobs.carpenter.recipes.splitting_block_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.carpenter.recipes.splitting_block_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.carpenter.recipes.splitting_block_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/construction/splitting_block/splitting_block.png",
+   "workshop": "stonehearth:carpenter:workbench",
+   "level_requirement": 1,
+   "ingredients": [
+      {
+         "material": "wood resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:splitting_block"
+      }
+   ]
+}
