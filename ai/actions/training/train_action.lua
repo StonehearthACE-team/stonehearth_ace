@@ -17,7 +17,7 @@ local combat = stonehearth.combat
 -- this is the end of the action; they may then decide to do it again and might choose a slightly different position
 
 function Train:start_thinking(ai, entity, args)
-	-- check if we're eligible (below level 6, training enabled)
+   -- check if we're eligible (below level 6, training enabled)
 	local job = entity:get_component('stonehearth:job')
 	if not job:is_trainable() then
 		ai:reject('entity cannot train')
@@ -29,7 +29,7 @@ function Train:start_thinking(ai, entity, args)
 		return
 	end
 
-	ai:set_think_output()
+	ai:set_think_output({entity = entity})
 end
 
 function Train:start(ai, entity, args)
@@ -54,11 +54,14 @@ function Train:_on_training_enabled_changed(ai, enabled)
 end
 
 function find_training_dummy(entity)
-	return stonehearth.ai:filter_from_key('stonehearth_ace:training_dummy', entity:get_player_id(),
+   local player_id = entity:get_player_id()
+   local job_uri = entity:get_component('stonehearth:job'):get_job_uri()
+   
+   return stonehearth.ai:filter_from_key('stonehearth_ace:training_dummy:'..job_uri, player_id,
 		function(target)
-			if stonehearth.player:are_entities_friendly(entity, target) then
+			if stonehearth.player:are_player_ids_friendly(player_id, target) then
             local training_dummy = target:get_component('stonehearth_ace:training_dummy')
-            return training_dummy and training_dummy:can_train_entity(entity)
+            return training_dummy and training_dummy:can_train_entity(job_uri) or false
 			end
 			return false
 		end)

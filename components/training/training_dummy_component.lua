@@ -71,10 +71,7 @@ function TrainingDummyComponent:_register_with_town(register)
    end
 end
 
-function TrainingDummyComponent:can_train_entity(entity)
-   local job = entity:get_component('stonehearth:job')
-   local uri = job and job:get_job_uri()
-
+function TrainingDummyComponent:can_train_entity(uri)
    return uri and self._allowed_jobs[uri]
 end
 
