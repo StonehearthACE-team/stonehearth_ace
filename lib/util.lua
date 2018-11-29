@@ -23,4 +23,11 @@ function util.deep_compare(t1, t2, ignore_mt)
    return true
 end
 
+function util.itable_append(t1, t2)
+   for _, v in pairs(t2) do
+      t1[#t1+1] = v
+   end
+   return t1
+end
+
 return util
