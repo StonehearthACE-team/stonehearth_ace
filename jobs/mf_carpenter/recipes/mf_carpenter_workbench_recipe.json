@@ -1,0 +1,23 @@
+{
+   "type": "recipe",
+   "mixins": "/stonehearth/jobs/carpenter/recipes/carpenter_workbench_recipe.json",
+   "portrait": "/stonehearth_ace/jobs/mf_carpenter/mf_carpenter_workbench/mf_carpenter_workbench.png",
+   "mixintypes": {
+	  "produces": "override"
+   },
+   "ingredients": [
+      {
+         "material": "wood resource",
+         "count": 2
+      },
+	  {
+         "material": "stone resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:mountain_folk:carpenter:workbench"
+      }
+   ]
+}

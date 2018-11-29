@@ -1,0 +1,69 @@
+{
+   "type": "entity",
+   "mixins": "file(mf_mason_pedestal_ghost.json)",
+   "components": {
+      "stonehearth:entity_forms": {
+         "ghost_form": "file(mf_mason_pedestal_ghost.json)",
+         "iconic_form": "file(mf_mason_pedestal_iconic.json)",
+         "placeable_on_ground": true
+      },
+      "stonehearth:lamp": {
+         "light_effect": "stonehearth:effects:mountain_folk:mason:pedestal_flame",
+         "light_origin": { "x": 0, "y": 1, "z": 0 },
+         "light_policy": "always_on"
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 2, "y": 1, "z": 2 }
+            }
+         ],
+         "adjacency_flags": [
+            "front",
+            "left",
+            "right"
+         ]
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 2, "y": 1.1, "z": 2 }
+            }
+         ]
+      },
+      "stonehearth:workshop": {
+         "job_alias": "stonehearth:jobs:mason",
+         "equivalents": [
+            "stonehearth:mountain_folk:mason:pedestal:amberstone"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:table": {
+         "drop_effect": "carry_putdown_on_table",
+         "drop_offset": { "x": 0, "y": 1, "z": 0 }
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 8,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 8
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      },
+      "stonehearth:workshop": {
+         "equivalents": [
+            "stonehearth:mountain_folk:mason:pedestal:amberstone"
+         ]
+      }
+   }
+}
