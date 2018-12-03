@@ -46,7 +46,8 @@ local monkey_patches = {
    ace_loot_drops_component = 'stonehearth.components.loot_drops.loot_drops_component',
    ace_incapacitation_component = 'stonehearth.components.incapacitation.incapacitation_component',
    ace_crafter_jobs_node = 'stonehearth.components.building2.plan.nodes.crafter_jobs_node',
-   ace_patrollable_object = 'stonehearth.services.server.town_patrol.patrollable_object'
+   ace_patrollable_object = 'stonehearth.services.server.town_patrol.patrollable_object',
+   ace_get_patrol_route_action = 'stonehearth.ai.actions.get_patrol_route_action'
 }
 
 local function monkey_patching()

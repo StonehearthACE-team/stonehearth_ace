@@ -1,0 +1,58 @@
+<script type="text/x-handlebars" data-template-name="militaryMode">
+<div id="militaryMode" class="gui">
+   <div id="militaryPartyView" class="window">
+      <div class="title">{{i18n stonehearth_ace:ui.game.military_mode.patrol_banners.window_title}}<div class="closeDivButton"></div></div>
+
+      <div id="partyPatrolBannersList" class="patrolBannersPanel patrolBannersList">
+         <div id="listTitles">
+            <div class="listTitle">
+               <!-- placeholder so other headers get properly positioned? -->
+               <br />
+            </div>
+            <div class="listTitle" id="tasksTitleName">
+               <h2>{{i18n stonehearth_ace:ui.game.military_mode.patrol_banners.list_headers.name}}</h2>
+            </div>
+            <div class="listTitle" id="tasksTitleDistance">
+               <h2>{{i18n stonehearth_ace:ui.game.military_mode.patrol_banners.list_headers.distance}}</h2>
+            </div>
+         </div>
+   
+         <div class="downSection patrolBannersListTableContainer">
+            <table id="tasksListTable">
+               <tbody>
+                  {{#each item in view.patrolBannersArray}}
+                  <tr {{bind-attr data-attr=item.id}}>
+                     <td class="nameColumn">
+                        <div class="itemName">
+                           <img class="itemIcon" {{bind-attr src=item.icon}}/>
+                           {{i18n_key item.name}}
+                        </div>
+                     </td>
+                     <td class="distanceColumn">
+                        <div class="itemDistance">
+                           {{item.distance}}
+                        </div>
+                     </td>
+                  </tr>
+                  {{/each}}
+               </tbody>
+            </table>
+         </div>
+      </div>
+
+      <div id="patrolBannersButtons">
+         <div class="button buttonDiv" {{ action "swapBannerWithPrev" this target="view" }}><img class="moveBannerUp"/></div>
+         <div class="button buttonDiv" {{ action "swapBannerWithNext" this target="view" }}><img class="moveBannerDown"/></div>
+         <div class="button buttonDiv topSpacer" {{ action "createNewBanner" this target="view" }}><img class="createBanner"/></div>
+         <div class="button buttonDiv" {{ action "clearAllBanners" this target="view" }}><img class="clearBanners"/></div>
+      </div>
+   </div>
+
+   <div id="tabs">
+      <div class="partyTab active" partyId="party_1">{{i18n stonehearth_ace:ui.game.military_mode.patrol_banners.party_1}}</div>
+      <div class="partyTab" partyId="party_2">{{i18n stonehearth_ace:ui.game.military_mode.patrol_banners.party_2}}</div>
+      <div class="partyTab" partyId="party_3">{{i18n stonehearth_ace:ui.game.military_mode.patrol_banners.party_3}}</div>
+      <div class="partyTab" partyId="party_4">{{i18n stonehearth_ace:ui.game.military_mode.patrol_banners.party_4}}</div>
+   </div>
+</div>
+</script>

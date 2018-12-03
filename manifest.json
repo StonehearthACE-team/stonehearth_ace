@@ -112,6 +112,8 @@
       "color_map:ace": "file(data/materials/color_maps/stonehearth_ace_color_map.json)",
       "commands:disable_auto_harvest": "file(data/commands/auto_harvest/disable_auto_harvest.json)",
       "commands:enable_auto_harvest": "file(data/commands/auto_harvest/enable_auto_harvest.json)",
+      "commands:patrol_banner:move": "file(data/commands/patrol_banner/move_patrol_banner.json)",
+      "commands:patrol_banner:remove": "file(data/commands/patrol_banner/remove_patrol_banner.json)",
       "commands:slaughter:wild_animal": "file(data/commands/slaughter/slaughter.json)",
       "commands:toggle_enabled_off": "file(data/commands/toggle_enabled/toggle_off.json)",
       "commands:toggle_enabled_on": "file(data/commands/toggle_enabled/toggle_on.json)",
@@ -1208,7 +1210,8 @@
       "stonehearth/jobs/weaver/weaver_spinning_wheel/weaver_spinning_wheel.png": "file(jobs/weaver/weaver_spinning_wheel/weaver_spinning_wheel.png)",
       "stonehearth/entities/furniture/stone_bed/stone_bed_iconic.qb": "file(entities/furniture/stone_bed/stone_bed_iconic.qb)",
       "stonehearth/entities/furniture/stone_bed/stone_bed.qb": "file(entities/furniture/stone_bed/stone_bed.qb)",
-      "stonehearth/entities/furniture/stone_bed/stone_bed.png": "file(entities/furniture/stone_bed/stone_bed.png)"
+      "stonehearth/entities/furniture/stone_bed/stone_bed.png": "file(entities/furniture/stone_bed/stone_bed.png)",
+      "stonehearth/ui/game/modes/mode_manager.js": "file(ui/game/modes/mode_manager.js)"
    },
    "components": {
       "add_stump": "file(components/tree_stump/add_stump.lua)",
@@ -1250,6 +1253,7 @@
       "mountain_folk:town_bonus:might": "file(data/town_bonuses/might_town_bonus.lua)",
       "mountain_folk:town_bonus:nature": "file(data/town_bonuses/nature_town_bonus.lua)",
       "player_connections": "file(services/server/connection/player_connections.lua)",
+      "player_patrol_banners": "file(services/server/town_patrol/player_patrol_banners.lua)",
       "recipe_map": "file(services/server/crafter_info/recipe_map.lua)",
       "vine": "file(services/server/vine/vine.lua)",
       "water_signal": "file(components/signals/water_signal.lua)"
@@ -1362,6 +1366,46 @@
       "save_game_command": {
          "controller": "file(call_handlers/pre_save_call_handler.lua)",
          "endpoint": "client"
+      },
+      "add_patrol_banner_command": {
+         "controller": "file(call_handlers/patrol_banner_call_handler.lua)",
+         "endpoint": "client"
+      },
+      "get_patrol_banners_command": {
+         "controller": "file(call_handlers/patrol_banner_call_handler.lua)",
+         "endpoint": "server"
+      },
+      "update_ordered_patrol_banners_command": {
+         "controller": "file(call_handlers/patrol_banner_call_handler.lua)",
+         "endpoint": "server"
+      },
+      "swap_patrol_banners_order_command": {
+         "controller": "file(call_handlers/patrol_banner_call_handler.lua)",
+         "endpoint": "server"
+      },
+      "remove_patrol_banners_by_party_command": {
+         "controller": "file(call_handlers/patrol_banner_call_handler.lua)",
+         "endpoint": "server"
+      },
+      "move_patrol_banner_command": {
+         "controller": "file(call_handlers/patrol_banner_call_handler.lua)",
+         "endpoint": "client"
+      },
+      "remove_patrol_banner_command": {
+         "controller": "file(call_handlers/patrol_banner_call_handler.lua)",
+         "endpoint": "server"
+      },
+      "create_patrol_banner": {
+         "controller": "file(call_handlers/patrol_banner_call_handler.lua)",
+         "endpoint": "server"
+      },
+      "place_patrol_banner": {
+         "controller": "file(call_handlers/patrol_banner_call_handler.lua)",
+         "endpoint": "server"
+      },
+      "destroy_patrol_banner": {
+         "controller": "file(call_handlers/patrol_banner_call_handler.lua)",
+         "endpoint": "server"
       }
    },
    "object_commands": {
@@ -1382,9 +1426,11 @@
    "ui": {
       "html": [
          "file(ui/game/modes/zones_mode/underfarm/underfarm.html)",
-         "file(ui/game/modes/zones_mode/trapping_grounds/trapping_grounds.html)"
+         "file(ui/game/modes/zones_mode/trapping_grounds/trapping_grounds.html)",
+         "file(ui/game/modes/military_mode/military_mode.html)"
       ],
       "js": [
+         "file(ui/root/js/root_view.js)",
          "file(ui/shell/settings/settings.js)",
          "file(ui/game/show_workshop/show_team_workshop.js)",
          "file(ui/game/widgets/terrain_vision/terrain_vision.js)",
@@ -1394,6 +1440,7 @@
          "file(ui/game/promotion_tree/promotion_tree.js)",
          "file(ui/game/modes/zones_mode/trapping_grounds/trapping_grounds.js)",
          "file(ui/game/modes/zones_mode/farm/farm.js)",
+         "file(ui/game/modes/military_mode/military_mode.js)",
          "file(ui/game/save_view/save_view.js)"
       ],
       "less": [
@@ -1402,6 +1449,7 @@
          "file(jobs/mf_grower/skin/workshop.less)",
          "file(ui/game/modes/zones_mode/underfarm/underfarm.less)",
          "file(ui/game/modes/zones_mode/trapping_grounds/trapping_grounds.less)",
+         "file(ui/game/modes/military_mode/military_mode.less)",
          "file(jobs/mf_artificer/skin/workshop.less)",
          "file(ui/game/modes/zones_mode/farm/farm.less)"
       ]

@@ -1,0 +1,197 @@
+#militaryMode {
+   position: absolute;
+   top: 200px;
+   left: 20px;
+   margin: auto;
+
+   .window {
+      width: 450px;
+      height: 450px;
+      position: relative;
+   }
+
+   .partyTab {
+      .control;
+      .button;
+      .borderImageBackground;
+      display: inline-block;
+      background-image: url(images/tab.png);
+      background-clip: padding-box;
+      border-width: 8px 8px 17px 8px;
+      border-image: url(images/tab.png) 9 9 17 9 repeat;
+      border-style: solid;
+      padding: 8px 8px 0px 8px;
+      color: #ad8816;
+   }
+
+   .partyTab.active {
+      .borderImageBackground;
+      color: #ffc000;
+      background-image: url(images/tab_active.png);
+      border-image: url(images/tab_active.png) 9 9 17 9 repeat;
+      border-style: solid;
+   }
+
+   .title {
+      .handCursor
+   }
+   
+   .list {
+      height: 350px;
+   }
+
+   .patrolBannersPanel {
+      margin-top: 5px;
+      h2 {
+         font-size: 20px;
+      }
+   }
+
+   .hidden {
+      display: none;
+   }
+
+   #tabs {
+      position: absolute;
+      top: 492px;
+      left: 23px;
+   }
+
+   .patrolBannersList {
+      width: 350px;
+      display: inline-block;
+
+      .patrolBannersListTableContainer {
+         display: inline-block;
+         height: 310px;
+         overflow-y: scroll;
+      }
+
+      ::-webkit-scrollbar-track {
+         background-color: rgba(0,0,0,0.0);
+      }
+   }
+
+   #partyPatrolBannersList {
+      .listTitle {
+         display: inline-block;
+         text-align: center;
+         cursor: pointer;
+      }
+
+      #tasksTitleName {
+         width: 140px;
+         margin-right: 30px;
+         text-align: left;
+      }
+   }
+
+   #patrolBannersButtons {
+      margin: 37px 10px 10px 10px;
+      float: right;
+      
+      .buttonDiv {
+         width: 70px;
+         height: 70px;
+         margin-top: 10px;
+         background: url(images/button.png);
+         background-size: cover;
+         border: 2px solid #000;
+
+         img {
+            position: relative;
+            max-width: 40px;
+            top: 12px;
+            left: 15px;
+         }
+         .moveBannerUp {
+            content: url('images/moveBannerUp.png');
+         }
+         .moveBannerDown {
+            content: url('images/moveBannerDown.png');
+         }
+         .createBanner {
+            content: url('images/createBanner.png');
+         }
+         .clearBanners {
+            content: url('images/clearBanners.png');
+         }
+
+         .active {
+            background: red !important;
+         }
+      }
+
+      .topSpacer {
+         margin-top: 27px;
+      }
+   }
+
+   table {
+      width: 100%;
+      table-layout: fixed;
+
+      tr:nth-child(even) {
+         background: rgba(0,0,0,0.1);
+      }
+
+      td {
+         vertical-align: middle;
+         text-align: center;
+         padding-top: 4px;
+         padding-left: 10px;
+      }
+
+      td.red {
+         background: rgba(255,0.5,0,0.1);
+      }
+
+      tr {
+         .handCursor;
+         &:hover {
+            background-color: rgba(143, 120, 70, 0.3);
+         }
+      }
+
+      tr.selected {
+         background-color: rgba(143, 120, 70, 1.0);
+      }
+
+      .nameColumn {
+         width: 184px;
+         text-align: left;
+         vertical-align: middle;
+
+         .controlFont;
+
+         text-overflow: ellipsis;
+         white-space: nowrap;
+         overflow: hidden;
+      }
+
+      .itemIcon {
+         vertical-align: middle;
+         width: 24px;
+         height: 24px;
+      }
+
+      .itemName {
+         text-overflow: ellipsis;
+         white-space: nowrap;
+         overflow: hidden;
+         font-size: 14px;
+      }
+
+      .distanceColumn {
+         width: 120px;
+         text-align: right;
+         vertical-align: middle;
+
+         .itemDistance {
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+         }
+      }
+   }
+}

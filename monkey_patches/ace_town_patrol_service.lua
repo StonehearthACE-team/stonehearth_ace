@@ -4,25 +4,20 @@ local TownPatrol = require 'stonehearth.services.server.town_patrol.town_patrol_
 
 AceTownPatrol = class()
 
--- Conventions adopted in this class:
---   entity: a unit (like a footman)
---   object: everything else, typically something that can be patrolled
-
-AceTownPatrol._old_initialize = TownPatrol.initialize
-function AceTownPatrol:initialize()
-	self:_old_initialize()
-
-	if not self._sv._auto_patrol then
-		self._sv._auto_patrol = {}
-		self._sv._patrol_auto_backup = {}
-		self.__saved_variables:mark_changed()
+function AceTownPatrol:get_patrol_banners(player_id)
+   if not self._sv.patrol_banners then
+		self._sv.patrol_banners = {}
 	end
+   local banners = self._sv.patrol_banners[player_id]
+   if not banners then
+      banners = radiant.create_controller('stonehearth_ace:player_patrol_banners', player_id)
+      self._sv.patrol_banners[player_id] = banners
+      self.__saved_variables:mark_changed()
+   end
+   return banners
 end
 
-AceTownPatrol._old_get_patrollable_objects = TownPatrol.get_patrollable_objects
 function AceTownPatrol:get_patrollable_objects(entity, town_player_id)
-   local ordered_objects = self:_old_get_patrollable_objects(entity, town_player_id)
-   
    -- check to see if there are any 'patrol_banner' objects in here for the entity's combat party
    -- if so, start with the top such 'patrol_banner' and use it to find the rest in order
    -- otherwise, filter out all 'patrol_banner' objects from the list
@@ -30,64 +25,98 @@ function AceTownPatrol:get_patrollable_objects(entity, town_player_id)
    local party_member = entity:get_component('stonehearth:party_member')
    local party_comp
    if party_member then
-      party_comp = party_member:get_party():get_component('stonehearth:party')
+      local party = party_member:get_party() 
+      party_comp = party and party:get_component('stonehearth:party')
    else
       party_comp = entity:get_component('stonehearth:party')
    end
    
-   local patrol_banners = {}
-   local best_banner
-
    if party_comp then
       local party_id = party_comp:get_banner_variant()
-      for _, object in ipairs(ordered_objects) do
-         local pb_comp = object:get_banner()
-         if pb_comp and pb_comp:get_party() == party_id then
-            patrol_banners[object:get_id()] = object
-            if not best_banner then
-               best_banner = object
+      local new_list = self:get_patrol_banners(town_player_id):get_ordered_banners_by_party(party_id)
+      if new_list and #new_list > 0 then
+         local location = radiant.entities.get_world_location(entity)
+
+         if location then
+            local sorted_objects = {}
+            local best_index, best_score_time, best_score_dist
+            for index, patrollable_object in pairs(new_list) do
+               local score_time, score_dist = self:_calculate_patrol_banner_score(location, patrollable_object)
+               if not best_index or score_time < best_score_time or (score_time == best_score_time and score_dist < best_score_dist) then
+                  best_index, best_score_time, best_score_dist = index, score_time, score_dist
+               end
             end
+
+            for index = best_index, #new_list do
+               table.insert(sorted_objects, new_list[index])
+            end
+            for index = 1, best_index - 1 do
+               table.insert(sorted_objects, new_list[index])
+            end
+
+            return sorted_objects
          end
       end
    end
 
-   if best_banner then
-      local new_list = {}
-      local check_list = {[best_banner:get_id()] = true}
-      local cur_banner = best_banner
-
-      while true do
-         if not cur_banner then
-            break
-         end
-         table.insert(new_list, cur_banner)
-
-         local next_banner = cur_banner:get_banner():get_next_banner()
-         if not next_banner then
-            break
-         end
-         local next_id = next_banner:get_id()
-         if check_list[next_id] then
-            break
-         end
-
-         cur_banner = patrol_banners[next_id]
-         if cur_banner then
-            check_list[next_id] = true
-         end
+   local ordered_objects = self:_old_get_patrollable_objects(entity, town_player_id)
+   for i = #ordered_objects, 1, -1 do
+      local pb_comp = ordered_objects[i]:get_banner()
+      if pb_comp then
+         table.remove(ordered_objects, i)
       end
+   end
 
-      ordered_objects = new_list
-   else
-      for i = #ordered_objects, 1, -1 do
-         local pb_comp = ordered_objects[i]:get_banner()
-         if pb_comp then
-            table.remove(ordered_objects, i)
-         end
-      end
+   if #ordered_objects < 1 and not self:_get_auto_patrol(town_player_id) then
+      return self:_old_get_patrollable_objects(entity, town_player_id, true)
    end
 
    return ordered_objects
+end
+
+-- Returns an array of patrollable objects for this entity, sorted by priority.
+function TownPatrol:_old_get_patrollable_objects(entity, town_player_id, auto_override)
+   local location = radiant.entities.get_world_location(entity)
+   local ordered_objects = {}
+
+   if location then
+      local scores = {}
+      local unleased_objects = self:_get_unleased_objects(entity, town_player_id, auto_override)
+      -- score each object based on the benefit/cost ratio of patrolling it
+      for object_id, patrollable_object in pairs(unleased_objects) do
+         local score = self:_calculate_patrol_score(location, patrollable_object)
+         scores[patrollable_object] = score
+         table.insert(ordered_objects, patrollable_object)
+      end
+
+      -- order the objects by descending score
+      table.sort(ordered_objects,
+         function (a, b)
+            return scores[a] > scores[b]
+         end)
+   end
+
+   -- return the whole ordered object array
+   return ordered_objects
+end
+
+function TownPatrol:_get_unleased_objects(entity, town_player_id, auto_override)
+   local player_id = town_player_id or radiant.entities.get_player_id(entity)
+   local player_patrollable_objects = (auto_override and self:_get_auto_patrollable_objects(player_id)) or self:_get_patrollable_objects(player_id)
+   local unleased_objects = {}
+
+   for object_id, patrollable_object in pairs(player_patrollable_objects) do
+      if patrollable_object:can_acquire_lease(entity) then
+         unleased_objects[object_id] = patrollable_object
+      end
+   end
+
+   return unleased_objects
+end
+
+function TownPatrol:_calculate_patrol_banner_score(start_location, patrollable_object)
+   -- primary order is based on when the point was last visited
+   return patrollable_object:get_last_patrol_time(), start_location:distance_to_squared(patrollable_object:get_centroid())
 end
 
 function AceTownPatrol:_is_patrollable(object)
@@ -144,10 +173,17 @@ function AceTownPatrol:_add_to_patrol_list(object)
 			-- we're in auto_patrol and we're adding an auto_patrol object, or we're in manual and adding a manual one
 			player_patrollable_objects = self:_get_patrollable_objects(player_id)
 			self:__add_to_list(player_patrollable_objects, patrollable_object, object_id, player_id)
+      end
+      
+      -- if it's a patrol banner, add it to the patrol banner controller
+      if patrollable_object:get_banner() then
+         local banners = self:get_patrol_banners(player_id)
+         banners:add_banner(patrollable_object)
+      end
 
-			-- we only care about triggering if it's part of our active patrol
-			self:_trigger_patrol_route_available(player_id)
-		end
+      -- we need to do this no matter what because we might be in manual patrol mode but the only manual patrol points
+      -- are patrol banners for other parties, and this could be an auto patrol point that would work for them
+      self:_trigger_patrol_route_available(player_id)
 
 		self._sv._object_to_player_map[object_id] = player_id
 		self.__saved_variables:mark_changed()
@@ -182,7 +218,11 @@ function AceTownPatrol:_remove_from_patrol_list(object_id)
 		-- if we're in manual mode and removed our last manual object, switch back to auto
 		if not self:_get_auto_patrol(player_id) and not next(self._sv._patrollable_objects[player_id]) then
 			self:_switch_to_auto(player_id)
-		end
+      end
+      
+      -- remove from the relevant player patrol banner controller
+      local banners = self:get_patrol_banners(player_id)
+      banners:remove_banner(object_id)
 	end
 
 	self:_remove_player_id_trace(object_id)
