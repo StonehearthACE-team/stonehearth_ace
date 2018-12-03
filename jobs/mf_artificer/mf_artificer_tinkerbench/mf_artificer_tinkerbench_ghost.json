@@ -1,0 +1,37 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      },
+      "render_info": {
+         "scale": 0.12,
+         "color_map": "stonehearth:color_map:engineer",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/engineer_material_map.json"
+         ],
+         "animation_table": "/stonehearth/data/rigs/jobs/engineer/engineer_workbench/workbench_engineer.json"
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(mf_artificer_tinkerbench.qb)"
+            ]
+         }
+      },
+      "effect_list": {
+         "default": "/stonehearth/data/rigs/jobs/engineer/engineer_workbench/effects/idle.json"
+      }
+   },
+   "entity_data": {
+      "stonehearth:hide_child_entities_from_pathfinder": true,
+      "stonehearth:catalog": {
+         "display_name": "Engineer's Workshop",
+         "description": "Used by engineers to create gadgets",
+         "icon": "file(mf_artificer_tinkerbench.png)",
+         "category": "workshops",
+         "material_tags": "tool stockpile_tool"
+      }
+   }
+}

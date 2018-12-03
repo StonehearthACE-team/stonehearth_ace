@@ -13,7 +13,10 @@ end
 -- If one such value already exists, then do nothing.
 --
 function MaterialMap:add(keys, value)
-   local keys_table = radiant.util.split_string(keys, ' ')
+   local keys_table = keys
+   if type(keys) == 'string' then
+      keys_table = radiant.util.split_string(keys, ' ')
+   end
 
    for _, key in ipairs(keys_table) do
       local bucket = self._map[key]

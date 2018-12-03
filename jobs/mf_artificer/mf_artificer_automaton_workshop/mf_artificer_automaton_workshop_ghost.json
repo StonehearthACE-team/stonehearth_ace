@@ -1,0 +1,33 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "render_info": {
+         "animation_table": "/stonehearth/data/rigs/jobs/geomancer/golem_workbench/golem_workbench.json",
+         "scale": 0.1
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(mf_artificer_automaton_workshop.qb)"
+            ]
+         }
+      },
+      "effect_list": {
+         "default": "/stonehearth/data/rigs/jobs/geomancer/golem_workbench/effects/idle.json"
+      },
+      "mob": {
+         "model_origin": { "x": 0.1, "y": 0, "z": 0.5 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:hide_child_entities_from_pathfinder": true,
+      "stonehearth:catalog": {
+         "display_name": "Golem Workbench",
+         "description": "Used by the Geomancer to craft golems.",
+         "icon": "file(mf_artificer_automaton_workshop.png)",
+         "category": "workshops",
+         "material_tags": "tool stockpile_tool"
+      }
+   }
+}

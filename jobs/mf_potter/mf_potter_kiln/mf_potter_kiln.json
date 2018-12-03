@@ -1,0 +1,65 @@
+{
+   "type": "entity",
+   "mixins": "file(mf_potter_kiln_ghost.json)",
+   "components": {
+      "stonehearth:entity_forms": {
+         "ghost_form": "file(mf_potter_kiln_ghost.json)",
+         "iconic_form": "file(mf_potter_kiln_iconic.json)",
+         "placeable_on_ground": true
+      },
+      "effect_list": {
+         "default": "/stonehearth/data/rigs/jobs/potter/potter_kiln/effects/idle.json"
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": 0, "y": 0, "z": -2 },
+               "max": { "x": 1, "y": 1, "z": -1 }
+            }
+         ],
+         "adjacent": [
+            {
+               "min": { "x": 0, "y": 0, "z": -3 },
+               "max": { "x": 1, "y": 1, "z": -2 }
+            }
+         ]
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -2, "y": 0, "z": -2 },
+               "max": { "x": 3, "y": 3, "z": 3 }
+            }
+         ]
+      },
+      "stonehearth:workshop": {
+         "job_alias": "stonehearth:jobs:potter",
+         "workshop_effect": "/stonehearth/data/rigs/jobs/potter/potter_kiln/effects/work.json"
+      }
+   },
+   "entity_data": {
+      "stonehearth:table": {
+         "drop_effect": "carry_putdown_on_table",
+         "drop_offset": { "x": 0, "y": 1, "z": 0 }
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 8,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 6
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}
