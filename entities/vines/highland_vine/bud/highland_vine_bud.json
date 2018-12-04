@@ -1,6 +1,6 @@
 {
-   "mixins": "stonehearth:mixins:placed_object",
    "type": "entity",
+   "mixins": "stonehearth:mixins:placed_object",
    "components": {
       "render_info": {
          "scale": 0.1
@@ -8,7 +8,7 @@
       "model_variants": {
          "default": {
             "models": [
-               "file(highland_vine_seed.qb)"
+               "file(highland_vine_bud.qb)"
             ]
          }
       },
@@ -19,11 +19,13 @@
       }
    },
    "entity_data": {
+      "stonehearth:evolve_data": {
+         "next_stage": "stonehearth_ace:vines:highland_vine",
+         "evolve_time": "4h+2h"
+      },
       "stonehearth:catalog": {
-         "display_name": "i18n(stonehearth_ace:entities.vines.highland_vine.seed.display_name)",
-         "description": "i18n(stonehearth_ace:entities.vines.highland_vine.seed.description)",
-         "icon": "file(highland_vine_seed.png)",
-         "category": "seed"
+         "display_name": "i18n(stonehearth_ace:entities.vines.highland_vine.bud.display_name)",
+         "description": "i18n(stonehearth_ace:entities.vines.highland_vine.bud.description)"
       }
    }
 }

@@ -795,6 +795,7 @@
       "ui:stockpile:filters": "file(ui/data/stockpile_filters.json)",
       "vines:daisies": "file(entities/vines/daisies/daisies.json)",
       "vines:highland_vine": "file(entities/vines/highland_vine/highland_vine.json)",
+      "vines:highland_vine:bud": "file(entities/vines/highland_vine/bud/highland_vine_bud.json)",
       "vines:highland_vine:seed": "file(entities/vines/highland_vine/seed/highland_vine_seed.json)",
       "weapons:animals:bear_teeth": "file(entities/weapons/animals/bear_teeth/bear_teeth.json)",
       "weapons:animals:cougar_teeth": "file(entities/weapons/animals/cougar_teeth/cougar_teeth.json)",
@@ -1424,6 +1425,10 @@
       "destroy_patrol_banner": {
          "controller": "file(call_handlers/patrol_banner_call_handler.lua)",
          "endpoint": "server"
+      },
+      "get_item_container": {
+         "controller": "file(call_handlers/town_inventory_call_handler.lua)",
+         "endpoint": "server"
       }
    },
    "object_commands": {
@@ -1459,7 +1464,8 @@
          "file(ui/game/modes/zones_mode/trapping_grounds/trapping_grounds.js)",
          "file(ui/game/modes/zones_mode/farm/farm.js)",
          "file(ui/game/modes/military_mode/military_mode.js)",
-         "file(ui/game/save_view/save_view.js)"
+         "file(ui/game/save_view/save_view.js)",
+         "file(ui/game/town/inventory_tracker.js)"
       ],
       "less": [
          "file(ui/shell/settings/settings.less)",

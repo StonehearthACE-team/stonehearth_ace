@@ -11,7 +11,8 @@ App.AceMilitaryModeView = App.View.extend({
       },
       'patrol_banners': {
          '*': {
-            'stonehearth_ace:patrol_banner': {}
+            'stonehearth_ace:patrol_banner': {},
+            'stonehearth:unit_info': {}
          }
       }
    },
@@ -94,37 +95,65 @@ App.AceMilitaryModeView = App.View.extend({
          }
       });
 
+      self.partyEntities = {};
+      ['party_1', 'party_2', 'party_3', 'party_4'].forEach(function(party) {
+         radiant.call_obj('stonehearth.unit_control', 'get_party_by_population_name', party)
+         .done(function(result) {
+            if (result.result) {
+               self.partyEntities[result.result] = party;
+            }
+         });
+      });
+
       self.hide();
    },
 
    _onEntitySelected: function(e) {
       var self = this;
 
-      // when the selected entity changes, select the correct entry if it's a party banner in the currently shown party
+      // when the selected entity changes, select the correct entry if it's a party or a party banner in the currently shown party
       var found = false;
-      radiant.each(self.allPartyBanners, function(party, banners) {
-         if (found) return;
-         radiant.each(banners, function(id, banner) {
-            if (found) return;
-            if (banner.entity == e.selected_entity) {
-               found = true;
-               self.selectedEntity = banner;
-               self.selectedEntityId = banner.id;
-            }
-         });
-      });
+      var prevSelectedId = self.selectedEntityId;
+      var party = self.partyEntities[e.selected_entity];
 
-      if (!found) {
-         self.selectedEntity = null;
-         self.selectedEntityId = null;
+      if (party) {
+         var prevParty = self.get('selectedParty');
+         if (prevParty != party) {
+            self.$('#partyTab_'+party).click();
+         }
       }
+      else {
+         radiant.each(self.allPartyBanners, function(party, banners) {
+            if (found) return;
+            radiant.each(banners, function(id, banner) {
+               if (found) return;
+               if (banner.entity == e.selected_entity) {
+                  found = true;
+                  self.selectedEntity = banner;
+                  self.selectedEntityId = banner.id;
+               }
+            });
+         });
 
-      self._selectRowByEntityId(self.selectedEntityId);
+         if (!found) {
+            self.selectedEntity = null;
+            self.selectedEntityId = null;
+         }
+
+         if (prevSelectedId != self.selectedEntityId) {
+            self._selectRowByEntityId(self.selectedEntityId);
+         }
+      }
    },
 
    setSelectedParty: function(partyId) {
       var self = this;
-      self.set('selectedParty', partyId);
+      var curParty = self.get('selectedParty');
+      if (curParty != partyId) {
+         self.set('selectedParty', partyId);
+      } else if(partyId) {
+         App.stonehearthClient.select_combat_party(partyId);
+      }
    },
 
    _updateData: function(data) {
@@ -132,6 +161,7 @@ App.AceMilitaryModeView = App.View.extend({
 
       var partyBanners = {};
       radiant.each(data.patrol_banners, function(id, banner) {
+         var ui = banner['stonehearth:unit_info'];
          var pb = banner['stonehearth_ace:patrol_banner'];
          var catalogData = App.catalog.getCatalogData(banner.uri);
          var party = pb.party_id;
@@ -147,7 +177,7 @@ App.AceMilitaryModeView = App.View.extend({
             'prevBanner': pb.prev_banner,
             'nextBanner': pb.next_banner,
             'distance': pb.distance_to_next_banner && Math.round(pb.distance_to_next_banner),
-            'name': catalogData.display_name,
+            'name': (ui && ui.display_name) || catalogData.display_name,
             'icon': catalogData.icon
          };
       });
@@ -207,7 +237,7 @@ App.AceMilitaryModeView = App.View.extend({
          var entityId = row.attr('data-attr');
          var entity = self.allPartyBanners[self.get('selectedParty')][entityId];
          self.set('selectedBanner', entity);
-         
+
          var selected = row.hasClass('selected'); // Is this row already selected?
          if (!selected) {
             row.parent().children().removeClass('selected'); // Unselect everything in the parent view
@@ -215,8 +245,12 @@ App.AceMilitaryModeView = App.View.extend({
 
             if (userClicked) {
                radiant.call('stonehearth:select_entity', entity.entity);
-               radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:ui:start_menu:focus' });  
+               radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:ui:start_menu:focus' });
             }
+         }
+         else if (userClicked) {
+            // if it's already selected, focus the camera on it
+            radiant.call('stonehearth:camera_look_at_entity', entity.entity);
          }
       }
       else {

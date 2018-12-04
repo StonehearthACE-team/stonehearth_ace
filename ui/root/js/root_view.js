@@ -10,7 +10,8 @@ App.RootView.reopen({
    },
 
    _ACE_getCustomModeForEntity: function(modes, entity) {
-      if (entity['stonehearth_ace:patrol_banner']) {
+      if (entity['stonehearth_ace:patrol_banner'] ||
+            entity['stonehearth:party']) {
          return modes.MILITARY;
       }
 
