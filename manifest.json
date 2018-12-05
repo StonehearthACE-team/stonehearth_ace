@@ -1429,6 +1429,10 @@
       "get_item_container": {
          "controller": "file(call_handlers/town_inventory_call_handler.lua)",
          "endpoint": "server"
+      },
+      "terrain_slice_buildings_setting_changed": {
+         "controller": "file(call_handlers/settings_call_handler.lua)",
+         "endpoint": "client"
       }
    },
    "object_commands": {

@@ -24,7 +24,10 @@
          "type": "boolean",
          "display_name": "stonehearth_ace:ui.shell.settings.gameplayTab.terrain_slice_buildings",
          "description": "stonehearth_ace:ui.shell.settings.gameplayTab.terrain_slice_buildings_description",
-         "default": false
+         "default": false,
+         "on_change": {
+            "call": "terrain_slice_buildings_setting_changed"
+         }
       }
    }
 }

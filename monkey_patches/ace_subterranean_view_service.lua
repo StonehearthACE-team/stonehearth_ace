@@ -10,6 +10,14 @@ local log = radiant.log.create_logger('subterranean_view')
 local SubterraneanViewService = radiant.mods.require('stonehearth.services.client.subterranean_view.subterranean_view_service')
 local AceSubterraneanViewService = class()
 
+function AceSubterraneanViewService:terrain_slice_buildings_setting_changed()
+   if self.clip_enabled then
+      self:_update_all_entities_visibility()
+      self:_update_dirty_tiles()
+      self._visible_volume_dirty = true
+   end
+end
+
 AceSubterraneanViewService._old__calculate_visibility = SubterraneanViewService._calculate_visible
 function AceSubterraneanViewService:_calculate_visible(entity, ignore_entities, terrain_slice_buildings)
    local call_old

@@ -18,4 +18,8 @@ function SettingsCallHandler:set_client_gameplay_setting_command(session, respon
    stonehearth.client_state:set_client_gameplay_setting(session.player_id, mod, field, value)
 end
 
+function SettingsCallHandler:terrain_slice_buildings_setting_changed(session, response)
+   stonehearth.subterranean_view:terrain_slice_buildings_setting_changed()
+end
+
 return SettingsCallHandler
