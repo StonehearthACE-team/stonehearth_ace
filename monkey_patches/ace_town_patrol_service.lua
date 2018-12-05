@@ -33,28 +33,31 @@ function AceTownPatrol:get_patrollable_objects(entity, town_player_id)
    
    if party_comp then
       local party_id = party_comp:get_banner_variant()
-      local new_list = self:get_patrol_banners(town_player_id):get_ordered_banners_by_party(party_id)
-      if new_list and #new_list > 0 then
-         local location = radiant.entities.get_world_location(entity)
 
-         if location then
-            local sorted_objects = {}
-            local best_index, best_score_time, best_score_dist
-            for index, patrollable_object in pairs(new_list) do
-               local score_time, score_dist = self:_calculate_patrol_banner_score(location, patrollable_object)
-               if not best_index or score_time < best_score_time or (score_time == best_score_time and score_dist < best_score_dist) then
-                  best_index, best_score_time, best_score_dist = index, score_time, score_dist
+      if party_id then
+         local new_list = self:get_patrol_banners(town_player_id):get_ordered_banners_by_party(party_id)
+         if new_list and #new_list > 0 then
+            local location = radiant.entities.get_world_location(entity)
+
+            if location then
+               local sorted_objects = {}
+               local best_index, best_score_time, best_score_dist
+               for index, patrollable_object in pairs(new_list) do
+                  local score_time, score_dist = self:_calculate_patrol_banner_score(location, patrollable_object)
+                  if not best_index or score_time < best_score_time or (score_time == best_score_time and score_dist < best_score_dist) then
+                     best_index, best_score_time, best_score_dist = index, score_time, score_dist
+                  end
                end
-            end
 
-            for index = best_index, #new_list do
-               table.insert(sorted_objects, new_list[index])
-            end
-            for index = 1, best_index - 1 do
-               table.insert(sorted_objects, new_list[index])
-            end
+               for index = best_index, #new_list do
+                  table.insert(sorted_objects, new_list[index])
+               end
+               for index = 1, best_index - 1 do
+                  table.insert(sorted_objects, new_list[index])
+               end
 
-            return sorted_objects
+               return sorted_objects
+            end
          end
       end
    end

@@ -19,6 +19,12 @@
          "on_change": {
             "call": "update_auto_harvest_setting"
          }
+      },
+      "terrain_slice_buildings": {
+         "type": "boolean",
+         "display_name": "stonehearth_ace:ui.shell.settings.gameplayTab.terrain_slice_buildings",
+         "description": "stonehearth_ace:ui.shell.settings.gameplayTab.terrain_slice_buildings_description",
+         "default": false
       }
    }
 }
