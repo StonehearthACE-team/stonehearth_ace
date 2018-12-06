@@ -288,7 +288,8 @@ function VineComponent:try_grow()
 
          if add_dir then
             --log:spam('adding growth dir chance for %s %s (%s)', self._entity, dir, dir_chance[dir])
-            new_vine = radiant.entities.create_entity(self._uri, { owner = self._entity:get_player_id(), ignore_gravity = true })
+            new_vine = radiant.entities.create_entity(self._uri,
+                  { owner = self._entity:get_player_id(), ignore_gravity = dir ~= 'y+' and self._growth_data.ignore_gravity })
             radiant.terrain.place_entity_at_exact_location(new_vine, add_location, {force_iconic = false})
             break
          end

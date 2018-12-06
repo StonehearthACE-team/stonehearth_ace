@@ -114,7 +114,7 @@ function OreHeatmap:fn_get_location_heat_value(location)
       end
    end
 
-   return math.min(ore_count, self._max_heat_value)
+   return 0.01 * radiant.math.round(100 * math.min(ore_count, self._max_heat_value))
 end
 
 function OreHeatmap:fn_heat_value_to_color(heat_value)

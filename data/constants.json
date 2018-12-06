@@ -137,17 +137,17 @@
                "description": "i18n(stonehearth_ace:data.heatmaps.wilderness.thresholds.none.description)",
                "icon": "/stonehearth_ace/ui/images/heatmaps/wilderness_none.png",
                "max": 0.0001,
-               "heatmap_color": [240, 0, 0, 200],
-               "heatmap_hilight": [1.0, 0, 0],
+               "heatmap_color": [128, 128, 128, 128],
+               "heatmap_hilight": [0.4, 0.4, 0.4],
                "spawn_duration_multiplier": 5
             },
             {
                "ui_label": "i18n(stonehearth_ace:data.heatmaps.wilderness.thresholds.little.display_name)",
                "description": "i18n(stonehearth_ace:data.heatmaps.wilderness.thresholds.little.description)",
                "icon": "/stonehearth_ace/ui/images/heatmaps/wilderness_little.png",
-               "max": 0.02,
-               "heatmap_color": [240, 128, 0, 200],
-               "heatmap_hilight": [1.0, 0.5, 0],
+               "max": 0.021,
+               "heatmap_color": [180, 224, 64, 200],
+               "heatmap_hilight": [0.5, 0.6, 0],
                "spawn_duration_multiplier": 3
             },
             {
@@ -155,8 +155,8 @@
                "description": "i18n(stonehearth_ace:data.heatmaps.wilderness.thresholds.some.description)",
                "icon": "/stonehearth_ace/ui/images/heatmaps/wilderness_some.png",
                "max": 0.05,
-               "heatmap_color": [240, 240, 0, 200],
-               "heatmap_hilight": [1.0, 1.0, 0],
+               "heatmap_color": [40, 224, 40, 200],
+               "heatmap_hilight": [0, 0.8, 0],
                "spawn_duration_multiplier": 1.5
             },
             {
@@ -164,8 +164,8 @@
                "description": "i18n(stonehearth_ace:data.heatmaps.wilderness.thresholds.lots.description)",
                "icon": "/stonehearth_ace/ui/images/heatmaps/wilderness_lots.png",
                "max": 0.1,
-               "heatmap_color": [0, 240, 0, 200],
-               "heatmap_hilight": [0, 1.0, 0],
+               "heatmap_color": [40, 180, 40, 200],
+               "heatmap_hilight": [0, 0.6, 0],
                "spawn_duration_multiplier": 0.9
             },
             {
@@ -173,8 +173,8 @@
                "description": "i18n(stonehearth_ace:data.heatmaps.wilderness.thresholds.tons.description)",
                "icon": "/stonehearth_ace/ui/images/heatmaps/wilderness_tons.png",
                "max": 999999,
-               "heatmap_color": [0, 180, 64, 200],
-               "heatmap_hilight": [0, 0.75, 0.25],
+               "heatmap_color": [0, 128, 32, 200],
+               "heatmap_hilight": [0, 0.5, 0.1],
                "spawn_duration_multiplier": 0.5
             }
          ]

@@ -67,7 +67,7 @@ function WildernessHeatmap:_check_initialized_done(fn_callback)
 end
 
 function WildernessHeatmap:fn_get_entity_heat_value(entity, sampling_region)
-   return wilderness_util.get_value_from_entity(entity, self._catalog_fn, sampling_region)
+   return 0.01 * radiant.math.round(100 * wilderness_util.get_value_from_entity(entity, self._catalog_fn, sampling_region))
 end
 
 function WildernessHeatmap:fn_get_location_heat_value(location)

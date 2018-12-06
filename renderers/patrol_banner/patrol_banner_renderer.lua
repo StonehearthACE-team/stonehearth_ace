@@ -110,7 +110,7 @@ function PatrolBannerRenderer:_unhilight()
 end
 
 function PatrolBannerRenderer:_in_appropriate_mode()
-   return self._ui_view_mode == 'hud' or self._ui_view_mode == 'place'
+   return self._ui_view_mode == 'hud'
 end
 
 function PatrolBannerRenderer:_update_render()

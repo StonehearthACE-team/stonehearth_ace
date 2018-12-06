@@ -18,22 +18,10 @@
          </label>
       </div>
 
-      <div id="heatmapButton" class="normal terrainButton" title="{{i18n stonehearth_ace:ui.game.visions.heatmap.description}}" {{bind-attr class="view.heatmap_active:active:inactive"}}>
+      <div id="heatmapButton" class="normal terrainButton" {{bind-attr class="view.heatmap_active:active:inactive"}}>
          <label class="buttonLabel">
-            {{i18n stonehearth_ace:ui.game.visions.heatmap.title}}
+            {{i18n stonehearth_ace:ui.game.visions.heatmap.name}}
          </label>
-         <div id="heatmapList" class="paper gui">
-            {{#each h in view.heatMaps}}
-            <div class="heatmap" {{ bind-attr title=h.description }} {{ bind-attr data-key=h.key }}>
-               <div class="heatmapRepresentation">
-                  <img class="heatmapImage" {{ bind-attr src=h.icon }} />
-                  <div class="heatmapName">
-                     {{i18n_key h.name}}
-                  </div>
-               </div>
-            </div>
-            {{/each}}
-         </div>
       </div>
 
       <div id="slicePalette" class='palette' {{bind-attr class=view.clip_enabled:clip:noclip}}>
@@ -47,6 +35,19 @@
       <div id="xrayPalette" class='palette' {{bind-attr class=view.xray_mode}}>
          <div id="xrayFull" hotkey_action="vision:xray:full" class='xrayButton button' mode="full" {{bind-attr class=view.xray_mode}}>{{i18n stonehearth:ui.game.visions.terrain_xray_vision_full}}</div>
          <div id="xrayFlat" hotkey_action="vision:xray:flat" class='xrayButton button' mode="flat" {{bind-attr class=view.xray_mode}}>{{i18n stonehearth:ui.game.visions.terrain_xray_vision_flat}}</div>
+      </div>
+
+      <div id="heatmapList" class="palette paper gui" {{bind-attr class=view.heatmapShown:list:nolist}}>
+         {{#each h in view.heatMaps}}
+         <div class="heatmap" {{ bind-attr title=h.name }} {{ bind-attr description=h.description }} {{ bind-attr data-key=h.key }}>
+            <div class="heatmapRepresentation">
+               <img class="heatmapImage" {{ bind-attr src=h.icon }} />
+               <div class="heatmapName">
+                  {{i18n_key h.name}}
+               </div>
+            </div>
+         </div>
+         {{/each}}
       </div>
    
       <div id="heatmapCursorReadout" {{bind-attr class="view.heatmap_active:active:inactive"}}>

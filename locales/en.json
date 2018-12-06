@@ -3220,6 +3220,11 @@
    },
    "ui": {
       "game": {
+         "entities": {
+            "item_categories": {
+               "gizmos": "Gizmos"
+            }
+         },
          "menu": {
             "crafter_menu": {
                "items": {
@@ -3266,14 +3271,15 @@
          },
          "visions": {
             "heatmap": {
-               "title": "heatmap",
+               "name": "heatmap",
+               "title": "Terrain heatmaps",
                "description": "This is the heatmap tooltip. TODO: put something useful here."
             }
          },
          "heatmaps": {
             "ore": {
                "display_name": "Ore Detector",
-               "description": "Detect ore beneath the surface: areas appear brighter where ore is abundant or close to the surface."
+               "description": "Detect ore several layers beneath the surface: areas appear brighter where ore is abundant or close to the surface."
             },
             "wilderness": {
                "display_name": "Wilderness",

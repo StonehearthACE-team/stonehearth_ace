@@ -80,7 +80,7 @@ function AppealHeatmap:_check_initialized_done(fn_callback)
    return false
 end
 
-function AppealHeatmap:fn_get_heat_value(entity)
+function AppealHeatmap:fn_get_entity_heat_value(entity)
    local appeal_data = radiant.entities.get_entity_data(entity, 'stonehearth:appeal')
    local appeal = appeal_data and appeal_data.appeal
 

@@ -4,10 +4,6 @@
       background: url(./images/heatmap_button_disabled.png) center no-repeat;
    }
 
-   #heatmapButton:hover #heatmapList {
-      display: block;
-   }
-
    #heatmapButton.active {
       .buttonLabel {
          color: #ffc000;
@@ -65,13 +61,13 @@
    #heatmapList {
       border: none;
       overflow-x: hidden;
-      overflow-y: scroll;
+      overflow-y: auto;
       width: 180px;
-      display: none;
+      display: block;
       position: absolute;
-      bottom: 55px;
+      bottom: 60px;
       left: 50%;
-      transform: translateX(-50%);
+      //transform: translateX(-50%);
 
       ::-webkit-scrollbar-track {
          margin-top: 1px;
@@ -119,5 +115,13 @@
       }:nth-child(even) {
          background-color: @paperDarkBlue;
       }
+   }
+
+   #heatmapList.list {
+      visibility: visible;
+   }
+
+   #heatmapList.nolist {
+      visibility: hidden;
    }
 }

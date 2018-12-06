@@ -25,6 +25,14 @@ App.StonehearthTerrainVisionWidget.reopen({
             var heatmapArray = radiant.map_to_array(heatmaps)
             radiant.sortByOrdinal(heatmapArray);
             self.set('heatMaps', heatmapArray);
+
+            Ember.run.scheduleOnce('afterRender', function() {
+               self.$('.heatmap').each(function(i) {
+                  App.hotkeyManager.makeTooltipWithHotkeys($(this),
+                        $(this).attr('title'),
+                        $(this).attr('description'));
+               });
+            });
          });
       });
    },
@@ -34,10 +42,18 @@ App.StonehearthTerrainVisionWidget.reopen({
       self._super();
 
       //self.$('#heatmapButton').tooltipster();
+      App.hotkeyManager.makeTooltipWithHotkeys(this.$('#heatmapButton'),
+            'stonehearth_ace:ui.game.visions.heatmap.title',
+            'stonehearth_ace:ui.game.visions.heatmap.description');
 
-      // when the user clicks the heatmap menu button, hide the current heatmap and the menu
+      // when the user clicks the heatmap menu button, show/hide the current heatmap and the menu
       self.$('#heatmapButton').on('click', function() {
-         self.setHeatmapActive();
+         var shown = self.get('heatmapShown');
+         shown = !shown;
+         self.set('heatmapShown', shown);
+         if (!shown) {
+            self.setHeatmapActive();
+         }
       });
       // when the user clicks a heatmap button, show that heatmap and hide the menu
       var heatmapList = self.$('#heatmapList');
@@ -45,8 +61,9 @@ App.StonehearthTerrainVisionWidget.reopen({
          event.stopPropagation();
          var key = $(this).attr('data-key');
          self.setHeatmapActive(key, true);
-         heatmapList.hide();
-         heatmapList.attr('style', '');
+         self.set('heatmapShown', false);
+         //heatmapList.hide();
+         //heatmapList.attr('style', '');
       });
    },
 
