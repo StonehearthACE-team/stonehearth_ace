@@ -41,10 +41,10 @@
       </div>
 
       <div id="patrolBannersButtons">
-         <div class="button buttonDiv" {{ action "swapBannerWithPrev" this target="view" }}><img class="moveBannerUp"/></div>
-         <div class="button buttonDiv" {{ action "swapBannerWithNext" this target="view" }}><img class="moveBannerDown"/></div>
-         <div class="button buttonDiv topSpacer" {{ action "createNewBanner" this target="view" }}><img class="createBanner"/></div>
-         <div class="button buttonDiv" {{ action "clearAllBanners" this target="view" }}><img class="clearBanners"/></div>
+         <div class="button buttonDiv partyBased moveBannerUp" {{ action "swapBannerWithPrev" this target="view" }}></div>
+         <div class="button buttonDiv partyBased moveBannerDown" {{ action "swapBannerWithNext" this target="view" }}></div>
+         <div class="button buttonDiv topSpacer partyBased createBanner" {{ action "createNewBanner" this target="view" }}></div>
+         <div class="button buttonDiv partyBased clearBanners" {{ action "clearAllBanners" this target="view" }}></div>
       </div>
    </div>
 

@@ -62,7 +62,12 @@
          "slot": "torso helmet",
          "render_type": "merge_with_model",
          "roles": "worker_job",
-         "ilevel": 2,
+         "conditional_values": {
+            "season": {
+               "winter": 1,
+               "summer": -1
+            }
+         },
          "injected_buffs": [
             "stonehearth:buffs:devoted",
             "stonehearth:buffs:weather:cold_resist"

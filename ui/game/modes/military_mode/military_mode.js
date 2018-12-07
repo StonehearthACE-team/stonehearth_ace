@@ -5,7 +5,7 @@ $(document).ready(function () {
       if (!view) {
          view = App.gameView.addView(App.AceMilitaryModeView);
       }
-      
+
       Ember.run.scheduleOnce('afterRender', function() {
          view.show();
          Ember.run.scheduleOnce('afterRender', function() {
@@ -81,6 +81,8 @@ App.AceMilitaryModeView = App.View.extend({
    
          self.$('.partyTab').removeClass('active');
          $(this).addClass('active');
+
+         self.$('.partyBased').removeClass('party_1 party_2 party_3 party_4').addClass(partyId);
 
          self.setSelectedParty(partyId);
       });
