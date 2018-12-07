@@ -20,7 +20,7 @@
       "stonehearth:equipment_piece": {
          "render_type": "merge_with_model",
          "slot": "helmet",
-         "roles": "artificer_job",
+         "roles":["artificer_job"],
          "no_drop": true
       }
    },
@@ -29,7 +29,7 @@
          "display_name": "i18n(stonehearth_ace:mountain_folk.jobs.artificer.artificer_helm.display_name)",
          "description": "i18n(stonehearth_ace:mountain_folk.jobs.artificer.artificer_helm.description)",
          "icon": "file(artificer_helm.png)",
-         "material_tags": "goggles"
+         "material_tags":["goggles"]
       }
    }
 }

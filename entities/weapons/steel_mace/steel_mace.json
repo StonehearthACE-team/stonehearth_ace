@@ -20,7 +20,7 @@
             "stonehearth:patrol"
          ],
          "ilevel": 14,
-         "roles": "knight_job",
+         "roles":["knight_job"],
          "required_job_level": 4,
          "equip_effect": "stonehearth:effects:weapon_level_up",
          "equipment_types": [
@@ -66,7 +66,7 @@
          "description": "i18n(stonehearth_ace:entities.weapons.steel_mace.description)",
          "icon": "file(steel_mace.png)",
          "category": "weapons",
-         "material_tags": "steel melee_weapon crafted steel_mace stockpile_weapon"
+         "material_tags":["steel", "melee_weapon", "crafted", "steel_mace", "stockpile_weapon"]
       }
    }
 }

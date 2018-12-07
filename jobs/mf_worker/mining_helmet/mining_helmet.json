@@ -59,7 +59,7 @@
       "stonehearth:equipment_piece": {
          "slot": "helmet",
          "render_type": "merge_with_model",
-         "roles": "worker_job",
+         "roles":["worker_job"],
          "ilevel": 2,
          "injected_buffs": [
             "stonehearth_ace:buffs:mining_helmet"
@@ -83,7 +83,7 @@
          "description": "i18n(stonehearth_ace:jobs.worker.mining_helmet.description)",
          "icon": "file(mining_helmet.png)",
          "category": "armor",
-         "material_tags": "iron worker_outfit dwarf_made stockpile_equipment"
+         "material_tags":["iron", "worker_outfit", "dwarf_made", "stockpile_equipment"]
       }
    }
 }

@@ -23,7 +23,7 @@
             "stonehearth:patrol"
          ],
          "ilevel": 40,
-         "roles": "archer_job",
+         "roles":["archer_job"],
          "required_job_level": 6,
          "equip_effect": "stonehearth:effects:weapon_level_up",
          "equipment_types": [
@@ -80,7 +80,7 @@
          "description": "i18n(stonehearth_ace:entities.weapons.steel_crossbow.description)",
          "icon": "file(steel_crossbow.png)",
          "category": "weapons",
-         "material_tags": "steel crossbow ranged_weapon steel_crossbow stockpile_weapon"
+         "material_tags":["steel", "crossbow", "ranged_weapon", "steel_crossbow", "stockpile_weapon"]
       }
    }
 }

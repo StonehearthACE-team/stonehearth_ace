@@ -20,7 +20,7 @@
             "stonehearth:patrol"
          ],
          "ilevel": 14,
-         "roles": "footman_job",
+         "roles":["footman_job"],
          "required_job_level": 5,
          "equip_effect": "stonehearth:effects:weapon_level_up",
          "equipment_types": [
@@ -75,7 +75,7 @@
          "description": "i18n(stonehearth_ace:entities.weapons.steel_dagger.description)",
          "icon": "file(steel_dagger.png)",
          "category": "weapons",
-         "material_tags": "offhand steel melee_weapon crafted steel_dagger stockpile_weapon"
+         "material_tags":["offhand", "steel", "melee_weapon", "crafted", "steel_dagger", "stockpile_weapon"]
       }
    }
 }

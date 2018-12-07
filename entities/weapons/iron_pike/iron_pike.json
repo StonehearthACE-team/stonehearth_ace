@@ -14,7 +14,7 @@
             "stonehearth:patrol"
          ],
          "ilevel": 18,
-         "roles": "knight_job",
+         "roles":["knight_job"],
          "required_job_level": 2,
          "equip_effect": "stonehearth:effects:weapon_level_up",
 		 "equipment_types": ["twohanded"]
@@ -68,7 +68,7 @@
 		 }
       ],
       "stonehearth:catalog": {
-         "material_tags": "twohanded iron melee_weapon crafted iron_pike stockpile_weapon"
+         "material_tags":["twohanded", "iron", "melee_weapon", "crafted", "iron_pike", "stockpile_weapon"]
       }
    }
 }

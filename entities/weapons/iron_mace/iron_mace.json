@@ -11,7 +11,7 @@
             "stonehearth:patrol"
          ],
          "ilevel": 12,
-         "roles": "knight_job",
+         "roles":["knight_job"],
 		 "required_job_level": 2,
          "equip_effect": "stonehearth:effects:weapon_level_up",
 		 "equipment_types": ["mainhand"]
@@ -46,7 +46,7 @@
          "value_in_gold": 38
       },
       "stonehearth:catalog": {
-         "material_tags": "iron melee_weapon crafted iron_mace stockpile_weapon"
+         "material_tags":["iron", "melee_weapon", "crafted", "iron_mace", "stockpile_weapon"]
       }
    }
 }

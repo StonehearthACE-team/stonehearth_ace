@@ -26,7 +26,7 @@
          "slot": "helmet",
          "ilevel": 5,
          "required_job_level": 2,
-         "roles": "plate_wearer",
+         "roles":["plate_wearer"],
          "equip_effect": "stonehearth:effects:weapon_level_up"
       }
    },
@@ -49,7 +49,7 @@
          "description": "i18n(stonehearth_ace:entities.armor.iron_helmet.description)",
          "icon": "file(iron_helmet.png)",
          "category": "armor",
-         "material_tags": "iron armor heavy_armor iron_helmet stockpile_equipment"
+         "material_tags":["iron", "armor", "heavy_armor", "iron_helmet", "stockpile_equipment"]
       }
    }
 }
