@@ -222,6 +222,10 @@
                "display_name": "Armbrüste bevorzugen",
                "description": "Dieser Bogenschütze bevorzugt derzeit eine Armbrust. Klick um zu ändern!"
             }
+         },
+         "manage_parties": {
+            "display_name": "Gruppe verwalten",
+            "description": "Verwalte Patrouillenbanner und Schutzzonen (noch nicht implementiert) für diese Gruppe."
          }
       },
       "buffs": {
@@ -2812,7 +2816,8 @@
             }
          },
          "patrol_banner": {
-            "display_name": "Patrouillenbanner"
+            "display_name": "Patrouillenbanner",
+            "description": "Mitglieder der Kampfgruppe werden das patrouillieren zwischen diesen Bannern priorisieren."
          }
       },
       "aquatic": {
@@ -3220,6 +3225,11 @@
    },
    "ui": {
       "game": {
+         "entities": {
+            "item_categories": {
+               "gizmos": "Gizmos"
+            }
+         },
          "menu": {
             "crafter_menu": {
                "items": {
@@ -3266,7 +3276,8 @@
          },
          "visions": {
             "heatmap": {
-               "title": "Wärmekarte",
+               "name": "Wärmekarte",
+               "title": "Gelände-Wärmekarten",
                "description": "Dies ist das Wärmekarte-Tooltip. TODO: hier etwas Nützliches einfügen."
             }
          },
@@ -3339,6 +3350,8 @@
                "auto_craft_recipe_dependencies_description": "Beim Herstellen eines Gegenstands überprüfen die Handwerker das Stadtlager, um zu sehen, ob genügend Zutaten vorhanden sind. Wenn nicht, werden Sie der Warteschlange automatisch weitere Aufträge hinzufügen, um den Auftrag erfüllen zu können.",
                "auto_harvest_enabled": "Nachwachsende Rohstoffe automatischen Ernten",
                "auto_harvest_enabled_description": "Wenn du eine erneuerbare Ressource erntest, aktiviert sich automatisch das automatische Ernten.",
+               "auto_harvest_animals_enabled": "Tiere produzieren automatisch nachwachsende Rohstoffe",
+               "auto_harvest_animals_enabled_description": "Tiere, die Sie besitzen, produzieren automatisch nachwachsende Rohstoffe (z. B. produzieren deine BuckBucks Eier).",
                "terrain_slice_buildings": "Gelände-Gebäude-Schnitt",
                "terrain_slice_buildings_description": "Rendere keine Objekte im Gelände-Schnitt-Modus, die von sichtbaren Objekten außerhalb des Geländes unterstützt werden."
             }
