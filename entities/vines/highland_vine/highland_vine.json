@@ -110,6 +110,34 @@
                "winter": "winter"
             }
          }
+      },
+      "stonehearth:resource_node": {
+         "durability": 1,
+         "harvest_overlay_effect": "stonehearth:effects:harvest_plant_overlay_effect",
+         "resource_loot_table": {
+            "entries": {
+               "optional": {
+                  "num_rolls": {
+                     "min": 1,
+                     "max": 1
+                  },
+                  "items": {
+                     "none": {
+                        "uri": "",
+                        "weight": 6
+                     },
+                     "fiber": {
+                        "uri": "stonehearth:resources:fiber:coarse_fiber_bundle",
+                        "weight": 3
+                     },
+                     "seed": {
+                        "uri": "stonehearth_ace:vines:highland_vine:seed",
+                        "weight": 1
+                     }
+                  }
+               }
+            }
+         }
       }
    },
    "entity_data": {
@@ -123,7 +151,10 @@
          "icon": "file(highland_vine.png)"
       },
       "stonehearth:appeal": {
-         "appeal": 1
+         "appeal": 3
       }
+   },
+   "stonehearth:target_type": {
+      "target_type": "item"
    }
 }
