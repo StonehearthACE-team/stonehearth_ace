@@ -9,19 +9,22 @@
          "type": "boolean",
          "display_name": "stonehearth_ace:ui.shell.settings.gameplayTab.auto_craft_recipe_dependencies",
          "description": "stonehearth_ace:ui.shell.settings.gameplayTab.auto_craft_recipe_dependencies_description",
-         "default": true
+         "default": true,
+         "ordinal": 1
       },
       "enable_auto_harvest_animals": {
          "type": "boolean",
          "display_name": "stonehearth_ace:ui.shell.settings.gameplayTab.auto_harvest_animals_enabled",
          "description": "stonehearth_ace:ui.shell.settings.gameplayTab.auto_harvest_animals_enabled_description",
-         "default": true
+         "default": true,
+         "ordinal": 11
       },
       "enable_auto_harvest": {
          "type": "boolean",
          "display_name": "stonehearth_ace:ui.shell.settings.gameplayTab.auto_harvest_enabled",
          "description": "stonehearth_ace:ui.shell.settings.gameplayTab.auto_harvest_enabled_description",
-         "default": false
+         "default": false,
+         "ordinal": 10
       },
       "terrain_slice_buildings": {
          "type": "boolean",
@@ -30,7 +33,8 @@
          "default": false,
          "on_change": {
             "call": "terrain_slice_buildings_setting_changed"
-         }
+         },
+         "ordinal": 20
       }
    }
 }

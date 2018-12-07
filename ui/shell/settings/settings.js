@@ -140,9 +140,15 @@ $(top).on('stonehearthReady', function(cc) {
             newSection.classList.add('modSettings');
 
             if(settings) {
-               // if there are actually settings, create the elements for them
-               radiant.each(settings, function(name, setting) {
-                  var element = self._createGameplaySettingElements(mod, name, setting);
+               // if there are actually settings, create the elements for them, sorted by ordinal
+               var sortedSettings = radiant.map_to_array(settings, function(name, setting) {
+                  setting.name = name;
+                  setting.ordinal = setting.ordinal || 0;
+               });
+               sortedSettings.sort(function(a, b) { return a.ordinal - b.ordinal });
+
+               radiant.each(sortedSettings, function(i, setting) {
+                  var element = self._createGameplaySettingElements(mod, setting);
                   if(element) {
                      newSection.appendChild(element);
                   }
@@ -153,11 +159,11 @@ $(top).on('stonehearthReady', function(cc) {
          }
       },
 
-      _createGameplaySettingElements: function(mod, name, setting) {
+      _createGameplaySettingElements: function(mod, setting) {
          var self = this;
          // create the elements and functions for getting/setting the setting value
          var newDiv;
-         var settingElementID = 'opt__' + mod + '__' + name;
+         var settingElementID = 'opt__' + mod + '__' + setting.name;
 
          switch(setting.type) {
             case 'boolean':
