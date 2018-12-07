@@ -76,8 +76,9 @@ function AquaticObjectComponent:_on_water_exists_changed(exists)
 	if self._require_water_to_grow then
 		self:timers_resume(exists)
 	end
-	
-	if self._suffocate_if_out_of_water then 
+   
+   -- if water goes away completely, water_surface_level may not get reported, but it should definitely suffocate
+	if self._suffocate_if_out_of_water and not exists then
 		self:suffocate_entity()
 	end
 	
@@ -94,7 +95,8 @@ function AquaticObjectComponent:_on_water_surface_level_changed(level)
 	if self._floating_object then
 		self:float(level)
 	end
-	
+   
+   -- if a surface level is getting reported, water exists, so this handles the case of water suddenly appearing
 	if self._suffocate_if_out_of_water then 
 		self:suffocate_entity(level)
 	end

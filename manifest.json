@@ -111,8 +111,7 @@
       "buffs:suffocating": "file(data/buffs/swimming/suffocating_buff.json)",
       "buffs:using_crossbow": "file(data/buffs/equipment/using_crossbow/using_crossbow.json)",
       "color_map:ace": "file(data/materials/color_maps/stonehearth_ace_color_map.json)",
-      "commands:disable_auto_harvest": "file(data/commands/auto_harvest/disable_auto_harvest.json)",
-      "commands:enable_auto_harvest": "file(data/commands/auto_harvest/enable_auto_harvest.json)",
+      "commands:manage_parties": "file(data/commands/manage_parties/manage_parties.json)",
       "commands:patrol_banner:move": "file(data/commands/patrol_banner/move_patrol_banner.json)",
       "commands:patrol_banner:remove": "file(data/commands/patrol_banner/remove_patrol_banner.json)",
       "commands:slaughter:wild_animal": "file(data/commands/slaughter/slaughter.json)",
@@ -1314,14 +1313,6 @@
          "controller": "file(call_handlers/job_equipment_roles_call_handler.lua)",
          "endpoint": "server"
       },
-      "toggle_auto_harvest": {
-         "controller": "file(call_handlers/auto_harvest_call_handler.lua)",
-         "endpoint": "server"
-      },
-      "update_auto_harvest_setting": {
-         "controller": "file(call_handlers/auto_harvest_call_handler.lua)",
-         "endpoint": "server"
-      },
       "box_move": {
          "controller": "file(call_handlers/resource_call_handler.lua)",
          "endpoint": "client"
@@ -1335,14 +1326,6 @@
          "endpoint": "client"
       },
       "undeploy_items": {
-         "controller": "file(call_handlers/resource_call_handler.lua)",
-         "endpoint": "client"
-      },
-      "box_enable_auto_harvest": {
-         "controller": "file(call_handlers/resource_call_handler.lua)",
-         "endpoint": "client"
-      },
-      "box_disable_auto_harvest": {
          "controller": "file(call_handlers/resource_call_handler.lua)",
          "endpoint": "client"
       },

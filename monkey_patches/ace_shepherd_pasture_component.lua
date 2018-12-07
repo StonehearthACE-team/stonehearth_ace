@@ -158,8 +158,10 @@ end
 -- overrides original to only create harvest task if auto-harvest is enabled for them
 function AceShepherdPastureComponent:_create_harvest_task(target)
    local renewable_resource_component = target:get_component('stonehearth:renewable_resource_node')
-   if renewable_resource_component and renewable_resource_component:get_auto_harvest_enabled() then
-      renewable_resource_component:request_harvest(radiant.entities.get_player_id(self._entity))
+   local player_id = self._entity:get_player_id()
+   if renewable_resource_component and -- renewable_resource_component:get_auto_harvest_enabled() then
+         (player_id == '' or stonehearth.client_state:get_client_gameplay_setting(player_id, 'stonehearth_ace', 'enable_auto_harvest_animals', true)) then
+      renewable_resource_component:request_harvest(player_id)
    end
 end
 

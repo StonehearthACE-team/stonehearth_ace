@@ -124,7 +124,7 @@ function ConnectionRenderer:_on_ui_mode_changed()
 end
 
 function ConnectionRenderer:_in_appropriate_mode()
-   return self._ui_view_mode == 'hud' or self._ui_view_mode == 'place'
+   return self._ui_view_mode == 'hud'
 end
 
 function ConnectionRenderer:_unhilight()

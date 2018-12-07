@@ -25,7 +25,7 @@ local monkey_patches = {
    ace_farmer_field_component = 'stonehearth.components.farmer_field.farmer_field_component',
    ace_growing_component = 'stonehearth.components.growing.growing_component',
    ace_renewable_resource_node_component = 'stonehearth.components.renewable_resource_node.renewable_resource_node_component',
-   ace_task_tracker_component = 'stonehearth.components.task_tracker.task_tracker_component',
+   --ace_task_tracker_component = 'stonehearth.components.task_tracker.task_tracker_component', -- only used for individual auto-harvest
    ace_shepherd_pasture_component = 'stonehearth.components.shepherd_pasture.shepherd_pasture_component',
    ace_shepherd_service = 'stonehearth.services.server.shepherd.shepherd_service',
    ace_swimming_service = 'stonehearth.services.server.swimming.swimming_service',
@@ -47,7 +47,8 @@ local monkey_patches = {
    ace_incapacitation_component = 'stonehearth.components.incapacitation.incapacitation_component',
    ace_crafter_jobs_node = 'stonehearth.components.building2.plan.nodes.crafter_jobs_node',
    ace_patrollable_object = 'stonehearth.services.server.town_patrol.patrollable_object',
-   ace_get_patrol_route_action = 'stonehearth.ai.actions.get_patrol_route_action'
+   ace_get_patrol_route_action = 'stonehearth.ai.actions.get_patrol_route_action',
+   ace_party_component = 'stonehearth.components.party.party_component'
 }
 
 local function monkey_patching()

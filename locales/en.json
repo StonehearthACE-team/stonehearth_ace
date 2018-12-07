@@ -222,6 +222,10 @@
                "display_name": "Prefer Crossbows",
                "description": "This Archer currently prefers using a crossbow. Click to change!"
             }
+         },
+         "manage_parties": {
+            "display_name": "Manage Party",
+            "description": "Manage patrol banners and guard zones (not yet implemented) for this party."
          }
       },
       "buffs": {
@@ -2812,7 +2816,8 @@
             }
          },
          "patrol_banner": {
-            "display_name": "Patrol Banner"
+            "display_name": "Patrol Banner",
+            "description": "Combat party members will prioritize patrolling between these banners."
          }
       },
       "aquatic": {
@@ -3345,6 +3350,8 @@
                "auto_craft_recipe_dependencies_description": "When crafting an item, the crafters will check the inventory to see if there is sufficient of ingredients to use. If not, then they will add more orders to the queue should they need to to fulfill the original order.",
                "auto_harvest_enabled": "Auto-Harvest Renewable Resources",
                "auto_harvest_enabled_description": "When harvesting a renewable resource, if not otherwise specified, automatically enable Auto-Harvest on that resource.",
+               "auto_harvest_animals_enabled": "Animals Auto-Produce Renewable Resources",
+               "auto_harvest_animals_enabled_description": "Animals that you own will automatically produce renewable resources (e.g., your poyos will produce eggs).",
                "terrain_slice_buildings": "Terrain Slice Buildings",
                "terrain_slice_buildings_description": "In Terrain Slice mode, don't render entities supported by visible, non-terrain entities."
             }

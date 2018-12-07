@@ -1,0 +1,21 @@
+,
+   "harvest_menu": {
+      "items": {
+         "box_enable_auto_harvest": {
+            "name": "i18n(stonehearth_ace:ui.game.menu.harvest_menu.items.box_enable_auto_harvest.display_name)",
+            "description": "i18n(stonehearth_ace:ui.game.menu.harvest_menu.items.box_enable_auto_harvest.description)",
+            "class": "button",
+            "icon": "/stonehearth_ace/data/commands/auto_harvest/disable_auto_harvest_menu.png",
+            "sticky": true,
+            "hotkey_action": "harvest:box_enable_auto_harvest"
+         },
+         "box_disable_auto_harvest": {
+            "name": "i18n(stonehearth_ace:ui.game.menu.harvest_menu.items.box_disable_auto_harvest.display_name)",
+            "description": "i18n(stonehearth_ace:ui.game.menu.harvest_menu.items.box_disable_auto_harvest.description)",
+            "class": "button",
+            "icon": "/stonehearth_ace/data/commands/auto_harvest/enable_auto_harvest_menu.png",
+            "sticky": true,
+            "hotkey_action": "harvest:box_disable_auto_harvest"
+         }
+      }
+   }

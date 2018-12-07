@@ -1,3 +1,21 @@
+$(document).ready(function () {
+   // Show the crafting UI from the workshops, and from the crafter.
+   $(top).on("ace_manage_parties", function (_, e) {
+      var view = App.gameView.getView(App.AceMilitaryModeView);
+      if (!view) {
+         view = App.gameView.addView(App.AceMilitaryModeView);
+      }
+      
+      Ember.run.scheduleOnce('afterRender', function() {
+         view.show();
+         Ember.run.scheduleOnce('afterRender', function() {
+            view.selectParty(e.event_data.party);
+         });
+      });
+      App.setGameMode('military');
+   });
+});
+
 App.AceMilitaryModeView = App.View.extend({
    templateName: 'militaryMode',
    closeOnEsc: true,
@@ -114,13 +132,11 @@ App.AceMilitaryModeView = App.View.extend({
       // when the selected entity changes, select the correct entry if it's a party or a party banner in the currently shown party
       var found = false;
       var prevSelectedId = self.selectedEntityId;
+      self.selectedEntityId = e.selected_entity && e.selected_entity.split('/').pop();
       var party = self.partyEntities[e.selected_entity];
 
       if (party) {
-         var prevParty = self.get('selectedParty');
-         if (prevParty != party) {
-            self.$('#partyTab_'+party).click();
-         }
+         self.selectParty(party);
       }
       else {
          radiant.each(self.allPartyBanners, function(party, banners) {
@@ -130,19 +146,28 @@ App.AceMilitaryModeView = App.View.extend({
                if (banner.entity == e.selected_entity) {
                   found = true;
                   self.selectedEntity = banner;
-                  self.selectedEntityId = banner.id;
+                  //self.selectedEntityId = banner.id;
                }
             });
          });
 
          if (!found) {
             self.selectedEntity = null;
-            self.selectedEntityId = null;
+            //self.selectedEntityId = null;
          }
 
          if (prevSelectedId != self.selectedEntityId) {
             self._selectRowByEntityId(self.selectedEntityId);
          }
+      }
+   },
+
+   selectParty: function(partyId) {
+      var self = this;
+
+      var prevParty = self.get('selectedParty');
+      if (prevParty != partyId) {
+         self.$('#partyTab_'+partyId).click();
       }
    },
 
@@ -199,6 +224,8 @@ App.AceMilitaryModeView = App.View.extend({
 
    _updateView: function() {
       var self = this;
+      if (!self.orderedPartyBanners) return;
+
       var party = self.get('selectedParty');
 
       var banners = [];
@@ -287,6 +314,7 @@ App.AceMilitaryModeView = App.View.extend({
          radiant.call('stonehearth_ace:add_patrol_banner_command', selectedParty, prevBanner, nextBanner)
          .done(function(r) {
             if (r.new_banner) {
+               radiant.call('stonehearth:select_entity', r.new_banner);
                self.send('createNewBanner', selectedParty, r.new_banner);
             }
          });

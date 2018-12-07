@@ -1,6 +1,7 @@
 local RenewableResourceNodeComponent = radiant.mods.require('stonehearth.components.renewable_resource_node.renewable_resource_node_component')
 local AceRenewableResourceNodeComponent = class()
 
+--[[
 local HARVEST_ACTION = 'stonehearth:harvest_renewable_resource'
 local ENABLE_AUTO_HARVEST_COMMAND = 'stonehearth_ace:commands:enable_auto_harvest'
 local DISABLE_AUTO_HARVEST_COMMAND = 'stonehearth_ace:commands:disable_auto_harvest'
@@ -62,6 +63,7 @@ function AceRenewableResourceNodeComponent:_on_auto_harvest_setting_update(playe
       self:_update_auto_harvest_commands()
    end
 end
+]]
 
 function AceRenewableResourceNodeComponent:_auto_request_harvest()
    local player_id = self._entity:get_player_id()
@@ -77,17 +79,20 @@ function AceRenewableResourceNodeComponent:_auto_request_harvest()
 end
 
 function AceRenewableResourceNodeComponent:get_auto_harvest_enabled()
-   local auto_harvest = self._sv.manual_auto_harvest
-   if auto_harvest == nil then
-      auto_harvest = self._sv.default_auto_harvest
-      local player_id = self._entity:get_player_id()
-      if auto_harvest == nil and player_id ~= '' then
-         auto_harvest = stonehearth.client_state:get_client_gameplay_setting(player_id, 'stonehearth_ace', 'auto_enable_auto_harvest', false)
-      end
+   local player_id = self._entity:get_player_id()
+   if player_id ~= '' then
+      return stonehearth.client_state:get_client_gameplay_setting(player_id, 'stonehearth_ace', 'enable_auto_harvest', false)
    end
-   return auto_harvest
 end
 
+AceRenewableResourceNodeComponent._old_renew = RenewableResourceNodeComponent.renew
+function AceRenewableResourceNodeComponent:renew()
+   self:_old_renew()
+
+   self:_auto_request_harvest()
+end
+
+--[[
 function AceRenewableResourceNodeComponent:set_auto_harvest_enabled(enabled)
    local changed = enabled ~= self:get_auto_harvest_enabled()
    if self._sv.manual_auto_harvest ~= enabled then
@@ -97,13 +102,6 @@ function AceRenewableResourceNodeComponent:set_auto_harvest_enabled(enabled)
    if changed then
       self:_update_auto_harvest_commands()
    end
-end
-
-AceRenewableResourceNodeComponent._old_renew = RenewableResourceNodeComponent.renew
-function AceRenewableResourceNodeComponent:renew()
-   self:_old_renew()
-
-   self:_auto_request_harvest()
 end
 
 function AceRenewableResourceNodeComponent:_cancel_harvest_request()
@@ -125,5 +123,6 @@ function AceRenewableResourceNodeComponent:_update_auto_harvest_commands()
       commands:add_command(ENABLE_AUTO_HARVEST_COMMAND)
    end
 end
+]]
 
 return AceRenewableResourceNodeComponent

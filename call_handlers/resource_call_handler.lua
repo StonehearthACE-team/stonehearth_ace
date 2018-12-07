@@ -48,6 +48,7 @@ function ResourceCallHandler:box_undeploy(session, response)
       :go()
 end
 
+--[[
 function ResourceCallHandler:box_enable_auto_harvest(session, response)
    stonehearth.selection:select_xz_region('box_undeploy')
       :set_max_size(50)
@@ -89,6 +90,7 @@ function ResourceCallHandler:box_disable_auto_harvest(session, response)
          end)
       :go()
 end
+]]
 
 function ResourceCallHandler:box_get_commandable_entities(session, response, box, commands, allow_neutral_player_ids)
    validator.expect_argument_types({'Cube3', 'table'}, box, commands)
@@ -145,10 +147,12 @@ function ResourceCallHandler:undeploy_items(session, response, entities)
    end
 end
 
+--[[
 function ResourceCallHandler:set_items_auto_harvest(session, response, entities, enabled)
    for _, entity in ipairs(entities) do
       _radiant.call('stonehearth_ace:toggle_auto_harvest', entity, enabled)
    end
 end
+]]
 
 return ResourceCallHandler

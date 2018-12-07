@@ -54,7 +54,7 @@ function PatrolBannerRenderer:destroy()
 end
 
 function PatrolBannerRenderer:_in_appropriate_mode()
-   return self._ui_view_mode == 'military' or self._ui_view_mode == 'hud' or self._ui_view_mode == 'build'
+   return self._ui_view_mode == 'military'
 end
 
 function PatrolBannerRenderer:_on_ui_mode_changed()
@@ -107,10 +107,6 @@ function PatrolBannerRenderer:_unhilight()
    if _hilight_count[self._entity_id] then
       _hilight_count[self._entity_id] = 0
    end
-end
-
-function PatrolBannerRenderer:_in_appropriate_mode()
-   return self._ui_view_mode == 'hud'
 end
 
 function PatrolBannerRenderer:_update_render()
