@@ -41,7 +41,7 @@
          "render_type": "merge_with_model",
          "slot": "torso",
          "ilevel": 10,
-         "roles": "archer_job",
+         "roles":["archer_job"],
          "required_job_level": 6,
          "equip_effect": "stonehearth:effects:weapon_level_up"
       }
@@ -63,7 +63,7 @@
          "description": "i18n(stonehearth_ace:entities.armor.legendary_hood.description)",
          "icon": "file(legendary_hood.png)",
          "category": "armor",
-         "material_tags": "legendary armor light_armor legendary_hood stockpile_equipment"
+         "material_tags":["legendary", "armor", "light_armor", "legendary_hood", "stockpile_equipment"]
       }
    }
 }

@@ -20,7 +20,7 @@
             "stonehearth:patrol"
          ],
          "ilevel": 11,
-         "roles": "footman_job",
+         "roles":["footman_job"],
          "required_job_level": 3,
          "equip_effect": "stonehearth:effects:weapon_level_up",
          "equipment_types": [
@@ -75,7 +75,7 @@
          "description": "i18n(stonehearth_ace:entities.weapons.iron_hatchet.description)",
          "icon": "file(iron_hatchet.png)",
          "category": "weapons",
-         "material_tags": "offhand iron melee_weapon crafted iron_hatchet stockpile_weapon"
+         "material_tags":["offhand", "iron", "melee_weapon", "crafted", "iron_hatchet", "stockpile_weapon"]
       }
    }
 }

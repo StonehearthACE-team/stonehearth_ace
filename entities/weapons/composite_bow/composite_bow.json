@@ -20,7 +20,7 @@
             "stonehearth:patrol"
          ],
          "ilevel": 32,
-         "roles": "archer_job",
+         "roles":["archer_job"],
          "required_job_level": 5,
          "equip_effect": "stonehearth:effects:weapon_level_up",
          "equipment_types": [
@@ -63,7 +63,7 @@
          "description": "i18n(stonehearth_ace:entities.weapons.composite_bow.description)",
          "icon": "file(composite_bow.png)",
          "category": "weapons",
-         "material_tags": "wood bone bow ranged_weapon composite_bow stockpile_weapon"
+         "material_tags":["wood", "bone", "bow", "ranged_weapon", "composite_bow", "stockpile_weapon"]
       }
    }
 }

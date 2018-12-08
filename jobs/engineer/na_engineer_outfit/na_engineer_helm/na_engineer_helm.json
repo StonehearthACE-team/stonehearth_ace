@@ -21,7 +21,7 @@
       "stonehearth:equipment_piece": {
          "render_type": "merge_with_model",
          "slot": "helmet",
-         "roles": "engineer_job",
+         "roles":["engineer_job"],
          "no_drop": true
       }
    },
@@ -30,7 +30,7 @@
          "display_name": "i18n(stonehearth:jobs.engineer.engineer_helm.display_name)",
          "description": "i18n(stonehearth:jobs.engineer.engineer_helm.description)",
          "icon": "file(na_engineer_helm.png)",
-         "material_tags": "goggles"
+         "material_tags":["goggles"]
       }
    }
 }

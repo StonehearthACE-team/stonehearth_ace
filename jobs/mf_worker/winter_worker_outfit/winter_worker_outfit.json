@@ -61,7 +61,7 @@
       "stonehearth:equipment_piece": {
          "slot": "torso helmet",
          "render_type": "merge_with_model",
-         "roles": "worker_job",
+         "roles":["worker_job"],
          "conditional_values": {
             "season": {
                "winter": 1,
@@ -91,7 +91,7 @@
          "description": "i18n(stonehearth:jobs.worker.winter_worker_outfit.description)",
          "icon": "file(winter_worker_outfit.png)",
          "category": "armor",
-         "material_tags": "cloth worker_outfit dwarf_made stockpile_equipment"
+         "material_tags":["cloth", "worker_outfit", "dwarf_made", "stockpile_equipment"]
       }
    }
 }

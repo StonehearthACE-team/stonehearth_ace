@@ -11,7 +11,7 @@
             "stonehearth:patrol"
          ],
          "ilevel": 18,
-         "roles": "footman_job",
+         "roles":["footman_job"],
          "required_job_level": 6,
          "equip_effect": "stonehearth:effects:weapon_level_up",
 		 "equipment_types": ["mainhand"]
@@ -57,7 +57,7 @@
          "value_in_gold": 48
       },
       "stonehearth:catalog": {
-         "material_tags": "steel melee_weapon crafted long_sword stockpile_weapon"
+         "material_tags":["steel", "melee_weapon", "crafted", "long_sword", "stockpile_weapon"]
       }
    }
 }

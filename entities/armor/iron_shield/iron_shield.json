@@ -13,7 +13,7 @@
          ],
          "required_job_level": 2,
          "ilevel": 5,
-         "roles": "knight_job",
+         "roles":["knight_job"],
          "equip_effect": "stonehearth:effects:weapon_level_up",
 		 "equipment_types": ["shield"]
       }
@@ -33,7 +33,7 @@
          }
       ],
       "stonehearth:catalog": {
-         "material_tags": "iron shield heavy_armor iron_shield stockpile_equipment"
+         "material_tags":["iron", "shield", "heavy_armor", "iron_shield", "stockpile_equipment"]
       }
    }
 }

@@ -21,7 +21,7 @@
       "stonehearth:equipment_piece": {
          "render_type": "merge_with_model",
          "slot": "helmet",
-         "roles": "herbalist_job",
+         "roles":["herbalist_job"],
          "no_drop": true
       }
    },
@@ -30,7 +30,7 @@
          "display_name": "i18n(stonehearth_ace:jobs.herbalist.herbalist_hood.display_name)",
          "description": "i18n(stonehearth_ace:jobs.herbalist.herbalist_hood.description)",
          "icon": "file(rc_herbalist_helm.png)",
-         "material_tags": "hood"
+         "material_tags":["hood"]
       }
    }
 }
