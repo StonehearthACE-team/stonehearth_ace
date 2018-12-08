@@ -4,9 +4,11 @@ local AceTown = class()
 AceTown._old__requirements_met = Town._requirements_met
 function AceTown:_requirements_met(person, job_uri)
    local job_component = person:get_component('stonehearth:job')
+   local player_id = radiant.entities.get_player_id(person)
+   local base_job = stonehearth.player:get_default_base_job(player_id)
 
    -- if person already has a controller for that job
-   if job_component:get_controller(job_uri) or job_uri == 'stonehearth:jobs:worker' then
+   if job_component:get_controller(job_uri) or job_uri == base_job then
       return true
    end
 
@@ -19,7 +21,7 @@ function AceTown:_requirements_met(person, job_uri)
    local job_data = radiant.resources.load_json(mod_job_uri)
 
    -- if desired job's parent is worker
-   if job_data.parent_job == 'stonehearth:jobs:worker' then
+   if job_data.parent_job == base_job then
       return true
    end
 

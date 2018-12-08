@@ -236,7 +236,7 @@ $(top).on('stonehearthReady', function(cc) {
       _getNumberSettings(ns) {
          ns = ns || {};
          ns.min = ns.min || 0;
-         ns.max = ns.max || Math.max(1, 1 + ns.min);
+         ns.max = ns.max || Math.max(0, 1 + ns.min);
          ns.step = ns.step || 1;
 
          return ns;

@@ -53,7 +53,7 @@ App.StonehearthPromotionTree.reopen({
                }
             });
             if (parentJobs.length < 1) {
-               parentJobs.push({"job": 'stonehearth:jobs:worker'});
+               parentJobs.push({"job": self._baseWorkerJob});
             }
 
             var parent = parentJobs[0];
@@ -354,7 +354,7 @@ App.StonehearthPromotionTree.reopen({
       var oneOfJobs = [];
       parents.forEach(parentJob => {
          var job = parentJob.job;
-         job = job != 'stonehearth:jobs:worker' ? (self._jobData[job] ? self._jobData[job].description : null) : null;
+         job = job != self._baseWorkerJob ? (self._jobData[job] ? self._jobData[job].description : null) : null;
          if (job) {
             var parentRequiredLevel = parentJob.level_requirement ? parentJob.level_requirement : 0;
             var requirementMet = true;
@@ -437,7 +437,7 @@ App.StonehearthPromotionTree.reopen({
       }
       var selectedJob = self._jobData[selectedJobAlias].description;
 
-      if (jobAlias == 'stonehearth:jobs:worker' || jobDescription.parent_job == 'stonehearth:jobs:worker') {
+      if (jobAlias == self._baseWorkerJob || jobDescription.parent_job == self._baseWorkerJob) {
          return true;
       }
 
@@ -451,7 +451,7 @@ App.StonehearthPromotionTree.reopen({
 
       var one_of = undefined;
       parent_jobs.forEach(parent_job => {
-         if (parent_job.job != "stonehearth:jobs:worker")
+         if (parent_job.job != self._baseWorkerJob)
          {
             var parentJobController = self._citizenJobData[parent_job.job];
             var parentRequiredLevel = parent_job.level_requirement ? parent_job.level_requirement : 0;
