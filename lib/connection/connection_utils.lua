@@ -50,36 +50,6 @@ function connection_utils.combine_type_tables(t1, t2)
    return t
 end
 
-function connection_utils.combine_entity_tables(t1, t2)
-   -- this is called with the player-specific and all-players connected_entities tables
-   local t = {}
-   
-   for _, copy_from in ipairs({t1, t2}) do
-      for entity, data in pairs(copy_from) do
-         if not t[entity] then
-            t[entity] = {}
-         end
-         for type, type_data in pairs(data) do
-            if not t[entity][type] then
-               t[entity][type] = {}
-            end
-            t[entity][type].available = type_data.available
-            if not t[entity][type].available_connectors then
-               t[entity][type].available_connectors = {}
-            end
-            t[entity][type].connected = type_data.connected
-            if not t[entity][type].connected_connectors then
-               t[entity][type].connected_connectors = {}
-            end
-            connection_utils.combine_tables(t[entity][type].available_connectors, type_data.available_connectors or {})
-            connection_utils.combine_tables(t[entity][type].connected_connectors, type_data.connected_connectors or {})
-         end
-      end
-   end
-
-   return t
-end
-
 -- called from item_placer (on the client), passing the cursor entity
 -- check to see if the cursor entity in its current position has a connector that matches up with
 -- an available connector on this entity in its current position
@@ -90,7 +60,7 @@ function connection_utils._item_placer_can_place(item_uri, cursor, target)
 
    if cursor_conns and target_conns then
       for type, stats in pairs(target_stats) do
-         if stats.available then
+         if stats.num_connections < stats.max_connections then
             local cursor_conn = cursor_conns[type] or {}
             for name, conn in pairs(cursor_conn.connectors or {}) do
                -- make sure there's actually a connector specified for this type
@@ -120,26 +90,40 @@ function connection_utils._update_entity_connection_data(data, stats)
    for type, type_stats in pairs(stats) do
       local these_stats = data[type]
       if not these_stats then
-         these_stats = {available_connectors = {}, connected_connectors = {}}
+         these_stats = {connectors = {}}
          data[type] = these_stats
       end
-      if type_stats.available ~= nil then
-         these_stats.available = type_stats.available
-      end
-      if type_stats.connected ~= nil then
-         these_stats.connected = type_stats.connected
-      end
+      these_stats.num_connections = type_stats.num_connections
+      these_stats.max_connections = type_stats.max_connections
       
-      if type_stats.available_connectors then
-         for id, available in pairs(type_stats.available_connectors) do
-            these_stats.available_connectors[id] = available or nil
+      if type_stats.connectors then
+         for id, connector in pairs(type_stats.connectors) do
+            local these_conns = these_stats.connectors[id]
+            if not these_conns then
+               these_conns = {connected_to = {}}
+               these_stats.connectors[id] = these_conns
+            end
+            these_conns.num_connections = connector.num_connections
+            these_conns.max_connections = connector.max_connections
+
+            if connector.connected_to then
+               for to_id, graph_id in pairs(connector.connected_to) do
+                  these_conns.connected_to[to_id] = graph_id
+               end
+            end
          end
       end
-      if type_stats.connected_connectors then
-         for id, connected in pairs(type_stats.connected_connectors) do
-            these_stats.connected_connectors[id] = connected or nil
-         end
+   end
+end
+
+function connection_utils._update_connection_data(data, new_data)
+   for entity_id, entity_data in pairs(new_data) do
+      local this_entity_data = data[entity_id]
+      if not this_entity_data then
+         this_entity_data = {}
+         data[entity_id] = this_entity_data
       end
+      connection_utils._update_entity_connection_data(this_entity_data, entity_data)
    end
 end
 

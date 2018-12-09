@@ -22,13 +22,17 @@ end
 function VineController:activate()
    MIN_GROWTH_PERIOD = stonehearth.calendar:debug_game_seconds_to_realtime(1, true)
    
+   self._game_loaded_listener = radiant.events.listen_once(radiant, 'radiant:game_loaded', function()
+      self._game_loaded_listener = nil
+      self:_update_graphs()
+   end)
+
    self._connections_changed_listener = radiant.events.listen(stonehearth_ace.connection,
          'stonehearth_ace:connections:'..self._sv.uri..':changed', self, self._on_connections_changed)
 
    self._networks_by_entity = {}
    self._graphs = {}
    self._changed_graphs = {}
-   self:_update_graphs()
    self:_update_disconnected_growth_timer()
 end
 
@@ -74,19 +78,23 @@ end
 
 function VineController:_update_graph(id, graph)
    if graph then
-      local g = {}
-      self._graphs[id] = g
-      for e_id, _ in pairs(graph.nodes) do
-         table.insert(g, e_id)
-      end
-
+      self:_update_graph_contents(id, graph)
       self:_update_graph_growth_timer(id)
    else
       if self._sv.graph_growth_timers[id] then
          self._sv.graph_growth_timers[id]:destroy()
          self._sv.graph_growth_timers[id] = nil
+         self.__saved_variables:mark_changed()
       end
       self._graphs[id] = nil
+   end
+end
+
+function VineController:_update_graph_contents(id, graph)
+   local g = {}
+   self._graphs[id] = g
+   for e_id, _ in pairs(graph.nodes) do
+      table.insert(g, e_id)
    end
 end
 
@@ -148,7 +156,7 @@ function VineController:_update_graph_growth_timer(id, expired)
    end
 
    if expired then
-      --self.__saved_variables:mark_changed()
+      self.__saved_variables:mark_changed()
    end
 end
 
@@ -199,7 +207,7 @@ function VineController:_update_disconnected_growth_timer(expired)
       end
    end
 
-   --self.__saved_variables:mark_changed()
+   self.__saved_variables:mark_changed()
 end
 
 return VineController

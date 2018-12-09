@@ -62,8 +62,8 @@ function ConnectionClientService:_on_selection_changed()
       end)
 end
 
-function ConnectionClientService:update_client_connections()
-   _radiant.call_obj('stonehearth_ace.connection', 'get_connections_data_command')
+function ConnectionClientService:update_client_connections(types)
+   _radiant.call_obj('stonehearth_ace.connection', 'get_connections_data_command', types)
       :done(function (response)
          self._connections = response.connections
       end)

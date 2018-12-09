@@ -148,9 +148,13 @@ function ConnectionRenderer:_update()
 
    -- go through each connector this entity has and render stuff for it
    for type, connection in pairs(self._connections) do
-      local type_data = data[type] or {}
-      local available = type_data.available
-      local connected = type_data.connected
+      local type_data = data[type]
+      local available = true
+      local connected = false
+      if type_data then
+         available = type_data.num_connections < type_data.max_connections
+         connected = type_data.num_connections > 0
+      end
 
       local origin_offset = radiant.util.to_point3(connection.origin_offset) or Point3.zero
       
@@ -166,8 +170,14 @@ function ConnectionRenderer:_update()
             local EDGE_COLOR_ALPHA = 12
             local FACE_COLOR_ALPHA = 6
             
-            local connector_available = (type_data.available_connectors or {})[name]
-            local connector_connected = (type_data.connected_connectors or {})[name]
+            local connector_data = type_data and type_data.connectors[name]
+            local connector_available = true
+            local connector_connected = false
+            if connector_data then
+               connector_available = connector_data.num_connections < connector_data.max_connections
+               connector_connected = connector_data.num_connections > 0
+            end
+
             local is_available = available and connector_available
             local is_connected = connected and connector_connected
             if is_available and colors.available_color then

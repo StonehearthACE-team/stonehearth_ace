@@ -10,9 +10,13 @@ function AcePartyComponent:_initialize_party()
 end
 
 function AcePartyComponent:_update_manage_party_command()
-   local command_component = self._entity:add_component('stonehearth:commands')
-   command_component:add_command('stonehearth_ace:commands:manage_parties')
-   command_component:set_command_event_data('stonehearth_ace:commands:manage_parties', {party = self._sv.banner_variant})
+   local party = self._sv.banner_variant
+   if party then
+      local command = 'stonehearth_ace:commands:manage_' .. party
+      local command_component = self._entity:add_component('stonehearth:commands')
+      command_component:add_command(command)
+      command_component:set_command_event_data(command, {party = party})
+   end
 end
 
 AcePartyComponent._old_set_banner_variant = PartyComponent.set_banner_variant

@@ -8,11 +8,14 @@ function MechanicalService:initialize()
    self._networks_by_entity = {}
 
    -- query connection service for connection info and listen for changes
-   self:_update_graphs()
+   self._game_loaded_listener = radiant.events.listen_once(radiant, 'radiant:game_loaded', function()
+      self._game_loaded_listener = nil
+      self:_update_graphs()
+      for id, _ in pairs(self._graphs) do
+         self:_update_network(id)
+      end
+   end)
    self._connections_changed_listener = radiant.events.listen(stonehearth_ace.connection, 'stonehearth_ace:connections:mechanical:changed', self, self._on_connections_changed)
-   for id, _ in pairs(self._graphs) do
-      self:_update_network(id)
-   end
 end
 
 function MechanicalService:destroy()

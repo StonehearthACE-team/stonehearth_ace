@@ -35,6 +35,21 @@ local import_region = ConnectionUtils.import_region
 local log = radiant.log.create_logger('connection_component')
 local ConnectionComponent = class()
 
+local VERSIONS = {
+   ZERO = 0,
+   V1 = 1
+}
+
+function ConnectionComponent:get_version()
+   return VERSIONS.V1
+end
+
+function ConnectionComponent:fixup_post_load(old_save_data)
+   if old_save_data.version < VERSIONS.V1 then
+      self._sv.connected_stats = {}
+   end
+end
+
 function ConnectionComponent:initialize()
    local json = radiant.entities.get_json(self)
    self._connections = json or {}
@@ -42,17 +57,26 @@ function ConnectionComponent:initialize()
    self._sv.connected_stats = {}
 end
 
+function ConnectionComponent:create()
+   --self._sv.version = self:get_version()
+end
+
+function ConnectionComponent:restore()
+   self._is_restore = true
+end
+
 -- this is performed in activate rather than post_activate so that all specific connection services can use it in post_activate
 function ConnectionComponent:activate()
-   if radiant.is_server then
-      stonehearth_ace.connection:register_entity(self._entity, self._connections)
+   local connected_stats
+   if self._is_restore and next(self._sv.connected_stats) then
+      connected_stats = self._sv.connected_stats
    end
+
+   stonehearth_ace.connection:register_entity(self._entity, self._connections, connected_stats)
 end
 
 function ConnectionComponent:destroy()
-   if radiant.is_server then
-      stonehearth_ace.connection:unregister_entity(self._entity)
-   end
+   stonehearth_ace.connection:unregister_entity(self._entity)
 end
 
 function ConnectionComponent:_format_connections()
@@ -76,9 +100,54 @@ function ConnectionComponent:get_connections(type)
    end
 end
 
+function ConnectionComponent:get_connected_stats(type)
+   local type_data = {}
+
+   for conn_type, data in pairs(self._sv.connected_stats) do
+      if not type or conn_type == type then
+         _update_entity_connection_data(type_data, { [type] = data })
+      end
+   end
+
+   -- return nil if no connected stats
+   return next(type_data) and type_data
+end
+
 -- this is called by the connection service when this entity has any of its connectors change status
-function ConnectionComponent:set_connected_stats(stats)
-   _update_entity_connection_data(self._sv.connected_stats, stats)
+-- it may be called with just the type and conn_name to initialize the data structures
+-- it may be called with just the type and the graph_id when it changes graphs and needs all connectors for that type to update graph_id
+function ConnectionComponent:set_connected_stats(type, conn_name, connected_to_id, graph_id)
+   local type_data = self._sv.connected_stats[type]
+   if not type_data then
+      type_data = {connectors = {}, num_connections = 0, max_connections = self._connections[type].max_connections}
+      self._sv.connected_stats[type] = type_data
+   end
+
+   if conn_name then
+      local conn_data = type_data.connectors[conn_name]
+      if not conn_data then
+         conn_data = {connected_to = {}, num_connections = 0, max_connections = self._connections[type].connectors[conn_name].max_connections}
+         type_data.connectors[conn_name] = conn_data
+      end
+
+      if connected_to_id then
+         local new_status = (graph_id ~= nil)
+         local prev_status = (conn_data.connected_to[connected_to_id] ~= nil)
+         conn_data.connected_to[connected_to_id] = graph_id
+         if prev_status ~= new_status then
+            local conn_modifier = (new_status and 1) or -1
+            conn_data.num_connections = conn_data.num_connections + conn_modifier
+            type_data.num_connections = type_data.num_connections + conn_modifier
+         end
+      end
+   elseif graph_id then
+      for name, connector in pairs(type_data.connectors) do
+         for id, _ in pairs(connector.connected_to) do
+            connector.connected_to[id] = graph_id
+         end
+      end
+   end
+
    self.__saved_variables:mark_changed()
 end
 

@@ -112,7 +112,10 @@
          "required_components": {
             "stonehearth_ace:mechanical": {
                "check_script": "stonehearth_ace.lib.connection.connection_utils",
-               "run_init_script": "stonehearth_ace:update_client_connections_command"
+               "run_init_script": "stonehearth_ace:update_client_connections_command",
+               "run_init_args": {
+                  "types": ["mechanical"]
+               }
             }
          }
       }

@@ -19,8 +19,8 @@ local ALL_PLAYERS = '_all_players_'
 
 local combine_tables = ConnectionUtils.combine_tables
 local combine_type_tables = ConnectionUtils.combine_type_tables
-local combine_entity_tables = ConnectionUtils.combine_entity_tables
 local _update_entity_connection_data = ConnectionUtils._update_entity_connection_data
+local _update_connection_data = ConnectionUtils._update_connection_data
 
 function ConnectionService:initialize()
    local json = radiant.resources.load_json('stonehearth_ace:data:connection_types')
@@ -31,37 +31,23 @@ function ConnectionService:initialize()
    self._traces = {}
    
    self._sv = self.__saved_variables:get_data()
-   local sv_needs_fix = not self._sv.connections or not self._sv.graphs or not self._sv.new_graph_id or not self._sv.connections_ds
-   sv_needs_fix = sv_needs_fix or next(self._sv.connections_ds) and type(self._sv.connections_ds[next(self._sv.connections_ds)]) ~= 'table'
+   self._sv.connections_ds = nil
+   self._sv.graphs = nil
+   self.graphs = {}
+
+   local sv_needs_fix = not self._sv.connections or not self._sv.new_graph_id
    if sv_needs_fix then
       -- First time around or something was improperly configured before.
       self._sv.connections = self._sv.connections or {}
-      self._sv.graphs = self._sv.graphs or {}
       self._sv.new_graph_id = self._sv.new_graph_id or 1
-      self._sv.connections_ds = self._sv.connections_ds or {}
 
       for k, v in pairs(self._sv.connections) do
          self:_destroy_player_connections(k)
-      end
-
-      for k, v in pairs(self._sv.graphs) do
-         self:_remove_graph(k)
-      end
-
-      for k, v in pairs(self._sv.connections_ds) do
-         if type(v.destroy) == 'function' then
-            v:destroy()
-         end
-         self._sv.connections_ds[k] = nil
       end
    else
       -- Reloading. Copy existing data into the cache.
       for k, v in pairs(self._sv.connections) do
          CONNECTIONS_BY_PLAYER_ID[k] = v
-      end
-      for k, v in pairs(self._sv.graphs) do
-         local graphs = self:get_graphs_by_type(v.type)
-         graphs[k] = v
       end
    end
 end
@@ -81,8 +67,12 @@ function ConnectionService:get_graphs_by_type(type)
    return graphs
 end
 
-function ConnectionService:get_graph_by_id(id)
-   return self._sv.graphs[id]
+function ConnectionService:get_graph_by_id(id, player_id, type)
+   local graph = self.graphs[id]
+   if not graph and player_id and type then
+      graph = self:_create_new_graph(type, player_id, id)
+   end
+   return graph
 end
 
 function ConnectionService:is_separated_by_player(type)
@@ -90,13 +80,13 @@ function ConnectionService:is_separated_by_player(type)
    return type_details and type_details.separated_by_player
 end
 
-function ConnectionService:register_entity(entity, connections)
+function ConnectionService:register_entity(entity, connections, connected_stats)
    -- register this entity with the proper player's connections
    local player_id = entity:get_player_id()
    local player_connections = self:get_player_connections(player_id)
    local all_players_connections = self:get_player_connections(ALL_PLAYERS)
-   local res1 = player_connections:register_entity(entity, connections, true)  -- separated by player
-   local res2 = all_players_connections:register_entity(entity, connections, false)
+   local res1 = player_connections:register_entity(entity, connections, true, connected_stats)  -- separated by player
+   local res2 = all_players_connections:register_entity(entity, connections, false, connected_stats)
 
    self:_perform_update(player_id, res1, res2)
    
@@ -117,24 +107,33 @@ function ConnectionService:get_connection_types_command(session, response)
    return {types = self._registered_types}
 end
 
-function ConnectionService:get_connections_data_command(session, response)
-   return { connections = self:get_connections_data(session.player_id) }
+function ConnectionService:get_connections_data_command(session, response, types)
+   return { connections = self:get_connections_data(session.player_id, types) }
 end
 
-function ConnectionService:get_connections_data(player_id)
-   local ds = self._sv.connections_ds[player_id]
-   if not ds then
-      ds = {}
-      self._sv.connections_ds[player_id] = ds
-      --self.__saved_variables:mark_changed()
+function ConnectionService:get_connections_data(player_id, types)
+   local data = {}
+
+   if types and next(types) then
+      for _, type in ipairs(types) do
+         if self._registered_types[type].separated_by_player then
+            _update_connection_data(data, self:get_player_connections(player_id):get_connections_data(type))
+         else
+            _update_connection_data(data, self:get_player_connections(ALL_PLAYERS):get_connections_data(type))
+         end
+      end
+   else
+      _update_connection_data(data, self:get_player_connections(player_id):get_connections_data())
+      _update_connection_data(data, self:get_player_connections(ALL_PLAYERS):get_connections_data())
    end
-   return ds
+
+   return data
 end
 
 function ConnectionService:get_entities_in_selected_graphs_command(session, response, selected_id)
    local entities = {}
    if selected_id then
-      for _, graph in pairs(self._sv.graphs) do
+      for _, graph in pairs(self.graphs) do
          if graph.nodes[selected_id] then
             for id, _ in pairs(graph.nodes) do
                entities[id] = true
@@ -156,7 +155,7 @@ function ConnectionService:get_player_connections(player_id)
       connections = radiant.create_controller('stonehearth_ace:player_connections', player_id)
       CONNECTIONS_BY_PLAYER_ID[player_id] = connections
       self._sv.connections[player_id] = connections
-      --self.__saved_variables:mark_changed()
+      self.__saved_variables:mark_changed()
       radiant.events.trigger(self, 'stonehearth:ace:connections:player_connections_created', player_id)
    end
 
@@ -169,30 +168,32 @@ function ConnectionService:_destroy_player_connections(player_id)
       connections:destroy()
       self._sv.connections[player_id] = nil
       CONNECTIONS_BY_PLAYER_ID[player_id] = nil
+      self.__saved_variables:mark_changed()
    end
 end
 
-function ConnectionService:_create_new_graph(type, player_id)
-   local id = self._sv.new_graph_id
-   local graphs = self._sv.graphs
-   while graphs[id] do
-      id = id + 1
+function ConnectionService:_create_new_graph(type, player_id, id)
+   local graphs = self.graphs
+   if not id then
+      id = self._sv.new_graph_id
+      while graphs[id] do
+         id = id + 1
+      end
+      self._sv.new_graph_id = id
+      self.__saved_variables:mark_changed()
    end
-   self._sv.new_graph_id = id
    local graph = {id = id, type = type, player_id = player_id, nodes = {}}
    graphs[id] = graph
    self:get_graphs_by_type(type)[id] = graph
-   --self.__saved_variables:mark_changed()
 
    return graph
 end
 
 function ConnectionService:_remove_graph(id)
-   local graph = self._sv.graphs[id]
+   local graph = self.graphs[id]
    if graph then
       self:get_graphs_by_type(graph.type)[id] = nil
-      self._sv.graphs[id] = nil
-      --self.__saved_variables:mark_changed()
+      self.graphs[id] = nil
    end
 end
 
@@ -205,26 +206,12 @@ function ConnectionService:_perform_update(player_id, res1, res2)
       if res2 then
          combine_tables(res1.changed_types, res2.changed_types)
          res1.graphs_changed = combine_type_tables(res1.graphs_changed, res2.graphs_changed)
-         res1.entity_changes = combine_entity_tables(res1.entity_changes, res2.entity_changes)
       end
       self:_communicate_update(player_id, res1)
    end
 end
 
 function ConnectionService:_communicate_update(player_id, args)
-   local cur_data = self:get_connections_data(player_id)
-   
-   for entity, stats in pairs(args.entity_changes) do
-      entity:get_component('stonehearth_ace:connection'):set_connected_stats(stats)
-      
-      local entity_data = cur_data[entity:get_id()]
-      if not entity_data then
-         entity_data = {}
-         cur_data[entity:get_id()] = entity_data
-      end
-      _update_entity_connection_data(entity_data, stats)
-   end
-
    for type, _ in pairs(args.changed_types) do
       radiant.events.trigger(self, 'stonehearth_ace:connections:'..type..':changed', type, args.graphs_changed[type] or {})
    end
@@ -298,11 +285,13 @@ function ConnectionService:_stop_entity_traces(id)
    end
 end
 
+--[[
 function ConnectionService:saved_variables_mark_changed()
    for _, controller in pairs(self._sv.connections) do
       controller.__saved_variables:mark_changed()
    end
    self.__saved_variables:mark_changed()
 end
+]]
 
 return ConnectionService
