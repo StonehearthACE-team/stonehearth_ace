@@ -3301,11 +3301,11 @@
          },
          "zones_mode": {
             "farm": {
-               "water_affinity_range": "Fastest growth happens with <span class='water'><span class='value'>[str(i18n_data.min)] - [str(i18n_data.max)]</span> water</span> within or around the perimeter of this farm, at the elevation of the farm or the dirt it's on. Current <span class='water'>water</span> level: <span class='water value'>[str(i18n_data.water_level)]</span>.",
-               "water_affinity_min_only": "Fastest growth happens with at least <span class='water'><span class='value'>[str(i18n_data.min)]</span> water</span> within or around the perimeter of this farm, at the elevation of the farm or the dirt it's on. Current <span class='water'>water</span> level: <span class='water value'>[str(i18n_data.water_level)]</span>.",
-               "requires_flooding": "This crop must have water flooding over it to grow.",
-               "prefers_flooding": "This crop grows more quickly when water is flooding over it.",
-               "prefers_no_flooding": "This crop grows more slowly when water is flooding over it."
+               "water_affinity_range": "Fastest growth happens with <span class='water'><span class='value'>[str(i18n_data.min)] - [str(i18n_data.max)]</span> water</span> within or around the perimeter of this farm, and no deeper than one block down. Current <span class='water'>water</span> level: <span class='water value'>[str(i18n_data.water_level)]</span>.",
+               "water_affinity_min_only": "Fastest growth happens with at least <span class='water'><span class='value'>[str(i18n_data.min)]</span> water</span> within or around the perimeter of this farm, and no deeper than one block down. Current <span class='water'>water</span> level: <span class='water value'>[str(i18n_data.water_level)]</span>.",
+               "requires_flooding": "This crop must have water covering it to grow.",
+               "prefers_flooding": "This crop grows more quickly when water is covering it.",
+               "prefers_no_flooding": "This crop grows more slowly when water is covering it."
             },
             "underfarm": {
                "substrate_name": "Substrate",
