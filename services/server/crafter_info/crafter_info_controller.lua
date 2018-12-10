@@ -17,6 +17,30 @@ function CrafterInfoController:create(player_id)
 end
 
 function CrafterInfoController:post_activate()
+   self._kingdom_changed_listener = radiant.events.listen(_radiant, 'radiant:player_kingdom_changed',
+                                                          self, self._on_player_kingdom_changed)
+   
+   self:_create_maps()
+end
+
+function CrafterInfoController:destroy()
+   if self._kingdom_changed_listener then
+      self._kingdom_changed_listener:destroy()
+      self._kingdom_changed_listener = nil
+   end
+end
+
+function CrafterInfoController:_on_player_kingdom_changed(args)
+   -- since this can change what recipes they have access to, their controller needs to be recreated
+   if args.player_id == self._sv.player_id then
+      self:_create_maps()
+   end
+end
+
+function CrafterInfoController:_create_maps()
+   self._recipe_map:clear()
+   self._material_map:clear()
+   
    local player_id = self._sv.player_id
    local pop = stonehearth.population:get_population(player_id)
    local job_index = radiant.resources.load_json( pop:get_job_index() )
@@ -70,17 +94,20 @@ function CrafterInfoController:post_activate()
                         -- It's a valid recipe, so store it
                         formatted_recipe.product_info = radiant.resources.load_json(formatted_recipe.product_uri)
                         local product_catalog = formatted_recipe.product_info.entity_data["stonehearth:catalog"]
-                        if product_catalog and product_catalog.material_tags then
-                           local mat_tags = product_catalog.material_tags
-                           if type(mat_tags) == 'string' then
-                              mat_tags = radiant.util.split_string(mat_tags, ' ')
+                        -- first verify that the recipe is not for a raw resource (category "resources"; if it's not raw, it should be "refined" or something else)
+                        if not product_catalog or product_catalog.category ~= 'resources' then
+                           if product_catalog and product_catalog.material_tags then
+                              local mat_tags = product_catalog.material_tags
+                              if type(mat_tags) == 'string' then
+                                 mat_tags = radiant.util.split_string(mat_tags, ' ')
+                              end
+                              stonehearth_ace.util.itable_append(keys, mat_tags)
                            end
-                           stonehearth_ace.util.itable_append(keys, mat_tags)
+                           self._recipe_map:add(keys, {
+                              order_list = order_list,
+                              recipe = formatted_recipe,
+                           })
                         end
-                        self._recipe_map:add(keys, {
-                           order_list = order_list,
-                           recipe = formatted_recipe,
-                        })
                      end
                   end
                end

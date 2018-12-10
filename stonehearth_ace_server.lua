@@ -48,7 +48,8 @@ local monkey_patches = {
    ace_crafter_jobs_node = 'stonehearth.components.building2.plan.nodes.crafter_jobs_node',
    ace_patrollable_object = 'stonehearth.services.server.town_patrol.patrollable_object',
    ace_get_patrol_route_action = 'stonehearth.ai.actions.get_patrol_route_action',
-   ace_party_component = 'stonehearth.components.party.party_component'
+   ace_party_component = 'stonehearth.components.party.party_component',
+   ace_player_service = 'stonehearth.services.server.player.player_service'
 }
 
 local function monkey_patching()

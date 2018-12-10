@@ -8,6 +8,10 @@ function RecipeMap:initialize()
    self._log = radiant.log.create_logger('recipe_map')
 end
 
+function RecipeMap:clear()
+   self._map = {}
+end
+
 -- Adds `value` to all buckets in `keys`.
 -- If one such value already exists, then do nothing.
 --

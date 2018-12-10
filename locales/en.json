@@ -524,22 +524,22 @@
                "flavor": "Balance between heating and hammering is essential. Or just do both at once. -Lucan Varius, Artifex Ignis"
             },
             "charcoal_recipe": {
-               "recipe_name": "Piece 'o Charcoal (x3)",
+               "recipe_name": "Piece o' Charcoal (x3)",
                "description": "Heat wood in the absence of oxygen to acquire charcoal, a good grade fuel.",
                "flavor": "Experts call it 'slow pyrolysis'. I call it BIG BONFIRE!"
             },
             "coke_recipe": {
-               "recipe_name": "Slab 'o Coke (x3)",
-               "description": "Heat Lumps 'o Coal without burning them to efficiently produce coke, a good grade fuel.",
+               "recipe_name": "Slab o' Coke (x3)",
+               "description": "Heat Lumps o' Coal without burning them to efficiently produce coke, a good grade fuel.",
                "flavor": "Cook with coal or coke coal to cook with coke?"
             },
             "bulk_charcoal_recipe": {
-               "recipe_name": "Piece 'o Charcoal (x8)",
+               "recipe_name": "Piece o' Charcoal (x8)",
                "description": "Skill allows the Blacksmith to more efficiently burn wood, producing more charcoal.",
                "flavor": "It's 5% less waste!"
             },
             "bulk_coke_recipe": {
-               "recipe_name": "Slab 'o Coke (x10)",
+               "recipe_name": "Slab o' Coke (x10)",
                "description": "Mastery of the craft allows the Blacksmith to achieve maximum efficiency in coking coal.",
                "flavor": "Coke for everyone!"
             },
@@ -887,7 +887,7 @@
                "flavor": "Useful for reaching elevated cookie jars."
             },
             "bundle_of_firewood_recipe": {
-               "recipe_name": "Bundle 'o Firewood (x2)",
+               "recipe_name": "Bundle o' Firewood (x2)",
                "description": "Split that log into blocks for twice their efficiency!",
                "flavor": "Firewood is a common, lower grade fuel"
             },
@@ -1277,23 +1277,23 @@
          },
          "stone": {
             "marble_stone": {
-               "display_name": "Hunk 'o Marble",
+               "display_name": "Hunk o' Marble",
                "description": "Used by masons to make really pretty stone works!"
             },
             "feldspar_stone": {
-               "display_name": "Hunk 'o Feldspar",
+               "display_name": "Hunk o' Feldspar",
                "description": "A not so ordinary rock, feldspar can be used to create porcelain"
             },
             "limestone_stone": {
-               "display_name": "Hunk 'o Limestone",
+               "display_name": "Hunk o' Limestone",
                "description": "A heavy, ordinary rock"
             },
             "sandstone_stone": {
-               "display_name": "Hunk 'o Sandstone",
+               "display_name": "Hunk o' Sandstone",
                "description": "A heavy, ordinary rock"
             },
             "slate_stone": {
-               "display_name": "Hunk 'o Slate",
+               "display_name": "Hunk o' Slate",
                "description": "A heavy, ordinary rock"
             }
          },
@@ -1345,7 +1345,7 @@
          },
          "coal": {
             "piece_of_charcoal": {
-               "display_name": "Piece 'o Charcoal",
+               "display_name": "Piece o' Charcoal",
                "description": "A block of slowly burnt wood that can be used as a good grade fuel."
             },
             "everglowing_ember": {
@@ -1353,29 +1353,29 @@
                "description": "So pretty... It never stops glowing! Used as a higher grade fuel or by the Magmasmith."
             },
             "lump_of_coal": {
-               "display_name": "Lumps 'o Coal",
+               "display_name": "Lumps o' Coal",
                "description": "Sizable chunks of solid coal that can be used as a good grade fuel."
             },
             "hunk_of_hard_coal": {
-               "display_name": "Hunk 'o Hard Coal",
+               "display_name": "Hunk o' Hard Coal",
                "description": "A large bit of black coal, full of energy to be used as a higher grade fuel."
             },
             "slab_of_coke": {
-               "display_name": "Slab 'o Coke",
+               "display_name": "Slab o' Coke",
                "description": "An efficient good grade fuel refined from regular coal."
             },
             "chunk_of_brown_coal": {
-               "display_name": "Chunk 'o Brown Coal",
+               "display_name": "Chunk o' Brown Coal",
                "description": "A soft and less efficient kind of coal that can be used as a lower grade fuel."
             }
          },
          "fuel": {
             "bundle_of_firewood": {
                "description": "Split blocks of wood that can be efficiently used as a lower grade fuel.",
-               "display_name": "Bundle 'o Firewood"
+               "display_name": "Bundle o' Firewood"
             },
             "bit_of_peat": {
-               "display_name": "Bit 'o Peat",
+               "display_name": "Bit o' Peat",
                "description": "Organic residue found in bogs and moors. Can be used as a lower grade fuel."
             }
          },
@@ -2018,7 +2018,7 @@
          "wall_shield": {
             "wall_shield_ghost": {
                "display_name": "Wooden Shield Display",
-               "description": "Giving an use to your training equipment."
+               "description": "Giving a use to your training equipment."
             }
          },
          "workshop": {
@@ -3301,11 +3301,11 @@
          },
          "zones_mode": {
             "farm": {
-               "water_affinity_range": "Fastest growth happens with <span class='water'><span class='value'>[str(i18n_data.min)] - [str(i18n_data.max)]</span> water</span> within or around the perimeter of this farm. Current <span class='water'>water</span> level: <span class='water value'>[str(i18n_data.water_level)]</span>.",
-               "water_affinity_min_only": "Fastest growth happens with at least <span class='water'><span class='value'>[str(i18n_data.min)]</span> water</span> within or around the perimeter of this farm. Current <span class='water'>water</span> level: <span class='water value'>[str(i18n_data.water_level)]</span>.",
-               "requires_flooding": "This crop must be flooded to grow.",
-               "prefers_flooding": "This crop grows more quickly when flooded.",
-               "prefers_no_flooding": "This crop grows more slowly when flooded."
+               "water_affinity_range": "Fastest growth happens with <span class='water'><span class='value'>[str(i18n_data.min)] - [str(i18n_data.max)]</span> water</span> within or around the perimeter of this farm, at the elevation of the farm or the dirt it's on. Current <span class='water'>water</span> level: <span class='water value'>[str(i18n_data.water_level)]</span>.",
+               "water_affinity_min_only": "Fastest growth happens with at least <span class='water'><span class='value'>[str(i18n_data.min)]</span> water</span> within or around the perimeter of this farm, at the elevation of the farm or the dirt it's on. Current <span class='water'>water</span> level: <span class='water value'>[str(i18n_data.water_level)]</span>.",
+               "requires_flooding": "This crop must have water flooding over it to grow.",
+               "prefers_flooding": "This crop grows more quickly when water is flooding over it.",
+               "prefers_no_flooding": "This crop grows more slowly when water is flooding over it."
             },
             "underfarm": {
                "substrate_name": "Substrate",

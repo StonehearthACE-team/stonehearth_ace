@@ -127,7 +127,8 @@ function AceCraftOrderList:add_order(player_id, recipe, condition, is_recursive_
 end
 
 function AceCraftOrderList:insert_order(player_id, recipe, condition, maintain_order_index)
-	local result = self:_ace_old_add_order(player_id, recipe, condition)
+   local result = self:_ace_old_add_order(player_id, recipe, condition)
+   log:debug('inserted order for %d %s', condition.at_least or condition.amount, recipe.recipe_name)
 
 	local old_order_index = condition.order_index or maintain_order_index
 	if old_order_index then
@@ -295,9 +296,9 @@ function AceCraftOrderList:ace_get_ingredient_amount_in_order_list(ingredient, t
          local condition = order:get_condition()
 
          if (ingredient.material
-         and type(recipe.product_uri) == 'table'
-         and recipe.product_uri.entity_data["stonehearth:catalog"].material_tags
-         and self:_ace_matching_tags(ingredient.material, recipe.product_uri.entity_data["stonehearth:catalog"].material_tags))
+         and type(recipe.product_info) == 'table'
+         and recipe.product_info.entity_data["stonehearth:catalog"].material_tags
+         and self:_ace_matching_tags(ingredient.material, recipe.product_info.entity_data["stonehearth:catalog"].material_tags))
          or (ingredient.uri
          and recipe.product_uri == ingredient.uri) then
 
@@ -315,10 +316,35 @@ function AceCraftOrderList:ace_get_ingredient_amount_in_order_list(ingredient, t
    return ingredient_count
 end
 
+function AceCraftOrderList:_ace_matching_tags(tags1, tags2)
+   if type(tags1) == 'string' then
+      tags1 = radiant.util.split_string(tags1, ' ')
+   end
+   if type(tags2) == 'string' then
+      tags2 = radiant.util.split_string(tags2, ' ')
+   end
+
+   -- this isn't necessarily super efficient, but these are tiny arrays; better to do this than generate a map
+   for _, tag in ipairs(tags1) do
+      local found = false
+      for _, tag2 in ipairs(tags2) do
+         if tag == tag2 then
+            found = true
+            break
+         end
+      end
+      if not found then
+         return false
+      end
+   end
+
+   return true
+end
+
 -- Checks to see if `tags_string1` is a sub-set of `tags_string2`.
 -- Returns true if it is, else false.
 --
-function AceCraftOrderList:_ace_matching_tags(tags_string1, tags_string2)
+function AceCraftOrderList:_ace_matching_tags__strings(tags_string1, tags_string2)
    -- Hack!
    -- Add a space at the end to make the frontier pattern search succeed at all times
    tags_string2 = tags_string2 .. ' '

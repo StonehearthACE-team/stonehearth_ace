@@ -9,20 +9,33 @@ function CrafterInfoService:initialize()
    --TODO: add crafter_info for the players at start so there won't be a delay when crafting the first item
    --NOTE: adding a new crafter_info directly after a player joins is the wrong thing to do,
    --      as the information of crafters seem to have not been loaded yet...
-   -- self._kingdom_changed_listener = radiant.events.listen(_radiant, 'radiant:player_kingdom_changed',
-   --                                                        self, self._on_player_kingdom_changed)
+
+   self._kingdom_assigned_listeners = {}
+
+   self._init_listener = radiant.events.listen_once(radiant, 'radiant:required_loaded', function()
+      self._init_listener = nil
+      local players = stonehearth.player:get_non_npc_players()
+      for player_id, info in pairs(players) do
+         if info.kingdom then
+            self:get_crafter_info(player_id)
+         else
+            -- if the player hasn't yet been assigned a kingdom, listen for it
+            self:_create_kingdom_listener(player_id)
+         end
+      end
+   end)
+
+   radiant.events.listen(radiant, 'radiant:client_joined', function(e)
+      self:_create_kingdom_listener(e.player_id)
+   end)
 end
 
-function CrafterInfoService:destroy()
-   if self._kingdom_changed_listener then
-      self._kingdom_changed_listener:destroy()
-      self._kingdom_changed_listener = nil
-   end
+function CrafterInfoService:_create_kingdom_listener(player_id)
+   self._kingdom_assigned_listeners[player_id] = radiant.events.listen_once(radiant, 'radiant:player_kingdom_assigned', function()
+      self._kingdom_assigned_listeners[player_id] = nil
+      self:get_crafter_info(player_id)
+   end)
 end
-
--- function CrafterInfoService:_on_player_kingdom_changed(args)
---    return self:add_crafter_info(args.player_id)
--- end
 
 function CrafterInfoService:add_crafter_info(player_id)
    local crafter_info = radiant.create_controller('stonehearth_ace:crafter_info_controller', player_id)

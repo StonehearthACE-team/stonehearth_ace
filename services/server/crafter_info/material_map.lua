@@ -9,6 +9,10 @@ function MaterialMap:initialize()
    self._log = radiant.log.create_logger('material_map')
 end
 
+function MaterialMap:clear()
+   self._map = {}
+end
+
 -- Adds `value` to all buckets in `keys`.
 -- If one such value already exists, then do nothing.
 --
