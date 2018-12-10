@@ -37,7 +37,10 @@
 	  "recipes": {
 		"training_dummy": {
 		  "recipe": "file(training_dummy_recipe.json)"
-		},
+      },
+      "training_target": {
+         "recipe": "file(training_target_recipe.json)"
+       },
 		"bundle_of_firewood": {
 		  "recipe": "file(bundle_of_firewood_recipe.json)"
 		}

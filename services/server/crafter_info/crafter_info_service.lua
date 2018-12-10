@@ -12,7 +12,7 @@ function CrafterInfoService:initialize()
 
    self._kingdom_assigned_listeners = {}
 
-   self._init_listener = radiant.events.listen_once(radiant, 'radiant:required_loaded', function()
+   self._init_listener = radiant.events.listen_once(radiant, 'radiant:game_loaded', function()
       self._init_listener = nil
       local players = stonehearth.player:get_non_npc_players()
       for player_id, info in pairs(players) do

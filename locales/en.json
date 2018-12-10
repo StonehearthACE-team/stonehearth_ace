@@ -873,7 +873,12 @@
             },
             "training_dummy_recipe": {
                "recipe_name": "Training Dummy",
-               "description": "It's best to practice with this friendly guy.",
+               "description": "Melee fighters can gain experience from practicing with this friendly guy.",
+               "flavor": "Requires an engineer for repairs."
+            },
+            "training_target_recipe": {
+               "recipe_name": "Training Target",
+               "description": "Ranged fighters can gain experience from practicing with this target.",
                "flavor": "Requires an engineer for repairs."
             },
             "legendary_handle_recipe": {
@@ -1447,7 +1452,7 @@
       },
       "trees": {
          "stump": "Tree Stump",
-         "stump_description": "Not a tree anymore... The stump can be harvested to clear space for more trees or buildings.",
+         "stump_description": "Not a tree anymore... The stump can be harvested to clear space.",
          "birch_tree": {
             "ancient_birch_tree": {
                "display_name": "Ancient Birch Tree",
