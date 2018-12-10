@@ -873,8 +873,13 @@
             },
             "training_dummy_recipe": {
                "recipe_name": "Trainingspuppe",
-               "description": "Es ist am besten, mit diesem freundlichen Kerl zu üben.",
+               "description": "Nahkämpfer können Erfahrungen sammeln, wenn sie mit diesem freundlichen Kerl üben.",
                "flavor": "Erfordert einen Ingenieur für Reparaturen."
+            },
+            "training_target_recipe": {
+               "recipe_name": "Zielscheibe",
+               "description": "Fernkämpfer können durch das Üben mit der Zielscheibe Erfahrung sammeln.",
+               "flavor": "Benötigt einen Ingenieur zum reparieren."
             },
             "legendary_handle_recipe": {
                "recipe_name": "Stabiler Griff",
@@ -1447,7 +1452,7 @@
       },
       "trees": {
          "stump": "Baumstumpf",
-         "stump_description": "Kein Baum mehr...Der Stumpf kann geerntet werden, um Platz für mehr Bäume oder Gebäude zu schaffen.",
+         "stump_description": "Kein Baum mehr...Der Stumpf kann geerntet werden für mehr Platz.",
          "birch_tree": {
             "ancient_birch_tree": {
                "display_name": "Uralter Birkenbaum",
@@ -3301,11 +3306,11 @@
          },
          "zones_mode": {
             "farm": {
-               "water_affinity_range": "Das schnellste Wachstum geschieht mit <span class='water'><span class='value'>[str(i18n_data.min)] - [str(i18n_data.max)]</span> water</span> innerhalb oder außerhalb der Farm. Aktuell <span class='water'>water</span> level: <span class='water value'>[str(i18n_data.water_level)]</span>.",
-               "water_affinity_min_only": "Das schnellste Wachstum geschieht mit mindestens <span class='water'><span class='value'>[str(i18n_data.min)]</span> water</span> innerhalb oder außerhalb der Farm. Aktuell <span class='water'>water</span> level: <span class='water value'>[str(i18n_data.water_level)]</span>.",
-               "requires_flooding": "Diese Frucht muss zum Wachsen überflutet werden.",
-               "prefers_flooding": "Diese Frucht wächst schneller, wenn sie überflutet wird.",
-               "prefers_no_flooding": "Diese Frucht wächst langsamer, wenn sie überflutet wird."
+               "water_affinity_range": "Das schnellste Wachstum geschieht mit <span class='water'><span class='value'>[str(i18n_data.min)] - [str(i18n_data.max)]</span> water</span> innerhalb oder außerhalb der Farm und nicht tiefer als einen Block. Aktuell <span class='water'>water</span> level: <span class='water value'>[str(i18n_data.water_level)]</span>.",
+               "water_affinity_min_only": "Das schnellste Wachstum geschieht mit mindestens <span class='water'><span class='value'>[str(i18n_data.min)]</span> water</span> innerhalb oder außerhalb der Farm und nicht tiefer als einen Block. Aktuell <span class='water'>water</span> level: <span class='water value'>[str(i18n_data.water_level)]</span>.",
+               "requires_flooding": "Diese Pflanze muss mit Wasser bedeckt sein, damit sie wachsen kann.",
+               "prefers_flooding": "Diese Pflanze wächst schneller, wenn sie mit Wasser bedeckt ist.",
+               "prefers_no_flooding": "Diese Pflanze wächst langsamer, wenn sie mit Wasser bedeckt ist."
             },
             "underfarm": {
                "substrate_name": "Substrate",
