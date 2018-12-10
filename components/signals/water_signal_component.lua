@@ -68,9 +68,7 @@ function WaterSignalComponent:set_signal(name, region, monitor_types, change_cal
 
    local signal = self:get_signal(name)
    if signal then
-      signal:set_signal_region(region)
-      signal:set_monitor_types(monitor_types)
-      signal:set_change_callback(change_callback)
+      signal:set_settings(region, monitor_types, change_callback)
    else
       signal = radiant.create_controller('stonehearth_ace:water_signal', self._entity, region, monitor_types, change_callback)
       self._sv.signals[name] = signal

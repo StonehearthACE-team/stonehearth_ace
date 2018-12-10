@@ -23,7 +23,8 @@ local monkey_patches = {
    ace_portal_component = 'stonehearth.components.portal.portal_component',
    ace_item_placer = 'stonehearth.services.client.build_editor.item_placer',
    ace_subterranean_view_service = 'stonehearth.services.client.subterranean_view.subterranean_view_service',
-   ace_renderer_service = 'stonehearth.services.client.renderer.renderer_service'
+   ace_renderer_service = 'stonehearth.services.client.renderer.renderer_service',
+   ace_farmer_field_renderer = 'stonehearth.renderers.farmer_field.farmer_field_renderer'
 }
 
 local function monkey_patching()

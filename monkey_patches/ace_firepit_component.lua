@@ -11,9 +11,10 @@ function AceFirepitComponent:_extinguish()
    local was_lit = self:is_lit()
    local ec = self._entity:add_component('entity_container')
    local is_wood = false
+   local material = self:get_fuel_material()
    
    for id, child in ec:each_child() do
-      if radiant.entities.is_material(child, 'wood resource') then
+      if radiant.entities.is_material(child, material) then
          is_wood = true
          break
       end

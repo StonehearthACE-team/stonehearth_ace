@@ -12,18 +12,29 @@ end
 
 function WaterSignal:create(entity, signal_region, monitor_types, change_callback)
    self._sv.entity = entity
-   self:set_signal_region(signal_region)
-   self:add_monitor_types(monitor_types)
-   self:set_change_callback(change_callback)
+   self:set_settings(signal_region, monitor_types, change_callback)
 end
 
 function WaterSignal:_reset()
-	self._sv.water_exists = nil
+   log:debug('resetting water signal for entity %s', self._sv.entity)
+   self._sv.water_exists = nil
 	self._sv.water_volume = nil
 	self._sv.waterfall_exists = nil
    self._sv.waterfall_volume = nil
    self._sv.water_surface_level = nil
 	self.__saved_variables:mark_changed()
+end
+
+function WaterSignal:set_settings(signal_region, monitor_types, change_callback)
+   self:set_signal_region(signal_region)
+   self:add_monitor_types(monitor_types)
+   self:set_change_callback(change_callback)
+
+   self:_on_tick_water_signal()
+end
+
+function WaterSignal:get_signal_region()
+   return self._sv.signal_region
 end
 
 function WaterSignal:set_signal_region(signal_region)
@@ -33,6 +44,10 @@ end
 
 function WaterSignal:has_monitor_type(monitor_type)
    return self._sv.monitor_types[monitor_type] ~= nil
+end
+
+function WaterSignal:get_monitor_types()
+   return radiant.shallow_copy(self._sv.monitor_types)
 end
 
 function WaterSignal:set_monitor_types(monitor_types)

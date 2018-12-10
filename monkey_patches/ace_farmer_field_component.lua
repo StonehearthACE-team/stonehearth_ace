@@ -9,9 +9,7 @@ AceFarmerFieldComponent._old_restore = FarmerFieldComponent.restore
 function AceFarmerFieldComponent:restore()
 	self:_old_restore()
 
-	if self._sv.size then
-		self:_create_water_listener()
-	end
+   self._is_restore = true
 end
 
 AceFarmerFieldComponent._old_on_field_created = FarmerFieldComponent.on_field_created
@@ -19,6 +17,12 @@ function AceFarmerFieldComponent:on_field_created(town, size)
 	self:_old_on_field_created(town, size)
 
 	self:_create_water_listener()
+end
+
+function AceFarmerFieldComponent:post_activate()
+   if self._is_restore then
+      self:_create_water_listener()
+   end
 end
 
 AceFarmerFieldComponent._old_plant_crop_at = FarmerFieldComponent.plant_crop_at
@@ -35,13 +39,15 @@ function AceFarmerFieldComponent:_create_water_listener()
 		self:_destroy_water_listener()
 	end
 
-	local region = self._entity:get_component('destination'):get_region():get()
+	local region = self._entity:get_component('region_collision_shape'):get_region():get()
 						:extruded('x', 1, 1)
                   :extruded('z', 1, 1)
                   :extruded('y', 1, 0)
    local water_component = self._entity:add_component('stonehearth_ace:water_signal')
    self._water_signal = water_component:set_signal('farmer_field', region, {'water_volume'}, function(changes) self:_on_water_signal_changed(changes) end)
-	--self._water_listener = radiant.events.listen(self._entity, 'stonehearth_ace:water_signal:water_signal_changed', self, self._on_water_signal_changed)
+   --self._water_listener = radiant.events.listen(self._entity, 'stonehearth_ace:water_signal:water_signal_changed', self, self._on_water_signal_changed)
+   self._sv.water_signal_region = region:duplicate()
+   self:_set_water_volume(self._water_signal:get_water_volume())
 end
 
 function AceFarmerFieldComponent:_destroy_water_listener()
@@ -51,19 +57,27 @@ function AceFarmerFieldComponent:_destroy_water_listener()
 	end
 end
 
+function AceFarmerFieldComponent:_set_water_volume(volume)
+   if volume then
+      -- we consider the normal ideal water volume to crop ratio to be a filled half perimeter around an 11x11 farm of 66 crops
+      -- i.e., 24 water / 66 crops = 4/11
+      -- we compare that to our current volume to crop ratio
+      local ideal_ratio = 4/11
+      local this_ratio = volume / (math.ceil(self._sv.size.x/2) * self._sv.size.y)
+      self._sv.water_level = this_ratio / ideal_ratio
+   else
+      self._sv.water_level = 0
+   end
+	self.__saved_variables:mark_changed()
+end
+
 function AceFarmerFieldComponent:_on_water_signal_changed(changes)
    local volume = changes.water_volume.value
    if not volume then
       return
    end
    
-   -- we consider the normal ideal water volume to crop ratio to be a filled half perimeter around an 11x11 farm of 66 crops
-	-- i.e., 24 water / 66 crops = 4/11
-	-- we compare that to our current volume to crop ratio
-	local ideal_ratio = 4/11
-	local this_ratio = volume / (math.ceil(self._sv.size.x/2) * self._sv.size.y)
-	self._sv.water_level = this_ratio / ideal_ratio
-	self.__saved_variables:mark_changed()
+   self:_set_water_volume(volume)
 
 	if self:_is_fallow() then
 		return
