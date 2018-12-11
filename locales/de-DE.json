@@ -3306,8 +3306,9 @@
          },
          "zones_mode": {
             "farm": {
-               "water_affinity_range": "Das schnellste Wachstum geschieht mit <span class='water'><span class='value'>[str(i18n_data.min)] - [str(i18n_data.max)]</span> water</span> innerhalb oder außerhalb der Farm und nicht tiefer als einen Block. Aktuell <span class='water'>water</span> level: <span class='water value'>[str(i18n_data.water_level)]</span>.",
-               "water_affinity_min_only": "Das schnellste Wachstum geschieht mit mindestens <span class='water'><span class='value'>[str(i18n_data.min)]</span> water</span> innerhalb oder außerhalb der Farm und nicht tiefer als einen Block. Aktuell <span class='water'>water</span> level: <span class='water value'>[str(i18n_data.water_level)]</span>.",
+               "water_affinity_range": "Diese Pflanze braucht <span class='water'><span class='value'>[str(i18n_data.min)] - [str(i18n_data.max)]</span> water</span> nnerhalb der umrissenen Region für optimales Wachstum.",
+               "water_affinity_min_only": "Diese Pflanze braucht mindestens <span class='water'><span class='value'>[str(i18n_data.min)]</span> water</span> nnerhalb der umrissenen Region für optimales Wachstum.",
+               "current_water_level": "Aktuell <span class='water'>water</span> level: <span class='water value'>[str(i18n_data.level)]</span>.",
                "requires_flooding": "Diese Pflanze muss mit Wasser bedeckt sein, damit sie wachsen kann.",
                "prefers_flooding": "Diese Pflanze wächst schneller, wenn sie mit Wasser bedeckt ist.",
                "prefers_no_flooding": "Diese Pflanze wächst langsamer, wenn sie mit Wasser bedeckt ist."
