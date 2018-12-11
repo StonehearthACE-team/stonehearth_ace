@@ -17,7 +17,7 @@ function WaterSignalService:initialize()
    end
    self._changed_waters = {}
    self._changed_waterfalls = {}
-   self._cached_water_regions = {}
+   self._next_tick_callbacks = {}
    
    self._game_loaded_listener = radiant.events.listen_once(radiant, 'radiant:game_loaded', function()
       self._game_loaded_listener = nil
@@ -84,8 +84,17 @@ function WaterSignalService:waterfall_component_modified(entity)
    self._changed_waterfalls[entity:get_id()] = entity:get_component('stonehearth:waterfall')
 end
 
+function WaterSignalService:add_next_tick_callback(cb, args)
+   table.insert(self._next_tick_callbacks, {cb = cb, args = args})
+end
+
 function WaterSignalService:_on_tick()
    local signals_to_signal = {}
+   local next_tick_callbacks
+   if next(self._next_tick_callbacks) then
+      next_tick_callbacks = self._next_tick_callbacks
+      self._next_tick_callbacks = {}
+   end
 
    if next(self._changed_waters) then
       for water_id, water in pairs(self._changed_waters) do
@@ -139,6 +148,12 @@ function WaterSignalService:_on_tick()
          else
             signal.waters[water_id] = nil
          end
+      end
+   end
+
+   if next_tick_callbacks then
+      for _, cb_struct in ipairs(next_tick_callbacks) do
+         cb_struct.cb(cb_struct.args)
       end
    end
 end

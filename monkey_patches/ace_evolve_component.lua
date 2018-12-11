@@ -39,13 +39,6 @@ function AceEvolveComponent:post_activate()
    end
 end
 
-AceEvolveComponent._old_destroy = EvolveComponent.destroy
-function AceEvolveComponent:destroy()
-   self:_old_destroy()
-
-   self:_destroy_water_listener()
-end
-
 function AceEvolveComponent:set_check_evolve_script(path)
    self._sv.evolve_check_script = path
    self.__saved_variables:mark_changed()

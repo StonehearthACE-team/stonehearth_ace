@@ -26,7 +26,7 @@ function AquaticObjectComponent:post_activate()
 end
 
 function AquaticObjectComponent:_create_listeners()
-   local signal_region = json.water_signal_region
+   local signal_region = self._json.water_signal_region
    if signal_region then
       signal_region = ConnectionUtils.import_region(signal_region)
    end
@@ -70,8 +70,8 @@ function AquaticObjectComponent:_on_water_exists_changed(exists)
 		self:suffocate_entity()
 	end
 	
-	if self._destroy_if_out_of_water then
-		self:destroy_entity(exists)	
+	if self._destroy_if_out_of_water and not self._sv.in_the_water and not self._queued_destruction then
+		self:queue_destruction()
 	end
 end
 
@@ -111,14 +111,14 @@ function AquaticObjectComponent:suffocate_entity(level)
 	end
 end
 
-function AquaticObjectComponent:destroy_entity(destroy)
-	if not self._destroy_if_out_of_water then 
-		return
-	end
-	
-	if destroy == false then
-		radiant.entities.kill_entity(self._entity)			
-	end
+function AquaticObjectComponent:queue_destruction()
+	self._queued_destruction = function()
+      if not self._sv.in_the_water then
+         radiant.entities.kill_entity(self._entity)			
+      end
+   end
+
+   stonehearth_ace.water_signal:add_next_tick_callback(self._queued_destruction, self)
 end
 
 function AquaticObjectComponent:float(level)
