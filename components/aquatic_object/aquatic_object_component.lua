@@ -12,12 +12,20 @@ function AquaticObjectComponent:initialize()
 end
 
 function AquaticObjectComponent:activate()
-   local json = radiant.entities.get_json(self)
-	self._require_water_to_grow = json.require_water_to_grow
-	self._destroy_if_out_of_water = json.destroy_if_out_of_water
-	self._suffocate_if_out_of_water = json.suffocate_if_out_of_water
-   self._floating_object = json.floating_object
+   self._json = radiant.entities.get_json(self)
+	self._require_water_to_grow = self._json.require_water_to_grow
+	self._destroy_if_out_of_water = self._json.destroy_if_out_of_water
+	self._suffocate_if_out_of_water = self._json.suffocate_if_out_of_water
+   self._floating_object = self._json.floating_object
+end
 
+function AquaticObjectComponent:post_activate()
+	self:_create_listeners()
+	self:_on_water_exists_changed()
+	self:_on_water_surface_level_changed()
+end
+
+function AquaticObjectComponent:_create_listeners()
    local signal_region = json.water_signal_region
    if signal_region then
       signal_region = ConnectionUtils.import_region(signal_region)
@@ -33,26 +41,6 @@ function AquaticObjectComponent:activate()
    
    local water_signal = self._entity:add_component('stonehearth_ace:water_signal')
    self._water_signal = water_signal:set_signal('aquatic_object', signal_region, monitor_types, function(changes) self:_on_water_signal_changed(changes) end)
-   if self._floating_object then
-      water_signal:set_urgency(true)
-   else
-      water_signal:set_urgency(false)
-   end
-end
-
-function AquaticObjectComponent:post_activate()
-	--self:_create_listeners()
-	self:_on_water_exists_changed()
-	self:_on_water_surface_level_changed()
-end
-
-function AquaticObjectComponent:_create_listeners()
-   if self._water_signal then
-      self._water_signal:set_change_callback(function(changes) self:_on_water_signal_changed(changes) end)
-   end
-   --if not self._water_listener then
-	--	self._water_listener = radiant.events.listen(self._entity, 'stonehearth_ace:water_signal:water_signal_changed', self, self._on_water_signal_changed)
-	--end
 end
 
 function AquaticObjectComponent:_on_water_signal_changed(changes)

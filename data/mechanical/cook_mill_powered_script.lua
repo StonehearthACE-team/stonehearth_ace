@@ -1,7 +1,7 @@
 local CookMillPowered = {}
 
 function CookMillPowered.set_power_percentage(mill, percentage)
-   -- if the mill is unpowered, it will take 200% normal speed
+   -- if the mill is unpowered, it will take 200% normal time to craft
    -- otherwise, power percentage will scale it between 25-100%
    local workshop_comp = mill:get_component('stonehearth:workshop')
    if workshop_comp then

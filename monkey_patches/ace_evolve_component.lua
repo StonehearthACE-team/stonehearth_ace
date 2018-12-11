@@ -1,3 +1,7 @@
+local Point3 = _radiant.csg.Point3
+local Cube3 = _radiant.csg.Cube3
+local Region3 = _radiant.csg.Region3
+
 local EvolveComponent = require 'stonehearth.components.evolve.evolve_component'
 local AceEvolveComponent = class()
 
@@ -10,10 +14,6 @@ function AceEvolveComponent:initialize()
 	--self._sv.is_flooded = false
    self._sv.current_growth_recalculate_progress = 0
    
-   -- allow for additional checks for whether evolve should happen by specifying a script in the json
-   local json = radiant.entities.get_json(self) or {}
-   self._sv.evolve_check_script = json.evolve_check_script
-
 	self.__saved_variables:mark_changed()
 end
 
@@ -21,18 +21,21 @@ AceEvolveComponent._old_activate = EvolveComponent.activate
 function AceEvolveComponent:activate()
 	self:_old_activate()
 
-   local json = radiant.entities.get_json(self)
+   -- allow for additional checks for whether evolve should happen by specifying a script in the json
+   self._json = radiant.entities.get_json(self) or {}
+   self._sv.evolve_check_script = self._json.evolve_check_script
+   self._preferred_climate = self._json.preferred_climate
+   -- determine the "reach" of water detection from json; otherwise just expand 1 outwards and downwards from collision region
+   self._water_reach = self._json.water_reach or 1
+end
 
+function AceEvolveComponent:post_activate()
 	-- we don't care about water for animals, only for plants
 	local catalog_data = stonehearth.catalog:get_catalog_data(self._entity:get_uri())
 	if catalog_data.category == 'seed' or catalog_data.category == 'plants' then
-		self._preferred_climate = json and json.preferred_climate
 		self._water_affinity = stonehearth.town:get_water_affinity_table(self._preferred_climate)
-		--self._flood_period_multiplier = (json and json.flood_period_multiplier) or 2
-		-- determine the "reach" of water detection from json; otherwise just expand 1 outwards and downwards from destination region
-		self._water_reach = (json and json.water_reach) or 1
-
-		self:_create_water_listener()
+		
+		self:_create_water_signal()
    end
 end
 
@@ -48,35 +51,23 @@ function AceEvolveComponent:set_check_evolve_script(path)
    self.__saved_variables:mark_changed()
 end
 
-function AceEvolveComponent:_create_water_listener()
-	if self._water_listener then
-		self:_destroy_water_listener()
-	end
-
+function AceEvolveComponent:_create_water_signal()
 	local reach = self._water_reach
 	local region = self._entity:get_component('region_collision_shape')
 	-- if there's no collision region, oh well, guess we're not creating a listener
-	if not region then
-		return
+   if region then
+      region = region:get_region():get()
+   else
+      region = Region3(Cube3(Point3.zero))
 	end
 
-	self._water_region = region:get_region():get()
+	self._water_region = region
 						:extruded('x', reach, reach)
 						:extruded('z', reach, reach)
                   :extruded('y', reach, 0)
    
    local water_component = self._entity:add_component('stonehearth_ace:water_signal')
    self._water_signal = water_component:set_signal('evolve', self._water_region, {'water_volume'}, function(changes) self:_on_water_signal_changed(changes) end)
-	--water_component:set_region(self._water_region)
-   --water_component:add_monitor_types({'water_volume'})
-	--self._water_listener = radiant.events.listen(self._entity, 'stonehearth_ace:water_signal:water_volume_changed', self, self._on_water_volume_changed)
-end
-
-function AceEvolveComponent:_destroy_water_listener()
-	if self._water_listener then
-		self._water_listener:destroy()
-		self._water_listener = nil
-	end
 end
 
 function AceEvolveComponent:_on_water_signal_changed(changes)

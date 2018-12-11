@@ -18,7 +18,7 @@ function WaterWheelComponent:initialize()
    
    self._max_bottom_volume = 1
    self._max_produced_bottom = math.min(1, self._json.max_produced_bottom or 0.5)
-   self._max_produced_side_volume = math.min(1, self._json.max_produced_side_volume or 10)
+   self._max_produced_side_volume = math.max(1, self._json.max_produced_side_volume or 10)
 
    self._sv.produce_percent = 0
    self._sv.bottom_percent = 0
@@ -26,7 +26,7 @@ function WaterWheelComponent:initialize()
    self._sv.counterclockwise_percent = 0
 end
 
-function WaterWheelComponent:activate()
+function WaterWheelComponent:post_activate()
    -- set up water signals on the appropriate regions
    local regions = self._json.signal_regions
    if regions then
@@ -97,12 +97,12 @@ end
 
 function WaterWheelComponent:_reconsider_production()
    -- bottom power produces at most a certain percent of max potential
-   -- side power cancels out opposites
+   -- side power cancels out opposites and adds to bottom production
    local production = self._max_produced_bottom * self._sv.bottom_percent
    local side_production = math.min(1, math.abs(self._sv.clockwise_percent - self._sv.counterclockwise_percent) / self._max_produced_side_volume)
-   local should_reverse = self._sv.clockwise_percent < self._sv.counterclockwise_percent and side_production > production
+   local should_reverse = self._sv.clockwise_percent < self._sv.counterclockwise_percent and side_production > 0
 
-   self._entity:add_component('stonehearth_ace:mechanical'):set_power_produced_percent(math.max(production, side_production), should_reverse)
+   self._entity:add_component('stonehearth_ace:mechanical'):set_power_produced_percent(math.min(1, production + side_production), should_reverse)
 end
 
 return WaterWheelComponent

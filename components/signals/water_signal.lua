@@ -6,17 +6,32 @@ local WaterSignal = class()
 
 function WaterSignal:initialize()
    self._sv.signal_region = nil
+   self._sv.world_signal_region = nil
    self._sv.monitor_types = {}
+   self._location = nil
    self._change_cb = nil
 end
 
-function WaterSignal:create(entity, signal_region, monitor_types, change_callback)
-   self._sv.entity = entity
-   self:set_settings(signal_region, monitor_types, change_callback)
+function WaterSignal:create(entity_id, id, signal_region, monitor_types, change_callback)
+   self._sv.id = id
+   self._sv.entity_id = entity_id
+   self._on_activate = function() self:set_settings(signal_region, monitor_types, change_callback) end
+end
+
+function WaterSignal:activate()
+   if self._on_activate then
+      self._on_activate(self)
+      self._on_activate = nil
+   end
+
+   stonehearth_ace.water_signal:register_water_signal(self)
+end
+
+function WaterSignal:destroy()
+   stonehearth_ace.water_signal:unregister_water_signal(self)
 end
 
 function WaterSignal:_reset()
-   log:debug('resetting water signal for entity %s', self._sv.entity)
    self._sv.water_exists = nil
 	self._sv.water_volume = nil
 	self._sv.waterfall_exists = nil
@@ -26,24 +41,69 @@ function WaterSignal:_reset()
 end
 
 function WaterSignal:set_settings(signal_region, monitor_types, change_callback)
-   self:set_signal_region(signal_region)
    self:add_monitor_types(monitor_types)
    self:set_change_callback(change_callback)
+   self:set_signal_region(signal_region)
 
    self:_on_tick_water_signal()
+end
+
+function WaterSignal:get_id()
+   return self._sv.id
+end
+
+function WaterSignal:get_entity_id()
+	return self._sv.entity_id
 end
 
 function WaterSignal:get_signal_region()
    return self._sv.signal_region
 end
 
+function WaterSignal:get_world_signal_region()
+   return self._sv.world_signal_region
+end
+
 function WaterSignal:set_signal_region(signal_region)
    self._sv.signal_region = signal_region
+   self:_update_region()
+end
+
+function WaterSignal:set_location(location)
+   if self._location ~= location then
+      self._location = location
+      self:_update_region()
+   end
+end
+
+function WaterSignal:_update_region()
+   local changed = false
+   local region
+   if self._sv.signal_region and self._location then
+      region = self._sv.signal_region:translated(self._location)
+      changed = true
+   elseif self._sv.world_signal_region then
+      changed = true
+   end
+
+   if changed then
+      self._sv.world_signal_region = region
+      stonehearth_ace.water_signal:register_water_signal(self)
+      self:_on_tick_water_signal()
+   end
    self.__saved_variables:mark_changed()
 end
 
 function WaterSignal:has_monitor_type(monitor_type)
    return self._sv.monitor_types[monitor_type] ~= nil
+end
+
+function WaterSignal:monitors_water()
+   return self:has_monitor_type('water_exists') or self:has_monitor_type('water_volume') or self:has_monitor_type('water_surface_level')
+end
+
+function WaterSignal:monitors_waterfall()
+   return self:has_monitor_type('waterfall_exists') or self:has_monitor_type('waterfall_volume')
 end
 
 function WaterSignal:get_monitor_types()
@@ -156,8 +216,8 @@ function WaterSignal:_get_intersection_volume(water_comp)
    local location = water_comp:get_location()
    local top_region = water_comp._sv._top_layer:get():translated(location)
    local top_height = water_comp:get_height() % 1
-   local base_intersection = self._trans_region:intersect_region(water_comp:get_region():get():translated(location) - top_region)
-   local top_intersection = self._trans_region:intersect_region(top_region)
+   local base_intersection = self._sv.world_signal_region:intersect_region(water_comp:get_region():get():translated(location) - top_region)
+   local top_intersection = self._sv.world_signal_region:intersect_region(top_region)
    local volume = base_intersection:get_area() + top_intersection:get_area() * top_height
    return volume
 end
@@ -237,15 +297,13 @@ function WaterSignal:_on_tick_water_signal()
 	
 	-- do we really need to update the water regions we're checking every single tick?
 	-- not sure how expensive this is
-	local location = get_world_grid_location(self._sv.entity)
-	if not location then
+	local region = self._sv.world_signal_region
+	if not region then
 		self:_reset()
 		return
 	end
    
-   --log:debug('on_tick for %s with signal_region %s', self._sv.entity, type(self._sv.signal_region) == 'table' and radiant.util.table_tostring(self._sv.signal_region) or 'NIL')
-	self._trans_region = self._sv.signal_region and self._sv.signal_region:translated(location)
-	local water_components, waterfall_components = self:_get_water(self._trans_region)
+	local water_components, waterfall_components = self:_get_water(region)
    local changes = {}
 
    for _, check in ipairs({'water_exists', 'water_volume', 'water_surface_level'}) do
@@ -283,8 +341,8 @@ function WaterSignal:_get_water(region)
 	local entities = get_entities_in_region(region)
 	local water_components = {}
    local waterfall_components = {}
-   local check_water = self:has_monitor_type('water_exists') or self:has_monitor_type('water_volume') or self:has_monitor_type('water_surface_level')
-   local check_waterfall = self:has_monitor_type('waterfall_exists') or self:has_monitor_type('waterfall_volume')
+   local check_water = self:monitors_water()
+   local check_waterfall = self:monitors_waterfall()
 
 	for _, e in pairs(entities) do
       if check_water then

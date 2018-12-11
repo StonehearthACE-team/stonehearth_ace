@@ -49,7 +49,9 @@ local monkey_patches = {
    ace_patrollable_object = 'stonehearth.services.server.town_patrol.patrollable_object',
    ace_get_patrol_route_action = 'stonehearth.ai.actions.get_patrol_route_action',
    ace_party_component = 'stonehearth.components.party.party_component',
-   ace_player_service = 'stonehearth.services.server.player.player_service'
+   ace_player_service = 'stonehearth.services.server.player.player_service',
+   ace_water_component = 'stonehearth.components.water.water_component',
+   ace_waterfall_component = 'stonehearth.components.waterfall.waterfall_component'
 }
 
 local function monkey_patching()

@@ -1,115 +1,146 @@
+--[[
+   individual water signals get registered with this service and have their regions cached here
+   whenever a water or waterfall component is changed, it alerts the service
+   on every hydrology tick, all water and waterfall entities that changed are evaluated:
+      - all signals that cached a reference to them, and all signals whose regions intersect with them, get signalled
+      - signal caching is updated
+   whenever a water signal's region (or location) changes, update the cache and signal it
+]]
+
 local log = radiant.log.create_logger('water_signal_service')
 
 local WaterSignalService = class()
 
 function WaterSignalService:initialize()
-	self._water_signal_buckets = {}	-- contains all the low-priority water signals
-   self._urgent_water_signals = {} -- contains all the urgent water signals
-   self._next_tick_signals = {} -- contains ids for the water signals that have been re-registered since the last tick; gets cleared out every tick
-	self._water_signals_in_buckets = {}	-- contains all the water signals with references to their buckets
-	self._current_bucket_index = 1
-	self._max_buckets = 20	-- hydrology service ticks happen ~10/second, so our normal checks will happen once every two seconds
-   self._current_tick_index = 1
-	self._tick_listener = radiant.events.listen(stonehearth.hydrology, 'stonehearth:hydrology:tick', function()
-		self:_on_tick()
-	end)
+   if not self._sv.signals then
+      self._sv.signals = {}
+   end
+   self._changed_waters = {}
+   self._changed_waterfalls = {}
+   self._cached_water_regions = {}
+   
+   self._game_loaded_listener = radiant.events.listen_once(radiant, 'radiant:game_loaded', function()
+      self._game_loaded_listener = nil
+      self._tick_listener = radiant.events.listen(stonehearth.hydrology, 'stonehearth:hydrology:tick', function()
+         self:_on_tick()
+      end)
+   end)
 end
 
 function WaterSignalService:destroy()
-	if self._on_tick_listener then
-		self._on_tick_listener:destroy()
-		self._on_tick_listener = nil
-	end
+	if self._tick_listener then
+		self._tick_listener:destroy()
+		self._tick_listener = nil
+   end
 end
 
-function WaterSignalService:register_water_signal(water_signal, is_urgent, just_created)
-	local id = water_signal:get_entity_id()
-	
-	-- if it's urgent, don't bother with the buckets
-	if is_urgent then
-		self._urgent_water_signals[id] = water_signal
-	else
-		-- check to see if this water signal is already registered
-		if self._water_signals_in_buckets[id] then
-         return
+function WaterSignalService:register_water_signal(water_signal)
+   local id = water_signal:get_id()
+   if not id then
+      return
+   end
+   
+   local signal = self._sv.signals[id]
+   if not signal then
+      signal = {
+         id = id,
+         entity_id = water_signal:get_entity_id(),
+         signal = water_signal,
+         waters = {},
+         waterfalls = {}
+      }
+      self._sv.signals[id] = signal
+   end
+   self:_update_signal_regions(water_signal)
+end
+
+function WaterSignalService:_update_signal_regions(water_signal)
+   local signal = self._sv.signals[water_signal:get_id()]
+   if signal then
+      local region = signal.signal:get_world_signal_region()
+      if (region == nil) ~= (signal.region == nil) then
+         signal.region = region
+         self.__saved_variables:mark_changed()
       end
-      
-      local bucket_index = self._current_bucket_index
-
-		-- keep a list of signals by their id so we can find their bucket to remove them later
-		self._water_signals_in_buckets[id] = bucket_index
-		
-		-- if we don't already have a bucket, add one
-		local bucket = self._water_signal_buckets[bucket_index]
-		if not bucket then
-         bucket = {}
-         self._water_signal_buckets[bucket_index] = bucket
-		end
-		bucket[id] = water_signal
-
-      -- if the signal was just created, we should queue this signal for computation on the next tick
-      if just_created then
-         table.insert(self._next_tick_signals, id)
-      end
-
-		-- increment our current bucket index, wrapping around when we reach our max (keeping it 1-indexed)
-		self._current_bucket_index = (bucket_index % self._max_buckets) + 1
-	end
+   end
 end
 
 function WaterSignalService:unregister_water_signal(water_signal)
-	local id = water_signal and water_signal:get_entity_id()
+	local id = water_signal and water_signal:get_id()
 	if not id then
 		return
 	end
 
-	-- first try to remove it from the urgent table
-	self._urgent_water_signals[id] = nil
+   self._sv.signals[id] = nil
+   self.__saved_variables:mark_changed()
+end
 
-	-- then check to see if it's in a bucket and remove it from that bucket
-	local bucket_index = self._water_signals_in_buckets[id]
-	if bucket_index then
-		self._water_signals_in_buckets[id] = nil
-		local bucket = self._water_signal_buckets[bucket_index]
-		bucket[id] = nil
-		if next(bucket) == nil then
-			self._water_signal_buckets[bucket_index] = nil
-		end
-	end
+-- if the water component was modified, make sure it gets processed on the next tick
+function WaterSignalService:water_component_modified(entity)
+   self._changed_waters[entity:get_id()] = entity:get_component('stonehearth:water')
+end
+
+function WaterSignalService:waterfall_component_modified(entity)
+   self._changed_waterfalls[entity:get_id()] = entity:get_component('stonehearth:waterfall')
 end
 
 function WaterSignalService:_on_tick()
-   local bucket = self._water_signal_buckets[self._current_tick_index]
-   
-   -- first process signals that were created since last tick and aren't already scheduled to be processed
-   if next(self._next_tick_signals) then
-      for _, id in ipairs(self._next_tick_signals) do
-         if not self._urgent_water_signals[id] and not (bucket and bucket[id]) then
-            local this_bucket = self._water_signal_buckets[self._water_signals_in_buckets[id]]
-            local water_signal = this_bucket and this_bucket[id]
-            if water_signal then
-               water_signal:_on_tick_water_signal()
-            else
-               -- this should never happen...
+   local signals_to_signal = {}
+
+   if next(self._changed_waters) then
+      for water_id, water in pairs(self._changed_waters) do
+         local location = water:get_location()
+         if location then
+            local water_region = water:get_region():get():translated(location)
+            for id, signal in pairs(self._sv.signals) do
+               if signal.region and signal.signal:monitors_water() and water_region:intersects_region(signal.region) then
+                  signals_to_signal[id] = signal
+                  signal.waters[water_id] = true
+               elseif signal.waters[water_id] ~= nil then
+                  signals_to_signal[id] = signal
+               end
             end
          end
       end
-      self._next_tick_signals = {}
+      self._changed_waters = {}
    end
-   
-   -- then process urgent signals
-	for _, water_signal in pairs(self._urgent_water_signals) do
-		water_signal:_on_tick_water_signal()
-	end
 
-	-- then process the signals for the current tick index
-	if bucket and next(bucket) then
-		for _, water_signal in pairs(bucket) do
-			water_signal:_on_tick_water_signal()
-		end
-	end
-	log:spam('current water tick index: %s', self._current_tick_index)
-	self._current_tick_index = (self._current_tick_index % self._max_buckets) + 1
+   if next(self._changed_waterfalls) then
+      for waterfall_id, waterfall in pairs(self._changed_waterfalls) do
+         local location = waterfall:get_location()
+         if location then
+            local waterfall_region = waterfall:get_region():get():translated(location)
+            for id, signal in pairs(self._sv.signals) do
+               if signal.region and signal.signal:monitors_waterfall() and waterfall_region:intersects_region(signal.region) then
+                  signals_to_signal[id] = signal
+                  signal.waterfalls[waterfall_id] = true
+               elseif signal.waterfalls[waterfall_id] ~= nil then
+                  signals_to_signal[id] = signal
+               end
+            end
+         end
+      end
+      self._changed_waterfalls = {}
+   end
+
+   for _, signal in pairs(signals_to_signal) do
+      signal.signal:_on_tick_water_signal()
+
+      for water_id, intersects in pairs(signal.waters) do
+         if intersects then
+            signal.waters[water_id] = false
+         else
+            signal.waters[water_id] = nil
+         end
+      end
+      for water_id, intersects in pairs(signal.waterfalls) do
+         if intersects then
+            signal.waters[water_id] = false
+         else
+            signal.waters[water_id] = nil
+         end
+      end
+   end
 end
 
 return WaterSignalService

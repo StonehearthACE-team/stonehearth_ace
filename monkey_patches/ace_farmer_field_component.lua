@@ -45,7 +45,6 @@ function AceFarmerFieldComponent:_create_water_listener()
                   :extruded('y', 1, 0)
    local water_component = self._entity:add_component('stonehearth_ace:water_signal')
    self._water_signal = water_component:set_signal('farmer_field', region, {'water_volume'}, function(changes) self:_on_water_signal_changed(changes) end)
-   --self._water_listener = radiant.events.listen(self._entity, 'stonehearth_ace:water_signal:water_signal_changed', self, self._on_water_signal_changed)
    self._sv.water_signal_region = region:duplicate()
    self:_set_water_volume(self._water_signal:get_water_volume())
 end

@@ -21,7 +21,9 @@ function AceGrowingComponent:activate()
    --self._flooded_growth_only = (json and json.flooded_growth_only) or false   -- if true, only grow when flooded; otherwise normal
 
 	self:_old_activate()
+end
 
+function AceGrowingComponent:post_activate()
    -- only worry about the water listener (for flooding) if the flood period multiplier ~= 1 (i.e., is relevant)
    if self._flood_period_multiplier ~= 1 then
       self:_create_water_listener()
@@ -38,7 +40,6 @@ end
 function AceGrowingComponent:_create_water_listener()
    local water_component = self._entity:add_component('stonehearth_ace:water_signal')
    self._water_signal = water_component:set_signal('growing', nil, {'water_exists'}, function(changes) self:_on_water_signal_changed(changes) end)
-	--self._flood_listener = radiant.events.listen(self._entity, 'stonehearth_ace:water_signal:water_signal_changed', self, self._on_water_signal_changed)
 end
 
 function AceGrowingComponent:_destroy_water_listener()
