@@ -4,7 +4,7 @@
       "stonehearth_ace:connection": {
          "stonehearth_ace:vines:daisies": {
             "connectors": {
-               "~x": {
+               "horizontal": {
                   "region": [
                      {
                         "min": { "x": -2, "y": 0, "z": -2 },
@@ -22,7 +22,7 @@
          "render_options": {
             "bottom": {
                "scale": 0.12,
-               "origin": { "x": 5, "y": 0, "z": 5 },
+               "origin": { "x": 5, "y": 0.6, "z": 5 },
                "models": {
                   "default": [
                      "file(daisies.qb)",
@@ -34,10 +34,7 @@
                      "file(daisies_7.qb)",
                      "file(daisies_8.qb)",
                      "file(daisies_9.qb)",
-                     "file(daisies_10.qb)",
-                     "file(empty_1.qb)",
-                     "file(empty_2.qb)",
-                     "file(empty_3.qb)"
+                     "file(daisies_10.qb)"
                   ]
                }
             }
@@ -71,7 +68,7 @@
          "material": "materials/structure.material.json"
       },
       "mob": {
-         "model_origin": { "x": 0, "y": 0.119, "z": 0 },
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
          "region_origin": { "x": 0.5, "y": 0, "z": 0.5 },
          "mob_collision_type": "tiny"
       }

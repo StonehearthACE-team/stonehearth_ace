@@ -24,19 +24,19 @@
                "time": "16h+4h"
             },
             {
-               "threshold": 10,
-               "time": "20h+2h"
-            },
-            {
                "threshold": 20,
-               "time": "28h+6h"
-            },
-            {
-               "threshold": 30,
-               "time": "36h+8h"
+               "time": "1d+6h"
             },
             {
                "threshold": 40,
+               "time": "2d+12h"
+            },
+            {
+               "threshold": 60,
+               "time": "4d+1d"
+            },
+            {
+               "threshold": 80,
                "time": ""
             }
          ]
@@ -55,9 +55,7 @@
             "x-": 1,
             "x+": 1,
             "z-": 1,
-            "z+": 1,
-            "y-": 0,
-            "y+": 0
+            "z+": 1
          },
          "growth_times": [
             {
@@ -65,19 +63,19 @@
                "time": "6h"
             },
             {
-               "threshold": 5,
-               "time": "8h"
-            },
-            {
                "threshold": 10,
-               "time": "16h"
-            },
-            {
-               "threshold": 15,
                "time": "1d"
             },
             {
                "threshold": 20,
+               "time": "2d"
+            },
+            {
+               "threshold": 30,
+               "time": "4d"
+            },
+            {
+               "threshold": 40,
                "time": ""
             }
          ]
