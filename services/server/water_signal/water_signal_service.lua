@@ -12,9 +12,11 @@ local log = radiant.log.create_logger('water_signal_service')
 local WaterSignalService = class()
 
 function WaterSignalService:initialize()
-   if not self._sv.signals then
-      self._sv.signals = {}
+   if self._sv.signals then
+      self._sv.signals = nil
+      self.__saved_variables:mark_changed()
    end
+   self._signals = {}
    self._changed_waters = {}
    self._changed_waterfalls = {}
    self._next_tick_callbacks = {}
@@ -40,7 +42,7 @@ function WaterSignalService:register_water_signal(water_signal)
       return
    end
    
-   local signal = self._sv.signals[id]
+   local signal = self._signals[id]
    if not signal then
       signal = {
          id = id,
@@ -49,18 +51,17 @@ function WaterSignalService:register_water_signal(water_signal)
          waters = {},
          waterfalls = {}
       }
-      self._sv.signals[id] = signal
+      self._signals[id] = signal
    end
    self:_update_signal_regions(water_signal)
 end
 
 function WaterSignalService:_update_signal_regions(water_signal)
-   local signal = self._sv.signals[water_signal:get_id()]
+   local signal = self._signals[water_signal:get_id()]
    if signal then
       local region = signal.signal:get_world_signal_region()
       if (region == nil) ~= (signal.region == nil) then
          signal.region = region
-         self.__saved_variables:mark_changed()
       end
    end
 end
@@ -71,8 +72,7 @@ function WaterSignalService:unregister_water_signal(water_signal)
 		return
 	end
 
-   self._sv.signals[id] = nil
-   self.__saved_variables:mark_changed()
+   self._signals[id] = nil
 end
 
 -- if the water component was modified, make sure it gets processed on the next tick
@@ -101,11 +101,17 @@ function WaterSignalService:_on_tick()
          local location = water:get_location()
          if location then
             local water_region = water:get_region():get():translated(location)
-            for id, signal in pairs(self._sv.signals) do
-               if signal.region and signal.signal:monitors_water() and water_region:intersects_region(signal.region) then
+            for id, signal in pairs(self._signals) do
+               if not signal.waters[water_id] and signal.region and signal.signal:monitors_water() and water_region:intersects_region(signal.region) then
                   signals_to_signal[id] = signal
                   signal.waters[water_id] = true
                elseif signal.waters[water_id] ~= nil then
+                  signals_to_signal[id] = signal
+               end
+            end
+         else
+            for id, signal in pairs(self._signals) do
+               if signal.waters[water_id] ~= nil then
                   signals_to_signal[id] = signal
                end
             end
@@ -119,11 +125,17 @@ function WaterSignalService:_on_tick()
          local location = waterfall:get_location()
          if location then
             local waterfall_region = waterfall:get_region():get():translated(location)
-            for id, signal in pairs(self._sv.signals) do
-               if signal.region and signal.signal:monitors_waterfall() and waterfall_region:intersects_region(signal.region) then
+            for id, signal in pairs(self._signals) do
+               if not signal.waterfalls[waterfall_id] and signal.region and signal.signal:monitors_waterfall() and waterfall_region:intersects_region(signal.region) then
                   signals_to_signal[id] = signal
                   signal.waterfalls[waterfall_id] = true
                elseif signal.waterfalls[waterfall_id] ~= nil then
+                  signals_to_signal[id] = signal
+               end
+            end
+         else
+            for id, signal in pairs(self._signals) do
+               if signal.waterfalls[waterfall_id] ~= nil then
                   signals_to_signal[id] = signal
                end
             end
@@ -142,11 +154,11 @@ function WaterSignalService:_on_tick()
             signal.waters[water_id] = nil
          end
       end
-      for water_id, intersects in pairs(signal.waterfalls) do
+      for waterfall_id, intersects in pairs(signal.waterfalls) do
          if intersects then
-            signal.waters[water_id] = false
+            signal.waterfalls[waterfall_id] = false
          else
-            signal.waters[water_id] = nil
+            signal.waterfalls[waterfall_id] = nil
          end
       end
    end

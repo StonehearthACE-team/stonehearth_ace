@@ -5,6 +5,8 @@ local FarmerFieldComponent = require 'stonehearth.components.farmer_field.farmer
 
 local AceFarmerFieldComponent = class()
 
+local RECALCULATE_THRESHOLD = 0.5
+
 AceFarmerFieldComponent._old_restore = FarmerFieldComponent.restore
 function AceFarmerFieldComponent:restore()
 	self:_old_restore()
@@ -81,6 +83,16 @@ function AceFarmerFieldComponent:_on_water_signal_changed(changes)
 	if self:_is_fallow() then
 		return
 	end
+
+   -- if the water level only changed by a tiny bit, we don't want to recalculate water levels for everything
+   -- once the change meets a particular threshold, go ahead and propogate
+   local last_calculated = self._sv.last_calculated_water_volume
+   if last_calculated and math.abs(last_calculated - volume) < RECALCULATE_THRESHOLD then
+      return
+   end
+
+   self._sv.last_calculated_water_volume = volume
+   self.__saved_variables:mark_changed()
 
 	for x=1, self._sv.size.x do
 		for y=1, self._sv.size.y do

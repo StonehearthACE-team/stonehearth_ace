@@ -5,6 +5,8 @@ local Region3 = _radiant.csg.Region3
 local EvolveComponent = require 'stonehearth.components.evolve.evolve_component'
 local AceEvolveComponent = class()
 
+local RECALCULATE_THRESHOLD = 0.5
+
 AceEvolveComponent._old_initialize = EvolveComponent.initialize
 function AceEvolveComponent:initialize()
 	self:_old_initialize()
@@ -76,7 +78,17 @@ function AceEvolveComponent:_on_water_signal_changed(changes)
 	--local this_ratio = volume / area
 	--self._sv._water_level = this_ratio / ideal_ratio
 	-- the above simplifies to this:
-	self._sv._water_level = volume / math.sqrt(area)
+   self._sv._water_level = volume / math.sqrt(area)
+   
+   -- if the water level only changed by a tiny bit, we don't want to have to recalculate timers
+   -- once the change meets a particular threshold, go ahead and propogate
+   local last_calculated = self._sv.last_calculated_water_volume
+   if last_calculated and math.abs(last_calculated - volume) < RECALCULATE_THRESHOLD then
+      self.__saved_variables:mark_changed()
+      return
+   end
+
+   self._sv.last_calculated_water_volume = volume
 	
 	local best_affinity = {min_water = -1, period_multiplier = 1}
 	for _, affinity in ipairs(self._water_affinity) do
