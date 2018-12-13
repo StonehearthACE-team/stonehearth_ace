@@ -1475,7 +1475,7 @@
       },
       "trees": {
          "stump": "Baumstumpf",
-         "stump_description": "Kein Baum mehr...Der Stumpf kann geerntet werden für mehr Platz.",
+         "stump_description": "Das ist kein Baum mehr...wird auch nicht nachwachsen, also ernte ihn um Platz zu schaffen.",
          "birch_tree": {
             "ancient_birch_tree": {
                "display_name": "Uralter Birkenbaum",
@@ -2836,7 +2836,7 @@
          },
          "source_water_wheel_wooden": {
             "display_name": "Hölzernes Wasserrad",
-            "description": "Dieses Gerät kann mechanische Energie erzeugen, wenn es im Wasser platziert wird."
+            "description": "Dieses Gerät kann mechanische Energie erzeugen, wenn es im Wasser oder bei einem Wasserfall platziert wird."
          },
          "safety_standard": {
             "stone_safety_standard": {
@@ -3266,6 +3266,14 @@
                "gizmos": "Gizmos"
             }
          },
+         "custom_tooltips": {
+            "mechanical": {
+               "attach_to_connector": {
+                  "tip_title": "Klick auf einen Verbinder um dieses Objekt anzubringen",
+                  "tip_description": "Dieses Onjekt muss an einen mechanischen Verbinder wie einem Getriebe, einer Achse oder einer angetriebenen Mühle angebracht werden"
+               }
+            }
+         },
          "menu": {
             "crafter_menu": {
                "items": {
@@ -3389,6 +3397,8 @@
                "auto_harvest_enabled_description": "Wenn eine erneuerbare Ressource erntbar ist, die in deinem Besitz ist, wird automatisch einen Erntebefehl für diese Ressource ausgegeben.",
                "auto_harvest_animals_enabled": "Tiere produzieren automatisch nachwachsende Rohstoffe",
                "auto_harvest_animals_enabled_description": "Tiere, die Sie besitzen, produzieren automatisch nachwachsende Rohstoffe (z. B. produzieren deine BuckBucks Eier).",
+               "auto_harvest_tree_stumps": "Automatisches Baumstumpfernten",
+               "auto_harvest_tree_stumps_description": "Wenn Bäume abgeholzt werden, bleiben erntefähige Stümpfe erhalten. Durch Aktivieren dieser Option werden die Stümpfe automatisch geerntet.",
                "terrain_slice_buildings": "Gelände-Gebäude-Schnitt",
                "terrain_slice_buildings_description": "Rendere keine Objekte im Gelände-Schnitt-Modus, die von sichtbaren Objekten außerhalb des Geländes unterstützt werden."
             }
