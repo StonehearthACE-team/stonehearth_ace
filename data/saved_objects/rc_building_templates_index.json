@@ -1,0 +1,77 @@
+{
+   "template_tabs": {
+      "rayyas_children": {
+		 "required_kingdom": "rayyas_children:kingdoms:rayyas_children",
+         "categories": {
+            "outpost": {
+               "templates": {
+				  "mixintypes": {
+					 "pottery_studio_new": "remove",
+					 "weavers_hut_new": "remove",
+					 "masons_workshop_new": "remove",
+					 "herbalists_workshop_new": "remove",
+					 "communal_kitchen_new": "remove",
+					 "blacksmiths_workshop_new": "remove"
+				  },
+                  "pottery_studio_ace": {
+                     "unlock_requirement": {
+                        "type": "has_job",
+                        "value": "stonehearth:jobs:potter"
+                     },
+                     "file": "file(building_templates/rayyas_children/pottery_studio_ace.json)"
+                  },
+                  "weavers_hut_ace": {
+                     "unlock_requirement": {
+                        "type": "has_job",
+                        "value": "stonehearth:jobs:weaver"
+                     },
+                     "file": "file(building_templates/rayyas_children/weavers_hut_ace.json)"
+                  },
+                  "masons_workshop_ace": {
+                     "unlock_requirement": {
+                        "type": "has_job",
+                        "value": "stonehearth:jobs:mason"
+                     },
+                     "file": "file(building_templates/rayyas_children/masons_workshop_ace.json)"
+                  },
+                   "herbalists_workshop_ace": {
+                     "unlock_requirement": {
+                        "type": "has_job",
+                        "value": "stonehearth:jobs:herbalist"
+                     },
+                     "file": "file(building_templates/rayyas_children/herbalists_workshop_ace.json)"
+                  },
+                   "communal_kitchen_ace": {
+                     "unlock_requirement": {
+                        "type": "has_job",
+                        "value": "stonehearth:jobs:cook"
+                     },
+                     "file": "file(building_templates/rayyas_children/communal_kitchen_ace.json)"
+                  },
+                   "blacksmiths_workshop_ace": {
+                     "unlock_requirement": {
+                        "type": "has_job",
+                        "value": "stonehearth:jobs:blacksmith"
+                     },
+                     "file": "file(building_templates/rayyas_children/blacksmiths_workshop_ace.json)"
+                  }
+               }
+            },
+            "settlement": {
+               "templates": {
+				   "mixintypes": {
+					 "engineers_workshop_new": "remove"
+				   },
+                   "engineers_workshop_ace": {
+                     "unlock_requirement": {
+                        "type": "has_job",
+                        "value": "stonehearth:jobs:engineer"
+                     },
+                     "file": "file(building_templates/rayyas_children/tier2/engineers_workshop_ace.json)"
+                  }
+               }
+            }
+         }
+      }
+   }
+}

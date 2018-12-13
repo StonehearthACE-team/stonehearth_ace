@@ -1,0 +1,24 @@
+{
+   "type": "index",
+   "template_tabs": {
+      "ascendancy": {
+	     "required_kingdom": "stonehearth:kingdoms:ascendancy",
+         "categories": {
+            "camp": {
+               "templates": {
+				  "mixintypes": {
+					 "blacksmith_house_new": "remove"
+				  },
+                  "blacksmith_house_ace": {
+					 "unlock_requirement": {
+                        "type": "has_job",
+                        "value": "stonehearth:jobs:blacksmith"
+                     },
+                     "file": "file(building_templates/blacksmith_house_ace.json)"
+                  }
+               }
+            }
+         }
+      }
+   }
+}

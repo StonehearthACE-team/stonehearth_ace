@@ -1,0 +1,85 @@
+{
+   "template_tabs": {
+      "northern_alliance": {
+		 "required_kingdom": "northern_alliance:kingdoms:northern_alliance",
+         "categories": {
+            "outpost": {
+               "templates": {
+				  "mixintypes": {
+					 "workshop_mason": "remove",
+					 "workshop_carpenter": "remove",
+					 "workshop_cook": "remove",
+					 "workshop_herbalist": "remove",
+					 "workshop_potter": "remove",
+					 "workshop_weaver": "remove"
+				  },
+                  "workshop_mason_ace": {
+                     "unlock_requirement": {
+                        "type": "has_job",
+                        "value": "stonehearth:jobs:mason"
+                     },
+                     "file": "file(building_templates/northern_alliance/workshop_mason_ace.json)"
+                  },
+                  "workshop_carpenter_ace": {
+                     "unlock_requirement": {
+                        "type": "has_job",
+                        "value": "stonehearth:jobs:carpenter"
+                     },
+                     "file": "file(building_templates/northern_alliance/workshop_carpenter_ace.json)"
+                  },
+                  "workshop_cook_ace": {
+                     "unlock_requirement": {
+                        "type": "has_job",
+                        "value": "stonehearth:jobs:cook"
+                     },
+                     "file": "file(building_templates/northern_alliance/workshop_cook_ace.json)"
+                  },
+                  "workshop_herbalist_ace": {
+                     "unlock_requirement": {
+                        "type": "has_job",
+                        "value": "stonehearth:jobs:herbalist"
+                     },
+                     "file": "file(building_templates/northern_alliance/workshop_herbalist_ace.json)"
+                  },
+                  "workshop_potter_ace": {
+                     "unlock_requirement": {
+                        "type": "has_job",
+                        "value": "stonehearth:jobs:potter"
+                     },
+                     "file": "file(building_templates/northern_alliance/workshop_potter_ace.json)"
+                  },
+                  "workshop_weaver_ace": {
+                     "unlock_requirement": {
+                        "type": "has_job",
+                        "value": "stonehearth:jobs:weaver"
+                     },
+                     "file": "file(building_templates/northern_alliance/workshop_weaver_ace.json)"
+                  }
+               }
+            },
+            "settlement": {
+               "templates": {
+				  "mixintypes": {
+					 "workshop_blacksmith": "remove",
+					 "workshop_engineer": "remove"
+				  },
+                  "workshop_engineer_ace": {
+                     "unlock_requirement": {
+                        "type": "has_job",
+                        "value": "stonehearth:jobs:engineer"
+                     },
+                     "file": "file(building_templates/northern_alliance/tier2/workshop_engineer_ace.json)"
+                  },
+                  "workshop_blacksmith_ace": {
+                     "unlock_requirement": {
+                        "type": "has_job",
+                        "value": "stonehearth:jobs:blacksmith"
+                     },
+                     "file": "file(building_templates/northern_alliance/tier2/workshop_blacksmith_ace.json)"
+                  }
+               }
+            }
+         }
+      }
+   }
+}
