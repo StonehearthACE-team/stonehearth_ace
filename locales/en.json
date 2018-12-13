@@ -326,7 +326,7 @@
          "archer_description": {
             "level_1_data": {
                "training_perk_name": "Archery Training",
-               "training_perk_description": "An archer can use Training Targets to train up to Level 3 and will increase the allowed limit of Training Equipment by 1"
+               "training_perk_description": "An archer can use Archery Targets to train up to Level 3 and will increase the allowed limit of Training Equipment by 1"
             }
          }
       },
@@ -895,7 +895,7 @@
                "flavor": "Requires an engineer for repairs."
             },
             "training_target_recipe": {
-               "recipe_name": "Training Target",
+               "recipe_name": "Archery Target",
                "description": "Ranged fighters can gain experience from practicing with this target.",
                "flavor": "Requires an engineer for repairs."
             },
@@ -3263,8 +3263,13 @@
       "game": {
          "entities": {
             "item_categories": {
-               "gizmos": "Gizmos"
-            }
+				"undefined": "Miscellaneous",
+				"aquatic": "Aquatic Life",
+				"fluid_control": "Fluid Control",
+				"mechanism": "Mechanisms",
+				"training_equipment": "Training Equipment",
+				"gizmos": "Gizmos"
+			}
          },
          "custom_tooltips": {
             "mechanical": {

@@ -1,0 +1,21 @@
+{
+   "components": {
+	  "mixintypes": {
+		"model_variants": "override"
+	  },
+      "model_variants": {
+         "default": {
+            "models": [
+			   {
+                "type": "one_of",
+                "items": [
+					"/stonehearth/entities/monsters/forest/stone_golem/stone_golem.qb",
+					"/stonehearth/entities/monsters/forest/stone_golem/stone_golem_2.qb",
+					"/stonehearth/entities/monsters/forest/stone_golem/stone_golem_3.qb"
+				]
+			   }
+			]  
+         }
+      }
+   }
+}
