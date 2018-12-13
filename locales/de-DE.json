@@ -318,7 +318,7 @@
          "footman_description": {
             "level_1_data": {
                "training_perk_name": "Kampftraining",
-               "training_perk_description": "Ein Fußsoldat kann mit Dummies bis zu Level 3 trainieren und das zulässige Limit der Trainingsausrüstung um 2 erhöhen"
+               "training_perk_description": "Ein Fußsoldat kann mit Übungspuppen bis zu Level 3 trainieren und das zulässige Limit der Trainingsausrüstung um 2 erhöhen"
             }
          }
       },
@@ -326,7 +326,15 @@
          "archer_description": {
             "level_1_data": {
                "training_perk_name": "Bogenschießen Training",
-               "training_perk_description": "Ein Bogenschütze kann mit Dummies bis zu Level 3 trainieren und erhöht das zulässige Limit der Trainingsausrüstung um 1"
+               "training_perk_description": "Ein Bogenschütze kann mit Trainingszielen bis zu Level 3 trainieren und erhöht das zulässige Limit der Trainingsausrüstung um 1"
+            }
+         }
+      },
+	  "cleric": {
+         "cleric_description": {
+            "level_1_data": {
+               "training_perk_name": "Heiler-Training",
+               "training_perk_description": "Ein Kleriker kann Schafe verwenden, die von einem Hirten gezähmt wurden, um seine/ihre magischen Gesten zu üben und Erfahrung bis Level 3 sammeln"
             }
          }
       },
@@ -334,7 +342,7 @@
          "knight_description": {
             "level_1_data": {
                "training_perk_name": "Knappen Training",
-               "training_perk_description": "Ein Ritter kann mit Dummies bis zu Level 3 trainieren und das zulässige Limit der Trainingsausrüstung um 1 erhöhen"
+               "training_perk_description": "Ein Ritter kann mit Übungspuppen bis zu Level 3 trainieren und das zulässige Limit der Trainingsausrüstung um 1 erhöhen"
             }
          }
       },
@@ -448,7 +456,7 @@
       "potter": {
          "recipes": {
             "bone_clay_recipe": {
-               "recipe_name": "Hügel aus Knochenlehm",
+               "recipe_name": "Hügel aus Knochenlehm (x2)",
                "description": "Erforderlich für die Herstellung von Porzellan und wunderschön verzierter Keramik.",
                "flavor": ""
             },
@@ -456,6 +464,11 @@
                "recipe_name": "Bequemes Bett aus Ton",
                "description": "Es hat viel weniger Sand auf der Matratze.",
                "flavor": "Für eine gute Nachtruhe..."
+            },
+			"clay_bed_crude_recipe": {
+               "recipe_name": "Schlafplatz aus Ton",
+               "description": "Ein passender Ort um bei Erschöpfung ohnmächtig zu werden.",
+               "flavor": "Etwas erträglicher"
             }
          }
       },
@@ -494,6 +507,11 @@
                "recipe_name": "Bequemes Bett aus Stein",
                "description": "Viel wärmer und weicher als der Stein selbst.",
                "flavor": "Warme Felle!"
+            },
+			"stone_bed_crude_recipe": {
+               "recipe_name": "Schlafplatz aus Stein",
+               "description": "Du möchtest vielleicht lieber nicht in dieses hineinspringen.",
+               "flavor": "Das Stroh ist etwas zu trocken, aber es funktioniert..."
             }
          }
       },
@@ -896,10 +914,15 @@
                "description": "Teile die Holzblöcke in Feuerholz, für doppelte Effizens!",
                "flavor": "Brennholz ist ein üblicher Kraftstoff mit niedrigerer Qualität"
             },
-			"splitting_block_recipe": {
+            "splitting_block_recipe": {
                "recipe_name": "Hackklotz",
                "description": "Mach einen stabilen Block zum spalten von Holzblöcken.",
                "flavor": ""
+            },
+			"wood_bed_crude_recipe": {
+               "recipe_name": "Hölzerner Schlafplatz",
+               "description": "Besser als nichts ... Wahrscheinlich.",
+               "flavor": "Man schläft wörtlich auf einem Brett"
             }
          }
       },
@@ -2512,7 +2535,7 @@
          },
          "daisies": {
             "display_name": "Gänseblümchen",
-            "description": "Dieser zarte Blütenüberzug wird sich mit der Zeit sanft über kleine Flächen ausbreiten."
+            "description": "Eine zarte Blüte, die sich im Laufe der Zeit ausbreitet. Ernte sie für Kräuter."
          }
       },
       "fungi": {
