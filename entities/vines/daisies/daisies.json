@@ -7,12 +7,11 @@
                "horizontal": {
                   "region": [
                      {
-                        "min": { "x": -2, "y": 0, "z": -2 },
-                        "max": { "x": 3, "y": 1, "z": 3 }
+                        "min": { "x": -1, "y": 0, "z": -1 },
+                        "max": { "x": 2, "y": 1, "z": 2 }
                      }
                   ],
-                  "max_connections": 24,
-                  "region_intersection_threshold": 0.44
+                  "max_connections": 24
                }
             },
             "max_connections": 24
@@ -70,7 +69,7 @@
       "mob": {
          "model_origin": { "x": 0, "y": 0, "z": 0 },
          "region_origin": { "x": 0.5, "y": 0, "z": 0.5 },
-         "mob_collision_type": "tiny"
+         "mob_collision_type": "clutter"
       }
    },
    "entity_data": {

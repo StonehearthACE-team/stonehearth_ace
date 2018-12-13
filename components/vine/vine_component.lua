@@ -36,6 +36,8 @@ local _opposite_direction = {
 local STRUCTURE_URI = 'stonehearth:build2:entities:structure'
 local FIXTURE_URI = 'stonehearth:build2:entities:fixture_blueprint'
 local IGNORE_GROWTH_ATTEMPTS = 10
+local SPREAD_FN_DEFAULT = 'default'
+local SPREAD_FN_HORIZONTAL_WALK = 'horizontal_walk'
 
 function VineComponent:initialize()
    self._current_season = nil
@@ -91,6 +93,14 @@ function VineComponent:activate()
    self._growth_data.spreads_on_ground = self._growth_data.spreads_on_ground ~= false
    self._growth_data.spreads_on_ceiling = self._growth_data.spreads_on_ceiling ~= false
    self._growth_data.spreads_on_wall = self._growth_data.spreads_on_wall ~= false
+   self._growth_data.terrain_types = self._growth_data.terrain_types or {['dirt'] = true, ['grass'] = true}
+   self._spread_function = self._growth_data.spread_function or {}
+   self._spread_function.type = self._spread_function.type or SPREAD_FN_DEFAULT
+   if self._spread_function.type == SPREAD_FN_HORIZONTAL_WALK then
+      self._spread_function.min_steps = math.max(1, self._spread_function.min_steps or 1)
+      self._spread_function.max_steps = math.max(self._spread_function.min_steps, self._spread_function.max_steps or 1)
+      self._spread_function.max_drop = self._spread_function.max_drop or 1
+   end
 
    self._connection_data = self._entity:get_component('stonehearth_ace:connection'):get_connections(self._uri)
 
@@ -205,103 +215,177 @@ function VineComponent:try_grow()
       return
    end
 
-   local neighbors = self:get_neighbors(true)
-   if not next(neighbors) then
-      return
-   end
-
    self._growth_roller:clear()
    for dir, chance in pairs(self._growth_data.growth_directions) do
       self._growth_roller:add(dir, chance)
    end
 
-   local new_vine
-
-   -- evaluate each direction as we try it so we're not doing extra processing
-   while not self._growth_roller:is_empty() do
-      local dir = self._growth_roller:choose_random()
-      self._growth_roller:remove(dir)
-
-      local point = _directions[dir]
-      local neighbor = neighbors[dir]
-      local dir_chance = self._growth_data.growth_directions
-      if dir_chance and dir_chance[dir] and neighbor and not neighbor.blocked then
-         -- we can consider this space for growth
-         -- however, we only want to grow in specific ways:
-         --    - along a terrain wall (or possibly structure) in four cardinal directions
-         --    - along the ground (or possibly structure) in four cardinal directions (but consider all six because of orientation)
-         --    - along the ceiling (or possibly structure) in four cardinal directions
-         --    - downward from a hanging vine
-         -- so wherever we want to grow should share at least one horizontal growable surface neighbor direction
-         -- or be downward growth with grows_hanging is true
-         
-         local add_dir = false
-         local add_location = neighbor.location
-
-         if dir == 'y-' and self._growth_data.grows_hanging then
-            add_dir = true
-         else
-            local new_neighbors = self:_eval_neighbors_at(add_location, 0)
-
-            if dir ~= 'y-' and dir ~= 'y+' and self._growth_data.grows_on_ground and self._growth_data.spreads_on_ground
-                  and neighbors['y-'] and neighbors['y-'].is_growable_surface
-                  and new_neighbors['y-'] and new_neighbors['y-'].is_growable_surface then
-               add_dir = true
-            elseif dir ~= 'y-' and dir ~= 'y+' and self._growth_data.grows_on_ceiling and self._growth_data.spreads_on_ceiling
-                  and neighbors['y+'] and neighbors['y+'].is_growable_surface
-                  and new_neighbors['y+'] and new_neighbors['y+'].is_growable_surface then
-               add_dir = true
-            elseif self._growth_data.grows_on_wall and self._growth_data.spreads_on_wall then
-               -- make sure the new position has a wall it'll be growing on
-               if (new_neighbors['x-'] and new_neighbors['x-'].is_growable_surface) or 
-                     (new_neighbors['x+'] and new_neighbors['x+'].is_growable_surface) or 
-                     (new_neighbors['z-'] and new_neighbors['z-'].is_growable_surface) or 
-                     (new_neighbors['z+'] and new_neighbors['z+'].is_growable_surface) then
-                  for grow_dir, _ in pairs(_directions) do
-                     if neighbors[grow_dir] and neighbors[grow_dir].is_growable_surface and 
-                           new_neighbors[grow_dir] and new_neighbors[grow_dir].is_growable_surface then
-                        add_dir = true
-                        break
-                     end
-                  end
-               end
-            end
-
-            -- if we aren't already adding in this direction (and it's not blocked), consider growing around a corner in this direction
-            if not add_dir then
-               self._corner_roller:clear()
-               for grow_dir, grow_chance in pairs(self._growth_data.growth_directions) do
-                  -- don't check the same (or opposite) direction, only orthogonally
-                  if string.sub(dir, 1, 1) ~= string.sub(grow_dir, 1, 1) then
-                     if not new_neighbors[grow_dir].blocked and neighbors[grow_dir].is_growable_surface and
-                           (self:_is_growth_dir_permitted(_opposite_direction[dir]) or (grow_dir == 'y-' and self._growth_data.grows_hanging)) then
-                        self._corner_roller:add(add_location + _directions[grow_dir], grow_chance)
-                     end
-                  end
-               end
-               if not self._corner_roller:is_empty() then
-                  add_dir = true
-                  add_location = self._corner_roller:choose_random()
-               end
-            end
-         end
-
-         if add_dir then
-            --log:spam('adding growth dir chance for %s %s (%s)', self._entity, dir, dir_chance[dir])
-            new_vine = radiant.entities.create_entity(self._uri,
-                  { owner = self._entity:get_player_id(), ignore_gravity = dir ~= 'y+' and self._growth_data.ignore_gravity })
-            radiant.terrain.place_entity_at_exact_location(new_vine, add_location, {force_iconic = false})
-            break
-         end
-      end
-   end
+   local new_vine = self:_try_grow()
 
    if self._growth_roller:is_empty() then
       -- if we explored all growth options, ignore the next X growth attempts on this entity
       self._ignore_growth_attempts = IGNORE_GROWTH_ATTEMPTS
+   elseif new_vine then
+      -- if we successfully grew from this vine, slightly prioritize growing from other vines next time
+      self._ignore_growth_attempts = 1
    end
 
    return new_vine
+end
+
+function VineComponent:_try_grow()
+   local new_vine
+   local grow_location
+   local grow_direction
+
+   if self._spread_function.type == SPREAD_FN_DEFAULT then
+   
+      local neighbors = self:get_neighbors(true)
+      if not next(neighbors) then
+         return
+      end
+
+      -- evaluate each direction as we try it so we're not doing extra processing
+      while not self._growth_roller:is_empty() do
+         local dir = self._growth_roller:choose_random()
+         self._growth_roller:remove(dir)
+
+         local point = _directions[dir]
+         local neighbor = neighbors[dir]
+         local dir_chance = self._growth_data.growth_directions
+         if dir_chance and dir_chance[dir] and neighbor and not neighbor.blocked then
+            -- we can consider this space for growth
+            -- however, we only want to grow in specific ways:
+            --    - along a terrain wall (or possibly structure) in four cardinal directions
+            --    - along the ground (or possibly structure) in four cardinal directions (but consider all six because of orientation)
+            --    - along the ceiling (or possibly structure) in four cardinal directions
+            --    - downward from a hanging vine
+            -- so wherever we want to grow should share at least one horizontal growable surface neighbor direction
+            -- or be downward growth with grows_hanging is true
+            
+            local add_dir = false
+            local add_location = neighbor.location
+
+            if dir == 'y-' and self._growth_data.grows_hanging then
+               add_dir = true
+            else
+               local new_neighbors = self:_eval_neighbors_at(add_location, 0)
+
+               if dir ~= 'y-' and dir ~= 'y+' and self._growth_data.grows_on_ground and self._growth_data.spreads_on_ground
+                     and neighbors['y-'] and neighbors['y-'].is_growable_surface
+                     and new_neighbors['y-'] and new_neighbors['y-'].is_growable_surface then
+                  add_dir = true
+               elseif dir ~= 'y-' and dir ~= 'y+' and self._growth_data.grows_on_ceiling and self._growth_data.spreads_on_ceiling
+                     and neighbors['y+'] and neighbors['y+'].is_growable_surface
+                     and new_neighbors['y+'] and new_neighbors['y+'].is_growable_surface then
+                  add_dir = true
+               elseif self._growth_data.grows_on_wall and self._growth_data.spreads_on_wall then
+                  -- make sure the new position has a wall it'll be growing on
+                  if (new_neighbors['x-'] and new_neighbors['x-'].is_growable_surface) or 
+                        (new_neighbors['x+'] and new_neighbors['x+'].is_growable_surface) or 
+                        (new_neighbors['z-'] and new_neighbors['z-'].is_growable_surface) or 
+                        (new_neighbors['z+'] and new_neighbors['z+'].is_growable_surface) then
+                     for grow_dir, _ in pairs(_directions) do
+                        if neighbors[grow_dir] and neighbors[grow_dir].is_growable_surface and 
+                              new_neighbors[grow_dir] and new_neighbors[grow_dir].is_growable_surface then
+                           add_dir = true
+                           break
+                        end
+                     end
+                  end
+               end
+
+               -- if we aren't already adding in this direction (and it's not blocked), consider growing around a corner in this direction
+               if not add_dir then
+                  self._corner_roller:clear()
+                  for grow_dir, grow_chance in pairs(self._growth_data.growth_directions) do
+                     -- don't check the same (or opposite) direction, only orthogonally
+                     if string.sub(dir, 1, 1) ~= string.sub(grow_dir, 1, 1) then
+                        if not new_neighbors[grow_dir].blocked and neighbors[grow_dir].is_growable_surface and
+                              (self:_is_growth_dir_permitted(_opposite_direction[dir]) or (grow_dir == 'y-' and self._growth_data.grows_hanging)) then
+                           self._corner_roller:add(add_location + _directions[grow_dir], grow_chance)
+                        end
+                     end
+                  end
+                  if not self._corner_roller:is_empty() then
+                     add_dir = true
+                     add_location = self._corner_roller:choose_random()
+                  end
+               end
+            end
+
+            if add_dir then
+               grow_location = add_location
+               grow_direction = dir
+               break
+            end
+         end
+      end
+
+   elseif self._spread_function.type == SPREAD_FN_HORIZONTAL_WALK then
+
+      -- talk a random walk starting in a random direction and never going backwards up to max_steps steps
+      -- if the resulting space is growable (or there's empty space down to max_drop below it and that space is growable), grow it there
+      -- otherwise, step backwards and try a different random starting direction
+      -- failing that, grow in that place instead, provided it's at step at least min_steps
+      -- otherwise, start over at a different direction
+      grow_location, grow_direction = self:_grow_via_horizontal_walk({}, radiant.entities.get_world_grid_location(self._entity), 0, {'x-', 'x+', 'z-', 'z+'})
+   end
+
+   if grow_location then
+      new_vine = radiant.entities.create_entity(self._uri,
+            { owner = self._entity:get_player_id(), ignore_gravity = grow_direction ~= 'y+' and self._growth_data.ignore_gravity })
+      radiant.terrain.place_entity_at_exact_location(new_vine, grow_location, {force_iconic = false})
+   end
+
+   return new_vine
+end
+
+function VineComponent:_grow_via_horizontal_walk(neighbors, location, step_num, step_dirs)
+   if step_num >= self._spread_function.max_steps then
+      -- try to grow here; since min_steps >= 1, we already know that this space is clear of obstacles
+      -- just need to check if the max_drop and terrain type constraints are met
+      for i = 1, self._spread_function.max_drop + 1 do
+         local test_location = location:translated(Point3(0, -i, 0))
+         local neighbor = self:_eval_neighbor_at(test_location)
+         if neighbor.is_growable_surface then
+            return test_location:translated(Point3(0, 1, 0))
+         elseif neighbor.blocked then
+            return
+         end
+      end
+   else
+
+      while true do
+         if #step_dirs < 1 then
+            return
+         end
+
+         local try_dir_index = rng:get_int(1, #step_dirs)
+         local try_dir = step_dirs[try_dir_index]
+         local new_dirs = {}
+         for _, dir in ipairs(step_dirs) do
+            if dir ~= _opposite_direction[try_dir] then
+               table.insert(new_dirs, dir)
+            end
+         end
+         table.remove(step_dirs, try_dir_index)
+
+         local step_location = location:translated(_directions[try_dir])
+         local neighbor = neighbors[tostring(step_location)] or self:_eval_neighbor_at(step_location)
+         neighbors[tostring(step_location)] = neighbor
+
+         if not neighbor.blocked then
+            local grow_location = self:_grow_via_horizontal_walk(neighbors, step_location, step_num + 1, new_dirs)
+
+            if grow_location then
+               return grow_location, try_dir
+            elseif step_num >= self._spread_function.min_steps then
+               return location, try_dir
+            end
+         end
+      end
+   end
 end
 
 function VineComponent:get_neighbors(force_eval)
@@ -329,47 +413,55 @@ function VineComponent:_eval_neighbors_at(location, facing)
    
    -- check in each direction
    for dir, point in pairs(_directions) do
-      local neighbor = {}
-
-      neighbor.location = location + point --+ radiant.math.rotate_about_y_axis(point, facing)
-      neighbor.region = _region:translated(neighbor.location)
-
-      -- first check if it's terrain
-      local tag = radiant.terrain.get_block_tag_at(neighbor.location)
-      neighbor.is_growable_surface = tag and tag ~= 0
-
-      if neighbor.is_growable_surface then
-         neighbor.blocked = true
-      else
-         -- if it's not terrain (i.e., it's null/air), check if any entities there are vines or solid
-         for _, entity in pairs(radiant.terrain.get_entities_in_region(neighbor.region)) do
-            if entity:get_uri() == self._uri then
-               neighbor.vine = entity
-               neighbor.blocked = true
-               break
-            elseif entity:get_uri() == STRUCTURE_URI then
-               if self._growth_data.grows_on_structure then
-                  neighbor.is_growable_surface = true
-               end
-               neighbor.blocked = true
-               break
-            elseif entity:get_uri() == FIXTURE_URI then
-               neighbor.blocked = true
-               break
-            else
-               local collision = entity:get_component('region_collision_shape')
-               local type = collision and collision:get_region_collision_type()
-               if type == RegionCollisionType.SOLID or type == RegionCollisionType.PLATFORM then
-                  neighbor.blocked = true
-               end
-            end
-         end
-      end
-
+      local neighbor = self:_eval_neighbor_at(location + point) --+ radiant.math.rotate_about_y_axis(point, facing)
+      
       neighbors[dir] = neighbor
    end
 
    return neighbors
+end
+
+function VineComponent:_eval_neighbor_at(location)
+   local neighbor = {}
+
+   neighbor.location = location
+   neighbor.region = _region:translated(neighbor.location)
+
+   -- first check if it's terrain
+   local tag = radiant.terrain.get_block_tag_at(neighbor.location)
+   local kind = radiant.terrain.get_block_kind_from_tag(tag or 0)
+   neighbor.terrain_tag = tag
+   neighbor.is_growable_surface = self._growth_data.terrain_types[kind]
+
+   if neighbor.is_growable_surface then
+      neighbor.blocked = true
+   else
+      -- if it's not terrain (i.e., it's null/air), check if any entities there are vines or solid
+      for _, entity in pairs(radiant.terrain.get_entities_in_region(neighbor.region)) do
+         if entity:get_uri() == self._uri then
+            neighbor.vine = entity
+            neighbor.blocked = true
+            break
+         elseif entity:get_uri() == STRUCTURE_URI then
+            if self._growth_data.grows_on_structure then
+               neighbor.is_growable_surface = true
+            end
+            neighbor.blocked = true
+            break
+         elseif entity:get_uri() == FIXTURE_URI then
+            neighbor.blocked = true
+            break
+         else
+            local collision = entity:get_component('region_collision_shape')
+            local type = collision and collision:get_region_collision_type()
+            if type == RegionCollisionType.SOLID or type == RegionCollisionType.PLATFORM then
+               neighbor.blocked = true
+            end
+         end
+      end
+   end
+
+   return neighbor
 end
 
 return VineComponent
