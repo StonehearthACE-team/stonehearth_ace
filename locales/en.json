@@ -2836,7 +2836,7 @@
          },
          "source_water_wheel_wooden": {
             "display_name": "Wooden Water Wheel",
-            "description": "This device can generate mechanical power if placed on water."
+            "description": "This device can generate mechanical power if placed in water or a waterfall."
          },
          "safety_standard": {
             "stone_safety_standard": {
@@ -3264,6 +3264,14 @@
          "entities": {
             "item_categories": {
                "gizmos": "Gizmos"
+            }
+         },
+         "custom_tooltips": {
+            "mechanical": {
+               "attach_to_connector": {
+                  "tip_title": "Click on a connector to attach this item",
+                  "tip_description": "This item must be placed on a mechanical connector, like a gearbox, axle, or powered mill"
+               }
             }
          },
          "menu": {

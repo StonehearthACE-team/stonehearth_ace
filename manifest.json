@@ -1426,6 +1426,10 @@
       "terrain_slice_buildings_setting_changed": {
          "controller": "file(call_handlers/settings_call_handler.lua)",
          "endpoint": "client"
+      },
+      "get_custom_tooltip_command": {
+         "controller": "file(call_handlers/custom_tooltips_call_handler.lua)",
+         "endpoint": "server"
       }
    },
    "object_commands": {
