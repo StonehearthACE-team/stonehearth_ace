@@ -7,15 +7,15 @@
    "flavor": "i18n(stonehearth_ace:jobs.carpenter.recipes.training_target_recipe.flavor)",
    "portrait": "/stonehearth_ace/entities/gizmos/training_target/training_target.png",
    "workshop": "stonehearth:carpenter:toolbench",
-   "level_requirement": 2,
+   "level_requirement": 3,
    "ingredients": [
       {
          "material": "wood resource",
-         "count": 4
+         "count": 3
       },
 	  {
-         "material": "thatch resource",
-         "count": 6
+         "uri": "stonehearth_ace:containers:thatch_pile",
+         "count": 1
       },
       {
          "material": "thread resource",

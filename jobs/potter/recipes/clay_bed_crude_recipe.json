@@ -1,0 +1,22 @@
+{
+   "type": "recipe",
+   "effort": 10,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.potter.recipes.clay_bed_crude_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.potter.recipes.clay_bed_crude_recipe.description)",
+   "flavor": "i18n(stonehearth:jobs.potter.recipes.clay_bed_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/furniture/clay_bed_crude/clay_bed_crude.png",
+   "workshop": "stonehearth:potter:kiln",
+   "level_requirement": 0,
+   "ingredients": [
+      {
+         "material": "clay resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:furniture:clay_bed_crude"
+      }
+   ]
+}

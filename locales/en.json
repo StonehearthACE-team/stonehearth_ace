@@ -318,7 +318,7 @@
          "footman_description": {
             "level_1_data": {
                "training_perk_name": "Combat Training",
-               "training_perk_description": "A footman can use Dummies to train up to Level 3 and will increase the allowed limit of Training Equipment by 2"
+               "training_perk_description": "A footman can use Training Dummies to train up to Level 3 and will increase the allowed limit of Training Equipment by 2"
             }
          }
       },
@@ -326,7 +326,15 @@
          "archer_description": {
             "level_1_data": {
                "training_perk_name": "Archery Training",
-               "training_perk_description": "An archer can use Dummies to train up to Level 3 and will increase the allowed limit of Training Equipment by 1"
+               "training_perk_description": "An archer can use Training Targets to train up to Level 3 and will increase the allowed limit of Training Equipment by 1"
+            }
+         }
+      },
+	  "cleric": {
+         "cleric_description": {
+            "level_1_data": {
+               "training_perk_name": "Healer Training",
+               "training_perk_description": "A cleric can use Sheep tamed by a Shepherd to practice their magical gestures and earn experience up to Level 3"
             }
          }
       },
@@ -334,7 +342,7 @@
          "knight_description": {
             "level_1_data": {
                "training_perk_name": "Squire Training",
-               "training_perk_description": "A knight can use Dummies to train up to Level 3 and will increase the allowed limit of Training Equipment by 1"
+               "training_perk_description": "A knight can use Training Dummies to train up to Level 3 and will increase the allowed limit of Training Equipment by 1"
             }
          }
       },
@@ -448,7 +456,7 @@
       "potter": {
          "recipes": {
             "bone_clay_recipe": {
-               "recipe_name": "Mound of Bone Clay",
+               "recipe_name": "Mound of Bone Clay (x2)",
                "description": "Required for creating porcelain and beautiful ornate ceramics.",
                "flavor": ""
             },
@@ -456,6 +464,11 @@
                "recipe_name": "Clay Comfy Bed",
                "description": "It has a lot less sand on the mattress.",
                "flavor": "For a good night of sleep..."
+            },
+			"clay_bed_crude_recipe": {
+               "recipe_name": "Clay Sleeping Spot",
+               "description": "A proper place to pass out when exhausted.",
+               "flavor": "A little bit more bearable"
             }
          }
       },
@@ -494,6 +507,11 @@
                "recipe_name": "Stone Comfy Bed",
                "description": "Much warmer and softer than the stone itself.",
                "flavor": "Warm furs!"
+            },
+			"stone_bed_crude_recipe": {
+               "recipe_name": "Stone Sleeping Spot",
+               "description": "You might not want to jump into this one.",
+               "flavor": "The thatch is a bit too dry but it works..."
             }
          }
       },
@@ -900,6 +918,11 @@
                "recipe_name": "Splitting Block",
                "description": "Create a sturdy block for splitting logs.",
                "flavor": ""
+            },
+			"wood_bed_crude_recipe": {
+               "recipe_name": "Wooden Sleeping Spot",
+               "description": "Better than nothing... Probably.",
+               "flavor": "Literally sleeping on a board"
             }
          }
       },

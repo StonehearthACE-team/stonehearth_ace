@@ -3,8 +3,8 @@
       "name": "Authorized Community Expansion",
       "namespace": "stonehearth_ace",
       "version": 3,
-	  "is_base_mod": true,
-	  "steam_file_id" : "1577375188"
+      "is_base_mod": true,
+      "steam_file_id": "1577375188"
    },
    "author": "The Stonehearth ACE Team",
    "dependencies": [
@@ -291,6 +291,7 @@
       "fungi:winter_morel:colony": "file(entities/fungi/winter_morel/colony/winter_morel_colony.json)",
       "fungi:winter_morel:developing": "file(entities/fungi/winter_morel/developing/winter_morel_developing.json)",
       "fungi:winter_morel:spreading": "file(entities/fungi/winter_morel/spreading/winter_morel_spreading.json)",
+      "furniture:clay_bed_crude": "file(entities/furniture/clay_bed_crude/clay_bed_crude.json)",
       "furniture:clay_comfy_bed": "file(entities/furniture/clay_comfy_bed/clay_comfy_bed.json)",
       "furniture:patrol_point": "file(entities/furniture/patrol_point)",
       "furniture:patrol_point_sign": "file(entities/furniture/patrol_point_sign)",
@@ -307,7 +308,9 @@
       "furniture:porcelain_end_table": "file(entities/furniture/porcelain_end_table/porcelain_end_table.json)",
       "furniture:porcelain_shelf": "file(entities/furniture/porcelain_shelf/porcelain_shelf.json)",
       "furniture:porcelain_table": "file(entities/furniture/porcelain_table/porcelain_table.json)",
+      "furniture:stone_bed_crude": "file(entities/furniture/stone_bed_crude/stone_bed_crude.json)",
       "furniture:stone_comfy_bed": "file(entities/furniture/stone_comfy_bed/stone_comfy_bed.json)",
+      "furniture:wood_bed_crude": "file(entities/furniture/wood_bed_crude/wood_bed_crude.json)",
       "gizmos:axles:gear_box": "file(entities/gizmos/axle_gear_box/axle_gear_box.json)",
       "gizmos:axles:horizontal": "file(entities/gizmos/axle_horizontal/axle_horizontal.json)",
       "gizmos:axles:horizontal:switch": "file(entities/gizmos/axle_horizontal_switch/axle_horizontal_switch.json)",
@@ -1155,9 +1158,9 @@
       "stonehearth:humans:female:customizations": "stonehearth_ace:humans:female:customizations",
       "stonehearth/entities/containers/wheat_pile_old/wheat_pile_old.json": "file(entities/containers/wheat_pile_old/wheat_pile_old.json)",
       "stonehearth:terrain:waterfall": "file(entities/terrain/waterfall/waterfall.json)",
-	  "stonehearth:building_templates:index": "file(data/saved_objects/building_templates_index.json)",
-	  "rayyas_children/data/saved_objects/building_templates_index.json": "file(data/saved_objects/rc_building_templates_index.json)",
-	  "northern_alliance/data/saved_objects/building_templates_index.json": "file(data/saved_objects/na_building_templates_index.json)"
+      "stonehearth/data/saved_objects/building_templates_index.json": "file(data/saved_objects/building_templates_index.json)",
+      "rayyas_children/data/saved_objects/building_templates_index.json": "file(data/saved_objects/rc_building_templates_index.json)",
+      "northern_alliance/data/saved_objects/building_templates_index.json": "file(data/saved_objects/na_building_templates_index.json)"
    },
    "overrides": {
       "stonehearth/data/rigs/entities/humans/animations/male/combat_1h_thrust.json": "stonehearth_ace/data/rigs/entities/humans/animations/male/combat_1h_thrust.json",
