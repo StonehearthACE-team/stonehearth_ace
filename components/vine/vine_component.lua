@@ -428,10 +428,14 @@ function VineComponent:_eval_neighbor_at(location)
    neighbor.region = _region:translated(neighbor.location)
 
    -- first check if it's terrain
-   local tag = radiant.terrain.get_block_tag_at(neighbor.location)
-   local kind = radiant.terrain.get_block_kind_from_tag(tag or 0)
+   local tag = radiant.terrain.get_block_tag_at(neighbor.location) or 0
+   local kind = radiant.terrain.get_block_kind_from_tag(tag)
    neighbor.terrain_tag = tag
-   neighbor.is_growable_surface = self._growth_data.terrain_types[kind]
+   if next(self._growth_data.terrain_types) then
+      neighbor.is_growable_surface = self._growth_data.terrain_types[kind]
+   else
+      neighbor.is_growable_surface = tag ~= 0
+   end
 
    if neighbor.is_growable_surface then
       neighbor.blocked = true
