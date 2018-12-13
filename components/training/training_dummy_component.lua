@@ -20,23 +20,28 @@ end
 function TrainingDummyComponent:activate()
    self._sv.combat_time = stonehearth.calendar:realtime_to_game_seconds(self._json.combat_time or 5)
    self._health_listener = radiant.events.listen(self._entity, 'stonehearth:expendable_resource_changed:health', self, self._on_health_changed)
-   self._parent_trace = self._entity:get_component('mob'):trace_parent('siege weapon added or removed')
-                  :on_changed(function(parent_entity)
-                        if not parent_entity then
-                           local entity_forms_component = self._entity:get_component('stonehearth:entity_forms')
-                           if entity_forms_component and not entity_forms_component:is_being_placed() then
-                              -- Unregister this object if it was undeployed
-                              self:_register_with_town(false)
-                           end
-                        else
-                           -- Register this object if it is placed
-                           self:_register_with_town(true)
-                        end
-                     end)
+   
+   if self._dummy_type then
+      self._parent_trace = self._entity:get_component('mob'):trace_parent('siege weapon added or removed')
+         :on_changed(function(parent_entity)
+            if not parent_entity then
+               local entity_forms_component = self._entity:get_component('stonehearth:entity_forms')
+               if entity_forms_component and not entity_forms_component:is_being_placed() then
+                  -- Unregister this object if it was undeployed
+                  self:_register_with_town(false)
+               end
+            else
+               -- Register this object if it is placed
+               self:_register_with_town(true)
+            end
+         end)
+   end
 end
 
 function TrainingDummyComponent:destroy()
-   self:_register_with_town(false)
+   if self._dummy_type then
+      self:_register_with_town(false)
+   end
    self:_destroy_listeners()
 	self:_destroy_combat_timer()
 end
