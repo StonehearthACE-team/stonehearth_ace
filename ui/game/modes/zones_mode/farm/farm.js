@@ -23,15 +23,16 @@ App.StonehearthFarmView.reopen({
                var size_mult = 4/11 * Math.ceil(size.x / 2) * size.y;
                var water_affinity = {};
                water_affinity.current_level_description = 'stonehearth_ace:ui.game.zones_mode.farm.current_water_level';
-               water_affinity.current_water_level = {level: Math.round(water_level * size_mult)};
+               var level = water_level * size_mult;
+               water_affinity.current_water_level = {level: level < affinities.best_affinity.min_water * size_mult ? Math.floor(level) : Math.ceil(level)};
                if (affinities.next_affinity) {
                   water_affinity.description = 'stonehearth_ace:ui.game.zones_mode.farm.water_affinity_range';
-                  water_affinity.i18n_data = {min: Math.round(affinities.best_affinity.min_water * size_mult),
-                                              max: Math.round(affinities.next_affinity.min_water * size_mult)};
+                  water_affinity.i18n_data = {min: Math.ceil(affinities.best_affinity.min_water * size_mult),
+                                              max: Math.floor(affinities.next_affinity.min_water * size_mult)};
                }
                else {
                   water_affinity.description = 'stonehearth_ace:ui.game.zones_mode.farm.water_affinity_min_only';
-                  water_affinity.i18n_data = {min: Math.round(affinities.best_affinity.min_water * size_mult)};
+                  water_affinity.i18n_data = {min: Math.ceil(affinities.best_affinity.min_water * size_mult)};
                }
 
                self.set('water_affinity', water_affinity);

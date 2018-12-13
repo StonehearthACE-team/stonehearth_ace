@@ -717,9 +717,9 @@ function PlayerConnections:_get_region_keys(region)
       local min = bounds.min
       local max = bounds.max
       local chunk_region_size = self._sv.chunk_region_size
-      for x = math.floor(min.x/chunk_region_size), math.floor(max.x/chunk_region_size) do
-         for y = math.floor(min.y/chunk_region_size), math.floor(max.y/chunk_region_size) do
-            for z = math.floor(min.z/chunk_region_size), math.floor(max.z/chunk_region_size) do
+      for x = math.floor((min.x + 1)/chunk_region_size), math.floor(max.x/chunk_region_size) do
+         for y = math.floor((min.y + 1)/chunk_region_size), math.floor(max.y/chunk_region_size) do
+            for z = math.floor((min.z + 1)/chunk_region_size), math.floor(max.z/chunk_region_size) do
                table.insert(keys, string.format('%d,%d,%d', x, y, z))
             end
          end
