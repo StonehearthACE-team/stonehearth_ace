@@ -230,6 +230,8 @@ $(top).on('stonehearthReady', function(cc) {
                break;
          }
 
+         setting.setValue(setting.value);
+
          return newDiv;
       },
 

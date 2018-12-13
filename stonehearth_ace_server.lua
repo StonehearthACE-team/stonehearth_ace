@@ -25,6 +25,7 @@ local monkey_patches = {
    ace_farmer_field_component = 'stonehearth.components.farmer_field.farmer_field_component',
    ace_growing_component = 'stonehearth.components.growing.growing_component',
    ace_renewable_resource_node_component = 'stonehearth.components.renewable_resource_node.renewable_resource_node_component',
+   ace_resource_node_component = 'stonehearth.components.resource_node.resource_node_component',
    --ace_task_tracker_component = 'stonehearth.components.task_tracker.task_tracker_component', -- only used for individual auto-harvest
    ace_shepherd_pasture_component = 'stonehearth.components.shepherd_pasture.shepherd_pasture_component',
    ace_shepherd_service = 'stonehearth.services.server.shepherd.shepherd_service',
