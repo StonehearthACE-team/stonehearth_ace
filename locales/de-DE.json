@@ -325,12 +325,12 @@
       "archer": {
          "archer_description": {
             "level_1_data": {
-               "training_perk_name": "Bogenschießen Training",
-               "training_perk_description": "Ein Bogenschütze kann mit Trainingszielen bis zu Level 3 trainieren und erhöht das zulässige Limit der Trainingsausrüstung um 1"
+               "training_perk_name": "Bogenschieß-Training",
+               "training_perk_description": "Ein Bogenschütze kann mit Zielscheiben bis zu Level 3 trainieren und erhöht das zulässige Limit der Trainingsausrüstung um 1"
             }
          }
       },
-	  "cleric": {
+      "cleric": {
          "cleric_description": {
             "level_1_data": {
                "training_perk_name": "Heiler-Training",
@@ -465,7 +465,7 @@
                "description": "Es hat viel weniger Sand auf der Matratze.",
                "flavor": "Für eine gute Nachtruhe..."
             },
-			"clay_bed_crude_recipe": {
+            "clay_bed_crude_recipe": {
                "recipe_name": "Schlafplatz aus Ton",
                "description": "Ein passender Ort um bei Erschöpfung ohnmächtig zu werden.",
                "flavor": "Etwas erträglicher"
@@ -508,7 +508,7 @@
                "description": "Viel wärmer und weicher als der Stein selbst.",
                "flavor": "Warme Felle!"
             },
-			"stone_bed_crude_recipe": {
+            "stone_bed_crude_recipe": {
                "recipe_name": "Schlafplatz aus Stein",
                "description": "Du möchtest vielleicht lieber nicht in dieses hineinspringen.",
                "flavor": "Das Stroh ist etwas zu trocken, aber es funktioniert..."
@@ -919,7 +919,7 @@
                "description": "Mach einen stabilen Block zum spalten von Holzblöcken.",
                "flavor": ""
             },
-			"wood_bed_crude_recipe": {
+            "wood_bed_crude_recipe": {
                "recipe_name": "Hölzerner Schlafplatz",
                "description": "Besser als nichts ... Wahrscheinlich.",
                "flavor": "Man schläft wörtlich auf einem Brett"
@@ -1850,6 +1850,24 @@
             "porcelain_comfy_bed_ghost": {
                "display_name": "Bequemes Bett aus Porzellan",
                "description": "Für diejenigen, die auch im Schlaf schick aussehen wollen."
+            }
+         },
+         "clay_bed_crude": {
+            "clay_bed_crude_ghost": {
+               "display_name": "Schlafplatz aus Ton",
+               "description": "Ein passender Ort um bei Erschöpfung ohnmächtig zu werden."
+            }
+         },
+         "stone_bed_crude": {
+            "stone_bed_crude_ghost": {
+               "display_name": "Schlafplatz aus Stein",
+               "description": "Achte auf deinen Kopf bei diesem."
+            }
+         },
+         "wood_bed_crude": {
+            "wood_bed_crude_ghost": {
+               "display_name": "Hölzerner Schlafplatz",
+               "description": "Das hier ist wirklich gemein."
             }
          }
       },
@@ -3263,6 +3281,11 @@
       "game": {
          "entities": {
             "item_categories": {
+               "undefined": "Verschiedenes",
+               "aquatic": "Wasserleben",
+               "fluid_control": "Flüssigkeitskontrolle",
+               "mechanism": "Mechanismen",
+               "training_equipment": "Trainingsausrüstung",
                "gizmos": "Gizmos"
             }
          },
