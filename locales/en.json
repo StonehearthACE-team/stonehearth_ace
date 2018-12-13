@@ -330,7 +330,7 @@
             }
          }
       },
-	  "cleric": {
+      "cleric": {
          "cleric_description": {
             "level_1_data": {
                "training_perk_name": "Healer Training",
@@ -465,7 +465,7 @@
                "description": "It has a lot less sand on the mattress.",
                "flavor": "For a good night of sleep..."
             },
-			"clay_bed_crude_recipe": {
+            "clay_bed_crude_recipe": {
                "recipe_name": "Clay Sleeping Spot",
                "description": "A proper place to pass out when exhausted.",
                "flavor": "A little bit more bearable"
@@ -508,7 +508,7 @@
                "description": "Much warmer and softer than the stone itself.",
                "flavor": "Warm furs!"
             },
-			"stone_bed_crude_recipe": {
+            "stone_bed_crude_recipe": {
                "recipe_name": "Stone Sleeping Spot",
                "description": "You might not want to jump into this one.",
                "flavor": "The thatch is a bit too dry but it works..."
@@ -919,7 +919,7 @@
                "description": "Create a sturdy block for splitting logs.",
                "flavor": ""
             },
-			"wood_bed_crude_recipe": {
+            "wood_bed_crude_recipe": {
                "recipe_name": "Wooden Sleeping Spot",
                "description": "Better than nothing... Probably.",
                "flavor": "Literally sleeping on a board"
@@ -1850,6 +1850,24 @@
             "porcelain_comfy_bed_ghost": {
                "display_name": "Porcelain Comfy Bed",
                "description": "For those that want to look fancy even when asleep."
+            }
+         },
+         "clay_bed_crude": {
+            "clay_bed_crude_ghost": {
+               "display_name": "Clay Sleeping Spot",
+               "description": "A proper place to pass out when exhausted."
+            }
+         },
+         "stone_bed_crude": {
+            "stone_bed_crude_ghost": {
+               "display_name": "Stone Sleeping Spot",
+               "description": "Mind your head on this one."
+            }
+         },
+         "wood_bed_crude": {
+            "wood_bed_crude_ghost": {
+               "display_name": "Wooden Sleeping Spot",
+               "description": "That one is really mean."
             }
          }
       },
@@ -3263,13 +3281,13 @@
       "game": {
          "entities": {
             "item_categories": {
-				"undefined": "Miscellaneous",
-				"aquatic": "Aquatic Life",
-				"fluid_control": "Fluid Control",
-				"mechanism": "Mechanisms",
-				"training_equipment": "Training Equipment",
-				"gizmos": "Gizmos"
-			}
+               "undefined": "Miscellaneous",
+               "aquatic": "Aquatic Life",
+               "fluid_control": "Fluid Control",
+               "mechanism": "Mechanisms",
+               "training_equipment": "Training Equipment",
+               "gizmos": "Gizmos"
+            }
          },
          "custom_tooltips": {
             "mechanical": {
