@@ -1,0 +1,26 @@
+{
+   "type": "recipe",
+   "effort": 30,
+   "work_units": 25,
+   "recipe_name": "i18n(stonehearth_ace:jobs.mason.recipes.stone_training_dummy_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.mason.recipes.stone_training_dummy_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.mason.recipes.stone_training_dummy_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/gizmos/stone_training_dummy/stone_training_dummy.png",
+   "workshop": "stonehearth:mason:pedestal",
+   "level_requirement": 2,
+   "ingredients": [
+      {
+         "material": "stone resource",
+         "count": 5
+      },
+	  {
+         "material": "pelt resource",
+         "count": 3
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:gizmos:stone_training_dummy"
+      }
+   ]
+}

@@ -1,13 +1,13 @@
 {
    "type": "entity",
    "mixins": [
-      "file(training_target_ghost.json)",
+      "file(stone_training_target_ghost.json)",
       "stonehearth:mixins:destructable_siege_object"
    ],
    "components": {
       "stonehearth:entity_forms": {
-         "iconic_form": "file(training_target_iconic.json)",
-         "ghost_form": "file(training_target_ghost.json)",
+         "iconic_form": "file(stone_training_target_iconic.json)",
+         "ghost_form": "file(stone_training_target_ghost.json)",
          "placeable_on_ground": true,
          "hide_undeploy_ui": true
       },
@@ -46,7 +46,7 @@
       "stonehearth:attributes": {
          "max_health": {
             "type": "basic",
-            "value": 1000
+            "value": 1200
          },
          "menace": {
             "type": "basic",
@@ -56,7 +56,7 @@
    },
    "entity_data": {
       "stonehearth:net_worth": {
-         "value_in_gold": 30,
+         "value_in_gold": 32,
          "rarity": "common",
          "shop_info": {
             "buyable": true,

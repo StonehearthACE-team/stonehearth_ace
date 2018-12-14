@@ -11,29 +11,25 @@
       "model_variants": {
          "default": {
             "models": [
-               "file(training_target.qb)"
+               "file(clay_training_dummy.qb)"
             ]
          }
       },
       "mob": {
-         "align_to_grid": [
-            "x",
-            "z"
-         ],
-         "model_origin": { "x": 0.05, "y": 0, "z": 0.05 },
-         "region_origin": { "x": 0, "y": 0, "z": 0 }
+         "model_origin": { "x": 0.1, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
       }
    },
    "entity_data": {
       "stonehearth:catalog": {
-         "display_name": "i18n(stonehearth_ace:entities.gizmos.target_training.display_name)",
-         "description": "i18n(stonehearth_ace:entities.gizmos.target_training.description)",
-         "icon": "file(training_target.png)",
+         "display_name": "i18n(stonehearth_ace:entities.gizmos.clay_dummy_training.clay_dummy_training_ghost.display_name)",
+         "description": "i18n(stonehearth_ace:entities.gizmos.clay_dummy_training.clay_dummy_training_ghost.description)",
+         "icon": "file(clay_training_dummy.png)",
          "category": "training_equipment",
          "material_tags": [
             "stockpile_gizmos",
             "stockpile_defense",
-            "training_dummy",
+            "clay_training_dummy",
             "decoration"
          ]
       }

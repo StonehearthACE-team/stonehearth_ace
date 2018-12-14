@@ -1,0 +1,34 @@
+{
+   "type": "recipe",
+   "effort": 30,
+   "work_units": 25,
+   "recipe_name": "i18n(stonehearth_ace:jobs.potter.recipes.clay_training_dummy_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.potter.recipes.clay_training_dummy_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.potter.recipes.clay_training_dummy_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/gizmos/clay_training_dummy/clay_training_dummy.png",
+   "workshop": "stonehearth:potter:workbench",
+   "level_requirement": 2,
+   "ingredients": [
+      {
+         "material": "clay resource",
+         "count": 1
+      },
+	  {
+         "material": "thatch resource",
+         "count": 4
+      },
+	  {
+         "uri": "stonehearth:containers:large_urn",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth:containers:small_urn",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:gizmos:clay_training_dummy"
+      }
+   ]
+}

@@ -1,0 +1,30 @@
+{
+   "type": "recipe",
+   "effort": 30,
+   "work_units": 25,
+   "recipe_name": "i18n(stonehearth_ace:mountain_folk.jobs.blacksmith.recipes.brass_training_target_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:mountain_folk.jobs.blacksmith.recipes.brass_training_target_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:mountain_folk.jobs.blacksmith.recipes.brass_training_target_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/gizmos/brass_training_target/brass_training_target.png",
+   "workshop": "stonehearth:blacksmith:workbench",
+   "level_requirement": 3,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:refined:brass_plate",
+         "count": 4
+      },
+      {
+         "material": "wool resource",
+         "count": 12
+      },	  
+      {
+         "material": "thread resource",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:gizmos:brass_training_target"
+      }
+   ]
+}

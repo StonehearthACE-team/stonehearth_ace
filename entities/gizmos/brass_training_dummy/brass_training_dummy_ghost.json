@@ -1,0 +1,41 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "type": "entity",
+   "components": {
+      "render_info": {
+         "animation_table": "/stonehearth/data/rigs/entities/gizmos/dummy_training/dummy_training.json",
+         "color_map": "stonehearth_ace:color_map:ace",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/mob_material_map.json"
+         ]
+      },
+      "effect_list": {
+         "default": "/stonehearth/data/rigs/entities/gizmos/dummy_training/effects/idle.json"
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(brass_training_dummy.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0.1, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.gizmos.brass_dummy_training.brass_dummy_training_ghost.display_name)",
+         "description": "i18n(stonehearth_ace:entities.gizmos.brass_dummy_training.brass_dummy_training_ghost.description)",
+         "icon": "file(brass_training_dummy.png)",
+         "category": "training_equipment",
+         "material_tags": [
+            "stockpile_gizmos",
+            "stockpile_defense",
+            "brass_training_dummy",
+            "decoration"
+         ]
+      }
+   }
+}

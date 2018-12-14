@@ -469,6 +469,16 @@
                "recipe_name": "Clay Sleeping Spot",
                "description": "A proper place to pass out when exhausted.",
                "flavor": "A little bit more bearable"
+            },
+            "clay_training_dummy_recipe": {
+               "recipe_name": "Clay Training Dummy",
+               "description": "Melee fighters can gain experience from practicing with this friendly guy.",
+               "flavor": "Requires an engineer for repairs."
+            },
+            "clay_training_target_recipe": {
+               "recipe_name": "Clay Archery Target",
+               "description": "Ranged fighters can gain experience from practicing with this target.",
+               "flavor": "Requires an engineer for repairs."
             }
          }
       },
@@ -512,11 +522,22 @@
                "recipe_name": "Stone Sleeping Spot",
                "description": "You might not want to jump into this one.",
                "flavor": "The thatch is a bit too dry but it works..."
+            },
+            "stone_training_dummy_recipe": {
+               "recipe_name": "Stone Training Dummy",
+               "description": "Melee fighters can gain experience from practicing with this friendly guy.",
+               "flavor": "Requires an engineer for repairs."
+            },
+            "stone_training_target_recipe": {
+               "recipe_name": "Stone Archery Target",
+               "description": "Ranged fighters can gain experience from practicing with this target.",
+               "flavor": "Requires an engineer for repairs."
             }
          }
       },
       "blacksmith": {
          "recipes": {
+            "utility_name": "Utility",
             "blacksmith_fuel_oven_recipe": {
                "recipe_name": "Blacksmith Kiln",
                "description": "Required for refining certain materials like wood and coal.",
@@ -2830,7 +2851,7 @@
          },
          "target_training": {
             "display_name": "Archery Target",
-            "description": "Less dangerous than shooting apples on someone's head."
+            "description": "Less dangerous than shooting apples on someone's head. Requires an engineer for repairs."
          },
          "axle_vertical": {
             "description": "A rotating shaft that can take mechanical power vertically.",
@@ -2864,6 +2885,36 @@
          "patrol_banner": {
             "display_name": "Patrol Banner",
             "description": "Combat party members will prioritize patrolling between these banners."
+         },
+         "stone_target_training": {
+            "description": "Less dangerous than shooting apples on someone's head. Requires an engineer for repairs.",
+            "display_name": "Stone Archery Target"
+         },
+         "clay_target_training": {
+            "description": "Less dangerous than shooting apples on someone's head. Requires an engineer for repairs.",
+            "display_name": "Clay Archery Target"
+         },
+         "brass_target_training": {
+            "description": "Less dangerous than shooting apples on someone's head. Requires an artificer for repairs.",
+            "display_name": "Brass Archery Target"
+         },
+         "stone_dummy_training": {
+            "stone_dummy_training_ghost": {
+               "description": "It's best to practice with this friendly guy. Requires an engineer for repairs.",
+               "display_name": "Stone Training Dummy"
+            }
+         },
+         "clay_dummy_training": {
+            "clay_dummy_training_ghost": {
+               "description": "It's best to practice with this friendly guy. Requires an engineer for repairs.",
+               "display_name": "Clay Training Dummy"
+            }
+         },
+         "brass_dummy_training": {
+            "brass_dummy_training_ghost": {
+               "description": "It's best to practice with this friendly guy. Requires an artficer for repairs.",
+               "display_name": "Brass Training Dummy"
+            }
          }
       },
       "aquatic": {
@@ -3211,6 +3262,16 @@
                   "description": "Required to promote a hearthling into a Grower.",
                   "recipe_name": "Grower's Trowel",
                   "flavor": ""
+               },
+               "brass_training_dummy_recipe": {
+                  "recipe_name": "Brass Training Dummy",
+                  "description": "Melee fighters can gain experience from practicing with this friendly guy.",
+                  "flavor": "Requires an artificer for repairs."
+               },
+               "brass_training_target_recipe": {
+                  "recipe_name": "Brass Archery Target",
+                  "description": "Ranged fighters can gain experience from practicing with this target.",
+                  "flavor": "Requires an artificer for repairs."
                }
             }
          }
@@ -3434,7 +3495,7 @@
             "thatch_resource_name": "Thatching",
             "bone_resource_name": "Bone",
             "fungi_resource_name": "Fungi",
-            "chitin_resource_name": "Chitin",
+            "chitin_resource_name": "Any Chitin",
             "coal_resource_name": "Any Coal",
             "any_fuel_resource_name": "Any Fuel",
             "common_fuel_resource_name": "Any Common Fuel",
@@ -3446,7 +3507,8 @@
             "precious_metal_resource_name": "Any Precious Metal",
             "algae_resource_name": "Any Water Weed",
             "fish_roe_resource_name": "Any Fish Roe",
-            "fish_meat_resource_name": "Any Fish Meat"
+            "fish_meat_resource_name": "Any Fish Meat",
+            "wool_resource_name": "Any Wool"
          }
       }
    }
