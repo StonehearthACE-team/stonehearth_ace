@@ -140,6 +140,7 @@ $(top).on('stonehearthReady', function(cc) {
             newSection.classList.add('modSettings');
 
             if(settings) {
+               var isHost = self.get('isHostPlayer');
                // if there are actually settings, create the elements for them, sorted by ordinal
                var sortedSettings = radiant.map_to_array(settings, function(name, setting) {
                   setting.name = name;
@@ -148,9 +149,11 @@ $(top).on('stonehearthReady', function(cc) {
                sortedSettings.sort(function(a, b) { return a.ordinal - b.ordinal });
 
                radiant.each(sortedSettings, function(i, setting) {
-                  var element = self._createGameplaySettingElements(mod, setting);
-                  if(element) {
-                     newSection.appendChild(element);
+                  if (isHost || !setting.host_only) {
+                     var element = self._createGameplaySettingElements(mod, setting);
+                     if(element) {
+                        newSection.appendChild(element);
+                     }
                   }
                });
             }
