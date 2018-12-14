@@ -4,12 +4,24 @@ local log = radiant.log.create_logger('water_signal')
 
 local WaterSignal = class()
 
+local WATER_MONITOR_TYPES = {
+   'water_exists',
+   'water_volume',
+   'water_surface_level'
+}
+local WATERFALL_MONITOR_TYPES = {
+   'waterfall_exists',
+   'waterfall_volume'
+}
+
 function WaterSignal:initialize()
    self._sv.signal_region = nil
    self._sv.world_signal_region = nil
    self._sv.monitor_types = {}
    self._location = nil
    self._change_cb = nil
+   self._cached_waters = {}
+   self._cached_waterfalls = {}
 end
 
 function WaterSignal:create(entity_id, id, signal_region, monitor_types, change_callback)
@@ -22,9 +34,9 @@ function WaterSignal:activate()
    if self._on_activate then
       self._on_activate(self)
       self._on_activate = nil
+   else
+      stonehearth_ace.water_signal:register_water_signal(self)
    end
-
-   stonehearth_ace.water_signal:register_water_signal(self)
 end
 
 function WaterSignal:destroy()
@@ -41,7 +53,7 @@ function WaterSignal:_reset()
 end
 
 function WaterSignal:set_settings(signal_region, monitor_types, change_callback)
-   self:add_monitor_types(monitor_types)
+   self:add_monitor_types(monitor_types, true)
    self:set_change_callback(change_callback)
    self:set_signal_region(signal_region)
 
@@ -99,18 +111,28 @@ function WaterSignal:has_monitor_type(monitor_type)
 end
 
 function WaterSignal:monitors_water()
-   return self:has_monitor_type('water_exists') or self:has_monitor_type('water_volume') or self:has_monitor_type('water_surface_level')
+   for _, type in ipairs(WATER_MONITOR_TYPES) do
+      if self._sv.monitor_types[type] then
+         return true
+      end
+   end
+   return false
 end
 
 function WaterSignal:monitors_waterfall()
-   return self:has_monitor_type('waterfall_exists') or self:has_monitor_type('waterfall_volume')
+   for _, type in ipairs(WATERFALL_MONITOR_TYPES) do
+      if self._sv.monitor_types[type] then
+         return true
+      end
+   end
+   return false
 end
 
 function WaterSignal:get_monitor_types()
    return radiant.shallow_copy(self._sv.monitor_types)
 end
 
-function WaterSignal:set_monitor_types(monitor_types)
+function WaterSignal:set_monitor_types(monitor_types, skip_register)
    local changed = false
    local types = {}
    for _, monitor_type in ipairs(monitor_types) do
@@ -130,10 +152,13 @@ function WaterSignal:set_monitor_types(monitor_types)
    if changed then
       self:_reset()
    end
+   if not skip_register then
+      stonehearth_ace.water_signal:register_water_signal(self)
+   end
 end
 
 -- should these be filtered on stonehearth.constants.water_signal.MONITOR_TYPES?
-function WaterSignal:add_monitor_types(monitor_types)
+function WaterSignal:add_monitor_types(monitor_types, skip_register)
    local changed = false
    for _, monitor_type in ipairs(monitor_types) do
       if not self._sv.monitor_types[monitor_type] then
@@ -145,9 +170,12 @@ function WaterSignal:add_monitor_types(monitor_types)
    if changed then
       self:_reset()
    end
+   if not skip_register then
+      stonehearth_ace.water_signal:register_water_signal(self)
+   end
 end
 
-function WaterSignal:remove_monitor_types(monitor_types)
+function WaterSignal:remove_monitor_types(monitor_types, skip_register)
    local changed = false
    if monitor_types then
       for _, monitor_type in ipairs(monitor_types) do
@@ -164,6 +192,9 @@ function WaterSignal:remove_monitor_types(monitor_types)
 
 	if changed then
       self:_reset()
+   end
+   if not skip_register then
+      stonehearth_ace.water_signal:register_water_signal(self)
    end
 end
 
@@ -195,7 +226,7 @@ end
 
 function WaterSignal:set_water_volume(water_components)
 	local volume = 0
-	for i, w in pairs(water_components) do
+	for id, w in pairs(water_components) do
       --volume = volume + w:get_volume()
       volume = volume + self:_get_intersection_volume(w)
 	end
@@ -213,12 +244,10 @@ function WaterSignal:_get_intersection_volume(water_comp)
    -- self._trans_region gets set by _on_tick_water_signal before this gets called from set_water_volume
    -- apparently regions (at least the way the water component uses them) are integer-bounded
    -- and the top layer region overlaps the main region layer (see commented get_volume() below)
-   local location = water_comp:get_location()
-   local top_region = water_comp._sv._top_layer:get():translated(location)
-   local top_height = water_comp:get_height() % 1
-   local base_intersection = self._sv.world_signal_region:intersect_region(water_comp:get_region():get():translated(location) - top_region)
-   local top_intersection = self._sv.world_signal_region:intersect_region(top_region)
-   local volume = base_intersection:get_area() + top_intersection:get_area() * top_height
+   local volume_info = water_comp:get_volume_info()
+   local base_intersection = self._sv.world_signal_region:intersect_region(volume_info.base_region)
+   local top_intersection = self._sv.world_signal_region:intersect_region(volume_info.top_region)
+   local volume = base_intersection:get_area() + top_intersection:get_area() * volume_info.top_height
    return volume
 end
 
@@ -239,7 +268,7 @@ end
 function WaterSignal:set_water_surface_level(water_components)
    -- find the highest water level of components in the signal region
    local level
-   for i, w in pairs(water_components) do
+   for id, w in pairs(water_components) do
       local this_level = w:get_water_level()
       if not level then
          level = this_level
@@ -277,7 +306,7 @@ end
 
 function WaterSignal:set_waterfall_volume(waterfall_components)
 	local volume = 0
-	for i, w in pairs(waterfall_components) do
+	for id, w in pairs(waterfall_components) do
 		volume = volume + w:get_volume()
 	end
 
@@ -290,7 +319,7 @@ function WaterSignal:set_waterfall_volume(waterfall_components)
    return false
 end
 
-function WaterSignal:_on_tick_water_signal()
+function WaterSignal:_on_tick_water_signal(waters, waterfalls)
 	if not self._sv.signal_region or not next(self._sv.monitor_types) then
 		return
 	end
@@ -303,11 +332,11 @@ function WaterSignal:_on_tick_water_signal()
 		return
 	end
    
-	local water_components, waterfall_components = self:_get_water(region)
+	local water_components, waterfall_components = self:_get_water(region, waters, waterfalls)
    local changes = {}
 
-   for _, check in ipairs({'water_exists', 'water_volume', 'water_surface_level'}) do
-      if self:has_monitor_type(check) then
+   for _, check in ipairs(WATER_MONITOR_TYPES) do
+      if self._sv.monitor_types[check] then
          local check_changed = self['set_'..check](self, water_components)
          if check_changed then
             changes[check] = {value = self['get_'..check](self)}
@@ -315,8 +344,8 @@ function WaterSignal:_on_tick_water_signal()
       end
    end
 
-   for _, check in ipairs({'waterfall_exists', 'waterfall_volume'}) do
-      if self:has_monitor_type(check) then
+   for _, check in ipairs(WATERFALL_MONITOR_TYPES) do
+      if self._sv.monitor_types[check] then
          local check_changed = self['set_'..check](self, waterfall_components)
          if check_changed then
             changes[check] = {value = self['get_'..check](self)}
@@ -333,34 +362,56 @@ function WaterSignal:_on_tick_water_signal()
    end
 end
 
-function WaterSignal:_get_water(region)
+function WaterSignal:_get_water(region, waters, waterfalls)
 	if not region then
 		return {}, {}
 	end
 
-	local entities = get_entities_in_region(region)
-	local water_components = {}
-   local waterfall_components = {}
-   local check_water = self:monitors_water()
-   local check_waterfall = self:monitors_waterfall()
-
-	for _, e in pairs(entities) do
-      if check_water then
-         local water_component = e:get_component('stonehearth:water')
-         if water_component then
-            table.insert(water_components, water_component)
+   if waters or waterfalls then
+      for id, intersected in pairs(waters or {}) do
+         if intersected then
+            if not self._cached_waters[id] then
+               self._cached_waters[id] = radiant.entities.get_entity(id):get_component('stonehearth:water')
+            end
+         else
+            self._cached_waters[id] = nil
          end
       end
-
-      if check_waterfall then
-         local waterfall_component = e:get_component('stonehearth:waterfall')
-         if waterfall_component then
-            table.insert(waterfall_components, waterfall_component)
+      for id, intersected in pairs(waterfalls or {}) do
+         if intersected then
+            if not self._cached_waterfalls[id] then
+               self._cached_waterfalls[id] = radiant.entities.get_entity(id):get_component('stonehearth:waterfall')
+            end
+         else
+            self._cached_waterfalls[id] = nil
          end
       end
-	end
+   else
+      local entities = get_entities_in_region(region)
+      local check_water = self:monitors_water()
+      local check_waterfall = self:monitors_waterfall()
 
-	return water_components, waterfall_components
+      self._cached_waters = {}
+      self._cached_waterfalls = {}
+
+      for id, e in pairs(entities) do
+         if check_water then
+            local water_component = e:get_component('stonehearth:water')
+            if water_component then
+               self._cached_waters[id] = water_component
+            end
+         end
+
+         if check_waterfall then
+            local waterfall_component = e:get_component('stonehearth:waterfall')
+            if waterfall_component then
+               self._cached_waterfalls[id] = waterfall_component
+            end
+         end
+      end
+   end
+
+	return self._cached_waters, self._cached_waterfalls
 end
 
 return WaterSignal

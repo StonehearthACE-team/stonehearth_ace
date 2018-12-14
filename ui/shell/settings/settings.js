@@ -140,6 +140,7 @@ $(top).on('stonehearthReady', function(cc) {
             newSection.classList.add('modSettings');
 
             if(settings) {
+               var isHost = self.get('isHostPlayer');
                // if there are actually settings, create the elements for them, sorted by ordinal
                var sortedSettings = radiant.map_to_array(settings, function(name, setting) {
                   setting.name = name;
@@ -148,9 +149,11 @@ $(top).on('stonehearthReady', function(cc) {
                sortedSettings.sort(function(a, b) { return a.ordinal - b.ordinal });
 
                radiant.each(sortedSettings, function(i, setting) {
-                  var element = self._createGameplaySettingElements(mod, setting);
-                  if(element) {
-                     newSection.appendChild(element);
+                  if (isHost || !setting.host_only) {
+                     var element = self._createGameplaySettingElements(mod, setting);
+                     if(element) {
+                        newSection.appendChild(element);
+                     }
                   }
                });
             }
@@ -194,8 +197,8 @@ $(top).on('stonehearthReady', function(cc) {
                newDiv = document.createElement('div');
                newDiv.classList.add('setting');
 
-               var title = document.createElement('div');
-               title._addTooltip(title, setting.description);
+               var title = document.createElement('label');
+               self._addTooltip(title, setting.description);
                title.innerHTML = i18n.t(setting.display_name);
                var slider = document.createElement('div');
                var description = document.createElement('div');
@@ -212,10 +215,10 @@ $(top).on('stonehearthReady', function(cc) {
                   step: ns.step,
                   change: function(event, ui) {
                      radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:ui:action_hover' });
-                     description.innerHTML(ui.value);
+                     description.innerHTML = ui.value;
                   },
                   slide: function(event, ui) {
-                     description.innerHTML(ui.value);
+                     description.innerHTML = ui.value;
                   }
                });
                
@@ -224,7 +227,7 @@ $(top).on('stonehearthReady', function(cc) {
                };
                setting.setValue = function(value) {
                   $(slider).slider({value: value});
-                  description.innerHTML(value);
+                  description.innerHTML = value;
                }
                
                break;

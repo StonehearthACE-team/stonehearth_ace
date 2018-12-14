@@ -159,6 +159,7 @@ function PlayerConnections:register_entity(entity, connections, separated_by_pla
                connect.entity_id = id
                connect.connection = type
                connect.region = connector.region
+               connect.region_area = connector.region:get_area()
                connect.region_intersection_threshold = connector.region_intersection_threshold or 0
                
                connect.num_connections = connect.num_connections or 0
@@ -645,8 +646,8 @@ function PlayerConnections:_find_best_potential_connectors(connector, entity_id_
                --log:debug('checking intersection of connection regions %s and %s', connector.trans_region:get_bounds(), conn.trans_region:get_bounds())
                if intersection > 0 then
                   -- rank potential connectors by how closely their regions intersect
-                  local rank_connector = intersection / r:get_area()
-                  local rank_conn = intersection / conn.trans_region:get_area()
+                  local rank_connector = intersection / connector.region_area
+                  local rank_conn = intersection / conn.region_area
                   --log:debug('they intersect! %s and %s', rank_connector, rank_conn)
                   -- the rank has to meet the threshold for each connector
                   if rank_connector >= connector.region_intersection_threshold and rank_conn >= conn.region_intersection_threshold then
