@@ -25,6 +25,8 @@ function WaterSignalService:initialize()
    self._changed_waters = {}
    self._changed_waterfalls = {}
    self._next_tick_callbacks = {}
+   self._current_tick = 0
+   self._update_frequency = radiant.util.get_config('water_signal_update_frequency', 1)
    
    self._game_loaded_listener = radiant.events.listen_once(radiant, 'radiant:game_loaded', function()
       self._game_loaded_listener = nil
@@ -39,6 +41,10 @@ function WaterSignalService:destroy()
 		self._tick_listener:destroy()
 		self._tick_listener = nil
    end
+end
+
+function WaterSignalService:set_update_frequency(frequency)
+   self._update_frequency = math.max(1, math.min(10, frequency))
 end
 
 function WaterSignalService:register_water_signal(water_signal)
@@ -58,36 +64,39 @@ function WaterSignalService:register_water_signal(water_signal)
       }
       self._signals[id] = signal
    end
-   self:_update_signal_region(water_signal)
+   self:_update_signal_region(signal)
+   self:_update_signal_monitor_types(signal)
 end
 
-function WaterSignalService:_update_signal_region(water_signal)
-   local signal = self._signals[water_signal:get_id()]
-   if signal then
-      local region = signal.signal:get_world_signal_region()
-      if region or (region == nil) ~= (signal.region == nil) then
-         signal.region = region
-         
-         if signal.chunks then
-            for chunk_id, _ in pairs(signal.chunks) do
-               local chunk = self._signals_by_chunk[chunk_id]
-               if chunk then
-                  chunk[signal.id] = nil
-               end
-            end
-         end
-         
-         signal.chunks = self:_get_chunks(region)
+function WaterSignalService:_update_signal_region(signal)
+   local region = signal.signal:get_world_signal_region()
+   if region or (region == nil) ~= (signal.region == nil) then
+      signal.region = region
+      
+      if signal.chunks then
          for chunk_id, _ in pairs(signal.chunks) do
             local chunk = self._signals_by_chunk[chunk_id]
-            if not chunk then
-               chunk = {}
-               self._signals_by_chunk[chunk_id] = chunk
+            if chunk then
+               chunk[signal.id] = nil
             end
-            chunk[signal.id] = true
          end
       end
+      
+      signal.chunks = self:_get_chunks(region)
+      for chunk_id, _ in pairs(signal.chunks) do
+         local chunk = self._signals_by_chunk[chunk_id]
+         if not chunk then
+            chunk = {}
+            self._signals_by_chunk[chunk_id] = chunk
+         end
+         chunk[signal.id] = true
+      end
    end
+end
+
+function WaterSignalService:_update_signal_monitor_types(signal)
+   signal.monitors_water = signal.signal:monitors_water()
+   signal.monitors_waterfall = signal.signal:monitors_waterfall()
 end
 
 function WaterSignalService:unregister_water_signal(water_signal)
@@ -113,6 +122,11 @@ function WaterSignalService:add_next_tick_callback(cb, args)
 end
 
 function WaterSignalService:_on_tick()
+   self._current_tick = (self._current_tick + 1) % self._update_frequency
+   if self._current_tick > 0 then
+      return
+   end
+
    local signals_to_signal = {}
    local next_tick_callbacks
    if next(self._next_tick_callbacks) then
@@ -136,7 +150,7 @@ function WaterSignalService:_on_tick()
                   if not checked[id] then
                      checked[id] = true
                      local signal = self._signals[id]
-                     if not signal.waters[water_id] and signal.region and signal.signal:monitors_water() and water_region:intersects_region(signal.region) then
+                     if not signal.waters[water_id] and signal.region and signal.monitors_water and water_region:intersects_region(signal.region) then
                         signals_to_signal[id] = signal
                         signal.waters[water_id] = true
                      end
@@ -178,7 +192,7 @@ function WaterSignalService:_on_tick()
                   if not checked[id] then
                      checked[id] = true
                      local signal = self._signals[id]
-                     if not signal.waterfalls[waterfall_id] and signal.region and signal.signal:monitors_waterfall() and waterfall_region:intersects_region(signal.region) then
+                     if not signal.waterfalls[waterfall_id] and signal.region and signal.monitors_waterfall and waterfall_region:intersects_region(signal.region) then
                         signals_to_signal[id] = signal
                         signal.waterfalls[waterfall_id] = true
                      end
@@ -205,7 +219,7 @@ function WaterSignalService:_on_tick()
    end
 
    for _, signal in pairs(signals_to_signal) do
-      signal.signal:_on_tick_water_signal()
+      signal.signal:_on_tick_water_signal(signal.waters, signal.waterfalls)
 
       for water_id, intersects in pairs(signal.waters) do
          if intersects then

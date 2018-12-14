@@ -194,8 +194,8 @@ $(top).on('stonehearthReady', function(cc) {
                newDiv = document.createElement('div');
                newDiv.classList.add('setting');
 
-               var title = document.createElement('div');
-               title._addTooltip(title, setting.description);
+               var title = document.createElement('label');
+               self._addTooltip(title, setting.description);
                title.innerHTML = i18n.t(setting.display_name);
                var slider = document.createElement('div');
                var description = document.createElement('div');
@@ -212,10 +212,10 @@ $(top).on('stonehearthReady', function(cc) {
                   step: ns.step,
                   change: function(event, ui) {
                      radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:ui:action_hover' });
-                     description.innerHTML(ui.value);
+                     description.innerHTML = ui.value;
                   },
                   slide: function(event, ui) {
-                     description.innerHTML(ui.value);
+                     description.innerHTML = ui.value;
                   }
                });
                
@@ -224,7 +224,7 @@ $(top).on('stonehearthReady', function(cc) {
                };
                setting.setValue = function(value) {
                   $(slider).slider({value: value});
-                  description.innerHTML(value);
+                  description.innerHTML = value;
                }
                
                break;
