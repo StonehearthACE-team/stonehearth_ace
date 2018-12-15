@@ -1,0 +1,25 @@
+{
+   "mixins": "stonehearth_ace:weapons:composite_bow",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "mixintypes": {
+            "default": "override"
+         },
+         "default": {
+            "models": [
+               "file(rc_composite_bow_equipped.qb)"
+            ]
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(rc_composite_bow_iconic.json)"
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.weapons.rc_composite_bow.display_name)",
+         "icon": "file(rc_composite_bow.png)"
+      }
+   }
+}

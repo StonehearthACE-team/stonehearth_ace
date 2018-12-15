@@ -1,0 +1,14 @@
+{
+   "mixins": "/stonehearth_ace/jobs/blacksmith/recipes/iron_battle_axe_recipe.json",
+   "type": "recipe",
+   "recipe_name": "i18n(stonehearth_ace:entities.weapons.rc_iron_battle_axe.display_name)",
+   "portrait": "/stonehearth_ace/entities/weapons/rc_iron_battle_axe/rc_iron_battle_axe.png",
+   "mixintypes": {
+      "produces": "override"
+   },
+   "produces": [
+      {
+         "item": "stonehearth_ace:weapons:rc_iron_battle_axe"
+      }
+   ]
+}

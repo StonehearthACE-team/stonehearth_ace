@@ -1,0 +1,22 @@
+{
+   "mixins": "/stonehearth/entities/armor/iron_helm/iron_helm_iconic.json",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "mixintypes": {
+            "default": "override"
+         },
+         "default": {
+            "models": [
+               "file(rc_iron_helm_iconic.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.armor.rc_iron_helm.display_name)",
+         "icon": "file(rc_iron_helm.png)"
+      }
+   }
+}

@@ -1,0 +1,14 @@
+{
+   "mixins": "/stonehearth/jobs/blacksmith/recipes/bronze_circlet_recipe.json",
+   "type": "recipe",
+   "recipe_name": "i18n(stonehearth_ace:entities.armor.rc_bronze_circlet.display_name)",
+   "portrait": "/stonehearth_ace/entities/armor/rc_bronze_circlet/rc_bronze_circlet.png",
+   "mixintypes": {
+      "produces": "override"
+   },
+   "produces": [
+      {
+         "item": "stonehearth_ace:armor:rc_bronze_circlet"
+      }
+   ]
+}

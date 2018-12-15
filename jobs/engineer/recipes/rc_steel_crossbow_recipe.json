@@ -1,0 +1,14 @@
+{
+   "mixins": "/stonehearth_ace/jobs/engineer/recipes/steel_crossbow_recipe.json",
+   "type": "recipe",
+   "recipe_name": "i18n(stonehearth_ace:entities.weapons.rc_steel_crossbow.display_name)",
+   "portrait": "/stonehearth_ace/entities/weapons/rc_steel_crossbow/rc_steel_crossbow.png",
+   "mixintypes": {
+      "produces": "override"
+   },
+   "produces": [
+      {
+         "item": "stonehearth_ace:weapons:rc_steel_crossbow"
+      }
+   ]
+}

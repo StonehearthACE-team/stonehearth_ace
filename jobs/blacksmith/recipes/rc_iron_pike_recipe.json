@@ -1,0 +1,14 @@
+{
+   "mixins": "/stonehearth/jobs/blacksmith/recipes/iron_pike_recipe.json",
+   "type": "recipe",
+   "recipe_name": "i18n(stonehearth_ace:entities.weapons.rc_iron_pike.display_name)",
+   "portrait": "/stonehearth_ace/entities/weapons/rc_iron_pike/rc_iron_pike.png",
+   "mixintypes": {
+      "produces": "override"
+   },
+   "produces": [
+      {
+         "item": "stonehearth_ace:weapons:rc_iron_pike"
+      }
+   ]
+}

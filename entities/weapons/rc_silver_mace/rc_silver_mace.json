@@ -1,0 +1,25 @@
+{
+   "mixins": "stonehearth_ace:weapons:silver_mace",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "mixintypes": {
+            "default": "override"
+         },
+         "default": {
+            "models": [
+               "file(rc_silver_mace_equipped.qb)"
+            ]
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(rc_silver_mace_iconic.json)"
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.weapons.rc_silver_mace.display_name)",
+         "icon": "file(rc_silver_mace.png)"
+      }
+   }
+}

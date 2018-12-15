@@ -1,0 +1,14 @@
+{
+   "mixins": "/stonehearth_ace/jobs/blacksmith/recipes/silver_halberd_recipe.json",
+   "type": "recipe",
+   "recipe_name": "i18n(stonehearth_ace:entities.weapons.rc_silver_halberd.display_name)",
+   "portrait": "/stonehearth_ace/entities/weapons/rc_silver_halberd/rc_silver_halberd.png",
+   "mixintypes": {
+      "produces": "override"
+   },
+   "produces": [
+      {
+         "item": "stonehearth_ace:weapons:rc_silver_halberd"
+      }
+   ]
+}

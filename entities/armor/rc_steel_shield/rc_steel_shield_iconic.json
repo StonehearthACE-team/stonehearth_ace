@@ -1,0 +1,22 @@
+{
+   "mixins": "/stonehearth/entities/armor/steel_shield/steel_shield_iconic.json",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "mixintypes": {
+            "default": "override"
+         },
+         "default": {
+            "models": [
+               "file(rc_steel_shield_iconic.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.armor.rc_steel_shield.display_name)",
+         "icon": "file(rc_steel_shield.png)"
+      }
+   }
+}

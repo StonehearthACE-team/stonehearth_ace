@@ -1,0 +1,14 @@
+{
+   "mixins": "/stonehearth/jobs/weaver/recipes/leather_helmet_recipe.json",
+   "type": "recipe",
+   "recipe_name": "i18n(stonehearth_ace:entities.armor.rc_leather_helmet.display_name)",
+   "portrait": "/stonehearth_ace/entities/armor/rc_leather_helmet/rc_leather_helmet.png",
+   "mixintypes": {
+      "produces": "override"
+   },
+   "produces": [
+      {
+         "item": "stonehearth_ace:armor:rc_leather_helmet"
+      }
+   ]
+}
