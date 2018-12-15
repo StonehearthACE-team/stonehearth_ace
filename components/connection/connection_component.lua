@@ -87,6 +87,8 @@ function ConnectionComponent:_format_connections()
          if type(connector.region) == 'table' then
             connector.region = import_region(connector.region)
             connector.region:optimize('connector region')
+         else
+            return
          end
       end
    end
@@ -117,6 +119,7 @@ end
 -- it may be called with just the type and conn_name to initialize the data structures
 -- it may be called with just the type and the graph_id when it changes graphs and needs all connectors for that type to update graph_id
 function ConnectionComponent:set_connected_stats(type, conn_name, connected_to_id, graph_id)
+   --log:debug('[%s]:set_connected_stats(%s, %s, %s, %s)', self._entity, type, conn_name or 'NIL', connected_to_id or 'NIL', graph_id or 'NIL')
    local type_data = self._sv.connected_stats[type]
    if not type_data then
       type_data = {connectors = {}, num_connections = 0, max_connections = self._connections[type].max_connections}
@@ -149,6 +152,10 @@ function ConnectionComponent:set_connected_stats(type, conn_name, connected_to_i
    end
 
    self.__saved_variables:mark_changed()
+end
+
+function ConnectionComponent:trace_data(reason)
+   return self.__saved_variables:trace_data(reason)
 end
 
 return ConnectionComponent

@@ -1,0 +1,91 @@
+{
+   "mixins": "stonehearth_ace:mixins:tile:simple_carpet",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(default.qb)"
+            ]
+         },
+         "end_point": {
+            "models": [
+               "file(end_point.qb)"
+            ]
+         },
+         "straight": {
+            "models": [
+               "file(straight.qb)"
+            ]
+         },
+         "corner_concave_closed": {
+            "models": [
+               "file(corner_concave_closed.qb)"
+            ]
+         },
+         "corner_concave_open": {
+            "models": [
+               "file(corner_concave_open.qb)"
+            ]
+         },
+         "edge_closed_both": {
+            "models": [
+               "file(edge_closed_both.qb)"
+            ]
+         },
+         "edge_closed_clock": {
+            "models": [
+               "file(edge_closed_clock.qb)"
+            ]
+         },
+         "edge_closed_counter": {
+            "models": [
+               "file(edge_closed_counter.qb)"
+            ]
+         },
+         "edge_open": {
+            "models": [
+               "file(edge_open.qb)"
+            ]
+         },
+         "center_closed_all": {
+            "models": [
+               "file(center_closed_all.qb)"
+            ]
+         },
+         "center_closed_one": {
+            "models": [
+               "file(center_closed_one.qb)"
+            ]
+         },
+         "center_closed_adjacent": {
+            "models": [
+               "file(center_closed_adjacent.qb)"
+            ]
+         },
+         "center_closed_opposite": {
+            "models": [
+               "file(center_closed_opposite.qb)"
+            ]
+         },
+         "center_closed_three": {
+            "models": [
+               "file(center_closed_three.qb)"
+            ]
+         },
+         "center_open": {
+            "models": [
+               "file(center_open.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.tile.carpet.simple_yellow.display_name)",
+         "description": "i18n(stonehearth_ace:entities.tile.carpet.simple_yellow.description)"
+      },
+      "stonehearth:appeal": {
+         "appeal": 2
+      }
+   }
+}

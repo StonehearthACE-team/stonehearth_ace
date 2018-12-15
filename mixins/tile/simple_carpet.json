@@ -1,0 +1,116 @@
+{
+   "type": "entity",
+   "components": {
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "mob_collision_type": "clutter"
+      },
+      "stonehearth_ace:tile": {
+         "connection_type": "stonehearth_ace:tile:carpet:simple"
+      },
+      "stonehearth_ace:connection": {
+         "stonehearth_ace:tile:carpet:simple": {
+            "connectors": {
+               "x-": {
+                  "region": [
+                     {
+                        "min": { "x": -1, "y": 0, "z": 0 },
+                        "max": { "x": 1, "y": 1, "z": 1 }
+                     }
+                  ],
+                  "region_intersection_threshold": 1,
+                  "max_connections": 1
+               },
+               "x+": {
+                  "region": [
+                     {
+                        "min": { "x": 0, "y": 0, "z": 0 },
+                        "max": { "x": 2, "y": 1, "z": 1 }
+                     }
+                  ],
+                  "region_intersection_threshold": 1,
+                  "max_connections": 1
+               },
+               "z-": {
+                  "region": [
+                     {
+                        "min": { "x": 0, "y": 0, "z": -1 },
+                        "max": { "x": 1, "y": 1, "z": 1 }
+                     }
+                  ],
+                  "region_intersection_threshold": 1,
+                  "max_connections": 1
+               },
+               "z+": {
+                  "region": [
+                     {
+                        "min": { "x": 0, "y": 0, "z": 0 },
+                        "max": { "x": 1, "y": 1, "z": 2 }
+                     }
+                  ],
+                  "region_intersection_threshold": 1,
+                  "max_connections": 1
+               },
+               "x-z-": {
+                  "region": [
+                     {
+                        "min": { "x": -1, "y": 0, "z": -1 },
+                        "max": { "x": 0, "y": 1, "z": 0 }
+                     },
+                     {
+                        "min": { "x": 0, "y": 0, "z": 0 },
+                        "max": { "x": 1, "y": 1, "z": 1 }
+                     }
+                  ],
+                  "region_intersection_threshold": 1,
+                  "max_connections": 1
+               },
+               "x-z+": {
+                  "region": [
+                     {
+                        "min": { "x": -1, "y": 0, "z": 1 },
+                        "max": { "x": 0, "y": 1, "z": 2 }
+                     },
+                     {
+                        "min": { "x": 0, "y": 0, "z": 0 },
+                        "max": { "x": 1, "y": 1, "z": 1 }
+                     }
+                  ],
+                  "region_intersection_threshold": 1,
+                  "max_connections": 1
+               },
+               "x+z-": {
+                  "region": [
+                     {
+                        "min": { "x": 1, "y": 0, "z": -1 },
+                        "max": { "x": 2, "y": 1, "z": 0 }
+                     },
+                     {
+                        "min": { "x": 0, "y": 0, "z": 0 },
+                        "max": { "x": 1, "y": 1, "z": 1 }
+                     }
+                  ],
+                  "region_intersection_threshold": 1,
+                  "max_connections": 1
+               },
+               "x+z+": {
+                  "region": [
+                     {
+                        "min": { "x": 1, "y": 0, "z": 1 },
+                        "max": { "x": 2, "y": 1, "z": 2 }
+                     },
+                     {
+                        "min": { "x": 0, "y": 0, "z": 0 },
+                        "max": { "x": 1, "y": 1, "z": 1 }
+                     }
+                  ],
+                  "region_intersection_threshold": 1,
+                  "max_connections": 1
+               }
+            },
+            "max_connections": 8
+         }
+      }
+   }
+}

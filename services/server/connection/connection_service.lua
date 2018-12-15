@@ -233,14 +233,16 @@ function ConnectionService:_start_entity_traces(entity, player_connections, all_
             else
                --we were just added to the world
                -- this will get handled by the (location) trace_transform
-               local res1 = player_connections:update_entity(id)
-               local res2 = all_players_connections:update_entity(id)
-               self:_perform_update(player_id, res1, res2)
+               --log:debug('entity %s added to world', entity)
+               --local res1 = player_connections:update_entity(id)
+               --local res2 = all_players_connections:update_entity(id)
+               --self:_perform_update(player_id, res1, res2)
             end
          end)
 
       traces._location_trace = entity:add_component('mob'):trace_transform('connection entity moved', _radiant.dm.TraceCategories.SYNC_TRACE)
       :on_changed(function()
+            log:debug('entity %s moved or rotated', entity)
             local res1 = player_connections:update_entity(id)
             local res2 = all_players_connections:update_entity(id)
             self:_perform_update(player_id, res1, res2)

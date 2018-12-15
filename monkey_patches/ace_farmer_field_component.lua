@@ -28,7 +28,7 @@ function AceFarmerFieldComponent:post_activate()
 end
 
 AceFarmerFieldComponent._old_plant_crop_at = FarmerFieldComponent.plant_crop_at
-function FarmerFieldComponent:plant_crop_at(x_offset, z_offset)
+function AceFarmerFieldComponent:plant_crop_at(x_offset, z_offset)
 	local crop = self:_old_plant_crop_at(x_offset, z_offset)
 
 	if crop then

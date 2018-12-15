@@ -89,9 +89,11 @@ function PlayerConnections:update_entity(entity_id, add_only)
    local changed_types_2, graphs_changed_2
 
    if not add_only then
+      --log:debug('update_entity not add_only')
       changed_types_2, graphs_changed_2 = self:_remove_entity_from_graphs(entity_struct)
    end
    
+   --log:debug('adding %s to graphs', entity_id)
    self:_update_connector_locations(entity_struct)
    local changed_types, graphs_changed = self:_add_entity_to_graphs(entity_struct)
    
@@ -130,7 +132,7 @@ function PlayerConnections:register_entity(entity, connections, separated_by_pla
       
       -- organize connections by type
       for type, connection in pairs(connections) do
-         if separated_by_player == stonehearth_ace.connection:is_separated_by_player(type) then
+         if not separated_by_player == not stonehearth_ace.connection:is_separated_by_player(type) then
             local connection_stats = connected_stats and connected_stats[type]
             local conn_tbl = self:get_connections(type)
             if not conn_tbl.entity_connectors[id] then
@@ -333,6 +335,7 @@ function PlayerConnections:_remove_entity_from_graphs(entity_struct)
       for _, connector_id in pairs(connection.connectors) do
          local connector = self:get_entity_connector(connector_id)
          for id, _ in pairs(connector.connected_to) do
+            --log:debug('trying to disconnect %s from %s', connector_id, id)
             local connected = self:get_entity_connector(id)
             local connected_entity_struct = self._entities[connected.entity_id]
             local changes = self:_try_disconnecting_connectors(connector, connected)
@@ -356,10 +359,11 @@ function PlayerConnections:_remove_entity_from_graphs(entity_struct)
                         conn_tbl.entities_in_graphs[connected.entity_id] = nil
                      end
                   end
-
-                  self:_update_entity_changes_connector(entity_struct.entity, type, connector.name, connected.id)
-                  self:_update_entity_changes_connector(connected_entity_struct.entity, type, connected.name, connector.id)
                end
+
+               --log:debug('removing entity from graphs')
+               self:_update_entity_changes_connector(entity_struct.entity, type, connector.name, connected.id)
+               self:_update_entity_changes_connector(connected_entity_struct.entity, type, connected.name, connector.id)
 
                -- when removing an entity from graphs, anything it was connected to should search for new connections
                local _, added_graphs_changed = self:_add_entity_to_graphs(connected_entity_struct, type, entity_struct.id)
@@ -480,6 +484,7 @@ function PlayerConnections:_try_connecting_connectors(c1, c2)
       -- merge all additional graphs into the first one
       for i = #graphs_to_merge, 2, -1 do
          local graph_id = graphs_to_merge[i]
+         --log:debug('merging graphs %s and %s', graph_id, graph.id)
          for id, node in pairs(graphs[graph_id].nodes) do
             graph.nodes[id] = node
             self:_update_entity_changes_connector(self._entities[id].entity, conn1.type, nil, nil, graph.id)
@@ -501,6 +506,7 @@ function PlayerConnections:_try_connecting_connectors(c1, c2)
       conn1.num_connections = conn1.num_connections + 1
       conn2.num_connections = conn2.num_connections + 1
 
+      --log:debug('connecting entities')
       self:_update_entity_changes_connector(e1.entity, conn1.type, c1.name, c2.id, graph.id)
       self:_update_entity_changes_connector(e2.entity, conn1.type, c2.name, c1.id, graph.id)
 
@@ -512,10 +518,12 @@ end
 
 function PlayerConnections:_try_disconnecting_connectors(c1, c2)
    if c1 == c2 then
+      --log:debug('can\'t disconnect a %s from %s (equal)', c1.id, c2.id)
       return nil
    end
 
    if not c1.connected_to[c2.id] or not c2.connected_to[c1.id] then
+      --log:debug('can\'t disconnect a %s from %s (not connected)', c1.id, c2.id)
       return nil
    end
    
@@ -530,6 +538,7 @@ function PlayerConnections:_try_disconnecting_connectors(c1, c2)
    local conn2 = e2.connections[c2.connection]
 
    if conn1.type ~= conn2.type or e1 == e2 then
+      --log:debug('can\'t disconnect a %s from %s (different type or same entity)', c1.id, c2.id)
       return nil
    end
 
