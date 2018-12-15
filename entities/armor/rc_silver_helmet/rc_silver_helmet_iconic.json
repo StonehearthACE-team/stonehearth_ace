@@ -1,0 +1,22 @@
+{
+   "mixins": "/stonehearth/entities/armor/silver_helmet/silver_helmet_iconic.json",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "mixintypes": {
+            "default": "override"
+         },
+         "default": {
+            "models": [
+               "file(rc_silver_helmet_iconic.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.armor.rc_silver_helmet.display_name)",
+         "icon": "file(rc_silver_helmet.png)"
+      }
+   }
+}

@@ -1,0 +1,22 @@
+{
+   "mixins": "/stonehearth_ace/entities/weapons/crossbow/crossbow_iconic.json",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "mixintypes": {
+            "default": "override"
+         },
+         "default": {
+            "models": [
+               "file(rc_crossbow_iconic.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.weapons.rc_crossbow.display_name)",
+         "icon": "file(rc_crossbow.png)"
+      }
+   }
+}

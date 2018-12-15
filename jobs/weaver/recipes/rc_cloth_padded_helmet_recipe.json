@@ -1,0 +1,14 @@
+{
+   "mixins": "/stonehearth/jobs/weaver/recipes/cloth_padded_helmet_recipe.json",
+   "type": "recipe",
+   "recipe_name": "i18n(stonehearth_ace:entities.armor.rc_cloth_padded_helmet.display_name)",
+   "portrait": "/stonehearth_ace/entities/armor/rc_cloth_padded_helmet/rc_cloth_padded_helmet.png",
+   "mixintypes": {
+      "produces": "override"
+   },
+   "produces": [
+      {
+         "item": "stonehearth_ace:armor:rc_cloth_padded_helmet"
+      }
+   ]
+}

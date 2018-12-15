@@ -1,0 +1,25 @@
+{
+   "mixins": "stonehearth:armor:bronze_shield",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "mixintypes": {
+            "default": "override"
+         },
+         "default": {
+            "models": [
+               "file(rc_bronze_shield.qb)"
+            ]
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(rc_bronze_shield_iconic.json)"
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.armor.rc_bronze_shield.display_name)",
+         "icon": "file(rc_bronze_shield.png)"
+      }
+   }
+}

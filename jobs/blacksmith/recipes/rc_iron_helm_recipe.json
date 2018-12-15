@@ -1,0 +1,14 @@
+{
+   "mixins": "/stonehearth/jobs/blacksmith/recipes/iron_helm_recipe.json",
+   "type": "recipe",
+   "recipe_name": "i18n(stonehearth_ace:entities.armor.rc_iron_helm.display_name)",
+   "portrait": "/stonehearth_ace/entities/armor/rc_iron_helm/rc_iron_helm.png",
+   "mixintypes": {
+      "produces": "override"
+   },
+   "produces": [
+      {
+         "item": "stonehearth_ace:armor:rc_iron_helm"
+      }
+   ]
+}

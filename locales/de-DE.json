@@ -469,6 +469,16 @@
                "recipe_name": "Schlafplatz aus Ton",
                "description": "Ein passender Ort um bei Erschöpfung ohnmächtig zu werden.",
                "flavor": "Etwas erträglicher"
+            },
+            "clay_training_dummy_recipe": {
+               "recipe_name": "Trainingspuppe aus Lehm",
+               "description": "Nahkämpfer können Erfahrungen sammeln, wenn sie mit diesem freundlichen Kerl üben.",
+               "flavor": "Benötigt einen Ingenieur zum reparieren."
+            },
+            "clay_training_target_recipe": {
+               "recipe_name": "Zielscheibe aus Lehm",
+               "description": "Fernkämpfer können durch das Üben mit der Zielscheibe Erfahrung sammeln.",
+               "flavor": "Benötigt einen Ingenieur zum reparieren."
             }
          }
       },
@@ -512,11 +522,22 @@
                "recipe_name": "Schlafplatz aus Stein",
                "description": "Du möchtest vielleicht lieber nicht in dieses hineinspringen.",
                "flavor": "Das Stroh ist etwas zu trocken, aber es funktioniert..."
+            },
+            "stone_training_dummy_recipe": {
+               "recipe_name": "Trainingspuppe aus Stein",
+               "description": "Nahkämpfer können Erfahrungen sammeln, wenn sie mit diesem freundlichen Kerl üben.",
+               "flavor": "Benötigt einen Ingenieur zum reparieren."
+            },
+            "stone_training_target_recipe": {
+               "recipe_name": "Zielscheibe aus Stein",
+               "description": "Fernkämpfer können durch das Üben mit der Zielscheibe Erfahrung sammeln.",
+               "flavor": "Benötigt einen Ingenieur zum reparieren."
             }
          }
       },
       "blacksmith": {
          "recipes": {
+            "utility_name": "Werkzeuge",
             "blacksmith_fuel_oven_recipe": {
                "recipe_name": "Brennofen",
                "description": "Benötigt für die Veredlung bestimmte Materialien wie Holz und Kohle.",
@@ -2829,8 +2850,8 @@
             "flavor": "Nur Splitterhände sind bedrohlicher."
          },
          "target_training": {
-            "display_name": "Schießscheibe",
-            "description": "Weniger gefährlich, als jemandem Äpfel vom Kopf zu schießen."
+            "display_name": "Zielscheibe",
+            "description": "Weniger gefährlich, als jemandem einen Apfel vom Kopf zu schießen. Benötigt einen Ingenieur zum reparieren."
          },
          "axle_vertical": {
             "description": "Eine rotierende Welle, die mechanische Kraft vertikal aufnehmen kann.",
@@ -2864,6 +2885,36 @@
          "patrol_banner": {
             "display_name": "Patrouillenbanner",
             "description": "Mitglieder der Kampfgruppe werden das patrouillieren zwischen diesen Bannern priorisieren."
+         },
+         "stone_target_training": {
+            "description": "Weniger gefährlich, als jemandem einen Apfel vom Kopf zu schießen. Benötigt einen Ingenieur zum reparieren.",
+            "display_name": "Zielscheibe aus Stein"
+         },
+         "clay_target_training": {
+            "description": "Weniger gefährlich, als jemandem einen Apfel vom Kopf zu schießen. Benötigt einen Ingenieur zum reparieren.",
+            "display_name": "Zielscheibe aus Lehm"
+         },
+         "brass_target_training": {
+            "description": "Weniger gefährlich, als jemandem einen Apfel vom Kopf zu schießen. Benötigt einen Kunsthandwerker zum reparieren.",
+            "display_name": "Zielscheibe aus Messing"
+         },
+         "stone_dummy_training": {
+            "stone_dummy_training_ghost": {
+               "description": "Es ist am besten, mit diesem freundlichen Kerl zu üben. Erfordert einen Ingenieur zum reparieren.",
+               "display_name": "Trainingspuppe aus Stein"
+            }
+         },
+         "clay_dummy_training": {
+            "clay_dummy_training_ghost": {
+               "description": "Es ist am besten, mit diesem freundlichen Kerl zu üben. Erfordert einen Ingenieur zum reparieren.",
+               "display_name": "Trainingspuppe aus Lehm"
+            }
+         },
+         "brass_dummy_training": {
+            "brass_dummy_training_ghost": {
+               "description": "Es ist am besten, mit diesem freundlichen Kerl zu üben. Erfordert einen Kunsthandwerker zum reparieren.",
+               "display_name": "Trainingspuppe aus Messing"
+            }
          }
       },
       "aquatic": {
@@ -3211,6 +3262,16 @@
                   "description": "Wird benötigt um einen Hearthling zu einem Züchter zu ernennen.",
                   "recipe_name": "Züchterkelle",
                   "flavor": ""
+               },
+               "brass_training_dummy_recipe": {
+                  "recipe_name": "Trainingspuppe aus Messing",
+                  "description": "Nahkämpfer können Erfahrungen sammeln, wenn sie mit diesem freundlichen Kerl üben.",
+                  "flavor": "Benötigt einen Kunsthandwerker zum reparieren."
+               },
+               "brass_training_target_recipe": {
+                  "recipe_name": "Zielscheibe aus Messing",
+                  "description": "Fernkämpfer können durch das Üben mit der Zielscheibe Erfahrung sammeln.",
+                  "flavor": "Benötigt einen Kunsthandwerker zum reparieren."
                }
             }
          }
@@ -3423,7 +3484,9 @@
                "auto_harvest_tree_stumps": "Automatisches Baumstumpfernten",
                "auto_harvest_tree_stumps_description": "Wenn Bäume abgeholzt werden, bleiben erntefähige Stümpfe erhalten. Durch Aktivieren dieser Option werden die Stümpfe automatisch geerntet.",
                "terrain_slice_buildings": "Gelände-Gebäude-Schnitt",
-               "terrain_slice_buildings_description": "Rendere keine Objekte im Gelände-Schnitt-Modus, die von sichtbaren Objekten außerhalb des Geländes unterstützt werden."
+               "terrain_slice_buildings_description": "Rendere keine Objekte im Gelände-Schnitt-Modus, die von sichtbaren Objekten außerhalb des Geländes unterstützt werden.",
+               "water_signal_update_frequency": "Wassersignal-Aktualisierungsrate",
+               "water_signal_update_frequency_description": "Aktualisiere die Wassersignale nach einer bestimmte Anzahl von Ticks des Wassersystems. Erhöhe diesen Wert, um die Leistung mit viel fließendem Wasser zu verbessern."
             }
          }
       },
@@ -3434,10 +3497,10 @@
             "thatch_resource_name": "Stroh",
             "bone_resource_name": "Knochen",
             "fungi_resource_name": "Pilz",
-            "chitin_resource_name": "Chitin",
+            "chitin_resource_name": "Irgendein Chitin",
             "coal_resource_name": "Beliebige Kohle",
             "any_fuel_resource_name": "Beliebiger Kraftstoff",
-            "common_fuel_resource_name": "Jeder gewöhnliche Kraftstoff",
+            "common_fuel_resource_name": "Irgendein gewöhnlicher Kraftstoff",
             "weak_fuel_resource_name": "Kraftstoff niedrigerer Qualität",
             "fuel_resource_name": "Kraftstoff guter Qualität",
             "high_fuel_resource_name": "Kraftstoff höherer Qualität",
@@ -3445,8 +3508,9 @@
             "hard_metal_resource_name": "Irgendein hartes Metall",
             "precious_metal_resource_name": "Irgendein Edelmetall",
             "algae_resource_name": "Irgendein Wasserkraut",
-            "fish_roe_resource_name": "Jeder Fischrogen",
-            "fish_meat_resource_name": "Irgendein Fischfleisch"
+            "fish_roe_resource_name": "Irgendein Fischrogen",
+            "fish_meat_resource_name": "Irgendein Fischfleisch",
+            "wool_resource_name": "Irgendeine Wolle"
          }
       }
    }

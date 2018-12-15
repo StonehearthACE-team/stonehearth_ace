@@ -1,0 +1,14 @@
+{
+   "mixins": "/stonehearth/jobs/weaver/recipes/leather_vest_recipe.json",
+   "type": "recipe",
+   "recipe_name": "i18n(stonehearth_ace:entities.armor.rc_leather_vest.display_name)",
+   "portrait": "/stonehearth_ace/entities/armor/rc_leather_vest/rc_leather_vest.png",
+   "mixintypes": {
+      "produces": "override"
+   },
+   "produces": [
+      {
+         "item": "stonehearth_ace:armor:rc_leather_vest"
+      }
+   ]
+}

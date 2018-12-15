@@ -1,0 +1,14 @@
+{
+   "mixins": "/stonehearth_ace/jobs/blacksmith/recipes/silver_short_sword_recipe.json",
+   "type": "recipe",
+   "recipe_name": "i18n(stonehearth_ace:entities.weapons.rc_silver_short_sword.display_name)",
+   "portrait": "/stonehearth_ace/entities/weapons/rc_silver_short_sword/rc_silver_short_sword.png",
+   "mixintypes": {
+      "produces": "override"
+   },
+   "produces": [
+      {
+         "item": "stonehearth_ace:weapons:rc_silver_short_sword"
+      }
+   ]
+}

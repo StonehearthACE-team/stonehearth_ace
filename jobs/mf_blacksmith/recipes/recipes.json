@@ -49,6 +49,16 @@
             }
          }
       },
+	  "utility": {
+		 "recipes": {
+			"brass_training_dummy": {
+               "recipe": "file(brass_training_dummy_recipe.json)"
+            },
+            "brass_training_target": {
+               "recipe": "file(brass_training_target_recipe.json)"
+            }
+		 }
+	  },
       "storage": {
          "recipes": {}
       },

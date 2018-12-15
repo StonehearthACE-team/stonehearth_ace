@@ -19,6 +19,16 @@
             }
          }
       },
+	  "utility": {
+		 "recipes": {
+			"clay_training_dummy": {
+               "recipe": "file(clay_training_dummy_recipe.json)"
+            },
+            "clay_training_target": {
+               "recipe": "file(clay_training_target_recipe.json)"
+            }
+		 }
+	  },
 	  "furniture": {
 		 "recipes": {
 			"clay_comfy_bed": {

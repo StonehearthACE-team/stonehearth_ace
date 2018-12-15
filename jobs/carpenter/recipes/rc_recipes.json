@@ -13,6 +13,22 @@
                "recipe": "file(../../potter/recipes/rc_splitting_block_recipe.json)"
             }
          }
+      },
+      "armor": {
+         "recipes": {
+            "recurve_bow": {
+               "recipe": "file(rc_recurve_bow_recipe.json)"
+            },
+            "long_bow": {
+               "recipe": "file(rc_long_bow_recipe.json)"
+            },
+            "crossbow": {
+               "recipe": "file(rc_crossbow_recipe.json)"
+            },
+            "composite_bow": {
+               "recipe": "file(rc_composite_bow_recipe.json)"
+            }
+         }
       }
    }
 }
