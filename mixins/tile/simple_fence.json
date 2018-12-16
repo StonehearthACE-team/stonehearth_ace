@@ -26,50 +26,50 @@
             "end_point": [
                {
                   "min": { "x": 0, "y": 0, "z": 0 },
-                  "max": { "x": 1, "y": 2, "z": 1.5 }
+                  "max": { "x": 1, "y": 2, "z": 1.25 }
                }
             ],
             "straight": [
                {
-                  "min": { "x": 0, "y": 0, "z": -0.5 },
-                  "max": { "x": 1, "y": 2, "z": 1.5 }
+                  "min": { "x": 0, "y": 0, "z": -0.25 },
+                  "max": { "x": 1, "y": 2, "z": 1.25 }
                }
             ],
             "corner": [
                {
                   "min": { "x": 0, "y": 0, "z": 0 },
-                  "max": { "x": 1, "y": 2, "z": 1.5 }
+                  "max": { "x": 1, "y": 2, "z": 1.25 }
                },
                {
                   "min": { "x": 1, "y": 0, "z": 0 },
-                  "max": { "x": 1.5, "y": 2, "z": 1 }
+                  "max": { "x": 1.25, "y": 2, "z": 1 }
                }
             ],
             "edge": [
                {
                   "min": { "x": 0, "y": 0, "z": 0 },
-                  "max": { "x": 1, "y": 2, "z": 1.5 }
+                  "max": { "x": 1, "y": 2, "z": 1.25 }
                },
                {
                   "min": { "x": 1, "y": 0, "z": 0 },
-                  "max": { "x": 1.5, "y": 2, "z": 1 }
+                  "max": { "x": 1.25, "y": 2, "z": 1 }
                },
                {
-                  "min": { "x": -0.5, "y": 0, "z": 0 },
+                  "min": { "x": -0.25, "y": 0, "z": 0 },
                   "max": { "x": 0, "y": 2, "z": 1 }
                }
             ],
             "center": [
                {
-                  "min": { "x": 0, "y": 0, "z": -0.5 },
-                  "max": { "x": 1, "y": 2, "z": 1.5 }
+                  "min": { "x": 0, "y": 0, "z": -0.25 },
+                  "max": { "x": 1, "y": 2, "z": 1.25 }
                },
                {
                   "min": { "x": 1, "y": 0, "z": 0 },
-                  "max": { "x": 1.5, "y": 2, "z": 1 }
+                  "max": { "x": 1.25, "y": 2, "z": 1 }
                },
                {
-                  "min": { "x": -0.5, "y": 0, "z": 0 },
+                  "min": { "x": -0.25, "y": 0, "z": 0 },
                   "max": { "x": 0, "y": 2, "z": 1 }
                }
             ]
@@ -86,7 +86,7 @@
                      }
                   ],
                   "region_intersection_threshold": 1,
-                  "max_connections": 1
+                  "max_connections": 2
                },
                "x+": {
                   "region": [
@@ -96,7 +96,7 @@
                      }
                   ],
                   "region_intersection_threshold": 1,
-                  "max_connections": 1
+                  "max_connections": 2
                },
                "z-": {
                   "region": [
@@ -106,7 +106,7 @@
                      }
                   ],
                   "region_intersection_threshold": 1,
-                  "max_connections": 1
+                  "max_connections": 2
                },
                "z+": {
                   "region": [
@@ -116,10 +116,10 @@
                      }
                   ],
                   "region_intersection_threshold": 1,
-                  "max_connections": 1
+                  "max_connections": 2
                }
             },
-            "max_connections": 4
+            "max_connections": 8
          }
       }
    }
