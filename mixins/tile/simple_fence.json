@@ -1,0 +1,126 @@
+{
+   "type": "entity",
+   "components": {
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": 0, "y": 0, "z": 0 },
+               "max": { "x": 1, "y": 2, "z": 1 }
+            }
+         ]
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      },
+      "stonehearth_ace:tile": {
+         "connection_type": "stonehearth_ace:tile:fence:simple",
+         "adjust_collision": true,
+         "collision_regions": {
+            "default": [
+               {
+                  "min": { "x": 0, "y": 0, "z": 0 },
+                  "max": { "x": 1, "y": 2, "z": 1 }
+               }
+            ],
+            "end_point": [
+               {
+                  "min": { "x": 0, "y": 0, "z": 0 },
+                  "max": { "x": 1, "y": 2, "z": 1.5 }
+               }
+            ],
+            "straight": [
+               {
+                  "min": { "x": 0, "y": 0, "z": -0.5 },
+                  "max": { "x": 1, "y": 2, "z": 1.5 }
+               }
+            ],
+            "corner": [
+               {
+                  "min": { "x": 0, "y": 0, "z": 0 },
+                  "max": { "x": 1, "y": 2, "z": 1.5 }
+               },
+               {
+                  "min": { "x": 1, "y": 0, "z": 0 },
+                  "max": { "x": 1.5, "y": 2, "z": 1 }
+               }
+            ],
+            "edge": [
+               {
+                  "min": { "x": 0, "y": 0, "z": 0 },
+                  "max": { "x": 1, "y": 2, "z": 1.5 }
+               },
+               {
+                  "min": { "x": 1, "y": 0, "z": 0 },
+                  "max": { "x": 1.5, "y": 2, "z": 1 }
+               },
+               {
+                  "min": { "x": -0.5, "y": 0, "z": 0 },
+                  "max": { "x": 0, "y": 2, "z": 1 }
+               }
+            ],
+            "center": [
+               {
+                  "min": { "x": 0, "y": 0, "z": -0.5 },
+                  "max": { "x": 1, "y": 2, "z": 1.5 }
+               },
+               {
+                  "min": { "x": 1, "y": 0, "z": 0 },
+                  "max": { "x": 1.5, "y": 2, "z": 1 }
+               },
+               {
+                  "min": { "x": -0.5, "y": 0, "z": 0 },
+                  "max": { "x": 0, "y": 2, "z": 1 }
+               }
+            ]
+         }
+      },
+      "stonehearth_ace:connection": {
+         "stonehearth_ace:tile:fence:simple": {
+            "connectors": {
+               "x-": {
+                  "region": [
+                     {
+                        "min": { "x": -2, "y": 0, "z": 0 },
+                        "max": { "x": 1, "y": 1, "z": 1 }
+                     }
+                  ],
+                  "region_intersection_threshold": 1,
+                  "max_connections": 1
+               },
+               "x+": {
+                  "region": [
+                     {
+                        "min": { "x": 0, "y": 0, "z": 0 },
+                        "max": { "x": 3, "y": 1, "z": 1 }
+                     }
+                  ],
+                  "region_intersection_threshold": 1,
+                  "max_connections": 1
+               },
+               "z-": {
+                  "region": [
+                     {
+                        "min": { "x": 0, "y": 0, "z": -2 },
+                        "max": { "x": 1, "y": 1, "z": 1 }
+                     }
+                  ],
+                  "region_intersection_threshold": 1,
+                  "max_connections": 1
+               },
+               "z+": {
+                  "region": [
+                     {
+                        "min": { "x": 0, "y": 0, "z": 0 },
+                        "max": { "x": 1, "y": 1, "z": 3 }
+                     }
+                  ],
+                  "region_intersection_threshold": 1,
+                  "max_connections": 1
+               }
+            },
+            "max_connections": 4
+         }
+      }
+   }
+}
