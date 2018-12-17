@@ -371,7 +371,10 @@ function WaterSignal:_get_water(region, waters, waterfalls)
       for id, intersected in pairs(waters or {}) do
          if intersected then
             if not self._cached_waters[id] then
-               self._cached_waters[id] = radiant.entities.get_entity(id):get_component('stonehearth:water')
+               local entity = radiant.entities.get_entity(id)
+               if entity and entity:is_valid() then
+                  self._cached_waters[id] = entity:get_component('stonehearth:water')
+               end
             end
          else
             self._cached_waters[id] = nil
@@ -380,7 +383,10 @@ function WaterSignal:_get_water(region, waters, waterfalls)
       for id, intersected in pairs(waterfalls or {}) do
          if intersected then
             if not self._cached_waterfalls[id] then
-               self._cached_waterfalls[id] = radiant.entities.get_entity(id):get_component('stonehearth:waterfall')
+               local entity = radiant.entities.get_entity(id)
+               if entity and entity:is_valid() then
+                  self._cached_waterfalls[id] = entity:get_component('stonehearth:waterfall')
+               end
             end
          else
             self._cached_waterfalls[id] = nil

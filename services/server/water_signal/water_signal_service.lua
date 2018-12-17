@@ -23,6 +23,7 @@ function WaterSignalService:initialize()
    self._water_chunks = {}
    self._waterfall_chunks = {}
    self._changed_waters = {}
+   self._changed_pathing = {}
    self._changed_waterfalls = {}
    self._next_tick_callbacks = {}
    self._current_tick = 0
@@ -113,6 +114,10 @@ function WaterSignalService:water_component_modified(entity)
    self._changed_waters[entity:get_id()] = entity:get_component('stonehearth:water')
 end
 
+function WaterSignalService:water_component_pathing_modified(entity)
+   self._changed_pathing[entity] = entity:get_component('stonehearth:water')
+end
+
 function WaterSignalService:waterfall_component_modified(entity)
    self._changed_waterfalls[entity:get_id()] = entity:get_component('stonehearth:waterfall')
 end
@@ -122,8 +127,20 @@ function WaterSignalService:add_next_tick_callback(cb, args)
 end
 
 function WaterSignalService:_on_tick()
-   self._current_tick = (self._current_tick + 1) % self._update_frequency
-   if self._current_tick > 0 then
+   self._current_tick = (self._current_tick + 1) % (self._update_frequency * 10)
+   if self._current_tick == 1 then
+      -- this isn't really the best place for this, but it's the simplest place for it
+      if next(self._changed_pathing) then
+         for entity, water in pairs(self._changed_pathing) do
+            if entity:is_valid() then
+               entity:add_component('stonehearth_ace:vertical_pathing_region'):set_region(water:get_region():get())
+            end
+         end
+         self._changed_pathing = {}
+      end
+   end
+   
+   if self._current_tick % self._update_frequency > 0 then
       return
    end
 
