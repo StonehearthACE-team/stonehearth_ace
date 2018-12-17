@@ -22,12 +22,13 @@
          "region": [
             {
                "min": { "x": -1, "y": 0, "z": 0 },
-               "max": { "x": 2, "y": 2, "z": 1.5 }
+               "max": { "x": 2, "y": 2, "z": 1.25 }
             }
          ]
       },
       "stonehearth:mount": {
-         "mounted_posture": "stonehearth:sitting_on_chair"
+         "mounted_posture": "stonehearth:sitting_on_chair",
+         "mount_offset": { "x": 0, "y": 0.15, "z": 0.05 }
       },
       "stonehearth:traveler_attraction": {}
    },
