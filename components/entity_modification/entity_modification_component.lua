@@ -53,11 +53,12 @@ function EntityModificationComponent:set_region3s(component_name, regions)
 		if component then
 			component:set_region(_radiant.sim.alloc_region3())
 				:get_region():modify(function(cursor)
-						for _, r in pairs(region3s) do
-							-- does this work? does copy_region just replace all existing regions?
-							cursor:copy_region(r)
-						end
-					end)
+               cursor:clear()   
+               for _, r in pairs(region3s) do
+                  -- does this work? does copy_region just replace all existing regions?
+                  cursor:copy_region(r)
+               end
+            end)
 		end
 	end
 end
