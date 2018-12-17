@@ -1,0 +1,14 @@
+{
+   "mixins": "/stonehearth_ace/jobs/blacksmith/recipes/silver_mace_recipe.json",
+   "type": "recipe",
+   "recipe_name": "i18n(stonehearth_ace:entities.weapons.na_silver_mace.display_name)",
+   "portrait": "/stonehearth_ace/entities/weapons/na_silver_mace/na_silver_mace.png",
+   "mixintypes": {
+      "produces": "override"
+   },
+   "produces": [
+      {
+         "item": "stonehearth_ace:weapons:na_silver_mace"
+      }
+   ]
+}

@@ -1,0 +1,35 @@
+{
+   "mixins": "stonehearth:armor:steel_mail",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "mixintypes": {
+            "default": "override",
+            "female": "override"
+         },
+         "default": {
+            "layer": "armor",
+            "transparent": "false",
+            "models": [
+               "file(na_steel_mail.qb)"
+            ]
+         },
+         "female": {
+            "layer": "armor",
+            "transparent": "false",
+            "models": [
+               "file(na_steel_mail_female.qb)"
+            ]
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(na_steel_mail_iconic.json)"
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.armor.na_steel_mail.display_name)",
+         "icon": "file(na_steel_mail.png)"
+      }
+   }
+}

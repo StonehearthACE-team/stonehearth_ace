@@ -1,0 +1,14 @@
+{
+   "mixins": "/stonehearth_ace/jobs/carpenter/recipes/long_bow_recipe.json",
+   "type": "recipe",
+   "recipe_name": "i18n(stonehearth_ace:entities.weapons.na_long_bow.display_name)",
+   "portrait": "/stonehearth_ace/entities/weapons/na_long_bow/na_long_bow.png",
+   "mixintypes": {
+      "produces": "override"
+   },
+   "produces": [
+      {
+         "item": "stonehearth_ace:weapons:na_long_bow"
+      }
+   ]
+}

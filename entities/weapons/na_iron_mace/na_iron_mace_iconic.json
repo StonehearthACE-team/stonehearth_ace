@@ -1,0 +1,22 @@
+{
+   "mixins": "/stonehearth/entities/weapons/iron_mace/iron_mace_iconic.json",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "mixintypes": {
+            "default": "override"
+         },
+         "default": {
+            "models": [
+               "file(na_iron_mace.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.weapons.na_iron_mace.display_name)",
+         "icon": "file(na_iron_mace.png)"
+      }
+   }
+}

@@ -1,0 +1,22 @@
+{
+   "mixins": "/stonehearth/entities/armor/iron_shield/iron_shield_iconic.json",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "mixintypes": {
+            "default": "override"
+         },
+         "default": {
+            "models": [
+               "file(na_iron_shield_iconic.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.armor.na_iron_shield.display_name)",
+         "icon": "file(na_iron_shield.png)"
+      }
+   }
+}

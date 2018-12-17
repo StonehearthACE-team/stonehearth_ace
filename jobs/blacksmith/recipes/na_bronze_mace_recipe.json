@@ -1,0 +1,14 @@
+{
+   "mixins": "/stonehearth/jobs/blacksmith/recipes/bronze_mace_recipe.json",
+   "type": "recipe",
+   "recipe_name": "i18n(stonehearth_ace:entities.weapons.na_bronze_mace.display_name)",
+   "portrait": "/stonehearth_ace/entities/weapons/na_bronze_mace/na_bronze_mace.png",
+   "mixintypes": {
+      "produces": "override"
+   },
+   "produces": [
+      {
+         "item": "stonehearth_ace:weapons:na_bronze_mace"
+      }
+   ]
+}

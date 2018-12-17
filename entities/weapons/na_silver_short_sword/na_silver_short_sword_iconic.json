@@ -1,0 +1,22 @@
+{
+   "mixins": "/stonehearth_ace/entities/weapons/silver_short_sword/silver_short_sword_iconic.json",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "mixintypes": {
+            "default": "override"
+         },
+         "default": {
+            "models": [
+               "file(na_silver_short_sword.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.weapons.na_silver_short_sword.display_name)",
+         "icon": "file(na_silver_short_sword.png)"
+      }
+   }
+}

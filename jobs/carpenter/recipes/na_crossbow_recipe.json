@@ -1,0 +1,14 @@
+{
+   "mixins": "/stonehearth_ace/jobs/carpenter/recipes/crossbow_recipe.json",
+   "type": "recipe",
+   "recipe_name": "i18n(stonehearth_ace:entities.weapons.na_crossbow.display_name)",
+   "portrait": "/stonehearth_ace/entities/weapons/na_crossbow/na_crossbow.png",
+   "mixintypes": {
+      "produces": "override"
+   },
+   "produces": [
+      {
+         "item": "stonehearth_ace:weapons:na_crossbow"
+      }
+   ]
+}

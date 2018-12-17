@@ -1,0 +1,22 @@
+{
+   "mixins": "/stonehearth_ace/entities/armor/light_steel_shield/light_steel_shield_iconic.json",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "mixintypes": {
+            "default": "override"
+         },
+         "default": {
+            "models": [
+               "file(na_light_steel_shield_iconic.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.armor.na_light_steel_shield.display_name)",
+         "icon": "file(na_light_steel_shield.png)"
+      }
+   }
+}

@@ -1,0 +1,15 @@
+{
+   "mixins": "/stonehearth/jobs/blacksmith/recipes/silver_mail_recipe.json",
+   "type": "recipe",
+   "recipe_name": "i18n(stonehearth_ace:entities.armor.na_silver_mail.display_name)",
+   "flavor": "",
+   "portrait": "/stonehearth_ace/entities/armor/na_silver_mail/na_silver_mail.png",
+   "mixintypes": {
+      "produces": "override"
+   },
+   "produces": [
+      {
+         "item": "stonehearth_ace:armor:na_silver_mail"
+      }
+   ]
+}

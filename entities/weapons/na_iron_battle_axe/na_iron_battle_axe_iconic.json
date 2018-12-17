@@ -1,0 +1,22 @@
+{
+   "mixins": "/stonehearth_ace/entities/weapons/iron_battle_axe/iron_battle_axe_iconic.json",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "mixintypes": {
+            "default": "override"
+         },
+         "default": {
+            "models": [
+               "file(na_iron_battle_axe.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.weapons.na_iron_battle_axe.display_name)",
+         "icon": "file(na_iron_battle_axe.png)"
+      }
+   }
+}

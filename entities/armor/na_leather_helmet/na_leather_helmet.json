@@ -1,0 +1,35 @@
+{
+   "mixins": "stonehearth:armor:leather_helmet",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "mixintypes": {
+            "default": "override",
+            "female": "override"
+         },
+         "default": {
+            "layer": "hat",
+            "transparent": "false",
+            "models": [
+               "file(na_leather_helmet.qb)"
+            ]
+         },
+         "female": {
+            "layer": "hat",
+            "transparent": "false",
+            "models": [
+               "file(na_leather_helmet_female.qb)"
+            ]
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(na_leather_helmet_iconic.json)"
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.armor.na_leather_helmet.display_name)",
+         "icon": "file(na_leather_helmet.png)"
+      }
+   }
+}

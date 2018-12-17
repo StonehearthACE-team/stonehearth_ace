@@ -1,0 +1,35 @@
+{
+   "mixins": "stonehearth:armor:iron_circlet",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "mixintypes": {
+            "default": "override",
+            "female": "override"
+         },
+         "default": {
+            "layer": "hat",
+            "transparent": "true",
+            "models": [
+               "file(na_iron_circlet.qb)"
+            ]
+         },
+         "female": {
+            "layer": "hat",
+            "transparent": "true",
+            "models": [
+               "file(na_iron_circlet_female.qb)"
+            ]
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(na_iron_circlet_iconic.json)"
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.armor.na_iron_circlet.display_name)",
+         "icon": "file(na_iron_circlet.png)"
+      }
+   }
+}

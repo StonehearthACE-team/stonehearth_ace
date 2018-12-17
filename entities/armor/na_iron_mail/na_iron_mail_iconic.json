@@ -1,0 +1,22 @@
+{
+   "mixins": "/stonehearth/entities/armor/iron_mail/iron_mail_iconic.json",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "mixintypes": {
+            "default": "override"
+         },
+         "default": {
+            "models": [
+               "file(na_iron_mail_iconic.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.armor.na_iron_mail.display_name)",
+         "icon": "file(na_iron_mail.png)"
+      }
+   }
+}

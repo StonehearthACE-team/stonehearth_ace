@@ -1,0 +1,14 @@
+{
+   "mixins": "/stonehearth/jobs/blacksmith/recipes/iron_mail_recipe.json",
+   "type": "recipe",
+   "recipe_name": "i18n(stonehearth_ace:entities.armor.na_iron_mail.display_name)",
+   "portrait": "/stonehearth_ace/entities/armor/na_iron_mail/na_iron_mail.png",
+   "mixintypes": {
+      "produces": "override"
+   },
+   "produces": [
+      {
+         "item": "stonehearth_ace:armor:na_iron_mail"
+      }
+   ]
+}

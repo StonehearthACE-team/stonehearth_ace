@@ -1,0 +1,14 @@
+{
+   "mixins": "/stonehearth_ace/jobs/blacksmith/recipes/steel_chainmail_recipe.json",
+   "type": "recipe",
+   "recipe_name": "i18n(stonehearth_ace:entities.armor.na_steel_chainmail.display_name)",
+   "portrait": "/stonehearth_ace/entities/armor/na_steel_chainmail/na_steel_chainmail.png",
+   "mixintypes": {
+      "produces": "override"
+   },
+   "produces": [
+      {
+         "item": "stonehearth_ace:armor:na_steel_chainmail"
+      }
+   ]
+}

@@ -1,0 +1,35 @@
+{
+   "mixins": "stonehearth:armor:bronze_breastplate",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "mixintypes": {
+            "default": "override",
+            "female": "override"
+         },
+         "default": {
+            "layer": "armor",
+            "transparent": "false",
+            "models": [
+               "file(na_bronze_breastplate.qb)"
+            ]
+         },
+         "female": {
+            "layer": "armor",
+            "transparent": "false",
+            "models": [
+               "file(na_bronze_breastplate_female.qb)"
+            ]
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(na_bronze_breastplate_iconic.json)"
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.armor.na_bronze_breastplate.display_name)",
+         "icon": "file(na_bronze_breastplate.png)"
+      }
+   }
+}

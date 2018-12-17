@@ -1,0 +1,14 @@
+{
+   "mixins": "/stonehearth/jobs/blacksmith/recipes/iron_mace_recipe.json",
+   "type": "recipe",
+   "recipe_name": "i18n(stonehearth_ace:entities.weapons.na_iron_mace.display_name)",
+   "portrait": "/stonehearth_ace/entities/weapons/na_iron_mace/na_iron_mace.png",
+   "mixintypes": {
+      "produces": "override"
+   },
+   "produces": [
+      {
+         "item": "stonehearth_ace:weapons:na_iron_mace"
+      }
+   ]
+}

@@ -1,0 +1,35 @@
+{
+   "mixins": "stonehearth:armor:iron_helm",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "mixintypes": {
+            "default": "override",
+            "female": "override"
+         },
+         "default": {
+            "layer": "hat",
+            "transparent": "false",
+            "models": [
+               "file(na_iron_helm.qb)"
+            ]
+         },
+         "female": {
+            "layer": "hat",
+            "transparent": "false",
+            "models": [
+               "file(na_iron_helm_female.qb)"
+            ]
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(na_iron_helm_iconic.json)"
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.armor.na_iron_helm.display_name)",
+         "icon": "file(na_iron_helm.png)"
+      }
+   }
+}

@@ -1,0 +1,34 @@
+{
+   "mixins": "stonehearth:armor:bronze_shield",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "mixintypes": {
+            "default": "override"
+         },
+         "default": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(na_bronze_shield.qb)",
+                     "file(na_bronze_shield_2.qb)",
+                     "file(na_bronze_shield_3.qb)",
+                     "file(na_bronze_shield_4.qb)",
+                     "file(na_bronze_shield_5.qb)"
+                  ]
+               }
+            ]
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(na_bronze_shield_iconic.json)"
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.armor.na_bronze_shield.display_name)",
+         "icon": "file(na_bronze_shield.png)"
+      }
+   }
+}

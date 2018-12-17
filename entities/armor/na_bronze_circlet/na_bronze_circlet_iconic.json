@@ -1,0 +1,22 @@
+{
+   "mixins": "/stonehearth/entities/armor/bronze_circlet/bronze_circlet_iconic.json",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "mixintypes": {
+            "default": "override"
+         },
+         "default": {
+            "models": [
+               "file(na_bronze_circlet_iconic.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.armor.na_bronze_circlet.display_name)",
+         "icon": "file(na_bronze_circlet.png)"
+      }
+   }
+}

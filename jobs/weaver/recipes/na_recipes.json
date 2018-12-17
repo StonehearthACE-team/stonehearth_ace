@@ -6,13 +6,29 @@
             "weaver_workbench": {
                "recipe": "file(na_weaver_workbench_recipe.json)"
             },
-			"weaver_spinning_wheel": {
+            "weaver_spinning_wheel": {
                "recipe": "file(na_weaver_spinning_wheel_recipe.json)"
             },
             "weaver_loom": {
                "recipe": "file(na_weaver_loom_recipe.json)"
             }
          }
-	  }
+      },
+      "clothing_armor": {
+         "recipes": {
+            "cloth_padded_vest": {
+               "recipe": "file(na_cloth_padded_vest_recipe.json)"
+            },
+            "leather_helmet": {
+               "recipe": "file(na_leather_helmet_recipe.json)"
+            },
+            "leather_vest": {
+               "recipe": "file(na_leather_vest_recipe.json)"
+            },
+            "cloth_padded_helmet": {
+               "recipe": "file(na_cloth_padded_helmet_recipe.json)"
+            }
+         }
+      }
    }
 }

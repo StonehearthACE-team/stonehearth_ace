@@ -1,0 +1,22 @@
+{
+   "mixins": "/stonehearth/entities/armor/leather_helmet/leather_helmet_iconic.json",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "mixintypes": {
+            "default": "override"
+         },
+         "default": {
+            "models": [
+               "file(na_leather_helmet_iconic.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.armor.na_leather_helmet.display_name)",
+         "icon": "file(na_leather_helmet.png)"
+      }
+   }
+}

@@ -1,0 +1,25 @@
+{
+   "mixins": "/stonehearth_ace/scenarios/static/static_objects/static_objects.json",
+   "name": "feldspar_boulders_small",
+   "mixintypes": {
+      "habitat_types": "override"
+   },
+   "habitat_types": [
+      "plains",
+      "foothills",
+      "water",
+      "forest"
+   ],
+   "biomes": [
+      "stonehearth:biome:temperate",
+      "stonehearth:biome:desert"
+   ],
+   "data": {
+      "entity_type": [
+         "stonehearth_ace:boulder:feldspar:small",
+         "stonehearth_ace:boulder:feldspar:medium_1",
+         "stonehearth_ace:boulder:feldspar:medium_2",
+         "stonehearth_ace:boulder:feldspar:medium_3"
+      ]
+   }
+}

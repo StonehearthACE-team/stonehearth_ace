@@ -1,0 +1,23 @@
+{
+   "mixins": "/stonehearth_ace/scenarios/static/static_objects/static_objects.json",
+   "name": "underwater_ball_clay",
+   "mixintypes": {
+      "habitat_types": "override"
+   },
+   "habitat_types": [
+      "water"
+   ],
+   "biomes": [
+      "stonehearth:biome:desert"
+   ],
+   "data": {
+      "entity_type": [
+         "stonehearth_ace:boulder:ball_clay:large_1",
+         "stonehearth_ace:boulder:ball_clay:large_2",
+         "stonehearth_ace:boulder:ball_clay:medium_1",
+         "stonehearth_ace:boulder:ball_clay:medium_2",
+         "stonehearth_ace:boulder:ball_clay:medium_3",
+         "stonehearth_ace:boulder:ball_clay:small"
+      ]
+   }
+}

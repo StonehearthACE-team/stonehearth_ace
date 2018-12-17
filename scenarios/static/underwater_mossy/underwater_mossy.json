@@ -1,0 +1,24 @@
+{
+   "mixins": "/stonehearth_ace/scenarios/static/static_objects/static_objects.json",
+   "name": "underwater_mossy",
+   "mixintypes": {
+      "habitat_types": "override"
+   },
+   "habitat_types": [
+      "water"
+   ],
+   "biomes": [
+      "stonehearth_ace:biome:highlands",
+      "stonehearth:biome:arctic"
+   ],
+   "data": {
+      "entity_type": [
+         "stonehearth_ace:boulder:underwater:large_1",
+         "stonehearth_ace:boulder:underwater:large_2",
+         "stonehearth_ace:boulder:underwater:medium_1",
+         "stonehearth_ace:boulder:underwater:medium_2",
+         "stonehearth_ace:boulder:underwater:medium_3",
+         "stonehearth_ace:boulder:underwater:small"
+      ]
+   }
+}

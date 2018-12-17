@@ -1,0 +1,25 @@
+{
+   "mixins": "stonehearth_ace:weapons:bronze_axe",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "mixintypes": {
+            "default": "override"
+         },
+         "default": {
+            "models": [
+               "file(na_bronze_axe_equipped.qb)"
+            ]
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(na_bronze_axe_iconic.json)"
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.weapons.na_bronze_axe.display_name)",
+         "icon": "file(na_bronze_axe.png)"
+      }
+   }
+}

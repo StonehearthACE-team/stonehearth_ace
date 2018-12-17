@@ -1,0 +1,22 @@
+{
+   "mixins": "/stonehearth_ace/entities/weapons/steel_dagger/steel_dagger_iconic.json",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "mixintypes": {
+            "default": "override"
+         },
+         "default": {
+            "models": [
+               "file(na_steel_dagger.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.weapons.na_steel_dagger.display_name)",
+         "icon": "file(na_steel_dagger.png)"
+      }
+   }
+}

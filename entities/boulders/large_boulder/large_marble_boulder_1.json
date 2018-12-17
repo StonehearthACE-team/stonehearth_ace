@@ -1,0 +1,43 @@
+{
+   "mixins": "stonehearth:mixins:boulder",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(large_marble_boulder_1.qb)"
+            ]
+         }
+      },
+      "stonehearth:resource_node": {
+         "resource": "stonehearth_ace:resources:stone:marble_stone",
+         "durability": 8
+      },
+      "mob": {
+         "model_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -2, "y": 0, "z": -2 },
+               "max": { "x": 2, "y": 5, "z": 2 }
+            }
+         ]
+      },
+      "region_collision_shape": {
+         "region_from_model": {
+            "model": "file(large_marble_boulder_1.qb)"
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.boulders.marble_boulder.large.display_name)",
+         "description": "i18n(stonehearth_ace:entities.boulders.marble_boulder.large.description)"
+      },
+      "stonehearth:appeal": {
+         "appeal": 4
+      }
+   }
+}

@@ -1,0 +1,29 @@
+{
+   "mixins": "/stonehearth_ace/scenarios/static/static_objects/static_objects.json",
+   "name": "marble_boulders_mountains",
+   "mixintypes": {
+      "habitat_types": "override"
+   },
+   "habitat_types": [
+      "mountains"
+   ],
+   "size": {
+      "width": 64,
+      "length": 64
+   },
+   "biomes": [
+      "stonehearth:biome:arctic",
+      "stonehearth:biome:temperate",
+      "stonehearth_ace:biome:highlands"
+   ],
+   "data": {
+      "entity_type": [
+         "stonehearth_ace:boulder:marble:small",
+         "stonehearth_ace:boulder:marble:medium_1",
+         "stonehearth_ace:boulder:marble:medium_2",
+         "stonehearth_ace:boulder:marble:medium_3",
+         "stonehearth_ace:boulder:marble:large_1",
+         "stonehearth_ace:boulder:marble:large_2"
+      ]
+   }
+}

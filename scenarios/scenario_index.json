@@ -25,6 +25,19 @@
          "file(static/algae_green_nest)",
          "file(static/daisy_flowers_nest)",
          "file(static/chanterelle_nest)",
+         "file(static/bolete_nest)",
+         "file(static/winter_morels_nest)",
+         "file(static/feldspar_boulders)",
+         "file(static/feldspar_boulders_small)",
+         "file(static/feldspar_boulders_plains)",
+         "file(static/feldspar_boulders_rare)",
+         "file(static/marble_boulders_small)",
+         "file(static/marble_boulders_mountains)",
+         "file(static/marble_boulders_rare)",
+         "file(static/marble_boulders)",
+         "file(static/underwater_rocks)",
+         "file(static/underwater_ball_clay)",
+         "file(static/underwater_mossy)",
          "file(static/landmarks/16x_water_bottom_1.json)",
          "file(static/landmarks/16x_water_bottom_2.json)",
          "file(static/landmarks/16x_water_bottom_3.json)",
@@ -52,6 +65,12 @@
       "categories": {
          "plantlife": {
             "density": 6,
+            "priority": 0,
+            "location_type": "surface",
+            "activation_type": "immediate"
+         },
+         "static_objects": {
+            "density": 1.2,
             "priority": 0,
             "location_type": "surface",
             "activation_type": "immediate"

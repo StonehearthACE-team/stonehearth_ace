@@ -1,0 +1,22 @@
+{
+   "mixins": "/stonehearth/entities/weapons/bow/bow_iconic.json",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "mixintypes": {
+            "default": "override"
+         },
+         "default": {
+            "models": [
+               "file(na_bow.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.weapons.na_bow.display_name)",
+         "icon": "file(na_bow.png)"
+      }
+   }
+}

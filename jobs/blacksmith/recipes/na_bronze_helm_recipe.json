@@ -1,0 +1,14 @@
+{
+   "mixins": "/stonehearth/jobs/blacksmith/recipes/bronze_helm_recipe.json",
+   "type": "recipe",
+   "recipe_name": "i18n(stonehearth_ace:entities.armor.na_bronze_helm.display_name)",
+   "portrait": "/stonehearth_ace/entities/armor/na_bronze_helm/na_bronze_helm.png",
+   "mixintypes": {
+      "produces": "override"
+   },
+   "produces": [
+      {
+         "item": "stonehearth_ace:armor:na_bronze_helm"
+      }
+   ]
+}

@@ -1,0 +1,25 @@
+{
+   "mixins": "stonehearth:weapons:bronze_sword",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "mixintypes": {
+            "default": "override"
+         },
+         "default": {
+            "models": [
+               "file(na_bronze_sword_equipped.qb)"
+            ]
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(na_bronze_sword_iconic.json)"
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.weapons.na_bronze_sword.display_name)",
+         "icon": "file(na_bronze_sword.png)"
+      }
+   }
+}

@@ -1,0 +1,47 @@
+{
+   "mixins": "stonehearth:mixins:boulder",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(large_feldspar_boulder_2.qb)"
+            ]
+         }
+      },
+      "stonehearth:resource_node": {
+         "resource": "stonehearth_ace:resources:stone:feldspar_stone",
+         "durability": 12
+      },
+      "mob": {
+         "model_origin": { "x": -0.5, "y": 0, "z": 0.5 },
+         "region_origin": { "x": -0.5, "y": 0, "z": 0.5 },
+         "align_to_grid": [
+            "x",
+            "z"
+         ]
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -2, "y": 0, "z": -2 },
+               "max": { "x": 3, "y": 5, "z": 3 }
+            }
+         ]
+      },
+      "region_collision_shape": {
+         "region_from_model": {
+            "model": "file(large_feldspar_boulder_2.qb)"
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.boulders.feldspar_boulder.large.display_name)",
+         "description": "i18n(stonehearth_ace:entities.boulders.feldspar_boulder.large.description)"
+      },
+      "stonehearth:appeal": {
+         "appeal": -3
+      }
+   }
+}

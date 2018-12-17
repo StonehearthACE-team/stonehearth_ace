@@ -1,0 +1,33 @@
+{
+   "mixins": "/stonehearth_ace/scenarios/static/static_objects/static_objects.json",
+   "name": "underwater_rocks",
+   "mixintypes": {
+      "habitat_types": "override"
+   },
+   "habitat_types": [
+      "water"
+   ],
+   "biomes": [
+      "stonehearth_ace:biome:highlands",
+      "stonehearth:biome:desert",
+      "stonehearth:biome:temperate",
+      "stonehearth:biome:arctic"
+   ],
+   "weight": 2,
+   "data": {
+      "entity_type": [
+         "stonehearth_ace:boulder:ball_clay:large_1",
+         "stonehearth_ace:boulder:ball_clay:large_2",
+         "stonehearth_ace:boulder:ball_clay:medium_1",
+         "stonehearth_ace:boulder:ball_clay:medium_2",
+         "stonehearth_ace:boulder:ball_clay:medium_3",
+         "stonehearth_ace:boulder:ball_clay:small",
+         "stonehearth_ace:boulder:underwater:large_1",
+         "stonehearth_ace:boulder:underwater:large_2",
+         "stonehearth_ace:boulder:underwater:medium_1",
+         "stonehearth_ace:boulder:underwater:medium_2",
+         "stonehearth_ace:boulder:underwater:medium_3",
+         "stonehearth_ace:boulder:underwater:small"
+      ]
+   }
+}

@@ -1,0 +1,35 @@
+{
+   "mixins": "stonehearth:armor:cloth_padded_vest",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "mixintypes": {
+            "default": "override",
+            "female": "override"
+         },
+         "default": {
+            "layer": "armor",
+            "transparent": "false",
+            "models": [
+               "file(na_cloth_padded_vest.qb)"
+            ]
+         },
+         "female": {
+            "layer": "armor",
+            "transparent": "false",
+            "models": [
+               "file(na_cloth_padded_vest_female.qb)"
+            ]
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(na_cloth_padded_vest_iconic.json)"
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.armor.na_cloth_padded_vest.display_name)",
+         "icon": "file(na_cloth_padded_vest.png)"
+      }
+   }
+}
