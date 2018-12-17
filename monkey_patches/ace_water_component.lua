@@ -3,6 +3,13 @@ local log = radiant.log.create_logger('water')
 local WaterComponent = require 'stonehearth.components.water.water_component'
 local AceWaterComponent = class()
 
+AceWaterComponent._old_activate = WaterComponent.activate
+function AceWaterComponent:activate()
+   self:_old_activate()
+
+   self:_update_pathing()
+end
+
 function AceWaterComponent:get_volume_info()
    if not self._calculated_up_to_date then
       local location = self._location
@@ -66,6 +73,17 @@ function AceWaterComponent:set_region(boxed_region, height)
 
    self._calculated_up_to_date = false
    stonehearth_ace.water_signal:water_component_modified(self._entity)
+   self:_update_pathing()
+end
+
+function AceWaterComponent:_update_pathing()
+   -- if we want to enable vertical pathing in water regions, this is where we do that (or queue it)
+   -- updates to large/complex water bodies can potentially cause lag
+   -- entities tend to walk on water for a bit before getting low enough to trigger their swimming animation
+   if self._entity:is_valid() and self._sv.region then
+      --self._entity:add_component('stonehearth_ace:vertical_pathing_region'):set_region(self._sv.region:get())
+   end
+   --stonehearth_ace.water_signal:water_component_pathing_modified(self._entity)
 end
 
 return AceWaterComponent
