@@ -1,12 +1,16 @@
 local Point3 = _radiant.csg.Point3
 local Color4 = _radiant.csg.Color4
 
+local constants = require 'stonehearth.constants'
+
 local FarmerFieldRenderer = require 'stonehearth.renderers.farmer_field.farmer_field_renderer'
 local AceFarmerFieldRenderer = class()
 
 AceFarmerFieldRenderer._old_initialize = FarmerFieldRenderer.initialize
 function AceFarmerFieldRenderer:initialize(render_entity, datastore)
    self:_old_initialize(render_entity, datastore)
+
+   self._water_color = Color4(constants.hydrology.DEFAULT_WATER_COLOR)
 
    self._ui_view_mode = stonehearth.renderer:get_ui_mode()
    self._ui_mode_listener = radiant.events.listen(radiant, 'stonehearth:ui_mode_changed', self, self._on_ui_mode_changed)
@@ -62,8 +66,8 @@ function AceFarmerFieldRenderer:_render_water_signal_region()
    local region = data.water_signal_region
    if region then
       local material = '/stonehearth/data/horde/materials/transparent_box_nodepth.material.json'
-      local color = Color4(96, 96, 255, 200)
-      self._water_signal_region_node = _radiant.client.create_region_outline_node(self._entity_node, region, color, Color4(0, 0, 0, 0), material, 1)
+      self._water_signal_region_node = _radiant.client.create_region_outline_node(self._entity_node, region:inflated(Point3(-0.05, -0.05, -0.05)),
+            self._water_color, Color4(0, 0, 0, 0), material, 1)
          :set_casts_shadows(false)
          :set_can_query(false)
    end

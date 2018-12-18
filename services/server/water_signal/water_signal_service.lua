@@ -27,7 +27,7 @@ function WaterSignalService:initialize()
    self._changed_waterfalls = {}
    self._next_tick_callbacks = {}
    self._current_tick = 0
-   self._update_frequency = radiant.util.get_config('water_signal_update_frequency', 1)
+   self:set_update_frequency(radiant.util.get_config('water_signal_update_frequency', 1))
    
    self._game_loaded_listener = radiant.events.listen_once(radiant, 'radiant:game_loaded', function()
       self._game_loaded_listener = nil
@@ -46,6 +46,8 @@ end
 
 function WaterSignalService:set_update_frequency(frequency)
    self._update_frequency = math.max(1, math.min(10, frequency))
+   self._update_tick_mod = self._update_frequency * 10
+   self._update_pathing_tick = self._update_tick_mod / 2
 end
 
 function WaterSignalService:register_water_signal(water_signal)
@@ -127,13 +129,13 @@ function WaterSignalService:add_next_tick_callback(cb, args)
 end
 
 function WaterSignalService:_on_tick()
-   self._current_tick = (self._current_tick + 1) % (self._update_frequency * 10)
-   if self._current_tick == 1 then
+   self._current_tick = (self._current_tick + 1) % self._update_tick_mod
+   if self._current_tick == self._update_pathing_tick then  -- do it on the opposite tick compared to the regular water signal updates (tick 0)
       -- this isn't really the best place for this, but it's the simplest place for it
       if next(self._changed_pathing) then
          for entity, water in pairs(self._changed_pathing) do
             if entity:is_valid() then
-               entity:add_component('stonehearth_ace:vertical_pathing_region'):set_region(water:get_region():get())
+               water:update_pathable_region()
             end
          end
          self._changed_pathing = {}

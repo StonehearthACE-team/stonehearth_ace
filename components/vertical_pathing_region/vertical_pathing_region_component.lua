@@ -25,10 +25,10 @@ end
 function VerticalPathingRegionComponent:set_region(region)
    local vpr_component = self._entity:add_component('vertical_pathing_region')
    vpr_component:get_region():modify(function(cursor)
-      cursor:clear()
       if radiant.util.is_a(region, Region3) then
          cursor:copy_region(region)
       elseif region then
+         cursor:clear()
          for _, cube in ipairs(region or {}) do
             cursor:add_unique_cube(radiant.util.to_cube3(cube))
          end

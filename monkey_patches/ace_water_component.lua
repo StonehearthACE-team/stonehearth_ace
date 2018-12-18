@@ -10,6 +10,19 @@ function AceWaterComponent:activate()
    self:_update_pathing()
 end
 
+function AceWaterComponent:update_pathable_region()
+   if self._sv.region and (not self._sv.last_updated_pathable_region or not self._sv.last_updated_pathable_region:equals(self._sv.region:get())) then
+      local region = self._sv.region:get():extruded('y', 0, -1)
+      local bounds = region:get_bounds()
+      if bounds.max.y > bounds.min.y + 1 then
+         region:optimize('water pathing')
+         self._entity:add_component('stonehearth_ace:vertical_pathing_region'):set_region(region)
+         self._sv.last_updated_pathable_region = self._sv.region:get()
+         self.__saved_variables:mark_changed()
+      end
+   end
+end
+
 function AceWaterComponent:get_volume_info()
    if not self._calculated_up_to_date then
       local location = self._location
@@ -80,9 +93,6 @@ function AceWaterComponent:_update_pathing()
    -- if we want to enable vertical pathing in water regions, this is where we do that (or queue it)
    -- updates to large/complex water bodies can potentially cause lag
    -- entities tend to walk on water for a bit before getting low enough to trigger their swimming animation
-   if self._entity:is_valid() and self._sv.region then
-      --self._entity:add_component('stonehearth_ace:vertical_pathing_region'):set_region(self._sv.region:get())
-   end
    --stonehearth_ace.water_signal:water_component_pathing_modified(self._entity)
 end
 
