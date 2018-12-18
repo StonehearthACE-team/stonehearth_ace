@@ -1,0 +1,39 @@
+{
+   "mixins": "/stonehearth_ace/scenarios/static/static_objects/static_objects.json",
+   "name": "forest_highlands",
+   "mixintypes": {
+      "habitat_types": "override"
+   },
+   "habitat_types": [
+      "forest"
+   ],
+   "size": {
+      "width": 24,
+      "length": 24
+   },
+   "biomes": [
+      "stonehearth_ace:biome:highlands"
+   ],
+   "data": {
+      "entity_type": [
+         "stonehearth_ace:trees:highland_pine:trunk",
+         "stonehearth_ace:trees:birch:trunk",
+         "stonehearth_ace:trees:old_wood:trunk",
+         "stonehearth_ace:trees:old_wood:stump",
+         "stonehearth_ace:boulder:forest:small",
+         "stonehearth_ace:boulder:forest:medium_1",
+         "stonehearth_ace:boulder:forest:medium_2",
+         "stonehearth_ace:boulder:forest:medium_3",
+         "stonehearth_ace:boulder:forest:large_1",
+         "stonehearth_ace:boulder:forest:large_2",
+         "stonehearth_ace:fungi:parasol:spreading",
+         "stonehearth_ace:fungi:parasol:developing",
+         "stonehearth_ace:fungi:sweet_tooth:spreading",
+         "stonehearth_ace:fungi:sweet_tooth:developing"
+      ],
+      "quantity": {
+         "min": 2,
+         "max": 10
+      }
+   }
+}
