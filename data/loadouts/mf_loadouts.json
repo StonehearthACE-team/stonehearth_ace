@@ -2,14 +2,17 @@
    "type": "index",
    "mixins": "stonehearth:loadouts",
    "loadouts": {
+      "mixintypes": {
+         "noble_entourage": "remove"
+      },
       "food_for_days": {
          "splash": "/stonehearth/data/loadouts/images/food_for_days/splash.png",
          "seal": "/stonehearth/data/loadouts/images/food_for_days/seal.png",
          "content": {
             "mixintypes": {
-               "farmer" : "remove",
-               "berries" : "remove",
-			   "carrots" : "remove"
+               "farmer": "remove",
+               "berries": "remove",
+               "carrots": "remove"
             },
             "grower": {
                "ordinal": 1,
@@ -62,7 +65,7 @@
                "icon": "/stonehearth/data/loadouts/images/items/cook_spoon.png",
                "amount": 1
             },
-			"footman": {
+            "footman": {
                "ordinal": 3,
                "display_name": "i18n(stonehearth:jobs.footman.footman_description.display_name)",
                "type": "entity",
@@ -93,10 +96,10 @@
          "seal": "/stonehearth/data/loadouts/images/merchant_caravan/seal.png",
          "content": {
             "mixintypes": {
-               "berries" : "remove",
-			   "herbalist" : "remove"
+               "berries": "remove",
+               "herbalist": "remove"
             },
-			"mason": {
+            "mason": {
                "ordinal": 3,
                "display_name": "i18n(stonehearth:jobs.mason.mason_description.display_name)",
                "type": "entity",
@@ -114,13 +117,26 @@
             }
          }
       },
+      "military_expedition": {
+         "ordinal": 4,
+         "content": {
+            "footman": {},
+            "archer": {},
+            "training_dummy": {
+               "uri": "stonehearth_ace:gizmos:brass_training_dummy",
+               "icon": "file(images/items/brass_training_dummy.png)"
+            },
+            "jerky": {},
+            "gold": {}
+         }
+      },
       "money_solves_all_problems": {
          "splash": "/stonehearth/data/loadouts/images/money_solves_all_problems/splash.png",
          "seal": "/stonehearth/data/loadouts/images/money_solves_all_problems/seal.png",
          "content": {
             "mixintypes": {
-               "berries" : "remove",
-			   "jerky" : "remove"
+               "berries": "remove",
+               "jerky": "remove"
             },
             "chanterelles": {
                "ordinal": 2,

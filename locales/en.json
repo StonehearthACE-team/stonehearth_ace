@@ -311,6 +311,26 @@
             "display_name": "On Land",
             "description": "This creature is not really adapted to being on land... It has consequences!"
          }
+      },
+      "loadouts": {
+         "items": {
+            "prickly_pear": "Pears",
+            "thatching": "Thatch",
+            "watermelon": "Watermelons",
+            "winter_morel": "Morels",
+            "training_dummy": "Dummy",
+            "comfy_bed": "Bed"
+         },
+         "military_expedition": {
+            "display_name": "Military Expedition",
+            "description": "The hearthlings might sleep out in the cold and lack some food variety during the first days... But it is doubtful that any pesky wolves or goblins will ruin their party later on!",
+            "tooltip": "A military focused loadout for those that prefer to ensure their safety early on."
+         },
+         "noble_entourage": {
+            "display_name": "Noble Entourage",
+            "description": "Not everyone might eat venison, nor there are beds for all... So what? They're not meant for anyone but for some very special and important hearthling - or so they say - that has everyone else following them into the wild.",
+            "tooltip": "A small collection of high value items and professions for an oddly specialized beginning."
+         }
       }
    },
    "jobs": {
@@ -369,12 +389,12 @@
                "description": "Dry and press thin sheets of algae that can be used as a herb.",
                "flavor": "It is also used in cooking!"
             },
-			"parasol_colony_recipe": {
+            "parasol_colony_recipe": {
                "recipe_name": "Parasol Colony (x3)",
                "description": "Use existing fungus to create more colonies to grow into new fungi.",
                "flavor": "Parasols are slightly toxic when raw and must only be used as a cooking ingredient"
             },
-			"sweet_tooth_colony_recipe": {
+            "sweet_tooth_colony_recipe": {
                "recipe_name": "Sweet Tooth Colony (x3)",
                "description": "Use existing fungus to create more colonies to grow into new fungi.",
                "flavor": ""
@@ -542,6 +562,11 @@
                "recipe_name": "Stone Archery Target",
                "description": "Ranged fighters can gain experience from practicing with this target.",
                "flavor": "Requires an engineer for repairs."
+            },
+            "stone_hatchet_recipe": {
+               "recipe_name": "Off-hand Stone Hatchet",
+               "description": "A good starting alternative for those that do not favor the shield. (Off-hand)",
+               "flavor": ""
             }
          }
       },
@@ -975,6 +1000,10 @@
          "fish_trap": {
             "display_name": "Fish Trap",
             "description": "Safely capture fish. Will float when placed in the water."
+         },
+         "clamp_trap": {
+            "display_name": "Clamp Trap",
+            "description": "Not so safely immobilizes its prey"
          }
       },
       "shepherd": {
@@ -2995,6 +3024,14 @@
          },
          "na_steel_shield": {
             "display_name": "Steel Northern Heavy Shield"
+         },
+         "light_giant_bone_shield": {
+            "display_name": "Light Giant Bone Shield",
+            "description": "The strong and lighter bones of a big creature will provide cover enough."
+         },
+         "giant_bone_shield": {
+            "display_name": "Giant Bone Shield",
+            "description": "The rib cage of a slain beast will now defend a knight against evil."
          }
       },
       "weapons": {
@@ -3098,7 +3135,8 @@
             "display_name": "Bronze Desert Crossbow"
          },
          "rc_bronze_hatchet": {
-            "display_name": "Bronze Desert Hatchet"
+            "display_name": "Bronze Desert Hatchet",
+            "recipe_name": "Off-hand Bronze Desert Hatchet"
          },
          "rc_bronze_mace": {
             "display_name": "Bronze Desert Mace"
@@ -3119,7 +3157,8 @@
             "display_name": "Iron Desert Battle Axe"
          },
          "rc_iron_hatchet": {
-            "display_name": "Iron Desert Hatchet"
+            "display_name": "Iron Desert Hatchet",
+            "recipe_name": "Off-hand Iron Desert Hatchet"
          },
          "rc_iron_pike": {
             "display_name": "Iron War Fork"
@@ -3158,7 +3197,8 @@
             "display_name": "Steel Desert Crossbow"
          },
          "rc_steel_dagger": {
-            "display_name": "Steel Desert Dagger"
+            "display_name": "Steel Desert Dagger",
+            "recipe_name": "Off-hand Steel Desert Dagger"
          },
          "rc_steel_lance": {
             "display_name": "Steel Trident"
@@ -3182,7 +3222,8 @@
             "display_name": "Bronze Northern Crossbow"
          },
          "na_bronze_hatchet": {
-            "display_name": "Bronze Northern Hatchet"
+            "display_name": "Bronze Northern Hatchet",
+            "recipe_name": "Off-hand Bronze Northern Hatchet"
          },
          "na_bronze_mace": {
             "display_name": "Bronze War Hammer"
@@ -3203,7 +3244,8 @@
             "display_name": "Iron Northern Battle Axe"
          },
          "na_iron_hatchet": {
-            "display_name": "Iron Northern Hatchet"
+            "display_name": "Iron Northern Hatchet",
+            "recipe_name": "Off-hand Iron Northern Hatchet"
          },
          "na_iron_mace": {
             "display_name": "Iron War Hammer"
@@ -3245,7 +3287,8 @@
             "display_name": "Steel Northern Crossbow"
          },
          "na_steel_dagger": {
-            "display_name": "Steel Northern Seax"
+            "display_name": "Steel Northern Seax",
+            "recipe_name": "Off-hand Steel Northern Seax"
          },
          "na_steel_lance": {
             "display_name": "Steel Northern Spear"
@@ -3255,6 +3298,25 @@
          },
          "na_two_handed_sword": {
             "display_name": "Two Handed Claymore"
+         },
+         "stone_hatchet": {
+            "display_name": "Stone Hatchet",
+            "description": "A simple weapon for parrying and countering. (Off-hand)"
+         },
+         "bone_sword": {
+            "display_name": "Bone Sword"
+         },
+         "giant_bone_hatchet": {
+            "description": "For parrying attacks and attempting counter-attacks. (Off-hand)",
+            "display_name": "Giant Bone Hatchet"
+         },
+         "giant_bone_short_sword": {
+            "display_name": "Giant Bone Short Sword",
+            "description": "A knight's sidearm made with the bones of a mythical creature."
+         },
+         "giant_bone_sword": {
+            "display_name": "Giant Bone Sword",
+            "description": "A strong weapon made with the bones of a strong monster."
          }
       },
       "gizmos": {
@@ -3613,7 +3675,7 @@
       },
       "kingdom": {
          "quote": "Nature, balance and mighty shall always be the one and only struggle.",
-         "long_description": "The strong (and definitely stubborn!) folk of the mountains have thrived in their isolation for centuries and now set out to face a new world with powers and technologies that might come for good or woe...",
+         "long_description": "The strong and stalwart folk of the mountains have thrived under a democratic monarchy and isolation for ages. Now they set out to face a new world of powers and technologies that might bring good or woe...",
          "post_selection_description": ", reclusive dwarves on the brink of change.",
          "initial_town_name": "Embarkment [str(town_number)]"
       },
@@ -3803,7 +3865,8 @@
                "fluid_control": "Fluid Control",
                "mechanism": "Mechanisms",
                "training_equipment": "Training Equipment",
-               "gizmos": "Gizmos"
+               "gizmos": "Gizmos",
+               "fungi": "Fungi"
             }
          },
          "custom_tooltips": {

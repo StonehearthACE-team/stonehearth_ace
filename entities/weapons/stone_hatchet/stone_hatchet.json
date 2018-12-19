@@ -1,0 +1,90 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(stone_hatchet_equipped.qb)"
+            ]
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(stone_hatchet_iconic.json)"
+      },
+      "stonehearth:equipment_piece": {
+         "slot": "offhand",
+         "render_type": "attach_to_bone",
+         "postures": [
+            "stonehearth:combat",
+            "stonehearth:patrol"
+         ],
+         "ilevel": 5,
+         "roles": [
+            "footman_job"
+         ],
+         "required_job_level": 1,
+         "equip_effect": "stonehearth:effects:weapon_level_up",
+         "equipment_types": [
+            "offhand_weapon"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:buffs": {
+         "inflictable_debuffs": {
+            "out_of_balance": {
+               "uri": "stonehearth_ace:buffs:minor_out_of_balance",
+               "chance": 0.1
+            }
+         }
+      },
+      "stonehearth:combat:weapon_data": {
+         "base_damage": 5,
+         "reach": 1.2
+      },
+      "stonehearth:combat:melee_attacks": [
+         {
+            "name": "combat_1h_forehand",
+            "effect": "combat_1h_forehand",
+            "active_frame": 16,
+            "cooldown": 0,
+            "priority": 0
+         }
+      ],
+      "stonehearth:combat:melee_defenses": [
+         {
+            "name": "simple_shield_block",
+            "effect": "combat_1h_shield_block",
+            "active_frame": 4,
+            "cooldown": 10000,
+            "priority": 0,
+            "chance_of_success": 0.1
+         }
+      ],
+      "stonehearth:net_worth": {
+         "value_in_gold": 2,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 1,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.weapons.stone_hatchet.display_name)",
+         "description": "i18n(stonehearth_ace:entities.weapons.stone_hatchet.description)",
+         "icon": "file(stone_hatchet.png)",
+         "category": "weapons",
+         "material_tags": [
+            "offhand",
+            "stone",
+            "melee_weapon",
+            "stone_hatchet",
+            "crafted",
+            "stockpile_weapon"
+         ]
+      }
+   }
+}

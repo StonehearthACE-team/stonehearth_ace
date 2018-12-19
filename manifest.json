@@ -3,7 +3,6 @@
       "name": "Authorized Community Expansion",
       "namespace": "stonehearth_ace",
       "version": 3,
-      "is_base_mod": true,
       "steam_file_id": "1577375188"
    },
    "author": "The Stonehearth ACE Team",
@@ -49,10 +48,12 @@
       "algae:red:large": "file(entities/algae/red_large_algae/red_large_algae.json)",
       "algae:red:medium": "file(entities/algae/red_medium_algae/red_medium_algae.json)",
       "algae:red:small": "file(entities/algae/red_small_algae/red_small_algae.json)",
+      "armor:giant_bone_shield": "file(entities/armor/giant_bone_shield/giant_bone_shield.json)",
       "armor:iron_helmet": "file(entities/armor/iron_helmet/iron_helmet.json)",
       "armor:iron_platemail": "file(entities/armor/iron_platemail/iron_platemail.json)",
       "armor:legendary:hood": "file(entities/armor/legendary_hood/legendary_hood.json)",
       "armor:legendary:mail": "file(entities/armor/legendary_mail/legendary_mail.json)",
+      "armor:light_giant_bone_shield": "file(entities/armor/light_giant_bone_shield/light_giant_bone_shield.json)",
       "armor:light_iron_shield": "file(entities/armor/light_iron_shield/light_iron_shield.json)",
       "armor:light_steel_shield": "file(entities/armor/light_steel_shield/light_steel_shield.json)",
       "armor:na_bronze_breastplate": "file(entities/armor/na_bronze_breastplate/na_bronze_breastplate.json)",
@@ -828,6 +829,7 @@
       "terrain:pasture_grass:sprouting": "file(entities/terrain/sprouting_pasture_grass/sprouting_pasture_grass.json)",
       "tile:carpet:simple_yellow": "file(entities/tile/carpet/simple_yellow/simple_yellow.json)",
       "tile:fence:simple_wooden": "file(entities/tile/fence/simple_wooden/simple_wooden.json)",
+      "trapper:clamp_trap": "file(jobs/trapper/clamp_trap/clamp_trap.json)",
       "trapper:fish_trap": "file(jobs/trapper/fish_trap/fish_trap.json)",
       "trees:acacia:large:stump": "file(entities/trees/tree_stump/acacia_stump/large_acacia_stump.json)",
       "trees:acacia:small:stump": "file(entities/trees/tree_stump/acacia_stump/small_acacia_stump.json)",
@@ -924,6 +926,10 @@
       "weapons:bronze_hatchet": "file(entities/weapons/bronze_hatchet/bronze_hatchet.json)",
       "weapons:composite_bow": "file(entities/weapons/composite_bow/composite_bow.json)",
       "weapons:crossbow": "file(entities/weapons/crossbow/crossbow.json)",
+      "weapons:giant_bone_hatchet": "file(entities/weapons/giant_bone_hatchet/giant_bone_hatchet.json)",
+      "weapons:giant_bone_pike": "file(entities/weapons/giant_bone_pike/giant_bone_pike.json)",
+      "weapons:giant_bone_short_sword": "file(entities/weapons/giant_bone_short_sword/giant_bone_short_sword.json)",
+      "weapons:giant_bone_sword": "file(entities/weapons/giant_bone_sword/giant_bone_sword.json)",
       "weapons:iron_axe": "file(entities/weapons/iron_axe/iron_axe.json)",
       "weapons:iron_battle_axe": "file(entities/weapons/iron_battle_axe/iron_battle_axe.json)",
       "weapons:iron_hatchet": "file(entities/weapons/iron_hatchet/iron_hatchet.json)",
@@ -996,9 +1002,14 @@
       "weapons:steel_dagger": "file(entities/weapons/steel_dagger/steel_dagger.json)",
       "weapons:steel_lance": "file(entities/weapons/steel_lance/steel_lance.json)",
       "weapons:steel_mace": "file(entities/weapons/steel_mace/steel_mace.json)",
+      "weapons:stone_hatchet": "file(entities/weapons/stone_hatchet/stone_hatchet.json)",
       "weather:foggy:highlands": "file(data/weather/foggy_highlands/foggy_highlands.json)",
       "weather:snow:early": "file(data/weather/snow/snow_early.json)",
-      "weather:snow:late": "file(data/weather/snow/snow_late.json)"
+      "weather:snow:late": "file(data/weather/snow/snow_late.json)",
+	  "loadouts": "file(data/loadouts/loadouts.json)",
+	  "loadouts:rayyas_children": "file(data/loadouts/rc_loadouts.json)",
+	  "loadouts:northern_alliance": "file(data/loadouts/na_loadouts.json)",
+	  "loadouts:mountain_folk": "file(data/loadouts/mf_loadouts.json)"
    },
    "mixintos": {
       "stonehearth:data:constants": "file(data/constants.json)",
@@ -1337,7 +1348,10 @@
       "stonehearth/data/saved_objects/building_templates_index.json": "file(data/saved_objects/building_templates_index.json)",
       "rayyas_children/data/saved_objects/building_templates_index.json": "file(data/saved_objects/rc_building_templates_index.json)",
       "northern_alliance/data/saved_objects/building_templates_index.json": "file(data/saved_objects/na_building_templates_index.json)",
-      "stonehearth:mixins:portals:double_gate": "file(mixins/doors/double_gate.json)"
+      "stonehearth:mixins:portals:double_gate": "file(mixins/doors/double_gate.json)",
+      "stonehearth/entities/crops/pumpkin_crop/pumpkin_crop.json": "file(entities/crops/pumpkin_crop/pumpkin_crop.json)",
+	  "stonehearth:loadouts": "stonehearth_ace:loadouts",
+	  "northern_alliance/data/loadouts/loadouts.json": "stonehearth_ace:loadouts:northern_alliance"
    },
    "overrides": {
       "stonehearth/data/rigs/entities/humans/animations/male/combat_1h_thrust.json": "stonehearth_ace/data/rigs/entities/humans/animations/male/combat_1h_thrust.json",
@@ -1416,7 +1430,9 @@
       "stonehearth/entities/furniture/stone_bed/stone_bed_iconic.qb": "file(entities/furniture/stone_bed/stone_bed_iconic.qb)",
       "stonehearth/entities/furniture/stone_bed/stone_bed.qb": "file(entities/furniture/stone_bed/stone_bed.qb)",
       "stonehearth/entities/furniture/stone_bed/stone_bed.png": "file(entities/furniture/stone_bed/stone_bed.png)",
-      "stonehearth/ui/game/modes/mode_manager.js": "file(ui/game/modes/mode_manager.js)"
+      "stonehearth/ui/game/modes/mode_manager.js": "file(ui/game/modes/mode_manager.js)",
+	  "stonehearth/ui/shell/title/images/foreground.png": "file(ui/shell/title/images/stonehearth_ace_foreground.png)",
+	  "stonehearth/ui/shell/title/images/stonehearth_ace_foreground.png": "file(ui/shell/title/images/stonehearth_ace_foreground.png)"
    },
    "components": {
       "add_stump": "file(components/tree_stump/add_stump.lua)",

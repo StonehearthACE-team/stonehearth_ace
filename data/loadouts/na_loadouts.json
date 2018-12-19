@@ -1,0 +1,74 @@
+{
+   "type": "index",
+   "loadouts": {
+      "mixintypes": {
+         "noble_entourage": "remove"
+      },
+      "hunting_party": {
+         "content": {
+            "archer": {},
+            "cook": {},
+            "jerky": {},
+            "morels": {
+               "ordinal": 3.1,
+               "display_name": "i18n(stonehearth_ace:data.loadouts.items.winter_morel)",
+               "type": "entity",
+               "uri": "stonehearth_ace:food:winter_morel:winter_morel_basket",
+               "icon": "file(images/items/winter_morel_basket.png)",
+               "amount": 5
+            },
+            "thatch": {
+               "ordinal": 3.2,
+               "display_name": "i18n(stonehearth_ace:data.loadouts.items.thatching)",
+               "type": "entity",
+               "uri": "stonehearth_ace:resources:thatch_bale",
+               "icon": "file(images/items/thatching.png)",
+               "amount": 5
+            },
+            "gold": {}
+         }
+      },
+      "merchant_caravan": {
+         "content": {
+            "mixintypes": {},
+            "archer": {},
+            "sweet_potatoes": {}
+         }
+      },
+      "military_expedition": {
+         "ordinal": 3,
+         "content": {
+            "footman": {},
+            "archer": {},
+            "training_dummy": {
+               "uri": "stonehearth_ace:gizmos:stone_training_dummy",
+               "icon": "file(images/items/stone_training_dummy.png)"
+            },
+            "jerky": {},
+            "gold": {}
+         }
+      },
+      "food_for_days": {
+         "content": {
+            "mixintypes": {
+               "thatch": "remove",
+               "carrots": "remove"
+            },
+            "trapper": {},
+            "cook": {},
+            "jerky": {
+               "amount": 15
+            },
+            "sweet_potatoes": {
+               "amount": 15
+            }
+         }
+      },
+      "money_solves_all_problems": {
+         "content": {
+            "mixintypes": {},
+            "sweet_potatoes": {}
+         }
+      }
+   }
+}

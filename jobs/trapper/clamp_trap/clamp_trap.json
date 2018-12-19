@@ -1,0 +1,75 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "render_info": {
+         "scale": 0.09
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(clamp_trap.qb)"
+            ]
+         },
+         "sprung": {
+            "models": [
+               "file(clamp_trap_sprung.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": -0.05, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": 0, "y": 0, "z": 0 },
+               "max": { "x": 1, "y": 2, "z": 1 }
+            }
+         ]
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": 0, "y": 0, "z": 0 },
+               "max": { "x": 1, "y": 1, "z": 1 }
+            }
+         ]
+      },
+      "stonehearth:bait_trap": {
+         "range": 16,
+         "trigger_on_failure_chance": 0.8
+      },
+      "sensor_list": {
+         "sensors": {
+            "interaction_sensor": {
+               "radius": 32
+            }
+         }
+      },
+      "stonehearth:sensor_ai_injector": {
+         "sensor": "interaction_sensor",
+         "ai": {
+            "actions": [
+               "stonehearth:actions:trapping:try_steal_bait",
+               "stonehearth:actions:trapping:trigger_trap"
+            ],
+            "observers": []
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:render_materials": {
+         "hud": "materials/ghost_item.json"
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:jobs.trapper.clamp_trap.display_name)",
+         "description": "i18n(stonehearth_ace:jobs.trapper.clamp_trap.description)",
+         "icon": "file(clamp_trap.png)",
+         "material_tags": [
+            "iron"
+         ]
+      }
+   }
+}

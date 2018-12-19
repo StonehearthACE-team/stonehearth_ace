@@ -6,6 +6,13 @@ local TrappingGroundsComponent = require 'stonehearth.components.trapping.trappi
 
 local AceTrappingGroundsComponent = class()
 
+AceTrappingGroundsComponent._old_load_tuning = TrappingGroundsComponent.load_tuning
+function AceTrappingGroundsComponent:load_tuning(json)
+   self:_old_load_tuning(json)
+   
+   self._trap_types = json.trap_types
+end
+
 AceTrappingGroundsComponent._old_post_activate = TrappingGroundsComponent.post_activate
 function TrappingGroundsComponent:post_activate(entity, json)
    self:_old_post_activate(entity, json)
@@ -122,6 +129,37 @@ function AceTrappingGroundsComponent:_get_spawn_duration()
    local duration = self:_old__get_spawn_duration() * (self._sv.wilderness_modifier or 1)
    
    return duration
+end
+
+function AceTrappingGroundsComponent:_create_set_trap_task()
+   local trap_uri = self._trap_types[self._sv.trapping_grounds_type] or 'stonehearth:trapper:snare_trap'
+   local town = stonehearth.town:get_town(self._entity)
+
+   if self._set_trap_task or self._sv.num_traps >= self.max_traps or not town then
+      return
+   end
+
+   local location = self:_pick_next_trap_location()
+   if not location then
+      return
+   end
+
+   self._set_trap_task = town:create_task_for_group('stonehearth:task_groups:trapping',
+                                                    'stonehearth:trapping:set_bait_trap',
+                                                    {
+                                                       location = location,
+                                                       trap_uri = trap_uri,
+                                                       trapping_grounds = self._entity
+                                                    })
+      :set_source(self._entity)
+      :once()
+      :notify_completed(
+         function ()
+            self._set_trap_task = nil
+            self:_create_set_trap_task() -- keep setting traps serially until done
+         end
+      )
+      :start()
 end
 
 return AceTrappingGroundsComponent
