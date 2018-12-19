@@ -369,24 +369,34 @@
                "description": "Getrocknete und dünn gepresste Algenblätter, die als Kraut verwendet werden können.",
                "flavor": "Es wird auch beim Kochen verwendet!"
             },
+			"parasol_colony_recipe": {
+               "recipe_name": "Sonnenschirmkolonie (x3)",
+               "description": "Verwende vorhandene Pilze, um weitere Kolonien zu bilden, die zu neuen Pilzen heranwachsen.",
+               "flavor": "Sonnenschirme sind im rohen Zustand leicht giftig und dürfen nur als Kochzutat verwendet werden"
+            },
+			"sweet_tooth_colony_recipe": {
+               "recipe_name": "Semmel-Stoppelpilzkolonie (x3)",
+               "description": "Verwende vorhandene Pilze, um weitere Kolonien zu bilden, die zu neuen Pilzen heranwachsen.",
+               "flavor": ""
+            },
             "bolete_colony_recipe": {
                "recipe_name": "Röhrling-Kolonie (x3)",
-               "description": "Verwende vorhandene Pilze, um weitere Kolonien zu bilden, die zu neuen Pilzen heranwachsen können.",
+               "description": "Verwende vorhandene Pilze, um weitere Kolonien zu bilden, die zu neuen Pilzen heranwachsen.",
                "flavor": ""
             },
             "chanterelle_colony_recipe": {
                "recipe_name": "Pfifferling-Kolonie (x3)",
-               "description": "Verwende vorhandene Pilze, um weitere Kolonien zu bilden, die zu neuen Pilzen heranwachsen können.",
+               "description": "Verwende vorhandene Pilze, um weitere Kolonien zu bilden, die zu neuen Pilzen heranwachsen.",
                "flavor": ""
             },
             "winter_morel_colony_recipe": {
                "recipe_name": "Wintermorchel-Kolonie (x3)",
-               "description": "Verwende vorhandene Pilze, um weitere Kolonien zu bilden, die zu neuen Pilzen heranwachsen können.",
+               "description": "Verwende vorhandene Pilze, um weitere Kolonien zu bilden, die zu neuen Pilzen heranwachsen.",
                "flavor": ""
             },
             "desert_truffle_colony_recipe": {
                "recipe_name": "Wüstentrüffel-Kolonie (x3)",
-               "description": "Verwende vorhandene Pilze, um weitere Kolonien zu bilden, die zu neuen Pilzen heranwachsen können.",
+               "description": "Verwende vorhandene Pilze, um weitere Kolonien zu bilden, die zu neuen Pilzen heranwachsen.",
                "flavor": ""
             },
             "legendary_parchment_recipe": {
@@ -1288,6 +1298,10 @@
             "willow_log": {
                "display_name": "Weideholz",
                "description": "Ein Block. Gemacht aus Holz."
+            },
+            "old_wood_log": {
+               "display_name": "Alter Holzblock",
+               "description": "Ein Holzblock. Aus Holz gemacht, wirklich altem Holz."
             }
          },
          "herb": {
@@ -1750,7 +1764,35 @@
                   "description": "Baby-Trauerweide."
                }
             }
-         }
+         },
+         "trunk": {
+            "oak": {
+               "display_name": "Eichenstamm",
+               "description": "Diese große Eiche ist seit langem verschwunden... Ernte ihn für ein paar Holzblöcke!"
+            },
+            "juniper": {
+               "display_name": "Wacholderstamm",
+               "description": "Dieser alte Wacholder ist seit langem verschwunden... Ernte ihn für ein paar Holzblöcke!"
+            },
+            "highland_pine": {
+               "display_name": "Hochlandkiefernstamm",
+               "description": "Diese hohe Hochlandkiefer ist seit langem verschwunden... Ernte ihn für ein paar Holzblöcke!"
+            },
+            "birch": {
+               "display_name": "Birkenstamm",
+               "description": "Diese schöne Birke ist seit langem verschwunden... Ernte sie für ein paar Holzblöcke!"
+            },
+            "pine": {
+               "display_name": "Kiefernstamm",
+               "description": "Diese mächtige Kiefer ist seit langem verschwunden... Ernte sie für ein paar Holzblöcke!"
+            },
+            "old_wood": {
+               "display_name": "Alter Stamm",
+               "description": "Dieser uralte Baum ist seit langem verschwunden ... Das Holz könnte aber trotzdem nützlich sein!"
+            }
+         },
+         "old_stump": "Alter Baumstumpf",
+         "old_stump_description": "Dieser uralte Baumstumpf ist bereits Teil des Waldes selbst. Das Holz könnte aber trotzdem nützlich sein!"
       },
       "furniture": {
          "patrol_point": {
@@ -2553,11 +2595,27 @@
             "catfish_tagine_serving": {
                "display_name": "Eine Portion Katzenfischeintopf"
             }
+         },
+         "sweet_tooth": {
+            "sweet_tooth_basket": {
+               "display_name": "Korb mit Semmel-Stoppelpilzen",
+               "description": "Leckere Pilze die bereit sind gegessen zu werden!"
+            },
+            "sweet_tooth_serving": {
+               "display_name": "Ein Teller mit Semmel-Stoppelpilzen",
+               "description": "Schmeckt wie der Wald!"
+            }
+         },
+         "parasol": {
+            "parasol_basket": {
+               "display_name": "Korb mit Sonnenschirmen",
+               "description": "Dieser Pilz ist im rohen Zustand leicht giftig und kann nur zum Kochen verwendet werden."
+            }
          }
       },
       "terrain": {
          "pasture_grass": {
-            "display_name": "Grass",
+            "display_name": "Gras",
             "description": "Hohes Gras kann von Tieren beweidet oder für den späteren Gebrauch geerntet werden."
          },
          "overgrown_pasture_grass": {
@@ -2671,6 +2729,54 @@
                "winter_morel_developing": {
                   "display_name": "Entwickelnde Wintermorcheln",
                   "description": "Die Pilze breiten sich aus und werden bald groß genug seinh!"
+               }
+            }
+         },
+         "parasol": {
+            "parasol_ghost": {
+               "display_name": "Sonnenschirm",
+               "description": "Ein leckerer, einsamer Pilz. Roh etwas giftig, besser vor dem Essen kochen!"
+            },
+            "colony": {
+               "parasol_colony": {
+                  "display_name": "Sonnenschirmkolonie",
+                  "description": "Kann platziert werden, um zu größeren, essbaren Pilzen zu wachsen"
+               }
+            },
+            "spreading": {
+               "parasol_spreading": {
+                  "display_name": "Ausbreitende Sonnenschirme",
+                  "description": "Die Sporen zerstreuten sich aus der Kolonie und der Pilz beginnen zu wachsen"
+               }
+            },
+            "developing": {
+               "parasol_developing": {
+                  "display_name": "Entwickelnde Sonnenschirme",
+                  "description": "Die Pilze sind weit verbreitet und wird bald groß genug sein!"
+               }
+            }
+         },
+         "sweet_tooth": {
+            "sweet_tooth_ghost": {
+               "display_name": "Semmel-Stoppelpilze",
+               "description": "Leckere und gewöhnliche Waldpilze!"
+            },
+            "colony": {
+               "sweet_tooth_colony": {
+                  "display_name": "Semmel-Stoppelpilzkolonie",
+                  "description": "Kann platziert werden, um zu größeren, essbaren Pilzen zu wachsen"
+               }
+            },
+            "spreading": {
+               "sweet_tooth_spreading": {
+                  "display_name": "Ausbreitende Semmel-Stoppelpilze",
+                  "description": "Die Sporen zerstreuten sich aus der Kolonie und der Pilz beginnen zu wachsen"
+               }
+            },
+            "developing": {
+               "sweet_tooth_developing": {
+                  "display_name": "Entwickelnde Semmel-Stoppelpilze",
+                  "description": "Die Pilze sind weit verbreitet und wird bald groß genug sein!"
                }
             }
          }
@@ -2814,6 +2920,81 @@
          },
          "rc_cloth_padded_helmet": {
             "display_name": "Gepolsterte Wüstenhaube"
+         },
+         "na_bronze_breastplate": {
+            "display_name": "Bronzenes Kettenhemd"
+         },
+         "na_bronze_helm": {
+            "display_name": "Bronzerner Nordhelm"
+         },
+         "na_cloth_padded_helmet": {
+            "display_name": "Gepolsterte Nordhaube"
+         },
+         "na_cloth_padded_vest": {
+            "display_name": "Gepolsterter Wams"
+         },
+         "na_leather_helmet": {
+            "display_name": "Versteckte Kappe"
+         },
+         "na_leather_vest": {
+            "display_name": "Versteckte Weste"
+         },
+         "na_iron_platemail": {
+            "display_name": "Eiserne Brigantine"
+         },
+         "na_iron_helmet": {
+            "display_name": "Eiserner Nordhelm"
+         },
+         "na_iron_mail": {
+            "display_name": "Eisernes Kettenhemd"
+         },
+         "na_iron_helm": {
+            "display_name": "Eiserner Nordhelm"
+         },
+         "na_steel_chainmail": {
+            "display_name": "Stählernes Kettenhemd"
+         },
+         "na_steel_helm": {
+            "display_name": "Stählerner Nordhelm"
+         },
+         "na_steel_helmet": {
+            "display_name": "Stählerner Nordhelm"
+         },
+         "na_steel_mail": {
+            "display_name": "Stählerne Brigantine"
+         },
+         "na_silver_mail": {
+            "display_name": "Silberne Brigantine"
+         },
+         "na_silver_helmet": {
+            "display_name": "Silberner Nordhelm"
+         },
+         "na_bronze_circlet": {
+            "display_name": "Bronzenes Nordarmband"
+         },
+         "na_iron_circlet": {
+            "display_name": "Eisernes Nordarmband"
+         },
+         "na_steel_circlet": {
+            "display_name": "Stählernes Nordarmband"
+         },
+         "na_bronze_shield": {
+            "display_name": "Bronzenes Nordschild"
+         },
+         "na_iron_shield": {
+            "display_name": "Schwerer eiserner Nordschild"
+         },
+         "na_light_iron_shield": {
+            "display_name": "Eiserner Nordschild"
+         },
+         "na_light_steel_shield": {
+            "display_name": "Stählerner Nordschild"
+         },
+         "na_silver_shield": {
+            "display_name": "Schwerer silberner Nordschild"
+         },
+         "na_steel_shield": {
+            "display_name": "Schwerer stählerner Nordschild"
          }
       },
       "weapons": {
@@ -2990,6 +3171,90 @@
          },
          "rc_iron_mace": {
             "display_name": "Eiserner Wüstenstreitkolben"
+         },
+         "na_bow": {
+            "display_name": "Nordbogen"
+         },
+         "na_bronze_axe": {
+            "display_name": "Bronzene Nordaxt"
+         },
+         "na_bronze_crossbow": {
+            "display_name": "Bronzene Nordarmbrust"
+         },
+         "na_bronze_hatchet": {
+            "display_name": "Bronzenes Nordbeil"
+         },
+         "na_bronze_mace": {
+            "display_name": "Bronzener Kriegshammer"
+         },
+         "na_bronze_sword": {
+            "display_name": "Bronzenes Breitschwert"
+         },
+         "na_composite_bow": {
+            "display_name": "Zusammengesetzter Nordbogen"
+         },
+         "na_crossbow": {
+            "display_name": "Nordarmbrust"
+         },
+         "na_iron_axe": {
+            "display_name": "Eiserne Nordaxt"
+         },
+         "na_iron_battle_axe": {
+            "display_name": "Eiserne Nordstreitaxt"
+         },
+         "na_iron_hatchet": {
+            "display_name": "Eisernes Nordbeil"
+         },
+         "na_iron_mace": {
+            "display_name": "Eisernes Kriegshammer"
+         },
+         "na_iron_pike": {
+            "display_name": "Eiserner Nordspeer"
+         },
+         "na_iron_short_sword": {
+            "display_name": "Eisernes Nordkurzschwert"
+         },
+         "na_iron_sword": {
+            "display_name": "Eisernes Breitschwert"
+         },
+         "na_long_bow": {
+            "display_name": "Langer Nordbogen"
+         },
+         "na_long_sword": {
+            "display_name": "Breitschwert"
+         },
+         "na_recurve_bow": {
+            "display_name": "Recurve Nordbogen"
+         },
+         "na_short_sword": {
+            "display_name": "Kurzes Nordschwert"
+         },
+         "na_silver_halberd": {
+            "display_name": "Silberner Nordatgeir"
+         },
+         "na_silver_mace": {
+            "display_name": "Silberner Kriegshammer"
+         },
+         "na_silver_short_sword": {
+            "display_name": "Silbernes Nordkurzschwert"
+         },
+         "na_steel_axe": {
+            "display_name": "Stählerne Nordaxt"
+         },
+         "na_steel_crossbow": {
+            "display_name": "Stählerne Nordarmbrust"
+         },
+         "na_steel_dagger": {
+            "display_name": "Stählerner Nordsax"
+         },
+         "na_steel_lance": {
+            "display_name": "Stählerner Nordspeer"
+         },
+         "na_steel_mace": {
+            "display_name": "Stählerner Kriegshammer"
+         },
+         "na_two_handed_sword": {
+            "display_name": "Zweihänder Claymore"
          }
       },
       "gizmos": {
@@ -3277,6 +3542,38 @@
          "large_ball_clay_boulder": {
             "display_name": "Riesiges Stück Kugellehm",
             "description": "Erntbar für viele Kugellehmhügel"
+         },
+         "feldspar_boulder": {
+            "large": {
+               "display_name": "Riesiger Feldspatbrocken",
+               "description": "Ernte für viele Feldspatsteine, die zur Herstellung von Porzellan benötigt werden"
+            },
+            "medium": {
+               "display_name": "Mittlerer Feldspatbrocken",
+               "description": "Ernte für einige Feldspatsteine, die zur Herstellung von Porzellan benötigt werden"
+            },
+            "small": {
+               "display_name": "Kleiner Feldspatbrocken",
+               "description": "Ernte für ein paar Feldspatsteine, die zur Herstellung von Porzellan benötigt werden"
+            }
+         },
+         "marble_boulder": {
+            "large": {
+               "display_name": "Riesiger Marmorbrocken",
+               "description": "Ernte für viele Marmorsteine, die der Steinmetz für feine Möbel verwendet"
+            },
+            "medium": {
+               "display_name": "Mittlerer Marmorbrocken",
+               "description": "Ernte für einige Marmorsteine, die der Steinmetz für feine Möbel verwendet"
+            },
+            "small": {
+               "display_name": "Kleiner Marmorbrocken",
+               "description": "Ernte für ein paar Marmorsteine, die der Steinmetz für feine Möbel verwendet"
+            }
+         },
+         "large_forest_boulder": {
+            "display_name": "Großer Felsbrocken",
+            "description": "Erntbar für Steine"
          }
       },
       "vines": {

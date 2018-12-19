@@ -1,0 +1,28 @@
+{
+   "type": "recipe",
+   "effort": 30,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.herbalist.recipes.sweet_tooth_colony_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.sweet_tooth_colony_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.sweet_tooth_colony_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/fungi/sweet_tooth/colony/sweet_tooth_colony.png",
+   "workshop": "stonehearth:herbalist:workbench",
+   "level_requirement": 1,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:fungi:sweet_tooth",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:fungi:sweet_tooth:colony"
+      },
+      {
+         "item": "stonehearth_ace:fungi:sweet_tooth:colony"
+      },
+      {
+         "item": "stonehearth_ace:fungi:sweet_tooth:colony"
+      }
+   ]
+}

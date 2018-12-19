@@ -1,0 +1,46 @@
+{
+   "mixins": "stonehearth:mixins:food_decay",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(parasol_basket.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0.05 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 3,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 1,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.parasol.parasol_basket.display_name)",
+         "description": "i18n(stonehearth_ace:entities.food.parasol.parasol_basket.description)",
+         "icon": "file(parasol_basket.png)",
+         "is_item": true,
+         "category": "food",
+         "material_tags": [
+            "raw_food",
+            "fungi",
+            "parasol",
+            "cooking_ingredient",
+            "stockpile_raw_food"
+         ],
+         "subject_override": "stonehearth_ace:fungi:parasol"
+      },
+      "stonehearth:appeal": {
+         "appeal": 0
+      }
+   }
+}

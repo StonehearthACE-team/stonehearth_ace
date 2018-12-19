@@ -1,0 +1,63 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "render_info": {
+         "scale": 0.1
+      },
+      "stonehearth:evolve": {},
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(parasol_colony_iconic.json)",
+         "ghost_form": "file(parasol_colony_ghost.json)",
+         "placeable_on_ground": true,
+         "hide_undeploy_ui": true
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(../../../../../stonehearth/entities/plants/dirt_pile/dirt_pile_1.qb)",
+                     "file(../../../../../stonehearth/entities/plants/dirt_pile/dirt_pile_2.qb)",
+                     "file(../../../../../stonehearth/entities/plants/dirt_pile/dirt_pile_3.qb)"
+                  ]
+               }
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": -0.075, "y": 0, "z": 0.075 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "mob_collision_type": "clutter"
+      }
+   },
+   "entity_data": {
+      "stonehearth:evolve_data": {
+         "next_stage": "stonehearth_ace:fungi:parasol:spreading",
+         "evolve_time": "8h+4h"
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 2,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true,
+            "shopkeeper_level": 1,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.fungi.parasol.colony.parasol_colony.display_name)",
+         "description": "i18n(stonehearth_ace:entities.fungi.parasol.colony.parasol_colony.description)",
+         "icon": "file(parasol_colony.png)",
+         "category": "fungi",
+         "material_tags": [
+            "stockpile_fungi",
+            "fungi",
+            "resource",
+            "fungi_colony"
+         ]
+      }
+   }
+}

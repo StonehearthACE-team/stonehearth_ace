@@ -369,6 +369,16 @@
                "description": "Dry and press thin sheets of algae that can be used as a herb.",
                "flavor": "It is also used in cooking!"
             },
+			"parasol_colony_recipe": {
+               "recipe_name": "Parasol Colony (x3)",
+               "description": "Use existing fungus to create more colonies to grow into new fungi.",
+               "flavor": "Parasols are slightly toxic when raw and must only be used as a cooking ingredient"
+            },
+			"sweet_tooth_colony_recipe": {
+               "recipe_name": "Sweet Tooth Colony (x3)",
+               "description": "Use existing fungus to create more colonies to grow into new fungi.",
+               "flavor": ""
+            },
             "bolete_colony_recipe": {
                "recipe_name": "Bolete Colony (x3)",
                "description": "Use existing fungus to create more colonies to grow into new fungi.",
@@ -1288,6 +1298,10 @@
             "willow_log": {
                "display_name": "Willow Log",
                "description": "A log. Made of wood."
+            },
+            "old_wood_log": {
+               "display_name": "Old Wood Log",
+               "description": "A log. Made of wood, really old wood."
             }
          },
          "herb": {
@@ -1750,7 +1764,35 @@
                   "description": "Babe Willow tree."
                }
             }
-         }
+         },
+         "trunk": {
+            "oak": {
+               "display_name": "Oak Trunk",
+               "description": "This large oak has been gone for a while... Harvest it for some logs!"
+            },
+            "juniper": {
+               "display_name": "Juniper Trunk",
+               "description": "This old juniper has been gone for a while... Harvest it for some logs!"
+            },
+            "highland_pine": {
+               "display_name": "Highland Pine Trunk",
+               "description": "This tall highland pine has been gone for a while... Harvest it for some logs!"
+            },
+            "birch": {
+               "display_name": "Birch Trunk",
+               "description": "This fair birch has been gone for a while... Harvest it for some logs!"
+            },
+            "pine": {
+               "display_name": "Pine Trunk",
+               "description": "This mighty pine has been gone for a while... Harvest for some logs!"
+            },
+            "old_wood": {
+               "display_name": "Old Trunk",
+               "description": "This ancient tree has been gone for a long, long time... The wood might still be useful, though!"
+            }
+         },
+         "old_stump": "Old Tree Stump",
+         "old_stump_description": "This ancient stump is already part of the forest itself... The wood might still be useful, though!"
       },
       "furniture": {
          "patrol_point": {
@@ -2553,6 +2595,22 @@
             "catfish_tagine_serving": {
                "display_name": "Serving of Catfish Tagine"
             }
+         },
+         "sweet_tooth": {
+            "sweet_tooth_basket": {
+               "display_name": "Basket of Sweet Teeth",
+               "description": "Delicious mushrooms ready to be eaten!"
+            },
+            "sweet_tooth_serving": {
+               "display_name": "Serving of Sweet Teeth",
+               "description": "Tastes like the forest!"
+            }
+         },
+         "parasol": {
+            "parasol_basket": {
+               "display_name": "Basket of Parasol",
+               "description": "This mushroom is slightly toxic when raw and can only be used in cooking."
+            }
          }
       },
       "terrain": {
@@ -2670,6 +2728,54 @@
             "developing": {
                "winter_morel_developing": {
                   "display_name": "Developing Winter Morels",
+                  "description": "The fungi are sprawling and will soon be large enough!"
+               }
+            }
+         },
+         "parasol": {
+            "parasol_ghost": {
+               "display_name": "Parasol",
+               "description": "A tasty, lonely mushroom. Slightly toxic when raw, better to cook before eating!"
+            },
+            "colony": {
+               "parasol_colony": {
+                  "display_name": "Colony of Parasols",
+                  "description": "Can be placed to grow into larger, edible mushrooms"
+               }
+            },
+            "spreading": {
+               "parasol_spreading": {
+                  "display_name": "Spreading Parasol",
+                  "description": "The spores have dispersed from the colony and the mushroom started growing"
+               }
+            },
+            "developing": {
+               "parasol_developing": {
+                  "display_name": "Developing Parasol",
+                  "description": "The fungus is sprawling and will soon be large enough!"
+               }
+            }
+         },
+         "sweet_tooth": {
+            "sweet_tooth_ghost": {
+               "display_name": "Sweet Teeth",
+               "description": "Delicious and common woodland mushrooms!"
+            },
+            "colony": {
+               "sweet_tooth_colony": {
+                  "display_name": "Colony of Sweet Teeth",
+                  "description": "Can be placed to grow into larger, edible mushrooms"
+               }
+            },
+            "spreading": {
+               "sweet_tooth_spreading": {
+                  "display_name": "Spreading Sweet Teeth",
+                  "description": "The spores have dispersed from the colony and the mushrooms started growing"
+               }
+            },
+            "developing": {
+               "sweet_tooth_developing": {
+                  "display_name": "Developing Sweet Teeth",
                   "description": "The fungi are sprawling and will soon be large enough!"
                }
             }
@@ -3464,6 +3570,10 @@
                "display_name": "Small Marble Boulder",
                "description": "Harvestable for a bit of marble stone used by a mason for fine furniture"
             }
+         },
+         "large_forest_boulder": {
+            "display_name": "Large Boulders",
+            "description": "Harvestable for stone"
          }
       },
       "vines": {

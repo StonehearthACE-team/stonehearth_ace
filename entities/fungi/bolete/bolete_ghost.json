@@ -3,7 +3,7 @@
    "type": "entity",
    "components": {
       "render_info": {
-         "scale": 0.1
+         "scale": 0.11
       },
       "model_variants": {
          "default": {
@@ -24,7 +24,9 @@
          "description": "i18n(stonehearth_ace:entities.fungi.bolete.bolete_ghost.description)",
          "icon": "file(bolete.png)",
          "category": "fungi",
-         "material_tags":["stockpile_fungi"]
+         "material_tags": [
+            "stockpile_fungi"
+         ]
       }
    }
 }

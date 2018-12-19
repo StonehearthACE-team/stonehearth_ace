@@ -22,7 +22,7 @@
          "default": {
             "satisfaction": 45
          },
-         "quality": 6
+         "quality": 3
       },
       "stonehearth:net_worth": {
          "value_in_gold": 0,
@@ -37,7 +37,10 @@
          "icon": "file(fish_big_roe_serving.png)",
          "is_item": true,
          "category": "food",
-         "material_tags":["food", "carnivore"],
+         "material_tags": [
+            "food",
+            "carnivore"
+         ],
          "subject_override": "stonehearth_ace:fish:big"
       }
    }
