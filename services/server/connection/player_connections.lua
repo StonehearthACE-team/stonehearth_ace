@@ -304,7 +304,7 @@ function PlayerConnections:_add_entity_to_graphs(entity_struct, only_type, entit
          graphs_changed[type] = type_graphs
 
          -- find the best connections for all connectors of this type
-         local possible_connections = self:_find_best_potential_connections(connection)
+         local possible_connections = self:_find_best_potential_connections(connection, entity_id_to_ignore)
          --log:debug('possible connections for %s[%s]: %s', entity_struct.entity, type, radiant.util.table_tostring(possible_connections))
 
          -- go through in order (resulting sequence is sorted)
