@@ -1,0 +1,47 @@
+{
+   "mixins": "stonehearth_ace:mixins:fence:simple_fence",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(post.qb)"
+            ]
+         }
+      },
+      "stonehearth_ace:fence": {
+         "joiner_model_offset": {"x": -2, "y": -12, "z": 1},
+         "scale": 0.1,
+         "thresholds": [
+            {
+               "threshold": 1,
+               "model": "file(joiner_short.qb)",
+               "collision_region": [
+                  {
+                     "min": { "x": 0.7, "y": 0, "z": 0.3 },
+                     "max": { "x": 0.9, "y": 2, "z": 0.7 }
+                  }
+               ]
+            },
+            {
+               "threshold": 0.5,
+               "model": "file(joiner_medium.qb)",
+               "collision_region": [
+                  {
+                     "min": { "x": 0.7, "y": 0, "z": 0.3 },
+                     "max": { "x": 1.3, "y": 2, "z": 0.7 }
+                  }
+               ]
+            }
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.fence.simple_wooden.display_name)",
+         "description": "i18n(stonehearth_ace:entities.fence.simple_wooden.description)"
+      },
+      "stonehearth:appeal": {
+         "appeal": 2
+      }
+   }
+}

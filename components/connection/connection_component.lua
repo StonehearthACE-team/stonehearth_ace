@@ -118,8 +118,8 @@ end
 -- this is called by the connection service when this entity has any of its connectors change status
 -- it may be called with just the type and conn_name to initialize the data structures
 -- it may be called with just the type and the graph_id when it changes graphs and needs all connectors for that type to update graph_id
-function ConnectionComponent:set_connected_stats(type, conn_name, connected_to_id, graph_id)
-   --log:debug('[%s]:set_connected_stats(%s, %s, %s, %s)', self._entity, type, conn_name or 'NIL', connected_to_id or 'NIL', graph_id or 'NIL')
+function ConnectionComponent:set_connected_stats(type, conn_name, connected_to_id, graph_id, threshold)
+   log:debug('[%s]:set_connected_stats(%s, %s, %s, %s, %s)', self._entity, type, conn_name or 'NIL', connected_to_id or 'NIL', graph_id or 'NIL', threshold or 'NIL')
    local type_data = self._sv.connected_stats[type]
    if not type_data then
       type_data = {connectors = {}, num_connections = 0, max_connections = self._connections[type].max_connections}
@@ -135,9 +135,9 @@ function ConnectionComponent:set_connected_stats(type, conn_name, connected_to_i
 
       if connected_to_id then
          local new_status = (graph_id ~= nil)
-         local prev_status = (conn_data.connected_to[connected_to_id] ~= nil)
-         conn_data.connected_to[connected_to_id] = graph_id
-         if prev_status ~= new_status then
+         local prev_status = conn_data.connected_to[connected_to_id]
+         conn_data.connected_to[connected_to_id] = graph_id and {graph_id = graph_id, threshold = threshold or prev_status.threshold}
+         if (prev_status ~= nil) ~= new_status then
             local conn_modifier = (new_status and 1) or -1
             conn_data.num_connections = conn_data.num_connections + conn_modifier
             type_data.num_connections = type_data.num_connections + conn_modifier
@@ -145,8 +145,12 @@ function ConnectionComponent:set_connected_stats(type, conn_name, connected_to_i
       end
    elseif graph_id then
       for name, connector in pairs(type_data.connectors) do
-         for id, _ in pairs(connector.connected_to) do
-            connector.connected_to[id] = graph_id
+         for id, prev_status in pairs(connector.connected_to) do
+            threshold = threshold or 0
+            if radiant.util.is_a(prev_status, 'table') then
+               threshold = prev_status.threshold
+            end
+            connector.connected_to[id] = {graph_id = graph_id, threshold = threshold}
          end
       end
    end

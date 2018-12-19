@@ -17,56 +17,55 @@ function EntityModificationComponent:initialize()
 	end
 end
 
-function EntityModificationComponent:set_region3s(component_name, regions)
-	-- if we weren't passed a key to our own values, assume we were passed [an array of] Region3 objects
-	regions = self._json_values[regions] or regions
-	local region3s = nil
-	if regions then
-		region3s = {}
-		-- first check if it's an array; if not, make it one
-		-- can't do a simple table type check because you could be passing in a json region
-		if radiant.util.is_a(regions, Cube3) or radiant.util.is_a(regions, Region3)
-				or regions.get and type(regions.get) == 'function' then
-			regions = { regions }
-		end
-
-		for _, r in pairs(regions) do
-			if radiant.util.is_a(r, Cube3) then
-				table.insert(region3s, Region3(r))
-			elseif radiant.util.is_a(r, Region3) then
-				table.insert(region3s, r)
-			elseif r.get and type(r.get) == 'function' then
-				-- assume that this is a a c++ Region3 if it has .get(), rather than having to do the following check:
-				-- if radiant.util.typename(r) == 'class radiant::dm::Boxed<class radiant::csg::Region<double,3>,1026>' then
-				table.insert(region3s, r:get())
-			else
-				local cube = radiant.util.to_cube3(r)
-				if cube then
-					table.insert(region3s, Region3(cube))
-				end
-			end
-		end
+function EntityModificationComponent:set_region3(component_name, region, add)
+	-- if we weren't passed a key to our own values, assume we were passed a Region3 object or something that can be converted into one
+	region = self._json_values[region] or region
+	local r3 = nil
+	if region then
+		if radiant.util.is_a(region, Cube3) then
+         r3 = Region3(region)
+      elseif radiant.util.is_a(region, Region3) then
+         r3 = Region3()
+         r3:copy_region(region)
+      elseif region.get and type(region.get) == 'function' then
+         -- assume that this is a a c++ Region3 if it has .get(), rather than having to do the following check:
+         -- if radiant.util.typename(r) == 'class radiant::dm::Boxed<class radiant::csg::Region<double,3>,1026>' then
+         r3 = Region3()
+         r3:copy_region(region:get())
+      elseif radiant.util.is_a(region, 'table') then
+         r3 = Region3()
+         for _, c in pairs(region) do
+            local cube = radiant.util.to_cube3(c)
+            if cube then
+               r3:add_cube(cube)
+            end
+         end
+      end
 	end
 	
-	if region3s then
+   if r3 then
 		local component = self._entity:add_component(component_name)
-		if component then
-			component:set_region(_radiant.sim.alloc_region3())
-				:get_region():modify(function(cursor)
-               cursor:clear()   
-               for _, r in pairs(region3s) do
-                  -- does this work? does copy_region just replace all existing regions?
-                  cursor:copy_region(r)
-               end
-            end)
+      if component then
+         local comp_region = component:get_region()
+         local prev_region
+         if add then
+            region = comp_region and comp_region:get()
+            if region then
+               r3:add_region(region)
+            end
+         end
+         component:set_region(_radiant.sim.alloc_region3())
+         component:get_region():modify(function(cursor)
+            cursor:copy_region(r3)
+         end)
 		end
 	end
 end
 
-function EntityModificationComponent:reset_region3s(component_name)
+function EntityModificationComponent:reset_region3(component_name)
 	local json = radiant.entities.get_component_data(self._entity, component_name)
 	if json then
-		self:set_region3s(component_name, json.region)
+		self:set_region3(component_name, json.region)
 	end
 end
 

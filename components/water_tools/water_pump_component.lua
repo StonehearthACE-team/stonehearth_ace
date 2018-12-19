@@ -66,10 +66,10 @@ function WaterPumpComponent:_startup()
 	end
 	if not self._sv._pump_child_entity then
 		-- if we don't already have a child entity for this pump, create it
-		self._entity:add_component('stonehearth_ace:entity_modification'):set_region3s('region_collision_shape', 'region_with_topper')
+		self._entity:add_component('stonehearth_ace:entity_modification'):set_region3('region_collision_shape', 'region_with_topper')
 		self._sv._pump_child_entity = radiant.entities.create_entity('stonehearth_ace:gizmos:water_pump_topper', { owner = self._entity })
 		if self._sv.topper_region then
-			self._sv._pump_child_entity:add_component('stonehearth_ace:entity_modification'):set_region3s('region_collision_shape', self._sv.topper_region)
+			self._sv._pump_child_entity:add_component('stonehearth_ace:entity_modification'):set_region3('region_collision_shape', self._sv.topper_region)
 		end
 		radiant.terrain.place_entity_at_exact_location(self._sv._pump_child_entity, self._sv.location)
 		self.__saved_variables:mark_changed()
@@ -88,7 +88,7 @@ function WaterPumpComponent:_shutdown()
 	if self._sv._pump_child_entity then
 		radiant.entities.destroy_entity(self._sv._pump_child_entity)
 		self._sv._pump_child_entity = nil
-		self._entity:add_component('stonehearth_ace:entity_modification'):reset_region3s('region_collision_shape')
+		self._entity:add_component('stonehearth_ace:entity_modification'):reset_region3('region_collision_shape')
 	end
 	self._sv.location = nil
 	self.__saved_variables:mark_changed()

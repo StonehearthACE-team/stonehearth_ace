@@ -1,47 +1,25 @@
 {
    "components": {
       "stonehearth_ace:connection": {
-         "stonehearth_ace:tile:fence:simple": {
+         "stonehearth_ace:fence:simple": {
             "connectors": {
                "x-": {
                   "region": [
                      {
-                        "min": { "x": -3, "y": 0, "z": 0 },
-                        "max": { "x": 0, "y": 1, "z": 1 }
+                        "min": { "x": -2, "y": 0, "z": 0 },
+                        "max": { "x": -1, "y": 1, "z": 1 }
                      }
                   ],
-                  "region_intersection_threshold": 1,
-                  "max_connections": 1
+                  "max_connections": 3
                },
                "x+": {
                   "region": [
                      {
-                        "min": { "x": 1, "y": 0, "z": 0 },
-                        "max": { "x": 4, "y": 1, "z": 1 }
+                        "min": { "x": 2, "y": 0, "z": 0 },
+                        "max": { "x": 3, "y": 1, "z": 1 }
                      }
                   ],
-                  "region_intersection_threshold": 1,
-                  "max_connections": 1
-               },
-               "x-z": {
-                  "region": [
-                     {
-                        "min": { "x": -2, "y": 0, "z": -1 },
-                        "max": { "x": -1, "y": 1, "z": 2 }
-                     }
-                  ],
-                  "region_intersection_threshold": 1,
-                  "max_connections": 2
-               },
-               "x+z": {
-                  "region": [
-                     {
-                        "min": { "x": 2, "y": 0, "z": -1 },
-                        "max": { "x": 3, "y": 2, "z": 2 }
-                     }
-                  ],
-                  "region_intersection_threshold": 1,
-                  "max_connections": 1
+                  "max_connections": 3
                }
             },
             "max_connections": 6
