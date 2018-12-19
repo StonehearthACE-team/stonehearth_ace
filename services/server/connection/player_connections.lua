@@ -80,8 +80,10 @@ function PlayerConnections:get_connections_data(type)
    return entities
 end
 
-function PlayerConnections:_update_entity_changes_connector(entity, type, conn_name, connected_to_id, graph_id)
-   entity:get_component('stonehearth_ace:connection'):set_connected_stats(type, conn_name, connected_to_id, graph_id)
+function PlayerConnections:_update_entity_changes_connector(entity, type, conn_name, connected_to_id, graph_id, threshold)
+   if entity and entity:is_valid() then
+      entity:get_component('stonehearth_ace:connection'):set_connected_stats(type, conn_name, connected_to_id, graph_id, threshold)
+   end
 end
 
 function PlayerConnections:update_entity(entity_id, add_only)
@@ -301,18 +303,23 @@ function PlayerConnections:_add_entity_to_graphs(entity_struct, only_type, entit
          local type_graphs = {}
          graphs_changed[type] = type_graphs
 
-         for _, id in pairs(connection.connectors) do
+         -- find the best connections for all connectors of this type
+         local possible_connections = self:_find_best_potential_connections(connection)
+         --log:debug('possible connections for %s[%s]: %s', entity_struct.entity, type, radiant.util.table_tostring(possible_connections))
+
+         -- go through in order (resulting sequence is sorted)
+         for _, possible_connection in ipairs(possible_connections) do
             if connection.num_connections >= connection.max_connections then
                break
             end
 
-            local connector = self:get_entity_connector(id)
-            if connector.num_connections < connector.max_connections then
-               local changes = self:_try_connecting_connector(conn_tbl, connection, connector, entity_id_to_ignore)
-               if changes and next(changes) then
-                  combine_tables(type_graphs, changes)
-                  changed_types[type] = true
-               end
+            local changes = self:_try_connecting_connectors(possible_connection)
+            if changes and next(changes) then
+               combine_tables(type_graphs, changes)
+               changed_types[type] = true
+      
+               conn_tbl.entities_in_graphs[possible_connection.connector.entity_id] = true
+               conn_tbl.entities_in_graphs[possible_connection.target_connector.entity_id] = true
             end
          end
       end
@@ -379,39 +386,14 @@ function PlayerConnections:_remove_entity_from_graphs(entity_struct)
    return changed_types, graphs_changed
 end
 
-function PlayerConnections:_try_connecting_connector(conn_tbl, connection, connector, entity_id_to_ignore)
-   local entity_struct = self._entities[connector.entity_id]
-   local potential_connectors = self:_find_best_potential_connectors(connector, entity_id_to_ignore)
-   local graphs_changed = {}
-
-   for _, target_connector in ipairs(potential_connectors) do
-      if connector.num_connections >= connector.max_connections or connection.num_connections >= connection.max_connections then
-         return graphs_changed
-      end
-
-      local target = target_connector.connector
-      local changes = self:_try_connecting_connectors(connector, target)
-      if changes then
-         combine_tables(graphs_changed, changes)
-
-         if next(changes) then
-            local target_entity_struct = self._entities[target.entity_id]
-            local target_connection = target_entity_struct.connections[target.connection]
-
-            conn_tbl.entities_in_graphs[connector.entity_id] = true
-            conn_tbl.entities_in_graphs[target.entity_id] = true
-         end
-      end
-   end
-
-   return graphs_changed
-end
-
 -- return value:
 --    nil if the connectors can't be connected for a technical/error reason (the connectors are the same, or are part of the same entity, or are of different types)
 --    false if the connectors can't be connected for normal reason (their entities are already connected, or a max_connections has been reached)
 --    true if the connection succeeds
-function PlayerConnections:_try_connecting_connectors(c1, c2)
+function PlayerConnections:_try_connecting_connectors(potential_connection)
+   local c1 = potential_connection.connector
+   local c2 = potential_connection.target_connector
+   
    if c1 == c2 then
       return nil
    end
@@ -473,11 +455,12 @@ function PlayerConnections:_try_connecting_connectors(c1, c2)
       graph_entity_2.connected_nodes[e1.id] = true
 
       local graph = nil
-      if #graphs_to_merge == 0 then
+      if #graphs_to_merge > 0 then
+         graph = graphs[graphs_to_merge[1]]
+      end
+      if not graph then
          graph = stonehearth_ace.connection:_create_new_graph(conn1.type, self._sv.player_id)
          graph_indexes[graph.id] = true
-      else
-         graph = graphs[graphs_to_merge[1]]
       end
       graphs_changed[graph.id] = true
 
@@ -485,7 +468,7 @@ function PlayerConnections:_try_connecting_connectors(c1, c2)
       for i = #graphs_to_merge, 2, -1 do
          local graph_id = graphs_to_merge[i]
          --log:debug('merging graphs %s and %s', graph_id, graph.id)
-         for id, node in pairs(graphs[graph_id].nodes) do
+         for id, node in pairs(graphs[graph_id] and graphs[graph_id].nodes or {}) do
             graph.nodes[id] = node
             self:_update_entity_changes_connector(self._entities[id].entity, conn1.type, nil, nil, graph.id)
          end
@@ -507,8 +490,8 @@ function PlayerConnections:_try_connecting_connectors(c1, c2)
       conn2.num_connections = conn2.num_connections + 1
 
       --log:debug('connecting entities')
-      self:_update_entity_changes_connector(e1.entity, conn1.type, c1.name, c2.id, graph.id)
-      self:_update_entity_changes_connector(e2.entity, conn1.type, c2.name, c1.id, graph.id)
+      self:_update_entity_changes_connector(e1.entity, conn1.type, c1.name, c2.id, graph.id, potential_connection.this_rank)
+      self:_update_entity_changes_connector(e2.entity, conn1.type, c2.name, c1.id, graph.id, potential_connection.target_rank)
 
       return graphs_changed
    end
@@ -623,13 +606,33 @@ function PlayerConnections:_is_deep_connected(graph, n1, n2, checked)
          return true
       end
       if not checked[n_id] then
-         if self:_is_deep_connected(graph, graph.nodes[n_id], n2, checked) then
+         local node = graph.nodes[n_id]
+         if node and self:_is_deep_connected(graph, node, n2, checked) then
             return true
          end
       end
    end
 
    return false
+end
+
+function PlayerConnections:_find_best_potential_connections(connection, entity_id_to_ignore)
+   local result = {}
+   if connection.num_connections < connection.max_connections then
+      for _, connector_id in pairs(connection.connectors) do
+         local connector = self:get_entity_connector(connector_id)
+         if connector.num_connections < connector.max_connections then
+            local potential_connectors = self:_find_best_potential_connectors(connector, entity_id_to_ignore)
+            for _, conn in ipairs(potential_connectors) do
+               table.insert(result, conn)
+            end
+         end
+      end
+   end
+
+   table.sort(result, function(a, b) return a.this_rank > b.this_rank end)
+
+   return result
 end
 
 function PlayerConnections:_find_best_potential_connectors(connector, entity_id_to_ignore)
@@ -649,7 +652,8 @@ function PlayerConnections:_find_best_potential_connectors(connector, entity_id_
             --log:debug('conn %s: %s, %s', id, conn.connection.entity_struct.id, connection.entity_struct.id)
             if conn.entity_id ~= connector.entity_id
                   and conn.entity_id ~= entity_id_to_ignore
-                  and conn.num_connections < conn.max_connections and conn.trans_region then
+                  and conn.num_connections < conn.max_connections
+                  and conn.trans_region then
                
                local intersection = r:intersect_region(conn.trans_region):get_area()
                --log:debug('checking intersection of connection regions %s and %s', connector.trans_region:get_bounds(), conn.trans_region:get_bounds())
@@ -660,7 +664,7 @@ function PlayerConnections:_find_best_potential_connectors(connector, entity_id_
                   --log:debug('they intersect! %s and %s', rank_connector, rank_conn)
                   -- the rank has to meet the threshold for each connector
                   if rank_connector >= connector.region_intersection_threshold and rank_conn >= conn.region_intersection_threshold then
-                     table.insert(result, {connector = conn, rank = rank_connector})
+                     table.insert(result, {connector = connector, target_connector = conn, this_rank = rank_connector, target_rank = rank_conn})
                   end
                end
             end
@@ -669,7 +673,7 @@ function PlayerConnections:_find_best_potential_connectors(connector, entity_id_
    end
 
    table.sort(result, function(v1, v2)
-      return v1.rank < v2.rank
+      return v1.this_rank > v2.this_rank
    end)
    return result
 end

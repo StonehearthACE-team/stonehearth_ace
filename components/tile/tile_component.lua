@@ -220,7 +220,7 @@ function TileComponent:_update()
       if region then
          local origin = self._entity:get_component('mob'):get_region_origin()
          region = region:translated(-origin):rotated(rotation):translated(origin)
-         self._entity:add_component('stonehearth_ace:entity_modification'):set_region3s('region_collision_shape', region)
+         self._entity:add_component('stonehearth_ace:entity_modification'):set_region3('region_collision_shape', region)
       end
    end
    self.__saved_variables:mark_changed()

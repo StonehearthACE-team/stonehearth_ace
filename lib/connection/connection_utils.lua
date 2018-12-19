@@ -107,8 +107,8 @@ function connection_utils._update_entity_connection_data(data, stats)
             these_conns.max_connections = connector.max_connections
 
             if connector.connected_to then
-               for to_id, graph_id in pairs(connector.connected_to) do
-                  these_conns.connected_to[to_id] = graph_id
+               for to_id, info in pairs(connector.connected_to) do
+                  these_conns.connected_to[to_id] = info
                end
             end
          end
