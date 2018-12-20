@@ -319,12 +319,14 @@
             "watermelon": "Watermelons",
             "winter_morel": "Morels",
             "training_dummy": "Dummy",
-            "comfy_bed": "Bed"
+            "comfy_bed": "Bed",
+            "roast_venison": "Venison",
+            "training_target": "Targets"
          },
          "military_expedition": {
             "display_name": "Military Expedition",
-            "description": "The hearthlings might sleep out in the cold and lack some food variety during the first days... But it is doubtful that any pesky wolves or goblins will ruin their party later on!",
-            "tooltip": "A military focused loadout for those that prefer to ensure their safety early on."
+            "description": "These hearthlings might sleep out in the cold and lack some food variety during the first days, true... But it is doubtful that any pesky wolves or goblins will ruin their days later on!",
+            "tooltip": "A military focused loadout for those that prefer to ensure their safety before everything else."
          },
          "noble_entourage": {
             "display_name": "Noble Entourage",
@@ -792,6 +794,22 @@
             "blacksmith_forge_advanced_ghost": {
                "display_name": "Enhanced Blacksmith Furnace",
                "description": "An improved and more efficient oven for smelting metals."
+            }
+         },
+         "blacksmith_description": {
+            "level_1_data": {
+               "perk_000_name": "Early Metalworks",
+               "perk_000_description": "The Blacksmith will need to master smelting basic ores before they can work bronze from the crucible and iron into an anvil."
+            },
+            "level_2_data": {
+               "perk_000_name": "Bronze & Iron Age!",
+               "perk_000_description": "The Blacksmith is now skilled enough to build an anvil, a crucible and forge heavy items made of bronze and iron.",
+               "perk_001_name": "Mastering the Fire!",
+               "perk_001_description": "The Blacksmith has acquired enough knowledge on forges to start producing their own fuels and facilities."
+            },
+            "level_4_data": {
+               "perk_000_name": "Enhanced Tools & Cold Steel",
+               "perk_000_description": "Long hours at the forge have given the Blacksmith ideas on new and improved facilities that would unlock the secret of steel: sharper weapons and lighter armor."
             }
          }
       },
@@ -3337,7 +3355,7 @@
          },
          "target_training": {
             "display_name": "Archery Target",
-            "description": "Less dangerous than shooting apples on someone's head. Requires an engineer for repairs."
+            "description": "Less dangerous than apples on someone's head. Requires an engineer for repairs."
          },
          "axle_vertical": {
             "description": "A rotating shaft that can take mechanical power vertically.",
@@ -3373,15 +3391,15 @@
             "description": "Combat party members will prioritize patrolling between these banners."
          },
          "stone_target_training": {
-            "description": "Less dangerous than shooting apples on someone's head. Requires an engineer for repairs.",
+            "description": "Less dangerous than apples on someone's head. Requires an engineer for repairs.",
             "display_name": "Stone Archery Target"
          },
          "clay_target_training": {
-            "description": "Less dangerous than shooting apples on someone's head. Requires an engineer for repairs.",
+            "description": "Less dangerous than apples on someone's head. Requires an engineer for repairs.",
             "display_name": "Clay Archery Target"
          },
          "brass_target_training": {
-            "description": "Less dangerous than shooting apples on someone's head. Requires an artificer for repairs.",
+            "description": "Less dangerous than apples on someone's head. Requires an engineer for repairs.",
             "display_name": "Brass Archery Target"
          },
          "stone_dummy_training": {
