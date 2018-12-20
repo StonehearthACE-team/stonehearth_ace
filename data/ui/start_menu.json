@@ -1,6 +1,18 @@
 {
+   "harvest_menu": {
+      "items": {
+         "box_harvest_and_replant": {
+            "name": "i18n(stonehearth_ace:ui.game.menu.harvest_menu.items.harvest_and_replant.display_name)",
+            "description": "i18n(stonehearth_ace:ui.game.menu.harvest_menu.items.harvest_and_replant.description)",
+            "class": "button",
+            "icon": "/stonehearth_ace/ui/game/start_menu/images/harvest_and_replant_cmd.png",
+            "sticky": true,
+            "hotkey_action": "harvest:box_harvest_and_replant"
+         }
+      }
+   },
    "place_menu": {
-	  "items": {
+	   "items": {
          "box_move": {
             "name": "i18n(stonehearth_ace:ui.game.menu.harvest_menu.items.box_move.display_name)",
             "description": "i18n(stonehearth_ace:ui.game.menu.harvest_menu.items.box_move.description)",

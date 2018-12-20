@@ -46,6 +46,10 @@ function VineComponent:initialize()
       self._sv.render_directions = {}
    end
 
+   if self._sv.casts_shadows == nil then
+      self._sv.casts_shadows = true
+   end
+
    if not self._sv.render_options or not self._sv.render_models then
       local json = radiant.entities.get_json(self)
       local json_options = json.render_options or {}
@@ -70,6 +74,9 @@ function VineComponent:initialize()
 
       self._sv.render_options = options
       self._sv.render_models = models
+      if json_options.casts_shadows ~= nil then
+         self._sv.casts_shadows = json_options.casts_shadows
+      end
    end
 end
 

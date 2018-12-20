@@ -1,3 +1,4 @@
+local ResourceNodeComponent = require 'stonehearth.components.resource_node.resource_node_component'
 local AceResourceNodeComponent = class()
 
 -- this is modified only to add the player_id of the harvester to the kill_data of the kill_event
@@ -57,6 +58,23 @@ function AceResourceNodeComponent:spawn_resource(harvester_entity, collect_locat
    end
 
    self.__saved_variables:mark_changed()
+end
+
+AceResourceNodeComponent._old_request_harvest = ResourceNodeComponent.request_harvest
+function AceResourceNodeComponent:request_harvest(player_id, replant)
+   local result = self:_old_request_harvest(player_id)
+
+   if result then
+      if replant and radiant.entities.get_entity_data(self._entity, 'stonehearth_ace:replant_data') then
+         self._entity:remove_component('stonehearth_ace:stump')
+         self._entity:add_component('stonehearth_ace:replant')
+      else
+         self._entity:remove_component('stonehearth_ace:replant')
+         self._entity:add_component('stonehearth_ace:stump')
+      end
+   end
+
+   return result
 end
 
 return AceResourceNodeComponent

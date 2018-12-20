@@ -1419,7 +1419,6 @@
       "stonehearth/ui/game/modes/mode_manager.js": "file(ui/game/modes/mode_manager.js)"
    },
    "components": {
-      "add_stump": "file(components/tree_stump/add_stump.lua)",
       "aquatic_object": "file(components/aquatic_object/aquatic_object_component.lua)",
       "auto_replace": "file(components/auto_replace/auto_replace_component.lua)",
       "connection": "file(components/connection/connection_component.lua)",
@@ -1432,6 +1431,8 @@
       "tile": "file(components/tile/tile_component.lua)",
       "fence": "file(components/fence/fence_component.lua)",
       "patrol_banner": "file(components/patrol_banner/patrol_banner_component.lua)",
+      "replant": "file(components/replant/replant_component.lua)",
+      "stump": "file(components/stump/stump_component.lua)",
       "substrate_plot": "file(components/grower_underfield/substrate_plot_component.lua)",
       "toggle_enabled": "file(components/toggle_enabled/toggle_enabled_component.lua)",
       "training_dummy": "file(components/training/training_dummy_component.lua)",
@@ -1520,9 +1521,13 @@
          "controller": "file(call_handlers/resource_call_handler.lua)",
          "endpoint": "client"
       },
-      "set_items_auto_harvest": {
+      "box_harvest_and_replant_resources": {
          "controller": "file(call_handlers/resource_call_handler.lua)",
          "endpoint": "client"
+      },
+      "server_box_harvest_and_replant_resources": {
+         "controller": "file(call_handlers/resource_call_handler.lua)",
+         "endpoint": "server"
       },
       "box_get_commandable_entities": {
          "controller": "file(call_handlers/resource_call_handler.lua)",

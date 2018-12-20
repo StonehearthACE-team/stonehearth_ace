@@ -481,8 +481,8 @@ function PlayerConnections:_try_connecting_connectors(potential_connection)
       graph.nodes[e1.id] = graph_entity_1
       graph.nodes[e2.id] = graph_entity_2
 
-      c1.connected_to[c2.id] = true
-      c2.connected_to[c1.id] = true
+      c1.connected_to[c2.id] = potential_connection.this_rank
+      c2.connected_to[c1.id] = potential_connection.target_rank
 
       c1.num_connections = c1.num_connections + 1
       c2.num_connections = c2.num_connections + 1
