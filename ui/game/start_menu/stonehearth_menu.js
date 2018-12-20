@@ -11,13 +11,15 @@ $.widget( "stonehearth.stonehearthMenu", $.stonehearth.stonehearthMenu, {
       
       // sort the nodes by their ordinal property, if they have one
       function compare(a, b) {
-         if (a.ordinal && b.ordinal) {
+         var aIsNum = typeof(a.ordinal) == 'number';
+         var bIsNum = typeof(b.ordinal) == 'number';
+         if (aIsNum && bIsNum) {
             return a.ordinal < b.ordinal ? -1 : (a.ordinal > b.ordinal ? 1 : 0);
          }
-         else if(a.ordinal) {
+         else if(aIsNum) {
             return -1;
          }
-         else if(b.ordinal) {
+         else if(bIsNum) {
             return 1;
          }
          else {

@@ -309,10 +309,6 @@ function PlayerConnections:_add_entity_to_graphs(entity_struct, only_type, entit
 
          -- go through in order (resulting sequence is sorted)
          for _, possible_connection in ipairs(possible_connections) do
-            if connection.num_connections >= connection.max_connections then
-               break
-            end
-
             local changes = self:_try_connecting_connectors(possible_connection)
             if changes and next(changes) then
                combine_tables(type_graphs, changes)
@@ -368,10 +364,6 @@ function PlayerConnections:_remove_entity_from_graphs(entity_struct)
                   end
                end
 
-               --log:debug('removing entity from graphs')
-               self:_update_entity_changes_connector(entity_struct.entity, type, connector.name, connected.id)
-               self:_update_entity_changes_connector(connected_entity_struct.entity, type, connected.name, connector.id)
-
                -- when removing an entity from graphs, anything it was connected to should search for new connections
                local _, added_graphs_changed = self:_add_entity_to_graphs(connected_entity_struct, type, entity_struct.id)
 
@@ -416,6 +408,46 @@ function PlayerConnections:_try_connecting_connectors(potential_connection)
       return nil
    end
 
+   local graphs_changed = {}
+   local connectors_disconnected = {}
+
+   -- the current connector or the target connector might already have reached their max_connections
+   -- however, if the new potential connection outranks their lowest ranked current connection, we want to override it
+   if c1.num_connections >= c1.max_connections then
+      local worst = self:_get_worst_connection(c1)
+      if worst then
+         if worst.rank >= potential_connection.this_rank then
+            return nil
+         else
+            log:debug('found a better connection: %s + %s (%s / %s) => %s + %s (%s / %s)',
+               c1.id, worst.id, c1.connected_to[worst.id], worst.rank,
+               c1.id, c2.id, potential_connection.this_rank, potential_connection.target_rank)
+            connectors_disconnected[c1] = self:get_entity_connector(worst.id)
+         end
+      end
+   end
+   if c2.num_connections >= c2.max_connections then
+      local worst = self:_get_worst_connection(c2)
+      if worst then
+         if worst.rank >= potential_connection.target_rank then
+            return nil
+         else
+            log:debug('found a better connection: %s + %s (%s / %s) => %s + %s (%s / %s)',
+               c2.id, worst.id, c2.connected_to[worst.id], worst.rank,
+               c2.id, c1.id, potential_connection.target_rank, potential_connection.this_rank)
+            connectors_disconnected[c2] = self:get_entity_connector(worst.id)
+         end
+      end
+   end
+
+   for dc1, dc2 in pairs(connectors_disconnected) do
+      log:debug('diconnecting %s and %s because a better connection was found', dc1.id, dc2.id)
+      local changes = self:_try_disconnecting_connectors(dc1, dc2)
+      if changes then
+         combine_tables(graphs_changed, changes)
+      end
+   end
+
    if c1.num_connections < c1.max_connections and c2.num_connections < c2.max_connections and
          conn1.num_connections < conn1.max_connections and conn2.num_connections < conn2.max_connections then
       
@@ -423,7 +455,6 @@ function PlayerConnections:_try_connecting_connectors(potential_connection)
       -- if this connection connects entities from two separate graphs, we need to merge those graphs
       local graph_indexes = self:get_connections(conn1.type).graphs
       local graphs = self:_get_graphs(graph_indexes)
-      local graphs_changed = {}
       local graphs_to_merge = {}
       local graph_entity_1 = nil
       local graph_entity_2 = nil
@@ -492,11 +523,34 @@ function PlayerConnections:_try_connecting_connectors(potential_connection)
       --log:debug('connecting entities')
       self:_update_entity_changes_connector(e1.entity, conn1.type, c1.name, c2.id, graph.id, potential_connection.this_rank)
       self:_update_entity_changes_connector(e2.entity, conn1.type, c2.name, c1.id, graph.id, potential_connection.target_rank)
-
-      return graphs_changed
    end
 
-   return false
+   for dc1, dc2 in pairs(connectors_disconnected) do
+      -- if we disconnected some connectors, make sure the entities that were connected to them seek new connections
+      -- (as long as they aren't either of these entities)
+      -- dc1 is either c1 or c2; dc2 is the worst connector we disconnected from it ({id, rank})
+      if dc2.entity_id ~= e1.id and dc2.entity_id ~= e2.id then
+         local _, added_graphs_changed = self:_add_entity_to_graphs(self._entities[dc2.entity_id], conn1.type)
+         added_graphs_changed = added_graphs_changed[conn1.type]
+         if added_graphs_changed and next(added_graphs_changed) then
+            combine_tables(graphs_changed, added_graphs_changed)
+         end
+      end
+   end
+
+   return next(graphs_changed) and graphs_changed
+end
+
+function PlayerConnections:_get_worst_connection(connector)
+   local worst
+
+   for id, rank in pairs(connector.connected_to) do
+      if not worst or rank < worst.rank then
+         worst = {id = id, rank = rank}
+      end
+   end
+
+   return worst
 end
 
 function PlayerConnections:_try_disconnecting_connectors(c1, c2)
@@ -549,6 +603,8 @@ function PlayerConnections:_try_disconnecting_connectors(c1, c2)
 
       if n1 and n1.connected_nodes[e2.id] then
          n1.connected_nodes[e2.id] = nil
+         self:_update_entity_changes_connector(e1.entity, conn1.type, c1.name, c2.id)
+
          if not next(n1.connected_nodes) then
             graph.nodes[e1.id] = nil
             graphs_changed[graph.id] = true
@@ -558,6 +614,8 @@ function PlayerConnections:_try_disconnecting_connectors(c1, c2)
 
       if n2 and n2.connected_nodes[e1.id] then
          n2.connected_nodes[e1.id] = nil
+         self:_update_entity_changes_connector(e2.entity, conn1.type, c2.name, c1.id)
+
          if not next(n2.connected_nodes) then
             graph.nodes[e2.id] = nil
             graphs_changed[graph.id] = true
@@ -581,6 +639,7 @@ function PlayerConnections:_try_disconnecting_connectors(c1, c2)
             for id, node in pairs(checked) do
                graph.nodes[id] = nil
                new_graph.nodes[id] = node
+               self:_update_entity_changes_connector(self._entities[id].entity, conn1.type, nil, nil, new_graph.id)
             end
             graphs_changed[graph.id] = true
             graphs_changed[new_graph.id] = true
@@ -588,11 +647,11 @@ function PlayerConnections:_try_disconnecting_connectors(c1, c2)
       end
 
       if next(graphs_changed) then
-         break
+         return graphs_changed
       end
    end
 
-   return graphs_changed
+   return false
 end
 
 -- recursively processes through 'connected_nodes' for n1 to see if it can find n2, ignoring previously checked nodes
@@ -621,7 +680,7 @@ function PlayerConnections:_find_best_potential_connections(connection, entity_i
    if connection.num_connections < connection.max_connections then
       for _, connector_id in pairs(connection.connectors) do
          local connector = self:get_entity_connector(connector_id)
-         if connector.num_connections < connector.max_connections then
+         if connector.max_connections > 0 then
             local potential_connectors = self:_find_best_potential_connectors(connector, entity_id_to_ignore)
             for _, conn in ipairs(potential_connectors) do
                table.insert(result, conn)
@@ -652,7 +711,7 @@ function PlayerConnections:_find_best_potential_connectors(connector, entity_id_
             --log:debug('conn %s: %s, %s', id, conn.connection.entity_struct.id, connection.entity_struct.id)
             if conn.entity_id ~= connector.entity_id
                   and conn.entity_id ~= entity_id_to_ignore
-                  and conn.num_connections < conn.max_connections
+                  and conn.max_connections > 0
                   and conn.trans_region then
                
                local intersection = r:intersect_region(conn.trans_region):get_area()
@@ -664,7 +723,12 @@ function PlayerConnections:_find_best_potential_connectors(connector, entity_id_
                   --log:debug('they intersect! %s and %s', rank_connector, rank_conn)
                   -- the rank has to meet the threshold for each connector
                   if rank_connector >= connector.region_intersection_threshold and rank_conn >= conn.region_intersection_threshold then
-                     table.insert(result, {connector = connector, target_connector = conn, this_rank = rank_connector, target_rank = rank_conn})
+                     table.insert(result, {
+                        connector = connector,
+                        target_connector = conn,
+                        this_rank = rank_connector,
+                        target_rank = rank_conn
+                     })
                   end
                end
             end
@@ -672,9 +736,6 @@ function PlayerConnections:_find_best_potential_connectors(connector, entity_id_
       end
    end
 
-   table.sort(result, function(v1, v2)
-      return v1.this_rank > v2.this_rank
-   end)
    return result
 end
 
