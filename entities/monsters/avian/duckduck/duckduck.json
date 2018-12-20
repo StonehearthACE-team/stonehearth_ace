@@ -12,6 +12,45 @@
                }
             }
          }
+      },
+	  "stonehearth:attributes": {
+         "min_calories": {
+            "type": "basic",
+            "value": -30
+         },
+         "max_calories": {
+            "type": "basic",
+            "value": 20
+         }
+      },
+	  "stonehearth:expendable_resources": {
+         "resources": {
+            "calories": {
+               "min": {
+                  "linked_attribute": "min_calories"
+               },
+               "max": {
+                  "linked_attribute": "max_calories"
+               },
+               "initial_value": "max_value"
+            }
+         }
+      },
+	  "mixintypes": {
+		"stonehearth:commands": "remove"
+	  }
+   },
+   "entity_data": {
+      "stonehearth:calories": {
+         "hungry_threshold": 0,
+         "famished_threshold": 0,
+         "malnourished_threshold": -10,
+         "hourly_calorie_loss": 0.6
+      },
+      "stonehearth:bait_trap": {
+         "can_trap": true,
+         "catch_chance": 0.3,
+         "trigger_trap_on_failure_chance": 0.4
       }
    }
 }

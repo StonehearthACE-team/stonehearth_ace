@@ -1,0 +1,86 @@
+{
+   "type": "index",
+   "mixins": "stonehearth:loadouts",
+   "loadouts": {
+      "merchant_caravan": {
+         "content": {
+            "mixintypes": {
+               "berries": "remove"
+            },
+            "prickly_pear": {
+               "ordinal": 4,
+               "display_name": "i18n(stonehearth_ace:data.loadouts.items.prickly_pear)",
+               "type": "entity",
+               "uri": "stonehearth:food:prickly_pear:prickly_pear_basket",
+               "icon": "/stonehearth_ace/data/loadouts/images/items/prickly_pear_basket.png",
+               "amount": 10
+            }
+         }
+      },
+      "food_for_days": {
+         "content": {
+            "mixintypes": {
+               "berries": "remove",
+               "carrots": "remove"
+            },
+            "prickly_pear": {
+               "ordinal": 2.5,
+               "display_name": "i18n(stonehearth_ace:data.loadouts.items.prickly_pear)",
+               "type": "entity",
+               "uri": "stonehearth:food:prickly_pear:prickly_pear_basket",
+               "icon": "/stonehearth_ace/data/loadouts/images/items/prickly_pear_basket.png",
+               "amount": 10
+            },
+            "watermelon": {
+               "ordinal": 2.6,
+               "display_name": "i18n(stonehearth_ace:data.loadouts.items.watermelon)",
+               "type": "entity",
+               "uri": "stonehearth:food:watermelon:watermelon_basket",
+               "icon": "/stonehearth_ace/data/loadouts/images/items/watermelon_basket.png",
+               "amount": 10
+            }
+         }
+      },
+      "military_expedition": {
+         "ordinal": 2.1,
+         "content": {
+            "footman": {},
+            "archer": {},
+            "training_dummy": {
+               "uri": "stonehearth_ace:gizmos:clay_training_dummy",
+               "icon": "file(images/items/clay_training_dummy.png)"
+            },
+            "jerky": {},
+            "gold": {}
+         }
+      },
+      "noble_entourage": {
+         "ordinal": 2.2,
+         "content": {
+            "cook": {},
+            "blacksmith": {},
+            "comfy_bed": {
+               "uri": "stonehearth_ace:furniture:clay_comfy_bed",
+               "icon": "file(images/items/clay_comfy_bed.png)"
+            },
+            "roast_venison": {},
+            "gold": {}
+         }
+      },
+      "money_solves_all_problems": {
+         "content": {
+            "mixintypes": {
+               "berries": "remove"
+            },
+            "prickly_pear": {
+               "ordinal": 2,
+               "display_name": "i18n(stonehearth_ace:data.loadouts.items.prickly_pear)",
+               "type": "entity",
+               "uri": "stonehearth:food:prickly_pear:prickly_pear_basket",
+               "icon": "/stonehearth_ace/data/loadouts/images/items/prickly_pear_basket.png",
+               "amount": 10
+            }
+         }
+      }
+   }
+}
