@@ -37,15 +37,17 @@ local ConnectionComponent = class()
 
 local VERSIONS = {
    ZERO = 0,
-   V1 = 1
+   V1 = 1,
+   V2 = 2
 }
 
 function ConnectionComponent:get_version()
-   return VERSIONS.V1
+   return VERSIONS.V2
 end
 
 function ConnectionComponent:fixup_post_load(old_save_data)
-   if old_save_data.version < VERSIONS.V1 then
+   -- just nuke the connected stats and let it automatically rebuild connections
+   if old_save_data.version < VERSIONS.V2 then
       self._sv.connected_stats = {}
    end
 end
