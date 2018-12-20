@@ -311,6 +311,28 @@
             "display_name": "Auf dem Land",
             "description": "Diese Kreatur ist nicht wirklich an Land angepasst ... Das hat Konsequenzen!"
          }
+      },
+      "loadouts": {
+         "items": {
+            "prickly_pear": "Birnen",
+            "thatching": "Stroh",
+            "watermelon": "Wassermelonen",
+            "winter_morel": "Morscheln",
+            "training_dummy": "Puppen",
+            "comfy_bed": "Bett",
+            "roast_venison": "Wild",
+            "training_target": "Ziele"
+         },
+         "military_expedition": {
+            "display_name": "Militärexpedition",
+            "description": "Es ist wahr das diese Hearthlingen in den ersten Tagen in der Kälte schlafen und kaum Abwechslung beim essen haben werden ... Aber es ist zweifelhaft, dass nervige Wölfe oder Kobolde ihre Tage später ruinieren werden!",
+            "tooltip": "Eine militärisch ausgerichtete Ausstattung für diejenigen, die Sicherheit vor allem anderen vorziehen."
+         },
+         "noble_entourage": {
+            "display_name": "Edles Gefolge",
+            "description": "Nicht jeder isst Wild, noch gibt es Betten für alle ... Na und? Sie sind nicht für alle gedacht, sondern für ganz besondere und wichtige Hearthlinge - oder zumindest behaupten sie - das alle anderen ihnen in die Wildnis gefolgt sind.",
+            "tooltip": "Eine kleine Sammlung hochwertiger Gegenstände und Berufe für einen ungewöhnlich spezialisierten Anfang."
+         }
       }
    },
    "jobs": {
@@ -542,6 +564,11 @@
                "recipe_name": "Zielscheibe aus Stein",
                "description": "Fernkämpfer können durch das Üben mit der Zielscheibe Erfahrung sammeln.",
                "flavor": "Benötigt einen Ingenieur zum reparieren."
+            },
+            "stone_hatchet_recipe": {
+               "recipe_name": "Zweithand Steinbeil",
+               "description": "Eine gute Einstiegsalternative für diejenigen, die den Schild nicht bevorzugen. (Zweithand)",
+               "flavor": ""
             }
          }
       },
@@ -767,6 +794,22 @@
             "blacksmith_forge_advanced_ghost": {
                "display_name": "Verbesserter Schmiedeofen",
                "description": "Ein verbesserter und effizienterer Ofen zum Schmelzen von Metallen."
+            }
+         },
+         "blacksmith_description": {
+            "level_1_data": {
+               "perk_000_name": "Frühe Metallarbeiten",
+               "perk_000_description": "Der Schmied muss das Schmelzen von Grunderzen beherrschen, bevor er Bronze aus dem Tiegel und Eisen zu einem Amboss verarbeiten kann."
+            },
+            "level_2_data": {
+               "perk_000_name": "Bronze & Eisenzeit!",
+               "perk_000_description": "Der Schmied ist nun erfahren genug um einen Amboss, einen Tiegel und schwere Gegenstände aus Bronze und Eisen zu schmieden.",
+               "perk_001_name": "Beherrscher des Feuers!",
+               "perk_001_description": "Der Schmied hat genug Wissen übers Schmieden erworben, um mit der Produktion eigener Kraftstoffe und Anlagen zu beginnen."
+            },
+            "level_4_data": {
+               "perk_000_name": "Verbesserte Werkzeuge und kalter Stahl",
+               "perk_000_description": "Lange Zeit in der Schmiede hat dem Schmied Ideen für neue und verbesserte Anlagen gegeben, die das Geheimnis von Stahl erschließen würden: schärfere Waffen und leichtere Rüstung."
             }
          }
       },
@@ -2995,6 +3038,14 @@
          },
          "na_steel_shield": {
             "display_name": "Schwerer stählerner Nordschild"
+         },
+         "light_giant_bone_shield": {
+            "display_name": "Leichter gigantischer Knochenschild",
+            "description": "Die starken und leichteren Knochen einer großen Kreatur bieten genug Deckung."
+         },
+         "giant_bone_shield": {
+            "display_name": "Gigantischer Knochenschild",
+            "description": "Der Brustkorb eines getöteten Tieres wird nun einen Ritter gegen das Böse verteidigen."
          }
       },
       "weapons": {
@@ -3255,6 +3306,25 @@
          },
          "na_two_handed_sword": {
             "display_name": "Zweihänder Claymore"
+         },
+         "stone_hatchet": {
+            "display_name": "Steinbeil",
+            "description": "Eine einfache Waffe zum Parieren und Kontern. (Zweithand)"
+         },
+         "bone_sword": {
+            "display_name": "Knochenschwert"
+         },
+         "giant_bone_hatchet": {
+            "description": "Für pararrierende Angriffe und Gegenangriffe. (Zweithand)",
+            "display_name": "Gigantisches Knochenbeil"
+         },
+         "giant_bone_short_sword": {
+            "display_name": "Gigantisches Knochenkurzschwert",
+            "description": "Die Waffe eines Ritters aus den Knochen eines Fabelwesen."
+         },
+         "giant_bone_sword": {
+            "display_name": "Gigantisches Knochenschwert",
+            "description": "Eine starke Waffe aus den Knochen eines starken Monsters."
          }
       },
       "gizmos": {
@@ -3831,6 +3901,12 @@
             },
             "harvest_menu": {
                "items": {
+                  "harvest_and_replant": {
+                     "display_name": "Sammeln und neu pflanzen",
+                     "description": "Ernte Bäume, Pflanzen und Steine von der Oberfläche des Landes und pflanze sie wenn möglich neu an.",
+                     "tip_title": "Klicken und ziehen, um Ressourcen zu sammeln",
+                     "tip_description": "Rechtsklick um diesen Modus zu verlassen"
+                  },
                   "box_move": {
                      "display_name": "Elemente bewegen",
                      "description": "Bewege Elemente an einen anderen Ort",
