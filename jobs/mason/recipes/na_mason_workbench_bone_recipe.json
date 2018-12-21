@@ -1,0 +1,29 @@
+{
+   "type": "recipe",
+   "mixins": "/stonehearth_ace/jobs/mason/recipes/mason_workbench_bone_recipe.json",
+   "portrait": "/stonehearth_ace/jobs/mason/na_mason_workbench_bone/na_mason_workbench_bone.png",
+   "manual_unlock": false,
+   "mixintypes": {
+	  "ingredients": "override",
+	  "produces": "override"
+   },
+   "ingredients": [
+      {
+         "material": "stone resource",
+         "count": 3
+      },
+      {
+         "material": "wood resource",
+         "count": 2
+      },
+	  {
+         "material": "ore resource",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:northern_alliance:mason:workbench_bone"
+      }
+   ]
+}

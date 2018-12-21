@@ -1,0 +1,35 @@
+{
+   "type": "recipe",
+   "effort": 15,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.mason.recipes.giant_bone_hatchet_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.mason.recipes.giant_bone_hatchet_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.mason.recipes.giant_bone_hatchet_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/weapons/giant_bone_hatchet/giant_bone_hatchet.png",
+   "level_requirement": 4,
+   "workshop": "stonehearth_ace:mason:workbench_bone",
+   "manual_unlock": true,
+   "ingredients": [
+      {
+         "uri": "stonehearth:resources:ogre_bone",
+         "count": 1
+      },
+      {
+         "material": "stone resource",
+         "count": 1
+      },
+	  {
+         "material": "pelt resource",
+         "count": 1
+      },
+	  {
+         "uri": "stonehearth:refined:gold_flakes",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:weapons:giant_bone_hatchet"
+      }
+   ]
+}
