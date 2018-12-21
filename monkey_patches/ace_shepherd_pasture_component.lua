@@ -131,7 +131,7 @@ function AceShepherdPastureComponent:_spawn_grass(count, grass)
 			local location = grass[rng:get_int(1, #grass)] + Point3(0, 1, 0)
 			if self:_is_valid_grass_spawn_location(location) then
 				-- we found a spot, spawn some grass
-				local grass_entity = radiant.entities.create_entity(grass_uri)
+				local grass_entity = radiant.entities.create_entity(grass_uri, {owner = self._entity})
 				local random_facing = rng:get_int(0, 3) * 90
 				radiant.terrain.place_entity(grass_entity, location, { force_iconic = false, facing = random_facing })
 				break
