@@ -43,7 +43,7 @@ local VERSIONS = {
 }
 
 function ConnectionComponent:get_version()
-   return VERSIONS.V2
+   return VERSIONS.V3
 end
 
 function ConnectionComponent:fixup_post_load(old_save_data)
