@@ -391,12 +391,12 @@
                "description": "Getrocknete und dünn gepresste Algenblätter, die als Kraut verwendet werden können.",
                "flavor": "Es wird auch beim Kochen verwendet!"
             },
-			"parasol_colony_recipe": {
+            "parasol_colony_recipe": {
                "recipe_name": "Sonnenschirmkolonie (x3)",
                "description": "Verwende vorhandene Pilze, um weitere Kolonien zu bilden, die zu neuen Pilzen heranwachsen.",
                "flavor": "Sonnenschirme sind im rohen Zustand leicht giftig und dürfen nur als Kochzutat verwendet werden"
             },
-			"sweet_tooth_colony_recipe": {
+            "sweet_tooth_colony_recipe": {
                "recipe_name": "Semmel-Stoppelpilzkolonie (x3)",
                "description": "Verwende vorhandene Pilze, um weitere Kolonien zu bilden, die zu neuen Pilzen heranwachsen.",
                "flavor": ""
@@ -531,6 +531,14 @@
       "mason": {
          "recipes": {
             "utility_name": "Werkzeuge",
+            "bone_weapons_armor_name": "Waffen und Rüstungen aus geschnitzte Knochen",
+            "bone_furniture_name": "Möbel & Dekoration aus geschnitzte Knochen",
+            "bone_building_parts_name": "Gebäudeteile aus geschnitzte Knochen",
+            "mason_workbench_bone_recipe": {
+               "recipe_name": "Knochenschnitzerei Studio",
+               "description": "Wird vom Steinmetz benötigt, um Möbel und Ausrüstung aus Knochenmaterial zu schnitzen.",
+               "flavor": ""
+            },
             "legendary_headpiece_recipe": {
                "recipe_name": "Gefallener Stern",
                "description": "Eine starke und tödliche Kopfbedeckung für den aufsteigenden Stern.",
@@ -569,7 +577,51 @@
                "recipe_name": "Zweithand Steinbeil",
                "description": "Eine gute Einstiegsalternative für diejenigen, die den Schild nicht bevorzugen. (Zweithand)",
                "flavor": ""
+            },
+            "giant_bone_axe_recipe": {
+               "recipe_name": "Gigantische Knochenaxt",
+               "description": "Schnitze eine mächtige Axt aus dem Schlüsselbein eines großen Tieres. (Beidhändig)",
+               "flavor": "Kantig."
+            },
+            "giant_bone_mace_recipe": {
+               "recipe_name": "Gigantischer Knochen-Streitkolben",
+               "description": "Schnitze eine mächtige schwere Knochenwaffe, die einen heftigen Schlag hat. (Beidhändig)",
+               "flavor": ""
+            },
+            "giant_bone_shield_recipe": {
+               "recipe_name": "Gigantischer Knochenschild",
+               "description": "Stelle einen Ritterschild mit dem Brustkorb eines getöteten Tieres her.",
+               "flavor": "Auch gut zum Schlagen!"
+            },
+            "light_giant_bone_shield_recipe": {
+               "recipe_name": "Leichter gigantischer Knochenschild",
+               "description": "Bilde mit den starken und leichteren Knochen einer großen Kreatur ein Schild.",
+               "flavor": ""
+            },
+            "giant_bone_hatchet_recipe": {
+               "recipe_name": "Zweithand-Riesenknochenbeil",
+               "description": "Stelle eine Waffe her, um zu parieren und Gegenangriffe durchzuführen. (Zweithand)",
+               "flavor": ""
+            },
+            "giant_bone_pike_recipe": {
+               "recipe_name": "Gigantischer Knochenspeer",
+               "description": "Erschaffe einen Speer mit den Knochen eines mächtigen Tieres. (Beidhändig)",
+               "flavor": "Durchbohre ihre Herzen!"
+            },
+            "giant_bone_sword_recipe": {
+               "recipe_name": "Gigantisches Knochenschwert",
+               "description": "Mache eine starke Waffe mit den Knochen eines getöteten Monsters.",
+               "flavor": "Vorsicht mit den Spikes!"
+            },
+            "giant_bone_short_sword_recipe": {
+               "recipe_name": "Gigantisches Knochenkurzschwert",
+               "description": "Erstelle eine Ritterwaffe mit den Knochen eines Fabelwesen.",
+               "flavor": ""
             }
+         },
+         "mason_workbench_bone": {
+            "display_name": "Knochenschnitzerei Studio",
+            "description": "Wird vom Steinmetz benötigt, um Möbel und Ausrüstung aus Knochenmaterial zu schnitzen."
          }
       },
       "blacksmith": {
@@ -1018,6 +1070,10 @@
          "fish_trap": {
             "display_name": "Fischfalle",
             "description": "Fische sicher fangen. Schwimmt, wenn es im Wasser platziert wird."
+         },
+         "clamp_trap": {
+            "display_name": "Klammerfalle",
+            "description": "Macht seine Beute nicht hundertprozentig Bewgungsunfähig"
          }
       },
       "shepherd": {
@@ -1278,7 +1334,7 @@
          },
          "paddy_crop": {
             "display_name": "Rohreis",
-            "description": "Rohreis wächst langsam, wird aber allgemein geschätzt! Erfordert ein überflutetes Farm-Grundstück um zu wachsen.",
+            "description": "Rohreis wächst langsam im Wasser, wird aber allgemein geschätzt!",
             "growth_stage": {
                "000": {
                   "name": "Reisstummel",
@@ -1831,11 +1887,11 @@
             },
             "old_wood": {
                "display_name": "Alter Stamm",
-               "description": "Dieser uralte Baum ist seit langem verschwunden ... Das Holz könnte aber trotzdem nützlich sein!"
+               "description": "Dieser uralte Baum ist seit langem verschwunden ... Aber das Holz könnte trotzdem nützlich sein!"
             }
          },
          "old_stump": "Alter Baumstumpf",
-         "old_stump_description": "Dieser uralte Baumstumpf ist bereits Teil des Waldes selbst. Das Holz könnte aber trotzdem nützlich sein!"
+         "old_stump_description": "Dieser uralte Baumstumpf ist bereits Teil des Waldes selbst. Aber das Holz ist immer noch gut!"
       },
       "furniture": {
          "patrol_point": {
@@ -3325,6 +3381,10 @@
          "giant_bone_sword": {
             "display_name": "Gigantisches Knochenschwert",
             "description": "Eine starke Waffe aus den Knochen eines starken Monsters."
+         },
+         "giant_bone_pike": {
+            "display_name": "Gigantischer Knochenspeer",
+            "description": "Einst ein Teil eines mächtigen Tieres, jetzt um eins zu durchbohren. (Beidhändig)"
          }
       },
       "gizmos": {
