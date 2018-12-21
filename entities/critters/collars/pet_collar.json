@@ -4,11 +4,18 @@
       "stonehearth:equipment_piece": {
          "injected_ai": {
             "actions": [
-              "stonehearth_ace:actions:pet:eat_from_storage",
-              "stonehearth:actions:get_food_container_from_storage",
-              "stonehearth:actions:get_food_from_storage",
+              "stonehearth_ace:actions:pet:eat_food_container_from_storage",
+              "stonehearth_ace:actions:pet:eat_food_from_storage",
               "stonehearth:actions:find_reachable_storage_containing_best_entity_type",
-              "stonehearth:actions:pickup_item_type_from_storage"
+              "stonehearth:actions:pickup_item_type_from_storage",
+              "stonehearth:actions:pickup_item_from_storage_adjacent",
+              "stonehearth:actions:find_entity_type_in_storage",
+              "stonehearth:actions:goto_entity_in_storage",
+              "stonehearth:actions:run_pickup_effect",
+              "stonehearth:actions:run_putdown_effect"
+            ],
+            "components": [
+               "stonehearth:carry_block"
             ]
          }
       }
