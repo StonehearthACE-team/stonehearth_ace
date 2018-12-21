@@ -1,0 +1,37 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(sweet_tooth_serving.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:item": {
+         "category": "food",
+         "destroy_on_uncarry": true
+      },
+      "stonehearth:food": {
+         "stonehearth:sitting_on_chair": {
+            "satisfaction": 20
+         },
+         "default": {
+            "satisfaction": 16
+         },
+         "quality": 2
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.sweet_tooth.sweet_tooth_serving.display_name)",
+         "description": "i18n(stonehearth_ace:entities.food.sweet_tooth.sweet_tooth_serving.description)",
+         "material_tags": [
+            "food",
+            "vegetarian"
+         ],
+         "subject_override": "stonehearth_ace:fungi:sweet_tooth"
+      }
+   }
+}

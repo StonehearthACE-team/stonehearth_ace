@@ -1,5 +1,12 @@
 {
    "craftable_recipes": {
+	  "workbenches": {
+         "recipes": {
+            "mason_workbench_bone": {
+               "recipe": "file(mason_workbench_bone_recipe.json)"
+            }
+         }
+     },
 	  "legendary": {
          "recipes": {
             "legendary_headpiece": {
@@ -45,6 +52,43 @@
             }
          }
       },
+	  "weapons": {
+         "recipes": {
+            "stone_hatchet": {
+               "recipe": "file(stone_hatchet_recipe.json)"
+            }
+         }
+      },
+	  "bone_weapons_armor": {
+         "ordinal": 41,
+         "name": "i18n(stonehearth_ace:jobs.mason.recipes.bone_weapons_armor_name)",
+         "recipes": {
+            "giant_bone_axe": {
+               "recipe": "file(giant_bone_axe_recipe.json)"
+            },
+            "giant_bone_mace": {
+               "recipe": "file(giant_bone_mace_recipe.json)"
+            },
+            "giant_bone_shield": {
+               "recipe": "file(giant_bone_shield_recipe.json)"
+            },
+			"light_giant_bone_shield": {
+               "recipe": "file(light_giant_bone_shield_recipe.json)"
+            },
+            "giant_bone_hatchet": {
+               "recipe": "file(giant_bone_hatchet_recipe.json)"
+            },
+			"giant_bone_pike": {
+               "recipe": "file(giant_bone_pike_recipe.json)"
+            },
+			"giant_bone_sword": {
+               "recipe": "file(giant_bone_sword_recipe.json)"
+            },
+			"giant_bone_short_sword": {
+               "recipe": "file(giant_bone_short_sword_recipe.json)"
+            }
+         }
+      },
       "building_parts": {
          "recipes": {
             "simple_hatch_stone": {
@@ -60,6 +104,16 @@
                "recipe": "file(reinforced_stone_door_lockable_recipe.json)"
             }
          }
+      },
+	  "bone_building_parts": {
+         "ordinal": 71,
+         "name": "i18n(stonehearth_ace:jobs.mason.recipes.bone_building_parts_name)",
+         "recipes": {}
+      },
+	  "bone_furniture": {
+         "ordinal": 86,
+         "name": "i18n(stonehearth_ace:jobs.mason.recipes.bone_furniture_name)",
+         "recipes": {}
       }
    }
 }

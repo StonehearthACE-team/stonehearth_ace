@@ -1,0 +1,90 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(giant_bone_hatchet_equipped.qb)"
+            ]
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(giant_bone_hatchet_iconic.json)"
+      },
+      "stonehearth:equipment_piece": {
+         "slot": "offhand",
+         "render_type": "attach_to_bone",
+         "postures": [
+            "stonehearth:combat",
+            "stonehearth:patrol"
+         ],
+         "ilevel": 11,
+         "roles": [
+            "footman_job"
+         ],
+         "required_job_level": 3,
+         "equip_effect": "stonehearth:effects:weapon_level_up",
+         "equipment_types": [
+            "offhand_weapon"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:buffs": {
+         "inflictable_debuffs": {
+            "out_of_balance": {
+               "uri": "stonehearth_ace:buffs:out_of_balance",
+               "chance": 0.5
+            }
+         }
+      },
+      "stonehearth:combat:weapon_data": {
+         "base_damage": 11,
+         "reach": 1.5
+      },
+      "stonehearth:combat:melee_attacks": [
+         {
+            "name": "combat_1h_forehand",
+            "effect": "combat_1h_forehand",
+            "active_frame": 16,
+            "cooldown": 0,
+            "priority": 0
+         }
+      ],
+      "stonehearth:combat:melee_defenses": [
+         {
+            "name": "simple_shield_block",
+            "effect": "combat_1h_shield_block",
+            "active_frame": 4,
+            "cooldown": 10000,
+            "priority": 0,
+            "chance_of_success": 0.2
+         }
+      ],
+      "stonehearth:net_worth": {
+         "value_in_gold": 36,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 2,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.weapons.giant_bone_hatchet.display_name)",
+         "description": "i18n(stonehearth_ace:entities.weapons.giant_bone_hatchet.description)",
+         "icon": "file(giant_bone_hatchet.png)",
+         "category": "weapons",
+         "material_tags": [
+            "offhand",
+            "bone",
+            "melee_weapon",
+            "crafted",
+            "giant_bone_hatchet",
+            "stockpile_weapon"
+         ]
+      }
+   }
+}

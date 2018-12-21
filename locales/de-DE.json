@@ -311,6 +311,28 @@
             "display_name": "Auf dem Land",
             "description": "Diese Kreatur ist nicht wirklich an Land angepasst ... Das hat Konsequenzen!"
          }
+      },
+      "loadouts": {
+         "items": {
+            "prickly_pear": "Birnen",
+            "thatching": "Stroh",
+            "watermelon": "Wassermelonen",
+            "winter_morel": "Morscheln",
+            "training_dummy": "Puppen",
+            "comfy_bed": "Bett",
+            "roast_venison": "Wild",
+            "training_target": "Ziele"
+         },
+         "military_expedition": {
+            "display_name": "Militärexpedition",
+            "description": "Es ist wahr das diese Hearthlingen in den ersten Tagen in der Kälte schlafen und kaum Abwechslung beim essen haben werden ... Aber es ist zweifelhaft, dass nervige Wölfe oder Kobolde ihre Tage später ruinieren werden!",
+            "tooltip": "Eine militärisch ausgerichtete Ausstattung für diejenigen, die Sicherheit vor allem anderen vorziehen."
+         },
+         "noble_entourage": {
+            "display_name": "Edles Gefolge",
+            "description": "Nicht jeder isst Wild, noch gibt es Betten für alle ... Na und? Sie sind nicht für alle gedacht, sondern für ganz besondere und wichtige Hearthlinge - oder zumindest behaupten sie - das alle anderen ihnen in die Wildnis gefolgt sind.",
+            "tooltip": "Eine kleine Sammlung hochwertiger Gegenstände und Berufe für einen ungewöhnlich spezialisierten Anfang."
+         }
       }
    },
    "jobs": {
@@ -369,24 +391,34 @@
                "description": "Getrocknete und dünn gepresste Algenblätter, die als Kraut verwendet werden können.",
                "flavor": "Es wird auch beim Kochen verwendet!"
             },
+			"parasol_colony_recipe": {
+               "recipe_name": "Sonnenschirmkolonie (x3)",
+               "description": "Verwende vorhandene Pilze, um weitere Kolonien zu bilden, die zu neuen Pilzen heranwachsen.",
+               "flavor": "Sonnenschirme sind im rohen Zustand leicht giftig und dürfen nur als Kochzutat verwendet werden"
+            },
+			"sweet_tooth_colony_recipe": {
+               "recipe_name": "Semmel-Stoppelpilzkolonie (x3)",
+               "description": "Verwende vorhandene Pilze, um weitere Kolonien zu bilden, die zu neuen Pilzen heranwachsen.",
+               "flavor": ""
+            },
             "bolete_colony_recipe": {
                "recipe_name": "Röhrling-Kolonie (x3)",
-               "description": "Verwende vorhandene Pilze, um weitere Kolonien zu bilden, die zu neuen Pilzen heranwachsen können.",
+               "description": "Verwende vorhandene Pilze, um weitere Kolonien zu bilden, die zu neuen Pilzen heranwachsen.",
                "flavor": ""
             },
             "chanterelle_colony_recipe": {
                "recipe_name": "Pfifferling-Kolonie (x3)",
-               "description": "Verwende vorhandene Pilze, um weitere Kolonien zu bilden, die zu neuen Pilzen heranwachsen können.",
+               "description": "Verwende vorhandene Pilze, um weitere Kolonien zu bilden, die zu neuen Pilzen heranwachsen.",
                "flavor": ""
             },
             "winter_morel_colony_recipe": {
                "recipe_name": "Wintermorchel-Kolonie (x3)",
-               "description": "Verwende vorhandene Pilze, um weitere Kolonien zu bilden, die zu neuen Pilzen heranwachsen können.",
+               "description": "Verwende vorhandene Pilze, um weitere Kolonien zu bilden, die zu neuen Pilzen heranwachsen.",
                "flavor": ""
             },
             "desert_truffle_colony_recipe": {
                "recipe_name": "Wüstentrüffel-Kolonie (x3)",
-               "description": "Verwende vorhandene Pilze, um weitere Kolonien zu bilden, die zu neuen Pilzen heranwachsen können.",
+               "description": "Verwende vorhandene Pilze, um weitere Kolonien zu bilden, die zu neuen Pilzen heranwachsen.",
                "flavor": ""
             },
             "legendary_parchment_recipe": {
@@ -532,6 +564,11 @@
                "recipe_name": "Zielscheibe aus Stein",
                "description": "Fernkämpfer können durch das Üben mit der Zielscheibe Erfahrung sammeln.",
                "flavor": "Benötigt einen Ingenieur zum reparieren."
+            },
+            "stone_hatchet_recipe": {
+               "recipe_name": "Zweithand Steinbeil",
+               "description": "Eine gute Einstiegsalternative für diejenigen, die den Schild nicht bevorzugen. (Zweithand)",
+               "flavor": ""
             }
          }
       },
@@ -757,6 +794,22 @@
             "blacksmith_forge_advanced_ghost": {
                "display_name": "Verbesserter Schmiedeofen",
                "description": "Ein verbesserter und effizienterer Ofen zum Schmelzen von Metallen."
+            }
+         },
+         "blacksmith_description": {
+            "level_1_data": {
+               "perk_000_name": "Frühe Metallarbeiten",
+               "perk_000_description": "Der Schmied muss das Schmelzen von Grunderzen beherrschen, bevor er Bronze aus dem Tiegel und Eisen zu einem Amboss verarbeiten kann."
+            },
+            "level_2_data": {
+               "perk_000_name": "Bronze & Eisenzeit!",
+               "perk_000_description": "Der Schmied ist nun erfahren genug um einen Amboss, einen Tiegel und schwere Gegenstände aus Bronze und Eisen zu schmieden.",
+               "perk_001_name": "Beherrscher des Feuers!",
+               "perk_001_description": "Der Schmied hat genug Wissen übers Schmieden erworben, um mit der Produktion eigener Kraftstoffe und Anlagen zu beginnen."
+            },
+            "level_4_data": {
+               "perk_000_name": "Verbesserte Werkzeuge und kalter Stahl",
+               "perk_000_description": "Lange Zeit in der Schmiede hat dem Schmied Ideen für neue und verbesserte Anlagen gegeben, die das Geheimnis von Stahl erschließen würden: schärfere Waffen und leichtere Rüstung."
             }
          }
       },
@@ -1288,6 +1341,10 @@
             "willow_log": {
                "display_name": "Weideholz",
                "description": "Ein Block. Gemacht aus Holz."
+            },
+            "old_wood_log": {
+               "display_name": "Alter Holzblock",
+               "description": "Ein Holzblock. Aus Holz gemacht, wirklich altem Holz."
             }
          },
          "herb": {
@@ -1750,7 +1807,35 @@
                   "description": "Baby-Trauerweide."
                }
             }
-         }
+         },
+         "trunk": {
+            "oak": {
+               "display_name": "Eichenstamm",
+               "description": "Diese große Eiche ist seit langem verschwunden... Ernte ihn für ein paar Holzblöcke!"
+            },
+            "juniper": {
+               "display_name": "Wacholderstamm",
+               "description": "Dieser alte Wacholder ist seit langem verschwunden... Ernte ihn für ein paar Holzblöcke!"
+            },
+            "highland_pine": {
+               "display_name": "Hochlandkiefernstamm",
+               "description": "Diese hohe Hochlandkiefer ist seit langem verschwunden... Ernte ihn für ein paar Holzblöcke!"
+            },
+            "birch": {
+               "display_name": "Birkenstamm",
+               "description": "Diese schöne Birke ist seit langem verschwunden... Ernte sie für ein paar Holzblöcke!"
+            },
+            "pine": {
+               "display_name": "Kiefernstamm",
+               "description": "Diese mächtige Kiefer ist seit langem verschwunden... Ernte sie für ein paar Holzblöcke!"
+            },
+            "old_wood": {
+               "display_name": "Alter Stamm",
+               "description": "Dieser uralte Baum ist seit langem verschwunden ... Das Holz könnte aber trotzdem nützlich sein!"
+            }
+         },
+         "old_stump": "Alter Baumstumpf",
+         "old_stump_description": "Dieser uralte Baumstumpf ist bereits Teil des Waldes selbst. Das Holz könnte aber trotzdem nützlich sein!"
       },
       "furniture": {
          "patrol_point": {
@@ -2553,11 +2638,27 @@
             "catfish_tagine_serving": {
                "display_name": "Eine Portion Katzenfischeintopf"
             }
+         },
+         "sweet_tooth": {
+            "sweet_tooth_basket": {
+               "display_name": "Korb mit Semmel-Stoppelpilzen",
+               "description": "Leckere Pilze die bereit sind gegessen zu werden!"
+            },
+            "sweet_tooth_serving": {
+               "display_name": "Ein Teller mit Semmel-Stoppelpilzen",
+               "description": "Schmeckt wie der Wald!"
+            }
+         },
+         "parasol": {
+            "parasol_basket": {
+               "display_name": "Korb mit Sonnenschirmen",
+               "description": "Dieser Pilz ist im rohen Zustand leicht giftig und kann nur zum Kochen verwendet werden."
+            }
          }
       },
       "terrain": {
          "pasture_grass": {
-            "display_name": "Grass",
+            "display_name": "Gras",
             "description": "Hohes Gras kann von Tieren beweidet oder für den späteren Gebrauch geerntet werden."
          },
          "overgrown_pasture_grass": {
@@ -2671,6 +2772,54 @@
                "winter_morel_developing": {
                   "display_name": "Entwickelnde Wintermorcheln",
                   "description": "Die Pilze breiten sich aus und werden bald groß genug seinh!"
+               }
+            }
+         },
+         "parasol": {
+            "parasol_ghost": {
+               "display_name": "Sonnenschirm",
+               "description": "Ein leckerer, einsamer Pilz. Roh etwas giftig, besser vor dem Essen kochen!"
+            },
+            "colony": {
+               "parasol_colony": {
+                  "display_name": "Sonnenschirmkolonie",
+                  "description": "Kann platziert werden, um zu größeren, essbaren Pilzen zu wachsen"
+               }
+            },
+            "spreading": {
+               "parasol_spreading": {
+                  "display_name": "Ausbreitende Sonnenschirme",
+                  "description": "Die Sporen zerstreuten sich aus der Kolonie und der Pilz beginnen zu wachsen"
+               }
+            },
+            "developing": {
+               "parasol_developing": {
+                  "display_name": "Entwickelnde Sonnenschirme",
+                  "description": "Die Pilze sind weit verbreitet und wird bald groß genug sein!"
+               }
+            }
+         },
+         "sweet_tooth": {
+            "sweet_tooth_ghost": {
+               "display_name": "Semmel-Stoppelpilze",
+               "description": "Leckere und gewöhnliche Waldpilze!"
+            },
+            "colony": {
+               "sweet_tooth_colony": {
+                  "display_name": "Semmel-Stoppelpilzkolonie",
+                  "description": "Kann platziert werden, um zu größeren, essbaren Pilzen zu wachsen"
+               }
+            },
+            "spreading": {
+               "sweet_tooth_spreading": {
+                  "display_name": "Ausbreitende Semmel-Stoppelpilze",
+                  "description": "Die Sporen zerstreuten sich aus der Kolonie und der Pilz beginnen zu wachsen"
+               }
+            },
+            "developing": {
+               "sweet_tooth_developing": {
+                  "display_name": "Entwickelnde Semmel-Stoppelpilze",
+                  "description": "Die Pilze sind weit verbreitet und wird bald groß genug sein!"
                }
             }
          }
@@ -2889,6 +3038,14 @@
          },
          "na_steel_shield": {
             "display_name": "Schwerer stählerner Nordschild"
+         },
+         "light_giant_bone_shield": {
+            "display_name": "Leichter gigantischer Knochenschild",
+            "description": "Die starken und leichteren Knochen einer großen Kreatur bieten genug Deckung."
+         },
+         "giant_bone_shield": {
+            "display_name": "Gigantischer Knochenschild",
+            "description": "Der Brustkorb eines getöteten Tieres wird nun einen Ritter gegen das Böse verteidigen."
          }
       },
       "weapons": {
@@ -3149,6 +3306,25 @@
          },
          "na_two_handed_sword": {
             "display_name": "Zweihänder Claymore"
+         },
+         "stone_hatchet": {
+            "display_name": "Steinbeil",
+            "description": "Eine einfache Waffe zum Parieren und Kontern. (Zweithand)"
+         },
+         "bone_sword": {
+            "display_name": "Knochenschwert"
+         },
+         "giant_bone_hatchet": {
+            "description": "Für pararrierende Angriffe und Gegenangriffe. (Zweithand)",
+            "display_name": "Gigantisches Knochenbeil"
+         },
+         "giant_bone_short_sword": {
+            "display_name": "Gigantisches Knochenkurzschwert",
+            "description": "Die Waffe eines Ritters aus den Knochen eines Fabelwesen."
+         },
+         "giant_bone_sword": {
+            "display_name": "Gigantisches Knochenschwert",
+            "description": "Eine starke Waffe aus den Knochen eines starken Monsters."
          }
       },
       "gizmos": {
@@ -3464,6 +3640,10 @@
                "display_name": "Kleiner Marmorbrocken",
                "description": "Ernte für ein paar Marmorsteine, die der Steinmetz für feine Möbel verwendet"
             }
+         },
+         "large_forest_boulder": {
+            "display_name": "Großer Felsbrocken",
+            "description": "Erntbar für Steine"
          }
       },
       "vines": {
@@ -3721,6 +3901,12 @@
             },
             "harvest_menu": {
                "items": {
+                  "harvest_and_replant": {
+                     "display_name": "Sammeln und neu pflanzen",
+                     "description": "Ernte Bäume, Pflanzen und Steine von der Oberfläche des Landes und pflanze sie wenn möglich neu an.",
+                     "tip_title": "Klicken und ziehen, um Ressourcen zu sammeln",
+                     "tip_description": "Rechtsklick um diesen Modus zu verlassen"
+                  },
                   "box_move": {
                      "display_name": "Elemente bewegen",
                      "description": "Bewege Elemente an einen anderen Ort",

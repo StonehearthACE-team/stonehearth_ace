@@ -1,0 +1,30 @@
+{
+   "type": "recipe",
+   "effort": 35,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.mason.recipes.mason_workbench_bone_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.mason.recipes.mason_workbench_bone_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.mason.recipes.mason_workbench_bone_recipe.flavor)",
+   "portrait": "/stonehearth_ace/jobs/mason/mason_workbench_bone/mason_workbench_bone.png",
+   "level_requirement": 2,
+   "manual_unlock": true,
+   "ingredients": [
+      {
+         "material": "stone resource",
+         "count": 3
+      },
+      {
+         "material": "wood resource",
+         "count": 2
+      },
+	  {
+         "material": "ingot hard_metal",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:mason:workbench_bone"
+      }
+   ]
+}

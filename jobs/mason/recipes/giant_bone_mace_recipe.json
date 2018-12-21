@@ -1,0 +1,35 @@
+{
+   "type": "recipe",
+   "effort": 18,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.mason.recipes.giant_bone_mace_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.mason.recipes.giant_bone_mace_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.mason.recipes.giant_bone_mace_recipe.flavor)",
+   "portrait": "/stonehearth/entities/weapons/giant_bone_mace/giant_bone_mace.png",
+   "level_requirement": 4,
+   "workshop": "stonehearth_ace:mason:workbench_bone",
+   "manual_unlock": true,
+   "ingredients": [
+      {
+         "uri": "stonehearth:resources:ogre_bone",
+         "count": 1
+      },
+      {
+         "material": "wood resource",
+         "count": 2
+      },
+	  {
+         "material": "pelt resource",
+         "count": 1
+      },
+	  {
+         "uri": "stonehearth:refined:gold_flakes",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth:weapons:giant_bone_mace"
+      }
+   ]
+}

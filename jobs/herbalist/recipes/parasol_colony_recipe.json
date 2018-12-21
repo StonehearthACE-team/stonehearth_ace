@@ -1,0 +1,28 @@
+{
+   "type": "recipe",
+   "effort": 25,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.herbalist.recipes.parasol_colony_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.parasol_colony_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.parasol_colony_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/fungi/parasol/colony/parasol_colony.png",
+   "workshop": "stonehearth:herbalist:workbench",
+   "level_requirement": 1,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:fungi:parasol",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:fungi:parasol:colony"
+      },
+      {
+         "item": "stonehearth_ace:fungi:parasol:colony"
+      },
+      {
+         "item": "stonehearth_ace:fungi:parasol:colony"
+      }
+   ]
+}

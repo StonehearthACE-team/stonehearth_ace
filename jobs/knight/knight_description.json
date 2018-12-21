@@ -30,6 +30,9 @@
    },
    "level_data": {
       "1": {
+		 "mixintypes": {
+			"perks": "override"
+		 },
          "perks": [
             {
                "type": "increase_max_placeable_training",
@@ -41,8 +44,32 @@
                   "training": 1
                },
                "level": 1
+            },
+			{
+               "type": "apply_buff",
+               "name": "i18n(stonehearth:jobs.knight.knight_description.level_1_data.perk_000_name)",
+               "id": "knight_health_up_1",
+               "icon": "/stonehearth/jobs/knight/images/knight_perk_fortify.png",
+               "buff_name": "stonehearth:buffs:knight:health_1",
+               "description": "i18n(stonehearth:jobs.knight.knight_description.level_1_data.perk_000_description)",
+               "level": 1,
+               "demote_fn": "remove_buff"
             }
          ]
-      }
+      },
+	  "2": {
+		 "perks": [
+			{
+               "type": "apply_buff",
+               "name": "i18n(stonehearth:jobs.knight.knight_description.level_1_data.perk_001_name)",
+               "id": "knight_defense_up_1",
+               "icon": "/stonehearth/jobs/knight/images/knight_perk_def_up_1.png",
+               "buff_name": "stonehearth:buffs:knight:defense_1",
+               "description": "i18n(stonehearth:jobs.knight.knight_description.level_1_data.perk_001_description)",
+               "level": 2,
+               "demote_fn": "remove_buff"
+            }
+		 ]
+	  }
 	}
 }

@@ -1,0 +1,57 @@
+{
+   "type": "entity",
+   "components": {
+      "render_info": {
+         "scale": 0.1
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(old_wood_stump.qb)",
+                     "file(old_wood_stump_2.qb)"
+                  ]
+               }
+            ]
+         }
+      },
+      "stonehearth:resource_node": {
+         "durability": 1,
+         "resource": "stonehearth_ace:resources:wood:old_wood_log",
+         "harvest_overlay_effect": "stonehearth:effects:chop_overlay_effect",
+         "harvester_effect": "chop_block",
+         "description": "chop_tree"
+      },
+      "mob": {
+         "align_to_grid": [
+            "x"
+         ],
+         "model_origin": { "x": 0, "y": 0, "z": -0.5 },
+         "region_origin": { "x": 0, "y": 0, "z": -0.5 }
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 1, "y": 1, "z": 1 }
+            }
+         ]
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 1, "y": 1, "z": 1 }
+            }
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.trees.old_stump)",
+         "description": "i18n(stonehearth_ace:entities.trees.old_stump_description)"
+      }
+   }
+}

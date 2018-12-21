@@ -52,6 +52,7 @@ function VineRenderer:_update_render()
    local data = self._datastore:get_data()
    local options = data.render_options
    local render_dirs = data.render_directions
+   local casts_shadows = data.casts_shadows
    if not render_dirs or not next(render_dirs) then
       return
    end
@@ -62,21 +63,22 @@ function VineRenderer:_update_render()
    --log:error('render_directions: %s', radiant.util.table_tostring(render_dirs))
    for dir, _ in pairs(render_dirs) do
       if dir == 'y+' then
-         self:_create_node(options.faces.top, 0)
+         self:_create_node(options.faces.top, 0, casts_shadows)
       elseif dir == 'y-' then
-         self:_create_node(options.faces.bottom, 0)
+         self:_create_node(options.faces.bottom, 0, casts_shadows)
       else
-         self:_create_node(options.faces.side, _rotations[dir] or 0)
+         self:_create_node(options.faces.side, _rotations[dir] or 0, casts_shadows)
       end
    end
 end
 
-function VineRenderer:_create_node(options, rotation)
+function VineRenderer:_create_node(options, rotation, casts_shadows)
    if options and options.model then
       rotation = (360 - self._facing + rotation) % 360
       local node = _radiant.client.create_qubicle_matrix_node(self._node, options.model, 'background',
             Point3(options.origin.x, options.origin.y, options.origin.z))
       if node then
+         --node:set_casts_shadows(casts_shadows)
          node:set_transform(0, 0, 0, 0, rotation, 0, options.scale, options.scale, options.scale)
          node:set_material('materials/voxel.material.json')
          --node:set_visible(true)

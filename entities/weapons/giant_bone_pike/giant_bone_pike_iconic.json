@@ -1,0 +1,22 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(giant_bone_pike.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.weapons.giant_bone_pike.display_name)",
+         "description": "i18n(stonehearth_ace:entities.weapons.giant_bone_pike.description)",
+         "icon": "file(giant_bone_pike.png)",
+         "is_item": true,
+         "category": "weapons"
+      }
+   }
+}

@@ -1,3 +1,5 @@
+local Region3 = _radiant.csg.Region3
+
 local log = radiant.log.create_logger('water')
 
 local WaterComponent = require 'stonehearth.components.water.water_component'
@@ -12,14 +14,15 @@ end
 
 function AceWaterComponent:update_pathable_region()
    if self._sv.region and (not self._sv.last_updated_pathable_region or not self._sv.last_updated_pathable_region:equals(self._sv.region:get())) then
+      -- only add it to the horizontal layer of water that's one voxel down from the top
       local region = self._sv.region:get():extruded('y', 0, -1)
       local bounds = region:get_bounds()
-      if bounds.max.y > bounds.min.y + 1 then
-         region:optimize('water pathing')
-         self._entity:add_component('stonehearth_ace:vertical_pathing_region'):set_region(region)
-         self._sv.last_updated_pathable_region = self._sv.region:get()
-         self.__saved_variables:mark_changed()
-      end
+      region:subtract_region(Region3(bounds):extruded('y', 0, -1))
+
+      region:optimize('water pathing')
+      self._entity:add_component('stonehearth_ace:vertical_pathing_region'):set_region(region)
+      self._sv.last_updated_pathable_region = self._sv.region:get()
+      self.__saved_variables:mark_changed()
    end
 end
 

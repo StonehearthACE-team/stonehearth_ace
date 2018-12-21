@@ -1,22 +1,147 @@
 {
+   "town_menu": {
+      "ordinal": 1
+   },
+   "citizen_manager": {
+      "ordinal": 2
+   },
+   "custom_building_new": {
+      "ordinal": 3
+   },
    "place_menu": {
-	  "items": {
+      "ordinal": 4,
+	   "items": {
+         "place_item": {
+            "ordinal": 1
+         },
+         "build_ladder": {
+            "ordinal": 2
+         },
          "box_move": {
+            "ordinal": 10,
             "name": "i18n(stonehearth_ace:ui.game.menu.harvest_menu.items.box_move.display_name)",
             "description": "i18n(stonehearth_ace:ui.game.menu.harvest_menu.items.box_move.description)",
             "class": "button",
-            "icon": "/stonehearth_ace/data/commands/box_selection/box_selection_move_menu.png",
+            "icon": "/stonehearth_ace/ui/game/start_menu/images/box_selection_move_menu.png",
             "sticky": true,
             "hotkey_action": "harvest:box_move"
          },
          "box_undeploy": {
+            "ordinal": 11,
             "name": "i18n(stonehearth_ace:ui.game.menu.harvest_menu.items.box_undeploy.display_name)",
             "description": "i18n(stonehearth_ace:ui.game.menu.harvest_menu.items.box_undeploy.description)",
             "class": "button",
-            "icon": "/stonehearth_ace/data/commands/box_selection/box_selection_undeploy_menu.png",
+            "icon": "/stonehearth_ace/ui/game/start_menu/images/box_selection_undeploy_menu.png",
             "sticky": true,
             "hotkey_action": "harvest:box_undeploy"
          }
       }
+   },
+   "harvest_menu": {
+      "ordinal": 5,
+      "items": {
+         "harvest": {
+            "ordinal": 1
+         },
+         "mine_basic": {
+            "ordinal": 2
+         },
+         "mine_custom": {
+            "ordinal": 3
+         },
+         "cancel_task": {
+            "ordinal": 4
+         },
+         "loot_item": {
+            "ordinal": 5
+         },
+         "clear_item": {
+            "ordinal": 6
+         },
+         "box_harvest_and_replant": {
+            "ordinal": 1.5,
+            "name": "i18n(stonehearth_ace:ui.game.menu.harvest_menu.items.harvest_and_replant.display_name)",
+            "description": "i18n(stonehearth_ace:ui.game.menu.harvest_menu.items.harvest_and_replant.description)",
+            "class": "button",
+            "icon": "/stonehearth_ace/ui/game/start_menu/images/harvest_and_replant_cmd.png",
+            "sticky": true,
+            "hotkey_action": "harvest:box_harvest_and_replant"
+         }
+      }
+   },
+   "zone_menu": {
+      "ordinal": 6,
+      "items": {
+         "create_stockpile": {
+            "ordinal": 1
+         },
+         "create_farm": {
+            "ordinal": 2
+         },
+         "create_trapping_grounds": {
+            "ordinal": 3
+         },
+         "create_pasture": {
+            "ordinal": 4
+         }
+      }
+   },
+   "crafter_menu": {
+      "ordinal": 7,
+      "items": {
+         "carpenter": {
+            "ordinal": 1
+         },
+         "potter": {
+            "ordinal": 2
+         },
+         "mason": {
+            "ordinal": 3
+         },
+         "blacksmith": {
+            "ordinal": 4
+         },
+         "engineer": {
+            "ordinal": 5
+         },
+         "weaver": {
+            "ordinal": 6
+         },
+         "cook": {
+            "ordinal": 7
+         },
+         "herbalist": {
+            "ordinal": 8
+         },
+         "geomancer": {
+            "ordinal": 9
+         }
+      }
+   },
+   "fight_menu": {
+      "ordinal": 8,
+      "items": {
+         "town_alert": {
+            "ordinal": 0
+         },
+         "party_1" : {
+            "ordinal": 1
+         },
+         "party_2" : {
+            "ordinal": 2
+         },
+         "party_3" : {
+            "ordinal": 3
+         },
+         "party_4" : {
+            "ordinal": 4
+         }
+      }
+   },
+   "multiplayer_menu" : {
+      "ordinal": 9
+   },
+   "bulletin_manager" : {
+      "ordinal": 10
    }
 }

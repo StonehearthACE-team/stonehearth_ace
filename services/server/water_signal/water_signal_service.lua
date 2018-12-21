@@ -238,7 +238,12 @@ function WaterSignalService:_on_tick()
    end
 
    for _, signal in pairs(signals_to_signal) do
-      signal.signal:_on_tick_water_signal(signal.waters, signal.waterfalls)
+      local entity = signal.entity or radiant.entities.get_entity(signal.entity_id)
+      log:debug('getting signal entity from id %s: %s', signal.entity_id, entity or 'NIL')
+      if entity and entity:is_valid() then
+         signal.entity = entity
+         signal.signal:_on_tick_water_signal(signal.waters, signal.waterfalls)
+      end
 
       for water_id, intersects in pairs(signal.waters) do
          if intersects then

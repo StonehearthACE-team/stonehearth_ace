@@ -155,4 +155,76 @@ function ResourceCallHandler:set_items_auto_harvest(session, response, entities,
 end
 ]]
 
+-- as far as I can tell, there isn't a good way to make use of call handler code in other mods
+-- so we just copy the base game code here and make our small changes for the replanting option
+function ResourceCallHandler:box_harvest_and_replant_resources(session, response)
+   stonehearth.selection:select_xz_region(stonehearth.constants.xz_region_reasons.BOX_HARVEST_RESOURCES)
+      :set_max_size(50)
+      :require_supported(true)
+      :use_outline_marquee(Color4(0, 255, 0, 32), Color4(0, 255, 0, 255))
+      :set_cursor('stonehearth:cursors:harvest')
+      -- Allow selection on buildings/other items that aren't selectable
+      :allow_unselectable_support_entities(true)
+      :set_find_support_filter(function(result)
+            if self:_is_ground(result.entity) then
+               return true
+            end
+            return stonehearth.selection.FILTER_IGNORE
+         end)
+      :done(function(selector, box)
+            _radiant.call('stonehearth_ace:server_box_harvest_and_replant_resources', box)
+            response:resolve(true)
+         end)
+      :fail(function(selector)
+            response:reject('no region')
+         end)
+      :go()
+end
+
+function ResourceCallHandler:server_box_harvest_and_replant_resources(session, response, box)
+   validator.expect_argument_types({'Cube3'}, box)
+
+   local cube = Cube3(Point3(box.min.x, box.min.y, box.min.z),
+                      Point3(box.max.x, box.max.y, box.max.z))
+
+   local entities = radiant.terrain.get_entities_in_cube(cube)
+
+   for _, entity in pairs(entities) do
+      self:harvest_entity(session, response, entity, true) -- true for from harvest tool
+   end
+end
+
+--Call this one if you want to harvest as renewably as possible
+function ResourceCallHandler:harvest_entity(session, response, entity, from_harvest_tool)
+   validator.expect_argument_types({'Entity', validator.optional('boolean')}, entity, from_harvest_tool)   
+
+   local town = stonehearth.town:get_town(session.player_id)
+
+   local renewable_resource_node = entity:get_component('stonehearth:renewable_resource_node')
+   local resource_node = entity:get_component('stonehearth:resource_node')
+
+   if renewable_resource_node and renewable_resource_node:get_harvest_overlay_effect() and renewable_resource_node:is_harvestable() then
+      renewable_resource_node:request_harvest(session.player_id)
+   elseif resource_node then
+      -- check that entity can be harvested using the harvest tool
+      if not from_harvest_tool or resource_node:is_harvestable_by_harvest_tool() then
+         resource_node:request_harvest(session.player_id, true)   -- Paul: this is the only real change
+      end
+   end
+end
+
+-- returns true if the entity should be considered a target when box selecting items
+function ResourceCallHandler:_is_ground(entity)
+   if entity:get_component('terrain') then
+      return true
+   end
+   
+   if (entity:get_component('stonehearth:construction_data') or
+       entity:get_component('stonehearth:build2:structure')) then
+      return true
+   end
+
+   return false
+end
+
 return ResourceCallHandler

@@ -1,0 +1,104 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(giant_bone_pike_equipped.qb)"
+            ]
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(giant_bone_pike_iconic.json)"
+      },
+      "stonehearth:equipment_piece": {
+         "slot": "mainhand",
+         "additional_equipment": {
+            "stonehearth:armor:offhand_placeholder": true
+         },
+         "render_type": "attach_to_bone",
+         "postures": [
+            "stonehearth:combat",
+            "stonehearth:patrol"
+         ],
+         "ilevel": 20,
+         "roles": [
+            "knight_job"
+         ],
+         "required_job_level": 2,
+         "equip_effect": "stonehearth:effects:weapon_level_up",
+         "equipment_types": [
+            "twohanded"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:buffs": {
+         "inflictable_debuffs": {
+            "shaken": {
+               "uri": "stonehearth_ace:buffs:minor_shaken",
+               "chance": 0.33
+            }
+         }
+      },
+      "stonehearth:combat:weapon_data": {
+         "base_damage": 20,
+         "reach": 3.0
+      },
+      "stonehearth:combat:melee_attacks": [
+         {
+            "name": "combat_2h_attack",
+            "effect": "combat_2h_attack",
+            "active_frame": 21,
+            "cooldown": 0,
+            "priority": 0,
+            "aggro_multiplier": 1.5,
+            "aoe_effect": {
+               "aoe_range": 22,
+               "damage_multiplier": 0.2,
+               "minimum_damage": 0,
+               "aggro_addition": 90,
+               "aoe_target_limit": 12
+            }
+         },
+         {
+            "name": "combat_1h_thrust",
+            "effect": "combat_1h_thrust",
+            "active_frame": 16,
+            "cooldown": 0,
+            "priority": 0,
+            "aggro_multiplier": 1.5,
+            "aoe_effect": {
+               "aoe_range": 22,
+               "damage_multiplier": 0.2,
+               "minimum_damage": 0,
+               "aggro_addition": 90,
+               "aoe_target_limit": 12
+            }
+         }
+      ],
+      "stonehearth:net_worth": {
+         "value_in_gold": 42,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.weapons.giant_bone_pike.display_name)",
+         "description": "i18n(stonehearth_ace:entities.weapons.giant_bone_pike.description)",
+         "icon": "file(giant_bone_pike.png)",
+         "category": "weapons",
+         "material_tags": [
+            "twohanded",
+            "bone",
+            "melee_weapon",
+            "crafted",
+            "giant_bone_pike",
+            "stockpile_weapon"
+         ]
+      }
+   }
+}

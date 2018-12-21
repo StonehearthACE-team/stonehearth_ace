@@ -1,0 +1,141 @@
+{
+   "type": "index",
+   "loadouts": {
+      "food_for_days": {
+         "content": {
+            "farmer": {},
+            "berries": {},
+            "carrots": {},
+            "jerky": {},
+            "thatch": {
+               "ordinal": 4.1,
+               "display_name": "i18n(stonehearth_ace:data.loadouts.items.thatching)",
+               "type": "entity",
+               "uri": "stonehearth_ace:resources:thatch_bale",
+               "icon": "file(images/items/thatching.png)",
+               "amount": 5
+            },
+            "gold": {}
+         }
+      },
+      "merchant_caravan": {
+         "content": {
+            "trapper": {},
+            "footman": {},
+            "herbalist": {},
+            "berries": {},
+            "gold": {}
+         }
+      },
+      "military_expedition": {
+         "ordinal": 2.1,
+         "alias": "stonehearth_ace:data:loadouts:military_expedition",
+         "display_name": "i18n(stonehearth_ace:data.loadouts.military_expedition.display_name)",
+         "description": "i18n(stonehearth_ace:data.loadouts.military_expedition.description)",
+         "tooltip": "i18n(stonehearth_ace:data.loadouts.military_expedition.tooltip)",
+         "splash": "file(images/military_expedition/splash.png)",
+         "seal": "file(images/military_expedition/seal.png)",
+         "content": {
+            "footman": {
+               "ordinal": 1,
+               "display_name": "i18n(stonehearth:jobs.footman.footman_description.display_name)",
+               "type": "entity",
+               "uri": "stonehearth:footman:wooden_sword_talisman",
+               "icon": "/stonehearth/data/loadouts/images/items/wooden_sword.png",
+               "amount": 1
+            },
+            "archer": {
+               "ordinal": 2,
+               "display_name": "i18n(stonehearth:jobs.archer.archer_description.display_name)",
+               "type": "entity",
+               "uri": "stonehearth:archer:talisman",
+               "icon": "/stonehearth/data/loadouts/images/items/archer_bow.png",
+               "amount": 1
+            },
+            "training_dummy": {
+               "ordinal": 3,
+               "display_name": "i18n(stonehearth_ace:data.loadouts.items.training_dummy)",
+               "type": "entity",
+               "uri": "stonehearth_ace:gizmos:training_dummy",
+               "icon": "file(images/items/training_dummy.png)",
+               "amount": 2
+            },
+            "jerky": {
+               "ordinal": 4,
+               "display_name": "i18n(stonehearth:data.loadouts.items.jerky)",
+               "type": "entity",
+               "uri": "stonehearth:rabbit_jerky",
+               "icon": "/stonehearth/data/loadouts/images/items/jerky.png",
+               "amount": 12
+            },
+            "gold": {
+               "ordinal": 5,
+               "display_name": "i18n(stonehearth:data.loadouts.items.gold)",
+               "type": "gold",
+               "icon": "/stonehearth/data/loadouts/images/items/gold.png",
+               "uri": "stonehearth:loot:gold",
+               "amount": 20
+            }
+         }
+      },
+      "noble_entourage": {
+         "ordinal": 2.2,
+         "alias": "stonehearth_ace:data:loadouts:noble_entourage",
+         "display_name": "i18n(stonehearth_ace:data.loadouts.noble_entourage.display_name)",
+         "description": "i18n(stonehearth_ace:data.loadouts.noble_entourage.description)",
+         "tooltip": "i18n(stonehearth_ace:data.loadouts.noble_entourage.tooltip)",
+         "splash": "file(images/noble_entourage/splash.png)",
+         "seal": "file(images/noble_entourage/seal.png)",
+         "content": {
+            "cook": {
+               "ordinal": 1,
+               "display_name": "i18n(stonehearth:jobs.cook.cook_description.display_name)",
+               "type": "entity",
+               "uri": "stonehearth:cook:talisman",
+               "icon": "/stonehearth/data/loadouts/images/items/cook_spoon.png",
+               "amount": 1
+            },
+            "blacksmith": {
+               "ordinal": 2,
+               "display_name": "i18n(stonehearth:jobs.blacksmith.blacksmith_description.display_name)",
+               "type": "entity",
+               "uri": "stonehearth:blacksmith:talisman",
+               "icon": "file(images/items/blacksmith_hammer.png)",
+               "amount": 1
+            },
+            "comfy_bed": {
+               "ordinal": 3,
+               "display_name": "i18n(stonehearth_ace:data.loadouts.items.comfy_bed)",
+               "type": "entity",
+               "uri": "stonehearth:furniture:comfy_bed",
+               "icon": "file(images/items/comfy_bed.png)",
+               "amount": 1
+            },
+            "roast_venison": {
+               "ordinal": 4,
+               "display_name": "i18n(stonehearth_ace:data.loadouts.items.roast_venison)",
+               "type": "entity",
+               "uri": "stonehearth:food:roast_venison",
+               "icon": "file(images/items/roast_venison.png)",
+               "amount": 4
+            },
+            "gold": {
+               "ordinal": 5,
+               "display_name": "i18n(stonehearth:data.loadouts.items.gold)",
+               "type": "gold",
+               "icon": "/stonehearth/data/loadouts/images/items/gold.png",
+               "uri": "stonehearth:loot:gold",
+               "amount": 50
+            }
+         }
+      },
+      "money_solves_all_problems": {
+         "content": {
+            "weaver": {},
+            "berries": {},
+            "jerky": {},
+            "gold": {}
+         }
+      }
+   }
+}
