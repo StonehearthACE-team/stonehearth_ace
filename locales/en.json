@@ -531,6 +531,14 @@
       "mason": {
          "recipes": {
             "utility_name": "Utility",
+            "bone_weapons_armor_name": "Weapons & Armor, Bone Carving",
+            "bone_furniture_name": "Furniture & Decoration, Bone Carving",
+            "bone_building_parts_name": "Building Parts, Bone Carving",
+            "mason_workbench_bone_recipe": {
+               "recipe_name": "Bone Carving Studio",
+               "description": "Required by the mason to carve furniture and equipment out of bone material.",
+               "flavor": ""
+            },
             "legendary_headpiece_recipe": {
                "recipe_name": "Fallen Star",
                "description": "A strong and deadly headpiece for the Ascendant Star.",
@@ -569,7 +577,51 @@
                "recipe_name": "Off-hand Stone Hatchet",
                "description": "A good starting alternative for those that do not favor the shield. (Off-hand)",
                "flavor": ""
+            },
+            "giant_bone_axe_recipe": {
+               "recipe_name": "Giant Bone Axe",
+               "description": "Carve a mighty axe from the clavicle of some great beast. (Two-handed)",
+               "flavor": "Edgy."
+            },
+            "giant_bone_mace_recipe": {
+               "recipe_name": "Giant Bone Mace",
+               "description": "Create a heavy bone weapon that packs a wallop. (Two-handed)",
+               "flavor": ""
+            },
+            "giant_bone_shield_recipe": {
+               "recipe_name": "Giant Bone Shield",
+               "description": "Craft a knight's shield with the rib cage of a slain beast.",
+               "flavor": "Also good for bashing!"
+            },
+            "light_giant_bone_shield_recipe": {
+               "recipe_name": "Light Giant Bone Shield",
+               "description": "Make a shield with the strong and lighter bones of a big creature.",
+               "flavor": ""
+            },
+            "giant_bone_hatchet_recipe": {
+               "recipe_name": "Off-hand Giant Bone Hatchet",
+               "description": "Craft a weapon for parrying and attempting counter-attacks. (Off-hand)",
+               "flavor": ""
+            },
+            "giant_bone_pike_recipe": {
+               "recipe_name": "Giant Bone Spear",
+               "description": "Create a spear with the bones of a mighty beast. (Two-handed)",
+               "flavor": "Pierce their hearts!"
+            },
+            "giant_bone_sword_recipe": {
+               "recipe_name": "Giant Bone Sword",
+               "description": "Make a strong weapon with the bones of a slain monster.",
+               "flavor": "Careful with the spikes!"
+            },
+            "giant_bone_short_sword_recipe": {
+               "recipe_name": "Giant Bone Short Sword",
+               "description": "Craft a knight's sidearm with the bones of a mythical creature.",
+               "flavor": ""
             }
+         },
+         "mason_workbench_bone": {
+            "display_name": "Bone Carving Studio",
+            "description": "Used by the Mason for crafting with bone material."
          }
       },
       "blacksmith": {
@@ -1282,7 +1334,7 @@
          },
          "paddy_crop": {
             "display_name": "Paddy Field",
-            "description": "Rice grows slowly but is widely appreciated! Requires a flooded Farm Plot to grow.",
+            "description": "Rice grows slowly and in water but is widely appreciated!",
             "growth_stage": {
                "000": {
                   "name": "Paddy Stub",
@@ -1835,11 +1887,11 @@
             },
             "old_wood": {
                "display_name": "Old Trunk",
-               "description": "This ancient tree has been gone for a long, long time... The wood might still be useful, though!"
+               "description": "This ancient tree has been gone for a long time... But the wood might still be useful."
             }
          },
          "old_stump": "Old Tree Stump",
-         "old_stump_description": "This ancient stump is already part of the forest itself... The wood might still be useful, though!"
+         "old_stump_description": "This ancient stump is already part of the forest itself... But the wood is still good!"
       },
       "furniture": {
          "patrol_point": {
@@ -3335,6 +3387,10 @@
          "giant_bone_sword": {
             "display_name": "Giant Bone Sword",
             "description": "A strong weapon made with the bones of a strong monster."
+         },
+         "giant_bone_pike": {
+            "display_name": "Giant Bone Spear",
+            "description": "Once part of a mighty beast, now to pierce one. (Two-handed)"
          }
       },
       "gizmos": {

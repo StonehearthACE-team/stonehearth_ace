@@ -25,6 +25,9 @@
    },
    "level_data": {
       "1": {
+		 "mixintypes": {
+			"perks": "override"
+		 },
          "perks": [
             {
                "type": "increase_max_placeable_training",
@@ -36,8 +39,46 @@
                   "training": 1
                },
                "level": 1
+            },
+			{
+               "type": "add_combat_action",
+               "name": "i18n(stonehearth:jobs.archer.archer_description.level_1_data.perk_000_name)",
+               "id": "archer_default_shot",
+               "icon": "/stonehearth/jobs/archer/images/default_shot.png",
+               "equipment": "stonehearth:archer:abilities:default_shot",
+               "action_type": "stonehearth:combat:ranged_attacks",
+               "description": "i18n(stonehearth:jobs.archer.archer_description.level_1_data.perk_000_description)",
+               "level": 1,
+               "demote_fn": "remove_combat_action"
             }
          ]
-      }
+      },
+	  "3": {
+		 "mixintypes": {
+			"perks": "override"
+		 },
+		 "perks": [
+			{
+               "type": "apply_buff",
+               "name": "i18n(stonehearth:jobs.archer.archer_description.level_3_data.perk_000_name)",
+               "id": "archer_range_increase_1",
+               "icon": "/stonehearth/jobs/archer/images/archer_perk_range_up_1.png",
+               "buff_name": "stonehearth:buffs:archer:range_up_1",
+               "description": "i18n(stonehearth:jobs.archer.archer_description.level_3_data.perk_000_description)",
+               "level": 3,
+               "demote_fn": "remove_buff"
+            },
+			{
+               "type": "apply_buff",
+               "name": "i18n(stonehearth:jobs.archer.archer_description.level_1_data.perk_001_name)",
+               "id": "archer_damage_up",
+               "icon": "/stonehearth/jobs/archer/images/archer_perk_damage_up.png",
+               "buff_name": "stonehearth:buffs:archer:damage_up_1",
+               "description": "i18n(stonehearth:jobs.archer.archer_description.level_1_data.perk_001_description)",
+               "level": 3,
+               "demote_fn": "remove_buff"
+            }
+		 ]
+	  }
 	}
 }
