@@ -176,8 +176,8 @@ function PlayerConnections:register_entity(entity, connections, separated_by_pla
                   local connector_stats = connection_stats.connectors[connect.name]
                   connect.num_connections = connector_stats and connector_stats.num_connections or 0
                   if connector_stats then
-                     for connected_to_id, _ in pairs(connector_stats.connected_to) do
-                        connect.connected_to[connected_to_id] = true
+                     for connected_to_id, connected in pairs(connector_stats.connected_to) do
+                        connect.connected_to[connected_to_id] = connected.threshold or 0
                      end
                   end
                else
@@ -419,9 +419,9 @@ function PlayerConnections:_try_connecting_connectors(potential_connection)
          if worst.rank >= potential_connection.this_rank then
             return nil
          else
-            log:debug('found a better connection: %s + %s (%s / %s) => %s + %s (%s / %s)',
-               c1.id, worst.id, c1.connected_to[worst.id], worst.rank,
-               c1.id, c2.id, potential_connection.this_rank, potential_connection.target_rank)
+            --log:debug('found a better connection: %s + %s (%s / %s) => %s + %s (%s / %s)',
+            --   c1.id, worst.id, c1.connected_to[worst.id], worst.rank,
+            --   c1.id, c2.id, potential_connection.this_rank, potential_connection.target_rank)
             connectors_disconnected[c1] = self:get_entity_connector(worst.id)
          end
       end
@@ -432,16 +432,16 @@ function PlayerConnections:_try_connecting_connectors(potential_connection)
          if worst.rank >= potential_connection.target_rank then
             return nil
          else
-            log:debug('found a better connection: %s + %s (%s / %s) => %s + %s (%s / %s)',
-               c2.id, worst.id, c2.connected_to[worst.id], worst.rank,
-               c2.id, c1.id, potential_connection.target_rank, potential_connection.this_rank)
+            --log:debug('found a better connection: %s + %s (%s / %s) => %s + %s (%s / %s)',
+            --   c2.id, worst.id, c2.connected_to[worst.id], worst.rank,
+            --   c2.id, c1.id, potential_connection.target_rank, potential_connection.this_rank)
             connectors_disconnected[c2] = self:get_entity_connector(worst.id)
          end
       end
    end
 
    for dc1, dc2 in pairs(connectors_disconnected) do
-      log:debug('diconnecting %s and %s because a better connection was found', dc1.id, dc2.id)
+      --log:debug('diconnecting %s and %s because a better connection was found', dc1.id, dc2.id)
       local changes = self:_try_disconnecting_connectors(dc1, dc2)
       if changes then
          combine_tables(graphs_changed, changes)

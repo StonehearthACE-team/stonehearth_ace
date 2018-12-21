@@ -1,3 +1,5 @@
+local Entity = _radiant.om.Entity
+
 local get_entities_in_region = radiant.terrain.get_entities_in_region
 local get_world_grid_location = radiant.entities.get_world_grid_location
 local log = radiant.log.create_logger('water_signal')
@@ -31,6 +33,11 @@ function WaterSignal:create(entity_id, id, signal_region, monitor_types, change_
 end
 
 function WaterSignal:activate()
+   if radiant.util.is_a(self._sv.entity_id, Entity) then
+      self._sv.entity_id = self._sv.entity_id:get_id()
+      self.__saved_variables:mark_changed()
+      --log:debug('fixed water signal id to %s: %s', self._sv.entity_id, self:get_entity_id())
+   end
    if self._on_activate then
       self._on_activate(self)
       self._on_activate = nil
