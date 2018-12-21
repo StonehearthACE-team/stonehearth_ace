@@ -111,6 +111,7 @@ end
 
 function PlayerConnections:remove_entity(entity_id)
    local entity_struct = self._entities[entity_id]
+   --log:debug('remove_entity %s', entity_id)
    local changed_types, graphs_changed = self:_remove_entity_from_graphs(entity_struct)
    self:_update_connector_locations(entity_struct, false, false)
    --self.__saved_variables:mark_changed()
@@ -263,7 +264,9 @@ function PlayerConnections:_load_entity_graph_data(entity_id, connected_stats, s
          local conn_tbl = self:get_connections(type)
          conn_tbl.entities_in_graphs[entity_id] = conn_stats.num_connections > 0 or nil
          for name, connector in pairs(conn_stats.connectors) do
-            for id, graph_id in pairs(connector.connected_to) do
+            for id, graph_connection in pairs(connector.connected_to) do
+               -- connected_to now stores a table with graph_id and threshold instead of just storing the graph_id
+               local graph_id = graph_connection.graph_id
                conn_tbl.graphs[graph_id] = true
                local graph = stonehearth_ace.connection:get_graph_by_id(graph_id, self._sv.player_id, type)
                --conn_data.connected_to[connected_to_id] = graph_id
@@ -603,6 +606,7 @@ function PlayerConnections:_try_disconnecting_connectors(c1, c2)
 
       if n1 and n1.connected_nodes[e2.id] then
          n1.connected_nodes[e2.id] = nil
+         --log:debug('disconnecting connector')
          self:_update_entity_changes_connector(e1.entity, conn1.type, c1.name, c2.id)
 
          if not next(n1.connected_nodes) then
@@ -614,6 +618,7 @@ function PlayerConnections:_try_disconnecting_connectors(c1, c2)
 
       if n2 and n2.connected_nodes[e1.id] then
          n2.connected_nodes[e1.id] = nil
+         --log:debug('disconnecting connector')
          self:_update_entity_changes_connector(e2.entity, conn1.type, c2.name, c1.id)
 
          if not next(n2.connected_nodes) then
@@ -639,7 +644,11 @@ function PlayerConnections:_try_disconnecting_connectors(c1, c2)
             for id, node in pairs(checked) do
                graph.nodes[id] = nil
                new_graph.nodes[id] = node
-               self:_update_entity_changes_connector(self._entities[id].entity, conn1.type, nil, nil, new_graph.id)
+               local e = self._entities[id]
+               if e then
+                  --log:debug('changing graph')
+                  self:_update_entity_changes_connector(e.entity, conn1.type, nil, nil, new_graph.id)
+               end
             end
             graphs_changed[graph.id] = true
             graphs_changed[new_graph.id] = true

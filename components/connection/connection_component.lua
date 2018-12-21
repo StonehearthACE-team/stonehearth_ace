@@ -38,7 +38,8 @@ local ConnectionComponent = class()
 local VERSIONS = {
    ZERO = 0,
    V1 = 1,
-   V2 = 2
+   V2 = 2,
+   V3 = 3
 }
 
 function ConnectionComponent:get_version()
@@ -47,7 +48,7 @@ end
 
 function ConnectionComponent:fixup_post_load(old_save_data)
    -- just nuke the connected stats and let it automatically rebuild connections
-   if old_save_data.version < VERSIONS.V2 then
+   if old_save_data.version < VERSIONS.V3 then
       self._sv.connected_stats = {}
    end
 end
@@ -121,7 +122,7 @@ end
 -- it may be called with just the type and conn_name to initialize the data structures
 -- it may be called with just the type and the graph_id when it changes graphs and needs all connectors for that type to update graph_id
 function ConnectionComponent:set_connected_stats(type, conn_name, connected_to_id, graph_id, threshold)
-   log:debug('[%s]:set_connected_stats(%s, %s, %s, %s, %s)', self._entity, type, conn_name or 'NIL', connected_to_id or 'NIL', graph_id or 'NIL', threshold or 'NIL')
+   --log:debug('[%s]:set_connected_stats(%s, %s, %s, %s, %s)', self._entity, type, conn_name or 'NIL', connected_to_id or 'NIL', graph_id or 'NIL', threshold or 'NIL')
    local type_data = self._sv.connected_stats[type]
    if not type_data then
       type_data = {connectors = {}, num_connections = 0, max_connections = self._connections[type].max_connections}

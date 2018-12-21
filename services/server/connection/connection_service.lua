@@ -94,6 +94,7 @@ function ConnectionService:register_entity(entity, connections, connected_stats)
 end
 
 function ConnectionService:unregister_entity(entity)
+   --log:debug('unregistering connection entity %s', entity)
    local player_id = entity:get_player_id()
    local res1 = self:get_player_connections(player_id):unregister_entity(entity)
    local res2 = self:get_player_connections(ALL_PLAYERS):unregister_entity(entity)
@@ -225,42 +226,43 @@ function ConnectionService:_start_entity_traces(entity, player_connections, all_
       local traces = {}
       traces._parent_trace = entity:add_component('mob'):trace_parent('connection entity added or removed', _radiant.dm.TraceCategories.SYNC_TRACE)
       :on_changed(function(parent_entity)
-            if not parent_entity then
-               --we were just removed from the world
-               local res1 = player_connections:remove_entity(id)
-               local res2 = all_players_connections:remove_entity(id)
-               self:_perform_update(player_id, res1, res2)
-            else
-               --we were just added to the world
-               -- this will get handled by the (location) trace_transform
-               --log:debug('entity %s added to world', entity)
-               --local res1 = player_connections:update_entity(id)
-               --local res2 = all_players_connections:update_entity(id)
-               --self:_perform_update(player_id, res1, res2)
-            end
-         end)
+         if not parent_entity then
+            --we were just removed from the world
+            local res1 = player_connections:remove_entity(id)
+            local res2 = all_players_connections:remove_entity(id)
+            self:_perform_update(player_id, res1, res2)
+         else
+            --we were just added to the world
+            -- this *should* get handled by the (location) trace_transform but perhaps doesn't?
+            --log:debug('entity %s added to world', entity)
+            local res1 = player_connections:update_entity(id, true)
+            local res2 = all_players_connections:update_entity(id, true)
+            self:_perform_update(player_id, res1, res2)
+         end
+      end)
 
       traces._location_trace = entity:add_component('mob'):trace_transform('connection entity moved', _radiant.dm.TraceCategories.SYNC_TRACE)
       :on_changed(function()
-            log:debug('entity %s moved or rotated', entity)
-            local res1 = player_connections:update_entity(id)
-            local res2 = all_players_connections:update_entity(id)
-            self:_perform_update(player_id, res1, res2)
-         end)
+         --log:debug('entity %s moved or rotated', entity)
+         local res1 = player_connections:update_entity(id)
+         local res2 = all_players_connections:update_entity(id)
+         self:_perform_update(player_id, res1, res2)
+      end)
 
       traces._player_trace = entity:trace_player_id('connection service')
       :on_changed(function(new_player_id)
-            if new_player_id ~= player_id then
-               local result = player_connections:unregister_entity(entity)
-               if result then
-                  self:_communicate_update(player_id, result)
-               end
-
-               local connections = entity:get_component('stonehearth_ace:connection'):get_connections()
-               result = self:get_player_connections(new_player_id):register_entity(entity, connections, true)  -- separated by player
-               self:_communicate_update(new_player_id, result)
+         if new_player_id ~= player_id then
+            log:debug('entity %s player_id changed from %s to %s', entity, player_id, new_player_id)
+            local result = player_connections:unregister_entity(entity)
+            if result then
+               self:_communicate_update(player_id, result)
             end
-         end)
+
+            local connections = entity:get_component('stonehearth_ace:connection'):get_connections()
+            result = self:get_player_connections(new_player_id):register_entity(entity, connections, true)  -- separated by player
+            self:_communicate_update(new_player_id, result)
+         end
+      end)
       
       self._traces[id] = traces
    end
