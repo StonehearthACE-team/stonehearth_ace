@@ -228,6 +228,7 @@ function ConnectionService:_start_entity_traces(entity, player_connections, all_
       :on_changed(function(parent_entity)
          if not parent_entity then
             --we were just removed from the world
+            log:debug('%s removed from world', id)
             local res1 = player_connections:remove_entity(id)
             local res2 = all_players_connections:remove_entity(id)
             self:_perform_update(player_id, res1, res2)
@@ -243,7 +244,7 @@ function ConnectionService:_start_entity_traces(entity, player_connections, all_
 
       traces._location_trace = entity:add_component('mob'):trace_transform('connection entity moved', _radiant.dm.TraceCategories.SYNC_TRACE)
       :on_changed(function()
-         --log:debug('entity %s moved or rotated', entity)
+         log:debug('entity %s moved or rotated', entity)
          local res1 = player_connections:update_entity(id)
          local res2 = all_players_connections:update_entity(id)
          self:_perform_update(player_id, res1, res2)

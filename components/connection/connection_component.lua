@@ -75,11 +75,12 @@ function ConnectionComponent:activate()
       connected_stats = self._sv.connected_stats
    end
 
-   stonehearth_ace.connection:register_entity(self._entity, self._connections, connected_stats)
+   --stonehearth_ace.connection:register_entity(self._entity, self._connections, connected_stats)
 end
 
 function ConnectionComponent:destroy()
-   stonehearth_ace.connection:unregister_entity(self._entity)
+   log:debug('%s connection component destroyed', self._entity:get_id())
+   --stonehearth_ace.connection:unregister_entity(self._entity)
 end
 
 function ConnectionComponent:_format_connections()

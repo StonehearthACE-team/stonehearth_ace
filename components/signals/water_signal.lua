@@ -372,8 +372,8 @@ end
 function WaterSignal:_get_water(region, waters, waterfalls)
 	if not region then
 		return {}, {}
-	end
-
+   end
+   
    if waters or waterfalls then
       for id, intersected in pairs(waters or {}) do
          if intersected then

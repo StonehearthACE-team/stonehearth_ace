@@ -31,9 +31,11 @@ function WaterSignalService:initialize()
    
    self._game_loaded_listener = radiant.events.listen_once(radiant, 'radiant:game_loaded', function()
       self._game_loaded_listener = nil
-      self._tick_listener = radiant.events.listen(stonehearth.hydrology, 'stonehearth:hydrology:tick', function()
-         self:_on_tick()
-      end)
+      self:_create_tick_listener()
+   end)
+   self._world_generated_listener = radiant.events.listen_once(stonehearth.game_creation, 'stonehearth:world_generation_complete', function()
+      self._world_generated_listener = nil
+      self:_create_tick_listener()
    end)
 end
 
@@ -41,6 +43,14 @@ function WaterSignalService:destroy()
 	if self._tick_listener then
 		self._tick_listener:destroy()
 		self._tick_listener = nil
+   end
+end
+
+function WaterSignalService:_create_tick_listener()
+   if not self._tick_listener then
+      self._tick_listener = radiant.events.listen(stonehearth.hydrology, 'stonehearth:hydrology:tick', function()
+         self:_on_tick()
+      end)
    end
 end
 
@@ -56,6 +66,8 @@ function WaterSignalService:register_water_signal(water_signal)
       return
    end
    
+   local check_all_waters = false
+
    local signal = self._signals[id]
    if not signal then
       signal = {
@@ -66,6 +78,8 @@ function WaterSignalService:register_water_signal(water_signal)
          waterfalls = {}
       }
       self._signals[id] = signal
+
+      check_all_waters = true
    end
    self:_update_signal_region(signal)
    self:_update_signal_monitor_types(signal)
@@ -129,6 +143,9 @@ function WaterSignalService:add_next_tick_callback(cb, args)
 end
 
 function WaterSignalService:_on_tick()
+   --log:debug('water signal tick with %s changed waters, %s changed waterfalls, %s signals',
+   --      radiant.size(self._changed_waters), radiant.size(self._changed_waterfalls), radiant.size(self._signals))
+
    self._current_tick = (self._current_tick + 1) % self._update_tick_mod
    if self._current_tick == self._update_pathing_tick then  -- do it on the opposite tick compared to the regular water signal updates (tick 0)
       -- this isn't really the best place for this, but it's the simplest place for it
