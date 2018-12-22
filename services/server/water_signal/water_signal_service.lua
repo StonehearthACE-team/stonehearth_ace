@@ -44,6 +44,10 @@ function WaterSignalService:destroy()
 		self._tick_listener:destroy()
 		self._tick_listener = nil
    end
+   if self._world_generated_listener then
+		self._world_generated_listener:destroy()
+		self._world_generated_listener = nil
+   end
 end
 
 function WaterSignalService:_create_tick_listener()

@@ -376,7 +376,7 @@ function PlayerConnections:_remove_entity_from_graphs(entity_struct)
             local connector = _connectors[connector_id]
             local connected_to = radiant.keys(connector.connected_to)
             for _, id in pairs(connected_to) do
-               graph_id = connector.connected_to[connected_to]
+               graph_id = connector.connected_to[connected_to] -- TODO: fix this; this is actually a threshold, not the graph_id
                --log:debug('trying to disconnect %s from %s', connector_id, id)
                local connected = _connectors[id]
                connected_entities[connected.entity_id] = true
@@ -415,7 +415,7 @@ function PlayerConnections:_remove_entity_from_graphs(entity_struct)
          end
 
          if graph_id then
-            local changes = self:_split_graph_deep_disconnected(conn_tbl.graphs, stonehearth_ace.connection:get_graph_by_id(id), connected_entities)
+            local changes = self:_split_graph_deep_disconnected(conn_tbl.graphs, stonehearth_ace.connection:get_graph_by_id(graph_id), connected_entities)
             if changes then
                combine_tables(type_graphs, changes)
             end
@@ -704,6 +704,7 @@ function PlayerConnections:_split_graph_deep_disconnected(graph_indexes, graph, 
    -- we want to do a breadth-first search; almost always, if nodes are connected to one another, we'll find that faster with breadth-first than depth-first
    -- we want to cancel the search as soon as it finds the node(s) instead of traversing everything
    -- create new graphs when necessary
+   log:debug('_split_graph_deep_disconnected %s, %s', graph.id, radiant.util.table_tostring(node_ids))
 
    local graphs_changed = {}
 
