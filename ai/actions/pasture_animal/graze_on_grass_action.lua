@@ -10,6 +10,11 @@ GrazeOnGround.args = {
 }
 GrazeOnGround.priority = 0
 
+
+--[[
+   Eat grass that belongs the it's owner. Only pastures will spawn grass that belongs to it's owner.
+   Animals may roam from pasture to pasture, but it should not run across the world to eat natural food
+]]--
 function GrazeOnGround:start_thinking(ai, entity, args)
    if radiant.entities.get_resource(entity, 'calories') == nil then
       ai:set_debug_progress('dead: have no calories resource')
@@ -19,14 +24,29 @@ function GrazeOnGround:start_thinking(ai, entity, args)
    -- Constant state
    self._ai = ai
    self._entity = entity
-   self._grass_uri = args.grass_uri or 'stonehearth_ace:terrain:pasture_grass'
+
+   local grass_uri = args.grass_uri or 'stonehearth_ace:terrain:pasture_grass'
+   local grass_uri_length = string.len(grass_uri)
+   local owner_id = radiant.entities.get_player_id(entity)
 
    -- Mutable state
    self._ready = false
-   self._food_filter_fn = stonehearth.ai:filter_from_key('food_filter', 'grazing grass', function(item)
-         return string.sub(item:get_uri(), 1, string.len(self._grass_uri)) == self._grass_uri
+   self._food_filter_fn = stonehearth.ai:filter_from_key('food_filter', 'grazing grass', function(food)
+         if owner_id ~= '' and radiant.entities.get_player_id(food) ~= owner_id then
+            return false
+         end
+         local has_grass_uri = string.sub(food:get_uri(), 1, grass_uri_length) == grass_uri
+         if not has_grass_uri then
+            return false
+         end
+         return true
       end)
-   self._food_rating_fn = function(item) return 1 end
+   -- we are hungry! lets eat the closest one. this reduces chance of animals eating all the same grass at once.
+   -- sort by distance
+   local entity_location = radiant.entities.get_world_grid_location(entity)
+   self._food_rating_fn = function(item)
+            return -entity_location:distance_to_squared(radiant.entities.get_world_grid_location(item))
+         end
    
    self._calorie_listener = radiant.events.listen(self._entity, 'stonehearth:expendable_resource_changed:calories', self, self._rethink)
    self._timer = stonehearth.calendar:set_interval("eat_action hourly", '10m+5m', function() self:_rethink() end, '20m')
@@ -75,7 +95,7 @@ function GrazeOnGround:_mark_ready()
       self._ready = true
       self._ai:set_think_output({
          food_filter_fn = self._food_filter_fn,
-         food_rating_fn = self._food_rating_fn,
+         food_rating_fn = self._food_rating_fn
       })
       radiant.events.trigger_async(self._entity, 'stonehearth:entity:looking_for_food')
    end
@@ -93,7 +113,7 @@ return ai:create_compound_action(GrazeOnGround)
    :execute('stonehearth:find_best_reachable_entity_by_type', {
             filter_fn = ai.PREV.food_filter_fn,
             rating_fn = ai.PREV.food_rating_fn,
-            description = 'find grass to graze',
+            description = 'find grass to graze'
          })
    :execute('stonehearth:goto_entity', {entity = ai.PREV.item})
    :execute('stonehearth:turn_to_face_entity', {entity = ai.BACK(2).item})
