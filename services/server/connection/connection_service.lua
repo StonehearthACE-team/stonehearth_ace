@@ -16,6 +16,7 @@ local ConnectionService = class()
 local CONNECTIONS_BY_PLAYER_ID = {}
 local GRAPHS_BY_TYPE = {}
 local ALL_PLAYERS = '_all_players_'
+local IS_SHUTTING_DOWN = false
 
 local combine_tables = ConnectionUtils.combine_tables
 local combine_type_tables = ConnectionUtils.combine_type_tables
@@ -49,6 +50,19 @@ function ConnectionService:initialize()
       for k, v in pairs(self._sv.connections) do
          CONNECTIONS_BY_PLAYER_ID[k] = v
       end
+   end
+
+   self._game_shut_down_listener = radiant.events.listen_once(radiant, 'radiant:shut_down', function()
+      self._game_shut_down_listener = nil
+      IS_SHUTTING_DOWN = true
+      log:debug('connection service shutting down')
+   end)
+end
+
+function ConnectionService:destroy()
+   if self._game_shut_down_listener then
+      self._game_shut_down_listener:destroy()
+      self._game_shut_down_listener = nil
    end
 end
 
@@ -95,11 +109,13 @@ end
 
 function ConnectionService:unregister_entity(entity)
    --log:debug('unregistering connection entity %s', entity)
-   local player_id = entity:get_player_id()
-   local res1 = self:get_player_connections(player_id):unregister_entity(entity)
-   local res2 = self:get_player_connections(ALL_PLAYERS):unregister_entity(entity)
+   if not IS_SHUTTING_DOWN then
+      local player_id = entity:get_player_id()
+      local res1 = self:get_player_connections(player_id):unregister_entity(entity)
+      local res2 = self:get_player_connections(ALL_PLAYERS):unregister_entity(entity)
 
-   self:_perform_update(player_id, res1, res2)
+      self:_perform_update(player_id, res1, res2)
+   end
    
    self:_stop_entity_traces(entity:get_id())
 end
