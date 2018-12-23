@@ -19,7 +19,18 @@
    "entity_data": {
       "stonehearth:catalog": {
          "display_name": "i18n(stonehearth_ace:entities.weapons.na_bronze_sword.display_name)",
-         "icon": "file(na_bronze_sword.png)"
+         "icon": "file(na_bronze_sword.png)",
+         "mixintypes": {
+            "material_tags": "override"
+         },
+         "material_tags": [
+            "bronze",
+            "melee_weapon",
+            "bronze_sword",
+            "na_made",
+            "crafted",
+            "stockpile_weapon"
+         ]
       }
    }
 }

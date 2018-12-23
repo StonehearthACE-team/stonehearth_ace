@@ -21,7 +21,9 @@
             "stonehearth:have_shield"
          ],
          "ilevel": 3,
-         "roles":["footman_job"],
+         "roles": [
+            "footman_job"
+         ],
          "required_job_level": 3,
          "equip_effect": "stonehearth:effects:weapon_level_up",
          "equipment_types": [
@@ -58,7 +60,14 @@
          "description": "i18n(stonehearth_ace:entities.armor.light_iron_shield.description)",
          "icon": "file(light_iron_shield.png)",
          "category": "armor",
-         "material_tags":["iron", "shield", "medium_armor", "light_iron_shield", "stockpile_equipment"]
+         "material_tags": [
+            "iron",
+            "shield",
+            "medium_armor",
+            "ascendancy_made",
+            "light_iron_shield",
+            "stockpile_equipment"
+         ]
       }
    }
 }

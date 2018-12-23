@@ -6,7 +6,10 @@
    },
    "entity_data": {
       "stonehearth:catalog": {
-         "material_tags":["wood", "bow", "ranged_weapon", "recurve_bow", "stockpile_weapon"]
+	     "mixintypes": {
+			"material_tags": "override"
+		 },
+         "material_tags":["wood", "bow", "ranged_weapon", "ascendancy_made", "recurve_bow", "stockpile_weapon"]
       }
    }
 }

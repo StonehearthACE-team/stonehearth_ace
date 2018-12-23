@@ -19,7 +19,19 @@
    "entity_data": {
       "stonehearth:catalog": {
          "display_name": "i18n(stonehearth_ace:entities.weapons.rc_bronze_axe.display_name)",
-         "icon": "file(rc_bronze_axe.png)"
+         "icon": "file(rc_bronze_axe.png)",
+         "mixintypes": {
+            "material_tags": "override"
+         },
+         "material_tags": [
+            "twohanded",
+            "bronze",
+            "rc_made",
+            "melee_weapon",
+            "bronze_axe",
+            "crafted",
+            "stockpile_weapon"
+         ]
       }
    }
 }

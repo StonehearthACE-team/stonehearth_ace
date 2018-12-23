@@ -19,7 +19,19 @@
    "entity_data": {
       "stonehearth:catalog": {
          "display_name": "i18n(stonehearth_ace:entities.weapons.na_iron_battle_axe.display_name)",
-         "icon": "file(na_iron_battle_axe.png)"
+         "icon": "file(na_iron_battle_axe.png)",
+         "mixintypes": {
+            "material_tags": "override"
+         },
+         "material_tags": [
+            "twohanded",
+            "iron",
+            "melee_weapon",
+            "crafted",
+            "na_made",
+            "iron_battle_axe",
+            "stockpile_weapon"
+         ]
       }
    }
 }

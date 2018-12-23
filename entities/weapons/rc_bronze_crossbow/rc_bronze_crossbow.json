@@ -19,7 +19,18 @@
    "entity_data": {
       "stonehearth:catalog": {
          "display_name": "i18n(stonehearth_ace:entities.weapons.rc_bronze_crossbow.display_name)",
-         "icon": "file(rc_bronze_crossbow.png)"
+         "icon": "file(rc_bronze_crossbow.png)",
+         "mixintypes": {
+            "material_tags": "override"
+         },
+         "material_tags": [
+            "bronze",
+            "crossbow",
+            "rc_made",
+            "ranged_weapon",
+            "bronze_crossbow",
+            "stockpile_weapon"
+         ]
       }
    }
 }

@@ -2,10 +2,14 @@
    "type": "entity",
    "components": {
       "render_info": {
-         "scale": 0.09
+         "scale": 0.08
       }
    },
    "entity_data": {
+	  "stonehearth:table": {
+         "drop_effect": "carry_putdown_on_table",
+         "drop_offset": { "x": -0.5, "y": 0.8, "z": -0.5 }
+      },
 	  "stonehearth:workshop": {
          "equivalents": [ "stonehearth_ace:rayyas_children:cook:workbench", "stonehearth_ace:northern_alliance:cook:workbench", "stonehearth_ace:mountain_folk:cook:workbench" ]
       }

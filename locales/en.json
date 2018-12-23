@@ -7,6 +7,42 @@
       }
    },
    "data": {
+      "saved_objects": {
+         "building_templates": {
+            "northern_alliance": {
+               "workshop_weaver": {
+                  "display_name": "Weaver's Workshop"
+               },
+               "workshop_carpenter": {
+                  "display_name": "Carpenter's Workshop"
+               },
+               "workshop_cook": {
+                  "display_name": "Cook's Kitchen"
+               },
+               "workshop_herbalist": {
+                  "display_name": "Herbalist's Workshop"
+               },
+               "workshop_mason": {
+                  "display_name": "Mason's Workshop"
+               },
+               "workshop_potter": {
+                  "display_name": "Pottery Studio"
+               },
+               "workshop_engineer": {
+                  "display_name": "Engineer's Workshop"
+               },
+               "workshop_blacksmith": {
+                  "display_name": "Blacksmith's Workshop"
+               }
+            },
+            "potter_house": {
+               "display_name": "Potter House"
+            },
+            "mason_house": {
+               "display_name": "Mason House"
+            }
+         }
+      },
       "gm": {
          "campaigns": {
             "ambient_threats": {
@@ -30,6 +66,214 @@
                   "recipe_unlock_weapons_6": "New Legendary Mace recipe - Mason, Carpenter, and Engineer collaboration!",
                   "recipe_unlock_weapons_7": "New Legendary Tome recipe - Cook, Herbalist, and Geomancer collaboration!",
                   "recipe_unlock_weapons_8": "New Legendary Mail recipe - Weaver, Engineer, and Blacksmith collaboration!"
+               },
+               "arcs": {
+                  "encounters": {
+                     "tier_1_shops": {
+                        "blacksmith_shop_1": {
+                           "shop_info": {
+                              "name": "Fernand the Great's Forge",
+                              "title": "A southerner blacksmith has arrived with some metal wares"
+                           }
+                        },
+                        "bonecarver_shop_1": {
+                           "shop_info": {
+                              "name": "Kim's Femur Emporium",
+                              "title": "A mountain ranger has arrived with bone goods to sell"
+                           }
+                        },
+                        "charcoal_shop_1": {
+                           "shop_info": {
+                              "name": "Turnpoint River Charcoal Burners",
+                              "title": "A group of charcoal burners is in town for business"
+                           }
+                        },
+                        "drink_shop_1": {
+                           "shop_info": {
+                              "name": "The Ewbrand Distillery",
+                              "title": "A merchant of drinks and liquor has camped nearby"
+                           }
+                        },
+                        "training_shop_1": {
+                           "shop_info": {
+                              "name": "Captain Rôk's Training School",
+                              "title": "A group of soldiers in training is passing by for business"
+                           }
+                        },
+                        "engineering_shop_1": {
+                           "shop_info": {
+                              "name": "Dwarin's Trinkets & Gizmos",
+                              "title": "A dwarven artificer has come to town for trading"
+                           }
+                        },
+                        "forager_shop_1": {
+                           "shop_info": {
+                              "name": "The Sisters of Whitehill Shop",
+                              "title": "A caravan from a nearby convent has arrived with foraging goods"
+                           }
+                        },
+                        "fishing_shop_1": {
+                           "shop_info": {
+                              "name": "Turnpoint River Fishery",
+                              "title": "A worker from a nearby fishing village has arrived for trading"
+                           }
+                        },
+                        "quarry_shop_1": {
+                           "shop_info": {
+                              "name": "The Gambiso Quarry's Shop",
+                              "title": "A group from a small quarry have arrived with stone to sell"
+                           }
+                        },
+                        "rc_weapon_armor_shop_1": {
+                           "shop_info": {
+                              "name": "Rajin's Finest Blade",
+                              "title": "The smith Rajin has arrived with his desert armory for business"
+                           }
+                        },
+                        "na_weapon_armor_shop_1": {
+                           "shop_info": {
+                              "name": "The Wolfbite Forge",
+                              "title": "A trader from the north has arrived with weapons and armor for sale"
+                           }
+                        }
+                     },
+                     "tier_2_shops": {
+                        "blacksmith_shop_2": {
+                           "shop_info": {
+                              "name": "Fernand the Great's Forge",
+                              "title": "A blacksmith from far south has arrived with his finest metals"
+                           }
+                        },
+                        "bonecarver_shop_2": {
+                           "shop_info": {
+                              "name": "Atikin the Bone Carver",
+                              "title": "A survivalist hermit arrives with bone trinkets and items to sell"
+                           }
+                        },
+                        "charcoal_shop_2": {
+                           "shop_info": {
+                              "name": "Orim Lake Charcoal Burners",
+                              "title": "A group of charcoal burners is in town for business"
+                           }
+                        },
+                        "drink_shop_2": {
+                           "shop_info": {
+                              "name": "The Thoto Brewery",
+                              "title": "A northerner brewer has arrived with drinks for sale"
+                           }
+                        },
+                        "training_shop_2": {
+                           "shop_info": {
+                              "name": "The Military Academy",
+                              "title": "A representative of the military academy is in town"
+                           }
+                        },
+                        "engineering_shop_2": {
+                           "shop_info": {
+                              "name": "Barzak Cobaltfist's Workshop",
+                              "title": "An engineer from the mountain folk is camping nearby"
+                           }
+                        },
+                        "forager_shop_2": {
+                           "shop_info": {
+                              "name": "The Rangers' Guild",
+                              "title": "Members of a guild of rangers are passing by selling foraging goods"
+                           }
+                        },
+                        "fishing_shop_2": {
+                           "shop_info": {
+                              "name": "'Smells Fishy Fishery'",
+                              "title": "Traders from a large fishing business have arrived with wares"
+                           }
+                        },
+                        "quarry_shop_2": {
+                           "shop_info": {
+                              "name": "Big Chunk Quarry & Co.",
+                              "title": "A big company of masons and miners is in town for business"
+                           }
+                        },
+                        "rc_weapon_armor_shop_2": {
+                           "shop_info": {
+                              "name": "Rajin's Finest Blade",
+                              "title": "The desert smith Rajin has come with some of his finest wares"
+                           }
+                        },
+                        "na_weapon_armor_shop_2": {
+                           "shop_info": {
+                              "name": "The Wolfbite Forge",
+                              "title": "A smith from the Northern Alliance is available for bartering"
+                           }
+                        }
+                     },
+                     "tier_3_shops": {
+                        "blacksmith_shop_3": {
+                           "shop_info": {
+                              "name": "The Mightiest Hammer",
+                              "title": "A famous blacksmith's caravan has arrived and wants to trade"
+                           }
+                        },
+                        "bonecarver_shop_3": {
+                           "shop_info": {
+                              "name": "Kita's Rattle & Rib Shop",
+                              "title": "A renowned bone carver is visiting and willing to trade"
+                           }
+                        },
+                        "charcoal_shop_3": {
+                           "shop_info": {
+                              "name": "Seaside Charcoal Burners",
+                              "title": "A large caravan of charcoal burners is camping nearby"
+                           }
+                        },
+                        "drink_shop_3": {
+                           "shop_info": {
+                              "name": "The Wulfkin Meadery",
+                              "title": "A popular brand of drinks and beverages has sent us a trader"
+                           }
+                        },
+                        "training_shop_3": {
+                           "shop_info": {
+                              "name": "Hadrian's School of Chivalry",
+                              "title": "The Knight Hadrian has arrived with training ware for sale"
+                           }
+                        },
+                        "engineering_shop_3": {
+                           "shop_info": {
+                              "name": "Wrynn's Wonderful Wares",
+                              "title": "A famous dwarven artificer is in town with wares to sell"
+                           }
+                        },
+                        "forager_shop_3": {
+                           "shop_info": {
+                              "name": "Elven Caravan",
+                              "title": "Elves! A group of woodland rangers is camped nearby and wants to trade"
+                           }
+                        },
+                        "fishing_shop_3": {
+                           "shop_info": {
+                              "name": "Bruno the Fisher's Shop",
+                              "title": "A famous fisherman is in town with many exotic wares to sell"
+                           }
+                        },
+                        "quarry_shop_3": {
+                           "shop_info": {
+                              "name": "Jonar Hillcrown's Quarry",
+                              "title": "A bunch of dwarven miners from Hillcrown are in town for business"
+                           }
+                        },
+                        "rc_weapon_armor_shop_3": {
+                           "shop_info": {
+                              "name": "Thali Pandora's Blacksmith Shop",
+                              "title": "A famous desert smith has arrived with her almost legendary wares"
+                           }
+                        },
+                        "na_weapon_armor_shop_3": {
+                           "shop_info": {
+                              "name": "Novgnar Silverfist's Shop",
+                              "title": "The legendary northern smith Novgnar is in town with goods to sell"
+                           }
+                        }
+                     }
+                  }
                }
             }
          }
@@ -310,6 +554,10 @@
          "not_in_water": {
             "display_name": "On Land",
             "description": "This creature is not really adapted to being on land... It has consequences!"
+         },
+         "holiday_cheer": {
+            "display_name": "Holiday Cheer",
+            "description": "Woo! This hearthling is enjoying the holidays with slighly increased compassion and speed! "
          }
       },
       "loadouts": {
@@ -321,7 +569,8 @@
             "training_dummy": "Dummy",
             "comfy_bed": "Bed",
             "roast_venison": "Venison",
-            "training_target": "Targets"
+            "training_target": "Targets",
+            "sleeping_bag": "Bedding"
          },
          "military_expedition": {
             "display_name": "Military Expedition",
@@ -873,6 +1122,10 @@
                "display_name": "Mining Helmet",
                "description": "Can be used by a Worker for additional efficiency. Also provides light."
             }
+         },
+         "worker_holiday_hat": {
+            "display_name": "Holiday Cheer Cap",
+            "description": "A traditional hat for enjoying the end of the year's holidays!"
          }
       },
       "cook": {
@@ -952,6 +1205,21 @@
                "description": "Delicious grains ready to be used in other recipes.",
                "flavor": "Who knew grass could be so tasty?"
             },
+            "dough_recipe": {
+               "recipe_name": "Portion of Dough",
+               "description": "Mix and knead a malleable dough to be used on baking meals like bread.",
+               "flavor": "Watch it grow!"
+            },
+            "batter_recipe": {
+               "recipe_name": "Bowl of Batter",
+               "description": "Mix a delicious, sticky and creamy dough that can be used for coating baked goods.",
+               "flavor": "Now we need some onions..."
+            },
+            "dough_sweet_recipe": {
+               "recipe_name": "Bowl of Sweet Dough",
+               "description": "Mix and prepare a sweet and wonderful dough that can be turned into cake!",
+               "flavor": "The cake is not a lie!"
+            },
             "cooked_rice_recipe": {
                "recipe_name": "Cooked Rice",
                "description": "Boiled to perfection and sticky enough.",
@@ -998,6 +1266,9 @@
                "display_name": "Powered Mill Grinder",
                "description": "Can be used by a Cook for milling. Requires mechanical power to work."
             }
+         },
+         "cook_bowl_animation": {
+            "display_name": "Cook's Bowl"
          }
       },
       "carpenter": {
@@ -1054,6 +1325,16 @@
       },
       "weaver": {
          "recipes": {
+            "worker_holiday_hat_recipe": {
+               "recipe_name": "Holiday Cheer Cap",
+               "description": "The ACE Team would like to wish you all very happy and wonderful holidays!",
+               "flavor": "This recipe shall be removed after New Year's Eve... So craft yours while you can!"
+            },
+            "sleeping_bag_recipe": {
+               "recipe_name": "Sleeping Bag",
+               "description": "Better than the ground but not really a homely bedding. Very portable, though!",
+               "flavor": "A bed you can carry. Well, to be honest you can actually carry ANY bed..."
+            },
             "legendary_hood_recipe": {
                "recipe_name": "Elven King Hood",
                "description": "A beautiful hood worthy of the finest archer.",
@@ -2031,6 +2312,10 @@
                "display_name": "Wooden Sleeping Spot",
                "description": "That one is really mean."
             }
+         },
+         "sleeping_bag": {
+            "display_name": "Sleeping Bag",
+            "description": "Better than the ground, sleeping bags are good for their portability."
          }
       },
       "recipes": {
@@ -4086,6 +4371,29 @@
                "terrain_slice_buildings_description": "In Terrain Slice mode, don't render entities supported by visible, non-terrain entities.",
                "water_signal_update_frequency": "Water Signal Update Rate",
                "water_signal_update_frequency_description": "Only update water signals this many ticks of the water system. Increase this value to improve performance with lots of flowing water."
+            }
+         },
+         "select_settlement": {
+            "highlands": {
+               "terrain_codes": {
+                  "plains": "Vale",
+                  "foothills": "Cliff Sides",
+                  "mountains": "Peak"
+               }
+            },
+            "arctic": {
+               "terrain_codes": {
+                  "plains": "Tundra",
+                  "foothills": "Moors"
+               }
+            },
+            "desert": {
+               "terrain_codes": {
+                  "water": "Oasis",
+                  "plains": "Arid Shrubland",
+                  "foothills": "Rocky Hills",
+                  "mountains": "Canyons"
+               }
             }
          }
       },

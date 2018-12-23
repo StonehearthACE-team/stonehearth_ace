@@ -3,7 +3,7 @@
    "mixins": "stonehearth:mixins:placed_object",
    "components": {
       "render_info": {
-         "scale": 0.33
+         "scale": 0.25
       },
       "stonehearth:evolve": {},
       "model_variants": {
@@ -74,7 +74,7 @@
          "region": [
             {
                "min": { "x": -1, "y": 0, "z": -1 },
-               "max": { "x": 1, "y": 9, "z": 1 }
+               "max": { "x": 1, "y": 7, "z": 1 }
             }
          ]
       }
@@ -85,7 +85,9 @@
          "evolve_time": "14h+2h"
       },
       "stonehearth:catalog": {
-         "material_tags":["stockpile_plant"],
+         "material_tags": [
+            "stockpile_plant"
+         ],
          "display_name": "i18n(stonehearth_ace:entities.trees.yew_tree.bud.tree_yew_plant_bud.display_name)",
          "description": "i18n(stonehearth_ace:entities.trees.yew_tree.bud.tree_yew_plant_bud.description)",
          "category": "plants"

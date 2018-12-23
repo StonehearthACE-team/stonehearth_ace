@@ -19,7 +19,19 @@
    "entity_data": {
       "stonehearth:catalog": {
          "display_name": "i18n(stonehearth_ace:entities.weapons.na_bronze_hatchet.display_name)",
-         "icon": "file(na_bronze_hatchet.png)"
+         "icon": "file(na_bronze_hatchet.png)",
+         "mixintypes": {
+            "material_tags": "override"
+         },
+         "material_tags": [
+            "offhand",
+            "bronze",
+            "na_made",
+            "melee_weapon",
+            "bronze_hatchet",
+            "crafted",
+            "stockpile_weapon"
+         ]
       }
    }
 }

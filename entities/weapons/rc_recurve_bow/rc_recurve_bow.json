@@ -19,7 +19,18 @@
    "entity_data": {
       "stonehearth:catalog": {
          "display_name": "i18n(stonehearth_ace:entities.weapons.rc_recurve_bow.display_name)",
-         "icon": "file(rc_recurve_bow.png)"
+         "icon": "file(rc_recurve_bow.png)",
+         "mixintypes": {
+            "material_tags": "override"
+         },
+         "material_tags": [
+            "wood",
+            "bow",
+            "ranged_weapon",
+            "na_made",
+            "recurve_bow",
+            "stockpile_weapon"
+         ]
       }
    }
 }

@@ -23,7 +23,9 @@
             "stonehearth:patrol"
          ],
          "ilevel": 17,
-         "roles":["footman_job"],
+         "roles": [
+            "footman_job"
+         ],
          "required_job_level": 2,
          "equip_effect": "stonehearth:effects:weapon_level_up",
          "equipment_types": [
@@ -68,7 +70,15 @@
          "description": "i18n(stonehearth_ace:entities.weapons.bronze_axe.description)",
          "icon": "file(bronze_axe.png)",
          "category": "weapons",
-         "material_tags":["twohanded", "bronze", "melee_weapon", "bronze_axe", "crafted", "stockpile_weapon"]
+         "material_tags": [
+            "twohanded",
+            "bronze",
+            "ascendancy_made",
+            "melee_weapon",
+            "bronze_axe",
+            "crafted",
+            "stockpile_weapon"
+         ]
       }
    }
 }

@@ -20,7 +20,9 @@
             "stonehearth:patrol"
          ],
          "ilevel": 14,
-         "roles":["knight_job"],
+         "roles": [
+            "knight_job"
+         ],
          "required_job_level": 1,
          "equip_effect": "stonehearth:effects:weapon_level_up",
          "equipment_types": [
@@ -84,7 +86,14 @@
          "description": "i18n(stonehearth_ace:entities.weapons.iron_short_sword.description)",
          "icon": "file(iron_short_sword.png)",
          "category": "weapons",
-         "material_tags":["iron", "melee_weapon", "crafted", "iron_short_sword", "stockpile_weapon"]
+         "material_tags": [
+            "iron",
+            "melee_weapon",
+            "ascendancy_made",
+            "crafted",
+            "iron_short_sword",
+            "stockpile_weapon"
+         ]
       }
    }
 }

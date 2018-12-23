@@ -57,7 +57,10 @@
          "value_in_gold": 48
       },
       "stonehearth:catalog": {
-         "material_tags":["steel", "melee_weapon", "crafted", "long_sword", "stockpile_weapon"]
+	     "mixintypes": {
+			"material_tags": "override"
+		 },
+         "material_tags":["steel", "melee_weapon", "crafted", "ascendancy_made", "long_sword", "stockpile_weapon"]
       }
    }
 }

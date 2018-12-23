@@ -27,7 +27,7 @@
          }
       },
       "mob": {
-         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "model_origin": { "x": 0.1, "y": 0, "z": -0.1 },
          "region_origin": { "x": 0.5, "y": 0, "z": 0.5 },
          "mob_collision_type": "clutter"
       }
@@ -37,7 +37,9 @@
          "display_name": "i18n(stonehearth_ace:entities.trees.birch_tree.seed.tree_birch_seed_ghost.display_name)",
          "description": "i18n(stonehearth_ace:entities.trees.birch_tree.seed.tree_birch_seed_ghost.description)",
          "icon": "file(tree_birch_seed.png)",
-         "material_tags":["stockpile_plant"],
+         "material_tags": [
+            "stockpile_plant"
+         ],
          "category": "seed"
       },
       "stonehearth:evolve_data": {

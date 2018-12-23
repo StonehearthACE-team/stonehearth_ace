@@ -19,7 +19,19 @@
    "entity_data": {
       "stonehearth:catalog": {
          "display_name": "i18n(stonehearth_ace:entities.weapons.rc_two_handed_sword.display_name)",
-         "icon": "file(rc_two_handed_sword.png)"
+         "icon": "file(rc_two_handed_sword.png)",
+         "mixintypes": {
+            "material_tags": "override"
+         },
+         "material_tags": [
+            "twohanded",
+            "steel",
+            "melee_weapon",
+            "rc_made",
+            "crafted",
+            "two_handed_sword",
+            "stockpile_weapon"
+         ]
       }
    }
 }

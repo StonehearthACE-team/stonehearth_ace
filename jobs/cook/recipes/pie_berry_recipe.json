@@ -1,3 +1,24 @@
 {
-   "work_effect": "work_wait"
+   "work_effect": "work_wait",
+   "mixintypes": {
+	  "ingredients": "override"
+   },
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:food:dough_sweet",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth:food:sugar",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth:food:berries:berry_basket",
+         "count": 2
+      },
+	  {
+         "material": "low_fuel",
+         "count": 1
+      }
+   ]
 }

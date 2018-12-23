@@ -68,7 +68,10 @@
          }
       },
       "stonehearth:catalog": {
-         "material_tags":["bronze", "melee_weapon", "bronze_sword", "crafted", "stockpile_weapon"]
+		 "mixintypes": {
+			"material_tags": "override"
+		 },
+         "material_tags":["bronze", "melee_weapon", "bronze_sword", "ascendancy_made", "crafted", "stockpile_weapon"]
       }
 	}
 }

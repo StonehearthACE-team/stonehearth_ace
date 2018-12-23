@@ -20,7 +20,9 @@
             "stonehearth:patrol"
          ],
          "ilevel": 24,
-         "roles":["archer_job"],
+         "roles": [
+            "archer_job"
+         ],
          "required_job_level": 1,
          "equip_effect": "stonehearth:effects:weapon_level_up",
          "equipment_types": [
@@ -63,7 +65,14 @@
          "description": "i18n(stonehearth_ace:entities.weapons.long_bow.description)",
          "icon": "file(long_bow.png)",
          "category": "weapons",
-         "material_tags":["wood", "bow", "ranged_weapon", "long_bow", "stockpile_weapon"]
+         "material_tags": [
+            "wood",
+            "bow",
+            "ascendancy_made",
+            "ranged_weapon",
+            "long_bow",
+            "stockpile_weapon"
+         ]
       }
    }
 }
