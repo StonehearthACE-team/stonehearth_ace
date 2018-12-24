@@ -7,6 +7,42 @@
       }
    },
    "data": {
+      "saved_objects": {
+         "building_templates": {
+            "northern_alliance": {
+               "workshop_weaver": {
+                  "display_name": "Weberwerkbank"
+               },
+               "workshop_carpenter": {
+                  "display_name": "Schreinerwerkbank"
+               },
+               "workshop_cook": {
+                  "display_name": "Kochküche"
+               },
+               "workshop_herbalist": {
+                  "display_name": "Kräuterarztwerkbank"
+               },
+               "workshop_mason": {
+                  "display_name": "Steinmetzwerkbank"
+               },
+               "workshop_potter": {
+                  "display_name": "Töpferwerkbank"
+               },
+               "workshop_engineer": {
+                  "display_name": "Ingeneurwerkbank"
+               },
+               "workshop_blacksmith": {
+                  "display_name": "Schmiedewerkbank"
+               }
+            },
+            "potter_house": {
+               "display_name": "Weberhaus"
+            },
+            "mason_house": {
+               "display_name": "Steinmetzhaus"
+            }
+         }
+      },
       "gm": {
          "campaigns": {
             "ambient_threats": {
@@ -30,6 +66,214 @@
                   "recipe_unlock_weapons_6": "Neues legendäres Streitkolben-Rezept - Zusammenarbeit von Steinmetz, Schreiner und Ingenieur!",
                   "recipe_unlock_weapons_7": "Neues legendäres Foliant-Rezept - Zusammenarbeit von Koch, Kräuterarzt und Geomant!",
                   "recipe_unlock_weapons_8": "Neues legendäres Kettenpanzer-Rezept - Zusammenarbeit von Weber, Ingenieur und Schmied!"
+               },
+               "arcs": {
+                  "encounters": {
+                     "tier_1_shops": {
+                        "blacksmith_shop_1": {
+                           "shop_info": {
+                              "name": "Die Schmiede von Fernand dem Großen",
+                              "title": "Ein Schmied aus dem Süden ist mit einigen Metallwaren angekommen"
+                           }
+                        },
+                        "bonecarver_shop_1": {
+                           "shop_info": {
+                              "name": "Kims Femurs Warenhaus",
+                              "title": "Ein Ranger ist mit Knochenwaren zum Verkauf angekommen"
+                           }
+                        },
+                        "charcoal_shop_1": {
+                           "shop_info": {
+                              "name": "Wendefluss Kohlebrenner",
+                              "title": "Eine Gruppe Kohlebrenner ist geschäftlich in der Stadt"
+                           }
+                        },
+                        "drink_shop_1": {
+                           "shop_info": {
+                              "name": "Die Ewbrand-Brennerei",
+                              "title": "Ein Händler für Getränke und Spirituosen kampiert in der Nähe"
+                           }
+                        },
+                        "training_shop_1": {
+                           "shop_info": {
+                              "name": "Kapitän Rôks Trainingsschule",
+                              "title": "Eine Gruppe von Soldaten im Training kommt geschäftlich vorbei"
+                           }
+                        },
+                        "engineering_shop_1": {
+                           "shop_info": {
+                              "name": "Zwergische Schmuckstücke & Gizmos",
+                              "title": "Ein zwergischer Kunsthandwerker ist zum Handeln in die Stadt gekommen"
+                           }
+                        },
+                        "forager_shop_1": {
+                           "shop_info": {
+                              "name": "Die Schwestern von Weißhügel",
+                              "title": "Eine Karawane aus einem nahe gelegenen Kloster ist mit gesammelten Waren angekommen"
+                           }
+                        },
+                        "fishing_shop_1": {
+                           "shop_info": {
+                              "name": "Wendefluss Fischerei",
+                              "title": "Ein Arbeiter aus einem nahe gelegenen Fischerdorf ist zum Handel angekommen"
+                           }
+                        },
+                        "quarry_shop_1": {
+                           "shop_info": {
+                              "name": "Der Gambiso Steinbruchshop",
+                              "title": "Eine Gruppe aus einem kleinen Steinbruch ist mit Steinen zum Verkaufen angekommen"
+                           }
+                        },
+                        "rc_weapon_armor_shop_1": {
+                           "shop_info": {
+                              "name": "Rajins feinste Klingen",
+                              "title": "Der Schmied Rajin ist mit seinen Wüstenwaffen für Geschäfte angekommen"
+                           }
+                        },
+                        "na_weapon_armor_shop_1": {
+                           "shop_info": {
+                              "name": "Die Wolfbissschmiede",
+                              "title": "Ein Händler aus dem Norden ist mit Waffen und Rüstungen zum Verkauf angekommen"
+                           }
+                        }
+                     },
+                     "tier_2_shops": {
+                        "blacksmith_shop_2": {
+                           "shop_info": {
+                              "name": "Die Schmiede von Fernand dem Großen",
+                              "title": "Ein Schmied aus dem Süden ist mit seinen feinsten Metallen angekommen"
+                           }
+                        },
+                        "bonecarver_shop_2": {
+                           "shop_info": {
+                              "name": "Atikin der Knochenschnitzer",
+                              "title": "Ein Überlebenskünster kommt mit Knochenschmuck und -gegenständen zum Verkauf"
+                           }
+                        },
+                        "charcoal_shop_2": {
+                           "shop_info": {
+                              "name": "Orim See´s Kohlebrenner",
+                              "title": "Eine Gruppe Kohlebrenner ist geschäftlich in der Stadt"
+                           }
+                        },
+                        "drink_shop_2": {
+                           "shop_info": {
+                              "name": "Die Thoto-Brauerei",
+                              "title": "Ein nordischer Brauer ist mit Getränken zum Verkauf angekommen"
+                           }
+                        },
+                        "training_shop_2": {
+                           "shop_info": {
+                              "name": "Die Militärakademie",
+                              "title": "Ein Vertreter der Militärakademie ist in der Stadt"
+                           }
+                        },
+                        "engineering_shop_2": {
+                           "shop_info": {
+                              "name": "Barzak Kobaltfausts Werkstatt",
+                              "title": "Ein Ingenieur aus dem Bergvolk kampiert in der Nähe"
+                           }
+                        },
+                        "forager_shop_2": {
+                           "shop_info": {
+                              "name": "Die Gilde der Ranger",
+                              "title": "Mitglieder einer Rangergilde ziehen vorbei und verkaufen gesammelte Waren"
+                           }
+                        },
+                        "fishing_shop_2": {
+                           "shop_info": {
+                              "name": "'Stinkefisch Fischerei'",
+                              "title": "Händler aus einem großen Fischereibetrieb sind mit Waren angekommen"
+                           }
+                        },
+                        "quarry_shop_2": {
+                           "shop_info": {
+                              "name": "Großer Fels Steinbruch & Co.",
+                              "title": "Eine große Gruppe aus Steinmetzen und Bergleuten ist geschäftlich in der Stadt"
+                           }
+                        },
+                        "rc_weapon_armor_shop_2": {
+                           "shop_info": {
+                              "name": "Rajins feinste Klinge",
+                              "title": "Der Wüstenschmied Rajin ist mit einigen seiner besten Waren gekommen"
+                           }
+                        },
+                        "na_weapon_armor_shop_2": {
+                           "shop_info": {
+                              "name": "Die Wolfbissschmiede",
+                              "title": "Ein Schmied der Nordallianz steht für Geschäfte zur Verfügung"
+                           }
+                        }
+                     },
+                     "tier_3_shops": {
+                        "blacksmith_shop_3": {
+                           "shop_info": {
+                              "name": "Der mächtigste Hammer",
+                              "title": "Eine berühmte Schmiedekarawane ist angekommen und möchte handeln"
+                           }
+                        },
+                        "bonecarver_shop_3": {
+                           "shop_info": {
+                              "name": "Kitas Hüften & Rippen",
+                              "title": "Ein renommierter Knochenschnitzer ist zu Besuch und willens handeln"
+                           }
+                        },
+                        "charcoal_shop_3": {
+                           "shop_info": {
+                              "name": "Küstenkohlebrenner",
+                              "title": "In der Nähe kampiert eine große Karawane von Kohlebrennern"
+                           }
+                        },
+                        "drink_shop_3": {
+                           "shop_info": {
+                              "name": "The Wulfkin Brauerei",
+                              "title": "Eine beliebte Alkohol- und Getränkemarke hat uns einen Händler geschickt"
+                           }
+                        },
+                        "training_shop_3": {
+                           "shop_info": {
+                              "name": "Hadrians Schule der Ritterlichkeit",
+                              "title": "Der Ritter Hadrian ist mit Trainingsausrüstung zum Verkauf angekommen"
+                           }
+                        },
+                        "engineering_shop_3": {
+                           "shop_info": {
+                              "name": "Wrynns wunderbare Waren",
+                              "title": "Ein berühmter Zwergen-Kunsthandwerker ist in der Stadt, um Waren zu verkaufen"
+                           }
+                        },
+                        "forager_shop_3": {
+                           "shop_info": {
+                              "name": "Elfenkarawane",
+                              "title": "Elfen! Eine Gruppe von Waldläufern lagert in der Nähe und möchte handeln"
+                           }
+                        },
+                        "fishing_shop_3": {
+                           "shop_info": {
+                              "name": "Bruno der Fischer",
+                              "title": "Ein berühmter Fischer ist in der Stadt und bietet viele exotische Waren zum Verkauf an"
+                           }
+                        },
+                        "quarry_shop_3": {
+                           "shop_info": {
+                              "name": "Jonar Hillcrowns Steinbruch",
+                              "title": "Ein paar Zwergenbergleute aus Hillcrown sind geschäftlich in der Stadt"
+                           }
+                        },
+                        "rc_weapon_armor_shop_3": {
+                           "shop_info": {
+                              "name": "Thali Pandoras Schmiede",
+                              "title": "Eine berühmte Wüstenschmiedin ist mit ihren fast legendären Waren angekommen"
+                           }
+                        },
+                        "na_weapon_armor_shop_3": {
+                           "shop_info": {
+                              "name": "Novgnar Silberfaust",
+                              "title": "Der legendäre Nordschmied Novgnar ist in der Stadt, um Waren zu verkaufen"
+                           }
+                        }
+                     }
+                  }
                }
             }
          }
@@ -310,6 +554,10 @@
          "not_in_water": {
             "display_name": "Auf dem Land",
             "description": "Diese Kreatur ist nicht wirklich an Land angepasst ... Das hat Konsequenzen!"
+         },
+         "holiday_cheer": {
+            "display_name": "Feiertagsjubel",
+            "description": "Woo! Dieser Hearthling genießt die Ferien mit etwas mehr Mitgefühl und Geschwindigkeit!"
          }
       },
       "loadouts": {
@@ -321,7 +569,8 @@
             "training_dummy": "Puppen",
             "comfy_bed": "Bett",
             "roast_venison": "Wild",
-            "training_target": "Ziele"
+            "training_target": "Ziele",
+            "sleeping_bag": "Bettzeug"
          },
          "military_expedition": {
             "display_name": "Militärexpedition",
@@ -873,6 +1122,10 @@
                "display_name": "Bergbauhelm",
                "description": "Kann von einem Arbeiter für zusätzliche Effizienz verwendet werden. Stellt auch Licht zur Verfügung."
             }
+         },
+         "worker_holiday_hat": {
+            "display_name": "Feiertagsjubel Mütze",
+            "description": "Ein traditioneller Hut für die Weihnachtsferien!"
          }
       },
       "cook": {
@@ -952,6 +1205,21 @@
                "description": "Leckere Körner, bereit in anderen Rezepten verwendet zu werden.",
                "flavor": "Wer wusste, dass Gras so lecker sein könnte?"
             },
+            "dough_recipe": {
+               "recipe_name": "Eine Portion Teig",
+               "description": "Mische und knete einen formbaren Teig und verwende ihn für Backmahlzeiten wie Brot.",
+               "flavor": "Beobachte es wachsen!"
+            },
+            "batter_recipe": {
+               "recipe_name": "Eine Schüssel Teig",
+               "description": "Mische einen köstlichen, klebrigen und cremigen Teig, der zum Backen von Backwaren verwendet werden kann.",
+               "flavor": "Jetzt brauchen wir Zwiebeln..."
+            },
+            "dough_sweet_recipe": {
+               "recipe_name": "Eine Schüssel süßer Teig",
+               "description": "Mische und bereite einen süßen und wundervollen Teig zu, der sich in Kuchen verwandeln lässt!",
+               "flavor": "Der Kuchen ist keine Lüge!"
+            },
             "cooked_rice_recipe": {
                "recipe_name": "Gekochter Reis",
                "description": "Perfekt gekocht und klebrig genug.",
@@ -998,6 +1266,9 @@
                "display_name": "Angetriebene Mühle",
                "description": "Kann von einem Koch zum Mahlen verwendet werden. Erfordert mechanische Arbeitskraft."
             }
+         },
+         "cook_bowl_animation": {
+            "display_name": "Kochschüssel"
          }
       },
       "carpenter": {
@@ -1054,6 +1325,16 @@
       },
       "weaver": {
          "recipes": {
+            "worker_holiday_hat_recipe": {
+               "recipe_name": "Feiertagsjubel Mütze",
+               "description": "Das ACE-Team wünscht allen Gute und schöne Ferien!",
+               "flavor": "Dieses Rezept sollte nach Silvester entfernt werden ... So basteln Sie Ihr, solange Sie können!"
+            },
+            "sleeping_bag_recipe": {
+               "recipe_name": "Schlafsack",
+               "description": "Besser als der Boden, aber nicht wirklich eine gemütlichen Bett. Aber einfach tragbar!",
+               "flavor": "Ein Bett, das du tragen kannst. Nun, um ehrlich zu sein, kannst du jedes Bett tragen ..."
+            },
             "legendary_hood_recipe": {
                "recipe_name": "Umhang des Elfenkönigs",
                "description": "Eine wunderschöne Kapuze, die den besten Bogenschützen verdient.",
@@ -2031,6 +2312,10 @@
                "display_name": "Hölzerner Schlafplatz",
                "description": "Das hier ist wirklich gemein."
             }
+         },
+         "sleeping_bag": {
+            "display_name": "Schlafsack",
+            "description": "Besser als der Boden, Schlafsäcke sind gut für ihre Tragbarkeit."
          }
       },
       "recipes": {
@@ -3933,7 +4218,8 @@
                "fluid_control": "Flüssigkeitskontrolle",
                "mechanism": "Mechanismen",
                "training_equipment": "Trainingsausrüstung",
-               "gizmos": "Gizmos"
+               "gizmos": "Gizmos",
+               "fungi": "Pilze"
             }
          },
          "custom_tooltips": {
@@ -4079,6 +4365,29 @@
                "terrain_slice_buildings_description": "Rendere keine Objekte im Gelände-Schnitt-Modus, die von sichtbaren Objekten außerhalb des Geländes unterstützt werden.",
                "water_signal_update_frequency": "Wassersignal-Aktualisierungsrate",
                "water_signal_update_frequency_description": "Aktualisiere die Wassersignale nach einer bestimmte Anzahl von Ticks des Wassersystems. Erhöhe diesen Wert, um die Leistung mit viel fließendem Wasser zu verbessern."
+            }
+         },
+         "select_settlement": {
+            "highlands": {
+               "terrain_codes": {
+                  "plains": "Tal",
+                  "foothills": "Klippenwand",
+                  "mountains": "Gipfel"
+               }
+            },
+            "arctic": {
+               "terrain_codes": {
+                  "plains": "Tundra",
+                  "foothills": "Moor"
+               }
+            },
+            "desert": {
+               "terrain_codes": {
+                  "water": "Oase",
+                  "plains": "Trockenes Buschland",
+                  "foothills": "Felsige Hügel",
+                  "mountains": "Schluchten"
+               }
             }
          }
       },
