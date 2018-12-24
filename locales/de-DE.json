@@ -570,7 +570,7 @@
             "comfy_bed": "Bett",
             "roast_venison": "Wild",
             "training_target": "Ziele",
-            "sleeping_bag": "Bettzeug"
+            "sleeping_bag": "Rollbetten"
          },
          "military_expedition": {
             "display_name": "Militärexpedition",
@@ -581,6 +581,16 @@
             "display_name": "Edles Gefolge",
             "description": "Nicht jeder isst Wild, noch gibt es Betten für alle ... Na und? Sie sind nicht für alle gedacht, sondern für ganz besondere und wichtige Hearthlinge - oder zumindest behaupten sie - das alle anderen ihnen in die Wildnis gefolgt sind.",
             "tooltip": "Eine kleine Sammlung hochwertiger Gegenstände und Berufe für einen ungewöhnlich spezialisierten Anfang."
+         }
+      },
+      "hotkeys": {
+         "keys": {
+            "ui_box_move_items": {
+               "display_name": "Mehrere Objekte gleichzeitig verschieben"
+            },
+            "ui_box_undeploy_items": {
+               "display_name": "Platzierung mehrerer Objekte gleichzeitig aufheben"
+            }
          }
       }
    },
@@ -1027,7 +1037,7 @@
             "steel_dagger_recipe": {
                "recipe_name": "Zweithand Stahldolch",
                "description": "Eine kleine und scharfe Waffe für Angriff und Verteidigung. Bringt Gegner aus dem Gleichgewicht.",
-               "flavor": "'Es gibt nur wenige Dinge, die man so leicht verbergen kann' - O.A.E Richtlinien"
+               "flavor": "'Es gibt nur wenige Dinge, die man so leicht verbergen kann' -O.A.E Richtlinien"
             },
             "steel_lance_recipe": {
                "recipe_name": "Stahllanze",
@@ -1210,15 +1220,20 @@
                "description": "Mische und knete einen formbaren Teig und verwende ihn für Backmahlzeiten wie Brot.",
                "flavor": "Beobachte es wachsen!"
             },
+            "dough_sweet_recipe": {
+               "recipe_name": "Eine Portion s of süßer Teig",
+               "description": "Bereite einen einen elastischen und süßen Teig vor und backe ihn zu Zuckerwarens.",
+               "flavor": "Es ist wie Kuchenbrot!"
+            },
             "batter_recipe": {
                "recipe_name": "Eine Schüssel Teig",
                "description": "Mische einen köstlichen, klebrigen und cremigen Teig, der zum Backen von Backwaren verwendet werden kann.",
                "flavor": "Jetzt brauchen wir Zwiebeln..."
             },
-            "dough_sweet_recipe": {
-               "recipe_name": "Eine Schüssel süßer Teig",
-               "description": "Mische und bereite einen süßen und wundervollen Teig zu, der sich in Kuchen verwandeln lässt!",
-               "flavor": "Der Kuchen ist keine Lüge!"
+            "batter_sweet_recipe": {
+               "recipe_name": "Eine Schüssel mit süßem Teig",
+               "description": "Bereite eine süße und wundervolle Mischung zu, die sich in Dinge wie KUCHEN! verwandeln lässt.",
+               "flavor": "Dieser Kuchen ist keine Lüge!"
             },
             "cooked_rice_recipe": {
                "recipe_name": "Gekochter Reis",
@@ -1249,6 +1264,16 @@
                "recipe_name": "Gemüse-Sushi",
                "description": "Eine vegetarische Alternative des exotischen Gerichts.",
                "flavor": "Jetzt kann jeder Sushi genießen!"
+            },
+            "sugar_loaf_recipe": {
+               "recipe_name": "Zuckerhut",
+               "description": "Bereite einen einfachen, aber köstlichen fülenden süßen Brotlaib zu.",
+               "flavor": "Er wird Zucker über die gesamte Kleidung streuen"
+            },
+            "panettone_recipe": {
+               "recipe_name": "Panettone",
+               "description": "Backe ein großes, leckeres und süßes Stück Brot, das mit Trockenfrüchten gefüllt ist.",
+               "flavor": "'Ein festliches Essen für eine festliche Zeit' -Irving Balduc"
             },
             "legendary_ink_recipe": {
                "recipe_name": "Heilige Tinte",
@@ -1331,7 +1356,7 @@
                "flavor": "Dieses Rezept sollte nach Silvester entfernt werden ... So basteln Sie Ihr, solange Sie können!"
             },
             "sleeping_bag_recipe": {
-               "recipe_name": "Schlafsack",
+               "recipe_name": "Rollbett",
                "description": "Besser als der Boden, aber nicht wirklich eine gemütlichen Bett. Aber einfach tragbar!",
                "flavor": "Ein Bett, das du tragen kannst. Nun, um ehrlich zu sein, kannst du jedes Bett tragen ..."
             },
@@ -2314,8 +2339,8 @@
             }
          },
          "sleeping_bag": {
-            "display_name": "Schlafsack",
-            "description": "Besser als der Boden, Schlafsäcke sind gut für ihre Tragbarkeit."
+            "display_name": "Rollbett",
+            "description": "Besser als der Boden, Rollbetten sind für Ihre Tragbarkeit bekannt."
          }
       },
       "recipes": {
@@ -2994,6 +3019,42 @@
             "parasol_basket": {
                "display_name": "Korb mit Sonnenschirmen",
                "description": "Dieser Pilz ist im rohen Zustand leicht giftig und kann nur zum Kochen verwendet werden."
+            }
+         },
+         "dough_sweet": {
+            "display_name": "Eine Portion süßer Teig",
+            "description": "Süßer Teig ist die Basis für viele Köstlichkeiten, wie zum Beispiel süßer Laib"
+         },
+         "batter_sweet": {
+            "display_name": "Eine Schüssel mit süßem Teig",
+            "description": "Süßer Teig ist eine heilige Kreation, die uns KUCHEN bringen kann."
+         },
+         "dough": {
+            "display_name": "Eine Portion Teig",
+            "description": "Teig ist eine Grundzutat für mehrere Mahlzeiten, wie Brot"
+         },
+         "batter": {
+            "display_name": "Eine Schüssel mit Teig",
+            "description": "Der Teig kann als Basis für viele Gerichte wie Knödel verwendet werden"
+         },
+         "panettone": {
+            "panettone_serving": {
+               "display_name": "Eine Ecke Panettone",
+               "description": "Oh nom nom"
+            },
+            "panettone": {
+               "display_name": "Panettone",
+               "description": "Ein sehr traditionelles und festliches, flauschiges Brot, das mit Trockenfrüchten gefüllt ist."
+            }
+         },
+         "sugar_loaf": {
+            "sugar_loaf_serving": {
+               "display_name": "Ein Stück Zuckerhut",
+               "description": "Bestreue deine Kleidung mit Zucker."
+            },
+            "sugar_loaf": {
+               "display_name": "Zuckerhut",
+               "description": "Ein schmackhafter und gesüßter Brotlaib mit Tonnen von Zucker!"
             }
          }
       },
@@ -4248,7 +4309,7 @@
             "harvest_menu": {
                "items": {
                   "harvest_and_replant": {
-                     "display_name": "Sammeln und neu pflanzen",
+                     "display_name": "Sammeln & Neupflanzen",
                      "description": "Ernte Bäume, Pflanzen und Steine von der Oberfläche des Landes und pflanze sie wenn möglich neu an.",
                      "tip_title": "Klicken und ziehen, um Ressourcen zu sammeln",
                      "tip_description": "Rechtsklick um diesen Modus zu verlassen"
@@ -4365,6 +4426,17 @@
                "terrain_slice_buildings_description": "Rendere keine Objekte im Gelände-Schnitt-Modus, die von sichtbaren Objekten außerhalb des Geländes unterstützt werden.",
                "water_signal_update_frequency": "Wassersignal-Aktualisierungsrate",
                "water_signal_update_frequency_description": "Aktualisiere die Wassersignale nach einer bestimmte Anzahl von Ticks des Wassersystems. Erhöhe diesen Wert, um die Leistung mit viel fließendem Wasser zu verbessern."
+            },
+            "controls_tab": {
+               "key_binding_names": {
+                  "vision_wilderness_toggle": "Schalte Wildnisansicht um",
+                  "vision_ore_detector_toggle": "Schalte Erzansicht um",
+                  "harvest_harvest_and_replant": "Sammeln & Neupflanzen",
+                  "zone_underfarm": "Untergrundfarm Werkzeug",
+                  "craft_grower": "Züchter Menü",
+                  "craft_artificer": "Kunsthandwerker Menü",
+                  "craft_magmasmith": "Magmaschmid Menü"
+               }
             }
          },
          "select_settlement": {
