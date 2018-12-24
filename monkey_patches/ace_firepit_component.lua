@@ -3,7 +3,7 @@ local AceFirepitComponent = class()
 local CHARCOAL_URI = 'stonehearth_ace:resources:coal:piece_of_charcoal'
 
 function AceFirepitComponent:get_fuel_material()
-   return 'low_fuel resource'
+   return 'low_fuel'
 end
 
 AceFirepitComponent._old_extinguish = FirepitComponent._extinguish
@@ -11,10 +11,9 @@ function AceFirepitComponent:_extinguish()
    local was_lit = self:is_lit()
    local ec = self._entity:add_component('entity_container')
    local is_wood = false
-   local material = self:get_fuel_material()
    
    for id, child in ec:each_child() do
-      if radiant.entities.is_material(child, material) then
+      if radiant.entities.is_material(child, 'wood resource') then
          is_wood = true
          break
       end
