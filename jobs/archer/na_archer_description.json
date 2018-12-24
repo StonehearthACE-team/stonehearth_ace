@@ -1,6 +1,12 @@
 {
    "type": "job",
    "mixins": "northern_alliance:jobs:archer",
+   "task_groups": [
+      "stonehearth_ace:task_groups:training"
+   ],
+   "xp_rewards": {
+      "training": 1
+   },
    "equipment": {
       "helmet": "file(na_archer_outfit/na_archer_hood)",
       "torso": "file(na_archer_outfit)",

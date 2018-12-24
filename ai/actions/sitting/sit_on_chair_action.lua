@@ -9,9 +9,9 @@ function make_is_available_chair_fn(ai_entity)
    local player_id = ai_entity:get_player_id()
 
    return stonehearth.ai:filter_from_key('stonehearth:sit_on_chair', player_id, function(target)
-         --if target:get_player_id() ~= player_id then
-            --return false
-         --end
+         if target:get_player_id() ~= player_id then
+            return false
+         end
 
          if radiant.entities.get_entity_data(target, 'stonehearth:chair') then
             if not target:add_component('stonehearth:mount'):is_in_use() then

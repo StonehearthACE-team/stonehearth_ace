@@ -1,0 +1,58 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(sugar_loaf.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0.05 }
+      },
+      "stonehearth:stacks": {
+         "max_stacks": 40
+      }
+   },
+   "entity_data": {
+      "stonehearth_ace:food_container": {
+         "effect": "fiddle",
+         "food": "stonehearth_ace:food:sugar_loaf:sugar_loaf_serving",
+         "stacks_per_serving": 6
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 35,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 2,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.sugar_loaf.sugar_loaf.display_name)",
+         "description": "i18n(stonehearth_ace:entities.food.sugar_loaf.sugar_loaf.description)",
+         "icon": "file(sugar_loaf.png)",
+         "is_item": true,
+         "category": "food",
+         "material_tags": [
+            "food_container",
+            "prepared_food",
+            "sugar_loaf",
+            "bread",
+            "baked",
+            "stockpile_prepared_food",
+            "vegetarian"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": 8
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

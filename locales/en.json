@@ -570,7 +570,7 @@
             "comfy_bed": "Bed",
             "roast_venison": "Venison",
             "training_target": "Targets",
-            "sleeping_bag": "Bedding"
+            "sleeping_bag": "Bedroll"
          },
          "military_expedition": {
             "display_name": "Military Expedition",
@@ -581,6 +581,16 @@
             "display_name": "Noble Entourage",
             "description": "Not everyone might eat venison, nor there are beds for all... So what? They're not meant for anyone but for some very special and important hearthling - or so they say - that has everyone else following them into the wild.",
             "tooltip": "A small collection of high value items and professions for an oddly specialized beginning."
+         }
+      },
+      "hotkeys": {
+         "keys": {
+            "ui_box_move_items": {
+               "display_name": "Move Multiple Items"
+            },
+            "ui_box_undeploy_items": {
+               "display_name": "Undeploy Multiple Items"
+            }
          }
       }
    },
@@ -1027,7 +1037,7 @@
             "steel_dagger_recipe": {
                "recipe_name": "Off-hand Steel Dagger",
                "description": "A small and sharp weapon for both offense and defense. Puts enemies out of balance.",
-               "flavor": "'There are few things as useful that you can conceal as easily' - O.A.E Guidelines"
+               "flavor": "'There are few things as useful that you can conceal as easily' -O.A.E Guidelines"
             },
             "steel_lance_recipe": {
                "recipe_name": "Steel Lance",
@@ -1210,14 +1220,19 @@
                "description": "Mix and knead a malleable dough to be used on baking meals like bread.",
                "flavor": "Watch it grow!"
             },
+            "dough_sweet_recipe": {
+               "recipe_name": "Portion of Sweet Dough",
+               "description": "Prepare and knead an elastic and sweet dough for baking sugared goods.",
+               "flavor": "It is like cake-bread!"
+            },
             "batter_recipe": {
                "recipe_name": "Bowl of Batter",
-               "description": "Mix a delicious, sticky and creamy dough that can be used for coating baked goods.",
+               "description": "Mix a delicious, sticky and creamy paste that can be used for coating baked goods.",
                "flavor": "Now we need some onions..."
             },
-            "dough_sweet_recipe": {
-               "recipe_name": "Bowl of Sweet Dough",
-               "description": "Mix and prepare a sweet and wonderful dough that can be turned into cake!",
+            "batter_sweet_recipe": {
+               "recipe_name": "Bowl of Sweet Batter",
+               "description": "Prepare a sweet and wonderful mix that can be turned into things like CAKE!",
                "flavor": "The cake is not a lie!"
             },
             "cooked_rice_recipe": {
@@ -1249,6 +1264,16 @@
                "recipe_name": "Veggie Sushi",
                "description": "A vegetarian alternative to an exotic dish.",
                "flavor": "Now everyone can enjoy sushi!"
+            },
+            "sugar_loaf_recipe": {
+               "recipe_name": "Sugar Loaf",
+               "description": "Prepare a simple yet deliciously filling sugared bread loaf.",
+               "flavor": "It will sprinkle sugar all over your clothes"
+            },
+            "panettone_recipe": {
+               "recipe_name": "Panettone",
+               "description": "Bake a large, tasty and sweet chunk of bread filled with dried fruits.",
+               "flavor": "'A festive meal for a festive time' -Irving Balduc"
             },
             "legendary_ink_recipe": {
                "recipe_name": "Sacred Ink",
@@ -1331,7 +1356,7 @@
                "flavor": "This recipe shall be removed after New Year's Eve... So craft yours while you can!"
             },
             "sleeping_bag_recipe": {
-               "recipe_name": "Sleeping Bag",
+               "recipe_name": "Bedroll",
                "description": "Better than the ground but not really a homely bedding. Very portable, though!",
                "flavor": "A bed you can carry. Well, to be honest you can actually carry ANY bed..."
             },
@@ -2314,8 +2339,8 @@
             }
          },
          "sleeping_bag": {
-            "display_name": "Sleeping Bag",
-            "description": "Better than the ground, sleeping bags are good for their portability."
+            "display_name": "Bedroll",
+            "description": "Better than the ground, bedrolls are good for their portability."
          }
       },
       "recipes": {
@@ -2994,6 +3019,42 @@
             "parasol_basket": {
                "display_name": "Basket of Parasol",
                "description": "This mushroom is slightly toxic when raw and can only be used in cooking."
+            }
+         },
+         "dough_sweet": {
+            "display_name": "Portion of Sweet Dough",
+            "description": "Sweet Dough is the base for many delicacies like sweet loaf"
+         },
+         "batter_sweet": {
+            "display_name": "Bowl of Sweet Batter",
+            "description": "Sweet Batter is a holy creation that can provide us CAKE."
+         },
+         "dough": {
+            "display_name": "Portion of Dough",
+            "description": "Dough is a base ingredient for several meals like breads"
+         },
+         "batter": {
+            "display_name": "Bowl of Batter",
+            "description": "Batter can be used as a base for many dishes like dumplings"
+         },
+         "panettone": {
+            "panettone_serving": {
+               "display_name": "Wedge of Panettone",
+               "description": "Oh nom nom"
+            },
+            "panettone": {
+               "display_name": "Panettone",
+               "description": "A very traditional and festive fluffy bread filled with dried fruits."
+            }
+         },
+         "sugar_loaf": {
+            "sugar_loaf_serving": {
+               "display_name": "Slice of Sugar Loaf",
+               "description": "Sprinkles sugar all over your clothes."
+            },
+            "sugar_loaf": {
+               "display_name": "Sugar Loaf",
+               "description": "A tasty and sweetened bread loaf with tons of sprinkled sugar!"
             }
          }
       },
@@ -4254,7 +4315,7 @@
             "harvest_menu": {
                "items": {
                   "harvest_and_replant": {
-                     "display_name": "Gather and Replant",
+                     "display_name": "Gather & Replant",
                      "description": "Gather trees, plants, and stones from the surface of the land, replanting when possible.",
                      "tip_title": "Click and drag to harvest resources",
                      "tip_description": "Right click to exit this mode"
@@ -4371,6 +4432,17 @@
                "terrain_slice_buildings_description": "In Terrain Slice mode, don't render entities supported by visible, non-terrain entities.",
                "water_signal_update_frequency": "Water Signal Update Rate",
                "water_signal_update_frequency_description": "Only update water signals this many ticks of the water system. Increase this value to improve performance with lots of flowing water."
+            },
+            "controls_tab": {
+               "key_binding_names": {
+                  "vision_wilderness_toggle": "Toggle Wilderness Vision",
+                  "vision_ore_detector_toggle": "Toggle Ore Detector",
+                  "harvest_harvest_and_replant": "Gather & Replant",
+                  "zone_underfarm": "Underfarm Tool",
+                  "craft_grower": "Grower Menu",
+                  "craft_artificer": "Artificer Menu",
+                  "craft_magmasmith": "Magmasmith Menu"
+               }
             }
          },
          "select_settlement": {
