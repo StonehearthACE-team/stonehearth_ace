@@ -3,7 +3,7 @@
    "mixins": "stonehearth:mixins:placed_object",
    "components": {
       "render_info": {
-         "scale": 0.25
+         "scale": 0.75
       },
       "stonehearth:evolve": {},
       "model_variants": {
@@ -24,7 +24,8 @@
          },
          "winter": {
             "models": [
-               "file(tree_yew_plant_bud_winter.qb)"
+               "file(tree_yew_plant_bud_winter.qb)",
+               "file(tree_yew_plant_bud_winter_2.qb)"
             ]
          }
       },
