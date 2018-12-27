@@ -1,5 +1,7 @@
 local FirepitComponent = require 'stonehearth.components.firepit.firepit_component'
 local AceFirepitComponent = class()
+local EMBER_URI = 'stonehearth_ace:decoration:ember'
+local CHARCOAL_EMBER_URI = 'stonehearth_ace:decoration:ember_charcoal'
 local CHARCOAL_URI = 'stonehearth_ace:resources:coal:piece_of_charcoal'
 
 function AceFirepitComponent:get_fuel_material()
@@ -21,17 +23,22 @@ function AceFirepitComponent:_extinguish()
    
    self:_old_extinguish()
 
-   if was_lit and is_wood then
-      self:_create_charcoal()
-	   self._log:debug('creating a charcoal...')
+   if was_lit then
+	  if is_wood then
+		self:_create_residue(CHARCOAL_EMBER_URI)
+		self._log:debug('creating a charcoal...')
+	  else
+		self:_create_residue(EMBER_URI)
+		self._log:debug('creating common embers...')
+      end
    end
 end
 
-function AceFirepitComponent:_create_charcoal()
+function AceFirepitComponent:_create_residue(residue_uri)
    local player_id = radiant.entities.get_player_id(self._entity)
-   local charcoal = radiant.entities.create_entity(CHARCOAL_URI, { owner = player_id })
+   local residue = radiant.entities.create_entity(residue_uri, { owner = player_id })
    local entity_container = self._entity:get_component('entity_container')
-   entity_container:add_child(charcoal)
+   entity_container:add_child(residue)
 end
 
 function AceFirepitComponent:_retrieve_charcoal()
@@ -43,6 +50,12 @@ function AceFirepitComponent:_retrieve_charcoal()
          entity_container:remove_child(id)
          location = radiant.terrain.find_placement_point(location, 0, 3)
          radiant.terrain.place_entity(child, location)
+      elseif child and child:is_valid() and child:get_uri() == CHARCOAL_EMBER_URI then
+		 entity_container:remove_child(id)
+		 radiant.entities.destroy_entity(child)
+      elseif child and child:is_valid() and child:get_uri() == EMBER_URI then
+		 entity_container:remove_child(id)
+		 radiant.entities.destroy_entity(child)
       end
    end
 end

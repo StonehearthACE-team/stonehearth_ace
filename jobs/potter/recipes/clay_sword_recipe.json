@@ -1,0 +1,26 @@
+{
+   "type": "recipe",
+   "effort": 30,
+   "work_units": 20,
+   "recipe_name": "i18n(stonehearth_ace:jobs.potter.recipes.clay_sword_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.potter.recipes.clay_sword_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.potter.recipes.clay_sword_recipe.flavor)",
+   "portrait": "/stonehearth/entities/weapons/wooden_sword/wooden_sword.png",
+   "workshop": "stonehearth:potter:kiln",
+   "level_requirement": 4,
+   "ingredients": [
+      {
+         "material": "clay resource",
+         "count": 2
+      },
+      {
+         "material": "common_fuel",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth:footman:wooden_sword_talisman"
+      }
+   ]
+}

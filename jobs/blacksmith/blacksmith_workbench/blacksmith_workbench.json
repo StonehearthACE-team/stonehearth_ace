@@ -1,7 +1,10 @@
 {
    "type": "entity",
-   "mixins": "/stonehearth/jobs/blacksmith/blacksmith_workbench/blacksmith_workbench_ghost.json",
    "components": {
+	  "mixintypes": {
+		 "destination": "override",
+		 "region_collision_shape": "override"
+	  },
       "destination": {
          "region": [
             {
@@ -21,14 +24,6 @@
                "max": { "x": 1, "y": 2, "z": 1 }
             }
          ]
-      },
-      "stonehearth:workshop": {
-         "job_alias": "stonehearth:jobs:blacksmith"
-      },
-      "stonehearth:entity_forms": {
-         "ghost_form": "/stonehearth/jobs/blacksmith/blacksmith_workbench/blacksmith_workbench_ghost.json",
-         "iconic_form": "/stonehearth/jobs/blacksmith/blacksmith_workbench/blacksmith_workbench_iconic.json",
-         "placeable_on_ground": true
       }
    },
    "entity_data": {
@@ -36,23 +31,10 @@
          "equivalents": [ "stonehearth_ace:rayyas_children:blacksmith:workbench", "stonehearth_ace:northern_alliance:blacksmith:workbench", "stonehearth_ace:mountain_folk:blacksmith:workbench", "stonehearth_ace:blacksmith:workbench_advanced", "stonehearth_ace:rayyas_children:blacksmith:workbench_advanced", "stonehearth_ace:northern_alliance:blacksmith:workbench_advanced", "stonehearth_ace:mountain_folk:blacksmith:workbench_advanced" ]
       },
       "stonehearth:table": {
-         "drop_effect": "carry_putdown_on_table",
          "drop_offset": { "x": -0.5, "y": 1.2, "z": -0.5 }
       },
       "stonehearth:net_worth": {
-         "value_in_gold": 15,
-         "rarity": "common",
-         "shop_info": {
-            "buyable": false,
-            "sellable": true,
-            "shopkeeper_type": "caravan"
-         }
-      },
-      "stonehearth:appeal": {
-         "appeal": 6
-      },
-      "stonehearth:item_quality": {
-         "variable_quality": true
+         "value_in_gold": 15
       }
    }
 }

@@ -759,7 +759,10 @@
             "clay_bed_crude_recipe": {
                "recipe_name": "Clay Sleeping Spot",
                "description": "A proper place to pass out when exhausted.",
-               "flavor": "A little bit more bearable"
+               "flavor": "'It's like a pot, for sleeping!' - Clarence, Temporary Salesperson"
+            },
+            "clay_bed_recipe": {
+               "flavor": "Thatch can be obtained by harvesting grass tufts, some plants like Tumbleweed or digging into grassy terrain"
             },
             "clay_training_dummy_recipe": {
                "recipe_name": "Clay Training Dummy",
@@ -770,6 +773,11 @@
                "recipe_name": "Clay Archery Target",
                "description": "Ranged fighters can gain experience from practicing with this target.",
                "flavor": "Requires an engineer for repairs."
+            },
+            "clay_sword_recipe": {
+               "recipe_name": "Clay Practice Sword",
+               "description": "Required to promote a hearthling into a Footman.",
+               "flavor": "Might break easily but ideally they won't use it for long... right?"
             }
          }
       },
@@ -817,10 +825,13 @@
                "description": "Much warmer and softer than the stone itself.",
                "flavor": "Warm furs!"
             },
+            "stone_bed_recipe": {
+               "flavor": "Thatch can be obtained by harvesting grass tufts, some plants like Wintermoss or digging into grassy terrain"
+            },
             "stone_bed_crude_recipe": {
                "recipe_name": "Stone Sleeping Spot",
                "description": "You might not want to jump into this one.",
-               "flavor": "The thatch is a bit too dry but it works..."
+               "flavor": "The pretty frame might distract you from the discomfort of sleeping on hard stone"
             },
             "stone_training_dummy_recipe": {
                "recipe_name": "Stone Training Dummy",
@@ -876,6 +887,9 @@
                "recipe_name": "Giant Bone Short Sword",
                "description": "Craft a knight's sidearm with the bones of a mythical creature.",
                "flavor": ""
+            },
+            "stone_sword_recipe": {
+               "flavor": "Training with stone swords is a cruel but efficient joke."
             }
          },
          "mason_workbench_bone": {
@@ -1110,11 +1124,11 @@
          "blacksmith_description": {
             "level_1_data": {
                "perk_000_name": "Early Metalworks",
-               "perk_000_description": "The Blacksmith will need to master smelting basic ores before they can work bronze from the crucible and iron into an anvil."
+               "perk_000_description": "The Blacksmith will need to master smelting basic ores and using the crucible before they can work with an anvil."
             },
             "level_2_data": {
                "perk_000_name": "Bronze & Iron Age!",
-               "perk_000_description": "The Blacksmith is now skilled enough to build an anvil, a crucible and forge heavy items made of bronze and iron.",
+               "perk_000_description": "The Blacksmith is now skilled enough to build an anvil and forge heavy items made of bronze and iron.",
                "perk_001_name": "Mastering the Fire!",
                "perk_001_description": "The Blacksmith has acquired enough knowledge on forges to start producing their own fuels and facilities."
             },
@@ -1341,10 +1355,13 @@
                "description": "Create a sturdy block for splitting logs.",
                "flavor": ""
             },
+            "wood_bed_recipe": {
+               "flavor": "Thatch can be obtained by harvesting grass tufts, some plants like Silkweed or digging into grassy terrain"
+            },
             "wood_bed_crude_recipe": {
-               "recipe_name": "Wooden Sleeping Spot",
-               "description": "Better than nothing... Probably.",
-               "flavor": "Literally sleeping on a board"
+               "recipe_name": "Mean Sleeping Spot",
+               "description": "Literally sleeping on a board.",
+               "flavor": "Mean as in poor, not cruel. Though it's that too."
             }
          }
       },
@@ -2634,6 +2651,14 @@
                "display_name": "Porcelain Jar of Feathers",
                "description": "Gloriously giant feathers made of porcelain and textiles."
             }
+         },
+         "ember_charcoal": {
+            "display_name": "Log Embers",
+            "description": "Turns into charcoal after a while and is retrieved when replaced for new fuel!"
+         },
+         "ember": {
+            "display_name": "Embers",
+            "description": "This fire faded... And so it is that ash seeketh embers."
          }
       },
       "pets": {
@@ -3061,11 +3086,11 @@
       "terrain": {
          "pasture_grass": {
             "display_name": "Grass",
-            "description": "Tall grass can be grazed on by animals or harvested for later use."
+            "description": "Tall grass can be grazed on by animals or harvested for thatch."
          },
          "overgrown_pasture_grass": {
             "display_name": "Overgrown Grass",
-            "description": "Overgrown grass can be grazed on by animals or harvested for later use."
+            "description": "Overgrown grass can be grazed on by animals or harvested for thatch."
          },
          "short_pasture_grass": {
             "display_name": "Short Grass",
@@ -3737,6 +3762,12 @@
          "giant_bone_pike": {
             "display_name": "Giant Bone Spear",
             "description": "Once part of a mighty beast, now to pierce one. (Two-handed)"
+         },
+         "wooden_sword": {
+            "display_name": "Practice Sword",
+            "wooden_sword_talisman": {
+               "display_name": "Practice Sword"
+            }
          }
       },
       "gizmos": {

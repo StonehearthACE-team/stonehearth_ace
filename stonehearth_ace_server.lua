@@ -52,7 +52,8 @@ local monkey_patches = {
    ace_party_component = 'stonehearth.components.party.party_component',
    ace_player_service = 'stonehearth.services.server.player.player_service',
    ace_water_component = 'stonehearth.components.water.water_component',
-   ace_waterfall_component = 'stonehearth.components.waterfall.waterfall_component'
+   ace_waterfall_component = 'stonehearth.components.waterfall.waterfall_component',
+   ace_food_decay_service = 'stonehearth.services.server.food_decay.food_decay_service'
 }
 
 local function monkey_patching()
