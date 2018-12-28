@@ -1,0 +1,136 @@
+{
+   "mixins": "stonehearth_ace:mixins:tile:simple_carpet",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(default_360.qb)",
+               "file(default_270.qb)",			   
+               "file(default_180.qb)",			   
+               "file(default_90.qb)",			   
+            ]
+         },
+         "end_point": {
+            "models": [
+               "file(end_point_360.qb)",
+               "file(end_point_270.qb)",
+               "file(end_point_180.qb)",
+               "file(end_point_90.qb)",
+            ]
+         },
+         "straight": {
+            "models": [
+               "file(straight_360.qb)",
+               "file(straight_270.qb)",
+               "file(straight_180.qb)",
+               "file(straight_90.qb)",
+            ]
+         },
+         "corner_concave_closed": {
+            "models": [
+               "file(corner_concave_closed_360.qb)",
+               "file(corner_concave_closed_270.qb)",
+               "file(corner_concave_closed_180.qb)",
+               "file(corner_concave_closed_90.qb)",
+            ]
+         },
+         "corner_concave_open": {
+            "models": [
+               "file(corner_concave_open_360.qb)",
+               "file(corner_concave_open_270.qb)",
+               "file(corner_concave_open_180.qb)",
+               "file(corner_concave_open_90.qb)",
+            ]
+         },
+         "edge_closed_both": {
+            "models": [
+               "file(edge_closed_both_360.qb)",
+               "file(edge_closed_both_270.qb)",
+               "file(edge_closed_both_180.qb)",
+               "file(edge_closed_both_90.qb)",
+            ]
+         },
+         "edge_closed_clock": {
+            "models": [
+               "file(edge_closed_clock_360.qb)",
+               "file(edge_closed_clock_270.qb)",
+               "file(edge_closed_clock_180.qb)",
+               "file(edge_closed_clock_90.qb)",
+            ]
+         },
+         "edge_closed_counter": {
+            "models": [
+               "file(edge_closed_counter_360.qb)",
+               "file(edge_closed_counter_270.qb)",
+               "file(edge_closed_counter_180.qb)",
+               "file(edge_closed_counter_90.qb)",
+            ]
+         },
+         "edge_open": {
+            "models": [
+               "file(edge_open_360.qb)",
+               "file(edge_open_270.qb)",
+               "file(edge_open_180.qb)",
+               "file(edge_open_90.qb)",
+            ]
+         },
+         "center_closed_all": {
+            "models": [
+               "file(center_closed_all_360.qb)",
+               "file(center_closed_all_270.qb)",
+               "file(center_closed_all_180.qb)",
+               "file(center_closed_all_90.qb)",
+            ]
+         },
+         "center_closed_one": {
+            "models": [
+               "file(center_closed_one_360.qb)",
+               "file(center_closed_one_270.qb)",
+               "file(center_closed_one_180.qb)",
+               "file(center_closed_one_90.qb)",
+            ]
+         },
+         "center_closed_adjacent": {
+            "models": [
+               "file(center_closed_adjacent_360.qb)",
+               "file(center_closed_adjacent_270.qb)",
+               "file(center_closed_adjacent_180.qb)",
+               "file(center_closed_adjacent_90.qb)",
+            ]
+         },
+         "center_closed_opposite": {
+            "models": [
+               "file(center_closed_opposite_360.qb)",
+               "file(center_closed_opposite_270.qb)",
+               "file(center_closed_opposite_180.qb)",
+               "file(center_closed_opposite_90.qb)",
+            ]
+         },
+         "center_closed_three": {
+            "models": [
+               "file(center_closed_three_360.qb)",
+               "file(center_closed_three_270.qb)",
+               "file(center_closed_three_180.qb)",
+               "file(center_closed_three_90.qb)",   
+            ]
+         },
+         "center_open": {
+            "models": [
+               "file(center_open_360.qb)",
+               "file(center_open_270.qb)",
+               "file(center_open_180.qb)",
+               "file(center_open_90.qb)",
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.tile.carpet.simple_yellow.display_name)",
+         "description": "i18n(stonehearth_ace:entities.tile.carpet.simple_yellow.description)"
+      },
+      "stonehearth:appeal": {
+         "appeal": 2
+      }
+   }
+}
