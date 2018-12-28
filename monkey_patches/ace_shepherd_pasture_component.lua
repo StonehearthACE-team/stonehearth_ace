@@ -68,9 +68,9 @@ end
 function AceShepherdPastureComponent:_setup_grass_spawn_timer()
 	-- if the timer already existed, we want to consider the time spent to really be spent
 	local time_remaining = nil
-	if self._sv._grass_spawn_timer then
-		local old_duration = self._sv._grass_spawn_timer:get_duration()
-		local old_expire_time = self._sv._grass_spawn_timer:get_expire_time()
+	if self._sv.grass_spawn_timer then
+		local old_duration = self._sv.grass_spawn_timer:get_duration()
+		local old_expire_time = self._sv.grass_spawn_timer:get_expire_time()
 		local old_start_time = old_expire_time - old_duration
 		local growth_period = self:_get_base_grass_spawn_period()
 	  
@@ -79,16 +79,17 @@ function AceShepherdPastureComponent:_setup_grass_spawn_timer()
 		self._sv.grass_growth_recalculate_progress = old_progress + new_progress
 		time_remaining = math.max(0, growth_period * (1 - self._sv.grass_growth_recalculate_progress))
 	end
-	local scaled_time_remaining = self:_calculate_grass_spawn_period(time_remaining)
+	-- scaled_time_remaining
+	self._sv.grass_spawn_interval = self:_calculate_grass_spawn_period(time_remaining)
 	
 	self:_destroy_grass_spawn_timer()
-	self._sv._grass_spawn_timer = stonehearth.calendar:set_interval('spawn grass', scaled_time_remaining, function() self:_spawn_grass() end)
+	self._sv.grass_spawn_timer = stonehearth.calendar:set_interval('AceShepherdPasture spawn grass', self._sv.grass_spawn_interval, function() self:_spawn_grass() end)
 end
 
 function AceShepherdPastureComponent:_destroy_grass_spawn_timer()
-	if self._sv._grass_spawn_timer then
-		self._sv._grass_spawn_timer:destroy()
-		self._sv._grass_spawn_timer = nil
+	if self._sv.grass_spawn_timer then
+		self._sv.grass_spawn_timer:destroy()
+		self._sv.grass_spawn_timer = nil
 	end
 end
 
