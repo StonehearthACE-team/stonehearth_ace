@@ -1,23 +1,46 @@
 {
    "type": "entity",
    "components": {
-      "stonehearth_ace:connection": {
-         "stonehearth_ace:vines:daisies": {
-            "connectors": {
-               "horizontal": {
-                  "region": [
-                     {
-                        "min": { "x": -1, "y": 0, "z": -1 },
-                        "max": { "x": 2, "y": 1, "z": 2 }
-                     }
-                  ],
-                  "max_connections": 24
-               }
-            },
-            "max_connections": 24
-         }
-      },
       "stonehearth_ace:vine": {
+         "growth_data": {
+            "grows_on_ground": true,
+            "grows_on_ceiling": false,
+            "grows_on_wall": false,
+            "grows_hanging": false,
+            "grows_on_structure": false,
+            "spreads_on_ground": true,
+            "spreads_on_ceiling": false,
+            "spreads_on_wall": false,
+            "ignore_gravity": false,
+            "spread_function": {
+               "type": "horizontal_walk",
+               "min_steps": 3,
+               "max_steps": 5,
+               "max_drop": 2
+            },
+            "growth_directions": {
+               "x-": 1,
+               "x+": 1,
+               "z-": 1,
+               "z+": 1
+            },
+            "start_num_growths_remaining": 6,
+            "natural_num_growths_remaining": 4,
+            "growth_times": [
+               {
+                  "growths_remaining": 6,
+                  "time": "2h+10h"
+               },
+               {
+                  "growths_remaining": 4,
+                  "time": "10h+20h"
+               },
+               {
+                  "growths_remaining": 2,
+                  "time": "1d+2d"
+               }
+            ]
+         },
          "render_options": {
             "casts_shadows": false,
             "bottom": {

@@ -214,7 +214,12 @@ function TileComponent:_update()
    local facing = radiant.entities.get_facing(self._entity)
    local rotation = 360 - self._sv.proper_rotation
    self._sv.rotation = (rotation + facing) % 360
+   local rotated_model_variant = variant..'_'..rotation
+   if radiant.entities.get_component_data(self._entity, 'model_variants')[rotated_model_variant] then
+      variant = rotated_model_variant
+   end
    self._entity:get_component('render_info'):set_model_variant(variant)
+
    if self._adjust_collision then
       local region = self._collision_regions[variant]
       if region then

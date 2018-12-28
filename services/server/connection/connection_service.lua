@@ -94,6 +94,11 @@ function ConnectionService:is_separated_by_player(type)
    return type_details and type_details.separated_by_player
 end
 
+function ConnectionService:should_maintain_graphs(type)
+   local type_details = self._registered_types[type]
+   return type_details and type_details.maintain_graphs
+end
+
 function ConnectionService:register_entity(entity, connections, connected_stats)
    -- register this entity with the proper player's connections
    local player_id = entity:get_player_id()

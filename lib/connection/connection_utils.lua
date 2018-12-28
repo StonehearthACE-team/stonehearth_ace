@@ -21,8 +21,33 @@ function connection_utils.import_region(region)
    end
 end
 
-function connection_utils.rotate_region(region, origin, rotation)
-   return region:translated(origin - MIDDLE_OFFSET):rotated(rotation):translated(MIDDLE_OFFSET - origin)
+-- ONLY WORKS FOR CARDINAL ROTATIONS
+function connection_utils.rotate_region(region, origin, rotation, align_x, align_z)
+   -- if we're aligning to the x axis, rotating to 90 or 270 means we ignore the z offset, and always ignore the x offset
+   -- if we're aligning to the z axis, rotating to 0 or 180 means we ignore the x offset, and always ignore the z offset
+   local proper_rotation = math.floor((rotation / 90) + 0.5) * 90
+   local swap_axes = (proper_rotation + 90) % 180 == 0
+   local offset = origin - Point3(align_x and 0 or MIDDLE_OFFSET.x, MIDDLE_OFFSET.y, align_z and 0 or MIDDLE_OFFSET.z)
+   --local post_offset = -(offset:rotated(proper_rotation))
+   local post_offset = -Point3(swap_axes and offset.z or offset.x, MIDDLE_OFFSET.y, swap_axes and offset.x or offset.z)
+   local result = region:translated(offset):rotated(proper_rotation):translated(post_offset)
+   --log:debug('rotating region %s %s° (%s°) about %s: %s', region:get_bounds(), rotation, proper_rotation, offset, result:get_bounds())
+   return result
+end
+
+-- presumably, this should work as a more general version instead of just the four cardinal rotations
+-- determine the offset vector, translate the region by that offset, rotate both the region and the vector, then translate the region by the negative of the rotated vector
+function connection_utils._rotate_region(region, origin, rotation, align_x, align_z)
+   -- if we're aligning to the x axis, rotating to 90 or 270 means we ignore the z offset, and always ignore the x offset
+   -- if we're aligning to the z axis, rotating to 0 or 180 means we ignore the x offset, and always ignore the z offset
+   local proper_rotation = math.floor(rotation + 0.5)
+   local swap_axes = (proper_rotation + 90) % 180 == 0
+   local offset = origin - Point3(align_x and 0 or MIDDLE_OFFSET.x, MIDDLE_OFFSET.y, align_z and 0 or MIDDLE_OFFSET.z)
+   local post_offset = -(offset:rotated(proper_rotation))
+   --local post_offset = Point3(swap_axes and offset.z or offset.x, MIDDLE_OFFSET.y, swap_axes and offset.x or offset.z)
+   local result = region:translated(offset):rotated(proper_rotation):translated(post_offset)
+   log:debug('rotating region %s %s° (%s°) about %s: %s', region:get_bounds(), rotation, proper_rotation, offset, result:get_bounds())
+   return result
 end
 
 function connection_utils.combine_tables(into, from)

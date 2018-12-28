@@ -155,6 +155,9 @@ function PatrolBannerCallHandler:place_patrol_banner(session, response, banner, 
    local pb_comp = banner:get_component(PATROL_BANNER)
    local prev_pb_comp = prev_banner and prev_banner:get_component(PATROL_BANNER)
    local next_pb_comp = next_banner and next_banner:get_component(PATROL_BANNER)
+
+   -- make sure all the banners are for the same party (why wouldn't they be? well apparently sometimes it happens)
+   local party_id = pb_comp:get_party()
    
    -- this should handle adding a single initial banner, adding a second when there's only one (specified as either previous or next), or adding between two specified
    if not prev_pb_comp then
@@ -177,15 +180,18 @@ function PatrolBannerCallHandler:place_patrol_banner(session, response, banner, 
       end
    end
 
-   if prev_pb_comp then
+   local prev_party_id = prev_pb_comp and prev_pb_comp:get_party()
+   local next_party_id = next_pb_comp and next_pb_comp:get_party()
+
+   if prev_pb_comp and party_id == prev_party_id then
       prev_pb_comp:set_next_banner(banner)
    end
-   if next_pb_comp then
+   if next_pb_comp and party_id == next_party_id then
       next_pb_comp:set_prev_banner(banner)
    end
 
-   pb_comp:set_next_banner(next_banner)
-   pb_comp:set_prev_banner(prev_banner)
+   pb_comp:set_next_banner(party_id == next_party_id and next_banner)
+   pb_comp:set_prev_banner(party_id == prev_party_id and prev_banner)
    
    response:resolve({})
 end

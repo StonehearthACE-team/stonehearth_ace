@@ -65,21 +65,30 @@ function AceRenewableResourceNodeComponent:_on_auto_harvest_setting_update(playe
 end
 ]]
 
+AceRenewableResourceNodeComponent._old_post_activate = RenewableResourceNodeComponent.post_activate
+function AceRenewableResourceNodeComponent:post_activate()
+   self:_old_post_activate()
+
+   if self._sv.harvestable then
+      self:_auto_request_harvest()
+   end
+end
+
 function AceRenewableResourceNodeComponent:_auto_request_harvest()
    local player_id = self._entity:get_player_id()
    -- if a player has moved or harvested this item, that player has gained ownership of it
    -- if they haven't, there's no need to request it to be harvested because it's just growing in the wild with no owner
    
    if player_id ~= '' then
-      local auto_harvest = self:get_auto_harvest_enabled()
+      local auto_harvest = self:get_auto_harvest_enabled(player_id)
       if auto_harvest then
          self:request_harvest(player_id)
       end
    end
 end
 
-function AceRenewableResourceNodeComponent:get_auto_harvest_enabled()
-   local player_id = self._entity:get_player_id()
+function AceRenewableResourceNodeComponent:get_auto_harvest_enabled(player_id)
+   player_id = player_id or self._entity:get_player_id()
    if player_id ~= '' then
       return stonehearth.client_state:get_client_gameplay_setting(player_id, 'stonehearth_ace', 'enable_auto_harvest', false)
    end

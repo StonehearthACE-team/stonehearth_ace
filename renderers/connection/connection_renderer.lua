@@ -15,6 +15,7 @@ function ConnectionRenderer:initialize(render_entity, datastore)
    self._datastore = datastore
    self._entity = self._render_entity:get_entity()
    self._connections = radiant.entities.get_component_data(self._entity, 'stonehearth_ace:connection')
+   self._align_to_grid = radiant.array_to_map(radiant.entities.get_component_data(self._entity, 'mob').align_to_grid or {})
    self._parent_node = self._render_entity:get_node()
    self._outline_nodes = {}
 
@@ -156,7 +157,8 @@ function ConnectionRenderer:_update()
          connected = type_data.num_connections > 0
       end
 
-      local origin_offset = radiant.util.to_point3(connection.origin_offset) or Point3.zero
+      local origin_offset = Point3(self._align_to_grid.x and -0.5 or 0, self._align_to_grid.y and -0.5 or 0, self._align_to_grid.z and -0.5 or 0)
+            - (radiant.util.to_point3(connection.origin_offset) or Point3.zero)
       
       local nodes = {}
       self._outline_nodes[type] = nodes
