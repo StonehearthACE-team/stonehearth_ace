@@ -1347,8 +1347,8 @@
             },
             "bundle_of_firewood_recipe": {
                "recipe_name": "Bundle o' Firewood (x2)",
-               "description": "Split that log into blocks for twice their efficiency!",
-               "flavor": "Firewood is a common, lower grade fuel"
+               "description": "Split that log into blocks for twice their efficiency! Firewood is a common, lower grade fuel",
+               "flavor": "'Wait, so you are NOT supposed to put an ENTIRE log in the fire?' -Dumar Quath"
             },
             "splitting_block_recipe": {
                "recipe_name": "Splitting Block",
@@ -1689,13 +1689,13 @@
          "copper_wall_lantern": {
             "copper_wall_lantern_ghost": {
                "display_name": "Copper Wall Lantern",
-               "description": "TBD"
+               "description": "Produces a cold, soft light from the moonbells."
             }
          },
          "copper_garden_lantern": {
             "copper_garden_lantern_ghost": {
                "display_name": "Copper Garden Lantern",
-               "description": "TBD"
+               "description": "The light produced by the moonbells flicker softly."
             }
          }
       },
@@ -1826,6 +1826,10 @@
             "cotton_bundle": {
                "display_name": "Cotton Bundle",
                "description": "Soft to the touch. Spinnable into thread"
+            },
+            "dwarfsbeard_bundle": {
+               "display_name": "Dwarfsbeard Bundle",
+               "description": "Very tangled, greasy and rough. Can be used as thatching or fiber."
             }
          },
          "coal": {
@@ -2527,6 +2531,26 @@
                "display_name": "Yellow Flowered Lily Pads",
                "description": "A pretty flower that can be used as an ornamental decoration or harvested."
             }
+         },
+         "dwarfsbeard": {
+            "display_name": "Dwarfsbeard",
+            "description": "Source of fibers and thatching"
+         },
+         "dwarfsbeard_bud": {
+            "display_name": "Dwarfsbeard",
+            "description": "It's almost full grown!"
+         },
+         "dwarfsbeard_seed": {
+            "display_name": "Dwarfsbeard",
+            "description": "Can be planted to grow a rough fiber that can also be used as thatch."
+         },
+         "dwarfsbeard_sprout": {
+            "display_name": "Dwarfsbeard Sproutling",
+            "description": "Just needs some time and care."
+         },
+         "dwarfsbeard_stem": {
+            "display_name": "Stemming Dwarfsbeard",
+            "description": "Still growing!"
          }
       },
       "decoration": {
@@ -2659,6 +2683,30 @@
          "ember": {
             "display_name": "Embers",
             "description": "This fire faded... And so it is that ash seeketh embers."
+         },
+         "curtains_wide": {
+            "display_name": "Wide Curtains",
+            "description": "For windows with a better view."
+         },
+         "curtains_tall": {
+            "display_name": "Tall Curtains",
+            "description": "A longer dress for taller windows."
+         },
+         "ornate_curtains": {
+            "display_name": "Ornate Curtains",
+            "description": "Light has never been so beautifully blocked."
+         },
+         "ornate_curtains_wide": {
+            "display_name": "Ornate Wide Curtains",
+            "description": "For a very special household."
+         },
+         "ornate_throw_rug": {
+            "display_name": "Ornate Throw Rug",
+            "description": "You will feel bad for stepping on it."
+         },
+         "ornate_banner_wall": {
+            "display_name": "Ornate Wall Banner",
+            "description": "A beautiful ornament for a prosperous town."
          }
       },
       "pets": {
@@ -2736,20 +2784,20 @@
          },
          "cooked_nuts": {
             "display_name": "Basket of Cooked Nuts",
-            "description": "TBD",
+            "description": "A basket of delicious and warm edible nuts.",
             "cooked_nuts_serving": {
                "display_name": "Plate of Cooked Nuts",
-               "description": "TBD"
+               "description": ""
             }
          },
          "cherry_tart": {
             "cherry_tart": {
                "display_name": "Cherry Tart",
-               "description": "TBD"
+               "description": "A simple yet tasty baked dessert made with cherries."
             },
             "cherry_tart_serving": {
                "display_name": "Slice of Cherry Tart",
-               "description": "TBD"
+               "description": "Tasty!"
             }
          },
          "huntsman_banquet": {
@@ -2765,7 +2813,7 @@
          "nutty_poultry": {
             "nutty_poultry": {
                "display_name": "Stirred Poultry & Nuts",
-               "description": "TBD"
+               "description": "A hot mix of poultry cuts and sliced nuts."
             },
             "nutty_poultry_serving": {
                "display_name": "Plate of Stirred Poultry & Nuts",
@@ -2775,7 +2823,7 @@
          "pie_cherry": {
             "pie_cherry": {
                "display_name": "Sweet Cherry Pie",
-               "description": "TBD"
+               "description": "Hard to make but quite easy to eat!"
             },
             "pie_cherry_serving": {
                "display_name": "Piece of Cherry Pie",
@@ -2785,7 +2833,7 @@
          "nut_pralines": {
             "nut_pralines": {
                "display_name": "Nut Pralines",
-               "description": "TBD"
+               "description": "An exotic and satisfyingly crispy bunch of sweetened nuts."
             },
             "nut_pralines_serving": {
                "display_name": "Plate of Nut Pralines",

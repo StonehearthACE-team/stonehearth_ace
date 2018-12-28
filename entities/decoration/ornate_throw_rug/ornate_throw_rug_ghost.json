@@ -1,0 +1,31 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(ornate_throw_rug.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": -0.5, "y": 0, "z": -0.5 }
+      },
+      "render_info": {
+         "color_map": "stonehearth:color_map:gold",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/gold_material_map.json"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:floor_decor": {},
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.decoration.ornate_throw_rug.display_name)",
+         "description": "i18n(stonehearth_ace:entities.decoration.ornate_throw_rug.description)",
+         "icon": "file(ornate_throw_rug.png)",
+         "category": "decoration"
+      }
+   }
+}

@@ -1,0 +1,40 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(ornate_curtains.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": -0.4, "y": -0.5, "z": -0.5 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "allow_vertical_adjacent": true
+      },
+      "render_info": {
+         "color_map": "stonehearth:color_map:gold",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/gold_material_map.json"
+         ],
+         "scale": 0.1
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.decoration.ornate_curtains.display_name)",
+         "description": "i18n(stonehearth_ace:entities.decoration.ornate_curtains.description)",
+         "icon": "file(ornate_curtains.png)",
+         "category": "decoration",
+         "material_tags": [
+            "decoration",
+            "cloth",
+            "crafted",
+            "curtains",
+            "ornate_curtains",
+            "stockpile_decoration"
+         ]
+      }
+   }
+}

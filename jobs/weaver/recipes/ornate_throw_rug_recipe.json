@@ -1,0 +1,26 @@
+{
+   "type": "recipe",
+   "effort": 35,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.weaver.recipes.ornate_throw_rug_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.weaver.recipes.ornate_throw_rug_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.weaver.recipes.ornate_throw_rug_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/decoration/ornate_throw_rug/ornate_throw_rug.png",
+   "workshop": "stonehearth:weaver:loom",
+   "level_requirement": 6,
+   "ingredients": [
+      {
+         "material": "thread resource",
+         "count": 4
+      },
+      {
+         "uri": "stonehearth:refined:gold_flakes",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:decoration:ornate_throw_rug"
+      }
+   ]
+}

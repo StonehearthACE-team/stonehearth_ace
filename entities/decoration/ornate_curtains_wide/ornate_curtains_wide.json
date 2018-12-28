@@ -1,0 +1,37 @@
+{
+   "type": "entity",
+   "mixins": "file(ornate_curtains_wide_ghost.json)",
+   "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(ornate_curtains_wide_iconic.json)",
+         "ghost_form": "file(ornate_curtains_wide_ghost.json)",
+         "placeable_on_walls": true
+      },
+      "region_collision_shape": {
+         "region_collision_type": "none",
+         "region": [
+            {
+               "min": { "x": -2, "y": 0, "z": 0 },
+               "max": { "x": 3, "y": 1, "z": 1 }
+            }
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 48,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 20
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}
