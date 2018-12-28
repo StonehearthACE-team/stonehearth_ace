@@ -68,15 +68,9 @@ end
 function AceShepherdPastureComponent:_setup_grass_spawn_timer()
 	-- if the timer already existed, we want to consider the time spent to really be spent
 	local time_remaining = nil
-<<<<<<< HEAD
 	if self._sv.grass_spawn_timer then
 		local old_duration = self._sv.grass_spawn_timer:get_duration()
 		local old_expire_time = self._sv.grass_spawn_timer:get_expire_time()
-=======
-	if self._grass_spawn_timer then
-		local old_duration = self._grass_spawn_timer:get_duration()
-		local old_expire_time = self._grass_spawn_timer:get_expire_time()
->>>>>>> unstable-work
 		local old_start_time = old_expire_time - old_duration
 		local growth_period = self:_get_base_grass_spawn_period()
 	  
