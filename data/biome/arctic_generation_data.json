@@ -1,4 +1,12 @@
 {
+   "terrain": {
+	  "minimap":{
+		"plains_1" : "i18n(stonehearth_ace:ui.shell.select_settlement.arctic.terrain_codes.plains)",
+		"plains_2" : "i18n(stonehearth_ace:ui.shell.select_settlement.arctic.terrain_codes.plains)",
+		"foothills_1" : "i18n(stonehearth_ace:ui.shell.select_settlement.arctic.terrain_codes.foothills)",
+		"foothills_2" : "i18n(stonehearth_ace:ui.shell.select_settlement.arctic.terrain_codes.foothills)"
+	  }
+   },
    "landscape": {
       "placement_table": {
          "stonehearth_ace:fungi:winter_morel": {
@@ -63,6 +71,13 @@
                }
             }
          }
+      },
+	  "water": {
+         "depth": {
+            "shallow": 6,
+            "deep": 11
+         },
+		 "water_height_delta": 2.5
       }
    }
 }

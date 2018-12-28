@@ -52,13 +52,13 @@
          }
       },
       "mob": {
-         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "model_origin": { "x": -0.33, "y": 0, "z": 0.33 },
          "region_origin": { "x": 0.5, "y": 0, "z": 0.5 },
          "mob_collision_type": "clutter"
+      },
+      "render_info": {
+         "scale": 0.66
       }
-   },
-   "render_info": {
-      "scale": 1
    },
    "entity_data": {
       "stonehearth:evolve_data": {
@@ -66,7 +66,9 @@
          "evolve_time": "14h+2h"
       },
       "stonehearth:catalog": {
-         "material_tags":["stockpile_plant"],
+         "material_tags": [
+            "stockpile_plant"
+         ],
          "display_name": "i18n(stonehearth_ace:entities.trees.yew_tree.stem.tree_yew_plant_stem.display_name)",
          "description": "i18n(stonehearth_ace:entities.trees.yew_tree.stem.tree_yew_plant_stem.description)",
          "category": "plants"

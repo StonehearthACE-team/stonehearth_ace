@@ -20,7 +20,9 @@
             "stonehearth:patrol"
          ],
          "ilevel": 18,
-         "roles":["knight_job"],
+         "roles": [
+            "knight_job"
+         ],
          "required_job_level": 5,
          "equip_effect": "stonehearth:effects:weapon_level_up",
          "equipment_types": [
@@ -84,7 +86,14 @@
          "description": "i18n(stonehearth_ace:entities.weapons.silver_short_sword.description)",
          "icon": "file(silver_short_sword.png)",
          "category": "weapons",
-         "material_tags":["silver", "melee_weapon", "crafted", "silver_short_sword", "stockpile_weapon"]
+         "material_tags": [
+            "silver",
+            "melee_weapon",
+            "ascendancy_made",
+            "crafted",
+            "silver_short_sword",
+            "stockpile_weapon"
+         ]
       }
    }
 }

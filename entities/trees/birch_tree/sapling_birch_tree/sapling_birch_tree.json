@@ -6,7 +6,7 @@
    ],
    "components": {
       "render_info": {
-         "scale": 0.1
+         "scale": 0.25
       },
       "stonehearth:entity_forms": {
          "iconic_form": "file(sapling_birch_tree_iconic.json)",
@@ -31,7 +31,7 @@
          "region": [
             {
                "min": { "x": 0, "y": 0, "z": -1 },
-               "max": { "x": 1, "y": 6, "z": 0 }
+               "max": { "x": 1, "y": 8, "z": 0 }
             }
          ]
       }
@@ -56,7 +56,11 @@
       "stonehearth:catalog": {
          "description": "i18n(stonehearth_ace:entities.trees.birch_tree.sapling_birch_tree.description)",
          "category": "plants",
-         "material_tags":["plant", "tree", "stockpile_plant"],
+         "material_tags": [
+            "plant",
+            "tree",
+            "stockpile_plant"
+         ],
          "subject_override": "stonehearth_ace:trees:birch:large"
       },
       "stonehearth:appeal": {

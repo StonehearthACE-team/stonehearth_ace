@@ -9,7 +9,10 @@
          "value_in_gold": 40
       },
       "stonehearth:catalog": {
-         "material_tags":["iron", "armor", "medium_armor", "iron_helm", "stockpile_equipment"]
+	     "mixintypes": {
+			"material_tags": "override"
+		 },
+         "material_tags":["iron", "armor", "helmet", "medium_armor", "ascendancy_made", "iron_helm", "stockpile_equipment"]
       }
    }
 }

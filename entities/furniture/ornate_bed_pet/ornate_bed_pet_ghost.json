@@ -1,0 +1,38 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(ornate_bed_pet.qb)"
+            ]
+         }
+      },
+      "render_info": {
+         "scale": 0.2,
+         "color_map": "stonehearth:color_map:gold",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/gold_material_map.json"
+         ]
+      },
+      "mob": {
+         "model_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "",
+         "description": "",
+         "icon": "file(ornate_bed_pet.png)",
+         "category": "furniture",
+         "material_tags": [
+            "wood",
+            "ornate",
+            "furniture",
+            "crafted",
+            "stockpile_furniture"
+         ]
+      }
+   }
+}

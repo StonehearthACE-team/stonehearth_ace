@@ -23,7 +23,9 @@
             "stonehearth:patrol"
          ],
          "ilevel": 21,
-         "roles":["footman_job"],
+         "roles": [
+            "footman_job"
+         ],
          "required_job_level": 4,
          "equip_effect": "stonehearth:effects:weapon_level_up",
          "equipment_types": [
@@ -68,7 +70,15 @@
          "description": "i18n(stonehearth_ace:entities.weapons.iron_battle_axe.description)",
          "icon": "file(iron_battle_axe.png)",
          "category": "weapons",
-         "material_tags":["twohanded", "iron", "melee_weapon", "crafted", "iron_battle_axe", "stockpile_weapon"]
+         "material_tags": [
+            "twohanded",
+            "iron",
+            "melee_weapon",
+            "crafted",
+            "ascendancy_made",
+            "iron_battle_axe",
+            "stockpile_weapon"
+         ]
       }
    }
 }

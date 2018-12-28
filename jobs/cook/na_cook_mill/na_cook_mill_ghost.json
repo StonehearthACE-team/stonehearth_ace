@@ -6,7 +6,7 @@
          "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
       },
       "render_info": {
-         "animation_table": "/stonehearth/data/rigs/jobs/cook/cook_mill/cook_mill.json",
+         "animation_table": "/stonehearth_ace/data/rigs/jobs/cook/cook_mill/cook_mill_ace.json",
          "scale": 0.1
       },
       "model_variants": {
@@ -17,7 +17,7 @@
          }
       },
       "effect_list": {
-         "default": "/stonehearth/data/rigs/jobs/cook/cook_mill/effects/idle.json"
+         "default": "/stonehearth_ace/data/rigs/jobs/cook/cook_mill/effects/idle_ace.json"
       }
    },
    "entity_data": {
@@ -27,7 +27,9 @@
          "description": "i18n(stonehearth:jobs.cook.cook_mill.cook_mill_ghost.description)",
          "icon": "file(na_cook_mill.png)",
          "category": "workshops",
-         "material_tags":["stockpile_tool"]
+         "material_tags": [
+            "stockpile_tool"
+         ]
       }
    }
 }

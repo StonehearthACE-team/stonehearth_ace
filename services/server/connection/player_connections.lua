@@ -27,18 +27,14 @@ function PlayerConnections:__init()
    
 end
 
-local _chunk_region_size = 20
-local _entities = {}
-local _connectors = {}
-local _connection_tables = {}
+local _chunk_region_size = 5
 
 function PlayerConnections:initialize()
-   _chunk_region_size = 20
-   _entities = {} -- list of all the entities being tracked: [entity id]{id, entity, (location,) connections}
+   self._entities = {} -- list of all the entities being tracked: [entity id]{id, entity, (location,) connections}
    -- connections: [type]{(entity_id,) (type,) max_connections, (num_connections,) connectors}
-   _connectors = {} -- list of all connectors, indexed by id ("entity_id..|..type..|..connector_name")
+   self._connectors = {} -- list of all connectors, indexed by id ("entity_id..|..type..|..connector_name")
    -- connectors: [id]{(name,) (entity_id,) (type,) (id,) max_connections, (num_connections,) region, (chunk_region_keys,) region_intersection_threshold, (connected_to)}
-   _connection_tables = {} -- list of connections by type: [type]{type, entity_connectors, connector_locations, graphs, entities_in_graphs}
+   self._connection_tables = {} -- list of connections by type: [type]{type, entity_connectors, connector_locations, graphs, entities_in_graphs}
    -- entity_connectors: [entity_id]{connector_1, connector_2}
    -- connector_locations: [chunk_region_key]{connector_1, connector_2}
    -- graphs: {nodes: [entity_id]{entity_id, connected_nodes}}
@@ -78,7 +74,7 @@ end
 function PlayerConnections:get_connections_data(type)
    local entities = {}
 
-   for id, entity_struct in pairs(_entities) do
+   for id, entity_struct in pairs(self._entities) do
       entities[entity_struct.id] = entity_struct.entity:get_component('stonehearth_ace:connection'):get_connected_stats(type)
    end
 
@@ -92,7 +88,7 @@ function PlayerConnections:_update_entity_changes_connector(entity, type, conn_n
 end
 
 function PlayerConnections:update_entity(entity_id, add_only)
-   local entity_struct = _entities[entity_id]
+   local entity_struct = self._entities[entity_id]
    
    if entity_struct then
       local changed_types_2, graphs_changed_2
@@ -118,7 +114,7 @@ function PlayerConnections:update_entity(entity_id, add_only)
 end
 
 function PlayerConnections:remove_entity(entity_id)
-   local entity_struct = _entities[entity_id]
+   local entity_struct = self._entities[entity_id]
    if entity_struct then
       --log:debug('remove_entity %s', entity_id)
       local changed_types, graphs_changed = self:_remove_entity_from_graphs(entity_struct)
@@ -138,7 +134,7 @@ end
 
 function PlayerConnections:register_entity(entity, connections, separated_by_player, connected_stats)
    local id = entity:get_id()
-   if not _entities[id] then
+   if not self._entities[id] then
       -- check if there are any connection types that are actually valid for this entity; otherwise we don't need to add it here
       local has_valid_connections = false
       for type, connection in pairs(connections) do
@@ -152,8 +148,15 @@ function PlayerConnections:register_entity(entity, connections, separated_by_pla
       end
 
       local conns = {}
-      local entity_struct = {id = id, entity = entity, connections = conns, origin = entity:get_component('mob'):get_model_origin()}
-      _entities[id] = entity_struct
+      local align_to_grid = radiant.array_to_map(radiant.entities.get_component_data(entity, 'mob').align_to_grid or {})
+      local entity_struct = {
+         id = id,
+         entity = entity,
+         connections = conns,
+         align_x = align_to_grid.x and true,
+         align_z = align_to_grid.z and true
+      }
+      self._entities[id] = entity_struct
       
       -- organize connections by type
       for type, connection in pairs(connections) do
@@ -178,7 +181,7 @@ function PlayerConnections:register_entity(entity, connections, separated_by_pla
                conn.connectors[key] = connector_id
                conn_tbl.entity_connectors[id][connector_id] = connector_id
 
-               local connect = _connectors[connector_id] or {}
+               local connect = self._connectors[connector_id] or {}
                connect.name = key
                connect.id = connector_id
                connect.info = connector.info
@@ -193,7 +196,7 @@ function PlayerConnections:register_entity(entity, connections, separated_by_pla
                connect.connected_to = connect.connected_to or {}
                connect.chunk_region_keys = connect.chunk_region_keys or {}
                
-               _connectors[connector_id] = connect
+               self._connectors[connector_id] = connect
 
                if connection_stats then
                   local connector_stats = connection_stats.connectors[connect.name]
@@ -221,18 +224,18 @@ end
 
 function PlayerConnections:unregister_entity(entity)
    local id = entity:get_id()
-   local entity_struct = _entities[id]
+   local entity_struct = self._entities[id]
 
    if entity_struct then
       local result = self:remove_entity(id)
       -- remove all of the entity's connectors from the connector locations tables
       for type, connection in pairs(entity_struct.connections) do
-         local conn_tbl = _connection_tables[type]
+         local conn_tbl = self._connection_tables[type]
          if conn_tbl then
             conn_tbl.entity_connectors[id] = nil
             -- remove connectors from index
             for key, connector_id in pairs(connection.connectors) do
-               local connector = _connectors[connector_id]
+               local connector = self._connectors[connector_id]
                for _, chunk_region_key in ipairs(connector.chunk_region_keys) do
                   local conn_locs = conn_tbl.connector_locations[chunk_region_key]
                   conn_locs[connector_id] = nil
@@ -242,7 +245,7 @@ function PlayerConnections:unregister_entity(entity)
          end
       end
 
-      _entities[id] = nil
+      self._entities[id] = nil
       --self.__saved_variables:mark_changed()
 
       return result
@@ -250,11 +253,18 @@ function PlayerConnections:unregister_entity(entity)
 end
 
 function PlayerConnections:get_connections(type)
-   local conn_tbl = _connection_tables[type]
+   local conn_tbl = self._connection_tables[type]
    
    if not conn_tbl then
-      conn_tbl = {type = type, entity_connectors = {}, connector_locations = {}, graphs = {}, entities_in_graphs = {}}
-      _connection_tables[type] = conn_tbl
+      conn_tbl = {
+         type = type,
+         connector_locations = {},
+         entity_connectors = {},
+         maintain_graphs = stonehearth_ace.connection:should_maintain_graphs(type),
+         graphs = {},
+         entities_in_graphs = {}
+      }
+      self._connection_tables[type] = conn_tbl
       --self.__saved_variables:mark_changed()
    end
 
@@ -274,11 +284,11 @@ function PlayerConnections:_get_graphs(graph_ids)
 end
 
 function PlayerConnections:get_entity_struct(id)
-   return _entities[id]
+   return self._entities[id]
 end
 
 function PlayerConnections:get_entity_connector(id)
-   return _connectors[id]
+   return self._connectors[id]
 end
 
 function PlayerConnections:_get_entity_connector_id(entity_id, type, connector_name)
@@ -290,19 +300,19 @@ function PlayerConnections:_load_entity_graph_data(entity_id, connected_stats, s
    for type, conn_stats in pairs(connected_stats) do
       if separated_by_player == stonehearth_ace.connection:is_separated_by_player(type) then
          local conn_tbl = self:get_connections(type)
-         conn_tbl.entities_in_graphs[entity_id] = conn_stats.num_connections > 0 or nil
          for name, connector in pairs(conn_stats.connectors) do
             for id, graph_connection in pairs(connector.connected_to) do
                -- connected_to now stores a table with graph_id and threshold instead of just storing the graph_id
                local graph_id = graph_connection.graph_id
+               conn_tbl.entities_in_graphs[entity_id] = graph_id
                conn_tbl.graphs[graph_id] = true
                local graph = stonehearth_ace.connection:get_graph_by_id(graph_id, self._sv.player_id, type)
                --conn_data.connected_to[connected_to_id] = graph_id
                -- when this gets called for the first entity that's part of this connection, the connected_to id won't be valid
                -- so when it gets called for the second (and that id is valid), connect the nodes for both at that time
-               local conn_to = _connectors[id]
+               local conn_to = self._connectors[id]
                if conn_to then
-                  local conn_from = _connectors[self:_get_entity_connector_id(entity_id, type, name)]
+                  local conn_from = self._connectors[self:_get_entity_connector_id(entity_id, type, name)]
                   local graph_entity_1 = graph.nodes[entity_id]
                   local graph_entity_2 = graph.nodes[conn_to.entity_id]
                   if not graph_entity_1 then
@@ -342,12 +352,11 @@ function PlayerConnections:_add_entity_to_graphs(entity_struct, only_type, entit
             -- go through in order (resulting sequence is sorted)
             for _, possible_connection in ipairs(possible_connections) do
                local changes = self:_try_connecting_connectors(possible_connection)
-               if changes and next(changes) then
-                  combine_tables(type_graphs, changes)
+               if changes then
                   changed_types[type] = true
-         
-                  conn_tbl.entities_in_graphs[possible_connection.connector.entity_id] = true
-                  conn_tbl.entities_in_graphs[possible_connection.target_connector.entity_id] = true
+                  if next(changes) then
+                     combine_tables(type_graphs, changes)
+                  end
                end
             end
          end
@@ -364,35 +373,36 @@ function PlayerConnections:_remove_entity_from_graphs(entity_struct)
    if entity_struct then
       for type, connection in pairs(entity_struct.connections) do
          local conn_tbl = self:get_connections(type)
+         local graph_id = conn_tbl.entities_in_graphs[entity_struct.id]
          conn_tbl.entities_in_graphs[entity_struct.id] = nil
          
          local type_graphs = {}
          graphs_changed[type] = type_graphs
 
          local connected_entities = {}
-         local graph_id
-
+         
          for _, connector_id in pairs(connection.connectors) do
-            local connector = _connectors[connector_id]
+            local connector = self._connectors[connector_id]
             local connected_to = radiant.keys(connector.connected_to)
             for _, id in pairs(connected_to) do
-               graph_id = connector.connected_to[connected_to]
                --log:debug('trying to disconnect %s from %s', connector_id, id)
-               local connected = _connectors[id]
+               local connected = self._connectors[id]
                connected_entities[connected.entity_id] = true
-               local connected_entity_struct = _entities[connected.entity_id]
+               local connected_entity_struct = self._entities[connected.entity_id]
                local changes = self:_try_disconnecting_connectors(connector, connected, true)
                if changes then
-                  combine_tables(type_graphs, changes)
-
                   if next(changes) then
-                     changed_types[type] = true
+                     combine_tables(type_graphs, changes)
+                  end
 
+                  changed_types[type] = true
+
+                  if conn_tbl.maintain_graphs then
                      -- we're already removing *this* entity from the entities_in_graphs table, but we may also need to remove the entity it was connected to
                      if conn_tbl.entities_in_graphs[connected.entity_id] then
                         local still_in = false
                         for is_connected_id, _ in pairs(conn_tbl.entity_connectors) do
-                           local ec = _connectors[is_connected_id]
+                           local ec = self._connectors[is_connected_id]
                            if ec and ec.num_connections > 0 then
                               still_in = true
                               break
@@ -415,9 +425,12 @@ function PlayerConnections:_remove_entity_from_graphs(entity_struct)
          end
 
          if graph_id then
-            local changes = self:_split_graph_deep_disconnected(conn_tbl.graphs, stonehearth_ace.connection:get_graph_by_id(id), connected_entities)
-            if changes then
-               combine_tables(type_graphs, changes)
+            local graph = stonehearth_ace.connection:get_graph_by_id(graph_id)
+            if graph then
+               local changes = self:_split_graph_deep_disconnected(conn_tbl.graphs, graph, connected_entities)
+               if changes then
+                  combine_tables(type_graphs, changes)
+               end
             end
          end
       end
@@ -429,7 +442,7 @@ end
 -- return value:
 --    nil if the connectors can't be connected for a technical/error reason (the connectors are the same, or are part of the same entity, or are of different types)
 --    false if the connectors can't be connected for normal reason (their entities are already connected, or a max_connections has been reached)
---    true if the connection succeeds
+--    the graphs changed if the connection succeeds
 function PlayerConnections:_try_connecting_connectors(potential_connection)
    local c1 = potential_connection.connector
    local c2 = potential_connection.target_connector
@@ -442,8 +455,8 @@ function PlayerConnections:_try_connecting_connectors(potential_connection)
       return nil
    end
    
-   local e1 = _entities[c1.entity_id]
-   local e2 = _entities[c2.entity_id]
+   local e1 = self._entities[c1.entity_id]
+   local e2 = self._entities[c2.entity_id]
 
    if not e1 or not e2 then
       return nil
@@ -456,8 +469,11 @@ function PlayerConnections:_try_connecting_connectors(potential_connection)
       return nil
    end
 
-   local graphs_changed = {}
+   local graphs_changed
    local connectors_disconnected = {}
+
+   local conn_tbl = self:get_connections(conn1.type)
+   local connected_graph_id
 
    -- the current connector or the target connector might already have reached their max_connections
    -- however, if the new potential connection outranks their lowest ranked current connection, we want to override it
@@ -465,12 +481,12 @@ function PlayerConnections:_try_connecting_connectors(potential_connection)
       local worst_id, worst_rank = self:_get_worst_connection(c1)
       if worst_id then
          if worst_rank >= potential_connection.this_rank then
-            return nil
+            return false
          else
             --log:debug('found a better connection: %s + %s (%s / %s) => %s + %s (%s / %s)',
             --   c1.id, worst_id, c1.connected_to[worst_id], worst_rank,
             --   c1.id, c2.id, potential_connection.this_rank, potential_connection.target_rank)
-            connectors_disconnected[c1] = _connectors[worst_id]
+            connectors_disconnected[c1] = self._connectors[worst_id]
          end
       end
    end
@@ -478,12 +494,12 @@ function PlayerConnections:_try_connecting_connectors(potential_connection)
       local worst_id, worst_rank = self:_get_worst_connection(c2)
       if worst_id then
          if worst_rank >= potential_connection.target_rank then
-            return nil
+            return false
          else
             --log:debug('found a better connection: %s + %s (%s / %s) => %s + %s (%s / %s)',
             --   c2.id, worst_id, c2.connected_to[worst_id], worst_rank,
             --   c2.id, c1.id, potential_connection.target_rank, potential_connection.this_rank)
-            connectors_disconnected[c2] = _connectors[worst_id]
+            connectors_disconnected[c2] = self._connectors[worst_id]
          end
       end
    end
@@ -492,6 +508,9 @@ function PlayerConnections:_try_connecting_connectors(potential_connection)
       --log:debug('diconnecting %s and %s because a better connection was found', dc1.id, dc2.id)
       local changes = self:_try_disconnecting_connectors(dc1, dc2)
       if changes then
+         if not graphs_changed then
+            graphs_changed = {}
+         end
          combine_tables(graphs_changed, changes)
       end
    end
@@ -499,69 +518,79 @@ function PlayerConnections:_try_connecting_connectors(potential_connection)
    if c1.num_connections < c1.max_connections and c2.num_connections < c2.max_connections and
          conn1.num_connections < conn1.max_connections and conn2.num_connections < conn2.max_connections then
       
-      -- we create a separate graph for each separate group of connected entities
-      -- if this connection connects entities from two separate graphs, we need to merge those graphs
-      local graph_indexes = self:get_connections(conn1.type).graphs
-      local graphs = self:_get_graphs(graph_indexes)
-      local graphs_to_merge = {}
-      local graph_entity_1 = nil
-      local graph_entity_2 = nil
+      if not graphs_changed then
+         graphs_changed = {}
+      end
 
-      for id, graph in pairs(graphs) do
-         if graph.nodes[e1.id] then
-            graph_entity_1 = graph.nodes[e1.id]
-            if graph_entity_1.connected_nodes[e2.id] then
-               -- if these two entities are already connected in the same graph, this connection is redundant and should be canceled
-               return false
+      if conn_tbl.maintain_graphs then
+         -- we create a separate graph for each separate group of connected entities
+         -- if this connection connects entities from two separate graphs, we need to merge those graphs
+         local graph_indexes = conn_tbl.graphs
+         local graphs = self:_get_graphs(graph_indexes)
+         local graphs_to_merge = {}
+         local graph_entity_1 = nil
+         local graph_entity_2 = nil
+
+         for id, graph in pairs(graphs) do
+            if graph.nodes[e1.id] then
+               graph_entity_1 = graph.nodes[e1.id]
+               if graph_entity_1.connected_nodes[e2.id] then
+                  -- if these two entities are already connected in the same graph, this connection is redundant and should be canceled
+                  return false
+               elseif graph.nodes[e2.id] then
+                  -- both entities are in the same graph, just not directly connected to one another yet
+                  graph_entity_2 = graph.nodes[e2.id]
+               end
+               table.insert(graphs_to_merge, id)
             elseif graph.nodes[e2.id] then
-               -- both entities are in the same graph, just not directly connected to one another yet
                graph_entity_2 = graph.nodes[e2.id]
-            end
-            table.insert(graphs_to_merge, id)
-         elseif graph.nodes[e2.id] then
-            graph_entity_2 = graph.nodes[e2.id]
-            table.insert(graphs_to_merge, id)
-         end
-      end
-
-      if not graph_entity_1 then
-         graph_entity_1 = {entity_id = e1.id, connected_nodes = {}}
-      end
-      if not graph_entity_2 then
-         graph_entity_2 = {entity_id = e2.id, connected_nodes = {}}
-      end
-      graph_entity_1.connected_nodes[e2.id] = true
-      graph_entity_2.connected_nodes[e1.id] = true
-
-      local graph = nil
-      if #graphs_to_merge > 0 then
-         graph = graphs[graphs_to_merge[1]]
-      end
-      if not graph then
-         graph = stonehearth_ace.connection:_create_new_graph(conn1.type, self._sv.player_id)
-         graph_indexes[graph.id] = true
-      end
-      graphs_changed[graph.id] = true
-
-      -- merge all additional graphs into the first one
-      for i = #graphs_to_merge, 2, -1 do
-         local graph_id = graphs_to_merge[i]
-         --log:debug('merging graphs %s and %s', graph_id, graph.id)
-         for id, node in pairs(graphs[graph_id] and graphs[graph_id].nodes or {}) do
-            graph.nodes[id] = node
-            local e = _entities[id]
-            if e then
-               self:_update_entity_changes_connector(e.entity, conn1.type, nil, nil, graph.id)
+               table.insert(graphs_to_merge, id)
             end
          end
-         stonehearth_ace.connection:_remove_graph(graph_id)
-         graph_indexes[graph_id] = nil
-         graphs_changed[graph_id] = true
-      end
 
-      -- make sure both newly-connected nodes are members of the current graph
-      graph.nodes[e1.id] = graph_entity_1
-      graph.nodes[e2.id] = graph_entity_2
+         if not graph_entity_1 then
+            graph_entity_1 = {entity_id = e1.id, connected_nodes = {}}
+         end
+         if not graph_entity_2 then
+            graph_entity_2 = {entity_id = e2.id, connected_nodes = {}}
+         end
+         graph_entity_1.connected_nodes[e2.id] = true
+         graph_entity_2.connected_nodes[e1.id] = true
+
+         local graph = nil
+         if #graphs_to_merge > 0 then
+            graph = graphs[graphs_to_merge[1]]
+         end
+         if not graph then
+            graph = stonehearth_ace.connection:_create_new_graph(conn1.type, self._sv.player_id)
+            graph_indexes[graph.id] = true
+         end
+         graphs_changed[graph.id] = true
+
+         -- merge all additional graphs into the first one
+         for i = #graphs_to_merge, 2, -1 do
+            local graph_id = graphs_to_merge[i]
+            --log:debug('merging graphs %s and %s', graph_id, graph.id)
+            for id, node in pairs(graphs[graph_id] and graphs[graph_id].nodes or {}) do
+               graph.nodes[id] = node
+               local e = self._entities[id]
+               if e then
+                  self:_update_entity_changes_connector(e.entity, conn1.type, nil, nil, graph.id)
+               end
+            end
+            stonehearth_ace.connection:_remove_graph(graph_id)
+            graph_indexes[graph_id] = nil
+            graphs_changed[graph_id] = true
+         end
+
+         -- make sure both newly-connected nodes are members of the current graph
+         graph.nodes[e1.id] = graph_entity_1
+         graph.nodes[e2.id] = graph_entity_2
+
+         connected_graph_id = graph.id
+         conn_tbl.entities_in_graphs[e1.id] = connected_graph_id
+         conn_tbl.entities_in_graphs[e2.id] = connected_graph_id
+      end
 
       c1.connected_to[c2.id] = potential_connection.this_rank
       c2.connected_to[c1.id] = potential_connection.target_rank
@@ -572,8 +601,8 @@ function PlayerConnections:_try_connecting_connectors(potential_connection)
       conn2.num_connections = conn2.num_connections + 1
 
       --log:debug('connecting entities')
-      self:_update_entity_changes_connector(e1.entity, conn1.type, c1.name, c2.id, graph.id, potential_connection.this_rank)
-      self:_update_entity_changes_connector(e2.entity, conn1.type, c2.name, c1.id, graph.id, potential_connection.target_rank)
+      self:_update_entity_changes_connector(e1.entity, conn1.type, c1.name, c2.id, connected_graph_id, potential_connection.this_rank)
+      self:_update_entity_changes_connector(e2.entity, conn1.type, c2.name, c1.id, connected_graph_id, potential_connection.target_rank)
    end
 
    for dc1, dc2 in pairs(connectors_disconnected) do
@@ -581,7 +610,7 @@ function PlayerConnections:_try_connecting_connectors(potential_connection)
       -- (as long as they aren't either of these entities)
       -- dc1 is either c1 or c2; dc2 is the worst connector we disconnected from it ({id, rank})
       if dc2.entity_id ~= e1.id and dc2.entity_id ~= e2.id then
-         local _, added_graphs_changed = self:_add_entity_to_graphs(_entities[dc2.entity_id], conn1.type)
+         local _, added_graphs_changed = self:_add_entity_to_graphs(self._entities[dc2.entity_id], conn1.type)
          added_graphs_changed = added_graphs_changed[conn1.type]
          if added_graphs_changed and next(added_graphs_changed) then
             combine_tables(graphs_changed, added_graphs_changed)
@@ -589,7 +618,7 @@ function PlayerConnections:_try_connecting_connectors(potential_connection)
       end
    end
 
-   return next(graphs_changed) and graphs_changed
+   return graphs_changed
 end
 
 function PlayerConnections:_get_worst_connection(connector)
@@ -617,8 +646,8 @@ function PlayerConnections:_try_disconnecting_connectors(c1, c2, removing_entity
       return nil
    end
    
-   local e1 = _entities[c1.entity_id]
-   local e2 = _entities[c2.entity_id]
+   local e1 = self._entities[c1.entity_id]
+   local e2 = self._entities[c2.entity_id]
 
    if not e1 or not e2 then
       return nil
@@ -646,64 +675,68 @@ function PlayerConnections:_try_disconnecting_connectors(c1, c2, removing_entity
    -- process through the 'connected_nodes' of e1 and see if it reaches e2
    -- if not, remove e1 and all connections it has to a new graph
 
-   local graph_indexes = self:get_connections(conn1.type).graphs
-   local graphs = self:_get_graphs(graph_indexes)
+   local conn_tbl = self:get_connections(conn1.type)
    local graphs_changed = {}
 
-   for id, graph in pairs(graphs) do
-      local n1 = graph.nodes[e1.id]
-      local n2 = graph.nodes[e2.id]
+   self:_update_entity_changes_connector(e1.entity, conn1.type, c1.name, c2.id)
+   self:_update_entity_changes_connector(e2.entity, conn1.type, c2.name, c1.id)
 
-      if n1 and n1.connected_nodes[e2.id] then
-         n1.connected_nodes[e2.id] = nil
-         --log:debug('disconnecting connector')
-         self:_update_entity_changes_connector(e1.entity, conn1.type, c1.name, c2.id)
+   if conn_tbl.maintain_graphs then
+      local graph_indexes = conn_tbl.graphs
+      local graphs = self:_get_graphs(graph_indexes)
 
-         if not next(n1.connected_nodes) then
-            graph.nodes[e1.id] = nil
-            graphs_changed[graph.id] = true
-            n1 = nil
+      for id, graph in pairs(graphs) do
+         local n1 = graph.nodes[e1.id]
+         local n2 = graph.nodes[e2.id]
+
+         if n1 and n1.connected_nodes[e2.id] then
+            n1.connected_nodes[e2.id] = nil
+            --log:debug('disconnecting connector')
+            if not next(n1.connected_nodes) then
+               graph.nodes[e1.id] = nil
+               graphs_changed[graph.id] = true
+               n1 = nil
+            end
          end
-      end
 
-      if n2 and n2.connected_nodes[e1.id] then
-         n2.connected_nodes[e1.id] = nil
-         --log:debug('disconnecting connector')
-         self:_update_entity_changes_connector(e2.entity, conn1.type, c2.name, c1.id)
-
-         if not next(n2.connected_nodes) then
-            graph.nodes[e2.id] = nil
-            graphs_changed[graph.id] = true
-            n2 = nil
+         if n2 and n2.connected_nodes[e1.id] then
+            n2.connected_nodes[e1.id] = nil
+            --log:debug('disconnecting connector')
+            if not next(n2.connected_nodes) then
+               graph.nodes[e2.id] = nil
+               graphs_changed[graph.id] = true
+               n2 = nil
+            end
          end
-      end
 
-      if not next(graph.nodes) then
-         stonehearth_ace.connection:_remove_graph(graph.id)
-         graph_indexes[graph.id] = nil
-      end
-
-      if n1 and n2 and not removing_entity then
-         -- they both have other connections; check recursively to see if they're still connected to one another
-         local split_changes = self:_split_graph_deep_disconnected(graph_indexes, graph, {[e1.id] = true, [e2.id] = true})
-         
-         if split_changes then
-            combine_tables(graphs_changed, split_changes)
+         if not next(graph.nodes) then
+            stonehearth_ace.connection:_remove_graph(graph.id)
+            graph_indexes[graph.id] = nil
          end
-      end
 
-      if next(graphs_changed) then
-         return graphs_changed
+         if n1 and n2 and not removing_entity then
+            -- they both have other connections; check recursively to see if they're still connected to one another
+            local split_changes = self:_split_graph_deep_disconnected(graph_indexes, graph, {[e1.id] = true, [e2.id] = true})
+            
+            if split_changes then
+               combine_tables(graphs_changed, split_changes)
+            end
+         end
+
+         if next(graphs_changed) then
+            return graphs_changed
+         end
       end
    end
 
-   return false
+   return graphs_changed
 end
 
 function PlayerConnections:_split_graph_deep_disconnected(graph_indexes, graph, node_ids)
    -- we want to do a breadth-first search; almost always, if nodes are connected to one another, we'll find that faster with breadth-first than depth-first
    -- we want to cancel the search as soon as it finds the node(s) instead of traversing everything
    -- create new graphs when necessary
+   log:debug('_split_graph_deep_disconnected %s, %s', graph.id, radiant.util.table_tostring(node_ids))
 
    local graphs_changed = {}
 
@@ -720,7 +753,7 @@ function PlayerConnections:_split_graph_deep_disconnected(graph_indexes, graph, 
             local has_nodes = false
             local to_check_index = 0
 
-            while to_check_index <= #to_check do
+            while to_check_index < #to_check do
                -- we add to the end, remove from the start
                to_check_index = to_check_index + 1
                local start_node_id = to_check[to_check_index]
@@ -756,7 +789,7 @@ function PlayerConnections:_split_graph_deep_disconnected(graph_indexes, graph, 
                   graph.nodes[id] = nil
                   if node then
                      new_graph.nodes[id] = node
-                     local e = _entities[id]
+                     local e = self._entities[id]
                      if e then
                         --log:debug('changing graph')
                         self:_update_entity_changes_connector(e.entity, graph.type, nil, nil, new_graph.id)
@@ -777,7 +810,7 @@ function PlayerConnections:_find_best_potential_connections(connection, entity_i
    local result = {}
    if connection.num_connections < connection.max_connections then
       for _, connector_id in pairs(connection.connectors) do
-         local connector = _connectors[connector_id]
+         local connector = self._connectors[connector_id]
          if connector.max_connections > 0 then
             local potential_connectors = self:_find_best_potential_connectors(connector, entity_id_to_ignore)
             for _, conn in ipairs(potential_connectors) do
@@ -793,7 +826,11 @@ end
 
 function PlayerConnections:_find_best_potential_connectors(connector, entity_id_to_ignore)
    local result = {}
-   entity_id_to_ignore = entity_id_to_ignore or connector.entity_id
+   local ids_to_ignore = {}
+   ids_to_ignore[connector.entity_id] = true
+   if entity_id_to_ignore then
+      ids_to_ignore[entity_id_to_ignore] = true
+   end
    
    if connector.trans_region then
       local r = connector.trans_region
@@ -803,29 +840,31 @@ function PlayerConnections:_find_best_potential_connectors(connector, entity_id_
       for _, crk in ipairs(connector.chunk_region_keys) do
          --log:debug('testing crk %s', crk)
          for id, _ in pairs(conn_locs[crk]) do
-            local conn = _connectors[id]
+            local conn = self._connectors[id]
             --log:debug('seeing if %s can connect to %s', connector.id, id)
             --log:debug('conn %s: %s, %s', id, conn.connection.entity_struct.id, connection.entity_struct.id)
-            if conn.entity_id ~= connector.entity_id
-                  and conn.entity_id ~= entity_id_to_ignore
+            if not ids_to_ignore[conn.entity_id]
                   and conn.max_connections > 0
                   and conn.trans_region then
                
-               local intersection = r:intersect_region(conn.trans_region):get_area()
-               --log:debug('checking intersection of connection regions %s and %s', connector.trans_region:get_bounds(), conn.trans_region:get_bounds())
-               if intersection > 0 then
-                  -- rank potential connectors by how closely their regions intersect
-                  local rank_connector = intersection / connector.region_area
-                  local rank_conn = intersection / conn.region_area
-                  --log:debug('they intersect! %s and %s', rank_connector, rank_conn)
-                  -- the rank has to meet the threshold for each connector
-                  if rank_connector >= connector.region_intersection_threshold and rank_conn >= conn.region_intersection_threshold then
-                     table.insert(result, {
-                        connector = connector,
-                        target_connector = conn,
-                        this_rank = rank_connector,
-                        target_rank = rank_conn
-                     })
+               local intersects = r:intersects_region(conn.trans_region)
+               if intersects then
+                  local intersection = r:intersect_region(conn.trans_region):get_area()
+                  --log:debug('checking intersection of connection regions %s and %s', connector.trans_region:get_bounds(), conn.trans_region:get_bounds())
+                  if intersection > 0 then
+                     -- rank potential connectors by how closely their regions intersect
+                     local rank_connector = intersection / connector.region_area
+                     local rank_conn = intersection / conn.region_area
+                     --log:debug('they intersect! %s and %s', rank_connector, rank_conn)
+                     -- the rank has to meet the threshold for each connector
+                     if rank_connector >= connector.region_intersection_threshold and rank_conn >= conn.region_intersection_threshold then
+                        table.insert(result, {
+                           connector = connector,
+                           target_connector = conn,
+                           this_rank = rank_connector,
+                           target_rank = rank_conn
+                        })
+                     end
                   end
                end
             end
@@ -853,10 +892,12 @@ function PlayerConnections:_update_connector_locations(entity_struct, new_locati
       local conn_locs = self:get_connections(type).connector_locations
       
       for _, connector_id in pairs(connection.connectors) do
-         local connector = _connectors[connector_id]
+         local connector = self._connectors[connector_id]
          --log:debug('rotating region %s by %s°, then translating by %s', connector.region, new_rotation, new_location or '[NIL]')
          if new_location then
-            connector.trans_region = rotate_region(connector.region, entity_struct.origin - connection.origin_offset, new_rotation):translated(new_location)
+            connector.trans_region = rotate_region(connector.region, connection.origin_offset, new_rotation, entity_struct.align_x, entity_struct.align_z)
+                  :translated(new_location)
+            --log:debug('connector %s trans_region bounds: %s', connector_id, connector.trans_region:get_bounds())
          else
             connector.trans_region = nil
          end

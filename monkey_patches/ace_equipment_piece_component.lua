@@ -77,8 +77,8 @@ end
 
 function AceEquipmentPieceComponent:_get_conditional_value(condition_type, condition, conditional_value)
 	if condition_type == 'season' then
-		local season = stonehearth.seasons:get_current_season().id
-		if condition == season then
+      local season = stonehearth.seasons:get_current_season()
+		if season and condition == season.id then
 			return conditional_value
 		end
 	end

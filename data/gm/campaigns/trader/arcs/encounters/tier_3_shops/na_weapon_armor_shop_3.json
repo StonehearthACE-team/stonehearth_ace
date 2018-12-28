@@ -1,0 +1,163 @@
+{
+   "type": "encounter",
+   "encounter_type": "shop",
+   "in_edge": "na_weapon_armor_shop_3",
+   "shop_info": {
+      "name": "i18n(stonehearth_ace:data.gm.campaigns.trader.arcs.encounters.tier_3_shops.na_weapon_armor_shop_3.shop_info.name)",
+      "title": "i18n(stonehearth_ace:data.gm.campaigns.trader.arcs.encounters.tier_3_shops.na_weapon_armor_shop_3.shop_info.title)",
+      "inventory": {
+         "shopkeeper_level": 3,
+         "shopkeeper_gold": 1350,
+		 "overall_price_multiplier": 1.1,
+         "entries": [
+            {
+               "items_matching": {
+                  "leather_armor": {
+                     "category": [
+                        "armor"
+                     ],
+                     "material": [
+                        "leather",
+						"na_made"
+                     ]
+                  }
+               },
+               "quantity": {
+                  "min": 0,
+                  "max": 1
+               }
+            },
+            {
+               "items_matching": {
+                  "bronze_armor": {
+                     "category": [
+                        "armor"
+                     ],
+                     "material": [
+                        "bronze",
+						"na_made"
+                     ]
+                  }
+               },
+               "quantity": {
+                  "min": 0,
+                  "max": 1
+               }
+            },
+            {
+               "items_matching": {
+                  "light_armor": {
+                     "category": [
+                        "armor"
+                     ],
+                     "material": [
+                        "light_armor",
+						"na_made"
+                     ]
+                  }
+               },
+               "quantity": {
+                  "min": 0,
+                  "max": 1
+               }
+            },
+            {
+               "items_matching": {
+                  "metal_armor": {
+                     "category": [
+                        "armor"
+                     ],
+                     "material": [
+                        "silver",
+						"na_made"
+                     ]
+                  }
+               },
+               "quantity": {
+                  "min": 0,
+                  "max": 1
+               }
+            },
+            {
+               "items_matching": {
+                  "wood_armor": {
+                     "category": [
+                        "armor"
+                     ],
+                     "material": [
+                        "wood"
+                     ]
+                  }
+               },
+               "quantity": {
+                  "min": 0,
+                  "max": 1
+               }
+            },
+            {
+               "items_matching": {
+                  "steel_armor": {
+                     "category": [
+                        "armor"
+                     ],
+                     "material": [
+                        "steel",
+						"na_made"
+                     ]
+                  }
+               },
+               "quantity": {
+                  "min": 0,
+                  "max": 1
+               }
+            },
+            {
+               "items_matching": {
+                  "iron_armor": {
+                     "category": [
+                        "armor"
+                     ],
+                     "material": [
+                        "iron",
+						"na_made"
+                     ]
+                  }
+               },
+               "quantity": {
+                  "min": 0,
+                  "max": 1
+               }
+            },
+            {
+               "items_matching": {
+                  "weapon": {
+                     "category": [
+                        "weapons"
+                     ],
+					 "material": [
+						"melee_weapon",
+						"na_made"
+					 ]
+                  }
+               },
+               "quantity": {
+                  "min": 0,
+                  "max": 1
+               }
+            },
+            {
+               "items": [
+                  "stonehearth:archer:talisman",
+                  "stonehearth:footman:wooden_sword_talisman",
+                  "stonehearth:knight:talisman",
+                  "stonehearth:cleric:talisman"
+               ],
+               "quantity": {
+                  "min": 1,
+                  "max": 3
+               }
+            }
+         ]
+      }
+   }
+}

@@ -27,10 +27,13 @@ $.widget( "stonehearth.stonehearthMenu", $.stonehearth.stonehearthMenu, {
          }
       }
 
+      var nodesArr = [];
       radiant.each(nodes, function(key, node) {
-         node.key = key;
+         if (node.icon) {
+            node.key = key;
+            nodesArr.push(node);
+         }
       });
-      var nodesArr = radiant.map_to_array(nodes);
       nodesArr.sort(compare);
       nodes = nodesArr;
 

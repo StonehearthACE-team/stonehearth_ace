@@ -25,7 +25,9 @@
          "render_type": "merge_with_model",
          "slot": "torso",
          "ilevel": 7,
-         "roles":["plate_wearer"],
+         "roles": [
+            "plate_wearer"
+         ],
          "required_job_level": 1,
          "equip_effect": "stonehearth:effects:weapon_level_up"
       }
@@ -49,7 +51,14 @@
          "description": "i18n(stonehearth_ace:entities.armor.iron_platemail.description)",
          "icon": "file(iron_platemail.png)",
          "category": "armor",
-         "material_tags":["iron", "armor", "heavy_armor", "iron_platemail", "stockpile_equipment"]
+         "material_tags": [
+            "iron",
+            "armor",
+            "heavy_armor",
+            "ascendancy_made",
+            "iron_platemail",
+            "stockpile_equipment"
+         ]
       }
    }
 }

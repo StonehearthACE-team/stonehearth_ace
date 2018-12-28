@@ -29,7 +29,19 @@
    "entity_data": {
       "stonehearth:catalog": {
          "display_name": "i18n(stonehearth_ace:entities.armor.rc_cloth_padded_helmet.display_name)",
-         "icon": "file(rc_cloth_padded_helmet.png)"
+         "icon": "file(rc_cloth_padded_helmet.png)",
+         "mixintypes": {
+            "material_tags": "override"
+         },
+         "material_tags": [
+            "cloth",
+            "armor",
+            "helmet",
+            "light_armor",
+            "rc_made",
+            "cloth_padded_helmet",
+            "stockpile_equipment"
+         ]
       }
    }
 }

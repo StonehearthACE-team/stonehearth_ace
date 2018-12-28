@@ -19,7 +19,18 @@
    "entity_data": {
       "stonehearth:catalog": {
          "display_name": "i18n(stonehearth_ace:entities.armor.rc_steel_shield.display_name)",
-         "icon": "file(rc_steel_shield.png)"
+         "icon": "file(rc_steel_shield.png)",
+         "mixintypes": {
+            "material_tags": "override"
+         },
+         "material_tags": [
+            "steel",
+            "shield",
+            "heavy_armor",
+            "rc_made",
+            "steel_shield",
+            "stockpile_equipment"
+         ]
       }
    }
 }

@@ -46,7 +46,10 @@
          "value_in_gold": 38
       },
       "stonehearth:catalog": {
-         "material_tags":["iron", "melee_weapon", "crafted", "iron_mace", "stockpile_weapon"]
+	     "mixintypes": {
+			"material_tags": "override"
+		 },
+         "material_tags":["iron", "melee_weapon", "crafted", "ascendancy_made", "iron_mace", "stockpile_weapon"]
       }
    }
 }

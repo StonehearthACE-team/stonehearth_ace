@@ -6,12 +6,17 @@
    "description": "i18n(stonehearth_ace:entities.construction.simple_hatch_clay.description)",
    "flavor": "i18n(stonehearth_ace:entities.construction.simple_hatch_clay.flavor)",
    "portrait": "/stonehearth_ace/entities/construction/simple_hatch_clay/simple_hatch_clay.png",
-   "workshop": "stonehearth:potter:workbench",
+   "workshop": "stonehearth:potter:kiln",
+   "work_effect": "work_wait",
    "level_requirement": 2,
    "ingredients": [
       {
          "material": "clay resource",
          "count": 2
+      },
+	  {
+         "material": "common_fuel",
+         "count": 1
       }
    ],
    "produces": [

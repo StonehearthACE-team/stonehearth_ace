@@ -1,3 +1,28 @@
 {
-   "work_effect": "work_wait"
+   "work_effect": "work_wait",
+   "mixintypes": {
+	  "ingredients": "override"
+   },
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:food:dough",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth:food:poyo_meat",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth:food:carrot:carrot_basket",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth:food:corn:corn_basket",
+         "count": 1
+      },
+	  {
+         "material": "low_fuel",
+         "count": 1
+      }
+   ]
 }

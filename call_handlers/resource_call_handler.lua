@@ -113,7 +113,7 @@ function ResourceCallHandler:box_get_commandable_entities(session, response, box
 
          if command_comp then
             for _, command in pairs(commands) do
-               if command_comp:has_command(command) then
+               if command_comp:is_command_enabled(command) then
                   table.insert(tbl, entity)
                   break
                end

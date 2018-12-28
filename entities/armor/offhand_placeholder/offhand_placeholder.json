@@ -1,9 +1,12 @@
 {
+   "type": "entity",
    "components": {
       "stonehearth:equipment_piece": {
-         "slot": "offhand",
+         "slot": "leftArm",
          "ilevel": -1,
-		 "equipment_types": ["twohanded"]
+		 "equipment_types": ["twohanded"],
+         "destroy_on_drop": true
       }
-   }
+   },
+   "entity_data": {}
 }

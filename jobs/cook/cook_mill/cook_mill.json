@@ -1,5 +1,10 @@
 {	
    "type": "entity",
+   "components": {
+	  "stonehearth:workshop": {
+         "workshop_effect": "/stonehearth_ace/data/rigs/jobs/cook/cook_mill/effects/work_cooks_mill_ace.json"
+      }
+   },
    "entity_data": {
 	  "stonehearth:workshop": {
          "equivalents": [ "stonehearth_ace:cook:cook_mill_powered", "stonehearth_ace:rayyas_children:cook:mill", "stonehearth_ace:northern_alliance:cook:mill", "stonehearth_ace:mountain_folk:cook:mill" ]

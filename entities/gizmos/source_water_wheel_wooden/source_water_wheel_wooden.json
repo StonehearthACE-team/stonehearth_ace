@@ -22,22 +22,22 @@
                "zlow": {
                   "region": [
                      {
-                        "min": { "x": 0, "y": 0, "z": -3 },
+                        "min": { "x": 0, "y": 0, "z": -2 },
                         "max": { "x": 1, "y": 1, "z": 0 }
                      }
                   ],
                   "max_connections": 1,
-                  "region_intersection_threshold": 0.6
+                  "region_intersection_threshold": 1
                },
                "zhigh": {
                   "region": [
                      {
-                        "min": { "x": 0, "y": 0, "z": -1 },
+                        "min": { "x": 0, "y": 0, "z": 0 },
                         "max": { "x": 1, "y": 1, "z": 2 }
                      }
                   ],
                   "max_connections": 1,
-                  "region_intersection_threshold": 0.6
+                  "region_intersection_threshold": 1
                }
             },
             "max_connections": 1

@@ -29,7 +29,18 @@
    "entity_data": {
       "stonehearth:catalog": {
          "display_name": "i18n(stonehearth_ace:entities.armor.na_steel_mail.display_name)",
-         "icon": "file(na_steel_mail.png)"
+         "icon": "file(na_steel_mail.png)",
+         "mixintypes": {
+            "material_tags": "override"
+         },
+         "material_tags": [
+            "steel",
+            "armor",
+            "heavy_armor",
+            "na_made",
+            "steel_mail",
+            "stockpile_equipment"
+         ]
       }
    }
 }

@@ -106,7 +106,11 @@ function PlayerPatrolBanners:_order_party_banners(party_id)
             if next then
                id = next:get_id()
                banner = banners[id]
-               pb = banner:get_object() and banner:get_banner()
+               if banner then
+                  pb = banner:get_object() and banner:get_banner()
+               else
+                  break
+               end
             else
                break
             end

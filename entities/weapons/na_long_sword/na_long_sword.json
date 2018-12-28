@@ -19,7 +19,18 @@
    "entity_data": {
       "stonehearth:catalog": {
          "display_name": "i18n(stonehearth_ace:entities.weapons.na_long_sword.display_name)",
-         "icon": "file(na_long_sword.png)"
+         "icon": "file(na_long_sword.png)",
+         "mixintypes": {
+            "material_tags": "override"
+         },
+         "material_tags": [
+            "steel",
+            "melee_weapon",
+            "crafted",
+            "na_made",
+            "long_sword",
+            "stockpile_weapon"
+         ]
       }
    }
 }

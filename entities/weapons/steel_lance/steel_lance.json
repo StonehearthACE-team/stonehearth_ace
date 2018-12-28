@@ -23,7 +23,9 @@
             "stonehearth:patrol"
          ],
          "ilevel": 21,
-         "roles":["knight_job"],
+         "roles": [
+            "knight_job"
+         ],
          "required_job_level": 4,
          "equip_effect": "stonehearth:effects:weapon_level_up",
          "equipment_types": [
@@ -91,7 +93,15 @@
          "description": "i18n(stonehearth_ace:entities.weapons.steel_lance.description)",
          "icon": "file(steel_lance.png)",
          "category": "weapons",
-         "material_tags":["twohanded", "steel", "melee_weapon", "crafted", "steel_lance", "stockpile_weapon"]
+         "material_tags": [
+            "twohanded",
+            "steel",
+            "melee_weapon",
+            "ascendancy_made",
+            "crafted",
+            "steel_lance",
+            "stockpile_weapon"
+         ]
       }
    }
 }

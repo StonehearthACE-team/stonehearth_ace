@@ -14,6 +14,7 @@
          "graph_hilight_color": [1, 0, 1]
       },
       "mechanical": {
+         "maintain_graphs": true,
          "separated_by_player": false,
          "connected_color": [
             160,
@@ -26,27 +27,13 @@
             32
          ],
          "graph_hilight_color": [0.9, 0.9, 0.2],
-         "graph_hilight_priority": 50
-      },
-      "stonehearth_ace:vines:highland_vine": {
-         "separated_by_player": false,
-         "graph_hilight_color": [0.3, 0.9, 0.3],
-         "graph_hilight_priority": 1
-      },
-      "stonehearth_ace:vines:daisies": {
-         "separated_by_player": false,
-         "graph_hilight_color": [0.8, 0.8, 0.8],
-         "graph_hilight_priority": 1
+         "graph_hilight_priority": 10
       },
       "stonehearth_ace:tile:carpet:simple": {
-         "separated_by_player": true,
-         "graph_hilight_color": [0.4, 0.8, 0.8],
-         "graph_hilight_priority": 10
+         "separated_by_player": true
       },
       "stonehearth_ace:fence:simple": {
-         "separated_by_player": true,
-         "graph_hilight_color": [0.3, 0.2, 0.1],
-         "graph_hilight_priority": 10
+         "separated_by_player": true
       }
    }
 }

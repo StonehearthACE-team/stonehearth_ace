@@ -1,7 +1,10 @@
 {
    "entity_data": {
       "stonehearth:catalog": {
-         "material_tags":["bronze", "armor", "medium_armor", "bronze_breastplate", "stockpile_equipment"]
+	     "mixintypes": {
+			"material_tags": "override"
+		 },
+         "material_tags":["bronze", "armor", "medium_armor", "ascendancy_made", "bronze_breastplate", "stockpile_equipment"]
       }
    }
 }

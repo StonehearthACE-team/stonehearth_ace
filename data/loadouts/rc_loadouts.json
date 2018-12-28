@@ -57,7 +57,17 @@
       "noble_entourage": {
          "ordinal": 2.2,
          "content": {
-            "cook": {},
+            "mixintypes": {
+               "cook": "remove"
+            },
+            "trapper": {
+               "ordinal": 1,
+               "display_name": "i18n(stonehearth:jobs.trapper.trapper_description.display_name)",
+               "type": "entity",
+               "uri": "stonehearth:trapper:talisman",
+               "icon": "/stonehearth/data/loadouts/images/items/trapper_knife.png",
+               "amount": 1
+            },
             "blacksmith": {},
             "comfy_bed": {
                "uri": "stonehearth_ace:furniture:clay_comfy_bed",

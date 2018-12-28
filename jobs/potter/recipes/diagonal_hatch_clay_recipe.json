@@ -6,12 +6,17 @@
    "description": "i18n(stonehearth_ace:entities.construction.diagonal_hatch_clay.description)",
    "flavor": "i18n(stonehearth_ace:entities.construction.diagonal_hatch_clay.flavor)",
    "portrait": "/stonehearth_ace/entities/construction/diagonal_hatch_clay/diagonal_hatch_clay.png",
-   "workshop": "stonehearth:potter:workbench",
+   "workshop": "stonehearth:potter:kiln",
+   "work_effect": "work_wait",
    "level_requirement": 3,
    "ingredients": [
       {
          "material": "clay resource",
          "count": 3
+      },
+	  {
+         "material": "common_fuel",
+         "count": 1
       }
    ],
    "produces": [

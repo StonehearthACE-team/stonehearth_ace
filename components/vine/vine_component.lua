@@ -10,6 +10,10 @@ local Region3 = _radiant.csg.Region3
 local RegionCollisionType = _radiant.om.RegionCollisionShape
 local rng = _radiant.math.get_default_rng()
 
+local get_block_tag_at = radiant.terrain.get_block_tag_at
+local get_block_kind_from_tag = radiant.terrain.get_block_kind_from_tag
+local get_entities_in_region = radiant.terrain.get_entities_in_region
+
 local WeightedSet = require 'stonehearth.lib.algorithms.weighted_set'
 local ConnectionUtils = require 'lib.connection.connection_utils'
 local log = radiant.log.create_logger('vine_component')
@@ -50,8 +54,9 @@ function VineComponent:initialize()
       self._sv.casts_shadows = true
    end
 
+   local json = radiant.entities.get_json(self)
+
    if not self._sv.render_options or not self._sv.render_models then
-      local json = radiant.entities.get_json(self)
       local json_options = json.render_options or {}
 
       local options = {faces = {}, seasonal_model_switcher = json_options.seasonal_model_switcher}
@@ -78,18 +83,9 @@ function VineComponent:initialize()
          self._sv.casts_shadows = json_options.casts_shadows
       end
    end
-end
 
-function VineComponent:create()
-   if self._sv.render_options.seasonal_model_switcher then
-      self._sv.switch_season_time = rng:get_real(0, 1)  -- Choose a point in the transition at which this instance switches.
-   end
-end
-
-function VineComponent:activate()
    self._uri = self._entity:get_uri()
-   self._ignore_growth_attempts = 0
-   self._growth_data = stonehearth_ace.vine:get_growth_data(self._uri) or {}
+   self._growth_data = json.growth_data or {}
    self._growth_roller = WeightedSet(rng)
    self._corner_roller = WeightedSet(rng)
    for dir, chance in pairs(self._growth_data.growth_directions or {}) do
@@ -108,8 +104,36 @@ function VineComponent:activate()
       self._spread_function.max_steps = math.max(self._spread_function.min_steps, self._spread_function.max_steps or 1)
       self._spread_function.max_drop = self._spread_function.max_drop or 1
    end
+end
 
-   self._connection_data = self._entity:get_component('stonehearth_ace:connection'):get_connections(self._uri)
+function VineComponent:create()
+   if self._sv.render_options.seasonal_model_switcher then
+      self._sv.switch_season_time = rng:get_real(0, 1)  -- Choose a point in the transition at which this instance switches.
+   end
+   -- instead of making all naturally-spawning vines not grow, just have them start with a lower num_growths_remaining
+   -- since they always decrease it when growing, they should never take over the world
+   local player_id = self._entity:get_player_id()
+   self:set_num_growths_remaining(player_id == '' and (self._growth_data.natural_num_growths_remaining or 0))
+   -- (otherwise, if there is a player_id, it'll set it to the normal starting value)
+end
+
+function VineComponent:restore()
+   if not self._sv.num_growths_remaining then
+      self:set_num_growths_remaining(self._growth_data.natural_num_growths_remaining or 0)
+   end
+end
+
+function VineComponent:activate()
+   local entity_forms = self._entity:get_component('stonehearth:entity_forms')
+   if entity_forms then
+      -- If we have an entity forms component, wait until we are actually in the world before starting the growth timer
+      self._added_to_world_trace = radiant.events.listen_once(self._entity, 'stonehearth:on_added_to_world', function()
+            self:_start()
+            self._added_to_world_trace = nil
+         end)
+   else
+      self:_start()
+   end
 
    self._parent_trace = self._entity:add_component('mob'):trace_parent('vine entity added or removed', _radiant.dm.TraceCategories.SYNC_TRACE)
    :on_changed(function(parent_entity)
@@ -127,6 +151,10 @@ function VineComponent:post_activate()
 end
 
 function VineComponent:destroy()
+   if self._added_to_world_trace then
+      self._added_to_world_trace:destroy()
+      self._added_to_world_trace = nil
+   end
    if self._parent_trace then
       self._parent_trace:destroy()
       self._parent_trace = nil
@@ -135,6 +163,63 @@ function VineComponent:destroy()
       self._transition_listener:destroy()
       self._transition_listener = nil
    end
+
+   self:_stop_growth_timer()
+end
+
+function VineComponent:_stop_growth_timer()
+   if self._sv.growth_timer then
+      self._sv.growth_timer:destroy()
+      self._sv.growth_timer = nil
+   end
+
+   self.__saved_variables:mark_changed()
+end
+
+function VineComponent:_start_growth_timer()
+   self:_stop_growth_timer()
+   
+   if self._sv.num_growths_remaining > 0 then
+      local duration = self:_get_growth_period(self._sv.num_growths_remaining)
+      if duration > 0 then
+         self._sv.growth_timer = stonehearth.calendar:set_persistent_timer("VineComponent try_grow", duration, radiant.bind(self, 'try_grow'))
+         self.__saved_variables:mark_changed()
+      end
+   end
+end
+
+function VineComponent:_start()
+   if not self._sv.growth_timer then
+      self:_start_growth_timer()
+   else
+      if self._sv.growth_timer then
+         self._sv.growth_timer:bind(function()
+               self:try_grow()
+            end)
+      end
+   end
+end
+
+function VineComponent:_get_growth_period(growths_remaining)
+   local time = ''
+   for _, growth_time in ipairs(self._growth_data.growth_times) do
+      if growths_remaining <= growth_time.growths_remaining then
+         time = growth_time.time
+      else
+         break
+      end
+   end
+   time = stonehearth.calendar:parse_duration(time)
+   if time > 0 then
+      time = stonehearth.town:calculate_growth_period('', time)
+   end
+   return time
+end
+
+function VineComponent:set_num_growths_remaining(num)
+   self._sv.num_growths_remaining = num or self._growth_data.start_num_growths_remaining
+   self.__saved_variables:mark_changed()
+   self:_start()
 end
 
 function VineComponent:_update_models(season)
@@ -216,28 +301,26 @@ end
 
 -- try to grow another vine of the same type in a random direction; returns the new entity if successful
 function VineComponent:try_grow()
-   local attempts = self._ignore_growth_attempts or 0
-   if attempts > 0 then
-      self._ignore_growth_attempts = attempts - 1
-      return
-   end
-
    self._growth_roller:clear()
    for dir, chance in pairs(self._growth_data.growth_directions) do
       self._growth_roller:add(dir, chance)
    end
 
-   local new_vine = self:_try_grow()
+   self._sv.num_growths_remaining = self._sv.num_growths_remaining - 1
+   if self._sv.num_growths_remaining >= 0 then
+      local new_vine = self:_try_grow()
 
-   if self._growth_roller:is_empty() then
-      -- if we explored all growth options, ignore the next X growth attempts on this entity
-      self._ignore_growth_attempts = IGNORE_GROWTH_ATTEMPTS
-   elseif new_vine then
-      -- if we successfully grew from this vine, slightly prioritize growing from other vines next time
-      self._ignore_growth_attempts = 1
+      if self._growth_roller:is_empty() then
+         -- if we explored all growth options, ignore the next X growth attempts on this entity
+         self._sv.num_growths_remaining = 0
+      else
+         self:_start_growth_timer()
+      end
+   else
+      self._sv.num_growths_remaining = 0
    end
 
-   return new_vine
+   self.__saved_variables:mark_changed()
 end
 
 function VineComponent:_try_grow()
@@ -342,6 +425,7 @@ function VineComponent:_try_grow()
    if grow_location then
       new_vine = radiant.entities.create_entity(self._uri,
             { owner = self._entity:get_player_id(), ignore_gravity = grow_direction ~= 'y+' and self._growth_data.ignore_gravity })
+      new_vine:add_component('stonehearth_ace:vine'):set_num_growths_remaining(self._sv.num_growths_remaining)
       radiant.terrain.place_entity_at_exact_location(new_vine, grow_location, {force_iconic = false})
    end
 
@@ -435,8 +519,8 @@ function VineComponent:_eval_neighbor_at(location)
    neighbor.region = _region:translated(neighbor.location)
 
    -- first check if it's terrain
-   local tag = radiant.terrain.get_block_tag_at(neighbor.location) or 0
-   local kind = radiant.terrain.get_block_kind_from_tag(tag)
+   local tag = get_block_tag_at(neighbor.location) or 0
+   local kind = get_block_kind_from_tag(tag)
    neighbor.terrain_tag = tag
    if next(self._growth_data.terrain_types) then
       neighbor.is_growable_surface = self._growth_data.terrain_types[kind]
@@ -448,7 +532,7 @@ function VineComponent:_eval_neighbor_at(location)
       neighbor.blocked = true
    else
       -- if it's not terrain (i.e., it's null/air), check if any entities there are vines or solid
-      for _, entity in pairs(radiant.terrain.get_entities_in_region(neighbor.region)) do
+      for _, entity in pairs(get_entities_in_region(neighbor.region)) do
          if entity:get_uri() == self._uri then
             neighbor.vine = entity
             neighbor.blocked = true
