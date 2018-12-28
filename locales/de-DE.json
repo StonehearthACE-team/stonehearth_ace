@@ -1347,8 +1347,8 @@
             },
             "bundle_of_firewood_recipe": {
                "recipe_name": "Feuerholzbündel (x2)",
-               "description": "Teile die Holzblöcke in Feuerholz, für doppelte Effizens!",
-               "flavor": "Brennholz ist ein üblicher Kraftstoff mit niedrigerer Qualität"
+               "description": "Teile die Holzblöcke in Feuerholz, für doppelte Effizens! Feuerholz ist ein gewöhnlicher, minderwertiger Brennstoff",
+               "flavor": "'Moment mal?! Man sollte also keine kompletten Holzblöcke ins Feuer legen?' -Dumar Quath"
             },
             "splitting_block_recipe": {
                "recipe_name": "Hackklotz",
@@ -1689,13 +1689,13 @@
          "copper_wall_lantern": {
             "copper_wall_lantern_ghost": {
                "display_name": "Kupferne Wandlaterne",
-               "description": "TBD"
+               "description": "Erzeugt ein kaltes, weiches Licht aus den Mondglocken."
             }
          },
          "copper_garden_lantern": {
             "copper_garden_lantern_ghost": {
                "display_name": "Kupferne Gartenlaterne",
-               "description": "TBD"
+               "description": "Das Licht der Mondglocken flackert leise."
             }
          }
       },
@@ -1784,7 +1784,7 @@
          },
          "thatch_bale": {
             "display_name": "Strohbündel",
-            "description": "Trockenes Gras, das zu Futter verarbeitet oder als beim herstellen verwendet werden kann."
+            "description": "Trockenes Gras, das von Faserpflanzen oder durch Graben von Grasgelände geerntet wird."
          },
          "pelt": {
             "bitsy_spider_pelt": {
@@ -1826,6 +1826,10 @@
             "cotton_bundle": {
                "display_name": "Baumwollbündel",
                "description": "Anschmiegsam. In Faden spinnbar"
+            },
+            "dwarfsbeard_bundle": {
+               "display_name": "Zwergenbart-Bündel",
+               "description": "Sehr verwirrt, fettig und rau. Kann als Stroh oder Faser verwendet werden."
             }
          },
          "coal": {
@@ -2527,6 +2531,26 @@
                "display_name": "Gelbblühende Seerose",
                "description": "Eine hübsche Blume, die als Dekoration verwendet oder geerntet werden kann."
             }
+         },
+         "dwarfsbeard": {
+            "display_name": "Zwergenbart",
+            "description": "Quelle von Fasern und Stroh"
+         },
+         "dwarfsbeard_bud": {
+            "display_name": "Zwergenbart",
+            "description": "Er ist fast ausgewachsen!"
+         },
+         "dwarfsbeard_seed": {
+            "display_name": "Zwergenbart",
+            "description": "Kann gepflanzt werden, um eine raue Faser zu züchten, die auch als Stroh verwendet werden können."
+         },
+         "dwarfsbeard_sprout": {
+            "display_name": "Zwergenbart Sproße",
+            "description": "Braucht nur etwas Zeit und Pflege."
+         },
+         "dwarfsbeard_stem": {
+            "display_name": "Stummliger Zwergenbart",
+            "description": "Immernoch wachsend!"
          }
       },
       "decoration": {
@@ -2659,6 +2683,30 @@
          "ember": {
             "display_name": "Glut",
             "description": "Dieses Feuer verblasste ... Und so sucht die Asche nach neuer Glut."
+         },
+         "curtains_wide": {
+            "display_name": "Breite Vorhänge",
+            "description": "Für Fenster mit besserer Sicht."
+         },
+         "curtains_tall": {
+            "display_name": "Hohe Vorhänge",
+            "description": "Ein längeres Kleid für größere Fenster."
+         },
+         "ornate_curtains": {
+            "display_name": "Verzierte Vorhänge",
+            "description": "Licht wurde noch nie so schön blockiert."
+         },
+         "ornate_curtains_wide": {
+            "display_name": "Verzierte breite Vorhänge",
+            "description": "Für einen ganz besonderen Haushalt."
+         },
+         "ornate_throw_rug": {
+            "display_name": "Verzierte Wurfdecke",
+            "description": "Du wirst dich schlecht fühlen, wenn du darauf trittst."
+         },
+         "ornate_banner_wall": {
+            "display_name": "Verziertes Wandbanner",
+            "description": "Eine schöne Verzierung für eine wohlhabende Stadt."
          }
       },
       "pets": {
@@ -2736,20 +2784,20 @@
          },
          "cooked_nuts": {
             "display_name": "Korb mit gekochten Nüssen",
-            "description": "TBD",
+            "description": "Ein Korb mit leckeren und warmen essbaren Nüssen",
             "cooked_nuts_serving": {
                "display_name": "Teller mit gekochten Nüssen",
-               "description": "TBD"
+               "description": ""
             }
          },
          "cherry_tart": {
             "cherry_tart": {
                "display_name": "Kirschtorte",
-               "description": "TBD"
+               "description": "Ein einfaches, aber leckeres gebackenes Dessert aus Kirschen"
             },
             "cherry_tart_serving": {
                "display_name": "Ein Stück Kirschkuchen",
-               "description": "TBD"
+               "description": "Lecker"
             }
          },
          "huntsman_banquet": {
@@ -2765,7 +2813,7 @@
          "nutty_poultry": {
             "nutty_poultry": {
                "display_name": "Geröstetes Geflügel mit Nüssen",
-               "description": "TBD"
+               "description": "Eine heiße Mischung aus Geflügelstücken und geschnittenen Nüssen"
             },
             "nutty_poultry_serving": {
                "display_name": "Teller mit geröstetem Geflügel und Nüssen",
@@ -2775,7 +2823,7 @@
          "pie_cherry": {
             "pie_cherry": {
                "display_name": "Süßer Kirschkuchen",
-               "description": "TBD"
+               "description": "Schwer zu machen, aber ziemlich leicht zu essen!"
             },
             "pie_cherry_serving": {
                "display_name": "Ein Stück Kirschkuchen",
@@ -2785,7 +2833,7 @@
          "nut_pralines": {
             "nut_pralines": {
                "display_name": "Nusspralinen",
-               "description": "TBD"
+               "description": "Ein exotischer und befriedigender Haufen knuspriger und gesüßter Nüsse."
             },
             "nut_pralines_serving": {
                "display_name": "Teller mit Nusspralinen",
