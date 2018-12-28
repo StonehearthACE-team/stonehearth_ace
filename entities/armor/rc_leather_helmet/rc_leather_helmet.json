@@ -29,7 +29,19 @@
    "entity_data": {
       "stonehearth:catalog": {
          "display_name": "i18n(stonehearth_ace:entities.armor.rc_leather_helmet.display_name)",
-         "icon": "file(rc_leather_helmet.png)"
+         "icon": "file(rc_leather_helmet.png)",
+         "mixintypes": {
+            "material_tags": "override"
+         },
+         "material_tags": [
+            "leather",
+            "armor",
+            "helmet",
+            "rc_made",
+            "light_armor",
+            "leather_helmet",
+            "stockpile_equipment"
+         ]
       }
    }
 }

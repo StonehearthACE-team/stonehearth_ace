@@ -154,6 +154,17 @@
     }
   },
   "terrain" : {
+	"minimap":{
+		"plains_1" : "i18n(stonehearth_ace:ui.shell.select_settlement.highlands.terrain_codes.plains)",
+		"plains_2" : "i18n(stonehearth_ace:ui.shell.select_settlement.highlands.terrain_codes.plains)",
+		"foothills_1" : "i18n(stonehearth_ace:ui.shell.select_settlement.highlands.terrain_codes.foothills)",
+		"foothills_2" : "i18n(stonehearth_ace:ui.shell.select_settlement.highlands.terrain_codes.foothills)",
+		"mountains_1" : "i18n(stonehearth_ace:ui.shell.select_settlement.highlands.terrain_codes.mountains)",
+		"mountains_2" : "i18n(stonehearth_ace:ui.shell.select_settlement.highlands.terrain_codes.mountains)",
+		"mountains_3" : "i18n(stonehearth_ace:ui.shell.select_settlement.highlands.terrain_codes.mountains)",
+		"mountains_4" : "i18n(stonehearth_ace:ui.shell.select_settlement.highlands.terrain_codes.mountains)",
+		"mountains_5" : "i18n(stonehearth_ace:ui.shell.select_settlement.highlands.terrain_codes.mountains)"
+	},
     "__comment" : "This is an offset in regards to where the layers line up. Def 36, must be 1 plus a multiple of five.",
     "noise_map_settings" : {
       "__comment" : "can stretch the terrain vertically to allow for long mountain ridges.  Above 1 stretches the terrain vertically, below 1 stretches the terrain horizontally. Def: 1",
@@ -369,14 +380,6 @@
           "exclusion_radius" : 0
         }
       },
-      "stonehearth_ace:vines:highland_vine" : {
-         "placement_type" : "dense",
-         "parameters" : {
-           "grid_multiple" : 2,
-           "item_density" : 0.6,
-           "exclusion_radius" : 0
-         }
-       },
       "stonehearth_ace:plants:cherry_bush" : {
         "placement_type" : "pattern",
         "parameters" : {
@@ -609,8 +612,7 @@
               "stonehearth_ace:fungi:chanterelle" : 0.3,
 			  "stonehearth_ace:terrain:pasture_grass:overgrown": 0.1,
 			  "stonehearth_ace:terrain:pasture_grass": 0.5,
-			  "stonehearth_ace:terrain:pasture_grass:short": 0.2,
-			  "stonehearth_ace:vines:highland_vine" : 1
+			  "stonehearth_ace:terrain:pasture_grass:short": 0.2
             },
             "2" : {
               "stonehearth:plants:frostsnap" : 1,
@@ -619,8 +621,7 @@
               "stonehearth_ace:fungi:chanterelle" : 0.2,
 			  "stonehearth_ace:terrain:pasture_grass:overgrown": 0.1,
 			  "stonehearth_ace:terrain:pasture_grass": 0.3,
-			  "stonehearth_ace:terrain:pasture_grass:short": 0.1,
-			  "stonehearth_ace:vines:highland_vine" : 1
+			  "stonehearth_ace:terrain:pasture_grass:short": 0.1
             }
           },
           "mountains" : {
@@ -710,6 +711,7 @@
         "shallow" : 5,
         "deep" : 10
       },
+	  "water_height_delta": 0.7,
       "noise_map_settings" : {
         "__comment" : "Unsure what this does.  Def 1.2.",
         "persistence_ratio" : 1,

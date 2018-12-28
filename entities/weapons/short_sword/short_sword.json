@@ -17,7 +17,10 @@
 			}
 		],
 		"stonehearth:catalog": {
-         "material_tags":["steel", "melee_weapon", "crafted", "short_sword", "stockpile_weapon"]
+		 "mixintypes": {
+			"material_tags": "override"
+		 },
+         "material_tags":["steel", "melee_weapon", "crafted", "ascendancy_made", "short_sword", "stockpile_weapon"]
         }
 	}
 }

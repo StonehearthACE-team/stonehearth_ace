@@ -19,7 +19,18 @@
    "entity_data": {
       "stonehearth:catalog": {
          "display_name": "i18n(stonehearth_ace:entities.weapons.na_silver_mace.display_name)",
-         "icon": "file(na_silver_mace.png)"
+         "icon": "file(na_silver_mace.png)",
+         "mixintypes": {
+            "material_tags": "override"
+         },
+         "material_tags": [
+            "silver",
+            "melee_weapon",
+            "na_made",
+            "crafted",
+            "silver_mace",
+            "stockpile_weapon"
+         ]
       }
    }
 }

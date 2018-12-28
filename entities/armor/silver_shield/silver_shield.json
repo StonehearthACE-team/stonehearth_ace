@@ -15,6 +15,9 @@
       "stonehearth:equipment_piece": {
          "slot": "offhand",
          "render_type": "attach_to_bone",
+         "additional_equipment": {
+            "stonehearth_ace:armor:offhand_placeholder": true
+         },
          "postures": [
             "stonehearth:combat",
             "stonehearth:patrol",
@@ -22,7 +25,9 @@
          ],
          "required_job_level": 6,
          "ilevel": 8,
-         "roles":["knight_job"],
+         "roles": [
+            "knight_job"
+         ],
          "equip_effect": "stonehearth:effects:weapon_level_up",
          "equipment_types": [
             "shield"
@@ -58,7 +63,14 @@
          "description": "i18n(stonehearth_ace:entities.armor.silver_shield.description)",
          "icon": "file(silver_shield.png)",
          "category": "armor",
-         "material_tags":["silver", "shield", "heavy_armor", "silver_shield", "stockpile_equipment"]
+         "material_tags": [
+            "silver",
+            "shield",
+            "heavy_armor",
+            "ascendancy_made",
+            "silver_shield",
+            "stockpile_equipment"
+         ]
       }
    }
 }

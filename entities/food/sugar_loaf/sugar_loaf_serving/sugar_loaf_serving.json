@@ -1,0 +1,38 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(sugar_loaf_serving.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:item": {
+         "category": "food",
+         "destroy_on_uncarry": true
+      },
+      "stonehearth:food": {
+         "stonehearth:sitting_on_chair": {
+            "satisfaction": 130
+         },
+         "default": {
+            "satisfaction": 85
+         },
+         "quality": 5
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.sugar_loaf.sugar_loaf_serving.display_name)",
+         "description": "i18n(stonehearth_ace:entities.food.sugar_loaf.sugar_loaf_serving.description)",
+         "material_tags": [
+            "food",
+            "bread",
+            "vegetarian"
+         ],
+         "subject_override": "stonehearth_ace:food:sugar_loaf"
+      }
+   }
+}

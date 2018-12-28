@@ -12,7 +12,7 @@
          "align_to_grid": [
             "x"
          ],
-         "model_origin": { "x": 0, "y": 2, "z": -0.2 },
+         "model_origin": { "x": 0, "y": -0.5, "z": -0.5 },
          "region_origin": { "x": 0, "y": 0, "z": 0.5 },
          "allow_vertical_adjacent": true
       },
@@ -26,7 +26,14 @@
          "description": "i18n(stonehearth_ace:entities.decoration.porcelain_curtains.porcelain_curtains_ghost.description)",
          "icon": "file(porcelain_curtains.png)",
          "category": "decoration",
-         "material_tags":["decoration", "porcelain", "crafted", "stockpile_decoration"]
+         "material_tags": [
+            "decoration",
+            "porcelain",
+            "crafted",
+            "curtains",
+            "porcelain_curtains",
+            "stockpile_decoration"
+         ]
       }
    }
 }

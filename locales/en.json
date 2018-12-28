@@ -7,6 +7,42 @@
       }
    },
    "data": {
+      "saved_objects": {
+         "building_templates": {
+            "northern_alliance": {
+               "workshop_weaver": {
+                  "display_name": "Weaver's Workshop"
+               },
+               "workshop_carpenter": {
+                  "display_name": "Carpenter's Workshop"
+               },
+               "workshop_cook": {
+                  "display_name": "Cook's Kitchen"
+               },
+               "workshop_herbalist": {
+                  "display_name": "Herbalist's Workshop"
+               },
+               "workshop_mason": {
+                  "display_name": "Mason's Workshop"
+               },
+               "workshop_potter": {
+                  "display_name": "Pottery Studio"
+               },
+               "workshop_engineer": {
+                  "display_name": "Engineer's Workshop"
+               },
+               "workshop_blacksmith": {
+                  "display_name": "Blacksmith's Workshop"
+               }
+            },
+            "potter_house": {
+               "display_name": "Potter House"
+            },
+            "mason_house": {
+               "display_name": "Mason House"
+            }
+         }
+      },
       "gm": {
          "campaigns": {
             "ambient_threats": {
@@ -30,6 +66,214 @@
                   "recipe_unlock_weapons_6": "New Legendary Mace recipe - Mason, Carpenter, and Engineer collaboration!",
                   "recipe_unlock_weapons_7": "New Legendary Tome recipe - Cook, Herbalist, and Geomancer collaboration!",
                   "recipe_unlock_weapons_8": "New Legendary Mail recipe - Weaver, Engineer, and Blacksmith collaboration!"
+               },
+               "arcs": {
+                  "encounters": {
+                     "tier_1_shops": {
+                        "blacksmith_shop_1": {
+                           "shop_info": {
+                              "name": "Fernand the Great's Forge",
+                              "title": "A southerner blacksmith has arrived with some metal wares"
+                           }
+                        },
+                        "bonecarver_shop_1": {
+                           "shop_info": {
+                              "name": "Kim's Femur Emporium",
+                              "title": "A mountain ranger has arrived with bone goods to sell"
+                           }
+                        },
+                        "charcoal_shop_1": {
+                           "shop_info": {
+                              "name": "Turnpoint River Charcoal Burners",
+                              "title": "A group of charcoal burners is in town for business"
+                           }
+                        },
+                        "drink_shop_1": {
+                           "shop_info": {
+                              "name": "The Ewbrand Distillery",
+                              "title": "A merchant of drinks and liquor has camped nearby"
+                           }
+                        },
+                        "training_shop_1": {
+                           "shop_info": {
+                              "name": "Captain Rôk's Training School",
+                              "title": "A group of soldiers in training is passing by for business"
+                           }
+                        },
+                        "engineering_shop_1": {
+                           "shop_info": {
+                              "name": "Dwarin's Trinkets & Gizmos",
+                              "title": "A dwarven artificer has come to town for trading"
+                           }
+                        },
+                        "forager_shop_1": {
+                           "shop_info": {
+                              "name": "The Sisters of Whitehill Shop",
+                              "title": "A caravan from a nearby convent has arrived with foraging goods"
+                           }
+                        },
+                        "fishing_shop_1": {
+                           "shop_info": {
+                              "name": "Turnpoint River Fishery",
+                              "title": "A worker from a nearby fishing village has arrived for trading"
+                           }
+                        },
+                        "quarry_shop_1": {
+                           "shop_info": {
+                              "name": "The Gambiso Quarry's Shop",
+                              "title": "A group from a small quarry have arrived with stone to sell"
+                           }
+                        },
+                        "rc_weapon_armor_shop_1": {
+                           "shop_info": {
+                              "name": "Rajin's Finest Blade",
+                              "title": "The smith Rajin has arrived with his desert armory for business"
+                           }
+                        },
+                        "na_weapon_armor_shop_1": {
+                           "shop_info": {
+                              "name": "The Wolfbite Forge",
+                              "title": "A trader from the north has arrived with weapons and armor for sale"
+                           }
+                        }
+                     },
+                     "tier_2_shops": {
+                        "blacksmith_shop_2": {
+                           "shop_info": {
+                              "name": "Fernand the Great's Forge",
+                              "title": "A blacksmith from far south has arrived with his finest metals"
+                           }
+                        },
+                        "bonecarver_shop_2": {
+                           "shop_info": {
+                              "name": "Atikin the Bone Carver",
+                              "title": "A survivalist hermit arrives with bone trinkets and items to sell"
+                           }
+                        },
+                        "charcoal_shop_2": {
+                           "shop_info": {
+                              "name": "Orim Lake Charcoal Burners",
+                              "title": "A group of charcoal burners is in town for business"
+                           }
+                        },
+                        "drink_shop_2": {
+                           "shop_info": {
+                              "name": "The Thoto Brewery",
+                              "title": "A northerner brewer has arrived with drinks for sale"
+                           }
+                        },
+                        "training_shop_2": {
+                           "shop_info": {
+                              "name": "The Military Academy",
+                              "title": "A representative of the military academy is in town"
+                           }
+                        },
+                        "engineering_shop_2": {
+                           "shop_info": {
+                              "name": "Barzak Cobaltfist's Workshop",
+                              "title": "An engineer from the mountain folk is camping nearby"
+                           }
+                        },
+                        "forager_shop_2": {
+                           "shop_info": {
+                              "name": "The Rangers' Guild",
+                              "title": "Members of a guild of rangers are passing by selling foraging goods"
+                           }
+                        },
+                        "fishing_shop_2": {
+                           "shop_info": {
+                              "name": "'Smells Fishy Fishery'",
+                              "title": "Traders from a large fishing business have arrived with wares"
+                           }
+                        },
+                        "quarry_shop_2": {
+                           "shop_info": {
+                              "name": "Big Chunk Quarry & Co.",
+                              "title": "A big company of masons and miners is in town for business"
+                           }
+                        },
+                        "rc_weapon_armor_shop_2": {
+                           "shop_info": {
+                              "name": "Rajin's Finest Blade",
+                              "title": "The desert smith Rajin has come with some of his finest wares"
+                           }
+                        },
+                        "na_weapon_armor_shop_2": {
+                           "shop_info": {
+                              "name": "The Wolfbite Forge",
+                              "title": "A smith from the Northern Alliance is available for bartering"
+                           }
+                        }
+                     },
+                     "tier_3_shops": {
+                        "blacksmith_shop_3": {
+                           "shop_info": {
+                              "name": "The Mightiest Hammer",
+                              "title": "A famous blacksmith's caravan has arrived and wants to trade"
+                           }
+                        },
+                        "bonecarver_shop_3": {
+                           "shop_info": {
+                              "name": "Kita's Rattle & Rib Shop",
+                              "title": "A renowned bone carver is visiting and willing to trade"
+                           }
+                        },
+                        "charcoal_shop_3": {
+                           "shop_info": {
+                              "name": "Seaside Charcoal Burners",
+                              "title": "A large caravan of charcoal burners is camping nearby"
+                           }
+                        },
+                        "drink_shop_3": {
+                           "shop_info": {
+                              "name": "The Wulfkin Meadery",
+                              "title": "A popular brand of drinks and beverages has sent us a trader"
+                           }
+                        },
+                        "training_shop_3": {
+                           "shop_info": {
+                              "name": "Hadrian's School of Chivalry",
+                              "title": "The Knight Hadrian has arrived with training ware for sale"
+                           }
+                        },
+                        "engineering_shop_3": {
+                           "shop_info": {
+                              "name": "Wrynn's Wonderful Wares",
+                              "title": "A famous dwarven artificer is in town with wares to sell"
+                           }
+                        },
+                        "forager_shop_3": {
+                           "shop_info": {
+                              "name": "Elven Caravan",
+                              "title": "Elves! A group of woodland rangers is camped nearby and wants to trade"
+                           }
+                        },
+                        "fishing_shop_3": {
+                           "shop_info": {
+                              "name": "Bruno the Fisher's Shop",
+                              "title": "A famous fisherman is in town with many exotic wares to sell"
+                           }
+                        },
+                        "quarry_shop_3": {
+                           "shop_info": {
+                              "name": "Jonar Hillcrown's Quarry",
+                              "title": "A bunch of dwarven miners from Hillcrown are in town for business"
+                           }
+                        },
+                        "rc_weapon_armor_shop_3": {
+                           "shop_info": {
+                              "name": "Thali Pandora's Blacksmith Shop",
+                              "title": "A famous desert smith has arrived with her almost legendary wares"
+                           }
+                        },
+                        "na_weapon_armor_shop_3": {
+                           "shop_info": {
+                              "name": "Novgnar Silverfist's Shop",
+                              "title": "The legendary northern smith Novgnar is in town with goods to sell"
+                           }
+                        }
+                     }
+                  }
                }
             }
          }
@@ -310,6 +554,10 @@
          "not_in_water": {
             "display_name": "On Land",
             "description": "This creature is not really adapted to being on land... It has consequences!"
+         },
+         "holiday_cheer": {
+            "display_name": "Holiday Cheer",
+            "description": "Woo! This hearthling is enjoying the holidays with slighly increased compassion and speed! "
          }
       },
       "loadouts": {
@@ -321,7 +569,8 @@
             "training_dummy": "Dummy",
             "comfy_bed": "Bed",
             "roast_venison": "Venison",
-            "training_target": "Targets"
+            "training_target": "Targets",
+            "sleeping_bag": "Bedroll"
          },
          "military_expedition": {
             "display_name": "Military Expedition",
@@ -332,6 +581,16 @@
             "display_name": "Noble Entourage",
             "description": "Not everyone might eat venison, nor there are beds for all... So what? They're not meant for anyone but for some very special and important hearthling - or so they say - that has everyone else following them into the wild.",
             "tooltip": "A small collection of high value items and professions for an oddly specialized beginning."
+         }
+      },
+      "hotkeys": {
+         "keys": {
+            "ui_box_move_items": {
+               "display_name": "Move Multiple Items"
+            },
+            "ui_box_undeploy_items": {
+               "display_name": "Undeploy Multiple Items"
+            }
          }
       }
    },
@@ -500,7 +759,10 @@
             "clay_bed_crude_recipe": {
                "recipe_name": "Clay Sleeping Spot",
                "description": "A proper place to pass out when exhausted.",
-               "flavor": "A little bit more bearable"
+               "flavor": "'It's like a pot, for sleeping!' - Clarence, Temporary Salesperson"
+            },
+            "clay_bed_recipe": {
+               "flavor": "Thatch can be obtained by harvesting grass tufts, some plants like Tumbleweed or digging into grassy terrain"
             },
             "clay_training_dummy_recipe": {
                "recipe_name": "Clay Training Dummy",
@@ -511,6 +773,11 @@
                "recipe_name": "Clay Archery Target",
                "description": "Ranged fighters can gain experience from practicing with this target.",
                "flavor": "Requires an engineer for repairs."
+            },
+            "clay_sword_recipe": {
+               "recipe_name": "Clay Practice Sword",
+               "description": "Required to promote a hearthling into a Footman.",
+               "flavor": "Might break easily but ideally they won't use it for long... right?"
             }
          }
       },
@@ -558,10 +825,13 @@
                "description": "Much warmer and softer than the stone itself.",
                "flavor": "Warm furs!"
             },
+            "stone_bed_recipe": {
+               "flavor": "Thatch can be obtained by harvesting grass tufts, some plants like Wintermoss or digging into grassy terrain"
+            },
             "stone_bed_crude_recipe": {
                "recipe_name": "Stone Sleeping Spot",
                "description": "You might not want to jump into this one.",
-               "flavor": "The thatch is a bit too dry but it works..."
+               "flavor": "The pretty frame might distract you from the discomfort of sleeping on hard stone"
             },
             "stone_training_dummy_recipe": {
                "recipe_name": "Stone Training Dummy",
@@ -617,6 +887,9 @@
                "recipe_name": "Giant Bone Short Sword",
                "description": "Craft a knight's sidearm with the bones of a mythical creature.",
                "flavor": ""
+            },
+            "stone_sword_recipe": {
+               "flavor": "Training with stone swords is a cruel but efficient joke."
             }
          },
          "mason_workbench_bone": {
@@ -778,7 +1051,7 @@
             "steel_dagger_recipe": {
                "recipe_name": "Off-hand Steel Dagger",
                "description": "A small and sharp weapon for both offense and defense. Puts enemies out of balance.",
-               "flavor": "'There are few things as useful that you can conceal as easily' - O.A.E Guidelines"
+               "flavor": "'There are few things as useful that you can conceal as easily' -O.A.E Guidelines"
             },
             "steel_lance_recipe": {
                "recipe_name": "Steel Lance",
@@ -851,11 +1124,11 @@
          "blacksmith_description": {
             "level_1_data": {
                "perk_000_name": "Early Metalworks",
-               "perk_000_description": "The Blacksmith will need to master smelting basic ores before they can work bronze from the crucible and iron into an anvil."
+               "perk_000_description": "The Blacksmith will need to master smelting basic ores and using the crucible before they can work with an anvil."
             },
             "level_2_data": {
                "perk_000_name": "Bronze & Iron Age!",
-               "perk_000_description": "The Blacksmith is now skilled enough to build an anvil, a crucible and forge heavy items made of bronze and iron.",
+               "perk_000_description": "The Blacksmith is now skilled enough to build an anvil and forge heavy items made of bronze and iron.",
                "perk_001_name": "Mastering the Fire!",
                "perk_001_description": "The Blacksmith has acquired enough knowledge on forges to start producing their own fuels and facilities."
             },
@@ -873,6 +1146,10 @@
                "display_name": "Mining Helmet",
                "description": "Can be used by a Worker for additional efficiency. Also provides light."
             }
+         },
+         "worker_holiday_hat": {
+            "display_name": "Holiday Cheer Cap",
+            "description": "A traditional hat for enjoying the end of the year's holidays!"
          }
       },
       "cook": {
@@ -952,6 +1229,26 @@
                "description": "Delicious grains ready to be used in other recipes.",
                "flavor": "Who knew grass could be so tasty?"
             },
+            "dough_recipe": {
+               "recipe_name": "Portion of Dough",
+               "description": "Mix and knead a malleable dough to be used on baking meals like bread.",
+               "flavor": "Watch it grow!"
+            },
+            "dough_sweet_recipe": {
+               "recipe_name": "Portion of Sweet Dough",
+               "description": "Prepare and knead an elastic and sweet dough for baking sugared goods.",
+               "flavor": "It is like cake-bread!"
+            },
+            "batter_recipe": {
+               "recipe_name": "Bowl of Batter",
+               "description": "Mix a delicious, sticky and creamy paste that can be used for coating baked goods.",
+               "flavor": "Now we need some onions..."
+            },
+            "batter_sweet_recipe": {
+               "recipe_name": "Bowl of Sweet Batter",
+               "description": "Prepare a sweet and wonderful mix that can be turned into things like CAKE!",
+               "flavor": "The cake is not a lie!"
+            },
             "cooked_rice_recipe": {
                "recipe_name": "Cooked Rice",
                "description": "Boiled to perfection and sticky enough.",
@@ -982,6 +1279,16 @@
                "description": "A vegetarian alternative to an exotic dish.",
                "flavor": "Now everyone can enjoy sushi!"
             },
+            "sugar_loaf_recipe": {
+               "recipe_name": "Sugar Loaf",
+               "description": "Prepare a simple yet deliciously filling sugared bread loaf.",
+               "flavor": "It will sprinkle sugar all over your clothes"
+            },
+            "panettone_recipe": {
+               "recipe_name": "Panettone",
+               "description": "Bake a large, tasty and sweet chunk of bread filled with dried fruits.",
+               "flavor": "'A festive meal for a festive time' -Irving Balduc"
+            },
             "legendary_ink_recipe": {
                "recipe_name": "Sacred Ink",
                "description": "Special and gilded ink for illuminated manuscripts in 'The Walk of Cid'.",
@@ -998,6 +1305,9 @@
                "display_name": "Powered Mill Grinder",
                "description": "Can be used by a Cook for milling. Requires mechanical power to work."
             }
+         },
+         "cook_bowl_animation": {
+            "display_name": "Cook's Bowl"
          }
       },
       "carpenter": {
@@ -1037,23 +1347,36 @@
             },
             "bundle_of_firewood_recipe": {
                "recipe_name": "Bundle o' Firewood (x2)",
-               "description": "Split that log into blocks for twice their efficiency!",
-               "flavor": "Firewood is a common, lower grade fuel"
+               "description": "Split that log into blocks for twice their efficiency! Firewood is a common, lower grade fuel",
+               "flavor": "'Wait, so you are NOT supposed to put an ENTIRE log in the fire?' -Dumar Quath"
             },
             "splitting_block_recipe": {
                "recipe_name": "Splitting Block",
                "description": "Create a sturdy block for splitting logs.",
                "flavor": ""
             },
+            "wood_bed_recipe": {
+               "flavor": "Thatch can be obtained by harvesting grass tufts, some plants like Silkweed or digging into grassy terrain"
+            },
             "wood_bed_crude_recipe": {
-               "recipe_name": "Wooden Sleeping Spot",
-               "description": "Better than nothing... Probably.",
-               "flavor": "Literally sleeping on a board"
+               "recipe_name": "Mean Sleeping Spot",
+               "description": "Literally sleeping on a board.",
+               "flavor": "Mean as in poor, not cruel. Though it's that too."
             }
          }
       },
       "weaver": {
          "recipes": {
+            "worker_holiday_hat_recipe": {
+               "recipe_name": "Holiday Cheer Cap",
+               "description": "The ACE Team would like to wish you all very happy and wonderful holidays!",
+               "flavor": "This recipe shall be removed after New Year's Eve... So craft yours while you can!"
+            },
+            "sleeping_bag_recipe": {
+               "recipe_name": "Bedroll",
+               "description": "Better than the ground but not really a homely bedding. Very portable, though!",
+               "flavor": "A bed you can carry. Well, to be honest you can actually carry ANY bed..."
+            },
             "legendary_hood_recipe": {
                "recipe_name": "Elven King Hood",
                "description": "A beautiful hood worthy of the finest archer.",
@@ -1366,13 +1689,13 @@
          "copper_wall_lantern": {
             "copper_wall_lantern_ghost": {
                "display_name": "Copper Wall Lantern",
-               "description": "TBD"
+               "description": "Produces a cold, soft light from the moonbells."
             }
          },
          "copper_garden_lantern": {
             "copper_garden_lantern_ghost": {
                "display_name": "Copper Garden Lantern",
-               "description": "TBD"
+               "description": "The light produced by the moonbells flicker softly."
             }
          }
       },
@@ -1503,6 +1826,10 @@
             "cotton_bundle": {
                "display_name": "Cotton Bundle",
                "description": "Soft to the touch. Spinnable into thread"
+            },
+            "dwarfsbeard_bundle": {
+               "display_name": "Dwarfsbeard Bundle",
+               "description": "Very tangled, greasy and rough. Can be used as thatching or fiber."
             }
          },
          "coal": {
@@ -2031,6 +2358,10 @@
                "display_name": "Wooden Sleeping Spot",
                "description": "That one is really mean."
             }
+         },
+         "sleeping_bag": {
+            "display_name": "Bedroll",
+            "description": "Better than the ground, bedrolls are good for their portability."
          }
       },
       "recipes": {
@@ -2200,6 +2531,26 @@
                "display_name": "Yellow Flowered Lily Pads",
                "description": "A pretty flower that can be used as an ornamental decoration or harvested."
             }
+         },
+         "dwarfsbeard": {
+            "display_name": "Dwarfsbeard",
+            "description": "Source of fibers and thatching"
+         },
+         "dwarfsbeard_bud": {
+            "display_name": "Dwarfsbeard",
+            "description": "It's almost full grown!"
+         },
+         "dwarfsbeard_seed": {
+            "display_name": "Dwarfsbeard",
+            "description": "Can be planted to grow a rough fiber that can also be used as thatch."
+         },
+         "dwarfsbeard_sprout": {
+            "display_name": "Dwarfsbeard Sproutling",
+            "description": "Just needs some time and care."
+         },
+         "dwarfsbeard_stem": {
+            "display_name": "Stemming Dwarfsbeard",
+            "description": "Still growing!"
          }
       },
       "decoration": {
@@ -2324,6 +2675,38 @@
                "display_name": "Porcelain Jar of Feathers",
                "description": "Gloriously giant feathers made of porcelain and textiles."
             }
+         },
+         "ember_charcoal": {
+            "display_name": "Log Embers",
+            "description": "Turns into charcoal after a while and is retrieved when replaced for new fuel!"
+         },
+         "ember": {
+            "display_name": "Embers",
+            "description": "This fire faded... And so it is that ash seeketh embers."
+         },
+         "curtains_wide": {
+            "display_name": "Wide Curtains",
+            "description": "For windows with a better view."
+         },
+         "curtains_tall": {
+            "display_name": "Tall Curtains",
+            "description": "A longer dress for taller windows."
+         },
+         "ornate_curtains": {
+            "display_name": "Ornate Curtains",
+            "description": "Light has never been so beautifully blocked."
+         },
+         "ornate_curtains_wide": {
+            "display_name": "Ornate Wide Curtains",
+            "description": "For a very special household."
+         },
+         "ornate_throw_rug": {
+            "display_name": "Ornate Throw Rug",
+            "description": "You will feel bad for stepping on it."
+         },
+         "ornate_banner_wall": {
+            "display_name": "Ornate Wall Banner",
+            "description": "A beautiful ornament for a prosperous town."
          }
       },
       "pets": {
@@ -2401,20 +2784,20 @@
          },
          "cooked_nuts": {
             "display_name": "Basket of Cooked Nuts",
-            "description": "TBD",
+            "description": "A basket of delicious and warm edible nuts.",
             "cooked_nuts_serving": {
                "display_name": "Plate of Cooked Nuts",
-               "description": "TBD"
+               "description": ""
             }
          },
          "cherry_tart": {
             "cherry_tart": {
                "display_name": "Cherry Tart",
-               "description": "TBD"
+               "description": "A simple yet tasty baked dessert made with cherries."
             },
             "cherry_tart_serving": {
                "display_name": "Slice of Cherry Tart",
-               "description": "TBD"
+               "description": "Tasty!"
             }
          },
          "huntsman_banquet": {
@@ -2430,7 +2813,7 @@
          "nutty_poultry": {
             "nutty_poultry": {
                "display_name": "Stirred Poultry & Nuts",
-               "description": "TBD"
+               "description": "A hot mix of poultry cuts and sliced nuts."
             },
             "nutty_poultry_serving": {
                "display_name": "Plate of Stirred Poultry & Nuts",
@@ -2440,7 +2823,7 @@
          "pie_cherry": {
             "pie_cherry": {
                "display_name": "Sweet Cherry Pie",
-               "description": "TBD"
+               "description": "Hard to make but quite easy to eat!"
             },
             "pie_cherry_serving": {
                "display_name": "Piece of Cherry Pie",
@@ -2450,7 +2833,7 @@
          "nut_pralines": {
             "nut_pralines": {
                "display_name": "Nut Pralines",
-               "description": "TBD"
+               "description": "An exotic and satisfyingly crispy bunch of sweetened nuts."
             },
             "nut_pralines_serving": {
                "display_name": "Plate of Nut Pralines",
@@ -2710,16 +3093,52 @@
                "display_name": "Basket of Parasol",
                "description": "This mushroom is slightly toxic when raw and can only be used in cooking."
             }
+         },
+         "dough_sweet": {
+            "display_name": "Portion of Sweet Dough",
+            "description": "Sweet Dough is the base for many delicacies like sweet loaf"
+         },
+         "batter_sweet": {
+            "display_name": "Bowl of Sweet Batter",
+            "description": "Sweet Batter is a holy creation that can provide us CAKE."
+         },
+         "dough": {
+            "display_name": "Portion of Dough",
+            "description": "Dough is a base ingredient for several meals like breads"
+         },
+         "batter": {
+            "display_name": "Bowl of Batter",
+            "description": "Batter can be used as a base for many dishes like dumplings"
+         },
+         "panettone": {
+            "panettone_serving": {
+               "display_name": "Wedge of Panettone",
+               "description": "Oh nom nom"
+            },
+            "panettone": {
+               "display_name": "Panettone",
+               "description": "A very traditional and festive fluffy bread filled with dried fruits."
+            }
+         },
+         "sugar_loaf": {
+            "sugar_loaf_serving": {
+               "display_name": "Slice of Sugar Loaf",
+               "description": "Sprinkles sugar all over your clothes."
+            },
+            "sugar_loaf": {
+               "display_name": "Sugar Loaf",
+               "description": "A tasty and sweetened bread loaf with tons of sprinkled sugar!"
+            }
          }
       },
       "terrain": {
          "pasture_grass": {
             "display_name": "Grass",
-            "description": "Tall grass can be grazed on by animals or harvested for later use."
+            "description": "Tall grass can be grazed on by animals or harvested for thatch."
          },
          "overgrown_pasture_grass": {
             "display_name": "Overgrown Grass",
-            "description": "Overgrown grass can be grazed on by animals or harvested for later use."
+            "description": "Overgrown grass can be grazed on by animals or harvested for thatch."
          },
          "short_pasture_grass": {
             "display_name": "Short Grass",
@@ -3391,6 +3810,12 @@
          "giant_bone_pike": {
             "display_name": "Giant Bone Spear",
             "description": "Once part of a mighty beast, now to pierce one. (Two-handed)"
+         },
+         "wooden_sword": {
+            "display_name": "Practice Sword",
+            "wooden_sword_talisman": {
+               "display_name": "Practice Sword"
+            }
          }
       },
       "gizmos": {
@@ -3969,7 +4394,7 @@
             "harvest_menu": {
                "items": {
                   "harvest_and_replant": {
-                     "display_name": "Gather and Replant",
+                     "display_name": "Gather & Replant",
                      "description": "Gather trees, plants, and stones from the surface of the land, replanting when possible.",
                      "tip_title": "Click and drag to harvest resources",
                      "tip_description": "Right click to exit this mode"
@@ -4003,9 +4428,9 @@
          },
          "visions": {
             "heatmap": {
-               "name": "heatmap",
-               "title": "Terrain heatmaps",
-               "description": "This is the heatmap tooltip. TODO: put something useful here."
+               "name": "heatmaps",
+               "title": "Terrain Heatmaps",
+               "description": "Useful view modes that will give you insights on different aspects of the map"
             }
          },
          "heatmaps": {
@@ -4086,6 +4511,40 @@
                "terrain_slice_buildings_description": "In Terrain Slice mode, don't render entities supported by visible, non-terrain entities.",
                "water_signal_update_frequency": "Water Signal Update Rate",
                "water_signal_update_frequency_description": "Only update water signals this many ticks of the water system. Increase this value to improve performance with lots of flowing water."
+            },
+            "controls_tab": {
+               "key_binding_names": {
+                  "vision_wilderness_toggle": "Toggle Wilderness Vision",
+                  "vision_ore_detector_toggle": "Toggle Ore Detector",
+                  "harvest_harvest_and_replant": "Gather & Replant",
+                  "zone_underfarm": "Underfarm Tool",
+                  "craft_grower": "Grower Menu",
+                  "craft_artificer": "Artificer Menu",
+                  "craft_magmasmith": "Magmasmith Menu"
+               }
+            }
+         },
+         "select_settlement": {
+            "highlands": {
+               "terrain_codes": {
+                  "plains": "Vale",
+                  "foothills": "Cliff Sides",
+                  "mountains": "Peak"
+               }
+            },
+            "arctic": {
+               "terrain_codes": {
+                  "plains": "Tundra",
+                  "foothills": "Moors"
+               }
+            },
+            "desert": {
+               "terrain_codes": {
+                  "water": "Oasis",
+                  "plains": "Arid Shrubland",
+                  "foothills": "Rocky Hills",
+                  "mountains": "Canyons"
+               }
             }
          }
       },

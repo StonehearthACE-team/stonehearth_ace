@@ -15,6 +15,20 @@
                         "value": "stonehearth:jobs:blacksmith"
                      },
                      "file": "file(building_templates/blacksmith_house_ace.json)"
+                  },
+				  "mason_house_ace": {
+                     "unlock_requirement": {
+                        "type": "has_job",
+                        "value": "stonehearth:jobs:mason"
+                     },
+                     "file": "file(building_templates/mason_house_ace.json)"
+                  },
+                  "potter_house_ace": {
+                     "unlock_requirement": {
+                        "type": "has_job",
+                        "value": "stonehearth:jobs:potter"
+                     },
+                     "file": "file(building_templates/potter_house_ace.json)"
                   }
                }
             }

@@ -1,0 +1,39 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(sleeping_bag.qb)"
+            ]
+         },
+         "sleeping": {
+            "models": [
+               "file(sleeping_bag_sleeping.qb)"
+            ]
+         }
+      },
+      "render_info": {
+         "scale": 0.22
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.furniture.sleeping_bag.display_name)",
+         "description": "i18n(stonehearth_ace:entities.furniture.sleeping_bag.description)",
+         "icon": "file(sleeping_bag.png)",
+         "category": "furniture",
+         "material_tags": [
+            "cloth",
+            "furniture",
+            "crafted",
+            "bed",
+            "stockpile_furniture"
+         ]
+      }
+   }
+}

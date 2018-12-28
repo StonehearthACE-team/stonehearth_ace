@@ -23,7 +23,9 @@
             "stonehearth:patrol"
          ],
          "ilevel": 24,
-         "roles":["knight_job"],
+         "roles": [
+            "knight_job"
+         ],
          "required_job_level": 6,
          "equip_effect": "stonehearth:effects:weapon_level_up",
          "equipment_types": [
@@ -91,7 +93,15 @@
          "description": "i18n(stonehearth_ace:entities.weapons.silver_halberd.description)",
          "icon": "file(silver_halberd.png)",
          "category": "weapons",
-         "material_tags":["twohanded", "silver", "melee_weapon", "crafted", "silver_halberd", "stockpile_weapon"]
+         "material_tags": [
+            "twohanded",
+            "silver",
+            "melee_weapon",
+            "ascendancy_made",
+            "crafted",
+            "silver_halberd",
+            "stockpile_weapon"
+         ]
       }
    }
 }

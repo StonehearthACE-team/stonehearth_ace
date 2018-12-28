@@ -6,7 +6,8 @@
    "description": "i18n(stonehearth_ace:entities.construction.reinforced_clay_door.description)",
    "flavor": "i18n(stonehearth_ace:entities.construction.reinforced_clay_door.flavor)",
    "portrait": "/stonehearth_ace/entities/construction/reinforced_clay_door/reinforced_clay_door.png",
-   "workshop": "stonehearth:potter:workbench",
+   "workshop": "stonehearth:potter:kiln",
+   "work_effect": "work_wait",
    "level_requirement": 3,
    "ingredients": [
       {
@@ -15,6 +16,10 @@
       },
       {
          "uri": "stonehearth:resources:iron:ore",
+         "count": 1
+      },
+	  {
+         "material": "common_fuel",
          "count": 1
       }
    ],

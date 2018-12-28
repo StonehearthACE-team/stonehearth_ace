@@ -1,0 +1,31 @@
+{
+   "type": "recipe",
+   "effort": 35,
+   "work_units": 10,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.sugar_loaf_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.sugar_loaf_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.sugar_loaf_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/sugar_loaf/sugar_loaf/sugar_loaf.png",
+   "level_requirement": 4,
+   "workshop": "stonehearth:cook:oven",
+   "work_effect": "work_wait",
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:food:dough_sweet",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth:food:sugar",
+         "count": 1
+      },
+	  {
+         "material": "low_fuel",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:sugar_loaf"
+      }
+   ]
+}

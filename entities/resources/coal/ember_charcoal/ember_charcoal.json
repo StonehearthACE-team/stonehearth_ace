@@ -1,0 +1,48 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(../piece_of_charcoal/piece_of_charcoal.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": -0.05, "y": 0, "z": 0.05 }
+      },
+      "effect_list": {
+         "default": "stonehearth_ace:effects:ember_charcoal_effect"
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 0,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.decoration.ember_charcoal.display_name)",
+         "description": "i18n(stonehearth_ace:entities.decoration.ember_charcoal.description)",
+         "is_item": true,
+         "category": "resources",
+         "material_tags": [
+            "stockpile_coal"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": 1
+      },
+      "stonehearth:food_decay": {
+         "initial_decay": {
+            "min": 3,
+            "max": 5
+         },
+         "rotten_entity_alias": "stonehearth_ace:resources:coal:piece_of_charcoal"
+      }
+   }
+}

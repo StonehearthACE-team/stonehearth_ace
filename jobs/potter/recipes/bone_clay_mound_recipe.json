@@ -7,6 +7,7 @@
    "flavor": "i18n(stonehearth_ace:jobs.potter.recipes.bone_clay_recipe.flavor)",
    "portrait": "/stonehearth_ace/entities/resources/clay/bone_clay_mound/bone_clay_mound.png",
    "workshop": "stonehearth:potter:kiln",
+   "work_effect": "work_wait",
    "level_requirement": 4,
    "ingredients": [
 	  {
@@ -19,6 +20,10 @@
       },
       {
          "uri": "stonehearth_ace:resources:stone:feldspar_stone",
+         "count": 1
+      },
+	  {
+         "material": "fuel",
          "count": 1
       }
    ],

@@ -15,13 +15,18 @@
       "stonehearth:equipment_piece": {
          "slot": "offhand",
          "render_type": "attach_to_bone",
+         "additional_equipment": {
+            "stonehearth_ace:armor:offhand_placeholder": true
+         },
          "postures": [
             "stonehearth:combat",
             "stonehearth:patrol",
             "stonehearth:have_shield"
          ],
          "ilevel": 4,
-         "roles":["footman_job"],
+         "roles": [
+            "footman_job"
+         ],
          "required_job_level": 4,
          "equip_effect": "stonehearth:effects:weapon_level_up",
          "equipment_types": [
@@ -58,7 +63,14 @@
          "description": "i18n(stonehearth_ace:entities.armor.light_steel_shield.description)",
          "icon": "file(light_steel_shield.png)",
          "category": "armor",
-         "material_tags":["steel", "shield", "medium_armor", "light_steel_shield", "stockpile_equipment"]
+         "material_tags": [
+            "steel",
+            "shield",
+            "medium_armor",
+            "ascendancy_made",
+            "light_steel_shield",
+            "stockpile_equipment"
+         ]
       }
    }
 }

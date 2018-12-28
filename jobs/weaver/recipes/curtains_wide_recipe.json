@@ -1,0 +1,26 @@
+{
+   "type": "recipe",
+   "effort": 14,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.weaver.recipes.curtains_wide_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.weaver.recipes.curtains_wide_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.weaver.recipes.curtains_wide_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/decoration/curtains_wide/curtains_wide.png",
+   "workshop": "stonehearth:weaver:workbench",
+   "level_requirement": 6,
+   "ingredients": [
+      {
+         "material": "cloth resource",
+         "count": 1
+      },
+      {
+         "material": "wood resource",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:decoration:curtains_wide"
+      }
+   ]
+}

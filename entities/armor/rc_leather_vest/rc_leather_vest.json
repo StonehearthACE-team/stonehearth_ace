@@ -29,7 +29,18 @@
    "entity_data": {
       "stonehearth:catalog": {
          "display_name": "i18n(stonehearth_ace:entities.armor.rc_leather_vest.display_name)",
-         "icon": "file(rc_leather_vest.png)"
+         "icon": "file(rc_leather_vest.png)",
+         "mixintypes": {
+            "material_tags": "override"
+         },
+         "material_tags": [
+            "leather",
+            "armor",
+            "rc_made",
+            "light_armor",
+            "leather_vest",
+            "stockpile_equipment"
+         ]
       }
    }
 }

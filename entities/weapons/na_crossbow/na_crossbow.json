@@ -19,7 +19,18 @@
    "entity_data": {
       "stonehearth:catalog": {
          "display_name": "i18n(stonehearth_ace:entities.weapons.na_crossbow.display_name)",
-         "icon": "file(na_crossbow.png)"
+         "icon": "file(na_crossbow.png)",
+         "mixintypes": {
+            "material_tags": "override"
+         },
+         "material_tags": [
+            "wood",
+            "bow_crossbow",
+            "na_made",
+            "ranged_weapon",
+            "crossbow",
+            "stockpile_weapon"
+         ]
       }
    }
 }

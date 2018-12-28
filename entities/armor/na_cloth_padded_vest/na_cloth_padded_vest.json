@@ -29,7 +29,18 @@
    "entity_data": {
       "stonehearth:catalog": {
          "display_name": "i18n(stonehearth_ace:entities.armor.na_cloth_padded_vest.display_name)",
-         "icon": "file(na_cloth_padded_vest.png)"
+         "icon": "file(na_cloth_padded_vest.png)",
+         "mixintypes": {
+            "material_tags": "override"
+         },
+         "material_tags": [
+            "armor",
+            "light_armor",
+            "cloth",
+            "na_made",
+            "cloth_padded_vest",
+            "stockpile_equipment"
+         ]
       }
    }
 }

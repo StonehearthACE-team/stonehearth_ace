@@ -29,7 +29,18 @@
    "entity_data": {
       "stonehearth:catalog": {
          "display_name": "i18n(stonehearth_ace:entities.armor.na_bronze_breastplate.display_name)",
-         "icon": "file(na_bronze_breastplate.png)"
+         "icon": "file(na_bronze_breastplate.png)",
+         "mixintypes": {
+            "material_tags": "override"
+         },
+         "material_tags": [
+            "bronze",
+            "armor",
+            "medium_armor",
+            "na_made",
+            "bronze_breastplate",
+            "stockpile_equipment"
+         ]
       }
    }
 }

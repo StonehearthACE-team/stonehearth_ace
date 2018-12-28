@@ -19,7 +19,18 @@
    "entity_data": {
       "stonehearth:catalog": {
          "display_name": "i18n(stonehearth_ace:entities.weapons.rc_iron_sword.display_name)",
-         "icon": "file(rc_iron_sword.png)"
+         "icon": "file(rc_iron_sword.png)",
+         "mixintypes": {
+            "material_tags": "override"
+         },
+         "material_tags": [
+            "iron",
+            "melee_weapon",
+            "rc_made",
+            "crafted",
+            "iron_sword",
+            "stockpile_weapon"
+         ]
       }
    }
 }

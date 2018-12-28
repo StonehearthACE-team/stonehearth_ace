@@ -1,0 +1,20 @@
+{
+   "type" : "effect",
+   "tracks": {
+      "animation": {
+         "type": "animation_effect",
+         "start_time": 0,
+         "animation": "work_ace.json",
+         "loop": true
+      },
+      "sound": {
+         "type": "sound_effect",
+         "loop": true,
+         "start_time": 200,
+         "min_distance": 35,
+         "falloff": 4,
+         "volume": 40,
+        "track": "stonehearth:sounds:jobs_potter_wheel"
+      }            
+   }
+}

@@ -7,7 +7,7 @@
    "flavor": "i18n(stonehearth_ace:jobs.blacksmith.recipes.blacksmith_crucible_recipe.flavor)",
    "portrait": "/stonehearth_ace/jobs/blacksmith/blacksmith_crucible/blacksmith_crucible.png",
    "work_effect": "work",
-   "level_requirement": 2,
+   "level_requirement": 1,
    "ingredients": [
       {
          "material": "stone resource",
@@ -18,7 +18,11 @@
          "count": 1
       },
 	  {
-         "uri": "stonehearth:refined:iron_ingot",
+         "material": "clay resource",
+         "count": 1
+      },
+	  {
+         "material": "ore resource",
          "count": 1
       }
    ],

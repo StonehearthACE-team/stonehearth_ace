@@ -3,6 +3,44 @@
    "mixins": "stonehearth:poyo",
    "player_id": "animals",
    "components": {
+      "stonehearth:loot_drops": {
+         "force_auto_loot": true,
+         "entries": {
+            "meat": {
+               "num_rolls": {
+                  "min": 1,
+                  "max": 1
+               },
+               "items": {
+                  "jerky": {
+                     "uri": "stonehearth:food:poyo_meat"
+                  }
+               }
+            },
+            "bones": {
+               "num_rolls": {
+                  "min": 0,
+                  "max": 1
+               },
+               "items": {
+                  "jerky": {
+                     "uri": "stonehearth_ace:resources:bone:bone_material"
+                  }
+               }
+            },
+            "wool": {
+               "num_rolls": {
+                  "min": 0,
+                  "max": 1
+               },
+               "items": {
+                  "pelt": {
+                     "uri": "stonehearth:resources:feathers:poyo_feathers"
+                  }
+               }
+            }
+         }
+      },
       "stonehearth:resource_node": {
          "category": "harvest",
          "check_owner": false

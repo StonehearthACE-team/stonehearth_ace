@@ -14,7 +14,7 @@
          }
       },
       "mob": {
-         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "model_origin": { "x": 0.35, "y": 0, "z": -0.15 },
          "region_origin": { "x": 0.5, "y": 0, "z": 0.5 },
          "mob_collision_type": "clutter"
       }
@@ -25,7 +25,9 @@
          "evolve_time": "14h+2h"
       },
       "stonehearth:catalog": {
-         "material_tags":["stockpile_plant"],
+         "material_tags": [
+            "stockpile_plant"
+         ],
          "display_name": "i18n(stonehearth_ace:entities.trees.yew_tree.sprout.tree_yew_sprout.display_name)",
          "description": "i18n(stonehearth_ace:entities.trees.yew_tree.sprout.tree_yew_sprout.description)",
          "category": "plants"

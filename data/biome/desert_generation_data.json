@@ -1,4 +1,17 @@
 {
+   "terrain": {
+	  "minimap":{
+		"water" : "i18n(stonehearth_ace:ui.shell.select_settlement.desert.terrain_codes.water)",
+		"plains_1" : "i18n(stonehearth_ace:ui.shell.select_settlement.desert.terrain_codes.plains)",
+		"plains_2" : "i18n(stonehearth_ace:ui.shell.select_settlement.desert.terrain_codes.plains)",
+		"foothills_1" : "i18n(stonehearth_ace:ui.shell.select_settlement.desert.terrain_codes.foothills)",
+		"foothills_2" : "i18n(stonehearth_ace:ui.shell.select_settlement.desert.terrain_codes.foothills)",
+		"mountains_1" : "i18n(stonehearth_ace:ui.shell.select_settlement.desert.terrain_codes.mountains)",
+		"mountains_2" : "i18n(stonehearth_ace:ui.shell.select_settlement.desert.terrain_codes.mountains)",
+		"mountains_3" : "i18n(stonehearth_ace:ui.shell.select_settlement.desert.terrain_codes.mountains)",
+		"mountains_4" : "i18n(stonehearth_ace:ui.shell.select_settlement.desert.terrain_codes.mountains)"
+	  }
+   },
    "landscape": {
       "placement_table": {
          "stonehearth_ace:fungi:desert_truffle": {
@@ -62,9 +75,10 @@
       },
 	  "water": {
          "depth": {
-            "shallow": 3,
+            "shallow": 2,
             "deep": 5
-         }
+         },
+		 "water_height_delta": 0.5
       }
    }
 }

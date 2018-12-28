@@ -1,0 +1,77 @@
+{
+   "type": "encounter",
+   "encounter_type": "shop",
+   "unique": true,
+   "in_edge": "bonecarver_shop_2",
+   "shop_info": {
+      "name": "i18n(stonehearth_ace:data.gm.campaigns.trader.arcs.encounters.tier_2_shops.bonecarver_shop_2.shop_info.name)",
+      "title": "i18n(stonehearth_ace:data.gm.campaigns.trader.arcs.encounters.tier_2_shops.bonecarver_shop_2.shop_info.title)",
+      "inventory": {
+         "shopkeeper_level": 2,
+         "shopkeeper_gold": 650,
+         "entries": [
+            {
+               "items_matching": {
+                  "bone_stuff": {
+                     "category": [
+                        "furniture",
+                        "decoration",
+						"construction"
+                     ],
+                     "material": [
+                        "bone"
+                     ]
+                  }
+               },
+               "quantity": {
+                  "min": 0,
+                  "max": 5
+               }
+            },
+			{
+               "items": [
+                  "stonehearth_ace:weapons:giant_bone_hatchet",
+                  "stonehearth_ace:weapons:giant_bone_pike",
+				  "stonehearth:weapons:giant_bone_mace",
+                  "stonehearth_ace:armor:light_giant_bone_shield"
+               ],
+               "quantity": {
+                  "min": 1,
+                  "max": 2
+               }
+            },
+			{
+               "items": [
+                  "stonehearth_ace:weapons:giant_bone_sword",
+                  "stonehearth_ace:weapons:giant_bone_short_sword",
+                  "stonehearth_ace:armor:giant_bone_shield",
+				  "stonehearth:weapons:giant_bone_axe",
+               ],
+               "quantity": {
+                  "min": 0,
+                  "max": 1
+               }
+            },
+            {
+               "items": [
+                  "stonehearth_ace:resources:bone:bone_material"
+               ],
+               "quantity": {
+                  "min": 12,
+                  "max": 20
+               }
+            },
+			{
+               "items": [
+			      "stonehearth:resources:bone:ancient",
+                  "stonehearth:resources:deer_horn"
+               ],
+               "quantity": {
+                  "min": 0,
+                  "max": 6
+               }
+            }
+         ]
+      }
+   }
+}

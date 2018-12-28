@@ -1,11 +1,13 @@
 {	
    "type": "entity",
-   "mixins": "/stonehearth/jobs/blacksmith/blacksmith_forge/blacksmith_forge_ghost.json",
    "components": {
       "stonehearth:workshop": {
-	     "job_alias": "stonehearth:jobs:blacksmith",
          "workshop_effect": "/stonehearth_ace/data/rigs/jobs/blacksmith/blacksmith_forge/effects/work.json"
-      },	  
+      },
+      "mixintypes": {
+		 "destination": "override",
+		 "region_collision_shape": "override"
+	  },	  
       "destination": {
          "region": [
             {
@@ -21,14 +23,9 @@
          "region": [
             {
                "min": { "x": -2, "y": 0, "z": -2 },
-               "max": { "x": 2, "y": 6, "z": 2 }
+               "max": { "x": 2, "y": 4, "z": 2 }
             }
          ]
-      },
-	  "stonehearth:entity_forms": {
-         "iconic_form": "/stonehearth/jobs/blacksmith/blacksmith_forge/blacksmith_forge_iconic.json",
-         "ghost_form": "/stonehearth/jobs/blacksmith/blacksmith_forge/blacksmith_forge_ghost.json",
-         "placeable_on_ground": true
       },
       "effect_list": {
          "default": "/stonehearth_ace/data/rigs/jobs/blacksmith/blacksmith_forge/effects/idle.json"
@@ -39,23 +36,7 @@
          "equivalents": [ "stonehearth_ace:rayyas_children:blacksmith:forge", "stonehearth_ace:northern_alliance:blacksmith:forge", "stonehearth_ace:mountain_folk:blacksmith:forge", "stonehearth_ace:blacksmith:forge_advanced", "stonehearth_ace:rayyas_children:blacksmith:forge_advanced", "stonehearth_ace:northern_alliance:blacksmith:forge_advanced", "stonehearth_ace:mountain_folk:blacksmith:forge_advanced" ]
       },
       "stonehearth:table": {
-         "drop_effect": "carry_putdown_on_table",
          "drop_offset": { "x": 0, "y": 0, "z": 0 }
-      },
-      "stonehearth:net_worth": {
-         "value_in_gold": 15,
-         "rarity": "common",
-         "shop_info": {
-            "buyable": false,
-            "sellable": true,
-            "shopkeeper_type": "caravan"
-         }
-      },
-      "stonehearth:appeal": {
-         "appeal": 5
-      },
-      "stonehearth:item_quality": {
-         "variable_quality": true
       }
    }
 }

@@ -19,7 +19,18 @@
    "entity_data": {
       "stonehearth:catalog": {
          "display_name": "i18n(stonehearth_ace:entities.armor.na_iron_shield.display_name)",
-         "icon": "file(na_iron_shield.png)"
+         "icon": "file(na_iron_shield.png)",
+         "mixintypes": {
+            "material_tags": "override"
+         },
+         "material_tags": [
+            "iron",
+            "shield",
+            "heavy_armor",
+            "na_made",
+            "iron_shield",
+            "stockpile_equipment"
+         ]
       }
    }
 }

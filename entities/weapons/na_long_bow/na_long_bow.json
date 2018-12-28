@@ -19,7 +19,18 @@
    "entity_data": {
       "stonehearth:catalog": {
          "display_name": "i18n(stonehearth_ace:entities.weapons.na_long_bow.display_name)",
-         "icon": "file(na_long_bow.png)"
+         "icon": "file(na_long_bow.png)",
+         "mixintypes": {
+            "material_tags": "override"
+         },
+         "material_tags": [
+            "wood",
+            "bow",
+            "na_made",
+            "ranged_weapon",
+            "long_bow",
+            "stockpile_weapon"
+         ]
       }
    }
 }
