@@ -759,7 +759,10 @@
             "clay_bed_crude_recipe": {
                "recipe_name": "Schlafplatz aus Ton",
                "description": "Ein passender Ort um bei Erschöpfung ohnmächtig zu werden.",
-               "flavor": "Etwas erträglicher"
+               "flavor": "'Es ist wie ein Topf zum Schlafen! - Clarence, Temporärer Verkäufer"
+            },
+            "clay_bed_recipe": {
+               "flavor": "Stroh kann durch die Ernte von Grasbüscheln, einigen Pflanzen wie Steppenroller oder durch Graben im Grasland gewonnen werden"
             },
             "clay_training_dummy_recipe": {
                "recipe_name": "Trainingspuppe aus Lehm",
@@ -770,6 +773,11 @@
                "recipe_name": "Zielscheibe aus Lehm",
                "description": "Fernkämpfer können durch das Üben mit der Zielscheibe Erfahrung sammeln.",
                "flavor": "Benötigt einen Ingenieur zum reparieren."
+            },
+            "clay_sword_recipe": {
+               "recipe_name": "Lehm Übungsschwert",
+               "description": "Wird benötigt um einen Hearthling in einen Fußsoldaten zu ernennen.",
+               "flavor": "Könnte leicht brechen, aber idealerweise wird es nicht lange benutzt ... oder?"
             }
          }
       },
@@ -817,10 +825,13 @@
                "description": "Viel wärmer und weicher als der Stein selbst.",
                "flavor": "Warme Felle!"
             },
+            "stone_bed_recipe": {
+               "flavor": "Stroh kann durch die Ernte von Grasbüscheln, einige Pflanzen wie Wintermoss oder das Graben im Grasland gewonnen werden"
+            },
             "stone_bed_crude_recipe": {
                "recipe_name": "Schlafplatz aus Stein",
                "description": "Du möchtest vielleicht lieber nicht in dieses hineinspringen.",
-               "flavor": "Das Stroh ist etwas zu trocken, aber es funktioniert..."
+               "flavor": "Der schöne Rahmen lenkt davon ab wie Unbequem es ist auf hartem Stein zu schlafen"
             },
             "stone_training_dummy_recipe": {
                "recipe_name": "Trainingspuppe aus Stein",
@@ -876,6 +887,9 @@
                "recipe_name": "Gigantisches Knochenkurzschwert",
                "description": "Erstelle eine Ritterwaffe mit den Knochen eines Fabelwesen.",
                "flavor": ""
+            },
+            "stone_sword_recipe": {
+               "flavor": "Das Training mit Steinschwertern ist ein grausamer, aber effizienter Witz."
             }
          },
          "mason_workbench_bone": {
@@ -1110,7 +1124,7 @@
          "blacksmith_description": {
             "level_1_data": {
                "perk_000_name": "Frühe Metallarbeiten",
-               "perk_000_description": "Der Schmied muss das Schmelzen von Grunderzen beherrschen, bevor er Bronze aus dem Tiegel und Eisen zu einem Amboss verarbeiten kann."
+               "perk_000_description": "Der Schmied muss das Schmelzen von Grunderzen und die Verwendung des Tiegels beherrschen, bevor er mit einem Amboss arbeiten kann."
             },
             "level_2_data": {
                "perk_000_name": "Bronze & Eisenzeit!",
@@ -1341,10 +1355,13 @@
                "description": "Mach einen stabilen Block zum spalten von Holzblöcken.",
                "flavor": ""
             },
+            "wood_bed_recipe": {
+               "flavor": "Stroh kann durch die Ernte von Grasbüscheln, einigen Pflanzen wie Seidenpflanzen oder durch Graben im Grasland gewonnen werden"
+            },
             "wood_bed_crude_recipe": {
-               "recipe_name": "Hölzerner Schlafplatz",
-               "description": "Besser als nichts ... Wahrscheinlich.",
-               "flavor": "Man schläft wörtlich auf einem Brett"
+               "recipe_name": "Gemeiner Schlafplatz",
+               "description": "Sprichwörtlich schläft man auf einem Brett.",
+               "flavor": "Gemein wie in Arm, nicht grausam. Obwohl es das auch ist."
             }
          }
       },
@@ -2634,6 +2651,14 @@
                "display_name": "Porzellangefäß mit Federn",
                "description": "Herrlich riesige Federn aus Porzellan und Textilien."
             }
+         },
+         "ember_charcoal": {
+            "display_name": "Glühender Holzblpck",
+            "description": "Verwandelt sich nach einiger Zeit in Holzkohle und wird nachgefüllt, wenn neuer Kraftstoff benötigt wird!"
+         },
+         "ember": {
+            "display_name": "Glut",
+            "description": "Dieses Feuer verblasste ... Und so sucht die Asche nach neuer Glut."
          }
       },
       "pets": {
@@ -3061,11 +3086,11 @@
       "terrain": {
          "pasture_grass": {
             "display_name": "Gras",
-            "description": "Hohes Gras kann von Tieren beweidet oder für den späteren Gebrauch geerntet werden."
+            "description": "Hohes Gras kann von Tieren beweidet oder für Stroh geerntet werden."
          },
          "overgrown_pasture_grass": {
             "display_name": "Überwuchertes Grass",
-            "description": "Überwuchertes Gras kann von Tieren beweidet oder für den späteren Gebrauch geerntet werden."
+            "description": "Überwuchertes Gras kann von Tieren beweidet oder für Stroh geerntet werden."
          },
          "short_pasture_grass": {
             "display_name": "Kurzes Gras",
@@ -3731,6 +3756,12 @@
          "giant_bone_pike": {
             "display_name": "Gigantischer Knochenspeer",
             "description": "Einst ein Teil eines mächtigen Tieres, jetzt um eins zu durchbohren. (Beidhändig)"
+         },
+         "wooden_sword": {
+            "display_name": "Übungsschwert",
+            "wooden_sword_talisman": {
+               "display_name": "Übungsschwert"
+            }
          }
       },
       "gizmos": {
