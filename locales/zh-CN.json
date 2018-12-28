@@ -7,6 +7,42 @@
       }
    },
    "data": {
+      "saved_objects": {
+         "building_templates": {
+            "northern_alliance": {
+               "workshop_weaver": {
+                  "display_name": "织工坊"
+               },
+               "workshop_carpenter": {
+                  "display_name": "木匠铺"
+               },
+               "workshop_cook": {
+                  "display_name": "厨房"
+               },
+               "workshop_herbalist": {
+                  "display_name": "草药坊"
+               },
+               "workshop_mason": {
+                  "display_name": "石匠铺"
+               },
+               "workshop_potter": {
+                  "display_name": "陶艺间"
+               },
+               "workshop_engineer": {
+                  "display_name": "工程间"
+               },
+               "workshop_blacksmith": {
+                  "display_name": "铁匠铺"
+               }
+            },
+            "potter_house": {
+               "display_name": "陶屋"
+            },
+            "mason_house": {
+               "display_name": "石匠屋"
+            }
+         }
+      },
       "gm": {
          "campaigns": {
             "ambient_threats": {
@@ -30,6 +66,214 @@
                   "recipe_unlock_weapons_6": "解锁新的传说棒槌配方 - 石匠, 木匠, 和工程师的合力之作!",
                   "recipe_unlock_weapons_7": "解锁新的传说圣典配方 - 厨师, 草药师, 和地媒师的合力之作!",
                   "recipe_unlock_weapons_8": "解锁新的传说锁甲配方 - 纺织工, 工程师, 和铁匠的合力之作!"
+               },
+               "arcs": {
+                  "encounters": {
+                     "tier_1_shops": {
+                        "blacksmith_shop_1": {
+                           "shop_info": {
+                              "name": "伟大的费尔南德的铁匠铺",
+                              "title": "一位南方铁匠带着些金属器件到来了"
+                           }
+                        },
+                        "bonecarver_shop_1": {
+                           "shop_info": {
+                              "name": "琪穆的骨头卖场",
+                              "title": "一位山脉护林员前来出售动物的骨头"
+                           }
+                        },
+                        "charcoal_shop_1": {
+                           "shop_info": {
+                              "name": "大河弯烧炭工",
+                              "title": "一群烧炭的来镇上做生意"
+                           }
+                        },
+                        "drink_shop_1": {
+                           "shop_info": {
+                              "name": "优堡蓝酿造",
+                              "title": "载着饮料美酒的商队在周围安营扎寨"
+                           }
+                        },
+                        "training_shop_1": {
+                           "shop_info": {
+                              "name": "罗克上校的训练学校",
+                              "title": "一队训练中的新兵路过顺便想做个生意"
+                           }
+                        },
+                        "engineering_shop_1": {
+                           "shop_info": {
+                              "name": "德瓦伦的装置器械店",
+                              "title": "一位矮人工艺师来镇上做买卖"
+                           }
+                        },
+                        "forager_shop_1": {
+                           "shop_info": {
+                              "name": "白尖山商铺的姐妹",
+                              "title": "来自附近修道院的旅行队带着采集的好东西来到镇上"
+                           }
+                        },
+                        "fishing_shop_1": {
+                           "shop_info": {
+                              "name": "大河弯渔业",
+                              "title": "来自附近渔村的工人前来做生意"
+                           }
+                        },
+                        "quarry_shop_1": {
+                           "shop_info": {
+                              "name": "绀壁索采石场的商店",
+                              "title": "来自一家小采石场的一行人带着石头来到镇上售卖"
+                           }
+                        },
+                        "rc_weapon_armor_shop_1": {
+                           "shop_info": {
+                              "name": "拉金的精工刀刃店",
+                              "title": "匠人拉金带着沙漠装备来镇上做生意"
+                           }
+                        },
+                        "na_weapon_armor_shop_1": {
+                           "shop_info": {
+                              "name": "狼口铁匠铺",
+                              "title": "一位北方的铁匠带着武器护甲前来出售"
+                           }
+                        }
+                     },
+                     "tier_2_shops": {
+                        "blacksmith_shop_2": {
+                           "shop_info": {
+                              "name": "伟大的费尔南德的铁匠铺",
+                              "title": "一位南方来的铁匠带着他最好的金属前来售卖"
+                           }
+                        },
+                        "bonecarver_shop_2": {
+                           "shop_info": {
+                              "name": "骨雕师阿提金",
+                              "title": "一位野外经验丰富的隐士带着骨器前来出售"
+                           }
+                        },
+                        "charcoal_shop_2": {
+                           "shop_info": {
+                              "name": "欧润姆湖炭业",
+                              "title": "一群烧炭的来镇上做生意"
+                           }
+                        },
+                        "drink_shop_2": {
+                           "shop_info": {
+                              "name": "壶图酿业",
+                              "title": "一位北方的酿造师来卖东西了"
+                           }
+                        },
+                        "training_shop_2": {
+                           "shop_info": {
+                              "name": "军事学院",
+                              "title": "一位军校代表来到了镇上"
+                           }
+                        },
+                        "engineering_shop_2": {
+                           "shop_info": {
+                              "name": "巴札克·科博费的商店",
+                              "title": "一位来自山脉高原的工程师来到附近做生意"
+                           }
+                        },
+                        "forager_shop_2": {
+                           "shop_info": {
+                              "name": "护林员工会",
+                              "title": "护林员工会的会员们来此售卖丛林里的野味"
+                           }
+                        },
+                        "fishing_shop_2": {
+                           "shop_info": {
+                              "name": "'鱼味杂渔'",
+                              "title": "来自一个大渔镇的渔夫们带着货物来到镇上"
+                           }
+                        },
+                        "quarry_shop_2": {
+                           "shop_info": {
+                              "name": "大块头采石公司",
+                              "title": "一家大公司的石匠与矿工来镇上做生意"
+                           }
+                        },
+                        "rc_weapon_armor_shop_2": {
+                           "shop_info": {
+                              "name": "拉金的精工刀刃店",
+                              "title": "沙漠铁匠拉金带着他最好的刀具来了"
+                           }
+                        },
+                        "na_weapon_armor_shop_2": {
+                           "shop_info": {
+                              "name": "狼口铁匠铺",
+                              "title": "一位北方的铁匠带着武器护甲前来换售"
+                           }
+                        }
+                     },
+                     "tier_3_shops": {
+                        "blacksmith_shop_3": {
+                           "shop_info": {
+                              "name": "强锤商贾",
+                              "title": "远近闻名的铁匠商队来到镇上想做几笔生意"
+                           }
+                        },
+                        "bonecarver_shop_3": {
+                           "shop_info": {
+                              "name": "姬塔的哐啷骨器店",
+                              "title": "一位知名骨雕师来访交易"
+                           }
+                        },
+                        "charcoal_shop_3": {
+                           "shop_info": {
+                              "name": "海湾炭业",
+                              "title": "一支大型卖炭商队在附近扎寨"
+                           }
+                        },
+                        "drink_shop_3": {
+                           "shop_info": {
+                              "name": "霍夫金家族酿业",
+                              "title": "一家有名的饮料品牌店派来了一位商人"
+                           }
+                        },
+                        "training_shop_3": {
+                           "shop_info": {
+                              "name": "海德连骑士军官学院",
+                              "title": "骑士海德连前来售卖训练器材"
+                           }
+                        },
+                        "engineering_shop_3": {
+                           "shop_info": {
+                              "name": "莱茵特色百货",
+                              "title": "一位知名的矮人工艺师来镇上售卖"
+                           }
+                        },
+                        "forager_shop_3": {
+                           "shop_info": {
+                              "name": "精灵商队",
+                              "title": "小精灵! 一队丛林里来的护林员在附近安营扎寨做生意"
+                           }
+                        },
+                        "fishing_shop_3": {
+                           "shop_info": {
+                              "name": "布鲁诺的鱼店",
+                              "title": "一位著名的渔夫带着异域的水产前来售卖"
+                           }
+                        },
+                        "quarry_shop_3": {
+                           "shop_info": {
+                              "name": "乔纳西科朗采石场",
+                              "title": "一群来自西科朗地区的矮人来到了镇上做生意"
+                           }
+                        },
+                        "rc_weapon_armor_shop_3": {
+                           "shop_info": {
+                              "name": "塔莉·潘多拉的铁匠商店",
+                              "title": "一位著名的沙漠铁匠带着她传说一般的商品前来售卖"
+                           }
+                        },
+                        "na_weapon_armor_shop_3": {
+                           "shop_info": {
+                              "name": "诺夫戈纳·西弗费的商店",
+                              "title": "传说级别的北方铁匠前来出售商品"
+                           }
+                        }
+                     }
+                  }
                }
             }
          }
@@ -222,6 +466,10 @@
                "display_name": "偏好弩箭",
                "description": "该弓箭手当前会偏好选择弩. 点击以更改偏好设定!"
             }
+         },
+         "manage_parties": {
+            "display_name": "军队管理",
+            "description": "管理军队的巡逻点旗帜与守备区域(还未实装)."
          }
       },
       "buffs": {
@@ -306,6 +554,43 @@
          "not_in_water": {
             "display_name": "着陆",
             "description": "这个动物还不适应陆地... 会有些不好的影响!"
+         },
+         "holiday_cheer": {
+            "display_name": "节日快乐",
+            "description": "喔! 炉民正在享受节日的氛围, 他们同情心与速度略微增加了! "
+         }
+      },
+      "loadouts": {
+         "items": {
+            "prickly_pear": "刺梨",
+            "thatching": "茅草",
+            "watermelon": "西瓜",
+            "winter_morel": "羊肚菌",
+            "training_dummy": "假人",
+            "comfy_bed": "床",
+            "roast_venison": "鹿肉",
+            "training_target": "标靶",
+            "sleeping_bag": "便携床铺"
+         },
+         "military_expedition": {
+            "display_name": "先遣部队",
+            "description": "这些炉民们在开始几天可能缺乏食物只能睡在冰冷的地面, 真实... 但估计几天后那些讨厌的狼群和哥布林就要吃苦头了!",
+            "tooltip": "专注军事力量的开局物资, 适合那些把安全感放在第一位的."
+         },
+         "noble_entourage": {
+            "display_name": "特权跟班",
+            "description": "不是每个人能吃到鹿肉的, 也不是每个人都能睡到床的... 那又如何? 它们本来就不是雨露均沾的, 只有VIP炉民才有权享受 - 至少他们是这样说的 - 但这足以让这一小队人都乖乖跟着出发探险.",
+            "tooltip": "高价值物品和职业的物资, 是一个奇怪特别的开局."
+         }
+      },
+      "hotkeys": {
+         "keys": {
+            "ui_box_move_items": {
+               "display_name": "移动多样物品"
+            },
+            "ui_box_undeploy_items": {
+               "display_name": "收起多样物品"
+            }
          }
       }
    },
@@ -323,6 +608,14 @@
             "level_1_data": {
                "training_perk_name": "剑术训练",
                "training_perk_description": "弓箭手可以使用假人训练至3级并会增加1格训练装备上限"
+            }
+         }
+      },
+      "cleric": {
+         "cleric_description": {
+            "level_1_data": {
+               "training_perk_name": "治疗训练",
+               "training_perk_description": "牧师可以用牧羊人养的羊咩咩来练习他们的治愈魔法姿势, 获得经验直至3级"
             }
          }
       },
@@ -356,6 +649,16 @@
                "recipe_name": "干藻",
                "description": "晒干压成片状的藻类, 可以当作草药用.",
                "flavor": "还能用于烹饪!"
+            },
+            "parasol_colony_recipe": {
+               "recipe_name": "高环柄菇菌落 (x3)",
+               "description": "用现有的菌来分成几个菌落培养出新的菌.",
+               "flavor": "这种蘑菇生的时候微毒, 所以只能用做食材不可生吃"
+            },
+            "sweet_tooth_colony_recipe": {
+               "recipe_name": "卷缘齿菌菌落 (x3)",
+               "description": "用现有的菌来分成几个菌落培养出新的菌.",
+               "flavor": ""
             },
             "bolete_colony_recipe": {
                "recipe_name": "牛肝菌菌落 (x3)",
@@ -444,7 +747,7 @@
       "potter": {
          "recipes": {
             "bone_clay_recipe": {
-               "recipe_name": "骨粉粘土堆",
+               "recipe_name": "骨粉粘土堆 (x2)",
                "description": "用来制作瓷器或者美丽的装饰陶器的必需品.",
                "flavor": ""
             },
@@ -452,6 +755,21 @@
                "recipe_name": "舒适陶土床",
                "description": "床垫上沙子少多了.",
                "flavor": "睡个好觉..."
+            },
+            "clay_bed_crude_recipe": {
+               "recipe_name": "陶土休息区",
+               "description": "没力气干活了闭上眼睛的合适场所.",
+               "flavor": "还算可以忍受"
+            },
+            "clay_training_dummy_recipe": {
+               "recipe_name": "陶土训练假人",
+               "description": "近战士兵可以通过和这个友好的家伙练手来获得经验.",
+               "flavor": "需要工程师来修理."
+            },
+            "clay_training_target_recipe": {
+               "recipe_name": "陶土箭术标靶",
+               "description": "远程士兵可以以它为靶子练习来获得经验.",
+               "flavor": "需要工程师来修理."
             }
          }
       },
@@ -471,7 +789,15 @@
       },
       "mason": {
          "recipes": {
-            "utility_name": "Utility",
+            "utility_name": "实用器械",
+            "bone_weapons_armor_name": "武器&装甲, 骨刻",
+            "bone_furniture_name": "家具&装饰, 骨刻",
+            "bone_building_parts_name": "建筑部件, 骨刻",
+            "mason_workbench_bone_recipe": {
+               "recipe_name": "骨刻台",
+               "description": "需要工程师来雕刻骨头做成家具或装备.",
+               "flavor": ""
+            },
             "legendary_headpiece_recipe": {
                "recipe_name": "陨星",
                "description": "月恒星升上强力而致命的锤头.",
@@ -490,18 +816,83 @@
                "recipe_name": "舒适石床",
                "description": "比石头可暖和柔软多了.",
                "flavor": "毛好暖和!"
+            },
+            "stone_bed_crude_recipe": {
+               "recipe_name": "石头休息区",
+               "description": "你肯定不会想要跳到这张床上.",
+               "flavor": "茅草太干了, 但凑活..."
+            },
+            "stone_training_dummy_recipe": {
+               "recipe_name": "石制训练假人",
+               "description": "近战士兵可以通过和这个友好的家伙练手来获得经验.",
+               "flavor": "需要工程师来修理."
+            },
+            "stone_training_target_recipe": {
+               "recipe_name": "石制箭术标靶",
+               "description": "远程士兵可以以它为靶子练习来获得经验.",
+               "flavor": "需要工程师来修理."
+            },
+            "stone_hatchet_recipe": {
+               "recipe_name": "副手石短斧",
+               "description": "给那些不喜欢使盾的人的替代品. (副手武器)",
+               "flavor": ""
+            },
+            "giant_bone_axe_recipe": {
+               "recipe_name": "巨骨斧",
+               "description": "把某个凶猛巨兽的锁骨刻成一把斧子. (双手武器)",
+               "flavor": "锋利."
+            },
+            "giant_bone_mace_recipe": {
+               "recipe_name": "巨骨槌",
+               "description": "做一把能锤出成吨伤害的重武器. (双手武器)",
+               "flavor": ""
+            },
+            "giant_bone_shield_recipe": {
+               "recipe_name": "巨骨盾",
+               "description": "用杀人猛兽的肋骨做成一面骑士的盾.",
+               "flavor": "还能顶!"
+            },
+            "light_giant_bone_shield_recipe": {
+               "recipe_name": "巨骨轻盾",
+               "description": "用庞大生物的又硬又轻的骨头做一面盾.",
+               "flavor": ""
+            },
+            "giant_bone_hatchet_recipe": {
+               "recipe_name": "副手巨骨短斧",
+               "description": "做一把可用来闪避或反击的武器. (副手武器)",
+               "flavor": ""
+            },
+            "giant_bone_pike_recipe": {
+               "recipe_name": "巨骨长矛",
+               "description": "用凶猛怪物的骨头做一根矛. (双手武器)",
+               "flavor": "刺穿他们的心!"
+            },
+            "giant_bone_sword_recipe": {
+               "recipe_name": "巨骨剑",
+               "description": "用杀人怪物的骨头做一把强力的武器.",
+               "flavor": "小心有刺!"
+            },
+            "giant_bone_short_sword_recipe": {
+               "recipe_name": "巨骨短剑",
+               "description": "用传说生物的骨头做一把骑士的佩剑.",
+               "flavor": ""
             }
+         },
+         "mason_workbench_bone": {
+            "display_name": "骨刻台",
+            "description": "石匠可以在这里刻骨器."
          }
       },
       "blacksmith": {
          "recipes": {
+            "utility_name": "实用器械",
             "blacksmith_fuel_oven_recipe": {
                "recipe_name": "铁匠窑炉",
                "description": "用于精炼加工特定原材料, 例如木头和煤炭.",
                "flavor": "烈火需要纯净的燃料. 只有刻苦才能制得. -卢肯· 范刘斯, 点火师"
             },
             "blacksmith_crucible_recipe": {
-               "recipe_name": "铁匠坩埚",
+               "recipe_name": "坩埚熔炼炉",
                "description": "可用于熔化加工金属或制作合金.",
                "flavor": "火和石头可以给你金属, 金属加金属会给你... 嗯, 更多金属. -卢肯· 范刘斯, 点火师"
             },
@@ -635,18 +1026,18 @@
             },
             "bronze_hatchet_recipe": {
                "recipe_name": "短柄青铜斧",
-               "description": "可以格挡或反击. 让敌人失去平衡.",
+               "description": "可以闪避或反击. 让敌人失去平衡.",
                "flavor": ""
             },
             "iron_hatchet_recipe": {
                "recipe_name": "短柄铁斧",
-               "description": "可以格挡或进攻的坚固小斧子. 让敌人失去平衡.",
+               "description": "可以闪避或进攻的坚固小斧子. 让敌人失去平衡.",
                "flavor": ""
             },
             "steel_dagger_recipe": {
                "recipe_name": "钢匕首",
                "description": "可攻可守的小斧头. 让敌人失去平衡.",
-               "flavor": "'世界上容易且有效的掩饰少之又少' - 联合军演指导手册"
+               "flavor": "'世界上容易且有效的掩饰少之又少' -联合军演指导手册"
             },
             "steel_lance_recipe": {
                "recipe_name": "钢骑枪",
@@ -695,7 +1086,7 @@
          },
          "blacksmith_crucible": {
             "blacksmith_crucible_ghost": {
-               "display_name": "铁匠坩埚",
+               "display_name": "坩埚熔炼炉",
                "description": "可用于熔化加工金属或制作合金."
             }
          },
@@ -715,6 +1106,22 @@
                "display_name": "高级铁匠熔炉",
                "description": "比一般熔炉高级且更有效率, 温度足够冶炼贵金属."
             }
+         },
+         "blacksmith_description": {
+            "level_1_data": {
+               "perk_000_name": "早期冶炼",
+               "perk_000_description": "铁匠先要熟练掌握基本金属的冶炼, 然后才能在坩埚熔炼炉里制作青铜, 在砧上处理铁."
+            },
+            "level_2_data": {
+               "perk_000_name": "青铜白铁!",
+               "perk_000_description": "现在铁匠足够熟练能制作砧, 坩埚熔炼炉并锻造青铜和铁做的重型工具了.",
+               "perk_001_name": "掌控火焰!",
+               "perk_001_description": "铁匠在锻造和自行制作燃料器械中已经获得了足够的经验."
+            },
+            "level_4_data": {
+               "perk_000_name": "工具升级&冷酷钢铁",
+               "perk_000_description": "长时间的锻造让铁匠有想法制作新器具, 同时茅塞顿开, 领悟了解锁钢铁奥秘的新道理: 利刃轻甲."
+            }
          }
       },
       "worker": {
@@ -725,6 +1132,10 @@
                "display_name": "工程头盔",
                "description": "可以给工人提供额外的效率. 还有照明."
             }
+         },
+         "worker_holiday_hat": {
+            "display_name": "节日快乐帽",
+            "description": "度过年末快乐节日的传统帽子!"
          }
       },
       "cook": {
@@ -804,6 +1215,26 @@
                "description": "随时可以拿去烹饪其他菜的香喷喷的米.",
                "flavor": "谁曾想过草还能这么好吃?"
             },
+            "dough_recipe": {
+               "recipe_name": "面团",
+               "description": "混起来揉成一块可塑的面团, 可以烤成面包之类的食物.",
+               "flavor": "看它变胖!"
+            },
+            "dough_sweet_recipe": {
+               "recipe_name": "甜面团",
+               "description": "揉成一块弹性十足的甜面团, 可以烤成甜食.",
+               "flavor": "有点像面包蛋糕!"
+            },
+            "batter_recipe": {
+               "recipe_name": "黄油",
+               "description": "把一堆好吃黏糊糊的膏体混在一起, 可以用来涂抹烘焙的食物.",
+               "flavor": "然后我们要一些洋葱..."
+            },
+            "batter_sweet_recipe": {
+               "recipe_name": "甜黄油",
+               "description": "一种香甜味美混合膏体, 能做成蛋糕!",
+               "flavor": "蛋糕不再是谎言!"
+            },
             "cooked_rice_recipe": {
                "recipe_name": "熟米饭",
                "description": "煮到完美, 糯性也恰好.",
@@ -834,6 +1265,16 @@
                "description": "一道异域菜肴的素食主义版本.",
                "flavor": "现在大家都能吃到寿司了!"
             },
+            "sugar_loaf_recipe": {
+               "recipe_name": "糖切片面包",
+               "description": "做一块简单但好吃管饱的撒糖的切片面包.",
+               "flavor": "它会把你衣服弄得到处都是白糖"
+            },
+            "panettone_recipe": {
+               "recipe_name": "托尼甜面包",
+               "description": "烘焙一块大大的, 美味甜面包, 里面都是水果干.",
+               "flavor": "'过节吃年货' -艾尔芬·巴达克"
+            },
             "legendary_ink_recipe": {
                "recipe_name": "圣液",
                "description": "镀金的特殊墨汁, 用来让'希德之旅'上的手写字发光用的.",
@@ -850,6 +1291,9 @@
                "display_name": "动力磨",
                "description": "厨师可用它来磨粉. 需要机械能才能工作."
             }
+         },
+         "cook_bowl_animation": {
+            "display_name": "厨师的碗"
          }
       },
       "carpenter": {
@@ -869,8 +1313,13 @@
             },
             "training_dummy_recipe": {
                "recipe_name": "训练假人",
-               "description": "最好先和这位友好的家伙练练手.",
+               "description": "近战士兵可以通过和这个友好的家伙练手来获得经验.",
                "flavor": "维护修理需要工程师来完成."
+            },
+            "training_target_recipe": {
+               "recipe_name": "箭术标靶",
+               "description": "远程士兵可以以它为靶子练习来获得经验.",
+               "flavor": "维护修理需要工程师来完成"
             },
             "legendary_handle_recipe": {
                "recipe_name": "坚固把手",
@@ -891,11 +1340,26 @@
                "recipe_name": "砍柴墩",
                "description": "做个结实的墩墩来砍柴火.",
                "flavor": ""
+            },
+            "wood_bed_crude_recipe": {
+               "recipe_name": "木制休息区",
+               "description": "比没有好... 大概.",
+               "flavor": "真正意义上的睡在甲板上"
             }
          }
       },
       "weaver": {
          "recipes": {
+            "worker_holiday_hat_recipe": {
+               "recipe_name": "节日快乐帽",
+               "description": "ACE组祝大家节日快乐!",
+               "flavor": "这个配方会在元旦前夕去掉... 所以能做就做吧!"
+            },
+            "sleeping_bag_recipe": {
+               "recipe_name": "便携床铺",
+               "description": "总比地上好但终究睡不舒服. 不过挺方便的!",
+               "flavor": "能带着走的床. 好吧, 理论上所有床你都能带走..."
+            },
             "legendary_hood_recipe": {
                "recipe_name": "精灵王斗篷",
                "description": "只有最精锐的弓箭手才配穿上的华丽斗篷.",
@@ -912,6 +1376,10 @@
          "fish_trap": {
             "display_name": "捕鱼器",
             "description": "能安全地抓到鱼. 放水里会浮起来."
+         },
+         "clamp_trap": {
+            "display_name": "捕蟹器",
+            "description": "不那么安全地抓住猎物"
          }
       },
       "shepherd": {
@@ -1172,7 +1640,7 @@
          },
          "paddy_crop": {
             "display_name": "稻田",
-            "description": "大米生长得慢, 但大家都爱吃! 需要水漫的农田才能种植水稻.",
+            "description": "大米生长得慢, 还需要水没的农田才能生长, 但大家都爱吃!",
             "growth_stage": {
                "000": {
                   "name": "水稻芽",
@@ -1235,6 +1703,10 @@
             "willow_log": {
                "display_name": "柳树原木",
                "description": "一块原木. 就是木头."
+            },
+            "old_wood_log": {
+               "display_name": "老旧原木",
+               "description": "一块原木. 就是木头, 很老很旧的木头."
             }
          },
          "herb": {
@@ -1273,23 +1745,23 @@
          },
          "stone": {
             "marble_stone": {
-               "display_name": "大理石",
+               "display_name": "大理石块",
                "description": "石匠能把它做成相当漂亮的石器!"
             },
             "feldspar_stone": {
-               "display_name": "长石",
+               "display_name": "长石块",
                "description": "一块不是那么常见的石头, 长石能用于瓷器制作"
             },
             "limestone_stone": {
-               "display_name": "石灰石",
+               "display_name": "石灰石块",
                "description": "一块平常而沉重的石头"
             },
             "sandstone_stone": {
-               "display_name": "砂石",
+               "display_name": "砂石块",
                "description": "一块平常而沉重的石头"
             },
             "slate_stone": {
-               "display_name": "板石",
+               "display_name": "板石块",
                "description": "一块平常而沉重的石头"
             }
          },
@@ -1371,7 +1843,7 @@
                "display_name": "柴火捆"
             },
             "bit_of_peat": {
-               "display_name": "泥潭块",
+               "display_name": "泥炭块",
                "description": "能在泥沼或是漠泽找到的废料. 能用做低级燃料."
             }
          },
@@ -1443,7 +1915,7 @@
       },
       "trees": {
          "stump": "树桩",
-         "stump_description": "再也不是树了...",
+         "stump_description": "再也不是树了... 不会重新生长, 把它砍掉可以清出一片地",
          "birch_tree": {
             "ancient_birch_tree": {
                "display_name": "古白桦树",
@@ -1697,7 +2169,35 @@
                   "description": "柳树幼树."
                }
             }
-         }
+         },
+         "trunk": {
+            "oak": {
+               "display_name": "橡树树干",
+               "description": "这棵大橡树倒了有一阵子了... 把它砍掉收获些原木吧!"
+            },
+            "juniper": {
+               "display_name": "杜松子树干",
+               "description": "这棵老杜松子倒了有一阵子了... 把它砍掉收获些原木吧!"
+            },
+            "highland_pine": {
+               "display_name": "高原松树干",
+               "description": "这棵高原松倒了有一阵子了... 把它砍掉收获些原木吧!"
+            },
+            "birch": {
+               "display_name": "白桦树干",
+               "description": "这棵漂亮的白桦倒了有一阵子了... 把它砍掉收获些原木吧!"
+            },
+            "pine": {
+               "display_name": "松树树干",
+               "description": "这棵高大的松树倒了有一阵子了... 把它砍掉收获些原木吧!"
+            },
+            "old_wood": {
+               "display_name": "老旧树干",
+               "description": "这棵古树倒了相当长时间了... 但这些木头或许还有用."
+            }
+         },
+         "old_stump": "老旧树桩",
+         "old_stump_description": "这个老旧的树桩已经是森林的一部分了... 但木头还能用!"
       },
       "furniture": {
          "patrol_point": {
@@ -1819,6 +2319,28 @@
                "display_name": "舒适瓷床",
                "description": "给那些即使睡着了也想优雅的人准备的."
             }
+         },
+         "clay_bed_crude": {
+            "clay_bed_crude_ghost": {
+               "display_name": "陶土休息区",
+               "description": "没力气干活了闭上眼睛的合适场所."
+            }
+         },
+         "stone_bed_crude": {
+            "stone_bed_crude_ghost": {
+               "display_name": "石制休息区",
+               "description": "小心你的头."
+            }
+         },
+         "wood_bed_crude": {
+            "wood_bed_crude_ghost": {
+               "display_name": "木制休息区",
+               "description": "真抠."
+            }
+         },
+         "sleeping_bag": {
+            "display_name": "便携床铺",
+            "description": "比地上好, 在便携性方面还是很强的."
          }
       },
       "recipes": {
@@ -2003,6 +2525,7 @@
                   "display_name": "欧内普与盖瑞像",
                   "description": "永远的盆栽骑士与他旁边忠诚的伙伴盖瑞的石像."
                }
+            }
          },
          "wall_axe": {
             "wall_axe_ghost": {
@@ -2110,7 +2633,6 @@
             "porcelain_jar_of_feathers_ghost": {
                "display_name": "陶瓷羽毛罐",
                "description": "瓷和布匹做成的华丽大羽毛."
-            }
             }
          }
       },
@@ -2482,6 +3004,58 @@
             "catfish_tagine_serving": {
                "display_name": "一份塔吉煮鲶鱼"
             }
+         },
+         "sweet_tooth": {
+            "sweet_tooth_basket": {
+               "display_name": "卷缘齿菌篮",
+               "description": "能吃的美味蘑菇!"
+            },
+            "sweet_tooth_serving": {
+               "display_name": "一份卷缘齿菌",
+               "description": "森林的味道!"
+            }
+         },
+         "parasol": {
+            "parasol_basket": {
+               "display_name": "高环柄菇篮",
+               "description": "这种蘑菇生的时候微毒, 所以只能用做食材不可生吃."
+            }
+         },
+         "dough_sweet": {
+            "display_name": "甜面团",
+            "description": "甜黄油是甜面包之类的食物所必需的基础食材之一"
+         },
+         "batter_sweet": {
+            "display_name": "甜黄油",
+            "description": "甜黄油的发明给了我们制作蛋糕的唯一途径."
+         },
+         "dough": {
+            "display_name": "面团",
+            "description": "面团是面包之类的食物所必需的基础食材之一"
+         },
+         "batter": {
+            "display_name": "黄油",
+            "description": "黄油可以给面包等食物涂底"
+         },
+         "panettone": {
+            "panettone_serving": {
+               "display_name": "一角托尼甜面包",
+               "description": "啊呜啊呜"
+            },
+            "panettone": {
+               "display_name": "托尼甜面包",
+               "description": "很传统的年味甜面包, 里面都是水果干."
+            }
+         },
+         "sugar_loaf": {
+            "sugar_loaf_serving": {
+               "display_name": "一片糖面包",
+               "description": "把你衣服上弄得都是白糖."
+            },
+            "sugar_loaf": {
+               "display_name": "糖切片面包",
+               "description": "甜甜的面包, 上面洒满了白糖!"
+            }
          }
       },
       "terrain": {
@@ -2503,7 +3077,7 @@
          },
          "daisies": {
             "display_name": "雏菊",
-            "description": "这从漂亮的花朵会随着时间慢慢蔓延."
+            "description": "这从漂亮的花朵会随着时间慢慢蔓延. 采集可获得草药."
          }
       },
       "fungi": {
@@ -2602,6 +3176,54 @@
                   "description": "真菌正在蔓延, 马上就够大了!"
                }
             }
+         },
+         "parasol": {
+            "parasol_ghost": {
+               "display_name": "高环柄菇",
+               "description": "一种高大孤僻的蘑菇. 生时微毒, 最好吃之前先煮熟了!"
+            },
+            "colony": {
+               "parasol_colony": {
+                  "display_name": "菌落高环柄菇",
+                  "description": "放到土里能长成更大的食用菌"
+               }
+            },
+            "spreading": {
+               "parasol_spreading": {
+                  "display_name": "扩散的高环柄菇",
+                  "description": "菌落里的孢子已经扩散出来了, 蘑菇也开始逐渐成型"
+               }
+            },
+            "developing": {
+               "parasol_developing": {
+                  "display_name": "成长的高环柄菇",
+                  "description": "真菌正在蔓延, 马上就够大了!"
+               }
+            }
+         },
+         "sweet_tooth": {
+            "sweet_tooth_ghost": {
+               "display_name": "卷缘齿菌",
+               "description": "美味又常见的丛林蘑菇!"
+            },
+            "colony": {
+               "sweet_tooth_colony": {
+                  "display_name": "菌落卷缘齿菌",
+                  "description": "放到土里能长成更大的食用菌"
+               }
+            },
+            "spreading": {
+               "sweet_tooth_spreading": {
+                  "display_name": "扩散的卷缘齿菌",
+                  "description": "菌落里的孢子已经扩散出来了, 蘑菇也开始逐渐成型"
+               }
+            },
+            "developing": {
+               "sweet_tooth_developing": {
+                  "display_name": "成长的卷缘齿菌",
+                  "description": "真菌正在蔓延, 马上就够大了!"
+               }
+            }
          }
       },
       "monsters": {
@@ -2668,6 +3290,164 @@
          "legendary_mail": {
             "display_name": "先驱者锁甲",
             "description": "与帝国的皇家先驱者一样古老的链甲."
+         },
+         "rc_bronze_breastplate": {
+            "display_name": "青铜片甲"
+         },
+         "rc_bronze_circlet": {
+            "display_name": "大漠青铜头环"
+         },
+         "rc_iron_circlet": {
+            "display_name": "大漠铁头环"
+         },
+         "rc_steel_circlet": {
+            "display_name": "大漠钢头环"
+         },
+         "rc_iron_mail": {
+            "display_name": "铁片甲"
+         },
+         "rc_iron_helm": {
+            "display_name": "大漠铁盔"
+         },
+         "rc_bronze_helm": {
+            "display_name": "大漠青铜盔"
+         },
+         "rc_bronze_shield": {
+            "display_name": "大漠青铜盾"
+         },
+         "rc_iron_shield": {
+            "display_name": "大漠铁盾"
+         },
+         "rc_silver_helmet": {
+            "display_name": "大漠银盔甲"
+         },
+         "rc_silver_mail": {
+            "display_name": "镀金银胸甲"
+         },
+         "rc_steel_helmet": {
+            "display_name": "大漠钢盔甲"
+         },
+         "rc_steel_mail": {
+            "display_name": "镀金钢胸甲"
+         },
+         "rc_steel_shield": {
+            "display_name": "大漠钢盾"
+         },
+         "rc_iron_helmet": {
+            "display_name": "大漠铁盔甲"
+         },
+         "rc_iron_platemail": {
+            "display_name": "镀金铁胸甲"
+         },
+         "rc_light_iron_shield": {
+            "display_name": "大漠铁盾"
+         },
+         "rc_light_steel_shield": {
+            "display_name": "大漠钢盾"
+         },
+         "rc_silver_shield": {
+            "display_name": "大漠银盾"
+         },
+         "rc_steel_chainmail": {
+            "display_name": "钢片甲"
+         },
+         "rc_steel_helm": {
+            "display_name": "大漠钢盔"
+         },
+         "rc_leather_vest": {
+            "display_name": "大漠皮甲"
+         },
+         "rc_leather_helmet": {
+            "display_name": "大漠皮帽"
+         },
+         "rc_cloth_padded_vest": {
+            "display_name": "大漠棉甲"
+         },
+         "rc_cloth_padded_helmet": {
+            "display_name": "大漠棉帽"
+         },
+         "na_bronze_breastplate": {
+            "display_name": "青铜链甲"
+         },
+         "na_bronze_helm": {
+            "display_name": "极地青铜盔"
+         },
+         "na_cloth_padded_helmet": {
+            "display_name": "极地棉帽"
+         },
+         "na_cloth_padded_vest": {
+            "display_name": "棉铠甲"
+         },
+         "na_leather_helmet": {
+            "display_name": "兽皮帽"
+         },
+         "na_leather_vest": {
+            "display_name": "兽皮甲"
+         },
+         "na_iron_platemail": {
+            "display_name": "嵌铁皮甲"
+         },
+         "na_iron_helmet": {
+            "display_name": "极地铁盔甲"
+         },
+         "na_iron_mail": {
+            "display_name": "铁链甲"
+         },
+         "na_iron_helm": {
+            "display_name": "极地铁盔"
+         },
+         "na_steel_chainmail": {
+            "display_name": "钢链甲"
+         },
+         "na_steel_helm": {
+            "display_name": "极地钢盔"
+         },
+         "na_steel_helmet": {
+            "display_name": "极地钢盔甲"
+         },
+         "na_steel_mail": {
+            "display_name": "嵌钢皮甲"
+         },
+         "na_silver_mail": {
+            "display_name": "嵌银皮甲"
+         },
+         "na_silver_helmet": {
+            "display_name": "极地银盔甲"
+         },
+         "na_bronze_circlet": {
+            "display_name": "极地青铜镯子"
+         },
+         "na_iron_circlet": {
+            "display_name": "极地铁镯子"
+         },
+         "na_steel_circlet": {
+            "display_name": "极地钢镯子"
+         },
+         "na_bronze_shield": {
+            "display_name": "极地青铜盾"
+         },
+         "na_iron_shield": {
+            "display_name": "极地重铁盾"
+         },
+         "na_light_iron_shield": {
+            "display_name": "极地铁盾"
+         },
+         "na_light_steel_shield": {
+            "display_name": "极地钢盾"
+         },
+         "na_silver_shield": {
+            "display_name": "极地重银盾"
+         },
+         "na_steel_shield": {
+            "display_name": "极地重钢盾"
+         },
+         "light_giant_bone_shield": {
+            "display_name": "巨骨轻盾",
+            "description": "大型生物身上轻一点的骨头提供的保护也足够了."
+         },
+         "giant_bone_shield": {
+            "display_name": "巨骨盾",
+            "description": "杀人猛兽的胸腔肋骨排做成的盾可以让骑士直面邪恶."
          }
       },
       "weapons": {
@@ -2700,12 +3480,12 @@
             "description": "乱劈乱砍, 赢就行."
          },
          "bronze_hatchet": {
-            "description": "可以格挡或反击. (副手武器)",
+            "description": "可以闪避或反击. (副手武器)",
             "display_name": "短柄青铜斧"
          },
          "iron_hatchet": {
             "display_name": "短柄铁斧",
-            "description": "可以格挡或进攻的坚固小斧子. (副手武器)"
+            "description": "可以闪避或进攻的坚固小斧子. (副手武器)"
          },
          "steel_dagger": {
             "display_name": "钢匕首",
@@ -2745,7 +3525,7 @@
          },
          "composite_bow": {
             "display_name": "复合弓",
-            "description": "骨头与肌肉纤维为核心制作而成, 其韧度可以射出强力的弓箭."
+            "description": "骨头与肌肉纤维为核心制作而成, 其韧度十分惊人."
          },
          "legendary_mace": {
             "display_name": "月恒星升",
@@ -2760,6 +3540,203 @@
          },
          "rc_legendary_sword": {
             "display_name": "沙漠尖牙"
+         },
+         "rc_bow": {
+            "display_name": "i18n(stonehearth_ace:entities.weapons.rc_bow.display_name)"
+         },
+         "rc_bronze_axe": {
+            "display_name": "大漠青铜斧"
+         },
+         "rc_bronze_crossbow": {
+            "display_name": "大漠青铜弩"
+         },
+         "rc_bronze_hatchet": {
+            "display_name": "大漠青铜短斧",
+            "recipe_name": "大漠副手青铜短斧"
+         },
+         "rc_bronze_mace": {
+            "display_name": "大漠青铜槌"
+         },
+         "rc_bronze_sword": {
+            "display_name": "青铜短弯刀"
+         },
+         "rc_composite_bow": {
+            "display_name": "大漠复合弓"
+         },
+         "rc_crossbow": {
+            "display_name": "大漠弩"
+         },
+         "rc_iron_axe": {
+            "display_name": "大漠铁斧"
+         },
+         "rc_iron_battle_axe": {
+            "display_name": "大漠铁战斧"
+         },
+         "rc_iron_hatchet": {
+            "display_name": "大漠铁短斧",
+            "recipe_name": "大漠副手铁短斧"
+         },
+         "rc_iron_pike": {
+            "display_name": "铁战叉"
+         },
+         "rc_iron_short_sword": {
+            "display_name": "铁短弯刀"
+         },
+         "rc_iron_sword": {
+            "display_name": "铁弯刀"
+         },
+         "rc_long_bow": {
+            "display_name": "大漠长弓"
+         },
+         "rc_long_sword": {
+            "display_name": "弯刀"
+         },
+         "rc_recurve_bow": {
+            "display_name": "大漠反曲弓"
+         },
+         "rc_short_sword": {
+            "display_name": "短弯刀"
+         },
+         "rc_silver_halberd": {
+            "display_name": "银大砍刀"
+         },
+         "rc_silver_mace": {
+            "display_name": "大漠银槌"
+         },
+         "rc_silver_short_sword": {
+            "display_name": "银短弯刀"
+         },
+         "rc_steel_axe": {
+            "display_name": "大漠钢斧"
+         },
+         "rc_steel_crossbow": {
+            "display_name": "大漠钢弩"
+         },
+         "rc_steel_dagger": {
+            "display_name": "大漠钢匕首",
+            "recipe_name": "大漠副手钢匕首"
+         },
+         "rc_steel_lance": {
+            "display_name": "钢三叉戟"
+         },
+         "rc_steel_mace": {
+            "display_name": "大漠钢槌"
+         },
+         "rc_two_handed_sword": {
+            "display_name": "双手蛇砍刀"
+         },
+         "rc_iron_mace": {
+            "display_name": "大漠铁槌"
+         },
+         "na_bow": {
+            "display_name": "极地弓"
+         },
+         "na_bronze_axe": {
+            "display_name": "极地青铜斧"
+         },
+         "na_bronze_crossbow": {
+            "display_name": "极地青铜弩"
+         },
+         "na_bronze_hatchet": {
+            "display_name": "极地青铜短斧",
+            "recipe_name": "极地副手青铜短斧"
+         },
+         "na_bronze_mace": {
+            "display_name": "青铜战锤"
+         },
+         "na_bronze_sword": {
+            "display_name": "青铜宽剑"
+         },
+         "na_composite_bow": {
+            "display_name": "极地复合弓"
+         },
+         "na_crossbow": {
+            "display_name": "极地弩"
+         },
+         "na_iron_axe": {
+            "display_name": "极地铁斧"
+         },
+         "na_iron_battle_axe": {
+            "display_name": "极地铁战斧"
+         },
+         "na_iron_hatchet": {
+            "display_name": "极地铁短斧",
+            "recipe_name": "极地副手铁短斧"
+         },
+         "na_iron_mace": {
+            "display_name": "铁战锤"
+         },
+         "na_iron_pike": {
+            "display_name": "极地铁矛"
+         },
+         "na_iron_short_sword": {
+            "display_name": "极地铁短剑"
+         },
+         "na_iron_sword": {
+            "display_name": "铁宽剑"
+         },
+         "na_long_bow": {
+            "display_name": "极地长弓"
+         },
+         "na_long_sword": {
+            "display_name": "宽剑"
+         },
+         "na_recurve_bow": {
+            "display_name": "极地反曲弓"
+         },
+         "na_short_sword": {
+            "display_name": "极地短剑"
+         },
+         "na_silver_halberd": {
+            "display_name": "极地银斩矛"
+         },
+         "na_silver_mace": {
+            "display_name": "银战锤"
+         },
+         "na_silver_short_sword": {
+            "display_name": "极地银短剑"
+         },
+         "na_steel_axe": {
+            "display_name": "极地钢斧"
+         },
+         "na_steel_crossbow": {
+            "display_name": "极地钢弩"
+         },
+         "na_steel_dagger": {
+            "display_name": "极地钢刃匕",
+            "recipe_name": "极地副手钢刃匕"
+         },
+         "na_steel_lance": {
+            "display_name": "极地钢矛"
+         },
+         "na_steel_mace": {
+            "display_name": "钢战锤"
+         },
+         "na_two_handed_sword": {
+            "display_name": "双手双刃刀"
+         },
+         "stone_hatchet": {
+            "display_name": "石短斧",
+            "description": "闪避或反击的简易工具. (副手武器)"
+         },
+         "bone_sword": {
+            "display_name": "骨剑"
+         },
+         "giant_bone_hatchet": {
+            "description": "用于闪避或反击. (副手武器)",
+            "display_name": "巨骨短斧"
+         },
+         "giant_bone_short_sword": {
+            "display_name": "巨骨短剑",
+            "description": "用传说生物的骨头做一把骑士的佩剑."
+         },
+         "giant_bone_sword": {
+            "display_name": "巨骨剑",
+            "description": "用强大怪物的骨头做的一把强力的武器."
+         },
+         "giant_bone_pike": {
+            "display_name": "巨骨长矛",
+            "description": "以前是巨兽的一部分, 现在是杀死巨兽的一部分. (双手武器)"
          }
       },
       "gizmos": {
@@ -2780,7 +3757,7 @@
          },
          "target_training": {
             "display_name": "箭术标靶",
-            "description": "和射头顶的苹果比起来安全多了."
+            "description": "和头顶苹果的射箭练习比起来安全多了. 维修需要工程师."
          },
          "axle_vertical": {
             "description": "能竖直传递机械能的旋转轮轴.",
@@ -2804,11 +3781,45 @@
          },
          "source_water_wheel_wooden": {
             "display_name": "木水车",
-            "description": "这个装置如果放在水中可以生产机械能."
+            "description": "这个装置如果放在水中或者瀑布里可以产生机械能."
          },
          "safety_standard": {
             "stone_safety_standard": {
                "display_name": "石制安全旗帜"
+            }
+         },
+         "patrol_banner": {
+            "display_name": "巡逻旗帜",
+            "description": "战斗小队会优先在这些旗帜之间来回巡逻."
+         },
+         "stone_target_training": {
+            "description": "和头顶苹果的射箭练习比起来安全多了. 维修需要工程师.",
+            "display_name": "石制箭术标靶"
+         },
+         "clay_target_training": {
+            "description": "和头顶苹果的射箭练习比起来安全多了. 维修需要工程师.",
+            "display_name": "陶土箭术标靶"
+         },
+         "brass_target_training": {
+            "description": "和头顶苹果的射箭练习比起来安全多了. 维修需要工艺师.",
+            "display_name": "黄铜箭术标靶"
+         },
+         "stone_dummy_training": {
+            "stone_dummy_training_ghost": {
+               "description": "最好先和这位友好的家伙练练手. 维护修理需要工程师来完成.",
+               "display_name": "石制训练假人"
+            }
+         },
+         "clay_dummy_training": {
+            "clay_dummy_training_ghost": {
+               "description": "最好先和这位友好的家伙练练手. 维护修理需要工程师来完成.",
+               "display_name": "陶土训练假人"
+            }
+         },
+         "brass_dummy_training": {
+            "brass_dummy_training_ghost": {
+               "description": "最好先和这位友好的家伙练练手. 维护修理需要工艺师来完成.",
+               "display_name": "黄铜训练假人"
             }
          }
       },
@@ -2894,7 +3905,7 @@
          },
          "fish_salmon": {
             "display_name": "极北鲑",
-            "description": "北地苔原特有的美味的鱼类.",
+            "description": "极地苔原特有的美味的鱼类.",
             "iconic": {
                "display_name": "被抓的极北鲑",
                "description": "活不过几天, 最好找个地方放生了!"
@@ -3013,12 +4024,52 @@
          "large_ball_clay_boulder": {
             "display_name": "大球泥堆",
             "description": "采集可以获得许多球泥"
+         },
+         "feldspar_boulder": {
+            "large": {
+               "display_name": "长石大石堆",
+               "description": "可以采集获得许多长石来做瓷器"
+            },
+            "medium": {
+               "display_name": "长石中石堆",
+               "description": "可以采集获得一些长石来做瓷器"
+            },
+            "small": {
+               "display_name": "长石小石堆",
+               "description": "可以采集获得一点点长石来做瓷器"
+            }
+         },
+         "marble_boulder": {
+            "large": {
+               "display_name": "大理石大石堆",
+               "description": "可以采集获得许多大理石来给石匠做高档家具"
+            },
+            "medium": {
+               "display_name": "大理石中石堆",
+               "description": "可以采集获得一些大理石来给石匠做高档家具"
+            },
+            "small": {
+               "display_name": "大理石小石堆",
+               "description": "可以采集获得一点点大理石来给石匠做高档家具"
+            }
+         },
+         "large_forest_boulder": {
+            "display_name": "大石堆群",
+            "description": "采集获得石头"
          }
       },
       "vines": {
          "highland_vine": {
             "display_name": "高原常春藤",
-            "description": "源自高原的植物, 这种常春藤可以在天花板和墙壁上蔓延, 甚至可以在各种建筑上攀援, 但在平地上不会蔓延."
+            "description": "这种攀缘植物能在墙壁建筑间蔓延.",
+            "seed": {
+               "display_name": "高原常春藤种子",
+               "description": "种下后长出的常春藤能往墙壁上下生长."
+            },
+            "bud": {
+               "display_name": "高原常春藤芽",
+               "description": "这株常春藤开始生长了. 谁知道它能长多大呢?"
+            }
          }
       },
       "containers": {
@@ -3044,7 +4095,7 @@
       },
       "kingdom": {
          "quote": "亲近自然, 均衡的身体与高超的手艺永远是他们在逆境中生存的资本.",
-         "long_description": "高原山脉里与外界隔离, 独自繁荣了好几个世纪的壮硕(当然还有固执!)居民. 现在他们要出发面对一个新世界了, 那里的科技和力量究竟会带来福还是祸...",
+         "long_description": "高原山脉里与外界隔离, 独自在世袭民主体制下繁荣了好长时间的, 壮硕又守旧的居民. 现在他们要出发面对一个新世界了, 那里的科技和力量究竟会带来福还是祸...",
          "post_selection_description": ", 是迫切寻求改变生活的隐居矮人们.",
          "initial_town_name": "第[str(town_number)]支开荒队"
       },
@@ -3149,6 +4200,16 @@
                   "description": "可以把炉民转职成园丁.",
                   "recipe_name": "园丁的铲子",
                   "flavor": ""
+               },
+               "brass_training_dummy_recipe": {
+                  "recipe_name": "黄铜训练假人",
+                  "description": "近战士兵可以通过和这个友好的家伙练手来获得经验.",
+                  "flavor": "维护修理需要工艺师来完成."
+               },
+               "brass_training_target_recipe": {
+                  "recipe_name": "黄铜箭术标靶",
+                  "description": "远程士兵可以以它为靶子练习来获得经验.",
+                  "flavor": "维护修理需要工艺师来完成."
                }
             }
          }
@@ -3217,6 +4278,25 @@
    },
    "ui": {
       "game": {
+         "entities": {
+            "item_categories": {
+               "undefined": "其他",
+               "aquatic": "水生生物",
+               "fluid_control": "流体控制",
+               "mechanism": "机件",
+               "training_equipment": "训练机械",
+               "gizmos": "装置发明",
+               "fungi": "菌类"
+            }
+         },
+         "custom_tooltips": {
+            "mechanical": {
+               "attach_to_connector": {
+                  "tip_title": "点击连接器来接通",
+                  "tip_description": "这件物品必须放置在机械连接器上, 例如零件想, 轮轴, 或是动力磨"
+               }
+            }
+         },
          "menu": {
             "crafter_menu": {
                "items": {
@@ -3234,6 +4314,12 @@
             },
             "harvest_menu": {
                "items": {
+                  "harvest_and_replant": {
+                     "display_name": "采集&种植",
+                     "description": "在地面上砍树, 采药, 挖石头, 可以的情况下会把种子种回去.",
+                     "tip_title": "点击拖动来采集资源",
+                     "tip_description": "右击退出该模式"
+                  },
                   "box_move": {
                      "display_name": "移动物品",
                      "description": "把物品移到其他地方",
@@ -3263,14 +4349,15 @@
          },
          "visions": {
             "heatmap": {
-               "title": "热图",
-               "description": "This is the heatmap tooltip嘤嘤嘤. TODO: put something useful here."
+               "name": "热图",
+               "title": "地形热图",
+               "description": "实用的各种视图, 可以让你看清地图上不同方面的情况"
             }
          },
          "heatmaps": {
             "ore": {
                "display_name": "探矿视图",
-               "description": "探测区域下部的矿脉: 矿产丰富或者贴近表层的会显示得更亮."
+               "description": "探测区域下部若干层的矿脉: 矿产丰富或者贴近表层的会显示得更亮."
             },
             "wilderness": {
                "display_name": "荒野视图",
@@ -3279,11 +4366,12 @@
          },
          "zones_mode": {
             "farm": {
-               "water_affinity_range": "这篇农田的最佳生长速度要求农田周围或内部达到 <span class='water'><span class='value'>[str(i18n_data.min)] - [str(i18n_data.max)]</span> 水位</span>. 当前<span class='water'>水位</span>为: <span class='water value'>[str(i18n_data.water_level)]</span>.",
-               "water_affinity_min_only": "这篇农田的最佳生长速度要求农田周围或内部达到至少 <span class='water'><span class='value'>[str(i18n_data.min)]</span> 水位</span>. 当前<span class='water'>水位</span>为: <span class='water value'>[str(i18n_data.water_level)]</span>.",
-               "requires_flooding": "这种作物只能在水没的农田里成长.",
-               "prefers_flooding": "这种作物在水没的农田里长得更快.",
-               "prefers_no_flooding": "这种作物在水没的农田里生长缓慢."
+               "water_affinity_range": "这片农田里作物的最佳生长速度要求农田在描线区域内达到 <span class='water'><span class='value'>[str(i18n_data.min)] - [str(i18n_data.max)]</span> 水位</span>.",
+               "water_affinity_min_only": "这这片农田里作物的最佳生长速度要求农田在描线区域内达到至少 <span class='water'><span class='value'>[str(i18n_data.min)]</span> 水位</span>. 当前<span class='water'>水位</span>为: <span class='water value'>[str(i18n_data.water_level)]</span>.",
+               "current_water_level": "当前<span class='water'>水位</span>为: <span class='water value'>[str(i18n_data.level)]</span>.",
+               "requires_flooding": "这种作物只能在水里生长.",
+               "prefers_flooding": "这种作物在水里长得更快.",
+               "prefers_no_flooding": "这种作物在水里生长缓慢."
             },
             "underfarm": {
                "substrate_name": "基层",
@@ -3314,6 +4402,19 @@
                   "tooltip_gizmos_equipment": "装置&实用器械"
                }
             }
+         },
+         "military_mode": {
+            "patrol_banners": {
+               "window_title": "军队模式: 巡逻旗帜",
+               "list_headers": {
+                  "name": "巡逻旗帜",
+                  "distance": "行进至下一地点"
+               },
+               "party_1": "战队1",
+               "party_2": "战队2",
+               "party_3": "战队3",
+               "party_4": "战队4"
+            }
          }
       },
       "shell": {
@@ -3322,7 +4423,49 @@
                "auto_craft_recipe_dependencies": "自动制作配方依赖",
                "auto_craft_recipe_dependencies_description": "当制作物品时, 工匠会检查库存内是否有足够原材料可供使用. 若不够, 他们会自动加入更多订单来满足初始订单.",
                "auto_harvest_enabled": "自动采集可再生资源",
-               "auto_harvest_enabled_description": "在收获采集可再生资源时, 如没有特别指定, 会自动启用自动采集."
+               "auto_harvest_enabled_description": "当你拥有的资源可以收获采集时, 自动对该资源下达采集命令.",
+               "auto_harvest_animals_enabled": "动物自动生产可再生资源",
+               "auto_harvest_animals_enabled_description": "你的动物自动生产可再生资源 (例如, 允许波波鸡下蛋).",
+               "auto_harvest_tree_stumps": "自动砍伐树桩",
+               "auto_harvest_tree_stumps_description": "砍倒树后, 剩下的树桩仍然可以砍. 启用这一选项会自动添加砍伐树桩的命令.",
+               "terrain_slice_buildings": "地形切片构造",
+               "terrain_slice_buildings_description": "在地片模式下, 不会渲染可视但不构成地形的物体.",
+               "water_signal_update_frequency": "水信号刷新率",
+               "water_signal_update_frequency_description": "决定水系统过了多少tick后才更新一次水信号. 增加它的值可以提高许多和水有关功能的性能表现."
+            },
+            "controls_tab": {
+               "key_binding_names": {
+                  "vision_wilderness_toggle": "开启荒野视图",
+                  "vision_ore_detector_toggle": "开启探矿视图",
+                  "harvest_harvest_and_replant": "采集&种植",
+                  "zone_underfarm": "地下农田工具(TODO待考证)",
+                  "craft_grower": "园丁制作菜单",
+                  "craft_artificer": "工艺师制作菜单",
+                  "craft_magmasmith": "熔岩工匠制作菜单"
+               }
+            }
+         },
+         "select_settlement": {
+            "highlands": {
+               "terrain_codes": {
+                  "plains": "谷底",
+                  "foothills": "崖面",
+                  "mountains": "山尖"
+               }
+            },
+            "arctic": {
+               "terrain_codes": {
+                  "plains": "苔原",
+                  "foothills": "漠泽"
+               }
+            },
+            "desert": {
+               "terrain_codes": {
+                  "water": "绿洲",
+                  "plains": "枯灌木地",
+                  "foothills": "嶙峋山地",
+                  "mountains": "峡谷"
+               }
             }
          }
       },
@@ -3333,7 +4476,7 @@
             "thatch_resource_name": "茅草",
             "bone_resource_name": "骨头",
             "fungi_resource_name": "菌类",
-            "chitin_resource_name": "甲壳",
+            "chitin_resource_name": "任何甲壳",
             "coal_resource_name": "任何煤",
             "any_fuel_resource_name": "任何燃料",
             "common_fuel_resource_name": "任何普通燃料",
@@ -3345,7 +4488,8 @@
             "precious_metal_resource_name": "任何贵金属",
             "algae_resource_name": "任何水草",
             "fish_roe_resource_name": "任何鱼子",
-            "fish_meat_resource_name": "任何鱼肉"
+            "fish_meat_resource_name": "任何鱼肉",
+            "wool_resource_name": "任何羊毛类"
          }
       }
    }
