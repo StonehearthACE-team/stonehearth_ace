@@ -53,7 +53,8 @@ local monkey_patches = {
    ace_player_service = 'stonehearth.services.server.player.player_service',
    ace_water_component = 'stonehearth.components.water.water_component',
    ace_waterfall_component = 'stonehearth.components.waterfall.waterfall_component',
-   ace_commands_component = 'stonehearth.components.commands.commands_component'
+   ace_commands_component = 'stonehearth.components.commands.commands_component',
+   ace_trapper = 'stonehearth.jobs.trapper.trapper'
 }
 
 local function monkey_patching()

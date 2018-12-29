@@ -211,10 +211,10 @@ function TileComponent:_update()
       end
    end
 
-   local facing = radiant.entities.get_facing(self._entity)
+   local facing = math.floor(radiant.entities.get_facing(self._entity) + 360.5) % 360
    local rotation = 360 - self._sv.proper_rotation
    self._sv.rotation = (rotation + facing) % 360
-   local rotated_model_variant = variant..'_'..rotation
+   local rotated_model_variant = variant..'_'..facing
    if radiant.entities.get_component_data(self._entity, 'model_variants')[rotated_model_variant] then
       variant = rotated_model_variant
    end
