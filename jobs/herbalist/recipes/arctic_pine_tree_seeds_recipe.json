@@ -1,0 +1,31 @@
+{
+   "type": "recipe",
+   "effort": 120,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.herbalist.recipes.arctic_pine_tree_seeds_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.arctic_pine_tree_seeds_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.arctic_pine_tree_seeds_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/consumables/seeds/arctic_pine_tree_seeds/arctic_pine_tree_seeds.png",
+   "workshop": "stonehearth:herbalist:workbench",
+   "level_requirement": 2,
+   "manual_unlock": true,
+   "ingredients": [
+      {
+         "uri": "stonehearth:trees:gold:pine:seed",
+         "count": 7
+      },
+	  {
+         "uri": "stonehearth:trees:silver:pine:seed",
+         "count": 7
+      },
+	  {
+         "uri": "stonehearth:trees:snowy:pine:seed",
+         "count": 6
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:consumables:seeds:arctic_pine_tree_seeds"
+      }
+   ]
+}

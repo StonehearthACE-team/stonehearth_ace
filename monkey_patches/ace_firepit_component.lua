@@ -13,12 +13,16 @@ function AceFirepitComponent:_extinguish()
    local was_lit = self:is_lit()
    local ec = self._entity:add_component('entity_container')
    local is_wood = false
+   local is_low_fuel = false
    
    for id, child in ec:each_child() do
       if radiant.entities.is_material(child, 'wood resource') then
          is_wood = true
          break
-      end
+      elseif radiant.entities.is_material(child, 'low_fuel') then
+		 is_low_fuel = true
+		 break 
+	  end
    end
    
    self:_old_extinguish()
@@ -27,7 +31,7 @@ function AceFirepitComponent:_extinguish()
 	  if is_wood then
 		self:_create_residue(CHARCOAL_EMBER_URI)
 		self._log:debug('creating a charcoal...')
-	  else
+	  elseif is_low_fuel then
 		self:_create_residue(EMBER_URI)
 		self._log:debug('creating common embers...')
       end
