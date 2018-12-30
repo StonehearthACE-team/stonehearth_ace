@@ -1,0 +1,20 @@
+{
+   "type": "mixin",
+   "components": {
+      "render_info": {
+         "animation_table": "file(/data/rigs/entities/construction/ace_big_gate/ace_big_gate.json)"
+      },
+      "effect_list": {
+         "default": "file(/data/rigs/entities/construction/ace_big_gate/effects/closed.json)",
+         "initial_pose_animation": "closed.json"
+      },
+      "stonehearth:portal": {
+         "cutter": [
+            {
+               "min": { "x": -2, "y": 0 },
+               "max": { "x": 3, "y": 4 }
+            }
+         ]
+      }
+   }
+}

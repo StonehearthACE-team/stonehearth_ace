@@ -1,0 +1,50 @@
+{
+   "mixins": [
+      "stonehearth:mixins:item_properties",
+      "file(violet_seeds_ghost.json)"
+   ],
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(violet_seeds.qb)"
+            ]
+         }
+      },
+      "stonehearth:commands": {
+         "commands": [
+            "stonehearth:commands:use_seeds"
+         ]
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(violet_seeds_iconic.json)",
+         "ghost_form": "file(violet_seeds_ghost.json)",
+         "placeable_on_ground": true
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 30,
+         "rarity": "common",
+         "shop_info": {
+            "sellable": true,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:consumable": {
+         "script": "stonehearth:consumables:scripts:unlock_crop",
+         "crop": "violet"
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.consumables.seeds.violet_seeds.display_name)",
+         "description": "i18n(stonehearth_ace:entities.consumables.seeds.violet_seeds.description)",
+         "icon": "file(violet_seeds.png)",
+         "category": "consumable",
+         "material_tags": ["seeds", "small", "consumable", "stockpile_consumable"]
+      }
+   }
+}

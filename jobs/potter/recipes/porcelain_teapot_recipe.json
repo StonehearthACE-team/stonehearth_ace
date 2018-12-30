@@ -1,0 +1,27 @@
+{
+   "type": "recipe",
+   "effort": 45,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.potter.recipes.porcelain_teapot_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.potter.recipes.porcelain_teapot_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.potter.recipes.porcelain_teapot_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/decoration/porcelain_teapot/porcelain_teapot.png",
+   "workshop": "stonehearth:potter:kiln",
+   "work_effect": "work_wait",
+   "level_requirement": 6,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:resources:clay:bone_clay_mound",
+         "count": 1
+      },
+	  {
+		 "material": "fuel",
+		 "count": 1
+	  }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:decoration:porcelain_teapot"
+      }
+   ]
+}

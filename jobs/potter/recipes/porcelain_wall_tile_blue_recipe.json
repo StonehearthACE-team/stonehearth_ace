@@ -1,0 +1,27 @@
+{
+   "type": "recipe",
+   "effort": 20,
+   "work_units": 2,
+   "recipe_name": "i18n(stonehearth_ace:jobs.potter.recipes.porcelain_wall_tile_blue_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.potter.recipes.porcelain_wall_tile_blue_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.potter.recipes.porcelain_wall_tile_blue_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/decoration/porcelain_wall_tile_blue/porcelain_wall_tile_blue.png",
+   "workshop": "stonehearth:potter:kiln",
+   "work_effect": "work_wait",
+   "level_requirement": 5,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:resources:clay:bone_clay_mound",
+         "count": 2
+      },
+	  {
+		 "material": "fuel",
+		 "count": 1
+	  }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:decoration:porcelain_wall_tile_blue"
+      }
+   ]
+}

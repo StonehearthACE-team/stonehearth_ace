@@ -372,6 +372,14 @@
           "exclusion_radius" : 2
         }
       },
+	  "stonehearth_ace:plants:dwarfsbeard": {
+            "placement_type": "dense",
+            "parameters": {
+               "grid_multiple": 2.5,
+               "item_density": 0.3,
+               "exclusion_radius": 1
+            }
+         },
       "stonehearth_ace:fungi:chanterelle" : {
         "placement_type" : "dense",
         "parameters" : {
@@ -600,7 +608,8 @@
               "stonehearth_ace:fungi:chanterelle" : 0.2,
 			  "stonehearth_ace:terrain:pasture_grass:overgrown": 0.2,
 			  "stonehearth_ace:terrain:pasture_grass": 0.7,
-			  "stonehearth_ace:terrain:pasture_grass:short": 0.2
+			  "stonehearth_ace:terrain:pasture_grass:short": 0.2,
+			  "stonehearth_ace:plants:dwarfsbeard": 4
             }
           },
           "foothills" : {

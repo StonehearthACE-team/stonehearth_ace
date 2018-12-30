@@ -15,6 +15,11 @@ function ConnectionRenderer:initialize(render_entity, datastore)
    self._datastore = datastore
    self._entity = self._render_entity:get_entity()
    self._connections = radiant.entities.get_component_data(self._entity, 'stonehearth_ace:connection')
+   -- if it doesn't have any connection data, we don't care about anything else
+   if not self._connections or not next(self._connections) then
+      return
+   end
+
    self._align_to_grid = radiant.array_to_map(radiant.entities.get_component_data(self._entity, 'mob').align_to_grid or {})
    self._parent_node = self._render_entity:get_node()
    self._outline_nodes = {}

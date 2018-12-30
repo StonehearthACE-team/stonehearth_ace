@@ -4,27 +4,27 @@
       "model_variants": {
          "default": {
             "models": [
-               "file(../../trees/yew_tree/bud/tree_yew_plant_bud.qb)"
+               "file(../../trees/highland_pine_tree/bud/highland_pine_bud_spring.qb)"
             ]
          },
-         "yew_tree_1": {
+         "highland_pine_tree_1": {
             "models": [
-               "file(../../trees/yew_tree/seed/tree_yew_seed_iconic.qb)"
+               "file(../../trees/highland_pine_tree/seed/tree_highland_pine_seed_iconic.qb)"
             ]
          },
-         "yew_tree_2": {
+         "highland_pine_tree_2": {
             "models": [
-               "file(../../trees/yew_tree/sprout/tree_yew_sprout.qb)"
+               "file(../../trees/highland_pine_tree/sprout/tree_highland_pine_sprout.qb)"
             ]
          },
-         "yew_tree_3": {
+         "highland_pine_tree_3": {
             "models": [
-               "file(../../trees/yew_tree/stem/tree_yew_plant_stem.qb)"
+               "file(../../trees/highland_pine_tree/stem/tree_highland_pine_stem.qb)"
             ]
          },
-         "yew_tree_4": {
+         "highland_pine_tree_4": {
             "models": [
-               "file(../../trees/yew_tree/bud/tree_yew_plant_bud.qb)"
+               "file(../../trees/highland_pine_tree/bud/highland_pine_bud_spring.qb)"
             ]
          }
       },
@@ -37,33 +37,33 @@
       },
       "stonehearth:crop": {
          "resource_pairings": {
-            "yew_tree_4": "stonehearth_ace:trees:yew:sapling"
+            "highland_pine_tree_4": "stonehearth_ace:trees:highland_pine:sapling"
          },
-         "harvest_threshhold": "yew_tree_4",
+         "harvest_threshhold": "highland_pine_tree_4",
          "plant_overlay_effect": "stonehearth:effects:plant_crop_overlay_effect"
       },
       "stonehearth:growing": {
-         "growth_period": "18h",
+         "growth_period": "24h",
          "growth_stages": [
             {
-               "model_name": "yew_tree_1",
-               "name": "Yew Seed",
-               "description": "Even a large tree has humble beginnings."
+               "model_name": "highland_pine_tree_1",
+               "name": "i18n(stonehearth_ace:entities.crops.highland_pine_tree_crop.growth_stage.000.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.highland_pine_tree_crop.growth_stage.000.description)"
             },
             {
-               "model_name": "yew_tree_2",
-               "name": "Yew Seedling",
-               "description": "It's just getting started."
+               "model_name": "highland_pine_tree_2",
+               "name": "i18n(stonehearth_ace:entities.crops.highland_pine_tree_crop.growth_stage.001.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.highland_pine_tree_crop.growth_stage.001.description)"
             },
             {
-               "model_name": "yew_tree_3",
-               "name": "Yew Sprout",
-               "description": "Getting closer and closer..."
+               "model_name": "highland_pine_tree_3",
+               "name": "i18n(stonehearth_ace:entities.crops.highland_pine_tree_crop.growth_stage.002.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.highland_pine_tree_crop.growth_stage.002.description)"
             },
             {
-               "model_name": "yew_tree_4",
-               "name": "Yew Sapling",
-               "description": "Ready to be transferred to a bigger plot."
+               "model_name": "highland_pine_tree_4",
+               "name": "i18n(stonehearth_ace:entities.crops.highland_pine_tree_crop.growth_stage.003.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.highland_pine_tree_crop.growth_stage.003.description)"
             }
          ]
       }
@@ -78,10 +78,13 @@
          }
       },
       "stonehearth:catalog": {
-         "display_name": "Yew Tree Sapling",
-         "description": "Needs more Yew wood? Prepare your plots for reforestation!",
+         "display_name": "i18n(stonehearth_ace:entities.crops.highland_pine_tree_crop.display_name)",
+         "description": "i18n(stonehearth_ace:entities.crops.highland_pine_tree_crop.description)",
          "icon": "file(highland_pine_crop.png)",
-         "material_tags":["crop", "yew_tree_sapling"]
+         "material_tags": [
+            "crop",
+            "highland_pine_tree_sapling"
+         ]
       },
       "stonehearth:appeal": {
          "appeal": 1

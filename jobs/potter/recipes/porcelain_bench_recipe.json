@@ -1,0 +1,35 @@
+{
+   "type": "recipe",
+   "effort": 18,
+   "work_units": 1,
+   "recipe_name": "i18n(stonehearth_ace:jobs.potter.recipes.porcelain_bench_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.potter.recipes.porcelain_bench_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.potter.recipes.porcelain_bench_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/furniture/porcelain_bench/porcelain_bench.png",
+   "workshop": "stonehearth:potter:kiln",
+   "work_effect": "work_wait",
+   "level_requirement": 6,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:resources:clay:bone_clay_mound",
+         "count": 2
+      },
+	  {
+         "material": "cloth resource",
+         "count": 1
+      },
+	  {
+         "material": "feather resource",
+         "count": 1
+      },
+	  {
+		 "material": "fuel",
+		 "count": 1
+	  }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:furniture:porcelain_bench"
+      }
+   ]
+}

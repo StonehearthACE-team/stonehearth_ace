@@ -1,0 +1,31 @@
+{
+   "type": "recipe",
+   "effort": 30,
+   "work_units": 2,
+   "recipe_name": "i18n(stonehearth_ace:jobs.potter.recipes.porcelain_dining_table_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.potter.recipes.porcelain_dining_table_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.potter.recipes.porcelain_dining_table_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/furniture/porcelain_dining_table/porcelain_dining_table.png",
+   "workshop": "stonehearth:potter:kiln",
+   "work_effect": "work_wait",
+   "level_requirement": 6,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:resources:clay:bone_clay_mound",
+         "count": 2
+      },
+	  {
+		 "material": "thread resource",
+		 "count": 1
+	  },
+	  {
+		 "material": "fuel",
+		 "count": 1
+	  }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:furniture:porcelain_dining_table"
+      }
+   ]
+}

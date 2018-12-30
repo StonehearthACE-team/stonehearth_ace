@@ -76,10 +76,14 @@
                   "items": {
                      "none": {
                         "uri": "",
-                        "weight": 4
+                        "weight": 6
                      },
                      "flower": {
                         "uri": "stonehearth_ace:resources:herb:daisy",
+                        "weight": 4
+                     },
+                     "seeds": {
+                        "uri": "stonehearth_ace:vines:daisies:seed",
                         "weight": 1
                      }
                   }
@@ -88,7 +92,7 @@
          }
       },
       "render_info": {
-         "material": "materials/structure.material.json"
+         "material": "/stonehearth/data/horde/materials/structure.material.json"
       },
       "mob": {
          "model_origin": { "x": 0, "y": 0, "z": 0 },

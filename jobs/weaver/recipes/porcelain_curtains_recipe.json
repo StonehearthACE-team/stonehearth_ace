@@ -1,0 +1,30 @@
+{
+   "type": "recipe",
+   "effort": 35,
+   "work_units": 1,
+   "recipe_name": "i18n(stonehearth_ace:jobs.weaver.recipes.porcelain_curtains_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.weaver.recipes.porcelain_curtains_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.weaver.recipes.porcelain_curtains_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/decoration/porcelain_curtains/porcelain_curtains.png",
+   "workshop": "stonehearth:weaver:workbench",
+   "level_requirement": 6,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:resources:clay:bone_clay_mound",
+         "count": 2
+      },
+	  {
+         "material": "cloth resource",
+         "count": 3
+      },
+	  {
+         "material": "thread resource",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:decoration:porcelain_curtains"
+      }
+   ]
+}

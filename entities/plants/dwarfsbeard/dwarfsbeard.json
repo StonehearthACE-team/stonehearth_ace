@@ -16,10 +16,66 @@
                {
                   "type": "one_of",
                   "items": [
-                     "file(dwarfsbeard_1.qb)"
+                     "file(dwarfsbeard.qb)"
                   ]
                }
             ]
+         },
+         "summer": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(dwarfsbeard_summer.qb)"
+                  ]
+               }
+            ]
+         },
+         "autumn": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(dwarfsbeard_autumn.qb)"
+                  ]
+               }
+            ]
+         },
+         "winter": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(dwarfsbeard_winter.qb)"
+                  ]
+               }
+            ]
+         }
+      },
+      "stonehearth:seasonal_model_switcher": {
+         "stonehearth_ace:biome:highlands": {
+            "spring": "default",
+            "summer": "summer",
+            "autumn": "autumn",
+            "winter": "winter"
+         },
+         "stonehearth:biome:temperate": {
+            "spring": "summer",
+            "summer": "summer",
+            "autumn": "autumn",
+            "winter": "winter"
+         },
+         "stonehearth:biome:arctic": {
+            "spring": "autumn",
+            "summer": "autumn",
+            "autumn": "winter",
+            "winter": "winter"
+         },
+         "stonehearth:biome:desert": {
+            "spring": "autumn",
+            "summer": "winter",
+            "autumn": "winter",
+            "winter": "winter"
          }
       },
       "stonehearth:resource_node": {

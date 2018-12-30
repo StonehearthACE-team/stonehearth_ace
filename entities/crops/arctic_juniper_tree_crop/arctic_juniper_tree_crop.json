@@ -1,0 +1,123 @@
+{
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "/stonehearth/entities/trees/juniper_tree_snowy/bud/tree_juniper_bud.qb",
+                     "/stonehearth/entities/trees/juniper_tree_gold/bud/tree_juniper_bud.qb"
+                  ]
+               }
+            ]
+         },
+         "arctic_juniper_tree_1": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "/stonehearth/entities/trees/juniper_tree_snowy/seed/tree_juniper_seed_iconic.qb",
+                     "/stonehearth/entities/trees/juniper_tree_gold/seed/tree_juniper_seed_iconic.qb"
+                  ]
+               }
+            ]
+         },
+         "arctic_juniper_tree_2": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "/stonehearth/entities/trees/juniper_tree_snowy/sprout/tree_juniper_sprout.qb",
+                     "/stonehearth/entities/trees/juniper_tree_gold/sprout/tree_juniper_sprout.qb"
+                  ]
+               }
+            ]
+         },
+         "arctic_juniper_tree_3": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "/stonehearth/entities/trees/juniper_tree_snowy/stem/tree_juniper_stem.qb",
+                     "/stonehearth/entities/trees/juniper_tree_gold/stem/tree_juniper_stem.qb"
+                  ]
+               }
+            ]
+         },
+         "arctic_juniper_tree_4": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "/stonehearth/entities/trees/juniper_tree_snowy/bud/tree_juniper_bud.qb",
+                     "/stonehearth/entities/trees/juniper_tree_gold/bud/tree_juniper_bud.qb"
+                  ]
+               }
+            ]
+         }
+      },
+      "render_info": {
+         "scale": 0.07
+      },
+      "mob": {
+         "model_origin": { "x": -0.05, "y": 0, "z": 0.05 },
+         "mob_collision_type": "clutter"
+      },
+      "stonehearth:crop": {
+         "resource_pairings": {
+            "arctic_juniper_tree_4": "stonehearth_ace:trees:arctic_juniper:sapling"
+         },
+         "harvest_threshhold": "arctic_juniper_tree_4",
+         "plant_overlay_effect": "stonehearth:effects:plant_crop_overlay_effect"
+      },
+      "stonehearth:growing": {
+         "growth_period": "18h",
+         "growth_stages": [
+            {
+               "model_name": "arctic_juniper_tree_1",
+               "name": "i18n(stonehearth_ace:entities.crops.arctic_juniper_tree_crop.growth_stage.000.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.arctic_juniper_tree_crop.growth_stage.000.description)"
+            },
+            {
+               "model_name": "arctic_juniper_tree_2",
+               "name": "i18n(stonehearth_ace:entities.crops.arctic_juniper_tree_crop.growth_stage.001.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.arctic_juniper_tree_crop.growth_stage.001.description)"
+            },
+            {
+               "model_name": "arctic_juniper_tree_3",
+               "name": "i18n(stonehearth_ace:entities.crops.arctic_juniper_tree_crop.growth_stage.002.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.arctic_juniper_tree_crop.growth_stage.002.description)"
+            },
+            {
+               "model_name": "arctic_juniper_tree_4",
+               "name": "i18n(stonehearth_ace:entities.crops.arctic_juniper_tree_crop.growth_stage.003.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.arctic_juniper_tree_crop.growth_stage.003.description)"
+            }
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 1,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.crops.arctic_juniper_tree_crop.display_name)",
+         "description": "i18n(stonehearth_ace:entities.crops.arctic_juniper_tree_crop.description)",
+         "icon": "file(arctic_juniper_tree_crop.png)",
+         "material_tags": [
+            "crop",
+            "arctic_juniper_tree_sapling"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": 1
+      }
+   }
+}

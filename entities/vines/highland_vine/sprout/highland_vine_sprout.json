@@ -1,0 +1,31 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "render_info": {
+         "scale": 0.1
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(highland_vine_sprout.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "mob_collision_type": "clutter"
+      }
+   },
+   "entity_data": {
+      "stonehearth:evolve_data": {
+         "next_stage": "stonehearth_ace:vines:highland_vine:bud",
+         "evolve_time": "6h+4h"
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.vines.highland_vine.sprout.display_name)",
+         "description": "i18n(stonehearth_ace:entities.vines.highland_vine.sprout.description)"
+      }
+   }
+}

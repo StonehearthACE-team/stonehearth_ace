@@ -1,0 +1,27 @@
+{
+   "type": "recipe",
+   "effort": 4,
+   "work_units": 1,
+   "recipe_name": "i18n(stonehearth_ace:jobs.potter.recipes.porcelain_fence_end_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.potter.recipes.porcelain_fence_end_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.potter.recipes.porcelain_fence_end_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/construction/porcelain_fencepost/porcelain_fencepost.png",
+   "workshop": "stonehearth:potter:kiln",
+   "work_effect": "work_wait",
+   "level_requirement": 5,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:resources:clay:bone_clay_mound",
+         "count": 1
+      },
+	  {
+		 "material": "fuel",
+		 "count": 1
+	  }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:construction:porcelain_fence:end"
+      }
+   ]
+}
