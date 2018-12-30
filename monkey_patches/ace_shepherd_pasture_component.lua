@@ -4,14 +4,13 @@ local Point3 = _radiant.csg.Point3
 local Cube3 = _radiant.csg.Cube3
 local Region3 = _radiant.csg.Region3
 local log = radiant.log.create_logger('shepherd_pasture')
-local WEATHER_CHECK_TIME = '05:30am' -- one hour after weather service has changed the weather
+local WEATHER_CHECK_TIME = '05:30am+2h' -- one hour after weather service has changed the weather
+local DEFAULT_GRASS_SPAWN_RATE = '11h+2h'
 
 AceShepherdPastureComponent._old_activate = ShepherdPastureComponent.activate
 function AceShepherdPastureComponent:activate()
 	self:_old_activate()
 	self._weather_check_alarm = stonehearth.calendar:set_alarm(WEATHER_CHECK_TIME, radiant.bind(self, '_recalculate_duration'))
-	-- possible use case for the future to change spawn rate based on season
-	--self._season_change_listener = radiant.events.listen(stonehearth.seasons, 'stonehearth:seasons:changed', self, self._recalculate_duration)
 end
 
 -- for some reason, overriding the destroy function doesn't work, so we have to override this one that only gets called during destroy
@@ -26,10 +25,6 @@ function AceShepherdPastureComponent:_unregister_with_town()
 	if self._weather_check_alarm then
 		self._weather_check_alarm:destroy()
 		self._weather_check_alarm = nil
-	end
-	if self._season_change_listener then
-		self._season_change_listener:destroy()
-		self._season_change_listener = nil
 	end
 end
 
@@ -129,8 +124,6 @@ function AceShepherdPastureComponent:_calculate_grass_spawn_period(spawn_period)
 	end
 	-- This applies weather, biome, and town vitality multipliers
 	spawn_period = stonehearth.town:calculate_growth_period(self._entity:get_player_id(), spawn_period)
-	--spawn_period = self:_apply_season_multiplier(spawn_period)
-
 	return spawn_period
 end
 
@@ -139,7 +132,7 @@ function AceShepherdPastureComponent:_apply_season_multiplier(spawn_period)
 end
 
 function AceShepherdPastureComponent:_get_base_grass_spawn_period()
-	local spawn_period = radiant.entities.get_json(self).grass_spawn_period or '11h+2h'
+	local spawn_period = radiant.entities.get_json(self).grass_spawn_period or DEFAULT_GRASS_SPAWN_RATE
 	return stonehearth.calendar:parse_duration(spawn_period)
 end
 
