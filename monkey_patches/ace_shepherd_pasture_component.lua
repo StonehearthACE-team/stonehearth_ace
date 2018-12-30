@@ -4,6 +4,15 @@ local Point3 = _radiant.csg.Point3
 local Cube3 = _radiant.csg.Cube3
 local Region3 = _radiant.csg.Region3
 local log = radiant.log.create_logger('shepherd_pasture')
+local WEATHER_CHECK_TIME = '05:30am' -- one hour after weather service has changed the weather
+
+AceShepherdPastureComponent._old_activate = ShepherdPastureComponent.activate
+function AceShepherdPastureComponent:activate()
+	self:_old_activate()
+	self._weather_check_alarm = stonehearth.calendar:set_alarm(WEATHER_CHECK_TIME, radiant.bind(self, '_recalculate_duration'))
+	-- possible use case for the future to change spawn rate based on season
+	--self._season_change_listener = radiant.events.listen(stonehearth.seasons, 'stonehearth:seasons:changed', self, self._recalculate_duration)
+end
 
 -- for some reason, overriding the destroy function doesn't work, so we have to override this one that only gets called during destroy
 AceShepherdPastureComponent._old__unregister_with_town = ShepherdPastureComponent._unregister_with_town
@@ -13,6 +22,15 @@ function AceShepherdPastureComponent:_unregister_with_town()
 	-- destroy the add_grass timer and also destroy any grass entities in the pasture
 	self:_destroy_grass_spawn_timer()
 	self:_destroy_grass()
+
+	if self._weather_check_alarm then
+		self._weather_check_alarm:destroy()
+		self._weather_check_alarm = nil
+	end
+	if self._season_change_listener then
+		self._season_change_listener:destroy()
+		self._season_change_listener = nil
+	end
 end
 
 function AceShepherdPastureComponent:_destroy_grass()
@@ -60,30 +78,21 @@ end
 AceShepherdPastureComponent._old__create_pasture_tasks = ShepherdPastureComponent._create_pasture_tasks
 function AceShepherdPastureComponent:_create_pasture_tasks()
 	self:_old__create_pasture_tasks()
+	self:_start_grass_spawn()
+end
 
-	-- set up grass spawning timer
-	self:_setup_grass_spawn_timer()
+function AceShepherdPastureComponent:_start_grass_spawn()
+	if not self._sv.grass_spawn_timer then
+		self:_setup_grass_spawn_timer()
+	else
+		-- if the timer already existed, we want to consider the time spent to really be spent
+		self:_recalculate_duration()
+	end
 end
 
 function AceShepherdPastureComponent:_setup_grass_spawn_timer()
-	-- if the timer already existed, we want to consider the time spent to really be spent
-	local time_remaining = nil
-	if self._sv.grass_spawn_timer then
-		local old_duration = self._sv.grass_spawn_timer:get_duration()
-		local old_expire_time = self._sv.grass_spawn_timer:get_expire_time()
-		local old_start_time = old_expire_time - old_duration
-		local growth_period = self:_get_base_grass_spawn_period()
-	  
-		local old_progress = self:_get_current_growth_recalculate_progress()
-		local new_progress = (1 - old_progress) * (stonehearth.calendar:get_elapsed_time() - old_start_time) / old_duration
-		self._sv.grass_growth_recalculate_progress = old_progress + new_progress
-		time_remaining = math.max(0, growth_period * (1 - self._sv.grass_growth_recalculate_progress))
-	end
-	-- scaled_time_remaining
-	self._sv.grass_spawn_interval = self:_calculate_grass_spawn_period(time_remaining)
-	
-	self:_destroy_grass_spawn_timer()
-	self._sv.grass_spawn_timer = stonehearth.calendar:set_interval('AceShepherdPasture spawn grass', self._sv.grass_spawn_interval, function() self:_spawn_grass() end)
+	local spawn_period = self:_calculate_grass_spawn_period()
+	self._sv.grass_spawn_timer = stonehearth.calendar:set_persistent_timer("AceShepherdPasture spawn grass", spawn_period, radiant.bind(self, '_spawn_grass'))
 end
 
 function AceShepherdPastureComponent:_destroy_grass_spawn_timer()
@@ -93,15 +102,40 @@ function AceShepherdPastureComponent:_destroy_grass_spawn_timer()
 	end
 end
 
-function AceShepherdPastureComponent:_get_current_growth_recalculate_progress()
-	return self._sv.grass_growth_recalculate_progress or 0
+function AceShepherdPastureComponent:_recalculate_duration()
+	if self._sv.grass_spawn_timer then
+		local old_duration = self._sv.grass_spawn_timer:get_duration()
+		local old_expire_time = self._sv.grass_spawn_timer:get_expire_time()
+		local old_start_time = old_expire_time - old_duration
+
+		local spawn_period = self:_get_base_grass_spawn_period()
+		local old_progress = self:_get_current_spawn_recalculate_progress()
+		local new_progress = (1 - old_progress) * (stonehearth.calendar:get_elapsed_time() - old_start_time) / old_duration
+		self._sv.grass_spawn_recalculate_progress = old_progress + new_progress
+		local time_remaining = math.max(0, spawn_period * (1 - self._sv.grass_spawn_recalculate_progress))
+		local scaled_time_remaining = self:_calculate_grass_spawn_period(time_remaining)
+		self:_destroy_grass_spawn_timer()
+		self._sv.grass_spawn_timer = stonehearth.calendar:set_persistent_timer("AceShepherdPasture spawn grass", scaled_time_remaining, radiant.bind(self, '_spawn_grass'))
+	end
 end
 
-function AceShepherdPastureComponent:_calculate_grass_spawn_period(growth_period)
-	if not growth_period then
-		growth_period = self:_get_base_grass_spawn_period()
+function AceShepherdPastureComponent:_get_current_spawn_recalculate_progress()
+	return self._sv.grass_spawn_recalculate_progress or 0
+end
+
+function AceShepherdPastureComponent:_calculate_grass_spawn_period(spawn_period)
+	if not spawn_period then
+		spawn_period = self:_get_base_grass_spawn_period()
 	end
-	return stonehearth.town:calculate_growth_period(self._entity:get_player_id(), growth_period)
+	-- This applies weather, biome, and town vitality multipliers
+	spawn_period = stonehearth.town:calculate_growth_period(self._entity:get_player_id(), spawn_period)
+	--spawn_period = self:_apply_season_multiplier(spawn_period)
+
+	return spawn_period
+end
+
+function AceShepherdPastureComponent:_apply_season_multiplier(spawn_period)
+	return spawn_period
 end
 
 function AceShepherdPastureComponent:_get_base_grass_spawn_period()
@@ -139,6 +173,8 @@ function AceShepherdPastureComponent:_spawn_grass(count, grass)
 			end
 		end
 	end
+
+	self:_setup_grass_spawn_timer()
 end
 
 function AceShepherdPastureComponent:_get_grass_uri()
