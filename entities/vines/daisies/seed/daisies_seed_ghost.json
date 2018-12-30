@@ -8,7 +8,21 @@
       "model_variants": {
          "default": {
             "models": [
-               "file(../daisies_ground.qb)"
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(../daisies.qb)",
+                     "file(../daisies_2.qb)",
+                     "file(../daisies_3.qb)",
+                     "file(../daisies_4.qb)",
+                     "file(../daisies_5.qb)",
+                     "file(../daisies_6.qb)",
+                     "file(../daisies_7.qb)",
+                     "file(../daisies_8.qb)",
+                     "file(../daisies_9.qb)",
+                     "file(../daisies_10.qb)"
+                  ]
+               }
             ]
          }
       },
@@ -20,8 +34,8 @@
    },
    "entity_data": {
       "stonehearth:catalog": {
-         "display_name": "Highland Vine Seed",
-         "description": "Can be planted to grow a vine that will grow up and down walls.",
+         "display_name": "i18n(stonehearth_ace:entities.vines.daisies.seed.display_name)",
+         "description": "i18n(stonehearth_ace:entities.vines.daisies.seed.description)",
          "icon": "file(daisies_seed.png)",
          "category": "seed"
       }

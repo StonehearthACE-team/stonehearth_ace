@@ -1,0 +1,27 @@
+{
+   "type": "recipe",
+   "effort": 40,
+   "work_units": 2,
+   "recipe_name": "i18n(stonehearth_ace:jobs.potter.recipes.porcelain_urn_tall_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.potter.recipes.porcelain_urn_tall_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.potter.recipes.porcelain_urn_tall_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/decoration/porcelain_urn_tall/porcelain_urn_tall.png",
+   "workshop": "stonehearth:potter:kiln",
+   "work_effect": "work_wait",
+   "level_requirement": 6,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:resources:clay:bone_clay_mound",
+         "count": 3
+      },
+	  {
+		 "material": "fuel",
+		 "count": 1
+	  }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:decoration:porcelain_urn_tall"
+      }
+   ]
+}

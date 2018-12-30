@@ -34,8 +34,8 @@
    },
    "entity_data": {
       "stonehearth:evolve_data": {
-         "next_stage": "stonehearth_ace:vines:daisies:bud",
-         "evolve_time": "4h+2h"
+         "next_stage": "stonehearth_ace:vines:daisies:sprout",
+         "evolve_time": "10h+6h"
       },
       "stonehearth:net_worth": {
          "value_in_gold": 2,
@@ -48,8 +48,8 @@
          }
       },
       "stonehearth:catalog": {
-         "display_name": "Highland Vine Seed",
-         "description": "Can be planted to grow a vine that will grow up and down walls.",
+         "display_name": "i18n(stonehearth_ace:entities.vines.daisies.seed.display_name)",
+         "description": "i18n(stonehearth_ace:entities.vines.daisies.seed.description)",
          "icon": "file(daisies_seed.png)",
          "category": "seed",
          "material_tags": [
@@ -58,6 +58,7 @@
             "resource",
             "seed",
             "seed_hard",
+            "daisies_seed",
             "vine"
          ]
       }

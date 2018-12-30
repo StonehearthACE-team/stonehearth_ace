@@ -1,0 +1,35 @@
+{
+   "type": "recipe",
+   "effort": 30,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.potter.recipes.porcelain_comfy_bed_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.potter.recipes.porcelain_comfy_bed_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.potter.recipes.porcelain_comfy_bed_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/furniture/porcelain_comfy_bed/porcelain_comfy_bed.png",
+   "workshop": "stonehearth:potter:kiln",
+   "work_effect": "work_wait",
+   "level_requirement": 6,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:resources:clay:bone_clay_mound",
+         "count": 3
+      },
+	  {
+         "material": "cloth resource",
+         "count": 2
+      },
+	  {
+         "material": "feather resource",
+         "count": 2
+      },
+	  {
+		 "material": "fuel",
+		 "count": 1
+	  }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:furniture:porcelain_comfy_bed"
+      }
+   ]
+}

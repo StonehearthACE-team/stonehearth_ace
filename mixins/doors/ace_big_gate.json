@@ -1,0 +1,23 @@
+{
+   "type": "mixin",
+   "components": {
+      "stonehearth:entity_forms": {
+         "placeable_on_ground": true,
+         "fence": true
+      },
+      "sensor_list": {
+         "sensors": {
+            "door_sensor": {
+               "type": "sensor",
+               "radius": 3
+            }
+         }
+      },
+      "stonehearth:door": {
+         "sensor": "door_sensor"
+      },
+      "region_collision_shape": {
+         "region_collision_type": "none"
+      }
+   }
+}

@@ -1,0 +1,31 @@
+{
+   "type": "recipe",
+   "effort": 35,
+   "work_units": 1,
+   "recipe_name": "i18n(stonehearth_ace:jobs.potter.recipes.porcelain_jar_of_feathers_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.potter.recipes.porcelain_jar_of_feathers_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.potter.recipes.porcelain_jar_of_feathers_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/decoration/porcelain_jar_of_feathers/porcelain_jar_of_feathers.png",
+   "workshop": "stonehearth:potter:kiln",
+   "work_effect": "work_wait",
+   "level_requirement": 6,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:resources:clay:bone_clay_mound",
+         "count": 3
+      },
+      {
+         "material": "cloth resource",
+         "count": 1
+      },
+	  {
+		 "material": "fuel",
+		 "count": 1
+	  }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:decoration:porcelain_jar_of_feathers"
+      }
+   ]
+}

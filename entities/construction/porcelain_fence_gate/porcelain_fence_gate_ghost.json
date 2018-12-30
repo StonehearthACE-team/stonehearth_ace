@@ -1,0 +1,37 @@
+{
+   "mixins": [
+      "stonehearth_ace:mixins:portals:ace_big_gate:ghost",
+      "stonehearth:mixins:placed_object"
+   ],
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(porcelain_fence_gate.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0.0, "y": 0, "z": -0.05 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.construction.porcelain_fence_gate.porcelain_fence_gate_ghost.display_name)",
+         "description": "i18n(stonehearth_ace:entities.construction.porcelain_fence_gate.porcelain_fence_gate_ghost.description)",
+         "icon": "file(porcelain_fence_gate.png)",
+         "category": "construction",
+         "material_tags": [
+            "clay",
+            "porcelain",
+            "defense",
+            "crafted",
+            "portal",
+            "gate",
+            "porcelain_fence_gate",
+            "stockpile_defense"
+         ]
+      }
+   }
+}

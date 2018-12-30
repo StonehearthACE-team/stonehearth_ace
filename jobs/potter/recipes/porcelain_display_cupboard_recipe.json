@@ -1,0 +1,31 @@
+{
+   "type": "recipe",
+   "effort": 70,
+   "work_units": 4,
+   "recipe_name": "i18n(stonehearth_ace:jobs.potter.recipes.porcelain_display_cupboard_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.potter.recipes.porcelain_display_cupboard_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.potter.recipes.porcelain_display_cupboard_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/furniture/porcelain_display_cupboard/porcelain_display_cupboard.png",
+   "workshop": "stonehearth:potter:kiln",
+   "work_effect": "work_wait",
+   "level_requirement": 6,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:resources:clay:bone_clay_mound",
+         "count": 2
+      },
+      {
+         "material": "clay resource",
+         "count": 3
+      },
+	  {
+		 "material": "fuel",
+		 "count": 1
+	  }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:furniture:porcelain_display_cupboard"
+      }
+   ]
+}

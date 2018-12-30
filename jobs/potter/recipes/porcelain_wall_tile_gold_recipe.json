@@ -1,0 +1,27 @@
+{
+   "type": "recipe",
+   "effort": 24,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.potter.recipes.porcelain_wall_tile_gold_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.potter.recipes.porcelain_wall_tile_gold_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.potter.recipes.porcelain_wall_tile_gold_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/decoration/porcelain_wall_tile_gold/porcelain_wall_tile_gold.png",
+   "workshop": "stonehearth:potter:kiln",
+   "work_effect": "work_wait",
+   "level_requirement": 6,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:resources:clay:bone_clay_mound",
+         "count": 3
+      },
+	  {
+		 "material": "fuel",
+		 "count": 1
+	  }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:decoration:porcelain_wall_tile_gold"
+      }
+   ]
+}

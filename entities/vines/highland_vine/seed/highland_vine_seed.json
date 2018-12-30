@@ -35,7 +35,7 @@
    "entity_data": {
       "stonehearth:evolve_data": {
          "next_stage": "stonehearth_ace:vines:highland_vine:bud",
-         "evolve_time": "4h+2h"
+         "evolve_time": "6h+2h"
       },
       "stonehearth:net_worth": {
          "value_in_gold": 2,
@@ -52,7 +52,14 @@
          "description": "i18n(stonehearth_ace:entities.vines.highland_vine.seed.description)",
          "icon": "file(highland_vine_seed.png)",
          "category": "seed",
-         "material_tags":["stockpile_plant", "plant", "resource", "seed", "seed_hard", "vine"]
+         "material_tags": [
+            "stockpile_plant",
+            "plant",
+            "resource",
+            "seed",
+            "seed_hard",
+            "vine"
+         ]
       }
    }
 }
