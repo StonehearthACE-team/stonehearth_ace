@@ -30,7 +30,7 @@ end
 AceSwimmingService._old__create_mob_shape = SwimmingService._create_mob_shape
 function AceSwimmingService:_create_mob_shape(entity)
    local cube = self:_old__create_mob_shape(entity)
-   cube.min.y = -1
+   cube.min.y = -1.5
    return cube
 end
 
