@@ -563,7 +563,7 @@
       "loadouts": {
          "items": {
             "prickly_pear": "刺梨",
-            "thatching": "茅草",
+            "thatching": "干草",
             "watermelon": "西瓜",
             "winter_morel": "羊肚菌",
             "training_dummy": "假人",
@@ -630,6 +630,7 @@
       "herbalist": {
          "recipes": {
             "refined_fungi_name": "菌类加工品",
+            "refined_seeds_name": "本地种子",
             "moonbell_transmute_recipe": {
                "recipe_name": "月铃种子 (x3)",
                "description": "草药之中提取种子",
@@ -684,6 +685,101 @@
                "recipe_name": "镀金纸张",
                "description": "'希德之旅' 羊皮卷集里面精巧且珍贵的纸张.",
                "flavor": "精致而脆弱..."
+            },
+            "oak_tree_seeds_recipe": {
+               "recipe_name": "橡实",
+               "description": "学习如何在田里种植橡树.",
+               "flavor": "必须先把种子箱放置在地上然后才能使用"
+            },
+            "juniper_tree_seeds_recipe": {
+               "recipe_name": "晒干的杜松子",
+               "description": "学习如何在田里种植杜松子树.",
+               "flavor": "必须先把种子箱放置在地上然后才能使用"
+            },
+            "pine_tree_seeds_recipe": {
+               "recipe_name": "松果",
+               "description": "学习如何在田里种植松树.",
+               "flavor": "必须先把种子箱放置在地上然后才能使用"
+            },
+            "brightbell_seeds_recipe": {
+               "recipe_name": "光铃花种子",
+               "description": "学习如何在田里种植光铃花.",
+               "flavor": "必须先把种子箱放置在地上然后才能使用"
+            },
+            "silkweed_seeds_recipe": {
+               "recipe_name": "丝绸草种",
+               "description": "学习如何在田里种植丝绸草.",
+               "flavor": "必须先把种子箱放置在地上然后才能使用"
+            },
+            "frostsnap_seeds_recipe": {
+               "recipe_name": "霜断花种子",
+               "description": "学习如何在田里种植霜断花.",
+               "flavor": "必须先把种子箱放置在地上然后才能使用"
+            },
+            "acacia_tree_seeds_recipe": {
+               "recipe_name": "金合欢树蒴果",
+               "description": "学习如何在田里种植金合欢树.",
+               "flavor": "必须先把种子箱放置在地上然后才能使用"
+            },
+            "cactus_tree_seeds_recipe": {
+               "recipe_name": "巨人柱种子",
+               "description": "学习如何在田里种植巨人柱.",
+               "flavor": "必须先把种子箱放置在地上然后才能使用"
+            },
+            "cactus_flower_seeds_recipe": {
+               "recipe_name": "仙人掌花种子",
+               "description": "学习如何在田里种植仙人掌花.",
+               "flavor": "必须先把种子箱放置在地上然后才能使用"
+            },
+            "arctic_pine_tree_seeds_recipe": {
+               "recipe_name": "极地松松果",
+               "description": "学习如何在田里种植极地松.",
+               "flavor": "必须先把种子箱放置在地上然后才能使用"
+            },
+            "arctic_juniper_tree_seeds_recipe": {
+               "recipe_name": "晒干的极地杜松子",
+               "description": "学习如何在田里种植极地杜松子树.",
+               "flavor": "必须先把种子箱放置在地上然后才能使用"
+            },
+            "violet_seeds_recipe": {
+               "recipe_name": "紫罗兰种子",
+               "description": "学习如何在田里种植紫罗兰.",
+               "flavor": "必须先把种子箱放置在地上然后才能使用"
+            },
+            "snow_poppy_seeds_recipe": {
+               "recipe_name": "雪罂花籽",
+               "description": "学习如何在田里种植雪罂花.",
+               "flavor": "必须先把种子箱放置在地上然后才能使用"
+            },
+            "birch_tree_seeds_recipe": {
+               "recipe_name": "桦木花絮",
+               "description": "学习如何在田里种植桦木.",
+               "flavor": "必须先把种子箱放置在地上然后才能使用"
+            },
+            "yew_tree_seeds_recipe": {
+               "recipe_name": "晒干的红豆杉莓",
+               "description": "学习如何在田里种植红豆杉.",
+               "flavor": "必须先把种子箱放置在地上然后才能使用"
+            },
+            "highland_pine_tree_seeds_recipe": {
+               "recipe_name": "高原松松果",
+               "description": "学习如何在田里种植高原松.",
+               "flavor": "必须先把种子箱放置在地上然后才能使用"
+            },
+            "moonbell_seeds_recipe": {
+               "recipe_name": "月铃花种子",
+               "description": "学习如何在田里种植月铃花.",
+               "flavor": "必须先把种子箱放置在地上然后才能使用"
+            },
+            "cotton_seeds_recipe": {
+               "recipe_name": "棉花种子",
+               "description": "学习如何在田里种植棉花.",
+               "flavor": "必须先把种子箱放置在地上然后才能使用"
+            },
+            "marblesprout_seeds_recipe": {
+               "recipe_name": "云石蕊种子",
+               "description": "学习如何在田里种植云石蕊.",
+               "flavor": "必须先把种子箱放置在地上然后才能使用"
             }
          },
          "herbalist_hood": {
@@ -759,7 +855,10 @@
             "clay_bed_crude_recipe": {
                "recipe_name": "陶土休息区",
                "description": "没力气干活了闭上眼睛的合适场所.",
-               "flavor": "还算可以忍受"
+               "flavor": "'像个陶罐, 睡觉用的!' - 克劳伦斯, 临时售货员"
+            },
+            "clay_bed_recipe": {
+               "flavor": "干草可以通过采集草丛, 采集风滚草之类的植物, 或者挖掘草地地层来获得"
             },
             "clay_training_dummy_recipe": {
                "recipe_name": "陶土训练假人",
@@ -770,6 +869,141 @@
                "recipe_name": "陶土箭术标靶",
                "description": "远程士兵可以以它为靶子练习来获得经验.",
                "flavor": "需要工程师来修理."
+            },
+            "clay_sword_recipe": {
+               "recipe_name": "陶土练习剑",
+               "description": "可以把炉民转职成步兵.",
+               "flavor": "很容易坏, 应该用不了多长时间... 对吧?"
+            },
+			"porcelain_fence_bar_double_recipe": {
+               "recipe_name": "陶瓷大围栏",
+               "description": "做一段双倍长的陶瓷墙.",
+               "flavor": ""
+            },
+			"porcelain_fence_bar_single_recipe": {
+               "recipe_name": "陶瓷小围栏",
+               "description": "做一小段陶瓷墙.",
+               "flavor": ""
+            },
+			"porcelain_fence_end_recipe": {
+               "recipe_name": "陶瓷围栏桩",
+               "description": "给陶瓷墙装一个柱子.",
+               "flavor": ""
+            },
+			"porcelain_fence_gate_recipe": {
+               "recipe_name": "陶瓷围栏门",
+               "description": "给陶瓷墙装一扇门.",
+               "flavor": "这扇漂亮的门可以防止炉民绕远路"
+            },
+			"porcelain_wall_lamp_recipe": {
+               "recipe_name": "陶瓷墙灯",
+               "description": "用于照亮一块美丽的地方.",
+               "flavor": ""
+            },
+			"porcelain_lamp_recipe": {
+               "recipe_name": "陶瓷立灯",
+               "description": "昂贵精致的灯.",
+               "flavor": "和瓷桌很搭"
+            },
+			"porcelain_bench_comfy_recipe": {
+               "recipe_name": "陶瓷长沙发",
+               "description": "让起居室足够舒适.",
+               "flavor": "别让猫碰到它!"
+            },
+			"porcelain_bench_recipe": {
+               "recipe_name": "公园瓷椅",
+               "description": "宽敞典雅的家具.",
+               "flavor": "下雨天小心湿垫子!"
+            },
+			"porcelain_chair_comfy_recipe": {
+               "recipe_name": "陶瓷沙发",
+               "description": "整洁又舒适的内饰.",
+               "flavor": "枕头大战!"
+            },
+			"porcelain_chair_recipe": {
+               "recipe_name": "陶瓷椅",
+               "description": "简单却不失高雅的家具.",
+               "flavor": "也能垫下脚"
+            },
+			"porcelain_comfy_bed_recipe": {
+               "recipe_name": "舒适瓷床",
+               "description": "给那些即使睡着了也想优雅的人准备的.",
+               "flavor": ""
+            },
+			"porcelain_dining_table_recipe": {
+               "recipe_name": "陶瓷餐桌",
+               "description": "做一张能在上面吃东西的陶瓷桌子.",
+               "flavor": "上面的桌布是为了能让你看清陶瓷餐具"
+            },
+			"porcelain_display_cabinet_recipe": {
+               "recipe_name": "陶瓷展示柜",
+               "description": "一个展示上瓷之前所有无聊陶土物件的柜子!",
+               "flavor": ""
+            },
+			"porcelain_display_cupboard_recipe": {
+               "recipe_name": "陶瓷展示橱",
+               "description": "精美收藏的展示.",
+               "flavor": "推门别太用力就行..."
+            },
+			"porcelain_dresser_recipe": {
+               "recipe_name": "陶瓷梳妆台",
+               "description": "和这家具一起活得奢侈.",
+               "flavor": "有这梳妆台谁还用得着梳妆啊?"
+            },
+			"porcelain_end_table_recipe": {
+               "recipe_name": "陶边桌",
+               "description": "装饰品能放在上面.",
+               "flavor": ""
+            },
+			"porcelain_floor_tile_recipe": {
+               "recipe_name": "瓷地砖",
+               "description": "给你的炉民做一块陶瓷地砖.",
+               "flavor": "轻走轻踏"
+            },
+			"porcelain_jar_of_feathers_recipe": {
+               "recipe_name": "陶瓷羽毛罐",
+               "description": "瓷和布匹做成的华丽大羽毛.",
+               "flavor": "不忘波波鸡"
+            },
+			"porcelain_planter_recipe": {
+               "recipe_name": "陶瓷花盆",
+               "description": "美丽精致的雏菊.",
+               "flavor": ""
+            },
+			"porcelain_shelf_recipe": {
+               "recipe_name": "陶瓷墙架",
+               "description": "装饰品能放在架子上面.",
+               "flavor": ""
+            },
+			"porcelain_table_recipe": {
+               "recipe_name": "瓷单人桌",
+               "description": "即使过着奢侈的生活, 有人可能还是喜欢吃独食.",
+               "flavor": ""
+            },
+			"porcelain_teapot_recipe": {
+               "recipe_name": "陶瓷茶壶",
+               "description": "精心装饰过的装饰品.",
+               "flavor": ""
+            },
+			"porcelain_urn_short_recipe": {
+               "recipe_name": "小瓷壶",
+               "description": "漂亮的装饰.",
+               "flavor": ""
+            },
+			"porcelain_urn_tall_recipe": {
+               "recipe_name": "瓷壶",
+               "description": "精心绘画过的美丽陶瓷.",
+               "flavor": ""
+            },
+			"porcelain_wall_tile_blue_recipe": {
+               "recipe_name": "陶瓷墙砖",
+               "description": "需要高超的手艺让它们契合.",
+               "flavor": ""
+            },
+			"porcelain_wall_tile_gold_recipe": {
+               "recipe_name": "黄金瓷墙砖",
+               "description": "镀金让它更漂亮了!",
+               "flavor": ""
             }
          }
       },
@@ -817,10 +1051,13 @@
                "description": "比石头可暖和柔软多了.",
                "flavor": "毛好暖和!"
             },
+            "stone_bed_recipe": {
+               "flavor": "干草可以通过收割草丛, 收获风滚草之类的植物, 或者挖掘草地地层来获得"
+            },
             "stone_bed_crude_recipe": {
                "recipe_name": "石头休息区",
                "description": "你肯定不会想要跳到这张床上.",
-               "flavor": "茅草太干了, 但凑活..."
+               "flavor": "漂亮的边框可以分散睡在硬石头上的不适感..."
             },
             "stone_training_dummy_recipe": {
                "recipe_name": "石制训练假人",
@@ -876,6 +1113,9 @@
                "recipe_name": "巨骨短剑",
                "description": "用传说生物的骨头做一把骑士的佩剑.",
                "flavor": ""
+            },
+            "stone_sword_recipe": {
+               "flavor": "用石剑训练真是讽刺又现实的笑话."
             }
          },
          "mason_workbench_bone": {
@@ -1110,11 +1350,11 @@
          "blacksmith_description": {
             "level_1_data": {
                "perk_000_name": "早期冶炼",
-               "perk_000_description": "铁匠先要熟练掌握基本金属的冶炼, 然后才能在坩埚熔炼炉里制作青铜, 在砧上处理铁."
+               "perk_000_description": "铁匠先要熟练掌握基本金属的冶炼, 以及坩埚炉的使用方法, 然后才能在接触砧."
             },
             "level_2_data": {
                "perk_000_name": "青铜白铁!",
-               "perk_000_description": "现在铁匠足够熟练能制作砧, 坩埚熔炼炉并锻造青铜和铁做的重型工具了.",
+               "perk_000_description": "现在铁匠足够熟练能制作砧和熔炉来锻造青铜和铁做的重型工具了.",
                "perk_001_name": "掌控火焰!",
                "perk_001_description": "铁匠在锻造和自行制作燃料器械中已经获得了足够的经验."
             },
@@ -1281,8 +1521,8 @@
                "flavor": "是很... 复杂的混合物. 别问"
             },
             "thatch_pile_recipe": {
-               "recipe_name": "大茅草捆",
-               "description": "储存了大量茅草供日后使用.",
+               "recipe_name": "大干草捆",
+               "description": "储存了大量干草供日后使用.",
                "flavor": ""
             }
          },
@@ -1333,18 +1573,21 @@
             },
             "bundle_of_firewood_recipe": {
                "recipe_name": "柴火捆 (x2)",
-               "description": "把原木劈成几块提高利用率!",
-               "flavor": "柴火是普通的低级燃料"
+               "description": "把原木劈成几块提高利用率! 柴火是常见的, 低级燃料",
+               "flavor": "'等等, 所以把一整块原木直接扔进火里是不对的?' -督马·夸斯"
             },
 			"splitting_block_recipe": {
                "recipe_name": "砍柴墩",
                "description": "做个结实的墩墩来砍柴火.",
                "flavor": ""
             },
+            "wood_bed_recipe": {
+               "flavor": "干草可以通过收割草丛, 收获风滚草之类的植物, 或者挖掘草地地层来获得"
+            },
             "wood_bed_crude_recipe": {
-               "recipe_name": "木制休息区",
-               "description": "比没有好... 大概.",
-               "flavor": "真正意义上的睡在甲板上"
+               "recipe_name": "简陋休息区",
+               "description": "真正意义上的睡在甲板上.",
+               "flavor": "简陋是因为贫穷, 而不是残忍. 虽然确实很残忍."
             }
          }
       },
@@ -1360,6 +1603,36 @@
                "description": "总比地上好但终究睡不舒服. 不过挺方便的!",
                "flavor": "能带着走的床. 好吧, 理论上所有床你都能带走..."
             },
+            "curtains_wide_recipe": {
+               "recipe_name": "宽窗帘",
+               "description": "常规窗帘不够宽的时候.",
+               "flavor": ""
+            },
+            "curtains_tall_recipe": {
+               "recipe_name": "高窗帘",
+               "description": "有时候窗子就想要一条长长的裙子.",
+               "flavor": ""
+            },
+            "ornate_curtains_recipe": {
+               "recipe_name": "装饰窗帘",
+               "description": "制作一副典雅漂亮的窗帘.",
+               "flavor": "光线从没被这么美丽地遮起来过"
+            },
+            "ornate_curtains_wide_recipe": {
+               "recipe_name": "装饰宽窗帘",
+               "description": "给别致的家居制作的.",
+               "flavor": ""
+            },
+            "ornate_throw_rug_recipe": {
+               "recipe_name": "装饰地毯",
+               "description": "织一块有漂亮图案的布.",
+               "flavor": "踩上去就有罪恶感"
+            },
+            "ornate_banner_wall_recipe": {
+               "recipe_name": "装饰挂旗",
+               "description": "给繁荣小镇的装饰旗帜.",
+               "flavor": "和听起来一样漂亮"
+            },
             "legendary_hood_recipe": {
                "recipe_name": "精灵王斗篷",
                "description": "只有最精锐的弓箭手才配穿上的华丽斗篷.",
@@ -1369,6 +1642,16 @@
                "recipe_name": "王者头套",
                "description": "先驱者锁甲上编织而成的君王头套.",
                "flavor": "曾经这种头套是先驱者们的骄傲"
+            },
+			"porcelain_curtains_recipe": {
+               "recipe_name": "瓷帘子",
+               "description": "能覆盖整面墙的大装饰.",
+               "flavor": "和其他瓷器很搭哦!"
+            },
+            "porcelain_curtains_small_recipe": {
+               "recipe_name": "短瓷帘",
+               "description": "让阳光软软地进来.",
+               "flavor": ""
             }
          }
       },
@@ -1405,6 +1688,42 @@
             "cotton_seeds": {
                "display_name": "棉花种子",
                "description": "学习种植棉花."
+            },
+            "sweet_potato_seeds": {
+               "display_name": "甘薯种子",
+               "description": "学习种植甘薯."
+            },
+            "violet_seeds": {
+               "display_name": "紫罗兰种子",
+               "description": "学习种植漂亮的紫罗兰."
+            },
+            "snow_poppy_seeds": {
+               "display_name": "雪罂花籽",
+               "description": "学习种植可人的婴花."
+            },
+            "arctic_juniper_tree_seeds": {
+               "display_name": "晒干的极地杜松子",
+               "description": "学习种植极地杜松子树."
+            },
+            "pine_tree_seeds": {
+               "display_name": "松果",
+               "description": "学习种植松树."
+            },
+            "arctic_pine_tree_seeds": {
+               "display_name": "极地松松果",
+               "description": "学习种植极地松."
+            },
+            "highland_pine_tree_seeds": {
+               "display_name": "高原松松果",
+               "description": "学习种植高原松."
+            },
+            "yew_tree_seeds": {
+               "display_name": "晒干的红豆杉莓",
+               "description": "学习种植红豆杉."
+            },
+            "birch_tree_seeds": {
+               "display_name": "桦木花絮",
+               "description": "学习种植桦树."
             }
          }
       },
@@ -1510,6 +1829,12 @@
          "splitting_block": {
             "display_name": "砍柴墩",
             "description": "能方便地把原木砍成更好用的柴火."
+         },
+         "porcelain_fence_gate": {
+            "porcelain_fence_gate_ghost": {
+               "display_name": "陶瓷围栏门",
+               "description": "这扇漂亮的门可以防止炉民绕远路."
+            }
          }
       },
       "crops": {
@@ -1594,6 +1919,50 @@
                }
             }
          },
+         "violet_crop": {
+            "display_name": "紫罗兰花",
+            "description": "可用作治疗的药草",
+            "growth_stage": {
+               "000": {
+                  "name": "紫罗兰种子",
+                  "description": "还在成长!"
+               },
+               "001": {
+                  "name": "紫罗兰嫩芽",
+                  "description": "还需要一些时间与关爱."
+               },
+               "002": {
+                  "name": "紫罗兰花蕾",
+                  "description": "快长成了!  看, 都有花苞了!"
+               },
+               "003": {
+                  "name": "紫罗兰",
+                  "description": "可以收获得到治疗药草"
+               }
+            }
+         },
+         "snow_poppy_crop": {
+            "display_name": "雪罂花",
+            "description": "可用作治疗的药草",
+            "growth_stage": {
+               "000": {
+                  "name": "雪罂花种子",
+                  "description": "还在成长!"
+               },
+               "001": {
+                  "name": "雪罂花嫩芽",
+                  "description": "还需要一些时间与关爱."
+               },
+               "002": {
+                  "name": "雪罂花花蕾",
+                  "description": "快长成了!  看, 都有花苞了!"
+               },
+               "003": {
+                  "name": "雪罂花",
+                  "description": "可以收获得到治疗药草"
+               }
+            }
+         },
          "birch_tree_crop": {
             "growth_stage": {
                "000": {
@@ -1628,7 +1997,7 @@
                },
                "002": {
                   "description": "不远了...",
-                  "name": "红豆杉树种"
+                  "name": "红豆杉树苗"
                },
                "003": {
                   "description": "可以换大花盆了.",
@@ -1666,19 +2035,85 @@
                   "name": "烂水稻"
                }
             }
+         },
+         "highland_pine_tree_crop": {
+            "description": "大松树永远陪着你壮大或卷铺盖回家.",
+            "display_name": "高原松幼树",
+            "growth_stage": {
+               "000": {
+                  "name": "高原松种子",
+                  "description": "这么小的东西是怎么长成那么大的?"
+               },
+               "001": {
+                  "name": "高原松嫩芽",
+                  "description": "每天都会长高很多!"
+               },
+               "002": {
+                  "name": "高原松树苗",
+                  "description": "差不多可以挪地方了!"
+               },
+               "003": {
+                  "name": "高原松幼树",
+                  "description": "可以换大花盆了."
+               }
+            }
+         },
+         "arctic_juniper_tree_crop": {
+            "display_name": "极地杜松子幼树",
+            "description": "想要更多树? 这些树苗可能长成任何极地杜松子树!",
+            "growth_stage": {
+               "000": {
+                  "name": "极地杜松子",
+                  "description": "再大的杜松子树也有一个卑微的开端."
+               },
+               "001": {
+                  "name": "极地杜松子嫩芽",
+                  "description": "才刚刚开始."
+               },
+               "002": {
+                  "name": "极地杜松子树苗",
+                  "description": "兔子躲在下面正好."
+               },
+               "003": {
+                  "name": "极地杜松子幼树",
+                  "description": "可以换大花盆了."
+               }
+            }
+         },
+         "arctic_pine_tree_crop": {
+            "display_name": "极地松幼树",
+            "description": "没木头了? 这些树苗可能长成任何极地松!",
+            "growth_stage": {
+               "000": {
+                  "name": "极地松松果",
+                  "description": "有一颗新松树要生根发芽了."
+               },
+               "001": {
+                  "name": "极地松嫩芽",
+                  "description": "成长的脆弱期."
+               },
+               "002": {
+                  "name": "极地松树苗",
+                  "description": "完美的小松树. 还在成长!"
+               },
+               "003": {
+                  "name": "极地松幼树",
+                  "description": "可以换大花盆了."
+               }
+            }
          }
       },
       "decorations": {
          "copper_wall_lantern": {
             "copper_wall_lantern_ghost": {
                "display_name": "挂式铜灯",
-               "description": "TBD"
+               "description": "里面月铃花发出的冷光十分柔和."
             }
          },
          "copper_garden_lantern": {
             "copper_garden_lantern_ghost": {
                "display_name": "铜制花园灯",
-               "description": "TBD"
+               "description": "月铃花散发出的光慢慢地眨着眼睛"
             }
          }
       },
@@ -1763,11 +2198,15 @@
             "slate_stone": {
                "display_name": "板石块",
                "description": "一块平常而沉重的石头"
+            },
+            "bedrock_stone": {
+               "display_name": "基岩块",
+               "description": "超坚硬, 玻璃化的岩石! 只有熔岩工匠能对它进行加工..."
             }
          },
          "thatch_bale": {
             "display_name": "干草捆",
-            "description": "能做成饲料或用于制作的干草."
+            "description": "收获纤维植物或者挖掘草地地层获得的干草."
          },
          "pelt": {
             "bitsy_spider_pelt": {
@@ -1809,6 +2248,10 @@
             "cotton_bundle": {
                "display_name": "棉花捆",
                "description": "触感顺滑. 能纺成丝线"
+            },
+            "dwarfsbeard_bundle": {
+               "display_name": "矮人胡须草捆",
+               "description": "乱作一团, 又油又硬. 能当成干草或纤维用."
             }
          },
          "coal": {
@@ -1817,7 +2260,7 @@
                "description": "木头慢烧而成, 是优质燃料."
             },
             "everglowing_ember": {
-               "display_name": "不灭余火",
+               "display_name": "不灭珀烬",
                "description": "真漂亮... 它永远都在发亮! 可作为更高阶的燃料或者供熔岩工匠使用."
             },
             "lump_of_coal": {
@@ -2197,7 +2640,17 @@
             }
          },
          "old_stump": "老旧树桩",
-         "old_stump_description": "这个老旧的树桩已经是森林的一部分了... 但木头还能用!"
+         "old_stump_description": "这个老旧的树桩已经是森林的一部分了... 但木头还能用!",
+         "arctic_pine_tree_sapling": {
+            "description": "小极地松. 这棵树苗可能长成任何种类的极地松!",
+            "display_name": "极地松幼树",
+            "description_iconic": "种在土里看它成长."
+         },
+         "arctic_juniper_tree_sapling": {
+            "description": "小极地杜松子树. 这棵树苗可能长成任何种类的极地杜松子树!",
+            "description_iconic": "种在土里看它成长.",
+            "display_name": "极地杜松子幼树"
+         }
       },
       "furniture": {
          "patrol_point": {
@@ -2510,6 +2963,26 @@
                "display_name": "黄花睡莲",
                "description": "采下后可用作装饰的漂亮花朵."
             }
+         },
+         "dwarfsbeard": {
+            "display_name": "矮人胡须草",
+            "description": "纤维与干草的的来源"
+         },
+         "dwarfsbeard_bud": {
+            "display_name": "矮人胡须草",
+            "description": "快长成了!"
+         },
+         "dwarfsbeard_seed": {
+            "display_name": "矮人胡须草",
+            "description": "种下后能长出一种粗糙的纤维, 收获来还能作为干草使用."
+         },
+         "dwarfsbeard_sprout": {
+            "display_name": "矮人胡须草 树苗ling",
+            "description": "还需要一些时间和关爱."
+         },
+         "dwarfsbeard_stem": {
+            "display_name": "长根的矮人胡须草",
+            "description": "还在成长!"
          }
       },
       "decoration": {
@@ -2566,7 +3039,7 @@
          "porcelain_lamp": {
             "porcelain_lamp_ghost": {
                "display_name": "陶瓷立灯",
-               "description": "在瓷桌上也站得很稳."
+               "description": "和瓷桌很搭."
             }
          },
          "porcelain_wall_lamp": {
@@ -2634,6 +3107,38 @@
                "display_name": "陶瓷羽毛罐",
                "description": "瓷和布匹做成的华丽大羽毛."
             }
+         },
+         "ember_charcoal": {
+            "display_name": "原木灰烬",
+            "description": "一会就会变成木炭, 因为添换新燃料而被回收了!"
+         },
+         "ember": {
+            "display_name": "灰烬",
+            "description": "已然赤焰淡没去... 空留白灰寻余烬."
+         },
+         "curtains_wide": {
+            "display_name": "宽窗帘",
+            "description": "给眼界更宽的窗子."
+         },
+         "curtains_tall": {
+            "display_name": "高窗帘",
+            "description": "高窗的长裙."
+         },
+         "ornate_curtains": {
+            "display_name": "装饰窗帘",
+            "description": "光线从没被这么美丽地遮起来过."
+         },
+         "ornate_curtains_wide": {
+            "display_name": "装饰宽窗帘",
+            "description": "给别致的家居."
+         },
+         "ornate_throw_rug": {
+            "display_name": "装饰地毯",
+            "description": "踩上去就有罪恶感."
+         },
+         "ornate_banner_wall": {
+            "display_name": "装饰挂旗",
+            "description": "繁荣小镇的装饰旗帜."
          }
       },
       "pets": {
@@ -2711,20 +3216,20 @@
          },
          "cooked_nuts": {
             "display_name": "熟坚果篮",
-            "description": "TBD",
+            "description": "一篮子温暖美味的可食用坚果.",
             "cooked_nuts_serving": {
                "display_name": "一盘熟坚果",
-               "description": "TBD"
+               "description": ""
             }
          },
          "cherry_tart": {
             "cherry_tart": {
                "display_name": "樱桃馅饼",
-               "description": "TBD"
+               "description": "一道简单但好吃的带樱桃的烘焙甜点"
             },
             "cherry_tart_serving": {
                "display_name": "一片樱桃馅饼",
-               "description": "TBD"
+               "description": "好吃!"
             }
          },
          "huntsman_banquet": {
@@ -2740,7 +3245,7 @@
          "nutty_poultry": {
             "nutty_poultry": {
                "display_name": "坚果炒禽肉",
-               "description": "TBD"
+               "description": "坚果片热炒肉丁."
             },
             "nutty_poultry_serving": {
                "display_name": "一盘坚果炒禽肉",
@@ -2750,7 +3255,7 @@
          "pie_cherry": {
             "pie_cherry": {
                "display_name": "甜甜樱桃派",
-               "description": "TBD"
+               "description": "难做但好吃!"
             },
             "pie_cherry_serving": {
                "display_name": "一片樱桃派",
@@ -2760,7 +3265,7 @@
          "nut_pralines": {
             "nut_pralines": {
                "display_name": "坚果糖",
-               "description": "TBD"
+               "description": "超脆的甜坚果, 很有异域风情."
             },
             "nut_pralines_serving": {
                "display_name": "一盘坚果糖",
@@ -3061,15 +3566,15 @@
       "terrain": {
          "pasture_grass": {
             "display_name": "草丛",
-            "description": "高高的草丛能供动物食用, 或采集起来以备将来使用."
+            "description": "高高的草丛能供动物食用, 或采集起来做干草捆."
          },
          "overgrown_pasture_grass": {
             "display_name": "高草丛",
-            "description": "很高的草丛能供动物食用, 或采集起来以备将来使用."
+            "description": "很高的草丛能供动物食用, 或采集起来做干草捆."
          },
          "short_pasture_grass": {
             "display_name": "矮草丛",
-            "description": "矮草从能供动物食用, 但太短了不够捆成茅草."
+            "description": "矮草从能供动物食用, 但太短了不够捆成干草."
          },
          "sprouting_pasture_grass": {
             "display_name": "草丛嫩芽",
@@ -3737,6 +4242,18 @@
          "giant_bone_pike": {
             "display_name": "巨骨长矛",
             "description": "以前是巨兽的一部分, 现在是杀死巨兽的一部分. (双手武器)"
+         },
+         "wooden_sword": {
+            "display_name": "练习剑",
+            "wooden_sword_talisman": {
+               "display_name": "练习剑"
+            }
+         },
+         "long_sword": {
+            "display_name": "钢剑"
+         },
+         "short_sword": {
+            "display_name": "短钢剑"
          }
       },
       "gizmos": {
@@ -4067,16 +4584,34 @@
                "description": "种下后长出的常春藤能往墙壁上下生长."
             },
             "bud": {
-               "display_name": "高原常春藤芽",
+               "display_name": "蔓延的高原常春藤",
                "description": "这株常春藤开始生长了. 谁知道它能长多大呢?"
+            },
+            "sprout": {
+               "display_name": "高原常春藤芽",
+               "description": "真小... 就眼前的这个而言."
+            }
+         },
+         "daisies": {
+            "seed": {
+               "display_name": "雏菊花种",
+               "description": "种下后能长出一种会蔓延的花毯."
+            },
+            "bud": {
+               "display_name": "雏菊花蕾",
+               "description": "马上它们就满地都是了!"
+            },
+            "sprout": {
+               "display_name": "雏菊嫩芽",
+               "description": "它们总有一天会绽放美丽!"
             }
          }
       },
       "containers": {
          "thatch_pile": {
-            "display_name": "大茅草捆",
-            "description": "可以采集获得茅草捆.",
-            "iconic_description": "放下后可以采集获得茅草捆."
+            "display_name": "大干草捆",
+            "description": "可以采集获得干草捆.",
+            "iconic_description": "放下后可以采集获得干草捆."
          }
       }
    },
@@ -4366,12 +4901,12 @@
          },
          "zones_mode": {
             "farm": {
-               "water_affinity_range": "这片农田里作物的最佳生长速度要求农田在描线区域内达到 <span class='water'><span class='value'>[str(i18n_data.min)] - [str(i18n_data.max)]</span> 水位</span>.",
-               "water_affinity_min_only": "这这片农田里作物的最佳生长速度要求农田在描线区域内达到至少 <span class='water'><span class='value'>[str(i18n_data.min)]</span> 水位</span>. 当前<span class='water'>水位</span>为: <span class='water value'>[str(i18n_data.water_level)]</span>.",
+               "water_affinity_range": "灌溉</br>这种作物如果在蓝色描边区域内达到 <span class='water'><span class='value'>[str(i18n_data.min)] - [str(i18n_data.max)]</span> 水位</span> 则其生长速度会比平常有所提升.",
+               "water_affinity_min_only": "灌溉</br>这种作物如果在蓝色描边区域内有至少 <span class='water'><span class='value'>[str(i18n_data.min)]</span> 水位</span> 则其生长速度会略微提升.",
                "current_water_level": "当前<span class='water'>水位</span>为: <span class='water value'>[str(i18n_data.level)]</span>.",
-               "requires_flooding": "这种作物只能在水里生长.",
-               "prefers_flooding": "这种作物在水里长得更快.",
-               "prefers_no_flooding": "这种作物在水里生长缓慢."
+               "requires_flooding": "这种作物只能在水里生长. 离开水则无法生长.",
+               "prefers_flooding": "这种作物在水里长得更快. 离开水则生长速度变慢.",
+               "prefers_no_flooding": "这种作物在水里生长缓慢. 离开水则可以正常生长."
             },
             "underfarm": {
                "substrate_name": "基层",
@@ -4473,7 +5008,7 @@
          "constants": {
             "edible_nuts_resource_name": "食用坚果",
             "fruits_resource_name": "水果",
-            "thatch_resource_name": "茅草",
+            "thatch_resource_name": "干草",
             "bone_resource_name": "骨头",
             "fungi_resource_name": "菌类",
             "chitin_resource_name": "任何甲壳",
