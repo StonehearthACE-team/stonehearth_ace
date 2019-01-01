@@ -190,7 +190,7 @@ function VineComponent:_start_growth_timer()
 end
 
 function VineComponent:_start()
-   if not self._sv.growth_timer then
+   if not self._sv.growth_timer or not self._sv.growth_timer.bind then
       self:_start_growth_timer()
    else
       if self._sv.growth_timer then
