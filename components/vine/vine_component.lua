@@ -44,6 +44,7 @@ local SPREAD_FN_DEFAULT = 'default'
 local SPREAD_FN_HORIZONTAL_WALK = 'horizontal_walk'
 
 function VineComponent:initialize()
+   self._sv.growth_timer = nil
    self._current_season = nil
    
    if not self._sv.render_directions then
@@ -189,7 +190,7 @@ function VineComponent:_start_growth_timer()
 end
 
 function VineComponent:_start()
-   if not self._sv.growth_timer then
+   if not self._sv.growth_timer or not self._sv.growth_timer.bind then
       self:_start_growth_timer()
    else
       if self._sv.growth_timer then
@@ -219,7 +220,6 @@ end
 function VineComponent:set_num_growths_remaining(num)
    self._sv.num_growths_remaining = num or self._growth_data.start_num_growths_remaining
    self.__saved_variables:mark_changed()
-   self:_start()
 end
 
 function VineComponent:_update_models(season)
@@ -301,6 +301,8 @@ end
 
 -- try to grow another vine of the same type in a random direction; returns the new entity if successful
 function VineComponent:try_grow()
+   self:_stop_growth_timer()
+   
    self._growth_roller:clear()
    for dir, chance in pairs(self._growth_data.growth_directions) do
       self._growth_roller:add(dir, chance)

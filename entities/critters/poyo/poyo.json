@@ -17,7 +17,7 @@
       "stonehearth:renewable_resource_node": {
          "resource_loot_table": {
             "entries": {
-               "bones": {
+               "golden_egg": {
                   "roll_type": "some_of",
                   "num_rolls": {
                      "min": 0,
@@ -26,11 +26,11 @@
                   "items": {
                      "none": {
                         "uri": "",
-                        "weight": 5
+                        "weight": 10000
                      },
                      "bones": {
-                        "uri": "stonehearth_ace:resources:bone:bone_material",
-                        "weight": 1
+                        "uri": "stonehearth_ace:food:golden_egg",
+                        "weight": 0.1
                      }
                   }
                }

@@ -105,7 +105,7 @@ function AceEquipmentPieceComponent:_get_default_equipment_types()
    local types = {}
    if self._json.slot == 'mainhand' then
       if self._json.additional_equipment and self._json.additional_equipment['stonehearth:armor:offhand_placeholder'] then
-         table.insert(types, 'twohand')
+         table.insert(types, 'twohanded')
       else
          table.insert(types, 'mainhand')
       end
