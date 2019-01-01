@@ -21,10 +21,6 @@ function PetSleepInBedAdjacent:run(ai, entity, args)
       ai:abort(string.format('%s could not not mount %s', tostring(entity), tostring(bed)))
    end
 
-   -- Don't let the yield in ai:execute split the transaction of mounting the bed and starting sleeping
-   local sleepiness_observer = radiant.entities.get_observer(entity, 'stonehearth:observers:sleepiness')
-   local sleep_duration = sleepiness_observer:start_sleeping(bed)
-
    ai:execute('stonehearth:run_effect', { effect = 'idle_goto_sleep' })
    ai:execute('stonehearth:run_sleep_effect', { duration = stonehearth.constants.sleep.PET_SLEEP_DURATION })
    ai:execute('stonehearth:run_effect', { effect = 'sleep_goto_idle' })
@@ -43,9 +39,6 @@ function PetSleepInBedAdjacent:stop(ai, entity, args)
          mount_component:dismount()
       end
    end
-
-   local sleepiness_observer = radiant.entities.get_observer(entity, 'stonehearth:observers:sleepiness')
-   sleepiness_observer:finish_sleeping()
 end
 
 return PetSleepInBedAdjacent
