@@ -53,19 +53,22 @@ function AceFirepitComponent:_transform_residue()
    end
    
    local entity_container = self._entity:get_component('entity_container')
-   local player_id = radiant.entities.get_player_id(self._entity)
    
-   for id, child in entity_container:each_child() do
-      if child and child:is_valid() and child:get_uri() == self._charcoal_uri then
-         return
-      elseif child and child:is_valid() and child:get_uri() == self._charcoal_ember_uri then
-         local charcoal = radiant.entities.create_entity(self._charcoal_uri, { owner = player_id })
-         entity_container:remove_child(id)
-         radiant.entities.destroy_entity(child)
-         entity_container:add_child(charcoal)		 
-      elseif child and child:is_valid() and child:get_uri() == self._ember_uri then
-         entity_container:remove_child(id)
-         radiant.entities.destroy_entity(child)
+   if entity_container then
+      local player_id = radiant.entities.get_player_id(self._entity)
+      
+      for id, child in entity_container:each_child() do
+         if child and child:is_valid() and child:get_uri() == self._charcoal_uri then
+            return
+         elseif child and child:is_valid() and child:get_uri() == self._charcoal_ember_uri then
+            local charcoal = radiant.entities.create_entity(self._charcoal_uri, { owner = player_id })
+            entity_container:remove_child(id)
+            radiant.entities.destroy_entity(child)
+            entity_container:add_child(charcoal)		 
+         elseif child and child:is_valid() and child:get_uri() == self._ember_uri then
+            entity_container:remove_child(id)
+            radiant.entities.destroy_entity(child)
+         end
       end
    end
 end
