@@ -2,6 +2,7 @@ local ValorTownBonus = class()
 
 local RECIPES_TO_UNLOCK = {
    ['stonehearth:jobs:blacksmith'] = {
+      'building_parts:valor_torch',
       'building_parts:fence_gate_iron',
       'decoration:valor_brazier_large',
       'decoration:wall_hanging_plaque',
