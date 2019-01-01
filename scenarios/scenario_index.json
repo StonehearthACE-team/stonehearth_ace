@@ -67,16 +67,22 @@
       ],
       "categories": {
          "plantlife": {
-            "density": 6,
+            "density": 4,
             "priority": 0,
             "location_type": "surface",
-            "activation_type": "immediate"
+            "activation_type": "immediate",
+            "max_count": [
+               30
+            ]
          },
          "static_objects": {
             "density": 1.2,
             "priority": 0,
             "location_type": "surface",
-            "activation_type": "immediate"
+            "activation_type": "immediate",
+            "max_count": [
+               25
+            ]
          },
          "terrain_spreader": {
             "density": 6,

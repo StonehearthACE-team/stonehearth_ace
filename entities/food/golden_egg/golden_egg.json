@@ -1,0 +1,43 @@
+{
+   "type": "entity",
+   "components": {
+      "render_info": {
+         "material": "materials/shiny.material.json",
+         "scale": 0.15
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(golden_egg.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": -0.05, "y": 0, "z": 0.05 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 1000,
+         "rarity": "rare",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.golden_egg.display_name)",
+         "description": "i18n(stonehearth_ace:entities.food.golden_egg.description)",
+         "icon": "file(golden_egg.png)",
+         "is_item": true,
+         "category": "trophy",
+         "material_tags": [
+            "stockpile_trophy",
+            "golden_egg"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": 45
+      }
+   }
+}
