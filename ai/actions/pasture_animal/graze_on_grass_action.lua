@@ -115,6 +115,7 @@ return ai:create_compound_action(GrazeOnGround)
             rating_fn = ai.PREV.food_rating_fn,
             description = 'find grass to graze'
          })
-   :execute('stonehearth:goto_entity', {entity = ai.PREV.item})
-   :execute('stonehearth:turn_to_face_entity', {entity = ai.BACK(2).item})
-   :execute('stonehearth:eat_feed_adjacent', { food = ai.BACK(3).item })
+   :execute('stonehearth:reserve_entity', { entity = ai.PREV.item })
+   :execute('stonehearth:goto_entity', {entity = ai.BACK(2).item})
+   :execute('stonehearth:turn_to_face_entity', {entity = ai.BACK(3).item})
+   :execute('stonehearth:eat_feed_adjacent', { food = ai.BACK(4).item })
