@@ -27,7 +27,7 @@ function AceCraftOrderList:add_order(player_id, recipe, condition, is_recursive_
    for _, ingredient in pairs(recipe.ingredients) do
       local ingredient_id = ingredient.uri or ingredient.material
 
-      log:debug('processing ingredient "%s"', ingredient_id)
+      --log:debug('processing ingredient "%s"', ingredient_id)
 
       -- Step 1: `make`:
       --         See if there are enough of the asked ingredient in the inventory:
@@ -52,14 +52,14 @@ function AceCraftOrderList:add_order(player_id, recipe, condition, is_recursive_
          end
          missing = math.max(needed - math.max(in_storage + in_order_list.total - crafter_info:get_reserved_ingredients(ingredient_id), 0), 0)
 
-         log:debug('we need %d, have %d in storage, have %d in order list (%d of which are maintained), and %d reserved so we are missing %d (math is hard, right?)',
-            needed, in_storage, in_order_list.total, in_order_list.maintain, crafter_info:get_reserved_ingredients(ingredient_id), missing)
+         --log:debug('we need %d, have %d in storage, have %d in order list (%d of which are maintained), and %d reserved so we are missing %d (math is hard, right?)',
+         --   needed, in_storage, in_order_list.total, in_order_list.maintain, crafter_info:get_reserved_ingredients(ingredient_id), missing)
 
          crafter_info:add_to_reserved_ingredients(ingredient_id, math.max(needed - in_order_list.maintain, 0))
       else -- condition.type == 'maintain'
          missing = ingredient.count
 
-         log:debug('maintaining the recipe requires %d of this ingredient, searching if it can be crafted itself', missing)
+         --log:debug('maintaining the recipe requires %d of this ingredient, searching if it can be crafted itself', missing)
       end
 
       if missing > 0 then
@@ -70,7 +70,7 @@ function AceCraftOrderList:add_order(player_id, recipe, condition, is_recursive_
 
          local recipe_info = self:_ace_get_recipe_info_from_ingredient(ingredient, crafter_info)
          if recipe_info then
-            log:debug('a "%s" can be made via the recipe "%s"', ingredient_id, recipe_info.recipe.recipe_name)
+            --log:debug('a "%s" can be made via the recipe "%s"', ingredient_id, recipe_info.recipe.recipe_name)
 
             -- Step 3: Recursively check on the ingredient's recipe.
 
@@ -81,8 +81,7 @@ function AceCraftOrderList:add_order(player_id, recipe, condition, is_recursive_
                new_condition.at_least = missing
             end
 
-            log:debug('adding the recipe "%s" to %s %d of those',
-               recipe_info.recipe.recipe_name, new_condition.type, missing)
+            --log:debug('adding the recipe "%s" to %s %d of those', recipe_info.recipe.recipe_name, new_condition.type, missing)
 
             -- Add the new order to the appropiate order list
             recipe_info.order_list:add_order(player_id, recipe_info.recipe, new_condition, true)
@@ -97,17 +96,17 @@ function AceCraftOrderList:add_order(player_id, recipe, condition, is_recursive_
       --    if it doesn't, simply add it as usual
       local order = self:_ace_find_craft_order(recipe.recipe_name, 'maintain')
       if order then
-         log:debug('checking if maintain order "%s" is to be replaced', order:get_recipe().recipe_name)
-         log:detail('this is %sa recursive call, the order\'s value is %d and the new one is %d',
-            is_recursive_call and 'NOT ' or '',
-            order:get_condition().at_least,
-            condition.at_least)
+         --log:debug('checking if maintain order "%s" is to be replaced', order:get_recipe().recipe_name)
+         --log:detail('this is %sa recursive call, the order\'s value is %d and the new one is %d',
+         --   is_recursive_call and 'NOT ' or '',
+         --   order:get_condition().at_least,
+         --   condition.at_least)
 
          if not is_recursive_call or order:get_condition().at_least < tonumber(condition.at_least) then
             -- The order is to be replaced, so remove the current one so when the new one is added;
             -- there are no duplicates of the same recipe
 
-            log:debug('replacing the order with %d as its new amount', condition.at_least)
+            --log:debug('replacing the order with %d as its new amount', condition.at_least)
 
             -- Note: It would be preferable to change the order's `at_least` value directly instead, but
             --       I haven't found a way to accomplish that *and* have the ui update itself instantly
@@ -296,11 +295,11 @@ function AceCraftOrderList:ace_get_ingredient_amount_in_order_list(ingredient, t
          local condition = order:get_condition()
 
          if (ingredient.material
-         and type(recipe.product_info) == 'table'
-         and recipe.product_info.entity_data["stonehearth:catalog"].material_tags
-         and self:_ace_matching_tags(ingredient.material, recipe.product_info.entity_data["stonehearth:catalog"].material_tags))
-         or (ingredient.uri
-         and recipe.product_uri == ingredient.uri) then
+               and type(recipe.product_info) == 'table'
+               and recipe.product_info.entity_data["stonehearth:catalog"].material_tags
+               and self:_ace_matching_tags(ingredient.material, recipe.product_info.entity_data["stonehearth:catalog"].material_tags))
+               or (ingredient.uri
+               and recipe.product_uri == ingredient.uri) then
 
             local amount = condition.remaining
             if condition.type == 'maintain' then
@@ -365,13 +364,13 @@ end
 -- Returns nil if no match was found.
 --
 function AceCraftOrderList:_ace_find_craft_order(recipe_name, order_type)
-   log:debug('finding a recipe for "%s"', recipe_name)
-   log:debug('There are %d orders', radiant.size(self._sv.orders) - 1)
+   --log:debug('finding a recipe for "%s"', recipe_name)
+   --log:debug('There are %d orders', radiant.size(self._sv.orders) - 1)
 
    for _, order in pairs(self._sv.orders) do
       if type(order) ~= 'number' then
          local order_recipe_name = order:get_recipe().recipe_name
-         log:debug('evaluating order with recipe "%s"', order_recipe_name)
+         --log:debug('evaluating order with recipe "%s"', order_recipe_name)
 
          if order_recipe_name == recipe_name and (not order_type or order:get_condition().type == order_type) then
             return order
@@ -385,19 +384,20 @@ end
 -- overrides this base function in order to support multiple crafters on the same order
 function AceCraftOrderList:get_next_order(crafter)
    --log:debug('craft_order_list: There are %s orders', #self._sv.orders)
-
+   local count = 0
    --log:debug('trying to feed order to %s', crafter)
    for i, order in ipairs(self._sv.orders) do
+      count = count + 1
       --log:debug('craft_order_list: evaluating order with recipe %s', order:get_recipe().recipe_name)
       local order_id = order:get_id()
       local craftable = self._craftable_orders[order_id]
       if craftable ~= false then
-         if order:should_execute_order(crafter) then
+         if (order:has_current_crafter(crafter) or order:conditions_fulfilled()) and 
+               order:should_execute_order(crafter) then
             --log:debug('given order %d back to crafter %s', i, crafter)
-
-            local craftable = self._craftable_orders[order_id]
+            
             if craftable == nil then
-               craftable = order:conditions_fulfilled(crafter) and order:has_ingredients()
+               craftable = order:has_ingredients()
                self._craftable_orders[order_id] = craftable
             end
             if craftable then
@@ -409,6 +409,18 @@ function AceCraftOrderList:get_next_order(crafter)
       --log:debug('craft_order_list: We are not going to continue this order of recipe %s', order:get_recipe().recipe_name)
       --log:debug('craft_order_list: Current crafter should be %s and crafter id is %s', order:get_current_crafter_id(), crafter:get_id())
       --log:debug('craft_order_list: Crafting status is %s', order:get_crafting_status())
+   end
+
+   -- Note: don't clear the stuck_orders table in _on_inventory_changed, since the inventory changes when the crafter drops the leftovers
+   -- so the same order would be picked again and again
+   if count > 0 and self:has_stuck_orders() then
+      -- Only refresh the list if there are still orders in it, and some/all of them were tagged as stuck
+      self._stuck_orders = {}
+      -- Now set a timer to make the crafter reconsider the orders. It has to be done after a while because of a race
+      -- We now wait for the thread to be suspended, so that this event will make it resume safely
+      -- Otherwise there can be problems with multiple crafters or depending on whether the last order was stuck or not
+      stonehearth.calendar:set_timer("reconsider stuck orders", constants.crafting.RECONSIDER_ORDERS_COOLDOWN,
+                             function() radiant.events.trigger(self, 'stonehearth:order_list_changed') end)
    end
 end
 

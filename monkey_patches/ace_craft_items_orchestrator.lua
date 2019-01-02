@@ -5,7 +5,7 @@ local AceCraftItemsOrchestrator = class()
 
 -- Paul: only three lines are changed from the original function in order to support multiple crafters per order:
 --    the references to workshop_component:start_crafting_progress(...), order:reset_progress(...), and order:progress_to_next_stage(...)
---- Find a workshop of an apporpriate type, if needed, and perform the crafting action
+--- Find a workshop of an appropriate type, if needed, and perform the crafting action
 --  Action finds a workshop, if needed, reserves it, dumps items onto it, does the work,
 --  destroys the ingredients, produces the output
 function AceCraftItemsOrchestrator:_process_order(order)
