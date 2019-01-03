@@ -18,11 +18,18 @@
    },
    "entity_data": {
       "stonehearth:catalog": {
-         "display_name": "",
-         "description": "",
+         "display_name": "i18n(stonehearth_ace:entities.furniture.comfy_bed_pet.display_name)",
+         "description": "i18n(stonehearth_ace:entities.furniture.comfy_bed_pet.description)",
          "icon": "file(comfy_bed_pet.png)",
          "category": "furniture",
-         "material_tags": ["wood", "furniture", "crafted", "stockpile_furniture"]
+         "material_tags": [
+            "wood",
+            "furniture",
+            "comfy_bed_pet",
+            "pet_bed",
+            "crafted",
+            "stockpile_furniture"
+         ]
       }
    }
 }

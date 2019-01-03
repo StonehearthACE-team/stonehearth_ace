@@ -18,6 +18,15 @@
 	  "recipes": {
 		"wood_bed_crude": {
 		  "recipe": "file(wood_bed_crude_recipe.json)"
+		},
+		"simple_bed_pet": {
+		  "recipe": "file(simple_bed_pet_recipe.json)"
+		},
+		"comfy_bed_pet": {
+		  "recipe": "file(comfy_bed_pet_recipe.json)"
+		},
+		"ornate_bed_pet": {
+		  "recipe": "file(ornate_bed_pet_recipe.json)"
 		}
 	  }
 	},
@@ -37,6 +46,9 @@
         },
         "ladder": {
           "recipe": "file(ladder_recipe.json)"
+        },
+		"ladder_wide": {
+          "recipe": "file(ladder_wide_recipe.json)"
         }
       }
     },

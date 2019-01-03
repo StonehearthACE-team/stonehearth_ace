@@ -3,12 +3,15 @@
    "axis": "debuff",
    "display_name": "i18n(stonehearth_ace:data.buffs.shaken.display_name)",
    "description": "i18n(stonehearth_ace:data.buffs.shaken.description)",
-   "icon": "file(shaken.png)",
+   "icon": "file(shaken_normal.png)",
    "duration": "30m",
    "repeat_add_action": "renew_duration",
    "modifiers": {
       "courage": {
          "multiply": 0.6
       }
-   }
+   },
+   "disallowed_buffs": [
+      "stonehearth_ace:buffs:minor_shaken"
+   ]
 }

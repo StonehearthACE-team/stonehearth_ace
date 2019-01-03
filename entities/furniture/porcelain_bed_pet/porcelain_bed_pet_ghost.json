@@ -1,0 +1,39 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(porcelain_bed_pet.qb)"
+            ]
+         }
+      },
+      "render_info": {
+         "scale": 0.2,
+         "color_map": "stonehearth:color_map:gold",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/gold_material_map.json"
+         ]
+      },
+      "mob": {
+         "model_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.furniture.porcelain_bed_pet.display_name)",
+         "description": "i18n(stonehearth_ace:entities.furniture.porcelain_bed_pet.description)",
+         "icon": "file(porcelain_bed_pet.png)",
+         "category": "furniture",
+         "material_tags": [
+            "porcelain",
+            "porcelain_bed_pet",
+            "pet_bed",
+            "furniture",
+            "crafted",
+            "stockpile_furniture"
+         ]
+      }
+   }
+}

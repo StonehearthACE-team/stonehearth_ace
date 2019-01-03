@@ -1,0 +1,26 @@
+{
+   "type" : "effect",
+   "tracks": {
+      "animation": {
+         "type": "animation_effect",
+         "start_time": 0,
+		 "speed": 1.2,
+         "animation": "work_cook_dough.json",
+         "loop": true
+      },
+      "grab_bowl" : {
+         "type": "attach_item_effect",
+         "start_time": 0,
+         "end_time": 0,
+         "item": "stonehearth_ace:cook:bowl_animation",
+         "bone": "offHand"
+      },
+      "grab_spoon" : {
+         "type": "attach_item_effect",
+         "start_time": 0,
+         "end_time": 0,
+         "item": "stonehearth_ace:cook:spoon_animation",
+         "bone": "mainHand"
+      }
+   }
+}
