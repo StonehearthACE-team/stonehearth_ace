@@ -1,5 +1,6 @@
 local CraftOrderList = radiant.mods.require('stonehearth.components.workshop.craft_order_list')
 local AceCraftOrderList = class()
+local constants = radiant.mods.require('stonehearth.constants')
 
 local log = radiant.log.create_logger('craft_order_list')
 
@@ -395,7 +396,7 @@ function AceCraftOrderList:get_next_order(crafter)
          if (order:has_current_crafter(crafter) or order:conditions_fulfilled()) and 
                order:should_execute_order(crafter) then
             --log:debug('given order %d back to crafter %s', i, crafter)
-            
+
             if craftable == nil then
                craftable = order:has_ingredients()
                self._craftable_orders[order_id] = craftable
