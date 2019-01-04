@@ -19,9 +19,10 @@ local ALL_FILTER_FNS = {}
 
 function KeyToEntityDataFilter:start_thinking(ai, entity, args)
    local key = args.key
+   local owner = args.owner
 
    local filter_fn = stonehearth.ai:filter_from_key('stonehearth:key_to_entity_data_filter_fn', key, function(item)
-         if args.owner and args.owner ~= item:get_player_id() then
+         if owner and owner ~= item:get_player_id() then
             return false
          end
          return radiant.entities.get_entity_data(item, key) ~= nil
@@ -29,7 +30,7 @@ function KeyToEntityDataFilter:start_thinking(ai, entity, args)
 
    ai:set_think_output({
          filter_fn = filter_fn,
-         description = string.format('"%s" ed', args.key),
+         description = string.format('"%s" ed', key),
       })
 end
 

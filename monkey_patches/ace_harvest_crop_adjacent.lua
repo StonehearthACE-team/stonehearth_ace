@@ -27,7 +27,7 @@ function AceHarvestCropAdjacent:_harvest_one_time(ai, entity)
       -- make sure the quality is applied
       local carrying_quality = radiant.entities.get_item_quality(carrying)
       if crop_quality > carrying_quality then
-         self:_set_quality(carrying, crop_quality)
+         self:_set_quality(carrying, self._crop)
       end
 
       return true
@@ -55,13 +55,14 @@ function AceHarvestCropAdjacent:_harvest_one_time(ai, entity)
          product = iconic
       end
    end
+
    local stacks_component = product:get_component('stonehearth:stacks')
    if stacks_component then
       stacks_component:set_stacks(harvest_count)
    end
 
    if crop_quality > 1 then
-      self:_set_quality(product, crop_quality)
+      self:_set_quality(product, self._crop)
    end
 
    radiant.entities.pickup_item(entity, product)
@@ -93,9 +94,10 @@ function AceHarvestCropAdjacent:_get_actual_spawn_count(entity)
    return num_to_spawn
 end
 
-function AceHarvestCropAdjacent:_set_quality(item, quality)
-   local iq_comp = item:add_component('stonehearth:item_quality')
-   iq_comp:initialize_quality(quality, iq_comp:get_author_name(), iq_comp:get_author_type(), {override_allow_variable_quality = true})
+function AceHarvestCropAdjacent:_set_quality(item, source)
+   local source_iq = source:get_component('stonehearth:item_quality')
+   local item_iq = item:add_component('stonehearth:item_quality')
+   item_iq:initialize_quality(source_iq:get_quality(), source_iq:get_author_name(), source_iq:get_author_type(), {override_allow_variable_quality = true})
 end
 
 return AceHarvestCropAdjacent

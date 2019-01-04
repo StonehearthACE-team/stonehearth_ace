@@ -1,3 +1,5 @@
+local Point3 = _radiant.csg.Point3
+
 local AceProduceCraftedItems = radiant.class()
 
 -- Paul: only changed two lines to pass the crafter along to the order when getting/setting progress
@@ -60,7 +62,7 @@ function AceProduceCraftedItems:_destroy_ingredients(args)
          ec_children[id] = child
       end
       for i, item in pairs(ec_children) do
-         local value = math.max(1, radiant.entities.get_net_worth(item:get_uri()))
+         local value = math.max(1, radiant.entities.get_net_worth(item:get_uri()) or 1)
          quality = quality + radiant.entities.get_item_quality(item) * value
          total_value = total_value + value
 

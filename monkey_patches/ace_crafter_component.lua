@@ -6,6 +6,8 @@ local log = radiant.log.create_logger('crafter')
 
 local AceCrafterComponent = class()
 
+local STANDARD_QUALITY_INDEX = 1
+
 --If you stop being a crafter, b/c you're killed or demoted,
 --drop all your stuff, and release your crafting order, if you have one.
 function AceCrafterComponent:clean_up_order()
@@ -29,7 +31,7 @@ function AceCrafterComponent:produce_crafted_item(product_uri, recipe, ingredien
    local item = radiant.entities.create_entity(product_uri, { owner = self._entity })
 
    -- Set quality on an item
-   local quality = self:_calculate_quality(recipe.level_requirement or 0, ingredient_quality or 1)
+   local quality = self:_calculate_quality(recipe.level_requirement or 0, ingredient_quality or STANDARD_QUALITY_INDEX)
    item:add_component('stonehearth:item_quality'):initialize_quality(quality, self._entity, 'person')
 
    -- Return iconic form of entity if it exists

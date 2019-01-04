@@ -55,11 +55,12 @@ function AceFarmerFieldComponent:notify_plant_location_finished(location)
    end)
 end
 
-function FarmerFieldComponent:notify_crop_fertilized(x, z)
+function FarmerFieldComponent:notify_crop_fertilized(location)
+   local p = Point3(location.x - self._location.x, 0, location.z - self._location.z)
    local fertilizable_layer = self._sv._fertilizable_layer
    local fertilizable_layer_region = fertilizable_layer:get_component('destination'):get_region()
    fertilizable_layer_region:modify(function(cursor)
-      cursor:subtract_point(Point3(x - 1, 0, z - 1))
+      cursor:subtract_point(p)
    end)
 end
 

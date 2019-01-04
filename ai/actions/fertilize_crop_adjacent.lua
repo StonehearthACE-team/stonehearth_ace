@@ -14,7 +14,6 @@ FertilizeCropAdjacent.priority = 0
 function FertilizeCropAdjacent:start_thinking(ai, entity, args)
    self._log = ai:get_log()
    self._entity = entity
-   self._spawn_count = self:_get_num_to_increment(entity)
 
    self._farmer_field = args.field_layer:get_component('stonehearth:farmer_field_layer')
                                     :get_farmer_field()
@@ -35,7 +34,7 @@ function FertilizeCropAdjacent:start_thinking(ai, entity, args)
    self._destination = args.field_layer:get_component('destination')
 
    ai:protect_argument(self._crop)
-   ai:set_think_output();
+   ai:set_think_output()
 end
 
 function FertilizeCropAdjacent:_fertilize_one_time(ai, entity)
@@ -58,9 +57,10 @@ function FertilizeCropAdjacent:_fertilize_one_time(ai, entity)
       self._crop:add_component('stonehearth:item_quality'):initialize_quality(quality, entity, nil, {override_allow_variable_quality = true})
    end
 
-   radiant.entities.consume_stack(entity, 1)
+   radiant.entities.consume_stack(carrying, 1)
 
    radiant.events.trigger_async(entity, 'stonehearth_ace:fertilize_crop', {crop_uri = self._crop:get_uri()})
+   self._farmer_field:notify_crop_fertilized(self._location)
 
    return true
 end
