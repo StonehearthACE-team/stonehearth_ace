@@ -20,11 +20,54 @@ function AceJobComponent:destroy(value, add_curiosity_addition)
 	end
 end
 
-AceJobComponent._old_add_exp = JobComponent.add_exp
-function AceJobComponent:add_exp(value, add_curiosity_addition)
-	self:_old_add_exp(value, add_curiosity_addition)
+function AceJobComponent:add_exp(value, add_curiosity_addition, prevent_level_up)
+   if not self:can_level_up() then
+      return
+   end
 
-	radiant.events.trigger(self._entity, 'stonehearth_ace:on_add_exp', { value = value, add_curiosity_addition = add_curiosity_addition })
+   if stonehearth.player:is_npc(self._entity) then
+      -- no exp for npc players
+      return
+   end
+
+   local attributes_component = self._entity:get_component('stonehearth:attributes')
+   local xp_multiplier = attributes_component and attributes_component:get_attribute('xp_multiplier')
+   value = value * xp_multiplier
+
+   -- Add a curiosity exp addition
+   -- TODO: this should really be percentage based instead of a constant value
+   -- otherwise, jobs with frequent small experience events (combat) get a huge multiplier
+   local exp_mult = 1
+   if add_curiosity_addition ~= false then
+      if attributes_component then
+         local curiosity = attributes_component:get_attribute('curiosity')
+         exp_mult = 1 + curiosity * stonehearth.constants.attribute_effects.CURIOSITY_EXPERIENCE_MULTIPLER
+         if exp_mult < 1 then
+            exp_mult = 1
+         end
+      end
+   end
+   value = radiant.math.round(value * exp_mult)
+
+   self._sv.current_level_exp = self._sv.current_level_exp + value
+
+   if not self._sv.xp_to_next_lv then
+      log:error('%s needs an xp equation in job component data', self._entity)
+      return
+   end
+
+   if prevent_level_up then
+      self._sv.current_level_exp = math.min(self._sv.current_level_exp, self._sv.xp_to_next_lv - 1)
+   end
+
+   while self._sv.current_level_exp >= self._sv.xp_to_next_lv do
+      self._sv.current_level_exp = self._sv.current_level_exp - self._sv.xp_to_next_lv
+      self:level_up()
+   end
+
+   self.__saved_variables:mark_changed()
+
+   radiant.events.trigger(self._entity, 'stonehearth_ace:on_add_exp', { value = value, add_curiosity_addition = add_curiosity_addition, prevent_level_up = prevent_level_up })
 end
 
 AceJobComponent._old_level_up = JobComponent.level_up

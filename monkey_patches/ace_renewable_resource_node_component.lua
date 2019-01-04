@@ -65,11 +65,15 @@ function AceRenewableResourceNodeComponent:_on_auto_harvest_setting_update(playe
 end
 ]]
 
+function AceRenewableResourceNodeComponent:create()
+   self._is_create = true
+end
+
 AceRenewableResourceNodeComponent._old_post_activate = RenewableResourceNodeComponent.post_activate
 function AceRenewableResourceNodeComponent:post_activate()
    self:_old_post_activate()
 
-   if self._sv.harvestable then
+   if self._sv.harvestable and self._is_create then
       self:_auto_request_harvest()
    end
 end

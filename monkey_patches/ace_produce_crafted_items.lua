@@ -6,8 +6,8 @@ function AceProduceCraftedItems:run(ai, entity, args)
    local order_progress = args.order:get_progress(entity)   -- Paul: changed this line
 
    if order_progress == stonehearth.constants.crafting_status.CRAFTING then
-      self:_destroy_ingredients(args)
-      self:_add_outputs_to_bench(entity, args.workshop, args.order:get_recipe())
+      local ingredient_quality = self:_destroy_ingredients(args)
+      self:_add_outputs_to_bench(entity, args.workshop, args.order:get_recipe(), ingredient_quality)
 
       args.order:on_item_created()
       args.order:progress_to_next_stage(entity)  -- Paul: changed this line
@@ -46,6 +46,84 @@ function AceProduceCraftedItems:run(ai, entity, args)
    end
    
    args.workshop:get_component('stonehearth:workshop'):finish_crafting_progress()
+end
+
+-- also calculate and return the value-weighted quality of the ingredients
+function AceProduceCraftedItems:_destroy_ingredients(args)
+   local ec_children = {}
+   local quality = 0
+   local total_value = 0
+   local entity_container = args.workshop:get_component('entity_container')
+   --There may not be one if there is nothing on the bench yet
+   if entity_container then
+      for id, child in entity_container:each_child() do
+         ec_children[id] = child
+      end
+      for i, item in pairs(ec_children) do
+         local value = math.max(1, radiant.entities.get_net_worth(item:get_uri()))
+         quality = quality + radiant.entities.get_item_quality(item) * value
+         total_value = total_value + value
+
+         radiant.entities.destroy_entity(item)
+      end
+   end
+
+   return math.max(1, quality / math.max(1, total_value))
+end
+
+-- only overriding this function to pass along the ingredient quality to the crafter component
+function AceProduceCraftedItems:_add_outputs_to_bench(crafter, workshop, recipe, ingredient_quality)
+   -- figure out where the outputs all go
+   local location_on_workshop
+   local ced = radiant.entities.get_entity_data(workshop, 'stonehearth:table')
+   if ced then
+      local offset = ced['drop_offset']
+      if offset then
+         offset = Point3(offset.x, offset.y, offset.z)
+         local facing = workshop:get_component('mob')
+                                    :get_facing()
+         location_on_workshop = offset:rotated(facing)
+      end
+   end
+   if not location_on_workshop then
+      location_on_workshop = Point3(0, 1, 0)
+   end
+
+   local crafter_component = crafter:get_component('stonehearth:crafter')
+
+   -- create all the recipe products
+   local outputs = self:_get_outputs(crafter, workshop, recipe)
+   for i, product_uri in ipairs(outputs) do
+      local item = crafter_component:produce_crafted_item(product_uri, recipe, ingredient_quality)
+
+      -- put the item on the workshop
+      item:add_component('mob')
+               :move_to(location_on_workshop)
+      workshop:add_component('entity_container')
+               :add_child(item)
+
+      radiant.entities.set_player_id(item, crafter)
+      
+      -- Make sure other people don't try to swipe our item while we are deciding to take it to storage.
+      local player_id = radiant.entities.get_player_id(crafter)
+      stonehearth.ai:acquire_ai_lease(item, crafter, 1000, player_id)
+
+      stonehearth.inventory:get_inventory(player_id):add_item(item)
+
+      table.insert(self._outputs, item)
+
+      radiant.effects.run_effect(item, 'stonehearth:effects:item_created')
+
+      --send event that the carpenter has finished an item
+      local crafting_data = {
+         recipe_data = recipe,
+         product = item,
+         product_uri = product_uri,
+      }
+      radiant.log.write('crafter', 5, 'Making item %s with id %s', item, item:get_id())
+
+      radiant.events.trigger_async(crafter, 'stonehearth:crafter:craft_item', crafting_data)
+   end
 end
 
 return AceProduceCraftedItems

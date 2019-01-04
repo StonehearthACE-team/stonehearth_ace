@@ -14,17 +14,53 @@ function AceFarmerFieldComponent:restore()
    self._is_restore = true
 end
 
+function AceFarmerFieldComponent:post_activate()
+   self:_ensure_fertilize_layer()
+   
+   if self._is_restore then
+      self:_create_water_listener()
+   end
+end
+
+function AceFarmerFieldComponent:_ensure_fertilize_layer()
+   if not self._sv._fertilizable_layer then
+      self._sv._fertilizable_layer = self:_create_field_layer('stonehearth_ace:farmer:field_layer:fertilizable')
+      if self._is_restore then
+         self._sv._fertilizable_layer:get_component('destination')
+                        :set_reserved(_radiant.sim.alloc_region3()) -- xxx: clear the existing one from cpp land!
+                        :set_auto_update_adjacent(true)
+      end
+      table.insert(self._field_listeners, radiant.events.listen(self._sv._fertilizable_layer, 'radiant:entity:pre_destroy', self, self._on_field_layer_destroyed))
+   end
+end
+
 AceFarmerFieldComponent._old_on_field_created = FarmerFieldComponent.on_field_created
 function AceFarmerFieldComponent:on_field_created(town, size)
-	self:_old_on_field_created(town, size)
+   self:_old_on_field_created(town, size)
+   radiant.terrain.place_entity(self._sv._fertilizable_layer, self._location)
 
 	self:_create_water_listener()
 end
 
-function AceFarmerFieldComponent:post_activate()
-   if self._is_restore then
-      self:_create_water_listener()
-   end
+AceFarmerFieldComponent._old_notify_plant_location_finished = FarmerFieldComponent.notify_plant_location_finished
+function AceFarmerFieldComponent:notify_plant_location_finished(location)
+   self:_old_notify_plant_location_finished(location)
+
+   local p = Point3(location.x - self._location.x, 0, location.z - self._location.z)
+   local fertilizable_layer = self._sv._fertilizable_layer
+   local fertilizable_layer_region = fertilizable_layer:get_component('destination'):get_region()
+
+   fertilizable_layer_region:modify(function(cursor)
+      cursor:add_point(p)
+   end)
+end
+
+function FarmerFieldComponent:notify_crop_fertilized(x, z)
+   local fertilizable_layer = self._sv._fertilizable_layer
+   local fertilizable_layer_region = fertilizable_layer:get_component('destination'):get_region()
+   fertilizable_layer_region:modify(function(cursor)
+      cursor:subtract_point(Point3(x - 1, 0, z - 1))
+   end)
 end
 
 AceFarmerFieldComponent._old_plant_crop_at = FarmerFieldComponent.plant_crop_at
@@ -44,7 +80,7 @@ function AceFarmerFieldComponent:_create_water_listener()
 	local region = self._entity:get_component('region_collision_shape'):get_region():get()
 						:extruded('x', 1, 1)
                   :extruded('z', 1, 1)
-                  :extruded('y', 1, 0)
+                  :extruded('y', 1, 0):translated(Point3(0, -1, 0))
    local water_component = self._entity:add_component('stonehearth_ace:water_signal')
    self._water_signal = water_component:set_signal('farmer_field', region, {'water_volume'}, function(changes) self:_on_water_signal_changed(changes) end)
    self._sv.water_signal_region = region:duplicate()
@@ -117,9 +153,19 @@ end
 
 AceFarmerFieldComponent._old__on_destroy = FarmerFieldComponent._on_destroy
 function AceFarmerFieldComponent:_on_destroy()
-	self:_old__on_destroy()
+   self:_old__on_destroy()
+   
+   radiant.entities.destroy_entity(self._sv._fertilizable_layer)
+   self._sv._fertilizable_layer = nil
 
 	self:_destroy_water_listener()
+end
+
+AceFarmerFieldComponent._old__reconsider_fields = FarmerFieldComponent._reconsider_fields
+function AceFarmerFieldComponent:_reconsider_fields()
+   for _, layer in ipairs({self._sv._soil_layer, self._sv._plantable_layer, self._sv._harvestable_layer, self._sv._fertilizable_layer}) do
+      stonehearth.ai:reconsider_entity(layer, 'worker count changed')
+   end
 end
 
 return AceFarmerFieldComponent

@@ -31,58 +31,42 @@
          "LOW": [
             {
                "min_water": 0,
-               "period_multiplier": 1
-            },
-            {
-               "min_water": 0.1,
-               "period_multiplier": 0.8
-            },
-            {
-               "min_water": 0.6,
                "period_multiplier": 1.2
             },
             {
-               "min_water": 1,
-               "period_multiplier": 1.5
+               "min_water": 0.01,
+               "period_multiplier": 1
+            },
+            {
+               "min_water": 0.3,
+               "period_multiplier": 0.8
             }
          ],
          "MEDIUM": [
             {
                "min_water": 0,
-               "period_multiplier": 1.5
-            },
-            {
-               "min_water": 0.1,
                "period_multiplier": 1.2
             },
             {
-               "min_water": 0.4,
+               "min_water": 0.01,
                "period_multiplier": 1
             },
             {
-               "min_water": 1.2,
+               "min_water": 0.3,
                "period_multiplier": 0.8
-            },
-            {
-               "min_water": 2,
-               "period_multiplier": 1.2
             }
          ],
          "HIGH": [
             {
                "min_water": 0,
-               "period_multiplier": 2
-            },
-            {
-               "min_water": 0.5,
-               "period_multiplier": 1.5
-            },
-            {
-               "min_water": 1,
                "period_multiplier": 1.2
             },
             {
-               "min_water": 1.8,
+               "min_water": 0.01,
+               "period_multiplier": 1
+            },
+            {
+               "min_water": 0.3,
                "period_multiplier": 0.8
             }
          ]
@@ -219,6 +203,9 @@
          "SLOT_TO_BONE_MAP": {
             "backpack": "torso"
          }
+      },
+      "attribute_effects": {
+         "CURIOSITY_EXPERIENCE_MULTIPLER": 0.01
       }
    }
 }

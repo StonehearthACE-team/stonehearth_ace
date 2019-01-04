@@ -2,7 +2,8 @@
    "ai": {
       "actions": {
          "status_text": {
-            "train": "Going for training"
+            "train": "Going for training",
+            "fertilize_field": "Applying fertilizer"
          }
       }
    },
@@ -1670,6 +1671,28 @@
             "shepherd_hood": {
                "display_name": "Shepherd's Hood",
                "description": "A wooly hood used by the shepherd."
+            }
+         }
+      },
+      "farmer": {
+         "farmer_description": {
+            "level_2_data": {
+               "perk_000_name": "Bountiful Harvest",
+               "perk_000_description": "The farmer coaxes up to 40% greater yield from each plant."
+            },
+            "level_3_data": {
+               "perk_000_name": "Fertilizer",
+               "perk_000_description": "(Coming soon!)"
+            },
+            "level_4_data": {
+               "perk_000_name": "Bountiful Harvest (Upgrade)",
+               "perk_000_description": "The farmer coaxes up to 70% greater yield from each plant."
+            },
+            "level_6_data": {
+               "perk_000_name": "Bountiful Harvest (Max)",
+               "perk_000_description": "The farmer coaxes 100% more yield from each plant.",
+               "perk_001_name": "Mega Crops",
+               "perk_001_description": "(Coming soon!)"
             }
          }
       }
@@ -4908,9 +4931,9 @@
                "water_affinity_range": "Irrigation</br>This crop will grow a little faster than normal with <span class='water'><span class='value'>[str(i18n_data.min)] - [str(i18n_data.max)]</span> water</span> within the blue outlined region.",
                "water_affinity_min_only": "Irrigation</br>This crop will grow a little faster with at least <span class='water'><span class='value'>[str(i18n_data.min)]</span> water</span> within the blue outlined region.",
                "current_water_level": "Current <span class='water'>water</span> level: <span class='water value'>[str(i18n_data.level)]</span>.",
-               "requires_flooding": "This crop must have water covering it to grow. It will not grow without water.",
-               "prefers_flooding": "This crop grows more quickly when water is covering it. It will grow slower without water.",
-               "prefers_no_flooding": "This crop grows more slowly when water is covering it. It will grow normally without any irrigation."
+               "requires_flooding": "This crop must have water covering it to grow.",
+               "prefers_flooding": "This crop grows more quickly when water is covering it and slower when it isn't.",
+               "prefers_no_flooding": "This crop grows more slowly when water is covering it."
             },
             "underfarm": {
                "substrate_name": "Substrate",

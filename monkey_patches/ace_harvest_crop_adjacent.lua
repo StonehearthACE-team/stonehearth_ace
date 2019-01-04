@@ -1,5 +1,4 @@
-local Point3 = _radiant.csg.Point3
-local Entity = _radiant.om.Entity
+local rng = _radiant.math.get_default_rng()
 
 local AceHarvestCropAdjacent = class()
 
@@ -19,9 +18,18 @@ function AceHarvestCropAdjacent:_harvest_one_time(ai, entity)
    radiant.entities.turn_to_face(entity, self._crop)
    ai:execute('stonehearth:run_effect', { effect = 'fiddle' })
 
+   local harvest_count = self:_get_actual_spawn_count(entity)
+   local crop_quality = radiant.entities.get_item_quality(self._crop)
+
    -- bump up the count on the one we're carrying.
    if carrying then
-      radiant.entities.increment_carrying(entity, self._spawn_count)
+      radiant.entities.increment_carrying(entity, harvest_count)
+      -- make sure the quality is applied
+      local carrying_quality = radiant.entities.get_item_quality(carrying)
+      if crop_quality > carrying_quality then
+         self:_set_quality(carrying, crop_quality)
+      end
+
       return true
    end
 
@@ -49,7 +57,11 @@ function AceHarvestCropAdjacent:_harvest_one_time(ai, entity)
    end
    local stacks_component = product:get_component('stonehearth:stacks')
    if stacks_component then
-      stacks_component:set_stacks(1)
+      stacks_component:set_stacks(harvest_count)
+   end
+
+   if crop_quality > 1 then
+      self:_set_quality(product, crop_quality)
    end
 
    radiant.entities.pickup_item(entity, product)
@@ -64,36 +76,26 @@ function AceHarvestCropAdjacent:_harvest_one_time(ai, entity)
    return true
 end
 
---By default, we produce 1 item stack per basket
-function HarvestCropAdjacent:_get_num_to_increment(entity)
+function AceHarvestCropAdjacent:_get_actual_spawn_count(entity)
    local num_to_spawn = 1
-
-   --If the this entity has the right perk, spawn more than one
+   
    local job_component = entity:get_component('stonehearth:job')
-   if job_component and job_component:curr_job_has_perk('farmer_harvest_increase') then
-      num_to_spawn = 2
+   if job_component then
+      if job_component:curr_job_has_perk('farmer_harvest_increase') or job_component:curr_job_has_perk('farmer_harvest_increase_100') then
+         num_to_spawn = 2
+      elseif job_component:curr_job_has_perk('farmer_harvest_increase_40') then
+         num_to_spawn = math.floor(rng:get_real(1.4, 2.4))
+      elseif job_component:curr_job_has_perk('farmer_harvest_increase_70') then
+         num_to_spawn = math.floor(rng:get_real(1.7, 2.7))
+      end
    end
 
    return num_to_spawn
 end
 
-function AceHarvestCropAdjacent:_can_carry_more(entity, carrying)
-   assert(self._spawn_count)
-
-   local stacks_component = carrying:get_component('stonehearth:stacks')
-   if not stacks_component or (stacks_component:get_stacks() + self._spawn_count >= stacks_component:get_max_stacks()) then
-      return false
-   end
-   return true
-end
-
-function AceHarvestCropAdjacent:_get_max_spawn_count(entity)
-   local job_component = entity:get_component('stonehearth:job')
-   if job_component then
-      if job_component:curr_job_has_perk('farmer_harvest_increase') then
-         num_to_spawn = 2
-      end
-   end
+function AceHarvestCropAdjacent:_set_quality(item, quality)
+   local iq_comp = item:add_component('stonehearth:item_quality')
+   iq_comp:initialize_quality(quality, iq_comp:get_author_name(), iq_comp:get_author_type(), {override_allow_variable_quality = true})
 end
 
 return AceHarvestCropAdjacent

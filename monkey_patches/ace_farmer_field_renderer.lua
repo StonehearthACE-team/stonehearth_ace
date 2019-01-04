@@ -66,7 +66,8 @@ function AceFarmerFieldRenderer:_render_water_signal_region()
    local region = data.water_signal_region
    if region then
       local material = '/stonehearth/data/horde/materials/transparent_box_nodepth.material.json'
-      self._water_signal_region_node = _radiant.client.create_region_outline_node(self._entity_node, region:inflated(Point3(-0.05, -0.05, -0.05)),
+      self._water_signal_region_node = _radiant.client.create_region_outline_node(self._entity_node,
+            region:inflated(Point3(-0.05, -0.05, -0.05)):extruded('y', 0, 0.15),
             self._water_color, Color4(0, 0, 0, 0), material, 1)
          :set_casts_shadows(false)
          :set_can_query(false)

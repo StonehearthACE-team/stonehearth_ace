@@ -17,6 +17,9 @@
    "client_init_script": "file(stonehearth_ace_client)",
    "server_init_script": "file(stonehearth_ace_server)",
    "aliases": {
+      "actions:component_to_filter_fn": "file(ai/actions/component_to_filter_fn_action.lua)",
+      "actions:fertilize_crop_adjacent": "file(ai/actions/fertilize_crop_adjacent.lua)",
+      "actions:fertilize_field": "file(ai/actions/fertilize_field_action.lua)",
       "actions:harvest_undercrop_adjacent": "file(ai/actions/harvest_undercrop_adjacent.lua)",
       "actions:harvest_underfield": "file(ai/actions/harvest_underfield_action.lua)",
       "actions:light_firepit": "file(ai/actions/light_firepit.lua)",
@@ -87,7 +90,7 @@
       "armor:na_steel_mail": "file(entities/armor/na_steel_mail/na_steel_mail.json)",
       "armor:na_steel_shield": "file(entities/armor/na_steel_shield/na_steel_shield.json)",
       "armor:offhand_placeholder": "file(entities/armor/offhand_placeholder/offhand_placeholder.json)",
-	  "armor:accessory_placeholder": "file(entities/armor/accessory_placeholder/accessory_placeholder.json)",
+	   "armor:accessory_placeholder": "file(entities/armor/accessory_placeholder/accessory_placeholder.json)",
       "armor:rc_bronze_breastplate": "file(entities/armor/rc_bronze_breastplate/rc_bronze_breastplate.json)",
       "armor:rc_bronze_circlet": "file(entities/armor/rc_bronze_circlet/rc_bronze_circlet.json)",
       "armor:rc_bronze_helm": "file(entities/armor/rc_bronze_helm/rc_bronze_helm.json)",
@@ -288,6 +291,7 @@
       "effects:porcelain_lamp_effect_wall": "file(data/effects/porcelain_lamp_effect_wall/porcelain_lamp_effect_wall.json)",
       "effects:snow_effect_minor": "file(data/effects/snow_effect_minor/snow_effect_minor.json)",
       "extractors:underfield_layer": "file(data/interactions/extractors/underfield_layer_extractor.lua)",
+      "farmer:field_layer:fertilizable": "file(entities/farming/fertilize_field_layer/fertilize_field_layer.json)",
       "farmer:all_crops": "file(services/server/farming/data/all_crops.json)",
       "farmer:initial_crops": "file(services/server/farming/data/initial_crops.json)",
       "farmer:northern_alliance_initial_crops": "file(services/server/farming/data/na_initial_crops.json)",
@@ -1104,6 +1108,7 @@
       "stonehearth:playable_kingdom_index": "file(data/kingdoms/playable_kingdom_index.json)",
       "stonehearth/jobs/herbalist/recipes/recipes.json": "file(jobs/herbalist/recipes/recipes.json)",
       "stonehearth/jobs/blacksmith/recipes/recipes.json": "file(jobs/blacksmith/recipes/recipes.json)",
+      "stonehearth/jobs/farmer/farmer_description.json": "file(jobs/farmer/farmer_description.json)",
       "stonehearth:farmer:all_crops": "stonehearth_ace:farmer:all_crops",
       "stonehearth:farmer:initial_crops": "stonehearth_ace:farmer:initial_crops",
       "northern_alliance:farmer:initial_crops": "stonehearth_ace:farmer:northern_alliance_initial_crops",
@@ -1555,11 +1560,12 @@
       "stonehearth/entities/decoration/blue_market_stall/blue_market_stall_ghost.json": "file(entities/decoration/blue_market_stall/blue_market_stall_ghost.json)",
       "stonehearth/entities/decoration/clay_market_stall/clay_market_stall_ghost.json": "file(entities/decoration/clay_market_stall/clay_market_stall_ghost.json)",
       "stonehearth/entities/decoration/banner_wall_big/banner_wall_big.json": "file(entities/decoration/banner_wall_big/banner_wall_big.json)",
-	  "stonehearth/entities/armor/fire_quiver/fire_quiver.json": "file(entities/armor/fire_quiver/fire_quiver.json)",
-	  "stonehearth/entities/armor/simple_quiver/simple_quiver.json": "file(entities/armor/simple_quiver/simple_quiver.json)",
-	  "stonehearth/data/commands/archer_arrows/default_arrows.json": "file(data/commands/archer_arrows/default_arrows.json)",
-	  "stonehearth/data/commands/archer_arrows/fire_arrows.json": "file(data/commands/archer_arrows/fire_arrows.json)",
-	  "stonehearth/data/commands/archer_arrows/slow_arrows.json": "file(data/commands/archer_arrows/slow_arrows.json)"
+      "stonehearth/entities/armor/fire_quiver/fire_quiver.json": "file(entities/armor/fire_quiver/fire_quiver.json)",
+      "stonehearth/entities/armor/simple_quiver/simple_quiver.json": "file(entities/armor/simple_quiver/simple_quiver.json)",
+      "stonehearth/data/commands/archer_arrows/default_arrows.json": "file(data/commands/archer_arrows/default_arrows.json)",
+      "stonehearth/data/commands/archer_arrows/fire_arrows.json": "file(data/commands/archer_arrows/fire_arrows.json)",
+      "stonehearth/data/commands/archer_arrows/slow_arrows.json": "file(data/commands/archer_arrows/slow_arrows.json)",
+      "stonehearth:ai_pack:farming": "file(ai/packs/farming_ai_pack.json)"
    },
    "overrides": {
       "stonehearth/data/rigs/entities/humans/animations/male/combat_1h_thrust.json": "stonehearth_ace/data/rigs/entities/humans/animations/male/combat_1h_thrust.json",
@@ -1650,7 +1656,8 @@
       "stonehearth/ai/actions/sitting/sit_on_chair_action.lua": "file(ai/actions/sitting/sit_on_chair_action.lua)",
       "stonehearth/entities/food/flat_bread/flat_bread/flat_bread.qb": "file(entities/food/flat_bread/flat_bread.qb)",
       "stonehearth/entities/food/flat_bread/flat_bread_serving/flat_bread_serving.qb": "file(entities/food/flat_bread/flat_bread_serving.qb)",
-      "stonehearth/entities/food/flat_bread/flat_bread/flat_bread.png": "file(entities/food/flat_bread/flat_bread.png)"
+      "stonehearth/entities/food/flat_bread/flat_bread/flat_bread.png": "file(entities/food/flat_bread/flat_bread.png)",
+      "stonehearth/ai/actions/key_to_entity_data_filter_fn_action.lua": "file(ai/actions/key_to_entity_data_filter_fn_action.lua)"
    },
    "components": {
       "aquatic_object": "file(components/aquatic_object/aquatic_object_component.lua)",

@@ -1,0 +1,62 @@
+{
+   "xp_rewards": {
+      "base_exp_per_plant": 1,
+      "base_exp_per_fertilize": 2
+   },
+   "level_data": {
+      "2": {
+         "perks": [
+            {
+               "name": "i18n(stonehearth_ace:jobs.farmer.farmer_description.level_2_data.perk_000_name)",
+               "id": "farmer_harvest_increase_40",
+               "icon": "file(images/harvest_increase_40.png)",
+               "description": "i18n(stonehearth_ace:jobs.farmer.farmer_description.level_2_data.perk_000_description)",
+               "level": 2
+            }
+         ]
+      },
+      "3": {
+         "mixintypes": {
+            "perks": "override"
+         },
+         "perks": [
+            {
+               "name": "i18n(stonehearth:jobs.farmer.farmer_description.level_3_data.perk_000_name)",
+               "id": "farmer_fertilizer",
+               "icon": "file(images/fertilizer.png)",
+               "description": "i18n(stonehearth:jobs.farmer.farmer_description.level_3_data.perk_000_description)",
+               "level": 3
+            }
+         ]
+      },
+      "4": {
+         "perks": [
+            {
+               "name": "i18n(stonehearth_ace:jobs.farmer.farmer_description.level_4_data.perk_000_name)",
+               "id": "farmer_harvest_increase_70",
+               "icon": "file(images/harvest_increase_70.png)",
+               "description": "i18n(stonehearth_ace:jobs.farmer.farmer_description.level_4_data.perk_000_description)",
+               "level": 4
+            }
+         ]
+      },
+      "6": {
+         "perks": [
+            {
+               "name": "i18n(stonehearth_ace:jobs.farmer.farmer_description.level_6_data.perk_000_name)",
+               "id": "farmer_harvest_increase_100",
+               "icon": "file(images/harvest_increase_100.png)",
+               "description": "i18n(stonehearth_ace:jobs.farmer.farmer_description.level_6_data.perk_000_description)",
+               "level": 6
+            },
+            {
+               "name": "i18n(stonehearth_ace:jobs.farmer.farmer_description.level_6_data.perk_001_name)",
+               "id": "farmer_mega_crops",
+               "icon": "file(images/mega_crops.png)",
+               "description": "i18n(stonehearth_ace:jobs.farmer.farmer_description.level_6_data.perk_001_description)",
+               "level": 6
+            }
+         ]
+      }
+   }
+}
