@@ -2,7 +2,8 @@
    "ai": {
       "actions": {
          "status_text": {
-            "train": "Geht zum Training"
+            "train": "Geht zum Training",
+            "fertilize_field": "Dünger auftragen"
          }
       }
    },
@@ -366,23 +367,23 @@
             "thresholds": {
                "none": {
                   "display_name": "Keine Wild",
-                  "description": "Entweder gibt es hier keine Wild oder sie wird von Gebäuden in den Schatten gestellt."
+                  "description": "Entweder gibt es hier keine Wild oder sie wird von Gebäuden in den Schatten gestellt. Die Effizienz der Fangzone ist gleich null"
                },
                "little": {
                   "display_name": "Ein bisschen Wild",
-                  "description": "Dieser Bereich ist sehr zahm. Versuche, Bäume zu pflanzen, um sie ein wenig anzulocken."
+                  "description": "Dieser Bereich ist sehr zahm. Versuche, Bäume zu pflanzen, um sie ein wenig anzulocken. Die Effizienz der Fangzone ist stark reduziert"
                },
                "some": {
                   "display_name": "Etwas Wild",
-                  "description": "Hier ist etwas Wild, aber es werden nicht viele Tiere angezogen. Größere oder mehr Pflanzen könnten helfen."
+                  "description": "Hier ist etwas Wild, aber es werden nicht viele Tiere angezogen. Größere oder mehr Pflanzen könnten helfen. Die Effizienz der Fangzone ist durchschnittlich"
                },
                "lots": {
                   "display_name": "Wild",
-                  "description": "Diese Gegend ist eher wild und es sollten viele Tiere angezogen werden."
+                  "description": "Diese Gegend ist eher wild und es sollten viele Tiere angezogen werden. Die Effizienz der Fangzone ist geringfügig erhöht"
                },
                "tons": {
                   "display_name": "Sehr Wild",
-                  "description": "Es ist ein wahrer Garten Eden!"
+                  "description": "Es ist ein wahrer Garten Eden! Die Effizienz der Fangzone ist die beste Mögliche!"
                }
             }
          }
@@ -1004,6 +1005,21 @@
                "recipe_name": "Goldene Porzellanwandfliese",
                "description": "Noch schicker mit Vergoldungen!",
                "flavor": ""
+            },
+            "simple_bed_pet_recipe": {
+               "recipe_name": "Strohtierbett",
+               "description": "Ein etwas besserer Ort für deine Haustiere zum schlafen.",
+               "flavor": "Haustiere werden immer versuchen, in dem Bett zu schlafen, das dem Bett seines Besitzers am nächsten ist!"
+            },
+            "clay_comfy_bed_pet_recipe": {
+               "recipe_name": "Bequemes Lehmtierbett",
+               "description": "Ermöglicht deinen Haustieren einen bequemeren Schlaf.",
+               "flavor": "Haustiere werden immer versuchen, in dem Bett zu schlafen, das dem Bett seines Besitzers am nächsten ist!"
+            },
+            "porcelain_bed_pet_recipe": {
+               "recipe_name": "Bequemes Porzellantierbett",
+               "description": "In diesem Bett können deine Haustiere wunderbar schlafen!",
+               "flavor": "Haustiere werden immer versuchen, in dem Bett zu schlafen, das dem Bett seines Besitzers am nächsten ist!"
             }
          }
       },
@@ -1116,6 +1132,21 @@
             },
             "stone_sword_recipe": {
                "flavor": "Das Training mit Steinschwertern ist ein grausamer, aber effizienter Witz."
+            },
+            "simple_bed_pet_2_recipe": {
+               "recipe_name": "Strohtierbett",
+               "description": "Ein etwas besserer Ort für deine Haustiere zum schlafen.",
+               "flavor": "Haustiere werden immer versuchen, in dem Bett zu schlafen, das dem Bett seines Besitzers am nächsten ist!"
+            },
+            "stone_comfy_bed_pet_recipe": {
+               "recipe_name": "Bequemes Steintierbett",
+               "description": "Ermöglicht deinen Haustieren einen bequemeren Schlaf.",
+               "flavor": "Haustiere werden immer versuchen, in dem Bett zu schlafen, das dem Bett seines Besitzers am nächsten ist!"
+            },
+            "marble_bed_pet_recipe": {
+               "recipe_name": "Bequemes Marmortierbett",
+               "description": "In diesem Bett können deine Haustiere wunderbar schlafen!",
+               "flavor": "Haustiere werden immer versuchen, in dem Bett zu schlafen, das dem Bett seines Besitzers am nächsten ist!"
             }
          },
          "mason_workbench_bone": {
@@ -1567,9 +1598,14 @@
                "flavor": "Langer und kunstvoller Holzgriff mit hochwertigem Leder"
             },
             "ladder_recipe": {
-               "recipe_name": "Kleine Leiter",
-               "description": "Es ist eine Leiter, die als Teil von Bauplänen platziert werden kann.",
+               "recipe_name": "Kleine Leiter (x3)",
+               "description": "Stelle 3 Leitern her, die als Teile von Bauplänen platziert werden können.",
                "flavor": "Nützlich zum Erreichen von obenstehenden Keksdosen."
+            },
+            "ladder_wide_recipe": {
+               "recipe_name": "Breite Leiter",
+               "description": "Eine größere und schönere Leiter für deine Baupläne.",
+               "flavor": "'Chaos ist keine Grube. Chaos ist eine Leiter' -Lord Petyr Belltower"
             },
             "bundle_of_firewood_recipe": {
                "recipe_name": "Feuerholzbündel (x2)",
@@ -1588,6 +1624,21 @@
                "recipe_name": "Gemeiner Schlafplatz",
                "description": "Sprichwörtlich schläft man auf einem Brett.",
                "flavor": "Gemein wie in Arm, nicht grausam. Obwohl es das auch ist."
+            },
+            "simple_bed_pet_recipe": {
+               "recipe_name": "Strohtierbett",
+               "description": "Ein etwas besserer Ort für deine Haustiere zum schlafen.",
+               "flavor": "Haustiere werden immer versuchen, in dem Bett zu schlafen, das dem Bett seines Besitzers am nächsten ist!"
+            },
+            "comfy_bed_pet_recipe": {
+               "recipe_name": "Lehmtierbett",
+               "description": "Ermöglicht deinen Haustieren einen bequemeren Schlaf.",
+               "flavor": "Haustiere werden immer versuchen, in dem Bett zu schlafen, das dem Bett seines Besitzers am nächsten ist!"
+            },
+            "ornate_bed_pet_recipe": {
+               "recipe_name": "Verziertes bequemes Tierbett",
+               "description": "In diesem Bett können deine Haustiere wunderbar schlafen!",
+               "flavor": "Haustiere werden immer versuchen, in dem Bett zu schlafen, das dem Bett seines Besitzers am nächsten ist!"
             }
          }
       },
@@ -1670,6 +1721,28 @@
             "shepherd_hood": {
                "display_name": "Hirtenhaube",
                "description": "Eine wollene Kapuze, die der Hirte benutzt."
+            }
+         }
+      },
+      "farmer": {
+         "farmer_description": {
+            "level_2_data": {
+               "perk_000_name": "Ertragreiche Ernte",
+               "perk_000_description": "Der Farmer erzielt mit jeder Pflanze einen bis zu 40% höheren Ertrag."
+            },
+            "level_3_data": {
+               "perk_000_name": "Dünger",
+               "perk_000_description": "(Demnächst!)"
+            },
+            "level_4_data": {
+               "perk_000_name": "Ertragreiche Ernte (Upgrade)",
+               "perk_000_description": "Der Farmer erzielt mit jeder Pflanze 70% mehr Ertrag."
+            },
+            "level_6_data": {
+               "perk_000_name": "Ertragreiche Ernte (Max)",
+               "perk_000_description": "Der Farmer erzielt mit jeder Pflanze 100% mehr Ertrag.",
+               "perk_001_name": "Mega-Früchte",
+               "perk_001_description": "(Demnächst!)"
             }
          }
       }
@@ -1835,6 +1908,14 @@
                "display_name": "Porzellan Zauntor",
                "description": "Dieses schöne Tor wird verhindern, dass Hearthlinge drumherum gehen müssen."
             }
+         },
+         "wide_ladder": {
+            "display_name": "Breite Leiter",
+            "description": "Eine größere Leiter, wenn eine kleine nicht ausreicht."
+         },
+         "ladder": {
+            "display_name": "Handarbeitsleiter",
+            "description": "Das effizienteste Werkzeug für den Aufstieg."
          }
       },
       "crops": {
@@ -2794,6 +2875,38 @@
          "sleeping_bag": {
             "display_name": "Rollbett",
             "description": "Besser als der Boden, Rollbetten sind für Ihre Tragbarkeit bekannt."
+         },
+         "simple_bed_pet": {
+            "display_name": "Strohtierbett",
+            "description": "Ein etwas besserer Ort für deine Haustiere zum Schlafen. Stellen es nahe an das Bett seines Besitzers!"
+         },
+         "ornate_bed_pet": {
+            "display_name": "Verziertes bequemes Tierbett",
+            "description": "Haustiere werden hier wunderbar schlafen! Stellen es nahe an das Bett seines Besitzers!"
+         },
+         "comfy_bed_pet": {
+            "display_name": "Bequemes Tierbett",
+            "description": "Ermöglicht Haustiere einen bequemeren Schlaf. Sie mögen es nahe am Bett ihres Besitzers!"
+         },
+         "simple_bed_pet_2": {
+            "display_name": "Strohtierbett",
+            "description": "Ein etwas besserer Ort für deine Haustiere zum Schlafen. Stellen es nahe an das Bett seines Besitzers"
+         },
+         "stone_comfy_bed_pet": {
+            "display_name": "Bequemes Steintierbett",
+            "description": "Ermöglicht Haustiere einen bequemeren Schlaf. Sie mögen es nahe am Bett ihres Besitzers!"
+         },
+         "porcelain_bed_pet": {
+            "display_name": "Bequemes Porzellantierbett",
+            "description": "Haustiere werden hier wunderbar schlafen! Stellen es nahe an das Bett seines Besitzers"
+         },
+         "marble_bed_pet": {
+            "display_name": "Bequemes Marmortierbett",
+            "description": "Haustiere werden hier wunderbar schlafen! Stellen es nahe an das Bett seines Besitzers"
+         },
+         "clay_comfy_bed_pet": {
+            "display_name": "Bequemes Lehmtierbett",
+            "description": "Ermöglicht Haustiere einen bequemeren Schlaf. Sie mögen es nahe am Bett ihres Besitzers!"
          }
       },
       "recipes": {
@@ -3757,6 +3870,14 @@
                "display_name": "Wolfjunges",
                "description": "Wie ein kleiner Doggo, der dich essen will!"
             }
+         },
+         "goblins": {
+            "goblin_large_totem": {
+               "description": "Schreckliche Rituale müssen durch dieses hässliche Ding bezeugt worden sein..."
+            },
+            "goblin_small_totem": {
+               "description": "Es sieht nicht gut aus und riecht auch nicht so gut."
+            }
          }
       },
       "armor": {
@@ -4616,6 +4737,10 @@
             "display_name": "Großes Stroh-Bündel",
             "description": "Ernte für Stroh-Bündel.",
             "iconic_description": "Kann für Stroh-Bündel geerntet werden, wenn es platziert wurde."
+         },
+         "fuel_holder_small": {
+            "display_name": "Gusseisenhalter",
+            "description": "Dieser schicke Halter kann Brennstoff wie Brennholz einigermaßen speichern."
          }
       }
    },
@@ -4908,9 +5033,9 @@
                "water_affinity_range": "Bewässerung</br>Diese Frucht wird schneller wachsen mit <span class='water'><span class='value'>[str(i18n_data.min)] - [str(i18n_data.max)]</span> Wasser</span> in der blauen umrandeten Region.",
                "water_affinity_min_only": "Bewässerung</br>Diese Frucht wird etwas schneller wachsen mit mindestens <span class='water'><span class='value'>[str(i18n_data.min)]</span> Wasser</span> in der blauen umrandeten Region.",
                "current_water_level": "Aktuelles <span class='water'></span> Wasserlevel: <span class='water value'>[str(i18n_data.level)]</span>.",
-               "requires_flooding": "Diese Pflanze muss mit Wasser bedeckt sein, damit sie wachsen kann. Ohne Wasser wächst es nicht.",
-               "prefers_flooding": "Diese Pflanze wächst schneller, wenn sie mit Wasser bedeckt ist. Ohne Wasser wird es langsamer wachsen",
-               "prefers_no_flooding": "Diese Pflanze wächst langsamer, wenn sie mit Wasser bedeckt ist. Es wird ohne Bewässerung normal wachsen"
+               "requires_flooding": "Diese Pflanze muss mit Wasser bedeckt sein, damit sie wachsen kann.",
+               "prefers_flooding": "Diese Pflanze wächst schneller, wenn sie mit Wasser bedeckt ist und ohne langsamer",
+               "prefers_no_flooding": "Diese Pflanze wächst langsamer, wenn sie mit Wasser bedeckt ist."
             },
             "underfarm": {
                "substrate_name": "Substrate",
