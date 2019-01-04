@@ -1,5 +1,6 @@
 local rng = _radiant.math.get_default_rng()
 
+local HarvestCropAdjacent = require 'stonehearth.ai.actions.harvest_crop_adjacent'
 local AceHarvestCropAdjacent = class()
 
 function AceHarvestCropAdjacent:_harvest_one_time(ai, entity)
@@ -77,6 +78,22 @@ function AceHarvestCropAdjacent:_harvest_one_time(ai, entity)
    return true
 end
 
+AceHarvestCropAdjacent._old__get_num_to_increment = HarvestCropAdjacent._get_num_to_increment
+function AceHarvestCropAdjacent:_get_num_to_increment(entity)
+   local num_to_spawn = self:_old__get_num_to_increment(entity)
+
+   local job_component = entity:get_component('stonehearth:job')
+   if job_component then
+      if job_component:curr_job_has_perk('farmer_harvest_increase_40') or
+            job_component:curr_job_has_perk('farmer_harvest_increase_70') or
+            job_component:curr_job_has_perk('farmer_harvest_increase_100') then
+         num_to_spawn = 2
+      end
+   end
+
+   return num_to_spawn
+end
+
 function AceHarvestCropAdjacent:_get_actual_spawn_count(entity)
    local num_to_spawn = 1
    
@@ -96,6 +113,7 @@ end
 
 function AceHarvestCropAdjacent:_set_quality(item, source)
    local source_iq = source:get_component('stonehearth:item_quality')
+   item:remove_component('stonehearth:item:quality')
    local item_iq = item:add_component('stonehearth:item_quality')
    item_iq:initialize_quality(source_iq:get_quality(), source_iq:get_author_name(), source_iq:get_author_type(), {override_allow_variable_quality = true})
 end

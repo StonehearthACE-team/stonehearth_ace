@@ -1,4 +1,6 @@
 local Point3 = _radiant.csg.Point3
+local Cube3 = _radiant.csg.Cube3
+local Region3 = _radiant.csg.Region3
 local Color4 = _radiant.csg.Color4
 
 local constants = require 'stonehearth.constants'
@@ -66,9 +68,14 @@ function AceFarmerFieldRenderer:_render_water_signal_region()
    local region = data.water_signal_region
    if region then
       local material = '/stonehearth/data/horde/materials/transparent_box_nodepth.material.json'
+
+      -- extruded apparently doesn't work with non-integer values, so we have to recreate the region
+      -- but we assume it's a single box, so we can just do that from the bounds
+      local bounds = region:get_bounds()
+      bounds.max.y = bounds.max.y + 0.1
+      local r = Region3(Cube3(bounds)):inflated(Point3(-0.05, -0.05, -0.05))
       self._water_signal_region_node = _radiant.client.create_region_outline_node(self._entity_node,
-            region:inflated(Point3(-0.05, -0.05, -0.05)):extruded('y', 0, 0.15),
-            self._water_color, Color4(0, 0, 0, 0), material, 1)
+            r, self._water_color, Color4(0, 0, 0, 0), material, 1)
          :set_casts_shadows(false)
          :set_can_query(false)
    end
