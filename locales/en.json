@@ -367,23 +367,23 @@
             "thresholds": {
                "none": {
                   "display_name": "No Wilderness",
-                  "description": "Either there's no wilderness here, or it's eclipsed by buildings."
+                  "description": "Either there's no wilderness here, or it's eclipsed by buildings. The Trapping Zone efficiency will be impractical."
                },
                "little": {
                   "display_name": "A Little Wild",
-                  "description": "This area is very tame. Try planting trees to *spruce* it up a bit."
+                  "description": "This area is very tame. Try planting trees to *spruce* it up a bit. The Trapping Zone efficiency will be greatly reduced."
                },
                "some": {
                   "display_name": "Somewhat Wild",
-                  "description": "There's some wilderness here, but it won't attract many animals. A few more or larger plants could help."
+                  "description": "There's some wilderness here, but it won't attract many animals. A few more or larger plants could help. The Trapping Zone Efficiency will be average."
                },
                "lots": {
                   "display_name": "Getting Wilder",
-                  "description": "This area is rather wild, and plenty of animals should be attracted to it."
+                  "description": "This area is rather wild, and plenty of animals should be attracted to it. The Trapping Zone Efficiency will be slightly increased."
                },
                "tons": {
                   "display_name": "Very Wild",
-                  "description": "It's a veritable Garden of Eden!"
+                  "description": "It's a veritable Garden of Eden! The Trapping Zone Efficiency will be as best as it's possible!"
                }
             }
          }
@@ -1005,6 +1005,21 @@
                "recipe_name": "Porcelain Golden Tile Wall",
                "description": "Even fancier with gildings!",
                "flavor": ""
+            },
+            "simple_bed_pet_recipe": {
+               "recipe_name": "Thatch Animal Bed",
+               "description": "A slightly better place for hearthlings' pets to sleep.",
+               "flavor": "Pets will always try to sleep on the bed that is closest to their owner's bed!"
+            },
+            "clay_comfy_bed_pet_recipe": {
+               "recipe_name": "Clay Animal Comfy Bed",
+               "description": "Allows animals to have a more comfortable sleep.",
+               "flavor": "Pets will always try to sleep on the bed that is closest to their owner's bed!"
+            },
+            "porcelain_bed_pet_recipe": {
+               "recipe_name": "Porcelain Animal Comfy Bed",
+               "description": "Animals will have a wonderful time sleeping in this bed!",
+               "flavor": "Pets will always try to sleep on the bed that is closest to their owner's bed!"
             }
          }
       },
@@ -1117,6 +1132,21 @@
             },
             "stone_sword_recipe": {
                "flavor": "Training with stone swords is a cruel but efficient joke."
+            },
+            "simple_bed_pet_2_recipe": {
+               "recipe_name": "Dry Thatch Animal Bed",
+               "description": "A slightly better place for hearthlings' pets to sleep.",
+               "flavor": "Pets will always try to sleep on the bed that is closest to their owner's bed!"
+            },
+            "stone_comfy_bed_pet_recipe": {
+               "recipe_name": "Stone Animal Comfy Bed",
+               "description": "Allows animals to have a more comfortable sleep.",
+               "flavor": "Pets will always try to sleep on the bed that is closest to their owner's bed!"
+            },
+            "marble_bed_pet_recipe": {
+               "recipe_name": "Marble Animal Comfy Bed",
+               "description": "Animals will have a wonderful time sleeping in this bed!",
+               "flavor": "Pets will always try to sleep on the bed that is closest to their owner's bed!"
             }
          },
          "mason_workbench_bone": {
@@ -1568,9 +1598,14 @@
                "flavor": "Long and ornate wooden handle strapped in high quality leather"
             },
             "ladder_recipe": {
-               "recipe_name": "Small Ladder",
-               "description": "It's a ladder that can be placed as part of building blueprints.",
+               "recipe_name": "Small Ladder (x3)",
+               "description": "Craft three pieces of ladder that can be placed as part of building blueprints.",
                "flavor": "Useful for reaching elevated cookie jars."
+            },
+            "ladder_wide_recipe": {
+               "recipe_name": "Wide Ladder",
+               "description": "A larger and prettier ladder for creating building blueprints.",
+               "flavor": "'Chaos is not a pit. Chaos is a ladder' -Lord Petyr Belltower"
             },
             "bundle_of_firewood_recipe": {
                "recipe_name": "Bundle o' Firewood (x2)",
@@ -1589,6 +1624,21 @@
                "recipe_name": "Mean Sleeping Spot",
                "description": "Literally sleeping on a board.",
                "flavor": "Mean as in poor, not cruel. Though it's that too."
+            },
+            "simple_bed_pet_recipe": {
+               "recipe_name": "Thatch Animal Bed",
+               "description": "A slightly better place for hearthlings' pets to sleep.",
+               "flavor": "Pets will always try to sleep on the bed that is closest to their owner's bed!"
+            },
+            "comfy_bed_pet_recipe": {
+               "recipe_name": "Animal Comfy Bed",
+               "description": "Allows animals to have a more comfortable sleep.",
+               "flavor": "Pets will always try to sleep on the bed that is closest to their owner's bed!"
+            },
+            "ornate_bed_pet_recipe": {
+               "recipe_name": "Ornate Animal Comfy Bed",
+               "description": "Animals will have a wonderful time sleeping in this bed!",
+               "flavor": "Pets will always try to sleep on the bed that is closest to their owner's bed!"
             }
          }
       },
@@ -1858,6 +1908,14 @@
                "display_name": "Porcelain Fence Gate",
                "description": "This beautiful gate will prevent hearthlings from having to go around."
             }
+         },
+         "wide_ladder": {
+            "display_name": "Wide Ladder",
+            "description": "A larger ladder for when a small one isn't enough."
+         },
+         "ladder": {
+            "display_name": "Crafted Ladder",
+            "description": "The most efficient tool for going upwards."
          }
       },
       "crops": {
@@ -2817,6 +2875,38 @@
          "sleeping_bag": {
             "display_name": "Bedroll",
             "description": "Better than the ground, bedrolls are good for their portability."
+         },
+         "simple_bed_pet": {
+            "display_name": "Thatch Animal Bed",
+            "description": "A slightly better place for pets to sleep. Place it close to their owner's bed!"
+         },
+         "ornate_bed_pet": {
+            "display_name": "Ornate Animal Comfy Bed",
+            "description": "Pets will have a wonderful sleep here! Place it close to their owner's bed!"
+         },
+         "comfy_bed_pet": {
+            "display_name": "Animal Comfy Bed",
+            "description": "Allows pets a more comfortable sleep. They like it close to their owner's bed!"
+         },
+         "simple_bed_pet_2": {
+            "display_name": "Dry Thatch Animal Bed",
+            "description": "A slightly better place for pets to sleep. Place it close to their owner's bed!"
+         },
+         "stone_comfy_bed_pet": {
+            "display_name": "Stone Animal Comfy Bed",
+            "description": "Allows pets a more comfortable sleep. They like it close to their owner's bed!"
+         },
+         "porcelain_bed_pet": {
+            "display_name": "Porcelain Animal Comfy Bed",
+            "description": "Pets will have a wonderful sleep here! Place it close to their owner's bed!"
+         },
+         "marble_bed_pet": {
+            "display_name": "Marble Animal Comfy Bed",
+            "description": "Pets will have a wonderful sleep here! Place it close to their owner's bed!"
+         },
+         "clay_comfy_bed_pet": {
+            "display_name": "Clay Animal Comfy Bed",
+            "description": "Allows pets a more comfortable sleep. They like it close to their owner's bed!"
          }
       },
       "recipes": {
@@ -3780,6 +3870,14 @@
                "display_name": "Wolf Cub",
                "description": "Like a little doggo that wants to eat you!"
             }
+         },
+         "goblins": {
+            "goblin_large_totem": {
+               "description": "Horrifying rituals must have been witnessed by this ugly thing..."
+            },
+            "goblin_small_totem": {
+               "description": "It doesn't look so good and doesn't smell so good either."
+            }
          }
       },
       "armor": {
@@ -4639,6 +4737,10 @@
             "display_name": "Large Thatch Bundle",
             "description": "Harvest for bundles of thatch.",
             "iconic_description": "Can be harvested for bundles of thatch when placed."
+         },
+         "fuel_holder_small": {
+            "display_name": "Cast Iron Holder",
+            "description": "This fancy holder can reasonably store some fuel like firewood."
          }
       }
    },

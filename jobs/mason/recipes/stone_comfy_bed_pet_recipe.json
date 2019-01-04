@@ -1,0 +1,26 @@
+{
+   "type": "recipe",
+   "effort": 15,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.mason.recipes.stone_comfy_bed_pet_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.mason.recipes.stone_comfy_bed_pet_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.mason.recipes.stone_comfy_bed_pet_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/furniture/stone_comfy_bed_pet/stone_comfy_bed_pet.png",
+   "workshop": "stonehearth:mason:pedestal",
+   "level_requirement": 3,
+   "ingredients": [
+      {
+         "material": "stone resource",
+         "count": 1
+      },
+	  {
+         "material": "pelt resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:furniture:stone_comfy_bed_pet"
+      }
+   ]
+}

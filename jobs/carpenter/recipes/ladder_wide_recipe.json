@@ -1,0 +1,22 @@
+{
+   "type": "recipe",
+   "effort": 8,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.carpenter.recipes.ladder_wide_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.carpenter.recipes.ladder_wide_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.carpenter.recipes.ladder_wide_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/construction/ladder_wide/ladder_wide.png",
+   "workshop": "stonehearth:carpenter:toolbench",
+   "level_requirement": 3,
+   "ingredients": [
+      {
+         "material": "wood resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:construction:ladder_wide"
+      }
+   ]
+}

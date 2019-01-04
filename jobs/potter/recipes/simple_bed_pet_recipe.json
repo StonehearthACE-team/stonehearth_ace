@@ -1,0 +1,22 @@
+{
+   "type": "recipe",
+   "effort": 5,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.potter.recipes.simple_bed_pet_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.potter.recipes.simple_bed_pet_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.potter.recipes.simple_bed_pet_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/furniture/simple_bed_pet/simple_bed_pet.png",
+   "workshop": "stonehearth:potter:workbench",
+   "level_requirement": 1,
+   "ingredients": [
+      {
+         "material": "thatch resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:furniture:simple_bed_pet"
+      }
+   ]
+}

@@ -1,0 +1,54 @@
+{
+   "type": "entity",
+   "mixins": "file(clay_comfy_bed_pet_ghost.json)",
+   "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(clay_comfy_bed_pet_iconic.json)",
+         "ghost_form": "file(clay_comfy_bed_pet_ghost.json)",
+         "placeable_on_ground": true
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 1, "y": 1, "z": 1 }
+            }
+         ]
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 1, "y": 1, "z": 1 }
+            }
+         ]
+      },
+      "stonehearth:mount": {
+         "mount_offset": { "x": -0.75, "y": 0.8, "z": -0.5 }
+      }
+   },
+   "entity_data": {
+      "stonehearth_ace:pet_bed": {
+         "shelter": {
+            "contribution_threshold": 60,
+            "score": 8
+         }
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 11,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true,
+            "shopkeeper_level": 2,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 9
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

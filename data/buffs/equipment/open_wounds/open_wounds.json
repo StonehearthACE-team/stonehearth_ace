@@ -3,7 +3,7 @@
    "axis": "debuff",
    "display_name": "i18n(stonehearth_ace:data.buffs.open_wounds.display_name)",
    "description": "i18n(stonehearth_ace:data.buffs.open_wounds.description)",
-   "icon": "file(open_wounds.png)",
+   "icon": "file(open_wounds_normal.png)",
    "duration": "40m",
    "repeat_add_action": "renew_duration",
    "script": "stonehearth:buff_scripts:periodic_health_modification",
@@ -12,5 +12,8 @@
       "pulse": "10m",
       "pulse_immediately": false,
       "pulse_on_destroy": true
-   }
+   },
+   "disallowed_buffs": [
+      "stonehearth_ace:buffs:minor_open_wounds"
+   ]
 }

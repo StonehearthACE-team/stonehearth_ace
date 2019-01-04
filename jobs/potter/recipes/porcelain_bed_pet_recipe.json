@@ -1,0 +1,30 @@
+{
+   "type": "recipe",
+   "effort": 21,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.potter.recipes.porcelain_bed_pet_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.potter.recipes.porcelain_bed_pet_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.potter.recipes.porcelain_bed_pet_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/furniture/porcelain_bed_pet/porcelain_bed_pet.png",
+   "workshop": "stonehearth:potter:kiln",
+   "level_requirement": 5,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:resources:clay:bone_clay_mound",
+         "count": 1
+      },
+	  {
+         "material": "cloth resource",
+         "count": 1
+      },
+	  {
+		 "material": "fuel",
+		 "count": 1
+	  }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:furniture:porcelain_bed_pet"
+      }
+   ]
+}

@@ -1,0 +1,36 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(fuel_holder_small.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": -0.05, "y": 0, "z": -0.05 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      },
+      "render_info": {
+         "scale": 0.1,
+         "animation_table": "file(/data/rigs/entities/containers/firewood_holder/firewood_holder.json)"
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.containers.fuel_holder_small.display_name)",
+         "description": "i18n(stonehearth_ace:entities.containers.fuel_holder_small.description)",
+         "icon": "file(fuel_holder_small.png)",
+         "category": "storage",
+         "material_tags": [
+            "iron",
+            "containers",
+            "crafted",
+            "furniture",
+            "fuel_holder_small",
+            "stockpile_furniture"
+         ]
+      }
+   }
+}
