@@ -3,12 +3,15 @@
    "axis": "debuff",
    "display_name": "i18n(stonehearth_ace:data.buffs.hamstrung.display_name)",
    "description": "i18n(stonehearth_ace:data.buffs.hamstrung.description)",
-   "icon": "file(hamstrung.png)",
+   "icon": "file(hamstrung_normal.png)",
    "duration": "25m",
    "repeat_add_action": "renew_duration",
    "modifiers": {
       "speed": {
          "multiply": 0.8
       }
-   }
+   },
+   "disallowed_buffs": [
+      "stonehearth_ace:buffs:minor_hamstrung"
+   ]
 }

@@ -3,12 +3,15 @@
    "axis": "debuff",
    "display_name": "i18n(stonehearth_ace:data.buffs.out_of_balance.display_name)",
    "description": "i18n(stonehearth_ace:data.buffs.out_of_balance.description)",
-   "icon": "file(out_of_balance.png)",
+   "icon": "file(out_of_balance_normal.png)",
    "duration": "15m",
    "repeat_add_action": "renew_duration",
    "modifiers": {
       "multiplicative_dmg_modifier": {
          "add": -0.2
       }
-   }
+   },
+   "disallowed_buffs": [
+      "stonehearth_ace:buffs:minor_out_of_balance"
+   ]
 }

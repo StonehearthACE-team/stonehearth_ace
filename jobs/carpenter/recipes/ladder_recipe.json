@@ -8,9 +8,20 @@
    "portrait": "/stonehearth_ace/entities/construction/ladder/ladder.png",
    "workshop": "stonehearth:carpenter:workbench",
    "level_requirement": 2,
-   "ingredients": [   ],
+   "ingredients": [
+      {
+         "material": "wood resource",
+         "count": 1
+      }
+   ],
    "produces": [
       {
+         "item": "stonehearth_ace:construction:ladder"
+      },
+	  {
+         "item": "stonehearth_ace:construction:ladder"
+      },
+	  {
          "item": "stonehearth_ace:construction:ladder"
       }
    ]

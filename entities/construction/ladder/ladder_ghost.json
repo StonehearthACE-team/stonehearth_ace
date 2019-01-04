@@ -18,11 +18,16 @@
    },
    "entity_data": {
       "stonehearth:catalog": {
-         "display_name": "i18n(stonehearth:data.build.prototypes.ladder.display_name)",
-         "description": "i18n(stonehearth:data.build.prototypes.ladder.description)",
+         "display_name": "i18n(stonehearth_ace:entities.construction.ladder.display_name)",
+         "description": "i18n(stonehearth_ace:entities.construction.ladder.description)",
          "icon": "file(ladder.png)",
          "category": "construction",
-         "material_tags":["wood", "crafted"]
+         "material_tags": [
+            "wood",
+            "ladder",
+            "crafted",
+            "stockpile_construction"
+         ]
       }
    }
 }

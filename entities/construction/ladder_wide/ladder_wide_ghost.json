@@ -1,0 +1,36 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(ladder_wide.qb)"
+            ]
+         }
+      },
+      "render_info": {
+         "scale": 0.1
+      },
+      "mob": {
+         "model_origin": { "x": 0.0, "y": 0, "z": 0.0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "align_to_grid": [
+            "x"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.construction.wide_ladder.display_name)",
+         "description": "i18n(stonehearth_ace:entities.construction.wide_ladder.description)",
+         "icon": "file(ladder_wide.png)",
+         "category": "construction",
+         "material_tags": [
+            "wood",
+            "ladder",
+            "crafted",
+            "stockpile_construction"
+         ]
+      }
+   }
+}
