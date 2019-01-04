@@ -2,7 +2,12 @@
    "type" : "ai_pack",
    "actions" : [
       "stonehearth_ace:actions:train",
-      "stonehearth_ace:actions:train_attack"
+      "stonehearth_ace:actions:train_attack_move_to_targetable_location",
+      "stonehearth_ace:actions:train_attack_from_current_location",
+      "stonehearth_ace:actions:train_attack_adjacent",
+      "stonehearth_ace:actions:train_check_entity_targetable",
+      "stonehearth_ace:actions:train_move_to_targetable_location",
+      "stonehearth_ace:actions:train_idle_dispatcher"
    ],
    "task_groups" : [
       "stonehearth_ace:task_groups:training"
