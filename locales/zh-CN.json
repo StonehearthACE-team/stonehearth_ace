@@ -2,7 +2,8 @@
    "ai": {
       "actions": {
          "status_text": {
-            "train": "准备训练中"
+            "train": "准备训练中",
+            "fertilize_field": "播撒肥料中"
          }
       }
    },
@@ -366,23 +367,23 @@
             "thresholds": {
                "none": {
                   "display_name": "不野",
-                  "description": "要么是没有野生动物, 要么是已经建了建筑了."
+                  "description": "要么是没有野生动物, 要么是已经建了建筑了. 这片区域里放狩猎区很不合适."
                },
                "little": {
                   "display_name": "有点野",
-                  "description": "这片区域已被开发. 试着种点树来*打扮*一下."
+                  "description": "这片区域已被开发. 试着种点树来*打扮*一下. 在这片区域内放狩猎区则效率会大打折扣."
                },
                "some": {
                   "display_name": "很野",
-                  "description": "这片区域没被怎么开发过, 但也不会吸引太多动物. 多种几棵大型植物或许会有帮助."
+                  "description": "这片区域没被怎么开发过, 但也不会吸引太多动物. 多种几棵大型植物或许会有帮助. 这片区域内狩猎区效率中等."
                },
                "lots": {
                   "display_name": "更野了",
-                  "description": "这片区域相当原始, 可以吸引许多动物."
+                  "description": "这片区域相当原始, 可以吸引许多动物. 这片区域内的狩猎区效率略有提升."
                },
                "tons": {
                   "display_name": "超野",
-                  "description": "名副其实的伊甸园!"
+                  "description": "名副其实的伊甸园! 这片区域内放狩猎区效率是最高的!"
                }
             }
          }
@@ -875,135 +876,150 @@
                "description": "可以把炉民转职成步兵.",
                "flavor": "很容易坏, 应该用不了多长时间... 对吧?"
             },
-			"porcelain_fence_bar_double_recipe": {
+            "porcelain_fence_bar_double_recipe": {
                "recipe_name": "陶瓷大围栏",
                "description": "做一段双倍长的陶瓷墙.",
                "flavor": ""
             },
-			"porcelain_fence_bar_single_recipe": {
+            "porcelain_fence_bar_single_recipe": {
                "recipe_name": "陶瓷小围栏",
                "description": "做一小段陶瓷墙.",
                "flavor": ""
             },
-			"porcelain_fence_end_recipe": {
+            "porcelain_fence_end_recipe": {
                "recipe_name": "陶瓷围栏桩",
                "description": "给陶瓷墙装一个柱子.",
                "flavor": ""
             },
-			"porcelain_fence_gate_recipe": {
+            "porcelain_fence_gate_recipe": {
                "recipe_name": "陶瓷围栏门",
                "description": "给陶瓷墙装一扇门.",
                "flavor": "这扇漂亮的门可以防止炉民绕远路"
             },
-			"porcelain_wall_lamp_recipe": {
+            "porcelain_wall_lamp_recipe": {
                "recipe_name": "陶瓷墙灯",
                "description": "用于照亮一块美丽的地方.",
                "flavor": ""
             },
-			"porcelain_lamp_recipe": {
+            "porcelain_lamp_recipe": {
                "recipe_name": "陶瓷立灯",
                "description": "昂贵精致的灯.",
                "flavor": "和瓷桌很搭"
             },
-			"porcelain_bench_comfy_recipe": {
+            "porcelain_bench_comfy_recipe": {
                "recipe_name": "陶瓷长沙发",
                "description": "让起居室足够舒适.",
                "flavor": "别让猫碰到它!"
             },
-			"porcelain_bench_recipe": {
+            "porcelain_bench_recipe": {
                "recipe_name": "公园瓷椅",
                "description": "宽敞典雅的家具.",
                "flavor": "下雨天小心湿垫子!"
             },
-			"porcelain_chair_comfy_recipe": {
+            "porcelain_chair_comfy_recipe": {
                "recipe_name": "陶瓷沙发",
                "description": "整洁又舒适的内饰.",
                "flavor": "枕头大战!"
             },
-			"porcelain_chair_recipe": {
+            "porcelain_chair_recipe": {
                "recipe_name": "陶瓷椅",
                "description": "简单却不失高雅的家具.",
                "flavor": "也能垫下脚"
             },
-			"porcelain_comfy_bed_recipe": {
+            "porcelain_comfy_bed_recipe": {
                "recipe_name": "舒适瓷床",
                "description": "给那些即使睡着了也想优雅的人准备的.",
                "flavor": ""
             },
-			"porcelain_dining_table_recipe": {
+            "porcelain_dining_table_recipe": {
                "recipe_name": "陶瓷餐桌",
                "description": "做一张能在上面吃东西的陶瓷桌子.",
                "flavor": "上面的桌布是为了能让你看清陶瓷餐具"
             },
-			"porcelain_display_cabinet_recipe": {
+            "porcelain_display_cabinet_recipe": {
                "recipe_name": "陶瓷展示柜",
                "description": "一个展示上瓷之前所有无聊陶土物件的柜子!",
                "flavor": ""
             },
-			"porcelain_display_cupboard_recipe": {
+            "porcelain_display_cupboard_recipe": {
                "recipe_name": "陶瓷展示橱",
                "description": "精美收藏的展示.",
                "flavor": "推门别太用力就行..."
             },
-			"porcelain_dresser_recipe": {
+            "porcelain_dresser_recipe": {
                "recipe_name": "陶瓷梳妆台",
                "description": "和这家具一起活得奢侈.",
                "flavor": "有这梳妆台谁还用得着梳妆啊?"
             },
-			"porcelain_end_table_recipe": {
+            "porcelain_end_table_recipe": {
                "recipe_name": "陶边桌",
                "description": "装饰品能放在上面.",
                "flavor": ""
             },
-			"porcelain_floor_tile_recipe": {
+            "porcelain_floor_tile_recipe": {
                "recipe_name": "瓷地砖",
                "description": "给你的炉民做一块陶瓷地砖.",
                "flavor": "轻走轻踏"
             },
-			"porcelain_jar_of_feathers_recipe": {
+            "porcelain_jar_of_feathers_recipe": {
                "recipe_name": "陶瓷羽毛罐",
                "description": "瓷和布匹做成的华丽大羽毛.",
                "flavor": "不忘波波鸡"
             },
-			"porcelain_planter_recipe": {
+            "porcelain_planter_recipe": {
                "recipe_name": "陶瓷花盆",
                "description": "美丽精致的雏菊.",
                "flavor": ""
             },
-			"porcelain_shelf_recipe": {
+            "porcelain_shelf_recipe": {
                "recipe_name": "陶瓷墙架",
                "description": "装饰品能放在架子上面.",
                "flavor": ""
             },
-			"porcelain_table_recipe": {
+            "porcelain_table_recipe": {
                "recipe_name": "瓷单人桌",
                "description": "即使过着奢侈的生活, 有人可能还是喜欢吃独食.",
                "flavor": ""
             },
-			"porcelain_teapot_recipe": {
+            "porcelain_teapot_recipe": {
                "recipe_name": "陶瓷茶壶",
                "description": "精心装饰过的装饰品.",
                "flavor": ""
             },
-			"porcelain_urn_short_recipe": {
+            "porcelain_urn_short_recipe": {
                "recipe_name": "小瓷壶",
                "description": "漂亮的装饰.",
                "flavor": ""
             },
-			"porcelain_urn_tall_recipe": {
+            "porcelain_urn_tall_recipe": {
                "recipe_name": "瓷壶",
                "description": "精心绘画过的美丽陶瓷.",
                "flavor": ""
             },
-			"porcelain_wall_tile_blue_recipe": {
+            "porcelain_wall_tile_blue_recipe": {
                "recipe_name": "陶瓷墙砖",
                "description": "需要高超的手艺让它们契合.",
                "flavor": ""
             },
-			"porcelain_wall_tile_gold_recipe": {
+            "porcelain_wall_tile_gold_recipe": {
                "recipe_name": "黄金瓷墙砖",
                "description": "镀金让它更漂亮了!",
                "flavor": ""
+            },
+            "simple_bed_pet_recipe": {
+               "recipe_name": "干草动物窝",
+               "description": "一个给炉民的宠物睡觉的, 好一点的地方.",
+               "flavor": "宠物永远会选择离主人床位最近的一张床睡觉!"
+            },
+            "clay_comfy_bed_pet_recipe": {
+               "recipe_name": "舒适的粘土动物床",
+               "description": "让动物们也有个更舒适的睡眠.",
+               "flavor": "宠物永远会选择离主人床位最近的一张床睡觉!"
+            },
+            "porcelain_bed_pet_recipe": {
+               "recipe_name": "舒适的陶瓷动物床",
+               "description": "在这张床上睡觉小动物们肯定会开心的!",
+               "flavor": "宠物永远会选择离主人床位最近的一张床睡觉!"
             }
          }
       },
@@ -1116,6 +1132,21 @@
             },
             "stone_sword_recipe": {
                "flavor": "用石剑训练真是讽刺又现实的笑话."
+            },
+            "simple_bed_pet_2_recipe": {
+               "recipe_name": "干草动物窝",
+               "description": "一个给炉民的宠物睡觉的, 好一点的地方.",
+               "flavor": "宠物永远会选择离主人床位最近的一张床睡觉!"
+            },
+            "stone_comfy_bed_pet_recipe": {
+               "recipe_name": "舒适的石制动物床",
+               "description": "让动物们也有个更舒适的睡眠.",
+               "flavor": "宠物永远会选择离主人床位最近的一张床睡觉!"
+            },
+            "marble_bed_pet_recipe": {
+               "recipe_name": "舒适的大理石动物床",
+               "description": "在这张床上睡觉小动物们肯定会开心的!",
+               "flavor": "宠物永远会选择离主人床位最近的一张床睡觉!"
             }
          },
          "mason_workbench_bone": {
@@ -1567,16 +1598,21 @@
                "flavor": "木柄长而精致, 还用高品质的皮革保护着"
             },
             "ladder_recipe": {
-               "recipe_name": "小梯子",
-               "description": "是可以作为建筑设计蓝图内家具放置的梯子.",
+               "recipe_name": "小梯子 (x3)",
+               "description": "做三把可以作为建筑设计蓝图里内家具的梯子.",
                "flavor": "能让你够到藏在上面的饼干罐头."
+            },
+            "ladder_wide_recipe": {
+               "recipe_name": "宽梯子",
+               "description": "可以放在蓝图里的更大更好看的梯子.",
+               "flavor": "'混沌不是深坑. 混沌是梯子' -佩提亚·贝尔塔耳勋爵"
             },
             "bundle_of_firewood_recipe": {
                "recipe_name": "柴火捆 (x2)",
                "description": "把原木劈成几块提高利用率! 柴火是常见的, 低级燃料",
                "flavor": "'等等, 所以把一整块原木直接扔进火里是不对的?' -督马·夸斯"
             },
-			"splitting_block_recipe": {
+            "splitting_block_recipe": {
                "recipe_name": "砍柴墩",
                "description": "做个结实的墩墩来砍柴火.",
                "flavor": ""
@@ -1588,6 +1624,21 @@
                "recipe_name": "简陋休息区",
                "description": "真正意义上的睡在甲板上.",
                "flavor": "简陋是因为贫穷, 而不是残忍. 虽然确实很残忍."
+            },
+            "simple_bed_pet_recipe": {
+               "recipe_name": "干草动物窝",
+               "description": "一个给炉民的宠物睡觉的, 好一点的地方.",
+               "flavor": "宠物永远会选择离主人床位最近的一张床睡觉!"
+            },
+            "comfy_bed_pet_recipe": {
+               "recipe_name": "舒适动物床",
+               "description": "让动物们也有个更舒适的睡眠.",
+               "flavor": "宠物永远会选择离主人床位最近的一张床睡觉!"
+            },
+            "ornate_bed_pet_recipe": {
+               "recipe_name": "舒适的华丽动物床",
+               "description": "在这张床上睡觉小动物们肯定会开心的!",
+               "flavor": "宠物永远会选择离主人床位最近的一张床睡觉!"
             }
          }
       },
@@ -1643,7 +1694,7 @@
                "description": "先驱者锁甲上编织而成的君王头套.",
                "flavor": "曾经这种头套是先驱者们的骄傲"
             },
-			"porcelain_curtains_recipe": {
+            "porcelain_curtains_recipe": {
                "recipe_name": "瓷帘子",
                "description": "能覆盖整面墙的大装饰.",
                "flavor": "和其他瓷器很搭哦!"
@@ -1670,6 +1721,28 @@
             "shepherd_hood": {
                "display_name": "牧羊人的木棍",
                "description": "牧羊人使用的包着羊毛的棍子."
+            }
+         }
+      },
+      "farmer": {
+         "farmer_description": {
+            "level_2_data": {
+               "perk_000_name": "岁稔年丰",
+               "perk_000_description": "农民在每株庄稼上获得的收成提高40%."
+            },
+            "level_3_data": {
+               "perk_000_name": "沃地肥田",
+               "perk_000_description": "(即将推出!)"
+            },
+            "level_4_data": {
+               "perk_000_name": "岁稔年丰 (进阶)",
+               "perk_000_description": "农民在每株庄稼上获得的收成提高70%."
+            },
+            "level_6_data": {
+               "perk_000_name": "岁稔年丰 (最高)",
+               "perk_000_description": "农民在每株庄稼上获得的收成提高100%.",
+               "perk_001_name": "麦岐果硕",
+               "perk_001_description": "(即将推出!)"
             }
          }
       }
@@ -1835,6 +1908,14 @@
                "display_name": "陶瓷围栏门",
                "description": "这扇漂亮的门可以防止炉民绕远路."
             }
+         },
+         "wide_ladder": {
+            "display_name": "宽楼梯",
+            "description": "小楼梯不够时的加大版楼梯."
+         },
+         "ladder": {
+            "display_name": "工程楼梯",
+            "description": "向上爬最有效的工具."
          }
       },
       "crops": {
@@ -2794,6 +2875,38 @@
          "sleeping_bag": {
             "display_name": "便携床铺",
             "description": "比地上好, 在便携性方面还是很强的."
+         },
+         "simple_bed_pet": {
+            "display_name": "干草动物窝",
+            "description": "一个给宠物睡觉的, 好一点的地方. 把它放在主人的床边吧!"
+         },
+         "ornate_bed_pet": {
+            "display_name": "舒适的华丽动物床",
+            "description": "宠物也一定会睡得很香的! 把它放在主人的床边吧!"
+         },
+         "comfy_bed_pet": {
+            "display_name": "舒适动物床",
+            "description": "让宠物也睡得舒服. 他们喜欢睡在主人的床边!"
+         },
+         "simple_bed_pet_2": {
+            "display_name": "干草动物窝",
+            "description": "一个给宠物睡觉的, 好一点的地方. 把它放在主人的床边吧!"
+         },
+         "stone_comfy_bed_pet": {
+            "display_name": "舒适的石制动物床",
+            "description": "让宠物也睡得舒服. 他们喜欢睡在主人的床边!"
+         },
+         "porcelain_bed_pet": {
+            "display_name": "舒适的陶瓷动物床",
+            "description": "宠物也一定会睡得很香的! 把它放在主人的床边吧!"
+         },
+         "marble_bed_pet": {
+            "display_name": "舒适的大理石动物床",
+            "description": "宠物也一定会睡得很香的! 把它放在主人的床边吧!"
+         },
+         "clay_comfy_bed_pet": {
+            "display_name": "舒适的粘土动物床",
+            "description": "让宠物也睡得舒服. 他们喜欢睡在主人的床边!"
          }
       },
       "recipes": {
@@ -3561,6 +3674,10 @@
                "display_name": "糖切片面包",
                "description": "甜甜的面包, 上面洒满了白糖!"
             }
+         },
+         "golden_egg": {
+            "display_name": "金蛋",
+            "description": "是金色的蛋! 它值整整10亿金币! 听说, 好像是的吧?"
          }
       },
       "terrain": {
@@ -3752,6 +3869,14 @@
             "wolf_cub": {
                "display_name": "狼崽",
                "description": "前一小狼假寐, 想吃你!"
+            }
+         },
+         "goblins": {
+            "goblin_large_totem": {
+               "description": "想必是见过丑陋东西的吓人图腾..."
+            },
+            "goblin_small_totem": {
+               "description": "不怎么好看也不怎么好闻."
             }
          }
       },
@@ -4612,6 +4737,10 @@
             "display_name": "大干草捆",
             "description": "可以采集获得干草捆.",
             "iconic_description": "放下后可以采集获得干草捆."
+         },
+         "fuel_holder_small": {
+            "display_name": "铸铁手把",
+            "description": "这个好看的把手能储存柴薪这类燃料."
          }
       }
    },
@@ -4904,9 +5033,9 @@
                "water_affinity_range": "灌溉</br>这种作物如果在蓝色描边区域内达到 <span class='water'><span class='value'>[str(i18n_data.min)] - [str(i18n_data.max)]</span> 水位</span> 则其生长速度会比平常有所提升.",
                "water_affinity_min_only": "灌溉</br>这种作物如果在蓝色描边区域内有至少 <span class='water'><span class='value'>[str(i18n_data.min)]</span> 水位</span> 则其生长速度会略微提升.",
                "current_water_level": "当前<span class='water'>水位</span>为: <span class='water value'>[str(i18n_data.level)]</span>.",
-               "requires_flooding": "这种作物只能在水里生长. 离开水则无法生长.",
-               "prefers_flooding": "这种作物在水里长得更快. 离开水则生长速度变慢.",
-               "prefers_no_flooding": "这种作物在水里生长缓慢. 离开水则可以正常生长."
+               "requires_flooding": "这种作物只能在水里生长.",
+               "prefers_flooding": "这种作物在水里长得更快, 离开水则生长速度变慢.",
+               "prefers_no_flooding": "这种作物在水里生长缓慢."
             },
             "underfarm": {
                "substrate_name": "基层",
