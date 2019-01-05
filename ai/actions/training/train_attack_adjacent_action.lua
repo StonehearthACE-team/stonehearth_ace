@@ -1,15 +1,14 @@
 local Entity = _radiant.om.Entity
-local TrainAttack = class()
+local TrainAttackAdjacent = class()
 
-TrainAttack.name = 'training attack'
---TrainAttack.status_text_key = 'stonehearth_ace:ai.actions.status_text.train'
-TrainAttack.does = 'stonehearth_ace:train_attack'
-TrainAttack.args = { target = Entity }
-TrainAttack.priority = 0
+TrainAttackAdjacent.name = 'training attack adjacent'
+TrainAttackAdjacent.does = 'stonehearth_ace:train_attack_adjacent'
+TrainAttackAdjacent.args = { target = Entity }
+TrainAttackAdjacent.priority = 0
 
 local log = radiant.log.create_logger('training_action')
 
-function TrainAttack:start_thinking(ai, entity, args)
+function TrainAttackAdjacent:start_thinking(ai, entity, args)
 	local check_conditions = self:_check_conditions(ai, entity, args)
 	if check_conditions then
 		ai:reject(check_conditions)
@@ -19,7 +18,7 @@ function TrainAttack:start_thinking(ai, entity, args)
 	ai:set_think_output()
 end
 
-function TrainAttack:start(ai, entity, args)
+function TrainAttackAdjacent:start(ai, entity, args)
 	local check_conditions = self:_check_conditions(ai, entity, args)
 	if check_conditions then
 		ai:abort(check_conditions)
@@ -27,7 +26,7 @@ function TrainAttack:start(ai, entity, args)
 	end
 end
 
-function TrainAttack:_check_conditions(ai, entity, args)
+function TrainAttackAdjacent:_check_conditions(ai, entity, args)
 	-- make sure the target is a training dummy
 	local dummy = args.target and args.target:get_component('stonehearth_ace:training_dummy')
 	if not dummy or not dummy:get_enabled() then
@@ -56,7 +55,7 @@ function TrainAttack:_check_conditions(ai, entity, args)
 	return nil
 end
 
-function TrainAttack:run(ai, entity, args)
+function TrainAttackAdjacent:run(ai, entity, args)
 	local dummy = args.target and args.target:get_component('stonehearth_ace:training_dummy')
 	if not dummy or not dummy:get_enabled() then
 		ai:abort('dummy has been disabled')
@@ -82,7 +81,7 @@ function TrainAttack:run(ai, entity, args)
 	elseif radiant.entities.get_entity_data(stonehearth.combat:get_main_weapon(entity), 'stonehearth:combat:weapon_data').range then
 		ai:execute('stonehearth:combat:attack_ranged', { target = args.target })
 	else
-		ai:execute('stonehearth:combat:attack', { target = args.target })
+		ai:execute('stonehearth:combat:attack_melee_adjacent', { target = args.target })
    end
    
    -- the attack may have taken a long time, so set in combat again
@@ -91,4 +90,4 @@ function TrainAttack:run(ai, entity, args)
 	radiant.events.trigger_async(entity, 'stonehearth_ace:training_performed')
 end
 
-return TrainAttack
+return TrainAttackAdjacent
