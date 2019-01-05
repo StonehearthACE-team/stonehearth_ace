@@ -41,7 +41,9 @@ function AceJobComponent:add_exp(value, add_curiosity_addition, prevent_level_up
    if add_curiosity_addition ~= false then
       if attributes_component then
          local curiosity = attributes_component:get_attribute('curiosity')
-         exp_mult = 1 + curiosity * stonehearth.constants.attribute_effects.CURIOSITY_EXPERIENCE_MULTIPLER
+         -- we leave the multiplier the same in constants so that the crafter job can still use it in the same way
+         -- because the crafter job is harder to patch/override ><
+         exp_mult = 1 + curiosity * stonehearth.constants.attribute_effects.CURIOSITY_EXPERIENCE_MULTIPLER * 0.1
          if exp_mult < 1 then
             exp_mult = 1
          end
