@@ -1,70 +1,6 @@
 local RenewableResourceNodeComponent = radiant.mods.require('stonehearth.components.renewable_resource_node.renewable_resource_node_component')
 local AceRenewableResourceNodeComponent = class()
 
---[[
-local HARVEST_ACTION = 'stonehearth:harvest_renewable_resource'
-local ENABLE_AUTO_HARVEST_COMMAND = 'stonehearth_ace:commands:enable_auto_harvest'
-local DISABLE_AUTO_HARVEST_COMMAND = 'stonehearth_ace:commands:disable_auto_harvest'
-
-AceRenewableResourceNodeComponent._old_post_activate = RenewableResourceNodeComponent.post_activate
-function AceRenewableResourceNodeComponent:post_activate()
-   self:_old_post_activate()
-   
-   local json = radiant.entities.get_json(self)
-   self._sv.default_auto_harvest = json and json.auto_harvest
-   self.__saved_variables:mark_changed()
-   self:_update_auto_harvest_commands()
-
-   if self._sv.harvestable then
-      --self:_auto_request_harvest()
-   end
-
-   self._player_id_listener = 
-         radiant.events.listen(self._entity, 'stonehearth:player_id_changed', self, self._on_player_id_changed)
-   self:_setup_auto_harvest_setting_listener()
-end
-
-AceRenewableResourceNodeComponent._old_destroy = RenewableResourceNodeComponent.destroy
-function AceRenewableResourceNodeComponent:destroy()
-   self:_old_destroy()
-
-   if self._player_id_listener then
-      self._player_id_listener:destroy()
-      self._player_id_listener = nil
-   end
-
-   if self._auto_harvest_setting_update_listener then
-      self._auto_harvest_setting_update_listener:destroy()
-      self._auto_harvest_setting_update_listener = nil
-   end
-end
-
-function AceRenewableResourceNodeComponent:_setup_auto_harvest_setting_listener()
-   if self._entity:get_player_id() ~= '' and not self._auto_harvest_setting_update_listener then
-      self._auto_harvest_setting_update_listener = 
-         radiant.events.listen(stonehearth_ace, 'stonehearth_ace:auto_harvest_setting_update', self, self._on_auto_harvest_setting_update)
-   elseif self._auto_harvest_setting_update_listener then
-      self._auto_harvest_setting_update_listener:destroy()
-      self._auto_harvest_setting_update_listener = nil
-   end
-end
-
-function AceRenewableResourceNodeComponent:_on_player_id_changed(args)
-   if args.player_id == '' then
-      -- if it's back to nothing, clear out auto-harvest settings
-      self._sv.manual_auto_harvest = nil
-   end
-   self:_setup_auto_harvest_setting_listener()
-   self:_update_auto_harvest_commands()
-end
-
-function AceRenewableResourceNodeComponent:_on_auto_harvest_setting_update(player_id)
-   if player_id == self._entity:get_player_id() and self._sv.manual_auto_harvest == nil and self._sv.default_auto_harvest == nil then
-      self:_update_auto_harvest_commands()
-   end
-end
-]]
-
 function AceRenewableResourceNodeComponent:create()
    self._is_create = true
 end
@@ -105,37 +41,23 @@ function AceRenewableResourceNodeComponent:renew()
    self:_auto_request_harvest()
 end
 
---[[
-function AceRenewableResourceNodeComponent:set_auto_harvest_enabled(enabled)
-   local changed = enabled ~= self:get_auto_harvest_enabled()
-   if self._sv.manual_auto_harvest ~= enabled then
-      self._sv.manual_auto_harvest = enabled
-      self.__saved_variables:mark_changed()
+AceRenewableResourceNodeComponent._old__place_spawned_items = RenewableResourceNodeComponent._place_spawned_items
+function AceRenewableResourceNodeComponent:_place_spawned_items(json, owner, location, will_destroy_entity)
+   local spawned_items, item = self:_old__place_spawned_items(json, owner, location, will_destroy_entity)
+
+   local quality = radiant.entities.get_item_quality(self._entity)
+   if quality > 1 then
+      for id, item in pairs(spawned_items) do
+         self:_set_quality(item, quality)
+      end
    end
-   if changed then
-      self:_update_auto_harvest_commands()
-   end
+
+   return spawned_items, item
 end
 
-function AceRenewableResourceNodeComponent:_cancel_harvest_request()
-   local task_tracker_component = self._entity:get_component('stonehearth:task_tracker')
-   if task_tracker_component and task_tracker_component:is_activity_requested(HARVEST_ACTION) then
-      task_tracker_component:cancel_current_task(true, true)
-   end
+function AceRenewableResourceNodeComponent:_set_quality(item, quality)
+   item:remove_component('stonehearth:item:quality')
+   item:add_component('stonehearth:item_quality'):initialize_quality(quality, self._entity, nil, {override_allow_variable_quality = true})
 end
-
-function AceRenewableResourceNodeComponent:_update_auto_harvest_commands()
-   local enabled = self:get_auto_harvest_enabled()
-
-   local commands = self._entity:add_component('stonehearth:commands')
-   if enabled then
-      commands:remove_command(ENABLE_AUTO_HARVEST_COMMAND)
-      commands:add_command(DISABLE_AUTO_HARVEST_COMMAND)
-   elseif enabled == false then
-      commands:remove_command(DISABLE_AUTO_HARVEST_COMMAND)
-      commands:add_command(ENABLE_AUTO_HARVEST_COMMAND)
-   end
-end
-]]
 
 return AceRenewableResourceNodeComponent

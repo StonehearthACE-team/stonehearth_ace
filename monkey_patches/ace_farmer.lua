@@ -12,7 +12,7 @@ end
 
 AceFarmerClass._old__remove_listeners = FarmerClass._remove_listeners
 function AceFarmerClass:_remove_listeners()
-   self:_remove_listeners()
+   self:_old__remove_listeners()
    if self._on_plant_listener then
       self._on_plant_listener:destroy()
       self._on_plant_listener = nil

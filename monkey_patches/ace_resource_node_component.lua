@@ -2,8 +2,17 @@ local ResourceNodeComponent = require 'stonehearth.components.resource_node.reso
 local AceResourceNodeComponent = class()
 
 -- this is modified only to add the player_id of the harvester to the kill_data of the kill_event
+-- and to add item quality for spawned items if this entity is of higher quality
 function AceResourceNodeComponent:spawn_resource(harvester_entity, collect_location, owner_player_id)
    local spawned_resources = self:_place_spawned_items(harvester_entity, collect_location)
+
+   local quality = radiant.entities.get_item_quality(self._entity)
+   if quality > 1 then
+      for id, item in pairs(spawned_resources) do
+         self:_set_quality(item, quality)
+      end
+   end
+
    local player_id = owner_player_id or (harvester_entity and radiant.entities.get_player_id(harvester_entity))
    if harvester_entity then
       for id, item in pairs(spawned_resources) do
@@ -75,6 +84,11 @@ function AceResourceNodeComponent:request_harvest(player_id, replant)
    end
 
    return result
+end
+
+function AceResourceNodeComponent:_set_quality(item, quality)
+   item:remove_component('stonehearth:item:quality')
+   item:add_component('stonehearth:item_quality'):initialize_quality(quality, self._entity, nil, {override_allow_variable_quality = true})
 end
 
 return AceResourceNodeComponent
