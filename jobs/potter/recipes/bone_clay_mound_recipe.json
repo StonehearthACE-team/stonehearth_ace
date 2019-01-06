@@ -1,6 +1,6 @@
 {
    "type": "recipe",
-   "effort": 20,
+   "effort": 40,
    "work_units": 8,
    "recipe_name": "i18n(stonehearth_ace:jobs.potter.recipes.bone_clay_recipe.recipe_name)",
    "description": "i18n(stonehearth_ace:jobs.potter.recipes.bone_clay_recipe.description)",
@@ -11,15 +11,15 @@
    "level_requirement": 4,
    "ingredients": [
 	  {
-         "uri": "stonehearth_ace:resources:clay:ball_clay_mound",
-         "count": 1
+         "material": "clay resource",
+         "count": 2
       },
 	  {
          "material": "bone resource",
-         "count": 1
+         "count": 4
       },
       {
-         "uri": "stonehearth_ace:resources:stone:feldspar_stone",
+         "material": "stone resource",
          "count": 1
       },
 	  {
@@ -29,9 +29,6 @@
    ],
    "produces": [
       {
-         "item": "stonehearth_ace:resources:clay:bone_clay_mound"
-      },
-	  {
          "item": "stonehearth_ace:resources:clay:bone_clay_mound"
       }
    ]

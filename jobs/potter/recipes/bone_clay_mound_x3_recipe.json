@@ -1,0 +1,41 @@
+{
+   "type": "recipe",
+   "effort": 40,
+   "work_units": 8,
+   "recipe_name": "i18n(stonehearth_ace:jobs.potter.recipes.bone_clay_x3_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.potter.recipes.bone_clay_x3_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.potter.recipes.bone_clay_x3_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/resources/clay/bone_clay_mound/bone_clay_mound_x3.png",
+   "workshop": "stonehearth:potter:kiln",
+   "work_effect": "work_wait",
+   "level_requirement": 6,
+   "ingredients": [
+	  {
+         "uri": "stonehearth_ace:resources:clay:ball_clay_mound",
+         "count": 2
+      },
+	  {
+         "material": "bone resource",
+         "count": 4
+      },
+      {
+         "uri": "stonehearth_ace:resources:stone:feldspar_stone",
+         "count": 1
+      },
+	  {
+         "material": "fuel",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:resources:clay:bone_clay_mound"
+      },
+	  {
+         "item": "stonehearth_ace:resources:clay:bone_clay_mound"
+      },
+	  {
+         "item": "stonehearth_ace:resources:clay:bone_clay_mound"
+      }
+   ]
+}

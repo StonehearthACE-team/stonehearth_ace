@@ -849,9 +849,14 @@
       "potter": {
          "recipes": {
             "bone_clay_recipe": {
-               "recipe_name": "Mound of Bone Clay (x2)",
+               "recipe_name": "Mound of Bone Clay",
                "description": "Required for creating porcelain and beautiful ornate ceramics.",
                "flavor": ""
+            },
+            "bone_clay_x3_recipe": {
+               "recipe_name": "Mound of Bone Clay (x3)",
+               "description": "Required for creating porcelain and beautiful ornate ceramics.",
+               "flavor": "With the correct ingredients and skill, the potter has mastered a much more efficient way to produce bone clay"
             },
             "clay_comfy_bed_recipe": {
                "recipe_name": "Clay Comfy Bed",
@@ -2916,6 +2921,11 @@
          "clay_comfy_bed_pet": {
             "display_name": "Clay Animal Comfy Bed",
             "description": "Allows pets a more comfortable sleep. They like it close to their owner's bed!"
+         },
+         "blue_market_stall": {
+            "blue_market_stall_ghost": {
+               "display_name": "Wooden Market Stall"
+            }
          }
       },
       "recipes": {
@@ -4228,13 +4238,13 @@
             "display_name": "Long Desert Bow"
          },
          "rc_long_sword": {
-            "display_name": "Scimitar"
+            "display_name": "Steel Scimitar"
          },
          "rc_recurve_bow": {
             "display_name": "Recurve Desert Bow"
          },
          "rc_short_sword": {
-            "display_name": "Short Scimitar"
+            "display_name": "Steel Short Scimitar"
          },
          "rc_silver_halberd": {
             "display_name": "Silver Bardiche"
@@ -4318,13 +4328,13 @@
             "display_name": "Long Northern Bow"
          },
          "na_long_sword": {
-            "display_name": "Broad Sword"
+            "display_name": "Steel Broad Sword"
          },
          "na_recurve_bow": {
             "display_name": "Recurve Northern Bow"
          },
          "na_short_sword": {
-            "display_name": "Short Northern Sword"
+            "display_name": "Short Steel Northern Sword"
          },
          "na_silver_halberd": {
             "display_name": "Silver Northern Atgeir"
