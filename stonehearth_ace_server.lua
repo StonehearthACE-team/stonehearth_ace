@@ -60,7 +60,8 @@ local monkey_patches = {
    ace_farming_task_group = 'stonehearth.ai.task_groups.farming_task_group',
    ace_harvest_crop_adjacent = 'stonehearth.ai.actions.harvest_crop_adjacent',
    ace_inventory_tracker = 'stonehearth.services.server.inventory.inventory_tracker',
-   ace_dig_adjacent_action = 'stonehearth.ai.actions.mining.dig_adjacent_action'
+   ace_dig_adjacent_action = 'stonehearth.ai.actions.mining.dig_adjacent_action',
+   ace_eat_feed_adjacent_action = 'stonehearth.ai.actions.pasture_animal.eat_feed_adjacent_action'
 }
 
 local function monkey_patching()

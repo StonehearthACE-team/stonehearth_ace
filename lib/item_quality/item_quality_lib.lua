@@ -36,7 +36,16 @@ end
 
 function item_quality_lib.apply_quality_options(item, quality, options)
    if quality > 1 then
-      local iq_comp = item:add_component('stonehearth:item_quality')
+      -- allow replacing existing, lower item qualities (assume the item has properly been removed from inventories if necessary)
+      local iq_comp = item:get_component('stonehearth:item_quality')
+      if iq_comp then
+         if iq_comp:get_quality() >= quality then
+            return
+         else
+            item:remove_component('stonehearth:item_quality')
+         end
+      end
+      iq_comp = item:add_component('stonehearth:item_quality')
       iq_comp:initialize_quality(quality, options and options.author, options and options.author_type, options)
    end
 end

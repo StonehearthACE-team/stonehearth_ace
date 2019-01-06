@@ -62,7 +62,8 @@ function AceJobComponent:add_exp(value, add_curiosity_addition, options)
       return
    end
 
-   if options and (options.prevent_level_up or (options.only_through_level and options.only_through_level == self._sv.curr_job_level)) then
+   local prevent_level_up = options and options.prevent_level_up
+   if prevent_level_up or (options and options.only_through_level and options.only_through_level == self._sv.curr_job_level) then
       self._sv.current_level_exp = math.min(self._sv.current_level_exp, self._sv.xp_to_next_lv - 1)
    end
 
