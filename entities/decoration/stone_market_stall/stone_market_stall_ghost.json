@@ -4,7 +4,16 @@
       "model_variants": {
          "default": {
             "models": [
-               "file(stone_market_stall.qb)"
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(stone_market_stall.qb)",
+                     "file(stone_market_stall_2.qb)",
+                     "file(stone_market_stall_3.qb)",
+                     "file(stone_market_stall_4.qb)",
+                     "file(stone_market_stall_5.qb)"
+                  ]
+               }
             ]
          }
       },

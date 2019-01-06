@@ -1,5 +1,24 @@
 {
    "components": {
+	  "mixintypes": {
+		 "model_variants": "override"
+	  },
+      "model_variants": {
+         "default": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "/stonehearth/entities/decoration/blue_market_stall/blue_market_stall.qb",
+                     "file(blue_market_stall_2.qb)",
+					 "file(blue_market_stall_3.qb)",
+					 "file(blue_market_stall_4.qb)",
+					 "file(blue_market_stall_5.qb)"
+                  ]
+               }
+            ]
+         }
+      },
       "mob": {
          "model_origin": { "x": 0.5, "y": 0, "z": 0.13 },
          "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
@@ -7,6 +26,7 @@
    },
    "entity_data": {
       "stonehearth:catalog": {
+	     "display_name": "i18n(stonehearth_ace:entities.furniture.blue_market_stall.blue_market_stall_ghost.display_name)",
          "category": "construction"
       }
    }

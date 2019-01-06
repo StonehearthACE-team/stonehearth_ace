@@ -13,11 +13,13 @@
       "stonehearth:equipment_piece": {
          "render_type": "attach_to_bone",
 		 "additional_equipment": {
-            "stonehearth_ace:armor:accessory_placeholder": true
+            "stonehearth_ace:armor:backpack_placeholder": true
          },
-         "slot": "backpack",
          "ilevel": 2,
-         "required_job_level": 4
+         "required_job_level": 4,
+		 "equipment_types": [
+            "quiver_arrows"
+         ]
       },
       "mob": {
          "model_origin": { "x": -0.05, "y": 0, "z": 0 }
@@ -28,7 +30,7 @@
 		 "mixintypes": {
 			"material_tags": "override"
 		 },
-         "material_tags": ["leather", "backpack", "quiver", "fire_quiver", "stockpile_exotic_equipment"]
+         "material_tags": ["leather", "accessory", "quiver", "fire_quiver", "stockpile_exotic_equipment"]
       }
    }
 }
