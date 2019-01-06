@@ -17,6 +17,7 @@ function BaseJob:initialize()
    self._sv.attained_perks = {}
    -- ADDED FOR ACE
    self._sv.max_num_training = {}
+   self._sv.lookup_values = {}
 
    -- These are for the UI only
    self._sv.is_max_level = false
@@ -301,6 +302,19 @@ function BaseJob:_register_with_town()
    local town = stonehearth.town:get_town(player_id)
    if town then
       town:add_placement_slot_entity(self._sv._entity, self._sv.max_num_training)
+   end
+end
+
+function BaseJob:get_lookup_value(key)
+   return self._sv.lookup_values[key]
+end
+
+function BaseJob:set_lookup_values(args)
+   if args.lookup_values then
+      for key, value in pairs(args.lookup_values) do
+         self._sv.lookup_values[key] = value
+      end
+      self.__saved_variables:mark_changed()
    end
 end
 

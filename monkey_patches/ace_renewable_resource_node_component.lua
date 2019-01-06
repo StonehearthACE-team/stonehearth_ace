@@ -1,3 +1,5 @@
+local item_quality_lib = require 'stonehearth_ace.lib.item_quality.item_quality_lib'
+
 local RenewableResourceNodeComponent = radiant.mods.require('stonehearth.components.renewable_resource_node.renewable_resource_node_component')
 local AceRenewableResourceNodeComponent = class()
 
@@ -56,8 +58,7 @@ function AceRenewableResourceNodeComponent:_place_spawned_items(json, owner, loc
 end
 
 function AceRenewableResourceNodeComponent:_set_quality(item, quality)
-   item:remove_component('stonehearth:item:quality')
-   item:add_component('stonehearth:item_quality'):initialize_quality(quality, self._entity, nil, {override_allow_variable_quality = true})
+   item_quality_lib.apply_quality(item, quality, true)
 end
 
 return AceRenewableResourceNodeComponent

@@ -1,3 +1,5 @@
+local item_quality_lib = require 'stonehearth_ace.lib.item_quality.item_quality_lib'
+
 local ResourceNodeComponent = require 'stonehearth.components.resource_node.resource_node_component'
 local AceResourceNodeComponent = class()
 
@@ -87,8 +89,7 @@ function AceResourceNodeComponent:request_harvest(player_id, replant)
 end
 
 function AceResourceNodeComponent:_set_quality(item, quality)
-   item:remove_component('stonehearth:item:quality')
-   item:add_component('stonehearth:item_quality'):initialize_quality(quality, self._entity, nil, {override_allow_variable_quality = true})
+   item_quality_lib.apply_quality(item, quality, true)
 end
 
 return AceResourceNodeComponent
