@@ -1,0 +1,26 @@
+{
+   "type": "recipe",
+   "effort": 15,
+   "work_units": 1,
+   "recipe_name": "i18n(stonehearth_ace:jobs.herbalist.recipes.fertilizer_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.fertilizer_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.fertilizer_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/consumables/fertilizer/fertilizer.png",
+   "workshop": "stonehearth:herbalist:workbench",
+   "level_requirement": 3,
+   "ingredients": [
+	   {
+         "material": "raw_food vegetarian",
+         "count": 2
+      },
+      {
+         "uri": "bone resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:consumables:fertilizer"
+      }
+   ]
+}

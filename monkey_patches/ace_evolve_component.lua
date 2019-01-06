@@ -2,6 +2,8 @@ local Point3 = _radiant.csg.Point3
 local Cube3 = _radiant.csg.Cube3
 local Region3 = _radiant.csg.Region3
 
+local item_quality_lib = require 'stonehearth_ace.lib.item_quality.item_quality_lib'
+
 local EvolveComponent = require 'stonehearth.components.evolve.evolve_component'
 local AceEvolveComponent = class()
 
@@ -159,6 +161,10 @@ function AceEvolveComponent:evolve()
    end   
    --Create the evolved entity and put it on the ground
    local evolved_form = radiant.entities.create_entity(evolved_form_uri, { owner = self._entity})
+   
+   -- Paul: this is the only line of code being inserted into the base evolve function
+   self:_set_quality(evolved_form, self._entity)
+
    radiant.entities.set_player_id(evolved_form, self._entity)
 
    -- Have to remove entity because it can collide with evolved form
@@ -177,9 +183,6 @@ function AceEvolveComponent:evolve()
       -- Ensure the evolved form also has the evolve component if it will evolve
       evolved_form:add_component('stonehearth:evolve')
    end
-
-   -- Paul: this is the only line of code being inserted into the base evolve function
-   self:_set_quality(evolved_form, self._entity)
 
    radiant.terrain.place_entity_at_exact_location(evolved_form, location, { force_iconic = false, facing = facing } )
 
@@ -251,12 +254,7 @@ function AceEvolveComponent:_calculate_growth_period(evolve_time)
 end
 
 function AceEvolveComponent:_set_quality(item, source)
-   local source_iq = source:get_component('stonehearth:item_quality')
-   if source_iq and source_iq:get_quality() > 1 then
-      item:remove_component('stonehearth:item:quality')
-      local item_iq = item:add_component('stonehearth:item_quality')
-      item_iq:initialize_quality(source_iq:get_quality(), source_iq:get_author_name(), source_iq:get_author_type(), {override_allow_variable_quality = true})
-   end
+   item_quality_lib.copy_quality(source, item, {override_allow_variable_quality = true})
 end
 
 return AceEvolveComponent

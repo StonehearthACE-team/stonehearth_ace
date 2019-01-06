@@ -781,6 +781,11 @@
                "recipe_name": "Marblesprout Seeds",
                "description": "Domesticate Marblesprout flowers and learn how to farm them.",
                "flavor": "The crate must be placed on the ground before it can be used"
+            },
+            "fertilizer_recipe": {
+               "recipe_name": "Fertilizer",
+               "description": "Usable by skilled farmers for improving crop quality.",
+               "flavor": "Each sack can be used to fertilize 10 crops."
             }
          },
          "herbalist_hood": {
@@ -1728,15 +1733,15 @@
          "farmer_description": {
             "level_2_data": {
                "perk_000_name": "Bountiful Harvest",
-               "perk_000_description": "The farmer coaxes up to 40% greater yield from each plant."
+               "perk_000_description": "The farmer coaxes up to 25% greater yield from each plant."
             },
             "level_3_data": {
                "perk_000_name": "Fertilizer",
-               "perk_000_description": "(Coming soon!)"
+               "perk_000_description": "The farmer can use fertilizer on crops to potentially increase their quality."
             },
             "level_4_data": {
                "perk_000_name": "Bountiful Harvest (Upgrade)",
-               "perk_000_description": "The farmer coaxes up to 70% greater yield from each plant."
+               "perk_000_description": "The farmer coaxes up to 50% greater yield from each plant."
             },
             "level_6_data": {
                "perk_000_name": "Bountiful Harvest (Max)",
@@ -1798,6 +1803,10 @@
                "display_name": "Birch Catkins",
                "description": "Learn to grow birch trees."
             }
+         },
+         "fertilizer": {
+            "display_name": "Fertilizer",
+            "description": "Usable by skilled farmers for improving crop quality."
          }
       },
       "construction": {

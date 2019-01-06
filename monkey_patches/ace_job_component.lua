@@ -20,13 +20,17 @@ function AceJobComponent:destroy(value, add_curiosity_addition)
 	end
 end
 
-function AceJobComponent:add_exp(value, add_curiosity_addition, prevent_level_up)
+function AceJobComponent:add_exp(value, add_curiosity_addition, options)
    if not self:can_level_up() then
       return
    end
 
    if stonehearth.player:is_npc(self._entity) then
       -- no exp for npc players
+      return
+   end
+
+   if options and options.only_through_level and options.only_through_level < self._sv.curr_job_level then
       return
    end
 
@@ -58,7 +62,7 @@ function AceJobComponent:add_exp(value, add_curiosity_addition, prevent_level_up
       return
    end
 
-   if prevent_level_up then
+   if options and (options.prevent_level_up or (options.only_through_level and options.only_through_level == self._sv.curr_job_level)) then
       self._sv.current_level_exp = math.min(self._sv.current_level_exp, self._sv.xp_to_next_lv - 1)
    end
 

@@ -2,6 +2,8 @@ local Point3 = _radiant.csg.Point3
 local Entity = _radiant.om.Entity
 local rng = _radiant.math.get_default_rng()
 
+local item_quality_lib = require 'stonehearth_ace.lib.item_quality.item_quality_lib'
+
 local FertilizeCropAdjacent = radiant.class()
 FertilizeCropAdjacent.name = 'fertilize crop adjacent'
 FertilizeCropAdjacent.does = 'stonehearth_ace:fertilize_crop_adjacent'
@@ -52,10 +54,8 @@ function FertilizeCropAdjacent:_fertilize_one_time(ai, entity)
    ai:execute('stonehearth:run_effect', { effect = 'fiddle' })
 
    -- determine quality value to apply based on fertilizer data
-   local quality = self:_get_quality(carrying)
-   if quality > 1 then
-      self._crop:add_component('stonehearth:item_quality'):initialize_quality(quality, entity, nil, {override_allow_variable_quality = true})
-   end
+   local quality_chances = radiant.entities.get_entity_data(fertilizer, 'stonehearth_ace:fertilizer').quality_chances
+   item_quality_lib.apply_random_quality(self._crop, quality_chances, {author = entity, override_allow_variable_quality = true})
 
    radiant.entities.consume_stack(carrying, 1)
 
@@ -90,24 +90,6 @@ function FertilizeCropAdjacent:_fertilizer_has_stacks(carrying)
       return false
    end
    return true
-end
-
-function FertilizeCropAdjacent:_get_quality(fertilizer)
-   local quality_chances = radiant.entities.get_entity_data(fertilizer, 'stonehearth_ace:fertilizer').quality_chances
-   local roll = rng:get_real(0, 1)
-   local output_quality = 1
-
-   local cumulative_chance = 0
-   for _, value in ipairs(quality_chances) do
-      local quality, chance = value[1], value[2]
-      cumulative_chance = cumulative_chance + chance
-      if (roll <= cumulative_chance) then
-         output_quality = quality
-         break
-      end
-   end
-
-   return output_quality
 end
 
 function FertilizeCropAdjacent:_unreserve_location()

@@ -1,5 +1,7 @@
 local rng = _radiant.math.get_default_rng()
 
+local item_quality_lib = require 'stonehearth_ace.lib.item_quality.item_quality_lib'
+
 local HarvestCropAdjacent = require 'stonehearth.ai.actions.harvest_crop_adjacent'
 local AceHarvestCropAdjacent = class()
 
@@ -28,7 +30,20 @@ function AceHarvestCropAdjacent:_harvest_one_time(ai, entity)
       -- make sure the quality is applied
       local carrying_quality = radiant.entities.get_item_quality(carrying)
       if crop_quality > carrying_quality then
-         self:_set_quality(carrying, self._crop)
+         local stacks_component = product:get_component('stonehearth:stacks')
+         local new_carrying = radiant.entities.create_entity(carrying:get_uri(), {owner = carrying})
+         if stacks_component then
+            new_carrying:add_component('stonehearth:stacks'):set_stacks(stacks_component:get_stacks())
+         end
+         self:_set_quality(new_carrying, self._crop)
+
+         radiant.entities.remove_carrying(carrying)
+         radiant.entities.destroy_entity(carrying)
+
+         radiant.entities.pickup_item(entity, new_carrying)
+         -- newly harvested drops go into your inventory immediately unless your inventory is full
+         stonehearth.inventory:get_inventory(radiant.entities.get_player_id(entity))
+                                 :add_item_if_not_full(new_carrying)
       end
 
       return true
@@ -84,10 +99,9 @@ function AceHarvestCropAdjacent:_get_num_to_increment(entity)
 
    local job_component = entity:get_component('stonehearth:job')
    if job_component then
-      if job_component:curr_job_has_perk('farmer_harvest_increase_40') or
-            job_component:curr_job_has_perk('farmer_harvest_increase_70') or
-            job_component:curr_job_has_perk('farmer_harvest_increase_100') then
-         num_to_spawn = 2
+      local harvest_increase_amount = job_component:get_curr_job_controller():get_lookup_value('harvest_increase_amount')
+      if harvest_increase_amount then
+         num_to_spawn = 1 + math.ceil(harvest_increase_amount)
       end
    end
 
@@ -99,12 +113,13 @@ function AceHarvestCropAdjacent:_get_actual_spawn_count(entity)
    
    local job_component = entity:get_component('stonehearth:job')
    if job_component then
-      if job_component:curr_job_has_perk('farmer_harvest_increase') or job_component:curr_job_has_perk('farmer_harvest_increase_100') then
+      if job_component:curr_job_has_perk('farmer_harvest_increase') then
          num_to_spawn = 2
-      elseif job_component:curr_job_has_perk('farmer_harvest_increase_40') then
-         num_to_spawn = math.floor(rng:get_real(1.4, 2.4))
-      elseif job_component:curr_job_has_perk('farmer_harvest_increase_70') then
-         num_to_spawn = math.floor(rng:get_real(1.7, 2.7))
+      else
+         local harvest_increase_amount = job_component:get_curr_job_controller():get_lookup_value('harvest_increase_amount')
+         if harvest_increase_amount then
+            num_to_spawn = math.ceil(rng:get_real(0.0001 + harvest_increase_amount, 1 + harvest_increase_amount))
+         end
       end
    end
 
@@ -112,10 +127,7 @@ function AceHarvestCropAdjacent:_get_actual_spawn_count(entity)
 end
 
 function AceHarvestCropAdjacent:_set_quality(item, source)
-   local source_iq = source:get_component('stonehearth:item_quality')
-   item:remove_component('stonehearth:item:quality')
-   local item_iq = item:add_component('stonehearth:item_quality')
-   item_iq:initialize_quality(source_iq:get_quality(), source_iq:get_author_name(), source_iq:get_author_type(), {override_allow_variable_quality = true})
+   item_quality_lib.copy_quality(source, item, {override_allow_variable_quality = true})
 end
 
 return AceHarvestCropAdjacent
