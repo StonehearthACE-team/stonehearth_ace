@@ -631,7 +631,7 @@
       "herbalist": {
          "recipes": {
             "refined_fungi_name": "Pilzverfeinerung",
-	    "refined_seeds_name": "Lokale Samen für die Landwirtschaft",
+	    "refined_seeds_name": "Regionales Saatgut- und Landwirtschaftsverbesserungen",
             "moonbell_transmute_recipe": {
                "recipe_name": "Mondglocken Samen (x3)",
                "description": "Trennt Samen von den Kräutern",
@@ -654,33 +654,33 @@
             },
             "parasol_colony_recipe": {
                "recipe_name": "Sonnenschirmkolonie (x3)",
-               "description": "Verwende vorhandene Pilze, um weitere Kolonien zu bilden, die zu neuen Pilzen heranwachsen.",
+               "description": "Verwende vorhandene Pilze, um weitere Kolonien zu bilden, die zu neuen Pilzen heranwachsen. Sonnenschirme sind im rohen Zustand leicht giftig und dürfen nur als Kochzutat verwendet werden.",
                "flavor": "Sonnenschirme sind im rohen Zustand leicht giftig und dürfen nur als Kochzutat verwendet werden"
             },
             "sweet_tooth_colony_recipe": {
                "recipe_name": "Semmel-Stoppelpilzkolonie (x3)",
                "description": "Verwende vorhandene Pilze, um weitere Kolonien zu bilden, die zu neuen Pilzen heranwachsen.",
-               "flavor": ""
+               "flavor": "Für die Herstellung einer Kolonie wird ein ganzer, nicht eingesetzter Pilz benätigt - und nicht nur ein geernteter Korb"
             },
             "bolete_colony_recipe": {
                "recipe_name": "Röhrling-Kolonie (x3)",
                "description": "Verwende vorhandene Pilze, um weitere Kolonien zu bilden, die zu neuen Pilzen heranwachsen.",
-               "flavor": ""
+               "flavor": "Für die Herstellung einer Kolonie wird ein ganzer, nicht eingesetzter Pilz benätigt - und nicht nur ein geernteter Korb"
             },
             "chanterelle_colony_recipe": {
                "recipe_name": "Pfifferling-Kolonie (x3)",
                "description": "Verwende vorhandene Pilze, um weitere Kolonien zu bilden, die zu neuen Pilzen heranwachsen.",
-               "flavor": ""
+               "flavor": "Für die Herstellung einer Kolonie wird ein ganzer, nicht eingesetzter Pilz benätigt - und nicht nur ein geernteter Korb"
             },
             "winter_morel_colony_recipe": {
                "recipe_name": "Wintermorchel-Kolonie (x3)",
                "description": "Verwende vorhandene Pilze, um weitere Kolonien zu bilden, die zu neuen Pilzen heranwachsen.",
-               "flavor": ""
+               "flavor": "Für die Herstellung einer Kolonie wird ein ganzer, nicht eingesetzter Pilz benätigt - und nicht nur ein geernteter Korb"
             },
             "desert_truffle_colony_recipe": {
                "recipe_name": "Wüstentrüffel-Kolonie (x3)",
                "description": "Verwende vorhandene Pilze, um weitere Kolonien zu bilden, die zu neuen Pilzen heranwachsen.",
-               "flavor": ""
+               "flavor": "Für die Herstellung einer Kolonie wird ein ganzer, nicht eingesetzter Pilz benätigt - und nicht nur ein geernteter Korb"
             },
             "legendary_parchment_recipe": {
                "recipe_name": "Vergoldetes Papier",
@@ -783,9 +783,24 @@
                "flavor": "Die Kiste muss vor dem Einsatz auf dem Boden abgestellt werden"
             },
             "fertilizer_recipe": {
+               "recipe_name": "Einfacher Dünger",
+               "description": "Kann von erfahrenen Farmern genutzt werden, um die Qualität der Ernte leicht zu erhöhen.",
+               "flavor": "Jeder Sack kann 10 Früchte düngen"
+            },
+            "fertilizer_upgrade_recipe": {
                "recipe_name": "Dünger",
-               "description": "Kann von erfahrenen Farmern zur Verbesserung der Erntequalität verwendet werden.",
-               "flavor": "Mit jedem Sack können 10 Früchte befruchtet werden."
+               "description": "Kann von erfahrenen Farmern genutzt werden, um die Qualität der Ernte zu erhöhen.",
+               "flavor": "Jeder Sack kann 12 Früchte düngen"
+            },
+            "fertilizer_upgrade_2_recipe": {
+               "recipe_name": "Verbesserter Dünger",
+               "description": "Kann von erfahrenen Farmern genutzt werden, um die Qualität der Ernte stark zu erhöhen.",
+               "flavor": "Jeder Sack kann 16 Früchte düngen"
+            },
+            "fertilizer_megacrop_recipe": {
+               "recipe_name": "Megafrucht Dünger",
+               "description": "Dieser komplizierte Dünger wird das Wachstum etwas verlangsamen, erhöht aber die Wahrscheinlichkeit von Megafrüchten erheblich!",
+               "flavor": "Jeder Sack kann 20 Früchte düngen"
             }
          },
          "herbalist_hood": {
@@ -1810,8 +1825,20 @@
             }
          },
          "fertilizer": {
+            "display_name": "Einfacher Dünger",
+            "description": "Kann von erfahrenen Farmern genutzt werden, um die Qualität der Ernte leicht zu erhöhen."
+         },
+         "fertilizer_megacrop": {
+            "display_name": "Megafruch Dünger",
+            "description": "Kann von erfahrenen Farmern genutzt werden, um die Chancen auf Megafrüchte zu verbessern!"
+         },
+         "fertilizer_upgrade": {
             "display_name": "Dünger",
-            "description": "Kann von erfahrenen Farmern zur Verbesserung der Erntequalität verwendet werden."
+            "description": "Kann von erfahrenen Farmern genutzt werden, um die Qualität der Ernte zu erhöhen."
+         },
+         "fertilizer_upgrade_2": {
+            "display_name": "Verbesserter Dünger",
+            "description": "Kann von erfahrenen Farmern genutzt werden, um die Qualität der Ernte stark zu erhöhen."
          }
       },
       "construction": {
