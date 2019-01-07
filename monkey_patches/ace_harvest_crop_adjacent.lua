@@ -27,7 +27,7 @@ function AceHarvestCropAdjacent:_harvest_one_time(ai, entity)
 
    -- if the crop we're harvesting is a megacrop, handle that
    if self._crop:get_component('stonehearth:crop'):is_megacrop() then
-      if self:_harvest_megacrop_and_return(player_id, crop_quality) then
+      if self:_harvest_megacrop_and_return(ai, player_id, crop_quality) then
          return true
       end
    end
@@ -134,7 +134,7 @@ function AceHarvestCropAdjacent:_create_item(player_id, uri, crop_quality, num_s
 
    local stacks_component = product:get_component('stonehearth:stacks')
    if stacks_component then
-      stacks_component:set_stacks((max_stacks and stacks_component:get_max_stacks()) or num_stacks)
+      stacks_component:set_stacks((max_stacks and stacks_component:get_max_stacks()) or num_stacks or 1)
    end
 
    if crop_quality > 1 then
@@ -158,7 +158,7 @@ function AceHarvestCropAdjacent:_pickup_item(player_id, item)
    stonehearth.inventory:get_inventory(player_id):add_item_if_not_full(item)
 end
 
-function AceHarvestCropAdjacent:_harvest_megacrop_and_return(player_id, crop_quality)
+function AceHarvestCropAdjacent:_harvest_megacrop_and_return(ai, player_id, crop_quality)
    local megacrop_data = radiant.entities.get_entity_data(self._crop, 'stonehearth_ace:megacrop') or {}
    local num_to_spawn = megacrop_data.num_to_spawn or 3
    local other_items = megacrop_data.other_items

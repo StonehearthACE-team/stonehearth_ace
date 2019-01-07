@@ -14,12 +14,17 @@ function AceCropComponent:activate()
 end
 
 function AceCropComponent:set_consider_megacrop()
-   self._sv.consider_megacrop = true
-   self.__saved_variables:mark_changed()
+   if not self._sv.consider_megacrop then
+      self._sv.consider_megacrop = true
+      self.__saved_variables:mark_changed()
+   end
 end
 
 function AceCropComponent:apply_megacrop_chance_multiplier(multiplier)
-   self._sv.megacrop_chance = self._sv.megacrop_chance * multiplier
+   if multiplier ~= 1 and self._sv.megacrop_chance ~= 0 then
+      self._sv.megacrop_chance = self._sv.megacrop_chance * multiplier
+      self.__saved_variables:mark_changed()
+   end
 end
 
 --- As we grow, change the resources we yield and, if appropriate, command harvest
