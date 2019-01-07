@@ -1,0 +1,30 @@
+{
+   "type": "recipe",
+   "effort": 18,
+   "work_units": 1,
+   "recipe_name": "i18n(stonehearth_ace:jobs.herbalist.recipes.fertilizer_upgrade_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.fertilizer_upgrade_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.fertilizer_upgrade_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/consumables/fertilizer_upgrade/fertilizer_upgrade.png",
+   "workshop": "stonehearth:herbalist:workbench",
+   "level_requirement": 4,
+   "ingredients": [
+	   {
+         "material": "raw_food vegetarian",
+         "count": 1
+      },
+	  {
+         "uri": "stonehearth_ace:resources:coal:piece_of_charcoal",
+         "count": 1
+      },
+      {
+         "material": "bone resource",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:consumables:fertilizer_upgrade"
+      }
+   ]
+}

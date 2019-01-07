@@ -1,0 +1,26 @@
+{
+   "type": "recipe",
+   "effort": 20,
+   "work_units": 1,
+   "recipe_name": "i18n(stonehearth_ace:jobs.herbalist.recipes.fertilizer_upgrade_2_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.fertilizer_upgrade_2_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.fertilizer_upgrade_2_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/consumables/fertilizer_upgrade_2/fertilizer_upgrade_2.png",
+   "workshop": "stonehearth:herbalist:workbench",
+   "level_requirement": 5,
+   "ingredients": [
+	   {
+         "uri": "stonehearth_ace:food:fish_roe:fish_roe_basket",
+         "count": 1
+      },
+      {
+         "material": "bone resource",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:consumables:fertilizer_upgrade_2"
+      }
+   ]
+}

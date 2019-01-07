@@ -13,13 +13,13 @@
          "model_origin": { "x": 0, "y": 0, "z": 0 }
       },
       "stonehearth:stacks": {
-         "max_stacks": 10
+         "max_stacks": 16
       }
    },
    "entity_data": {
       "stonehearth:net_worth": {
-         "value_in_gold": 10,
-         "rarity": "common",
+         "value_in_gold": 17,
+         "rarity": "uncommon",
          "shop_info": {
             "buyable": true,
             "sellable": true,
@@ -28,8 +28,8 @@
          }
       },
       "stonehearth:catalog": {
-         "display_name": "",
-         "description": "",
+         "display_name": "i18n(stonehearth_ace:entities.consumables.fertilizer_upgrade_2.display_name)",
+         "description": "i18n(stonehearth_ace:entities.consumables.fertilizer_upgrade_2.description)",
          "icon": "file(fertilizer_upgrade_2.png)",
          "is_item": true,
          "category": "consumable",
@@ -42,12 +42,16 @@
       "stonehearth_ace:fertilizer": {
          "quality_chances": [
             [
+               4,
+               0.15
+            ],
+            [
                3,
-               0.01
+               0.6
             ],
             [
                2,
-               0.1
+               0.25
             ]
          ]
       }
