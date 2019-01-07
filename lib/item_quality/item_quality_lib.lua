@@ -52,6 +52,11 @@ function item_quality_lib.apply_quality_options(item, quality, options)
    end
 end
 
+function item_quality_lib.apply_random_quality_options(item, quality_chances, options)
+   local quality = item_quality_lib.get_random_quality(quality_chances)
+   item_quality_lib.apply_quality_options(item, quality, options)
+end
+
 function item_quality_lib.apply_random_quality(item, quality_chances, force)
    local quality = item_quality_lib.get_random_quality(quality_chances)
    item_quality_lib.apply_quality(item, quality, force)

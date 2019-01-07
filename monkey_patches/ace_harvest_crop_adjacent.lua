@@ -194,9 +194,8 @@ function AceHarvestCropAdjacent:_harvest_megacrop_and_return(ai, player_id, crop
    end
 
    if megacrop_data.effect then
-      -- if we're running an effect, go ahead and immediately destroy the crop
-      -- nothing else will be using it at this point, and the destroy method is safe to call multiple times
-      self:_destroy_crop()
+      -- if we're running an effect, go ahead and hide the crop so it's not sitting there while it's already been looted
+      self._crop:get_component('render_info'):set_visible(false)
 
       ai:execute('stonehearth:run_effect', { effect = megacrop_data.effect })
    end
