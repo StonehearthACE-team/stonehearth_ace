@@ -7,9 +7,12 @@ AceCropComponent._old_activate = CropComponent.activate
 function AceCropComponent:activate()
    self:_old_activate()
    
+   local json = radiant.entities.get_json(self) or {}
+   self._megacrop_description = json.megacrop_description or stonehearth.constants.farming.default_megacrop_description
+   self._megacrop_model_variant = json.megacrop_model_variant
+
    if not self._sv.megacrop_chance then
-      local json = radiant.entities.get_json(self)
-      self._sv.megacrop_chance = (json and json.megacrop_chance) or stonehearth.constants.farming.BASE_MEGACROP_CHANCE
+      self._sv.megacrop_chance = json.megacrop_chance or stonehearth.constants.farming.BASE_MEGACROP_CHANCE
    end
 end
 
@@ -47,8 +50,17 @@ end
 
 function AceCropComponent:_set_megacrop()
    self._sv.is_megacrop = true
+   
+   if self._megacrop_description then
+      radiant.entities.set_description(self._entity, self._megacrop_description)
+   end
+
    local render_info = self._entity:get_component('render_info')
+   if self._megacrop_model_variant then
+      self._entity:get_component('render_info'):set_model_variant(self._megacrop_model_variant)
+   end
    render_info:set_scale(render_info:get_scale() * (2 + rng:get_real(-0.05, 0.05)))
+
    self.__saved_variables:mark_changed()
 end
 
