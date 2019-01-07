@@ -8,7 +8,8 @@ function AceCropComponent:activate()
    self:_old_activate()
    
    if not self._sv.megacrop_chance then
-      self._sv.megacrop_chance = stonehearth.constants.farming.BASE_MEGACROP_CHANCE
+      local json = radiant.entities.get_json(self)
+      self._sv.megacrop_chance = (json and json.megacrop_chance) or stonehearth.constants.farming.BASE_MEGACROP_CHANCE
    end
 end
 
@@ -30,16 +31,20 @@ function AceCropComponent:_on_grow_period(e)
    -- if we just became harvestable, consider mega crop
    if was_harvestable ~= self._sv.harvestable and self._sv.consider_megacrop then
       if rng:get_real(0, 1) < self._sv.megacrop_chance then
-         self._sv.is_megacrop = true
-         local render_info = self._entity:get_component('render_info')
-         render_info:set_scale(render_info:get_scale() * (2 + rng:get_real(-0.05, 0.05)))
-         self.__saved_variables:mark_changed()
+         self:_set_megacrop()
       end
    end
 end
 
 function AceCropComponent:is_megacrop()
    return self._sv.is_megacrop
+end
+
+function AceCropComponent:_set_megacrop()
+   self._sv.is_megacrop = true
+   local render_info = self._entity:get_component('render_info')
+   render_info:set_scale(render_info:get_scale() * (2 + rng:get_real(-0.05, 0.05)))
+   self.__saved_variables:mark_changed()
 end
 
 return AceCropComponent

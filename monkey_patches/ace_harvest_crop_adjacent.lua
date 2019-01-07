@@ -38,7 +38,7 @@ function AceHarvestCropAdjacent:_harvest_one_time(ai, entity)
       -- make sure the quality is applied
       local carrying_quality = radiant.entities.get_item_quality(carrying)
       if crop_quality > carrying_quality then
-         local stacks_component = product:get_component('stonehearth:stacks')
+         local stacks_component = carrying:get_component('stonehearth:stacks')
          local new_carrying = radiant.entities.create_entity(carrying:get_uri(), {owner = carrying})
          if stacks_component then
             new_carrying:add_component('stonehearth:stacks'):set_stacks(stacks_component:get_stacks())
@@ -146,7 +146,7 @@ end
 
 function AceHarvestCropAdjacent:_place_item_on_ground(player_id, item)
    -- place the item in a nearby location
-   local pt = radiant.terrain.find_placement_point(self._location, 0, 4)
+   local pt = radiant.terrain.find_placement_point(self._location, 0, 2)
    radiant.terrain.place_entity(item, pt)
    stonehearth.inventory:get_inventory(player_id):add_item_if_not_full(item)
 end

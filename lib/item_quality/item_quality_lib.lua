@@ -1,3 +1,5 @@
+local rng = _radiant.math.get_default_rng()
+
 local item_quality_lib = {}
 
 function item_quality_lib.get_random_quality(quality_chances)
@@ -21,7 +23,7 @@ function item_quality_lib.copy_quality(from, to, force)
    local from_iq = from:get_component('stonehearth:item_quality')
    if from_iq and from_iq:get_quality() > 1 then
       local options = {}
-      options.author = from_iq:get_author()
+      options.author = from_iq:get_author_name()
       options.author_type = from_iq:get_author_type()
       options.override_allow_variable_quality = force
       item_quality_lib.apply_quality_options(to, from_iq:get_quality(), options)

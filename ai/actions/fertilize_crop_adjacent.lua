@@ -54,7 +54,7 @@ function FertilizeCropAdjacent:_fertilize_one_time(ai, entity)
    ai:execute('stonehearth:run_effect', { effect = 'fiddle' })
 
    -- determine quality value to apply based on fertilizer data
-   local fertilizer_data = radiant.entities.get_entity_data(fertilizer, 'stonehearth_ace:fertilizer')
+   local fertilizer_data = radiant.entities.get_entity_data(carrying, 'stonehearth_ace:fertilizer')
    item_quality_lib.apply_random_quality(self._crop, fertilizer_data.quality_chances, {author = entity, override_allow_variable_quality = true})
 
    -- consider megacrop
@@ -64,7 +64,7 @@ function FertilizeCropAdjacent:_fertilize_one_time(ai, entity)
 
    -- any other special function; we pass fertilizer_data because the fertilizer may be consumed by the time the function runs
    if fertilizer_data.call then
-      radiant.call(fertilizer_data.call, {crop = self._crop, fertilizer_data = fertilizer_data, farmer = entity})
+      _radiant.call(fertilizer_data.call, {crop = self._crop, fertilizer_data = fertilizer_data, farmer = entity})
    end
 
    radiant.entities.consume_stack(carrying, 1)
