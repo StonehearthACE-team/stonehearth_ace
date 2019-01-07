@@ -609,7 +609,8 @@
             "level_1_data": {
                "training_perk_name": "Bogenschieß-Training",
                "training_perk_description": "Ein Bogenschütze kann mit Zielscheiben bis zu Level 3 trainieren und erhöht das zulässige Limit der Trainingsausrüstung um 1"
-            }
+            },
+            "description": "Eine Fernkampfeinheit, die Gegner mit Pfeilen beschießt"
          }
       },
       "cleric": {
@@ -617,7 +618,8 @@
             "level_1_data": {
                "training_perk_name": "Heiler-Training",
                "training_perk_description": "Ein Kleriker kann Schafe verwenden, die von einem Hirten gezähmt wurden, um seine/ihre magischen Gesten zu üben und Erfahrung bis Level 3 sammeln"
-            }
+            },
+            "description": "Ein Kampfheiler"
          }
       },
       "knight": {
@@ -625,13 +627,15 @@
             "level_1_data": {
                "training_perk_name": "Knappen Training",
                "training_perk_description": "Ein Ritter kann mit Übungspuppen bis zu Level 3 trainieren und das zulässige Limit der Trainingsausrüstung um 1 erhöhen"
-            }
+            },
+            "description": "Ein Verteidigungskämpfer der sich darauf konzentriert Verbündete vor Schaden zu schützen."
          }
       },
       "herbalist": {
          "recipes": {
             "refined_fungi_name": "Pilzverfeinerung",
-	    "refined_seeds_name": "Regionales Saatgut- und Landwirtschaftsverbesserungen",
+	    "refined_seeds_name": "Lokale Samen für die Landwirtschaft",
+			"farming_enhancements_name": "Landwirtschaftsverbesserungen",
             "moonbell_transmute_recipe": {
                "recipe_name": "Mondglocken Samen (x3)",
                "description": "Trennt Samen von den Kräutern",
@@ -806,6 +810,9 @@
          "herbalist_hood": {
             "display_name": "Kräuterarzt Kapuze",
             "description": "Eine schützende Kopfbedeckung für Wüstenärzte."
+         },
+         "herbalist_description": {
+            "description": "Heilt Einheiten mit Balsam und Bandagen."
          }
       },
       "engineer": {
@@ -859,6 +866,9 @@
                "description": "Erstelle ein Gerät, mit dem Sie die mechanische Leistung in jede Richtung umleiten können.",
                "flavor": "Es kann während des Baus in Wände platziert werden - wie Fenster oder Türen."
             }
+         },
+         "engineer_description": {
+            "description": "Der Ingenieur stellt fortschrittliche Geräte und Verteidigungswaffen her."
          }
       },
       "potter": {
@@ -1046,6 +1056,9 @@
                "description": "In diesem Bett können deine Haustiere wunderbar schlafen!",
                "flavor": "Haustiere werden immer versuchen, in dem Bett zu schlafen, das dem Bett seines Besitzers am nächsten ist!"
             }
+         },
+         "potter_description": {
+            "description": "Macht Gebrauchsgegenstände aus Ton. Hochstufbar zum Steinmetz"
          }
       },
       "geomancer": {
@@ -1060,6 +1073,9 @@
                "description": "Ein legendärer Foliant für die Anhänger der Kirche des Überflusses.",
                "flavor": "Auf den Wegen von Cid soll Heilung erfolgen"
             }
+         },
+         "geomancer_description": {
+            "description": "Terraformt und stellt Golems her."
          }
       },
       "mason": {
@@ -1417,7 +1433,8 @@
             "level_4_data": {
                "perk_000_name": "Verbesserte Werkzeuge und kalter Stahl",
                "perk_000_description": "Lange Zeit in der Schmiede hat dem Schmied Ideen für neue und verbesserte Anlagen gegeben, die das Geheimnis von Stahl erschließen würden: schärfere Waffen und leichtere Rüstung."
-            }
+            },
+            "description": "Der Schmied veredelt Roherz zu Metallbarren und fertigt dann Waffen, Rüstungen und Gebäudeteile wie Tore."
          }
       },
       "worker": {
@@ -1590,6 +1607,9 @@
          },
          "cook_bowl_animation": {
             "display_name": "Kochschüssel"
+         },
+         "cook_description": {
+            "description": "Der Koch macht köstliche, herzhafte Mahlzeiten aus Gemüse und Fleisch."
          }
       },
       "carpenter": {
@@ -1665,6 +1685,9 @@
                "description": "In diesem Bett können deine Haustiere wunderbar schlafen!",
                "flavor": "Haustiere werden immer versuchen, in dem Bett zu schlafen, das dem Bett seines Besitzers am nächsten ist!"
             }
+         },
+         "carpenter_description": {
+            "description": "Der Schreiner fertigt Werkzeuge und Möbel aus Holz. Die Werkzeuge, die er herstellt, schalten mehrere andere Jobs frei."
          }
       },
       "weaver": {
@@ -1729,6 +1752,9 @@
                "description": "Lässt das Licht sanft herein.",
                "flavor": ""
             }
+         },
+         "weaver_description": {
+            "description": "Der Weber stellt Fäden, Stoffe und Behänge aus Fasern und Farbstoffen her."
          }
       },
       "trapper": {
@@ -1739,6 +1765,9 @@
          "clamp_trap": {
             "display_name": "Klammerfalle",
             "description": "Macht seine Beute nicht hundertprozentig Bewgungsunfähig"
+         },
+         "trapper_description": {
+            "description": "Der Trapper fängt und ähmmmm 'erntet' kleine Lebewesen für eine zuverlässige Nahrungsquelle."
          }
       },
       "shepherd": {
@@ -1747,6 +1776,9 @@
                "display_name": "Hirtenhaube",
                "description": "Eine wollene Kapuze, die der Hirte benutzt."
             }
+         },
+         "shepherd_description": {
+            "description": "Zähme Wildtiere und erntet sie für Nahrung und Materialien."
          }
       },
       "farmer": {
@@ -1768,7 +1800,8 @@
                "perk_000_description": "Der Farmer erzielt mit jeder Pflanze 100% mehr Ertrag.",
                "perk_001_name": "Mega-Früchte",
                "perk_001_description": "(Demnächst!)"
-            }
+            },
+            "description": "Farmer bestellen Felder und ernten diese, sie sorgen für eine konstante Versorgung mit Lebensmitteln und Rohstoffen für Backwaren."
          }
       }
    },
@@ -2223,6 +2256,9 @@
                   "description": "Bereit, auf ein größeres Grundstück übertragen zu werden."
                }
             }
+         },
+         "megacrops": {
+            "default_description": "Diese Frucht ist Mega!"
          }
       },
       "decorations": {
