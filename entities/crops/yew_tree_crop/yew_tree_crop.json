@@ -40,7 +40,8 @@
             "yew_tree_4": "stonehearth_ace:trees:yew:sapling"
          },
          "harvest_threshhold": "yew_tree_4",
-         "plant_overlay_effect": "stonehearth:effects:plant_crop_overlay_effect"
+         "plant_overlay_effect": "stonehearth:effects:plant_crop_overlay_effect",
+         "megacrop_chance": 0
       },
       "stonehearth:growing": {
          "growth_period": "18h",
@@ -81,7 +82,10 @@
          "display_name": "i18n(stonehearth_ace:entities.crops.yew_tree_crop.display_name)",
          "description": "i18n(stonehearth_ace:entities.crops.yew_tree_crop.description)",
          "icon": "file(yew_tree_crop.png)",
-         "material_tags":["crop", "yew_tree_sapling"]
+         "material_tags": [
+            "crop",
+            "yew_tree_sapling"
+         ]
       },
       "stonehearth:appeal": {
          "appeal": 1

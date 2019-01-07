@@ -609,7 +609,8 @@
             "level_1_data": {
                "training_perk_name": "Archery Training",
                "training_perk_description": "An archer can use Archery Targets to train up to Level 3 and will increase the allowed limit of Training Equipment by 1"
-            }
+            },
+            "description": "A ranged combat unit that shoots foes with arrows"
          }
       },
       "cleric": {
@@ -617,7 +618,8 @@
             "level_1_data": {
                "training_perk_name": "Healer Training",
                "training_perk_description": "A cleric can use Sheep tamed by a Shepherd to practice their magical gestures and earn experience up to Level 3"
-            }
+            },
+            "description": "A combat healer"
          }
       },
       "knight": {
@@ -625,13 +627,15 @@
             "level_1_data": {
                "training_perk_name": "Squire Training",
                "training_perk_description": "A knight can use Training Dummies to train up to Level 3 and will increase the allowed limit of Training Equipment by 1"
-            }
+            },
+            "description": "A defensive combatant focused on protecting allies from harm."
          }
       },
       "herbalist": {
          "recipes": {
             "refined_fungi_name": "Fungal Refinement",
-            "refined_seeds_name": "Regional Seeds & Farming Enhancements",
+            "refined_seeds_name": "Local Farming Seeds",
+			"farming_enhancements_name": "Farming Enhancements",
             "moonbell_transmute_recipe": {
                "recipe_name": "Moonbell Seeds (x3)",
                "description": "Separate seeds from the herbs",
@@ -806,6 +810,9 @@
          "herbalist_hood": {
             "display_name": "Herbalist's Hood",
             "description": "A protective headgear for desert herbalists."
+         },
+         "herbalist_description": {
+            "description": "Heals units with crafted balms and bandages."
          }
       },
       "engineer": {
@@ -859,6 +866,9 @@
                "description": "Build a device that allows you to redirect mechanical power to any direction.",
                "flavor": "It can be placed in walls during building - like windows or doors."
             }
+         },
+         "engineer_description": {
+            "description": "The Engineer creates advanced contraptions and defensive weaponry."
          }
       },
       "potter": {
@@ -1046,6 +1056,9 @@
                "description": "Animals will have a wonderful time sleeping in this bed!",
                "flavor": "Pets will always try to sleep on the bed that is closest to their owner's bed!"
             }
+         },
+         "potter_description": {
+            "description": "Makes useful goods from clay. Upgradeable to the Mason"
          }
       },
       "geomancer": {
@@ -1060,6 +1073,9 @@
                "description": "A legendary tome for the followers of the Church of Plenty.",
                "flavor": "Through the ways of Cid healing shall be done"
             }
+         },
+         "geomancer_description": {
+            "description": "Terraforms and crafts golems."
          }
       },
       "mason": {
@@ -1177,6 +1193,9 @@
          "mason_workbench_bone": {
             "display_name": "Bone Carving Studio",
             "description": "Used by the Mason for crafting with bone material."
+         },
+         "mason_description": {
+            "description": "The Mason crafts building materials and decorative items from stone."
          }
       },
       "blacksmith": {
@@ -1417,7 +1436,8 @@
             "level_4_data": {
                "perk_000_name": "Enhanced Tools & Cold Steel",
                "perk_000_description": "Long hours at the forge have given the Blacksmith ideas on new and improved facilities that would unlock the secret of steel: sharper weapons and lighter armor."
-            }
+            },
+            "description": "The Blacksmith refines raw ore into metal bars, then uses those bars to craft weapons, armor, and building parts like gates."
          }
       },
       "worker": {
@@ -1590,6 +1610,9 @@
          },
          "cook_bowl_animation": {
             "display_name": "Cook's Bowl"
+         },
+         "cook_description": {
+            "description": "The Cook makes delicious, hearty meals from base vegetables and meats."
          }
       },
       "carpenter": {
@@ -1665,6 +1688,9 @@
                "description": "Animals will have a wonderful time sleeping in this bed!",
                "flavor": "Pets will always try to sleep on the bed that is closest to their owner's bed!"
             }
+         },
+         "carpenter_description": {
+            "description": "The Carpenter crafts tools and furniture from wood. The tools he makes unlocks several other jobs."
          }
       },
       "weaver": {
@@ -1729,6 +1755,9 @@
                "description": "Softly lets the light in.",
                "flavor": ""
             }
+         },
+         "weaver_description": {
+            "description": "The Weaver makes thread, fabrics and hangings from fiber and dye."
          }
       },
       "trapper": {
@@ -1739,6 +1768,9 @@
          "clamp_trap": {
             "display_name": "Clamp Trap",
             "description": "Not so safely immobilizes its prey"
+         },
+         "trapper_description": {
+            "description": "The Trapper's snares capture and (ahem) &quot;harvest&quot; small critters for a reliable source of food and supplies."
          }
       },
       "shepherd": {
@@ -1747,6 +1779,9 @@
                "display_name": "Shepherd's Hood",
                "description": "A wooly hood used by the shepherd."
             }
+         },
+         "shepherd_description": {
+            "description": "Domesticates wild animals and harvests them for food and materials."
          }
       },
       "farmer": {
@@ -1768,7 +1803,8 @@
                "perk_000_description": "The farmer coaxes 100% more yield from each plant.",
                "perk_001_name": "Mega Crops",
                "perk_001_description": "(Coming soon!)"
-            }
+            },
+            "description": "Farmers till fields and harvest crops, providing a consistent food supply and raw materials for baked goods."
          }
       }
    },
