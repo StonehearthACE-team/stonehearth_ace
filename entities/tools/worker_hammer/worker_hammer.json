@@ -1,0 +1,44 @@
+{
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(worker_hammer.qb)"
+            ]
+         }
+      },
+      "stonehearth:equipment_piece": {
+         "slot": "mainhand",
+         "render_type": "attach_to_bone",
+         "ilevel": 1,
+         "no_drop": true,
+         "injected_buffs": [
+            "stonehearth_ace:buffs:tools:worker_hammer"
+         ],
+         "postures": [
+            "stonehearth:combat"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:combat:weapon_data": {
+         "base_damage": 4,
+         "reach": 0.75
+      },
+      "stonehearth:combat:melee_attacks": [
+         {
+            "name": "combat_1h_forehand",
+            "effect": "combat_1h_forehand",
+            "active_frame": 16,
+            "cooldown": 0,
+            "priority": 0
+         }
+      ],
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.tools.worker_hammer.display_name)",
+         "description": "i18n(stonehearth_ace:entities.tools.worker_hammer.description)",
+         "icon": "file(worker_hammer.png)"
+      }
+   }
+}

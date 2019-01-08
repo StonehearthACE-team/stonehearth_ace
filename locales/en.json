@@ -610,7 +610,7 @@
                "training_perk_name": "Archery Training",
                "training_perk_description": "An archer can use Archery Targets to train up to Level 3 and will increase the allowed limit of Training Equipment by 1"
             },
-            "description": "A ranged combat unit that shoots foes with arrows"
+            "description": "A rearguard combatant capable of using ranged weaponry like bows, crossbows and a variety of hindering types of arrows or bolts to attack their foes."
          }
       },
       "cleric": {
@@ -619,7 +619,7 @@
                "training_perk_name": "Healer Training",
                "training_perk_description": "A cleric can use Sheep tamed by a Shepherd to practice their magical gestures and earn experience up to Level 3"
             },
-            "description": "A combat healer"
+            "description": "A combat healer that channels holy magic to not only mend wounds but also boost their allies through auras and effects."
          }
       },
       "knight": {
@@ -628,14 +628,14 @@
                "training_perk_name": "Squire Training",
                "training_perk_description": "A knight can use Training Dummies to train up to Level 3 and will increase the allowed limit of Training Equipment by 1"
             },
-            "description": "A defensive combatant focused on protecting allies from harm."
+            "description": "A defensive fighter focused on protecting allies from harm and rounding up enemies, striking fear in their hearts!"
          }
       },
       "herbalist": {
          "recipes": {
             "refined_fungi_name": "Fungal Refinement",
             "refined_seeds_name": "Local Farming Seeds",
-			"farming_enhancements_name": "Farming Enhancements",
+            "farming_enhancements_name": "Farming Enhancements",
             "moonbell_transmute_recipe": {
                "recipe_name": "Moonbell Seeds (x3)",
                "description": "Separate seeds from the herbs",
@@ -812,7 +812,7 @@
             "description": "A protective headgear for desert herbalists."
          },
          "herbalist_description": {
-            "description": "Heals units with crafted balms and bandages."
+            "description": "A performer of healing practices, the Herbalist can craft and use tonics, bandages and potions but also work with plants, seeds and other foraging goods."
          }
       },
       "engineer": {
@@ -868,7 +868,7 @@
             }
          },
          "engineer_description": {
-            "description": "The Engineer creates advanced contraptions and defensive weaponry."
+            "description": "The Engineer is a master of creating contraptions and defenses, repairing facilities and designing mechanisms that can improve other professions."
          }
       },
       "potter": {
@@ -1058,7 +1058,7 @@
             }
          },
          "potter_description": {
-            "description": "Makes useful goods from clay. Upgradeable to the Mason"
+            "description": "The Potter works with clay resources to craft them into construction bricks and other useful goods, tools and decorations."
          }
       },
       "geomancer": {
@@ -1075,7 +1075,7 @@
             }
          },
          "geomancer_description": {
-            "description": "Terraforms and crafts golems."
+            "description": "Mastery of the Earth Magic provides the power to shape the terrain, create ores, stunning landscapes and even breathe life into rocks to raise golems that will work for the town."
          }
       },
       "mason": {
@@ -1195,7 +1195,7 @@
             "description": "Used by the Mason for crafting with bone material."
          },
          "mason_description": {
-            "description": "The Mason crafts building materials and decorative items from stone."
+            "description": "The Mason is able to shape stone into different and useful tools, construction parts and decorations. They may also learn how to work with bones."
          }
       },
       "blacksmith": {
@@ -1437,7 +1437,7 @@
                "perk_000_name": "Enhanced Tools & Cold Steel",
                "perk_000_description": "Long hours at the forge have given the Blacksmith ideas on new and improved facilities that would unlock the secret of steel: sharper weapons and lighter armor."
             },
-            "description": "The Blacksmith refines raw ore into metal bars, then uses those bars to craft weapons, armor, and building parts like gates."
+            "description": "The Blacksmith uses raw ores, fuels and strength to bend metals to their will, creating a wide range of goods like weapons, armor, decorations and useful tools."
          }
       },
       "worker": {
@@ -1612,7 +1612,7 @@
             "display_name": "Cook's Bowl"
          },
          "cook_description": {
-            "description": "The Cook makes delicious, hearty meals from base vegetables and meats."
+            "description": "The art of cooking will provide a diverse menu of hearty meals and fortifying drinks created with resources of many origins like vegetables, meat and foraged goods."
          }
       },
       "carpenter": {
@@ -1690,7 +1690,7 @@
             }
          },
          "carpenter_description": {
-            "description": "The Carpenter crafts tools and furniture from wood. The tools he makes unlocks several other jobs."
+            "description": "The Carpenter can craft many goods like tools, construction parts, weapons and furniture from wood."
          }
       },
       "weaver": {
@@ -1757,7 +1757,7 @@
             }
          },
          "weaver_description": {
-            "description": "The Weaver makes thread, fabrics and hangings from fiber and dye."
+            "description": "The Weaver can turn hides into leather and fibers into cloth, working with them to create intricate goods, clothing, armor and decorations."
          }
       },
       "trapper": {
@@ -1770,7 +1770,7 @@
             "description": "Not so safely immobilizes its prey"
          },
          "trapper_description": {
-            "description": "The Trapper's snares capture and (ahem) &quot;harvest&quot; small critters for a reliable source of food and supplies."
+            "description": "The Trapper can arm snares to capture and (ahem) &quot;harvest&quot; wild critters for a reliable source of food, pelts and bones."
          }
       },
       "shepherd": {
@@ -1781,7 +1781,7 @@
             }
          },
          "shepherd_description": {
-            "description": "Domesticates wild animals and harvests them for food and materials."
+            "description": "Nature-loving loners, shepherds will domesticate gentle wild animals to care for them and harvest their resources like eggs, wool and meat."
          }
       },
       "farmer": {
@@ -1804,7 +1804,7 @@
                "perk_001_name": "Mega Crops",
                "perk_001_description": "(Coming soon!)"
             },
-            "description": "Farmers till fields and harvest crops, providing a consistent food supply and raw materials for baked goods."
+            "description": "Farmers till fields, sow seeds and harvest crops, taming the land to provide a consistent supply of food, ingredients for cooking, fibers, herbs and more."
          }
       }
    },
@@ -2811,6 +2811,38 @@
             "description": "Baby Arctic Juniper Tree. This sapling can grow into any arctic juniper!",
             "description_iconic": "Plant it in the earth and watch it grow.",
             "display_name": "Arctic Juniper Tree Sapling"
+         },
+         "chestnut_tree": {
+            "seed": {
+               "tree_chestnut_seed": {
+                  "display_name": "Chestnut Tree Seed",
+                  "description": "Can't be planted but may be used as an edible nut."
+               }
+            }
+         },
+         "hazelnut_tree": {
+            "seed": {
+               "tree_hazelnut_seed": {
+                  "description": "Can't be planted but may be used as an edible nut.",
+                  "display_name": "Hazelnut Tree Seed"
+               }
+            }
+         },
+         "walnut_tree": {
+            "seed": {
+               "tree_walnut_seed": {
+                  "description": "Can't be planted but may be used as an edible nut.",
+                  "display_name": "Walnut Tree Seed"
+               }
+            }
+         },
+         "almond_tree": {
+            "seed": {
+               "tree_almond_seed": {
+                  "description": "Can't be planted but may be eaten raw or used as an edible nut or fruit.",
+                  "display_name": "Almond Tree Seed"
+               }
+            }
          }
       },
       "furniture": {
@@ -4826,6 +4858,44 @@
          "fuel_holder_small": {
             "display_name": "Cast Iron Holder",
             "description": "This fancy holder can reasonably store some fuel like firewood."
+         }
+      },
+      "tools": {
+         "worker_axe_iron": {
+            "display_name": "Iron Worker's Axe",
+            "description": "Slightly increases the chopping speed when cutting down trees."
+         },
+         "worker_axe": {
+            "display_name": "Bronze Worker's Axe",
+            "description": "Hack and chop your troubles away."
+         },
+         "worker_hammer": {
+            "display_name": "Bronze Worker's Hammer",
+            "description": "Everything looks like a nail when all you have is a hammer."
+         },
+         "mining_pick": {
+            "display_name": "Bronze Worker's Pick",
+            "description": "For mining and picking."
+         },
+         "mining_pick_iron": {
+            "display_name": "Iron Worker's Pick",
+            "description": "Slightly increases mining speed and the quality of the resources found."
+         },
+         "mining_pick_steel": {
+            "display_name": "Steel Worker's Pick",
+            "description": "Greatly increases mining speed and the quality of the resources found."
+         },
+         "worker_axe_steel": {
+            "display_name": "Steel Worker's Axe",
+            "description": "Greatly increases the chopping speed when cutting down trees."
+         },
+         "worker_hammer_iron": {
+            "display_name": "Iron Worker's Hammer",
+            "description": "Slighly increases the work speed for general activities like building."
+         },
+         "worker_hammer_steel": {
+            "display_name": "Steel Worker's Hammer",
+            "description": "Greatly increases the work speed for general activities like building."
          }
       }
    },

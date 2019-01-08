@@ -1,0 +1,27 @@
+{
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(mining_pick.qb)"
+            ]
+         }
+      },
+      "stonehearth:equipment_piece": {
+         "slot": "worker_mining_pick",
+         "ilevel": 1,
+         "no_drop": true,
+         "injected_buffs": [
+            "stonehearth_ace:buffs:tools:mining_pick"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.tools.mining_pick.display_name)",
+         "description": "i18n(stonehearth_ace:entities.tools.mining_pick.description)",
+         "icon": "file(mining_pick.png)"
+      }
+   }
+}

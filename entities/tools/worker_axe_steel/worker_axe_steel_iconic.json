@@ -1,0 +1,22 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(worker_axe_steel.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.tools.worker_axe_steel.display_name)",
+         "description": "i18n(stonehearth_ace:entities.tools.worker_axe_steel.description)",
+         "icon": "file(worker_axe_steel.png)",
+         "is_item": true,
+         "category": "tools"
+      }
+   }
+}
