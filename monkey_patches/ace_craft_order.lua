@@ -43,18 +43,12 @@ function AceCraftOrder:activate()
       end
    end
 
-   if not self._sv.condition.quality_preference then
-      -- if an explicit quality preference wasn't set, use the default gameplay setting for it
-      self._sv.condition.quality_preference = stonehearth.client_state
-            :get_client_gameplay_setting(self._sv.player_id, 'stonehearth_ace', 'default_craft_order_quality_preference', 0)
-   end
-
    self.__saved_variables:mark_changed()
 end
 
 -- 0 for no quality preference; -1 for lower quality, 1 for higher quality
-function AceCraftOrder:get_quality_preference()
-   return self._sv.condition.quality_preference
+function AceCraftOrder:get_high_quality_preference()
+   return self._sv.condition.high_quality_preference
 end
 
 function AceCraftOrder:_add_curr_crafter(crafter)

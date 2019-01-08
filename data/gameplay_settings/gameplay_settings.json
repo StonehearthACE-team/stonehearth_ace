@@ -12,15 +12,11 @@
          "default": true,
          "ordinal": 1
       },
-      "default_craft_order_quality_preference": {
-         "type": "number",
-         "number_settings": {
-            "min": -1,
-            "max": 1
-         },
-         "display_name": "stonehearth_ace:ui.shell.settings.gameplayTab.default_craft_order_quality_preference",
-         "description": "stonehearth_ace:ui.shell.settings.gameplayTab.default_craft_order_quality_preference_description",
-         "default": 0,
+      "default_craft_order_prefer_high_quality": {
+         "type": "boolean",
+         "display_name": "stonehearth_ace:ui.shell.settings.gameplayTab.default_craft_order_prefer_high_quality",
+         "description": "stonehearth_ace:ui.shell.settings.gameplayTab.default_craft_order_prefer_high_quality_description",
+         "default": true,
          "ordinal": 2
       },
       "enable_auto_harvest": {

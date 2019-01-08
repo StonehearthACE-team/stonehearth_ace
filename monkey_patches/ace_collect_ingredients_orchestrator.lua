@@ -10,6 +10,18 @@ function AceCollectIngredients:run(town, args)
    self._crafter = args.crafter
    self._craft_order_list = args.order_list
    self._order = args.order
+   self._prefer_high_quality = self._order:get_high_quality_preference()
+   if self._prefer_high_quality == nil then
+      -- if an explicit quality preference wasn't set, use the default gameplay setting for it
+      -- but only if the crafter has the quality crafting perk; otherwise prefer lower quality
+      local job = self._order:get_component('stonehearth:job')
+      if job:curr_job_has_perk('crafter_recipe_unlock_3') then
+         self._prefer_high_quality = stonehearth.client_state
+            :get_client_gameplay_setting(self._sv.player_id, 'stonehearth_ace', 'default_craft_order_prefer_high_quality', true)
+      else
+         self._prefer_high_quality = false
+      end
+   end
 
    if self._craft_order_list and self._order then
       self._order_list_listener = radiant.events.listen(self._craft_order_list, 'stonehearth:order_list_changed', self, self._on_order_list_changed)
@@ -31,12 +43,11 @@ function AceCollectIngredients:run(town, args)
       --Then, if the ingredients are not still completed, get more from the world
 
       local rating_fn
-      local quality_preference = self._order:get_quality_preference()
-      if quality_preference > 0 then
+      if self._prefer_high_quality > 0 then
          rating_fn = function(item)
             return radiant.entities.get_item_quality(item) / 4
          end
-      elseif quality_preference < 0 then
+      elseif self._prefer_high_quality < 0 then
          rating_fn = function(item)
             return 2 - radiant.entities.get_item_quality(item)
          end
