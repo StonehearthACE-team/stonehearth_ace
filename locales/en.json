@@ -5171,6 +5171,8 @@
             "gameplayTab": {
                "auto_craft_recipe_dependencies": "Auto Craft Recipe Dependencies",
                "auto_craft_recipe_dependencies_description": "When crafting an item, the crafters will check the inventory to see if there is sufficient of ingredients to use. If not, then they will add more orders to the queue should they need to to fulfill the original order.",
+               "default_craft_order_quality_preference": "Default Crafting Quality Preference",
+               "default_craft_order_quality_preference_description": "When crafting an item, the crafters can consider ingredients based on their quality: lower (-1), higher (1), or no preference (0). SELECTING -1 OR 1 MAY NEGATIVELY IMPACT PERFORMANCE.",
                "auto_harvest_enabled": "Auto-Harvest Renewable Resources",
                "auto_harvest_enabled_description": "When a renewable resource you own becomes harvestable, automatically issue a harvest command on that resource.",
                "auto_harvest_animals_enabled": "Animals Auto-Produce Renewable Resources",
