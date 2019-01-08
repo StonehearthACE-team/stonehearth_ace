@@ -537,6 +537,7 @@
       "mining:highlands_loot_table": "file(data/biome/highlands_mining_loot_table.json)",
       "mixins:aquatic": "file(mixins/aquatic/aquatic.json)",
       "mixins:base_dwarf": "file(mixins/base_dwarf)",
+	  "mixins:base_human": "file(mixins/base_human)",
       "mixins:encounter:bear_attack": "file(mixins/encounter/mixin_bear_attack.json)",
       "mixins:encounter:cougar_raid": "file(mixins/encounter/mixin_cougar_raid.json)",
       "mixins:fence:simple_fence": "file(mixins/fence/simple_fence.json)",
@@ -1133,6 +1134,7 @@
       "stonehearth:hotkeys": "stonehearth_ace:hotkeys",
       "stonehearth:data:constants": "file(data/constants.json)",
       "stonehearth:data:gm_index": "stonehearth_ace:data:gm_index",
+	  "stonehearth:mixins:base_human": "stonehearth_ace:mixins:base_human",
       "stonehearth/data/biome/temperate.json": "file(data/biome/temperate.json)",
       "stonehearth/data/ui/start_menu.json": "file(data/ui/start_menu.json)",
       "stonehearth:pet_collar": "stonehearth_ace/entities/critters/collars/pet_collar.json",
@@ -1625,9 +1627,13 @@
       "stonehearth/entities/crops/oak_tree_crop/oak_tree_crop.json": "file(entities/crops/oak_tree_crop/oak_tree_crop.json)",
       "stonehearth/entities/crops/cactus_tree_crop/cactus_tree_crop.json": "file(entities/crops/cactus_tree_crop/cactus_tree_crop.json)",
       "stonehearth/entities/crops/juniper_tree_crop/juniper_tree_crop.json": "file(entities/crops/juniper_tree_crop/juniper_tree_crop.json)",
-      "stonehearth/entities/crops/pine_tree_crop/pine_tree_crop.json": "file(entities/crops/pine_tree_crop/pine_tree_crop.json)"
+      "stonehearth/entities/crops/pine_tree_crop/pine_tree_crop.json": "file(entities/crops/pine_tree_crop/pine_tree_crop.json)",
+	  "stonehearth/data/rigs/entities/humans/postures.json": "file(data/rigs/entities/humans/postures.json)"
    },
    "overrides": {
+      "stonehearth/data/rigs/entities/humans/effects/mine_1.json": "stonehearth_ace/data/rigs/entities/humans/effects/mine_1.json",
+	  "stonehearth/data/rigs/entities/humans/effects/mine_2.json": "stonehearth_ace/data/rigs/entities/humans/effects/mine_2.json",
+	  "stonehearth/data/rigs/entities/humans/effects/mine_3.json": "stonehearth_ace/data/rigs/entities/humans/effects/mine_3.json",
       "stonehearth/data/rigs/entities/humans/animations/male/combat_1h_thrust.json": "stonehearth_ace/data/rigs/entities/humans/animations/male/combat_1h_thrust.json",
       "stonehearth/data/rigs/entities/humans/animations/female/combat_1h_thrust.json": "stonehearth_ace/data/rigs/entities/humans/animations/female/combat_1h_thrust.json",
       "stonehearth/data/rigs/entities/humans/effects/combat_1h_thrust.json": "stonehearth_ace/data/rigs/entities/humans/effects/combat_1h_thrust.json",
