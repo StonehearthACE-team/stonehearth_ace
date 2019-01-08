@@ -2,5 +2,14 @@
    "type": "buff",
    "axis": "buff",
    "invisible_to_player": true,
-   "set_posture": "stonehearth_ace:mining_pick_posture"
+   "set_posture": "stonehearth_ace:mining_pick_posture",
+   "category": "stonehearth_ace:buffs:mining_quality",
+   "managed_properties": {
+      "stonehearth_ace:mining_quality": {
+         "type": "chance_table",
+         "value": [
+            [2, 0.01]
+         ]
+      }
+   }
 }

@@ -1,5 +1,7 @@
 local Entity = _radiant.om.Entity
 local Point3 = _radiant.csg.Point3
+local item_quality_lib = require 'stonehearth_ace.lib.item_quality.item_quality_lib'
+
 local AceDigAdjacent = class()
 local log = radiant.log.create_logger('mining')
 
@@ -34,7 +36,7 @@ function AceDigAdjacent:_mine_block(ai, entity, mining_zone, block)
    local items = radiant.entities.spawn_items(loot, worker_location, 1, 3, { owner = work_player_id })
 
    -- apply quality to mined items if relevant
-   self:_apply_quality(entity, mining_zone, items)
+   self:_apply_quality(entity, items, mining_zone, block)
 
    local inventory = stonehearth.inventory:get_inventory(work_player_id)
    if inventory then
@@ -48,39 +50,18 @@ function AceDigAdjacent:_mine_block(ai, entity, mining_zone, block)
    return true
 end
 
--- not using mining_zone, but maybe someone wants to override this function to take that into account
--- e.g., higher/lower chances based on altitude
-function AceDigAdjacent:_apply_quality(entity, mining_zone, items)
-   local quality_chances = self:_get_quality_chances(entity, mining_zone)
+function AceDigAdjacent:_apply_quality(entity, items, mining_zone, block)
+   local quality_chances = self:_get_quality_chances(entity, mining_zone, block)
    if quality_chances then
       item_quality_lib.apply_random_qualities(items, quality_chances, true)
    end
 end
 
-function AceDigAdjacent:_get_quality_chances(entity, mining_zone)
+-- not using mining_zone or block, but maybe someone wants to override this function to take that into account
+-- e.g., higher/lower chances based on altitude
+function AceDigAdjacent:_get_quality_chances(entity, mining_zone, block)
    local buffs_component = entity:get_component('stonehearth:buffs')
-   local mining_quality_buffs = buffs_component and buffs_component:get_buffs_by_category('stonehearth_ace:buffs:mining_quality')
-   if mining_quality_buffs then
-      local qualities = {}
-      local quality_chances = {}
-      for _, buff in pairs(mining_quality_buffs) do
-         local quality_tbl = buff:get_json().mining_quality
-         for _, quality_chance in ipairs(quality_tbl) do
-            local this_quality = qualities[quality_chance[1]]
-            if not this_quality then
-               this_quality = {quality_chance[1], quality_chance[2]}
-               qualities[quality_chance[1]] = this_quality
-               table.insert(quality_chances, this_quality)
-            else
-               this_quality[2] = this_quality[2] + quality_chance[2]
-            end
-         end
-      end
-
-      table.sort(quality_chances, function(a, b) return a.quality > b.quality end)
-
-      return quality_chances
-   end
+   return buffs_component and buffs_component:get_managed_property('stonehearth_ace:mining_quality')
 end
 
 return AceDigAdjacent
