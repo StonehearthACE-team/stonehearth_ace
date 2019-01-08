@@ -610,7 +610,7 @@
                "training_perk_name": "Bogenschieß-Training",
                "training_perk_description": "Ein Bogenschütze kann mit Zielscheiben bis zu Level 3 trainieren und erhöht das zulässige Limit der Trainingsausrüstung um 1"
             },
-            "description": "Eine Fernkampfeinheit, die Gegner mit Pfeilen beschießt"
+            "description": "Ein Hintergrundkämpfer, der in der Lage ist, Fernkampfwaffen wie Bögen, Armbrüste und und eine Vielzahl von von Pfeil- oder Bolzenarten zu verwenden, um ihre Feinde anzugreifen."
          }
       },
       "cleric": {
@@ -619,7 +619,7 @@
                "training_perk_name": "Heiler-Training",
                "training_perk_description": "Ein Kleriker kann Schafe verwenden, die von einem Hirten gezähmt wurden, um seine/ihre magischen Gesten zu üben und Erfahrung bis Level 3 sammeln"
             },
-            "description": "Ein Kampfheiler"
+            "description": "Ein Kampfheiler, der heilige Magie kanalisiert um nicht nur Wunden zu heilen, sondern auch ihre Verbündeten durch Auren und Effekte zu stärken"
          }
       },
       "knight": {
@@ -628,14 +628,14 @@
                "training_perk_name": "Knappen Training",
                "training_perk_description": "Ein Ritter kann mit Übungspuppen bis zu Level 3 trainieren und das zulässige Limit der Trainingsausrüstung um 1 erhöhen"
             },
-            "description": "Ein Verteidigungskämpfer der sich darauf konzentriert Verbündete vor Schaden zu schützen."
+            "description": "Ein defensiver Kämpfer konzentrierte sich darauf, Verbündete vor Schaden zu schützen und Feinde zusammenzutreiben, sondern auch Angst in ihrem Herzen zu verbreiten!"
          }
       },
       "herbalist": {
          "recipes": {
             "refined_fungi_name": "Pilzverfeinerung",
 	    "refined_seeds_name": "Lokale Samen für die Landwirtschaft",
-			"farming_enhancements_name": "Landwirtschaftsverbesserungen",
+	    "farming_enhancements_name": "Landwirtschaftsverbesserungen",
             "moonbell_transmute_recipe": {
                "recipe_name": "Mondglocken Samen (x3)",
                "description": "Trennt Samen von den Kräutern",
@@ -812,7 +812,7 @@
             "description": "Eine schützende Kopfbedeckung für Wüstenärzte."
          },
          "herbalist_description": {
-            "description": "Heilt Einheiten mit Balsam und Bandagen."
+            "description": "Der Kräuterarzt ist ein Künstler mit Heilmethoden und kann Tonika, Bandagen und Tränke herstellen und verwenden. Er kann aber auch mit Pflanzen, Samen und anderen Nahrungsmitteln arbeiten."
          }
       },
       "engineer": {
@@ -868,7 +868,7 @@
             }
          },
          "engineer_description": {
-            "description": "Der Ingenieur stellt fortschrittliche Geräte und Verteidigungswaffen her."
+            "description": "Der Ingenieur ist ein Meister der Erstellen von Maschinen und Verteidigungsanlagen, der Reparatur von Einrichtungen und des Entwerfens von Mechanismen, die andere Berufe verbessern können."
          }
       },
       "potter": {
@@ -1058,7 +1058,7 @@
             }
          },
          "potter_description": {
-            "description": "Macht Gebrauchsgegenstände aus Ton. Hochstufbar zum Steinmetz"
+            "description": "Der Töpfer arbeitet mit Tonressourcen, um sie in Ziegelsteine und andere Gebrauchsgegenstände, Werkzeuge und Dekorationen zu verarbeiten."
          }
       },
       "geomancer": {
@@ -1075,7 +1075,7 @@
             }
          },
          "geomancer_description": {
-            "description": "Terraformt und stellt Golems her."
+            "description": "Die Beherrschung der Erdmagie bietet die Möglichkeit, das Gelände zu formen, Erze zu erschaffen, Landschaften zu überwältigen, Felsen in die Luft zu bringen und sogar um Golems herzustellen, die für die Stadt arbeiten."
          }
       },
       "mason": {
@@ -1193,6 +1193,9 @@
          "mason_workbench_bone": {
             "display_name": "Knochenschnitzerei Studio",
             "description": "Wird vom Steinmetz benötigt, um Möbel und Ausrüstung aus Knochenmaterial zu schnitzen."
+         },
+         "mason_description": {
+            "description": "Der Steinmetz ist in der Lage Stein in verschiedene und nützliche Werkzeuge, Konstruktionsteile und Dekorationen zu verarbeiten. Er kann auch lernen mit Knochen zu arbeiten."
          }
       },
       "blacksmith": {
@@ -1434,7 +1437,7 @@
                "perk_000_name": "Verbesserte Werkzeuge und kalter Stahl",
                "perk_000_description": "Lange Zeit in der Schmiede hat dem Schmied Ideen für neue und verbesserte Anlagen gegeben, die das Geheimnis von Stahl erschließen würden: schärfere Waffen und leichtere Rüstung."
             },
-            "description": "Der Schmied veredelt Roherz zu Metallbarren und fertigt dann Waffen, Rüstungen und Gebäudeteile wie Tore."
+            "description": "Der Schmied verwendet Roherze, Brennstoffe und Kraft um Metalle nach Belieben zu verbiegen, wodurch eine breite Palette an Gütern wie Waffen, Rüstungen, Dekorationen und nützlichen Werkzeugen entstehen"
          }
       },
       "worker": {
@@ -1609,7 +1612,7 @@
             "display_name": "Kochschüssel"
          },
          "cook_description": {
-            "description": "Der Koch macht köstliche, herzhafte Mahlzeiten aus Gemüse und Fleisch."
+            "description": "Die Kunst des Kochens bietet eine abwechslungsreiche Speisekarte mit herzhaften Speisen und stärkenden Getränken, die aus Rohstoffen verschiedener Herkunft wie Gemüse, Fleisch und gesammelten Waren hergestellt werden."
          }
       },
       "carpenter": {
@@ -1687,7 +1690,7 @@
             }
          },
          "carpenter_description": {
-            "description": "Der Schreiner fertigt Werkzeuge und Möbel aus Holz. Die Werkzeuge, die er herstellt, schalten mehrere andere Jobs frei."
+            "description": "Der Schreiner kann viele Gegenstände wie Werkzeuge, Konstruktionsteile, Waffen und Möbel aus Holz herstellen."
          }
       },
       "weaver": {
@@ -1754,7 +1757,7 @@
             }
          },
          "weaver_description": {
-            "description": "Der Weber stellt Fäden, Stoffe und Behänge aus Fasern und Farbstoffen her."
+            "description": "Der Weber kann aus Häuten Leder und aus Fasern Stoffe herstellen und mit ihnen komplizierte Waren, Kleidung, Rüstungen und Dekorationsartikel herstellen."
          }
       },
       "trapper": {
@@ -1767,7 +1770,7 @@
             "description": "Macht seine Beute nicht hundertprozentig Bewgungsunfähig"
          },
          "trapper_description": {
-            "description": "Der Trapper fängt und ähmmmm 'erntet' kleine Lebewesen für eine zuverlässige Nahrungsquelle."
+            "description": "Der Trapper kann Fallen stellen und ähmmmm 'erntet' wilde Lebewesen für eine zuverlässige Nahrungsquelle."
          }
       },
       "shepherd": {
@@ -1778,7 +1781,7 @@
             }
          },
          "shepherd_description": {
-            "description": "Zähme Wildtiere und erntet sie für Nahrung und Materialien."
+            "description": "Naturliebende Einzelgänger. Schäfer zähmen sanfte Wildtiere, um sich um sie zu kümmern und ihre Ressourcen wie Eier, Wolle und Fleisch zu ernten."
          }
       },
       "farmer": {
@@ -1801,7 +1804,7 @@
                "perk_001_name": "Mega-Früchte",
                "perk_001_description": "(Demnächst!)"
             },
-            "description": "Farmer bestellen Felder und ernten diese, sie sorgen für eine konstante Versorgung mit Lebensmitteln und Rohstoffen für Backwaren."
+            "description": "Landwirte bestellen Felder, säen Samen und ernten Getreide. Sie zähmen das Land, um eine konstante Versorgung mit Nahrungsmitteln, Zutaten zum Kochen, Fasern, Kräutern und mehr zu gewährleisten."
          }
       }
    },
@@ -2808,6 +2811,38 @@
             "description": "Arktischer Babywacholderbaum. Dieser Schössling kann zu einer arktischen Wacholder herwachsen!",
             "description_iconic": "Pflanz ihn in die Erde und schau zu wie es wächst.",
             "display_name": "Arktischer Wacholderbaumschössling"
+         },
+         "chestnut_tree": {
+            "seed": {
+               "tree_chestnut_seed": {
+                  "display_name": "Kastanienbaumsamen",
+                  "description": "Kann nicht gepflanzt werden, kann aber als essbare Nuss verwendet werden."
+               }
+            }
+         },
+         "hazelnut_tree": {
+            "seed": {
+               "tree_hazelnut_seed": {
+                  "description": "Kann nicht gepflanzt werden, kann aber als essbare Nuss verwendet werden.",
+                  "display_name": "Haselnussbaumsamen"
+               }
+            }
+         },
+         "walnut_tree": {
+            "seed": {
+               "tree_walnut_seed": {
+                  "description": "Kann nicht gepflanzt werden, kann aber als essbare Nuss verwendet werden.",
+                  "display_name": "Walnussbaumsamen"
+               }
+            }
+         },
+         "almond_tree": {
+            "seed": {
+               "tree_almond_seed": {
+                  "description": "Kann nicht gepflanzt werden, kann aber roh verzehrt oder als essbare Nuss oder Frucht verwendet werden.",
+                  "display_name": "Mandelbaumsamen"
+               }
+            }
          }
       },
       "furniture": {
@@ -4824,6 +4859,44 @@
             "display_name": "Gusseisenhalter",
             "description": "Dieser schicke Halter kann Brennstoff wie Brennholz einigermaßen speichern."
          }
+      },
+      "tools": {
+         "worker_axe_iron": {
+            "display_name": "Eiserne Arbeiteraxt",
+            "description": "Erhöht geringfügig die Hackgeschwindigkeit beim Abholzen von Bäumen."
+         },
+         "worker_axe": {
+            "display_name": "Bronzerne Arbeiteraxt",
+            "description": "Hacke und hack deine Probleme weg."
+         },
+         "worker_hammer": {
+            "display_name": "Bronzener Arbeiterhammer",
+            "description": "Alles sieht wie ein Nagel aus, wenn du einen Hammer hast."
+         },
+         "mining_pick": {
+            "display_name": "Bronzerne Arbeiterpicke",
+            "description": "Für den Bergbau und das hacken."
+         },
+         "mining_pick_iron": {
+            "display_name": "Eiserner Arbeiterpicke",
+            "description": "Steigert die Abbaugeschwindigkeit und die Qualität der gefundenen Ressourcen geringfügig."
+         },
+         "mining_pick_steel": {
+            "display_name": "Stählerne Arbeiterpicke",
+            "description": "Erhöht die Abbaugeschwindigkeit und die Qualität der gefundenen Ressourcen erheblich."
+         },
+         "worker_axe_steel": {
+            "display_name": "Stählerne Arbeiteraxt",
+            "description": "Erhöht die Hackgeschwindigkeit beim Abholzen von Bäumen erheblich."
+         },
+         "worker_hammer_iron": {
+            "display_name": "Eiserner Arbeiterhammer",
+            "description": "Erhöht geringfügig die Arbeitsgeschwindigkeit für allgemeine Aktivitäten wie bauen."
+         },
+         "worker_hammer_steel": {
+            "display_name": "Stählerner Arbeiterhammer",
+            "description": "Erhöht die Arbeitsgeschwindigkeit für allgemeine Aktivitäten wie bauen erheblich."
+         }
       }
    },
    "mountain_folk": {
@@ -5176,6 +5249,8 @@
                "auto_harvest_animals_enabled_description": "Tiere, die Sie besitzen, produzieren automatisch nachwachsende Rohstoffe (z. B. produzieren deine BuckBucks Eier).",
                "auto_harvest_tree_stumps": "Automatisches Baumstumpfernten",
                "auto_harvest_tree_stumps_description": "Wenn Bäume abgeholzt werden, bleiben erntefähige Stümpfe erhalten. Durch Aktivieren dieser Option werden die Stümpfe automatisch geerntet.",
+               "default_to_worst_fertilizer": "Standardmäßig der schlechteste Dünger",
+               "default_to_worst_fertilizer_description": "Wenn Farmer Felder düngen, verwenden sie automatisch den besten verfügbaren Dünger. Aktiviere diese Option, damit sie stattdessen den schlechtesten verfügbaren Dünger verwenden.",
                "terrain_slice_buildings": "Gelände-Gebäude-Schnitt",
                "terrain_slice_buildings_description": "Rendere keine Objekte im Gelände-Schnitt-Modus, die von sichtbaren Objekten außerhalb des Geländes unterstützt werden.",
                "water_signal_update_frequency": "Wassersignal-Aktualisierungsrate",
