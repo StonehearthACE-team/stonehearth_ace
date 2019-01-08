@@ -609,7 +609,8 @@
             "level_1_data": {
                "training_perk_name": "Archery Training",
                "training_perk_description": "An archer can use Archery Targets to train up to Level 3 and will increase the allowed limit of Training Equipment by 1"
-            }
+            },
+            "description": "A rearguard combatant capable of using ranged weaponry like bows, crossbows and a variety of hindering types of arrows or bolts to attack their foes."
          }
       },
       "cleric": {
@@ -617,7 +618,8 @@
             "level_1_data": {
                "training_perk_name": "Healer Training",
                "training_perk_description": "A cleric can use Sheep tamed by a Shepherd to practice their magical gestures and earn experience up to Level 3"
-            }
+            },
+            "description": "A combat healer that channels holy magic to not only mend wounds but also boost their allies through auras and effects."
          }
       },
       "knight": {
@@ -625,13 +627,15 @@
             "level_1_data": {
                "training_perk_name": "Squire Training",
                "training_perk_description": "A knight can use Training Dummies to train up to Level 3 and will increase the allowed limit of Training Equipment by 1"
-            }
+            },
+            "description": "A defensive fighter focused on protecting allies from harm and rounding up enemies, striking fear in their hearts!"
          }
       },
       "herbalist": {
          "recipes": {
             "refined_fungi_name": "Fungal Refinement",
             "refined_seeds_name": "Local Farming Seeds",
+            "farming_enhancements_name": "Farming Enhancements",
             "moonbell_transmute_recipe": {
                "recipe_name": "Moonbell Seeds (x3)",
                "description": "Separate seeds from the herbs",
@@ -654,33 +658,33 @@
             },
             "parasol_colony_recipe": {
                "recipe_name": "Parasol Colony (x3)",
-               "description": "Use existing fungus to create more colonies to grow into new fungi.",
-               "flavor": "Parasols are slightly toxic when raw and must only be used as a cooking ingredient"
+               "description": "Use existing fungus to create more colonies to grow into new fungi. Parasols are slightly toxic when raw and must only be used as a cooking ingredient.",
+               "flavor": "For creating colonis you need the whole, undeployed fungi - and not just the harvested basket"
             },
             "sweet_tooth_colony_recipe": {
                "recipe_name": "Sweet Tooth Colony (x3)",
                "description": "Use existing fungus to create more colonies to grow into new fungi.",
-               "flavor": ""
+               "flavor": "For creating colonis you need the whole, undeployed fungi - and not just the harvested basket"
             },
             "bolete_colony_recipe": {
                "recipe_name": "Bolete Colony (x3)",
                "description": "Use existing fungus to create more colonies to grow into new fungi.",
-               "flavor": ""
+               "flavor": "For creating colonis you need the whole, undeployed fungi - and not just the harvested basket"
             },
             "chanterelle_colony_recipe": {
                "recipe_name": "Chanterelle Colony (x3)",
                "description": "Use existing fungus to create more colonies to grow into new fungi.",
-               "flavor": ""
+               "flavor": "For creating colonis you need the whole, undeployed fungi - and not just the harvested basket"
             },
             "winter_morel_colony_recipe": {
                "recipe_name": "Winter Morel Colony (x3)",
                "description": "Use existing fungus to create more colonies to grow into new fungi.",
-               "flavor": ""
+               "flavor": "For creating colonis you need the whole, undeployed fungi - and not just the harvested basket"
             },
             "desert_truffle_colony_recipe": {
                "recipe_name": "Desert Truffle Colony (x3)",
                "description": "Use existing fungus to create more colonies to grow into new fungi.",
-               "flavor": ""
+               "flavor": "For creating colonis you need the whole, undeployed fungi - and not just the harvested basket"
             },
             "legendary_parchment_recipe": {
                "recipe_name": "Gilded Paper",
@@ -783,14 +787,32 @@
                "flavor": "The crate must be placed on the ground before it can be used"
             },
             "fertilizer_recipe": {
+               "recipe_name": "Simple Fertilizer",
+               "description": "Usable by skilled farmers for slightly improving the quality of their produce.",
+               "flavor": "Each sack can be used to fertilize 10 crops"
+            },
+            "fertilizer_upgrade_recipe": {
                "recipe_name": "Fertilizer",
-               "description": "Usable by skilled farmers for improving crop quality.",
-               "flavor": "Each sack can be used to fertilize 10 crops."
+               "description": "Usable by skilled farmers for improving the quality of their produce.",
+               "flavor": "Each sack can be used to fertilize 12 crops"
+            },
+            "fertilizer_upgrade_2_recipe": {
+               "recipe_name": "Enhanced Fertilizer",
+               "description": "Usable by skilled farmers for greatly improving the quality of their produce.",
+               "flavor": "Each sack can be used to fertilize 16 crops"
+            },
+            "fertilizer_megacrop_recipe": {
+               "recipe_name": "Megacrop Fertilizer",
+               "description": "This intricate fertilizer will slow down growth a bit but will greatly increase the odds of megacrops!",
+               "flavor": "Each sack can be used to fertilize 20 crops"
             }
          },
          "herbalist_hood": {
             "display_name": "Herbalist's Hood",
             "description": "A protective headgear for desert herbalists."
+         },
+         "herbalist_description": {
+            "description": "A performer of healing practices, the Herbalist can craft and use tonics, bandages and potions but also work with plants, seeds and other foraging goods."
          }
       },
       "engineer": {
@@ -844,6 +866,9 @@
                "description": "Build a device that allows you to redirect mechanical power to any direction.",
                "flavor": "It can be placed in walls during building - like windows or doors."
             }
+         },
+         "engineer_description": {
+            "description": "The Engineer is a master of creating contraptions and defenses, repairing facilities and designing mechanisms that can improve other professions."
          }
       },
       "potter": {
@@ -1031,6 +1056,9 @@
                "description": "Animals will have a wonderful time sleeping in this bed!",
                "flavor": "Pets will always try to sleep on the bed that is closest to their owner's bed!"
             }
+         },
+         "potter_description": {
+            "description": "The Potter works with clay resources to craft them into construction bricks and other useful goods, tools and decorations."
          }
       },
       "geomancer": {
@@ -1045,6 +1073,9 @@
                "description": "A legendary tome for the followers of the Church of Plenty.",
                "flavor": "Through the ways of Cid healing shall be done"
             }
+         },
+         "geomancer_description": {
+            "description": "Mastery of the Earth Magic provides the power to shape the terrain, create ores, stunning landscapes and even breathe life into rocks to raise golems that will work for the town."
          }
       },
       "mason": {
@@ -1162,6 +1193,9 @@
          "mason_workbench_bone": {
             "display_name": "Bone Carving Studio",
             "description": "Used by the Mason for crafting with bone material."
+         },
+         "mason_description": {
+            "description": "The Mason is able to shape stone into different and useful tools, construction parts and decorations. They may also learn how to work with bones."
          }
       },
       "blacksmith": {
@@ -1402,7 +1436,8 @@
             "level_4_data": {
                "perk_000_name": "Enhanced Tools & Cold Steel",
                "perk_000_description": "Long hours at the forge have given the Blacksmith ideas on new and improved facilities that would unlock the secret of steel: sharper weapons and lighter armor."
-            }
+            },
+            "description": "The Blacksmith uses raw ores, fuels and strength to bend metals to their will, creating a wide range of goods like weapons, armor, decorations and useful tools."
          }
       },
       "worker": {
@@ -1575,6 +1610,9 @@
          },
          "cook_bowl_animation": {
             "display_name": "Cook's Bowl"
+         },
+         "cook_description": {
+            "description": "The art of cooking will provide a diverse menu of hearty meals and fortifying drinks created with resources of many origins like vegetables, meat and foraged goods."
          }
       },
       "carpenter": {
@@ -1650,6 +1688,9 @@
                "description": "Animals will have a wonderful time sleeping in this bed!",
                "flavor": "Pets will always try to sleep on the bed that is closest to their owner's bed!"
             }
+         },
+         "carpenter_description": {
+            "description": "The Carpenter can craft many goods like tools, construction parts, weapons and furniture from wood."
          }
       },
       "weaver": {
@@ -1714,6 +1755,9 @@
                "description": "Softly lets the light in.",
                "flavor": ""
             }
+         },
+         "weaver_description": {
+            "description": "The Weaver can turn hides into leather and fibers into cloth, working with them to create intricate goods, clothing, armor and decorations."
          }
       },
       "trapper": {
@@ -1724,6 +1768,9 @@
          "clamp_trap": {
             "display_name": "Clamp Trap",
             "description": "Not so safely immobilizes its prey"
+         },
+         "trapper_description": {
+            "description": "The Trapper can arm snares to capture and (ahem) &quot;harvest&quot; wild critters for a reliable source of food, pelts and bones."
          }
       },
       "shepherd": {
@@ -1732,6 +1779,9 @@
                "display_name": "Shepherd's Hood",
                "description": "A wooly hood used by the shepherd."
             }
+         },
+         "shepherd_description": {
+            "description": "Nature-loving loners, shepherds will domesticate gentle wild animals to care for them and harvest their resources like eggs, wool and meat."
          }
       },
       "farmer": {
@@ -1753,7 +1803,8 @@
                "perk_000_description": "The farmer coaxes 100% more yield from each plant.",
                "perk_001_name": "Mega Crops",
                "perk_001_description": "(Coming soon!)"
-            }
+            },
+            "description": "Farmers till fields, sow seeds and harvest crops, taming the land to provide a consistent supply of food, ingredients for cooking, fibers, herbs and more."
          }
       }
    },
@@ -1810,8 +1861,20 @@
             }
          },
          "fertilizer": {
+            "display_name": "Simple Fertilizer",
+            "description": "A skilled farmer will use it to slightly improve the quality of their crops."
+         },
+         "fertilizer_megacrop": {
+            "display_name": "Megacrop Fertilizer",
+            "description": "A skilled farmer will use it to improve the odds of getting megacrops!"
+         },
+         "fertilizer_upgrade": {
             "display_name": "Fertilizer",
-            "description": "Usable by skilled farmers for improving crop quality."
+            "description": "A skilled farmer will use it to improve the quality of their crops."
+         },
+         "fertilizer_upgrade_2": {
+            "display_name": "Enhanced Fertilizer",
+            "description": "A skilled farmer will use it to greatly improve the quality of their crops."
          }
       },
       "construction": {
@@ -2196,6 +2259,9 @@
                   "description": "Ready to be transferred to a bigger plot."
                }
             }
+         },
+         "megacrops": {
+            "default_description": "This crop's gone mega!"
          }
       },
       "decorations": {
@@ -2745,6 +2811,38 @@
             "description": "Baby Arctic Juniper Tree. This sapling can grow into any arctic juniper!",
             "description_iconic": "Plant it in the earth and watch it grow.",
             "display_name": "Arctic Juniper Tree Sapling"
+         },
+         "chestnut_tree": {
+            "seed": {
+               "tree_chestnut_seed": {
+                  "display_name": "Chestnut Tree Seed",
+                  "description": "Can't be planted but may be used as an edible nut."
+               }
+            }
+         },
+         "hazelnut_tree": {
+            "seed": {
+               "tree_hazelnut_seed": {
+                  "description": "Can't be planted but may be used as an edible nut.",
+                  "display_name": "Hazelnut Tree Seed"
+               }
+            }
+         },
+         "walnut_tree": {
+            "seed": {
+               "tree_walnut_seed": {
+                  "description": "Can't be planted but may be used as an edible nut.",
+                  "display_name": "Walnut Tree Seed"
+               }
+            }
+         },
+         "almond_tree": {
+            "seed": {
+               "tree_almond_seed": {
+                  "description": "Can't be planted but may be eaten raw or used as an edible nut or fruit.",
+                  "display_name": "Almond Tree Seed"
+               }
+            }
          }
       },
       "furniture": {
@@ -4761,6 +4859,44 @@
             "display_name": "Cast Iron Holder",
             "description": "This fancy holder can reasonably store some fuel like firewood."
          }
+      },
+      "tools": {
+         "worker_axe_iron": {
+            "display_name": "Iron Worker's Axe",
+            "description": "Slightly increases the chopping speed when cutting down trees."
+         },
+         "worker_axe": {
+            "display_name": "Bronze Worker's Axe",
+            "description": "Hack and chop your troubles away."
+         },
+         "worker_hammer": {
+            "display_name": "Bronze Worker's Hammer",
+            "description": "Everything looks like a nail when all you have is a hammer."
+         },
+         "mining_pick": {
+            "display_name": "Bronze Worker's Pick",
+            "description": "For mining and picking."
+         },
+         "mining_pick_iron": {
+            "display_name": "Iron Worker's Pick",
+            "description": "Slightly increases mining speed and the quality of the resources found."
+         },
+         "mining_pick_steel": {
+            "display_name": "Steel Worker's Pick",
+            "description": "Greatly increases mining speed and the quality of the resources found."
+         },
+         "worker_axe_steel": {
+            "display_name": "Steel Worker's Axe",
+            "description": "Greatly increases the chopping speed when cutting down trees."
+         },
+         "worker_hammer_iron": {
+            "display_name": "Iron Worker's Hammer",
+            "description": "Slighly increases the work speed for general activities like building."
+         },
+         "worker_hammer_steel": {
+            "display_name": "Steel Worker's Hammer",
+            "description": "Greatly increases the work speed for general activities like building."
+         }
       }
    },
    "mountain_folk": {
@@ -5105,6 +5241,8 @@
             "gameplayTab": {
                "auto_craft_recipe_dependencies": "Auto Craft Recipe Dependencies",
                "auto_craft_recipe_dependencies_description": "When crafting an item, the crafters will check the inventory to see if there is sufficient of ingredients to use. If not, then they will add more orders to the queue should they need to to fulfill the original order.",
+               "default_craft_order_quality_preference": "Default Crafting Quality Preference",
+               "default_craft_order_quality_preference_description": "When crafting an item, the crafters can consider ingredients based on their quality: lower (-1), higher (1), or no preference (0). SELECTING -1 OR 1 MAY NEGATIVELY IMPACT PERFORMANCE.",
                "auto_harvest_enabled": "Auto-Harvest Renewable Resources",
                "auto_harvest_enabled_description": "When a renewable resource you own becomes harvestable, automatically issue a harvest command on that resource.",
                "auto_harvest_animals_enabled": "Animals Auto-Produce Renewable Resources",

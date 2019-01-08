@@ -29,11 +29,25 @@ function AceCollectIngredients:run(town, args)
       self:_check_off_crafter_pack_ingredients(ingredients)
 
       --Then, if the ingredients are not still completed, get more from the world
+
+      local rating_fn
+      local quality_preference = self._order:get_quality_preference()
+      if quality_preference > 0 then
+         rating_fn = function(item)
+            return radiant.entities.get_item_quality(item) / 4
+         end
+      elseif quality_preference < 0 then
+         rating_fn = function(item)
+            return 2 - radiant.entities.get_item_quality(item)
+         end
+      end
+
       while not ingredients:completed() do
          local ing = ingredients:get_next_ingredient()
          local args = {
             ingredient = ing,
-            ingredient_list = ingredients
+            ingredient_list = ingredients,
+            rating_fn = rating_fn
          }
 
          log:detail('Crafter %s looks for ingredient %s', self._crafter, radiant.util.table_tostring(ing))

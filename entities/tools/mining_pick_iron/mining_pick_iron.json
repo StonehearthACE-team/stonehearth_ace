@@ -1,0 +1,56 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(mining_pick_iron_equipped.qb)"
+            ]
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(mining_pick_iron_iconic.json)"
+      },
+      "stonehearth:equipment_piece": {
+         "slot": "worker_mining_pick",
+         "ilevel": 2,
+         "roles": [
+            "worker_job"
+         ],
+         "equip_effect": "stonehearth:effects:weapon_level_up",
+         "injected_buffs": [
+            "stonehearth_ace:buffs:tools:mining_pick_iron"
+         ],
+         "equipment_types": [
+            "tool"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 26,
+         "rarity": "uncommon",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 2,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.tools.mining_pick_iron.display_name)",
+         "description": "i18n(stonehearth_ace:entities.tools.mining_pick_iron.description)",
+         "icon": "file(mining_pick_iron.png)",
+         "category": "tools",
+         "material_tags": [
+            "iron",
+            "crafted",
+            "mining_pick",
+            "mining_pick_iron",
+            "stockpile_equipment",
+            "civillian_equipment"
+         ]
+      }
+   }
+}

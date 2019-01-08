@@ -20,6 +20,10 @@ function AceGrowingComponent:activate()
    self._flood_period_multiplier = (json and json.flood_period_multiplier) or 2
    --self._flooded_growth_only = (json and json.flooded_growth_only) or false   -- if true, only grow when flooded; otherwise normal
 
+   if not self._sv.custom_growth_time_multiplier then
+      self._sv.custom_growth_time_multiplier = 1
+   end
+
 	self:_old_activate()
 end
 
@@ -78,6 +82,20 @@ function AceGrowingComponent:get_best_water_level()
 	return stonehearth.town:get_best_water_level(self._water_affinity)
 end
 
+function AceGrowingComponent:modify_custom_growth_time_multiplier(multiplier)
+   if multiplier ~= 1 then
+      self:set_custom_growth_time_multiplier(self._sv.custom_growth_time_multiplier * multiplier)
+   end
+end
+
+function AceGrowingComponent:set_custom_growth_time_multiplier(multiplier)
+   if self._sv.custom_growth_time_multiplier ~= multiplier then
+      self._sv.custom_growth_time_multiplier = multiplier
+      self:_recalculate_duration()
+		self.__saved_variables:mark_changed()
+   end
+end
+
 function AceGrowingComponent:_recalculate_duration()
    if self._sv.growth_timer then
 		local old_duration = self._sv.growth_timer:get_duration()
@@ -103,7 +121,7 @@ function AceGrowingComponent:_calculate_growth_period(growth_period)
 	if not growth_period then
 		growth_period = self:_get_base_growth_period()
 	end
-   local scaled_growth_period = stonehearth.town:calculate_growth_period(self._entity:get_player_id(), growth_period)
+   local scaled_growth_period = stonehearth.town:calculate_growth_period(self._entity:get_player_id(), growth_period) * self._sv.custom_growth_time_multiplier
    
    if self._sv.is_flooded then
 		scaled_growth_period = scaled_growth_period * self._flood_period_multiplier

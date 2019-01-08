@@ -9,12 +9,9 @@ FertilizeField.priority = 0
 
 function FertilizeField:start_thinking(ai, entity, args)
    local job_component = entity:get_component('stonehearth:job')
-   if not job_component or not job_component:curr_job_has_perk('farmer_fertilizer') then
-      ai:clear_think_output()
-      return
+   if job_component and job_component:curr_job_has_perk('farmer_fertilizer') then
+      ai:set_think_output()
    end
-
-   ai:set_think_output()
 end
 
 local ai = stonehearth.ai

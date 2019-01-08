@@ -1,0 +1,27 @@
+{
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(worker_axe.qb)"
+            ]
+         }
+      },
+      "stonehearth:equipment_piece": {
+         "slot": "worker_axe",
+         "ilevel": 1,
+         "no_drop": true,
+         "injected_buffs": [
+            "stonehearth_ace:buffs:tools:worker_axe"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.tools.worker_axe.display_name)",
+         "description": "i18n(stonehearth_ace:entities.tools.worker_axe.description)",
+         "icon": "file(worker_axe.png)"
+      }
+   }
+}

@@ -1,0 +1,56 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(worker_axe_iron_equipped.qb)"
+            ]
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(worker_axe_iron_iconic.json)"
+      },
+      "stonehearth:equipment_piece": {
+         "slot": "worker_axe",
+         "ilevel": 2,
+         "roles": [
+            "worker_job"
+         ],
+         "equip_effect": "stonehearth:effects:weapon_level_up",
+         "injected_buffs": [
+            "stonehearth_ace:buffs:tools:worker_axe_iron"
+         ],
+         "equipment_types": [
+            "tool"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 15,
+         "rarity": "uncommon",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 2,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.tools.worker_axe_iron.display_name)",
+         "description": "i18n(stonehearth_ace:entities.tools.worker_axe_iron.description)",
+         "icon": "file(worker_axe_iron.png)",
+         "category": "tools",
+         "material_tags": [
+            "iron",
+            "crafted",
+            "worker_axe",
+            "worker_axe_iron",
+            "stockpile_equipment",
+            "civillian_equipment"
+         ]
+      }
+   }
+}

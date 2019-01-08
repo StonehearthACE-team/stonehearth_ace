@@ -12,6 +12,17 @@
          "default": true,
          "ordinal": 1
       },
+      "default_craft_order_quality_preference": {
+         "type": "number",
+         "number_settings": {
+            "min": -1,
+            "max": 1
+         },
+         "display_name": "stonehearth_ace:ui.shell.settings.gameplayTab.default_craft_order_quality_preference",
+         "description": "stonehearth_ace:ui.shell.settings.gameplayTab.default_craft_order_quality_preference_description",
+         "default": 0,
+         "ordinal": 2
+      },
       "enable_auto_harvest": {
          "type": "boolean",
          "display_name": "stonehearth_ace:ui.shell.settings.gameplayTab.auto_harvest_enabled",
@@ -52,7 +63,7 @@
          "host_only": true,
          "display_name": "stonehearth_ace:ui.shell.settings.gameplayTab.water_signal_update_frequency",
          "description": "stonehearth_ace:ui.shell.settings.gameplayTab.water_signal_update_frequency_description",
-         "default": 1,
+         "default": 10,
          "on_change": {
             "call": "water_signal_update_frequency_setting_changed"
          },

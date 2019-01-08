@@ -18,12 +18,12 @@
    },
    "entity_data": {
       "stonehearth:net_worth": {
-         "value_in_gold": 10,
+         "value_in_gold": 12,
          "rarity": "common",
          "shop_info": {
             "buyable": true,
             "sellable": true,
-            "shopkeeper_level": 2,
+            "shopkeeper_level": 1,
             "shopkeeper_type": "caravan"
          }
       },
@@ -41,8 +41,14 @@
       },
       "stonehearth_ace:fertilizer": {
          "quality_chances": [
-            [3, 0.01],
-            [2, 0.1]
+            [
+               3,
+               0.01
+            ],
+            [
+               2,
+               0.1
+            ]
          ]
       }
    }

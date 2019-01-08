@@ -609,7 +609,8 @@
             "level_1_data": {
                "training_perk_name": "Bogenschieß-Training",
                "training_perk_description": "Ein Bogenschütze kann mit Zielscheiben bis zu Level 3 trainieren und erhöht das zulässige Limit der Trainingsausrüstung um 1"
-            }
+            },
+            "description": "Eine Fernkampfeinheit, die Gegner mit Pfeilen beschießt"
          }
       },
       "cleric": {
@@ -617,7 +618,8 @@
             "level_1_data": {
                "training_perk_name": "Heiler-Training",
                "training_perk_description": "Ein Kleriker kann Schafe verwenden, die von einem Hirten gezähmt wurden, um seine/ihre magischen Gesten zu üben und Erfahrung bis Level 3 sammeln"
-            }
+            },
+            "description": "Ein Kampfheiler"
          }
       },
       "knight": {
@@ -625,13 +627,15 @@
             "level_1_data": {
                "training_perk_name": "Knappen Training",
                "training_perk_description": "Ein Ritter kann mit Übungspuppen bis zu Level 3 trainieren und das zulässige Limit der Trainingsausrüstung um 1 erhöhen"
-            }
+            },
+            "description": "Ein Verteidigungskämpfer der sich darauf konzentriert Verbündete vor Schaden zu schützen."
          }
       },
       "herbalist": {
          "recipes": {
             "refined_fungi_name": "Pilzverfeinerung",
 	    "refined_seeds_name": "Lokale Samen für die Landwirtschaft",
+			"farming_enhancements_name": "Landwirtschaftsverbesserungen",
             "moonbell_transmute_recipe": {
                "recipe_name": "Mondglocken Samen (x3)",
                "description": "Trennt Samen von den Kräutern",
@@ -654,33 +658,33 @@
             },
             "parasol_colony_recipe": {
                "recipe_name": "Sonnenschirmkolonie (x3)",
-               "description": "Verwende vorhandene Pilze, um weitere Kolonien zu bilden, die zu neuen Pilzen heranwachsen.",
+               "description": "Verwende vorhandene Pilze, um weitere Kolonien zu bilden, die zu neuen Pilzen heranwachsen. Sonnenschirme sind im rohen Zustand leicht giftig und dürfen nur als Kochzutat verwendet werden.",
                "flavor": "Sonnenschirme sind im rohen Zustand leicht giftig und dürfen nur als Kochzutat verwendet werden"
             },
             "sweet_tooth_colony_recipe": {
                "recipe_name": "Semmel-Stoppelpilzkolonie (x3)",
                "description": "Verwende vorhandene Pilze, um weitere Kolonien zu bilden, die zu neuen Pilzen heranwachsen.",
-               "flavor": ""
+               "flavor": "Für die Herstellung einer Kolonie wird ein ganzer, nicht eingesetzter Pilz benätigt - und nicht nur ein geernteter Korb"
             },
             "bolete_colony_recipe": {
                "recipe_name": "Röhrling-Kolonie (x3)",
                "description": "Verwende vorhandene Pilze, um weitere Kolonien zu bilden, die zu neuen Pilzen heranwachsen.",
-               "flavor": ""
+               "flavor": "Für die Herstellung einer Kolonie wird ein ganzer, nicht eingesetzter Pilz benätigt - und nicht nur ein geernteter Korb"
             },
             "chanterelle_colony_recipe": {
                "recipe_name": "Pfifferling-Kolonie (x3)",
                "description": "Verwende vorhandene Pilze, um weitere Kolonien zu bilden, die zu neuen Pilzen heranwachsen.",
-               "flavor": ""
+               "flavor": "Für die Herstellung einer Kolonie wird ein ganzer, nicht eingesetzter Pilz benätigt - und nicht nur ein geernteter Korb"
             },
             "winter_morel_colony_recipe": {
                "recipe_name": "Wintermorchel-Kolonie (x3)",
                "description": "Verwende vorhandene Pilze, um weitere Kolonien zu bilden, die zu neuen Pilzen heranwachsen.",
-               "flavor": ""
+               "flavor": "Für die Herstellung einer Kolonie wird ein ganzer, nicht eingesetzter Pilz benätigt - und nicht nur ein geernteter Korb"
             },
             "desert_truffle_colony_recipe": {
                "recipe_name": "Wüstentrüffel-Kolonie (x3)",
                "description": "Verwende vorhandene Pilze, um weitere Kolonien zu bilden, die zu neuen Pilzen heranwachsen.",
-               "flavor": ""
+               "flavor": "Für die Herstellung einer Kolonie wird ein ganzer, nicht eingesetzter Pilz benätigt - und nicht nur ein geernteter Korb"
             },
             "legendary_parchment_recipe": {
                "recipe_name": "Vergoldetes Papier",
@@ -781,11 +785,34 @@
                "recipe_name": "Marmorsprossensamen",
                "description": "Zähme Marmorsprossen und lerne wie man sie bewirtschaftet.",
                "flavor": "Die Kiste muss vor dem Einsatz auf dem Boden abgestellt werden"
+            },
+            "fertilizer_recipe": {
+               "recipe_name": "Einfacher Dünger",
+               "description": "Kann von erfahrenen Farmern genutzt werden, um die Qualität der Ernte leicht zu erhöhen.",
+               "flavor": "Jeder Sack kann 10 Früchte düngen"
+            },
+            "fertilizer_upgrade_recipe": {
+               "recipe_name": "Dünger",
+               "description": "Kann von erfahrenen Farmern genutzt werden, um die Qualität der Ernte zu erhöhen.",
+               "flavor": "Jeder Sack kann 12 Früchte düngen"
+            },
+            "fertilizer_upgrade_2_recipe": {
+               "recipe_name": "Verbesserter Dünger",
+               "description": "Kann von erfahrenen Farmern genutzt werden, um die Qualität der Ernte stark zu erhöhen.",
+               "flavor": "Jeder Sack kann 16 Früchte düngen"
+            },
+            "fertilizer_megacrop_recipe": {
+               "recipe_name": "Megafrucht Dünger",
+               "description": "Dieser komplizierte Dünger wird das Wachstum etwas verlangsamen, erhöht aber die Wahrscheinlichkeit von Megafrüchten erheblich!",
+               "flavor": "Jeder Sack kann 20 Früchte düngen"
             }
          },
          "herbalist_hood": {
             "display_name": "Kräuterarzt Kapuze",
             "description": "Eine schützende Kopfbedeckung für Wüstenärzte."
+         },
+         "herbalist_description": {
+            "description": "Heilt Einheiten mit Balsam und Bandagen."
          }
       },
       "engineer": {
@@ -839,14 +866,22 @@
                "description": "Erstelle ein Gerät, mit dem Sie die mechanische Leistung in jede Richtung umleiten können.",
                "flavor": "Es kann während des Baus in Wände platziert werden - wie Fenster oder Türen."
             }
+         },
+         "engineer_description": {
+            "description": "Der Ingenieur stellt fortschrittliche Geräte und Verteidigungswaffen her."
          }
       },
       "potter": {
          "recipes": {
             "bone_clay_recipe": {
-               "recipe_name": "Hügel aus Knochenlehm (x2)",
+               "recipe_name": "Hügel aus Knochenlehm",
                "description": "Erforderlich für die Herstellung von Porzellan und wunderschön verzierter Keramik.",
                "flavor": ""
+            },
+            "bone_clay_x3_recipe": {
+               "recipe_name": "Hügel aus Knochenlehm (x3)",
+               "description": "Erforderlich für die Herstellung von Porzellan und wunderschön verzierter Keramik..",
+               "flavor": "Mit den richtigen Zutaten und Können hat der Töpfer einen wesentlich effizienteren Weg zur Herstellung von Knochenlehm gefunden"
             },
             "clay_comfy_bed_recipe": {
                "recipe_name": "Bequemes Bett aus Ton",
@@ -1021,6 +1056,9 @@
                "description": "In diesem Bett können deine Haustiere wunderbar schlafen!",
                "flavor": "Haustiere werden immer versuchen, in dem Bett zu schlafen, das dem Bett seines Besitzers am nächsten ist!"
             }
+         },
+         "potter_description": {
+            "description": "Macht Gebrauchsgegenstände aus Ton. Hochstufbar zum Steinmetz"
          }
       },
       "geomancer": {
@@ -1035,6 +1073,9 @@
                "description": "Ein legendärer Foliant für die Anhänger der Kirche des Überflusses.",
                "flavor": "Auf den Wegen von Cid soll Heilung erfolgen"
             }
+         },
+         "geomancer_description": {
+            "description": "Terraformt und stellt Golems her."
          }
       },
       "mason": {
@@ -1392,7 +1433,8 @@
             "level_4_data": {
                "perk_000_name": "Verbesserte Werkzeuge und kalter Stahl",
                "perk_000_description": "Lange Zeit in der Schmiede hat dem Schmied Ideen für neue und verbesserte Anlagen gegeben, die das Geheimnis von Stahl erschließen würden: schärfere Waffen und leichtere Rüstung."
-            }
+            },
+            "description": "Der Schmied veredelt Roherz zu Metallbarren und fertigt dann Waffen, Rüstungen und Gebäudeteile wie Tore."
          }
       },
       "worker": {
@@ -1565,6 +1607,9 @@
          },
          "cook_bowl_animation": {
             "display_name": "Kochschüssel"
+         },
+         "cook_description": {
+            "description": "Der Koch macht köstliche, herzhafte Mahlzeiten aus Gemüse und Fleisch."
          }
       },
       "carpenter": {
@@ -1640,6 +1685,9 @@
                "description": "In diesem Bett können deine Haustiere wunderbar schlafen!",
                "flavor": "Haustiere werden immer versuchen, in dem Bett zu schlafen, das dem Bett seines Besitzers am nächsten ist!"
             }
+         },
+         "carpenter_description": {
+            "description": "Der Schreiner fertigt Werkzeuge und Möbel aus Holz. Die Werkzeuge, die er herstellt, schalten mehrere andere Jobs frei."
          }
       },
       "weaver": {
@@ -1704,6 +1752,9 @@
                "description": "Lässt das Licht sanft herein.",
                "flavor": ""
             }
+         },
+         "weaver_description": {
+            "description": "Der Weber stellt Fäden, Stoffe und Behänge aus Fasern und Farbstoffen her."
          }
       },
       "trapper": {
@@ -1714,6 +1765,9 @@
          "clamp_trap": {
             "display_name": "Klammerfalle",
             "description": "Macht seine Beute nicht hundertprozentig Bewgungsunfähig"
+         },
+         "trapper_description": {
+            "description": "Der Trapper fängt und ähmmmm 'erntet' kleine Lebewesen für eine zuverlässige Nahrungsquelle."
          }
       },
       "shepherd": {
@@ -1722,28 +1776,32 @@
                "display_name": "Hirtenhaube",
                "description": "Eine wollene Kapuze, die der Hirte benutzt."
             }
+         },
+         "shepherd_description": {
+            "description": "Zähme Wildtiere und erntet sie für Nahrung und Materialien."
          }
       },
       "farmer": {
          "farmer_description": {
             "level_2_data": {
                "perk_000_name": "Ertragreiche Ernte",
-               "perk_000_description": "Der Farmer erzielt mit jeder Pflanze einen bis zu 40% höheren Ertrag."
+               "perk_000_description": "Der Farmer erzielt mit jeder Pflanze einen bis zu 25% höheren Ertrag."
             },
             "level_3_data": {
                "perk_000_name": "Dünger",
-               "perk_000_description": "(Demnächst!)"
+               "perk_000_description": "Der Farmer kann Düngemittel für Pflanzen verwenden, um deren Qualität zu erhöhen."
             },
             "level_4_data": {
                "perk_000_name": "Ertragreiche Ernte (Upgrade)",
-               "perk_000_description": "Der Farmer erzielt mit jeder Pflanze 70% mehr Ertrag."
+               "perk_000_description": "Der Farmer erzielt mit jeder Pflanze 50% mehr Ertrag."
             },
             "level_6_data": {
                "perk_000_name": "Ertragreiche Ernte (Max)",
                "perk_000_description": "Der Farmer erzielt mit jeder Pflanze 100% mehr Ertrag.",
                "perk_001_name": "Mega-Früchte",
                "perk_001_description": "(Demnächst!)"
-            }
+            },
+            "description": "Farmer bestellen Felder und ernten diese, sie sorgen für eine konstante Versorgung mit Lebensmitteln und Rohstoffen für Backwaren."
          }
       }
    },
@@ -1798,6 +1856,22 @@
                "display_name": "Birken-Kätzchen",
                "description": "Lerne Birken anzubauen."
             }
+         },
+         "fertilizer": {
+            "display_name": "Einfacher Dünger",
+            "description": "Kann von erfahrenen Farmern genutzt werden, um die Qualität der Ernte leicht zu erhöhen."
+         },
+         "fertilizer_megacrop": {
+            "display_name": "Megafruch Dünger",
+            "description": "Kann von erfahrenen Farmern genutzt werden, um die Chancen auf Megafrüchte zu verbessern!"
+         },
+         "fertilizer_upgrade": {
+            "display_name": "Dünger",
+            "description": "Kann von erfahrenen Farmern genutzt werden, um die Qualität der Ernte zu erhöhen."
+         },
+         "fertilizer_upgrade_2": {
+            "display_name": "Verbesserter Dünger",
+            "description": "Kann von erfahrenen Farmern genutzt werden, um die Qualität der Ernte stark zu erhöhen."
          }
       },
       "construction": {
@@ -2182,6 +2256,9 @@
                   "description": "Bereit, auf ein größeres Grundstück übertragen zu werden."
                }
             }
+         },
+         "megacrops": {
+            "default_description": "Diese Frucht ist Mega!"
          }
       },
       "decorations": {
@@ -2907,6 +2984,11 @@
          "clay_comfy_bed_pet": {
             "display_name": "Bequemes Lehmtierbett",
             "description": "Ermöglicht Haustiere einen bequemeren Schlaf. Sie mögen es nahe am Bett ihres Besitzers!"
+         },
+         "blue_market_stall": {
+            "blue_market_stall_ghost": {
+               "display_name": "Hölzerner Marktstand"
+            }
          }
       },
       "recipes": {
@@ -4219,13 +4301,13 @@
             "display_name": "Langer Wüstenbogen"
          },
          "rc_long_sword": {
-            "display_name": "Krummschwert"
+            "display_name": "Stählernes Krummschwert"
          },
          "rc_recurve_bow": {
             "display_name": "Wüstenrecurvebogen"
          },
          "rc_short_sword": {
-            "display_name": "Kurzes Krummschwert"
+            "display_name": "Stählernes kurzes Krummschwert"
          },
          "rc_silver_halberd": {
             "display_name": "Silberne Streitaxt"
@@ -4309,13 +4391,13 @@
             "display_name": "Langer Nordbogen"
          },
          "na_long_sword": {
-            "display_name": "Breitschwert"
+            "display_name": "Stählernes Breitschwert"
          },
          "na_recurve_bow": {
             "display_name": "Recurve Nordbogen"
          },
          "na_short_sword": {
-            "display_name": "Kurzes Nordschwert"
+            "display_name": "Stählernes kurzes Nordschwert"
          },
          "na_silver_halberd": {
             "display_name": "Silberner Nordatgeir"
@@ -5086,6 +5168,8 @@
             "gameplayTab": {
                "auto_craft_recipe_dependencies": "Automatische Rezepteinstellung",
                "auto_craft_recipe_dependencies_description": "Beim Herstellen eines Gegenstands überprüfen die Handwerker das Stadtlager, um zu sehen, ob genügend Zutaten vorhanden sind. Wenn nicht, werden Sie der Warteschlange automatisch weitere Aufträge hinzufügen, um den Auftrag erfüllen zu können.",
+               "default_craft_order_quality_preference": "Standardeinstellung für die Fertigungsqualität",
+               "default_craft_order_quality_preference_description": "Bei der Herstellung eines Gegenstands werden die Handwerker Zutaten aufgrund ihrer Qualität berücksichtigen: niedrigere (-1), höhere (1) oder keine Präferenz (0). AUSWAHL VON -1 ODER 1 KANN DIE SPIELLEISTUNG NEGATIV AUSWIRKEN.",
                "auto_harvest_enabled": "Nachwachsende Rohstoffe automatischen Ernten",
                "auto_harvest_enabled_description": "Wenn eine erneuerbare Ressource erntbar ist, die in deinem Besitz ist, wird automatisch einen Erntebefehl für diese Ressource ausgegeben.",
                "auto_harvest_animals_enabled": "Tiere produzieren automatisch nachwachsende Rohstoffe",

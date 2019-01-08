@@ -20,9 +20,6 @@
         },
 		"algae_drying" : {
           "recipe" : "file(algae_drying_recipe.json)"
-        },
-        "fertilizer": {
-           "recipe": "file(fertilizer_recipe.json)"
         }
       }
     },
@@ -111,6 +108,24 @@
             "cactus_flower_seeds_recipe": {
                "recipe": "/stonehearth_ace/jobs/herbalist/recipes/cactus_flower_seeds_recipe.json"
             }
+		 }
+	},
+	"farming_enhancements": {
+         "ordinal": 33,
+         "name": "i18n(stonehearth_ace:jobs.herbalist.recipes.farming_enhancements_name)",
+         "recipes": {
+			"fertilizer": {
+			   "recipe": "file(fertilizer_recipe.json)"
+			},
+			"fertilizer_upgrade": {
+			   "recipe": "file(fertilizer_upgrade_recipe.json)"
+			},
+			"fertilizer_upgrade_2": {
+			   "recipe": "file(fertilizer_upgrade_2_recipe.json)"
+			},
+			"fertilizer_megacrop": {
+			   "recipe": "file(fertilizer_megacrop_recipe.json)"
+			}
 		 }
 	}
   }

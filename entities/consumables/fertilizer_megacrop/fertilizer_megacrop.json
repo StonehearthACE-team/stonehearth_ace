@@ -13,23 +13,23 @@
          "model_origin": { "x": 0, "y": 0, "z": 0 }
       },
       "stonehearth:stacks": {
-         "max_stacks": 10
+         "max_stacks": 20
       }
    },
    "entity_data": {
       "stonehearth:net_worth": {
-         "value_in_gold": 10,
-         "rarity": "common",
+         "value_in_gold": 25,
+         "rarity": "uncommon",
          "shop_info": {
             "buyable": true,
             "sellable": true,
-            "shopkeeper_level": 2,
+            "shopkeeper_level": 3,
             "shopkeeper_type": "caravan"
          }
       },
       "stonehearth:catalog": {
-         "display_name": "",
-         "description": "",
+         "display_name": "i18n(stonehearth_ace:entities.consumables.fertilizer_megacrop.display_name)",
+         "description": "i18n(stonehearth_ace:entities.consumables.fertilizer_megacrop.description)",
          "icon": "file(fertilizer_megacrop.png)",
          "is_item": true,
          "category": "consumable",
@@ -42,14 +42,21 @@
       "stonehearth_ace:fertilizer": {
          "quality_chances": [
             [
+               4,
+               0.05
+            ],
+            [
                3,
-               0.01
+               0.25
             ],
             [
                2,
-               0.1
+               0.7
             ]
-         ]
+         ],
+         "megacrop_multiplier": 50,
+         "growth_time_multiplier": 2,
+         "call": "stonehearth_ace:set_growth_time_multiplier_from_fertilizer"
       }
    }
 }
