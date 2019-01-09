@@ -5183,6 +5183,17 @@
                "description": "See where the world is wilder (or tamer)."
             }
          },
+         "show_workshop": {
+            "craft_button": {
+               "title": "Craft",
+               "description": "Add this order to the end of the list. Hold [Shift] to insert at the top of the list."
+            },
+            "quality_preference": {
+               "title": "Ingredient Quality Preference",
+               "description": "Choose whether crafters should prefer high or low quality ingredients for this order. The default can be changed in Gameplay Settings."
+            },
+            "prefer_high_quality": "Use higher quality ingredients"
+         },
          "zones_mode": {
             "farm": {
                "water_affinity_range": "Irrigation</br>This crop will grow a little faster than normal with <span class='water'><span class='value'>[str(i18n_data.min)] - [str(i18n_data.max)]</span> water</span> within the blue outlined region.",

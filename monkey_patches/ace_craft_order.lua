@@ -46,9 +46,9 @@ function AceCraftOrder:activate()
    self.__saved_variables:mark_changed()
 end
 
--- 0 for no quality preference; -1 for lower quality, 1 for higher quality
+-- false for lower quality, true for higher quality
 function AceCraftOrder:get_high_quality_preference()
-   return self._sv.condition.high_quality_preference
+   return self._sv.condition.prefer_high_quality
 end
 
 function AceCraftOrder:_add_curr_crafter(crafter)
