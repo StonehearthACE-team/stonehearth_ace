@@ -172,6 +172,13 @@
       <label class="rightText" for="maintain" style='width:auto'>{{i18n stonehearth:ui.game.show_workshop.craft_up_to_right}}</label>
       </div>
 
+      <div id="craftOrderOption" class="orderOptionControls">
+         <input type="radio" {{bind-attr name="view.orderTypeName"}} value="make" class="craftRadioButton make" {{bind-attr id="view.orderTypeMakeId"}} checked>
+         <label {{bind-attr for="view.orderTypeMakeId"}} style='width:auto;' clicksound="stonehearth:sounds:ui:carpenter_menu:add_remove">{{i18n stonehearth:ui.game.show_workshop.craft_number_left}}</label>
+         <input type="radio" {{bind-attr name="view.orderTypeName"}} value="make" class="craftRadioButton make" {{bind-attr id="view.orderTypeMakeId"}} checked>
+         <label {{bind-attr for="view.orderTypeMakeId"}} style='width:auto;' clicksound="stonehearth:sounds:ui:carpenter_menu:add_remove">{{i18n stonehearth:ui.game.show_workshop.craft_number_left}}</label>
+      </div>
+
       <a id="craftButton" href='#' {{action "craft" target=view}}>
          <div id="craftButtonImage"></div>
          <div id="craftButtonLabel">{{i18n_key view.craft_button_text}}</div>
