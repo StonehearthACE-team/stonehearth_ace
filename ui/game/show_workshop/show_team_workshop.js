@@ -14,6 +14,8 @@ $(top).on('stonehearthReady', function() {
 
    App.workshopManager._ace_updateTeamCrafterView = function(teamCrafterView) {
       teamCrafterView.reopen({
+         SHIFT_KEY_ACTIVE: false,
+
          didInsertElement: function() {
             this._super();
             var self = this;
@@ -37,10 +39,110 @@ $(top).on('stonehearthReady', function() {
                   var recipe = self._getOrCalculateRecipeData($(this).attr('recipe_key'));
                   radiant.call_obj(self.getOrderList(), 'add_order_command', recipe, orderArgs)
                      .done(function(return_data){
+                        if (self.isDestroyed || self.isDestroying) {
+                           return;
+                        }
                         radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:ui:carpenter_menu:confirm'} );
                      });
                }
             });
+
+            var craftInsertImg = self.$('#craftInsert');
+            $(document).on('keyup keydown', function(e){
+               self.SHIFT_KEY_ACTIVE = e.shiftKey;
+               if (self.SHIFT_KEY_ACTIVE) {
+                  craftInsertImg.addClass('shift-pressed');
+               }
+               else {
+                  craftInsertImg.removeClass('shift-pressed');
+               }
+            });
+
+            $('#craftButton').hover(
+               function() {craftInsertImg.show();},
+               function() {craftInsertImg.hide();}
+            );
+            var tooltip = App.tooltipHelper.createTooltip(
+               i18n.t('stonehearth_ace:ui.game.show_workshop.craft_button.title'),
+               i18n.t('stonehearth_ace:ui.game.show_workshop.craft_button.description'));
+            self.$('#craftButton').tooltipster({
+               delay: 500,
+               content: $(tooltip)
+            });
+
+            tooltip = App.tooltipHelper.createTooltip(
+               i18n.t('stonehearth_ace:ui.game.show_workshop.quality_preference.title'),
+               i18n.t('stonehearth_ace:ui.game.show_workshop.quality_preference.description'));
+            self.$('#qualityPreference').tooltipster({
+               content: $(tooltip)
+            });
+
+            self._updateCraftOrderPreference();
+         },
+
+         _addExtraCraftOrderConditions: function(recipe, condition) {
+            var self = this;
+
+            condition.prefer_high_quality = self.get('prefer_high_quality');
+            if (self.SHIFT_KEY_ACTIVE) {
+               condition.order_index = 1;
+            }
+         },
+
+         _setRadioButtons: function (remaining, maintainNumber) {
+            var self = this;
+            self._super(remaining, maintainNumber);
+
+            self._updateCraftOrderPreference();
+         },
+
+         _updateCraftOrderPreference: function() {
+            var self = this;
+            
+            radiant.call('radiant:get_config', 'mods.stonehearth_ace.default_craft_order_prefer_high_quality')
+            .done(function(o) {
+               if (self.isDestroyed || self.isDestroying) {
+                  return;
+               }
+               var prefer_high_quality = o['mods.stonehearth_ace.default_craft_order_prefer_high_quality'];
+               if (prefer_high_quality != false) {
+                  prefer_high_quality = true;
+               }
+               self.set('prefer_high_quality', prefer_high_quality);
+            });
+         },
+
+         actions: {
+            craft: function () {
+               var self = this;
+      
+               if (self.$('#craftButtonLabel').hasClass('disabled')) {
+                  // TODO: play a error sound here?
+                  return;
+               }
+               radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:ui:carpenter_menu:confirm'} );
+               var recipe = this._getOrCalculateRecipeData(this.currentRecipe.recipe_key);
+      
+               var condition;
+               var type = self.$('input[name=' + self.get('orderTypeName') + ']:checked').val();
+               if (type == "maintain") {
+                  condition = {
+                     type: "maintain",
+                     at_least: App.stonehearth.validator.enforceNumRange(self.$('#maintainNumSelector')),
+                  };
+               } else {
+                  condition = {
+                     type: "make",
+                     amount: App.stonehearth.validator.enforceNumRange(self.$('#makeNumSelector')),
+                  };
+               }
+
+               // now add the ACE options
+               self._addExtraCraftOrderConditions(recipe, condition);
+
+               console.log('craft', recipe, condition)
+               radiant.call_obj(this.getOrderList(), 'add_order_command', recipe, condition)
+            }
          }
       });
    };
