@@ -26,6 +26,31 @@
         }
       }
 	},
+	"tools": {
+	  "recipes": {
+        "worker_axe_iron": {
+          "recipe": "file(worker_axe_iron_recipe.json)"
+        },
+        "worker_axe_steel": {
+          "recipe": "file(worker_axe_steel_recipe.json)"
+        },
+        "worker_hammer_iron": {
+          "recipe": "file(worker_hammer_iron_recipe.json)"
+        },
+        "worker_hammer_steel": {
+          "recipe": "file(worker_hammer_steel_recipe.json)"
+        },
+		"mining_pick_iron": {
+          "recipe": "file(mining_pick_iron_recipe.json)"
+        },
+        "mining_pick_steel": {
+          "recipe": "file(mining_pick_steel_recipe.json)"
+        },
+		"farmer_hoe_iron": {
+          "recipe": "file(farmer_hoe_iron_recipe.json)"
+        }
+      }
+	},
 	"smelt": {
       "recipes": {
         "bulk_copper_ingot": {

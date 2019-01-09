@@ -1,0 +1,42 @@
+{
+   "type": "mixin",
+   "components": {
+      "stonehearth:equipment_piece": {
+         "slot": "mainhand",
+         "render_type": "attach_to_bone",
+         "additional_equipment": {
+            "stonehearth_ace:armor:accessory_placeholder": true,
+			"stonehearth_ace:armor:offhand_placeholder": true
+         },
+         "equipment_types": [
+            "crossbow"
+         ],
+         "injected_buffs": [
+            "stonehearth_ace:buffs:using_crossbow"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:combat:weapon_data": {
+         "projectile_uri": "stonehearth:weapons:bolt",
+         "projectile_start_offset": { "x": -0.2, "y": 1.5, "z": -1 },
+         "projectile_end_offset": { "x": 0, "y": 1.5, "z": 0 }
+      },
+      "stonehearth:combat:ranged_attacks": [
+         {
+            "name": "archer_xbow_shoot",
+            "effect": "archer_xbow_shoot",
+            "active_frame": 17,
+            "cooldown": 1000,
+            "priority": 1
+         }
+      ],
+	  "stonehearth:catalog": {
+         "material_tags": [
+            "crossbow",
+            "ranged_weapon",
+            "stockpile_weapon"
+         ]
+      }
+   }
+}

@@ -1,0 +1,25 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(backpack_leather.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": -0.05, "y": 0, "z": 0 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.tools.backpack_leather.display_name)",
+         "description": "i18n(stonehearth_ace:entities.tools.backpack_leather.description)",
+         "icon": "file(backpack_leather.png)",
+         "is_item": true,
+         "category": "tools"
+      }
+   }
+}

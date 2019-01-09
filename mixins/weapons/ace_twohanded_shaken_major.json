@@ -1,0 +1,32 @@
+{
+   "type": "mixin",
+   "components": {
+      "stonehearth:equipment_piece": {
+         "slot": "mainhand",
+		 "render_type": "attach_to_bone",
+         "additional_equipment": {
+            "stonehearth:armor:offhand_placeholder": true
+         },
+         "equipment_types": [
+            "twohanded"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:buffs": {
+         "inflictable_debuffs": {
+            "shaken": {
+               "uri": "stonehearth_ace:buffs:major_shaken",
+               "chance": 0.66
+            }
+         }
+      },
+      "stonehearth:catalog": {
+         "material_tags": [
+            "twohanded",
+            "melee_weapon",
+            "stockpile_weapon"
+         ]
+      }
+   }
+}

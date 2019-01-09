@@ -1,0 +1,20 @@
+{
+   "type": "mixin",
+   "components": {
+      "stonehearth:equipment_piece": {
+         "slot": "mainhand",
+         "render_type": "attach_to_bone",
+         "equipment_types": [
+            "cleric_tome"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "material_tags": [
+            "tome",
+            "stockpile_exotic_equipment"
+         ]
+      }
+   }
+}

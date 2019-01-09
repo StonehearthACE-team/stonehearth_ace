@@ -1201,6 +1201,41 @@
       "blacksmith": {
          "recipes": {
             "utility_name": "Utility",
+            "farmer_hoe_iron_recipe": {
+               "recipe_name": "Iron Farmer's Hoe",
+               "description": "Craft a tool that Farmers can use to slightly improve their working efficiency.",
+               "flavor": ""
+            },
+            "worker_axe_iron_recipe": {
+               "recipe_name": "Iron Worker's Axe",
+               "description": "Craft a tool that Workers can use to slightly improve their efficiency when cutting trees.",
+               "flavor": ""
+            },
+            "worker_axe_steel_recipe": {
+               "recipe_name": "Steel Worker's Axe",
+               "description": "Craft a tool that Workers can use to greatly improve their efficiency when cutting trees.",
+               "flavor": ""
+            },
+            "worker_hammer_iron_recipe": {
+               "recipe_name": "Iron Worker's Hammer",
+               "description": "Craft a tool that Workers can use to slightly improve their efficiency when building.",
+               "flavor": ""
+            },
+            "worker_hammer_steel_recipe": {
+               "recipe_name": "Steel Worker's Hammer",
+               "description": "Craft a tool that Workers can use to greatly improve their efficiency when building.",
+               "flavor": ""
+            },
+            "mining_pick_iron_recipe": {
+               "recipe_name": "Iron Worker's Pick",
+               "description": "Craft a tool that Workers can use to slightly improve their efficiency when mining.",
+               "flavor": "This tool will also improve the odds of obtaining better quality resources"
+            },
+            "mining_pick_steel_recipe": {
+               "recipe_name": "Steel Worker's Pick",
+               "description": "Craft a tool that Workers can use to greatly improve their efficiency when mining.",
+               "flavor": "This tool will also improve the odds of obtaining better quality resources"
+            },
             "blacksmith_fuel_oven_recipe": {
                "recipe_name": "Blacksmith Kiln",
                "description": "Required for refining certain materials like wood and coal.",
@@ -4896,6 +4931,14 @@
          "worker_hammer_steel": {
             "display_name": "Steel Worker's Hammer",
             "description": "Greatly increases the work speed for general activities like building."
+         },
+         "farmer_hoe_iron": {
+            "display_name": "Iron Farmer's Hoe",
+            "description": "Slightly increases the work speed of the Farmer."
+         },
+         "backpack_leather": {
+            "display_name": "Leather Worker's Backpack",
+            "description": "Allows Workers to be much more efficient when hauling and restocking."
          }
       }
    },

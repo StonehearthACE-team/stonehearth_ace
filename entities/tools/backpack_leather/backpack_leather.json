@@ -1,0 +1,78 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(backpack_leather_equipped.qb)"
+            ]
+         },
+         "female": {
+            "models": [
+               "file(backpack_leather_equipped_female.qb)"
+            ]
+         },
+         "rabbit_male": {
+            "models": [
+               "file(backpack_leather_equipped_rabbit.qb)"
+            ]
+         },
+         "rabbit_female": {
+            "models": [
+               "file(backpack_leather_equipped_rabbit.qb)"
+            ]
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(backpack_leather_iconic.json)"
+      },
+      "stonehearth:equipment_piece": {
+         "slot": "backpack",
+         "render_type": "attach_to_bone",
+         "ilevel": 2,
+         "roles": [
+            "worker_job"
+         ],
+         "equip_effect": "stonehearth:effects:weapon_level_up",
+         "injected_buffs": [
+            "stonehearth_ace:buffs:tools:backpack_leather"
+         ],
+         "equipment_types": [
+            "backpack"
+         ]
+      },
+      "mob": {
+         "model_origin": { "x": -0.05, "y": 0.1, "z": 0.05 }
+      },
+      "render_info": {
+         "scale": 0.11
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 36,
+         "rarity": "uncommon",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 3,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.tools.backpack_leather.display_name)",
+         "description": "i18n(stonehearth_ace:entities.tools.backpack_leather.description)",
+         "icon": "file(backpack_leather.png)",
+         "category": "tools",
+         "material_tags": [
+            "leather",
+            "crafted",
+            "backpack",
+            "backpack_leather",
+            "stockpile_equipment",
+            "civillian_equipment"
+         ]
+      }
+   }
+}

@@ -1,0 +1,23 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "/stonehearth/entities/weapons/bronze_sword/bronze_sword.qb"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth:entities.weapons.bronze_sword.bronze_sword_iconic.display_name)",
+         "description": "i18n(stonehearth:entities.weapons.bronze_sword.bronze_sword_iconic.description)",
+         "icon": "file(bronze_sword.png)",
+         "is_item": true,
+         "category": "weapons",
+         "material_tags":["bronze", "melee_weapon", "bronze_sword", "ascendancy_made", "crafted", "stockpile_weapon"]
+      }
+   }
+}

@@ -1,0 +1,19 @@
+{
+   "type" : "effect",
+   "mixins": "/stonehearth/data/rigs/entities/humans/effects/work.json",
+   "tracks": {
+      "animation": {
+            "speed" : 3
+      },
+      "grab_hammer" : {
+         "item": "stonehearth_ace:tools:worker_hammer_steel"
+      },
+      "sound": {
+         "start_time": 75
+      },
+      "dust": {
+         "start_time" : 75,
+         "end_time" : 150
+      }            
+   }
+}
