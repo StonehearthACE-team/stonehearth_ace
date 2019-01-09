@@ -45,7 +45,7 @@ function AceCollectIngredients:run(town, args)
       local rating_fn
       if self._prefer_high_quality > 0 then
          rating_fn = function(item)
-            return radiant.entities.get_item_quality(item) / 4
+            return radiant.entities.get_item_quality(item) / 3
          end
       elseif self._prefer_high_quality < 0 then
          rating_fn = function(item)

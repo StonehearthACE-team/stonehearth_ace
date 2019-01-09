@@ -53,7 +53,7 @@ end
 function AceDigAdjacent:_apply_quality(entity, items, mining_zone, block)
    local quality_chances = self:_get_quality_chances(entity, mining_zone, block)
    if quality_chances then
-      item_quality_lib.apply_random_qualities(items, quality_chances, true)
+      item_quality_lib.apply_random_qualities(items, quality_chances, {max_quality = item_quality_lib.get_max_random_quality(player_id)})
    end
 end
 

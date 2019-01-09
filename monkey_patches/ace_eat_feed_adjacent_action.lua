@@ -14,7 +14,8 @@ function AceEatFeedAdjacent:stop(ai, entity, args)
    self:_old_stop(ai, entity, args)
 
    if quality_chances then
-      item_quality_lib.apply_random_quality(entity, quality_chances, true)
+      item_quality_lib.apply_random_quality(entity, quality_chances,
+            {max_quality = item_quality_lib.get_max_random_quality(entity:get_player_id())})
    end
 end
 

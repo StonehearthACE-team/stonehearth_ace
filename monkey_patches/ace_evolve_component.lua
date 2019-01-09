@@ -254,7 +254,7 @@ function AceEvolveComponent:_calculate_growth_period(evolve_time)
 end
 
 function AceEvolveComponent:_set_quality(item, source)
-   item_quality_lib.copy_quality(source, item, {override_allow_variable_quality = true})
+   item_quality_lib.copy_quality(source, item)
 end
 
 return AceEvolveComponent

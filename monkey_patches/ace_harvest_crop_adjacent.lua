@@ -107,7 +107,7 @@ function AceHarvestCropAdjacent:_get_actual_spawn_count(entity)
 end
 
 function AceHarvestCropAdjacent:_set_quality(item, source)
-   item_quality_lib.copy_quality(source, item, {override_allow_variable_quality = true})
+   item_quality_lib.copy_quality(source, item)
 end
 
 function AceHarvestCropAdjacent:_create_product(player_id, crop_quality, num_stacks, max_stacks)
