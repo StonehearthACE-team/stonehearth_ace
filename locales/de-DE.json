@@ -1201,6 +1201,41 @@
       "blacksmith": {
          "recipes": {
             "utility_name": "Werkzeuge",
+            "farmer_hoe_iron_recipe": {
+               "recipe_name": "Eiserne Farmerhacke",
+               "description": "Stell ein Werkzeug her, das die Arbeitseffizienz von Farmern leicht verbessert.",
+               "flavor": ""
+            },
+            "worker_axe_iron_recipe": {
+               "recipe_name": "Eiserne Arbeiteraxt",
+               "description": "Stell ein Werkzeug her, das die Leistungsfähigkeit von Arbeitern beim Fällen von Bäumen leicht verbessert.",
+               "flavor": ""
+            },
+            "worker_axe_steel_recipe": {
+               "recipe_name": "Stählerne Arbeiteraxt",
+               "description": "Stell ein Werkzeug her, das die Leistungsfähigkeit von Arbeitern beim Fällen von Bäumen erheblich verbessert.",
+               "flavor": ""
+            },
+            "worker_hammer_iron_recipe": {
+               "recipe_name": "Eiserner Arbeiterhammer",
+               "description": "Stell ein Werkzeug her, mit das die Effizienz deiner Arbeiter beim Bauen leicht verbessert.",
+               "flavor": ""
+            },show_workshop
+            "worker_hammer_steel_recipe": {
+               "recipe_name": "Stählerner Arbeiterhammer",
+               "description": "Stell ein Werkzeug her, mit das die Effizienz deiner Arbeiter beim Bauen erheblich verbessert.",
+               "flavor": ""
+            },
+            "mining_pick_iron_recipe": {
+               "recipe_name": "Eiserne Arbeiterpicke",
+               "description": "Stell ein Werkzeug her, das die Effizienz deiner Arbeiter beim Bergbau leicht verbessert.",
+               "flavor": "Dieses Werkzeug erhöht auch die Chance bessere Ressourcen zu erhalten"
+            },
+            "mining_pick_steel_recipe": {
+               "recipe_name": "Stählerne Arbeiterpicke",
+               "description": "Stell ein Werkzeug her, das die Effizienz deiner Arbeiter beim Bergbau erheblich verbessert.",
+               "flavor": "Dieses Werkzeug erhöht auch die Chance bessere Ressourcen zu erhalten"
+            },
             "blacksmith_fuel_oven_recipe": {
                "recipe_name": "Brennofen",
                "description": "Benötigt für die Veredlung bestimmte Materialien wie Holz und Kohle.",
@@ -4495,7 +4530,7 @@
             "display_name": "Stahlschwert"
          },
          "short_sword": {
-            "display_name": "Steel Short Sword"
+            "display_name": "Stählernes Kurzschwert"
          }
       },
       "gizmos": {
@@ -4896,6 +4931,14 @@
          "worker_hammer_steel": {
             "display_name": "Stählerner Arbeiterhammer",
             "description": "Erhöht die Arbeitsgeschwindigkeit für allgemeine Aktivitäten wie bauen erheblich."
+         },
+         "farmer_hoe_iron": {
+            "display_name": "Eiserne Farmerhacke",
+            "description": "Erhöht geringfügig die Arbeitsgeschwindigkeit des Farmers."
+         },
+         "backpack_leather": {
+            "display_name": "Lederner Arbeiterrucksack",
+            "description": "Erlaubt es Arbeitern, beim Transportieren und Wiederauffüllen viel effizienter zu sein."
          }
       }
    },
@@ -5182,6 +5225,17 @@
                "display_name": "Wildnis",
                "description": "Sehe wo die Welt wilder ist (oder zahmer)."
             }
+         },
+         "show_workshop": {
+            "craft_button": {
+               "title": "Herstellen",
+               "description": "Füge diese Bestellung zum Ende der Liste hinzu. Halte die [Umschalttaste] gedrückt, um sie oben in der Liste einzufügen."
+            },
+            "quality_preference": {
+               "title": "Qualität der Zutaten",
+               "description": "Wähle aus, ob der Handwerker qualitativ hochwertigere oder minderwertigere Zutaten für diese Bestellung verwenden soll. Die Standardeinstellung kann in den Spieleinstellungen geändert werden."
+            },
+            "prefer_high_quality": "Verwende hochwertigere Zutaten"
          },
          "zones_mode": {
             "farm": {

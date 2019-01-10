@@ -2,20 +2,20 @@
    "type": "mixin",
    "components": {
       "stonehearth:equipment_piece": {
-         "slot": "leftArm",
-         "render_type": "attach_to_bone",
-         "additional_equipment": {
-            "stonehearth_ace:armor:offhand_placeholder": true
-         },
+         "render_type": "merge_with_model",
+         "slot": "torso",
          "equipment_types": [
-            "shield"
+            "hood",
+			"torso",
+            "light_armor"
          ]
       }
    },
    "entity_data": {
       "stonehearth:catalog": {
          "material_tags": [
-            "shield",
+            "armor",
+            "light_armor",
             "stockpile_equipment"
          ]
       }
