@@ -216,6 +216,7 @@
       "commands:manage_party_4": "file(data/commands/manage_parties/manage_party_4.json)",
       "commands:patrol_banner:move": "file(data/commands/patrol_banner/move_patrol_banner.json)",
       "commands:patrol_banner:remove": "file(data/commands/patrol_banner/remove_patrol_banner.json)",
+      "commands:request_evolve:carve_mega_turnip": "file(data/commands/request_evolve/carve_mega_turnip.json)",
       "commands:slaughter:wild_animal": "file(data/commands/slaughter/slaughter.json)",
       "commands:toggle_enabled_off": "file(data/commands/toggle_enabled/toggle_off.json)",
       "commands:toggle_enabled_on": "file(data/commands/toggle_enabled/toggle_on.json)",
@@ -1980,6 +1981,10 @@
       },
       "set_growth_time_multiplier_from_fertilizer": {
          "controller": "file(call_handlers/custom_fertilizer_call_handler.lua)",
+         "endpoint": "server"
+      },
+      "use_evolve_command": {
+         "controller": "file(call_handlers/evolve_call_handler.lua)",
          "endpoint": "server"
       }
    },

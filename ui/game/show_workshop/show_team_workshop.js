@@ -67,7 +67,7 @@ $(top).on('stonehearthReady', function() {
                i18n.t('stonehearth_ace:ui.game.show_workshop.craft_button.title'),
                i18n.t('stonehearth_ace:ui.game.show_workshop.craft_button.description'));
             self.$('#craftButton').tooltipster({
-               delay: 500,
+               delay: 1000,
                content: $(tooltip)
             });
 
@@ -75,6 +75,7 @@ $(top).on('stonehearthReady', function() {
                i18n.t('stonehearth_ace:ui.game.show_workshop.quality_preference.title'),
                i18n.t('stonehearth_ace:ui.game.show_workshop.quality_preference.description'));
             self.$('#qualityPreference').tooltipster({
+               delay: 1000,
                content: $(tooltip)
             });
 
