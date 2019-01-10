@@ -1,0 +1,19 @@
+{
+   "type" : "effect",
+   "mixins": "/stonehearth/data/rigs/entities/humans/effects/hoe.json",
+   "tracks": {
+      "animation": {
+            "speed" : 2
+      },
+      "grab_hoe" : {
+         "item": "stonehearth_ace:tools:farmer_hoe_iron"
+      },
+      "sound": {
+         "start_time": 75
+      },
+      "dirt": {
+         "start_time" : 200,
+         "end_time" : 300
+      }            
+   }
+}

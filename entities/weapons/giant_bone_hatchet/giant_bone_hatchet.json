@@ -13,7 +13,7 @@
          "iconic_form": "file(giant_bone_hatchet_iconic.json)"
       },
       "stonehearth:equipment_piece": {
-         "slot": "offhand",
+         "slot": "leftArm",
          "render_type": "attach_to_bone",
          "additional_equipment": {
             "stonehearth_ace:armor:offhand_placeholder": true
@@ -29,8 +29,11 @@
          "required_job_level": 3,
          "equip_effect": "stonehearth:effects:weapon_level_up",
          "equipment_types": [
-            "offhand_weapon"
+            "offhand"
          ]
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0.4, "z": 0 }
       }
    },
    "entity_data": {

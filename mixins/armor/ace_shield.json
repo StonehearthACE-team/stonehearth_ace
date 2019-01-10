@@ -1,0 +1,23 @@
+{
+   "type": "mixin",
+   "components": {
+      "stonehearth:equipment_piece": {
+         "slot": "leftArm",
+         "render_type": "attach_to_bone",
+         "additional_equipment": {
+            "stonehearth_ace:armor:offhand_placeholder": true
+         },
+         "equipment_types": [
+            "shield"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "material_tags": [
+            "shield",
+            "stockpile_equipment"
+         ]
+      }
+   }
+}

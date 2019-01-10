@@ -43,6 +43,13 @@ function AceEvolveComponent:post_activate()
    end
 end
 
+AceEvolveComponent._old_destroy = EvolveComponent.destroy
+function AceEvolveComponent:destroy()
+   self:_old_destroy()
+   
+   self:_destroy_effect()
+end
+
 function AceEvolveComponent:set_check_evolve_script(path)
    self._sv.evolve_check_script = path
    self.__saved_variables:mark_changed()
@@ -198,8 +205,17 @@ end
 function AceEvolveComponent:_start_evolve_timer()
 	self:_stop_evolve_timer()
    
-	local duration = self:_calculate_growth_period()
-	self._sv.evolve_timer = stonehearth.calendar:set_persistent_timer("EvolveComponent renew", duration, radiant.bind(self, 'evolve'))
+   -- if there's an evolve_time in the evolve_data (standard), make a timer
+   -- if there's an evolve_command in it instead, add that command
+   if self._evolve_data.evolve_time then
+      local duration = self:_calculate_growth_period()
+      self._sv.evolve_timer = stonehearth.calendar:set_persistent_timer("EvolveComponent renew", duration, radiant.bind(self, 'evolve'))
+   elseif self._evolve_data.evolve_command then
+      local command_comp = self._entity:add_component('stonehearth:commands')
+      if not command_comp:has_command(self._evolve_data.evolve_command) then
+         command_comp:add_command(self._evolve_data.evolve_command)
+      end
+   end
 
 	self.__saved_variables:mark_changed()
 end
@@ -254,7 +270,80 @@ function AceEvolveComponent:_calculate_growth_period(evolve_time)
 end
 
 function AceEvolveComponent:_set_quality(item, source)
-   item_quality_lib.copy_quality(source, item, {override_allow_variable_quality = true})
+   item_quality_lib.copy_quality(source, item)
+end
+
+function AceEvolveComponent:request_evolve(player_id)
+   if self._evolving then
+      return false
+   end
+   
+   local data = radiant.entities.get_entity_data(self._entity, 'stonehearth:evolve_data')
+   if not data then
+      return false
+   end
+
+   -- probably shouldn't have to check this because the command should already filter with "visible_to_all_players"
+   if data.check_owner and not radiant.entities.is_neutral_animal(self._entity:get_player_id())
+      and radiant.entities.is_owned_by_another_player(self._entity, player_id) then
+      return false
+   end
+
+   self._evolving = true
+   if data.request_action then
+      local task_tracker_component = self._entity:add_component('stonehearth:task_tracker')
+      if task_tracker_component:is_activity_requested(data.request_action) then
+         return false -- If someone has requested to evolve already
+      end
+
+      task_tracker_component:cancel_current_task(false) -- cancel current task first and force the evolve request
+
+      local category = data.category or 'evolve'
+      local success = task_tracker_component:request_task(player_id, category, data.request_action, data.request_action_overlay_effect)
+      return success
+   else
+      self:perform_evolve()
+      return true
+   end
+end
+
+-- this function gets called directly by request_evolve unless a request_action is specified
+-- if such an action is specified, this function should be called as part of that AI action
+-- if there's an effect that the AI entity should perform during this, it will be returned by this function
+function AceEvolveComponent:perform_evolve()
+   local data = radiant.entities.get_entity_data(self._entity, 'stonehearth:evolve_data')
+   if not data then
+      return false
+   end
+
+   if data.evolving_effect then
+      self:_run_effect(data.evolving_effect)
+      return data.evolving_worker_effect
+   else
+      self:evolve()
+   end
+end
+
+function AceEvolveComponent:_run_effect(effect)
+   --if there's an effect already, destroy it, so we can never run two identical effects at once
+   if self.effect then
+      self:_destroy_effect()
+   end
+   if not self._effect then
+      self._effect = radiant.effects.run_effect(self._entity, effect)
+      self._effect:set_finished_cb(function()
+            self:_destroy_effect()
+            self:evolve()
+         end)
+   end
+end
+
+function WorkshopComponent:_destroy_effect()
+   if self._effect then
+      self._effect:set_finished_cb(nil)
+                  :stop()
+      self._effect = nil
+   end
 end
 
 return AceEvolveComponent

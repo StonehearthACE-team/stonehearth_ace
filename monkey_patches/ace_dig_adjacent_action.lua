@@ -36,7 +36,7 @@ function AceDigAdjacent:_mine_block(ai, entity, mining_zone, block)
    local items = radiant.entities.spawn_items(loot, worker_location, 1, 3, { owner = work_player_id })
 
    -- apply quality to mined items if relevant
-   self:_apply_quality(entity, items, mining_zone, block)
+   self:_apply_quality(entity, work_player_id, items, mining_zone, block)
 
    local inventory = stonehearth.inventory:get_inventory(work_player_id)
    if inventory then
@@ -50,10 +50,10 @@ function AceDigAdjacent:_mine_block(ai, entity, mining_zone, block)
    return true
 end
 
-function AceDigAdjacent:_apply_quality(entity, items, mining_zone, block)
+function AceDigAdjacent:_apply_quality(entity, player_id, items, mining_zone, block)
    local quality_chances = self:_get_quality_chances(entity, mining_zone, block)
    if quality_chances then
-      item_quality_lib.apply_random_qualities(items, quality_chances, true)
+      item_quality_lib.apply_random_qualities(items, quality_chances, {max_quality = item_quality_lib.get_max_random_quality(player_id)})
    end
 end
 

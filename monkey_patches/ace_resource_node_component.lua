@@ -89,7 +89,7 @@ function AceResourceNodeComponent:request_harvest(player_id, replant)
 end
 
 function AceResourceNodeComponent:_set_quality(item, quality)
-   item_quality_lib.apply_quality(item, quality, true)
+   item_quality_lib.apply_quality(item, quality)
 end
 
 return AceResourceNodeComponent

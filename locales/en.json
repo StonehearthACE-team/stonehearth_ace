@@ -409,6 +409,12 @@
          }
       },
       "commands": {
+         "request_evolve": {
+            "carve_mega_turnip": {
+               "display_name": "Carve",
+               "description": "Turn up this turnip!"
+            }
+         },
          "slaughter": {
             "display_name": "Harvest Wild Animal",
             "description": "Harvest this wild animal for some of its resources.",
@@ -1201,6 +1207,41 @@
       "blacksmith": {
          "recipes": {
             "utility_name": "Utility",
+            "farmer_hoe_iron_recipe": {
+               "recipe_name": "Iron Farmer's Hoe",
+               "description": "Craft a tool that Farmers can use to slightly improve their working efficiency.",
+               "flavor": ""
+            },
+            "worker_axe_iron_recipe": {
+               "recipe_name": "Iron Worker's Axe",
+               "description": "Craft a tool that Workers can use to slightly improve their efficiency when cutting trees.",
+               "flavor": ""
+            },
+            "worker_axe_steel_recipe": {
+               "recipe_name": "Steel Worker's Axe",
+               "description": "Craft a tool that Workers can use to greatly improve their efficiency when cutting trees.",
+               "flavor": ""
+            },
+            "worker_hammer_iron_recipe": {
+               "recipe_name": "Iron Worker's Hammer",
+               "description": "Craft a tool that Workers can use to slightly improve their efficiency when building.",
+               "flavor": ""
+            },
+            "worker_hammer_steel_recipe": {
+               "recipe_name": "Steel Worker's Hammer",
+               "description": "Craft a tool that Workers can use to greatly improve their efficiency when building.",
+               "flavor": ""
+            },
+            "mining_pick_iron_recipe": {
+               "recipe_name": "Iron Worker's Pick",
+               "description": "Craft a tool that Workers can use to slightly improve their efficiency when mining.",
+               "flavor": "This tool will also improve the odds of obtaining better quality resources"
+            },
+            "mining_pick_steel_recipe": {
+               "recipe_name": "Steel Worker's Pick",
+               "description": "Craft a tool that Workers can use to greatly improve their efficiency when mining.",
+               "flavor": "This tool will also improve the odds of obtaining better quality resources"
+            },
             "blacksmith_fuel_oven_recipe": {
                "recipe_name": "Blacksmith Kiln",
                "description": "Required for refining certain materials like wood and coal.",
@@ -4896,6 +4937,14 @@
          "worker_hammer_steel": {
             "display_name": "Steel Worker's Hammer",
             "description": "Greatly increases the work speed for general activities like building."
+         },
+         "farmer_hoe_iron": {
+            "display_name": "Iron Farmer's Hoe",
+            "description": "Slightly increases the work speed of the Farmer."
+         },
+         "backpack_leather": {
+            "display_name": "Leather Worker's Backpack",
+            "description": "Allows Workers to be much more efficient when hauling and restocking."
          }
       }
    },
@@ -5183,6 +5232,17 @@
                "description": "See where the world is wilder (or tamer)."
             }
          },
+         "show_workshop": {
+            "craft_button": {
+               "title": "Craft",
+               "description": "Add this order to the end of the list. Hold [Shift] to insert at the top of the list."
+            },
+            "quality_preference": {
+               "title": "Ingredient Quality Preference",
+               "description": "Choose whether crafters should prefer high or low quality ingredients for this order. The default can be changed in Gameplay Settings."
+            },
+            "prefer_high_quality": "Use higher quality ingredients"
+         },
          "zones_mode": {
             "farm": {
                "water_affinity_range": "Irrigation</br>This crop will grow a little faster than normal with <span class='water'><span class='value'>[str(i18n_data.min)] - [str(i18n_data.max)]</span> water</span> within the blue outlined region.",
@@ -5241,8 +5301,8 @@
             "gameplayTab": {
                "auto_craft_recipe_dependencies": "Auto Craft Recipe Dependencies",
                "auto_craft_recipe_dependencies_description": "When crafting an item, the crafters will check the inventory to see if there is sufficient of ingredients to use. If not, then they will add more orders to the queue should they need to to fulfill the original order.",
-               "default_craft_order_quality_preference": "Default Crafting Quality Preference",
-               "default_craft_order_quality_preference_description": "When crafting an item, the crafters can consider ingredients based on their quality: lower (-1), higher (1), or no preference (0). SELECTING -1 OR 1 MAY NEGATIVELY IMPACT PERFORMANCE.",
+               "default_craft_order_prefer_high_quality": "Prefer High-Quality Crafting Ingredients",
+               "default_craft_order_prefer_high_quality_description": "When crafting an item, crafters who have achieved the Journeyman's Knowledge perk will prefer crafting with high-quality ingredients. Uncheck to always prefer low-quality ingredients.",
                "auto_harvest_enabled": "Auto-Harvest Renewable Resources",
                "auto_harvest_enabled_description": "When a renewable resource you own becomes harvestable, automatically issue a harvest command on that resource.",
                "auto_harvest_animals_enabled": "Animals Auto-Produce Renewable Resources",

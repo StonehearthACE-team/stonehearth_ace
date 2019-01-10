@@ -1,0 +1,58 @@
+{
+   "type": "mixin",
+   "components": {
+      "render_info": {},
+      "sensor_list": {},
+      "stonehearth:job": {
+         "xp_equation_for_next_level": "curr_level * 115 + 135"
+      },
+      "stonehearth:storage": {},
+      "stonehearth:incapacitation": {},
+      "stonehearth:thoughts": {},
+      "stonehearth:traits": {},
+      "stonehearth:happiness": {},
+      "stonehearth:attributes": {},
+      "stonehearth:expendable_resources": {},
+      "stonehearth:carry_block": {},
+      "stonehearth:posture": {
+         "priorities": {
+            "stonehearth:mining_pick_posture": 5,
+            "stonehearth:mining_pick_iron_posture": 6,
+            "stonehearth:mining_pick_steel_posture": 7,
+            "stonehearth:worker_axe_posture": 5,
+            "stonehearth:worker_axe_iron_posture": 6,
+            "stonehearth:worker_axe_steel_posture": 7,
+            "stonehearth:worker_hammer_posture": 5,
+            "stonehearth:worker_hammer_iron_posture": 6,
+            "stonehearth:worker_hammer_steel_posture": 7,
+            "stonehearth:farmer_hoe_iron_posture": 5,
+            "stonehearth:backpack_leather_posture": 5
+         }
+      },
+      "stonehearth:score": {},
+      "stonehearth:equipment": {},
+      "stonehearth:object_owner": {
+         "allowed_ownerships": {}
+      },
+      "stonehearth:social": {},
+      "stonehearth:conversation": {},
+      "stonehearth:subject_matter": {},
+      "stonehearth:consumption": {},
+      "stonehearth:starvation": {},
+      "stonehearth:interactions": {},
+      "stonehearth:customization": {},
+      "stonehearth:appeal": {},
+      "stonehearth:teleportation": {}
+   },
+   "entity_data": {
+      "stonehearth:ai_packs": {
+         "packs": []
+      },
+      "stonehearth:idle_effects": {
+         "effects": []
+      },
+      "stonehearth:incapacitate_data": {},
+      "stonehearth:calories": {},
+      "stonehearth:catalog": {}
+   }
+}

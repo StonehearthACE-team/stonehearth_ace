@@ -1,0 +1,23 @@
+{
+   "type": "mixin",
+   "components": {
+      "stonehearth:equipment_piece": {
+         "render_type": "merge_with_model",
+         "slot": "torso",
+         "equipment_types": [
+            "hood",
+			"torso",
+            "light_armor"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "material_tags": [
+            "armor",
+            "light_armor",
+            "stockpile_equipment"
+         ]
+      }
+   }
+}

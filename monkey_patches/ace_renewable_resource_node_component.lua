@@ -58,7 +58,7 @@ function AceRenewableResourceNodeComponent:_place_spawned_items(json, owner, loc
 end
 
 function AceRenewableResourceNodeComponent:_set_quality(item, quality)
-   item_quality_lib.apply_quality(item, quality, true)
+   item_quality_lib.apply_quality(item, quality)
 end
 
 return AceRenewableResourceNodeComponent

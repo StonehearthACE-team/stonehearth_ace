@@ -1,0 +1,26 @@
+{
+   "type": "recipe",
+   "effort": 20,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.blacksmith.recipes.farmer_hoe_iron_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.blacksmith.recipes.farmer_hoe_iron_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.blacksmith.recipes.farmer_hoe_iron_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/tools/farmer_hoe_iron/farmer_hoe_iron.png",
+   "workshop": "stonehearth:blacksmith:workbench",
+   "level_requirement": 4,
+   "ingredients": [
+      {
+         "uri": "stonehearth:refined:iron_ingot",
+         "count": 1
+      },
+	  {
+         "material": "wood resource",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:tools:farmer_hoe_iron"
+      }
+   ]
+}

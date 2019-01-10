@@ -1,0 +1,22 @@
+{
+   "type": "mixin",
+   "components": {
+      "stonehearth:equipment_piece": {
+         "slot": "torso",
+		 "render_type": "merge_with_model",
+         "equipment_types": [
+		    "torso",
+			"medium_armor"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "material_tags": [
+            "armor",
+            "medium_armor",
+            "stockpile_equipment"
+         ]
+      }
+   }
+}

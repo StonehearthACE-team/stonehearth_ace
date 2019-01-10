@@ -1,17 +1,6 @@
 {
-   "components": {
-	  "mixintypes": {
-		 "model_variants": "override"
-	  },
-      "model_variants": {
-         "default": {
-            "models": [
-               "file(simple_quiver.qb)"
-            ]
-         }
-      },     
+   "components": {   
       "stonehearth:equipment_piece": {
-         "render_type": "attach_to_bone",
 		 "additional_equipment": {
             "stonehearth_ace:armor:backpack_placeholder": true
          },
@@ -20,9 +9,6 @@
 		 "equipment_types": [
             "quiver_arrows"
          ]
-      },
-      "mob": {
-         "model_origin": { "x": -0.05, "y": 0, "z": 0 }
       }
    },
    "entity_data": {

@@ -1,0 +1,20 @@
+{
+   "type": "mixin",
+   "components": {
+      "stonehearth:equipment_piece": {
+         "render_type": "merge_with_model",
+         "slot": "accessory",
+		 "additional_equipment": {
+            "stonehearth_ace:armor:backpack_placeholder": true
+         },
+		 "equipment_types": [
+            "quiver_arrows"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "material_tags": ["accessory", "quiver", "stockpile_exotic_equipment"]
+      }
+   }
+}

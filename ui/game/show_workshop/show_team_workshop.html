@@ -172,7 +172,12 @@
       <label class="rightText" for="maintain" style='width:auto'>{{i18n stonehearth:ui.game.show_workshop.craft_up_to_right}}</label>
       </div>
 
-      <a id="craftButton" href='#' {{action "craft" target=view}}>
+      <div id="qualityPreference">
+         {{input type="checkbox" id="preferHighQuality" checked=view.prefer_high_quality}}
+         <label for="preferHighQuality">{{i18n stonehearth_ace:ui.game.show_workshop.prefer_high_quality}}</label>
+      </div>
+
+      <a id="craftButton" href='#' {{action "craft" target=view allowedKeys="shift"}}>
          <div id="craftButtonImage"></div>
          <div id="craftButtonLabel">{{i18n_key view.craft_button_text}}</div>
       </a>
@@ -190,6 +195,10 @@
    <div id="orderList">
 
       <div id="orders">
+         <div id="craftInsert">
+            <img id="craftInsertPortrait" {{bind-attr src=view.currentRecipe.portrait}}>
+         </div>
+
          {{#each view.model.order_list.orders}}
             <div {{bind-attr class=":orderListItem is_crafting:inProgressOrder:normalOrder" }} {{bind-attr data-orderId = "this.id"}}
             {{action "select" recipe remaining condition.at_least target="view"}}>

@@ -1,0 +1,23 @@
+{
+   "type": "mixin",
+   "components": {
+      "stonehearth:equipment_piece": {
+         "slot": "helmet",
+		 "render_type": "merge_with_model",
+         "equipment_types": [
+            "helmet",
+			"light_armor"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "material_tags": [
+            "armor",
+            "helmet",
+            "light_armor",
+            "stockpile_equipment"
+         ]
+      }
+   }
+}

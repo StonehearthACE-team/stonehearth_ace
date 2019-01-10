@@ -55,7 +55,8 @@ function FertilizeCropAdjacent:_fertilize_one_time(ai, entity)
 
    -- determine quality value to apply based on fertilizer data
    local fertilizer_data = radiant.entities.get_entity_data(carrying, 'stonehearth_ace:fertilizer')
-   item_quality_lib.apply_random_quality_options(self._crop, fertilizer_data.quality_chances, {author = entity, override_allow_variable_quality = true})
+   item_quality_lib.apply_random_quality(self._crop, fertilizer_data.quality_chances,
+         {author = entity, max_quality = item_quality_lib.get_max_random_quality(entity:get_player_id())})
 
    -- consider megacrop
    if fertilizer_data.megacrop_multiplier then
