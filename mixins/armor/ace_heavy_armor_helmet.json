@@ -2,20 +2,20 @@
    "type": "mixin",
    "components": {
       "stonehearth:equipment_piece": {
-         "slot": "leftArm",
-         "render_type": "attach_to_bone",
-         "additional_equipment": {
-            "stonehearth_ace:armor:offhand_placeholder": true
-         },
+         "slot": "helmet",
+		 "render_type": "merge_with_model",
          "equipment_types": [
-            "shield"
+            "helmet",
+			"heavy_armor"
          ]
       }
    },
    "entity_data": {
       "stonehearth:catalog": {
          "material_tags": [
-            "shield",
+            "armor",
+            "helmet",
+            "heavy_armor",
             "stockpile_equipment"
          ]
       }
