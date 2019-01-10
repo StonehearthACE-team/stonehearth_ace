@@ -1,0 +1,264 @@
+<script type="text/x-handlebars" data-template-name="stonehearthTeamCrafter">
+   <div id="craftWindow" {{bind-attr class=view.model.skin_class}}>
+
+      <div id="shingle">
+         <a id="closeButton" {{action "hide" target=view}}></a>
+         <div id="title">{{i18n_key "stonehearth:ui.game.show_workshop.workshop_title" job_name=view.model.class_name}}</div>
+      </div>
+
+      {{#if view.model.order_list.orders}}
+         <a {{action togglePause target="view"}} >
+            <div id="statusSign" {{bind-attr class=view.model.workshopIsPaused:closed:open}}>
+               <div id="message">
+                  {{#if view.model.workshopIsPaused}}
+                     {{i18n stonehearth:ui.game.show_workshop.workshop_closed}}
+                  {{else}}
+                     {{i18n stonehearth:ui.game.show_workshop.workshop_open}}
+                  {{/if}}
+               </div>
+            </div>
+         </a>
+      {{/if}}
+
+      <div id="craftingWindow">
+         <div id="recipeTab" class="tabPage">
+            <div class="decor"></div>
+            <div id="recipeList">
+               {{partial 'recipeList'}}
+            </div>
+            <div id="requirementSection">
+               {{partial 'requirementSection'}}
+            </div>
+
+            <div id="details">
+               {{partial 'details'}}
+            </div>
+
+            {{partial 'orderOptions'}}
+         </div>
+
+         <div id="orderListTab" class="tabPage">
+            {{partial 'orderListContainer'}}
+         </div>
+
+         {{partial 'orderList'}}
+
+         <div id="tabContainer" class="gui">
+         <div id="tabs">
+            <div class="tab active" tabPage="recipeTab">{{i18n stonehearth:ui.game.show_workshop.recipe_tab}}</div>
+            <div class="tab" tabPage="orderListTab">{{i18n stonehearth:ui.game.show_workshop.orders_tab}} ({{view.model.order_list.orders.length}})</div>
+         </div>
+         </div>
+
+      </div>
+   </div>
+
+</script>
+
+<!--Template for the recipe list-->
+<script type="text/x-handlebars" data-template-name="_recipeList">
+   <div id="searchBox">
+      <input id="searchInput" placeholder="{{i18n stonehearth:ui.game.show_workshop.placeholder}}"/>
+   </div>
+   <div id="recipeItems">
+      {{#each view.recipes}}
+         <div class='category'>
+            <h3>{{i18n_key category}}</h3>
+            <div>
+               {{#each recipes}}
+                  <div
+                     {{bind-attr
+                        title=this.display_name
+                        class=":item :uisounds this.is_locked:is-locked this.is_hidden:is-hidden"
+                        recipe_key=this.recipe_key
+                        is_craftable=this.is_craftable
+                     }}
+                     {{action "select" this target="view"}}>
+                     <img {{bind-attr src="this.portrait"}} {{bind-attr title = "recipe.display_name"}}/>
+                  </div>
+               {{/each}}
+            </div>
+            <div style="clear: both"></div>
+         </div>
+      {{/each}}
+   </div>
+</script>
+
+<!--Template for the recipe list-->
+<script type="text/x-handlebars" data-template-name="_requirementSection">
+   <div id="workbench">
+      <h2>{{i18n stonehearth:ui.game.show_workshop.workshop_requirement_title}}</h2>
+      <div class="requirementText"></div>
+   </div>
+   <div id="crafterLevel">
+      <h2>{{i18n stonehearth:ui.game.show_workshop.level_requirement_title}}</h2>
+      <div class="requirementText"></div>
+   </div>
+</script>
+
+<!--Template for the details window-->
+<script type="text/x-handlebars" data-template-name="details">
+   <div class="detailsView">
+      <center>
+         <h1 id="title">{{view.currentRecipe.display_name}}</h1>
+      </center>
+
+      <div id="recipeEquipmentPane">
+         <div id="acceptableClasses">
+            <div>
+            {{#each view.allowedClasses}}
+               <img class="acceptableClassIcon" {{bind-attr src="icon"}}> </br>
+            {{/each}}
+            </div>
+         </div>
+         <div id="levelRequirement"></div>
+      </div>
+
+      <div id='portraitContainer'>
+         <img id="detailsPortrait" {{bind-attr src=view.currentRecipe.portrait}}>
+      </div>
+      <div id="stats"></div>
+
+      <div id="description">
+         <div id="ingredients">
+            <h2>{{i18n stonehearth:ui.game.show_workshop.craft_ingredients}}</h2>
+
+            {{#each view.currentRecipe.ingredients}}
+               <div class="ingredient" {{bind-attr data-kind="this.kind"}} {{bind-attr data-identifier="this.identifier"}}>
+                  <img {{bind-attr src=this.icon title=this.name}} />
+                  <div class="count"><span class="numHave"></span>/<span class="numNeeded">{{this.count}}</span></div>
+               </div>
+            {{/each}}
+         </div>
+
+         <br>
+         <div id="usefulText">{{i18n_key view.currentRecipe.description}}</div>
+         <div id="flavorText">{{{formatted_i18n_key view.currentRecipe.flavor}}}</div>
+      </div>
+      <div id="unlock_description">
+         <h2>{{i18n stonehearth:ui.game.show_workshop.unlock_text}}</h2>
+         {{#each view.currentRecipe.requirement.prerequisites}}
+            <div class="requirementBlock">
+               <img {{bind-attr src="this.portrait"}}/> <br />
+               <h2>{{made}} / {{required}}</h2>
+            </div>
+         {{/each}}
+      </div>
+   </div>
+</script>
+
+<!--Template for the options and craft button-->
+<script type="text/x-handlebars" data-template-name="_orderOptions">
+   <div id="orderOptions">
+      <div id="craftOrderOption" class="orderOptionControls">
+      <input type="radio" {{bind-attr name="view.orderTypeName"}} value="make" class="craftRadioButton make" {{bind-attr id="view.orderTypeMakeId"}} checked>
+      <label {{bind-attr for="view.orderTypeMakeId"}} style='width:auto;' clicksound="stonehearth:sounds:ui:carpenter_menu:add_remove">{{i18n stonehearth:ui.game.show_workshop.craft_number_left}}</label>
+      <span>
+         <div class="dec numericButton craftNumericButton uisounds">-</div>
+         <input type="number" name="quantityToMake" id="makeNumSelector" value="1" min="1" max="99" class="craftNumericSelect numericInput">
+         <div class="inc numericButton craftNumericButton uisounds">+</div>
+      </span>
+      <label class="rightText" for="make" style='width:auto;'>{{i18n stonehearth:ui.game.show_workshop.craft_number_right}}</label>
+      </div>
+
+      <div id="maintainOrderOption" class="orderOptionControls">
+      <input type="radio" {{bind-attr name="view.orderTypeName"}} value="maintain" class="craftRadioButton maintain" {{bind-attr id="view.orderTypeMaintainId"}}>
+      <label {{bind-attr for="view.orderTypeMaintainId"}} style='width:auto' clicksound="stonehearth:sounds:ui:carpenter_menu:add_remove">{{i18n stonehearth:ui.game.show_workshop.craft_up_to_left}}</label>
+      <span>
+         <div class="dec numericButton uisounds">-</div>
+         <input id="maintainNumSelector" type="number" name="quantityToMaintain" value="1" min="1" max="99" class="craftNumericSelect numericInput">
+         <div class="inc numericButton uisounds">+</div>
+      </span>
+      <label class="rightText" for="maintain" style='width:auto'>{{i18n stonehearth:ui.game.show_workshop.craft_up_to_right}}</label>
+      </div>
+
+      <a id="craftButton" href='#' {{action "craft" target=view}}>
+         <div id="craftButtonImage"></div>
+         <div id="craftButtonLabel">{{i18n_key view.craft_button_text}}</div>
+      </a>
+   </div>
+   <div id="orderOptionsLocked">
+      {{i18n stonehearth:ui.game.show_workshop.requirements_unmet_general}}
+      <div class="queueAnyway">
+         <a href="#" {{action "queueAnyway" target=view}}>{{i18n stonehearth:ui.game.show_workshop.queue_anyway}}</a>
+      </div>
+   </div>
+</script>
+
+<!--Template for everything regarding the order list-->
+<script type="text/x-handlebars" data-template-name="_orderList">
+   <div id="orderList">
+
+      <div id="orders">
+         {{#each view.model.order_list.orders}}
+            <div {{bind-attr class=":orderListItem is_crafting:inProgressOrder:normalOrder" }} {{bind-attr data-orderId = "this.id"}}
+            {{action "select" recipe remaining condition.at_least target="view"}}>
+               <a href="#">
+                  <img {{bind-attr src = "this.portrait"}}>
+               </a>
+               {{#if condition.amount }}
+                  <label class="amountLabel">{{this.condition.remaining}}</label>
+               {{/if}}
+               {{#if condition.at_least }}
+                  <label class="amountLabel"> = {{this.condition.at_least}}</label>
+               {{/if}}
+               <div class="issueIcon"></div>
+               <label class="deleteLabel">{{i18n stonehearth:ui.game.show_workshop.workshop_remove_confirm}}</label>
+            </div>
+         {{/each}}
+      </div>
+
+      <div id="scrollButtons">
+         <a id="orderListUpBtn" {{action "scrollOrderListUp" target="view"}} class='uisounds'><img /></a>
+         <a id="orderListDownBtn" {{action "scrollOrderListDown" target="view"}} class='uisounds'><img /></a>
+      </div>
+
+      <div id="orderListControls">
+         <a id="garbageButton" href="#"></a>
+         <ul id="garbageList" class="droptrue"></ul>
+      </div>
+
+   </div>
+</script>
+
+<!--Template for the detailed order list-->
+<script type="text/x-handlebars" data-template-name="_orderListContainer">
+   <div id="orderListContainer">
+      <table>
+      {{#each view.model.order_list.orders}}
+         <tr class="orderListRow" {{bind-attr data = "this.id"}}>
+            <td class="orderListRowPortrait">
+               <img class="orderListRowImage" {{bind-attr src = "this.portrait"}} {{bind-attr title = "this.recipe.display_name"}}>
+            </td>
+            <td class="orderListRowCondition">
+               {{#if this.condition.amount }}
+                  <span class="amountLabel"> x {{this.condition.remaining}}</span>
+               {{/if}}
+               {{#if this.condition.at_least }}
+                  <span class="amountLabel"> = {{this.condition.at_least}}</span>
+               {{/if}}
+            </td>
+            <td class="orderListRowName">
+               {{i18n_key this.recipe.recipe_name}}
+            </td>
+            <td class="workerPortraitDiv">
+               <img class="workerPortrait" {{bind-attr src="this.crafter_portrait" title="this.crafter_name"}}>
+            </td>
+            <td class="orderListRowCraftingStatus">
+               {{#if is_crafting}}
+                  <span class="craftingStatusCurrent">{{i18n stonehearth:ui.game.show_workshop.crafting_status}}<span>
+               {{else}}
+                  <span class="craftingStatusQueued">{{i18n stonehearth:ui.game.show_workshop.crafting_status_queued}}<span>
+               {{/if}}
+            </td>
+            <td>
+               <div class="rowDeleteButton" {{action "delete" id target="view"}}>
+                  <p class="deleteText">{{i18n stonehearth:ui.game.show_workshop.workshop_remove_confirm}}</p>
+                  <a href="#"></a>
+               </div>
+            </td>
+         </tr>
+      {{/each}}
+      </table>
+   </div>
+</script>

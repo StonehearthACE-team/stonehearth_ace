@@ -10,6 +10,14 @@ function AceBuffsComponent:activate()
    if not self._sv.buffs_by_category then
       self._sv.buffs_by_category = {}
    end
+   if not self._sv.managed_properties then
+      self._sv.managed_properties = {}
+   end
+end
+
+function AceBuffsComponent:get_managed_property(name)
+   local property = self._sv.managed_properties[name]
+   return property and property.value
 end
 
 function AceBuffsComponent:get_buffs_by_category(category)
@@ -116,6 +124,14 @@ function AceBuffsComponent:add_buff(uri, options)
          end
       end
 
+      -- if this buff should apply any managed properties that just get dealt with through the buffs component
+      -- this allows buffs to interact with one another
+      if json.managed_properties then
+         for name, details in pairs(json.managed_properties) do
+            self:_apply_managed_property(name, details)
+         end
+      end
+
       self.__saved_variables:mark_changed()
 
       radiant.events.trigger_async(self._entity, 'stonehearth:buff_added', {
@@ -181,11 +197,94 @@ function AceBuffsComponent:remove_buff(uri, remove_all_stacks)
             end
          end
 
+         if json.managed_properties then
+            for name, details in pairs(json.managed_properties) do
+               self:_remove_managed_property(name, details)
+            end
+         end
+
          self._sv.buffs[uri] = nil
          buff:destroy()
          self.__saved_variables:mark_changed()
 
          radiant.events.trigger_async(self._entity, 'stonehearth:buff_removed', uri)
+      end
+   end
+end
+
+function AceBuffsComponent:_apply_managed_property(name, details)
+   local property = self._sv.managed_properties[name]
+   if not property then
+      property = {type = details.type}
+      self._sv.managed_properties[name] = property
+   end
+
+   if details.type == 'number' then
+      if property.value then
+         property.value = property.value + details.value
+      else
+         property.value = details.value
+      end
+   elseif details.type == 'array' then
+      -- not yet implemented
+   elseif details.type == 'chance_table' then
+      if not property.value then
+         property.value = {}
+      end
+      for _, chance_entry in ipairs(details.value) do
+         local found
+         for index, sv_chance_entry in ipairs(property.value) do
+            if sv_chance_entry[1] == chance_entry[1] then
+               sv_chance_entry[2] = sv_chance_entry[2] + chance_entry[2]
+               found = true
+               break
+            end
+         end
+         if not found then
+            table.insert(property.value, {chance_entry[1], chance_entry[2]})
+         end
+      end
+   end
+end
+
+function AceBuffsComponent:_remove_managed_property(name, details)
+   local property = self._sv.managed_properties[name]
+   if not property then
+      return
+   end
+   if property.value == nil then
+      self._sv.managed_properties[name] = nil
+      return
+   end
+
+   if details.type == 'number' then
+      -- a number can intentionally be zero, so we can't just remove this property when the buffs are all gone
+      -- unless we're also tracking buff references... TODO maybe?
+      property.value = property.value - details.value
+   elseif details.type == 'array' then
+      -- not yet implemented
+   elseif details.type == 'chance_table' then
+      local indexes_to_remove = {}
+      for _, chance_entry in ipairs(details.value) do
+         for index, sv_chance_entry in ipairs(property.value) do
+            if sv_chance_entry[1] == chance_entry[1] then
+               sv_chance_entry[2] = sv_chance_entry[2] - chance_entry[2]
+               if sv_chance_entry[2] == 0 then
+                  table.insert(indexes_to_remove, index)
+               end
+               break
+            end
+         end
+      end
+
+      table.sort(indexes_to_remove)
+
+      for i = #indexes_to_remove, 1, -1 do
+         table.remove(property.value, indexes_to_remove[i])
+      end
+
+      if not next(property.value) then
+         self._sv.managed_properties[name] = nil
       end
    end
 end

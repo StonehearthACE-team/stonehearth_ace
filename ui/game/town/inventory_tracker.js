@@ -25,7 +25,7 @@ App.StonehearthTownView.reopen({
                   }
                   self.lastClickedItem = items[nextItem];
 
-                  radiant.call('towninventorytracker:get_item_container', self.lastClickedItem)
+                  radiant.call('stonehearth_ace:get_item_container', self.lastClickedItem)
                      .done(function(response) {
                         var camera_focus = self.lastClickedItem;
                         if (response.container && response.container != '') {
