@@ -338,7 +338,7 @@ function AceEvolveComponent:_run_effect(effect)
    end
 end
 
-function WorkshopComponent:_destroy_effect()
+function AceEvolveComponent:_destroy_effect()
    if self._effect then
       self._effect:set_finished_cb(nil)
                   :stop()

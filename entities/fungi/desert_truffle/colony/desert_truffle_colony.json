@@ -18,9 +18,9 @@
                {
                   "type": "one_of",
                   "items": [
-                     "file(../../../../../stonehearth/entities/plants/dirt_pile/dirt_pile_1.qb)",
-                     "file(../../../../../stonehearth/entities/plants/dirt_pile/dirt_pile_2.qb)",
-                     "file(../../../../../stonehearth/entities/plants/dirt_pile/dirt_pile_3.qb)"
+                     "/stonehearth/entities/plants/dirt_pile/dirt_pile_1.qb",
+                     "/stonehearth/entities/plants/dirt_pile/dirt_pile_2.qb",
+                     "/stonehearth/entities/plants/dirt_pile/dirt_pile_3.qb"
                   ]
                }
             ]
@@ -52,7 +52,12 @@
          "description": "i18n(stonehearth_ace:entities.fungi.desert_truffle.colony.desert_truffle_colony.description)",
          "icon": "file(desert_truffle_colony.png)",
          "category": "fungi",
-         "material_tags":["stockpile_fungi", "fungi", "resource", "fungi_colony"]
+         "material_tags": [
+            "stockpile_fungi",
+            "fungi",
+            "resource",
+            "fungi_colony"
+         ]
       }
    }
 }
