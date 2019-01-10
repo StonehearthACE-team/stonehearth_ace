@@ -43,11 +43,11 @@ function AceCollectIngredients:run(town, args)
       --Then, if the ingredients are not still completed, get more from the world
 
       local rating_fn
-      if self._prefer_high_quality > 0 then
+      if self._prefer_high_quality then
          rating_fn = function(item)
             return radiant.entities.get_item_quality(item) / 3
          end
-      elseif self._prefer_high_quality < 0 then
+      else
          rating_fn = function(item)
             return 2 - radiant.entities.get_item_quality(item)
          end
