@@ -47,20 +47,21 @@ $(top).on('stonehearthReady', function() {
                }
             });
 
-            var craftInsertImg = self.$('#craftInsert');
+            var craftInsertDiv = self.$('#craftInsert');
             $(document).on('keyup keydown', function(e){
                self.SHIFT_KEY_ACTIVE = e.shiftKey;
-               if (self.SHIFT_KEY_ACTIVE) {
-                  craftInsertImg.addClass('shift-pressed');
-               }
-               else {
-                  craftInsertImg.removeClass('shift-pressed');
-               }
+               self._updateCraftInsertShown(craftInsertDiv);
             });
 
             $('#craftButton').hover(
-               function() {craftInsertImg.show();},
-               function() {craftInsertImg.hide();}
+               function() {
+                  self.HOVERING_CRAFT_BUTTON = true;
+                  self._updateCraftInsertShown(craftInsertDiv);
+               },
+               function() {
+                  self.HOVERING_CRAFT_BUTTON = false;
+                  self._updateCraftInsertShown(craftInsertDiv);
+               }
             );
             var tooltip = App.tooltipHelper.createTooltip(
                i18n.t('stonehearth_ace:ui.game.show_workshop.craft_button.title'),
@@ -78,6 +79,17 @@ $(top).on('stonehearthReady', function() {
             });
 
             self._updateCraftOrderPreference();
+         },
+
+         _updateCraftInsertShown: function(div) {
+            var self = this;
+
+            if (self.SHIFT_KEY_ACTIVE && self.HOVERING_CRAFT_BUTTON) {
+               div.show();
+            }
+            else {
+               div.hide();
+            }
          },
 
          _addExtraCraftOrderConditions: function(recipe, condition) {
