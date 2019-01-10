@@ -13,10 +13,10 @@
          "iconic_form": "file(stone_hatchet_iconic.json)"
       },
       "stonehearth:equipment_piece": {
-         "slot": "offhand",
+         "slot": "leftArm",
          "render_type": "attach_to_bone",
          "additional_equipment": {
-            "stonehearth_ace:armor:leftarm_placeholder": true
+            "stonehearth_ace:armor:offhand_placeholder": true
          },
          "postures": [
             "stonehearth:combat",
@@ -31,6 +31,9 @@
          "equipment_types": [
             "offhand"
          ]
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0.4, "z": 0 }
       }
    },
    "entity_data": {
