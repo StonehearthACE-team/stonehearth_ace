@@ -1,10 +1,10 @@
 {
    "type": "entity",
-   "mixins": "file(na_cook_workbench_ghost.json)",
+   "mixins": "file(cook_workbench_pumpkin_ghost.json)",
    "components": {
       "stonehearth:entity_forms": {
-         "ghost_form": "file(na_cook_workbench_ghost.json)",
-         "iconic_form": "file(na_cook_workbench_iconic.json)",
+         "ghost_form": "file(cook_workbench_pumpkin_ghost.json)",
+         "iconic_form": "file(cook_workbench_pumpkin_iconic.json)",
          "placeable_on_ground": true
       },
       "destination": {
@@ -30,9 +30,6 @@
       "stonehearth:workshop": {
          "job_alias": "stonehearth:jobs:cook",
          "workshop_effect": "/stonehearth/data/rigs/jobs/cook/cook_workbench/effects/work.json"
-      },
-      "render_info": {
-         "scale": 0.08
       }
    },
    "entity_data": {
@@ -41,8 +38,8 @@
          "drop_offset": { "x": -0.5, "y": 0.8, "z": -0.5 }
       },
       "stonehearth:net_worth": {
-         "value_in_gold": 11,
-         "rarity": "common",
+         "value_in_gold": 50,
+         "rarity": "rare",
          "shop_info": {
             "buyable": false,
             "sellable": true,
@@ -50,7 +47,7 @@
          }
       },
       "stonehearth:appeal": {
-         "appeal": 6
+         "appeal": 18
       },
       "stonehearth:item_quality": {
          "variable_quality": true
