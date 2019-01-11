@@ -664,7 +664,7 @@
             },
             "parasol_colony_recipe": {
                "recipe_name": "Parasol Colony (x3)",
-               "description": "Use existing fungus to create more colonies to grow into new fungi. Parasols are slightly toxic when raw and must only be used as a cooking ingredient.",
+               "description": "Use existing fungus to create more colonies to grow into new fungi. Slightly toxic when raw, use for cooking!",
                "flavor": "For creating colonis you need the whole, undeployed fungi - and not just the harvested basket"
             },
             "sweet_tooth_colony_recipe": {
@@ -809,7 +809,7 @@
             },
             "fertilizer_megacrop_recipe": {
                "recipe_name": "Megacrop Fertilizer",
-               "description": "This intricate fertilizer will slow down growth a bit but will greatly increase the odds of megacrops!",
+               "description": "This intricate fertilizer doesn't provide the best qualities but will greatly increase the odds of megacrops!",
                "flavor": "Each sack can be used to fertilize 20 crops"
             }
          },
@@ -1654,6 +1654,12 @@
          },
          "cook_description": {
             "description": "The art of cooking will provide a diverse menu of hearty meals and fortifying drinks created with resources of many origins like vegetables, meat and foraged goods."
+         },
+         "cook_workbench_pumpkin": {
+            "cook_workbench_pumpkin_ghost": {
+               "display_name": "Pumpkin Cauldron",
+               "description": "An exotic cauldron used by the Cook for delicious recipes."
+            }
          }
       },
       "carpenter": {
@@ -3410,6 +3416,16 @@
          "ornate_banner_wall": {
             "display_name": "Ornate Wall Banner",
             "description": "A beautiful ornament for a prosperous town."
+         },
+         "megacrop": {
+            "mega_pumpkin": {
+               "display_name": "Giant Pumpkin",
+               "description": "Woah, look at the size! Place it as a decoration or to prepare a hearty soup!"
+            },
+            "mega_pumpkin_soup": {
+               "display_name": "Giant Pumpkin Soup",
+               "description": "Yum! So hearty and delicious! A whole town can enjoy this meal."
+            }
          }
       },
       "pets": {
@@ -3836,6 +3852,12 @@
          "golden_egg": {
             "display_name": "Golden Egg",
             "description": "It's a golden egg! It's worth billions of gold coins! Probably, right?"
+         },
+         "megacrop": {
+            "pumpkin_soup_serving": {
+               "display_name": "Serving of Pumpkin Soup",
+               "description": "Warm and tasty!"
+            }
          }
       },
       "terrain": {
