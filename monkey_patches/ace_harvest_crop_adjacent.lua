@@ -5,6 +5,14 @@ local item_quality_lib = require 'stonehearth_ace.lib.item_quality.item_quality_
 local HarvestCropAdjacent = require 'stonehearth.ai.actions.harvest_crop_adjacent'
 local AceHarvestCropAdjacent = class()
 
+AceHarvestCropAdjacent._old_start_thinking = HarvestCropAdjacent.start_thinking
+function AceHarvestCropAdjacent:start_thinking(ai, entity, args)
+   self._farmer_field = args.field_layer:get_component('stonehearth:farmer_field_layer')
+                                    :get_farmer_field()
+
+   self:_old_start_thinking(ai, entity, args)
+end
+
 function AceHarvestCropAdjacent:_harvest_one_time(ai, entity)
    assert(self._crop and self._crop:is_valid())
 
@@ -71,6 +79,15 @@ function AceHarvestCropAdjacent:_harvest_one_time(ai, entity)
    radiant.events.trigger(entity, 'stonehearth:harvest_crop', {crop_uri = self._crop:get_uri()})
    self._log:detail('destroying crop %s', tostring(self._crop))
    return true
+end
+
+AceHarvestCropAdjacent._old__unreserve_location = HarvestCropAdjacent._unreserve_location
+function AceHarvestCropAdjacent:_unreserve_location()
+   if self._location then
+      self._farmer_field:notify_crop_harvested(self._location)
+   end
+
+   self:_old__unreserve_location()
 end
 
 AceHarvestCropAdjacent._old__get_num_to_increment = HarvestCropAdjacent._get_num_to_increment
