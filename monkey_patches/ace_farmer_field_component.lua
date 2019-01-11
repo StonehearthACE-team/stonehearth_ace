@@ -9,7 +9,9 @@ local RECALCULATE_THRESHOLD = 0.5
 
 AceFarmerFieldComponent._old_restore = FarmerFieldComponent.restore
 function AceFarmerFieldComponent:restore()
-	self:_old_restore()
+   self:_old_restore()
+   
+   self:_cache_best_water_level()
 
    self._is_restore = true
 end
@@ -55,22 +57,47 @@ function AceFarmerFieldComponent:notify_plant_location_finished(location)
    end)
 end
 
-function FarmerFieldComponent:notify_crop_fertilized(location)
+function AceFarmerFieldComponent:notify_crop_fertilized(location)
    local p = Point3(location.x - self._location.x, 0, location.z - self._location.z)
    local fertilizable_layer = self._sv._fertilizable_layer
    local fertilizable_layer_region = fertilizable_layer:get_component('destination'):get_region()
    fertilizable_layer_region:modify(function(cursor)
       cursor:subtract_point(p)
    end)
+
+   self:_update_crop_fertilized(p.x + 1, p.z + 1, true)
+end
+
+function AceFarmerFieldComponent:notify_crop_harvested(location)
+   self:_update_crop_fertilized(location.x - self._location.x + 1, location.z - self._location.z + 1, false)
 end
 
 AceFarmerFieldComponent._old_plant_crop_at = FarmerFieldComponent.plant_crop_at
 function AceFarmerFieldComponent:plant_crop_at(x_offset, z_offset)
-	local crop = self:_old_plant_crop_at(x_offset, z_offset)
+   local crop = self:_old_plant_crop_at(x_offset, z_offset)
 
 	if crop then
 		crop:add_component('stonehearth:growing'):set_water_level(self._sv.water_level or 0)
 	end
+end
+
+AceFarmerFieldComponent._old_set_crop = FarmerFieldComponent.set_crop
+function AceFarmerFieldComponent:set_crop(session, response, new_crop_id)
+   local result = self:_old_set_crop(session, response, new_crop_id)
+
+   self:_cache_best_water_level()
+   self:_update_effective_water_level()
+
+   return result
+end
+
+function AceFarmerFieldComponent:_update_crop_fertilized(x, z, fertilized)
+   fertilized = fertilized or nil
+   local dirt_plot = self._sv.contents[x][z]
+   if dirt_plot then
+      dirt_plot.is_fertilized = fertilized
+      self.__saved_variables:mark_changed()
+   end
 end
 
 function AceFarmerFieldComponent:_create_water_listener()
@@ -106,6 +133,7 @@ function AceFarmerFieldComponent:_set_water_volume(volume)
    else
       self._sv.water_level = 0
    end
+   self:_update_effective_water_level()
 	self.__saved_variables:mark_changed()
 end
 
@@ -150,6 +178,27 @@ function AceFarmerFieldComponent:get_best_water_level()
 	local json = radiant.resources.load_json(self._sv.current_crop_alias)
 	self._preferred_climate = json and json.preferred_climate
 	return stonehearth.town:get_best_water_level_from_climate(self._preferred_climate)
+end
+
+function AceFarmerFieldComponent:_cache_best_water_level()
+   self._best_water_level, self._next_water_level = self:get_best_water_level()
+end
+
+function AceFarmerFieldComponent:_update_effective_water_level()
+   local relative_level = nil
+
+   if self._sv.water_level > 0 then
+      relative_level = false
+   end
+   
+   if self._best_water_level and self._sv.water_level >= self._best_water_level.min_water then
+      if not self._next_water_level or self._sv.water_level < self._next_water_level.min_water then
+         relative_level = true
+      end
+   end
+
+   self._sv.effective_water_level = relative_level
+   self.__saved_variables:mark_changed()
 end
 
 AceFarmerFieldComponent._old__on_destroy = FarmerFieldComponent._on_destroy
