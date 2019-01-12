@@ -199,7 +199,11 @@ function AceEvolveComponent:evolve()
    end
 
    radiant.events.trigger(self._entity, 'stonehearth:on_evolved', {entity = self._entity, evolved_form = evolved_form})
-   radiant.entities.destroy_entity(self._entity)
+   if self._evolve_data.kill_entity then
+      radiant.entities.kill_entity(self._entity)
+   else
+      radiant.entities.destroy_entity(self._entity)
+   end
 end
 
 function AceEvolveComponent:_start_evolve_timer()
@@ -297,7 +301,7 @@ function AceEvolveComponent:request_evolve(player_id)
       local success = task_tracker_component:request_task(player_id, category, data.request_action, data.request_action_overlay_effect)
       return success
    else
-      self:perform_evolve()
+      self:perform_evolve(true)
       return true
    end
 end
@@ -305,31 +309,33 @@ end
 -- this function gets called directly by request_evolve unless a request_action is specified
 -- if such an action is specified, this function should be called as part of that AI action
 -- if there's an effect that the AI entity should perform during this, it will be returned by this function
-function AceEvolveComponent:perform_evolve()
+function AceEvolveComponent:perform_evolve(use_finish_cb)
    local data = radiant.entities.get_entity_data(self._entity, 'stonehearth:evolve_data')
    if not data then
       return false
    end
 
    if data.evolving_effect then
-      self:_run_effect(data.evolving_effect)
-      return data.evolving_worker_effect
+      self:_run_effect(data.evolving_effect, use_finish_cb)
+      return data.evolving_worker_effect, data.evolving_worker_effect_times
    else
       self:evolve()
    end
 end
 
-function AceEvolveComponent:_run_effect(effect)
+function AceEvolveComponent:_run_effect(effect, use_finish_cb)
    --if there's an effect already, destroy it, so we can never run two identical effects at once
    if self.effect then
       self:_destroy_effect()
    end
    if not self._effect then
       self._effect = radiant.effects.run_effect(self._entity, effect)
-      self._effect:set_finished_cb(function()
-            self:_destroy_effect()
-            self:evolve()
-         end)
+      if use_finish_cb then
+         self._effect:set_finished_cb(function()
+               self:_destroy_effect()
+               self:evolve()
+            end)
+      end
    end
 end
 

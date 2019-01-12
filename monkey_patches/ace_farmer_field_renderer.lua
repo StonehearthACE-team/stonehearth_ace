@@ -178,7 +178,7 @@ function AceFarmerFieldRenderer:_update_and_get_fertilized_node_array(data)
             local node = self:_get_fertilized_node(x, y)
             if not node and not dirt_plot.is_furrow and dirt_plot.is_fertilized then
                local model = self._fertilized_dirt_model
-               node = self:_create_node(Point3(dirt_plot.x - 1.55, -0.5, dirt_plot.y - 1.45), model)
+               node = self:_create_node(Point3(dirt_plot.x - 1.46, 0.05, dirt_plot.y - 1.46), model)
                self:_set_fertilized_node(x, y, node)
             end
             if node then

@@ -35,11 +35,12 @@
       },
       "stonehearth:evolve_data": {
          "next_stage": "stonehearth_ace:decoration:megacrop:mega_pumpkin_soup",
-         "evolve_command": "stonehearth_ace:commands:request_evolve:cook_mega_pumpkin",
+         "evolve_command": "stonehearth_ace:commands:request_evolve:prepare_mega_pumpkin_soup",
          "request_action": "stonehearth_ace:perform_evolve",
          "request_action_overlay_effect": "stonehearth:effects:chop_overlay_effect",
-         "evolving_effect": "stonehearth:effects:fire_effect",
+         "evolving_effect": "stonehearth:effects:brazier_firepit_effect",
          "evolving_worker_effect": "chop",
+         "evolving_worker_effect_times": 3,
          "evolve_worker_required_job": {
             "stonehearth:jobs:cook": true
          }

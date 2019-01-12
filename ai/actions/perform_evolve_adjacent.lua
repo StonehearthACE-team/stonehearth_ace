@@ -17,6 +17,13 @@ function PerformEvolveItemAdjacent:start(ai, entity, args)
    ai:set_status_text_key('stonehearth_ace:ai.actions.status_text.perform_evolve', { target = args.item })
 end
 
+function PerformEvolveItemAdjacent:stop(ai, entity, args)
+   local evolve = args.item and args.item:is_valid() and args.item:get_component('stonehearth:evolve')
+   if evolve then
+      evolve:_destroy_effect()
+   end
+end
+
 function PerformEvolveItemAdjacent:run(ai, entity, args)
    local item = args.item
    local item_id = item:get_id()
@@ -27,12 +34,15 @@ function PerformEvolveItemAdjacent:run(ai, entity, args)
       radiant.entities.turn_to_face(entity, item)
       ai:unprotect_argument(item)
 
-      local effect = evolve:perform_evolve()
+      local effect, times = evolve:perform_evolve()
       if effect then
-         repeat
+         for i = 1, times or 1 do
             ai:execute('stonehearth:run_effect', { effect = effect})
-         until not item:is_valid()
+         end
       end
+
+      evolve:evolve()
+
       if data and data.worker_finished_effect then
          ai:execute('stonehearth:run_effect', { effect = data.worker_finished_effect})
       end
