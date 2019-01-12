@@ -6,9 +6,11 @@
    },
    "entity_data": {
       "stonehearth_ace:megacrop": {
-         "num_to_spawn": 3,
-         "other_items": {},
-         "pickup_new": false,
+         "num_to_spawn": 0,
+         "other_items": {
+			"stonehearth_ace:decoration:megacrop:mega_pumpkin": 1
+		 },
+         "pickup_new": true,
          "effect": "promote",
          "return_immediately": false
      }

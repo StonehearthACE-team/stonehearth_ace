@@ -149,6 +149,15 @@
       }
    },
    "entity_data": {
+      "stonehearth_ace:megacrop": {
+         "num_to_spawn": 2,
+         "other_items": {
+            "stonehearth_ace:decoration:megacrop:mega_cotton": 1
+         },
+         "pickup_new": true,
+         "effect": "promote",
+         "return_immediately": false
+      },
       "stonehearth:net_worth": {
          "value_in_gold": 1,
          "rarity": "common",
@@ -161,7 +170,10 @@
          "display_name": "i18n(stonehearth_ace:entities.crops.cotton_crop.display_name)",
          "description": "i18n(stonehearth_ace:entities.crops.cotton_crop.description)",
          "icon": "file(icon.png)",
-         "material_tags":["crop", "cotton"]
+         "material_tags": [
+            "crop",
+            "cotton"
+         ]
       },
       "stonehearth:appeal": {
          "appeal": 1

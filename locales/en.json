@@ -410,9 +410,13 @@
       },
       "commands": {
          "request_evolve": {
-            "carve_mega_turnip": {
-               "display_name": "Carve",
-               "description": "Turn up this turnip!"
+            "prepare_mega_pumpkin_soup": {
+               "display_name": "Prepare Pumpkin Soup",
+               "description": "With some stone and a Bundle o' Firewood the Cook can turn this huge vegetable into a wonderful soup!"
+            },
+            "stomp_mega_cotton_pet_bed": {
+               "display_name": "STOMP IT!",
+               "description": "Hammer this fluffy mega cotton down until it becomes a cute animal bed."
             }
          },
          "slaughter": {
@@ -1829,6 +1833,10 @@
          },
          "shepherd_description": {
             "description": "Nature-loving loners, shepherds will domesticate gentle wild animals to care for them and harvest their resources like eggs, wool and meat."
+         },
+         "shepherd_crook_corn": {
+            "display_name": "Shepherd's Corn Crook",
+            "description": "This beautiful crook increases the Shepherd's Compassion and the happiness of the animals."
          }
       },
       "farmer": {
@@ -2515,6 +2523,12 @@
          "infused_earth_essence": {
             "display_name": "Infused Hearth Essence",
             "description": "The essence of the Hearth infused with industrial fire."
+         },
+         "megacrop": {
+            "mega_silkweed_thread": {
+               "display_name": "Mega Silkweed Fibers",
+               "description": "These thick and strong fibers can be directly used as thread!"
+            }
          }
       },
       "refined": {
@@ -3071,6 +3085,12 @@
             "blue_market_stall_ghost": {
                "display_name": "Wooden Market Stall"
             }
+         },
+         "megacrop": {
+            "cotton_bed_pet": {
+               "display_name": "Cotton Animal Bed",
+               "description": "Who wouldn't love to sleep in a comfy and fluffy cotton bed?"
+            }
          }
       },
       "recipes": {
@@ -3419,12 +3439,21 @@
          },
          "megacrop": {
             "mega_pumpkin": {
-               "display_name": "Giant Pumpkin",
+               "display_name": "Mega Pumpkin",
                "description": "Woah, look at the size! Place it as a decoration or to prepare a hearty soup!"
             },
             "mega_pumpkin_soup": {
-               "display_name": "Giant Pumpkin Soup",
+               "display_name": "Mega Pumpkin Soup",
                "description": "Yum! So hearty and delicious! A whole town can enjoy this meal."
+            },
+            "mega_turnip": {
+               "display_name": "Mega Turnip",
+               "description": "So big! Harvest it for a bunch of baskets worth of food or use it as a fancy chair!",
+               "iconic_description": "Place it to be harvest for some food or be used as a fancy chair."
+            },
+            "mega_cotton": {
+               "display_name": "Mega Cotton",
+               "description": "Extremely fluffy and soft, harvest for fiber or stomp it to create a pet bed!"
             }
          }
       },
@@ -5309,7 +5338,7 @@
                   "tooltip_consumables": "Healing Items",
                   "tooltip_consumables_other": "Other Consumables",
                   "tooltip_bulk_resources": "Bulk Resources",
-                  "tooltip_civillian_equipment": "Clothing & Accessories",
+                  "tooltip_civillian_equipment": "Clothing & Tools",
                   "tooltip_gizmos_equipment": "Gizmos & Utilities"
                }
             }

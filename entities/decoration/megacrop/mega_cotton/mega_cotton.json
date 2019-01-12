@@ -1,0 +1,43 @@
+{
+   "type": "entity",
+   "mixins": "file(mega_cotton_ghost.json)",
+   "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(mega_cotton_iconic.json)",
+         "ghost_form": "file(mega_cotton_ghost.json)",
+         "placeable_on_ground": true
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 1, "y": 1, "z": 1 }
+            }
+         ]
+      },
+      "stonehearth:traveler_attraction": {},
+      "stonehearth:resource_node": {
+         "resource": "stonehearth_ace:resources:fiber:cotton_bundle",
+         "harvest_overlay_effect": "stonehearth:effects:harvest_plant_overlay_effect",
+         "harvester_effect": "fiddle",
+         "description": "harvest",
+         "durability": 3
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 21,
+         "rarity": "rare",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 24
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

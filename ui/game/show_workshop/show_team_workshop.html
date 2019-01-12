@@ -173,8 +173,8 @@
       </div>
 
       <div id="qualityPreference">
-         {{input type="checkbox" id="preferHighQuality" checked=view.prefer_high_quality}}
-         <label for="preferHighQuality">{{i18n stonehearth_ace:ui.game.show_workshop.prefer_high_quality}}</label>
+         {{input type="checkbox" id=view.preferHighQualityId checked=view.prefer_high_quality}}
+         <label {{bind-attr for="view.preferHighQualityId"}}>{{i18n stonehearth_ace:ui.game.show_workshop.prefer_high_quality}}</label>
       </div>
 
       <a id="craftButton" href='#' {{action "craft" target=view allowedKeys="shift"}}>
