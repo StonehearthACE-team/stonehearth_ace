@@ -2,8 +2,9 @@
    "ai": {
       "actions": {
          "status_text": {
-            "train": "Going for training",
-            "fertilize_field": "Applying fertilizer"
+            "train": "going for training",
+            "fertilize_field": "applying fertilizer",
+            "perform_evolve": "transforming [name(data.target)]"
          }
       }
    },
@@ -413,6 +414,10 @@
             "carve_mega_turnip": {
                "display_name": "Carve",
                "description": "Turn up this turnip!"
+            },
+            "cook_mega_pumpkin": {
+               "display_name": "Cook",
+               "description": "Instruct your cooks to make a mega meal!"
             }
          },
          "slaughter": {

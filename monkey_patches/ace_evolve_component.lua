@@ -274,10 +274,6 @@ function AceEvolveComponent:_set_quality(item, source)
 end
 
 function AceEvolveComponent:request_evolve(player_id)
-   if self._evolving then
-      return false
-   end
-   
    local data = radiant.entities.get_entity_data(self._entity, 'stonehearth:evolve_data')
    if not data then
       return false
@@ -289,7 +285,6 @@ function AceEvolveComponent:request_evolve(player_id)
       return false
    end
 
-   self._evolving = true
    if data.request_action then
       local task_tracker_component = self._entity:add_component('stonehearth:task_tracker')
       if task_tracker_component:is_activity_requested(data.request_action) then
@@ -298,7 +293,7 @@ function AceEvolveComponent:request_evolve(player_id)
 
       task_tracker_component:cancel_current_task(false) -- cancel current task first and force the evolve request
 
-      local category = data.category or 'evolve'
+      local category = 'evolve'  --data.category or 
       local success = task_tracker_component:request_task(player_id, category, data.request_action, data.request_action_overlay_effect)
       return success
    else

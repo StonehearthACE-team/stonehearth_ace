@@ -15,7 +15,8 @@
             }
          ]
       },
-      "stonehearth:traveler_attraction": {}
+      "stonehearth:traveler_attraction": {},
+      "stonehearth:evolve": {}
    },
    "entity_data": {
       "stonehearth:net_worth": {
@@ -31,6 +32,17 @@
       },
       "stonehearth:item_quality": {
          "variable_quality": true
+      },
+      "stonehearth:evolve_data": {
+         "next_stage": "stonehearth_ace:decoration:megacrop:mega_pumpkin_soup",
+         "evolve_command": "stonehearth_ace:commands:request_evolve:cook_mega_pumpkin",
+         "request_action": "stonehearth_ace:perform_evolve",
+         "request_action_overlay_effect": "stonehearth:effects:chop_overlay_effect",
+         "evolving_effect": "stonehearth:effects:fire_effect",
+         "evolving_worker_effect": "chop",
+         "evolve_worker_required_job": {
+            "stonehearth:jobs:cook": true
+         }
       }
    }
 }

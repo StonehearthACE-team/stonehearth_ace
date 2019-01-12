@@ -70,7 +70,7 @@ function FertilizeCropAdjacent:_fertilize_one_time(ai, entity)
       _radiant.call(fertilizer_data.call, {crop = self._crop, fertilizer_data = fertilizer_data, farmer = entity})
    end
 
-   radiant.entities.consume_stack(carrying, 1)
+   radiant.entities.consume_carrying(entity, 1)
 
    return true
 end

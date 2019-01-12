@@ -65,7 +65,8 @@ local monkey_patches = {
    ace_plant_field_adjacent_action = 'stonehearth.ai.actions.plant_field_adjacent_action',
    ace_crop_component = 'stonehearth.components.crop.crop_component',
    ace_posture_component = 'stonehearth.components.posture.posture_component',
-   ace_effect_manager = 'radiant.modules.effects.effect_manager'
+   ace_effect_manager = 'radiant.modules.effects.effect_manager',
+   ace_entities = 'radiant.modules.entities'
 }
 
 local function monkey_patching()
