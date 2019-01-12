@@ -16,6 +16,7 @@
          ]
       },
       "stonehearth:traveler_attraction": {},
+      "stonehearth:evolve": {},
       "stonehearth:resource_node": {
          "resource": "stonehearth_ace:resources:fiber:cotton_bundle",
          "harvest_overlay_effect": "stonehearth:effects:harvest_plant_overlay_effect",
@@ -38,6 +39,17 @@
       },
       "stonehearth:item_quality": {
          "variable_quality": true
+      },
+      "stonehearth:evolve_data": {
+         "next_stage": "stonehearth_ace:furniture:megacrop:cotton_bed_pet",
+         "evolve_command": "stonehearth_ace:commands:request_evolve:stomp_mega_cotton_pet_bed",
+         "request_action": "stonehearth_ace:perform_evolve",
+         "request_action_overlay_effect": "stonehearth:effects:undeploy_overlay_effect",
+         "evolve_effect": "stonehearth:effects:poof_effect",
+         "evolving_worker_effect": "work",
+         "evolve_worker_required_job": {
+            "stonehearth:jobs:worker": true
+         }
       }
    }
 }
