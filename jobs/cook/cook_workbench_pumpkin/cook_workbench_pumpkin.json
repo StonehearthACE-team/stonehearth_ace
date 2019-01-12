@@ -1,0 +1,56 @@
+{
+   "type": "entity",
+   "mixins": "file(cook_workbench_pumpkin_ghost.json)",
+   "components": {
+      "stonehearth:entity_forms": {
+         "ghost_form": "file(cook_workbench_pumpkin_ghost.json)",
+         "iconic_form": "file(cook_workbench_pumpkin_iconic.json)",
+         "placeable_on_ground": true
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 1, "y": 1, "z": 1 }
+            }
+         ],
+         "adjacency_flags": [
+            "front",
+            "back"
+         ]
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 1, "y": 1, "z": 1 }
+            }
+         ]
+      },
+      "stonehearth:workshop": {
+         "job_alias": "stonehearth:jobs:cook",
+         "workshop_effect": "/stonehearth/data/rigs/jobs/cook/cook_workbench/effects/work.json"
+      }
+   },
+   "entity_data": {
+      "stonehearth:table": {
+         "drop_effect": "carry_putdown_on_table",
+         "drop_offset": { "x": -0.5, "y": 0.8, "z": -0.5 }
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 50,
+         "rarity": "rare",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 18
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

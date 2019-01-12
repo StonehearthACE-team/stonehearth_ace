@@ -53,6 +53,8 @@ function FertilizeCropAdjacent:_fertilize_one_time(ai, entity)
    radiant.entities.turn_to_face(entity, self._crop)
    ai:execute('stonehearth:run_effect', { effect = 'fiddle' })
 
+   self._crop:get_component('stonehearth:crop'):set_fertilized()
+
    -- determine quality value to apply based on fertilizer data
    local fertilizer_data = radiant.entities.get_entity_data(carrying, 'stonehearth_ace:fertilizer')
    item_quality_lib.apply_random_quality(self._crop, fertilizer_data.quality_chances,
@@ -68,10 +70,7 @@ function FertilizeCropAdjacent:_fertilize_one_time(ai, entity)
       _radiant.call(fertilizer_data.call, {crop = self._crop, fertilizer_data = fertilizer_data, farmer = entity})
    end
 
-   radiant.entities.consume_stack(carrying, 1)
-
-   radiant.events.trigger_async(entity, 'stonehearth_ace:fertilize_crop', {crop_uri = self._crop:get_uri()})
-   self._farmer_field:notify_crop_fertilized(self._location)
+   radiant.entities.consume_carrying(entity, 1)
 
    return true
 end
@@ -79,6 +78,10 @@ end
 function FertilizeCropAdjacent:run(ai, entity, args)
    self._log:detail('entering loop..')
    while self._crop and self._crop:is_valid() and self:_fertilize_one_time(ai, entity) do
+      radiant.events.trigger_async(entity, 'stonehearth_ace:fertilize_crop', {crop_uri = self._crop:get_uri()})
+      if self._location then
+         self._farmer_field:notify_crop_fertilized(self._location)
+      end
       self:_unreserve_location()
 
       -- woot!  see if we can find another crop in

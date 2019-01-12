@@ -1,0 +1,26 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(mega_turnip_iconic.qb)"
+            ]
+         }
+      },
+      "render_info": {
+         "scale": 0.1
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "description": "i18n(stonehearth_ace:entities.decoration.megacrop.mega_turnip.iconic_description)",
+         "is_item": true,
+         "category": "decoration"
+      }
+   }
+}

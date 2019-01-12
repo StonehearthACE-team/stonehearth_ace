@@ -1,0 +1,52 @@
+{
+   "type": "entity",
+   "mixins": "file(cotton_bed_pet_ghost.json)",
+   "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(cotton_bed_pet_iconic.json)",
+         "ghost_form": "file(cotton_bed_pet_ghost.json)",
+         "placeable_on_ground": true
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 1, "y": 1, "z": 1 }
+            }
+         ]
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 1, "y": 1, "z": 1 }
+            }
+         ]
+      },
+      "stonehearth:mount": {
+         "mount_offset": { "x": 0, "y": 0.75, "z": -0.5 }
+      }
+   },
+   "entity_data": {
+      "stonehearth_ace:pet_bed": {
+         "shelter": {
+            "contribution_threshold": 70,
+            "score": 9
+         }
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 30,
+         "rarity": "rare",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 14
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

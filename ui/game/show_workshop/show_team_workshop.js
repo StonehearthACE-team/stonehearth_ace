@@ -156,7 +156,9 @@ $(top).on('stonehearthReady', function() {
                console.log('craft', recipe, condition)
                radiant.call_obj(this.getOrderList(), 'add_order_command', recipe, condition)
             }
-         }
+         },
+
+         preferHighQualityId: function () { return this.get('uri').replace(/\W/g, '') + '-quality'; }.property('uri')
       });
    };
 });

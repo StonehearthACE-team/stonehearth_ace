@@ -1,0 +1,80 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "layer": "clothing",
+            "transparent": "true",
+            "models": [
+               "file(backpack_cloth_equipped.qb)"
+            ]
+         },
+         "female": {
+            "layer": "clothing",
+            "transparent": "true",
+            "models": [
+               "file(backpack_cloth_equipped_female.qb)"
+            ]
+         },
+         "rabbit_male": {
+            "layer": "clothing",
+            "transparent": "true",
+            "models": [
+               "file(backpack_cloth_equipped_rabbit.qb)"
+            ]
+         },
+         "rabbit_female": {
+            "layer": "clothing",
+            "transparent": "true",
+            "models": [
+               "file(backpack_cloth_equipped_rabbit.qb)"
+            ]
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(backpack_cloth_iconic.json)"
+      },
+      "stonehearth:equipment_piece": {
+         "slot": "backpack",
+         "render_type": "merge_with_model",
+         "ilevel": 1,
+         "roles": [
+            "worker_job"
+         ],
+         "equip_effect": "stonehearth:effects:weapon_level_up",
+         "injected_buffs": [
+            "stonehearth_ace:buffs:tools:backpack_cloth"
+         ],
+         "equipment_types": [
+            "backpack"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 21,
+         "rarity": "uncommon",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 2,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.tools.backpack_cloth.display_name)",
+         "description": "i18n(stonehearth_ace:entities.tools.backpack_cloth.description)",
+         "icon": "file(backpack_cloth.png)",
+         "category": "tools",
+         "material_tags": [
+            "cloth",
+            "crafted",
+            "backpack",
+            "backpack_cloth",
+            "stockpile_equipment",
+            "civillian_equipment"
+         ]
+      }
+   }
+}

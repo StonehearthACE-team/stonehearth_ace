@@ -1,0 +1,42 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(mega_silkweed_thread.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": -0.05, "y": 0, "z": 0.15 },
+         "region_origin": { "x": 0, "y": 0, "z": 0 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 7,
+         "rarity": "rare",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.resources.megacrop.mega_silkweed_thread.display_name)",
+         "description": "i18n(stonehearth_ace:entities.resources.megacrop.mega_silkweed_thread.description)",
+         "icon": "file(mega_silkweed_thread.png)",
+         "is_item": true,
+         "category": "resources",
+         "material_tags": [
+            "thread",
+            "resource",
+            "plant",
+            "silkweed",
+            "mega_silkweed_thread",
+            "stockpile_plant"
+         ]
+      }
+   }
+}

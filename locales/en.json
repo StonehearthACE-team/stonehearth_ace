@@ -2,8 +2,9 @@
    "ai": {
       "actions": {
          "status_text": {
-            "train": "Going for training",
-            "fertilize_field": "Applying fertilizer"
+            "train": "going for training",
+            "fertilize_field": "applying fertilizer",
+            "perform_evolve": "transforming [name(data.target)]"
          }
       }
    },
@@ -410,9 +411,13 @@
       },
       "commands": {
          "request_evolve": {
-            "carve_mega_turnip": {
-               "display_name": "Carve",
-               "description": "Turn up this turnip!"
+            "prepare_mega_pumpkin_soup": {
+               "display_name": "Prepare Pumpkin Soup",
+               "description": "With some stone and a Bundle o' Firewood the Cook can turn this huge vegetable into a wonderful soup!"
+            },
+            "stomp_mega_cotton_pet_bed": {
+               "display_name": "Stomp it!",
+               "description": "Send a Worker to hammer this fluffy mega cotton until it becomes a suitable animal bed."
             }
          },
          "slaughter": {
@@ -664,7 +669,7 @@
             },
             "parasol_colony_recipe": {
                "recipe_name": "Parasol Colony (x3)",
-               "description": "Use existing fungus to create more colonies to grow into new fungi. Parasols are slightly toxic when raw and must only be used as a cooking ingredient.",
+               "description": "Use existing fungus to create more colonies to grow into new fungi. Slightly toxic when raw, use for cooking!",
                "flavor": "For creating colonis you need the whole, undeployed fungi - and not just the harvested basket"
             },
             "sweet_tooth_colony_recipe": {
@@ -809,7 +814,7 @@
             },
             "fertilizer_megacrop_recipe": {
                "recipe_name": "Megacrop Fertilizer",
-               "description": "This intricate fertilizer will slow down growth a bit but will greatly increase the odds of megacrops!",
+               "description": "This intricate fertilizer doesn't provide the best qualities but will greatly increase the odds of megacrops!",
                "flavor": "Each sack can be used to fertilize 20 crops"
             }
          },
@@ -1654,6 +1659,12 @@
          },
          "cook_description": {
             "description": "The art of cooking will provide a diverse menu of hearty meals and fortifying drinks created with resources of many origins like vegetables, meat and foraged goods."
+         },
+         "cook_workbench_pumpkin": {
+            "cook_workbench_pumpkin_ghost": {
+               "display_name": "Pumpkin Cauldron",
+               "description": "An exotic cauldron used by the Cook for delicious recipes."
+            }
          }
       },
       "carpenter": {
@@ -1823,6 +1834,10 @@
          },
          "shepherd_description": {
             "description": "Nature-loving loners, shepherds will domesticate gentle wild animals to care for them and harvest their resources like eggs, wool and meat."
+         },
+         "shepherd_crook_corn": {
+            "display_name": "Shepherd's Corn Crook",
+            "description": "This beautiful crook increases the Shepherd's Compassion and the happiness of the animals."
          }
       },
       "farmer": {
@@ -2509,6 +2524,12 @@
          "infused_earth_essence": {
             "display_name": "Infused Hearth Essence",
             "description": "The essence of the Hearth infused with industrial fire."
+         },
+         "megacrop": {
+            "mega_silkweed_thread": {
+               "display_name": "Mega Silkweed Fibers",
+               "description": "These thick and strong fibers can be directly used as thread!"
+            }
          }
       },
       "refined": {
@@ -3065,6 +3086,12 @@
             "blue_market_stall_ghost": {
                "display_name": "Wooden Market Stall"
             }
+         },
+         "megacrop": {
+            "cotton_bed_pet": {
+               "display_name": "Cotton Animal Bed",
+               "description": "Who wouldn't love to sleep in a comfy and fluffy cotton bed?"
+            }
          }
       },
       "recipes": {
@@ -3410,6 +3437,25 @@
          "ornate_banner_wall": {
             "display_name": "Ornate Wall Banner",
             "description": "A beautiful ornament for a prosperous town."
+         },
+         "megacrop": {
+            "mega_pumpkin": {
+               "display_name": "Mega Pumpkin",
+               "description": "Woah, look at the size! Place it as a decoration or to prepare a hearty soup!"
+            },
+            "mega_pumpkin_soup": {
+               "display_name": "Mega Pumpkin Soup",
+               "description": "Yum! So hearty and delicious! A whole town can enjoy this meal."
+            },
+            "mega_turnip": {
+               "display_name": "Mega Turnip",
+               "description": "So big! Harvest it for a bunch of baskets worth of food or use it as a fancy chair!",
+               "iconic_description": "Place it to be harvest for some food or be used as a fancy chair."
+            },
+            "mega_cotton": {
+               "display_name": "Mega Cotton",
+               "description": "Extremely fluffy and soft, harvest for fiber or stomp it to create a pet bed!"
+            }
          }
       },
       "pets": {
@@ -3836,6 +3882,12 @@
          "golden_egg": {
             "display_name": "Golden Egg",
             "description": "It's a golden egg! It's worth billions of gold coins! Probably, right?"
+         },
+         "megacrop": {
+            "pumpkin_soup_serving": {
+               "display_name": "Serving of Pumpkin Soup",
+               "description": "Warm and tasty!"
+            }
          }
       },
       "terrain": {
@@ -4621,6 +4673,12 @@
                "description": "It's best to practice with this friendly guy. Requires an artficer for repairs.",
                "display_name": "Brass Training Dummy"
             }
+         },
+         "frost_trap": {
+            "frost_trap_ghost": {
+               "display_name": "Frost Trap",
+               "description": "Use it when your enemies need to chill a bit!"
+            }
          }
       },
       "aquatic": {
@@ -4945,6 +5003,10 @@
          "backpack_leather": {
             "display_name": "Leather Worker's Backpack",
             "description": "Allows Workers to be much more efficient when hauling and restocking."
+         },
+         "backpack_cloth": {
+            "display_name": "Cloth Worker's Backpack",
+            "description": "Allows Workers to be a tad more efficient when hauling and restocking."
          }
       }
    },
@@ -5277,7 +5339,7 @@
                   "tooltip_consumables": "Healing Items",
                   "tooltip_consumables_other": "Other Consumables",
                   "tooltip_bulk_resources": "Bulk Resources",
-                  "tooltip_civillian_equipment": "Clothing & Accessories",
+                  "tooltip_civillian_equipment": "Clothing & Tools",
                   "tooltip_gizmos_equipment": "Gizmos & Utilities"
                }
             }

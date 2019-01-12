@@ -1,0 +1,22 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:item_properties",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(shepherd_crook_corn.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:jobs.shepherd.shepherd_crook_corn.display_name)",
+         "description": "i18n(stonehearth_ace:jobs.shepherd.shepherd_crook_corn.description)",
+         "icon": "file(shepherd_crook_corn.png)",
+         "is_item": true,
+         "category": "tools"
+      }
+   }
+}

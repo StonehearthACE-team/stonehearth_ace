@@ -1,3 +1,4 @@
+local ZoneRenderer = require 'stonehearth.renderers.zone_renderer'
 local Point3 = _radiant.csg.Point3
 local Cube3 = _radiant.csg.Cube3
 local Region3 = _radiant.csg.Region3
@@ -8,18 +9,26 @@ local constants = require 'stonehearth.constants'
 local FarmerFieldRenderer = require 'stonehearth.renderers.farmer_field.farmer_field_renderer'
 local AceFarmerFieldRenderer = class()
 
+local log = radiant.log.create_logger('farmer_field.renderer')
+
 AceFarmerFieldRenderer._old_initialize = FarmerFieldRenderer.initialize
 function AceFarmerFieldRenderer:initialize(render_entity, datastore)
-   self:_old_initialize(render_entity, datastore)
-
    self._water_color = Color4(constants.hydrology.DEFAULT_WATER_COLOR)
+
+   self._farmer_field_data = radiant.entities.get_component_data(render_entity:get_entity(), 'stonehearth:farmer_field')
+   self._fertilized_dirt_model = self._farmer_field_data.fertilized_dirt
+
+   self._fertilized_nodes = {}
+   self._fertilized_zone_renderer = ZoneRenderer(render_entity)
+   
+   self:_old_initialize(render_entity, datastore)
 
    self._ui_view_mode = stonehearth.renderer:get_ui_mode()
    self._ui_mode_listener = radiant.events.listen(radiant, 'stonehearth:ui_mode_changed', self, self._on_ui_mode_changed)
 end
 
 AceFarmerFieldRenderer._old_destroy = FarmerFieldRenderer.destroy
-function FarmerFieldRenderer:destroy()
+function AceFarmerFieldRenderer:destroy()
    self:_old_destroy()
 
    if self._ui_mode_listener then
@@ -33,11 +42,25 @@ function FarmerFieldRenderer:destroy()
    end
 end
 
-AceFarmerFieldRenderer._old__update = FarmerFieldRenderer._update
-function FarmerFieldRenderer:_update()
-   self:_old__update()
+-- override instead of patching so we're not re-calling certain things
+function AceFarmerFieldRenderer:_update()
+   local data = self._datastore:get_data()
+   local size = data.size
+   local items = {}
 
-   self:_render_water_signal_region()
+   self:_update_dirt_models(data.effective_water_level)
+
+   local dirt_node_array = self:_update_and_get_dirt_node_array(data)
+   self._zone_renderer:set_size(size)
+   self._zone_renderer:set_current_items(items)
+   self._zone_renderer:set_render_nodes(dirt_node_array)
+
+   local fertilized_node_array = self:_update_and_get_fertilized_node_array(data)
+   self._fertilized_zone_renderer:set_size(size)
+   self._fertilized_zone_renderer:set_current_items(items)
+   self._fertilized_zone_renderer:set_render_nodes(fertilized_node_array)
+
+   self:_render_water_signal_region(data.water_signal_region)
 end
 
 function AceFarmerFieldRenderer:_on_ui_mode_changed()
@@ -54,7 +77,41 @@ function AceFarmerFieldRenderer:_in_appropriate_mode()
    return self._ui_view_mode == 'hud'
 end
 
-function AceFarmerFieldRenderer:_render_water_signal_region()
+function AceFarmerFieldRenderer:_update_dirt_models(effective_water_level)
+   -- check the effective water level and set the appropriate dirt models
+   -- if it's nil, there's no water; if it's false, there's some but not ideal water; if it's true, it's at ideal water
+   local tilled_dirt_model = self._farmer_field_data.tilled_dirt
+   local furrow_dirt_model = self._farmer_field_data.furrow_dirt
+   
+   if effective_water_level == false then
+      if self._farmer_field_data.tilled_dirt_water_partial then
+         tilled_dirt_model = self._farmer_field_data.tilled_dirt_water_partial
+      end
+      if self._farmer_field_data.furrow_dirt_water_partial then
+         furrow_dirt_model = self._farmer_field_data.furrow_dirt_water_partial
+      end
+   elseif effective_water_level == true then
+      if self._farmer_field_data.tilled_dirt_water_full then
+         tilled_dirt_model = self._farmer_field_data.tilled_dirt_water_full
+      end
+      if self._farmer_field_data.furrow_dirt_water_full then
+         furrow_dirt_model = self._farmer_field_data.furrow_dirt_water_full
+      end
+   end
+
+   if tilled_dirt_model ~= self._tilled_dirt_model or furrow_dirt_model ~= self._furrow_dirt_model then
+      self._tilled_dirt_model = tilled_dirt_model
+      self._furrow_dirt_model = furrow_dirt_model
+      for _, row in pairs(self._dirt_nodes) do
+         for _, node in pairs(row) do
+            node:destroy()
+         end
+      end
+      self._dirt_nodes = {}
+   end
+end
+
+function AceFarmerFieldRenderer:_render_water_signal_region(region)
    if self._water_signal_region_node then
       self._water_signal_region_node:destroy()
       self._water_signal_region_node = nil
@@ -64,8 +121,6 @@ function AceFarmerFieldRenderer:_render_water_signal_region()
       return
    end
 
-   local data = self._datastore:get_data()
-   local region = data.water_signal_region
    if region then
       local material = '/stonehearth/data/horde/materials/transparent_box_nodepth.material.json'
 
@@ -79,6 +134,65 @@ function AceFarmerFieldRenderer:_render_water_signal_region()
          :set_casts_shadows(false)
          :set_can_query(false)
    end
+end
+
+function AceFarmerFieldRenderer:_get_fertilized_node(x, y)
+   local row = self._fertilized_nodes[x]
+   if not row then
+      return nil
+   end
+   return row[y]
+end
+
+function AceFarmerFieldRenderer:_set_fertilized_node(x, y, node)
+   local row = self._fertilized_nodes[x]
+   if not row then
+      row = {}
+      self._fertilized_nodes[x] = row
+   end
+   row[y] = node
+end
+
+function AceFarmerFieldRenderer:_destroy_fertilized_node(x, y)
+   local row = self._fertilized_nodes[x]
+   if not row then
+      return nil
+   end
+   local node = row[y]
+   if node then
+      node:destroy()
+      row[y] = nil
+   end
+end
+
+function AceFarmerFieldRenderer:_update_and_get_fertilized_node_array(data)
+   local size_x = data.size.x
+   local size_y = data.size.y
+   local contents = data.contents
+   local dirt_node_array = {}
+
+   for x=1, size_x do
+      for y=1, size_y do
+         local dirt_plot = contents[x][y]
+         if dirt_plot and dirt_plot.x ~= nil then -- need to check for nil for backward compatibility reasons
+            local node = self:_get_fertilized_node(x, y)
+            if not node and not dirt_plot.is_furrow and dirt_plot.is_fertilized then
+               local model = self._fertilized_dirt_model
+               node = self:_create_node(Point3(dirt_plot.x - 1.46, 0.05, dirt_plot.y - 1.46), model)
+               self:_set_fertilized_node(x, y, node)
+            end
+            if node then
+               if dirt_plot.is_fertilized then
+                  table.insert(dirt_node_array, node)
+               else
+                  self:_destroy_fertilized_node(x, y)
+               end
+            end
+         end
+      end
+   end
+
+   return dirt_node_array
 end
 
 return AceFarmerFieldRenderer

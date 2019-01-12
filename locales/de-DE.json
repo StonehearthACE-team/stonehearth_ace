@@ -664,7 +664,7 @@
             },
             "parasol_colony_recipe": {
                "recipe_name": "Sonnenschirmkolonie (x3)",
-               "description": "Verwende vorhandene Pilze, um weitere Kolonien zu bilden, die zu neuen Pilzen heranwachsen. Sonnenschirme sind im rohen Zustand leicht giftig und dürfen nur als Kochzutat verwendet werden.",
+               "description": "Verwende vorhandene Pilze, um weitere Kolonien zu bilden, die zu neuen Pilzen heranwachsen. Leicht giftig im Rohzustand  und dürfen nur als Kochzutat verwendet werden.",
                "flavor": "Sonnenschirme sind im rohen Zustand leicht giftig und dürfen nur als Kochzutat verwendet werden"
             },
             "sweet_tooth_colony_recipe": {
@@ -809,7 +809,7 @@
             },
             "fertilizer_megacrop_recipe": {
                "recipe_name": "Megafrucht Dünger",
-               "description": "Dieser komplizierte Dünger wird das Wachstum etwas verlangsamen, erhöht aber die Wahrscheinlichkeit von Megafrüchten erheblich!",
+               "description": "Dieser komplizierte Dünger bietet nicht die beste Qualität, erhöht aber die Wahrscheinlichkeit von Megafrüchten erheblich!",
                "flavor": "Jeder Sack kann 20 Früchte düngen"
             }
          },
@@ -1654,6 +1654,12 @@
          },
          "cook_description": {
             "description": "Die Kunst des Kochens bietet eine abwechslungsreiche Speisekarte mit herzhaften Speisen und stärkenden Getränken, die aus Rohstoffen verschiedener Herkunft wie Gemüse, Fleisch und gesammelten Waren hergestellt werden."
+         },
+         "cook_workbench_pumpkin": {
+            "cook_workbench_pumpkin_ghost": {
+               "display_name": "Kürbis-Kessel",
+               "description": "Ein exotischer Kessel, den der Koch für leckere Rezepte verwendet."
+            }
          }
       },
       "carpenter": {
@@ -3410,6 +3416,16 @@
          "ornate_banner_wall": {
             "display_name": "Verziertes Wandbanner",
             "description": "Eine schöne Verzierung für eine wohlhabende Stadt."
+         },
+         "megacrop": {
+            "mega_pumpkin": {
+               "display_name": "Gigantischer Kürbis",
+               "description": "Woah, schau dir die Größe an! Platziere ihn als Dekoration oder verwende ihn um eine herzhafte Suppe zu zubereiten!"
+            },
+            "mega_pumpkin_soup": {
+               "display_name": "Gigantische Kürbissuppe",
+               "description": "Lecker! So herzhaft und lecker! Eine ganze Stadt kann diese Mahlzeit genießen."
+            }
          }
       },
       "pets": {
@@ -3836,6 +3852,12 @@
          "golden_egg": {
             "display_name": "Goldenes Ei",
             "description": "Es ist ein goldenes Ei! Es ist Milliarden an Goldmünzen wert! Wahrscheinlich... richtig?"
+         },
+         "megacrop": {
+            "pumpkin_soup_serving": {
+               "display_name": "Eine Schüssel Kürbissuppe",
+               "description": "Warm and lecker!"
+            }
          }
       },
       "terrain": {
@@ -4621,6 +4643,12 @@
                "description": "Es ist am besten, mit diesem freundlichen Kerl zu üben. Erfordert einen Kunsthandwerker zum reparieren.",
                "display_name": "Trainingspuppe aus Messing"
             }
+         },
+         "frost_trap": {
+            "frost_trap_ghost": {
+               "display_name": "Frostfalle",
+               "description": "Verwende sie wenn deine Feinde ein bisschen abkühlen müssen!"
+            }
          }
       },
       "aquatic": {
@@ -4945,6 +4973,10 @@
          "backpack_leather": {
             "display_name": "Lederner Arbeiterrucksack",
             "description": "Erlaubt es Arbeitern, beim Transportieren und Wiederauffüllen viel effizienter zu sein."
+         },
+         "backpack_cloth": {
+            "display_name": "Arbeiterstoffrucksack",
+            "description": "Erlaubt es Arbeitern, beim Transportieren und Wiederauffüllen ein wenig effizienter zu sein."
          }
       }
    },

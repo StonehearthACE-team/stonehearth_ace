@@ -1,0 +1,12 @@
+{
+   "type" : "effect",
+   "mixins": "/stonehearth/data/rigs/entities/rabbit_biped/effects/run.json",
+   "tracks": {
+	  "hide_carrying" : {
+         "type": "hide_bone",
+         "start_time": 0,
+         "end_time": 0,
+         "bone": "carry"
+      }      
+   }
+}

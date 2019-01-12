@@ -16,6 +16,10 @@ function AceCropComponent:activate()
    end
 end
 
+function AceCropComponent:set_fertilized()
+   -- not really used at the moment, maybe refactor the fertilize ai to do more of it in here
+end
+
 function AceCropComponent:set_consider_megacrop()
    if not self._sv.consider_megacrop then
       self._sv.consider_megacrop = true
