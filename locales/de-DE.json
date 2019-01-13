@@ -413,7 +413,7 @@
          "request_evolve": {
             "prepare_mega_pumpkin_soup": {
                "display_name": "Kürbissuppe vorbereiten",
-               "description": "Mit etwas Stein und einem Bündel Brennholz kann der Koch dieses riesige Gemüse in eine wunderbare Suppe verwandeln!"
+               "description": "Mit einem Bündel Brennholz kann der Koch dieses riesige Gemüse in eine wunderbare Suppe verwandeln!"
             },
             "stomp_mega_cotton_pet_bed": {
                "display_name": "Stampf es!",
@@ -1636,6 +1636,11 @@
                "recipe_name": "Panettone",
                "description": "Backe ein großes, leckeres und süßes Stück Brot, das mit Trockenfrüchten gefüllt ist.",
                "flavor": "'Ein festliches Essen für eine festliche Zeit' -Irving Balduc"
+            },
+            "pasta_recipe": {
+               "recipe_name": "Pasta",
+               "description": "Bereite eine leckere Mahlzeit mit langen, gerollten Teignudeln und einer scharfen Sauce zu.",
+               "flavor": "Es gibt Hunderte von Nudelformen, von den schönen Lichtungen des Waldes von Darkmoor bis zur Wüste Pal'Mum"
             },
             "legendary_ink_recipe": {
                "recipe_name": "Heilige Tinte",
@@ -3882,6 +3887,15 @@
                "display_name": "Eine Schüssel Kürbissuppe",
                "description": "Warm and lecker!"
             }
+         },
+         "pasta": {
+            "pasta": {
+               "display_name": "Pasta",
+               "description": "Leckere Nudeln mit heißer, aromatischer Tomatensauce."
+            },
+            "pasta_serving": {
+               "display_name": "Ein Teller mit Nudeln"
+            }
          }
       },
       "terrain": {
@@ -4282,6 +4296,10 @@
          "giant_bone_shield": {
             "display_name": "Gigantischer Knochenschild",
             "description": "Der Brustkorb eines getöteten Tieres wird nun einen Ritter gegen das Böse verteidigen."
+         },
+         "mega_cactus_flower_helm": {
+            "display_name": "Kaktusblütenhelm",
+            "description": "Autsch! Du must auf die Stacheln aufpassen, ABER sie werden angreifende Feinde schädigen."
          }
       },
       "weapons": {
