@@ -1,0 +1,30 @@
+{
+   "type": "recipe",
+   "effort": 15,
+   "work_units": 6,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.pasta_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.pasta_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.pasta_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/pasta/pasta/pasta.png",
+   "workshop": "stonehearth:cook:workbench",
+   "level_requirement": 3,
+   "ingredients": [
+      {
+         "uri": "stonehearth:food:flour",
+         "count": 1
+      },
+	  {
+         "uri": "stonehearth:amberstone:heirbloom_basket",
+         "count": 1
+      },
+	  {
+         "material": "low_fuel",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:pasta"
+      }
+   ]
+}

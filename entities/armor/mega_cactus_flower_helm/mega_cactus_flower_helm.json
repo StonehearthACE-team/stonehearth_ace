@@ -1,0 +1,66 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "layer": "hat",
+            "transparent": "false",
+            "models": [
+               "file(mega_cactus_flower_helm.qb)"
+            ]
+         },
+         "female": {
+            "layer": "hat",
+            "transparent": "false",
+            "models": [
+               "file(mega_cactus_flower_helm_female.qb)"
+            ]
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(mega_cactus_flower_helm_iconic.json)"
+      },
+      "stonehearth:equipment_piece": {
+         "render_type": "merge_with_model",
+         "slot": "helmet",
+         "ilevel": 3.5,
+         "required_job_level": 3,
+         "roles": [
+            "mail_wearer"
+         ],
+         "equip_effect": "stonehearth:effects:weapon_level_up",
+         "equipment_types": [
+            "helmet",
+            "medium_armor"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:combat:armor_data": {
+         "base_damage_reduction": 3
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 30,
+         "rarity": "rare",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.armor.mega_cactus_flower_helm.display_name)",
+         "description": "i18n(stonehearth_ace:entities.armor.mega_cactus_flower_helm.description)",
+         "icon": "file(mega_cactus_flower_helm.png)",
+         "category": "armor",
+         "material_tags": [
+            "cactus_flower",
+            "armor",
+            "helmet",
+            "medium_armor",
+            "mega_cactus_flower_helm",
+            "stockpile_equipment"
+         ]
+      }
+   }
+}
