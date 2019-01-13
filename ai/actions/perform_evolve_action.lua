@@ -52,7 +52,7 @@ function PerformEvolveItem:start_thinking(ai, entity, args)
 end
 
 function PerformEvolveItem:compose_utility(entity, self_utility, child_utilities, current_activity)
-   return self_utility * 0.9 + child_utilities:get('stonehearth:follow_path') * 0.1
+   return self_utility * 0.9 + child_utilities:get('stonehearth:find_best_reachable_entity_by_type') * 0.1
 end
 
 local ai = stonehearth.ai
@@ -75,18 +75,10 @@ return ai:create_compound_action(PerformEvolveItem)
             item = ai.BACK(1).item,
          })
          :execute('stonehearth:reserve_entity', {
-            entity = ai.BACK(2).item,
             owner_player_id = ai.BACK(5).owner_player_id,
+            entity = ai.BACK(2).item,
          })
-         :execute('stonehearth:find_path_to_reachable_entity', {
-            destination = ai.BACK(3).item
-         })
-         :execute('stonehearth:follow_path', {
-            path = ai.PREV.path,
-            stop_distance = ai.CALL(radiant.entities.get_harvest_range, ai.ENTITY),
-         })
-         :execute('stonehearth:add_buff', {buff = 'stonehearth:buffs:stopped', target = ai.BACK(5).item})
-         :execute('stonehearth_ace:perform_evolve_adjacent', {
-            item = ai.BACK(6).item,
-            owner_player_id = ai.BACK(9).owner_player_id,
+         :execute('stonehearth_ace:perform_evolve_on_entity', {
+            owner_player_id = ai.BACK(6).owner_player_id,
+            item = ai.BACK(3).item,
          })
