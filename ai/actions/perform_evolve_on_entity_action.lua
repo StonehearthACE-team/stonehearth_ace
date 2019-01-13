@@ -11,7 +11,7 @@ PerformEvolveOnItem.priority = 0.5
 
 function PerformEvolveOnItem:start_thinking(ai, entity, args)
    local evolve_data = radiant.entities.get_entity_data(args.item, 'stonehearth:evolve_data')
-   if not evolve_data.evolve_ingredient then
+   if not evolve_data.evolve_ingredient_uri and not evolve_data.evolve_ingredient_material then
       ai:set_think_output()
    end
 end

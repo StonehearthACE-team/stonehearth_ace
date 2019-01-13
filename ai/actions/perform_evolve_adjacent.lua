@@ -9,10 +9,6 @@ PerformEvolveItemAdjacent.args = {
       type = 'string',
       default = stonehearth.ai.NIL,
    },
-   ingredient = {
-      type = Entity,
-      default = stonehearth.ai.NIL,
-   },
 }
 PerformEvolveItemAdjacent.priority = 0
 
@@ -33,7 +29,6 @@ function PerformEvolveItemAdjacent:run(ai, entity, args)
    local item_id = item:get_id()
    local evolve = item:get_component('stonehearth:evolve')
    local data = radiant.entities.get_entity_data(item, 'stonehearth:evolve_data')
-   local ingredient = args.ingredient
 
    if evolve then
       radiant.entities.turn_to_face(entity, item)
@@ -42,7 +37,14 @@ function PerformEvolveItemAdjacent:run(ai, entity, args)
       local effect = data.evolving_worker_effect
       local times = data.evolving_worker_effect_times
       local duration = data.evolving_effect_duration
+      local ingredient = data.evolve_ingredient_uri or data.evolve_ingredient_material
+      local ing_item
       
+      if ingredient then
+         ing_item = radiant.entities.get_carrying(entity)
+         ai:execute('stonehearth:drop_carrying_now')
+      end
+
       if effect then
          evolve:perform_evolve()
          if duration then
@@ -57,9 +59,9 @@ function PerformEvolveItemAdjacent:run(ai, entity, args)
          evolve:perform_evolve(true)
       end
 
-      if ingredient and ingredient:is_valid() then
-         ai:unprotect_argument(ingredient)
-         radiant.entities.destroy_entity(ingredient)
+      if ing_item and ing_item:is_valid() then
+         ai:unprotect_argument(ing_item)
+         radiant.entities.destroy_entity(ing_item)
       end
 
       if data and data.worker_finished_effect then

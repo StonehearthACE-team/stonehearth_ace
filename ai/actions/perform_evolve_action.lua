@@ -76,7 +76,7 @@ return ai:create_compound_action(PerformEvolveItem)
          })
          :execute('stonehearth:reserve_entity', {
             owner_player_id = ai.BACK(5).owner_player_id,
-            item = ai.BACK(2).item,
+            entity = ai.BACK(2).item,
          })
          :execute('stonehearth_ace:perform_evolve_on_entity', {
             owner_player_id = ai.BACK(6).owner_player_id,
