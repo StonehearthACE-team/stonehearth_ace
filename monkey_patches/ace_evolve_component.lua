@@ -317,17 +317,12 @@ function AceEvolveComponent:perform_evolve(use_finish_cb)
 
    if data.evolving_effect then
       self:_run_effect(data.evolving_effect, use_finish_cb)
-      return data.evolving_worker_effect, data.evolving_worker_effect_times
-   else
+   elseif not data.evolving_worker_effect then
       self:evolve()
    end
 end
 
 function AceEvolveComponent:_run_effect(effect, use_finish_cb)
-   --if there's an effect already, destroy it, so we can never run two identical effects at once
-   if self.effect then
-      self:_destroy_effect()
-   end
    if not self._effect then
       self._effect = radiant.effects.run_effect(self._entity, effect)
       if use_finish_cb then

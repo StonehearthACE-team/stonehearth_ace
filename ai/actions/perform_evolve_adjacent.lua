@@ -9,6 +9,10 @@ PerformEvolveItemAdjacent.args = {
       type = 'string',
       default = stonehearth.ai.NIL,
    },
+   ingredient = {
+      type = Entity,
+      default = stonehearth.ai.NIL,
+   },
 }
 PerformEvolveItemAdjacent.priority = 0
 
@@ -29,19 +33,34 @@ function PerformEvolveItemAdjacent:run(ai, entity, args)
    local item_id = item:get_id()
    local evolve = item:get_component('stonehearth:evolve')
    local data = radiant.entities.get_entity_data(item, 'stonehearth:evolve_data')
+   local ingredient = args.ingredient
 
    if evolve then
       radiant.entities.turn_to_face(entity, item)
       ai:unprotect_argument(item)
 
-      local effect, times = evolve:perform_evolve()
+      local effect = data.evolving_worker_effect
+      local times = data.evolving_worker_effect_times
+      local duration = data.evolving_effect_duration
+      
       if effect then
-         for i = 1, times or 1 do
-            ai:execute('stonehearth:run_effect', { effect = effect})
+         evolve:perform_evolve()
+         if duration then
+            ai:execute('stonehearth:run_effect_timed', { effect = effect, duration = duration})
+         else
+            for i = 1, times or 1 do
+               ai:execute('stonehearth:run_effect', { effect = effect})
+            end
          end
+         evolve:evolve()
+      else
+         evolve:perform_evolve(true)
       end
 
-      evolve:evolve()
+      if ingredient and ingredient:is_valid() then
+         ai:unprotect_argument(ingredient)
+         radiant.entities.destroy_entity(ingredient)
+      end
 
       if data and data.worker_finished_effect then
          ai:execute('stonehearth:run_effect', { effect = data.worker_finished_effect})
