@@ -3,7 +3,8 @@
       "actions": {
          "status_text": {
             "train": "Geht zum Training",
-            "fertilize_field": "Dünger auftragen"
+            "fertilize_field": "Dünger auftragen",
+            "perform_evolve": "transformiere [name(data.target)]"
          }
       }
    },
@@ -410,9 +411,13 @@
       },
       "commands": {
          "request_evolve": {
-            "carve_mega_turnip": {
-               "display_name": "Schnitzen",
-               "description": "Dreh die Rübe auf!"
+            "prepare_mega_pumpkin_soup": {
+               "display_name": "Kürbissuppe vorbereiten",
+               "description": "Mit etwas Stein und einem Bündel Brennholz kann der Koch dieses riesige Gemüse in eine wunderbare Suppe verwandeln!"
+            },
+            "stomp_mega_cotton_pet_bed": {
+               "display_name": "Stampf es!",
+               "description": "Schicke einen Arbeiter, um diese flauschige Mega-Baumwolle zu hämmern, bis sie zu einem geeigneten Tierbett wird."
             }
          },
          "slaughter": {
@@ -1829,6 +1834,10 @@
          },
          "shepherd_description": {
             "description": "Naturliebende Einzelgänger. Schäfer zähmen sanfte Wildtiere, um sich um sie zu kümmern und ihre Ressourcen wie Eier, Wolle und Fleisch zu ernten."
+         },
+         "shepherd_crook_corn": {
+            "display_name": "Maisstab",
+            "description": "Dieser wunderschöne Stab erhöht das Mitgefühl des Schäfers und das Glück der Tiere."
          }
       },
       "farmer": {
@@ -3071,6 +3080,12 @@
             "blue_market_stall_ghost": {
                "display_name": "Hölzerner Marktstand"
             }
+         },
+         "megacrop": {
+            "cotton_bed_pet": {
+               "display_name": "Baumwoll-Tierbett",
+               "description": "Wer würde nicht gerne in einem bequemen und flauschigen Baumwollbett schlafen?"
+            }
          }
       },
       "recipes": {
@@ -3419,12 +3434,21 @@
          },
          "megacrop": {
             "mega_pumpkin": {
-               "display_name": "Gigantischer Kürbis",
+               "display_name": "Mega-Kürbis",
                "description": "Woah, schau dir die Größe an! Platziere ihn als Dekoration oder verwende ihn um eine herzhafte Suppe zu zubereiten!"
             },
             "mega_pumpkin_soup": {
-               "display_name": "Gigantische Kürbissuppe",
+               "display_name": "Mega-Kürbissuppe",
                "description": "Lecker! So herzhaft und lecker! Eine ganze Stadt kann diese Mahlzeit genießen."
+            },
+            "mega_turnip": {
+               "display_name": "Mega-Rübe",
+               "description": "So groß! Ernte es für ein paar Körbe voll mit Essen oder verwenden es als schicken Stuhl!",
+               "iconic_description": "Platziere sie, um sie zu ernten oder als schicken Stuhl zu verwenden."
+            },
+            "mega_cotton": {
+               "display_name": "Mega-Baumwolle",
+               "description": "Extrem flauschig und weich, ernte für Fasern oder stampf es zu einem Terbett!"
             }
          }
       },
@@ -5309,7 +5333,7 @@
                   "tooltip_consumables": "Heilende Gegenstände",
                   "tooltip_consumables_other": "Andere Verbrauchsmaterialien",
                   "tooltip_bulk_resources": "Massenressourcen",
-                  "tooltip_civillian_equipment": "Kleidung & Accessoires",
+                  "tooltip_civillian_equipment": "Kleidung & Werkzeuge",
                   "tooltip_gizmos_equipment": "Dinge & Werkzeuge"
                }
             }
