@@ -3,7 +3,8 @@
       "actions": {
          "status_text": {
             "train": "准备训练中",
-            "fertilize_field": "播撒肥料中"
+            "fertilize_field": "播撒肥料中",
+            "perform_evolve": "处理[name(data.target)]中"
          }
       }
    },
@@ -281,7 +282,7 @@
       },
       "biome": {
          "highlands": {
-            "display_name": "高原",
+            "display_name": "山地高原",
             "description": "满是崎岖的峡谷和陡峭的山崖, 还有众多河流湖泊. 这里是高原民族的家园.",
             "random_location_names": {
                "000": "白石高原"
@@ -409,6 +410,20 @@
          }
       },
       "commands": {
+         "request_evolve": {
+            "prepare_mega_pumpkin_soup": {
+               "display_name": "制作南瓜汤",
+               "description": "准备一块石头和一捆柴火, 厨师能把这个巨型蔬菜做成美味的汤!"
+            },
+            "stomp_mega_cotton_pet_bed": {
+               "display_name": "锤它!",
+               "description": "让一名工人用榔头使劲砸这朵巨型棉花, 直到适合给小动物睡觉."
+            },
+            "prepare_mega_watermelon_juice": {
+               "display_name": "制作西瓜汁",
+               "description": "雕出一个洞, 把里面搅一下, 厨师能把这个巨型水果变成很好吃的果汁!"
+            }
+         },
          "slaughter": {
             "display_name": "宰杀野生动物",
             "description": "杀掉野生动物来获取资源.",
@@ -559,6 +574,10 @@
          "holiday_cheer": {
             "display_name": "节日快乐",
             "description": "喔! 炉民正在享受节日的氛围, 他们同情心与速度略微增加了! "
+         },
+         "thorns": {
+            "display_name": "荆棘护身",
+            "description": "这位炉民可以给攻击他的敌人造成伤害."
          }
       },
       "loadouts": {
@@ -609,7 +628,8 @@
             "level_1_data": {
                "training_perk_name": "剑术训练",
                "training_perk_description": "弓箭手可以使用假人训练至3级并会增加1格训练装备上限"
-            }
+            },
+            "description": "后排战斗单位, 可以使用诸如弓或弩的远程武器, 并可以换用一系列具有阻碍性质的箭或弩箭来攻击敌人."
          }
       },
       "cleric": {
@@ -617,7 +637,8 @@
             "level_1_data": {
                "training_perk_name": "治疗训练",
                "training_perk_description": "牧师可以用牧羊人养的羊咩咩来练习他们的治愈魔法姿势, 获得经验直至3级"
-            }
+            },
+            "description": "战地治疗师, 可以运用圣魔法来治疗伤口, 同时还能通过气息和增益来强化友军."
          }
       },
       "knight": {
@@ -625,13 +646,15 @@
             "level_1_data": {
                "training_perk_name": "抗压训练",
                "training_perk_description": "骑士可以使用假人训练至3级并会增加1格训练装备上限"
-            }
+            },
+            "description": "防御型战士, 擅长保护队友, 与敌人周旋, 把恐惧烙印在敌人的心底!"
          }
       },
       "herbalist": {
          "recipes": {
             "refined_fungi_name": "菌类加工品",
             "refined_seeds_name": "本地种子",
+            "farming_enhancements_name": "农业增效品",
             "moonbell_transmute_recipe": {
                "recipe_name": "月铃种子 (x3)",
                "description": "草药之中提取种子",
@@ -654,33 +677,33 @@
             },
             "parasol_colony_recipe": {
                "recipe_name": "高环柄菇菌落 (x3)",
-               "description": "用现有的菌来分成几个菌落培养出新的菌.",
-               "flavor": "这种蘑菇生的时候微毒, 所以只能用做食材不可生吃"
-            },
+               "description": "用现有的菌来分成几个菌落培养出新的菌. 这种蘑菇生的时候微毒, 所以只能用做食材不可生吃!",
+               "flavor": "要做成菌落你需要完整的, 从地上收起来的菌菇 - 采在篮子里的是不完整的"
+			   },
             "sweet_tooth_colony_recipe": {
                "recipe_name": "卷缘齿菌菌落 (x3)",
                "description": "用现有的菌来分成几个菌落培养出新的菌.",
-               "flavor": ""
+               "flavor": "要做成菌落你需要完整的, 从地上收起来的菌菇 - 采在篮子里的是不完整的"
             },
             "bolete_colony_recipe": {
                "recipe_name": "牛肝菌菌落 (x3)",
                "description": "用现有的菌来分成几个菌落培养出新的菌.",
-               "flavor": ""
+               "flavor": "要做成菌落你需要完整的, 从地上收起来的菌菇 - 采在篮子里的是不完整的"
             },
             "chanterelle_colony_recipe": {
                "recipe_name": "鸡油菌菌落 (x3)",
                "description": "用现有的菌来分成几个菌落培养出新的菌.",
-               "flavor": ""
+               "flavor": "要做成菌落你需要完整的, 从地上收起来的菌菇 - 采在篮子里的是不完整的"
             },
             "winter_morel_colony_recipe": {
                "recipe_name": "冬羊肚菌菌落 (x3)",
                "description": "用现有的菌来分成几个菌落培养出新的菌.",
-               "flavor": ""
+               "flavor": "要做成菌落你需要完整的, 从地上收起来的菌菇 - 采在篮子里的是不完整的"
             },
             "desert_truffle_colony_recipe": {
                "recipe_name": "大漠松露菌落 (x3)",
                "description": "用现有的菌来分成几个菌落培养出新的菌.",
-               "flavor": ""
+               "flavor": "要做成菌落你需要完整的, 从地上收起来的菌菇 - 采在篮子里的是不完整的"
             },
             "legendary_parchment_recipe": {
                "recipe_name": "镀金纸张",
@@ -781,11 +804,34 @@
                "recipe_name": "云石蕊种子",
                "description": "学习如何在田里种植云石蕊.",
                "flavor": "必须先把种子箱放置在地上然后才能使用"
+            },
+            "fertilizer_recipe": {
+               "recipe_name": "简易肥料",
+               "description": "有经验的农民用来稍稍提升作物产出质量的东西.",
+               "flavor": "每袋能给10棵作物施肥"
+            },
+            "fertilizer_upgrade_recipe": {
+               "recipe_name": "肥料",
+               "description": "有经验的农民用来提升作物产出质量的东西.",
+               "flavor": "每袋能给12棵作物施肥"
+            },
+            "fertilizer_upgrade_2_recipe": {
+               "recipe_name": "高级肥料",
+               "description": "有经验的农民用来大大提升作物产出质量的东西.",
+               "flavor": "每袋能给16棵作物施肥"
+            },
+            "fertilizer_megacrop_recipe": {
+               "recipe_name": "巨型作物肥料",
+               "description": "这种复杂的肥料给不了你最好的品质, 但它会大大增加巨型作物产出的概率!",
+               "flavor": "每袋能给20棵作物施肥"
             }
          },
          "herbalist_hood": {
             "display_name": "草药师的兜帽",
             "description": "沙漠地区草药师的保护性头套."
+         },
+         "herbalist_description": {
+            "description": "治疗者, 草药师能制作和使用汤剂, 绷带和治疗药水，同时也和植物, 种子和其他可采集的果子打交道."
          }
       },
       "engineer": {
@@ -839,14 +885,22 @@
                "description": "让你可以随意调整机械能输出方向的设备.",
                "flavor": "可以在建筑时放至墙上 - 就像门窗."
             }
+         },
+         "engineer_description": {
+            "description": "工程师是发明创造和制作防御工事的大师, 还能修复设施, 设计机械来给其他行业造福."
          }
       },
       "potter": {
          "recipes": {
             "bone_clay_recipe": {
-               "recipe_name": "骨粉粘土堆 (x2)",
+               "recipe_name": "骨灰瓷泥料",
                "description": "用来制作瓷器或者美丽的装饰陶器的必需品.",
                "flavor": ""
+            },
+            "bone_clay_x3_recipe": {
+               "recipe_name": "骨灰瓷泥料 (x3)",
+               "description": "用来制作瓷器或者美丽的装饰陶器的必需品.",
+               "flavor": "有了正确的配比和娴熟的技术后, 陶艺师掌握了制作骨泥更有效率的方法"
             },
             "clay_comfy_bed_recipe": {
                "recipe_name": "舒适陶土床",
@@ -1021,6 +1075,9 @@
                "description": "在这张床上睡觉小动物们肯定会开心的!",
                "flavor": "宠物永远会选择离主人床位最近的一张床睡觉!"
             }
+         },
+         "potter_description": {
+            "description": "陶艺师和粘土打交道, 把它们塑造成建筑用的砖, 商品, 有用的工具和装饰品."
          }
       },
       "geomancer": {
@@ -1035,6 +1092,9 @@
                "description": "丰收之教会的追随者们持有的传说圣典.",
                "flavor": "用希德的方式去治疗"
             }
+         },
+         "geomancer_description": {
+            "description": "大地魔法的掌控者, 有改变地形, 创造矿脉, 奇观胜景的能力, 甚至还能将生命注入石块, 立起傀儡为小镇服务."
          }
       },
       "mason": {
@@ -1151,12 +1211,50 @@
          },
          "mason_workbench_bone": {
             "display_name": "骨刻台",
-            "description": "石匠可以在这里刻骨器."
+            "description": "石匠可以在这里雕刻骨器."
+         },
+         "mason_description": {
+            "description": "石匠可以把石头雕刻成各类有用的工具, 建筑部件和装饰品. 一些石匠还可能会去钻研如何雕刻骨器."
          }
       },
       "blacksmith": {
          "recipes": {
             "utility_name": "实用器械",
+            "farmer_hoe_iron_recipe": {
+               "recipe_name": "农民铁锄",
+               "description": "一把可以稍微提高农民工作效率的工具.",
+               "flavor": ""
+            },
+            "worker_axe_iron_recipe": {
+               "recipe_name": "工人铁斧",
+               "description": "一把可以稍微提高工人砍树效率的工具.",
+               "flavor": ""
+            },
+            "worker_axe_steel_recipe": {
+               "recipe_name": "工人钢斧",
+               "description": "一把可以大大提高工人砍树效率的工具.",
+               "flavor": ""
+            },
+            "worker_hammer_iron_recipe": {
+               "recipe_name": "工人铁锤",
+               "description": "一把可以稍微提高工人建造效率的工具.",
+               "flavor": ""
+            },
+            "worker_hammer_steel_recipe": {
+               "recipe_name": "工人钢锤",
+               "description": "一把可以大大提高工人建造效率的工具.",
+               "flavor": ""
+            },
+            "mining_pick_iron_recipe": {
+               "recipe_name": "工人铁镐",
+               "description": "一把可以稍微提高工人挖掘效率的工具.",
+               "flavor": "该工具还能提高优质资源获得的几率"
+            },
+            "mining_pick_steel_recipe": {
+               "recipe_name": "工人钢镐",
+               "description": "一把可以大大提高工人挖掘效率的工具.",
+               "flavor": "该工具还能提高优质资源获得的几率"
+            },
             "blacksmith_fuel_oven_recipe": {
                "recipe_name": "铁匠窑炉",
                "description": "用于精炼加工特定原材料, 例如木头和煤炭.",
@@ -1392,7 +1490,8 @@
             "level_4_data": {
                "perk_000_name": "工具升级&冷酷钢铁",
                "perk_000_description": "长时间的锻造让铁匠有想法制作新器具, 同时茅塞顿开, 领悟了解锁钢铁奥秘的新道理: 利刃轻甲."
-            }
+            },
+            "description": "铁匠使用原矿, 燃料和力量来来随意摆弄金属, 创造出一系列的物品, 有武器, 装甲, 装饰品和其他实用工具."
          }
       },
       "worker": {
@@ -1546,6 +1645,11 @@
                "description": "烘焙一块大大的, 美味甜面包, 里面都是水果干.",
                "flavor": "'过节吃年货' -艾尔芬·巴达克"
             },
+            "pasta_recipe": {
+               "recipe_name": "面食",
+               "description": "用长圆的面条和热酱汁做一道丰盛的菜.",
+               "flavor": "从黑莫泽森林中的小镇一直到帕莱姆沙漠, 面食的种类有上百种之多"
+            },
             "legendary_ink_recipe": {
                "recipe_name": "圣液",
                "description": "镀金的特殊墨汁, 用来让'希德之旅'上的手写字发光用的.",
@@ -1565,6 +1669,15 @@
          },
          "cook_bowl_animation": {
             "display_name": "厨师的碗"
+         },
+         "cook_description": {
+            "description": "烹饪的艺术是用许多像蔬菜, 肉和果子等的原料做出一大排丰盛的菜肴和美味的饮料."
+         },
+         "cook_workbench_pumpkin": {
+            "cook_workbench_pumpkin_ghost": {
+               "display_name": "南瓜大锅",
+               "description": "厨师用的奇异大锅, 可以做出美味的菜."
+            }
          }
       },
       "carpenter": {
@@ -1640,6 +1753,9 @@
                "description": "在这张床上睡觉小动物们肯定会开心的!",
                "flavor": "宠物永远会选择离主人床位最近的一张床睡觉!"
             }
+         },
+         "carpenter_description": {
+            "description": "木匠能用木头制作许多物品, 例如工具, 建筑部件, 武器和家具."
          }
       },
       "weaver": {
@@ -1704,6 +1820,9 @@
                "description": "让阳光软软地进来.",
                "flavor": ""
             }
+         },
+         "weaver_description": {
+            "description": "纺织工能把动物皮刮干净, 变成可以用的皮革, 把纤维编织成线, 他们的工作还能做出复杂的物品, 衣物, 装甲和装饰."
          }
       },
       "trapper": {
@@ -1714,36 +1833,51 @@
          "clamp_trap": {
             "display_name": "捕蟹器",
             "description": "不那么安全地抓住猎物"
+         },
+         "trapper_description": {
+            "description": "猎人可以装备陷阱, 捕捉然后把野生动物(咳咳)&quot;收获&quot;作为可靠的食物, 皮毛或骨头来源."
          }
       },
       "shepherd": {
          "shepherd_outfit": {
             "shepherd_hood": {
-               "display_name": "牧羊人的木棍",
+               "display_name": "牧人的木棍",
                "description": "牧羊人使用的包着羊毛的棍子."
             }
+         },
+         "shepherd_description": {
+            "description": "热爱自然的孤僻者, 牧羊人会圈养温顺的动物, 照顾它们, 然后收获蛋, 羊毛和肉类等的资源."
+         },
+         "shepherd_crook_corn": {
+            "display_name": "牧人的玉米秆",
+            "description": "这把漂亮的杆子可以提升牧人的同情心, 增加动物的幸福度."
          }
       },
       "farmer": {
          "farmer_description": {
             "level_2_data": {
                "perk_000_name": "岁稔年丰",
-               "perk_000_description": "农民在每株庄稼上获得的收成提高40%."
+               "perk_000_description": "农民在每株庄稼上获得的收成提高25%."
             },
             "level_3_data": {
                "perk_000_name": "沃地肥田",
-               "perk_000_description": "(即将推出!)"
+               "perk_000_description": "农民可以使用给作物施肥, 有一定概率能提升作物的品质."
             },
             "level_4_data": {
                "perk_000_name": "岁稔年丰 (进阶)",
-               "perk_000_description": "农民在每株庄稼上获得的收成提高70%."
+               "perk_000_description": "农民在每株庄稼上获得的收成提高50%."
             },
             "level_6_data": {
                "perk_000_name": "岁稔年丰 (最高)",
                "perk_000_description": "农民在每株庄稼上获得的收成提高100%.",
                "perk_001_name": "麦岐果硕",
                "perk_001_description": "(即将推出!)"
-            }
+            },
+            "description": "农民能锄田, 播种和收获庄稼, 开发土地来持续提供食物, 或可供烹饪的食材, 或纤维, 草药等等."
+         },
+         "farmer_mega_watermelon_hat": {
+            "display_name": "农民西瓜帽",
+            "description": "农民带了会有一点点速度上的提升, 还能让他们的头保持新鲜."
          }
       }
    },
@@ -1798,6 +1932,22 @@
                "display_name": "桦木花絮",
                "description": "学习种植桦树."
             }
+         },
+         "fertilizer": {
+            "display_name": "简易肥料",
+            "description": "有经验的农民用来稍稍提升作物产出质量的东西."
+         },
+         "fertilizer_megacrop": {
+            "display_name": "巨型作物肥料",
+            "description": "有经验的农民用来提高巨型作物产出概率的东西!"
+         },
+         "fertilizer_upgrade": {
+            "display_name": "肥料",
+            "description": "有经验的农民用来提升作物产出质量的东西."
+         },
+         "fertilizer_upgrade_2": {
+            "display_name": "高级肥料",
+            "description": "有经验的农民用来大大提升作物产出质量的东西."
          }
       },
       "construction": {
@@ -2182,6 +2332,9 @@
                   "description": "可以换大花盆了."
                }
             }
+         },
+         "megacrops": {
+            "default_description": "这棵作物巨大化了!"
          }
       },
       "decorations": {
@@ -2388,6 +2541,12 @@
          "infused_earth_essence": {
             "display_name": "注能的石炉精华",
             "description": "把石炉精华放在工业的烈火中注入能量."
+         },
+         "megacrop": {
+            "mega_silkweed_thread": {
+               "display_name": "超级丝绸草",
+               "description": "这些粗厚强韧的纤维能直接用作丝线!"
+            }
          }
       },
       "refined": {
@@ -2731,6 +2890,38 @@
             "description": "小极地杜松子树. 这棵树苗可能长成任何种类的极地杜松子树!",
             "description_iconic": "种在土里看它成长.",
             "display_name": "极地杜松子幼树"
+         },
+         "chestnut_tree": {
+            "seed": {
+               "tree_chestnut_seed": {
+                  "display_name": "栗子",
+                  "description": "不能放在土里种, 但稍作处理后是可食用的坚果."
+               }
+            }
+         },
+         "hazelnut_tree": {
+            "seed": {
+               "tree_hazelnut_seed": {
+                  "description": "不能放在土里种, 但稍作处理后是可食用的坚果.",
+                  "display_name": "榛子"
+               }
+            }
+         },
+         "walnut_tree": {
+            "seed": {
+               "tree_walnut_seed": {
+                  "description": "不能放在土里种, 但稍作处理后是可食用的坚果.",
+                  "display_name": "核桃"
+               }
+            }
+         },
+         "almond_tree": {
+            "seed": {
+               "tree_almond_seed": {
+                  "description": "不能放在土里种, 或许也能直接吃, 稍作处理后是可食用的坚果, 或叫它水果也行.",
+                  "display_name": "杏仁"
+               }
+            }
          }
       },
       "furniture": {
@@ -2907,6 +3098,17 @@
          "clay_comfy_bed_pet": {
             "display_name": "舒适的粘土动物床",
             "description": "让宠物也睡得舒服. 他们喜欢睡在主人的床边!"
+         },
+         "blue_market_stall": {
+            "blue_market_stall_ghost": {
+               "display_name": "木制蓝色露天商店"
+            }
+         },
+         "megacrop": {
+            "cotton_bed_pet": {
+               "display_name": "棉花动物床",
+               "description": "谁不喜欢睡在又软又舒服的床上嘛?"
+            }
          }
       },
       "recipes": {
@@ -3252,6 +3454,33 @@
          "ornate_banner_wall": {
             "display_name": "装饰挂旗",
             "description": "繁荣小镇的装饰旗帜."
+         },
+         "megacrop": {
+            "mega_pumpkin": {
+               "display_name": "超级南瓜",
+               "description": "哇, 看这尺寸! 放着做装饰或者做一大碗丰盛的汤!"
+            },
+            "mega_pumpkin_soup": {
+               "display_name": "超级南瓜汤",
+               "description": "好吃! 美味又管饱! 人人有份."
+            },
+            "mega_turnip": {
+               "display_name": "超级芜菁",
+               "description": "好大! 收获获得许多篮芜菁或者把它做成一把漂亮的椅子!",
+               "iconic_description": "放置后采集获得十五或者做成一把椅子."
+            },
+            "mega_cotton": {
+               "display_name": "超级棉花",
+               "description": "超软超暖和, 可以采集获得纤维或者直接弄结实, 做一张给宠物的床!"
+            },
+            "mega_watermelon": {
+               "display_name": "超级西瓜",
+               "description": "好大! 可以装饰或者开个口, 饮用新鲜的果汁!"
+            },
+            "mega_watermelon_juice": {
+               "display_name": "超级西瓜汁",
+               "description": "呲溜! 又甜又清爽! 人人有份."
+            }
          }
       },
       "pets": {
@@ -3678,6 +3907,25 @@
          "golden_egg": {
             "display_name": "金蛋",
             "description": "是金色的蛋! 它值整整10亿金币! 听说, 好像是的吧?"
+         },
+         "megacrop": {
+            "pumpkin_soup_serving": {
+               "display_name": "一份超级南瓜汤",
+               "description": "温暖美味!"
+            },
+            "watermelon_juice_serving": {
+               "display_name": "一杯西瓜汁",
+               "description": "清凉!"
+            }
+         },
+         "pasta": {
+            "pasta": {
+               "display_name": "面食",
+               "description": "美味的面条, 淋上了好吃的热番茄酱."
+            },
+            "pasta_serving": {
+               "display_name": "一份面食"
+            }
          }
       },
       "terrain": {
@@ -4078,6 +4326,10 @@
          "giant_bone_shield": {
             "display_name": "巨骨盾",
             "description": "杀人猛兽的胸腔肋骨排做成的盾可以让骑士直面邪恶."
+         },
+         "mega_cactus_flower_helm": {
+            "display_name": "仙人掌花盔",
+            "description": "痛! 小心上面的刺, 它们会给攻击的敌人造成伤害."
          }
       },
       "weapons": {
@@ -4219,13 +4471,13 @@
             "display_name": "大漠长弓"
          },
          "rc_long_sword": {
-            "display_name": "弯刀"
+            "display_name": "钢弯刀"
          },
          "rc_recurve_bow": {
             "display_name": "大漠反曲弓"
          },
          "rc_short_sword": {
-            "display_name": "短弯刀"
+            "display_name": "钢短弯刀"
          },
          "rc_silver_halberd": {
             "display_name": "银大砍刀"
@@ -4309,13 +4561,13 @@
             "display_name": "极地长弓"
          },
          "na_long_sword": {
-            "display_name": "宽剑"
+            "display_name": "钢宽剑"
          },
          "na_recurve_bow": {
             "display_name": "极地反曲弓"
          },
          "na_short_sword": {
-            "display_name": "极地短剑"
+            "display_name": "极地钢短剑"
          },
          "na_silver_halberd": {
             "display_name": "极地银斩矛"
@@ -4462,6 +4714,12 @@
             "brass_dummy_training_ghost": {
                "description": "最好先和这位友好的家伙练练手. 维护修理需要工艺师来完成.",
                "display_name": "黄铜训练假人"
+            }
+         },
+         "frost_trap": {
+            "frost_trap_ghost": {
+               "display_name": "冰霜陷阱",
+               "description": "当你敌人需要冷静下的时候使用!"
             }
          }
       },
@@ -4741,6 +4999,56 @@
          "fuel_holder_small": {
             "display_name": "铸铁手把",
             "description": "这个好看的把手能储存柴薪这类燃料."
+         }
+      },
+      "tools": {
+         "worker_axe_iron": {
+            "display_name": "工人铁斧",
+            "description": "砍树时稍稍加快劈砍速度."
+         },
+         "worker_axe": {
+            "display_name": "工人青铜斧",
+            "description": "把麻烦都砍掉."
+         },
+         "worker_hammer": {
+            "display_name": "工人青铜锤",
+            "description": "手里有把锤子的时候, 看什么都觉得是钉子."
+         },
+         "mining_pick": {
+            "display_name": "工人青铜镐",
+            "description": "用于挖掘."
+         },
+         "mining_pick_iron": {
+            "display_name": "工人铁镐",
+            "description": "小幅提升提高挖掘速度与挖出的资源品质."
+         },
+         "mining_pick_steel": {
+            "display_name": "工人钢镐",
+            "description": "大大提升提高挖掘速度与挖出的资源品质."
+         },
+         "worker_axe_steel": {
+            "display_name": "工人钢斧",
+            "description": "砍树时大大加快劈砍速度."
+         },
+         "worker_hammer_iron": {
+            "display_name": "工人铁锤",
+            "description": "小幅提升常规作业的速度, 例如建造."
+         },
+         "worker_hammer_steel": {
+            "display_name": "工人钢锤",
+            "description": "大幅提升常规作业的速度, 例如建造."
+         },
+         "farmer_hoe_iron": {
+            "display_name": "农民铁锄",
+            "description": "小幅提升农民工作速度."
+         },
+         "backpack_leather": {
+            "display_name": "工人皮背包",
+            "description": "让工人在搬运与储存作业时更有效率."
+         },
+         "backpack_cloth": {
+            "display_name": "工人布背包",
+            "description": "让工人在搬运与储存作业时的效率大大提升."
          }
       }
    },
@@ -5028,6 +5336,17 @@
                "description": "查看地图上哪里比较原始 (或被开发)."
             }
          },
+         "show_workshop": {
+            "craft_button": {
+               "title": "制作",
+               "description": "把这份订单加到制作列表最后. 按住 [Shift] 将其插入到制作列表开头."
+            },
+            "quality_preference": {
+               "title": "材料质量偏好",
+               "description": "选择让工匠制作此订单时, 偏好高等级的优质还是劣质的原材料. 默认属性能在游戏设置中更改."
+            },
+            "prefer_high_quality": "使用高级原材"
+         },
          "zones_mode": {
             "farm": {
                "water_affinity_range": "灌溉</br>这种作物如果在蓝色描边区域内达到 <span class='water'><span class='value'>[str(i18n_data.min)] - [str(i18n_data.max)]</span> 水位</span> 则其生长速度会比平常有所提升.",
@@ -5062,7 +5381,7 @@
                   "tooltip_consumables": "治疗物品",
                   "tooltip_consumables_other": "其他消耗品",
                   "tooltip_bulk_resources": "大块资源",
-                  "tooltip_civillian_equipment": "衣物&配饰",
+                  "tooltip_civillian_equipment": "衣物&工具",
                   "tooltip_gizmos_equipment": "装置&实用器械"
                }
             }
@@ -5086,12 +5405,16 @@
             "gameplayTab": {
                "auto_craft_recipe_dependencies": "自动制作配方依赖",
                "auto_craft_recipe_dependencies_description": "当制作物品时, 工匠会检查库存内是否有足够原材料可供使用. 若不够, 他们会自动加入更多订单来满足初始订单.",
+               "default_craft_order_prefer_high_quality": "偏好优质原材料",
+               "default_craft_order_prefer_high_quality_description": "制作物品时, 原材料进行制作. 不勾选此项则永远优先使用低等级的原材料.",
                "auto_harvest_enabled": "自动采集可再生资源",
                "auto_harvest_enabled_description": "当你拥有的资源可以收获采集时, 自动对该资源下达采集命令.",
                "auto_harvest_animals_enabled": "动物自动生产可再生资源",
                "auto_harvest_animals_enabled_description": "你的动物自动生产可再生资源 (例如, 允许波波鸡下蛋).",
                "auto_harvest_tree_stumps": "自动砍伐树桩",
                "auto_harvest_tree_stumps_description": "砍倒树后, 剩下的树桩仍然可以砍. 启用这一选项会自动添加砍伐树桩的命令.",
+               "default_to_worst_fertilizer": "默认使用最差肥料",
+               "default_to_worst_fertilizer_description": "当农民施肥时, 除非有指定使用某一类型, 否则他们会优先使用最好的肥料. 勾选此项可以让农民优先使用最差的肥料.",
                "terrain_slice_buildings": "地形切片构造",
                "terrain_slice_buildings_description": "在地片模式下, 不会渲染可视但不构成地形的物体.",
                "water_signal_update_frequency": "水信号刷新率",
