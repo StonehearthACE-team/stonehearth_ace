@@ -23,30 +23,9 @@
             "type": "basic",
             "value": 1
          },
-         "min_calories": {
-            "type": "basic",
-            "value": -30
-         },
-         "max_calories": {
-            "type": "basic",
-            "value": 30
-         },
          "menace": {
             "type": "basic",
             "value": 0.001
-         }
-      },
-      "stonehearth:expendable_resources": {
-         "resources": {
-            "calories": {
-               "min": {
-                  "linked_attribute": "min_calories"
-               },
-               "max": {
-                  "linked_attribute": "max_calories"
-               },
-               "initial_value": "max_value"
-            }
          }
       },
       "sensor_list": {
@@ -71,10 +50,8 @@
          "min_avoidance_distance": 4,
          "max_avoidance_distance": 8
       },
-      "stonehearth:conversation_type": "animal",
       "stonehearth:ai_packs": {
          "packs": [
-            "stonehearth:ai_pack:critter",
             "stonehearth:ai_pack:wimpy",
             "stonehearth:ai_pack:panic:flee",
             "stonehearth:ai_pack:death",

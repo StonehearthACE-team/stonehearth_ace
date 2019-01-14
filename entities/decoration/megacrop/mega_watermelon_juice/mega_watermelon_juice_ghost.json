@@ -1,0 +1,40 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(mega_watermelon_juice.qb)"
+            ]
+         }
+      },
+      "render_info": {
+         "scale": 0.1
+      },
+      "mob": {
+         "align_to_grid": [
+            "x",
+            "z"
+         ],
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0, "y": 0, "z": 0 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.decoration.megacrop.mega_watermelon_juice.display_name)",
+         "description": "i18n(stonehearth_ace:entities.decoration.megacrop.mega_watermelon_juice.description)",
+         "icon": "file(mega_watermelon_juice.png)",
+         "category": "food",
+         "material_tags": [
+            "food_container",
+            "decoration",
+            "megacrop",
+            "watermelon",
+            "stockpile_decoration",
+            "stockpile_raw_foods"
+         ],
+         "subject_override": "stonehearth_ace:decoration:megacrop:mega_watermelon"
+      }
+   }
+}

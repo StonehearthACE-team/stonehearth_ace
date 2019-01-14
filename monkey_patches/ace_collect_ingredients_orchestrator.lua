@@ -15,9 +15,9 @@ function AceCollectIngredients:run(town, args)
       -- if an explicit quality preference wasn't set, use the default gameplay setting for it
       -- but only if the crafter has the quality crafting perk; otherwise prefer lower quality
       local job = self._crafter:get_component('stonehearth:job')
-      if job and job:curr_job_has_perk('crafter_recipe_unlock_3') then
+      if town and job and job:curr_job_has_perk('crafter_recipe_unlock_3') then
          self._prefer_high_quality = stonehearth.client_state
-            :get_client_gameplay_setting(self._sv.player_id, 'stonehearth_ace', 'default_craft_order_prefer_high_quality', true)
+            :get_client_gameplay_setting(town:get_player_id(), 'stonehearth_ace', 'default_craft_order_prefer_high_quality', true)
       else
          self._prefer_high_quality = false
       end

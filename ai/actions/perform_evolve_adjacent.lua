@@ -34,14 +34,35 @@ function PerformEvolveItemAdjacent:run(ai, entity, args)
       radiant.entities.turn_to_face(entity, item)
       ai:unprotect_argument(item)
 
-      local effect, times = evolve:perform_evolve()
-      if effect then
-         for i = 1, times or 1 do
-            ai:execute('stonehearth:run_effect', { effect = effect})
-         end
+      local effect = data.evolving_worker_effect
+      local times = data.evolving_worker_effect_times
+      local duration = data.evolving_effect_duration
+      local ingredient = data.evolve_ingredient_uri or data.evolve_ingredient_material
+      local ing_item
+      
+      if ingredient then
+         ing_item = radiant.entities.get_carrying(entity)
+         ai:execute('stonehearth:drop_carrying_now')
       end
 
-      evolve:evolve()
+      if effect then
+         evolve:perform_evolve()
+         if duration then
+            ai:execute('stonehearth:run_effect_timed', { effect = effect, duration = duration})
+         else
+            for i = 1, times or 1 do
+               ai:execute('stonehearth:run_effect', { effect = effect})
+            end
+         end
+         evolve:evolve()
+      else
+         evolve:perform_evolve(true)
+      end
+
+      if ing_item and ing_item:is_valid() then
+         ai:unprotect_argument(ing_item)
+         radiant.entities.destroy_entity(ing_item)
+      end
 
       if data and data.worker_finished_effect then
          ai:execute('stonehearth:run_effect', { effect = data.worker_finished_effect})

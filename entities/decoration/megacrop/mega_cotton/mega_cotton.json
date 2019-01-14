@@ -45,8 +45,9 @@
          "evolve_command": "stonehearth_ace:commands:request_evolve:stomp_mega_cotton_pet_bed",
          "request_action": "stonehearth_ace:perform_evolve",
          "request_action_overlay_effect": "stonehearth:effects:undeploy_overlay_effect",
-         "evolve_effect": "stonehearth:effects:poof_effect",
+         "evolve_effect": "stonehearth:effects:item_created",
          "evolving_worker_effect": "work",
+         "evolving_effect_duration": "4m",
          "evolve_worker_required_job": {
             "stonehearth:jobs:worker": true
          }
