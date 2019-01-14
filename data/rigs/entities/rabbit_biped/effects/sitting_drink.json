@@ -1,0 +1,20 @@
+{
+	"type" : "effect",
+	"tracks": {
+		"animation": {
+			"type": "animation_effect",
+			"start_time": 0,
+			"animation": "sitting_drink.json",
+			"loop": true
+		},
+		"sound": {
+			"type": "sound_effect",
+			"duration": 5000,
+			"start_time": 10,
+			"min_distance": 20,
+			"falloff" : 25,
+			"volume": 20,
+			"track" : "stonehearth:sounds:eating"
+		}
+	}
+}

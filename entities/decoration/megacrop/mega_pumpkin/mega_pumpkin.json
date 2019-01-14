@@ -39,9 +39,9 @@
          "request_action": "stonehearth_ace:perform_evolve",
          "request_action_overlay_effect": "stonehearth:effects:chop_overlay_effect",
          "evolve_ingredient_uri": "stonehearth_ace:resources:fuel:bundle_of_firewood",
-         "evolving_effect": "stonehearth:effects:firepit_effect",
-         "evolving_worker_effect": "chop",
-         "evolving_effect_duration": "4m",
+         "evolving_worker_effect": "chop_and_light",
+         "evolving_worker_effect_times": 1,
+         "evolve_effect": "stonehearth:effects:fire_effect",
          "evolve_worker_required_job": {
             "stonehearth:jobs:cook": true
          }

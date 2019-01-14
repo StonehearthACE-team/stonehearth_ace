@@ -1,0 +1,49 @@
+{
+   "type": "entity",
+   "mixins": "file(mega_watermelon_ghost.json)",
+   "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(mega_watermelon_iconic.json)",
+         "ghost_form": "file(mega_watermelon_ghost.json)",
+         "placeable_on_ground": true
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 1, "y": 1, "z": 1 }
+            }
+         ]
+      },
+      "stonehearth:traveler_attraction": {},
+      "stonehearth:evolve": {}
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 19,
+         "rarity": "rare",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 22
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      },
+      "stonehearth:evolve_data": {
+         "next_stage": "stonehearth_ace:decoration:megacrop:mega_watermelon_juice",
+         "evolve_command": "stonehearth_ace:commands:request_evolve:prepare_mega_watermelon_juice",
+         "request_action": "stonehearth_ace:perform_evolve",
+         "request_action_overlay_effect": "stonehearth:effects:chop_overlay_effect",
+         "evolving_worker_effect": "chop",
+         "evolving_worker_effect_times": 3,
+         "evolve_effect": "stonehearth:effects:item_created",
+         "evolve_worker_required_job": {
+            "stonehearth:jobs:cook": true
+         }
+      }
+   }
+}

@@ -1,0 +1,57 @@
+{
+   "type": "entity",
+   "mixins": "file(mega_watermelon_juice_ghost.json)",
+   "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(mega_watermelon_juice_iconic.json)",
+         "ghost_form": "file(mega_watermelon_juice_ghost.json)",
+         "placeable_on_ground": true,
+         "hide_undeploy_ui": true
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 1, "y": 2, "z": 1 }
+            }
+         ]
+      },
+      "stonehearth:traveler_attraction": {},
+      "stonehearth:stacks": {
+         "max_stacks": 18
+      },
+      "stonehearth:loot_drops": {
+         "force_auto_loot": true,
+         "entries": {
+            "default": {
+               "items": {
+                  "hat": {
+                     "uri": "stonehearth_ace:farmer:mega_watermelon_hat"
+                  }
+               }
+            }
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:food_container": {
+         "effect": "fiddle",
+         "food": "stonehearth_ace:food:megacrop:watermelon_juice_serving",
+         "stacks_per_serving": 1
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 25,
+         "rarity": "rare",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 22
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

@@ -67,30 +67,35 @@
       ],
       "categories": {
          "plantlife": {
-            "density": 4,
+            "density": 3.5,
             "priority": 0,
             "location_type": "surface",
             "activation_type": "immediate",
             "max_count": [
-               30
+               30,
+               35,
+               40
             ]
          },
          "static_objects": {
-            "density": 1.2,
+            "density": 1.5,
             "priority": 0,
             "location_type": "surface",
             "activation_type": "immediate",
             "max_count": [
-               25
+               25,
+               30,
+               35
             ]
          },
          "terrain_spreader": {
             "density": 6,
             "max_count": [
                4,
-               8,
-               12,
-               16
+               5,
+               6,
+               7,
+               8
             ],
             "prevents_categories_in_same_tile": [
                "terrain_spreader"
@@ -155,7 +160,7 @@
             ]
          },
          "underwater_feature_common": {
-            "density": 3,
+            "density": 4,
             "max_count": [
                20,
                28,
