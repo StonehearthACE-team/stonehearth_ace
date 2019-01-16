@@ -12,11 +12,20 @@
                }
             }
          }
+      },
+	  "stonehearth:attributes": {
+	     "max_health": {
+            "type": "basic",
+            "value": 70
+         }
       }
    },
    "entity_data": {
       "mixintypes": {
 		"stonehearth:harvest_beast_loot_table": "remove"
-	  }  
+	  },
+	  "stonehearth:catalog": {
+        "display_name": "i18n(stonehearth_ace:entities.critters.deer.display_name)"
+	  }
    }
 }

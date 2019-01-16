@@ -422,6 +422,10 @@
             "prepare_mega_watermelon_juice": {
                "display_name": "Prepare Watermelon Juice",
                "description": "By carving up a hole and stirring inside the Cook can turn this huge fruit into a lot of wonderful juice!"
+            },
+            "add_thatch_to_bed": {
+               "display_name": "Add Thatch",
+               "description": "Make this bed a little more comfortable by adding some thatch to it!"
             }
          },
          "slaughter": {
@@ -1822,7 +1826,7 @@
             }
          },
          "weaver_description": {
-            "description": "The Weaver can turn hides into leather and fibers into cloth, working with them to create intricate goods, clothing, armor and decorations."
+            "description": "The Weaver can turn hides into leather and fibers into cloth, working with them to create intricate goods, clothing, armor, useful accessories and decorations."
          }
       },
       "trapper": {
@@ -2458,6 +2462,12 @@
             "bear_pelt": {
                "display_name": "Bear Pelt",
                "description": "A large fur from a ferocious creature."
+            },
+            "racoon_pelt": {
+               "display_name": "Raccoon Pelt"
+            },
+            "skunk_pelt": {
+               "display_name": "Skunk Pelt"
             }
          },
          "bone_material": {
@@ -3542,6 +3552,52 @@
          },
          "bear": {
             "species": "bear"
+         },
+         "deer": {
+            "display_name": "Deer",
+            "display_name_arctic": "Red Deer",
+            "display_name_desert": "Gazelle Cow",
+            "display_name_highlands": "Moose Cow"
+         },
+         "deer_horned": {
+            "display_name": "Stag",
+            "display_name_arctic": "Caribou",
+            "display_name_desert": "Gazelle",
+            "display_name_highlands": "Moose"
+         },
+         "squirrel": {
+            "display_name": "Squirrel",
+            "display_name_arctic": "Gray Squirrel",
+            "display_name_desert": "Ground Squirrel",
+            "display_name_highlands": "Red Squirrel"
+         },
+         "red_fox_wolf": {
+            "display_name": "Fox",
+            "display_name_arctic": "Arctic Fox",
+            "display_name_desert": "Fennec Fox",
+            "display_name_highlands": "Fox"
+         },
+         "rabbit": {
+            "display_name": "Rabbit",
+            "display_name_arctic": "Snow Hare",
+            "display_name_desert": "Brown Hare",
+            "display_name_highlands": "Gray Rabbit"
+         },
+         "racoon": {
+            "display_name": "Raccoon",
+            "display_name_arctic": "Arctic Raccoon",
+            "display_name_desert": "Brown Raccoon",
+            "display_name_highlands": "Skunk",
+            "racoon_jerky": {
+               "display_name": "Raccoon Jerky",
+               "display_name_highlands": "Skunk Jerky"
+            }
+         },
+         "sheep": {
+            "display_name": "Sheep",
+            "display_name_arctic": "Longwool Sheep",
+            "display_name_desert": "Dune Sheep",
+            "display_name_highlands": "Bighorn Sheep"
          }
       },
       "food": {
@@ -4100,6 +4156,9 @@
          "forest": {
             "bear": {
                "display_name": "Bear",
+               "display_name_arctic": "Polar Bear",
+               "display_name_desert": "Sand Bear",
+               "display_name_highlands": "Black Bear",
                "description": "It seems quite angry."
             },
             "bear_cub": {
@@ -4107,16 +4166,45 @@
                "description": "Awww."
             },
             "cougar": {
-               "display_name": "Big Cat",
+               "display_name": "Cougar",
+               "display_name_arctic": "Snow Leopard",
+               "display_name_desert": "Panther",
+               "display_name_highlands": "Tiger",
                "description": "A large, graceful feline. It's a meat eating hunter."
             },
             "cougar_cub": {
                "display_name": "Big Cat Cub",
                "description": "Not so big, still a cat."
             },
+            "wolf": {
+               "display_name": "Wolf",
+               "display_name_arctic": "Arctic Wolf",
+               "display_name_desert": "Desert Wolf",
+               "display_name_highlands": "Warg"
+            },
             "wolf_cub": {
                "display_name": "Wolf Cub",
                "description": "Like a little doggo that wants to eat you!"
+            },
+            "entling": {
+               "display_name": "Entling",
+               "display_name_arctic": "Groveling",
+               "display_name_desert": "Cactusling",
+               "display_name_highlands": "Birchling"
+            }
+         },
+         "avian": {
+            "duckduck": {
+               "display_name": "DuckDuck",
+               "display_name_arctic": "PengDuck",
+               "display_name_desert": "Oasis DuckDuck",
+               "display_name_highlands": "Sky DuckDuck"
+            },
+            "ostrich": {
+               "display_name": "Ostrich",
+               "display_name_arctic": "Spotted Ostrich",
+               "display_name_desert": "Red Ostrich",
+               "display_name_highlands": "Race Bird"
             }
          },
          "goblins": {
@@ -4999,6 +5087,10 @@
          "fuel_holder_small": {
             "display_name": "Cast Iron Holder",
             "description": "This fancy holder can reasonably store some fuel like firewood."
+         },
+         "mega_golden_gourd_pot": {
+            "display_name": "Mega Golden Gourd Pot",
+            "description": "Made with the husk of a mighty fruit, stores up to 16 items."
          }
       },
       "tools": {

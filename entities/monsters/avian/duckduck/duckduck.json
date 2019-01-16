@@ -14,6 +14,10 @@
          }
       },
 	  "stonehearth:attributes": {
+		 "max_health": {
+            "type": "basic",
+            "value": 40
+         },
          "min_calories": {
             "type": "basic",
             "value": -30
@@ -21,6 +25,10 @@
          "max_calories": {
             "type": "basic",
             "value": 20
+         },
+		 "menace": {
+            "type": "basic",
+            "value": 0.001
          }
       },
 	  "stonehearth:expendable_resources": {
@@ -41,6 +49,9 @@
 	  }
    },
    "entity_data": {
+	  "stonehearth:catalog": {
+        "display_name": "i18n(stonehearth_ace:entities.monsters.avian.duckduck.display_name)"
+	  },
       "stonehearth:calories": {
          "hungry_threshold": 0,
          "famished_threshold": 0,
