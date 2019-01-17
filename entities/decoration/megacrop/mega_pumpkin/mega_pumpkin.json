@@ -16,7 +16,22 @@
          ]
       },
       "stonehearth:traveler_attraction": {},
-      "stonehearth:evolve": {}
+      "stonehearth:evolve": {},
+      "stonehearth:loot_drops": {
+         "entries": {
+            "default": {
+               "num_rolls": {
+                  "min": 1,
+                  "max": 3
+               },
+               "items": {
+                  "pumkpin": {
+                     "uri": "stonehearth:food:pumpkin:pumpkin_basket"
+                  }
+               }
+            }
+         }
+      }
    },
    "entity_data": {
       "stonehearth:net_worth": {
