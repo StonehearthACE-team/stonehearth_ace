@@ -418,6 +418,14 @@
             "stomp_mega_cotton_pet_bed": {
                "display_name": "Stampf es!",
                "description": "Schicke einen Arbeiter, um diese flauschige Mega-Baumwolle zu hämmern, bis sie zu einem geeigneten Tierbett wird."
+            },
+            "prepare_mega_watermelon_juice": {
+               "display_name": "Wassermelonensaft vorbereiten",
+               "description": "Durch das Schnitzen eines Lochs und das Rühren im Inneren kann der Koch aus dieser riesigen Frucht ein herrlicher Saft werden!"
+            },
+            "add_thatch_to_bed": {
+               "display_name": "Stroh hinzufügen",
+               "description": "Mach dieses Bett etwas bequemer, indem du ein bisschen Stroh hinzufügst!"
             }
          },
          "slaughter": {
@@ -570,6 +578,10 @@
          "holiday_cheer": {
             "display_name": "Feiertagsjubel",
             "description": "Woo! Dieser Hearthling genießt die Ferien mit etwas mehr Mitgefühl und Geschwindigkeit!"
+         },
+         "thorns": {
+            "display_name": "Stacheliger Schutz",
+            "description": "Diese Hearthling wird Gegnern schaden zufügen, der sie/ihn angreift."
          }
       },
       "loadouts": {
@@ -1814,7 +1826,7 @@
             }
          },
          "weaver_description": {
-            "description": "Der Weber kann aus Häuten Leder und aus Fasern Stoffe herstellen und mit ihnen komplizierte Waren, Kleidung, Rüstungen und Dekorationsartikel herstellen."
+            "description": "Der Weber kann aus Häuten Leder und aus Fasern Stoffe herstellen und mit ihnen komplizierte Waren, Kleidung, Rüstungen, nützliches Zubehör und Dekorationsartikel herstellen."
          }
       },
       "trapper": {
@@ -1866,6 +1878,10 @@
                "perk_001_description": "(Demnächst!)"
             },
             "description": "Landwirte bestellen Felder, säen Samen und ernten Getreide. Sie zähmen das Land, um eine konstante Versorgung mit Nahrungsmitteln, Zutaten zum Kochen, Fasern, Kräutern und mehr zu gewährleisten."
+         },
+         "farmer_mega_watermelon_hat": {
+            "display_name": "Wassermelone-Kappe des Farmers",
+            "description": "Kann vom Farmern für einen kleinen Geschwindigkeitsgewinn verwendet werden, und es hält den Kopf frisch."
          }
       }
    },
@@ -2446,6 +2462,12 @@
             "bear_pelt": {
                "display_name": "Bärenfell",
                "description": "Ein großes Fell von einer wilden Kreatur."
+            },
+            "racoon_pelt": {
+               "display_name": "Waschbärfell"
+            },
+            "skunk_pelt": {
+               "display_name": "Stinktierfell"
             }
          },
          "bone_material": {
@@ -3454,6 +3476,14 @@
             "mega_cotton": {
                "display_name": "Mega-Baumwolle",
                "description": "Extrem flauschig und weich, ernte für Fasern oder stampf es zu einem Terbett!"
+            },
+            "mega_watermelon": {
+               "display_name": "Mega-Wassermelone",
+               "description": "Sie ist riesig! Verwende es als Dekoration oder schneide sie für erfrischenden Saft auf!"
+            },
+            "mega_watermelon_juice": {
+               "display_name": "Mega-Wassermelonensaft",
+               "description": "Schlürf! So erfrischend und süß! Eine ganze Stadt kann dieses Getränk genießen."
             }
          }
       },
@@ -3516,6 +3546,52 @@
          },
          "bear": {
             "species": "Bär"
+         },
+         "deer": {
+            "display_name": "Reh",
+            "display_name_arctic": "Rotwild",
+            "display_name_desert": "Gazelle",
+            "display_name_highlands": "Elchkuh"
+         },
+         "deer_horned": {
+            "display_name": "Hirsch",
+            "display_name_arctic": "Karibu",
+            "display_name_desert": "Gazelle",
+            "display_name_highlands": "Elch"
+         },
+         "squirrel": {
+            "display_name": "Eichhörnchen",
+            "display_name_arctic": "Graues Eichhörnchen",
+            "display_name_desert": "Erdhörnchen",
+            "display_name_highlands": "Rotes Eichhörnchen"
+         },
+         "red_fox_wolf": {
+            "display_name": "Fox",
+            "display_name_arctic": "Polarfuchs",
+            "display_name_desert": "Wüstenfuchs",
+            "display_name_highlands": "Fuchs"
+         },
+         "rabbit": {
+            "display_name": "Hase",
+            "display_name_arctic": "Schneehase",
+            "display_name_desert": "Brauner Hase",
+            "display_name_highlands": "Grauer Hase"
+         },
+         "racoon": {
+            "display_name": "Waschbär",
+            "display_name_arctic": "Arktischer Waschbär",
+            "display_name_desert": "Brauner Waschbär",
+            "display_name_highlands": "Stinktier",
+            "racoon_jerky": {
+               "display_name": "Waschbär Trockenfleisch",
+               "display_name_highlands": "Stinktier Trockenfleish"
+            }
+         },
+         "sheep": {
+            "display_name": "Schaf",
+            "display_name_arctic": "Leicester-Schaf",
+            "display_name_desert": "Dünenschafe",
+            "display_name_highlands": "Dickhornschaf"
          }
       },
       "food": {
@@ -3886,6 +3962,10 @@
             "pumpkin_soup_serving": {
                "display_name": "Eine Schüssel Kürbissuppe",
                "description": "Warm and lecker!"
+            },
+            "watermelon_juice_serving": {
+               "display_name": "Eine Tasse Wassermelonensaft",
+               "description": "Erfrischend!"
             }
          },
          "pasta": {
@@ -3895,6 +3975,16 @@
             },
             "pasta_serving": {
                "display_name": "Ein Teller mit Nudeln"
+            }
+         },
+         "ostrich_feed": {
+            "ostrich_feed": {
+               "display_name": "Straußenfutter",
+               "description": "Zum Füttern großer Vögel"
+            },
+            "ostrich_feed_ground": {
+               "display_name": "Straußenfutter",
+               "description": "Sehr nahrhaft und beliebt bei großen Vögeln."
             }
          }
       },
@@ -4070,6 +4160,9 @@
          "forest": {
             "bear": {
                "display_name": "Bär",
+               "display_name_arctic": "Eisbär",
+               "display_name_desert": "Sandbär",
+               "display_name_highlands": "Schwarzbär",
                "description": "Er scheint ziemlich wütend zu sein."
             },
             "bear_cub": {
@@ -4078,15 +4171,44 @@
             },
             "cougar": {
                "display_name": "Puma",
+               "display_name_arctic": "Schneeleopard",
+               "display_name_desert": "Panther",
+               "display_name_highlands": "Tiger",
                "description": "Eine große, anmutige Katze. Es ist ein fleischfressender Jäger."
             },
             "cougar_cub": {
                "display_name": "Pumajunges",
                "description": "Nicht so groß, aber immer noch eine Katze."
             },
+            "wolf": {
+               "display_name": "Wolf",
+               "display_name_arctic": "Arktikwolf",
+               "display_name_desert": "Wüstenwolf",
+               "display_name_highlands": "Vargr"
+            },
             "wolf_cub": {
                "display_name": "Wolfjunges",
                "description": "Wie ein kleiner Doggo, der dich essen will!"
+            },
+            "entling": {
+               "display_name": "Entling",
+               "display_name_arctic": "Hainling",
+               "display_name_desert": "Kaktusling",
+               "display_name_highlands": "Birkling"
+            }
+         },
+         "avian": {
+            "duckduck": {
+               "display_name": "DuckDuck",
+               "display_name_arctic": "PengDuck",
+               "display_name_desert": "Oasen DuckDuck",
+               "display_name_highlands": "Himmel DuckDuck"
+            },
+            "ostrich": {
+               "display_name": "Strauß",
+               "display_name_arctic": "Fleckenstrauß",
+               "display_name_desert": "Rotstrauß",
+               "display_name_highlands": "Rennenstrauß"
             }
          },
          "goblins": {
@@ -4969,6 +5091,14 @@
          "fuel_holder_small": {
             "display_name": "Gusseisenhalter",
             "description": "Dieser schicke Halter kann Brennstoff wie Brennholz einigermaßen speichern."
+         },
+         "mega_golden_gourd_pot": {
+            "display_name": "Mega Goldener Kürbis Topf",
+            "description": "Mit der Schale einer mächtigen Frucht hergestellt, kann bis zu 16 Gegenstände aufbewahren."
+         },
+         "food_trough_wood": {
+            "display_name": "Hölzerne Krippe",
+            "description": "Wird vom Schäfer verwendet, um Tiere auf seinen Weiden zu füttern."
          }
       },
       "tools": {
@@ -5368,6 +5498,9 @@
                "party_3": "Gruppe 3",
                "party_4": "Gruppe 4"
             }
+         },
+         "componentInfo": {
+            "title": "Component Info"
          }
       },
       "shell": {
@@ -5388,7 +5521,9 @@
                "terrain_slice_buildings": "Gelände-Gebäude-Schnitt",
                "terrain_slice_buildings_description": "Rendere keine Objekte im Gelände-Schnitt-Modus, die von sichtbaren Objekten außerhalb des Geländes unterstützt werden.",
                "water_signal_update_frequency": "Wassersignal-Aktualisierungsrate",
-               "water_signal_update_frequency_description": "Aktualisiere die Wassersignale nach einer bestimmte Anzahl von Ticks des Wassersystems. Erhöhe diesen Wert, um die Leistung mit viel fließendem Wasser zu verbessern."
+               "water_signal_update_frequency_description": "Aktualisiere die Wassersignale nach einer bestimmte Anzahl von Ticks des Wassersystems. Erhöhe diesen Wert, um die Leistung mit viel fließendem Wasser zu verbessern.",
+               "show_processing_meter": "Verarbeitungsanzeige anzeigen",
+               "show_processing_meter_description": "Zeigt die Verarbeitungsanzeige an, die für das Verständnis von Leistungsproblemen nützlich ist, rechts unten auf dem Bildschirm, links neben den Schaltflächen für die Spielgeschwindigkeit."
             },
             "controls_tab": {
                "key_binding_names": {
@@ -5447,6 +5582,68 @@
             "fish_roe_resource_name": "Irgendein Fischrogen",
             "fish_meat_resource_name": "Irgendein Fischfleisch",
             "wool_resource_name": "Irgendeine Wolle"
+         }
+      }
+   },
+   "component_info": {
+      "stonehearth": {
+         "equipment_piece": {
+            "display_name": "Equipment Piece",
+            "description": "Can be equipped by certain hearthlings."
+            },
+         "evolve": {
+            "display_name": "Evolve",
+            "description": "Will transform into something else. If it doesn't have a command for it, this will happen eventually over time."
+         },
+         "growing": {
+            "display_name": "Growing",
+            "description": "Has multiple growth stages, with a growth rate affected by nearby water (or lack thereof) and rainy weather."
+         },
+         "loot_drops": {
+            "display_name": "Loot Drops",
+            "description": "When killed, loot will drop!"
+         },
+         "renewable_resource_node": {
+            "display_name": "Renewable Resource Node",
+            "description": "Can be harvested repeatedly, requiring some time between each harvest in order to renew."
+         },
+         "resource_node": {
+            "display_name": "Resource Node",
+            "description": "Can only be harvested once and is then destroyed."
+         },
+         "stacks": {
+            "display_name": "Stacks",
+            "description": "When used in crafting or trading, the entire item will be consumed. Otherwise, only a single stack is consumed at a time, until the last stack is consumed and the item is destroyed."
+         }
+      },
+      "stonehearth_ace": {
+         "aquatic_object": {
+            "display_name": "Aquatic Object",
+            "description": "Responds to the presence of water (or lack thereof)."
+         },
+         "fence": {
+            "display_name": "Fence",
+            "description": "Limited tile-able item that will automatically connect to others within two units."
+         },
+         "mechanical": {
+            "display_name": "Mechanical",
+            "description": "Can be used in building connected systems to transfer mechanical power."
+         },
+         "water_signal": {
+            "display_name": "Water Signal",
+            "description": "Detects changes in nearby water."
+         },
+         "tile": {
+            "display_name": "Tile",
+            "description": "Tile-able item that will automatically connect adjacently and update its model."
+         },
+         "vine": {
+            "display_name": "Vine",
+            "description": "Grows by spreading, but each one will only grow a few times. May be climbable."
+         },
+         "water_pump": {
+            "display_name": "Water Pump",
+            "description": "When enabled, pumps water from its bottom and out its top."
          }
       }
    }
