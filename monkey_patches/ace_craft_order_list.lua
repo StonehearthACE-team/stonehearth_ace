@@ -46,7 +46,7 @@ function AceCraftOrderList:add_order(player_id, recipe, condition, is_recursive_
          -- Go through and combine the orders in all the order lists
          local in_order_list = {}
          for _, order_list in ipairs(crafter_info:get_order_lists()) do
-            local order_list_amount = order_list:ace_get_ingredient_amount_in_order_list(ingredient)
+            local order_list_amount = order_list:ace_get_ingredient_amount_in_order_list(crafter_info, ingredient)
             for k, v in pairs(order_list_amount) do
                in_order_list[k] = (in_order_list[k] or 0) + v
             end
@@ -69,17 +69,25 @@ function AceCraftOrderList:add_order(player_id, recipe, condition, is_recursive_
          --            if it does, proceed to step 3;
          --            if not, continue on to the next ingredient.
 
-         local recipe_info = self:_ace_get_recipe_info_from_ingredient(ingredient, crafter_info)
+         local recipe_info = self:_ace_get_recipe_info_from_product(ingredient.uri or ingredient.material, crafter_info)
          if recipe_info then
             --log:debug('a "%s" can be made via the recipe "%s"', ingredient_id, recipe_info.recipe.recipe_name)
 
             -- Step 3: Recursively check on the ingredient's recipe.
 
+            local num_crafted
+            if ingredient.uri then
+               num_crafted = recipe_info.recipe.products[ingredient.uri]
+            else
+               num_crafted = self:_recipe_produces_materials(recipe, ingredient.material)
+            end
+            local num_to_craft = math.ceil(missing / num_crafted)
+
             local new_condition = { type = condition.type }
             if condition.type == 'make' then
-               new_condition.amount = missing
+               new_condition.amount = num_to_craft
             else -- condition.type == 'maintain'
-               new_condition.at_least = missing
+               new_condition.at_least = num_to_craft
             end
 
             --log:debug('adding the recipe "%s" to %s %d of those', recipe_info.recipe.recipe_name, new_condition.type, missing)
@@ -149,6 +157,22 @@ function AceCraftOrderList:insert_order(player_id, recipe, condition, maintain_o
 	end
 end
 
+-- this is used by the job_info_controller:queue_order_if_possible
+function AceCraftOrderList:request_order_of(player_id, product, amount)
+   local crafter_info = stonehearth_ace.crafter_info:get_crafter_info(player_id)
+
+   local recipe_info = self:_ace_get_recipe_info_from_product(product, crafter_info)
+   if recipe_info then
+      -- queue the appropriate number based on how many the recipe produces
+      local num = math.ceil(amount / recipe_info.recipe.products[product])
+      local condition = {
+         type = 'make',
+         amount = num
+      }
+      self:add_order(player_id, recipe_info.recipe, condition)
+   end
+end
+
 AceCraftOrderList._ace_old_delete_order_command = CraftOrderList.delete_order_command
 -- In addition to the original delete_order_command function (from craft_order_list.lua),
 -- here it's also making sure that the ingredients needed for the order is removed
@@ -182,7 +206,7 @@ function AceCraftOrderList:remove_from_reserved_ingredients(ingredients, order_i
    multiple = multiple or 1
    local crafter_info = stonehearth_ace.crafter_info:get_crafter_info(player_id)
    for _, ingredient in pairs(ingredients) do
-      local in_order_list = self:ace_get_ingredient_amount_in_order_list(ingredient, order_id)
+      local in_order_list = self:ace_get_ingredient_amount_in_order_list(crafter_info, ingredient, order_id)
       local ingredient_id = ingredient.uri or ingredient.material
       local amount = math.max(ingredient.count * multiple - in_order_list.maintain, 0)
 
@@ -193,59 +217,36 @@ end
 -- Used to get a recipe if it can be used to craft `ingredient`.
 -- Returns information such as what the recipe itself and the order list used for it.
 --
-function AceCraftOrderList:_ace_get_recipe_info_from_ingredient(ingredient, crafter_info)
-   local item = ingredient.uri or ingredient.material
-   local chosen_recipe = nil
-   local chosen_recipe_cost = 0
+function AceCraftOrderList:_ace_get_recipe_info_from_product(product, crafter_info)
+   -- Take the cheapest recipe on a per-product basis
+   local possible = crafter_info:get_possible_recipes(product)
+   local choices = {}
+   for recipe_info, count in pairs(possible) do
+      table.insert(choices, {
+         recipe_info = recipe_info,
+         cost = recipe_info.recipe.cost / count
+      })
+   end
 
-   -- Take the cheapest recipe
-   for _, recipe_info in pairs(crafter_info:get_possible_recipes(item)) do
-      local recipe_cost = self:_ace_get_recipe_cost(recipe_info, crafter_info)
-      if not chosen_recipe or recipe_cost < chosen_recipe_cost then
-         chosen_recipe = recipe_info
-         chosen_recipe_cost = recipe_cost
+   table.sort(choices, function(a, b)
+      return a.cost < b.cost
+   end)
+
+   for _, choice in ipairs(choices) do
+      if self:_can_craft_recipe(crafter_info:get_player_id(), choice.recipe_info) then
+         return choice.recipe_info
       end
    end
 
-   return chosen_recipe
+   local choice = choices[1]
+   return choice and choice.recipe_info
 end
 
--- Get the total cost of crafting a recipe:
--- the amount of ingredients used and their respective value,
--- how many ingredients are missing and how much it would cost to craft them.
---
-function AceCraftOrderList:_ace_get_recipe_cost(recipe_info, crafter_info)
-   local total_cost = 0
-
-   local ingredients = recipe_info.recipe.ingredients
-   -- TODO: check if the ingredient is available, if not then check its recipe's cost (or multiply its cost by 2)
-   for _, ingredient in pairs(ingredients) do
-      local cost = 0
-      if ingredient.kind == 'material' then
-         local uris = crafter_info:get_uris(ingredient.material)
-         _, cost = self:_ace_get_least_valued_entity(uris)
-      else -- ingredient.kind == 'uri'
-         _, cost = self:_ace_get_least_valued_entity({ingredient.uri})
-      end
-      total_cost = total_cost + cost * ingredient.count
-   end
-
-   return total_cost
-end
-
--- Get the lowest valued entity, and its cost, from a list of uris.
---
-function AceCraftOrderList:_ace_get_least_valued_entity(uris)
-   local least_valued_uri = nil
-   local lowest_value = 0
-   for _, uri in ipairs(uris) do
-      local value = stonehearth.catalog:get_catalog_data(uri).sell_cost
-      if value < lowest_value or not least_valued_uri then
-         least_valued_uri = uri
-         lowest_value = value
-      end
-   end
-   return least_valued_uri, lowest_value
+function AceCraftOrderList:_can_craft_recipe(player_id, recipe_info)
+   -- check max crafter level of the specified job in the specified player's town
+   -- to see if this recipe is currently craftable
+   local job_info = stonehearth.job:get_job_info(player_id, recipe_info.job_key)
+   return job_info and job_info:get_highest_level() >= (recipe_info.recipe.level_requirement or 1)
 end
 
 -- Checking `inventory` to see how much of `ingredient` is available.
@@ -280,7 +281,7 @@ end
 -- The optional `to_order_id` says that any orders with their id,
 -- that are at least as great as that number, will be ignored.
 --
-function AceCraftOrderList:ace_get_ingredient_amount_in_order_list(ingredient, to_order_id)
+function AceCraftOrderList:ace_get_ingredient_amount_in_order_list(crafter_info, ingredient, to_order_id)
    local ingredient_count = {
       make = 0,
       maintain = 0,
@@ -292,28 +293,51 @@ function AceCraftOrderList:ace_get_ingredient_amount_in_order_list(ingredient, t
          if to_order_id and order:get_id() >= to_order_id then
             break
          end
-         local recipe = order:get_recipe()
-         local condition = order:get_condition()
+         local recipe = crafter_info:get_formatted_recipe(order:get_recipe())
 
-         if (ingredient.material
-               and type(recipe.product_info) == 'table'
-               and recipe.product_info.entity_data["stonehearth:catalog"].material_tags
-               and self:_ace_matching_tags(ingredient.material, recipe.product_info.entity_data["stonehearth:catalog"].material_tags))
-               or (ingredient.uri
-               and recipe.product_uri == ingredient.uri) then
+         if recipe then
+            local condition = order:get_condition()
 
-            local amount = condition.remaining
-            if condition.type == 'maintain' then
-               amount = condition.at_least
+            local material_produces = ingredient.material and self:_recipe_produces_materials(recipe, ingredient.material)
+            local uri_produces = ingredient.uri and recipe.products[ingredient.uri]
+            local num_produces = material_produces or uri_produces
+
+            if num_produces then
+               local amount = condition.remaining
+               if condition.type == 'maintain' then
+                  amount = condition.at_least
+               end
+               ingredient_count[condition.type] = ingredient_count[condition.type] + amount * num_produces
             end
-            ingredient_count[condition.type] = ingredient_count[condition.type] + amount
-
          end
       end
    end
 
    ingredient_count.total = ingredient_count.make + ingredient_count.maintain
    return ingredient_count
+end
+
+function AceCraftOrderList:_recipe_produces_materials(recipe, material)
+   if type(material) == 'string' then
+      material = radiant.util.split_string(material, ' ')
+   end
+
+   local num_produces = 0
+
+   for product, material_map in pairs(recipe.product_materials) do
+      local match = true
+      for _, mat in ipairs(material) do
+         if not material_map[mat] then
+            match = false
+            break
+         end
+      end
+      if match then
+         num_produces = num_produces + recipe.products[product]
+      end
+   end
+
+   return num_produces
 end
 
 function AceCraftOrderList:_ace_matching_tags(tags1, tags2)

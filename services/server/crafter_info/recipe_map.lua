@@ -13,12 +13,13 @@ function RecipeMap:clear()
 end
 
 -- Adds `value` to all buckets in `keys`.
--- If one such value already exists, then do nothing.
---
 function RecipeMap:add(keys, value)
-   local keys_table = keys
+   local keys_table
    if type(keys) == 'string' then
       keys_table = radiant.util.split_string(keys, ' ')
+      keys = {}
+   else
+      keys_table = radiant.keys(keys)
    end
 
    for _, key in ipairs(keys_table) do
@@ -28,9 +29,7 @@ function RecipeMap:add(keys, value)
          self._map[key] = bucket
       end
 
-      if not self:contains(key, value) then
-         table.insert(bucket, value)
-      end
+      bucket[value] = keys[key] or 1
    end
 end
 
@@ -40,13 +39,22 @@ function RecipeMap:intersecting_values(keys)
    local keys_table = radiant.util.split_string(keys, ' ')
 
    local last_key = table.remove(keys_table)
-   local values = radiant.shallow_copy(self._map[last_key] or {})
+   local values = {}
+   local possibles = self._map[last_key]
 
-   for _, key in ipairs(keys_table) do
-      for index = radiant.size(values), 1, -1 do
-         local value = values[index]
-         if not self:contains(key, value) then
-            table.remove(values, index)
+   if possibles then
+      for value, count in pairs(possibles) do
+         local full_match = true
+         for _, key in ipairs(keys_table) do
+            local bucket = self._map[key]
+            if not bucket or not bucket[value] then
+               full_match = false
+               break
+            end
+         end
+
+         if full_match then
+            values[value] = count
          end
       end
    end
@@ -63,7 +71,7 @@ function RecipeMap:contains(key, value1)
    local v_ingr1 = value1.recipe.ingredients
    value1 = {v_prod1, v_ingr1}
 
-   for _, value2 in ipairs(self._map[key] or {}) do
+   for value2, _ in pairs(self._map[key] or {}) do
       local v_prod2 = value2.recipe.produces
       local v_ingr2 = value2.recipe.ingredients
       value2 = {v_prod2, v_ingr2}

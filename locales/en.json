@@ -5398,6 +5398,9 @@
                "party_3": "Party 3",
                "party_4": "Party 4"
             }
+         },
+         "componentInfo": {
+            "title": "Component Info"
          }
       },
       "shell": {
@@ -5418,7 +5421,9 @@
                "terrain_slice_buildings": "Terrain Slice Buildings",
                "terrain_slice_buildings_description": "In Terrain Slice mode, don't render entities supported by visible, non-terrain entities.",
                "water_signal_update_frequency": "Water Signal Update Rate",
-               "water_signal_update_frequency_description": "Only update water signals this many ticks of the water system. Increase this value to improve performance with lots of flowing water."
+               "water_signal_update_frequency_description": "Only update water signals this many ticks of the water system. Increase this value to improve performance with lots of flowing water.",
+               "show_processing_meter": "Show Processing Meter",
+               "show_processing_meter_description": "Show the processing meter, useful for understanding performance issues, in the lower right of the screen, to the left of the game speed buttons."
             },
             "controls_tab": {
                "key_binding_names": {
@@ -5477,6 +5482,68 @@
             "fish_roe_resource_name": "Any Fish Roe",
             "fish_meat_resource_name": "Any Fish Meat",
             "wool_resource_name": "Any Wool"
+         }
+      }
+   },
+   "component_info": {
+      "stonehearth": {
+         "equipment_piece": {
+            "display_name": "Equipment Piece",
+            "description": "Can be equipped by certain hearthlings."
+            },
+         "evolve": {
+            "display_name": "Evolve",
+            "description": "Will transform into something else. If it doesn't have a command for it, this will happen eventually over time."
+         },
+         "growing": {
+            "display_name": "Growing",
+            "description": "Has multiple growth stages, with a growth rate affected by nearby water (or lack thereof) and rainy weather."
+         },
+         "loot_drops": {
+            "display_name": "Loot Drops",
+            "description": "When killed, loot will drop!"
+         },
+         "renewable_resource_node": {
+            "display_name": "Renewable Resource Node",
+            "description": "Can be harvested repeatedly, requiring some time between each harvest in order to renew."
+         },
+         "resource_node": {
+            "display_name": "Resource Node",
+            "description": "Can only be harvested once and is then destroyed."
+         },
+         "stacks": {
+            "display_name": "Stacks",
+            "description": "When used in crafting or trading, the entire item will be consumed. Otherwise, only a single stack is consumed at a time, until the last stack is consumed and the item is destroyed."
+         }
+      },
+      "stonehearth_ace": {
+         "aquatic_object": {
+            "display_name": "Aquatic Object",
+            "description": "Responds to the presence of water (or lack thereof)."
+         },
+         "fence": {
+            "display_name": "Fence",
+            "description": "Limited tile-able item that will automatically connect to others within two units."
+         },
+         "mechanical": {
+            "display_name": "Mechanical",
+            "description": "Can be used in building connected systems to transfer mechanical power."
+         },
+         "water_signal": {
+            "display_name": "Water Signal",
+            "description": "Detects changes in nearby water."
+         },
+         "tile": {
+            "display_name": "Tile",
+            "description": "Tile-able item that will automatically connect adjacently and update its model."
+         },
+         "vine": {
+            "display_name": "Vine",
+            "description": "Grows by spreading, but each one will only grow a few times. May be climbable."
+         },
+         "water_pump": {
+            "display_name": "Water Pump",
+            "description": "When enabled, pumps water from its bottom and out its top."
          }
       }
    }
