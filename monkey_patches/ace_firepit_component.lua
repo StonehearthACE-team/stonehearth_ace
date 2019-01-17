@@ -1,7 +1,8 @@
 local FirepitComponent = require 'stonehearth.components.firepit.firepit_component'
 local AceFirepitComponent = class()
+local Point3 = _radiant.csg.Point3
 local EMBER_URI = 'stonehearth_ace:decoration:ember'
-local CHARCOAL_EMBER_URI = 'stonehearth_ace:decoration:ember_charcoal'
+local EMBER_CHARCOAL_URI = 'stonehearth_ace:decoration:ember_charcoal'
 local CHARCOAL_URI = 'stonehearth_ace:resources:coal:piece_of_charcoal'
 
 function AceFirepitComponent:get_fuel_material()
@@ -12,8 +13,9 @@ AceFirepitComponent._old_activate = FirepitComponent.activate
 function AceFirepitComponent:activate()
    self._json = radiant.entities.get_json(self) or {}
    self._ember_uri = self._json.ember_uri or EMBER_URI
-   self._charcoal_ember_uri = self._json.charcoal_ember_uri or CHARCOAL_EMBER_URI
+   self._ember_charcoal_uri = self._json.ember_charcoal_uri or EMBER_CHARCOAL_URI
    self._charcoal_uri = self._json.charcoal_uri or CHARCOAL_URI
+   self._allow_charcoal = (self._json.allow_charcoal ~= false)
    self._transform_residue_time = self._json.transform_residue_time or 'midday'
    self._transform_residue_jitter = '+' .. (self._json.transform_residue_jitter or '2h')
 
@@ -60,11 +62,11 @@ function AceFirepitComponent:_transform_residue()
       for id, child in entity_container:each_child() do
          if child and child:is_valid() and child:get_uri() == self._charcoal_uri then
             return
-         elseif child and child:is_valid() and child:get_uri() == self._charcoal_ember_uri then
-            local charcoal = radiant.entities.create_entity(self._charcoal_uri, { owner = player_id })
+         elseif child and child:is_valid() and child:get_uri() == self._ember_charcoal_uri then
             entity_container:remove_child(id)
             radiant.entities.destroy_entity(child)
-            entity_container:add_child(charcoal)		 
+            self:_create_residue(self._charcoal_uri)
+		    self._log:debug('transforming a charcoal ember into charcoal...')			
          elseif child and child:is_valid() and child:get_uri() == self._ember_uri then
             entity_container:remove_child(id)
             radiant.entities.destroy_entity(child)
@@ -94,8 +96,13 @@ function AceFirepitComponent:_extinguish()
 
    if was_lit then
       if is_wood then
-         self:_create_residue(self._charcoal_ember_uri)
-         self._log:debug('creating a charcoal...')
+		 if self._allow_charcoal then
+             self:_create_residue(self._ember_charcoal_uri)
+             self._log:debug('creating a charcoal ember...')
+		 else
+		 self:_create_residue(self._ember_uri)
+         self._log:debug('charcoal not allowed, creating common embers...')
+		 end
       elseif is_low_fuel then
          self:_create_residue(self._ember_uri)
          self._log:debug('creating common embers...')
@@ -107,7 +114,23 @@ function AceFirepitComponent:_create_residue(residue_uri)
    local player_id = radiant.entities.get_player_id(self._entity)
    local residue = radiant.entities.create_entity(residue_uri, { owner = player_id })
    local entity_container = self._entity:get_component('entity_container')
+   local entity_data = radiant.entities.get_entity_data(self._entity, 'stonehearth:table') or nil
+   local drop_offset = nil
+   
    entity_container:add_child(residue)
+   
+   if entity_data then
+	  local offset = entity_data['drop_offset']
+	  if offset then
+         local facing = residue:get_component('mob')
+										:get_facing()
+         local offset = Point3(offset.x, offset.y, offset.z)
+		 local drop_offset = offset:rotated(facing)
+		 local mob = residue:add_component('mob')
+		 mob:move_to(drop_offset)
+	     end
+   end
+   
 end
 
 function AceFirepitComponent:_retrieve_charcoal()
@@ -119,7 +142,7 @@ function AceFirepitComponent:_retrieve_charcoal()
          entity_container:remove_child(id)
          location = radiant.terrain.find_placement_point(location, 0, 3)
          radiant.terrain.place_entity(child, location)
-      elseif child and child:is_valid() and child:get_uri() == self._charcoal_ember_uri then
+      elseif child and child:is_valid() and child:get_uri() == self._ember_charcoal_uri then
          entity_container:remove_child(id)
          radiant.entities.destroy_entity(child)
       elseif child and child:is_valid() and child:get_uri() == self._ember_uri then
