@@ -71,6 +71,16 @@
             "call": "water_signal_update_frequency_setting_changed"
          },
          "ordinal": 30
+      },
+      "show_processing_meter": {
+         "type": "boolean",
+         "display_name": "stonehearth_ace:ui.shell.settings.gameplayTab.show_processing_meter",
+         "description": "stonehearth_ace:ui.shell.settings.gameplayTab.show_processing_meter_description",
+         "default": true,
+         "on_change": {
+            "fire_event": "show_processing_meter_changed"
+         },
+         "ordinal": 99
       }
    }
 }

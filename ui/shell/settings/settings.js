@@ -118,6 +118,16 @@ $(top).on('stonehearthReady', function(cc) {
                         if(call) {
                            radiant.call(mod+':'+call, value);
                         }
+                        var fire_event = setting.on_change.fire_event;
+                        if(fire_event) {
+                           var e = {
+                              mod : mod,
+                              setting : setting.name,
+                              value : setting.value,
+                              args : setting.on_change.args
+                           };
+                           $(top).trigger(fire_event, e);
+                        }
                      }
                   }
                });

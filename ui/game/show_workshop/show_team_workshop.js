@@ -79,6 +79,25 @@ $(top).on('stonehearthReady', function() {
                content: $(tooltip)
             });
 
+            var orderList = self.$('#orders');
+            orderList.on('scroll', function() {
+               // when the user scrolls with the mouse, make sure the scroll buttons are right
+               var buttons = self.$('#scrollButtons');
+               var scrollTop = orderList.scrollTop();
+               if (scrollTop === 0) {
+                  // top of list
+                  buttons.find('#orderListUpBtn').hide();
+                  buttons.find('#orderListDownBtn').show();
+               } else if (scrollTop + orderList.innerHeight() >= orderList[0].scrollHeight) {
+                  // bottom of list
+                  buttons.find('#orderListUpBtn').show();
+                  buttons.find('#orderListDownBtn').hide();
+               } else {
+                  buttons.find('#orderListUpBtn').show();
+                  buttons.find('#orderListDownBtn').show();
+               }
+            });
+
             self._updateCraftOrderPreference();
          },
 

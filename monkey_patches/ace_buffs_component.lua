@@ -17,7 +17,7 @@ end
 
 function AceBuffsComponent:get_managed_property(name)
    local property = self._sv.managed_properties[name]
-   return property and property.value
+   return property and ((property.num_zeroes and property.num_zeroes > 0 and 0) or property.value)
 end
 
 function AceBuffsComponent:get_buffs_by_category(category)
@@ -225,6 +225,16 @@ function AceBuffsComponent:_apply_managed_property(name, details)
       else
          property.value = details.value
       end
+   elseif details.type == 'multiplier' then
+      if details.value == 0 then
+         property.num_zeroes = (property.num_zeroes or 0) + 1
+      else
+         if property.value then
+            property.value = property.value * details.value
+         else
+            property.value = details.value
+         end
+      end
    elseif details.type == 'array' then
       -- not yet implemented
    elseif details.type == 'chance_table' then
@@ -261,6 +271,12 @@ function AceBuffsComponent:_remove_managed_property(name, details)
       -- a number can intentionally be zero, so we can't just remove this property when the buffs are all gone
       -- unless we're also tracking buff references... TODO maybe?
       property.value = property.value - details.value
+   elseif details.type == 'multiplier' then
+      if details.value == 0 then
+         property.num_zeroes = property.num_zeroes - 1
+      else
+         property.value = property.value / details.value
+      end
    elseif details.type == 'array' then
       -- not yet implemented
    elseif details.type == 'chance_table' then

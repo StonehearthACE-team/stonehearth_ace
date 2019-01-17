@@ -16,7 +16,7 @@ function AceEvolveComponent:initialize()
 	self._sv.local_water_modifier = 1
 	-- would need to set up a child entity with its own water component for detecting flooding in a smaller region
 	--self._sv.is_flooded = false
-   self._sv.current_growth_recalculate_progress = 0
+   self._sv._current_growth_recalculate_progress = 0
    
 	self.__saved_variables:mark_changed()
 end
@@ -27,7 +27,7 @@ function AceEvolveComponent:activate()
 
    -- allow for additional checks for whether evolve should happen by specifying a script in the json
    self._json = radiant.entities.get_json(self) or {}
-   self._sv.evolve_check_script = self._json.evolve_check_script
+   self._evolve_check_script = self._json.evolve_check_script
    self._preferred_climate = self._json.preferred_climate
    -- determine the "reach" of water detection from json; otherwise just expand 1 outwards and downwards from collision region
    self._water_reach = self._json.water_reach or 1
@@ -51,14 +51,15 @@ function AceEvolveComponent:destroy()
 end
 
 function AceEvolveComponent:set_check_evolve_script(path)
-   self._sv.evolve_check_script = path
+   self._evolve_check_script = path
    self.__saved_variables:mark_changed()
 end
 
 function AceEvolveComponent:_create_water_signal()
 	local reach = self._water_reach
 	local region = self._entity:get_component('region_collision_shape')
-	-- if there's no collision region, oh well, guess we're not creating a listener
+   
+   -- if there's no collision region, assume it's a 1x1x1
    if region then
       region = region:get_region():get()
    else
@@ -137,8 +138,8 @@ end
 
 AceEvolveComponent._old_evolve = EvolveComponent.evolve
 function AceEvolveComponent:evolve()
-   if self._sv.evolve_check_script then
-      local script = radiant.mods.require(self._sv.evolve_check_script)
+   if self._evolve_check_script then
+      local script = radiant.mods.require(self._evolve_check_script)
       if script and not script._should_evolve(self) then
          self:_start_evolve_timer()
          return
@@ -169,7 +170,7 @@ function AceEvolveComponent:evolve()
    --Create the evolved entity and put it on the ground
    local evolved_form = radiant.entities.create_entity(evolved_form_uri, { owner = self._entity})
    
-   -- Paul: this is the only line of code being inserted into the base evolve function
+   -- Paul: this is the main line of code being inserted into the base evolve function
    self:_set_quality(evolved_form, self._entity)
 
    radiant.entities.set_player_id(evolved_form, self._entity)
@@ -199,6 +200,8 @@ function AceEvolveComponent:evolve()
    end
 
    radiant.events.trigger(self._entity, 'stonehearth:on_evolved', {entity = self._entity, evolved_form = evolved_form})
+
+   -- Paul: also added this option, to kill on evolve instead of destroying (if you need to have it drop loot)
    if self._evolve_data.kill_entity then
       radiant.entities.kill_entity(self._entity)
    else
@@ -233,8 +236,8 @@ function AceEvolveComponent:_recalculate_duration()
 		
 		local old_progress = self:_get_current_growth_recalculate_progress()
 		local new_progress = (1 - old_progress) * (stonehearth.calendar:get_elapsed_time() - old_start_time) / old_duration
-		self._sv.current_growth_recalculate_progress = old_progress + new_progress
-		local time_remaining = math.max(0, evolve_period * (1 - self._sv.current_growth_recalculate_progress))
+		self._sv._current_growth_recalculate_progress = old_progress + new_progress
+		local time_remaining = math.max(0, evolve_period * (1 - self._sv._current_growth_recalculate_progress))
 		if time_remaining > 0 then
 			local scaled_time_remaining = self:_calculate_growth_period(time_remaining)
 			self._sv.evolve_timer:destroy()
@@ -246,7 +249,7 @@ function AceEvolveComponent:_recalculate_duration()
 end
 
 function AceEvolveComponent:_get_current_growth_recalculate_progress()
-	return self._sv.current_growth_recalculate_progress or 0
+	return self._sv._current_growth_recalculate_progress or 0
 end
 
 function AceEvolveComponent:_get_base_growth_period()

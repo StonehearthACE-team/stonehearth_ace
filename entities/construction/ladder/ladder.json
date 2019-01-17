@@ -2,6 +2,15 @@
    "type": "entity",
    "mixins": "file(ladder_ghost.json)",
    "components": {
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": 0, "y": 0, "z": 0 },
+               "max": { "x": 1, "y": 1, "z": 1 }
+            }
+         ],
+         "region_collision_type": "none"
+      },
       "stonehearth:entity_forms": {
          "iconic_form": "file(ladder_iconic.json)",
          "ghost_form": "file(ladder_ghost.json)",

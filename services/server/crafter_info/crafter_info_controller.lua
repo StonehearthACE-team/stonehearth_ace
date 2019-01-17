@@ -1,15 +1,15 @@
 local CrafterInfoController = class()
 
+local log = radiant.log.create_logger('crafter_info')
+
 function CrafterInfoController:initialize()
-   self._log = radiant.log.create_logger('crafter_info')
    self._recipe_map = radiant.create_controller('stonehearth_ace:recipe_map')
    self._material_map = radiant.create_controller('stonehearth_ace:material_map')
+   self._formatted_recipes = {}
 
-   if not self._sv.reserved_ingredients then
-      self._sv.reserved_ingredients = {}
-      self._sv.order_lists = {}
-      self._sv.player_id = nil
-   end
+   self._sv.player_id = nil
+   self._sv.order_lists = {}
+   self._sv.reserved_ingredients = {}
 end
 
 function CrafterInfoController:create(player_id)
@@ -27,6 +27,16 @@ function CrafterInfoController:destroy()
    if self._kingdom_changed_listener then
       self._kingdom_changed_listener:destroy()
       self._kingdom_changed_listener = nil
+   end
+
+   if self._recipe_map then
+      self._recipe_map:destroy()
+      self._recipe_map = nil
+   end
+
+   if self._material_map then
+      self._material_map:destroy()
+      self._material_map = nil
    end
 end
 
@@ -65,49 +75,27 @@ function CrafterInfoController:_create_maps()
 
          for category_name, category_data in pairs(recipe_list) do
             if not category_data.recipes then
-               self._log:warning('%s has no recipes to process', category_name)
+               log:warning('%s has no recipes to process', category_name)
             else
                for recipe_name, recipe_data in pairs(category_data.recipes) do
                   -- Check if the recipe's workshop has a valid uri first
                   local workshop_uri = recipe_data.recipe.workshop
                   if workshop_uri and not stonehearth.catalog:get_catalog_data(workshop_uri) then
-                     self._log:error('For recipe "%s": the workshop uri "%s" does not exist as an alias in its manifest',
+                     log:error('For recipe "%s": the workshop uri "%s" does not exist as an alias in its manifest',
                         recipe_name, workshop_uri)
                   else
                      local formatted_recipe = self:_format_recipe(recipe_data.recipe)
-                     -- Get the produces uris as well as the material tags of the recipe's product,
-                     -- and add those as the key as well as the order_list and the recipe as the value
-                     local valid_recipe = true
-                     local keys = {}
-                     for _, producing in pairs(formatted_recipe.produces) do
-                        -- Check if the recipe contains valid producing items
-                        if not stonehearth.catalog:get_catalog_data(producing.item) then
-                           self._log:error('For recipe "%s": the produces item "%s" does not exist as an alias in its manifest',
-                              recipe_name, producing.item)
-                           valid_recipe = false
-                           break
-                        end
-                        table.insert(keys, producing.item)
-                     end
+                     local keys = formatted_recipe.products
 
-                     if valid_recipe then
-                        -- It's a valid recipe, so store it
-                        formatted_recipe.product_info = radiant.resources.load_json(formatted_recipe.product_uri)
-                        local product_catalog = formatted_recipe.product_info.entity_data["stonehearth:catalog"]
-                        -- first verify that the recipe is not for a raw resource (category "resources"; if it's not raw, it should be "refined" or something else)
-                        if not product_catalog or product_catalog.category ~= 'resources' then
-                           if product_catalog and product_catalog.material_tags then
-                              local mat_tags = product_catalog.material_tags
-                              if type(mat_tags) == 'string' then
-                                 mat_tags = radiant.util.split_string(mat_tags, ' ')
-                              end
-                              stonehearth_ace.util.itable_append(keys, mat_tags)
-                           end
-                           self._recipe_map:add(keys, {
-                              order_list = order_list,
-                              recipe = formatted_recipe,
-                           })
-                        end
+                     if not next(keys) then
+                        log:error('For recipe "%s": no produced item exists as an alias in its manifest', recipe_name)
+                     else
+                        self._formatted_recipes[recipe_data.recipe] = formatted_recipe
+                        self._recipe_map:add(keys, {
+                           job_key = job_key,
+                           order_list = order_list,
+                           recipe = formatted_recipe,
+                        })
                      end
                   end
                end
@@ -136,7 +124,7 @@ function CrafterInfoController:_format_recipe(recipe)
 
    -- Add extra information to each ingredient in the recipe
    local formatted_ingredients = {}
-   for _, ingredient in pairs(recipe.ingredients) do
+   for _, ingredient in ipairs(recipe.ingredients) do
       local formatted_ingredient = {}
 
       if ingredient.material then
@@ -172,8 +160,90 @@ function CrafterInfoController:_format_recipe(recipe)
       table.insert(formatted_ingredients, formatted_ingredient)
    end
    formatted_recipe.ingredients = formatted_ingredients
+   formatted_recipe.cost = self:_get_recipe_cost(formatted_ingredients)
+
+   -- Get the produces uris as well as the material tags of the recipe's products
+   local products = {}
+   for _, product in ipairs(recipe.produces) do
+      if not products[product.item] then
+         products[product.item] = 1
+      else
+         products[product.item] = products[product.item] + 1
+      end
+   end
+
+   local all_products = {}
+   formatted_recipe.product_materials = {}
+   for product, count in pairs(products) do
+      local catalog_data = radiant.resources.load_json(product)
+      local product_catalog = catalog_data and catalog_data.entity_data["stonehearth:catalog"]
+
+      -- first verify that the recipe has catalog data and is not for a raw resource (category "resources"; if it's not raw, it should be "refined" or something else)
+      if product_catalog and product_catalog.category ~= 'resources' then
+
+         all_products[product] = count
+         
+         if product_catalog.material_tags then
+            local mat_tags = product_catalog.material_tags
+            if type(mat_tags) == 'string' then
+               mat_tags = radiant.util.split_string(mat_tags, ' ')
+            end
+
+            -- store a material map instead of a string or sequence so we can easily check it when looking for recipe matches
+            local mat_map = {}
+            for _, mat in ipairs(mat_tags) do
+               mat_map[mat] = true
+               if not all_products[mat] then
+                  all_products[mat] = count
+               else
+                  all_products[mat] = all_products[mat] + count
+               end
+            end
+
+            formatted_recipe.product_materials[product] = mat_map
+         end
+      end
+   end
+   formatted_recipe.products = all_products
 
    return formatted_recipe
+end
+
+-- Get the total cost of crafting a recipe:
+-- the amount of ingredients used and their respective value,
+-- how many ingredients are missing and how much it would cost to craft them.
+--
+function CrafterInfoController:_get_recipe_cost(ingredients)
+   local total_cost = 0
+
+   -- TODO: check if the ingredient is available, if not then check its recipe's cost (or multiply its cost by 2)
+   for _, ingredient in pairs(ingredients) do
+      local cost = 0
+      if ingredient.kind == 'material' then
+         local uris = self:get_uris(ingredient.material)
+         _, cost = self:_get_least_valued_entity(uris)
+      else -- ingredient.kind == 'uri'
+         _, cost = self:_get_least_valued_entity({ingredient.uri})
+      end
+      total_cost = total_cost + cost * ingredient.count
+   end
+
+   return total_cost
+end
+
+-- Get the lowest valued entity, and its cost, from a list of uris.
+--
+function CrafterInfoController:_get_least_valued_entity(uris)
+   local least_valued_uri = nil
+   local lowest_value = 0
+   for _, uri in ipairs(uris) do
+      local value = stonehearth.catalog:get_catalog_data(uri).sell_cost
+      if value < lowest_value or not least_valued_uri then
+         least_valued_uri = uri
+         lowest_value = value
+      end
+   end
+   return least_valued_uri, lowest_value
 end
 
 function CrafterInfoController:_sort_material(material)
@@ -181,6 +251,14 @@ function CrafterInfoController:_sort_material(material)
    table.sort(tags)
 
    return table.concat(tags, ' ')
+end
+
+function CrafterInfoController:get_player_id()
+   return self._sv.player_id
+end
+
+function CrafterInfoController:get_formatted_recipe(recipe)
+   return self._formatted_recipes[recipe]
 end
 
 function CrafterInfoController:get_possible_recipes(tags)
@@ -196,24 +274,20 @@ function CrafterInfoController:get_order_lists()
 end
 
 function CrafterInfoController:get_reserved_ingredients(ingredient_type)
-   if not self._sv.reserved_ingredients[ingredient_type] then
-      return 0
-   end
-
-   return self._sv.reserved_ingredients[ingredient_type]
+   return self._sv.reserved_ingredients[ingredient_type] or 0
 end
 
 function CrafterInfoController:add_to_reserved_ingredients(ingredient_type, amount)
    -- uncomment logging when we want to see the table's contents
-   --self._log:debug('current reserved list: %s', radiant.util.table_tostring(self._sv.reserved_ingredients))
-   self._log:debug('adding %d of "%s" to the reserved list', amount, ingredient_type)
+   --log:debug('current reserved list: %s', radiant.util.table_tostring(self._sv.reserved_ingredients))
+   log:debug('adding %d of "%s" to the reserved list', amount, ingredient_type)
 
    if not self._sv.reserved_ingredients[ingredient_type] then
       self._sv.reserved_ingredients[ingredient_type] = amount
-      return
+   else
+      self._sv.reserved_ingredients[ingredient_type] = self._sv.reserved_ingredients[ingredient_type] + amount
    end
 
-   self._sv.reserved_ingredients[ingredient_type] = self._sv.reserved_ingredients[ingredient_type] + amount
    self.__saved_variables:mark_changed()
 end
 
@@ -223,8 +297,8 @@ function CrafterInfoController:remove_from_reserved_ingredients(ingredient_type,
    end
 
    -- uncomment logging when we want to see the table's contents
-   --self._log:debug('current reserved list: %s', radiant.util.table_tostring(self._sv.reserved_ingredients))
-   self._log:debug('removing %d of "%s" from the reserved list', amount, ingredient_type)
+   --log:debug('current reserved list: %s', radiant.util.table_tostring(self._sv.reserved_ingredients))
+   log:debug('removing %d of "%s" from the reserved list', amount, ingredient_type)
 
    self._sv.reserved_ingredients[ingredient_type] = self._sv.reserved_ingredients[ingredient_type] - amount
    if self._sv.reserved_ingredients[ingredient_type] == 0 then

@@ -65,6 +65,16 @@ App.StonehearthTerrainVisionWidget.reopen({
          //heatmapList.hide();
          //heatmapList.attr('style', '');
       });
+
+      $(top).on("show_processing_meter_changed", function (_, e) {
+         // reposition the widget if the processing meter's visibility changes
+         if (e.value) {
+            self.$('#stonehearthTerrainVision').removeClass('meter-hidden');
+         }
+         else {
+            self.$('#stonehearthTerrainVision').addClass('meter-hidden');
+         }
+      });
    },
 
    willDestroyElement: function() {

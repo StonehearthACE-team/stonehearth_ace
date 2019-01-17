@@ -1,0 +1,28 @@
+<script type="text/x-handlebars" data-template-name="componentInfo">
+<div id="componentInfo" class="gui">
+   <div class="window">
+      <div class="title">{{i18n stonehearth_ace:ui.game.componentInfo.title}}<div class="closeButton"></div></div>
+
+      <div class="downSection">
+         {{#each component in view.componentsInfo}}
+         <div class="component">
+            <div class="componentHeader">
+               {{#if component.icon}}<img class="classIcon" {{bind-attr src=component.icon}}/>{{/if}}
+               <span>{{i18n_key component.displayName}}</span>
+            </div>
+            {{#if component.generalDetails}}
+            <div class="details general">
+               {{formatted_i18n_key component.generalDetails}}
+            </div>
+            {{/if}}
+            {{#each specific in component.specificDetails}}
+            <p class="details specific">
+               {{formatted_i18n_key specific.details specific.i18n_data}}
+            </p>
+            {{/each}}
+         </div>
+         {{/each}}
+      </div>
+   </div>
+</div>
+</script>

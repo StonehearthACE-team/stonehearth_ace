@@ -44,7 +44,7 @@ local SPREAD_FN_DEFAULT = 'default'
 local SPREAD_FN_HORIZONTAL_WALK = 'horizontal_walk'
 
 function VineComponent:initialize()
-   self._sv.growth_timer = nil
+   self._sv._growth_timer = nil
    self._current_season = nil
    
    if not self._sv.render_directions then
@@ -57,7 +57,7 @@ function VineComponent:initialize()
 
    local json = radiant.entities.get_json(self)
 
-   if not self._sv.render_options or not self._sv.render_models then
+   if not self._sv.render_options or not self._sv._render_models then
       local json_options = json.render_options or {}
 
       local options = {faces = {}, seasonal_model_switcher = json_options.seasonal_model_switcher}
@@ -79,7 +79,7 @@ function VineComponent:initialize()
       end
 
       self._sv.render_options = options
-      self._sv.render_models = models
+      self._sv._render_models = models
       if json_options.casts_shadows ~= nil then
          self._sv.casts_shadows = json_options.casts_shadows
       end
@@ -109,7 +109,7 @@ end
 
 function VineComponent:create()
    if self._sv.render_options.seasonal_model_switcher then
-      self._sv.switch_season_time = rng:get_real(0, 1)  -- Choose a point in the transition at which this instance switches.
+      self._sv._switch_season_time = rng:get_real(0, 1)  -- Choose a point in the transition at which this instance switches.
    end
    -- instead of making all naturally-spawning vines not grow, just have them start with a lower num_growths_remaining
    -- since they always decrease it when growing, they should never take over the world
@@ -169,9 +169,9 @@ function VineComponent:destroy()
 end
 
 function VineComponent:_stop_growth_timer()
-   if self._sv.growth_timer then
-      self._sv.growth_timer:destroy()
-      self._sv.growth_timer = nil
+   if self._sv._growth_timer then
+      self._sv._growth_timer:destroy()
+      self._sv._growth_timer = nil
    end
 
    self.__saved_variables:mark_changed()
@@ -183,18 +183,18 @@ function VineComponent:_start_growth_timer()
    if self._sv.num_growths_remaining > 0 then
       local duration = self:_get_growth_period(self._sv.num_growths_remaining)
       if duration > 0 then
-         self._sv.growth_timer = stonehearth.calendar:set_persistent_timer("VineComponent try_grow", duration, radiant.bind(self, 'try_grow'))
+         self._sv._growth_timer = stonehearth.calendar:set_persistent_timer("VineComponent try_grow", duration, radiant.bind(self, 'try_grow'))
          self.__saved_variables:mark_changed()
       end
    end
 end
 
 function VineComponent:_start()
-   if not self._sv.growth_timer or not self._sv.growth_timer.bind then
+   if not self._sv._growth_timer or not self._sv._growth_timer.bind then
       self:_start_growth_timer()
    else
-      if self._sv.growth_timer then
-         self._sv.growth_timer:bind(function()
+      if self._sv._growth_timer then
+         self._sv._growth_timer:bind(function()
                self:try_grow()
             end)
       end
@@ -223,7 +223,7 @@ function VineComponent:set_num_growths_remaining(num)
 end
 
 function VineComponent:_update_models(season)
-   for position, seasons in pairs(self._sv.render_models) do
+   for position, seasons in pairs(self._sv._render_models) do
       self._sv.render_options.faces[position].model = seasons[season]
    end
 
@@ -233,7 +233,7 @@ end
 function VineComponent:_update_season(transition)
    if self._current_season == transition.to then
       return  -- Already switched.
-   elseif transition.t < self._sv.switch_season_time then
+   elseif transition.t < self._sv._switch_season_time then
       if not self._current_season then
          self._current_season = transition.from
       end
