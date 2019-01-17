@@ -17,9 +17,9 @@ local WATERFALL_MONITOR_TYPES = {
 }
 
 function WaterSignal:initialize()
-   self._sv.signal_region = nil
-   self._sv.world_signal_region = nil
-   self._sv.monitor_types = {}
+   self._sv._signal_region = nil
+   self._sv._world_signal_region = nil
+   self._sv._monitor_types = {}
    self._location = nil
    self._change_cb = nil
    self._cached_waters = {}
@@ -76,15 +76,15 @@ function WaterSignal:get_entity_id()
 end
 
 function WaterSignal:get_signal_region()
-   return self._sv.signal_region
+   return self._sv._signal_region
 end
 
 function WaterSignal:get_world_signal_region()
-   return self._sv.world_signal_region
+   return self._sv._world_signal_region
 end
 
 function WaterSignal:set_signal_region(signal_region)
-   self._sv.signal_region = signal_region
+   self._sv._signal_region = signal_region
    self:_update_region()
 end
 
@@ -98,15 +98,15 @@ end
 function WaterSignal:_update_region()
    local changed = false
    local region
-   if self._sv.signal_region and self._location then
-      region = self._sv.signal_region:translated(self._location)
+   if self._sv._signal_region and self._location then
+      region = self._sv._signal_region:translated(self._location)
       changed = true
-   elseif self._sv.world_signal_region then
+   elseif self._sv._world_signal_region then
       changed = true
    end
 
    if changed then
-      self._sv.world_signal_region = region
+      self._sv._world_signal_region = region
       stonehearth_ace.water_signal:register_water_signal(self)
       self:_on_tick_water_signal()
    end
@@ -114,12 +114,12 @@ function WaterSignal:_update_region()
 end
 
 function WaterSignal:has_monitor_type(monitor_type)
-   return self._sv.monitor_types[monitor_type] ~= nil
+   return self._sv._monitor_types[monitor_type] ~= nil
 end
 
 function WaterSignal:monitors_water()
    for _, type in ipairs(WATER_MONITOR_TYPES) do
-      if self._sv.monitor_types[type] then
+      if self._sv._monitor_types[type] then
          return true
       end
    end
@@ -128,7 +128,7 @@ end
 
 function WaterSignal:monitors_waterfall()
    for _, type in ipairs(WATERFALL_MONITOR_TYPES) do
-      if self._sv.monitor_types[type] then
+      if self._sv._monitor_types[type] then
          return true
       end
    end
@@ -136,7 +136,7 @@ function WaterSignal:monitors_waterfall()
 end
 
 function WaterSignal:get_monitor_types()
-   return radiant.shallow_copy(self._sv.monitor_types)
+   return radiant.shallow_copy(self._sv._monitor_types)
 end
 
 function WaterSignal:set_monitor_types(monitor_types, skip_register)
@@ -144,15 +144,15 @@ function WaterSignal:set_monitor_types(monitor_types, skip_register)
    local types = {}
    for _, monitor_type in ipairs(monitor_types) do
       types[monitor_type] = true
-      if not self._sv.monitor_types[monitor_type] then
+      if not self._sv._monitor_types[monitor_type] then
          changed = true
-         self._sv.monitor_types[monitor_type] = true
+         self._sv._monitor_types[monitor_type] = true
       end
    end
-   for monitor_type, _ in pairs(self._sv.monitor_types) do
+   for monitor_type, _ in pairs(self._sv._monitor_types) do
       if not types[monitor_type] then
          changed = true
-         self._sv.monitor_types[monitor_type] = nil
+         self._sv._monitor_types[monitor_type] = nil
       end
    end
 
@@ -168,9 +168,9 @@ end
 function WaterSignal:add_monitor_types(monitor_types, skip_register)
    local changed = false
    for _, monitor_type in ipairs(monitor_types) do
-      if not self._sv.monitor_types[monitor_type] then
+      if not self._sv._monitor_types[monitor_type] then
          changed = true
-         self._sv.monitor_types[monitor_type] = true
+         self._sv._monitor_types[monitor_type] = true
       end
    end
 
@@ -186,15 +186,15 @@ function WaterSignal:remove_monitor_types(monitor_types, skip_register)
    local changed = false
    if monitor_types then
       for _, monitor_type in ipairs(monitor_types) do
-         if self._sv.monitor_types[monitor_type] then
+         if self._sv._monitor_types[monitor_type] then
             changed = true
-            self._sv.monitor_types[monitor_type] = nil
+            self._sv._monitor_types[monitor_type] = nil
          end
       end
-   elseif next(self._sv.monitor_types) then
+   elseif next(self._sv._monitor_types) then
       -- if we passed in nil, clear out the whole thing
       changed = true
-      self._sv.monitor_types = {}
+      self._sv._monitor_types = {}
    end
 
 	if changed then
@@ -252,8 +252,8 @@ function WaterSignal:_get_intersection_volume(water_comp)
    -- apparently regions (at least the way the water component uses them) are integer-bounded
    -- and the top layer region overlaps the main region layer (see commented get_volume() below)
    local volume_info = water_comp:get_volume_info()
-   local base_intersection = self._sv.world_signal_region:intersect_region(volume_info.base_region)
-   local top_intersection = self._sv.world_signal_region:intersect_region(volume_info.top_region)
+   local base_intersection = self._sv._world_signal_region:intersect_region(volume_info.base_region)
+   local top_intersection = self._sv._world_signal_region:intersect_region(volume_info.top_region)
    local volume = base_intersection:get_area() + top_intersection:get_area() * volume_info.top_height
    return volume
 end
@@ -327,13 +327,13 @@ function WaterSignal:set_waterfall_volume(waterfall_components)
 end
 
 function WaterSignal:_on_tick_water_signal(waters, waterfalls)
-	if not self._sv.signal_region or not next(self._sv.monitor_types) then
+	if not self._sv._signal_region or not next(self._sv._monitor_types) then
 		return
 	end
 	
 	-- do we really need to update the water regions we're checking every single tick?
 	-- not sure how expensive this is
-	local region = self._sv.world_signal_region
+	local region = self._sv._world_signal_region
 	if not region then
 		self:_reset()
 		return
@@ -343,7 +343,7 @@ function WaterSignal:_on_tick_water_signal(waters, waterfalls)
    local changes = {}
 
    for _, check in ipairs(WATER_MONITOR_TYPES) do
-      if self._sv.monitor_types[check] then
+      if self._sv._monitor_types[check] then
          local check_changed = self['set_'..check](self, water_components)
          if check_changed then
             changes[check] = {value = self['get_'..check](self)}
@@ -352,7 +352,7 @@ function WaterSignal:_on_tick_water_signal(waters, waterfalls)
    end
 
    for _, check in ipairs(WATERFALL_MONITOR_TYPES) do
-      if self._sv.monitor_types[check] then
+      if self._sv._monitor_types[check] then
          local check_changed = self['set_'..check](self, waterfall_components)
          if check_changed then
             changes[check] = {value = self['get_'..check](self)}

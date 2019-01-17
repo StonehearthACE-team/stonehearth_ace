@@ -6,14 +6,14 @@ local log = radiant.log.create_logger('water_signal')
 local WaterSignalComponent = class()
 
 function WaterSignalComponent:initialize()
-	self._sv.signals = {}
+	self._sv._signals = {}
 end
 
 function WaterSignalComponent:activate()
-   for name, signal in pairs(self._sv.signals) do
+   for name, signal in pairs(self._sv._signals) do
       if not signal:get_id() then
          signal:destroy()
-         self._sv.signals[name] = nil
+         self._sv._signals[name] = nil
          self.__saved_variables:mark_changed()
       end
    end
@@ -23,7 +23,7 @@ function WaterSignalComponent:activate()
          local location = radiant.entities.get_world_grid_location(self._entity)
          if location ~= self._location then
             self._location = location
-            for _, signal in pairs(self._sv.signals) do
+            for _, signal in pairs(self._sv._signals) do
                signal:set_location(location)
             end
          end
@@ -62,7 +62,7 @@ function WaterSignalComponent:set_signal(name, region, monitor_types, change_cal
       signal:set_settings(region, monitor_types, change_callback)
    else
       signal = radiant.create_controller('stonehearth_ace:water_signal', self:get_entity_id(), self:get_entity_id() .. '|' .. name, region, monitor_types, change_callback)
-      self._sv.signals[name] = signal
+      self._sv._signals[name] = signal
       self.__saved_variables:mark_changed()
    end
    signal:set_location(self._location)
@@ -71,25 +71,25 @@ function WaterSignalComponent:set_signal(name, region, monitor_types, change_cal
 end
 
 function WaterSignalComponent:get_signals()
-   return self._sv.signals
+   return self._sv._signals
 end
 
 function WaterSignalComponent:get_signal(name)
-   return self._sv.signals[name]
+   return self._sv._signals[name]
 end
 
 function WaterSignalComponent:remove_signal(name)
-   if self._sv.signals[name] then
-      self._sv.signals[name]:destroy()
-      self._sv.signals[name] = nil
+   if self._sv._signals[name] then
+      self._sv._signals[name]:destroy()
+      self._sv._signals[name] = nil
       self.__saved_variables:mark_changed()
    end
 end
 
 function WaterSignalComponent:clear_signals()
-   for name, signal in pairs(self._sv.signals) do
+   for name, signal in pairs(self._sv._signals) do
       signal:destroy()
-      self._sv.signals[name] = nil
+      self._sv._signals[name] = nil
    end
    self.__saved_variables:mark_changed()
 end
