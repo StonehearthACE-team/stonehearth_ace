@@ -18,7 +18,7 @@ App.StonehearthTaskManagerView.reopen({
       // need to apply the setting on load as well
       radiant.call('radiant:get_config', 'mods.stonehearth_ace.show_processing_meter')
       .done(function(o) {
-         var show_processing_meter = o['mods.stonehearth_ace.show_processing_meter'] || false;
+         var show_processing_meter = o['mods.stonehearth_ace.show_processing_meter'] != false;
          var e = {
             value: show_processing_meter
          };
