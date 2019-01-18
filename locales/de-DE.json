@@ -4516,7 +4516,7 @@
             "display_name": "Wüstenreißzahn"
          },
          "rc_bow": {
-            "display_name": "i18n(stonehearth_ace:entities.weapons.rc_bow.display_name)"
+            "display_name": "Wüstenbogen"
          },
          "rc_bronze_axe": {
             "display_name": "Bronzerne Wüstenaxt"
@@ -5499,8 +5499,18 @@
                "party_4": "Gruppe 4"
             }
          },
+         "unit_frame": {
+            "show_promotion_tree": {
+               "tooltip_title": "Job ändern Jobs",
+               "tooltip_description": "Klicke hier um diesen Hearthling einen anderen Job zu geben."
+            },
+            "toggle_component_info": {
+               "tooltip_title": "Objektinformationen umschalten",
+               "tooltip_description": "Klick um zusätzliche Informationen zu diesem Objekt ein- oder auszublenden."
+            }
+         },
          "componentInfo": {
-            "title": "Component Info"
+            "title": "Objektinformationen"
          }
       },
       "shell": {
@@ -5583,6 +5593,14 @@
             "fish_meat_resource_name": "Irgendein Fischfleisch",
             "wool_resource_name": "Irgendeine Wolle"
          }
+      },
+      "hotkeys": {
+         "show_promotion_tree": {
+            "display_name": "Job ändern"
+         },
+         "toggle_component_info": {
+            "display_name": "Objektinformationen umschalten"
+         }
       }
    },
    "component_info": {
@@ -5590,7 +5608,7 @@
          "equipment_piece": {
             "display_name": "Equipment Piece",
             "description": "Can be equipped by certain hearthlings."
-            },
+         },
          "evolve": {
             "display_name": "Evolve",
             "description": "Will transform into something else. If it doesn't have a command for it, this will happen eventually over time."
