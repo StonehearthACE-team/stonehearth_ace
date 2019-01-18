@@ -1,0 +1,32 @@
+{
+   "components": {
+	  "mixintypes": {
+		 "model_variants": "override"
+	  },
+      "model_variants": {
+         "default": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(egg.qb)",
+					 "file(egg_1.qb)",
+					 "file(egg_2.qb)",
+					 "file(egg_3.qb)"
+                  ]
+               }
+            ]
+         },
+         "decay_1": {
+            "models": [
+               "file(egg_rotting.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "icon": "file(egg.png)"
+      }
+   }
+}

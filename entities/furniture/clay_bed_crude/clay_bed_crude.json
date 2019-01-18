@@ -37,13 +37,28 @@
       },
       "stonehearth:ownable_object": {
          "ownership_type": "bed"
-      }
+      },
+      "stonehearth:evolve": {}
    },
    "entity_data": {
       "stonehearth:bed": {
          "shelter": {
             "contribution_threshold": 20,
             "score": 6
+         }
+      },
+      "stonehearth:evolve_data": {
+         "next_stage": "stonehearth:furniture:clay_bed",
+         "evolve_command": "stonehearth_ace:commands:request_evolve:add_thatch_to_bed",
+         "request_action": "stonehearth_ace:perform_evolve",
+         "request_action_overlay_effect": "stonehearth:effects:chop_overlay_effect",
+         "evolve_ingredient_material": "thatch resource",
+         "evolving_worker_effect": "fiddle",
+         "evolving_worker_effect_times": 1,
+         "evolve_effect": "stonehearth:effects:item_created",
+         "evolve_worker_required_job": {
+            "stonehearth:jobs:worker": true,
+            "stonehearth:jobs:potter": true
          }
       },
       "stonehearth:net_worth": {
