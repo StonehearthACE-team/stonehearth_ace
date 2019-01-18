@@ -1,3 +1,19 @@
+var _selectionHasComponentInfo = false;
+
+var _selectionHasComponentInfoChanged = function() {
+   if (_selectionHasComponentInfo) {
+      $('#componentInfoButton').show().css('display', 'inline-flex');
+   }
+   else {
+      $('#componentInfoButton').hide();
+   }
+};
+
+$(top).on("selection_has_component_info_changed", function (_, e) {
+   _selectionHasComponentInfo = e.has_component_info;
+   _selectionHasComponentInfoChanged();
+});
+
 $(top).on('stonehearthReady', function (cc) {
    if (!App.gameView) {
       return;
@@ -17,32 +33,53 @@ App.StonehearthUnitFrameView.reopen({
       var self = this;
       self._super();
 
-      var btn = self.$('#unitFrameExtras');
-      if (btn.length < 1) {
-         var div = $("#unitFrameExtras");
-         div.appendTo(self.$("#unitFrame"));
-         btn = self.$('#componentInfoButton');
-         btn.on('click', self.toggleComponentInfo);
+      var div = self.$('#componentInfoButton');
+      if (div.length < 1) {
+         var div = $("#componentInfoButton");
+         div.insertAfter(self.$("#nametag"));
+         App.hotkeyManager.makeTooltipWithHotkeys(div,
+            i18n.t('stonehearth_ace:ui.game.unit_frame.toggle_component_info.tooltip_title'),
+            i18n.t('stonehearth_ace:ui.game.unit_frame.toggle_component_info.tooltip_description'));
+         div.on('click', self.toggleComponentInfo);
       }
 
-      $(top).on("selection_has_component_info_changed", function (_, e) {
-         if (e.has_component_info) {
-            self.$('#componentInfoButton').show();
-         }
-         else {
-            self.$('#componentInfoButton').hide();
-         }
+      div = self.$('#descriptionDiv');
+      div.on('click', function() {
+         self.showPromotionTree();
       });
+
+      _selectionHasComponentInfoChanged();
    },
 
    toggleComponentInfo: function() {
       $(top).trigger('component_info_toggled', {});
    },
 
+   _canPromoteSelectedEntity: function() {
+      var self = this;
+      return self.get('model.stonehearth:job') && self.get('model.player_id') == App.stonehearthClient.getPlayerId();
+   },
+
    showPromotionTree: function() {
-      var entity = App.stonehearthClient.getSelectedEntity()
-      if (entity) {
-         App.stonehearthClient.showPromotionTree(entity);
+      var self = this;
+      if (self._canPromoteSelectedEntity()) {
+         // do we need to do a click sound here? the promotion tree window makes a "paper" sound when it comes up
+         radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:ui:start_menu:popup'} );
+         App.stonehearthClient.showPromotionTree(self.get('uri'));
       }
-   }
+   },
+
+   _updatePromotionTooltip: function() {
+      var self = this;
+      var div = self.$('#descriptionDiv');
+      if (div.hasClass('tooltipstered')) {
+         div.tooltipster('destroy');
+      }
+      if (self._canPromoteSelectedEntity()) {
+         div.attr('hotkey_action', 'ui:show_promotion_tree');
+         App.hotkeyManager.makeTooltipWithHotkeys(div,
+            i18n.t('stonehearth_ace:ui.game.unit_frame.show_promotion_tree.tooltip_title'),
+            i18n.t('stonehearth_ace:ui.game.unit_frame.show_promotion_tree.tooltip_description'));
+      }
+   }.observes('model.uri')
 });

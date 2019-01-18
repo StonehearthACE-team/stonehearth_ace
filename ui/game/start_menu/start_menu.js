@@ -22,6 +22,11 @@ App.StonehearthStartMenuView.reopen({
       };
 
       self._super();
+
+      App.waitForStartMenuLoad().then(() => {
+         // this is a call to a global function stored in task_manager.js
+         _updateProcessingMeterShown();
+      });
    },
 
    createUnderfarm: function() {

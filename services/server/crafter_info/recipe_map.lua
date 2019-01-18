@@ -38,14 +38,15 @@ end
 function RecipeMap:intersecting_values(keys)
    local keys_table = radiant.util.split_string(keys, ' ')
 
-   local last_key = table.remove(keys_table)
+   local num_keys = #keys_table
    local values = {}
-   local possibles = self._map[last_key]
+   local possibles = self._map[keys_table[1]]
 
    if possibles then
       for value, count in pairs(possibles) do
          local full_match = true
-         for _, key in ipairs(keys_table) do
+         for i = 2, #keys_table do
+            local key = keys_table[i]
             local bucket = self._map[key]
             if not bucket or not bucket[value] then
                full_match = false
@@ -54,33 +55,23 @@ function RecipeMap:intersecting_values(keys)
          end
 
          if full_match then
-            values[value] = count
+            -- also make sure the recipe produces all the keys in a single product
+            -- for example, you wouldn't want something that produces a wooden bed with a cloth resource
+            -- to be considered as producing "wood resource"
+            -- also, each product of the recipe should have its count be included if it fully matches
+            -- (this is already done properly for single-key calls of this function, e.g., just "wood")
+            if num_keys > 1 then
+               count = stonehearth_ace.util.sum_where_all_keys_present(value.recipe.product_materials, value.recipe.products, keys_table)
+            end
+
+            if count > 0 then
+               values[value] = count
+            end
          end
       end
    end
 
    return values
-end
-
--- Checks if `value` is contained within `key`.
--- Returns true if it does, else false.
---
-function RecipeMap:contains(key, value1)
-   -- Compare what the two recipe produce and their ingredients, ugly but simple and efficient
-   local v_prod1 = value1.recipe.produces
-   local v_ingr1 = value1.recipe.ingredients
-   value1 = {v_prod1, v_ingr1}
-
-   for value2, _ in pairs(self._map[key] or {}) do
-      local v_prod2 = value2.recipe.produces
-      local v_ingr2 = value2.recipe.ingredients
-      value2 = {v_prod2, v_ingr2}
-      if stonehearth_ace.util.deep_compare(value2, value1, true) then
-         return true
-      end
-   end
-
-   return false
 end
 
 return RecipeMap
