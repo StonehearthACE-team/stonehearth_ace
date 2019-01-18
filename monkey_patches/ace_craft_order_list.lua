@@ -16,10 +16,12 @@ AceCraftOrderList._ace_old_add_order = CraftOrderList.add_order
 -- Furthermore, when maintaining orders, it makes sure that there are no more than
 -- one instance of each recipe that's maintained.
 --
-function AceCraftOrderList:add_order(player_id, recipe, condition, is_recursive_call)
+function AceCraftOrderList:add_order(player_id, recipe, condition, associated_orders)
    if not self:_should_auto_craft_recipe_dependencies(player_id) then
       return self:insert_order(player_id, recipe, condition)
    end
+
+   local is_recursive_call = associated_orders ~= nil
 
    local inv = stonehearth.inventory:get_inventory(player_id)
    local crafter_info = stonehearth_ace.crafter_info:get_crafter_info(player_id)
@@ -93,7 +95,13 @@ function AceCraftOrderList:add_order(player_id, recipe, condition, is_recursive_
             --log:debug('adding the recipe "%s" to %s %d of those', recipe_info.recipe.recipe_name, new_condition.type, missing)
 
             -- Add the new order to the appropiate order list
-            recipe_info.order_list:add_order(player_id, recipe_info.recipe, new_condition, true)
+            if not associated_orders then
+               associated_orders = {}
+            end
+            local associated_order = recipe_info.order_list:add_order(player_id, recipe_info.recipe, new_condition, associated_orders)
+            if associated_order and associated_order ~= true then
+               table.insert(associated_orders, {order_list = recipe_info.order_list, order = associated_order})
+            end
          end
       end
    end
@@ -131,12 +139,26 @@ function AceCraftOrderList:add_order(player_id, recipe, condition, is_recursive_
 
    local result = self:insert_order(player_id, recipe, condition, old_order_index)
 
+   -- if we got to this point, it's because we're auto-crafting dependencies
+   result:set_auto_crafting(true)
+
+   if not is_recursive_call and associated_orders then
+      -- if this is the original parent order, and there are multiple child orders, we can now tell each of these orders about the rest
+      table.insert(associated_orders, {order_list = self, order = result})
+      for _, associated_order in ipairs(associated_orders) do
+
+         associated_order.order:set_associated_orders(associated_orders)
+      end
+   end
+
    return result
 end
 
 function AceCraftOrderList:insert_order(player_id, recipe, condition, maintain_order_index)
-   local result = self:_ace_old_add_order(player_id, recipe, condition)
+   self:_ace_old_add_order(player_id, recipe, condition)
    log:debug('inserted order for %d %s', condition.at_least or condition.amount, recipe.recipe_name)
+
+   local order = self._sv.orders[#self._sv.orders]
 
 	local old_order_index = condition.order_index or maintain_order_index
 	if old_order_index then
@@ -148,13 +170,13 @@ function AceCraftOrderList:insert_order(player_id, recipe, condition, maintain_o
 		--       like a waste of resources to just do that sort of operation. So
 		--       we just copy that function's body here with that change in mind.
 
-		local new_order_index = radiant.size(self._sv.orders) - 1
-		local order = self._sv.orders[new_order_index]
-		table.remove(self._sv.orders, new_order_index)
+		table.remove(self._sv.orders, #self._sv.orders)
 		table.insert(self._sv.orders, old_order_index, order)
 
 		self:_on_order_list_changed()
-	end
+   end
+   
+   return order
 end
 
 -- this is used by the job_info_controller:queue_order_if_possible
@@ -169,7 +191,7 @@ function AceCraftOrderList:request_order_of(player_id, product, amount)
          type = 'make',
          amount = num
       }
-      self:add_order(player_id, recipe_info.recipe, condition)
+      return recipe_info.order_list:add_order(player_id, recipe_info.recipe, condition)
    end
 end
 
@@ -178,17 +200,29 @@ AceCraftOrderList._ace_old_delete_order_command = CraftOrderList.delete_order_co
 -- here it's also making sure that the ingredients needed for the order is removed
 -- from the reserved ingredients table.
 --
-function AceCraftOrderList:delete_order_command(session, response, order_id)
-   if self:_should_auto_craft_recipe_dependencies(session.player_id) then
-      local order = self._sv.orders[ self:find_index_of(order_id) ]
+function AceCraftOrderList:delete_order_command(session, response, order_id, delete_associated_orders)
+   local order_index = self:find_index_of(order_id)
+   if order_index then
+      local order = self._sv.orders[order_index]
       if order then
-         local condition = order:get_condition()
+         if order:get_auto_crafting() then
+            local condition = order:get_condition()
 
-         if condition.type == 'make' and condition.remaining > 0 then
-            self:remove_from_reserved_ingredients(order:get_recipe().ingredients,
-                                                  order_id,
-                                                  session.player_id,
-                                                  condition.remaining)
+            if condition.type == 'make' and condition.remaining > 0 then
+               self:remove_from_reserved_ingredients(order:get_recipe().ingredients,
+                                                      order_id,
+                                                      session.player_id,
+                                                      condition.remaining)
+            end
+
+            if delete_associated_orders then
+               -- also remove any associated orders
+               for _, associated_order in ipairs(order:get_associated_orders() or {}) do
+                  if order_id ~= associated_order.order_id then
+                     associated_order.order_list:delete_order_command(session, response, associated_order.order:get_id())
+                  end
+               end
+            end
          end
       end
    end
