@@ -45,4 +45,27 @@ function util.sequence_equals(t1, t2)
    return true
 end
 
+function util.sum_where_all_keys_present(key_maps, values, keys)
+   if type(keys) == 'string' then
+      keys = radiant.util.split_string(keys, ' ')
+   end
+
+   local total_value = 0
+
+   for match_key, key_map in pairs(key_maps) do
+      local match = true
+      for _, key in ipairs(keys) do
+         if not key_map[key] then
+            match = false
+            break
+         end
+      end
+      if match then
+         total_value = total_value + values[match_key]
+      end
+   end
+
+   return total_value
+end
+
 return util

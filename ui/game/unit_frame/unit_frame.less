@@ -1,22 +1,24 @@
+#unitFrame {
+   left: 50px;
+}
+
 #componentInfoButton {
-   width: 32px;
-   height: 32px;
-   background-repeat: no-repeat;
-   background-image: url('images/button_light_blue.png');
-   background-size: contain;
-   
-   position: absolute;
-   right: 0px;
-   bottom: 115px;
-   z-index: 1;
-   
-   a {
-      height: 24px;
-      width: 24px;
-      margin: 4px 4px 6px 4px;
-      display: block;
+   display: inline-flex;
+   height: 20px;
+   padding: 5px;
+   border: 3px #383230 solid;
+   border-radius: 8px;
+   align-items: center;
+   background-clip: padding-box;
+   background-color: #ebebeb;
+   margin-left: 3px;
+   display: none;
+
+   #infoIcon {
+      background-image: url(images/info.png);
       background-repeat: no-repeat;
-      background-image: url('images/info_icon.png');
-      background-size: contain;
+      width: 22px;
+      height: 22px;
+      margin: 5px;
    }
 }

@@ -5505,8 +5505,18 @@
                "party_4": "Party 4"
             }
          },
+         "unit_frame": {
+            "show_promotion_tree": {
+               "tooltip_title": "Change Jobs",
+               "tooltip_description": "Click to promote this hearthling to a different job."
+            },
+            "toggle_component_info": {
+               "tooltip_title": "Toggle Entity Info",
+               "tooltip_description": "Click to show or hide extra information about this entity."
+            }
+         },
          "componentInfo": {
-            "title": "Component Info"
+            "title": "Entity Info"
          }
       },
       "shell": {
@@ -5588,6 +5598,14 @@
             "fish_roe_resource_name": "Any Fish Roe",
             "fish_meat_resource_name": "Any Fish Meat",
             "wool_resource_name": "Any Wool"
+         }
+      },
+      "hotkeys": {
+         "show_promotion_tree": {
+            "display_name": "Change Jobs"
+         },
+         "toggle_component_info": {
+            "display_name": "Toggle Entity Info"
          }
       }
    },

@@ -79,7 +79,7 @@ function AceCraftOrderList:add_order(player_id, recipe, condition, is_recursive_
             if ingredient.uri then
                num_crafted = recipe_info.recipe.products[ingredient.uri]
             else
-               num_crafted = self:_recipe_produces_materials(recipe, ingredient.material)
+               num_crafted = self:_recipe_produces_materials(recipe_info.recipe, ingredient.material)
             end
             local num_to_craft = math.ceil(missing / num_crafted)
 
@@ -317,27 +317,9 @@ function AceCraftOrderList:ace_get_ingredient_amount_in_order_list(crafter_info,
    return ingredient_count
 end
 
+
 function AceCraftOrderList:_recipe_produces_materials(recipe, material)
-   if type(material) == 'string' then
-      material = radiant.util.split_string(material, ' ')
-   end
-
-   local num_produces = 0
-
-   for product, material_map in pairs(recipe.product_materials) do
-      local match = true
-      for _, mat in ipairs(material) do
-         if not material_map[mat] then
-            match = false
-            break
-         end
-      end
-      if match then
-         num_produces = num_produces + recipe.products[product]
-      end
-   end
-
-   return num_produces
+   return stonehearth_ace.util.sum_where_all_keys_present(recipe.product_materials, recipe.products, material)
 end
 
 function AceCraftOrderList:_ace_matching_tags(tags1, tags2)
