@@ -1663,6 +1663,25 @@
                "recipe_name": "Large Thatch Bundle",
                "description": "Store a large amount of thatching for later use.",
                "flavor": ""
+            },
+            "rabbit_feed_recipe": {
+               "description": "Selected carrots for rabbits. Improves the quality of animal produce."
+            },
+            "poyo_feed_recipe": {
+               "description": "Nicely milled food for poyos. Improves the quality of animal produce."
+            },
+            "sheep_feed_recipe": {
+               "description": "Tasty grasses for sheep. Improves the quality of animal produce."
+            },
+            "fodder_recipe": {
+               "recipe_name": "Animal Fodder",
+               "description": "Cheap and efficient for feeding animals, even if not exactly their favorite food...",
+               "flavor": ""
+            },
+            "ostrich_feed_recipe": {
+               "recipe_name": "Ostrich Feed",
+               "description": "A nutritious supplement for ostriches. Improves the quality of animal produce.",
+               "flavor": ""
             }
          },
          "cook_mill_powered": {
@@ -1768,6 +1787,16 @@
                "recipe_name": "Holiday Cheer Cap",
                "description": "The ACE Team would like to wish you all very happy and wonderful holidays!",
                "flavor": "This recipe shall be removed after New Year's Eve... So craft yours while you can!"
+            },
+            "backpack_cloth_recipe": {
+               "recipe_name": "Cloth Worker's Backpack",
+               "description": "Craft a very useful accessory that will allow Workers to be a bit more efficient at hauling.",
+               "flavor": "Workers with backpacks won't be slowed down by carrying things and will pack/unpack faster"
+            },
+            "backpack_leather_recipe": {
+               "recipe_name": "Leather Worker's Backpack",
+               "description": "Craft a very useful accessory that will allow Workers to be much more efficient at hauling.",
+               "flavor": "Workers with backpacks won't be slowed down by carrying things and will pack/unpack faster"
             },
             "sleeping_bag_recipe": {
                "recipe_name": "Bedroll",
@@ -3119,6 +3148,14 @@
                "display_name": "Cotton Animal Bed",
                "description": "Who wouldn't love to sleep in a comfy and fluffy cotton bed?"
             }
+         },
+         "pasture_bed_small": {
+            "display_name": "Small Pasture Bedding",
+            "description": "Small pasture animals will look for these during the night or bad weather."
+         },
+         "pasture_bed": {
+            "display_name": "Pasture Bedding",
+            "description": "Large pasture animals will look for these during the night or bad weather."
          }
       },
       "recipes": {
@@ -3598,6 +3635,18 @@
             "display_name_arctic": "Longwool Sheep",
             "display_name_desert": "Dune Sheep",
             "display_name_highlands": "Bighorn Sheep"
+         },
+         "poyo": {
+            "nest": {
+               "display_name": "Poyo Nest",
+               "description": "I'm sure they wouldn't mind if an egg or two are missing... Right?"
+            }
+         },
+         "big_bird": {
+            "nest": {
+               "display_name": "Big Bird Nest",
+               "description": "Grab it and run!"
+            }
          }
       },
       "food": {
@@ -5105,6 +5154,14 @@
          "food_trough_wood": {
             "display_name": "Wooden Manger",
             "description": "Used by Shepherds to serve food for the animals in a pasture."
+         },
+         "food_trough_stone": {
+            "display_name": "Stone Manger",
+            "description": "Used by Shepherds to serve food for the animals in a pasture."
+         },
+         "food_trough_clay": {
+            "display_name": "Clay Manger",
+            "description": "Used by Shepherds to serve food for the animals in a pasture."
          }
       },
       "tools": {
@@ -5597,7 +5654,9 @@
             "algae_resource_name": "Any Water Weed",
             "fish_roe_resource_name": "Any Fish Roe",
             "fish_meat_resource_name": "Any Fish Meat",
-            "wool_resource_name": "Any Wool"
+            "wool_resource_name": "Any Wool",
+            "grain_resource_name": "Any Grain",
+            "grain_flour_resource_name": "Any Flour"
          }
       },
       "hotkeys": {

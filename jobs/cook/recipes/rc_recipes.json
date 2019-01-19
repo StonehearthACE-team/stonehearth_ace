@@ -20,6 +20,25 @@
 			   "recipe": "file(catfish_tagine_recipe.json)"
 			}			
          }
+      },
+	  "animal_feed": {
+         "recipes": {
+            "fodder": {
+               "recipe": "file(rc_fodder_recipe.json)"
+            },
+            "ostrich_feed": {
+               "recipe": "file(rc_ostrich_feed_recipe.json)"
+            },
+			"sheep_feed": {
+               "recipe": "file(rc_sheep_feed_recipe.json)"
+            },
+            "poyo_feed": {
+               "recipe": "file(rc_poyo_feed_recipe.json)"
+            },
+            "rabbit_feed": {
+               "recipe": "file(rc_rabbit_feed_recipe.json)"
+            }
+         }
       }
    }
 }

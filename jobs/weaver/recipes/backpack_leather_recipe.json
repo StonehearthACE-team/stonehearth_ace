@@ -1,0 +1,30 @@
+{
+   "type": "recipe",
+   "effort": 30,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.weaver.recipes.backpack_leather_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.weaver.recipes.backpack_leather_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.weaver.recipes.backpack_leather_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/tools/backpack_leather/backpack_leather.png",
+   "workshop": "stonehearth:weaver:workbench",
+   "level_requirement": 5,
+   "ingredients": [
+      {
+         "material": "leather resource",
+         "count": 2
+      },
+      {
+         "material": "thread resource",
+         "count": 1
+      },
+	  {
+         "material": "ingot soft_metal",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:tools:backpack_leather"
+      }
+   ]
+}

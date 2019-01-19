@@ -1,0 +1,96 @@
+{
+   "mixins": "stonehearth:mixins:boulder",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(big_bird_nest.qb)"
+            ]
+         }
+      },
+      "render_info": {
+         "scale": 0.09
+      },
+      "stonehearth:resource_node": {
+         "category": "harvest",
+         "durability": 1,
+         "harvester_effect": "fiddle",
+         "harvest_overlay_effect": "stonehearth_ace:effects:harvest_egg_overlay_effect",
+         "resource": "stonehearth:food:egg_large",
+         "resource_loot_table": {
+            "entries": {
+               "optional": {
+                  "num_rolls": {
+                     "min": 0,
+                     "max": 1
+                  },
+                  "items": {
+                     "none": {
+                        "uri": "",
+                        "weight": 2
+                     },
+                     "egg": {
+                        "uri": "stonehearth:food:egg_large",
+                        "weight": 1
+                     }
+                  }
+               }
+            }
+         }
+      },
+      "mob": {
+         "align_to_grid": [
+            "x",
+            "z"
+         ],
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0, "y": 0, "z": 0 }
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 1, "y": 1, "z": 1 }
+            }
+         ]
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 1, "y": 1, "z": 1 }
+            }
+         ]
+      },
+      "stonehearth:loot_drops": {
+         "entries": {
+            "pasture_bed": {
+               "num_rolls": {
+                  "min": 1,
+                  "max": 1
+               },
+               "items": {
+                  "pasture_bed": {
+                     "uri": "stonehearth_ace:furniture:pasture_bed_small"
+                  }
+               }
+            }
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.critters.big_bird.nest.display_name)",
+         "description": "i18n(stonehearth_ace:entities.critters.big_bird.nest.description)",
+         "icon": "file(big_bird_nest.png)",
+         "category": "containers",
+         "material_tags": [
+            "nest"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": 5
+      }
+   }
+}

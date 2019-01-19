@@ -1,0 +1,16 @@
+{
+   "mixins": "/stonehearth/jobs/cook/recipes/rabbit_feed_recipe.json",
+   "mixintypes": {
+		"ingredients": "override"
+   },
+   "ingredients": [
+      {
+         "uri": "stonehearth:food:carrot:carrot_basket",
+         "count": 1
+      },
+	  {
+         "material": "thatch resource",
+         "count": 1
+      }
+   ]
+}
