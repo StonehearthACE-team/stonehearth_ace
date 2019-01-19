@@ -1663,6 +1663,25 @@
                "recipe_name": "Großes Stroh-Bündel",
                "description": "Bewahren Sie eine große Menge Stroh für die spätere Verwendung auf.",
                "flavor": ""
+            },
+            "rabbit_feed_recipe": {
+               "description": "Ausgewählte Möhren für Kaninchen. Verbessert die Qualität tierischer Produkte."
+            },
+            "poyo_feed_recipe": {
+               "description": "Schön gemahlenes Essen für BuckBucks. Verbessert die Qualität tierischer Produkte."
+            },
+            "sheep_feed_recipe": {
+               "description": "Leckere Gräser für Schafe. Verbessert die Qualität tierischer Produkte."
+            },
+            "fodder_recipe": {
+               "recipe_name": "Tierfutter",
+               "description": "Günstiger Weg zum Füttern von Tieren, auch wenn es nicht gerade ihre Lieblingsnahrung ist.",
+               "flavor": ""
+            },
+            "ostrich_feed_recipe": {
+               "recipe_name": "Straußenfutter",
+               "description": "Eine nahrhafte Ergänzung für Strauße. Verbessert die Qualität tierischer Produkte.",
+               "flavor": ""
             }
          },
          "cook_mill_powered": {
@@ -1768,6 +1787,16 @@
                "recipe_name": "Feiertagsjubel Mütze",
                "description": "Das ACE-Team wünscht allen Gute und schöne Ferien!",
                "flavor": "Dieses Rezept sollte nach Silvester entfernt werden ... So basteln Sie Ihr, solange Sie können!"
+            },
+            "backpack_cloth_recipe": {
+               "recipe_name": "Stoffrucksack",
+               "description": "Fertige ein sehr nützliches Accessoire, mit dem die Arbeiter beim Transport etwas effizienter arbeiten können.",
+               "flavor": "Arbeiter mit Rucksäcken werden durch das Tragen von Dingen nicht langsamer und packen und entpacken schneller"
+            },
+            "backpack_leather_recipe": {
+               "recipe_name": "Lederrucksack",
+               "description": "Fertige ein sehr nützliches Accessoire, mit dem die Arbeiter beim Transport sehr viel effizienter arbeiten können.",
+               "flavor": "Arbeiter mit Rucksäcken werden durch das Tragen von Dingen nicht langsamer und packen und entpacken schneller"
             },
             "sleeping_bag_recipe": {
                "recipe_name": "Rollbett",
@@ -3113,6 +3142,14 @@
                "display_name": "Baumwoll-Tierbett",
                "description": "Wer würde nicht gerne in einem bequemen und flauschigen Baumwollbett schlafen?"
             }
+         },
+         "pasture_bed_small": {
+            "display_name": "Kleines Weidebett",
+            "description": "Kleine Weidetiere suchen dies auf, nachts oder bei schlechtem Wetter."
+         },
+         "pasture_bed": {
+            "display_name": "Weidebett",
+            "description": "Große Weidetiere suchen dies auf, nachts oder bei schlechtem Wetter."
          }
       },
       "recipes": {
@@ -3592,6 +3629,18 @@
             "display_name_arctic": "Leicester-Schaf",
             "display_name_desert": "Dünenschafe",
             "display_name_highlands": "Dickhornschaf"
+         },
+         "poyo": {
+            "nest": {
+               "display_name": "BuckBuck-Nest",
+               "description": "Ich bin sicher, es wird ihnen nichts ausmachen, wenn ein oder zwei Eier fehlen ... Richtig?"
+            }
+         },
+         "big_bird": {
+            "nest": {
+               "display_name": "Großes Vogelnest",
+               "description": "Greif es und renn!"
+            }
          }
       },
       "food": {
@@ -5097,7 +5146,15 @@
             "description": "Mit der Schale einer mächtigen Frucht hergestellt, kann bis zu 16 Gegenstände aufbewahren."
          },
          "food_trough_wood": {
-            "display_name": "Hölzerne Krippe",
+            "display_name": "Holzkrippe",
+            "description": "Wird vom Schäfer verwendet, um Tiere auf seinen Weiden zu füttern."
+         },
+         "food_trough_stone": {
+            "display_name": "Steinkrippe",
+            "description": "Wird vom Schäfer verwendet, um Tiere auf seinen Weiden zu füttern."
+         },
+         "food_trough_clay": {
+            "display_name": "Lehmkrippe",
             "description": "Wird vom Schäfer verwendet, um Tiere auf seinen Weiden zu füttern."
          }
       },
@@ -5143,11 +5200,11 @@
             "description": "Erhöht geringfügig die Arbeitsgeschwindigkeit des Farmers."
          },
          "backpack_leather": {
-            "display_name": "Lederner Arbeiterrucksack",
+            "display_name": "Lederrucksack",
             "description": "Erlaubt es Arbeitern, beim Transportieren und Wiederauffüllen viel effizienter zu sein."
          },
          "backpack_cloth": {
-            "display_name": "Arbeiterstoffrucksack",
+            "display_name": "Stoffrucksack",
             "description": "Erlaubt es Arbeitern, beim Transportieren und Wiederauffüllen ein wenig effizienter zu sein."
          }
       }
@@ -5591,7 +5648,9 @@
             "algae_resource_name": "Irgendein Wasserkraut",
             "fish_roe_resource_name": "Irgendein Fischrogen",
             "fish_meat_resource_name": "Irgendein Fischfleisch",
-            "wool_resource_name": "Irgendeine Wolle"
+            "wool_resource_name": "Irgendeine Wolle",
+            "grain_resource_name": "Irgendein Korn",
+            "grain_flour_resource_name": "Irgendein Mehl"
          }
       },
       "hotkeys": {
