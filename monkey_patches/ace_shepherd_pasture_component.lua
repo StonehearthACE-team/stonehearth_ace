@@ -29,7 +29,15 @@ function AceShepherdPastureComponent:_unregister_with_town()
 end
 
 function AceShepherdPastureComponent:_destroy_grass()
-	local grass_uri = self:_get_grass_uri()
+	local entities = self:_find_all_grass()
+
+	for _, e in pairs(entities) do
+		radiant.terrain.remove_entity(e)
+	end
+end
+
+function AceShepherdPastureComponent:_find_all_grass()
+   local grass_uri = self:_get_grass_uri()
 	local filter_fn = function(entity)
 		return string.sub(entity:get_uri(), 1, string.len(grass_uri)) == grass_uri
 	end
@@ -38,13 +46,10 @@ function AceShepherdPastureComponent:_destroy_grass()
 	local world_loc = radiant.entities.get_world_grid_location(self._entity)
 	local cube = Cube3(world_loc, world_loc + Point3(size.x, 1, size.z))
 	local region = Region3(cube)
-	local entities = radiant.terrain.get_entities_in_region(region, filter_fn)
-
-	for _, e in pairs(entities) do
-		radiant.terrain.remove_entity(e)
-	end
+	return radiant.terrain.get_entities_in_region(region, filter_fn)
 end
 
+-- called by the shepherd service once the field is created
 function AceShepherdPastureComponent:post_creation_setup()
 	-- spawn a few grass if possible
 	-- determine the amount of grass in the pasture and use that instead of the total area
@@ -136,35 +141,53 @@ function AceShepherdPastureComponent:_get_base_grass_spawn_period()
 	return stonehearth.calendar:parse_duration(spawn_period)
 end
 
-function AceShepherdPastureComponent:_spawn_grass(count, grass)
+function AceShepherdPastureComponent:_spawn_grass(count, spawn_locations)
 	if not count then
 		count = math.ceil(math.sqrt(self:get_num_animals()))
 	end
 	if count < 1 then
 		return
+   end
+
+	if not spawn_locations then
+		spawn_locations = self:_find_grass_spawn_points()
 	end
-	if not grass then
-		grass = self:_find_grass_spawn_points()
-	end
-	if #grass < 1 then
+	if #spawn_locations < 1 then
 		return
-	end
+   end
+   
+   local existing_grass = self:_find_all_grass()
+   local grass_count = radiant.count(existing_grass)
+   count = math.min(count, math.sqrt(#spawn_locations) - grass_count)
+   if count < 1 then
+      return
+   end
 	
 	local grass_uri = self:_get_spawn_grass_uri()
 
 	local rng = _radiant.math.get_default_rng()
-	for i = 1, math.min(#grass, count) do
-		-- try to find an unoccupied space in the bounds; if 20 attempts fail, oh well, don't spawn it
-		for attempt = 1, math.min(#grass, 20) do
-			local location = grass[rng:get_int(1, #grass)] + Point3(0, 1, 0)
+	for i = 1, math.min(#spawn_locations, count) do
+		-- try to find an unoccupied space in the bounds; if 5 attempts fail, oh well, don't spawn it
+      for attempt = 1, math.min(count, 5) do
+         -- remove the location from our list of possibles as we try it, so we don't keep retrying invalid spaces
+         -- because it's either already invalid or will become invalid once we spawn grass there
+			local location = table.remove(spawn_locations, rng:get_int(1, #spawn_locations)) + Point3(0, 1, 0)
 			if self:_is_valid_grass_spawn_location(location) then
 				-- we found a spot, spawn some grass
 				local grass_entity = radiant.entities.create_entity(grass_uri, {owner = self._entity})
 				local random_facing = rng:get_int(0, 3) * 90
 				radiant.terrain.place_entity(grass_entity, location, { force_iconic = false, facing = random_facing })
-				break
-			end
-		end
+            break
+         end
+         
+         if #spawn_locations < 1 then
+            break
+         end
+      end
+      
+      if #spawn_locations < 1 then
+         break
+      end
 	end
 
 	self:_setup_grass_spawn_timer()
