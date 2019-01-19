@@ -181,4 +181,22 @@ function CraftOrder:conditions_fulfilled(crafter)
    return true
 end
 
+function AceCraftOrder:get_auto_crafting()
+   return self._sv._auto_crafting
+end
+
+function AceCraftOrder:set_auto_crafting(value)
+   self._sv._auto_crafting = value
+   self.__saved_variables:mark_changed()
+end
+
+function AceCraftOrder:get_associated_orders()
+   return self._sv._associated_orders
+end
+
+function AceCraftOrder:set_associated_orders(associated_orders)
+   self._sv._associated_orders = associated_orders
+   self.__saved_variables:mark_changed()
+end
+
 return AceCraftOrder

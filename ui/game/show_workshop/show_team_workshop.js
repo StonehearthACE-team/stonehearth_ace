@@ -47,6 +47,28 @@ $(top).on('stonehearthReady', function() {
                }
             });
 
+            //Cancel order from the order list menu with click of right mouse button.
+            // Replaces the original in super to incorporate the ability to also remove associated orders.
+            self.$('#orders').off('mousedown.existingOrderClick', '.orderListItem');
+            self.$('#orders').on('mousedown.existingOrderClick', '.orderListItem', function (e) {
+               if (e.button == 2) {
+                  var orderList = self.getOrderList();
+                  var item = $(this);
+                  var orderId = parseInt(item.attr("data-orderid"));
+                  var deleteAssociatedOrders = self.SHIFT_KEY_ACTIVE;
+                  radiant.call_obj(orderList, 'delete_order_command', orderId, deleteAssociatedOrders)
+                     .done(function(return_data){
+                        item.remove();
+                        if (return_data && return_data.associated_orders) {
+                           radiant.each(return_data.associated_orders, function(_, order_id) {
+                              $('#orders').find("[data-orderid='"+order_id+"']").remove();
+                           })
+                        }
+                        radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:ui:carpenter_menu:trash'} );
+                     });
+               }
+            });
+
             var craftInsertDiv = self.$('#craftInsert');
             $(document).on('keyup keydown', function(e){
                self.SHIFT_KEY_ACTIVE = e.shiftKey;
