@@ -77,7 +77,7 @@ function AceShepherdPastureComponent:_create_pasture_tasks()
 end
 
 function AceShepherdPastureComponent:_start_grass_spawn()
-	if not self._sv.grass_spawn_timer then
+	if not self._sv._grass_spawn_timer then
 		self:_setup_grass_spawn_timer()
 	else
 		-- if the timer already existed, we want to consider the time spent to really be spent
@@ -87,35 +87,35 @@ end
 
 function AceShepherdPastureComponent:_setup_grass_spawn_timer()
 	local spawn_period = self:_calculate_grass_spawn_period()
-	self._sv.grass_spawn_timer = stonehearth.calendar:set_persistent_timer("AceShepherdPasture spawn grass", spawn_period, radiant.bind(self, '_spawn_grass'))
+	self._sv._grass_spawn_timer = stonehearth.calendar:set_persistent_timer("AceShepherdPasture spawn grass", spawn_period, radiant.bind(self, '_spawn_grass'))
 end
 
 function AceShepherdPastureComponent:_destroy_grass_spawn_timer()
-	if self._sv.grass_spawn_timer then
-		self._sv.grass_spawn_timer:destroy()
-		self._sv.grass_spawn_timer = nil
+	if self._sv._grass_spawn_timer then
+		self._sv._grass_spawn_timer:destroy()
+		self._sv._grass_spawn_timer = nil
 	end
 end
 
 function AceShepherdPastureComponent:_recalculate_duration()
-	if self._sv.grass_spawn_timer then
-		local old_duration = self._sv.grass_spawn_timer:get_duration()
-		local old_expire_time = self._sv.grass_spawn_timer:get_expire_time()
+	if self._sv._grass_spawn_timer then
+		local old_duration = self._sv._grass_spawn_timer:get_duration()
+		local old_expire_time = self._sv._grass_spawn_timer:get_expire_time()
 		local old_start_time = old_expire_time - old_duration
 
 		local spawn_period = self:_get_base_grass_spawn_period()
 		local old_progress = self:_get_current_spawn_recalculate_progress()
 		local new_progress = (1 - old_progress) * (stonehearth.calendar:get_elapsed_time() - old_start_time) / old_duration
-		self._sv.grass_spawn_recalculate_progress = old_progress + new_progress
-		local time_remaining = math.max(0, spawn_period * (1 - self._sv.grass_spawn_recalculate_progress))
+		self._sv._grass_spawn_recalculate_progress = old_progress + new_progress
+		local time_remaining = math.max(0, spawn_period * (1 - self._sv._grass_spawn_recalculate_progress))
 		local scaled_time_remaining = self:_calculate_grass_spawn_period(time_remaining)
 		self:_destroy_grass_spawn_timer()
-		self._sv.grass_spawn_timer = stonehearth.calendar:set_persistent_timer("AceShepherdPasture spawn grass", scaled_time_remaining, radiant.bind(self, '_spawn_grass'))
+		self._sv._grass_spawn_timer = stonehearth.calendar:set_persistent_timer("AceShepherdPasture spawn grass", scaled_time_remaining, radiant.bind(self, '_spawn_grass'))
 	end
 end
 
 function AceShepherdPastureComponent:_get_current_spawn_recalculate_progress()
-	return self._sv.grass_spawn_recalculate_progress or 0
+	return self._sv._grass_spawn_recalculate_progress or 0
 end
 
 function AceShepherdPastureComponent:_calculate_grass_spawn_period(spawn_period)
