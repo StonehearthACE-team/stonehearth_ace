@@ -157,7 +157,7 @@ function AceShepherdPastureComponent:_spawn_grass(count, spawn_locations)
    end
    
    local existing_grass = self:_find_all_grass()
-   local grass_count = radiant.count(existing_grass)
+   local grass_count = radiant.size(existing_grass)
    count = math.min(count, math.sqrt(#spawn_locations) - grass_count)
    if count < 1 then
       return

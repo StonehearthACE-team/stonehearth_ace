@@ -38,7 +38,7 @@ end
 
 AceRenewableResourceNodeComponent._old_spawn_resource = RenewableResourceNodeComponent.spawn_resource
 function AceRenewableResourceNodeComponent:spawn_resource(harvester_entity, location, owner_player_id)
-   if not self._json.spawn_resource_immediately or owner_player_id == '' or
+   if not self._json.spawn_resource_immediately or not owner_player_id or owner_player_id == '' or
          stonehearth.client_state:get_client_gameplay_setting(owner_player_id, 'stonehearth_ace', 'enable_auto_harvest_animals', true) then
       self:_old_spawn_resource(harvester_entity, location, owner_player_id)
    end

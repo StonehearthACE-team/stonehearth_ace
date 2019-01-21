@@ -303,28 +303,30 @@ function PlayerConnections:_load_entity_graph_data(entity_id, connected_stats, s
          for name, connector in pairs(conn_stats.connectors) do
             for id, graph_connection in pairs(connector.connected_to) do
                -- connected_to now stores a table with graph_id and threshold instead of just storing the graph_id
-               local graph_id = graph_connection.graph_id
-               conn_tbl.entities_in_graphs[entity_id] = graph_id
-               conn_tbl.graphs[graph_id] = true
-               local graph = stonehearth_ace.connection:get_graph_by_id(graph_id, self._sv.player_id, type)
-               --conn_data.connected_to[connected_to_id] = graph_id
-               -- when this gets called for the first entity that's part of this connection, the connected_to id won't be valid
-               -- so when it gets called for the second (and that id is valid), connect the nodes for both at that time
-               local conn_to = self._connectors[id]
-               if conn_to then
-                  local conn_from = self._connectors[self:_get_entity_connector_id(entity_id, type, name)]
-                  local graph_entity_1 = graph.nodes[entity_id]
-                  local graph_entity_2 = graph.nodes[conn_to.entity_id]
-                  if not graph_entity_1 then
-                     graph_entity_1 = {entity_id = entity_id, connected_nodes = {}}
-                     graph.nodes[entity_id] = graph_entity_1
+               local graph_id = radiant.util.is_a(graph_connection, 'table') and graph_connection.graph_id
+               if graph_id then
+                  conn_tbl.entities_in_graphs[entity_id] = graph_id
+                  conn_tbl.graphs[graph_id] = true
+                  local graph = stonehearth_ace.connection:get_graph_by_id(graph_id, self._sv.player_id, type)
+                  --conn_data.connected_to[connected_to_id] = graph_id
+                  -- when this gets called for the first entity that's part of this connection, the connected_to id won't be valid
+                  -- so when it gets called for the second (and that id is valid), connect the nodes for both at that time
+                  local conn_to = self._connectors[id]
+                  if conn_to then
+                     local conn_from = self._connectors[self:_get_entity_connector_id(entity_id, type, name)]
+                     local graph_entity_1 = graph.nodes[entity_id]
+                     local graph_entity_2 = graph.nodes[conn_to.entity_id]
+                     if not graph_entity_1 then
+                        graph_entity_1 = {entity_id = entity_id, connected_nodes = {}}
+                        graph.nodes[entity_id] = graph_entity_1
+                     end
+                     if not graph_entity_2 then
+                        graph_entity_2 = {entity_id = conn_to.entity_id, connected_nodes = {}}
+                        graph.nodes[conn_to.entity_id] = graph_entity_2
+                     end
+                     graph_entity_1.connected_nodes[graph_entity_2.entity_id] = true
+                     graph_entity_2.connected_nodes[graph_entity_1.entity_id] = true
                   end
-                  if not graph_entity_2 then
-                     graph_entity_2 = {entity_id = conn_to.entity_id, connected_nodes = {}}
-                     graph.nodes[conn_to.entity_id] = graph_entity_2
-                  end
-                  graph_entity_1.connected_nodes[graph_entity_2.entity_id] = true
-                  graph_entity_2.connected_nodes[graph_entity_1.entity_id] = true
                end
             end
          end
@@ -384,7 +386,7 @@ function PlayerConnections:_remove_entity_from_graphs(entity_struct)
          for _, connector_id in pairs(connection.connectors) do
             local connector = self._connectors[connector_id]
             local connected_to = radiant.keys(connector.connected_to)
-            for _, id in pairs(connected_to) do
+            for _, id in ipairs(connected_to) do
                --log:debug('trying to disconnect %s from %s', connector_id, id)
                local connected = self._connectors[id]
                connected_entities[connected.entity_id] = true
