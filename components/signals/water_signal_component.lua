@@ -43,6 +43,12 @@ function WaterSignalComponent:get_entity_id()
 end
 
 function WaterSignalComponent:set_signal(name, region, monitor_types, change_callback)
+   local region_extrusion = {}
+   if radiant.util.is_a(region, 'table') then
+      region_extrusion = region
+      region = nil
+   end
+   
    if not region then
       local component = self._entity:get_component('region_collision_shape')
       if component then
@@ -50,6 +56,10 @@ function WaterSignalComponent:set_signal(name, region, monitor_types, change_cal
       else
          -- this is important for crops that have no region_collision_shape
          region = Region3(Cube3(Point3.zero)) --", Point3.one" is essentially automatically added by the Cube3 constructor
+      end
+
+      for dir, extrusion in pairs(region_extrusion) do
+         region = region:extruded(dir, extrusion[1] or 0, extrusion[2] or 0)
       end
    end
 

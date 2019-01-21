@@ -37,6 +37,8 @@ function WaterSignalService:initialize()
       self._world_generated_listener = nil
       self:_create_tick_listener()
    end)
+
+   self._processing_on_tick = false
 end
 
 function WaterSignalService:destroy()
@@ -146,7 +148,13 @@ function WaterSignalService:add_next_tick_callback(cb, args)
    table.insert(self._next_tick_callbacks, {cb = cb, args = args})
 end
 
+function WaterSignalService:is_processing_on_tick()
+   return self._processing_on_tick
+end
+
 function WaterSignalService:_on_tick()
+   self._processing_on_tick = true
+   
    --log:debug('water signal tick with %s changed waters, %s changed waterfalls, %s signals',
    --      radiant.size(self._changed_waters), radiant.size(self._changed_waterfalls), radiant.size(self._signals))
 
@@ -164,6 +172,7 @@ function WaterSignalService:_on_tick()
    end
    
    if self._current_tick % self._update_frequency > 0 then
+      self._processing_on_tick = false
       return
    end
 
@@ -287,6 +296,8 @@ function WaterSignalService:_on_tick()
          cb_struct.cb(cb_struct.args)
       end
    end
+
+   self._processing_on_tick = false
 end
 
 function WaterSignalService:_get_chunks(region)

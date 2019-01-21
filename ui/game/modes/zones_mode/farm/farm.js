@@ -4,8 +4,8 @@ App.StonehearthFarmView.reopen({
       var self = this;
       var field_sv = self.get('model.stonehearth:farmer_field') 
       var details = field_sv.current_crop_details || {};
-      if (details.preferred_seasons) {
-         details.preferred_seasons = _.map(details.preferred_seasons, i18n.t).join(', ');
+      if (details.preferred_seasons && typeof details.preferred_seasons != 'string') {
+         Ember.set(details, 'preferred_seasons', _.map(details.preferred_seasons, i18n.t).join(', '));
       }
       self.set('current_crop_details', details);
 
@@ -57,5 +57,5 @@ App.StonehearthFarmView.reopen({
          self.set('water_affinity', null);
          self.set('flood_preference', null);
       }
-   }.observes('model.stonehearth:farmer_field.current_crop_details')
+   }.observes('model.stonehearth:farmer_field.current_crop_details', 'model.uri')
 });

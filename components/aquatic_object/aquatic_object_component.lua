@@ -29,6 +29,9 @@ function AquaticObjectComponent:_create_listeners()
    local signal_region = self._json.water_signal_region
    if signal_region then
       signal_region = ConnectionUtils.import_region(signal_region)
+   else
+      -- make sure it's extruded downwards by 1
+      signal_region = {y = {1, 0}}
    end
 
    local monitor_types = {}

@@ -24,6 +24,7 @@ function WaterSignal:initialize()
    self._change_cb = nil
    self._cached_waters = {}
    self._cached_waterfalls = {}
+   self._processing_on_tick = false
 end
 
 function WaterSignal:create(entity_id, id, signal_region, monitor_types, change_callback)
@@ -108,7 +109,9 @@ function WaterSignal:_update_region()
    if changed then
       self._sv._world_signal_region = region
       stonehearth_ace.water_signal:register_water_signal(self)
-      self:_on_tick_water_signal()
+      if not self:is_processing_on_tick() then
+         self:_on_tick_water_signal()
+      end
    end
    self.__saved_variables:mark_changed()
 end
@@ -326,6 +329,10 @@ function WaterSignal:set_waterfall_volume(waterfall_components)
    return false
 end
 
+function WaterSignal:is_processing_on_tick()
+   return self._processing_on_tick
+end
+
 function WaterSignal:_on_tick_water_signal(waters, waterfalls)
 	if not self._sv._signal_region or not next(self._sv._monitor_types) then
 		return
@@ -337,7 +344,9 @@ function WaterSignal:_on_tick_water_signal(waters, waterfalls)
 	if not region then
 		self:_reset()
 		return
-	end
+   end
+   
+   self._processing_on_tick = true
    
 	local water_components, waterfall_components = self:_get_water(region, waters, waterfalls)
    local changes = {}
@@ -365,8 +374,10 @@ function WaterSignal:_on_tick_water_signal(waters, waterfalls)
       if self._change_cb then
          self._change_cb(changes)
       end
+      self._processing_on_tick = false
       return changes
    end
+   self._processing_on_tick = false
 end
 
 function WaterSignal:_get_water(region, waters, waterfalls)
