@@ -104,11 +104,13 @@ function stonehearth_ace:_on_init()
       create_service(name)
    end
 
+   radiant.events.trigger_async(radiant, 'stonehearth_ace:server:init')
    radiant.log.write_('stonehearth_ace', 0, 'ACE server initialized')
 end
 
 function stonehearth_ace:_on_required_loaded()
    monkey_patching()
+   radiant.events.trigger_async(radiant, 'stonehearth_ace:server:required_loaded')
 end
 
 radiant.events.listen(stonehearth_ace, 'radiant:init', stonehearth_ace, stonehearth_ace._on_init)
