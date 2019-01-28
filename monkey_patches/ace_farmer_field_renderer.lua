@@ -127,7 +127,7 @@ function AceFarmerFieldRenderer:_render_water_signal_region(region)
       -- extruded apparently doesn't work with non-integer values, so we have to recreate the region
       -- but we assume it's a single box, so we can just do that from the bounds
       local bounds = region:get_bounds()
-      bounds.max.y = bounds.max.y + 0.1
+      --bounds.max.y = bounds.max.y - 0.9
       local r = Region3(Cube3(bounds)):inflated(Point3(-0.05, -0.05, -0.05))
       self._water_signal_region_node = _radiant.client.create_region_outline_node(self._entity_node,
             r, self._water_color, Color4(0, 0, 0, 0), material, 1)

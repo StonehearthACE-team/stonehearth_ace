@@ -129,13 +129,13 @@ App.StonehearthFarmView.reopen({
                if (affinities.next_affinity) {
                   waterAffinity.tooltip = localizations.water_affinity.range;
                   waterAffinity.i18n_data = {
-                     min_water_level: Math.ceil(affinities.best_affinity.min_water * size_mult),
-                     max_water_level: Math.floor(affinities.next_affinity.min_water * size_mult)
+                     min_water_level: self._formatWaterValue(affinities.best_affinity.min_water * size_mult),
+                     max_water_level: self._formatWaterValue(affinities.next_affinity.min_water * size_mult)
                   };
                }
                else {
                   waterAffinity.tooltip = localizations.water_affinity.min_only;
-                  waterAffinity.i18n_data = { min_water_level: Math.ceil(affinities.best_affinity.min_water * size_mult) };
+                  waterAffinity.i18n_data = { min_water_level: self._formatWaterValue(affinities.best_affinity.min_water * size_mult) };
                }
                
                if (affinities.best_affinity.min_water > 0) {
@@ -248,6 +248,7 @@ App.StonehearthFarmView.reopen({
          case levels.PLENTY:
             level_icon = self._WATER_LEVEL_ICONS.PLENTY;
             status = self._STATUSES.OPTIMAL;
+            break;
          case levels.EXTRA:
             level_icon = self._WATER_LEVEL_ICONS.EXTRA;
             status = self._STATUSES.AVERAGE;
@@ -259,7 +260,7 @@ App.StonehearthFarmView.reopen({
          status: status,
          tooltipTitle: localizations.water_affinity.status_name,
          tooltip: localizations.water_affinity.current_level,
-         i18n_data: { current_water_level: current_water_level }
+         i18n_data: { current_water_level: self._formatWaterValue(current_water_level * size_mult) }
       };
 
       cropStatuses.currentWaterLevel = currentWaterLevel;
@@ -413,6 +414,10 @@ App.StonehearthFarmView.reopen({
    _getSizeMult: function(size) {
       // see ace_farmer_field_component.lua:_on_water_volume_changed() for this calculation
       return 4/11 * Math.ceil(size.x / 2) * size.y;
+   },
+
+   _formatWaterValue: function(value) {
+      return Math.round(value * 10) / 10;
    },
 
    _applyStatus: function(div, status) {

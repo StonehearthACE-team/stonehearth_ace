@@ -90,7 +90,7 @@ function WaterSignal:set_signal_region(signal_region)
 end
 
 function WaterSignal:set_location(location)
-   log:debug('entity %s water signal set_location %s', self._sv.entity_id, location or 'NIL')
+   --log:debug('entity %s water signal set_location %s', self._sv.entity_id, location or 'NIL')
    if self._location ~= location then
       self._location = location
       self:_update_region()

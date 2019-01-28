@@ -54,14 +54,6 @@ end
 
 local ai = stonehearth.ai
 return ai:create_compound_action(FertilizeField)
-         :execute('stonehearth:key_to_entity_data_filter_fn', {
-            owner = ai.ENTITY:get_player_id(),
-            key = 'stonehearth_ace:fertilizer'
-         })         
-         :execute('stonehearth:pickup_item_type', {
-            filter_fn = ai.PREV.filter_fn,
-            description = 'find fertilizer'
-         })
          :execute('stonehearth:uri_to_filter_fn', {
             owner = ai.ENTITY:get_player_id(),
             uri = 'stonehearth_ace:farmer:field_layer:fertilizable'
@@ -71,22 +63,30 @@ return ai:create_compound_action(FertilizeField)
             rating_fn = stonehearth.farming.rate_field,
             description = 'find fertilize layer',
          })
+         :execute('stonehearth:key_to_entity_data_filter_fn', {
+            owner = ai.ENTITY:get_player_id(),
+            key = 'stonehearth_ace:fertilizer'
+         })         
+         :execute('stonehearth:pickup_item_type', {
+            filter_fn = ai.PREV.filter_fn,
+            description = 'find fertilizer'
+         })
          :execute('stonehearth:find_path_to_reachable_entity', {
-            destination = ai.PREV.item
+            destination = ai.BACK(3).item
          })
          :execute('stonehearth:follow_path', {
             path = ai.PREV.path,
             stop_distance = ai.CALL(radiant.entities.get_harvest_range, ai.ENTITY),
          })
          :execute('stonehearth:reserve_entity_destination', {
-            entity = ai.BACK(3).item,
+            entity = ai.BACK(5).item,
             location = ai.BACK(2).path:get_destination_point_of_interest()
          })
          :execute('stonehearth:register_farm_field_worker', {
-            field_layer = ai.BACK(4).item
+            field_layer = ai.BACK(6).item
          })
          :execute('stonehearth_ace:fertilize_crop_adjacent', {
-            field_layer = ai.BACK(5).item,
+            field_layer = ai.BACK(7).item,
             location = ai.BACK(2).location,
          })
          :execute('stonehearth:trigger_event', {
