@@ -293,6 +293,7 @@
       "data:pre_save_calls": "file(data/pre_save/pre_save_calls.json)",
       "data:resource_constants": "file(data/resource_constants.json)",
       "data:thoughts": "file(data/happiness/thoughts.json)",
+      "data:inventory_trackers": "file(data/inventory_trackers/inventory_trackers.json)",
       "decoration:brass_sign_blacksmith": "file(entities/decoration/brass_sign_blacksmith/brass_sign_blacksmith.json)",
       "decoration:copper_garden_lantern": "file(entities/decoration/copper_garden_lantern/copper_garden_lantern.json)",
       "decoration:copper_wall_lantern": "file(entities/decoration/copper_wall_lantern/copper_wall_lantern.json)",
@@ -1973,6 +1974,7 @@
    },
    "controllers": {
       "crafter_info_controller": "file(services/server/crafter_info/crafter_info_controller.lua)",
+      "fertilizer_tracker": "file(services/server/inventory/fertilizer_tracker.lua)",
       "material_map": "file(services/server/crafter_info/material_map.lua)",
       "mountain_folk:class:artificer": "file(jobs/mf_artificer/mf_artificer.lua)",
       "mountain_folk:class:grower": "file(jobs/mf_grower/mf_grower.lua)",

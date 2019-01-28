@@ -5512,12 +5512,52 @@
          },
          "zones_mode": {
             "farm": {
-               "water_affinity_range": "Irrigation</br>This crop will grow a little faster than normal with <span class='water'><span class='value'>[str(i18n_data.min)] - [str(i18n_data.max)]</span> water</span> within the blue outlined region.",
-               "water_affinity_min_only": "Irrigation</br>This crop will grow a little faster with at least <span class='water'><span class='value'>[str(i18n_data.min)]</span> water</span> within the blue outlined region.",
-               "current_water_level": "Current <span class='water'>water</span> level: <span class='water value'>[str(i18n_data.level)]</span>.",
-               "requires_flooding": "This crop must have water covering it to grow.",
-               "prefers_flooding": "This crop grows more quickly when water is covering it and slower when it isn't.",
-               "prefers_no_flooding": "This crop grows more slowly when water is covering it."
+               "properties": "Crop Properties:",
+               "statuses": "Current Statuses:",
+               "season": {
+                  "property_name": "Preferred Seasons",
+                  "property_description": "This crop prefers the <span class='text-value'>[str(i18n_data.season)]</span> season and will grow more slowly outside of preferred seasons.",
+                  "status_name": "Current Season",
+                  "in_season": "This crop is currently in season, so will grow at a normal rate.",
+                  "out_of_season": "This crop is currently out of season and will grow more slowly.",
+                  "values": {
+                     "spring": "Spring",
+                     "summer": "Summer",
+                     "autumn": "Autumn",
+                     "winter": "Winter"
+                  }
+               },
+               "growth_time": {
+                  "property_name": "Growth Time",
+                  "status_name": "Relative Growth Time",
+                  "days_only": "[str(i18n_data.day)] day(s)",
+                  "days_and_hours": "[str(i18n_data.day)] day(s) and [str(i18n_data.hour)] hour(s)",
+                  "short": "This crop matures quickly (<span class='text-value'>[str(i18n_data.total_growth_time)]</span> before modifiers).",
+                  "fair": "This crop matures at a moderate rate (<span class='text-value'>[str(i18n_data.total_growth_time)]</span> before modifiers).",
+                  "long": "This crop takes a long time to mature (<span class='text-value'>[str(i18n_data.total_growth_time)]</span> before modifiers).",
+                  "shorter": "This crop has more positive growth time modifiers than negative ones.",
+                  "normal": "This crop has both positive growth time modifiers and negative ones.",
+                  "longer": "This crop has more negative growth time modifiers than positive ones."
+               },
+               "water_affinity": {
+                  "property_name": "Irrigation Needs",
+                  "status_name": "Current Water Level",
+                  "range": "This crop will grow a little faster than normal with <span class='water'><span class='text-value'>[str(i18n_data.min_water_level)] - [str(i18n_data.max_water_level)]</span> water</span> within its blue outlined region.",
+                  "min_only": "This crop will grow a little faster with at least <span class='water'><span class='text-value'>[str(i18n_data.min_water_level)]</span> water</span> within its blue outlined region.",
+                  "current_level": "This crop currently has <span class='water'><span class='text-value'>[str(i18n_data.current_water_level)]</span> water</span> within its blue outlined region."
+               },
+               "flooded": {
+                  "property_name": "Flooding",
+                  "status_name": "Flooding",
+                  "requires": "This crop must have water covering it to grow.",
+                  "prefers": "This crop grows more quickly when water is covering it and slower when it isn't.",
+                  "prefers_not": "This crop grows more slowly when water is covering it.",
+                  "current_amount": "<span class='text-value [str(i18n_data.flooded_status)]'>[str(i18n_data.num_flooded)] / [str(i18n_data.num_crops)]</span> crops in this field are currently flooded."
+               },
+               "fertilized": {
+                  "status_name": "Fertilized Crops",
+                  "current_amount": "<span class='text-value [str(i18n_data.fertilized_status)]'>[str(i18n_data.num_fertilized)] / [str(i18n_data.num_crops)]</span> crops in this field are currently fertilized."
+               }
             },
             "underfarm": {
                "substrate_name": "Substrate",

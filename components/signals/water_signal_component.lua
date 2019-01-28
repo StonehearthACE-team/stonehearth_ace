@@ -9,7 +9,7 @@ function WaterSignalComponent:initialize()
 	self._sv._signals = {}
 end
 
-function WaterSignalComponent:activate()
+function WaterSignalComponent:post_activate()
    for name, signal in pairs(self._sv._signals) do
       if not signal:get_id() then
          signal:destroy()
@@ -18,15 +18,9 @@ function WaterSignalComponent:activate()
       end
    end
 
-   self._location_trace = self._entity:add_component('mob'):trace_transform('water signal entity moved', _radiant.dm.TraceCategories.SYNC_TRACE)
+   self._location_trace = radiant.entities.trace_grid_location(self._entity, 'water signal')
       :on_changed(function()
-         local location = radiant.entities.get_world_grid_location(self._entity)
-         if location ~= self._location then
-            self._location = location
-            for _, signal in pairs(self._sv._signals) do
-               signal:set_location(location)
-            end
-         end
+         self:_location_changed()
       end)
       :push_object_state()
 end
@@ -35,6 +29,17 @@ function WaterSignalComponent:destroy()
    if self._location_trace then
       self._location_trace:destroy()
       self._location_trace = nil
+   end
+end
+
+function WaterSignalComponent:_location_changed()
+   local location = radiant.entities.get_world_grid_location(self._entity)
+   log:debug('entity %s location trace: %s', self._entity, location or 'NIL')
+   if location ~= self._location then
+      self._location = location
+      for _, signal in pairs(self._sv._signals) do
+         signal:set_location(location)
+      end
    end
 end
 

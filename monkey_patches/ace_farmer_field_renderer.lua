@@ -79,18 +79,18 @@ end
 
 function AceFarmerFieldRenderer:_update_dirt_models(effective_water_level)
    -- check the effective water level and set the appropriate dirt models
-   -- if it's nil, there's no water; if it's false, there's some but not ideal water; if it's true, it's at ideal water
+   local levels = stonehearth.constants.farming.water_levels
    local tilled_dirt_model = self._farmer_field_data.tilled_dirt
    local furrow_dirt_model = self._farmer_field_data.furrow_dirt
    
-   if effective_water_level == false then
+   if effective_water_level == levels.SOME or effective_water_level == levels.EXTRA then
       if self._farmer_field_data.tilled_dirt_water_partial then
          tilled_dirt_model = self._farmer_field_data.tilled_dirt_water_partial
       end
       if self._farmer_field_data.furrow_dirt_water_partial then
          furrow_dirt_model = self._farmer_field_data.furrow_dirt_water_partial
       end
-   elseif effective_water_level == true then
+   elseif effective_water_level == levels.PLENTY then
       if self._farmer_field_data.tilled_dirt_water_full then
          tilled_dirt_model = self._farmer_field_data.tilled_dirt_water_full
       end

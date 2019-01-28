@@ -8,9 +8,47 @@ FertilizeField.args = {}
 FertilizeField.priority = 0
 
 function FertilizeField:start_thinking(ai, entity, args)
-   local job_component = entity:get_component('stonehearth:job')
+   self._ai = ai
+   self._entity = entity
+   self._inventory = stonehearth.inventory:get_inventory(radiant.entities.get_player_id(entity))
+
+   if self._inventory then
+      self._tracker = self._inventory:get_item_tracker('stonehearth_ace:fertilizer_tracker')
+      self._added_listener = radiant.events.listen(self._tracker, 'stonehearth:inventory_tracker:item_added', self, self._on_reconsider)
+      self._job_changed_listener = radiant.events.listen(self._entity, 'stonehearth:job_changed', self, self._on_reconsider)
+      self._job_level_changed_listener = radiant.events.listen(self._entity, 'stonehearth:level_up', self, self._on_reconsider)
+      self:_on_reconsider()
+   end
+end
+
+function FertilizeField:_on_reconsider()
+   local job_component = self._entity:get_component('stonehearth:job')
    if job_component and job_component:curr_job_has_perk('farmer_fertilizer') then
-      ai:set_think_output()
+      for id, fertilizer in self._tracker:get_tracking_data():each() do
+         self._ai:set_think_output()
+         return
+      end
+   end
+end
+
+function FertilizeField:stop_thinking(ai, entity)
+   self:destroy()
+end
+
+function FertilizeField:destroy()
+   if self._added_listener then
+      self._added_listener:destroy()
+      self._added_listener = nil
+   end
+
+   if self._job_changed_listener then
+      self._job_changed_listener:destroy()
+      self._job_changed_listener = nil
+   end
+
+   if self._job_level_changed_listener then
+      self._job_level_changed_listener:destroy()
+      self._job_level_changed_listener = nil
    end
 end
 

@@ -13,7 +13,7 @@ AceEvolveComponent._old_initialize = EvolveComponent.initialize
 function AceEvolveComponent:initialize()
 	self:_old_initialize()
 
-	self._sv.local_water_modifier = 1
+	self._sv._local_water_modifier = 1
 	-- would need to set up a child entity with its own water component for detecting flooding in a smaller region
 	--self._sv.is_flooded = false
    self._sv._current_growth_recalculate_progress = 0
@@ -108,9 +108,9 @@ function AceEvolveComponent:_on_water_signal_changed(changes)
 	end
 
 	local multiplier = best_affinity.period_multiplier
-	local prev_modifier = self._sv.local_water_modifier
+	local prev_modifier = self._sv._local_water_modifier
 	if multiplier ~= prev_modifier then
-		self._sv.local_water_modifier = multiplier
+		self._sv._local_water_modifier = multiplier
 		self:_recalculate_duration()
 	end
 
@@ -184,6 +184,17 @@ function AceEvolveComponent:evolve()
       --TODO(yshan) maybe add tuning for specific retry to grow time
       self:_start_evolve_timer()
       return
+   end
+
+   local owner_component = self._entity:get_component('stonehearth:ownable_object')
+   local owner = owner_component and owner_component:get_owner()
+   if owner then
+      local evolved_owner_component = evolved_form:get_component('stonehearth:ownable_object')
+      if evolved_owner_component then
+         -- need to remove the original's owner so that destroying it later doesn't mess things up with the new entity's ownership
+         owner_component:set_owner(nil)
+         evolved_owner_component:set_owner(owner)
+      end
    end
 
    local evolved_form_data = radiant.entities.get_entity_data(evolved_form, 'stonehearth:evolve_data')
@@ -267,7 +278,7 @@ function AceEvolveComponent:_calculate_growth_period(evolve_time)
 	
 	local catalog_data = stonehearth.catalog:get_catalog_data(self._entity:get_uri())
 	if catalog_data.category == 'seed' or catalog_data.category == 'plants' then
-		evolve_time = stonehearth.town:calculate_growth_period(self._entity:get_player_id(), evolve_time) * (self._sv.local_water_modifier or 1)
+		evolve_time = stonehearth.town:calculate_growth_period(self._entity:get_player_id(), evolve_time) * (self._sv._local_water_modifier or 1)
 		--if self._sv.is_flooded then
 		--	evolve_time = evolve_time * self._flood_period_multiplier
 		--end
