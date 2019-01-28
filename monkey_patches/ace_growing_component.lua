@@ -31,9 +31,10 @@ end
 
 function AceGrowingComponent:post_activate()
    -- only worry about the water listener (for flooding) if the flood period multiplier ~= 1 (i.e., is relevant)
-   if self._flood_period_multiplier ~= 1 then
-      self:_create_water_listener()
-   end
+   -- actually this doesn't work because of the separate way in which aquatic_objects halt growth
+   --if self._flood_period_multiplier ~= 1 then
+   self:_create_water_listener() 
+   --end
 end
 
 AceGrowingComponent._old_destroy = GrowingComponent.destroy

@@ -384,7 +384,7 @@ App.StonehearthFarmView.reopen({
 
       if (numPositive > numNegative) {
          growthTime = self._GROWTH_TIMES.SHORT;
-         growthTimeTooltip = localizations.growth_time.faster;
+         growthTimeTooltip = localizations.growth_time.shorter;
          status = self._STATUSES.OPTIMAL;
       }
       else if (numPositive < numNegative) {

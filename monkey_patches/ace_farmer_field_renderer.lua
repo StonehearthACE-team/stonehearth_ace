@@ -69,7 +69,8 @@ function AceFarmerFieldRenderer:_on_ui_mode_changed()
    if self._ui_view_mode ~= mode then
       self._ui_view_mode = mode
 
-      self:_render_water_signal_region()
+      local data = self._datastore:get_data()
+      self:_render_water_signal_region(data.water_signal_region)
    end
 end
 
