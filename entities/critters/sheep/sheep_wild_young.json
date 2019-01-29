@@ -1,0 +1,47 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:sheep:young",
+   "components": {
+      "mixintypes": {
+         "stonehearth:expendable_resources": "remove",
+         "model_variants": "override"
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(sheep_wild_young.qb)"
+            ]
+         }
+      },
+      "stonehearth:attributes": {
+         "mixintypes": {
+            "min_calories": "remove",
+            "max_calories": "remove",
+            "reproduction_rate_multiplier": "remove",
+            "renewable_resource_rate_multiplier": "remove",
+            "max_social_satisfaction": "remove"
+         }
+      }
+   },
+   "entity_data": {
+      "mixintypes": {
+         "stonehearth:evolve_data": "override",
+         "stonehearth:pasture_animal": "remove",
+         "stonehearth:calories": "remove",
+         "stonehearth:conversation_type": "remove"
+      },
+      "stonehearth:evolve_data": {
+         "next_stage": "stonehearth_ace:sheep:wild",
+         "evolve_time": "12d+8d"
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 0
+      },
+      "stonehearth:catalog": {
+         "player_id": "animals",
+         "display_name": "i18n(stonehearth:entities.critters.sheep.sheep_young.display_name)",
+         "description": "i18n(stonehearth:entities.critters.sheep.sheep_young.description)",
+         "icon": "file(sheep_wild_young.png)"
+      }
+   }
+}

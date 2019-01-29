@@ -1,0 +1,67 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(moomoo_milk.qb)",
+                     "file(moomoo_milk_2.qb)",
+                     "file(moomoo_milk_3.qb)",
+                     "file(moomoo_milk_4.qb)"
+                  ]
+               }
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 }
+      },
+      "stonehearth:stacks": {
+         "max_stacks": 4
+      }
+   },
+   "entity_data": {
+      "stonehearth:food_container": {
+         "effect": "fiddle",
+         "food": "stonehearth_ace:drink:dairy:moomoo_milk:moomoo_milk_serving",
+         "stacks_per_serving": 1
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 6,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true,
+            "shopkeeper_level": 2,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.drink.moomoo_milk.moomoo_milk.display_name)",
+         "description": "i18n(stonehearth_ace:entities.drink.moomoo_milk.moomoo_milk.description)",
+         "icon": "file(moomoo_milk.png)",
+         "is_item": true,
+         "category": "food",
+         "material_tags": [
+            "food_container",
+            "raw_food",
+            "drink_container",
+            "drink",
+            "moomoo_milk",
+            "milk",
+            "dairy",
+            "stockpile_drink"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": 2
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

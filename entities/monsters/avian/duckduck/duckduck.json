@@ -1,5 +1,10 @@
 {
    "components": {
+      "mixintypes": {
+         "stonehearth:renewable_resource_node": "remove",
+         "stonehearth:expendable_resources": "remove",
+         "stonehearth:commands": "override"
+      },
       "stonehearth:resource_node": {
 		 "resource_loot_table": {
             "entries": {
@@ -30,41 +35,22 @@
             "type": "basic",
             "value": 0.001
          }
-      },
-	  "stonehearth:expendable_resources": {
-         "resources": {
-            "calories": {
-               "min": {
-                  "linked_attribute": "min_calories"
-               },
-               "max": {
-                  "linked_attribute": "max_calories"
-               },
-               "initial_value": "max_value"
-            }
-         }
-      },
-	  "mixintypes": {
-		"stonehearth:commands": "remove"
-	  }
+      }
    },
    "entity_data": {
+      "mixintypes": {
+         "stonehearth:pasture_animal": "remove",
+         "stonehearth:calories": "remove",
+         "stonehearth:conversation_type": "remove",
+		 "stonehearth:harvest_beast_loot_table": "remove"
+      },
 	  "stonehearth:catalog": {
         "display_name": "i18n(stonehearth_ace:entities.monsters.avian.duckduck.display_name)"
 	  },
-      "stonehearth:calories": {
-         "hungry_threshold": 0,
-         "famished_threshold": 0,
-         "malnourished_threshold": -10,
-         "hourly_calorie_loss": 0.6
-      },
       "stonehearth:bait_trap": {
          "can_trap": true,
          "catch_chance": 0.3,
          "trigger_trap_on_failure_chance": 0.4
-      },
-	  "mixintypes": {
-		"stonehearth:harvest_beast_loot_table": "remove"
-	  }  
+      }
    }
 }
