@@ -44,6 +44,9 @@ App.StonehearthFarmView.reopen({
       .done(function (o) {
          self.seasons_trace = radiant.trace(o.result)
             .progress(function (o2) {
+               if (self.isDestroyed || self.isDestroying) {
+                  return;
+               }
                var season = o2.current_season.id;
                self.set('_currentSeason', season);
                self._updateStatuses();
@@ -109,6 +112,9 @@ App.StonehearthFarmView.reopen({
             }
             self._playerInventoryTrace = new StonehearthDataTrace(response.tracker, itemTraces)
                .progress(function (response) {
+                  if (self.isDestroyed || self.isDestroying) {
+                     return;
+                  }
                   self._inventoryFertilizerData = response.tracking_data;
                   self._updateFertilizers();
                });
@@ -286,6 +292,10 @@ App.StonehearthFarmView.reopen({
 
    _updateStatuses: function() {
       var self = this;
+      if (self.isDestroyed || self.isDestroying) {
+         return;
+      }
+
       var cropStatuses = self._doUpdateStatuses();
       self.set('cropStatuses', cropStatuses);
    }.observes('model.stonehearth:farmer_field'),

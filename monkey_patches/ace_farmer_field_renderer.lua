@@ -40,6 +40,8 @@ function AceFarmerFieldRenderer:destroy()
       self._water_signal_region_node:destroy()
       self._water_signal_region_node = nil
    end
+
+   self._fertilized_zone_renderer:destroy()
 end
 
 -- override instead of patching so we're not re-calling certain things
