@@ -218,4 +218,12 @@ function AceShepherdPastureComponent:_create_harvest_task(target)
    end
 end
 
+function ShepherdPastureComponent:get_animal_feed_material()
+   if self._sv.pasture_type then
+      return self._pasture_data[self._sv.pasture_type].feed_material
+   else
+      return nil --If we haven't determined the pasture type yet, there is no feed uri
+   end
+end
+
 return AceShepherdPastureComponent
