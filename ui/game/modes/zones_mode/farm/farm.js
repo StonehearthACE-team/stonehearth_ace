@@ -51,6 +51,17 @@ App.StonehearthFarmView.reopen({
       });
    },
 
+   willDestroyElement: function() {
+      var self = this;
+
+      this._fertilizerPalette.stonehearthItemPalette('destroy');
+      this._fertilizerPalette = null;
+
+      App.tooltipHelper.removeDynamicTooltip(self.$('.cropProperty'));
+
+      this._super();
+   },
+
    destroy: function() {
       this._super();
       if (this.seasons_trace) {
@@ -58,6 +69,86 @@ App.StonehearthFarmView.reopen({
          this.seasons_trace = null;
       }
    },
+
+   didInsertElement: function() {
+      var self = this;
+      self._super();
+
+      var filterFn = function(k, v) {
+         if (v.materials) {
+            for (i = 0; i < v.materials.length; i++) {
+               if (v.materials[i].toLowerCase() == 'fertilizer') {
+                  return true;
+               }
+            }
+         }
+         return false;
+      }
+
+      self._catalogFertilizers = App.catalog.getFilteredCatalogData('fertilizers', filterFn);
+      
+      self._fertilizerPalette = self.$('#fertilizerPalette').stonehearthItemPalette({
+         cssClass: 'fertilizerItem',
+         showZeroes: true,
+         skipCategories: true,
+         sortField: 'net_worth'
+      });
+
+      radiant.call_obj('stonehearth.inventory', 'get_item_tracker_command', 'stonehearth_ace:fertilizer_tracker')
+         .done(function(response) {
+            if (self.isDestroying || self.isDestroyed) {
+               return;
+            }
+
+            var itemTraces = {
+               "tracking_data" : { '*': { 'stonehearth:stacks': {}}}
+            };
+
+            if (!self._fertilizerPalette) {
+               return;
+            }
+            self._playerInventoryTrace = new StonehearthDataTrace(response.tracker, itemTraces)
+               .progress(function (response) {
+                  self._inventoryFertilizerData = response.tracking_data;
+                  self._updateFertilizers();
+               });
+         })
+         .fail(function(response) {
+            console.error(response);
+         });
+   },
+
+   _updateFertilizers: $.throttle(250, function () {
+      var self = this;
+      if (!self.$()) return;
+
+      var fertilizerDataByUri = {};
+      var fertilizerData = {};
+      // merge iconic and root entities and all qualities
+      radiant.each(self._catalogFertilizers, function (uri, fertilizer) {
+         var fertilizer_copy = radiant.shallow_copy(fertilizer);
+         fertilizer_copy.uri = uri;
+         fertilizer_copy.item_quality = '1';
+         fertilizer_copy.count = 0;
+
+         var key = fertilizer_copy.uri + App.constants.item_quality.KEY_SEPARATOR + '1';
+         fertilizerData[key] = fertilizer_copy;
+         fertilizerDataByUri[uri] = fertilizer_copy;
+      });
+
+      radiant.each(self._inventoryFertilizerData, function (id, item) {
+         var uri = item.uri;
+         var fertilizer = fertilizerDataByUri[uri];
+         if (fertilizer) {
+            var stacks = item['stonehearth:stacks'];
+            if (stacks && stacks.stacks) {
+               fertilizer.count += stacks.stacks;
+            }
+         }
+      });
+
+      self._fertilizerPalette.stonehearthItemPalette('updateItems', fertilizerData);
+   }),
 
    _selectedCropUpdated: function() {
       var self = this;
@@ -71,7 +162,6 @@ App.StonehearthFarmView.reopen({
       var field_sv = self.get('model.stonehearth:farmer_field');
       var details = field_sv.current_crop_details || {};
 
-      var cropProperties = {};
       self._tooltipData = {};
 
       self.$('#cropProperties').find('.tooltipstered').tooltipster('destroy');
@@ -80,101 +170,7 @@ App.StonehearthFarmView.reopen({
       if(details.uri) {
          radiant.call('stonehearth_ace:get_growth_preferences_command', details.uri)
             .done(function (response) {
-               if (self.isDestroyed || self.isDestroying) {
-                  return;
-               }
-
-               var size = field_sv.size;
-
-               var preferredSeasons = [];
-               radiant.each(response.preferred_seasons || [], function(_, season) {
-                  preferredSeasons.push({
-                     name: season,
-                     icon: self._IMAGES_DIR + 'property_season_' + season + '.png',
-                     tooltipTitle: localizations.season.property_name,
-                     tooltip: localizations.season.property_description,
-                     i18n_data: { season: localizations.season.values[season] }
-                  });
-               })
-               self._createPreferredSeasonDivs(preferredSeasons);
-               cropProperties.preferredSeasons = preferredSeasons;
-
-               var growth_time = response.growth_time;
-               var total_growth_time = response.total_growth_time;
-               var time_str = total_growth_time.hour > 0 ? localizations.growth_time.days_and_hours : localizations.growth_time.days_only;
-               var growthTime = {
-                  name: 'growthTime',
-                  icon: self._IMAGES_DIR + 'property_growth_time_' + growth_time + '.png',
-                  tooltipTitle: localizations.growth_time.property_name,
-                  tooltip: localizations.growth_time[growth_time],
-                  i18n_data: {
-                     total_growth_time: i18n.t(time_str, {
-                        i18n_data: total_growth_time,
-                        escapeHTML: true
-                     })
-                  }
-               };
-
-               cropProperties.growthTime = growthTime;
-               self._setTooltipData(growthTime);
-               self._createPropertyTooltip(self.$('#growthTime'), growthTime.name);
-
-
-               var affinities = response.water_affinity;
-               var size_mult = self._getSizeMult(size);
-               var waterAffinity = {
-                  name: 'waterAffinity',
-                  tooltipTitle: localizations.water_affinity.property_name
-               };
-               if (affinities.next_affinity) {
-                  waterAffinity.tooltip = localizations.water_affinity.range;
-                  waterAffinity.i18n_data = {
-                     min_water_level: self._formatWaterValue(affinities.best_affinity.min_water * size_mult),
-                     max_water_level: self._formatWaterValue(affinities.next_affinity.min_water * size_mult)
-                  };
-               }
-               else {
-                  waterAffinity.tooltip = localizations.water_affinity.min_only;
-                  waterAffinity.i18n_data = { min_water_level: self._formatWaterValue(affinities.best_affinity.min_water * size_mult) };
-               }
-               
-               if (affinities.best_affinity.min_water > 0) {
-                  waterAffinity.icon = self._IMAGES_DIR + 'property_water_plenty.png';
-               }
-               else {
-                  waterAffinity.icon = self._IMAGES_DIR + 'property_water_none.png';
-               }
-
-               cropProperties.waterAffinity = waterAffinity;
-               self._setTooltipData(waterAffinity);
-               self._createPropertyTooltip(self.$('#waterAffinity'), waterAffinity.name);
-
-
-               var requireFlooding = response.require_flooding_to_grow;
-               var floodingMultiplier = response.flood_period_multiplier;
-               var floodPreference = {
-                  name: 'floodPreference',
-                  tooltipTitle: localizations.flooded.property_name,
-                  requireFlooding: requireFlooding,
-                  floodingMultiplier: floodingMultiplier
-               };
-               if (requireFlooding) {
-                  floodPreference.icon = self._IMAGES_DIR + 'property_flood_required.png';
-                  floodPreference.tooltip = localizations.flooded.requires;
-               }
-               else if (floodingMultiplier < 1) {
-                  floodPreference.icon = self._IMAGES_DIR + 'property_flood_faster.png';
-                  floodPreference.tooltip = localizations.flooded.prefers;
-               }
-               else if (floodingMultiplier > 1) {
-                  floodPreference.icon = self._IMAGES_DIR + 'property_flood_slower.png';
-                  floodPreference.tooltip = localizations.flooded.prefers_not;
-               }
-
-               cropProperties.floodPreference = floodPreference;
-               self._setTooltipData(floodPreference);
-               self._createPropertyTooltip(self.$('#floodPreference'), floodPreference.name);
-
+               var cropProperties = self._doUpdateProperties(response, localizations, field_sv);
                self.set('cropProperties', cropProperties);
                self._updateStatuses();
             });
@@ -184,9 +180,119 @@ App.StonehearthFarmView.reopen({
       }
    }.observes('model.stonehearth:farmer_field.current_crop_details'),
 
+   // this function can be inherited/overridden to add more properties
+   _doUpdateProperties: function(response, localizations, field_sv) {
+      var self = this;
+      if (self.isDestroyed || self.isDestroying) {
+         return;
+      }
+
+      var cropProperties = {};
+      var size = field_sv.size;
+
+      var preferredSeasons = [];
+      radiant.each(response.preferred_seasons || [], function(_, season) {
+         preferredSeasons.push({
+            name: season,
+            icon: self._IMAGES_DIR + 'property_season_' + season + '.png',
+            tooltipTitle: localizations.season.property_name,
+            tooltip: localizations.season.property_description,
+            i18n_data: { season: localizations.season.values[season] }
+         });
+      })
+      self._createPreferredSeasonDivs(preferredSeasons);
+      cropProperties.preferredSeasons = preferredSeasons;
+
+      var growth_time = response.growth_time;
+      var total_growth_time = response.total_growth_time;
+      var time_str = total_growth_time.day > 0 ? 
+            (total_growth_time.hour > 0 ? localizations.growth_time.days_and_hours : localizations.growth_time.days_only) : 
+            localizations.growth_time.hours_only;
+      var growthTime = {
+         name: 'growthTime',
+         icon: self._IMAGES_DIR + 'property_growth_time_' + growth_time + '.png',
+         tooltipTitle: localizations.growth_time.property_name,
+         tooltip: localizations.growth_time[growth_time],
+         i18n_data: {
+            total_growth_time: i18n.t(time_str, {
+               i18n_data: total_growth_time,
+               escapeHTML: true
+            })
+         }
+      };
+
+      cropProperties.growthTime = growthTime;
+      self._setTooltipData(growthTime);
+      self._createPropertyTooltip(self.$('#growthTime'), growthTime.name);
+
+
+      var affinities = response.water_affinity;
+      var size_mult = self._getSizeMult(size);
+      var waterAffinity = {
+         name: 'waterAffinity',
+         tooltipTitle: localizations.water_affinity.property_name
+      };
+      if (affinities.next_affinity) {
+         waterAffinity.tooltip = localizations.water_affinity.range;
+         waterAffinity.i18n_data = {
+            min_water_level: self._formatWaterValue(affinities.best_affinity.min_water * size_mult),
+            max_water_level: self._formatWaterValue(affinities.next_affinity.min_water * size_mult)
+         };
+      }
+      else {
+         waterAffinity.tooltip = localizations.water_affinity.min_only;
+         waterAffinity.i18n_data = { min_water_level: self._formatWaterValue(affinities.best_affinity.min_water * size_mult) };
+      }
+      
+      if (affinities.best_affinity.min_water > 0) {
+         waterAffinity.icon = self._IMAGES_DIR + 'property_water_plenty.png';
+      }
+      else {
+         waterAffinity.icon = self._IMAGES_DIR + 'property_water_none.png';
+      }
+
+      cropProperties.waterAffinity = waterAffinity;
+      self._setTooltipData(waterAffinity);
+      self._createPropertyTooltip(self.$('#waterAffinity'), waterAffinity.name);
+
+
+      var requireFlooding = response.require_flooding_to_grow;
+      var floodingMultiplier = response.flood_period_multiplier;
+      var floodPreference = {
+         name: 'floodPreference',
+         tooltipTitle: localizations.flooded.property_name,
+         requireFlooding: requireFlooding,
+         floodingMultiplier: floodingMultiplier
+      };
+      if (requireFlooding) {
+         floodPreference.icon = self._IMAGES_DIR + 'property_flood_required.png';
+         floodPreference.tooltip = localizations.flooded.requires;
+      }
+      else if (floodingMultiplier < 1) {
+         floodPreference.icon = self._IMAGES_DIR + 'property_flood_faster.png';
+         floodPreference.tooltip = localizations.flooded.prefers;
+      }
+      else if (floodingMultiplier > 1) {
+         floodPreference.icon = self._IMAGES_DIR + 'property_flood_slower.png';
+         floodPreference.tooltip = localizations.flooded.prefers_not;
+      }
+
+      cropProperties.floodPreference = floodPreference;
+      self._setTooltipData(floodPreference);
+      self._createPropertyTooltip(self.$('#floodPreference'), floodPreference.name);
+
+      return cropProperties;
+   },
+
    _updateStatuses: function() {
       var self = this;
-      
+      var cropStatuses = self._doUpdateStatuses();
+      self.set('cropStatuses', cropStatuses);
+   }.observes('model.stonehearth:farmer_field'),
+
+   // same as properties, statuses can be added by overriding this function
+   _doUpdateStatuses: function() {
+      var self = this;
       // properties are needed to properly consider flood preference when indicating num_flooded
       var cropProperties = self.get('cropProperties');
       var localizations = self.get('propertyLocalizations');
@@ -406,10 +512,8 @@ App.StonehearthFarmView.reopen({
       self._createPropertyTooltip(self.$('#relativeGrowthTime'), relativeGrowthTime.name);
       self._applyStatus(self.$('#relativeGrowthTime'), status);
 
-
-      self.set('cropStatuses', cropStatuses);
-
-   }.observes('model.stonehearth:farmer_field'),
+      return cropStatuses;
+   },
 
    _getSizeMult: function(size) {
       // see ace_farmer_field_component.lua:_on_water_volume_changed() for this calculation
