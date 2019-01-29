@@ -490,6 +490,14 @@
          "manage_parties": {
             "display_name": "Manage Party",
             "description": "Manage patrol banners and guard zones (not yet implemented) for this party."
+         },
+         "remove_patrol_banner": {
+            "display_name": "Remove Patrol Banner",
+            "description": "Completely erase the selected patrol banner from this route."
+         },
+         "move_patrol_banner": {
+            "display_name": "Move Patrol Banner",
+            "description": "Place the selected patrol banner somewhere else, modifying the route."
          }
       },
       "buffs": {
@@ -623,7 +631,7 @@
          "footman_description": {
             "level_1_data": {
                "training_perk_name": "Combat Training",
-               "training_perk_description": "A footman can use Training Dummies to train up to Level 3 and will increase the allowed limit of Training Equipment by 2"
+               "training_perk_description": "A footman can use Training Dummies to train their combat techniques and earn experience up to Job Level 3"
             }
          }
       },
@@ -631,7 +639,7 @@
          "archer_description": {
             "level_1_data": {
                "training_perk_name": "Archery Training",
-               "training_perk_description": "An archer can use Archery Targets to train up to Level 3 and will increase the allowed limit of Training Equipment by 1"
+               "training_perk_description": "An archer can use Archery Targets to train their precision and earn experience up to Job Level 3"
             },
             "description": "A rearguard combatant capable of using ranged weaponry like bows, crossbows and a variety of hindering types of arrows or bolts to attack their foes."
          }
@@ -640,7 +648,7 @@
          "cleric_description": {
             "level_1_data": {
                "training_perk_name": "Healer Training",
-               "training_perk_description": "A cleric can use Sheep tamed by a Shepherd to practice their magical gestures and earn experience up to Level 3"
+               "training_perk_description": "A cleric can use Sheep tamed by a Shepherd to practice their magical gestures and earn experience up to Job Level 3"
             },
             "description": "A combat healer that channels holy magic to not only mend wounds but also boost their allies through auras and effects."
          }
@@ -649,7 +657,7 @@
          "knight_description": {
             "level_1_data": {
                "training_perk_name": "Squire Training",
-               "training_perk_description": "A knight can use Training Dummies to train up to Level 3 and will increase the allowed limit of Training Equipment by 1"
+               "training_perk_description": "A knight can use Training Dummies to train their defensive taunting skills and earn experience up to Job Level 3"
             },
             "description": "A defensive fighter focused on protecting allies from harm and rounding up enemies, striking fear in their hearts!"
          }
@@ -1514,6 +1522,7 @@
       },
       "cook": {
          "recipes": {
+            "food_preparation_name": "Food Preparation",
             "nutty_poultry_recipe": {
                "recipe_name": "Stirred Poultry & Nuts",
                "description": "Stirred and fried large poultry slices with spices and nuts.",
@@ -1589,13 +1598,18 @@
                "description": "Delicious grains ready to be used in other recipes.",
                "flavor": "Who knew grass could be so tasty?"
             },
+            "rice_flour_recipe": {
+               "recipe_name": "Sack of Rice Flour",
+               "description": "A formidable alternative for wheat flour.",
+               "flavor": ""
+            },
             "dough_recipe": {
-               "recipe_name": "Portion of Dough",
+               "recipe_name": "Portion of Wheat Dough",
                "description": "Mix and knead a malleable dough to be used on baking meals like bread.",
                "flavor": "Watch it grow!"
             },
             "dough_sweet_recipe": {
-               "recipe_name": "Portion of Sweet Dough",
+               "recipe_name": "Portion of Sweet Wheat Dough",
                "description": "Prepare and knead an elastic and sweet dough for baking sugared goods.",
                "flavor": "It is like cake-bread!"
             },
@@ -1632,7 +1646,7 @@
             "sushi_recipe": {
                "recipe_name": "Sushi",
                "description": "A delicious specialty from hearthlings of a very distant land.",
-               "flavor": "A recipe made popular by Rayya's Children caravans that crossed the Pal'Mun"
+               "flavor": "A recipe made popular by Rayya's Children caravans that crossed the Pal'Mum"
             },
             "sushi_vegetarian_recipe": {
                "recipe_name": "Veggie Sushi",
@@ -2586,6 +2600,10 @@
                "display_name": "Mega Silkweed Fibers",
                "description": "These thick and strong fibers can be directly used as thread!"
             }
+         },
+         "bone_skull": {
+            "display_name": "Skull",
+            "description": "Don't... Don't think too much about it. Can be used as bone material."
          }
       },
       "refined": {
@@ -3528,6 +3546,13 @@
                "display_name": "Mega Watermelon Juice",
                "description": "Slurp! So refreshing and sweet! A whole town can enjoy this drink."
             }
+         },
+         "valor_statue": {
+            "statue_knight": {
+               "display_name_male": "Knight Statue (Male)",
+               "description": "An awesome noble knight carved in stone.",
+               "display_name_female": "Knight Statue (Female)"
+            }
          }
       },
       "pets": {
@@ -3541,7 +3566,7 @@
          },
          "panda": {
             "display_name": "Panda Cub",
-            "description": "Cute bear from east beyond Pal'Mun. It prefers vegetables but can eat anything."
+            "description": "Cute bear from east beyond Pal'Mum. It prefers vegetables but can eat anything."
          }
       },
       "critters": {
@@ -3647,6 +3672,15 @@
                "display_name": "Big Bird Nest",
                "description": "Grab it and run!"
             }
+         },
+         "rabbit_young": {
+            "display_name": "Bunny",
+            "description": "So little and cute! Will be a fine rabbit one day."
+         },
+         "deer_young": {
+            "display_name": "Fawn",
+            "display_name_highlands": "Moose Calf",
+            "description": "A young animal in need of love and care."
          }
       },
       "food": {
@@ -3867,6 +3901,10 @@
             "raw_rice": {
                "display_name": "Sack of Raw Rice",
                "description": "Delicious grains ready to be used in cooking."
+            },
+            "rice_flour": {
+               "display_name": "Sack of Rice Flour",
+               "description": "A formidable alternative for wheat flour."
             }
          },
          "roast_fish": {
@@ -3974,7 +4012,7 @@
             }
          },
          "dough_sweet": {
-            "display_name": "Portion of Sweet Dough",
+            "display_name": "Portion of Sweet Wheat Dough",
             "description": "Sweet Dough is the base for many delicacies like sweet loaf"
          },
          "batter_sweet": {
@@ -3982,7 +4020,7 @@
             "description": "Sweet Batter is a holy creation that can provide us CAKE."
          },
          "dough": {
-            "display_name": "Portion of Dough",
+            "display_name": "Portion of Wheat Dough",
             "description": "Dough is a base ingredient for several meals like breads"
          },
          "batter": {
@@ -4017,10 +4055,6 @@
             "pumpkin_soup_serving": {
                "display_name": "Serving of Pumpkin Soup",
                "description": "Warm and tasty!"
-            },
-            "watermelon_juice_serving": {
-               "display_name": "Cup of Watermelon Juice",
-               "description": "Refreshing!"
             }
          },
          "pasta": {
@@ -4041,6 +4075,21 @@
                "display_name": "Ostrich Feed",
                "description": "Very nutritious and loved by large birds."
             }
+         },
+         "corn_meal": {
+            "display_name": "Sack of Corn Meal",
+            "description": "Corn ground into a fine powder. Corn Meal can be used as flour."
+         },
+         "flour": {
+            "display_name": "Sack of Wheat Flour"
+         },
+         "kibble": {
+            "display_name": "Kibble",
+            "description": "Nutritious food made exclusively for pets. A kibble bowl can be used for serving."
+         },
+         "kibble_veggie": {
+            "display_name": "Veggie Kibble",
+            "description": "Nutritious food made exclusively for vegetarian pets. A kibble bowl can be used for serving."
          }
       },
       "terrain": {
@@ -4214,15 +4263,15 @@
       "monsters": {
          "forest": {
             "bear": {
-               "display_name": "Bear",
+               "display_name": "Brown Bear",
                "display_name_arctic": "Polar Bear",
-               "display_name_desert": "Sand Bear",
+               "display_name_desert": "Dune Bear",
                "display_name_highlands": "Black Bear",
-               "description": "It seems quite angry."
+               "description": "It seems quite angry... and big!"
             },
             "bear_cub": {
                "display_name": "Bear Cub",
-               "description": "Awww."
+               "description": "Awww. Just watch out for momma!"
             },
             "cougar": {
                "display_name": "Cougar",
@@ -5162,6 +5211,26 @@
          "food_trough_clay": {
             "display_name": "Clay Manger",
             "description": "Used by Shepherds to serve food for the animals in a pasture."
+         },
+         "pet_food_bowl_wood": {
+            "display_name": "Wooden Kibble Bowl",
+            "description": "Hearthlings can put kibble in this wooden bowl for their pets to eat."
+         },
+         "pet_food_bowl_stone": {
+            "display_name": "Stone Kibble Bowl",
+            "description": "Hearthlings can put kibble in this stone bowl for their pets to eat."
+         },
+         "pet_food_bowl_clay_red": {
+            "display_name": "Red Clay Kibble Bowl",
+            "description": "Hearthlings can put kibble in this clay bowl for their pets to eat."
+         },
+         "pet_food_bowl_clay_green": {
+            "display_name": "Green Clay Kibble Bowl",
+            "description": "Hearthlings can put kibble in this clay bowl for their pets to eat."
+         },
+         "pet_food_bowl_clay_blue": {
+            "display_name": "Blue Clay Kibble Bowl",
+            "description": "Hearthlings can put kibble in this clay bowl for their pets to eat."
          }
       },
       "tools": {
@@ -5212,6 +5281,47 @@
          "backpack_cloth": {
             "display_name": "Cloth Worker's Backpack",
             "description": "Allows Workers to be a tad more efficient when hauling and restocking."
+         }
+      },
+      "tile": {
+         "carpet": {
+            "simple_yellow": {
+               "display_name": "Simple Yellow Carpet",
+               "description": "They will automatically connect to nearby bits!"
+            }
+         }
+      },
+      "fence": {
+         "simple_wooden": {
+            "display_name": "Simple Wooden Fence",
+            "description": "A fence that automatically snaps to nearby fence parts!"
+         }
+      },
+      "drink": {
+         "moomoo_milk": {
+            "moomoo_milk": {
+               "display_name": "Moo-Moo Milk",
+               "description": "Warm and smooth, straight from a healthy moo-moo!"
+            },
+            "moomoo_milk_serving": {
+               "display_name": "Cup of Moo-Moo Milk",
+               "description": ""
+            }
+         },
+         "megacrop": {
+            "watermelon_juice_serving": {
+               "display_name": "Cup of Watermelon Juice",
+               "description": "Refreshing!"
+            }
+         },
+         "sheep_milk": {
+            "sheep_milk_serving": {
+               "display_name": "Cup of Sheep Milk"
+            },
+            "sheep_milk": {
+               "display_name": "Sheep Milk",
+               "description": "Buttery and sweet, this tasty milk came from a sheep!"
+            }
          }
       }
    },
@@ -5545,8 +5655,26 @@
                   "tooltip_consumables_other": "Other Consumables",
                   "tooltip_bulk_resources": "Bulk Resources",
                   "tooltip_civillian_equipment": "Clothing & Tools",
-                  "tooltip_gizmos_equipment": "Gizmos & Utilities"
+                  "tooltip_gizmos_equipment": "Gizmos & Utilities",
+                  "tooltip_plant": "All Plants",
+                  "nature_landscaping": "Nature & Scenery",
+                  "tooltip_saplings": "Tree Saplings",
+                  "tooltip_other_plants": "Other Plants",
+                  "tooltip_seeds": "Seeds",
+                  "tooltip_fish": "Captive Fish",
+                  "tooltip_herbs": "Herbs",
+                  "tooltip_fiber": "Fiber",
+                  "tooltip_algae": "Algae",
+                  "tooltip_essences": "Essences",
+                  "tooltip_fertilizer": "Fertilizer"
                }
+            },
+            "pasture": {
+               "ostrich_pasture_name": "Ostrich Enclosure",
+               "ostrich_pasture_description": "These exotic birds produce delicious large eggs and can be slaughtered for large poultry, jerky, feathers and bone",
+               "sheep_pasture_description": "Sheep produce wool, a good fiber with many uses. Slaughtering sheep will produce raw mutton, jerky, and bone",
+               "rabbit_pasture_description": "Rabbits reproduce quickly and can be slaughtered for jerky, pelts and sometimes bone",
+               "poyo_pasture_description": "Poyos produce eggs, a fine cooking ingredient. Slaughtering poyo will yield meat and, occasionally, feathers and bone"
             }
          },
          "military_mode": {
@@ -5656,7 +5784,9 @@
             "fish_meat_resource_name": "Any Fish Meat",
             "wool_resource_name": "Any Wool",
             "grain_resource_name": "Any Grain",
-            "grain_flour_resource_name": "Any Flour"
+            "grain_flour_resource_name": "Any Flour",
+            "any_pet_food_resource_name": "Any Pet Food",
+            "milk_resource_name": "Any Milk"
          }
       },
       "hotkeys": {

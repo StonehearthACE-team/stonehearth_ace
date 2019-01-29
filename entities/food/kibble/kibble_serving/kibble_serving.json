@@ -1,0 +1,30 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {},
+   "entity_data": {
+      "stonehearth:item": {
+         "category": "food",
+         "destroy_on_uncarry": true
+      },
+      "stonehearth:food": {
+         "stonehearth:sitting_on_chair": {
+            "satisfaction": 180
+         },
+         "default": {
+            "satisfaction": 180
+         },
+         "quality": 6
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.kibble.display_name)",
+         "description": "",
+         "material_tags": [
+            "pet_food",
+            "kibble",
+            "meat"
+         ],
+         "subject_override": "stonehearth_ace:food:kibble"
+      }
+   }
+}

@@ -1,0 +1,177 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:mob",
+   "player_id": "animals",
+   "components": {
+      "stonehearth:trivial_death": {},
+      "stonehearth:loot_drops": {
+         "force_auto_loot": true,
+         "entries": {
+            "jerky": {
+               "num_rolls": {
+                  "min": 0,
+                  "max": 1
+               },
+               "items": {
+                  "jerky": {
+                     "uri": "stonehearth:rabbit_jerky"
+                  }
+               }
+            }
+         }
+      },
+      "stonehearth:evolve": {},
+      "stonehearth:attributes": {
+         "max_health": {
+            "type": "basic",
+            "value": 20
+         },
+         "min_calories": {
+            "type": "basic",
+            "value": -25
+         },
+         "max_calories": {
+            "type": "basic",
+            "value": 25
+         },
+         "speed": {
+            "type": "basic",
+            "value": 40
+         },
+         "reproduction_rate_multiplier": {
+            "type": "basic",
+            "value": 1
+         },
+         "renewable_resource_rate_multiplier": {
+            "type": "basic",
+            "value": 1
+         },
+         "max_social_satisfaction": {
+            "type": "basic",
+            "value": 72
+         }
+      },
+      "stonehearth:expendable_resources": {
+         "resources": {
+            "calories": {
+               "min": {
+                  "linked_attribute": "min_calories"
+               },
+               "max": {
+                  "linked_attribute": "max_calories"
+               },
+               "initial_value": "max_value"
+            },
+            "social_satisfaction": {
+               "min": {
+                  "value": 0
+               },
+               "max": {
+                  "linked_attribute": "max_social_satisfaction"
+               },
+               "initial_value": {
+                  "type": "random_between",
+                  "min": 61,
+                  "max": "max_value"
+               }
+            }
+         }
+      },
+      "render_info": {
+         "animation_table": "/stonehearth/data/rigs/entities/critters/rabbit",
+         "scale": 0.07
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(rabbit_young.qb)"
+            ]
+         }
+      },
+      "sensor_list": {
+         "sensors": {
+            "sight": {
+               "radius": 21
+            }
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:species": {
+         "id": "rabbit",
+         "display_name": "i18n(stonehearth:entities.critters.rabbit.species)"
+      },
+      "stonehearth:observers:avoid_threatening_entities": {
+         "treat_neutral_as_hostile": true,
+         "min_avoidance_distance": 16,
+         "max_avoidance_distance": 16
+      },
+      "stonehearth:ai_packs": {
+         "packs": [
+            "stonehearth:ai_pack:critter",
+            "stonehearth:ai_pack:wimpy",
+            "stonehearth:ai_pack:panic:flee",
+            "stonehearth:ai_pack:death",
+            "stonehearth:ai_pack:idle",
+            "stonehearth:ai_pack:idle:bored:idle_effects",
+            "stonehearth:ai_pack:idle:bored:wander"
+         ]
+      },
+      "stonehearth:entity_radius": 0.3,
+      "stonehearth:evolve_data": {
+         "current_stage": "young",
+         "next_stage": "stonehearth:rabbit",
+         "evolve_time": "2d+12h",
+         "evolve_effect": "stonehearth:effects:fursplosion_effect"
+      },
+      "stonehearth:pasture_animal": {
+         "added_equipment": [
+            "stonehearth:pasture_equipment:young_animal_collar"
+         ],
+         "food_material": "rabbit_feed_edible",
+         "type": "stonehearth:rabbit"
+      },
+      "stonehearth:calories": {
+         "hungry_threshold": 0,
+         "famished_threshold": 0,
+         "malnourished_threshold": -10,
+         "hourly_calorie_loss": 0.5
+      },
+      "stonehearth:diet": {
+         "food_material": "vegetarian"
+      },
+      "stonehearth:portrait": {
+         "portrait_types": {
+            "headshot": {
+               "camera": {
+                  "pos": [
+                     17,
+                     0.8,
+                     -27
+                  ],
+                  "look_at": [
+                     0,
+                     0.6,
+                     0
+                  ],
+                  "fov": 45
+               }
+            }
+         }
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 4,
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:conversation_type": "animal",
+      "stonehearth:catalog": {
+         "player_id": "animals",
+         "display_name": "i18n(stonehearth_ace:entities.critters.rabbit_young.display_name)",
+         "description": "i18n(stonehearth_ace:entities.critters.rabbit_young.description)",
+         "icon": "file(rabbit_young.png)"
+      }
+   }
+}

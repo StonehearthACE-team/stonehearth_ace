@@ -11,11 +11,20 @@
       },
       "ingredients": {
          "recipes": {
-			"broth": {
-               "recipe": "file(broth_recipe.json)"
-            },
 			"raw_rice": {
                "recipe": "file(raw_rice_recipe.json)"
+            },
+			"rice_flour": {
+               "recipe": "file(rice_flour_recipe.json)"
+            }
+         }
+      },
+	  "food_preparation": {
+         "ordinal": 31,
+         "name": "i18n(stonehearth_ace:jobs.cook.recipes.food_preparation_name)",
+		 "recipes": {
+			"broth": {
+               "recipe": "file(broth_recipe.json)"
             },
 			"dough": {
                "recipe": "file(dough_recipe.json)"
@@ -28,9 +37,12 @@
             },
 			"dough_sweet": {
                "recipe": "file(dough_sweet_recipe.json)"
-            }
+            },
+			"sausage": {
+			   "recipe": "/stonehearth/jobs/cook/recipes/sausage_recipe.json"
+			}
          }
-      },
+	  },
       "food": {
          "recipes": {
             "cooked_nuts": {
@@ -53,7 +65,10 @@
             },
 			"roast_fish": {
                "recipe": "file(roast_fish_recipe.json)"
-            }
+            },
+			"mixintypes": {
+			   "sausage": "remove"
+			}
          }
       },
       "chefs_specials": {

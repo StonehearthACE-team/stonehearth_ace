@@ -3,10 +3,42 @@
       "stonehearth:resource_node": {
          "resource_loot_table": {
             "entries": {
-               "bones": {
+               "extra_mutton": {
+                  "roll_type": "some_of",
+                  "num_rolls": {
+                     "min": 1,
+                     "max": 2
+                  },
                   "items": {
-                     "bones": {
-                        "uri": "stonehearth_ace:resources:bone:bone_material"
+                     "pelt": {
+                        "uri": "stonehearth:food:mutton",
+                        "weight": 1
+                     }
+                  }
+               },
+               "jerky": {
+                  "roll_type": "some_of",
+                  "num_rolls": {
+                     "min": 4,
+                     "max": 6
+                  },
+                  "items": {
+                     "pelt": {
+                        "uri": "stonehearth:sheep_jerky",
+                        "weight": 1
+                     }
+                  }
+               },
+               "bone": {
+                  "roll_type": "some_of",
+                  "num_rolls": {
+                     "min": 1,
+                     "max": 2
+                  },
+                  "items": {
+                     "bone": {
+                        "uri": "stonehearth_ace:resources:bone:bone_material",
+                        "weight": 1
                      }
                   }
                }

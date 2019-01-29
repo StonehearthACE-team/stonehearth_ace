@@ -17,10 +17,10 @@
       },
       "stonehearth:food": {
          "stonehearth:sitting_on_chair": {
-            "satisfaction": 130
+            "satisfaction": 20
          },
          "default": {
-            "satisfaction": 90
+            "satisfaction": 10
          },
          "eating_effect": "sitting_drink",
          "quality": 6
@@ -34,12 +34,13 @@
          }
       },
       "stonehearth:catalog": {
-         "display_name": "i18n(stonehearth_ace:entities.food.megacrop.watermelon_juice_serving.display_name)",
-         "description": "i18n(stonehearth_ace:entities.food.megacrop.watermelon_juice_serving.description)",
+         "display_name": "i18n(stonehearth_ace:entities.drink.megacrop.watermelon_juice_serving.display_name)",
+         "description": "i18n(stonehearth_ace:entities.drink.megacrop.watermelon_juice_serving.description)",
          "is_item": true,
          "category": "food",
          "material_tags": [
             "food",
+            "drink",
             "vegetarian"
          ],
          "subject_override": "stonehearth_ace:decoration:megacrop:mega_watermelon"
