@@ -176,6 +176,9 @@ App.StonehearthFarmView.reopen({
       if(details.uri) {
          radiant.call('stonehearth_ace:get_growth_preferences_command', details.uri)
             .done(function (response) {
+               if (self.isDestroyed || self.isDestroying) {
+                  return;
+               }
                var cropProperties = self._doUpdateProperties(response, localizations, field_sv);
                self.set('cropProperties', cropProperties);
                self._updateStatuses();
