@@ -72,6 +72,12 @@ App.StonehearthUnitFrameView.reopen({
    _updatePromotionTooltip: function() {
       var self = this;
       var div = self.$('#descriptionDiv');
+      
+      // not sure why this happens...?
+      if (!div || div.length < 1) {
+         return;
+      }
+
       if (div.hasClass('tooltipstered')) {
          div.tooltipster('destroy');
       }

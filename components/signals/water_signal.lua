@@ -52,9 +52,9 @@ function WaterSignal:destroy()
 end
 
 function WaterSignal:_reset()
-   self._sv.water_exists = nil
+   self._sv.water_exists = false
 	self._sv.water_volume = nil
-	self._sv.waterfall_exists = nil
+	self._sv.waterfall_exists = false
    self._sv.waterfall_volume = nil
    self._sv.water_surface_level = nil
 	self.__saved_variables:mark_changed()
@@ -90,6 +90,7 @@ function WaterSignal:set_signal_region(signal_region)
 end
 
 function WaterSignal:set_location(location)
+   --log:debug('entity %s water signal set_location %s', self._sv.entity_id, location or 'NIL')
    if self._location ~= location then
       self._location = location
       self:_update_region()
@@ -370,6 +371,7 @@ function WaterSignal:_on_tick_water_signal(waters, waterfalls)
    end
    
    if next(changes) then
+      log:debug('entity %s _on_water_signal_changed: %s', self._sv.entity_id, radiant.util.table_tostring(changes))
       self.__saved_variables:mark_changed()
       if self._change_cb then
          self._change_cb(changes)

@@ -1,32 +1,81 @@
 #farmWindow {
    #cropRotation {
+      table {
+         table-layout: fixed;
+         margin: 2px;
+      }
+
       td {
          vertical-align: top;
          padding: 4px;
-         margin: 4px;
       }
 
       .name {
          .controlFont;
       }
 
+      .hidden {
+         display: none;
+      }
+
       #cropDetails {
-         .preferredSeasons, .waterAffinity {
-            font-size: 90%;
-            
-            .label {
-               color: #bca058;
-               font-family: 'groboldregular';
-            }
+         td {
+            width: 60px;
+            padding: 0px;
+         }
 
-            .water {
-               color: #88aaff
-            }
+         .cropProperty {
+            background-image: url(images/background_property.png);
+            background-size: contain;
+            margin: 5px;
+            width: 50px;
+            height: 50px;
 
-            .value {
-               font-family: 'groboldregular'
+            .cropPropertyIcon {
+               margin: auto;
+               vertical-align: middle;
             }
+         }
+
+         .status-bad {
+            background-image: url(images/background_bad.png);
+         }
+         .status-poor {
+            background-image: url(images/background_poor.png);
+         }
+         .status-average {
+            background-image: url(images/background_average.png);
+         }
+         .status-optimal {
+            background-image: url(images/background_optimal.png);
+         }
+         
+         .label {
+            color: #bca058;
+            font-family: 'groboldregular';
          }
       }
    }
+}
+
+.water {
+   color: #88aaff
+}
+
+.text-bad {
+   color: @warningFontColor;
+}
+.text-poor {
+   color: @barleyBrownColor;
+}
+.text-average {
+   color: @vanillaColor;
+}
+.text-optimal {
+   color: @activityColor;
+}
+
+.text-value {
+   font-family: 'groboldregular';
+   //font-weight: bolder;
 }

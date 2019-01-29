@@ -19,7 +19,10 @@
    "aliases": {
       "actions:component_to_filter_fn": "file(ai/actions/component_to_filter_fn_action.lua)",
       "actions:fertilize_crop_adjacent": "file(ai/actions/fertilize_crop_adjacent.lua)",
+      "actions:fertilize": "file(ai/actions/fertilize_action.lua)",
       "actions:fertilize_field": "file(ai/actions/fertilize_field_action.lua)",
+      "actions:find_field_to_fertilize_with_quality_fertilizer": "file(ai/actions/find_field_to_fertilize_with_quality_fertilizer.lua)",
+      "actions:find_field_to_fertilize_with_uri_fertilizer": "file(ai/actions/find_field_to_fertilize_with_uri_fertilizer.lua)",
       "actions:harvest_undercrop_adjacent": "file(ai/actions/harvest_undercrop_adjacent.lua)",
       "actions:harvest_underfield": "file(ai/actions/harvest_underfield_action.lua)",
       "actions:light_firepit": "file(ai/actions/light_firepit.lua)",
@@ -298,6 +301,7 @@
       "data:pre_save_calls": "file(data/pre_save/pre_save_calls.json)",
       "data:resource_constants": "file(data/resource_constants.json)",
       "data:thoughts": "file(data/happiness/thoughts.json)",
+      "data:inventory_trackers": "file(data/inventory_trackers/inventory_trackers.json)",
       "decoration:brass_sign_blacksmith": "file(entities/decoration/brass_sign_blacksmith/brass_sign_blacksmith.json)",
       "decoration:copper_garden_lantern": "file(entities/decoration/copper_garden_lantern/copper_garden_lantern.json)",
       "decoration:copper_wall_lantern": "file(entities/decoration/copper_wall_lantern/copper_wall_lantern.json)",
@@ -2024,6 +2028,7 @@
    },
    "controllers": {
       "crafter_info_controller": "file(services/server/crafter_info/crafter_info_controller.lua)",
+      "fertilizer_tracker": "file(services/server/inventory/fertilizer_tracker.lua)",
       "material_map": "file(services/server/crafter_info/material_map.lua)",
       "mountain_folk:class:artificer": "file(jobs/mf_artificer/mf_artificer.lua)",
       "mountain_folk:class:grower": "file(jobs/mf_grower/mf_grower.lua)",

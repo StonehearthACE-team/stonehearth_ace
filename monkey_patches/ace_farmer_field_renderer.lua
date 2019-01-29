@@ -69,7 +69,8 @@ function AceFarmerFieldRenderer:_on_ui_mode_changed()
    if self._ui_view_mode ~= mode then
       self._ui_view_mode = mode
 
-      self:_render_water_signal_region()
+      local data = self._datastore:get_data()
+      self:_render_water_signal_region(data.water_signal_region)
    end
 end
 
@@ -79,18 +80,18 @@ end
 
 function AceFarmerFieldRenderer:_update_dirt_models(effective_water_level)
    -- check the effective water level and set the appropriate dirt models
-   -- if it's nil, there's no water; if it's false, there's some but not ideal water; if it's true, it's at ideal water
+   local levels = stonehearth.constants.farming.water_levels
    local tilled_dirt_model = self._farmer_field_data.tilled_dirt
    local furrow_dirt_model = self._farmer_field_data.furrow_dirt
    
-   if effective_water_level == false then
+   if effective_water_level == levels.SOME or effective_water_level == levels.EXTRA then
       if self._farmer_field_data.tilled_dirt_water_partial then
          tilled_dirt_model = self._farmer_field_data.tilled_dirt_water_partial
       end
       if self._farmer_field_data.furrow_dirt_water_partial then
          furrow_dirt_model = self._farmer_field_data.furrow_dirt_water_partial
       end
-   elseif effective_water_level == true then
+   elseif effective_water_level == levels.PLENTY then
       if self._farmer_field_data.tilled_dirt_water_full then
          tilled_dirt_model = self._farmer_field_data.tilled_dirt_water_full
       end
@@ -127,7 +128,7 @@ function AceFarmerFieldRenderer:_render_water_signal_region(region)
       -- extruded apparently doesn't work with non-integer values, so we have to recreate the region
       -- but we assume it's a single box, so we can just do that from the bounds
       local bounds = region:get_bounds()
-      bounds.max.y = bounds.max.y + 0.1
+      --bounds.max.y = bounds.max.y - 0.9
       local r = Region3(Cube3(bounds)):inflated(Point3(-0.05, -0.05, -0.05))
       self._water_signal_region_node = _radiant.client.create_region_outline_node(self._entity_node,
             r, self._water_color, Color4(0, 0, 0, 0), material, 1)

@@ -68,7 +68,8 @@ local monkey_patches = {
    ace_crop_component = 'stonehearth.components.crop.crop_component',
    ace_posture_component = 'stonehearth.components.posture.posture_component',
    ace_effect_manager = 'radiant.modules.effects.effect_manager',
-   ace_entities = 'radiant.modules.entities'
+   ace_entities = 'radiant.modules.entities',
+   ace_inventory = 'stonehearth.services.server.inventory.inventory'
 }
 
 local function monkey_patching()

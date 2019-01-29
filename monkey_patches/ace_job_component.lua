@@ -21,6 +21,11 @@ function AceJobComponent:destroy(value, add_curiosity_addition)
 end
 
 function AceJobComponent:add_exp(value, add_curiosity_addition, options)
+   -- if we weren't being given any exp, who cares?
+   if value <= 0 then
+      return
+   end
+   
    if not self:can_level_up() then
       return
    end
@@ -53,7 +58,8 @@ function AceJobComponent:add_exp(value, add_curiosity_addition, options)
          end
       end
    end
-   value = radiant.math.round(value * exp_mult)
+   -- make sure that we get at least 1 exp from this
+   value = math.max(1, radiant.math.round(value * exp_mult))
 
    self._sv.current_level_exp = self._sv.current_level_exp + value
 

@@ -17,10 +17,50 @@ function AceFarmerFieldComponent:restore()
 end
 
 function AceFarmerFieldComponent:post_activate()
+   self._flood_listeners = {}
+   
+   self:_ensure_crop_counts()
    self:_ensure_fertilize_layer()
+   self:_ensure_fertilizer_preference()
    
    if self._is_restore then
       self:_create_water_listener()
+      self:_create_flood_listeners()
+   end
+end
+
+function AceFarmerFieldComponent:_ensure_crop_counts()
+   -- make sure we're properly tracking fertilized counts and flooded counts
+   if not self._sv.num_fertilized then
+      local num_fertilized = 0
+      for x=1, self._sv.size.x do
+         for y=1, self._sv.size.y do
+            local dirt_plot = self._sv.contents[x][y]
+            if dirt_plot and dirt_plot.is_fertilized then
+               num_fertilized = num_fertilized + 1
+            end
+         end
+      end
+
+      self._sv.num_fertilized = num_fertilized
+      self.__saved_variables:mark_changed()
+   end
+
+   if not self._sv.num_flooded then
+      local num_flooded = 0
+      for x=1, self._sv.size.x do
+         for y=1, self._sv.size.y do
+            local dirt_plot = self._sv.contents[x][y]
+            if dirt_plot and dirt_plot.contents then
+               if dirt_plot.contents:add_component('stonehearth:growing'):is_flooded() then
+                  num_flooded = num_flooded + 1
+               end
+            end
+         end
+      end
+
+      self._sv.num_flooded = num_flooded
+      self.__saved_variables:mark_changed()
    end
 end
 
@@ -33,6 +73,20 @@ function AceFarmerFieldComponent:_ensure_fertilize_layer()
                         :set_auto_update_adjacent(true)
       end
       table.insert(self._field_listeners, radiant.events.listen(self._sv._fertilizable_layer, 'radiant:entity:pre_destroy', self, self._on_field_layer_destroyed))
+   end
+end
+
+function AceFarmerFieldComponent:_ensure_fertilizer_preference()
+   local quality = self._sv._fertilizer_quality_preference
+   local uri = self._sv._fertilizer_uri_preference
+
+   if not (quality or uri) then
+      local def_to_worst = stonehearth.client_state:get_client_gameplay_setting(self._entity:get_player_id(), 'stonehearth_ace', 'default_to_worst_fertilizer', false)
+      self._sv._fertilizer_quality_preference = (def_to_worst and -1) or 1
+      self.__saved_variables:mark_changed()
+   elseif quality and uri then
+      self._sv._fertilizer_quality_preference = nil
+      self.__saved_variables:mark_changed()
    end
 end
 
@@ -77,8 +131,61 @@ function AceFarmerFieldComponent:plant_crop_at(x_offset, z_offset)
    local crop = self:_old_plant_crop_at(x_offset, z_offset)
 
 	if crop then
-		crop:add_component('stonehearth:growing'):set_water_level(self._sv.water_level or 0)
+      crop:add_component('stonehearth:growing'):set_water_level(self._sv.water_level or 0)
+      self:_create_flood_listener(crop)
 	end
+end
+
+AceFarmerFieldComponent._old_notify_crop_destroyed = FarmerFieldComponent.notify_crop_destroyed
+function AceFarmerFieldComponent:notify_crop_destroyed(x, z)
+   local dirt_plot = self._sv.contents and self._sv.contents[x][z]
+   if dirt_plot and dirt_plot.contents then
+      self:_destroy_flood_listener(dirt_plot.contents:get_id())
+   end
+   self:_old_notify_crop_destroyed(x, z)
+end
+
+function AceFarmerFieldComponent:_destroy_flood_listeners()
+   if self._flood_listeners then
+      for _, listener in pairs(self._flood_listeners) do
+         listener:destroy()
+      end
+   end
+   self._flood_listeners = {}
+end
+
+function AceFarmerFieldComponent:_destroy_flood_listener(id)
+   if self._flood_listeners[id] then
+      self._flood_listeners[id]:destroy()
+      self._flood_listeners[id] = nil
+   end
+end
+
+function AceFarmerFieldComponent:_create_flood_listeners()
+   self:_destroy_flood_listeners()
+
+   for x=1, self._sv.size.x do
+		for y=1, self._sv.size.y do
+			local dirt_plot = self._sv.contents[x][y]
+			if dirt_plot and dirt_plot.contents then
+				self:_create_flood_listener(dirt_plot.contents)
+			end
+		end
+	end
+end
+
+function AceFarmerFieldComponent:_create_flood_listener(crop)
+   local listener = self._flood_listeners[crop:get_id()]
+   if not listener then
+      self._flood_listeners[crop:get_id()] = radiant.events.listen(crop, 'stonehearth_ace:growing:flooded_changed', function(is_flooded)
+         if is_flooded then
+            self._sv.num_flooded = self._sv.num_flooded + 1
+         else
+            self._sv.num_flooded = self._sv.num_flooded - 1
+         end
+         self.__saved_variables:mark_changed()
+      end)
+   end
 end
 
 AceFarmerFieldComponent._old_set_crop = FarmerFieldComponent.set_crop
@@ -91,10 +198,49 @@ function AceFarmerFieldComponent:set_crop(session, response, new_crop_id)
    return result
 end
 
+-- fertilizer preference is either a number (-1, 0, or 1) or a string (uri)
+-- so we'll return it in a table similar to crafting ingredients material/uri
+function AceFarmerFieldComponent:get_fertilizer_preference()
+   local quality = self._sv._fertilizer_quality_preference
+   local uri = self._sv._fertilizer_uri_preference
+
+   return {
+      quality = quality,
+      uri = uri
+   }
+end
+
+function AceFarmerFieldComponent:set_fertilizer_preference(preference)
+   local changed = false
+   -- uri outranks quality
+   if preference.uri and preference.uri ~= self._sv._fertilizer_uri_preference then
+      changed = true
+      self._sv._fertilizer_uri_preference = preference.uri
+      self._sv._fertilizer_quality_preference = nil
+   elseif preference.quality and preference.quality ~= self._sv._fertilizer_quality_preference then
+      changed = true
+      self._sv._fertilizer_quality_preference = preference.quality
+      self._sv._fertilizer_uri_preference = nil
+   end
+
+   if changed then
+      self.__saved_variables:mark_changed()
+      radiant.events.trigger(self, 'stonehearth_ace:farmer_field:fertilizer_preference_changed')
+      if self._sv._fertilizable_layer then
+         stonehearth.ai:reconsider_entity(self._sv._fertilizable_layer, 'fertilizer preference changed')
+      end
+   end
+end
+
 function AceFarmerFieldComponent:_update_crop_fertilized(x, z, fertilized)
    fertilized = fertilized or nil
    local dirt_plot = self._sv.contents[x][z]
    if dirt_plot then
+      if fertilized and not dirt_plot.is_fertilized then
+         self._sv.num_fertilized = self._sv.num_fertilized + 1
+      elseif not fertilized and dirt_plot.is_fertilized then
+         self._sv.num_fertilized = self._sv.num_fertilized - 1
+      end
       dirt_plot.is_fertilized = fertilized
       self.__saved_variables:mark_changed()
    end
@@ -108,7 +254,7 @@ function AceFarmerFieldComponent:_create_water_listener()
 	local region = self._entity:get_component('region_collision_shape'):get_region():get()
 						:extruded('x', 1, 1)
                   :extruded('z', 1, 1)
-                  :extruded('y', 1, 0):translated(Point3(0, -1, 0))
+                  :extruded('y', 2, 0)
    local water_component = self._entity:add_component('stonehearth_ace:water_signal')
    self._water_signal = water_component:set_signal('farmer_field', region, {'water_volume'}, function(changes) self:_on_water_signal_changed(changes) end)
    self._sv.water_signal_region = region:duplicate()
@@ -185,16 +331,17 @@ function AceFarmerFieldComponent:_cache_best_water_level()
 end
 
 function AceFarmerFieldComponent:_update_effective_water_level()
-   local relative_level = nil
+   local levels = stonehearth.constants.farming.water_levels
+   local relative_level = levels.NONE
 
-   if self._sv.water_level > 0 then
-      relative_level = false
-   end
-   
    if self._best_water_level and self._sv.water_level >= self._best_water_level.min_water then
       if not self._next_water_level or self._sv.water_level < self._next_water_level.min_water then
-         relative_level = true
+         relative_level = levels.PLENTY
+      else
+         relative_level = levels.EXTRA
       end
+   elseif self._sv.water_level > 0 then
+      relative_level = levels.SOME
    end
 
    self._sv.effective_water_level = relative_level
@@ -208,7 +355,8 @@ function AceFarmerFieldComponent:_on_destroy()
    radiant.entities.destroy_entity(self._sv._fertilizable_layer)
    self._sv._fertilizable_layer = nil
 
-	self:_destroy_water_listener()
+   self:_destroy_water_listener()
+   self:_destroy_flood_listeners()
 end
 
 AceFarmerFieldComponent._old__reconsider_fields = FarmerFieldComponent._reconsider_fields
