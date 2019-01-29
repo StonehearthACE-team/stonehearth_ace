@@ -4,7 +4,17 @@
       "stonehearth:equipment_piece": {
          "injected_ai": {
             "actions": [
+               "stonehearth:actions:sit_on_ground",
+               "stonehearth:actions:goto_sleep",
+               "stonehearth:actions:sleep_when_exhausted",
+               "stonehearth:actions:pet:pet_sleep_on_ground",
+               "stonehearth:actions:pet:pet_sleep_on_ground_adjacent",
+               "stonehearth:actions:run_sleep_effect",
+               "stonehearth:actions:wait_for_expendable_resource_above",
                "stonehearth_ace:actions:pasture_animal:graze_on_grass"
+            ],
+            "observers": [
+               "stonehearth:observers:sleepiness"
             ]
          }
       }
