@@ -1,0 +1,25 @@
+{
+   "mixins": "/stonehearth/scenarios/static/critter_nest/critter_nest.json",
+   "name": "deer_family_nest",
+   "habitat_types": [
+      "forest",
+      "foothills"
+   ],
+   "biomes": [
+      "stonehearth:biome:temperate",
+      "stonehearth:biome:desert",
+      "stonehearth:biome:arctic",
+      "stonehearth_ace:biome:highlands"
+   ],
+   "data": {
+      "num_critters": {
+         "min": 4,
+         "max": 6
+      },
+      "critter_type": [
+         "stonehearth:deer",
+         "stonehearth:deer_horned",
+         "stonehearth_ace:deer:young"
+      ]
+   }
+}

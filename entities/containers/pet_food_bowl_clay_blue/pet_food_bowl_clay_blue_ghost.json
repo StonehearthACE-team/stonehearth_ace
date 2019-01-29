@@ -1,0 +1,40 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(pet_food_bowl_clay_blue.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "align_to_grid": [
+            "x",
+            "z"
+         ],
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0, "y": 0, "z": 0 }
+      },
+      "render_info": {
+         "scale": 0.1,
+         "animation_table": "file(/data/rigs/entities/containers/pet_food_bowl/pet_food_bowl.json)"
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.containers.pet_food_bowl_clay_blue.display_name)",
+         "description": "i18n(stonehearth_ace:entities.containers.pet_food_bowl_clay_blue.description)",
+         "icon": "file(pet_food_bowl_clay_blue.png)",
+         "category": "storage",
+         "material_tags": [
+            "clay",
+            "containers",
+            "crafted",
+            "pet_food_bowl",
+            "furniture",
+            "stockpile_furniture"
+         ]
+      }
+   }
+}

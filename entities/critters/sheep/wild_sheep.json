@@ -2,6 +2,20 @@
    "type": "entity",
    "mixins": "stonehearth:sheep",
    "components": {
+      "mixintypes": {
+         "stonehearth:renewable_resource_node": "remove",
+         "stonehearth:expendable_resources": "remove",
+         "stonehearth:commands": "override"
+      },
+      "stonehearth:attributes": {
+         "mixintypes": {
+            "min_calories": "remove",
+            "max_calories": "remove",
+            "reproduction_rate_multiplier": "remove",
+            "renewable_resource_rate_multiplier": "remove",
+            "max_social_satisfaction": "remove"
+         }
+      },
       "stonehearth:loot_drops": {
          "force_auto_loot": true,
          "entries": {
@@ -40,24 +54,6 @@
             }
          }
       },
-      "mixintypes": {
-         "stonehearth:renewable_resource_node": "remove"
-      },
-      "stonehearth:resource_node": {
-         "category": "harvest",
-         "check_owner": false,
-         "resource_loot_table": {
-            "entries": {
-               "wool": {
-                  "items": {
-                     "wool": {
-                        "uri": "stonehearth:resources:fiber:wool_bundle"
-                     }
-                  }
-               }
-            }
-         }
-      },
       "stonehearth:commands": {
          "commands": [
             "stonehearth_ace:commands:slaughter:wild_animal"
@@ -65,8 +61,16 @@
       }
    },
    "entity_data": {
-	  "stonehearth:catalog": {
-        "display_name": "i18n(stonehearth_ace:entities.critters.sheep.display_name)"
-	  }
+      "mixintypes": {
+         "stonehearth:pasture_animal": "remove",
+         "stonehearth:calories": "remove",
+         "stonehearth:conversation_type": "remove"
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 0
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.critters.sheep.display_name)"
+      }
    }
 }

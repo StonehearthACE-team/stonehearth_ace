@@ -1,0 +1,35 @@
+{
+   "components": {
+      "stonehearth:shepherd_pasture": {
+         "pasture_data": {
+            "stonehearth_ace:ostrich": {
+               "name": "i18n(stonehearth_ace:ui.game.zones_mode.pasture.ostrich_pasture_name)",
+               "description": "i18n(stonehearth_ace:ui.game.zones_mode.pasture.ostrich_pasture_description)",
+               "icon": "/stonehearth_ace/entities/critters/ostrich/ostrich.png",
+               "min_population": 2,
+               "reproduction_uri": "stonehearth:ostrich:egg:fertilized",
+               "max_num_per_10_square_unit": 0.48,
+               "base_reproduction_period": "48h",
+               "min_reproduction_period": "24h",
+               "feed_uri": "stonehearth_ace:food:ostrich_feed"
+            },
+            "stonehearth:rabbit": {
+			   "description": "i18n(stonehearth_ace:ui.game.zones_mode.pasture.rabbit_pasture_description)",
+			   "reproduction_uri": "stonehearth_ace:rabbit:young",
+               "base_reproduction_period": "24h",
+               "min_reproduction_period": "12h"
+            },
+            "stonehearth:poyo": {
+			   "description": "i18n(stonehearth_ace:ui.game.zones_mode.pasture.poyo_pasture_description)",
+			   "base_reproduction_period": "36h",
+               "min_reproduction_period": "18h"
+			},
+			"stonehearth:sheep": {
+			   "description": "i18n(stonehearth_ace:ui.game.zones_mode.pasture.sheep_pasture_description)",
+			   "base_reproduction_period": "56h",
+               "min_reproduction_period": "24h"
+			}
+         }
+      }
+   }
+}

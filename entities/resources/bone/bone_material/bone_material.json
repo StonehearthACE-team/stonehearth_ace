@@ -27,7 +27,7 @@
    },
    "entity_data": {
       "stonehearth:net_worth": {
-         "value_in_gold": 4,
+         "value_in_gold": 3,
          "rarity": "common",
          "shop_info": {
             "buyable": true,
@@ -42,7 +42,13 @@
          "icon": "file(bone_material.png)",
          "is_item": true,
          "category": "resources",
-         "material_tags":["stockpile_bone", "animal_part", "bone", "resource"]
+         "material_tags": [
+            "stockpile_bone",
+            "animal_part",
+            "bone",
+            "bone_material",
+            "resource"
+         ]
       },
       "stonehearth:appeal": {
          "appeal": -2

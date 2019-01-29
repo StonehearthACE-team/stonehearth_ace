@@ -19,9 +19,26 @@
          "resource_loot_table": {
             "entries": {
                "bones": {
+			      "num_rolls": {
+                     "min": 0,
+                     "max": 1
+                  },
                   "items": {
                      "bones": {
                         "uri": "stonehearth_ace:resources:bone:bone_material"
+                     }
+                  }
+               },
+			   "jerky": {
+                  "roll_type": "some_of",
+                  "num_rolls": {
+                     "min": 0,
+                     "max": 1
+                  },
+                  "items": {
+                     "pelt": {
+                        "uri": "stonehearth:rabbit_jerky",
+                        "weight": 1
                      }
                   }
                }

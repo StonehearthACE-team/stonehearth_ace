@@ -1,4 +1,58 @@
 {
+   "components": {
+	     "mob": {
+      "align_to_grid": [
+         "x",
+         "z"
+      ],
+      "model_origin": {
+         "x": -1,
+         "y": 0,
+         "z": 1
+      },
+      "region_origin": {
+         "x": 0,
+         "y": 0,
+         "z": 0
+      }
+   },
+   "mixintypes": {
+		"destination": "override",
+		"region_collision_shape": "override"
+   },
+      "destination": {
+      "region": [
+         {
+            "min": {
+               "x": -2,
+               "y": 0,
+               "z": -2
+            },
+            "max": {
+               "x": 2,
+               "y": 1,
+               "z": 2
+            }
+         }
+      ]
+   },
+   "region_collision_shape": {
+      "region": [
+         {
+            "min": {
+               "x": -2,
+               "y": 0,
+               "z": -2
+            },
+            "max": {
+               "x": 2,
+               "y": 16,
+               "z": 2
+            }
+         }
+      ]
+   }
+   },
    "entity_data": {
       "stonehearth:stump_data": {
          "stump_alias": "stonehearth_ace:trees:acacia:large:stump"

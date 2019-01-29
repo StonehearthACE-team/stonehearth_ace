@@ -23,11 +23,70 @@
                "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/bones.png",
                "filter": "stockpile_bone"
             },
-            "fungi": {
+            "plant": {
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_plant)",
+               "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/plant.png"
+            },
+            "herbs": {
                "ordinal": 6.1,
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_herbs)",
+               "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/herbs.png",
+               "filter": "herb resource"
+            },
+            "fungi": {
+               "ordinal": 6.2,
                "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_fungi)",
                "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/fungi.png",
                "filter": "stockpile_fungi"
+            },
+            "fiber": {
+               "ordinal": 6.3,
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_fiber)",
+               "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/fiber.png",
+               "filter": "fiber resource"
+            },
+            "algae": {
+               "ordinal": 6.4,
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_algae)",
+               "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/algae.png",
+               "filter": "stockpile_plant algae"
+            },
+            "essences": {
+               "ordinal": 20,
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_essences)",
+               "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/essences.png",
+               "filter": "stockpile_essence resource"
+            }
+         }
+      },
+      "nature_scenery": {
+         "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.nature_landscaping)",
+         "filter": "nature_scenery",
+         "ordinal": 1.9,
+         "categories": {
+            "saplings": {
+               "ordinal": 1,
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_saplings)",
+               "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/saplings.png",
+               "filter": "stockpile_plant tree"
+            },
+            "other_plants": {
+               "ordinal": 2,
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_other_plants)",
+               "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/other_plants.png",
+               "filter": "stockpile_plant decoration"
+            },
+            "seeds": {
+               "ordinal": 3,
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_seeds)",
+               "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/seeds.png",
+               "filter": "stockpile_plant seed"
+            },
+            "fish": {
+               "ordinal": 4,
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_fish)",
+               "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/fish.png",
+               "filter": "stockpile_fish"
             }
          }
       },
@@ -46,6 +105,12 @@
                "ordinal": 5,
                "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_consumables)",
                "filter": "healing_item"
+            },
+            "fertilizer": {
+               "ordinal": 5.5,
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_fertilizer)",
+               "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/fertilizer.png",
+               "filter": "stockpile_fertilizer"
             },
             "consumables_other": {
                "ordinal": 6,

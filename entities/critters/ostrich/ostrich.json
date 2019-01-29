@@ -1,0 +1,188 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:mob",
+   "player_id": "animals",
+   "components": {
+      "stonehearth:ai": {},
+      "stonehearth:trivial_death": {},
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(ostrich.qb)"
+            ]
+         }
+      },
+      "stonehearth:renewable_resource_node": {
+         "category": "herding",
+         "resource": "stonehearth:food:egg_large",
+         "renewal_time": "40h+12h",
+         "resource_spawn_effect": "stonehearth:effects:fursplosion_effect",
+         "start_unharvestable": true,
+         "spawn_resource_immediately": true,
+         "check_owner": true
+      },
+      "stonehearth:resource_node": {
+         "category": "herding",
+         "harvest_overlay_effect": "stonehearth:effects:chop_overlay_effect",
+         "harvester_effect": "fiddle",
+         "description": "harvest_animal",
+         "resource": "stonehearth:food:poultry_large",
+         "harvestable_by_harvest_tool": false,
+         "check_owner": true,
+         "resource_loot_table": {
+            "entries": {
+               "extra_poultry": {
+                  "roll_type": "some_of",
+                  "num_rolls": {
+                     "min": 0,
+                     "max": 1
+                  },
+                  "items": {
+                     "pelt": {
+                        "uri": "stonehearth:food:poultry_large",
+                        "weight": 1
+                     }
+                  }
+               },
+               "jerky": {
+                  "roll_type": "some_of",
+                  "num_rolls": {
+                     "min": 3,
+                     "max": 5
+                  },
+                  "items": {
+                     "pelt": {
+                        "uri": "stonehearth:ostrich_jerky",
+                        "weight": 1
+                     }
+                  }
+               },
+               "feathers": {
+                  "items": {
+                     "pelt": {
+                        "uri": "stonehearth:resources:feathers:ostrich_feathers",
+                        "weight": 1
+                     }
+                  }
+               },
+               "bone": {
+                  "roll_type": "some_of",
+                  "num_rolls": {
+                     "min": 1,
+                     "max": 2
+                  },
+                  "items": {
+                     "bone": {
+                        "uri": "stonehearth_ace:resources:bone:bone_material",
+                        "weight": 1
+                     }
+                  }
+               }
+            }
+         }
+      },
+      "stonehearth:attributes": {
+         "max_health": {
+            "type": "basic",
+            "value": 40
+         },
+         "min_calories": {
+            "type": "basic",
+            "value": -30
+         },
+         "max_calories": {
+            "type": "basic",
+            "value": 25
+         },
+         "speed": {
+            "type": "basic",
+            "value": 100
+         },
+         "reproduction_rate_multiplier": {
+            "type": "basic",
+            "value": 1
+         },
+         "renewable_resource_rate_multiplier": {
+            "type": "basic",
+            "value": 1
+         },
+         "max_social_satisfaction": {
+            "type": "basic",
+            "value": 100
+         }
+      },
+      "stonehearth:expendable_resources": {
+         "resources": {
+            "calories": {
+               "min": {
+                  "linked_attribute": "min_calories"
+               },
+               "max": {
+                  "linked_attribute": "max_calories"
+               },
+               "initial_value": "max_value"
+            },
+            "social_satisfaction": {
+               "min": {
+                  "value": 0
+               },
+               "max": {
+                  "linked_attribute": "max_social_satisfaction"
+               },
+               "initial_value": {
+                  "type": "random_between",
+                  "min": 80,
+                  "max": "max_value"
+               }
+            }
+         }
+      },
+      "render_info": {
+         "animation_table": "/stonehearth/data/rigs/entities/monster/avian/ostrich",
+         "scale": 0.13
+      }
+   },
+   "entity_data": {
+      "stonehearth:species": {
+         "id": "ostrich",
+         "display_name": "i18n(stonehearth:entities.monsters.avian.ostrich.species)"
+      },
+      "stonehearth:pasture_animal": {
+         "added_equipment": [
+            "stonehearth:pasture_equipment:adult_animal_collar"
+         ],
+         "food_material": "ostrich_feed_edible",
+         "type": "stonehearth_ace:ostrich"
+      },
+      "stonehearth:calories": {
+         "hungry_threshold": 0,
+         "famished_threshold": 0,
+         "malnourished_threshold": -10,
+         "hourly_calorie_loss": 1
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 36,
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:conversation_type": "animal",
+      "stonehearth:entity_radius": 0.9,
+      "stonehearth:ai_packs": {
+         "packs": [
+            "stonehearth:ai_pack:critter",
+            "stonehearth:ai_pack:death",
+            "stonehearth:ai_pack:idle",
+            "stonehearth:ai_pack:idle:bored:idle_effects",
+            "stonehearth:ai_pack:idle:bored:wander"
+         ]
+      },
+      "stonehearth:catalog": {
+         "player_id": "animals",
+         "display_name": "i18n(stonehearth:entities.monsters.avian.ostrich.display_name)",
+         "description": "i18n(stonehearth:entities.monsters.avian.ostrich.description)",
+         "icon": "file(ostrich.png)"
+      }
+   }
+}

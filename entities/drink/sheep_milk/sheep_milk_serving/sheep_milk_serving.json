@@ -1,0 +1,40 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(sheep_milk_serving.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:item": {
+         "category": "food",
+         "destroy_on_uncarry": true
+      },
+      "stonehearth:food": {
+         "stonehearth:sitting_on_chair": {
+            "satisfaction": 25
+         },
+         "default": {
+            "satisfaction": 10
+         },
+         "eating_effect": "sitting_drink",
+         "quality": 3
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.drink.sheep_milk.sheep_milk_serving.display_name)",
+         "description": "",
+         "material_tags": [
+            "food",
+            "sheep_milk_serving",
+            "milk",
+            "dairy"
+         ],
+         "subject_override": "stonehearth_ace:drink:dairy:sheep_milk"
+      }
+   }
+}

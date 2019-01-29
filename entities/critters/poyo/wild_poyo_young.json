@@ -1,10 +1,33 @@
 {
    "type": "entity",
    "mixins": "stonehearth:poyo:young",
+   "components": {
+      "mixintypes": {
+         "stonehearth:expendable_resources": "remove"
+      },
+      "stonehearth:attributes": {
+         "mixintypes": {
+            "min_calories": "remove",
+            "max_calories": "remove",
+            "reproduction_rate_multiplier": "remove",
+            "renewable_resource_rate_multiplier": "remove",
+            "max_social_satisfaction": "remove"
+         }
+      }
+   },
    "entity_data": {
+      "mixintypes": {
+         "stonehearth:evolve_data": "override",
+         "stonehearth:pasture_animal": "remove",
+         "stonehearth:calories": "remove",
+         "stonehearth:conversation_type": "remove"
+      },
       "stonehearth:evolve_data": {
          "next_stage": "stonehearth_ace:poyo:wild",
-         "evolve_time": "10d"
+         "evolve_time": "6d+6d"
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 0
       }
    }
 }

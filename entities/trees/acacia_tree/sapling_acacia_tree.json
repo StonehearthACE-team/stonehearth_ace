@@ -1,0 +1,57 @@
+{
+   "components": {
+		   "mob": {
+      "model_origin": {
+         "x": 0,
+         "y": 0,
+         "z": 0
+      },
+      "region_origin": {
+         "x": 0.5,
+         "y": 0,
+         "z": -0.5
+      }
+   },
+   "mixintypes": {
+		"destination": "override",
+		"region_collision_shape": "override"
+   },
+      "destination": {
+      "region": [
+         {
+            "min": {
+               "x": -1,
+               "y": 0,
+               "z": -2
+            },
+            "max": {
+               "x": 2,
+               "y": 1,
+               "z": 1
+            }
+         }
+      ]
+   },
+   "region_collision_shape": {
+      "region": [
+         {
+            "min": {
+               "x": -1,
+               "y": 0,
+               "z": -2
+            },
+            "max": {
+               "x": 2,
+               "y": 8,
+               "z": 1
+            }
+         }
+      ]
+   }
+   },
+   "entity_data": {
+      "mixintypes": {
+         "stonehearth:stump_data": "remove"
+      }
+   }
+}

@@ -1,0 +1,109 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:critter",
+   "components": {
+      "render_info": {
+         "animation_table": "/stonehearth/data/rigs/entities/critters/deer",
+         "scale": 0.07
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(deer_young.qb)"
+            ]
+         }
+      },
+      "stonehearth:loot_drops": {
+         "force_auto_loot": true,
+         "entries": {
+            "default": {
+               "items": {
+                  "jerky": {
+                     "uri": "stonehearth:deer_jerky",
+                     "weight": 1
+                  }
+               }
+            }
+         }
+      },
+      "stonehearth:attributes": {
+         "max_health": {
+            "type": "basic",
+            "value": 45
+         },
+         "speed": {
+            "type": "basic",
+            "value": 70
+         }
+      },
+      "stonehearth:evolve": {}
+   },
+   "entity_data": {
+      "stonehearth:evolve_data": {
+         "next_stage": [
+            "stonehearth:deer",
+            "stonehearth:deer_horned"
+         ],
+         "evolve_time": "6d+10d"
+      },
+      "stonehearth:species": {
+         "id": "deer",
+         "display_name": "i18n(stonehearth:entities.critters.deer.species)"
+      },
+      "stonehearth:bait_trap": {
+         "can_trap": true,
+         "catch_chance": 0,
+         "trigger_trap_on_failure_chance": 0.2
+      },
+      "stonehearth:entity_radius": 1,
+      "stonehearth:pasture_animal": {
+         "added_equipment": [
+            "stonehearth:pasture_equipment:young_animal_collar"
+         ],
+         "food_material": "sheep_feed_edible"
+      },
+      "stonehearth:calories": {
+         "hungry_threshold": 0,
+         "famished_threshold": 0,
+         "malnourished_threshold": -10,
+         "hourly_calorie_loss": 0.5
+      },
+      "stonehearth:diet": {
+         "food_material": "vegetarian"
+      },
+      "stonehearth:portrait": {
+         "portrait_types": {
+            "headshot": {
+               "camera": {
+                  "pos": [
+                     17,
+                     0.8,
+                     -27
+                  ],
+                  "look_at": [
+                     0,
+                     0.6,
+                     0
+                  ],
+                  "fov": 45
+               }
+            }
+         }
+      },
+      "stonehearth:conversation_type": "animal",
+      "stonehearth:catalog": {
+         "player_id": "animals",
+         "display_name": "i18n(stonehearth_ace:entities.critters.deer_young.display_name)",
+         "description": "i18n(stonehearth_ace:entities.critters.deer_young.description)",
+         "icon": "file(deer_young.png)"
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 0,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      }
+   }
+}
