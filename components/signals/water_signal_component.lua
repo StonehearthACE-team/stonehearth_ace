@@ -18,10 +18,10 @@ function WaterSignalComponent:post_activate()
       end
    end
 
-   self._added_to_world_listener = radiant.events.listen_once(self._entity, 'stonehearth:on_added_to_world', function()
-      self._added_to_world_listener = nil
-      --self:_location_changed()
-   end)
+   self._added_to_world_trace = self._entity:add_component('mob'):trace_parent('water signal entity added or removed', _radiant.dm.TraceCategories.SYNC_TRACE)
+      :on_changed(function()
+         self:_location_changed()
+      end)
 
    self._location_trace = self._entity:add_component('mob'):trace_transform('water signal entity moved', _radiant.dm.TraceCategories.SYNC_TRACE)
       :on_changed(function()
@@ -37,9 +37,9 @@ function WaterSignalComponent:destroy()
       self._location_trace = nil
    end
 
-   if self._added_to_world_listener then
-      self._added_to_world_listener:destroy()
-      self._added_to_world_listener = nil
+   if self._added_to_world_trace then
+      self._added_to_world_trace:destroy()
+      self._added_to_world_trace = nil
    end
 end
 

@@ -17,13 +17,18 @@ App.StonehearthFarmView.reopen({
       DRY: 'dry',
       REQUIRED: 'required',
       FASTER: 'faster',
-      SLOWER: 'slower'
+      SLOWER: 'slower',
+      DRY_SLOWER: 'dry_slower',
+      DRY_STOPPED: 'dry_no_growth'
    },
 
    _GROWTH_TIMES: {
       SHORT: 'short',
       FAIR: 'fair',
-      LONG: 'long'
+      LONG: 'long',
+      SHORTER: 'positive_modifiers',
+      NORMAL: 'average_modifiers',
+      LONGER: 'negative_modifiers'
    },
 
    _IMAGES_DIR: '/stonehearth_ace/ui/game/modes/zones_mode/farm/images/',
@@ -265,26 +270,31 @@ App.StonehearthFarmView.reopen({
       self._createPropertyTooltip(self.$('#waterAffinity'), waterAffinity.name);
 
 
+      var floodType = self._FLOOD_ICONS.DRY;
+      var floodTooltip = localizations.flooded.prefers_not;
       var requireFlooding = response.require_flooding_to_grow;
       var floodingMultiplier = response.flood_period_multiplier;
+      if (requireFlooding) {
+         floodType = self._FLOOD_ICONS.REQUIRED;
+         floodTooltip = localizations.flooded.requires;
+      }
+      else if (floodingMultiplier < 1) {
+         floodType = self._FLOOD_ICONS.FASTER;
+         floodTooltip = localizations.flooded.prefers;
+      }
+      else if (floodingMultiplier > 1) {
+         floodType = self._FLOOD_ICONS.DRY;
+         floodTooltip = localizations.flooded.prefers_not;
+      }
+
       var floodPreference = {
          name: 'floodPreference',
          tooltipTitle: localizations.flooded.property_name,
          requireFlooding: requireFlooding,
-         floodingMultiplier: floodingMultiplier
+         floodingMultiplier: floodingMultiplier,
+         icon: self._IMAGES_DIR + 'property_flood_' + floodType + '.png',
+         tooltip: floodTooltip
       };
-      if (requireFlooding) {
-         floodPreference.icon = self._IMAGES_DIR + 'property_flood_required.png';
-         floodPreference.tooltip = localizations.flooded.requires;
-      }
-      else if (floodingMultiplier < 1) {
-         floodPreference.icon = self._IMAGES_DIR + 'property_flood_faster.png';
-         floodPreference.tooltip = localizations.flooded.prefers;
-      }
-      else if (floodingMultiplier > 1) {
-         floodPreference.icon = self._IMAGES_DIR + 'property_flood_slower.png';
-         floodPreference.tooltip = localizations.flooded.prefers_not;
-      }
 
       cropProperties.floodPreference = floodPreference;
       self._setTooltipData(floodPreference);
@@ -398,6 +408,7 @@ App.StonehearthFarmView.reopen({
             else {
                status = self._STATUSES.POOR;
             }
+            flood_icon = self._FLOOD_ICONS.DRY_STOPPED;
          }
          else {
             status = self._STATUSES.OPTIMAL;
@@ -407,6 +418,7 @@ App.StonehearthFarmView.reopen({
       else if (cropProperties.floodPreference.floodingMultiplier < 1) {
          if (num_flooded < num_crops) {
             status = self._STATUSES.POOR;
+            flood_icon = self._FLOOD_ICONS.DRY_SLOWER;
          }
          else {
             status = self._STATUSES.OPTIMAL;
@@ -421,6 +433,9 @@ App.StonehearthFarmView.reopen({
          else {
             status = self._STATUSES.OPTIMAL;
          }
+      }
+      else if (num_flooded > 0) {
+         flood_icon = self._FLOOD_ICONS.REQUIRED;
       }
 
       var currentFlooded = {
@@ -473,7 +488,7 @@ App.StonehearthFarmView.reopen({
       // growth time is an approximation based on the number of growth time modifiers, not their magnitudes
       // so we wait until after our calculations on those other fields to determine this
       status = self._STATUSES.AVERAGE;
-      var growthTime = self._GROWTH_TIMES.FAIR;
+      var growthTime = self._GROWTH_TIMES.NORMAL;
       var growthTimeTooltip = localizations.growth_time.normal;
       var numPositive = 0;
       var numNegative = 0;
@@ -502,12 +517,12 @@ App.StonehearthFarmView.reopen({
       }
 
       if (numPositive > numNegative) {
-         growthTime = self._GROWTH_TIMES.SHORT;
+         growthTime = self._GROWTH_TIMES.SHORTER;
          growthTimeTooltip = localizations.growth_time.shorter;
          status = self._STATUSES.OPTIMAL;
       }
       else if (numPositive < numNegative) {
-         growthTime = self._GROWTH_TIMES.LONG;
+         growthTime = self._GROWTH_TIMES.LONGER;
          growthTimeTooltip = localizations.growth_time.longer;
          status = self._STATUSES.POOR;
       }

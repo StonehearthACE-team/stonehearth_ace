@@ -19,14 +19,14 @@ end
 function AceFarmerFieldComponent:post_activate()
    self._flood_listeners = {}
    
-   self:_ensure_crop_counts()
-   self:_ensure_fertilize_layer()
-   self:_ensure_fertilizer_preference()
-   
    if self._is_restore then
       self:_create_water_listener()
       self:_create_flood_listeners()
    end
+
+   self:_ensure_crop_counts()
+   self:_ensure_fertilize_layer()
+   self:_ensure_fertilizer_preference()
 end
 
 function AceFarmerFieldComponent:_ensure_crop_counts()
@@ -130,9 +130,14 @@ AceFarmerFieldComponent._old_plant_crop_at = FarmerFieldComponent.plant_crop_at
 function AceFarmerFieldComponent:plant_crop_at(x_offset, z_offset)
    local crop = self:_old_plant_crop_at(x_offset, z_offset)
 
-	if crop then
-      crop:add_component('stonehearth:growing'):set_water_level(self._sv.water_level or 0)
+   local growing_comp = crop and crop:add_component('stonehearth:growing')
+	if growing_comp then
+      growing_comp:set_water_level(self._sv.water_level or 0)
       self:_create_flood_listener(crop)
+      if growing_comp:is_flooded() then
+         self._sv.num_flooded = self._sv.num_flooded + 1
+         self.__saved_variables:mark_changed()
+      end
 	end
 end
 

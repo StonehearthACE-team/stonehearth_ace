@@ -22,7 +22,7 @@ end
 
 function ReplantComponent:_replant(killer_player_id)
    --Create the entity and put it on the ground
-   if not self._replant_data.seed_alias then
+   if not (self._replant_data.seed_alias or self._replant_data.sapling_alias) then
       return
    else
       local location = radiant.entities.get_world_grid_location(self._entity)
@@ -35,9 +35,32 @@ function ReplantComponent:_replant(killer_player_id)
                structure = parent,
             }
          local town = stonehearth.town:get_town(killer_player_id)
-         town:place_item_type(self._replant_data.seed_alias, nil, placement_info)
+         -- check if there's a sapling specified and prioritize that if there are any in inventory
+         if self._replant_data.sapling_alias and self:_can_place_more(killer_player_id, self._replant_data.sapling_alias) then
+            town:place_item_type(self._replant_data.sapling_alias, nil, placement_info)
+         elseif self._replant_data.seed_alias then
+            town:place_item_type(self._replant_data.seed_alias, nil, placement_info)
+         end
       end
    end
+end
+
+-- copied from PlaceItemCallHandler
+function ReplantComponent:_can_place_more(player_id, entity_uri)
+   local inventory = stonehearth.inventory:get_inventory(player_id)
+   local more_items = false
+   if inventory then
+      for _, entity_tracking_data in ipairs(inventory:get_placeable_items_of_type(entity_uri)) do
+         local total_count = entity_tracking_data.count
+         local placed = entity_tracking_data.num_placements_requested or 0
+         local remaining = total_count - placed
+
+         if remaining > 0 then
+            return true
+         end
+      end
+   end
+   return false
 end
 
 return ReplantComponent
