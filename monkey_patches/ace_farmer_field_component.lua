@@ -9,11 +9,17 @@ local RECALCULATE_THRESHOLD = 0.5
 
 AceFarmerFieldComponent._old_restore = FarmerFieldComponent.restore
 function AceFarmerFieldComponent:restore()
-   self:_old_restore()
-   
-   self:_cache_best_water_level()
-
    self._is_restore = true
+   
+   self:_old_restore()
+
+   -- if this is an old farm that doesn't have full details, reload the details
+   if self._sv.current_crop_details and not self._sv.current_crop_details.flood_period_multiplier then
+      self._sv.current_crop_details = stonehearth.farming:get_crop_details(self._sv.current_crop_alias)
+      self.__saved_variables:mark_changed()
+   end
+
+   self:_cache_best_water_level()
 end
 
 function AceFarmerFieldComponent:post_activate()
@@ -326,9 +332,7 @@ function AceFarmerFieldComponent:get_best_water_level()
 		return nil
 	end
 	
-	local json = radiant.resources.load_json(self._sv.current_crop_alias)
-	self._preferred_climate = json and json.preferred_climate
-	return stonehearth.town:get_best_water_level_from_climate(self._preferred_climate)
+	return stonehearth.town:get_best_water_level_from_climate(self._sv.current_crop_details.preferred_climate)
 end
 
 function AceFarmerFieldComponent:_cache_best_water_level()

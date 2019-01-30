@@ -52,8 +52,7 @@ App.StonehearthFarmView.reopen({
                if (self.isDestroyed || self.isDestroying) {
                   return;
                }
-               var season = o2.current_season.id;
-               self.set('_currentSeason', season);
+               self.set('_currentSeason', o2.current_season);
                self._updateStatuses();
             });
       });
@@ -179,15 +178,9 @@ App.StonehearthFarmView.reopen({
       self.$('#cropStatuses').find('.tooltipstered').tooltipster('destroy');
 
       if(details.uri) {
-         radiant.call('stonehearth_ace:get_growth_preferences_command', details.uri)
-            .done(function (response) {
-               if (self.isDestroyed || self.isDestroying) {
-                  return;
-               }
-               var cropProperties = self._doUpdateProperties(response, localizations, field_sv);
-               self.set('cropProperties', cropProperties);
-               self._updateStatuses();
-            });
+         var cropProperties = self._doUpdateProperties(localizations, field_sv);
+         self.set('cropProperties', cropProperties);
+         self._updateStatuses();
       }
       else {
          self.set('cropProperties', null);
@@ -195,30 +188,31 @@ App.StonehearthFarmView.reopen({
    }.observes('model.stonehearth:farmer_field.current_crop_details'),
 
    // this function can be inherited/overridden to add more properties
-   _doUpdateProperties: function(response, localizations, field_sv) {
+   _doUpdateProperties: function(localizations, field_sv) {
       var self = this;
       if (self.isDestroyed || self.isDestroying) {
          return;
       }
 
       var cropProperties = {};
+      var details = field_sv.current_crop_details || {};
       var size = field_sv.size;
 
       var preferredSeasons = [];
-      radiant.each(response.preferred_seasons || [], function(_, season) {
+      radiant.each(details.preferred_seasons || {}, function(season, season_i18n) {
          preferredSeasons.push({
             name: season,
             icon: self._IMAGES_DIR + 'property_season_' + season + '.png',
             tooltipTitle: localizations.season.property_name,
             tooltip: localizations.season.property_description,
-            i18n_data: { season: localizations.season.values[season] }
+            i18n_data: { season: season_i18n }
          });
       })
       self._createPreferredSeasonDivs(preferredSeasons);
       cropProperties.preferredSeasons = preferredSeasons;
 
-      var growth_time = response.growth_time;
-      var total_growth_time = response.total_growth_time;
+      var growth_time = details.growth_time;
+      var total_growth_time = details.total_growth_time;
       var time_str = total_growth_time.day > 0 ? 
             (total_growth_time.hour > 0 ? localizations.growth_time.days_and_hours : localizations.growth_time.days_only) : 
             localizations.growth_time.hours_only;
@@ -240,7 +234,7 @@ App.StonehearthFarmView.reopen({
       self._createPropertyTooltip(self.$('#growthTime'), growthTime.name);
 
 
-      var affinities = response.water_affinity;
+      var affinities = details.water_affinity;
       var size_mult = self._getSizeMult(size);
       var waterAffinity = {
          name: 'waterAffinity',
@@ -272,8 +266,8 @@ App.StonehearthFarmView.reopen({
 
       var floodType = self._FLOOD_ICONS.DRY;
       var floodTooltip = localizations.flooded.prefers_not;
-      var requireFlooding = response.require_flooding_to_grow;
-      var floodingMultiplier = response.flood_period_multiplier;
+      var requireFlooding = details.require_flooding_to_grow;
+      var floodingMultiplier = details.flood_period_multiplier;
       if (requireFlooding) {
          floodType = self._FLOOD_ICONS.REQUIRED;
          floodTooltip = localizations.flooded.requires;
@@ -342,7 +336,7 @@ App.StonehearthFarmView.reopen({
       status = self._STATUSES.AVERAGE;
       var prefSeasonTooltip = localizations.season.out_of_season;
       for (i = 0; i < cropProperties.preferredSeasons.length; i++) {
-         if (cropProperties.preferredSeasons[i].name == season) {
+         if (cropProperties.preferredSeasons[i].name == season.id) {
             status = self._STATUSES.OPTIMAL;
             prefSeasonTooltip = localizations.season.in_season;
             break;
@@ -350,12 +344,12 @@ App.StonehearthFarmView.reopen({
       }
 
       var currentSeason = {
-         name: season,
-         icon: self._IMAGES_DIR + 'property_season_' + season + '.png',
+         name: season.id,
+         icon: self._IMAGES_DIR + 'property_season_' + season.id + '.png',
          status: status,
          tooltipTitle: localizations.season.status_name,
          tooltip: prefSeasonTooltip,
-         i18n_data: localizations.season.values[season]
+         i18n_data: season.display_name
       };
 
       cropStatuses.currentSeason = currentSeason;
@@ -581,6 +575,10 @@ App.StonehearthFarmView.reopen({
             .addClass('cropProperty')
             .attr('season-id', num)
             .append(img);
+
+         if (num > 1) {
+            div.addClass('overlap');
+         }
 
          var seasonId = 'season-' + num;
          self._setTooltipData(entry, seasonId);

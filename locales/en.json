@@ -5624,6 +5624,7 @@
             "farm": {
                "properties": "Crop Properties:",
                "statuses": "Current Statuses:",
+               "fertilizer_setting": "Fertilizer:",
                "season": {
                   "property_name": "Preferred Seasons",
                   "property_description": "This crop prefers the <span class='text-value'>[str(i18n_data.season)]</span> season and will grow more slowly outside of preferred seasons.",
@@ -5642,6 +5643,7 @@
                   "status_name": "Relative Growth Time",
                   "days_only": "[str(i18n_data.day)] day(s)",
                   "days_and_hours": "[str(i18n_data.day)] day(s) and [str(i18n_data.hour)] hour(s)",
+                  "hours_only": "[str(i18n_data.hour)] hour(s)",
                   "short": "This crop matures quickly (<span class='text-value'>[str(i18n_data.total_growth_time)]</span> before modifiers).",
                   "fair": "This crop matures at a moderate rate (<span class='text-value'>[str(i18n_data.total_growth_time)]</span> before modifiers).",
                   "long": "This crop takes a long time to mature (<span class='text-value'>[str(i18n_data.total_growth_time)]</span> before modifiers).",
