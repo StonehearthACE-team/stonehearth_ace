@@ -69,6 +69,20 @@ App.StonehearthUnitFrameView.reopen({
       }
    },
 
+   _clearItemQualityIndicator: function() {
+      var self = this;
+      if (self.$('#qualityGem')) {
+         if (self.$('#qualityGem').hasClass('tooltipstered')) {
+            self.$('#qualityGem').tooltipster('destroy');
+         }
+         self.$('#qualityGem').removeClass();
+      }
+      if (self.$('#nametag')) {
+         self.$('#nametag').removeClass();
+      }
+      self.set('qualityItemCreationDescription', null);
+   },
+
    _updatePromotionTooltip: function() {
       var self = this;
       var div = self.$('#descriptionDiv');

@@ -172,18 +172,20 @@ App.StonehearthFarmView.reopen({
       var field_sv = self.get('model.stonehearth:farmer_field');
       var details = field_sv.current_crop_details || {};
 
-      self._tooltipData = {};
+      if (self._oldURI != details.uri) {
+         self._oldURI = details.uri;
 
-      self.$('#cropProperties').find('.tooltipstered').tooltipster('destroy');
-      self.$('#cropStatuses').find('.tooltipstered').tooltipster('destroy');
+         App.tooltipHelper.removeDynamicTooltip(self.$('.cropProperty'));
+         self._tooltipData = {};
 
-      if(details.uri) {
-         var cropProperties = self._doUpdateProperties(localizations, field_sv);
-         self.set('cropProperties', cropProperties);
-         self._updateStatuses();
-      }
-      else {
-         self.set('cropProperties', null);
+         if(details.uri) {
+            var cropProperties = self._doUpdateProperties(localizations, field_sv);
+            self.set('cropProperties', cropProperties);
+            self._updateStatuses();
+         }
+         else {
+            self.set('cropProperties', null);
+         }
       }
    }.observes('model.stonehearth:farmer_field.current_crop_details'),
 
@@ -208,6 +210,15 @@ App.StonehearthFarmView.reopen({
             i18n_data: { season: season_i18n }
          });
       })
+      if (preferredSeasons.length < 1) {
+         // no preferred seasons
+         preferredSeasons.push({
+            name: 'any',
+            icon: self._IMAGES_DIR + 'property_season_any.png',
+            tooltipTitle: localizations.season.no_season_title,
+            tooltip: localizations.season.no_season_description
+         });
+      }
       self._createPreferredSeasonDivs(preferredSeasons);
       cropProperties.preferredSeasons = preferredSeasons;
 
@@ -336,7 +347,8 @@ App.StonehearthFarmView.reopen({
       status = self._STATUSES.AVERAGE;
       var prefSeasonTooltip = localizations.season.out_of_season;
       for (i = 0; i < cropProperties.preferredSeasons.length; i++) {
-         if (cropProperties.preferredSeasons[i].name == season.id) {
+         var name =cropProperties.preferredSeasons[i].name;
+         if (name == 'any' || name == season.id) {
             status = self._STATUSES.OPTIMAL;
             prefSeasonTooltip = localizations.season.in_season;
             break;
@@ -349,7 +361,7 @@ App.StonehearthFarmView.reopen({
          status: status,
          tooltipTitle: localizations.season.status_name,
          tooltip: prefSeasonTooltip,
-         i18n_data: season.display_name
+         i18n_data: { season: season.display_name }
       };
 
       cropStatuses.currentSeason = currentSeason;
@@ -576,9 +588,9 @@ App.StonehearthFarmView.reopen({
             .attr('season-id', num)
             .append(img);
 
-         if (num > 1) {
-            div.addClass('overlap');
-         }
+         // if (num > 1) {
+         //    div.addClass('overlap');
+         // }
 
          var seasonId = 'season-' + num;
          self._setTooltipData(entry, seasonId);
@@ -609,7 +621,10 @@ App.StonehearthFarmView.reopen({
          App.tooltipHelper.createDynamicTooltip(div, function() {
             var tooltipData = (self._tooltipData || {})[property];
             if (tooltipData) {
-               var displayNameTranslated = tooltipData.tooltipTitle && i18n.t(tooltipData.tooltipTitle, tooltipData.i18n_data);
+               var displayNameTranslated = tooltipData.tooltipTitle && i18n.t(tooltipData.tooltipTitle, {
+                  i18n_data: tooltipData.i18n_data,
+                  escapeHTML: true
+               });
                var description = tooltipData.tooltip && i18n.t(tooltipData.tooltip, {
                   i18n_data: tooltipData.i18n_data,
                   escapeHTML: true
