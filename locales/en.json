@@ -5632,15 +5632,11 @@
                "season": {
                   "property_name": "Preferred Seasons",
                   "property_description": "This crop prefers the <span class='text-value'>[str(i18n_data.season)]</span> season and will grow more slowly outside of preferred seasons.",
-                  "status_name": "Current Season",
+                  "status_name": "Current Season: <span class='text-value'>[str(i18n_data.season)]</span>",
                   "in_season": "This crop is currently in season, so will grow at a normal rate.",
                   "out_of_season": "This crop is currently out of season and will grow more slowly.",
-                  "values": {
-                     "spring": "Spring",
-                     "summer": "Summer",
-                     "autumn": "Autumn",
-                     "winter": "Winter"
-                  }
+                  "no_season_title": "No Preferred Seasons",
+                  "no_season_description": "This crop does not have any preferred seasons and will grow normally throughout the year."
                },
                "growth_time": {
                   "property_name": "Growth Time",
