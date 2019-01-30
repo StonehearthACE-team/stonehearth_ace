@@ -70,7 +70,8 @@ local monkey_patches = {
    ace_effect_manager = 'radiant.modules.effects.effect_manager',
    ace_entities = 'radiant.modules.entities',
    ace_inventory = 'stonehearth.services.server.inventory.inventory',
-   ace_farming_service = 'stonehearth.services.server.farming.farming_service'
+   ace_farming_service = 'stonehearth.services.server.farming.farming_service',
+   ace_hydrology_service = 'stonehearth.services.server.hydrology.hydrology_service'
 }
 
 local function monkey_patching()

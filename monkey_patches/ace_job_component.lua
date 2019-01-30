@@ -22,7 +22,7 @@ end
 
 function AceJobComponent:add_exp(value, add_curiosity_addition, options)
    -- if we weren't being given any exp, who cares?
-   if value <= 0 then
+   if not value or value <= 0 then
       return
    end
    

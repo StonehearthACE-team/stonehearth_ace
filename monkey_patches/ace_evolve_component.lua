@@ -1,6 +1,7 @@
 local Point3 = _radiant.csg.Point3
 local Cube3 = _radiant.csg.Cube3
 local Region3 = _radiant.csg.Region3
+local rng = _radiant.math.get_default_rng()
 
 local item_quality_lib = require 'stonehearth_ace.lib.item_quality.item_quality_lib'
 
@@ -167,52 +168,59 @@ function AceEvolveComponent:evolve()
    if type(evolved_form_uri) == 'table' then
       evolved_form_uri = evolved_form_uri[rng:get_int(1, #evolved_form_uri)]
    end   
-   --Create the evolved entity and put it on the ground
-   local evolved_form = radiant.entities.create_entity(evolved_form_uri, { owner = self._entity})
-   
-   -- Paul: this is the main line of code being inserted into the base evolve function
-   self:_set_quality(evolved_form, self._entity)
 
-   radiant.entities.set_player_id(evolved_form, self._entity)
+   local evolved_form
 
-   -- Have to remove entity because it can collide with evolved form
-   radiant.terrain.remove_entity(self._entity)
-   if not radiant.terrain.is_standable(evolved_form, location) then
-      -- If cannot evolve because the evolved form will not fit in the current location, set a timer to try again.
-      radiant.terrain.place_entity_at_exact_location(self._entity, location, { force_iconic = false, facing = facing })
-      radiant.entities.destroy_entity(evolved_form)
-      --TODO(yshan) maybe add tuning for specific retry to grow time
-      self:_start_evolve_timer()
-      return
-   end
+   if evolved_form_uri then
+      --Create the evolved entity and put it on the ground
+      evolved_form = radiant.entities.create_entity(evolved_form_uri, { owner = self._entity})
+      
+      self:_set_quality(evolved_form, self._entity)
 
-   local owner_component = self._entity:get_component('stonehearth:ownable_object')
-   local owner = owner_component and owner_component:get_owner()
-   if owner then
-      local evolved_owner_component = evolved_form:get_component('stonehearth:ownable_object')
-      if evolved_owner_component then
-         -- need to remove the original's owner so that destroying it later doesn't mess things up with the new entity's ownership
-         owner_component:set_owner(nil)
-         evolved_owner_component:set_owner(owner)
+      radiant.entities.set_player_id(evolved_form, self._entity)
+
+      -- Have to remove entity because it can collide with evolved form
+      radiant.terrain.remove_entity(self._entity)
+      if not radiant.terrain.is_standable(evolved_form, location) then
+         -- If cannot evolve because the evolved form will not fit in the current location, set a timer to try again.
+         radiant.terrain.place_entity_at_exact_location(self._entity, location, { force_iconic = false, facing = facing })
+         radiant.entities.destroy_entity(evolved_form)
+         --TODO(yshan) maybe add tuning for specific retry to grow time
+         self:_start_evolve_timer()
+         return
       end
-   end
 
-   local evolved_form_data = radiant.entities.get_entity_data(evolved_form, 'stonehearth:evolve_data')
-   if evolved_form_data and evolved_form_data.next_stage then
-      -- Ensure the evolved form also has the evolve component if it will evolve
-      evolved_form:add_component('stonehearth:evolve')
-   end
+      local owner_component = self._entity:get_component('stonehearth:ownable_object')
+      local owner = owner_component and owner_component:get_owner()
+      if owner then
+         local evolved_owner_component = evolved_form:get_component('stonehearth:ownable_object')
+         if evolved_owner_component then
+            -- need to remove the original's owner so that destroying it later doesn't mess things up with the new entity's ownership
+            owner_component:set_owner(nil)
+            evolved_owner_component:set_owner(owner)
+         end
+      end
 
-   radiant.terrain.place_entity_at_exact_location(evolved_form, location, { force_iconic = false, facing = facing } )
+      local evolved_form_data = radiant.entities.get_entity_data(evolved_form, 'stonehearth:evolve_data')
+      if evolved_form_data then
+         -- Ensure the evolved form also has the evolve component if it will evolve
+         -- but first check if it should get "stunted"
+         if not evolved_form_data.stunted_chance or rng:get_real(0, 1) > evolved_form_data.stunted_chance then
+            evolved_form:add_component('stonehearth:evolve')
+         end
+      end
 
-   local evolve_effect = self._evolve_data.evolve_effect
-   if evolve_effect then
-      radiant.effects.run_effect(evolved_form, evolve_effect)
+      radiant.terrain.place_entity_at_exact_location(evolved_form, location, { force_iconic = false, facing = facing } )
+
+      local evolve_effect = self._evolve_data.evolve_effect
+      if evolve_effect then
+         radiant.effects.run_effect(evolved_form, evolve_effect)
+      end
    end
 
    radiant.events.trigger(self._entity, 'stonehearth:on_evolved', {entity = self._entity, evolved_form = evolved_form})
 
-   -- Paul: also added this option, to kill on evolve instead of destroying (if you need to have it drop loot)
+   -- option to kill on evolve instead of destroying (e.g., if you need to have it drop loot or trigger the killed event)
    if self._evolve_data.kill_entity then
       radiant.entities.kill_entity(self._entity)
    else

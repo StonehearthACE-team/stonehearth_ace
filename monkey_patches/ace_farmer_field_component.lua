@@ -9,24 +9,30 @@ local RECALCULATE_THRESHOLD = 0.5
 
 AceFarmerFieldComponent._old_restore = FarmerFieldComponent.restore
 function AceFarmerFieldComponent:restore()
-   self:_old_restore()
-   
-   self:_cache_best_water_level()
-
    self._is_restore = true
+   
+   self:_old_restore()
+
+   -- if this is an old farm that doesn't have full details, reload the details
+   if self._sv.current_crop_details and not self._sv.current_crop_details.flood_period_multiplier then
+      self._sv.current_crop_details = stonehearth.farming:get_crop_details(self._sv.current_crop_alias)
+      self.__saved_variables:mark_changed()
+   end
+
+   self:_cache_best_water_level()
 end
 
 function AceFarmerFieldComponent:post_activate()
    self._flood_listeners = {}
    
-   self:_ensure_crop_counts()
-   self:_ensure_fertilize_layer()
-   self:_ensure_fertilizer_preference()
-   
    if self._is_restore then
       self:_create_water_listener()
       self:_create_flood_listeners()
    end
+
+   self:_ensure_crop_counts()
+   self:_ensure_fertilize_layer()
+   self:_ensure_fertilizer_preference()
 end
 
 function AceFarmerFieldComponent:_ensure_crop_counts()
@@ -130,9 +136,14 @@ AceFarmerFieldComponent._old_plant_crop_at = FarmerFieldComponent.plant_crop_at
 function AceFarmerFieldComponent:plant_crop_at(x_offset, z_offset)
    local crop = self:_old_plant_crop_at(x_offset, z_offset)
 
-	if crop then
-      crop:add_component('stonehearth:growing'):set_water_level(self._sv.water_level or 0)
+   local growing_comp = crop and crop:add_component('stonehearth:growing')
+	if growing_comp then
+      growing_comp:set_water_level(self._sv.water_level or 0)
       self:_create_flood_listener(crop)
+      if growing_comp:is_flooded() then
+         self._sv.num_flooded = self._sv.num_flooded + 1
+         self.__saved_variables:mark_changed()
+      end
 	end
 end
 
@@ -321,9 +332,7 @@ function AceFarmerFieldComponent:get_best_water_level()
 		return nil
 	end
 	
-	local json = radiant.resources.load_json(self._sv.current_crop_alias)
-	self._preferred_climate = json and json.preferred_climate
-	return stonehearth.town:get_best_water_level_from_climate(self._preferred_climate)
+	return stonehearth.town:get_best_water_level_from_climate(self._sv.current_crop_details.preferred_climate)
 end
 
 function AceFarmerFieldComponent:_cache_best_water_level()
