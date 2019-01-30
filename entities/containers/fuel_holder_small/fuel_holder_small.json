@@ -27,8 +27,11 @@
          "type": "input_crate",
          "capacity": 4,
          "render_contents": true,
-         "filter_list": "stonehearth:ui:input_box:filters",
-         "is_single_filter": true
+         "filter_list": "stonehearth_ace:ui:firewood_holder:filters",
+         "is_single_filter": true,
+         "default_filter": [
+            "firewood refined"
+         ]
       },
       "effect_list": {
          "default": "file(/data/rigs/entities/containers/firewood_holder/effects/idle.json)"
@@ -46,7 +49,7 @@
          }
       },
       "stonehearth:appeal": {
-         "appeal": 5
+         "appeal": 9
       },
       "stonehearth:item_quality": {
          "variable_quality": true
