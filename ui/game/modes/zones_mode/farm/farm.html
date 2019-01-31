@@ -15,7 +15,7 @@
                      </div>
                   </a>
                </td><td>
-                  <div class="description">
+                  <div id="cropDescription" class="description">
                      <div class="name">{{i18n_key view.model.stonehearth:farmer_field.current_crop_details.name}}</div>
                      <p>{{i18n_key view.model.stonehearth:farmer_field.current_crop_details.description}}</p>
                   </div>
@@ -23,10 +23,9 @@
 
             <div id="cropDetails" {{bind-attr class="view.isFallow:hidden"}}>
                <div id="cropProperties">
-                  <br/><div class="label">{{i18n stonehearth_ace:ui.game.zones_mode.farm.properties}}</div>
+                  <h2>{{i18n stonehearth_ace:ui.game.zones_mode.farm.properties}}</h2>
                   <table id="cropPropertiesTable">
                      <tr id="cropPropertiesRow">
-                        <td id="preferredSeasons"></td>
                         <td>
                            <div id="growthTime" class="cropProperty">
                               <img class="cropPropertyImage" {{bind-attr src="view.cropProperties.growthTime.icon"}}/>
@@ -42,20 +41,15 @@
                               <img class="cropPropertyImage" {{bind-attr src="view.cropProperties.floodPreference.icon"}}/>
                            </div>
                         </td>
-                        <td class="fillerColumn"></td>
+                        <td id="preferredSeasons"></td>
                      </tr>
                   </table>
                </div>
 
                <div id="cropStatuses">
-                  <br/><div class="label">{{i18n stonehearth_ace:ui.game.zones_mode.farm.statuses}}</div>
+                  <h2>{{i18n stonehearth_ace:ui.game.zones_mode.farm.statuses}}</h2>
                   <table id="cropStatusesTable">
                      <tr id="cropStatusesRow">
-                        <td>
-                           <div id="currentSeason" class="cropProperty">
-                              <img class="cropPropertyImage" {{bind-attr src="view.cropStatuses.currentSeason.icon"}}/>
-                           </div>
-                        </td>
                         <td>
                            <div id="relativeGrowthTime" class="cropProperty">
                               <img class="cropPropertyImage" {{bind-attr src="view.cropStatuses.relativeGrowthTime.icon"}}/>
@@ -80,9 +74,23 @@
                   </table>
                </div>
 
-               <div id="fertilizerSetting">
-                  <br/><div class="label">{{i18n stonehearth_ace:ui.game.zones_mode.farm.fertilizer_setting}}</div>
-                  
+               <div id="fertilizerSettings">
+                  <h2>{{i18n stonehearth_ace:ui.game.zones_mode.farm.fertilizer_settings.title}}</h2>
+                  <div>
+                     <div id="fertilizerNone" class="fertilizerSetting">
+                        <input id="fertilizerNoneButton" type="radio" name="fertilizer" value="none" class="fertilizerRadioButton">
+                        <label for="fertilizer" class="label" clicksound="stonehearth:sounds:ui:carpenter_menu:add_remove">{{i18n stonehearth_ace:ui.game.zones_mode.farm.fertilizer_settings.none}}</label>
+                     </div>
+                     <div id="fertilizerLow" class="fertilizerSetting">
+                        <input id="fertilizerLowButton" type="radio" name="fertilizer" value="low" class="fertilizerRadioButton">
+                        <label for="fertilizer" class="label" clicksound="stonehearth:sounds:ui:carpenter_menu:add_remove">{{i18n stonehearth_ace:ui.game.zones_mode.farm.fertilizer_settings.low_quality}}</label>
+                     </div>
+                     <div id="fertilizerHigh" class="fertilizerSetting">
+                        <input id="fertilizerHighButton" type="radio" name="fertilizer" value="high" class="fertilizerRadioButton">
+                        <label for="fertilizer" class="label" clicksound="stonehearth:sounds:ui:carpenter_menu:add_remove">{{i18n stonehearth_ace:ui.game.zones_mode.farm.fertilizer_settings.high_quality}}</label>
+                     </div>
+                  </div>
+                  <div class="label" style="text-align: center;">{{i18n stonehearth_ace:ui.game.zones_mode.farm.fertilizer_settings.specific}}</div>
                   <div id="fertilizerPaletteContainer" class="downSection">
                      <div id="fertilizerPalette"></div>
                   </div>

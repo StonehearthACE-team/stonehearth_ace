@@ -251,7 +251,7 @@ $.widget( "stonehearth.stonehearthItemPalette", {
                delete self._itemElements[uri][item.quality];
             }
          } else {
-            if (!num) {
+            if (!num && !this.options.showZeroes) {
                itemEl.find('.num').html('');
             } else {
                itemEl.find('.num').html(num);

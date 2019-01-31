@@ -2199,6 +2199,10 @@
       "use_evolve_command": {
          "controller": "file(call_handlers/evolve_call_handler.lua)",
          "endpoint": "server"
+      },
+      "set_farm_fertilizer_preference": {
+         "controller": "file(call_handlers/farming_call_handler.lua)",
+         "endpoint": "server"
       }
    },
    "object_commands": {
@@ -2241,7 +2245,8 @@
          "file(ui/game/town/inventory_tracker.js)",
          "file(ui/game/task_manager/task_manager.js)",
          "file(ui/game/component_info/component_info.js)",
-         "file(ui/game/unit_frame/unit_frame.js)"
+         "file(ui/game/unit_frame/unit_frame.js)",
+         "file(ui/game/clock_widget/clock_widget.js)"
       ],
       "less": [
          "file(ui/shell/settings/settings.less)",
@@ -2256,7 +2261,8 @@
          "file(ui/shell/title/title.less)",
          "file(ui/game/show_workshop/show_team_workshop.less)",
          "file(ui/game/component_info/component_info.less)",
-         "file(ui/game/unit_frame/unit_frame.less)"
+         "file(ui/game/unit_frame/unit_frame.less)",
+         "file(ui/game/clock_widget/clock_widget.less)"
       ]
    }
 }

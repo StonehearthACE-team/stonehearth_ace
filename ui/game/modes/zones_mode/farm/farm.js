@@ -10,7 +10,7 @@ App.StonehearthFarmView.reopen({
       NONE: 'none',
       SOME: 'little',
       PLENTY: 'plenty',
-      EXTRA: 'some'
+      EXTRA: 'excess'
    },
 
    _FLOOD_ICONS: {
@@ -29,6 +29,13 @@ App.StonehearthFarmView.reopen({
       SHORTER: 'positive_modifiers',
       NORMAL: 'average_modifiers',
       LONGER: 'negative_modifiers'
+   },
+
+   _FERTILIZER: {
+      NONE: 'none',
+      LOW: 'low',
+      HIGH: 'high',
+      URI: 'uri'
    },
 
    _IMAGES_DIR: '/stonehearth_ace/ui/game/modes/zones_mode/farm/images/',
@@ -98,7 +105,20 @@ App.StonehearthFarmView.reopen({
          cssClass: 'fertilizerItem',
          showZeroes: true,
          skipCategories: true,
-         sortField: 'net_worth'
+         sortField: 'net_worth',
+         click: function(item) {
+            self._setFertilizerSetting(self._FERTILIZER.URI, item.attr('uri'));
+         }
+      });
+
+      self.$('#fertilizerNone').on('click', function() {
+         self._setFertilizerSetting(self._FERTILIZER.NONE);
+      });
+      self.$('#fertilizerLow').on('click', function() {
+         self._setFertilizerSetting(self._FERTILIZER.LOW);
+      });
+      self.$('#fertilizerHigh').on('click', function() {
+         self._setFertilizerSetting(self._FERTILIZER.HIGH);
       });
 
       radiant.call_obj('stonehearth.inventory', 'get_item_tracker_command', 'stonehearth_ace:fertilizer_tracker')
@@ -158,7 +178,93 @@ App.StonehearthFarmView.reopen({
       });
 
       self._fertilizerPalette.stonehearthItemPalette('updateItems', fertilizerData);
+      self._updateFertilizerSelection();
    }),
+
+   _setFertilizerSetting: function(setting, uri) {
+      var self = this;
+
+      var preference = {};
+      switch (setting) {
+         case self._FERTILIZER.URI:
+            preference.uri = uri;
+            break;
+         case self._FERTILIZER.NONE:
+            preference.quality = 0;
+            break;
+         case self._FERTILIZER.LOW:
+            preference.quality = -1;
+            break;
+         case self._FERTILIZER.HIGH:
+            preference.quality = 1;
+            break;
+      }
+
+      radiant.call('stonehearth_ace:set_farm_fertilizer_preference', self.get('uri'), preference);
+   },
+
+   _updateFertilizerSetting: function() {
+      var self = this;
+      var fertilizer_preference = self.get('model.stonehearth:farmer_field.fertilizer_preference') || {};
+      var quality = fertilizer_preference.quality
+      var uri = fertilizer_preference.uri;
+      var current = self.get('fertilizerSetting');
+
+      var newSetting = self._FERTILIZER.HIGH;
+      if (quality != undefined) {
+         if (quality == 0) {
+            newSetting = self._FERTILIZER.NONE;
+         }
+         else if (quality < 0) {
+            newSetting = self._FERTILIZER.LOW;
+         }
+         else {
+            newSetting = self._FERTILIZER.HIGH;
+         }
+      }
+
+      if (uri != undefined) {
+         newSetting = self._FERTILIZER.URI;
+      }
+
+      if (newSetting == self._FERTILIZER.URI) {
+         if (newSetting != uri) {
+            self.set('fertilizerSetting', uri);
+         }
+      }
+      else {
+         if (newSetting != current) {
+            self.set('fertilizerSetting', newSetting);
+         }
+      }
+   }.observes('model.stonehearth:farmer_field.fertilizer_preference'),
+
+   _updateFertilizerSelection: function() {
+      var self = this;
+      self.$('#fertilizerSettings input').prop('checked', false);
+      self._clearUriFertilizerSelection();
+
+      var setting = self.get('fertilizerSetting');
+      switch (setting) {
+         case self._FERTILIZER.NONE:
+            self.$('#fertilizerNoneButton').prop('checked', true);
+            break;
+         case self._FERTILIZER.LOW:
+            self.$('#fertilizerLowButton').prop('checked', true);
+            break;
+         case self._FERTILIZER.HIGH:
+            self.$('#fertilizerHighButton').prop('checked', true);
+            break;
+         default:
+            self.$('#fertilizerPalette').find('[uri="' + setting + '"]').addClass('selected');
+            break;
+      }
+   }.observes('fertilizerSetting'),
+
+   _clearUriFertilizerSelection: function() {
+      var self = this;
+      self.$('.fertilizerItem').removeClass('selected');
+   },
 
    _selectedCropUpdated: function() {
       var self = this;
