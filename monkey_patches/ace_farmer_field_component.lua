@@ -83,17 +83,17 @@ function AceFarmerFieldComponent:_ensure_fertilize_layer()
 end
 
 function AceFarmerFieldComponent:_ensure_fertilizer_preference()
-   local quality = self._sv._fertilizer_quality_preference
-   local uri = self._sv._fertilizer_uri_preference
-
-   if not (quality or uri) then
-      local def_to_worst = stonehearth.client_state:get_client_gameplay_setting(self._entity:get_player_id(), 'stonehearth_ace', 'default_to_worst_fertilizer', false)
-      self._sv._fertilizer_quality_preference = (def_to_worst and -1) or 1
-      self.__saved_variables:mark_changed()
-   elseif quality and uri then
-      self._sv._fertilizer_quality_preference = nil
+   if not self._sv.fertilizer_preference then
+      self._sv.fertilizer_preference = {
+         quality = self:_get_default_fertilizer_preference()
+      }
       self.__saved_variables:mark_changed()
    end
+end
+
+function AceFarmerFieldComponent:_get_default_fertilizer_preference()
+   local def_to_worst = stonehearth.client_state:get_client_gameplay_setting(self._entity:get_player_id(), 'stonehearth_ace', 'default_to_worst_fertilizer', false)
+   return (def_to_worst and -1) or 1
 end
 
 AceFarmerFieldComponent._old_on_field_created = FarmerFieldComponent.on_field_created
@@ -210,35 +210,28 @@ function AceFarmerFieldComponent:set_crop(session, response, new_crop_id)
 end
 
 -- fertilizer preference is either a number (-1, 0, or 1) or a string (uri)
--- so we'll return it in a table similar to crafting ingredients material/uri
+-- so we store it in a table similar to crafting ingredients material/uri
 function AceFarmerFieldComponent:get_fertilizer_preference()
-   local quality = self._sv._fertilizer_quality_preference
-   local uri = self._sv._fertilizer_uri_preference
-
-   return {
-      quality = quality,
-      uri = uri
-   }
+   return self._sv.fertilizer_preference
 end
 
 function AceFarmerFieldComponent:set_fertilizer_preference(preference)
-   local changed = false
-   -- uri outranks quality
-   if preference.uri and preference.uri ~= self._sv._fertilizer_uri_preference then
-      changed = true
-      self._sv._fertilizer_uri_preference = preference.uri
-      self._sv._fertilizer_quality_preference = nil
-   elseif preference.quality and preference.quality ~= self._sv._fertilizer_quality_preference then
-      changed = true
-      self._sv._fertilizer_quality_preference = preference.quality
-      self._sv._fertilizer_uri_preference = nil
-   end
+   if preference.uri ~= self._sv.fertilizer_preference.uri or preference.quality ~= self._sv.fertilizer_preference.quality then
+      -- uri outranks quality
+      local uri = preference.uri
+      local quality = (not preference.uri and (preference.quality or self:_get_default_fertilizer_preference())) or nil
 
-   if changed then
-      self.__saved_variables:mark_changed()
-      radiant.events.trigger(self, 'stonehearth_ace:farmer_field:fertilizer_preference_changed')
-      if self._sv._fertilizable_layer then
-         stonehearth.ai:reconsider_entity(self._sv._fertilizable_layer, 'fertilizer preference changed')
+      if uri ~= self._sv.fertilizer_preference.uri or quality ~= self._sv.fertilizer_preference.quality then
+         self._sv.fertilizer_preference = {
+            uri = uri,
+            quality = quality
+         }
+
+         self.__saved_variables:mark_changed()
+         radiant.events.trigger(self, 'stonehearth_ace:farmer_field:fertilizer_preference_changed')
+         if self._sv._fertilizable_layer then
+            stonehearth.ai:reconsider_entity(self._sv._fertilizable_layer, 'fertilizer preference changed')
+         end
       end
    end
 end

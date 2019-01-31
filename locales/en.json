@@ -5726,7 +5726,17 @@
             "farm": {
                "properties": "Crop Properties:",
                "statuses": "Current Statuses:",
-               "fertilizer_setting": "Fertilizer:",
+               "fertilizer_settings": {
+                  "title": "Fertilizer:",
+                  "none": "None",
+                  "none_description": "Do not fertilize this field (save your fertilizer for more valuable crops).",
+                  "high_quality": "High Quality",
+                  "high_quality_description": "Prefer higher quality fertilizers for this field.",
+                  "low_quality": "Low Quality",
+                  "low_quality_description": "Prefer lower quality fertilizers for this field.",
+                  "specific": "Specific Fertilizer:",
+                  "specific_description": "Select a fertilizer below to only use that specific fertilizer for this field."
+               },
                "season": {
                   "property_name": "Preferred Seasons",
                   "property_description": "This crop prefers the <span class='text-value'>[str(i18n_data.season)]</span> season and will grow more slowly outside of preferred seasons.",
