@@ -1,0 +1,22 @@
+{
+   "type": "recipe",
+   "effort": 15,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.potter.recipes.fuel_holder_large_clay_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.potter.recipes.fuel_holder_large_clay_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.potter.recipes.fuel_holder_large_clay_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/containers/fuel_holder_large_clay/fuel_holder_large_clay.png",
+   "workshop": "stonehearth:potter:workbench",
+   "level_requirement": 2,
+   "ingredients": [
+      {
+         "material": "clay resource",
+         "count": 3
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:containers:fuel_holder:large:clay"
+      }
+   ]
+}

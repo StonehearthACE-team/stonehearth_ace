@@ -1,0 +1,22 @@
+{
+   "type": "recipe",
+   "effort": 6,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.carpenter.recipes.pet_food_bowl_wood_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.carpenter.recipes.pet_food_bowl_wood_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.carpenter.recipes.pet_food_bowl_wood_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/containers/pet_food_bowl_wood/pet_food_bowl_wood.png",
+   "workshop": "stonehearth:carpenter:workbench",
+   "level_requirement": 1,
+   "ingredients": [
+      {
+         "material": "wood resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:containers:pet_food_bowl:wood"
+      }
+	  ]
+}
