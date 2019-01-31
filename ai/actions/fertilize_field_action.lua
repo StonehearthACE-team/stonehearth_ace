@@ -16,7 +16,7 @@ FertilizeField.priority = 0
 
 local ai = stonehearth.ai
 return ai:create_compound_action(FertilizeField)
-         :execute('stonehearth:pickup_item_type', {
+         :execute('stonehearth_ace:drop_and_pickup_item_type', {
             filter_fn = ai.ARGS.fertilizer_filter_fn,
             rating_fn = ai.ARGS.fertilizer_rating_fn,
             description = 'find fertilizer'

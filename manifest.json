@@ -18,6 +18,10 @@
    "server_init_script": "file(stonehearth_ace_server)",
    "aliases": {
       "actions:component_to_filter_fn": "file(ai/actions/component_to_filter_fn_action.lua)",
+      "actions:dont_drop_already_carrying_item": "file(ai/actions/dont_drop_already_carrying_item_action.lua)",
+      "actions:drop_and_pickup_item": "file(ai/actions/drop_and_pickup_item_action.lua)",
+      "actions:drop_and_pickup_item_type": "file(ai/actions/drop_and_pickup_item_type_action.lua)",
+      "actions:drop_nothing_and_pickup_item": "file(ai/actions/drop_nothing_and_pickup_item_action.lua)",
       "actions:fertilize": "file(ai/actions/fertilize_action.lua)",
       "actions:fertilize_crop_adjacent": "file(ai/actions/fertilize_crop_adjacent.lua)",
       "actions:fertilize_field": "file(ai/actions/fertilize_field_action.lua)",
@@ -1815,7 +1819,8 @@
       "stonehearth:food:flour": "file(entities/food/flour/flour.json)",
       "stonehearth:monsters:kobolds:kobold": "file(entities/monsters/skull_drop.json)",
       "stonehearth:monsters:orcs:orc_male": "file(entities/monsters/skull_drop.json)",
-      "stonehearth:monsters:orcs:orc_female": "file(entities/monsters/skull_drop.json)"
+      "stonehearth:monsters:orcs:orc_female": "file(entities/monsters/skull_drop.json)",
+      "stonehearth:ai_pack:carrying": "file(ai/packs/carrying_ai_pack.json)"
    },
    "overrides": {
       "stonehearth/data/rigs/entities/humans/effects/idle_breathe_no_carry.json": "stonehearth_ace/data/rigs/entities/humans/effects/idle_breathe_no_carry.json",

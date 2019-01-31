@@ -54,8 +54,6 @@ local create_fertilizer_filter_fn = function(owner, fertilizable_layer)
             return false
          end
 
-         log:debug('checking if fertilizer %s matches preference %s (%s)', item, fertilizer_preference.uri, item:get_uri() == fertilizer_preference.uri)
-
          return fertilizer_preference.uri == item:get_uri()
       end)
 

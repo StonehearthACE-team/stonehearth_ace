@@ -68,6 +68,8 @@ App.StonehearthFarmView.reopen({
    willDestroyElement: function() {
       var self = this;
 
+      clearInterval(self._periodicFertilizerUpdate);
+
       this._fertilizerPalette.stonehearthItemPalette('destroy');
       this._fertilizerPalette = null;
 
@@ -142,15 +144,17 @@ App.StonehearthFarmView.reopen({
                   self._inventoryFertilizerData = response.tracking_data;
                   self._updateFertilizers();
                });
+            
+            self._periodicFertilizerUpdate = setInterval(self._updateFertilizers, 500, self);
          })
          .fail(function(response) {
             console.error(response);
          });
    },
 
-   _updateFertilizers: $.throttle(250, function () {
-      var self = this;
-      if (!self.$()) return;
+   _updateFertilizers: $.throttle(250, function (self) {
+      self = self || this;
+      if (!self.$() || !self._fertilizerPalette) return;
 
       var fertilizerDataByUri = {};
       var fertilizerData = {};

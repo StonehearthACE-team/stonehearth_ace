@@ -12,6 +12,45 @@ FertilizeWithQualityFertilizer.args = {
 }
 FertilizeWithQualityFertilizer.priority = 0.5
 
+local _cached_fertilizer_qualities
+local log = radiant.log.create_logger('fertilize_with_quality')
+
+function FertilizeWithQualityFertilizer:start_thinking(ai, entity, args)
+   if not _cached_fertilizer_qualities then
+      -- get the min and max ilevels of fertilizers in the game and use that to bound the rating function
+      local fertilizer = stonehearth.catalog:get_material_object('fertilizer')
+      if fertilizer then
+         local fertilizers = stonehearth.catalog:get_materials_to_matching_uris()[fertilizer:get_id()]
+         local min, max
+         for uri, _ in pairs(fertilizers) do
+            local data = radiant.entities.get_entity_data(uri, 'stonehearth_ace:fertilizer')
+            if data and data.ilevel then
+               min = math.min(min or data.ilevel, data.ilevel)
+               max = math.max(max or data.ilevel, data.ilevel)
+            end
+         end
+
+         if min and max then
+            _cached_fertilizer_qualities = {
+               min = min,
+               max = max
+            }
+         end
+      end
+
+      if not _cached_fertilizer_qualities then
+         _cached_fertilizer_qualities = {
+            min = 0,
+            max = 1
+         }
+      end
+   
+      _cached_fertilizer_qualities.range = math.max(1, _cached_fertilizer_qualities.max - _cached_fertilizer_qualities.min)
+   end
+
+   ai:set_think_output()
+end
+
 local get_farmer_field = function(fertilizable_layer)
    return fertilizable_layer:get_component('stonehearth:farmer_field_layer'):get_farmer_field()
 end
@@ -58,20 +97,27 @@ local create_fertilizer_filter_fn = function(owner, fertilizable_layer)
    return filter_fn
 end
 
-local create_fertilizer_rating_fn = function(fertilizable_layer)
+local _high_quality_rating_fn = function(item)
+   local data = radiant.entities.get_entity_data(item, 'stonehearth_ace:fertilizer')
+   local rating = (data.ilevel - _cached_fertilizer_qualities.min) / _cached_fertilizer_qualities.range
+   --log:debug('considering %s for high quality (%s)', item, rating)
+   return rating
+end
+
+local _low_quality_rating_fn = function(item)
+   local data = radiant.entities.get_entity_data(item, 'stonehearth_ace:fertilizer')
+   local rating = (_cached_fertilizer_qualities.max - data.ilevel) / _cached_fertilizer_qualities.range
+   --log:debug('considering %s for low quality (%s)', item, rating)
+   return rating
+end
+
+local get_fertilizer_rating_fn = function(fertilizable_layer)
    local fertilizer_preference = get_fertilizer_preference(fertilizable_layer)
 
-   -- TODO: instead of arbitrarily prescribing a maximum ilevel of 10 for fertilizers, maybe have that set somewhere?
    if fertilizer_preference.quality > 0 then
-      return function(item)
-         local data = radiant.entities.get_entity_data(item, 'stonehearth_ace:fertilizer')
-         return data.ilevel / 10
-      end
+      return _high_quality_rating_fn
    elseif fertilizer_preference.quality < 0 then
-      return function(item)
-         local data = radiant.entities.get_entity_data(item, 'stonehearth_ace:fertilizer')
-         return (10 - data.ilevel) / 10
-      end
+      return _low_quality_rating_fn
    end
 end
 
@@ -89,5 +135,5 @@ return ai:create_compound_action(FertilizeWithQualityFertilizer)
          :execute('stonehearth_ace:fertilize_field', {
             field = ai.BACK(2).item,
             fertilizer_filter_fn = ai.CALL(create_fertilizer_filter_fn, ai.ARGS.owner, ai.BACK(2).item),
-            fertilizer_rating_fn = ai.CALL(create_fertilizer_rating_fn, ai.BACK(2).item)
+            fertilizer_rating_fn = ai.CALL(get_fertilizer_rating_fn, ai.BACK(2).item)
          })
