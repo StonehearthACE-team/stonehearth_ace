@@ -1,0 +1,27 @@
+{
+   "type": "recipe",
+   "effort": 25,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.carpenter.recipes.fish_trap_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.carpenter.recipes.fish_trap_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.carpenter.recipes.fish_trap_recipe.flavor)",
+   "portrait": "/stonehearth_ace/jobs/trapper/fish_trap/fish_trap.png",
+   "workshop": "stonehearth:carpenter:toolbench",
+   "level_requirement": 3,
+   "manual_unlock": true,
+   "ingredients": [
+      {
+         "material": "wood resource",
+         "count": 2
+      },
+	  {
+         "material": "fiber resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:trapper:fish_trap"
+      }
+   ]
+}

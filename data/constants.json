@@ -3,50 +3,69 @@
    "constants": {
       "climates": {
          "tropical_rainforest": {
-            "plant_water_affinity": "EXTREME"
+            "plant_water_affinity": "EXTREME",
+			"sunlight_affinity": "HIGH"
          },
          "tropical_monsoon": {
-            "plant_water_affinity": "VERY_HIGH"
+            "plant_water_affinity": "VERY_HIGH",
+			"sunlight_affinity": "HIGH"
          },
          "tropical_savanna": {
-            "plant_water_affinity": "HIGH"
+            "plant_water_affinity": "HIGH",
+			"sunlight_affinity": "VERY_HIGH"
          },
          "arid_shrubland": {
-            "plant_water_affinity": "MEDIUM"
+            "plant_water_affinity": "MEDIUM",
+			"sunlight_affinity": "HIGH"
          },
          "arid_steppe": {
-            "plant_water_affinity": "LOW"
+            "plant_water_affinity": "LOW",
+			"sunlight_affinity": "VERY_HIGH"
          },
          "arid_desert": {
-            "plant_water_affinity": "UNDESIRABLE"
+            "plant_water_affinity": "UNDESIRABLE",
+			"sunlight_affinity": "VERY_HIGH"
          },
          "temperate_oceanic": {
-            "plant_water_affinity": "VERY_HIGH"
+            "plant_water_affinity": "VERY_HIGH",
+			"sunlight_affinity": "MEDIUM"
          },
          "temperate_mediterranean": {
-            "plant_water_affinity": "HIGH"
+            "plant_water_affinity": "HIGH",
+			"sunlight_affinity": "MEDIUM"
          },
          "temperate": {
-            "plant_water_affinity": "MEDIUM"
+            "plant_water_affinity": "MEDIUM",
+			"sunlight_affinity": "MEDIUM"
          },
          "temperate_highland": {
-            "plant_water_affinity": "LOW"
+            "plant_water_affinity": "LOW",
+			"sunlight_affinity": "HIGH"
          },
          "continental_humid": {
-            "plant_water_affinity": "MEDIUM"
+            "plant_water_affinity": "MEDIUM",
+			"sunlight_affinity": "HIGH"
          },
          "continental_dry": {
-            "plant_water_affinity": "LOW"
+            "plant_water_affinity": "LOW",
+			"sunlight_affinity": "MEDIUM"
          },
          "continental_subarctic": {
-            "plant_water_affinity": "VERY_LOW"
+            "plant_water_affinity": "VERY_LOW",
+			"sunlight_affinity": "MEDIUM"
          },
          "polar_tundra": {
-            "plant_water_affinity": "VERY_LOW"
+            "plant_water_affinity": "VERY_LOW",
+			"sunlight_affinity": "LOW"
          },
          "polar_ice_cap": {
-            "plant_water_affinity": "UNDESIRABLE"
-         }
+            "plant_water_affinity": "UNDESIRABLE",
+			"sunlight_affinity": "LOW"
+         },
+		 "undeground": {
+		    "plant_water_affinity": "UNDESIRABLE",
+			"sunlight_affinity": "UNDESIRABLE"
+		 }
       },
       "plant_water_affinity": {
          "UNDESIRABLE": [
