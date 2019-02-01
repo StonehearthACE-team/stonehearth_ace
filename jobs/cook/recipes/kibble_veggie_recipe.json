@@ -1,0 +1,34 @@
+{
+   "type": "recipe",
+   "effort": 16,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.kibble_veggie_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.kibble_veggie_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.kibble_veggie_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/kibble_veggie/kibble_veggie/kibble_veggie.png",
+   "level_requirement": 4,
+   "workshop": "stonehearth:cook:oven",
+   "ingredients": [
+      {
+         "material": "grain_flour cooking_ingredient",
+         "count": 1
+      },
+      {
+         "material": "food_container raw_food vegetable",
+         "count": 1
+      },
+      {
+         "material": "raw_food fruit",
+         "count": 1
+      },
+	  {
+         "material": "low_fuel",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:kibble_veggie"
+      }
+   ]
+}
