@@ -1,5 +1,6 @@
 local Point3 = _radiant.csg.Point3
 local Region3 = _radiant.csg.Region3
+local rng = _radiant.math.get_default_rng()
 local log = radiant.log.create_logger('farmer_field')
 local FarmerFieldComponent = require 'stonehearth.components.farmer_field.farmer_field_component'
 
@@ -68,6 +69,10 @@ function AceFarmerFieldComponent:_ensure_crop_counts()
       self._sv.num_flooded = num_flooded
       self.__saved_variables:mark_changed()
    end
+
+   if not self._sv._queued_overwatered then
+      self._sv._queued_overwatered = {}
+   end
 end
 
 function AceFarmerFieldComponent:_ensure_fertilize_layer()
@@ -84,24 +89,41 @@ end
 
 function AceFarmerFieldComponent:_ensure_fertilizer_preference()
    if not self._sv.fertilizer_preference then
-      self._sv.fertilizer_preference = {
-         quality = self:_get_default_fertilizer_preference()
-      }
+      self._sv.fertilizer_preference = self:_get_default_fertilizer_preference()
       self.__saved_variables:mark_changed()
    end
 end
 
 function AceFarmerFieldComponent:_get_default_fertilizer_preference()
-   local def_to_worst = stonehearth.client_state:get_client_gameplay_setting(self._entity:get_player_id(), 'stonehearth_ace', 'default_to_worst_fertilizer', false)
-   return (def_to_worst and -1) or 1
+   local default = stonehearth.client_state:get_client_gameplay_setting(self._entity:get_player_id(), 'stonehearth_ace', 'default_fertilizer', '1')
+   if tonumber(default) then
+      return { quality = default }
+   else
+      return { uri = default }
+   end
 end
 
 AceFarmerFieldComponent._old_on_field_created = FarmerFieldComponent.on_field_created
 function AceFarmerFieldComponent:on_field_created(town, size)
    self:_old_on_field_created(town, size)
    radiant.terrain.place_entity(self._sv._fertilizable_layer, self._location)
+   self._sv._queued_overwatered = {}
 
 	self:_create_water_listener()
+end
+
+AceFarmerFieldComponent._old_notify_till_location_finished = FarmerFieldComponent.notify_till_location_finished
+function AceFarmerFieldComponent:notify_till_location_finished(location)
+   self:_old_notify_till_location_finished(location)
+   
+   local offset = location - radiant.entities.get_world_grid_location(self._entity)
+   local x = offset.x + 1
+   local y = offset.z + 1
+   local key = x .. '|' .. y
+   if self._sv._queued_overwatered[key] then
+      self._sv.contents[x][y].is_overwatered = true
+      self._sv._queued_overwatered[key] = nil
+   end
 end
 
 AceFarmerFieldComponent._old_notify_plant_location_finished = FarmerFieldComponent.notify_plant_location_finished
@@ -219,13 +241,17 @@ function AceFarmerFieldComponent:set_fertilizer_preference(preference)
    if preference.uri ~= self._sv.fertilizer_preference.uri or preference.quality ~= self._sv.fertilizer_preference.quality then
       -- uri outranks quality
       local uri = preference.uri
-      local quality = (not preference.uri and (preference.quality or self:_get_default_fertilizer_preference())) or nil
+      local quality = not preference.uri and preference.quality or nil
 
       if uri ~= self._sv.fertilizer_preference.uri or quality ~= self._sv.fertilizer_preference.quality then
-         self._sv.fertilizer_preference = {
-            uri = uri,
-            quality = quality
-         }
+         if uri or quality then
+            self._sv.fertilizer_preference = {
+               uri = uri,
+               quality = quality
+            }
+         else
+            self._sv.fertilizer_preference = self:_get_default_fertilizer_preference()
+         end
 
          self.__saved_variables:mark_changed()
          radiant.events.trigger(self, 'stonehearth_ace:farmer_field:fertilizer_preference_changed')
@@ -346,8 +372,34 @@ function AceFarmerFieldComponent:_update_effective_water_level()
       relative_level = levels.SOME
    end
 
-   self._sv.effective_water_level = relative_level
-   self.__saved_variables:mark_changed()
+   if self._sv.effective_water_level ~= relative_level then
+      local size = self._sv.size
+      local contents = self._sv.contents
+      if relative_level == levels.EXTRA then
+         -- randomly assign ~25% of furrow tiles (min of 1 per furrow column) to have puddles
+         for x = 2, size.x, 2 do
+            for i = 1, math.max(1, size.y * 0.25) do
+               local y = rng:get_int(1, size.y)
+               local plot = contents[x][y]
+               if plot then
+                  plot.is_overwatered = true
+               else
+                  self._sv._queued_overwatered[x .. '|' .. y] = true
+               end
+            end
+         end
+      else
+         self._sv._queued_overwatered = {}
+         for x = 2, size.x, 2 do
+            for _, plot in pairs(contents[x]) do
+               plot.is_overwatered = nil
+            end
+         end
+      end
+
+      self._sv.effective_water_level = relative_level
+      self.__saved_variables:mark_changed()
+   end
 end
 
 AceFarmerFieldComponent._old__on_destroy = FarmerFieldComponent._on_destroy

@@ -21,13 +21,14 @@ $(top).on('stonehearthReady', function(cc) {
                self._mods = _mods;
 
                // create collapsible container for [stonehearth] settings and move them into it
-               var parentElements = self._createGameplayDivForMod('stonehearth');
-               $gameplayTab.contents().appendTo(parentElements.section);
-               var accordion = document.createElement('div');
-               accordion.id = 'modSettingsAccordion';
-               accordion.appendChild(parentElements.header);
-               accordion.appendChild(parentElements.section);
-               $gameplayTab[0].appendChild(accordion);
+               var newParent = self._createGameplayDivForMod('stonehearth');
+               newParent.section.append($gameplayTab.children());
+               var accordion = $('<div>')
+                  .attr('id', 'modSettingsAccordion')
+                  .append(newParent.header)
+                  .append(newParent.section);
+
+               $gameplayTab.append(accordion);
 
                // load up settings from client state (only care about mod settings, not [stonehearth] overrides)
                radiant.call('stonehearth_ace:get_all_client_gameplay_settings_command')
@@ -38,19 +39,23 @@ $(top).on('stonehearthReady', function(cc) {
                      // create collapsible containers for other mods' settings and create their settings within them
                      radiant.each(settings, function(mod, modSettings) {
                         if(mod != 'stonehearth') {
-                           parentElements = self._createGameplayDivForMod(mod, modSettings);
-                           accordion.appendChild(parentElements.header);
-                           accordion.appendChild(parentElements.section);
+                           newParent = self._createGameplayDivForMod(mod, modSettings);
+                           accordion.append(newParent.header);
+                           accordion.append(newParent.section);
                         }
                      });
 
-                     $(accordion).accordion({
+                     accordion.accordion({
                         heightStyle: "content"
                      });
 
                      self._updateModifiedGameplayTabPage();
                   });
             });
+
+         self.$().on('click', function() {
+            self._closeListSelectorsExcept();
+         })
       },
 
       _updateModifiedGameplayTabPage: function() {
@@ -143,11 +148,11 @@ $(top).on('stonehearthReady', function(cc) {
          if(modData) {
             // create the jQuery accordian structure
             var title = modData.title;
-            var newHeader = document.createElement('h3');
-            newHeader.classList.add('modHeader');
-            newHeader.innerText = title;
-            var newSection = document.createElement('div');
-            newSection.classList.add('modSettings');
+            var newHeader = $('<h3>')
+               .addClass('modHeader')
+               .html(title);
+            var newSection = $('<div>')
+               .addClass('modSettings');
 
             if(settings) {
                var isHost = self.get('isHostPlayer');
@@ -162,7 +167,7 @@ $(top).on('stonehearthReady', function(cc) {
                   if (isHost || !setting.host_only) {
                      var element = self._createGameplaySettingElements(mod, setting);
                      if(element) {
-                        newSection.appendChild(element);
+                        newSection.append(element);
                      }
                   }
                });
@@ -180,66 +185,142 @@ $(top).on('stonehearthReady', function(cc) {
 
          switch(setting.type) {
             case 'boolean':
-               newDiv = document.createElement('div');
-               newDiv.classList.add('setting');
+               newDiv = $('<div>')
+                  .addClass('setting');
 
-               var input = document.createElement('input');
-               input.type = 'checkbox';
-               input.id = settingElementID;
-               var label = document.createElement('label');
-               label.setAttribute('for', settingElementID);
+               var input = $('<input>')
+                  .attr('type', 'checkbox')
+                  .attr('id', settingElementID);
+               
+               var label = $('<label>')
+                  .attr('for', settingElementID)
+                  .html(i18n.t(setting.display_name));
+
                self._addTooltip(label, setting.description);
-               label.innerHTML = i18n.t(setting.display_name);
 
-               newDiv.appendChild(input);
-               newDiv.appendChild(label);
+               newDiv.append(input);
+               newDiv.append(label);
 
                setting.getValue = function() {
-                  return $(input).is(':checked');
+                  return input.is(':checked');
                };
                setting.setValue = function(value) {
-                  return input.checked = value;
+                  input.prop('checked', value);
                };
+
                break;
 
             case 'number':
                var ns = self._getNumberSettings(setting.number_settings);
-               newDiv = document.createElement('div');
-               newDiv.classList.add('setting');
+               newDiv = $('<div>')
+                  .addClass('setting');
 
-               var title = document.createElement('label');
+               var title = $('<label>')
+                  .html(i18n.t(setting.display_name));
+
                self._addTooltip(title, setting.description);
-               title.innerHTML = i18n.t(setting.display_name);
-               var slider = document.createElement('div');
-               var description = document.createElement('div');
-               description.classList.add('sliderDescription');
 
-               newDiv.appendChild(title);
-               newDiv.appendChild(slider);
-               newDiv.appendChild(description);
+               var slider = $('<div>');
+               var description = $('<div>')
+                  .addClass('sliderDescription');
 
-               $(slider).slider({
+               newDiv.append(title);
+               newDiv.append(slider);
+               newDiv.append(description);
+
+               slider.slider({
                   value: setting.value,
                   min: ns.min,
                   max: ns.max,
                   step: ns.step,
                   change: function(event, ui) {
                      radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:ui:action_hover' });
-                     description.innerHTML = ui.value;
+                     description.html(ui.value);
                   },
                   slide: function(event, ui) {
-                     description.innerHTML = ui.value;
+                     description.html(ui.value);
                   }
                });
                
                setting.getValue = function() {
-                  return $(slider).slider('value');
+                  return slider.slider('value');
                };
                setting.setValue = function(value) {
-                  $(slider).slider({value: value});
+                  slider.slider({value: value});
                   description.innerHTML = value;
                }
                
+               break;
+
+            case 'list':
+               var vals = setting.values;
+               // map values to an array and sort by ordinal if available, otherwise by key (value)
+               var valsArr = radiant.map_to_array(vals, function(k, v) {
+                  v.key = k;
+               });
+               valsArr.sort(function(a, b) {
+                  var result = self._compareNullablesAsc(a.ordinal, b.ordinal);
+                  if (result != null) {
+                     return result;
+                  }
+                  else {
+                     return self._compareAsc(a.key, b.key);
+                  }
+               });
+
+               newDiv = $('<div>')
+                  .addClass('setting list-setting');
+
+               var container = $('<div>')
+                  .addClass('custom-select');
+
+               var selector = $('<div>')
+                  .attr('id', settingElementID)
+                  .addClass('select-selected');
+
+               var label = $('<span>')
+                  .addClass('list-label');
+                  //.attr('for', settingElementID);
+
+               self._addTooltip(label, setting.description);
+               label.html(i18n.t(setting.display_name));
+
+               var valDivs = [];
+               radiant.each(valsArr, function (_, val) {
+                  valDivs.push(self._createListValueDiv(selector, val));
+               });
+
+               var list = $('<div>')
+                  .attr('setting-id', settingElementID)
+                  .addClass('select-items select-hide');
+               for (var i=0; i<valDivs.length; i++) {
+                  list.append(valDivs[i]);
+               }
+
+               container.append(selector);
+               container.append(list);
+
+               newDiv.append(label);
+               newDiv.append(container);
+
+               selector.on('click', function() {
+                  self._closeListSelectorsExcept(list);
+                  list.toggleClass('select-hide');
+                  selector.toggleClass('select-arrow-active');
+                  return false;
+               });
+
+               setting.getValue = function() {
+                  return selector.attr('data-key');
+               };
+
+               setting.setValue = function (value) {
+                  // make sure this value is available (could be a modded value with that mod turned off)
+                  if (vals[value] != null) {
+                     self._setListSelectorValue(selector, vals[value]);
+                  }
+               };
+
                break;
          }
 
@@ -248,7 +329,53 @@ $(top).on('stonehearthReady', function(cc) {
          return newDiv;
       },
 
-      _getNumberSettings(ns) {
+      _closeListSelectorsExcept: function (list) {
+         var self = this;
+         
+         var elements = self.$('.select-items');
+         if (list) {
+            elements = elements.not('[setting-id="' + list.attr('setting-id') + '"]');
+         }
+         elements.addClass('select-hide');
+
+         elements = self.$('.select-selected')
+         if (list) {
+            elements = elements.not('[id="' + list.attr('setting-id') + '"]');
+         }
+         elements.removeClass('select-arrow-active');
+      },
+
+      _setListSelectorValue: function (selector, value) {
+         var self = this;
+         selector.attr('data-key', value.key);
+         selector.html(i18n.t(value.display_name));
+         self._addTooltip(selector, value.description);
+
+         var list = selector.parent();
+         list.find('.same-as-selected').removeClass('same-as-selected');
+         list.find('[data-key="' + value.key + '"]').addClass('same-as-selected');
+      },
+
+      _createListValueDiv: function (selector, value) {
+         var self = this;
+         // we expect a value object to contain key (value), display_name, and description (for tooltip) fields
+         var div = $('<div>')
+            .html(i18n.t(value.display_name))
+            .attr('data-key', value.key);
+
+         self._addTooltip(div, value.description);
+
+         div.on('click', function() {
+            // set the current selected value to this value
+            self._setListSelectorValue(selector, value);
+            selector.click();
+            return false;
+         });
+
+         return div;
+      },
+
+      _getNumberSettings: function (ns) {
          ns = ns || {};
          ns.min = ns.min || 0;
          ns.max = ns.max || Math.max(0, 1 + ns.min);
@@ -257,9 +384,28 @@ $(top).on('stonehearthReady', function(cc) {
          return ns;
       },
 
+      _compareNullablesAsc: function(a, b) {
+         if (a == null && b == null) {
+            return null;
+         }
+         else if (a == null) {
+            return 1;
+         }
+         else if (b == null) {
+            return -1;
+         }
+         else {
+            return this._compareAsc(a, b);
+         }
+      },
+
+      _compareAsc: function(a, b) {
+         return a < b ? -1 : (a > b ? 1 : 0);
+      },
+
       _addTooltip: function(itemEl, title) {
          var tooltip = App.tooltipHelper.createTooltip("", i18n.t(title), "");
-         $(itemEl).tooltipster({ content: $(tooltip) });
+         itemEl.tooltipster({ content: $(tooltip) });
       }
    });
 });

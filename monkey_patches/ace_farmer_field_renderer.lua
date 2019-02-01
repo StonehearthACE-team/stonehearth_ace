@@ -17,6 +17,7 @@ function AceFarmerFieldRenderer:initialize(render_entity, datastore)
 
    self._farmer_field_data = radiant.entities.get_component_data(render_entity:get_entity(), 'stonehearth:farmer_field')
    self._fertilized_dirt_model = self._farmer_field_data.fertilized_dirt
+   self._overwatered_dirt_model = self._farmer_field_data.overwatered_dirt
 
    self._fertilized_nodes = {}
    self._fertilized_zone_renderer = ZoneRenderer(render_entity)
@@ -86,14 +87,14 @@ function AceFarmerFieldRenderer:_update_dirt_models(effective_water_level)
    local tilled_dirt_model = self._farmer_field_data.tilled_dirt
    local furrow_dirt_model = self._farmer_field_data.furrow_dirt
    
-   if effective_water_level == levels.SOME or effective_water_level == levels.EXTRA then
+   if effective_water_level == levels.SOME then
       if self._farmer_field_data.tilled_dirt_water_partial then
          tilled_dirt_model = self._farmer_field_data.tilled_dirt_water_partial
       end
       if self._farmer_field_data.furrow_dirt_water_partial then
          furrow_dirt_model = self._farmer_field_data.furrow_dirt_water_partial
       end
-   elseif effective_water_level == levels.PLENTY then
+   elseif effective_water_level == levels.PLENTY or effective_water_level == levels.EXTRA then
       if self._farmer_field_data.tilled_dirt_water_full then
          tilled_dirt_model = self._farmer_field_data.tilled_dirt_water_full
       end
@@ -102,7 +103,9 @@ function AceFarmerFieldRenderer:_update_dirt_models(effective_water_level)
       end
    end
 
-   if tilled_dirt_model ~= self._tilled_dirt_model or furrow_dirt_model ~= self._furrow_dirt_model then
+   -- if our water level has changed, recreate the dirt nodes
+   if self._prev_water_level ~= effective_water_level then
+      self._prev_water_level = effective_water_level
       self._tilled_dirt_model = tilled_dirt_model
       self._furrow_dirt_model = furrow_dirt_model
       for _, row in pairs(self._dirt_nodes) do
@@ -166,6 +169,30 @@ function AceFarmerFieldRenderer:_destroy_fertilized_node(x, y)
       node:destroy()
       row[y] = nil
    end
+end
+
+-- it makes sense at this point (with the puddles) to just override this whole function
+function AceFarmerFieldRenderer:_update_and_get_dirt_node_array(data)
+   local size_x = data.size.x
+   local size_y = data.size.y
+   local contents = data.contents
+   local dirt_node_array = {}
+   for x=1, size_x do
+      for y=1, size_y do
+         local dirt_plot = contents[x][y]
+         if dirt_plot and dirt_plot.x ~= nil then -- need to check for nil for backward compatibility reasons
+            local node = self:_get_dirt_node(x, y)
+            if not node then
+               local model = dirt_plot.is_overwatered and self._overwatered_dirt_model or
+                     dirt_plot.is_furrow and self._furrow_dirt_model or self._tilled_dirt_model
+               node = self:_create_node(Point3(dirt_plot.x - 1.5, 0, dirt_plot.y - 1.5), model)
+               self:_set_dirt_node(x, y, node)
+            end
+            table.insert(dirt_node_array, node)
+         end
+      end
+   end
+   return dirt_node_array
 end
 
 function AceFarmerFieldRenderer:_update_and_get_fertilized_node_array(data)

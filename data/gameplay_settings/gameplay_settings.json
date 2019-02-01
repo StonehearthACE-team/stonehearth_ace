@@ -7,50 +7,87 @@
    "stonehearth_ace": {
       "auto_craft_recipe_dependencies": {
          "type": "boolean",
-         "display_name": "stonehearth_ace:ui.shell.settings.gameplayTab.auto_craft_recipe_dependencies",
-         "description": "stonehearth_ace:ui.shell.settings.gameplayTab.auto_craft_recipe_dependencies_description",
+         "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.auto_craft_recipe_dependencies)",
+         "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.auto_craft_recipe_dependencies_description)",
          "default": true,
          "ordinal": 1
       },
       "default_craft_order_prefer_high_quality": {
          "type": "boolean",
-         "display_name": "stonehearth_ace:ui.shell.settings.gameplayTab.default_craft_order_prefer_high_quality",
-         "description": "stonehearth_ace:ui.shell.settings.gameplayTab.default_craft_order_prefer_high_quality_description",
+         "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.default_craft_order_prefer_high_quality)",
+         "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.default_craft_order_prefer_high_quality_description)",
          "default": true,
          "ordinal": 2
       },
       "enable_auto_harvest": {
          "type": "boolean",
-         "display_name": "stonehearth_ace:ui.shell.settings.gameplayTab.auto_harvest_enabled",
-         "description": "stonehearth_ace:ui.shell.settings.gameplayTab.auto_harvest_enabled_description",
+         "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.auto_harvest_enabled)",
+         "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.auto_harvest_enabled_description)",
          "default": false,
          "ordinal": 10
       },
       "enable_auto_harvest_animals": {
          "type": "boolean",
-         "display_name": "stonehearth_ace:ui.shell.settings.gameplayTab.auto_harvest_animals_enabled",
-         "description": "stonehearth_ace:ui.shell.settings.gameplayTab.auto_harvest_animals_enabled_description",
+         "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.auto_harvest_animals_enabled)",
+         "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.auto_harvest_animals_enabled_description)",
          "default": true,
          "ordinal": 11
       },
       "auto_harvest_tree_stumps": {
          "type": "boolean",
-         "display_name": "stonehearth_ace:ui.shell.settings.gameplayTab.auto_harvest_tree_stumps",
-         "description": "stonehearth_ace:ui.shell.settings.gameplayTab.auto_harvest_tree_stumps_description",
+         "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.auto_harvest_tree_stumps)",
+         "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.auto_harvest_tree_stumps_description)",
          "default": false,
          "ordinal": 12
       },
-      "default_to_worst_fertilizer": {
-         "type": "boolean",
-         "display_name": "stonehearth_ace:ui.shell.settings.gameplayTab.default_to_worst_fertilizer",
-         "description": "stonehearth_ace:ui.shell.settings.gameplayTab.default_to_worst_fertilizer_description",
-         "default": false,
+      "default_fertilizer": {
+         "type": "list",
+         "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.default_fertilizer)",
+         "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.default_fertilizer_description)",
+         "values": {
+            "0": {
+               "ordinal": 1,
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.farm.fertilizer_settings.none)",
+               "description": "i18n(stonehearth_ace:ui.game.zones_mode.farm.fertilizer_settings.none_description)"
+            },
+            "-1": {
+               "ordinal": 2,
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.farm.fertilizer_settings.low_quality)",
+               "description": "i18n(stonehearth_ace:ui.game.zones_mode.farm.fertilizer_settings.low_quality_description)"
+            },
+            "1": {
+               "ordinal": 3,
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.farm.fertilizer_settings.high_quality)",
+               "description": "i18n(stonehearth_ace:ui.game.zones_mode.farm.fertilizer_settings.high_quality_description)"
+            },
+            "stonehearth_ace:consumables:fertilizer": {
+               "ordinal": 10,
+               "display_name": "i18n(stonehearth_ace:entities.consumables.fertilizer.display_name)",
+               "description": "i18n(stonehearth_ace:entities.consumables.fertilizer.description)"
+            },
+            "stonehearth_ace:consumables:fertilizer_upgrade": {
+               "ordinal": 20,
+               "display_name": "i18n(stonehearth_ace:entities.consumables.fertilizer_upgrade.display_name)",
+               "description": "i18n(stonehearth_ace:entities.consumables.fertilizer_upgrade.description)"
+            },
+            "stonehearth_ace:consumables:fertilizer_upgrade_2": {
+               "ordinal": 30,
+               "display_name": "i18n(stonehearth_ace:entities.consumables.fertilizer_upgrade_2.display_name)",
+               "description": "i18n(stonehearth_ace:entities.consumables.fertilizer_upgrade_2.description)"
+            },
+            "stonehearth_ace:consumables:fertilizer_megacrop": {
+               "ordinal": 40,
+               "display_name": "i18n(stonehearth_ace:entities.consumables.fertilizer_megacrop.display_name)",
+               "description": "i18n(stonehearth_ace:entities.consumables.fertilizer_megacrop.description)"
+            }
+         },
+         "default": "1",
          "ordinal": 13
       },
       "terrain_slice_buildings": {
          "type": "boolean",
-         "display_name": "stonehearth_ace:ui.shell.settings.gameplayTab.terrain_slice_buildings",
-         "description": "stonehearth_ace:ui.shell.settings.gameplayTab.terrain_slice_buildings_description",
+         "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.terrain_slice_buildings)",
+         "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.terrain_slice_buildings_description)",
          "default": false,
          "on_change": {
             "call": "terrain_slice_buildings_setting_changed"
@@ -64,8 +101,8 @@
             "max": 10
          },
          "host_only": true,
-         "display_name": "stonehearth_ace:ui.shell.settings.gameplayTab.water_signal_update_frequency",
-         "description": "stonehearth_ace:ui.shell.settings.gameplayTab.water_signal_update_frequency_description",
+         "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.water_signal_update_frequency)",
+         "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.water_signal_update_frequency_description)",
          "default": 10,
          "on_change": {
             "call": "water_signal_update_frequency_setting_changed"
@@ -74,8 +111,8 @@
       },
       "show_processing_meter": {
          "type": "boolean",
-         "display_name": "stonehearth_ace:ui.shell.settings.gameplayTab.show_processing_meter",
-         "description": "stonehearth_ace:ui.shell.settings.gameplayTab.show_processing_meter_description",
+         "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.show_processing_meter)",
+         "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.show_processing_meter_description)",
          "default": true,
          "on_change": {
             "fire_event": "show_processing_meter_changed"
