@@ -52,10 +52,6 @@ $(top).on('stonehearthReady', function(cc) {
                      self._updateModifiedGameplayTabPage();
                   });
             });
-
-         self.$().on('click', function() {
-            self._closeListSelectorsExcept();
-         })
       },
 
       _updateModifiedGameplayTabPage: function() {
@@ -196,7 +192,7 @@ $(top).on('stonehearthReady', function(cc) {
                   .attr('for', settingElementID)
                   .html(i18n.t(setting.display_name));
 
-               self._addTooltip(label, setting.description);
+               App.guiHelper.addTooltip(label, setting.description);
 
                newDiv.append(input);
                newDiv.append(label);
@@ -218,7 +214,7 @@ $(top).on('stonehearthReady', function(cc) {
                var title = $('<label>')
                   .html(i18n.t(setting.display_name));
 
-               self._addTooltip(title, setting.description);
+               App.guiHelper.addTooltip(title, setting.description);
 
                var slider = $('<div>');
                var description = $('<div>')
@@ -271,53 +267,25 @@ $(top).on('stonehearthReady', function(cc) {
                newDiv = $('<div>')
                   .addClass('setting list-setting');
 
-               var container = $('<div>')
-                  .addClass('custom-select');
-
-               var selector = $('<div>')
-                  .attr('id', settingElementID)
-                  .addClass('select-selected');
+               var selector = App.guiHelper.createCustomSelector(settingElementID, valsArr);
 
                var label = $('<span>')
                   .addClass('list-label');
-                  //.attr('for', settingElementID);
 
-               self._addTooltip(label, setting.description);
+               App.guiHelper.addTooltip(label, setting.description);
                label.html(i18n.t(setting.display_name));
 
-               var valDivs = [];
-               radiant.each(valsArr, function (_, val) {
-                  valDivs.push(self._createListValueDiv(selector, val));
-               });
-
-               var list = $('<div>')
-                  .attr('setting-id', settingElementID)
-                  .addClass('select-items select-hide');
-               for (var i=0; i<valDivs.length; i++) {
-                  list.append(valDivs[i]);
-               }
-
-               container.append(selector);
-               container.append(list);
-
                newDiv.append(label);
-               newDiv.append(container);
-
-               selector.on('click', function() {
-                  self._closeListSelectorsExcept(list);
-                  list.toggleClass('select-hide');
-                  selector.toggleClass('select-arrow-active');
-                  return false;
-               });
+               newDiv.append(selector);
 
                setting.getValue = function() {
-                  return selector.attr('data-key');
+                  return App.guiHelper.getListSelectorValue(selector);
                };
 
                setting.setValue = function (value) {
                   // make sure this value is available (could be a modded value with that mod turned off)
                   if (vals[value] != null) {
-                     self._setListSelectorValue(selector, vals[value]);
+                     App.guiHelper.setListSelectorValue(selector, vals[value]);
                   }
                };
 
@@ -327,52 +295,6 @@ $(top).on('stonehearthReady', function(cc) {
          setting.setValue(setting.value);
 
          return newDiv;
-      },
-
-      _closeListSelectorsExcept: function (list) {
-         var self = this;
-         
-         var elements = self.$('.select-items');
-         if (list) {
-            elements = elements.not('[setting-id="' + list.attr('setting-id') + '"]');
-         }
-         elements.addClass('select-hide');
-
-         elements = self.$('.select-selected')
-         if (list) {
-            elements = elements.not('[id="' + list.attr('setting-id') + '"]');
-         }
-         elements.removeClass('select-arrow-active');
-      },
-
-      _setListSelectorValue: function (selector, value) {
-         var self = this;
-         selector.attr('data-key', value.key);
-         selector.html(i18n.t(value.display_name));
-         self._addTooltip(selector, value.description);
-
-         var list = selector.parent();
-         list.find('.same-as-selected').removeClass('same-as-selected');
-         list.find('[data-key="' + value.key + '"]').addClass('same-as-selected');
-      },
-
-      _createListValueDiv: function (selector, value) {
-         var self = this;
-         // we expect a value object to contain key (value), display_name, and description (for tooltip) fields
-         var div = $('<div>')
-            .html(i18n.t(value.display_name))
-            .attr('data-key', value.key);
-
-         self._addTooltip(div, value.description);
-
-         div.on('click', function() {
-            // set the current selected value to this value
-            self._setListSelectorValue(selector, value);
-            selector.click();
-            return false;
-         });
-
-         return div;
       },
 
       _getNumberSettings: function (ns) {
@@ -401,11 +323,6 @@ $(top).on('stonehearthReady', function(cc) {
 
       _compareAsc: function(a, b) {
          return a < b ? -1 : (a > b ? 1 : 0);
-      },
-
-      _addTooltip: function(itemEl, title) {
-         var tooltip = App.tooltipHelper.createTooltip("", i18n.t(title), "");
-         itemEl.tooltipster({ content: $(tooltip) });
       }
    });
 });

@@ -2001,7 +2001,8 @@
       "stonehearth/ui/game/show_workshop/show_team_workshop.html": "file(ui/game/show_workshop/show_team_workshop.html)",
       "stonehearth/data/commands/show_workshop/show_workshop.png": "file(data/commands/show_workshop/show_workshop.png)",
       "stonehearth/ui/game/traces/catalog.js": "file(ui/game/traces/catalog.js)",
-      "stonehearth/ui/game/item_palette/item_palette.js": "file(ui/game/item_palette/item_palette.js)"
+      "stonehearth/ui/game/item_palette/item_palette.js": "file(ui/game/item_palette/item_palette.js)",
+      "stonehearth/ui/game/modes/zones_mode/pasture/pasture.html": "file(ui/game/modes/zones_mode/pasture/pasture.html)"
    },
    "components": {
       "aquatic_object": "file(components/aquatic_object/aquatic_object_component.lua)",
@@ -2213,6 +2214,18 @@
       "set_farm_fertilizer_preference": {
          "controller": "file(call_handlers/farming_call_handler.lua)",
          "endpoint": "server"
+      },
+      "set_pasture_harvest_animals_renewable": {
+         "controller": "file(call_handlers/pasture_call_handler.lua)",
+         "endpoint": "server"
+      },
+      "set_pasture_harvest_grass": {
+         "controller": "file(call_handlers/pasture_call_handler.lua)",
+         "endpoint": "server"
+      },
+      "set_pasture_maintain_animals": {
+         "controller": "file(call_handlers/pasture_call_handler.lua)",
+         "endpoint": "server"
       }
    },
    "object_commands": {
@@ -2250,13 +2263,15 @@
          "file(ui/game/promotion_tree/promotion_tree.js)",
          "file(ui/game/modes/zones_mode/trapping_grounds/trapping_grounds.js)",
          "file(ui/game/modes/zones_mode/farm/farm.js)",
+         "file(ui/game/modes/zones_mode/pasture/pasture.js)",
          "file(ui/game/modes/military_mode/military_mode.js)",
          "file(ui/game/save_view/save_view.js)",
          "file(ui/game/town/inventory_tracker.js)",
          "file(ui/game/task_manager/task_manager.js)",
          "file(ui/game/component_info/component_info.js)",
          "file(ui/game/unit_frame/unit_frame.js)",
-         "file(ui/game/clock_widget/clock_widget.js)"
+         "file(ui/game/clock_widget/clock_widget.js)",
+         "file(ui/root/js/gui.js)"
       ],
       "less": [
          "file(ui/shell/settings/settings.less)",
@@ -2268,11 +2283,13 @@
          "file(ui/game/modes/military_mode/military_mode.less)",
          "file(jobs/mf_artificer/skin/workshop.less)",
          "file(ui/game/modes/zones_mode/farm/farm.less)",
+         "file(ui/game/modes/zones_mode/pasture/pasture.less)",
          "file(ui/shell/title/title.less)",
          "file(ui/game/show_workshop/show_team_workshop.less)",
          "file(ui/game/component_info/component_info.less)",
          "file(ui/game/unit_frame/unit_frame.less)",
-         "file(ui/game/clock_widget/clock_widget.less)"
+         "file(ui/game/clock_widget/clock_widget.less)",
+         "file(ui/root/css/gui.less)"
       ]
    }
 }

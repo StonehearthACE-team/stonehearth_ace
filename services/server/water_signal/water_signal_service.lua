@@ -181,8 +181,8 @@ function WaterSignalService:_on_tick()
       return
    end
 
-   log:debug('water signal tick with %s changed waters, %s changed waterfalls, %s signals',
-         radiant.size(self._changed_waters), radiant.size(self._changed_waterfalls), radiant.size(self._signals))
+   --log:debug('water signal tick with %s changed waters, %s changed waterfalls, %s signals',
+   --      radiant.size(self._changed_waters), radiant.size(self._changed_waterfalls), radiant.size(self._signals))
 
    local signals_to_signal = {}
    local next_tick_callbacks
@@ -200,7 +200,7 @@ function WaterSignalService:_on_tick()
             local water_region = water:get_region():get():translated(location)
             local chunks = self:_get_chunks(water_region)
             local checked = {}
-            log:debug('setting water_chunks for %s to %s', water_id, radiant.util.table_tostring(chunks))
+            --log:debug('setting water_chunks for %s to %s', water_id, radiant.util.table_tostring(chunks))
             self._water_chunks[water_id] = chunks
 
             for chunk_id, _ in pairs(chunks) do
@@ -278,7 +278,7 @@ function WaterSignalService:_on_tick()
 
    for _, signal in pairs(signals_to_signal) do
       local entity = signal.entity or radiant.entities.get_entity(signal.entity_id)
-      log:debug('getting signal entity from id %s: %s', signal.entity_id, entity or 'NIL')
+      --log:debug('getting signal entity from id %s: %s', signal.entity_id, entity or 'NIL')
       if entity and entity:is_valid() then
          signal.entity = entity
          signal.signal:_on_tick_water_signal(signal.waters, signal.waterfalls)

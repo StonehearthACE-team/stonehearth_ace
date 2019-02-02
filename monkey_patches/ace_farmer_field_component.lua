@@ -121,7 +121,7 @@ function AceFarmerFieldComponent:notify_till_location_finished(location)
    local y = offset.z + 1
    local key = x .. '|' .. y
    if self._sv._queued_overwatered[key] then
-      self._sv.contents[x][y].is_overwatered = true
+      self._sv.contents[x][y].overwatered_model = self:_get_overwatered_model()
       self._sv._queued_overwatered[key] = nil
    end
 end
@@ -382,7 +382,7 @@ function AceFarmerFieldComponent:_update_effective_water_level()
                local y = rng:get_int(1, size.y)
                local plot = contents[x][y]
                if plot then
-                  plot.is_overwatered = true
+                  plot.overwatered_model = self:_get_overwatered_model()
                else
                   self._sv._queued_overwatered[x .. '|' .. y] = true
                end
@@ -392,7 +392,7 @@ function AceFarmerFieldComponent:_update_effective_water_level()
          self._sv._queued_overwatered = {}
          for x = 2, size.x, 2 do
             for _, plot in pairs(contents[x]) do
-               plot.is_overwatered = nil
+               plot.overwatered_model = nil
             end
          end
       end
@@ -400,6 +400,23 @@ function AceFarmerFieldComponent:_update_effective_water_level()
       self._sv.effective_water_level = relative_level
       self.__saved_variables:mark_changed()
    end
+end
+
+function AceFarmerFieldComponent:_get_overwatered_model()
+   if not self._json then
+      self._json = radiant.entities.get_json(self)
+   end
+
+   local model = self._json.overwatered_dirt
+   if type(model) == 'table' then
+      if #model > 0 then
+         model = model[rng:get_int(1, #model)]
+      else
+         model = nil
+      end
+   end
+
+   return model
 end
 
 AceFarmerFieldComponent._old__on_destroy = FarmerFieldComponent._on_destroy

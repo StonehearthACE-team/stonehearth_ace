@@ -1,7 +1,17 @@
 local item_quality_lib = require 'stonehearth_ace.lib.item_quality.item_quality_lib'
+local HARVEST_ACTION = 'stonehearth:harvest_resource'
 
 local ResourceNodeComponent = require 'stonehearth.components.resource_node.resource_node_component'
 local AceResourceNodeComponent = class()
+
+AceResourceNodeComponent._old_set_harvestable_by_harvest_tool = ResourceNodeComponent.set_harvestable_by_harvest_tool
+function AceResourceNodeComponent:set_harvestable_by_harvest_tool(harvestable_by_harvest_tool)
+   -- if this entity has a renewable component and the json says it's not harvestable by harvest tool,
+   -- we don't want to override that
+   if harvestable_by_harvest_tool == nil or not self._entity:get_component('stonehearth:renewable_resource_node') then
+      self:_old_set_harvestable_by_harvest_tool(harvestable_by_harvest_tool)
+   end
+end
 
 -- this is modified only to add the player_id of the harvester to the kill_data of the kill_event
 -- and to add item quality for spawned items if this entity is of higher quality
@@ -90,6 +100,14 @@ end
 
 function AceResourceNodeComponent:_set_quality(item, quality)
    item_quality_lib.apply_quality(item, quality)
+end
+
+function AceResourceNodeComponent:cancel_harvest_request()
+   local task_tracker_component = self._entity:get_component('stonehearth:task_tracker')
+   if task_tracker_component and task_tracker_component:is_activity_requested(HARVEST_ACTION) then
+      task_tracker_component:cancel_current_task(true)
+      return true
+   end
 end
 
 return AceResourceNodeComponent

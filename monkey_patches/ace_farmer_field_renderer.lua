@@ -17,7 +17,6 @@ function AceFarmerFieldRenderer:initialize(render_entity, datastore)
 
    self._farmer_field_data = radiant.entities.get_component_data(render_entity:get_entity(), 'stonehearth:farmer_field')
    self._fertilized_dirt_model = self._farmer_field_data.fertilized_dirt
-   self._overwatered_dirt_model = self._farmer_field_data.overwatered_dirt
 
    self._fertilized_nodes = {}
    self._fertilized_zone_renderer = ZoneRenderer(render_entity)
@@ -183,7 +182,7 @@ function AceFarmerFieldRenderer:_update_and_get_dirt_node_array(data)
          if dirt_plot and dirt_plot.x ~= nil then -- need to check for nil for backward compatibility reasons
             local node = self:_get_dirt_node(x, y)
             if not node then
-               local model = dirt_plot.is_overwatered and self._overwatered_dirt_model or
+               local model = dirt_plot.overwatered_model or
                      dirt_plot.is_furrow and self._furrow_dirt_model or self._tilled_dirt_model
                node = self:_create_node(Point3(dirt_plot.x - 1.5, 0, dirt_plot.y - 1.5), model)
                self:_set_dirt_node(x, y, node)

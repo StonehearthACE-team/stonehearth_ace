@@ -26,19 +26,12 @@
          "default": false,
          "ordinal": 10
       },
-      "enable_auto_harvest_animals": {
-         "type": "boolean",
-         "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.auto_harvest_animals_enabled)",
-         "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.auto_harvest_animals_enabled_description)",
-         "default": true,
-         "ordinal": 11
-      },
       "auto_harvest_tree_stumps": {
          "type": "boolean",
          "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.auto_harvest_tree_stumps)",
          "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.auto_harvest_tree_stumps_description)",
          "default": false,
-         "ordinal": 12
+         "ordinal": 11
       },
       "default_fertilizer": {
          "type": "list",
@@ -82,7 +75,7 @@
             }
          },
          "default": "1",
-         "ordinal": 13
+         "ordinal": 12
       },
       "terrain_slice_buildings": {
          "type": "boolean",
