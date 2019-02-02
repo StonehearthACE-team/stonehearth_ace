@@ -138,7 +138,7 @@ function AceShepherdPastureComponent:_consider_maintain_animals()
             local entity = critter.entity
             local renewable_resource_component = entity:is_valid() and entity:get_component('stonehearth:renewable_resource_node')
             if not renewable_resource_component or not renewable_resource_component:is_harvestable() then
-               if self:_request_slaughter_animal(critter) then
+               if self:_request_slaughter_animal(entity) then
                   num_to_slaughter = num_to_slaughter - 1
                   if num_to_slaughter < 1 then
                      break
