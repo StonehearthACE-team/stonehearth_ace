@@ -72,7 +72,9 @@ local monkey_patches = {
    ace_inventory = 'stonehearth.services.server.inventory.inventory',
    ace_farming_service = 'stonehearth.services.server.farming.farming_service',
    ace_hydrology_service = 'stonehearth.services.server.hydrology.hydrology_service',
-   ace_find_best_reachable_entity_by_type = 'stonehearth.ai.actions.find_best_reachable_entity_by_type'
+   ace_find_best_reachable_entity_by_type = 'stonehearth.ai.actions.find_best_reachable_entity_by_type',
+   ace_terrain_service = 'stonehearth.services.server.terrain.terrain_service',
+   ace_weather_state = 'stonehearth.services.server.weather.weather_state'
 }
 
 local function monkey_patching()

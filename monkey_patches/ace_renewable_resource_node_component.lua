@@ -58,7 +58,7 @@ function AceRenewableResourceNodeComponent:_can_pasture_animal_renewably_harvest
       return_val = shepherd_pasture:get_harvest_animals_renewable()
    end
 
-   log:debug('pasture animal %s renewably harvest', (return_val and 'CAN') or (return_val == false and 'CANNOT') or 'ISN\'T A PASTURE ANIMAL SO CANNOT')
+   --log:debug('pasture animal %s renewably harvest', (return_val and 'CAN') or (return_val == false and 'CANNOT') or 'ISN\'T A PASTURE ANIMAL SO CANNOT')
    return return_val
 end
 

@@ -34,7 +34,7 @@ end
 
 function AceTownService:get_water_affinity_table(climate)
 	if not climate then
-		climate = 'temperate'	-- change this to read in the current biome's climate once we add climate to them
+		climate = 'temperate'
 	end
 
 	local affinity_table = {}
@@ -47,24 +47,44 @@ function AceTownService:get_water_affinity_table(climate)
 	return affinity_table
 end
 
+function AceTownService:get_light_affinity_table(climate)
+	if not climate then
+		climate = 'temperate'
+	end
+
+	local affinity_table = {}
+	local climate_data = stonehearth.constants.climates[climate]
+	if climate_data then
+		local affinity = climate_data.plant_light_affinity or 'MEDIUM'
+		affinity_table = stonehearth.constants.plant_light_affinity[affinity] or {}
+	end
+
+	return affinity_table
+end
+
 -- returns the best affinity and then the next one so you can see the range until it would apply (and its effect)
 function AceTownService:get_best_water_level_from_climate(climate)
 	local water_affinity = self:get_water_affinity_table(climate)
-	return self:get_best_water_level(water_affinity)
+	return self:get_best_affinity_level(water_affinity)
 end
 
-function AceTownService:get_best_water_level(water_affinity)
-	if not next(water_affinity) then
+function AceTownService:get_best_light_level_from_climate(climate)
+	local light_affinity = self:get_light_affinity_table(climate)
+	return self:get_best_affinity_level(light_affinity)
+end
+
+function AceTownService:get_best_affinity_level(affinities)
+	if not next(affinities) then
 		return nil
 	end
 
-	local best_affinity = water_affinity[1]
-	local next_affinity = water_affinity[2]
-	for i = 2, #water_affinity do
-		local affinity = water_affinity[i]
+	local best_affinity = affinities[1]
+	local next_affinity = affinities[2]
+	for i = 2, #affinities do
+		local affinity = affinities[i]
 		if affinity.period_multiplier < best_affinity.period_multiplier then
 			best_affinity = affinity
-			next_affinity = water_affinity[i + 1]
+			next_affinity = affinities[i + 1]
 		end
 	end
 

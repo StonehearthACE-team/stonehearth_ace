@@ -13,6 +13,14 @@ App.StonehearthFarmView.reopen({
       EXTRA: 'excess'
    },
 
+   _LIGHT_LEVEL_ICONS: {
+      NONE: 'none',
+      LOW: 'low',
+      MEDIUM: 'medium',
+      HIGH: 'high',
+      VERY_HIGH: 'very_high'
+   },
+
    _FLOOD_ICONS: {
       DRY: 'dry',
       REQUIRED: 'required',
@@ -415,6 +423,31 @@ App.StonehearthFarmView.reopen({
       self._setTooltipData(floodPreference);
       self._createPropertyTooltip(self.$('#floodPreference'), floodPreference.name);
 
+
+      var affinities = details.light_affinity;
+      var lightAffinity = {
+         name: 'lightAffinity',
+         icon: self._getLightIcon(affinities.best_affinity.min_light),
+         tooltipTitle: localizations.light_affinity.property_name,
+         min_light_level: affinities.best_affinity.min_light
+      };
+      if (affinities.next_affinity) {
+         lightAffinity.max_light_level = affinities.next_affinity.min_light;
+         lightAffinity.tooltip = localizations.light_affinity.range;
+         lightAffinity.i18n_data = {
+            min_light_level: self._formatLightValue(affinities.best_affinity.min_light),
+            max_light_level: self._formatLightValue(affinities.next_affinity.min_light)
+         };
+      }
+      else {
+         lightAffinity.tooltip = localizations.light_affinity.min_only;
+         lightAffinity.i18n_data = { min_light_level: self._formatLightValue(affinities.best_affinity.min_light) };
+      }
+
+      cropProperties.lightAffinity = lightAffinity;
+      self._setTooltipData(lightAffinity);
+      self._createPropertyTooltip(self.$('#lightAffinity'), lightAffinity.name);
+
       return cropProperties;
    },
 
@@ -449,6 +482,7 @@ App.StonehearthFarmView.reopen({
       var current_water_level = field_sv.water_level || 0;
       var size_mult = self._getSizeMult(size);
       var effective_water_level = field_sv.effective_water_level;
+      var current_light_level = field_sv.sunlight_level
       
       var status;
       
@@ -573,6 +607,31 @@ App.StonehearthFarmView.reopen({
       self._applyStatus(self.$('#currentFlooded'), status);
 
 
+      if (current_light_level < cropProperties.lightAffinity.min_light_level) {
+         status = self._STATUSES.AVERAGE;
+      }
+      else if(cropProperties.lightAffinity.max_light_level && current_light_level > cropProperties.lightAffinity.max_light_level) {
+         status = self._STATUSES.AVERAGE;
+      }
+      else {
+         status = self._STATUSES.OPTIMAL;
+      }
+
+      var currentLightLevel = {
+         name: 'currentLightLevel',
+         icon: self._getLightIcon(current_light_level),
+         status: status,
+         tooltipTitle: localizations.light_affinity.status_name,
+         tooltip: localizations.light_affinity.current_level,
+         i18n_data: { current_light_level: self._formatLightValue(current_light_level) }
+      };
+
+      cropStatuses.currentLightLevel = currentLightLevel;
+      self._setTooltipData(currentLightLevel);
+      self._createPropertyTooltip(self.$('#currentLightLevel'), currentLightLevel.name);
+      self._applyStatus(self.$('#currentLightLevel'), status);
+
+
       status = self._STATUSES.AVERAGE;
       if (num_fertilized < num_crops) {
          if (num_fertilized == 0) {
@@ -613,6 +672,14 @@ App.StonehearthFarmView.reopen({
          numNegative++;
       }
       switch (currentWaterLevel.status) {
+         case self._STATUSES.POOR:
+            numNegative++;
+            break;
+         case self._STATUSES.OPTIMAL:
+            numPositive++;
+            break;
+      }
+      switch (currentLightLevel.status) {
          case self._STATUSES.POOR:
             numNegative++;
             break;
@@ -666,6 +733,31 @@ App.StonehearthFarmView.reopen({
 
    _formatWaterValue: function(value) {
       return Math.round(value * 10) / 10;
+   },
+
+   _formatLightValue: function(value) {
+      return value * 100 + '%';
+   },
+
+   _getLightIcon: function(value) {
+      var self = this;
+      
+      var icon = self._LIGHT_LEVEL_ICONS.VERY_HIGH;
+
+      if (value < 0.2) {
+         icon = self._LIGHT_LEVEL_ICONS.NONE;
+      }
+      else if (value < 0.4) {
+         icon = self._LIGHT_LEVEL_ICONS.LOW;
+      }
+      else if (value < 0.6) {
+         icon = self._LIGHT_LEVEL_ICONS.MEDIUM;
+      }
+      else if (value < 0.8) {
+         icon = self._LIGHT_LEVEL_ICONS.HIGH;
+      }
+
+      return self._IMAGES_DIR + 'property_sunlight_' + icon + '.png';
    },
 
    _applyStatus: function(div, status) {
