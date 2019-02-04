@@ -1,3 +1,5 @@
+local util = require 'stonehearth_ace.lib.util'
+
 local MaterialMap = class()
 
 --- Manage the entities' uris by storing a reference to them through material tags,
@@ -60,7 +62,7 @@ end
 --
 function MaterialMap:contains(key, value1)
    for _, value2 in ipairs(self._map[key] or {}) do
-      if stonehearth_ace.util.deep_compare(value2, value1, true) then
+      if util.deep_compare(value2, value1, true) then
          return true
       end
    end

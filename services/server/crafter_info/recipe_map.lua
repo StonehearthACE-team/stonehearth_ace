@@ -1,3 +1,5 @@
+local util = require 'stonehearth_ace.lib.util'
+
 local RecipeMap = class()
 
 -- Manage the recipes by storing a reference to them through their uri and material tags,
@@ -61,7 +63,7 @@ function RecipeMap:intersecting_values(keys)
             -- also, each product of the recipe should have its count be included if it fully matches
             -- (this is already done properly for single-key calls of this function, e.g., just "wood")
             if num_keys > 1 then
-               count = stonehearth_ace.util.sum_where_all_keys_present(value.recipe.product_materials, value.recipe.products, keys_table)
+               count = util.sum_where_all_keys_present(value.recipe.product_materials, value.recipe.products, keys_table)
             end
 
             if count > 0 then

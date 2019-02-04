@@ -1,7 +1,5 @@
 stonehearth_ace = {}
 
-stonehearth_ace.util = require("lib.util")
-
 local service_creation_order = {
    'connection',
    'crafter_info',

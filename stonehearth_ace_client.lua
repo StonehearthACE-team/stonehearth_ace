@@ -11,8 +11,6 @@
 
 stonehearth_ace = {}
 
-stonehearth_ace.util = require("lib.util")
-
 local service_creation_order = {
    'heatmap',
    'gameplay_settings',
