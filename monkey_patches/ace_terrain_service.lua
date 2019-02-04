@@ -1,4 +1,4 @@
-local csg_lib = require 'lib.csg.csg_lib'
+local csg_lib = require 'stonehearth.lib.csg.csg_lib'
 local Point3 = _radiant.csg.Point3
 local validator = radiant.validator
 local log = radiant.log.create_logger('terrain')

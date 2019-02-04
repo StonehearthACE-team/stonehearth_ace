@@ -294,16 +294,27 @@ function AceFarmerFieldComponent:_create_sunlight_timer()
       self._sv.sunlight_level = 1
    end
 
+   self._weather_listener = radiant.events.listen(radiant, 'stonehearth_ace:weather_state_started', function(state)
+      self._weather_sunlight = state:get_sunlight()
+      self:_update_sunlight()
+   end)
+   self._weather_sunlight = stonehearth.weather:get_current_weather():get_sunlight()
+
    self._sunlight_timer = stonehearth.calendar:set_interval('farm sunlight check', SUNLIGHT_CHECK_TIME, function()
       self:_check_sunlight()
    end)
+   self:_check_sunlight()
 end
 
 function AceFarmerFieldComponent:_destroy_sunlight_timer()
    if self._sunlight_timer then
 		self._sunlight_timer:destroy()
 		self._sunlight_timer = nil
-	end
+   end
+   if self._weather_listener then
+      self._weather_listener:destroy()
+      self._weather_listener = nil
+   end
 end
 
 function AceFarmerFieldComponent:_check_sunlight()
@@ -314,15 +325,24 @@ function AceFarmerFieldComponent:_check_sunlight()
    for z = 0, size.y - 1 do
       sun_vis = sun_vis + stonehearth.terrain:get_sunlight_amount(self._location + Point3(x, 2, z))
    end
-   sun_vis = sun_vis / size.y
 
-   local weather_sunlight = stonehearth.weather:get_current_weather():get_sunlight()
-   sun_vis = math.floor(100 * sun_vis * weather_sunlight) / 100
+   self._terrain_sunlight = sun_vis / size.y
    
+   self:_update_sunlight()
+end
+
+function AceFarmerFieldComponent:_update_sunlight()
+   if not self._terrain_sunlight or not self._weather_sunlight then
+      return
+   end
+   
+   local sun_vis = math.floor(100 * self._terrain_sunlight * self._weather_sunlight) / 100
+
    if sun_vis ~= self._sv.sunlight_level then
       self._sv.sunlight_level = sun_vis
       self.__saved_variables:mark_changed()
 
+      local size = self._sv.size
       local contents = self._sv.contents
       for x=1, size.x do
          for y=1, size.y do
@@ -423,8 +443,8 @@ function AceFarmerFieldComponent:_update_effective_water_level()
    local levels = stonehearth.constants.farming.water_levels
    local relative_level = levels.NONE
 
-   if self._best_water_level and self._sv.water_level >= self._best_water_level.min_water then
-      if not self._next_water_level or self._sv.water_level < self._next_water_level.min_water then
+   if self._best_water_level and self._sv.water_level >= self._best_water_level.min_level then
+      if not self._next_water_level or self._sv.water_level < self._next_water_level.min_level then
          relative_level = levels.PLENTY
       else
          relative_level = levels.EXTRA

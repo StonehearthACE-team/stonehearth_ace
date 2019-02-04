@@ -37,18 +37,6 @@ function AceFarmingService:get_crop_details(crop_type)
                end
             end
 
-            local best, next = stonehearth.town:get_best_water_level_from_climate(growing_data.preferred_climate)
-            details.water_affinity = {
-               best_affinity = best,
-               next_affinity = next
-            }
-
-            best, next = stonehearth.town:get_best_light_level_from_climate(growing_data.preferred_climate)
-            details.light_affinity = {
-               best_affinity = best,
-               next_affinity = next
-            }
-
             details.preferred_climate = growing_data.preferred_climate
             details.flood_period_multiplier = growing_data.flood_period_multiplier or 2
 

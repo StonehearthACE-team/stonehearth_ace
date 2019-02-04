@@ -8,9 +8,10 @@ App.StonehearthFarmView.reopen({
 
    _WATER_LEVEL_ICONS: {
       NONE: 'none',
-      SOME: 'little',
-      PLENTY: 'plenty',
-      EXTRA: 'excess'
+      LOW: 'little',
+      MEDIUM: 'some',
+      HIGH: 'plenty',
+      VERY_HIGH: 'excess'
    },
 
    _LIGHT_LEVEL_ICONS: {
@@ -297,6 +298,11 @@ App.StonehearthFarmView.reopen({
          self._tooltipData = {};
 
          if(details.uri) {
+            var preferredClimate = details.preferred_climate || 'temperate';
+            var climatePrefs = App.constants.climates[preferredClimate];
+            self._waterAffinities = self._getBestAffinityRange(App.constants.plant_water_affinity[climatePrefs.plant_water_affinity]);
+            self._lightAffinities = self._getBestAffinityRange(App.constants.plant_light_affinity[climatePrefs.plant_light_affinity]);
+            
             var cropProperties = self._doUpdateProperties(localizations, field_sv);
             self.set('cropProperties', cropProperties);
             self._updateStatuses();
@@ -363,29 +369,23 @@ App.StonehearthFarmView.reopen({
       self._createPropertyTooltip(self.$('#growthTime'), growthTime.name);
 
 
-      var affinities = details.water_affinity;
+      var affinities = self._waterAffinities;
       var size_mult = self._getSizeMult(size);
       var waterAffinity = {
          name: 'waterAffinity',
-         tooltipTitle: localizations.water_affinity.property_name
+         tooltipTitle: localizations.water_affinity.property_name,
+         icon: self._getWaterIcon(affinities.best_affinity.min_level)
       };
       if (affinities.next_affinity) {
          waterAffinity.tooltip = localizations.water_affinity.range;
          waterAffinity.i18n_data = {
-            min_water_level: self._formatWaterValue(affinities.best_affinity.min_water * size_mult),
-            max_water_level: self._formatWaterValue(affinities.next_affinity.min_water * size_mult)
+            min_water_level: self._formatWaterValue(affinities.best_affinity.min_level * size_mult),
+            max_water_level: self._formatWaterValue(affinities.next_affinity.min_level * size_mult)
          };
       }
       else {
          waterAffinity.tooltip = localizations.water_affinity.min_only;
-         waterAffinity.i18n_data = { min_water_level: self._formatWaterValue(affinities.best_affinity.min_water * size_mult) };
-      }
-      
-      if (affinities.best_affinity.min_water > 0) {
-         waterAffinity.icon = self._IMAGES_DIR + 'property_water_plenty.png';
-      }
-      else {
-         waterAffinity.icon = self._IMAGES_DIR + 'property_water_none.png';
+         waterAffinity.i18n_data = { min_water_level: self._formatWaterValue(affinities.best_affinity.min_level * size_mult) };
       }
 
       cropProperties.waterAffinity = waterAffinity;
@@ -424,24 +424,24 @@ App.StonehearthFarmView.reopen({
       self._createPropertyTooltip(self.$('#floodPreference'), floodPreference.name);
 
 
-      var affinities = details.light_affinity;
+      var affinities = self._lightAffinities;
       var lightAffinity = {
          name: 'lightAffinity',
-         icon: self._getLightIcon(affinities.best_affinity.min_light),
+         icon: self._getLightIcon(affinities.best_affinity.min_level),
          tooltipTitle: localizations.light_affinity.property_name,
-         min_light_level: affinities.best_affinity.min_light
+         min_light_level: affinities.best_affinity.min_level
       };
       if (affinities.next_affinity) {
-         lightAffinity.max_light_level = affinities.next_affinity.min_light;
+         lightAffinity.max_light_level = affinities.next_affinity.min_level;
          lightAffinity.tooltip = localizations.light_affinity.range;
          lightAffinity.i18n_data = {
-            min_light_level: self._formatLightValue(affinities.best_affinity.min_light),
-            max_light_level: self._formatLightValue(affinities.next_affinity.min_light)
+            min_light_level: self._formatLightValue(affinities.best_affinity.min_level),
+            max_light_level: self._formatLightValue(affinities.next_affinity.min_level)
          };
       }
       else {
          lightAffinity.tooltip = localizations.light_affinity.min_only;
-         lightAffinity.i18n_data = { min_light_level: self._formatLightValue(affinities.best_affinity.min_light) };
+         lightAffinity.i18n_data = { min_light_level: self._formatLightValue(affinities.best_affinity.min_level) };
       }
 
       cropProperties.lightAffinity = lightAffinity;
@@ -514,28 +514,23 @@ App.StonehearthFarmView.reopen({
       self._applyStatus(self.$('#currentSeason'), status);
 
 
-      var level_icon;
       switch (effective_water_level) {
          case levels.NONE:
-            level_icon = self._WATER_LEVEL_ICONS.NONE;
             status = self._STATUSES.POOR;
             break;
          case levels.SOME:
-            level_icon = self._WATER_LEVEL_ICONS.SOME;
             status = self._STATUSES.AVERAGE;
             break;
          case levels.PLENTY:
-            level_icon = self._WATER_LEVEL_ICONS.PLENTY;
             status = self._STATUSES.OPTIMAL;
             break;
          case levels.EXTRA:
-            level_icon = self._WATER_LEVEL_ICONS.EXTRA;
             status = self._STATUSES.AVERAGE;
       }
 
       var currentWaterLevel = {
          name: 'currentWaterLevel',
-         icon: self._IMAGES_DIR + 'property_water_' + level_icon + '.png',
+         icon: self._getWaterIcon(current_water_level),
          status: status,
          tooltipTitle: localizations.water_affinity.status_name,
          tooltip: localizations.water_affinity.current_level,
@@ -741,23 +736,47 @@ App.StonehearthFarmView.reopen({
 
    _getLightIcon: function(value) {
       var self = this;
-      
-      var icon = self._LIGHT_LEVEL_ICONS.VERY_HIGH;
+      return self._IMAGES_DIR + 'property_sunlight_' + self._getAffinityLevel(self._LIGHT_LEVEL_ICONS, value) + '.png';
+   },
+
+   _getWaterIcon: function(value) {
+      var self = this;
+      return self._IMAGES_DIR + 'property_water_' + self._getAffinityLevel(self._WATER_LEVEL_ICONS, value) + '.png';
+   },
+
+   _getAffinityLevel: function(table, value) {
+      var level = table.VERY_HIGH;
 
       if (value < 0.2) {
-         icon = self._LIGHT_LEVEL_ICONS.NONE;
+         level = table.NONE;
       }
       else if (value < 0.4) {
-         icon = self._LIGHT_LEVEL_ICONS.LOW;
+         level = table.LOW;
       }
       else if (value < 0.6) {
-         icon = self._LIGHT_LEVEL_ICONS.MEDIUM;
+         level = table.MEDIUM;
       }
       else if (value < 0.8) {
-         icon = self._LIGHT_LEVEL_ICONS.HIGH;
+         level = table.HIGH;
       }
 
-      return self._IMAGES_DIR + 'property_sunlight_' + icon + '.png';
+      return level;
+   },
+
+   _getBestAffinityRange: function(table) {
+      var result = {};
+
+      for (var i = 0; i < table.length; i++) {
+         var level = table[i];
+         if (!result.best_affinity || level.period_multiplier < result.best_affinity.period_multiplier) {
+            result.best_affinity = level;
+            if (i < table.length - 1) {
+               result.next_affinity = table[i + 1];
+            }
+         }
+      }
+
+      return result;
    },
 
    _applyStatus: function(div, status) {

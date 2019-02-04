@@ -78,9 +78,9 @@ end
 
 function AceGrowingComponent:set_water_level(water_level)
 	-- water level is a ratio of volume to "normal ideal volume for a full farm plot"
-	local best_affinity = {min_water = -1, period_multiplier = 1}
+	local best_affinity = {min_level = -1, period_multiplier = 1}
 	for _, affinity in ipairs(self._water_affinity) do
-		if water_level >= affinity.min_water and affinity.min_water > best_affinity.min_water then
+		if water_level >= affinity.min_level and affinity.min_level > best_affinity.min_level then
 			best_affinity = affinity
 		end
 	end
@@ -95,9 +95,9 @@ function AceGrowingComponent:set_water_level(water_level)
 end
 
 function AceGrowingComponent:set_light_level(light_level)
-	local best_affinity = {min_light = -1, period_multiplier = 1}
+	local best_affinity = {min_level = -1, period_multiplier = 1}
 	for _, affinity in ipairs(self._light_affinity) do
-		if light_level >= affinity.min_light and affinity.min_light > best_affinity.min_light then
+		if light_level >= affinity.min_level and affinity.min_level > best_affinity.min_level then
 			best_affinity = affinity
 		end
 	end
