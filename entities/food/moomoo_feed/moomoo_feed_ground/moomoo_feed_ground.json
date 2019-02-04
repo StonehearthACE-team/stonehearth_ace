@@ -4,7 +4,7 @@
       "model_variants": {
          "default": {
             "models": [
-               "file(ostrich_feed_ground.qb)"
+               "file(moomoo_feed_ground.qb)"
             ]
          }
       },
@@ -17,15 +17,15 @@
    },
    "entity_data": {
       "stonehearth:catalog": {
-         "display_name": "i18n(stonehearth_ace:entities.food.ostrich_feed.ostrich_feed_ground.display_name)",
-         "description": "i18n(stonehearth_ace:entities.food.ostrich_feed.ostrich_feed_ground.description)",
-         "icon": "file(../ostrich_feed/ostrich_feed.png)",
+         "display_name": "i18n(stonehearth_ace:entities.food.moomoo_feed.moomoo_feed_ground.display_name)",
+         "description": "i18n(stonehearth_ace:entities.food.moomoo_feed.moomoo_feed_ground.description)",
+         "icon": "file(../moomoo_feed/moomoo_feed.png)",
          "material_tags": [
             "animal_feed",
-            "ostrich_feed_edible",
+            "moomoo_feed_edible",
             "feed_on_ground"
          ],
-         "subject_override": "stonehearth_ace:food:ostrich_feed"
+         "subject_override": "stonehearth_ace:food:moomoo_feed"
       },
       "stonehearth:animal_feed": {
          "calorie_gain": 30,

@@ -376,9 +376,9 @@ function AceFarmerFieldComponent:_update_effective_water_level()
       local size = self._sv.size
       local contents = self._sv.contents
       if relative_level == levels.EXTRA then
-         -- randomly assign ~25% of furrow tiles (min of 1 per furrow column) to have puddles
+         -- randomly assign ~40% of furrow tiles (min of 1 per furrow column) to have puddles
          for x = 2, size.x, 2 do
-            for i = 1, math.max(1, size.y * 0.25) do
+            for i = 1, math.max(1, size.y * 0.4) do
                local y = rng:get_int(1, size.y)
                local plot = contents[x][y]
                if plot then
