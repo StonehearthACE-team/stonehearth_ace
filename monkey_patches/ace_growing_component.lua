@@ -6,7 +6,8 @@ AceGrowingComponent._old_activate = GrowingComponent.activate
 function AceGrowingComponent:activate()
 	local json = radiant.entities.get_json(self)
 	self._preferred_climate = json and json.preferred_climate
-	self._water_affinity = stonehearth.town:get_water_affinity_table(self._preferred_climate)
+   self._water_affinity = stonehearth.town:get_water_affinity_table(self._preferred_climate)
+   self._light_affinity = stonehearth.town:get_light_affinity_table(self._preferred_climate)
    self._flood_period_multiplier = (json and json.flood_period_multiplier) or 2
    --self._flooded_growth_only = (json and json.flooded_growth_only) or false   -- if true, only grow when flooded; otherwise normal
 
@@ -16,6 +17,10 @@ function AceGrowingComponent:activate()
 
    if not self._sv._local_water_modifier then
       self._sv._local_water_modifier = 1
+   end
+
+   if not self._sv._local_light_modifier then
+      self._sv._local_light_modifier = 1
    end
 
    if not self._sv._current_growth_recalculate_progress then
@@ -89,13 +94,34 @@ function AceGrowingComponent:set_water_level(water_level)
 	end
 end
 
+function AceGrowingComponent:set_light_level(light_level)
+	local best_affinity = {min_light = -1, period_multiplier = 1}
+	for _, affinity in ipairs(self._light_affinity) do
+		if light_level >= affinity.min_light and affinity.min_light > best_affinity.min_light then
+			best_affinity = affinity
+		end
+	end
+
+	local multiplier = best_affinity.period_multiplier
+	local prev_modifier = self._sv._local_light_modifier
+	if multiplier ~= prev_modifier then
+		self._sv._local_light_modifier = multiplier
+		self:_recalculate_duration()
+		self.__saved_variables:mark_changed()
+	end
+end
+
 function AceGrowingComponent:is_flooded()
    return self._sv._is_flooded
 end
 
 -- returns the best affinity and then the next one so you can see the range until it would apply (and its effect)
 function AceGrowingComponent:get_best_water_level()
-	return stonehearth.town:get_best_water_level(self._water_affinity)
+	return stonehearth.town:get_best_affinity_level(self._water_affinity)
+end
+
+function AceGrowingComponent:get_best_light_level()
+	return stonehearth.town:get_best_affinity_level(self._light_affinity)
 end
 
 function AceGrowingComponent:modify_custom_growth_time_multiplier(multiplier)
@@ -145,6 +171,10 @@ function AceGrowingComponent:_calculate_growth_period(growth_period)
 
    if self._sv._local_water_modifier then
       scaled_growth_period = scaled_growth_period * self._sv._local_water_modifier
+   end
+
+   if self._sv._local_light_modifier then
+      scaled_growth_period = scaled_growth_period * self._sv._local_light_modifier
    end
 
 	return scaled_growth_period

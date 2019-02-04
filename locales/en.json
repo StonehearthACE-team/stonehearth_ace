@@ -5855,6 +5855,13 @@
                   "min_only": "This crop will grow a little faster with at least <span class='water'><span class='text-value'>[str(i18n_data.min_water_level)]</span> water</span> within its blue outlined region.",
                   "current_level": "This crop currently has <span class='water'><span class='text-value'>[str(i18n_data.current_water_level)]</span> water</span> within its blue outlined region."
                },
+               "light_affinity": {
+                  "property_name": "Sunlight Needs",
+                  "status_name": "Current Sunlight",
+                  "range": "This crop will grow a little faster than normal with <span class='light'><span class='text-value'>[str(i18n_data.min_light_level)] - [str(i18n_data.max_light_level)]</span> daytime sunlight</span>.",
+                  "min_only": "This crop will grow a little faster with at least <span class='light'><span class='text-value'>[str(i18n_data.min_light_level)]</span> daytime sunlight</span>.",
+                  "current_level": "This crop currently experiences <span class='light'><span class='text-value'>[str(i18n_data.current_light_level)]</span> daytime sunlight</span>. This considers both shade and current weather state."
+               },
                "flooded": {
                   "property_name": "Flooding",
                   "status_name": "Flooding",

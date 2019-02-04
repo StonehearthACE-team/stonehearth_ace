@@ -7,6 +7,7 @@ local FarmerFieldComponent = require 'stonehearth.components.farmer_field.farmer
 local AceFarmerFieldComponent = class()
 
 local RECALCULATE_THRESHOLD = 0.5
+local SUNLIGHT_CHECK_TIME = '4h'
 
 AceFarmerFieldComponent._old_restore = FarmerFieldComponent.restore
 function AceFarmerFieldComponent:restore()
@@ -29,6 +30,7 @@ function AceFarmerFieldComponent:post_activate()
    if self._is_restore then
       self:_create_water_listener()
       self:_create_flood_listeners()
+      self:_create_sunlight_timer()
    end
 
    self:_ensure_crop_counts()
@@ -38,11 +40,14 @@ end
 
 function AceFarmerFieldComponent:_ensure_crop_counts()
    -- make sure we're properly tracking fertilized counts and flooded counts
+   local size = self._sv.size
+   local contents = self._sv.contents
+   
    if not self._sv.num_fertilized then
       local num_fertilized = 0
-      for x=1, self._sv.size.x do
-         for y=1, self._sv.size.y do
-            local dirt_plot = self._sv.contents[x][y]
+      for x=1, size.x do
+         for y=1, size.y do
+            local dirt_plot = contents[x][y]
             if dirt_plot and dirt_plot.is_fertilized then
                num_fertilized = num_fertilized + 1
             end
@@ -55,9 +60,9 @@ function AceFarmerFieldComponent:_ensure_crop_counts()
 
    if not self._sv.num_flooded then
       local num_flooded = 0
-      for x=1, self._sv.size.x do
-         for y=1, self._sv.size.y do
-            local dirt_plot = self._sv.contents[x][y]
+      for x=1, size.x do
+         for y=1, size.y do
+            local dirt_plot = contents[x][y]
             if dirt_plot and dirt_plot.contents then
                if dirt_plot.contents:add_component('stonehearth:growing'):is_flooded() then
                   num_flooded = num_flooded + 1
@@ -109,7 +114,9 @@ function AceFarmerFieldComponent:on_field_created(town, size)
    radiant.terrain.place_entity(self._sv._fertilizable_layer, self._location)
    self._sv._queued_overwatered = {}
 
-	self:_create_water_listener()
+   self:_create_water_listener()
+   self:_create_sunlight_timer()
+   self:_check_sunlight()
 end
 
 AceFarmerFieldComponent._old_notify_till_location_finished = FarmerFieldComponent.notify_till_location_finished
@@ -161,6 +168,7 @@ function AceFarmerFieldComponent:plant_crop_at(x_offset, z_offset)
    local growing_comp = crop and crop:add_component('stonehearth:growing')
 	if growing_comp then
       growing_comp:set_water_level(self._sv.water_level or 0)
+      growing_comp:set_light_level(self._sv.sunlight_level or 1)
       self:_create_flood_listener(crop)
       if growing_comp:is_flooded() then
          self._sv.num_flooded = self._sv.num_flooded + 1
@@ -276,6 +284,57 @@ function AceFarmerFieldComponent:_update_crop_fertilized(x, z, fertilized)
    end
 end
 
+function AceFarmerFieldComponent:_create_sunlight_timer()
+   -- periodically check sunlight and adjust growth rates accordingly
+   if self._sunlight_timer then
+      self:_destroy_sunlight_timer()
+   end
+
+   if not self._sv.sunlight_level then
+      self._sv.sunlight_level = 1
+   end
+
+   self._sunlight_timer = stonehearth.calendar:set_interval('farm sunlight check', SUNLIGHT_CHECK_TIME, function()
+      self:_check_sunlight()
+   end)
+end
+
+function AceFarmerFieldComponent:_destroy_sunlight_timer()
+   if self._sunlight_timer then
+		self._sunlight_timer:destroy()
+		self._sunlight_timer = nil
+	end
+end
+
+function AceFarmerFieldComponent:_check_sunlight()
+   -- check the center line of the farm along the z-axis
+   local size = self._sv.size
+   local x = math.floor(size.x / 2)
+   local sun_vis = 0
+   for z = 0, size.y - 1 do
+      sun_vis = sun_vis + stonehearth.terrain:get_sunlight_amount(self._location + Point3(x, 2, z))
+   end
+   sun_vis = sun_vis / size.y
+
+   local weather_sunlight = stonehearth.weather:get_current_weather():get_sunlight()
+   sun_vis = math.floor(100 * sun_vis * weather_sunlight) / 100
+   
+   if sun_vis ~= self._sv.sunlight_level then
+      self._sv.sunlight_level = sun_vis
+      self.__saved_variables:mark_changed()
+
+      local contents = self._sv.contents
+      for x=1, size.x do
+         for y=1, size.y do
+            local dirt_plot = contents[x][y]
+            if dirt_plot and dirt_plot.contents then
+               dirt_plot.contents:add_component('stonehearth:growing'):set_light_level(self._sv.sunlight_level)
+            end
+         end
+      end
+   end
+end
+
 function AceFarmerFieldComponent:_create_water_listener()
 	if self._water_listener then
 		self:_destroy_water_listener()
@@ -335,9 +394,11 @@ function AceFarmerFieldComponent:_on_water_signal_changed(changes)
    self._sv.last_calculated_water_volume = volume
    self.__saved_variables:mark_changed()
 
-	for x=1, self._sv.size.x do
-		for y=1, self._sv.size.y do
-			local dirt_plot = self._sv.contents[x][y]
+   local size = self._sv.size
+   local contents = self._sv.contents
+	for x=1, size.x do
+		for y=1, size.y do
+			local dirt_plot = contents[x][y]
 			if dirt_plot and dirt_plot.contents then
 				dirt_plot.contents:add_component('stonehearth:growing'):set_water_level(self._sv.water_level)
 			end
@@ -428,6 +489,7 @@ function AceFarmerFieldComponent:_on_destroy()
 
    self:_destroy_water_listener()
    self:_destroy_flood_listeners()
+   self:_destroy_sunlight_timer()
 end
 
 AceFarmerFieldComponent._old__reconsider_fields = FarmerFieldComponent._reconsider_fields
