@@ -101,9 +101,9 @@ function AceEvolveComponent:_on_water_signal_changed(changes)
 
    self._sv.last_calculated_water_volume = volume
 	
-	local best_affinity = {min_water = -1, period_multiplier = 1}
+	local best_affinity = {min_level = -1, period_multiplier = 1}
 	for _, affinity in ipairs(self._water_affinity) do
-		if self._sv._water_level >= affinity.min_water and affinity.min_water > best_affinity.min_water then
+		if self._sv._water_level >= affinity.min_level and affinity.min_level > best_affinity.min_level then
 			best_affinity = affinity
 		end
 	end
@@ -128,7 +128,7 @@ function AceEvolveComponent:get_best_water_level()
 	local next_affinity = self._water_affinity[2]
 	for i = 2, self._water_affinity.n do
 		local affinity = self._water_affinity[i]
-		if (self._sv._water_level or 0) >= affinity.min_water and affinity.min_water > best_affinity.min_water then
+		if (self._sv._water_level or 0) >= affinity.min_level and affinity.min_level > best_affinity.min_level then
 			best_affinity = affinity
 			next_affinity = self._water_affinity[i + 1]
 		end
