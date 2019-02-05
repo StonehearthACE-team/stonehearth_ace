@@ -12,6 +12,7 @@ local SUNLIGHT_CHECK_TIME = '4h'
 AceFarmerFieldComponent._old_restore = FarmerFieldComponent.restore
 function AceFarmerFieldComponent:restore()
    self._is_restore = true
+   self._sv.water_level = nil
    
    self:_old_restore()
 
@@ -30,7 +31,7 @@ function AceFarmerFieldComponent:post_activate()
    if self._is_restore then
       self:_create_water_listener()
       self:_create_flood_listeners()
-      self:_create_sunlight_timer()
+      self:_create_climate_listeners()
    end
 
    self:_ensure_crop_counts()
@@ -115,8 +116,8 @@ function AceFarmerFieldComponent:on_field_created(town, size)
    self._sv._queued_overwatered = {}
 
    self:_create_water_listener()
-   self:_create_sunlight_timer()
-   self:_check_sunlight()
+   self:_create_climate_listeners()
+   self:_check_sky_visibility()
 end
 
 AceFarmerFieldComponent._old_notify_till_location_finished = FarmerFieldComponent.notify_till_location_finished
@@ -167,7 +168,7 @@ function AceFarmerFieldComponent:plant_crop_at(x_offset, z_offset)
 
    local growing_comp = crop and crop:add_component('stonehearth:growing')
 	if growing_comp then
-      growing_comp:set_water_level(self._sv.water_level or 0)
+      growing_comp:set_water_level(self._sv._water_level or 0)
       growing_comp:set_light_level(self._sv.sunlight_level or 1)
       self:_create_flood_listener(crop)
       if growing_comp:is_flooded() then
@@ -284,10 +285,10 @@ function AceFarmerFieldComponent:_update_crop_fertilized(x, z, fertilized)
    end
 end
 
-function AceFarmerFieldComponent:_create_sunlight_timer()
+function AceFarmerFieldComponent:_create_climate_listeners()
    -- periodically check sunlight and adjust growth rates accordingly
    if self._sunlight_timer then
-      self:_destroy_sunlight_timer()
+      self:_destroy_climate_listeners()
    end
 
    if not self._sv.sunlight_level then
@@ -300,13 +301,18 @@ function AceFarmerFieldComponent:_create_sunlight_timer()
    end)
    self._weather_sunlight = stonehearth.weather:get_current_weather():get_sunlight()
 
-   self._sunlight_timer = stonehearth.calendar:set_interval('farm sunlight check', SUNLIGHT_CHECK_TIME, function()
-      self:_check_sunlight()
+   self._season_listener = radiant.events.listen(radiant, 'stonehearth:seasons:changed', function()
+      self:_update_season()
    end)
-   self:_check_sunlight()
+   self:_update_season()
+
+   self._sunlight_timer = stonehearth.calendar:set_interval('farm sunlight check', SUNLIGHT_CHECK_TIME, function()
+      self:_check_sky_visibility()
+   end)
+   self:_check_sky_visibility()
 end
 
-function AceFarmerFieldComponent:_destroy_sunlight_timer()
+function AceFarmerFieldComponent:_destroy_climate_listeners()
    if self._sunlight_timer then
 		self._sunlight_timer:destroy()
 		self._sunlight_timer = nil
@@ -315,28 +321,43 @@ function AceFarmerFieldComponent:_destroy_sunlight_timer()
       self._weather_listener:destroy()
       self._weather_listener = nil
    end
+   if self._season_listener then
+      self._season_listener:destroy()
+      self._season_listener = nil
+   end
 end
 
-function AceFarmerFieldComponent:_check_sunlight()
+function AceFarmerFieldComponent:_update_season()
+   local sunlight = stonehearth.seasons:get_current_season().sunlight
+   
+   if sunlight ~= self._season_sunlight then
+      self._season_sunlight = sunlight
+      self:_update_sunlight()
+   end
+end
+
+function AceFarmerFieldComponent:_check_sky_visibility()
    -- check the center line of the farm along the z-axis
    local size = self._sv.size
    local x = math.floor(size.x / 2)
-   local sun_vis = 0
+   local vis = 0
    for z = 0, size.y - 1 do
-      sun_vis = sun_vis + stonehearth.terrain:get_sunlight_amount(self._location + Point3(x, 2, z))
+      vis = vis + stonehearth.terrain:get_sunlight_amount(self._location + Point3(x, 2, z))
    end
+   vis = vis / size.y
 
-   self._terrain_sunlight = sun_vis / size.y
-   
-   self:_update_sunlight()
+   if not self._sky_visibility or math.abs(vis - self._sky_visibility) > 0.001 then
+      self._sky_visibility = vis / size.y
+      self:_update_sunlight()
+   end
 end
 
 function AceFarmerFieldComponent:_update_sunlight()
-   if not self._terrain_sunlight or not self._weather_sunlight then
+   if not self._sky_visibility or not self._weather_sunlight or not self._season_sunlight then
       return
    end
    
-   local sun_vis = math.floor(100 * self._terrain_sunlight * self._weather_sunlight) / 100
+   local sun_vis = math.floor(100 * self._sky_visibility * self._weather_sunlight * self._season_sunlight) / 100
 
    if sun_vis ~= self._sv.sunlight_level then
       self._sv.sunlight_level = sun_vis
@@ -384,9 +405,9 @@ function AceFarmerFieldComponent:_set_water_volume(volume)
       -- we compare that to our current volume to crop ratio
       local ideal_ratio = 4/11
       local this_ratio = volume / (math.ceil(self._sv.size.x/2) * self._sv.size.y)
-      self._sv.water_level = this_ratio / ideal_ratio
+      self._sv._water_level = this_ratio / ideal_ratio
    else
-      self._sv.water_level = 0
+      self._sv._water_level = 0
    end
    self:_update_effective_water_level()
 	self.__saved_variables:mark_changed()
@@ -420,7 +441,7 @@ function AceFarmerFieldComponent:_on_water_signal_changed(changes)
 		for y=1, size.y do
 			local dirt_plot = contents[x][y]
 			if dirt_plot and dirt_plot.contents then
-				dirt_plot.contents:add_component('stonehearth:growing'):set_water_level(self._sv.water_level)
+				dirt_plot.contents:add_component('stonehearth:growing'):set_water_level(self._sv._water_level)
 			end
 		end
 	end
@@ -443,13 +464,13 @@ function AceFarmerFieldComponent:_update_effective_water_level()
    local levels = stonehearth.constants.farming.water_levels
    local relative_level = levels.NONE
 
-   if self._best_water_level and self._sv.water_level >= self._best_water_level.min_level then
-      if not self._next_water_level or self._sv.water_level < self._next_water_level.min_level then
+   if self._best_water_level and self._sv._water_level >= self._best_water_level.min_level then
+      if not self._next_water_level or self._sv._water_level < self._next_water_level.min_level then
          relative_level = levels.PLENTY
       else
          relative_level = levels.EXTRA
       end
-   elseif self._sv.water_level > 0 then
+   elseif self._sv._water_level > 0 then
       relative_level = levels.SOME
    end
 
@@ -509,7 +530,7 @@ function AceFarmerFieldComponent:_on_destroy()
 
    self:_destroy_water_listener()
    self:_destroy_flood_listeners()
-   self:_destroy_sunlight_timer()
+   self:_destroy_climate_listeners()
 end
 
 AceFarmerFieldComponent._old__reconsider_fields = FarmerFieldComponent._reconsider_fields

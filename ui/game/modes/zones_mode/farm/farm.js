@@ -479,7 +479,7 @@ App.StonehearthFarmView.reopen({
       var num_crops = field_sv.num_crops;
       var num_fertilized = field_sv.num_fertilized;
       var num_flooded = field_sv.num_flooded;
-      var current_water_level = field_sv.water_level || 0;
+      var current_water_level = field_sv.last_calculated_water_volume || 0;
       var size_mult = self._getSizeMult(size);
       var effective_water_level = field_sv.effective_water_level;
       var current_light_level = field_sv.sunlight_level

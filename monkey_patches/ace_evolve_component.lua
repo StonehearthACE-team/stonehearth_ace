@@ -32,6 +32,8 @@ function AceEvolveComponent:activate()
    self._preferred_climate = self._json.preferred_climate
    -- determine the "reach" of water detection from json; otherwise just expand 1 outwards and downwards from collision region
    self._water_reach = self._json.water_reach or 1
+
+   self:_create_request_listeners()
 end
 
 function AceEvolveComponent:post_activate()
@@ -49,11 +51,54 @@ function AceEvolveComponent:destroy()
    self:_old_destroy()
    
    self:_destroy_effect()
+   self:_destroy_request_listeners()
 end
 
 function AceEvolveComponent:set_check_evolve_script(path)
    self._evolve_check_script = path
    self.__saved_variables:mark_changed()
+end
+
+function AceEvolveComponent:_create_request_listeners()
+   self:_destroy_request_listeners()
+   
+   if self._evolve_data.request_action then
+      if self._evolve_data.auto_request then
+         self._added_to_world_listener = self._entity:add_component('mob'):trace_parent('evolve entity added or removed', _radiant.dm.TraceCategories.SYNC_TRACE)
+            :on_changed(function(parent)
+               if parent then
+                  self:request_evolve(self._entity:get_player_id())
+               end
+            end)
+      end
+
+      self._task_requested_listener = radiant.events.listen(self._entity, 'stonehearth_ace:task_tracker:task_requested', function()
+         self:_refresh_attention_effect()
+      end)
+
+      self._task_canceled_listener = radiant.events.listen(self._entity, 'stonehearth_ace:task_tracker:task_canceled', function()
+         self:_refresh_attention_effect()
+      end)
+
+      self:_refresh_attention_effect()
+   end
+end
+
+function AceEvolveComponent:_destroy_request_listeners()
+   if self._added_to_world_listener then
+      self._added_to_world_listener:destroy()
+      self._added_to_world_listener = nil
+   end
+
+   if self._task_requested_listener then
+      self._task_requested_listener:destroy()
+      self._task_requested_listener = nil
+   end
+
+   if self._task_canceled_listener then
+      self._task_canceled_listener:destroy()
+      self._task_canceled_listener = nil
+   end
 end
 
 function AceEvolveComponent:_create_water_signal()
@@ -120,21 +165,7 @@ end
 
 -- returns the best affinity and then the next one so you can see the range until it would apply (and its effect)
 function AceEvolveComponent:get_best_water_level()
-	if not next(self._water_affinity) then
-		return nil
-	end
-
-	local best_affinity = self._water_affinity[1]
-	local next_affinity = self._water_affinity[2]
-	for i = 2, self._water_affinity.n do
-		local affinity = self._water_affinity[i]
-		if (self._sv._water_level or 0) >= affinity.min_level and affinity.min_level > best_affinity.min_level then
-			best_affinity = affinity
-			next_affinity = self._water_affinity[i + 1]
-		end
-	end
-
-	return best_affinity, next_affinity
+   return stonehearth.town:get_best_affinity_level(self._water_affinity)
 end
 
 AceEvolveComponent._old_evolve = EvolveComponent.evolve
@@ -215,6 +246,17 @@ function AceEvolveComponent:evolve()
       local evolve_effect = self._evolve_data.evolve_effect
       if evolve_effect then
          radiant.effects.run_effect(evolved_form, evolve_effect)
+      end
+
+      if self._evolve_data.auto_harvest then
+         local renewable_resource_node = evolved_form:get_component('stonehearth:renewable_resource_node')
+         local resource_node = evolved_form:get_component('stonehearth:resource_node')
+
+         if renewable_resource_node and renewable_resource_node:is_harvestable() then
+            renewable_resource_node:request_harvest(self._entity:get_player_id())
+         elseif resource_node then
+            resource_node:request_harvest(self._entity:get_player_id())
+         end
       end
    end
 
@@ -300,7 +342,7 @@ function AceEvolveComponent:_set_quality(item, source)
 end
 
 function AceEvolveComponent:request_evolve(player_id)
-   local data = radiant.entities.get_entity_data(self._entity, 'stonehearth:evolve_data')
+   local data = self._evolve_data
    if not data then
       return false
    end
@@ -313,11 +355,13 @@ function AceEvolveComponent:request_evolve(player_id)
 
    if data.request_action then
       local task_tracker_component = self._entity:add_component('stonehearth:task_tracker')
-      if task_tracker_component:is_activity_requested(data.request_action) then
-         return false -- If someone has requested to evolve already
-      end
+      local was_requested = task_tracker_component:is_activity_requested(data.request_action)
 
       task_tracker_component:cancel_current_task(false) -- cancel current task first and force the evolve request
+
+      if was_requested then
+         return false -- If someone had already requested to evolve, just cancel the request and exit out
+      end
 
       local category = 'evolve'  --data.category or 
       local success = task_tracker_component:request_task(player_id, category, data.request_action, data.request_action_overlay_effect)
@@ -330,9 +374,8 @@ end
 
 -- this function gets called directly by request_evolve unless a request_action is specified
 -- if such an action is specified, this function should be called as part of that AI action
--- if there's an effect that the AI entity should perform during this, it will be returned by this function
 function AceEvolveComponent:perform_evolve(use_finish_cb)
-   local data = radiant.entities.get_entity_data(self._entity, 'stonehearth:evolve_data')
+   local data = self._evolve_data
    if not data then
       return false
    end
@@ -361,6 +404,26 @@ function AceEvolveComponent:_destroy_effect()
       self._effect:set_finished_cb(nil)
                   :stop()
       self._effect = nil
+   end
+end
+
+function AceEvolveComponent:_refresh_attention_effect()
+   local data = self._evolve_data
+   if not data or not data.request_action then
+      return
+   end
+   
+   local task_tracker_component = self._entity:get_component('stonehearth:task_tracker')
+   local needs_effect = not task_tracker_component or not task_tracker_component:has_any_task()
+   local has_effect = self._attention_effect ~= nil
+   if needs_effect ~= has_effect then
+      if needs_effect then
+         self._attention_effect = radiant.effects.run_effect(self._entity, 'stonehearth_ace:effects:evolve_action_available_overlay_effect',
+               nil, nil, { playerColor = radiant.entities.get_player_color(self._entity) })
+      else
+         self._attention_effect:stop()
+         self._attention_effect = nil
+      end
    end
 end
 
