@@ -1762,6 +1762,11 @@
                "description": "A nutritious supplement for ostriches. Improves the quality of animal produce.",
                "flavor": ""
             },
+            "moomoo_feed_recipe": {
+               "recipe_name": "Moo-Moo Feed",
+               "description": "Tasty and hearty food appreciated by large ruminants. Improves the quality of animal produce.",
+               "flavor": ""
+            },
             "kibble_recipe": {
                "recipe_name": "Kibble",
                "description": "Bake nutritious and crunchy rations for pets. Exclusively vegetarian animals will not eat this kibble.",
@@ -1795,6 +1800,14 @@
                "display_name": "Pumpkin Cauldron",
                "description": "An exotic cauldron used by the Cook for delicious recipes."
             }
+         },
+         "cook_cheese_vat_empty": {
+            "display_name": "Empty Cheese Vat",
+            "description": "Used by the Cook to make cheese with Curdling Mixtures. The longer it rests, the better the cheese!"
+         },
+         "cook_cheese_vat_filled": {
+            "display_name": "i18n(stonehearth_ace:jobs.cook.cook_cheese_vat_filled.display_name)",
+            "description": "i18n(stonehearth_ace:jobs.cook.cook_cheese_vat_filled.description)"
          }
       },
       "carpenter": {
@@ -4269,6 +4282,35 @@
                "display_name": "Moo-Moo Feed",
                "description": "Tasty and hearty food appreciated by large ruminants."
             }
+         },
+         "dairy": {
+            "cheese_fresh": {
+               "cheese_fresh": {
+                  "display_name": "Fresh Cheese",
+                  "description": "Soft, moist and delicious! This cheese will go bad after some time if not eaten."
+               },
+               "cheese_fresh_serving": {
+                  "display_name": "Slice of Fresh Cheese"
+               }
+            },
+            "cheese_mild": {
+               "cheese_mild": {
+                  "display_name": "Mild Cheese",
+                  "description": "A nice texture and a bold flavor. This cheese lasts a good time before going bad."
+               },
+               "cheese_mild_serving": {
+                  "display_name": "Slice of Mild Cheese"
+               }
+            },
+            "cheese_aged": {
+               "cheese_aged_serving": {
+                  "display_name": "Slice of Aged Cheese"
+               },
+               "cheese_aged": {
+                  "display_name": "Aged Cheese",
+                  "description": "Firm, strong and full of flavor! This cheese won't go bad."
+               }
+            }
          }
       },
       "terrain": {
@@ -5923,8 +5965,10 @@
                "harvest_grass": "Harvest Grass",
                "harvest_grass_description": "Automatically harvest any grass that grows in the pasture.",
                "ostrich_pasture_name": "Ostrich Enclosure",
+               "moomoo_pasture_name": "Moo-Moo Herd",
                "ostrich_pasture_description": "These exotic birds produce delicious large eggs and can be slaughtered for large poultry, jerky, feathers and bone",
-               "sheep_pasture_description": "Sheep produce wool, a good fiber with many uses. Slaughtering sheep will produce raw mutton, jerky, and bone",
+               "sheep_pasture_description": "Sheep produce wool and, seldom, some milk. Slaughtering sheep will produce raw mutton, jerky, and bone",
+               "moomoo_pasture_description": "Moo-moos eat a lot but will produce nice amounts of milk. Slaughtering them yields pelts, steak, jerky and bone.",
                "rabbit_pasture_description": "Rabbits reproduce quickly and can be slaughtered for jerky, pelts and sometimes bone",
                "poyo_pasture_description": "Poyos lay eggs, a fine cooking ingredient. Slaughtering poyo will yield meat and, occasionally, feathers and bone"
             }
@@ -6111,6 +6155,13 @@
          "water_pump": {
             "display_name": "Water Pump",
             "description": "When enabled, pumps water from its bottom and out its top."
+         }
+      }
+   },
+   "food": {
+      "food_decay": {
+         "cheese": {
+            "description": "This cheese is starting to... Smell cheesy. Better eat it soon."
          }
       }
    }
