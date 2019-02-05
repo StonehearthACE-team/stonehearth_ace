@@ -479,7 +479,7 @@ App.StonehearthFarmView.reopen({
       var num_crops = field_sv.num_crops;
       var num_fertilized = field_sv.num_fertilized;
       var num_flooded = field_sv.num_flooded;
-      var current_water_level = field_sv.water_level || 0;
+      var current_water_level = field_sv.last_set_water_level || 0;
       var size_mult = self._getSizeMult(size);
       var effective_water_level = field_sv.effective_water_level;
       var current_light_level = field_sv.sunlight_level
@@ -530,7 +530,11 @@ App.StonehearthFarmView.reopen({
 
       var currentWaterLevel = {
          name: 'currentWaterLevel',
-         icon: self._getWaterIcon(current_water_level),
+         icon: self._getWaterIcon(current_water_level,
+            {
+               min: self._waterAffinities.best_affinity.min_level,
+               max: self._waterAffinities.next_affinity && self._waterAffinities.next_affinity.min_level
+            }),
          status: status,
          tooltipTitle: localizations.water_affinity.status_name,
          tooltip: localizations.water_affinity.current_level,
@@ -739,9 +743,11 @@ App.StonehearthFarmView.reopen({
       return self._IMAGES_DIR + 'property_sunlight_' + self._getAffinityLevel(self._LIGHT_LEVEL_ICONS, value) + '.png';
    },
 
-   _getWaterIcon: function(value) {
+   _getWaterIcon: function(value, affinity) {
       var self = this;
-      return self._IMAGES_DIR + 'property_water_' + self._getAffinityLevel(self._WATER_LEVEL_ICONS, value) + '.png';
+      var icon = affinity == null ?
+            self._getAffinityLevel(self._WATER_LEVEL_ICONS, value) : self._getRelativeAffinityLevel(self._WATER_LEVEL_ICONS, value, affinity);
+      return self._IMAGES_DIR + 'property_water_' + icon + '.png';
    },
 
    _getAffinityLevel: function(table, value) {
@@ -761,6 +767,24 @@ App.StonehearthFarmView.reopen({
       }
 
       return level;
+   },
+
+   _getRelativeAffinityLevel: function(table, value, affinity) {
+      if (value == 0) {
+         return table.NONE;
+      }
+      else if (value < affinity.min) {
+         return table.LOW;
+      }
+      else if (affinity.max && value > affinity.max) {
+         return table.VERY_HIGH;
+      }
+      else if (affinity.max) {
+         return table.HIGH;
+      }
+      else {
+         return table.MEDIUM;
+      }
    },
 
    _getBestAffinityRange: function(table) {

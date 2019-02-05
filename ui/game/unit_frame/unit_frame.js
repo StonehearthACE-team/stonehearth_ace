@@ -101,5 +101,38 @@ App.StonehearthUnitFrameView.reopen({
             i18n.t('stonehearth_ace:ui.game.unit_frame.show_promotion_tree.tooltip_title'),
             i18n.t('stonehearth_ace:ui.game.unit_frame.show_promotion_tree.tooltip_description'));
       }
+   }.observes('model.uri'),
+
+   _updateDisplayNameAndDescription: function() {
+      var alias = this.get('model.uri');
+      this.set('entityWithNonworkerJob', false);
+
+      var description = this.get('model.stonehearth:unit_info.description');
+      if (this.get('model.stonehearth:job') && !this.get('model.stonehearth:job.curr_job_controller.no_levels') && this.get('model.stonehearth:job.curr_job_name') !== '') {
+         this.set('entityWithNonworkerJob', true);
+         this.$('#Lvl').text( i18n.t('stonehearth:ui.game.unit_frame.Lvl'));
+      }
+
+      var display_name = this.get('model.stonehearth:unit_info.display_name');
+      var custom_name = this.get('model.stonehearth:unit_info.custom_name');
+      if (alias) {
+         var catalogData = App.catalog.getCatalogData(alias);
+         if (!catalogData) {
+            console.log("no catalog data found for " + alias);
+         } else {
+            if (!display_name || !custom_name) {
+               display_name = catalogData.display_name;
+            }
+
+            if (!description) {
+               description = catalogData.description;
+            }
+         }
+      }
+
+      this.set('display_name', display_name);
+      this.notifyPropertyChange('display_name');
+      this.set('description', description);
+      this.notifyPropertyChange('description');
    }.observes('model.uri')
 });

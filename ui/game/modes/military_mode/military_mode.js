@@ -35,6 +35,10 @@ App.AceMilitaryModeView = App.View.extend({
       }
    },
 
+   patrolBannerTraceStructure: {
+      'stonehearth:unit_info': {}
+   },
+
    selectedParty: 'party_1',
    selectedBanner: null,
    patrolBannersArray: [],
@@ -67,7 +71,18 @@ App.AceMilitaryModeView = App.View.extend({
 
       self.$().off('click');
 
+      self._destroyBannerTraces();
+
       self._super();
+   },
+
+   _destroyBannerTraces: function() {
+      var self = this;
+      
+      radiant.each(self._bannerTraces, function (k, v) {
+         v.destroy();
+      });
+      self._bannerTraces = {};
    },
 
    didInsertElement: function () {
@@ -97,6 +112,8 @@ App.AceMilitaryModeView = App.View.extend({
          self.hide();
       });
 
+      self._bannerTraces = {};
+
       radiant.call('stonehearth_ace:get_patrol_banners_command')
       .done(function (response) {
          if (self.isDestroying || self.isDestroyed) {
@@ -125,6 +142,10 @@ App.AceMilitaryModeView = App.View.extend({
          });
       });
 
+      $(top).on("radiant_selection_changed.unit_frame", function (_, e) {
+         self._onEntitySelected(e);
+      });
+
       self.hide();
    },
 
@@ -145,7 +166,7 @@ App.AceMilitaryModeView = App.View.extend({
             if (found) return;
             radiant.each(banners, function(id, banner) {
                if (found) return;
-               if (banner.entity == e.selected_entity) {
+               if (banner.entity_id == e.selected_entity) {
                   found = true;
                   self.selectedEntity = banner;
                   //self.selectedEntityId = banner.id;
@@ -186,30 +207,42 @@ App.AceMilitaryModeView = App.View.extend({
    _updateData: function(data) {
       var self = this;
 
-      var partyBanners = {};
+      self._destroyBannerTraces();
+
+      self.allPartyBanners = {};
       radiant.each(data.patrol_banners, function(id, banner) {
-         var ui = banner['stonehearth:unit_info'];
          var pb = banner['stonehearth_ace:patrol_banner'];
          var catalogData = App.catalog.getCatalogData(banner.uri);
          var party = pb.party_id;
 
-         if (!partyBanners[party]) {
-            partyBanners[party] = {};
+         if (!self.allPartyBanners[party]) {
+            self.allPartyBanners[party] = {};
          }
          
-         partyBanners[party][id] = {
+         self.allPartyBanners[party][id] = {
             'id': id,
-            'entity': banner.__self,
+            'entity': banner,
+            'entity_id': banner.__self,
             'partyId': party,
             'prevBanner': pb.prev_banner,
             'nextBanner': pb.next_banner,
             'distance': pb.distance_to_next_banner && Math.round(pb.distance_to_next_banner),
-            'name': (ui && ui.display_name) || catalogData.display_name,
+            'catalog_name': catalogData.display_name,
             'icon': catalogData.icon
          };
+/*
+         self._bannerTraces[id] = self.radiantTrace.traceUri(banner.__self, self.patrolBannerTraceStructure)
+            .progress(function (entity) {
+               if (self.isDestroying || self.isDestroyed) {
+                  return;
+               }
+               var ui = entity['stonehearth:unit_info'];
+               var bannerRef = self.allPartyBanners[party][id];
+               bannerRef.entity = entity;
+               bannerRef.name = ui && ui.display_name || bannerRef.catalog_name;
+               self._updateView();
+            }); */
       });
-
-      self.allPartyBanners = partyBanners;
 
       var ordered = {};
       radiant.each(data.ordered_banners_by_party, function(party, banners) {
@@ -236,9 +269,10 @@ App.AceMilitaryModeView = App.View.extend({
          banners.push({
             'id': id,
             'entity': entity.entity,
+            'entity_id': entity.entity_id,
             'nextBanner': entity.nextBanner,
             'distance': entity.distance,
-            'name': entity.name,
+            'catalog_name': entity.catalog_name,
             'icon': entity.icon
          });
       });
@@ -273,13 +307,13 @@ App.AceMilitaryModeView = App.View.extend({
             row.addClass('selected');
 
             if (userClicked) {
-               radiant.call('stonehearth:select_entity', entity.entity);
+               radiant.call('stonehearth:select_entity', entity.entity_id);
                radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:ui:start_menu:focus' });
             }
          }
          else if (userClicked) {
             // if it's already selected, focus the camera on it
-            radiant.call('stonehearth:camera_look_at_entity', entity.entity);
+            radiant.call('stonehearth:camera_look_at_entity', entity.entity_id);
          }
       }
       else {
@@ -304,12 +338,12 @@ App.AceMilitaryModeView = App.View.extend({
             var patrolBanners = self.get('patrolBannersArray');
             
             if (selectedBanner) {
-               prevBanner = selectedBanner.entity;
+               prevBanner = selectedBanner.entity_id;
                nextBanner = selectedBanner.nextBanner;
             }
             else if (patrolBanners.length > 0) {
-               prevBanner = patrolBanners[patrolBanners.length - 1].entity;
-               nextBanner = patrolBanners[0].entity;
+               prevBanner = patrolBanners[patrolBanners.length - 1].entity_id;
+               nextBanner = patrolBanners[0].entity_id;
             }
          }
 
@@ -334,7 +368,7 @@ App.AceMilitaryModeView = App.View.extend({
          var self = this;
          var selectedBanner = self.get('selectedBanner');
          if (selectedBanner) {
-            radiant.call('stonehearth_ace:swap_patrol_banners_order_command', selectedBanner.entity);
+            radiant.call('stonehearth_ace:swap_patrol_banners_order_command', selectedBanner.entity_id);
          }
       }
    }
