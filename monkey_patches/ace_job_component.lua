@@ -2,17 +2,17 @@ local JobComponent = require 'stonehearth.components.job.job_component'
 
 local AceJobComponent = class()
 
-AceJobComponent._old_activate = JobComponent.activate
+AceJobComponent._ace_old_activate = JobComponent.activate
 function AceJobComponent:activate(value, add_curiosity_addition)
-	self:_old_activate(value, add_curiosity_addition)
+	self:_ace_old_activate(value, add_curiosity_addition)
 
 	self._max_level_from_training = 3
 	self._training_performed_listener = radiant.events.listen(self._entity, 'stonehearth_ace:training_performed', self, self._on_training_performed)
 end
 
-AceJobComponent._old_destroy = JobComponent.destroy
+AceJobComponent._ace_old_destroy = JobComponent.destroy
 function AceJobComponent:destroy(value, add_curiosity_addition)
-	self:_old_destroy(value, add_curiosity_addition)
+	self:_ace_old_destroy(value, add_curiosity_addition)
 
 	if self._training_performed_listener then
 		self._training_performed_listener:destroy()
@@ -83,9 +83,9 @@ function AceJobComponent:add_exp(value, add_curiosity_addition, options)
    radiant.events.trigger(self._entity, 'stonehearth_ace:on_add_exp', { value = value, add_curiosity_addition = add_curiosity_addition, prevent_level_up = prevent_level_up })
 end
 
-AceJobComponent._old_level_up = JobComponent.level_up
+AceJobComponent._ace_old_level_up = JobComponent.level_up
 function AceJobComponent:level_up(skip_visual_effects)
-	self:_old_level_up(skip_visual_effects)
+	self:_ace_old_level_up(skip_visual_effects)
 
 	-- remove the training toggle command if we reach max level
 	if not self:is_trainable() then
@@ -95,16 +95,16 @@ function AceJobComponent:level_up(skip_visual_effects)
 	radiant.events.trigger(self._entity, 'stonehearth_ace:on_level_up', { skip_visual_effects = skip_visual_effects })
 end
 
-AceJobComponent._old__on_job_json_changed = JobComponent._on_job_json_changed
+AceJobComponent._ace_old__on_job_json_changed = JobComponent._on_job_json_changed
 function AceJobComponent:_on_job_json_changed()
-	self:_old__on_job_json_changed()
+	self:_ace_old__on_job_json_changed()
 
 	radiant.events.trigger(self._entity, 'stonehearth_ace:on_job_json_changed')
 end
 
-AceJobComponent._old_promote_to = JobComponent.promote_to
+AceJobComponent._ace_old_promote_to = JobComponent.promote_to
 function AceJobComponent:promote_to(job_uri, options)
-	self:_old_promote_to(job_uri, options)
+	self:_ace_old_promote_to(job_uri, options)
 
 	-- add the training toggle command if not max level
 	if self:is_trainable() then
@@ -120,9 +120,9 @@ function AceJobComponent:promote_to(job_uri, options)
 	radiant.events.trigger(self._entity, 'stonehearth_ace:on_promote', { job_uri = job_uri, options = options })
 end
 
-AceJobComponent._old_demote = JobComponent.demote
+AceJobComponent._ace_old_demote = JobComponent.demote
 function AceJobComponent:demote(old_job_json, dont_drop_talisman)
-	self:_old_demote(old_job_json, dont_drop_talisman)
+	self:_ace_old_demote(old_job_json, dont_drop_talisman)
 
 	-- remove the training toggle command if it exists
 	if self:is_combat_job() then

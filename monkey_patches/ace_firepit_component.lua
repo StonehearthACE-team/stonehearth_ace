@@ -9,7 +9,7 @@ function AceFirepitComponent:get_fuel_material()
    return 'low_fuel'
 end
 
-AceFirepitComponent._old_activate = FirepitComponent.activate
+AceFirepitComponent._ace_old_activate = FirepitComponent.activate
 function AceFirepitComponent:activate()
    self._json = radiant.entities.get_json(self) or {}
    self._ember_uri = self._json.ember_uri or EMBER_URI
@@ -19,12 +19,12 @@ function AceFirepitComponent:activate()
    self._transform_residue_time = self._json.transform_residue_time or 'midday'
    self._transform_residue_jitter = '+' .. (self._json.transform_residue_jitter or '2h')
 
-   self:_old_activate()
+   self:_ace_old_activate()
 end
 
-AceFirepitComponent._old_startup = FirepitComponent._startup
+AceFirepitComponent._ace_old_startup = FirepitComponent._startup
 function AceFirepitComponent:_startup()
-   self:_old_startup()
+   self:_ace_old_startup()
 
    if not self._transform_residue_timer then
       local calendar_constants = stonehearth.calendar:get_constants()
@@ -37,14 +37,14 @@ function AceFirepitComponent:_startup()
    end
 end
 
-AceFirepitComponent._old_shutdown = FirepitComponent._shutdown
+AceFirepitComponent._ace_old_shutdown = FirepitComponent._shutdown
 function AceFirepitComponent:_shutdown()
    if self._transform_residue_timer then
       self._transform_residue_timer:destroy()
       self._transform_residue_timer = nil
    end
    
-   self:_old_shutdown()
+   self:_ace_old_shutdown()
 
 end
 
@@ -75,7 +75,7 @@ function AceFirepitComponent:_transform_residue()
    end
 end
 
-AceFirepitComponent._old_extinguish = FirepitComponent._extinguish
+AceFirepitComponent._ace_old_extinguish = FirepitComponent._extinguish
 function AceFirepitComponent:_extinguish()
    local was_lit = self:is_lit()
    local ec = self._entity:add_component('entity_container')
@@ -92,7 +92,7 @@ function AceFirepitComponent:_extinguish()
       end
    end
    
-   self:_old_extinguish()
+   self:_ace_old_extinguish()
 
    if was_lit then
       if is_wood then

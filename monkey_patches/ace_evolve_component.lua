@@ -10,9 +10,9 @@ local AceEvolveComponent = class()
 
 local RECALCULATE_THRESHOLD = 0.5
 
-AceEvolveComponent._old_initialize = EvolveComponent.initialize
+AceEvolveComponent._ace_old_initialize = EvolveComponent.initialize
 function AceEvolveComponent:initialize()
-	self:_old_initialize()
+	self:_ace_old_initialize()
 
 	self._sv._local_water_modifier = 1
 	-- would need to set up a child entity with its own water component for detecting flooding in a smaller region
@@ -22,9 +22,9 @@ function AceEvolveComponent:initialize()
 	self.__saved_variables:mark_changed()
 end
 
-AceEvolveComponent._old_activate = EvolveComponent.activate
+AceEvolveComponent._ace_old_activate = EvolveComponent.activate
 function AceEvolveComponent:activate()
-	self:_old_activate()
+	self:_ace_old_activate()
 
    -- allow for additional checks for whether evolve should happen by specifying a script in the json
    self._json = radiant.entities.get_json(self) or {}
@@ -46,9 +46,9 @@ function AceEvolveComponent:post_activate()
    end
 end
 
-AceEvolveComponent._old_destroy = EvolveComponent.destroy
+AceEvolveComponent._ace_old_destroy = EvolveComponent.destroy
 function AceEvolveComponent:destroy()
-   self:_old_destroy()
+   self:_ace_old_destroy()
    
    self:_destroy_effect()
    self:_destroy_request_listeners()
@@ -72,6 +72,7 @@ function AceEvolveComponent:_create_request_listeners()
             end)
       end
 
+      --[[
       self._task_requested_listener = radiant.events.listen(self._entity, 'stonehearth_ace:task_tracker:task_requested', function()
          self:_refresh_attention_effect()
       end)
@@ -81,6 +82,7 @@ function AceEvolveComponent:_create_request_listeners()
       end)
 
       self:_refresh_attention_effect()
+      ]]
    end
 end
 
@@ -90,6 +92,7 @@ function AceEvolveComponent:_destroy_request_listeners()
       self._added_to_world_listener = nil
    end
 
+   --[[
    if self._task_requested_listener then
       self._task_requested_listener:destroy()
       self._task_requested_listener = nil
@@ -99,6 +102,7 @@ function AceEvolveComponent:_destroy_request_listeners()
       self._task_canceled_listener:destroy()
       self._task_canceled_listener = nil
    end
+   ]]
 end
 
 function AceEvolveComponent:_create_water_signal()
@@ -168,7 +172,7 @@ function AceEvolveComponent:get_best_water_level()
    return stonehearth.town:get_best_affinity_level(self._water_affinity)
 end
 
-AceEvolveComponent._old_evolve = EvolveComponent.evolve
+AceEvolveComponent._ace_old_evolve = EvolveComponent.evolve
 function AceEvolveComponent:evolve()
    if self._evolve_check_script then
       local script = radiant.mods.require(self._evolve_check_script)
@@ -407,6 +411,7 @@ function AceEvolveComponent:_destroy_effect()
    end
 end
 
+--[[
 function AceEvolveComponent:_refresh_attention_effect()
    local data = self._evolve_data
    if not data or not data.request_action then
@@ -426,5 +431,6 @@ function AceEvolveComponent:_refresh_attention_effect()
       end
    end
 end
+]]
 
 return AceEvolveComponent

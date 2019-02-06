@@ -1,7 +1,7 @@
 local Town = require 'stonehearth.services.server.town.town'
 local AceTown = class()
 
-AceTown._old__requirements_met = Town._requirements_met
+AceTown._ace_old__requirements_met = Town._requirements_met
 function AceTown:_requirements_met(person, job_uri)
    local job_component = person:get_component('stonehearth:job')
    local player_id = radiant.entities.get_player_id(person)

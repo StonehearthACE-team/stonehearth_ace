@@ -3,9 +3,9 @@ local Point3 = _radiant.csg.Point3
 local PartyComponent = radiant.mods.require('stonehearth.components.party.party_component')
 local AcePartyComponent = class()
 
-AcePartyComponent._old__initialize_party = PartyComponent._initialize_party
+AcePartyComponent._ace_old__initialize_party = PartyComponent._initialize_party
 function AcePartyComponent:_initialize_party()
-   self:_old__initialize_party()
+   self:_ace_old__initialize_party()
    self:_update_manage_party_command()
 end
 
@@ -19,9 +19,9 @@ function AcePartyComponent:_update_manage_party_command()
    end
 end
 
-AcePartyComponent._old_set_banner_variant = PartyComponent.set_banner_variant
+AcePartyComponent._ace_old_set_banner_variant = PartyComponent.set_banner_variant
 function AcePartyComponent:set_banner_variant(variant)
-   self:_old_set_banner_variant(variant)
+   self:_ace_old_set_banner_variant(variant)
    self:_update_manage_party_command()
 end
 

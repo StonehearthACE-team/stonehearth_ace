@@ -11,7 +11,7 @@ local AceFarmerFieldRenderer = class()
 
 local log = radiant.log.create_logger('farmer_field.renderer')
 
-AceFarmerFieldRenderer._old_initialize = FarmerFieldRenderer.initialize
+AceFarmerFieldRenderer._ace_old_initialize = FarmerFieldRenderer.initialize
 function AceFarmerFieldRenderer:initialize(render_entity, datastore)
    self._water_color = Color4(constants.hydrology.DEFAULT_WATER_COLOR)
 
@@ -21,15 +21,15 @@ function AceFarmerFieldRenderer:initialize(render_entity, datastore)
    self._fertilized_nodes = {}
    self._fertilized_zone_renderer = ZoneRenderer(render_entity)
    
-   self:_old_initialize(render_entity, datastore)
+   self:_ace_old_initialize(render_entity, datastore)
 
    self._ui_view_mode = stonehearth.renderer:get_ui_mode()
    self._ui_mode_listener = radiant.events.listen(radiant, 'stonehearth:ui_mode_changed', self, self._on_ui_mode_changed)
 end
 
-AceFarmerFieldRenderer._old_destroy = FarmerFieldRenderer.destroy
+AceFarmerFieldRenderer._ace_old_destroy = FarmerFieldRenderer.destroy
 function AceFarmerFieldRenderer:destroy()
-   self:_old_destroy()
+   self:_ace_old_destroy()
 
    if self._ui_mode_listener then
       self._ui_mode_listener:destroy()

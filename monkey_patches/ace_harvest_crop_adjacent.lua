@@ -5,12 +5,12 @@ local item_quality_lib = require 'stonehearth_ace.lib.item_quality.item_quality_
 local HarvestCropAdjacent = require 'stonehearth.ai.actions.harvest_crop_adjacent'
 local AceHarvestCropAdjacent = class()
 
-AceHarvestCropAdjacent._old_start_thinking = HarvestCropAdjacent.start_thinking
+AceHarvestCropAdjacent._ace_old_start_thinking = HarvestCropAdjacent.start_thinking
 function AceHarvestCropAdjacent:start_thinking(ai, entity, args)
    self._farmer_field = args.field_layer:get_component('stonehearth:farmer_field_layer')
                                     :get_farmer_field()
 
-   self:_old_start_thinking(ai, entity, args)
+   self:_ace_old_start_thinking(ai, entity, args)
 end
 
 function AceHarvestCropAdjacent:_harvest_one_time(ai, entity)
@@ -81,18 +81,18 @@ function AceHarvestCropAdjacent:_harvest_one_time(ai, entity)
    return true
 end
 
-AceHarvestCropAdjacent._old__unreserve_location = HarvestCropAdjacent._unreserve_location
+AceHarvestCropAdjacent._ace_old__unreserve_location = HarvestCropAdjacent._unreserve_location
 function AceHarvestCropAdjacent:_unreserve_location()
    if self._location then
       self._farmer_field:notify_crop_harvested(self._location)
    end
 
-   self:_old__unreserve_location()
+   self:_ace_old__unreserve_location()
 end
 
-AceHarvestCropAdjacent._old__get_num_to_increment = HarvestCropAdjacent._get_num_to_increment
+AceHarvestCropAdjacent._ace_old__get_num_to_increment = HarvestCropAdjacent._get_num_to_increment
 function AceHarvestCropAdjacent:_get_num_to_increment(entity)
-   local num_to_spawn = self:_old__get_num_to_increment(entity)
+   local num_to_spawn = self:_ace_old__get_num_to_increment(entity)
 
    local job_component = entity:get_component('stonehearth:job')
    if job_component then

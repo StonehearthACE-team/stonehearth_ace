@@ -18,7 +18,7 @@ function AceSubterraneanViewService:terrain_slice_buildings_setting_changed()
    end
 end
 
-AceSubterraneanViewService._old__calculate_visibility = SubterraneanViewService._calculate_visible
+AceSubterraneanViewService._ace_old__calculate_visibility = SubterraneanViewService._calculate_visible
 function AceSubterraneanViewService:_calculate_visible(entity, ignore_entities, terrain_slice_buildings)
    local call_old
    if ignore_entities then
@@ -31,7 +31,7 @@ function AceSubterraneanViewService:_calculate_visible(entity, ignore_entities, 
    end
 
    if call_old then
-      return self:_old__calculate_visibility(entity, ignore_entities)
+      return self:_ace_old__calculate_visibility(entity, ignore_entities)
    end
    
    local mob = entity:get_component('mob')

@@ -4,9 +4,9 @@ local Entity = _radiant.om.Entity
 local PlantFieldAdjacent = require 'stonehearth.ai.actions.plant_field_adjacent_action'
 local AcePlantFieldAdjacent = class()
 
-AcePlantFieldAdjacent._old__plant_at_current_location = PlantFieldAdjacent._plant_at_current_location
+AcePlantFieldAdjacent._ace_old__plant_at_current_location = PlantFieldAdjacent._plant_at_current_location
 function AcePlantFieldAdjacent:_plant_at_current_location()
-   self:_old__plant_at_current_location()
+   self:_ace_old__plant_at_current_location()
 
    if self._location then
       local job_component = self._entity:get_component('stonehearth:job')

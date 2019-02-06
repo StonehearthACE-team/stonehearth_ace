@@ -9,12 +9,12 @@ local AceFarmerFieldComponent = class()
 local RECALCULATE_THRESHOLD = 0.04
 local SUNLIGHT_CHECK_TIME = '4h'
 
-AceFarmerFieldComponent._old_restore = FarmerFieldComponent.restore
+AceFarmerFieldComponent._ace_old_restore = FarmerFieldComponent.restore
 function AceFarmerFieldComponent:restore()
    self._is_restore = true
    self._sv.water_level = nil
    
-   self:_old_restore()
+   self:_ace_old_restore()
 
    -- if this is an old farm that doesn't have full details, reload the details
    if self._sv.current_crop_details and not self._sv.current_crop_details.flood_period_multiplier then
@@ -109,9 +109,9 @@ function AceFarmerFieldComponent:_get_default_fertilizer_preference()
    end
 end
 
-AceFarmerFieldComponent._old_on_field_created = FarmerFieldComponent.on_field_created
+AceFarmerFieldComponent._ace_old_on_field_created = FarmerFieldComponent.on_field_created
 function AceFarmerFieldComponent:on_field_created(town, size)
-   self:_old_on_field_created(town, size)
+   self:_ace_old_on_field_created(town, size)
    radiant.terrain.place_entity(self._sv._fertilizable_layer, self._location)
    self._sv._queued_overwatered = {}
 
@@ -120,9 +120,9 @@ function AceFarmerFieldComponent:on_field_created(town, size)
    self:_check_sky_visibility()
 end
 
-AceFarmerFieldComponent._old_notify_till_location_finished = FarmerFieldComponent.notify_till_location_finished
+AceFarmerFieldComponent._ace_old_notify_till_location_finished = FarmerFieldComponent.notify_till_location_finished
 function AceFarmerFieldComponent:notify_till_location_finished(location)
-   self:_old_notify_till_location_finished(location)
+   self:_ace_old_notify_till_location_finished(location)
    
    local offset = location - radiant.entities.get_world_grid_location(self._entity)
    local x = offset.x + 1
@@ -134,9 +134,9 @@ function AceFarmerFieldComponent:notify_till_location_finished(location)
    end
 end
 
-AceFarmerFieldComponent._old_notify_plant_location_finished = FarmerFieldComponent.notify_plant_location_finished
+AceFarmerFieldComponent._ace_old_notify_plant_location_finished = FarmerFieldComponent.notify_plant_location_finished
 function AceFarmerFieldComponent:notify_plant_location_finished(location)
-   self:_old_notify_plant_location_finished(location)
+   self:_ace_old_notify_plant_location_finished(location)
 
    local p = Point3(location.x - self._location.x, 0, location.z - self._location.z)
    local fertilizable_layer = self._sv._fertilizable_layer
@@ -162,9 +162,9 @@ function AceFarmerFieldComponent:notify_crop_harvested(location)
    self:_update_crop_fertilized(location.x - self._location.x + 1, location.z - self._location.z + 1, false)
 end
 
-AceFarmerFieldComponent._old_plant_crop_at = FarmerFieldComponent.plant_crop_at
+AceFarmerFieldComponent._ace_old_plant_crop_at = FarmerFieldComponent.plant_crop_at
 function AceFarmerFieldComponent:plant_crop_at(x_offset, z_offset)
-   local crop = self:_old_plant_crop_at(x_offset, z_offset)
+   local crop = self:_ace_old_plant_crop_at(x_offset, z_offset)
 
    local growing_comp = crop and crop:add_component('stonehearth:growing')
 	if growing_comp then
@@ -178,13 +178,13 @@ function AceFarmerFieldComponent:plant_crop_at(x_offset, z_offset)
 	end
 end
 
-AceFarmerFieldComponent._old_notify_crop_destroyed = FarmerFieldComponent.notify_crop_destroyed
+AceFarmerFieldComponent._ace_old_notify_crop_destroyed = FarmerFieldComponent.notify_crop_destroyed
 function AceFarmerFieldComponent:notify_crop_destroyed(x, z)
    local dirt_plot = self._sv.contents and self._sv.contents[x][z]
    if dirt_plot and dirt_plot.contents then
       self:_destroy_flood_listener(dirt_plot.contents:get_id())
    end
-   self:_old_notify_crop_destroyed(x, z)
+   self:_ace_old_notify_crop_destroyed(x, z)
 end
 
 function AceFarmerFieldComponent:_destroy_flood_listeners()
@@ -230,9 +230,9 @@ function AceFarmerFieldComponent:_create_flood_listener(crop)
    end
 end
 
-AceFarmerFieldComponent._old_set_crop = FarmerFieldComponent.set_crop
+AceFarmerFieldComponent._ace_old_set_crop = FarmerFieldComponent.set_crop
 function AceFarmerFieldComponent:set_crop(session, response, new_crop_id)
-   local result = self:_old_set_crop(session, response, new_crop_id)
+   local result = self:_ace_old_set_crop(session, response, new_crop_id)
 
    self:_cache_best_water_level()
    self:_update_effective_water_level()
@@ -272,6 +272,13 @@ function AceFarmerFieldComponent:set_fertilizer_preference(preference)
 end
 
 function AceFarmerFieldComponent:_update_crop_fertilized(x, z, fertilized)
+   if self._sv.contents == nil then
+      --from 'notify_crop_destroyed' in base component:
+      --Sigh the crop component hangs on to us instead of the entity
+      --if this component is already destroyed, don't process the notification -yshan
+      return
+   end
+   
    fertilized = fertilized or nil
    local dirt_plot = self._sv.contents[x][z]
    if dirt_plot then
@@ -517,9 +524,9 @@ function AceFarmerFieldComponent:_get_overwatered_model()
    return model
 end
 
-AceFarmerFieldComponent._old__on_destroy = FarmerFieldComponent._on_destroy
+AceFarmerFieldComponent._ace_old__on_destroy = FarmerFieldComponent._on_destroy
 function AceFarmerFieldComponent:_on_destroy()
-   self:_old__on_destroy()
+   self:_ace_old__on_destroy()
    
    radiant.entities.destroy_entity(self._sv._fertilizable_layer)
    self._sv._fertilizable_layer = nil
@@ -529,7 +536,7 @@ function AceFarmerFieldComponent:_on_destroy()
    self:_destroy_climate_listeners()
 end
 
-AceFarmerFieldComponent._old__reconsider_fields = FarmerFieldComponent._reconsider_fields
+AceFarmerFieldComponent._ace_old__reconsider_fields = FarmerFieldComponent._reconsider_fields
 function AceFarmerFieldComponent:_reconsider_fields()
    for _, layer in ipairs({self._sv._soil_layer, self._sv._plantable_layer, self._sv._harvestable_layer, self._sv._fertilizable_layer}) do
       stonehearth.ai:reconsider_entity(layer, 'worker count changed')

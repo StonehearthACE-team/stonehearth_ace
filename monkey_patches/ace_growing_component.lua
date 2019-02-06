@@ -2,7 +2,7 @@ local GrowingComponent = require 'stonehearth.components.growing.growing_compone
 local AceGrowingComponent = class()
 local log = radiant.log.create_logger('growing')
 
-AceGrowingComponent._old_activate = GrowingComponent.activate
+AceGrowingComponent._ace_old_activate = GrowingComponent.activate
 function AceGrowingComponent:activate()
 	local json = radiant.entities.get_json(self)
 	self._preferred_climate = json and json.preferred_climate
@@ -31,7 +31,7 @@ function AceGrowingComponent:activate()
       self._sv._is_flooded = false
    end
 
-	self:_old_activate()
+	self:_ace_old_activate()
 end
 
 function AceGrowingComponent:post_activate()
@@ -42,9 +42,9 @@ function AceGrowingComponent:post_activate()
    --end
 end
 
-AceGrowingComponent._old_destroy = GrowingComponent.destroy
+AceGrowingComponent._ace_old_destroy = GrowingComponent.destroy
 function AceGrowingComponent:destroy()
-   self:_old_destroy()
+   self:_ace_old_destroy()
 
    self:_destroy_water_listener()
    if self._sv._is_flooded then
@@ -189,9 +189,9 @@ function AceGrowingComponent:_set_growth_timer()
    self._sv.growth_timer = stonehearth.calendar:set_persistent_timer("GrowingComponent grow_callback", growth_period, radiant.bind(self, '_grow'))
 end
 
-AceGrowingComponent._old__grow = GrowingComponent._grow
+AceGrowingComponent._ace_old__grow = GrowingComponent._grow
 function AceGrowingComponent:_grow()
-	self:_old__grow()
+	self:_ace_old__grow()
 
 	self._sv._current_growth_recalculate_progress = 0
 end

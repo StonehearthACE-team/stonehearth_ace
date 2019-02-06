@@ -78,9 +78,9 @@ local monkey_patches = {
 
 local function monkey_patching()
    for from, into in pairs(monkey_patches) do
-      
       local monkey_see = require('monkey_patches.' .. from)
       local monkey_do = radiant.mods.require(into)
+      radiant.log.write_('stonehearth_ace', 0, 'ACE monkey-patching \'' .. from .. '\' => \'' .. into .. '\': ' .. tostring(monkey_see) .. ' => ' .. tostring(monkey_do))
       radiant.mixin(monkey_do, monkey_see)
    end
 end

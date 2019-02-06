@@ -2,7 +2,7 @@ local EatFeedAdjacent = require 'stonehearth.ai.actions.pasture_animal.eat_feed_
 
 local AceEatFeedAdjacent = class()
 
-AceEatFeedAdjacent._old_stop = EatFeedAdjacent.stop
+AceEatFeedAdjacent._ace_old_stop = EatFeedAdjacent.stop
 function AceEatFeedAdjacent:stop(ai, entity, args)
    local quality_chances
    
@@ -11,7 +11,7 @@ function AceEatFeedAdjacent:stop(ai, entity, args)
       quality_chances = animal_feed and animal_feed.quality_chances
    end
 
-   self:_old_stop(ai, entity, args)
+   self:_ace_old_stop(ai, entity, args)
 
    if quality_chances then
       item_quality_lib.apply_random_quality(entity, quality_chances,

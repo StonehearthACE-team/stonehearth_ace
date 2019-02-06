@@ -4,12 +4,12 @@ local HARVEST_ACTION = 'stonehearth:harvest_resource'
 local ResourceNodeComponent = require 'stonehearth.components.resource_node.resource_node_component'
 local AceResourceNodeComponent = class()
 
-AceResourceNodeComponent._old_set_harvestable_by_harvest_tool = ResourceNodeComponent.set_harvestable_by_harvest_tool
+AceResourceNodeComponent._ace_old_set_harvestable_by_harvest_tool = ResourceNodeComponent.set_harvestable_by_harvest_tool
 function AceResourceNodeComponent:set_harvestable_by_harvest_tool(harvestable_by_harvest_tool)
    -- if this entity has a renewable component and the json says it's not harvestable by harvest tool,
    -- we don't want to override that
    if harvestable_by_harvest_tool == nil or not self._entity:get_component('stonehearth:renewable_resource_node') then
-      self:_old_set_harvestable_by_harvest_tool(harvestable_by_harvest_tool)
+      self:_ace_old_set_harvestable_by_harvest_tool(harvestable_by_harvest_tool)
    end
 end
 
@@ -81,9 +81,9 @@ function AceResourceNodeComponent:spawn_resource(harvester_entity, collect_locat
    self.__saved_variables:mark_changed()
 end
 
-AceResourceNodeComponent._old_request_harvest = ResourceNodeComponent.request_harvest
+AceResourceNodeComponent._ace_old_request_harvest = ResourceNodeComponent.request_harvest
 function AceResourceNodeComponent:request_harvest(player_id, replant)
-   local result = self:_old_request_harvest(player_id)
+   local result = self:_ace_old_request_harvest(player_id)
 
    if result then
       if replant and radiant.entities.get_entity_data(self._entity, 'stonehearth_ace:replant_data') then

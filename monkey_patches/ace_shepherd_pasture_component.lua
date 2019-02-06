@@ -8,9 +8,9 @@ local WEATHER_CHECK_TIME = '05:30am+2h' -- one hour after weather service has ch
 local DEFAULT_GRASS_SPAWN_RATE = '11h+2h'
 local GRASS_HARVEST_TIME = '2h'
 
-AceShepherdPastureComponent._old_activate = ShepherdPastureComponent.activate
+AceShepherdPastureComponent._ace_old_activate = ShepherdPastureComponent.activate
 function AceShepherdPastureComponent:activate()
-   self:_old_activate()
+   self:_ace_old_activate()
    
    if not self._sv._queued_slaughters then
       self._sv.harvest_animals_renewable = true
@@ -35,9 +35,9 @@ function AceShepherdPastureComponent:activate()
 end
 
 -- for some reason, overriding the destroy function doesn't work, so we have to override this one that only gets called during destroy
-AceShepherdPastureComponent._old__unregister_with_town = ShepherdPastureComponent._unregister_with_town
+AceShepherdPastureComponent._ace_old__unregister_with_town = ShepherdPastureComponent._unregister_with_town
 function AceShepherdPastureComponent:_unregister_with_town()
-	self:_old__unregister_with_town()
+	self:_ace_old__unregister_with_town()
 
 	-- destroy the add_grass timer and also destroy any grass entities in the pasture
 	self:_destroy_grass_spawn_timer()
@@ -91,9 +91,9 @@ function AceShepherdPastureComponent:post_creation_setup()
    self.__saved_variables:mark_changed()
 end
 
-AceShepherdPastureComponent._old_set_pasture_type_command = ShepherdPastureComponent.set_pasture_type_command
+AceShepherdPastureComponent._ace_old_set_pasture_type_command = ShepherdPastureComponent.set_pasture_type_command
 function AceShepherdPastureComponent:set_pasture_type_command(session, response, new_animal_type)
-   local result = self:_old_set_pasture_type_command(session, response, new_animal_type)
+   local result = self:_ace_old_set_pasture_type_command(session, response, new_animal_type)
 
    if result then
       self:_set_has_renewable()
@@ -104,15 +104,15 @@ function AceShepherdPastureComponent:set_pasture_type_command(session, response,
    return result
 end
 
-AceShepherdPastureComponent._old_add_animal = ShepherdPastureComponent.add_animal
+AceShepherdPastureComponent._ace_old_add_animal = ShepherdPastureComponent.add_animal
 function AceShepherdPastureComponent:add_animal(animal)
-   self:_old_add_animal(animal)
+   self:_ace_old_add_animal(animal)
    self:_consider_maintain_animals()
 end
 
-AceShepherdPastureComponent._old_remove_animal = ShepherdPastureComponent.remove_animal
+AceShepherdPastureComponent._ace_old_remove_animal = ShepherdPastureComponent.remove_animal
 function AceShepherdPastureComponent:remove_animal(animal_id)
-   self:_old_remove_animal(animal_id)
+   self:_ace_old_remove_animal(animal_id)
 
    self._sv._queued_slaughters[animal_id] = nil
    self.__saved_variables:mark_changed()
@@ -199,13 +199,13 @@ function AceShepherdPastureComponent:_request_slaughter_animal(animal)
    end
 end
 
-AceShepherdPastureComponent._old__create_harvest_task = ShepherdPastureComponent._create_harvest_task
+AceShepherdPastureComponent._ace_old__create_harvest_task = ShepherdPastureComponent._create_harvest_task
 function AceShepherdPastureComponent:_create_harvest_task(target)
    -- actually, just don't do this, ace_renewable_resource_node takes care of it (and has to for the spawn_immediately things anyway)
    --[[
    if self._sv.harvest_animals_renewable then
       log:debug('harvest_animals_renewable = true, harvesting %s', target)
-      self:_old__create_harvest_task(target)
+      self:_ace_old__create_harvest_task(target)
    end
    ]]
 end
@@ -231,7 +231,7 @@ function AceShepherdPastureComponent:set_harvest_animals_renewable(value)
       for id, animal_data in pairs(self._sv.tracked_critters) do
          local animal = animal_data.entity
          if value then
-            self:_old__create_harvest_task(animal)
+            self:_ace_old__create_harvest_task(animal)
          else
             self:_cancel_harvest_task(animal)
          end
@@ -289,9 +289,9 @@ function AceShepherdPastureComponent:_find_grass_spawn_points()
 	return grass
 end
 
-AceShepherdPastureComponent._old__create_pasture_tasks = ShepherdPastureComponent._create_pasture_tasks
+AceShepherdPastureComponent._ace_old__create_pasture_tasks = ShepherdPastureComponent._create_pasture_tasks
 function AceShepherdPastureComponent:_create_pasture_tasks()
-	self:_old__create_pasture_tasks()
+	self:_ace_old__create_pasture_tasks()
    self:_start_grass_spawn()
 end
 

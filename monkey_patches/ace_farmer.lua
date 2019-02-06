@@ -3,16 +3,16 @@ local log = radiant.log.create_logger('farmer')
 local FarmerClass = radiant.mods.require('stonehearth.jobs.farmer.farmer')
 local AceFarmerClass = class()
 
-AceFarmerClass._old__create_listeners = FarmerClass._create_listeners
+AceFarmerClass._ace_old__create_listeners = FarmerClass._create_listeners
 function AceFarmerClass:_create_listeners()
-   self:_old__create_listeners()
+   self:_ace_old__create_listeners()
    self._on_plant_listener = radiant.events.listen(self._sv._entity, 'stonehearth:plant_crop', self, self._on_plant)
    self._on_fertilize_listener = radiant.events.listen(self._sv._entity, 'stonehearth_ace:fertilize_crop', self, self._on_fertilize)
 end
 
-AceFarmerClass._old__remove_listeners = FarmerClass._remove_listeners
+AceFarmerClass._ace_old__remove_listeners = FarmerClass._remove_listeners
 function AceFarmerClass:_remove_listeners()
-   self:_old__remove_listeners()
+   self:_ace_old__remove_listeners()
    if self._on_plant_listener then
       self._on_plant_listener:destroy()
       self._on_plant_listener = nil

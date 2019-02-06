@@ -1,24 +1,24 @@
 local WeatherState = require 'stonehearth.services.server.weather.weather_state'
 local AceWeatherState = class()
 
-AceWeatherState._old_create = WeatherState.create
+AceWeatherState._ace_old_create = WeatherState.create
 function AceWeatherState:create(uri)
-   self:_old_create(uri)
+   self:_ace_old_create(uri)
    self:_load_ace_values()
 end
 
-AceWeatherState._old_restore = WeatherState.restore
+AceWeatherState._ace_old_restore = WeatherState.restore
 function AceWeatherState:restore()
-   self:_old_restore()
+   self:_ace_old_restore()
 
    if not self._sv.sunlight then
       self:_load_ace_values()
    end
 end
 
-AceWeatherState._old_start = WeatherState.start
+AceWeatherState._ace_old_start = WeatherState.start
 function AceWeatherState:start(instigating_player_id)
-   self:_old_start()
+   self:_ace_old_start()
 
    radiant.events.trigger(radiant, 'stonehearth_ace:weather_state_started', self)
 end

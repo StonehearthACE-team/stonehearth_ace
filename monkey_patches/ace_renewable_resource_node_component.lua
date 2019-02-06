@@ -8,9 +8,13 @@ function AceRenewableResourceNodeComponent:create()
    self._is_create = true
 end
 
-AceRenewableResourceNodeComponent._old_post_activate = RenewableResourceNodeComponent.post_activate
+AceRenewableResourceNodeComponent._ace_old_post_activate = RenewableResourceNodeComponent.post_activate
 function AceRenewableResourceNodeComponent:post_activate()
-   self:_old_post_activate()
+   if not self._json then
+      return
+   end
+   
+   self:_ace_old_post_activate()
 
    if self._sv.harvestable and self._is_create then
       self:_auto_request_harvest()
@@ -37,10 +41,10 @@ function AceRenewableResourceNodeComponent:get_auto_harvest_enabled(player_id)
    end
 end
 
-AceRenewableResourceNodeComponent._old_spawn_resource = RenewableResourceNodeComponent.spawn_resource
+AceRenewableResourceNodeComponent._ace_old_spawn_resource = RenewableResourceNodeComponent.spawn_resource
 function AceRenewableResourceNodeComponent:spawn_resource(harvester_entity, location, owner_player_id)
    if not self._json.spawn_resource_immediately or self:_can_pasture_animal_renewably_harvest() ~= false then
-      self:_old_spawn_resource(harvester_entity, location, owner_player_id)
+      self:_ace_old_spawn_resource(harvester_entity, location, owner_player_id)
    end
 end
 
@@ -62,16 +66,16 @@ function AceRenewableResourceNodeComponent:_can_pasture_animal_renewably_harvest
    return return_val
 end
 
-AceRenewableResourceNodeComponent._old_renew = RenewableResourceNodeComponent.renew
+AceRenewableResourceNodeComponent._ace_old_renew = RenewableResourceNodeComponent.renew
 function AceRenewableResourceNodeComponent:renew()
-   self:_old_renew()
+   self:_ace_old_renew()
 
    self:_auto_request_harvest()
 end
 
-AceRenewableResourceNodeComponent._old__place_spawned_items = RenewableResourceNodeComponent._place_spawned_items
+AceRenewableResourceNodeComponent._ace_old__place_spawned_items = RenewableResourceNodeComponent._place_spawned_items
 function AceRenewableResourceNodeComponent:_place_spawned_items(json, owner, location, will_destroy_entity)
-   local spawned_items, item = self:_old__place_spawned_items(json, owner, location, will_destroy_entity)
+   local spawned_items, item = self:_ace_old__place_spawned_items(json, owner, location, will_destroy_entity)
 
    local quality = radiant.entities.get_item_quality(self._entity)
    if quality > 1 then

@@ -5,7 +5,7 @@ local log = radiant.log.create_logger('build_editor')
 
 local AceItemPlacer = class()
 
---AceItemPlacer._old_go = ItemPlacer.go
+--AceItemPlacer._ace_old_go = ItemPlacer.go
 function AceItemPlacer:go(session, response, item_to_place, quality, transactional)
    assert(item_to_place)
 

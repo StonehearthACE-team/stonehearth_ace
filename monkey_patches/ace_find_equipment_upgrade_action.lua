@@ -19,9 +19,9 @@ function AceFindEquipmentUpgrade:start_thinking(ai, entity, args)
    end
 end
 
-AceFindEquipmentUpgrade._old_destroy = FindEquipmentUpgrade.destroy
+AceFindEquipmentUpgrade._ace_old_destroy = FindEquipmentUpgrade.destroy
 function AceFindEquipmentUpgrade:destroy()
-   self:_old_destroy()
+   self:_ace_old_destroy()
 
    if self._role_changed_listener then
       self._role_changed_listener:destroy()

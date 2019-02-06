@@ -34,7 +34,7 @@ function AceCraftingProgress:create(order, crafter)
    self._sv.game_seconds_total = radiant.math.round(game_seconds)
 end
 
-AceCraftingProgress._old_get_duration = CraftingProgress.get_duration
+AceCraftingProgress._ace_old_get_duration = CraftingProgress.get_duration
 function AceCraftingProgress:get_duration()
    local crafter = radiant.entities.get_entity(self._sv.crafter_id)
    if crafter then
@@ -48,7 +48,7 @@ function AceCraftingProgress:get_duration()
       end
    end
 
-   return self:_old_get_duration()
+   return self:_ace_old_get_duration()
 end
 
 return AceCraftingProgress
