@@ -1,11 +1,12 @@
 {
    "type": "entity",
-   "mixins": "file(cook_cheese_vat_empty_ghost.json)",
+   "mixins": "file(cook_cheese_vat_curdled_ghost.json)",
    "components": {
       "stonehearth:entity_forms": {
-         "ghost_form": "file(cook_cheese_vat_empty_ghost.json)",
-         "iconic_form": "file(cook_cheese_vat_empty_iconic.json)",
-         "placeable_on_ground": true
+         "ghost_form": "file(cook_cheese_vat_curdled_ghost.json)",
+         "iconic_form": "file(cook_cheese_vat_curdled_iconic.json)",
+         "placeable_on_ground": true,
+         "hide_undeploy_ui": true
       },
       "destination": {
          "region": [
@@ -27,30 +28,27 @@
    },
    "entity_data": {
       "stonehearth:evolve_data": {
-         "next_stage": "stonehearth_ace:cook:cheese_vat:filled",
-         "evolve_command": "stonehearth_ace:commands:request_evolve:cheese_vat_fill",
+         "next_stage": "stonehearth_ace:cook:cheese_vat:cheese_fresh",
+         "evolve_command": "stonehearth_ace:commands:request_evolve:cheese_vat_drain",
          "request_action": "stonehearth_ace:perform_evolve",
          "request_action_overlay_effect": "stonehearth_ace:effects:evolve_cook_overlay_effect",
-         "evolve_ingredient_uri": "stonehearth_ace:food:dairy:curdling_mixture",
          "evolving_worker_effect": "fiddle",
-         "evolving_worker_effect_times": 1,
-         "evolve_effect": "stonehearth:effects:poof_effect",
+         "evolving_worker_effect_times": 4,
          "auto_request": true,
          "evolve_worker_required_job": {
             "stonehearth:jobs:cook": true
          }
       },
       "stonehearth:net_worth": {
-         "value_in_gold": 3,
+         "value_in_gold": 24,
          "rarity": "common",
          "shop_info": {
             "buyable": false,
-            "sellable": true,
-            "shopkeeper_type": "caravan"
+            "sellable": false
          }
       },
       "stonehearth:appeal": {
-         "appeal": 2
+         "appeal": -5
       },
       "stonehearth:item_quality": {
          "variable_quality": true

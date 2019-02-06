@@ -1,0 +1,61 @@
+{
+   "mixins": "stonehearth:mixins:food_decay",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(curdling_mixture.qb)"
+            ]
+         },
+         "decay_1": {
+            "models": [
+               "file(curdling_mixture_rotting.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:food_decay": {
+         "initial_decay": {
+            "min": 480,
+            "max": 720
+         },
+         "decay_stages": {
+            "decay_1": {
+               "description": "i18n(stonehearth_ace:food.food_decay.curdling.description)"
+            }
+         }
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 18,
+         "rarity": "uncommon",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.dairy.curdling_mixture.display_name)",
+         "description": "i18n(stonehearth_ace:entities.food.dairy.curdling_mixture.description)",
+         "icon": "file(curdling_mixture.png)",
+         "is_item": true,
+         "category": "food",
+         "material_tags": [
+            "curdling_mixture",
+            "dairy",
+            "cooking_ingredient",
+            "stockpile_cooking_ingredient"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": -2
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

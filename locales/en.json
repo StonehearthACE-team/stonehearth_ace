@@ -426,6 +426,14 @@
             "add_thatch_to_bed": {
                "display_name": "Add Thatch",
                "description": "Make this bed a little more comfortable by adding some thatch to it!"
+            },
+            "cheese_vat_fill": {
+               "display_name": "Fill Cheese Vat",
+               "description": "Order the Cook to pour a curdling mixture in this cheese vat to start the production of cheese!"
+            },
+            "cheese_vat_drain": {
+               "display_name": "Drain Cheese Vat",
+               "description": "Order the Cook to remove the leftover whey and treat the curds, forming fresh cheese!"
             }
          },
          "slaughter": {
@@ -1803,11 +1811,27 @@
          },
          "cook_cheese_vat_empty": {
             "display_name": "Empty Cheese Vat",
-            "description": "Used by the Cook to make cheese with Curdling Mixtures. The longer it rests, the better the cheese!"
+            "description": "Used by the Cook to make cheese.The longer it rests, the better!"
          },
          "cook_cheese_vat_filled": {
-            "display_name": "i18n(stonehearth_ace:jobs.cook.cook_cheese_vat_filled.display_name)",
-            "description": "i18n(stonehearth_ace:jobs.cook.cook_cheese_vat_filled.description)"
+            "display_name": "Curdling Cheese Vat",
+            "description": "The milk is curdling and shall take some time before it can be drained and formed."
+         },
+         "cook_cheese_vat_curdled": {
+            "display_name": "Curdled Cheese Vat",
+            "description": "The milk has formed curds and the leftover whey needs to be drained."
+         },
+         "cook_cheese_vat_cheese_fresh": {
+            "display_name": "Fresh Cheese Vat",
+            "description": "Fresh cheese has formed! Harvest it or let it rest and dry for some time..."
+         },
+         "cook_cheese_vat_cheese_mild": {
+            "display_name": "Mild Cheese Vat",
+            "description": "Mild cheese has formed! Harvest it or let it harden and dry for quite some more time."
+         },
+         "cook_cheese_vat_cheese_aged": {
+            "display_name": "Aged Cheese Vat",
+            "description": "This cheese is quite aged, firm and flavorful! It is time to harvest this delicacy."
          }
       },
       "carpenter": {
@@ -4310,6 +4334,10 @@
                   "display_name": "Aged Cheese",
                   "description": "Firm, strong and full of flavor! This cheese won't go bad."
                }
+            },
+            "curdling_mixture": {
+               "display_name": "Curdling Mixture",
+               "description": "Milk and some other things. The Cook needs to pour it inside a cheese vat!"
             }
          }
       },
@@ -6162,6 +6190,9 @@
       "food_decay": {
          "cheese": {
             "description": "This cheese is starting to... Smell cheesy. Better eat it soon."
+         },
+         "curdling": {
+            "description": "It's getting bad, better pour it in a cheese vat soon!"
          }
       }
    }

@@ -1,0 +1,31 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(cook_cheese_vat_cheese_mild.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "align_to_grid": [
+            "x",
+            "z"
+         ],
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0, "y": 0, "z": 0 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:jobs.cook.cook_cheese_vat_cheese_mild.display_name)",
+         "description": "i18n(stonehearth_ace:jobs.cook.cook_cheese_vat_cheese_mild.description)",
+         "icon": "file(cook_cheese_vat_cheese_mild.png)",
+         "category": "workshops",
+         "material_tags": [
+            "stockpile_tool"
+         ]
+      }
+   }
+}

@@ -1087,37 +1087,37 @@
                "description": "In diesem Bett können deine Haustiere wunderbar schlafen!",
                "flavor": "Haustiere werden immer versuchen, in dem Bett zu schlafen, das dem Bett seines Besitzers am nächsten ist!"
             },
-	    "fuel_holder_large_clay_recipe": {
+            "fuel_holder_large_clay_recipe": {
                "recipe_name": "Lehmerner Brennholzschuppen",
                "description": "Baue ein zuverlässiges Lagerhaus, in dem bis zu 18 Brennholzpakete bereitstehen.",
                "flavor": ""
             },
-	    "food_trough_clay_recipe": {
+            "food_trough_clay_recipe": {
                "recipe_name": "Lehmtrog",
                "description": "Ein Trog für einen Hirten, der auf seiner Weide Futter für Tiere serviert.",
                "flavor": "Hirten werden immer versuchen den Trog voll zu halten"
             },
-	    "pet_food_bowl_clay_red_recipe": {
+            "pet_food_bowl_clay_red_recipe": {
                "recipe_name": "Rote lehmerne Trockenfutterschüssel",
                "description": "Hearthlinge können Trockenfutter in diese Schüssel tun, um Ihre Tiere zu füttern.",
                "flavor": "Hunde lieben diese aus irgendeinem Grund"
             },
-	    "pet_food_bowl_clay_blue_recipe": {
+            "pet_food_bowl_clay_blue_recipe": {
                "recipe_name": "Blaue lehmerne Trockenfutterschüssel",
                "description": "Hearthlinge können Trockenfutter in diese Schüssel tun, um Ihre Tiere zu füttern.",
                "flavor": "Blau passt gut zu dem Durcheinander, das sie verursachen werden"
             },
-	    "pet_food_bowl_clay_green_recipe": {
+            "pet_food_bowl_clay_green_recipe": {
                "recipe_name": "Grüne lehmerne Trockenfutterschüssel",
                "description": "Hearthlinge können Trockenfutter in diese Schüssel tun, um Ihre Tiere zu füttern.",
                "flavor": "Wird oft von Haustierbesitzern mit Rasen verloren"
             },
-	    "pasture_bed_small_recipe": {
+            "pasture_bed_small_recipe": {
                "recipe_name": "Kleines Weidenbett",
                "description": "Kleine Weidentiere suchen dies nachts oder bei schlechtem Wetter auf, platzier es deswegen an einem sicheren Ort.",
                "flavor": "Kleine Tiere beinhalten BuckBucks und Kaninchen"
             },
-	    "pasture_bed_recipe": {
+            "pasture_bed_recipe": {
                "recipe_name": "Weidenbett",
                "description": "Große Weidentiere suchen dies nachts oder bei schlechtem Wetter auf, platzier es deswegen an einem sicheren Ort.",
                "flavor": "Große Tieren beinhalten Schafe, Strauße und Moo-Moos"
@@ -1255,27 +1255,27 @@
                "description": "In diesem Bett können deine Haustiere wunderbar schlafen!",
                "flavor": "Haustiere werden immer versuchen, in dem Bett zu schlafen, das dem Bett seines Besitzers am nächsten ist!"
             },
-	    "fuel_holder_large_stone_recipe": {
+            "fuel_holder_large_stone_recipe": {
                "recipe_name": "Steinerner Brennholzschuppen",
                "description": "Baue ein zuverlässiges Lagerhaus, in dem bis zu 18 Brennholzpakete bereitstehen.",
                "flavor": ""
             },
-	    "food_trough_stone_recipe": {
+            "food_trough_stone_recipe": {
                "recipe_name": "Steintrog",
                "description": "Ein Trog für einen Hirten, der auf seiner Weide Futter für Tiere serviert.",
                "flavor": "Hirten werden immer versuchen den Trog voll zu halten"
             },
-	    "pet_food_bowl_stone_recipe": {
+            "pet_food_bowl_stone_recipe": {
                "recipe_name": "Steinerne Trockenfutterschüssel",
                "description": "Hearthlinge können Trockenfutter in diese Steinschüssel tun, um Ihre Tiere zu füttern.",
                "flavor": "Schwer genug, um nicht viel bewegt zu werden"
             },
-	    "pasture_bed_small_recipe": {
+            "pasture_bed_small_recipe": {
                "recipe_name": "Kleines Weidenbett",
                "description": "Kleine Weidentiere suchen dies nachts oder bei schlechtem Wetter auf, platzier es deswegen an einem sicheren Ort..",
                "flavor": "Kleine Tiere beinhalten BuckBucks und Kaninchen"
             },
-	    "pasture_bed_recipe": {
+            "pasture_bed_recipe": {
                "recipe_name": "Weidenbett",
                "description": "Große Weidentiere suchen dies nachts oder bei schlechtem Wetter auf, platzier es deswegen an einem sicheren Ort..",
                "flavor": "Große Tieren beinhalten Schafe, Strauße und Moo-Moos"
@@ -1292,6 +1292,11 @@
       "blacksmith": {
          "recipes": {
             "utility_name": "Werkzeuge",
+            "fuel_holder_small_recipe": {
+               "recipe_name": "Gusseiseer Halter",
+               "description": "Bastele einen schicken Halter, der bis zu 4 Brennholzpakete aufnehmen kann.",
+               "flavor": ""
+            },
             "farmer_hoe_iron_recipe": {
                "recipe_name": "Eiserne Farmerhacke",
                "description": "Stell ein Werkzeug her, das die Arbeitseffizienz von Farmern leicht verbessert.",
@@ -1756,6 +1761,26 @@
                "recipe_name": "Straußenfutter",
                "description": "Eine nahrhafte Ergänzung für Strauße. Verbessert die Qualität tierischer Produkte.",
                "flavor": ""
+            },
+            "moomoo_feed_recipe": {
+               "recipe_name": "Moo-Moo Futter",
+               "description": "Leckeres und herzhaftes Essen, das von großen Wiederkäuern geschätzt wird. Verbessert die Qualität tierischer Produkte.",
+               "flavor": ""
+            },
+            "kibble_recipe": {
+               "recipe_name": "Trockenfutter",
+               "description": "Backe nahrhafte und knusprige Rationen für Haustiere. Vegetarische Tiere fressen dieses Knabberzeug aber nicht.",
+               "flavor": ""
+            },
+            "kibble_fish_recipe": {
+               "recipe_name": "Fischiges Trockenfutter",
+               "description": "Backe nahrhafte und knusprige Rationen für Haustiere. Vegetarische Tiere fressen dieses Knabberzeug aber nicht.",
+               "flavor": "Fischiges Trockenfutter ist nicht der Hit, tut aber seinen Teil."
+            },
+            "kibble_veggie_recipe": {
+               "recipe_name": "Vegatarisches Trockenfutter",
+               "description": "Backe nahrhafte und knusprige Rationen für Haustiere. Fleischfressende Tiere fressen dieses Knabberzeug aber nicht.",
+               "flavor": ""
             }
          },
          "cook_mill_powered": {
@@ -1775,6 +1800,14 @@
                "display_name": "Kürbis-Kessel",
                "description": "Ein exotischer Kessel, den der Koch für leckere Rezepte verwendet."
             }
+         },
+         "cook_cheese_vat_empty": {
+            "display_name": "Leerer Käsebottich",
+            "description": "Wird vom Koch für die Herstellung von Käse mit Gerinnungmischungen verwendet. Je länger er ruht, desto besser ist der Käse!"
+         },
+         "cook_cheese_vat_filled": {
+            "display_name": "i18n(stonehearth_ace:jobs.cook.cook_cheese_vat_filled.display_name)",
+            "description": "i18n(stonehearth_ace:jobs.cook.cook_cheese_vat_filled.description)"
          }
       },
       "carpenter": {
@@ -1850,32 +1883,32 @@
                "description": "In diesem Bett können deine Haustiere wunderbar schlafen!",
                "flavor": "Haustiere werden immer versuchen, in dem Bett zu schlafen, das dem Bett seines Besitzers am nächsten ist!"
             },
-	    "fuel_holder_large_wood_recipe": {
+            "fuel_holder_large_wood_recipe": {
                "recipe_name": "Hölzerner Brennholzschuppen",
                "description": "Baue ein zuverlässiges Lagerhaus, in dem bis zu 18 Brennholzpakete bereitstehen.",
                "flavor": ""
             },
-	    "food_trough_wood_recipe": {
+            "food_trough_wood_recipe": {
                "recipe_name": "Holztrog",
                "description": "Ein Trog für einen Hirten, der auf seiner Weide Futter für Tiere serviert.",
                "flavor": "Hirten werden immer versuchen den Trog voll zu halten"
             },
-	    "pet_food_bowl_wood_recipe": {
+            "pet_food_bowl_wood_recipe": {
                "recipe_name": "Hölzerne Trockenfutterschüssel",
                "description": "Hearthlinge können Trockenfutter in diese Schüssel tun, um Ihre Tiere zu füttern.",
                "flavor": "Hoffentlich machen sie nicht viel Chaos..."
             },
-	    "pasture_bed_small_recipe": {
+            "pasture_bed_small_recipe": {
                "recipe_name": "Kleines Weidenbett",
                "description": "Kleine Weidentiere suchen dies nachts oder bei schlechtem Wetter auf, platzier es deswegen an einem sicheren Ort..",
                "flavor": "Kleine Tiere beinhalten BuckBucks und Kaninchen"
             },
-	    "pasture_bed_recipe": {
+            "pasture_bed_recipe": {
                "recipe_name": "Weidenbett",
                "description": "Große Weidentiere suchen dies nachts oder bei schlechtem Wetter auf, platzier es deswegen an einem sicheren Ort..",
                "flavor": "Große Tieren beinhalten Schafe, Strauße und Moo-Moos"
             },
-	    "fish_trap_recipe": {
+            "fish_trap_recipe": {
                "recipe_name": "Fischfalle",
                "description": "Wird vom Trapper verwendet, um Fische zu fangen und zu ernten oder einzufangen. Es kann nur eine begrenzte Anzahl platziert werden.",
                "flavor": "Du kannst den Fangmodus umschalten, wenn du auf die Falle klickst."
@@ -3613,7 +3646,7 @@
          "megacrop": {
             "mega_pumpkin": {
                "display_name": "Mega-Kürbis",
-               "description": "Woah, schau dir die Größe an! Platziere ihn als Dekoration oder verwende ihn um eine herzhafte Suppe zu zubereiten!"
+               "description": "Woah, schau dir die Größe an! Ernte ihn, platziere ihn als Dekoration oder verwende ihn um eine herzhafte Suppe zu zubereiten!"
             },
             "mega_pumpkin_soup": {
                "display_name": "Mega-Kürbissuppe",
@@ -3635,6 +3668,11 @@
             "mega_watermelon_juice": {
                "display_name": "Mega-Wassermelonensaft",
                "description": "Schlürf! So erfrischend und süß! Eine ganze Stadt kann dieses Getränk genießen."
+            },
+            "mega_sweet_potato": {
+               "iconic_description": "Platziere sie um etwas Moo-Moo-Futter zu bekommen, oder platziere sie als schicken Stuhl.",
+               "display_name": "Mega-Süßkartoffel",
+               "description": "Lecker! Ernte sie für etwas Moo-Moo-Futter oder verwenden sie es als extravaganten Stuhl."
             }
          },
          "valor_statue": {
@@ -4180,6 +4218,99 @@
          "kibble_veggie": {
             "display_name": "Vegatarisches Trockenfutter",
             "description": "Vegetarisches Essen, ausschließlich für Haustiere. Eine Trockenfutterschüssel kann zum Servieren verwendet werden."
+         },
+         "kibble_fish": {
+            "display_name": "Fischiges Trockenfutter",
+            "description": "Nahrhafte Lebensmittel, die ausschließlich für Haustiere hergestellt werden. Eine Servierschüssel kann zum Servieren verwendet werden."
+         },
+         "megacrop_ostrich_feed": {
+            "megacrop_ostrich_feed": {
+               "display_name": "Mega Heirbloom",
+               "description": "Lecker! Diese saftige riesige Heirbloom würde für Strauße eine köstliche Mahlzeit abgeben!"
+            },
+            "megacrop_ostrich_feed_ground": {
+               "display_name": "Mega Heirbloom",
+               "description": "Leckere Mega-Heirbloomscheiben. Diese Mahlzeit wird eine Weile halten!"
+            }
+         },
+         "megacrop_moomoo_feed": {
+            "megacrop_moomoo_feed": {
+               "display_name": "Mega Süßkartoffelfutter",
+               "description": "Klumpige und herzhafte Süßkartoffelscheiben, die man Moo-Moos geben kann!"
+            },
+            "megacrop_moomoo_feed_ground": {
+               "display_name": "Mega Süßkartoffelfutter",
+               "description": "Bereit, gekaut zu werden. Diese Mahlzeit wird eine Weile halten!"
+            }
+         },
+         "megacrop_poyo_feed": {
+            "megacrop_poyo_feed": {
+               "display_name": "Mega Reisfutter",
+               "description": "Beeindruckend! Diese kann vom Schäfer als Futter für Poyos verwendet werden!"
+            },
+            "megacrop_poyo_feed_ground": {
+               "display_name": "Mega Reisfutter",
+               "description": "Leckerer Mega-Reis, Buck-Buck lieben es! Diese Mahlzeit wird eine Weile halten!"
+            }
+         },
+         "megacrop_rabbit_feed": {
+            "megacrop_rabbit_feed": {
+               "display_name": "Mega Karottenfutter",
+               "description": "Riesige und kräftige Karotte, die Kaninchen definitiv zu schätzen wissen würden."
+            },
+            "megacrop_rabbit_feed_ground": {
+               "display_name": "Mega Karottenfutter",
+               "description": "Geschnitten und bereit zur Freude aller Hasen. Diese Mahlzeit wird eine gute Zeit halten!"
+            }
+         },
+         "megacrop_sheep_feed": {
+            "megacrop_sheep_feed": {
+               "display_name": "Mega Weizenfutter",
+               "description": "So golden und glänzend! Kann als Futter für Schafe verwendet werden."
+            },
+            "megacrop_sheep_feed_ground": {
+               "display_name": "Mega Weizenfutter",
+               "description": "Schafe werden das lieben. Diese Mahlzeit wird eine Weile halten!"
+            }
+         },
+         "moomoo_feed": {
+            "moomoo_feed": {
+               "display_name": "Moo-Moo Futter",
+               "description": "Zum Füttern von Moo-Moo´s"
+            },
+            "moomoo_feed_ground": {
+               "display_name": "Moo-Moo Futter",
+               "description": "Leckeres und herzhaftes Essen, das von großen Wiederkäuern geschätzt wird."
+            }
+         },
+         "dairy": {
+            "cheese_fresh": {
+               "cheese_fresh": {
+                  "display_name": "Frischer Käse",
+                  "description": "Weich, feucht und lecker! Dieser Käse wird nach einiger Zeit schlecht werden, wenn er nicht gegessen wird."
+               },
+               "cheese_fresh_serving": {
+                  "display_name": "Ein Stück frischer Käse"
+               }
+            },
+            "cheese_mild": {
+               "cheese_mild": {
+                  "display_name": "Milder Käse",
+                  "description": "Eine schöne Textur und ein kräftiger Geschmack. Dieser Käse hält eine Weile, bevor er schlecht wird."
+               },
+               "cheese_mild_serving": {
+                  "display_name": "Ein Stück milder Käse"
+               }
+            },
+            "cheese_aged": {
+               "cheese_aged_serving": {
+                  "display_name": "Ein Stück reifer Käse"
+               },
+               "cheese_aged": {
+                  "display_name": "Reifer Käse",
+                  "description": "Fest, stark und voller Geschmack! Dieser Käse wird nicht schlecht werden."
+               }
+            }
          }
       },
       "terrain": {
@@ -5766,6 +5897,13 @@
                   "min_only": "Diese Frucht wird mindestens etwas schneller wachsen <span class='water'><span class='text-value'>[str(i18n_data.min_water_level)]</span> water</span> innerhalb der blau umrandeten Region.",
                   "current_level": "Diese Frucht hat derzeit <span class='water'><span class='text-value'>[str(i18n_data.current_water_level)]</span> water</span> innerhalb der blau umrandeten Region."
                },
+               "light_affinity": {
+                  "property_name": "Sonnenlicht benötigt",
+                  "status_name": "Aktuelles Sonnenlicht",
+                  "range": "Diese Ernte wächst etwas schneller mit <span class='light'><span class='text-value'>[str(i18n_data.min_light_level)] - [str(i18n_data.max_light_level)]</span> Tageslicht </span>.",
+                  "min_only": "Diese Ernte wird etwas schneller wachsen mit mindestens <span class='light'><span class='text-value'>[str(i18n_data.min_light_level)]</span> Tageslicht </span>.",
+                  "current_level": "Diese Ernte erlebt derzeit <span class='light'><span class='text-value'>[str(i18n_data.current_light_level)]</span> max_light_level</span>. Dies berücksichtigt sowohl den Schatten- als auch den aktuellen Wetterzustand."
+               },
                "flooded": {
                   "property_name": "Überschwemmung",
                   "status_name": "überschwemmt",
@@ -5820,9 +5958,17 @@
                }
             },
             "pasture": {
+               "maintain_animals": "Aufrechterhalten:",
+               "maintain_animals_description": "Tötet automatisch Tiere, die über diese Anzahl hinausgehen.",
+               "harvest_animals_renewable": "Erneuerbare Ernte",
+               "harvest_animals_renewable_description": "Ernte erneuerbare Ressourcen von diesen Tieren wie Wolle oder Eier.",
+               "harvest_grass": "Gras ernten",
+               "harvest_grass_description": "Erntet automatisch jedes Gras, das auf der Weide wächst.",
                "ostrich_pasture_name": "Straussengehege",
+               "moomoo_pasture_name": "Moo-Moo Gehege",
                "ostrich_pasture_description": "Diese exotischen Vögel produzieren köstliche große Eier und können für großes Geflügel, Trockenfleisch, Federn und Knochen geschlachtet werden",
-               "sheep_pasture_description": "Schafe produzieren Wolle, eine gute Faser für viele Zwecke. Beim schlachten von Schafen wird rohes Hammelfleisch, Trockenfleisch und Knochen produziert",
+               "sheep_pasture_description": "Schafe produzieren Wolle und manchmal etwas Milch. Beim schlachten von Schafen wird rohes Hammelfleisch, Trockenfleisch und Knochen produziert",
+               "moomoo_pasture_description": "Moo-Moos essen viel, produzieren aber schöne Menge an Milch. Wenn sie geschlachtet werden, geben sie Felle, Steaks, Trockenfleisch und Knochen.",
                "rabbit_pasture_description": "Kaninchen vermehren sich schnell und können für Trockenfleisch, Pelze und manchmal Knochen geschlachtet werden",
                "poyo_pasture_description": "BuckBucks legen Eier, eine feine Kochzutat. Das Schlachten von BuckBucks gibt Fleisch und gelegentlich Federn und Knochen"
             }
@@ -5858,7 +6004,7 @@
          "settings": {
             "gameplayTab": {
                "auto_craft_recipe_dependencies": "Automatische Rezepteinstellung",
-               "auto_craft_recipe_dependencies_description": "Beim Herstellen eines Gegenstands überprüfen die Handwerker das Stadtlager, um zu sehen, ob genügend Zutaten vorhanden sind. Wenn nicht, werden Sie der Warteschlange automatisch weitere Aufträge hinzufügen, um den Auftrag erfüllen zu können.",
+               "auto_craft_recipe_dependencies_description": "Wenn ein Gegenstand hergestellt wird, prüfen die Handwerker das Inventar, ob ausreichend Zutaten vorhanden sind. Ist dies nicht der Fall, werden genügend Zutaten automatisch bestellt, um die ursprüngliche Bestellung zu erfüllen.",
                "default_craft_order_quality_preference": "Standardeinstellung für die Fertigungsqualität",
                "default_craft_order_quality_preference_description": "Bei der Herstellung eines Gegenstands werden die Handwerker Zutaten aufgrund ihrer Qualität berücksichtigen: niedrigere (-1), höhere (1) oder keine Präferenz (0). AUSWAHL VON -1 ODER 1 KANN DIE SPIELLEISTUNG NEGATIV AUSWIRKEN.",
                "auto_harvest_enabled": "Nachwachsende Rohstoffe automatischen Ernten",
@@ -5869,6 +6015,8 @@
                "auto_harvest_tree_stumps_description": "Wenn Bäume abgeholzt werden, bleiben erntefähige Stümpfe erhalten. Durch Aktivieren dieser Option werden die Stümpfe automatisch geerntet.",
                "default_to_worst_fertilizer": "Standardmäßig der schlechteste Dünger",
                "default_to_worst_fertilizer_description": "Wenn Farmer Felder düngen, verwenden sie automatisch den besten verfügbaren Dünger. Aktiviere diese Option, damit sie stattdessen den schlechtesten verfügbaren Dünger verwenden.",
+               "default_fertilizer": "Standarddünger:",
+               "default_fertilizer_description": "Lege beim Erstellen einer neuen Farm die Düngerpräferenz fest.",
                "terrain_slice_buildings": "Gelände-Gebäude-Schnitt",
                "terrain_slice_buildings_description": "Rendere keine Objekte im Gelände-Schnitt-Modus, die von sichtbaren Objekten außerhalb des Geländes unterstützt werden.",
                "water_signal_update_frequency": "Wassersignal-Aktualisierungsrate",
@@ -6007,6 +6155,13 @@
          "water_pump": {
             "display_name": "Water Pump",
             "description": "When enabled, pumps water from its bottom and out its top."
+         }
+      }
+   },
+   "food": {
+      "food_decay": {
+         "cheese": {
+            "description": "Dieser Käse fängt an ... käsig zu riechen. Iss ihn besser bald."
          }
       }
    }
