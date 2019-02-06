@@ -4,6 +4,7 @@ local Region3 = _radiant.csg.Region3
 local rng = _radiant.math.get_default_rng()
 
 local item_quality_lib = require 'stonehearth_ace.lib.item_quality.item_quality_lib'
+local log = radiant.log.create_logger('evolve')
 
 local EvolveComponent = require 'stonehearth.components.evolve.evolve_component'
 local AceEvolveComponent = class()
@@ -64,7 +65,7 @@ function AceEvolveComponent:_create_request_listeners()
    
    if self._evolve_data.request_action then
       if self._evolve_data.auto_request then
-         self._added_to_world_listener = self._entity:add_component('mob'):trace_parent('evolve entity added or removed', _radiant.dm.TraceCategories.SYNC_TRACE)
+         self._added_to_world_listener = self._entity:add_component('mob'):trace_parent('evolve entity added or removed')
             :on_changed(function(parent)
                if parent then
                   self:request_evolve(self._entity:get_player_id())

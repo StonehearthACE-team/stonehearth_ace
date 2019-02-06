@@ -245,7 +245,7 @@ function ConnectionService:_start_entity_traces(entity, player_connections, all_
 
    if not self._traces[id] then
       local traces = {}
-      traces._parent_trace = entity:add_component('mob'):trace_parent('connection entity added or removed', _radiant.dm.TraceCategories.SYNC_TRACE)
+      traces._parent_trace = entity:add_component('mob'):trace_parent('connection entity added or removed')
       :on_changed(function(parent_entity)
          if not parent_entity then
             --we were just removed from the world
@@ -263,7 +263,7 @@ function ConnectionService:_start_entity_traces(entity, player_connections, all_
          end
       end)
 
-      traces._location_trace = entity:add_component('mob'):trace_transform('connection entity moved', _radiant.dm.TraceCategories.SYNC_TRACE)
+      traces._location_trace = entity:add_component('mob'):trace_transform('connection entity moved')
       :on_changed(function()
          log:debug('entity %s moved or rotated', entity)
          local res1 = player_connections:update_entity(id)

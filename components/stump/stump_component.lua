@@ -27,7 +27,7 @@ function StumpComponent:add_stump(killer_player_id)
    if not self._stump_data.stump_alias then
       return
    else
-      local the_stump = radiant.entities.create_entity(self._stump_data.stump_alias, {})
+      local the_stump = radiant.entities.create_entity(self._stump_data.stump_alias, { owner = self._entity })
       if not the_stump then
          return
       end
