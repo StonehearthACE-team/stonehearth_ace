@@ -13,6 +13,7 @@ AceFarmerFieldComponent._ace_old_restore = FarmerFieldComponent.restore
 function AceFarmerFieldComponent:restore()
    self._is_restore = true
    self._sv.water_level = nil
+   self._sv.last_set_water_level = nil
    
    self:_ace_old_restore()
 
@@ -27,7 +28,20 @@ end
 
 function AceFarmerFieldComponent:post_activate()
    self._flood_listeners = {}
+   local biome = stonehearth.world_generation:get_biome()
+   self._biome_sunlight = biome.sunlight or 1
+   self._biome_humidity = biome.humidity or 0
    
+   if not self._sv.sunlight_level then
+      self._sv.sunlight_level = 1
+   end
+   if not self._sv.humidity_level then
+      self._sv.humidity_level = 0
+   end
+   if not self._sv._water_level then
+      self._sv._water_level = 0
+   end
+
    if self._is_restore then
       self:_create_water_listener()
       self:_create_flood_listeners()
@@ -302,11 +316,10 @@ function AceFarmerFieldComponent:_create_climate_listeners()
       self._sv.sunlight_level = 1
    end
 
-   self._weather_listener = radiant.events.listen(radiant, 'stonehearth_ace:weather_state_started', function(state)
-      self._weather_sunlight = state:get_sunlight()
-      self:_update_sunlight()
+   self._weather_listener = radiant.events.listen(radiant, 'stonehearth_ace:weather_state_started', function()
+      self:_update_weather()
    end)
-   self._weather_sunlight = stonehearth.weather:get_current_weather():get_sunlight()
+   self:_update_weather()
 
    self._season_listener = radiant.events.listen(radiant, 'stonehearth:seasons:changed', function()
       self:_update_season()
@@ -334,12 +347,43 @@ function AceFarmerFieldComponent:_destroy_climate_listeners()
    end
 end
 
+function AceFarmerFieldComponent:_update_weather()
+   local weather = stonehearth.weather:get_current_weather()
+   local sunlight = weather:get_sunlight()
+   local humidity = weather:get_humidity()
+   local changed = false
+
+   if sunlight ~= self._weather_sunlight then
+      self._weather_sunlight = sunlight
+      changed = true
+   end
+   if humidity ~= self._weather_humidity then
+      self._weather_humidity = humidity
+      changed = true
+   end
+
+   if changed then
+      self:_update_climate()
+   end
+end
+
 function AceFarmerFieldComponent:_update_season()
-   local sunlight = stonehearth.seasons:get_current_season().sunlight
-   
+   local season = stonehearth.seasons:get_current_season()
+   local sunlight = season.sunlight or 1  -- current season is cached in the service, more trouble than it's worth to fix?
+   local humidity = season.humidity or 0
+   local changed = false
+
    if sunlight ~= self._season_sunlight then
       self._season_sunlight = sunlight
-      self:_update_sunlight()
+      changed = true
+   end
+   if humidity ~= self._season_humidity then
+      self._season_humidity = humidity
+      changed = true
+   end
+
+   if changed then
+      self:_update_climate()
    end
 end
 
@@ -349,34 +393,51 @@ function AceFarmerFieldComponent:_check_sky_visibility()
    local x = math.floor(size.x / 2)
    local vis = 0
    for z = 0, size.y - 1 do
-      vis = vis + stonehearth.terrain:get_sunlight_amount(self._location + Point3(x, 2, z))
+      vis = vis + stonehearth.terrain:get_sky_visibility(self._location + Point3(x, 2, z))
    end
    vis = vis / size.y
 
    if not self._sky_visibility or math.abs(vis - self._sky_visibility) > 0.001 then
-      self._sky_visibility = vis / size.y
-      self:_update_sunlight()
+      self._sky_visibility = vis
+      self:_update_climate()
    end
 end
 
-function AceFarmerFieldComponent:_update_sunlight()
-   if not self._sky_visibility or not self._weather_sunlight or not self._season_sunlight then
+function AceFarmerFieldComponent:_update_climate()
+   if not self._sky_visibility or not self._biome_sunlight or not self._season_sunlight or not self._weather_sunlight then
       return
    end
    
-   local sun_vis = math.floor(100 * self._sky_visibility * self._weather_sunlight * self._season_sunlight) / 100
+   local changed = false
+   local sunlight = math.floor(100 * self._sky_visibility * self._biome_sunlight * self._season_sunlight * self._weather_sunlight) / 100
+   local humidity = math.floor(100 * (self._sv._water_level + self._biome_humidity + self._sky_visibility * (self._season_humidity + self._weather_humidity))) / 100
 
-   if sun_vis ~= self._sv.sunlight_level then
-      self._sv.sunlight_level = sun_vis
+   if sunlight ~= self._sv.sunlight_level then
+      self._sv.sunlight_level = sunlight
+      changed = true
+   end
+
+   if humidity ~= self._sv.humidity_level then
+      self._sv.humidity_level = humidity
+      changed = true
+   end
+
+   if changed then
+      self._sv._last_set_water_level = self._sv._water_level
+      self:_set_growth_factors()
       self.__saved_variables:mark_changed()
+   end
+end
 
-      local size = self._sv.size
-      local contents = self._sv.contents
+function AceFarmerFieldComponent:_set_growth_factors()
+   local size = self._sv.size
+   local contents = self._sv.contents
+   if contents then
       for x=1, size.x do
          for y=1, size.y do
             local dirt_plot = contents[x][y]
             if dirt_plot and dirt_plot.contents then
-               dirt_plot.contents:add_component('stonehearth:growing'):set_light_level(self._sv.sunlight_level)
+               dirt_plot.contents:add_component('stonehearth:growing'):set_growth_factors(self._sv.humidity_level, self._sv.sunlight_level)
             end
          end
       end
@@ -384,10 +445,6 @@ function AceFarmerFieldComponent:_update_sunlight()
 end
 
 function AceFarmerFieldComponent:_create_water_listener()
-	if self._water_listener then
-		self:_destroy_water_listener()
-	end
-
 	local region = self._entity:get_component('region_collision_shape'):get_region():get()
 						:extruded('x', 1, 1)
                   :extruded('z', 1, 1)
@@ -396,13 +453,6 @@ function AceFarmerFieldComponent:_create_water_listener()
    self._water_signal = water_component:set_signal('farmer_field', region, {'water_volume'}, function(changes) self:_on_water_signal_changed(changes) end)
    self._sv.water_signal_region = region:duplicate()
    self:_set_water_volume(self._water_signal:get_water_volume())
-end
-
-function AceFarmerFieldComponent:_destroy_water_listener()
-	if self._water_listener then
-		self._water_listener:destroy()
-		self._water_listener = nil
-	end
 end
 
 function AceFarmerFieldComponent:_set_water_volume(volume)
@@ -416,8 +466,17 @@ function AceFarmerFieldComponent:_set_water_volume(volume)
    else
       self._sv._water_level = 0
    end
+   self.__saved_variables:mark_changed()
+
+   -- if the water level only changed by a tiny bit, we don't want to recalculate water levels for everything
+   -- once the change meets a particular threshold, go ahead and propogate
+   local last_set = self._sv._last_set_water_level
+   if last_set and math.abs(last_set - self._sv._water_level) < RECALCULATE_THRESHOLD then
+      return
+   end
+
    self:_update_effective_water_level()
-	self.__saved_variables:mark_changed()
+   self:_update_climate()
 end
 
 function AceFarmerFieldComponent:_on_water_signal_changed(changes)
@@ -427,27 +486,6 @@ function AceFarmerFieldComponent:_on_water_signal_changed(changes)
    end
    
    self:_set_water_volume(volume)
-
-   -- if the water level only changed by a tiny bit, we don't want to recalculate water levels for everything
-   -- once the change meets a particular threshold, go ahead and propogate
-   local last_set = self._sv.last_set_water_level
-   if last_set and math.abs(last_set - self._sv._water_level) < RECALCULATE_THRESHOLD then
-      return
-   end
-
-   self._sv.last_set_water_level = self._sv._water_level
-   self.__saved_variables:mark_changed()
-
-   local size = self._sv.size
-   local contents = self._sv.contents
-	for x=1, size.x do
-		for y=1, size.y do
-			local dirt_plot = contents[x][y]
-			if dirt_plot and dirt_plot.contents then
-				dirt_plot.contents:add_component('stonehearth:growing'):set_water_level(self._sv._water_level)
-			end
-		end
-	end
 end
 
 -- returns the best affinity and then the next one so you can see the range until it would apply (and its effect)
@@ -531,7 +569,6 @@ function AceFarmerFieldComponent:_on_destroy()
    radiant.entities.destroy_entity(self._sv._fertilizable_layer)
    self._sv._fertilizable_layer = nil
 
-   self:_destroy_water_listener()
    self:_destroy_flood_listeners()
    self:_destroy_climate_listeners()
 end

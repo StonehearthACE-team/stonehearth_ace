@@ -43,7 +43,9 @@ App.StonehearthUnitFrameView.reopen({
             }
             else {
                self.$('#nameInput').val(i18n.t(self.get('display_name'), { self: self.get('model') }))
+                  .width(self.$('#nametag').outerWidth() - 16)  // 16 is the total padding and border of #nameInput
                   .show()
+                  .focus()
                   .select();
             }
          }

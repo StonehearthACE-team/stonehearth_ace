@@ -27,8 +27,8 @@ function AceWeatherState:_load_ace_values()
    local json = radiant.resources.load_json(self._sv.uri, true, true)
    self._sv._base_sunlight = json.sunlight or 1
    self._sv.sunlight = self._sv._base_sunlight
-   self._sv._base_precipitation = json.precipitation or 0
-   self._sv.precipitation = self._sv._base_precipitation
+   self._sv._base_humidity = json.humidity or 0
+   self._sv.humidity = self._sv._base_humidity
    self.__saved_variables:mark_changed()
 end
 
@@ -45,17 +45,17 @@ function AceWeatherState:get_base_sunlight()
    return self._sv._base_sunlight
 end
 
-function AceWeatherState:set_precipitation(value)
-   self._sv.precipitation = value
+function AceWeatherState:set_humidity(value)
+   self._sv.humidity = value
    self.__saved_variables:mark_changed()
 end
 
-function AceWeatherState:get_precipitation()
-   return self._sv.precipitation
+function AceWeatherState:get_humidity()
+   return self._sv.humidity
 end
 
-function AceWeatherState:get_base_precipitation()
-   return self._sv._base_precipitation
+function AceWeatherState:get_base_humidity()
+   return self._sv._base_humidity
 end
 
 return AceWeatherState

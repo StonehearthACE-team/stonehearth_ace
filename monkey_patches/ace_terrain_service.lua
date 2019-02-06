@@ -4,13 +4,13 @@ local validator = radiant.validator
 local log = radiant.log.create_logger('terrain')
 
 local CEILING_RAY = Point3(0, 15, 0)
-local SUNRAY_DISTANCE = 100
+local SKYRAY_DISTANCE = 100
 
 AceTerrainService = class()
 
-function AceTerrainService:get_sunlight_amount(location, distance)
+function AceTerrainService:get_sky_visibility(location, distance)
    -- check straight above and at several east-west (x+ to x-) angles to determine amount of sunlight
-   distance = distance or SUNRAY_DISTANCE
+   distance = distance or SKYRAY_DISTANCE
    
    local num_vis = 0
    for i = 1, 5 do

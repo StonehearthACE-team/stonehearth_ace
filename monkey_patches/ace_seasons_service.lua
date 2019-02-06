@@ -62,6 +62,7 @@ function AceSeasonsService:_get_season_data(biome_uri, palette, config, id)
       description = config.description or '',
       start_day = config.start_day or 0,
       sunlight = config.sunlight or 1,
+      humidity = config.humidity or 0,
       biome = biome_uri,
       weather = config.weather,
       terrain_palette = palette,

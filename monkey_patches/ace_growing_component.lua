@@ -76,39 +76,36 @@ function AceGrowingComponent:_on_water_signal_changed(changes)
    end
 end
 
-function AceGrowingComponent:set_water_level(water_level)
+function AceGrowingComponent:set_growth_factors(humidity, sunlight)
 	-- water level is a ratio of volume to "normal ideal volume for a full farm plot"
-	local best_affinity = {min_level = -1, period_multiplier = 1}
-	for _, affinity in ipairs(self._water_affinity) do
-		if water_level >= affinity.min_level and affinity.min_level > best_affinity.min_level then
-			best_affinity = affinity
-		end
-	end
+   local changed = false
+   local humidity_modifier = self:_get_modifier_from_level(self._water_affinity, humidity)
+   local sunlight_modifier = self:_get_modifier_from_level(self._light_affinity, sunlight)
 
-	local multiplier = best_affinity.period_multiplier
-	local prev_modifier = self._sv._local_water_modifier
-	if multiplier ~= prev_modifier then
-		self._sv._local_water_modifier = multiplier
+	if humidity_modifier ~= self._sv._local_water_modifier then
+      self._sv._local_water_modifier = humidity_modifier
+      changed = true
+   end
+
+   if sunlight_modifier ~= self._sv._local_light_modifier then
+      self._sv._local_light_modifier = sunlight_modifier
+      changed = true
+   end
+
+   if changed then
 		self:_recalculate_duration()
 		self.__saved_variables:mark_changed()
-	end
+   end
 end
 
-function AceGrowingComponent:set_light_level(light_level)
-	local best_affinity = {min_level = -1, period_multiplier = 1}
-	for _, affinity in ipairs(self._light_affinity) do
-		if light_level >= affinity.min_level and affinity.min_level > best_affinity.min_level then
+function AceGrowingComponent:_get_modifier_from_level(affinity, level)
+   local best_affinity = {min_level = -1, period_multiplier = 1}
+	for _, affinity in ipairs(affinity) do
+		if level >= affinity.min_level and affinity.min_level > best_affinity.min_level then
 			best_affinity = affinity
 		end
-	end
-
-	local multiplier = best_affinity.period_multiplier
-	local prev_modifier = self._sv._local_light_modifier
-	if multiplier ~= prev_modifier then
-		self._sv._local_light_modifier = multiplier
-		self:_recalculate_duration()
-		self.__saved_variables:mark_changed()
-	end
+   end
+   return best_affinity.period_multiplier
 end
 
 function AceGrowingComponent:is_flooded()

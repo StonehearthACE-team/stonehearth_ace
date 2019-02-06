@@ -479,10 +479,10 @@ App.StonehearthFarmView.reopen({
       var num_crops = field_sv.num_crops;
       var num_fertilized = field_sv.num_fertilized;
       var num_flooded = field_sv.num_flooded;
-      var current_water_level = field_sv.last_set_water_level || 0;
+      var current_water_level = field_sv.humidity_level;
       var size_mult = self._getSizeMult(size);
       var effective_water_level = field_sv.effective_water_level;
-      var current_light_level = field_sv.sunlight_level
+      var current_light_level = field_sv.sunlight_level;
       
       var status;
       
@@ -735,7 +735,7 @@ App.StonehearthFarmView.reopen({
    },
 
    _formatLightValue: function(value) {
-      return value * 100 + '%';
+      return Math.round(value * 100) + '%';
    },
 
    _getLightIcon: function(value) {
