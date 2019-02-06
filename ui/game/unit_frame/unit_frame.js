@@ -34,22 +34,31 @@ App.StonehearthUnitFrameView.reopen({
       self._super();
 
       // get rid of the default behavior, use ours (more expanded) instead
-      self.$('#nametag').off('click')
+      self.$('#nametag')
+         .off('click')
          .click(function() {
-         if ($(this).hasClass('clickable')) {
-            var isPet = self.get('model.stonehearth:pet');
-            if (isPet) {
-               App.stonehearthClient.showPetCharacterSheet(self.get('uri'));
+            if ($(this).hasClass('clickable')) {
+               var isPet = self.get('model.stonehearth:pet');
+               if (isPet) {
+                  App.stonehearthClient.showPetCharacterSheet(self.get('uri'));
+               }
+               else {
+                  self.$('#nameInput').val(i18n.t(self.get('display_name'), { self: self.get('model') }))
+                     .width(self.$('#nametag').outerWidth() - 16)  // 16 is the total padding and border of #nameInput
+                     .show()
+                     .focus()
+                     .select();
+               }
             }
-            else {
-               self.$('#nameInput').val(i18n.t(self.get('display_name'), { self: self.get('model') }))
-                  .width(self.$('#nametag').outerWidth() - 16)  // 16 is the total padding and border of #nameInput
-                  .show()
-                  .focus()
-                  .select();
+         });
+      
+      self.$('#nameInput')
+         .keydown(function(e) {
+            if (e.keyCode === 27 && self.$('#nameInput').is(":visible")) {
+               self.$('#nameInput').hide();
+               return false;
             }
-         }
-      });
+         });
 
       self._nameHelper = new StonehearthInputHelper(self.$('#nameInput'), function (value) {
          // Ignore name input if player does not own the entity
