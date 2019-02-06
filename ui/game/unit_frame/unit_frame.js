@@ -33,15 +33,39 @@ App.StonehearthUnitFrameView.reopen({
       var self = this;
       self._super();
 
-      var div = self.$('#componentInfoButton');
-      if (div.length < 1) {
-         var div = $("#componentInfoButton");
-         div.insertAfter(self.$("#nametag"));
-         App.hotkeyManager.makeTooltipWithHotkeys(div,
-            i18n.t('stonehearth_ace:ui.game.unit_frame.toggle_component_info.tooltip_title'),
-            i18n.t('stonehearth_ace:ui.game.unit_frame.toggle_component_info.tooltip_description'));
-         div.on('click', self.toggleComponentInfo);
-      }
+      // get rid of the default behavior, use ours (more expanded) instead
+      self.$('#nametag').off('click')
+         .click(function() {
+         if ($(this).hasClass('clickable')) {
+            var isPet = self.get('model.stonehearth:pet');
+            if (isPet) {
+               App.stonehearthClient.showPetCharacterSheet(self.get('uri'));
+            }
+            else {
+               self.$('#nameInput').val(i18n.t(self.get('display_name'), { self: self.get('model') }))
+                  .show()
+                  .select();
+            }
+         }
+      });
+
+      self._nameHelper = new StonehearthInputHelper(self.$('#nameInput'), function (value) {
+         // Ignore name input if player does not own the entity
+         if (!radiant.isOwnedByAnotherPlayer(self.get('model'), App.stonehearthClient.getPlayerId())) {
+            radiant.call('stonehearth:set_custom_name', self.uri, value); // false for skip setting custom name
+         }
+
+         self.$('#nameInput').hide();
+      });
+      self.$('#nameInput').blur(function() {
+         self.$('#nameInput').hide();
+      })
+
+      var div = $("#componentInfoButton");
+      App.hotkeyManager.makeTooltipWithHotkeys(div,
+         i18n.t('stonehearth_ace:ui.game.unit_frame.toggle_component_info.tooltip_title'),
+         i18n.t('stonehearth_ace:ui.game.unit_frame.toggle_component_info.tooltip_description'));
+      div.on('click', self.toggleComponentInfo);
 
       div = self.$('#descriptionDiv');
       div.on('click', function() {
@@ -50,6 +74,21 @@ App.StonehearthUnitFrameView.reopen({
 
       _selectionHasComponentInfoChanged();
    },
+
+   willDestroyElement: function() {
+      this._nameHelper.destroy();
+      this._super();
+   },
+
+   _updateChangeableName: function() {
+      var self = this;
+      var playerCheck = self.get('model.player_id') == App.stonehearthClient.getPlayerId();
+      var unit_info = self.get('model.stonehearth:unit_info');
+      var canChangeName = playerCheck && unit_info && !unit_info.locked;
+      self.set('canChangeName', canChangeName);
+      self.notifyPropertyChange('canChangeName');
+      self.$('#nameInput').hide();
+   }.observes('model.uri', 'model.stonehearth:unit_info'),
 
    toggleComponentInfo: function() {
       $(top).trigger('component_info_toggled', {});
