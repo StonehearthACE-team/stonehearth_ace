@@ -73,7 +73,8 @@ local monkey_patches = {
    ace_find_best_reachable_entity_by_type = 'stonehearth.ai.actions.find_best_reachable_entity_by_type',
    ace_terrain_service = 'stonehearth.services.server.terrain.terrain_service',
    ace_weather_state = 'stonehearth.services.server.weather.weather_state',
-   ace_seasons_service = 'stonehearth.services.server.seasons.seasons_service'
+   ace_seasons_service = 'stonehearth.services.server.seasons.seasons_service',
+   ace_unit_info_component = 'stonehearth.components.unit_info.unit_info_component'
 }
 
 local function monkey_patching()
