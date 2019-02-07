@@ -9,7 +9,7 @@ function AceCraftOrderList:_should_auto_craft_recipe_dependencies(player_id)
    return stonehearth.client_state:get_client_gameplay_setting(player_id, 'stonehearth_ace', 'auto_craft_recipe_dependencies', true)
 end
 
-AceCraftOrderList._ace_ace_old_add_order = CraftOrderList.add_order
+AceCraftOrderList._ace_old_add_order = CraftOrderList.add_order
 -- In addition to the original add_order function (from craft_order_list.lua),
 -- here it's also checking if the order has enough of the required ingredients and,
 -- if it can be crafted, adds those ingredients as orders as well.
@@ -156,7 +156,7 @@ function AceCraftOrderList:add_order(player_id, recipe, condition, associated_or
 end
 
 function AceCraftOrderList:insert_order(player_id, recipe, condition, maintain_order_index)
-   self:_ace_ace_old_add_order(player_id, recipe, condition)
+   self:_ace_old_add_order(player_id, recipe, condition)
    log:debug('inserted order for %d %s', condition.at_least or condition.amount, recipe.recipe_name)
 
    local order = self._sv.orders[#self._sv.orders]
@@ -196,7 +196,7 @@ function AceCraftOrderList:request_order_of(player_id, product, amount)
    end
 end
 
-AceCraftOrderList._ace_ace_old_delete_order_command = CraftOrderList.delete_order_command
+AceCraftOrderList._ace_old_delete_order_command = CraftOrderList.delete_order_command
 -- In addition to the original delete_order_command function (from craft_order_list.lua),
 -- here it's also making sure that the ingredients needed for the order is removed
 -- from the reserved ingredients table.
@@ -228,7 +228,7 @@ function AceCraftOrderList:delete_order_command(session, response, order_id, del
       end
    end
 
-   return self:_ace_ace_old_delete_order_command(session, response, order_id)
+   return self:_ace_old_delete_order_command(session, response, order_id)
 end
 
 -- All within `ingredients` are removed from the reserved ingredients table.

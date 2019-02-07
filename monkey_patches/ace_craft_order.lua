@@ -3,7 +3,7 @@ local log = radiant.log.create_logger('craft_order')
 
 local AceCraftOrder = class()
 
-AceCraftOrder._ace_ace_old_on_item_created = CraftOrder.on_item_created
+AceCraftOrder._ace_old_on_item_created = CraftOrder.on_item_created
 -- In addition to the original on_item_created function (from craft_order.lua),
 -- here it's also removing the ingredients tied to the order made from
 -- the reserved ingredients.
@@ -13,7 +13,7 @@ function AceCraftOrder:on_item_created()
       self._sv.order_list:remove_from_reserved_ingredients(self._recipe.ingredients, self._sv.id, self._sv.player_id)
    end
    
-   self:_ace_ace_old_on_item_created()
+   self:_ace_old_on_item_created()
 end
 
 -- Paul: the following overrides and additions are all in order to support multiple crafters on the same order
