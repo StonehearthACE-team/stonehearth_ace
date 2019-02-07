@@ -426,6 +426,14 @@
             "add_thatch_to_bed": {
                "display_name": "Stroh hinzufügen",
                "description": "Mach dieses Bett etwas bequemer, indem du ein bisschen Stroh hinzufügst!"
+            },
+            "cheese_vat_fill": {
+               "display_name": "Käsebottich befüllen",
+               "description": "Beauftrage deinen Koch, eine gerinnende Mischung in diesen Käsebehälter zu gießen, um die Käseproduktion zu beginnen!"
+            },
+            "cheese_vat_drain": {
+               "display_name": "Käsebottich ablassen",
+               "description": "Beauftrage deinen Koch, um die übriggebliebene Molke zu entfernen und die Quarkmasse zu behandeln, um frischen Käse herzustellen!"
             }
          },
          "slaughter": {
@@ -1806,8 +1814,24 @@
             "description": "Wird vom Koch für die Herstellung von Käse mit Gerinnungmischungen verwendet. Je länger er ruht, desto besser ist der Käse!"
          },
          "cook_cheese_vat_filled": {
-            "display_name": "i18n(stonehearth_ace:jobs.cook.cook_cheese_vat_filled.display_name)",
-            "description": "i18n(stonehearth_ace:jobs.cook.cook_cheese_vat_filled.description)"
+            "display_name": "Gerinnender Käse",
+            "description": "Die Milch gerinnt und soll einige Zeit in Ruhe gelassen werden, bevor er abgelassen und geformt werden kann."
+         },
+         "cook_cheese_vat_curdled": {
+            "display_name": "Geronnener Käse",
+            "description": "Die Milch hat Quark gebildet und die verbleibende Molke muss abgelassen werden."
+         },
+         "cook_cheese_vat_cheese_fresh": {
+            "display_name": "Frischkäse",
+            "description": "Frischkäse hat sich gebildet! Ernte es oder lass es einige Zeit ruhen und trocknen ..."
+         },
+         "cook_cheese_vat_cheese_mild": {
+            "display_name": "Milder Käse",
+            "description": "Milder Käse hat sich gebildet! Ernte es oder lassen es noch einige Zeit aushärten und trocknen."
+         },
+         "cook_cheese_vat_cheese_aged": {
+            "display_name": "Reifer Käse",
+            "description": "Dieser Käse ist ziemlich gealtert, fest und würzig! Es ist an der Zeit diese Delikatesse zu ernten."
          }
       },
       "carpenter": {
@@ -4310,6 +4334,10 @@
                   "display_name": "Reifer Käse",
                   "description": "Fest, stark und voller Geschmack! Dieser Käse wird nicht schlecht werden."
                }
+            },
+            "curdling_mixture": {
+               "display_name": "Gerinnungsmischung",
+               "description": "Milch und einige andere Dinge. Der Koch muss es in einen Käsebehälter gießen!"
             }
          }
       },
@@ -6099,62 +6127,62 @@
    "component_info": {
       "stonehearth": {
          "equipment_piece": {
-            "display_name": "Equipment Piece",
-            "description": "Can be equipped by certain hearthlings."
+            "display_name": "Ausrüstungsstück",
+            "description": "Kann von bestimmten Hearthling ausgestattet werden."
          },
          "evolve": {
-            "display_name": "Evolve",
-            "description": "Will transform into something else. If it doesn't have a command for it, this will happen eventually over time."
+            "display_name": "Entwickeln",
+            "description": "Wird sich in etwas anderes verwandeln. Wenn es keinen Befehl dafür gibt, wird dies im Laufe der Zeit passieren."
          },
          "growing": {
-            "display_name": "Growing",
-            "description": "Has multiple growth stages, with a growth rate affected by nearby water (or lack thereof) and rainy weather."
+            "display_name": "Wachsend",
+            "description": "Hat mehrere Wachstumsstadien mit einer Wachstumsrate, die durch das Wasser in der Nähe (oder dessen Mangel) und Regenwetter beeinflusst wird."
          },
          "loot_drops": {
-            "display_name": "Loot Drops",
-            "description": "When killed, loot will drop!"
+            "display_name": "Beute",
+            "description": "Wenn er getötet wird, lässt er Beute fallen!"
          },
          "renewable_resource_node": {
-            "display_name": "Renewable Resource Node",
-            "description": "Can be harvested repeatedly, requiring some time between each harvest in order to renew."
+            "display_name": "Erneuerbare Ressourcenknoten",
+            "description": "Kann wiederholt geerntet werden, was einige Zeit zwischen den Ernten erfordert, um erneuert zu werden."
          },
          "resource_node": {
-            "display_name": "Resource Node",
-            "description": "Can only be harvested once and is then destroyed."
+            "display_name": "Ressourcenknoten",
+            "description": "Kann nur einmal geerntet werden und wird dann zerstört."
          },
          "stacks": {
             "display_name": "Stacks",
-            "description": "When used in crafting or trading, the entire item will be consumed. Otherwise, only a single stack is consumed at a time, until the last stack is consumed and the item is destroyed."
+            "description": "Bei der Herstellung oder beim Handel wird der gesamte Gegenstand verbraucht. Andernfalls wird immer nur ein einzelner Stapel verbraucht, bis der letzte Stapel verbraucht ist und der Gegenstand zerstört wird."
          }
       },
       "stonehearth_ace": {
          "aquatic_object": {
-            "display_name": "Aquatic Object",
-            "description": "Responds to the presence of water (or lack thereof)."
+            "display_name": "Wasserobjekt",
+            "description": "Reagiert auf das Vorhandensein von Wasser (oder dessen Fehlen)."
          },
          "fence": {
-            "display_name": "Fence",
-            "description": "Limited tile-able item that will automatically connect to others within two units."
+            "display_name": "Zaun",
+            "description": "Begrenzter, kachelbarer Artikel, der sich automatisch mit anderen innerhalb von zwei Einheiten verbindet."
          },
          "mechanical": {
-            "display_name": "Mechanical",
-            "description": "Can be used in building connected systems to transfer mechanical power."
+            "display_name": "Mechanisch",
+            "description": "Kann in gebäudebezogenen Systemen zur Übertragung von mechanischer Leistung verwendet werden."
          },
          "water_signal": {
-            "display_name": "Water Signal",
-            "description": "Detects changes in nearby water."
+            "display_name": "Wassersignal",
+            "description": "Erkennt Änderungen im nahe gelegenen Wasser."
          },
          "tile": {
-            "display_name": "Tile",
-            "description": "Tile-able item that will automatically connect adjacently and update its model."
+            "display_name": "Fliese",
+            "description": "Kachelfähiger Artikel, der automatisch zu anderen Fliesen eine Verbindung herstellt und sein Modell aktualisiert."
          },
          "vine": {
-            "display_name": "Vine",
-            "description": "Grows by spreading, but each one will only grow a few times. May be climbable."
+            "display_name": "Rebe",
+            "description": "Wächst durch Ausbreitung, aber jedes wächst nur ein paar mal. Kann kletterbar sein."
          },
          "water_pump": {
-            "display_name": "Water Pump",
-            "description": "When enabled, pumps water from its bottom and out its top."
+            "display_name": "Wasserpumpe,
+            "description": "Wenn aktiviert, pumpt sie Wasser von unten nach oben."
          }
       }
    },
@@ -6162,6 +6190,9 @@
       "food_decay": {
          "cheese": {
             "description": "Dieser Käse fängt an ... käsig zu riechen. Iss ihn besser bald."
+         },
+         "curdling": {
+            "description": "Es wird schlecht, gieße es bald in einen Käsebottich!"
          }
       }
    }
