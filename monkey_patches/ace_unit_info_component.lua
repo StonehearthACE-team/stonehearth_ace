@@ -1,6 +1,35 @@
 local UnitInfoComponent = require 'stonehearth.components.unit_info.unit_info_component'
 local AceUnitInfoComponent = class()
 
+-- TODO: implement some kind of randomized naming so you can get uniquely named items from regular loot mechanics
+-- perhaps limit it to items of higher-than-base quality?
+-- would have to delay setting then, since that won't happen immediately on creation
+-- could provide for some sort of interesting mechanic whereby "polishing" an item results in higher quality
+--    and reveals the uniqueness of the item
+AceUnitInfoComponent._ace_old_create = UnitInfoComponent.create
+function AceUnitInfoComponent:create()
+   local json = radiant.entities.get_json(self) or {}
+   if json.display_name then
+      self:set_display_name(json.display_name)
+   end
+   if json.custom_name then
+      self:set_custom_name(json.custom_name, json.custom_data)
+   end
+   if json.description then
+      self:set_description(json.description)
+   end
+   if json.icon then
+      self:set_icon(json.icon)
+   end
+   if json.locked then
+      self:lock(':create()')
+   end
+   
+   if AceUnitInfoComponent._ace_old_create then
+      AceUnitInfoComponent:_ace_old_create()
+   end
+end
+
 -- for now, only change set_custom_name to consider 'locked'
 -- since this is the only thing that can be custom-set arbitrarily by the player
 -- in future, perhaps extend this capability to set_description and/or set_icon

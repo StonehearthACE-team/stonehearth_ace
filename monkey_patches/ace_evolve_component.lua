@@ -237,6 +237,15 @@ function AceEvolveComponent:evolve()
          end
       end
 
+      local unit_info = self._entity:get_component('stonehearth:unit_info')
+      local custom_name = unit_info and unit_info:get_custom_name()
+      if custom_name then
+         local evolved_unit_info = evolved_form:get_component('stonehearth:unit_info')
+         if evolved_unit_info then
+            evolved_unit_info:set_custom_name(custom_name)
+         end
+      end
+
       local evolved_form_data = radiant.entities.get_entity_data(evolved_form, 'stonehearth:evolve_data')
       if evolved_form_data then
          -- Ensure the evolved form also has the evolve component if it will evolve
