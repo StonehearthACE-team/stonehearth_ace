@@ -27,9 +27,7 @@ AceEvolveComponent._ace_old_activate = EvolveComponent.activate
 function AceEvolveComponent:activate()
 	self:_ace_old_activate()
 
-   -- allow for additional checks for whether evolve should happen by specifying a script in the json
    self._json = radiant.entities.get_json(self) or {}
-   self._evolve_check_script = self._json.evolve_check_script
    self._preferred_climate = self._json.preferred_climate
    -- determine the "reach" of water detection from json; otherwise just expand 1 outwards and downwards from collision region
    self._water_reach = self._json.water_reach or 1
@@ -53,11 +51,6 @@ function AceEvolveComponent:destroy()
    
    self:_destroy_effect()
    self:_destroy_request_listeners()
-end
-
-function AceEvolveComponent:set_check_evolve_script(path)
-   self._evolve_check_script = path
-   self.__saved_variables:mark_changed()
 end
 
 function AceEvolveComponent:_create_request_listeners()
@@ -175,9 +168,9 @@ end
 
 AceEvolveComponent._ace_old_evolve = EvolveComponent.evolve
 function AceEvolveComponent:evolve()
-   if self._evolve_check_script then
-      local script = radiant.mods.require(self._evolve_check_script)
-      if script and not script._should_evolve(self) then
+   if self._evolve_data.evolve_check_script then
+      local script = radiant.mods.require(self._evolve_data.evolve_check_script)
+      if script and not script.should_evolve(self) then
          self:_start_evolve_timer()
          return
       end
@@ -274,12 +267,17 @@ function AceEvolveComponent:evolve()
       end
    end
 
+   if self._evolve_data.evolve_script then
+      local script = radiant.mods.require(self._evolve_data.evolve_script)
+      script.evolve(self)
+   end
+
    radiant.events.trigger(self._entity, 'stonehearth:on_evolved', {entity = self._entity, evolved_form = evolved_form})
 
    -- option to kill on evolve instead of destroying (e.g., if you need to have it drop loot or trigger the killed event)
    if self._evolve_data.kill_entity then
       radiant.entities.kill_entity(self._entity)
-   else
+   elseif not self._evolve_data.destroy_entity == false then
       radiant.entities.destroy_entity(self._entity)
    end
 end

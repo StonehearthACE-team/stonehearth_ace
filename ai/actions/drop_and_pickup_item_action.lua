@@ -30,7 +30,6 @@ DropAndPickupItem.priority = {0, 1}
 local log = radiant.log.create_logger('drop_and_pickup')
 
 function DropAndPickupItem:start_thinking(ai, entity, args)
-   self._found_rating = args.found_rating
    local carrying = ai.CURRENT.carrying
    local rating = args.carrying_rating
    if carrying and (not rating or rating < args.found_rating) then
@@ -40,8 +39,7 @@ function DropAndPickupItem:start_thinking(ai, entity, args)
 end
 
 function DropAndPickupItem:compose_utility(entity, self_utility, child_utilities, current_activity)
-   return self._found_rating * 0.8
-        + child_utilities:get('stonehearth:follow_path') * 0.2
+   return child_utilities:get('stonehearth:follow_path')
 end
 
 local ai = stonehearth.ai

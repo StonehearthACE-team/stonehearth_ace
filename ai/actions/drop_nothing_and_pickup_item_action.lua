@@ -5,10 +5,6 @@ DropNothingAndPickupItem.name = 'drop and pickup item'
 DropNothingAndPickupItem.does = 'stonehearth_ace:drop_and_pickup_item'
 DropNothingAndPickupItem.args = {
    found_item = Entity,
-   found_rating = {
-      type = 'number',
-      default = 1
-   },
    owner_player_id = {
       type = 'string',
       default = stonehearth.ai.NIL,
@@ -26,7 +22,6 @@ DropNothingAndPickupItem.priority = {0, 1}
 local log = radiant.log.create_logger('drop_nothing_and_pickup')
 
 function DropNothingAndPickupItem:start_thinking(ai, entity, args)
-   self._found_rating = args.found_rating
    local carrying = ai.CURRENT.carrying
    if not carrying then
       ai:set_think_output()
@@ -35,8 +30,7 @@ function DropNothingAndPickupItem:start_thinking(ai, entity, args)
 end
 
 function DropNothingAndPickupItem:compose_utility(entity, self_utility, child_utilities, current_activity)
-   return self._found_rating * 0.8
-        + child_utilities:get('stonehearth:follow_path') * 0.2
+   return child_utilities:get('stonehearth:follow_path')
 end
 
 local ai = stonehearth.ai

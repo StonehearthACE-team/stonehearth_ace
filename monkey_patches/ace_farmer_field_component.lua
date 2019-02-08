@@ -117,7 +117,7 @@ end
 function AceFarmerFieldComponent:_get_default_fertilizer_preference()
    local default = stonehearth.client_state:get_client_gameplay_setting(self._entity:get_player_id(), 'stonehearth_ace', 'default_fertilizer', '1')
    if tonumber(default) then
-      return { quality = default }
+      return { quality = tonumber(default) }
    else
       return { uri = default }
    end
@@ -182,8 +182,7 @@ function AceFarmerFieldComponent:plant_crop_at(x_offset, z_offset)
 
    local growing_comp = crop and crop:add_component('stonehearth:growing')
 	if growing_comp then
-      growing_comp:set_water_level(self._sv._water_level or 0)
-      growing_comp:set_light_level(self._sv.sunlight_level or 1)
+      growing_comp:set_growth_factors(self._sv.humidity_level, self._sv.sunlight_level)
       self:_create_flood_listener(crop)
       if growing_comp:is_flooded() then
          self._sv.num_flooded = self._sv.num_flooded + 1
@@ -264,7 +263,7 @@ function AceFarmerFieldComponent:set_fertilizer_preference(preference)
    if preference.uri ~= self._sv.fertilizer_preference.uri or preference.quality ~= self._sv.fertilizer_preference.quality then
       -- uri outranks quality
       local uri = preference.uri
-      local quality = not preference.uri and preference.quality or nil
+      local quality = not preference.uri and tonumber(preference.quality) or nil
 
       if uri ~= self._sv.fertilizer_preference.uri or quality ~= self._sv.fertilizer_preference.quality then
          if uri or quality then
