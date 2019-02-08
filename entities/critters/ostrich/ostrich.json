@@ -109,6 +109,14 @@
          "max_social_satisfaction": {
             "type": "basic",
             "value": 100
+         },
+         "min_sleepiness": {
+            "type": "basic",
+            "value": 0
+         },
+         "max_sleepiness": {
+            "type": "basic",
+            "value": 32
          }
       },
       "stonehearth:expendable_resources": {
@@ -134,6 +142,15 @@
                   "min": 80,
                   "max": "max_value"
                }
+            },
+            "sleepiness": {
+               "min": {
+                  "linked_attribute": "min_sleepiness"
+               },
+               "max": {
+                  "linked_attribute": "max_sleepiness"
+               },
+               "initial_value": 0
             }
          }
       },
