@@ -1,0 +1,26 @@
+{
+   "type": "recipe",
+   "effort": 40,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.curdling_mixture_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.curdling_mixture_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.curdling_mixture_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/dairy/curdling_mixture/curdling_mixture.png",
+   "level_requirement": 4,
+   "workshop": "stonehearth:cook:workbench",
+   "ingredients": [
+      {
+         "material": "drink_container milk",
+         "count": 3
+      },
+      {
+         "material": "herb resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:dairy:curdling_mixture"
+      }
+   ]
+}

@@ -1596,6 +1596,16 @@
       "cook": {
          "recipes": {
             "food_preparation_name": "Food Preparation",
+            "cook_cheese_vat_recipe": {
+               "recipe_name": "Cheese Vat",
+               "description": "The Cook can use this to make cheese by crafting curdling mixtures. The longer it rests the more valuable it gets.",
+               "flavor": "You can harvest the cheese at any time during the maturation process"
+            },
+            "curdling_mixture_recipe": {
+               "recipe_name": "Curdling Mixture",
+               "description": "A fermentation mixture of milk and some additives. Within a cheese vat this can be turned into cheese!",
+               "flavor": "You probably don't want to know what else goes in there..."
+            },
             "nutty_poultry_recipe": {
                "recipe_name": "Stirred Poultry & Nuts",
                "description": "Stirred and fried large poultry slices with spices and nuts.",
@@ -1811,7 +1821,7 @@
          },
          "cook_cheese_vat_empty": {
             "display_name": "Empty Cheese Vat",
-            "description": "Used by the Cook to make cheese.The longer it rests, the better!"
+            "description": "Used by the Cook to make cheese. The longer it rests, the better!"
          },
          "cook_cheese_vat_filled": {
             "display_name": "Curdling Cheese Vat",
@@ -1823,15 +1833,15 @@
          },
          "cook_cheese_vat_cheese_fresh": {
             "display_name": "Fresh Cheese Vat",
-            "description": "Fresh cheese has formed! Harvest it or let it rest and dry for some time..."
+            "description": "Fresh cheese has formed! Harvest it or let it mature some more."
          },
          "cook_cheese_vat_cheese_mild": {
             "display_name": "Mild Cheese Vat",
-            "description": "Mild cheese has formed! Harvest it or let it harden and dry for quite some more time."
+            "description": "Mild cheese has formed! Harvest it or let it mature even more for a lot of time."
          },
          "cook_cheese_vat_cheese_aged": {
             "display_name": "Aged Cheese Vat",
-            "description": "This cheese is quite aged, firm and flavorful! It is time to harvest this delicacy."
+            "description": "This cheese is quite mature, firm and flavorful! It is time to harvest this delicacy."
          }
       },
       "carpenter": {
@@ -3811,13 +3821,17 @@
             "display_name": "Sheep",
             "display_name_arctic": "Longwool Sheep",
             "display_name_desert": "Dune Sheep",
-            "display_name_highlands": "Bighorn Sheep"
+            "display_name_highlands": "Bighorn Sheep",
+            "sheep_young": {
+               "display_name": "Lamb"
+            }
          },
          "poyo": {
             "nest": {
                "display_name": "Poyo Nest",
                "description": "I'm sure they wouldn't mind if an egg or two are missing... Right?"
-            }
+            },
+            "display_name": "Poyo"
          },
          "big_bird": {
             "nest": {
