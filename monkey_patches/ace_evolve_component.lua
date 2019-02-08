@@ -269,7 +269,7 @@ function AceEvolveComponent:evolve()
 
    if self._evolve_data.evolve_script then
       local script = radiant.mods.require(self._evolve_data.evolve_script)
-      script.evolve(self)
+      script.evolve(self._entity, evolved_form)
    end
 
    radiant.events.trigger(self._entity, 'stonehearth:on_evolved', {entity = self._entity, evolved_form = evolved_form})

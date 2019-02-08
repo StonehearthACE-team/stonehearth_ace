@@ -41,7 +41,6 @@ function AceShepherdPastureComponent:_unregister_with_town()
 
 	-- destroy the add_grass timer and also destroy any grass entities in the pasture
 	self:_destroy_grass_spawn_timer()
-	self:_destroy_grass()
 
 	if self._weather_check_alarm then
 		self._weather_check_alarm:destroy()
@@ -51,14 +50,6 @@ function AceShepherdPastureComponent:_unregister_with_town()
       self._grass_harvest_timer:destroy()
       self._grass_harvest_timer = nil
    end
-end
-
-function AceShepherdPastureComponent:_destroy_grass()
-	local entities = self:_find_all_grass()
-
-	for _, e in pairs(entities) do
-		radiant.terrain.remove_entity(e)
-	end
 end
 
 function AceShepherdPastureComponent:_find_all_grass()
@@ -245,7 +236,7 @@ function AceShepherdPastureComponent:set_harvest_grass(value)
       self.__saved_variables:mark_changed()
 
       -- check immediately for any harvestable grass
-      self:_try_harvesting_grass(value)
+      self:_try_harvesting_grass()
    end
 end
 
@@ -256,9 +247,10 @@ function AceShepherdPastureComponent:_cancel_harvest_task(target)
    end
 end
 
-function AceShepherdPastureComponent:_try_harvesting_grass(harvest)
+function AceShepherdPastureComponent:_try_harvesting_grass()
    local player_id = self._entity:get_player_id()
    local all_grass = self:_find_all_grass()
+   local harvest = self._sv.harvest_grass
 
    for _, grass in pairs(all_grass) do
       local resource_component = grass:get_component('stonehearth:resource_node')
@@ -300,7 +292,7 @@ function AceShepherdPastureComponent:_start_grass_spawn()
 		self:_setup_grass_spawn_timer()
 	else
 		-- if the timer already existed, we want to consider the time spent to really be spent
-		self:_recalculate_duration()
+		--self:_recalculate_duration()
 	end
 end
 

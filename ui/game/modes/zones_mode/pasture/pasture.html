@@ -61,7 +61,7 @@
             <table>
                <tbody>
                {{#each view.pastureTypes}}
-                  <tr class="row" {{bind-attr pastureType=this.type}}>
+                  <tr {{bind-attr pastureType=this.type locked=is_locked class="row this.is_locked:disabled this.is_locked:is-locked"}}>
                      <td>
                         <div class="icon">
                            <img class="image" {{bind-attr src=this.icon}} />
@@ -70,7 +70,16 @@
                      <td>
                         <div class="info">
                            <div class="name">{{i18n_key this.name}}</div>
-                           <div class="description">{{i18n_key this.description}}</div>
+                           {{#if this.is_locked}}
+                              <div class="description">
+                                 {{i18n stonehearth:ui.game.show_workshop.level_requirement_needed}}
+                                 {{i18n stonehearth:jobs.shepherd.shepherd_description.display_name}}
+                                 {{i18n stonehearth:ui.game.show_workshop.level_requirement_level}}
+                                 {{this.level_requirement}}
+                              </div>
+                           {{else}}
+                              <div class="description">{{i18n_key this.description}}</div>
+                           {{/if}}
                         </div>
                      </td>
                   </tr>

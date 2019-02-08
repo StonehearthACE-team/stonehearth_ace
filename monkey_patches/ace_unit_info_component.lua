@@ -1,5 +1,6 @@
 local UnitInfoComponent = require 'stonehearth.components.unit_info.unit_info_component'
 local AceUnitInfoComponent = class()
+local rng = _radiant.math.get_default_rng()
 
 -- TODO: implement some kind of randomized naming so you can get uniquely named items from regular loot mechanics
 -- perhaps limit it to items of higher-than-base quality?
@@ -25,8 +26,8 @@ function AceUnitInfoComponent:create()
       self:lock(':create()')
    end
    
-   if AceUnitInfoComponent._ace_old_create then
-      AceUnitInfoComponent:_ace_old_create()
+   if self._ace_old_create then
+      self:_ace_old_create()
    end
 end
 
@@ -39,7 +40,7 @@ function AceUnitInfoComponent:set_custom_name(custom_name, custom_data)
       return false
    end
 
-   self:_ace_old_set_custom_name(custom_name, custom_data)
+   self:_ace_old_set_custom_name(custom_name, self:_process_custom_data(custom_data))
    return true
 end
 
@@ -91,6 +92,30 @@ function AceUnitInfoComponent:force_unlock()
    self._sv.locked = false
    self._sv.locker = nil
    self.__saved_variables:mark_changed()
+end
+
+function AceUnitInfoComponent:_process_custom_data(custom_data)
+   if not custom_data then
+      return
+   end
+
+   if type(custom_data) ~= 'table' then
+      return custom_data
+   end
+
+   local data = {}
+   for k, v in pairs(custom_data) do
+      if type(v) ~= 'table' then
+         data[k] = v
+      else
+         if v.type == 'one_of' and type(v.items) == 'table' then
+            local index = rng:get_int(1, #v.items)
+            data[k] = self:_process_custom_data(v.items[index])
+         else
+            data[k] = v
+         end
+      end
+   end
 end
 
 return AceUnitInfoComponent

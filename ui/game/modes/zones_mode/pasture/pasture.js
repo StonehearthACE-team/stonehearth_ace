@@ -1,4 +1,26 @@
 App.StonehearthPastureView.reopen({
+   init: function() {
+      this._super();
+
+      var self = this;
+
+      radiant.call_obj('stonehearth.job', 'get_job_call', 'stonehearth:jobs:shepherd')
+         .done(function (response) {
+            if (self.isDestroying || self.isDestroyed) {
+               return;
+            }
+            if (response.job_info_object) {
+               self._job_info_trace = radiant.trace(response.job_info_object)
+               .progress(function (o2) {
+                  if (self.isDestroyed || self.isDestroying) {
+                     return;
+                  }
+                  self.set('shepherd_job_info', o2);
+               });
+            }
+         });
+   },
+
    didInsertElement: function() {
       var self = this;
       self._super();
@@ -22,6 +44,11 @@ App.StonehearthPastureView.reopen({
       if (self._maintainSelector) {
          self._maintainSelector.find('.tooltipstered').tooltipster('destroy');
          self._maintainSelector.empty();
+      }
+
+      if (self._job_info_trace) {
+         self._job_info_trace.destroy();
+         self._job_info_trace = null;
       }
 
       this._super();
@@ -56,8 +83,11 @@ App.StonehearthPastureView.reopen({
       }
 
       if (capacity) {
+         var pastureData = self.get('model.uri.components.stonehearth:shepherd_pasture.pasture_data');
+         var pastureType = self.get('model.stonehearth:shepherd_pasture.pasture_type');
+         var min = pastureData[pastureType].min_population || 2;
          var vals = [];
-         for (var i = capacity; i >= 0; i--) {
+         for (var i = capacity; i >= min; i--) {
             vals.push(i + '');
          }
 
@@ -75,4 +105,61 @@ App.StonehearthPastureView.reopen({
          self.$('#maintainAnimals').append(selector);
       }
    }.observes('model.stonehearth:shepherd_pasture.pasture_type'),
+
+   _tracedShepherdJobInfo: function() {
+      if (this.palette) {
+         this.palette.set('highest_level', this.get('shepherd_job_info.highest_level'));
+      }
+   }.observes('shepherd_job_info.highest_level'),
+});
+
+App.StonehearthPastureTypePaletteView.reopen({
+   didInsertElement: function() {
+      var self = this;
+      self._super();
+
+      this.$().off('click', '[pastureType]')
+      .on( 'click', '[pastureType]', function() {
+         if ($(this).attr('locked')) {
+            return;
+         }
+         var pastureType = $(this).attr('pastureType');
+         if (pastureType) {
+            radiant.call_obj(self.pasture, 'set_pasture_type_command', pastureType);
+         }
+         self.destroy();
+      });
+
+      radiant.each(self.get('pastureTypes'), function(_, data) {
+         var pasture_data = self.pasture_data[data.type]
+         Ember.set(data, 'ordinal', pasture_data.ordinal);
+         Ember.set(data, 'level_requirement', pasture_data.level_requirement);
+      });
+      self.set('highest_level', self.pasture_view.get('shepherd_job_info.highest_level'));
+      self._updateLockedAnimals();
+   },
+
+   _isAnimalLocked: function(animal) {
+      var highest_level = this.get('highest_level');
+      if (!highest_level) {
+         highest_level = 0;
+      }
+      return animal.level_requirement > highest_level;
+   },
+
+   _updateLockedAnimals: function() {
+      var animals = this.get('pastureTypes');
+      if (animals) {
+         radiant.sortByOrdinal(animals);
+         for (var animal_id = 0; animal_id < animals.length; animal_id++) {
+            var animal = animals[animal_id];
+            var is_locked = this._isAnimalLocked(animal);
+            Ember.set(animal, 'is_locked', is_locked);
+         }
+      }
+   },
+
+   _tracedMaxShepherdLevel: function () {
+      Ember.run.scheduleOnce('afterRender', this, '_updateLockedAnimals')
+   }.observes('highest_level')
 });
