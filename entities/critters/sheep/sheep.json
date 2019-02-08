@@ -69,14 +69,35 @@
          }
       },
       "stonehearth:renewable_resource_node": {
-         "auto_harvest": true
+         "auto_harvest": true,
+		 "resource_loot_table": {
+            "entries": {
+               "optional": {
+                  "num_rolls": {
+                     "min": 0,
+                     "max": 1
+                  },
+                  "items": {
+                     "none": {
+                        "uri": "",
+                        "weight": 6
+                     },
+                     "milk": {
+                        "uri": "stonehearth_ace:drink:dairy:sheep_milk",
+                        "weight": 1
+                     }
+                  }
+               }
+            }
+         }
       },
 	  "stonehearth_ace:training_dummy": {
          "combat_time": 5,
          "allowed_jobs": {
             "stonehearth:jobs:cleric": true
          }
-      }
+      },
+      "stonehearth:unit_info": {}
    },
    "entity_data": {
 	  "stonehearth:catalog": {

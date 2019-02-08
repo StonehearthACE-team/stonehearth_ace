@@ -12,9 +12,9 @@ local STATES = {
    DEAD = 'dead',
 }
 
-AceIncapacitationComponent._old__declare_state_transitions = IncapacitationComponent._declare_state_transitions
+AceIncapacitationComponent._ace_old__declare_state_transitions = IncapacitationComponent._declare_state_transitions
 function AceIncapacitationComponent:_declare_state_transitions(sm)
-   self:_old__declare_state_transitions(sm)
+   self:_ace_old__declare_state_transitions(sm)
    
    -- we're overriding a transition we just set up, and apparently the state machine doesn't allow that,
    -- nor does it allow removing a state transition! so we'll just have to manually hack it in

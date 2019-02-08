@@ -1,0 +1,92 @@
+<script type="text/x-handlebars" data-template-name="stonehearthPasture">
+   <div id="pastureWindow" class="gui">
+      <div class="window">
+         <div class="title">
+            {{ view.unit_name }}<div class="closeButton"></div>
+         </div>
+
+         <p>{{i18n stonehearth:ui.game.zones_mode.pasture.help}}</p>
+         <h2>{{i18n stonehearth:ui.game.zones_mode.pasture.choose_pasture_type}}</h2>
+         <table id="animalPanel"><tr><td>
+            <div id="choosePastureType">
+               <a id="choosePastureTypeLink" {{action "choosePastureTypeLinkClicked" target="view"}}>
+                  <div class="currentPastureType">
+                     <img id="pastureTypeImage" {{bind-attr src="view.currentPastureData.icon"}} />
+                  </div>
+               </a>
+            </div>
+         </td><td>
+            {{#if view.currentPastureData}}
+            <div id="animalDescription" class="description">
+               <div class="name">{{i18n_key view.currentPastureData.name}}</div>
+               <p>{{i18n_key view.currentPastureData.description}}</p>
+            </div>
+            {{/if}}
+         </td></tr></table>
+         <div {{bind-attr class="view.capacity::hidden"}}>
+            <div class="setting list-setting">
+               <div class="remainingSpaces">
+                  {{i18n stonehearth:ui.game.zones_mode.pasture.num_animals}} {{view.model.stonehearth:shepherd_pasture.num_critters}} / {{view.capacity}}
+               </div>
+               <div id="maintainAnimals">
+                  <span id="maintainAnimalsLabel" class="list-label">{{i18n stonehearth_ace:ui.game.zones_mode.pasture.maintain_animals}}</label>
+               </div>
+            </div>
+         </div>
+         <div {{bind-attr class="view.renewable::hidden"}}>
+            <div id="harvestAnimals" class="setting">
+               <input id="harvestAnimalsCheckbox" type="checkbox" value="harvestAnimals">
+               <label for="harvestAnimalsCheckbox">{{i18n stonehearth_ace:ui.game.zones_mode.pasture.harvest_animals_renewable}}</label>
+            </div>
+         </div>
+         <div id="harvestGrass" class="setting">
+            <input id="harvestGrassCheckbox" type="checkbox" value="harvestGrass">
+            <label for="harvestGrassCheckbox">{{i18n stonehearth_ace:ui.game.zones_mode.pasture.harvest_grass}}</label>
+         </div>
+         <br>
+
+         <button class="warn">{{i18n stonehearth:ui.game.common.remove}}</button>
+         <!-- <button id="disableButton">{{i18n stonehearth:disable}}</button>-->
+         <button class="ok"></button>
+      </div>
+   </div>
+</script>
+
+<script type="text/x-handlebars" data-template-name="stonehearthPastureTypePalette">
+   <div id="pastureTypePalette" class="gui">
+      <div class="window">
+         <div class="title">{{i18n stonehearth:ui.game.zones_mode.pasture.choose_pasture_type}}</div>
+
+         <div class="list downSection">
+            <table>
+               <tbody>
+               {{#each view.pastureTypes}}
+                  <tr {{bind-attr pastureType=this.type locked=is_locked class="row this.is_locked:disabled this.is_locked:is-locked"}}>
+                     <td>
+                        <div class="icon">
+                           <img class="image" {{bind-attr src=this.icon}} />
+                        </div>
+                     </td>
+                     <td>
+                        <div class="info">
+                           <div class="name">{{i18n_key this.name}}</div>
+                           {{#if this.is_locked}}
+                              <div class="description">
+                                 {{i18n stonehearth:ui.game.show_workshop.level_requirement_needed}}
+                                 {{i18n stonehearth:jobs.shepherd.shepherd_description.display_name}}
+                                 {{i18n stonehearth:ui.game.show_workshop.level_requirement_level}}
+                                 {{this.level_requirement}}
+                              </div>
+                           {{else}}
+                              <div class="description">{{i18n_key this.description}}</div>
+                           {{/if}}
+                        </div>
+                     </td>
+                  </tr>
+               {{/each}}
+               </tbody>
+            </table>
+         </div>
+      </div>
+   </div>
+</script>

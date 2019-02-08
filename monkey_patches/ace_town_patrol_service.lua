@@ -62,7 +62,7 @@ function AceTownPatrol:get_patrollable_objects(entity, town_player_id)
       end
    end
 
-   local ordered_objects = self:_old_get_patrollable_objects(entity, town_player_id)
+   local ordered_objects = self:_ace_old_get_patrollable_objects(entity, town_player_id)
    for i = #ordered_objects, 1, -1 do
       local pb_comp = ordered_objects[i]:get_banner()
       if pb_comp then
@@ -71,14 +71,14 @@ function AceTownPatrol:get_patrollable_objects(entity, town_player_id)
    end
 
    if #ordered_objects < 1 and not self:_get_auto_patrol(town_player_id) then
-      return self:_old_get_patrollable_objects(entity, town_player_id, true)
+      return self:_ace_old_get_patrollable_objects(entity, town_player_id, true)
    end
 
    return ordered_objects
 end
 
 -- Returns an array of patrollable objects for this entity, sorted by priority.
-function TownPatrol:_old_get_patrollable_objects(entity, town_player_id, auto_override)
+function TownPatrol:_ace_old_get_patrollable_objects(entity, town_player_id, auto_override)
    local location = radiant.entities.get_world_location(entity)
    local ordered_objects = {}
 

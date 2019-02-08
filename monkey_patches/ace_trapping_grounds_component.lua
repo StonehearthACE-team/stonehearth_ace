@@ -6,16 +6,16 @@ local TrappingGroundsComponent = require 'stonehearth.components.trapping.trappi
 
 local AceTrappingGroundsComponent = class()
 
-AceTrappingGroundsComponent._old_load_tuning = TrappingGroundsComponent.load_tuning
+AceTrappingGroundsComponent._ace_old_load_tuning = TrappingGroundsComponent.load_tuning
 function AceTrappingGroundsComponent:load_tuning(json)
-   self:_old_load_tuning(json)
+   self:_ace_old_load_tuning(json)
    
    self._trap_types = json.trap_types
 end
 
-AceTrappingGroundsComponent._old_post_activate = TrappingGroundsComponent.post_activate
+AceTrappingGroundsComponent._ace_old_post_activate = TrappingGroundsComponent.post_activate
 function TrappingGroundsComponent:post_activate(entity, json)
-   self:_old_post_activate(entity, json)
+   self:_ace_old_post_activate(entity, json)
 
    self._trappable_animals = radiant.resources.load_json('stonehearth:data:trapping:all_trappable_animals').trappable_animals
    if self._sv.size then
@@ -23,21 +23,21 @@ function TrappingGroundsComponent:post_activate(entity, json)
    end
 end
 
-AceTrappingGroundsComponent._old_destroy = TrappingGroundsComponent.destroy
+AceTrappingGroundsComponent._ace_old_destroy = TrappingGroundsComponent.destroy
 function AceTrappingGroundsComponent:destroy()
    if self._wilderness_listener then
       self._wilderness_listener:destroy()
       self._wilderness_listener = nil
    end
 
-   self:_old_destroy()
+   self:_ace_old_destroy()
 end
 
 -- this function is only called right after the trapping service sets up the trapping zone (including placing it in the world and setting its size)
 -- in order to not have to monkey-patch the trapping service, we'll just use this function to also setup our wilderness stuff
-AceTrappingGroundsComponent._old_set_terrain_kind = TrappingGroundsComponent.set_terrain_kind
+AceTrappingGroundsComponent._ace_old_set_terrain_kind = TrappingGroundsComponent.set_terrain_kind
 function AceTrappingGroundsComponent:set_terrain_kind(terrain_kind)
-   self:_old_set_terrain_kind(terrain_kind)
+   self:_ace_old_set_terrain_kind(terrain_kind)
 
    self:_setup_wilderness_stuff()
 end
@@ -66,9 +66,9 @@ function AceTrappingGroundsComponent:_setup_wilderness_stuff()
    self._wilderness_listener = radiant.events.listen(self._entity, 'stonehearth_ace:wilderness_signal:wilderness_value_changed', self, self._update_wilderness_value)
 end
 
-AceTrappingGroundsComponent._old_set_trapping_grounds_type_command = TrappingGroundsComponent.set_trapping_grounds_type_command
+AceTrappingGroundsComponent._ace_old_set_trapping_grounds_type_command = TrappingGroundsComponent.set_trapping_grounds_type_command
 function AceTrappingGroundsComponent:set_trapping_grounds_type_command(session, response, trapping_grounds_type)
-   if self:_old_set_trapping_grounds_type_command(session, response, trapping_grounds_type) then
+   if self:_ace_old_set_trapping_grounds_type_command(session, response, trapping_grounds_type) then
       self:_update_wilderness_multiplier()
    end
 end
@@ -123,10 +123,10 @@ function AceTrappingGroundsComponent:get_grounds_type_wilderness_requirement_mul
    return (trappable_animals and trappable_animals.wilderness_requirement_multiplier) or 1
 end
 
-AceTrappingGroundsComponent._old__get_spawn_duration = TrappingGroundsComponent._get_spawn_duration
+AceTrappingGroundsComponent._ace_old__get_spawn_duration = TrappingGroundsComponent._get_spawn_duration
 function AceTrappingGroundsComponent:_get_spawn_duration()
    -- apply modifier from wilderness value
-   local duration = self:_old__get_spawn_duration() * (self._sv.wilderness_modifier or 1)
+   local duration = self:_ace_old__get_spawn_duration() * (self._sv.wilderness_modifier or 1)
    
    return duration
 end

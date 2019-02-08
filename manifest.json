@@ -18,8 +18,12 @@
    "server_init_script": "file(stonehearth_ace_server)",
    "aliases": {
       "actions:component_to_filter_fn": "file(ai/actions/component_to_filter_fn_action.lua)",
-      "actions:fertilize_crop_adjacent": "file(ai/actions/fertilize_crop_adjacent.lua)",
+      "actions:dont_drop_already_carrying_item": "file(ai/actions/dont_drop_already_carrying_item_action.lua)",
+      "actions:drop_and_pickup_item": "file(ai/actions/drop_and_pickup_item_action.lua)",
+      "actions:drop_and_pickup_item_type": "file(ai/actions/drop_and_pickup_item_type_action.lua)",
+      "actions:drop_nothing_and_pickup_item": "file(ai/actions/drop_nothing_and_pickup_item_action.lua)",
       "actions:fertilize": "file(ai/actions/fertilize_action.lua)",
+      "actions:fertilize_crop_adjacent": "file(ai/actions/fertilize_crop_adjacent.lua)",
       "actions:fertilize_field": "file(ai/actions/fertilize_field_action.lua)",
       "actions:find_field_to_fertilize_with_quality_fertilizer": "file(ai/actions/find_field_to_fertilize_with_quality_fertilizer.lua)",
       "actions:find_field_to_fertilize_with_uri_fertilizer": "file(ai/actions/find_field_to_fertilize_with_uri_fertilizer.lua)",
@@ -233,6 +237,8 @@
       "commands:patrol_banner:move": "file(data/commands/patrol_banner/move_patrol_banner.json)",
       "commands:patrol_banner:remove": "file(data/commands/patrol_banner/remove_patrol_banner.json)",
       "commands:request_evolve:add_thatch_to_bed": "file(data/commands/request_evolve/add_thatch_to_bed.json)",
+      "commands:request_evolve:cheese_vat_drain": "file(data/commands/request_evolve/cheese_vat_drain.json)",
+      "commands:request_evolve:cheese_vat_fill": "file(data/commands/request_evolve/cheese_vat_fill.json)",
       "commands:request_evolve:prepare_mega_pumpkin_soup": "file(data/commands/request_evolve/prepare_mega_pumpkin_soup.json)",
       "commands:request_evolve:prepare_mega_watermelon_juice": "file(data/commands/request_evolve/prepare_mega_watermelon_juice.json)",
       "commands:request_evolve:stomp_mega_cotton_pet_bed": "file(data/commands/request_evolve/stomp_mega_cotton_pet_bed.json)",
@@ -273,6 +279,9 @@
       "containers:food_trough_clay": "file(entities/containers/food_trough_clay/food_trough_clay.json)",
       "containers:food_trough_stone": "file(entities/containers/food_trough_stone/food_trough_stone.json)",
       "containers:food_trough_wood": "file(entities/containers/food_trough_wood/food_trough_wood.json)",
+      "containers:fuel_holder:large:clay": "file(entities/containers/fuel_holder_large_clay/fuel_holder_large_clay.json)",
+      "containers:fuel_holder:large:stone": "file(entities/containers/fuel_holder_large_stone/fuel_holder_large_stone.json)",
+      "containers:fuel_holder:large:wood": "file(entities/containers/fuel_holder_large_wood/fuel_holder_large_wood.json)",
       "containers:fuel_holder:small": "file(entities/containers/fuel_holder_small/fuel_holder_small.json)",
       "containers:megacrop:mega_golden_gourd_pot": "file(entities/containers/megacrop/mega_golden_gourd_pot/mega_golden_gourd_pot.json)",
       "containers:pet_food_bowl:clay_blue": "file(entities/containers/pet_food_bowl_clay_blue/pet_food_bowl_clay_blue.json)",
@@ -282,6 +291,12 @@
       "containers:pet_food_bowl:wood": "file(entities/containers/pet_food_bowl_wood/pet_food_bowl_wood.json)",
       "containers:thatch_pile": "file(entities/containers/thatch_pile/thatch_pile.json)",
       "cook:bowl_animation": "file(jobs/cook/cook_bowl_animation/cook_bowl_animation.json)",
+      "cook:cheese_vat:cheese_aged": "file(jobs/cook/cook_cheese_vat/cook_cheese_vat_cheese_aged/cook_cheese_vat_cheese_aged.json)",
+      "cook:cheese_vat:cheese_fresh": "file(jobs/cook/cook_cheese_vat/cook_cheese_vat_cheese_fresh/cook_cheese_vat_cheese_fresh.json)",
+      "cook:cheese_vat:cheese_mild": "file(jobs/cook/cook_cheese_vat/cook_cheese_vat_cheese_mild/cook_cheese_vat_cheese_mild.json)",
+      "cook:cheese_vat:curdled": "file(jobs/cook/cook_cheese_vat/cook_cheese_vat_curdled/cook_cheese_vat_curdled.json)",
+      "cook:cheese_vat:empty": "file(jobs/cook/cook_cheese_vat/cook_cheese_vat_empty/cook_cheese_vat_empty.json)",
+      "cook:cheese_vat:filled": "file(jobs/cook/cook_cheese_vat/cook_cheese_vat_filled/cook_cheese_vat_filled.json)",
       "cook:mill_powered": "file(jobs/cook/cook_mill_powered/cook_mill_powered.json)",
       "cook:spoon_animation": "file(jobs/cook/cook_spoon_animation/cook_spoon_animation.json)",
       "cook:workbench_pumpkin": "file(jobs/cook/cook_workbench_pumpkin/cook_workbench_pumpkin.json)",
@@ -299,11 +314,11 @@
       "crops:yew_tree_crop": "file(entities/crops/yew_tree_crop/yew_tree_crop.json)",
       "data:connection_types": "file(data/connections/connection_types.json)",
       "data:gm_index": "file(data/gm/gm_index.json)",
+      "data:inventory_trackers": "file(data/inventory_trackers/inventory_trackers.json)",
       "data:modded_settings": "file(data/gameplay_settings/gameplay_settings.json)",
       "data:pre_save_calls": "file(data/pre_save/pre_save_calls.json)",
       "data:resource_constants": "file(data/resource_constants.json)",
       "data:thoughts": "file(data/happiness/thoughts.json)",
-      "data:inventory_trackers": "file(data/inventory_trackers/inventory_trackers.json)",
       "decoration:brass_sign_blacksmith": "file(entities/decoration/brass_sign_blacksmith/brass_sign_blacksmith.json)",
       "decoration:copper_garden_lantern": "file(entities/decoration/copper_garden_lantern/copper_garden_lantern.json)",
       "decoration:copper_wall_lantern": "file(entities/decoration/copper_wall_lantern/copper_wall_lantern.json)",
@@ -315,6 +330,7 @@
       "decoration:megacrop:mega_cotton": "file(entities/decoration/megacrop/mega_cotton/mega_cotton.json)",
       "decoration:megacrop:mega_pumpkin": "file(entities/decoration/megacrop/mega_pumpkin/mega_pumpkin.json)",
       "decoration:megacrop:mega_pumpkin_soup": "file(entities/decoration/megacrop/mega_pumpkin_soup/mega_pumpkin_soup.json)",
+      "decoration:megacrop:mega_sweet_potato": "file(entities/decoration/megacrop/mega_sweet_potato/mega_sweet_potato.json)",
       "decoration:megacrop:mega_turnip": "file(entities/decoration/megacrop/mega_turnip/mega_turnip.json)",
       "decoration:megacrop:mega_watermelon": "file(entities/decoration/megacrop/mega_watermelon/mega_watermelon.json)",
       "decoration:megacrop:mega_watermelon_juice": "file(entities/decoration/megacrop/mega_watermelon_juice/mega_watermelon_juice.json)",
@@ -350,10 +366,12 @@
       "effects:ember_charcoal_effect": "file(data/effects/firepit_effect/ember_charcoal_effect.json)",
       "effects:ember_effect": "file(data/effects/firepit_effect/ember_effect.json)",
       "effects:ember_green_effect": "file(data/effects/firepit_effect/ember_green_effect.json)",
+      "effects:evolve_action_available_overlay_effect": "file(data/effects/evolve_action_available_overlay_effect/evolve_action_available_overlay_effect.json)",
       "effects:evolve_carpenter_overlay_effect": "file(data/effects/evolve_carpenter_overlay_effect/evolve_carpenter_overlay_effect.json)",
       "effects:evolve_cook_overlay_effect": "file(data/effects/evolve_cook_overlay_effect/evolve_cook_overlay_effect.json)",
       "effects:evolve_mason_overlay_effect": "file(data/effects/evolve_mason_overlay_effect/evolve_mason_overlay_effect.json)",
       "effects:evolve_worker_upgrade_overlay_effect": "file(data/effects/evolve_worker_upgrade_overlay_effect/evolve_worker_upgrade_overlay_effect.json)",
+      "effects:harvest_cheese_overlay_effect": "file(data/effects/harvest_cheese_overlay_effect/harvest_cheese_overlay_effect.json)",
       "effects:harvest_egg_overlay_effect": "file(data/effects/harvest_egg_overlay_effect/harvest_egg_overlay_effect.json)",
       "effects:harvest_fungi_overlay_effect": "file(data/effects/harvest_fungi_overlay_effect/harvest_fungi_overlay_effect.json)",
       "effects:harvest_roe_overlay_effect": "file(data/effects/harvest_roe_overlay_effect/harvest_roe_overlay_effect.json)",
@@ -414,6 +432,13 @@
       "food:cherry_tart:cherry_tart_serving": "file(entities/food/cherry_tart/cherry_tart_serving/cherry_tart_serving.json)",
       "food:cooked_nuts": "file(entities/food/cooked_nuts/cooked_nuts.json)",
       "food:cooked_nuts:cooked_nuts_serving": "file(entities/food/cooked_nuts/cooked_nuts_serving/cooked_nuts_serving.json)",
+      "food:dairy:cheese_aged": "file(entities/food/dairy/cheese_aged/cheese_aged/cheese_aged.json)",
+      "food:dairy:cheese_aged:cheese_aged_serving": "file(entities/food/dairy/cheese_aged/cheese_aged_serving/cheese_aged_serving.json)",
+      "food:dairy:cheese_fresh": "file(entities/food/dairy/cheese_fresh/cheese_fresh/cheese_fresh.json)",
+      "food:dairy:cheese_fresh:cheese_fresh_serving": "file(entities/food/dairy/cheese_fresh/cheese_fresh_serving/cheese_fresh_serving.json)",
+      "food:dairy:cheese_mild": "file(entities/food/dairy/cheese_mild/cheese_mild/cheese_mild.json)",
+      "food:dairy:cheese_mild:cheese_mild_serving": "file(entities/food/dairy/cheese_mild/cheese_mild_serving/cheese_mild_serving.json)",
+      "food:dairy:curdling_mixture": "file(entities/food/dairy/curdling_mixture/curdling_mixture.json)",
       "food:desert_truffle:desert_truffle_basket": "file(entities/food/desert_truffle/desert_truffle_basket/desert_truffle_basket.json)",
       "food:desert_truffle:desert_truffle_serving": "file(entities/food/desert_truffle/desert_truffle_serving/desert_truffle_serving.json)",
       "food:dough": "file(entities/food/dough/dough.json)",
@@ -440,9 +465,23 @@
       "food:huntsman_banquet:huntsman_banquet_serving": "file(entities/food/huntsman_banquet/huntsman_banquet_serving/huntsman_banquet_serving.json)",
       "food:kibble": "file(entities/food/kibble/kibble/kibble.json)",
       "food:kibble:kibble_serving": "file(entities/food/kibble/kibble_serving/kibble_serving.json)",
+      "food:kibble_fish": "file(entities/food/kibble_fish/kibble_fish/kibble_fish.json)",
+      "food:kibble_fish:kibble_fish_serving": "file(entities/food/kibble_fish/kibble_fish_serving/kibble_fish_serving.json)",
       "food:kibble_veggie": "file(entities/food/kibble_veggie/kibble_veggie/kibble_veggie.json)",
       "food:kibble_veggie:kibble_veggie_serving": "file(entities/food/kibble_veggie/kibble_veggie_serving/kibble_veggie_serving.json)",
+      "food:megacrop:moomoo_feed": "file(entities/food/megacrop/megacrop_moomoo_feed/megacrop_moomoo_feed/megacrop_moomoo_feed.json)",
+      "food:megacrop:moomoo_feed:ground": "file(entities/food/megacrop/megacrop_moomoo_feed/megacrop_moomoo_feed_ground/megacrop_moomoo_feed_ground.json)",
+      "food:megacrop:ostrich_feed": "file(entities/food/megacrop/megacrop_ostrich_feed/megacrop_ostrich_feed/megacrop_ostrich_feed.json)",
+      "food:megacrop:ostrich_feed:ground": "file(entities/food/megacrop/megacrop_ostrich_feed/megacrop_ostrich_feed_ground/megacrop_ostrich_feed_ground.json)",
+      "food:megacrop:poyo_feed": "file(entities/food/megacrop/megacrop_poyo_feed/megacrop_poyo_feed/megacrop_poyo_feed.json)",
+      "food:megacrop:poyo_feed:ground": "file(entities/food/megacrop/megacrop_poyo_feed/megacrop_poyo_feed_ground/megacrop_poyo_feed_ground.json)",
       "food:megacrop:pumpkin_soup_serving": "file(entities/food/megacrop/pumpkin_soup_serving/pumpkin_soup_serving.json)",
+      "food:megacrop:rabbit_feed": "file(entities/food/megacrop/megacrop_rabbit_feed/megacrop_rabbit_feed/megacrop_rabbit_feed.json)",
+      "food:megacrop:rabbit_feed:ground": "file(entities/food/megacrop/megacrop_rabbit_feed/megacrop_rabbit_feed_ground/megacrop_rabbit_feed_ground.json)",
+      "food:megacrop:sheep_feed": "file(entities/food/megacrop/megacrop_sheep_feed/megacrop_sheep_feed/megacrop_sheep_feed.json)",
+      "food:megacrop:sheep_feed:ground": "file(entities/food/megacrop/megacrop_sheep_feed/megacrop_sheep_feed_ground/megacrop_sheep_feed_ground.json)",
+      "food:moomoo_feed": "file(entities/food/moomoo_feed/moomoo_feed/moomoo_feed.json)",
+      "food:moomoo_feed:ground": "file(entities/food/moomoo_feed/moomoo_feed_ground/moomoo_feed_ground.json)",
       "food:nut_pralines": "file(entities/food/nut_pralines/nut_pralines.json)",
       "food:nut_pralines:nut_pralines_serving": "file(entities/food/nut_pralines/nut_pralines_serving/nut_pralines_serving.json)",
       "food:nutty_poultry": "file(entities/food/nutty_poultry/nutty_poultry/nutty_poultry.json)",
@@ -1141,6 +1180,7 @@
       "trees:yew:small:stump": "file(entities/trees/tree_stump/yew_stump/small_yew_stump.json)",
       "trees:yew:sprout": "file(entities/trees/yew_tree/sprout/tree_yew_sprout.json)",
       "trees:yew:stem": "file(entities/trees/yew_tree/stem/tree_yew_plant_stem.json)",
+      "ui:firewood_holder:filters": "file(ui/data/firewood_holder_filters.json)",
       "ui:input_box:filters": "file(ui/data/input_box_filters.json)",
       "ui:pet_food_bowl:filters": "file(ui/data/pet_food_bowl_filters.json)",
       "ui:stockpile:filters": "file(ui/data/stockpile_filters.json)",
@@ -1740,6 +1780,10 @@
       "stonehearth/entities/crops/corn_crop/corn_crop.json": "file(entities/crops/corn_crop/corn_crop.json)",
       "stonehearth/entities/crops/watermelon_crop/watermelon_crop.json": "file(entities/crops/watermelon_crop/watermelon_crop.json)",
       "stonehearth/entities/crops/golden_gourd_crop/golden_gourd_crop.json": "file(entities/crops/golden_gourd_crop/golden_gourd_crop.json)",
+      "stonehearth/entities/crops/heirbloom_crop/heirbloom_crop.json": "file(entities/crops/heirbloom_crop/heirbloom_crop.json)",
+      "stonehearth/entities/crops/wheat_crop/wheat_crop.json": "file(entities/crops/wheat_crop/wheat_crop.json)",
+      "stonehearth/entities/crops/sweet_potato_crop/sweet_potato_crop.json": "file(entities/crops/sweet_potato_crop/sweet_potato_crop.json)",
+      "stonehearth/entities/crops/carrot_crop/carrot_crop.json": "file(entities/crops/carrot_crop/carrot_crop.json)",
       "stonehearth:loadouts": "stonehearth_ace:loadouts",
       "northern_alliance/data/loadouts/loadouts.json": "stonehearth_ace:loadouts:northern_alliance",
       "stonehearth/entities/decoration/stone_garden_lantern_simple/stone_garden_lantern_simple.json": "file(entities/decoration/stone_garden_lantern_simple/stone_garden_lantern_simple.json)",
@@ -1815,7 +1859,8 @@
       "stonehearth:food:flour": "file(entities/food/flour/flour.json)",
       "stonehearth:monsters:kobolds:kobold": "file(entities/monsters/skull_drop.json)",
       "stonehearth:monsters:orcs:orc_male": "file(entities/monsters/skull_drop.json)",
-      "stonehearth:monsters:orcs:orc_female": "file(entities/monsters/skull_drop.json)"
+      "stonehearth:monsters:orcs:orc_female": "file(entities/monsters/skull_drop.json)",
+      "stonehearth:ai_pack:carrying": "file(ai/packs/carrying_ai_pack.json)"
    },
    "overrides": {
       "stonehearth/data/rigs/entities/humans/effects/idle_breathe_no_carry.json": "stonehearth_ace/data/rigs/entities/humans/effects/idle_breathe_no_carry.json",
@@ -1992,7 +2037,11 @@
       "stonehearth/ai/actions/pickup_item_made_of.lua": "file(ai/actions/pickup_item_made_of.lua)",
       "stonehearth/ai/actions/pickup_item_with_uri_action.lua": "file(ai/actions/pickup_item_with_uri_action.lua)",
       "stonehearth/ui/game/show_workshop/show_team_workshop.html": "file(ui/game/show_workshop/show_team_workshop.html)",
-      "stonehearth/data/commands/show_workshop/show_workshop.png": "file(data/commands/show_workshop/show_workshop.png)"
+      "stonehearth/data/commands/show_workshop/show_workshop.png": "file(data/commands/show_workshop/show_workshop.png)",
+      "stonehearth/ui/game/traces/catalog.js": "file(ui/game/traces/catalog.js)",
+      "stonehearth/ui/game/item_palette/item_palette.js": "file(ui/game/item_palette/item_palette.js)",
+      "stonehearth/ui/game/modes/zones_mode/pasture/pasture.html": "file(ui/game/modes/zones_mode/pasture/pasture.html)",
+      "stonehearth/ui/game/unit_frame/unit_frame.html": "file(ui/game/unit_frame/unit_frame.html)"
    },
    "components": {
       "aquatic_object": "file(components/aquatic_object/aquatic_object_component.lua)",
@@ -2121,10 +2170,6 @@
          "controller": "file(call_handlers/settings_call_handler.lua)",
          "endpoint": "server"
       },
-      "get_growth_preferences_command": {
-         "controller": "file(call_handlers/growing_call_handler.lua)",
-         "endpoint": "server"
-      },
       "update_client_connections_command": {
          "controller": "file(call_handlers/advanced_placement_call_handler.lua)",
          "endpoint": "client"
@@ -2204,6 +2249,22 @@
       "use_evolve_command": {
          "controller": "file(call_handlers/evolve_call_handler.lua)",
          "endpoint": "server"
+      },
+      "set_farm_fertilizer_preference": {
+         "controller": "file(call_handlers/farming_call_handler.lua)",
+         "endpoint": "server"
+      },
+      "set_pasture_harvest_animals_renewable": {
+         "controller": "file(call_handlers/pasture_call_handler.lua)",
+         "endpoint": "server"
+      },
+      "set_pasture_harvest_grass": {
+         "controller": "file(call_handlers/pasture_call_handler.lua)",
+         "endpoint": "server"
+      },
+      "set_pasture_maintain_animals": {
+         "controller": "file(call_handlers/pasture_call_handler.lua)",
+         "endpoint": "server"
       }
    },
    "object_commands": {
@@ -2226,8 +2287,7 @@
          "file(ui/game/modes/zones_mode/underfarm/underfarm.html)",
          "file(ui/game/modes/zones_mode/trapping_grounds/trapping_grounds.html)",
          "file(ui/game/modes/military_mode/military_mode.html)",
-         "file(ui/game/component_info/component_info.html)",
-         "file(ui/game/unit_frame/unit_frame.html)"
+         "file(ui/game/component_info/component_info.html)"
       ],
       "js": [
          "file(ui/root/js/root_view.js)",
@@ -2241,12 +2301,15 @@
          "file(ui/game/promotion_tree/promotion_tree.js)",
          "file(ui/game/modes/zones_mode/trapping_grounds/trapping_grounds.js)",
          "file(ui/game/modes/zones_mode/farm/farm.js)",
+         "file(ui/game/modes/zones_mode/pasture/pasture.js)",
          "file(ui/game/modes/military_mode/military_mode.js)",
          "file(ui/game/save_view/save_view.js)",
          "file(ui/game/town/inventory_tracker.js)",
          "file(ui/game/task_manager/task_manager.js)",
          "file(ui/game/component_info/component_info.js)",
-         "file(ui/game/unit_frame/unit_frame.js)"
+         "file(ui/game/unit_frame/unit_frame.js)",
+         "file(ui/game/clock_widget/clock_widget.js)",
+         "file(ui/root/js/gui.js)"
       ],
       "less": [
          "file(ui/shell/settings/settings.less)",
@@ -2258,10 +2321,13 @@
          "file(ui/game/modes/military_mode/military_mode.less)",
          "file(jobs/mf_artificer/skin/workshop.less)",
          "file(ui/game/modes/zones_mode/farm/farm.less)",
+         "file(ui/game/modes/zones_mode/pasture/pasture.less)",
          "file(ui/shell/title/title.less)",
          "file(ui/game/show_workshop/show_team_workshop.less)",
          "file(ui/game/component_info/component_info.less)",
-         "file(ui/game/unit_frame/unit_frame.less)"
+         "file(ui/game/unit_frame/unit_frame.less)",
+         "file(ui/game/clock_widget/clock_widget.less)",
+         "file(ui/root/css/gui.less)"
       ]
    }
 }

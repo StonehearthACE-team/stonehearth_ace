@@ -1,5 +1,9 @@
 #farmWindow {
+   top: 50px;
+
    #cropRotation {
+      width: max-content;
+
       table {
          table-layout: fixed;
          margin: 2px;
@@ -14,27 +18,38 @@
          .controlFont;
       }
 
+      #cropDescription {
+         width: 150px;
+      }
+
       .hidden {
          display: none;
       }
 
       #cropDetails {
          td {
-            width: 60px;
-            padding: 0px;
+            height: 60px;
+            padding: 4px;
+            white-space: nowrap;
          }
 
          .cropProperty {
             background-image: url(images/background_property.png);
             background-size: contain;
-            margin: 5px;
+            margin: 1px;
             width: 50px;
             height: 50px;
+            display: inline-block;
 
             .cropPropertyIcon {
                margin: auto;
                vertical-align: middle;
             }
+         }
+
+         .overlap {
+            position: relative;
+            margin-top: -30px;
          }
 
          .status-bad {
@@ -54,12 +69,31 @@
             color: #bca058;
             font-family: 'groboldregular';
          }
+
+         #fertilizerPaletteContainer {
+            width: 320px;
+
+            .itemPalette {
+               overflow-x: auto;
+               white-space: nowrap;
+            }
+         }
+      }
+
+      #fertilizerSettings {
+         .fertilizerSetting {
+            display: inline-block;
+         }
       }
    }
 }
 
 .water {
    color: #88aaff
+}
+
+.light {
+   color: #fff388
 }
 
 .text-bad {

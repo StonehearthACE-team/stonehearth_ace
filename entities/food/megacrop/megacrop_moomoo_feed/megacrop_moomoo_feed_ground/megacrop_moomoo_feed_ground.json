@@ -1,0 +1,38 @@
+{
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(megacrop_moomoo_feed_ground.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "mob_collision_type": "tiny"
+      },
+      "stonehearth:stacks": {
+         "max_stacks": 25
+      },
+      "render_info": {
+         "scale": 0.11
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.megacrop_moomoo_feed.megacrop_moomoo_feed_ground.display_name)",
+         "description": "i18n(stonehearth_ace:entities.food.megacrop_moomoo_feed.megacrop_moomoo_feed_ground.description)",
+         "icon": "file(../megacrop_moomoo_feed/megacrop_moomoo_feed.png)",
+         "material_tags": [
+            "animal_feed",
+            "moomoo_feed_edible",
+            "feed_on_ground"
+         ],
+         "subject_override": "stonehearth_ace:food:megacrop:moomoo_feed"
+      },
+      "stonehearth:animal_feed": {
+         "calorie_gain": 100,
+         "effect_loops": 5
+      }
+   }
+}

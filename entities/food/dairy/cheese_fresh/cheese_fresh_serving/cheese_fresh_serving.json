@@ -1,0 +1,43 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(cheese_fresh_serving.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0.05, "y": 0, "z": 0 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:item": {
+         "category": "food",
+         "destroy_on_uncarry": true
+      },
+      "stonehearth:food": {
+         "stonehearth:sitting_on_chair": {
+            "satisfaction": 85
+         },
+         "default": {
+            "satisfaction": 60
+         },
+         "quality": 3
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.dairy.cheese_fresh.cheese_fresh_serving.display_name)",
+         "description": "",
+         "material_tags": [
+            "food",
+            "cheese_fresh_serving",
+            "dairy",
+            "cheese",
+            "meat"
+         ],
+         "subject_override": "stonehearth_ace:food:dairy:cheese_fresh"
+      }
+   }
+}

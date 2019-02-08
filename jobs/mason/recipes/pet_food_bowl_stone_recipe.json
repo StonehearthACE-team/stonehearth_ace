@@ -1,0 +1,22 @@
+{
+   "type": "recipe",
+   "effort": 6,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.mason.recipes.pet_food_bowl_stone_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.mason.recipes.pet_food_bowl_stone_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.mason.recipes.pet_food_bowl_stone_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/containers/pet_food_bowl_stone/pet_food_bowl_stone.png",
+   "workshop": "stonehearth:mason:workbench",
+   "level_requirement": 1,
+   "ingredients": [
+      {
+         "material": "stone resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:containers:pet_food_bowl:stone"
+      }
+	]
+}

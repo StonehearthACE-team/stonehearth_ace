@@ -18,9 +18,9 @@ end
 
 -- Paul: the following overrides and additions are all in order to support multiple crafters on the same order
 
-AceCraftOrder._old_activate = CraftOrder.activate
+AceCraftOrder._ace_old_activate = CraftOrder.activate
 function AceCraftOrder:activate()
-   self:_old_activate()
+   self:_ace_old_activate()
 
    if not self._sv.order_progress_by_crafter then
       self._sv.order_progress_by_crafter = {}

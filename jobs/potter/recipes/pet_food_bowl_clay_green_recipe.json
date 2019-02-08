@@ -1,0 +1,26 @@
+{
+   "type": "recipe",
+   "effort": 10,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.potter.recipes.pet_food_bowl_clay_green_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.potter.recipes.pet_food_bowl_clay_green_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.potter.recipes.pet_food_bowl_clay_green_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/containers/pet_food_bowl_clay_green/pet_food_bowl_clay_green.png",
+   "workshop": "stonehearth:potter:kiln",
+   "level_requirement": 1,
+   "ingredients": [
+      {
+         "material": "clay resource",
+         "count": 1
+      },
+	  {
+         "material": "common_fuel",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:containers:pet_food_bowl:clay_green"
+      }
+	  ]
+}

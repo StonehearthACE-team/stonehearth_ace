@@ -25,7 +25,11 @@
                      <td class="nameColumn">
                         <div class="itemName">
                            <img class="itemIcon" {{bind-attr src=item.icon}}/>
-                           {{i18n_key item.name}}
+                           {{#if item.entity.stonehearth:unit_info.custom_name}}
+                           {{i18n_key item.entity.stonehearth:unit_info.display_name self=item.entity}}
+                           {{else}}
+                           {{i18n_key item.catalog_name}}
+                           {{/if}}
                         </div>
                      </td>
                      <td class="distanceColumn">

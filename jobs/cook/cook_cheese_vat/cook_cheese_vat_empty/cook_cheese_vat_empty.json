@@ -1,0 +1,58 @@
+{
+   "type": "entity",
+   "mixins": "file(cook_cheese_vat_empty_ghost.json)",
+   "components": {
+      "stonehearth:entity_forms": {
+         "ghost_form": "file(cook_cheese_vat_empty_ghost.json)",
+         "iconic_form": "file(cook_cheese_vat_empty_iconic.json)",
+         "placeable_on_ground": true
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 1, "y": 1, "z": 1 }
+            }
+         ]
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 1, "y": 1, "z": 1 }
+            }
+         ]
+      },
+      "stonehearth:evolve": {}
+   },
+   "entity_data": {
+      "stonehearth:evolve_data": {
+         "next_stage": "stonehearth_ace:cook:cheese_vat:filled",
+         "evolve_command": "stonehearth_ace:commands:request_evolve:cheese_vat_fill",
+         "request_action": "stonehearth_ace:perform_evolve",
+         "request_action_overlay_effect": "stonehearth_ace:effects:evolve_cook_overlay_effect",
+         "evolve_ingredient_uri": "stonehearth_ace:food:dairy:curdling_mixture",
+         "evolving_worker_effect": "fiddle",
+         "evolving_worker_effect_times": 1,
+         "auto_request": true,
+         "evolve_worker_required_job": {
+            "stonehearth:jobs:cook": true
+         }
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 4,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 2
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

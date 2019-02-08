@@ -54,8 +54,6 @@ local create_fertilizer_filter_fn = function(owner, fertilizable_layer)
             return false
          end
 
-         log:debug('checking if fertilizer %s matches preference %s (%s)', item, fertilizer_preference.uri, item:get_uri() == fertilizer_preference.uri)
-
          return fertilizer_preference.uri == item:get_uri()
       end)
 
@@ -66,7 +64,7 @@ local ai = stonehearth.ai
 return ai:create_compound_action(FertilizeWithSpecificFertilizer)
          :execute('stonehearth:find_best_reachable_entity_by_type', {
             filter_fn = ai.CALL(create_farmer_field_filter_fn, ai.ARGS.owner),
-            rating_fn = stonehearth.farming.rate_field,
+            rating_fn = stonehearth.farming.rate_field_for_fertilize,
             description = 'find fertilize layer',
          })
          :execute('stonehearth:abort_on_event_triggered', {

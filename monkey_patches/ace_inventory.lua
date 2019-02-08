@@ -2,9 +2,9 @@
 local Inventory = require 'stonehearth.services.server.inventory.inventory'
 local AceInventory = class()
 
-AceInventory._old__pre_activate = Inventory._pre_activate
+AceInventory._ace_old__pre_activate = Inventory._pre_activate
 function AceInventory:_pre_activate()
-   self:_old__pre_activate()
+   self:_ace_old__pre_activate()
 
    self:_add_more_trackers()
 end

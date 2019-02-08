@@ -29,6 +29,7 @@ function WaterSignalService:initialize()
    self._current_tick = 0
    self:set_update_frequency(radiant.util.get_config('water_signal_update_frequency', 1))
    
+   --[[
    self._game_loaded_listener = radiant.events.listen_once(radiant, 'radiant:game_loaded', function()
       self._game_loaded_listener = nil
       self:_create_tick_listener()
@@ -37,6 +38,7 @@ function WaterSignalService:initialize()
       self._world_generated_listener = nil
       self:_create_tick_listener()
    end)
+   ]]
 
    self._processing_on_tick = false
 end
@@ -46,10 +48,16 @@ function WaterSignalService:destroy()
 		self._tick_listener:destroy()
 		self._tick_listener = nil
    end
+   --[[
    if self._world_generated_listener then
 		self._world_generated_listener:destroy()
 		self._world_generated_listener = nil
    end
+   ]]
+end
+
+function WaterSignalService:start()
+   self:_create_tick_listener()
 end
 
 function WaterSignalService:_create_tick_listener()
@@ -155,9 +163,6 @@ end
 function WaterSignalService:_on_tick()
    self._processing_on_tick = true
    
-   --log:debug('water signal tick with %s changed waters, %s changed waterfalls, %s signals',
-   --      radiant.size(self._changed_waters), radiant.size(self._changed_waterfalls), radiant.size(self._signals))
-
    self._current_tick = (self._current_tick + 1) % self._update_tick_mod
    if self._current_tick == self._update_pathing_tick then  -- do it on the opposite tick compared to the regular water signal updates (tick 0)
       -- this isn't really the best place for this, but it's the simplest place for it
@@ -176,6 +181,9 @@ function WaterSignalService:_on_tick()
       return
    end
 
+   --log:debug('water signal tick with %s changed waters, %s changed waterfalls, %s signals',
+   --      radiant.size(self._changed_waters), radiant.size(self._changed_waterfalls), radiant.size(self._signals))
+
    local signals_to_signal = {}
    local next_tick_callbacks
    if next(self._next_tick_callbacks) then
@@ -192,6 +200,7 @@ function WaterSignalService:_on_tick()
             local water_region = water:get_region():get():translated(location)
             local chunks = self:_get_chunks(water_region)
             local checked = {}
+            --log:debug('setting water_chunks for %s to %s', water_id, radiant.util.table_tostring(chunks))
             self._water_chunks[water_id] = chunks
 
             for chunk_id, _ in pairs(chunks) do
@@ -269,7 +278,7 @@ function WaterSignalService:_on_tick()
 
    for _, signal in pairs(signals_to_signal) do
       local entity = signal.entity or radiant.entities.get_entity(signal.entity_id)
-      log:debug('getting signal entity from id %s: %s', signal.entity_id, entity or 'NIL')
+      --log:debug('getting signal entity from id %s: %s', signal.entity_id, entity or 'NIL')
       if entity and entity:is_valid() then
          signal.entity = entity
          signal.signal:_on_tick_water_signal(signal.waters, signal.waterfalls)

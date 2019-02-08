@@ -1,3 +1,4 @@
+local util = require 'stonehearth_ace.lib.util'
 local CraftOrderList = radiant.mods.require('stonehearth.components.workshop.craft_order_list')
 local AceCraftOrderList = class()
 local constants = radiant.mods.require('stonehearth.constants')
@@ -353,7 +354,7 @@ end
 
 
 function AceCraftOrderList:_recipe_produces_materials(recipe, material)
-   return stonehearth_ace.util.sum_where_all_keys_present(recipe.product_materials, recipe.products, material)
+   return util.sum_where_all_keys_present(recipe.product_materials, recipe.products, material)
 end
 
 function AceCraftOrderList:_ace_matching_tags(tags1, tags2)

@@ -1,17 +1,19 @@
 local Point3 = _radiant.csg.Point3
 local Cube3 = _radiant.csg.Cube3
 local Region3 = _radiant.csg.Region3
+local rng = _radiant.math.get_default_rng()
 
 local item_quality_lib = require 'stonehearth_ace.lib.item_quality.item_quality_lib'
+local log = radiant.log.create_logger('evolve')
 
 local EvolveComponent = require 'stonehearth.components.evolve.evolve_component'
 local AceEvolveComponent = class()
 
 local RECALCULATE_THRESHOLD = 0.5
 
-AceEvolveComponent._old_initialize = EvolveComponent.initialize
+AceEvolveComponent._ace_old_initialize = EvolveComponent.initialize
 function AceEvolveComponent:initialize()
-	self:_old_initialize()
+	self:_ace_old_initialize()
 
 	self._sv._local_water_modifier = 1
 	-- would need to set up a child entity with its own water component for detecting flooding in a smaller region
@@ -21,16 +23,16 @@ function AceEvolveComponent:initialize()
 	self.__saved_variables:mark_changed()
 end
 
-AceEvolveComponent._old_activate = EvolveComponent.activate
+AceEvolveComponent._ace_old_activate = EvolveComponent.activate
 function AceEvolveComponent:activate()
-	self:_old_activate()
+	self:_ace_old_activate()
 
-   -- allow for additional checks for whether evolve should happen by specifying a script in the json
    self._json = radiant.entities.get_json(self) or {}
-   self._evolve_check_script = self._json.evolve_check_script
    self._preferred_climate = self._json.preferred_climate
    -- determine the "reach" of water detection from json; otherwise just expand 1 outwards and downwards from collision region
    self._water_reach = self._json.water_reach or 1
+
+   self:_create_request_listeners()
 end
 
 function AceEvolveComponent:post_activate()
@@ -43,16 +45,58 @@ function AceEvolveComponent:post_activate()
    end
 end
 
-AceEvolveComponent._old_destroy = EvolveComponent.destroy
+AceEvolveComponent._ace_old_destroy = EvolveComponent.destroy
 function AceEvolveComponent:destroy()
-   self:_old_destroy()
+   self:_ace_old_destroy()
    
    self:_destroy_effect()
+   self:_destroy_request_listeners()
 end
 
-function AceEvolveComponent:set_check_evolve_script(path)
-   self._evolve_check_script = path
-   self.__saved_variables:mark_changed()
+function AceEvolveComponent:_create_request_listeners()
+   self:_destroy_request_listeners()
+   
+   if self._evolve_data.request_action then
+      if self._evolve_data.auto_request then
+         self._added_to_world_listener = self._entity:add_component('mob'):trace_parent('evolve entity added or removed')
+            :on_changed(function(parent)
+               if parent then
+                  self:request_evolve(self._entity:get_player_id())
+               end
+            end)
+      end
+
+      --[[
+      self._task_requested_listener = radiant.events.listen(self._entity, 'stonehearth_ace:task_tracker:task_requested', function()
+         self:_refresh_attention_effect()
+      end)
+
+      self._task_canceled_listener = radiant.events.listen(self._entity, 'stonehearth_ace:task_tracker:task_canceled', function()
+         self:_refresh_attention_effect()
+      end)
+
+      self:_refresh_attention_effect()
+      ]]
+   end
+end
+
+function AceEvolveComponent:_destroy_request_listeners()
+   if self._added_to_world_listener then
+      self._added_to_world_listener:destroy()
+      self._added_to_world_listener = nil
+   end
+
+   --[[
+   if self._task_requested_listener then
+      self._task_requested_listener:destroy()
+      self._task_requested_listener = nil
+   end
+
+   if self._task_canceled_listener then
+      self._task_canceled_listener:destroy()
+      self._task_canceled_listener = nil
+   end
+   ]]
 end
 
 function AceEvolveComponent:_create_water_signal()
@@ -100,9 +144,9 @@ function AceEvolveComponent:_on_water_signal_changed(changes)
 
    self._sv.last_calculated_water_volume = volume
 	
-	local best_affinity = {min_water = -1, period_multiplier = 1}
+	local best_affinity = {min_level = -1, period_multiplier = 1}
 	for _, affinity in ipairs(self._water_affinity) do
-		if self._sv._water_level >= affinity.min_water and affinity.min_water > best_affinity.min_water then
+		if self._sv._water_level >= affinity.min_level and affinity.min_level > best_affinity.min_level then
 			best_affinity = affinity
 		end
 	end
@@ -119,28 +163,14 @@ end
 
 -- returns the best affinity and then the next one so you can see the range until it would apply (and its effect)
 function AceEvolveComponent:get_best_water_level()
-	if not next(self._water_affinity) then
-		return nil
-	end
-
-	local best_affinity = self._water_affinity[1]
-	local next_affinity = self._water_affinity[2]
-	for i = 2, self._water_affinity.n do
-		local affinity = self._water_affinity[i]
-		if (self._sv._water_level or 0) >= affinity.min_water and affinity.min_water > best_affinity.min_water then
-			best_affinity = affinity
-			next_affinity = self._water_affinity[i + 1]
-		end
-	end
-
-	return best_affinity, next_affinity
+   return stonehearth.town:get_best_affinity_level(self._water_affinity)
 end
 
-AceEvolveComponent._old_evolve = EvolveComponent.evolve
+AceEvolveComponent._ace_old_evolve = EvolveComponent.evolve
 function AceEvolveComponent:evolve()
-   if self._evolve_check_script then
-      local script = radiant.mods.require(self._evolve_check_script)
-      if script and not script._should_evolve(self) then
+   if self._evolve_data.evolve_check_script then
+      local script = radiant.mods.require(self._evolve_data.evolve_check_script)
+      if script and not script.should_evolve(self) then
          self:_start_evolve_timer()
          return
       end
@@ -167,55 +197,87 @@ function AceEvolveComponent:evolve()
    if type(evolved_form_uri) == 'table' then
       evolved_form_uri = evolved_form_uri[rng:get_int(1, #evolved_form_uri)]
    end   
-   --Create the evolved entity and put it on the ground
-   local evolved_form = radiant.entities.create_entity(evolved_form_uri, { owner = self._entity})
-   
-   -- Paul: this is the main line of code being inserted into the base evolve function
-   self:_set_quality(evolved_form, self._entity)
 
-   radiant.entities.set_player_id(evolved_form, self._entity)
+   local evolved_form
 
-   -- Have to remove entity because it can collide with evolved form
-   radiant.terrain.remove_entity(self._entity)
-   if not radiant.terrain.is_standable(evolved_form, location) then
-      -- If cannot evolve because the evolved form will not fit in the current location, set a timer to try again.
-      radiant.terrain.place_entity_at_exact_location(self._entity, location, { force_iconic = false, facing = facing })
-      radiant.entities.destroy_entity(evolved_form)
-      --TODO(yshan) maybe add tuning for specific retry to grow time
-      self:_start_evolve_timer()
-      return
-   end
+   if evolved_form_uri then
+      --Create the evolved entity and put it on the ground
+      evolved_form = radiant.entities.create_entity(evolved_form_uri, { owner = self._entity})
+      
+      self:_set_quality(evolved_form, self._entity)
 
-   local owner_component = self._entity:get_component('stonehearth:ownable_object')
-   local owner = owner_component and owner_component:get_owner()
-   if owner then
-      local evolved_owner_component = evolved_form:get_component('stonehearth:ownable_object')
-      if evolved_owner_component then
-         -- need to remove the original's owner so that destroying it later doesn't mess things up with the new entity's ownership
-         owner_component:set_owner(nil)
-         evolved_owner_component:set_owner(owner)
+      radiant.entities.set_player_id(evolved_form, self._entity)
+
+      -- Have to remove entity because it can collide with evolved form
+      radiant.terrain.remove_entity(self._entity)
+      if not radiant.terrain.is_standable(evolved_form, location) then
+         -- If cannot evolve because the evolved form will not fit in the current location, set a timer to try again.
+         radiant.terrain.place_entity_at_exact_location(self._entity, location, { force_iconic = false, facing = facing })
+         radiant.entities.destroy_entity(evolved_form)
+         --TODO(yshan) maybe add tuning for specific retry to grow time
+         self:_start_evolve_timer()
+         return
+      end
+
+      local owner_component = self._entity:get_component('stonehearth:ownable_object')
+      local owner = owner_component and owner_component:get_owner()
+      if owner then
+         local evolved_owner_component = evolved_form:get_component('stonehearth:ownable_object')
+         if evolved_owner_component then
+            -- need to remove the original's owner so that destroying it later doesn't mess things up with the new entity's ownership
+            owner_component:set_owner(nil)
+            evolved_owner_component:set_owner(owner)
+         end
+      end
+
+      local unit_info = self._entity:get_component('stonehearth:unit_info')
+      local custom_name = unit_info and unit_info:get_custom_name()
+      if custom_name then
+         local evolved_unit_info = evolved_form:get_component('stonehearth:unit_info')
+         if evolved_unit_info then
+            evolved_unit_info:set_custom_name(custom_name)
+         end
+      end
+
+      local evolved_form_data = radiant.entities.get_entity_data(evolved_form, 'stonehearth:evolve_data')
+      if evolved_form_data then
+         -- Ensure the evolved form also has the evolve component if it will evolve
+         -- but first check if it should get "stunted"
+         if not evolved_form_data.stunted_chance or rng:get_real(0, 1) > evolved_form_data.stunted_chance then
+            evolved_form:add_component('stonehearth:evolve')
+         end
+      end
+
+      radiant.terrain.place_entity_at_exact_location(evolved_form, location, { force_iconic = false, facing = facing } )
+
+      local evolve_effect = self._evolve_data.evolve_effect
+      if evolve_effect then
+         radiant.effects.run_effect(evolved_form, evolve_effect)
+      end
+
+      if self._evolve_data.auto_harvest then
+         local renewable_resource_node = evolved_form:get_component('stonehearth:renewable_resource_node')
+         local resource_node = evolved_form:get_component('stonehearth:resource_node')
+
+         if renewable_resource_node and renewable_resource_node:is_harvestable() then
+            renewable_resource_node:request_harvest(self._entity:get_player_id())
+         elseif resource_node then
+            resource_node:request_harvest(self._entity:get_player_id())
+         end
       end
    end
 
-   local evolved_form_data = radiant.entities.get_entity_data(evolved_form, 'stonehearth:evolve_data')
-   if evolved_form_data and evolved_form_data.next_stage then
-      -- Ensure the evolved form also has the evolve component if it will evolve
-      evolved_form:add_component('stonehearth:evolve')
-   end
-
-   radiant.terrain.place_entity_at_exact_location(evolved_form, location, { force_iconic = false, facing = facing } )
-
-   local evolve_effect = self._evolve_data.evolve_effect
-   if evolve_effect then
-      radiant.effects.run_effect(evolved_form, evolve_effect)
+   if self._evolve_data.evolve_script then
+      local script = radiant.mods.require(self._evolve_data.evolve_script)
+      script.evolve(self._entity, evolved_form)
    end
 
    radiant.events.trigger(self._entity, 'stonehearth:on_evolved', {entity = self._entity, evolved_form = evolved_form})
 
-   -- Paul: also added this option, to kill on evolve instead of destroying (if you need to have it drop loot)
+   -- option to kill on evolve instead of destroying (e.g., if you need to have it drop loot or trigger the killed event)
    if self._evolve_data.kill_entity then
       radiant.entities.kill_entity(self._entity)
-   else
+   elseif not self._evolve_data.destroy_entity == false then
       radiant.entities.destroy_entity(self._entity)
    end
 end
@@ -292,7 +354,7 @@ function AceEvolveComponent:_set_quality(item, source)
 end
 
 function AceEvolveComponent:request_evolve(player_id)
-   local data = radiant.entities.get_entity_data(self._entity, 'stonehearth:evolve_data')
+   local data = self._evolve_data
    if not data then
       return false
    end
@@ -305,11 +367,13 @@ function AceEvolveComponent:request_evolve(player_id)
 
    if data.request_action then
       local task_tracker_component = self._entity:add_component('stonehearth:task_tracker')
-      if task_tracker_component:is_activity_requested(data.request_action) then
-         return false -- If someone has requested to evolve already
-      end
+      local was_requested = task_tracker_component:is_activity_requested(data.request_action)
 
       task_tracker_component:cancel_current_task(false) -- cancel current task first and force the evolve request
+
+      if was_requested then
+         return false -- If someone had already requested to evolve, just cancel the request and exit out
+      end
 
       local category = 'evolve'  --data.category or 
       local success = task_tracker_component:request_task(player_id, category, data.request_action, data.request_action_overlay_effect)
@@ -322,9 +386,8 @@ end
 
 -- this function gets called directly by request_evolve unless a request_action is specified
 -- if such an action is specified, this function should be called as part of that AI action
--- if there's an effect that the AI entity should perform during this, it will be returned by this function
 function AceEvolveComponent:perform_evolve(use_finish_cb)
-   local data = radiant.entities.get_entity_data(self._entity, 'stonehearth:evolve_data')
+   local data = self._evolve_data
    if not data then
       return false
    end
@@ -355,5 +418,27 @@ function AceEvolveComponent:_destroy_effect()
       self._effect = nil
    end
 end
+
+--[[
+function AceEvolveComponent:_refresh_attention_effect()
+   local data = self._evolve_data
+   if not data or not data.request_action then
+      return
+   end
+   
+   local task_tracker_component = self._entity:get_component('stonehearth:task_tracker')
+   local needs_effect = not task_tracker_component or not task_tracker_component:has_any_task()
+   local has_effect = self._attention_effect ~= nil
+   if needs_effect ~= has_effect then
+      if needs_effect then
+         self._attention_effect = radiant.effects.run_effect(self._entity, 'stonehearth_ace:effects:evolve_action_available_overlay_effect',
+               nil, nil, { playerColor = radiant.entities.get_player_color(self._entity) })
+      else
+         self._attention_effect:stop()
+         self._attention_effect = nil
+      end
+   end
+end
+]]
 
 return AceEvolveComponent

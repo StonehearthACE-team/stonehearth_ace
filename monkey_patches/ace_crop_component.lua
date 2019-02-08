@@ -3,9 +3,9 @@ local rng = _radiant.math.get_default_rng()
 local CropComponent = require 'stonehearth.components.crop.crop_component'
 local AceCropComponent = class()
 
-AceCropComponent._old_activate = CropComponent.activate
+AceCropComponent._ace_old_activate = CropComponent.activate
 function AceCropComponent:activate()
-   self:_old_activate()
+   self:_ace_old_activate()
    
    local json = radiant.entities.get_json(self) or {}
    self._megacrop_description = json.megacrop_description or stonehearth.constants.farming.default_megacrop_description
@@ -35,10 +35,10 @@ function AceCropComponent:apply_megacrop_chance_multiplier(multiplier)
 end
 
 --- As we grow, change the resources we yield and, if appropriate, command harvest
-AceCropComponent._old__on_grow_period = CropComponent._on_grow_period
+AceCropComponent._ace_old__on_grow_period = CropComponent._on_grow_period
 function AceCropComponent:_on_grow_period(e)
    local was_harvestable = self._sv.harvestable
-   self:_old__on_grow_period(e)
+   self:_ace_old__on_grow_period(e)
    
    -- if we just became harvestable, consider mega crop
    if was_harvestable ~= self._sv.harvestable and self._sv.consider_megacrop then

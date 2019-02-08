@@ -1,0 +1,74 @@
+{
+   "mixins": "stonehearth:mixins:food_decay",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(cheese_fresh.qb)"
+            ]
+         },
+         "decay_1": {
+            "models": [
+               "file(cheese_fresh_rotting.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0.05, "y": 0, "z": 0.05 }
+      },
+      "stonehearth:stacks": {
+         "max_stacks": 3
+      }
+   },
+   "entity_data": {
+      "stonehearth:food_decay": {
+         "initial_decay": {
+            "min": 240,
+            "max": 360
+         },
+         "decay_stages": {
+            "decay_1": {
+               "description": "i18n(stonehearth_ace:food.food_decay.cheese.description)"
+            }
+         }
+      },
+      "stonehearth:food_container": {
+         "effect": "fiddle",
+         "food": "stonehearth_ace:food:dairy:cheese_fresh:cheese_fresh_serving",
+         "stacks_per_serving": 1
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 7,
+         "rarity": "uncommon",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 1,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.dairy.cheese_fresh.cheese_fresh.display_name)",
+         "description": "i18n(stonehearth_ace:entities.food.dairy.cheese_fresh.cheese_fresh.description)",
+         "icon": "file(cheese_fresh.png)",
+         "is_item": true,
+         "category": "food",
+         "material_tags": [
+            "food_container",
+            "prepared_food",
+            "cheese_fresh",
+            "dairy",
+            "cheese",
+            "stockpile_prepared_food",
+            "meat"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": 3
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

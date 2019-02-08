@@ -1,5 +1,12 @@
 {
    "craftable_recipes": {
+	  "workbenches": {
+		 "recipes": {
+			"cheese_vat": {
+			   "recipe": "file(cheese_vat_recipe.json)"
+			}
+		 }
+	  },
       "legendary": {
          "ordinal": 2,
          "name": "i18n(stonehearth:jobs.common.recipes.legendary_name)",
@@ -16,7 +23,10 @@
             },
 			"rice_flour": {
                "recipe": "file(rice_flour_recipe.json)"
-            }
+            },
+			"curdling_mixture": {
+			   "recipe": "file(curdling_mixture_recipe.json)"
+			}
          }
       },
 	  "food_preparation": {
@@ -125,6 +135,18 @@
             },
             "ostrich_feed": {
                "recipe": "file(ostrich_feed_recipe.json)"
+            },
+			"moomoo_feed": {
+               "recipe": "file(moomoo_feed_recipe.json)"
+            },
+			"kibble": {
+               "recipe": "file(kibble_recipe.json)"
+            },
+            "kibble_fish": {
+               "recipe": "file(kibble_fish_recipe.json)"
+            },
+			"kibble_veggie": {
+               "recipe": "file(kibble_veggie_recipe.json)"
             }
          }
       },

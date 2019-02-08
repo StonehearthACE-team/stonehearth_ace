@@ -371,7 +371,7 @@ function WaterSignal:_on_tick_water_signal(waters, waterfalls)
    end
    
    if next(changes) then
-      log:debug('entity %s _on_water_signal_changed: %s', self._sv.entity_id, radiant.util.table_tostring(changes))
+      --log:debug('entity %s _on_water_signal_changed: %s', self._sv.entity_id, radiant.util.table_tostring(changes))
       self.__saved_variables:mark_changed()
       if self._change_cb then
          self._change_cb(changes)

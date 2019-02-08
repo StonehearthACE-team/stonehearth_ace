@@ -1,0 +1,12 @@
+{
+   "type": "command",
+   "name": "cheese_vat_fill",
+   "display_name": "i18n(stonehearth_ace:data.commands.request_evolve.cheese_vat_fill.display_name)",
+   "description": "i18n(stonehearth_ace:data.commands.request_evolve.cheese_vat_fill.description)",
+   "default_enabled": true,
+   "ordinal": -99,
+   "icon": "file(cheese_vat_fill.png)",
+   "action": "call",
+   "function": "stonehearth_ace:use_evolve_command",
+   "args": []
+}

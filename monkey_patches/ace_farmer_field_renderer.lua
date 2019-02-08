@@ -11,7 +11,7 @@ local AceFarmerFieldRenderer = class()
 
 local log = radiant.log.create_logger('farmer_field.renderer')
 
-AceFarmerFieldRenderer._old_initialize = FarmerFieldRenderer.initialize
+AceFarmerFieldRenderer._ace_old_initialize = FarmerFieldRenderer.initialize
 function AceFarmerFieldRenderer:initialize(render_entity, datastore)
    self._water_color = Color4(constants.hydrology.DEFAULT_WATER_COLOR)
 
@@ -21,15 +21,15 @@ function AceFarmerFieldRenderer:initialize(render_entity, datastore)
    self._fertilized_nodes = {}
    self._fertilized_zone_renderer = ZoneRenderer(render_entity)
    
-   self:_old_initialize(render_entity, datastore)
+   self:_ace_old_initialize(render_entity, datastore)
 
    self._ui_view_mode = stonehearth.renderer:get_ui_mode()
    self._ui_mode_listener = radiant.events.listen(radiant, 'stonehearth:ui_mode_changed', self, self._on_ui_mode_changed)
 end
 
-AceFarmerFieldRenderer._old_destroy = FarmerFieldRenderer.destroy
+AceFarmerFieldRenderer._ace_old_destroy = FarmerFieldRenderer.destroy
 function AceFarmerFieldRenderer:destroy()
-   self:_old_destroy()
+   self:_ace_old_destroy()
 
    if self._ui_mode_listener then
       self._ui_mode_listener:destroy()
@@ -40,6 +40,8 @@ function AceFarmerFieldRenderer:destroy()
       self._water_signal_region_node:destroy()
       self._water_signal_region_node = nil
    end
+
+   self._fertilized_zone_renderer:destroy()
 end
 
 -- override instead of patching so we're not re-calling certain things
@@ -84,14 +86,14 @@ function AceFarmerFieldRenderer:_update_dirt_models(effective_water_level)
    local tilled_dirt_model = self._farmer_field_data.tilled_dirt
    local furrow_dirt_model = self._farmer_field_data.furrow_dirt
    
-   if effective_water_level == levels.SOME or effective_water_level == levels.EXTRA then
+   if effective_water_level == levels.SOME then
       if self._farmer_field_data.tilled_dirt_water_partial then
          tilled_dirt_model = self._farmer_field_data.tilled_dirt_water_partial
       end
       if self._farmer_field_data.furrow_dirt_water_partial then
          furrow_dirt_model = self._farmer_field_data.furrow_dirt_water_partial
       end
-   elseif effective_water_level == levels.PLENTY then
+   elseif effective_water_level == levels.PLENTY or effective_water_level == levels.EXTRA then
       if self._farmer_field_data.tilled_dirt_water_full then
          tilled_dirt_model = self._farmer_field_data.tilled_dirt_water_full
       end
@@ -100,7 +102,9 @@ function AceFarmerFieldRenderer:_update_dirt_models(effective_water_level)
       end
    end
 
-   if tilled_dirt_model ~= self._tilled_dirt_model or furrow_dirt_model ~= self._furrow_dirt_model then
+   -- if our water level has changed, recreate the dirt nodes
+   if self._prev_water_level ~= effective_water_level then
+      self._prev_water_level = effective_water_level
       self._tilled_dirt_model = tilled_dirt_model
       self._furrow_dirt_model = furrow_dirt_model
       for _, row in pairs(self._dirt_nodes) do
@@ -164,6 +168,30 @@ function AceFarmerFieldRenderer:_destroy_fertilized_node(x, y)
       node:destroy()
       row[y] = nil
    end
+end
+
+-- it makes sense at this point (with the puddles) to just override this whole function
+function AceFarmerFieldRenderer:_update_and_get_dirt_node_array(data)
+   local size_x = data.size.x
+   local size_y = data.size.y
+   local contents = data.contents
+   local dirt_node_array = {}
+   for x=1, size_x do
+      for y=1, size_y do
+         local dirt_plot = contents[x][y]
+         if dirt_plot and dirt_plot.x ~= nil then -- need to check for nil for backward compatibility reasons
+            local node = self:_get_dirt_node(x, y)
+            if not node then
+               local model = dirt_plot.overwatered_model or
+                     dirt_plot.is_furrow and self._furrow_dirt_model or self._tilled_dirt_model
+               node = self:_create_node(Point3(dirt_plot.x - 1.5, 0, dirt_plot.y - 1.5), model)
+               self:_set_dirt_node(x, y, node)
+            end
+            table.insert(dirt_node_array, node)
+         end
+      end
+   end
+   return dirt_node_array
 end
 
 function AceFarmerFieldRenderer:_update_and_get_fertilized_node_array(data)

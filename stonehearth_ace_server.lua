@@ -1,7 +1,5 @@
 stonehearth_ace = {}
 
-stonehearth_ace.util = require("lib.util")
-
 local service_creation_order = {
    'connection',
    'crafter_info',
@@ -27,7 +25,7 @@ local monkey_patches = {
    ace_growing_component = 'stonehearth.components.growing.growing_component',
    ace_renewable_resource_node_component = 'stonehearth.components.renewable_resource_node.renewable_resource_node_component',
    ace_resource_node_component = 'stonehearth.components.resource_node.resource_node_component',
-   --ace_task_tracker_component = 'stonehearth.components.task_tracker.task_tracker_component', -- only used for individual auto-harvest
+   ace_task_tracker_component = 'stonehearth.components.task_tracker.task_tracker_component',
    ace_shepherd_pasture_component = 'stonehearth.components.shepherd_pasture.shepherd_pasture_component',
    ace_shepherd_service = 'stonehearth.services.server.shepherd.shepherd_service',
    ace_swimming_service = 'stonehearth.services.server.swimming.swimming_service',
@@ -69,14 +67,22 @@ local monkey_patches = {
    ace_posture_component = 'stonehearth.components.posture.posture_component',
    ace_effect_manager = 'radiant.modules.effects.effect_manager',
    ace_entities = 'radiant.modules.entities',
-   ace_inventory = 'stonehearth.services.server.inventory.inventory'
+   ace_inventory = 'stonehearth.services.server.inventory.inventory',
+   ace_farming_service = 'stonehearth.services.server.farming.farming_service',
+   ace_hydrology_service = 'stonehearth.services.server.hydrology.hydrology_service',
+   ace_find_best_reachable_entity_by_type = 'stonehearth.ai.actions.find_best_reachable_entity_by_type',
+   ace_terrain_service = 'stonehearth.services.server.terrain.terrain_service',
+   ace_weather_state = 'stonehearth.services.server.weather.weather_state',
+   ace_seasons_service = 'stonehearth.services.server.seasons.seasons_service',
+   ace_unit_info_component = 'stonehearth.components.unit_info.unit_info_component'
 }
 
 local function monkey_patching()
    for from, into in pairs(monkey_patches) do
-      
       local monkey_see = require('monkey_patches.' .. from)
       local monkey_do = radiant.mods.require(into)
+      radiant.log.write_('stonehearth_ace', 0, 'ACE server monkey-patching sources \'' .. from .. '\' => \'' .. into .. '\'')
+      radiant.log.write_('stonehearth_ace', 0, 'ACE server monkey-patching data \'' .. tostring(monkey_see) .. '\' => \'' .. tostring(monkey_do) .. '\'')
       radiant.mixin(monkey_do, monkey_see)
    end
 end

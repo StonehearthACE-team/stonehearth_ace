@@ -3,10 +3,11 @@ local AceDoorComponent = class()
 
 local Point3 = _radiant.csg.Point3
 local Cube3 = _radiant.csg.Cube3
+local log = radiant.log.create_logger('door')
 
 -- we're not actually using this, but let's keep it around just in case
-AceDoorComponent._old_add_collision_shape = DoorComponent._add_collision_shape
-AceDoorComponent._old_toggle_lock = DoorComponent.toggle_lock
+AceDoorComponent._ace_old_add_collision_shape = DoorComponent._add_collision_shape
+AceDoorComponent._ace_old_toggle_lock = DoorComponent.toggle_lock
 
 function AceDoorComponent:_add_collision_shape()
    local portal = self._entity:get_component('stonehearth:portal')
@@ -15,7 +16,7 @@ function AceDoorComponent:_add_collision_shape()
       local mgs = self._entity:add_component('movement_guard_shape')
 
       local region2 = portal:get_portal_region()
-	  local is_horizontal = portal:is_horizontal()
+	   local is_horizontal = portal:is_horizontal()
       local region3 = mgs:get_region()
       if not region3 then
          region3 = radiant.alloc_region3()
@@ -37,7 +38,7 @@ function AceDoorComponent:_add_collision_shape()
 end
 
 function AceDoorComponent:toggle_lock()
-	self:_old_toggle_lock()
+	self:_ace_old_toggle_lock()
 
 	-- now adjust its collision type
 	local mod = self._entity:add_component('stonehearth_ace:entity_modification')

@@ -1,4 +1,5 @@
 local item_quality_lib = require 'stonehearth_ace.lib.item_quality.item_quality_lib'
+local log = radiant.log.create_logger('renewable_resource_node')
 
 local RenewableResourceNodeComponent = radiant.mods.require('stonehearth.components.renewable_resource_node.renewable_resource_node_component')
 local AceRenewableResourceNodeComponent = class()
@@ -7,9 +8,13 @@ function AceRenewableResourceNodeComponent:create()
    self._is_create = true
 end
 
-AceRenewableResourceNodeComponent._old_post_activate = RenewableResourceNodeComponent.post_activate
+AceRenewableResourceNodeComponent._ace_old_post_activate = RenewableResourceNodeComponent.post_activate
 function AceRenewableResourceNodeComponent:post_activate()
-   self:_old_post_activate()
+   if not self._json then
+      return
+   end
+   
+   self:_ace_old_post_activate()
 
    if self._sv.harvestable and self._is_create then
       self:_auto_request_harvest()
@@ -22,7 +27,7 @@ function AceRenewableResourceNodeComponent:_auto_request_harvest()
    -- if they haven't, there's no need to request it to be harvested because it's just growing in the wild with no owner
    
    if player_id ~= '' then
-      local auto_harvest = self:get_auto_harvest_enabled(player_id)
+      local auto_harvest = self:get_auto_harvest_enabled(player_id) or self:_can_pasture_animal_renewably_harvest()
       if auto_harvest then
          self:request_harvest(player_id)
       end
@@ -36,24 +41,41 @@ function AceRenewableResourceNodeComponent:get_auto_harvest_enabled(player_id)
    end
 end
 
-AceRenewableResourceNodeComponent._old_spawn_resource = RenewableResourceNodeComponent.spawn_resource
+AceRenewableResourceNodeComponent._ace_old_spawn_resource = RenewableResourceNodeComponent.spawn_resource
 function AceRenewableResourceNodeComponent:spawn_resource(harvester_entity, location, owner_player_id)
-   if not self._json.spawn_resource_immediately or not owner_player_id or owner_player_id == '' or
-         stonehearth.client_state:get_client_gameplay_setting(owner_player_id, 'stonehearth_ace', 'enable_auto_harvest_animals', true) then
-      self:_old_spawn_resource(harvester_entity, location, owner_player_id)
+   if not self._json.spawn_resource_immediately or self:_can_pasture_animal_renewably_harvest() ~= false then
+      self:_ace_old_spawn_resource(harvester_entity, location, owner_player_id)
    end
 end
 
-AceRenewableResourceNodeComponent._old_renew = RenewableResourceNodeComponent.renew
+function AceRenewableResourceNodeComponent:_can_pasture_animal_renewably_harvest()
+   -- determine if this entity is a pasture animal and if it's currently in a pasture that disables renewable harvesting
+   -- what a long chain to unravel!
+   -- TODO: set a flag somewhere so we don't have to do this all the time?
+   local equipment = self._entity:get_component('stonehearth:equipment')
+   local collar = equipment and equipment:has_item_type('stonehearth:pasture_equipment:tag')
+   local shepherded = collar and collar:get_component('stonehearth:shepherded_animal')
+   local pasture = shepherded and shepherded:get_pasture()
+   local shepherd_pasture = pasture and pasture:get_component('stonehearth:shepherd_pasture')
+   local return_val
+   if shepherd_pasture then
+      return_val = shepherd_pasture:get_harvest_animals_renewable()
+   end
+
+   --log:debug('pasture animal %s renewably harvest', (return_val and 'CAN') or (return_val == false and 'CANNOT') or 'ISN\'T A PASTURE ANIMAL SO CANNOT')
+   return return_val
+end
+
+AceRenewableResourceNodeComponent._ace_old_renew = RenewableResourceNodeComponent.renew
 function AceRenewableResourceNodeComponent:renew()
-   self:_old_renew()
+   self:_ace_old_renew()
 
    self:_auto_request_harvest()
 end
 
-AceRenewableResourceNodeComponent._old__place_spawned_items = RenewableResourceNodeComponent._place_spawned_items
+AceRenewableResourceNodeComponent._ace_old__place_spawned_items = RenewableResourceNodeComponent._place_spawned_items
 function AceRenewableResourceNodeComponent:_place_spawned_items(json, owner, location, will_destroy_entity)
-   local spawned_items, item = self:_old__place_spawned_items(json, owner, location, will_destroy_entity)
+   local spawned_items, item = self:_ace_old__place_spawned_items(json, owner, location, will_destroy_entity)
 
    local quality = radiant.entities.get_item_quality(self._entity)
    if quality > 1 then
@@ -67,6 +89,10 @@ end
 
 function AceRenewableResourceNodeComponent:_set_quality(item, quality)
    item_quality_lib.apply_quality(item, quality)
+end
+
+function AceRenewableResourceNodeComponent:cancel_harvest_request()
+   self:_cancel_harvest_request()
 end
 
 return AceRenewableResourceNodeComponent

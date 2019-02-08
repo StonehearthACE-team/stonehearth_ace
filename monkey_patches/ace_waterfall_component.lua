@@ -7,9 +7,9 @@ function WaterfallComponent:restore()
    self._is_restore = true
 end
 
-AceWaterfallComponent._old_activate = WaterfallComponent.activate
+AceWaterfallComponent._ace_old_activate = WaterfallComponent.activate
 function AceWaterfallComponent:activate()
-   self:_old_activate()
+   self:_ace_old_activate()
 
    if self._is_restore then
       self:_cache_location()
@@ -39,9 +39,9 @@ function AceWaterfallComponent:set_volume(volume)
    stonehearth_ace.water_signal:waterfall_component_modified(self._entity)
 end
 
-AceWaterfallComponent._old__update_region = WaterfallComponent._update_region
+AceWaterfallComponent._ace_old__update_region = WaterfallComponent._update_region
 function AceWaterfallComponent:_update_region()
-   self:_old__update_region()
+   self:_ace_old__update_region()
 
    self._entity:add_component('region_collision_shape'):set_region(self._sv.region)
    self:_cache_location()

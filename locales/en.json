@@ -426,6 +426,14 @@
             "add_thatch_to_bed": {
                "display_name": "Add Thatch",
                "description": "Make this bed a little more comfortable by adding some thatch to it!"
+            },
+            "cheese_vat_fill": {
+               "display_name": "Fill Cheese Vat",
+               "description": "Order the Cook to pour a curdling mixture in this cheese vat to start the production of cheese!"
+            },
+            "cheese_vat_drain": {
+               "display_name": "Drain Cheese Vat",
+               "description": "Order the Cook to remove the leftover whey and treat the curds, forming fresh cheese!"
             }
          },
          "slaughter": {
@@ -1086,6 +1094,41 @@
                "recipe_name": "Porcelain Animal Comfy Bed",
                "description": "Animals will have a wonderful time sleeping in this bed!",
                "flavor": "Pets will always try to sleep on the bed that is closest to their owner's bed!"
+            },
+            "fuel_holder_large_clay_recipe": {
+               "recipe_name": "Clay Firewood Shed",
+               "description": "Build a reliable storage shed that will keep up to 18 Bundles O' Firewood ready to be used.",
+               "flavor": ""
+            },
+            "food_trough_clay_recipe": {
+               "recipe_name": "Clay Manger",
+               "description": "A trough for a Shepherd to serve food for animals in a pasture.",
+               "flavor": "Shepherds will always try to keep troughs full"
+            },
+            "pet_food_bowl_clay_red_recipe": {
+               "recipe_name": "Red Clay Kibble Bowl",
+               "description": "Hearthlings can put kibble in this clay bowl for their pets to eat.",
+               "flavor": "Dogs love these for some reason"
+            },
+            "pet_food_bowl_clay_blue_recipe": {
+               "recipe_name": "Blue Clay Kibble Bowl",
+               "description": "Hearthlings can put kibble in this clay bowl for their pets to eat.",
+               "flavor": "Blue goes well with the mess they'll cause"
+            },
+            "pet_food_bowl_clay_green_recipe": {
+               "recipe_name": "Green Clay Kibble Bowl",
+               "description": "Hearthlings can put kibble in this clay bowl for their pets to eat.",
+               "flavor": "Often lost by pet owners with lawns"
+            },
+            "pasture_bed_small_recipe": {
+               "recipe_name": "Small Pasture Bedding",
+               "description": "Small pasture animals will go to these during the night or bad weather, place them under shelter.",
+               "flavor": "Small animals include poyos and rabbits"
+            },
+            "pasture_bed_recipe": {
+               "recipe_name": "Pasture Bedding",
+               "description": "Large pasture animals will go to these during the night or bad weather, place them under shelter.",
+               "flavor": "Large animals include sheep, ostriches and moo-moos"
             }
          },
          "potter_description": {
@@ -1219,6 +1262,31 @@
                "recipe_name": "Marble Animal Comfy Bed",
                "description": "Animals will have a wonderful time sleeping in this bed!",
                "flavor": "Pets will always try to sleep on the bed that is closest to their owner's bed!"
+            },
+            "fuel_holder_large_stone_recipe": {
+               "recipe_name": "Stone Firewood Shed",
+               "description": "Build a reliable storage shed that will keep up to 18 Bundles O' Firewood ready to be used.",
+               "flavor": ""
+            },
+            "food_trough_stone_recipe": {
+               "recipe_name": "Stone Manger",
+               "description": "A trough for a Shepherd to serve food for animals in a pasture.",
+               "flavor": "Shepherds will always try to keep troughs full"
+            },
+            "pet_food_bowl_stone_recipe": {
+               "recipe_name": "Stone Kibble Bowl",
+               "description": "Hearthlings can put kibble in this stone bowl for their pets to eat.",
+               "flavor": "Heavy enough to not be moved around... much"
+            },
+            "pasture_bed_small_recipe": {
+               "recipe_name": "Small Pasture Bedding",
+               "description": "Small pasture animals will go to these during the night or bad weather, place them under shelter.",
+               "flavor": "Small animals include poyos and rabbits"
+            },
+            "pasture_bed_recipe": {
+               "recipe_name": "Pasture Bedding",
+               "description": "Large pasture animals will go to these during the night or bad weather, place them under shelter.",
+               "flavor": "Large animals include sheep, ostriches and moo-moos"
             }
          },
          "mason_workbench_bone": {
@@ -1232,6 +1300,11 @@
       "blacksmith": {
          "recipes": {
             "utility_name": "Utility",
+            "fuel_holder_small_recipe": {
+               "recipe_name": "Cast Iron Holder",
+               "description": "Craft a fancy holder that can store up to 4 Bundles O' Firewood.",
+               "flavor": ""
+            },
             "farmer_hoe_iron_recipe": {
                "recipe_name": "Iron Farmer's Hoe",
                "description": "Craft a tool that Farmers can use to slightly improve their working efficiency.",
@@ -1523,6 +1596,16 @@
       "cook": {
          "recipes": {
             "food_preparation_name": "Food Preparation",
+            "cook_cheese_vat_recipe": {
+               "recipe_name": "Cheese Vat",
+               "description": "The Cook can use this to make cheese by crafting curdling mixtures. The longer it rests the more valuable it gets.",
+               "flavor": "You can harvest the cheese at any time during the maturation process"
+            },
+            "curdling_mixture_recipe": {
+               "recipe_name": "Curdling Mixture",
+               "description": "A fermentation mixture of milk and some additives. Within a cheese vat this can be turned into cheese!",
+               "flavor": "You probably don't want to know what else goes in there..."
+            },
             "nutty_poultry_recipe": {
                "recipe_name": "Stirred Poultry & Nuts",
                "description": "Stirred and fried large poultry slices with spices and nuts.",
@@ -1696,6 +1779,26 @@
                "recipe_name": "Ostrich Feed",
                "description": "A nutritious supplement for ostriches. Improves the quality of animal produce.",
                "flavor": ""
+            },
+            "moomoo_feed_recipe": {
+               "recipe_name": "Moo-Moo Feed",
+               "description": "Tasty and hearty food appreciated by large ruminants. Improves the quality of animal produce.",
+               "flavor": ""
+            },
+            "kibble_recipe": {
+               "recipe_name": "Kibble",
+               "description": "Bake nutritious and crunchy rations for pets. Exclusively vegetarian animals will not eat this kibble.",
+               "flavor": ""
+            },
+            "kibble_fish_recipe": {
+               "recipe_name": "Fish Kibble",
+               "description": "Bake crunchy rations for pets. Exclusively vegetarian animals will not eat this kibble.",
+               "flavor": "Fish kibble is not their favorite but will do the trick"
+            },
+            "kibble_veggie_recipe": {
+               "recipe_name": "Veggie Kibble",
+               "description": "Bake delicious and healthy rations for pets. Exclusively carnivore animals will not eat this kibble.",
+               "flavor": ""
             }
          },
          "cook_mill_powered": {
@@ -1715,6 +1818,30 @@
                "display_name": "Pumpkin Cauldron",
                "description": "An exotic cauldron used by the Cook for delicious recipes."
             }
+         },
+         "cook_cheese_vat_empty": {
+            "display_name": "Empty Cheese Vat",
+            "description": "Used by the Cook to make cheese. The longer it rests, the better!"
+         },
+         "cook_cheese_vat_filled": {
+            "display_name": "Curdling Cheese Vat",
+            "description": "The milk is curdling and shall take some time before it can be drained and formed."
+         },
+         "cook_cheese_vat_curdled": {
+            "display_name": "Curdled Cheese Vat",
+            "description": "The milk has formed curds and the leftover whey needs to be drained."
+         },
+         "cook_cheese_vat_cheese_fresh": {
+            "display_name": "Fresh Cheese Vat",
+            "description": "Fresh cheese has formed! Harvest it or let it mature some more."
+         },
+         "cook_cheese_vat_cheese_mild": {
+            "display_name": "Mild Cheese Vat",
+            "description": "Mild cheese has formed! Harvest it or let it mature even more for a lot of time."
+         },
+         "cook_cheese_vat_cheese_aged": {
+            "display_name": "Aged Cheese Vat",
+            "description": "This cheese is quite mature, firm and flavorful! It is time to harvest this delicacy."
          }
       },
       "carpenter": {
@@ -1789,6 +1916,36 @@
                "recipe_name": "Ornate Animal Comfy Bed",
                "description": "Animals will have a wonderful time sleeping in this bed!",
                "flavor": "Pets will always try to sleep on the bed that is closest to their owner's bed!"
+            },
+            "fuel_holder_large_wood_recipe": {
+               "recipe_name": "Wooden Firewood Shed",
+               "description": "Build a reliable storage shed that will keep up to 18 Bundles O' Firewood ready to be used.",
+               "flavor": ""
+            },
+            "food_trough_wood_recipe": {
+               "recipe_name": "Wooden Manger",
+               "description": "A trough for a Shepherd to serve food for animals in a pasture.",
+               "flavor": "Shepherds will always try to keep troughs full"
+            },
+            "pet_food_bowl_wood_recipe": {
+               "recipe_name": "Wooden Kibble Bowl",
+               "description": "Hearthlings can put kibble in this wooden bowl for their pets to eat.",
+               "flavor": "Hopefully they won't make much of a mess..."
+            },
+            "pasture_bed_small_recipe": {
+               "recipe_name": "Small Pasture Bedding",
+               "description": "Small pasture animals will go to these during the night or bad weather, place them under shelter.",
+               "flavor": "Small animals include poyos and rabbits"
+            },
+            "pasture_bed_recipe": {
+               "recipe_name": "Pasture Bedding",
+               "description": "Large pasture animals will go to these during the night or bad weather, place them under shelter.",
+               "flavor": "Large animals include sheep, ostriches and moo-moos"
+            },
+            "fish_trap_recipe": {
+               "recipe_name": "Fish Trap",
+               "description": "Used by the Trapper to safely catch and harvest or capture fish. Can only place a limited amount.",
+               "flavor": "You can toggle the catching mode when clicking the trap!"
             }
          },
          "carpenter_description": {
@@ -3523,7 +3680,7 @@
          "megacrop": {
             "mega_pumpkin": {
                "display_name": "Mega Pumpkin",
-               "description": "Woah, look at the size! Place it as a decoration or to prepare a hearty soup!"
+               "description": "Woah, look at the size! Harvest it, place it as a decoration or prepare a hearty soup!"
             },
             "mega_pumpkin_soup": {
                "display_name": "Mega Pumpkin Soup",
@@ -3540,11 +3697,16 @@
             },
             "mega_watermelon": {
                "display_name": "Mega Watermelon",
-               "description": "It's huge! Use it as a decoration or carve it open for the refreshing juice!"
+               "description": "It's huge! Harvest, use it as a decoration or carve it open for the refreshing juice!"
             },
             "mega_watermelon_juice": {
                "display_name": "Mega Watermelon Juice",
                "description": "Slurp! So refreshing and sweet! A whole town can enjoy this drink."
+            },
+            "mega_sweet_potato": {
+               "iconic_description": "Place it to be harvest for some moo-moo feed or be used as a fancy chair.",
+               "display_name": "Mega Sweet Potato",
+               "description": "Tasty! Harvest for some moo-moo feed or use it as a fancy chair."
             }
          },
          "valor_statue": {
@@ -3659,13 +3821,17 @@
             "display_name": "Sheep",
             "display_name_arctic": "Longwool Sheep",
             "display_name_desert": "Dune Sheep",
-            "display_name_highlands": "Bighorn Sheep"
+            "display_name_highlands": "Bighorn Sheep",
+            "sheep_young": {
+               "display_name": "Lamb"
+            }
          },
          "poyo": {
             "nest": {
                "display_name": "Poyo Nest",
                "description": "I'm sure they wouldn't mind if an egg or two are missing... Right?"
-            }
+            },
+            "display_name": "Poyo"
          },
          "big_bird": {
             "nest": {
@@ -4089,7 +4255,104 @@
          },
          "kibble_veggie": {
             "display_name": "Veggie Kibble",
-            "description": "Nutritious food made exclusively for vegetarian pets. A kibble bowl can be used for serving."
+            "description": "Vegetarian food made exclusively for pets. A kibble bowl can be used for serving."
+         },
+         "kibble_fish": {
+            "display_name": "Fish Kibble",
+            "description": "Nutritious food made exclusively for pets. A kibble bowl can be used for serving."
+         },
+         "megacrop_ostrich_feed": {
+            "megacrop_ostrich_feed": {
+               "display_name": "Mega Heirbloom Feed",
+               "description": "Yum! This juicy giant heirbloom fruit would make a delicious meal for ostriches!"
+            },
+            "megacrop_ostrich_feed_ground": {
+               "display_name": "Mega Heirbloom Feed",
+               "description": "Tasty slices of a mega heirbloom fruit. This meal will last a good while!"
+            }
+         },
+         "megacrop_moomoo_feed": {
+            "megacrop_moomoo_feed": {
+               "display_name": "Mega Sweet Potato Feed",
+               "description": "Chunky and hearty slices of sweet potato that can be given to moo-moos!"
+            },
+            "megacrop_moomoo_feed_ground": {
+               "display_name": "Mega Sweet Potato Feed",
+               "description": "Ready to be munched. This meal will last a good while!"
+            }
+         },
+         "megacrop_poyo_feed": {
+            "megacrop_poyo_feed": {
+               "display_name": "Mega Rice Feed",
+               "description": "Wow! These can be used by the Shepherd as feed for poyos!"
+            },
+            "megacrop_poyo_feed_ground": {
+               "display_name": "Mega Rice Feed",
+               "description": "Ground and delicious mega rice, poyos love it! This meal will last a good while!"
+            }
+         },
+         "megacrop_rabbit_feed": {
+            "megacrop_rabbit_feed": {
+               "display_name": "Mega Carrot Feed",
+               "description": "Huge and vigorous carrots that would definitely be appreciated by rabbits."
+            },
+            "megacrop_rabbit_feed_ground": {
+               "display_name": "Mega Carrot Feed",
+               "description": "Cut and ready for the delight of all bunnies. This meal will last a good while!"
+            }
+         },
+         "megacrop_sheep_feed": {
+            "megacrop_sheep_feed": {
+               "display_name": "Mega Wheat Feed",
+               "description": "So golden and shiny! Can be used as a lovely feed for sheeps."
+            },
+            "megacrop_sheep_feed_ground": {
+               "display_name": "Mega Wheat Feed",
+               "description": "Sheep must love this. This meal will last a good while!"
+            }
+         },
+         "moomoo_feed": {
+            "moomoo_feed": {
+               "display_name": "Moo-Moo Feed",
+               "description": "For feeding cattle"
+            },
+            "moomoo_feed_ground": {
+               "display_name": "Moo-Moo Feed",
+               "description": "Tasty and hearty food appreciated by large ruminants."
+            }
+         },
+         "dairy": {
+            "cheese_fresh": {
+               "cheese_fresh": {
+                  "display_name": "Fresh Cheese",
+                  "description": "Soft, moist and delicious! This cheese will go bad after some time if not eaten."
+               },
+               "cheese_fresh_serving": {
+                  "display_name": "Slice of Fresh Cheese"
+               }
+            },
+            "cheese_mild": {
+               "cheese_mild": {
+                  "display_name": "Mild Cheese",
+                  "description": "A nice texture and a bold flavor. This cheese lasts a good time before going bad."
+               },
+               "cheese_mild_serving": {
+                  "display_name": "Slice of Mild Cheese"
+               }
+            },
+            "cheese_aged": {
+               "cheese_aged_serving": {
+                  "display_name": "Slice of Aged Cheese"
+               },
+               "cheese_aged": {
+                  "display_name": "Aged Cheese",
+                  "description": "Firm, strong and full of flavor! This cheese won't go bad."
+               }
+            },
+            "curdling_mixture": {
+               "display_name": "Curdling Mixture",
+               "description": "Milk and some other things. The Cook needs to pour it inside a cheese vat!"
+            }
          }
       },
       "terrain": {
@@ -5194,7 +5457,7 @@
          },
          "fuel_holder_small": {
             "display_name": "Cast Iron Holder",
-            "description": "This fancy holder can reasonably store some fuel like firewood."
+            "description": "This fancy holder can store a reasonable amount of firewood."
          },
          "mega_golden_gourd_pot": {
             "display_name": "Mega Golden Gourd Pot",
@@ -5231,6 +5494,18 @@
          "pet_food_bowl_clay_blue": {
             "display_name": "Blue Clay Kibble Bowl",
             "description": "Hearthlings can put kibble in this clay bowl for their pets to eat."
+         },
+         "fuel_holder_large_wood": {
+            "display_name": "Wooden Firewood Shed",
+            "description": "This reliable storage will keep a lot of firewood dry and ready to be used!"
+         },
+         "fuel_holder_large_clay": {
+            "display_name": "Clay Firewood Shed",
+            "description": "This reliable storage will keep a lot of firewood dry and ready to be used!"
+         },
+         "fuel_holder_large_stone": {
+            "display_name": "Stone Firewood Shed",
+            "description": "This reliable storage will keep a lot of firewood dry and ready to be used!"
          }
       },
       "tools": {
@@ -5624,24 +5899,32 @@
             "farm": {
                "properties": "Crop Properties:",
                "statuses": "Current Statuses:",
+               "fertilizer_settings": {
+                  "title": "Fertilizer:",
+                  "none": "None",
+                  "none_description": "Do not fertilize this field (save your fertilizer for more valuable crops).",
+                  "high_quality": "High Quality",
+                  "high_quality_description": "Prefer higher quality fertilizers for this field.",
+                  "low_quality": "Low Quality",
+                  "low_quality_description": "Prefer lower quality fertilizers for this field.",
+                  "specific": "Specific Fertilizer:",
+                  "specific_description": "Select a fertilizer below to only use that specific fertilizer for this field."
+               },
                "season": {
                   "property_name": "Preferred Seasons",
                   "property_description": "This crop prefers the <span class='text-value'>[str(i18n_data.season)]</span> season and will grow more slowly outside of preferred seasons.",
-                  "status_name": "Current Season",
+                  "status_name": "Current Season: <span class='text-value'>[str(i18n_data.season)]</span>",
                   "in_season": "This crop is currently in season, so will grow at a normal rate.",
                   "out_of_season": "This crop is currently out of season and will grow more slowly.",
-                  "values": {
-                     "spring": "Spring",
-                     "summer": "Summer",
-                     "autumn": "Autumn",
-                     "winter": "Winter"
-                  }
+                  "no_season_title": "No Preferred Seasons",
+                  "no_season_description": "This crop does not have any preferred seasons and will grow normally throughout the year."
                },
                "growth_time": {
                   "property_name": "Growth Time",
                   "status_name": "Relative Growth Time",
                   "days_only": "[str(i18n_data.day)] day(s)",
                   "days_and_hours": "[str(i18n_data.day)] day(s) and [str(i18n_data.hour)] hour(s)",
+                  "hours_only": "[str(i18n_data.hour)] hour(s)",
                   "short": "This crop matures quickly (<span class='text-value'>[str(i18n_data.total_growth_time)]</span> before modifiers).",
                   "fair": "This crop matures at a moderate rate (<span class='text-value'>[str(i18n_data.total_growth_time)]</span> before modifiers).",
                   "long": "This crop takes a long time to mature (<span class='text-value'>[str(i18n_data.total_growth_time)]</span> before modifiers).",
@@ -5650,11 +5933,18 @@
                   "longer": "This crop has more negative growth time modifiers than positive ones."
                },
                "water_affinity": {
-                  "property_name": "Irrigation Needs",
+                  "property_name": "Water Needs",
                   "status_name": "Current Water Level",
-                  "range": "This crop will grow a little faster than normal with <span class='water'><span class='text-value'>[str(i18n_data.min_water_level)] - [str(i18n_data.max_water_level)]</span> water</span> within its blue outlined region.",
-                  "min_only": "This crop will grow a little faster with at least <span class='water'><span class='text-value'>[str(i18n_data.min_water_level)]</span> water</span> within its blue outlined region.",
-                  "current_level": "This crop currently has <span class='water'><span class='text-value'>[str(i18n_data.current_water_level)]</span> water</span> within its blue outlined region."
+                  "range": "This crop will grow a little faster than normal with <span class='water'><span class='text-value'>[str(i18n_data.min_water_level)] - [str(i18n_data.max_water_level)]</span> water</span>, through its general environment or irrigation within its blue outlined region.",
+                  "min_only": "This crop will grow a little faster with at least <span class='water'><span class='text-value'>[str(i18n_data.min_water_level)]</span> water</span>, through its general environment or irrigation within its blue outlined region.",
+                  "current_level": "This crop currently has <span class='water'><span class='text-value'>[str(i18n_data.current_water_level)]</span> water</span> through its general environment and irrigation within its blue outlined region."
+               },
+               "light_affinity": {
+                  "property_name": "Sunlight Needs",
+                  "status_name": "Current Sunlight",
+                  "range": "This crop will grow a little faster than normal with <span class='light'><span class='text-value'>[str(i18n_data.min_light_level)] - [str(i18n_data.max_light_level)]</span> daytime sunlight</span>.",
+                  "min_only": "This crop will grow a little faster with at least <span class='light'><span class='text-value'>[str(i18n_data.min_light_level)]</span> daytime sunlight</span>.",
+                  "current_level": "This crop currently experiences <span class='light'><span class='text-value'>[str(i18n_data.current_light_level)]</span> daytime sunlight</span>. This considers both shade and current weather state."
                },
                "flooded": {
                   "property_name": "Flooding",
@@ -5710,11 +6000,19 @@
                }
             },
             "pasture": {
+               "maintain_animals": "Maintain:",
+               "maintain_animals_description": "Automatically slaughter any animals beyond this number.",
+               "harvest_animals_renewable": "Harvest Renewable",
+               "harvest_animals_renewable_description": "Harvest renewable resources from these animals, like wool or eggs.",
+               "harvest_grass": "Harvest Grass",
+               "harvest_grass_description": "Automatically harvest any grass that grows in the pasture.",
                "ostrich_pasture_name": "Ostrich Enclosure",
+               "moomoo_pasture_name": "Moo-Moo Herd",
                "ostrich_pasture_description": "These exotic birds produce delicious large eggs and can be slaughtered for large poultry, jerky, feathers and bone",
-               "sheep_pasture_description": "Sheep produce wool, a good fiber with many uses. Slaughtering sheep will produce raw mutton, jerky, and bone",
+               "sheep_pasture_description": "Sheep produce wool and, seldom, some milk. Slaughtering sheep will produce raw mutton, jerky, and bone",
+               "moomoo_pasture_description": "Moo-moos eat a lot but will produce nice amounts of milk. Slaughtering them yields pelts, steak, jerky and bone.",
                "rabbit_pasture_description": "Rabbits reproduce quickly and can be slaughtered for jerky, pelts and sometimes bone",
-               "poyo_pasture_description": "Poyos produce eggs, a fine cooking ingredient. Slaughtering poyo will yield meat and, occasionally, feathers and bone"
+               "poyo_pasture_description": "Poyos lay eggs, a fine cooking ingredient. Slaughtering poyo will yield meat and, occasionally, feathers and bone"
             }
          },
          "military_mode": {
@@ -5748,7 +6046,7 @@
          "settings": {
             "gameplayTab": {
                "auto_craft_recipe_dependencies": "Auto Craft Recipe Dependencies",
-               "auto_craft_recipe_dependencies_description": "When crafting an item, the crafters will check the inventory to see if there is sufficient of ingredients to use. If not, then they will add more orders to the queue should they need to to fulfill the original order.",
+               "auto_craft_recipe_dependencies_description": "When crafting an item, crafters will check the inventory to see if there are sufficient ingredients to use. If not, they will queue up orders for enough ingredients to fulfill the original order.",
                "default_craft_order_prefer_high_quality": "Prefer High-Quality Crafting Ingredients",
                "default_craft_order_prefer_high_quality_description": "When crafting an item, crafters who have achieved the Journeyman's Knowledge perk will prefer crafting with high-quality ingredients. Uncheck to always prefer low-quality ingredients.",
                "auto_harvest_enabled": "Auto-Harvest Renewable Resources",
@@ -5759,6 +6057,8 @@
                "auto_harvest_tree_stumps_description": "When trees are cut down, harvestable stumps remain. Enabling this option will automatically queue stumps to be harvested.",
                "default_to_worst_fertilizer": "Default to Worst Fertilizer",
                "default_to_worst_fertilizer_description": "When farmers fertilize crops, they use the best fertilizer available unless directed to use a specific type. Select this to have them use the worst available instead.",
+               "default_fertilizer": "Default Fertilizer:",
+               "default_fertilizer_description": "When creating a new farm, set its fertilizer preference to this.",
                "terrain_slice_buildings": "Terrain Slice Buildings",
                "terrain_slice_buildings_description": "In Terrain Slice mode, don't render entities supported by visible, non-terrain entities.",
                "water_signal_update_frequency": "Water Signal Update Rate",
@@ -5897,6 +6197,16 @@
          "water_pump": {
             "display_name": "Water Pump",
             "description": "When enabled, pumps water from its bottom and out its top."
+         }
+      }
+   },
+   "food": {
+      "food_decay": {
+         "cheese": {
+            "description": "This cheese is starting to... Smell cheesy. Better eat it soon."
+         },
+         "curdling": {
+            "description": "It's getting bad, better pour it in a cheese vat soon!"
          }
       }
    }

@@ -11,8 +11,6 @@
 
 stonehearth_ace = {}
 
-stonehearth_ace.util = require("lib.util")
-
 local service_creation_order = {
    'heatmap',
    'gameplay_settings',
@@ -31,6 +29,7 @@ local function monkey_patching()
    for from, into in pairs(monkey_patches) do
       local monkey_see = require('monkey_patches.' .. from)
       local monkey_do = radiant.mods.require(into)
+      radiant.log.write_('stonehearth_ace', 0, 'ACE client monkey-patching \'' .. from .. '\' => \'' .. into .. '\'')
       radiant.mixin(monkey_do, monkey_see)
    end
 end

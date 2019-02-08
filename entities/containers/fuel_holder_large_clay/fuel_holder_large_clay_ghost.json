@@ -1,0 +1,39 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(fuel_holder_large_clay.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "align_to_grid": [
+            "z"
+         ],
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": -0.5, "y": 0, "z": 0 }
+      },
+      "render_info": {
+         "scale": 0.1,
+         "animation_table": "file(/data/rigs/entities/containers/firewood_shed/firewood_shed.json)"
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.containers.fuel_holder_large_clay.display_name)",
+         "description": "i18n(stonehearth_ace:entities.containers.fuel_holder_large_clay.description)",
+         "icon": "file(fuel_holder_large_clay.png)",
+         "category": "storage",
+         "material_tags": [
+            "clay",
+            "containers",
+            "crafted",
+            "furniture",
+            "fuel_holder_large_clay",
+            "stockpile_furniture"
+         ]
+      }
+   }
+}

@@ -1,0 +1,162 @@
+// custom-select framework from https://www.w3schools.com/howto/howto_custom_select.asp
+
+/* The container must be positioned relative: */
+.custom-select {
+   position: relative;
+   width: 300px;
+}
+
+/* Style the arrow inside the select element: */
+.select-selected:after {
+   position: absolute;
+   content: "";
+   top: 26px;
+   right: 10px;
+   width: 0;
+   height: 0;
+   border: 8px solid transparent;
+   border-color: rgb(224, 224, 224) transparent transparent transparent;
+}
+
+/* Point the arrow upwards when the select box is open (active): */
+.select-selected.select-arrow-active:after {
+   border-color: transparent transparent rgb(224, 224, 224) transparent;
+   top: 12px;
+}
+
+/* style the items (options), including the selected item: */
+.select-items div,.select-selected {
+   color: #ffffff;
+   padding: 8px 16px;
+   border: 2px solid transparent;
+   border-color: transparent transparent rgba(255, 255, 255, 0.15) transparent;
+   cursor: pointer;
+}
+
+.select-selected {
+   .borderImageBackground;
+   border-width: 11px 7px 14px 7px;
+   border-image: url(/stonehearth/ui/root/css/images/gui/well.png) 11 7 14 7 repeat;
+   border-style: solid;
+   background-image: url(/stonehearth/ui/root/css/images/gui/well.png);
+}
+
+/* Style items (options): */
+.select-items {
+   .borderImageBackground;
+   border-width: 11px 7px 14px 7px;
+   border-image: url(/stonehearth/ui/root/css/images/gui/well.png) 11 7 14 7 repeat;
+   border-style: solid;
+   background-image: url(/stonehearth/ui/root/css/images/gui/well.png);
+
+   position: absolute;
+   //background-color: #4C3A36;
+   top: 100%;
+   left: 0;
+   right: 0;
+   z-index: 99;
+   overflow-y: auto;
+   max-height: 166px;
+}
+
+/* Hide the items when the select box is closed: */
+.select-hide {
+   display: none;
+}
+
+.select-items div:hover, .same-as-selected {
+   background-color: rgba(255, 255, 255, 0.15);
+}
+
+
+/*! jQuery UI - v1.12.1 - 2016-09-14
+* http://jqueryui.com
+* Includes: core.css, accordion.css, autocomplete.css, menu.css, button.css, controlgroup.css, checkboxradio.css, datepicker.css, dialog.css, draggable.css, resizable.css, progressbar.css, selectable.css, selectmenu.css, slider.css, sortable.css, spinner.css, tabs.css, tooltip.css, theme.css
+* To view and modify this theme, visit http://jqueryui.com/themeroller/?ffDefault=Arial%2CHelvetica%2Csans-serif&fsDefault=1em&fwDefault=normal&cornerRadius=3px&bgColorHeader=e9e9e9&bgTextureHeader=flat&borderColorHeader=dddddd&fcHeader=333333&iconColorHeader=444444&bgColorContent=ffffff&bgTextureContent=flat&borderColorContent=dddddd&fcContent=333333&iconColorContent=444444&bgColorDefault=f6f6f6&bgTextureDefault=flat&borderColorDefault=c5c5c5&fcDefault=454545&iconColorDefault=777777&bgColorHover=ededed&bgTextureHover=flat&borderColorHover=cccccc&fcHover=2b2b2b&iconColorHover=555555&bgColorActive=007fff&bgTextureActive=flat&borderColorActive=003eff&fcActive=ffffff&iconColorActive=ffffff&bgColorHighlight=fffa90&bgTextureHighlight=flat&borderColorHighlight=dad55e&fcHighlight=777620&iconColorHighlight=777620&bgColorError=fddfdf&bgTextureError=flat&borderColorError=f1a899&fcError=5f3f3f&iconColorError=cc0000&bgColorOverlay=aaaaaa&bgTextureOverlay=flat&bgImgOpacityOverlay=0&opacityOverlay=30&bgColorShadow=666666&bgTextureShadow=flat&bgImgOpacityShadow=0&opacityShadow=30&thicknessShadow=5px&offsetTopShadow=0px&offsetLeftShadow=0px&cornerRadiusShadow=8px
+* Copyright jQuery Foundation and other contributors; Licensed MIT */
+
+/* Misc visuals
+----------------------------------*/
+
+/* Overlays */
+.ui-accordion .ui-accordion-header {
+	display: block;
+	.handCursor;
+	position: relative;
+	margin: 2px 0 0 0;
+	padding: .5em .5em .5em .7em;
+	font-size: 100%;
+}
+.ui-accordion .ui-accordion-content {
+	padding: 4px;
+	border-top: 0;
+	overflow: auto;
+}
+
+/* Interaction states
+----------------------------------*/
+.ui-state-default,
+.ui-widget-content .ui-state-default,
+.ui-widget-header .ui-state-default,
+.ui-button,
+
+/* We use html here because we need a greater specificity to make sure disabled
+works properly when clicked or hovered */
+html .ui-button.ui-state-disabled:hover,
+html .ui-button.ui-state-disabled:active {
+	border: 2px solid #000000;
+	background: #103669;
+	font-weight: normal;
+	color: #454545;
+}
+.ui-state-default a,
+.ui-state-default a:link,
+.ui-state-default a:visited,
+a.ui-button,
+a:link.ui-button,
+a:visited.ui-button,
+.ui-button {
+	color: #454545;
+	text-decoration: none;
+}
+.ui-state-hover,
+.ui-widget-content .ui-state-hover,
+.ui-widget-header .ui-state-hover,
+.ui-state-focus,
+.ui-widget-content .ui-state-focus,
+.ui-widget-header .ui-state-focus,
+.ui-button:hover,
+.ui-button:focus {
+	border: 2px solid #000000;
+	background: #18509C;
+	font-weight: normal;
+	color: #2b2b2b;
+}
+.ui-state-hover a,
+.ui-state-hover a:hover,
+.ui-state-hover a:link,
+.ui-state-hover a:visited,
+.ui-state-focus a,
+.ui-state-focus a:hover,
+.ui-state-focus a:link,
+.ui-state-focus a:visited,
+a.ui-button:hover,
+a.ui-button:focus {
+	color: #2b2b2b;
+	text-decoration: none;
+}
+
+.ui-visual-focus {
+	box-shadow: 0 0 3px 1px rgb(94, 158, 214);
+}
+.ui-state-active,
+.ui-widget-content .ui-state-active,
+.ui-widget-header .ui-state-active,
+a.ui-button:active,
+.ui-button:active,
+.ui-button.ui-state-active:hover {
+	border: 2px solid #000000;
+	background: #1F72C4;
+	font-weight: normal;
+	color: #ffffff;
+}

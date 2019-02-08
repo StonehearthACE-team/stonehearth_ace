@@ -1,0 +1,74 @@
+{
+   "mixins": "stonehearth:mixins:food_decay",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(cheese_mild.qb)"
+            ]
+         },
+         "decay_1": {
+            "models": [
+               "file(cheese_mild_rotting.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0.05, "y": 0, "z": 0.05 }
+      },
+      "stonehearth:stacks": {
+         "max_stacks": 3
+      }
+   },
+   "entity_data": {
+      "stonehearth:food_decay": {
+         "initial_decay": {
+            "min": 480,
+            "max": 720
+         },
+         "decay_stages": {
+            "decay_1": {
+               "description": "i18n(stonehearth_ace:food.food_decay.cheese.description)"
+            }
+         }
+      },
+      "stonehearth:food_container": {
+         "effect": "fiddle",
+         "food": "stonehearth_ace:food:dairy:cheese_mild:cheese_mild_serving",
+         "stacks_per_serving": 1
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 11,
+         "rarity": "uncommon",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 2,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.dairy.cheese_mild.cheese_mild.display_name)",
+         "description": "i18n(stonehearth_ace:entities.food.dairy.cheese_mild.cheese_mild.description)",
+         "icon": "file(cheese_mild.png)",
+         "is_item": true,
+         "category": "food",
+         "material_tags": [
+            "food_container",
+            "prepared_food",
+            "cheese_mild",
+            "dairy",
+            "cheese",
+            "stockpile_prepared_food",
+            "meat"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": 5
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

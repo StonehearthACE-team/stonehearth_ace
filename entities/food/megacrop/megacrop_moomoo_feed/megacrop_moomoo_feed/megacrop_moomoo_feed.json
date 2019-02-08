@@ -1,0 +1,41 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(megacrop_moomoo_feed.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 9,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.megacrop_moomoo_feed.megacrop_moomoo_feed.display_name)",
+         "description": "i18n(stonehearth_ace:entities.food.megacrop_moomoo_feed.megacrop_moomoo_feed.description)",
+         "icon": "file(megacrop_moomoo_feed.png)",
+         "is_item": true,
+         "category": "refined",
+         "material_tags": [
+            "stockpile_fodder",
+            "moomoo_feed_bag",
+            "animal_feed"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": 1
+      }
+   }
+}

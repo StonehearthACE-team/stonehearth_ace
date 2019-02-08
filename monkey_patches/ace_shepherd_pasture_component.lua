@@ -6,37 +6,54 @@ local Region3 = _radiant.csg.Region3
 local log = radiant.log.create_logger('shepherd_pasture')
 local WEATHER_CHECK_TIME = '05:30am+2h' -- one hour after weather service has changed the weather
 local DEFAULT_GRASS_SPAWN_RATE = '11h+2h'
+local GRASS_HARVEST_TIME = '2h'
 
-AceShepherdPastureComponent._old_activate = ShepherdPastureComponent.activate
+AceShepherdPastureComponent._ace_old_activate = ShepherdPastureComponent.activate
 function AceShepherdPastureComponent:activate()
-	self:_old_activate()
-	self._weather_check_alarm = stonehearth.calendar:set_alarm(WEATHER_CHECK_TIME, radiant.bind(self, '_recalculate_duration'))
+   self:_ace_old_activate()
+   
+   if not self._sv._queued_slaughters then
+      self._sv.harvest_animals_renewable = true
+      self._sv.harvest_grass = false
+      self._sv.maintain_animals = self:get_max_animals()
+      self._sv._queued_slaughters = {}
+      self:_set_has_renewable()
+      self.__saved_variables:mark_changed()
+   end
+   
+   self._weather_check_alarm = stonehearth.calendar:set_alarm(WEATHER_CHECK_TIME, radiant.bind(self, '_recalculate_duration'))
+   
+   self._grass_harvest_timer = stonehearth.calendar:set_interval('pasture grass harvest', GRASS_HARVEST_TIME, function()
+      if self._sv.harvest_grass then
+         self:_try_harvesting_grass()
+      end
+   end)
+
+   if self._sv.harvest_grass then
+      self:_try_harvesting_grass()
+   end
 end
 
 -- for some reason, overriding the destroy function doesn't work, so we have to override this one that only gets called during destroy
-AceShepherdPastureComponent._old__unregister_with_town = ShepherdPastureComponent._unregister_with_town
+AceShepherdPastureComponent._ace_old__unregister_with_town = ShepherdPastureComponent._unregister_with_town
 function AceShepherdPastureComponent:_unregister_with_town()
-	self:_old__unregister_with_town()
+	self:_ace_old__unregister_with_town()
 
 	-- destroy the add_grass timer and also destroy any grass entities in the pasture
 	self:_destroy_grass_spawn_timer()
-	self:_destroy_grass()
 
 	if self._weather_check_alarm then
 		self._weather_check_alarm:destroy()
 		self._weather_check_alarm = nil
-	end
-end
-
-function AceShepherdPastureComponent:_destroy_grass()
-	local entities = self:_find_all_grass()
-
-	for _, e in pairs(entities) do
-		radiant.terrain.remove_entity(e)
-	end
+   end
+   if self._grass_harvest_timer then
+      self._grass_harvest_timer:destroy()
+      self._grass_harvest_timer = nil
+   end
 end
 
 function AceShepherdPastureComponent:_find_all_grass()
+   -- this is a pretty hacky way of doing this, but I don't want to track all the different stages
    local grass_uri = self:_get_grass_uri()
 	local filter_fn = function(entity)
 		return string.sub(entity:get_uri(), 1, string.len(grass_uri)) == grass_uri
@@ -51,11 +68,200 @@ end
 
 -- called by the shepherd service once the field is created
 function AceShepherdPastureComponent:post_creation_setup()
-	-- spawn a few grass if possible
+   -- NO, DON'T spawn grass when it's created
+   -- spawn a few grass if possible
 	-- determine the amount of grass in the pasture and use that instead of the total area
-	local grass = self:_find_grass_spawn_points()
-	local num_to_spawn = #grass / 200
-	self:_spawn_grass(num_to_spawn, grass)
+	--local grass = self:_find_grass_spawn_points()
+	--local num_to_spawn = #grass / 200
+   --self:_spawn_grass(num_to_spawn, grass)
+   
+   self._sv.harvest_animals_renewable = true
+   self._sv.harvest_grass = false
+   self._sv.maintain_animals = self:get_max_animals()
+   self._sv._queued_slaughters = {}
+   self.__saved_variables:mark_changed()
+end
+
+AceShepherdPastureComponent._ace_old_set_pasture_type_command = ShepherdPastureComponent.set_pasture_type_command
+function AceShepherdPastureComponent:set_pasture_type_command(session, response, new_animal_type)
+   local result = self:_ace_old_set_pasture_type_command(session, response, new_animal_type)
+
+   if result then
+      self:_set_has_renewable()
+      self._sv.maintain_animals = self:get_max_animals()
+      self._sv._queued_slaughters = {}
+   end
+
+   return result
+end
+
+AceShepherdPastureComponent._ace_old_add_animal = ShepherdPastureComponent.add_animal
+function AceShepherdPastureComponent:add_animal(animal)
+   self:_ace_old_add_animal(animal)
+   self:_consider_maintain_animals()
+end
+
+AceShepherdPastureComponent._ace_old_remove_animal = ShepherdPastureComponent.remove_animal
+function AceShepherdPastureComponent:remove_animal(animal_id)
+   self:_ace_old_remove_animal(animal_id)
+
+   self._sv._queued_slaughters[animal_id] = nil
+   self.__saved_variables:mark_changed()
+end
+
+function AceShepherdPastureComponent:_set_has_renewable()
+   if self._sv.pasture_type and radiant.entities.get_component_data(self._sv.pasture_type, 'stonehearth:renewable_resource_node') then
+      self._sv.critter_type_has_renewable = true
+   else
+      self._sv.critter_type_has_renewable = false
+   end
+end
+
+function AceShepherdPastureComponent:_consider_maintain_animals()
+   local num_queued = radiant.size(self._sv._queued_slaughters)
+   local num_to_slaughter = self._sv.num_critters - (self._sv.maintain_animals + num_queued)
+   
+   if num_to_slaughter > 0 then
+      -- just process through the animals with the normal iterator and try to harvest them
+      -- first skip over renewably-harvestable animals
+      for id, critter in pairs(self._sv.tracked_critters) do
+         if not self._sv._queued_slaughters[id] then
+            local entity = critter.entity
+            local renewable_resource_component = entity:is_valid() and entity:get_component('stonehearth:renewable_resource_node')
+            if not renewable_resource_component or not renewable_resource_component:is_harvestable() then
+               if self:_request_slaughter_animal(entity) then
+                  num_to_slaughter = num_to_slaughter - 1
+                  if num_to_slaughter < 1 then
+                     break
+                  end
+               end
+            end
+         end
+      end
+
+      if num_to_slaughter > 0 then
+         for id, critter in pairs(self._sv.tracked_critters) do
+            if not self._sv._queued_slaughters[id] then
+               local entity = critter.entity
+               if entity:is_valid() and self:_request_slaughter_animal(entity) then
+                  num_to_slaughter = num_to_slaughter - 1
+                  if num_to_slaughter < 1 then
+                     break
+                  end
+               end
+            end
+         end
+      end
+   elseif num_to_slaughter < 0 then
+      -- we've queued up too many! probably user increased the level after slaughter requests went out
+      for id, _ in pairs(self._sv._queued_slaughters) do
+         self._sv._queued_slaughters[id] = nil
+         local critter = self._sv.tracked_critters[id]
+         if critter and critter.entity and critter.entity:is_valid() then
+            local resource_component = critter.entity:get_component('stonehearth:resource_node')
+            if resource_component and resource_component:cancel_harvest_request() then
+               num_to_slaughter = num_to_slaughter + 1
+               if num_to_slaughter > -1 then
+                  break
+               end
+            end
+         end
+      end
+   else
+      return
+   end
+
+   self.__saved_variables:mark_changed()
+end
+
+function AceShepherdPastureComponent:_request_slaughter_animal(animal)
+   local resource_component = animal:get_component('stonehearth:resource_node')
+   if resource_component and resource_component:is_harvestable() then
+      -- but don't request it on animals that are currently following a shepherd
+      local pasture_tag = animal:get_component('stonehearth:equipment'):has_item_type('stonehearth:pasture_equipment:tag')
+      local shepherded_component = pasture_tag and pasture_tag:get_component('stonehearth:shepherded_animal')
+      if shepherded_component and shepherded_component:get_following() then
+         return false
+      end
+
+      resource_component:request_harvest(self._entity:get_player_id())
+      self._sv._queued_slaughters[animal:get_id()] = true
+      return true
+   end
+end
+
+AceShepherdPastureComponent._ace_old__create_harvest_task = ShepherdPastureComponent._create_harvest_task
+function AceShepherdPastureComponent:_create_harvest_task(target)
+   -- actually, just don't do this, ace_renewable_resource_node takes care of it (and has to for the spawn_immediately things anyway)
+   --[[
+   if self._sv.harvest_animals_renewable then
+      log:debug('harvest_animals_renewable = true, harvesting %s', target)
+      self:_ace_old__create_harvest_task(target)
+   end
+   ]]
+end
+
+function AceShepherdPastureComponent:get_harvest_animals_renewable()
+   return self._sv.harvest_animals_renewable
+end
+
+function AceShepherdPastureComponent:set_maintain_animals(value)
+   if self._sv.maintain_animals ~= value then
+      self._sv.maintain_animals = value
+      self.__saved_variables:mark_changed()
+
+      self:_consider_maintain_animals()
+   end
+end
+
+function AceShepherdPastureComponent:set_harvest_animals_renewable(value)
+   if self._sv.harvest_animals_renewable ~= value then
+      self._sv.harvest_animals_renewable = value
+      self.__saved_variables:mark_changed()
+
+      for id, animal_data in pairs(self._sv.tracked_critters) do
+         local animal = animal_data.entity
+         if value then
+            self:_ace_old__create_harvest_task(animal)
+         else
+            self:_cancel_harvest_task(animal)
+         end
+      end
+   end
+end
+
+function AceShepherdPastureComponent:set_harvest_grass(value)
+   if self._sv.harvest_grass ~= value then
+      self._sv.harvest_grass = value
+      self.__saved_variables:mark_changed()
+
+      -- check immediately for any harvestable grass
+      self:_try_harvesting_grass()
+   end
+end
+
+function AceShepherdPastureComponent:_cancel_harvest_task(target)
+   local renewable_resource_component = target:get_component('stonehearth:renewable_resource_node')
+   if renewable_resource_component then
+      renewable_resource_component:cancel_harvest_request()
+   end
+end
+
+function AceShepherdPastureComponent:_try_harvesting_grass()
+   local player_id = self._entity:get_player_id()
+   local all_grass = self:_find_all_grass()
+   local harvest = self._sv.harvest_grass
+
+   for _, grass in pairs(all_grass) do
+      local resource_component = grass:get_component('stonehearth:resource_node')
+      if resource_component then
+         if harvest then
+            resource_component:request_harvest(player_id)
+         else
+            resource_component:cancel_harvest_request()
+         end
+      end
+   end
 end
 
 function AceShepherdPastureComponent:_find_grass_spawn_points()
@@ -75,10 +281,10 @@ function AceShepherdPastureComponent:_find_grass_spawn_points()
 	return grass
 end
 
-AceShepherdPastureComponent._old__create_pasture_tasks = ShepherdPastureComponent._create_pasture_tasks
+AceShepherdPastureComponent._ace_old__create_pasture_tasks = ShepherdPastureComponent._create_pasture_tasks
 function AceShepherdPastureComponent:_create_pasture_tasks()
-	self:_old__create_pasture_tasks()
-	self:_start_grass_spawn()
+	self:_ace_old__create_pasture_tasks()
+   self:_start_grass_spawn()
 end
 
 function AceShepherdPastureComponent:_start_grass_spawn()
@@ -86,7 +292,7 @@ function AceShepherdPastureComponent:_start_grass_spawn()
 		self:_setup_grass_spawn_timer()
 	else
 		-- if the timer already existed, we want to consider the time spent to really be spent
-		self:_recalculate_duration()
+		--self:_recalculate_duration()
 	end
 end
 
@@ -208,17 +414,7 @@ function AceShepherdPastureComponent:_is_valid_grass_spawn_location(location)
 	return not next(radiant.terrain.get_entities_at_point(location, filter_fn))
 end
 
--- overrides original to only create harvest task if auto-harvest is enabled for them
-function AceShepherdPastureComponent:_create_harvest_task(target)
-   local renewable_resource_component = target:get_component('stonehearth:renewable_resource_node')
-   local player_id = self._entity:get_player_id()
-   if renewable_resource_component and -- renewable_resource_component:get_auto_harvest_enabled() then
-         (player_id == '' or stonehearth.client_state:get_client_gameplay_setting(player_id, 'stonehearth_ace', 'enable_auto_harvest_animals', true)) then
-      renewable_resource_component:request_harvest(player_id)
-   end
-end
-
-function ShepherdPastureComponent:get_animal_feed_material()
+function AceShepherdPastureComponent:get_animal_feed_material()
    if self._sv.pasture_type then
       return self._pasture_data[self._sv.pasture_type].feed_material
    else

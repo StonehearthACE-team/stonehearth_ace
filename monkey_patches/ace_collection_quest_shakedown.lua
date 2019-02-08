@@ -5,11 +5,11 @@ local ShakeDown = radiant.mods.require('stonehearth.services.server.game_master.
 local AceShakeDown = class()
 
 -- trying to patch the create function doesn't work (probably getting cached along with the destroy function? booo)
-AceShakeDown._old__construct = ShakeDown._construct
+AceShakeDown._ace_old__construct = ShakeDown._construct
 function AceShakeDown:_construct()
    local ctx = self._sv.ctx
    self:_determine_filler_material(ctx.player_id)
-   self:_old__construct()
+   self:_ace_old__construct()
 end
 
 function ShakeDown:_determine_filler_material(player_id)

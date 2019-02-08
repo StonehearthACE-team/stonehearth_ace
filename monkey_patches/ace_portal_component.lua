@@ -1,10 +1,11 @@
 local PortalComponent = radiant.mods.require('stonehearth.components.portal.portal_component')
 local AcePortalComponent = class()
 
-AcePortalComponent._old_initialize = PortalComponent.initialize
-
-function AcePortalComponent:initialize()
-   self:_old_initialize()
+AcePortalComponent._ace_old_activate = PortalComponent.activate
+function AcePortalComponent:activate()
+   if self._ace_old_activate then
+      self:_ace_old_activate()
+   end
 
    local json = radiant.entities.get_json(self) or {}
    self._horizontal = json.horizontal or false
