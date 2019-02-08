@@ -23,7 +23,7 @@ function AceUnitInfoComponent:create()
       self:set_icon(json.icon)
    end
    if json.locked then
-      self:lock(':create()')
+      self:lock(type(json.locked) == 'string' and json.locked or ':create()')
    end
    
    if self._ace_old_create then
@@ -79,8 +79,8 @@ end
 
 -- check if the unlocker can unlock it (default equality comparison unless otherwise specified)
 function AceUnitInfoComponent:unlock(unlocker, can_unlock_fn)
-   if (can_unlock_fn and can_unlock_fn(self._sv.locker, unlocker))
-         or (not can_unlock_fn and self._sv.locker == unlocker) then
+   if (can_unlock_fn and can_unlock_fn(self._entity, self._sv.locker, unlocker))
+         or (not can_unlock_fn and (not self._sv.locker or self._sv.locker == unlocker)) then
       self:force_unlock()
       return true
    end

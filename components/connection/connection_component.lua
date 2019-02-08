@@ -35,6 +35,8 @@ local import_region = ConnectionUtils.import_region
 local log = radiant.log.create_logger('connection_component')
 local ConnectionComponent = class()
 
+-- TODO: apparently this versioning system is no longer used, so I'd have to manually set version and check on restore
+-- for now just integrate the existing functions into restore
 local VERSIONS = {
    ZERO = 0,
    V1 = 1,
@@ -64,8 +66,15 @@ function ConnectionComponent:create()
    --self._sv.version = self:get_version()
 end
 
+-- hacky fixup_post_load implementation for now
 function ConnectionComponent:restore()
    self._is_restore = true
+   if not self._sv.version then
+      self._sv.version = 0
+   end
+   if self._sv.version ~= self:get_version() then
+      self:fixup_post_load(self._sv)
+   end
 end
 
 -- this is performed in activate rather than post_activate so that all specific connection services can use it in post_activate

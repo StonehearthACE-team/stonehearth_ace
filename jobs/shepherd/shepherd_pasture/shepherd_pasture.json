@@ -12,6 +12,7 @@
                "base_reproduction_period": "48h",
                "min_reproduction_period": "24h",
                "feed_uri": "stonehearth_ace:food:ostrich_feed",
+			   "feed_material": "ostrich_feed_bag",
                "level_requirement": 5,
                "ordinal": 5
             },
@@ -25,7 +26,8 @@
                "base_reproduction_period": "72h",
                "min_reproduction_period": "36h",
                "feed_uri": "stonehearth_ace:food:moomoo_feed",
-               "level_requirement": 3,
+			   "feed_material": "moomoo_feed_bag",
+               "level_requirement": 3,              
                "ordinal": 4
             },
             "stonehearth:rabbit": {
@@ -33,6 +35,7 @@
                "reproduction_uri": "stonehearth_ace:rabbit:young",
                "base_reproduction_period": "24h",
                "min_reproduction_period": "12h",
+               "feed_material": "rabbit_feed_bag",
                "level_requirement": 1,
                "ordinal": 1
             },
@@ -41,13 +44,15 @@
                "base_reproduction_period": "36h",
                "min_reproduction_period": "18h",
                "level_requirement": 1,
+               "feed_material": "poyo_feed_bag",
                "ordinal": 2
             },
             "stonehearth:sheep": {
                "description": "i18n(stonehearth_ace:ui.game.zones_mode.pasture.sheep_pasture_description)",
                "base_reproduction_period": "56h",
-               "min_reproduction_period": "24h",
+               "min_reproduction_period": "24h",              
                "level_requirement": 3,
+			   "feed_material": "sheep_feed_bag",
                "ordinal": 3
             }
          }
