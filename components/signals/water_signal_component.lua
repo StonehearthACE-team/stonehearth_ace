@@ -9,7 +9,7 @@ function WaterSignalComponent:initialize()
 	self._sv._signals = {}
 end
 
-function WaterSignalComponent:post_activate()
+function WaterSignalComponent:activate()
    for name, signal in pairs(self._sv._signals) do
       if not signal:get_id() then
          signal:destroy()
@@ -18,12 +18,12 @@ function WaterSignalComponent:post_activate()
       end
    end
 
-   self._added_to_world_trace = self._entity:add_component('mob'):trace_parent('water signal entity added or removed', _radiant.dm.TraceCategories.SYNC_TRACE)
+   self._added_to_world_trace = self._entity:add_component('mob'):trace_parent('water signal entity added or removed') --, _radiant.dm.TraceCategories.SYNC_TRACE)
       :on_changed(function()
          self:_location_changed()
       end)
 
-   self._location_trace = self._entity:add_component('mob'):trace_transform('water signal entity moved', _radiant.dm.TraceCategories.SYNC_TRACE)
+   self._location_trace = self._entity:add_component('mob'):trace_transform('water signal entity moved') --, _radiant.dm.TraceCategories.SYNC_TRACE)
       :on_changed(function()
          self:_location_changed()
       end)
@@ -94,6 +94,13 @@ function WaterSignalComponent:set_signal(name, region, monitor_types, change_cal
    signal:set_location(self._location)
 
    return signal
+end
+
+function WaterSignalComponent:has_signal(name)
+   if name then
+      return self._sv._signals[name] ~= nil
+   end
+   return next(self._sv._signals) ~= nil
 end
 
 function WaterSignalComponent:get_signals()

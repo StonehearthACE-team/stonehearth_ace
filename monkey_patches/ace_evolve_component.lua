@@ -11,37 +11,38 @@ local AceEvolveComponent = class()
 
 local RECALCULATE_THRESHOLD = 0.5
 
-AceEvolveComponent._ace_old_initialize = EvolveComponent.initialize
-function AceEvolveComponent:initialize()
-	self:_ace_old_initialize()
-
-	self._sv._local_water_modifier = 1
-	-- would need to set up a child entity with its own water component for detecting flooding in a smaller region
-	--self._sv.is_flooded = false
-   self._sv._current_growth_recalculate_progress = 0
+AceEvolveComponent._ace_old_restore = EvolveComponent.restore
+function AceEvolveComponent:restore()
+   self._sv._evolve_timer = self._sv.evolve_timer
+   self._sv.evolve_timer = nil
+   self._sv.last_calculated_water_volume = nil
+   self._sv._local_water_modifier = nil
+   self._sv._water_level = nil
    
-	self.__saved_variables:mark_changed()
+   if self._ace_old_restore then
+      self:_ace_old_restore()
+   end
 end
 
 AceEvolveComponent._ace_old_activate = EvolveComponent.activate
 function AceEvolveComponent:activate()
-	self:_ace_old_activate()
-
-   self._json = radiant.entities.get_json(self) or {}
-   self._preferred_climate = self._json.preferred_climate
-   -- determine the "reach" of water detection from json; otherwise just expand 1 outwards and downwards from collision region
-   self._water_reach = self._json.water_reach or 1
-
+   if not self._sv._current_growth_recalculate_progress then
+      self._sv._current_growth_recalculate_progress = 0
+   end
+   
+   self:_ace_old_activate()   -- need to call this before other functions because it sets self._evolve_data
    self:_create_request_listeners()
 end
 
 function AceEvolveComponent:post_activate()
-	-- we don't care about water for animals, only for plants
-	local catalog_data = stonehearth.catalog:get_catalog_data(self._entity:get_uri())
-	if catalog_data.category == 'seed' or catalog_data.category == 'plants' then
-		self._water_affinity = stonehearth.town:get_water_affinity_table(self._preferred_climate)
-		
-		self:_create_water_signal()
+   -- if we had an evolve water signal for this entity, destroy it
+   -- if that was the only water signal for it, get rid of the component
+   local water_signal_comp = self._entity:get_component('stonehearth_ace:water_signal')
+   if water_signal_comp then
+      water_signal_comp:remove_signal('evolve')
+      if not water_signal_comp:has_signal() then
+         self._entity:remove_component('stonehearth_ace:water_signal')
+      end
    end
 end
 
@@ -51,6 +52,29 @@ function AceEvolveComponent:destroy()
    
    self:_destroy_effect()
    self:_destroy_request_listeners()
+end
+
+-- override the original to prepend evolve_timer with an underscore for performance reasons
+function AceEvolveComponent:_start()
+   if not self._sv._evolve_timer then
+      self:_start_evolve_timer()
+   else
+      if self._sv._evolve_timer then
+         self._sv._evolve_timer:bind(function()
+               self:evolve()
+            end)
+      end
+   end
+end
+
+-- override the original to prepend evolve_timer with an underscore for performance reasons
+function EvolveComponent:_stop_evolve_timer()
+   if self._sv._evolve_timer then
+      self._sv._evolve_timer:destroy()
+      self._sv._evolve_timer = nil
+   end
+
+   self.__saved_variables:mark_changed()
 end
 
 function AceEvolveComponent:_create_request_listeners()
@@ -97,73 +121,6 @@ function AceEvolveComponent:_destroy_request_listeners()
       self._task_canceled_listener = nil
    end
    ]]
-end
-
-function AceEvolveComponent:_create_water_signal()
-	local reach = self._water_reach
-	local region = self._entity:get_component('region_collision_shape')
-   
-   -- if there's no collision region, assume it's a 1x1x1
-   if region then
-      region = region:get_region():get()
-   else
-      region = Region3(Cube3(Point3.zero))
-	end
-
-	self._water_region = region
-						:extruded('x', reach, reach)
-						:extruded('z', reach, reach)
-                  :extruded('y', reach, 0)
-   
-   local water_component = self._entity:add_component('stonehearth_ace:water_signal')
-   self._water_signal = water_component:set_signal('evolve', self._water_region, {'water_volume'}, function(changes) self:_on_water_signal_changed(changes) end)
-end
-
-function AceEvolveComponent:_on_water_signal_changed(changes)
-   local volume = changes.water_volume.value
-   if not volume then
-      return
-   end
-
-	-- water level is a ratio of volume to "normal ideal volume for this plant"
-	-- we consider the normal ideal ratio for a plant to be 1 water per square root of its detection area
-	local area = self._water_region:get_area()
-	--local ideal_ratio = 1 / math.sqrt(area)
-	--local this_ratio = volume / area
-	--self._sv._water_level = this_ratio / ideal_ratio
-	-- the above simplifies to this:
-   self._sv._water_level = volume / math.sqrt(area)
-   
-   -- if the water level only changed by a tiny bit, we don't want to have to recalculate timers
-   -- once the change meets a particular threshold, go ahead and propogate
-   local last_calculated = self._sv.last_calculated_water_volume
-   if last_calculated and math.abs(last_calculated - volume) < RECALCULATE_THRESHOLD then
-      self.__saved_variables:mark_changed()
-      return
-   end
-
-   self._sv.last_calculated_water_volume = volume
-	
-	local best_affinity = {min_level = -1, period_multiplier = 1}
-	for _, affinity in ipairs(self._water_affinity) do
-		if self._sv._water_level >= affinity.min_level and affinity.min_level > best_affinity.min_level then
-			best_affinity = affinity
-		end
-	end
-
-	local multiplier = best_affinity.period_multiplier
-	local prev_modifier = self._sv._local_water_modifier
-	if multiplier ~= prev_modifier then
-		self._sv._local_water_modifier = multiplier
-		self:_recalculate_duration()
-	end
-
-	self.__saved_variables:mark_changed()
-end
-
--- returns the best affinity and then the next one so you can see the range until it would apply (and its effect)
-function AceEvolveComponent:get_best_water_level()
-   return stonehearth.town:get_best_affinity_level(self._water_affinity)
 end
 
 AceEvolveComponent._ace_old_evolve = EvolveComponent.evolve
@@ -289,7 +246,7 @@ function AceEvolveComponent:_start_evolve_timer()
    -- if there's an evolve_command in it instead, add that command
    if self._evolve_data.evolve_time then
       local duration = self:_calculate_growth_period()
-      self._sv.evolve_timer = stonehearth.calendar:set_persistent_timer("EvolveComponent renew", duration, radiant.bind(self, 'evolve'))
+      self._sv._evolve_timer = stonehearth.calendar:set_persistent_timer("EvolveComponent renew", duration, radiant.bind(self, 'evolve'))
    elseif self._evolve_data.evolve_command then
       local command_comp = self._entity:add_component('stonehearth:commands')
       if not command_comp:has_command(self._evolve_data.evolve_command) then
@@ -301,9 +258,9 @@ function AceEvolveComponent:_start_evolve_timer()
 end
 
 function AceEvolveComponent:_recalculate_duration()
-	if self._sv.evolve_timer then
-		local old_duration = self._sv.evolve_timer:get_duration()
-		local old_expire_time = self._sv.evolve_timer:get_expire_time()
+	if self._sv._evolve_timer then
+		local old_duration = self._sv._evolve_timer:get_duration()
+		local old_expire_time = self._sv._evolve_timer:get_expire_time()
 		local old_start_time = old_expire_time - old_duration
 		local evolve_period = self:_get_base_growth_period()
 		
@@ -313,8 +270,8 @@ function AceEvolveComponent:_recalculate_duration()
 		local time_remaining = math.max(0, evolve_period * (1 - self._sv._current_growth_recalculate_progress))
 		if time_remaining > 0 then
 			local scaled_time_remaining = self:_calculate_growth_period(time_remaining)
-			self._sv.evolve_timer:destroy()
-			self._sv.evolve_timer = stonehearth.calendar:set_persistent_timer("EvolveComponent renew", scaled_time_remaining, radiant.bind(self, 'evolve'))
+			self._sv._evolve_timer:destroy()
+			self._sv._evolve_timer = stonehearth.calendar:set_persistent_timer("EvolveComponent renew", scaled_time_remaining, radiant.bind(self, 'evolve'))
 		else
 			self:evolve()
 		end
@@ -322,14 +279,11 @@ function AceEvolveComponent:_recalculate_duration()
 end
 
 function AceEvolveComponent:_get_current_growth_recalculate_progress()
-	return self._sv._current_growth_recalculate_progress or 0
+	return self._sv._current_growth_recalculate_progress
 end
 
 function AceEvolveComponent:_get_base_growth_period()
 	local growth_period = stonehearth.calendar:parse_duration(self._evolve_data.evolve_time)
-	--if self._is_in_preferred_season == false then  -- Nil is equivalent to preferred.
-	--	growth_period = growth_period * stonehearth.constants.farming.NONPREFERRED_SEASON_GROWTH_TIME_MULTIPLIER
-	--end
 	return growth_period
 end
 
@@ -340,10 +294,7 @@ function AceEvolveComponent:_calculate_growth_period(evolve_time)
 	
 	local catalog_data = stonehearth.catalog:get_catalog_data(self._entity:get_uri())
 	if catalog_data.category == 'seed' or catalog_data.category == 'plants' then
-		evolve_time = stonehearth.town:calculate_growth_period(self._entity:get_player_id(), evolve_time) * (self._sv._local_water_modifier or 1)
-		--if self._sv.is_flooded then
-		--	evolve_time = evolve_time * self._flood_period_multiplier
-		--end
+		evolve_time = stonehearth.town:calculate_growth_period(self._entity:get_player_id(), evolve_time)
 	end
 
 	return evolve_time
