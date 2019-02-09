@@ -26,6 +26,10 @@
                "max": { "x": 2, "y": 1, "z": 0 }
             }
          ]
+      },
+      "stonehearth_ace:pasture_item": {
+         "type": "trough",
+         "capacity": 10
       }
    },
    "entity_data": {
@@ -44,6 +48,11 @@
       },
       "stonehearth:item_quality": {
          "variable_quality": true
+      },
+      "stonehearth_ace:advanced_placement": {
+         "required_components": {
+            "stonehearth:shepherd_pasture": {}
+         }
       }
    }
 }

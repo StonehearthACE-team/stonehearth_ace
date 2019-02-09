@@ -25,6 +25,9 @@
       },
       "stonehearth:mount": {
          "mount_offset": { "x": -0.5, "y": 0.3, "z": -0.5 }
+      },
+      "stonehearth_ace:pasture_item": {
+         "type": "bed"
       }
    },
    "entity_data": {
@@ -49,6 +52,11 @@
       },
       "stonehearth:item_quality": {
          "variable_quality": true
+      },
+      "stonehearth_ace:advanced_placement": {
+         "required_components": {
+            "stonehearth:shepherd_pasture": {}
+         }
       }
    }
 }
