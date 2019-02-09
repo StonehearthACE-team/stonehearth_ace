@@ -8,7 +8,15 @@
       "model_variants": {
          "default": {
             "models": [
-               "file(moomoo.qb)"
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(moomoo.qb)",
+                     "file(moomoo_2.qb)",
+                     "file(moomoo_3.qb)",
+                     "file(moomoo_4.qb)"
+                  ]
+               }
             ]
          }
       },
