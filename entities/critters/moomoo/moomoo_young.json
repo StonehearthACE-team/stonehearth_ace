@@ -41,6 +41,14 @@
          "max_social_satisfaction": {
             "type": "basic",
             "value": 72
+         },
+         "min_sleepiness": {
+            "type": "basic",
+            "value": 0
+         },
+         "max_sleepiness": {
+            "type": "basic",
+            "value": 32
          }
       },
       "stonehearth:expendable_resources": {
@@ -66,6 +74,15 @@
                   "min": 61,
                   "max": "max_value"
                }
+            },
+            "sleepiness": {
+               "min": {
+                  "linked_attribute": "min_sleepiness"
+               },
+               "max": {
+                  "linked_attribute": "max_sleepiness"
+               },
+               "initial_value": 0
             }
          }
       },
@@ -77,14 +94,19 @@
          "entries": {
             "default": {
                "items": {
-                  "skin": {
+                  "jerky": {
                      "uri": "stonehearth_ace:beef_jerky",
+                     "weight": 1
+                  },
+                  "skin": {
+                     "uri": "stonehearth_ace:resources:moomoo_pelt",
                      "weight": 1
                   }
                }
             }
          }
-      }
+      },
+      "stonehearth:unit_info": {}
    },
    "entity_data": {
       "stonehearth:entity_radius": 0.5,

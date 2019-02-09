@@ -97,6 +97,19 @@
                         "weight": 1
                      }
                   }
+               },
+               "pelts": {
+                  "roll_type": "some_of",
+                  "num_rolls": {
+                     "min": 1,
+                     "max": 2
+                  },
+                  "items": {
+                     "bone": {
+                        "uri": "stonehearth_ace:resources:moomoo_pelt",
+                        "weight": 1
+                     }
+                  }
                }
             }
          }
@@ -129,6 +142,14 @@
          "max_social_satisfaction": {
             "type": "basic",
             "value": 72
+         },
+         "min_sleepiness": {
+            "type": "basic",
+            "value": 0
+         },
+         "max_sleepiness": {
+            "type": "basic",
+            "value": 32
          }
       },
       "stonehearth:expendable_resources": {
@@ -154,13 +175,23 @@
                   "min": 61,
                   "max": "max_value"
                }
+            },
+            "sleepiness": {
+               "min": {
+                  "linked_attribute": "min_sleepiness"
+               },
+               "max": {
+                  "linked_attribute": "max_sleepiness"
+               },
+               "initial_value": 0
             }
          }
       },
       "render_info": {
          "animation_table": "/stonehearth/data/rigs/entities/critters/sheep",
          "scale": 0.15
-      }
+      },
+      "stonehearth:unit_info": {}
    },
    "entity_data": {
       "stonehearth:entity_radius": 0.75,

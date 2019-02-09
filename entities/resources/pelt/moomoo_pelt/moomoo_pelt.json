@@ -1,0 +1,38 @@
+{
+   "mixins": "stonehearth:mixins:resources:fur_pelt",
+   "type": "entity",
+   "components": {
+      "mixintypes": {
+         "model_variants": "override"
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(moomoo_pelt.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 3,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 2,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.resources.pelt.moomoo_pelt.display_name)",
+         "description": "i18n(stonehearth_ace:entities.resources.pelt.moomoo_pelt.description)",
+         "icon": "file(moomoo_pelt.png)",
+         "is_item": true,
+         "category": "resources"
+      },
+      "stonehearth:appeal": {
+         "appeal": -2
+      }
+   }
+}
