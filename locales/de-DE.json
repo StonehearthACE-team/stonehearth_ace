@@ -1596,6 +1596,16 @@
       "cook": {
          "recipes": {
             "food_preparation_name": "Essenszubereitung",
+            "cook_cheese_vat_recipe": {
+               "recipe_name": "Käsebottich",
+               "description": "Der Koch kann damit Käse herstellen, indem er Gerinnungsmischungen herstellt. Je länger er ruht, desto wertvoller wird er.",
+               "flavor": "Du kannst den Käse jederzeit während des Reifungsprozesses erntens"
+            },
+            "curdling_mixture_recipe": {
+               "recipe_name": "Gerinnungsmischungen",
+               "description": "Eine Fermentationsmischung aus Milch und einigen Zusatzstoffen. Innerhalb eines Käsebottich kann daraus Käse hergestellt werden!",
+               "flavor": "Du möchtest wahrscheinlich nicht wissen, was da sonst noch alles rein kommt..."
+            },
             "nutty_poultry_recipe": {
                "recipe_name": "Geröstetes Geflügel mit Nüssen",
                "description": "Geröstete und gebratene große Geflügelscheiben mit Gewürzen und Nüssen.",
@@ -1823,15 +1833,15 @@
          },
          "cook_cheese_vat_cheese_fresh": {
             "display_name": "Frischkäse",
-            "description": "Frischkäse hat sich gebildet! Ernte es oder lass es einige Zeit ruhen und trocknen ..."
+            "description": "Frischkäse hat sich gebildet! Ernte es oder lass ihn noch reifen"
          },
          "cook_cheese_vat_cheese_mild": {
             "display_name": "Milder Käse",
-            "description": "Milder Käse hat sich gebildet! Ernte es oder lassen es noch einige Zeit aushärten und trocknen."
+            "description": "Milder Käse hat sich gebildet! Ernte es oder lassen ihn noch länger reifen."
          },
          "cook_cheese_vat_cheese_aged": {
             "display_name": "Reifer Käse",
-            "description": "Dieser Käse ist ziemlich gealtert, fest und würzig! Es ist an der Zeit diese Delikatesse zu ernten."
+            "description": "Dieser Käse ist gut gereift, fest und würzig! Es ist an der Zeit diese Delikatesse zu ernten."
          }
       },
       "carpenter": {
@@ -2658,6 +2668,10 @@
             },
             "skunk_pelt": {
                "display_name": "Stinktierfell"
+            },
+            "moomoo_pelt": {
+               "display_name": "Moo-Moo Pelz",
+               "description": "AEine große Haut von einer ruhigen, weidenden Kreatur."
             }
          },
          "bone_material": {
@@ -3811,13 +3825,17 @@
             "display_name": "Schaf",
             "display_name_arctic": "Leicester-Schaf",
             "display_name_desert": "Dünenschafe",
-            "display_name_highlands": "Dickhornschaf"
+            "display_name_highlands": "Dickhornschaf",
+            "sheep_young": {
+               "display_name": "Lamm"
+            }
          },
          "poyo": {
             "nest": {
                "display_name": "BuckBuck-Nest",
                "description": "Ich bin sicher, es wird ihnen nichts ausmachen, wenn ein oder zwei Eier fehlen ... Richtig?"
-            }
+            },
+            "display_name": "BuckBuck"
          },
          "big_bird": {
             "nest": {
@@ -3833,6 +3851,17 @@
             "display_name": "Kitz",
             "display_name_highlands": "Elchkalb",
             "description": "Ein junges Tier, das Liebe und Fürsorge braucht."
+         },
+         "moomoo": {
+            "renewable_harvest_status_text": "melkt eine Moo-Moo",
+            "unripe_description": "Dieses Moo-Moo hat momentan keine Milch.",
+            "species": "moo-moo",
+            "display_name": "Moo-Moo",
+            "description": "Ein großer Wiederkäuer, der gerne Gras frisst und Milch liefert!",
+            "moomoo_young": {
+               "display_name": "Moo-Moo Kalb",
+               "description": "Ein süßes kleines Moo-Moo."
+            }
          }
       },
       "food": {
@@ -4339,6 +4368,9 @@
                "display_name": "Gerinnungsmischung",
                "description": "Milch und einige andere Dinge. Der Koch muss es in einen Käsebehälter gießen!"
             }
+         },
+         "beef_jerky": {
+            "display_name": "Trockenfleisch vom Rind"
          }
       },
       "terrain": {
@@ -5921,9 +5953,9 @@
                "water_affinity": {
                   "property_name": "Bewässerungsbedarf",
                   "status_name": "Aktueller Wasserstand",
-                  "range": "Diese Frucht wächst etwas schneller als normal <span class='water'><span class='text-value'>[str(i18n_data.min_water_level)] - [str(i18n_data.max_water_level)]</span> water</span> innerhalb der blau umrandeten Region.",
-                  "min_only": "Diese Frucht wird mindestens etwas schneller wachsen <span class='water'><span class='text-value'>[str(i18n_data.min_water_level)]</span> water</span> innerhalb der blau umrandeten Region.",
-                  "current_level": "Diese Frucht hat derzeit <span class='water'><span class='text-value'>[str(i18n_data.current_water_level)]</span> water</span> innerhalb der blau umrandeten Region."
+                  "range": "Diese Frucht wächst etwas schneller als normal <span class='water'><span class='text-value'>[str(i18n_data.min_water_level)] - [str(i18n_data.max_water_level)]</span> water</span> durch seine allgemeine Umgebung oder die Bewässerung innerhalb der blau umrandeten Region.",
+                  "min_only": "Diese Frucht wird mindestens etwas schneller wachsen <span class='water'><span class='text-value'>[str(i18n_data.min_water_level)]</span> water</span> durch seine allgemeine Umgebung oder die Bewässerung innerhalb der blau umrandeten Region.",
+                  "current_level": "Diese Frucht hat derzeit <span class='water'><span class='text-value'>[str(i18n_data.current_water_level)]</span> water</span> durch seine allgemeine Umgebung oder die Bewässerung innerhalb der blau umrandeten Region."
                },
                "light_affinity": {
                   "property_name": "Sonnenlicht benötigt",
@@ -5996,9 +6028,9 @@
                "moomoo_pasture_name": "Moo-Moo Gehege",
                "ostrich_pasture_description": "Diese exotischen Vögel produzieren köstliche große Eier und können für großes Geflügel, Trockenfleisch, Federn und Knochen geschlachtet werden",
                "sheep_pasture_description": "Schafe produzieren Wolle und manchmal etwas Milch. Beim schlachten von Schafen wird rohes Hammelfleisch, Trockenfleisch und Knochen produziert",
-               "moomoo_pasture_description": "Moo-Moos essen viel, produzieren aber schöne Menge an Milch. Wenn sie geschlachtet werden, geben sie Felle, Steaks, Trockenfleisch und Knochen.",
+               "moomoo_pasture_description": "Moo-Moos essen viel, produzieren aber schöne Menge an Milch. Wenn sie geschlachtet werden, geben sie Felle, Steaks, Trockenfleisch und Knochen",
                "rabbit_pasture_description": "Kaninchen vermehren sich schnell und können für Trockenfleisch, Pelze und manchmal Knochen geschlachtet werden",
-               "poyo_pasture_description": "BuckBucks legen Eier, eine feine Kochzutat. Das Schlachten von BuckBucks gibt Fleisch und gelegentlich Federn und Knochen"
+               "poyo_pasture_description": "BuckBucks legen Eier, eine feine Kochzutat. Das Schlachten von BuckBucks gibt Fleisch und oft Federn und Knochen"
             }
          },
          "military_mode": {
@@ -6181,7 +6213,7 @@
             "description": "Wächst durch Ausbreitung, aber jedes wächst nur ein paar mal. Kann kletterbar sein."
          },
          "water_pump": {
-            "display_name": "Wasserpumpe,
+            "display_name": "Wasserpumpe",
             "description": "Wenn aktiviert, pumpt sie Wasser von unten nach oben."
          }
       }
