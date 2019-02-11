@@ -1,3 +1,12 @@
 {
-   "workshop": "stonehearth_ace:blacksmith:workbench_advanced"
+   "workshop": "stonehearth_ace:blacksmith:workbench_advanced",
+   "mixintypes": {
+      "produces": "override"
+   },
+   "produces": [
+      {
+         "item": "stonehearth:weapons:legendary:sword",
+         "produce_script": "stonehearth_ace:craft_script:fancy_effect"
+      }
+   ]
 }

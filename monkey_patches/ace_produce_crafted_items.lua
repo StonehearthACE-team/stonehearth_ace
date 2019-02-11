@@ -100,45 +100,47 @@ function AceProduceCraftedItems:_add_outputs_to_bench(ai, crafter, workshop, rec
 
    -- create all the recipe products
    local outputs = self:_get_outputs(crafter, workshop, recipe)
-   for i, product in ipairs(recipe) do
+   for i, product in ipairs(recipe.produces) do
       local product_uri = product.item
-      local item = crafter_component:produce_crafted_item(product_uri, recipe, ingredients, ingredient_quality)
-      
-      -- if the item has any extra scripts to run, do those now
-      if product.produce_script then
-         local script = radiant.mods.load_script(product.produce_script)
-         if script and script.on_craft then
-            script.on_craft(ai, crafter, workshop, recipe, ingredients, product, item)
+      if product_uri then
+         local item = crafter_component:produce_crafted_item(product_uri, recipe, ingredients, ingredient_quality)
+         
+         -- if the item has any extra scripts to run, do those now
+         if product.produce_script then
+            local script = radiant.mods.load_script(product.produce_script)
+            if script and script.on_craft then
+               script.on_craft(ai, crafter, workshop, recipe, ingredients, product, item)
+            end
          end
+
+         -- put the item on the workshop
+         item:add_component('mob')
+                  :move_to(location_on_workshop)
+         workshop:add_component('entity_container')
+                  :add_child(item)
+
+         radiant.entities.set_player_id(item, crafter)
+         
+         -- Make sure other people don't try to swipe our item while we are deciding to take it to storage.
+         local player_id = radiant.entities.get_player_id(crafter)
+         stonehearth.ai:acquire_ai_lease(item, crafter, 1000, player_id)
+
+         stonehearth.inventory:get_inventory(player_id):add_item(item)
+
+         table.insert(self._outputs, item)
+
+         radiant.effects.run_effect(item, 'stonehearth:effects:item_created')
+
+         --send event that the carpenter has finished an item
+         local crafting_data = {
+            recipe_data = recipe,
+            product = item,
+            product_uri = product_uri,
+         }
+         radiant.log.write('crafter', 5, 'Making item %s with id %s', item, item:get_id())
+
+         radiant.events.trigger_async(crafter, 'stonehearth:crafter:craft_item', crafting_data)
       end
-
-      -- put the item on the workshop
-      item:add_component('mob')
-               :move_to(location_on_workshop)
-      workshop:add_component('entity_container')
-               :add_child(item)
-
-      radiant.entities.set_player_id(item, crafter)
-      
-      -- Make sure other people don't try to swipe our item while we are deciding to take it to storage.
-      local player_id = radiant.entities.get_player_id(crafter)
-      stonehearth.ai:acquire_ai_lease(item, crafter, 1000, player_id)
-
-      stonehearth.inventory:get_inventory(player_id):add_item(item)
-
-      table.insert(self._outputs, item)
-
-      radiant.effects.run_effect(item, 'stonehearth:effects:item_created')
-
-      --send event that the carpenter has finished an item
-      local crafting_data = {
-         recipe_data = recipe,
-         product = item,
-         product_uri = product_uri,
-      }
-      radiant.log.write('crafter', 5, 'Making item %s with id %s', item, item:get_id())
-
-      radiant.events.trigger_async(crafter, 'stonehearth:crafter:craft_item', crafting_data)
    end
 end
 

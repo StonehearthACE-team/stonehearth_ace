@@ -8,18 +8,12 @@ local log = radiant.log.create_logger('entity_modification')
 local EntityModificationComponent = class()
 
 function EntityModificationComponent:initialize()
-	local json = radiant.entities.get_json(self)
-	-- load up any points/regions/settings we want to store
-	if json and json.values then
-		self._json_values = radiant.shallow_copy(json.values)
-	else
-		self._json_values = {}
-	end
+	self._json = radiant.entities.get_json(self) or {}
 end
 
 function EntityModificationComponent:set_region3(component_name, region, add)
 	-- if we weren't passed a key to our own values, assume we were passed a Region3 object or something that can be converted into one
-	region = self._json_values[region] or region
+	region = self._json.regions and self._json.regions[region] or region
 	local r3 = nil
 	if region then
 		if radiant.util.is_a(region, Cube3) then
@@ -70,7 +64,7 @@ function EntityModificationComponent:reset_region3(component_name)
 end
 
 function EntityModificationComponent:set_region_collision_type(type)
-	type = self._json_values[type] or type
+	type = self._json.collision and self._json.collision[type] or type
 	if type and radiant.util.is_string(type) then
 		if type:lower() == 'none' then
 			type = _radiant.om.RegionCollisionShape.NONE
@@ -97,8 +91,8 @@ function EntityModificationComponent:reset_region_collision_type()
 end
 
 function EntityModificationComponent:set_movement_modifier_shape_modifier(movement_modifier, nav_preference_modifier)
-	movement_modifier = self._json_values[movement_modifier] or movement_modifier
-	nav_preference_modifier = self._json_values[nav_preference_modifier] or nav_preference_modifier
+	movement_modifier = self._json.movement_modifiers and self._json.movement_modifiers[movement_modifier] or movement_modifier
+	nav_preference_modifier = self._json.nav_modifiers and self._json.nav_modifiers[nav_preference_modifier] or nav_preference_modifier
 	
 	local component = self._entity:add_component('movement_modifier_shape')
 
@@ -128,7 +122,7 @@ function EntityModificationComponent:set_model_variant(model_variant, override_o
 	if component then
 		local current_model_variant = component:get_model_variant()
 		-- always default to our key if present
-		model_variant = self._json_values[model_variant] or model_variant
+		model_variant = self._json.model_variants and self._json.model_variants[model_variant] or model_variant
 		
 		-- check if the model_variant (our key) is actually an array of variants
 		-- if so, check if it specified a type of 'one_of'

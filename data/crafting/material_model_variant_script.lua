@@ -4,9 +4,7 @@ function material_model_variant.on_craft(ai, crafter, workshop, recipe, ingredie
    if product.model_variant_material then
       local uri = material_model_variant.majority_material_uri(ingredients, product.model_variant_material)
       if uri then
-         -- we could look up the uri in a table and convert it to a smaller name...
-         -- but just assume the model variant is the entire uri alias
-         item:add_component('render_info'):set_model_variant(uri)
+         item:add_component('stonehearth_ace:entity_modification'):set_model_variant(uri)
       end
    end
 end
