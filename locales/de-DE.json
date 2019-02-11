@@ -2,9 +2,10 @@
    "ai": {
       "actions": {
          "status_text": {
-            "train": "Geht zum Training",
+            "eat_from": "ißt vom [name(data.target)]",
             "fertilize_field": "Dünger auftragen",
-            "perform_evolve": "transformiere [name(data.target)]"
+            "perform_evolve": "transformiere [name(data.target)]",
+            "train": "Geht zum Training"
          }
       }
    },
@@ -3857,9 +3858,12 @@
             "unripe_description": "Dieses Moo-Moo hat momentan keine Milch.",
             "species": "moo-moo",
             "display_name": "Moo-Moo",
+	    "display_name_arctic": "Nord Moo-Moo",
+            "display_name_desert": "Wüsten Moo-Moo",
+            "display_name_highlands": "Langhorn Moo-Moo",
             "description": "Ein großer Wiederkäuer, der gerne Gras frisst und Milch liefert!",
             "moomoo_young": {
-               "display_name": "Moo-Moo Kalb",
+               "display_name": "Moo Kalb",
                "description": "Ein süßes kleines Moo-Moo."
             }
          }
