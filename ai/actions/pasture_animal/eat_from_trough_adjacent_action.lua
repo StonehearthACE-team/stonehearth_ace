@@ -1,41 +1,46 @@
--- NOT YET IMPLEMENTED; just a copy of original action
-
+local item_quality_lib = require 'stonehearth_ace.lib.item_quality.item_quality_lib'
 local Entity = _radiant.om.Entity
+local log = radiant.log.create_logger('eat_trough_feed')
 
-local EatFeedAdjacent = radiant.class()
-EatFeedAdjacent.name = 'eat item'
-EatFeedAdjacent.does = 'stonehearth:eat_feed_adjacent'
-EatFeedAdjacent.args = {
-   food = Entity,
+local EatTroughFeedAdjacent = radiant.class()
+EatTroughFeedAdjacent.name = 'eat feed'
+EatTroughFeedAdjacent.does = 'stonehearth_ace:eat_trough_feed_adjacent'
+EatTroughFeedAdjacent.args = {
+   trough = Entity,
 }
-EatFeedAdjacent.priority = 0
+EatTroughFeedAdjacent.priority = 0
 
-function EatFeedAdjacent:run(ai, entity, args)
-   local food = args.food
+function EatTroughFeedAdjacent:run(ai, entity, args)
+   local trough = args.trough
 
-   self._animal_feed_data =  radiant.entities.get_entity_data(food, 'stonehearth:animal_feed')
-   ai:set_status_text_key('stonehearth:ai.actions.status_text.eat_item', { target = food })
+   local feed_uri, quality = trough:get_component('stonehearth_ace:pasture_item'):eat_from_trough(entity)
 
-   ai:execute('stonehearth:run_effect', {
-      effect = 'eat',
-      times = self._animal_feed_data.effect_loops or 3
-   })
+   -- only if there was food to be eaten and it was successfully decremented from the trough will it return the feed uri
+   if feed_uri then
+      self._animal_feed_data =  radiant.entities.get_entity_data(feed_uri .. ':ground', 'stonehearth:animal_feed')
+      self._feed_quality = quality
+      ai:set_status_text_key('stonehearth_ace:ai.actions.status_text.eat_from', { target = trough })
+
+      ai:execute('stonehearth:run_effect', {
+         effect = 'eat',
+         times = self._animal_feed_data.effect_loops or 3
+      })
+   end
 end
 
-function EatFeedAdjacent:stop(ai, entity, args)
+function EatTroughFeedAdjacent:stop(ai, entity, args)
    local expendable_resources_component = entity:add_component('stonehearth:expendable_resources')
 
    if self._animal_feed_data then
-      local stacks_component = args.food:get_component('stonehearth:stacks')
-      local destroy = true
-      if stacks_component then
-         stacks_component:consume_stack()
-         destroy = (stacks_component:get_stacks() <= 0)
+      local quality_chances = self._animal_feed_data.quality_chances
+      if quality_chances then
+         if self._feed_quality and self._feed_quality > 1 then
+            quality_chances = item_quality_lib.modify_quality_table(quality_chances, self._feed_quality)
+         end
+         item_quality_lib.apply_quality(entity, quality_chances)
       end
-      if destroy then
-         ai:unprotect_argument(args.food)
-         radiant.entities.destroy_entity(args.food)
-      end
+
+      log:debug('%s successfully ate, gaining %s calories', entity, self._animal_feed_data.calorie_gain)
 
       -- if we're interrupted, go ahead and immediately finish eating
       -- we decided it was not fun to leave this hanging
@@ -50,7 +55,8 @@ function EatFeedAdjacent:stop(ai, entity, args)
       end
 
       self._animal_feed_data = nil
+      self._feed_quality = nil
    end
 end
 
-return EatFeedAdjacent
+return EatTroughFeedAdjacent

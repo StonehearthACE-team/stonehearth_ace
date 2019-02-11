@@ -23,6 +23,7 @@ function AceShepherdPastureComponent:activate()
 
    self._pasture_items = {}
    self._empty_troughs = {}
+   self._fed_troughs = {}
    self._trough_listeners = {}
    
    self._weather_check_alarm = stonehearth.calendar:set_alarm(WEATHER_CHECK_TIME, radiant.bind(self, '_recalculate_duration'))
@@ -131,10 +132,25 @@ function AceShepherdPastureComponent:_set_has_renewable()
    end
 end
 
+function AceShepherdPastureComponent:_get_adult_count()
+   local count = 0
+   for id, critter in pairs(self._sv.tracked_critters) do
+      local animal = critter.entity
+      local age = radiant.entities.get_entity_data(animal, 'stonehearth:evolve_data')
+      local stage = (age and age.current_stage) or "adult"
+      if stage == 'adult' then
+         count = count + 1
+      end
+   end
+   return count
+end
+
 function AceShepherdPastureComponent:_consider_maintain_animals()
    local num_queued = radiant.size(self._sv._queued_slaughters)
-   local num_to_slaughter = self._sv.num_critters - (self._sv.maintain_animals + num_queued)
+   local num_adults = self:_get_adult_count()
+   local num_to_slaughter = num_adults - (self._sv.maintain_animals + num_queued)
    
+   log:debug('_consider_maintain_animals: %s queued, %s to slaughter', num_queued, num_to_slaughter)
    if num_to_slaughter > 0 then
       -- just process through the animals with the normal iterator and try to harvest them
       -- first skip over renewably-harvestable animals
@@ -152,6 +168,8 @@ function AceShepherdPastureComponent:_consider_maintain_animals()
             end
          end
       end
+
+      log:debug('%s queued, %s to slaughter', radiant.size(self._sv._queued_slaughters), num_to_slaughter)
 
       if num_to_slaughter > 0 then
          for id, critter in pairs(self._sv.tracked_critters) do
@@ -321,7 +339,7 @@ end
 
 function AceShepherdPastureComponent:_setup_grass_spawn_timer()
 	local spawn_period = self:_calculate_grass_spawn_period()
-	self._sv._grass_spawn_timer = stonehearth.calendar:set_persistent_timer("AceShepherdPasture spawn grass", spawn_period, radiant.bind(self, '_spawn_grass'))
+	self._sv._grass_spawn_timer = stonehearth.calendar:set_persistent_timer("pasture spawn grass", spawn_period, radiant.bind(self, '_spawn_grass'))
 end
 
 function AceShepherdPastureComponent:_destroy_grass_spawn_timer()
@@ -344,7 +362,7 @@ function AceShepherdPastureComponent:_recalculate_duration()
 		local time_remaining = math.max(0, spawn_period * (1 - self._sv._grass_spawn_recalculate_progress))
 		local scaled_time_remaining = self:_calculate_grass_spawn_period(time_remaining)
 		self:_destroy_grass_spawn_timer()
-		self._sv._grass_spawn_timer = stonehearth.calendar:set_persistent_timer("AceShepherdPasture spawn grass", scaled_time_remaining, radiant.bind(self, '_spawn_grass'))
+		self._sv._grass_spawn_timer = stonehearth.calendar:set_persistent_timer("pasture spawn grass", scaled_time_remaining, radiant.bind(self, '_spawn_grass'))
 	end
 end
 
@@ -485,6 +503,16 @@ function AceShepherdPastureComponent:get_empty_trough()
    end
 end
 
+function AceShepherdPastureComponent:get_fed_troughs()
+   if next(self._fed_troughs) then
+      local troughs = {}
+      for id, _ in pairs(self._fed_troughs) do
+         table.insert(troughs, self._pasture_items[id])
+      end
+      return troughs
+   end
+end
+
 function AceShepherdPastureComponent:register_item(item, type)
    local id = item:get_id()
    if not self._pasture_items[id] then
@@ -500,11 +528,14 @@ function AceShepherdPastureComponent:register_item(item, type)
 end
 
 function AceShepherdPastureComponent:_on_trough_empty_status_changed(item, empty_status)
+   local id = item:get_id()
    if empty_status then
-      self._empty_troughs[item:get_id()] = true
+      self._empty_troughs[id] = true
+      self._fed_troughs[id] = nil
       stonehearth.ai:reconsider_entity(item)
    else
-      self._empty_troughs[item:get_id()] = nil
+      self._empty_troughs[id] = nil
+      self._fed_troughs[id] = true
    end
    self:recalculate_feed_need()
 end
@@ -512,6 +543,7 @@ end
 function AceShepherdPastureComponent:unregister_item(id)
    self._pasture_items[id] = nil
    self._empty_troughs[id] = nil
+   self._fed_troughs[id] = nil
    self:_destroy_trough_listener(id)
 end
 

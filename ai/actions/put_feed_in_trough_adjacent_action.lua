@@ -1,5 +1,3 @@
--- NOT YET IMPLEMENTED; just a copy of original action
-
 local Entity = _radiant.om.Entity
 
 local FeedTroughAdjacent = radiant.class()

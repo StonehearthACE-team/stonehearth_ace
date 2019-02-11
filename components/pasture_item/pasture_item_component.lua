@@ -1,6 +1,3 @@
-local item_quality_lib = require 'stonehearth_ace.lib.item_quality.item_quality_lib'
-local rng = _radiant.math.get_default_rng()
-
 local PastureItemComponent = class()
 
 function PastureItemComponent:initialize()
@@ -72,17 +69,6 @@ function PastureItemComponent:eat_from_trough(animal)
          self._sv._feed_quality = nil
          self:_signal_empty_status_changed(true)
       end
-
-      -- move this section into the ai action
-      local feed_data = radiant.entities.get_entity_data(feed_uri .. ':ground', 'stonehearth:animal_feed')
-      local quality_chances = feed_data.quality_chances
-      if quality_chances then
-         if quality > 1 then
-            quality_chances = item_quality_lib.modify_quality_table(quality_chances, quality)
-         end
-         item_quality_lib.apply_quality(animal, quality_chances)
-      end
-
       self.__saved_variables:mark_changed()
 
       return feed_uri, quality

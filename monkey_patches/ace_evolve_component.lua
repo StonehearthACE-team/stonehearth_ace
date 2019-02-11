@@ -234,7 +234,7 @@ function AceEvolveComponent:evolve()
    -- option to kill on evolve instead of destroying (e.g., if you need to have it drop loot or trigger the killed event)
    if self._evolve_data.kill_entity then
       radiant.entities.kill_entity(self._entity)
-   elseif not self._evolve_data.destroy_entity == false then
+   elseif self._evolve_data.destroy_entity ~= false then
       radiant.entities.destroy_entity(self._entity)
    end
 
