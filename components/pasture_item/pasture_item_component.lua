@@ -1,10 +1,13 @@
+local item_quality_lib = require 'stonehearth_ace.lib.item_quality.item_quality_lib'
+local rng = _radiant.math.get_default_rng()
+
 local PastureItemComponent = class()
 
 function PastureItemComponent:initialize()
-   self._sv._food = 0
+   self._sv.trough_feed_uri = nil
+   self._sv.num_feed = 0
    self._json = radiant.entities.get_json(self)
    self._type = self._json.type
-   self._capacity = self._json.capacity or 10
 end
 
 function PastureItemComponent:restore()
@@ -53,7 +56,56 @@ function PastureItemComponent:_register_with_town(register)
 end
 
 function PastureItemComponent:is_empty()
-   return self._sv._food < 1
+   return self._sv.num_feed < 1
+end
+
+function PastureItemComponent:eat_from_trough(animal)
+   local num_feed = self._sv.num_feed
+   if num_feed > 0 then
+      local feed_uri = self._sv.trough_feed_uri
+      local quality = self._sv._feed_quality
+
+      num_feed = num_feed - 1
+      self._sv.num_feed = num_feed
+      if num_feed < 1 then
+         self._sv.trough_feed_uri = nil
+         self._sv._feed_quality = nil
+         self:_signal_empty_status_changed(true)
+      end
+
+      -- move this section into the ai action
+      local feed_data = radiant.entities.get_entity_data(feed_uri .. ':ground', 'stonehearth:animal_feed')
+      local quality_chances = feed_data.quality_chances
+      if quality_chances then
+         if quality > 1 then
+            quality_chances = item_quality_lib.modify_quality_table(quality_chances, quality)
+         end
+         item_quality_lib.apply_quality(animal, quality_chances)
+      end
+
+      self.__saved_variables:mark_changed()
+
+      return feed_uri, quality
+   else
+      return false
+   end
+end
+
+function PastureItemComponent:set_trough_feed(feed)
+   local feed_uri = feed:get_uri()
+   self._sv.trough_feed_uri = feed_uri
+   self._sv._feed_quality = radiant.entities.get_item_quality(feed)
+
+   local stacks = radiant.entities.get_component_data(feed_uri .. ':ground', 'stonehearth:stacks')
+   self._sv.num_feed = stacks and stacks.max_stacks or 1
+   
+   self.__saved_variables:mark_changed()
+
+   self:_signal_empty_status_changed(false)
+end
+
+function PastureItemComponent:_signal_empty_status_changed(empty_status)
+   radiant.events.trigger(self._entity, 'stonehearth_ace:trough:empty_status_changed', empty_status)
 end
 
 return PastureItemComponent

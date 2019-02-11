@@ -1,4 +1,5 @@
 local Entity = _radiant.om.Entity
+local item_quality_lib = require 'stonehearth_ace.lib.item_quality.item_quality_lib'
 local PerformEvolveItemAdjacent = radiant.class()
 
 PerformEvolveItemAdjacent.name = 'perform evolve adj'
@@ -45,6 +46,7 @@ function PerformEvolveItemAdjacent:run(ai, entity, args)
          ai:execute('stonehearth:drop_carrying_now')
       end
 
+      local evolved_form
       if effect then
          evolve:perform_evolve()
          if duration then
@@ -54,12 +56,18 @@ function PerformEvolveItemAdjacent:run(ai, entity, args)
                ai:execute('stonehearth:run_effect', { effect = effect})
             end
          end
-         evolve:evolve()
+         evolved_form = evolve:evolve()
       else
-         evolve:perform_evolve(true)
+         evolved_form = evolve:perform_evolve(true)
       end
 
       if ing_item and ing_item:is_valid() then
+         -- apply item quality here if relevant, rather than in the evolve component
+         -- because it would be a mess in there passing it around or having to store it
+         if data.apply_ingredient_quality and evolved_form then
+            item_quality_lib.copy_quality(ing_item, evolved_form)
+         end
+
          ai:unprotect_argument(ing_item)
          radiant.entities.destroy_entity(ing_item)
       end

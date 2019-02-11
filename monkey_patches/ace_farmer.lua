@@ -25,11 +25,8 @@ end
 
 function AceFarmerClass:_on_plant()
    -- exp gained from planting will not level up the farmer
-   local xp_to_add = math.min(self._job_component:get_xp_to_next_lv() - self._job_component:get_current_exp() - 1, self._xp_rewards["base_exp_per_plant"])
-   if xp_to_add > 0 then
-      --log:debug('adding planting exp %s: %s until next level', xp_to_add, self._job_component:get_xp_to_next_lv() - self._job_component:get_current_exp())
-      self._job_component:add_exp(xp_to_add, false, {only_through_level = 2})
-   end
+   local xp_to_add = self._xp_rewards["base_exp_per_plant"]
+   self._job_component:add_exp(xp_to_add, false, {only_through_level = 2})
 end
 
 function AceFarmerClass:_on_fertilize()

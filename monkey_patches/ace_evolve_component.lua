@@ -237,6 +237,8 @@ function AceEvolveComponent:evolve()
    elseif not self._evolve_data.destroy_entity == false then
       radiant.entities.destroy_entity(self._entity)
    end
+
+   return evolved_form
 end
 
 function AceEvolveComponent:_start_evolve_timer()

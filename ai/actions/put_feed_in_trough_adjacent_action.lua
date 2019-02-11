@@ -2,14 +2,15 @@
 
 local Entity = _radiant.om.Entity
 
-local FeedPastureAdjacent = radiant.class()
-FeedPastureAdjacent.name = 'feed pasture adjacent'
-FeedPastureAdjacent.does = 'stonehearth:feed_pasture_adjacent'
-FeedPastureAdjacent.args = {
-   pasture = Entity,      -- the pasture to feed
+local FeedTroughAdjacent = radiant.class()
+FeedTroughAdjacent.name = 'feed trough adjacent'
+FeedTroughAdjacent.does = 'stonehearth_ace:feed_pasture_trough_adjacent'
+FeedTroughAdjacent.args = {
+   pasture = Entity,    -- the pasture the trough is in
+   trough = Entity,     -- the trough to put feed in
    feed = Entity,
 }
-FeedPastureAdjacent.priority = 0
+FeedTroughAdjacent.priority = 0
 
 --[[
     Ace version:
@@ -17,14 +18,14 @@ FeedPastureAdjacent.priority = 0
     This allows us to add more fodder types.    
 ]]
 
-function FeedPastureAdjacent:_is_correct_feed(entity, pasture)
+function FeedTroughAdjacent:_is_correct_feed(feed, pasture)
    local shepherd_pasture = pasture:get_component('stonehearth:shepherd_pasture')
    if not shepherd_pasture then
       return false
    end
    local feed_material = shepherd_pasture:get_animal_feed_material()
-   if entity and not radiant.entities.is_material(entity, feed_material) then
-      local iconic_component = entity:get_component('stonehearth:iconic_form')
+   if feed and not radiant.entities.is_material(feed, feed_material) then
+      local iconic_component = feed:get_component('stonehearth:iconic_form')
       if not iconic_component or (iconic_component and not radiant.entities.is_material(iconic_component:get_root_entity(), feed_material)) then
          return false
       end
@@ -37,27 +38,23 @@ function FeedPastureAdjacent:_is_correct_feed(entity, pasture)
    return true
 end
 
-function FeedPastureAdjacent:run(ai, entity, args)
-   ai:execute('stonehearth:run_effect', { effect = 'fiddle' })
+function FeedTroughAdjacent:run(ai, entity, args)
    local pasture = args.pasture
    local feed = args.feed
    if not self:_is_correct_feed(feed, pasture) then
-     ai:abort('not carrying the correct type of feed')
-     return
+      ai:abort('not carrying the correct type of feed')
+      return
    end
+   ai:execute('stonehearth:turn_to_face_entity', { entity = args.trough })
+   ai:execute('stonehearth:run_effect', { effect = 'fiddle' })
 
-   local pasture_component = pasture:get_component('stonehearth:shepherd_pasture')
-   local feed_uri = feed:get_uri()
-   local feed_location = radiant.entities.get_world_grid_location(feed)
+   args.trough:get_component('stonehearth_ace:pasture_item'):set_trough_feed(feed)
 
-   local feed_on_ground = radiant.entities.create_entity(feed_uri..":ground", { owner = entity })
-   radiant.terrain.place_entity_at_exact_location(feed_on_ground, feed_location)
-   pasture_component:set_feed(feed_on_ground)
-
+   -- this is just used for granting the shepherd exp; might be slightly exploitable
    radiant.events.trigger_async(entity, 'stonehearth:feed_pasture', {pasture = pasture})
 
    ai:unprotect_argument(feed)
    radiant.entities.destroy_entity(feed)
 end
 
-return FeedPastureAdjacent
+return FeedTroughAdjacent

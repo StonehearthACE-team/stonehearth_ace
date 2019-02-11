@@ -1,3 +1,5 @@
+local item_quality_lib = require 'stonehearth_ace.lib.item_quality.item_quality_lib'
+
 local StumpComponent = class()
 
 function StumpComponent:activate()
@@ -31,6 +33,11 @@ function StumpComponent:add_stump(killer_player_id)
       if not the_stump then
          return
       end
+
+      if self._stump_data.apply_quality ~= false then
+         item_quality_lib.copy_quality(self._entity, the_stump)
+      end
+
       radiant.terrain.place_entity_at_exact_location(the_stump, location, {force_iconic = false})
 
       --turn it to correct rotation

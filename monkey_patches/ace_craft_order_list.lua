@@ -86,7 +86,8 @@ function AceCraftOrderList:add_order(player_id, recipe, condition, associated_or
             end
             local num_to_craft = math.ceil(missing / num_crafted)
 
-            local new_condition = { type = condition.type }
+            -- shallow copy to get not just the type and the order_index, but anything else that might've been passed along
+            local new_condition = radiant.shallow_copy(condition)
             if condition.type == 'make' then
                new_condition.amount = num_to_craft
             else -- condition.type == 'maintain'

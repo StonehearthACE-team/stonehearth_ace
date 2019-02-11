@@ -36,13 +36,13 @@ function FeedPastureAdjacent:_is_correct_feed(entity, pasture)
 end
 
 function FeedPastureAdjacent:run(ai, entity, args)
-   ai:execute('stonehearth:run_effect', { effect = 'fiddle' })
    local pasture = args.pasture
    local feed = args.feed
    if not self:_is_correct_feed(feed, pasture) then
-     ai:abort('not carrying the correct type of feed')
-     return
+      ai:abort('not carrying the correct type of feed')
+      return
    end
+   ai:execute('stonehearth:run_effect', { effect = 'fiddle' })
 
    local pasture_component = pasture:get_component('stonehearth:shepherd_pasture')
    local feed_uri = feed:get_uri()

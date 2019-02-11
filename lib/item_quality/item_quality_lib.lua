@@ -32,25 +32,38 @@ function item_quality_lib.copy_quality(from, to, options)
    end
 end
 
+-- quality parameter can be a number or a table of random quality chances
+function item_quality_lib.apply_qualities(items, quality, options)
+   options = options or {}
+   for _, item in pairs(items) do
+      item_quality_lib.apply_quality(item, quality, options)
+   end
+end
+
 -- this can potentially cause issues if the item already has a quality or is already in someone's inventory
 -- such items should be filtered out before calling this function
+-- quality parameter can be a number or a table of random quality chances
 function item_quality_lib.apply_quality(item, quality, options)
-   if quality > 1 then
-      -- allow replacing existing, lower item qualities (assume the item has properly been removed from inventories if necessary)
-      local iq_comp = item:get_component('stonehearth:item_quality')
-      if iq_comp then
-         if iq_comp:get_quality() >= quality then
-            return
-         else
-            item:remove_component('stonehearth:item_quality')
+   if type(quality) == 'table' then
+      item_quality_lib.apply_random_quality(item, quality, options)
+   else
+      if quality > 1 then
+         -- allow replacing existing, lower item qualities (assume the item has properly been removed from inventories if necessary)
+         local iq_comp = item:get_component('stonehearth:item_quality')
+         if iq_comp then
+            if iq_comp:get_quality() >= quality then
+               return
+            else
+               item:remove_component('stonehearth:item_quality')
+            end
          end
+         iq_comp = item:add_component('stonehearth:item_quality')
+         options = options or {}
+         if options.override_allow_variable_quality == nil then
+            options.override_allow_variable_quality = true
+         end
+         iq_comp:initialize_quality(quality, options and options.author, options and options.author_type, options)
       end
-      iq_comp = item:add_component('stonehearth:item_quality')
-      options = options or {}
-      if options.override_allow_variable_quality == nil then
-         options.override_allow_variable_quality = true
-      end
-      iq_comp:initialize_quality(quality, options and options.author, options and options.author_type, options)
    end
 end
 
@@ -63,19 +76,26 @@ function item_quality_lib.apply_random_quality(item, quality_chances, options)
    end
 end
 
-function item_quality_lib.apply_random_qualities(items, quality_chances, options)
-   options = options or {}
-   for _, item in pairs(items) do
-      item_quality_lib.apply_random_quality(item, quality_chances, options)
-   end
-end
-
--- this could be extended to allow other conditions for allowing masterwork or higher (4+) randim qualities
+-- this could be extended to allow other conditions for allowing masterwork or higher (4+) random qualities
 function item_quality_lib.get_max_random_quality(player_id)
    local town = stonehearth.town:get_town(player_id)
    return (town and town:get_town_bonus('stonehearth:town_bonus:guildmaster') ~= nil
             and stonehearth.constants.item_quality.MASTERWORK)
             or stonehearth.constants.item_quality.EXCELLENT
+end
+
+function item_quality_lib.modify_quality_table(qualities, ingredient_quality)
+   local modified_chances = {}
+   for i=#qualities, 1, -1 do
+      local value = qualities[i]
+      local quality, chance = value[1], value[2]
+      if i > 1 then
+         chance = chance * (1 + 2 ^ (1 + ingredient_quality - quality) - 2 ^ (2 - quality))
+      end
+      modified_chances[i] = { quality, chance }
+   end
+
+   return modified_chances
 end
 
 return item_quality_lib

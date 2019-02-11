@@ -106,9 +106,10 @@ function AceTown:register_pasture_item(item, type)
    -- ignore items that don't fully fit within a pasture, in order to prevent issues with items overlapping multiple pastures
    local item_reg = csg_lib.get_region_footprint(item:add_component('region_collision_shape'):get_region():get())
    local item_loc = radiant.entities.get_world_grid_location(item)
+   local item_rot = radiant.entities.get_facing(item)
 
    if item_loc then
-      item_reg = item_reg:translated(item_loc)
+      item_reg = item_reg:rotated(item_rot):translated(item_loc)
       for _, pasture in pairs(self._animal_pastures) do
          local pasture_reg = csg_lib.get_region_footprint(pasture:add_component('region_collision_shape'):get_region():get())
          local pasture_loc = radiant.entities.get_world_grid_location(pasture)

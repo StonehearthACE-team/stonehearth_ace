@@ -92,6 +92,8 @@ function AceShepherdPastureComponent:post_creation_setup()
    self._sv.maintain_animals = self:get_max_animals()
    self._sv._queued_slaughters = {}
    self.__saved_variables:mark_changed()
+
+   self:_start_grass_spawn()
 end
 
 AceShepherdPastureComponent._ace_old_set_pasture_type_command = ShepherdPastureComponent.set_pasture_type_command
@@ -295,8 +297,17 @@ end
 
 AceShepherdPastureComponent._ace_old__create_pasture_tasks = ShepherdPastureComponent._create_pasture_tasks
 function AceShepherdPastureComponent:_create_pasture_tasks()
-	self:_ace_old__create_pasture_tasks()
-   self:_start_grass_spawn()
+   self:_ace_old__create_pasture_tasks()
+   
+   local town = stonehearth.town:get_town(self._entity)
+
+   local feed_trough_task = town:create_task_for_group(
+      'stonehearth:task_groups:herding',
+      'stonehearth_ace:feed_pasture_trough',
+      {pasture = self._entity})
+         :set_source(self._entity)
+         :start()
+   table.insert(self._added_pasture_tasks, feed_trough_task)
 end
 
 function AceShepherdPastureComponent:_start_grass_spawn()
@@ -429,7 +440,7 @@ end
 AceShepherdPastureComponent._ace_old_recalculate_feed_need = ShepherdPastureComponent.recalculate_feed_need
 function AceShepherdPastureComponent:recalculate_feed_need()
    if next(self._trough_listeners) then
-      radiant.events.trigger_async(self._entity, 'stonehearth:shepherd_pasture:feed_changed', self._entity, self:needs_feed())
+      radiant.events.trigger_async(self._entity, 'stonehearth:shepherd_pasture:trough_feed_changed', self._entity, self:needs_trough_feed())
    else
       self:_ace_old_recalculate_feed_need()
    end
@@ -438,9 +449,17 @@ end
 AceShepherdPastureComponent._ace_old_needs_feed = ShepherdPastureComponent.needs_feed
 function AceShepherdPastureComponent:needs_feed()
    if next(self._trough_listeners) then
-      return next(self._empty_troughs) ~= nil
+      return false
    else
       return self:_ace_old_needs_feed()
+   end
+end
+
+function AceShepherdPastureComponent:needs_trough_feed()
+   if next(self._trough_listeners) then
+      return next(self._empty_troughs) ~= nil
+   else
+      return false
    end
 end
 
@@ -456,10 +475,13 @@ function AceShepherdPastureComponent:get_pasture_items()
    return self._pasture_items
 end
 
--- if there are no troughs, returns nil, otherwise returns the empty troughs array
-function AceShepherdPastureComponent:get_empty_troughs()
+-- gets the first empty trough, or nil
+function AceShepherdPastureComponent:get_empty_trough()
    if next(self._trough_listeners) then
-      return self._empty_troughs
+      local id = next(self._empty_troughs)
+      if id then
+         return self._pasture_items[id]
+      end
    end
 end
 

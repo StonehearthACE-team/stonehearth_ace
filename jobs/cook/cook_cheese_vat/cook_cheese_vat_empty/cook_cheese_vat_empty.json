@@ -37,7 +37,8 @@
          "auto_request": true,
          "evolve_worker_required_job": {
             "stonehearth:jobs:cook": true
-         }
+         },
+         "apply_ingredient_quality": true
       },
       "stonehearth:net_worth": {
          "value_in_gold": 4,
@@ -52,7 +53,7 @@
          "appeal": 2
       },
       "stonehearth:item_quality": {
-         "variable_quality": true
+         "variable_quality": false
       }
    }
 }
