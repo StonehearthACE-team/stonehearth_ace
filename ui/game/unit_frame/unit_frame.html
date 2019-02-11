@@ -18,11 +18,11 @@
 
             <div id="nameBlock">
                <div id="topBar">
-                  <div id="qualityGem"></div>
                   <input id="nameInput" type="text" {{bind-attr value=view.display_name}} />
                   <div id="nametag" {{bind-attr class=view.canChangeName:clickable:noHover}}>
                      <div class="name" {{bind-attr class=view.hasPortrait:compressed:extended}}>{{i18n_key view.display_name self=view.model}}</div>
                   </div>
+                  <div id="qualityGem"></div>
                   <div id='componentInfoButton' hotkey_action='ui:toggle_component_info' class='uisounds clickable'>
                      <div id='infoIcon'></div>
                   </div>

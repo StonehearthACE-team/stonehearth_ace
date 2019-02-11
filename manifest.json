@@ -1871,7 +1871,8 @@
       "stonehearth:monsters:kobolds:kobold": "file(entities/monsters/skull_drop.json)",
       "stonehearth:monsters:orcs:orc_male": "file(entities/monsters/skull_drop.json)",
       "stonehearth:monsters:orcs:orc_female": "file(entities/monsters/skull_drop.json)",
-      "stonehearth:ai_pack:carrying": "file(ai/packs/carrying_ai_pack.json)"
+      "stonehearth:ai_pack:carrying": "file(ai/packs/carrying_ai_pack.json)",
+      "stonehearth:containers:log_pile": "file(entities/containers/log_pile/log_pile.json)"
    },
    "overrides": {
       "stonehearth/data/rigs/entities/humans/effects/idle_breathe_no_carry.json": "stonehearth_ace/data/rigs/entities/humans/effects/idle_breathe_no_carry.json",
@@ -2071,6 +2072,7 @@
       "stump": "file(components/stump/stump_component.lua)",
       "substrate_plot": "file(components/grower_underfield/substrate_plot_component.lua)",
       "pasture_item": "file(components/pasture_item/pasture_item_component.lua)",
+      "pile": "file(components/pile/pile_component.lua)",
       "toggle_enabled": "file(components/toggle_enabled/toggle_enabled_component.lua)",
       "training_dummy": "file(components/training/training_dummy_component.lua)",
       "undercrop": "file(components/undercrop/undercrop_component.lua)",

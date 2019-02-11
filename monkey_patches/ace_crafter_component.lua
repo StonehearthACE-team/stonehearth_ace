@@ -27,12 +27,21 @@ function AceCrafterComponent:clean_up_order()
    self.__saved_variables:mark_changed()
 end
 
-function AceCrafterComponent:produce_crafted_item(product_uri, recipe, ingredient_quality)
+function AceCrafterComponent:produce_crafted_item(product_uri, recipe, ingredients, ingredient_quality)
    local item = radiant.entities.create_entity(product_uri, { owner = self._entity })
 
-   -- Set quality on an item
-   local quality = self:_calculate_quality(recipe.level_requirement or 0, ingredient_quality or STANDARD_QUALITY_INDEX)
-   item:add_component('stonehearth:item_quality'):initialize_quality(quality, self._entity, 'person')
+   -- Set quality on an item; don't bother doing it if variable quality is explicitly denied
+   local item_quality_data = radiant.entities.get_entity_data(self._entity, 'stonehearth:item_quality', false)
+   if not (item_quality_data and (item_quality_data.variable_quality == false)) then
+      local quality = self:_calculate_quality(recipe.level_requirement or 0, ingredient_quality or STANDARD_QUALITY_INDEX)
+      item:add_component('stonehearth:item_quality'):initialize_quality(quality, self._entity, 'person')
+   end
+
+   -- if it's a pile item, add the ingredients to the pile component
+   local pile_comp = item:get_component('stonehearth_ace:pile')
+   if pile_comp then
+      pile_comp:set_items(ingredients)
+   end
 
    -- Return iconic form of entity if it exists
    local entity_forms = item:get_component('stonehearth:entity_forms')

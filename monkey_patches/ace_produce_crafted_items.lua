@@ -8,8 +8,12 @@ function AceProduceCraftedItems:run(ai, entity, args)
    local order_progress = args.order:get_progress(entity)   -- Paul: changed this line
 
    if order_progress == stonehearth.constants.crafting_status.CRAFTING then
-      local ingredient_quality = self:_destroy_ingredients(args)
-      self:_add_outputs_to_bench(entity, args.workshop, args.order:get_recipe(), ingredient_quality)
+      -- don't fully destroy the ingredients yet, we want to be able to pass them to other scripts
+      local ingredients, ingredient_quality = self:_pre_destroy_ingredients(args)
+      self:_add_outputs_to_bench(entity, args.workshop, args.order:get_recipe(), ingredients, ingredient_quality)
+      for _, item in pairs(ingredients) do
+         radiant.entities.destroy_entity(item)
+      end
 
       args.order:on_item_created()
       args.order:progress_to_next_stage(entity)  -- Paul: changed this line
@@ -51,30 +55,31 @@ function AceProduceCraftedItems:run(ai, entity, args)
 end
 
 -- also calculate and return the value-weighted quality of the ingredients
-function AceProduceCraftedItems:_destroy_ingredients(args)
+function AceProduceCraftedItems:_pre_destroy_ingredients(args)
    local ec_children = {}
    local quality = 0
    local total_value = 0
    local entity_container = args.workshop:get_component('entity_container')
    --There may not be one if there is nothing on the bench yet
    if entity_container then
-      for id, child in entity_container:each_child() do
+      while entity_container:num_children() > 0 do
+         local id, child = entity_container:first_child()
          ec_children[id] = child
+         entity_container:remove_child(id)
       end
+      
       for i, item in pairs(ec_children) do
          local value = math.max(1, radiant.entities.get_net_worth(item:get_uri()) or 1)
          quality = quality + radiant.entities.get_item_quality(item) * value
          total_value = total_value + value
-
-         radiant.entities.destroy_entity(item)
       end
    end
 
-   return math.max(1, quality / math.max(1, total_value))
+   return ec_children, math.max(1, quality / math.max(1, total_value))
 end
 
--- only overriding this function to pass along the ingredient quality to the crafter component
-function AceProduceCraftedItems:_add_outputs_to_bench(crafter, workshop, recipe, ingredient_quality)
+-- overriding this function to pass along the ingredients and ingredient quality to the crafter component
+function AceProduceCraftedItems:_add_outputs_to_bench(crafter, workshop, recipe, ingredients, ingredient_quality)
    -- figure out where the outputs all go
    local location_on_workshop
    local ced = radiant.entities.get_entity_data(workshop, 'stonehearth:table')
@@ -96,7 +101,15 @@ function AceProduceCraftedItems:_add_outputs_to_bench(crafter, workshop, recipe,
    -- create all the recipe products
    local outputs = self:_get_outputs(crafter, workshop, recipe)
    for i, product_uri in ipairs(outputs) do
-      local item = crafter_component:produce_crafted_item(product_uri, recipe, ingredient_quality)
+      local item = crafter_component:produce_crafted_item(product_uri, recipe, ingredients, ingredient_quality)
+      
+      -- if the item has any extra scripts to run, do those now
+      if recipe.produce_script then
+         local script = radiant.mods.load_script(recipe.produce_script)
+         if script and script.on_produce then
+            script.on_produce(crafter, workshop, recipe, ingredients, item)
+         end
+      end
 
       -- put the item on the workshop
       item:add_component('mob')

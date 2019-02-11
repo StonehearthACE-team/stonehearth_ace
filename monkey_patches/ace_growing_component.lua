@@ -35,11 +35,10 @@ function AceGrowingComponent:activate()
 end
 
 function AceGrowingComponent:post_activate()
-   -- only worry about the water listener (for flooding) if the flood period multiplier ~= 1 (i.e., is relevant)
-   -- actually this doesn't work because of the separate way in which aquatic_objects halt growth
-   --if self._flood_period_multiplier ~= 1 then
-   self:_create_water_listener() 
-   --end
+   self:_create_water_listener()
+
+   -- growth stages are expressed with unit_info display_name, but we want to lock custom_names for these entities
+   self._entity:add_component('stonehearth:unit_info'):lock('stonehearth:growing')
 end
 
 AceGrowingComponent._ace_old_destroy = GrowingComponent.destroy

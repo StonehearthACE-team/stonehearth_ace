@@ -13,15 +13,54 @@ function AceResourceNodeComponent:set_harvestable_by_harvest_tool(harvestable_by
    end
 end
 
+function AceResourceNodeComponent:_place_reclaimed_items(pile_comp, owner, location)
+   local spawned_items, item_count = pile_comp:harvest_once(owner)
+   for _, item in pairs(spawned_items) do
+      local pt = radiant.terrain.find_placement_point(location, 0, 4)
+      radiant.terrain.place_entity(item, pt)
+   end
+
+   return spawned_items, item_count
+end
+
 -- this is modified only to add the player_id of the harvester to the kill_data of the kill_event
 -- and to add item quality for spawned items if this entity is of higher quality
 function AceResourceNodeComponent:spawn_resource(harvester_entity, collect_location, owner_player_id)
-   local spawned_resources = self:_place_spawned_items(harvester_entity, collect_location)
+   local spawned_resources
+   local durability_to_consume = 1
 
-   local quality = radiant.entities.get_item_quality(self._entity)
-   if quality > 1 then
-      for id, item in pairs(spawned_resources) do
-         self:_set_quality(item, quality)
+   local pile_comp = self._entity:get_component('stonehearth_ace:pile')
+   if pile_comp then
+      spawned_resources, durability_to_consume = self:_place_reclaimed_items(pile_comp, harvester_entity, collect_location)
+   else
+      spawned_resources = self:_place_spawned_items(harvester_entity, collect_location)
+
+         -- If we have the vitality town bonus, there's a chance we don't consume durability.
+      local town = harvester_entity and stonehearth.town:get_town(radiant.entities.get_player_id(harvester_entity))
+      if town then
+         local vitality_bonus = town:get_town_bonus('stonehearth:town_bonus:vitality')
+         if vitality_bonus then
+            local catalog_data = stonehearth.catalog:get_catalog_data(self._entity:get_uri())
+            if catalog_data and catalog_data.category == 'plants' then  -- Not log piles.
+               local is_wood_resource = false
+               for _, item in pairs(spawned_resources) do
+                  if radiant.entities.is_material(item, 'wood resource') then
+                     is_wood_resource = true
+                     break
+                  end
+               end
+               if is_wood_resource then
+                  durability_to_consume = vitality_bonus:apply_consumed_wood_durability_bonus(durability_to_consume)
+               end
+            end
+         end
+      end
+
+      local quality = radiant.entities.get_item_quality(self._entity)
+      if quality > 1 then
+         for id, item in pairs(spawned_resources) do
+            self:_set_quality(item, quality)
+         end
       end
    end
 
@@ -39,28 +78,6 @@ function AceResourceNodeComponent:spawn_resource(harvester_entity, collect_locat
       end
    end
 
-   -- If we have the vitality town bonus, there's a chance we don't consume durability.
-   local durability_to_consume = 1
-   local town = harvester_entity and stonehearth.town:get_town(radiant.entities.get_player_id(harvester_entity))
-   if town then
-      local vitality_bonus = town:get_town_bonus('stonehearth:town_bonus:vitality')
-      if vitality_bonus then
-         local catalog_data = stonehearth.catalog:get_catalog_data(self._entity:get_uri())
-         if catalog_data and catalog_data.category == 'plants' then  -- Not log piles.
-            local is_wood_resource = false
-            for _, item in pairs(spawned_resources) do
-               if radiant.entities.is_material(item, 'wood resource') then
-                  is_wood_resource = true
-                  break
-               end
-            end
-            if is_wood_resource then
-               durability_to_consume = vitality_bonus:apply_consumed_wood_durability_bonus(durability_to_consume)
-            end
-         end
-      end
-   end
-
    local json = self._json
    if json.resource_spawn_effect then
       local proxy = radiant.entities.create_entity('stonehearth:object:transient', { debug_text = 'spawn effect effect anchor' })
@@ -74,7 +91,7 @@ function AceResourceNodeComponent:spawn_resource(harvester_entity, collect_locat
 
    self._sv.durability = self._sv.durability - durability_to_consume
 
-   if self._sv.durability <= 0 then
+   if self._sv.durability <= 0 or (pile_comp and pile_comp:is_empty()) then
       radiant.entities.kill_entity(self._entity, {source_id = player_id})
    end
 
