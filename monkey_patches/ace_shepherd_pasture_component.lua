@@ -458,7 +458,7 @@ end
 AceShepherdPastureComponent._ace_old_recalculate_feed_need = ShepherdPastureComponent.recalculate_feed_need
 function AceShepherdPastureComponent:recalculate_feed_need()
    if next(self._trough_listeners) then
-      radiant.events.trigger_async(self._entity, 'stonehearth:shepherd_pasture:trough_feed_changed', self._entity, self:needs_trough_feed())
+      radiant.events.trigger_async(self._entity, 'stonehearth_ace:shepherd_pasture:trough_feed_changed', self._entity, self:needs_trough_feed())
    else
       self:_ace_old_recalculate_feed_need()
    end

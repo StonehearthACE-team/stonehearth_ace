@@ -30,7 +30,7 @@ function EatTroughFeed:start_thinking(ai, entity, args)
       local pasture = pasture_tag:get_component('stonehearth:shepherded_animal'):get_pasture()
       if pasture and pasture:is_valid() then
          self._pasture = pasture
-         self._on_feed_changed_listener = radiant.events.listen(pasture, 'stonehearth:shepherd_pasture:feed_changed', self, self._rethink)
+         self._on_feed_changed_listener = radiant.events.listen(pasture, 'stonehearth_ace:shepherd_pasture:trough_feed_changed', self, self._rethink)
          self._calorie_listener = radiant.events.listen(self._entity, 'stonehearth:expendable_resource_changed:calories', self, self._rethink)
          self._timer = stonehearth.calendar:set_interval("eat_action hourly", '10m+5m', function() self:_rethink() end, '20m')
          self:_rethink()  -- Safe to do sync since it can't call both clear_think_output and set_think_output.
