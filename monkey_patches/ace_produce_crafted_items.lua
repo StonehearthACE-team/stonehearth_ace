@@ -10,7 +10,7 @@ function AceProduceCraftedItems:run(ai, entity, args)
    if order_progress == stonehearth.constants.crafting_status.CRAFTING then
       -- don't fully destroy the ingredients yet, we want to be able to pass them to other scripts
       local ingredients, ingredient_quality = self:_pre_destroy_ingredients(args)
-      self:_add_outputs_to_bench(entity, args.workshop, args.order:get_recipe(), ingredients, ingredient_quality)
+      self:_add_outputs_to_bench(ai, entity, args.workshop, args.order:get_recipe(), ingredients, ingredient_quality)
       for _, item in pairs(ingredients) do
          radiant.entities.destroy_entity(item)
       end
@@ -79,7 +79,7 @@ function AceProduceCraftedItems:_pre_destroy_ingredients(args)
 end
 
 -- overriding this function to pass along the ingredients and ingredient quality to the crafter component
-function AceProduceCraftedItems:_add_outputs_to_bench(crafter, workshop, recipe, ingredients, ingredient_quality)
+function AceProduceCraftedItems:_add_outputs_to_bench(ai, crafter, workshop, recipe, ingredients, ingredient_quality)
    -- figure out where the outputs all go
    local location_on_workshop
    local ced = radiant.entities.get_entity_data(workshop, 'stonehearth:table')
@@ -100,14 +100,15 @@ function AceProduceCraftedItems:_add_outputs_to_bench(crafter, workshop, recipe,
 
    -- create all the recipe products
    local outputs = self:_get_outputs(crafter, workshop, recipe)
-   for i, product_uri in ipairs(outputs) do
+   for i, product in ipairs(recipe) do
+      local product_uri = product.item
       local item = crafter_component:produce_crafted_item(product_uri, recipe, ingredients, ingredient_quality)
       
       -- if the item has any extra scripts to run, do those now
-      if recipe.produce_script then
-         local script = radiant.mods.load_script(recipe.produce_script)
-         if script and script.on_produce then
-            script.on_produce(crafter, workshop, recipe, ingredients, item)
+      if product.produce_script then
+         local script = radiant.mods.load_script(product.produce_script)
+         if script and script.on_craft then
+            script.on_craft(ai, crafter, workshop, recipe, ingredients, product, item)
          end
       end
 
