@@ -845,6 +845,11 @@
                "recipe_name": "Megacrop Fertilizer",
                "description": "This intricate fertilizer doesn't provide the best qualities but will greatly increase the odds of megacrops!",
                "flavor": "Each sack can be used to fertilize 20 crops"
+            },
+            "plant_glass": {
+               "recipe_name": "Flowers in a vase",
+               "description": "A little thing to make a home feel cozy.",
+               "flavor": "Literally handpicked flowers are going to be placed in this vase. Some blossoms might be more striking than others *wink, wink*."
             }
          },
          "herbalist_hood": {
@@ -3528,6 +3533,13 @@
          }
       },
       "decoration": {
+            "plant_glass": {
+               "plant_glass_ghost": {
+                  "display_name": "Flowers in a vase",
+                  "description": "Lovingly handpicked and smelling lovely."
+               }
+            }
+         },
          "statue": {
             "statue_anji_the_horrendous": {
                "statue_anji_the_horrendous_ghost": {
@@ -5620,8 +5632,7 @@
                "description": "Buttery and sweet, this tasty milk came from a sheep!"
             }
          }
-      }
-   },
+      },
    "mountain_folk": {
       "data": {
          "mountain_folk_population": {
