@@ -37,6 +37,8 @@ function AceShepherdPastureComponent:activate()
    if self._sv.harvest_grass then
       self:_try_harvesting_grass()
    end
+
+   self:_start_grass_spawn()
 end
 
 -- for some reason, overriding the destroy function doesn't work, so we have to override this one that only gets called during destroy
@@ -56,12 +58,9 @@ function AceShepherdPastureComponent:_unregister_with_town()
       self._grass_harvest_timer = nil
    end
 
-   -- destroy trough listeners and pop troughs back to iconic
+   -- destroy trough listeners
    for id, _ in pairs(self._trough_listeners) do
       self:_destroy_trough_listener(id)
-   end
-   for id, _ in pairs(self._pasture_items) do
-
    end
 end
 
@@ -93,8 +92,6 @@ function AceShepherdPastureComponent:post_creation_setup()
    self._sv.maintain_animals = self:get_max_animals()
    self._sv._queued_slaughters = {}
    self.__saved_variables:mark_changed()
-
-   self:_start_grass_spawn()
 end
 
 AceShepherdPastureComponent._ace_old_set_pasture_type_command = ShepherdPastureComponent.set_pasture_type_command
@@ -368,8 +365,12 @@ function AceShepherdPastureComponent:_start_grass_spawn()
 	if not self._sv._grass_spawn_timer then
 		self:_setup_grass_spawn_timer()
 	else
-		-- if the timer already existed, we want to consider the time spent to really be spent
-		--self:_recalculate_duration()
+		-- if the timer already existed, rebind it
+		if self._sv._grass_spawn_timer then
+         self._sv._grass_spawn_timer:bind(function()
+               self:_spawn_grass()
+            end)
+      end
 	end
 end
 
