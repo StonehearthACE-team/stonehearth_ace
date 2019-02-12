@@ -26,7 +26,13 @@ function AceShepherdPastureComponent:activate()
    self._fed_troughs = {}
    self._trough_listeners = {}
    
-   self._weather_check_alarm = stonehearth.calendar:set_alarm(WEATHER_CHECK_TIME, radiant.bind(self, '_recalculate_duration'))
+   self._weather_check_alarm = stonehearth.calendar:set_alarm(WEATHER_CHECK_TIME, function()
+      self:_recalculate_duration()
+   end)
+
+   self._animal_sleep_alarm = stonehearth.calendar:set_alarm(stonehearth.constants.sleep.BEDTIME_START_HOUR, function()
+      self:_make_animals_sleepy()
+   end)
    
    self._grass_harvest_timer = stonehearth.calendar:set_interval('pasture grass harvest', GRASS_HARVEST_TIME, function()
       if self._sv.harvest_grass then
@@ -53,6 +59,12 @@ function AceShepherdPastureComponent:_unregister_with_town()
 		self._weather_check_alarm:destroy()
 		self._weather_check_alarm = nil
    end
+
+   if self._animal_sleep_alarm then
+		self._animal_sleep_alarm:destroy()
+		self._animal_sleep_alarm = nil
+   end
+
    if self._grass_harvest_timer then
       self._grass_harvest_timer:destroy()
       self._grass_harvest_timer = nil
@@ -151,57 +163,12 @@ function AceShepherdPastureComponent:_consider_maintain_animals()
    if num_to_slaughter > 0 then
       -- just process through the animals with the normal iterator and try to harvest them
       -- first skip over named animals and renewably-harvestable animals
-      for id, critter in pairs(self._sv.tracked_critters) do
-         if not self._sv._queued_slaughters[id] then
-            if self:_request_slaughter_animal(critter.entity, true, true) then
-               num_to_slaughter = num_to_slaughter - 1
-               if num_to_slaughter < 1 then
-                  break
-               end
-            end
-         end
-      end
-
-      if num_to_slaughter > 0 then
-         for id, critter in pairs(self._sv.tracked_critters) do
-            if not self._sv._queued_slaughters[id] then
-               if self:_request_slaughter_animal(critter.entity, true) then
-                  num_to_slaughter = num_to_slaughter - 1
-                  if num_to_slaughter < 1 then
-                     break
-                  end
-               end
-            end
-         end
-      end
-
-      if num_to_slaughter > 0 then
-         for id, critter in pairs(self._sv.tracked_critters) do
-            if not self._sv._queued_slaughters[id] then
-               if self:_request_slaughter_animal(critter.entity, false, true) then
-                  num_to_slaughter = num_to_slaughter - 1
-                  if num_to_slaughter < 1 then
-                     break
-                  end
-               end
-            end
-         end
-      end
-
-      if num_to_slaughter > 0 then
-         for id, critter in pairs(self._sv.tracked_critters) do
-            if not self._sv._queued_slaughters[id] then
-               if self:_request_slaughter_animal(critter.entity) then
-                  num_to_slaughter = num_to_slaughter - 1
-                  if num_to_slaughter < 1 then
-                     break
-                  end
-               end
-            end
-         end
-      end
+      num_to_slaughter = self:_try_slaughter(num_to_slaughter, true, true)
+      num_to_slaughter = self:_try_slaughter(num_to_slaughter, true, false)
+      num_to_slaughter = self:_try_slaughter(num_to_slaughter, false, true)
+      num_to_slaughter = self:_try_slaughter(num_to_slaughter, false, false)
    elseif num_to_slaughter < 0 then
-      -- we've queued up too many! probably user increased the level after slaughter requests went out
+      -- we've queued up too many! probably user increased the maintain level after slaughter requests went out
       for id, _ in pairs(self._sv._queued_slaughters) do
          self._sv._queued_slaughters[id] = nil
          local critter = self._sv.tracked_critters[id]
@@ -220,6 +187,22 @@ function AceShepherdPastureComponent:_consider_maintain_animals()
    end
 
    self.__saved_variables:mark_changed()
+end
+
+function AceShepherdPastureComponent:_try_slaughter(num_to_slaughter, not_if_named, not_if_renewably_harvestable)
+   if num_to_slaughter > 0 then
+      for id, critter in pairs(self._sv.tracked_critters) do
+         if not self._sv._queued_slaughters[id] then
+            if self:_request_slaughter_animal(critter.entity, not_if_named, not_if_renewably_harvestable) then
+               num_to_slaughter = num_to_slaughter - 1
+               if num_to_slaughter < 1 then
+                  break
+               end
+            end
+         end
+      end
+   end
+   return num_to_slaughter
 end
 
 function AceShepherdPastureComponent:_request_slaughter_animal(animal, not_if_named, not_if_renewably_harvestable)
@@ -264,6 +247,19 @@ function AceShepherdPastureComponent:_create_harvest_task(target)
       self:_ace_old__create_harvest_task(target)
    end
    ]]
+end
+
+function AceShepherdPastureComponent:_make_animals_sleepy()
+   for id, critter in pairs(self._sv.tracked_critters) do
+      local animal = critter.entity
+      local resources = animal:is_valid() and animal:get_component('stonehearth:expendable_resources')
+      if resources then
+         local sleepiness = resources:get_value('sleepiness')
+         if sleepiness < 25 then
+            resources:set_value('sleepiness', sleepiness / 2 + 15)
+         end
+      end
+   end
 end
 
 function AceShepherdPastureComponent:get_harvest_animals_renewable()
