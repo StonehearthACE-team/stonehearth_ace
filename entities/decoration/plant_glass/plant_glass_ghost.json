@@ -1,0 +1,58 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+
+      "model_variants": {
+         "violet": {
+            "models": [
+               "file(plant_glass_violet.qb)"
+            ]
+         },
+         "brightbell": {
+            "models": [
+               "file(plant_glass_brightbell.qb)"
+            ]
+         },
+         "frostsnap": {
+            "models": [
+               "file(plant_glass_frostsnap.qb)"
+            ]
+         },
+         "default": {
+            "models": [
+               "file(plant_glass_mixed.qb)"
+            ]
+         },		 
+      },
+   
+	"stonehearth_ace:entity_modification": {
+         "model_variants": {
+            "stonehearth:resources:herb:violet": "violet",
+            "stonehearth:resources:herb:brightbell": "brightbell",
+            "stonehearth:resources:herb:frostsnap": "frostsnap",			
+		}	
+      },
+	  
+      "render_info": {
+         "scale": 0.09,
+         "color_map": "stonehearth_ace:color_map:ace",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/glass_material_map.json"
+         ]
+      },
+
+      "mob": {
+         "model_origin": { "x": -0.05, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.decoration.plant_glass.plant_glass_ghost.display_name)",
+         "description": "i18n(stonehearth_ace:entities.decoration.plant_glass.plant_glass_ghost.description)",
+         "icon": "file(plant_glass.png)",
+         "category": "decoration",
+         "material_tags":["decoration", "crafted", "plant", "stockpile_decoration"]
+      }
+   }
+}

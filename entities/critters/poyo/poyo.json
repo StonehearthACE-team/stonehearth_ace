@@ -38,9 +38,9 @@
          }
       },
       "stonehearth:renewable_resource_node": {
-		 "mixintypes": {
-			"resource_loot_table": "override"
-		 },
+         "mixintypes": {
+            "resource_loot_table": "override"
+         },
          "resource_loot_table": {
             "entries": {
                "golden_egg": {
@@ -72,6 +72,10 @@
       },
 	  "stonehearth:catalog": {
          "display_name": "i18n(stonehearth_ace:entities.critters.poyo.display_name)"
+      },
+      "stonehearth:calories": {
+         "breakfast_hour": 6,
+         "dinner_hour": 19
       }
    }
 }

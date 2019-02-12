@@ -2,7 +2,7 @@ local shared_filters = require 'ai.filters.shared_filters'
 local PetSleepInBed = radiant.class()
 
 PetSleepInBed.name = 'sleep in pet bed'
-PetSleepInBed.does = 'stonehearth:sleep'
+PetSleepInBed.does = 'stonehearth_ace:pet_sleep_in_bed'
 PetSleepInBed.args = {}
 PetSleepInBed.priority = 0.9
 

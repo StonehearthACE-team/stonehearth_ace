@@ -1,0 +1,29 @@
+{
+   "type": "recipe",
+   "effort": 10,
+   "work_units": 4,
+   "recipe_name": "i18n(stonehearth_ace:jobs.herbalist.recipes.plant_glass.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.plant_glass.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.plant_glass.flavor)",
+   "portrait": "/stonehearth_ace/entities/decoration/plant_glass/plant_glass.png",
+   "workshop": "stonehearth:herbalist:workbench",
+   "work_effect": "work_wait",
+   "level_requirement": 1,
+   "ingredients": [
+      {
+         "material": "herb resource",
+         "count": 4
+      },
+	  {
+		 "material": "clay resource",
+		 "count": 1
+	  }
+   ],
+	"produces": [
+      {
+         "item": "stonehearth_ace:decoration:plant_glass",
+         "produce_script": "stonehearth_ace:craft_script:material_model_variant",
+         "model_variant_material": "herb resource"
+      }
+   ]
+}
