@@ -44,6 +44,14 @@ function AceEvolveComponent:post_activate()
          self._entity:remove_component('stonehearth_ace:water_signal')
       end
    end
+
+   -- if there's an evolve_command in it instead of a timer, add that command
+   if not self._evolve_data.evolve_time and self._evolve_data.evolve_command then
+      local command_comp = self._entity:add_component('stonehearth:commands')
+      if not command_comp:has_command(self._evolve_data.evolve_command) then
+         command_comp:add_command(self._evolve_data.evolve_command)
+      end
+   end
 end
 
 AceEvolveComponent._ace_old_destroy = EvolveComponent.destroy
@@ -249,11 +257,6 @@ function AceEvolveComponent:_start_evolve_timer()
    if self._evolve_data.evolve_time then
       local duration = self:_calculate_growth_period()
       self._sv._evolve_timer = stonehearth.calendar:set_persistent_timer("EvolveComponent renew", duration, radiant.bind(self, 'evolve'))
-   elseif self._evolve_data.evolve_command then
-      local command_comp = self._entity:add_component('stonehearth:commands')
-      if not command_comp:has_command(self._evolve_data.evolve_command) then
-         command_comp:add_command(self._evolve_data.evolve_command)
-      end
    end
 
 	self.__saved_variables:mark_changed()
