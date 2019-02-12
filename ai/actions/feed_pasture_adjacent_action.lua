@@ -1,3 +1,4 @@
+local item_quality_lib = require 'stonehearth_ace.lib.item_quality.item_quality_lib'
 local Entity = _radiant.om.Entity
 
 local FeedPastureAdjacent = radiant.class()
@@ -49,6 +50,7 @@ function FeedPastureAdjacent:run(ai, entity, args)
    local feed_location = radiant.entities.get_world_grid_location(feed)
 
    local feed_on_ground = radiant.entities.create_entity(feed_uri..":ground", { owner = entity })
+   item_quality_lib.copy_quality(feed, feed_on_ground)
    radiant.terrain.place_entity_at_exact_location(feed_on_ground, feed_location)
    pasture_component:set_feed(feed_on_ground)
 

@@ -32,6 +32,10 @@ function AceWeatherState:_load_ace_values()
    self.__saved_variables:mark_changed()
 end
 
+function AceWeatherState:get_unsheltered_animal_debuff()
+   return self._sv.unsheltered_animal_debuff
+end
+
 function AceWeatherState:set_sunlight(value)
    self._sv.sunlight = value
    self.__saved_variables:mark_changed()

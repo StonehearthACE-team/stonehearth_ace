@@ -153,13 +153,22 @@ function AceShepherdPastureComponent:_consider_maintain_animals()
    log:debug('_consider_maintain_animals: %s queued, %s to slaughter', num_queued, num_to_slaughter)
    if num_to_slaughter > 0 then
       -- just process through the animals with the normal iterator and try to harvest them
-      -- first skip over renewably-harvestable animals
+      -- first skip over named animals and renewably-harvestable animals
       for id, critter in pairs(self._sv.tracked_critters) do
          if not self._sv._queued_slaughters[id] then
-            local entity = critter.entity
-            local renewable_resource_component = entity:is_valid() and entity:get_component('stonehearth:renewable_resource_node')
-            if not renewable_resource_component or not renewable_resource_component:is_harvestable() then
-               if self:_request_slaughter_animal(entity) then
+            if self:_request_slaughter_animal(critter.entity, true, true) then
+               num_to_slaughter = num_to_slaughter - 1
+               if num_to_slaughter < 1 then
+                  break
+               end
+            end
+         end
+      end
+
+      if num_to_slaughter > 0 then
+         for id, critter in pairs(self._sv.tracked_critters) do
+            if not self._sv._queued_slaughters[id] then
+               if self:_request_slaughter_animal(critter.entity, true) then
                   num_to_slaughter = num_to_slaughter - 1
                   if num_to_slaughter < 1 then
                      break
@@ -169,13 +178,23 @@ function AceShepherdPastureComponent:_consider_maintain_animals()
          end
       end
 
-      log:debug('%s queued, %s to slaughter', radiant.size(self._sv._queued_slaughters), num_to_slaughter)
+      if num_to_slaughter > 0 then
+         for id, critter in pairs(self._sv.tracked_critters) do
+            if not self._sv._queued_slaughters[id] then
+               if self:_request_slaughter_animal(critter.entity, false, true) then
+                  num_to_slaughter = num_to_slaughter - 1
+                  if num_to_slaughter < 1 then
+                     break
+                  end
+               end
+            end
+         end
+      end
 
       if num_to_slaughter > 0 then
          for id, critter in pairs(self._sv.tracked_critters) do
             if not self._sv._queued_slaughters[id] then
-               local entity = critter.entity
-               if entity:is_valid() and self:_request_slaughter_animal(entity) then
+               if self:_request_slaughter_animal(critter.entity) then
                   num_to_slaughter = num_to_slaughter - 1
                   if num_to_slaughter < 1 then
                      break
@@ -206,7 +225,24 @@ function AceShepherdPastureComponent:_consider_maintain_animals()
    self.__saved_variables:mark_changed()
 end
 
-function AceShepherdPastureComponent:_request_slaughter_animal(animal)
+function AceShepherdPastureComponent:_request_slaughter_animal(animal, not_if_named, not_if_renewably_harvestable)
+   if not animal:is_valid() then
+      return false
+   end
+   
+   if not_if_named then
+      if radiant.entities.get_custom_name(animal) ~= '' then
+         return false
+      end
+   end
+
+   if not_if_renewably_harvestable then
+      local renewable_resource_component = animal:get_component('stonehearth:renewable_resource_node')
+      if renewable_resource_component and renewable_resource_component:is_harvestable() then
+         return false
+      end
+   end
+   
    local resource_component = animal:get_component('stonehearth:resource_node')
    if resource_component and resource_component:is_harvestable() then
       -- but don't request it on animals that are currently following a shepherd
@@ -453,6 +489,26 @@ function AceShepherdPastureComponent:_is_valid_grass_spawn_location(location)
 		return entity ~= self._entity
 	end
 	return not next(radiant.terrain.get_entities_at_point(location, filter_fn))
+end
+
+-- override this base function so it doesn't force animals to be hungry
+function AceShepherdPastureComponent:set_feed(feed)
+   local previous_feed = self._sv._current_feed
+   if self._feed_destroy_listener then
+      self._feed_destroy_listener:destroy()
+      self._feed_destroy_listener = nil
+   end
+
+   self._sv._current_feed = feed
+   if self._sv._current_feed then
+      self._feed_destroy_listener = radiant.events.listen_once(self._sv._current_feed, 'radiant:entity:pre_destroy', function()
+         self:set_feed(nil)
+      end)
+   end
+
+   if previous_feed ~= self._sv._current_feed then
+      radiant.events.trigger_async(self._entity, 'stonehearth:shepherd_pasture:feed_changed', self._entity, self:needs_feed())
+   end
 end
 
 AceShepherdPastureComponent._ace_old_recalculate_feed_need = ShepherdPastureComponent.recalculate_feed_need
