@@ -14,6 +14,24 @@ App.RootController.reopen({
       });
    },
 
+   // have to override this to defer resume
+   _autoSave: function() {
+      var self = this;
+      var saveView = App.stonehearthClient.getSaveView();
+      var enabled = saveView.get('auto_save');
+      var escMenuView = App.gameView ? App.gameView.getView(App.StonehearthEscMenuView) : null;
+      var escMenuVisible = escMenuView ? (!escMenuView.isDestroyed && !escMenuView.isDestroying) : false;
+
+      if (enabled && !escMenuVisible) {
+         radiant.call('stonehearth:dm_pause_game')
+            .done(function(response) {
+               saveView.send('saveGame', 'auto_save', function() {
+                  radiant.call('stonehearth:dm_resume_game');
+               });
+            });
+      }
+   },
+
    actions: {
       // every X minutes, check if autosave is enabled, and if it is, save.
       // override this function completely to use timeouts instead of intervals to easily transition auto save intervals

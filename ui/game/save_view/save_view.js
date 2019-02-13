@@ -75,7 +75,7 @@ App.SaveView.reopen({
    },
 
    actions: {
-      saveGame: function(saveid) {
+      saveGame: function(saveid, onAlways) {
          if (this.$('#deleteSaveButton').hasClass('disabled')) {
             return;
          }
@@ -87,6 +87,9 @@ App.SaveView.reopen({
                function() {
                   self._hideSaveModal();
                   self.refreshSavesList(true);
+                  if (onAlways) {
+                     onAlways();
+                  }
                });
       }
    }
