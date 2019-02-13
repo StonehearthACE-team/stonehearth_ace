@@ -2,15 +2,7 @@ local TownService = require 'stonehearth.services.server.town.town_service'
 local AceTownService = class()
 
 function AceTownService:calculate_growth_period(player_id, original_growth_period)
-	local growth_period = original_growth_period
-	local town = self:get_town(player_id)
-	if town then
-		-- Apply vitality bonus - this is the only part that's actually town-dependent
-		local vitality_bonus = town:get_town_bonus('stonehearth:town_bonus:vitality')
-		if vitality_bonus then
-			growth_period = vitality_bonus:apply_growth_period_bonus(growth_period)
-		end
-	end
+	local growth_period = self:calculate_town_bonuses_growth_period(player_id, original_growth_period)
 
 	-- Apply biome growth multiplier
 	local biome = stonehearth.world_generation:get_biome()
@@ -30,6 +22,26 @@ function AceTownService:calculate_growth_period(player_id, original_growth_perio
 		-- Shouldn't happen, but observed in the wild, so be robust.
 		return original_growth_period
 	end
+end
+
+function AceTownService:calculate_town_bonuses_growth_period(player_id, original_growth_period)
+   local growth_period = original_growth_period
+	local town = self:get_town(player_id)
+	if town then
+      -- Apply vitality bonus - this is the only part that's actually town-dependent
+      -- switched to doing this generically so any bonus that has an `apply_growth_period_bonus` function will have that called
+      for _, town_bonus in pairs(town:get_active_town_bonuses()) do
+         if town_bonus.apply_growth_period_bonus then
+            growth_period = town_bonus:apply_growth_period_bonus(growth_period)
+         end
+      end
+      
+      if growth_period <= 0 then
+         growth_period = original_growth_period
+      end
+   end
+
+   return growth_period
 end
 
 function AceTownService:get_water_affinity_table(climate)

@@ -158,8 +158,10 @@ end
 function AceGrowingComponent:_calculate_growth_period(growth_period)
 	if not growth_period then
 		growth_period = self:_get_base_growth_period()
-	end
-   local scaled_growth_period = stonehearth.town:calculate_growth_period(self._entity:get_player_id(), growth_period) * self._sv.custom_growth_time_multiplier
+   end
+   -- we don't want the biome/weather modifiers, those should be handled with sunlight/humidity values
+   -- we only care about the vitality town bonus (and any other bonuses that may get modded in)
+   local scaled_growth_period = stonehearth.town:calculate_town_bonuses_growth_period(self._entity:get_player_id(), growth_period) * self._sv.custom_growth_time_multiplier
    
    if self._sv._is_flooded then
 		scaled_growth_period = scaled_growth_period * self._flood_period_multiplier
