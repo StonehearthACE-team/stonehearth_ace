@@ -1,3 +1,42 @@
+App.RootController.reopen({
+   init: function() {
+      var self = this;
+      self._super();
+
+      self._autoSaveInterval = 5 * 60 * 1000
+
+      radiant.call('radiant:get_config', 'mods.stonehearth_ace.auto_save_interval')
+         .done(function(response) {
+            self._autoSaveInterval = parseInt(response['mods.stonehearth_ace.auto_save_interval']) * 60 * 1000;
+         });
+      $(top).on("auto_save_interval_changed", function (_, e) {
+         self._autoSaveInterval = parseInt(e.value) * 60 * 1000;
+      });
+   },
+
+   actions: {
+      // every X minutes, check if autosave is enabled, and if it is, save.
+      // override this function completely to use timeouts instead of intervals to easily transition auto save intervals
+      tryAutoSave: function(start) {
+         var self = this;
+          // Get the controller once to initialize it (Sigh)
+          // Otherwise we don't get the controller when we first try to save -yshan
+         var saveView = App.stonehearthClient.getSaveView();
+         if (start) {
+            this._timeoutTicket = setTimeout(function autoSaveTimeout() {
+                  //only autosave if we're the host
+                  if (App.stonehearthClient.isHostPlayer()) {
+                     self._autoSave();
+                  }
+                  self._timeoutTicket = setTimeout(autoSaveTimeout, self._autoSaveInterval);
+               }, self._autoSaveInterval);
+         } else {
+            clearTimeout(this._timeoutTicket);
+         }
+      },
+   },
+}),
+
 // other modders can also reopen this, override init, and add their own custom modes and entity mode checks
 App.RootView.reopen({
    init: function() {

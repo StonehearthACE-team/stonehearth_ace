@@ -111,6 +111,80 @@
             "fire_event": "show_processing_meter_changed"
          },
          "ordinal": 99
+      },
+      "auto_save_interval": {
+         "host_only": true,
+         "type": "list",
+         "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.auto_save_interval)",
+         "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.auto_save_interval_description)",
+         "values": {
+            "5": {
+               "ordinal": 5,
+               "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.intervals.5_minutes)",
+               "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.auto_save_interval_description)"
+            },
+            "6": {
+               "ordinal": 6,
+               "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.intervals.6_minutes)",
+               "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.auto_save_interval_description)"
+            },
+            "7": {
+               "ordinal": 7,
+               "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.intervals.7_minutes)",
+               "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.auto_save_interval_description)"
+            },
+            "8": {
+               "ordinal": 8,
+               "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.intervals.8_minutes)",
+               "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.auto_save_interval_description)"
+            },
+            "9": {
+               "ordinal": 9,
+               "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.intervals.9_minutes)",
+               "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.auto_save_interval_description)"
+            },
+            "10": {
+               "ordinal": 10,
+               "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.intervals.10_minutes)",
+               "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.auto_save_interval_description)"
+            },
+            "15": {
+               "ordinal": 15,
+               "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.intervals.15_minutes)",
+               "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.auto_save_interval_description)"
+            },
+            "20": {
+               "ordinal": 20,
+               "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.intervals.20_minutes)",
+               "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.auto_save_interval_description)"
+            },
+            "25": {
+               "ordinal": 25,
+               "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.intervals.25_minutes)",
+               "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.auto_save_interval_description)"
+            },
+            "30": {
+               "ordinal": 30,
+               "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.intervals.30_minutes)",
+               "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.auto_save_interval_description)"
+            }
+         },
+         "default": "5",
+         "on_change": {
+            "fire_event": "auto_save_interval_changed"
+         },
+         "ordinal": 50
+      },
+      "auto_save_unique_files": {
+         "host_only": true,
+         "type": "boolean",
+         "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.auto_save_unique_files)",
+         "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.auto_save_unique_files_description)",
+         "default": false,
+         "on_change": {
+            "fire_event": "auto_save_unique_files_changed"
+         },
+         "ordinal": 51
       }
    }
 }

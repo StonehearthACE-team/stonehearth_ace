@@ -2445,7 +2445,7 @@
                   "name": "Yew Sapling"
                }
             },
-            "description": "Needs more Yew wood? Prepare your plots for reforestation!",
+            "description": "Need more Yew wood? Prepare your plots for reforestation!",
             "display_name": "Yew Tree Sapling"
          },
          "paddy_crop": {
@@ -2545,6 +2545,34 @@
          },
          "megacrops": {
             "default_description": "This crop's gone mega!"
+         },
+         "carrot_crop": {
+            "growth_stage": {
+               "000": {
+                  "description": "An unrealized carrot."
+               }
+            }
+         },
+         "pumpkin_crop": {
+            "growth_stage": {
+               "000": {
+                  "description": "An unrealized pumpkin."
+               }
+            }
+         },
+         "watermelon_crop": {
+            "growth_stage": {
+               "000": {
+                  "description": "An unrealized watermelon."
+               }
+            }
+         },
+         "turnip_crop": {
+            "growth_stage": {
+               "000": {
+                  "description": "An unrealized turnip."
+               }
+            }
          }
       },
       "decorations": {
@@ -6082,6 +6110,9 @@
                "tooltip_description": "Click to show or hide extra information about this entity."
             }
          },
+         "save_view": {
+            "auto_save_name": "Auto save ([str(i18n_data.date_time)])"
+         },
          "componentInfo": {
             "title": "Entity Info"
          }
@@ -6108,7 +6139,23 @@
                "water_signal_update_frequency": "Water Signal Update Rate",
                "water_signal_update_frequency_description": "Only update water signals this many ticks of the water system. Increase this value to improve performance with lots of flowing water.",
                "show_processing_meter": "Show Processing Meter",
-               "show_processing_meter_description": "Show the processing meter, useful for understanding performance issues, in the lower right of the screen, to the left of the game speed buttons."
+               "show_processing_meter_description": "Show the processing meter, useful for understanding performance issues, in the lower right of the screen, to the left of the game speed buttons.",
+               "auto_save_interval": "Auto Save Interval:",
+               "auto_save_interval_description": "When Auto Save is enabled in the Save dialog, automatically save at this frequency.",
+               "intervals": {
+                  "5_minutes": "5 minutes",
+                  "6_minutes": "6 minutes",
+                  "7_minutes": "7 minutes",
+                  "8_minutes": "8 minutes",
+                  "9_minutes": "9 minutes",
+                  "10_minutes": "10 minutes",
+                  "15_minutes": "15 minutes",
+                  "20_minutes": "20 minutes",
+                  "25_minutes": "25 minutes",
+                  "30_minutes": "30 minutes"
+               },
+               "auto_save_unique_files": "Auto Save Unique Files",
+               "auto_save_unique_files_description": "When auto-saving, create a separate save with the date and time. Warning: frequent auto-saving requires a lot of storage space!"
             },
             "controls_tab": {
                "key_binding_names": {

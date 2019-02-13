@@ -16,8 +16,40 @@
 					"training_equipment": "i18n(stonehearth_ace:ui.game.entities.item_categories.training_equipment)",
 					"gizmos": "i18n(stonehearth_ace:ui.game.entities.item_categories.gizmos)",
 					"fungi": "i18n(stonehearth_ace:ui.game.entities.item_categories.fungi)"
-				}
+            }
 			}
 		}
-	}
+   },
+   "entities": {
+      "crops": {
+         "carrot_crop": {
+            "growth_stage": {
+               "000": {
+                  "description": "i18n(stonehearth_ace:entities.crops.carrot_crop.growth_stage.000.description)"
+               }
+            }
+         },
+         "pumpkin_crop": {
+            "growth_stage": {
+               "000": {
+                  "description": "i18n(stonehearth_ace:entities.crops.pumpkin_crop.growth_stage.000.description)"
+               }
+            }
+         },
+         "watermelon_crop": {
+            "growth_stage": {
+               "000": {
+                  "description": "i18n(stonehearth_ace:entities.crops.watermelon_crop.growth_stage.000.description)"
+               }
+            }
+         },
+         "turnip_crop": {
+            "growth_stage": {
+               "000": {
+                  "description": "i18n(stonehearth_ace:entities.crops.turnip_crop.growth_stage.000.description)"
+               }
+            }
+         }
+      }
+   }
 }

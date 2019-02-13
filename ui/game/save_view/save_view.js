@@ -9,8 +9,10 @@ App.SaveView.reopen({
          saveid = String(d.getTime());
       }
 
+      var isAuto = false;
       var name;
       if (saveid == 'auto_save') {
+         isAuto = true;
          name = i18n.t('stonehearth:ui.game.save_view.auto_save_prefix');
       } else if (saveName) {
          name = saveName;
@@ -18,7 +20,20 @@ App.SaveView.reopen({
          name = '';
       }
 
-      radiant.call("stonehearth_ace:save_game_command")
+      // technically we don't care about this unless we're auto-saving, but it's just simpler to check every time
+      // and should have virtually no performance impact
+      radiant.call('radiant:get_config', 'mods.stonehearth_ace.auto_save_unique_files')
+      .done(function(response) {
+         var autoSaveUnique = response['mods.stonehearth_ace.auto_save_unique_files'];
+
+         if (isAuto && autoSaveUnique) {
+            var dateTimeStr = d.toLocaleString(window.navigator.userLanguage || window.navigator.language);
+            saveid = saveid + ' ' + dateTimeStr.replace(/[/\\?%*:|"<>]/g, '-');
+            name = i18n.t('stonehearth_ace:ui.game.save_view.auto_save_name',
+               {i18n_data: {date_time: dateTimeStr }});
+         }
+
+         radiant.call("stonehearth_ace:save_game_command")
          .done(function() {
             radiant.call("radiant:client:save_game", saveid, {
                name: name,
@@ -38,6 +53,7 @@ App.SaveView.reopen({
          })
          .fail(function() { if(onFail) onFail(); })
          .always(function() { if(onAlways) onAlways(); });
+      });
    },
 
    _overwriteSaveGame: function(saveid, saveName) {
