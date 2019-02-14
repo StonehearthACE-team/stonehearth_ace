@@ -845,6 +845,11 @@
                "recipe_name": "Megafrucht Dünger",
                "description": "Dieser komplizierte Dünger bietet nicht die beste Qualität, erhöht aber die Wahrscheinlichkeit von Megafrüchten erheblich!",
                "flavor": "Jeder Sack kann 20 Früchte düngen"
+            },
+            "plant_glass": {
+               "recipe_name": "Blumen in einer Vase",
+               "description": "Eine kleine Sache, um dein Zuhause gemütlich zu machen.",
+               "flavor": "In diese Vase werden buchstäblich handverlesene Blumen gestellt. Einige Blüten sind vielleicht auffälliger als andere *Zwinker zwinker*."
             }
          },
          "herbalist_hood": {
@@ -2540,6 +2545,34 @@
          },
          "megacrops": {
             "default_description": "Diese Frucht ist Mega!"
+         },
+         "carrot_crop": {
+            "growth_stage": {
+               "000": {
+                  "description": "Eine nicht realisierte Karotte."
+               }
+            }
+         },
+         "pumpkin_crop": {
+            "growth_stage": {
+               "000": {
+                  "description": "Ein nicht realisierter Kürbis."
+               }
+            }
+         },
+         "watermelon_crop": {
+            "growth_stage": {
+               "000": {
+                  "description": "Eine nicht realisierte Wassermelone."
+               }
+            }
+         },
+         "turnip_crop": {
+            "growth_stage": {
+               "000": {
+                  "description": "Eine nicht realisierte Rübe."
+               }
+            }
          }
       },
       "decorations": {
@@ -3528,7 +3561,13 @@
          }
       },
       "decoration": {
-         "statue": {
+            "plant_glass": {
+               "plant_glass_ghost": {
+                  "display_name": "Blumen in einer Vase",
+                  "description": "Liebevoll handverlesen und lieblich riechen."
+               }
+            },
+            "statue": {
             "statue_anji_the_horrendous": {
                "statue_anji_the_horrendous_ghost": {
                   "display_name": "Anji die entsetzliche Statue",
@@ -3865,6 +3904,17 @@
             "moomoo_young": {
                "display_name": "Moo Kalb",
                "description": "Ein süßes kleines Moo-Moo."
+            }
+         },
+		 "moomoo_wild": {
+            "display_name": "Auerochse",
+	    "display_name_arctic": "Schnee-Yak",
+            "display_name_desert": "Sand-Yak",
+            "display_name_highlands": "Auerochse",
+            "description": "Ein starker und wilder Wiederkäuer, ein älterer Verwandter des sanfteren Moo-Moo.",
+            "moomoo_wild_young": {
+               "display_name": "Wildes Kalb",
+               "description": "Ein süßes kleines und wildes Moo-Moo."
             }
          }
       },
@@ -6086,7 +6136,23 @@
                "water_signal_update_frequency": "Wassersignal-Aktualisierungsrate",
                "water_signal_update_frequency_description": "Aktualisiere die Wassersignale nach einer bestimmte Anzahl von Ticks des Wassersystems. Erhöhe diesen Wert, um die Leistung mit viel fließendem Wasser zu verbessern.",
                "show_processing_meter": "Verarbeitungsanzeige anzeigen",
-               "show_processing_meter_description": "Zeigt die Verarbeitungsanzeige an, die für das Verständnis von Leistungsproblemen nützlich ist, rechts unten auf dem Bildschirm, links neben den Schaltflächen für die Spielgeschwindigkeit."
+               "show_processing_meter_description": "Zeigt die Verarbeitungsanzeige an, die für das Verständnis von Leistungsproblemen nützlich ist, rechts unten auf dem Bildschirm, links neben den Schaltflächen für die Spielgeschwindigkeit.",
+               "auto_save_interval": "Automatisches Speicherintervall:",
+               "auto_save_interval_description": "Wenn beim Speichern die Option 'Automatisch speichern' aktiviert ist, wird zu der ausgewählten Frequenz automatisch gespeichert.",
+               "intervals": {
+                  "5_minutes": "5 Minuten",
+                  "6_minutes": "6 Minuten",
+                  "7_minutes": "7 Minuten",
+                  "8_minutes": "8 Minuten",
+                  "9_minutes": "9 Minuten",
+                  "10_minutes": "10 Minuten",
+                  "15_minutes": "15 Minuten",
+                  "20_minutes": "20 Minuten",
+                  "25_minutes": "25 Minuten",
+                  "30_minutes": "30 Minuten"
+               },
+               "auto_save_unique_files": "Automatisches Speichern - Einzelne Dateien",
+               "auto_save_unique_files_description": "Erstellen Sie beim automatischen Speichern eine separate Speicherung mit Datum und Uhrzeit. Warnung: Häufiges automatisches Speichern erfordert viel Speicherplatz!"
             },
             "controls_tab": {
                "key_binding_names": {
