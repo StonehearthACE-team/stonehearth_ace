@@ -54,6 +54,13 @@
                         {{/each}}
                      </div>
                      <div id="levelRequirement"></div>
+                     <div id="equipmentTypes">
+                        {{#each view.equipmentTypes}}
+                           {{#if icon}}
+                           <img class="acceptableClassIcon" {{bind-attr src="icon"}}>
+                           {{/if}}
+                        {{/each}}
+                     </div>
                   </div>
                </div>
                <div id="descriptionDiv">
