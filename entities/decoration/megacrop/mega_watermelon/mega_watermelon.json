@@ -16,7 +16,7 @@
          ]
       },
       "stonehearth:traveler_attraction": {},
-      "stonehearth:evolve": {},
+      "stonehearth_ace:transform": {},
       "stonehearth:resource_node": {
          "resource": "stonehearth:food:watermelon:watermelon_basket",
          "harvest_overlay_effect": "stonehearth:effects:harvest_plant_overlay_effect",
@@ -40,15 +40,15 @@
       "stonehearth:item_quality": {
          "variable_quality": true
       },
-      "stonehearth:evolve_data": {
-         "next_stage": "stonehearth_ace:decoration:megacrop:mega_watermelon_juice",
-         "evolve_command": "stonehearth_ace:commands:request_evolve:prepare_mega_watermelon_juice",
-         "request_action": "stonehearth_ace:perform_evolve",
-         "request_action_overlay_effect": "stonehearth_ace:effects:evolve_cook_overlay_effect",
-         "evolving_worker_effect": "chop_3",
-         "evolving_worker_effect_times": 3,
-         "evolve_effect": "stonehearth:effects:item_created",
-         "evolve_worker_required_job": {
+      "stonehearth_ace:transform_data": {
+         "transform_uri": "stonehearth_ace:decoration:megacrop:mega_watermelon_juice",
+         "command": "stonehearth_ace:commands:transform:prepare_mega_watermelon_juice",
+         "request_action": "stonehearth_ace:transform",
+         "request_action_overlay_effect": "stonehearth_ace:effects:transform_cook_overlay_effect",
+         "transforming_worker_effect": "chop_3",
+         "transforming_worker_effect_times": 3,
+         "transform_effect": "stonehearth:effects:item_created",
+         "worker_required_job": {
             "stonehearth:jobs:cook": true
          }
       }

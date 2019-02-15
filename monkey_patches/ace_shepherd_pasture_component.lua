@@ -255,7 +255,7 @@ function AceShepherdPastureComponent:_make_animals_sleepy()
       local resources = animal:is_valid() and animal:get_component('stonehearth:expendable_resources')
       if resources then
          local sleepiness = resources:get_value('sleepiness')
-         if sleepiness < 25 then
+         if sleepiness and sleepiness < 25 then
             resources:set_value('sleepiness', sleepiness / 2 + 15)
          end
       end

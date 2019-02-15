@@ -38,7 +38,7 @@
       "stonehearth:ownable_object": {
          "ownership_type": "bed"
       },
-      "stonehearth:evolve": {}
+      "stonehearth_ace:transform": {}
    },
    "entity_data": {
       "stonehearth:bed": {
@@ -47,16 +47,16 @@
             "score": 6
          }
       },
-      "stonehearth:evolve_data": {
-         "next_stage": "stonehearth:furniture:clay_bed",
-         "evolve_command": "stonehearth_ace:commands:request_evolve:add_thatch_to_bed",
-         "request_action": "stonehearth_ace:perform_evolve",
-         "request_action_overlay_effect": "stonehearth_ace:effects:evolve_worker_upgrade_overlay_effect",
-         "evolve_ingredient_material": "thatch resource",
-         "evolving_worker_effect": "fiddle",
-         "evolving_worker_effect_times": 1,
-         "evolve_effect": "stonehearth:effects:item_created",
-         "evolve_worker_required_job": {
+      "stonehearth_ace:transform_data": {
+         "transform_uri": "stonehearth:furniture:clay_bed",
+         "command": "stonehearth_ace:commands:transform:add_thatch_to_bed",
+         "request_action": "stonehearth_ace:transform",
+         "request_action_overlay_effect": "stonehearth_ace:effects:transform_worker_upgrade_overlay_effect",
+         "transform_ingredient_material": "thatch resource",
+         "transforming_worker_effect": "fiddle",
+         "transforming_worker_effect_times": 1,
+         "transform_effect": "stonehearth:effects:item_created",
+         "worker_required_job": {
             "stonehearth:jobs:worker": true,
             "stonehearth:jobs:potter": true
          }

@@ -23,19 +23,19 @@
             }
          ]
       },
-      "stonehearth:evolve": {}
+      "stonehearth_ace:transform": {}
    },
    "entity_data": {
-      "stonehearth:evolve_data": {
-         "next_stage": "stonehearth_ace:cook:cheese_vat:filled",
-         "evolve_command": "stonehearth_ace:commands:request_evolve:cheese_vat_fill",
-         "request_action": "stonehearth_ace:perform_evolve",
-         "request_action_overlay_effect": "stonehearth_ace:effects:evolve_cook_overlay_effect",
-         "evolve_ingredient_uri": "stonehearth_ace:food:dairy:curdling_mixture",
-         "evolving_worker_effect": "fiddle",
-         "evolving_worker_effect_times": 1,
+      "stonehearth_ace:transform_data": {
+         "transform_uri": "stonehearth_ace:cook:cheese_vat:filled",
+         "command": "stonehearth_ace:commands:transform:cheese_vat_fill",
+         "request_action": "stonehearth_ace:transform",
+         "request_action_overlay_effect": "stonehearth_ace:effects:transform_cook_overlay_effect",
+         "transform_ingredient_uri": "stonehearth_ace:food:dairy:curdling_mixture",
+         "transforming_worker_effect": "fiddle",
+         "transforming_worker_effect_times": 1,
          "auto_request": true,
-         "evolve_worker_required_job": {
+         "worker_required_job": {
             "stonehearth:jobs:cook": true
          },
          "apply_ingredient_quality": true

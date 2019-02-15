@@ -4,7 +4,7 @@
          "status_text": {
             "eat_from": "eating from [name(data.target)]",
             "fertilize_field": "applying fertilizer",
-            "perform_evolve": "transforming [name(data.target)]",
+            "transform": "transforming [name(data.target)]",
             "train": "going for training"
          }
       }
@@ -411,7 +411,7 @@
          }
       },
       "commands": {
-         "request_evolve": {
+         "transform": {
             "prepare_mega_pumpkin_soup": {
                "display_name": "Prepare Pumpkin Soup",
                "description": "With a Bundle o' Firewood the Cook can turn this huge vegetable into a wonderful soup!"
@@ -6262,7 +6262,7 @@
          },
          "evolve": {
             "display_name": "Evolve",
-            "description": "Will transform into something else. If it doesn't have a command for it, this will happen eventually over time."
+            "description": "Will transform into something else over time."
          },
          "growing": {
             "display_name": "Growing",
@@ -6305,6 +6305,10 @@
          "tile": {
             "display_name": "Tile",
             "description": "Tile-able item that will automatically connect adjacently and update its model."
+         },
+         "transform": {
+            "display_name": "Transform",
+            "description": "Will transform into something else when a specific command or action is performed on it."
          },
          "vine": {
             "display_name": "Vine",

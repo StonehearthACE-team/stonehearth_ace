@@ -24,19 +24,19 @@
             }
          ]
       },
-      "stonehearth:evolve": {}
+      "stonehearth_ace:transform": {}
    },
    "entity_data": {
-      "stonehearth:evolve_data": {
-         "next_stage": "stonehearth_ace:cook:cheese_vat:cheese_fresh",
-         "evolve_command": "stonehearth_ace:commands:request_evolve:cheese_vat_drain",
-         "request_action": "stonehearth_ace:perform_evolve",
-         "request_action_overlay_effect": "stonehearth_ace:effects:evolve_cook_overlay_effect",
-         "evolving_worker_effect": "fiddle",
-         "evolving_worker_effect_times": 4,
-         "evolve_effect": "stonehearth:effects:item_created",
+      "stonehearth_ace:transform_data": {
+         "transform_uri": "stonehearth_ace:cook:cheese_vat:cheese_fresh",
+         "command": "stonehearth_ace:commands:transform:cheese_vat_drain",
+         "request_action": "stonehearth_ace:transform",
+         "request_action_overlay_effect": "stonehearth_ace:effects:transform_cook_overlay_effect",
+         "transforming_worker_effect": "fiddle",
+         "transforming_worker_effect_times": 4,
+         "transform_effect": "stonehearth:effects:item_created",
          "auto_request": true,
-         "evolve_worker_required_job": {
+         "worker_required_job": {
             "stonehearth:jobs:cook": true
          }
       },

@@ -1,23 +1,23 @@
 local Entity = _radiant.om.Entity
-local PerformEvolveOnItem = radiant.class()
+local TransformItem = radiant.class()
 
-PerformEvolveOnItem.name = 'perform evolve'
-PerformEvolveOnItem.does = 'stonehearth_ace:perform_evolve_on_entity'
-PerformEvolveOnItem.args = {
+TransformItem.name = 'transform'
+TransformItem.does = 'stonehearth_ace:transform_entity'
+TransformItem.args = {
    owner_player_id = 'string',   -- the owner of the entity
-   item = Entity,  -- The item to be evolved
+   item = Entity,  -- The item to be transformed
 }
-PerformEvolveOnItem.priority = 0.5
+TransformItem.priority = 0.5
 
-function PerformEvolveOnItem:start_thinking(ai, entity, args)
-   local evolve_data = radiant.entities.get_entity_data(args.item, 'stonehearth:evolve_data')
-   if not evolve_data.evolve_ingredient_uri and not evolve_data.evolve_ingredient_material then
+function TransformItem:start_thinking(ai, entity, args)
+   local transform_data = radiant.entities.get_entity_data(args.item, 'stonehearth_ace:transform_data')
+   if not transform_data.transform_ingredient_uri and not transform_data.transform_ingredient_material then
       ai:set_think_output()
    end
 end
 
 local ai = stonehearth.ai
-return ai:create_compound_action(PerformEvolveOnItem)
+return ai:create_compound_action(TransformItem)
          :execute('stonehearth:find_path_to_reachable_entity', {
             destination = ai.ARGS.item
          })
@@ -26,7 +26,7 @@ return ai:create_compound_action(PerformEvolveOnItem)
             stop_distance = ai.CALL(radiant.entities.get_harvest_range, ai.ENTITY),
          })
          :execute('stonehearth:add_buff', {buff = 'stonehearth:buffs:stopped', target = ai.ARGS.item})
-         :execute('stonehearth_ace:perform_evolve_adjacent', {
+         :execute('stonehearth_ace:transform_adjacent', {
             item = ai.ARGS.item,
             owner_player_id = ai.ARGS.owner_player_id,
          })

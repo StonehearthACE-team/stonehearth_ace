@@ -2,6 +2,14 @@ local GrowingComponent = require 'stonehearth.components.growing.growing_compone
 local AceGrowingComponent = class()
 local log = radiant.log.create_logger('growing')
 
+AceGrowingComponent._ace_old_restore = GrowingComponent.restore
+function AceGrowingComponent:restore()
+   self:_ace_old_restore()
+
+   self._sv._growth_timer = self._sv.growth_timer
+   self._sv.growth_timer = nil
+end
+
 AceGrowingComponent._ace_old_activate = GrowingComponent.activate
 function AceGrowingComponent:activate()
 	local json = radiant.entities.get_json(self)
@@ -135,9 +143,9 @@ function AceGrowingComponent:set_custom_growth_time_multiplier(multiplier)
 end
 
 function AceGrowingComponent:_recalculate_duration()
-   if self._sv.growth_timer then
-		local old_duration = self._sv.growth_timer:get_duration()
-		local old_expire_time = self._sv.growth_timer:get_expire_time()
+   if self._sv._growth_timer then
+		local old_duration = self._sv._growth_timer:get_duration()
+		local old_expire_time = self._sv._growth_timer:get_expire_time()
 		local old_start_time = old_expire_time - old_duration
 		local growth_period = self:_get_base_growth_period()
 	  
@@ -146,8 +154,8 @@ function AceGrowingComponent:_recalculate_duration()
 		self._sv._current_growth_recalculate_progress = old_progress + new_progress
 		local time_remaining = math.max(0, growth_period * (1 - self._sv._current_growth_recalculate_progress))
 		local scaled_time_remaining = self:_calculate_growth_period(time_remaining)
-		self._sv.growth_timer:destroy()
-		self._sv.growth_timer = stonehearth.calendar:set_persistent_timer("GrowingComponent grow_callback", scaled_time_remaining, radiant.bind(self, '_grow'))
+		self._sv._growth_timer:destroy()
+		self._sv._growth_timer = stonehearth.calendar:set_persistent_timer("GrowingComponent grow_callback", scaled_time_remaining, radiant.bind(self, '_grow'))
 	end
 end
 
@@ -180,11 +188,11 @@ end
 
 function AceGrowingComponent:_set_growth_timer()
    local growth_period = self:_calculate_growth_period()
-   if self._sv.growth_timer then
-      self._sv.growth_timer:destroy()
-      self._sv.growth_timer = nil
+   if self._sv._growth_timer then
+      self._sv._growth_timer:destroy()
+      self._sv._growth_timer = nil
    end
-   self._sv.growth_timer = stonehearth.calendar:set_persistent_timer("GrowingComponent grow_callback", growth_period, radiant.bind(self, '_grow'))
+   self._sv._growth_timer = stonehearth.calendar:set_persistent_timer("GrowingComponent grow_callback", growth_period, radiant.bind(self, '_grow'))
 end
 
 AceGrowingComponent._ace_old__grow = GrowingComponent._grow
@@ -192,6 +200,23 @@ function AceGrowingComponent:_grow()
 	self:_ace_old__grow()
 
 	self._sv._current_growth_recalculate_progress = 0
+end
+
+-- override these two functions to prepend growth_timer with an underscore
+function AceGrowingComponent:_start()
+   if not self._sv._growth_timer then
+      self:_set_growth_timer()
+   end
+   --Make our current model look like the saved model
+   self:_apply_current_stage()
+end
+
+function AceGrowingComponent:stop_growing()
+   if self._sv._growth_timer then
+      self._sv._growth_timer:destroy()
+      self._sv._growth_timer = nil
+   end
+   self.__saved_variables:mark_changed()
 end
 
 return AceGrowingComponent

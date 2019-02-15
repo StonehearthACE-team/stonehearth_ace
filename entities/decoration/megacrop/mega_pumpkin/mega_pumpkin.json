@@ -16,7 +16,7 @@
          ]
       },
       "stonehearth:traveler_attraction": {},
-      "stonehearth:evolve": {},
+      "stonehearth_ace:transform": {},
       "stonehearth:loot_drops": {
          "entries": {
             "default": {
@@ -55,17 +55,17 @@
       "stonehearth:item_quality": {
          "variable_quality": true
       },
-      "stonehearth:evolve_data": {
-         "next_stage": "stonehearth_ace:decoration:megacrop:mega_pumpkin_soup",
-         "evolve_command": "stonehearth_ace:commands:request_evolve:prepare_mega_pumpkin_soup",
-         "request_action": "stonehearth_ace:perform_evolve",
+      "stonehearth_ace:transform_data": {
+         "transform_uri": "stonehearth_ace:decoration:megacrop:mega_pumpkin_soup",
+         "command": "stonehearth_ace:commands:transform:prepare_mega_pumpkin_soup",
+         "request_action": "stonehearth_ace:transform",
          "auto_request": true,
-         "request_action_overlay_effect": "stonehearth_ace:effects:evolve_cook_overlay_effect",
-         "evolve_ingredient_uri": "stonehearth_ace:resources:fuel:bundle_of_firewood",
-         "evolving_worker_effect": "chop_and_light",
-         "evolving_worker_effect_times": 1,
-         "evolve_effect": "stonehearth:effects:fire_effect",
-         "evolve_worker_required_job": {
+         "request_action_overlay_effect": "stonehearth_ace:effects:transform_cook_overlay_effect",
+         "transform_ingredient_uri": "stonehearth_ace:resources:fuel:bundle_of_firewood",
+         "transforming_worker_effect": "chop_and_light",
+         "transforming_worker_effect_times": 1,
+         "transform_effect": "stonehearth:effects:fire_effect",
+         "worker_required_job": {
             "stonehearth:jobs:cook": true
          },
          "kill_entity": true

@@ -123,8 +123,9 @@ end
 function stonehearth_ace:_on_required_loaded()
    monkey_patching()
    
-   -- modders should be able to use their catalog update script to monkey-patch our ace_catalog_lib
-   self:_run_scripts('catalog_updates')
+   -- modders should be able to use a pre-catalog update script to monkey-patch our ace_catalog_lib
+   self:_run_scripts('pre_catalog_updates')
+   require('stonehearth_ace.scripts.update_catalog.update_catalog')()
    
    radiant.events.trigger_async(radiant, 'stonehearth_ace:server:required_loaded')
 end

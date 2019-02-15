@@ -4,7 +4,7 @@
          "status_text": {
             "train": "准备训练中",
             "fertilize_field": "播撒肥料中",
-            "perform_evolve": "处理[name(data.target)]中"
+            "transform": "处理[name(data.target)]中"
          }
       }
    },
@@ -410,7 +410,7 @@
          }
       },
       "commands": {
-         "request_evolve": {
+         "transform": {
             "prepare_mega_pumpkin_soup": {
                "display_name": "制作南瓜汤",
                "description": "准备一块石头和一捆柴火, 厨师能把这个巨型蔬菜做成美味的汤!"

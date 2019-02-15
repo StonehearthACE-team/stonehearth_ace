@@ -24,7 +24,7 @@ function ace_catalog_lib._update_catalog_data(catalog_data, uri, json)
    json = json or radiant.resources.load_json(uri)
    if json and json.components and json.components['stonehearth:equipment_piece'] then
       catalog_data.equipment_types = ace_catalog_lib.get_equipment_types(json.components['stonehearth:equipment_piece'])
-      log:debug('added equipment types for %s: %s', uri, radiant.util.table_tostring(catalog_data.equipment_types))
+      --log:debug('added equipment types for %s: %s', uri, radiant.util.table_tostring(catalog_data.equipment_types))
    end
 end
 

@@ -15,9 +15,28 @@ function AceRenewableResourceNodeComponent:post_activate()
    end
    
    self:_ace_old_post_activate()
+   if self._sv.harvestable and self._is_create and not self._json.auto_harvest_on_create == false then
+      self._added_to_world_listener = self._entity:add_component('mob'):trace_parent('transform entity added or removed')
+            :on_changed(function(parent)
+               if parent then
+                  --log:debug('considering auto_harvest for %s', self._entity)
+                  self:_destroy_added_to_world_listener()
+                  self:_auto_request_harvest()
+               end
+            end)
+   end
+end
 
-   if self._sv.harvestable and self._is_create then
-      self:_auto_request_harvest()
+AceRenewableResourceNodeComponent._ace_old_destroy = RenewableResourceNodeComponent.destroy
+function AceRenewableResourceNodeComponent:destroy()
+   self:_ace_old_destroy()
+   self:_destroy_added_to_world_listener()
+end
+
+function AceRenewableResourceNodeComponent:_destroy_added_to_world_listener()
+   if self._added_to_world_listener then
+      self._added_to_world_listener:destroy()
+      self._added_to_world_listener = nil
    end
 end
 
@@ -29,6 +48,7 @@ function AceRenewableResourceNodeComponent:_auto_request_harvest()
    if player_id ~= '' then
       local auto_harvest = self:get_auto_harvest_enabled(player_id) or self:_can_pasture_animal_renewably_harvest()
       if auto_harvest then
+         --log:debug('requesting auto harvest for %s', self._entity)
          self:request_harvest(player_id)
       end
    end
@@ -92,6 +112,7 @@ function AceRenewableResourceNodeComponent:_set_quality(item, quality)
 end
 
 function AceRenewableResourceNodeComponent:cancel_harvest_request()
+   log:debug('canceling auto harvest for %s', self._entity)
    self:_cancel_harvest_request()
 end
 

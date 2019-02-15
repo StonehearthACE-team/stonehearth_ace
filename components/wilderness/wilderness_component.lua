@@ -10,6 +10,7 @@ function WildernessComponent:create()
    local json = radiant.entities.get_json(self)
    self._sv.wilderness_value = (json and json.wilderness_value) or 0
    self._sv.is_mobile = (json and json.is_mobile) or false
+   self._sv._current_signals = {}
    self.__saved_variables:mark_changed()
 end
 
@@ -20,10 +21,10 @@ function WildernessComponent:post_activate()
       local catalog_data = get_catalog_data(entity)
       self._sv.is_mobile = (catalog_data and catalog_data.player_id == 'animals') or false
    end
-   if not self._sv.current_signals then
-      self._sv.current_signals = {}
+   if not self._sv._current_signals then
+      self._sv._current_signals = self._sv.current_signals or {}
    end
-   self.__saved_variables:mark_changed()
+   self._sv.current_signals = nil
 
    if self._sv.is_mobile then
       self._location_check_timer = stonehearth.calendar:set_interval('wilderness mobility check', '9m+2m', function()
@@ -56,21 +57,21 @@ function WildernessComponent:_perform_location_check()
    local signals = location and get_entities_at_point(location, wilderness_signal_filter_fn)
 
    -- first check our current signals to see if we've left any (or if they no longer exist)
-   for id, entity in pairs(self._sv.current_signals) do
+   for id, entity in pairs(self._sv._current_signals) do
       local component = entity:get_component('stonehearth_ace:wilderness_signal')
       if not component then
-         self._sv.current_signals[id] = nil
+         self._sv._current_signals[id] = nil
       elseif not location or not signals[id] then  -- if there's no location, it must not be in the world, so remove it from signals
          component:remove_entity(self._entity)
-         self._sv.current_signals[id] = nil
+         self._sv._current_signals[id] = nil
       end
    end
    
    if signals then
       -- then check the new ones to see if we've entered any
       for id, entity in pairs(signals) do
-         if not self._sv.current_signals[id] then
-            self._sv.current_signals[id] = entity
+         if not self._sv._current_signals[id] then
+            self._sv._current_signals[id] = entity
             entity:get_component('stonehearth_ace:wilderness_signal'):add_entity(self._entity)
          end
       end
