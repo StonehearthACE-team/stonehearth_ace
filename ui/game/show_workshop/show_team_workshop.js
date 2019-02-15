@@ -166,6 +166,90 @@ $(top).on('stonehearthReady', function() {
             });
          },
 
+         // override this function since we're modifying the dynamic tooltip code
+         _calculateEquipmentData: function (recipe) {
+            var self = this;
+            var productCatalogData = App.catalog.getCatalogData(recipe.product_uri);
+      
+            if (productCatalogData && (productCatalogData.equipment_required_level || productCatalogData.equipment_roles)) {
+               self.$('.detailsView').find('.tooltipstered').tooltipster('destroy');
+               if (productCatalogData.equipment_roles) {
+                  var classArray = radiant.findRelevantClassesArray(productCatalogData.equipment_roles);
+                  self.set('allowedClasses', classArray);
+               }
+               if (productCatalogData.equipment_required_level) {
+                  self.$('#levelRequirement').text(i18n.t('stonehearth:ui.game.unit_frame.level') + productCatalogData.equipment_required_level);
+               } else {
+                  self.$('#levelRequirement').text('');
+               }
+               
+               var equipmentTypes = [];
+               if (productCatalogData.equipment_types) {
+                  equipmentTypes = self._getEquipmentTypesArray(productCatalogData.equipment_types);
+               }
+               self.set('equipmentTypes', equipmentTypes);
+               self._setEquipmentTypeIcons();
+      
+               App.tooltipHelper.createDynamicTooltip(self.$('#recipeEquipmentPane'), function () {
+                  var tooltipString = i18n.t('stonehearth:ui.game.unit_frame.no_requirements');
+                  if (productCatalogData.equipment_roles) {
+                     tooltipString = i18n.t('stonehearth:ui.game.unit_frame.equipment_description',
+                                            { class_list: radiant.getClassString(self.get('allowedClasses')) });
+                  }
+                  if (productCatalogData.equipment_required_level) {
+                     tooltipString += i18n.t('stonehearth:ui.game.unit_frame.level_description', { level_req: productCatalogData.equipment_required_level });
+                  }
+                  if (productCatalogData.equipment_types) {
+                     tooltipString += '<br>' + i18n.t('stonehearth_ace:ui.game.unit_frame.equipment_types_description',
+                                                      { i18n_data: { types: self._getEquipmentTypesString(self.get('equipmentTypes')) } });
+                  }
+                  return $(App.tooltipHelper.createTooltip(i18n.t('stonehearth:ui.game.unit_frame.class_lv_title'), tooltipString));
+               });
+
+               self.$('#recipeEquipmentPane').show();
+            } else {
+               self.$('#recipeEquipmentPane').hide();
+            }
+         },
+
+         _getEquipmentTypesArray: function(types) {
+            var typesArr = [];
+            radiant.each(types, function (type, _) {
+               var equipmentType = {
+                  type: type,
+                  name: i18n.t('stonehearth_ace:ui.game.unit_frame.equipment_types.' + type)
+               };
+               typesArr.push(equipmentType);
+            });
+            return typesArr;
+         },
+
+         _setEquipmentTypeIcons: function() {
+            var self = this;
+            var types = self.get('equipmentTypes');
+            if (types && types.length > 0) {
+               radiant.each(types, function(_, type) {
+                  var icon = '/stonehearth_ace/ui/images/equipment_types/' + type.type + '.png';
+                  $.get(icon).done(function() {
+                     // if we were able to successfully load this icon, set it to actually render
+                     Ember.set(type, 'icon', icon);
+                  });
+               });
+            }
+         },
+
+         _getEquipmentTypesString: function(typeArray) {
+            var typeString = '';
+            for (i=0; i<typeArray.length; i++) {
+               if (i==0) {
+                  typeString += typeArray[i].name;
+               } else {
+                  typeString += ', ' + typeArray[i].name;
+               }
+            }
+            return typeString;
+         },
+
          actions: {
             craft: function () {
                var self = this;

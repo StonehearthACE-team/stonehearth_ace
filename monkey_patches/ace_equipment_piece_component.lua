@@ -1,3 +1,4 @@
+local catalog_lib = require 'stonehearth.lib.catalog.catalog_lib'
 local EquipmentPieceComponent = require 'stonehearth.components.equipment_piece.equipment_piece_component'
 local AceEquipmentPieceComponent = class()
 local log = radiant.log.create_logger('equipment_piece')
@@ -88,32 +89,10 @@ end
 
 function AceEquipmentPieceComponent:_get_equipment_types()
    if not self._equipment_types then
-      self._equipment_types = {}
-      local types = self._json.equipment_types or self:_get_default_equipment_types()
-      for _, type in ipairs(types) do
-         self._equipment_types[type] = true
-      end
+      self._equipment_types = catalog_lib.get_equipment_types(self._json)
    end
 
    return self._equipment_types
-end
-
--- other mods that want to add in additional default types can easily patch this to first call this version of the function
--- and then additionally insert their other types into the resulting table before returning it
-function AceEquipmentPieceComponent:_get_default_equipment_types()
-   -- if equipment types aren't specified, evaluate other properties to see what they should probably be
-   local types = {}
-   if self._json.slot == 'mainhand' then
-      if self._json.additional_equipment and self._json.additional_equipment['stonehearth:armor:offhand_placeholder'] then
-         table.insert(types, 'twohanded')
-      else
-         table.insert(types, 'mainhand')
-      end
-   else
-      table.insert(types, self._json.slot)
-   end
-
-   return types
 end
 
 function AceEquipmentPieceComponent:_get_injected_ai()

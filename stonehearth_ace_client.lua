@@ -22,7 +22,8 @@ local monkey_patches = {
    ace_item_placer = 'stonehearth.services.client.build_editor.item_placer',
    ace_subterranean_view_service = 'stonehearth.services.client.subterranean_view.subterranean_view_service',
    ace_renderer_service = 'stonehearth.services.client.renderer.renderer_service',
-   ace_farmer_field_renderer = 'stonehearth.renderers.farmer_field.farmer_field_renderer'
+   ace_farmer_field_renderer = 'stonehearth.renderers.farmer_field.farmer_field_renderer',
+   ace_catalog_lib = 'stonehearth.lib.catalog.catalog_lib'
 }
 
 local function monkey_patching()
@@ -84,6 +85,8 @@ function stonehearth_ace:_on_init()
 
    stonehearth_ace._sv = stonehearth_ace.__saved_variables:get_data()
 
+   self:_run_scripts('pre_ace_services')
+
    for _, name in ipairs(service_creation_order) do
       create_service(name)
    end
@@ -102,7 +105,32 @@ end
 
 function stonehearth_ace:_on_required_loaded()
    monkey_patching()
+   
+   -- modders should be able to use their catalog update script to monkey-patch our ace_catalog_lib
+   self:_run_scripts('catalog_updates')
+
    radiant.events.trigger_async(radiant, 'stonehearth_ace:client:required_loaded')
+end
+
+function stonehearth_ace:_get_scripts_to_load()
+   if not self.load_scripts then
+      self.load_scripts = radiant.resources.load_json('stonehearth_ace/scripts/client_load_scripts.json')
+   end
+   return self.load_scripts
+end
+
+function stonehearth_ace:_run_scripts(category)
+   local scripts = self:_get_scripts_to_load()
+   if category and scripts[category] then
+      for script, run in pairs(scripts[category]) do
+         if run then
+            local s = require(script)
+            if s then
+               s()
+            end
+         end
+      end
+   end
 end
 
 radiant.events.listen(stonehearth_ace, 'radiant:init', stonehearth_ace, stonehearth_ace._on_init)
