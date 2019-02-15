@@ -185,10 +185,9 @@ $(top).on('stonehearthReady', function() {
                
                var equipmentTypes = [];
                if (productCatalogData.equipment_types) {
-                  equipmentTypes = self._getEquipmentTypesArray(productCatalogData.equipment_types);
+                  equipmentTypes = stonehearth_ace.getEquipmentTypesArray(productCatalogData.equipment_types);
                }
                self.set('equipmentTypes', equipmentTypes);
-               self._setEquipmentTypeIcons();
       
                App.tooltipHelper.createDynamicTooltip(self.$('#recipeEquipmentPane'), function () {
                   var tooltipString = i18n.t('stonehearth:ui.game.unit_frame.no_requirements');
@@ -201,7 +200,7 @@ $(top).on('stonehearthReady', function() {
                   }
                   if (productCatalogData.equipment_types) {
                      tooltipString += '<br>' + i18n.t('stonehearth_ace:ui.game.unit_frame.equipment_types_description',
-                                                      { i18n_data: { types: self._getEquipmentTypesString(self.get('equipmentTypes')) } });
+                                                      { i18n_data: { types: stonehearth_ace.getEquipmentTypesString(self.get('equipmentTypes')) } });
                   }
                   return $(App.tooltipHelper.createTooltip(i18n.t('stonehearth:ui.game.unit_frame.class_lv_title'), tooltipString));
                });
@@ -210,44 +209,6 @@ $(top).on('stonehearthReady', function() {
             } else {
                self.$('#recipeEquipmentPane').hide();
             }
-         },
-
-         _getEquipmentTypesArray: function(types) {
-            var typesArr = [];
-            radiant.each(types, function (type, _) {
-               var equipmentType = {
-                  type: type,
-                  name: i18n.t('stonehearth_ace:ui.game.unit_frame.equipment_types.' + type)
-               };
-               typesArr.push(equipmentType);
-            });
-            return typesArr;
-         },
-
-         _setEquipmentTypeIcons: function() {
-            var self = this;
-            var types = self.get('equipmentTypes');
-            if (types && types.length > 0) {
-               radiant.each(types, function(_, type) {
-                  var icon = '/stonehearth_ace/ui/images/equipment_types/' + type.type + '.png';
-                  $.get(icon).done(function() {
-                     // if we were able to successfully load this icon, set it to actually render
-                     Ember.set(type, 'icon', icon);
-                  });
-               });
-            }
-         },
-
-         _getEquipmentTypesString: function(typeArray) {
-            var typeString = '';
-            for (i=0; i<typeArray.length; i++) {
-               if (i==0) {
-                  typeString += typeArray[i].name;
-               } else {
-                  typeString += ', ' + typeArray[i].name;
-               }
-            }
-            return typeString;
          },
 
          actions: {

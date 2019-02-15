@@ -1,0 +1,125 @@
+{
+   "bow": {
+      "name": "i18n(stonehearth_ace:ui.game.unit_frame.equipment_types.bow)",
+      "icon": "/stonehearth_ace/ui/images/equipment_types/bow.png",
+      "overrides": [
+         "mainhand"
+      ]
+   },
+   "crossbow": {
+      "name": "i18n(stonehearth_ace:ui.game.unit_frame.equipment_types.crossbow)",
+      "icon": "/stonehearth_ace/ui/images/equipment_types/crossbow.png",
+      "overrides": [
+         "mainhand"
+      ]
+   },
+   "mainhand": {
+      "name": "i18n(stonehearth_ace:ui.game.unit_frame.equipment_types.mainhand)",
+      "icon": "/stonehearth_ace/ui/images/equipment_types/mainhand.png"
+   },
+   "twohanded": {
+      "name": "i18n(stonehearth_ace:ui.game.unit_frame.equipment_types.twohanded)",
+      "icon": "/stonehearth_ace/ui/images/equipment_types/twohanded.png",
+      "overrides": [
+         "mainhand"
+      ]
+   },
+   "offhand": {
+      "name": "i18n(stonehearth_ace:ui.game.unit_frame.equipment_types.offhand)",
+      "icon": "/stonehearth_ace/ui/images/equipment_types/offhand.png",
+      "overrides": [
+         "leftArm"
+      ]
+   },
+   "shield": {
+      "name": "i18n(stonehearth_ace:ui.game.unit_frame.equipment_types.shield)",
+      "icon": "/stonehearth_ace/ui/images/equipment_types/shield.png",
+      "overrides": [
+         "offhand",
+         "leftArm"
+      ]
+   },
+   "light_shield": {
+      "name": "i18n(stonehearth_ace:ui.game.unit_frame.equipment_types.light_shield)",
+      "icon": "/stonehearth_ace/ui/images/equipment_types/light_shield.png",
+      "overrides": [
+         "offhand",
+         "leftArm",
+         "shield"
+      ]
+   },
+   "heavy_shield": {
+      "name": "i18n(stonehearth_ace:ui.game.unit_frame.equipment_types.heavy_shield)",
+      "icon": "/stonehearth_ace/ui/images/equipment_types/heavy_shield.png",
+      "overrides": [
+         "offhand",
+         "leftArm",
+         "shield"
+      ]
+   },
+   "hood": {
+      "redirect": "light_armor"
+   },
+   "helmet": {
+      "redirect": "torso"
+   },
+   "light_helmet": {
+      "redirect": "light_armor"
+   },
+   "medium_helmet": {
+      "redirect": "medium_armor"
+   },
+   "heavy_helmet": {
+      "redirect": "heavy_armor"
+   },
+   "torso": {
+      "name": "i18n(stonehearth_ace:ui.game.unit_frame.equipment_types.torso)",
+      "icon": "/stonehearth_ace/ui/images/equipment_types/torso.png"
+   },
+   "light_armor": {
+      "name": "i18n(stonehearth_ace:ui.game.unit_frame.equipment_types.light_armor)",
+      "icon": "/stonehearth_ace/ui/images/equipment_types/light_armor.png",
+      "overrides": [
+         "torso"
+      ]
+   },
+   "medium_armor": {
+      "name": "i18n(stonehearth_ace:ui.game.unit_frame.equipment_types.medium_armor)",
+      "icon": "/stonehearth_ace/ui/images/equipment_types/medium_armor.png",
+      "overrides": [
+         "torso"
+      ]
+   },
+   "heavy_armor": {
+      "name": "i18n(stonehearth_ace:ui.game.unit_frame.equipment_types.heavy_armor)",
+      "icon": "/stonehearth_ace/ui/images/equipment_types/heavy_armor.png",
+      "overrides": [
+         "torso"
+      ]
+   },
+   "accessory": {
+      "name": "i18n(stonehearth_ace:ui.game.unit_frame.equipment_types.accessory)",
+      "icon": "/stonehearth_ace/ui/images/equipment_types/accessory.png"
+   },
+   "backpack": {
+      "name": "i18n(stonehearth_ace:ui.game.unit_frame.equipment_types.backpack)",
+      "icon": "/stonehearth_ace/ui/images/equipment_types/backpack.png",
+      "overrides": [
+         "accessory"
+      ]
+   },
+   "quiver_arrows": {
+      "name": "i18n(stonehearth_ace:ui.game.unit_frame.equipment_types.quiver_arrows)",
+      "icon": "/stonehearth_ace/ui/images/equipment_types/quiver_arrows.png",
+      "overrides": [
+         "accessory"
+      ]
+   },
+   "quiver_bolts": {
+      "name": "i18n(stonehearth_ace:ui.game.unit_frame.equipment_types.quiver_bolts)",
+      "icon": "/stonehearth_ace/ui/images/equipment_types/quiver_bolts.png",
+      "overrides": [
+         "accessory"
+      ]
+   }
+}
