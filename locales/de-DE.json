@@ -1622,6 +1622,11 @@
                "description": "Ein köstlicher und frischer Nachtisch für entspannte Nachmittage.",
                "flavor": ""
             },
+	    "fruit_yogurt_recipe": {
+               "recipe_name": "Fruchtjoghurt",
+               "description": "Fermentierte, cremige Milch mit Zucker und Früchten gesüßt.",
+               "flavor": "Ein Familienfavorit"
+            },
             "pie_cherry_recipe": {
                "recipe_name": "Süßer Kirschkuchen",
                "description": "Eine leckere Torte, die ziemlich schwierig zu machen ist.",
@@ -2706,6 +2711,10 @@
             "moomoo_pelt": {
                "display_name": "Moo-Moo Pelz",
                "description": "AEine große Haut von einer ruhigen, weidenden Kreatur."
+            },
+            "wild_cattle_pelt": {
+               "display_name": "Wildrind-Pelz",
+               "description": "Die pelzige und raue Haut eines großen Wiederkäuers."
             }
          },
          "bone_material": {
@@ -3561,13 +3570,13 @@
          }
       },
       "decoration": {
-            "plant_glass": {
-               "plant_glass_ghost": {
-                  "display_name": "Blumen in einer Vase",
-                  "description": "Liebevoll handverlesen und lieblich riechen."
-               }
-            },
-            "statue": {
+         "plant_glass": {
+            "plant_glass_ghost": {
+               "display_name": "Blumen in einer Vase",
+               "description": "Liebevoll handverlesen und lieblich riechen."
+            }
+         },
+         "statue": {
             "statue_anji_the_horrendous": {
                "statue_anji_the_horrendous_ghost": {
                   "display_name": "Anji die entsetzliche Statue",
@@ -3868,7 +3877,8 @@
             "display_name_highlands": "Dickhornschaf",
             "sheep_young": {
                "display_name": "Lamm"
-            }
+            },
+            "renewable_harvest_status_text": "schert ein wildes Schaf"
          },
          "poyo": {
             "nest": {
@@ -3893,8 +3903,8 @@
             "description": "Ein junges Tier, das Liebe und Fürsorge braucht."
          },
          "moomoo": {
-            "renewable_harvest_status_text": "melkt eine Moo-Moo",
-            "unripe_description": "Dieses Moo-Moo hat momentan keine Milch.",
+            "renewable_harvest_status_text": "melkt eine Tier",
+            "unripe_description": "Dieses Tier hat momentan keine Milch.",
             "species": "moo-moo",
             "display_name": "Moo-Moo",
 	    "display_name_arctic": "Nord Moo-Moo",
@@ -3906,7 +3916,7 @@
                "description": "Ein süßes kleines Moo-Moo."
             }
          },
-		 "moomoo_wild": {
+         "wild_moomoo": {
             "display_name": "Auerochse",
 	    "display_name_arctic": "Schnee-Yak",
             "display_name_desert": "Sand-Yak",
@@ -4425,6 +4435,16 @@
          },
          "beef_jerky": {
             "display_name": "Trockenfleisch vom Rind"
+         },
+         "fruit_yogurt": {
+            "fruit_yogurt": {
+               "display_name": "Fruchtjoghurt",
+               "description": "Fermentierte, cremige Milch mit Zucker und Früchten gesüßt."
+            },
+            "fruit_yogurt_serving": {
+               "display_name": "Eine Schale mit Fruchtjoghurt",
+               "description": "Am besten kalt serviert."
+            }
          }
       },
       "terrain": {
@@ -5669,6 +5689,15 @@
                "display_name": "Schafmilch",
                "description": "Butterig und süß, diese leckere Milch stammt von einem Schaf!"
             }
+         },
+         "wild_cattle_milk": {
+            "wild_cattle_milk": {
+               "display_name": "Milch, von einem wilden Tier",
+               "description": "Die etwas säuerliche und robuste Milch stammt von einem wilden Tier."
+            },
+            "wild_cattle_milk_serving": {
+               "display_name": "Eine Tasse Milch, von einem wilden Tieres"
+            }
          }
       }
    },
@@ -5878,7 +5907,8 @@
                "mechanism": "Mechanismen",
                "training_equipment": "Trainingsausrüstung",
                "gizmos": "Gizmos",
-               "fungi": "Pilze"
+               "fungi": "Pilze",
+               "drink": "Getränke"
             }
          },
          "custom_tooltips": {
@@ -6277,6 +6307,10 @@
          "tile": {
             "display_name": "Fliese",
             "description": "Kachelfähiger Artikel, der automatisch zu anderen Fliesen eine Verbindung herstellt und sein Modell aktualisiert."
+         },
+         "transform": {
+            "display_name": "transformiere",
+            "description": "Wird in etwas anderes umgewandelt, wenn ein bestimmter Befehl oder eine bestimmte Aktion ausgeführt wird."
          },
          "vine": {
             "display_name": "Rebe",
