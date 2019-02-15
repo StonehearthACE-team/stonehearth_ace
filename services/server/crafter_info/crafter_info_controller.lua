@@ -179,7 +179,7 @@ function CrafterInfoController:_format_recipe(recipe)
       local product_catalog = catalog_data and catalog_data.entity_data["stonehearth:catalog"]
 
       -- first verify that the recipe has catalog data and is not for a raw resource (category "resources"; if it's not raw, it should be "refined" or something else)
-      if product_catalog and product_catalog.category ~= 'resources' then
+      if product_catalog and (product_catalog.category ~= 'resources' or recipe.ace_smart_crafter_ignore_resources_category) then
 
          all_products[product] = count
          

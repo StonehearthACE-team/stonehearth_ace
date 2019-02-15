@@ -1,17 +1,23 @@
 App.RootController.reopen({
+   _minAutoSaveInterval: 5,   // minutes
+   
    init: function() {
       var self = this;
       self._super();
 
-      self._autoSaveInterval = 5 * 60 * 1000
+      self._autoSaveInterval = self._minAutoSaveInterval * 60 * 1000
 
       radiant.call('radiant:get_config', 'mods.stonehearth_ace.auto_save_interval')
          .done(function(response) {
-            self._autoSaveInterval = parseInt(response['mods.stonehearth_ace.auto_save_interval']) * 60 * 1000;
+            self._setAutoSaveInterval(response['mods.stonehearth_ace.auto_save_interval']);
          });
       $(top).on("auto_save_interval_changed", function (_, e) {
-         self._autoSaveInterval = parseInt(e.value) * 60 * 1000;
+         self._setAutoSaveInterval(e.value);
       });
+   },
+
+   _setAutoSaveInterval: function(interval) {
+      self._autoSaveInterval = Math.max(self._minAutoSaveInterval, parseInt(interval)) * 60 * 1000;
    },
 
    // have to override this to defer resume
