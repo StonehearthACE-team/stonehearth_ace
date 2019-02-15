@@ -1,0 +1,40 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(wild_cattle_milk_serving.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:item": {
+         "category": "drink",
+         "destroy_on_uncarry": true
+      },
+      "stonehearth:food": {
+         "stonehearth:sitting_on_chair": {
+            "satisfaction": 20
+         },
+         "default": {
+            "satisfaction": 10
+         },
+         "eating_effect": "sitting_drink",
+         "quality": 2
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.drink.wild_cattle_milk.wild_cattle_milk_serving.display_name)",
+         "description": "",
+         "material_tags": [
+            "food",
+            "wild_cattle_milk_serving",
+            "milk",
+            "dairy"
+         ],
+         "subject_override": "stonehearth_ace:drink:dairy:wild_cattle_milk"
+      }
+   }
+}

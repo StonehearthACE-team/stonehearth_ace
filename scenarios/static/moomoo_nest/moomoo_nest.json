@@ -1,0 +1,20 @@
+{
+   "mixins": "/stonehearth/scenarios/static/critter_nest/critter_nest.json",
+   "name": "moomoo_nest",
+   "habitat_types": [
+      "plains",
+      "foothills"
+   ],
+   "data": {
+      "num_critters": {
+         "min": 2,
+         "max": 5
+      },
+      "critter_type": [
+         "stonehearth_ace:moomoo:wild",
+         "stonehearth_ace:moomoo:wild",
+         "stonehearth_ace:moomoo:wild",
+         "stonehearth_ace:moomoo:wild:young"
+      ]
+   }
+}

@@ -1,0 +1,35 @@
+{
+   "type": "recipe",
+   "effort": 25,
+   "work_units": 10,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.fruit_yogurt_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.fruit_yogurt_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.fruit_yogurt_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/dairy/fruit_yogurt/fruit_yogurt/fruit_yogurt.png",
+   "level_requirement": 4,
+   "workshop": "stonehearth:cook:workbench",
+   "work_effect": "work_cook_dough",
+   "ingredients": [
+      {
+         "material": "drink_container milk",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth:food:sugar",
+         "count": 1
+      },
+	  {
+         "material": "raw_food fruit",
+         "count": 2
+      },
+	  {
+         "material": "low_fuel",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:dairy:fruit_yogurt"
+      }
+   ]
+}

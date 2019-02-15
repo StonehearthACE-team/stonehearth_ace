@@ -1,0 +1,29 @@
+{
+   "type" : "effect",
+   "tracks": {
+      "animation": {
+            "type": "animation_effect",
+            "start_time": 0,
+            "animation": "idle_breathe.json",
+            "loop": true
+      },
+      "sound": {
+         "type": "sound_effect",
+         "duration": 2000,
+         "start_time": 200,
+         "min_distance": 90,
+         "falloff" : 7,
+         "volume": 110,
+         "track" : {
+            "type": "one_of",
+            "items": [
+               "stonehearth_ace:sounds:moomoo:moo_01",
+               "stonehearth_ace:sounds:moomoo:moo_02",
+               "stonehearth_ace:sounds:moomoo:moo_03",
+               "stonehearth_ace:sounds:moomoo:moo_04",
+			   "stonehearth_ace:sounds:moomoo:moo_05"
+            ]    
+         }
+      }
+   }
+}
