@@ -8,7 +8,7 @@
                "icon": "/stonehearth_ace/entities/critters/ostrich/ostrich.png",
                "min_population": 2,
                "reproduction_uri": "stonehearth:ostrich:egg:fertilized",
-               "max_num_per_10_square_unit": 0.48,
+               "max_num_per_10_square_unit": 0.64,
                "base_reproduction_period": "48h",
                "min_reproduction_period": "24h",
                "feed_uri": "stonehearth_ace:food:ostrich_feed",
@@ -22,12 +22,12 @@
                "icon": "/stonehearth_ace/entities/critters/moomoo/moomoo.png",
                "min_population": 2,
                "reproduction_uri": "stonehearth_ace:moomoo:young",
-               "max_num_per_10_square_unit": 0.5,
+               "max_num_per_10_square_unit": 0.4,
                "base_reproduction_period": "72h",
                "min_reproduction_period": "36h",
                "feed_uri": "stonehearth_ace:food:moomoo_feed",
 			   "feed_material": "moomoo_feed_bag",
-               "level_requirement": 3,              
+               "level_requirement": 4,              
                "ordinal": 4
             },
             "stonehearth:rabbit": {
@@ -43,7 +43,7 @@
                "description": "i18n(stonehearth_ace:ui.game.zones_mode.pasture.poyo_pasture_description)",
                "base_reproduction_period": "36h",
                "min_reproduction_period": "18h",
-               "level_requirement": 1,
+               "level_requirement": 2,
                "feed_material": "poyo_feed_bag",
                "ordinal": 2
             },

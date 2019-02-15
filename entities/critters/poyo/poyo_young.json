@@ -1,5 +1,28 @@
 {
    "components": {
+      "stonehearth:attributes": {
+         "min_sleepiness": {
+            "type": "basic",
+            "value": 0
+         },
+         "max_sleepiness": {
+            "type": "basic",
+            "value": 32
+         }
+      },
+	  "stonehearth:expendable_resources": {
+         "resources": {
+            "sleepiness": {
+               "min": {
+                  "linked_attribute": "min_sleepiness"
+               },
+               "max": {
+                  "linked_attribute": "max_sleepiness"
+               },
+               "initial_value": 0
+            }
+         }
+      },
       "stonehearth:unit_info": {}
    },
    "entity_data": {

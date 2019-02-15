@@ -1,0 +1,116 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:mob",
+   "player_id": "animals",
+   "components": {
+      "stonehearth:ai": {},
+      "stonehearth:trivial_death": {},
+      "model_variants": {
+         "default": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(moomoo_wild_young.qb)"
+                  ]
+               }
+            ]
+         }
+      },
+      "stonehearth:loot_drops": {
+         "force_auto_loot": true,
+         "entries": {
+            "jerky": {
+               "num_rolls": {
+                  "min": 1,
+                  "max": 2
+               },
+               "items": {
+                  "jerky": {
+                     "uri": "stonehearth_ace:beef_jerky"
+                  }
+               }
+            },
+            "bones": {
+               "num_rolls": {
+                  "min": 0,
+                  "max": 1
+               },
+               "items": {
+                  "jerky": {
+                     "uri": "stonehearth_ace:resources:bone:bone_material"
+                  }
+               }
+            }
+         }
+      },
+      "stonehearth:attributes": {
+         "max_health": {
+            "type": "basic",
+            "value": 35
+         },
+         "speed": {
+            "type": "basic",
+            "value": 25
+         }
+      },
+      "render_info": {
+         "animation_table": "/stonehearth_ace/data/rigs/entities/critters/moomoo",
+         "scale": 0.09
+      },
+      "stonehearth:evolve": {}
+   },
+   "entity_data": {
+      "stonehearth:evolve_data": {
+         "next_stage": "stonehearth_ace:moomoo:wild",
+         "evolve_time": "14d+8d"
+      },
+      "stonehearth:entity_radius": 0.75,
+      "stonehearth:species": {
+         "id": "moomoo",
+         "display_name": "i18n(stonehearth_ace:entities.critters.moomoo.species)"
+      },
+      "stonehearth:ai_packs": {
+         "packs": [
+            "stonehearth:ai_pack:critter",
+            "stonehearth:ai_pack:death",
+            "stonehearth:ai_pack:idle",
+            "stonehearth:ai_pack:idle:bored:idle_effects",
+            "stonehearth:ai_pack:idle:bored:wander"
+         ]
+      },
+      "stonehearth:idle_effects": {
+         "effects": [
+            {
+               "name": "idle",
+               "weight": 5
+            },
+            {
+               "name": "idle_breathe",
+               "weight": 5
+            },
+            {
+               "name": "idle_look_around",
+               "weight": 5
+            },
+            {
+               "name": "idle_make_noise_young",
+               "weight": 5
+            }
+         ]
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 0,
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:catalog": {
+         "player_id": "animals",
+         "display_name": "i18n(stonehearth_ace:entities.critters.wild_moomoo.moomoo_wild_young.display_name)",
+         "description": "i18n(stonehearth_ace:entities.critters.wild_moomoo.moomoo_wild_young.description)",
+         "icon": "file(moomoo_wild_young.png)"
+      }
+   }
+}

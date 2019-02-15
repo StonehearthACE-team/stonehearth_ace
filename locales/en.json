@@ -1622,6 +1622,11 @@
                "description": "A delicious and fresh dessert for lazy afternoons.",
                "flavor": ""
             },
+			"fruit_yogurt_recipe": {
+               "recipe_name": "Fruit Yogurt",
+               "description": "Fermented, creamy milk sweetened with sugar and fruits.",
+               "flavor": "A family favorite"
+            },
             "pie_cherry_recipe": {
                "recipe_name": "Sweet Cherry Pie",
                "description": "A tasty pie that is quite difficult to make.",
@@ -2706,6 +2711,10 @@
             "moomoo_pelt": {
                "display_name": "Moo-Moo Pelt",
                "description": "A big hide from a tranquil, grazing creature."
+            },
+            "wild_cattle_pelt": {
+               "display_name": "Wild Cattle Pelt",
+               "description": "The furry and rough hide of a large ruminant."
             }
          },
          "bone_material": {
@@ -3561,13 +3570,13 @@
          }
       },
       "decoration": {
-            "plant_glass": {
-               "plant_glass_ghost": {
-                  "display_name": "Flowers in a vase",
-                  "description": "Lovingly handpicked and smelling lovely."
-               }
-            },
-            "statue": {
+         "plant_glass": {
+            "plant_glass_ghost": {
+               "display_name": "Flowers in a vase",
+               "description": "Lovingly handpicked and smelling lovely."
+            }
+         },
+         "statue": {
             "statue_anji_the_horrendous": {
                "statue_anji_the_horrendous_ghost": {
                   "display_name": "Anji the Horrendous Statue",
@@ -3868,7 +3877,8 @@
             "display_name_highlands": "Bighorn Sheep",
             "sheep_young": {
                "display_name": "Lamb"
-            }
+            },
+            "renewable_harvest_status_text": "shearing wild sheep"
          },
          "poyo": {
             "nest": {
@@ -3893,11 +3903,11 @@
             "description": "A young animal in need of love and care."
          },
          "moomoo": {
-            "renewable_harvest_status_text": "milking moo-moo",
-            "unripe_description": "This moo-moo has no milk at the moment.",
+            "renewable_harvest_status_text": "milking animal",
+            "unripe_description": "This animal has no milk at the moment.",
             "species": "moo-moo",
             "display_name": "Moo-Moo",
-			"display_name_arctic": "Northern Moo-Moo",
+            "display_name_arctic": "Northern Moo-Moo",
             "display_name_desert": "Desert Moo-Moo",
             "display_name_highlands": "Longhorn Moo-Moo",
             "description": "A big ruminant that loves eating grass and provides milk!",
@@ -3906,9 +3916,9 @@
                "description": "A cute little moo-moo."
             }
          },
-		 "moomoo_wild": {
+         "wild_moomoo": {
             "display_name": "Woodland Aurochs",
-			"display_name_arctic": "Snow Yak",
+            "display_name_arctic": "Snow Yak",
             "display_name_desert": "Sand Yak",
             "display_name_highlands": "Valley Aurochs",
             "description": "A strong and wild ruminant, an older relative of the more gentle moo-moo.",
@@ -4425,6 +4435,16 @@
          },
          "beef_jerky": {
             "display_name": "Beef Jerky"
+         },
+         "fruit_yogurt": {
+            "fruit_yogurt": {
+               "display_name": "Fruit Yogurt",
+               "description": "Fermented, creamy milk sweetened with sugar and fruits."
+            },
+            "fruit_yogurt_serving": {
+               "display_name": "Serving of Fruit Yogurt",
+               "description": "Best served cold."
+            }
          }
       },
       "terrain": {
@@ -5669,6 +5689,15 @@
                "display_name": "Sheep Milk",
                "description": "Buttery and sweet, this tasty milk came from a sheep!"
             }
+         },
+         "wild_cattle_milk": {
+            "wild_cattle_milk": {
+               "display_name": "Wild Cattle Milk",
+               "description": "Slightly sour and rugged, this milk comes from a wild animal."
+            },
+            "wild_cattle_milk_serving": {
+               "display_name": "Cup of Wild Cattle Milk"
+            }
          }
       }
    },
@@ -5878,7 +5907,8 @@
                "mechanism": "Mechanisms",
                "training_equipment": "Training Equipment",
                "gizmos": "Gizmos",
-               "fungi": "Fungi"
+               "fungi": "Fungi",
+               "drink": "Drinks"
             }
          },
          "custom_tooltips": {

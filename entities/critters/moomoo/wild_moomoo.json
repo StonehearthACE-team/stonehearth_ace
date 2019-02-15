@@ -1,0 +1,155 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:mob",
+   "player_id": "animals",
+   "components": {
+      "stonehearth:ai": {},
+      "stonehearth:trivial_death": {},
+      "model_variants": {
+         "default": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(wild_moomoo.qb)",
+                     "file(wild_moomoo_2.qb)"
+                  ]
+               }
+            ]
+         }
+      },
+      "stonehearth:renewable_resource_node": {
+         "resource": "stonehearth_ace:drink:dairy:wild_cattle_milk",
+         "renewal_time": "72h+24h",
+         "unripe_description": "i18n(stonehearth_ace:entities.critters.moomoo.unripe_description)",
+         "harvest_status_text": "i18n(stonehearth_ace:entities.critters.moomoo.renewable_harvest_status_text)",
+         "harvest_overlay_effect": "stonehearth_ace:effects:harvest_milk_overlay_effect",
+         "auto_harvest": true,
+         "check_owner": false
+      },
+      "stonehearth:resource_node": {
+         "harvest_overlay_effect": "stonehearth:effects:chop_overlay_effect",
+         "harvester_effect": "fiddle",
+         "description": "harvest_animal",
+         "resource": "stonehearth_ace:food:steak",
+         "harvestable_by_harvest_tool": false
+      },
+      "stonehearth:loot_drops": {
+         "force_auto_loot": true,
+         "entries": {
+            "meat": {
+               "num_rolls": {
+                  "min": 0,
+                  "max": 1
+               },
+               "items": {
+                  "jerky": {
+                     "uri": "stonehearth_ace:food:steak"
+                  }
+               }
+            },
+            "jerky": {
+               "num_rolls": {
+                  "min": 1,
+                  "max": 3
+               },
+               "items": {
+                  "jerky": {
+                     "uri": "stonehearth_ace:beef_jerky"
+                  }
+               }
+            },
+            "bones": {
+               "num_rolls": {
+                  "min": 1,
+                  "max": 2
+               },
+               "items": {
+                  "jerky": {
+                     "uri": "stonehearth_ace:resources:bone:bone_material"
+                  }
+               }
+            },
+            "pelts": {
+               "num_rolls": {
+                  "min": 0,
+                  "max": 1
+               },
+               "items": {
+                  "pelt": {
+                     "uri": "stonehearth_ace:resources:wild_cattle_pelt"
+                  }
+               }
+            }
+         }
+      },
+      "stonehearth:attributes": {
+         "max_health": {
+            "type": "basic",
+            "value": 80
+         },
+         "speed": {
+            "type": "basic",
+            "value": 40
+         }
+      },
+      "render_info": {
+         "animation_table": "/stonehearth_ace/data/rigs/entities/critters/moomoo",
+         "scale": 0.16
+      },
+      "stonehearth:commands": {
+         "commands": [
+            "stonehearth_ace:commands:slaughter:wild_animal"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:entity_radius": 1.2,
+      "stonehearth:species": {
+         "id": "moomoo",
+         "display_name": "i18n(stonehearth_ace:entities.critters.moomoo.species)"
+      },
+      "stonehearth:ai_packs": {
+         "packs": [
+            "stonehearth:ai_pack:critter",
+            "stonehearth:ai_pack:death",
+            "stonehearth:ai_pack:idle",
+            "stonehearth:ai_pack:idle:bored:idle_effects",
+            "stonehearth:ai_pack:idle:bored:wander"
+         ]
+      },
+      "stonehearth:idle_effects": {
+         "effects": [
+            {
+               "name": "idle",
+               "weight": 5
+            },
+            {
+               "name": "idle_breathe",
+               "weight": 5
+            },
+            {
+               "name": "idle_look_around",
+               "weight": 5
+            },
+            {
+               "name": "idle_make_noise",
+               "weight": 5
+            }
+         ]
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 0,
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:catalog": {
+         "player_id": "animals",
+         "display_name": "i18n(stonehearth_ace:entities.critters.wild_moomoo.display_name)",
+         "description": "i18n(stonehearth_ace:entities.critters.wild_moomoo.description)",
+         "icon": "file(wild_moomoo.png)"
+      }
+   }
+}
