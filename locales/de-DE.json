@@ -6167,6 +6167,15 @@
                "water_signal_update_frequency_description": "Aktualisiere die Wassersignale nach einer bestimmte Anzahl von Ticks des Wassersystems. Erhöhe diesen Wert, um die Leistung mit viel fließendem Wasser zu verbessern.",
                "show_processing_meter": "Verarbeitungsanzeige anzeigen",
                "show_processing_meter_description": "Zeigt die Verarbeitungsanzeige an, die für das Verständnis von Leistungsproblemen nützlich ist, rechts unten auf dem Bildschirm, links neben den Schaltflächen für die Spielgeschwindigkeit.",
+               "auto_save_max_files": "Maximale automatische Speicherungen",
+               "auto_save_max_files_description": "Wenn automatisches Speicherne und automatisches Speichern eindeutiger Dateien aktiviert ist, werden ältere Dateien überschrieben, sobald diese Grenze erreicht ist.<span class='warn'>WARNUNG:</span>Wenn Sie das nächste Mal speichern, nachdem du eine niedrigere Anzahl eingestellt hast, werden möglicherweise viele ältere Speicherstände gelöscht.",
+               "max_files": {
+                  "5_files": "5 automatische Speicherstände",
+                  "10_files": "10 automatische Speicherstände",
+                  "20_files": "20 automatische Speicherstände",
+                  "40_files": "40 automatische Speicherstände",
+                  "no_limit": "Keine Begrenzung"
+               },
                "auto_save_interval": "Automatisches Speicherintervall:",
                "auto_save_interval_description": "Wenn beim Speichern die Option 'Automatisch speichern' aktiviert ist, wird zu der ausgewählten Frequenz automatisch gespeichert.",
                "intervals": {
@@ -6182,7 +6191,7 @@
                   "30_minutes": "30 Minuten"
                },
                "auto_save_unique_files": "Automatisches Speichern - Einzelne Dateien",
-               "auto_save_unique_files_description": "Erstellen Sie beim automatischen Speichern eine separate Speicherung mit Datum und Uhrzeit. Warnung: Häufiges automatisches Speichern erfordert viel Speicherplatz!"
+               "auto_save_unique_files_description": "Erstellen Sie beim automatischen Speichern eine separate Speicherung mit Datum und Uhrzeit.<span class='warn'>WARNUNG:</span>Häufiges automatisches Speichern erfordert viel Speicherplatz!"
             },
             "controls_tab": {
                "key_binding_names": {
