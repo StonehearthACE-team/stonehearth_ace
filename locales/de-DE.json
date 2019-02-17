@@ -411,6 +411,14 @@
          }
       },
       "commands": {
+         "allow_hunting": {
+            "display_name": "Jagd zulassen",
+            "description": "Dieser Hearthling wird jedes Wild ignorieren. Klicke um die Jagd zu erlauben!"
+         },
+         "avoid_hunting": {
+            "display_name": "Jagd verbieten",
+            "description": "Dieser Hearthling wird jedes Wild jagen. Klicke um es zu verbieten!"
+         },
          "transform": {
             "prepare_mega_pumpkin_soup": {
                "display_name": "Kürbissuppe vorbereiten",
@@ -651,6 +659,14 @@
                "training_perk_description": "Ein Bogenschütze kann Zielscheiben verwenden, um seine Präzision zu trainieren und Erfahrung bis zu Level 3 zu sammeln"
             },
             "description": "Ein Hintergrundkämpfer, der in der Lage ist, Fernkampfwaffen wie Bögen, Armbrüste und und eine Vielzahl von von Pfeil- oder Bolzenarten zu verwenden, um ihre Feinde anzugreifen."
+         }
+      },
+      "na_archer": {
+         "archer_description": {
+            "level_1_data": {
+               "hunting_perk_name": "Jagd",
+               "hunting_perk_description": "Ein Bogenschütze der Nordallianz ist von Natur aus im Umgang mit Tieren bestens ausgebildet und kann Tiere für Nahrung und andere Ressourcen jagen."
+            }
          }
       },
       "cleric": {
