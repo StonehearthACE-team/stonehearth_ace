@@ -17,6 +17,7 @@
    "client_init_script": "file(stonehearth_ace_client)",
    "server_init_script": "file(stonehearth_ace_server)",
    "aliases": {
+      "actions:combat:hunt_animal": "file(ai/actions/hunt_animal_action.lua)",
       "actions:component_to_filter_fn": "file(ai/actions/component_to_filter_fn_action.lua)",
       "actions:dont_drop_already_carrying_item": "file(ai/actions/dont_drop_already_carrying_item_action.lua)",
       "actions:drop_and_pickup_item": "file(ai/actions/drop_and_pickup_item_action.lua)",
@@ -66,6 +67,7 @@
       "actions:train_idle_dispatcher": "file(ai/actions/training/train_idle_dispatcher.lua)",
       "actions:train_move_to_targetable_location": "file(ai/actions/training/train_move_to_targetable_location_action.lua)",
       "ai_pack:harvest_underfarm": "file(ai/packs/harvest_underfarm_ai_pack.json)",
+      "ai_pack:hunting": "file(ai/packs/hunting_ai_pack.json)",
       "ai_pack:transform": "file(ai/packs/transform_ai_pack.json)",
       "ai_pack:training": "file(ai/packs/training_ai_pack.json)",
       "ai_pack:underfarming": "file(ai/packs/underfarming_ai_pack.json)",
@@ -1105,6 +1107,7 @@
       "stone_safety_standard": "file(entities/gizmos/stone_safety_standard/stone_safety_standard.json)",
       "subjects:weather:snow_early": "file(data/weather/snow/snow_early_subject.json)",
       "subjects:weather:snow_late": "file(data/weather/snow/snow_late_subject.json)",
+      "task_groups:hunting": "file(ai/task_groups/hunting_task_group.lua)",
       "task_groups:transform": "file(ai/task_groups/transform_task_group.lua)",
       "task_groups:training": "file(ai/task_groups/training_task_group.lua)",
       "task_groups:underfarming": "file(ai/task_groups/underfarming_task_group.lua)",
@@ -1326,6 +1329,7 @@
       "stonehearth:mixins:base_human": "stonehearth_ace:mixins:base_human",
       "stonehearth/data/biome/temperate.json": "file(data/biome/temperate.json)",
       "stonehearth/data/ui/start_menu.json": "file(data/ui/start_menu.json)",
+      "northern_alliance/ui/manifest.json": "file(ui/northern_alliance_manifest.json)",
       "stonehearth:pet_collar": "stonehearth_ace/entities/critters/collars/pet_collar.json",
       "stonehearth:pasture_equipment:adult_animal_collar": "stonehearth_ace/entities/critters/collars/adult_animal_collar.json",
       "stonehearth:pasture_equipment:young_animal_collar": "stonehearth_ace/entities/critters/collars/young_animal_collar.json",
@@ -2218,6 +2222,14 @@
          "endpoint": "client"
       },
       "server_box_harvest_and_replant_resources": {
+         "controller": "file(call_handlers/resource_call_handler.lua)",
+         "endpoint": "server"
+      },
+      "box_hunt": {
+         "controller": "file(call_handlers/resource_call_handler.lua)",
+         "endpoint": "client"
+      },
+      "server_box_hunt": {
          "controller": "file(call_handlers/resource_call_handler.lua)",
          "endpoint": "server"
       },
