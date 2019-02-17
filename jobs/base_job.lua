@@ -108,6 +108,7 @@ function BaseJob:promote(json_path)
    end
 
    -- ADDED FOR ACE
+   self:_add_commands()
    self:_register_with_town()
 end
 
@@ -163,6 +164,7 @@ function BaseJob:demote()
       town:remove_placement_slot_entity(self._sv._entity)
    end
    
+   self:_remove_commands()
 end
 
 function BaseJob:destroy()
@@ -315,6 +317,36 @@ function BaseJob:set_lookup_values(args)
          self._sv.lookup_values[key] = value
       end
       self.__saved_variables:mark_changed()
+   end
+end
+
+function BaseJob:_add_commands()
+   local to_add = self._job_json.commands and self._job_json.commands.add_on_promote
+   if to_add then
+      local command_comp = self._sv._entity:add_component('stonehearth:commands')
+      for _, command in ipairs(to_add) do
+         command_comp:add_command(command)
+      end
+   end
+end
+
+function BaseJob:_remove_commands()
+   local to_remove = self._job_json.commands and self._job_json.commands.remove_on_demote
+   if to_remove then
+      local command_comp = self._sv._entity:add_component('stonehearth:commands')
+      for _, command in ipairs(to_remove) do
+         command_comp:remove_command(command)
+      end
+   end
+end
+
+function BaseJob:allow_hunting(args)
+   local command_comp = self._sv._entity:add_component('stonehearth:commands')
+   local avoid_hunting = self._sv._entity:add_component('stonehearth:properties'):has_property('avoid_hunting')
+   if avoid_hunting then
+      command_comp:add_command('stonehearth_ace:commands:allow_hunting')
+   else
+      command_comp:add_command('stonehearth_ace:commands:avoid_hunting')
    end
 end
 

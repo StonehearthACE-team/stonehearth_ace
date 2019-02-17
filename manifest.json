@@ -201,6 +201,7 @@
       "boulder:underwater:medium_3": "file(entities/boulders/medium_boulder/medium_underwater_boulder_3.json)",
       "boulder:underwater:small": "file(entities/boulders/small_underwater_boulder/small_underwater_boulder.json)",
       "buff_scripts:thorns": "file(data/buffs/thorns/thorns_buff.lua)",
+      "buffs:avoid_hunting": "file(data/buffs/hunting/avoid_hunting_buff.json)",
       "buffs:fracture": "file(data/buffs/equipment/fracture/fracture.json)",
       "buffs:gizmos:decoy": "file(data/buffs/slowed/decoy_buff.json)",
       "buffs:hamstrung": "file(data/buffs/equipment/hamstrung/hamstrung.json)",
@@ -240,6 +241,8 @@
       "buffs:tools:worker_hammer_steel": "file(data/buffs/equipment/tools/worker_hammer_steel_buff.json)",
       "buffs:using_crossbow": "file(data/buffs/equipment/using_crossbow/using_crossbow.json)",
       "color_map:ace": "file(data/materials/color_maps/stonehearth_ace_color_map.json)",
+      "commands:allow_hunting": "file(data/commands/hunting/allow_hunting.json)",
+      "commands:avoid_hunting": "file(data/commands/hunting/avoid_hunting.json)",
       "commands:manage_party_1": "file(data/commands/manage_parties/manage_party_1.json)",
       "commands:manage_party_2": "file(data/commands/manage_parties/manage_party_2.json)",
       "commands:manage_party_3": "file(data/commands/manage_parties/manage_party_3.json)",
@@ -2325,6 +2328,10 @@
       },
       "set_pasture_maintain_animals": {
          "controller": "file(call_handlers/pasture_call_handler.lua)",
+         "endpoint": "server"
+      },
+      "allow_hunting_for_entity": {
+         "controller": "file(call_handlers/hunting_call_handler.lua)",
          "endpoint": "server"
       }
    },

@@ -411,6 +411,14 @@
          }
       },
       "commands": {
+         "allow_hunting": {
+            "display_name": "Allow Hunting",
+            "description": "This hearthling will ignore any wild game they see. Click to allow them to hunt!"
+         },
+         "avoid_hunting": {
+            "display_name": "Disallow Hunting",
+            "description": "This hearthling will hunt any wild game they see. Click to forbid it!"
+         },
          "transform": {
             "prepare_mega_pumpkin_soup": {
                "display_name": "Prepare Pumpkin Soup",
@@ -651,6 +659,14 @@
                "training_perk_description": "An archer can use Archery Targets to train their precision and earn experience up to Job Level 3"
             },
             "description": "A rearguard combatant capable of using ranged weaponry like bows, crossbows and a variety of hindering types of arrows or bolts to attack their foes."
+         }
+      },
+      "na_archer": {
+         "archer_description": {
+            "level_1_data": {
+               "hunting_perk_name": "Hunting",
+               "hunting_perk_description": "A Northern Alliance archer is naturally adept at animal tracking, and can hunt animals for food and other resources."
+            }
          }
       },
       "cleric": {
