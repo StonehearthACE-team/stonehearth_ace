@@ -10,7 +10,7 @@ local BaseJob = class()
 function BaseJob:initialize()
    self._sv._entity = nil
    self._sv._alias = nil
-   self._sv._json_path = nil
+   self._sv.json_path = nil
    self._sv.last_gained_lv = 1
    self._sv.is_current_class = false
    self._sv.equipment = {}
@@ -50,22 +50,26 @@ function BaseJob:activate()
 end
 
 function BaseJob:restore()
+   if not self._sv.json_path then
+      self._sv.json_path = self._sv._json_path
+      self._sv._json_path = nil
+   end
    if self._sv.is_current_class then
       self:_register_with_town()
    end
 end
 
 function BaseJob:fixup_job_json_path(json_path)
-   self._sv._json_path = json_path
+   self._sv.json_path = json_path
    self:_load_json_tuning()
 end
 
 function BaseJob:_load_json_tuning()
-   if not self._sv._json_path then
+   if not self._sv.json_path then
       return
    end
 
-   self._job_json = radiant.resources.load_json(self._sv._json_path, true)
+   self._job_json = radiant.resources.load_json(self._sv.json_path, true)
    if self._job_json.xp_rewards then
       self._xp_rewards = self._job_json.xp_rewards
    end
@@ -85,7 +89,7 @@ end
 
 function BaseJob:promote(json_path)
    self._sv.is_current_class = true
-   self._sv._json_path = json_path
+   self._sv.json_path = json_path
    self:_load_json_tuning()
    local entity = self._sv._entity
 

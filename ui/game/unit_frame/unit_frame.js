@@ -186,6 +186,11 @@ App.StonehearthUnitFrameView.reopen({
       this.notifyPropertyChange('description');
    }.observes('model.uri'),
 
+   _updateJobChangeable: function() {
+      var self = this;
+      self.set('canChangeJob', self.get('model.stonehearth:job') && self.get('model.player_id') == App.stonehearthClient.getPlayerId())
+   }.observes('model.stonehearth:job'),
+
    _updateEquipment: function () {
       var self = this;
       if (!self.$('#equipmentPane')) return;
