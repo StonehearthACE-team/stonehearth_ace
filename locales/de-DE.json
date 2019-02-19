@@ -341,6 +341,24 @@
                      "tooltip": "Der Winter sollte schon vorbei sein, ich kann nicht glauben, dass esr so spät immernoch schneit..."
                   }
                }
+            },
+            "eating": {
+               "ate_intolerable": {
+                  "display_name": "Aß etwas unverträgliches",
+                  "tooltip": "Ich hatte vor kurzem [str(foodname)]... ich fühle mich nicht gut..."
+               },
+               "dairy_intolerant_ate_dairy": {
+                  "display_name": "Milchintoleranz",
+                  "tooltip": "Leider vertägt sich [str(foodname)] nicht mit meinem Bauch... Ouch..."
+               },
+               "nuts_intolerant_ate_nuts": {
+                  "display_name": "Nussintoleranz",
+                  "tooltip": "Ugh... Das [str(foodname)] sah gut aus, aber ich denke, es ist nichts für mich..."
+               },
+               "fish_intolerant_ate_fish": {
+                  "display_name": "Fischintoleranz",
+                  "tooltip": "Ich werde nie wieder [str(foodname)] essen. NIE MEHR! Ouch..."
+               }
             }
          }
       },
@@ -607,6 +625,10 @@
          "thorns": {
             "display_name": "Stacheliger Schutz",
             "description": "Diese Hearthling wird Gegnern schaden zufügen, der sie/ihn angreift."
+         },
+         "upset_belly": {
+            "display_name": "Unruhiger Magen",
+            "description": "Sehr ungemütlich. Geschwindigkeit, Fleiß und Willenskraft sind reduziert."
          }
       },
       "loadouts": {
@@ -640,6 +662,20 @@
             "ui_box_undeploy_items": {
                "display_name": "Platzierung mehrerer Objekte gleichzeitig aufheben"
             }
+         }
+      },
+      "traits": {
+         "dairy_intolerance_trait": {
+            "display_name": "Milchintoleranz",
+            "description": "[name(i18n_data.entity)] hat eine besondere Empfindlichkeit gegenüber Milchprodukten."
+         },
+         "fish_intolerance_trait": {
+            "display_name": "Fischintoleranz",
+            "description": "[name(i18n_data.entity)] hat eine besondere Empfindlichkeit gegenüber Fisch oder Meeresfrüchten."
+         },
+         "nuts_intolerance_trait": {
+            "display_name": "Nussintoleranz",
+            "description": "[name(i18n_data.entity)] hat eine besondere Empfindlichkeit gegenüber Nüssen und harten Samen."
          }
       }
    },
@@ -1638,7 +1674,7 @@
                "description": "Ein köstlicher und frischer Nachtisch für entspannte Nachmittage.",
                "flavor": ""
             },
-	    "fruit_yogurt_recipe": {
+            "fruit_yogurt_recipe": {
                "recipe_name": "Fruchtjoghurt",
                "description": "Fermentierte, cremige Milch mit Zucker und Früchten gesüßt.",
                "flavor": "Ein Familienfavorit"
@@ -4897,6 +4933,9 @@
          "mega_cactus_flower_helm": {
             "display_name": "Kaktusblütenhelm",
             "description": "Autsch! Du must auf die Stacheln aufpassen, ABER sie werden angreifende Feinde schädigen."
+         },
+         "shield_hare": {
+            "description": "Verleiht dem Träger die heilende Kraft von Knut, damit er sich besser im Kampf behaupten kann."
          }
       },
       "weapons": {
