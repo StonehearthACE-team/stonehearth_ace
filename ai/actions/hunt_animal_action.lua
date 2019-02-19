@@ -57,6 +57,7 @@ return ai:create_compound_action(HuntAnimalAction)
             filter_fn = ai.BACK(3).hunt_filter_fn,
             item = ai.BACK(1).item,
          })
-         :execute('stonehearth:combat:attack', {
-            target = ai.BACK(2).item,
+         :execute('stonehearth:set_posture', { posture = 'stonehearth:combat' })
+         :execute('stonehearth:combat:attack_after_cooldown', {
+            target = ai.BACK(3).item,
          })

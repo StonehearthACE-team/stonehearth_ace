@@ -80,7 +80,8 @@ local monkey_patches = {
    ace_catalog_lib = 'stonehearth.lib.catalog.catalog_lib',
    ace_relations = 'stonehearth.lib.player.relations',
    ace_aggro_observer = 'stonehearth.ai.observers.aggro_observer',
-   ace_job_service = 'stonehearth.services.server.job.job_service'
+   ace_job_service = 'stonehearth.services.server.job.job_service',
+   ace_constants = 'stonehearth.constants'
 }
 
 local function monkey_patching()
