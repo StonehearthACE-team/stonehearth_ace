@@ -419,7 +419,30 @@ App.StonehearthPromotionTree.reopen({
       self.set('promoteOk', promoteOk);
 
       // Update job Info section: icons and such.
-      self._updateJobPerks(jobAlias);
+      // get the kingdom-specific job alias
+      var kingdomJob = self._jobData[jobAlias].description.__self || jobAlias;
+      self._updateJobPerks(kingdomJob);
+   },
+
+   // Go through the selected job and annotate the perk table accordingly
+   _updateJobPerks : function(jobAlias) {
+      var self = this;
+
+      // Hide all the divs before selectively showing the ones for the current job.
+      self.$('.jobData').hide();
+
+      radiant.each(self._jobData, function(alias, jobData) {
+         if (alias != 'stonehearth:jobs:worker' && jobData.description.__self == jobAlias) {
+            var citizenJob = self._citizenJobData[alias];
+            var highestLvl = citizenJob ? citizenJob.last_gained_lv : -1;
+            var div = self.$("[uri='" + jobAlias + "']");
+            self._unlockPerksToLevel(div, highestLvl)
+            $(div).show();
+         }
+      });
+
+      // Make the job tooltips.
+      this._updateJobTooltips();
    },
 
    // Call only with jobs whose talismans exist in the world

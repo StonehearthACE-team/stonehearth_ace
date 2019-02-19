@@ -68,5 +68,38 @@ App.StonehearthCitizenCharacterSheetView.reopen({
 
       //Make the job tooltips
       this._updateJobTooltips();
+   },
+
+   //Given a perk div and target level, change the classes within to reflect the current level
+   _unlockPerksToLevel : function (target_div, target_level) {
+      $(target_div).find('.levelLabel').addClass('lvLabelLocked');
+      $(target_div).find('img').addClass('perkImgLocked');
+      for(var i=0; i<=target_level; i++) {
+         $(target_div).find("[imgLevel='" + i + "']").removeClass('perkImgLocked').addClass('perkImgUnlocked');
+         $(target_div).find("[lbLevel='" + i + "']").removeClass('lvLabelLocked').addClass('lvLabelUnlocked');
+         $(target_div).find("[divLevel='" + i + "']").attr('locked', "false");
+      }
+
+      //For good measure, throw the level into the class name header or remove if the level is 0
+      if (target_level >= 0 && target_level <= 2) {
+         $(target_div).find('.lvlTitle').text(target_level + ', ' + i18n.t('stonehearth:ui.game.citizen_character_sheet.apprentice'));
+      } else if (target_level >= 3 && target_level <= 4) {
+         $(target_div).find('.lvlTitle').text(target_level + ', ' + i18n.t('stonehearth:ui.game.citizen_character_sheet.journeyman'));
+      } else if (target_level >= 5) {
+         $(target_div).find('.lvlTitle').text(target_level + ', ' + i18n.t('stonehearth:ui.game.citizen_character_sheet.master'));
+      }
+
+      //Calculate the height of the jobPerks section based on the number of perkDivs
+      //TODO: factor these magic numbers out or change if/when the icons change size
+      // var numPerks = $(target_div).find('.perkDiv').length;
+      // if (numPerks == 0) {
+      //    $(target_div).find('.jobPerks').css('height', '0px');
+      // } else {
+      //    var num_rows = parseInt(numPerks/8) + 1;
+      //    var total_height = num_rows * 90;
+      //    $(target_div).find('.jobPerks').css('height', total_height + 'px');
+      // }
+
+      $(target_div).find('.retiredAt').show();
    }
 });
