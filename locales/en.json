@@ -341,6 +341,24 @@
                      "tooltip": "Winter should be over already, can't believe we're getting such late snowfall..."
                   }
                }
+            },
+            "eating": {
+               "ate_intolerable": {
+                  "display_name": "Ate something intolerable",
+                  "tooltip": "I recently had [str(foodname)]... I'm not feeling well..."
+               },
+               "dairy_intolerant_ate_dairy": {
+                  "display_name": "Dairy intolerance",
+                  "tooltip": "Unfortunately [str(foodname)] really doesn't go well with my stomach... Ouch..."
+               },
+               "nuts_intolerant_ate_nuts": {
+                  "display_name": "Nut Intolerance",
+                  "tooltip": "Ugh... That [str(foodname)] looked nice but I guess it isn't for me..."
+               },
+               "fish_intolerant_ate_fish": {
+                  "display_name": "Fish Intolerance",
+                  "tooltip": "I'm never having [str(foodname)] again. Never! Ouch..."
+               }
             }
          }
       },
@@ -599,6 +617,10 @@
          "thorns": {
             "display_name": "Spiky Protection",
             "description": "This hearthling will inflict damage to enemies that attack them."
+         },
+         "upset_belly": {
+            "display_name": "Upset Belly",
+            "description": "Very uncomfortable. Speed, Diligence and Willpower are reduced."
          }
       },
       "loadouts": {
@@ -632,6 +654,20 @@
             "ui_box_undeploy_items": {
                "display_name": "Undeploy Multiple Items"
             }
+         }
+      },
+      "traits": {
+         "dairy_intolerance_trait": {
+            "display_name": "Dairy Intolerance",
+            "description": "[name(i18n_data.entity)] has a particular sensitivity to dairy products. These just can't get along with their belly."
+         },
+         "fish_intolerance_trait": {
+            "display_name": "Fish Intolerance",
+            "description": "[name(i18n_data.entity)] has a particular sensitivity to fish or seafood. These just can't get along with their belly."
+         },
+         "nuts_intolerance_trait": {
+            "display_name": "Nut Intolerance",
+            "description": "[name(i18n_data.entity)] has a particular sensitivity to nuts and hard seeds. These just can't get along with their belly."
          }
       }
    },
@@ -1622,7 +1658,7 @@
                "description": "A delicious and fresh dessert for lazy afternoons.",
                "flavor": ""
             },
-			"fruit_yogurt_recipe": {
+            "fruit_yogurt_recipe": {
                "recipe_name": "Fruit Yogurt",
                "description": "Fermented, creamy milk sweetened with sugar and fruits.",
                "flavor": "A family favorite"
@@ -4881,6 +4917,9 @@
          "mega_cactus_flower_helm": {
             "display_name": "Cactus Flower Helm",
             "description": "Ouch! Watch out for the spikes, they'll damage attacking enemies."
+         },
+         "shield_hare": {
+            "description": "Imbues the wearer with the healing power of Knut, so they can better stand in battle."
          }
       },
       "weapons": {

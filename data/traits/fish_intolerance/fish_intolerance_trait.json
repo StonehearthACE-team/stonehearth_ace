@@ -1,0 +1,11 @@
+{
+   "type": "trait",
+   "display_name": "i18n(stonehearth_ace:data.traits.fish_intolerance_trait.display_name)",
+   "description": "i18n(stonehearth_ace:data.traits.fish_intolerance_trait.description)",
+   "icon": "file(fish_intolerance_trait.png)",
+   "script_controller": "stonehearth_ace:trait_scripts:food_intolerance",
+   "data": {
+      "food_intolerances": "fish",
+      "intolerable_thought": "stonehearth:thoughts:eating:fish_intolerant_ate_fish"
+   }
+}

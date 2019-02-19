@@ -1,0 +1,20 @@
+{
+   "type": "buff",
+   "axis": "debuff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.upset_belly.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.upset_belly.description)",
+   "icon": "file(upset_belly_buff.png)",
+   "duration": "8h",
+   "repeat_add_action": "renew_duration",
+   "modifiers": {
+      "speed": {
+         "multiply": 0.8
+      },
+      "diligence": {
+         "multiply": 0.2
+      },
+      "willpower": {
+         "multiply": 0.5
+      }
+   }
+}

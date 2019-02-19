@@ -33,6 +33,42 @@
                "stackable": false
             }
          }
+      },
+      "eating": {
+         "values": {
+            "ate_intolerable": {
+               "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.eating.ate_intolerable.display_name)",
+               "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.eating.ate_intolerable.tooltip)",
+               "happiness_delta": -25,
+               "duration": "16h",
+               "stackable": true,
+               "max_stacks": 3
+            },
+            "dairy_intolerant_ate_dairy": {
+               "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.eating.dairy_intolerant_ate_dairy.display_name)",
+               "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.eating.dairy_intolerant_ate_dairy.tooltip)",
+               "happiness_delta": -25,
+               "duration": "16h",
+               "stackable": true,
+               "max_stacks": 3
+            },
+            "nuts_intolerant_ate_nuts": {
+               "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.eating.nuts_intolerant_ate_nuts.display_name)",
+               "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.eating.nuts_intolerant_ate_nuts.tooltip)",
+               "happiness_delta": -25,
+               "duration": "16h",
+               "stackable": true,
+               "max_stacks": 3
+            },
+            "fish_intolerant_ate_fish": {
+               "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.eating.fish_intolerant_ate_fish.display_name)",
+               "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.eating.fish_intolerant_ate_fish.tooltip)",
+               "happiness_delta": -25,
+               "duration": "16h",
+               "stackable": true,
+               "max_stacks": 3
+            }
+         }
       }
    }
 }

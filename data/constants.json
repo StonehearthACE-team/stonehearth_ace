@@ -4,15 +4,15 @@
       "climates": {
          "tropical_rainforest": {
             "plant_water_affinity": "EXTREME",
-			   "plant_light_affinity": "HIGH"
+            "plant_light_affinity": "HIGH"
          },
          "tropical_monsoon": {
             "plant_water_affinity": "VERY_HIGH",
-			   "plant_light_affinity": "HIGH"
+            "plant_light_affinity": "HIGH"
          },
          "tropical_savanna": {
             "plant_water_affinity": "HIGH",
-			   "plant_light_affinity": "VERY_HIGH"
+            "plant_light_affinity": "VERY_HIGH"
          },
          "arid_shrubland": {
             "plant_water_affinity": "MEDIUM",
@@ -20,47 +20,47 @@
          },
          "arid_steppe": {
             "plant_water_affinity": "LOW",
-			   "plant_light_affinity": "VERY_HIGH"
+            "plant_light_affinity": "VERY_HIGH"
          },
          "arid_desert": {
             "plant_water_affinity": "UNDESIRABLE",
-			   "plant_light_affinity": "VERY_HIGH"
+            "plant_light_affinity": "VERY_HIGH"
          },
          "temperate_oceanic": {
             "plant_water_affinity": "VERY_HIGH",
-			   "plant_light_affinity": "MEDIUM"
+            "plant_light_affinity": "MEDIUM"
          },
          "temperate_mediterranean": {
             "plant_water_affinity": "HIGH",
-			   "plant_light_affinity": "MEDIUM"
+            "plant_light_affinity": "MEDIUM"
          },
          "temperate": {
             "plant_water_affinity": "MEDIUM",
-			   "plant_light_affinity": "MEDIUM"
+            "plant_light_affinity": "MEDIUM"
          },
          "temperate_highland": {
             "plant_water_affinity": "LOW",
-			   "plant_light_affinity": "HIGH"
+            "plant_light_affinity": "HIGH"
          },
          "continental_humid": {
             "plant_water_affinity": "MEDIUM",
-			   "plant_light_affinity": "HIGH"
+            "plant_light_affinity": "HIGH"
          },
          "continental_dry": {
             "plant_water_affinity": "LOW",
-			   "plant_light_affinity": "MEDIUM"
+            "plant_light_affinity": "MEDIUM"
          },
          "continental_subarctic": {
             "plant_water_affinity": "VERY_LOW",
-			   "plant_light_affinity": "MEDIUM"
+            "plant_light_affinity": "MEDIUM"
          },
          "polar_tundra": {
             "plant_water_affinity": "VERY_LOW",
-			   "plant_light_affinity": "LOW"
+            "plant_light_affinity": "LOW"
          },
          "polar_ice_cap": {
             "plant_water_affinity": "UNDESIRABLE",
-			   "plant_light_affinity": "LOW"
+            "plant_light_affinity": "LOW"
          },
          "undeground": {
             "plant_water_affinity": "UNDESIRABLE",
@@ -375,6 +375,14 @@
             }
          ]
       },
+      "thoughts": {
+         "food_quality": {
+            "INTOLERABLE": "stonehearth:thoughts:eating:ate_intolerable"
+         }
+      },
+      "food_qualities": {
+         "INTOLERABLE": 0
+      },
       "heatmaps": {
          "ore": {
             "SAMPLE_RADIUS": 7,
@@ -384,25 +392,45 @@
                   "ui_label": "i18n(stonehearth_ace:data.heatmaps.ore.thresholds.none.display_name)",
                   "icon": "/stonehearth_ace/ui/images/heatmaps/ore_none.png",
                   "max": 0.01,
-                  "heatmap_color": [128, 128, 128, 200]
+                  "heatmap_color": [
+                     128,
+                     128,
+                     128,
+                     200
+                  ]
                },
                {
                   "ui_label": "i18n(stonehearth_ace:data.heatmaps.ore.thresholds.some.display_name)",
                   "icon": "/stonehearth_ace/ui/images/heatmaps/ore_some.png",
                   "max": 0.6,
-                  "heatmap_color": [183, 128, 71, 200]
+                  "heatmap_color": [
+                     183,
+                     128,
+                     71,
+                     200
+                  ]
                },
                {
                   "ui_label": "i18n(stonehearth_ace:data.heatmaps.ore.thresholds.lots.display_name)",
                   "icon": "/stonehearth_ace/ui/images/heatmaps/ore_lots.png",
                   "max": 2,
-                  "heatmap_color": [227, 128, 27, 200]
+                  "heatmap_color": [
+                     227,
+                     128,
+                     27,
+                     200
+                  ]
                },
                {
                   "ui_label": "i18n(stonehearth_ace:data.heatmaps.ore.thresholds.tons.display_name)",
                   "icon": "/stonehearth_ace/ui/images/heatmaps/ore_tons.png",
                   "max": 999999,
-                  "heatmap_color": [255, 128, 0, 200]
+                  "heatmap_color": [
+                     255,
+                     128,
+                     0,
+                     200
+                  ]
                }
             ]
          }
@@ -416,17 +444,27 @@
             "waterfall_volume"
          ]
       },
-      "wilderness": {   "__comment": "To avoid duplicating data, the wilderness heatmap data is stored here.",
+      "wilderness": {
+         "__comment": "This is how many voxels are in a square of that 'radius'.",
          "SAMPLE_RADIUS": 7,
-         "SAMPLE_DENOMINATOR": 225, "__comment": "This is how many voxels are in a square of that 'radius'.",
+         "SAMPLE_DENOMINATOR": 225,
          "LEVELS": [
             {
                "ui_label": "i18n(stonehearth_ace:data.heatmaps.wilderness.thresholds.none.display_name)",
                "description": "i18n(stonehearth_ace:data.heatmaps.wilderness.thresholds.none.description)",
                "icon": "/stonehearth_ace/ui/images/heatmaps/wilderness_none.png",
                "max": 0.0001,
-               "heatmap_color": [128, 128, 128, 128],
-               "heatmap_hilight": [0.4, 0.4, 0.4],
+               "heatmap_color": [
+                  128,
+                  128,
+                  128,
+                  128
+               ],
+               "heatmap_hilight": [
+                  0.4,
+                  0.4,
+                  0.4
+               ],
                "spawn_duration_multiplier": 5
             },
             {
@@ -434,8 +472,17 @@
                "description": "i18n(stonehearth_ace:data.heatmaps.wilderness.thresholds.little.description)",
                "icon": "/stonehearth_ace/ui/images/heatmaps/wilderness_little.png",
                "max": 0.021,
-               "heatmap_color": [180, 224, 64, 200],
-               "heatmap_hilight": [0.5, 0.6, 0],
+               "heatmap_color": [
+                  180,
+                  224,
+                  64,
+                  200
+               ],
+               "heatmap_hilight": [
+                  0.5,
+                  0.6,
+                  0
+               ],
                "spawn_duration_multiplier": 3
             },
             {
@@ -443,8 +490,17 @@
                "description": "i18n(stonehearth_ace:data.heatmaps.wilderness.thresholds.some.description)",
                "icon": "/stonehearth_ace/ui/images/heatmaps/wilderness_some.png",
                "max": 0.05,
-               "heatmap_color": [40, 224, 40, 200],
-               "heatmap_hilight": [0, 0.8, 0],
+               "heatmap_color": [
+                  40,
+                  224,
+                  40,
+                  200
+               ],
+               "heatmap_hilight": [
+                  0,
+                  0.8,
+                  0
+               ],
                "spawn_duration_multiplier": 1.5
             },
             {
@@ -452,8 +508,17 @@
                "description": "i18n(stonehearth_ace:data.heatmaps.wilderness.thresholds.lots.description)",
                "icon": "/stonehearth_ace/ui/images/heatmaps/wilderness_lots.png",
                "max": 0.1,
-               "heatmap_color": [40, 180, 40, 200],
-               "heatmap_hilight": [0, 0.6, 0],
+               "heatmap_color": [
+                  40,
+                  180,
+                  40,
+                  200
+               ],
+               "heatmap_hilight": [
+                  0,
+                  0.6,
+                  0
+               ],
                "spawn_duration_multiplier": 0.9
             },
             {
@@ -461,8 +526,17 @@
                "description": "i18n(stonehearth_ace:data.heatmaps.wilderness.thresholds.tons.description)",
                "icon": "/stonehearth_ace/ui/images/heatmaps/wilderness_tons.png",
                "max": 999999,
-               "heatmap_color": [0, 128, 32, 200],
-               "heatmap_hilight": [0, 0.5, 0.1],
+               "heatmap_color": [
+                  0,
+                  128,
+                  32,
+                  200
+               ],
+               "heatmap_hilight": [
+                  0,
+                  0.5,
+                  0.1
+               ],
                "spawn_duration_multiplier": 0.5
             }
          ]
@@ -503,12 +577,12 @@
             }
          }
       },
-	  "equipment": {
+      "equipment": {
          "SLOT_TO_BONE_MAP": {
-		    "accessory": "torso",
+            "accessory": "torso",
             "backpack": "torso",
-			"worker_axe": "pelvis",
-			"worker_mining_pick": "pelvis"
+            "worker_axe": "pelvis",
+            "worker_mining_pick": "pelvis"
          }
       },
       "farming": {
