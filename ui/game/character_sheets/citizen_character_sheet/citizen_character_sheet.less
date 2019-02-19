@@ -1,0 +1,30 @@
+#citizenCharacterSheet {
+   #details {
+      #abilitiesTab {
+         display: none;
+         overflow-y: auto;
+
+         .jobData {
+            .jobPerks {
+               display: flex;
+               max-width: 710px;
+
+               .perkDiv:last-child {
+                  overflow: visible;
+               }
+
+               .perkDiv {
+                  overflow: hidden;
+                  margin-right: inherit;
+                  padding-right: 10px;
+
+                  img {
+                     display: flex;
+                     flex-direction: column;
+                  }
+               }
+            }
+         }
+      }
+   }
+}

@@ -429,6 +429,14 @@
          }
       },
       "commands": {
+         "allow_hunting": {
+            "display_name": "Allow Hunting",
+            "description": "This hearthling will ignore any wild game they see. Click to allow them to hunt!"
+         },
+         "avoid_hunting": {
+            "display_name": "Disallow Hunting",
+            "description": "This hearthling will hunt any wild game they see. Click to forbid it!"
+         },
          "transform": {
             "prepare_mega_pumpkin_soup": {
                "display_name": "Prepare Pumpkin Soup",
@@ -687,6 +695,14 @@
                "training_perk_description": "An archer can use Archery Targets to train their precision and earn experience up to Job Level 3"
             },
             "description": "A rearguard combatant capable of using ranged weaponry like bows, crossbows and a variety of hindering types of arrows or bolts to attack their foes."
+         }
+      },
+      "na_archer": {
+         "archer_description": {
+            "level_1_data": {
+               "hunting_perk_name": "Hunting",
+               "hunting_perk_description": "A Northern Alliance archer is naturally adept at animal tracking, and can hunt animals for food and other resources."
+            }
          }
       },
       "cleric": {
@@ -6004,6 +6020,12 @@
                      "description": "Disable auto-harvesting of renewable resources that you own.",
                      "tip_title": "Click and drag to select renewable resources you own to disable auto-harvesting.",
                      "tip_description": "Right click to exit this mode"
+                  },
+                  "box_hunt": {
+                     "display_name": "Hunt",
+                     "description": "Mark specific animals for hunting.",
+                     "tip_title": "Click and drag to mark them.",
+                     "tip_description": "Right click to exit this mode"
                   }
                }
             }
@@ -6234,6 +6256,15 @@
                "water_signal_update_frequency_description": "Only update water signals this many ticks of the water system. Increase this value to improve performance with lots of flowing water.",
                "show_processing_meter": "Show Processing Meter",
                "show_processing_meter_description": "Show the processing meter, useful for understanding performance issues, in the lower right of the screen, to the left of the game speed buttons.",
+               "auto_save_max_files": "Maximum Auto Save Files",
+               "auto_save_max_files_description": "When Auto Save and Auto Save Unique Files are enabled, start overwriting older auto-saves after this limit is reached.<span class='warn'>WARNING:</span>The next time you save after setting this to a lower number, many older auto-saves may be deleted.",
+               "max_files": {
+                  "5_files": "5 auto-saves",
+                  "10_files": "10 auto-saves",
+                  "20_files": "20 auto-saves",
+                  "40_files": "40 auto-saves",
+                  "no_limit": "No limit"
+               },
                "auto_save_interval": "Auto Save Interval:",
                "auto_save_interval_description": "When Auto Save is enabled in the Save dialog, automatically save at this frequency.",
                "intervals": {
@@ -6249,7 +6280,7 @@
                   "30_minutes": "30 minutes"
                },
                "auto_save_unique_files": "Auto Save Unique Files",
-               "auto_save_unique_files_description": "When auto-saving, create a separate save with the date and time. Warning: frequent auto-saving requires a lot of storage space!"
+               "auto_save_unique_files_description": "When auto-saving, create a separate save with the date and time.<span class='warn'>WARNING:</span>Frequent auto-saving requires a lot of storage space!"
             },
             "controls_tab": {
                "key_binding_names": {

@@ -1,0 +1,13 @@
+{
+   "type": "command",
+   "name": "avoid_hunting",
+   "display_name": "i18n(stonehearth_ace:data.commands.avoid_hunting.display_name)",
+   "description": "i18n(stonehearth_ace:data.commands.avoid_hunting.description)",
+   "icon": "file(avoid_hunting.png)",
+   "ordinal": -50,
+   "action": "call",
+   "function": "stonehearth_ace:allow_hunting_for_entity",
+   "args": [
+      false
+   ]
+}

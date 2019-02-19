@@ -411,6 +411,14 @@
          }
       },
       "commands": {
+         "allow_hunting": {
+            "display_name": "Jagd zulassen",
+            "description": "Dieser Hearthling wird jedes Wild ignorieren. Klicke um die Jagd zu erlauben!"
+         },
+         "avoid_hunting": {
+            "display_name": "Jagd verbieten",
+            "description": "Dieser Hearthling wird jedes Wild jagen. Klicke um es zu verbieten!"
+         },
          "transform": {
             "prepare_mega_pumpkin_soup": {
                "display_name": "Kürbissuppe vorbereiten",
@@ -651,6 +659,14 @@
                "training_perk_description": "Ein Bogenschütze kann Zielscheiben verwenden, um seine Präzision zu trainieren und Erfahrung bis zu Level 3 zu sammeln"
             },
             "description": "Ein Hintergrundkämpfer, der in der Lage ist, Fernkampfwaffen wie Bögen, Armbrüste und und eine Vielzahl von von Pfeil- oder Bolzenarten zu verwenden, um ihre Feinde anzugreifen."
+         }
+      },
+      "na_archer": {
+         "archer_description": {
+            "level_1_data": {
+               "hunting_perk_name": "Jagd",
+               "hunting_perk_description": "Ein Bogenschütze der Nordallianz ist von Natur aus im Umgang mit Tieren bestens ausgebildet und kann Tiere für Nahrung und andere Ressourcen jagen."
+            }
          }
       },
       "cleric": {
@@ -5965,6 +5981,12 @@
                      "description": "Deaktiviere das automatische Ernten von erneuerbaren Ressourcen.",
                      "tip_title": "Klicke und zieh um das automatische Ernten von erneuerbaren Ressourcen zu deaktivieren.",
                      "tip_description": "Rechtsklick um diesen Modus zu verlassen"
+                  },
+                  "box_hunt": {
+                     "display_name": "Jagen",
+                     "description": "Kennzeichne bestimmte Tiere für die Jagd.",
+                     "tip_title": "Klicke und zieh, um zu markieren.",
+                     "tip_description": "Rechtsklick um diesen Modus zu verlassen"
                   }
                }
             }
@@ -6167,6 +6189,15 @@
                "water_signal_update_frequency_description": "Aktualisiere die Wassersignale nach einer bestimmte Anzahl von Ticks des Wassersystems. Erhöhe diesen Wert, um die Leistung mit viel fließendem Wasser zu verbessern.",
                "show_processing_meter": "Verarbeitungsanzeige anzeigen",
                "show_processing_meter_description": "Zeigt die Verarbeitungsanzeige an, die für das Verständnis von Leistungsproblemen nützlich ist, rechts unten auf dem Bildschirm, links neben den Schaltflächen für die Spielgeschwindigkeit.",
+               "auto_save_max_files": "Maximale automatische Speicherungen",
+               "auto_save_max_files_description": "Wenn automatisches Speicherne und automatisches Speichern eindeutiger Dateien aktiviert ist, werden ältere Dateien überschrieben, sobald diese Grenze erreicht ist.<span class='warn'>WARNUNG:</span>Wenn Sie das nächste Mal speichern, nachdem du eine niedrigere Anzahl eingestellt hast, werden möglicherweise viele ältere Speicherstände gelöscht.",
+               "max_files": {
+                  "5_files": "5 automatische Speicherstände",
+                  "10_files": "10 automatische Speicherstände",
+                  "20_files": "20 automatische Speicherstände",
+                  "40_files": "40 automatische Speicherstände",
+                  "no_limit": "Keine Begrenzung"
+               },
                "auto_save_interval": "Automatisches Speicherintervall:",
                "auto_save_interval_description": "Wenn beim Speichern die Option 'Automatisch speichern' aktiviert ist, wird zu der ausgewählten Frequenz automatisch gespeichert.",
                "intervals": {
@@ -6182,7 +6213,7 @@
                   "30_minutes": "30 Minuten"
                },
                "auto_save_unique_files": "Automatisches Speichern - Einzelne Dateien",
-               "auto_save_unique_files_description": "Erstellen Sie beim automatischen Speichern eine separate Speicherung mit Datum und Uhrzeit. Warnung: Häufiges automatisches Speichern erfordert viel Speicherplatz!"
+               "auto_save_unique_files_description": "Erstellen Sie beim automatischen Speichern eine separate Speicherung mit Datum und Uhrzeit.<span class='warn'>WARNUNG:</span>Häufiges automatisches Speichern erfordert viel Speicherplatz!"
             },
             "controls_tab": {
                "key_binding_names": {

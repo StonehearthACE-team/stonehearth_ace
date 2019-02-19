@@ -1,0 +1,58 @@
+#promotionTree {
+   #info {
+      .block {
+         width: 700px;
+
+         .jobData {
+            .jobPerks {
+               display: flex;
+               max-width: 700px;
+
+               .perkDiv:last-child {
+                  overflow: visible;
+               }
+
+               .perkDiv {
+                  overflow: hidden;
+                  margin-right: inherit;
+                  padding-right: 5px;
+
+                  img {
+                     display: flex;
+                     flex-direction: column;
+                  }
+               }
+            }
+         }
+      }
+
+      .requiresBlock {
+         display: inline-block;
+         vertical-align: top;
+         width: 520px;
+         height: 200px;
+         margin-right: 40px;
+
+         #requiredTalisman {
+            padding-top: 10px;
+            img {
+               margin-top: -10px;
+               float: left;
+               width: 74px;
+               height: 74px;
+            }
+         }
+
+         #parentRequiredLevel {
+            margin-top: 40px;
+         }
+      }
+
+      .requirementsUnmet {
+         color: @warningFontColor;
+      }
+      .requirementsMet {
+         color: #00ff00;
+      }
+   }
+}

@@ -63,7 +63,7 @@
                      </div>
                   </div>
                </div>
-               <div id="descriptionDiv">
+               <div id="descriptionDiv" {{bind-attr class=view.canChangeJob:clickable:noHover}}>
                   {{#if view.model.stonehearth:job.class_icon}}
                      <div id="jobIcon">
                         <img {{bind-attr src="view.model.stonehearth:job.class_icon"}} />

@@ -112,6 +112,52 @@
          },
          "ordinal": 99
       },
+      "auto_save_unique_files": {
+         "host_only": true,
+         "type": "boolean",
+         "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.auto_save_unique_files)",
+         "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.auto_save_unique_files_description)",
+         "default": false,
+         "on_change": {
+            "fire_event": "auto_save_unique_files_changed"
+         },
+         "ordinal": 50
+      },
+      "auto_save_max_files": {
+         "host_only": true,
+         "type": "list",
+         "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.auto_save_max_files)",
+         "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.auto_save_max_files_description)",
+         "values": {
+            "no_limit": {
+               "ordinal": 0,
+               "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.max_files.no_limit)",
+               "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.auto_save_max_files_description)"
+            },
+            "5": {
+               "ordinal": 5,
+               "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.max_files.5_files)",
+               "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.auto_save_max_files_description)"
+            },
+            "10": {
+               "ordinal": 10,
+               "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.max_files.10_files)",
+               "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.auto_save_max_files_description)"
+            },
+            "20": {
+               "ordinal": 20,
+               "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.max_files.20_files)",
+               "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.auto_save_max_files_description)"
+            },
+            "40": {
+               "ordinal": 40,
+               "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.max_files.40_files)",
+               "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.auto_save_max_files_description)"
+            }
+         },
+         "default": "no_limit",
+         "ordinal": 51
+      },
       "auto_save_interval": {
          "host_only": true,
          "type": "list",
@@ -173,18 +219,7 @@
          "on_change": {
             "fire_event": "auto_save_interval_changed"
          },
-         "ordinal": 50
-      },
-      "auto_save_unique_files": {
-         "host_only": true,
-         "type": "boolean",
-         "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.auto_save_unique_files)",
-         "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.auto_save_unique_files_description)",
-         "default": false,
-         "on_change": {
-            "fire_event": "auto_save_unique_files_changed"
-         },
-         "ordinal": 51
+         "ordinal": 52
       }
    }
 }

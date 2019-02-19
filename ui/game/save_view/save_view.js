@@ -31,6 +31,9 @@ App.SaveView.reopen({
             saveid = saveid + ' ' + dateTimeStr.replace(/[/\\?%*:|"<>]/g, '-');
             name = i18n.t('stonehearth_ace:ui.game.save_view.auto_save_name',
                {i18n_data: {date_time: dateTimeStr }});
+            
+            // if this puts us over the gameplay setting limit of auto-saves, delete older ones until we're back to the limit
+            self._deleteOldAutoSaves();
          }
 
          radiant.call("stonehearth_ace:save_game_command")
@@ -72,6 +75,49 @@ App.SaveView.reopen({
                self._hideSaveModal();
                self.refreshSavesList();
             });
+   },
+
+   _deleteOldAutoSaves: function() {
+      var self = this;
+      radiant.call('radiant:get_config', 'mods.stonehearth_ace.auto_save_max_files')
+         .done(function(response) {
+            var max_files = response['mods.stonehearth_ace.auto_save_max_files'];
+            var maxNum = parseInt(max_files);
+            if (maxNum && maxNum > 0) {
+               // enumerate all save files that match the auto-save name template to see if we have too many
+               //var regEx = RegExp(i18n.t('stonehearth_ace:ui.game.save_view.auto_save_name',
+               //                          {i18n_data: {date_time: '\(.+\)' }}));
+               // we don't need to use regex, we can just check if the key starts with 'auto_save'
+               // and that will then also include the non-unique auto_save file
+               var keyCheck = 'auto_save';
+               radiant.call("radiant:client:get_save_games")
+                  .done(function(json) {
+                     var autoSaves = [];
+                     radiant.each(json, function(k, v) {
+                        //var strMatch = regEx.test(v.gameinfo.name);
+                        var strMatch = keyCheck == k.substr(0, keyCheck.length);
+                        if (strMatch) {
+                           v.key = k;
+                           autoSaves.push(v);
+                        }
+                     });
+
+                     // plus one because we're about to create a new one
+                     var numToDelete = autoSaves.length - maxNum + 1;
+                     if (numToDelete > 0) {
+                        // sort in descending order so the oldest is last, so we can just pop off the array
+                        autoSaves.sort(function(a, b) {
+                           return b.gameinfo.timestamp - a.gameinfo.timestamp;
+                        });
+                        
+                        for (var i = 0; i < numToDelete; i++) {
+                           var save = autoSaves.pop();
+                           self._deleteSaveGame(save.key);
+                        }
+                     }
+                  });
+            }
+         });
    },
 
    actions: {

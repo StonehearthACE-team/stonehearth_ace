@@ -77,7 +77,10 @@ local monkey_patches = {
    ace_weather_state = 'stonehearth.services.server.weather.weather_state',
    ace_seasons_service = 'stonehearth.services.server.seasons.seasons_service',
    ace_unit_info_component = 'stonehearth.components.unit_info.unit_info_component',
-   ace_catalog_lib = 'stonehearth.lib.catalog.catalog_lib'
+   ace_catalog_lib = 'stonehearth.lib.catalog.catalog_lib',
+   ace_relations = 'stonehearth.lib.player.relations',
+   ace_aggro_observer = 'stonehearth.ai.observers.aggro_observer',
+   ace_job_service = 'stonehearth.services.server.job.job_service'
 }
 
 local function monkey_patching()

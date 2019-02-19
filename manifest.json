@@ -17,6 +17,7 @@
    "client_init_script": "file(stonehearth_ace_client)",
    "server_init_script": "file(stonehearth_ace_server)",
    "aliases": {
+      "actions:combat:hunt_animal": "file(ai/actions/hunt_animal_action.lua)",
       "actions:component_to_filter_fn": "file(ai/actions/component_to_filter_fn_action.lua)",
       "actions:dont_drop_already_carrying_item": "file(ai/actions/dont_drop_already_carrying_item_action.lua)",
       "actions:drop_and_pickup_item": "file(ai/actions/drop_and_pickup_item_action.lua)",
@@ -66,6 +67,7 @@
       "actions:transform_entity": "file(ai/actions/transform_entity_action.lua)",
       "actions:transform_entity_with_ingredient": "file(ai/actions/transform_entity_with_ingredient_action.lua)",
       "ai_pack:harvest_underfarm": "file(ai/packs/harvest_underfarm_ai_pack.json)",
+      "ai_pack:hunting": "file(ai/packs/hunting_ai_pack.json)",
       "ai_pack:training": "file(ai/packs/training_ai_pack.json)",
       "ai_pack:transform": "file(ai/packs/transform_ai_pack.json)",
       "ai_pack:underfarming": "file(ai/packs/underfarming_ai_pack.json)",
@@ -201,6 +203,7 @@
       "boulder:underwater:medium_3": "file(entities/boulders/medium_boulder/medium_underwater_boulder_3.json)",
       "boulder:underwater:small": "file(entities/boulders/small_underwater_boulder/small_underwater_boulder.json)",
       "buff_scripts:thorns": "file(data/buffs/thorns/thorns_buff.lua)",
+      "buffs:avoid_hunting": "file(data/buffs/hunting/avoid_hunting_buff.json)",
       "buffs:fracture": "file(data/buffs/equipment/fracture/fracture.json)",
       "buffs:gizmos:decoy": "file(data/buffs/slowed/decoy_buff.json)",
       "buffs:hamstrung": "file(data/buffs/equipment/hamstrung/hamstrung.json)",
@@ -241,6 +244,8 @@
       "buffs:upset_belly": "file(data/buffs/upset_belly/upset_belly_buff.json)",
       "buffs:using_crossbow": "file(data/buffs/equipment/using_crossbow/using_crossbow.json)",
       "color_map:ace": "file(data/materials/color_maps/stonehearth_ace_color_map.json)",
+      "commands:allow_hunting": "file(data/commands/hunting/allow_hunting.json)",
+      "commands:avoid_hunting": "file(data/commands/hunting/avoid_hunting.json)",
       "commands:manage_party_1": "file(data/commands/manage_parties/manage_party_1.json)",
       "commands:manage_party_2": "file(data/commands/manage_parties/manage_party_2.json)",
       "commands:manage_party_3": "file(data/commands/manage_parties/manage_party_3.json)",
@@ -1104,6 +1109,7 @@
       "stone_safety_standard": "file(entities/gizmos/stone_safety_standard/stone_safety_standard.json)",
       "subjects:weather:snow_early": "file(data/weather/snow/snow_early_subject.json)",
       "subjects:weather:snow_late": "file(data/weather/snow/snow_late_subject.json)",
+      "task_groups:hunting": "file(ai/task_groups/hunting_task_group.lua)",
       "task_groups:training": "file(ai/task_groups/training_task_group.lua)",
       "task_groups:transform": "file(ai/task_groups/transform_task_group.lua)",
       "task_groups:underfarming": "file(ai/task_groups/underfarming_task_group.lua)",
@@ -1330,6 +1336,7 @@
       "stonehearth:mixins:base_human": "stonehearth_ace:mixins:base_human",
       "stonehearth/data/biome/temperate.json": "file(data/biome/temperate.json)",
       "stonehearth/data/ui/start_menu.json": "file(data/ui/start_menu.json)",
+      "northern_alliance/ui/manifest.json": "file(ui/northern_alliance_manifest.json)",
       "stonehearth:pet_collar": "stonehearth_ace/entities/critters/collars/pet_collar.json",
       "stonehearth:pasture_equipment:adult_animal_collar": "stonehearth_ace/entities/critters/collars/adult_animal_collar.json",
       "stonehearth:pasture_equipment:young_animal_collar": "stonehearth_ace/entities/critters/collars/young_animal_collar.json",
@@ -1905,7 +1912,10 @@
       "stonehearth:monsters:orcs:orc_male": "file(entities/monsters/skull_drop.json)",
       "stonehearth:monsters:orcs:orc_female": "file(entities/monsters/skull_drop.json)",
       "stonehearth:ai_pack:carrying": "file(ai/packs/carrying_ai_pack.json)",
-      "stonehearth:containers:log_pile": "file(entities/containers/log_pile/log_pile.json)"
+      "stonehearth:containers:log_pile": "file(entities/containers/log_pile/log_pile.json)",
+      "stonehearth/entities/decoration/hearth_bunny/hearth_bunny_ghost.json": "file(entities/decoration/hearth_bunny/hearth_bunny_ghost.json)",
+      "stonehearth/entities/decoration/hearth_fountain/hearth_fountain_ghost.json": "file(entities/decoration/hearth_fountain/hearth_fountain_ghost.json)",
+      "stonehearth/entities/decoration/hearth_stump/hearth_stump_ghost.json": "file(entities/decoration/hearth_stump/hearth_stump_ghost.json)"
    },
    "overrides": {
       "stonehearth/data/rigs/entities/critters/sheep/animations/idle_eat.json": "file(data/rigs/entities/critters/sheep/animations/idle_eat.json)",
@@ -2223,6 +2233,14 @@
          "controller": "file(call_handlers/resource_call_handler.lua)",
          "endpoint": "server"
       },
+      "box_hunt": {
+         "controller": "file(call_handlers/resource_call_handler.lua)",
+         "endpoint": "client"
+      },
+      "server_box_hunt": {
+         "controller": "file(call_handlers/resource_call_handler.lua)",
+         "endpoint": "server"
+      },
       "box_get_commandable_entities": {
          "controller": "file(call_handlers/resource_call_handler.lua)",
          "endpoint": "server"
@@ -2334,6 +2352,10 @@
       "set_pasture_maintain_animals": {
          "controller": "file(call_handlers/pasture_call_handler.lua)",
          "endpoint": "server"
+      },
+      "allow_hunting_for_entity": {
+         "controller": "file(call_handlers/hunting_call_handler.lua)",
+         "endpoint": "server"
       }
    },
    "object_commands": {
@@ -2379,7 +2401,9 @@
          "file(ui/game/unit_frame/unit_frame.js)",
          "file(ui/game/clock_widget/clock_widget.js)",
          "file(ui/root/js/gui.js)",
-         "file(ui/root/js/stonehearth_ace.js)"
+         "file(ui/root/js/stonehearth_ace.js)",
+         "file(ui/game/citizens/citizens.js)",
+         "file(ui/game/character_sheets/citizen_character_sheet/citizen_character_sheet.js)"
       ],
       "less": [
          "file(ui/shell/settings/settings.less)",
@@ -2397,7 +2421,9 @@
          "file(ui/game/component_info/component_info.less)",
          "file(ui/game/unit_frame/unit_frame.less)",
          "file(ui/game/clock_widget/clock_widget.less)",
-         "file(ui/root/css/gui.less)"
+         "file(ui/root/css/gui.less)",
+         "file(ui/game/promotion_tree/promotion_tree.less)",
+         "file(ui/game/character_sheets/citizen_character_sheet/citizen_character_sheet.less)"
       ]
    }
 }

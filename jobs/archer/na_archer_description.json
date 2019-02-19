@@ -8,5 +8,25 @@
       "helmet": "file(na_archer_outfit/na_archer_hood)",
       "torso": "file(na_archer_outfit)",
       "mainhand": "stonehearth_ace:weapons:na_bow"
+   },
+   "commands": {
+      "remove_on_demote": [
+         "stonehearth_ace:commands:allow_hunting",
+         "stonehearth_ace:commands:avoid_hunting"
+      ]
+   },
+   "level_data": {
+      "1": {
+         "perks": [
+            {
+               "type": "allow_hunting",
+               "level": 1,
+               "id": "allow_hunting",
+               "name": "i18n(stonehearth_ace:jobs.na_archer.archer_description.level_1_data.hunting_perk_name)",
+               "description": "i18n(stonehearth_ace:jobs.na_archer.archer_description.level_1_data.hunting_perk_description)",
+               "icon": "file(images/hunting.png)"
+            }
+         ]
+      }
    }
 }

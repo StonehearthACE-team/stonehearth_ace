@@ -20,6 +20,9 @@ App.StonehearthStartMenuView.reopen({
       self.menuActions.box_disable_auto_harvest = function(){
          self.boxDisableAutoHarvest();
       };
+      self.menuActions.box_hunt = function(){
+         self.boxHunt();
+      };
 
       self._super();
 
@@ -128,6 +131,24 @@ App.StonehearthStartMenuView.reopen({
             .done(function(response) {
                radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:ui:start_menu:popup'} );
                self.boxDisableAutoHarvest();
+            })
+            .fail(function(response) {
+               App.stonehearthClient.hideTip(tip);
+            });
+      });
+   },
+
+   boxHunt: function() {
+      var self = this;
+
+      var tip = App.stonehearthClient.showTip('stonehearth_ace:ui.game.menu.harvest_menu.items.box_hunt.tip_title',
+            'stonehearth_ace:ui.game.menu.harvest_menu.items.box_hunt.tip_description', {i18n : true});
+
+      return App.stonehearthClient._callTool('boxHunt', function() {
+         return radiant.call('stonehearth_ace:box_hunt')
+            .done(function(response) {
+               radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:ui:start_menu:popup'} );
+               self.boxHunt();
             })
             .fail(function(response) {
                App.stonehearthClient.hideTip(tip);
