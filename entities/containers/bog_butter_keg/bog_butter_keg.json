@@ -1,0 +1,68 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(bog_butter_keg.qb)"
+            ]
+         }
+      },
+      "render_info": {
+         "scale": 0.1
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 0, "y": 1, "z": 0 }
+            }
+         ]
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 0, "y": 1, "z": 0 }
+            }
+         ]
+      },
+      "stonehearth:resource_node": {
+         "resource": "stonehearth_ace:food:dairy:bog_butter",
+         "harvest_overlay_effect": "stonehearth_ace:effects:transform_worker_upgrade_overlay_effect",
+         "harvester_effect": "fiddle",
+         "durability": 4
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.containers.bog_butter_keg.display_name)",
+         "description": "i18n(stonehearth_ace:entities.containers.bog_butter_keg.description)",
+         "icon": "file(bog_butter_keg.png)",
+         "category": "storage",
+         "material_tags": [
+            "resource_pile",
+            "bog_butter_keg"
+         ]
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 30,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 1
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": false
+      }
+   }
+}

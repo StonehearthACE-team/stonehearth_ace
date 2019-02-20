@@ -5,25 +5,25 @@
       "model_variants": {
          "default": {
             "models": [
-               "file(fruit_yogurt.qb)"
+               "file(cereals_corn.qb)"
             ]
          }
       },
       "mob": {
-         "model_origin": { "x": 0, "y": 0, "z": 0.05 }
+         "model_origin": { "x": 0, "y": 0, "z": 0 }
       },
       "stonehearth:stacks": {
-         "max_stacks": 3
+         "max_stacks": 2
       }
    },
    "entity_data": {
       "stonehearth:food_container": {
          "effect": "fiddle",
-         "food": "stonehearth_ace:food:dairy:fruit_yogurt:fruit_yogurt_serving",
+         "food": "stonehearth_ace:food:dairy:cereals_corn:cereals_corn_serving",
          "stacks_per_serving": 1
       },
       "stonehearth:net_worth": {
-         "value_in_gold": 19,
+         "value_in_gold": 14,
          "rarity": "common",
          "shop_info": {
             "buyable": true,
@@ -33,16 +33,17 @@
          }
       },
       "stonehearth:catalog": {
-         "display_name": "i18n(stonehearth_ace:entities.food.fruit_yogurt.fruit_yogurt.display_name)",
-         "description": "i18n(stonehearth_ace:entities.food.fruit_yogurt.fruit_yogurt.description)",
-         "icon": "file(fruit_yogurt.png)",
+         "display_name": "i18n(stonehearth_ace:entities.food.cereals_corn.cereals_corn.display_name)",
+         "description": "i18n(stonehearth_ace:entities.food.cereals_corn.cereals_corn.description)",
+         "icon": "file(cereals_corn.png)",
          "is_item": true,
          "category": "food",
          "material_tags": [
             "food_container",
-            "prepared_dessert",
             "prepared_food",
-            "fruit_yogurt",
+            "cereals_corn",
+            "cereals",
+            "grain",
             "refined",
             "stockpile_prepared_food",
             "dairy",
@@ -50,7 +51,7 @@
          ]
       },
       "stonehearth:appeal": {
-         "appeal": 10
+         "appeal": 2
       },
       "stonehearth:item_quality": {
          "variable_quality": true

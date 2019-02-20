@@ -1,0 +1,46 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(bog_butter.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 12,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.dairy.bog_butter.display_name)",
+         "description": "i18n(stonehearth_ace:entities.food.dairy.bog_butter.description)",
+         "icon": "file(bog_butter.png)",
+         "is_item": true,
+         "category": "food",
+         "material_tags": [
+            "butter",
+            "dairy",
+            "grease",
+            "cooking_ingredient",
+            "stockpile_cooking_ingredient"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": 3
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

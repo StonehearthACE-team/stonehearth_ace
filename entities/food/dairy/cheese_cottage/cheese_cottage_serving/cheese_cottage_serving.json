@@ -5,9 +5,12 @@
       "model_variants": {
          "default": {
             "models": [
-               "file(cheese_mild_serving.qb)"
+               "file(cheese_cottage_serving.qb)"
             ]
          }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 }
       }
    },
    "entity_data": {
@@ -17,24 +20,24 @@
       },
       "stonehearth:food": {
          "stonehearth:sitting_on_chair": {
-            "satisfaction": 130
+            "satisfaction": 55
          },
          "default": {
-            "satisfaction": 110
+            "satisfaction": 40
          },
-         "quality": 5
+         "quality": 2
       },
       "stonehearth:catalog": {
-         "display_name": "i18n(stonehearth_ace:entities.food.dairy.cheese_mild.cheese_mild_serving.display_name)",
+         "display_name": "i18n(stonehearth_ace:entities.food.dairy.cheese_cottage.cheese_cottage_serving.display_name)",
          "description": "",
          "material_tags": [
             "food",
-            "cheese_mild_serving",
+            "cheese_cottage_serving",
             "dairy",
             "cheese",
             "vegetarian"
          ],
-         "subject_override": "stonehearth_ace:food:dairy:cheese_mild"
+         "subject_override": "stonehearth_ace:food:dairy:cheese_cottage"
       }
    }
 }

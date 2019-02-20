@@ -1664,6 +1664,16 @@
                "description": "A fermentation mixture of milk and some additives. Within a cheese vat this can be turned into cheese!",
                "flavor": "You probably don't want to know what else goes in there..."
             },
+            "cereals_corn_recipe": {
+               "recipe_name": "Bowl of Corn Cereals",
+               "description": "Pour milk on top of delicious baked flakes of corn.",
+               "flavor": "'Cereals first, milk afterwards. It is the natural order.' - Sir Edwin Butterfingers"
+            },
+            "butter_recipe": {
+               "recipe_name": "Slab of Butter",
+               "description": "Churn a creamy and flavorful paste that is often used as a cooking ingredient.",
+               "flavor": "With bread it goes like bread and... Eh, nevermind"
+            },
             "nutty_poultry_recipe": {
                "recipe_name": "Stirred Poultry & Nuts",
                "description": "Stirred and fried large poultry slices with spices and nuts.",
@@ -1892,7 +1902,7 @@
          },
          "cook_cheese_vat_curdled": {
             "display_name": "Curdled Cheese Vat",
-            "description": "The milk has formed curds and the leftover whey needs to be drained."
+            "description": "Curds have formed. Drain the leftover whey or harvest for Cottage Cheese."
          },
          "cook_cheese_vat_cheese_fresh": {
             "display_name": "Fresh Cheese Vat",
@@ -4483,6 +4493,27 @@
             "curdling_mixture": {
                "display_name": "Curdling Mixture",
                "description": "Milk and some other things. The Cook needs to pour it inside a cheese vat!"
+            },
+            "cheese_cottage": {
+               "cheese_cottage": {
+                  "display_name": "Cottage Cheese",
+                  "description": "Salty and sour cheese curds with a peculiar taste."
+               },
+               "cheese_cottage_serving": {
+                  "display_name": "Serving of Cottage Cheese"
+               }
+            },
+            "butter": {
+               "display_name": "Slab of Butter",
+               "description": "A creamy and flavorful paste churned from milk and used as an ingredient."
+            },
+            "bog_butter": {
+               "display_name": "Bog Butter",
+               "description": "A sophisticated type of butter preserved in peat bogs for a long time."
+            },
+            "whey_butter": {
+               "display_name": "Whey Butter",
+               "description": "A by-product of cheese making, whey butter has less fat and is more salty."
             }
          },
          "beef_jerky": {
@@ -4496,6 +4527,16 @@
             "fruit_yogurt_serving": {
                "display_name": "Serving of Fruit Yogurt",
                "description": "Best served cold."
+            }
+         },
+         "cereals_corn": {
+            "cereals_corn": {
+               "display_name": "Bowl of Corn Cereals",
+               "description": "Delicious, crispy flakes of corn soaked in milk."
+            },
+            "cereals_corn_serving": {
+               "display_name": "Serving of Corn Cereals",
+               "description": "Is it morning yet?"
             }
          }
       },
@@ -5653,6 +5694,10 @@
          "fuel_holder_large_stone": {
             "display_name": "Stone Firewood Shed",
             "description": "This reliable storage will keep a lot of firewood dry and ready to be used!"
+         },
+         "bog_butter_keg": {
+            "display_name": "Bog Butter Keg",
+            "description": "Someone buried this a long time ago... Peat lands give butter an unique flavor!"
          }
       },
       "tools": {
@@ -6342,7 +6387,8 @@
             "grain_resource_name": "Any Grain",
             "grain_flour_resource_name": "Any Flour",
             "any_pet_food_resource_name": "Any Pet Food",
-            "milk_resource_name": "Any Milk"
+            "milk_resource_name": "Any Milk",
+            "butter_resource_name": "Any Butter"
          }
       },
       "hotkeys": {

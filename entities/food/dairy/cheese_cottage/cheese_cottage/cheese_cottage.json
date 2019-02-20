@@ -5,27 +5,27 @@
       "model_variants": {
          "default": {
             "models": [
-               "file(cheese_mild.qb)"
+               "file(cheese_cottage.qb)"
             ]
          },
          "decay_1": {
             "models": [
-               "file(cheese_mild_rotting.qb)"
+               "file(cheese_cottage_rotting.qb)"
             ]
          }
       },
       "mob": {
-         "model_origin": { "x": 0.05, "y": 0, "z": 0.05 }
+         "model_origin": { "x": 0, "y": 0, "z": 0 }
       },
       "stonehearth:stacks": {
-         "max_stacks": 3
+         "max_stacks": 2
       }
    },
    "entity_data": {
       "stonehearth:food_decay": {
          "initial_decay": {
-            "min": 480,
-            "max": 720
+            "min": 80,
+            "max": 160
          },
          "decay_stages": {
             "decay_1": {
@@ -35,29 +35,29 @@
       },
       "stonehearth:food_container": {
          "effect": "fiddle",
-         "food": "stonehearth_ace:food:dairy:cheese_mild:cheese_mild_serving",
+         "food": "stonehearth_ace:food:dairy:cheese_cottage:cheese_cottage_serving",
          "stacks_per_serving": 1
       },
       "stonehearth:net_worth": {
-         "value_in_gold": 11,
+         "value_in_gold": 3,
          "rarity": "uncommon",
          "shop_info": {
             "buyable": true,
             "sellable": true,
-            "shopkeeper_level": 2,
+            "shopkeeper_level": 1,
             "shopkeeper_type": "caravan"
          }
       },
       "stonehearth:catalog": {
-         "display_name": "i18n(stonehearth_ace:entities.food.dairy.cheese_mild.cheese_mild.display_name)",
-         "description": "i18n(stonehearth_ace:entities.food.dairy.cheese_mild.cheese_mild.description)",
-         "icon": "file(cheese_mild.png)",
+         "display_name": "i18n(stonehearth_ace:entities.food.dairy.cheese_cottage.cheese_cottage.display_name)",
+         "description": "i18n(stonehearth_ace:entities.food.dairy.cheese_cottage.cheese_cottage.description)",
+         "icon": "file(cheese_cottage.png)",
          "is_item": true,
          "category": "food",
          "material_tags": [
             "food_container",
             "prepared_food",
-            "cheese_mild",
+            "cheese_cottage",
             "dairy",
             "cheese",
             "stockpile_prepared_food",
@@ -65,7 +65,7 @@
          ]
       },
       "stonehearth:appeal": {
-         "appeal": 5
+         "appeal": 1
       },
       "stonehearth:item_quality": {
          "variable_quality": true

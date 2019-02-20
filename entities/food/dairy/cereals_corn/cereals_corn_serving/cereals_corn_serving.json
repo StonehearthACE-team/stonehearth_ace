@@ -5,7 +5,7 @@
       "model_variants": {
          "default": {
             "models": [
-               "file(cheese_mild_serving.qb)"
+               "file(cereals_corn_serving.qb)"
             ]
          }
       }
@@ -17,24 +17,22 @@
       },
       "stonehearth:food": {
          "stonehearth:sitting_on_chair": {
-            "satisfaction": 130
+            "satisfaction": 70
          },
          "default": {
-            "satisfaction": 110
+            "satisfaction": 50
          },
-         "quality": 5
+         "quality": 6
       },
       "stonehearth:catalog": {
-         "display_name": "i18n(stonehearth_ace:entities.food.dairy.cheese_mild.cheese_mild_serving.display_name)",
-         "description": "",
+         "display_name": "i18n(stonehearth_ace:entities.food.cereals_corn.cereals_corn_serving.display_name)",
+         "description": "i18n(stonehearth_ace:entities.food.cereals_corn.cereals_corn_serving.description)",
          "material_tags": [
             "food",
-            "cheese_mild_serving",
             "dairy",
-            "cheese",
             "vegetarian"
          ],
-         "subject_override": "stonehearth_ace:food:dairy:cheese_mild"
+         "subject_override": "stonehearth_ace:food:cereals_corn"
       }
    }
 }
