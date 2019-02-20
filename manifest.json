@@ -18,6 +18,7 @@
    "server_init_script": "file(stonehearth_ace_server)",
    "aliases": {
       "actions:combat:hunt_animal": "file(ai/actions/hunt_animal_action.lua)",
+      "actions:combat:loop_hunt_animal": "file(ai/actions/loop_hunt_animal_action.lua)",
       "actions:component_to_filter_fn": "file(ai/actions/component_to_filter_fn_action.lua)",
       "actions:dont_drop_already_carrying_item": "file(ai/actions/dont_drop_already_carrying_item_action.lua)",
       "actions:drop_and_pickup_item": "file(ai/actions/drop_and_pickup_item_action.lua)",
@@ -62,6 +63,7 @@
       "actions:train_check_entity_targetable": "file(ai/actions/training/train_check_entity_targetable_action.lua)",
       "actions:train_idle_dispatcher": "file(ai/actions/training/train_idle_dispatcher.lua)",
       "actions:train_move_to_targetable_location": "file(ai/actions/training/train_move_to_targetable_location_action.lua)",
+      "actions:train_between_attacks": "file(ai/actions/training/train_between_attacks_action.lua)",
       "actions:transform": "file(ai/actions/transform_action.lua)",
       "actions:transform_adjacent": "file(ai/actions/transform_adjacent.lua)",
       "actions:transform_entity": "file(ai/actions/transform_entity_action.lua)",
