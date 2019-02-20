@@ -39,7 +39,7 @@ function HuntAnimalAction:start_thinking(ai, entity, args)
 end
 
 function HuntAnimalAction:compose_utility(entity, self_utility, child_utilities, current_activity)
-   return self_utility * 0.9 + child_utilities:get('stonehearth:combat:attack') * 0.1
+   return self_utility * 0.9 + child_utilities:get('stonehearth_ace:loop_hunt_animal') * 0.1
 end
 
 local ai = stonehearth.ai
@@ -58,6 +58,6 @@ return ai:create_compound_action(HuntAnimalAction)
             item = ai.BACK(1).item,
          })
          :execute('stonehearth:set_posture', { posture = 'stonehearth:combat' })
-         :execute('stonehearth:combat:attack_after_cooldown', {
+         :execute('stonehearth_ace:loop_hunt_animal', {
             target = ai.BACK(3).item,
          })
