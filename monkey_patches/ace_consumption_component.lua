@@ -39,12 +39,6 @@ function AceConsumptionComponent:_get_quality(food)
       end
    end
 
-   if self:_has_food_preferences() then
-      if not radiant.entities.is_material(food, self._sv._food_preferences) then
-         return stonehearth.constants.food_qualities.UNPALATABLE
-      end
-   end
-
    if not food_data.quality then
       log:error('Food %s has no quality entry, defaulting quality to raw & bland.', food)
    end
