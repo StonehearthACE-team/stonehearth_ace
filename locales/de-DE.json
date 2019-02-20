@@ -1664,6 +1664,16 @@
                "description": "Eine Fermentationsmischung aus Milch und einigen Zusatzstoffen. Innerhalb eines Käsebottich kann daraus Käse hergestellt werden!",
                "flavor": "Du möchtest wahrscheinlich nicht wissen, was da sonst noch alles rein kommt..."
             },
+            "cereals_corn_recipe": {
+               "recipe_name": "Eine Schüssel mit Getreideflocken",
+               "description": "Gieße Milch auf köstliche gebackene Maisflocken.",
+               "flavor": "'Getreide zuerst, danach Milch. Es ist die natürliche Ordnung.' - Sir Edwin Butterfingers"
+            },
+            "butter_recipe": {
+               "recipe_name": "Ein Stück Butter",
+               "description": "Eine cremige und würzige Paste, die oft als Kochzutat verwendet wird.",
+               "flavor": "Mit Brot geht es wie Brot mit ... Ehm, vergiss es einfach"
+            },
             "nutty_poultry_recipe": {
                "recipe_name": "Geröstetes Geflügel mit Nüssen",
                "description": "Geröstete und gebratene große Geflügelscheiben mit Gewürzen und Nüssen.",
@@ -1892,7 +1902,7 @@
          },
          "cook_cheese_vat_curdled": {
             "display_name": "Geronnener Käse",
-            "description": "Die Milch hat Quark gebildet und die verbleibende Molke muss abgelassen werden."
+            "description": "Quark hat sich gebildet. Lasse die restliche Molke ab oder ernten Sie sie für Hüttenkäse."
          },
          "cook_cheese_vat_cheese_fresh": {
             "display_name": "Frischkäse",
@@ -4483,6 +4493,27 @@
             "curdling_mixture": {
                "display_name": "Gerinnungsmischung",
                "description": "Milch und einige andere Dinge. Der Koch muss es in einen Käsebehälter gießen!"
+            },
+            "cheese_cottage": {
+               "cheese_cottage": {
+                  "display_name": "Hüttenkäse",
+                  "description": "Salziger und sauerer Käsequark mit einem besonderen Geschmack."
+               },
+               "cheese_cottage_serving": {
+                  "display_name": "Eine Portion des Hüttenkäse"
+               }
+            },
+            "butter": {
+               "display_name": "Ein Stück Butter",
+               "description": "Eine cremige und schmackhafte Paste, die aus der Milch gemacht und als Zutat verwendet wird."
+            },
+            "bog_butter": {
+               "display_name": "Moosbutter",
+               "description": "Eine raffinierte Butterart, die lange in Torfmooren aufbewahrt wurde."
+            },
+            "whey_butter": {
+               "display_name": "Molkebutter",
+               "description": "Molkebutter ist ein Nebenprodukt der Käseherstellung und hat weniger Fett und ist salziger."
             }
          },
          "beef_jerky": {
@@ -4496,6 +4527,16 @@
             "fruit_yogurt_serving": {
                "display_name": "Eine Schale mit Fruchtjoghurt",
                "description": "Am besten kalt serviert."
+            }
+         },
+         "cereals_corn": {
+            "cereals_corn": {
+               "display_name": "Eine Schüssel Getreideflocken",
+               "description": "Leckere, knusprige Maisflocken in Milch getränkt."
+            },
+            "cereals_corn_serving": {
+               "display_name": "Eine Portion der Getreideflocken",
+               "description": "Ist es schon morgen?"
             }
          }
       },
@@ -5653,6 +5694,10 @@
          "fuel_holder_large_stone": {
             "display_name": "Steinerner Brennholzschuppen",
             "description": "Dieses zuverlässige Lager hält viel Brennholz trocken und kann sofort verwendet werden!"
+         },
+         "bog_butter_keg": {
+            "display_name": "Moosbutterfass",
+            "description": "Jemand hat das vor langer Zeit begraben ... Torfland gibt Butter einen einzigartigen Geschmack!"
          }
       },
       "tools": {
@@ -6314,7 +6359,8 @@
             "grain_resource_name": "Irgendein Korn",
             "grain_flour_resource_name": "Irgendein Mehl",
             "any_pet_food_resource_name": "Irgendein Tierfutter",
-            "milk_resource_name": "Irgendeine Milch"
+            "milk_resource_name": "Irgendeine Milch",
+            "butter_resource_name": "Irgendeine Butter"
          }
       },
       "hotkeys": {
