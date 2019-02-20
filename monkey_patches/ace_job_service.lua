@@ -20,6 +20,7 @@ function AceJobService:_load_kingdom_job_data()
          if not self._all_job_data.jobs[alias] then
             local job_description = radiant.deep_copy(radiant.resources.load_json(alias))
             job_description.is_worker = job_description.alias == 'stonehearth:jobs:worker'
+            job_description.generic_alias = job_description.alias
             job_description.alias = alias
             self._all_job_data.jobs[alias] = {
                description = job_description

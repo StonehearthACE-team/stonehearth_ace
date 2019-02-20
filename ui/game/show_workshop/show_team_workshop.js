@@ -174,7 +174,7 @@ $(top).on('stonehearthReady', function() {
             if (productCatalogData && (productCatalogData.equipment_required_level || productCatalogData.equipment_roles)) {
                self.$('.detailsView').find('.tooltipstered').tooltipster('destroy');
                if (productCatalogData.equipment_roles) {
-                  var classArray = radiant.findRelevantClassesArray(productCatalogData.equipment_roles);
+                  var classArray = self.findRelevantClassesArray(productCatalogData.equipment_roles);
                   self.set('allowedClasses', classArray);
                }
                if (productCatalogData.equipment_required_level) {
@@ -209,6 +209,34 @@ $(top).on('stonehearthReady', function() {
             } else {
                self.$('#recipeEquipmentPane').hide();
             }
+         },
+
+         findRelevantClassesArray: function(roles) {
+            var classes = {};
+            var classArray = [];
+            if ((typeof roles) === 'string') {
+               roles = roles.split(" ");
+            }
+            var jobData = App.jobConstants;
+            for( i=0; i<roles.length; i++ ) {
+               var thisRole = roles[i];
+               var roleInfo = App.roleConstants[thisRole];
+               if (roleInfo) {
+                  radiant.each(roleInfo, function(targetClass, value) {
+                     var genericAlias = jobData[targetClass].description.generic_alias || targetClass;
+                     if (!classes[genericAlias]) {
+                        classes[genericAlias] = true;
+                        var classInfo = {
+                           name : genericAlias,
+                           readableName:  jobData[genericAlias].description.display_name, 
+                           icon : jobData[genericAlias].description.icon
+                        };
+                        classArray.push(classInfo);
+                     }
+                  });
+               }
+            }
+            return classArray;
          },
 
          actions: {
