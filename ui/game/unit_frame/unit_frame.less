@@ -1,5 +1,6 @@
 #unitFrame {
    left: 50px;
+   height: 120px;
 
    #nametag {
       position: relative;
@@ -10,6 +11,50 @@
       top: -33px;
       display: none;
       min-width: 100px;
+   }
+
+   #info {
+      height: 98px;
+
+      .inner {
+         #portrait-frame {
+            height: 99px;
+            width: 99px;
+            background-size: cover;
+         }
+
+         #portrait {
+            background-size: 99px, 99px;
+         }
+
+         #moodIcon {
+            display: inline-block;
+            clear: both;
+            float: left;
+            margin: 0px 4px;
+         }
+
+         #descriptionDiv {
+            clear: inherit;
+            float: inherit;
+         }
+
+         #nameBlock {
+            #activityDiv {
+               position: absolute;
+               bottom: -20px;
+               left: 88px;
+            }
+         }
+      }
+
+      #commandButtons {
+         bottom: 12px;
+      }
+   }
+
+   #combatControls {
+      bottom: 111px;
    }
 
    #componentInfoButton {

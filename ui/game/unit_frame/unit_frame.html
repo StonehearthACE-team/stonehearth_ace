@@ -63,6 +63,11 @@
                      </div>
                   </div>
                </div>
+               {{#if view.moodData.current_mood_buff.icon}}
+                  <div id="moodIcon">
+                     <img {{bind-attr src="view.moodData.current_mood_buff.icon"}} />
+                  </div>
+               {{/if}}
                <div id="descriptionDiv" {{bind-attr class=view.canChangeJob:clickable:noHover}}>
                   {{#if view.model.stonehearth:job.class_icon}}
                      <div id="jobIcon">
@@ -94,11 +99,6 @@
                </div>
                {{#if view.model.stonehearth:ai}}
                   <div id="activityDiv">
-                     {{#if view.moodData.current_mood_buff.icon}}
-                        <div id="moodIcon">
-                           <img {{bind-attr src="view.moodData.current_mood_buff.icon"}} />
-                        </div>
-                     {{/if}}
                      <div class="activity">{{i18n_key view.model.stonehearth:ai.status_text_key data=view.model.stonehearth:ai.status_text_data}}</div>
                   </div>
                {{/if}}
