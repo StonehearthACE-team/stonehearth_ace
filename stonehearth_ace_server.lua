@@ -82,7 +82,8 @@ local monkey_patches = {
    ace_aggro_observer = 'stonehearth.ai.observers.aggro_observer',
    ace_job_service = 'stonehearth.services.server.job.job_service',
    ace_constants = 'stonehearth.constants',
-   ace_eating_lib = 'stonehearth.ai.lib.eating_lib'
+   ace_eating_lib = 'stonehearth.ai.lib.eating_lib',
+   ace_food_preference_script = 'stonehearth.data.traits.food_preference.food_preference_script'
 }
 
 local function monkey_patching()
