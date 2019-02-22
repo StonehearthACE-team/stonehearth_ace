@@ -96,7 +96,7 @@ App.StonehearthUnitFrameView.reopen({
       //the following is some rough dynamic sizing to prevent descriptions and command buttons from overlapping
       //it has to happen after render to check the elements for the unit frame for the newly selected item, not the previous
       Ember.run.scheduleOnce('afterRender', this, function() {
-         var width = this.$('#moodIcon').width() + this.$('#descriptionDiv').width() + this.$('#commandButtons').width() + 30; // + 30 to account for margins
+         var width = this.$('#descriptionDiv').width() + this.$('#commandButtons').width() + 30; // + 30 to account for margins
          if (this.get('hasPortrait')) {
             width += this.$('#portrait-frame').width();
          }
