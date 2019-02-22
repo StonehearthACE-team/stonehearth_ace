@@ -1,0 +1,17 @@
+{
+   "type": "buff",
+   "axis": "buff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.lovely_meal.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.lovely_meal.description)",
+   "icon": "file(lovely_meal_buff.png)",
+   "duration": "8h",
+   "repeat_add_action": "renew_duration",
+   "modifiers": {
+      "diligence": {
+         "multiply": 1.5
+      },
+      "willpower": {
+         "multiply": 1.5
+      }
+   }
+}

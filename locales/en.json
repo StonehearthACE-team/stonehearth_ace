@@ -358,6 +358,26 @@
                "fish_intolerant_ate_fish": {
                   "display_name": "Fish Intolerance",
                   "tooltip": "I'm never having [str(foodname)] again. Never! Ouch..."
+               },
+               "ate_lovely": {
+                  "display_name": "Ate something lovely!",
+                  "tooltip": "I had [str(foodname)]! I want more! I'm so happy about it!"
+               },
+               "dairy_lover_ate_dairy": {
+                  "display_name": "Dairy lover",
+                  "tooltip": "Yes! I'm so glad I could eat [str(foodname)] today! It's definitely one of the things I love the most!"
+               },
+               "meat_lover_ate_meat": {
+                  "display_name": "Meat lover",
+                  "tooltip": "Hmmm... That [str(foodname)] was delicious. I love meat, all kinds of meat - but that one was just amazing!"
+               },
+               "vegetable_lover_ate_vegetable": {
+                  "display_name": "Veggie lover",
+                  "tooltip": "I can't believe how good [str(foodname)] was. How can such delicious things come from the ground?"
+               },
+               "fungi_lover_ate_fungi": {
+                  "display_name": "Mushroom lover",
+                  "tooltip": "Yum! I love eating fungi, and I must admit [str(foodname)] was particularly good!"
                }
             }
          }
@@ -629,6 +649,10 @@
          "upset_belly": {
             "display_name": "Upset Belly",
             "description": "Very uncomfortable. Speed, Diligence and Willpower are reduced."
+         },
+         "lovely_meal": {
+            "display_name": "Lovely Meal",
+            "description": "Eating well is motivating! Diligence and Willpower fairly increased."
          }
       },
       "loadouts": {
@@ -676,6 +700,22 @@
          "nuts_intolerance_trait": {
             "display_name": "Nut Intolerance",
             "description": "[name(i18n_data.entity)] has a particular sensitivity to nuts and hard seeds. These just can't get along with their belly."
+         },
+         "dairy_love_trait": {
+            "display_name": "Dairy Lover",
+            "description": "It is no secret how much [name(i18n_data.entity)] loves dairy products. They'll always appreciate eating it more than anything else, if possible."
+         },
+         "vegetable_love_trait": {
+            "display_name": "Veggie Lover",
+            "description": "It is no secret how much [name(i18n_data.entity)] loves vegetables. They'll always appreciate eating it more than anything else, if possible."
+         },
+         "meat_love_trait": {
+            "display_name": "Meat Lover",
+            "description": "It is no secret how much [name(i18n_data.entity)] loves meat. They'll always appreciate eating it more than anything else, if possible."
+         },
+         "fungi_love_trait": {
+            "display_name": "Mushroom Lover",
+            "description": "It is no secret how much [name(i18n_data.entity)] loves mushrooms of all kinds. They'll always appreciate eating it more than anything else, if possible."
          }
       }
    },

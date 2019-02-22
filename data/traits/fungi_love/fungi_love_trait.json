@@ -1,0 +1,12 @@
+{
+   "type": "trait",
+   "display_name": "i18n(stonehearth_ace:data.traits.fungi_love_trait.display_name)",
+   "description": "i18n(stonehearth_ace:data.traits.fungi_love_trait.description)",
+   "icon": "file(fungi_love_trait.png)",
+   "script_controller": "stonehearth:trait_scripts:food_preference",
+   "data": {
+      "food_preferences": "fungi",
+      "preference_effect": "stonehearth_ace:buffs:lovely_meal",
+      "lovely_thought": "stonehearth:thoughts:eating:fungi_lover_ate_fungi"
+   }
+}

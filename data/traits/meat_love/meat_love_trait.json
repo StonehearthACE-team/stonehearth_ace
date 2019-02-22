@@ -1,0 +1,12 @@
+{
+   "type": "trait",
+   "display_name": "i18n(stonehearth_ace:data.traits.meat_love_trait.display_name)",
+   "description": "i18n(stonehearth_ace:data.traits.meat_love_trait.description)",
+   "icon": "file(meat_love_trait.png)",
+   "script_controller": "stonehearth:trait_scripts:food_preference",
+   "data": {
+      "food_preferences": "meat",
+      "preference_effect": "stonehearth_ace:buffs:lovely_meal",
+      "lovely_thought": "stonehearth:thoughts:eating:meat_lover_ate_meat"
+   }
+}
