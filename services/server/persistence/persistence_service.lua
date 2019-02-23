@@ -31,6 +31,26 @@ function PersistenceService:_load_all_persistence_data()
          table.insert(self._towns, town)
       end
    end
+
+   self._all_crafters = {}
+   self._crafters_by_job = {}
+   for _, town in ipairs(self._towns) do
+      if town.crafters then
+         for job_uri, crafters in pairs(town.crafters) do
+            local crafter_type = self._crafters_by_job[job_uri]
+            if not crafter_type then
+               crafter_type = {}
+               self._crafters_by_job[job_uri] = crafter_type
+            end
+            for _, crafter in ipairs(crafters) do
+               crafter.job_uri = job_uri
+               crafter.save_id = town.save_id   -- allow us to easily reference this crafter's town
+               table.insert(crafter_type, crafter)
+               table.insert(self._all_crafters, crafter)
+            end
+         end
+      end
+   end
 end
 
 function PersistenceService:get_all_towns()
@@ -40,6 +60,26 @@ end
 function PersistenceService:get_random_town()
    if #self._towns > 0 then
       return self._towns[rng:get_int(1, #self._towns)]
+   end
+end
+
+function PersistenceService:get_town_by_save_id(save_id)
+   return self._all_persistence_data[save_id]
+end
+
+function PersistenceService:get_all_crafters(job_uri)
+   if job_uri then 
+      return self._crafters_by_job[job_uri]
+   else
+      return self._all_crafters
+   end
+end
+
+function PersistenceService:get_random_crafter(job_uri)
+   local crafters = self:get_all_crafters(job_uri)
+
+   if crafters and #crafters > 0 then
+      return crafters[rng:get_int(1, #crafters)]
    end
 end
 

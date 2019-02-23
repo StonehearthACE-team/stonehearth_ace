@@ -73,7 +73,7 @@ return ai:create_compound_action(Train)
             event_name = 'stonehearth:work_order:job:work_player_id_changed',
          })
          :execute('stonehearth:drop_backpack_contents_on_ground', {})
-		 :execute('stonehearth:set_posture', { posture = 'stonehearth:combat' })
+		   :execute('stonehearth:set_posture', { posture = 'stonehearth:combat' })
          :execute('stonehearth:find_best_reachable_entity_by_type', 
 					{ filter_fn = ai.CALL(find_training_dummy, ai.ENTITY)})
-		 :execute('stonehearth_ace:train_attack', { target = ai.BACK(1).item })
+		   :execute('stonehearth_ace:train_attack', { target = ai.BACK(1).item })
