@@ -10,9 +10,7 @@ local PreSaveCallHandler = class()
 local _queued_calls = {}
 
 function PreSaveCallHandler:ace_pre_save_command(session, response)
-   --stonehearth_ace.connection:saved_variables_mark_changed()
-   --stonehearth_ace.mechanical:saved_variables_mark_changed()
-   --stonehearth_ace.vine:saved_variables_mark_changed()
+   stonehearth_ace.persistence:save_town_data()
 
    response:resolve({})
 end

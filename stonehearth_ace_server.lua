@@ -7,6 +7,7 @@ local service_creation_order = {
    'water_signal',
    'underfarming',
    'mechanical',
+   'persistence'
    --'vine'
 }
 

@@ -123,6 +123,10 @@ function AceFarmerFieldComponent:_get_default_fertilizer_preference()
    end
 end
 
+function AceFarmerFieldComponent:get_contents()
+   return self._sv.contents
+end
+
 AceFarmerFieldComponent._ace_old_on_field_created = FarmerFieldComponent.on_field_created
 function AceFarmerFieldComponent:on_field_created(town, size)
    self:_ace_old_on_field_created(town, size)

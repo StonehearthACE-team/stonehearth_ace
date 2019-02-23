@@ -4,6 +4,15 @@ local entity_forms_lib = require 'stonehearth.lib.entity_forms.entity_forms_lib'
 local Town = require 'stonehearth.services.server.town.town'
 local AceTown = class()
 
+AceTown._ace_old__pre_activate = Town._pre_activate
+function AceTown:_pre_activate()
+   self:_ace_old__pre_activate()
+
+   if not self._sv._total_travelers_visited then
+      self._sv._total_travelers_visited = self._sv._num_travelers
+   end
+end
+
 AceTown._ace_old__requirements_met = Town._requirements_met
 function AceTown:_requirements_met(person, job_uri)
    local job_component = person:get_component('stonehearth:job')
@@ -171,6 +180,122 @@ function AceTown:pop_entity_into_iconic(entity)
       radiant.terrain.remove_entity(root)
       radiant.terrain.place_entity_at_exact_location(iconic, location)
    end
+end
+
+AceTown._ace_old_spawn_traveler = Town.spawn_traveler
+function AceTown:spawn_traveler()
+   self._sv._total_travelers_visited = self._sv._total_travelers_visited + 1
+
+   return self:_ace_old_spawn_traveler()
+end
+
+function AceTown:get_persistence_data()
+   local pop = stonehearth.population:get_population(self._sv.player_id)
+   
+   local data = {
+      player_id = self._sv.player_id,
+      town_name = self._sv.town_name,
+      kingdom = pop:get_kingdom(),
+      total_travelers_visited = self._sv._total_travelers_visited,
+      shepherd_animals = self:_get_shepherd_animals_data(),
+      farm_crops = self:_get_farm_crops_data(),
+      scores = self:_get_scores_data(),
+      jobs = self:_get_jobs_data(),
+      elapsed_days = stonehearth.calendar:get_elapsed_days()
+   }
+
+   self:_add_citizen_persistence_data(data, pop)
+
+   return data
+end
+
+function AceTown:_get_shepherd_animals_data()
+   local animals = {}
+   local all_animals = self:get_pasture_animals()
+   for _, animal in pairs(all_animals) do
+      local uri = animal:get_uri()
+      animals[uri] = (animals[uri] or 0) + 1
+   end
+   return animals
+end
+
+function AceTown:_get_farm_crops_data()
+   local crops = {}
+   for _, farm in pairs(self._sv._farms) do
+      local contents = farm:get_component('stonehearth:farmer_field'):get_contents()
+      for x, col in pairs(contents) do
+         for y, plot in pairs(col) do
+            if plot.contents then
+               local uri = plot.contents:get_uri()
+               crops[uri] = (crops[uri] or 0) + 1
+            end
+         end
+      end
+   end
+   return crops
+end
+
+function AceTown:_get_scores_data()
+   local scores = {}
+   local scores_data = stonehearth.score:get_scores_for_player(self._sv.player_id):get_score_data()
+   
+   scores.average_food = scores_data.average:contains('food') and scores_data.average:get('food') or nil
+   scores.average_nutrition = scores_data.average:contains('nutrition') and scores_data.average:get('nutrition') or nil
+   scores.average_safety = scores_data.average:contains('safety') and scores_data.average:get('safety') or nil
+   scores.average_shelter = scores_data.average:contains('shelter') and scores_data.average:get('shelter') or nil
+
+   scores.category_buildings = scores_data.category_scores:contains('buildings') and scores_data.category_scores:get('buildings') or nil
+
+   scores.median_happiness = scores_data.median:contains('happiness') and scores_data.median:get('happiness') or nil
+
+   scores.total_edibles = scores_data.total_scores:contains('edibles') and scores_data.total_scores:get('edibles') or nil
+   scores.total_military_strength = scores_data.total_scores:contains('military_strength') and scores_data.total_scores:get('military_strength') or nil
+   scores.total_net_worth = scores_data.total_scores:contains('net_worth') and scores_data.total_scores:get('net_worth') or nil
+
+   return scores
+end
+
+function AceTown:_get_jobs_data()
+   local counts = {}
+   local jobs_controller = stonehearth.job:get_jobs_controller(self._sv.player_id)
+   local crafter_count, fighter_count, worker_count = jobs_controller:get_worker_crafter_fighter_counts()
+   counts.num_workers = worker_count
+   counts.num_crafters = crafter_count
+   counts.num_fighters = fighter_count
+   counts.job_member_counts = jobs_controller:get_job_member_counts()
+
+   return counts
+end
+
+function AceTown:_add_citizen_persistence_data(data, pop)
+   local crafters = {}
+   local min_level = stonehearth.constants.persistence.crafters.MIN_LEVEL
+
+   for id, citizen in pop:get_citizens():each() do
+      local job = citizen:get_component('stonehearth:job')
+      local job_uri = job:get_job_uri()
+      local job_level = job:get_current_job_level()
+      -- we only care about citizens that are level 6+ at their current jobs
+      -- (these are the noteworthy citizens that might become known across the land)
+      if job_level >= min_level then
+         local crafter_comp = citizen:get_component('stonehearth:crafter')
+         if crafter_comp then
+            local crafter_type = crafters[job_uri]
+            if not crafter_type then
+               crafter_type = {}
+               crafters[job_uri] = crafter_type
+            end
+            table.insert(crafter_type,
+            {
+               name = radiant.entities.get_custom_name(citizen),
+               level = job_level,   -- in case we decide to relax the level 6+ constraint
+               best_crafts = crafter_comp:get_best_crafts()
+            })
+         end
+      end
+   end
+
+   data.crafters = crafters
 end
 
 return AceTown

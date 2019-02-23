@@ -103,4 +103,17 @@ function AceTownService:get_best_affinity_level(affinities)
 	return best_affinity, next_affinity
 end
 
+-- go through each town and check if it's tier 3
+-- if so, collect important data from it
+function AceTownService:get_persistence_data()
+   local data = {}
+   for player_id, town in pairs(self._sv.towns) do
+      local pop = stonehearth.population:get_population(player_id)
+      if pop and pop:get_city_tier() >= 3 then
+         data[player_id] = town:get_persistence_data()
+      end
+   end
+   return data
+end
+
 return AceTownService

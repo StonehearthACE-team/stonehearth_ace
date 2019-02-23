@@ -8,6 +8,15 @@ local AceCrafterComponent = class()
 
 local STANDARD_QUALITY_INDEX = 1
 
+AceCrafterComponent._ace_old_activate = CrafterComponent.activate
+function AceCrafterComponent:activate()
+   self:_ace_old_activate()
+
+   if not self._sv._best_crafts then
+      self._sv._best_crafts = {}
+   end
+end
+
 --If you stop being a crafter, b/c you're killed or demoted,
 --drop all your stuff, and release your crafting order, if you have one.
 function AceCrafterComponent:clean_up_order()
@@ -36,6 +45,7 @@ function AceCrafterComponent:produce_crafted_item(product_uri, recipe, ingredien
       local quality = self:_calculate_quality(recipe.level_requirement or 0, ingredient_quality or STANDARD_QUALITY_INDEX)
       item:add_component('stonehearth:item_quality'):initialize_quality(quality, self._entity, 'person')
    end
+   self:_update_best_crafts(item)
 
    -- if it's a pile item, add the ingredients to the pile component
    local pile_comp = item:get_component('stonehearth_ace:pile')
@@ -129,6 +139,33 @@ function AceCrafterComponent:_calculate_quality(recipe_lvl_req, ingredient_quali
    radiant.assert(output_quality, 'could not calculate an item quality')
 
    return output_quality
+end
+
+function AceCrafterComponent:get_best_crafts()
+   return self._sv._best_crafts
+end
+
+function AceCrafterComponent:_update_best_crafts(item)
+   local quality = radiant.entities.get_item_quality(item)
+   
+   if quality >= stonehearth.constants.persistence.crafters.MIN_QUALITY_BEST_CRAFTS then
+      local best_crafts = self._sv._best_crafts
+      table.insert(best_crafts, {uri = item:get_uri(), quality = quality})
+
+      -- if there are more than the directed number of best crafts, remove the oldest lowest quality ones
+      local num_stored = stonehearth.constants.persistence.crafters.NUM_BEST_CRAFTS_STORED
+      while best_crafts[num_stored + 1] do
+         local worst_index = 1
+         for i = 1, #best_crafts do
+            if best_crafts[i].quality < best_crafts[worst_index].quality then
+               worst_index = i
+            end
+         end
+         table.remove(best_crafts, worst_index)
+      end
+
+      self.__saved_variables:mark_changed()
+   end
 end
 
 return AceCrafterComponent
