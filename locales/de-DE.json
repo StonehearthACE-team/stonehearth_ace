@@ -344,7 +344,7 @@
             },
             "eating": {
                "ate_intolerable": {
-                  "display_name": "Aß etwas unverträgliches",
+                  "display_name": "aß etwas unverträgliches",
                   "tooltip": "Ich hatte vor kurzem [str(foodname)]... ich fühle mich nicht gut..."
                },
                "dairy_intolerant_ate_dairy": {
@@ -358,6 +358,26 @@
                "fish_intolerant_ate_fish": {
                   "display_name": "Fischintoleranz",
                   "tooltip": "Ich werde nie wieder [str(foodname)] essen. NIE MEHR! Ouch..."
+               },
+               "ate_lovely": {
+                  "display_name": "aß etwas liebliches!",
+                  "tooltip": "Ich habe [str(foodname)] gegessen! Ich will mehr! Ich bin so glücklich darüber!"
+               },
+               "dairy_lover_ate_dairy": {
+                  "display_name": "Milchliebhaber",
+                  "tooltip": "Ja! Ich bin so froh, dass ich heute [str(foodname)]  essen konnte! Das ist definitiv eines der Dinge, die ich am meisten liebe!"
+               },
+               "meat_lover_ate_meat": {
+                  "display_name": "Fleischliebhaber",
+                  "tooltip": "Hmmm... DAs [str(foodname)] war köstlich. Ich liebe Fleisch, alle Arten von Fleisch - aber dieses war einfach unglaublich!"
+               },
+               "vegetable_lover_ate_vegetable": {
+                  "display_name": "Veggieliebhaber",
+                  "tooltip": "Ich kann nicht glauben wie gut [str(foodname)] war. Wie können so leckere Dinge aus dem Boden kommen?"
+               },
+               "fungi_lover_ate_fungi": {
+                  "display_name": "Pilzliebhaber",
+                  "tooltip": "Lecker! Ich esse gerne Pilze und ich muss zugeben, dass [str(foodname)] besonders gut war!"
                }
             }
          }
@@ -629,6 +649,10 @@
          "upset_belly": {
             "display_name": "Unruhiger Magen",
             "description": "Sehr ungemütlich. Geschwindigkeit, Fleiß und Willenskraft sind reduziert."
+         },
+         "lovely_meal": {
+            "display_name": "Leckeres Essen",
+            "description": "Gutes essen ist motivierend! Fleiß und Willenskraft wurden ziemlich erhöht."
          }
       },
       "loadouts": {
@@ -676,6 +700,22 @@
          "nuts_intolerance_trait": {
             "display_name": "Nussintoleranz",
             "description": "[name(i18n_data.entity)] hat eine besondere Empfindlichkeit gegenüber Nüssen und harten Samen."
+         },
+         "dairy_love_trait": {
+            "display_name": "Milchliebhaber",
+            "description": "Es ist kein Geheimnis, wie sehr [name(i18n_data.entity)] Milchprodukte liebt. Sie werden es immer zu schätzen wissen, wenn sie die Möglichkeit haben etwas davon zu essen."
+         },
+         "vegetable_love_trait": {
+            "display_name": "Veggieliebhaber",
+            "description": "Es ist kein Geheimnis, wie sehr [name(i18n_data.entity)] Gemüse liebt. Sie werden es immer zu schätzen wissen, wenn sie die Möglichkeit haben etwas davon zu essen."
+         },
+         "meat_love_trait": {
+            "display_name": "Fleischliebhaber",
+            "description": "Es ist kein Geheimnis, wie sehr [name(i18n_data.entity)] Fleisch liebt. Sie werden es immer zu schätzen wissen, wenn sie die Möglichkeit haben etwas davon zu essen."
+         },
+         "fungi_love_trait": {
+            "display_name": "Pilzliebhaber",
+            "description": "Es ist kein Geheimnis, wie sehr [name(i18n_data.entity)] Pilze aller Art liebts. Sie werden es immer zu schätzen wissen, wenn sie die Möglichkeit haben etwas davon zu essen."
          }
       }
    },
@@ -4278,7 +4318,7 @@
          "fish_pot_pie": {
             "fish_pot_pie": {
                "display_name": "Fischpastete",
-               "description": "Eine köstliche Torte mit Fischfleisch und Pilzfüllung."
+               "description": "Eine köstliche Torte mit Fisch- und Pilzfüllung."
             },
             "fish_pot_pie_serving": {
                "display_name": "Eine Portion Fischpastete"
@@ -4296,7 +4336,7 @@
          "catfish_tagine": {
             "catfish_tagine": {
                "display_name": "Katzenfischeintopf",
-               "description": "Katzenfischfleisch und Gemüse brodelnd in einem Tontopf."
+               "description": "Katzenfisch und Gemüse brodelnd in einem Tontopf."
             },
             "catfish_tagine_serving": {
                "display_name": "Eine Portion Katzenfischeintopf"
@@ -4337,7 +4377,7 @@
          "panettone": {
             "panettone_serving": {
                "display_name": "Eine Ecke Panettone",
-               "description": "Oh nom nom"
+               "description": "Om nom nom"
             },
             "panettone": {
                "display_name": "Panettone",
@@ -4435,7 +4475,7 @@
          "megacrop_rabbit_feed": {
             "megacrop_rabbit_feed": {
                "display_name": "Mega Karottenfutter",
-               "description": "Riesige und kräftige Karotte, die Kaninchen definitiv zu schätzen wissen würden."
+               "description": "Riesige und vitalisierende Karotte, die Kaninchen definitiv zu schätzen wissen würden."
             },
             "megacrop_rabbit_feed_ground": {
                "display_name": "Mega Karottenfutter",
@@ -4522,7 +4562,7 @@
          "fruit_yogurt": {
             "fruit_yogurt": {
                "display_name": "Fruchtjoghurt",
-               "description": "Fermentierte, cremige Milch mit Zucker und Früchten gesüßt."
+               "description": "Cremige, fermentierte,  Milch mit Zucker und Früchten gesüßt."
             },
             "fruit_yogurt_serving": {
                "display_name": "Eine Schale mit Fruchtjoghurt",
