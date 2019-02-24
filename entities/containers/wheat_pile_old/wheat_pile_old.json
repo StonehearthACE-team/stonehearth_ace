@@ -1,7 +1,10 @@
 {
    "type": "entity",
    "components": {
-      "stonehearth:evolve": {}
+      "stonehearth:evolve": {},
+      "stonehearth_ace:pile": {
+         "harvest_rate": 3
+      }
    },
    "entity_data": {
       "stonehearth:evolve_data": {
@@ -13,6 +16,9 @@
       },
       "stonehearth:appeal": {
          "appeal": 1
+      },
+      "stonehearth_ace:replant_data": {
+         "seed_alias": "stonehearth:containers:wheat_pile_old"
       }
    }
 }
