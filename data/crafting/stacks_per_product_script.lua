@@ -19,31 +19,25 @@ function stacks_per_product.on_craft(ai, crafter, workshop, recipe, ingredients,
                   max_stacks = stacks_comp:get_max_stacks()
                }
             end
+            local num_crafts = math.floor(ing_data.stacks / stacks_per)
+            if max_crafts then
+               max_crafts = math.min(num_crafts, max_crafts)
+            else
+               max_crafts = num_crafts
+            end
          end
       end
    end
 
-   local min_crafts
    for uri, ing_data in pairs(ing_stacks) do
       local stacks_per = product.stacks_per_product[uri]
-      local num_crafts = math.floor(ing_data.stacks / stacks_per)
-      if max_crafts then
-         num_crafts = math.min(num_crafts, max_crafts)
-      end
-      local stacks_remaining = ing_data.stacks - num_crafts * stacks_per
-      ing_data.stacks_per = stacks_per
-      ing_data.num_crafts = num_crafts
-      ing_data.stacks_remaining = stacks_remaining
-
-      if not min_crafts or num_crafts < min_crafts then
-         min_crafts = num_crafts
-      end
+      ing_data.stacks_remaining = ing_data.stacks - max_crafts * stacks_per
    end
 
    -- then do stuff based on min_crafts
    -- if it's < 1, then it's our own fault for not specifying a high enough min_stacks for the ingredient
    -- if it's >= 1, create that many of the product and additional copies of the ingredients for any remaining stacks
-   for i = 2, min_crafts do
+   for i = 2, max_crafts do
       table.insert(extra_products, product.item)
    end
 
