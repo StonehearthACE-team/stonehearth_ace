@@ -7,7 +7,10 @@ PickupItemWithUri.name = 'pickup item with uri'
 PickupItemWithUri.does = 'stonehearth:pickup_item_with_uri'
 PickupItemWithUri.args = {
    uri = 'string',      -- uri we want
-   
+   min_stacks = {
+      type = 'number',
+      default = stonehearth.ai.NIL
+   },
    rating_fn = {                       -- a function to rate entities on a 0-1 scale to determine the best.
       type = 'function',
       default = stonehearth.ai.NIL,
@@ -22,10 +25,22 @@ function PickupItemWithUri:start_thinking(ai, entity, args)
    local uri = args.uri
    local player_id = radiant.entities.get_player_id(entity)
    local is_owned_by_another_player = radiant.entities.is_owned_by_another_player
-   local filter_fn = stonehearth.ai:filter_from_key('stonehearth:pickup_item_with_uri', player_id .. ':' .. uri, function (entity)
+   local key = player_id .. ':' .. uri
+   if args.min_stacks then
+      key = key .. ':' .. args.min_stacks
+   end
+   local filter_fn = stonehearth.ai:filter_from_key('stonehearth:pickup_item_with_uri', key, function (entity)
          if is_owned_by_another_player(entity, player_id) then
             -- player does not own this item
             return false
+         end
+
+         -- if we specified min_stacks and this entity doesn't have at least that many, no good
+         if args.min_stacks then
+            local stacks_component = entity:get_component('stonehearth:stacks')
+            if not stacks_component or stacks_component:get_stacks() < args.min_stacks then
+               return false
+            end
          end
 
          local root, iconic = entity_forms_lib.get_forms(entity)

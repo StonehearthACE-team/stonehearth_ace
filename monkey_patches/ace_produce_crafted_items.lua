@@ -79,6 +79,7 @@ function AceProduceCraftedItems:_pre_destroy_ingredients(args)
 end
 
 -- overriding this function to pass along the ingredients and ingredient quality to the crafter component
+-- also allow extra scripting
 function AceProduceCraftedItems:_add_outputs_to_bench(ai, crafter, workshop, recipe, ingredients, ingredient_quality)
    -- figure out where the outputs all go
    local location_on_workshop
@@ -106,30 +107,42 @@ function AceProduceCraftedItems:_add_outputs_to_bench(ai, crafter, workshop, rec
          local item = crafter_component:produce_crafted_item(product_uri, recipe, ingredients, ingredient_quality)
          
          -- if the item has any extra scripts to run, do those now
+         local all_products = {}
+         table.insert(all_products, item)
+         local extra_products = {}
          if product.produce_scripts then
             for _, produce_script in ipairs(product.produce_scripts) do
                local script = radiant.mods.load_script(produce_script)
                if script and script.on_craft then
-                  script.on_craft(ai, crafter, workshop, recipe, ingredients, product, item)
+                  script.on_craft(ai, crafter, workshop, recipe, ingredients, product, item, extra_products)
                end
             end
          end
+         for _, extra_product in ipairs(extra_products) do
+            if type(extra_product) == 'string' then
+               table.insert(all_products, crafter_component:produce_crafted_item(extra_product, recipe, ingredients, ingredient_quality))
+            else
+               table.insert(all_products, extra_product)
+            end
+         end
 
-         -- put the item on the workshop
-         item:add_component('mob')
-                  :move_to(location_on_workshop)
-         workshop:add_component('entity_container')
-                  :add_child(item)
+         for _, each_product in ipairs(all_products) do
+            -- put the items on the workshop
+            each_product:add_component('mob')
+                     :move_to(location_on_workshop)
+            workshop:add_component('entity_container')
+                     :add_child(each_product)
 
-         radiant.entities.set_player_id(item, crafter)
-         
-         -- Make sure other people don't try to swipe our item while we are deciding to take it to storage.
-         local player_id = radiant.entities.get_player_id(crafter)
-         stonehearth.ai:acquire_ai_lease(item, crafter, 1000, player_id)
+            radiant.entities.set_player_id(each_product, crafter)
+            
+            -- Make sure other people don't try to swipe our item while we are deciding to take it to storage.
+            local player_id = radiant.entities.get_player_id(crafter)
+            stonehearth.ai:acquire_ai_lease(each_product, crafter, 1000, player_id)
 
-         stonehearth.inventory:get_inventory(player_id):add_item(item)
+            stonehearth.inventory:get_inventory(player_id):add_item(each_product)
 
-         table.insert(self._outputs, item)
+            table.insert(self._outputs, each_product)
+         end
 
          radiant.effects.run_effect(item, 'stonehearth:effects:item_created')
 

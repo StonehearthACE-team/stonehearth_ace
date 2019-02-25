@@ -1,7 +1,7 @@
 local stacks = {}
 
 function stacks.on_craft(ai, crafter, workshop, recipe, ingredients, product, item)
-   local stacks_comp = product:get_component('stonehearth:stacks')
+   local stacks_comp = item:get_component('stonehearth:stacks')
    if stacks_comp then 
       if product.stacks then
          stacks_comp:set_stacks(product.stacks)
