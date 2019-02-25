@@ -1,8 +1,8 @@
 local entity_forms_lib = require 'stonehearth.lib.entity_forms.entity_forms_lib'
 local material_model_variant = {}
 
-function material_model_variant.on_craft(ai, crafter, workshop, recipe, ingredients, product, item)
-   if product.model_variant_material then
+function material_model_variant.on_craft(ai, crafter, workshop, recipe, ingredients, product, item, extra_products)
+   if product.model_variant_material and item and item:is_valid() then
       local uri = material_model_variant.majority_material_uri(ingredients, product.model_variant_material)
       if uri then
          local root, iconic = entity_forms_lib.get_forms(item)

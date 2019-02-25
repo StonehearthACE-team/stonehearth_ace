@@ -92,12 +92,12 @@
                      <div class="description">{{i18n_key view.description self=view.model}}</div>
                   {{/if}}
                </div>
-               {{#if view.moodData.current_mood_buff.icon}}
-                  <div id="moodIcon">
-                     <img {{bind-attr src="view.moodData.current_mood_buff.icon"}} />
-                  </div>
-               {{/if}}
                {{#if view.model.stonehearth:ai}}
+                  {{#if view.moodData.current_mood_buff.icon}}
+                     <div id="moodIcon">
+                        <img {{bind-attr src="view.moodData.current_mood_buff.icon"}} />
+                     </div>
+                  {{/if}}
                   <div id="activityDiv" {{bind-attr class=view.hasPortrait:hasPortrait}}>
                      <div class="activity">{{i18n_key view.model.stonehearth:ai.status_text_key data=view.model.stonehearth:ai.status_text_data}}</div>
                   </div>
