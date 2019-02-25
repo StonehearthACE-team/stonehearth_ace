@@ -1,0 +1,57 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(imperial_salad.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 }
+      },
+      "stonehearth:stacks": {
+         "max_stacks": 3
+      }
+   },
+   "entity_data": {
+      "stonehearth:food_container": {
+         "effect": "fiddle",
+         "food": "stonehearth_ace:food:imperial_salad:imperial_salad_serving",
+         "stacks_per_serving": 1
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 16,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 1,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.imperial_salad.imperial_salad.display_name)",
+         "description": "i18n(stonehearth_ace:entities.food.imperial_salad.imperial_salad.description)",
+         "icon": "file(imperial_salad.png)",
+         "is_item": true,
+         "category": "food",
+         "material_tags": [
+            "food_container",
+            "prepared_food",
+            "imperial_salad",
+            "stockpile_prepared_food",
+            "dairy",
+            "vegetarian"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": 4
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

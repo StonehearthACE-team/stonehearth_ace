@@ -1,0 +1,30 @@
+{
+   "type": "recipe",
+   "effort": 12,
+   "work_units": 2,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.imperial_salad_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.imperial_salad_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.imperial_salad_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/imperial_salad/imperial_salad/imperial_salad.png",
+   "workshop": "stonehearth:cook:workbench",
+   "level_requirement": 0,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:food:dairy:cheese_cottage",
+         "count": 1
+      },
+	  {
+         "material": "food_container raw_food vegetable",
+         "count": 1
+      },
+	  {
+         "uri": "stonehearth:amberstone:heirbloom_basket",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:imperial_salad"
+      }
+   ]
+}

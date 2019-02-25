@@ -1,0 +1,41 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(butter_cookies_serving.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0.05, "y": 0, "z": 0.05 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:item": {
+         "category": "food",
+         "destroy_on_uncarry": true
+      },
+      "stonehearth:food": {
+         "stonehearth:sitting_on_chair": {
+            "satisfaction": 60
+         },
+         "default": {
+            "satisfaction": 40
+         },
+         "quality": 6
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.butter_cookies.butter_cookies_serving.display_name)",
+         "description": "",
+         "material_tags": [
+            "food",
+            "prepared_dessert",
+            "dairy"
+         ],
+         "subject_override": "stonehearth_ace:food:butter_cookies"
+      }
+   }
+}

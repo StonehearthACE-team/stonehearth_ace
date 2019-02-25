@@ -1,0 +1,27 @@
+{
+   "type": "recipe",
+   "effort": 60	,
+   "work_units": 6,
+   "recipe_name": "i18n(stonehearth_ace:jobs.blacksmith.recipes.gold_ingot_from_coins_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.blacksmith.recipes.gold_ingot_from_coins_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.blacksmith.recipes.gold_ingot_from_coins_recipe.flavor)",
+   "portrait": "/stonehearth/entities/refined/gold_ingot/gold_ingot.png",
+   "workshop": "stonehearth_ace:blacksmith:crucible",
+   "work_effect": "fiddle",
+   "level_requirement": 6,
+   "ingredients": [
+      {
+         "uri": "stonehearth:loot:gold",
+         "count": 50
+      },
+      {
+         "material": "fuel",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth:refined:gold_ingot"
+      }
+   ]
+}

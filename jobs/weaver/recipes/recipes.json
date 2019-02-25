@@ -10,9 +10,35 @@
             }
          }
       },
-	  "clothing_armor": {
+	  "weapons": {
+	     "ordinal": 40,
+         "name": "i18n(stonehearth_ace:jobs.weaver.recipes.weapons_name)",
 	     "recipes": {
-			"worker_holiday_hat": {
+			"cloth_padded_vest": {
+               "recipe": "/stonehearth/jobs/weaver/recipes/cloth_padded_vest_recipe.json"
+            },
+            "leather_helmet": {
+               "recipe": "/stonehearth/jobs/weaver/recipes/leather_helmet_recipe.json"
+            },
+            "leather_vest": {
+               "recipe": "/stonehearth/jobs/weaver/recipes/leather_vest_recipe.json"
+            },
+            "cloth_padded_helmet": {
+               "recipe": "/stonehearth/jobs/weaver/recipes/cloth_padded_helmet_recipe.json"
+            }
+         }
+	  },
+	  "clothing_armor": {
+	     "ordinal": 50,
+         "name": "i18n(stonehearth_ace:jobs.weaver.recipes.clothing_armor_name)",
+	     "recipes": {
+			"mixintypes": {
+				"cloth_padded_vest": "remove",
+				"cloth_padded_helmet": "remove",
+				"leather_vest": "remove",
+				"leather_helmet": "remove"
+			},
+		    "worker_holiday_hat": {
 			   "recipe": "file(worker_holiday_hat_recipe.json)"
 			},
             "backpack_leather": {

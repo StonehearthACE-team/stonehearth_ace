@@ -716,6 +716,16 @@
          "fungi_love_trait": {
             "display_name": "Mushroom Lover",
             "description": "It is no secret how much [name(i18n_data.entity)] loves mushrooms of all kinds. They'll always appreciate eating it more than anything else, if possible."
+         },
+         "carnivore": {
+            "carnivore_trait": {
+               "description": "[name(i18n_data.entity)] just LOVES animals! Especially with hot sauce. However they'll really dislike eating vegetables."
+            }
+         },
+         "herbivore": {
+            "herbivore_trait": {
+               "description": "[name(i18n_data.entity)] is a friend to all animals! Plants, less so. They will really dislike eating meat."
+            }
          }
       }
    },
@@ -1438,6 +1448,16 @@
                "description": "Craft a tool that Workers can use to greatly improve their efficiency when mining.",
                "flavor": "This tool will also improve the odds of obtaining better quality resources"
             },
+			"gold_ingot_from_coins_recipe": {
+               "recipe_name": "Gold Ingot",
+               "description": "Melt 50 gold coins together to form an ingot.",
+               "flavor": ""
+            },
+			"gold_coins_from_ingot_recipe": {
+               "recipe_name": "Gold Coins (x50)",
+               "description": "Use a gold ingot to mint gold coins that can be used in trading!",
+               "flavor": ""
+            },
             "blacksmith_fuel_oven_recipe": {
                "recipe_name": "Blacksmith Kiln",
                "description": "Required for refining certain materials like wood and coal.",
@@ -1864,6 +1884,36 @@
                "description": "Prepare a tasty meal with long, rolled dough noodles and a hot sauce.",
                "flavor": "There are hundreds of pasta shapes from the fair glades of Darkmoor forest all the way to the Pal'Mum desert"
             },
+            "seared_meat_veggies_recipe": {
+               "recipe_name": "Seared Meat & Veggies",
+               "description": "Prepare a pleasant platter of buttered meat slices stirred with fresh veggies.",
+               "flavor": "It smells really good"
+            },
+            "butter_cookies_recipe": {
+               "recipe_name": "Butter Cookies",
+               "description": "Bake a bunch of small and tasty buttered delicacies.",
+               "flavor": "Cookies can make one's life better"
+            },
+            "buttered_bulbs_recipe": {
+               "recipe_name": "Buttered Bulbs",
+               "description": "Stir a mix of mushrooms with butter and spices.",
+               "flavor": ""
+            },
+            "cheesecake_recipe": {
+               "recipe_name": "Cheesecake",
+               "description": "Bake a very soft and flavorful cheese cream and top it with delicious fruit jelly!",
+               "flavor": "Cheese is great, cake is great, why not get them together?"
+            },
+            "imperial_salad_recipe": {
+               "recipe_name": "Imperial Salad",
+               "description": "An appetizing combination of cheese and greens.",
+               "flavor": "It is said that the old emperors of the Phoenix Empire loved eating veggies like this"
+            },
+            "melted_poyo_recipe": {
+               "recipe_name": "Melted Poyo",
+               "description": "A savory roasted poyo filled with veggies and covered in melted cheese.",
+               "flavor": "Hmm... Melted cheese."
+            },
             "legendary_ink_recipe": {
                "recipe_name": "Sacred Ink",
                "description": "Special and gilded ink for illuminated manuscripts in 'The Walk of Cid'.",
@@ -2136,7 +2186,9 @@
                "recipe_name": "Small Porcelain Curtains",
                "description": "Softly lets the light in.",
                "flavor": ""
-            }
+            },
+            "clothing_armor_name": "Clothing & Tools",
+            "weapons_name": "Combat Equipment"
          },
          "weaver_description": {
             "description": "The Weaver can turn hides into leather and fibers into cloth, working with them to create intricate goods, clothing, armor, useful accessories and decorations."
@@ -4577,6 +4629,60 @@
             "cereals_corn_serving": {
                "display_name": "Serving of Corn Cereal",
                "description": "Is it morning yet?"
+            }
+         },
+         "butter_cookies": {
+            "butter_cookies": {
+               "display_name": "Butter Cookies",
+               "description": "A portion of small and tasty buttered delicacies."
+            },
+            "butter_cookies_serving": {
+               "display_name": "Handful of Butter Cookies"
+            }
+         },
+         "buttered_bulbs": {
+            "buttered_bulbs": {
+               "display_name": "Buttered Bulbs",
+               "description": "A nice mix of mushrooms stirred with butter and spices."
+            },
+            "buttered_bulbs_serving": {
+               "display_name": "Serving of Buttered Bulbs"
+            }
+         },
+         "cheesecake": {
+            "cheesecake": {
+               "display_name": "Cheesecake",
+               "description": "Not really cheese nor cake but as delicious as both."
+            },
+            "cheesecake_serving": {
+               "display_name": "Slice of Cheesecake"
+            }
+         },
+         "imperial_salad": {
+            "imperial_salad": {
+               "display_name": "Imperial Salad",
+               "description": "An appetizing combination of cheese and greens as old as the Phoenix Empire."
+            },
+            "imperial_salad_serving": {
+               "display_name": "Serving of Imperial Salad"
+            }
+         },
+         "melted_poyo": {
+            "melted_poyo": {
+               "display_name": "Melted Poyo",
+               "description": "A savory roasted poyo filled with veggies and covered in cheese."
+            },
+            "melted_poyo_serving": {
+               "display_name": "Serving of Melted Poyo"
+            }
+         },
+         "seared_meat_veggies": {
+            "seared_meat_veggies": {
+               "display_name": "Seared Meat & Veggies",
+               "description": "A pleasant portion of sliced meat sealed with butter and stirred with fresh veggies."
+            },
+            "seared_meat_veggies_serving": {
+               "display_name": "Serving of Seared Meat & Veggies"
             }
          }
       },
