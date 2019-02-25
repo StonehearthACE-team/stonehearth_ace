@@ -26,8 +26,9 @@ function PickupItemWithUri:start_thinking(ai, entity, args)
    local player_id = radiant.entities.get_player_id(entity)
    local is_owned_by_another_player = radiant.entities.is_owned_by_another_player
    local key = player_id .. ':' .. uri
-   if args.min_stacks then
-      key = key .. ':' .. args.min_stacks
+   local min_stacks = args.min_stacks
+   if min_stacks then
+      key = key .. ':' .. min_stacks
    end
    local filter_fn = stonehearth.ai:filter_from_key('stonehearth:pickup_item_with_uri', key, function (entity)
          if is_owned_by_another_player(entity, player_id) then
@@ -36,9 +37,9 @@ function PickupItemWithUri:start_thinking(ai, entity, args)
          end
 
          -- if we specified min_stacks and this entity doesn't have at least that many, no good
-         if args.min_stacks then
+         if min_stacks then
             local stacks_component = entity:get_component('stonehearth:stacks')
-            if not stacks_component or stacks_component:get_stacks() < args.min_stacks then
+            if not stacks_component or stacks_component:get_stacks() < min_stacks then
                return false
             end
          end
