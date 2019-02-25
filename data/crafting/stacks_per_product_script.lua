@@ -3,6 +3,10 @@ local log = radiant.log.create_logger('stacks_per_product')
 local stacks_per_product = {}
 
 function stacks_per_product.on_craft(ai, crafter, workshop, recipe, ingredients, product, item, extra_products)
+   if not item or not item:is_valid() then
+      return
+   end
+   
    local ing_stacks = {}
    local max_crafts = product.max_crafts
 

@@ -108,7 +108,6 @@ function AceProduceCraftedItems:_add_outputs_to_bench(ai, crafter, workshop, rec
          
          -- if the item has any extra scripts to run, do those now
          local all_products = {}
-         table.insert(all_products, item)
          local extra_products = {}
          if product.produce_scripts then
             for _, produce_script in ipairs(product.produce_scripts) do
@@ -118,6 +117,12 @@ function AceProduceCraftedItems:_add_outputs_to_bench(ai, crafter, workshop, rec
                end
             end
          end
+
+         -- check the item's validity in case a script destroyed it
+         if item:is_valid() then
+            table.insert(all_products, item)
+         end
+
          for _, extra_product in ipairs(extra_products) do
             if type(extra_product) == 'string' then
                table.insert(all_products, crafter_component:produce_crafted_item(extra_product, recipe, ingredients, ingredient_quality))
@@ -144,15 +149,22 @@ function AceProduceCraftedItems:_add_outputs_to_bench(ai, crafter, workshop, rec
             table.insert(self._outputs, each_product)
          end
 
-         radiant.effects.run_effect(item, 'stonehearth:effects:item_created')
+         item = all_products[1]
 
-         --send event that the carpenter has finished an item
+         if item then
+            radiant.effects.run_effect(item, 'stonehearth:effects:item_created')
+
+            radiant.log.write('crafter', 5, 'Making item %s with id %s', item, item:get_id())
+         else
+            radiant.log.write('crafter', 5, 'Making item %s failed', product_uri)
+         end
+
+         --send event that the crafter has finished an item
          local crafting_data = {
             recipe_data = recipe,
             product = item,
             product_uri = product_uri,
          }
-         radiant.log.write('crafter', 5, 'Making item %s with id %s', item, item:get_id())
 
          radiant.events.trigger_async(crafter, 'stonehearth:crafter:craft_item', crafting_data)
       end
