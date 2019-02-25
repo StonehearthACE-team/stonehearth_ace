@@ -12,7 +12,8 @@
    "ingredients": [
       {
          "uri": "stonehearth:loot:gold",
-         "count": 50
+         "count": 1,
+		 "min_stacks": 50
       },
       {
          "material": "fuel",
@@ -21,7 +22,11 @@
    ],
    "produces": [
       {
-         "item": "stonehearth:refined:gold_ingot"
+         "item": "stonehearth:refined:gold_ingot",
+		 "produce_scripts": ["stonehearth_ace:craft_script:stacks_per_product"],
+		 "stacks_per_product": {
+			"stonehearth:loot:gold": 50
+	     }
       }
    ]
 }
