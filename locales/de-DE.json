@@ -716,6 +716,16 @@
          "fungi_love_trait": {
             "display_name": "Pilzliebhaber",
             "description": "Es ist kein Geheimnis, wie sehr [name(i18n_data.entity)] Pilze aller Art liebts. Sie werden es immer zu schätzen wissen, wenn sie die Möglichkeit haben etwas davon zu essen."
+         },
+         "carnivore": {
+            "carnivore_trait": {
+               "description": "[name(i18n_data.entity)] LIEBT einfach Tiere! Besonders mit scharfer Sauce. Allerdings mag er/sie nicht wirklich Gemüse gern."
+            }
+         },
+         "herbivore": {
+            "herbivore_trait": {
+               "description": "[name(i18n_data.entity)] ist ein Freund aller Tiere! Von Pflanzen weniger. Er/Sie mag kein Fleisch essen."
+            }
          }
       }
    },
@@ -1438,6 +1448,21 @@
                "description": "Stell ein Werkzeug her, das die Effizienz deiner Arbeiter beim Bergbau erheblich verbessert.",
                "flavor": "Dieses Werkzeug erhöht auch die Chance bessere Ressourcen zu erhalten"
             },
+	    "gold_ingot_from_coins_recipe": {
+               "recipe_name": "Goldbarren",
+               "description": "Schmilz 50 Goldmünzen zu einem Barren.",
+               "flavor": ""
+            },
+	    "gold_coins_from_ingot_recipe": {
+               "recipe_name": "Goldmünzen (x48)",
+               "description": "Schmelz einen Goldbarren, um Goldmünzen zu prägen, die beim Handel verwendet werden können!",
+               "flavor": "Eine sehr kleine Menge Gold geht während des Prozesses verloren"
+            },
+	    "gold_coins_from_flakes_recipe": {
+               "recipe_name": "Goldmünzen (x16)",
+               "description": "Schmelz Goldflocken zu Goldmünzen, die im Handel verwendet werden können!",
+               "flavor": "Eine sehr kleine Menge Gold geht während des Prozesses verloren"
+            },
             "blacksmith_fuel_oven_recipe": {
                "recipe_name": "Brennofen",
                "description": "Benötigt für die Veredlung bestimmte Materialien wie Holz und Kohle.",
@@ -1864,6 +1889,36 @@
                "description": "Bereite eine leckere Mahlzeit mit langen, gerollten Teignudeln und einer scharfen Sauce zu.",
                "flavor": "Es gibt Hunderte von Nudelformen, von den schönen Lichtungen des Waldes von Darkmoor bis zur Wüste Pal'Mum"
             },
+            "seared_meat_veggies_recipe": {
+               "recipe_name": "Gebratenes Fleisch & Gemüse",
+               "description": "Bereite einen ansprechenden Teller mit geschnittenen und gebuttertem Fleisch, die mit frischem Gemüse serviert werden.",
+               "flavor": "Es riecht wirklich gut"
+            },
+            "butter_cookies_recipe": {
+               "recipe_name": "Butterkekse",
+               "description": "Backe ein paar kleine und leckere Butterdelikatessen.",
+               "flavor": "Kekse können das Leben verbessern"
+            },
+            "buttered_bulbs_recipe": {
+               "recipe_name": "Gebutterte Pilze",
+               "description": "Eine Mischung aus Pilzen mit Butter und Gewürzen.",
+               "flavor": ""
+            },
+            "cheesecake_recipe": {
+               "recipe_name": "Käsekuchen",
+               "description": "Backe eine sehr weiche und würzige Käsecreme und garnieren Sie diese mit leckerem Fruchtgelee!",
+               "flavor": "Käse ist großartig, Kuchen ist großartig, warum sollte man sie nicht zusammenbringen?"
+            },
+            "imperial_salad_recipe": {
+               "recipe_name": "Kaisersalat",
+               "description": "Eine appetitanregende Kombination aus Käse und Gemüse.",
+               "flavor": "Es wird gesagt, dass die alten Kaiser des Phoenix-Reiches es liebten, Salte wie dieses zu essen"
+            },
+            "melted_poyo_recipe": {
+               "recipe_name": "Geschmolzener Buck-Buck",
+               "description": "Ein wohlschmeckender gebratener Buck-Buck, gefüllt mit Gemüse und mit Käse überzogen.",
+               "flavor": "Hmm... Geschmolzener Käse."
+            },
             "legendary_ink_recipe": {
                "recipe_name": "Heilige Tinte",
                "description": "Spezielle und vergoldete Tinte für illuminierte Handschriften in 'Der Spaziergang von Cid'.",
@@ -2136,7 +2191,9 @@
                "recipe_name": "Kleine Porzellanvorhänge",
                "description": "Lässt das Licht sanft herein.",
                "flavor": ""
-            }
+            },
+            "clothing_armor_name": "Kleidung und Werkzeuge",
+            "weapons_name": "Kampfausrüstung"
          },
          "weaver_description": {
             "description": "Der Weber kann aus Häuten Leder und aus Fasern Stoffe herstellen und mit ihnen komplizierte Waren, Kleidung, Rüstungen, nützliches Zubehör und Dekorationsartikel herstellen."
@@ -4465,7 +4522,7 @@
          "megacrop_poyo_feed": {
             "megacrop_poyo_feed": {
                "display_name": "Mega Reisfutter",
-               "description": "Beeindruckend! Diese kann vom Schäfer als Futter für Poyos verwendet werden!"
+               "description": "Beeindruckend! Diese kann vom Schäfer als Futter für Buck-Bucks verwendet werden!"
             },
             "megacrop_poyo_feed_ground": {
                "display_name": "Mega Reisfutter",
@@ -4577,6 +4634,60 @@
             "cereals_corn_serving": {
                "display_name": "Eine Portion der Getreideflocken",
                "description": "Ist es schon morgen?"
+            }
+         },
+         "butter_cookies": {
+            "butter_cookies": {
+               "display_name": "Butterkekse",
+               "description": "Eine Portion kleiner und leckerer Butterdelikatessen."
+            },
+            "butter_cookies_serving": {
+               "display_name": "Eine handvoll Butterkekse"
+            }
+         },
+         "buttered_bulbs": {
+            "buttered_bulbs": {
+               "display_name": "Gebutterte Pilze",
+               "description": "Eine schöne Mischung aus Pilzen mit Butter und Gewürzen."
+            },
+            "buttered_bulbs_serving": {
+               "display_name": "Eine Portion gebutterter Pilze"
+            }
+         },
+         "cheesecake": {
+            "cheesecake": {
+               "display_name": "Käsekuchen",
+               "description": "Nicht wirklich Käse oder Kuchen, aber so lecker wie beides."
+            },
+            "cheesecake_serving": {
+               "display_name": "Ein Stück Käsekuchen"
+            }
+         },
+         "imperial_salad": {
+            "imperial_salad": {
+               "display_name": "Kaisersalat",
+               "description": "Eine appetitanregende Kombination aus Käse und Gemüse, die so alt ist wie das Phoenixreich."
+            },
+            "imperial_salad_serving": {
+               "display_name": "Eine Portion Kaisersalat"
+            }
+         },
+         "melted_poyo": {
+            "melted_poyo": {
+               "display_name": "Geschmolzener Buck-Buck",
+               "description": "Ein herzhafter gebratener Buck-Buck, gefüllt mit Gemüse und mit Käse überzogen."
+            },
+            "melted_poyo_serving": {
+               "display_name": "Eine Portion vom geschmolzenen Buck-Buck"
+            }
+         },
+         "seared_meat_veggies": {
+            "seared_meat_veggies": {
+               "display_name": "Gebratenes Fleisch & Gemüse",
+               "description": "Eine ansprechende Portion geschnittenes Fleisch mit Butter, gemischt mit frischem Gemüse."
+            },
+            "seared_meat_veggies_serving": {
+               "display_name": "Eine Portion gebratenes Fleisch & Gemüse"
             }
          }
       },
@@ -6284,7 +6395,35 @@
             "toggle_component_info": {
                "tooltip_title": "Objektinformationen umschalten",
                "tooltip_description": "Klick um zusätzliche Informationen zu diesem Objekt ein- oder auszublenden."
+            },
+            "equipment_types_description": "Type: [str(i18n_data.types)]",
+            "equipment_types": {
+               "bow": "Bogen",
+               "crossbow": "Armbrust",
+               "mainhand": "Haupthand",
+               "twohanded": "Zweihändig",
+               "offhand": "Nebenhand",
+               "shield": "SChild",
+               "light_shield": "Leichter Schild Shield",
+               "heavy_shield": "Schwerer Schild",
+               "hood": "Kapuze",
+               "helmet": "Helm",
+               "light_helmet": "Leichter Helm",
+               "medium_helmet": "Mittlerer Helm",
+               "heavy_helmet": "Schwerer Helm",
+               "torso": "Rüstung",
+               "light_armor": "Leichte Rüstung",
+               "medium_armor": "Mittlere Rüstung",
+               "heavy_armor": "Schwere Rüstung",
+               "tool": "Werkzeug",
+               "accessory": "Accessory",
+               "backpack": "Rucksack",
+               "quiver_arrows": "Pfeilköcher",
+               "quiver_bolts": "Bolzenköcherr"
             }
+         },
+         "save_view": {
+            "auto_save_name": "Auto-Speicher ([str(i18n_data.date_time)])"
          },
          "componentInfo": {
             "title": "Objektinformationen"
@@ -6295,6 +6434,8 @@
             "gameplayTab": {
                "auto_craft_recipe_dependencies": "Automatische Rezepteinstellung",
                "auto_craft_recipe_dependencies_description": "Wenn ein Gegenstand hergestellt wird, prüfen die Handwerker das Inventar, ob ausreichend Zutaten vorhanden sind. Ist dies nicht der Fall, werden genügend Zutaten automatisch bestellt, um die ursprüngliche Bestellung zu erfüllen.",
+               "auto_craft_killed_items": "Automatische Rezepteinstellung zerstörter Gegenstände",
+               "auto_craft_killed_items_description": "Wenn ein Gegenstand, den Sie besitzen, wie ein Tor, ein Übungspuppe oder eine Belagerungswaffe zerstört wird, wird automatisch ein neuer Fertigungsauftrag erstellt.",
                "default_craft_order_quality_preference": "Standardeinstellung für die Fertigungsqualität",
                "default_craft_order_quality_preference_description": "Bei der Herstellung eines Gegenstands werden die Handwerker Zutaten aufgrund ihrer Qualität berücksichtigen: niedrigere (-1), höhere (1) oder keine Präferenz (0). AUSWAHL VON -1 ODER 1 KANN DIE SPIELLEISTUNG NEGATIV AUSWIRKEN.",
                "auto_harvest_enabled": "Nachwachsende Rohstoffe automatischen Ernten",
