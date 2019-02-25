@@ -1,3 +1,5 @@
+local log = radiant.log.create_logger('stacks_per_product')
+
 local stacks_per_product = {}
 
 function stacks_per_product.on_craft(ai, crafter, workshop, recipe, ingredients, product, item, extra_products)
@@ -16,22 +18,25 @@ function stacks_per_product.on_craft(ai, crafter, workshop, recipe, ingredients,
             else
                ing_stacks[uri] = {
                   stacks = stacks_comp:get_stacks(),
-                  max_stacks = stacks_comp:get_max_stacks()
+                  max_stacks = stacks_comp:get_max_stacks(),
+                  stacks_per = stacks_per
                }
-            end
-            local num_crafts = math.floor(ing_data.stacks / stacks_per)
-            if max_crafts then
-               max_crafts = math.min(num_crafts, max_crafts)
-            else
-               max_crafts = num_crafts
             end
          end
       end
    end
 
    for uri, ing_data in pairs(ing_stacks) do
-      local stacks_per = product.stacks_per_product[uri]
-      ing_data.stacks_remaining = ing_data.stacks - max_crafts * stacks_per
+      local num_crafts = math.floor(ing_data.stacks / ing_data.stacks_per)
+      if max_crafts then
+         max_crafts = math.min(num_crafts, max_crafts)
+      else
+         max_crafts = num_crafts
+      end
+   end
+
+   for uri, ing_data in pairs(ing_stacks) do
+      ing_data.stacks_remaining = ing_data.stacks - max_crafts * ing_data.stacks_per
    end
 
    -- then do stuff based on min_crafts
@@ -53,6 +58,8 @@ function stacks_per_product.on_craft(ai, crafter, workshop, recipe, ingredients,
          end
       end
    end
+
+   log:debug('crafting %s total products; extra products: %s', max_crafts, radiant.util.table_tostring(extra_products))
 end
 
 function stacks_per_product._create_item_with_stacks(uri, owner, stacks)
@@ -69,6 +76,8 @@ function stacks_per_product._create_item_with_stacks(uri, owner, stacks)
    if stacks_comp and stacks then
       stacks_comp:set_stacks(stacks)
    end
+
+   return item
 end
 
 return stacks_per_product
