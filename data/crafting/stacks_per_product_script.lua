@@ -25,6 +25,7 @@ function stacks_per_product.on_craft(ai, crafter, workshop, recipe, ingredients,
 
    local min_crafts
    for uri, ing_data in pairs(ing_stacks) do
+      local stacks_per = product.stacks_per_product[uri]
       local num_crafts = math.floor(ing_data.stacks / stacks_per)
       if max_crafts then
          num_crafts = math.min(num_crafts, max_crafts)
