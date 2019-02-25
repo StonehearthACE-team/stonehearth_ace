@@ -1,0 +1,31 @@
+{
+   "type": "recipe",
+   "effort": 30,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.butter_cookies_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.butter_cookies_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.butter_cookies_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/dairy/butter_cookies/butter_cookies.png",
+   "level_requirement": 4,
+   "workshop": "stonehearth:cook:oven",
+   "work_effect": "work_wait",
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:food:batter_sweet",
+         "count": 1
+      },
+	  {
+         "material": "butter cooking_ingredient",
+         "count": 2
+      },
+	  {
+         "material": "low_fuel",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:dairy:butter_cookies"
+      }
+   ]
+}

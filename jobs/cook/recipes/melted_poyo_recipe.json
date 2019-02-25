@@ -1,0 +1,35 @@
+{
+   "type": "recipe",
+   "effort": 40,
+   "work_units": 10,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.melted_poyo_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.melted_poyo_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.melted_poyo_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/melted_poyo/melted_poyo/melted_poyo.png",
+   "workshop": "stonehearth:cook:oven",
+   "work_effect": "work_wait",
+   "level_requirement": 4,
+   "ingredients": [
+      {
+         "uri": "stonehearth:food:poyo_meat",
+         "count": 1
+      },
+	  {
+         "uri": "stonehearth_ace:food:dairy:cheese_mild",
+         "count": 1
+      },
+	  {
+         "material": "food_container raw_food vegetable",
+         "count": 1
+      },
+      {
+         "material": "low_fuel",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:melted_poyo"
+      }
+   ]
+}

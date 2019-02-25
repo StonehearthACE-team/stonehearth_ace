@@ -1,0 +1,34 @@
+{
+   "type": "recipe",
+   "effort": 45,
+   "work_units": 10,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.seared_meat_veggies_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.seared_meat_veggies_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.seared_meat_veggies_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/seared_meat_veggies/seared_meat_veggies/seared_meat_veggies.png",
+   "workshop": "stonehearth:cook:workbench",
+   "level_requirement": 2,
+   "ingredients": [
+      {
+         "material": "food meat raw",
+         "count": 2
+      },
+      {
+         "material": "food_container raw_food vegetable",
+         "count": 2
+      },    
+	  {
+         "material": "butter cooking_ingredient",
+         "count": 1
+      },
+	  {
+         "material": "low_fuel",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:seared_meat_veggies"
+      }
+   ]
+}

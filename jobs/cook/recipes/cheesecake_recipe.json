@@ -1,0 +1,39 @@
+{
+   "type": "recipe",
+   "effort": 65,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.cheesecake_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.cheesecake_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.cheesecake_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/dairy/cheesecake/cheesecake/cheesecake.png",
+   "level_requirement": 6,
+   "workshop": "stonehearth:cook:oven",
+   "work_effect": "work_wait",
+   "ingredients": [
+	  {
+         "uri": "stonehearth_ace:food:dairy:cheese_fresh",
+         "count": 2
+      },
+      {
+         "uri": "stonehearth:food:sugar",
+         "count": 1
+      },
+	  {
+         "uri": "stonehearth:food:egg",
+         "count": 2
+      },
+      {
+         "material": "raw_food fruit",
+         "count": 2
+      },
+	  {
+         "material": "low_fuel",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:dairy:cheesecake"
+      }
+   ]
+}
