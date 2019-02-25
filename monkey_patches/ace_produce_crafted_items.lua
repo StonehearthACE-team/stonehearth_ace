@@ -106,10 +106,12 @@ function AceProduceCraftedItems:_add_outputs_to_bench(ai, crafter, workshop, rec
          local item = crafter_component:produce_crafted_item(product_uri, recipe, ingredients, ingredient_quality)
          
          -- if the item has any extra scripts to run, do those now
-         if product.produce_script then
-            local script = radiant.mods.load_script(product.produce_script)
-            if script and script.on_craft then
-               script.on_craft(ai, crafter, workshop, recipe, ingredients, product, item)
+         if product.produce_scripts then
+            for _, produce_script in ipairs(product.produce_scripts) do
+               local script = radiant.mods.load_script(produce_script)
+               if script and script.on_craft then
+                  script.on_craft(ai, crafter, workshop, recipe, ingredients, product, item)
+               end
             end
          end
 

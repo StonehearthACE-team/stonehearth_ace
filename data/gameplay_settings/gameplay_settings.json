@@ -12,12 +12,19 @@
          "default": true,
          "ordinal": 1
       },
+      "auto_craft_killed_items": {
+         "type": "boolean",
+         "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.auto_craft_killed_items)",
+         "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.auto_craft_killed_items_description)",
+         "default": true,
+         "ordinal": 2
+      },
       "default_craft_order_prefer_high_quality": {
          "type": "boolean",
          "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.default_craft_order_prefer_high_quality)",
          "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.default_craft_order_prefer_high_quality_description)",
          "default": true,
-         "ordinal": 2
+         "ordinal": 3
       },
       "enable_auto_harvest": {
          "type": "boolean",
