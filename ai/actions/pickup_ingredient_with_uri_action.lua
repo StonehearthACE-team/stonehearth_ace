@@ -14,7 +14,7 @@ PickupIngredientWithUri.priority = 0
 function PickupIngredientWithUri:start_thinking(ai, entity, args)
    if args.ingredient.uri ~= nil then
       ai:set_think_output({
-         min_stacks = args.ingredient.min_stacks or 0
+         min_stacks = args.ingredient.min_stacks
       })
    end
 end

@@ -12,6 +12,38 @@ $(top).on('stonehearthReady', function() {
       }
    });
 
+   App.workshopManager.pauseOrResumeTrackingItems = $.debounce(1, function () {
+      var self = this;
+      if (!self.usableItemTracker) return;  // We'll be called later.
+      var anyWorkshopVisible = _.any(self.workshops, function (w) { return w.isVisible; });
+      if (anyWorkshopVisible && !self.usableItemTrackerTrace) {
+         var itemTraces = {
+            "tracking_data" : {
+               "stonehearth:loot:gold" : {
+                  "items" : {
+                     "*" : {
+                        "stonehearth:stacks": {}
+                     }
+                  }
+               }
+            }
+         };
+         self.usableItemTrackerTrace = new StonehearthDataTrace(self.usableItemTracker, itemTraces)
+            .progress(function (response) {
+               self.usableItemTrackerData = response.tracking_data;
+               self.notifyItemsChanged();
+            });
+      } else if (!anyWorkshopVisible && self.usableItemTrackerTrace) {
+         self.usableItemTrackerTrace.destroy();
+         self.usableItemTrackerTrace = null;
+      }
+   });
+
+   if (App.workshopManager.usableItemTrackerTrace) {
+      App.workshopManager.usableItemTrackerTrace.destroy();
+      App.workshopManager.usableItemTrackerTrace = null;
+   }
+
    App.workshopManager._ace_updateTeamCrafterView = function(teamCrafterView) {
       teamCrafterView.reopen({
          SHIFT_KEY_ACTIVE: false,
@@ -237,6 +269,268 @@ $(top).on('stonehearthReady', function() {
                }
             }
             return classArray;
+         },
+
+         _updateUsableResources: function () {
+            var self = this;
+            var usableUris = {};
+            var usableMaterials = {};
+      
+            var trackerData = App.workshopManager.usableItemTrackerData;
+      
+            for (var uri in trackerData) {
+               var v = trackerData[uri];
+               var num = v.count;
+
+               if (uri == 'stonehearth:loot:gold') {
+                  num = 0;
+                  radiant.each(v.items, function (_, item) {
+                     num += item['stonehearth:stacks'].stacks;
+                  });
+               }
+      
+               // Update usableUris.
+               usableUris[uri] = (usableUris[uri] || 0) + num;
+               var canonicalUri = v.canonical_uri;
+               if (canonicalUri && canonicalUri != uri) {
+                  usableUris[canonicalUri] = (usableUris[canonicalUri] || 0) + num;
+               }
+      
+               // Update usableMaterials.
+               // Transform the uri from emberValidKey format to normal (add back the periods), so that iconics can be searched correctly
+               var inverseTranformedUri = uri.replace(/&#46;/g, '.');
+               var catalogData = App.catalog.getCatalogData(inverseTranformedUri);
+               if (catalogData && catalogData.materials) {
+                  for (var material in self._materialsToQuery) {
+                     if (radiant.isMaterial(catalogData.materials, material)) {
+                        usableMaterials[material] = (usableMaterials[material] || 0) + num;
+                     }
+                  }
+               }
+            }
+      
+            self._usableUris = usableUris;
+            self._usableMaterials = usableMaterials;
+         },
+
+         // Adding ingredient and workshop details to the recipe is expensive
+         // so do it on demand we when we access a recipe.
+         // override this function to add stacks consideration to ingredients
+         _getOrCalculateRecipeData: function(recipe_key) {
+            var self = this;
+            var formatted_recipe = recipe_key && self.allRecipes[recipe_key];
+            if (formatted_recipe && formatted_recipe.needs_ingredient_formatting) {
+               var ingredients = formatted_recipe.ingredients;
+               //Add ingredient images to the recipes
+               formatted_recipe.ingredients = [];
+               radiant.each(ingredients, function(i, ingredient) {
+                  var formatted_ingredient = radiant.shallow_copy(ingredient);
+                  if (formatted_ingredient.material) {
+                     formatted_ingredient.identifier = formatted_ingredient.material;
+                     formatted_ingredient.kind = 'material';
+                     var formatting = App.resourceConstants.resources[ingredient.material];
+                     if (formatting) {
+                        formatted_ingredient.name = i18n.t(formatting.name);
+                        formatted_ingredient.icon = formatting.icon;
+                     } else {
+                        // XXX, roll back to some generic icon
+                        formatted_ingredient.name = i18n.t(ingredient.material);
+                     }
+                  } else {
+                     formatted_ingredient.identifier = formatted_ingredient.uri;
+                     formatted_ingredient.kind = 'uri';
+
+                     if (ingredient.uri) {
+                        var catalog = App.catalog.getCatalogData(ingredient.uri);
+                        if (catalog) {
+                           formatted_ingredient.icon = catalog.icon;
+                           formatted_ingredient.name = i18n.t(catalog.display_name);
+                           formatted_ingredient.uri = ingredient.uri;
+                        }
+                     }
+                  }
+                  if (formatted_ingredient.min_stacks) {
+                     formatted_ingredient.count = formatted_ingredient.min_stacks;
+                  }
+                  formatted_recipe.ingredients.push(formatted_ingredient);
+               });
+
+               // Add catalog data to workshop
+               if (formatted_recipe.hasWorkshop) {
+                  var workshopCatalog = App.catalog.getCatalogData(formatted_recipe.workshop.uri);
+                  if (workshopCatalog) {
+                     formatted_recipe.workshop.icon = workshopCatalog.icon;
+                     formatted_recipe.workshop.name = i18n.t(workshopCatalog.display_name);
+                  }
+               }
+
+               delete formatted_recipe.needs_ingredient_formatting;
+            }
+
+            return formatted_recipe;
+         },
+
+         // have to override this whole function just to get rid of the >999 truncating for stacks
+         _setPreviewStyling: function() {
+            var self = this;
+            if (!self.$()) {
+               return;  // Menu already closed.
+            }
+            App.tooltipHelper.createDynamicTooltip(self.$('[title]'));
+      
+            var recipe = this.currentRecipe ? this._getOrCalculateRecipeData(this.currentRecipe.recipe_key) : null;
+            if (recipe) {
+               //Change styling that depends on the inventory trackers
+               var requirementsMet = true;
+      
+               //Change the styling for the workshop requirement
+               var $workshopRequirement = self.$('#requirementSection #workbench .requirementText')
+      
+               //By default, be green
+               $workshopRequirement.removeClass('requirementsUnmet');
+               $workshopRequirement.addClass('requirementsMet');
+      
+               //If there is no placed workshop, be red
+               if (App.workshopManager.workbenchItemTrackerData && recipe.hasWorkshop) {
+                  var workshopData = App.workshopManager.workbenchItemTrackerData[recipe.workshop.uri]
+                  if (!workshopData && recipe.workshop.equivalents) {
+                     for (var i = 0; i < recipe.workshop.equivalents.length; ++i) {
+                        workshopData = App.workshopManager.workbenchItemTrackerData[recipe.workshop.equivalents[i]];
+                        if (workshopData) {
+                           break;
+                        }
+                     }
+                  }
+                  if (!workshopData) {
+                     $workshopRequirement.removeClass('requirementsMet');
+                     $workshopRequirement.addClass('requirementsUnmet');
+                     requirementsMet = false;
+                  }
+               }
+      
+               //Update the ingredients
+               if (App.workshopManager.usableItemTrackerData) {
+                  self.$('.ingredient').each(function (index, ingredientDiv) {
+                     var $ingredientDiv = $(ingredientDiv);
+                     var ingredientData = {};
+                     ingredientData.kind = $ingredientDiv.attr('data-kind');
+                     ingredientData.identifier = $ingredientDiv.attr('data-identifier');
+      
+                     var numHave = self._findUsableCount(ingredientData);
+      
+                     var numRequired = parseInt($ingredientDiv.find('.numNeeded').text());
+                     var $count = $ingredientDiv.find('.count');
+                     if (numHave >= numRequired) {
+                        $count.removeClass('requirementsUnmet');
+                        $count.addClass('requirementsMet');
+                     } else {
+                        $count.removeClass('requirementsMet');
+                        $count.addClass('requirementsUnmet');
+                        requirementsMet = false;
+                     }
+                     if (numHave > 99999) {  // changed from 999
+                        numHave = i18n.t('stonehearth:ui.game.show_workshop.too_many_symbol');
+                     }
+                     $ingredientDiv.find('.numHave').text(numHave);
+                  });
+               }
+      
+               //Handle level requirements styling
+               var $requirementText = self.$('#requirementSection #crafterLevel .requirementText')
+               var curr_level = this.get('model.highest_level')
+               if (recipe.level_requirement <= curr_level) {
+                  $requirementText.removeClass('requirementsUnmet');
+                  $requirementText.addClass('requirementsMet');
+               } else {
+                  $requirementText.removeClass('requirementsMet');
+                  $requirementText.addClass('requirementsUnmet');
+                  requirementsMet = false;
+               }
+      
+               self._showCraftUI(requirementsMet);
+            }
+         },
+
+         // have to override this just for the stacks
+         _formattedRecipeProductProperty: function (recipe, catalogDataKey, cssClassName) {
+            if (!recipe.product_uri) {
+               return '';  // Recipes are allowed to produce nothing (e.g. training mods).
+            }
+
+            var self = this;
+            var productCatalogData = App.catalog.getCatalogData(recipe.product_uri);
+            var outputHtml = "";
+            
+            var isSingleItem = true;
+            if (recipe.produces && recipe.produces.length > 1 )
+            {
+               isSingleItem = false;
+            }
+            
+            if (isSingleItem) {
+               outputHtml += '<div class="stat ' + cssClassName + '">'
+               //Default case - recipe only produces one item, get the stats the normal way
+               var propertyValue = self._getPropertyValue(recipe.produces[0], productCatalogData, catalogDataKey);
+               if (propertyValue) {
+                  outputHtml +=  propertyValue;
+               }
+               outputHtml += '</div>';
+            } else {
+               //Multi-item case - get the values of each product
+               outputHtml += '<div class="stat ' + cssClassName + ' list">'
+               var needComma = false;
+               var allProductsSame = true;
+               var previousProduct = null;
+               var displayValue = "*";
+               var numProducts = recipe.produces.length;
+               
+               //First, run through assuming the products are different. 
+               //This constructs an output string along the way that may be wasted - simplifies the code, and this is only run once on click
+               for (var i = 0; i < numProducts; i++) {
+                  var product = recipe.produces[i];
+                  if (product && product.item) {
+                     var itemUri = product.item;
+      
+                     //check for the recipe just being multiples of the same output
+                     if (previousProduct && itemUri != previousProduct) {
+                        allProductsSame = false;
+                     }
+                     previousProduct = itemUri;
+                     
+                     //Assemble a string of the style "10, 5, 3" 
+                     var itemData = App.catalog.getCatalogData(itemUri);
+                     if (itemData) {
+                        if (needComma) {
+                           outputHtml += ', ';
+                        }
+                        needComma = true;
+                        var propertyValue = self._getPropertyValue(product, itemData, catalogDataKey);
+                        if (typeof propertyValue == "number") {
+                           displayValue = propertyValue;
+                        } else {
+                           displayValue = "*";
+                        }
+                        outputHtml += displayValue;
+                     }
+                  }
+               }
+               outputHtml += '</div>';
+               
+               //If all of the outputs were the same, then forget the string we just built and make a shorter, nicer-looking one
+               if (allProductsSame) {
+                  outputHtml = '<div class="stat ' + cssClassName + ' mult">' + displayValue + " (x" + numProducts + ")</div>";
+               }
+            }
+            return outputHtml;
+         },
+
+         _getPropertyValue: function (product, catalogData, key) {
+            var propertyValue = catalogData[key];
+            var displayValue = propertyValue;
+            if (key == 'net_worth' && product && product.stacks) {
+               displayValue = propertyValue * product.stacks;
+            }
+            return displayValue;
          },
 
          actions: {
