@@ -9,7 +9,7 @@ PickupItemWithUri.args = {
    uri = 'string',      -- uri we want
    min_stacks = {
       type = 'number',
-      default = stonehearth.ai.NIL
+      default = 0
    },
    rating_fn = {                       -- a function to rate entities on a 0-1 scale to determine the best.
       type = 'function',
@@ -26,7 +26,7 @@ function PickupItemWithUri:start_thinking(ai, entity, args)
    local player_id = radiant.entities.get_player_id(entity)
    local is_owned_by_another_player = radiant.entities.is_owned_by_another_player
    local key = player_id .. ':' .. uri
-   local min_stacks = args.min_stacks
+   local min_stacks = args.min_stacks > 0 and args.min_stacks
    if min_stacks then
       key = key .. ':' .. min_stacks
    end
