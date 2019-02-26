@@ -5,22 +5,28 @@
 
       <div class="downSection">
          {{#each component in view.componentsInfo}}
+         {{#if component.visible}}
          <div class="component">
             <div class="componentHeader">
                {{#if component.icon}}<img class="classIcon" {{bind-attr src=component.icon}}/>{{/if}}
                <span>{{i18n_key component.displayName}}</span>
             </div>
+            {{#if component.showGeneral}}
             {{#if component.generalDetails}}
             <div class="details general">
                {{formatted_i18n_key component.generalDetails}}
             </div>
             {{/if}}
+            {{/if}}
+            {{#if component.showSpecific}}
             {{#each specific in component.specificDetails}}
             <p class="details specific">
                {{formatted_i18n_key specific.details specific.i18n_data}}
             </p>
             {{/each}}
+            {{/if}}
          </div>
+         {{/if}}
          {{/each}}
       </div>
    </div>

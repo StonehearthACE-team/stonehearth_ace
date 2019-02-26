@@ -134,7 +134,7 @@ App.ComponentInfoView = App.View.extend({
 
       if (general) {
          var selected = self.get('selectedDetails') || {};
-         var specific = selected['stonehearth_ace:component_info'] || {};
+         var specific = (selected['stonehearth_ace:component_info'] || {}).components || {};
          var data = [];
 
          radiant.each(general, function(_, component) {
@@ -149,7 +149,10 @@ App.ComponentInfoView = App.View.extend({
 
                var specificDetails = specific[component.name];
                if (specificDetails) {
-                  radiant.each(specificDetails, function(_, detail) {
+                  entry.showGeneral = !specificDetails.hide_general;
+                  entry.showSpecific = !specificDetails.hide_specific;
+                  entry.visible = entry.showGeneral || entry.showSpecific;
+                  radiant.each(specificDetails, function(source, detail) {
                      entry.specificDetails.push({
                         'details': detail.details,
                         'i18n_data': detail.i18n_data
