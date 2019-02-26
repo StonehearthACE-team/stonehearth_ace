@@ -138,7 +138,38 @@ function AceCraftOrder:set_crafting_status(crafter, is_crafting)
    self:_on_changed()
 end
 
-function CraftOrder:conditions_fulfilled(crafter)
+-- override this to consider stacks for items
+function AceCraftOrder:_has_uri_ingredients_for_item(ingredient, tracking_data)
+   local data = radiant.entities.get_component_data(ingredient.uri , 'stonehearth:entity_forms')
+   local lookup_key
+   if data and data.iconic_form then
+      lookup_key = data.iconic_form
+   else
+      lookup_key = ingredient.uri
+   end
+   if not tracking_data:contains(lookup_key) then
+      return false
+   end
+   local tracking_data_for_key = tracking_data:get(lookup_key)
+   if not tracking_data_for_key then
+      return false
+   end
+
+   if ingredient.min_stacks then
+      local count = 0
+      for id, item in pairs(tracking_data_for_key.items) do
+         local stacks_comp = item:get_component('stonehearth:stacks')
+         if stacks_comp then
+            count = count + stacks_comp:get_stacks()
+         end
+      end
+      return count >= ingredient.min_stacks
+   end
+   
+   return tracking_data_for_key.count >= ingredient.count
+end
+
+function AceCraftOrder:conditions_fulfilled(crafter)
    -- if we don't satisfy the order conditions, return false
    -- we're doing this BEFORE the has_ingredients because it is cheaper to early out
    

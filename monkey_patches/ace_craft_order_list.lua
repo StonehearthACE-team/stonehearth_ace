@@ -30,6 +30,9 @@ function AceCraftOrderList:add_order(player_id, recipe, condition, associated_or
    -- Process the recipe's ingredients to see if the crafter has all she needs for it
    for _, ingredient in pairs(recipe.ingredients) do
       local ingredient_id = ingredient.uri or ingredient.material
+      
+      -- because of the way the UI works with min_stacks, we may need to replace the ingredient count
+      ingredient.count = ingredient.original_count or ingredient.count
 
       --log:debug('processing ingredient "%s"', ingredient_id)
 

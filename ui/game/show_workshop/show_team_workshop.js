@@ -350,7 +350,8 @@ $(top).on('stonehearthReady', function() {
                      }
                   }
                   if (formatted_ingredient.min_stacks) {
-                     formatted_ingredient.count = formatted_ingredient.min_stacks;
+                     formatted_ingredient.original_count = formatted_ingredient.count;
+                     formatted_ingredient.count *= formatted_ingredient.min_stacks;
                   }
                   formatted_recipe.ingredients.push(formatted_ingredient);
                });
