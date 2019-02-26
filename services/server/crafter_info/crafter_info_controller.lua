@@ -84,18 +84,20 @@ function CrafterInfoController:_create_maps()
                      log:error('For recipe "%s": the workshop uri "%s" does not exist as an alias in its manifest',
                         recipe_name, workshop_uri)
                   else
-                     local formatted_recipe = self:_format_recipe(recipe_data.recipe)
-                     local keys = formatted_recipe.products
+                     if not recipe_data.recipe.ace_smart_crafter_ignore then  -- ignore recipes that are explicitly marked to be ignored by smart crafter
+                        local formatted_recipe = self:_format_recipe(recipe_data.recipe)
+                        local keys = formatted_recipe.products
 
-                     if not next(keys) then
-                        log:error('For recipe "%s": no produced item exists as an alias in its manifest', recipe_name)
-                     else
-                        self._formatted_recipes[recipe_data.recipe] = formatted_recipe
-                        self._recipe_map:add(keys, {
-                           job_key = job_key,
-                           order_list = order_list,
-                           recipe = formatted_recipe,
-                        })
+                        if not next(keys) then
+                           log:error('For recipe "%s": no produced item exists as an alias in its manifest', recipe_name)
+                        else
+                           self._formatted_recipes[recipe_data.recipe] = formatted_recipe
+                           self._recipe_map:add(keys, {
+                              job_key = job_key,
+                              order_list = order_list,
+                              recipe = formatted_recipe,
+                           })
+                        end
                      end
                   end
                end
@@ -178,8 +180,10 @@ function CrafterInfoController:_format_recipe(recipe)
       local catalog_data = radiant.resources.load_json(product)
       local product_catalog = catalog_data and catalog_data.entity_data["stonehearth:catalog"]
 
-      -- first verify that the recipe has catalog data and is not for a raw resource (category "resources"; if it's not raw, it should be "refined" or something else)
-      if product_catalog and (product_catalog.category ~= 'resources' and product_catalog.category ~= 'wealth' or recipe.ace_smart_crafter_ignore_resources_category) then
+      -- first verify that the recipe has catalog data and is not for a raw resource/wealth
+      -- (category "resources/wealth"; if it's not raw, it should be "refined" or something else)
+      if product_catalog and
+            (product_catalog.category ~= 'resources' and product_catalog.category ~= 'wealth' or recipe.ace_smart_crafter_skip_category_filter) then
 
          all_products[product] = count
          
