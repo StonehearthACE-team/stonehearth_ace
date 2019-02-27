@@ -85,7 +85,8 @@ local monkey_patches = {
    ace_constants = 'stonehearth.constants',
    ace_eating_lib = 'stonehearth.ai.lib.eating_lib',
    ace_food_preference_script = 'stonehearth.data.traits.food_preference.food_preference_script',
-   ace_stacks_component = 'stonehearth.components.stacks.stacks_component'
+   ace_stacks_component = 'stonehearth.components.stacks.stacks_component',
+   ace_unlock_recipe_encounter = 'stonehearth.services.server.game_master.controllers.encounters.unlock_recipe_encounter'
 }
 
 local function monkey_patching()

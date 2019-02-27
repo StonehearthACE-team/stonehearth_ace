@@ -1,0 +1,21 @@
+{
+	"type" : "encounter",
+	"encounter_type" : "wait",
+	"in_edge"  : "shrine_upgrade_ace_valor",
+	"out_edge" : {
+		"type": "trigger_many",
+		"out_edges": [
+			"ace_valor_blacksmith",
+			"ace_valor_engineer",
+			"ace_valor_geomancer",
+			"ace_valor_herbalist",
+			"ace_valor_mason",
+			"ace_valor_weaver",
+			"ace_valor_carpenter",
+			"ace_valor_cook"
+		]
+	},
+	"wait_info" :  {
+		"duration" : "1m"
+	}
+}

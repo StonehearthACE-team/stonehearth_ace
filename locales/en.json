@@ -64,12 +64,6 @@
                }
             },
             "trader": {
-               "valor_tier_2_reached": {
-                  "recipe_unlock_weapons_5": "New Legendary Hood recipe - Blacksmith, Geomancer, and Weaver collaboration!",
-                  "recipe_unlock_weapons_6": "New Legendary Mace recipe - Mason, Carpenter, and Engineer collaboration!",
-                  "recipe_unlock_weapons_7": "New Legendary Tome recipe - Cook, Herbalist, and Geomancer collaboration!",
-                  "recipe_unlock_weapons_8": "New Legendary Mail recipe - Weaver, Engineer, and Blacksmith collaboration!"
-               },
                "arcs": {
                   "encounters": {
                      "tier_1_shops": {
@@ -277,6 +271,17 @@
                         }
                      }
                   }
+               }
+            },
+            "town_progression": {
+               "ace_guildmaster_reached": {
+                  "recipe_unlock_coins": "The Blacksmith can now mint gold coins!"
+               },
+               "ace_valor_reached": {
+                  "recipe_unlock_blacksmith": "New Legendary Mail recipe - Weaver, Engineer, and Blacksmith collaboration!",
+                  "recipe_unlock_geomancer": "New Legendary Tome recipe - Cook, Herbalist, and Geomancer collaboration!",
+                  "recipe_unlock_engineer": "New Legendary Mace recipe - Mason, Carpenter, and Engineer collaboration!",
+                  "recipe_unlock_weaver": "New Legendary Hood recipe - Blacksmith, Geomancer, and Weaver collaboration!"
                }
             }
          }
@@ -1448,20 +1453,20 @@
                "description": "Craft a tool that Workers can use to greatly improve their efficiency when mining.",
                "flavor": "This tool will also improve the odds of obtaining better quality resources"
             },
-			"gold_ingot_from_coins_recipe": {
+            "gold_ingot_from_coins_recipe": {
                "recipe_name": "Gold Ingot",
-               "description": "Meld 50 gold coins together to form an ingot.",
+               "description": "Meld 100 gold coins together to form an ingot.",
                "flavor": ""
             },
-			"gold_coins_from_ingot_recipe": {
-               "recipe_name": "Gold Coins (x48)",
+            "gold_coins_from_ingot_recipe": {
+               "recipe_name": "Gold Coins (x100)",
                "description": "Melt a gold ingot to mint gold coins that can be used in trading!",
-               "flavor": "A very small amount of gold is lost during the process"
+               "flavor": ""
             },
-			"gold_coins_from_flakes_recipe": {
-               "recipe_name": "Gold Coins (x16)",
+            "gold_coins_from_flakes_recipe": {
+               "recipe_name": "Gold Coins (x30)",
                "description": "Melt gold flakes into gold coins that can be used in trading!",
-               "flavor": "A very small amount of gold is lost during the process"
+               "flavor": ""
             },
             "blacksmith_fuel_oven_recipe": {
                "recipe_name": "Blacksmith Kiln",
