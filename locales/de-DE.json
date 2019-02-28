@@ -64,12 +64,6 @@
                }
             },
             "trader": {
-               "valor_tier_2_reached": {
-                  "recipe_unlock_weapons_5": "Neues legendäres Kapuzen-Rezept - Zusammenarbeit von Schmied, Geomant und Weber!",
-                  "recipe_unlock_weapons_6": "Neues legendäres Streitkolben-Rezept - Zusammenarbeit von Steinmetz, Schreiner und Ingenieur!",
-                  "recipe_unlock_weapons_7": "Neues legendäres Foliant-Rezept - Zusammenarbeit von Koch, Kräuterarzt und Geomant!",
-                  "recipe_unlock_weapons_8": "Neues legendäres Kettenpanzer-Rezept - Zusammenarbeit von Weber, Ingenieur und Schmied!"
-               },
                "arcs": {
                   "encounters": {
                      "tier_1_shops": {
@@ -277,6 +271,17 @@
                         }
                      }
                   }
+               }
+            },
+            "town_progression": {
+               "ace_guildmaster_reached": {
+                  "recipe_unlock_coins": "Der Schmied kann jetzt Goldmünzen prägen!"
+               },
+               "ace_valor_reached": {
+                  "recipe_unlock_blacksmith": "Neues legendäres Kettenpanzer-Rezept - Zusammenarbeit von Weber, Ingenieur und Schmied!",
+                  "recipe_unlock_geomancer": "Neues legendäres Foliant-Rezept - Zusammenarbeit von Koch, Kräuterarzt und Geomant!",
+                  "recipe_unlock_engineer": "Neues legendäres Streitkolben-Rezept - Zusammenarbeit von Steinmetz, Schreiner und Ingenieur!",
+                  "recipe_unlock_weaver": "Neues legendäres Kapuzen-Rezept - Zusammenarbeit von Schmied, Geomant und Weber!"
                }
             }
          }
@@ -1448,20 +1453,20 @@
                "description": "Stell ein Werkzeug her, das die Effizienz deiner Arbeiter beim Bergbau erheblich verbessert.",
                "flavor": "Dieses Werkzeug erhöht auch die Chance bessere Ressourcen zu erhalten"
             },
-	    "gold_ingot_from_coins_recipe": {
+            "gold_ingot_from_coins_recipe": {
                "recipe_name": "Goldbarren",
-               "description": "Schmilz 50 Goldmünzen zu einem Barren.",
+               "description": "Schmilz 100 Goldmünzen zu einem Barren.",
                "flavor": ""
             },
-	    "gold_coins_from_ingot_recipe": {
-               "recipe_name": "Goldmünzen (x48)",
+            "gold_coins_from_ingot_recipe": {
+               "recipe_name": "Goldmünzen (x100)",
                "description": "Schmelz einen Goldbarren, um Goldmünzen zu prägen, die beim Handel verwendet werden können!",
-               "flavor": "Eine sehr kleine Menge Gold geht während des Prozesses verloren"
+               "flavor": ""
             },
-	    "gold_coins_from_flakes_recipe": {
-               "recipe_name": "Goldmünzen (x16)",
+            "gold_coins_from_flakes_recipe": {
+               "recipe_name": "Goldmünzen (x30)",
                "description": "Schmelz Goldflocken zu Goldmünzen, die im Handel verwendet werden können!",
-               "flavor": "Eine sehr kleine Menge Gold geht während des Prozesses verloren"
+               "flavor": ""
             },
             "blacksmith_fuel_oven_recipe": {
                "recipe_name": "Brennofen",
@@ -6597,9 +6602,11 @@
             "display_name": "Mechanisch",
             "description": "Kann in gebäudebezogenen Systemen zur Übertragung von mechanischer Leistung verwendet werden."
          },
-         "water_signal": {
-            "display_name": "Wassersignal",
-            "description": "Erkennt Änderungen im nahe gelegenen Wasser."
+         "pile": {
+            "display_name": "Stapel",
+            "description": "Enthält Ressourcen, die nach dem Ablegen auf dem Boden geerntet werden können.",
+            "harvest_rate": "Ernterate:<span class='textValue'>[str(harvest_rate)]</span>",
+            "item_list_header": "Dieser Stapel enthält derzeit Folgendes: <span class='textValue'>[str(item_count)]</span> items:"
          },
          "tile": {
             "display_name": "Fliese",
@@ -6616,6 +6623,10 @@
          "water_pump": {
             "display_name": "Wasserpumpe",
             "description": "Wenn aktiviert, pumpt sie Wasser von unten nach oben."
+         },
+         "water_signal": {
+            "display_name": "Wassersignal",
+            "description": "Erkennt Änderungen im nahe gelegenen Wässern."
          }
       }
    },
