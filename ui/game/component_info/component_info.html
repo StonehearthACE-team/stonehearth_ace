@@ -20,9 +20,9 @@
             {{/if}}
             {{#if component.showSpecific}}
             {{#each specific in component.specificDetails}}
-            <p class="details specific">
-               {{formatted_i18n_key specific.details specific.i18n_data}}
-            </p>
+            <div class="details specific">
+               {{{specific.details}}}
+            </div>
             {{/each}}
             {{/if}}
          </div>

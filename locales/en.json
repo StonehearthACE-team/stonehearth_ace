@@ -6597,9 +6597,11 @@
             "display_name": "Mechanical",
             "description": "Can be used in building connected systems to transfer mechanical power."
          },
-         "water_signal": {
-            "display_name": "Water Signal",
-            "description": "Detects changes in nearby water."
+         "pile": {
+            "display_name": "Pile",
+            "description": "Contains resources that can be harvested after placing it on the ground.",
+            "harvest_rate": "Harvest rate: <span class='textValue'>[str(harvest_rate)]</span>",
+            "item_list_header": "This pile currently contains the following <span class='textValue'>[str(item_count)]</span> items:"
          },
          "tile": {
             "display_name": "Tile",
@@ -6616,6 +6618,10 @@
          "water_pump": {
             "display_name": "Water Pump",
             "description": "When enabled, pumps water from its bottom and out its top."
+         },
+         "water_signal": {
+            "display_name": "Water Signal",
+            "description": "Detects changes in nearby water."
          }
       }
    },

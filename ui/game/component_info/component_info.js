@@ -118,9 +118,19 @@ App.ComponentInfoView = App.View.extend({
       }
 
       self.selectedEntityTrace = new RadiantTrace();
-      self.selectedEntityTrace.traceUri(entity, {'stonehearth_ace:component_info' : {}})
+      self.selectedEntityTrace.traceUri(entity, {})
          .progress(function(result) {
-            self.set('selectedDetails', result)
+            self.set('selectedGeneral', result);
+            if (result['stonehearth_ace:component_info'])
+            {
+               self.selectedEntityTrace.traceUri(result['stonehearth_ace:component_info'], {})
+                  .progress(function(compResult) {
+                     self.set('selectedDetails', compResult.components || {});
+                  });
+            }
+            else {
+               self.set('selectedDetails', {});
+            }
          })
          .fail(function(e) {
             console.log(e);
@@ -133,8 +143,8 @@ App.ComponentInfoView = App.View.extend({
       var general = self.get('generalDetails');
 
       if (general) {
-         var selected = self.get('selectedDetails') || {};
-         var specific = (selected['stonehearth_ace:component_info'] || {}).components || {};
+         var selected = self.get('selectedGeneral') || {};
+         var specific = self.get('selectedDetails');
          var data = [];
 
          radiant.each(general, function(_, component) {
@@ -144,7 +154,10 @@ App.ComponentInfoView = App.View.extend({
                   'icon': component.icon,
                   'displayName': component.display_name,
                   'generalDetails': component.description,
-                  'specificDetails': []
+                  'specificDetails': [],
+                  'showGeneral': true,
+                  'showSpecific': false,
+                  'visible': true
                };
 
                var specificDetails = specific[component.name];
@@ -152,12 +165,17 @@ App.ComponentInfoView = App.View.extend({
                   entry.showGeneral = !specificDetails.hide_general;
                   entry.showSpecific = !specificDetails.hide_specific;
                   entry.visible = entry.showGeneral || entry.showSpecific;
-                  radiant.each(specificDetails, function(source, detail) {
+                  radiant.each(specificDetails.details, function(name, specific) {
+                     var details = self._createDetailDiv(specific);
                      entry.specificDetails.push({
-                        'details': detail.details,
-                        'i18n_data': detail.i18n_data
+                        'details': details,
+                        'ordinal': specific.ordinal
                      });
                   });
+
+                  entry.specificDetails.sort(function(a, b) {
+                     return a.ordinal - b.ordinal;
+                  })
                }
 
                data.push(entry);
@@ -176,4 +194,68 @@ App.ComponentInfoView = App.View.extend({
          });
       }
    }.observes('selectedDetails'),
+
+   _createDetailDiv: function (details) {
+      var detail = details.detail;
+      switch (detail.type) {
+         case 'string':
+            // 'content' contains i18n string
+            var content = i18n.t(detail.content, details.i18n_data);
+            return content;
+
+         case 'item_list':
+            // 'items' contains the items, 'header' contains optional header, 'footer' contains optional footer
+            var content = '';
+            if (detail.header) {
+               content += i18n.t(detail.header, details.i18n_data);
+            }
+
+            var items = {};
+            // condense the items by uri and quality
+            radiant.each(detail.items, function(_, item){
+               var key = item.uri + '|' + (item.quality || 1);
+               var arrItem = items[key];
+               if (arrItem) {
+                  arrItem.count++;
+               }
+               else {
+                  arrItem = {
+                     key: key,
+                     item: item,
+                     count: 1
+                  }
+                  items[key] = arrItem;
+               }
+            });
+
+            items = radiant.map_to_array(items);
+            items.sort(function(a, b) {
+               return a.key.localeCompare(b.key);
+            })
+
+            radiant.each(items, function(_, arrItem){
+               var item = arrItem.item;
+               var catalogData = App.catalog.getCatalogData(item.uri);
+               if (catalogData) {
+                  content += `<div class="listItem"><span class="listItemText quality-${item.quality || 1}">`;
+                  if (catalogData.icon) {
+                     content += `<img class="inlineImg" src="${catalogData.icon}" />`
+                  }
+                  if (catalogData.display_name) {
+                     content += i18n.t(catalogData.display_name);
+                  }
+                  if (arrItem.count > 1) {
+                     content += `<span class="textValue"> (x${arrItem.count})</span>`;
+                  }
+                  content += '</span></div>'
+               }
+            })
+
+            if (detail.footer) {
+               content += i18n.t(detail.footer, details.i18n_data);
+            }
+
+            return content;
+      }
+   }
 });

@@ -1,4 +1,5 @@
 local item_quality_lib = require 'stonehearth_ace.lib.item_quality.item_quality_lib'
+local component_info_lib = require 'stonehearth_ace.lib.component_info.component_info_lib'
 
 local PileComponent = class()
 
@@ -19,6 +20,8 @@ function PileComponent:set_items(items)
       self:_add_item(item)
    end
    self.__saved_variables:mark_changed()
+
+   self:_update_component_info()
 end
 
 -- store the necessary information about the item
@@ -52,6 +55,8 @@ function PileComponent:harvest_once(owner)
    self:_update_quality()
    self.__saved_variables:mark_changed()
 
+   self:_update_component_info()
+
    return items, item_count
 end
 
@@ -77,6 +82,21 @@ function PileComponent:_update_quality()
       self._entity:remove_component('stonehearth:item_quality')
       item_quality_lib.apply_quality(self._entity, quality)
    end
+end
+
+function PileComponent:_update_component_info()
+   local comp_info = self._entity:add_component('stonehearth_ace:component_info')
+
+   comp_info:set_component_general_hidden('stonehearth:resource_node', true)
+
+   comp_info:set_component_detail('stonehearth_ace:pile', 'harvest_rate',
+         'stonehearth_ace:component_info.stonehearth_ace.pile.harvest_rate', { harvest_rate = self._harvest_rate })
+   
+   comp_info:set_component_detail('stonehearth_ace:pile', 'items', {
+         type = 'item_list',
+         items = self._sv.items,
+         header = 'stonehearth_ace:component_info.stonehearth_ace.pile.item_list_header'
+      }, { item_count = #self._sv.items })
 end
 
 return PileComponent
