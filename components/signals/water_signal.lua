@@ -92,12 +92,17 @@ end
 function WaterSignal:set_location(location)
    --log:debug('entity %s water signal set_location %s', self._sv.entity_id, location or 'NIL')
    if self._location ~= location then
+      -- if we only moved 1 unit in x and/or z, we probably didn't change what water we're in
+      -- TODO: maybe make this more flexible, but for now it's important performance for fish
+      local big_change = not location or not self._location or math.abs(location.x - self._location.x) > 1
+            or math.abs(location.z - self._location.z) > 1 or location.y ~= self._location.y
+      
       self._location = location
-      self:_update_region()
+      self:_update_region(big_change)
    end
 end
 
-function WaterSignal:_update_region()
+function WaterSignal:_update_region(big_change)
    local changed = false
    local region
    if self._sv._signal_region and self._location then
@@ -110,7 +115,7 @@ function WaterSignal:_update_region()
    if changed then
       self._sv._world_signal_region = region
       stonehearth_ace.water_signal:register_water_signal(self)
-      if not self:is_processing_on_tick() then
+      if big_change and not self:is_processing_on_tick() then
          self:_on_tick_water_signal()
       end
    end

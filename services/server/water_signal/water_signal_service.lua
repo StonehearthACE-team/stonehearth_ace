@@ -12,6 +12,9 @@ local log = radiant.log.create_logger('water_signal_service')
 local WaterSignalService = class()
 
 local CHUNK_SIZE = 50   -- this should be a reasonably large number because lakes can take up a lot of chunks
+local CHUNK_DIVISOR = 1 / CHUNK_SIZE
+local floor = math.floor
+local format = string.format
 
 function WaterSignalService:initialize()
    if self._sv.signals then
@@ -71,7 +74,7 @@ end
 function WaterSignalService:set_update_frequency(frequency)
    self._update_frequency = math.max(1, math.min(10, frequency))
    self._update_tick_mod = self._update_frequency * 10
-   self._update_pathing_tick = self._update_tick_mod / 2
+   --self._update_pathing_tick = self._update_tick_mod / 2
 end
 
 function WaterSignalService:register_water_signal(water_signal)
@@ -79,8 +82,8 @@ function WaterSignalService:register_water_signal(water_signal)
    if not id then
       return
    end
-   
-   local check_all_waters = false
+
+   local check_signals
 
    local signal = self._signals[id]
    if not signal then
@@ -92,11 +95,51 @@ function WaterSignalService:register_water_signal(water_signal)
          waterfalls = {}
       }
       self._signals[id] = signal
-
-      check_all_waters = true
+   else
+      check_signals = true
    end
    self:_update_signal_region(signal)
    self:_update_signal_monitor_types(signal)
+
+   -- if check_signals then
+   --    if not signal.region then
+   --       return true
+   --    end
+   --    -- if it still intersects with its cached waters and waterfalls, it didn't change
+   --    for id, _ in pairs(signal.waters) do
+   --       local water = radiant.entities.get_entity(id)
+   --       water = water and water:is_valid() and water:get_component('stonehearth:water')
+   --       if not water then
+   --          return true
+   --       end
+   --       local location = water:get_location()
+   --       if location then
+   --          local water_region = water:get_region():get():translated(location)
+   --          if not water_region:intersects_region(signal.region) then
+   --             return true
+   --          end
+   --       end
+   --    end
+
+   --    for id, _ in pairs(signal.waterfalls) do
+   --       local waterfall = radiant.entities.get_entity(id)
+   --       waterfall = waterfall and waterfall:is_valid() and waterfall:get_component('stonehearth:waterfall')
+   --       if not waterfall then
+   --          return true
+   --       end
+   --       local location = waterfall:get_location()
+   --       if location then
+   --          local waterfall_region = waterfall:get_region():get():translated(location)
+   --          if not waterfall_region:intersects_region(signal.region) then
+   --             return true
+   --          end
+   --       end
+   --    end
+
+   --    return false
+   -- end
+
+   -- return true
 end
 
 function WaterSignalService:_update_signal_region(signal)
@@ -104,6 +147,8 @@ function WaterSignalService:_update_signal_region(signal)
    if region or (region == nil) ~= (signal.region == nil) then
       signal.region = region
       
+      -- most of the time, an entity is only in 1 or maybe 2 chunks
+      -- it's probably not worth it to compare the old chunks to the new chunks to cancel this process
       if signal.chunks then
          for chunk_id, _ in pairs(signal.chunks) do
             local chunk = self._signals_by_chunk[chunk_id]
@@ -145,7 +190,7 @@ function WaterSignalService:water_component_modified(entity)
 end
 
 function WaterSignalService:water_component_pathing_modified(entity)
-   self._changed_pathing[entity] = entity:get_component('stonehearth:water')
+   --self._changed_pathing[entity] = entity:get_component('stonehearth:water')
 end
 
 function WaterSignalService:waterfall_component_modified(entity)
@@ -164,17 +209,17 @@ function WaterSignalService:_on_tick()
    self._processing_on_tick = true
    
    self._current_tick = (self._current_tick + 1) % self._update_tick_mod
-   if self._current_tick == self._update_pathing_tick then  -- do it on the opposite tick compared to the regular water signal updates (tick 0)
-      -- this isn't really the best place for this, but it's the simplest place for it
-      if next(self._changed_pathing) then
-         for entity, water in pairs(self._changed_pathing) do
-            if entity:is_valid() then
-               water:update_pathable_region()
-            end
-         end
-         self._changed_pathing = {}
-      end
-   end
+   -- if self._current_tick == self._update_pathing_tick then  -- do it on the opposite tick compared to the regular water signal updates (tick 0)
+   --    -- this isn't really the best place for this, but it's the simplest place for it
+   --    if next(self._changed_pathing) then
+   --       for entity, water in pairs(self._changed_pathing) do
+   --          if entity:is_valid() then
+   --             water:update_pathable_region()
+   --          end
+   --       end
+   --       self._changed_pathing = {}
+   --    end
+   -- end
    
    if self._current_tick % self._update_frequency > 0 then
       self._processing_on_tick = false
@@ -315,11 +360,16 @@ function WaterSignalService:_get_chunks(region)
       local bounds = region:get_bounds()
       local min = bounds.min
       local max = bounds.max
-      local chunk_region_size = CHUNK_SIZE
-      for x = math.floor((min.x + 1)/chunk_region_size), math.floor(max.x/chunk_region_size) do
-         for y = math.floor((min.y + 1)/chunk_region_size), math.floor(max.y/chunk_region_size) do
-            for z = math.floor((min.z + 1)/chunk_region_size), math.floor(max.z/chunk_region_size) do
-               chunks[string.format('%d,%d,%d', x, y, z)] = true
+      local min_x = floor((min.x + 1) * CHUNK_DIVISOR)
+      local max_x = floor(max.x * CHUNK_DIVISOR)
+      local min_y = floor((min.y + 1) * CHUNK_DIVISOR)
+      local max_y = floor(max.y * CHUNK_DIVISOR)
+      local min_z = floor((min.z + 1) * CHUNK_DIVISOR)
+      local max_z = floor(max.z * CHUNK_DIVISOR)
+      for x = min_x, max_x do
+         for y = min_y, max_y do
+            for z = min_z, max_z do
+               chunks[format('%d,%d,%d', x, y, z)] = true
             end
          end
       end

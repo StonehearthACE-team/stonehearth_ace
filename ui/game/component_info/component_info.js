@@ -21,6 +21,8 @@ App.ComponentInfoView = App.View.extend({
 
       self.$().off('click');
 
+      self._destroyTraces();
+
       self._super();
    },
 
@@ -103,28 +105,50 @@ App.ComponentInfoView = App.View.extend({
       self.hide();
    },
 
-   _onEntitySelected: function(e) {
-      var self = this;
-      var entity = e.selected_entity
+   _destroyTraces: function() {
+      if (self._tracer) {
+         self._tracer.destroy();
+         self._tracer = null;
+      }
 
       if (self.selectedEntityTrace) {
          self.selectedEntityTrace.destroy();
          self.selectedEntityTrace = null;
       }
 
+      if (self.selectedEntityInfoTrace) {
+         self.selectedEntityInfoTrace.destroy();
+         self.selectedEntityInfoTrace = null;
+      }
+   },
+
+   _onEntitySelected: function(e) {
+      var self = this;
+      var entity = e.selected_entity
+
+      self._destroyTraces();
+
       if (!entity) {
          self.hide();
          return;
       }
 
-      self.selectedEntityTrace = new RadiantTrace();
-      self.selectedEntityTrace.traceUri(entity, {})
+      self._tracer = new RadiantTrace();
+      self.selectedEntityTrace = self._tracer.traceUri(entity, {})
          .progress(function(result) {
+            if (self.isDestroying || self.isDestroyed) {
+               return;
+            }
+
             self.set('selectedGeneral', result);
             if (result['stonehearth_ace:component_info'])
             {
-               self.selectedEntityTrace.traceUri(result['stonehearth_ace:component_info'], {})
+               self.selectedEntityInfoTrace = self._tracer.traceUri(result['stonehearth_ace:component_info'], {})
                   .progress(function(compResult) {
+                     if (self.isDestroying || self.isDestroyed) {
+                        return;
+                     }
+
                      self.set('selectedDetails', compResult.components || {});
                   });
             }
