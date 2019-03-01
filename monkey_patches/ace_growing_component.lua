@@ -17,6 +17,7 @@ function AceGrowingComponent:activate()
    self._water_affinity = stonehearth.town:get_water_affinity_table(self._preferred_climate)
    self._light_affinity = stonehearth.town:get_light_affinity_table(self._preferred_climate)
    self._flood_period_multiplier = (json and json.flood_period_multiplier) or 2
+   self._require_flooding = (json and json.require_flooding) or false
    --self._flooded_growth_only = (json and json.flooded_growth_only) or false   -- if true, only grow when flooded; otherwise normal
 
    if not self._sv.custom_growth_time_multiplier then
@@ -35,53 +36,53 @@ function AceGrowingComponent:activate()
       self._sv._current_growth_recalculate_progress = 0
    end
 
-   if self._sv._is_flooded == nil then
-      self._sv._is_flooded = false
+   if self._sv._enabled == nil then
+      self._sv._enabled = true
    end
 
 	self:_ace_old_activate()
 end
 
 function AceGrowingComponent:post_activate()
-   self:_create_water_listener()
+   --self:_create_water_listener()
 
    -- growth stages are expressed with unit_info display_name, but we want to lock custom_names for these entities
    self._entity:add_component('stonehearth:unit_info'):lock('stonehearth:growing')
 end
 
-AceGrowingComponent._ace_old_destroy = GrowingComponent.destroy
-function AceGrowingComponent:destroy()
-   self:_ace_old_destroy()
+-- AceGrowingComponent._ace_old_destroy = GrowingComponent.destroy
+-- function AceGrowingComponent:destroy()
+--    self:_ace_old_destroy()
 
-   self:_destroy_water_listener()
-   if self._sv._is_flooded then
-      radiant.events.trigger(self._entity, 'stonehearth_ace:growing:flooded_changed', false)
-   end
-end
+--    self:_destroy_water_listener()
+--    if self._sv._is_flooded then
+--       radiant.events.trigger(self._entity, 'stonehearth_ace:growing:flooded_changed', false)
+--    end
+-- end
 
-function AceGrowingComponent:_create_water_listener()
-   local water_component = self._entity:add_component('stonehearth_ace:water_signal')
-   self._water_signal = water_component:set_signal('growing', nil, {'water_exists'}, function(changes) self:_on_water_signal_changed(changes) end)
-end
+-- function AceGrowingComponent:_create_water_listener()
+--    local water_component = self._entity:add_component('stonehearth_ace:water_signal')
+--    self._water_signal = water_component:set_signal('growing', nil, {'water_exists'}, function(changes) self:_on_water_signal_changed(changes) end)
+-- end
 
-function AceGrowingComponent:_destroy_water_listener()
-	if self._flood_listener then
-		self._flood_listener:destroy()
-		self._flood_listener = nil
-	end
-end
+-- function AceGrowingComponent:_destroy_water_listener()
+-- 	if self._flood_listener then
+-- 		self._flood_listener:destroy()
+-- 		self._flood_listener = nil
+-- 	end
+-- end
 
-function AceGrowingComponent:_on_water_signal_changed(changes)
-   log:debug('%s _on_water_signal_changed: %s', self._entity, radiant.util.table_tostring(changes))
+-- function AceGrowingComponent:_on_water_signal_changed(changes)
+--    log:debug('%s _on_water_signal_changed: %s', self._entity, radiant.util.table_tostring(changes))
    
-   if changes.water_exists.value ~= self._sv._is_flooded then
-      self._sv._is_flooded = changes.water_exists.value
-      self:_recalculate_duration()
-      radiant.events.trigger(self._entity, 'stonehearth_ace:growing:flooded_changed', self._sv._is_flooded)
+--    if changes.water_exists.value ~= self._sv._is_flooded then
+--       self._sv._is_flooded = changes.water_exists.value
+--       self:_recalculate_duration()
+--       radiant.events.trigger(self._entity, 'stonehearth_ace:growing:flooded_changed', self._sv._is_flooded)
 
-      self.__saved_variables:mark_changed()
-   end
-end
+--       self.__saved_variables:mark_changed()
+--    end
+-- end
 
 function AceGrowingComponent:set_growth_factors(humidity, sunlight)
 	-- water level is a ratio of volume to "normal ideal volume for a full farm plot"
@@ -102,6 +103,18 @@ function AceGrowingComponent:set_growth_factors(humidity, sunlight)
    if changed then
 		self:_recalculate_duration()
 		self.__saved_variables:mark_changed()
+   end
+end
+
+function AceGrowingComponent:set_flooded(flooded)
+   -- depending on the crop settings, we may disable growth
+   self._sv._is_flooded = flooded
+   self._sv._enabled = not flooded or self._require_flooding
+
+   if self._sv._enabled then
+      self:_start()
+   else
+      self:_recalculate_duration(true)
    end
 end
 
@@ -142,25 +155,21 @@ function AceGrowingComponent:set_custom_growth_time_multiplier(multiplier)
    end
 end
 
-function AceGrowingComponent:_recalculate_duration()
+function AceGrowingComponent:_recalculate_duration(skip_creation)
    if self._sv._growth_timer then
 		local old_duration = self._sv._growth_timer:get_duration()
 		local old_expire_time = self._sv._growth_timer:get_expire_time()
 		local old_start_time = old_expire_time - old_duration
-		local growth_period = self:_get_base_growth_period()
 	  
-		local old_progress = self:_get_current_growth_recalculate_progress()
+		local old_progress = self._sv._current_growth_recalculate_progress
 		local new_progress = (1 - old_progress) * (stonehearth.calendar:get_elapsed_time() - old_start_time) / old_duration
-		self._sv._current_growth_recalculate_progress = old_progress + new_progress
-		local time_remaining = math.max(0, growth_period * (1 - self._sv._current_growth_recalculate_progress))
-		local scaled_time_remaining = self:_calculate_growth_period(time_remaining)
-		self._sv._growth_timer:destroy()
-		self._sv._growth_timer = stonehearth.calendar:set_persistent_timer("GrowingComponent grow_callback", scaled_time_remaining, radiant.bind(self, '_grow'))
-	end
-end
+      self._sv._current_growth_recalculate_progress = old_progress + new_progress
+      self._sv._growth_timer:destroy()
 
-function AceGrowingComponent:_get_current_growth_recalculate_progress()
-	return self._sv._current_growth_recalculate_progress or 0
+      if not skip_creation then 
+         self:_set_growth_timer()
+      end
+	end
 end
 
 function AceGrowingComponent:_calculate_growth_period(growth_period)
@@ -192,7 +201,9 @@ function AceGrowingComponent:_set_growth_timer()
       self._sv._growth_timer:destroy()
       self._sv._growth_timer = nil
    end
-   self._sv._growth_timer = stonehearth.calendar:set_persistent_timer("GrowingComponent grow_callback", growth_period, radiant.bind(self, '_grow'))
+   local time_remaining = math.max(0, growth_period * (1 - self._sv._current_growth_recalculate_progress))
+   local scaled_time_remaining = self:_calculate_growth_period(time_remaining)
+   self._sv._growth_timer = stonehearth.calendar:set_persistent_timer("GrowingComponent grow_callback", scaled_time_remaining, radiant.bind(self, '_grow'))
 end
 
 AceGrowingComponent._ace_old__grow = GrowingComponent._grow
@@ -204,7 +215,7 @@ end
 
 -- override these two functions to prepend growth_timer with an underscore
 function AceGrowingComponent:_start()
-   if not self._sv._growth_timer then
+   if not self._sv._growth_timer and self._sv._enabled then
       self:_set_growth_timer()
    end
    --Make our current model look like the saved model

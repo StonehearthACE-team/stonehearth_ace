@@ -6292,9 +6292,9 @@
                   "short": "This crop matures quickly (<span class='text-value'>[str(i18n_data.total_growth_time)]</span> before modifiers).",
                   "fair": "This crop matures at a moderate rate (<span class='text-value'>[str(i18n_data.total_growth_time)]</span> before modifiers).",
                   "long": "This crop takes a long time to mature (<span class='text-value'>[str(i18n_data.total_growth_time)]</span> before modifiers).",
-                  "shorter": "This crop has more positive growth time modifiers than negative ones.",
-                  "normal": "This crop has both positive growth time modifiers and negative ones.",
-                  "longer": "This crop has more negative growth time modifiers than positive ones."
+                  "shorter": "This crop has more <span class='text-optimal'>positive</span> growth time modifiers than negative ones.",
+                  "normal": "This crop has <span class='text-average'>both</span> positive growth time modifiers and negative ones.",
+                  "longer": "This crop has more <span class='text-poor'>negative</span> growth time modifiers than positive ones."
                },
                "water_affinity": {
                   "property_name": "Water Needs",
@@ -6316,7 +6316,8 @@
                   "requires": "This crop must have water covering it to grow.",
                   "prefers": "This crop grows more quickly when water is covering it and slower when it isn't.",
                   "prefers_not": "This crop grows more slowly when water is covering it.",
-                  "current_amount": "<span class='text-value [str(i18n_data.flooded_status)]'>[str(i18n_data.num_flooded)] / [str(i18n_data.num_crops)]</span> crops in this field are currently flooded."
+                  "current_flooded": "This field <span class='[str(i18n_data.flooded_status)]'>is</span> currently flooded.",
+                  "current_not_flooded": "This field <span class='[str(i18n_data.flooded_status)]'>is not</span> currently flooded."
                },
                "fertilized": {
                   "status_name": "Fertilized Crops",

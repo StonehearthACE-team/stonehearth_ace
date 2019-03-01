@@ -11,7 +11,7 @@ local log = radiant.log.create_logger('water_signal_service')
 
 local WaterSignalService = class()
 
-local CHUNK_SIZE = 50   -- this should be a reasonably large number because lakes can take up a lot of chunks
+local CHUNK_SIZE = 10   -- this should be a reasonably large number because lakes can take up a lot of chunks
 local CHUNK_DIVISOR = 1 / CHUNK_SIZE
 local floor = math.floor
 local format = string.format
@@ -253,9 +253,12 @@ function WaterSignalService:_on_tick()
                   if not checked[id] then
                      checked[id] = true
                      local signal = self._signals[id]
-                     if not signal.waters[water_id] and signal.region and signal.monitors_water and water_region:intersects_region(signal.region) then
-                        signals_to_signal[id] = signal
-                        signal.waters[water_id] = true
+                     if signal.region and signal.monitors_water then
+                        local intersects = water_region:intersects_region(signal.region)
+                        if intersects and not signal.waters[water_id] or signal.waters[water_id] == false then
+                           signals_to_signal[id] = signal
+                           signal.waters[water_id] = intersects
+                        end
                      end
                   end
                end
@@ -295,9 +298,12 @@ function WaterSignalService:_on_tick()
                   if not checked[id] then
                      checked[id] = true
                      local signal = self._signals[id]
-                     if not signal.waterfalls[waterfall_id] and signal.region and signal.monitors_waterfall and waterfall_region:intersects_region(signal.region) then
-                        signals_to_signal[id] = signal
-                        signal.waterfalls[waterfall_id] = true
+                     if signal.region and signal.monitors_waterfall then
+                        local intersects = waterfall_region:intersects_region(signal.region)
+                        if intersects and not signal.waterfalls[waterfall_id] or signal.waterfalls[waterfall_id] == false then
+                           signals_to_signal[id] = signal
+                           signal.waterfalls[waterfall_id] = intersects
+                        end
                      end
                   end
                end

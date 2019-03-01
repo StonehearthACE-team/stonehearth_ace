@@ -27,12 +27,8 @@
             "value": 0.001
          }
       },
-      "sensor_list": {
-         "sensors": {
-            "sight": {
-               "radius": 16
-            }
-         }
+      "stonehearth_ace:water_signal": {
+         "is_mobile": true
       }
    },
    "entity_data": {
@@ -43,11 +39,6 @@
       "stonehearth:catalog": {
          "player_id": "aquatic_animals",
          "category": "aquatic"
-      },
-      "stonehearth:observers:avoid_threatening_entities": {
-         "treat_neutral_as_hostile": true,
-         "min_avoidance_distance": 4,
-         "max_avoidance_distance": 8
       },
       "stonehearth:ai_packs": {
          "packs": [

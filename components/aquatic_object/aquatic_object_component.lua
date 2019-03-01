@@ -13,6 +13,11 @@ end
 
 function AquaticObjectComponent:activate()
    self._json = radiant.entities.get_json(self)
+   if not self._json then
+      self._entity:remove_component('stonehearth_ace:aquatic_object')
+      return
+   end
+
 	self._require_water_to_grow = self._json.require_water_to_grow
 	self._destroy_if_out_of_water = self._json.destroy_if_out_of_water
 	self._suffocate_if_out_of_water = self._json.suffocate_if_out_of_water
@@ -20,7 +25,9 @@ function AquaticObjectComponent:activate()
 end
 
 function AquaticObjectComponent:post_activate()
-	self:_create_listeners()
+   self._entity:remove_component('sensor_list')
+   
+   self:_create_listeners()
 	self:_on_water_exists_changed()
 	self:_on_water_surface_level_changed()
 end
@@ -150,7 +157,7 @@ end
 function AquaticObjectComponent:timers_resume(resume)
 	local renewable_resource_node_component = self._entity:get_component('stonehearth:renewable_resource_node')
 	local evolve_component = self._entity:get_component('stonehearth:evolve')
-	local growing_component = self._entity:get_component('stonehearth:growing')
+	--local growing_component = self._entity:get_component('stonehearth:growing')
 	
 	if renewable_resource_node_component then
 		if resume then
@@ -168,13 +175,13 @@ function AquaticObjectComponent:timers_resume(resume)
 		end
 	end
 	
-	if growing_component then
-		if resume then
-			growing_component:start_growing()
-		else
-			growing_component:stop_growing()
-		end
-	end
+	-- if growing_component then
+	-- 	if resume then
+	-- 		growing_component:start_growing()
+	-- 	else
+	-- 		growing_component:stop_growing()
+	-- 	end
+	-- end
 end
 
 function AquaticObjectComponent:destroy()
