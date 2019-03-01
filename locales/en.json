@@ -6601,7 +6601,11 @@
          },
          "mechanical": {
             "display_name": "Mechanical",
-            "description": "Can be used in building connected systems to transfer mechanical power."
+            "description": "Can be used in building connected systems to transfer mechanical power.",
+            "produces": "This mechanical device is currently producing <span class='textValue'>[str(produces)] / [str(def_produces)]</span> power.",
+            "consumes": "This mechanical device is currently consuming <span class='textValue'>[str(consumes)] / [str(def_consumes)]</span> power.",
+            "resistance": "This mechanical device is causing <span class='textValue'>[str(resistance)] / [str(def_resistance)]</span> resistance.",
+            "power_percentage": "This mechanical device's network is currently operating at <span class='textValue'>[str(power_percentage)] %</span> efficiency."
          },
          "pile": {
             "display_name": "Pile",

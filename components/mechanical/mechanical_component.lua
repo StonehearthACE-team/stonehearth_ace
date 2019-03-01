@@ -1,5 +1,7 @@
 local MechanicalComponent = class()
 
+local floor = math.floor
+
 function MechanicalComponent:initialize()
    local json = radiant.entities.get_json(self)
    self._json = json or {}
@@ -89,6 +91,7 @@ function MechanicalComponent:_updated()
    radiant.events.trigger(self._entity, 'stonehearth_ace:mechanical:changed', self._entity)
 end
 
+-- this is called by the mechanical service on all mechanical entities in a network when that network's power is changed and calculated
 function MechanicalComponent:set_power_percentage(percentage)
    if percentage > 0 then
       self:_run_enabled_effect(percentage)
@@ -98,6 +101,8 @@ function MechanicalComponent:set_power_percentage(percentage)
    
    self._sv.power_percentage = percentage
    self.__saved_variables:mark_changed()
+
+   self:_update_component_info()
 
    local script = self._set_power_script
    if script then
@@ -185,6 +190,35 @@ function MechanicalComponent:_run_disabled_effect()
       self._disabled_effect = radiant.effects.run_effect(self._entity, self._disabled_effect_name)
          :set_cleanup_on_finish(false)
    end
+end
+
+function MechanicalComponent:_update_component_info()
+   local comp_info = self._entity:add_component('stonehearth_ace:component_info')
+
+   if self._def_produces > 0 then
+      comp_info:set_component_detail('stonehearth_ace:mechanical', 'produces',
+         'stonehearth_ace:component_info.stonehearth_ace.mechanical.produces', {
+            def_produces = floor(self._def_produces),
+            produces = floor(self._sv.produces)
+         })
+   elseif self._def_consumes > 0 then
+      comp_info:set_component_detail('stonehearth_ace:mechanical', 'consumes',
+         'stonehearth_ace:component_info.stonehearth_ace.mechanical.consumes', {
+            def_consumes = floor(self._def_consumes),
+            produces = floor(self._sv.consumes)
+         })
+   elseif self._def_resistance > 0 then
+      comp_info:set_component_detail('stonehearth_ace:mechanical', 'resistance',
+         'stonehearth_ace:component_info.stonehearth_ace.mechanical.resistance', {
+            def_resistance = floor(self._def_resistance),
+            resistance = floor(self._sv.resistance)
+         })
+   end
+
+   comp_info:set_component_detail('stonehearth_ace:mechanical', 'power_percentage',
+      'stonehearth_ace:component_info.stonehearth_ace.mechanical.power_percentage', {
+         power_percentage = floor(self._sv.power_percentage * 100)
+      })
 end
 
 return MechanicalComponent
