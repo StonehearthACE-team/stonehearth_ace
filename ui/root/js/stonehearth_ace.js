@@ -56,6 +56,34 @@ var stonehearth_ace = {
          }
       }
       return typeString;
+   },
+
+   findRelevantClassesArray: function(roles) {
+      var classes = {};
+      var classArray = [];
+      if ((typeof roles) === 'string') {
+         roles = roles.split(" ");
+      }
+      var jobData = App.jobConstants;
+      for( i=0; i<roles.length; i++ ) {
+         var thisRole = roles[i];
+         var roleInfo = App.roleConstants[thisRole];
+         if (roleInfo) {
+            radiant.each(roleInfo, function(targetClass, value) {
+               var genericAlias = jobData[targetClass].description.generic_alias || targetClass;
+               if (!classes[genericAlias]) {
+                  classes[genericAlias] = true;
+                  var classInfo = {
+                     name : genericAlias,
+                     readableName:  jobData[genericAlias].description.display_name, 
+                     icon : jobData[genericAlias].description.icon
+                  };
+                  classArray.push(classInfo);
+               }
+            });
+         }
+      }
+      return classArray;
    }
 }
 

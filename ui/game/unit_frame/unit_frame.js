@@ -219,7 +219,7 @@ App.StonehearthUnitFrameView.reopen({
          if(equipmentPiece && isPlayerOwner && (equipmentPiece.required_job_level || equipmentPiece.roles)) {
             if (equipmentPiece.roles) {
                //this._collectClasses(equipmentPiece.roles);
-               var classArray = radiant.findRelevantClassesArray(equipmentPiece.roles);
+               var classArray = stonehearth_ace.findRelevantClassesArray(equipmentPiece.roles);
                self.set('allowedClasses', classArray);
             }
             if (equipmentPiece.required_job_level) {
