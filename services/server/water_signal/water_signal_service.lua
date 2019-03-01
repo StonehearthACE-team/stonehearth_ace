@@ -255,6 +255,7 @@ function WaterSignalService:_on_tick()
                      local signal = self._signals[id]
                      if signal.region and signal.monitors_water then
                         local intersects = water_region:intersects_region(signal.region)
+                        -- if it intersects now, or if it used to intersect and no longer does, signal it
                         if intersects and not signal.waters[water_id] or signal.waters[water_id] == false then
                            signals_to_signal[id] = signal
                            signal.waters[water_id] = intersects
@@ -300,6 +301,7 @@ function WaterSignalService:_on_tick()
                      local signal = self._signals[id]
                      if signal.region and signal.monitors_waterfall then
                         local intersects = waterfall_region:intersects_region(signal.region)
+                        -- if it intersects now, or if it used to intersect and no longer does, signal it
                         if intersects and not signal.waterfalls[waterfall_id] or signal.waterfalls[waterfall_id] == false then
                            signals_to_signal[id] = signal
                            signal.waterfalls[waterfall_id] = intersects

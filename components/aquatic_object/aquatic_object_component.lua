@@ -22,8 +22,6 @@ function AquaticObjectComponent:activate()
 end
 
 function AquaticObjectComponent:post_activate()
-   self._entity:remove_component('sensor_list')
-   self._entity:remove_component('stonehearth:observers')
    if not self._json then
       self._entity:remove_component('stonehearth_ace:aquatic_object')
       return

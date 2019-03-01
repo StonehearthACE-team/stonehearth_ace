@@ -41,7 +41,7 @@ function WaterSignalComponent:_setup_location_trace()
    self:_destroy_location_trace()
    
    if self._sv._is_mobile then
-      self._location_trace = stonehearth.calendar:set_interval('wilderness mobility check', '4m+2m', function()
+      self._location_trace = stonehearth.calendar:set_interval('wilderness mobility check', '9m+2m', function()
          self:_location_changed()
       end)
    else

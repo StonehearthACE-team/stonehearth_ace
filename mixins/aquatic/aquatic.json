@@ -29,6 +29,12 @@
       },
       "stonehearth_ace:water_signal": {
          "is_mobile": true
+      },
+      "stonehearth_ace:remove_components": {
+         "components": {
+            "sensor_list": true,
+            "stonehearth:observers": true
+         }
       }
    },
    "entity_data": {
@@ -42,7 +48,6 @@
       },
       "stonehearth:ai_packs": {
          "packs": [
-            "stonehearth:ai_pack:wimpy",
             "stonehearth:ai_pack:panic:flee",
             "stonehearth:ai_pack:death",
             "stonehearth:ai_pack:idle",
