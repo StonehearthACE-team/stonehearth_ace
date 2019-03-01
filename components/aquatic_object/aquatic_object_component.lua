@@ -13,20 +13,22 @@ end
 
 function AquaticObjectComponent:activate()
    self._json = radiant.entities.get_json(self)
+   if self._json then
+      self._require_water_to_grow = self._json.require_water_to_grow
+      self._destroy_if_out_of_water = self._json.destroy_if_out_of_water
+      self._suffocate_if_out_of_water = self._json.suffocate_if_out_of_water
+      self._floating_object = self._json.floating_object
+   end
+end
+
+function AquaticObjectComponent:post_activate()
+   self._entity:remove_component('sensor_list')
+   self._entity:remove_component('stonehearth:observers')
    if not self._json then
       self._entity:remove_component('stonehearth_ace:aquatic_object')
       return
    end
 
-	self._require_water_to_grow = self._json.require_water_to_grow
-	self._destroy_if_out_of_water = self._json.destroy_if_out_of_water
-	self._suffocate_if_out_of_water = self._json.suffocate_if_out_of_water
-   self._floating_object = self._json.floating_object
-end
-
-function AquaticObjectComponent:post_activate()
-   self._entity:remove_component('sensor_list')
-   
    self:_create_listeners()
 	self:_on_water_exists_changed()
 	self:_on_water_surface_level_changed()

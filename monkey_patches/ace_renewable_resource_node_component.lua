@@ -11,7 +11,7 @@ end
 AceRenewableResourceNodeComponent._ace_old_post_activate = RenewableResourceNodeComponent.post_activate
 function AceRenewableResourceNodeComponent:post_activate()
    if not self._json then
-      return
+      self._entity:remove_component('stonehearth:renewable_resource_node')
    end
    
    self:_ace_old_post_activate()
