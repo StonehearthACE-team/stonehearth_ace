@@ -1,0 +1,27 @@
+{
+   "components": {
+      "stonehearth:equipment_piece": {
+         "slot": "leftArm",
+         "render_type": "attach_to_bone",
+         "additional_equipment": {
+            "stonehearth_ace:armor:offhand_placeholder": true
+         },
+         "injected_buffs": [
+            "stonehearth_ace:buffs:shield_heavy"
+         ],
+         "equipment_types": [
+            "shield",
+            "heavy_shield"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "material_tags": [
+            "shield",
+            "heavy_shield",
+            "stockpile_equipment"
+         ]
+      }
+   }
+}

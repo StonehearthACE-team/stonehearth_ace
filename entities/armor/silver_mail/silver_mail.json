@@ -2,7 +2,14 @@
    "components": {
       "stonehearth:equipment_piece": {
          "ilevel": 10,
-         "required_job_level": 5
+         "required_job_level": 5,
+		 "injected_buffs": [
+            "stonehearth_ace:buffs:armor_heavy"
+         ],
+		 "equipment_types": [
+		    "torso",
+            "heavy_armor"
+         ]
       }
    },
    "entity_data": {

@@ -1,7 +1,14 @@
 {
    "components": {
       "stonehearth:equipment_piece": {
-         "required_job_level": 4
+         "required_job_level": 4,
+		 "injected_buffs": [
+            "stonehearth_ace:buffs:armor_medium"
+         ],
+		 "equipment_types": [
+		    "torso",
+            "medium_armor"
+         ]
       }
    },
    "entity_data": {

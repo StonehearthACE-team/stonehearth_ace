@@ -2,7 +2,14 @@
    "components": {
       "stonehearth:equipment_piece": {
          "ilevel": 6,
-         "required_job_level": 4
+         "required_job_level": 4,
+		 "injected_buffs": [
+            "stonehearth_ace:buffs:armor_heavy"
+         ],
+		 "equipment_types": [
+		    "helmet",
+            "heavy_armor"
+         ]
       }
    },
    "entity_data": {

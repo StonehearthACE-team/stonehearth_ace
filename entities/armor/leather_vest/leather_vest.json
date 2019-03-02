@@ -1,7 +1,14 @@
 {
    "components": {
       "stonehearth:equipment_piece": {
-         "required_job_level": 1
+         "required_job_level": 1,
+		 "injected_buffs": [
+            "stonehearth_ace:buffs:armor_light"
+         ],
+		 "equipment_types": [
+		    "torso",
+            "light_armor"
+         ]
       }
    },
    "entity_data": {

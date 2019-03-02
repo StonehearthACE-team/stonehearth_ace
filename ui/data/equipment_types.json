@@ -57,44 +57,58 @@
          "shield"
       ]
    },
-   "hood": {
-      "redirect": "light_armor"
-   },
-   "helmet": {
-      "redirect": "torso"
-   },
-   "light_helmet": {
-      "redirect": "light_armor"
-   },
-   "medium_helmet": {
-      "redirect": "medium_armor"
-   },
-   "heavy_helmet": {
-      "redirect": "heavy_armor"
-   },
    "torso": {
       "name": "i18n(stonehearth_ace:ui.game.unit_frame.equipment_types.torso)",
       "icon": "/stonehearth_ace/ui/images/equipment_types/torso.png"
+   },
+   "hood": {
+      "name": "i18n(stonehearth_ace:ui.game.unit_frame.equipment_types.hood)",
+      "icon": "/stonehearth_ace/ui/images/equipment_types/hood.png",
+      "overrides": [
+         "light_armor",
+         "medium_armor",
+         "heavy_armor",
+		 "torso",
+		 "helmet"
+      ]
+   },
+   "circlet": {
+      "name": "i18n(stonehearth_ace:ui.game.unit_frame.equipment_types.circlet)",
+      "icon": "/stonehearth_ace/ui/images/equipment_types/circlet.png",
+	  "overrides": [
+         "light_armor",
+         "medium_armor",
+         "heavy_armor",
+		 "torso",
+		 "helmet"
+      ]
+   },
+   "helmet": {
+      "name": "i18n(stonehearth_ace:ui.game.unit_frame.equipment_types.helmet)",
+      "icon": "/stonehearth_ace/ui/images/equipment_types/helmet.png"
    },
    "light_armor": {
       "name": "i18n(stonehearth_ace:ui.game.unit_frame.equipment_types.light_armor)",
       "icon": "/stonehearth_ace/ui/images/equipment_types/light_armor.png",
       "overrides": [
-         "torso"
+         "torso",
+		 "helmet"
       ]
    },
    "medium_armor": {
       "name": "i18n(stonehearth_ace:ui.game.unit_frame.equipment_types.medium_armor)",
       "icon": "/stonehearth_ace/ui/images/equipment_types/medium_armor.png",
       "overrides": [
-         "torso"
+         "torso",
+		 "helmet"
       ]
    },
    "heavy_armor": {
       "name": "i18n(stonehearth_ace:ui.game.unit_frame.equipment_types.heavy_armor)",
       "icon": "/stonehearth_ace/ui/images/equipment_types/heavy_armor.png",
       "overrides": [
-         "torso"
+         "torso",
+		 "helmet"
       ]
    },
    "accessory": {
@@ -106,6 +120,13 @@
       "icon": "/stonehearth_ace/ui/images/equipment_types/backpack.png",
       "overrides": [
          "accessory"
+      ]
+   },
+   "tool": {
+      "name": "i18n(stonehearth_ace:ui.game.unit_frame.equipment_types.tool)",
+      "icon": "/stonehearth_ace/ui/images/equipment_types/tool.png",
+      "overrides": [
+         "mainhand"
       ]
    },
    "quiver_arrows": {

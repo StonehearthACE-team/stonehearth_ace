@@ -18,6 +18,9 @@
          "additional_equipment": {
             "stonehearth_ace:armor:offhand_placeholder": true
          },
+         "injected_buffs": [
+            "stonehearth_ace:buffs:shield_light"
+         ],
          "postures": [
             "stonehearth:combat",
             "stonehearth:patrol",
@@ -30,7 +33,8 @@
          "required_job_level": 3,
          "equip_effect": "stonehearth:effects:weapon_level_up",
          "equipment_types": [
-            "shield"
+            "shield",
+            "light_shield"
          ]
       }
    },
@@ -64,6 +68,7 @@
          "material_tags": [
             "bone",
             "shield",
+            "light_shield",
             "medium_armor",
             "light_giant_bone_shield",
             "stockpile_equipment"

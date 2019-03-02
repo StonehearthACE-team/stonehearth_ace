@@ -4,8 +4,12 @@
 		 "additional_equipment": {
             "stonehearth_ace:armor:offhand_placeholder": true
          },
+		 "required_job_level": 1,
          "render_type": "attach_to_bone",
-         "equipment_types": ["shield"]
+         "equipment_types": ["shield", "light_shield"],
+         "injected_buffs": [
+            "stonehearth_ace:buffs:shield_light"
+         ]
       }
    },
    "entity_data": {
@@ -13,7 +17,7 @@
 	     "mixintypes": {
 			"material_tags": "override"
 		 },
-         "material_tags":["bronze", "shield", "medium_armor", "ascendancy_made", "bronze_shield", "stockpile_equipment"]
+         "material_tags":["bronze", "shield", "light_shield", "medium_armor", "ascendancy_made", "bronze_shield", "stockpile_equipment"]
       }
    }
 }

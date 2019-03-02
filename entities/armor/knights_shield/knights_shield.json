@@ -5,12 +5,15 @@
 		 "additional_equipment": {
             "stonehearth_ace:armor:offhand_placeholder": true
          },
-		 "equipment_types": ["shield"]
+		 "equipment_types": ["shield", "heavy_shield"],
+         "injected_buffs": [
+            "stonehearth_ace:buffs:shield_heavy"
+         ]
       }
    },
    "entity_data": {
       "stonehearth:catalog": {
-         "material_tags":["iron", "shield", "heavy_armor", "knights_shield"]
+         "material_tags":["iron", "shield", "heavy_shield", "heavy_armor", "knights_shield"]
       }
    }
 }

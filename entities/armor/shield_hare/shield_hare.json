@@ -6,13 +6,16 @@
             "stonehearth_ace:armor:offhand_placeholder": true
          },
 		 "ilevel": 8,
-         "equipment_types": ["shield"]
+         "equipment_types": ["shield", "heavy_shield"],
+         "injected_buffs": [
+            "stonehearth_ace:buffs:shield_heavy"
+         ]
       }
    },
    "entity_data": {
       "stonehearth:catalog": {
 	     "description": "i18n(stonehearth_ace:entities.armor.shield_hare.description)",
-         "material_tags":["wood", "shield", "light_armor", "na_made", "shield_hare", "stockpile_equipment"]
+         "material_tags":["wood", "shield", "heavy_shield", "light_armor", "na_made", "shield_hare", "stockpile_equipment"]
       }
    }
 }

@@ -6,8 +6,12 @@
          "additional_equipment": {
             "stonehearth_ace:armor:offhand_placeholder": true
          },
+         "injected_buffs": [
+            "stonehearth_ace:buffs:shield_light"
+         ],
          "equipment_types": [
-            "shield"
+            "shield",
+            "light_shield"
          ]
       }
    },
@@ -15,6 +19,7 @@
       "stonehearth:catalog": {
          "material_tags": [
             "shield",
+            "light_shield",
             "stockpile_equipment"
          ]
       }

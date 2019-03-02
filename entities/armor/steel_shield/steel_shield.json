@@ -7,7 +7,10 @@
          },
          "required_job_level": 4,
          "ilevel": 6,
-         "equipment_types": ["shield"]
+         "equipment_types": ["shield", "heavy_shield"],
+         "injected_buffs": [
+            "stonehearth_ace:buffs:shield_heavy"
+         ]
       }
    },
    "entity_data": {
@@ -21,7 +24,7 @@
 	     "mixintypes": {
 			"material_tags": "override"
 		 },
-         "material_tags":["steel", "shield", "heavy_armor", "ascendancy_made", "steel_shield", "stockpile_equipment"]
+         "material_tags":["steel", "shield", "heavy_shield", "heavy_armor", "ascendancy_made", "steel_shield", "stockpile_equipment"]
       }
    }
 }

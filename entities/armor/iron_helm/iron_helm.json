@@ -1,7 +1,14 @@
 {
    "components": {
       "stonehearth:equipment_piece": {
-         "required_job_level": 5
+         "required_job_level": 5,
+		 "injected_buffs": [
+            "stonehearth_ace:buffs:armor_medium"
+         ],
+		 "equipment_types": [
+		    "helmet",
+            "medium_armor"
+         ]
       }
    },
    "entity_data": {

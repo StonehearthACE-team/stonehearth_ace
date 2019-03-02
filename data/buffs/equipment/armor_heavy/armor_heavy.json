@@ -1,0 +1,22 @@
+{
+   "type": "buff",
+   "axis": "buff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.armor_heavy.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.armor_heavy.description)",
+   "icon": "file(armor_heavy.png)",
+   "modifiers": {
+      "courage": {
+         "add": 20
+      },
+      "menace": {
+         "add": 20
+      },
+      "speed": {
+         "add": -10
+      }
+   },
+   "disallowed_buffs": [
+      "stonehearth_ace:buffs:armor_medium",
+      "stonehearth_ace:buffs:armor_light"
+   ]
+}

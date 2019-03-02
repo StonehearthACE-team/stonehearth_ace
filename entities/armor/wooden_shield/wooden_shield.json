@@ -6,12 +6,15 @@
             "stonehearth_ace:armor:offhand_placeholder": true
          },
          "render_type": "attach_to_bone",
-         "equipment_types": ["shield"]
+         "equipment_types": ["shield", "light_shield"],
+         "injected_buffs": [
+            "stonehearth_ace:buffs:shield_light"
+         ]
       }
    },
    "entity_data": {
       "stonehearth:catalog": {
-         "material_tags":["wood", "shield", "light_armor", "wooden_shield", "stockpile_equipment"]
+         "material_tags":["wood", "shield", "light_shield", "light_armor", "wooden_shield", "stockpile_equipment"]
       }
    }
 }

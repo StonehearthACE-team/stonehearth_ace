@@ -658,6 +658,26 @@
          "lovely_meal": {
             "display_name": "Lovely Meal",
             "description": "Eating well is motivating! Diligence and Willpower fairly increased."
+         },
+         "armor_light": {
+            "display_name": "Lightly Geared",
+            "description": "This hearthling is lightly armored and has increased speed but reduced courage and menace."
+         },
+         "armor_medium": {
+            "display_name": "Fairly Geared",
+            "description": "This hearthling wears medium armor and has increased courage but slightly lowered speed."
+         },
+         "armor_heavy": {
+            "display_name": "Heavily Geared",
+            "description": "This hearthling is heavily armored and has increased courage and menace but reduced speed."
+         },
+         "shield_heavy": {
+            "display_name": "Heavy Shield",
+            "description": "Defense is overall increased but speed is slightly decreased."
+         },
+         "shield_light": {
+            "display_name": "Light Shield",
+            "description": "Courage and speed are slightly increased."
          }
       },
       "loadouts": {
@@ -4716,6 +4736,14 @@
          "daisies": {
             "display_name": "Daisies",
             "description": "A delicate flowering cover that spreads over time. Harvest them for herbs."
+         },
+         "water_spring": {
+            "display_name": "Water Spring",
+            "description": "A constant and natural source of fresh water. It can be removed."
+         },
+         "water_hole": {
+            "display_name": "Rock Crevice",
+            "description": "This big fissure will suck away all the water that gets to it. It can be removed."
          }
       },
       "fungi": {
@@ -6411,12 +6439,10 @@
                "shield": "Shield",
                "light_shield": "Light Shield",
                "heavy_shield": "Heavy Shield",
-               "hood": "Hood",
-               "helmet": "Helmet",
-               "light_helmet": "Light Helmet",
-               "medium_helmet": "Medium Helmet",
-               "heavy_helmet": "Heavy Helmet",
-               "torso": "Armor",
+               "torso": "Outfit",
+			   "helmet": "Headgear",
+			   "circlet": "Circlet",
+			   "hood": "Hood",
                "light_armor": "Light Armor",
                "medium_armor": "Medium Armor",
                "heavy_armor": "Heavy Armor",

@@ -18,6 +18,9 @@
          "additional_equipment": {
             "stonehearth_ace:armor:offhand_placeholder": true
          },
+         "injected_buffs": [
+            "stonehearth_ace:buffs:shield_heavy"
+         ],
          "postures": [
             "stonehearth:combat",
             "stonehearth:patrol",
@@ -30,7 +33,8 @@
          ],
          "equip_effect": "stonehearth:effects:weapon_level_up",
          "equipment_types": [
-            "shield"
+            "shield",
+            "heavy_shield"
          ]
       }
    },
@@ -64,6 +68,7 @@
          "material_tags": [
             "bone",
             "shield",
+            "heavy_shield",
             "heavy_armor",
             "giant_bone_shield",
             "stockpile_equipment"

@@ -7,7 +7,10 @@
          },
          "required_job_level": 6,
          "ilevel": 12,
-         "equipment_types": ["shield"]
+         "equipment_types": ["shield", "heavy_shield"],
+         "injected_buffs": [
+            "stonehearth_ace:buffs:shield_heavy"
+         ]
       }
    },
    "entity_data": {
@@ -46,7 +49,7 @@
          }
       ],
       "stonehearth:catalog": {
-         "material_tags":["legendary", "shield", "heavy_armor", "ascendancy_made", "legendary_shield", "stockpile_equipment"]
+         "material_tags":["legendary", "shield", "heavy_shield", "heavy_armor", "ascendancy_made", "legendary_shield", "stockpile_equipment"]
       }
    }
 }
