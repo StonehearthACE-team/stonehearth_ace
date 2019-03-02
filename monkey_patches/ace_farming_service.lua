@@ -19,7 +19,6 @@ function AceFarmingService:get_crop_details(crop_type)
       if json and json.components then
          local growing_data = json.components['stonehearth:growing']
          local crop_data = json.components['stonehearth:crop']
-         local aquatic_data = json.components['stonehearth_ace:aquatic_object']
          if growing_data then
             if growing_data.preferred_seasons then
                local biome_uri = stonehearth.world_generation:get_biome_alias()
@@ -39,6 +38,7 @@ function AceFarmingService:get_crop_details(crop_type)
 
             details.preferred_climate = growing_data.preferred_climate
             details.flood_period_multiplier = growing_data.flood_period_multiplier or 2
+            details.require_flooding_to_grow = growing_data.require_flooding
 
             if crop_data then
                local harvest_stage = 1
@@ -68,8 +68,6 @@ function AceFarmingService:get_crop_details(crop_type)
                end
             end
          end
-
-         details.require_flooding_to_grow = aquatic_data and aquatic_data.require_water_to_grow
       end
       self._crop_details[crop_type] = details
    end

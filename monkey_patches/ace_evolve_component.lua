@@ -24,13 +24,14 @@ function AceEvolveComponent:activate()
    end
    
    self:_ace_old_activate()   -- need to call this before other functions because it sets self._evolve_data
+end
+
+function AceEvolveComponent:post_activate()
    -- if it doesn't have any evolve_data, try to remove the component because it should no longer be active
    if not self._evolve_data then
       self._entity:remove_component('stonehearth:evolve')
    end
-end
 
-function AceEvolveComponent:post_activate()
    -- if we had an evolve water signal for this entity, destroy it
    -- if that was the only water signal for it, get rid of the component
    local water_signal_comp = self._entity:get_component('stonehearth_ace:water_signal')
@@ -92,10 +93,12 @@ end
 function AceEvolveComponent:_start_evolve_timer()
 	self:_stop_evolve_timer()
    
-   local duration = self:_calculate_growth_period()
-   self._sv._evolve_timer = stonehearth.calendar:set_persistent_timer("EvolveComponent renew", duration, radiant.bind(self, 'evolve'))
+   if self._evolve_data then
+      local duration = self:_calculate_growth_period()
+      self._sv._evolve_timer = stonehearth.calendar:set_persistent_timer("EvolveComponent renew", duration, radiant.bind(self, 'evolve'))
 
-	self.__saved_variables:mark_changed()
+      self.__saved_variables:mark_changed()
+   end
 end
 
 function AceEvolveComponent:_recalculate_duration()

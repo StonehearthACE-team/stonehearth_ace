@@ -6292,9 +6292,9 @@
                   "short": "Diese Pflanze reift schnell (<span class='text-value'>[str(i18n_data.total_growth_time)]</span> vor Modifikatoren).",
                   "fair": "Diese Pflanze reift mäßig (<span class='text-value'>[str(i18n_data.total_growth_time)]</span> vor Modifikatoren).",
                   "long": "Diese Pflanze braucht lange um zu reifen (<span class='text-value'>[str(i18n_data.total_growth_time)]</span> vor Modifikatoren).",
-                  "shorter": "Diese Pflanze hat mehr positive Wachstumsmodifikatoren als negative.",
-                  "normal": "Diese Pflanze hat sowohl positive als auch negative Wachstumsmodifikatoren.",
-                  "longer": "Diese Pflanze hat mehr negative Wachstumsmodifikatoren als positive."
+                  "shorter": "Diese Pflanze hat mehr <span class='text-optimal'>positive</span> Wachstumsmodifikatoren als negative.",
+                  "normal": "Diese Pflanze hat <span class='text-average'>sowohl</span> positive als auch negative Wachstumsmodifikatoren.",
+                  "longer": "Diese Pflanze hat mehr <span class='text-poor'>negative</span> Wachstumsmodifikatoren als positive."
                },
                "water_affinity": {
                   "property_name": "Bewässerungsbedarf",
@@ -6316,7 +6316,8 @@
                   "requires": "Diese Pflanze muss mit Wasser bedeckt sein, damit sie wachsen kann.",
                   "prefers": "Diese Pflanze wächst schneller, wenn sie mit Wasser bedeckt ist, und wächst langsamer wenn es fehlt.",
                   "prefers_not": "Diese Pflanze wächst langsamer, wenn sie mit Wasser bedeckt ist.",
-                  "current_amount": "<span class='text-value [str(i18n_data.flooded_status)]'>[str(i18n_data.num_flooded)] / [str(i18n_data.num_crops)]</span> Pflanzen in diesem Bereich sind derzeit überflutet."
+                  "current_flooded": "Dieses Feld <span class='[str(i18n_data.flooded_status)]'>ist</span> derzeit überflutet.",
+                  "current_not_flooded": "Dieses Feld ost derzeit <span class='[str(i18n_data.flooded_status)]'>nicht</span> überflutet."
                },
                "fertilized": {
                   "status_name": "Gedüngte Pflanzen",
@@ -6600,7 +6601,11 @@
          },
          "mechanical": {
             "display_name": "Mechanisch",
-            "description": "Kann in gebäudebezogenen Systemen zur Übertragung von mechanischer Leistung verwendet werden."
+            "description": "Kann in gebäudebezogenen Systemen zur Übertragung von mechanischer Leistung verwendet werden.",
+            "produces": "Dieses mechanische Gerät produziert derzeit <span class='textValue'>[str(produces)] / [str(def_produces)]</span> Strom.",
+            "consumes": "Dieses mechanische Gerät verbraucht derzeit <span class='textValue'>[str(consumes)] / [str(def_consumes)]</span> Strom.",
+            "resistance": "Dieses mechanische Gerät verursacht <span class='textValue'>[str(resistance)] / [str(def_resistance)]</span> Widerstand.",
+            "power_percentage": "Dieses mechanische Gerät arbeitet derzeit mit <span class='textValue'>[str(power_percentage)] %</span> Effizienz."
          },
          "pile": {
             "display_name": "Stapel",

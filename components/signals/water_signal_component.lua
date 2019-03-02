@@ -6,10 +6,15 @@ local log = radiant.log.create_logger('water_signal')
 local WaterSignalComponent = class()
 
 function WaterSignalComponent:initialize()
-	self._sv._signals = {}
+   self._sv._signals = {}
 end
 
 function WaterSignalComponent:activate()
+   if self._sv._is_mobile == nil then
+      local json = radiant.entities.get_json(self)
+      self._sv._is_mobile = json and json.is_mobile or false
+   end
+   
    for name, signal in pairs(self._sv._signals) do
       if not signal:get_id() then
          signal:destroy()
@@ -23,23 +28,44 @@ function WaterSignalComponent:activate()
          self:_location_changed()
       end)
 
-   self._location_trace = self._entity:add_component('mob'):trace_transform('water signal entity moved') --, _radiant.dm.TraceCategories.SYNC_TRACE)
-      :on_changed(function()
+   self:_setup_location_trace()
+end
+
+function WaterSignalComponent:set_is_mobile(is_mobile)
+   self._sv._is_mobile = is_mobile or false
+   self.__saved_variables:mark_changed()
+   self:_setup_location_trace()
+end
+
+function WaterSignalComponent:_setup_location_trace()
+   self:_destroy_location_trace()
+   
+   if self._sv._is_mobile then
+      self._location_trace = stonehearth.calendar:set_interval('wilderness mobility check', '9m+2m', function()
          self:_location_changed()
       end)
-
+   else
+      self._location_trace = self._entity:add_component('mob'):trace_transform('water signal entity moved') --, _radiant.dm.TraceCategories.SYNC_TRACE)
+         :on_changed(function()
+            self:_location_changed()
+         end)
+   end
    self:_location_changed()
 end
 
 function WaterSignalComponent:destroy()
-   if self._location_trace then
-      self._location_trace:destroy()
-      self._location_trace = nil
-   end
-
    if self._added_to_world_trace then
       self._added_to_world_trace:destroy()
       self._added_to_world_trace = nil
+   end
+
+   self:_destroy_location_trace()
+end
+
+function WaterSignalComponent:_destroy_location_trace()
+   if self._location_trace then
+      self._location_trace:destroy()
+      self._location_trace = nil
    end
 end
 

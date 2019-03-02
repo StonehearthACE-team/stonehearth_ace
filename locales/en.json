@@ -6320,9 +6320,9 @@
                   "short": "This crop matures quickly (<span class='text-value'>[str(i18n_data.total_growth_time)]</span> before modifiers).",
                   "fair": "This crop matures at a moderate rate (<span class='text-value'>[str(i18n_data.total_growth_time)]</span> before modifiers).",
                   "long": "This crop takes a long time to mature (<span class='text-value'>[str(i18n_data.total_growth_time)]</span> before modifiers).",
-                  "shorter": "This crop has more positive growth time modifiers than negative ones.",
-                  "normal": "This crop has both positive growth time modifiers and negative ones.",
-                  "longer": "This crop has more negative growth time modifiers than positive ones."
+                  "shorter": "This crop has more <span class='text-optimal'>positive</span> growth time modifiers than negative ones.",
+                  "normal": "This crop has <span class='text-average'>both</span> positive growth time modifiers and negative ones.",
+                  "longer": "This crop has more <span class='text-poor'>negative</span> growth time modifiers than positive ones."
                },
                "water_affinity": {
                   "property_name": "Water Needs",
@@ -6344,7 +6344,8 @@
                   "requires": "This crop must have water covering it to grow.",
                   "prefers": "This crop grows more quickly when water is covering it and slower when it isn't.",
                   "prefers_not": "This crop grows more slowly when water is covering it.",
-                  "current_amount": "<span class='text-value [str(i18n_data.flooded_status)]'>[str(i18n_data.num_flooded)] / [str(i18n_data.num_crops)]</span> crops in this field are currently flooded."
+                  "current_flooded": "This field <span class='[str(i18n_data.flooded_status)]'>is</span> currently flooded.",
+                  "current_not_flooded": "This field <span class='[str(i18n_data.flooded_status)]'>is not</span> currently flooded."
                },
                "fertilized": {
                   "status_name": "Fertilized Crops",
@@ -6626,7 +6627,11 @@
          },
          "mechanical": {
             "display_name": "Mechanical",
-            "description": "Can be used in building connected systems to transfer mechanical power."
+            "description": "Can be used in building connected systems to transfer mechanical power.",
+            "produces": "This mechanical device is currently producing <span class='textValue'>[str(produces)] / [str(def_produces)]</span> power.",
+            "consumes": "This mechanical device is currently consuming <span class='textValue'>[str(consumes)] / [str(def_consumes)]</span> power.",
+            "resistance": "This mechanical device is causing <span class='textValue'>[str(resistance)] / [str(def_resistance)]</span> resistance.",
+            "power_percentage": "This mechanical device's network is currently operating at <span class='textValue'>[str(power_percentage)] %</span> efficiency."
          },
          "pile": {
             "display_name": "Pile",

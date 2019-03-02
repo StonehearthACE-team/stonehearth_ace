@@ -478,7 +478,7 @@ App.StonehearthFarmView.reopen({
       var size = field_sv.size;
       var num_crops = field_sv.num_crops;
       var num_fertilized = field_sv.num_fertilized;
-      var num_flooded = field_sv.num_flooded;
+      var is_flooded = field_sv.flooded;
       var current_water_level = field_sv.humidity_level;
       var size_mult = self._getSizeMult(size);
       var effective_water_level = field_sv.effective_water_level;
@@ -549,14 +549,13 @@ App.StonehearthFarmView.reopen({
 
       status = self._STATUSES.AVERAGE;
       var flood_icon = self._FLOOD_ICONS.DRY;
+      var flood_tooltip = localizations.flooded.current_not_flooded;
+      if (is_flooded) {
+         flood_tooltip = localizations.flooded.current_flooded;
+      }
       if (cropProperties.floodPreference.requireFlooding) {
-         if (num_flooded < num_crops) {
-            if (num_flooded == 0) {
-               status = self._STATUSES.BAD;
-            }
-            else {
-               status = self._STATUSES.POOR;
-            }
+         if (!is_flooded) {
+            status = self._STATUSES.BAD;
             flood_icon = self._FLOOD_ICONS.DRY_STOPPED;
          }
          else {
@@ -565,7 +564,7 @@ App.StonehearthFarmView.reopen({
          }
       }
       else if (cropProperties.floodPreference.floodingMultiplier < 1) {
-         if (num_flooded < num_crops) {
+         if (!is_flooded) {
             status = self._STATUSES.POOR;
             flood_icon = self._FLOOD_ICONS.DRY_SLOWER;
          }
@@ -575,7 +574,7 @@ App.StonehearthFarmView.reopen({
          }
       }
       else if (cropProperties.floodPreference.floodingMultiplier > 1) {
-         if (num_flooded > 0) {
+         if (is_flooded) {
             status = self._STATUSES.POOR;
             flood_icon = self._FLOOD_ICONS.SLOWER;
          }
@@ -583,7 +582,7 @@ App.StonehearthFarmView.reopen({
             status = self._STATUSES.OPTIMAL;
          }
       }
-      else if (num_flooded > 0) {
+      else if (is_flooded) {
          flood_icon = self._FLOOD_ICONS.REQUIRED;
       }
 
@@ -592,11 +591,9 @@ App.StonehearthFarmView.reopen({
          icon: self._IMAGES_DIR + 'property_flood_' + flood_icon + '.png',
          status: status,
          tooltipTitle: localizations.flooded.status_name,
-         tooltip: localizations.flooded.current_amount,
+         tooltip: flood_tooltip,
          i18n_data: {
-            flooded_status: 'text-' + status,
-            num_flooded: num_flooded,
-            num_crops: num_crops
+            flooded_status: 'text-' + status
          }
       };
 

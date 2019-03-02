@@ -26,6 +26,7 @@ function AceSwimmingService:_set_swimming(entity, swimming)
    end
 end
 
+-- if we add more water pathing stuff, enable this
 -- check for terrain immediately below the entity as well; if there isn't terrain there and there is water, they should be swimming
 -- function AceSwimmingService:_is_swimming(entity, location)
 --    if not entity or not entity:is_valid() then

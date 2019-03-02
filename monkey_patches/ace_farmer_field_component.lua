@@ -27,7 +27,7 @@ function AceFarmerFieldComponent:restore()
 end
 
 function AceFarmerFieldComponent:post_activate()
-   self._flood_listeners = {}
+   --self._flood_listeners = {}
    local biome = stonehearth.world_generation:get_biome()
    self._biome_sunlight = biome.sunlight or 1
    self._biome_humidity = biome.humidity or 0
@@ -41,10 +41,13 @@ function AceFarmerFieldComponent:post_activate()
    if not self._sv._water_level then
       self._sv._water_level = 0
    end
+   if not self._sv.flooded then
+      self._sv.flooded = false
+   end
 
    if self._is_restore then
       self:_create_water_listener()
-      self:_create_flood_listeners()
+      --self:_create_flood_listeners()
       self:_create_climate_listeners()
    end
 
@@ -73,22 +76,22 @@ function AceFarmerFieldComponent:_ensure_crop_counts()
       self.__saved_variables:mark_changed()
    end
 
-   if not self._sv.num_flooded then
-      local num_flooded = 0
-      for x=1, size.x do
-         for y=1, size.y do
-            local dirt_plot = contents[x][y]
-            if dirt_plot and dirt_plot.contents then
-               if dirt_plot.contents:add_component('stonehearth:growing'):is_flooded() then
-                  num_flooded = num_flooded + 1
-               end
-            end
-         end
-      end
+   -- if not self._sv.num_flooded then
+   --    local num_flooded = 0
+   --    for x=1, size.x do
+   --       for y=1, size.y do
+   --          local dirt_plot = contents[x][y]
+   --          if dirt_plot and dirt_plot.contents then
+   --             if dirt_plot.contents:add_component('stonehearth:growing'):is_flooded() then
+   --                num_flooded = num_flooded + 1
+   --             end
+   --          end
+   --       end
+   --    end
 
-      self._sv.num_flooded = num_flooded
-      self.__saved_variables:mark_changed()
-   end
+   --    self._sv.num_flooded = num_flooded
+   --    self.__saved_variables:mark_changed()
+   -- end
 
    if not self._sv._queued_overwatered then
       self._sv._queued_overwatered = {}
@@ -187,65 +190,65 @@ function AceFarmerFieldComponent:plant_crop_at(x_offset, z_offset)
    local growing_comp = crop and crop:add_component('stonehearth:growing')
 	if growing_comp then
       growing_comp:set_growth_factors(self._sv.humidity_level, self._sv.sunlight_level)
-      self:_create_flood_listener(crop)
-      if growing_comp:is_flooded() then
-         self._sv.num_flooded = self._sv.num_flooded + 1
-         self.__saved_variables:mark_changed()
-      end
+      -- self:_create_flood_listener(crop)
+      -- if growing_comp:is_flooded() then
+      --    self._sv.num_flooded = self._sv.num_flooded + 1
+      --    self.__saved_variables:mark_changed()
+      -- end
 	end
 end
 
-AceFarmerFieldComponent._ace_old_notify_crop_destroyed = FarmerFieldComponent.notify_crop_destroyed
-function AceFarmerFieldComponent:notify_crop_destroyed(x, z)
-   local dirt_plot = self._sv.contents and self._sv.contents[x][z]
-   if dirt_plot and dirt_plot.contents then
-      self:_destroy_flood_listener(dirt_plot.contents:get_id())
-   end
-   self:_ace_old_notify_crop_destroyed(x, z)
-end
+-- AceFarmerFieldComponent._ace_old_notify_crop_destroyed = FarmerFieldComponent.notify_crop_destroyed
+-- function AceFarmerFieldComponent:notify_crop_destroyed(x, z)
+--    local dirt_plot = self._sv.contents and self._sv.contents[x][z]
+--    if dirt_plot and dirt_plot.contents then
+--       self:_destroy_flood_listener(dirt_plot.contents:get_id())
+--    end
+--    self:_ace_old_notify_crop_destroyed(x, z)
+-- end
 
-function AceFarmerFieldComponent:_destroy_flood_listeners()
-   if self._flood_listeners then
-      for _, listener in pairs(self._flood_listeners) do
-         listener:destroy()
-      end
-   end
-   self._flood_listeners = {}
-end
+-- function AceFarmerFieldComponent:_destroy_flood_listeners()
+--    if self._flood_listeners then
+--       for _, listener in pairs(self._flood_listeners) do
+--          listener:destroy()
+--       end
+--    end
+--    self._flood_listeners = {}
+-- end
 
-function AceFarmerFieldComponent:_destroy_flood_listener(id)
-   if self._flood_listeners[id] then
-      self._flood_listeners[id]:destroy()
-      self._flood_listeners[id] = nil
-   end
-end
+-- function AceFarmerFieldComponent:_destroy_flood_listener(id)
+--    if self._flood_listeners[id] then
+--       self._flood_listeners[id]:destroy()
+--       self._flood_listeners[id] = nil
+--    end
+-- end
 
-function AceFarmerFieldComponent:_create_flood_listeners()
-   self:_destroy_flood_listeners()
+-- function AceFarmerFieldComponent:_create_flood_listeners()
+--    self:_destroy_flood_listeners()
 
-   for x=1, self._sv.size.x do
-		for y=1, self._sv.size.y do
-			local dirt_plot = self._sv.contents[x][y]
-			if dirt_plot and dirt_plot.contents then
-				self:_create_flood_listener(dirt_plot.contents)
-			end
-		end
-	end
-end
+--    for x=1, self._sv.size.x do
+-- 		for y=1, self._sv.size.y do
+-- 			local dirt_plot = self._sv.contents[x][y]
+-- 			if dirt_plot and dirt_plot.contents then
+-- 				self:_create_flood_listener(dirt_plot.contents)
+-- 			end
+-- 		end
+-- 	end
+-- end
 
-function AceFarmerFieldComponent:_create_flood_listener(crop)
-   local listener = self._flood_listeners[crop:get_id()]
-   if not listener then
-      self._flood_listeners[crop:get_id()] = radiant.events.listen(crop, 'stonehearth_ace:growing:flooded_changed', function(is_flooded)
-         if is_flooded then
-            self._sv.num_flooded = self._sv.num_flooded + 1
-         else
-            self._sv.num_flooded = self._sv.num_flooded - 1
-         end
-         self.__saved_variables:mark_changed()
-      end)
-   end
-end
+-- function AceFarmerFieldComponent:_create_flood_listener(crop)
+--    local listener = self._flood_listeners[crop:get_id()]
+--    if not listener then
+--       self._flood_listeners[crop:get_id()] = radiant.events.listen(crop, 'stonehearth_ace:growing:flooded_changed', function(is_flooded)
+--          if is_flooded then
+--             self._sv.num_flooded = self._sv.num_flooded + 1
+--          else
+--             self._sv.num_flooded = self._sv.num_flooded - 1
+--          end
+--          self.__saved_variables:mark_changed()
+--       end)
+--    end
+-- end
 
 AceFarmerFieldComponent._ace_old_set_crop = FarmerFieldComponent.set_crop
 function AceFarmerFieldComponent:set_crop(session, response, new_crop_id)
@@ -447,14 +450,34 @@ function AceFarmerFieldComponent:_set_growth_factors()
    end
 end
 
+function AceFarmerFieldComponent:_set_crops_flooded(flooded)
+   local size = self._sv.size
+   local contents = self._sv.contents
+   if contents then
+      for x=1, size.x do
+         for y=1, size.y do
+            local dirt_plot = contents[x][y]
+            if dirt_plot and dirt_plot.contents then
+               dirt_plot.contents:add_component('stonehearth:growing'):set_flooded(flooded)
+            end
+         end
+      end
+   end
+end
+
 function AceFarmerFieldComponent:_create_water_listener()
-	local region = self._entity:get_component('region_collision_shape'):get_region():get()
-						:extruded('x', 1, 1)
-                  :extruded('z', 1, 1)
-                  :extruded('y', 2, 0)
+   local region = self._entity:get_component('region_collision_shape'):get_region():get()
+   local water_region = region:extruded('x', 1, 1)
+                              :extruded('z', 1, 1)
+                              :extruded('y', 2, 0)
    local water_component = self._entity:add_component('stonehearth_ace:water_signal')
-   self._water_signal = water_component:set_signal('farmer_field', region, {'water_volume'}, function(changes) self:_on_water_signal_changed(changes) end)
-   self._sv.water_signal_region = region:duplicate()
+   self._water_signal = water_component:set_signal('farmer_field', water_region, {'water_volume'}, function(changes) self:_on_water_signal_changed(changes) end)
+   self._sv.water_signal_region = water_region:duplicate()
+
+
+   self._flood_signal = water_component:set_signal('farmer_field_flood', region, {'water_exists'}, function(changes) self:_on_flood_signal_changed(changes) end)
+
+   self:_set_flooded(self._flood_signal:get_water_exists())
    self:_set_water_volume(self._water_signal:get_water_volume())
 end
 
@@ -489,6 +512,24 @@ function AceFarmerFieldComponent:_on_water_signal_changed(changes)
    end
    
    self:_set_water_volume(volume)
+end
+
+function AceFarmerFieldComponent:_set_flooded(flooded)
+   if flooded ~= self._sv.flooded then
+      self._sv.flooded = flooded
+      self.__saved_variables:mark_changed()
+      self:_set_crops_flooded(flooded)
+   end
+end
+
+function AceFarmerFieldComponent:_on_flood_signal_changed(changes)
+   log:debug('_on_flood_signal_changed: %s', radiant.util.table_tostring(changes))
+   local flooded = changes.water_exists.value
+   if flooded == nil then
+      return
+   end
+   
+   self:_set_flooded(flooded)
 end
 
 -- returns the best affinity and then the next one so you can see the range until it would apply (and its effect)
