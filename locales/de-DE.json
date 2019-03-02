@@ -658,6 +658,26 @@
          "lovely_meal": {
             "display_name": "Leckeres Essen",
             "description": "Gutes essen ist motivierend! Fleiß und Willenskraft wurden ziemlich erhöht."
+         },
+         "armor_light": {
+            "display_name": "Leicht gerüstet",
+            "description": "Dieser Hearthling ist leicht gepanzert und seine Geschwindigkeit ist erhöht, aber den Mut und die Bedrohung ist reduziert."
+         },
+         "armor_medium": {
+            "display_name": "Ziemlich gerüstet",
+            "description": "Dieser Hearthling trägt eine mittlere Rüstung und sein Mut ist erhöht, jedoch ist die Geschwindigkeit etwas verringert."
+         },
+         "armor_heavy": {
+            "display_name": "Schwer gerüstet",
+            "description": "Dieser Hearthling ist stark gepanzert und sein Mut und seine Bedrohung ist erhöht, aber die Geschwindigkeit ist verringert."
+         },
+         "shield_heavy": {
+            "display_name": "Schwerer Schild",
+            "description": "Die Verteidigung wird insgesamt erhöht, die Geschwindigkeit ist jedoch etwas verringert."
+         },
+         "shield_light": {
+            "display_name": "Leichter Schild",
+            "description": "Mut und Geschwindigkeit sind leicht erhöht."
          }
       },
       "loadouts": {
@@ -4716,6 +4736,14 @@
          "daisies": {
             "display_name": "Gänseblümchen",
             "description": "Eine zarte Blüte, die sich im Laufe der Zeit ausbreitet. Ernte sie für Kräuter."
+         },
+         "water_spring": {
+            "display_name": "Wasserquelle",
+            "description": "Eine konstante und natürliche Süßwasserquelle. Sie kann entfernt werden."
+         },
+         "water_hole": {
+            "display_name": "Felsspalte",
+            "description": "Diese große Spalte saugt alles Wasser hinab, was in der Nähe ist. Sie kann entfernt werden."
          }
       },
       "fungi": {
@@ -6412,12 +6440,10 @@
                "shield": "SChild",
                "light_shield": "Leichter Schild Shield",
                "heavy_shield": "Schwerer Schild",
-               "hood": "Kapuze",
+               "torso": "Outfit",
                "helmet": "Helm",
-               "light_helmet": "Leichter Helm",
-               "medium_helmet": "Mittlerer Helm",
-               "heavy_helmet": "Schwerer Helm",
-               "torso": "Rüstung",
+	       "circlet": "Reif",
+               "hood": "Kapuze",
                "light_armor": "Leichte Rüstung",
                "medium_armor": "Mittlere Rüstung",
                "heavy_armor": "Schwere Rüstung",
