@@ -221,6 +221,12 @@ $(top).on('stonehearthReady', function() {
                }
                self.set('equipmentTypes', equipmentTypes);
 
+               var inflictableDebuffs = [];
+               radiant.each(productCatalogData.inflictable_debuffs, function (_, debuff) {
+                  if (debuff.invisible_to_player !== false) {
+                     inflictableDebuffs.push(debuff);
+                  }
+               });
                self.set('inflictableDebuffs', productCatalogData.inflictable_debuffs);
       
                App.tooltipHelper.createDynamicTooltip(self.$('#equipmentRequirements'), function () {
