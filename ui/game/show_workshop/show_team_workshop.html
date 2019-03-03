@@ -128,8 +128,8 @@
          <div id="injectedBuffs">
                {{#each view.injectedBuffs}}
                   {{#if icon}}
-                  <div class="injectedBuff" {{bind-attr data-id="uri"}}>
-                     <img class="injectedBuffImg" {{bind-attr src="icon"}}> </br>
+                  <div {{bind-attr data-id="uri"}} {{bind-attr class="axis"}}>
+                     <img class="buffImg" {{bind-attr src="icon"}}> </br>
                   </div>
                   {{/if}}
                {{/each}}
@@ -137,8 +137,8 @@
          <div id="inflictableDebuffs">
             {{#each view.inflictableDebuffs}}
                {{#if icon}}
-               <div class="inflictableDebuff" {{bind-attr data-id="uri"}}>
-                  <img class="inflictableDebuffImg" {{bind-attr src="icon"}}> </br>
+               <div {{bind-attr data-id="uri"}} {{bind-attr class="axis"}}>
+                  <img class="buffImg" {{bind-attr src="icon"}}> </br>
                </div>
                {{/if}}
             {{/each}}
