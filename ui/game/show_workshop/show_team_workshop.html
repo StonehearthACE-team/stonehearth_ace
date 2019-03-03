@@ -125,11 +125,20 @@
                {{/each}}
             </div>
          </div>
+         <div id="injectedBuffs">
+               {{#each view.injectedBuffs}}
+                  {{#if icon}}
+                  <div class="injectedBuff" {{bind-attr data-id="uri"}}>
+                     <img class="injectedBuffImg" {{bind-attr src="icon"}}> </br>
+                  </div>
+                  {{/if}}
+               {{/each}}
+            </div>
          <div id="inflictableDebuffs">
             {{#each view.inflictableDebuffs}}
                {{#if icon}}
-               <div {{bind-attr data-id="uri"}}>
-                  <img class="inflictableDebuff" {{bind-attr src="icon"}}> </br>
+               <div class="inflictableDebuff" {{bind-attr data-id="uri"}}>
+                  <img class="inflictableDebuffImg" {{bind-attr src="icon"}}> </br>
                </div>
                {{/if}}
             {{/each}}

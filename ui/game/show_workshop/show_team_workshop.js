@@ -221,13 +221,21 @@ $(top).on('stonehearthReady', function() {
                }
                self.set('equipmentTypes', equipmentTypes);
 
+               var injectedBuffs = [];
+               radiant.each(productCatalogData.injected_buffs, function (_, buff) {
+                  if (buff.invisible_to_player !== false) {
+                     injectedBuffs.push(buff);
+                  }
+               });
+               self.set('injectedBuffs', injectedBuffs);
+
                var inflictableDebuffs = [];
                radiant.each(productCatalogData.inflictable_debuffs, function (_, debuff) {
                   if (debuff.invisible_to_player !== false) {
                      inflictableDebuffs.push(debuff);
                   }
                });
-               self.set('inflictableDebuffs', productCatalogData.inflictable_debuffs);
+               self.set('inflictableDebuffs', inflictableDebuffs);
       
                App.tooltipHelper.createDynamicTooltip(self.$('#equipmentRequirements'), function () {
                   var tooltipString = i18n.t('stonehearth:ui.game.unit_frame.no_requirements');
@@ -247,7 +255,7 @@ $(top).on('stonehearthReady', function() {
 
                // make tooltips for inflictable debuffs
                Ember.run.scheduleOnce('afterRender', this, function() {
-                  self._createInflictableDebuffsTooltips();
+                  self._createBuffTooltips();
                });
 
                self.$('#recipeEquipmentPane').show();
@@ -256,8 +264,17 @@ $(top).on('stonehearthReady', function() {
             }
          },
 
-         _createInflictableDebuffsTooltips: function () {
+         _createBuffTooltips: function () {
             var self = this;
+
+            var injectedBuffs = self.get('injectedBuffs');
+            radiant.each(injectedBuffs, function(_, buff) {
+               var div = self.$('[data-id="' + buff.uri + '"]');
+               if (div.length > 0) {
+                  App.guiHelper.addTooltip(div, buff.description, i18n.t('stonehearth_ace:ui.game.unit_frame.injected_buff') + i18n.t(buff.display_name));
+               }
+            });
+
             var inflictableDebuffs = self.get('inflictableDebuffs');
             radiant.each(inflictableDebuffs, function(_, debuff) {
                var div = self.$('[data-id="' + debuff.uri + '"]');
