@@ -220,8 +220,10 @@ $(top).on('stonehearthReady', function() {
                   equipmentTypes = stonehearth_ace.getEquipmentTypesArray(productCatalogData.equipment_types);
                }
                self.set('equipmentTypes', equipmentTypes);
+
+               self.set('inflictableDebuffs', productCatalogData.inflictable_debuffs);
       
-               App.tooltipHelper.createDynamicTooltip(self.$('#recipeEquipmentPane'), function () {
+               App.tooltipHelper.createDynamicTooltip(self.$('#equipmentRequirements'), function () {
                   var tooltipString = i18n.t('stonehearth:ui.game.unit_frame.no_requirements');
                   if (productCatalogData.equipment_roles) {
                      tooltipString = i18n.t('stonehearth:ui.game.unit_frame.equipment_description',
@@ -237,10 +239,26 @@ $(top).on('stonehearthReady', function() {
                   return $(App.tooltipHelper.createTooltip(i18n.t('stonehearth:ui.game.unit_frame.class_lv_title'), tooltipString));
                });
 
+               // make tooltips for inflictable debuffs
+               Ember.run.scheduleOnce('afterRender', this, function() {
+                  self._createInflictableDebuffsTooltips();
+               });
+
                self.$('#recipeEquipmentPane').show();
             } else {
                self.$('#recipeEquipmentPane').hide();
             }
+         },
+
+         _createInflictableDebuffsTooltips: function () {
+            var self = this;
+            var inflictableDebuffs = self.get('inflictableDebuffs');
+            radiant.each(inflictableDebuffs, function(_, debuff) {
+               var div = self.$('[data-id="' + debuff.uri + '"]');
+               if (div.length > 0) {
+                  App.guiHelper.addTooltip(div, debuff.description, i18n.t('stonehearth_ace:ui.game.unit_frame.inflictable_debuff') + i18n.t(debuff.display_name));
+               }
+            });
          },
 
          _updateUsableResources: function () {

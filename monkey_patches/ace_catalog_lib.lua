@@ -26,6 +26,10 @@ function ace_catalog_lib._update_catalog_data(catalog_data, uri, json)
       catalog_data.equipment_types = ace_catalog_lib.get_equipment_types(json.components['stonehearth:equipment_piece'])
       --log:debug('added equipment types for %s: %s', uri, radiant.util.table_tostring(catalog_data.equipment_types))
    end
+
+   if json and json.entity_data and json.entity_data['stonehearth:buffs'] then
+      catalog_data.inflictable_debuffs = ace_catalog_lib.get_inflictable_debuffs(json.entity_data['stonehearth:buffs'])
+   end
 end
 
 function ace_catalog_lib.get_equipment_types(json)
@@ -53,6 +57,25 @@ function ace_catalog_lib._get_default_equipment_types(json)
    end
 
    return types
+end
+
+function ace_catalog_lib.get_inflictable_debuffs(buff_data)
+   local debuffs = {}
+   if buff_data.inflictable_debuffs then
+      for buff, data in pairs(buff_data.inflictable_debuffs) do
+         local json = radiant.resources.load_json(data.uri)
+         if json then
+            table.insert(debuffs, {
+               uri = data.uri,
+               axis = json.axis,
+               display_name = json.display_name,
+               description = json.description,
+               icon = json.icon
+            })
+         end
+      end
+   end
+   return debuffs
 end
 
 return ace_catalog_lib

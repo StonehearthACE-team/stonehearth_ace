@@ -108,18 +108,29 @@
       </div>
 
       <div id="recipeEquipmentPane">
-         <div id="acceptableClasses">
-            <div>
-            {{#each view.allowedClasses}}
-               <img class="acceptableClassIcon" {{bind-attr src="icon"}}> </br>
-            {{/each}}
+         <div id="equipmentRequirements">
+            <div id="acceptableClasses">
+               <div>
+               {{#each view.allowedClasses}}
+                  <img class="acceptableClassIcon" {{bind-attr src="icon"}}> </br>
+               {{/each}}
+               </div>
+            </div>
+            <div id="levelRequirement"></div>
+            <div id="equipmentTypes">
+               {{#each view.equipmentTypes}}
+                  {{#if icon}}
+                  <img class="acceptableClassIcon" {{bind-attr src="icon"}}> </br>
+                  {{/if}}
+               {{/each}}
             </div>
          </div>
-         <div id="levelRequirement"></div>
-         <div id="equipmentTypes">
-            {{#each view.equipmentTypes}}
+         <div id="inflictableDebuffs">
+            {{#each view.inflictableDebuffs}}
                {{#if icon}}
-               <img class="acceptableClassIcon" {{bind-attr src="icon"}}> </br>
+               <div {{bind-attr data-id="uri"}}>
+                  <img class="inflictableDebuff" {{bind-attr src="icon"}}> </br>
+               </div>
                {{/if}}
             {{/each}}
          </div>

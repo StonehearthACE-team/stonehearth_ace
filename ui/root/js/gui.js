@@ -109,12 +109,12 @@ App.guiHelper = {
       return div;
    },
 
-   addTooltip: function(itemEl, title) {
+   addTooltip: function(itemEl, text, title) {
       if (itemEl.hasClass('tooltipstered')) {
          itemEl.tooltipster('destroy');
       }
-      if (title && title != '') {
-         var tooltip = App.tooltipHelper.createTooltip("", i18n.t(title), "");
+      if (text && text != '') {
+         var tooltip = App.tooltipHelper.createTooltip(title && i18n.t(title) || "", i18n.t(text), "");
          itemEl.tooltipster({ content: $(tooltip) });
       }
    }
