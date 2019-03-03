@@ -613,7 +613,7 @@ function AceFarmerFieldComponent:_on_destroy()
    radiant.entities.destroy_entity(self._sv._fertilizable_layer)
    self._sv._fertilizable_layer = nil
 
-   self:_destroy_flood_listeners()
+   --self:_destroy_flood_listeners()
    self:_destroy_climate_listeners()
 end
 
