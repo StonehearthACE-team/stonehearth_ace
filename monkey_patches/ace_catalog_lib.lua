@@ -71,7 +71,9 @@ function ace_catalog_lib.get_buffs(buff_data)
                axis = json.axis,
                display_name = json.display_name,
                description = json.description,
-               icon = json.icon
+               icon = json.icon,
+               invisible_to_player = json.invisible_to_player,
+               invisible_on_crafting = json.invisible_on_crafting
             })
          end
       end
