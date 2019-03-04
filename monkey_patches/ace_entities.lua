@@ -28,7 +28,10 @@ function ace_entities.consume_stack(item, num_stacks)
    end
 
    if stacks == 0 then
-      radiant.entities.kill_entity(item)
+      -- we don't know who's consuming it, but assume it's the same player id as the item itself
+      -- (generally this sort of interaction is limited to items the player owns)
+      -- this will avoid consideration by the town of queuing up requests to craft this item (e.g., food)
+      radiant.entities.kill_entity(item, { source_id = radiant.entities.get_player_id(item) })
    end
 
    return success
