@@ -31,6 +31,17 @@ function AceUnitInfoComponent:create()
    end
 end
 
+AceUnitInfoComponent._ace_old_activate = UnitInfoComponent.activate
+function AceUnitInfoComponent:activate()
+   if not self._sv.titles then
+      self._sv.titles = {}
+   end
+
+   if self._ace_old_activate then
+      self:_ace_old_activate()
+   end
+end
+
 -- for now, only change set_custom_name to consider 'locked'
 -- since this is the only thing that can be custom-set arbitrarily by the player
 -- in future, perhaps extend this capability to set_description and/or set_icon
@@ -55,6 +66,23 @@ function UnitInfoComponent:set_icon(custom_icon)
    self:_trigger_on_change()
 end
 ]]
+
+function AceUnitInfoComponent:is_notable()
+   return self._sv.is_notable or false
+end
+
+function AceUnitInfoComponent:set_notability(is_notable)
+   self._sv.is_notable = is_notable
+   self.__saved_variables:mark_changed()
+end
+
+function AceUnitInfoComponent:add_title(title, replaces)
+   if replaces then
+      self._sv.titles[replaces] = nil
+   end
+   self._sv.titles[title] = true
+   self.__saved_variables:mark_changed()
+end
 
 function AceUnitInfoComponent:is_locked()
    return self._sv.locked
