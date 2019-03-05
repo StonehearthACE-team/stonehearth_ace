@@ -1,20 +1,17 @@
 {
+   "mixins": "stonehearth_ace:mixins:weapons:mainhand",
    "components": {
       "stonehearth:equipment_piece": {
-         "equipment_types": ["mainhand"],
-		 "required_job_level": 1,
-		 "ilevel": 12,
-		 "injected_buffs": [
+         "required_job_level": 1,
+         "ilevel": 12,
+         "injected_buffs": [
             "stonehearth_ace:buffs:hacking_weapon"
          ]
       }
    },
    "entity_data": {
       "stonehearth:catalog": {
-		 "mixintypes": {
-			"material_tags": "override"
-		 },
-         "material_tags": ["bronze", "bronze_mace", "melee_weapon", "ascendancy_made", "crafted", "stockpile_weapon"]
+         "material_tags": ["bronze_mace", "ascendancy_made"]
       }
    }
 }
