@@ -11,21 +11,6 @@ function AceTown:_pre_activate()
    if not self._sv._total_travelers_visited then
       self._sv._total_travelers_visited = self._sv._num_travelers
    end
-
-   radiant.events.listen(radiant.entities, 'stonehearth:entity_killed', self, self._on_entity_killed)
-end
-
-function AceTown:_on_entity_killed(args)
-   local player_id = self._sv.player_id
-   if args.player_id == player_id and not args.sentient then
-      -- check if the player's setting is to auto-craft killed items and if so, try to queue it
-      if not args.kill_data or args.kill_data.source_id ~= player_id then
-         local auto_craft = stonehearth.client_state:get_client_gameplay_setting(player_id, 'stonehearth_ace', 'auto_craft_killed_items', true)
-         if auto_craft then
-            self._job_controller:request_craft_product(args.uri, 1)
-         end
-      end
-   end
 end
 
 AceTown._ace_old__requirements_met = Town._requirements_met

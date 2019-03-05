@@ -1,21 +1,9 @@
 {
+   "mixins": "stonehearth_ace:mixins:weapons:mainhand",
    "components": {
       "stonehearth:equipment_piece": {
-         "slot": "mainhand",
-         "render_type": "attach_to_bone",
-         "equipment_types": [
-            "mainhand"
-         ],
          "injected_buffs": [
             "stonehearth_ace:buffs:hacking_weapon"
-         ]
-      }
-   },
-   "entity_data": {
-      "stonehearth:catalog": {
-         "material_tags": [
-            "melee_weapon",
-            "stockpile_weapon"
          ]
       }
    }

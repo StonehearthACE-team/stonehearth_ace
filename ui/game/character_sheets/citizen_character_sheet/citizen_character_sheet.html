@@ -1,0 +1,302 @@
+<script type="text/x-handlebars" data-template-name="citizenCharacterSheet">
+   <div class="gui">
+      <div class="window" id="citizenCharacterSheet">
+         <div class="title">
+            {{i18n stonehearth:ui.game.citizen_character_sheet.title}}
+            <div class="closeButton"></div>
+         </div>
+
+         <div id="header">
+            <input id="name" onClick="this.select();" type="text" {{bind-attr value=view.model.unit_name}} />
+            <div id="descriptionSection">
+               <div id="description">
+                  <img class ="classIconImg" {{bind-attr src=view.currJobIcon}}/>
+                  <span class ="classNameLvlDesc">
+                     {{i18n_key view.model.stonehearth:unit_info.description self=view.model}}
+                  </span>
+               </div>
+               <div id="stats">
+                  <div id="expStat">
+                     <div class="bar" title="{{i18n stonehearth:ui.data.tooltips.exp_bar.description}}">
+                        <div class="expBar" {{bind-attr style=view.model.exp_bar_style}} />
+                        <div class="label">
+                           {{view.model.exp_bar_label}}
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div id="healthDisplay" title="{{i18n stonehearth:ui.data.tooltips.health_status.description}}">
+                  <div class="healthIndicator" {{bind-attr style=view.model.health_indicator_style}}>
+                  </div>
+                  <p class="healthStatusName">{{i18n stonehearth:ui.game.entities.health}}</p>
+                  <p class="healthStatusDescription">{{i18n_key view.health_status}}</p>
+               </div>
+            </div>
+         </div>
+
+         <div id="glass">
+            <div id="mind">
+               {{view.model.stonehearth:attributes.attributes.mind.user_visible_value}}
+               <div id="mindLabel" class="whiteBlackOutline">{{i18n stonehearth:ui.data.tooltips.mind.display_name}}</div>
+            </div>
+            <div id="body">
+               {{view.model.stonehearth:attributes.attributes.body.user_visible_value}}
+               <div id="bodyLabel" class="whiteBlackOutline">{{i18n stonehearth:ui.data.tooltips.body.display_name}}</div>
+            </div>
+            <div id="spirit">
+               {{view.model.stonehearth:attributes.attributes.spirit.user_visible_value}}
+               <div id="spiritLabel" class="whiteBlackOutline">{{i18n stonehearth:ui.data.tooltips.spirit.display_name}}</div>
+            </div>
+         </div>
+
+         <div id="traitIcons">
+            <h2>{{i18n stonehearth:ui.game.citizen_character_sheet.traits}}</h2>
+            <div id="traits">
+               {{#each view.traits itemView="stonehearthTraitItem"}}
+                  <div class="item" {{bind-attr uri=this.uri}}>
+                     <img {{bind-attr src=this.icon}} />
+                  </div>
+               {{/each}}
+            </div>
+         </div>
+
+         <a id="teleportButton" href="#" {{action "doTeleport" view.teleport_disabled target="view"}} class='uisounds'>
+            <div {{bind-attr class=":commandButton view.teleport_disabled:buttonDisabled:buttonEnabled"}}>
+               <img class="icon" src="/stonehearth/data/commands/teleport/teleport.png" 
+                  title="{{i18n stonehearth:data.commands.teleport.description}}"/>
+            </div>
+         </a>
+
+         <div id="details" class="downSection">
+            <div id="moraleTab" class="tabPage">
+               <div id="thoughtsSection">
+                  <div id="thoughtEntries">
+                     <table id="negativeThoughts" class="thoughtsColumn">
+                        {{#if view.negativeThoughts}}
+                           {{#each entry in view.negativeThoughts}}
+                              <tr class="thoughtEntryRow">
+                                 <td class="thoughtEntryData" {{bind-attr title="entry.data.tooltip" key="entry.key"}}>
+                                    {{#if entry.duration}}
+                                       <div class="duration">{{i18n_key entry.duration}}</div>
+                                    {{/if}}
+                                    <div class="thoughtDisplayName">{{i18n_key entry.data.display_name}}</div>
+                                    <div class="moodDecreaseColor happinessDelta">{{entry.data.happiness_delta}}</div>
+                                    {{#if entry.stacks}}
+                                       <div class="thoughtStack">x{{entry.stacks}}</div>
+                                    {{/if}}
+                                 </td>
+                              </tr>
+                           {{/each}}
+                        {{else}}
+                           <div class="noThoughts">{{i18n stonehearth:ui.game.citizen_character_sheet.no_unhappy_thoughts}}</div>
+                        {{/if}}
+                     </table>
+                     <table id="positiveThoughts" class="thoughtsColumn">
+                        {{#if view.positiveThoughts}}
+                           {{#each entry in view.positiveThoughts}}
+                              <tr class="thoughtEntryRow">
+                                 <td class="thoughtEntryData" {{bind-attr title="entry.data.tooltip" key="entry.key"}}>
+                                    {{#if entry.duration}}
+                                       <div class="duration">{{i18n_key entry.duration}}</div>
+                                    {{/if}}
+                                    <div class="thoughtDisplayName">{{i18n_key entry.data.display_name}}</div>
+                                    <div class="moodIncreaseColor happinessDelta">+{{entry.data.happiness_delta}}</div>
+                                    {{#if entry.stacks}}
+                                       <div class="thoughtStack">x{{entry.stacks}}</div>
+                                    {{/if}}
+                                 </td>
+                              </tr>
+                           {{/each}}
+                        {{else}}
+                           <div class="noThoughts">{{i18n stonehearth:ui.game.citizen_character_sheet.no_happy_thoughts}}</div>
+                        {{/if}}
+                     </table>
+                  </div>
+                  <div class="lineSeparator" />
+               </div>
+               <div id="moraleSection">
+                  <div id="moodDescription">
+                     <p class="displayName">{{i18n_key view.model.stonehearth:happiness.current_mood_buff.display_name}}</p>
+                     <p class="description">{{i18n_key view.model.stonehearth:happiness.current_mood_buff.description}}</p>
+                  </div>
+                  <img id="moodImg" {{bind-attr src=view.model.stonehearth:happiness.current_mood_buff.icon}}/>
+
+                  <div id="happinessBarPressureMarker" {{bind-attr style=view.model.pressure_marker_style}} />
+                  <div id="happinessBar">
+                     <div id="barSegments" />
+                  </div>
+                  <div id="moraleBarArrowContainer">
+                     <div id="moraleBarArrow" {{bind-attr style=view.morale_arrow_style}} />
+                  </div>
+               </div>
+            </div>
+            <div id="attributesTab" class="tabPage">
+               <table class="statsTable">
+                  <tr>
+                     <td id="diligence" class="attr">
+                        <div class="attrValue">{{view.model.stonehearth:attributes.attributes.diligence.user_visible_value}}</div>
+                        <div class="attrName">{{i18n stonehearth:ui.data.tooltips.diligence.display_name}}</div>
+                     </td>
+                     <td id="muscle" class="attr">
+                        <div class="attrValue">{{view.model.stonehearth:attributes.attributes.muscle.user_visible_value}}</div>
+                        <div class="attrName">{{i18n stonehearth:ui.data.tooltips.muscle.display_name}}</div>
+                     </td>
+                     <td id="courage" class="attr">
+                        <div class="attrValue">{{view.model.stonehearth:attributes.attributes.courage.user_visible_value}}</div>
+                        <div class="attrName">{{i18n stonehearth:ui.data.tooltips.courage.display_name}}</div>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td id="curiosity" class="attr">
+                        <div class="attrValue">{{view.model.stonehearth:attributes.attributes.curiosity.user_visible_value}}</div>
+                        <div class="attrName">{{i18n stonehearth:ui.data.tooltips.curiosity.display_name}}</div>
+                     </td>
+                     <td id="speed" class="attr">
+                        <div class="attrValue">{{view.model.stonehearth:attributes.attributes.speed.user_visible_value}}</div>
+                        <div class="attrName">{{i18n stonehearth:ui.data.tooltips.speed.display_name}}</div>
+                     </td>
+                     <td id="willpower" class="attr">
+                        <div class="attrValue">{{view.model.stonehearth:attributes.attributes.willpower.user_visible_value}}</div>
+                        <div class="attrName">{{i18n stonehearth:ui.data.tooltips.willpower.display_name}}</div>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td id="inspiration" class="attr">
+                        <div class="attrValue">{{view.inspiration_display_value}}</div>
+                        <div class="attrName">{{i18n stonehearth:ui.data.tooltips.inspiration.display_name}}</div>
+                     </td>
+                     <td id="stamina" class="attr">
+                        <div class="attrValue">{{view.model.stonehearth:attributes.attributes.stamina.user_visible_value}}</div>
+                        <div class="attrName">{{i18n stonehearth:ui.data.tooltips.stamina.display_name}}</div>
+                     </td>
+                     <td id="compassion" class="attr">
+                        <div class="attrValue">{{view.model.stonehearth:attributes.attributes.compassion.user_visible_value}}</div>
+                        <div class="attrName">{{i18n stonehearth:ui.data.tooltips.compassion.display_name}}</div>
+                     </td>
+                  </tr>
+               </table>
+               <div id="traitDescriptions">
+                  {{#each view.traits itemView="stonehearthTraitItem"}}
+                     <div class="traitDescription" {{bind-attr uri=this.uri}}>
+                        <img {{bind-attr src=this.icon}} />
+                        <div class="displayName" />
+                        <div class="description" />
+                     </div>
+                  {{/each}}
+               </div>
+            </div>
+            <div id="equipmentTab" class="tabPage">
+               <table id="equipmentTable" valign="middle">
+                  <tr>
+                     <td></td>
+                     <td><h2>{{i18n stonehearth:ui.game.citizen_character_sheet.equipment}}</h2></td>
+                     <td><h2>{{i18n stonehearth:ui.game.citizen_character_sheet.attack_abbreviation}}</h2></td>
+                     <td><h2>{{i18n stonehearth:ui.game.citizen_character_sheet.defense_abbreviation}}</h2></td>
+                  </tr>
+
+                  {{#each equipment_info in view.all_equipment}}
+                     <tr class="slotDetail" {{bind-attr id=equipment_info.slotId}}>
+                        <td><div class="slotImg"><img class=".equipmentImg" {{bind-attr src=equipment_info.icon}}/></div></td>
+                        <td class="slotItemName">{{i18n_key equipment_info.display_name}}
+                        <td>
+                           {{#if equipment_info.equipment.uri.entity_data.stonehearth:combat:weapon_data}}
+                              <div class="equipmentDataValue">
+                                 +{{equipment_info.equipment.uri.entity_data.stonehearth:combat:weapon_data.base_damage}}
+                              </div>
+                           {{else}}
+                              -
+                           {{/if}}
+                        </td>
+                        <td>
+                           {{#if equipment_info.equipment.uri.entity_data.stonehearth:combat:armor_data}}
+                              <div class="equipmentDataValue">
+                                 +{{equipment_info.equipment.uri.entity_data.stonehearth:combat:armor_data.base_damage_reduction}}
+                              </div>
+                           {{else}}
+                              -
+                           {{/if}}
+                        </td>
+                     </tr>
+                  {{/each}}
+
+               </table>
+            </div>
+            <div id="backpackTab" class="tabPage">
+               <div id="backpackData" class="column">
+                  <div id="backpackItemsPalette" class="column"></div>
+               </div>
+            </div>
+            <div id="abilitiesTab" class = "tabPage">
+               {{#each view.allJobData}}
+                  <div class="jobData" {{bind-attr uri=this.description.alias}}>
+                     <div class="className">{{i18n_key this.description.display_name}} <span class="progressionSummary">(<span class="retiredAt">{{i18n stonehearth:ui.game.citizen_character_sheet.retired}} </span><span class="lvlTitle"></span>)</span></div>
+                     <div class="jobPerks">
+                        {{#each this.description.levelArray}}
+                           {{#each this.perks}}
+                           <div class="perkDiv tooltip" locked="true" {{bind-attr name=this.name description=this.description divLevel=this.level}}>
+                              <img {{bind-attr src=this.icon imgLevel=this.level}}/>
+                              <span class="levelLabel" {{bind-attr lbLevel=this.level}}>{{i18n stonehearth:ui.game.citizen_character_sheet.level_abbreviation}} <span class="levelText">{{this.level}}</span></span>
+                           </div>
+                           {{/each}}
+                        {{/each}}
+                     </div>
+                  </div>
+               {{/each}}
+            </div>
+            
+            <div id="appealTab" class = "tabPage">
+               <div class="item-preference-title">{{view.itemPreferenceTitle}}</div>
+               <div id="itemPreferences">
+                  {{#each view.itemPreferences}}
+                     <span {{bind-attr class=":sentiment-title this.sentimentClass"}}>{{this.sentimentTitle}}</span>
+                     {{#each this.items}}
+                        <div class="item">
+                           {{#if this.discovered}}
+                              <img class="icon icon-revealed" {{bind-attr src=this.icon}} {{bind-attr title=this.name}} {{bind-attr data-uri=this.uri}} />
+                           {{else}}
+                              <img class="icon icon-unrevealed" src="/stonehearth/ui/game/character_sheets/citizen_character_sheet/images/item_unknown.png" title="{{i18n stonehearth:ui.game.citizen_character_sheet.unknown_item}}" />
+                           {{/if}}
+                        </div>
+                     {{/each}}
+                     <br />
+                  {{/each}}
+               </div>
+               <div class="appeal-bar-title">{{i18n stonehearth:ui.game.citizen_character_sheet.appeal_headings.current_and_target_bar}}</div>
+               <div class="appealArrows">
+                  <div class="arrow target">
+                     <span class="value"></span>
+                     <img src="/stonehearth/ui/game/character_sheets/citizen_character_sheet/images/appeal_arrow_target.png" />
+                  </div>
+               </div>
+               <div id="appealBar">
+                  {{#each view.appealThoughtThresholds}}
+                     <div {{bind-attr class=":barSection this.sentiment"}} {{bind-attr data-min="this.min"}} {{bind-attr data-max="this.max"}} {{bind-attr title="this.name"}}>
+                     </div>
+                  {{/each}}
+               </div>
+               <div class="appealArrows">
+                  <div class="arrow current">
+                     <img src="/stonehearth/ui/game/character_sheets/citizen_character_sheet/images/appeal_arrow_effective.png" />
+                     <span class="value"></span>
+                  </div>
+               </div>
+            </div>
+         <div>
+
+         <div id="tabs">
+            <div class="tab inner-tab active" tabPage="moraleTab">{{i18n stonehearth:ui.game.citizen_character_sheet.morale_title}}</div>
+            <div class="tab inner-tab" tabPage="attributesTab">{{i18n stonehearth:ui.game.citizen_character_sheet.attributes}}</div>
+            <div class="tab inner-tab" tabPage="equipmentTab">{{i18n stonehearth:ui.game.citizen_character_sheet.equipment}}</div>
+            <div class="tab inner-tab" tabPage="backpackTab">{{i18n stonehearth:ui.game.citizen_character_sheet.backpack_tab_name}}</div>
+            <div class="tab inner-tab" tabPage="abilitiesTab">{{i18n stonehearth:ui.game.citizen_character_sheet.abilities}}</div>
+            <div class="tab inner-tab" tabPage="appealTab">
+               {{i18n stonehearth:ui.game.citizen_character_sheet.appeal}}
+               {{#if view.model.stonehearth:appeal.item_discovery_unseen_flag}}
+                  <img class="appeal-notification-pip" src="/stonehearth/ui/game/character_sheets/citizen_character_sheet/images/pip.png" />
+               {{/if}}
+            </div>
+         </div>
+
+      </div>
+   </div>
+</script>

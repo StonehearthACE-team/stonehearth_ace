@@ -1,19 +1,5 @@
 {
-   "components": {
-      "stonehearth:equipment_piece": {
-         "slot": "leftArm",
-         "render_type": "attach_to_bone",
-         "additional_equipment": {
-            "stonehearth_ace:armor:offhand_placeholder": true
-         },
-         "equipment_types": [
-            "offhand"
-         ]
-      },
-      "mob": {
-         "model_origin": { "x": 0, "y": 0.4, "z": 0 }
-      }
-   },
+   "mixins": "stonehearth_ace:mixins:weapons:offhand",
    "entity_data": {
       "stonehearth:buffs": {
          "inflictable_debuffs": {
@@ -22,13 +8,6 @@
                "chance": 0.33
             }
          }
-      },
-      "stonehearth:catalog": {
-         "material_tags": [
-            "offhand",
-            "melee_weapon",
-            "stockpile_weapon"
-         ]
       }
    }
 }

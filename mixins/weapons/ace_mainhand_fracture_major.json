@@ -1,13 +1,5 @@
 {
-   "components": {
-      "stonehearth:equipment_piece": {
-         "slot": "mainhand",
-         "render_type": "attach_to_bone",
-         "equipment_types": [
-            "mainhand"
-         ]
-      }
-   },
+   "mixins": "stonehearth_ace:mixins:weapons:mainhand",
    "entity_data": {
       "stonehearth:buffs": {
          "inflictable_debuffs": {
@@ -16,12 +8,6 @@
                "chance": 0.66
             }
          }
-      },
-      "stonehearth:catalog": {
-         "material_tags": [
-            "melee_weapon",
-            "stockpile_weapon"
-         ]
       }
    }
 }

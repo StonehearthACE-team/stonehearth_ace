@@ -385,6 +385,52 @@
                   "tooltip": "Yum! I love eating fungi, and I must admit [str(foodname)] was particularly good!"
                }
             }
+         },
+         "population": {
+            "ascendancy": {
+               "titles": {
+                  "goblin_killer": {
+                     "1_display_name": " the Goblin Killer",
+                     "1_description": "Killed a goblin!",
+                     "5_display_name": " the Goblin Slayer",
+                     "5_description": "Killed 5 goblins! There they went, killing again!",
+                     "10_display_name": " the Goblin Decimator",
+                     "10_description": "Killed 10 goblins! They're really good at it!",
+                     "20_display_name": "Bane of Goblins",
+                     "20_description": "Killed 20 goblins! That's a lot!",
+                     "50_display_name": "Destroyer of Goblins",
+                     "50_description": "Killed 50 goblins! Where are they finding all these goblins?!",
+                     "100_display_name": "Goblin-Eater",
+                     "100_description": "Killed 100 goblins! Perhaps they should be in therapy, reexamining their priorities."
+                  },
+                  "goblin_killer_item": {
+                     "1_display_name": " the Goblin Killer",
+                     "1_description": "Killed a goblin!",
+                     "5_display_name": " the Goblin Slayer",
+                     "5_description": "Killed 5 goblins! There it went, killing again!",
+                     "10_display_name": " the Goblin Decimator",
+                     "10_description": "Killed 10 goblins! It's really good at it!",
+                     "20_display_name": "Bane of Goblins",
+                     "20_description": "Killed 20 goblins! That's a lot!",
+                     "50_display_name": "Destroyer of Goblins",
+                     "50_description": "Killed 50 goblins! It's unstoppable, at least by goblins!",
+                     "100_display_name": "Goblin-Eater",
+                     "100_description": "Killed 100 goblins! Has its bloodlust finally been sated?"
+                  },
+                  "defender": {
+                     "10_display_name": "Defender",
+                     "10_description": "Defended the town from 10 enemies!",
+                     "50_display_name": "Great Protector",
+                     "50_description": "Defended the town from 50 enemies!",
+                     "100_display_name": "Town Hero",
+                     "100_description": "Defended the town from 100 enemies! ",
+                     "500_display_name": " the Long Floating Hand of the Law",
+                     "500_description": "Defended the town from 500 enemies! What an incredibly adversarial town!",
+                     "1000_display_name": "Savior of Civilization",
+                     "1000_description": "Defended the town from 1000 enemies! Perhaps a more diplomatic approach is warranted."
+                  }
+               }
+            }
          }
       },
       "heatmaps": {
@@ -5190,7 +5236,7 @@
          },
          "steel_axe": {
             "display_name": "Steel Axe",
-            "description": "For hacking and slashing onto victory."
+            "description": "For hacking and slashing to victory."
          },
          "bronze_hatchet": {
             "description": "For parrying attacks and attempting counter-attacks. (Off-hand)",

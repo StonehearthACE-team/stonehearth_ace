@@ -17,7 +17,19 @@ function AceCombatService:_on_target_killed(attacker, target)
       self:_record_kill_stats(attacker, target, nearby_units)
    end
 
+   self:_queue_killed_entity_craft_order(target)
    self:_handle_loot_drop(attacker, target)
+end
+
+function AceCombatService:_queue_killed_entity_craft_order(entity)
+   local player_id = get_player_id(entity)
+   local job_controller = stonehearth.job:get_jobs_controller(player_id)
+   if job_controller then
+      local auto_craft = stonehearth.client_state:get_client_gameplay_setting(player_id, 'stonehearth_ace', 'auto_craft_killed_items', true)
+      if auto_craft then
+         job_controller:request_craft_product(entity:get_uri(), 1)
+      end
+   end
 end
 
 -- record kill stats for killer, assistants, and killer's weapon:

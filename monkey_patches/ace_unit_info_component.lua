@@ -76,11 +76,27 @@ function AceUnitInfoComponent:set_notability(is_notable)
    self.__saved_variables:mark_changed()
 end
 
-function AceUnitInfoComponent:add_title(title, replaces)
-   if replaces then
-      self._sv.titles[replaces] = nil
+function AceUnitInfoComponent:get_titles()
+   return self._sv.titles
+end
+
+function AceUnitInfoComponent:has_title(title, rank)
+   local title_rank = self._sv.titles[title]
+   return title_rank and (not rank or title_rank >= rank)
+end
+
+-- once bestowed, a title is never removed; it can only be increased in rank
+function AceUnitInfoComponent:add_title(title, rank)
+   if not self:has_title(title, rank) then
+      self._sv.titles[title] = rank or 1
+      self._sv.current_title = title
+      self.__saved_variables:mark_changed()
+      return true
    end
-   self._sv.titles[title] = true
+end
+
+function AceUnitInfoComponent:select_title(title)
+   self._sv.current_title = title
    self.__saved_variables:mark_changed()
 end
 

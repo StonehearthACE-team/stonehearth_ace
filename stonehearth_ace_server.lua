@@ -88,7 +88,8 @@ local monkey_patches = {
    ace_stacks_component = 'stonehearth.components.stacks.stacks_component',
    ace_unlock_recipe_encounter = 'stonehearth.services.server.game_master.controllers.encounters.unlock_recipe_encounter',
    ace_combat_service = 'stonehearth.services.server.combat.combat_service',
-   ace_game_master_lib = 'stonehearth.lib.game_master.game_master_lib'
+   ace_game_master_lib = 'stonehearth.lib.game_master.game_master_lib',
+   ace_population_faction = 'stonehearth.services.server.population.population_faction'
 }
 
 local function monkey_patching()
