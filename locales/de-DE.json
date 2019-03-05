@@ -385,6 +385,52 @@
                   "tooltip": "Lecker! Ich esse gerne Pilze und ich muss zugeben, dass [str(foodname)] besonders gut war!"
                }
             }
+         },
+         "population": {
+            "ascendancy": {
+               "titles": {
+                  "goblin_killer": {
+                     "1_display_name": " der Goblintöter",
+                     "1_description": "Hat einen Goblin getötet!",
+                     "5_display_name": " der Goblinschlächter",
+                     "5_description": "Hat 5 Goblins getötet! Dort zieht sie/er wieder vondanen zum töten!!",
+                     "10_display_name": " der Goblindezimatorr",
+                     "10_description": "Hat 10 Goblins getötet! Sie/Er ist  wirklich gut darin!",
+                     "20_display_name": "Fluch der Goblins",
+                     "20_description": "Hat 20 Goblins getötet! Das ist viel!",
+                     "50_display_name": "Zerstörer der Goblins",
+                     "50_description": "Hat 50 Goblins getötet! Wo findet sie/er nur all diese Goblins?!",
+                     "100_display_name": "Goblinfresser",
+                     "100_description": "Hat 100 Goblins getötet! Vielleicht sollten sie/er in Therapie gehen und ihre/seine Prioritäten überprüfen."
+                  },
+                  "goblin_killer_item": {
+                     "1_display_name": " der Goblintöter",
+                     "1_description": "Hat einen Goblin getötet!",
+                     "5_display_name": " der Goblinschlächter",
+                     "5_description": "Hat 5 Goblins getötet! Dort zieht sie/er wieder vondanen zum töten!!",
+                     "10_display_name": " der Goblindezimatorr",
+                     "10_description": "Hat 10 Goblins getötet! Sie/Er ist  wirklich gut darin!",
+                     "20_display_name": "Fluch der Goblins",
+                     "20_description": "Hat 20 Goblins getötet! Das ist viel!",
+                     "50_display_name": "Zerstörer der Goblins",
+                     "50_description": "Hat 50 Goblins getötet! Sie/Er ist nicht zu stoppen, zumindest durch Goblins!",
+                     "100_display_name": "Goblinfresser",
+                     "100_description": "Hat 100 Goblins getötet! Ist ihr/sein Blutrausch endlich besänftigt?"
+                  },
+                  "defender": {
+                     "10_display_name": "Verteidiger",
+                     "10_description": "Verteidigte die Stadt vor 10 Feinden!",
+                     "50_display_name": "Großer Beschützer",
+                     "50_description": "Verteidigte die Stadt vor 50 Feinden!",
+                     "100_display_name": "Stadtheld",
+                     "100_description": "Verteidigte die Stadt vor 100 Feinden! ",
+                     "500_display_name": " der lange Arm des Gesetzes",
+                     "500_description": "Verteidigte die Stadt vor 500 Feinden! Was für eine unglaublich widerspenstige Stadt!",
+                     "1000_display_name": "Retter der Zivilisation",
+                     "1000_description": "Verteidigte die Stadt vor 1000 Feinden! Vielleicht ist ein diplomatischer Ansatz angebracht."
+                  }
+               }
+            }
          }
       },
       "heatmaps": {
@@ -5190,7 +5236,7 @@
          },
          "steel_axe": {
             "display_name": "Stahlaxt",
-            "description": "Sehr gut zum Hacken und Schlitzen."
+            "description": "Zum Hacken und Schlitzen... für den Sieg!"
          },
          "bronze_hatchet": {
             "description": "Für das Parieren von Angriffen und für den Versuch von Gegenangriffen. (Zweithand)",
