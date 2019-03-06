@@ -42,7 +42,7 @@ function AceProduceCraftedItems:run(ai, entity, args)
          -- Too bad. All the stuff will be stuck on the bench. -yshan
 
          crafter_component:add_carrying_to_crafting_items()
-         radiant.log.write('crafter', 5, 'Putting %s with id %s ubti crafter pack', item, item:get_id())
+         radiant.log.write('crafter', 5, 'Putting %s with id %s into crafter pack', item, item:get_id())
       end
    end
 
@@ -100,7 +100,7 @@ function AceProduceCraftedItems:_add_outputs_to_bench(ai, crafter, workshop, rec
    local crafter_component = crafter:get_component('stonehearth:crafter')
 
    -- create all the recipe products
-   local outputs = self:_get_outputs(crafter, workshop, recipe)
+   --local outputs = self:_get_outputs(crafter, workshop, recipe)
    for i, product in ipairs(recipe.produces) do
       local product_uri = product.item
       if product_uri then
@@ -147,6 +147,11 @@ function AceProduceCraftedItems:_add_outputs_to_bench(ai, crafter, workshop, rec
             stonehearth.inventory:get_inventory(player_id):add_item(each_product)
 
             table.insert(self._outputs, each_product)
+
+            -- update crafter's statistics
+            crafter:add_component('stonehearth_ace:statistics'):increment_stat('quality_crafts', radiant.entities.get_item_quality(each_product))
+            crafter:add_component('stonehearth_ace:statistics'):increment_stat('required_level_crafts', recipe.level_requirement or 0)
+            crafter:add_component('stonehearth_ace:statistics'):increment_stat('totals', 'crafts')
          end
 
          item = all_products[1]
