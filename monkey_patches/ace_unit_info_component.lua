@@ -95,6 +95,12 @@ end
 function AceUnitInfoComponent:add_title(title, rank)
    if not self:has_title(title, rank) then
       self._sv.titles[title] = rank or 1
+
+      -- if this was just a regular entity before, set its custom name to its catalog display name
+      if not self._sv.custom_name then
+         self._sv.custom_name = self._sv.display_name or stonehearth.catalog:get_catalog_data(self._entity:get_uri()).display_name
+      end
+
       self.__saved_variables:mark_changed()
 
       self:_select_new_title(title, rank)
@@ -117,11 +123,6 @@ function AceUnitInfoComponent:select_title(title, rank)
       self._sv.current_title = pop and pop:get_title_rank_data(self._entity, title, rank) or nil
    else
       self._sv.current_title = nil
-   end
-
-   -- if this was just a regular entity before, set its custom name to its catalog display name
-   if not self._sv.custom_name then
-      self._sv.custom_name = self._sv.display_name or stonehearth.catalog:get_catalog_data(self._entity:get_uri()).display_name
    end
 
    if self._sv.current_title then

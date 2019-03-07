@@ -29,11 +29,15 @@ function TitlesComponent:_on_stat_changed(args)
 end
 
 function TitlesComponent:add_title(title, rank)
-   if self._entity:add_component('stonehearth:unit_info'):add_title(title, rank) then
+   local unit_info = self._entity:add_component('stonehearth:unit_info')
+   --local old_name = unit_info:get_custom_name() or radiant.entities.get_display_name(self._entity)
+   if unit_info:add_title(title, rank) then
       -- alert the player that they gained a title
       local player_id = self._entity:get_player_id()
-      local commands = self._entity:get_component('stonehearth:commands')
       local pop = stonehearth.population:get_population(player_id)
+      local is_citizen = pop and pop:is_citizen(self._entity)
+      local message = is_citizen and 'i18n(stonehearth_ace:ui.game.bulletin.achievement_acquired_bulletin.new_title.message)'
+                        or 'i18n(stonehearth_ace:ui.game.bulletin.achievement_acquired_bulletin.new_title.item_message)'
 
       local bulletin = stonehearth.bulletin_board:post_bulletin(player_id)
          :set_ui_view('StonehearthAceAchievementAcquiredBulletinDialog')
@@ -41,12 +45,14 @@ function TitlesComponent:add_title(title, rank)
          :set_type('achievement')
          :set_data({
             title = 'i18n(stonehearth_ace:ui.game.bulletin.achievement_acquired_bulletin.new_title.title)',
-            message = 'i18n(stonehearth_ace:ui.game.bulletin.achievement_acquired_bulletin.new_title.message)',
+            header = 'i18n(stonehearth_ace:ui.game.bulletin.achievement_acquired_bulletin.new_title.header)',
+            message = message,
             zoom_to_entity = self._entity,
-            has_character_sheet = commands and commands:has_command('stonehearth:commands:open_character_sheet')
+            has_character_sheet = is_citizen
          })
          :set_active_duration('1h')
          :add_i18n_data('entity', self._entity)
+         --:add_i18n_data('old_name', old_name)
          :add_i18n_data('new_title', pop and pop:get_title_rank_data(self._entity, title, rank) or {})
    end
 end

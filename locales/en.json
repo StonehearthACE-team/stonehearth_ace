@@ -6512,8 +6512,10 @@
          "bulletin": {
             "achievement_acquired_bulletin": {
                "new_title": {
-                  "title": "[name(i18n_data.entity)] has achieved a new Title!",
-                  "message": "<h3>[str(i18n_data.entity.stonehearth:unit_info.custom_name)][str(i18n_data.new_title.display_name)]</h3>[str(i18n_data.new_title.description)] Doesn't that title have a nice ring to it?"
+                  "title": "[str(i18n_data.entity.stonehearth:unit_info.custom_name)] has achieved a new Title!",
+                  "header": "<h2>[str(i18n_data.entity.stonehearth:unit_info.custom_name)]...</h2><h3>is now [str(i18n_data.entity.stonehearth:unit_info.custom_name)][str(i18n_data.new_title.display_name)]!</h3>",
+                  "message": "[str(i18n_data.new_title.description)]<p>Doesn't that title have a nice ring to it?</p>",
+                  "item_message": "[str(i18n_data.new_title.description)]<p>Doesn't that title have a nice ring to it? You might also consider giving [str(i18n_data.entity.stonehearth:unit_info.custom_name)] a fancier name to go along with it.</p>"
                }
             }
          }
