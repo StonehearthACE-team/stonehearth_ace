@@ -3,7 +3,7 @@ App.StonehearthCitizenCharacterSheetView.reopen({
       var self = this;
       self._super();
       
-      self.$('#name').click(function() {
+      self.$('#name').focus(function() {
          self.$('#name').val(self.get('model.custom_name'))
             .select();
       })
@@ -17,10 +17,25 @@ App.StonehearthCitizenCharacterSheetView.reopen({
    },
 
    _onNameChanged: function() {
-      var unit_name = i18n.t(this.get('model.stonehearth:unit_info.display_name'), {self: this.get('model')});
-      var custom_name = this.get('model.stonehearth:unit_info.custom_name');
-      this.set('model.unit_name', unit_name);
-      this.set('model.custom_name', custom_name);
+      var self = this;
+      var unit_info = self.get('model.stonehearth:unit_info');
+      var unit_name = i18n.t(unit_info && unit_info.display_name, {self: self.get('model')});
+      var custom_name = unit_info && unit_info.custom_name;
+      var title_description = unit_info && unit_info.current_title && unit_info.current_title.description;
+      self.set('model.unit_name', unit_name);
+      self.set('model.custom_name', custom_name);
+
+      var text = title_description;
+      var title;
+      if (text) {
+         text = i18n.t(text);
+         title = unit_name;
+      }
+      else {
+         text = unit_name;
+      }
+
+      App.guiHelper.addTooltip(self.$('#name'), text, title || "");
    }.observes('model.stonehearth:unit_info'),
 
    //Go through each job we've had and annotate the perk table accordingly

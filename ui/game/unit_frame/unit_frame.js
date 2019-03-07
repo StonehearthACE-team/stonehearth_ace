@@ -43,13 +43,23 @@ App.StonehearthUnitFrameView.reopen({
                   App.stonehearthClient.showPetCharacterSheet(self.get('uri'));
                }
                else {
-                  var name = self.get('custom_name') || i18n.t(self.get('display_name'), { self: self.get('model') });
+                  var name = self.get('custom_name');
                   self.$('#nameInput').val(name)
                      .width(self.$('#nametag').outerWidth() - 16)  // 16 is the total padding and border of #nameInput
                      .show()
                      .focus()
                      .select();
                }
+            }
+         });
+
+      $('#nametag.tooltipstered').tooltipster('destroy');
+      self.$('#nametag').tooltipster({
+            delay: 500,  // Don't trigger unless the player really wants to see it.
+            content: ' ',  // Just to force the tooltip to appear. The actual content is created dynamically below, since we might not have the name yet.
+            functionBefore: function (instance, proceed) {
+               instance.tooltipster('content', self._getNametagTooltipText(self));
+               proceed();
             }
          });
       
@@ -85,6 +95,20 @@ App.StonehearthUnitFrameView.reopen({
       });
 
       _selectionHasComponentInfoChanged();
+   },
+
+   _getNametagTooltipText: function(self) {
+      var text = self.get('model.stonehearth:unit_info.current_title.description');
+      var title;
+      if (text) {
+         text = i18n.t(text);
+         title = self.$('#nametag').text().trim();
+      }
+      else {
+         text = self.$('#nametag').text().trim();
+      }
+
+      return $(App.tooltipHelper.createTooltip(title || "", text, ""));
    },
 
    willDestroyElement: function() {
@@ -179,14 +203,20 @@ App.StonehearthUnitFrameView.reopen({
          this.$('#Lvl').text( i18n.t('stonehearth:ui.game.unit_frame.Lvl'));
       }
 
-      var display_name = this.get('model.stonehearth:unit_info.display_name');
-      var custom_name = this.get('model.stonehearth:unit_info.custom_name');
+      var unit_info = this.get('model.stonehearth:unit_info');
+      var display_name = unit_info && unit_info.display_name;
+      var custom_name = unit_info && unit_info.custom_name;
       if (alias) {
          var catalogData = App.catalog.getCatalogData(alias);
          if (!catalogData) {
             console.log("no catalog data found for " + alias);
          } else {
-            if (!display_name || !custom_name) {
+            if (custom_name && custom_name.substring(0, 5) == 'i18n(') {
+               custom_name = i18n.t(catalogData.display_name);
+               this.set('model.stonehearth:unit_info.custom_name', custom_name);
+            }
+
+            if (!display_name) {
                display_name = catalogData.display_name;
             }
 

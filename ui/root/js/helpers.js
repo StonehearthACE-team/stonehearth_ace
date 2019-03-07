@@ -21,7 +21,7 @@ i18n.addPostProcessor("localizeEntityName", function(value, key, isFound, opts) 
          var tokenWithoutSymbols = token.replace(nameHelperPrefix, '').replace(nameHelperSuffix, '');
 
          if (indexOfEndOfClosing <= indexOfOpening) {
-             f.error('there is an missing closing in following translation value', translated);
+             f.error('there is a missing closing in following translation value', translated);
              return '';
          }
 
