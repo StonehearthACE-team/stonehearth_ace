@@ -21,25 +21,30 @@ function AcePopulationFaction:set_kingdom(kingdom)
 end
 
 function AcePopulationFaction:_load_titles()
-   self._statistics_population_titles = self:_load_titles_from_json(self._data.population_titles)
-   self._statistics_item_titles = self:_load_titles_from_json(self._data.item_titles)
+   self._population_titles, self._statistics_population_titles = self:_load_titles_from_json(self._data.population_titles)
+   self._item_titles, self._statistics_item_titles = self:_load_titles_from_json(self._data.item_titles)
 end
 
 function AcePopulationFaction:_load_titles_from_json(json_ref)
    local titles = {}
+   local stats_titles = {}
    
    local json = json_ref and radiant.resources.load_json(json_ref)
    if json then
       for title, data in pairs(json) do
-         -- for now we only care about titles that have a statistics requirement
-         -- because that's how we'll be organizing and accessing them
+         titles[title] = {}
+         for _, rank_data in ipairs(data.ranks) do
+            titles[title][rank_data.rank] = rank_data
+         end
+
+         -- load stats requirements, if there are any
          if data.requirement and data.requirement.statistics then
             local category = data.requirement.statistics.category
             local name = data.requirement.statistics.name
-            local category_tbl = titles[category]
+            local category_tbl = stats_titles[category]
             if not category_tbl then
                category_tbl = {}
-               titles[category] = category_tbl
+               stats_titles[category] = category_tbl
             end
             local name_tbl = category_tbl[name]
             if not name_tbl then
@@ -62,17 +67,35 @@ function AcePopulationFaction:_load_titles_from_json(json_ref)
       end
    end
 
-   return titles
+   return titles, stats_titles
+end
+
+function AcePopulationFaction:_get_titles_for_entity_type(entity)
+   -- check if the entity is one of our citizens; if so, use the population titles; otherwise, use the item titles
+   if self._sv.citizens:contains(entity:get_id()) then
+      return self._population_titles
+   else
+      return self._item_titles
+   end
+end
+
+function AcePopulationFaction:_get_stats_titles_for_entity_type(entity)
+   -- check if the entity is one of our citizens; if so, use the population titles; otherwise, use the item titles
+   if self._sv.citizens:contains(entity:get_id()) then
+      return self._statistics_population_titles
+   else
+      return self._statistics_item_titles
+   end
+end
+
+function AcePopulationFaction:get_title_rank_data(entity, title, rank)
+   local titles = self:_get_titles_for_entity_type(entity)
+   
+   return titles[title] and titles[title][rank]
 end
 
 function AcePopulationFaction:get_titles_for_statistic(entity, stat_changed_args)
-   -- check if the entity is one of our citizens; if so, use the population titles; otherwise, use the item titles
-   local titles
-   if self._sv.citizens:contains(entity:get_id()) then
-      titles = self._statistics_population_titles
-   else
-      titles = self._statistics_item_titles
-   end
+   local titles = self:_get_stats_titles_for_entity_type(entity)
 
    local name_tbl = titles[stat_changed_args.category] and titles[stat_changed_args.category][stat_changed_args.name]
    if name_tbl then

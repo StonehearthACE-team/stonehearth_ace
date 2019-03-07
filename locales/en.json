@@ -385,50 +385,50 @@
                   "tooltip": "Yum! I love eating fungi, and I must admit [str(foodname)] was particularly good!"
                }
             }
-         },
-         "population": {
-            "ascendancy": {
-               "titles": {
-                  "goblin_killer": {
-                     "1_display_name": " the Goblin Killer",
-                     "1_description": "Killed a goblin!",
-                     "5_display_name": " the Goblin Slayer",
-                     "5_description": "Killed 5 goblins! There they went, killing again!",
-                     "10_display_name": " the Goblin Decimator",
-                     "10_description": "Killed 10 goblins! They're really good at it!",
-                     "20_display_name": "Bane of Goblins",
-                     "20_description": "Killed 20 goblins! That's a lot!",
-                     "50_display_name": "Destroyer of Goblins",
-                     "50_description": "Killed 50 goblins! Where are they finding all these goblins?!",
-                     "100_display_name": "Goblin-Eater",
-                     "100_description": "Killed 100 goblins! Perhaps they should be in therapy, reexamining their priorities."
-                  },
-                  "goblin_killer_item": {
-                     "1_display_name": " the Goblin Killer",
-                     "1_description": "Killed a goblin!",
-                     "5_display_name": " the Goblin Slayer",
-                     "5_description": "Killed 5 goblins! There it went, killing again!",
-                     "10_display_name": " the Goblin Decimator",
-                     "10_description": "Killed 10 goblins! It's really good at it!",
-                     "20_display_name": "Bane of Goblins",
-                     "20_description": "Killed 20 goblins! That's a lot!",
-                     "50_display_name": "Destroyer of Goblins",
-                     "50_description": "Killed 50 goblins! It's unstoppable, at least by goblins!",
-                     "100_display_name": "Goblin-Eater",
-                     "100_description": "Killed 100 goblins! Has its bloodlust finally been sated?"
-                  },
-                  "defender": {
-                     "10_display_name": "Defender",
-                     "10_description": "Defended the town from 10 enemies!",
-                     "50_display_name": "Great Protector",
-                     "50_description": "Defended the town from 50 enemies!",
-                     "100_display_name": "Town Hero",
-                     "100_description": "Defended the town from 100 enemies! ",
-                     "500_display_name": " the Long Floating Hand of the Law",
-                     "500_description": "Defended the town from 500 enemies! What an incredibly adversarial town!",
-                     "1000_display_name": "Savior of Civilization",
-                     "1000_description": "Defended the town from 1000 enemies! Perhaps a more diplomatic approach is warranted."
-                  }
+         }
+      },
+      "population": {
+         "ascendancy": {
+            "titles": {
+               "goblin_killer": {
+                  "1_display_name": " the Goblin Killer",
+                  "1_description": "They killed a goblin!",
+                  "5_display_name": " the Goblin Slayer",
+                  "5_description": "They killed 5 goblins! There they went, killing again!",
+                  "10_display_name": " the Goblin Decimator",
+                  "10_description": "They killed 10 goblins! They're really good at it!",
+                  "20_display_name": ", Bane of Goblins",
+                  "20_description": "They killed 20 goblins! That's a lot!",
+                  "50_display_name": ", Destroyer of Goblins",
+                  "50_description": "They killed 50 goblins! Where are they finding all these goblins?!",
+                  "100_display_name": ", Goblin-Eater",
+                  "100_description": "They killed 100 goblins! Perhaps they should be in therapy, reexamining their priorities."
+               },
+               "goblin_killer_item": {
+                  "1_display_name": " the Goblin Killer",
+                  "1_description": "It killed a goblin!",
+                  "5_display_name": " the Goblin Slayer",
+                  "5_description": "It killed 5 goblins! There it went, killing again!",
+                  "10_display_name": " the Goblin Decimator",
+                  "10_description": "It killed 10 goblins! It's really good at it!",
+                  "20_display_name": ", Bane of Goblins",
+                  "20_description": "It killed 20 goblins! That's a lot!",
+                  "50_display_name": ", Destroyer of Goblins",
+                  "50_description": "It killed 50 goblins! It's unstoppable, at least by goblins!",
+                  "100_display_name": ", Goblin-Eater",
+                  "100_description": "It killed 100 goblins! Has its bloodlust finally been sated?"
+               },
+               "defender": {
+                  "10_display_name": ", Defender",
+                  "10_description": "They defended the town from 10 enemies!",
+                  "50_display_name": ", Great Protector",
+                  "50_description": "They defended the town from 50 enemies!",
+                  "100_display_name": ", Town Hero",
+                  "100_description": "They defended the town from 100 enemies! ",
+                  "500_display_name": " the Long Floating Hand of the Law",
+                  "500_description": "They defended the town from 500 enemies! What an incredibly adversarial town!",
+                  "1000_display_name": ", Savior of Civilization",
+                  "1000_description": "They defended the town from 1000 enemies! Perhaps a more diplomatic approach is warranted."
                }
             }
          }
@@ -6230,6 +6230,7 @@
    "ui": {
       "game": {
          "entities": {
+            "custom_name_with_title": "[str(self.stonehearth:unit_info.custom_name)][str(self.stonehearth:unit_info.current_title.display_name)]",
             "item_categories": {
                "undefined": "Miscellaneous",
                "aquatic": "Aquatic Life",
@@ -6507,6 +6508,14 @@
          },
          "componentInfo": {
             "title": "Entity Info"
+         },
+         "bulletin": {
+            "achievement_acquired_bulletin": {
+               "new_title": {
+                  "title": "[name(i18n_data.entity)] has achieved a new Title!",
+                  "message": "<h3>[str(i18n_data.entity.stonehearth:unit_info.custom_name)][str(i18n_data.new_title.display_name)]</h3>[str(i18n_data.new_title.description)] Doesn't that title have a nice ring to it?"
+               }
+            }
          }
       },
       "shell": {
@@ -6528,6 +6537,8 @@
                "default_to_worst_fertilizer_description": "When farmers fertilize crops, they use the best fertilizer available unless directed to use a specific type. Select this to have them use the worst available instead.",
                "default_fertilizer": "Default Fertilizer:",
                "default_fertilizer_description": "When creating a new farm, set its fertilizer preference to this.",
+               "auto_select_new_titles": "Auto Select Newly-Achieved Titles",
+               "auto_select_new_titles_description": "When one of your citizens (or other items) achieves a title, automatically select it as their active title.",
                "terrain_slice_buildings": "Terrain Slice Buildings",
                "terrain_slice_buildings_description": "In Terrain Slice mode, don't render entities supported by visible, non-terrain entities.",
                "water_signal_update_frequency": "Water Signal Update Rate",

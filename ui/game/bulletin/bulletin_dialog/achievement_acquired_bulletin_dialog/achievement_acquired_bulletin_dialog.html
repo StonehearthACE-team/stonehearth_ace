@@ -1,0 +1,23 @@
+<script type="text/x-handlebars" data-template-name="achievementAcquiredBulletinDialog">
+<div id="achievementAcquiredBulletinDialog" class="gui bulletinDialog">
+   <div class="window">
+      <div class="title">{{ i18n_key view.model.data.title i18n_data=view.model.i18n_data }}<div class="closeButton"></div></div>
+      <div id="scroll" class="parchment">
+         <div id="content">
+            <div id="title">{{ i18n_key view.model.data.title i18n_data=view.model.i18n_data}}</div>
+
+            {{#if view.model.image}}
+               <img {{bind-attr src="view.model.data.image"}} />
+            {{/if}}
+            <div class="message">{{{ formatted_i18n_key view.model.data.message i18n_data=view.model.i18n_data }}}</div>
+
+         </div>
+      </div>
+
+      <button id="okButton" class="">{{i18n stonehearth:ui.game.common.ok}}</button>
+      {{#if view.model.has_character_sheet}}
+         <button id="showCharSheetButton" class="" {{action showCharSheet target=view}}>{{i18n stonehearth:ui.game.bulletin.level_up_bulletin.show_char_sheet}}</button>
+      {{/if}}
+   </div>
+</div>
+</script>

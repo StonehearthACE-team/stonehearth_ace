@@ -1,6 +1,7 @@
 local UnitInfoComponent = require 'stonehearth.components.unit_info.unit_info_component'
 local AceUnitInfoComponent = class()
 local rng = _radiant.math.get_default_rng()
+local i18n = require 'stonehearth.lib.i18n.i18n'()
 
 -- TODO: implement some kind of randomized naming so you can get uniquely named items from regular loot mechanics
 -- perhaps limit it to items of higher-than-base quality?
@@ -51,6 +52,11 @@ function AceUnitInfoComponent:set_custom_name(custom_name, custom_data)
       return false
    end
 
+   -- if we aren't currently using a title, clear the display name
+   -- the base function will then assign the default custom name i18n string
+   if self._sv.display_name ~= 'i18n(stonehearth_ace:ui.game.entities.custom_name_with_title)' then
+      self._sv.display_name = nil
+   end
    self:_ace_old_set_custom_name(custom_name, self:_process_custom_data(custom_data))
    return true
 end
@@ -89,15 +95,44 @@ end
 function AceUnitInfoComponent:add_title(title, rank)
    if not self:has_title(title, rank) then
       self._sv.titles[title] = rank or 1
-      self._sv.current_title = title
       self.__saved_variables:mark_changed()
+
+      self:_select_new_title(title, rank)
+
       return true
    end
 end
 
-function AceUnitInfoComponent:select_title(title)
-   self._sv.current_title = title
+function AceUnitInfoComponent:_select_new_title(title, rank)
+   if stonehearth.client_state:get_client_gameplay_setting(self._entity:get_player_id(), 'stonehearth_ace', 'auto_select_new_titles', true) then
+      self:select_title(title, rank)
+   end
+end
+
+function AceUnitInfoComponent:select_title(title, rank)
+   -- if no rank is provided, assume the highest rank of that title we have
+   if self._sv.titles[title] then
+      rank = math.min(rank or self._sv.titles[title], self._sv.titles[title])
+      local pop = stonehearth.population:get_population(self._entity:get_player_id())
+      self._sv.current_title = pop and pop:get_title_rank_data(self._entity, title, rank) or nil
+   else
+      self._sv.current_title = nil
+   end
+
+   -- if this was just a regular entity before, set its custom name to its catalog display name
+   if not self._sv.custom_name then
+      self._sv.custom_name = self._sv.display_name or stonehearth.catalog:get_catalog_data(self._entity:get_uri()).display_name
+   end
+
+   if self._sv.current_title then
+      self._sv.display_name = 'i18n(stonehearth_ace:ui.game.entities.custom_name_with_title)'
+   else
+      self._sv.display_name = 'i18n(stonehearth:ui.game.entities.custom_name)'
+   end
+
    self.__saved_variables:mark_changed()
+
+   self:_trigger_on_change()
 end
 
 function AceUnitInfoComponent:is_locked()

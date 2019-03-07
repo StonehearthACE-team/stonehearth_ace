@@ -1,4 +1,28 @@
 App.StonehearthCitizenCharacterSheetView.reopen({
+   didInsertElement: function() {
+      var self = this;
+      self._super();
+      
+      self.$('#name').click(function() {
+         self.$('#name').val(self.get('model.custom_name'))
+            .select();
+      })
+      .blur(function() {
+         // if the name didn't change, make sure we add back any title we might have!
+         // (if the name did change, this will get taken care of automatically by the _onNameChanged function)
+         if (self.$('#name').val() == self.get('model.custom_name')) {
+            self.$('#name').val(self.get('model.unit_name'));
+         }
+      });
+   },
+
+   _onNameChanged: function() {
+      var unit_name = i18n.t(this.get('model.stonehearth:unit_info.display_name'), {self: this.get('model')});
+      var custom_name = this.get('model.stonehearth:unit_info.custom_name');
+      this.set('model.unit_name', unit_name);
+      this.set('model.custom_name', custom_name);
+   }.observes('model.stonehearth:unit_info'),
+
    //Go through each job we've had and annotate the perk table accordingly
    _updateJobsAndPerks : function() {
       var self = this;

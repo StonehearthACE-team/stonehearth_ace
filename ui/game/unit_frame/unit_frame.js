@@ -43,7 +43,8 @@ App.StonehearthUnitFrameView.reopen({
                   App.stonehearthClient.showPetCharacterSheet(self.get('uri'));
                }
                else {
-                  self.$('#nameInput').val(i18n.t(self.get('display_name'), { self: self.get('model') }))
+                  var name = self.get('custom_name') || i18n.t(self.get('display_name'), { self: self.get('model') });
+                  self.$('#nameInput').val(name)
                      .width(self.$('#nametag').outerWidth() - 16)  // 16 is the total padding and border of #nameInput
                      .show()
                      .focus()
@@ -195,6 +196,7 @@ App.StonehearthUnitFrameView.reopen({
          }
       }
 
+      this.set('custom_name', custom_name);
       this.set('display_name', display_name);
       this.notifyPropertyChange('display_name');
       this.set('description', description);
