@@ -1,4 +1,55 @@
 App.StonehearthCitizenCharacterSheetView.reopen({
+   components: {
+      'stonehearth:unit_info': {},
+      'stonehearth:buffs' : {
+         'buffs' : {
+            '*' : {}
+         }
+      },
+      'stonehearth:traits' : {
+         'traits': {
+            '*' : {}
+         }
+      },
+      'stonehearth:equipment' : {
+         'equipped_items' : {
+            '*' : {
+               'uri': {}
+            }
+         }
+      },
+      'stonehearth:attributes' : {},
+      'stonehearth:expendable_resources' : {},
+      'stonehearth:personality' : {},
+      'stonehearth:score' : {},
+      'stonehearth:happiness': {
+         'current_mood_buff': {}
+      },
+
+      'stonehearth:job' : {
+         'curr_job_controller' : {},
+         'job_controllers' : {
+            '*' : {}
+         }
+      },
+      'stonehearth:storage' : {
+         'item_tracker' : {
+            'tracking_data': {
+               'stonehearth:loot:gold' : {
+                  'items' : {
+                     '*' : {
+                        'stonehearth:stacks': {}
+                     }
+                  }
+               }
+            }
+         }
+      },
+      'stonehearth:appeal': {},
+      'stonehearth:teleportation': {},
+      'stonehearth_ace:titles': {}
+   },
+
    didInsertElement: function() {
       var self = this;
       self._super();
@@ -162,7 +213,7 @@ App.StonehearthCitizenCharacterSheetView.reopen({
       // when the selection changes, load up the appropriate titles json
       var self = this;
       self._titles = {};
-      var json = self.get('model.stonehearth:unit_info.titles_json');
+      var json = self.get('model.stonehearth_ace:titles.titles_json');
       if (json) {
          stonehearth_ace.loadAvailableTitles(json, function(data){
             self._titles = data;

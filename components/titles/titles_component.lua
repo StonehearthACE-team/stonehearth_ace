@@ -9,10 +9,27 @@ function TitlesComponent:activate()
    self._stats_listener = radiant.events.listen(self._entity, 'stonehearth_ace:stat_changed', self, self._on_stat_changed)
 end
 
+function TitlesComponent:post_activate()
+   -- population hasn't been fully set up yet apparently in activate, so have to call this here
+   self._player_id_trace = self._entity:trace_player_id('titles')
+      :on_changed(
+         function ()
+            self:update_titles_json()
+         end
+      )
+
+   self:update_titles_json()
+end
+
 function TitlesComponent:destroy()
    if self._stats_listener then
       self._stats_listener:destroy()
       self._stats_listener = nil
+   end
+
+   if self._player_id_trace then
+      self._player_id_trace:destroy()
+      self._player_id_trace = nil
    end
 end
 
@@ -25,6 +42,15 @@ function TitlesComponent:_on_stat_changed(args)
             self:add_title(title, rank)
          end
       end
+   end
+end
+
+function TitlesComponent:update_titles_json()
+   local pop = stonehearth.population:get_population(self._entity:get_player_id())
+   local titles_json = pop and pop:get_titles_json_for_entity(self._entity)
+   if titles_json ~= self._sv.titles_json then
+      self._sv.titles_json = titles_json
+      self.__saved_variables:mark_changed()
    end
 end
 

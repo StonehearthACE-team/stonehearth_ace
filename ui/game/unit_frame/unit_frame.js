@@ -14,21 +14,77 @@ $(top).on("selection_has_component_info_changed", function (_, e) {
    _selectionHasComponentInfoChanged();
 });
 
-$(top).on('stonehearthReady', function (cc) {
-   if (!App.gameView) {
-      return;
-   }
-   var unitFrameExtras = App.gameView.getView(App.UnitFrameExtrasView);
-   if (!unitFrameExtras) {
-      App.gameView.addView(App.UnitFrameExtrasView, {});
-   }
-});
-
-App.UnitFrameExtrasView = App.View.extend({
-   templateName: 'unitFrameExtras'
-});
-
 App.StonehearthUnitFrameView.reopen({
+   components: {
+      "stonehearth:ai": {
+          "status_text_data": {}
+      },
+      "stonehearth:attributes": {
+          "attributes": {}
+      },
+      "stonehearth:building": {},
+      "stonehearth:fabricator": {},
+      "stonehearth:incapacitation": {
+          "sm": {}
+      },
+      "stonehearth:item_quality": {
+      },
+      "stonehearth:commands": {
+          "commands": {}
+      },
+      "stonehearth:job": {
+          'curr_job_controller': {}
+      },
+      "stonehearth:buffs": {
+          "buffs": {
+              "*": {}
+          }
+      },
+      'stonehearth:expendable_resources': {},
+      "stonehearth:unit_info": {},
+      "stonehearth:stacks": {},
+      "stonehearth:material": {},
+      "stonehearth:workshop": {
+          "crafter": {},
+          "crafting_progress": {},
+          "order": {}
+      },
+      "stonehearth:happiness": {
+          "current_mood_buff": {}
+      },
+      "stonehearth:pet": {},
+      "stonehearth:party": {
+          "members": {
+              "*": {
+                  "entity": {
+                      "stonehearth:work_order": {
+                          "work_order_statuses": {},
+                          "work_order_refs": {}
+                      }
+                  }
+              }
+          }
+      },
+      "stonehearth:party_member": {
+          "party": {
+              "stonehearth:unit_info": {}
+          }
+      },
+      "stonehearth:siege_weapon": {},
+      "stonehearth:door": {},
+      "stonehearth:iconic_form": {
+          "root_entity": {
+              "uri": {},
+              'stonehearth:item_quality': {},
+          }
+      },
+      "stonehearth:work_order": {
+          "work_order_statuses": {},
+          "work_order_refs": {}
+      },
+      "stonehearth_ace:titles": {}
+  },
+
    didInsertElement: function() {
       var self = this;
       self._super();
@@ -254,7 +310,7 @@ App.StonehearthUnitFrameView.reopen({
       // when the selection changes, load up the appropriate titles json
       var self = this;
       self._titles = {};
-      var json = self.get('model.stonehearth:unit_info.titles_json');
+      var json = self.get('model.stonehearth_ace:titles.titles_json');
       if (json) {
          stonehearth_ace.loadAvailableTitles(json, function(data){
             self._titles = data;

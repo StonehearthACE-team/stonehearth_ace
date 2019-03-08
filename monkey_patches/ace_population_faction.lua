@@ -20,6 +20,19 @@ function AcePopulationFaction:set_kingdom(kingdom)
    return no_kingdom
 end
 
+AcePopulationFaction._ace_old_create_new_citizen_from_role_data = PopulationFaction.create_new_citizen_from_role_data
+function AcePopulationFaction:create_new_citizen_from_role_data(role, role_data, gender, options)
+   local citizen = self:_ace_old_create_new_citizen_from_role_data(role, role_data, gender, options)
+
+   -- the citizen has now been added, so update their titles json if necessary
+   local titles = citizen:get_component('stonehearth_ace:titles')
+   if titles then
+      titles:update_titles_json()
+   end
+
+   return citizen
+end
+
 function AcePopulationFaction:_load_titles()
    self._population_titles, self._statistics_population_titles = self:_load_titles_from_json(self._data.population_titles)
    self._item_titles, self._statistics_item_titles = self:_load_titles_from_json(self._data.item_titles)
