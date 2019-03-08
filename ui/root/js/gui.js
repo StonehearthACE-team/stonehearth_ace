@@ -1,33 +1,50 @@
 App.guiHelper = {
 
    // see _createListValueDiv for value expectations
-   createCustomSelector: function (settingId, valuesArray, changedCallback) {
+   // for creating just the list without the anchoring element (e.g., to display on right-click), specify an alternateSelector table
+   // the showList function will be added to that table
+   createCustomSelector: function (settingId, valuesArray, changedCallback, options) {     
+      options = options || {};
+
       var container = $('<div>')
          .addClass('custom-select');
 
-      var selector = $('<div>')
-         .attr('id', settingId)
-         .addClass('select-selected');
+      var selector;
+      if (!options.listOnly) {
+         selector = $('<div>')
+            .attr('id', settingId)
+            .addClass('select-selected');
+      }
 
       var list = $('<div>')
          .attr('setting-id', settingId)
          .addClass('select-items select-hide');
 
-      radiant.each(valuesArray, function (_, value) {
-         list.append(App.guiHelper._createListValueDiv(container, value, settingId, changedCallback));
-      });
-
-      container.append(selector);
-      container.append(list);
-
-      selector.on('click', function() {
+      var showList = function() {
          App.guiHelper._closeListSelectorsExcept(list);
          list.toggleClass('select-hide');
-         selector.toggleClass('select-arrow-active');
-         return false;
+         if (selector) {
+            selector.toggleClass('select-arrow-active');
+         }
+      };
+
+      radiant.each(valuesArray, function (_, value) {
+         list.append(App.guiHelper._createListValueDiv(container, value, settingId, changedCallback, options.tooltipFn, showList));
       });
 
-      return container;
+      if (selector) {
+         container.append(selector);
+         selector.on('click', function() {
+            showList();
+            return false;
+         });
+      }
+      container.append(list);
+
+      return {
+         container: container,
+         showList: showList
+      };
    },
 
    getListSelectorValue: function (container) {
@@ -55,7 +72,7 @@ App.guiHelper = {
       elements.removeClass('select-arrow-active');
    },
 
-   setListSelectorValue: function (container, value, doClick) {
+   setListSelectorValue: function (container, value, showListFn) {
       var selector = App.guiHelper._getListSelector(container);
 
       if (typeof value !== 'object') {
@@ -65,19 +82,21 @@ App.guiHelper = {
          value = { key: '[NULL]' };
       }
 
-      selector.attr('data-key', value.key);
-      selector.html(value.display_name != null ? i18n.t(value.display_name) : value.key);
-      App.guiHelper.addTooltip(selector, value.description);
+      if (selector) {
+         selector.attr('data-key', value.key);
+         selector.html(value.display_name != null ? i18n.t(value.display_name) : value.key);
+         App.guiHelper.addTooltip(selector, value.description);
+      }
 
       container.find('.same-as-selected').removeClass('same-as-selected');
       container.find('[data-key="' + value.key + '"]').addClass('same-as-selected');
 
-      if (doClick) {
-         selector.click();
+      if (showListFn) {
+         showListFn();
       }
    },
 
-   _createListValueDiv: function (container, value, settingId, changedCallback) {
+   _createListValueDiv: function (container, value, settingId, changedCallback, tooltipFn, showListFn) {
       // we expect a value object to contain key (value) and optional display_name and description (for tooltip) fields
       // if it's not an object, we'll create a temporary object and assign the value to the key property
       if (typeof value !== 'object') {
@@ -91,16 +110,19 @@ App.guiHelper = {
          .html(value.display_name != null ? i18n.t(value.display_name) : value.key)
          .attr('data-key', value.key);
 
-      if (value.description) {
+      if (tooltipFn) {
+         tooltipFn(div, value);
+      }
+      else if (value.description) {
          App.guiHelper.addTooltip(div, value.description);
       }
 
       div.on('click', function() {
          // set the current selected value to this value
-         App.guiHelper.setListSelectorValue(container, value, true);
+         App.guiHelper.setListSelectorValue(container, value, showListFn);
 
          if (changedCallback) {
-            changedCallback(settingId, value.key);
+            changedCallback(settingId, value);
          }
 
          return false;

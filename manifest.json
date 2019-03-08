@@ -350,8 +350,6 @@
       "data:resource_constants": "file(data/resource_constants.json)",
       "data:thoughts": "file(data/happiness/thoughts.json)",
       "data:trough_feed": "file(data/trough_feed/trough_feed.json)",
-      "data:item_titles": "file(data/titles/item_titles.json)",
-      "data:population_titles": "file(data/titles/population_titles.json)",
       "decoration:brass_sign_blacksmith": "file(entities/decoration/brass_sign_blacksmith/brass_sign_blacksmith.json)",
       "decoration:copper_garden_lantern": "file(entities/decoration/copper_garden_lantern/copper_garden_lantern.json)",
       "decoration:copper_wall_lantern": "file(entities/decoration/copper_wall_lantern/copper_wall_lantern.json)",
@@ -2425,6 +2423,14 @@
       },
       "allow_hunting_for_entity": {
          "controller": "file(call_handlers/hunting_call_handler.lua)",
+         "endpoint": "server"
+      },
+      "get_titles_json_for_entity_command": {
+         "controller": "file(call_handlers/titles_call_handler.lua)",
+         "endpoint": "server"
+      },
+      "select_title_command": {
+         "controller": "file(call_handlers/titles_call_handler.lua)",
          "endpoint": "server"
       }
    },

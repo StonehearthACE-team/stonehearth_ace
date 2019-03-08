@@ -267,7 +267,7 @@ $(top).on('stonehearthReady', function(cc) {
                newDiv = $('<div>')
                   .addClass('setting list-setting');
 
-               var selector = App.guiHelper.createCustomSelector(settingElementID, valsArr);
+               var selector = App.guiHelper.createCustomSelector(settingElementID, valsArr).container;
 
                var label = $('<span>')
                   .addClass('list-label');

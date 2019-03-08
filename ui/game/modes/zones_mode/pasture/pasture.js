@@ -92,13 +92,13 @@ App.StonehearthPastureView.reopen({
          }
 
          var onChanged = function (key, value) {
-            var val = parseInt(value);
+            var val = parseInt(value.key);
             if (val != NaN) {
                radiant.call('stonehearth_ace:set_pasture_maintain_animals', self.get('uri'), val);
             }
          };
 
-         selector = App.guiHelper.createCustomSelector('pasture_maintainAnimals', vals, onChanged);
+         selector = App.guiHelper.createCustomSelector('pasture_maintainAnimals', vals, onChanged).container;
          App.guiHelper.setListSelectorValue(selector, maintain + '');
 
          self._maintainSelector = selector;

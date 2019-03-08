@@ -29,6 +29,8 @@ App.UnitFrameExtrasView = App.View.extend({
 });
 
 App.StonehearthUnitFrameView.reopen({
+   _allTitles: {},
+   
    didInsertElement: function() {
       var self = this;
       self._super();
@@ -51,6 +53,10 @@ App.StonehearthUnitFrameView.reopen({
                      .select();
                }
             }
+         })
+         .on('contextmenu', function(e) {
+            self._showTitleSelectionList(e);
+            return false;
          });
 
       $('#nametag.tooltipstered').tooltipster('destroy');
@@ -114,6 +120,64 @@ App.StonehearthUnitFrameView.reopen({
    willDestroyElement: function() {
       this._nameHelper.destroy();
       this._super();
+   },
+
+   _showTitleSelectionList: function(e) {
+      var self = this;
+      if (self._titleListContainer) {
+         self._titleListContainer.remove();
+         delete self._titleListContainer;
+      }
+
+      // first check if we actually have any titles for this entity
+      var titles = self.get('model.stonehearth:unit_info.titles');
+      if (titles) {
+         var custom_name = self.get('custom_name');
+         var titlesArr = [];
+         radiant.each(titles, function(title, rank) {
+            var lookups = self._titles && self._titles[title];
+            if (lookups && lookups.ranks) {
+               radiant.each(lookups.ranks, function(_, rank_data) {
+                  if (rank_data.rank <= rank) {
+                     titlesArr.push({
+                        key: title + '|' + rank_data.rank,
+                        title: title,
+                        rank: rank_data.rank,
+                        display_name: custom_name + rank_data.display_name,
+                        description: rank_data.description
+                     });
+                  }
+               });
+            }
+         });
+
+         if (titlesArr.length > 0) {
+            // insert the "none" option
+            titlesArr.splice(0, 0, {
+               key: 'none',
+               display_name: custom_name,
+               description: self._titles.none && self._titles.none.description || 'i18n(stonehearth_ace:data.population.ascendancy.titles.none.description)'
+            });
+
+            var onChanged = function (key, value) {
+               radiant.call('stonehearth_ace:select_title_command', self.get('uri'), value.title, value.rank);
+               // also dispose of the list
+               result.container.remove();
+            };
+            var tooltipFn = function (div, value) {
+               App.guiHelper.addTooltip(div, value.description, value.display_name);
+            };
+
+            var result = App.guiHelper.createCustomSelector('titleSelection', titlesArr, onChanged, {listOnly: true, tooltipFn: tooltipFn});
+            // now we just need to properly position the list and display it
+            self._titleListContainer = result.container;
+            result.container.css({
+               height: titlesArr.length * 37
+            })
+            self.$('#topBar').append(result.container);
+            result.showList();
+         }
+      }
    },
 
    // overriding this to get rid of the activity part
@@ -231,6 +295,30 @@ App.StonehearthUnitFrameView.reopen({
       this.notifyPropertyChange('display_name');
       this.set('description', description);
       this.notifyPropertyChange('description');
+   }.observes('model.uri'),
+
+   _loadAvailableTitles: function() {
+      // when the selection changes, load up the appropriate titles json
+      var self = this;
+      self._titles = {};
+      var uri = self.get('uri');
+      if (uri) {
+         radiant.call('stonehearth_ace:get_titles_json_for_entity_command', uri)
+            .done(function(response) {
+               if (response.json) {
+                  if (!self._allTitles[response.json])
+                  {
+                     $.getJSON(response.json, function(data) {
+                        self._allTitles[response.json] = data;
+                        self._titles = data;
+                     });
+                  }
+                  else {
+                     self._titles = self._allTitles[response.json];
+                  }
+               }
+            });
+      }
    }.observes('model.uri'),
 
    _updateJobChangeable: function() {

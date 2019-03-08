@@ -108,6 +108,9 @@ function FertilizeCropAdjacent:_fertilizer_has_stacks(carrying)
    if not stacks_component or stacks_component:get_stacks() < 1 then
       return false
    end
+   if not radiant.entities.get_entity_data(carrying, 'stonehearth_ace:fertilizer') then
+      return false
+   end
    return true
 end
 

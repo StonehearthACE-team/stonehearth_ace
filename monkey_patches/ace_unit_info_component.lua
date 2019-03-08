@@ -117,7 +117,7 @@ end
 
 function AceUnitInfoComponent:select_title(title, rank)
    -- if no rank is provided, assume the highest rank of that title we have
-   if self._sv.titles[title] then
+   if title and self._sv.titles[title] then
       rank = math.min(rank or self._sv.titles[title], self._sv.titles[title])
       local pop = stonehearth.population:get_population(self._entity:get_player_id())
       self._sv.current_title = pop and pop:get_title_rank_data(self._entity, title, rank) or nil
