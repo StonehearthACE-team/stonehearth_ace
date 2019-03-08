@@ -32,7 +32,7 @@ function AceCombatService:_queue_killed_entity_craft_order(entity)
    end
 end
 
--- record kill stats for killer, assistants, and killer's weapon:
+-- record kill stats for killer, assistants, and killer's equipment:
 --    player_id of victim, category of victim (if available), total kills/assists, and notable victim kills
 function AceCombatService:_record_kill_stats(attacker, target, units)
    local enemy_player = get_player_id(target)
@@ -46,31 +46,40 @@ function AceCombatService:_record_kill_stats(attacker, target, units)
       end
       self:_record_notable_kill_for_entity(attacker, target)
 
-      -- also add the stat to the attacker's weapon
-      local weapon = stonehearth.combat:get_main_weapon(attacker)
-      if weapon ~= nil and weapon:is_valid() then
-         self:_record_kill_stats_for_entity(weapon, 'kills', enemy_player, enemy_category, true)
-         self:_record_notable_kill_for_entity(weapon, target)
+      -- also add the stat to the attacker's equipment
+      local equipment = attacker:get_component('stonehearth:equipment')
+      if equipment then
+         for _, piece in pairs(equipment:get_all_items()) do
+            self:_record_kill_stats_for_entity(piece, 'kills', enemy_player, enemy_category, true)
+            self:_record_notable_kill_for_entity(piece, target)
+         end
       end
    end
 end
 
 function AceCombatService:_record_kill_stats_for_entity(entity, category, name, enemy_category, increment_totals)
-   entity:add_component('stonehearth_ace:statistics'):increment_stat(category, name)
+   local stats_comp = entity:get_component('stonehearth_ace:statistics')
 
-   if enemy_category then
-      entity:add_component('stonehearth_ace:statistics'):increment_stat('category_' .. category, enemy_category)
-   end
+   if stats_comp then
+      stats_comp:increment_stat(category, name)
 
-   if increment_totals then
-      entity:add_component('stonehearth_ace:statistics'):increment_stat('totals', category)
+      if enemy_category then
+         stats_comp:increment_stat('category_' .. category, enemy_category)
+      end
+
+      if increment_totals then
+         stats_comp:increment_stat('totals', category)
+      end
    end
 end
 
 function AceCombatService:_record_notable_kill_for_entity(entity, target)
-   local unit_info = target:get_component('stonehearth:unit_info')
-   if unit_info and unit_info:is_notable() then
-      entity:add_component('stonehearth_ace:statistics'):add_to_stat_list('notable_kills', 'names', unit_info:get_custom_name(target))
+   local stats_comp = entity:get_component('stonehearth_ace:statistics')
+   if stats_comp then
+      local unit_info = target:get_component('stonehearth:unit_info')
+      if unit_info and unit_info:is_notable() then
+         stats_comp:add_to_stat_list('notable_kills', 'names', unit_info:get_custom_name(target))
+      end
    end
 end
 
