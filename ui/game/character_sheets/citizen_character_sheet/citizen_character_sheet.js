@@ -13,6 +13,12 @@ App.StonehearthCitizenCharacterSheetView.reopen({
          if (self.$('#name').val() == self.get('model.custom_name')) {
             self.$('#name').val(self.get('model.unit_name'));
          }
+      })
+      .on('mousedown', function(e) {
+         if (e.button == 2) {
+            self._showTitleSelectionList();
+            e.preventDefault();
+         }
       });
    },
 
@@ -140,5 +146,27 @@ App.StonehearthCitizenCharacterSheetView.reopen({
       // }
 
       $(target_div).find('.retiredAt').show();
-   }
+   },
+
+   _showTitleSelectionList: function(e) {
+      var self = this;
+
+      var result = stonehearth_ace.createTitleSelectionList(self._titles, self.get('model.stonehearth:unit_info.titles'), self.get('uri'), self.get('model.custom_name'));
+      if (result) {
+         self.$('#name').after(result.container);
+         result.showList();
+      }
+   },
+
+   _loadAvailableTitles: function() {
+      // when the selection changes, load up the appropriate titles json
+      var self = this;
+      self._titles = {};
+      var json = self.get('model.stonehearth:unit_info.titles_json');
+      if (json) {
+         stonehearth_ace.loadAvailableTitles(json, function(data){
+            self._titles = data;
+         });
+      }
+   }.observes('model.uri')
 });

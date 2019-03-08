@@ -1,5 +1,7 @@
 // used for functions that get used by multiple views
 var stonehearth_ace = {
+   _allTitles: {},
+
    getEquipmentTypesArray: function(equipment_types) {
       if (!equipment_types) {
          return stonehearth_ace._equipment_types;
@@ -84,6 +86,74 @@ var stonehearth_ace = {
          }
       }
       return classArray;
+   },
+
+   loadAvailableTitles: function(json, callbackFn) {
+      // when the selection changes, load up the appropriate titles json
+      if (stonehearth_ace._allTitles[json])
+      {
+         if (callbackFn) {
+            callbackFn(stonehearth_ace._allTitles[json]);
+         }
+      }
+      else {
+         $.getJSON(json, function(data) {
+            stonehearth_ace._allTitles[json] = data;
+            callbackFn(data);
+         });
+      }
+   },
+
+   createTitleSelectionList: function(availableTitles, entityTitles, entityUri, entityName) {
+      if (stonehearth_ace._titleListContainer) {
+         stonehearth_ace._titleListContainer.remove();
+         delete stonehearth_ace._titleListContainer;
+      }
+
+      // first check if we actually have any titles for this entity
+      if (entityTitles && availableTitles) {
+         var titlesArr = [];
+         radiant.each(entityTitles, function(title, rank) {
+            var lookups = availableTitles[title];
+            if (lookups && lookups.ranks) {
+               radiant.each(lookups.ranks, function(_, rank_data) {
+                  if (rank_data.rank <= rank) {
+                     titlesArr.push({
+                        key: title + '|' + rank_data.rank,
+                        title: title,
+                        rank: rank_data.rank,
+                        display_name: entityName + rank_data.display_name,
+                        description: rank_data.description
+                     });
+                  }
+               });
+            }
+         });
+
+         if (titlesArr.length > 0) {
+            // insert the "none" option
+            titlesArr.splice(0, 0, {
+               key: 'none',
+               display_name: entityName,
+               description: availableTitles.none && availableTitles.none.description || 'i18n(stonehearth_ace:data.population.ascendancy.titles.none.description)'
+            });
+
+            var onChanged = function (key, value) {
+               radiant.call('stonehearth_ace:select_title_command', entityUri, value.title, value.rank);
+               // also dispose of the list
+               result.container.remove();
+            };
+            var tooltipFn = function (div, value) {
+               App.guiHelper.addTooltip(div, value.description, value.display_name);
+            };
+
+            var result = App.guiHelper.createCustomSelector('titleSelection', titlesArr, onChanged, {listOnly: true, tooltipFn: tooltipFn});
+            // now we just need to properly position the list and display it
+            stonehearth_ace._titleListContainer = result.container;
+            result.titlesArr = titlesArr;
+            return result;
+         }
+      }
    }
 }
 

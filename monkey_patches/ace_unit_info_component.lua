@@ -10,6 +10,8 @@ local entity_forms = require 'stonehearth.lib.entity_forms.entity_forms_lib'
 --    and reveals the uniqueness of the item
 AceUnitInfoComponent._ace_old_create = UnitInfoComponent.create
 function AceUnitInfoComponent:create()
+   self._is_create = true
+
    local json = radiant.entities.get_json(self) or {}
    if json.display_name then
       self:set_display_name(json.display_name)
@@ -40,6 +42,43 @@ function AceUnitInfoComponent:activate()
 
    if self._ace_old_activate then
       self:_ace_old_activate()
+   end
+end
+
+AceUnitInfoComponent._ace_old_post_activate = UnitInfoComponent.post_activate
+function AceUnitInfoComponent:post_activate()
+   self._player_id_trace = self._entity:trace_player_id('titles')
+      :on_changed(
+         function ()
+            self:_on_player_id_changed()
+         end
+      )
+   
+   self:_on_player_id_changed()
+
+   if self._ace_old_post_activate then
+      self:_ace_old_post_activate()
+   end
+end
+
+AceUnitInfoComponent._ace_old_destroy = UnitInfoComponent.destroy
+function AceUnitInfoComponent:destroy()
+   if self._player_id_trace then
+      self._player_id_trace:destroy()
+      self._player_id_trace = nil
+   end
+
+   if self._ace_old_destroy then
+      self:_ace_old_destroy()
+   end
+end
+
+function AceUnitInfoComponent:_on_player_id_changed()
+   local pop = stonehearth.population:get_population(self._entity:get_player_id())
+   local titles_json = pop and pop:get_titles_json_for_entity(self._entity)
+   if titles_json ~= self._sv.titles_json then
+      self._sv.titles_json = titles_json
+      self.__saved_variables:mark_changed()
    end
 end
 
