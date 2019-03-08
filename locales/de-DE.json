@@ -390,6 +390,9 @@
       "population": {
          "ascendancy": {
             "titles": {
+               "none": {
+                  "description": "Kein Titel notwendig."
+               },
                "goblin_killer": {
                   "1_display_name": " die/der Goblintöter/in",
                   "1_description": "Hat einen Goblin getötet!",
@@ -424,11 +427,35 @@
                   "50_display_name": ", Große/r Beschützer/in",
                   "50_description": "Verteidigte die Stadt vor 50 Feinden!",
                   "100_display_name": ", Stadtheld/in",
-                  "100_description": "Verteidigte die Stadt vor 100 Feinden!",
+                  "100_description": "Verteidigte die Stadt vor 100 Feinden! Ist es endlich sicher?",
                   "500_display_name": " der lange Arm des Gesetzes",
                   "500_description": "Verteidigte die Stadt vor 500 Feinden! Was für eine unglaublich widerspenstige Stadt!",
                   "1000_display_name": ", Retter/in der Zivilisation",
                   "1000_description": "Verteidigte die Stadt vor 1000 Feinden! Vielleicht ist ein diplomatischer Ansatz angebracht.."
+               },
+               "prolific_crafter": {
+                  "100_display_name": ", erfolgreicher Handwerker",
+                  "100_description": "Sie/Er hat 100 Gegenstände hergestellt!",
+                  "200_display_name": " der Multi-Handwerker",
+                  "200_description": "Sie/Er hat 200 Gegenstände hergestellt!",
+                  "500_display_name": ", Massenhersteller",
+                  "500_description": "Sie/Er hat 300 Gegenstände hergestellt! Vielleicht könnten sie/er einen Assistenten gebrauchen.",
+                  "1000_display_name": ", Gildenbotschafter",
+                  "1000_description": "Sie/Er hat 1000 Gegenstände hergestellt! Halt lieber eine schöne Rente bereit."
+               },
+               "excellent_crafter": {
+                  "10_display_name": ", ausgezeichneter Handwerker",
+                  "10_description": "Sie/Er hat 10 Gegenstände von exzellenter Qualität hergestellt!",
+                  "25_display_name": ", außergewöhnlich Handwerker",
+                  "25_description": "Sie/Er hat 25 Gegenstände von exzellenter Qualität hergestellt!",
+                  "100_display_name": " der Kaiser der Exzellenz",
+                  "100_description": "Sie/Er hat 100 Gegenstände von exzellenter Qualität hergestellt!"
+               },
+               "master_crafter": {
+                  "1_display_name": ", Meisterhandwerker",
+                  "1_description": "Sie/Er hat einen Gegenstand von meisterlicher Qualität hergestellt! Beeindruckend!",
+                  "10_display_name": " der Meister der Qualität",
+                  "10_description": "Sie/Er hat 10 Gegenstände von meisterlicher Qualität hergestellt! Unglaublich!"
                }
             }
          }
