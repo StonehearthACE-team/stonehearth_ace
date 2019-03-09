@@ -549,13 +549,13 @@ function AceFarmerFieldComponent:_update_effective_water_level()
    local levels = stonehearth.constants.farming.water_levels
    local relative_level = levels.NONE
 
-   if self._best_water_level and self._sv._water_level >= self._best_water_level.min_level then
-      if not self._next_water_level or self._sv._water_level < self._next_water_level.min_level then
+   if self._best_water_level and self._sv.humidity_level >= self._best_water_level.min_level then
+      if not self._next_water_level or self._sv.humidity_level < self._next_water_level.min_level then
          relative_level = levels.PLENTY
       else
          relative_level = levels.EXTRA
       end
-   elseif self._sv._water_level > 0 then
+   elseif self._sv.humidity_level > 0 then
       relative_level = levels.SOME
    end
 
