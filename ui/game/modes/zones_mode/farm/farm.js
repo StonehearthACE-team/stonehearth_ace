@@ -481,7 +481,7 @@ App.StonehearthFarmView.reopen({
       var is_flooded = field_sv.flooded;
       var current_water_level = field_sv.humidity_level;
       var size_mult = self._getSizeMult(size);
-      var effective_water_level = field_sv.effective_water_level;
+      var effective_humidity_level = field_sv.effective_humidity_level;
       var current_light_level = field_sv.sunlight_level;
       
       var status;
@@ -514,7 +514,7 @@ App.StonehearthFarmView.reopen({
       self._applyStatus(self.$('#currentSeason'), status);
 
 
-      switch (effective_water_level) {
+      switch (effective_humidity_level) {
          case levels.NONE:
             status = self._STATUSES.POOR;
             break;
@@ -793,6 +793,9 @@ App.StonehearthFarmView.reopen({
             result.best_affinity = level;
             if (i < table.length - 1) {
                result.next_affinity = table[i + 1];
+            }
+            else {
+               delete result.next_affinity;
             }
          }
       }
