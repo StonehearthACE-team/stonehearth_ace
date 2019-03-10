@@ -90,7 +90,8 @@ local monkey_patches = {
    ace_combat_service = 'stonehearth.services.server.combat.combat_service',
    ace_game_master_lib = 'stonehearth.lib.game_master.game_master_lib',
    ace_population_faction = 'stonehearth.services.server.population.population_faction',
-   ace_entities_call_handler = 'stonehearth.call_handlers.entities_call_handler'
+   ace_entities_call_handler = 'stonehearth.call_handlers.entities_call_handler',
+   ace_periodic_health_modification = 'stonehearth.data.buffs.scripts.periodic_health_modification'
 }
 
 local function monkey_patching()
