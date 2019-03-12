@@ -23,6 +23,16 @@ function AceWaterfallComponent:activate()
             end
          end)
    end
+
+   self:reset_changed_on_tick()
+end
+
+function AceWaterfallComponent:reset_changed_on_tick()
+   self._volume_changed_on_tick = 0
+end
+
+function AceWaterfallComponent:was_changed_on_tick()
+   return math.abs(self._volume_changed_on_tick) > 0.0001
 end
 
 function AceWaterfallComponent:get_location()
@@ -33,10 +43,13 @@ function AceWaterfallComponent:set_volume(volume)
    if volume == self._sv.volume then
       return
    end
+
+   self._volume_changed_on_tick = self._volume_changed_on_tick + (self._sv.volume or 0) - volume
+
    self._sv.volume = volume
    self.__saved_variables:mark_changed()
 
-   stonehearth_ace.water_signal:waterfall_component_modified(self._entity)
+   stonehearth_ace.water_signal:waterfall_component_modified(self._entity, true)
 end
 
 AceWaterfallComponent._ace_old__update_region = WaterfallComponent._update_region
