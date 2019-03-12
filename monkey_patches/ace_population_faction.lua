@@ -33,6 +33,42 @@ function AcePopulationFaction:create_new_citizen_from_role_data(role, role_data,
    return citizen
 end
 
+--Will show a simple notification that zooms to a citizen when clicked.
+--will expire if the citizen isn't around anymore
+-- override to add custom_data for current title
+function PopulationFaction:show_notification_for_citizen(citizen, title, options)
+   local citizen_id = citizen:get_id()
+   if not self._sv.bulletins[citizen_id] then
+      self._sv.bulletins[citizen_id] = {}
+   elseif self._sv.bulletins[citizen_id][title] then
+      if options.ignore_on_repeat_add then
+         return
+      end
+      --If a bulletin already exists for this citizen with this title, remove it to replace with the new one
+      local bulletin_id = self._sv.bulletins[citizen_id][title]:get_id()
+      stonehearth.bulletin_board:remove_bulletin(bulletin_id)
+   end
+
+   local town_name = stonehearth.town:get_town(self._sv.player_id):get_town_name()
+   local notification_type = options and options.type or 'info'
+   local message = options and options.message or ''
+
+   self._sv.bulletins[citizen_id][title] = stonehearth.bulletin_board:post_bulletin(self._sv.player_id)
+            :set_callback_instance(self)
+            :set_type(notification_type)
+            :set_data({
+               title = title,
+               message = message,
+               zoom_to_entity = citizen,
+            })
+            :add_i18n_data('citizen_custom_name', radiant.entities.get_custom_name(citizen))
+            :add_i18n_data('citizen_display_name', radiant.entities.get_display_name(citizen))
+            :add_i18n_data('citizen_custom_data', radiant.entities.get_custom_data(citizen))
+            :add_i18n_data('town_name', town_name)
+
+   self.__saved_variables:mark_changed()
+end
+
 function AcePopulationFaction:_load_titles()
    self._population_titles, self._statistics_population_titles = self:_load_titles_from_json(self._data.population_titles)
    self._item_titles, self._statistics_item_titles = self:_load_titles_from_json(self._data.item_titles)

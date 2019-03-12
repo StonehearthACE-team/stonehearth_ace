@@ -96,6 +96,10 @@ function AceUnitInfoComponent:set_notability(is_notable)
    self.__saved_variables:mark_changed()
 end
 
+function AceUnitInfoComponent:get_custom_data()
+   return self._sv.custom_data
+end
+
 function AceUnitInfoComponent:get_titles()
    return self._sv.titles
 end
@@ -103,6 +107,10 @@ end
 function AceUnitInfoComponent:has_title(title, rank)
    local title_rank = self._sv.titles[title]
    return title_rank and (not rank or title_rank >= rank)
+end
+
+function AceUnitInfoComponent:get_current_title()
+   return self._sv.custom_data and self._sv.custom_data.current_title
 end
 
 -- once bestowed, a title is never removed; it can only be increased in rank
@@ -143,15 +151,19 @@ end
 
 function AceUnitInfoComponent:select_title(title, rank, propogate_to_forms)
    -- if no rank is provided, assume the highest rank of that title we have
+   if not self._sv.custom_data then
+      self._sv.custom_data = {}
+   end
+
    if title and self._sv.titles[title] then
       rank = math.min(rank or self._sv.titles[title], self._sv.titles[title])
       local pop = stonehearth.population:get_population(self._entity:get_player_id())
-      self._sv.current_title = pop and pop:get_title_rank_data(self._entity, title, rank) or nil
+      self._sv.custom_data.current_title = pop and pop:get_title_rank_data(self._entity, title, rank) or nil
    else
-      self._sv.current_title = nil
+      self._sv.custom_data.current_title = nil
    end
 
-   if self._sv.current_title then
+   if self._sv.custom_data.current_title then
       self._sv.display_name = 'i18n(stonehearth_ace:ui.game.entities.custom_name_with_title)'
    else
       self._sv.display_name = 'i18n(stonehearth:ui.game.entities.custom_name)'
@@ -215,7 +227,7 @@ end
 
 function AceUnitInfoComponent:_process_custom_data(custom_data)
    if not custom_data then
-      return
+      return {}
    end
 
    if type(custom_data) ~= 'table' then
@@ -235,6 +247,8 @@ function AceUnitInfoComponent:_process_custom_data(custom_data)
          end
       end
    end
+
+   return data
 end
 
 return AceUnitInfoComponent

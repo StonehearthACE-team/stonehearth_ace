@@ -9,6 +9,12 @@ i18n.addPostProcessor("localizeEntityName", function(value, key, isFound, opts) 
 
    opts.postProcess = null;
 
+   // spiegg's solution here: https://stackoverflow.com/questions/6491463/accessing-nested-javascript-objects-with-string-key
+   function interpretPropertyString(s, obj) {
+      var properties = Array.isArray(s) ? s : s.split('.')
+      return properties.reduce((prev, curr) => prev && prev[curr], obj)
+   }
+
    function localizeName(translated, options) {
      while (translated.indexOf(nameHelperPrefix) != -1) {
          replacementCounter++;
@@ -25,26 +31,28 @@ i18n.addPostProcessor("localizeEntityName", function(value, key, isFound, opts) 
              return '';
          }
 
+         // if [entity]_custom_name doesn't work, assume it's a full entity passed to us
          var customNameKey = i18n.options.interpolationPrefix + tokenWithoutSymbols + "_custom_name" + i18n.options.interpolationSuffix;
          var customName = i18n.applyReplacement(customNameKey, opts);
-         var currentTitle = {};
          var isFullEntity = false;
          if (customName == customNameKey) {
             customNameKey = i18n.options.interpolationPrefix + tokenWithoutSymbols + ".stonehearth:unit_info.custom_name" + i18n.options.interpolationSuffix;
             customName = i18n.applyReplacement(customNameKey, opts);
-            var currentTitleKey = i18n.options.interpolationPrefix + tokenWithoutSymbols + ".stonehearth:unit_info.current_title.display_name" + i18n.options.interpolationSuffix;
-            currentTitle.display_name = i18n.applyReplacement(currentTitleKey, opts);
             isFullEntity = true;
          }
 
          var newToken = i18n.options.interpolationPrefix + tokenWithoutSymbols + (isFullEntity ? ".stonehearth:unit_info.display_name" : "_display_name") + i18n.options.interpolationSuffix;
          var replacedToken = i18n.applyReplacement(newToken, opts);
-         opts['self'] = {
-            'stonehearth:unit_info': {
+
+         var tokenData = interpretPropertyString(tokenWithoutSymbols, opts);
+         opts['self'] = {};
+         opts.self['stonehearth:unit_info'] = tokenData && tokenData['stonehearth:unit_info'];
+         if (!opts.self['stonehearth:unit_info']) {
+            opts.self['stonehearth:unit_info'] = {
                'custom_name': customName,
-               'current_title': currentTitle
-            }
-         };
+               'custom_data': interpretPropertyString(tokenWithoutSymbols + '_custom_data', opts) || {}
+            };
+         }
          opts.defaultValue = i18n.t("stonehearth:ui.game.entities.unknown_name");
          var translatedToken = i18n.t(replacedToken, opts);
          if (options.escapeHTML) {

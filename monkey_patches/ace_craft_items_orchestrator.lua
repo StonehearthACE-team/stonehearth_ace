@@ -142,4 +142,56 @@ function AceCraftItemsOrchestrator:run(town, args)
    end
 end
 
+-- overriding this to add title data to the bulletin (also implemented gameplay setting since it didn't exist)
+function AceCraftItemsOrchestrator:_show_unreachable_ingredients_notification(event_args)
+   local player_id = radiant.entities.get_player_id(self._crafter)
+   local enable_notification = stonehearth.client_state:get_client_gameplay_setting(player_id, 'stonehearth_ace', 'show_unreachable_ingredients_notification', false)
+   if enable_notification then
+      local missing_ingredient = event_args.ingredient.ingredient -- ingredient field of the ingredient argument
+
+      -- Use the material or uri of the ingredient to keep track of which notifications have been posted
+      local ingredient_name = ''
+      local material_in_inventory = nil
+      local uri_in_inventory = nil
+      if missing_ingredient.material ~= nil then
+         ingredient_name = missing_ingredient.material
+         if self._usable_item_tracker then
+            material_in_inventory = self._usable_item_tracker:contains_item_with_material(ingredient_name)
+         end
+      elseif missing_ingredient.uri ~= nil then
+         ingredient_name = missing_ingredient.uri
+         uri_in_inventory = self._inventory:get_items_of_type(ingredient_name)
+      end
+
+      --Only post the bulletin if:
+      -- * It's the first time that we can't reach the ingredient or
+      -- * If a day has passed and we are trying to craft any recipe that uses it and we still can't reach it
+      if self._bulletins[ingredient_name] == nil then
+         -- Don't notify if we just ran out of that ingredient
+         if material_in_inventory or uri_in_inventory then
+            self._bulletins[ingredient_name] = true
+            stonehearth.bulletin_board:post_bulletin(player_id)
+                                       :set_callback_instance(stonehearth.town:get_town(player_id))
+                                       :set_type('info')
+                                       :set_data ({
+                                          title = 'i18n(stonehearth:ui.game.entities.unreachable_ingredient_notification)',
+                                          message = constants.crafting.UNREACHABLE_INGREDIENT_NOTIFICATION_MESSAGE,
+                                          zoom_to_entity = self._crafter,
+                                       })
+                                       :set_active_duration(constants.crafting.UNREACHABLE_INGREDIENT_NOTIFICATION_DURATION)
+                                       :add_i18n_data('citizen_custom_name', radiant.entities.get_custom_name(self._crafter))
+                                       :add_i18n_data('citizen_display_name', radiant.entities.get_display_name(self._crafter))
+                                       :add_i18n_data('citizen_custom_data', radiant.entities.get_custom_data(self._entity))
+                                       :add_i18n_data('crafting_order', event_args.recipe_name)
+
+            -- Set up a timer to clear the bulletin from our list after a day
+            stonehearth.calendar:set_timer("clear craft bulletins daily", constants.crafting.UNREACHABLE_INGREDIENT_NOTIFICATION_TIMEOUT,
+               function()
+                  self._bulletins[ingredient_name] = nil
+               end)
+         end
+      end
+   end
+end
+
 return AceCraftItemsOrchestrator
