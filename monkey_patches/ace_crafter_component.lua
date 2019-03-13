@@ -168,4 +168,12 @@ function AceCrafterComponent:_update_best_crafts(item)
    end
 end
 
+AceCrafterComponent._ace_old_get_work_rate = CrafterComponent.get_work_rate
+function AceCrafterComponent:get_work_rate()
+   local rate = self:_ace_old_get_work_rate()
+   local multiplier = self._entity:get_component('stonehearth:attributes'):get_attribute('multiplicative_work_rate_modifier', 1)
+
+   return rate * multiplier
+end
+
 return AceCrafterComponent

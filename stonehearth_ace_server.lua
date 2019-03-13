@@ -96,7 +96,8 @@ local monkey_patches = {
    ace_trait = 'stonehearth.components.traits.trait',
    ace_animal_companion_script = 'stonehearth.data.traits.animal_companion.animal_companion_script',
    ace_bulletin = 'stonehearth.services.server.bulletin_board.bulletin',
-   ace_memorialize_death_action = 'stonehearth.ai.actions.memorialize_death_action'
+   ace_memorialize_death_action = 'stonehearth.ai.actions.memorialize_death_action',
+   ace_get_food_from_container_adjacent = 'stonehearth.ai.actions.get_food_from_container_adjacent'
 }
 
 local function monkey_patching()
