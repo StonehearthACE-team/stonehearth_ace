@@ -312,6 +312,7 @@ function WaterSignalService:_on_tick()
    end
 
    for waterfall_id, waterfall in pairs(self._changed_waterfalls) do
+      --log:debug('waterfall %s changed, processing...', waterfall_id)
       local old_chunks = self._waterfall_chunks[waterfall_id]
       
       local location = waterfall:get_location()
