@@ -28,8 +28,8 @@
          "align_to_grid": [
             "x"
          ],
-         "model_origin": { "x": 0, "y": 0, "z": -0.5 },
-         "region_origin": { "x": 0, "y": 0, "z": -0.5 }
+         "model_origin": { "x": 0, "y": 0, "z": 0.5 },
+         "region_origin": { "x": 0, "y": 0, "z": 0.5 }
       },
       "destination": {
          "region": [
@@ -50,13 +50,26 @@
       "stonehearth:mount": {
          "mounted_posture": "stonehearth:sitting_on_chair",
          "mount_offset": { "x": -0.5, "y": 1.5, "z": -0.1 }
-      }
+      },
+      "stonehearth_ace:transform": {}
    },
    "entity_data": {
       "stonehearth:chair": {},
       "stonehearth:catalog": {
          "display_name": "i18n(stonehearth_ace:entities.trees.trunk.highland_pine.display_name)",
          "description": "i18n(stonehearth_ace:entities.trees.trunk.highland_pine.description)"
+      },
+      "stonehearth_ace:transform_data": {
+         "transform_uri": "stonehearth_ace:furniture:banquet_table:highland_pine",
+         "command": "stonehearth_ace:commands:transform:carve_furniture",
+         "request_action": "stonehearth_ace:transform",
+         "request_action_overlay_effect": "stonehearth_ace:effects:transform_carpenter_overlay_effect",
+         "transforming_worker_effect": "saw",
+         "transforming_worker_effect_times": 20,
+         "transform_effect": "stonehearth:effects:poof_effect",
+         "worker_required_job": {
+            "stonehearth:jobs:carpenter": true
+         }
       }
    }
 }

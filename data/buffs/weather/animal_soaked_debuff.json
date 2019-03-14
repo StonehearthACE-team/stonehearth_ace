@@ -1,0 +1,17 @@
+{
+   "type": "buff",
+   "axis": "debuff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.weather.animal_soaked_debuff.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.weather.animal_soaked_debuff.description)",
+   "duration": "30m",
+   "repeat_add_action": "renew_duration",
+   "icon": "file(soaked.png)",
+   "modifiers": {
+      "speed": {
+         "multiply": 0.9
+      },
+      "reproduction_rate_multiplier": {
+         "multiply": 8
+      }
+   }
+}

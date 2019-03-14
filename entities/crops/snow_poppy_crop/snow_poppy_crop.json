@@ -51,10 +51,17 @@
       "stonehearth:growing": {
          "growth_period": "18h",
          "preferred_seasons": {
-            "stonehearth:biome:temperate": ["summer"],
-            "stonehearth:biome:desert": ["summer"],
-            "stonehearth:biome:arctic": ["summer"]
+            "stonehearth:biome:temperate": [
+               "summer"
+            ],
+            "stonehearth:biome:desert": [
+               "summer"
+            ],
+            "stonehearth:biome:arctic": [
+               "summer"
+            ]
          },
+         "preferred_climate": "polar_tundra",
          "growth_stages": [
             {
                "model_name": "snow_poppy_1",
@@ -92,7 +99,10 @@
          "display_name": "i18n(stonehearth_ace:entities.crops.snow_poppy_crop.display_name)",
          "description": "i18n(stonehearth_ace:entities.crops.snow_poppy_crop.description)",
          "icon": "/stonehearth/entities/plants/snow_poppy_plant/snow_poppy_plant.png",
-         "material_tags": ["crop", "snow_poppy"]
+         "material_tags": [
+            "crop",
+            "snow_poppy"
+         ]
       },
       "stonehearth:appeal": {
          "appeal": 1

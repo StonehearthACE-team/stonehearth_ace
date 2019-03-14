@@ -21,25 +21,29 @@
       "loot_bag": "stonehearth_ace:loot_bag:algae_random",
       "facing": "random",
       "force_iconic": false,
-      "placement_chance": 0.3
+      "placement_chance": 0.3,
+      "fill_voxel_with_water": false
    },
    "#43FB00": {
       "loot_bag": "stonehearth_ace:loot_bag:algae_green_random",
       "facing": "random",
       "force_iconic": false,
-      "placement_chance": 0.3
+      "placement_chance": 0.3,
+      "fill_voxel_with_water": false
    },
    "#FBB000": {
       "loot_bag": "stonehearth_ace:loot_bag:algae_brown_random",
       "facing": "random",
       "force_iconic": false,
-      "placement_chance": 0.3
+      "placement_chance": 0.3,
+      "fill_voxel_with_water": false
    },
    "#FB1200": {
       "loot_bag": "stonehearth_ace:loot_bag:algae_red_random",
       "facing": "random",
       "force_iconic": false,
-      "placement_chance": 0.3
+      "placement_chance": 0.3,
+      "fill_voxel_with_water": false
    },
    "#471560": {
       "loot_bag": "stonehearth_ace:monsters:forest:bear",
@@ -117,31 +121,36 @@
       "loot_bag": "stonehearth_ace:loot_bag:fish_random",
       "facing": "random",
       "force_iconic": false,
-      "placement_chance": 0.2
+      "placement_chance": 0.1,
+      "fill_voxel_with_water": false
    },
    "#0056F1": {
       "loot_bag": "stonehearth_ace:loot_bag:fish_carp",
       "facing": "random",
       "force_iconic": false,
-      "placement_chance": 0.6
+      "placement_chance": 0.1,
+      "fill_voxel_with_water": false
    },
    "#0056F2": {
       "loot_bag": "stonehearth_ace:loot_bag:fish_catfish",
       "facing": "random",
       "force_iconic": false,
-      "placement_chance": 0.6
+      "placement_chance": 0.1,
+      "fill_voxel_with_water": false
    },
    "#0056F3": {
       "loot_bag": "stonehearth_ace:loot_bag:fish_salmon",
       "facing": "random",
       "force_iconic": false,
-      "placement_chance": 0.6
+      "placement_chance": 0.1,
+      "fill_voxel_with_water": false
    },
    "#0056F4": {
       "loot_bag": "stonehearth_ace:loot_bag:fish_trout",
       "facing": "random",
       "force_iconic": false,
-      "placement_chance": 0.6
+      "placement_chance": 0.1,
+      "fill_voxel_with_water": false
    },
    "#F58000": {
       "loot_bag": "stonehearth_ace:loot_bag:peat_mining",
@@ -150,5 +159,19 @@
    "#F3FF60": {
       "loot_bag": "stonehearth_ace:loot_bag:ball_clay_mining",
       "drop_chance": 1
+   },
+   "#00DEEE": {
+      "loot_bag": "stonehearth_ace:terrain:water_spring",
+      "facing": "random",
+      "force_iconic": false,
+      "placement_chance": 1,
+      "fill_voxel_with_water": false
+   },
+   "#01DEEE": {
+      "loot_bag": "stonehearth_ace:terrain:water_hole",
+      "facing": "random",
+      "force_iconic": false,
+      "placement_chance": 1,
+      "fill_voxel_with_water": false
    }
 }

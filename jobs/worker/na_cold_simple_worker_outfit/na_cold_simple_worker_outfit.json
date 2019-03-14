@@ -1,0 +1,44 @@
+{
+   "mixins": "stonehearth_ace:worker:outfit:cold_simple",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "mixintypes": {
+            "default": "override",
+            "female": "override"
+         },
+         "default": {
+            "layer": "clothing",
+            "transparent": false,
+            "models": [
+               "file(na_cold_simple_worker_outfit.qb)"
+            ]
+         },
+         "female": {
+            "layer": "clothing",
+            "transparent": false,
+            "models": [
+               "file(na_cold_simple_worker_outfit_female.qb)"
+            ]
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(na_cold_simple_worker_outfit_iconic.json)"
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "icon": "file(na_cold_simple_worker_outfit.png)",
+         "mixintypes": {
+            "material_tags": "override"
+         },
+         "material_tags": [
+            "leather",
+            "worker_outfit",
+            "civillian_equipment",
+            "na_made",
+            "stockpile_equipment"
+         ]
+      }
+   }
+}

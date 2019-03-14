@@ -1,0 +1,34 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(bench_log_juniper.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "align_to_grid": [
+            "x"
+         ],
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0, "y": 0, "z": -0.5 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.furniture.bench_log_juniper.display_name)",
+         "description": "i18n(stonehearth_ace:entities.furniture.bench_log_juniper.description)",
+         "icon": "file(bench_log_juniper.png)",
+         "category": "furniture",
+         "material_tags": [
+            "wood",
+            "furniture",
+            "crafted",
+            "chair",
+            "stockpile_furniture"
+         ]
+      }
+   }
+}

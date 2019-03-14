@@ -50,6 +50,7 @@
       },
       "stonehearth:growing": {
          "growth_period": "12h",
+         "preferred_climate": "continental_subarctic",
          "preferred_seasons": {
             "stonehearth_ace:biome:highlands": [
                "summer"
@@ -101,7 +102,10 @@
          "display_name": "i18n(stonehearth_ace:entities.crops.marblesprout_crop.display_name)",
          "description": "i18n(stonehearth_ace:entities.crops.marblesprout_crop.description)",
          "icon": "file(../../plants/marblesprout_plant/marblesprout_plant.png)",
-         "material_tags":["crop", "marblesprout"]
+         "material_tags": [
+            "crop",
+            "marblesprout"
+         ]
       },
       "stonehearth:appeal": {
          "appeal": 4

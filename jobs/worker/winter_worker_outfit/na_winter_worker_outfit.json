@@ -1,0 +1,26 @@
+{
+   "components": {
+      "stonehearth:equipment_piece": {
+         "additional_equipment": {
+            "stonehearth_ace:armor:helmet_placeholder": true
+         },
+	     "injected_buffs": [
+            "stonehearth_ace:buffs:weather:cold_resist"
+         ],
+         "conditional_values": {
+            "season": {
+               "winter": 2,
+			   "autumn": 1,
+			   "spring": -2,
+               "summer": -3
+            }
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+	     "description": "i18n(stonehearth_ace:jobs.worker.na_winter_worker_outfit.description)",
+         "material_tags":["civillian_equipment"]
+      }
+   }
+}

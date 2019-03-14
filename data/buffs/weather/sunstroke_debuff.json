@@ -1,0 +1,32 @@
+{
+   "type": "buff",
+   "axis": "debuff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.weather.sunstroke_debuff.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.weather.sunstroke_debuff.description)",
+   "duration": "1h",
+   "repeat_add_action": "renew_duration",
+   "icon": "file(hot_debuff.png)",
+   "modifiers": {
+      "willpower": {
+         "multiply": 0.2
+      },
+      "speed": {
+         "multiply": 0.6
+      },
+      "diligence": {
+         "multiply": 0
+      }
+   },
+   "script": "stonehearth:buff_scripts:periodic_health_modification",
+   "script_info": {
+      "health_change": -0.1,
+      "pulse": "15m",
+      "pulse_immediately": false,
+      "pulse_on_destroy": false,
+      "is_percentage": true,
+      "cannot_kill": true
+   },
+   "disallowed_buffs": [
+      "stonehearth_ace:buffs:weather:warmed"
+   ]
+}

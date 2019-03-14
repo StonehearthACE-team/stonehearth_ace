@@ -32,7 +32,21 @@
       },
       "stonehearth:animal_feed": {
          "calorie_gain": 100,
-         "effect_loops": 5
+         "effect_loops": 5,
+         "quality_chances": [
+            [
+               4,
+               0.01
+            ],
+            [
+               3,
+               0.2
+            ],
+            [
+               2,
+               0.5
+            ]
+         ]
       }
    }
 }

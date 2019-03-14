@@ -1,0 +1,12 @@
+{
+   "type": "command",
+   "name": "sculpt_statue",
+   "display_name": "i18n(stonehearth_ace:data.commands.transform.sculpt_statue.display_name)",
+   "description": "i18n(stonehearth_ace:data.commands.transform.sculpt_statue.description)",
+   "default_enabled": true,
+   "ordinal": -99,
+   "icon": "file(sculpt_statue.png)",
+   "action": "call",
+   "function": "stonehearth_ace:transform_command",
+   "args": []
+}

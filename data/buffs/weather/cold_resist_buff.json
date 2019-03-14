@@ -1,0 +1,13 @@
+{
+   "type": "buff",
+   "axis": "buff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.weather.cold_resist_buff.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.weather.cold_resist_buff.description)",
+   "icon": "file(cold_resist_buff_med.png)",
+   "repeat_add_action": "renew_duration",
+   "disallowed_buffs": [
+      "stonehearth_ace:buffs:weather:chilly",
+      "stonehearth_ace:buffs:weather:chilly_resist",
+      "stonehearth_ace:buffs:weather:cold"
+   ]
+}

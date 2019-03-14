@@ -1,0 +1,97 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "layer": "clothing",
+            "transparent": false,
+            "models": [
+               "file(cold_simple_worker_outfit.qb)"
+            ]
+         },
+         "female": {
+            "layer": "clothing",
+            "transparent": false,
+            "models": [
+               "file(cold_simple_worker_outfit_female.qb)"
+            ]
+         },
+         "rabbit_male": {
+            "layer": "clothing",
+            "models": [
+               "file(cold_simple_worker_outfit_rabbit.qb)"
+            ]
+         },
+         "rabbit_female": {
+            "layer": "clothing",
+            "models": [
+               "file(cold_simple_worker_outfit_rabbit.qb)"
+            ]
+         },
+         "orc_male": {
+            "layer": "clothing",
+            "models": [
+               "file(cold_simple_worker_outfit_orc_male.qb)"
+            ]
+         },
+         "orc_female": {
+            "layer": "clothing",
+            "models": [
+               "file(cold_simple_worker_outfit_orc_female.qb)"
+            ]
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(cold_simple_worker_outfit_iconic.json)"
+      },
+      "stonehearth:equipment_piece": {
+         "slot": "torso",
+         "render_type": "merge_with_model",
+         "roles": [
+            "worker_job"
+         ],
+         "ilevel": 2,
+         "additional_equipment": {
+            "stonehearth_ace:armor:helmet_placeholder": true
+         },
+         "injected_buffs": [
+            "stonehearth_ace:buffs:weather:cold_resist"
+         ],
+         "equip_effect": "stonehearth:effects:weapon_level_up",
+         "conditional_values": {
+            "season": {
+               "winter": 1,
+               "autumn": 0,
+               "spring": -3,
+               "summer": -3
+            }
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 24,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 2,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:jobs.worker.cold_simple_worker_outfit.display_name)",
+         "description": "i18n(stonehearth_ace:jobs.worker.cold_simple_worker_outfit.description)",
+         "icon": "file(cold_simple_worker_outfit.png)",
+         "category": "armor",
+         "material_tags": [
+            "leather",
+            "worker_outfit",
+            "civillian_equipment",
+            "ascendancy_made",
+            "stockpile_equipment"
+         ]
+      }
+   }
+}

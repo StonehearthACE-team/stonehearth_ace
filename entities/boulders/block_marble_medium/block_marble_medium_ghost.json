@@ -1,0 +1,38 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(block_marble_medium.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0, "y": 0, "z": 0 },
+         "align_to_grid": [
+            "x",
+            "z"
+         ]
+      },
+      "render_info": {
+         "material": "materials/shiny.material.json"
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.boulders.block_marble.medium.display_name)",
+         "description": "i18n(stonehearth_ace:entities.boulders.block_marble.medium.description)",
+         "icon": "file(block_marble_medium.png)",
+         "category": "boulder",
+         "material_tags": [
+            "stone",
+            "boulder",
+            "marble",
+            "stone_block",
+            "stockpile_stone"
+         ]
+      }
+   }
+}

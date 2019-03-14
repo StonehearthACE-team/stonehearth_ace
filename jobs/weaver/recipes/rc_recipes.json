@@ -29,6 +29,23 @@
                "recipe": "file(rc_cloth_padded_helmet_recipe.json)"
             }
          }
-      }
+      },
+	  "clothing_armor": {
+	     "recipes": {
+			"mixintypes": {
+				"freezing_simple_worker_outfit": "remove",
+				"cold_worker_outfit": "remove"
+			},
+			"chilly_simple_worker_outfit": {
+			   "recipe": "file(rc_chilly_simple_worker_outfit_recipe.json)"
+			},
+			"cold_simple_worker_outfit": {
+			   "recipe": "file(rc_cold_simple_worker_outfit_recipe.json)"
+			},
+			"rc_winter_worker_outfit": {
+			   "recipe": "file(rc_winter_worker_outfit_recipe.json)"
+			}
+         }
+	  }
    }
 }

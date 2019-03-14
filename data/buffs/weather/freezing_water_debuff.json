@@ -1,0 +1,35 @@
+{
+   "type": "buff",
+   "axis": "debuff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.weather.freezing_water_debuff.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.weather.freezing_water_debuff.description)",
+   "icon": "file(water_debuff.png)",
+   "repeat_add_action": "renew_duration",
+   "modifiers": {
+      "willpower": {
+         "multiply": 0.5
+      },
+      "speed": {
+         "multiply": 0.8
+      },
+      "diligence": {
+         "multiply": 0
+      }
+   },
+   "script": "stonehearth:buff_scripts:periodic_health_modification",
+   "script_info": {
+      "health_change": -0.05,
+      "min_health": 0.25,
+      "cannot_kill": true,
+      "pulse": "15m",
+      "pulse_immediately": true,
+      "pulse_on_destroy": false,
+      "is_percentage": true
+   },
+   "disallowed_buffs": [
+      "stonehearth_ace:buffs:weather:chilly",
+      "stonehearth_ace:buffs:weather:cold",
+      "stonehearth_ace:buffs:weather:freezing",
+      "stonehearth_ace:buffs:weather:warmed"
+   ]
+}

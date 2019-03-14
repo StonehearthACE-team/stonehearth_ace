@@ -1,0 +1,27 @@
+{
+   "type": "buff",
+   "axis": "debuff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.weather.animal_freezing_debuff.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.weather.animal_freezing_debuff.description)",
+   "duration": "1h",
+   "repeat_add_action": "renew_duration",
+   "icon": "file(cold_debuff.png)",
+   "modifiers": {
+      "speed": {
+         "multiply": 0.6
+      },
+      "reproduction_rate_multiplier": {
+         "multiply": 12
+      }
+   },
+   "script": "stonehearth:buff_scripts:periodic_health_modification",
+   "script_info": {
+      "health_change": -5,
+      "pulse": "1h",
+      "pulse_immediately": true,
+      "pulse_on_destroy": false
+   },
+   "disallowed_buffs": [
+      "stonehearth_ace:buffs:weather:cold:animal"
+   ]
+}

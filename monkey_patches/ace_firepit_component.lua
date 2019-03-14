@@ -18,13 +18,26 @@ function AceFirepitComponent:activate()
    self._allow_charcoal = (self._json.allow_charcoal ~= false)
    self._transform_residue_time = self._json.transform_residue_time or 'midday'
    self._transform_residue_jitter = '+' .. (self._json.transform_residue_jitter or '2h')
+   self._buff_source = self._json.buff_source or false
+   if self._buff_source then
+	  self._buff = self._json.buff or 'stonehearth_ace:buffs:weather:warmth_source'
+   end
 
    self:_ace_old_activate()
 end
 
-AceFirepitComponent._ace_old_startup = FirepitComponent._startup
+AceFirepitComponent._ace_old__light = FirepitComponent._light
+function AceFirepitComponent:_light()
+   if self._buff_source then
+      local buff = self._buff
+	  radiant.entities.add_buff(self._entity, buff)
+   end
+   self:_ace_old__light()
+end
+
+AceFirepitComponent._ace_old__startup = FirepitComponent._startup
 function AceFirepitComponent:_startup()
-   self:_ace_old_startup()
+   self:_ace_old__startup()
 
    if not self._transform_residue_timer then
       local calendar_constants = stonehearth.calendar:get_constants()
@@ -95,6 +108,10 @@ function AceFirepitComponent:_extinguish()
    self:_ace_old_extinguish()
 
    if was_lit then
+      if self._buff_source then
+         local buff = self._buff
+	     radiant.entities.remove_buff(self._entity, buff)
+      end
       if is_wood then
 		 if self._allow_charcoal then
              self:_create_residue(self._ember_charcoal_uri)

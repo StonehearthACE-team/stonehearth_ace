@@ -314,15 +314,55 @@
          }
       },
       "weather": {
+         "windy": {
+            "description": "Howling winds and roaring gales sweep the lands.<ul><li>Slightly more humidity.</li></ul>"
+         },
+         "thunderstorm": {
+            "description": "Thunder rolled... It rolled a six.<ul><li>Excessive humidity.</li><li>Sunlight is greatly reduced.</li><li>Vision radius is reduced.</li><li>Unsheltered hearthlings and pasture animals get soaked wet.</li><li>Unsheltered hearthlings sometimes get hit by lightning.</li><li>The ground and trees sometimes get hit by lightning.</li></ul>"
+         },
+         "sunny": {
+            "description": "Yet another day of endless sunshine and blue skies.<ul><li>Sunlight is somewhat increased.</li></ul>",
+            "sunny_desert": {
+               "description": "Yet another day of endless sunshine and blue skies.<ul><li>Sunlight is somewhat increased.</li><li>Unsheltered hearthlings are too hot to work as effectively.</li></ul>"
+            }
+         },
          "snow": {
+            "description": "Cold, frost, and sunshine: day of wonder! Why are you, friend, still deep in slumber?<ul><li>Sunlight is somewhat reduced.</li><li>Vision radius is slightly reduced.</li><li>Unsheltered hearthlings are too cold to work as effectively.</li><li>Unsheltered pasture animals are hurt by the cold.</li></ul>",
+            "snow_sunny": {
+               "description": "What a beautiful winter wonderland it is today!<ul><li>Sunlight is slightly reduced.</li><li>Vision radius is only slightly reduced.</li><li>Unsheltered hearthlings are too chilly to work as effectively.</li></ul>"
+            },
             "snow_early": {
                "display_name": "Early Snow",
-               "description": "Snow has come earlier this year...<ul><li>Plant growth speed is slightly reduced.</li><li>Unsheltered hearthlings are too cold to work as effectively.</li></ul>"
+               "description": "Snow has come earlier this year...<ul><li>Sunlight is slightly reduced.</li><li>Unsheltered hearthlings are too chilly to work as effectively.</li></ul>"
             },
             "snow_late": {
                "display_name": "Late Snow",
-               "description": "There's still snow to fall this year...<ul><li>Plant growth speed is somewhat reduced.</li><li>Unsheltered hearthlings are too cold to work as effectively.</li><li>Unsheltered pasture animals are hurt by the cold.</li></ul>"
+               "description": "There's still snow to fall this year...<ul><li>Sunlight is reduced.</li><li>Unsheltered hearthlings are too cold to work as effectively.</li><li>Unsheltered pasture animals are hurt by the cold.</li></ul>"
             }
+         },
+         "sandstorm": {
+            "description": "Cover your eyes. Cover your ears. In fact, just stay inside.<ul><li>Clouds of sand pass across the landscape, destroying crops and hurting everyone.</li><li>Fairly reduced humidity.</li><li>Sunlight is greatly reduced.</li><li>Vision radius is slightly reduced.</li><li>Unsheltered hearthlings are too hot to work as effectively.</li><li>Unsheltered pasture animals are hurt by the heat.</li></ul>",
+            "sandy_day": {
+               "description": "There is sand and dust... everywhere!<ul><li>Slightly reduced humidity.</li><li>Sunlight is slightly reduced.</li><li>Vision radius is only slightly reduced.</li><li>Unsheltered hearthlings are too hot to work as effectively.</li><li>Unsheltered pasture animals are hurt by the heat.</li></ul>"
+            }
+         },
+         "rain": {
+            "description": "Water! Water from the skies!<ul><li>A lot more humidity.</li><li>Sunlight is reduced.</li><li>Vision radius is reduced.</li><li>Unsheltered hearthlings and pasture animals get soaked wet.</li></ul>",
+            "rain_sunny": {
+               "description": "Its raining, but the sun is peaking out!<ul><li>A lot more humidity.</li><li>Sunlight is slightly reduced.</li><li>Vision radius is only slightly reduced.</li><li>Unsheltered hearthlings and pasture animals get soaked wet.</li></ul>"
+            }
+         },
+         "lucky": {
+            "description": "Today, everything is just a tiny bit better.<ul><li>Some more humidity.</li><li>Sunlight is increased.</li><li>Hearthlings find all their ailments healed, as if by magic.</li><li>Hearthlings are slightly luckier in everything they do.</li><li>A mysterious rainbow sometimes appears.</li></ul>"
+         },
+         "foggy": {
+            "description": "A cover of fog crawls across the landscape, hiding untold mysteries.<ul><li>Undead monsters come out of hiding under the cover of the fog.</li><li>Slightly more humidity.</li><li>Sunlight is somewhat reduced.</li><li>Vision radius is greatly reduced.</li></ul>"
+         },
+         "cloudy": {
+            "description": "Overcast skies, perfect for lazing around on the porch.<ul><li>Slightly more humidity.</li><li>Sunlight is reduced.</li></ul>"
+         },
+         "blizzard": {
+            "description": "Wind, and snow, and hail, oh my!<ul><li>Plant growth is interrupted.</li><li>Sunlight is greatly reduced.</li><li>Vision radius is greatly reduced.</li><li>Unsheltered hearthlings are hurt by the cold.</li><li>Unsheltered pasture animals are hurt by the cold.</li></ul>"
          }
       },
       "happiness": {
@@ -532,6 +572,18 @@
             "cheese_vat_drain": {
                "display_name": "Drain Cheese Vat",
                "description": "Order the Cook to remove the leftover whey and treat the curds, forming fresh cheese!"
+            },
+            "carve_furniture": {
+               "display_name": "Carve Furniture",
+               "description": "Order the Carpenter to transform this big piece of old wood into something new and fashionable!"
+            },
+            "sculpt_block": {
+               "display_name": "Chisel Block",
+               "description": "Order a Worker to chisel this boulder into a nice and useful block to be carried home and worked by a Mason!"
+            },
+            "sculpt_statue": {
+               "display_name": "Make Art!",
+               "description": "Order the Mason to put their best skills to use and create something beautiful out of this block of stone!"
             }
          },
          "slaughter": {
@@ -724,6 +776,84 @@
          "shield_light": {
             "display_name": "Light Shield",
             "description": "Courage and speed are slightly increased."
+         },
+         "weather": {
+            "chilly_debuff": {
+               "display_name": "Chilly Weather",
+               "description": "It's a bit cold out here... Might not work as diligently!"
+            },
+            "cold_debuff": {
+               "display_name": "Cold Weather",
+               "description": "It's really cold today! I should get a roof above my head."
+            },
+            "animal_cold_debuff": {
+               "display_name": "Cold Weather",
+               "description": "Baby, it's cold outside.<ul><li>This animal will take damage over time if unsheltered.</li></ul>"
+            },
+            "freezing_debuff": {
+               "display_name": "Freezing Weather",
+               "description": "I'm freezing out here! I need warmth and I need it fast!<ul><li>This hearthling will take damage over time down to 50% of their health if outside.</li></ul>"
+            },
+            "animal_freezing_debuff": {
+               "display_name": "Freezing Weather",
+               "description": "That animal should definitely be sheltered...<ul><li>This animal will take damage over time if unsheltered.</li></ul>"
+            },
+            "hot_debuff": {
+               "display_name": "Hot Weather",
+               "description": "Too sweaty to work. Could use some refreshment!"
+            },
+            "animal_hot_debuff": {
+               "display_name": "Hot Weather",
+               "description": "The heat is punishing, even for the animals!<ul><li>This animal will take damage over time if unsheltered.</li></ul>"
+            },
+            "soaked_debuff": {
+               "display_name": "Soaked",
+               "description": "I'm really wet, my clothes are dripping!"
+            },
+            "animal_soaked_debuff": {
+               "display_name": "Soaked",
+               "description": "Not even animals enjoy being this wet."
+            },
+            "sunstroke_debuff": {
+               "display_name": "Sunstroke",
+               "description": "So warm... Getting dizzy... Need refreshment, now!<ul><li>This hearthling will take damage over time.</li></ul>"
+            },
+            "freezing_water_debuff": {
+               "display_name": "Freezing Water",
+               "description": "Oof! This water is so cold, I shouldn't be here!<ul><li>This hearthling will take damage over time down to 25% of their health while in the water.</li></ul>"
+            },
+            "refreshing_water_buff": {
+               "display_name": "Refreshing Water",
+               "description": "The water is nice and very refreshing!"
+            },
+            "chilly_resist_buff": {
+               "display_name": "Lightly Bundled",
+               "description": "This hearthling is protected against chilly weather."
+            },
+            "cold_resist_buff": {
+               "display_name": "Bundled",
+               "description": "This hearthling is protected against cold weather."
+            },
+            "freezing_resist_buff": {
+               "display_name": "Very Bundled",
+               "description": "This hearthling is protected against freezing weather."
+            },
+            "hot_resist_buff": {
+               "display_name": "Cool Outfit",
+               "description": "Protection from the sun and a good airflow keeps this hearthling protected from hot weather."
+            },
+            "refreshed_buff": {
+               "display_name": "Refreshed",
+               "description": "This was refreshing! Should stay fresh for a while."
+            },
+            "warmed_buff": {
+               "display_name": "Warmed",
+               "description": "All warm and cosy! Should stay good for a while."
+            },
+            "warmth_source_buff": {
+               "display_name": "Source of Warmth",
+               "description": "Home is where the hearth is..."
+            }
          }
       },
       "loadouts": {
@@ -1785,6 +1915,36 @@
          "worker_holiday_hat": {
             "display_name": "Holiday Cheer Cap",
             "description": "A traditional hat for enjoying the end of the year's holidays!"
+         },
+         "winter_worker_outfit": {
+            "description": "A heavy wool coat, for chilly winter nights. Improves speed."
+         },
+         "na_winter_worker_outfit": {
+            "description": "A heavy wool coat, for cold winter nights. Improves speed."
+         },
+         "chilly_simple_worker_outfit": {
+            "display_name": "Simple Winter Worker Outfit",
+            "description": "Wool cap and gloves. Protects from chilly weather but with no added benefits."
+         },
+         "cold_simple_worker_outfit": {
+            "display_name": "Simple Worker Leather Jacket",
+            "description": "A tepid leather outfit. Protects from cold weather but with no added benefits."
+         },
+         "freezing_simple_worker_outfit": {
+            "display_name": "Simple Worker Bear Coat",
+            "description": "A warm and fuzzy cloak. Protects from freezing weather but with no added benefits."
+         },
+         "cold_worker_outfit": {
+            "display_name": "Worker Leather Jacket",
+            "description": "A high quality leather outfit. Protects from cold weather and improves speed!"
+         },
+         "na_freezing_worker_outfit": {
+            "display_name": "Worker Bear Coat",
+            "description": "A masterfully crafted arctic outfit. Protects from freezing weather and improves speed!"
+         },
+         "rc_winter_worker_outfit": {
+            "display_name": "Winter Worker Outfit",
+            "description": "A reinforced wool outfit. Protects from chilly weather and improves speed!"
          }
       },
       "cook": {
@@ -2197,6 +2357,36 @@
                "recipe_name": "Holiday Cheer Cap",
                "description": "The ACE Team would like to wish you all very happy and wonderful holidays!",
                "flavor": "This recipe shall be removed after New Year's Eve... So craft yours while you can!"
+            },
+            "chilly_simple_worker_outfit_recipe": {
+               "recipe_name": "Simple Winter Worker Outfit",
+               "description": "Craft a Wool cap and gloves. Protects from chilly weather but with no added benefits.",
+               "flavor": "A family favorite for autumn days"
+            },
+            "cold_simple_worker_outfit_recipe": {
+               "recipe_name": "Simple Worker Leather Jacket",
+               "description": "Create a tepid leather outfit. Protects from cold weather but with no added benefits.",
+               "flavor": ""
+            },
+            "freezing_simple_worker_outfit_recipe": {
+               "recipe_name": "Simple Worker Bear Coat",
+               "description": "Sew a warm and fuzzy cloak. Protects from freezing weather but with no added benefits.",
+               "flavor": "Bears can be found in wild caves or caught by very lucky trappers"
+            },
+            "cold_worker_outfit_recipe": {
+               "recipe_name": "Worker Leather Jacket",
+               "description": "A sturdy and tepid leather outfit of good quality. Protects from cold weather and improves speed.",
+               "flavor": "When winter arrives, look the part!"
+            },
+            "rc_winter_worker_outfit_recipe": {
+               "recipe_name": "Winter Worker Outfit",
+               "description": "A nice and thick wool outfit for protecting oneself from chilly weather. Also improves speed.",
+               "flavor": "It can be surprisingly cold in the desert"
+            },
+            "na_freezing_worker_outfit_recipe": {
+               "recipe_name": "Worker Bear Coat",
+               "description": "The finest northern craftsmanship, a resistant and very warm outfit. Protects from freezing weather and improves speed.",
+               "flavor": "For the long winter"
             },
             "backpack_cloth_recipe": {
                "recipe_name": "Cloth Worker's Backpack",
@@ -3608,6 +3798,26 @@
          "pasture_bed": {
             "display_name": "Pasture Bedding",
             "description": "Large pasture animals will look for these during the night or bad weather."
+         },
+         "banquet_table_highland_pine": {
+            "display_name": "Highland Pine Banquet Table",
+            "description": "A beautiful and long table carved from the huge trunk of a highland pine."
+         },
+         "banquet_table_pine": {
+            "display_name": "Pine Banquet Table",
+            "description": "A handcrafted long table sawed straight onto a pine log."
+         },
+         "banquet_table_oak": {
+            "display_name": "Oak Banquet Table",
+            "description": "A fancy table carved from an oak trunk."
+         },
+         "bench_log_birch": {
+            "display_name": "Birch Carved Bench",
+            "description": "A pretty garden bench carved from a fallen birch tree."
+         },
+         "bench_log_juniper": {
+            "display_name": "Juniper Carved Bench",
+            "description": "In nature nothing is wasted and an old trunk can become a nice bench!"
          }
       },
       "recipes": {
@@ -3818,6 +4028,26 @@
                   "display_name": "Statue of Sir Onep & Gary",
                   "description": "The eternal Knight of the Potted Plant alongside his loyal companion Gary."
                }
+            },
+            "statue_marble_poyo": {
+               "display_name": "Marble Poyo Statue",
+               "description": "A very intricate and smooth depiction of a gloriously determined poyo."
+            },
+            "statue_marble_rabbit": {
+               "display_name": "Marble Rabbit Statue",
+               "description": "A friendly looking denizen of the woods, immortalized in marble."
+            },
+            "statue_marble_dog": {
+               "display_name": "Marble Dog Statue",
+               "description": "A hearthling's best friend in shiny worked stone."
+            },
+            "statue_marble_cat": {
+               "display_name": "Stone Kitten Statue",
+               "description": "A sleek and beautiful cat finely portrayed in cold, smooth marble."
+            },
+            "statue_marble_shepherd_girl": {
+               "display_name": "Marble Shepherd Girl Statue",
+               "description": "A beautifully sculpted life-size statue of a proud shepherd watching over her herd."
             }
          },
          "wall_axe": {
@@ -5833,6 +6063,32 @@
          "large_forest_boulder": {
             "display_name": "Large Boulders",
             "description": "Harvestable for stone"
+         },
+         "block_marble": {
+            "small": {
+               "display_name": "Small Marble Block",
+               "description": "A neatly chiseled marble block. Harvest it for stone or let the Mason sculpt it.",
+               "work": {
+                  "display_name": "Small Marble Block",
+                  "description": "This block is being worked on by a Mason and can't be moved until it's finished."
+               }
+            },
+            "medium": {
+               "description": "A neatly chiseled marble block. Harvest it for stone or let the Mason sculpt it.",
+               "display_name": "Medium Marble Block",
+               "work": {
+                  "display_name": "Medium Marble Block",
+                  "description": "This block is being worked on by a Mason and can't be moved until it's finished."
+               }
+            },
+            "large": {
+               "description": "A neatly chiseled marble block. Harvest it for stone or let the Mason sculpt it.",
+               "display_name": "Huge Marble Block",
+               "work": {
+                  "display_name": "Huge Marble Block",
+                  "description": "This block is being worked on by a Mason and can't be moved until it's finished."
+               }
+            }
          }
       },
       "vines": {
@@ -6238,7 +6494,8 @@
                "training_equipment": "Training Equipment",
                "gizmos": "Gizmos",
                "fungi": "Fungi",
-               "drink": "Drinks"
+               "drink": "Drinks",
+               "boulder": "Stonework"
             }
          },
          "custom_tooltips": {
@@ -6497,10 +6754,11 @@
                "accessory": "Accessory",
                "backpack": "Backpack",
                "quiver_arrows": "Arrow Quiver",
-               "quiver_bolts": "Bolt Quiver"
+               "quiver_bolts": "Bolt Quiver",
+               "cleric_tome": "Sacred Tome"
             },
-            "injected_buff": "Grants buff: ",
-            "inflictable_debuff": "Inflicts debuff: "
+            "injected_buff": "Grants Status: ",
+            "inflictable_debuff": "Inflicts Status: "
          },
          "save_view": {
             "auto_save_name": "Auto save ([str(i18n_data.date_time)])"

@@ -1,0 +1,71 @@
+{
+   "mixins": "stonehearth_ace:worker:outfit:chilly_simple",
+   "type": "entity",
+   "components": {
+      "mixintypes": {
+         "model_variants": "override"
+      },
+      "model_variants": {
+         "default": {
+            "layer": "clothing",
+            "transparent": false,
+            "models": [
+               "file(rc_chilly_simple_worker_outfit.qb)"
+            ]
+         },
+         "female": {
+            "layer": "clothing",
+            "transparent": false,
+            "models": [
+               "file(rc_chilly_simple_worker_outfit_female.qb)"
+            ]
+         },
+         "rabbit_male": {
+            "layer": "clothing",
+            "transparent": true,
+            "models": [
+               "file(rc_chilly_simple_worker_outfit_rabbit_male.qb)"
+            ]
+         },
+         "rabbit_female": {
+            "layer": "clothing",
+            "transparent": true,
+            "models": [
+               "file(rc_chilly_simple_worker_outfit_rabbit_female.qb)"
+            ]
+         },
+         "orc_male": {
+            "layer": "clothing",
+            "transparent": true,
+            "models": [
+               "file(rc_chilly_simple_worker_outfit_orc_male.qb)"
+            ]
+         },
+         "orc_female": {
+            "layer": "clothing",
+            "transparent": true,
+            "models": [
+               "file(rc_chilly_simple_worker_outfit_orc_female.qb)"
+            ]
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(rc_chilly_simple_worker_outfit_iconic.json)"
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "mixintypes": {
+            "material_tags": "override"
+         },
+         "icon": "file(rc_chilly_simple_worker_outfit.png)",
+         "material_tags": [
+            "cloth",
+            "worker_outfit",
+            "civillian_equipment",
+            "rc_made",
+            "stockpile_equipment"
+         ]
+      }
+   }
+}

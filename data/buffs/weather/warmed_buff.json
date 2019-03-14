@@ -1,0 +1,15 @@
+{
+   "type": "buff",
+   "axis": "buff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.weather.warmed_buff.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.weather.warmed_buff.description)",
+   "icon": "file(hot_buff.png)",
+   "duration": "1h",
+   "repeat_add_action": "renew_duration",
+   "disallowed_buffs": [
+      "stonehearth_ace:buffs:weather:chilly",
+      "stonehearth_ace:buffs:weather:cold",
+      "stonehearth_ace:buffs:weather:freezing",
+      "stonehearth_ace:buffs:weather:soaked"
+   ]
+}

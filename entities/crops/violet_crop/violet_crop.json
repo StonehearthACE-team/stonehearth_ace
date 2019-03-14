@@ -45,10 +45,17 @@
       "stonehearth:growing": {
          "growth_period": "18h",
          "preferred_seasons": {
-            "stonehearth:biome:temperate": ["spring"],
-            "stonehearth:biome:desert": ["spring"],
-            "stonehearth:biome:arctic": ["spring"]
+            "stonehearth:biome:temperate": [
+               "spring"
+            ],
+            "stonehearth:biome:desert": [
+               "spring"
+            ],
+            "stonehearth:biome:arctic": [
+               "spring"
+            ]
          },
+         "preferred_climate": "continental_subarctic",
          "growth_stages": [
             {
                "model_name": "violet_1",
@@ -86,7 +93,10 @@
          "display_name": "i18n(stonehearth_ace:entities.crops.violet_crop.display_name)",
          "description": "i18n(stonehearth_ace:entities.crops.violet_crop.description)",
          "icon": "/stonehearth/entities/plants/violet_plant/violet_plant.png",
-         "material_tags": ["crop", "violet"]
+         "material_tags": [
+            "crop",
+            "violet"
+         ]
       },
       "stonehearth:appeal": {
          "appeal": 1

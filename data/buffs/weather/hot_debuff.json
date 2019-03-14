@@ -1,0 +1,24 @@
+{
+   "type": "buff",
+   "axis": "debuff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.weather.hot_debuff.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.weather.hot_debuff.description)",
+   "duration": "45m",
+   "repeat_add_action": "stack_and_refresh",
+   "icon": "file(hot.png)",
+   "max_stacks": 6,
+   "modifiers": {
+      "willpower": {
+         "multiply": 0.9
+      },
+      "speed": {
+         "multiply": 0.98
+      },
+      "diligence": {
+         "multiply": 0.92
+      }
+   },
+   "disallowed_buffs": [
+      "stonehearth_ace:buffs:weather:warmed"
+   ]
+}

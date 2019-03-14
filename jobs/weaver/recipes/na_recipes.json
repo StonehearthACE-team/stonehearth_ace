@@ -40,7 +40,15 @@
 	     "recipes": {
 			"mixintypes": {
 				"shield_hare_recipe": "remove",
-				"helmet_wolf_recipe": "remove"
+				"helmet_wolf_recipe": "remove",
+				"chilly_simple_worker_outfit": "remove",
+				"cold_worker_outfit": "remove"
+			},
+			"cold_simple_worker_outfit": {
+			   "recipe": "file(na_cold_simple_worker_outfit_recipe.json)"
+			},
+			"na_freezing_worker_outfit": {
+			   "recipe": "file(na_freezing_worker_outfit_recipe.json)"
 			}
          }
 	  }

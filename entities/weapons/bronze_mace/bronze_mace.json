@@ -1,12 +1,9 @@
 {
-   "mixins": "stonehearth_ace:mixins:weapons:mainhand",
+   "mixins": "stonehearth_ace:mixins:weapons:mainhand_hacking",
    "components": {
       "stonehearth:equipment_piece": {
          "required_job_level": 1,
-         "ilevel": 12,
-         "injected_buffs": [
-            "stonehearth_ace:buffs:hacking_weapon"
-         ]
+         "ilevel": 12
       }
    },
    "entity_data": {

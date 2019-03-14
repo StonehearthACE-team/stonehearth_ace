@@ -1,6 +1,6 @@
 {
    "display_name": "i18n(stonehearth:data.weather.foggy.display_name)",
-   "description": "i18n(stonehearth:data.weather.foggy.description)",
+   "description": "i18n(stonehearth_ace:data.weather.foggy.description)",
    "icon": "file(foggy_highlands.png)",
    "sky_settings": "stonehearth_ace:sky_settings:foggy_highlands",
    "controller": "stonehearth:weather_scripts:foggy",
@@ -12,5 +12,7 @@
    "subject_matter": "stonehearth:subjects:weather:foggy",
    "vision_multiplier": 0.4,
    "hide_cloud_shadows": true,
-   "is_dark_during_daytime": true
+   "is_dark_during_daytime": true,
+   "humidity": 0.5,
+   "sunlight": 0.4
 }

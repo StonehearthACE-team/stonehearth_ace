@@ -1,0 +1,11 @@
+{
+   "type": "buff",
+   "axis": "buff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.weather.hot_resist_buff.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.weather.hot_resist_buff.description)",
+   "icon": "file(hot_resist_buff.png)",
+   "repeat_add_action": "renew_duration",
+   "disallowed_buffs": [
+      "stonehearth_ace:buffs:weather:hot"
+   ]
+}

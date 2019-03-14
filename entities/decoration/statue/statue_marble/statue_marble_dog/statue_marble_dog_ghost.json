@@ -1,0 +1,37 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(statue_marble_dog.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "align_to_grid": [
+            "x",
+            "z"
+         ],
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0, "y": 0, "z": 0 }
+      },
+      "render_info": {
+         "material": "materials/shiny.material.json"
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.decoration.statue.statue_marble_dog.display_name)",
+         "description": "i18n(stonehearth_ace:entities.decoration.statue.statue_marble_dog.description)",
+         "icon": "file(statue_marble_dog.png)",
+         "category": "decoration",
+         "material_tags": [
+            "stone",
+            "marble",
+            "crafted",
+            "stockpile_decoration"
+         ]
+      }
+   }
+}

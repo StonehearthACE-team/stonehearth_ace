@@ -1,0 +1,41 @@
+{
+   "type": "entity",
+   "mixins": "file(bench_log_birch_ghost.json)",
+   "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(bench_log_birch_iconic.json)",
+         "ghost_form": "file(bench_log_birch_ghost.json)",
+         "placeable_on_ground": true
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -2, "y": 0, "z": -1 },
+               "max": { "x": 2, "y": 1, "z": 0 }
+            }
+         ]
+      },
+      "stonehearth:mount": {
+         "mounted_posture": "stonehearth:sitting_on_chair",
+         "mount_offset": { "x": 0, "y": 0, "z": 0 }
+      },
+      "stonehearth:traveler_attraction": {}
+   },
+   "entity_data": {
+      "stonehearth:chair": {},
+      "stonehearth:net_worth": {
+         "value_in_gold": 8,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 9
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

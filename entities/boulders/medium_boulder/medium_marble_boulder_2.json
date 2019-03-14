@@ -33,7 +33,8 @@
          "region_from_model": {
             "model": "file(medium_marble_boulder_2.qb)"
          }
-      }
+      },
+      "stonehearth_ace:transform": {}
    },
    "entity_data": {
       "stonehearth:catalog": {
@@ -42,6 +43,20 @@
       },
       "stonehearth:appeal": {
          "appeal": 3
+      },
+      "stonehearth_ace:transform_data": {
+         "transform_uri": "stonehearth_ace:boulder:block_marble:medium",
+         "command": "stonehearth_ace:commands:transform:sculpt_block",
+         "request_action": "stonehearth_ace:transform",
+         "request_action_overlay_effect": "stonehearth_ace:effects:transform_mason_overlay_effect",
+         "transforming_worker_effect": "mine",
+         "transforming_worker_effect_times": 12,
+         "transform_effect": "stonehearth:effects:poof_effect",
+         "worker_required_job": {
+            "stonehearth:jobs:worker": true,
+            "stonehearth:jobs:blacksmith": true,
+            "stonehearth:jobs:mason": true
+         }
       }
    }
 }

@@ -30,17 +30,16 @@
          }
       },
       "stonehearth:renewable_resource_node": {
-         "renewal_time": "36h+36h",
+         "renewal_time": "150h+10h",
          "start_unharvestable": true,
          "spawn_resource_immediately": true,
          "check_owner": true,
          "resource_loot_table": {
             "entries": {
                "roe": {
-                  "roll_type": "some_of",
                   "num_rolls": {
-                     "min": 0,
-                     "max": 2
+                     "min": 1,
+                     "max": 1
                   },
                   "items": {
                      "roe": {
@@ -84,36 +83,19 @@
             }
          }
       },
-      "stonehearth:portrait": {
-         "portrait_types": {
-            "headshot": {
-               "camera": {
-                  "pos": [
-                     17,
-                     0.6,
-                     -27
-                  ],
-                  "look_at": [
-                     0,
-                     0.6,
-                     0
-                  ],
-                  "fov": 50
-               }
-            }
-         }
-      },
       "stonehearth:net_worth": {
-         "value_in_gold": 5,
+         "value_in_gold": 18,
          "rarity": "common",
          "shop_info": {
-            "buyable": false,
-            "sellable": false
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 1,
+            "shopkeeper_type": "caravan"
          }
       },
       "stonehearth:food_decay": {
          "initial_decay": {
-            "min": 166,
+            "min": 240,
             "max": 240
          }
       }

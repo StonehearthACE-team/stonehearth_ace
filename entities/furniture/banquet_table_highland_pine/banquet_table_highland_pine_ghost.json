@@ -1,0 +1,34 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(banquet_table_highland_pine.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "align_to_grid": [
+            "x"
+         ],
+         "model_origin": { "x": 0, "y": 0, "z": 0.5 },
+         "region_origin": { "x": 0, "y": 0, "z": 0.5 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.furniture.banquet_table_highland_pine.display_name)",
+         "description": "i18n(stonehearth_ace:entities.furniture.banquet_table_highland_pine.description)",
+         "icon": "file(banquet_table_highland_pine.png)",
+         "category": "furniture",
+         "material_tags": [
+            "wood",
+            "furniture",
+            "crafted",
+            "stockpile_furniture"
+         ]
+      }
+   }
+}

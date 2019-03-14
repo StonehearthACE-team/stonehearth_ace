@@ -1,0 +1,18 @@
+{
+   "type": "buff",
+   "axis": "debuff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.weather.soaked_debuff.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.weather.soaked_debuff.description)",
+   "duration": "30m",
+   "repeat_add_action": "stack_and_refresh",
+   "max_stacks": 10,
+   "icon": "file(soaked.png)",
+   "modifiers": {
+      "willpower": {
+         "multiply": 0.95
+      },
+      "diligence": {
+         "multiply": 0.98
+      }
+   }
+}

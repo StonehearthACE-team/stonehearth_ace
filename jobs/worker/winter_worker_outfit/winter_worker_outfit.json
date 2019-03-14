@@ -1,13 +1,23 @@
 {
-   "type": "entity",
    "components": {
       "stonehearth:equipment_piece": {
+	     "injected_buffs": [
+            "stonehearth_ace:buffs:weather:chilly_resist"
+         ],
          "conditional_values": {
             "season": {
                "winter": 1,
-               "summer": -1
+			   "autumn": 1,
+			   "spring": -2,
+               "summer": -3
             }
          }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+	     "description": "i18n(stonehearth_ace:jobs.worker.winter_worker_outfit.description)",
+         "material_tags":["civillian_equipment"]
       }
    }
 }

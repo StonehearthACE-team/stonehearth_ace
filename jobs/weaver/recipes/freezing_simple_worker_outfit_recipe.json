@@ -1,0 +1,34 @@
+{
+   "type": "recipe",
+   "effort": 75,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.weaver.recipes.freezing_simple_worker_outfit_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.weaver.recipes.freezing_simple_worker_outfit_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.weaver.recipes.freezing_simple_worker_outfit_recipe.flavor)",
+   "portrait": "/stonehearth_ace/jobs/worker/freezing_simple_worker_outfit/freezing_simple_worker_outfit.png",
+   "workshop": "stonehearth:weaver:workbench",
+   "level_requirement": 5,
+   "ingredients": [
+      {
+         "material": "pelt resource",
+         "count": 3
+      },
+      {
+         "material": "thread resource",
+         "count": 2
+      },
+	  {
+         "uri": "stonehearth_ace:resources:bear_pelt",
+         "count": 2
+      },
+	  {
+         "material": "wool resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:worker:outfit:freezing_simple"
+      }
+   ]
+}

@@ -1,0 +1,26 @@
+{
+   "type": "recipe",
+   "effort": 50,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.weaver.recipes.cold_simple_worker_outfit_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.weaver.recipes.cold_simple_worker_outfit_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.weaver.recipes.cold_simple_worker_outfit_recipe.flavor)",
+   "portrait": "/stonehearth_ace/jobs/worker/cold_simple_worker_outfit/cold_simple_worker_outfit.png",
+   "workshop": "stonehearth:weaver:workbench",
+   "level_requirement": 3,
+   "ingredients": [
+      {
+         "material": "leather resource",
+         "count": 2
+      },
+      {
+         "material": "thread resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:worker:outfit:cold_simple"
+      }
+   ]
+}
