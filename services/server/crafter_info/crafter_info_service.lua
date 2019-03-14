@@ -5,6 +5,8 @@ function CrafterInfoService:initialize()
    if not self._sv.crafter_infos then
       self._sv.crafter_infos = {}
    end
+   self._material_map = radiant.create_controller('stonehearth_ace:material_map')
+   self._material_cache = {}
 
    --TODO: add crafter_info for the players at start so there won't be a delay when crafting the first item
    --NOTE: adding a new crafter_info directly after a player joins is the wrong thing to do,
@@ -14,6 +16,8 @@ function CrafterInfoService:initialize()
 
    self._init_listener = radiant.events.listen_once(radiant, 'radiant:game_loaded', function()
       self._init_listener = nil
+      self:_load_material_map()
+      
       local players = stonehearth.player:get_non_npc_players()
       for player_id, info in pairs(players) do
          if info.kingdom then
@@ -28,6 +32,30 @@ function CrafterInfoService:initialize()
    radiant.events.listen(radiant, 'radiant:client_joined', function(e)
       self:_create_kingdom_listener(e.player_id)
    end)
+end
+
+-- TODO: move the material map into the catalog service?
+function CrafterInfoService:_load_material_map()
+   self._material_map:clear()
+
+   -- Store all entities that have materials
+   local entity_uris = stonehearth.catalog:get_all_entity_uris()
+   for _, full_uri in pairs(entity_uris) do
+      local material_tags = stonehearth.catalog:get_catalog_data(full_uri).materials
+      if material_tags then
+         self._material_map:add(material_tags, full_uri)
+      end
+   end
+end
+
+function CrafterInfoService:get_uris(material_tags)
+   -- we'll probably make the same requests a lot, and it doesn't hurt to cache a little
+   local result = self._material_cache[material_tags]
+   if not result then
+      result = self._material_map:intersecting_values(material_tags)
+      self._material_cache[material_tags] = result
+   end
+   return result
 end
 
 function CrafterInfoService:_create_kingdom_listener(player_id)
