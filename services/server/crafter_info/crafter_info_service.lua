@@ -16,22 +16,50 @@ function CrafterInfoService:initialize()
 
    self._init_listener = radiant.events.listen_once(radiant, 'radiant:game_loaded', function()
       self._init_listener = nil
-      self:_load_material_map()
-      
-      local players = stonehearth.player:get_non_npc_players()
-      for player_id, info in pairs(players) do
-         if info.kingdom then
-            self:get_crafter_info(player_id)
-         else
-            -- if the player hasn't yet been assigned a kingdom, listen for it
-            self:_create_kingdom_listener(player_id)
-         end
-      end
+      self:_on_init()
+   end)
+   self._init_listener_2 = radiant.events.listen_once(stonehearth, 'radiant:new_game', function()
+      self._init_listener_2 = nil
+      self:_on_init()
    end)
 
    radiant.events.listen(radiant, 'radiant:client_joined', function(e)
       self:_create_kingdom_listener(e.player_id)
    end)
+end
+
+function CrafterInfoService:destroy()
+   self:_destroy_listeners()
+end
+
+function CrafterInfoService:_destroy_listeners()
+   for id, listener in pairs(self._kingdom_assigned_listeners) do
+      listener:destroy()
+      self._kingdom_assigned_listeners[id] = nil
+   end
+
+   if self._init_listener then
+      self._init_listener:destroy()
+      self._init_listener = nil
+   end
+   if self._init_listener_2 then
+      self._init_listener_2:destroy()
+      self._init_listener_2 = nil
+   end
+end
+
+function CrafterInfoService:_on_init()
+   self:_load_material_map()
+   
+   local players = stonehearth.player:get_non_npc_players()
+   for player_id, info in pairs(players) do
+      if info.kingdom then
+         self:get_crafter_info(player_id)
+      else
+         -- if the player hasn't yet been assigned a kingdom, listen for it
+         self:_create_kingdom_listener(player_id)
+      end
+   end
 end
 
 -- TODO: move the material map into the catalog service?

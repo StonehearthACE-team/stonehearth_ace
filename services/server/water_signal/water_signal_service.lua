@@ -33,17 +33,6 @@ function WaterSignalService:initialize()
    self._next_tick_callbacks = {}
    self._current_tick = 0
    self:set_update_frequency(radiant.util.get_config('water_signal_update_frequency', 1))
-   
-   --[[
-   self._game_loaded_listener = radiant.events.listen_once(radiant, 'radiant:game_loaded', function()
-      self._game_loaded_listener = nil
-      self:_create_tick_listener()
-   end)
-   self._world_generated_listener = radiant.events.listen_once(stonehearth.game_creation, 'stonehearth:world_generation_complete', function()
-      self._world_generated_listener = nil
-      self:_create_tick_listener()
-   end)
-   ]]
 
    self._processing_on_tick = false
 end
