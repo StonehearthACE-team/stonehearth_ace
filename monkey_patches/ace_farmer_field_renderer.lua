@@ -50,7 +50,7 @@ function AceFarmerFieldRenderer:_update()
    local size = data.size
    local items = {}
 
-   self:_update_dirt_models(data.effective_water_level)
+   self:_update_dirt_models(data.effective_humidity_level)
 
    local dirt_node_array = self:_update_and_get_dirt_node_array(data)
    self._zone_renderer:set_size(size)
@@ -80,20 +80,20 @@ function AceFarmerFieldRenderer:_in_appropriate_mode()
    return self._ui_view_mode == 'hud'
 end
 
-function AceFarmerFieldRenderer:_update_dirt_models(effective_water_level)
+function AceFarmerFieldRenderer:_update_dirt_models(effective_humidity_level)
    -- check the effective water level and set the appropriate dirt models
    local levels = stonehearth.constants.farming.water_levels
    local tilled_dirt_model = self._farmer_field_data.tilled_dirt
    local furrow_dirt_model = self._farmer_field_data.furrow_dirt
    
-   if effective_water_level == levels.SOME then
+   if effective_humidity_level == levels.SOME then
       if self._farmer_field_data.tilled_dirt_water_partial then
          tilled_dirt_model = self._farmer_field_data.tilled_dirt_water_partial
       end
       if self._farmer_field_data.furrow_dirt_water_partial then
          furrow_dirt_model = self._farmer_field_data.furrow_dirt_water_partial
       end
-   elseif effective_water_level == levels.PLENTY or effective_water_level == levels.EXTRA then
+   elseif effective_humidity_level == levels.PLENTY or effective_humidity_level == levels.EXTRA then
       if self._farmer_field_data.tilled_dirt_water_full then
          tilled_dirt_model = self._farmer_field_data.tilled_dirt_water_full
       end
@@ -103,8 +103,8 @@ function AceFarmerFieldRenderer:_update_dirt_models(effective_water_level)
    end
 
    -- if our water level has changed, recreate the dirt nodes
-   if self._prev_water_level ~= effective_water_level then
-      self._prev_water_level = effective_water_level
+   if self._prev_water_level ~= effective_humidity_level then
+      self._prev_water_level = effective_humidity_level
       self._tilled_dirt_model = tilled_dirt_model
       self._furrow_dirt_model = furrow_dirt_model
       for _, row in pairs(self._dirt_nodes) do

@@ -52,6 +52,9 @@ function AceBuffsComponent:add_buff(uri, options)
       return -- don't add this buff if it's cooldown buff is still active
    end
 
+   options = options or {}
+   options.stacks = options.stacks or 1
+
    if json.category then
       local buffs_by_category = self._sv.buffs_by_category[json.category]
       if not buffs_by_category then
@@ -78,15 +81,12 @@ function AceBuffsComponent:add_buff(uri, options)
    end
 
    local buff
-   local cur_count = self._sv.ref_counts[uri]
-   if not cur_count then
-      self._sv.ref_counts[uri] = 1
-   else
-      self._sv.ref_counts[uri] = cur_count + 1
-   end
-   local ref_count = self._sv.ref_counts[uri]
+   local cur_count = self._sv.ref_counts[uri] or 0
+   local new_count = options.stacks
+   local ref_count = cur_count + new_count
+   self._sv.ref_counts[uri] = ref_count
 
-   if ref_count == 1 then
+   if cur_count == 0 then
       buff = radiant.create_controller('stonehearth:buff', self._entity, uri, json, options)
       self._sv.buffs[uri] = buff
 

@@ -58,6 +58,7 @@ local monkey_patches = {
    ace_trapper = 'stonehearth.jobs.trapper.trapper',
    ace_storage_component = 'stonehearth.components.storage.storage_component',
    ace_buffs_component = 'stonehearth.components.buffs.buffs_component',
+   ace_buff = 'stonehearth.components.buffs.buff',
    ace_farmer = 'stonehearth.jobs.farmer.farmer',
    ace_farming_task_group = 'stonehearth.ai.task_groups.farming_task_group',
    ace_herding_task_group = 'stonehearth.ai.task_groups.herding_task_group',

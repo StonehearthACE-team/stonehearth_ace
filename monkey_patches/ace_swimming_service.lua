@@ -1,5 +1,20 @@
+local log = radiant.log.create_logger('swimming')
+
 local SwimmingService = require 'stonehearth.services.server.swimming.swimming_service'
 AceSwimmingService = class()
+
+-- override this to only set swimming to false if the entity had a trace
+function AceSwimmingService:_destroy_entity_trace(id)
+   local trace = self._location_traces[id]
+   if trace then
+      trace:destroy()
+      self._location_traces[id] = nil
+
+      self:_set_swimming(radiant.entities.get_entity(id), false)
+   end
+
+   self._cached_mob_shapes[id] = nil
+end
 
 function AceSwimmingService:_set_swimming(entity, swimming)
    if not entity or not entity:is_valid() then
@@ -7,7 +22,8 @@ function AceSwimmingService:_set_swimming(entity, swimming)
    end
    local id = entity:get_id()
 
-   if swimming ~= self._sv.swimming_state[id] then
+   local prev_swimming = self._sv.swimming_state[id]
+   if swimming ~= prev_swimming then
       self._sv.swimming_state[id] = swimming
 
       if swimming then
@@ -15,37 +31,29 @@ function AceSwimmingService:_set_swimming(entity, swimming)
             radiant.entities.remove_buff(entity, 'stonehearth_ace:buffs:not_in_water')
             radiant.entities.add_buff(entity, 'stonehearth_ace:buffs:in_water')
          else
-            radiant.entities.add_buff(entity, 'stonehearth:buffs:swimming')			
-			
-			if radiant.entities.has_buff(entity, 'stonehearth_ace:buffs:weather:chilly') or radiant.entities.has_buff(entity, 'stonehearth_ace:buffs:weather:cold') or radiant.entities.has_buff(entity, 'stonehearth_ace:buffs:weather:freezing')then 
-				radiant.entities.add_buff(entity, 'stonehearth_ace:buffs:weather:freezing:water')
-			else
-				radiant.entities.add_buff(entity, 'stonehearth_ace:buffs:weather:refreshing:water')
-			end	
-         end			
+            radiant.entities.add_buff(entity, 'stonehearth:buffs:swimming')            
+            
+            if radiant.entities.has_buff(entity, 'stonehearth_ace:buffs:weather:chilly') or radiant.entities.has_buff(entity, 'stonehearth_ace:buffs:weather:cold') or radiant.entities.has_buff(entity, 'stonehearth_ace:buffs:weather:freezing')then 
+                radiant.entities.add_buff(entity, 'stonehearth_ace:buffs:weather:freezing:water')
+            else
+                radiant.entities.add_buff(entity, 'stonehearth_ace:buffs:weather:refreshing:water')
+            end    
+         end            
       elseif radiant.entities.get_category(entity) == 'aquatic' then
          radiant.entities.add_buff(entity, 'stonehearth_ace:buffs:not_in_water')
          radiant.entities.remove_buff(entity, 'stonehearth_ace:buffs:in_water')
-	  else
+      elseif prev_swimming then  -- don't do all this stuff if we were never in the water to begin with
          radiant.entities.remove_buff(entity, 'stonehearth:buffs:swimming')
-		 radiant.entities.add_buff(entity, 'stonehearth_ace:buffs:weather:soaked')
-		 radiant.entities.add_buff(entity, 'stonehearth_ace:buffs:weather:soaked')
-		 radiant.entities.add_buff(entity, 'stonehearth_ace:buffs:weather:soaked')
-		 radiant.entities.add_buff(entity, 'stonehearth_ace:buffs:weather:soaked')
-		 radiant.entities.add_buff(entity, 'stonehearth_ace:buffs:weather:soaked')
-		 radiant.entities.add_buff(entity, 'stonehearth_ace:buffs:weather:soaked')
-		 radiant.entities.add_buff(entity, 'stonehearth_ace:buffs:weather:soaked')
-		 radiant.entities.add_buff(entity, 'stonehearth_ace:buffs:weather:soaked')
-		 radiant.entities.add_buff(entity, 'stonehearth_ace:buffs:weather:soaked')
-		 radiant.entities.add_buff(entity, 'stonehearth_ace:buffs:weather:soaked')
-		 
-		 if radiant.entities.has_buff(entity, 'stonehearth_ace:buffs:weather:freezing:water') then
-			radiant.entities.remove_buff(entity, 'stonehearth_ace:buffs:weather:freezing:water')
-			radiant.entities.add_buff(entity, 'stonehearth_ace:buffs:weather:freezing')
-		 else
-		    radiant.entities.remove_buff(entity, 'stonehearth_ace:buffs:weather:refreshing:water')
-		    radiant.entities.add_buff(entity, 'stonehearth_ace:buffs:weather:refreshed')			
-		 end	 
+
+         radiant.entities.add_buff(entity, 'stonehearth_ace:buffs:weather:soaked', {stacks = 10})
+         
+         if radiant.entities.has_buff(entity, 'stonehearth_ace:buffs:weather:freezing:water') then
+            radiant.entities.remove_buff(entity, 'stonehearth_ace:buffs:weather:freezing:water')
+            radiant.entities.add_buff(entity, 'stonehearth_ace:buffs:weather:freezing')
+         else
+            radiant.entities.remove_buff(entity, 'stonehearth_ace:buffs:weather:refreshing:water')
+            radiant.entities.add_buff(entity, 'stonehearth_ace:buffs:weather:refreshed')            
+         end     
       end
    end
 end
