@@ -15,7 +15,7 @@ function AceRenewableResourceNodeComponent:post_activate()
    end
    
    self:_ace_old_post_activate()
-   if self._sv.harvestable and self._is_create and not self._json.auto_harvest_on_create == false then
+   if self._sv.harvestable and self._is_create and self._json.auto_harvest_on_create ~= false then
       self._added_to_world_listener = self._entity:add_component('mob'):trace_parent('transform entity added or removed')
             :on_changed(function(parent)
                if parent then

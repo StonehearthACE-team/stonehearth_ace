@@ -89,7 +89,15 @@ local monkey_patches = {
    ace_unlock_recipe_encounter = 'stonehearth.services.server.game_master.controllers.encounters.unlock_recipe_encounter',
    ace_combat_service = 'stonehearth.services.server.combat.combat_service',
    ace_game_master_lib = 'stonehearth.lib.game_master.game_master_lib',
-   ace_population_faction = 'stonehearth.services.server.population.population_faction'
+   ace_population_faction = 'stonehearth.services.server.population.population_faction',
+   ace_entities_call_handler = 'stonehearth.call_handlers.entities_call_handler',
+   ace_periodic_health_modification = 'stonehearth.data.buffs.scripts.periodic_health_modification',
+   ace_tentacle_snared_debuff = 'stonehearth.data.buffs.tentacle_snared.tentacle_snared_debuff',
+   ace_trait = 'stonehearth.components.traits.trait',
+   ace_animal_companion_script = 'stonehearth.data.traits.animal_companion.animal_companion_script',
+   ace_bulletin = 'stonehearth.services.server.bulletin_board.bulletin',
+   ace_memorialize_death_action = 'stonehearth.ai.actions.memorialize_death_action',
+   ace_get_food_from_container_adjacent = 'stonehearth.ai.actions.get_food_from_container_adjacent'
 }
 
 local function monkey_patching()

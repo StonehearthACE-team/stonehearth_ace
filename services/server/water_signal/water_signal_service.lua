@@ -26,22 +26,13 @@ function WaterSignalService:initialize()
    self._water_chunks = {}
    self._waterfall_chunks = {}
    self._changed_waters = {}
+   self._changed_water_volumes = {}
    self._changed_pathing = {}
    self._changed_waterfalls = {}
+   self._changed_waterfall_volumes = {}
    self._next_tick_callbacks = {}
    self._current_tick = 0
    self:set_update_frequency(radiant.util.get_config('water_signal_update_frequency', 1))
-   
-   --[[
-   self._game_loaded_listener = radiant.events.listen_once(radiant, 'radiant:game_loaded', function()
-      self._game_loaded_listener = nil
-      self:_create_tick_listener()
-   end)
-   self._world_generated_listener = radiant.events.listen_once(stonehearth.game_creation, 'stonehearth:world_generation_complete', function()
-      self._world_generated_listener = nil
-      self:_create_tick_listener()
-   end)
-   ]]
 
    self._processing_on_tick = false
 end
@@ -185,16 +176,24 @@ function WaterSignalService:unregister_water_signal(water_signal)
 end
 
 -- if the water component was modified, make sure it gets processed on the next tick
-function WaterSignalService:water_component_modified(entity)
-   self._changed_waters[entity:get_id()] = entity:get_component('stonehearth:water')
+function WaterSignalService:water_component_modified(entity, volume_change)
+   if volume_change then
+      self._changed_water_volumes[entity:get_id()] = entity:get_component('stonehearth:water')
+   else
+      self._changed_waters[entity:get_id()] = entity:get_component('stonehearth:water')
+   end
 end
 
 function WaterSignalService:water_component_pathing_modified(entity)
    --self._changed_pathing[entity] = entity:get_component('stonehearth:water')
 end
 
-function WaterSignalService:waterfall_component_modified(entity)
-   self._changed_waterfalls[entity:get_id()] = entity:get_component('stonehearth:waterfall')
+function WaterSignalService:waterfall_component_modified(entity, volume_change)
+   if volume_change then
+      self._changed_waterfall_volumes[entity:get_id()] = entity:get_component('stonehearth:waterfall')
+   else
+      self._changed_waterfalls[entity:get_id()] = entity:get_component('stonehearth:waterfall')
+   end
 end
 
 function WaterSignalService:add_next_tick_callback(cb, args)
@@ -236,97 +235,113 @@ function WaterSignalService:_on_tick()
       self._next_tick_callbacks = {}
    end
 
-   if next(self._changed_waters) then
-      for water_id, water in pairs(self._changed_waters) do
-         local old_chunks = self._water_chunks[water_id]
-         
-         local location = water:get_location()
-         if location then
-            local water_region = water:get_region():get():translated(location)
-            local chunks = self:_get_chunks(water_region)
-            local checked = {}
-            --log:debug('setting water_chunks for %s to %s', water_id, radiant.util.table_tostring(chunks))
-            self._water_chunks[water_id] = chunks
-
-            for chunk_id, _ in pairs(chunks) do
-               for id, _ in pairs(self._signals_by_chunk[chunk_id] or {}) do
-                  if not checked[id] then
-                     checked[id] = true
-                     local signal = self._signals[id]
-                     if signal.region and signal.monitors_water then
-                        local intersects = water_region:intersects_region(signal.region)
-                        -- if it intersects now, or if it used to intersect and no longer does, signal it
-                        if intersects and not signal.waters[water_id] or signal.waters[water_id] == false then
-                           signals_to_signal[id] = signal
-                           signal.waters[water_id] = intersects
-                        end
-                     end
-                  end
-               end
-            end
-         else
-            self._water_chunks[water_id] = nil
-         end
-
-         local new_chunks = self._water_chunks[water_id] or {}
-         for chunk_id, _ in pairs(old_chunks or {}) do
-            if not new_chunks[chunk_id] then
-               for id, _ in pairs(self._signals_by_chunk[chunk_id] or {}) do
-                  local signal = self._signals[id]
-                  if signal.waters[water_id] ~= nil then
-                     signals_to_signal[id] = signal
-                  end
-               end
-            end
-         end
+   -- first check the volume only changes to see if they should be upgraded to real changes (i.e., volume change was significant)
+   for water_id, water in pairs(self._changed_water_volumes) do
+      if water:was_changed_on_tick() then
+         self._changed_waters[water_id] = water
+      --    log:debug('water %s had significant volume changed', water_id)
+      -- else
+      --    log:debug('water %s didn\'t change', water_id)
       end
-      self._changed_waters = {}
+      self._changed_water_volumes[water_id] = nil
+   end
+   for waterfall_id, waterfall in pairs(self._changed_waterfall_volumes) do
+      if waterfall:was_changed_on_tick() then
+         self._changed_waterfalls[waterfall_id] = waterfall
+      --    log:debug('waterfall %s had significant volume changed', waterfall_id)
+      -- else
+      --    log:debug('waterfall %s didn\'t change', waterfall_id)
+      end
+      self._changed_waterfall_volumes[waterfall_id] = nil
    end
 
-   if next(self._changed_waterfalls) then
-      for waterfall_id, waterfall in pairs(self._changed_waterfalls) do
-         local old_chunks = self._waterfall_chunks[waterfall_id]
-         
-         local location = waterfall:get_location()
-         if location then
-            local waterfall_region = waterfall:get_region():get():translated(location)
-            local chunks = self:_get_chunks(waterfall_region)
-            local checked = {}
-            self._waterfall_chunks[waterfall_id] = chunks
+   for water_id, water in pairs(self._changed_waters) do
+      --log:debug('water %s changed, processing...', water_id)   
+      local old_chunks = self._water_chunks[water_id]
+      
+      local location = water:get_location()
+      if location then
+         local water_region = water:get_region():get():translated(location)
+         local chunks = self:_get_chunks(water_region)
+         local checked = {}
+         --log:debug('setting water_chunks for %s to %s', water_id, radiant.util.table_tostring(chunks))
+         self._water_chunks[water_id] = chunks
 
-            for chunk_id, _ in pairs(chunks) do
-               for id, _ in pairs(self._signals_by_chunk[chunk_id] or {}) do
-                  if not checked[id] then
-                     checked[id] = true
-                     local signal = self._signals[id]
-                     if signal.region and signal.monitors_waterfall then
-                        local intersects = waterfall_region:intersects_region(signal.region)
-                        -- if it intersects now, or if it used to intersect and no longer does, signal it
-                        if intersects and not signal.waterfalls[waterfall_id] or signal.waterfalls[waterfall_id] == false then
-                           signals_to_signal[id] = signal
-                           signal.waterfalls[waterfall_id] = intersects
-                        end
+         for chunk_id, _ in pairs(chunks) do
+            for id, _ in pairs(self._signals_by_chunk[chunk_id] or {}) do
+               if not checked[id] then
+                  checked[id] = true
+                  local signal = self._signals[id]
+                  if signal.region and signal.monitors_water then
+                     local intersects = water_region:intersects_region(signal.region)
+                     -- if it intersects now, or if it used to intersect and no longer does, signal it
+                     if intersects and not signal.waters[water_id] or signal.waters[water_id] == false then
+                        signals_to_signal[id] = signal
+                        signal.waters[water_id] = intersects
                      end
                   end
                end
             end
-         else
-            self._waterfall_chunks[waterfall_id] = nil
          end
+      else
+         self._water_chunks[water_id] = nil
+      end
 
-         local new_chunks = self._waterfall_chunks[waterfall_id] or {}
-         for chunk_id, _ in pairs(old_chunks or {}) do
-            if not new_chunks[chunk_id] then
-               for id, _ in pairs(self._signals_by_chunk[chunk_id] or {}) do
-                  local signal = self._signals[id]
-                  if signal.waterfalls[waterfall_id] ~= nil then
-                     signals_to_signal[id] = signal
-                  end
+      local new_chunks = self._water_chunks[water_id] or {}
+      for chunk_id, _ in pairs(old_chunks or {}) do
+         if not new_chunks[chunk_id] then
+            for id, _ in pairs(self._signals_by_chunk[chunk_id] or {}) do
+               local signal = self._signals[id]
+               if signal.waters[water_id] ~= nil then
+                  signals_to_signal[id] = signal
                end
             end
          end
       end
-      self._changed_waterfalls = {}
+   end
+
+   for waterfall_id, waterfall in pairs(self._changed_waterfalls) do
+      --log:debug('waterfall %s changed, processing...', waterfall_id)
+      local old_chunks = self._waterfall_chunks[waterfall_id]
+      
+      local location = waterfall:get_location()
+      if location then
+         local waterfall_region = waterfall:get_region():get():translated(location)
+         local chunks = self:_get_chunks(waterfall_region)
+         local checked = {}
+         self._waterfall_chunks[waterfall_id] = chunks
+
+         for chunk_id, _ in pairs(chunks) do
+            for id, _ in pairs(self._signals_by_chunk[chunk_id] or {}) do
+               if not checked[id] then
+                  checked[id] = true
+                  local signal = self._signals[id]
+                  if signal.region and signal.monitors_waterfall then
+                     local intersects = waterfall_region:intersects_region(signal.region)
+                     -- if it intersects now, or if it used to intersect and no longer does, signal it
+                     if intersects and not signal.waterfalls[waterfall_id] or signal.waterfalls[waterfall_id] == false then
+                        signals_to_signal[id] = signal
+                        signal.waterfalls[waterfall_id] = intersects
+                     end
+                  end
+               end
+            end
+         end
+      else
+         self._waterfall_chunks[waterfall_id] = nil
+      end
+
+      local new_chunks = self._waterfall_chunks[waterfall_id] or {}
+      for chunk_id, _ in pairs(old_chunks or {}) do
+         if not new_chunks[chunk_id] then
+            for id, _ in pairs(self._signals_by_chunk[chunk_id] or {}) do
+               local signal = self._signals[id]
+               if signal.waterfalls[waterfall_id] ~= nil then
+                  signals_to_signal[id] = signal
+               end
+            end
+         end
+      end
    end
 
    for _, signal in pairs(signals_to_signal) do
@@ -357,6 +372,15 @@ function WaterSignalService:_on_tick()
       for _, cb_struct in ipairs(next_tick_callbacks) do
          cb_struct.cb(cb_struct.args)
       end
+   end
+
+   for water_id, water in pairs(self._changed_waters) do
+      water:reset_changed_on_tick()
+      self._changed_waters[water_id] = nil
+   end
+   for waterfall_id, waterfall in pairs(self._changed_waterfalls) do
+      waterfall:reset_changed_on_tick()
+      self._changed_waterfalls[waterfall_id] = nil
    end
 
    self._processing_on_tick = false

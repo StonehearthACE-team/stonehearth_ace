@@ -4,7 +4,6 @@ local log = radiant.log.create_logger('crafter_info')
 
 function CrafterInfoController:initialize()
    self._recipe_map = radiant.create_controller('stonehearth_ace:recipe_map')
-   self._material_map = radiant.create_controller('stonehearth_ace:material_map')
    self._formatted_recipes = {}
 
    self._sv.player_id = nil
@@ -33,11 +32,6 @@ function CrafterInfoController:destroy()
       self._recipe_map:destroy()
       self._recipe_map = nil
    end
-
-   if self._material_map then
-      self._material_map:destroy()
-      self._material_map = nil
-   end
 end
 
 function CrafterInfoController:_on_player_kingdom_changed(args)
@@ -49,20 +43,10 @@ end
 
 function CrafterInfoController:_create_maps()
    self._recipe_map:clear()
-   self._material_map:clear()
    
    local player_id = self._sv.player_id
    local pop = stonehearth.population:get_population(player_id)
    local job_index = radiant.resources.load_json( pop:get_job_index() )
-
-   -- Store all entities that has materials
-   local entity_uris = stonehearth.catalog:get_all_entity_uris()
-   for _, full_uri in pairs(entity_uris) do
-      local material_tags = stonehearth.catalog:get_catalog_data(full_uri).materials
-      if material_tags then
-         self._material_map:add(material_tags, full_uri)
-      end
-   end
 
    -- Store all the crafters recipes and order lists
    for job_key, _ in pairs(job_index.jobs) do
@@ -224,7 +208,7 @@ function CrafterInfoController:_get_recipe_cost(ingredients)
    for _, ingredient in pairs(ingredients) do
       local cost = 0
       if ingredient.kind == 'material' then
-         local uris = self:get_uris(ingredient.material)
+         local uris = stonehearth_ace.crafter_info:get_uris(ingredient.material)
          _, cost = self:_get_least_valued_entity(uris)
       else -- ingredient.kind == 'uri'
          _, cost = self:_get_least_valued_entity({ingredient.uri})
@@ -268,10 +252,6 @@ end
 
 function CrafterInfoController:get_possible_recipes(tags)
    return self._recipe_map:intersecting_values(tags)
-end
-
-function CrafterInfoController:get_uris(material_tags)
-   return self._material_map:intersecting_values(material_tags)
 end
 
 function CrafterInfoController:get_order_lists()

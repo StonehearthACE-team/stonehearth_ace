@@ -6,8 +6,10 @@ AceGrowingComponent._ace_old_restore = GrowingComponent.restore
 function AceGrowingComponent:restore()
    self:_ace_old_restore()
 
-   self._sv._growth_timer = self._sv.growth_timer
-   self._sv.growth_timer = nil
+   if self._sv.growth_timer then
+      self._sv._growth_timer = self._sv.growth_timer
+      self._sv.growth_timer = nil
+   end
 end
 
 AceGrowingComponent._ace_old_activate = GrowingComponent.activate
@@ -43,11 +45,14 @@ function AceGrowingComponent:activate()
 	self:_ace_old_activate()
 end
 
+AceGrowingComponent._ace_old_post_activate = GrowingComponent.post_activate
 function AceGrowingComponent:post_activate()
-   --self:_create_water_listener()
-
    -- growth stages are expressed with unit_info display_name, but we want to lock custom_names for these entities
    self._entity:add_component('stonehearth:unit_info'):lock('stonehearth:growing')
+
+   if self._ace_old_post_activate then
+      self:_ace_old_post_activate()
+   end
 end
 
 -- AceGrowingComponent._ace_old_destroy = GrowingComponent.destroy

@@ -385,50 +385,77 @@
                   "tooltip": "Lecker! Ich esse gerne Pilze und ich muss zugeben, dass [str(foodname)] besonders gut war!"
                }
             }
-         },
-         "population": {
-            "ascendancy": {
-               "titles": {
-                  "goblin_killer": {
-                     "1_display_name": " der Goblintöter",
-                     "1_description": "Hat einen Goblin getötet!",
-                     "5_display_name": " der Goblinschlächter",
-                     "5_description": "Hat 5 Goblins getötet! Dort zieht sie/er wieder vondanen zum töten!!",
-                     "10_display_name": " der Goblindezimatorr",
-                     "10_description": "Hat 10 Goblins getötet! Sie/Er ist  wirklich gut darin!",
-                     "20_display_name": "Fluch der Goblins",
-                     "20_description": "Hat 20 Goblins getötet! Das ist viel!",
-                     "50_display_name": "Zerstörer der Goblins",
-                     "50_description": "Hat 50 Goblins getötet! Wo findet sie/er nur all diese Goblins?!",
-                     "100_display_name": "Goblinfresser",
-                     "100_description": "Hat 100 Goblins getötet! Vielleicht sollten sie/er in Therapie gehen und ihre/seine Prioritäten überprüfen."
-                  },
-                  "goblin_killer_item": {
-                     "1_display_name": " der Goblintöter",
-                     "1_description": "Hat einen Goblin getötet!",
-                     "5_display_name": " der Goblinschlächter",
-                     "5_description": "Hat 5 Goblins getötet! Dort zieht sie/er wieder vondanen zum töten!!",
-                     "10_display_name": " der Goblindezimatorr",
-                     "10_description": "Hat 10 Goblins getötet! Sie/Er ist  wirklich gut darin!",
-                     "20_display_name": "Fluch der Goblins",
-                     "20_description": "Hat 20 Goblins getötet! Das ist viel!",
-                     "50_display_name": "Zerstörer der Goblins",
-                     "50_description": "Hat 50 Goblins getötet! Sie/Er ist nicht zu stoppen, zumindest durch Goblins!",
-                     "100_display_name": "Goblinfresser",
-                     "100_description": "Hat 100 Goblins getötet! Ist ihr/sein Blutrausch endlich besänftigt?"
-                  },
-                  "defender": {
-                     "10_display_name": "Verteidiger",
-                     "10_description": "Verteidigte die Stadt vor 10 Feinden!",
-                     "50_display_name": "Großer Beschützer",
-                     "50_description": "Verteidigte die Stadt vor 50 Feinden!",
-                     "100_display_name": "Stadtheld",
-                     "100_description": "Verteidigte die Stadt vor 100 Feinden! ",
-                     "500_display_name": " der lange Arm des Gesetzes",
-                     "500_description": "Verteidigte die Stadt vor 500 Feinden! Was für eine unglaublich widerspenstige Stadt!",
-                     "1000_display_name": "Retter der Zivilisation",
-                     "1000_description": "Verteidigte die Stadt vor 1000 Feinden! Vielleicht ist ein diplomatischer Ansatz angebracht."
-                  }
+         }
+      },
+      "population": {
+         "ascendancy": {
+            "titles": {
+               "none": {
+                  "description": "Kein Titel notwendig."
+               },
+               "goblin_killer": {
+                  "1_display_name": " die/der Goblintöter/in",
+                  "1_description": "Hat einen Goblin getötet!",
+                  "5_display_name": " die/der Goblinschlächter/in",
+                  "5_description": "Hat 5 Goblins getötet! Dort zieht sie/er wieder vondanen zum töten!",
+                  "10_display_name": " die/der Goblindezimator/in",
+                  "10_description": "Hat 10 Goblins getötet! Sie/Er ist wirklich gut darin!",
+                  "20_display_name": ", Fluch der Goblins",
+                  "20_description": "Hat 20 Goblins getötet! Das ist viel!",
+                  "50_display_name": ", Zerstörer/in der Goblins",
+                  "50_description": "Hat 50 Goblins getötet! Wo findet sie/er nur all diese Goblins?!",
+                  "100_display_name": ", Goblinfresser/in",
+                  "100_description": "Hat 100 Goblins getötet! Vielleicht sollten sie/er in Therapie gehen und ihre/seine Prioritäten überprüfen."
+               },
+               "goblin_killer_item": {
+                  "1_display_name": " der Goblintöter",
+                  "1_description": "Hat einen Goblin getötet!",
+                  "5_display_name": " der Goblinschlächter",
+                  "5_description": "Hat 5 Goblins getötet! Dort zieht sie/er wieder vondanen zum töten!",
+                  "10_display_name": " der Goblindezimatorr",
+                  "10_description": "Hat 10 Goblins getötet! Sie/Er ist  wirklich gut darin!",
+                  "20_display_name": ", Fluch der Goblins",
+                  "20_description": "Hat 20 Goblins getötet! Das ist viel!",
+                  "50_display_name": ", Zerstörer der Goblins",
+                  "50_description": "Hat 50 Goblins getötet! Sie/Er ist nicht zu stoppen, zumindest durch Goblins!",
+                  "100_display_name": ", Goblinfresser",
+                  "100_description": "at 100 Goblins getötet! Ist ihr/sein Blutrausch endlich besänftigt?"
+               },
+               "defender": {
+                  "10_display_name": ", Verteidiger/in",
+                  "10_description": "Verteidigte die Stadt vor 10 Feinden!",
+                  "50_display_name": ", Große/r Beschützer/in",
+                  "50_description": "Verteidigte die Stadt vor 50 Feinden!",
+                  "100_display_name": ", Stadtheld/in",
+                  "100_description": "Verteidigte die Stadt vor 100 Feinden! Ist es endlich sicher?",
+                  "500_display_name": " der lange Arm des Gesetzes",
+                  "500_description": "Verteidigte die Stadt vor 500 Feinden! Was für eine unglaublich widerspenstige Stadt!",
+                  "1000_display_name": ", Retter/in der Zivilisation",
+                  "1000_description": "Verteidigte die Stadt vor 1000 Feinden! Vielleicht ist ein diplomatischer Ansatz angebracht.."
+               },
+               "prolific_crafter": {
+                  "100_display_name": ", erfolgreicher Handwerker",
+                  "100_description": "Sie/Er hat 100 Gegenstände hergestellt!",
+                  "200_display_name": " der Multi-Handwerker",
+                  "200_description": "Sie/Er hat 200 Gegenstände hergestellt!",
+                  "500_display_name": ", Massenhersteller",
+                  "500_description": "Sie/Er hat 300 Gegenstände hergestellt! Vielleicht könnten sie/er einen Assistenten gebrauchen.",
+                  "1000_display_name": ", Gildenbotschafter",
+                  "1000_description": "Sie/Er hat 1000 Gegenstände hergestellt! Halt lieber eine schöne Rente bereit."
+               },
+               "excellent_crafter": {
+                  "10_display_name": ", ausgezeichneter Handwerker",
+                  "10_description": "Sie/Er hat 10 Gegenstände von exzellenter Qualität hergestellt!",
+                  "25_display_name": ", außergewöhnlich Handwerker",
+                  "25_description": "Sie/Er hat 25 Gegenstände von exzellenter Qualität hergestellt!",
+                  "100_display_name": " der Kaiser der Exzellenz",
+                  "100_description": "Sie/Er hat 100 Gegenstände von exzellenter Qualität hergestellt!"
+               },
+               "master_crafter": {
+                  "1_display_name": ", Meisterhandwerker",
+                  "1_description": "Sie/Er hat einen Gegenstand von meisterlicher Qualität hergestellt! Beeindruckend!",
+                  "10_display_name": " der Meister der Qualität",
+                  "10_description": "Sie/Er hat 10 Gegenstände von meisterlicher Qualität hergestellt! Unglaublich!"
                }
             }
          }
@@ -6230,6 +6257,7 @@
    "ui": {
       "game": {
          "entities": {
+            "custom_name_with_title": "[str(self.stonehearth:unit_info.custom_name)][str(self.stonehearth:unit_info.custom_data.current_title.display_name)]",
             "item_categories": {
                "undefined": "Verschiedenes",
                "aquatic": "Wasserleben",
@@ -6507,6 +6535,16 @@
          },
          "componentInfo": {
             "title": "Objektinformationen"
+         },
+         "bulletin": {
+            "achievement_acquired_bulletin": {
+               "new_title": {
+                  "title": "[str(i18n_data.entity.stonehearth:unit_info.custom_name)] hat einen neuen Titel erreicht!",
+                  "header": "<h2>[str(i18n_data.entity.stonehearth:unit_info.custom_name)]...</h2><h3>ist jetzt [str(i18n_data.entity.stonehearth:unit_info.custom_name)][str(i18n_data.new_title.display_name)]!</h3>",
+                  "message": "[str(i18n_data.new_title.description)]<p>Hat dieser Titel nicht einen schönen Klang? Du kannst auswählen, welchen Titel dein Bürger verwendet, indem du mit der rechten Maustaste auf dessen Namen in seinem Charakterfenster oder im ausgewählten Einheitenfenster klickst </p>",
+                  "item_message": "[str(i18n_data.new_title.description)]<p>Hat dieser Titel nicht einen schönen Klang? Du kannst auswählen, welchen Titel dieser Gegenstand verwendet, indem du mit der rechten Maustaste auf den Namen im ausgewählten Einheitenfenster klickst. <i>Du sollst dir auch überlegen, ob du [str (i18n_data.entity.stonehearth: unit_info.custom_name)] einen passenderen Namen gibst, um den neuen Titel zu ehren. Du kannst den Namen ändern indem du mit der linken Maustaste auf den Namen des ausgewählten Einheitenfensters klickst.</i></p>"
+               }
+            }
          }
       },
       "shell": {
@@ -6518,16 +6556,18 @@
                "auto_craft_killed_items_description": "Wenn ein Gegenstand, den Sie besitzen, wie ein Tor, ein Übungspuppe oder eine Belagerungswaffe zerstört wird, wird automatisch ein neuer Fertigungsauftrag erstellt.",
                "default_craft_order_quality_preference": "Standardeinstellung für die Fertigungsqualität",
                "default_craft_order_quality_preference_description": "Bei der Herstellung eines Gegenstands werden die Handwerker Zutaten aufgrund ihrer Qualität berücksichtigen: niedrigere (-1), höhere (1) oder keine Präferenz (0). AUSWAHL VON -1 ODER 1 KANN DIE SPIELLEISTUNG NEGATIV AUSWIRKEN.",
+               "show_unreachable_ingredients_notification": "Alarm für nicht erreichbare Handwerkszutaten",
+               "show_unreachable_ingredients_notification_description": "Zeigt eine Alarm an, wenn ein Handwerker eine Rezeptzutat nicht erreichen kann.<span class='warn'>WARNUNG:</span>Dies kann viele Alarme verursachen!",
                "auto_harvest_enabled": "Nachwachsende Rohstoffe automatischen Ernten",
                "auto_harvest_enabled_description": "Wenn eine erneuerbare Ressource erntbar ist, die in deinem Besitz ist, wird automatisch einen Erntebefehl für diese Ressource ausgegeben.",
-               "auto_harvest_animals_enabled": "Tiere produzieren automatisch nachwachsende Rohstoffe",
-               "auto_harvest_animals_enabled_description": "Tiere, die Sie besitzen, produzieren automatisch nachwachsende Rohstoffe (z. B. produzieren deine BuckBucks Eier).",
                "auto_harvest_tree_stumps": "Automatisches Baumstumpfernten",
                "auto_harvest_tree_stumps_description": "Wenn Bäume abgeholzt werden, bleiben erntefähige Stümpfe erhalten. Durch Aktivieren dieser Option werden die Stümpfe automatisch geerntet.",
                "default_to_worst_fertilizer": "Standardmäßig der schlechteste Dünger",
                "default_to_worst_fertilizer_description": "Wenn Farmer Felder düngen, verwenden sie automatisch den besten verfügbaren Dünger. Aktiviere diese Option, damit sie stattdessen den schlechtesten verfügbaren Dünger verwenden.",
                "default_fertilizer": "Standarddünger:",
                "default_fertilizer_description": "Lege beim Erstellen einer neuen Farm die Düngerpräferenz fest.",
+               "auto_select_new_titles": "Automatisch Titel auswählen",
+               "auto_select_new_titles_description": "Wenn einer deiner Bürger (oder anderer Artikel) einen Titel erhält, wird er automatisch als aktiver Titel ausgewählt.",
                "terrain_slice_buildings": "Gelände-Gebäude-Schnitt",
                "terrain_slice_buildings_description": "Rendere keine Objekte im Gelände-Schnitt-Modus, die von sichtbaren Objekten außerhalb des Geländes unterstützt werden.",
                "water_signal_update_frequency": "Wassersignal-Aktualisierungsrate",

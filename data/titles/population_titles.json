@@ -1,4 +1,7 @@
 {
+   "none": {
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.none.description)"
+   },
    "goblin_killer": {
       "ordinal": 1,
       "requirement": {
@@ -84,6 +87,93 @@
             "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.defender.1000_display_name)",
             "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.defender.1000_description)",
             "required_value": 1000
+         }
+      ]
+   },
+   "prolific_crafter": {
+      "ordinal": 10,
+      "requirement": {
+         "statistics": {
+            "category": "totals",
+            "name": "crafts"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.prolific_crafter.100_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.prolific_crafter.100_description)",
+            "required_value": 100
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.prolific_crafter.200_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.prolific_crafter.200_description)",
+            "required_value": 200
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.prolific_crafter.500_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.prolific_crafter.500_description)",
+            "required_value": 500
+         },
+         {
+            "rank": 4,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.prolific_crafter.1000_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.prolific_crafter.1000_description)",
+            "required_value": 1000
+         }
+      ]
+   },
+   "excellent_crafter": {
+      "ordinal": 11,
+      "requirement": {
+         "statistics": {
+            "category": "quality_crafts",
+            "name": 3
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.excellent_crafter.10_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.excellent_crafter.10_description)",
+            "required_value": 10
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.excellent_crafter.25_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.excellent_crafter.25_description)",
+            "required_value": 25
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.excellent_crafter.100_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.excellent_crafter.100_description)",
+            "required_value": 100
+         }
+      ]
+   },
+   "master_crafter": {
+      "ordinal": 12,
+      "requirement": {
+         "statistics": {
+            "category": "quality_crafts",
+            "name": 4
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.master_crafter.1_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.master_crafter.1_description)",
+            "required_value": 1
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.master_crafter.10_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.master_crafter.10_description)",
+            "required_value": 10
          }
       ]
    }

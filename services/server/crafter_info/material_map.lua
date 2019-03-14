@@ -30,10 +30,7 @@ function MaterialMap:add(keys, value)
          bucket = {}
          self._map[key] = bucket
       end
-
-      if not self:contains(key, value) then
-         table.insert(bucket, value)
-      end
+      bucket[value] = true
    end
 end
 
@@ -43,10 +40,10 @@ function MaterialMap:intersecting_values(keys)
    local keys_table = radiant.util.split_string(keys, ' ')
 
    local last_key = table.remove(keys_table)
-   local values = radiant.shallow_copy(self._map[last_key] or {})
+   local values = radiant.keys(self._map[last_key] or {})
 
    for _, key in ipairs(keys_table) do
-      for index = radiant.size(values), 1, -1 do
+      for index = #values, 1, -1 do
          local value = values[index]
          if not self:contains(key, value) then
             table.remove(values, index)
@@ -61,13 +58,7 @@ end
 -- Returns true if it does, else false.
 --
 function MaterialMap:contains(key, value1)
-   for _, value2 in ipairs(self._map[key] or {}) do
-      if util.deep_compare(value2, value1, true) then
-         return true
-      end
-   end
-
-   return false
+   return self._map[key] and self._map[key][value1]
 end
 
 return MaterialMap

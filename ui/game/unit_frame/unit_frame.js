@@ -14,21 +14,77 @@ $(top).on("selection_has_component_info_changed", function (_, e) {
    _selectionHasComponentInfoChanged();
 });
 
-$(top).on('stonehearthReady', function (cc) {
-   if (!App.gameView) {
-      return;
-   }
-   var unitFrameExtras = App.gameView.getView(App.UnitFrameExtrasView);
-   if (!unitFrameExtras) {
-      App.gameView.addView(App.UnitFrameExtrasView, {});
-   }
-});
-
-App.UnitFrameExtrasView = App.View.extend({
-   templateName: 'unitFrameExtras'
-});
-
 App.StonehearthUnitFrameView.reopen({
+   components: {
+      "stonehearth:ai": {
+          "status_text_data": {}
+      },
+      "stonehearth:attributes": {
+          "attributes": {}
+      },
+      "stonehearth:building": {},
+      "stonehearth:fabricator": {},
+      "stonehearth:incapacitation": {
+          "sm": {}
+      },
+      "stonehearth:item_quality": {
+      },
+      "stonehearth:commands": {
+          "commands": {}
+      },
+      "stonehearth:job": {
+          'curr_job_controller': {}
+      },
+      "stonehearth:buffs": {
+          "buffs": {
+              "*": {}
+          }
+      },
+      'stonehearth:expendable_resources': {},
+      "stonehearth:unit_info": {},
+      "stonehearth:stacks": {},
+      "stonehearth:material": {},
+      "stonehearth:workshop": {
+          "crafter": {},
+          "crafting_progress": {},
+          "order": {}
+      },
+      "stonehearth:happiness": {
+          "current_mood_buff": {}
+      },
+      "stonehearth:pet": {},
+      "stonehearth:party": {
+          "members": {
+              "*": {
+                  "entity": {
+                      "stonehearth:work_order": {
+                          "work_order_statuses": {},
+                          "work_order_refs": {}
+                      }
+                  }
+              }
+          }
+      },
+      "stonehearth:party_member": {
+          "party": {
+              "stonehearth:unit_info": {}
+          }
+      },
+      "stonehearth:siege_weapon": {},
+      "stonehearth:door": {},
+      "stonehearth:iconic_form": {
+          "root_entity": {
+              "uri": {},
+              'stonehearth:item_quality': {},
+          }
+      },
+      "stonehearth:work_order": {
+          "work_order_statuses": {},
+          "work_order_refs": {}
+      },
+      "stonehearth_ace:titles": {}
+  },
+
    didInsertElement: function() {
       var self = this;
       self._super();
@@ -43,12 +99,27 @@ App.StonehearthUnitFrameView.reopen({
                   App.stonehearthClient.showPetCharacterSheet(self.get('uri'));
                }
                else {
-                  self.$('#nameInput').val(i18n.t(self.get('display_name'), { self: self.get('model') }))
+                  var name = self.get('custom_name');
+                  self.$('#nameInput').val(name)
                      .width(self.$('#nametag').outerWidth() - 16)  // 16 is the total padding and border of #nameInput
                      .show()
                      .focus()
                      .select();
                }
+            }
+         })
+         .on('contextmenu', function(e) {
+            self._showTitleSelectionList();
+            return false;
+         });
+
+      $('#nametag.tooltipstered').tooltipster('destroy');
+      self.$('#nametag').tooltipster({
+            delay: 500,  // Don't trigger unless the player really wants to see it.
+            content: ' ',  // Just to force the tooltip to appear. The actual content is created dynamically below, since we might not have the name yet.
+            functionBefore: function (instance, proceed) {
+               instance.tooltipster('content', self._getNametagTooltipText(self));
+               proceed();
             }
          });
       
@@ -86,9 +157,36 @@ App.StonehearthUnitFrameView.reopen({
       _selectionHasComponentInfoChanged();
    },
 
+   _getNametagTooltipText: function(self) {
+      var text = self.get('model.stonehearth:unit_info.current_title.description');
+      var title;
+      if (text) {
+         text = i18n.t(text);
+         title = self.$('#nametag').text().trim();
+      }
+      else {
+         text = self.$('#nametag').text().trim();
+      }
+
+      return $(App.tooltipHelper.createTooltip(title || "", text, ""));
+   },
+
    willDestroyElement: function() {
       this._nameHelper.destroy();
       this._super();
+   },
+
+   _showTitleSelectionList: function() {
+      var self = this;
+
+      var result = stonehearth_ace.createTitleSelectionList(self._titles, self.get('model.stonehearth:unit_info.titles'), self.get('uri'), self.get('custom_name'));
+      if (result) {
+         result.container.css({
+            height: result.titlesArr.length * 37
+         })
+         self.$('#topBar').append(result.container);
+         result.showList();
+      }
    },
 
    // overriding this to get rid of the activity part
@@ -178,14 +276,20 @@ App.StonehearthUnitFrameView.reopen({
          this.$('#Lvl').text( i18n.t('stonehearth:ui.game.unit_frame.Lvl'));
       }
 
-      var display_name = this.get('model.stonehearth:unit_info.display_name');
-      var custom_name = this.get('model.stonehearth:unit_info.custom_name');
+      var unit_info = this.get('model.stonehearth:unit_info');
+      var display_name = unit_info && unit_info.display_name;
+      var custom_name = unit_info && unit_info.custom_name;
       if (alias) {
          var catalogData = App.catalog.getCatalogData(alias);
          if (!catalogData) {
             console.log("no catalog data found for " + alias);
          } else {
-            if (!display_name || !custom_name) {
+            if (custom_name && custom_name.substring(0, 5) == 'i18n(') {
+               custom_name = i18n.t(catalogData.display_name);
+               this.set('model.stonehearth:unit_info.custom_name', custom_name);
+            }
+
+            if (!display_name) {
                display_name = catalogData.display_name;
             }
 
@@ -195,10 +299,23 @@ App.StonehearthUnitFrameView.reopen({
          }
       }
 
+      this.set('custom_name', custom_name);
       this.set('display_name', display_name);
       this.notifyPropertyChange('display_name');
       this.set('description', description);
       this.notifyPropertyChange('description');
+   }.observes('model.uri'),
+
+   _loadAvailableTitles: function() {
+      // when the selection changes, load up the appropriate titles json
+      var self = this;
+      self._titles = {};
+      var json = self.get('model.stonehearth_ace:titles.titles_json');
+      if (json) {
+         stonehearth_ace.loadAvailableTitles(json, function(data){
+            self._titles = data;
+         });
+      }
    }.observes('model.uri'),
 
    _updateJobChangeable: function() {

@@ -1,4 +1,100 @@
 App.StonehearthCitizenCharacterSheetView.reopen({
+   components: {
+      'stonehearth:unit_info': {},
+      'stonehearth:buffs' : {
+         'buffs' : {
+            '*' : {}
+         }
+      },
+      'stonehearth:traits' : {
+         'traits': {
+            '*' : {}
+         }
+      },
+      'stonehearth:equipment' : {
+         'equipped_items' : {
+            '*' : {
+               'uri': {}
+            }
+         }
+      },
+      'stonehearth:attributes' : {},
+      'stonehearth:expendable_resources' : {},
+      'stonehearth:personality' : {},
+      'stonehearth:score' : {},
+      'stonehearth:happiness': {
+         'current_mood_buff': {}
+      },
+
+      'stonehearth:job' : {
+         'curr_job_controller' : {},
+         'job_controllers' : {
+            '*' : {}
+         }
+      },
+      'stonehearth:storage' : {
+         'item_tracker' : {
+            'tracking_data': {
+               'stonehearth:loot:gold' : {
+                  'items' : {
+                     '*' : {
+                        'stonehearth:stacks': {}
+                     }
+                  }
+               }
+            }
+         }
+      },
+      'stonehearth:appeal': {},
+      'stonehearth:teleportation': {},
+      'stonehearth_ace:titles': {}
+   },
+
+   didInsertElement: function() {
+      var self = this;
+      self._super();
+      
+      self.$('#name').focus(function() {
+         self.$('#name').val(self.get('model.custom_name'))
+            .select();
+      })
+      .blur(function() {
+         // if the name didn't change, make sure we add back any title we might have!
+         // (if the name did change, this will get taken care of automatically by the _onNameChanged function)
+         if (self.$('#name').val() == self.get('model.custom_name')) {
+            self.$('#name').val(self.get('model.unit_name'));
+         }
+      })
+      .on('mousedown', function(e) {
+         if (e.button == 2) {
+            self._showTitleSelectionList();
+            e.preventDefault();
+         }
+      });
+   },
+
+   _onNameChanged: function() {
+      var self = this;
+      var unit_info = self.get('model.stonehearth:unit_info');
+      var unit_name = i18n.t(unit_info && unit_info.display_name, {self: self.get('model')});
+      var custom_name = unit_info && unit_info.custom_name;
+      var title_description = unit_info && unit_info.current_title && unit_info.current_title.description;
+      self.set('model.unit_name', unit_name);
+      self.set('model.custom_name', custom_name);
+
+      var text = title_description;
+      var title;
+      if (text) {
+         text = i18n.t(text);
+         title = unit_name;
+      }
+      else {
+         text = unit_name;
+      }
+
+      App.guiHelper.addTooltip(self.$('#name'), text, title || "");
+   }.observes('model.stonehearth:unit_info'),
+
    //Go through each job we've had and annotate the perk table accordingly
    _updateJobsAndPerks : function() {
       var self = this;
@@ -101,5 +197,27 @@ App.StonehearthCitizenCharacterSheetView.reopen({
       // }
 
       $(target_div).find('.retiredAt').show();
-   }
+   },
+
+   _showTitleSelectionList: function(e) {
+      var self = this;
+
+      var result = stonehearth_ace.createTitleSelectionList(self._titles, self.get('model.stonehearth:unit_info.titles'), self.get('uri'), self.get('model.custom_name'));
+      if (result) {
+         self.$('#name').after(result.container);
+         result.showList();
+      }
+   },
+
+   _loadAvailableTitles: function() {
+      // when the selection changes, load up the appropriate titles json
+      var self = this;
+      self._titles = {};
+      var json = self.get('model.stonehearth_ace:titles.titles_json');
+      if (json) {
+         stonehearth_ace.loadAvailableTitles(json, function(data){
+            self._titles = data;
+         });
+      }
+   }.observes('model.uri')
 });

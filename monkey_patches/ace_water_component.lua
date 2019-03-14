@@ -9,20 +9,20 @@ AceWaterComponent._ace_old_activate = WaterComponent.activate
 function AceWaterComponent:activate()
    self:_ace_old_activate()
 
-   self:_update_pathing()
+   --self:_update_pathing()
+   self:reset_changed_on_tick()
 end
 
-function AceWaterComponent:update_pathable_region()
-   if self._sv.region and (not self._sv.last_updated_pathable_region or not self._sv.last_updated_pathable_region:equals(self._sv.region:get())) then
-      -- only add it to the horizontal layer of water that's one voxel down from the top
-      local region = self._sv.region:get():extruded('y', 0, -1)
-      local bounds = region:get_bounds()
-      region:subtract_region(Region3(bounds):extruded('y', 0, -1))
+function AceWaterComponent:reset_changed_on_tick()
+   self._volume_changed_on_tick = 0
+end
 
-      region:optimize('water pathing')
-      self._entity:add_component('stonehearth_ace:vertical_pathing_region'):set_region(region)
-      self._sv.last_updated_pathable_region = self._sv.region:get()
-      self.__saved_variables:mark_changed()
+function AceWaterComponent:was_changed_on_tick()
+   if math.abs(self._volume_changed_on_tick) > 0.0001 then
+      self._calculated_up_to_date = false
+      return true
+   else
+      return false
    end
 end
 
@@ -58,8 +58,8 @@ AceWaterComponent._ace_old_add_water = WaterComponent.add_water
 function AceWaterComponent:add_water(volume, add_location)
    local volume, info = self:_ace_old_add_water(volume, add_location)
 
-   self._calculated_up_to_date = false
-   stonehearth_ace.water_signal:water_component_modified(self._entity)
+   self._volume_changed_on_tick = self._volume_changed_on_tick + volume
+   stonehearth_ace.water_signal:water_component_modified(self._entity, true)
 
    return volume, info
 end
@@ -68,8 +68,8 @@ AceWaterComponent._ace_old_remove_water = WaterComponent.remove_water
 function AceWaterComponent:remove_water(volume, clamp)
    local volume = self:_ace_old_remove_water(volume, clamp)
 
-   self._calculated_up_to_date = false
-   stonehearth_ace.water_signal:water_component_modified(self._entity)
+   self._volume_changed_on_tick = self._volume_changed_on_tick - volume
+   stonehearth_ace.water_signal:water_component_modified(self._entity, true)
 
    return volume
 end
@@ -89,14 +89,28 @@ function AceWaterComponent:set_region(boxed_region, height)
 
    self._calculated_up_to_date = false
    stonehearth_ace.water_signal:water_component_modified(self._entity)
-   self:_update_pathing()
+   --self:_update_pathing()
 end
 
-function AceWaterComponent:_update_pathing()
-   -- if we want to enable vertical pathing in water regions, this is where we do that (or queue it)
-   -- updates to large/complex water bodies can potentially cause lag
-   -- entities tend to walk on water for a bit before getting low enough to trigger their swimming animation
-   --stonehearth_ace.water_signal:water_component_pathing_modified(self._entity)
-end
+-- function AceWaterComponent:_update_pathing()
+--    -- if we want to enable vertical pathing in water regions, this is where we do that (or queue it)
+--    -- updates to large/complex water bodies can potentially cause lag
+--    -- entities tend to walk on water for a bit before getting low enough to trigger their swimming animation
+--    stonehearth_ace.water_signal:water_component_pathing_modified(self._entity)
+-- end
+
+-- function AceWaterComponent:update_pathable_region()
+--    if self._sv.region and (not self._sv.last_updated_pathable_region or not self._sv.last_updated_pathable_region:equals(self._sv.region:get())) then
+--       -- only add it to the horizontal layer of water that's one voxel down from the top
+--       local region = self._sv.region:get():extruded('y', 0, -1)
+--       local bounds = region:get_bounds()
+--       region:subtract_region(Region3(bounds):extruded('y', 0, -1))
+
+--       region:optimize('water pathing')
+--       self._entity:add_component('stonehearth_ace:vertical_pathing_region'):set_region(region)
+--       self._sv.last_updated_pathable_region = self._sv.region:get()
+--       self.__saved_variables:mark_changed()
+--    end
+-- end
 
 return AceWaterComponent

@@ -26,6 +26,13 @@
          "default": true,
          "ordinal": 3
       },
+      "show_unreachable_ingredients_notification": {
+         "type": "boolean",
+         "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.show_unreachable_ingredients_notification)",
+         "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.show_unreachable_ingredients_notification_description)",
+         "default": false,
+         "ordinal": 4
+      },
       "enable_auto_harvest": {
          "type": "boolean",
          "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.auto_harvest_enabled)",
@@ -83,6 +90,13 @@
          },
          "default": "1",
          "ordinal": 12
+      },
+      "auto_select_new_titles": {
+         "type": "boolean",
+         "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.auto_select_new_titles)",
+         "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.auto_select_new_titles_description)",
+         "default": true,
+         "ordinal": 15
       },
       "terrain_slice_buildings": {
          "type": "boolean",

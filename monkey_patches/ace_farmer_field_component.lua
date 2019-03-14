@@ -255,7 +255,7 @@ function AceFarmerFieldComponent:set_crop(session, response, new_crop_id)
    local result = self:_ace_old_set_crop(session, response, new_crop_id)
 
    self:_cache_best_water_level()
-   self:_update_effective_water_level()
+   self:_update_effective_humidity_level()
 
    return result
 end
@@ -430,6 +430,7 @@ function AceFarmerFieldComponent:_update_climate()
 
    if changed then
       self._sv._last_set_water_level = self._sv._water_level
+      self:_update_effective_humidity_level()
       self:_set_growth_factors()
       self.__saved_variables:mark_changed()
    end
@@ -501,7 +502,6 @@ function AceFarmerFieldComponent:_set_water_volume(volume)
       return
    end
 
-   self:_update_effective_water_level()
    self:_update_climate()
 end
 
@@ -545,21 +545,21 @@ function AceFarmerFieldComponent:_cache_best_water_level()
    self._best_water_level, self._next_water_level = self:get_best_water_level()
 end
 
-function AceFarmerFieldComponent:_update_effective_water_level()
+function AceFarmerFieldComponent:_update_effective_humidity_level()
    local levels = stonehearth.constants.farming.water_levels
    local relative_level = levels.NONE
 
-   if self._best_water_level and self._sv._water_level >= self._best_water_level.min_level then
-      if not self._next_water_level or self._sv._water_level < self._next_water_level.min_level then
+   if self._best_water_level and self._sv.humidity_level >= self._best_water_level.min_level then
+      if not self._next_water_level or self._sv.humidity_level < self._next_water_level.min_level then
          relative_level = levels.PLENTY
       else
          relative_level = levels.EXTRA
       end
-   elseif self._sv._water_level > 0 then
+   elseif self._sv.humidity_level > 0 then
       relative_level = levels.SOME
    end
 
-   if self._sv.effective_water_level ~= relative_level then
+   if self._sv.effective_humidity_level ~= relative_level then
       local size = self._sv.size
       local contents = self._sv.contents
       if relative_level == levels.EXTRA then
@@ -584,7 +584,7 @@ function AceFarmerFieldComponent:_update_effective_water_level()
          end
       end
 
-      self._sv.effective_water_level = relative_level
+      self._sv.effective_humidity_level = relative_level
       self.__saved_variables:mark_changed()
    end
 end
