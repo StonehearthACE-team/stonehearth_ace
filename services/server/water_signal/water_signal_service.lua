@@ -309,9 +309,14 @@ function WaterSignalService:_on_tick()
       local location = waterfall:get_location()
       if location then
          local waterfall_region = waterfall:get_region():get():translated(location)
-         local chunks = self:_get_chunks(waterfall_region)
+         -- waterfalls are 1x1 x/z, and we no longer care about y dimension for chunks
+         -- since waterfalls never get moved and their size doesn't change, once their chunks are determined, they don't need to be redetermined
+         local chunks = self._waterfall_chunks[waterfall_id]
+         if not chunks then
+            chunks = self:_get_chunks(waterfall_region)
+            self._waterfall_chunks[waterfall_id] = chunks
+         end
          local checked = {}
-         self._waterfall_chunks[waterfall_id] = chunks
 
          for chunk_id, _ in pairs(chunks) do
             for id, _ in pairs(self._signals_by_chunk[chunk_id] or {}) do

@@ -100,15 +100,15 @@ function AceWaterfallComponent:_update_region()
       cube.min.y = bottom
    end
 
-   self._sv.region:modify(function(cursor)
+   if self:_is_region_different(cube, self._sv.cube) then
+      self._sv.region:modify(function(cursor)
          cursor:clear()
 
          if cube then
             cursor:add_cube(cube)
          end
       end)
-
-   if self:_is_region_different(cube, self._sv.cube) then
+      
       self._entity:add_component('region_collision_shape'):set_region(self._sv.region)
 
       stonehearth_ace.water_signal:waterfall_component_modified(self._entity)
