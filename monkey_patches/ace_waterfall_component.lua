@@ -1,3 +1,6 @@
+local Point3 = _radiant.csg.Point3
+local Cube3 = _radiant.csg.Cube3
+
 local log = radiant.log.create_logger('waterfall')
 
 local WaterfallComponent = require 'stonehearth.components.waterfall.waterfall_component'
@@ -13,15 +16,6 @@ function AceWaterfallComponent:activate()
 
    if self._is_restore then
       self:_cache_location()
-   else
-      self._parent_trace = self._entity:add_component('mob'):trace_parent('waterfall added to world', _radiant.dm.TraceCategories.SYNC_TRACE)
-      :on_changed(function(parent_entity)
-            if parent_entity then
-               --we were just added to the world
-               self._parent_trace:destroy()
-               self:_cache_location()
-            end
-         end)
    end
 
    self:reset_changed_on_tick()
@@ -29,30 +23,10 @@ end
 
 function AceWaterfallComponent:reset_changed_on_tick()
    self._volume_changed_on_tick = 0
-   self._top_on_tick = self._sv.waterfall_top
-   self._bottom_on_tick = self._sv.waterfall_bottom
 end
 
 function AceWaterfallComponent:was_changed_on_tick()
-   if math.abs(self._volume_changed_on_tick) > 0.0001 then
-      --log:debug('%s volume changed by %d', self._entity, self._volume_changed_on_tick)
-      return true
-   end
-   if (self._bottom_on_tick ~= nil) ~= (self._sv.waterfall_bottom ~= nil) then
-      --log:debug('%s bottom point changed', self._entity)
-      return true
-   end
-   if self._top_on_tick ~= self._sv.waterfall_top then
-      --log:debug('%s top point changed', self._entity)
-      return true
-   end
-   if self._bottom_on_tick and (self._bottom_on_tick.x ~= self._sv.waterfall_bottom.x or 
-         self._bottom_on_tick.z ~= self._sv.waterfall_bottom.z or 
-         math.floor(self._bottom_on_tick.y) ~= math.floor(self._sv.waterfall_bottom.y)) then
-      --log:debug('%s bottom point changed from %s to %s', self._entity, self._bottom_on_tick, self._sv.waterfall_bottom)
-      return true
-   end
-   return false
+   return math.abs(self._volume_changed_on_tick) > 0.0001
 end
 
 function AceWaterfallComponent:get_location()
@@ -72,18 +46,88 @@ function AceWaterfallComponent:set_volume(volume)
    stonehearth_ace.water_signal:waterfall_component_modified(self._entity, true)
 end
 
-AceWaterfallComponent._ace_old__update_region = WaterfallComponent._update_region
-function AceWaterfallComponent:_update_region()
-   self:_ace_old__update_region()
-
-   self._entity:add_component('region_collision_shape'):set_region(self._sv.region)
+AceWaterfallComponent._ace_old_set_interface = WaterfallComponent.set_interface
+function AceWaterfallComponent:set_interface(from_point, to_point)
    self:_cache_location()
+   self:_ace_old_set_interface(from_point, to_point)
+end
+
+-- override to only consider change if the water component actually changed this tick
+function AceWaterfallComponent:_trace_target()
+   self:_destroy_target_trace()
+
+   local target = self._sv.target
+   if not target then
+      return
+   end
+
+   self._target_trace = radiant.events.listen(target, 'stonehearth_ace:water:level_changed', self, self._on_target_changed)
+   self:_on_target_changed()
+end
+
+function AceWaterfallComponent:_on_target_changed(water_level)
+   local target = self._sv.target
+   if not target or not target:is_valid() then
+      return
+   end
+   
+   if not water_level then
+      local target_water_component = target:add_component('stonehearth:water')
+      water_level = target_water_component:get_water_level()
+   end
+   
+   self._sv.waterfall_bottom.y = water_level
+
+   self:_update_region()
+end
+
+-- override this function because it's inefficient; we're caching location now
+function AceWaterfallComponent:_update_region()
+   local cube = nil
+
+   if self._sv.waterfall_top and self._sv.waterfall_bottom then
+      -- top is always integer
+      local top = self._sv.waterfall_top.y - self._location.y
+      -- bottom may be non-integer since it tracks target water level
+      local bottom = math.floor(self._sv.waterfall_bottom.y) - self._location.y
+
+      if bottom > top then
+         bottom = top
+      end
+
+      cube = Cube3(Point3.zero)
+      cube.max.y = top
+      cube.min.y = bottom
+   end
+
+   self._sv.region:modify(function(cursor)
+         cursor:clear()
+
+         if cube then
+            cursor:add_cube(cube)
+         end
+      end)
+
+   if self:_is_region_different(cube, self._sv.cube) then
+      self._entity:add_component('region_collision_shape'):set_region(self._sv.region)
+
+      stonehearth_ace.water_signal:waterfall_component_modified(self._entity)
+   end
+
+   self.__saved_variables:mark_changed()
+end
+
+function AceWaterfallComponent:_is_region_different(c1, c2)
+   -- we only care about a difference of existence or a difference of y values
+   return (c1 == nil) ~= (c2 == nil) or 
+         (c1 ~= nil and
+            (c1.min.y ~= c2.min.y or c1.max.y ~= c2.max.y))
 end
 
 function AceWaterfallComponent:_cache_location()
    self._location = radiant.entities.get_world_grid_location(self._entity)
 
-   stonehearth_ace.water_signal:waterfall_component_modified(self._entity, true)
+   stonehearth_ace.water_signal:waterfall_component_modified(self._entity)
 end
 
 return AceWaterfallComponent

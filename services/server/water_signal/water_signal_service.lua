@@ -237,7 +237,7 @@ function WaterSignalService:_on_tick()
 
    -- first check the volume only changes to see if they should be upgraded to real changes (i.e., volume change was significant)
    for water_id, water in pairs(self._changed_water_volumes) do
-      if water:was_changed_on_tick() then
+      if not self._changed_waters[water_id] and water:was_changed_on_tick() then
          self._changed_waters[water_id] = water
       --    log:debug('water %s had significant volume changed', water_id)
       -- else
@@ -246,7 +246,7 @@ function WaterSignalService:_on_tick()
       self._changed_water_volumes[water_id] = nil
    end
    for waterfall_id, waterfall in pairs(self._changed_waterfall_volumes) do
-      if waterfall:was_changed_on_tick() then
+      if not self._changed_waterfalls[waterfall_id] and waterfall:was_changed_on_tick() then
          self._changed_waterfalls[waterfall_id] = waterfall
       --    log:debug('waterfall %s had significant volume changed', waterfall_id)
       -- else
@@ -256,7 +256,9 @@ function WaterSignalService:_on_tick()
    end
 
    for water_id, water in pairs(self._changed_waters) do
-      --log:debug('water %s changed, processing...', water_id)   
+      radiant.events.trigger_async(radiant.entities.get_entity(water_id), 'stonehearth_ace:water:level_changed', water:get_water_level())
+
+      --log:debug('water %s changed, processing... (water level = %s)', water_id, water:get_water_level())
       local old_chunks = self._water_chunks[water_id]
       
       local location = water:get_location()
@@ -386,6 +388,8 @@ function WaterSignalService:_on_tick()
    self._processing_on_tick = false
 end
 
+-- old way of doing this was cubes
+-- but since most content is spread horizontally, new way is the old minecraft way: only care about x and z bounds, not y
 function WaterSignalService:_get_chunks(region)
    local chunks = {}
    if region then
@@ -394,15 +398,11 @@ function WaterSignalService:_get_chunks(region)
       local max = bounds.max
       local min_x = floor((min.x + 1) * CHUNK_DIVISOR)
       local max_x = floor(max.x * CHUNK_DIVISOR)
-      local min_y = floor((min.y + 1) * CHUNK_DIVISOR)
-      local max_y = floor(max.y * CHUNK_DIVISOR)
       local min_z = floor((min.z + 1) * CHUNK_DIVISOR)
       local max_z = floor(max.z * CHUNK_DIVISOR)
       for x = min_x, max_x do
-         for y = min_y, max_y do
-            for z = min_z, max_z do
-               chunks[format('%d,%d,%d', x, y, z)] = true
-            end
+         for z = min_z, max_z do
+            chunks[format('%d,%d', x, z)] = true
          end
       end
    end

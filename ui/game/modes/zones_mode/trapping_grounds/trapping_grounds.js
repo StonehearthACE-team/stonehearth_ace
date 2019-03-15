@@ -1,12 +1,4 @@
 App.StonehearthTrappingGroundsView.reopen({
-   components: {
-      "uri": {},
-      "stonehearth:unit_info": {},
-      "stonehearth:trapping_grounds" : {
-         "wilderness_level": {}
-      }
-   },
-   
    _trappingGroundsWildernessLevelChange: function() {
       var self = this;
       var currentWildernessLevel = self.get('model.stonehearth:trapping_grounds.wilderness_level');
