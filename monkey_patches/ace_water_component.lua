@@ -14,16 +14,11 @@ function AceWaterComponent:activate()
 end
 
 function AceWaterComponent:reset_changed_on_tick()
-   self._volume_changed_on_tick = 0
+   self._prev_level = self._location and self:get_water_level()
 end
 
 function AceWaterComponent:was_changed_on_tick()
-   if math.abs(self._volume_changed_on_tick) > 0.0001 then
-      self._calculated_up_to_date = false
-      return true
-   else
-      return false
-   end
+   return not self._prev_level or not self._location or math.abs(self:get_water_level() - self._prev_level) > 0.0001
 end
 
 function AceWaterComponent:get_volume_info()
@@ -58,7 +53,6 @@ AceWaterComponent._ace_old_add_water = WaterComponent.add_water
 function AceWaterComponent:add_water(volume, add_location)
    local volume, info = self:_ace_old_add_water(volume, add_location)
 
-   self._volume_changed_on_tick = self._volume_changed_on_tick + volume
    stonehearth_ace.water_signal:water_component_modified(self._entity, true)
 
    return volume, info
@@ -68,7 +62,6 @@ AceWaterComponent._ace_old_remove_water = WaterComponent.remove_water
 function AceWaterComponent:remove_water(volume, clamp)
    local volume = self:_ace_old_remove_water(volume, clamp)
 
-   self._volume_changed_on_tick = self._volume_changed_on_tick - volume
    stonehearth_ace.water_signal:water_component_modified(self._entity, true)
 
    return volume

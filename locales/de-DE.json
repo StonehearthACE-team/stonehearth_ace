@@ -314,15 +314,55 @@
          }
       },
       "weather": {
+         "windy": {
+            "description": "Heulende Winde und tosende Stürme ziehen durch das Land.<ul><li>Etwas mehr Luftfeuchtigkeit.</li></ul>"
+         },
+         "thunderstorm": {
+            "description": "Donner rollt ... Er rollte eine Sechs.<ul><li>Übermäßige Luftfeuchtigkeit.</li><li>Sonnenlicht ist stark reduziert.</li><li>Sichtradius ist reduziert.</li><li>Ungeschützt Hearthlinge und Weidetiere werden nass.</li><li>Ungeschützte Hearthlinge werden manchmal vom Blitz getroffen.</li><li>Der Boden und die Bäume werden manchmal vom Blitz getroffen.</li></ul>"
+         },
+         "sunny": {
+            "description": "Ein weiterer Tag mit endlosem Sonnenschein und blauem Himmel.<ul><li>Sonnenlicht ist etwas erhöht.</li></ul>",
+            "sunny_desert": {
+               "description": "Ein weiterer Tag mit endlosem Sonnenschein und blauem Himmel.<ul><li>Sonnenlicht ist etwas erhöht.</li><li>Ungeschützten Hearthlingen ist es zu heiß, um so effektiv arbeiten zu können.</li></ul>"
+            }
+         },
          "snow": {
+            "description": "Kälte, Frost und Sonnenschein: Ein Tag der Wunder! Warum bist du, mein Freund, immer noch tief im Schlaf??<ul><li>Sonnenlicht ist etwas reduziert.</li><li>Sichtradius ist geringfügig reduziert.</li><li>Ungeschützten Hearthlingen ist zu kalt, um effektiv zu arbeiten.</li><li>Ungeschützte Weidetiere werden durch die Kälte verletzt.</li></ul>",
+            "snow_sunny": {
+               "description": "Was für ein wunderschönes Winterwunderland heute ist!<ul><li>Sonnenlicht ist etwas reduziert.</li><li>Sichtradius ist nur geringfügig reduziert.</li><li>Ungeschützten Hearthlingen ist zu kalt, um effektiv zu arbeiten.</li></ul>"
+            },
             "snow_early": {
                "display_name": "Frühschnee",
-               "description": "Der Schnee ist dieses Jahr früher gekommen...<ul><li>Die Pflanzenwachstumsgeschwindigkeit ist leicht reduziert.</li><li>Ungeschützten Hearthlingen ist es zu kalt, um effektiv zu arbeiten.</li></ul>"
+               "description": "Der Schnee ist dieses Jahrfrüher gekommen...<ul><li>Sonnenlicht ist etwas reduziert.</li><li>Ungeschützten Hearthlingen ist es zu kalt, um effektiv zu arbeiten.</li></ul>"
             },
             "snow_late": {
                "display_name": "Spätschnee",
-               "description": "Der Schnee fällt immernoch in diesem Jahr...<ul><li>Die Pflanzenwachstumsgeschwindigkeit ist etwas reduziert.</li><li>Ungeschützten Hearthlingen ist es zu kalt, um effektiv zu arbeiten.</li><li>Ungeschützte Weidetiere werden durch die Kälte verletzt.</li></ul>"
+               "description": "Der Schnee fällt immernoch...<ul><li>Sonnenlicht ist reduziert.</li><li>Ungeschützten Hearthlingen ist es zu kalt, um effektiv zu arbeiten.</li><li>Ungeschützte Weidetiere werden durch die Kälte verletzt.</li></ul>"
             }
+         },
+         "sandstorm": {
+            "description": "Bedeckt eure Augen. Bedeckt eure Ohren. Bleibt am besten einfach drinnen.<ul><li>Sandwolken ziehen durch die Landschaft, zerstören Ernten und verletzen alle.</li><li>Ziemlich reduzierte Luftfeuchtigkeit.</li><li>Sonnenlicht ist stark reduziert.</li><li>Sichtradius ist geringfügig reduziert.</li><li>Ungeschützten Hearthlingen ist es zu heiß, um effektiv arbeiten zu können.</li><li>Ungeschützte Weidetiere werden durch die Hitze verletzt.</li></ul>",
+            "sandy_day": {
+               "description": "Da ist Sand und Staub ... überall!<ul><li>Leicht reduzierte Luftfeuchtigkeit.</li><li>Sonnenlicht ist etwas reduziert.</li><li>Sichtradius wird nur geringfügig reduziert.</li><li>Ungeschützten Hearthlingen ist es zu heiß, um effektiv arbeiten zu können.</li><li>Ungeschützte Weidetiere werden durch die Hitze verletzt.</li></ul>"
+            }
+         },
+         "rain": {
+            "description": "Wasser! Wasser vom Himmel!<ul><li>Viel mehr Luftfeuchtigkeit.</li><li>Sonnenlicht ist reduziert.</li><li>Sichtradius ist reduziert.</li><li>Ungeschützte Hearthlinge und Weidetiere werden nass.</li></ul>",
+            "rain_sunny": {
+               "description": "Es regnet, aber die Sonne lugt hervor!<ul><li>Viel mehr Luftfeuchtigkeit.</li><li>Sonnenlicht ist leicht reduziert.</li><li>Sichtradius ist etwas reduziert.</li><li>Ungeschützte Hearthlinge und Weidetiere werden nass.</li></ul>"
+            }
+         },
+         "lucky": {
+            "description": "Heute ist alles nur ein bisschen besser.<ul><li>Etwas mehr Luftfeuchtigkeit.</li><li>Sonnenlicht ist erhöht.</li><li>Hearthlinge werden wie durch Magie von all ihren Krankheiten geheilt.</li><li>Hearthlinge haben bei allem was Sie tun etwas mehr Glück.</li><li>Manchmal erscheint ein mysteriöser Regenbogen.</li></ul>"
+         },
+         "foggy": {
+            "description": "Ein Nebel verhüllt die Landschaft und verbirgt ungeahnte Geheimnisse.<ul><li>Untote Monster tauchen unter dem Schutz des Nebels auf.</li><li>Etwas mehr Luftfeuchtigkeit.</li><li>Sonnenlicht ist etwas reduziert.</li><li>Sichtradius ist stark reduziert.</li></ul>"
+         },
+         "cloudy": {
+            "description": "Bedeckter Himmel, perfekt zum Faulenzen auf der Veranda.<ul><li>Etwas mehr Luftfeuchtigkeit.</li><li>Sonnenlicht ist reduziert.</li></ul>"
+         },
+         "blizzard": {
+            "description": "Wind und Schnee und Hagel, oh mein!<ul><li>Pflanzenwachstum ist unterbrochen.</li><li>Sonnenlicht ist stark reduziert.</li><li>Sichtradius ist stark reduziert.</li><li>Ungeschützte Hearthlinge werden durch die Kälte verletzt.</li><li>Ungeschützte Weidetiere werden durch die Kälte verletzt.</li></ul>"
          }
       },
       "happiness": {
@@ -559,6 +599,18 @@
             "cheese_vat_drain": {
                "display_name": "Käsebottich ablassen",
                "description": "Beauftrage deinen Koch, um die übriggebliebene Molke zu entfernen und die Quarkmasse zu behandeln, um frischen Käse herzustellen!"
+            },
+            "carve_furniture": {
+               "display_name": "Möbel schnitzen",
+               "description": "Befiehl einem Schreiner dieses große alte Stück Holz in etwas Neues und Modisches zu verwandeln!"
+            },
+            "sculpt_block": {
+               "display_name": "Block meißeln",
+               "description": "Befiehl einem Arbeiter diesen Felsblock zu einen schönen und nützlichen Block zu meißeln, der nach Hause getragen und von einem Steinmetz bearbeiten werden kann!"
+            },
+            "sculpt_statue": {
+               "display_name": "Kunst machen!",
+               "description": "Befiehl einem Steinmetz sein Bestes zu geben und aus diesem Steinblock etwas Schönes zu schaffen!"
             }
          },
          "slaughter": {
@@ -751,6 +803,84 @@
          "shield_light": {
             "display_name": "Leichter Schild",
             "description": "Mut und Geschwindigkeit sind leicht erhöht."
+         },
+         "weather": {
+            "chilly_debuff": {
+               "display_name": "Kühles Wetter",
+               "description": "Es ist ein bisschen kalt hier draußen ... Vielleicht funktioniert es nicht so fleißig!"
+            },
+            "cold_debuff": {
+               "display_name": "Kaltes Wetter",
+               "description": "Es ist heute wirklich kalt! Ich sollte ein Dach über meinem Kopf bekommen."
+            },
+            "animal_cold_debuff": {
+               "display_name": "Kaltes Wetter",
+               "description": "Mann ist das kalt draußen.<ul><li>Dieses Tier wird im Laufe der Zeit Schaden nehmen, wenn es nicht geschützt wird.</li></ul>"
+            },
+            "freezing_debuff": {
+               "display_name": "Eisiges Wetter",
+               "description": "Ich friere hier draußen! Ich brauche Wärme und ich brauche sie schnell!<ul><li>Wenn dieser Hearthling sich im Freien aufhält verringert sich, im Laufe der Zeit, die Gesundheit um 50%.</li></ul>"
+            },
+            "animal_freezing_debuff": {
+               "display_name": "Eisiges Wetter",
+               "description": "Dieses Tier sollte auf jeden Fall geschützt werden...<ul><li>Dieses Tier wird im Laufe der Zeit Schaden nehmen, wenn es nicht geschützt wird.</li></ul>"
+            },
+            "hot_debuff": {
+               "display_name": "Heißes Wetter",
+               "description": "Zu verschwitzt um zu arbeiten. Könnte eine Erfrischung brauchen!"
+            },
+            "animal_hot_debuff": {
+               "display_name": "Heißes Wetter",
+               "description": "Die Hitze ist sogar für die Tiere eine Bestrafung!<ul><li>Dieses Tier wird im Laufe der Zeit Schaden nehmen, wenn es nicht geschützt wird.</li></ul>"
+            },
+            "soaked_debuff": {
+               "display_name": "Durchnässt",
+               "description": "Ich bin richtig nass, meine Kleider tropfen!"
+            },
+            "animal_soaked_debuff": {
+               "display_name": "Durchnässt",
+               "description": "Nicht einmal Tiere mögen es, so nass zu sein."
+            },
+            "sunstroke_debuff": {
+               "display_name": "Sonnenstich",
+               "description": "So warm ... mir ist schwindelig... Ich brauch dringend eine Erfrischung!<ul><li>Dieser Hearthling wird mit der Zeit Schaden nehmen.</li></ul>"
+            },
+            "freezing_water_debuff": {
+               "display_name": "Eiskaltes Wasser",
+               "description": "Oof! Dieses Wasser ist so kalt, ich sollte nicht hier sein!<ul><li>Dieser Hearthling verliert, im Laufe der Zeit, bis zu 25% seiner Gesundheit, wenn er sich im Wasser befindet.</li></ul>"
+            },
+            "refreshing_water_buff": {
+               "display_name": "Erfrischendes Wasser",
+               "description": "Das Wasser ist schön und sehr erfrischend!"
+            },
+            "chilly_resist_buff": {
+               "display_name": "Leicht eingepackt",
+               "description": "Dieser Hearthling ist gegen kühles Wetter geschützt."
+            },
+            "cold_resist_buff": {
+               "display_name": "Eingepackt",
+               "description": "Dieser Hearthling ist gegen kaltes Wetter geschützt."
+            },
+            "freezing_resist_buff": {
+               "display_name": "Gut eingepackt",
+               "description": "Dieser Hearthling ist gegen eisiges Wetter geschützt."
+            },
+            "hot_resist_buff": {
+               "display_name": "Kühles Outfit",
+               "description": "Schützt vor der Sonne und hat eine gute Luftdurchlässigkeit."
+            },
+            "refreshed_buff": {
+               "display_name": "Erfrischt",
+               "description": "Das war erfrischend! Sollte eine Weile frisch bleiben."
+            },
+            "warmed_buff": {
+               "display_name": "Gewärmt",
+               "description": "Alles warm und gemütlich! Sollte eine Weile so bleiben."
+            },
+            "warmth_source_buff": {
+               "display_name": "Quelle der Wärme",
+               "description": "Zuhause ist, wo das Herz ist..."
+            }
          }
       },
       "loadouts": {
@@ -801,15 +931,15 @@
          },
          "dairy_love_trait": {
             "display_name": "Milchliebhaber",
-            "description": "Es ist kein Geheimnis, wie sehr [name(i18n_data.entity)] Milchprodukte liebt. Sie werden es immer zu schätzen wissen, wenn sie die Möglichkeit haben etwas davon zu essen."
+            "description": "Es ist kein Geheimnis, wie sehr [name(i18n_data.entity)] Milchprodukte liebt. Sie wissen es immer zu schätzen, wenn sie die Möglichkeit haben etwas davon zu essen."
          },
          "vegetable_love_trait": {
             "display_name": "Veggieliebhaber",
-            "description": "Es ist kein Geheimnis, wie sehr [name(i18n_data.entity)] Gemüse liebt. Sie werden es immer zu schätzen wissen, wenn sie die Möglichkeit haben etwas davon zu essen."
+            "description": "Es ist kein Geheimnis, wie sehr [name(i18n_data.entity)] Gemüse liebt. Sie wissen es immer zu schätzen, wenn sie die Möglichkeit haben etwas davon zu essen."
          },
          "meat_love_trait": {
             "display_name": "Fleischliebhaber",
-            "description": "Es ist kein Geheimnis, wie sehr [name(i18n_data.entity)] Fleisch liebt. Sie werden es immer zu schätzen wissen, wenn sie die Möglichkeit haben etwas davon zu essen."
+            "description": "Es ist kein Geheimnis, wie sehr [name(i18n_data.entity)] Fleisch liebt. Sie wisses es immer zu schätzen, wenn sie die Möglichkeit haben etwas davon zu essen."
          },
          "fungi_love_trait": {
             "display_name": "Pilzliebhaber",
@@ -1812,6 +1942,36 @@
          "worker_holiday_hat": {
             "display_name": "Feiertagsjubel Mütze",
             "description": "Ein traditioneller Hut für die Weihnachtsferien!"
+         },
+         "winter_worker_outfit": {
+            "description": "Ein schwerer Wollmantel für kühle Winternächte. Verbessert die Geschwindigkeit."
+         },
+         "na_winter_worker_outfit": {
+            "description": "Ein schwerer Wollmantel für kalte Winternächte. Verbessert die Geschwindigkeit."
+         },
+         "chilly_simple_worker_outfit": {
+            "display_name": "Einfaches Winteroutfit für Arbeiter",
+            "description": "Wollmütze und Handschuhe. Schützt vor kühlem Wetter, aber ohne zusätzlichen Nutzen."
+         },
+         "cold_simple_worker_outfit": {
+            "display_name": "Einfache Lederjacke für Arbeiter",
+            "description": "Ein warmes Lederoutfit. Schützt vor kaltem Wetter, aber ohne zusätzlichen Nutzen."
+         },
+         "freezing_simple_worker_outfit": {
+            "display_name": "Einfacher Bärenmantel für Arbeiter",
+            "description": "Ein warmer und wuscheliger Mantel. Schützt vor Frost, aber ohne zusätzlichen Nutzen."
+         },
+         "cold_worker_outfit": {
+            "display_name": "Lederjacke für Arbeiter"",
+            "description": "Ein hochwertiges Lederoutfit. Schützt vor kaltem Wetter und verbessert die Geschwindigkeit!"
+         },
+         "na_freezing_worker_outfit": {
+            "display_name": "Bärenmantel für Arbeiter",
+            "description": "Ein meisterhaft gefertigtes arktisches Outfit. Schützt vor Frost und verbessert die Geschwindigkeit!"
+         },
+         "rc_winter_worker_outfit": {
+            "display_name": "Winteroutfit für Arbeiter",
+            "description": "Ein verstärktes Wolloutfit. Schützt vor kühlem Wetter und verbessert die Geschwindigkeit!"
          }
       },
       "cook": {
@@ -2224,6 +2384,36 @@
                "recipe_name": "Feiertagsjubel Mütze",
                "description": "Das ACE-Team wünscht allen Gute und schöne Ferien!",
                "flavor": "Dieses Rezept sollte nach Silvester entfernt werden ... So basteln Sie Ihr, solange Sie können!"
+            },
+            "chilly_simple_worker_outfit_recipe": {
+               "recipe_name": "Einfaches Winteroutfit für Arbeiter",
+               "description": "Bastel eine Wollmütze und Handschuhe. Schützt vor kühlem Wetter, aber ohne zusätzlichen Nutzen.",
+               "flavor": "Ein Familienfavorit für Herbsttage"
+            },
+            "cold_simple_worker_outfit_recipe": {
+               "recipe_name": "Einfache Lederjacke für Arbeiter",
+               "description": "Kreiert ein warmes Lederoutfit. Schützt vor kaltem Wetter, aber ohne zusätzlichen Nutzen.",
+               "flavor": ""
+            },
+            "freezing_simple_worker_outfit_recipe": {
+               "recipe_name": "Einfacher Bärenmantel für Arbeiter",
+               "description": "Nähe einen warmen und wuscheligen Mantel. Schützt vor Frost, aber ohne zusätzlichen Nutzen.",
+               "flavor": "Bären können in wilden Höhlen gefunden oder von sehr glücklichen Trappern gefangen werden"
+            },
+            "cold_worker_outfit_recipe": {
+               "recipe_name": "Lederjacke für Arbeiter",
+               "description": "Ein robustes und warmes Lederoutfit von guter Qualität. Schützt vor kaltem Wetter und verbessert die Geschwindigkeit.",
+               "flavor": "Wenn der Winter kommt, schau dir das Teil an!"
+            },
+            "rc_winter_worker_outfit_recipe": {
+               "recipe_name": "Winteroutfit für Arbeiter",
+               "description": "Ein schönes und dickes Wolloutfit, um sich vor kühlem Wetter zu schützen. Verbessert auch die Geschwindigkeit.",
+               "flavor": "In der Wüste kann es überraschend kalt sein"
+            },
+            "na_freezing_worker_outfit_recipe": {
+               "recipe_name": "Bärenmantel für Arbeiter",
+               "description": "Feinste Handwerkskunst aus dem Norden, ein widerstandsfähiges und sehr warmes Outfit. Schützt vor Frost und verbessert die Geschwindigkeit.",
+               "flavor": "Für den langen Winter"
             },
             "backpack_cloth_recipe": {
                "recipe_name": "Stoffrucksack",
@@ -3635,6 +3825,26 @@
          "pasture_bed": {
             "display_name": "Weidebett",
             "description": "Kleine Weidetiere suchen dies nachts oder bei schlechtem Wetter auf."
+         },
+         "banquet_table_highland_pine": {
+            "display_name": "Hochland Kiefernbankettisch",
+            "description": "Ein schöner und langer Tisch, der aus dem riesigen Stamm einer Hochlandkiefer geschnitzt wurde."
+         },
+         "banquet_table_pine": {
+            "display_name": "Kiefernbankettisch",
+            "description": "Ein handgefertigter langer Tisch direkt auf einen Kiefernstamm gesägt."
+         },
+         "banquet_table_oak": {
+            "display_name": "Eichenbankettisch",
+            "description": "Ein ausgefallener Tisch aus einem Eichenstamm."
+         },
+         "bench_log_birch": {
+            "display_name": "Geschnitzte Birkenbank",
+            "description": "Eine hübsche Gartenbank, die aus einer gefallenen Birke geschnitzt wurde."
+         },
+         "bench_log_juniper": {
+            "display_name": "Geschnitzte Wacholderbank",
+            "description": "In der Natur wird nichts verschwendet und ein alter Stamm kann zu einer schönen Bank werden!"
          }
       },
       "recipes": {
@@ -3845,6 +4055,26 @@
                   "display_name": "Statue von Sir Onep und Gary",
                   "description": "Der ewige Ritter der Topfpflanzen, zusammen mit seinem treuen Gefährten Gary."
                }
+            },
+            "statue_marble_poyo": {
+               "display_name": "BuckBuckstatue aus Marmor",
+               "description": "Eine sehr komplizierte und geschmeidige Darstellung eines herrlich entschlossenen BuckBucks."
+            },
+            "statue_marble_rabbit": {
+               "display_name": "Hasenstatue aus Marmor",
+               "description": "Ein freundlich aussehender Waldbewohner, verewigt in Marmor."
+            },
+            "statue_marble_dog": {
+               "display_name": "Hunde-Statue aus Marmor",
+               "description": "Der beste Freund eines Hearthlings aus glänzenden und bearbeitetem Stein."
+            },
+            "statue_marble_cat": {
+               "display_name": "Kätzchenstatue aus Stein",
+               "description": "Eine schlanke und schöne Katze, die aus kaltem und glattem Marmor."
+            },
+            "statue_marble_shepherd_girl": {
+               "display_name": "Hirtenmädchenstatue aus Marmor",
+               "description": "Eine wunderschön geformte lebensgroße Statue einer stolzen Hirtin, die über deine Herde wacht."
             }
          },
          "wall_axe": {
@@ -5860,6 +6090,32 @@
          "large_forest_boulder": {
             "display_name": "Großer Felsbrocken",
             "description": "Erntbar für Steine"
+         },
+         "block_marble": {
+            "small": {
+               "display_name": "Kleiner Marmorblock",
+               "description": "Ein ordentlich gemeißelter Marmorblock. Ernte ihn für Stein oder lass den Steinmetz ihn formen.",
+               "work": {
+                  "display_name": "Kleiner Marmorblock",
+                  "description": "Dieser Block wird von einem Steinmetz bearbeitet und kann erst verschoben werden, wenn er fertig ist."
+               }
+            },
+            "medium": {
+               "description": "Ein ordentlich gemeißelter Marmorblock. Ernte ihn für Stein oder lass den Steinmetz ihn formen.",
+               "display_name": "Mittlerer Marmorblock",
+               "work": {
+                  "display_name": "Mittlerer Marmorblock",
+                  "description": "Dieser Block wird von einem Steinmetz bearbeitet und kann erst verschoben werden, wenn er fertig ist."
+               }
+            },
+            "large": {
+               "description": "Ein ordentlich gemeißelter Marmorblock. Ernte ihn für Stein oder lass den Steinmetz ihn formen.",
+               "display_name": "Riesiger Marmorblock",
+               "work": {
+                  "display_name": "Riesiger Marmorblock",
+                  "description": "Dieser Block wird von einem Steinmetz bearbeitet und kann erst verschoben werden, wenn er fertig ist."
+               }
+            }
          }
       },
       "vines": {
@@ -6266,7 +6522,8 @@
                "training_equipment": "Trainingsausrüstung",
                "gizmos": "Gizmos",
                "fungi": "Pilze",
-               "drink": "Getränke"
+               "drink": "Getränke",
+               "boulder": "Mauerwerk"
             }
          },
          "custom_tooltips": {
@@ -6525,10 +6782,11 @@
                "accessory": "Accessory",
                "backpack": "Rucksack",
                "quiver_arrows": "Pfeilköcher",
-               "quiver_bolts": "Bolzenköcherr"
+               "quiver_bolts": "Bolzenköcher",
+               "cleric_tome": "Heiliger Foliant"
             },
-            "injected_buff": "Gewährter Buff: ",
-            "inflictable_debuff": "Verursachter Debuff: "
+            "injected_buff": "Gewährter Status: ",
+            "inflictable_debuff": "Zufügter Status:: "
          },
          "save_view": {
             "auto_save_name": "Auto-Speicher ([str(i18n_data.date_time)])"

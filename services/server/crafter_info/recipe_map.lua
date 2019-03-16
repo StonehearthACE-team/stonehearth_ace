@@ -15,23 +15,15 @@ function RecipeMap:clear()
 end
 
 -- Adds `value` to all buckets in `keys`.
-function RecipeMap:add(keys, value)
-   local keys_table
-   if type(keys) == 'string' then
-      keys_table = radiant.util.split_string(keys, ' ')
-      keys = {}
-   else
-      keys_table = radiant.keys(keys)
-   end
-
-   for _, key in ipairs(keys_table) do
+function RecipeMap:add(keys, recipe_info)
+   for key, val in pairs(keys) do
       local bucket = self._map[key]
       if not bucket then
          bucket = {}
          self._map[key] = bucket
       end
 
-      bucket[value] = keys[key] or 1
+      bucket[recipe_info] = val
    end
 end
 
