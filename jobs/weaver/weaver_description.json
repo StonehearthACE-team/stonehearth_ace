@@ -1,3 +1,49 @@
 {
-   "description": "i18n(stonehearth_ace:jobs.weaver.weaver_description.description)"
+   "description": "i18n(stonehearth_ace:jobs.weaver.weaver_description.description)",
+   "level_data": {
+	  "2": {
+         "perks": [
+            {
+               "name": "i18n(stonehearth_ace:jobs.weaver.weaver_description.level_2_data.gear_crafting_name)",
+               "id": "gear_crafting",
+               "icon": "file(images/gear_crafting.png)",
+               "description": "i18n(stonehearth_ace:jobs.weaver.weaver_description.level_2_data.gear_crafting_description)",
+               "level": 2
+            }
+         ]
+      },
+	  "3": {
+         "perks": [
+            {
+               "name": "i18n(stonehearth_ace:jobs.weaver.weaver_description.level_3_data.extended_catalog_name)",
+               "id": "crafter_recipe_unlock_3",
+               "icon": "/stonehearth/jobs/common/images/extended_catalog.png",
+               "description": "i18n(stonehearth_ace:jobs.weaver.weaver_description.level_3_data.extended_catalog_description)",
+               "level": 3
+            }
+         ]
+      },
+      "5": {
+         "perks": [
+            {
+               "name": "i18n(stonehearth_ace:jobs.weaver.weaver_description.level_5_data.ornate_perk_name)",
+               "id": "ornate_perk",
+               "icon": "file(../common/images/ornate_perk.png)",
+               "description": "i18n(stonehearth_ace:jobs.weaver.weaver_description.level_5_data.ornate_perk_description)",
+               "level": 5
+            }
+         ]
+      },
+	  "6": {
+         "perks": [
+            {
+               "name": "i18n(stonehearth_ace:jobs.weaver.weaver_description.level_6_data.mastery_name)",
+               "id": "crafter_recipe_unlock_6",
+               "icon": "/stonehearth/jobs/common/images/master.png",
+               "description": "i18n(stonehearth_ace:jobs.weaver.weaver_description.level_6_data.mastery_description)",
+               "level": 6
+            }
+         ]
+      }	  
+   }
 }
