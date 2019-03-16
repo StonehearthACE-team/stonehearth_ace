@@ -73,15 +73,14 @@ function AceResourceNodeComponent:spawn_resource(harvester_entity, collect_locat
          -- add it to the inventory of the owner
          stonehearth.inventory:get_inventory(player_id)
                                  :add_item_if_not_full(item)
-
-         -- Paul: No! Don't trigger this event! It's already triggered by the harvest_resource_node_adjacent action,
-         -- and only the shepherd is listening to it for exp, which doesn't need the spawned_items and should only get triggered once
-         
-         --trigger an event on the entity that they've harvested something, and what they're harvesting
-         --Note this cannot be async because the entity can be killed
-         -- radiant.events.trigger(harvester_entity, 'stonehearth:gather_resource',
-         --    {harvested_target = self._entity, spawned_item = item})
       end
+
+      -- Paul: only trigger this once; we don't care about the spawned item, and we don't want exp/buffs being applied multiple times to the shepherd
+
+      --trigger an event on the entity that they've harvested something, and what they're harvesting
+      --Note this cannot be async because the entity can be killed
+      radiant.events.trigger(harvester_entity, 'stonehearth:gather_resource',
+         {harvested_target = self._entity})
    end
 
    local json = self._json
