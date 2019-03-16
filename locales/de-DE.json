@@ -881,6 +881,11 @@
                "display_name": "Quelle der Wärme",
                "description": "Zuhause ist, wo das Herz ist..."
             }
+         },
+         "shepherding": {
+            "compassionate_shepherd_buff": {
+               "description": "Wird von einem mitfühlenden Hirten betreut. Dieses Tier heilt im Laufe der Zeit, produziert mehr Ressourcen und brütet schneller."
+            }
          }
       },
       "loadouts": {
@@ -963,6 +968,10 @@
             "level_1_data": {
                "training_perk_name": "Kampftraining",
                "training_perk_description": "Ein Footman kann Übungspuppen verwenden, um seine Kampftechniken zu trainieren und Erfahrung bis zu Level 3 zu sammeln"
+            },
+            "level_3_data": {
+               "training_complete_name": "Akademiker",
+               "training_complete_description": "Der Fußsoldat hat sein Kampftraining beendet und kann nun nach neuen Möglichkeiten suchen, wie zum Beispiel, ein Ritter zu werden!"
             }
          }
       },
@@ -971,6 +980,10 @@
             "level_1_data": {
                "training_perk_name": "Bogenschieß-Training",
                "training_perk_description": "Ein Bogenschütze kann Zielscheiben verwenden, um seine Präzision zu trainieren und Erfahrung bis zu Level 3 zu sammeln"
+            },
+            "level_2_data": {
+               "xbow_proficiency_name": "Armbrust-Fähigkeit",
+               "xbow_proficiency_description": "Der Bogenschütze kann mit einer Armbrust stärkere Bolzen auf Gegner schießen"
             },
             "description": "Ein Hintergrundkämpfer, der in der Lage ist, Fernkampfwaffen wie Bögen, Armbrüste und und eine Vielzahl von von Pfeil- oder Bolzenarten zu verwenden, um ihre Feinde anzugreifen."
          }
@@ -1187,6 +1200,19 @@
             "description": "Eine schützende Kopfbedeckung für Wüstenärzte."
          },
          "herbalist_description": {
+            "level_2_data": {
+               "taming_local_flora_name": "Botanische Studien",
+               "taming_local_flora_description": "Der Kräuterarzt hat ausreichende Kenntnisse der Gegend erworben, um zu lernen, wie man die lokale Flora kultiviert",
+               "collaborative_insight_description": "Der Kräuterarzt ist jetzt geschickt genug, um Materialien zu verwenden, die von den anderen Handwerkern erstellt wurden, und er kann auch ein Kleriker werden"
+            },
+            "level_5_data": {
+               "item_proficiency_2_name": "Gegenstandsmeisterung",
+               "item_proficiency_2_description": "Das medizinische Können des Kräuterarztes erhöht die Wirksamkeit von Heilgegenständen um 100%."
+            },
+            "level_6_data": {
+               "power_medic_3_name": "Großer Arzt",
+               "power_medic_3_description": "Der Kräuterkundler kann jetzt bis zu 6 Herdplätze gleichzeitig betreuen."
+            },
             "description": "Der Kräuterarzt ist ein Künstler mit Heilmethoden und kann Tonika, Bandagen und Tränke herstellen und verwenden. Er kann aber auch mit Pflanzen, Samen und anderen Nahrungsmitteln arbeiten."
          }
       },
@@ -1468,6 +1494,18 @@
             }
          },
          "potter_description": {
+            "level_1_data": {
+               "transform_perk_name": "Professionelle Modellierung",
+               "transform_perk_description": "Der Töpfer kann mit Geduld und Hingabe einige Tonblöcke zu schönen Kunstwerken formen."
+            },
+            "level_4_data": {
+               "ornate_perk_name": "Porzellan-Wunderland",
+               "ornate_perk_description": "Die Studien des Töpfers und die Arbeit mit Ton habt ihn/sie mit ausreichend Wissen belohnt, um wertvollen Knochenton zu erzeugen."
+            },
+            "level_6_data": {
+               "mastery_name": "Die Welt gestalten",
+               "mastery_description": "Die Hände des Töpfers sind in der Lage, wie kein anderer, Ton Form zu verleihen und schöne Werke zu schaffen, vor allem mit Porzellan."
+            },
             "description": "Der Töpfer arbeitet mit Tonressourcen, um sie in Ziegelsteine und andere Gebrauchsgegenstände, Werkzeuge und Dekorationen zu verarbeiten."
          }
       },
@@ -1630,6 +1668,22 @@
             "description": "Wird vom Steinmetz benötigt, um Möbel und Ausrüstung aus Knochenmaterial zu schnitzen."
          },
          "mason_description": {
+            "level_1_data": {
+               "transform_perk_name": "Bildhauerei",
+               "transform_perk_description": "Der Steinmetz kann mit seinem Talent und seinem Meißel Steinblöcke wie Marmor zu Statuen formen."
+            },
+            "level_2_data": {
+               "recipe_unlock_2_perk_name": "Schicke Felsen & Knochen",
+               "recipe_unlock_2_perk_description": "Der Steinmetz kann jetzt aus Stein kompliziertere Gegenstände herstellen und auch lernen, mit Knochenmaterial umzugehen."
+            },
+            "level_4_data": {
+               "ornate_perk_name": "Flockenveredelung",
+               "ornate_perk_description": "Der Steinmetz hat nun genug Geschick, um Golderze oder Barren zu schönen und nützlichen Goldflocken zu veredeln."
+            },
+            "level_6_data": {
+               "mastery_name": "Marmorischer Meißel",
+               "mastery_description": "Durch die Beherrschung seines/ihres Faches kann der Steinmetz nun die schönsten Steinarbeiten schaffen, die man sich vorstellen kann, insbesondere mit Marmor!"
+            },
             "description": "Der Steinmetz ist in der Lage Stein in verschiedene und nützliche Werkzeuge, Konstruktionsteile und Dekorationen zu verarbeiten. Er kann auch lernen mit Knochen zu arbeiten."
          }
       },
@@ -1924,8 +1978,8 @@
                "perk_001_description": "Der Schmied hat genug Wissen übers Schmieden erworben, um mit der Produktion eigener Kraftstoffe und Anlagen zu beginnen."
             },
             "level_4_data": {
-               "perk_000_name": "Verbesserte Werkzeuge und kalter Stahl",
-               "perk_000_description": "Lange Zeit in der Schmiede hat dem Schmied Ideen für neue und verbesserte Anlagen gegeben, die das Geheimnis von Stahl erschließen würden: schärfere Waffen und leichtere Rüstung."
+               "ornate_perk_name": "Fortgeschrittene Industrie",
+               "ornate_perk_description": "Die Erfahrung mit dem Schmelzen hat dem Schmied Ideen für neue und verbesserte Anlagen gegeben, die es ihm ermöglichen, effizienter und mit wertvolleren Materialien zu arbeiten."
             },
             "description": "Der Schmied verwendet Roherze, Brennstoffe und Kraft um Metalle nach Belieben zu verbiegen, wodurch eine breite Palette an Gütern wie Waffen, Rüstungen, Dekorationen und nützlichen Werkzeugen entstehen"
          }
@@ -1962,7 +2016,7 @@
             "description": "Ein warmer und wuscheliger Mantel. Schützt vor Frost, aber ohne zusätzlichen Nutzen."
          },
          "cold_worker_outfit": {
-            "display_name": "Lederjacke für Arbeiter"",
+            "display_name": "Lederjacke für Arbeiter",
             "description": "Ein hochwertiges Lederoutfit. Schützt vor kaltem Wetter und verbessert die Geschwindigkeit!"
          },
          "na_freezing_worker_outfit": {
@@ -2237,6 +2291,17 @@
             "display_name": "Kochschüssel"
          },
          "cook_description": {
+            "level_2_data": {
+               "recipe_unlock_2_description": "Der Koch hat gelernt leckerere Rezepte herzustellen, und er kann jetzt einen Ofen bauen in dem er auch Backwaren herstellen kann."
+            },
+            "level_4_data": {
+               "ornate_perk_name": "Gesündere Diäten",
+               "ornate_perk_description": "Der Koch kann nun vielfältigere und spezifischere Lebensmittel kreieren, insbesondere bestimmte Rationen für verschiedene Tiere."
+            },
+            "level_6_data": {
+               "mastery_name": "Meisterkoch",
+               "mastery_description": "Von verbrannten Saucen bis hin zu entzückenden Menschenmassen hat der Koch eine lange Reise zur Beherrschung seines Handwerks gebracht. Er kann jetzt exotischsten und erstaunlichsten Rezepte ausprobieren."
+            },
             "description": "Die Kunst des Kochens bietet eine abwechslungsreiche Speisekarte mit herzhaften Speisen und stärkenden Getränken, die aus Rohstoffen verschiedener Herkunft wie Gemüse, Fleisch und gesammelten Waren hergestellt werden."
          },
          "cook_workbench_pumpkin": {
@@ -2375,6 +2440,17 @@
             }
          },
          "carpenter_description": {
+            "level_1_data": {
+               "transform_perk_name": "Schnitztechnik",
+               "transform_perk_description": "Der Schreiner kann sein Können und seine starke Metallsäge einsetzen, um bestimmte Holzobjekte wie heruntergefallene Baumstämme in Möbel oder andere schöne Dinge zu schnitzen!"
+            },
+            "level_5_data": {
+               "ornate_perk_name": "Kunstvolle Handwerkskunst",
+               "ornate_perk_description": "Der Schreiner hat nun genügend Erfahrung um wertvolle, komplizierte und äußerst ansprechende Objekte zu schaffen, indem er sie mit Goldflocken anreichert"
+            },
+            "level_6_data": {
+               "mastery_description": "Durch die Beherrschung seines/ihres Handwerks kann der Schreiner nun alle möglichen Waren und erstaunlichen verzierten Möbel herstellen."
+            },
             "description": "Der Schreiner kann viele Gegenstände wie Werkzeuge, Konstruktionsteile, Waffen und Möbel aus Holz herstellen."
          }
       },
@@ -2484,6 +2560,22 @@
             "weapons_name": "Kampfausrüstung"
          },
          "weaver_description": {
+		    "level_2_data": {
+               "gear_crafting_name": "Mechanisches Weben",
+               "gear_crafting_description": "Der Weber verfügt über genügend Kenntnisse und Fähigkeiten, um einen Webstuhl zu erstellen und Zubehör, Kampfausrüstung und Ausrüstung zu kreieren, die Boni oder Verbesserungen bieten."
+            },
+            "level_3_data": {
+               "extended_catalog_name": "Erweiterter Katalog",
+               "extended_catalog_description": "Der Weber hat nun Zugriff auf viele Materialien und hat mehrere neue Möglichkeiten Textilien zu wunderbaren Dingen zu nähen."
+            },
+            "level_5_data": {
+               "ornate_perk_name": "Saiten aus Gold",
+               "ornate_perk_description": "Der Weber ist jetzt in der Lage Dekorationen und andere Waren mit exotischen Mitteln zu kreieren."
+            },
+            "level_6_data": {
+               "mastery_name": "Die perfekte Nadel",
+               "mastery_description": "Durch die Beherrschung des Webhandwerks kann der Weber nun die grobste Wolle und die glatteste Seide nach seinem/ihrem Willen biegen.."
+            },
             "description": "Der Weber kann aus Häuten Leder und aus Fasern Stoffe herstellen und mit ihnen komplizierte Waren, Kleidung, Rüstungen, nützliches Zubehör und Dekorationsartikel herstellen."
          }
       },
@@ -2497,6 +2589,9 @@
             "description": "Macht seine Beute nicht hundertprozentig Bewgungsunfähig"
          },
          "trapper_description": {
+            "level_6_data": {
+               "trapper_level_6_description": "Der Trapper kann jetzt Metallklammern verwenden um Großwild zu fangen, und er kann dem Ingenieur auch ein oder zwei Dinge beibringen, wie man Fallen setzt. Erhöht das Fallenlimit um 6."
+            },
             "description": "Der Trapper kann Fallen stellen und ähmmmm 'erntet' wilde Lebewesen für eine zuverlässige Nahrungsquelle."
          }
       },
@@ -2508,6 +2603,22 @@
             }
          },
          "shepherd_description": {
+            "level_1_data": {
+               "small_animals_name": "Auszubildender Tierzähmer",
+               "small_animals_description": "Der Hirte hat angefangen die Techniken der Tierzähmung zu erlernen und kann nun kleine Tiere zähmen."
+            },
+            "level_3_data": {
+               "big_animals_name": "Geschickter Tierzähmer",
+               "big_animals_description": "Der Hirte hat nun viel mehr Erfahrung mit Tieren und kann große Tiere zähmen."
+            },
+            "level_5_data": {
+               "exotic_animals_name": "Meisterhafter Tierzähmer",
+               "exotic_animals_description": "Der Hirte beherrscht nun alles, was es über Haustiere zu wissen gibt, und kann sogar mit exotischen und magischen Kreaturen umgehen."
+            },
+            "level_6_data": {
+               "level_6_name": "Eins mit der Herde",
+               "level_6_description": "Die vollständige Beherrschung des Hirtenhandwerks ermöglicht es eine stärkere Bindung mit den Tieren einzugehen. Die positiven Auswirkungen des Mitgefühls auf Tiere werden länger andauern und die negativen Auswirkungen der Schlachtung werden kürzer sein."
+            },
             "description": "Naturliebende Einzelgänger. Schäfer zähmen sanfte Wildtiere, um sich um sie zu kümmern und ihre Ressourcen wie Eier, Wolle und Fleisch zu ernten."
          },
          "shepherd_crook_corn": {
@@ -2533,7 +2644,7 @@
                "perk_000_name": "Ertragreiche Ernte (Max)",
                "perk_000_description": "Der Farmer erzielt mit jeder Pflanze 100% mehr Ertrag.",
                "perk_001_name": "Mega-Früchte",
-               "perk_001_description": "(Demnächst!)"
+               "perk_001_description": "Die meisterhaften Fähigkeiten des Farmers können jetzt gelegentlich dazu führen, dass eine Ernte viel größer wird und zur Mega-Ernte wird. Diese seltenen Riesenpflanzen bieten zusätzliche Ressourcen oder einzigartige Belohnungen."
             },
             "description": "Landwirte bestellen Felder, säen Samen und ernten Getreide. Sie zähmen das Land, um eine konstante Versorgung mit Nahrungsmitteln, Zutaten zum Kochen, Fasern, Kräutern und mehr zu gewährleisten."
          },
@@ -4075,6 +4186,10 @@
             "statue_marble_shepherd_girl": {
                "display_name": "Hirtenmädchenstatue aus Marmor",
                "description": "Eine wunderschön geformte lebensgroße Statue einer stolzen Hirtin, die über deine Herde wacht."
+            },
+            "statue_marble_farmer_male": {
+               "display_name": "Farmerstatue aus Marmor",
+               "description": "Eine sehr detaillierte und realistische Darstellung eines alten Mannes mit einer landwirtschaftlichen Hacke."
             }
          },
          "wall_axe": {
