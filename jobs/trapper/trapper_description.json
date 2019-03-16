@@ -4,5 +4,25 @@
       "befriend_pet": 30,
       "unsuccessful_trap": 3,
       "successful_trap": 6
+   },
+   "level_data": {
+      "6": {	
+         "mixintypes": {
+			"perks": "override"
+		 },	  
+         "perks": [
+            {
+               "type": "increase_max_placeable_traps",
+               "name": "i18n(stonehearth:jobs.trapper.trapper_description.level_6_data.perk_000_name)",
+               "id": "trapper_increase_traps",
+               "icon": "/stonehearth/jobs/trapper/images/trapperLevel6.png",
+               "description": "i18n(stonehearth_ace:jobs.trapper.trapper_description.level_6_data.trapper_level_6_description)",
+               "max_num_siege_weapons": {
+                  "trap": 6
+               },
+               "level": 6
+            }
+         ]
+      }	 
    }
 }

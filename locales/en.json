@@ -881,6 +881,11 @@
                "display_name": "Source of Warmth",
                "description": "Home is where the hearth is..."
             }
+         },
+         "shepherding": {
+            "compassionate_shepherd_buff": {
+               "description": "Taken care of by a compassionate shepherd. This animal will heal over time, produce more resources, and breed faster."
+            }
          }
       },
       "loadouts": {
@@ -963,6 +968,10 @@
             "level_1_data": {
                "training_perk_name": "Combat Training",
                "training_perk_description": "A footman can use Training Dummies to train their combat techniques and earn experience up to Job Level 3"
+            },
+            "level_3_data": {
+               "training_complete_name": "Academy Graduate",
+               "training_complete_description": "The footman has finished their combat training and can now seek new opportunities like trying to become a Knight!"
             }
          }
       },
@@ -971,6 +980,10 @@
             "level_1_data": {
                "training_perk_name": "Archery Training",
                "training_perk_description": "An archer can use Archery Targets to train their precision and earn experience up to Job Level 3"
+            },
+            "level_2_data": {
+               "xbow_proficiency_name": "Crossbow Proficiency",
+               "xbow_proficiency_description": "The archer is able to use a crossbow to shoot strong bolts at enemies"
             },
             "description": "A rearguard combatant capable of using ranged weaponry like bows, crossbows and a variety of hindering types of arrows or bolts to attack their foes."
          }
@@ -1187,6 +1200,19 @@
             "description": "A protective headgear for desert herbalists."
          },
          "herbalist_description": {
+            "level_2_data": {
+               "taming_local_flora_name": "Botanical Studies",
+               "taming_local_flora_description": "The Herbalist has acquired sufficient knowledge of the area to learn how to cultivate the local flora",
+               "collaborative_insight_description": "The Herbalist is now skillful enough to use materials created by the other crafters and is also able to become a Cleric"
+            },
+            "level_5_data": {
+               "item_proficiency_2_name": "Item Mastery",
+               "item_proficiency_2_description": "The Herbalist's medical prowess increases the effectiveness of healing items by 100%."
+            },
+            "level_6_data": {
+               "power_medic_3_name": "Great Physician",
+               "power_medic_3_description": "The Herbalist can now attend to up to 6 hearthlings at a time."
+            },
             "description": "A performer of healing practices, the Herbalist can craft and use tonics, bandages and potions but also work with plants, seeds and other foraging goods."
          }
       },
@@ -1468,6 +1494,18 @@
             }
          },
          "potter_description": {
+            "level_1_data": {
+               "transform_perk_name": "Professional Modeling",
+               "transform_perk_description": "The Potter can, with patience and dedication, shape some clay blocks into nice artworks."
+            },
+            "level_4_data": {
+               "ornate_perk_name": "Porcelain Wonderland",
+               "ornate_perk_description": "The Potter's studies and work with clay have rewarded them with knowledge enough to create valuable bone clay."
+            },
+            "level_6_data": {
+               "mastery_name": "Shaping the World",
+               "mastery_description": "The Potter's hands are capable of giving shape and life to clay like no other, creating beautiful works especially with porcelain."
+            },
             "description": "The Potter works with clay resources to craft them into construction bricks and other useful goods, tools and decorations."
          }
       },
@@ -1630,6 +1668,22 @@
             "description": "Used by the Mason for crafting with bone material."
          },
          "mason_description": {
+            "level_1_data": {
+               "transform_perk_name": "Sculpting",
+               "transform_perk_description": "The Mason is able to use their talent and chisel to sculpt stone blocks like marble into statues."
+            },
+            "level_2_data": {
+               "recipe_unlock_2_perk_name": "Fancy Rocks & Bones",
+               "recipe_unlock_2_perk_description": "The Mason can now make more elaborate items from stone and can also learn how to work with bone materials."
+            },
+            "level_4_data": {
+               "ornate_perk_name": "Flake Refinement",
+               "ornate_perk_description": "The Mason has enough skill to refine gold ores or ingots into beautiful and useful Gold Flakes."
+            },
+            "level_6_data": {
+               "mastery_name": "Marbleous Chisel",
+               "mastery_description": "The Mason's mastery of their trade allows them to create the most appealing stoneworks imaginable, especially with marble!"
+            },
             "description": "The Mason is able to shape stone into different and useful tools, construction parts and decorations. They may also learn how to work with bones."
          }
       },
@@ -1924,8 +1978,8 @@
                "perk_001_description": "The Blacksmith has acquired enough knowledge on forges to start producing their own fuels and facilities."
             },
             "level_4_data": {
-               "perk_000_name": "Enhanced Tools & Cold Steel",
-               "perk_000_description": "Long hours at the forge have given the Blacksmith ideas on new and improved facilities that would unlock the secret of steel: sharper weapons and lighter armor."
+               "ornate_perk_name": "Advanced Industry",
+               "ornate_perk_description": "Experience with smelting has gave the Blacksmith ideas on new and improved facilities that will allow them to work more efficiently and with more valuable materials."
             },
             "description": "The Blacksmith uses raw ores, fuels and strength to bend metals to their will, creating a wide range of goods like weapons, armor, decorations and useful tools."
          }
@@ -2237,6 +2291,17 @@
             "display_name": "Cook's Bowl"
          },
          "cook_description": {
+            "level_2_data": {
+               "recipe_unlock_2_description": "The Cook has learned to make slightly fancier recipes and can now build an oven, allowing them to create baked goods as well."
+            },
+            "level_4_data": {
+               "ornate_perk_name": "Healthier Diets",
+               "ornate_perk_description": "The Cook has mastered the abilities necessary to create more diverse and specific foods, particularly specific rations for different animals."
+            },
+            "level_6_data": {
+               "mastery_name": "Master Chef",
+               "mastery_description": "From burning sauces to delighting crowds, a long journey has brought the Cook to master their craft. They now can try the most exotic and amazing recipes known to hearthlings."
+            },
             "description": "The art of cooking will provide a diverse menu of hearty meals and fortifying drinks created with resources of many origins like vegetables, meat and foraged goods."
          },
          "cook_workbench_pumpkin": {
@@ -2375,6 +2440,17 @@
             }
          },
          "carpenter_description": {
+            "level_1_data": {
+               "transform_perk_name": "Carving Technique",
+               "transform_perk_description": "The Carpenter is able to use their skills and their strong metal saw to carve certain wood objects like fallen tree trunks into furniture or other nice things!"
+            },
+            "level_5_data": {
+               "ornate_perk_name": "Ornate Craftsmanship",
+               "ornate_perk_description": "The Carpenter has enough skill to create valuable, intricate and extremely appealing objects by enhancing them with Gold Flakes"
+            },
+            "level_6_data": {
+               "mastery_description": "The Carpenter's mastery of their trade allows them to create all the possible goods and amazing ornate furniture one could imagine out of raw wood."
+            },
             "description": "The Carpenter can craft many goods like tools, construction parts, weapons and furniture from wood."
          }
       },
@@ -2497,6 +2573,9 @@
             "description": "Not so safely immobilizes its prey"
          },
          "trapper_description": {
+            "level_6_data": {
+               "trapper_level_6_description": "The trapper can now use metal clamp traps to capture big game and also has a thing or two to teach the Engineer about setting traps. Increases town trap limit by 6."
+            },
             "description": "The Trapper can arm snares to capture and (ahem) &quot;harvest&quot; wild critters for a reliable source of food, pelts and bones."
          }
       },
@@ -2508,6 +2587,22 @@
             }
          },
          "shepherd_description": {
+            "level_1_data": {
+               "small_animals_name": "Apprentice Animal Tamer",
+               "small_animals_description": "The shepherd has just started mastering the techniques of animal taming and can only tame small animals."
+            },
+            "level_3_data": {
+               "big_animals_name": "Adept Animal Tamer",
+               "big_animals_description": "The shepherd is now much more experienced with animals and can tame large animals."
+            },
+            "level_5_data": {
+               "exotic_animals_name": "Master Animal Tamer",
+               "exotic_animals_description": "The shepherd has mastered all there is to know about domestic animals and can even handle exotic, magical creatures."
+            },
+            "level_6_data": {
+               "level_6_name": "One With the Herd",
+               "level_6_description": "Complete mastery of the shepherd's trade allows them to form a stronger bond with any animal. The positive effects of compassion on animals will last longer and the negative effects of slaughtering will be shorter."
+            },
             "description": "Nature-loving loners, shepherds will domesticate gentle wild animals to care for them and harvest their resources like eggs, wool and meat."
          },
          "shepherd_crook_corn": {
@@ -4075,6 +4170,10 @@
             "statue_marble_shepherd_girl": {
                "display_name": "Marble Shepherd Girl Statue",
                "description": "A beautifully sculpted life-size statue of a proud shepherd watching over her herd."
+            },
+            "statue_marble_farmer_male": {
+               "display_name": "Marble Farmer Statue",
+               "description": "A very detailed and realistic depiction of an old man with a farming hoe."
             }
          },
          "wall_axe": {

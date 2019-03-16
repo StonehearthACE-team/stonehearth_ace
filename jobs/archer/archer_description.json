@@ -27,23 +27,23 @@
             "perks": "override"
          },
          "perks": [
-			   {
-               "type": "add_combat_action",
-               "name": "i18n(stonehearth:jobs.archer.archer_description.level_1_data.perk_000_name)",
-               "id": "archer_default_shot",
-               "icon": "/stonehearth/jobs/archer/images/default_shot.png",
-               "equipment": "stonehearth:archer:abilities:default_shot",
-               "action_type": "stonehearth:combat:ranged_attacks",
-               "description": "i18n(stonehearth:jobs.archer.archer_description.level_1_data.perk_000_description)",
-               "level": 1,
-               "demote_fn": "remove_combat_action"
-            },
             {
                "name": "i18n(stonehearth_ace:jobs.archer.archer_description.level_1_data.training_perk_name)",
                "description": "i18n(stonehearth_ace:jobs.archer.archer_description.level_1_data.training_perk_description)",
                "id": "training_perk",
                "icon": "file(images/training.png)",
                "level": 1
+            }
+         ]
+      },
+	  "2": {
+         "perks": [
+			   {
+               "name": "i18n(stonehearth_ace:jobs.archer.archer_description.level_2_data.xbow_proficiency_name)",
+               "id": "xbow_proficiency",
+               "icon": "/stonehearth_ace/jobs/archer/images/xbow_proficiency.png",
+               "description": "i18n(stonehearth_ace:jobs.archer.archer_description.level_2_data.xbow_proficiency_description)",
+               "level": 2
             }
          ]
       },

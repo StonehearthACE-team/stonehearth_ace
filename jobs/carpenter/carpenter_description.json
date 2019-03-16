@@ -1,3 +1,41 @@
 {
-   "description": "i18n(stonehearth_ace:jobs.carpenter.carpenter_description.description)"
+   "description": "i18n(stonehearth_ace:jobs.carpenter.carpenter_description.description)",
+   "level_data": {
+	  "1": {
+         "perks": [
+            {
+               "name": "i18n(stonehearth_ace:jobs.carpenter.carpenter_description.level_1_data.transform_perk_name)",
+               "id": "transform_perk",
+               "icon": "file(images/transform_perk.png)",
+               "description": "i18n(stonehearth_ace:jobs.carpenter.carpenter_description.level_1_data.transform_perk_description)",
+               "level": 1
+            }
+         ]
+      },
+      "5": {
+         "perks": [
+            {
+               "name": "i18n(stonehearth_ace:jobs.carpenter.carpenter_description.level_5_data.ornate_perk_name)",
+               "id": "ornate_perk",
+               "icon": "file(../common/images/ornate_perk.png)",
+               "description": "i18n(stonehearth_ace:jobs.carpenter.carpenter_description.level_5_data.ornate_perk_description)",
+               "level": 5
+            }
+         ]
+      },
+	  "6": {
+	     "mixintypes": {
+			"perks": "override"
+		 },
+         "perks": [
+            {
+               "name": "i18n(stonehearth:jobs.carpenter.carpenter_description.level_6_data.perk_000_name)",
+               "id": "crafter_recipe_unlock_6",
+               "icon": "/stonehearth/jobs/common/images/master.png",
+               "description": "i18n(stonehearth_ace:jobs.carpenter.carpenter_description.level_6_data.mastery_description)",
+               "level": 6
+            }
+         ]
+      }	  
+   }
 }

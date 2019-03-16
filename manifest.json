@@ -239,6 +239,8 @@
       "buffs:open_wounds": "file(data/buffs/equipment/open_wounds/open_wounds.json)",
       "buffs:out_of_balance": "file(data/buffs/equipment/out_of_balance/out_of_balance.json)",
       "buffs:shaken": "file(data/buffs/equipment/shaken/shaken.json)",
+      "buffs:shepherd:compassionate_shepherd_major": "file(data/buffs/shepherding/compassionate_shepherd_major_buff.json)",
+      "buffs:shepherd:stenched_minor": "file(data/buffs/shepherding/stenched_shepherd_minor_buff.json)",
       "buffs:shield_heavy": "file(data/buffs/equipment/shield_heavy/shield_heavy.json)",
       "buffs:shield_light": "file(data/buffs/equipment/shield_light/shield_light.json)",
       "buffs:suffocating": "file(data/buffs/swimming/suffocating_buff.json)",
@@ -416,6 +418,7 @@
       "decoration:statue:anji_the_horrendous": "file(entities/decoration/statue/statue_anji_the_horrendous/statue_anji_the_horrendous.json)",
       "decoration:statue:marble:cat": "file(entities/decoration/statue/statue_marble/statue_marble_cat/statue_marble_cat.json)",
       "decoration:statue:marble:dog": "file(entities/decoration/statue/statue_marble/statue_marble_dog/statue_marble_dog.json)",
+      "decoration:statue:marble:farmer_male": "file(entities/decoration/statue/statue_marble/statue_marble_farmer_male/statue_marble_farmer_male.json)",
       "decoration:statue:marble:poyo": "file(entities/decoration/statue/statue_marble/statue_marble_poyo/statue_marble_poyo.json)",
       "decoration:statue:marble:rabbit": "file(entities/decoration/statue/statue_marble/statue_marble_rabbit/statue_marble_rabbit.json)",
       "decoration:statue:marble:shepherd_girl": "file(entities/decoration/statue/statue_marble/statue_marble_shepherd_girl/statue_marble_shepherd_girl.json)",
@@ -2083,7 +2086,8 @@
       "northern_alliance/entities/decoration/hearth_ice/hearth_ice_ghost.json": "file(entities/decoration/hearth_ice/hearth_ice_ghost.json)",
       "stonehearth/data/traits/carnivore/carnivore_trait.json": "file(data/traits/carnivore/carnivore_trait.json)",
       "stonehearth/data/traits/herbivore/herbivore_trait.json": "file(data/traits/herbivore/herbivore_trait.json)",
-      "stonehearth:buffs:shepherd:compassionate_shepherd": "file(data/buffs/shepherding/compassionate_shepherd_buff.json)"
+      "stonehearth:buffs:shepherd:compassionate_shepherd": "file(data/buffs/shepherding/compassionate_shepherd_buff.json)",
+	  "stonehearth:buffs:shepherd:stenched": "file(data/buffs/shepherding/stenched_shepherd_buff.json)"
    },
    "overrides": {
       "stonehearth/data/rigs/entities/critters/sheep/animations/idle_eat.json": "file(data/rigs/entities/critters/sheep/animations/idle_eat.json)",
@@ -2229,6 +2233,8 @@
       "stonehearth/jobs/blacksmith/blacksmith_hammer/blacksmith_hammer.qb": "file(jobs/blacksmith/blacksmith_hammer/blacksmith_hammer.qb)",
       "stonehearth/jobs/blacksmith/blacksmith_hammer/blacksmith_hammer.png": "file(jobs/blacksmith/blacksmith_hammer/blacksmith_hammer.png)",
       "stonehearth/jobs/footman/images/icon.png": "file(jobs/footman/images/icon.png)",
+      "stonehearth/jobs/footman/images/cleave.png": "file(jobs/footman/images/cleave.png)",
+      "stonehearth/jobs/cook/images/cookbook2.png": "file(jobs/cook/images/extended_catalog.png)",
       "stonehearth/entities/monsters/goblins/outfits/beast_trainer_outfit/beast_trainer_outfit.qb": "file(entities/monsters/goblins/outfits/beast_trainer_outfit/beast_trainer_outfit.qb)",
       "stonehearth/entities/refined/iron_ingot/iron_ingot.qb": "file(entities/refined/iron_ingot/iron_ingot.qb)",
       "stonehearth/entities/construction/iron_door/iron_door.png": "file(entities/construction/iron_door/iron_door.png)",

@@ -1,3 +1,41 @@
 {
-   "description": "i18n(stonehearth_ace:jobs.cook.cook_description.description)"
+   "description": "i18n(stonehearth_ace:jobs.cook.cook_description.description)",
+   "level_data": {
+      "2": {
+	     "mixintypes": {
+			"perks": "override"
+		 },
+         "perks": [
+            {
+               "name": "i18n(stonehearth:jobs.cook.cook_description.level_2_data.perk_000_name)",
+               "id": "crafter_recipe_unlock_2",
+               "icon": "file(images/recipe_unlock_2.png)",
+               "description": "i18n(stonehearth_ace:jobs.cook.cook_description.level_2_data.recipe_unlock_2_description)",
+               "level": 2
+            }
+         ]
+      },
+      "4": {
+         "perks": [
+            {
+               "name": "i18n(stonehearth_ace:jobs.cook.cook_description.level_4_data.ornate_perk_name)",
+               "id": "ornate_perk",
+               "icon": "file(../common/images/ornate_perk.png)",
+               "description": "i18n(stonehearth_ace:jobs.cook.cook_description.level_4_data.ornate_perk_description)",
+               "level": 4
+            }
+         ]
+      },
+      "6": {	     
+         "perks": [
+            {
+               "name": "i18n(stonehearth_ace:jobs.cook.cook_description.level_6_data.mastery_name)",
+               "id": "crafter_recipe_unlock_6",
+               "icon": "/stonehearth/jobs/common/images/master.png",
+               "description": "i18n(stonehearth_ace:jobs.cook.cook_description.level_6_data.mastery_description)",
+               "level": 6
+            }
+         ]
+      }	 
+   }
 }

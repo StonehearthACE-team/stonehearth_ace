@@ -1,3 +1,68 @@
 {
-   "description": "i18n(stonehearth_ace:jobs.herbalist.herbalist_description.description)"
+   "description": "i18n(stonehearth_ace:jobs.herbalist.herbalist_description.description)",
+   "level_data": {
+      "2": {
+	     "mixintypes": {
+			"perks": "override"
+		 },
+         "perks": [
+            {
+               "name": "i18n(stonehearth:jobs.herbalist.herbalist_description.level_2_data.perk_000_name)",
+               "id": "crafter_recipe_unlock_2",
+               "icon": "/stonehearth/jobs/common/images/collaborative_insight.png",
+               "description": "i18n(stonehearth_ace:jobs.herbalist.herbalist_description.level_2_data.collaborative_insight_description)",
+               "level": 2
+            },
+			{
+               "name": "i18n(stonehearth_ace:jobs.herbalist.herbalist_description.level_2_data.taming_local_flora_name)",
+               "icon": "file(images/taming_local_flora.png)",
+			   "id": "taming_local_flora",
+               "description": "i18n(stonehearth_ace:jobs.herbalist.herbalist_description.level_2_data.taming_local_flora_description)",
+               "level": 2
+            }
+         ]
+      },
+	  "3": {
+	     "mixintypes": {
+			"perks": "override"
+		 },
+         "perks": [
+            {
+			   "type": "increase_healing_item_effect",
+               "name": "i18n(stonehearth:jobs.herbalist.herbalist_description.level_3_data.perk_000_name)",
+               "id": "increase_healing_item_effect_50_percent",
+               "icon": "/stonehearth/jobs/herbalist/images/level_3.png",
+               "description": "i18n(stonehearth:jobs.herbalist.herbalist_description.level_3_data.perk_000_description)",
+			   "healing_item_effect_multiplier": 1.5,
+               "level": 3
+            }
+         ]
+      },
+      "5": {
+         "perks": [
+            {
+			   "type": "increase_healing_item_effect",
+               "name": "i18n(stonehearth_ace:jobs.herbalist.herbalist_description.level_5_data.item_proficiency_2_name)",
+               "id": "increase_healing_item_effect_100_percent",
+               "icon": "file(images/item_proficiency_2.png)",
+               "description": "i18n(stonehearth_ace:jobs.herbalist.herbalist_description.level_5_data.item_proficiency_2_description)",
+			   "healing_item_effect_multiplier": 2,
+               "level": 5
+            }
+         ]
+      },
+      "6": {
+         "perks": [
+            {
+               "type": "increase_attended_hearthlings",
+               "name": "i18n(stonehearth_ace:jobs.herbalist.herbalist_description.level_6_data.power_medic_3_name)",
+               "id": "herbalist_increase_attended",
+               "icon": "file(images/power_medic_3.png)",
+               "description": "i18n(stonehearth_ace:jobs.herbalist.herbalist_description.level_6_data.power_medic_3_description)",
+               "max_num_attended_hearthlings": 6,
+               "level": 6
+            }
+         ]
+      }
+   }
 }

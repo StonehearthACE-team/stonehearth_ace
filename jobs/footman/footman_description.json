@@ -37,6 +37,35 @@
                "level": 1
             }
          ]
+      },
+	  "3": {
+         "perks": [
+            {
+               "name": "i18n(stonehearth_ace:jobs.footman.footman_description.level_3_data.training_complete_name)",
+               "id": "training_complete",
+               "icon": "file(images/training_complete.png)",
+               "description": "i18n(stonehearth_ace:jobs.footman.footman_description.level_3_data.training_complete_description)",
+               "level": 3
+            }
+         ]
+      },
+	  "6": {
+	     "mixintypes": {
+			"perks": "override"
+		 },
+         "perks": [
+            {
+               "type": "apply_chained_buff",
+               "name": "i18n(stonehearth:jobs.footman.footman_description.level_6_data.perk_000_name)",
+               "id": "footman_damage_up_3",
+               "icon": "file(images/damage_up_3.png)",
+               "buff_name": "stonehearth:buffs:footman:dmg_3",
+               "last_buff": "stonehearth:buffs:footman:dmg_2",
+               "description": "i18n(stonehearth:jobs.footman.footman_description.level_6_data.perk_000_description)",
+               "level": 6,
+               "demote_fn": "remove_buff"
+            }
+         ]
       }
    }
 }

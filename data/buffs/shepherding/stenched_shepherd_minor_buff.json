@@ -1,0 +1,20 @@
+{
+   "type": "buff",
+   "axis": "debuff",
+   "display_name": "i18n(stonehearth:data.buffs.shepherding.stenched_shepherd_buff.display_name)",
+   "description": "i18n(stonehearth:data.buffs.shepherding.stenched_shepherd_buff.description)",
+   "icon": "/stonehearth/data/buffs/shepherding/stenched_shepherd_buff.png",
+   "repeat_add_action": "extend_duration",
+   "duration": "8h",
+   "modifiers": {
+      "compassion": {
+         "multiply": 0.1
+      }
+   },
+   "tags": [
+      "weary_shepherd_buff"
+   ],
+   "disallowed_buffs": [
+      "stonehearth:buffs:shepherd:stenched"
+   ]
+}

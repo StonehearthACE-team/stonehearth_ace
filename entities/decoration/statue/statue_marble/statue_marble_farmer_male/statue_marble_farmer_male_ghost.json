@@ -1,0 +1,33 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(statue_marble_farmer_male.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": -0.05, "y": 0, "z": 0.05 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      },
+      "render_info": {
+         "material": "materials/shiny.material.json"
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.decoration.statue.statue_marble_farmer_male.display_name)",
+         "description": "i18n(stonehearth_ace:entities.decoration.statue.statue_marble_farmer_male.description)",
+         "icon": "file(statue_marble_farmer_male.png)",
+         "category": "decoration",
+         "material_tags": [
+            "stone",
+            "marble",
+            "crafted",
+            "stockpile_decoration"
+         ]
+      }
+   }
+}

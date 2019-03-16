@@ -1,0 +1,30 @@
+{
+   "type": "buff",
+   "axis": "buff",
+   "display_name": "i18n(stonehearth:data.buffs.shepherding.compassionate_shepherd_buff.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.shepherding.compassionate_shepherd_buff.description)",
+   "icon": "/stonehearth/data/buffs/shepherding/compassionate_shepherd_buff.png",
+   "duration": "8h",
+   "repeat_add_action": "renew_duration",
+   "modifiers": {
+      "reproduction_rate_multiplier": {
+         "multiply": 0.5
+      },
+      "renewable_resource_rate_multiplier": {
+         "multiply": 0.5
+      }
+   },
+   "script": "stonehearth:buff_scripts:periodic_health_modification",
+   "script_info": {
+      "health_change": 5,
+      "pulse": "1h",
+      "pulse_immediately": false,
+      "pulse_on_destroy": true
+   },
+   "tags": [
+      "compassionate_shepherd_major_buff"
+   ],
+   "disallowed_buffs": [
+      "stonehearth:buffs:shepherd:compassionate_shepherd"
+   ]
+}
