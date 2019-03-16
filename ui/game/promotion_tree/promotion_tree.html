@@ -81,10 +81,10 @@
                {{/each}}
                {{#if view.oneOfJobs.length}}
                <table><tr>
-                  <td style="padding: 0px 10px 0px 0px; text-align:left">One of:</td>
+                  <td class="oneOfJobCell">{{i18n stonehearth_ace:ui.game.promotion_tree.requirements.one_of_job}}</td>
                   <td>
                      {{#each view.oneOfJobs}}
-                        <div {{bind-attr class="this.requirement_met:requirementsMet:requirementsUnmet"}} style="font-style: italic;">
+                        <div {{bind-attr class="this.requirement_met:requirementsMet:requirementsUnmet"}}>
                            {{i18n_key "stonehearth:ui.game.promotion_tree.parent_level" parent_level=this.level_requirement parent_name=this.display_name}}
                         </div>
                      {{/each}}

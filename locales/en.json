@@ -6918,6 +6918,11 @@
                   "item_message": "[str(i18n_data.new_title.description)]<p>Doesn't that title have a nice ring to it? You can select which title this item is using by right-clicking its name in the selected unit window. <i>You might also consider giving [str(i18n_data.entity.stonehearth:unit_info.custom_name)] a fancier name to go along with their new title by left-clicking its name in the selected unit window.</i></p>"
                }
             }
+         },
+         "promotion_tree": {
+            "requirements": {
+               "one_of_job": "One of:"
+            }
          }
       },
       "shell": {
