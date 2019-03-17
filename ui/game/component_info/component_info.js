@@ -1,3 +1,17 @@
+var _componentInfoShown = false;
+
+var _updateComponentInfoShown = function() {
+   let compInfo = App.gameView.getView(App.ComponentInfoView);
+   if (compInfo) {
+      compInfo._onEntitySelected();
+   }
+};
+
+$(top).on("show_component_info_changed", function (_, e) {
+   _componentInfoShown = e.value;
+   _updateComponentInfoShown();
+});
+
 $(top).on('stonehearthReady', function (cc) {
    if (!App.gameView) {
       return;
@@ -6,6 +20,16 @@ $(top).on('stonehearthReady', function (cc) {
    if (!compInfo) {
       App.gameView.addView(App.ComponentInfoView, {});
    }
+
+   // need to apply the setting on load as well
+   radiant.call('radiant:get_config', 'mods.stonehearth_ace.show_component_info')
+   .done(function(o) {
+      var show_component_info = o['mods.stonehearth_ace.show_component_info'] || false;
+      var e = {
+         value: show_component_info
+      };
+      $(top).trigger('show_component_info_changed', e);
+   });
 });
 
 App.ComponentInfoView = App.View.extend({
@@ -124,12 +148,23 @@ App.ComponentInfoView = App.View.extend({
 
    _onEntitySelected: function(e) {
       var self = this;
-      var entity = e.selected_entity
+      var entity;
 
       self._destroyTraces();
 
-      if (!entity) {
+      if (e) {
+         entity = e.selected_entity;
+         self.selectedEntity = entity;
+      }
+      else {
+         entity = self.selectedEntity;
+      }
+
+      if (!entity || !_componentInfoShown) {
          self.hide();
+         $(top).trigger('selection_has_component_info_changed', {
+            has_component_info: false
+         });
          return;
       }
 

@@ -7,6 +7,10 @@ var _selectionHasComponentInfoChanged = function() {
    else {
       $('#componentInfoButton').hide();
    }
+   let unitFrame = App.gameView.getView(App.StonehearthUnitFrameView);
+   if (unitFrame) {
+      unitFrame._updateUnitFrameWidth();
+   }
 };
 
 $(top).on("selection_has_component_info_changed", function (_, e) {
