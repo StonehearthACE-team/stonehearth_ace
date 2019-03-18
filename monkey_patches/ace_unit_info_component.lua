@@ -34,17 +34,6 @@ function AceUnitInfoComponent:create()
    end
 end
 
-AceUnitInfoComponent._ace_old_activate = UnitInfoComponent.activate
-function AceUnitInfoComponent:activate()
-   if not self._sv.titles then
-      self._sv.titles = {}
-   end
-
-   if self._ace_old_activate then
-      self:_ace_old_activate()
-   end
-end
-
 -- for now, only change set_custom_name to consider 'locked'
 -- since this is the only thing that can be custom-set arbitrarily by the player
 -- in future, perhaps extend this capability to set_description and/or set_icon
@@ -100,67 +89,29 @@ function AceUnitInfoComponent:get_custom_data()
    return self._sv.custom_data
 end
 
-function AceUnitInfoComponent:get_titles()
-   return self._sv.titles
-end
-
-function AceUnitInfoComponent:has_title(title, rank)
-   local title_rank = self._sv.titles[title]
-   return title_rank and (not rank or title_rank >= rank)
-end
-
 function AceUnitInfoComponent:get_current_title()
    return self._sv.custom_data and self._sv.custom_data.current_title
 end
 
--- once bestowed, a title is never removed; it can only be increased in rank
-function AceUnitInfoComponent:add_title(title, rank, propogate_to_forms)
-   if not self:has_title(title, rank) then
-      self._sv.titles[title] = rank or 1
-
-      -- if this was just a regular entity before, set its custom name to its catalog display name
-      if not self._sv.custom_name then
-         self._sv.custom_name = self._sv.display_name or stonehearth.catalog:get_catalog_data(self._entity:get_uri()).display_name
-      end
-
-      self.__saved_variables:mark_changed()
-
-      self:_select_new_title(title, rank, propogate_to_forms)
-      if propogate_to_forms ~= false then
-         self:_propogate_title(title, rank)
-      end
-
-      return true
-   end
-end
-
-function AceUnitInfoComponent:_propogate_title(title, rank)
-   local root, iconic = entity_forms.get_forms(self._entity)
-   for _, form in ipairs({root, iconic}) do
-      if form and form ~= self._entity then
-         form:add_component('stonehearth:unit_info'):add_title(title, rank, false)
-      end
-   end
-end
-
-function AceUnitInfoComponent:_select_new_title(title, rank, propogate_to_forms)
-   if stonehearth.client_state:get_client_gameplay_setting(self._entity:get_player_id(), 'stonehearth_ace', 'auto_select_new_titles', true) then
-      self:select_title(title, rank, propogate_to_forms)
-   end
-end
-
-function AceUnitInfoComponent:select_title(title, rank, propogate_to_forms)
+function AceUnitInfoComponent:select_title(title, rank)
    -- if no rank is provided, assume the highest rank of that title we have
    if not self._sv.custom_data then
       self._sv.custom_data = {}
    end
 
-   if title and self._sv.titles[title] then
-      rank = math.min(rank or self._sv.titles[title], self._sv.titles[title])
+   local titles_comp = self._entity:get_component('stonehearth_ace:titles')
+   local max_rank = titles_comp and titles_comp:get_highest_rank(title)
+   if title and max_rank then
+      rank = math.min(rank or max_rank, max_rank)
       local pop = stonehearth.population:get_population(self._entity:get_player_id())
       self._sv.custom_data.current_title = pop and pop:get_title_rank_data(self._entity, title, rank) or nil
    else
       self._sv.custom_data.current_title = nil
+   end
+   
+   -- if this was just a regular entity before, set its custom name to its catalog display name
+   if not self._sv.custom_name then
+      self._sv.custom_name = self._sv.display_name or stonehearth.catalog:get_catalog_data(self._entity:get_uri()).display_name
    end
 
    if self._sv.custom_data.current_title then
@@ -168,23 +119,10 @@ function AceUnitInfoComponent:select_title(title, rank, propogate_to_forms)
    else
       self._sv.display_name = 'i18n(stonehearth:ui.game.entities.custom_name)'
    end
-
+   
    self.__saved_variables:mark_changed()
 
    self:_trigger_on_change()
-
-   if propogate_to_forms ~= false then
-      self:_propogate_selected_title(title, rank)
-   end
-end
-
-function AceUnitInfoComponent:_propogate_selected_title(title, rank)
-   local root, iconic = entity_forms.get_forms(self._entity)
-   for _, form in ipairs({root, iconic}) do
-      if form and form ~= self._entity then
-         form:add_component('stonehearth:unit_info'):select_title(title, rank, false)
-      end
-   end
 end
 
 function AceUnitInfoComponent:is_locked()
@@ -227,7 +165,7 @@ end
 
 function AceUnitInfoComponent:_process_custom_data(custom_data)
    if not custom_data then
-      return {}
+      return self._sv.custom_data or {}
    end
 
    if type(custom_data) ~= 'table' then

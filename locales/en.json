@@ -6915,7 +6915,7 @@
                   "title": "[str(i18n_data.entity.stonehearth:unit_info.custom_name)] has achieved a new Title!",
                   "header": "<h2>[str(i18n_data.entity.stonehearth:unit_info.custom_name)]...</h2><h3>is now [str(i18n_data.entity.stonehearth:unit_info.custom_name)][str(i18n_data.new_title.display_name)]!</h3>",
                   "message": "[str(i18n_data.new_title.description)]<p>Doesn't that title have a nice ring to it? You can select which title one of your citizens is using by right-clicking their name in their character sheet or the selected unit window.</p>",
-                  "item_message": "[str(i18n_data.new_title.description)]<p>Doesn't that title have a nice ring to it? You can select which title this item is using by right-clicking its name in the selected unit window. <i>You might also consider giving [str(i18n_data.entity.stonehearth:unit_info.custom_name)] a fancier name to go along with their new title by left-clicking its name in the selected unit window.</i></p>"
+                  "item_message": "[str(i18n_data.new_title.description)]<p>Doesn't that title have a nice ring to it? You can select which title this item is using by right-clicking its name in the selected unit window.</p><p><i>You might also consider giving [str(i18n_data.entity.stonehearth:unit_info.custom_name)] a fancier name to go along with their new title by left-clicking its name in the selected unit window.</i></p>"
                }
             }
          },
@@ -7110,6 +7110,10 @@
          "tile": {
             "display_name": "Tile",
             "description": "Tile-able item that will automatically connect adjacently and update its model."
+         },
+         "titles": {
+            "display_name": "Titles",
+            "description": "This entity can be given a title that will show up after their name. Right-click their name in the selected unit window or their character sheet (if they have one) to select a different title."
          },
          "transform": {
             "display_name": "Transform",

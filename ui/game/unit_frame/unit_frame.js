@@ -80,6 +80,8 @@ App.StonehearthUnitFrameView.reopen({
           "root_entity": {
               "uri": {},
               'stonehearth:item_quality': {},
+              "stonehearth:unit_info": {},
+              "stonehearth_ace:titles": {}
           }
       },
       "stonehearth:work_order": {
@@ -138,7 +140,10 @@ App.StonehearthUnitFrameView.reopen({
       self._nameHelper = new StonehearthInputHelper(self.$('#nameInput'), function (value) {
          // Ignore name input if player does not own the entity
          if (!radiant.isOwnedByAnotherPlayer(self.get('model'), App.stonehearthClient.getPlayerId())) {
-            radiant.call('stonehearth:set_custom_name', self.uri, value); // false for skip setting custom name
+            // get uri based on name_entity
+            var name_entity = self.get('name_entity');
+            var uri = self.get(name_entity + '.__self');
+            radiant.call('stonehearth:set_custom_name', uri, value); // false for skip setting custom name
          }
 
          self.$('#nameInput').hide();
@@ -183,7 +188,8 @@ App.StonehearthUnitFrameView.reopen({
    _showTitleSelectionList: function() {
       var self = this;
 
-      var result = stonehearth_ace.createTitleSelectionList(self._titles, self.get('model.stonehearth:unit_info.titles'), self.get('uri'), self.get('custom_name'));
+      var name_entity = self.get('name_entity');
+      var result = stonehearth_ace.createTitleSelectionList(self._titles, self.get(name_entity + '.stonehearth_ace:titles.titles'), self.get('uri'), self.get('custom_name'));
       if (result) {
          result.container.css({
             height: result.titlesArr.length * 37
@@ -211,12 +217,14 @@ App.StonehearthUnitFrameView.reopen({
    _updateChangeableName: function() {
       var self = this;
       var playerCheck = self.get('model.player_id') == App.stonehearthClient.getPlayerId();
-      var unit_info = self.get('model.stonehearth:unit_info');
+      var name_entity = self.get('name_entity');
+      var unit_info = self.get(name_entity + '.stonehearth:unit_info');
+      
       var canChangeName = playerCheck && unit_info && !unit_info.locked;
       self.set('canChangeName', canChangeName);
       self.notifyPropertyChange('canChangeName');
       self.$('#nameInput').hide();
-   }.observes('model.uri', 'model.stonehearth:unit_info'),
+   }.observes('name_entity'),
 
    toggleComponentInfo: function() {
       $(top).trigger('component_info_toggled', {});
@@ -271,16 +279,28 @@ App.StonehearthUnitFrameView.reopen({
    }.observes('model.uri'),
 
    _updateDisplayNameAndDescription: function() {
-      var alias = this.get('model.uri');
-      this.set('entityWithNonworkerJob', false);
+      var self = this;
+      var alias = self.get('model.uri');
+      self.set('entityWithNonworkerJob', false);
 
-      var description = this.get('model.stonehearth:unit_info.description');
-      if (this.get('model.stonehearth:job') && !this.get('model.stonehearth:job.curr_job_controller.no_levels') && this.get('model.stonehearth:job.curr_job_name') !== '') {
-         this.set('entityWithNonworkerJob', true);
-         this.$('#Lvl').text( i18n.t('stonehearth:ui.game.unit_frame.Lvl'));
+      var description = self.get('model.stonehearth:unit_info.description');
+      if (self.get('model.stonehearth:job') && !self.get('model.stonehearth:job.curr_job_controller.no_levels') && self.get('model.stonehearth:job.curr_job_name') !== '') {
+         self.set('entityWithNonworkerJob', true);
+         self.$('#Lvl').text( i18n.t('stonehearth:ui.game.unit_frame.Lvl'));
       }
 
-      var unit_info = this.get('model.stonehearth:unit_info');
+      // prefer the unit info for this entity, unless custom_name or custom_data is specified for root entity
+      var unit_info_property = 'model.stonehearth:unit_info';
+      var root_unit_info_property = 'model.stonehearth:iconic_form.root_entity.stonehearth:unit_info';
+      var unit_info = self.get(unit_info_property);
+      var root_unit_info = self.get(root_unit_info_property);
+      var name_entity = 'model';
+      if (root_unit_info && (root_unit_info.custom_name || root_unit_info.custom_data)) {
+         unit_info = root_unit_info;
+         unit_info_property = root_unit_info_property;
+         name_entity = 'model.stonehearth:iconic_form.root_entity';
+      }
+
       var display_name = unit_info && unit_info.display_name;
       var custom_name = unit_info && unit_info.custom_name;
       if (alias) {
@@ -290,7 +310,7 @@ App.StonehearthUnitFrameView.reopen({
          } else {
             if (custom_name && custom_name.substring(0, 5) == 'i18n(') {
                custom_name = i18n.t(catalogData.display_name);
-               this.set('model.stonehearth:unit_info.custom_name', custom_name);
+               self.set(unit_info_property + '.custom_name', custom_name);
             }
 
             if (!display_name) {
@@ -303,24 +323,26 @@ App.StonehearthUnitFrameView.reopen({
          }
       }
 
-      this.set('custom_name', custom_name);
-      this.set('display_name', display_name);
-      this.notifyPropertyChange('display_name');
-      this.set('description', description);
-      this.notifyPropertyChange('description');
-   }.observes('model.uri'),
+      self.set('name_entity', name_entity);
+      self.set('custom_name', custom_name);
+      self.set('display_name', display_name);
+      self.notifyPropertyChange('display_name');
+      self.set('description', description);
+      self.notifyPropertyChange('description');
+   }.observes('model.uri', 'model.stonehearth:unit_info', 'model.stonehearth:iconic_form.root_entity.stonehearth:unit_info'),
 
    _loadAvailableTitles: function() {
       // when the selection changes, load up the appropriate titles json
       var self = this;
       self._titles = {};
-      var json = self.get('model.stonehearth_ace:titles.titles_json');
+      var name_entity = self.get('name_entity');
+      var json = self.get(name_entity + '.stonehearth_ace:titles.titles_json');
       if (json) {
          stonehearth_ace.loadAvailableTitles(json, function(data){
             self._titles = data;
          });
       }
-   }.observes('model.uri'),
+   }.observes('name_entity'),
 
    _updateJobChangeable: function() {
       var self = this;
