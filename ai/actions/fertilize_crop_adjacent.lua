@@ -22,7 +22,7 @@ function FertilizeCropAdjacent:start_thinking(ai, entity, args)
    self._crop = self._farmer_field:crop_at(args.location)
 
    if not self._crop or not self._crop:is_valid() then
-      self._log:detail('no crop at %s (%s)', offset, tostring(self._crop))
+      self._log:detail('no crop at %s (%s)', args.location, tostring(self._crop))
       return
    end
 
