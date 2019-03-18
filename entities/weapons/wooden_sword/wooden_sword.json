@@ -1,9 +1,9 @@
 {
-   "components": {
-      "stonehearth:equipment_piece": {
-         "equipment_types": [ "mainhand" ]
-      }
-   },
+   "mixins": [
+		"stonehearth_ace:mixins:weapons:mainhand"
+	],
+	"type": "entity",
+   "components": {},
    "entity_data": {
 	  "stonehearth:combat:melee_attacks": [
 			{

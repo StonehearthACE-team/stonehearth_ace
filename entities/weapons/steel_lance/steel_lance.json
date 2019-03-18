@@ -1,5 +1,8 @@
 {
-   "mixins": "stonehearth:mixins:item_properties",
+   "mixins": [
+      "stonehearth:mixins:item_properties",
+	  "stonehearth_ace:mixins:weapons:twohanded_shaken"
+   ],
    "type": "entity",
    "components": {
       "model_variants": {
@@ -13,11 +16,6 @@
          "iconic_form": "file(steel_lance_iconic.json)"
       },
       "stonehearth:equipment_piece": {
-         "slot": "mainhand",
-         "additional_equipment": {
-            "stonehearth:armor:offhand_placeholder": true
-         },
-         "render_type": "attach_to_bone",
          "postures": [
             "stonehearth:combat",
             "stonehearth:patrol"
@@ -27,21 +25,10 @@
             "knight_job"
          ],
          "required_job_level": 4,
-         "equip_effect": "stonehearth:effects:weapon_level_up",
-         "equipment_types": [
-            "twohanded"
-         ]
+         "equip_effect": "stonehearth:effects:weapon_level_up"
       }
    },
    "entity_data": {
-      "stonehearth:buffs": {
-         "inflictable_debuffs": {
-            "shaken": {
-               "uri": "stonehearth_ace:buffs:shaken",
-               "chance": 0.5
-            }
-         }
-      },
       "stonehearth:combat:weapon_data": {
          "base_damage": 21,
          "reach": 3.0
@@ -94,13 +81,10 @@
          "icon": "file(steel_lance.png)",
          "category": "weapons",
          "material_tags": [
-            "twohanded",
             "steel",
-            "melee_weapon",
             "ascendancy_made",
             "crafted",
-            "steel_lance",
-            "stockpile_weapon"
+            "steel_lance"
          ]
       }
    }

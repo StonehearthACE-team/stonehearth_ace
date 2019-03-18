@@ -1,5 +1,8 @@
 {
-   "mixins": "stonehearth:mixins:item_properties",
+   "mixins": [
+   "stonehearth:mixins:item_properties",
+   "stonehearth_ace:mixins:weapons:twohanded_open_wounds_minor"
+   ],
    "type": "entity",
    "components": {
       "model_variants": {
@@ -13,11 +16,6 @@
          "iconic_form": "file(bronze_axe_iconic.json)"
       },
       "stonehearth:equipment_piece": {
-         "slot": "mainhand",
-         "additional_equipment": {
-            "stonehearth:armor:offhand_placeholder": true
-         },
-         "render_type": "attach_to_bone",
          "postures": [
             "stonehearth:combat",
             "stonehearth:patrol"
@@ -27,21 +25,10 @@
             "footman_job"
          ],
          "required_job_level": 2,
-         "equip_effect": "stonehearth:effects:weapon_level_up",
-         "equipment_types": [
-            "twohanded"
-         ]
+         "equip_effect": "stonehearth:effects:weapon_level_up"
       }
    },
    "entity_data": {
-      "stonehearth:buffs": {
-         "inflictable_debuffs": {
-            "open_wounds": {
-               "uri": "stonehearth_ace:buffs:minor_open_wounds",
-               "chance": 0.33
-            }
-         }
-      },
       "stonehearth:combat:weapon_data": {
          "base_damage": 17,
          "reach": 1.8
@@ -71,13 +58,10 @@
          "icon": "file(bronze_axe.png)",
          "category": "weapons",
          "material_tags": [
-            "twohanded",
             "bronze",
             "ascendancy_made",
-            "melee_weapon",
             "bronze_axe",
-            "crafted",
-            "stockpile_weapon"
+            "crafted"
          ]
       }
    }

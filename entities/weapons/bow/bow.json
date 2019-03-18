@@ -1,11 +1,9 @@
 {
+   "mixins": "stonehearth_ace:mixins:weapons:bow",
+   "type": "entity",
    "components": {
       "stonehearth:equipment_piece": {
-		 "additional_equipment": {
-            "stonehearth_ace:armor:backpack_placeholder": true
-         },
-         "ilevel": 21,
-         "equipment_types": ["bow"]
+         "ilevel": 21
       }
    },
    "entity_data": {
@@ -14,7 +12,7 @@
          "base_ranged_damage": 21
       },
       "stonehearth:catalog": {
-         "material_tags":["wood", "bow", "ranged_weapon"]
+         "material_tags":["wood"]
       }
    }
 }

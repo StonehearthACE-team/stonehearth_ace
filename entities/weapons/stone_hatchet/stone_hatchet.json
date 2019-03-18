@@ -1,5 +1,8 @@
 {
-   "mixins": "stonehearth:mixins:item_properties",
+   "mixins": [
+	   "stonehearth:mixins:item_properties",
+	   "stonehearth_ace:mixins:weapons:offhand"
+	],
    "type": "entity",
    "components": {
       "model_variants": {
@@ -13,11 +16,6 @@
          "iconic_form": "file(stone_hatchet_iconic.json)"
       },
       "stonehearth:equipment_piece": {
-         "slot": "leftArm",
-         "render_type": "attach_to_bone",
-         "additional_equipment": {
-            "stonehearth_ace:armor:offhand_placeholder": true
-         },
          "postures": [
             "stonehearth:combat",
             "stonehearth:patrol"
@@ -27,10 +25,7 @@
             "footman_job"
          ],
          "required_job_level": 1,
-         "equip_effect": "stonehearth:effects:weapon_level_up",
-         "equipment_types": [
-            "offhand"
-         ]
+         "equip_effect": "stonehearth:effects:weapon_level_up"
       },
       "mob": {
          "model_origin": { "x": 0, "y": 0.4, "z": 0 }
@@ -84,12 +79,9 @@
          "icon": "file(stone_hatchet.png)",
          "category": "weapons",
          "material_tags": [
-            "offhand",
             "stone",
-            "melee_weapon",
             "stone_hatchet",
-            "crafted",
-            "stockpile_weapon"
+            "crafted"
          ]
       }
    }

@@ -1,5 +1,8 @@
 {
-   "mixins": "stonehearth_ace:mixins:weapons:mainhand",
+   "mixins": [
+   "stonehearth:mixins:item_properties",
+   "stonehearth_ace:mixins:weapons:mainhand_hacking"
+   ],
    "type": "entity",
    "components": {
       "model_variants": {
@@ -22,10 +25,7 @@
             "footman_job"
          ],
          "required_job_level": 3,
-         "equip_effect": "stonehearth:effects:weapon_level_up",
-         "injected_buffs": [
-            "stonehearth_ace:buffs:hacking_weapon"
-         ]
+         "equip_effect": "stonehearth:effects:weapon_level_up"
       }
    },
    "entity_data": {

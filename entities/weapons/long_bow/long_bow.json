@@ -1,5 +1,8 @@
 {
-   "mixins": "stonehearth:mixins:item_properties",
+   "mixins": [
+      "stonehearth:mixins:item_properties",
+	  "stonehearth_ace:mixins:weapons:bow"
+   ],
    "type": "entity",
    "components": {
       "model_variants": {
@@ -13,11 +16,6 @@
          "iconic_form": "file(long_bow_iconic.json)"
       },
       "stonehearth:equipment_piece": {
-         "slot": "mainhand",
-         "render_type": "attach_to_bone",
-         "additional_equipment": {
-            "stonehearth_ace:armor:backpack_placeholder": true
-         },
          "postures": [
             "stonehearth:combat",
             "stonehearth:patrol"
@@ -27,10 +25,7 @@
             "archer_job"
          ],
          "required_job_level": 1,
-         "equip_effect": "stonehearth:effects:weapon_level_up",
-         "equipment_types": [
-            "bow"
-         ]
+         "equip_effect": "stonehearth:effects:weapon_level_up"
       }
    },
    "entity_data": {
@@ -70,9 +65,7 @@
          "category": "weapons",
          "material_tags": [
             "wood",
-            "bow",
             "ascendancy_made",
-            "ranged_weapon",
             "long_bow",
             "stockpile_weapon"
          ]

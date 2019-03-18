@@ -1,9 +1,13 @@
 {
-   "components": {
-      "mixintypes": {
-		 "stonehearth:equipment_piece": "override"
-	  },
+   "mixins": [
+	  "stonehearth_ace:mixins:weapon"
+   ],
+   "type": "entity",
+   "components": {    
       "stonehearth:equipment_piece": {
+	     "mixintypes": {
+			"roles": "override"
+	     },
          "slot": "mainhand",
          "render_type": "attach_to_bone",
          "postures": [

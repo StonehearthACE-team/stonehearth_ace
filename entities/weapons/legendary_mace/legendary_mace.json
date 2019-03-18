@@ -1,5 +1,8 @@
 {
-   "mixins": "stonehearth:mixins:item_properties",
+   "mixins": [
+   "stonehearth:mixins:item_properties",
+   "stonehearth_ace:mixins:weapon"
+   ],
    "type": "entity",
    "components": {
       "model_variants": {
@@ -81,8 +84,7 @@
             "melee_weapon",
             "ascendancy_made",
             "crafted",
-            "legendary_mace",
-            "stockpile_weapon"
+            "legendary_mace"
          ]
       }
    }

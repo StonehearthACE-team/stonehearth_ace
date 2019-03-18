@@ -1,5 +1,8 @@
 {
-   "mixins": "stonehearth:mixins:item_properties",
+   "mixins": [
+   "stonehearth:mixins:item_properties",
+   "stonehearth_ace:mixins:weapons:offhand_out_of_balance"
+   ],
    "type": "entity",
    "components": {
       "model_variants": {
@@ -13,11 +16,6 @@
          "iconic_form": "file(giant_bone_hatchet_iconic.json)"
       },
       "stonehearth:equipment_piece": {
-         "slot": "leftArm",
-         "render_type": "attach_to_bone",
-         "additional_equipment": {
-            "stonehearth_ace:armor:offhand_placeholder": true
-         },
          "postures": [
             "stonehearth:combat",
             "stonehearth:patrol"
@@ -27,24 +25,10 @@
             "footman_job"
          ],
          "required_job_level": 3,
-         "equip_effect": "stonehearth:effects:weapon_level_up",
-         "equipment_types": [
-            "offhand"
-         ]
-      },
-      "mob": {
-         "model_origin": { "x": 0, "y": 0.4, "z": 0 }
+         "equip_effect": "stonehearth:effects:weapon_level_up"
       }
    },
    "entity_data": {
-      "stonehearth:buffs": {
-         "inflictable_debuffs": {
-            "out_of_balance": {
-               "uri": "stonehearth_ace:buffs:out_of_balance",
-               "chance": 0.5
-            }
-         }
-      },
       "stonehearth:combat:weapon_data": {
          "base_damage": 11,
          "reach": 1.5
@@ -84,12 +68,9 @@
          "icon": "file(giant_bone_hatchet.png)",
          "category": "weapons",
          "material_tags": [
-            "offhand",
             "bone",
-            "melee_weapon",
             "crafted",
-            "giant_bone_hatchet",
-            "stockpile_weapon"
+            "giant_bone_hatchet"
          ]
       }
    }

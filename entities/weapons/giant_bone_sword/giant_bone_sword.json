@@ -1,5 +1,8 @@
 {
-   "mixins": "stonehearth:mixins:item_properties",
+   "mixins": [
+   "stonehearth:mixins:item_properties",
+   "stonehearth_ace:mixins:weapons:mainhand_hamstrung"
+   ],
    "type": "entity",
    "components": {
       "model_variants": {
@@ -13,8 +16,6 @@
          "iconic_form": "file(giant_bone_sword_iconic.json)"
       },
       "stonehearth:equipment_piece": {
-         "slot": "mainhand",
-         "render_type": "attach_to_bone",
          "postures": [
             "stonehearth:combat",
             "stonehearth:patrol"
@@ -24,21 +25,10 @@
             "footman_job"
          ],
          "required_job_level": 4,
-         "equip_effect": "stonehearth:effects:weapon_level_up",
-         "equipment_types": [
-            "mainhand"
-         ]
+         "equip_effect": "stonehearth:effects:weapon_level_up"
       }
    },
    "entity_data": {
-      "stonehearth:buffs": {
-         "inflictable_debuffs": {
-            "hamstrung": {
-               "uri": "stonehearth_ace:buffs:hamstrung",
-               "chance": 0.5
-            }
-         }
-      },
       "stonehearth:combat:weapon_data": {
          "base_damage": 16,
          "reach": 1.8
@@ -81,10 +71,8 @@
          "category": "weapons",
          "material_tags": [
             "bone",
-            "melee_weapon",
             "crafted",
-            "giant_bone_sword",
-            "stockpile_weapon"
+            "giant_bone_sword"
          ]
       }
    }

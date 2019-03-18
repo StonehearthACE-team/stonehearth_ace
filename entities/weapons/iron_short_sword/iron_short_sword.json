@@ -1,5 +1,8 @@
 {
-   "mixins": "stonehearth:mixins:item_properties",
+   "mixins": [
+   "stonehearth:mixins:item_properties",
+   "stonehearth_ace:mixins:weapons:mainhand"
+   ],
    "type": "entity",
    "components": {
       "model_variants": {
@@ -13,8 +16,6 @@
          "iconic_form": "file(iron_short_sword_iconic.json)"
       },
       "stonehearth:equipment_piece": {
-         "slot": "mainhand",
-         "render_type": "attach_to_bone",
          "postures": [
             "stonehearth:combat",
             "stonehearth:patrol"
@@ -24,10 +25,7 @@
             "knight_job"
          ],
          "required_job_level": 1,
-         "equip_effect": "stonehearth:effects:weapon_level_up",
-         "equipment_types": [
-            "mainhand"
-         ]
+         "equip_effect": "stonehearth:effects:weapon_level_up"
       }
    },
    "entity_data": {
@@ -88,11 +86,9 @@
          "category": "weapons",
          "material_tags": [
             "iron",
-            "melee_weapon",
             "ascendancy_made",
             "crafted",
-            "iron_short_sword",
-            "stockpile_weapon"
+            "iron_short_sword"
          ]
       }
    }

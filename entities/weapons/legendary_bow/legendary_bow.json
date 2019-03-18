@@ -1,13 +1,16 @@
 {
+   "mixins": [
+	  "stonehearth_ace:mixins:weapons:bow"
+   ],
+   "type": "entity",
    "components": {
       "stonehearth:equipment_piece": {
-	     "required_job_level": 6,
-         "equipment_types": ["bow"]
-      }
+	     "required_job_level": 6
+	  }
    },
    "entity_data": {
       "stonehearth:catalog": {
-         "material_tags":["legendary", "bow", "ranged_weapon", "ascendancy_made", "legendary_bow", "stockpile_weapon"]
+         "material_tags":["legendary", "ascendancy_made", "legendary_bow"]
       }
    }
 }

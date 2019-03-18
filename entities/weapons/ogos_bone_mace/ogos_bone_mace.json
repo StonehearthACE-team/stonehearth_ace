@@ -1,20 +1,12 @@
 {
-   "components": {
-      "stonehearth:equipment_piece": {
-         "equipment_types": ["twohanded"]
-      }
-   },
+   "mixins": [
+	  "stonehearth_ace:mixins:weapons:twohanded_open_wounds_major"
+   ],
+   "type": "entity",
+   "components": {},
    "entity_data": {
-	  "stonehearth:buffs": {
-         "inflictable_debuffs": {
-            "open_wounds": {
-               "uri": "stonehearth_ace:buffs:major_open_wounds",
-               "chance": 0.66
-            }
-         }
-      },
       "stonehearth:catalog": {
-         "material_tags":["twohanded", "bone", "melee_weapon", "ogos_bone_mace", "crafted", "stockpile_weapon"]
+         "material_tags":["bone", "ogos_bone_mace"]
       }
    }
 }

@@ -1,8 +1,13 @@
 {
-   "mixins": "stonehearth_ace:mixins:weapons:mainhand",
+   "mixins": "stonehearth_ace:mixins:weapon",
    "type": "entity",
 	"components": {
       "stonehearth:equipment_piece": {
+	     "slot": "mainhand",
+         "render_type": "attach_to_bone",
+         "equipment_types": [
+            "mainhand"
+         ],
          "mixintypes": {
             "roles": "override"
          },
@@ -11,7 +16,7 @@
             "stonehearth:patrol"
          ],
          "ilevel": 14,
-         "roles":["footman_job"],
+         "roles": ["footman_job"],
          "required_job_level": 2,
          "equip_effect": "stonehearth:effects:weapon_level_up"
       },
@@ -73,7 +78,7 @@
          "mixintypes": {
             "material_tags": "override"
          },
-         "material_tags":["bronze_sword", "ascendancy_made"]
+         "material_tags":["melee_weapon", "bronze_sword", "ascendancy_made"]
       }
 	}
 }

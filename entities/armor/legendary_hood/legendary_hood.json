@@ -5,32 +5,28 @@
       "model_variants": {
          "default": {
             "layer": "clothing",
-            "transparent": "false",
+            "transparent": false,
             "models": [
-               "file(legendary_hood.qb)",
-               "file(legendary_hood_hat.qb)"
+               "file(legendary_hood.qb)"
             ]
          },
          "female": {
             "layer": "clothing",
-            "transparent": "false",
+            "transparent": false,
             "models": [
-               "file(legendary_hood_female.qb)",
-               "file(legendary_hood_hat_female.qb)"
+               "file(legendary_hood_female.qb)"
             ]
          },
          "rabbit_male": {
             "layer": "clothing",
             "models": [
-               "file(legendary_hood_rabbit.qb)",
-               "file(legendary_hood_rabbit_hat.qb)"
+               "file(legendary_hood_rabbit.qb)"
             ]
          },
          "rabbit_female": {
             "layer": "clothing",
             "models": [
-               "file(legendary_hood_rabbit.qb)",
-               "file(legendary_hood_rabbit_hat.qb)"
+               "file(legendary_hood_rabbit.qb)"
             ]
          }
       },
@@ -40,6 +36,9 @@
       "stonehearth:equipment_piece": {
          "render_type": "merge_with_model",
          "slot": "torso",
+			"additional_equipment": {
+            "stonehearth_ace:armor:legendary:hood:hood": true
+         },
          "ilevel": 10,
          "roles": [
             "archer_job"

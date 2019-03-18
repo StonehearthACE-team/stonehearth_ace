@@ -1,9 +1,13 @@
 {
-   "components": {
-	  "mixintypes": {
-		 "stonehearth:equipment_piece": "override"
-	  },
+   "mixins": [
+	  "stonehearth_ace:mixins:weapon"
+   ],
+   "type": "entity",
+   "components": {  
       "stonehearth:equipment_piece": {
+	     "mixintypes": {
+		    "roles": "override"
+	     },
          "slot": "mainhand",
          "render_type": "attach_to_bone",
          "postures": [
@@ -61,7 +65,7 @@
 	     "mixintypes": {
 			"material_tags": "override"
 		 },
-         "material_tags":["steel", "melee_weapon", "crafted", "ascendancy_made", "long_sword", "stockpile_weapon"]
+         "material_tags":["steel", "melee_weapon", "crafted", "ascendancy_made", "long_sword"]
       }
    }
 }

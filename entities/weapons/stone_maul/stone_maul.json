@@ -1,13 +1,16 @@
 {
+   "mixins": [
+	   "stonehearth_ace:mixins:weapons:mainhand"
+	],
+   "type": "entity",
    "components": {
       "stonehearth:equipment_piece": {
-	     "required_job_level": 1,
-		 "equipment_types": ["mainhand"]
+	     "required_job_level": 1
       }
    },
    "entity_data": {
       "stonehearth:catalog": {
-         "material_tags":["stone", "melee_weapon", "crafted", "stone_maul", "stockpile_weapon"]
+         "material_tags":["stone", "crafted", "stone_maul"]
       }
    }
 }

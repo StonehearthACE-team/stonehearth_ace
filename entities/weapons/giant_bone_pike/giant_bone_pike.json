@@ -1,5 +1,8 @@
 {
-   "mixins": "stonehearth:mixins:item_properties",
+   "mixins": [
+   "stonehearth:mixins:item_properties",
+   "stonehearth_ace:mixins:weapons:twohanded_shaken_minor"
+   ],
    "type": "entity",
    "components": {
       "model_variants": {
@@ -13,11 +16,6 @@
          "iconic_form": "file(giant_bone_pike_iconic.json)"
       },
       "stonehearth:equipment_piece": {
-         "slot": "mainhand",
-         "additional_equipment": {
-            "stonehearth:armor:offhand_placeholder": true
-         },
-         "render_type": "attach_to_bone",
          "postures": [
             "stonehearth:combat",
             "stonehearth:patrol"
@@ -27,21 +25,10 @@
             "knight_job"
          ],
          "required_job_level": 2,
-         "equip_effect": "stonehearth:effects:weapon_level_up",
-         "equipment_types": [
-            "twohanded"
-         ]
+         "equip_effect": "stonehearth:effects:weapon_level_up"
       }
    },
    "entity_data": {
-      "stonehearth:buffs": {
-         "inflictable_debuffs": {
-            "shaken": {
-               "uri": "stonehearth_ace:buffs:minor_shaken",
-               "chance": 0.33
-            }
-         }
-      },
       "stonehearth:combat:weapon_data": {
          "base_damage": 20,
          "reach": 3.0
@@ -92,12 +79,9 @@
          "icon": "file(giant_bone_pike.png)",
          "category": "weapons",
          "material_tags": [
-            "twohanded",
             "bone",
-            "melee_weapon",
             "crafted",
-            "giant_bone_pike",
-            "stockpile_weapon"
+            "giant_bone_pike"
          ]
       }
    }

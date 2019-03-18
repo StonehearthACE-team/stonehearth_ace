@@ -1,12 +1,12 @@
 {
-   "components": {
-      "stonehearth:equipment_piece": {
-         "equipment_types": ["twohanded"]
-      }
-   },
+   "mixins": [
+      "stonehearth_ace:mixins:weapons:twohanded_shaken_major"
+   ],
+   "type": "entity",
+   "components": {},
    "entity_data": {
       "stonehearth:catalog": {
-         "material_tags":["twohanded", "wood", "melee_weapon", "na_mode", "spear_horn", "crafted", "stockpile_weapon"]
+         "material_tags":["wood", "na_mode", "spear_horn", "crafted"]
       }
    }
 }

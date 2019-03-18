@@ -1,6 +1,9 @@
 {
+   "mixins": [
+      "stonehearth:mixins:item_properties",
+	  "stonehearth_ace:mixins:weapons:cleric_tome"
+   ],
    "type": "entity",
-   "mixins": "stonehearth:mixins:item_properties",
    "components": {
       "model_variants": {
          "default": {
@@ -13,8 +16,6 @@
          "iconic_form": "file(legendary_tome_iconic.json)"
       },
       "stonehearth:equipment_piece": {
-         "slot": "mainhand",
-         "render_type": "attach_to_bone",
          "postures": [
             "stonehearth:combat",
             "stonehearth:patrol"
@@ -24,10 +25,7 @@
             "cleric_job"
          ],
          "required_job_level": 6,
-         "equip_effect": "stonehearth:effects:weapon_level_up",
-         "equipment_types": [
-            "cleric_tome"
-         ]
+         "equip_effect": "stonehearth:effects:weapon_level_up"
       }
    },
    "entity_data": {
@@ -62,11 +60,9 @@
          "category": "weapons",
          "material_tags": [
             "legendary",
-            "tome",
             "ascendancy_made",
             "crafted",
-            "legendary_tome",
-            "stockpile_exotic_equipment"
+            "legendary_tome"
          ]
       }
    }

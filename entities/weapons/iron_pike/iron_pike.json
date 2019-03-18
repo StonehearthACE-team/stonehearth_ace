@@ -1,9 +1,14 @@
 {
+   "mixins": [
+	  "stonehearth_ace:mixins:weapon"
+   ],
+   "type": "entity",
    "components": {
-	  "mixintypes": {
-		 "stonehearth:equipment_piece": "override"
-	  },
       "stonehearth:equipment_piece": {
+	      "mixintypes": {
+			"roles": "override",
+			"additional_equipment": "override"
+	     },
          "slot": "mainhand",
          "additional_equipment": {
             "stonehearth:armor:offhand_placeholder": true

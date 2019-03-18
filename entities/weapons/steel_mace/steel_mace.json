@@ -1,5 +1,8 @@
 {
-   "mixins": "stonehearth:mixins:item_properties",
+   "mixins": [
+      "stonehearth:mixins:item_properties",
+		"stonehearth_ace:mixins:weapons:mainhand_fracture"
+   ],
    "type": "entity",
    "components": {
       "model_variants": {
@@ -13,8 +16,6 @@
          "iconic_form": "file(steel_mace_iconic.json)"
       },
       "stonehearth:equipment_piece": {
-         "slot": "mainhand",
-         "render_type": "attach_to_bone",
          "postures": [
             "stonehearth:combat",
             "stonehearth:patrol"
@@ -24,21 +25,10 @@
             "knight_job"
          ],
          "required_job_level": 4,
-         "equip_effect": "stonehearth:effects:weapon_level_up",
-         "equipment_types": [
-            "mainhand"
-         ]
+         "equip_effect": "stonehearth:effects:weapon_level_up"
       }
    },
    "entity_data": {
-      "stonehearth:buffs": {
-         "inflictable_debuffs": {
-            "fracture": {
-               "uri": "stonehearth_ace:buffs:fracture",
-               "chance": 0.5
-            }
-         }
-      },
       "stonehearth:combat:weapon_data": {
          "base_damage": 14,
          "reach": 1.5
@@ -70,11 +60,9 @@
          "category": "weapons",
          "material_tags": [
             "steel",
-            "melee_weapon",
             "crafted",
             "ascendancy_made",
-            "steel_mace",
-            "stockpile_weapon"
+            "steel_mace"
          ]
       }
    }
