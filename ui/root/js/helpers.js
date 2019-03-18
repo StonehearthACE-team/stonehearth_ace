@@ -39,7 +39,7 @@ var stonehearth_translate = function(key, options) {
    var translatedToken = i18n.translate(key, options);
 
    // if "self.stonehearth:unit_info" is specified, check whether the root form's unit_info should be used instead
-   if (translatedToken.indexOf(i18n.options.interpolationPrefix + 'self.' + unit_info_property) >= 0) {
+   if (typeof translatedToken == 'string' && translatedToken.indexOf(i18n.options.interpolationPrefix + 'self.' + unit_info_property) >= 0) {
       var root_unit_info = interpretPropertyString('self.' + root_unit_info_property, options);
       if (root_unit_info && (root_unit_info.custom_name || root_unit_info.custom_data)) {
          translatedToken = translatedToken.split(i18n.options.interpolationPrefix + 'self.' + unit_info_property)
