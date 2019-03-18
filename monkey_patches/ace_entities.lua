@@ -1,3 +1,5 @@
+local entity_forms = require 'stonehearth.lib.entity_forms.entity_forms_lib'
+
 local log = radiant.log.create_logger('entities')
 
 local ace_entities = {}
@@ -105,6 +107,18 @@ function ace_entities.get_custom_data(entity)
    end
 
    return custom_data or {}
+end
+
+function ace_entities.increment_stat(entity, category, name, value, default)
+   -- make sure statistics component is only on the root entity, not iconic
+   entity = entity_forms.get_root_entity(entity) or entity
+   entity:add_component('stonehearth_ace:statistics'):increment_stat(category, name, value, default)
+end
+
+function ace_entities.add_to_stat_list(entity, category, name, value, default)
+   -- make sure statistics component is only on the root entity, not iconic
+   entity = entity_forms.get_root_entity(entity) or entity
+   entity:add_component('stonehearth_ace:statistics'):add_to_stat_list(category, name, value, default)
 end
 
 return ace_entities

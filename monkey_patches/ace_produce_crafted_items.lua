@@ -149,9 +149,9 @@ function AceProduceCraftedItems:_add_outputs_to_bench(ai, crafter, workshop, rec
             table.insert(self._outputs, each_product)
 
             -- update crafter's statistics
-            crafter:add_component('stonehearth_ace:statistics'):increment_stat('quality_crafts', radiant.entities.get_item_quality(each_product))
-            crafter:add_component('stonehearth_ace:statistics'):increment_stat('required_level_crafts', recipe.level_requirement or 0)
-            crafter:add_component('stonehearth_ace:statistics'):increment_stat('totals', 'crafts')
+            radiant.entities.increment_stat(crafter, 'quality_crafts', radiant.entities.get_item_quality(each_product))
+            radiant.entities.increment_stat(crafter, 'required_level_crafts', recipe.level_requirement or 0)
+            radiant.entities.increment_stat(crafter, 'totals', 'crafts')
          end
 
          item = all_products[1]

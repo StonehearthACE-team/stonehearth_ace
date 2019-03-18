@@ -131,6 +131,16 @@
          "on_change": {
             "fire_event": "show_processing_meter_changed"
          },
+         "ordinal": 98
+      },
+      "show_component_info": {
+         "type": "boolean",
+         "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.show_component_info)",
+         "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.show_component_info_description)",
+         "default": false,
+         "on_change": {
+            "fire_event": "show_component_info_changed"
+         },
          "ordinal": 99
       },
       "auto_save_unique_files": {

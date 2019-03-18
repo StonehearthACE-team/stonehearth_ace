@@ -202,7 +202,7 @@ App.StonehearthCitizenCharacterSheetView.reopen({
    _showTitleSelectionList: function(e) {
       var self = this;
 
-      var result = stonehearth_ace.createTitleSelectionList(self._titles, self.get('model.stonehearth:unit_info.titles'), self.get('uri'), self.get('model.custom_name'));
+      var result = stonehearth_ace.createTitleSelectionList(self._titles, self.get('model.stonehearth_ace:titles.titles'), self.get('uri'), self.get('model.custom_name'));
       if (result) {
          self.$('#name').after(result.container);
          result.showList();
