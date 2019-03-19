@@ -41,24 +41,26 @@ function AceConsumptionComponent:_get_quality(food)
 
    if self:_has_food_preferences() and self._sv._preference_effect then
       if radiant.entities.is_material(food, self._sv._food_preferences) then
-      radiant.entities.add_buff(self._entity, self._sv._preference_effect)
-      return stonehearth.constants.food_qualities.LOVELY
+			radiant.entities.add_buff(self._entity, self._sv._preference_effect)
+			return stonehearth.constants.food_qualities.LOVELY
       end
    end
    
    if self:_has_food_intolerances() then
       if radiant.entities.is_material(food, self._sv._food_intolerances) then
-	     if self._sv._intolerance_effect then
-         radiant.entities.add_buff(self._entity, self._sv._intolerance_effect)
-         return stonehearth.constants.food_qualities.INTOLERABLE	 
-	     else
-         return stonehearth.constants.food_qualities.UNPALATABLE	
-		 end
+			if self._sv._intolerance_effect then
+				radiant.entities.add_buff(self._entity, self._sv._intolerance_effect)
+				return stonehearth.constants.food_qualities.INTOLERABLE	 
+			else
+				return stonehearth.constants.food_qualities.UNPALATABLE	
+			end
       end
    end
 	
 	if food_data.applied_buffs then
-		radiant.entities.add_buff(self._entity, food_data.applied_buffs)
+		for _, applied_buff in ipairs(food_data.applied_buffs) do
+			radiant.entities.add_buff(self._entity, applied_buff)
+		end
 	end
 	
    if not food_data.quality then
