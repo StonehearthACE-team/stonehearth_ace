@@ -56,7 +56,11 @@ function AceConsumptionComponent:_get_quality(food)
 		 end
       end
    end
-
+	
+	if food_data.applied_buffs then
+		radiant.entities.add_buff(self._entity, food_data.applied_buffs)
+	end
+	
    if not food_data.quality then
       log:error('Food %s has no quality entry, defaulting quality to raw & bland.', food)
    end
