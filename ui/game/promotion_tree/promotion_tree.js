@@ -487,7 +487,7 @@ App.StonehearthPromotionTree.reopen({
                }
                if (parentJobController != undefined) {
                   $.each(self._citizenJobData, function(alias, jobData) {
-                     if (alias == jobDescription.parent_job && jobData.last_gained_lv >= parentRequiredLevel) {
+                     if (alias == parent_job.job && jobData.last_gained_lv >= parentRequiredLevel) {
                         one_of = true;
                      }
                   })
@@ -496,7 +496,7 @@ App.StonehearthPromotionTree.reopen({
             else {
                if (parentJobController != undefined) {
                   $.each(self._citizenJobData, function(alias, jobData) {
-                     if (alias == jobDescription.parent_job && jobData.last_gained_lv < parentRequiredLevel) {
+                     if (alias == parent_job.job && jobData.last_gained_lv < parentRequiredLevel) {
                         result = false;
                         return;
                      }
