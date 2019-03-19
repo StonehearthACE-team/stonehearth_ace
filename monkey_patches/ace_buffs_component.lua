@@ -1,5 +1,13 @@
+local BuffsComponent = radiant.mods.require('stonehearth.components.buffs.buffs_component')
 local AceBuffsComponent = class()
 
+AceBuffsComponent._ace_old_create = BuffsComponent.create
+function AceBuffsComponent:create()
+   self:_ace_old_create()
+   self._is_create = true
+end
+
+AceBuffsComponent._ace_old_activate = BuffsComponent.activate
 function AceBuffsComponent:activate()
    if not self._sv.disallowed_buffs then
       self._sv.disallowed_buffs = {}
@@ -12,6 +20,21 @@ function AceBuffsComponent:activate()
    end
    if not self._sv.managed_properties then
       self._sv.managed_properties = {}
+   end
+
+   if self._ace_old_activate then
+      self:_ace_old_activate()
+   end
+
+   if self._is_create then
+      local json = radiant.entities.get_json(self)
+      if json and json.buffs then
+         for buff, options in pairs(json.buffs) do
+            if options then
+               self:add_buff(buff, type(options) == 'table' and options)
+            end
+         end
+      end
    end
 end
 
