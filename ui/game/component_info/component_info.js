@@ -44,6 +44,7 @@ App.ComponentInfoView = App.View.extend({
       self.$().find('.tooltipstered').tooltipster('destroy');
 
       self.$().off('click');
+      $(top).off("radiant_selection_changed.component_info");
 
       self._destroyTraces();
 
@@ -112,7 +113,7 @@ App.ComponentInfoView = App.View.extend({
          }
       });
 
-      $(top).on("radiant_selection_changed.unit_frame", function (_, e) {
+      $(top).on("radiant_selection_changed.component_info", function (_, e) {
          self._onEntitySelected(e);
       });
 
@@ -162,9 +163,12 @@ App.ComponentInfoView = App.View.extend({
 
       if (!entity || !_componentInfoShown) {
          self.hide();
-         $(top).trigger('selection_has_component_info_changed', {
-            has_component_info: false
-         });
+         // only need to trigger the event if we still have a selected entity
+         if (entity) {
+            $(top).trigger('selection_has_component_info_changed', {
+               has_component_info: false
+            });
+         }
          return;
       }
 

@@ -70,6 +70,7 @@ App.AceMilitaryModeView = App.View.extend({
       self.$().find('.tooltipstered').tooltipster('destroy');
 
       self.$().off('click');
+      $(top).off("radiant_selection_changed.military_mode");
 
       self._destroyBannerTraces();
 
@@ -142,7 +143,7 @@ App.AceMilitaryModeView = App.View.extend({
          });
       });
 
-      $(top).on("radiant_selection_changed.unit_frame", function (_, e) {
+      $(top).on("radiant_selection_changed.military_mode", function (_, e) {
          self._onEntitySelected(e);
       });
 

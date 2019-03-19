@@ -58,7 +58,7 @@ $(document).ready(function() {
             self._onMenuActivated(e)
          });
 
-         $(top).on("radiant_selection_changed.unit_frame", function (_, e) {
+         $(top).on("radiant_selection_changed.mode_manager", function (_, e) {
             self._onEntitySelected(e);
 
             radiant.each(self.selectionUpdates, function(mode, update) {
