@@ -1,14 +1,12 @@
 {
+   "mixins": [
+      "stonehearth_ace:mixins:armor:quiver_arrows"
+   ],
+	"type": "entity",
    "components": {    
       "stonehearth:equipment_piece": {
-		 "additional_equipment": {
-            "stonehearth_ace:armor:backpack_placeholder": true
-         },
          "ilevel": 2,
-         "required_job_level": 4,
-		 "equipment_types": [
-            "quiver_arrows"
-         ]
+         "required_job_level": 4
       }
    },
    "entity_data": {

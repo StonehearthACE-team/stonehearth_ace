@@ -1,15 +1,12 @@
 {
+   "mixins": [
+      "stonehearth_ace:mixins:armor:light_armor_helmet"
+   ],
+	"type": "entity",
    "components": {
       "stonehearth:equipment_piece": {
-         "required_job_level": 1,
-		 "injected_buffs": [
-            "stonehearth_ace:buffs:armor_light"
-         ],
-		 "equipment_types": [
-		    "helmet",
-            "light_armor"
-         ]
-      }
+         "required_job_level": 1
+		}
    },
    "entity_data": {
       "stonehearth:catalog": {

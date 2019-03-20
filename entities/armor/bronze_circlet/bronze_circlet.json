@@ -1,14 +1,11 @@
 {
+   "mixins": [
+      "stonehearth_ace:mixins:armor:light_armor_circlet"
+   ],
+	"type": "entity",
    "components": {
 	  "stonehearth:equipment_piece": {
-		 "injected_buffs": [
-            "stonehearth_ace:buffs:armor_light"
-         ],
-		 "required_job_level": 1,
-		 "equipment_types": [
-		    "circlet",
-            "light_armor"
-         ]
+		 "required_job_level": 1
 	  }
    },
    "entity_data": {

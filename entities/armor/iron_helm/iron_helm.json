@@ -1,14 +1,11 @@
 {
+   "mixins": [
+      "stonehearth_ace:mixins:armor:medium_armor_helmet"
+   ],
+	"type": "entity",
    "components": {
       "stonehearth:equipment_piece": {
-         "required_job_level": 5,
-		 "injected_buffs": [
-            "stonehearth_ace:buffs:armor_medium"
-         ],
-		 "equipment_types": [
-		    "helmet",
-            "medium_armor"
-         ]
+         "required_job_level": 5
       }
    },
    "entity_data": {

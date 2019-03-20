@@ -33,6 +33,18 @@
          "ghost_form": "file(rc_blacksmith_crucible_ghost.json)",
          "iconic_form": "file(rc_blacksmith_crucible_iconic.json)",
          "placeable_on_ground": true
+      },
+      "sensor_list": {
+         "sensors": {
+            "warmth": {
+               "radius": 18
+            }
+         }
+      },
+      "stonehearth:buffs": {
+         "buffs": {
+            "stonehearth_ace:buffs:weather:warmth_source": true
+         }
       }
    },
    "entity_data": {

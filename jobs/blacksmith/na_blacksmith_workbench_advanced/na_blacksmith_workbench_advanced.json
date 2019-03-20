@@ -32,6 +32,18 @@
          "ghost_form": "file(na_blacksmith_workbench_advanced_ghost.json)",
          "iconic_form": "file(na_blacksmith_workbench_advanced_iconic.json)",
          "placeable_on_ground": true
+      },
+      "sensor_list": {
+         "sensors": {
+            "warmth": {
+               "radius": 6
+            }
+         }
+      },
+      "stonehearth:buffs": {
+         "buffs": {
+            "stonehearth_ace:buffs:weather:warmth_source": true
+         }
       }
    },
    "entity_data": {

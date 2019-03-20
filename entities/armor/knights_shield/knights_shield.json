@@ -1,16 +1,11 @@
 {
+   "mixins": [
+      "stonehearth_ace:mixins:armor:heavy_shield"
+   ],
+	"type": "entity",
    "components": {
-      "stonehearth:equipment_piece": {
-         "slot": "leftArm",
-		 "additional_equipment": {
-            "stonehearth_ace:armor:offhand_placeholder": true
-         },
-		 "equipment_types": ["shield", "heavy_shield"],
-         "injected_buffs": [
-            "stonehearth_ace:buffs:shield_heavy"
-         ]
-      }
-   },
+      "stonehearth:equipment_piece": {},
+	},
    "entity_data": {
       "stonehearth:catalog": {
          "material_tags":["iron", "shield", "heavy_shield", "heavy_armor", "knights_shield"]

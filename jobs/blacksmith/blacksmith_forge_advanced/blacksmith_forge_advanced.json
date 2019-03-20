@@ -32,6 +32,18 @@
       },
       "effect_list": {
          "default": "/stonehearth_ace/data/rigs/jobs/blacksmith/blacksmith_forge_advanced/effects/idle.json"
+      },
+      "sensor_list": {
+         "sensors": {
+            "warmth": {
+               "radius": 22
+            }
+         }
+      },
+      "stonehearth:buffs": {
+         "buffs": {
+            "stonehearth_ace:buffs:weather:warmth_source": true
+         }
       }
    },
    "entity_data": {

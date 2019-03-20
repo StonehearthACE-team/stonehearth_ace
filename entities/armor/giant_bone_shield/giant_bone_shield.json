@@ -1,5 +1,8 @@
 {
-   "mixins": "stonehearth:mixins:item_properties",
+   "mixins": [
+      "stonehearth:mixins:item_properties",
+      "stonehearth_ace:mixins:armor:heavy_shield"
+   ],
    "type": "entity",
    "components": {
       "model_variants": {
@@ -13,14 +16,6 @@
          "iconic_form": "file(giant_bone_shield_iconic.json)"
       },
       "stonehearth:equipment_piece": {
-         "slot": "leftArm",
-         "render_type": "attach_to_bone",
-         "additional_equipment": {
-            "stonehearth_ace:armor:offhand_placeholder": true
-         },
-         "injected_buffs": [
-            "stonehearth_ace:buffs:shield_heavy"
-         ],
          "postures": [
             "stonehearth:combat",
             "stonehearth:patrol",
@@ -31,11 +26,7 @@
          "roles": [
             "knight_job"
          ],
-         "equip_effect": "stonehearth:effects:weapon_level_up",
-         "equipment_types": [
-            "shield",
-            "heavy_shield"
-         ]
+         "equip_effect": "stonehearth:effects:weapon_level_up"
       }
    },
    "entity_data": {
@@ -67,10 +58,8 @@
          "category": "armor",
          "material_tags": [
             "bone",
-            "shield",
-            "heavy_shield",
-            "heavy_armor",
             "giant_bone_shield",
+            "crafted",
             "stockpile_equipment"
          ]
       }

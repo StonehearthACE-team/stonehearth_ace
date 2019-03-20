@@ -1,5 +1,8 @@
 {
-   "mixins": "stonehearth:mixins:item_properties",
+   "mixins": [
+      "stonehearth:mixins:item_properties",
+      "stonehearth_ace:mixins:armor:heavy_armor_torso"
+   ],
    "type": "entity",
    "components": {
       "model_variants": {
@@ -22,21 +25,12 @@
          "iconic_form": "file(iron_platemail_iconic.json)"
       },
       "stonehearth:equipment_piece": {
-         "render_type": "merge_with_model",
-         "slot": "torso",
          "ilevel": 7,
          "roles": [
             "plate_wearer"
          ],
-         "injected_buffs": [
-            "stonehearth_ace:buffs:armor_heavy"
-         ],
          "required_job_level": 1,
-         "equip_effect": "stonehearth:effects:weapon_level_up",
-         "equipment_types": [
-            "torso",
-            "heavy_armor"
-         ]
+         "equip_effect": "stonehearth:effects:weapon_level_up"
       }
    },
    "entity_data": {
@@ -60,8 +54,6 @@
          "category": "armor",
          "material_tags": [
             "iron",
-            "armor",
-            "heavy_armor",
             "ascendancy_made",
             "iron_platemail",
             "stockpile_equipment"

@@ -1,15 +1,12 @@
 {
+   "mixins": [
+      "stonehearth_ace:mixins:armor:medium_armor_torso"
+   ],
+	"type": "entity",
    "components": {
       "stonehearth:equipment_piece": {
-         "required_job_level": 4,
-		 "injected_buffs": [
-            "stonehearth_ace:buffs:armor_medium"
-         ],
-		 "equipment_types": [
-		    "torso",
-            "medium_armor"
-         ]
-      }
+         "required_job_level": 4
+	   }
    },
    "entity_data": {
       "stonehearth:net_worth": {

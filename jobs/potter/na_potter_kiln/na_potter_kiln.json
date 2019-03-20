@@ -39,6 +39,18 @@
       "stonehearth:workshop": {
          "job_alias": "stonehearth:jobs:potter",
          "workshop_effect": "/stonehearth_ace/data/rigs/jobs/potter/potter_kiln/effects/work.json"
+      },
+      "sensor_list": {
+         "sensors": {
+            "warmth": {
+               "radius": 8
+            }
+         }
+      },
+      "stonehearth:buffs": {
+         "buffs": {
+            "stonehearth_ace:buffs:weather:warmth_source": true
+         }
       }
    },
    "entity_data": {

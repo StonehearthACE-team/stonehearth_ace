@@ -1,5 +1,8 @@
 {
-   "mixins": "stonehearth:mixins:item_properties",
+   "mixins": [
+      "stonehearth:mixins:item_properties",
+      "stonehearth_ace:mixins:armor:medium_armor_helmet"
+   ],
    "type": "entity",
    "components": {
       "model_variants": {
@@ -22,22 +25,15 @@
          "iconic_form": "file(mega_cactus_flower_helm_iconic.json)"
       },
       "stonehearth:equipment_piece": {
-         "render_type": "merge_with_model",
-         "slot": "helmet",
          "ilevel": 3.5,
          "required_job_level": 3,
          "roles": [
             "mail_wearer"
          ],
          "injected_buffs": [
-            "stonehearth_ace:buffs:thorns",
-            "stonehearth_ace:buffs:armor_medium"
+            "stonehearth_ace:buffs:thorns"
          ],
-         "equip_effect": "stonehearth:effects:weapon_level_up",
-         "equipment_types": [
-            "helmet",
-            "medium_armor"
-         ]
+         "equip_effect": "stonehearth:effects:weapon_level_up"
       }
    },
    "entity_data": {
@@ -59,9 +55,6 @@
          "category": "armor",
          "material_tags": [
             "cactus_flower",
-            "armor",
-            "helmet",
-            "medium_armor",
             "mega_cactus_flower_helm",
             "stockpile_equipment"
          ]
