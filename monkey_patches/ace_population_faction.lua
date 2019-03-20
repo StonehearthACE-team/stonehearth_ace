@@ -105,6 +105,10 @@ function AcePopulationFaction:_load_titles_from_json(json_ref)
                name_tbl[title] = {}
                for _, rank_data in ipairs(data.ranks) do
                   if rank_data.required_value then
+                     -- if the required_value is a time duration, parse it
+                     if type(rank_data.required_value) == 'string' then
+                        rank_data.required_value = stonehearth.calendar:parse_duration(rank_data.required_value)
+                     end
                      table.insert(name_tbl[title], rank_data)
                   end
                end

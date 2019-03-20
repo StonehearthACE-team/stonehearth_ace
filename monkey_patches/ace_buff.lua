@@ -3,11 +3,28 @@ local AceBuff = class()
 
 local log = radiant.log.create_logger('buff')
 
+local STAT_DURATION_UPDATE_INTERVAL = '25m+10m'  -- add variance so restored buffs don't all try to update their stats at the same time
+
 -- "options" were already being passed in, but the parameter didn't exist and wasn't used
 AceBuff._ace_old_create = Buff.create
 function AceBuff:create(entity, uri, json, options)
    self:_ace_old_create(entity, uri, json)
    self._options = options
+end
+
+AceBuff._ace_old_destroy = Buff.destroy
+function AceBuff:destroy()
+   if self._duration_timer then
+      self._duration_timer:destroy()
+      self._duration_timer = nil
+   end
+   if self._json.duration_statistics_key then
+      self:_update_duration_stat()
+   end
+
+   if self._ace_old_destroy then
+      self:_ace_old_destroy()
+   end
 end
 
 AceBuff._ace_old__create_buff = Buff._create_buff
@@ -20,6 +37,11 @@ function AceBuff:_create_buff()
          self._options.stacks = self._options.stacks - 1
          self:on_repeat_add(self._options)
       end
+   end
+
+   if self._json.duration_statistics_key and self._sv._entity:get_component('stonehearth_ace:statistics') then
+      self:_create_duration_timer()
+      self:_update_duration_stat()
    end
 end
 
@@ -53,6 +75,30 @@ function AceBuff:on_repeat_add(options)
    end
 
    return false
+end
+
+function AceBuff:_create_duration_timer()
+   local interval = stonehearth.calendar:parse_duration(STAT_DURATION_UPDATE_INTERVAL)
+   if not self._sv.expire_time or self._sv.expire_time - stonehearth.calendar:get_elapsed_time() > interval then
+      self._duration_timer = stonehearth.calendar:set_interval('buff duration stat', interval, function()
+         self:_update_duration_stat()
+      end)
+   end
+end
+
+function AceBuff:_update_duration_stat()
+   local stats_comp = self._sv._entity:get_component('stonehearth_ace:statistics')
+   if stats_comp then
+      -- if we already have a prev_duration_time then add the difference
+      -- otherwise, simply record the current time
+      local prev_time = self._sv.prev_duration_time
+      self._sv.prev_duration_time = stonehearth.calendar:get_elapsed_time()
+      self.__saved_variables:mark_changed()
+
+      if prev_time then
+         stats_comp:increment_stat('buffs_duration', self._json.duration_statistics_key, math.max(0, self._sv.prev_duration_time - prev_time))
+      end
+   end
 end
 
 return AceBuff
