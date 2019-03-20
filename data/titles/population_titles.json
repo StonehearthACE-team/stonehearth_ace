@@ -176,5 +176,63 @@
             "required_value": 10
          }
       ]
+   },
+   "starving": {
+      "ordinal": 20,
+      "requirement": {
+         "statistics": {
+            "category": "buffs_duration",
+            "name": "starving"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.starving.1_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.starving.1_description)",
+            "required_value": "4h"
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.starving.2_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.starving.2_description)",
+            "required_value": "2d"
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.starving.3_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.starving.3_description)",
+            "required_value": "10d"
+         }
+      ]
+   },
+   "incapacitated": {
+      "ordinal": 21,
+      "requirement": {
+         "statistics": {
+            "category": "buffs_gained",
+            "name": "incapacitated"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.incapacitated.2_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.incapacitated.2_description)",
+            "required_value": 2
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.incapacitated.5_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.incapacitated.5_description)",
+            "required_value": 5
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.incapacitated.10_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.incapacitated.10_description)",
+            "required_value": 10
+         }
+      ]
    }
 }
