@@ -488,14 +488,30 @@
                   "10_description": "Sie/Er hat 10 Gegenstände von exzellenter Qualität hergestellt!",
                   "25_display_name": ", außergewöhnlich Handwerker",
                   "25_description": "Sie/Er hat 25 Gegenstände von exzellenter Qualität hergestellt!",
-                  "100_display_name": " der Kaiser der Exzellenz",
+                  "100_display_name": " die/der Kaiser/in der Exzellenz",
                   "100_description": "Sie/Er hat 100 Gegenstände von exzellenter Qualität hergestellt!"
                },
                "master_crafter": {
                   "1_display_name": ", Meisterhandwerker",
                   "1_description": "Sie/Er hat einen Gegenstand von meisterlicher Qualität hergestellt! Beeindruckend!",
-                  "10_display_name": " der Meister der Qualität",
+                  "10_display_name": " die/der Meister/in der Qualität",
                   "10_description": "Sie/Er hat 10 Gegenstände von meisterlicher Qualität hergestellt! Unglaublich!"
+               },
+               "starving": {
+                  "1_display_name": " die/der Hungrige",
+                  "1_description": "Sie/Er hat 4 Stunden gehungert!",
+                  "2_display_name": " die/der Ausgehungerten",
+                  "2_description": "Sie/Er hungert seit 2 Tagen und steht immer noch!",
+                  "3_display_name": " die/der dauerhaft fastende",
+                  "3_description": "Sie/Er hungert seit 10 Tagen! Vielleicht sollte das Sammeln von Nahrungsmitteln etwas mehr Priorität haben."
+               },
+               "incapacitated": {
+                  "1_display_name": " die/der Anfällige",
+                  "1_description": "Sie/Er ist wurde niedergeschlagen, ist wieder aufgestanden und wurde niedergeschlagen worden.",
+                  "2_display_name": " die/der Narbige",
+                  "2_description": "Sie/Er wurde 5 Mal außer Gefecht gesetzt! Kann man sie/ihn überhaupt töten?",
+                  "3_display_name": " die/der Unsterbliche",
+                  "3_description": "Sie/Er wurde 10 Mal außer Gefecht gesetzt! Wird Sie/Er jemals lernen, lebensbedrohliche Situationen zu vermeiden?"
                }
             }
          }
@@ -819,7 +835,7 @@
             },
             "freezing_debuff": {
                "display_name": "Eisiges Wetter",
-               "description": "Ich friere hier draußen! Ich brauche Wärme und ich brauche sie schnell!<ul><li>Wenn dieser Hearthling sich im Freien aufhält verringert sich, im Laufe der Zeit, die Gesundheit um 50%.</li></ul>"
+               "description": "Ich friere hier draußen! Ich brauche Wärme und ich brauche sie schnell!<ul><li>Wenn dieser Hearthling sich im Freien aufhält verringert sich, im Laufe der Zeit, die Gesundheit um 40%.</li></ul>"
             },
             "animal_freezing_debuff": {
                "display_name": "Eisiges Wetter",
@@ -847,7 +863,7 @@
             },
             "freezing_water_debuff": {
                "display_name": "Eiskaltes Wasser",
-               "description": "Oof! Dieses Wasser ist so kalt, ich sollte nicht hier sein!<ul><li>Dieser Hearthling verliert, im Laufe der Zeit, bis zu 25% seiner Gesundheit, wenn er sich im Wasser befindet.</li></ul>"
+               "description": "Oof! Dieses Wasser ist so kalt, ich sollte nicht hier sein!<ul><li>Dieser Hearthling verliert, im Laufe der Zeit, bis zu 10% seiner Gesundheit, wenn er sich im Wasser befindet.</li></ul>"
             },
             "refreshing_water_buff": {
                "display_name": "Erfrischendes Wasser",
@@ -875,7 +891,7 @@
             },
             "warmed_buff": {
                "display_name": "Gewärmt",
-               "description": "Alles warm und gemütlich! Sollte eine Weile so bleiben."
+               "description": "Ich kann die Wärme fühlen und es ist sooooo gemütlich! Sollte eine Weile so bleiben."
             },
             "warmth_source_buff": {
                "display_name": "Quelle der Wärme",
@@ -886,6 +902,14 @@
             "compassionate_shepherd_buff": {
                "description": "Wird von einem mitfühlenden Hirten betreut. Dieses Tier heilt im Laufe der Zeit, produziert mehr Ressourcen und vermehrt sich schneller."
             }
+         },
+         "warm_belly": {
+            "display_name": "Warmer Bauch",
+            "description": "Es ist alles warm innen drinnen und es war sehr lecker! Willenskraft ist erhöht.<ul><li>Dieser Hearthling ist einige Zeit vor kühlem und kaltem Wetter geschützt.</li></ul>"
+         },
+         "refreshed_belly": {
+            "display_name": "Kalter Bauch",
+            "description": "Das war erfrischend, ich fühle mich erneuert! Fleiß ist erhöht.<ul><li>Dieser Hearthling ist einige Zeit vor heißem Wetter geschützt.</li></ul>"
          }
       },
       "loadouts": {
@@ -2560,7 +2584,7 @@
             "weapons_name": "Kampfausrüstung"
          },
          "weaver_description": {
-		    "level_2_data": {
+            "level_2_data": {
                "gear_crafting_name": "Mechanisches Weben",
                "gear_crafting_description": "Der Weber verfügt über genügend Kenntnisse und Fähigkeiten, um einen Webstuhl zu erstellen und Zubehör, Kampfausrüstung und Ausrüstung zu kreieren, die Boni oder Verbesserungen bieten."
             },
