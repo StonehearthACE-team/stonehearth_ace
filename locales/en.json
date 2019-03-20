@@ -819,7 +819,7 @@
             },
             "freezing_debuff": {
                "display_name": "Freezing Weather",
-               "description": "I'm freezing out here! I need warmth and I need it fast!<ul><li>This hearthling will take damage over time down to 50% of their health if outside.</li></ul>"
+               "description": "I'm freezing out here! I need warmth and I need it fast!<ul><li>This hearthling will take damage over time down to 40% of their health if outside.</li></ul>"
             },
             "animal_freezing_debuff": {
                "display_name": "Freezing Weather",
@@ -847,7 +847,7 @@
             },
             "freezing_water_debuff": {
                "display_name": "Freezing Water",
-               "description": "Oof! This water is so cold, I shouldn't be here!<ul><li>This hearthling will take damage over time down to 25% of their health while in the water.</li></ul>"
+               "description": "Oof! This water is so cold, I shouldn't be here!<ul><li>This hearthling will take damage over time down to 10% of their health while in the water.</li></ul>"
             },
             "refreshing_water_buff": {
                "display_name": "Refreshing Water",
@@ -886,6 +886,14 @@
             "compassionate_shepherd_buff": {
                "description": "Taken care of by a compassionate shepherd. This animal will heal over time, produce more resources, and breed faster."
             }
+         },
+         "warm_belly": {
+            "display_name": "Warm Belly",
+            "description": "All warm and fuzzy inside, it was delicious! Willpower is increased.<ul><li>This hearthling is protected from chilly and cold weather for some time.</li></ul>"
+         },
+         "refreshed_belly": {
+            "display_name": "Cool Belly",
+            "description": "This was refreshing, I feel renewed! Diligence is increased.<ul><li>This hearthling is protected from hot weather for some time.</li></ul>"
          }
       },
       "loadouts": {

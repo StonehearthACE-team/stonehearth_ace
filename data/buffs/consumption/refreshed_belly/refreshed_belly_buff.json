@@ -1,0 +1,19 @@
+{
+   "type": "buff",
+   "axis": "buff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.refreshed_belly.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.refreshed_belly.description)",
+   "icon": "file(refreshed_belly_buff.png)",
+   "duration": "3h",
+   "repeat_add_action": "renew_duration",
+   "modifiers": {
+      "diligence": {
+         "add": 15
+      }
+   },
+   "disallowed_buffs": [
+      "stonehearth_ace:buffs:weather:hot",
+      "stonehearth_ace:buffs:weather:sunstroke",
+      "stonehearth_ace:buffs:consumption:warm_belly"
+   ]
+}

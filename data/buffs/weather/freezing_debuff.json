@@ -20,7 +20,7 @@
    "script": "stonehearth:buff_scripts:periodic_health_modification",
    "script_info": {
       "health_change": -0.05,
-      "min_health": 0.5,
+      "min_health": 0.4,
       "cannot_kill": true,
       "pulse": "30m",
       "pulse_immediately": true,
@@ -29,6 +29,7 @@
    },
    "disallowed_buffs": [
       "stonehearth_ace:buffs:weather:chilly",
-      "stonehearth_ace:buffs:weather:cold"
+      "stonehearth_ace:buffs:weather:cold",
+      "stonehearth_ace:buffs:consumption:warm_belly"
    ]
 }

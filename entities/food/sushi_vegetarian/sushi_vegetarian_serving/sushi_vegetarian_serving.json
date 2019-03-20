@@ -22,12 +22,19 @@
          "default": {
             "satisfaction": 100
          },
+         "applied_buffs": [
+            "stonehearth_ace:buffs:consumption:refreshed_belly"
+         ],
          "quality": 6
       },
       "stonehearth:catalog": {
          "display_name": "i18n(stonehearth_ace:entities.food.sushi_vegetarian.sushi_vegetarian_serving.display_name)",
          "description": "",
-         "material_tags":["food", "vegetarian", "sushi_vegetarian_serving"],
+         "material_tags": [
+            "food",
+            "vegetarian",
+            "sushi_vegetarian_serving"
+         ],
          "subject_override": "stonehearth_ace:food:sushi_vegetarian"
       }
    }
