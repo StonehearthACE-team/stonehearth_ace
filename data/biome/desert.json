@@ -2,10 +2,26 @@
    "humidity": 0,
    "sunlight": 1.2,
    "seasons": {
+	   "spring": {
+			"weather": [
+				{
+					"uri": "stonehearth_ace:weather:sunny:hot",
+					"weight": 5
+				}
+			]
+		},
+		"summer": {
+			"weather": [
+				{
+               "uri": "stonehearth_ace:weather:sunny:hot",
+               "weight": 10
+            }
+			]
+		},
       "autumn": {
-	     "mixintypes": {
-			"weather": "override"
-		 },
+	      "mixintypes": {
+				"weather": "override"
+			},
          "weather": [
             {
                "uri": "stonehearth:weather:sunny",
@@ -14,6 +30,14 @@
             {
                "uri": "stonehearth:weather:windy",
                "weight": 10
+            },
+				{
+               "uri": "stonehearth_ace:weather:windy:chilly",
+               "weight": 4
+            },
+				{
+               "uri": "stonehearth_ace:weather:sunny:chilly",
+               "weight": 3
             },
             {
                "uri": "stonehearth:weather:cloudy:desert",
@@ -26,21 +50,33 @@
          ]
       },
       "winter": {
-	     "mixintypes": {
-			"weather": "override"
-		 },
+			"mixintypes": {
+				"weather": "override"
+			},
          "weather": [
             {
                "uri": "stonehearth:weather:sunny",
-               "weight": 6
+               "weight": 4
+            },
+				{
+               "uri": "stonehearth_ace:weather:sunny:chilly",
+               "weight": 4
             },
             {
                "uri": "stonehearth:weather:windy",
-               "weight": 10
+               "weight": 6
+            },
+				{
+               "uri": "stonehearth_ace:weather:windy:chilly",
+               "weight": 6
             },
             {
                "uri": "stonehearth:weather:cloudy:desert",
                "weight": 6
+            },
+				{
+               "uri": "stonehearth_ace:weather:cloudy:chilly",
+               "weight": 3
             },
             {
                "uri": "stonehearth:weather:snow",

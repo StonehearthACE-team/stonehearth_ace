@@ -1,0 +1,23 @@
+{
+   "display_name": "i18n(stonehearth:data.weather.foggy.display_name)",
+   "description": "i18n(stonehearth_ace:data.weather.foggy.description)",
+   "icon": "file(foggy_chilly.png)",
+   "sky_settings": "stonehearth:sky_settings:foggy",
+   "unsheltered_resistance_buff": "stonehearth:buffs:weather:cold_resist",
+   "unsheltered_debuff": "stonehearth_ace:buffs:weather:chilly",
+   "controller": "stonehearth:weather_scripts:foggy",
+   "plant_growth_time_multiplier": 3,
+   "ambient_sound_key": "foggy",
+   "thoughts": [
+      "stonehearth:thoughts:weather:foggy_chilly_negative",
+      "stonehearth:thoughts:weather:foggy_chilly_negative",
+      "stonehearth:thoughts:weather:foggy_chilly_negative",
+      "stonehearth:thoughts:weather:foggy_chilly_positive"
+   ],
+   "subject_matter": "stonehearth_ace:subjects:weather:foggy:chilly",
+   "vision_multiplier": 0.4,
+   "hide_cloud_shadows": true,
+   "is_dark_during_daytime": true,
+   "humidity": 0.1,
+   "sunlight": 0.4
+}

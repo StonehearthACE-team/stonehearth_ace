@@ -315,7 +315,11 @@
       },
       "weather": {
          "windy": {
-            "description": "Howling winds and roaring gales sweep the lands.<ul><li>Slightly more humidity.</li></ul>"
+            "description": "Howling winds and roaring gales sweep the lands.<ul><li>Slightly more humidity.</li></ul>",
+            "windy_chilly": {
+               "display_name": "Chilly Winds",
+               "description": "The air is dry and cold as the winds howl across the lands.<ul><li>Unsheltered hearthlings are too chilly to work as effectively.</li></ul>"
+            }
          },
          "thunderstorm": {
             "description": "Thunder rolled... It rolled a six.<ul><li>Excessive humidity.</li><li>Sunlight is greatly reduced.</li><li>Vision radius is reduced.</li><li>Unsheltered hearthlings and pasture animals get soaked wet.</li><li>Unsheltered hearthlings sometimes get hit by lightning.</li><li>The ground and trees sometimes get hit by lightning.</li></ul>"
@@ -323,7 +327,15 @@
          "sunny": {
             "description": "Yet another day of endless sunshine and blue skies.<ul><li>Sunlight is somewhat increased.</li></ul>",
             "sunny_desert": {
-               "description": "Yet another day of endless sunshine and blue skies.<ul><li>Sunlight is somewhat increased.</li><li>Unsheltered hearthlings are too hot to work as effectively.</li></ul>"
+               "description": "Yet another day of endless sunshine and blue skies.<ul><li>Sunlight is somewhat increased.</li></ul>"
+            },
+            "sunny_chilly": {
+               "display_name": "Sunny Winter Day",
+               "description": "It's a beautiful, sunny day! Even if also somewhat cold...<ul><li>Unsheltered hearthlings are too chilly to work as effectively.</li></ul>"
+            },
+            "sunny_hot": {
+               "display_name": "Heat Wave",
+               "description": "A nice and warm sunny day! Maybe too sunny, the heat is unbearable...<ul><li>Somewhat reduced humidity.</li><li>Sunlight is nicely increased.</li><li>Unsheltered hearthlings are too hot to work as effectively.</li><li>Unsheltered pasture animals are hurt by the heat.</li></ul>"
             }
          },
          "snow": {
@@ -350,6 +362,10 @@
             "description": "Water! Water from the skies!<ul><li>A lot more humidity.</li><li>Sunlight is reduced.</li><li>Vision radius is reduced.</li><li>Unsheltered hearthlings and pasture animals get soaked wet.</li></ul>",
             "rain_sunny": {
                "description": "It's raining, but the sun is peeking out!<ul><li>A lot more humidity.</li><li>Sunlight is slightly reduced.</li><li>Vision radius is only slightly reduced.</li><li>Unsheltered hearthlings and pasture animals get soaked wet.</li></ul>"
+            },
+            "rain_chilly": {
+               "display_name": "Freezing Rain",
+               "description": "It's like a shower of really thin, endless ice needles!<ul><li>A lot more humidity.</li><li>Sunlight is reduced.</li><li>Vision radius is reduced.</li><li>Unsheltered hearthlings are too chilly to work as effectively.</li><li>Unsheltered hearthlings and pasture animals get soaked wet.</li></ul>"
             }
          },
          "lucky": {
@@ -359,7 +375,15 @@
             "description": "A cover of fog crawls across the landscape, hiding untold mysteries.<ul><li>Undead monsters come out of hiding under the cover of the fog.</li><li>Slightly more humidity.</li><li>Sunlight is somewhat reduced.</li><li>Vision radius is greatly reduced.</li></ul>"
          },
          "cloudy": {
-            "description": "Overcast skies, perfect for lazing around on the porch.<ul><li>Slightly more humidity.</li><li>Sunlight is reduced.</li></ul>"
+            "description": "Overcast skies, perfect for lazing around on the porch.<ul><li>Slightly more humidity.</li><li>Sunlight is reduced.</li></ul>",
+            "cloudy_chilly": {
+               "display_name": "Cloudy & Chilly",
+               "description": "Overcast skies, perfect for lazing around on the porch.<ul><li>Sunlight is reduced.</li><li>Unsheltered hearthlings are too chilly to work as effectively.</li></ul>"
+            },
+            "cloudy_cold": {
+               "display_name": "Cloudy & Cold",
+               "description": "Overcast skies, perfect for lazing around on the porch.<ul><li>Sunlight is reduced.</li><li>Somewhat reduced humidity.</li><li>Unsheltered hearthlings are too cold to work as effectively.</li><li>Unsheltered pasture animals are hurt by the cold.</li></ul>"
+            }
          },
          "blizzard": {
             "description": "Wind, and snow, and hail, oh my!<ul><li>Plant growth is interrupted.</li><li>Sunlight is greatly reduced.</li><li>Vision radius is greatly reduced.</li><li>Unsheltered hearthlings are hurt by the cold.</li><li>Unsheltered pasture animals are hurt by the cold.</li></ul>"
@@ -384,6 +408,62 @@
                   "snow_late_negative": {
                      "display_name": "It's snowing again!",
                      "tooltip": "Winter should be over already, can't believe we're getting such late snowfall..."
+                  },
+                  "cloudy_chilly_positive": {
+                     "display_name": "Chilly and cloudy!",
+                     "tooltip": "Fluffy clouds and a nice, chilly air! This is a nice day."
+                  },
+                  "cloudy_chilly_negative": {
+                     "display_name": "Gloomy and damp...",
+                     "tooltip": "As if having the sun covered by those clouds wasn't enough, it's also really chilly today!"
+                  },
+                  "cloudy_cold_positive": {
+                     "display_name": "Winter joy!",
+                     "tooltip": "Cloudy and cold days are the best! I love winter!"
+                  },
+                  "cloudy_cold_negative": {
+                     "display_name": "Ugh, cold and darkness...",
+                     "tooltip": "It's dark, gloomy clouds above us, a biting cold... What could be worse?"
+                  },
+                  "foggy_chilly_positive": {
+                     "display_name": "Uncertain chills...",
+                     "tooltip": "Oh! This foggy is so mysterious! And this chilly sensation on the back of the neck... Love it!"
+                  },
+                  "foggy_chilly_negative": {
+                     "display_name": "Chills down the spine!",
+                     "tooltip": "It's too cold and this fog is too thick! There is something wrong going on, I'll tell you!"
+                  },
+                  "rain_chilly_positive": {
+                     "display_name": "Cold needles!",
+                     "tooltip": "This freezing rain feels somewhat refreshing, I wonder if we'll get snow soon?"
+                  },
+                  "rain_chilly_negative": {
+                     "display_name": "Annoyance from the sky...",
+                     "tooltip": "I can't stand this boring tickling of thin, freezing rain. Ugh!"
+                  },
+                  "sunny_chilly_positive": {
+                     "display_name": "Sunshine and fresh air!",
+                     "tooltip": "Ah! What a wonderful feeling, there is nothing like the bright sun on a nice winter's day."
+                  },
+                  "sunny_chilly_negative": {
+                     "display_name": "My sunshine was spoiled!",
+                     "tooltip": "Oh, it's nice to finally see the sun again... but could we at least get some warmth too?"
+                  },
+                  "sunny_hot_positive": {
+                     "display_name": "Feeling the heat...",
+                     "tooltip": "The sun is so strong today! It can be a little punishing but makes me feel so alive!"
+                  },
+                  "sunny_hot_negative": {
+                     "display_name": "Scorching around!",
+                     "tooltip": "Why does it have to be so warm today? I can't take this heat anymore..."
+                  },
+                  "windy_chilly_positive": {
+                     "display_name": "The winds of winter",
+                     "tooltip": "Nothing feels as refreshing as the gentle and cold arctic wind sweeping across your face!"
+                  },
+                  "windy_chilly_negative": {
+                     "display_name": "This wind hurts me!",
+                     "tooltip": "It feels like a thousand of little cold blades on my face... Ugh!"
                   }
                }
             },

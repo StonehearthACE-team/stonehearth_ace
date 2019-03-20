@@ -1,0 +1,24 @@
+{
+   "display_name": "i18n(stonehearth_ace:data.weather.rain.rain_chilly.display_name)",
+   "description": "i18n(stonehearth_ace:data.weather.rain.rain_chilly.description)",
+   "icon": "file(rain_chilly.png)",
+   "sky_settings": "stonehearth:sky_settings:rain",
+   "thoughts": [
+      "stonehearth:thoughts:weather:rain_chilly_negative",
+      "stonehearth:thoughts:weather:rain_chilly_negative",
+      "stonehearth:thoughts:weather:rain_chilly_positive"
+   ],
+   "ambient_sound_key": "rain",
+   "camera_attached_effect": "stonehearth:effects:rain_effect",
+   "subject_matter": "stonehearth_ace:subjects:weather:rain:chilly",
+   "plant_growth_time_multiplier": 3,
+   "vision_multiplier": 0.6,
+   "hide_cloud_shadows": true,
+   "snow_accumulation_per_minute": 0.0001,
+   "is_dark_during_daytime": true,
+   "unsheltered_resistance_buff": "stonehearth:buffs:weather:cold_resist",
+   "unsheltered_debuff": "stonehearth_ace:buffs:weather:chilly",
+   "unsheltered_animal_debuff": "stonehearth_ace:buffs:weather:soaked:animal",
+   "humidity": 1,
+   "sunlight": 0.5
+}

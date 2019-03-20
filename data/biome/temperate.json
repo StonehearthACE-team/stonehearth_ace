@@ -6,78 +6,64 @@
    "sunlight": 1,
    "seasons": {
       "spring": {
-	     "mixintypes": {
-			"weather": "override"
-		 },
          "weather": [
-            {
-               "uri": "stonehearth:weather:sunny",
-               "weight": 10
-            },
-            {
-               "uri": "stonehearth:weather:cloudy",
-               "weight": 4
-            },
-            {
-               "uri": "stonehearth:weather:rain",
-               "weight": 4
-            },
-            {
-               "uri": "stonehearth:weather:rain:sunny",
-               "weight": 4
-            },
-            {
-               "uri": "stonehearth:weather:foggy",
-               "weight": 3
-            },
-			{
+				{
+					"uri": "stonehearth_ace:weather:sunny:chilly",
+					"weight": 1
+				},
+				{
                "uri": "stonehearth_ace:weather:snow:late",
                "weight": 1
-            },
-            {
-               "uri": "stonehearth:weather:lucky",
-               "weight": 0.05
             }
          ]
       },
+		"summer": {
+			"weather": [
+				{
+					"uri": "stonehearth_ace:weather:sunny:hot",
+					"weight": 2
+				}
+			]
+		},
       "autumn": {
-	     "mixintypes": {
-			"weather": "override"
-		 },
          "weather": [
-            {
-               "uri": "stonehearth:weather:sunny",
-               "weight": 4
+				{
+               "uri": "stonehearth_ace:weather:cloudy:chilly",
+               "weight": 2
             },
-            {
-               "uri": "stonehearth:weather:cloudy",
-               "weight": 4
-            },
-            {
-               "uri": "stonehearth:weather:rain",
-               "weight": 6
-            },
-            {
-               "uri": "stonehearth:weather:rain:sunny",
-               "weight": 6
-            },
-            {
-               "uri": "stonehearth:weather:thunderstorm",
-               "weight": 4
-            },
-            {
-               "uri": "stonehearth:weather:foggy",
+				{
+               "uri": "stonehearth_ace:weather:rain:chilly",
                "weight": 1
             },
-			{
+				{
+               "uri": "stonehearth_ace:weather:foggy:chilly",
+               "weight": 1
+            },
+				{
                "uri": "stonehearth_ace:weather:snow:early",
                "weight": 1
-            },
-            {
-               "uri": "stonehearth:weather:lucky",
-               "weight": 0.05
             }
          ]
-      }
+      },
+		"winter": {
+			"weather": [
+				{
+               "uri": "stonehearth_ace:weather:sunny:chilly",
+               "weight": 2
+            },
+            {
+               "uri": "stonehearth_ace:weather:cloudy:chilly",
+               "weight": 3
+            },
+				{
+               "uri": "stonehearth_ace:weather:cloudy:cold",
+               "weight": 4
+            },
+            {
+               "uri": "stonehearth_ace:weather:windy:chilly",
+               "weight": 4
+            }
+			]
+		}
    }
 }
