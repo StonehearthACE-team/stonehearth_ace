@@ -1,15 +1,12 @@
 {
+   "mixins": [
+      "stonehearth_ace:mixins:armor:heavy_armor_helmet"
+   ],
+	"type": "entity",
    "components": {
       "stonehearth:equipment_piece": {
          "ilevel": 6,
-         "required_job_level": 4,
-		 "injected_buffs": [
-            "stonehearth_ace:buffs:armor_heavy"
-         ],
-		 "equipment_types": [
-		    "helmet",
-            "heavy_armor"
-         ]
+         "required_job_level": 4
       }
    },
    "entity_data": {

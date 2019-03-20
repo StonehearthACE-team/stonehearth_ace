@@ -1,5 +1,8 @@
 {
-   "mixins": "stonehearth:mixins:item_properties",
+   "mixins": [
+      "stonehearth:mixins:item_properties",
+      "stonehearth_ace:mixins:armor:light_armor_hood"
+   ],
    "type": "entity",
    "components": {
       "model_variants": {
@@ -34,26 +37,15 @@
          "iconic_form": "file(legendary_hood_iconic.json)"
       },
       "stonehearth:equipment_piece": {
-         "render_type": "merge_with_model",
-         "slot": "torso",
-			"additional_equipment": {
-            "stonehearth_ace:armor:legendary:hood:hood": true
-         },
          "ilevel": 10,
          "roles": [
             "archer_job"
          ],
          "injected_buffs": [
-            "stonehearth_ace:buffs:armor_light",
             "stonehearth_ace:buffs:weather:chilly_resist"
          ],
          "required_job_level": 6,
-         "equip_effect": "stonehearth:effects:weapon_level_up",
-         "equipment_types": [
-            "hood",
-            "torso",
-            "light_armor"
-         ]
+         "equip_effect": "stonehearth:effects:weapon_level_up"
       }
    },
    "entity_data": {
@@ -75,8 +67,6 @@
          "category": "armor",
          "material_tags": [
             "legendary",
-            "armor",
-            "light_armor",
             "ascendancy_made",
             "legendary_hood",
             "stockpile_equipment"

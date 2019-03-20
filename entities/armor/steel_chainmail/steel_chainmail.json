@@ -1,5 +1,8 @@
 {
-   "mixins": "stonehearth:mixins:item_properties",
+   "mixins": [
+      "stonehearth:mixins:item_properties",
+      "stonehearth_ace:mixins:armor:medium_armor_torso"
+   ],
    "type": "entity",
    "components": {
       "model_variants": {
@@ -34,21 +37,12 @@
          "iconic_form": "file(steel_chainmail_iconic.json)"
       },
       "stonehearth:equipment_piece": {
-         "render_type": "merge_with_model",
-         "slot": "torso",
          "ilevel": 7,
          "roles": [
             "mail_wearer"
          ],
-         "injected_buffs": [
-            "stonehearth_ace:buffs:armor_medium"
-         ],
          "required_job_level": 5,
-         "equip_effect": "stonehearth:effects:weapon_level_up",
-         "equipment_types": [
-            "torso",
-            "medium_armor"
-         ]
+         "equip_effect": "stonehearth:effects:weapon_level_up"
       }
    },
    "entity_data": {
@@ -72,8 +66,6 @@
          "category": "armor",
          "material_tags": [
             "steel",
-            "armor",
-            "medium_armor",
             "ascendancy_made",
             "steel_chainmail",
             "stockpile_equipment"

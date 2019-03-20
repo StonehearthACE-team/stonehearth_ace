@@ -1,15 +1,11 @@
 {
+   "mixins": [
+      "stonehearth_ace:mixins:armor:light_shield"
+   ],
+	"type": "entity",
    "components": {
       "stonehearth:equipment_piece": {
-		 "additional_equipment": {
-            "stonehearth_ace:armor:offhand_placeholder": true
-         },
-		 "required_job_level": 1,
-         "render_type": "attach_to_bone",
-         "equipment_types": ["shield", "light_shield"],
-         "injected_buffs": [
-            "stonehearth_ace:buffs:shield_light"
-         ]
+		 "required_job_level": 1
       }
    },
    "entity_data": {

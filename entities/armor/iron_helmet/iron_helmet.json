@@ -1,5 +1,8 @@
 {
-   "mixins": "stonehearth:mixins:item_properties",
+   "mixins": [
+      "stonehearth:mixins:item_properties",
+      "stonehearth_ace:mixins:armor:heavy_armor_helmet"
+   ],
    "type": "entity",
    "components": {
       "model_variants": {
@@ -22,21 +25,12 @@
          "iconic_form": "file(iron_helmet_iconic.json)"
       },
       "stonehearth:equipment_piece": {
-         "render_type": "merge_with_model",
-         "slot": "helmet",
          "ilevel": 5,
          "required_job_level": 2,
          "roles": [
             "plate_wearer"
          ],
-         "injected_buffs": [
-            "stonehearth_ace:buffs:armor_heavy"
-         ],
-         "equip_effect": "stonehearth:effects:weapon_level_up",
-         "equipment_types": [
-            "helmet",
-            "heavy_armor"
-         ]
+         "equip_effect": "stonehearth:effects:weapon_level_up"
       }
    },
    "entity_data": {
@@ -60,9 +54,6 @@
          "category": "armor",
          "material_tags": [
             "iron",
-            "armor",
-            "helmet",
-            "heavy_armor",
             "ascendancy_made",
             "iron_helmet",
             "stockpile_equipment"
