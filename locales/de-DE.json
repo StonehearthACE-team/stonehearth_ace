@@ -315,7 +315,11 @@
       },
       "weather": {
          "windy": {
-            "description": "Heulende Winde und tosende Stürme ziehen durch das Land.<ul><li>Etwas mehr Luftfeuchtigkeit.</li></ul>"
+            "description": "Heulende Winde und tosende Stürme ziehen durch das Land.<ul><li>Etwas mehr Luftfeuchtigkeit.</li></ul>",
+            "windy_chilly": {
+               "display_name": "Kühle Winde",
+               "description": "Die Luft ist trocken und kalt, während der Wind über die Länder heult.<ul><li>Ungeschützten Hearthlingen ist es zu kühl, um effektiv zu arbeiten.</li></ul>"
+            }
          },
          "thunderstorm": {
             "description": "Donner rollt ... Er rollte eine Sechs.<ul><li>Übermäßige Luftfeuchtigkeit.</li><li>Sonnenlicht ist stark reduziert.</li><li>Sichtradius ist reduziert.</li><li>Ungeschützt Hearthlinge und Weidetiere werden nass.</li><li>Ungeschützte Hearthlinge werden manchmal vom Blitz getroffen.</li><li>Der Boden und die Bäume werden manchmal vom Blitz getroffen.</li></ul>"
@@ -324,16 +328,24 @@
             "description": "Ein weiterer Tag mit endlosem Sonnenschein und blauem Himmel.<ul><li>Sonnenlicht ist etwas erhöht.</li></ul>",
             "sunny_desert": {
                "description": "Ein weiterer Tag mit endlosem Sonnenschein und blauem Himmel.<ul><li>Sonnenlicht ist etwas erhöht.</li><li>Ungeschützten Hearthlingen ist es zu heiß, um so effektiv arbeiten zu können.</li></ul>"
+            },
+            "sunny_chilly": {
+               "display_name": "Sonniger Wintertag",
+               "description": "Es ist ein wunderschöner sonniger Tag! Wenn auch etwas kalt...<ul><li>Ungeschützten Hearthlingen ist es zu kühl, um effektiv zu arbeiten.</li></ul>"
+            },
+            "sunny_hot": {
+               "display_name": "Hitzewelle",
+               "description": "Ein schöner, warmer sonniger Tag! Vielleicht zu sonnig, die Hitze ist unerträglich...<ul><li>Somewhat reduced humidity.</li><li>Sonnenlicht ist angenehm erhöht.</li><li>Ungeschützten Hearthlingen ist es zu heiß, um effektiv zu arbeiten.</li><li>Ungeschützte Weidetiere werden durch die Hitze verletzt.</li></ul>"
             }
          },
          "snow": {
             "description": "Kälte, Frost und Sonnenschein: Ein Tag der Wunder! Warum bist du, mein Freund, immer noch tief im Schlaf??<ul><li>Sonnenlicht ist etwas reduziert.</li><li>Sichtradius ist geringfügig reduziert.</li><li>Ungeschützten Hearthlingen ist zu kalt, um effektiv zu arbeiten.</li><li>Ungeschützte Weidetiere werden durch die Kälte verletzt.</li></ul>",
             "snow_sunny": {
-               "description": "Was für ein wunderschönes Winterwunderland heute ist!<ul><li>Sonnenlicht ist etwas reduziert.</li><li>Sichtradius ist nur geringfügig reduziert.</li><li>Ungeschützten Hearthlingen ist zu kalt, um effektiv zu arbeiten.</li></ul>"
+               "description": "Was für ein wunderschönes Winterwunderland heute ist!<ul><li>Sonnenlicht ist etwas reduziert.</li><li>Sichtradius ist nur geringfügig reduziert.</li><li>Ungeschützten Hearthlingen ist zu kühl, um effektiv zu arbeiten.</li></ul>"
             },
             "snow_early": {
                "display_name": "Frühschnee",
-               "description": "Der Schnee ist dieses Jahrfrüher gekommen...<ul><li>Sonnenlicht ist etwas reduziert.</li><li>Ungeschützten Hearthlingen ist es zu kalt, um effektiv zu arbeiten.</li></ul>"
+               "description": "Der Schnee ist dieses Jahrfrüher gekommen...<ul><li>Sonnenlicht ist etwas reduziert.</li><li>Ungeschützten Hearthlingen ist es zu kühl, um effektiv zu arbeiten.</li></ul>"
             },
             "snow_late": {
                "display_name": "Spätschnee",
@@ -350,6 +362,10 @@
             "description": "Wasser! Wasser vom Himmel!<ul><li>Viel mehr Luftfeuchtigkeit.</li><li>Sonnenlicht ist reduziert.</li><li>Sichtradius ist reduziert.</li><li>Ungeschützte Hearthlinge und Weidetiere werden nass.</li></ul>",
             "rain_sunny": {
                "description": "Es regnet, aber die Sonne lugt hervor!<ul><li>Viel mehr Luftfeuchtigkeit.</li><li>Sonnenlicht ist leicht reduziert.</li><li>Sichtradius ist etwas reduziert.</li><li>Ungeschützte Hearthlinge und Weidetiere werden nass.</li></ul>"
+            },
+            "rain_chilly": {
+               "display_name": "Gefrierender Regen",
+               "description": "Es ist wie eine Dusche aus wirklich dünnen, endlosen Eisnadeln!<ul><li>Viel mehr Luftfeuchtigkeit.</li><li>Sonnenlicht ist reduziert.</li><li>Sichtradius ist reduziert.</li><li>Ungeschützten Hearthlingen ist es zu kühl, um effektiv zu arbeiten.</li><li>Ungeschützte Hearthlinge und Weidetiere werden durchnässt.</li></ul>"
             }
          },
          "lucky": {
@@ -360,9 +376,17 @@
          },
          "cloudy": {
             "description": "Bedeckter Himmel, perfekt zum Faulenzen auf der Veranda.<ul><li>Etwas mehr Luftfeuchtigkeit.</li><li>Sonnenlicht ist reduziert.</li></ul>"
+            "cloudy_chilly": {
+               "display_name": "Bewölkt und kühl",
+               "description": "Bedeckter Himmel, perfekt zum Faulenzen auf der Veranda.<ul><li>Sonnenlicht ist reduziert.</li><li>Ungeschützten Hearthlingen ist es zu kühl, um effektiv zu arbeiten.</li></ul>"
+            },
+            "cloudy_cold": {
+               "display_name": "Bewölkt und kalt",
+               "description": "Bedeckter Himmel, perfekt zum Faulenzen auf der Veranda.<ul><li>Sonnenlicht ist reduziert.</li><li>Luftfeuchtigkeit etwas reduziert.</li><li>Ungeschützten Hearthlingen ist es zu kühl, um effektiv zu arbeiten.</li><li>Ungeschützte Weidetiere werden durch die Kälte verletzt.</li></ul>"
+            }
          },
          "blizzard": {
-            "description": "Wind und Schnee und Hagel, oh mein!<ul><li>Pflanzenwachstum ist unterbrochen.</li><li>Sonnenlicht ist stark reduziert.</li><li>Sichtradius ist stark reduziert.</li><li>Ungeschützte Hearthlinge werden durch die Kälte verletzt.</li><li>Ungeschützte Weidetiere werden durch die Kälte verletzt.</li></ul>"
+            "description": "Wind, Schnee und Hagel, oh mein Gott!<ul><li>Pflanzenwachstum ist unterbrochen.</li><li>Sonnenlicht ist stark reduziert.</li><li>Sichtradius ist stark reduziert.</li><li>Ungeschützte Hearthlinge werden durch die Kälte verletzt.</li><li>Ungeschützte Weidetiere werden durch die Kälte verletzt.</li></ul>"
          }
       },
       "happiness": {
@@ -384,6 +408,62 @@
                   "snow_late_negative": {
                      "display_name": "Es schneit schon wieder!",
                      "tooltip": "Der Winter sollte schon vorbei sein, ich kann nicht glauben, dass esr so spät immernoch schneit..."
+                  },
+                  "cloudy_chilly_positive": {
+                     "display_name": "Kühl und bewölkt!",
+                     "tooltip": "Flauschige Wolken und eine schöne, kühle Luft! Dies ist ein schöner Tag."
+                  },
+                  "cloudy_chilly_negative": {
+                     "display_name": "Düster und feucht...",
+                     "tooltip": "Als wäre es nicht genug das die Sonne von diesen Wolken bedeckt ist, ist es heute auch sehr kalt!"
+                  },
+                  "cloudy_cold_positive": {
+                     "display_name": "Winterfreude!",
+                     "tooltip": "Bewölkte und kalte Tage sind die besten! Ich liebe Winter!"
+                  },
+                  "cloudy_cold_negative": {
+                     "display_name": "Ugh, kalt und dunkel...",
+                     "tooltip": "Es sind dunkle, düstere Wolken über uns, eine beißende Kälte ... Was könnte schlimmer sein?"
+                  },
+                  "foggy_chilly_positive": {
+                     "display_name": "Ungewisses Nackenkribbeln...",
+                     "tooltip": "Oh! Dieser Nebel ist so geheimnisvoll! Und dieses kühle Gefühl im Nacken ... Ich liebe es!"
+                  },
+                  "foggy_chilly_negative": {
+                     "display_name": "Kribbeln den ganzen Rücken runtern!",
+                     "tooltip": "Es ist zu kalt und dieser Nebel ist zu dick! Da stimmt etwas nicht, ich sage es dir!"
+                  },
+                  "rain_chilly_positive": {
+                     "display_name": "Kalte Nadeln!",
+                     "tooltip": "Dieser eiskalte Regen wirkt irgendwie erfrischend, ich frage mich, ob wir bald Schnee bekommen werden?"
+                  },
+                  "rain_chilly_negative": {
+                     "display_name": "Ärger vom Himmel...",
+                     "tooltip": "Ich kann dieses langweilige Kitzeln von dünnem, eiskaltem Regen nicht ertragen. Pfui!"
+                  },
+                  "sunny_chilly_positive": {
+                     "display_name": "Sonnenschein und frische Luft!",
+                     "tooltip": "Ah! Was für ein wunderbares Gefühl! Es gibt nichts Schöneres als die helle Sonne an einem schönen Wintertag."
+                  },
+                  "sunny_chilly_negative": {
+                     "display_name": "Mein Sonnenschein war verdorben!",
+                     "tooltip": "Oh, es ist schön, endlich die Sonne wiederzusehen ... aber könnten wir uns wenigstens auch etwas Wärme bekommen?"
+                  },
+                  "sunny_hot_positive": {
+                     "display_name": "Fühlt die Hitze...",
+                     "tooltip": "Die Sonne ist heute so stark! Es ist etwas strapazierend, aber ich fühle mich so lebendig!"
+                  },
+                  "sunny_hot_negative": {
+                     "display_name": "Sengende Hitze!",
+                     "tooltip": "Warum muss es heute so warm sein? Ich kann diese Hitze nicht mehr aushalten..."
+                  },
+                  "windy_chilly_positive": {
+                     "display_name": "Die Winde des Winters",
+                     "tooltip": "Nichts fühlt sich so erfrischend an wie der sanfte und kalte arktische Wind, der über das Gesicht streicht!"
+                  },
+                  "windy_chilly_negative": {
+                     "display_name": "Dieser Wind tut mir weh!",
+                     "tooltip": "Es fühlt sich an als wären tausend kleine, kalte Klingen in meinem Gesicht ... Ugh!"
                   }
                }
             },
