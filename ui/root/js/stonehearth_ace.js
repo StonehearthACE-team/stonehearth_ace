@@ -99,9 +99,38 @@ var stonehearth_ace = {
       else {
          $.getJSON(json, function(data) {
             stonehearth_ace._allTitles[json] = data;
-            callbackFn(data);
+            if (callbackFn) {
+               callbackFn(data);
+            }
          });
       }
+   },
+
+   getTitlesList: function(availableTitles, entityTitles, entityName) {
+      var titlesArr = [];
+      radiant.each(entityTitles, function(title, rank) {
+         var lookups = availableTitles[title];
+         if (lookups && lookups.ranks) {
+            var titleInfo = {
+               ordinal: lookups.ordinal,
+               display_name: lookups.display_name,
+               description: lookups.description
+            };
+            radiant.each(lookups.ranks, function(_, rank_data) {
+               if (rank_data.rank <= rank) {
+                  titlesArr.push({
+                     key: title + '|' + rank_data.rank,
+                     titleInfo: titleInfo,
+                     title: title,
+                     rank: rank_data.rank,
+                     display_name: entityName + rank_data.display_name,
+                     description: rank_data.description
+                  });
+               }
+            });
+         }
+      });
+      return titlesArr;
    },
 
    createTitleSelectionList: function(availableTitles, entityTitles, entityUri, entityName) {
@@ -112,23 +141,7 @@ var stonehearth_ace = {
 
       // first check if we actually have any titles for this entity
       if (entityTitles && availableTitles) {
-         var titlesArr = [];
-         radiant.each(entityTitles, function(title, rank) {
-            var lookups = availableTitles[title];
-            if (lookups && lookups.ranks) {
-               radiant.each(lookups.ranks, function(_, rank_data) {
-                  if (rank_data.rank <= rank) {
-                     titlesArr.push({
-                        key: title + '|' + rank_data.rank,
-                        title: title,
-                        rank: rank_data.rank,
-                        display_name: entityName + rank_data.display_name,
-                        description: rank_data.description
-                     });
-                  }
-               });
-            }
-         });
+         var titlesArr = stonehearth_ace.getTitlesList(availableTitles, entityTitles, entityName);
 
          if (titlesArr.length > 0) {
             // insert the "none" option

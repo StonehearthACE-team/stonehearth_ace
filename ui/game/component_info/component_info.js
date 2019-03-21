@@ -259,6 +259,8 @@ App.ComponentInfoView = App.View.extend({
    }.observes('selectedDetails'),
 
    _createDetailDiv: function (details) {
+      var self = this;
+      
       var detail = details.detail;
       switch (detail.type) {
          case 'string':
@@ -317,6 +319,67 @@ App.ComponentInfoView = App.View.extend({
             if (detail.footer) {
                content += i18n.t(detail.footer, details.i18n_data);
             }
+
+            return content;
+
+         case 'title_list':
+            // 'titles' contains the titles, 'titles_json' contains the titles_json, 'header' contains optional header, 'footer' contains optional footer
+            // actual titles content will be deferred because the json might not be loaded yet
+            var content = '';
+            if (detail.header) {
+               content += i18n.t(detail.header, details.i18n_data);
+            }
+
+            content += '<div id="titlesContent"></div>';
+
+            if (detail.footer) {
+               content += i18n.t(detail.footer, details.i18n_data);
+            }
+
+            stonehearth_ace.loadAvailableTitles(detail.titles_json, function(allTitles) {
+               var titlesArr = stonehearth_ace.getTitlesList(allTitles, detail.titles, '')
+               
+               var items = {};
+               // condense the items by uri and quality
+               radiant.each(detail.items, function(_, item){
+                  var key = item.uri + '|' + (item.quality || 1);
+                  var arrItem = items[key];
+                  if (arrItem) {
+                     arrItem.count++;
+                  }
+                  else {
+                     arrItem = {
+                        key: key,
+                        item: item,
+                        count: 1
+                     }
+                     items[key] = arrItem;
+                  }
+               });
+   
+               items = radiant.map_to_array(items);
+               items.sort(function(a, b) {
+                  return a.key.localeCompare(b.key);
+               })
+   
+               radiant.each(items, function(_, arrItem){
+                  var item = arrItem.item;
+                  var catalogData = App.catalog.getCatalogData(item.uri);
+                  if (catalogData) {
+                     content += `<div class="listItem"><span class="listItemText quality-${item.quality || 1}">`;
+                     if (catalogData.icon) {
+                        content += `<img class="inlineImg" src="${catalogData.icon}" />`
+                     }
+                     if (catalogData.display_name) {
+                        content += i18n.t(catalogData.display_name);
+                     }
+                     if (arrItem.count > 1) {
+                        content += `<span class="textValue"> (x${arrItem.count})</span>`;
+                     }
+                     content += '</span></div>'
+                  }
+               })
+            });
 
             return content;
       }
