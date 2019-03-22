@@ -109,7 +109,7 @@ function AceTownService:get_persistence_data()
    local data = {}
    for player_id, town in pairs(self._sv.towns) do
       local pop = stonehearth.population:get_population(player_id)
-      if pop and pop:get_city_tier() >= 3 then
+      if pop and not pop:is_npc() and pop:get_city_tier() >= 3 then
          data[player_id] = town:get_persistence_data()
       end
    end

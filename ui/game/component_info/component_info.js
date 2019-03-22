@@ -296,7 +296,7 @@ App.ComponentInfoView = App.View.extend({
             items = radiant.map_to_array(items);
             items.sort(function(a, b) {
                return a.key.localeCompare(b.key);
-            })
+            });
 
             radiant.each(items, function(_, arrItem){
                var item = arrItem.item;
@@ -338,47 +338,32 @@ App.ComponentInfoView = App.View.extend({
 
             stonehearth_ace.loadAvailableTitles(detail.titles_json, function(allTitles) {
                var titlesArr = stonehearth_ace.getTitlesList(allTitles, detail.titles, '')
-               
-               var items = {};
-               // condense the items by uri and quality
-               radiant.each(detail.items, function(_, item){
-                  var key = item.uri + '|' + (item.quality || 1);
-                  var arrItem = items[key];
-                  if (arrItem) {
-                     arrItem.count++;
-                  }
-                  else {
-                     arrItem = {
-                        key: key,
-                        item: item,
-                        count: 1
+               var titlesContent = '';
+   
+               radiant.each(titlesArr, function(_, titleData) {
+                  titlesContent += `<div class="title">`;
+                  
+
+                  radiant.each(items, function(_, arrItem){
+                     var item = arrItem.item;
+                     var catalogData = App.catalog.getCatalogData(item.uri);
+                     if (catalogData) {
+                        titlesContent += `<div class="listItem"><span class="listItemText quality-${item.quality || 1}">`;
+                        if (catalogData.icon) {
+                           titlesContent += `<img class="inlineImg" src="${catalogData.icon}" />`
+                        }
+                        if (catalogData.display_name) {
+                           titlesContent += i18n.t(catalogData.display_name);
+                        }
+                        if (arrItem.count > 1) {
+                           titlesContent += `<span class="textValue"> (x${arrItem.count})</span>`;
+                        }
+                        titlesContent += '</span></div>'
                      }
-                     items[key] = arrItem;
-                  }
+                  });
                });
-   
-               items = radiant.map_to_array(items);
-               items.sort(function(a, b) {
-                  return a.key.localeCompare(b.key);
-               })
-   
-               radiant.each(items, function(_, arrItem){
-                  var item = arrItem.item;
-                  var catalogData = App.catalog.getCatalogData(item.uri);
-                  if (catalogData) {
-                     content += `<div class="listItem"><span class="listItemText quality-${item.quality || 1}">`;
-                     if (catalogData.icon) {
-                        content += `<img class="inlineImg" src="${catalogData.icon}" />`
-                     }
-                     if (catalogData.display_name) {
-                        content += i18n.t(catalogData.display_name);
-                     }
-                     if (arrItem.count > 1) {
-                        content += `<span class="textValue"> (x${arrItem.count})</span>`;
-                     }
-                     content += '</span></div>'
-                  }
-               })
+
+               self.$('#titlesContent').html(titlesContent);
             });
 
             return content;

@@ -42,7 +42,11 @@ function AceCombatService:_record_kill_stats(attacker, target, units)
    if enemy_player and enemy_player ~= '' then
       for _, unit in pairs(units) do
          -- for the attacker, record kills; otherwise record assists
-         self:_record_kill_stats_for_entity(unit, unit == attacker and 'kills' or 'assists', enemy_player, enemy_category, true)
+         -- only record assists for combat classes; sorry noble villagers
+         local stance = self:get_stance(unit)
+         if stance == 'defensive' or stance == 'aggressive' then
+            self:_record_kill_stats_for_entity(unit, unit == attacker and 'kills' or 'assists', enemy_player, enemy_category, true)
+         end
       end
       self:_record_notable_kill_for_entity(attacker, target)
 

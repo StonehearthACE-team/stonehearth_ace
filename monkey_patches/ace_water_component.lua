@@ -53,6 +53,7 @@ AceWaterComponent._ace_old_add_water = WaterComponent.add_water
 function AceWaterComponent:add_water(volume, add_location)
    local volume, info = self:_ace_old_add_water(volume, add_location)
 
+   self._calculated_up_to_date = false
    stonehearth_ace.water_signal:water_component_modified(self._entity, true)
 
    return volume, info
@@ -62,6 +63,7 @@ AceWaterComponent._ace_old_remove_water = WaterComponent.remove_water
 function AceWaterComponent:remove_water(volume, clamp)
    local volume = self:_ace_old_remove_water(volume, clamp)
 
+   self._calculated_up_to_date = false
    stonehearth_ace.water_signal:water_component_modified(self._entity, true)
 
    return volume

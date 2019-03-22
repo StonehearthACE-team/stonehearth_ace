@@ -7,8 +7,21 @@ local rng = _radiant.math.get_default_rng()
 
 local PersistenceService = class()
 
+local PERSISTENCE_SAVE_TIME = '07:30am'
+
 function PersistenceService:initialize()
    self:_load_all_persistence_data()
+
+   self._save_alarm = stonehearth.calendar:set_alarm(PERSISTENCE_SAVE_TIME, function()
+      self:save_town_data()
+   end)
+end
+
+function PersistenceService:destroy()
+   if self._save_alarm then
+      self._save_alarm:destroy()
+      self._save_alarm = nil
+   end
 end
 
 -- ignore any persistence data for this save
@@ -87,7 +100,7 @@ end
 -- get all persistence data for towns that are tier 3
 function PersistenceService:save_town_data()
    local game_id = self:_get_game_id()
-   if not game_id then
+   if not game_id or game_id == '' then
       return
    end
 

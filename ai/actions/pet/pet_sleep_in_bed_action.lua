@@ -26,7 +26,7 @@ local function _pet_bed_rating_filter(entity)
    if pet_component then
       local pet_owner = entity:get_component('stonehearth:pet'):get_owner()
 
-      local object_owner_component = pet_owner:get_component('stonehearth:object_owner')
+      local object_owner_component = pet_owner and pet_owner:is_valid() and pet_owner:get_component('stonehearth:object_owner')
       local bed = object_owner_component and object_owner_component:get_owned_object('bed')
       if bed and bed:is_valid() then
          owner_bed_location = radiant.entities.get_world_grid_location(bed)
