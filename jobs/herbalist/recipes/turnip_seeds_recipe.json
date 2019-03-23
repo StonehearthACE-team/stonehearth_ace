@@ -1,0 +1,22 @@
+{
+   "type": "recipe",
+   "effort": 120,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.herbalist.recipes.turnip_seeds_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.turnip_seeds_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.turnip_seeds_recipe.flavor)",
+   "portrait": "/stonehearth/entities/consumables/seeds/turnip_seeds/turnip_seeds.png",
+   "workshop": "stonehearth:herbalist:workbench",
+   "level_requirement": 1,
+   "ingredients": [
+      {
+         "uri": "stonehearth:food:turnip:turnip_basket",
+         "count": 12
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth:consumables:seeds:turnip_seeds"
+      }
+   ]
+}

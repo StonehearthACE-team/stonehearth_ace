@@ -7,6 +7,36 @@
                "recipe": "file(na_herbalist_workbench_recipe.json)"
             }
          }
+	  },
+	  "farming_enhancements": {
+         "recipes": {
+			"mixintypes": {
+				"turnip_seeds_recipe": "remove",
+				"carrot_seeds_recipe": "remove",
+				"pumpkin_seeds_recipe": "remove",
+				"brightbell_seeds_2_recipe": "remove",
+				"silkweed_seeds_2_recipe": "remove",
+				"frostsnap_seeds_2_recipe": "remove",
+				"wheat_seeds_recipe": "remove",
+				"paddy_seeds_recipe": "remove",
+				"corn_seeds_recipe": "remove"
+			},
+			"sweet_potato_seeds_recipe": {
+            "recipe": "/stonehearth_ace/jobs/herbalist/recipes/sweet_potato_seeds_recipe.json"
+         },
+			"cotton_seeds_2_recipe": {
+            "recipe": "/stonehearth_ace/jobs/herbalist/recipes/cotton_seeds_2_recipe.json"
+         },
+			"marblesprout_seeds_2_recipe": {
+            "recipe": "/stonehearth_ace/jobs/herbalist/recipes/marblesprout_seeds_2_recipe.json"
+         },
+			"snow_poppy_seeds_2_recipe": {
+            "recipe": "/stonehearth_ace/jobs/herbalist/recipes/snow_poppy_seeds_2_recipe.json"
+         },
+			"violet_seeds_2_recipe": {
+            "recipe": "/stonehearth_ace/jobs/herbalist/recipes/violet_seeds_2_recipe.json"
+         }
+		 }
 	  }
    }
 }

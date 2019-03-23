@@ -1121,8 +1121,13 @@
       "herbalist": {
          "recipes": {
             "refined_fungi_name": "Fungal Refinement",
-            "refined_seeds_name": "Local Farming Seeds",
-            "farming_enhancements_name": "Farming Enhancements",
+            "refined_seeds_name": "Regional Seeds",
+            "farming_enhancements_name": "Farming Enhancements & Seeds",
+            "daisy_transmute_recipe": {
+               "recipe_name": "Daisy Seeds (x3)",
+               "description": "Separate seeds from the herbs. Daisies will spread around after being planted.",
+               "flavor": "Only a skilled hand can harvest the weaker seeds, but the herbs are lost in the process."
+            },
             "moonbell_transmute_recipe": {
                "recipe_name": "Moonbell Seeds (x3)",
                "description": "Separate seeds from the herbs",
@@ -1198,15 +1203,30 @@
                "description": "Domesticate Brightbell flowers and learn how to farm them.",
                "flavor": "The crate must be placed on the ground before it can be used"
             },
+            "brightbell_seeds_2_recipe": {
+               "recipe_name": "Brightbell Seeds",
+               "description": "Trade or gift it to allow other cultures to cultivate brightbell flowers!",
+               "flavor": "This farming crop is already known to your farmers by default"
+            },
             "silkweed_seeds_recipe": {
                "recipe_name": "Silkweed Seeds",
                "description": "Domesticate Silkweed plants and learn how to farm them.",
                "flavor": "The crate must be placed on the ground before it can be used"
             },
+            "silkweed_seeds_2_recipe": {
+               "recipe_name": "Silkweed Seeds",
+               "description": "Trade or gift it to allow other cultures to cultivate silkweed!",
+               "flavor": "This farming crop is already known to your farmers by default"
+            },
             "frostsnap_seeds_recipe": {
                "recipe_name": "Frostsnap Seeds",
                "description": "Domesticate Frostsnap flowers and learn how to farm them.",
                "flavor": "The crate must be placed on the ground before it can be used"
+            },
+            "frostsnap_seeds_2_recipe": {
+               "recipe_name": "Frostsnap Seeds",
+               "description": "Trade or gift it to allow other cultures to cultivate frostsnap flowers!",
+               "flavor": "This farming crop is already known to your farmers by default"
             },
             "acacia_tree_seeds_recipe": {
                "recipe_name": "Acacia Seeds",
@@ -1223,6 +1243,11 @@
                "description": "Domesticate Cactus flowers and learn how to farm them.",
                "flavor": "The crate must be placed on the ground before it can be used"
             },
+            "cactus_flower_seeds_2_recipe": {
+               "recipe_name": "Cactus Flower Seeds",
+               "description": "Trade or gift it to allow other cultures to cultivate cactus flowers!",
+               "flavor": "This farming crop is already known to your farmers by default"
+            },
             "arctic_pine_tree_seeds_recipe": {
                "recipe_name": "Arctic Pine Cones",
                "description": "Domesticate Arctic Pine trees and learn how to farm them.",
@@ -1238,10 +1263,20 @@
                "description": "Domesticate Violet flowers and learn how to farm them.",
                "flavor": "The crate must be placed on the ground before it can be used"
             },
+            "violet_seeds_2_recipe": {
+               "recipe_name": "Violet Seeds",
+               "description": "Trade or gift it to allow other cultures to cultivate violets!",
+               "flavor": "This farming crop is already known to your farmers by default"
+            },
             "snow_poppy_seeds_recipe": {
                "recipe_name": "Snow Poppy Seeds",
                "description": "Domesticate Snow Poppy flowers and learn how to farm them.",
                "flavor": "The crate must be placed on the ground before it can be used"
+            },
+            "snow_poppy_seeds_2_recipe": {
+               "recipe_name": "Snow Poppy Seeds",
+               "description": "Trade or gift it to allow other cultures to cultivate snow poppies!",
+               "flavor": "This farming crop is already known to your farmers by default"
             },
             "birch_tree_seeds_recipe": {
                "recipe_name": "Birch Catkins",
@@ -1263,15 +1298,75 @@
                "description": "Domesticate Moonbell flowers and learn how to farm them.",
                "flavor": "The crate must be placed on the ground before it can be used"
             },
+            "moonbell_seeds_2_recipe": {
+               "recipe_name": "Moonbell Seeds",
+               "description": "Trade or gift it to allow other cultures to cultivate moonbell flowers!",
+               "flavor": "This farming crop is already known to your farmers by default"
+            },
             "cotton_seeds_recipe": {
                "recipe_name": "Cotton Seeds",
                "description": "Domesticate Cotton plants and learn how to farm them.",
                "flavor": "The crate must be placed on the ground before it can be used"
             },
+            "cotton_seeds_2_recipe": {
+               "recipe_name": "Cotton Seeds",
+               "description": "Trade or gift it to allow other cultures to cultivate cotton!",
+               "flavor": "This farming crop is already known to your farmers by default"
+            },
             "marblesprout_seeds_recipe": {
                "recipe_name": "Marblesprout Seeds",
                "description": "Domesticate Marblesprout flowers and learn how to farm them.",
                "flavor": "The crate must be placed on the ground before it can be used"
+            },
+            "marblesprout_seeds_2_recipe": {
+               "recipe_name": "Marblesprout Seeds",
+               "description": "Trade or gift it to allow other cultures to cultivate marble flowers!",
+               "flavor": "This farming crop is already known to your farmers by default"
+            },
+            "turnip_seeds_recipe": {
+               "recipe_name": "Turnip Seeds",
+               "description": "Trade or gift it to allow other cultures to cultivate turnips!",
+               "flavor": "This farming crop is already known to your farmers by default"
+            },
+            "carrot_seeds_recipe": {
+               "recipe_name": "Carrot Seeds",
+               "description": "Trade or gift it to allow other cultures to cultivate carrots!",
+               "flavor": "This farming crop is already known to your farmers by default"
+            },
+            "pumpkin_seeds_recipe": {
+               "recipe_name": "Pumpkin Seeds",
+               "description": "Trade or gift it to allow other cultures to cultivate pumpkins!",
+               "flavor": "This farming crop is already known to your farmers by default"
+            },
+            "corn_seeds_recipe": {
+               "recipe_name": "Corn Seeds",
+               "description": "Trade or gift it to allow other cultures to cultivate corn!",
+               "flavor": "This farming crop is already known to your farmers by default"
+            },
+            "wheat_seeds_recipe": {
+               "recipe_name": "Wheat Grain",
+               "description": "Trade or gift it to allow other cultures to cultivate wheat!",
+               "flavor": "This farming crop is already known to your farmers by default"
+            },
+            "paddy_seeds_recipe": {
+               "recipe_name": "Paddy Seeds",
+               "description": "Trade or gift it to allow other cultures to cultivate rice!",
+               "flavor": "This farming crop is already known to your farmers by default"
+            },
+            "golden_gourd_seeds_recipe": {
+               "recipe_name": "Golden Gourd Seeds",
+               "description": "Trade or gift it to allow other cultures to cultivate golden gourds!",
+               "flavor": "This farming crop is already known to your farmers by default"
+            },
+            "watermelon_seeds_recipe": {
+               "recipe_name": "Watermelon Seeds",
+               "description": "Trade or gift it to allow other cultures to cultivate watermelons!",
+               "flavor": "This farming crop is already known to your farmers by default"
+            },
+            "sweet_potato_seeds_recipe": {
+               "recipe_name": "Sweet Potato Seeds",
+               "description": "Trade or gift it to allow other cultures to cultivate sweet taters!",
+               "flavor": "This farming crop is already known to your farmers by default"
             },
             "fertilizer_recipe": {
                "recipe_name": "Simple Fertilizer",
@@ -1294,8 +1389,8 @@
                "flavor": "Each sack can be used to fertilize 20 crops"
             },
             "plant_glass": {
-               "recipe_name": "Flowers in a vase",
-               "description": "A little thing to make a home feel cozy.",
+               "recipe_name": "Gentle Flower Vase",
+               "description": "A little thing to make a home feel more cozy.",
                "flavor": "Literally handpicked flowers are going to be placed in this vase. Some blossoms might be more striking than others *wink, wink*."
             }
          },
@@ -2808,6 +2903,14 @@
             "birch_tree_seeds": {
                "display_name": "Birch Catkins",
                "description": "Learn to grow birch trees."
+            },
+            "corn_seeds": {
+               "display_name": "Corn Seeds",
+               "description": "Learn to grow corn."
+            },
+            "paddy_seeds": {
+               "display_name": "Paddy Seeds",
+               "description": "Learn to grow rice."
             }
          },
          "fertilizer": {
@@ -7117,7 +7220,8 @@
             "grain_flour_resource_name": "Any Flour",
             "any_pet_food_resource_name": "Any Pet Food",
             "milk_resource_name": "Any Milk",
-            "butter_resource_name": "Any Butter"
+            "butter_resource_name": "Any Butter",
+            "strong_bone_resource_name": "Strong Bone"
          }
       },
       "hotkeys": {

@@ -1,0 +1,22 @@
+{
+   "type": "recipe",
+   "effort": 120,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.herbalist.recipes.silkweed_seeds_2_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.silkweed_seeds_2_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.silkweed_seeds_2_recipe.flavor)",
+   "portrait": "/stonehearth/entities/consumables/seeds/silkweed_seeds/silkweed_seeds.png",
+   "workshop": "stonehearth:herbalist:workbench",
+   "level_requirement": 2,
+   "ingredients": [
+      {
+         "uri": "stonehearth:resources:fiber:silkweed_bundle",
+         "count": 30
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth:consumables:seeds:silkweed_seeds"
+      }
+   ]
+}

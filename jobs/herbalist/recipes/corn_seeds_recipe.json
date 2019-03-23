@@ -1,0 +1,22 @@
+{
+   "type": "recipe",
+   "effort": 120,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.herbalist.recipes.corn_seeds_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.corn_seeds_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.corn_seeds_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/consumables/seeds/corn_seeds/corn_seeds.png",
+   "workshop": "stonehearth:herbalist:workbench",
+   "level_requirement": 2,
+   "ingredients": [
+      {
+         "uri": "stonehearth:food:corn:corn_basket",
+         "count": 12
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:consumables:seeds:corn_seeds"
+      }
+   ]
+}

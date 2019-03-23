@@ -1,5 +1,6 @@
 {
    "type": "job",
+   "display_order": 2,
    "mixins": "rayyas_children:jobs:cook",
    "crafter": {
       "recipe_list": "file(recipes/rc_recipes.json)"
@@ -7,5 +8,7 @@
    "equipment": {
       "helmet": "file(rc_cook_outfit/rc_cook_outfit_hat)",
       "torso": "file(rc_cook_outfit)"
-   }
+   },
+   "parent_job": "stonehearth:jobs:trapper",
+   "parent_level_requirement": 2
 }

@@ -4,5 +4,25 @@
    "equipment": {
       "helmet": "file(rc_farmer_outfit/rc_farmer_outfit_hat)",
       "torso": "file(rc_farmer_outfit)"
+   },
+   "level_data": {
+      "2": {
+         "mixintypes": {
+            "perks": "override"
+         },
+         "perks": [
+            {
+               "type": "set_lookup_values",
+               "lookup_values": {
+                  "harvest_increase_amount": 0.25
+               },
+               "name": "i18n(stonehearth_ace:jobs.farmer.farmer_description.level_2_data.perk_000_name)",
+               "id": "farmer_harvest_increase_1",
+               "icon": "file(images/harvest_increase_1.png)",
+               "description": "i18n(stonehearth_ace:jobs.farmer.farmer_description.level_2_data.perk_000_description)",
+               "level": 2
+            }
+         ]
+      }
    }
 }

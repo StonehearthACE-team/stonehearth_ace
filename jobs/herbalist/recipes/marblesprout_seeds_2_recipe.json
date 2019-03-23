@@ -1,0 +1,22 @@
+{
+   "type": "recipe",
+   "effort": 120,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.herbalist.recipes.marblesprout_seeds_2_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.marblesprout_seeds_2_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.marblesprout_seeds_2_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/consumables/seeds/marblesprout_seeds/marblesprout_seeds.png",
+   "workshop": "stonehearth:herbalist:workbench",
+   "level_requirement": 5,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:resources:herb:marblesprout",
+         "count": 8
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:consumables:seeds:marblesprout_seeds"
+      }
+   ]
+}
