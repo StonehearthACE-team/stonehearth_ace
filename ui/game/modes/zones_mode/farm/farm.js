@@ -10,8 +10,9 @@ App.StonehearthFarmView.reopen({
       NONE: 'none',
       LOW: 'little',
       MEDIUM: 'some',
-      HIGH: 'plenty',
-      VERY_HIGH: 'excess'
+      HIGH: 'quite',
+      VERY_HIGH: 'plenty',
+		EXCESS: 'excess'
    },
 
    _LIGHT_LEVEL_ICONS: {
@@ -19,7 +20,8 @@ App.StonehearthFarmView.reopen({
       LOW: 'low',
       MEDIUM: 'medium',
       HIGH: 'high',
-      VERY_HIGH: 'very_high'
+      VERY_HIGH: 'very_high',
+		EXCESS: 'extreme'
    },
 
    _FLOOD_ICONS: {
@@ -756,10 +758,10 @@ App.StonehearthFarmView.reopen({
       else if (value < 0.4) {
          level = table.LOW;
       }
-      else if (value < 0.6) {
+      else if (value < 0.65) {
          level = table.MEDIUM;
       }
-      else if (value < 0.8) {
+      else if (value < 0.9) {
          level = table.HIGH;
       }
 
@@ -774,6 +776,9 @@ App.StonehearthFarmView.reopen({
          return table.LOW;
       }
       else if (affinity.max && value > affinity.max) {
+         return table.EXCESS;
+      }
+		else if (affinity.max && value == affinity.max) {
          return table.VERY_HIGH;
       }
       else if (affinity.max) {
