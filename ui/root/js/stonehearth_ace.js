@@ -111,16 +111,11 @@ var stonehearth_ace = {
       radiant.each(entityTitles, function(title, rank) {
          var lookups = availableTitles[title];
          if (lookups && lookups.ranks) {
-            var titleInfo = {
-               ordinal: lookups.ordinal,
-               display_name: lookups.display_name,
-               description: lookups.description
-            };
+            var ranksArr = [];
             radiant.each(lookups.ranks, function(_, rank_data) {
                if (rank_data.rank <= rank) {
-                  titlesArr.push({
+                  ranksArr.push({
                      key: title + '|' + rank_data.rank,
-                     titleInfo: titleInfo,
                      title: title,
                      rank: rank_data.rank,
                      display_name: entityName + rank_data.display_name,
@@ -128,8 +123,25 @@ var stonehearth_ace = {
                   });
                }
             });
+            
+            if (ranksArr.length > 0) {
+               ranksArr.sort(function(a, b) {
+                  return a.rank - b.rank;
+               });
+
+               titlesArr.push({
+                  ordinal: lookups.ordinal || 999,
+                  display_name: lookups.display_name,
+                  description: lookups.description,
+                  ranks: ranksArr
+               });
+            }
          }
       });
+      titlesArr.sort(function(a, b) {
+         return a.ordinal - b.ordinal;
+      })
+
       return titlesArr;
    },
 
@@ -144,11 +156,17 @@ var stonehearth_ace = {
          var titlesArr = stonehearth_ace.getTitlesList(availableTitles, entityTitles, entityName);
 
          if (titlesArr.length > 0) {
+            var titleRanks = [];
+
             // insert the "none" option
-            titlesArr.splice(0, 0, {
+            titleRanks.push({
                key: 'none',
                display_name: entityName,
                description: availableTitles.none && availableTitles.none.description || 'i18n(stonehearth_ace:data.population.ascendancy.titles.none.description)'
+            });
+
+            radiant.each(titlesArr, function(_, titleData) {
+               titleRanks = titleRanks.concat(titleData.ranks);
             });
 
             var onChanged = function (key, value) {
@@ -160,10 +178,10 @@ var stonehearth_ace = {
                App.guiHelper.addTooltip(div, value.description, value.display_name);
             };
 
-            var result = App.guiHelper.createCustomSelector('titleSelection', titlesArr, onChanged, {listOnly: true, tooltipFn: tooltipFn});
+            var result = App.guiHelper.createCustomSelector('titleSelection', titleRanks, onChanged, {listOnly: true, tooltipFn: tooltipFn});
             // now we just need to properly position the list and display it
             stonehearth_ace._titleListContainer = result.container;
-            result.titlesArr = titlesArr;
+            result.titlesArr = titleRanks;
             return result;
          }
       }

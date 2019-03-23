@@ -2630,6 +2630,7 @@
       ],
       "js": [
          "file(ui/root/js/root_view.js)",
+         "file(ui/root/js/root_controller.js)",
          "file(ui/shell/settings/settings.js)",
          "file(ui/game/show_workshop/show_team_workshop.js)",
          "file(ui/game/widgets/terrain_vision/terrain_vision.js)",
@@ -2642,7 +2643,6 @@
          "file(ui/game/modes/zones_mode/farm/farm.js)",
          "file(ui/game/modes/zones_mode/pasture/pasture.js)",
          "file(ui/game/modes/military_mode/military_mode.js)",
-         "file(ui/game/save_view/save_view.js)",
          "file(ui/game/town/inventory_tracker.js)",
          "file(ui/game/task_manager/task_manager.js)",
          "file(ui/game/component_info/component_info.js)",
@@ -2653,7 +2653,8 @@
          "file(ui/root/js/helpers.js)",
          "file(ui/game/citizens/citizens.js)",
          "file(ui/game/character_sheets/citizen_character_sheet/citizen_character_sheet.js)",
-         "file(ui/game/bulletin/bulletin_dialog/achievement_acquired_bulletin_dialog/achievement_acquired_bulletin_dialog.js)"
+         "file(ui/game/bulletin/bulletin_dialog/achievement_acquired_bulletin_dialog/achievement_acquired_bulletin_dialog.js)",
+         "file(ui/game/save_view/save_view.js)"
       ],
       "less": [
          "file(ui/shell/settings/settings.less)",

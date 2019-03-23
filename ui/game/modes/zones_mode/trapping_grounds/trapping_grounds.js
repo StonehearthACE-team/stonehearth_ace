@@ -1,4 +1,11 @@
 App.StonehearthTrappingGroundsView.reopen({
+   didInsertElement: function() {
+      var self = this;
+      self._super();
+
+      self._trappingGroundsWildernessLevelChange();
+   },
+
    _trappingGroundsWildernessLevelChange: function() {
       var self = this;
       var currentWildernessLevel = self.get('model.stonehearth:trapping_grounds.wilderness_level');
@@ -14,10 +21,17 @@ App.StonehearthTrappingGroundsView.reopen({
       self.set('currentWildernessLevel', currentWildernessLevel);
    }.observes('model.stonehearth:trapping_grounds.wilderness_level'),
 
-   init: function() {
-      var self = this;
-      self._super();
-
-      self._trappingGroundsWildernessLevelChange();
-   },
+   _updateTooltip: function() {
+      var trappingGroundsData = this.get('currentTrappingGroundsData');
+      var trappingGroundsTypeImage = this.$('#trappingGroundsTypeImage');
+      if (trappingGroundsData && trappingGroundsTypeImage) {
+         if (trappingGroundsTypeImage.hasClass('tooltipstered')) {
+            trappingGroundsTypeImage.tooltipster('destroy');
+         }
+         trappingGroundsTypeImage.tooltipster({
+            content: $('<div class=detailedTooltip><h2>' + i18n.t(trappingGroundsData.name) + '</h2>'
+                        + i18n.t(trappingGroundsData.description) + '</div>')
+         });
+      }
+   }.observes('currentTrappingGroundsData')
 });

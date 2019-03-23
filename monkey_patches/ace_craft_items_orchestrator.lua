@@ -1,4 +1,5 @@
 local CraftItemsOrchestrator = require 'stonehearth.services.server.town.orchestrators.craft_items_orchestrator'
+local constants = require 'stonehearth.constants'
 local log = radiant.log.create_logger('crafter'):set_prefix('craft_items_orchestrator')
 
 local AceCraftItemsOrchestrator = class()
@@ -181,7 +182,7 @@ function AceCraftItemsOrchestrator:_show_unreachable_ingredients_notification(ev
                                        :set_active_duration(constants.crafting.UNREACHABLE_INGREDIENT_NOTIFICATION_DURATION)
                                        :add_i18n_data('citizen_custom_name', radiant.entities.get_custom_name(self._crafter))
                                        :add_i18n_data('citizen_display_name', radiant.entities.get_display_name(self._crafter))
-                                       :add_i18n_data('citizen_custom_data', radiant.entities.get_custom_data(self._entity))
+                                       :add_i18n_data('citizen_custom_data', radiant.entities.get_custom_data(self._crafter))
                                        :add_i18n_data('crafting_order', event_args.recipe_name)
 
             -- Set up a timer to clear the bulletin from our list after a day
