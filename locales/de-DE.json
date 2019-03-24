@@ -528,20 +528,24 @@
                   "100_description": "Hat 100 Goblins getötet! Vielleicht sollten sie/er in Therapie gehen und ihre/seine Prioritäten überprüfen."
                },
                "goblin_killer_item": {
-                  "1_display_name": " der Goblintöter",
+                  "display_name": "Goblintöter/in",
+                  "description": "Durch das Töten von Kobolden verdient.",
+                  "1_display_name": " die/der Goblintöter/in",
                   "1_description": "Hat einen Goblin getötet!",
-                  "5_display_name": " der Goblinschlächter",
+                  "5_display_name": " die/der Goblinschlächter/in",
                   "5_description": "Hat 5 Goblins getötet! Dort zieht sie/er wieder vondanen zum töten!",
-                  "10_display_name": " der Goblindezimatorr",
+                  "10_display_name": " die/der Goblindezimatorr/in",
                   "10_description": "Hat 10 Goblins getötet! Sie/Er ist  wirklich gut darin!",
                   "20_display_name": ", Fluch der Goblins",
                   "20_description": "Hat 20 Goblins getötet! Das ist viel!",
                   "50_display_name": ", Zerstörer der Goblins",
                   "50_description": "Hat 50 Goblins getötet! Sie/Er ist nicht zu stoppen, zumindest durch Goblins!",
-                  "100_display_name": ", Goblinfresser",
+                  "100_display_name": ", Goblinfresser/in",
                   "100_description": "at 100 Goblins getötet! Ist ihr/sein Blutrausch endlich besänftigt?"
                },
                "defender": {
+                  "display_name": "Verteidiger/in",
+                  "description": "Verdient durch Tötungshilfen (direkt im Kampf oder in der Nähe von getöteten Feinden).",
                   "10_display_name": ", Verteidiger/in",
                   "10_description": "Verteidigte die Stadt vor 10 Feinden!",
                   "50_display_name": ", Große/r Beschützer/in",
@@ -554,7 +558,9 @@
                   "1000_description": "Verteidigte die Stadt vor 1000 Feinden! Vielleicht ist ein diplomatischer Ansatz angebracht.."
                },
                "prolific_crafter": {
-                  "100_display_name": ", erfolgreicher Handwerker",
+                  "display_name": "Erfolgreiche/r Handwerker/in",
+                  "description": "Durch das Herstellen von vielen Gegenständen verdient.",
+                  "100_display_name": ", erfolgreiche/r Handwerker/in",
                   "100_description": "Sie/Er hat 100 Gegenstände hergestellt!",
                   "200_display_name": " der Multi-Handwerker",
                   "200_description": "Sie/Er hat 200 Gegenstände hergestellt!",
@@ -564,7 +570,9 @@
                   "1000_description": "Sie/Er hat 1000 Gegenstände hergestellt! Halt lieber eine schöne Rente bereit."
                },
                "excellent_crafter": {
-                  "10_display_name": ", ausgezeichneter Handwerker",
+                  "display_name": "Ausgezeichnete/r Handwerker/in",
+                  "description": "Durch die Herstellung von Gegenständen von hervorragender Qualität verident (feine Qualität ist nicht gut genug, und Meisterwerke werden separat verfolgt).",
+                  "10_display_name": ", ausgezeichnete/r Handwerker/in",
                   "10_description": "Sie/Er hat 10 Gegenstände von exzellenter Qualität hergestellt!",
                   "25_display_name": ", außergewöhnlich Handwerker",
                   "25_description": "Sie/Er hat 25 Gegenstände von exzellenter Qualität hergestellt!",
@@ -572,12 +580,16 @@
                   "100_description": "Sie/Er hat 100 Gegenstände von exzellenter Qualität hergestellt!"
                },
                "master_crafter": {
-                  "1_display_name": ", Meisterhandwerker",
+                  "display_name": "Meisterhandwerker/in",
+                  "description": "Durch das Herstellung von Gegenständen meisterhafter Qualität verdient.",
+                  "1_display_name": ", Meisterhandwerker/in",
                   "1_description": "Sie/Er hat einen Gegenstand von meisterlicher Qualität hergestellt! Beeindruckend!",
                   "10_display_name": " die/der Meister/in der Qualität",
                   "10_description": "Sie/Er hat 10 Gegenstände von meisterlicher Qualität hergestellt! Unglaublich!"
                },
                "starving": {
+                  "display_name": "Hungrige",
+                  "description": "Wird verdient durch viel Zeit hungrig zu verbringen.",
                   "1_display_name": " die/der Hungrige",
                   "1_description": "Sie/Er hat 4 Stunden gehungert!",
                   "2_display_name": " die/der Ausgehungerten",
@@ -586,11 +598,13 @@
                   "3_description": "Sie/Er hungert seit 10 Tagen! Vielleicht sollte das Sammeln von Nahrungsmitteln etwas mehr Priorität haben."
                },
                "incapacitated": {
+                  "display_name": "Lahmgelegt",
+                  "description": "Durch mehrmaliges Lahm gelegt werden verdient.",
                   "1_display_name": " die/der Anfällige",
                   "1_description": "Sie/Er ist wurde niedergeschlagen, ist wieder aufgestanden und wurde niedergeschlagen worden.",
                   "2_display_name": " die/der Narbige",
                   "2_description": "Sie/Er wurde 5 Mal außer Gefecht gesetzt! Kann man sie/ihn überhaupt töten?",
-                  "3_display_name": " die/der Unsterbliche",
+                  "3_display_name": " die/der Fast-Kopflose",
                   "3_description": "Sie/Er wurde 10 Mal außer Gefecht gesetzt! Wird Sie/Er jemals lernen, lebensbedrohliche Situationen zu vermeiden?"
                }
             }
@@ -1121,8 +1135,13 @@
       "herbalist": {
          "recipes": {
             "refined_fungi_name": "Pilzverfeinerung",
-	    "refined_seeds_name": "Lokale Samen für die Landwirtschaft",
-	    "farming_enhancements_name": "Landwirtschaftsverbesserungen",
+	    "refined_seeds_name": "Regionale Samen",
+	    "farming_enhancements_name": "Landwirtschaftliche Verbesserungen & Samen",
+            "daisy_transmute_recipe": {
+               "recipe_name": "Gänseblümchensamen (x3)",
+               "description": "Trennt die Samen von den Kräutern. Gänseblümchen breiten sich nach dem Einpflanzen aus.",
+               "flavor": "Nur eine geschickte Hand kann die schwächeren Samen ernten, aber die Kräuter gehen dabei verloren."
+            },
             "moonbell_transmute_recipe": {
                "recipe_name": "Mondglocken Samen (x3)",
                "description": "Trennt Samen von den Kräutern",
@@ -1198,15 +1217,30 @@
                "description": "Zähme Glockenblumen und lerne wie man sie bewirtschaftet.",
                "flavor": "Die Kiste muss vor dem Einsatz auf dem Boden abgestellt werden"
             },
+            "brightbell_seeds_2_recipe": {
+               "recipe_name": "Glockenblumensamen",
+               "description": "Handele oder Verschenke, damit andere Zivilisation Glockenblumen anbauen können!",
+               "flavor": "Diese Feldfrucht ist deinen Farmern bereits standardmäßig bekannt"
+            },
             "silkweed_seeds_recipe": {
                "recipe_name": "Seidenpflanzensamen",
                "description": "Zähme Seidenpflanzen und lerne wie man sie bewirtschaftet.",
                "flavor": "Die Kiste muss vor dem Einsatz auf dem Boden abgestellt werden"
             },
+            "silkweed_seeds_2_recipe": {
+               "recipe_name": "Seidenpflanzensamen",
+               "description": "Handele oder Verschenke, damit andere Zivilisation Seidenpflanzen anbauen können!",
+               "flavor": "Diese Feldfrucht ist deinen Farmern bereits standardmäßig bekannt"
+            },
             "frostsnap_seeds_recipe": {
                "recipe_name": "Eisblumensamen",
                "description": "Zähme Eisblumen und lerne wie man sie bewirtschaftet.",
                "flavor": "Die Kiste muss vor dem Einsatz auf dem Boden abgestellt werden"
+            },
+            "frostsnap_seeds_2_recipe": {
+               "recipe_name": "Eisblumensamen",
+               "description": "Handele oder Verschenke, damit andere Zivilisation Eisblumen anbauen können!",
+               "flavor": "Diese Feldfrucht ist deinen Farmern bereits standardmäßig bekannt"
             },
             "acacia_tree_seeds_recipe": {
                "recipe_name": "Akaziensamen",
@@ -1223,6 +1257,11 @@
                "description": "Zähme Kaktusblumen und lerne wie man sie bewirtschaftet.",
                "flavor": "Die Kiste muss vor dem Einsatz auf dem Boden abgestellt werden"
             },
+            "cactus_flower_seeds_2_recipe": {
+               "recipe_name": "Kaktusblumensamen",
+               "description": "Handele oder Verschenke, damit andere Zivilisation Kaktusblumen anbauen können!",
+               "flavor": "Diese Feldfrucht ist deinen Farmern bereits standardmäßig bekannt"
+            },
             "arctic_pine_tree_seeds_recipe": {
                "recipe_name": "Arktische Kiefernzapfen",
                "description": "Zähme arktische Kiefern und lerne wie man sie bewirtschaftet.",
@@ -1238,10 +1277,20 @@
                "description": "Zähme Veilchen und lerne wie man sie bewirtschaftet.",
                "flavor": "Die Kiste muss vor dem Einsatz auf dem Boden abgestellt werden"
             },
+            "violet_seeds_2_recipe": {
+               "recipe_name": "Veilchensamen",
+               "description": "Handele oder Verschenke, damit andere Zivilisation Veilchen anbauen können!",
+               "flavor": "Diese Feldfrucht ist deinen Farmern bereits standardmäßig bekannt"
+            },
             "snow_poppy_seeds_recipe": {
                "recipe_name": "Schneemohnsamen",
                "description": "Zähme Schneemohn und lerne wie man sie bewirtschaftet.",
                "flavor": "Die Kiste muss vor dem Einsatz auf dem Boden abgestellt werden"
+            },
+            "snow_poppy_seeds_2_recipe": {
+               "recipe_name": "Schneemohnsamen",
+               "description": "Handele oder Verschenke, damit andere Zivilisation Schneemohnblumen anbauen können!",
+               "flavor": "Diese Feldfrucht ist deinen Farmern bereits standardmäßig bekannt"
             },
             "birch_tree_seeds_recipe": {
                "recipe_name": "Birken-Kätzchen",
@@ -1263,15 +1312,75 @@
                "description": "Zähme Mondglockenund lerne wie man sie bewirtschaftet.",
                "flavor": "Die Kiste muss vor dem Einsatz auf dem Boden abgestellt werden"
             },
+            "moonbell_seeds_2_recipe": {
+               "recipe_name": "Mondglockensamen",
+               "description": "Handele oder Verschenke, damit andere Zivilisation Mondglockenblumen anbauen können!",
+               "flavor": "Diese Feldfrucht ist deinen Farmern bereits standardmäßig bekannt"
+            },
             "cotton_seeds_recipe": {
                "recipe_name": "Baumwollsamen",
                "description": "Zähme Baumwollpflanzen und lerne wie man sie bewirtschaftet.",
                "flavor": "Die Kiste muss vor dem Einsatz auf dem Boden abgestellt werden"
             },
+            "cotton_seeds_2_recipe": {
+               "recipe_name": "Baumwollsamen",
+               "description": "Handele oder Verschenke, damit andere Zivilisation Baumwolle anbauen können!",
+               "flavor": "Diese Feldfrucht ist deinen Farmern bereits standardmäßig bekannt"
+            },
             "marblesprout_seeds_recipe": {
                "recipe_name": "Marmorsprossensamen",
                "description": "Zähme Marmorsprossen und lerne wie man sie bewirtschaftet.",
                "flavor": "Die Kiste muss vor dem Einsatz auf dem Boden abgestellt werden"
+            },
+            "marblesprout_seeds_2_recipe": {
+               "recipe_name": "Marmorsprossensamen",
+               "description": "Handele oder Verschenke, damit andere Zivilisation Marmorsprossen anbauen können!",
+               "flavor": "Diese Feldfrucht ist deinen Farmern bereits standardmäßig bekannt"
+            },
+            "turnip_seeds_recipe": {
+               "recipe_name": "Rübensamen",
+               "description": "Handele oder Verschneke, damit andere Zivilisation Rüben anbauen können!",
+               "flavor": "Diese Feldfrucht ist deinen Farmern bereits standardmäßig bekannt"
+            },
+            "carrot_seeds_recipe": {
+               "recipe_name": "Karottensamen",
+               "description": "Handele oder Verschenke, damit andere Zivilisation Karotten anbauen können!",
+               "flavor": "Diese Feldfrucht ist deinen Farmern bereits standardmäßig bekannt"
+            },
+            "pumpkin_seeds_recipe": {
+               "recipe_name": "Kürbissamen",
+               "description": "Handele oder Verschenke, damit andere Zivilisation Kürbisse anbauen können!",
+               "flavor": "Diese Feldfrucht ist deinen Farmern bereits standardmäßig bekannt"
+            },
+            "corn_seeds_recipe": {
+               "recipe_name": "Maissamen",
+               "description": "Handele oder Verschenke, damit andere Zivilisation Mais anbauen können!",
+               "flavor": "Diese Feldfrucht ist deinen Farmern bereits standardmäßig bekannt"
+            },
+            "wheat_seeds_recipe": {
+               "recipe_name": "Weizenkörner",
+               "description": "Handele oder Verschenke, damit andere Zivilisation Weizen anbauen können",
+               "flavor": "Diese Feldfrucht ist deinen Farmern bereits standardmäßig bekannt"
+            },
+            "paddy_seeds_recipe": {
+               "recipe_name": "Reissamen",
+               "description": "Handele oder Verschenke, damit andere Zivilisation Reis anbauen können!",
+               "flavor": "Diese Feldfrucht ist deinen Farmern bereits standardmäßig bekannt"
+            },
+            "golden_gourd_seeds_recipe": {
+               "recipe_name": "Goldener Kürbissamen",
+               "description": "Handele oder Verschenke, damit andere Zivilisation goldene Kürbisse anbauen können",
+               "flavor": "Diese Feldfrucht ist deinen Farmern bereits standardmäßig bekannt"
+            },
+            "watermelon_seeds_recipe": {
+               "recipe_name": "Wassermelonensamen",
+               "description": "Handele oder Verschenke, damit andere Zivilisation Wassermelonen anbauen können",
+               "flavor": "Diese Feldfrucht ist deinen Farmern bereits standardmäßig bekannt"
+            },
+            "sweet_potato_seeds_recipe": {
+               "recipe_name": "Süßkartoffelsamen",
+               "description": "Handele oder Verschenke, damit andere Zivilisation Süßkartoffeln anbauen können",
+               "flavor": "Diese Feldfrucht ist deinen Farmern bereits standardmäßig bekannt"
             },
             "fertilizer_recipe": {
                "recipe_name": "Einfacher Dünger",
@@ -1294,8 +1403,8 @@
                "flavor": "Jeder Sack kann 20 Früchte düngen"
             },
             "plant_glass": {
-               "recipe_name": "Blumen in einer Vase",
-               "description": "Eine kleine Sache, um dein Zuhause gemütlich zu machen.",
+               "recipe_name": "Sanfte Blumenvase",
+               "description": "Eine kleine Sache, um ein Zuhause gemütlicher zu machen.",
                "flavor": "In diese Vase werden buchstäblich handverlesene Blumen gestellt. Einige Blüten sind vielleicht auffälliger als andere *Zwinker zwinker*."
             }
          },
@@ -2742,7 +2851,9 @@
             },
             "level_4_data": {
                "perk_000_name": "Ertragreiche Ernte (Upgrade)",
-               "perk_000_description": "Der Farmer erzielt mit jeder Pflanze 50% mehr Ertrag."
+               "perk_000_description": "Der Farmer erzielt mit jeder Pflanze 50% mehr Ertrag.",
+               "perk_001_name": "Jobmöglichkeit",
+               "perk_001_description": "Die ganze Zeit mit Feldfrüchten und Pflanzen hat den Farmer veranlasst über die Möglichkeiten nachzudenken aufregendere und interaktivere Wesen zu betreuen."
             },
             "level_6_data": {
                "perk_000_name": "Ertragreiche Ernte (Max)",
@@ -2808,6 +2919,14 @@
             "birch_tree_seeds": {
                "display_name": "Birken-Kätzchen",
                "description": "Lerne Birken anzubauen."
+            },
+            "corn_seeds": {
+               "display_name": "Maissamen",
+               "description": "Lerne Mais anzubauen."
+            },
+            "paddy_seeds": {
+               "display_name": "Raissamen",
+               "description": "Lerne Reis anzubauen."
             }
          },
          "fertilizer": {
@@ -7117,7 +7236,8 @@
             "grain_flour_resource_name": "Irgendein Mehl",
             "any_pet_food_resource_name": "Irgendein Tierfutter",
             "milk_resource_name": "Irgendeine Milch",
-            "butter_resource_name": "Irgendeine Butter"
+            "butter_resource_name": "Irgendeine Butter",
+            "strong_bone_resource_name": "Starke Knochen"
          }
       },
       "hotkeys": {
@@ -7189,7 +7309,9 @@
          },
          "titles": {
             "display_name": "Titel",
-            "description": "Dieser Einehit kann ein Titel gegeben werden, der nach ihrem Namen angezeigt wird. Klicke mit der rechten Maustaste auf den Namen im Einheitenfenster oder auf die Einheitenübersicht (falls vorhanden), um einen anderen Titel auszuwählen."
+            "description": "Dieser Einehit kann ein Titel gegeben werden, der nach ihrem Namen angezeigt wird. Klicke mit der rechten Maustaste auf den Namen im Einheitenfenster oder auf die Einheitenübersicht (falls vorhanden), um einen anderen Titel auszuwählen.",
+            "all_earned_titles": "Die folgenden Titel wurden verdient:",
+            "unattained": "Dies ist der nächste Rang, der noch nicht erreicht wurde."
          },
          "transform": {
             "display_name": "transformiere",
