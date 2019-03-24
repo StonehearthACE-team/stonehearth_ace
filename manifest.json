@@ -463,6 +463,7 @@
       "effects:transform_mason_overlay_effect": "file(data/effects/transform_mason_overlay_effect/transform_mason_overlay_effect.json)",
       "effects:transform_worker_upgrade_overlay_effect": "file(data/effects/transform_worker_upgrade_overlay_effect/transform_worker_upgrade_overlay_effect.json)",
       "effects:weather:cold_breath": "file(data/effects/weather/cold_breath.json)",
+      "effects:weather:soaked": "file(data/effects/weather/soaked.json)",
       "effects:wind_chilly:breeze": "file(data/effects/wind_chilly/wind_chilly_breeze_effect.json)",
       "effects:wind_chilly:breeze_swirl": "file(data/effects/wind_chilly/wind_chilly_breeze_swirl_effect.json)",
       "extractors:underfield_layer": "file(data/interactions/extractors/underfield_layer_extractor.lua)",
@@ -2082,7 +2083,7 @@
       "stonehearth:ai_pack:farming": "file(ai/packs/farming_ai_pack.json)",
       "stonehearth:ai_pack:shepherding": "file(ai/packs/shepherding_ai_pack.json)",
       "stonehearth/jobs/carpenter/recipes/blue_market_stall_recipe.json": "file(jobs/carpenter/recipes/blue_market_stall_recipe.json)",
-      "stonehearth/jobs/worker/mixins/worker_outfit_2.json": "file(jobs/worker/mixins/worker_outfit_2.json)",
+      "stonehearth/jobs/worker/mixins/worker_outfit_2.json": "file(jobs/worker/worker_outfit_2/worker_outfit_2.json)",
       "stonehearth/entities/refined/golem_backpack/golem_backpack.json": "file(entities/refined/golem_backpack/golem_backpack.json)",
       "stonehearth/entities/refined/golem_pick/golem_pick.json": "file(entities/refined/golem_pick/golem_pick.json)",
       "stonehearth/entities/crops/acacia_tree_crop/acacia_tree_crop.json": "file(entities/crops/acacia_tree_crop/acacia_tree_crop.json)",
@@ -2135,7 +2136,8 @@
       "stonehearth:buffs:shepherd:stenched": "file(data/buffs/shepherding/stenched_shepherd_buff.json)",
       "stonehearth:buffs:incapacitated": "file(data/buffs/incapacitated/incapacitated_buff.json)",
       "stonehearth:buffs:starving": "file(data/buffs/starving/starving_buff.json)",
-      "stonehearth:scenarios:static:terrain:iron_vein": "file(scenarios/static/terrain/iron_vein/iron_vein.json)"
+      "stonehearth:scenarios:static:terrain:iron_vein": "file(scenarios/static/terrain/iron_vein/iron_vein.json)",
+		"stonehearth:buffs:sleeping": "file(data/buffs/sleeping/sleeping_buff.json)"
    },
    "overrides": {
       "stonehearth/data/rigs/entities/critters/sheep/animations/idle_eat.json": "file(data/rigs/entities/critters/sheep/animations/idle_eat.json)",
