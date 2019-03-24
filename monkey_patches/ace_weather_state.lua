@@ -77,7 +77,7 @@ function AceWeatherState:_apply_buff()
    end
 end
 
-function AceWeatherState:get_unsheltered_animal_debuff()
+function AceWeatherState:get_unsheltered_animal_debuffs()
    return self._sv.unsheltered_animal_debuff
 end
 

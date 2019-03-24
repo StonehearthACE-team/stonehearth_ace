@@ -47,25 +47,30 @@ function PastureAnimalSleepInBedInBadWeather:_rethink()
 
    -- Make the decision.
    local weather = stonehearth.weather:get_current_weather()
-   local debuff = weather:get_unsheltered_animal_debuff()
-   local json = debuff and radiant.resources.load_json(debuff)
-   if json and json.axis == 'debuff' then
-      -- set a timer to keep retrying in case they get up to eat or something else
-      if not self._recheck_timer then
-         self._recheck_timer = stonehearth.calendar:set_interval("bad weather bed timer", '10m', function()
-            self:_rethink()
-         end)
+   local debuffs = weather:get_unsheltered_animal_debuffs()
+   if debuffs then
+      for _, debuff in ipairs(debuffs) do
+         local json = radiant.resources.load_json(debuff)
+         if json and json.axis == 'debuff' then
+            -- set a timer to keep retrying in case they get up to eat or something else
+            if not self._recheck_timer then
+               self._recheck_timer = stonehearth.calendar:set_interval("bad weather bed timer", '10m', function()
+                  self:_rethink()
+               end)
+            end
+            if not self._ready then
+               self._ready = true
+               self._ai:set_think_output()
+            end
+            return
+         end
       end
-      if not self._ready then
-         self._ready = true
-         self._ai:set_think_output()
-      end
-   else
-      self:_destroy_recheck_timer()
-      if self._ready then
-         self._ready = false
-         self._ai:clear_think_output()
-      end
+   end
+
+   self:_destroy_recheck_timer()
+   if self._ready then
+      self._ready = false
+      self._ai:clear_think_output()
    end
 end
 
