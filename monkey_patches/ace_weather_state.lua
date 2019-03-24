@@ -29,6 +29,14 @@ function AceWeatherState:_load_ace_values()
    self._sv.sunlight = self._sv._base_sunlight
    self._sv._base_humidity = json.humidity or 0
    self._sv.humidity = self._sv._base_humidity
+   
+   if self._sv.unsheltered_debuff and type(self._sv.unsheltered_debuff) == 'string' then
+      self._sv.unsheltered_debuff = { self._sv.unsheltered_debuff }
+   end
+   if self._sv.unsheltered_animal_debuff and type(self._sv.unsheltered_animal_debuff) == 'string' then
+      self._sv.unsheltered_animal_debuff = { self._sv.unsheltered_animal_debuff }
+   end
+
    self.__saved_variables:mark_changed()
 end
 
