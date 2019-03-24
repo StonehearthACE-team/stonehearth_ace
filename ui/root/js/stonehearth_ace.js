@@ -106,18 +106,20 @@ var stonehearth_ace = {
       }
    },
 
-   getTitlesList: function(availableTitles, entityTitles, entityName) {
+   getTitlesList: function(availableTitles, entityTitles, entityName, includeNextTitles) {
       var titlesArr = [];
       radiant.each(entityTitles, function(title, rank) {
+         var lastRank = rank + (includeNextTitles ? 1 : 0);
          var lookups = availableTitles[title];
          if (lookups && lookups.ranks) {
             var ranksArr = [];
             radiant.each(lookups.ranks, function(_, rank_data) {
-               if (rank_data.rank <= rank) {
+               if (rank_data.rank <= lastRank) {
                   ranksArr.push({
                      key: title + '|' + rank_data.rank,
                      title: title,
                      rank: rank_data.rank,
+                     attained: rank_data.rank <= rank,
                      display_name: entityName + rank_data.display_name,
                      description: rank_data.description
                   });

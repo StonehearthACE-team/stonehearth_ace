@@ -67,11 +67,12 @@ end
 
 function TitlesComponent:_update_component_info()
    -- what's the best way to do this? probably offload the work (building table of all the ranks' i18n data) onto the client if possible
-   -- comp_info:set_component_detail('stonehearth_ace:titles', 'titles', {
-   --       type = 'item_list',
-   --       items = self._sv.titles,
-   --       header = 'stonehearth_ace:component_info.stonehearth_ace.titles.all_earned_titles'
-   --    }, { item_count = #self._sv.titles })
+   self._entity:add_component('stonehearth_ace:component_info'):set_component_detail('stonehearth_ace:titles', 'titles', {
+         type = 'title_list',
+         titles = self._sv.titles,
+         titles_json = self._sv.titles_json,
+         header = 'stonehearth_ace:component_info.stonehearth_ace.titles.all_earned_titles'
+      }, {})
 end
 
 function TitlesComponent:_select_new_title(title, rank)

@@ -514,6 +514,8 @@
                   "description": "No title necessary."
                },
                "goblin_killer": {
+                  "display_name": "Goblin Killer",
+                  "description": "Gained by killing goblins.",
                   "1_display_name": " the Goblin Killer",
                   "1_description": "They killed a goblin!",
                   "5_display_name": " the Goblin Slayer",
@@ -528,6 +530,8 @@
                   "100_description": "They killed 100 goblins! Perhaps they should be in therapy, reexamining their priorities."
                },
                "goblin_killer_item": {
+                  "display_name": "Goblin Killer",
+                  "description": "Gained by killing goblins.",
                   "1_display_name": " the Goblin Killer",
                   "1_description": "It killed a goblin!",
                   "5_display_name": " the Goblin Slayer",
@@ -542,6 +546,8 @@
                   "100_description": "It killed 100 goblins! Has its bloodlust finally been sated?"
                },
                "defender": {
+                  "display_name": "Defender",
+                  "description": "Gained by getting kill assists (being involved in combat directly with or near killed enemies).",
                   "10_display_name": ", Defender",
                   "10_description": "They defended the town from 10 enemies!",
                   "50_display_name": ", Great Protector",
@@ -554,6 +560,8 @@
                   "1000_description": "They defended the town from 1000 enemies! Perhaps a more diplomatic approach is warranted."
                },
                "prolific_crafter": {
+                  "display_name": "Prolific Crafter",
+                  "description": "Gained by crafting a lot of items.",
                   "100_display_name": ", Prolific Crafter",
                   "100_description": "They crafted 100 items!",
                   "200_display_name": " the Multi-Crafter",
@@ -564,6 +572,8 @@
                   "1000_description": "They crafted 1000 items! They'd better have a nice pension lined up."
                },
                "excellent_crafter": {
+                  "display_name": "Excellent Crafter",
+                  "description": "Gained by crafting items of excellent quality (fine aren't good enough, and masterwork are tracked separately).",
                   "10_display_name": ", Excellent Crafter",
                   "10_description": "They crafted 10 excellent quality items!",
                   "25_display_name": ", Extraordinary Crafter",
@@ -572,12 +582,16 @@
                   "100_description": "They crafted 100 excellent quality items!"
                },
                "master_crafter": {
+                  "display_name": "Master Crafter",
+                  "description": "Gained by crafting items of masterwork quality.",
                   "1_display_name": ", Master Crafter",
                   "1_description": "They crafted a masterwork quality item! Amazing!",
                   "10_display_name": " the Master of Quality",
                   "10_description": "They crafted 10 masterwork quality items! Incredible!"
                },
                "starving": {
+                  "display_name": "Starving",
+                  "description": "Gained by spending a lot of time being very hungry.",
                   "1_display_name": " the Hungry",
                   "1_description": "They've spent 4 hours starving!",
                   "2_display_name": " the Famished",
@@ -586,11 +600,13 @@
                   "3_description": "They've starved for 10 days! Perhaps food gathering should prioritized slightly more."
                },
                "incapacitated": {
+                  "display_name": "Incapacitated",
+                  "description": "Gained by becoming incapacitated multiple times.",
                   "1_display_name": " the Prone",
                   "1_description": "They've been knocked down and gotten up and knocked back down again.",
                   "2_display_name": " the Scarred",
                   "2_description": "They've been incapacitated 5 times! Is it even possible to kill them?",
-                  "3_display_name": " the Immortal",
+                  "3_display_name": " the Nearly-Headless",
                   "3_description": "They've been incapacitated 10 times! Will they ever learn to avoid life-threatening situations?"
                }
             }
@@ -7293,7 +7309,9 @@
          },
          "titles": {
             "display_name": "Titles",
-            "description": "This entity can be given a title that will show up after their name. Right-click their name in the selected unit window or their character sheet (if they have one) to select a different title."
+            "description": "This entity can be given a title that will show up after their name. Right-click their name in the selected unit window or their character sheet (if they have one) to select a different title.",
+            "all_earned_titles": "The following titles have been earned:",
+            "unattained": "This is the next rank that hasn't yet been attained."
          },
          "transform": {
             "display_name": "Transform",

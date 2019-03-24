@@ -330,41 +330,59 @@ App.ComponentInfoView = App.View.extend({
                content += i18n.t(detail.header, details.i18n_data);
             }
 
-            content += '<div id="titlesContent"></div>';
+            content += '<div id="titlesContent">';
+
+            var isWaitingForCallback = false;
+
+            stonehearth_ace.loadAvailableTitles(detail.titles_json, function(allTitles) {
+               var titlesArr = stonehearth_ace.getTitlesList(allTitles, detail.titles, '', true)
+               var titlesContent = '';
+   
+               var descriptions = {};
+               radiant.each(titlesArr, function(_, titleData) {
+                  titlesContent += '<div class="specificTitle">';
+                  // for each title, offer name and description
+                  // then do <ul> for all the ranks (with gray/italic "next" rank at end [attained == false])
+                  // with tooltips of descriptions for each of the attained ranks (and they get to wonder about the "next" one!)
+                  titlesContent += `<span class="listHeader">${i18n.t(titleData.display_name)}: ${i18n.t(titleData.description)}</span>`;
+
+                  var list = '<ul class="titleList">';
+                  radiant.each(titleData.ranks, function(_, rankData) {
+                     descriptions[rankData.key] = rankData.description;
+                     list += `<li class="titleRank ${rankData.attained ? 'attained' : 'unattained'}" description-key="${rankData.key}">${i18n.t(rankData.display_name)}</li>`;
+                  });
+                  list += '</ul></div>';
+                  titlesContent += list;
+
+                  titlesContent += '</div>';
+               });
+
+               if (isWaitingForCallback) {
+                  self.$('#titlesContent').html(titlesContent);
+               }
+               else {
+                  content += titlesContent;
+               }
+
+               Ember.run.scheduleOnce('afterRender', self, function() {
+                  // don't give description tooltips for the unattained "next" ones
+                  self.$('.titleRank.attained').each(function() {
+                     App.guiHelper.addTooltip($(this), i18n.t(descriptions[$(this).attr('description-key')]));
+                  });
+
+                  self.$('.titleRank.unattained').each(function() {
+                     App.guiHelper.addTooltip($(this), i18n.t('stonehearth_ace:component_info.stonehearth_ace.titles.unattained'));
+                  });
+               });
+            });
+
+            content += '</div>';
 
             if (detail.footer) {
                content += i18n.t(detail.footer, details.i18n_data);
             }
 
-            stonehearth_ace.loadAvailableTitles(detail.titles_json, function(allTitles) {
-               var titlesArr = stonehearth_ace.getTitlesList(allTitles, detail.titles, '')
-               var titlesContent = '';
-   
-               radiant.each(titlesArr, function(_, titleData) {
-                  titlesContent += `<div class="title">`;
-                  
-
-                  radiant.each(items, function(_, arrItem){
-                     var item = arrItem.item;
-                     var catalogData = App.catalog.getCatalogData(item.uri);
-                     if (catalogData) {
-                        titlesContent += `<div class="listItem"><span class="listItemText quality-${item.quality || 1}">`;
-                        if (catalogData.icon) {
-                           titlesContent += `<img class="inlineImg" src="${catalogData.icon}" />`
-                        }
-                        if (catalogData.display_name) {
-                           titlesContent += i18n.t(catalogData.display_name);
-                        }
-                        if (arrItem.count > 1) {
-                           titlesContent += `<span class="textValue"> (x${arrItem.count})</span>`;
-                        }
-                        titlesContent += '</span></div>'
-                     }
-                  });
-               });
-
-               self.$('#titlesContent').html(titlesContent);
-            });
+            isWaitingForCallback = true;
 
             return content;
       }

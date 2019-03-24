@@ -324,6 +324,7 @@ App.StonehearthUnitFrameView.reopen({
       }
 
       self.set('name_entity', name_entity);
+      self.notifyPropertyChange('name_entity');
       self.set('custom_name', custom_name);
       self.set('display_name', display_name);
       self.notifyPropertyChange('display_name');

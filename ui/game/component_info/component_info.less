@@ -75,6 +75,27 @@
                vertical-align: middle;
             }
          }
+
+         .specificTitle {
+            color: #ebebeb;
+            
+            //aron.lakatos' solution here: https://stackoverflow.com/questions/3200249/html-list-style-type-dash
+            ul.titleList {
+               margin: 0;
+               list-style-type: none;
+            }
+            ul.titleList > li {
+               text-indent: -5px;
+            }
+            ul.titleList > li:before {
+               content: "__";
+               text-indent: -5px;
+            }
+
+            .unattained {
+               color: #999999;
+            }
+         }
       }
    }
 
