@@ -32,6 +32,43 @@ function AceWeatherState:_load_ace_values()
    self.__saved_variables:mark_changed()
 end
 
+function AceWeatherState:_apply_buff()
+   local add_buff = function(entity, buff)
+      local location = radiant.entities.get_world_grid_location(entity)
+      if not location then
+         return
+      end
+      if stonehearth.terrain:is_sheltered(location) then
+         return
+      end
+      if self._sv.unsheltered_resistance_buff and radiant.entities.has_buff(entity, self._sv.unsheltered_resistance_buff) then
+         return
+      end
+      
+      radiant.entities.add_buff(entity, buff)
+   end
+
+   -- Citizen debuff
+   if self._sv.unsheltered_debuff then
+		for _, unsheltered_debuff in ipairs(self._sv.unsheltered_debuff) do
+			self:_for_each_player_character(function(citizen)
+            add_buff(citizen, unsheltered_debuff)
+         end)
+		end
+   end
+
+   -- Pasture animal debuff
+   if self._sv.unsheltered_animal_debuff then
+		for _, unsheltered_animal_debuff in ipairs(self._sv.unsheltered_animal_debuff) do
+			for player_id, _ in pairs(stonehearth.player:get_non_npc_players()) do
+				for _, animal in pairs(stonehearth.town:get_town(player_id):get_pasture_animals()) do
+					add_buff(animal, unsheltered_animal_debuff)
+				end
+			end
+		end
+   end
+end
+
 function AceWeatherState:get_unsheltered_animal_debuff()
    return self._sv.unsheltered_animal_debuff
 end

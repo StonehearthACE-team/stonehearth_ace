@@ -3,10 +3,15 @@
    "description": "i18n(stonehearth_ace:data.weather.windy.windy_chilly.description)",
    "icon": "file(windy_chilly.png)",
    "sky_settings": "stonehearth:sky_settings:windy",
-   "unsheltered_resistance_buff": "stonehearth:buffs:weather:cold_resist",
-   "unsheltered_debuff": "stonehearth_ace:buffs:weather:chilly",
+   "unsheltered_debuff": [
+      "stonehearth_ace:buffs:weather:chilly",
+      "stonehearth_ace:buffs:weather:cold_breath"
+   ],
+   "unsheltered_animal_debuff": [
+      "stonehearth_ace:buffs:weather:cold_breath"
+   ],
    "plant_growth_time_multiplier": 3,
-   "renderer": "stonehearth:weather_renderers:windy",
+   "renderer": "stonehearth_ace:weather_renderers:windy_chilly",
    "ambient_sound_key": "windy",
    "thoughts": [
       "stonehearth:thoughts:weather:windy_chilly_negative",

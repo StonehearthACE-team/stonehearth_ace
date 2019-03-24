@@ -4,8 +4,12 @@
    "icon": "file(sunny_hot.png)",
    "sky_settings": "stonehearth:sky_settings:sunny",
    "unsheltered_resistance_buff": "stonehearth_ace:buffs:weather:hot_resist",
-   "unsheltered_debuff": "stonehearth_ace:buffs:weather:hot",
-   "unsheltered_animal_debuff": "stonehearth_ace:buffs:weather:hot:animal",
+   "unsheltered_debuff": [
+      "stonehearth_ace:buffs:weather:hot"
+   ],
+   "unsheltered_animal_debuff": [
+      "stonehearth_ace:buffs:weather:hot:animal"
+   ],
    "ambient_sound_key": "sunny",
    "thoughts": [
       "stonehearth:thoughts:weather:sunny_hot_negative",

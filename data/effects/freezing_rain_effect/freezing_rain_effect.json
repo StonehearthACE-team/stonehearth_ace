@@ -1,0 +1,27 @@
+{
+   "type": "effect",
+   "tracks": {
+      "rain": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/freezing_rain/freezing_rain.cubemitter.json",
+         "start_time": 0,
+         "loop": true,
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "rain_sparkles": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth/data/horde/particles/rain/rain_sparkles.cubemitter.json",
+         "start_time": 0,
+         "loop": true,
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0
+         }
+      }
+   }
+}

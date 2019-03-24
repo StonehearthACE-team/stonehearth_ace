@@ -8,8 +8,13 @@
       "stonehearth:thoughts:weather:snow_early_positive"
    ],
    "ambient_sound_key": "snow",
-   "unsheltered_resistance_buff": "stonehearth:buffs:weather:cold_resist",
-   "unsheltered_debuff": "stonehearth_ace:buffs:weather:chilly",
+   "unsheltered_debuff": [
+      "stonehearth_ace:buffs:weather:chilly",
+      "stonehearth_ace:buffs:weather:cold_breath"
+   ],
+   "unsheltered_animal_debuff": [
+      "stonehearth_ace:buffs:weather:cold_breath"
+   ],
    "camera_attached_effect": "stonehearth_ace:effects:snow_effect_minor",
    "subject_matter": "stonehearth_ace:subjects:weather:snow:early",
    "plant_growth_time_multiplier": 2,

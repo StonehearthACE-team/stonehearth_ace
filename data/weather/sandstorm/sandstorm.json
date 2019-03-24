@@ -1,7 +1,14 @@
 {
    "description": "i18n(stonehearth_ace:data.weather.sandstorm.description)",
-   "unsheltered_debuff": "stonehearth_ace:buffs:weather:hot",
-   "unsheltered_animal_debuff": "stonehearth_ace:buffs:weather:hot:animal",
+	"mixintypes": {
+		"unsheltered_resistance_buff": "remove"
+	},
+   "unsheltered_debuff": [
+		"stonehearth_ace:buffs:weather:hot"
+	],
+   "unsheltered_animal_debuff": [
+		"stonehearth_ace:buffs:weather:hot:animal"
+	],
    "humidity": -0.5,
    "sunlight": 0.3
 }

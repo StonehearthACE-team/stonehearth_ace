@@ -1,9 +1,15 @@
 {
    "description": "i18n(stonehearth_ace:data.weather.snow.snow_sunny.description)",
-   "unsheltered_debuff": "stonehearth_ace:buffs:weather:chilly",
-   "mixintypes": {
-	  "unsheltered_animal_debuff": "remove"
-   },
+	"mixintypes": {
+		"unsheltered_resistance_buff": "remove"
+	},
+   "unsheltered_debuff": [
+		"stonehearth_ace:buffs:weather:chilly",
+		"stonehearth_ace:buffs:weather:cold_breath"
+	],
+	"unsheltered_animal_debuff": [
+		"stonehearth_ace:buffs:weather:cold_breath"
+	],
    "plant_growth_time_multiplier": 10,
    "sunlight": 0.85
 }

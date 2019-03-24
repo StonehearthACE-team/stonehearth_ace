@@ -1,0 +1,17 @@
+{
+   "type": "effect",
+   "tracks": {
+      "ghost_aura_cloud": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/weather/cold_breath.cubemitter.json",
+         "start_time": 0,
+         "loop": true,
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         },
+         "bone": "head"
+      }
+   }
+}
