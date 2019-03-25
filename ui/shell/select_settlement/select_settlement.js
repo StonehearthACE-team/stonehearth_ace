@@ -25,6 +25,5 @@ App.StonehearthSelectSettlementView.reopen({
                });
             })
       }
-   }.observes('options.biome_src'),
-	
-)};
+   }.observes('options.biome_src')
+});
