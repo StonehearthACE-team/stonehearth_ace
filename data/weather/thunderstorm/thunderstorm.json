@@ -1,6 +1,8 @@
 {
    "description": "i18n(stonehearth_ace:data.weather.thunderstorm.description)",
-   "plant_growth_time_multiplier": 1,
+	"mixintypes": {
+		"plant_growth_time_multiplier": "remove"
+	},
    "unsheltered_debuff": [
 		"stonehearth_ace:buffs:weather:soaked"
 	],

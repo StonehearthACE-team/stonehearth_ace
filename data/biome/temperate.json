@@ -2,10 +2,13 @@
    "applied_manifests": {
       "temperate_ace": "file(temperate/applied_temperate_manifest.json)"
    },
-   "humidity": 0.3,
-   "sunlight": 1,
+	"mixintypes": {
+		"growth_duration_multiplier": "remove"
+	},
    "seasons": {
       "spring": {
+			"humidity": 0.4,
+			"sunlight": 0.9,
          "weather": [
 				{
 					"uri": "stonehearth_ace:weather:sunny:chilly",
@@ -18,6 +21,8 @@
          ]
       },
 		"summer": {
+			"humidity": 0.3,
+			"sunlight": 1,
 			"weather": [
 				{
 					"uri": "stonehearth_ace:weather:sunny:hot",
@@ -26,6 +31,8 @@
 			]
 		},
       "autumn": {
+			"humidity": 0.35,
+			"sunlight": 0.85,
          "weather": [
 				{
                "uri": "stonehearth_ace:weather:cloudy:chilly",
@@ -46,6 +53,8 @@
          ]
       },
 		"winter": {
+			"humidity": 0.4,
+			"sunlight": 0.7,
 			"weather": [
 				{
                "uri": "stonehearth_ace:weather:sunny:chilly",

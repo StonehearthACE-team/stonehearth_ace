@@ -1,8 +1,11 @@
 {
-   "humidity": 0,
-   "sunlight": 1.2,
+	"mixintypes": {
+		"growth_duration_multiplier": "remove"
+	},
    "seasons": {
 	   "spring": {
+			"humidity": 0,
+			"sunlight": 1,
 			"weather": [
 				{
 					"uri": "stonehearth_ace:weather:sunny:hot",
@@ -11,6 +14,8 @@
 			]
 		},
 		"summer": {
+			"humidity": -0.5,
+			"sunlight": 1.1,
 			"weather": [
 				{
                "uri": "stonehearth_ace:weather:sunny:hot",
@@ -22,6 +27,8 @@
 	      "mixintypes": {
 				"weather": "override"
 			},
+			"humidity": -0.2,
+			"sunlight": 0.9,
          "weather": [
             {
                "uri": "stonehearth:weather:sunny",
@@ -49,6 +56,8 @@
 			"mixintypes": {
 				"weather": "override"
 			},
+			"humidity": 0.15,
+			"sunlight": 0.75,
          "weather": [
             {
                "uri": "stonehearth:weather:sunny",
