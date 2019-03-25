@@ -1,6 +1,9 @@
 local TownService = require 'stonehearth.services.server.town.town_service'
 local AceTownService = class()
 
+local _water_affinities = {}
+local _light_affinities = {}
+
 function AceTownService:calculate_growth_period(player_id, original_growth_period)
 	local growth_period = self:calculate_town_bonuses_growth_period(player_id, original_growth_period)
 
@@ -47,14 +50,18 @@ end
 function AceTownService:get_water_affinity_table(climate)
 	if not climate then
 		climate = 'temperate'
-	end
-
-	local affinity_table = {}
-	local climate_data = stonehearth.constants.climates[climate]
-	if climate_data then
-		local affinity = climate_data.plant_water_affinity or 'MEDIUM'
-		affinity_table = stonehearth.constants.plant_water_affinity[affinity] or {}
-	end
+   end
+   
+   local affinity_table = _water_affinities[climate]
+   if not affinity_table then
+      affinity_table = {}
+      local climate_data = stonehearth.constants.climates[climate]
+      if climate_data then
+         local affinity = climate_data.plant_water_affinity or 'MEDIUM'
+         affinity_table = stonehearth.constants.plant_water_affinity[affinity] or {}
+      end
+      _water_affinities[climate] = affinity_table
+   end
 
 	return affinity_table
 end
@@ -64,12 +71,16 @@ function AceTownService:get_light_affinity_table(climate)
 		climate = 'temperate'
 	end
 
-	local affinity_table = {}
-	local climate_data = stonehearth.constants.climates[climate]
-	if climate_data then
-		local affinity = climate_data.plant_light_affinity or 'MEDIUM'
-		affinity_table = stonehearth.constants.plant_light_affinity[affinity] or {}
-	end
+   local affinity_table = _light_affinities[climate]
+   if not affinity_table then
+      affinity_table = {}
+      local climate_data = stonehearth.constants.climates[climate]
+      if climate_data then
+         local affinity = climate_data.plant_light_affinity or 'MEDIUM'
+         affinity_table = stonehearth.constants.plant_light_affinity[affinity] or {}
+      end
+      _light_affinities[climate] = affinity_table
+   end
 
 	return affinity_table
 end
@@ -101,6 +112,25 @@ function AceTownService:get_best_affinity_level(affinities)
 	end
 
 	return best_affinity, next_affinity
+end
+
+function AceTownService:_get_modifier_from_level(affinity, level)
+   local best_affinity = {min_level = -1, period_multiplier = 1}
+	for _, affinity in ipairs(affinity) do
+		if level >= affinity.min_level and affinity.min_level > best_affinity.min_level then
+			best_affinity = affinity
+		end
+   end
+   return best_affinity.period_multiplier
+end
+
+function AceTownService:get_environmental_growth_time_modifier(climate, humidity, light, flood_multiplier)
+   local modifier = flood_multiplier or 1
+
+   modifier = modifier * self:_get_modifier_from_level(self:get_water_affinity_table(climate), humidity)
+   modifier = modifier * self:_get_modifier_from_level(self:get_light_affinity_table(climate), light)
+
+   return modifier
 end
 
 -- go through each town and check if it's tier 3

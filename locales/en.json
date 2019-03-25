@@ -6963,9 +6963,10 @@
                   "short": "This crop matures quickly (<span class='text-value'>[str(i18n_data.total_growth_time)]</span> before modifiers).",
                   "fair": "This crop matures at a moderate rate (<span class='text-value'>[str(i18n_data.total_growth_time)]</span> before modifiers).",
                   "long": "This crop takes a long time to mature (<span class='text-value'>[str(i18n_data.total_growth_time)]</span> before modifiers).",
-                  "shorter": "This crop has more <span class='text-optimal'>positive</span> growth time modifiers than negative ones.",
-                  "normal": "This crop has <span class='text-average'>both</span> positive growth time modifiers and negative ones.",
-                  "longer": "This crop has more <span class='text-poor'>negative</span> growth time modifiers than positive ones."
+                  "shorter": "Environmental factors make this crop take <span class='text-value text-optimal'>[str(i18n_data.growth_time_percent)]</span> of normal time to grow.",
+                  "normal": "Environmental factors make this crop grow at a normal rate.",
+                  "longer": "Environmental factors make this crop take <span class='text-value text-poor'>[str(i18n_data.growth_time_percent)]</span> of normal time to grow.",
+                  "stopped": "This crop's growth is currently <span class='text-bad'>stopped</span>."
                },
                "water_affinity": {
                   "property_name": "Water Needs",

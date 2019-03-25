@@ -381,13 +381,13 @@ App.StonehearthFarmView.reopen({
       if (affinities.next_affinity) {
          waterAffinity.tooltip = localizations.water_affinity.range;
          waterAffinity.i18n_data = {
-            min_water_level: self._formatWaterValue(affinities.best_affinity.min_level * size_mult),
-            max_water_level: self._formatWaterValue(affinities.next_affinity.min_level * size_mult)
+            min_water_level: self._formatFlatValue(affinities.best_affinity.min_level * size_mult),
+            max_water_level: self._formatFlatValue(affinities.next_affinity.min_level * size_mult)
          };
       }
       else {
          waterAffinity.tooltip = localizations.water_affinity.min_only;
-         waterAffinity.i18n_data = { min_water_level: self._formatWaterValue(affinities.best_affinity.min_level * size_mult) };
+         waterAffinity.i18n_data = { min_water_level: self._formatFlatValue(affinities.best_affinity.min_level * size_mult) };
       }
 
       cropProperties.waterAffinity = waterAffinity;
@@ -437,13 +437,13 @@ App.StonehearthFarmView.reopen({
          lightAffinity.max_light_level = affinities.next_affinity.min_level;
          lightAffinity.tooltip = localizations.light_affinity.range;
          lightAffinity.i18n_data = {
-            min_light_level: self._formatLightValue(affinities.best_affinity.min_level),
-            max_light_level: self._formatLightValue(affinities.next_affinity.min_level)
+            min_light_level: self._formatPercentValue(affinities.best_affinity.min_level),
+            max_light_level: self._formatPercentValue(affinities.next_affinity.min_level)
          };
       }
       else {
          lightAffinity.tooltip = localizations.light_affinity.min_only;
-         lightAffinity.i18n_data = { min_light_level: self._formatLightValue(affinities.best_affinity.min_level) };
+         lightAffinity.i18n_data = { min_light_level: self._formatPercentValue(affinities.best_affinity.min_level) };
       }
 
       cropProperties.lightAffinity = lightAffinity;
@@ -485,6 +485,7 @@ App.StonehearthFarmView.reopen({
       var size_mult = self._getSizeMult(size);
       var effective_humidity_level = field_sv.effective_humidity_level;
       var current_light_level = field_sv.sunlight_level;
+      var growth_time_modifier = field_sv.growth_time_modifier;
       
       var status;
       
@@ -540,7 +541,7 @@ App.StonehearthFarmView.reopen({
          status: status,
          tooltipTitle: localizations.water_affinity.status_name,
          tooltip: localizations.water_affinity.current_level,
-         i18n_data: { current_water_level: self._formatWaterValue(current_water_level * size_mult) }
+         i18n_data: { current_water_level: self._formatFlatValue(current_water_level * size_mult) }
       };
 
       cropStatuses.currentWaterLevel = currentWaterLevel;
@@ -621,7 +622,7 @@ App.StonehearthFarmView.reopen({
          status: status,
          tooltipTitle: localizations.light_affinity.status_name,
          tooltip: localizations.light_affinity.current_level,
-         i18n_data: { current_light_level: self._formatLightValue(current_light_level) }
+         i18n_data: { current_light_level: self._formatPercentValue(current_light_level) }
       };
 
       cropStatuses.currentLightLevel = currentLightLevel;
@@ -658,51 +659,21 @@ App.StonehearthFarmView.reopen({
       self._applyStatus(self.$('#currentFertilized'), status);
 
 
-      // growth time is an approximation based on the number of growth time modifiers, not their magnitudes
-      // so we wait until after our calculations on those other fields to determine this
       status = self._STATUSES.AVERAGE;
       var growthTime = self._GROWTH_TIMES.NORMAL;
       var growthTimeTooltip = localizations.growth_time.normal;
-      var numPositive = 0;
-      var numNegative = 0;
 
-      if (currentSeason.status != self._STATUSES.OPTIMAL) {
-         numNegative++;
+      if (currentFlooded.status == self._STATUSES.BAD) {
+         growthTime = self._GROWTH_TIMES.LONGER;
+         growthTimeTooltip = localizations.growth_time.stopped;
+         status = self._STATUSES.BAD;
       }
-      switch (currentWaterLevel.status) {
-         case self._STATUSES.POOR:
-            numNegative++;
-            break;
-         case self._STATUSES.OPTIMAL:
-            numPositive++;
-            break;
-      }
-      switch (currentLightLevel.status) {
-         case self._STATUSES.POOR:
-            numNegative++;
-            break;
-         case self._STATUSES.OPTIMAL:
-            numPositive++;
-            break;
-      }
-      switch (currentFlooded.status) {
-         case self._STATUSES.BAD:
-            numNegative += 2;
-            break;
-         case self._STATUSES.POOR:
-            numNegative++;
-            break;
-         case self._STATUSES.OPTIMAL:
-            numPositive++;
-            break;
-      }
-
-      if (numPositive > numNegative) {
+      else if (growth_time_modifier < 0.9) {
          growthTime = self._GROWTH_TIMES.SHORTER;
          growthTimeTooltip = localizations.growth_time.shorter;
          status = self._STATUSES.OPTIMAL;
       }
-      else if (numPositive < numNegative) {
+      else if (growth_time_modifier > 1.1) {
          growthTime = self._GROWTH_TIMES.LONGER;
          growthTimeTooltip = localizations.growth_time.longer;
          status = self._STATUSES.POOR;
@@ -713,7 +684,10 @@ App.StonehearthFarmView.reopen({
          icon: self._IMAGES_DIR + 'property_growth_time_' + growthTime + '.png',
          status: status,
          tooltipTitle: localizations.growth_time.status_name,
-         tooltip: growthTimeTooltip
+         tooltip: growthTimeTooltip,
+         i18n_data: {
+            growth_time_percent: self._formatPercentValue(growth_time_modifier)
+         }
       };
 
       cropStatuses.relativeGrowthTime = relativeGrowthTime;
@@ -729,11 +703,11 @@ App.StonehearthFarmView.reopen({
       return 4/11 * Math.ceil(size.x / 2) * size.y;
    },
 
-   _formatWaterValue: function(value) {
+   _formatFlatValue: function(value) {
       return Math.round(value * 10) / 10;
    },
 
-   _formatLightValue: function(value) {
+   _formatPercentValue: function(value) {
       return Math.round(value * 100) + '%';
    },
 
