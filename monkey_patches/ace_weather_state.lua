@@ -11,7 +11,7 @@ AceWeatherState._ace_old_restore = WeatherState.restore
 function AceWeatherState:restore()
    self:_ace_old_restore()
 
-   if not self._sv.sunlight then
+   if not self._sv.sunlight or type(self._sv.unsheltered_debuff) == 'string' or type(self._sv.unsheltered_animal_debuff) == 'string' then
       self:_load_ace_values()
    end
 end
@@ -30,10 +30,10 @@ function AceWeatherState:_load_ace_values()
    self._sv._base_humidity = json.humidity or 0
    self._sv.humidity = self._sv._base_humidity
    
-   if self._sv.unsheltered_debuff and type(self._sv.unsheltered_debuff) == 'string' then
+   if type(self._sv.unsheltered_debuff) == 'string' then
       self._sv.unsheltered_debuff = { self._sv.unsheltered_debuff }
    end
-   if self._sv.unsheltered_animal_debuff and type(self._sv.unsheltered_animal_debuff) == 'string' then
+   if type(self._sv.unsheltered_animal_debuff) == 'string' then
       self._sv.unsheltered_animal_debuff = { self._sv.unsheltered_animal_debuff }
    end
 

@@ -18,39 +18,18 @@ local combat = stonehearth.combat
 
 function Train:start_thinking(ai, entity, args)
    -- check if we're eligible (below level 6, training enabled)
-	local job = entity:get_component('stonehearth:job')
-	if not job:is_trainable() then
-		ai:reject('entity cannot train')
-		return
-	end
-	
-	if not job:get_training_enabled() then
-		ai:reject('training is disabled or unavailable for this entity')
-		return
-	end
+   local job = entity:get_component('stonehearth:job')
+   if not job:is_trainable() then
+      ai:reject('entity cannot train')
+      return
+   end
 
-	ai:set_think_output({entity = entity})
-end
+   if not job:get_training_enabled() then
+      ai:reject('training is disabled or unavailable for this entity')
+      return
+   end
 
-function Train:start(ai, entity, args)
-	-- add listener for training disabled
-	self._training_enabled_listener = radiant.events.listen(entity, 'stonehearth_ace:training_enabled_changed', 
-				function(enabled) 
-					self:_on_training_enabled_changed(ai, enabled)
-				end)
-end
-
-function Train:stop(ai, entity, args)
-	if self._training_enabled_listener then
-		self._training_enabled_listener:destroy()
-		self._training_enabled_listener = nil
-	end
-end
-
-function Train:_on_training_enabled_changed(ai, enabled)
-	if not enabled then
-		ai:abort('training was disabled for this entity')
-	end
+   ai:set_think_output({entity = entity})
 end
 
 function find_training_dummy(entity)
@@ -66,14 +45,24 @@ function find_training_dummy(entity)
 			return false
 		end)
 end
+
+function _should_abort(source, training_enabled)
+   return not training_enabled
+end
+
 local ai = stonehearth.ai
 return ai:create_compound_action(Train)
          :execute('stonehearth:abort_on_event_triggered', {
             source = ai.ENTITY,
             event_name = 'stonehearth:work_order:job:work_player_id_changed',
          })
+         :execute('stonehearth:abort_on_event_triggered', {
+            source = ai.ENTITY,
+            event_name = 'stonehearth_ace:training_enabled_changed',
+            filter_fn = _should_abort
+         })
          :execute('stonehearth:drop_backpack_contents_on_ground', {})
 		   :execute('stonehearth:set_posture', { posture = 'stonehearth:combat' })
          :execute('stonehearth:find_best_reachable_entity_by_type', 
 					{ filter_fn = ai.CALL(find_training_dummy, ai.ENTITY)})
-		   :execute('stonehearth_ace:train_attack', { target = ai.BACK(1).item })
+         :execute('stonehearth_ace:train_attack', { target = ai.BACK(1).item })

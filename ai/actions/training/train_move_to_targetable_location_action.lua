@@ -13,15 +13,11 @@ local log = radiant.log.create_logger('training_action')
 local combat = stonehearth.combat
 
 function TrainMoveToTargetableLocation:start_thinking(ai, entity, args)
-	ai:set_think_output({location = find_training_location(entity, args.target)})
-end
-
-function TrainMoveToTargetableLocation:start(ai, entity, args)
-	-- add listener for training disabled
-	self._training_enabled_listener = radiant.events.listen(entity, 'stonehearth_ace:training_enabled_changed', 
-				function(enabled) 
-					self:_on_training_enabled_changed(ai, enabled)
-				end)
+   local location = find_training_location(entity, args.target)
+   -- if we couldn't find a location (e.g., front of training dummy is against a wall), don't set one
+   if location then
+      ai:set_think_output({location = location})
+   end
 end
 
 function TrainMoveToTargetableLocation:stop(ai, entity, args)
@@ -67,7 +63,7 @@ function find_training_location(entity, target)
    for i = 1, 10 do
       local distance = math.sqrt(rng:get_real(min_dist, max_dist))
 		local varied_facing = facing + rng:get_real(-18, 18)
-		local temp_location = get_location_in_front(location, varied_facing, distance)
+		local temp_location = get_location_in_front(entity, location, varied_facing, distance)
 		local line_of_sight = _physics:has_line_of_sight(target, Point3(temp_location.x, temp_location.y + 2, temp_location.z))
 		if line_of_sight then
 			best_location = temp_location
@@ -75,15 +71,19 @@ function find_training_location(entity, target)
 		end
 	end
 
+   -- try at min_range
 	if not best_location then
-		best_location = get_location_in_front(location, facing, min_range)
+      local temp_location = get_location_in_front(entity, location, facing, min_range)
+      if _physics:has_line_of_sight(target, Point3(temp_location.x, temp_location.y + 2, temp_location.z)) then
+         best_location = temp_location
+      end
 	end
 	return best_location
 end
 
-function get_location_in_front(location, facing, distance)
+function get_location_in_front(entity, location, facing, distance)
 	local offset = radiant.math.rotate_about_y_axis(-Point3(0, 0, distance), facing)
-	return location + offset
+	return _physics:get_standable_point(entity, location + offset)
 end
 
 local ai = stonehearth.ai
