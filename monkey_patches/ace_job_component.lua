@@ -435,7 +435,7 @@ function AceJobComponent:set_training_enabled(enabled)
 		local prev_enabled = self:get_training_enabled()
 		radiant.entities.set_attribute(self._entity, 'stonehearth_ace:training_enabled', enabled and 1 or 0)
 		if prev_enabled ~= enabled then
-			radiant.events.trigger(self._entity, 'stonehearth_ace:training_enabled_changed', enabled)
+         radiant.events.trigger_async(self._entity, 'stonehearth_ace:training_enabled_changed', enabled)
 		end
 	end
 end

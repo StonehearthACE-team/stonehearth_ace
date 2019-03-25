@@ -192,44 +192,46 @@ function AceBuffsComponent:remove_buff(uri, remove_all_stacks)
       self._sv.ref_counts[uri] = 0 -- Just in case we're doing a remove_all_stacks
       local buff = self._sv.buffs[uri]
       if buff then
-         local json = radiant.resources.load_json(uri, true)
-         if json.disallowed_buffs then
-            for _, dis_buff in ipairs(json.disallowed_buffs) do
-               local cur_disallowed = self._sv.disallowed_buffs[dis_buff]
-               if cur_disallowed then
-                  cur_disallowed[uri] = nil
-                  if not next(cur_disallowed) then
-                     self._sv.disallowed_buffs[dis_buff] = nil
+         local json = radiant.resources.load_json(uri, true, false)
+         if json then
+            if json.disallowed_buffs then
+               for _, dis_buff in ipairs(json.disallowed_buffs) do
+                  local cur_disallowed = self._sv.disallowed_buffs[dis_buff]
+                  if cur_disallowed then
+                     cur_disallowed[uri] = nil
+                     if not next(cur_disallowed) then
+                        self._sv.disallowed_buffs[dis_buff] = nil
+                     end
                   end
                end
             end
-         end
 
-         if json.disallowed_categories then
-            for _, dis_category in ipairs(json.disallowed_categories) do
-               local cur_disallowed = self._sv.disallowed_categories[dis_category]
-               if cur_disallowed then
-                  cur_disallowed[uri] = nil
-                  if not next(cur_disallowed) then
-                     self._sv.disallowed_categories[dis_category] = nil
+            if json.disallowed_categories then
+               for _, dis_category in ipairs(json.disallowed_categories) do
+                  local cur_disallowed = self._sv.disallowed_categories[dis_category]
+                  if cur_disallowed then
+                     cur_disallowed[uri] = nil
+                     if not next(cur_disallowed) then
+                        self._sv.disallowed_categories[dis_category] = nil
+                     end
                   end
                end
             end
-         end
 
-         if json.category then
-            local buffs_by_category = self._sv.buffs_by_category[json.category]
-            if buffs_by_category then
-               buffs_by_category[uri] = nil
-               if not next(buffs_by_category) then
-                  self._sv.buffs_by_category[json.category] = nil
+            if json.category then
+               local buffs_by_category = self._sv.buffs_by_category[json.category]
+               if buffs_by_category then
+                  buffs_by_category[uri] = nil
+                  if not next(buffs_by_category) then
+                     self._sv.buffs_by_category[json.category] = nil
+                  end
                end
             end
-         end
 
-         if json.managed_properties then
-            for name, details in pairs(json.managed_properties) do
-               self:_remove_managed_property(name, details)
+            if json.managed_properties then
+               for name, details in pairs(json.managed_properties) do
+                  self:_remove_managed_property(name, details)
+               end
             end
          end
 
