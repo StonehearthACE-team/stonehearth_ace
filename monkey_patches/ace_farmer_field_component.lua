@@ -23,7 +23,7 @@ function AceFarmerFieldComponent:restore()
       self.__saved_variables:mark_changed()
    end
 
-   self:_cache_best_water_level()
+   self:_cache_best_levels()
 end
 
 function AceFarmerFieldComponent:post_activate()
@@ -254,7 +254,7 @@ AceFarmerFieldComponent._ace_old_set_crop = FarmerFieldComponent.set_crop
 function AceFarmerFieldComponent:set_crop(session, response, new_crop_id)
    local result = self:_ace_old_set_crop(session, response, new_crop_id)
 
-   self:_cache_best_water_level()
+   self:_cache_best_levels()
    self:_update_effective_humidity_level()
 
    return result
@@ -437,6 +437,12 @@ function AceFarmerFieldComponent:_update_climate()
 end
 
 function AceFarmerFieldComponent:_set_growth_factors()
+   self._sv.growth_time_modifier = stonehearth.town:get_environmental_growth_time_modifier(
+         self._sv.current_crop_details.preferred_climate,
+         self._sv.humidity_level,
+         self._sv.sunlight_level,
+         self._sv.flooded and self._sv.current_crop_details.flood_period_multiplier)
+   
    local size = self._sv.size
    local contents = self._sv.contents
    if contents then
@@ -444,11 +450,13 @@ function AceFarmerFieldComponent:_set_growth_factors()
          for y=1, size.y do
             local dirt_plot = contents[x][y]
             if dirt_plot and dirt_plot.contents then
-               dirt_plot.contents:add_component('stonehearth:growing'):set_growth_factors(self._sv.humidity_level, self._sv.sunlight_level)
+               dirt_plot.contents:add_component('stonehearth:growing'):set_environmental_growth_time_modifier(self._sv.growth_time_modifier)
             end
          end
       end
    end
+
+   self.__saved_variables:mark_changed()
 end
 
 function AceFarmerFieldComponent:_set_crops_flooded(flooded)
@@ -541,8 +549,17 @@ function AceFarmerFieldComponent:get_best_water_level()
 	return stonehearth.town:get_best_water_level_from_climate(self._sv.current_crop_details.preferred_climate)
 end
 
-function AceFarmerFieldComponent:_cache_best_water_level()
+function AceFarmerFieldComponent:get_best_light_level()
+	if self:_is_fallow() then
+		return nil
+	end
+	
+	return stonehearth.town:get_best_light_level_from_climate(self._sv.current_crop_details.preferred_climate)
+end
+
+function AceFarmerFieldComponent:_cache_best_levels()
    self._best_water_level, self._next_water_level = self:get_best_water_level()
+   self._best_light_level, self._next_light_level = self:get_best_light_level()
 end
 
 function AceFarmerFieldComponent:_update_effective_humidity_level()

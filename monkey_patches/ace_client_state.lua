@@ -42,11 +42,19 @@ function AceClientState:get_gameplay_setting(mod, field)
    end
 end
 
+-- this function is used to set all gameplay settings; unspecified settings should get deleted
 function AceClientState:set_gameplay_settings(settings)
    for mod, mod_settings in pairs(settings) do
       local my_settings = self:get_gameplay_settings(mod)
+
+      -- remove any saved settings that don't exist in the passed-in data
+      for field, setting in pairs(my_settings) do
+         if not mod_settings[field] then
+            my_settings[field] = nil
+         end
+      end
       
-      -- don't delete any unspecified settings (i.e., nil) or overwrite existing data aside from value; just set whatever's included
+      -- don't overwrite existing data aside from value
       for field, setting in pairs(mod_settings) do
          if not my_settings[field] then
             my_settings[field] = setting

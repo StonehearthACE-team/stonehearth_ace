@@ -37,7 +37,7 @@ function AceFarmingService:get_crop_details(crop_type)
             end
 
             details.preferred_climate = growing_data.preferred_climate
-            details.flood_period_multiplier = growing_data.flood_period_multiplier or 2
+            details.flood_period_multiplier = growing_data.flood_period_multiplier or stonehearth.constants.farming.DEFAULT_FLOODED_GROWTH_TIME_MULTIPLIER
             details.require_flooding_to_grow = growing_data.require_flooding
 
             if crop_data then
