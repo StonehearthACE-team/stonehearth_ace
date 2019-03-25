@@ -189,7 +189,7 @@ function AceFarmerFieldComponent:plant_crop_at(x_offset, z_offset)
 
    local growing_comp = crop and crop:add_component('stonehearth:growing')
 	if growing_comp then
-      growing_comp:set_growth_factors(self._sv.humidity_level, self._sv.sunlight_level)
+      growing_comp:set_environmental_growth_time_modifier(self._sv.growth_time_modifier)
       -- self:_create_flood_listener(crop)
       -- if growing_comp:is_flooded() then
       --    self._sv.num_flooded = self._sv.num_flooded + 1
