@@ -15,10 +15,11 @@
       "stonehearth:equipment_piece": {
          "slot": "mainhand",
          "render_type": "attach_to_bone",
-         "ilevel": 2,
+         "ilevel": 1,
          "roles": [
             "worker_job"
          ],
+         "no_drop": true,
          "equip_effect": "stonehearth:effects:weapon_level_up",
          "injected_buffs": [
             "stonehearth_ace:buffs:tools:worker_hammer_iron"
@@ -36,7 +37,7 @@
          "value_in_gold": 16,
          "rarity": "uncommon",
          "shop_info": {
-            "buyable": true,
+            "buyable": false,
             "sellable": true,
             "shopkeeper_level": 2,
             "shopkeeper_type": "caravan"

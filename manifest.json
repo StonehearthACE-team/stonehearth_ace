@@ -1241,6 +1241,8 @@
       "tools:worker_hammer": "file(entities/tools/worker_hammer/worker_hammer.json)",
       "tools:worker_hammer_iron": "file(entities/tools/worker_hammer_iron/worker_hammer_iron.json)",
       "tools:worker_hammer_steel": "file(entities/tools/worker_hammer_steel/worker_hammer_steel.json)",
+      "tools:worker_tools_iron": "file(entities/tools/worker_tools_iron/worker_tools_iron.json)",
+      "tools:worker_tools_steel": "file(entities/tools/worker_tools_steel/worker_tools_steel.json)",
       "traits:dairy_intolerance": "file(data/traits/dairy_intolerance/dairy_intolerance_trait.json)",
       "traits:dairy_love": "file(data/traits/dairy_love/dairy_love_trait.json)",
       "traits:fish_intolerance": "file(data/traits/fish_intolerance/fish_intolerance_trait.json)",
@@ -2138,8 +2140,8 @@
       "stonehearth:buffs:incapacitated": "file(data/buffs/incapacitated/incapacitated_buff.json)",
       "stonehearth:buffs:starving": "file(data/buffs/starving/starving_buff.json)",
       "stonehearth:scenarios:static:terrain:iron_vein": "file(scenarios/static/terrain/iron_vein/iron_vein.json)",
-		"stonehearth:buffs:sleeping": "file(data/buffs/sleeping/sleeping_buff.json)",
-		"stonehearth:buffs:swimming": "file(data/buffs/swimming/swimming_buff.json)"
+      "stonehearth:buffs:sleeping": "file(data/buffs/sleeping/sleeping_buff.json)",
+      "stonehearth:buffs:swimming": "file(data/buffs/swimming/swimming_buff.json)"
    },
    "overrides": {
       "stonehearth/data/rigs/entities/critters/sheep/animations/idle_eat.json": "file(data/rigs/entities/critters/sheep/animations/idle_eat.json)",
@@ -2647,7 +2649,7 @@
          "file(ui/root/js/root_view.js)",
          "file(ui/root/js/root_controller.js)",
          "file(ui/shell/settings/settings.js)",
-			"file(ui/shell/select_settlement/select_settlement.js)",
+         "file(ui/shell/select_settlement/select_settlement.js)",
          "file(ui/game/show_workshop/show_team_workshop.js)",
          "file(ui/game/widgets/terrain_vision/terrain_vision.js)",
          "file(ui/game/start_menu/start_menu.js)",

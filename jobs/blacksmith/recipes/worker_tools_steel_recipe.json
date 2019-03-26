@@ -1,0 +1,30 @@
+{
+   "type": "recipe",
+   "effort": 100,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.blacksmith.recipes.worker_tools_steel_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.blacksmith.recipes.worker_tools_steel_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.blacksmith.recipes.worker_tools_steel_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/tools/worker_tools_steel/worker_tools_steel.png",
+   "workshop": "stonehearth_ace:blacksmith:workbench_advanced",
+   "level_requirement": 4,
+   "ingredients": [
+      {
+         "uri": "stonehearth:refined:steel_ingot",
+         "count": 2
+      },
+		{
+         "material": "leather resource",
+         "count": 1
+      },
+	  {
+         "material": "wood resource",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:tools:worker_tools_steel"
+      }
+   ]
+}

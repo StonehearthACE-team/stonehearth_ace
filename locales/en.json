@@ -1905,6 +1905,7 @@
       "blacksmith": {
          "recipes": {
             "utility_name": "Utility",
+            "civillian_tools_name": "Improved Tools",
             "fuel_holder_small_recipe": {
                "recipe_name": "Cast Iron Holder",
                "description": "Craft a fancy holder that can store up to 4 Bundles O' Firewood.",
@@ -1944,6 +1945,16 @@
                "recipe_name": "Steel Worker's Pick",
                "description": "Craft a tool that Workers can use to greatly improve their efficiency when mining.",
                "flavor": "This tool will also improve the odds of obtaining better quality resources"
+            },
+            "worker_tools_iron_recipe": {
+               "recipe_name": "Worker's Iron Tools",
+               "description": "Craft a set of iron tools for workers.",
+               "flavor": "Slightly increases the odds of mining better quality resources and somewhat boosts their work speed when chopping, mining and building."
+            },
+            "worker_tools_steel_recipe": {
+               "recipe_name": "Worker's Steel Tools",
+               "description": "Craft a set of steel tools for workers.",
+               "flavor": "Increases the odds of mining better quality resources and substantially boosts their work speed when chopping, mining and building."
             },
             "gold_ingot_from_coins_recipe": {
                "recipe_name": "Gold Ingot",
@@ -6573,6 +6584,14 @@
          "backpack_cloth": {
             "display_name": "Cloth Worker's Backpack",
             "description": "Allows Workers to be a tad more efficient when hauling and restocking."
+         },
+         "worker_tools_iron": {
+            "display_name": "Bag of Worker's Iron Tools",
+            "description": "Used by Workers to increase their efficiency and speed when working."
+         },
+         "worker_tools_steel": {
+            "display_name": "Bag of Worker's Steel Tools",
+            "description": "Used by Workers to greatly increase their efficiency and speed when working."
          }
       },
       "tile": {
