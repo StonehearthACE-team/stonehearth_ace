@@ -296,19 +296,19 @@
             "seasons": {
                "spring": {
                   "display_name": "Frühling",
-                  "description": "Der Frühling im Hochland ist eine Zeit der Erneuerung, meistens voller windiger Tage und eine gute Zeit, um mit der Aussaat zu beginnen. Spätschnee kommt selten vor.."
+                  "description": "Der Frühling im Hochland ist eine Zeit der Erneuerung, meistens voller windiger Tage und eine gute Zeit, um mit der Aussaat zu beginnen. Spätschnee kommt selten vor..<ul><li>Gutes Level an Luftfeuchtigkeit.</li><li>Durchschnittliches Level an Sonneneinstrahlung.</li></ul>"
                },
                "summer": {
                   "display_name": "Sommer",
-                  "description": "Der Sommer im Hochland ist eine warme und feuchte Jahreszeit, oft mit Regentagen und ab und zu sogar Stürmen. Starke Winde und ein wolkenloser Himmel herrschen aber meistens vor."
+                  "description": "Der Sommer im Hochland ist eine warme und feuchte Jahreszeit, oft mit Regentagen und ab und zu sogar Stürmen. Starke Winde und ein wolkenloser Himmel herrschen aber meistens vor.<ul><li>Durchschnittliches Level an Luftfeuchtigkeit.</li><li>Gutes Level an Sonneneinstrahlung.</li></ul>"
                },
                "autumn": {
                   "display_name": "Herbst",
-                  "description": "Der Herbst im Hochland markiert das Ende der Landwirtschaftssaison mit mehreren regnerischen oder bewölkten Tagen und möglicherweise sogar einem frühen Schneefall."
+                  "description": "Der Herbst im Hochland markiert das Ende der Landwirtschaftssaison mit mehreren regnerischen oder bewölkten Tagen und möglicherweise sogar einem frühen Schneefall.<ul><li>Gutes Level an Luftfeuchtigkeit.</li><li>Niedriges Level an Sonneneinstrahlung.</li></ul>"
                },
                "winter": {
                   "display_name": "Winter",
-                  "description": "Der Winter im Hochland kann hart und streng sein, er ist etwas länger als die anderen Jahreszeiten und mit fast täglichem Schneefall. Mach deine warmen Sachen bereit!"
+                  "description": "Der Winter im Hochland kann hart und streng sein, er ist etwas länger als die anderen Jahreszeiten und mit fast täglichem Schneefall. Mach deine warmen Sachen bereit!<ul><li>Gutes Level an Luftfeuchtigkeit.</li><li>Schlechtes Level an Sonnenlicht.</li></ul>"
                }
             }
          }
@@ -330,7 +330,7 @@
                "description": "Ein weiterer Tag mit endlosem Sonnenschein und blauem Himmel.<ul><li>Sonnenlicht ist etwas erhöht.</li><li>Ungeschützten Hearthlingen ist es zu heiß, um so effektiv arbeiten zu können.</li></ul>"
             },
             "sunny_chilly": {
-               "display_name": "Sonniger Wintertag",
+               "display_name": "Kühl & Sonnig",
                "description": "Es ist ein wunderschöner sonniger Tag! Wenn auch etwas kalt...<ul><li>Ungeschützten Hearthlingen ist es zu kühl, um effektiv zu arbeiten.</li></ul>"
             },
             "sunny_hot": {
@@ -339,7 +339,7 @@
             }
          },
          "snow": {
-            "description": "Kälte, Frost und Sonnenschein: Ein Tag der Wunder! Warum bist du, mein Freund, immer noch tief im Schlaf??<ul><li>Sonnenlicht ist etwas reduziert.</li><li>Sichtradius ist geringfügig reduziert.</li><li>Ungeschützten Hearthlingen ist zu kalt, um effektiv zu arbeiten.</li><li>Ungeschützte Weidetiere werden durch die Kälte verletzt.</li></ul>",
+            "description": "Kälte, Frost und die Sonne versteckt sich. Können wir einfach drinnen bleiben?<ul><li>Sonnenlicht ist etwas reduziert.</li><li>Sichtradius ist geringfügig reduziert.</li><li>Ungeschützten Hearthlingen ist zu kalt, um effektiv zu arbeiten.</li><li>Ungeschützte Weidetiere werden durch die Kälte verletzt.</li></ul>",
             "snow_sunny": {
                "description": "Was für ein wunderschönes Winterwunderland heute ist!<ul><li>Sonnenlicht ist etwas reduziert.</li><li>Sichtradius ist nur geringfügig reduziert.</li><li>Ungeschützten Hearthlingen ist zu kühl, um effektiv zu arbeiten.</li></ul>"
             },
@@ -386,7 +386,7 @@
             }
          },
          "blizzard": {
-            "description": "Wind, Schnee und Hagel, oh mein Gott!<ul><li>Pflanzenwachstum ist unterbrochen.</li><li>Sonnenlicht ist stark reduziert.</li><li>Sichtradius ist stark reduziert.</li><li>Ungeschützte Hearthlinge werden durch die Kälte verletzt.</li><li>Ungeschützte Weidetiere werden durch die Kälte verletzt.</li></ul>"
+            "description": "Wind, Schnee und Hagel, oh mein Gott!<ul><li>Sonnenlicht ist stark reduziert.</li><li>Sichtradius ist stark reduziert.</li><li>Ungeschützte Hearthlinge werden durch die Kälte verletzt.</li><li>Ungeschützte Weidetiere werden durch die Kälte verletzt.</li></ul>"
          }
       },
       "happiness": {
@@ -6961,9 +6961,10 @@
                   "short": "Diese Pflanze reift schnell (<span class='text-value'>[str(i18n_data.total_growth_time)]</span> vor Modifikatoren).",
                   "fair": "Diese Pflanze reift mäßig (<span class='text-value'>[str(i18n_data.total_growth_time)]</span> vor Modifikatoren).",
                   "long": "Diese Pflanze braucht lange um zu reifen (<span class='text-value'>[str(i18n_data.total_growth_time)]</span> vor Modifikatoren).",
-                  "shorter": "Diese Pflanze hat mehr <span class='text-optimal'>positive</span> Wachstumsmodifikatoren als negative.",
-                  "normal": "Diese Pflanze hat <span class='text-average'>sowohl</span> positive als auch negative Wachstumsmodifikatoren.",
-                  "longer": "Diese Pflanze hat mehr <span class='text-poor'>negative</span> Wachstumsmodifikatoren als positive."
+                  "shorter": "Umwelteinflüsse sorgen dafür, dass diese Kultur zum optimalen Wachstum <span class='text-value text-optimal'>[str(i18n_data.growth_time_percent)]</span> der normalen Zeit.",
+                  "normal": "Umwelteinflüsse sorgen dafür, dass diese Kultur normal wächst.",
+                  "longer": "Umwelteinflüsse führen dazu, dass diese Kultur schlechter wächst und <span class='text-value text-poor'>[str(i18n_data.growth_time_percent)]</span> der normalen Zeit benötigt.",
+                  "stopped": "Das Wachstum dieser Kultur ist aktuell <span class='text-bad'>gestoppt</span>."
                },
                "water_affinity": {
                   "property_name": "Bewässerungsbedarf",
