@@ -72,6 +72,6 @@ return ai:create_compound_action(ChasePatrolParty)
          })
          :execute('stonehearth:drop_carrying_now')
          :execute('stonehearth:chase_entity', {
-            target = ai.BACK(3).leader,
-            stop_distance = ai.BACK(3).stop_distance,
+            target = ai.BACK(4).leader,
+            stop_distance = ai.BACK(4).stop_distance,
          })
