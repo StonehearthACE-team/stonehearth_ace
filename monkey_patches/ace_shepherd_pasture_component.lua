@@ -114,15 +114,73 @@ function AceShepherdPastureComponent:set_pasture_type_command(session, response,
       self:_set_has_renewable()
       self._sv.maintain_animals = self:get_max_animals()
       self._sv._queued_slaughters = {}
+
+      self:_claim_animals_in_pasture()
    end
 
    return result
+end
+
+function AceShepherdPastureComponent:_claim_animals_in_pasture()
+   -- reclaim any animals matching the new animal type (and any of its younger stages)
+   local uri = self._pasture_data[self._sv.pasture_type].reproduction_uri or self._sv.pasture_type
+   local uris = {}
+   uris[uri] = true
+   uris[self._sv.pasture_type] = true
+
+   -- go through evolve data and keep loading entity data until there is no more or we get one we already had (loop)
+   local evolve_data = radiant.entities.get_entity_data(uri, 'stonehearth:evolve_data')
+   while evolve_data do
+      uri = evolve_data.next_stage
+      evolve_data = uri and not uris[uri] and radiant.entities.get_entity_data(uri, 'stonehearth:evolve_data')
+      if uri then
+         uris[uri] = true
+      end
+   end
+
+   local filter_fn = function(entity)
+		return uris[entity:get_uri()]
+	end
+
+	local size = self:get_size()
+	local world_loc = radiant.entities.get_world_grid_location(self._entity)
+	local cube = Cube3(world_loc, world_loc + Point3(size.x, 1, size.z))
+	local region = Region3(cube)
+   local animals = radiant.terrain.get_entities_in_region(region, filter_fn)
+   
+   self:convert_and_add_animals(animals)
 end
 
 AceShepherdPastureComponent._ace_old_add_animal = ShepherdPastureComponent.add_animal
 function AceShepherdPastureComponent:add_animal(animal)
    self:_ace_old_add_animal(animal)
    self:_consider_maintain_animals()
+end
+
+function AceShepherdPastureComponent:convert_and_add_animals(animals)
+   for _, animal in pairs(animals) do
+      local equipment_component = animal:add_component('stonehearth:equipment')
+      local pasture_collar = radiant.entities.create_entity('stonehearth:pasture_equipment:tag')
+      equipment_component:equip_item(pasture_collar)
+      local shepherded_animal_component = pasture_collar:get_component('stonehearth:shepherded_animal')
+      shepherded_animal_component:set_animal(animal)
+      shepherded_animal_component:set_pasture(self._entity)
+
+      self._sv.tracked_critters[animal:get_id()] = {entity = animal}
+      radiant.entities.set_player_id(animal, self._entity)
+      self._sv.num_critters = self._sv.num_critters + 1
+      self:_listen_for_renewables(animal)
+      self:_listen_for_hungry_critter(animal)
+      self:_create_harvest_task(animal)
+   end
+
+   self:_calculate_reproduction_timer()
+   self:_consider_maintain_animals()
+   self:_update_score()
+
+   self.__saved_variables:mark_changed()
+   radiant.events.trigger(self._entity, 'stonehearth:on_pasture_animals_changed', {})
+   stonehearth.ai:reconsider_entity(self._entity, 'pasture animal count changed')
 end
 
 AceShepherdPastureComponent._ace_old_remove_animal = ShepherdPastureComponent.remove_animal
