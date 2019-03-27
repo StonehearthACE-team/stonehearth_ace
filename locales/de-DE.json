@@ -1903,6 +1903,7 @@
       "blacksmith": {
          "recipes": {
             "utility_name": "Werkzeuge",
+            "civillian_tools_name": "Verbesserte Werkzeuge",
             "fuel_holder_small_recipe": {
                "recipe_name": "Gusseiseer Halter",
                "description": "Bastele einen schicken Halter, der bis zu 4 Brennholzpakete aufnehmen kann.",
@@ -1942,6 +1943,16 @@
                "recipe_name": "Stählerne Arbeiterpicke",
                "description": "Stell ein Werkzeug her, das die Effizienz deiner Arbeiter beim Bergbau erheblich verbessert.",
                "flavor": "Dieses Werkzeug erhöht auch die Chance bessere Ressourcen zu erhalten"
+            },
+            "worker_tools_iron_recipe": {
+               "recipe_name": "Eisenwerkzeuge für Arbeiter",
+               "description": "Fertige Eisenwerkzeuge für Arbeiter an.",
+               "flavor": "Erhöht geringfügig die Chancen, bessere Ressourcen zu gewinnen, und erhöht etwas die Arbeitsgeschwindigkeit beim fällen, ab- und bauen."
+            },
+            "worker_tools_steel_recipe": {
+               "recipe_name": "Stahlwerkzeuge für Arbeiter",
+               "description": "Fertige Stahlwerkzeuge für Arbeiter an.",
+               "flavor": "Erhöht geringfügig die Chancen, bessere Ressourcen zu gewinnen, und erhöht erheblich die Arbeitsgeschwindigkeit beim fällen, ab- und bauen."
             },
             "gold_ingot_from_coins_recipe": {
                "recipe_name": "Goldbarren",
@@ -6571,6 +6582,14 @@
          "backpack_cloth": {
             "display_name": "Stoffrucksack",
             "description": "Erlaubt es Arbeitern, beim Transportieren und Wiederauffüllen ein wenig effizienter zu sein."
+         },
+         "worker_tools_iron": {
+            "display_name": "Tasche mit Eisenwerkzeugen für Arbeiter",
+            "description": "Wird von Arbeitern verwendet, um ihre Effizienz und Schnelligkeit beim Arbeiten zu erhöhen."
+         },
+         "worker_tools_steel": {
+            "display_name": "Tasche mit Stahlwerkzeugen für Arbeiter",
+            "description": "Wird von Arbeitern verwendet, um ihre Effizienz und Geschwindigkeit beim Arbeiten erheblich zu steigern."
          }
       },
       "tile": {
