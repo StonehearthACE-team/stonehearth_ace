@@ -296,97 +296,157 @@
             "seasons": {
                "spring": {
                   "display_name": "Frühling",
-                  "description": "Der Frühling im Hochland ist eine Zeit der Erneuerung, meistens voller windiger Tage und eine gute Zeit, um mit der Aussaat zu beginnen. Spätschnee kommt selten vor..<ul><li>Gutes Level an Luftfeuchtigkeit.</li><li>Durchschnittliches Level an Sonneneinstrahlung.</li></ul>"
+                  "description": "Der Frühling im Hochland ist eine Zeit der Erneuerung, meistens voller windiger Tage und eine gute Zeit, um mit der Aussaat zu beginnen. Spätschnee kommt selten vor.<ul><li>Die Tageslichtniveaus sind durchschnittlich.</li><li>Die Luftfeuchtigkeit ist in Ordnung.</li></ul>"
                },
                "summer": {
                   "display_name": "Sommer",
-                  "description": "Der Sommer im Hochland ist eine warme und feuchte Jahreszeit, oft mit Regentagen und ab und zu sogar Stürmen. Starke Winde und ein wolkenloser Himmel herrschen aber meistens vor.<ul><li>Durchschnittliches Level an Luftfeuchtigkeit.</li><li>Gutes Level an Sonneneinstrahlung.</li></ul>"
+                  "description": "Der Sommer im Hochland ist eine warme und feuchte Jahreszeit, oft mit Regentagen und ab und zu sogar Stürmen. Starke Winde und ein wolkenloser Himmel herrschen aber meistens vor.<ul><li>Die Tageslichtniveaus sind gut.</li><li>Die Luftfeuchtigkeit ist meist knapp.</li></ul>"
                },
                "autumn": {
                   "display_name": "Herbst",
-                  "description": "Der Herbst im Hochland markiert das Ende der Landwirtschaftssaison mit mehreren regnerischen oder bewölkten Tagen und möglicherweise sogar einem frühen Schneefall.<ul><li>Gutes Level an Luftfeuchtigkeit.</li><li>Niedriges Level an Sonneneinstrahlung.</li></ul>"
+                  "description": "Der Herbst im Hochland markiert das Ende der Landwirtschaftssaison mit mehreren regnerischen oder bewölkten Tagen und möglicherweise sogar einem frühen Schneefall.<ul><li>Die Tageslichtniveaus sind durchschnittlich.</li><li>Die Luftfeuchtigkeit ist sehr hoch.</li></ul>"
                },
                "winter": {
                   "display_name": "Winter",
-                  "description": "Der Winter im Hochland kann hart und streng sein, er ist etwas länger als die anderen Jahreszeiten und mit fast täglichem Schneefall. Mach deine warmen Sachen bereit!<ul><li>Gutes Level an Luftfeuchtigkeit.</li><li>Schlechtes Level an Sonnenlicht.</li></ul>"
+                  "description": "Der Winter im Hochland kann hart und streng sein, er ist etwas länger als die anderen Jahreszeiten und mit fast täglichem Schneefall. Mach deine warmen Sachen bereit!<ul><li>Die Tageslichtniveaus sind dürftig.</li><li>Die Luftfeuchtigkeit ist sehr hoch.</li></ul>"
+               }
+            }
+         },
+			"temperate": {
+            "seasons": {
+               "spring": {
+                  "display_name": "Frühling",
+                  "description": "Der Frühling im Wald ist eine Wiedergeburtszeit von drei Monaten. Regen lässt den Schnee schmelzen und offenbart neues Wachstum, und Bäume werden mit bunten Blüten wieder zum Leben erweckt.<ul><li>Tageslichtniveaus sind gut.</li><li>Luftfeuchtigkeit ist reichlich.</li></ul>"
+               },
+               "summer": {
+                  "display_name": "Sommer",
+                  "description": "Der Sommer im Wald ist die mildeste Jahreszeit und dauert drei Monate. Es ist eine Zeit zum Entspannen und Sonnenbaden, ohne sich um Stürme oder Schnee Sorgen zu machen.<ul><li>Tageslichtniveaus sind sehr gut.</li><li> Luftfeuchtigkeit ist hoch.</li></ul>"
+               },
+               "autumn": {
+                  "display_name": "Herbst",
+                  "description": "Der Herbst im Wald ist die Erntesaison, die drei Monate dauert. Die Bäume werden zu Gold, und das Gras bereitet sich darauf vor, sich in seine Winterdecke zurückzuziehen, während der Himmel mit Gewitterwolken dunkler wird.<ul><li>Tageslichtniveaus sind durchschnittlich.</li><li>Luftfeuchtigkeit ist sehr hoch.</li></ul>"
+               },
+               "winter": {
+                  "display_name": "Winter",
+                  "description": "Der Winter im Wald ist eine kalte Jahreszeit, die drei Monate dauert. Bäume verlieren ihre Blätter und Schnee bedeckt die Landschaft. Den kalten, beißenden Winden begegnet man am besten mit gemütlichen Zusammenkünften rund um das Herz.<ul><li>Tageslichtniveaus sind schlecht.</li><li>Luftfeuchtigkeit ist hoch.</li></ul>"
+               }
+            }
+         },
+			"desert": {
+            "seasons": {
+               "spring": {
+                  "display_name": "Frühling",
+                  "description": "Der Frühling in der Wüste ist die Regenzeit von zwei Monaten. Es ist eine seltene Zeit, dass die Wasservorräte auffüllt, wodurch die lokale Flora gleichzeitig erblüht.<ul><li>Tageslichtniveaus sind sehr gut.</li><li>Etwas trockene Jahreszeit.</li></ul>"
+               },
+               "summer": {
+                  "display_name": "Sommer",
+                  "description": "Der Sommer in der Wüste ist die Sturmsaison, die vier Monate dauert. Sandstürme verwüsten die Landschaft fast täglich, und eine Stadt ohne ausreichenden Schutz, sei es Mauern, Berge oder unterirdische Wohneinheiten, könnte Schwierigkeiten haben, den Ansturm zu überleben.<ul><li>Tageslichtniveaus sind zu extrem.</li><li>Unerträgliche Trockenzeit.</li></ul>"
+               },
+               "autumn": {
+                  "display_name": "Herbst",
+                  "description": "Der Herbst in der Wüste ist eine ruhige, vier Monate dauernde Jahreszeit. Das Wetter ist heiß, aber milder als im Sommer, es gibt weder Sandstürme noch Niederschlag. Es ist traditionell eine Zeit zum Ausruhen nach dem man die Sandstürme des Sommers überlebt hat.<ul><li>Tageslichtniveaus sind gut.</li><li>Ziemlich trockene Jahreszeit.</li></ul>"
+               },
+               "winter": {
+                  "display_name": "Winter",
+                  "description": "Der Winter in der Wüste ist eine kühle Jahreszeit, die zwei Monate dauert. Eine Brise weht über die Dünen und bringt milderes Wetter als im Herbst und sogar gelegentliche Schneewolken.<ul><li>Tageslichtniveaus sind durchschnittlich.</li><li>Extrem trockene Jahreszeit.</li></ul>"
+               }
+            }
+         },
+			"arctic": {
+            "seasons": {
+               "spring": {
+                  "display_name": "Frühling",
+                  "description": "Der Frühling in der Arktis ist eine Zeit des Wandels und dauert nur einen Monat. Während das Hochland das ganze Jahr über schneebedeckt ist, taut das Tiefland um die Seen auf und junges Gras sprießt.<ul><li>Tageslichtniveaus sind durchschnittlich.</li><li>Luftfeuchtigkeit ist in Ordnung.</li></ul>"
+               },
+               "summer": {
+                  "display_name": "Sommer",
+                  "description": "Der Sommer in der Arktis ist eine drei Monate dauernde Ruhezeit. Das Wetter ist mild und das Tiefland ist grün mit Gras. Es ist eine Erleichterung von der Kälte und eine Zeit, um Kraft für den langen Winter zu sammeln.<ul><li>Tageslichtniveaus sind gut.</li><li>Luftfeuchtigkeit ist meistens knapp.</li></ul>"
+               },
+               "autumn": {
+                  "display_name": "Herbst",
+                  "description": "Der Herbst in der Arktis ist Zeit des gefrierens und dauert nur einen Monat. Obwohl Schneestürme selten sind, ist Schnee alltäglich. Es ist die letzte Chance, Schutz vor dem unbarmherzigen Winter zu bauen.<ul><li>Tageslichtniveaus sind schlecht.</li><li>Luftfeuchtigkeit ist hoch.</li></ul>"
+               },
+               "winter": {
+                  "display_name": "Winter",
+                  "description": "Der Winter in der Arktis ist eine harte Zeit von sieben Monaten. Das Wetter ist hart, der Wind beißend und unerbittliche Schneestürme machen die Landwirtschaft äußerst schwierig. Sich nach draußen ohne ein Winteroutfit zu wagen, kann tragisch enden.<ul><li>Tageslichtniveaus sind unzureichend.</li><li>Sehr trockene Jahreszeit.</li></ul>"
                }
             }
          }
       },
       "weather": {
          "windy": {
-            "description": "Heulende Winde und tosende Stürme ziehen durch das Land.<ul><li>Etwas mehr Luftfeuchtigkeit.</li></ul>",
+            "description": "Heulende Winde und tosende Stürme ziehen durch das Land.<ul><li>Normales Sonnenlicht.</li><li>Leicht erhöhte Luftfeuchtigkeit.</li></ul>",
             "windy_chilly": {
                "display_name": "Kühle Winde",
-               "description": "Die Luft ist trocken und kalt, während der Wind über die Länder heult.<ul><li>Ungeschützten Hearthlingen ist es zu kühl, um effektiv zu arbeiten.</li></ul>"
+               "description": "Die Luft ist trocken und kalt, während der Wind über die Länder heult.<ul><li>Normales Sonnenlicht.</li><li>Normale Luftfeuchtigkeit.</li><li>Ungeschützten Hearthlingen ist es zu kalt, um effektiv zu arbeiten.</li></ul>"
             }
          },
          "thunderstorm": {
-            "description": "Donner rollt ... Er rollte eine Sechs.<ul><li>Übermäßige Luftfeuchtigkeit.</li><li>Sonnenlicht ist stark reduziert.</li><li>Sichtradius ist reduziert.</li><li>Ungeschützt Hearthlinge und Weidetiere werden nass.</li><li>Ungeschützte Hearthlinge werden manchmal vom Blitz getroffen.</li><li>Der Boden und die Bäume werden manchmal vom Blitz getroffen.</li></ul>"
+            "description": "Donner rollt ... Er rollte eine Sechs.<ul><li>Sonnenlicht ist stark reduziert.</li><li>Sichtradius ist reduziert.</li><li>Ungeschützte Hearthlinge und Weidetiere werden nass.</li><li>Ungeschützte Hearthlinge werden manchmal vom Blitz getroffen.</li><li>Der Boden und die Bäume werden manchmal vom Blitz getroffen.</li></ul>"
          },
          "sunny": {
-            "description": "Ein weiterer Tag mit endlosem Sonnenschein und blauem Himmel.<ul><li>Sonnenlicht ist etwas erhöht.</li></ul>",
+            "description": "Ein weiterer Tag mit endlosem Sonnenschein und blauem Himmel.<ul><li>Normales Sonnenlicht.</li><li>Kaum reduzierte Luftfeuchtigkeit</li></ul>",
             "sunny_desert": {
-               "description": "Ein weiterer Tag mit endlosem Sonnenschein und blauem Himmel.<ul><li>Sonnenlicht ist etwas erhöht.</li><li>Ungeschützten Hearthlingen ist es zu heiß, um so effektiv arbeiten zu können.</li></ul>"
+               "description": "Ein weiterer Tag mit endlosem Sonnenschein und blauem Himmel.<ul><li>Normales Sonnenlicht.</li><li>Reduzierte Luftfeuchtigkeit.</li></ul>"
             },
             "sunny_chilly": {
                "display_name": "Kühl & Sonnig",
-               "description": "Es ist ein wunderschöner sonniger Tag! Wenn auch etwas kalt...<ul><li>Ungeschützten Hearthlingen ist es zu kühl, um effektiv zu arbeiten.</li></ul>"
+               "description": "Es ist ein wunderschöner sonniger Tag! Wenn auch etwas kalt....<ul><li>Kaum reduziertes Sonnenlicht.</li><li>Normale Luftfeuchtigkeit.</li><li>Ungeschützten Hearthlingen ist es zu kühl, um effektiv zu arbeiten.</li></ul>"
             },
             "sunny_hot": {
                "display_name": "Hitzewelle",
-               "description": "Ein schöner, warmer sonniger Tag! Vielleicht zu sonnig, die Hitze ist unerträglich...<ul><li>Somewhat reduced humidity.</li><li>Sonnenlicht ist angenehm erhöht.</li><li>Ungeschützten Hearthlingen ist es zu heiß, um effektiv zu arbeiten.</li><li>Ungeschützte Weidetiere werden durch die Hitze verletzt.</li></ul>"
+               "description": "Ein schöner, warmer sonniger Tag! Vielleicht zu sonnig, die Hitze ist unerträglich...<ul><li>Normales Sonnenlicht.</li><li>Ziemlich reduzierte Luftfeuchtigkeit.</li><li>Ungeschützten Hearthlingen ist es zu heiß, um effektiv zu arbeiten.</li><li>Ungeschützte Weidetiere werden durch die Hitze verletzt.</li></ul>"
             }
          },
          "snow": {
-            "description": "Kälte, Frost und die Sonne versteckt sich. Können wir einfach drinnen bleiben?<ul><li>Sonnenlicht ist etwas reduziert.</li><li>Sichtradius ist geringfügig reduziert.</li><li>Ungeschützten Hearthlingen ist zu kalt, um effektiv zu arbeiten.</li><li>Ungeschützte Weidetiere werden durch die Kälte verletzt.</li></ul>",
+            "description": "Kälte, Frost und die Sonne versteckt sich. Können wir einfach drinnen bleiben?<ul><li>Ziemlich reduziertes Sonnenlicht.</li><li>Normale Luftfeuchtigkeit</li><li>Sichtradius ist geringfügig reduziert.</li><li>Ungeschützten Hearthlingen ist zu kalt, um effektiv zu arbeiten.</li><li>Ungeschützte Weidetiere werden durch die Kälte verletzt.</li></ul>",
             "snow_sunny": {
-               "description": "Was für ein wunderschönes Winterwunderland heute ist!<ul><li>Sonnenlicht ist etwas reduziert.</li><li>Sichtradius ist nur geringfügig reduziert.</li><li>Ungeschützten Hearthlingen ist zu kühl, um effektiv zu arbeiten.</li></ul>"
+               "description": "Was für ein wunderschönes Winterwunderland heute ist!<ul><li>Leicht reduziertes Sonnenlicht.</li><li>Normale Luftfeuchtigkeit.</li><li>Sichtradius ist geringfügig reduziert.</li><li>Ungeschützten Hearthlingen ist zu kühl, um effektiv zu arbeiten.</li></ul>"
             },
             "snow_early": {
                "display_name": "Frühschnee",
-               "description": "Der Schnee ist dieses Jahrfrüher gekommen...<ul><li>Sonnenlicht ist etwas reduziert.</li><li>Ungeschützten Hearthlingen ist es zu kühl, um effektiv zu arbeiten.</li></ul>"
+               "description": "Der Schnee ist dieses Jahrfrüher gekommen...<ul><li>Sonnenlicht ist etwas reduziert.</li><li>Normale Luftfeuchtigkeit.</li><li>Ungeschützten Hearthlingen ist es zu kühl, um effektiv zu arbeiten.</li></ul>"
             },
             "snow_late": {
                "display_name": "Spätschnee",
-               "description": "Der Schnee fällt immernoch...<ul><li>Sonnenlicht ist reduziert.</li><li>Ungeschützten Hearthlingen ist es zu kalt, um effektiv zu arbeiten.</li><li>Ungeschützte Weidetiere werden durch die Kälte verletzt.</li></ul>"
+               "description": "Der Schnee fällt immernoch...<ul><li>Ziemlich reduziertes Sonnenlicht.</li><li>Normale Luftfeuchtigkeit.</li><li>Ungeschützten Hearthlingen ist es zu kalt, um effektiv zu arbeiten.</li><li>Ungeschützte Weidetiere werden durch die Kälte verletzt.</li></ul>"
             }
          },
          "sandstorm": {
-            "description": "Bedeckt eure Augen. Bedeckt eure Ohren. Bleibt am besten einfach drinnen.<ul><li>Sandwolken ziehen durch die Landschaft, zerstören Ernten und verletzen alle.</li><li>Ziemlich reduzierte Luftfeuchtigkeit.</li><li>Sonnenlicht ist stark reduziert.</li><li>Sichtradius ist geringfügig reduziert.</li><li>Ungeschützten Hearthlingen ist es zu heiß, um effektiv arbeiten zu können.</li><li>Ungeschützte Weidetiere werden durch die Hitze verletzt.</li></ul>",
+            "description": "Bedeckt eure Augen. Bedeckt eure Ohren. Bleibt am besten einfach drinnen.<ul><li>Sandwolken ziehen durch die Landschaft, zerstören Ernten und verletzen alle.</li><li>Extrem reduziertes Sonnenlicht.</li><li>Extrem reduzierte Luftfeuchtigkeit</li><li>Sichtradius ist geringfügig reduziert.</li><li>Ungeschützten Hearthlingen ist es zu heiß, um effektiv arbeiten zu können.</li><li>Ungeschützte Weidetiere werden durch die Hitze verletzt.</li></ul>",
             "sandy_day": {
-               "description": "Da ist Sand und Staub ... überall!<ul><li>Leicht reduzierte Luftfeuchtigkeit.</li><li>Sonnenlicht ist etwas reduziert.</li><li>Sichtradius wird nur geringfügig reduziert.</li><li>Ungeschützten Hearthlingen ist es zu heiß, um effektiv arbeiten zu können.</li><li>Ungeschützte Weidetiere werden durch die Hitze verletzt.</li></ul>"
+               "description": "Da ist Sand und Staub ... überall!<ul><li>Ziemlich reduziertes Sonnenlicht.</li><li>Stark reduzierte Luftfeuchtigkeit.</li><li>Sichtradius wird nur geringfügig reduziert.</li><li>Ungeschützten Hearthlingen ist es zu heiß, um effektiv arbeiten zu können.</li><li>Ungeschützte Weidetiere werden durch die Hitze verletzt.</li></ul>"
             }
          },
          "rain": {
-            "description": "Wasser! Wasser vom Himmel!<ul><li>Viel mehr Luftfeuchtigkeit.</li><li>Sonnenlicht ist reduziert.</li><li>Sichtradius ist reduziert.</li><li>Ungeschützte Hearthlinge und Weidetiere werden nass.</li></ul>",
+            "description": "Wasser! Wasser vom Himmel!<ul><li>Ziemlich reduziertes Sonnenlicht.</li><li>Übermäßig erhöhte Luftfeuchtigkeit.</li><li>Sichtradius ist reduziert.</li><li>Ungeschützte Hearthlinge und Weidetiere werden nass.</li></ul>",
             "rain_sunny": {
-               "description": "Es regnet, aber die Sonne lugt hervor!<ul><li>Viel mehr Luftfeuchtigkeit.</li><li>Sonnenlicht ist leicht reduziert.</li><li>Sichtradius ist etwas reduziert.</li><li>Ungeschützte Hearthlinge und Weidetiere werden nass.</li></ul>"
+               "description": "Es regnet, aber die Sonne lugt hervor!<ul><li>Kaum reduziertes Sonnenlicht.</li><li>Extrem erhöhte Luftfeuchtigkeit.</li><li>Sichtradius ist etwas reduziert.</li><li>Ungeschützte Hearthlinge und Weidetiere werden nass.</li></ul>"
             },
             "rain_chilly": {
                "display_name": "Gefrierender Regen",
-               "description": "Es ist wie ein endloser Schauer aus wirklich dünnen Eisnadeln!<ul><li>Etwas mehr Luftfeuchtigkeit.</li><li>Sonnenlicht ist reduziert.</li><li>Sichtradius ist reduziert.</li><li>Ungeschützten Hearthlingen ist es zu kühl, um effektiv zu arbeiten.</li><li>Ungeschützte Weidetiere werden durchnässt.</li></ul>"
+               "description": "Es ist wie ein endloser Schauer aus wirklich dünnen Eisnadeln!<ul><li>Etwas mehr Luftfeuchtigkeit.<ul><li>Ziemlich reduziertes Sonnenlicht.</li><li>Stark erhöhte Luftfeuchtigkeit.</li><li>Sichtradius ist reduziert.</li><li>Ungeschützten Hearthlingen ist es zu kühl, um effektiv zu arbeiten.</li><li>Ungeschützte Weidetiere werden durchnässt.</li></ul>"
             }
          },
          "lucky": {
-            "description": "Heute ist alles nur ein bisschen besser.<ul><li>Etwas mehr Luftfeuchtigkeit.</li><li>Sonnenlicht ist erhöht.</li><li>Hearthlinge werden wie durch Magie von all ihren Krankheiten geheilt.</li><li>Hearthlinge haben bei allem was Sie tun etwas mehr Glück.</li><li>Manchmal erscheint ein mysteriöser Regenbogen.</li></ul>"
+            "description": "Heute ist alles nur ein bisschen besser.<ul><li>Normales Sonnenlicht.</li><li>Stark erhöhte Luftfeuchtigkeit</li><li>Hearthlinge werden wie durch Magie von all ihren Krankheiten geheilt.</li><li>Hearthlinge haben bei allem was Sie tun etwas mehr Glück.</li><li>Manchmal erscheint ein mysteriöser Regenbogen.</li></ul>"
          },
          "foggy": {
-            "description": "Ein Nebel verhüllt die Landschaft und verbirgt ungeahnte Geheimnisse.<ul><li>Untote Monster tauchen unter dem Schutz des Nebels auf.</li><li>Etwas mehr Luftfeuchtigkeit.</li><li>Sonnenlicht ist etwas reduziert.</li><li>Sichtradius ist stark reduziert.</li></ul>"
+            "description": "Ein Nebel verhüllt die Landschaft und verbirgt ungeahnte Geheimnisse.<ul><li>Untote Monster tauchen unter dem Schutz des Nebels auf.</li><li>Reduziertes Sonnenlicht.</li><li>Stark erhöhte Luftfeuchtigkeit.</li><li>Sichtradius ist stark reduziert.</li></ul>"
          },
          "cloudy": {
-            "description": "Bedeckter Himmel, perfekt zum Faulenzen auf der Veranda.<ul><li>Etwas mehr Luftfeuchtigkeit.</li><li>Sonnenlicht ist reduziert.</li></ul>"
+            "description": "Bedeckter Himmel, perfekt zum Faulenzen auf der Veranda.<ul><li>Ziemlich reduziertes Sonnenlicht.</li><li>Leicht erhöhte Luftfeuchtigkeit.</li></ul>",
             "cloudy_chilly": {
                "display_name": "Bewölkt und kühl",
-               "description": "Dunkler Himmel und eine kühle Brise weht.<ul><li>Sonnenlicht ist reduziert.</li><li>Ungeschützten Hearthlingen ist es zu kühl, um effektiv zu arbeiten.</li></ul>"
+               "description": "Dunkler Himmel und eine kühle Brise weht.<ul><li>Ziemlich reduziertes Sonnenlicht.</li><li>Normale Luftfeuchtigkeit.</li><li>Ungeschützten Hearthlingen ist es zu kühl, um effektiv zu arbeiten.</li></ul>"
             },
             "cloudy_cold": {
                "display_name": "Bewölkt und kalt",
-               "description": "Die Wolken sind schwer und dunkel, die Luft ist trocken und kalt.<ul><li>Sonnenlicht ist reduziert.</li><li>Luftfeuchtigkeit etwas reduziert.</li><li>Ungeschützten Hearthlingen ist es zu kühl, um effektiv zu arbeiten.</li><li>Ungeschützte Weidetiere werden durch die Kälte verletzt.</li></ul>"
+               "description": "Die Wolken sind schwer und dunkel, die Luft ist trocken und kalt.<ul><li>Ziemlich reduziertes Sonnenlicht.</li><li>Normale Luftfeuchtigkeit.</li><li>Ungeschützten Hearthlingen ist es zu kühl, um effektiv zu arbeiten.</li><li>Ungeschützte Weidetiere werden durch die Kälte verletzt.</li></ul>"
             }
          },
          "blizzard": {
-            "description": "Wind, Schnee und Hagel, oh mein Gott!<ul><li>Sonnenlicht ist stark reduziert.</li><li>Sichtradius ist stark reduziert.</li><li>Ungeschützte Hearthlinge werden durch die Kälte verletzt.</li><li>Ungeschützte Weidetiere werden durch die Kälte verletzt.</li></ul>"
+            "description": "Wind, Schnee und Hagel, oh mein Gott!<ul><li>Extrem reduziertes Sonnenlicht.</li><li>Sehr geringe Luftfeuchtigkeit.</li><li>Sichtradius ist stark reduziert.</li><li>Ungeschützte Hearthlinge werden durch die Kälte verletzt.</li><li>Ungeschützte Weidetiere werden durch die Kälte verletzt.</li></ul>"
          }
       },
       "happiness": {
@@ -7007,6 +7067,9 @@
                   "prefers_not": "Diese Pflanze wächst langsamer, wenn sie mit Wasser bedeckt ist.",
                   "current_flooded": "Dieses Feld <span class='[str(i18n_data.flooded_status)]'>ist</span> derzeit überflutet.",
                   "current_not_flooded": "Dieses Feld ost derzeit <span class='[str(i18n_data.flooded_status)]'>nicht</span> überflutet."
+               },
+               "frozen": {
+                  "current_frozen": "Dieses Feld ist aktuell <span class='[str(i18n_data.flooded_status)]'>geforen</span>!"
                },
                "fertilized": {
                   "status_name": "Gedüngte Pflanzen",
