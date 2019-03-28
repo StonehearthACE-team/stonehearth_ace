@@ -296,97 +296,157 @@
             "seasons": {
                "spring": {
                   "display_name": "Spring",
-                  "description": "Spring in the Highlands is a time of renewal, usually full of windy days and a good time to start sowing. Late snow may rarely occur.<ul><li>Good base humidity levels.</li><li>Average sunlight levels.</li></ul>"
+                  "description": "Spring in the Highlands is a time of renewal, usually full of windy days and a good time to start sowing. Late snow may rarely occur.<ul><li>Daytime sunlight levels are average.</li><li>Humidity is alright.</li></ul>"
                },
                "summer": {
                   "display_name": "Summer",
-                  "description": "Summer in the Highlands is a warm and wet season, often with days of rain and maybe even storms. Strong winds and a cloudless sky will probably prevail, however.<ul><li>Average base humidity levels.</li><li>Good sunlight levels.</li></ul>"
+                  "description": "Summer in the Highlands is a warm and wet season, often with days of rain and maybe even storms. Strong winds and a cloudless sky will probably prevail, however.<ul><li>Daytime sunlight levels are good.</li><li>Humidity is mostly scarce.</li></ul>"
                },
                "autumn": {
                   "display_name": "Autumn",
-                  "description": "Autumn in the Highlands marks the end of the farming season, with several rainy or cloudy days and perhaps even an early snowfall.<ul><li>Good base humidity levels.</li><li>Lower sunlight levels.</li></ul>"
+                  "description": "Autumn in the Highlands marks the end of the farming season, with several rainy or cloudy days and perhaps even an early snowfall.<ul><li>Daytime sunlight levels are average.</li><li>Humidity is high.</li></ul>"
                },
                "winter": {
                   "display_name": "Winter",
-                  "description": "Winter in the Highlands can be harsh and severe, lasting slightly longer than the other seasons and with an almost daily snowfall. Get your warm clothes ready!<ul><li>Good base humidity levels.</li><li>Poor sunlight levels.</li></ul>"
+                  "description": "Winter in the Highlands can be harsh and severe, lasting slightly longer than the other seasons and with an almost daily snowfall. Get your warm clothes ready!<ul><li>Daytime sunlight levels are meager.</li><li>Humidity is very high.</li></ul>"
+               }
+            }
+         },
+			"temperate": {
+            "seasons": {
+               "spring": {
+                  "display_name": "Spring",
+                  "description": "Spring in the Forest is a season of rebirth, lasting three months. Rains melt the snows, revealing new growth hidden underneath, and trees come back to life covered with colorful blossoms.<ul><li>Daytime sunlight levels are good.</li><li>Humidity is plentiful.</li></ul>"
+               },
+               "summer": {
+                  "display_name": "Summer",
+                  "description": "Summer in the Forest is the mildest season, lasting three months. It is a time to relax and bask in the sun, without worrying about storms or snow.<ul><li>Daytime sunlight levels are very good.</li><li>Humidity is high.</li></ul>"
+               },
+               "autumn": {
+                  "display_name": "Autumn",
+                  "description": "Autumn in the Forest is the harvest season, lasting three months. The trees turn to gold, and the grass prepares to retreat into its winter blanket, as the skies darken with storm clouds.<ul><li>Daytime sunlight levels are average.</li><li>Humidity is very high.</li></ul>"
+               },
+               "winter": {
+                  "display_name": "Winter",
+                  "description": "Winter in the Forest is a cold season, lasting three months. Trees lose their leaves, and snow covers the landscape. The cold, biting winds are best countered by cozy gatherings around the hearth.<ul><li>Daytime sunlight levels are poor.</li><li>Humidity is high.</li></ul>"
+               }
+            }
+         },
+			"desert": {
+            "seasons": {
+               "spring": {
+                  "display_name": "Spring",
+                  "description": "Spring in the Desert is the wet season, lasting two months. It is a rare time for the water reserves to be replenished, leading the local flora to all bloom at once.<ul><li>Daytime sunlight levels are very good.</li><li>Slightly dry season.</li></ul>"
+               },
+               "summer": {
+                  "display_name": "Summer",
+                  "description": "Summer in the Desert is the storm season, lasting four months. Sandstorms ravage the landscape on almost a daily basis, and a town without ample shelter, be it walls, mountains, or underground dwellings, may have trouble surviving the onslaught.<ul><li>Daytime sunlight levels are excessive.</li><li>Unbearably dry season.</li></ul>"
+               },
+               "autumn": {
+                  "display_name": "Autumn",
+                  "description": "Autumn in the Desert is the quiet season, lasting four months. The weather is hot, but milder than in the summer, with neither sandstorms nor precipitation. It is traditionally a time to rest after surviving the sandstorms of summer.<ul><li>Daytime sunlight levels are good.</li><li>Quite dry season.</li></ul>"
+               },
+               "winter": {
+                  "display_name": "Winter",
+                  "description": "Winter in the Desert is a cool season, lasting two months. Breezes blow over the dunes, bringing with them milder weather than in the autumn, and even the occasional snow cloud.<ul><li>Daytime sunlight levels are average.</li><li>Extremely dry season.</li></ul>"
+               }
+            }
+         },
+			"arctic": {
+            "seasons": {
+               "spring": {
+                  "display_name": "Spring",
+                  "description": "Spring in the Arctic is a season of change, only lasting one month. While the highlands retain their snow cover year-round, the lowlands around the lakes start to thaw out and young grass begins to sprout.<ul><li>Daytime sunlight levels are average.</li><li>Humidity is alright.</li></ul>"
+               },
+               "summer": {
+                  "display_name": "Summer",
+                  "description": "Summer in the Arctic is a season of rest, lasting three months. The weather is mild, and the lowlands are green with grass. It is a reprieve from the cold, and a time to regather strength for the long winter to come.<ul><li>Daytime sunlight levels are good.</li><li>Humidity is mostly scarce.</li></ul>"
+               },
+               "autumn": {
+                  "display_name": "Autumn",
+                  "description": "Autumn in the Arctic is a season of freeze, only lasting one month. Although blizzards are rare, snow is a daily occurrence. It is the last chance to build shelter before the unforgiving winter arrives.<ul><li>Daytime sunlight levels are poor.</li><li>Humidity is high.</li></ul>"
+               },
+               "winter": {
+                  "display_name": "Winter",
+                  "description": "Winter in the Arctic is a season of hardship, lasting seven months. Weather is severe, with biting winds and unforgiving blizzards making farming exceedingly difficult. Even venturing outside without a winter outfit can end tragically.<ul><li>Daytime sunlight levels are inadequate.</li><li>Very dry season.</li></ul>"
                }
             }
          }
       },
       "weather": {
          "windy": {
-            "description": "Howling winds and roaring gales sweep the lands.<ul><li>Slightly more humidity.</li></ul>",
+            "description": "Howling winds and roaring gales sweep the lands.<ul><li>Normal sunlight levels.</li><li>Slightly increased humidity.</li></ul>",
             "windy_chilly": {
                "display_name": "Chilly Winds",
-               "description": "The air is dry and cold as the winds howl across the lands.<ul><li>Unsheltered hearthlings are too chilly to work as effectively.</li></ul>"
+               "description": "The air is dry and cold as the winds howl across the lands.<ul><li>Normal sunlight levels.</li><li>Regular humidity levels.</li><li>Unsheltered hearthlings are too chilly to work as effectively.</li></ul>"
             }
          },
          "thunderstorm": {
-            "description": "Thunder rolled... It rolled a six.<ul><li>Excessive humidity.</li><li>Sunlight is greatly reduced.</li><li>Vision radius is reduced.</li><li>Unsheltered hearthlings and pasture animals get soaked wet.</li><li>Unsheltered hearthlings sometimes get hit by lightning.</li><li>The ground and trees sometimes get hit by lightning.</li></ul>"
+            "description": "Thunder rolled... It rolled a six.<ul><li>Extremely reduced sunlight levels.</li><li>Disastrously increased humidity.</li><li>Vision radius is reduced.</li><li>Unsheltered hearthlings and pasture animals get soaked wet.</li><li>Unsheltered hearthlings sometimes get hit by lightning.</li><li>The ground and trees sometimes get hit by lightning.</li></ul>"
          },
          "sunny": {
-            "description": "Yet another day of endless sunshine and blue skies.<ul><li>Sunlight is somewhat increased.</li></ul>",
+            "description": "Yet another day of endless sunshine and blue skies.<ul><li>Normal sunlight levels.</li><li>Barely reduced humidity.</li></ul>",
             "sunny_desert": {
-               "description": "Yet another day of endless sunshine and blue skies.<ul><li>Sunlight is somewhat increased.</li></ul>"
+               "description": "Yet another day of endless sunshine and blue skies.<ul><li>Normal sunlight levels.</li><li>Reduced humidity.</li></ul>"
             },
             "sunny_chilly": {
                "display_name": "Chilly & Sunny",
-               "description": "It's a beautiful, sunny day! Even if also somewhat cold...<ul><li>Unsheltered hearthlings are too chilly to work as effectively.</li></ul>"
+               "description": "It's a beautiful, sunny day! Even if also somewhat cold...<ul><li>Barely reduced sunlight levels.</li><li>Regular humidity levels.</li><li>Unsheltered hearthlings are too chilly to work as effectively.</li></ul>"
             },
             "sunny_hot": {
                "display_name": "Heat Wave",
-               "description": "A nice and warm sunny day! Maybe too sunny, the heat is unbearable...<ul><li>Somewhat reduced humidity.</li><li>Sunlight is nicely increased.</li><li>Unsheltered hearthlings are too hot to work as effectively.</li><li>Unsheltered pasture animals are hurt by the heat.</li></ul>"
+               "description": "A nice and warm sunny day! Maybe too sunny, the heat is unbearable...<ul><li>Normal sunlight levels.</li><li>Fairly reduced humidity.</li><li>Unsheltered hearthlings are too hot to work as effectively.</li><li>Unsheltered pasture animals are hurt by the heat.</li></ul>"
             }
          },
          "snow": {
-            "description": "Cold, frost, and the sun decided to hide. Can we just stay inside?<ul><li>Sunlight is somewhat reduced.</li><li>Vision radius is slightly reduced.</li><li>Unsheltered hearthlings are too cold to work as effectively.</li><li>Unsheltered pasture animals are hurt by the cold.</li></ul>",
+            "description": "Cold, frost, and the sun decided to hide. Can we just stay inside?<ul><li>Fairly reduced sunlight levels.</li><li>Regular humidity levels.</li><li>Vision radius is slightly reduced.</li><li>Unsheltered hearthlings are too cold to work as effectively.</li><li>Unsheltered pasture animals are hurt by the cold.</li></ul>",
             "snow_sunny": {
-               "description": "What a beautiful winter wonderland it is today!<ul><li>Sunlight is slightly reduced.</li><li>Vision radius is only slightly reduced.</li><li>Unsheltered hearthlings are too chilly to work as effectively.</li></ul>"
+               "description": "What a beautiful winter wonderland it is today!<ul><li>Slightly reduced sunlight levels.</li><li>Regular humidity levels.</li><li>Vision radius is only slightly reduced.</li><li>Unsheltered hearthlings are too chilly to work as effectively.</li></ul>"
             },
             "snow_early": {
                "display_name": "Early Snow",
-               "description": "Snow has come earlier this year...<ul><li>Sunlight is slightly reduced.</li><li>Unsheltered hearthlings are too chilly to work as effectively.</li></ul>"
+               "description": "Snow has come earlier this year...<ul><li>Reduced sunlight levels.</li><li>Regular humidity levels.</li><li>Unsheltered hearthlings are too chilly to work as effectively.</li></ul>"
             },
             "snow_late": {
                "display_name": "Late Snow",
-               "description": "There's still snow to fall this year...<ul><li>Sunlight is reduced.</li><li>Unsheltered hearthlings are too cold to work as effectively.</li><li>Unsheltered pasture animals are hurt by the cold.</li></ul>"
+               "description": "There's still snow to fall this year...<ul><li>Fairly reduced sunlight levels.</li><li>Regular humidity levels.</li><li>Unsheltered hearthlings are too cold to work as effectively.</li><li>Unsheltered pasture animals are hurt by the cold.</li></ul>"
             }
          },
          "sandstorm": {
-            "description": "Cover your eyes. Cover your ears. In fact, just stay inside.<ul><li>Clouds of sand pass across the landscape, destroying crops and hurting everyone.</li><li>Fairly reduced humidity.</li><li>Sunlight is greatly reduced.</li><li>Vision radius is slightly reduced.</li><li>Unsheltered hearthlings are too hot to work as effectively.</li><li>Unsheltered pasture animals are hurt by the heat.</li></ul>",
+            "description": "Cover your eyes. Cover your ears. In fact, just stay inside.<ul><li>Clouds of sand pass across the landscape, destroying crops and hurting everyone.</li><li>Extremely reduced sunlight levels.</li><li>Extremely reduced humidity.</li><li>Vision radius is slightly reduced.</li><li>Unsheltered hearthlings are too hot to work as effectively.</li><li>Unsheltered pasture animals are hurt by the heat.</li></ul>",
             "sandy_day": {
-               "description": "There is sand and dust... everywhere!<ul><li>Slightly reduced humidity.</li><li>Sunlight is slightly reduced.</li><li>Vision radius is only slightly reduced.</li><li>Unsheltered hearthlings are too hot to work as effectively.</li><li>Unsheltered pasture animals are hurt by the heat.</li></ul>"
+               "description": "There is sand and dust... everywhere!<ul><li>Fairly reduced sunlight levels.</li><li>Greatly reduced humidity.</li><li>Vision radius is only slightly reduced.</li><li>Unsheltered hearthlings are too hot to work as effectively.</li><li>Unsheltered pasture animals are hurt by the heat.</li></ul>"
             }
          },
          "rain": {
-            "description": "Water! Water from the skies!<ul><li>A lot more humidity.</li><li>Sunlight is reduced.</li><li>Vision radius is reduced.</li><li>Unsheltered hearthlings and pasture animals get soaked wet.</li></ul>",
+            "description": "Water! Water from the skies!<ul><li>Fairly reduced sunlight levels.</li><li>Excessively increased humidity.</li><li>Vision radius is reduced.</li><li>Unsheltered hearthlings and pasture animals get soaked wet.</li></ul>",
             "rain_sunny": {
-               "description": "It's raining, but the sun is peeking out!<ul><li>A lot more humidity.</li><li>Sunlight is slightly reduced.</li><li>Vision radius is only slightly reduced.</li><li>Unsheltered hearthlings and pasture animals get soaked wet.</li></ul>"
+               "description": "It's raining, but the sun is peeking out!<ul><li>Barely reduced sunlight levels.</li><li>Extremely increased humidity.</li><li>Vision radius is only slightly reduced.</li><li>Unsheltered hearthlings and pasture animals get soaked wet.</li></ul>"
             },
             "rain_chilly": {
                "display_name": "Freezing Rain",
-               "description": "It's like an endless shower of really thin ice needles!<ul><li>Quite some more humidity.</li><li>Sunlight is reduced.</li><li>Vision radius is reduced.</li><li>Unsheltered hearthlings are too chilly to work as effectively.</li><li>Unsheltered pasture animals get soaked wet.</li></ul>"
+               "description": "It's like an endless shower of really thin ice needles!<ul><li>Fairly reduced sunlight levels.</li><li>Severely increased humidity.</li><li>Vision radius is reduced.</li><li>Unsheltered hearthlings are too chilly to work as effectively.</li><li>Unsheltered pasture animals get soaked wet.</li></ul>"
             }
          },
          "lucky": {
-            "description": "Today, everything is just a tiny bit better.<ul><li>Some more humidity.</li><li>Sunlight is increased.</li><li>Hearthlings find all their ailments healed, as if by magic.</li><li>Hearthlings are slightly luckier in everything they do.</li><li>A mysterious rainbow sometimes appears.</li></ul>"
+            "description": "Today, everything is just a tiny bit better.<ul><li>Normal sunlight levels.</li><li>Greatly increased humidity</li><li>Hearthlings find all their ailments healed, as if by magic.</li><li>Hearthlings are slightly luckier in everything they do.</li><li>A mysterious rainbow sometimes appears.</li></ul>"
          },
          "foggy": {
-            "description": "A cover of fog crawls across the landscape, hiding untold mysteries.<ul><li>Undead monsters come out of hiding under the cover of the fog.</li><li>Slightly more humidity.</li><li>Sunlight is somewhat reduced.</li><li>Vision radius is greatly reduced.</li></ul>"
+            "description": "A cover of fog crawls across the landscape, hiding untold mysteries.<ul><li>Undead monsters come out of hiding under the cover of the fog.</li><li>Reduced sunlight levels.</li><li>Highly increased humidity.</li><li>Vision radius is greatly reduced.</li></ul>"
          },
          "cloudy": {
-            "description": "Overcast skies, perfect for lazing around on the porch.<ul><li>Slightly more humidity.</li><li>Sunlight is reduced.</li></ul>",
+            "description": "Overcast skies, perfect for lazing around on the porch.<ul><li>Fairly reduced sunlight levels.</li><li>Slightly increased humidity.</li></ul>",
             "cloudy_chilly": {
                "display_name": "Cloudy & Chilly",
-               "description": "Dark skies and a chilly breeze sweeping over.<ul><li>Sunlight is reduced.</li><li>Unsheltered hearthlings are too chilly to work as effectively.</li></ul>"
+               "description": "Dark skies and a chilly breeze sweeping over.<ul><li>Fairly reduced sunlight levels.</li><li>Regular humidity levels.</li><li>Unsheltered hearthlings are too chilly to work as effectively.</li></ul>"
             },
             "cloudy_cold": {
                "display_name": "Cloudy & Cold",
-               "description": "The clouds are heavy and dark, the air is dry and cold.<ul><li>Sunlight is reduced.</li><li>Somewhat reduced humidity.</li><li>Unsheltered hearthlings are too cold to work as effectively.</li><li>Unsheltered pasture animals are hurt by the cold.</li></ul>"
+               "description": "The clouds are heavy and dark, the air is dry and cold.<ul><li>Fairly reduced sunlight levels.</li><li>Regular humidity levels.</li><li>Unsheltered hearthlings are too cold to work as effectively.</li><li>Unsheltered pasture animals are hurt by the cold.</li></ul>"
             }
          },
          "blizzard": {
-            "description": "Wind, and snow, and hail, oh my!<ul><li>Sunlight is greatly reduced.</li><li>Vision radius is greatly reduced.</li><li>Unsheltered hearthlings are hurt by the cold.</li><li>Unsheltered pasture animals are hurt by the cold.</li></ul>"
+            "description": "Wind, and snow, and hail, oh my!<ul><li>Extremely reduced sunlight levels.</li><li>Quite reduced humidity.</li><li>Vision radius is greatly reduced.</li><li>Unsheltered hearthlings are hurt by the cold.</li><li>Unsheltered pasture animals are hurt by the cold.</li></ul>"
          }
       },
       "happiness": {

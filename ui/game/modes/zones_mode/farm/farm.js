@@ -30,7 +30,8 @@ App.StonehearthFarmView.reopen({
       FASTER: 'faster',
       SLOWER: 'slower',
       DRY_SLOWER: 'dry_slower',
-      DRY_STOPPED: 'dry_no_growth'
+      DRY_STOPPED: 'dry_no_growth',
+		FROSTY: 'frosty'
    },
 
    _GROWTH_TIMES: {
