@@ -1,0 +1,29 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(worker_tools_iron.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.tools.worker_tools_iron.display_name)",
+         "description": "i18n(stonehearth_ace:entities.tools.worker_tools_iron.description)",
+         "icon": "file(worker_tools_iron.png)",
+         "is_item": true,
+         "category": "tools",
+         "material_tags": [
+            "iron",
+            "crafted",
+            "worker_tools_iron",
+            "stockpile_equipment",
+            "civillian_equipment"
+         ]
+      }
+   }
+}

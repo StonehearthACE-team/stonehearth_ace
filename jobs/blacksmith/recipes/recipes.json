@@ -1,185 +1,176 @@
 {
-  "craftable_recipes" : {
-	"workbenches": {
-	  "recipes" : {
-		"blacksmith_fuel_oven" : {
-		  "recipe" : "file(blacksmith_fuel_oven_recipe.json)"
-		},
-		"blacksmith_crucible" : {
-		  "recipe" : "file(blacksmith_crucible_recipe.json)"
-		},
-		"blacksmith_forge_advanced" : {
-		  "recipe" : "file(blacksmith_forge_advanced_recipe.json)"
-		},
-		"blacksmith_workbench_advanced" : {
-		  "recipe" : "file(blacksmith_workbench_advanced_recipe.json)"
-		}
-	  }
-	},
-    "legendary" : {
-	  "recipes" : {
-        "legendary_mail" : {
-          "recipe" : "file(legendary_mail_recipe.json)"
-        },
-        "legendary_buckle" : {
-          "recipe" : "file(legendary_buckle_recipe.json)"
-        }
-      }
-	},
-	"storage" : {
-	  "recipes" : {
-        "fuel_holder_small" : {
-          "recipe" : "file(fuel_holder_small_recipe.json)"
-        }
-      }
-	},
-	"tools": {
-	  "recipes": {
-        "worker_axe_iron": {
-          "recipe": "file(worker_axe_iron_recipe.json)"
-        },
-        "worker_axe_steel": {
-          "recipe": "file(worker_axe_steel_recipe.json)"
-        },
-        "worker_hammer_iron": {
-          "recipe": "file(worker_hammer_iron_recipe.json)"
-        },
-        "worker_hammer_steel": {
-          "recipe": "file(worker_hammer_steel_recipe.json)"
-        },
-		"mining_pick_iron": {
-          "recipe": "file(mining_pick_iron_recipe.json)"
-        },
-        "mining_pick_steel": {
-          "recipe": "file(mining_pick_steel_recipe.json)"
-        },
-		"farmer_hoe_iron": {
-          "recipe": "file(farmer_hoe_iron_recipe.json)"
-        }
-      }
-	},
-	"smelt": {
-      "recipes": {
-        "bulk_copper_ingot": {
-          "recipe": "file(bulk_copper_ingot_recipe.json)"
-        },
-        "bulk_tin_ingot": {
-          "recipe": "file(bulk_tin_ingot_recipe.json)"
-        },
-        "bulk_iron_ingot": {
-          "recipe": "file(bulk_iron_ingot_recipe.json)"
-        }
-      }
-    },
-	"utility": {
-         "ordinal": 60,
-         "name": "i18n(stonehearth_ace:jobs.blacksmith.recipes.utility_name)",
-         "recipes": {}
-      },
-    "decoration" : {
-      "recipes" : {
-      }
-    },
-	"refined": {
-        "ordinal": 35,
-        "name": "i18n(stonehearth_ace:jobs.blacksmith.recipes.refined_name)",
-        "recipes": {
-            "charcoal": {
-               "recipe": "file(charcoal_recipe.json)"
-            },
-			"coke": {
-               "recipe": "file(coke_recipe.json)"
-            },
-			"bulk_charcoal": {
-               "recipe": "file(bulk_charcoal_recipe.json)"
-            },
-			"bulk_coke": {
-               "recipe": "file(bulk_coke_recipe.json)"
-            },
-			"gold_ingot_from_coins": {
-			   "recipe": "file(gold_ingot_from_coins_recipe.json)"
-			},
-			"gold_coins_from_ingot": {
-			   "recipe": "file(gold_coins_from_ingot_recipe.json)"
-			},
-			"gold_coins_from_flakes": {
-			   "recipe": "file(gold_coins_from_flakes_recipe.json)"
+	"craftable_recipes" : {
+		"workbenches": {
+		  "recipes" : {
+				"blacksmith_fuel_oven" : {
+					"recipe" : "file(blacksmith_fuel_oven_recipe.json)"
+				},
+				"blacksmith_crucible" : {
+					"recipe" : "file(blacksmith_crucible_recipe.json)"
+				},
+				"blacksmith_forge_advanced" : {
+				  "recipe" : "file(blacksmith_forge_advanced_recipe.json)"
+				},
+				"blacksmith_workbench_advanced" : {
+					"recipe" : "file(blacksmith_workbench_advanced_recipe.json)"
+				}
 			}
-        }
-    },
-	"weapons": {
-	  "recipes" : {
-        "bronze_axe" : {
-          "recipe" : "file(bronze_axe_recipe.json)"
-        },
-		"bronze_sword" : {
-          "recipe" : "file(bronze_sword_recipe.json)"
-        },
-		"iron_battle_axe" : {
-          "recipe" : "file(iron_battle_axe_recipe.json)"
-        },
-		"iron_sword" : {
-          "recipe" : "file(iron_sword_recipe.json)"
-        },
-		"iron_short_sword" : {
-          "recipe" : "file(iron_short_sword_recipe.json)"
-        },
-		"steel_mace" : {
-          "recipe" : "file(steel_mace_recipe.json)"
-        },
-		"iron_axe" : {
-          "recipe" : "file(iron_axe_recipe.json)"
-        },
-		"steel_axe" : {
-          "recipe" : "file(steel_axe_recipe.json)"
-        },
-		"bronze_hatchet" : {
-          "recipe" : "file(bronze_hatchet_recipe.json)"
-        },
-		"iron_hatchet" : {
-          "recipe" : "file(iron_hatchet_recipe.json)"
-        },
-		"steel_dagger" : {
-          "recipe" : "file(steel_dagger_recipe.json)"
-        },
-		"steel_lance" : {
-          "recipe" : "file(steel_lance_recipe.json)"
-        },
-		"silver_halberd" : {
-          "recipe" : "file(silver_halberd_recipe.json)"
-        },
-		"silver_short_sword" : {
-          "recipe" : "file(silver_short_sword_recipe.json)"
-        },
-		"silver_mace" : {
-          "recipe" : "file(silver_mace_recipe.json)"
-        }
-      }
-	},
-	"armor": {
-	  "recipes" : {
-        "iron_platemail" : {
-          "recipe" : "file(iron_platemail_recipe.json)"
-        },
-		"iron_helmet" : {
-          "recipe" : "file(iron_helmet_recipe.json)"
-        },
-		"steel_chainmail" : {
-          "recipe" : "file(steel_chainmail_recipe.json)"
-        },
-		"steel_helm" : {
-          "recipe" : "file(steel_helm_recipe.json)"
-        },
-		"light_iron_shield" : {
-          "recipe" : "file(light_iron_shield_recipe.json)"
-        },
-		"light_steel_shield" : {
-          "recipe" : "file(light_steel_shield_recipe.json)"
-        },
-		"silver_shield" : {
-          "recipe" : "file(silver_shield_recipe.json)"
-        }
-      }
+		},
+		 "legendary" : {
+			"recipes" : {
+				"legendary_mail" : {
+					"recipe" : "file(legendary_mail_recipe.json)"
+				},
+				"legendary_buckle" : {
+					"recipe" : "file(legendary_buckle_recipe.json)"
+				}
+			}
+		},
+		"storage" : {
+			"recipes" : {
+				"fuel_holder_small" : {
+					"recipe" : "file(fuel_holder_small_recipe.json)"
+				}
+			}
+		},
+		"tools": {},
+		"civillian_tools": {
+			"ordinal": 11,
+			"name": "i18n(stonehearth_ace:jobs.blacksmith.recipes.civillian_tools_name)",
+			"recipes": {
+				"worker_tools_iron": {
+					"recipe": "file(worker_tools_iron_recipe.json)"
+				},
+				"worker_tools_steel": {
+					"recipe": "file(worker_tools_steel_recipe.json)"
+				},
+				"farmer_hoe_iron": {
+					"recipe": "file(farmer_hoe_iron_recipe.json)"
+				}
+			}
+		},
+		"smelt": {
+			"recipes": {
+				"bulk_copper_ingot": {
+					"recipe": "file(bulk_copper_ingot_recipe.json)"
+				},
+				"bulk_tin_ingot": {
+					"recipe": "file(bulk_tin_ingot_recipe.json)"
+				},
+				"bulk_iron_ingot": {
+					"recipe": "file(bulk_iron_ingot_recipe.json)"
+				}
+			}
+		 },
+		"utility": {
+			"ordinal": 60,
+			"name": "i18n(stonehearth_ace:jobs.blacksmith.recipes.utility_name)",
+			"recipes": {}
+			},
+		"decoration" : {
+			"recipes" : {
+			}
+		},
+		"refined": {
+			"ordinal": 35,
+			"name": "i18n(stonehearth_ace:jobs.blacksmith.recipes.refined_name)",
+			"recipes": {
+				"charcoal": {
+					"recipe": "file(charcoal_recipe.json)"
+				},
+				"coke": {
+					"recipe": "file(coke_recipe.json)"
+				},
+				"bulk_charcoal": {
+					"recipe": "file(bulk_charcoal_recipe.json)"
+				},
+				"bulk_coke": {
+					"recipe": "file(bulk_coke_recipe.json)"
+				},
+				"gold_ingot_from_coins": {
+					"recipe": "file(gold_ingot_from_coins_recipe.json)"
+				},
+				"gold_coins_from_ingot": {
+					"recipe": "file(gold_coins_from_ingot_recipe.json)"
+				},
+				"gold_coins_from_flakes": {
+					"recipe": "file(gold_coins_from_flakes_recipe.json)"
+				}
+			}
+		},
+		"weapons": {
+			"recipes" : {
+				"bronze_axe" : {
+					"recipe" : "file(bronze_axe_recipe.json)"
+				},
+				"bronze_sword" : {
+					"recipe" : "file(bronze_sword_recipe.json)"
+				},
+				"iron_battle_axe" : {
+					"recipe" : "file(iron_battle_axe_recipe.json)"
+				},
+				"iron_sword" : {
+					"recipe" : "file(iron_sword_recipe.json)"
+				},
+				"iron_short_sword" : {
+					"recipe" : "file(iron_short_sword_recipe.json)"
+				},
+				"steel_mace" : {
+					"recipe" : "file(steel_mace_recipe.json)"
+				},
+				"iron_axe" : {
+					"recipe" : "file(iron_axe_recipe.json)"
+				},
+				"steel_axe" : {
+					"recipe" : "file(steel_axe_recipe.json)"
+				},
+				"bronze_hatchet" : {
+					"recipe" : "file(bronze_hatchet_recipe.json)"
+				},
+				"iron_hatchet" : {
+					"recipe" : "file(iron_hatchet_recipe.json)"
+				},
+				"steel_dagger" : {
+					"recipe" : "file(steel_dagger_recipe.json)"
+				},
+				"steel_lance" : {
+					"recipe" : "file(steel_lance_recipe.json)"
+				},
+				"silver_halberd" : {
+					"recipe" : "file(silver_halberd_recipe.json)"
+				},
+				"silver_short_sword" : {
+					"recipe" : "file(silver_short_sword_recipe.json)"
+				},
+				"silver_mace" : {
+					"recipe" : "file(silver_mace_recipe.json)"
+				}
+			}
+		},
+		"armor": {
+		  "recipes" : {
+				"iron_platemail" : {
+					"recipe" : "file(iron_platemail_recipe.json)"
+				},
+				"iron_helmet" : {
+					"recipe" : "file(iron_helmet_recipe.json)"
+				},
+				"steel_chainmail" : {
+					"recipe" : "file(steel_chainmail_recipe.json)"
+				},
+				"steel_helm" : {
+					"recipe" : "file(steel_helm_recipe.json)"
+				},
+				"light_iron_shield" : {
+					"recipe" : "file(light_iron_shield_recipe.json)"
+				},
+				"light_steel_shield" : {
+					"recipe" : "file(light_steel_shield_recipe.json)"
+				},
+				"silver_shield" : {
+					"recipe" : "file(silver_shield_recipe.json)"
+				}
+			}
+		}
 	}
-  }
 }

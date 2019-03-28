@@ -214,6 +214,15 @@ App.StonehearthUnitFrameView.reopen({
       });
    }.observes('model.uri', 'model.stonehearth:commands.commands', 'model.stonehearth:unit_info', 'model.stonehearth:job'),
 
+	_updateEnergy: function() {
+      var self = this;
+      var currentEnergy = self.get('model.stonehearth:expendable_resources.resources.energy');
+      self.set('currentEnergy', Math.floor(currentEnergy));
+
+      var maxEnergy = self.get('model.stonehearth:attributes.attributes.max_energy.user_visible_value');
+      self.set('maxEnergy', Math.ceil(maxEnergy));
+   }.observes('model.stonehearth:expendable_resources', 'model.stonehearth:attributes.attributes.max_energy'),
+	
    _updateChangeableName: function() {
       var self = this;
       var playerCheck = self.get('model.player_id') == App.stonehearthClient.getPlayerId();

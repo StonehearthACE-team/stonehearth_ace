@@ -2,18 +2,8 @@
    "type" : "effect",
    "mixins": "/stonehearth/data/rigs/entities/humans/effects/mine.json",
    "tracks": {
-      "animation": {  
-         "speed" : 1.5
-      },
 	  "grab_hammer" : {
          "item": "stonehearth_ace:tools:mining_pick"
-      },
-	  "sound": {
-         "start_time": 300
-      },
-      "dust": {
-         "start_time" : 600,
-         "end_time" : 630
-      }   	  
+      } 	  
    }
 }

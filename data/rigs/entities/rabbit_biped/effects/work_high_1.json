@@ -2,18 +2,8 @@
    "type" : "effect",
    "mixins": "/stonehearth/data/rigs/entities/rabbit_biped/effects/work_high.json",
    "tracks": {
-      "animation": {
-            "speed" : 1.5
-      },
       "grab_hammer" : {
          "item": "stonehearth_ace:tools:worker_hammer"
-      },
-      "sound": {
-         "start_time": 225
-      },
-      "dust": {
-         "start_time" : 225,
-         "end_time" : 325
-      }            
+      }          
    }
 }

@@ -41,6 +41,12 @@
                         </a>
                      {{/if}}
                   {{/if}}
+						  {{#if view.model.stonehearth:expendable_resources.resources.energy}}
+                     <div id="bubble">
+                        <div id="energy"></div>
+                        <div class="value">{{view.currentEnergy}} / {{view.maxEnergy}}</div>
+                     </div>
+                  {{/if}}
                   {{#if view.appeal}}
                      <div id="bubble">
                         <div id="sparkles"></div>
