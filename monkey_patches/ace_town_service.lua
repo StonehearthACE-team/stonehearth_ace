@@ -124,8 +124,8 @@ function AceTownService:_get_modifier_from_level(affinity, level)
    return best_affinity.period_multiplier
 end
 
-function AceTownService:get_environmental_growth_time_modifier(climate, humidity, light, flood_multiplier)
-   local modifier = flood_multiplier or 1
+function AceTownService:get_environmental_growth_time_modifier(climate, humidity, light, flood_multiplier, frozen_multiplier)
+   local modifier = (flood_multiplier or 1) * (frozen_multiplier or 1)
 
    modifier = modifier * self:_get_modifier_from_level(self:get_water_affinity_table(climate), humidity)
    modifier = modifier * self:_get_modifier_from_level(self:get_light_affinity_table(climate), light)

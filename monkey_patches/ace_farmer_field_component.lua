@@ -357,6 +357,7 @@ function AceFarmerFieldComponent:_update_weather()
    local weather = stonehearth.weather:get_current_weather()
    local sunlight = weather:get_sunlight()
    local humidity = weather:get_humidity()
+   local frozen = weather:get_frozen()
    local changed = false
 
    if sunlight ~= self._weather_sunlight then
@@ -365,6 +366,10 @@ function AceFarmerFieldComponent:_update_weather()
    end
    if humidity ~= self._weather_humidity then
       self._weather_humidity = humidity
+      changed = true
+   end
+   if frozen ~= self._weather_frozen then
+      self._weather_frozen = frozen
       changed = true
    end
 
@@ -417,6 +422,7 @@ function AceFarmerFieldComponent:_update_climate()
    local changed = false
    local sunlight = math.floor(100 * self._sky_visibility * self._biome_sunlight * self._season_sunlight * self._weather_sunlight) / 100
    local humidity = math.floor(100 * (self._sv._water_level + self._biome_humidity + self._sky_visibility * (self._season_humidity + self._weather_humidity))) / 100
+   local frozen = self._weather_frozen
 
    if sunlight ~= self._sv.sunlight_level then
       self._sv.sunlight_level = sunlight
@@ -426,6 +432,11 @@ function AceFarmerFieldComponent:_update_climate()
    if humidity ~= self._sv.humidity_level then
       self._sv.humidity_level = humidity
       changed = true
+   end
+
+   if frozen ~= self._sv.frozen then
+      self._sv.frozen = frozen
+      self.__saved_variables:mark_changed()
    end
 
    if changed then
@@ -441,7 +452,8 @@ function AceFarmerFieldComponent:_set_growth_factors()
          self._sv.current_crop_details.preferred_climate,
          self._sv.humidity_level,
          self._sv.sunlight_level,
-         self._sv.flooded and self._sv.current_crop_details.flood_period_multiplier)
+         self._sv.flooded and self._sv.current_crop_details.flood_period_multiplier,
+         self._sv.frozen and self._sv.current_crop_details.frozen_period_multiplier)
    
    local size = self._sv.size
    local contents = self._sv.contents
@@ -538,6 +550,13 @@ function AceFarmerFieldComponent:_on_flood_signal_changed(changes)
    end
    
    self:_set_flooded(flooded)
+end
+
+function AceFarmerFieldComponent:_set_frozen(frozen)
+   if frozen ~= self._sv.frozen then
+      self._sv.frozen = frozen
+      self.__saved_variables:mark_changed()
+   end
 end
 
 -- returns the best affinity and then the next one so you can see the range until it would apply (and its effect)

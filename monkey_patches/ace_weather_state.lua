@@ -29,6 +29,7 @@ function AceWeatherState:_load_ace_values()
    self._sv.sunlight = self._sv._base_sunlight
    self._sv._base_humidity = json.humidity or 0
    self._sv.humidity = self._sv._base_humidity
+   self._sv.frozen = json.frozen or false
    
    if type(self._sv.unsheltered_debuff) == 'string' then
       self._sv.unsheltered_debuff = { self._sv.unsheltered_debuff }
@@ -105,6 +106,10 @@ end
 
 function AceWeatherState:get_base_humidity()
    return self._sv._base_humidity
+end
+
+function AceWeatherState:get_frozen()
+   return self._sv.frozen
 end
 
 return AceWeatherState
