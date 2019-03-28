@@ -90,6 +90,11 @@ App.SaveView.reopen({
          //self._deleteOldAutoSaves();
       }
 
+      Ember.run.scheduleOnce('afterRender', self, function() {
+         $('#savePopup #message').append('<br>' + (isAuto ? '<i>' : '') + saveid + (isAuto ? '</i>' : ''));
+         $('#savePopup #message').css('text-align', 'center');
+      });
+
       return radiant.call("radiant:client:save_game", saveid, {
          name: name,
          town_name: App.stonehearthClient.settlementName(),
