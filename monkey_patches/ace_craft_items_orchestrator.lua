@@ -23,7 +23,7 @@ function AceCraftItemsOrchestrator:_process_order(order)
    if curr_workshop then
       args.proxy_workshop = curr_workshop
    elseif recipe.workshop then
-      --if there is no current workshop but the recipe specifies one, then set workshp type
+      --if there is no current workshop but the recipe specifies one, then set workshop type
       args.workshop_type = recipe.workshop.uri
    else
       --if neither of the above are true, put down an invisible temporary workshop,

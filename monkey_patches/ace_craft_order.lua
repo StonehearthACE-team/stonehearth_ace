@@ -138,6 +138,24 @@ function AceCraftOrder:set_crafting_status(crafter, is_crafting)
    self:_on_changed()
 end
 
+-- AceCraftOrder._ace_old_has_ingredients = CraftOrder.has_ingredients
+-- function AceCraftOrder:has_ingredients()
+--    local result = self:_ace_old_has_ingredients()
+   
+--    -- only bother checking fuel requirements if we have all the other ingredients
+--    if result then
+--       local fuel_required = self._sv.condition.fuel_requirement
+--       if fuel_required then
+
+--          local tracking_data = self._inventory:get_item_tracker('stonehearth_ace:fuel_tracker'):get_tracking_data()
+         
+         
+--       end
+--    end
+
+--    return result
+-- end
+
 -- override this to consider stacks for items
 function AceCraftOrder:_has_uri_ingredients_for_item(ingredient, tracking_data)
    local data = radiant.entities.get_component_data(ingredient.uri , 'stonehearth:entity_forms')

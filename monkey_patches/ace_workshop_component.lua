@@ -1,12 +1,16 @@
 local WorkshopComponent = radiant.mods.require('stonehearth.components.workshop.workshop_component')
 local AceWorkshopComponent = class()
 
---AceWorkshopComponent._ace_old_activate = WorkshopComponent.activate -- doesn't exist!
+AceWorkshopComponent._ace_old_activate = WorkshopComponent.activate -- doesn't exist!
 function AceWorkshopComponent:activate()
-   --self:_ace_old_activate()
-
    local json = radiant.entities.get_json(self) or {}
-   self._sv.crafting_time_modifier = self._sv.crafting_time_modifier or json.crafting_time_modifier
+   if not self._sv.crafting_time_modifier then
+      self._sv.crafting_time_modifier = json.crafting_time_modifier
+   end
+
+   if self._ace_old_activate then
+      self:_ace_old_activate()
+   end
 end
 
 function AceWorkshopComponent:set_crafting_time_modifier(modifier)

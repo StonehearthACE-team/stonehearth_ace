@@ -9,7 +9,7 @@ function ContainerComponent:create()
 	local json = radiant.entities.get_json(self)
 	self._sv.type = json.type
 	self._sv.capacity = json.capacity
-	self._sv.volume = 0
+	self._sv.volume = math.min(self._sv.capacity, json.starting_volume or 0)
 	self.__saved_variables:mark_changed()
 end
 
