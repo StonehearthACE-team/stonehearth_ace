@@ -30,7 +30,8 @@ App.StonehearthFarmView.reopen({
       FASTER: 'faster',
       SLOWER: 'slower',
       DRY_SLOWER: 'dry_slower',
-      DRY_STOPPED: 'dry_no_growth'
+      DRY_STOPPED: 'dry_no_growth',
+      FROZEN: 'frozen'
    },
 
    _GROWTH_TIMES: {
@@ -399,6 +400,7 @@ App.StonehearthFarmView.reopen({
       var floodTooltip = localizations.flooded.prefers_not;
       var requireFlooding = details.require_flooding_to_grow;
       var floodingMultiplier = details.flood_period_multiplier;
+      var frozenMultiplier = details.frozen_period_multiplier;
       if (requireFlooding) {
          floodType = self._FLOOD_ICONS.REQUIRED;
          floodTooltip = localizations.flooded.requires;
@@ -417,6 +419,7 @@ App.StonehearthFarmView.reopen({
          tooltipTitle: localizations.flooded.property_name,
          requireFlooding: requireFlooding,
          floodingMultiplier: floodingMultiplier,
+         frozenMultiplier: frozenMultiplier,
          icon: self._IMAGES_DIR + 'property_flood_' + floodType + '.png',
          tooltip: floodTooltip
       };
@@ -486,6 +489,7 @@ App.StonehearthFarmView.reopen({
       var effective_humidity_level = field_sv.effective_humidity_level;
       var current_light_level = field_sv.sunlight_level;
       var growth_time_modifier = field_sv.growth_time_modifier;
+      var is_frozen = field_sv.frozen;
       
       var status;
       
@@ -553,40 +557,54 @@ App.StonehearthFarmView.reopen({
       status = self._STATUSES.AVERAGE;
       var flood_icon = self._FLOOD_ICONS.DRY;
       var flood_tooltip = localizations.flooded.current_not_flooded;
-      if (is_flooded) {
-         flood_tooltip = localizations.flooded.current_flooded;
-      }
-      if (cropProperties.floodPreference.requireFlooding) {
-         if (!is_flooded) {
-            status = self._STATUSES.BAD;
-            flood_icon = self._FLOOD_ICONS.DRY_STOPPED;
-         }
-         else {
+      if (is_frozen) {
+         // frozen status takes precendence over flooding
+         flood_tooltip = localizations.frozen.current_frozen;
+         flood_icon = self._FLOOD_ICONS.FROZEN;
+         if (cropProperties.floodPreference.frozenMultiplier < 1) {
+            // unlikely...
             status = self._STATUSES.OPTIMAL;
+         }
+         else if (cropProperties.floodPreference.frozenMultiplier > 1) {
+            status = self._STATUSES.POOR;
+         }
+      }
+      else {
+         if (is_flooded) {
+            flood_tooltip = localizations.flooded.current_flooded;
+         }
+         if (cropProperties.floodPreference.requireFlooding) {
+            if (!is_flooded) {
+               status = self._STATUSES.BAD;
+               flood_icon = self._FLOOD_ICONS.DRY_STOPPED;
+            }
+            else {
+               status = self._STATUSES.OPTIMAL;
+               flood_icon = self._FLOOD_ICONS.REQUIRED;
+            }
+         }
+         else if (cropProperties.floodPreference.floodingMultiplier < 1) {
+            if (!is_flooded) {
+               status = self._STATUSES.POOR;
+               flood_icon = self._FLOOD_ICONS.DRY_SLOWER;
+            }
+            else {
+               status = self._STATUSES.OPTIMAL;
+               flood_icon = self._FLOOD_ICONS.FASTER;
+            }
+         }
+         else if (cropProperties.floodPreference.floodingMultiplier > 1) {
+            if (is_flooded) {
+               status = self._STATUSES.POOR;
+               flood_icon = self._FLOOD_ICONS.SLOWER;
+            }
+            else {
+               status = self._STATUSES.OPTIMAL;
+            }
+         }
+         else if (is_flooded) {
             flood_icon = self._FLOOD_ICONS.REQUIRED;
          }
-      }
-      else if (cropProperties.floodPreference.floodingMultiplier < 1) {
-         if (!is_flooded) {
-            status = self._STATUSES.POOR;
-            flood_icon = self._FLOOD_ICONS.DRY_SLOWER;
-         }
-         else {
-            status = self._STATUSES.OPTIMAL;
-            flood_icon = self._FLOOD_ICONS.FASTER;
-         }
-      }
-      else if (cropProperties.floodPreference.floodingMultiplier > 1) {
-         if (is_flooded) {
-            status = self._STATUSES.POOR;
-            flood_icon = self._FLOOD_ICONS.SLOWER;
-         }
-         else {
-            status = self._STATUSES.OPTIMAL;
-         }
-      }
-      else if (is_flooded) {
-         flood_icon = self._FLOOD_ICONS.REQUIRED;
       }
 
       var currentFlooded = {
