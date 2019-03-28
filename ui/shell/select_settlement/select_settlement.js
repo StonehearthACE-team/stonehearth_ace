@@ -14,7 +14,8 @@ App.StonehearthSelectSettlementView.reopen({
                      var id = $el.attr('data-season-id');
                      var description = biome.seasons[id].description;
                      if (description) {
-                        $el.tooltipster({ content: i18n.t(description, {escapeHTML: true}), position: 'bottom' });
+                        var tooltip = $(App.tooltipHelper.createTooltip(null, i18n.t(description, {escapeHTML: true})));
+                        $el.tooltipster({ content: tooltip, position: 'bottom' });
                      }
                   });
                   if (biome.default_starting_season) {
