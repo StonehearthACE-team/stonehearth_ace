@@ -492,10 +492,11 @@ function AceFarmerFieldComponent:_create_water_listener()
                               :extruded('z', 1, 1)
                               :extruded('y', 2, 0)
    local water_component = self._entity:add_component('stonehearth_ace:water_signal')
-   self._water_signal = water_component:set_signal('farmer_field', water_region, {'water_volume', 'water_exists'}, function(changes) self:_on_water_signal_changed(changes) end)
+   self._water_signal = water_component:set_signal('farmer_field', water_region, {'water_volume'}, function(changes) self:_on_water_signal_changed(changes) end)
    self._sv.water_signal_region = water_region:duplicate()
+   self._flood_signal = water_component:set_signal('farmer_field_flood', region, {'water_exists'}, function(changes) self:_on_flood_signal_changed(changes) end)
 
-   self:_set_flooded(self._water_signal:get_water_exists())
+   self:_set_flooded(self._flood_signal:get_water_exists())
    self:_set_water_volume(self._water_signal:get_water_volume())
 end
 
@@ -523,16 +524,12 @@ function AceFarmerFieldComponent:_set_water_volume(volume)
 end
 
 function AceFarmerFieldComponent:_on_water_signal_changed(changes)
-   local volume = changes.water_volume
-   local flooded = changes.water_exists
-   
-   if volume and volume.value then
-      self:_set_water_volume(volume.value)
+   local volume = changes.water_volume.value
+   if not volume then
+      return
    end
    
-   if flooded and flooded.value ~= nil then
-      self:_set_flooded(flooded.value)
-   end
+   self:_set_water_volume(volume)
 end
 
 function AceFarmerFieldComponent:_set_flooded(flooded)
@@ -541,6 +538,16 @@ function AceFarmerFieldComponent:_set_flooded(flooded)
       self.__saved_variables:mark_changed()
       self:_set_crops_flooded(flooded)
    end
+end
+
+function AceFarmerFieldComponent:_on_flood_signal_changed(changes)
+   log:debug('_on_flood_signal_changed: %s', radiant.util.table_tostring(changes))
+   local flooded = changes.water_exists.value
+   if flooded == nil then
+      return
+   end
+   
+   self:_set_flooded(flooded)
 end
 
 function AceFarmerFieldComponent:_set_frozen(frozen)
