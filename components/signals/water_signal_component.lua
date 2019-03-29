@@ -60,6 +60,8 @@ function WaterSignalComponent:destroy()
    end
 
    self:_destroy_location_trace()
+
+   self:clear_signals()
 end
 
 function WaterSignalComponent:_destroy_location_trace()

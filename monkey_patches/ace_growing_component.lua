@@ -64,6 +64,7 @@ function AceGrowingComponent:set_flooded(flooded)
    else
       self:_recalculate_duration(true)
    end
+   self.__saved_variables:mark_changed()
 end
 
 function AceGrowingComponent:is_flooded()

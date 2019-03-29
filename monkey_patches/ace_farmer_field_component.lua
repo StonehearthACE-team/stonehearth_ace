@@ -44,6 +44,9 @@ function AceFarmerFieldComponent:post_activate()
    if not self._sv.flooded then
       self._sv.flooded = false
    end
+   if not self._sv._queued_overwatered then
+      self._sv._queued_overwatered = {}
+   end
 
    if self._is_restore then
       self:_create_water_listener()
@@ -92,10 +95,6 @@ function AceFarmerFieldComponent:_ensure_crop_counts()
    --    self._sv.num_flooded = num_flooded
    --    self.__saved_variables:mark_changed()
    -- end
-
-   if not self._sv._queued_overwatered then
-      self._sv._queued_overwatered = {}
-   end
 end
 
 function AceFarmerFieldComponent:_ensure_fertilize_layer()
@@ -190,6 +189,7 @@ function AceFarmerFieldComponent:plant_crop_at(x_offset, z_offset)
    local growing_comp = crop and crop:add_component('stonehearth:growing')
 	if growing_comp then
       growing_comp:set_environmental_growth_time_modifier(self._sv.growth_time_modifier)
+      growing_comp:set_flooded(self._sv.flooded)
       -- self:_create_flood_listener(crop)
       -- if growing_comp:is_flooded() then
       --    self._sv.num_flooded = self._sv.num_flooded + 1
@@ -492,13 +492,10 @@ function AceFarmerFieldComponent:_create_water_listener()
                               :extruded('z', 1, 1)
                               :extruded('y', 2, 0)
    local water_component = self._entity:add_component('stonehearth_ace:water_signal')
-   self._water_signal = water_component:set_signal('farmer_field', water_region, {'water_volume'}, function(changes) self:_on_water_signal_changed(changes) end)
+   self._water_signal = water_component:set_signal('farmer_field', water_region, {'water_volume', 'water_exists'}, function(changes) self:_on_water_signal_changed(changes) end)
    self._sv.water_signal_region = water_region:duplicate()
 
-
-   self._flood_signal = water_component:set_signal('farmer_field_flood', region, {'water_exists'}, function(changes) self:_on_flood_signal_changed(changes) end)
-
-   self:_set_flooded(self._flood_signal:get_water_exists())
+   self:_set_flooded(self._water_signal:get_water_exists())
    self:_set_water_volume(self._water_signal:get_water_volume())
 end
 
@@ -526,12 +523,16 @@ function AceFarmerFieldComponent:_set_water_volume(volume)
 end
 
 function AceFarmerFieldComponent:_on_water_signal_changed(changes)
-   local volume = changes.water_volume.value
-   if not volume then
-      return
+   local volume = changes.water_volume
+   local flooded = changes.water_exists
+   
+   if volume and volume.value then
+      self:_set_water_volume(volume.value)
    end
    
-   self:_set_water_volume(volume)
+   if flooded and flooded.value ~= nil then
+      self:_set_flooded(flooded.value)
+   end
 end
 
 function AceFarmerFieldComponent:_set_flooded(flooded)
@@ -540,16 +541,6 @@ function AceFarmerFieldComponent:_set_flooded(flooded)
       self.__saved_variables:mark_changed()
       self:_set_crops_flooded(flooded)
    end
-end
-
-function AceFarmerFieldComponent:_on_flood_signal_changed(changes)
-   log:debug('_on_flood_signal_changed: %s', radiant.util.table_tostring(changes))
-   local flooded = changes.water_exists.value
-   if flooded == nil then
-      return
-   end
-   
-   self:_set_flooded(flooded)
 end
 
 function AceFarmerFieldComponent:_set_frozen(frozen)

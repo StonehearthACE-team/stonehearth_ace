@@ -8,7 +8,6 @@ local service_creation_order = {
    'underfarming',
    'mechanical',
    'persistence'
-   --'vine'
 }
 
 local monkey_patches = {
