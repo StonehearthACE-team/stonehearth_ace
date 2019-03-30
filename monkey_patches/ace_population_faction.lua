@@ -160,7 +160,7 @@ end
 function AcePopulationFaction:get_titles_for_statistic(entity, stat_changed_args)
    local titles = self:_get_stats_titles_for_entity_type(entity)
 
-   local name_tbl = titles[stat_changed_args.category] and titles[stat_changed_args.category][stat_changed_args.name]
+   local name_tbl = titles and titles[stat_changed_args.category] and titles[stat_changed_args.category][stat_changed_args.name]
    if name_tbl then
       local is_numerical = type(stat_changed_args.value) == 'number'
       -- if the value is numerical, we want to get the highest required_value rank (higher ranks automatically grant all lower ranks in a group)
