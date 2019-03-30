@@ -165,11 +165,6 @@ function AceTown:unregister_pasture(pasture)
             end
          end
       end
-
-      local items = radiant.terrain.get_entities_in_region(pasture_reg,
-         function(item)
-            return item:get_component('stonehearth_ace:pasture_item') ~= nil
-         end)
    end
 end
 
