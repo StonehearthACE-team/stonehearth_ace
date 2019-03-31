@@ -91,7 +91,7 @@ App.SaveView.reopen({
       }
 
       Ember.run.scheduleOnce('afterRender', self, function() {
-         $('#savePopup #message').append('<br>' + (isAuto ? '<i>' : '') + saveid + (isAuto ? '</i>' : ''));
+         $('#savePopup #message').append('<br>' + (isAuto ? `<i>${saveid}</i>` : (saveName ? saveName : App.stonehearthClient.settlementName())));
          $('#savePopup #message').css('text-align', 'center');
       });
 

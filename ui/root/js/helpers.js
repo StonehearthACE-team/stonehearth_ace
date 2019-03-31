@@ -104,12 +104,13 @@ i18n.addPostProcessor("localizeEntityName", function(value, key, isFound, opts) 
          var newToken = i18n.options.interpolationPrefix + tokenWithoutSymbols + (isFullEntity ? "." + ui_property + ".display_name" : "_display_name") + i18n.options.interpolationSuffix;
          var replacedToken = i18n.applyReplacement(newToken, opts);
 
+         var old_opts = {self: opts.self};
          opts['self'] = {};
          opts.self['stonehearth:unit_info'] = unit_info;
-         if (!opts.self['stonehearth:unit_info']) {
+         if (!opts.self['stonehearth:unit_info'] || !isFullEntity) {
             opts.self['stonehearth:unit_info'] = {
                'custom_name': customName,
-               'custom_data': interpretPropertyString(tokenWithoutSymbols + '_custom_data', opts) || {}
+               'custom_data': interpretPropertyString(tokenWithoutSymbols + '_custom_data', old_opts) || {}
             };
          }
          opts.defaultValue = i18n.t("stonehearth:ui.game.entities.unknown_name");

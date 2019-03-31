@@ -104,7 +104,8 @@ local monkey_patches = {
    ace_memorialize_death_action = 'stonehearth.ai.actions.memorialize_death_action',
    ace_get_food_from_container_adjacent = 'stonehearth.ai.actions.get_food_from_container_adjacent',
    ace_ai_component = 'stonehearth.components.ai.ai_component',
-   ace_personality_component = 'stonehearth.components.personality.personality_component'
+   ace_personality_component = 'stonehearth.components.personality.personality_component',
+   ace_pet_component = 'stonehearth.components.pet.pet_component'
 }
 
 local function monkey_patching()
