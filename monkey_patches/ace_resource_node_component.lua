@@ -35,7 +35,10 @@ function AceResourceNodeComponent:spawn_resource(harvester_entity, collect_locat
    else
       -- if the pile comp was empty at the start of this, it's because it wasn't initialized properly
       -- so just use normal resource spawning, and don't consider whether the pile is empty for destroying
-      pile_comp = nil
+      if pile_comp then
+         durability_to_consume = pile_comp:get_harvest_rate()
+         pile_comp = nil
+      end
       spawned_resources = self:_place_spawned_items(harvester_entity, collect_location)
 
          -- If we have the vitality town bonus, there's a chance we don't consume durability.
