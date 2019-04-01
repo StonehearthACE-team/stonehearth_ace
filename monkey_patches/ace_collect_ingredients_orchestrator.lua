@@ -42,14 +42,27 @@ function AceCollectIngredients:run(town, args)
 
       --Then, if the ingredients are not still completed, get more from the world
 
+      local max_distance_for_rating_sq = stonehearth.constants.inventory.MAX_SIGNIFICANT_PATH_LENGTH * stonehearth.constants.inventory.MAX_SIGNIFICANT_PATH_LENGTH
       local rating_fn
       if self._prefer_high_quality then
-         rating_fn = function(item)
-            return radiant.entities.get_item_quality(item) / 3
+         rating_fn = function(item, entity, entity_location, storage_location)
+            local rating = radiant.entities.get_item_quality(item) / 3
+
+            local distance_sq = (entity_location or radiant.entities.get_world_grid_location(entity))
+                  :distance_to_squared(storage_location or radiant.entities.get_world_grid_location(item))
+            local distance_score = (1 - math.min(1, distance_sq / max_distance_for_rating_sq))
+
+            return rating * 0.8 + distance_score * 0.2
          end
       else
-         rating_fn = function(item)
-            return 2 - radiant.entities.get_item_quality(item)
+         rating_fn = function(item, entity, entity_location, storage_location)
+            local rating = 2 - radiant.entities.get_item_quality(item)
+
+            local distance_sq = (entity_location or radiant.entities.get_world_grid_location(entity))
+                  :distance_to_squared(storage_location or radiant.entities.get_world_grid_location(item))
+            local distance_score = (1 - math.min(1, distance_sq / max_distance_for_rating_sq))
+            
+            return rating * 0.8 + distance_score * 0.2
          end
       end
 
@@ -57,9 +70,14 @@ function AceCollectIngredients:run(town, args)
          local ing = ingredients:get_next_ingredient()
          local args = {
             ingredient = ing,
-            ingredient_list = ingredients,
-            rating_fn = rating_fn
+            ingredient_list = ingredients
          }
+
+         -- for each ingredient, check if we actually have any higher quality ingredients
+         -- if we don't, don't bother with a rating function
+         if self._order:ingredient_has_multiple_qualities(ing) then
+            args.rating_fn = rating_fn
+         end
 
          log:detail('Crafter %s looks for ingredient %s', self._crafter, radiant.util.table_tostring(ing))
 

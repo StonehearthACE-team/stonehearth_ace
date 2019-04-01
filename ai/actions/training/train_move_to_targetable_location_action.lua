@@ -88,7 +88,7 @@ end
 
 local ai = stonehearth.ai
 return ai:create_compound_action(TrainMoveToTargetableLocation)
-         :execute('stonehearth:go_toward_location', {
+         :execute('stonehearth:goto_location', {
             reason = 'move to targetable location',
-            destination = ai.PREV.location
+            location = ai.PREV.location
          })
