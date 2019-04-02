@@ -1,0 +1,26 @@
+{
+   "type" : "effect",
+   "tracks": {
+      "sound": {
+			"start_time": 200,
+			"volume": 80,
+			"loop": true
+      },
+		"sound_2": {
+         "type": "sound_effect",
+         "start_time": 1000,
+         "min_distance": 27,
+         "falloff" : 2.5,
+         "volume": 80,
+			"loop": true,
+         "track" : {
+            "type": "one_of",
+            "items": [
+               "stonehearth:sounds:blacksmith_hammer_01",
+               "stonehearth:sounds:blacksmith_hammer_02",
+               "stonehearth:sounds:blacksmith_hammer_03"
+            ]
+         }
+      }        
+   }
+}
