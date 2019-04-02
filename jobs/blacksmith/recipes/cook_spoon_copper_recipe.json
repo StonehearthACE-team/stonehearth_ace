@@ -1,0 +1,22 @@
+{
+   "type": "recipe",
+   "effort": 25,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.blacksmith.recipes.cook_spoon_copper_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.blacksmith.recipes.cook_spoon_copper_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.blacksmith.recipes.cook_spoon_copper_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/tools/cook_spoon_copper/cook_spoon_copper.png",
+   "workshop": "stonehearth:blacksmith:forge",
+   "level_requirement": 1,
+   "ingredients": [
+      {
+         "uri": "stonehearth:refined:copper_ingot",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:tools:cook_spoon_copper"
+      }
+   ]
+}

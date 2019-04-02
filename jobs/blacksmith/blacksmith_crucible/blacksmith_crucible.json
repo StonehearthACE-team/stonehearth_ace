@@ -45,25 +45,6 @@
          "buffs": {
             "stonehearth_ace:buffs:weather:warmth_source": true
          }
-      },
-      "stonehearth:attributes": {
-         "max_energy": {
-            "type": "basic",
-            "value": 1000
-         }
-      },
-      "stonehearth:expendable_resources": {
-         "resources": {
-            "energy": {
-               "min": {
-                  "value": 0
-               },
-               "max": {
-                  "linked_attribute": "max_energy"
-               },
-               "initial_value": 0
-            }
-         }
       }
    },
    "entity_data": {

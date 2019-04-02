@@ -686,12 +686,17 @@ App.StonehearthFarmView.reopen({
          growthTimeTooltip = localizations.growth_time.stopped;
          status = self._STATUSES.BAD;
       }
-      else if (growth_time_modifier < 0.9) {
+      else if (growth_time_modifier <= 0.9) {
          growthTime = self._GROWTH_TIMES.SHORTER;
          growthTimeTooltip = localizations.growth_time.shorter;
          status = self._STATUSES.OPTIMAL;
       }
-      else if (growth_time_modifier > 1.1) {
+		else if (growth_time_modifier >= 5) {
+         growthTime = self._GROWTH_TIMES.LONGER;
+         growthTimeTooltip = localizations.growth_time.too_long;
+         status = self._STATUSES.BAD;
+      }
+      else if (growth_time_modifier >= 1.1) {
          growthTime = self._GROWTH_TIMES.LONGER;
          growthTimeTooltip = localizations.growth_time.longer;
          status = self._STATUSES.POOR;

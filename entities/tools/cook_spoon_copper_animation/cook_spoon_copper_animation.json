@@ -1,0 +1,35 @@
+{
+   "type": "entity",
+   "mixins": [
+      "stonehearth:mixins:item_properties"
+   ],
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(cook_spoon_copper_animation.qb)"
+            ]
+         }
+      },
+      "render_info": {
+         "material": "materials/shiny.material.json"
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 0,
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:jobs.cook.cook_spoon_copper.display_name)",
+         "description": "i18n(stonehearth_ace:jobs.cook.cook_spoon_copper.description)",
+         "category": "tools",
+         "material_tags": [
+            "stockpile_tool"
+         ]
+      }
+   }
+}

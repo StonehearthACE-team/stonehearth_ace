@@ -1,0 +1,61 @@
+{
+   "type": "entity",
+   "mixins": [
+      "stonehearth:mixins:item_properties"
+   ],
+   "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(herbalist_mortar_pewter_iconic.json)"
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(herbalist_mortar_pewter_equipped.qb)"
+            ]
+         }
+      },
+      "render_info": {
+         "material": "materials/shiny.material.json"
+      },
+      "stonehearth:equipment_piece": {
+         "slot": "accessory",
+         "ilevel": 2,
+         "roles": [
+            "herbalist_job"
+         ],
+         "equip_effect": "stonehearth:effects:weapon_level_up",
+         "injected_buffs": [
+            "stonehearth_ace:buffs:tools:herbalist_mortar_pewter"
+         ],
+         "equipment_types": [
+            "tool"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 14,
+         "rarity": "uncommon",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 2,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:jobs.herbalist.herbalist_mortar_pewter.display_name)",
+         "description": "i18n(stonehearth_ace:jobs.herbalist.herbalist_mortar_pewter.description)",
+         "icon": "file(herbalist_mortar_pewter.png)",
+         "category": "tools",
+         "material_tags": [
+            "crafted",
+            "pewter",
+            "herbalist_mortar",
+            "herbalist_mortar_pewter",
+            "stockpile_equipment",
+            "civillian_equipment"
+         ]
+      }
+   }
+}

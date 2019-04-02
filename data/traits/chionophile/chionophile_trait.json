@@ -1,0 +1,95 @@
+{
+   "type": "trait",
+   "display_name": "i18n(stonehearth_ace:data.traits.chionophile.chionophile_trait.display_name)",
+   "description": "i18n(stonehearth_ace:data.traits.chionophile.chionophile_trait.description)",
+   "icon": "file(chionophile_trait.png)",
+   "script_controller": "stonehearth:trait_scripts:replace_thought",
+   "data": {
+      "thought_replacement_map": {
+         "stonehearth:thoughts:weather:blizzard_positive": "stonehearth:thoughts:traits:chionophile",
+         "stonehearth:thoughts:weather:blizzard_negative": "stonehearth:thoughts:traits:chionophile",
+         "stonehearth:thoughts:weather:snow_positive": "stonehearth:thoughts:traits:chionophile",
+         "stonehearth:thoughts:weather:snow_negative": "stonehearth:thoughts:traits:chionophile",
+         "stonehearth:thoughts:weather:sunny_snow_positive": "stonehearth:thoughts:traits:chionophile",
+         "stonehearth:thoughts:weather:sunny_snow_negative": "stonehearth:thoughts:traits:chionophile",
+         "stonehearth:thoughts:weather:cloudy_chilly_positive": "stonehearth:thoughts:traits:chionophile",
+         "stonehearth:thoughts:weather:cloudy_chilly_negative": "stonehearth:thoughts:traits:chionophile",
+         "stonehearth:thoughts:weather:cloudy_cold_positive": "stonehearth:thoughts:traits:chionophile",
+         "stonehearth:thoughts:weather:cloudy_cold_negative": "stonehearth:thoughts:traits:chionophile",
+         "stonehearth:thoughts:weather:foggy_chilly_positive": "stonehearth:thoughts:traits:chionophile",
+         "stonehearth:thoughts:weather:foggy_chilly_negative": "stonehearth:thoughts:traits:chionophile",
+         "stonehearth:thoughts:weather:rain_chilly_positive": "stonehearth:thoughts:traits:chionophile",
+         "stonehearth:thoughts:weather:rain_chilly_negative": "stonehearth:thoughts:traits:chionophile",
+         "stonehearth:thoughts:weather:snow_late_positive": "stonehearth:thoughts:traits:chionophile",
+         "stonehearth:thoughts:weather:snow_late_negative": "stonehearth:thoughts:traits:chionophile",
+         "stonehearth:thoughts:weather:snow_early_positive": "stonehearth:thoughts:traits:chionophile",
+         "stonehearth:thoughts:weather:snow_early_negative": "stonehearth:thoughts:traits:chionophile",
+         "stonehearth:thoughts:weather:sunny_chilly_positive": "stonehearth:thoughts:traits:chionophile",
+         "stonehearth:thoughts:weather:sunny_chilly_negative": "stonehearth:thoughts:traits:chionophile",
+         "stonehearth:thoughts:weather:windy_chilly_positive": "stonehearth:thoughts:traits:chionophile",
+         "stonehearth:thoughts:weather:windy_chilly_negative": "stonehearth:thoughts:traits:chionophile"
+      }
+   },
+   "subject_overrides": [
+      {
+         "subject": "stonehearth:subjects:weather:snow",
+         "sentiment": 1,
+         "permanent": true,
+         "unvarying": true
+      },
+      {
+         "subject": "stonehearth:subjects:weather:snow_sunny",
+         "sentiment": 1,
+         "permanent": true,
+         "unvarying": true
+      },
+      {
+         "subject": "stonehearth:subjects:weather:blizzard",
+         "sentiment": 1,
+         "permanent": true,
+         "unvarying": true
+      },
+      {
+         "subject": "stonehearth_ace:subjects:weather:cloudy:chilly",
+         "sentiment": 1,
+         "permanent": true,
+         "unvarying": true
+      },
+      {
+         "subject": "stonehearth_ace:subjects:weather:cloudy:cold",
+         "sentiment": 1,
+         "permanent": true,
+         "unvarying": true
+      },
+      {
+         "subject": "stonehearth_ace:subjects:weather:rain:chilly",
+         "sentiment": 1,
+         "permanent": true,
+         "unvarying": true
+      },
+      {
+         "subject": "stonehearth_ace:subjects:weather:snow:late",
+         "sentiment": 1,
+         "permanent": true,
+         "unvarying": true
+      },
+      {
+         "subject": "stonehearth_ace:subjects:weather:snow:early",
+         "sentiment": 1,
+         "permanent": true,
+         "unvarying": true
+      },
+      {
+         "subject": "stonehearth_ace:subjects:weather:foggy:chilly",
+         "sentiment": 1,
+         "permanent": true,
+         "unvarying": true
+      },
+      {
+         "subject": "stonehearth_ace:subjects:weather:sunny:chilly",
+         "sentiment": 1,
+         "permanent": true,
+         "unvarying": true
+      }
+   ]
+}

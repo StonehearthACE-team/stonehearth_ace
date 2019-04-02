@@ -312,7 +312,7 @@
                }
             }
          },
-			"temperate": {
+         "temperate": {
             "seasons": {
                "spring": {
                   "display_name": "Spring",
@@ -332,7 +332,7 @@
                }
             }
          },
-			"desert": {
+         "desert": {
             "seasons": {
                "spring": {
                   "display_name": "Spring",
@@ -352,7 +352,7 @@
                }
             }
          },
-			"arctic": {
+         "arctic": {
             "seasons": {
                "spring": {
                   "display_name": "Spring",
@@ -563,6 +563,18 @@
                "fungi_lover_ate_fungi": {
                   "display_name": "Mushroom lover",
                   "tooltip": "Yum! I love eating fungi, and I must admit [str(foodname)] was particularly good!"
+               }
+            },
+            "traits": {
+               "values": {
+                  "heliophile": {
+                     "display_name": "Praise the sun!",
+                     "tooltip": "It's my favorite weather today!"
+                  },
+                  "chionophile": {
+                     "display_name": "Amazing chills!",
+                     "tooltip": "It's my favorite weather today!"
+                  }
                }
             }
          }
@@ -1139,6 +1151,18 @@
             "herbivore_trait": {
                "description": "[name(i18n_data.entity)] is a friend to all animals! Plants, less so. They really dislike eating meat."
             }
+         },
+         "chionophile": {
+            "chionophile_trait": {
+               "display_name": "Chionophile",
+               "description": "No one really knows that word. What everyone knows, however, is how much [name(i18n_data.entity)] loves cold and snowy days!"
+            }
+         },
+         "heliophile": {
+            "heliophile_trait": {
+               "display_name": "Heliophile",
+               "description": "[name(i18n_data.entity)] loves praising the sun! Its light and rays are one of their favorite things and makes them really happy."
+            }
          }
       }
    },
@@ -1489,6 +1513,14 @@
                "power_medic_3_description": "The Herbalist can now attend to up to 6 hearthlings at a time."
             },
             "description": "A performer of healing practices, the Herbalist can craft and use tonics, bandages and potions but also work with plants, seeds and other foraging goods."
+         },
+         "herbalist_mortar_pewter": {
+            "display_name": "Herbalist's Pewter Mortar",
+            "description": "A fancy metallic mortar and pestle for increasing the Herbalist's speed."
+         },
+         "herbalist_pestle_pewter": {
+            "display_name": "Herbalist's Pewter Pestle",
+            "description": "For nicer mashing."
          }
       },
       "engineer": {
@@ -1971,7 +2003,47 @@
                "description": "Craft a fancy holder that can store up to 4 Bundles O' Firewood.",
                "flavor": ""
             },
-            "farmer_hoe_iron_recipe": {
+            "cook_spoon_copper_recipe": {
+               "recipe_name": "Cook's Copper Spoon",
+               "description": "Create a lighter and cleaner spoon that will improve the Cook's efficiency.",
+               "flavor": ""
+            },
+            "herbalist_mortar_pestle_pewter_recipe": {
+               "recipe_name": "Herbalist's Pewter Mortar",
+               "description": "Craft a fancy metallic mortar and pestle to increase the Herbalist's crafting speed.",
+               "flavor": ""
+            },
+            "mason_chisel_iron_recipe": {
+               "recipe_name": "Mason's Iron Chisel",
+               "description": "Craft a set of hammer and chisel out of iron to improve the Mason's crafting speed.",
+               "flavor": ""
+            },
+				"potter_cutter_iron_recipe": {
+               "recipe_name": "Potter's Iron Cutter",
+               "description": "Create an improved, sharper cutter for the Potter so they can craft faster.",
+               "flavor": ""
+            },
+				"blacksmith_hammer_steel_recipe": {
+               "recipe_name": "Blacksmith's Steel Hammer",
+               "description": "Forge a new and stronger hammer out of steel for the Blacksmith, improving their crafting speed.",
+               "flavor": "The hammer is a blacksmith's most loyal companion, like a shield to a knight or the moon to the night. -Lucan Varius, Artifex Ignis"
+            },
+				"carpenter_saw_steel_recipe": {
+               "recipe_name": "Carpenter's Steel Saw",
+               "description": "Make an enhanced steel saw that will allow the Carpenter to be faster when crafting.",
+               "flavor": ""
+            },
+				"trapper_knife_steel_recipe": {
+               "recipe_name": "Trapper's Steel Knife",
+               "description": "This sharp and light steel knife will allow the trapper to handle animals faster.",
+               "flavor": "What do you mean with *handle* animals?"
+            },
+				"weaver_spindle_steel_recipe": {
+               "recipe_name": "Weaver's Spindle & Steel Needle",
+               "description": "Create a set of elegant, silver coated needles to improve the Weaver's crafting speed.",
+               "flavor": ""
+            },
+				"farmer_hoe_iron_recipe": {
                "recipe_name": "Iron Farmer's Hoe",
                "description": "Craft a tool that Farmers can use to slightly improve their working efficiency.",
                "flavor": ""
@@ -2220,7 +2292,7 @@
             "refined_name": "Refinement",
             "blacksmith_workbench_recipe": {
                "recipe_name": "Blacksmith Anvil",
-               "description": "Used by the Blacksmith to creating most of their goods."
+               "description": "Used by the Blacksmith to create most of their goods."
             }
          },
          "blacksmith_fuel_oven": {
@@ -2255,11 +2327,11 @@
          "blacksmith_description": {
             "level_1_data": {
                "perk_000_name": "Early Metalworks",
-               "perk_000_description": "The Blacksmith will need to master smelting basic ores and using the crucible before they can work with an anvil."
+               "perk_000_description": "The Blacksmith has started learning how to use a forge and heat a crucible. It will need some practice before they can work with iron and build an anvil!"
             },
             "level_2_data": {
                "perk_000_name": "Bronze & Iron Age!",
-               "perk_000_description": "The Blacksmith is now skilled enough to build an anvil and forge heavy items made of bronze and iron.",
+               "perk_000_description": "The Blacksmith is now skilled enough to build an anvil and forge heavier items made of bronze and iron.",
                "perk_001_name": "Mastering the Fire!",
                "perk_001_description": "The Blacksmith has acquired enough knowledge on forges to start producing their own fuels and facilities."
             },
@@ -2619,6 +2691,10 @@
          "cook_cheese_vat_cheese_aged": {
             "display_name": "Aged Cheese Vat",
             "description": "This cheese is quite mature, firm and flavorful! It is time to harvest this delicacy."
+         },
+         "cook_spoon_copper": {
+            "display_name": "Cook's Copper Spoon",
+            "description": "Lighter and cleaner, this spoon will improve the Cook's efficiency."
          }
       },
       "carpenter": {
@@ -3162,7 +3238,7 @@
          },
          "marblesprout_crop": {
             "display_name": "Marblesprout Flower",
-            "description": "It's flower pretty much defies gravity.",
+            "description": "Its flower pretty much defies gravity.",
             "growth_stage": {
                "000": {
                   "name": "Marblesprout Seedling",
@@ -6652,6 +6728,34 @@
          "worker_tools_steel": {
             "display_name": "Bag of Worker's Steel Tools",
             "description": "Used by Workers to greatly increase their efficiency and speed when working."
+         },
+         "blacksmith_hammer_steel": {
+            "display_name": "Blacksmith's Steel Hammer",
+            "description": "Improves the blacksmith's efficiency allowing them to craft faster."
+         },
+         "carpenter_saw_steel": {
+            "display_name": "Carpenter's Steel Saw",
+            "description": "An improved version of the carpenter's tool, provides faster crafting."
+         },
+         "mason_chisel_iron": {
+            "display_name": "Mason's Iron Chisel",
+            "description": "This enhanced tool will allow the Mason to be faster when creating things."
+         },
+         "potter_cutter_iron": {
+            "display_name": "Potter's Iron Cutter",
+            "description": "This versatile tool can improve the efficiency of the Potter when crafting."
+         },
+         "trapper_knife_steel": {
+            "display_name": "Trapper's Steel Knife",
+            "description": "An improved and stronger knife that will increase the Trapper's efficiency."
+         },
+         "weaver_steel_needle": {
+            "display_name": "Weaver's Spindle & Steel Needle",
+            "description": "A silver-coated needle will allow the Weaver to be much more efficient!"
+         },
+         "mason_hammer_iron": {
+            "display_name": "Mason's Iron Hammer",
+            "description": "Hammers more nicely."
          }
       },
       "tile": {
@@ -7011,17 +7115,17 @@
          },
          "zones_mode": {
             "farm": {
-               "properties": "Crop Properties:",
-               "statuses": "Current Statuses:",
+               "properties": "Crop Properties",
+               "statuses": "Current Statuses",
                "fertilizer_settings": {
-                  "title": "Fertilizer:",
+                  "title": "Fertilizer",
                   "none": "None",
                   "none_description": "Do not fertilize this field (save your fertilizer for more valuable crops).",
                   "high_quality": "High Quality",
                   "high_quality_description": "Prefer higher quality fertilizers for this field.",
                   "low_quality": "Low Quality",
                   "low_quality_description": "Prefer lower quality fertilizers for this field.",
-                  "specific": "Specific Fertilizer:",
+                  "specific": "Specific Fertilizer",
                   "specific_description": "Select a fertilizer below to only use that specific fertilizer for this field."
                },
                "season": {
@@ -7045,6 +7149,7 @@
                   "shorter": "Environmental factors make this crop take <span class='text-value text-optimal'>[str(i18n_data.growth_time_percent)]</span> of normal time to grow.",
                   "normal": "Environmental factors make this crop grow at a normal rate.",
                   "longer": "Environmental factors make this crop take <span class='text-value text-poor'>[str(i18n_data.growth_time_percent)]</span> of normal time to grow.",
+                  "too_long": "This crop is growing <span class='text-bad'>immeasurably slowly</span> due to environmental factors!",
                   "stopped": "This crop's growth is currently <span class='text-bad'>stopped</span>."
                },
                "water_affinity": {
@@ -7062,11 +7167,11 @@
                   "current_level": "This crop currently experiences <span class='light'><span class='text-value'>[str(i18n_data.current_light_level)]</span> daytime sunlight</span>. This considers both shade and current weather state."
                },
                "flooded": {
-                  "property_name": "Flooding",
-                  "status_name": "Flooding",
+                  "property_name": "Covering",
+                  "status_name": "Covering",
                   "requires": "This crop must have water covering it to grow.",
                   "prefers": "This crop grows more quickly when water is covering it and slower when it isn't.",
-                  "prefers_not": "This crop grows more slowly when water is covering it.",
+                  "prefers_not": "This crop grows more slowly when water or snow is covering it.",
                   "current_flooded": "This field <span class='[str(i18n_data.flooded_status)]'>is</span> currently flooded.",
                   "current_not_flooded": "This field <span class='[str(i18n_data.flooded_status)]'>is not</span> currently flooded."
                },

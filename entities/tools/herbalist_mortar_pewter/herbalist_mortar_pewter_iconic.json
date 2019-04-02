@@ -1,0 +1,21 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:item_properties",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(herbalist_mortar_pewter.qb)"
+            ]
+         }
+      },
+      "render_info": {
+         "material": "materials/shiny.material.json"
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "is_item": true
+      }
+   }
+}

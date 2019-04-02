@@ -1,0 +1,76 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:item_properties",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(cook_spoon_copper_equipped.qb)"
+            ]
+         }
+      },
+      "render_info": {
+         "material": "materials/shiny.material.json"
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(cook_spoon_copper_iconic.json)"
+      },
+      "stonehearth:equipment_piece": {
+         "slot": "mainhand",
+         "render_type": "attach_to_bone",
+         "ilevel": 2,
+         "roles": [
+            "cook_job"
+         ],
+         "equip_effect": "stonehearth:effects:weapon_level_up",
+         "injected_buffs": [
+            "stonehearth_ace:buffs:tools:cook_spoon_copper"
+         ],
+         "equipment_types": [
+            "tool"
+         ],
+         "postures": [
+            "stonehearth:combat"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:combat:weapon_data": {
+         "base_damage": 2,
+         "reach": 1.5
+      },
+      "stonehearth:combat:melee_attacks": [
+         {
+            "name": "combat_1h_forehand",
+            "effect": "combat_1h_forehand",
+            "active_frame": 16,
+            "cooldown": 0,
+            "priority": 0
+         }
+      ],
+      "stonehearth:net_worth": {
+         "value_in_gold": 22,
+         "rarity": "uncommon",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 2,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:jobs.cook.cook_spoon_copper.display_name)",
+         "description": "i18n(stonehearth_ace:jobs.cook.cook_spoon_copper.description)",
+         "icon": "file(cook_spoon_copper.png)",
+         "category": "tools",
+         "material_tags": [
+            "copper",
+            "crafted",
+            "cook_spoon",
+            "cook_spoon_copper",
+            "stockpile_equipment",
+            "civillian_equipment"
+         ]
+      }
+   }
+}

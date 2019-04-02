@@ -1,0 +1,26 @@
+{
+   "type": "recipe",
+   "effort": 30,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.blacksmith.recipes.herbalist_mortar_pestle_pewter_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.blacksmith.recipes.herbalist_mortar_pestle_pewter_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.blacksmith.recipes.herbalist_mortar_pestle_pewter_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/tools/herbalist_mortar_pewter/herbalist_mortar_pewter.png",
+   "workshop": "stonehearth_ace:blacksmith:crucible",
+   "level_requirement": 1,
+   "ingredients": [
+      {
+         "uri": "stonehearth:refined:tin_ingot",
+         "count": 1
+      },
+		{
+         "uri": "stonehearth:resources:copper:ore",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:tools:herbalist_mortar_pewter"
+      }
+   ]
+}

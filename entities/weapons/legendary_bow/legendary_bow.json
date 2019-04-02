@@ -9,6 +9,22 @@
 	  }
    },
    "entity_data": {
+		"stonehearth:combat:ranged_attacks": [
+         {
+            "name": "archer_1h_shoot",
+            "effect": "archer_1h_shoot",
+            "active_frame": 41,
+            "cooldown": 0,
+            "priority": 0
+         },
+			{
+            "name": "archer_default_shot",
+            "effect": "archer_1h_shoot",
+            "active_frame": 41,
+            "cooldown": 0,
+            "priority": 0
+         }
+      ],
       "stonehearth:catalog": {
          "material_tags":["legendary", "ascendancy_made", "legendary_bow"]
       }

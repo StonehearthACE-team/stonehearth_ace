@@ -1,8 +1,25 @@
 {
    "type": "index",
    "thoughts": {
+      "traits": {
+         "values": {
+            "heliophile": {
+               "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.traits.values.heliophile.display_name)",
+               "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.traits.values.heliophile.tooltip)",
+               "duration": "1d",
+               "happiness_delta": 9,
+               "stackable": false
+            },
+            "chionophile": {
+               "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.traits.values.chionophile.display_name)",
+               "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.traits.values.chionophile.tooltip)",
+               "duration": "1d",
+               "happiness_delta": 9,
+               "stackable": false
+            }
+         }
+      },
       "weather": {
-         "mutually_exclusive": false,
          "values": {
             "snow_early_positive": {
                "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.weather.values.snow_early_positive.display_name)",

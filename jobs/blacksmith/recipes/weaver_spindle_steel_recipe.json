@@ -1,0 +1,30 @@
+{
+   "type": "recipe",
+   "effort": 60,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.blacksmith.recipes.weaver_spindle_steel_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.blacksmith.recipes.weaver_spindle_steel_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.blacksmith.recipes.weaver_spindle_steel_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/tools/weaver_spindle_steel/weaver_spindle_steel.png",
+   "workshop": "stonehearth_ace:blacksmith:workbench_advanced",
+   "level_requirement": 6,
+   "ingredients": [
+      {
+         "uri": "stonehearth:refined:steel_ingot",
+         "count": 1
+      },
+		{
+         "uri": "stonehearth:refined:silver_ingot",
+         "count": 1
+      },
+      {
+         "material": "fiber resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:tools:weaver_spindle_steel"
+      }
+   ]
+}

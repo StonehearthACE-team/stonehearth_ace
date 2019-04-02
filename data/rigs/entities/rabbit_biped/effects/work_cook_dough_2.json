@@ -1,0 +1,13 @@
+{
+   "type" : "effect",
+	"mixins": "/stonehearth_ace/data/rigs/entities/rabbit_biped/effects/work_cook_dough.json",
+   "tracks": {
+      "grab_spoon" : {
+         "type": "attach_item_effect",
+         "start_time": 0,
+         "end_time": 0,
+         "item": "stonehearth_ace:tools:cook_spoon_copper_animation",
+         "bone": "mainHand"
+      }
+   }
+}

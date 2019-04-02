@@ -1,0 +1,20 @@
+{
+   "type" : "effect",
+	"mixins": "/stonehearth/data/rigs/entities/humans/effects/herbalist_grind.json",
+   "tracks": {
+      "grab_mortar" : {
+         "type": "attach_item_effect",
+         "start_time": 0,
+         "end_time": 0,
+         "item": "stonehearth_ace:tools:herbalist_mortar_pewter",
+         "bone": "offHand"
+      },
+      "grab_pestle" : {
+         "type": "attach_item_effect",
+         "start_time": 0,
+         "end_time": 0,
+         "item": "stonehearth_ace:tools:herbalist_pestle_pewter",
+         "bone": "mainHand"
+      }
+   }
+}

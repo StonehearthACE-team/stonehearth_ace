@@ -1,0 +1,30 @@
+{
+   "type": "recipe",
+   "effort": 60,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.blacksmith.recipes.blacksmith_hammer_steel_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.blacksmith.recipes.blacksmith_hammer_steel_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.blacksmith.recipes.blacksmith_hammer_steel_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/tools/blacksmith_hammer_steel/blacksmith_hammer_steel.png",
+   "workshop": "stonehearth_ace:blacksmith:workbench_advanced",
+   "level_requirement": 4,
+   "ingredients": [
+      {
+         "uri": "stonehearth:refined:steel_ingot",
+         "count": 1
+      },
+		{
+         "uri": "stonehearth:refined:iron_ingot",
+         "count": 1
+      },
+      {
+         "material": "wood resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:tools:blacksmith_hammer_steel"
+      }
+   ]
+}

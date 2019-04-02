@@ -1,0 +1,53 @@
+{
+   "type": "trait",
+   "display_name": "i18n(stonehearth_ace:data.traits.heliophile.heliophile_trait.display_name)",
+   "description": "i18n(stonehearth_ace:data.traits.heliophile.heliophile_trait.description)",
+   "icon": "file(heliophile_trait.png)",
+   "script_controller": "stonehearth:trait_scripts:replace_thought",
+   "data": {
+      "thought_replacement_map": {
+         "stonehearth:thoughts:weather:sunny_positive": "stonehearth:thoughts:traits:heliophile",
+         "stonehearth:thoughts:weather:sunny_negative": "stonehearth:thoughts:traits:heliophile",
+         "stonehearth:thoughts:weather:sunny_chilly_positive": "stonehearth:thoughts:traits:heliophile",
+         "stonehearth:thoughts:weather:sunny_chilly_negative": "stonehearth:thoughts:traits:heliophile",
+         "stonehearth:thoughts:weather:sunny_hot_positive": "stonehearth:thoughts:traits:heliophile",
+         "stonehearth:thoughts:weather:sunny_hot_negative": "stonehearth:thoughts:traits:heliophile",
+         "stonehearth:thoughts:weather:rain_sunny_positive": "stonehearth:thoughts:traits:heliophile",
+         "stonehearth:thoughts:weather:rain_sunny_negative": "stonehearth:thoughts:traits:heliophile",
+         "stonehearth:thoughts:weather:snow_sunny_positive": "stonehearth:thoughts:traits:heliophile",
+         "stonehearth:thoughts:weather:snow_sunny_negative": "stonehearth:thoughts:traits:heliophile"
+      }
+   },
+   "subject_overrides": [
+      {
+         "subject": "stonehearth:subjects:weather:sunny",
+         "sentiment": 1,
+         "permanent": true,
+         "unvarying": true
+      },
+      {
+         "subject": "stonehearth:subjects:weather:rain_sunny",
+         "sentiment": 1,
+         "permanent": true,
+         "unvarying": true
+      },
+      {
+         "subject": "stonehearth:subjects:weather:snow_sunny",
+         "sentiment": 1,
+         "permanent": true,
+         "unvarying": true
+      },
+      {
+         "subject": "stonehearth_ace:subjects:weather:sunny:chilly",
+         "sentiment": 1,
+         "permanent": true,
+         "unvarying": true
+      },
+      {
+         "subject": "stonehearth_ace:subjects:weather:sunny:hot",
+         "sentiment": 1,
+         "permanent": true,
+         "unvarying": true
+      }
+   ]
+}

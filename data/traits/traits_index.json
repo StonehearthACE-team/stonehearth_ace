@@ -16,5 +16,24 @@
       "build": {},
       "talkative": {}
    },
-   "traits": {}
+   "traits": {
+      "stonehearth:traits:pluviophile": {
+         "excludes": {
+            "stonehearth_ace:traits:heliophile": true,
+            "stonehearth_ace:traits:chionophile": true
+         }
+      },
+      "stonehearth_ace:traits:heliophile": {
+         "excludes": {
+            "stonehearth:traits:pluviophile": true,
+            "stonehearth_ace:traits:chionophile": true
+         }
+      },
+      "stonehearth_ace:traits:chionophile": {
+         "excludes": {
+            "stonehearth_ace:traits:heliophile": true,
+            "stonehearth:traits:pluviophile": true
+         }
+      }
+   }
 }
