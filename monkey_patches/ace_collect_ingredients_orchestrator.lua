@@ -43,6 +43,7 @@ function AceCollectIngredients:run(town, args)
       --Then, if the ingredients are not still completed, get more from the world
 
       local max_distance_for_rating_sq = stonehearth.constants.inventory.MAX_SIGNIFICANT_PATH_LENGTH * stonehearth.constants.inventory.MAX_SIGNIFICANT_PATH_LENGTH
+      local close_distance_for_rating_sq = stonehearth.constants.inventory.MAX_INSIGNIFICANT_PATH_LENGTH * stonehearth.constants.inventory.MAX_INSIGNIFICANT_PATH_LENGTH
       local rating_fn
       if self._prefer_high_quality then
          rating_fn = function(item, entity, entity_location, storage_location)
@@ -69,8 +70,9 @@ function AceCollectIngredients:run(town, args)
       end
 
       local distance_rating_fn = function(item, entity, entity_location, storage_location)
+         -- anything within the close distance is considered "best"; doesn't matter if it goes negative
          local distance_sq = (entity_location or radiant.entities.get_world_grid_location(entity))
-               :distance_to_squared(storage_location or radiant.entities.get_world_grid_location(item))
+               :distance_to_squared(storage_location or radiant.entities.get_world_grid_location(item)) - close_distance_for_rating_sq
          local distance_score = (1 - math.min(1, distance_sq / max_distance_for_rating_sq))
          
          return distance_score
