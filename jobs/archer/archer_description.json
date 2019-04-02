@@ -28,6 +28,17 @@
          },
          "perks": [
             {
+               "type": "add_combat_action",
+               "name": "i18n(stonehearth:jobs.archer.archer_description.level_1_data.perk_000_name)",
+               "id": "archer_default_shot",
+               "icon": "file(images/default_shot.png)",
+               "equipment": "stonehearth:archer:abilities:default_shot",
+               "action_type": "stonehearth:combat:ranged_attacks",
+               "description": "i18n(stonehearth:jobs.archer.archer_description.level_1_data.perk_000_description)",
+               "level": 1,
+               "demote_fn": "remove_combat_action"
+            },
+            {
                "name": "i18n(stonehearth_ace:jobs.archer.archer_description.level_1_data.training_perk_name)",
                "description": "i18n(stonehearth_ace:jobs.archer.archer_description.level_1_data.training_perk_description)",
                "id": "training_perk",

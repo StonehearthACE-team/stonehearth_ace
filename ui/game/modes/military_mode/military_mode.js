@@ -147,6 +147,19 @@ App.AceMilitaryModeView = App.View.extend({
          self._onEntitySelected(e);
       });
 
+      App.guiHelper.addTooltip(self.$('#patrolBannersButtons .moveBannerUp'),
+         'stonehearth_ace:ui.game.military_mode.patrol_banners.move_banner_up_description',
+         'stonehearth_ace:ui.game.military_mode.patrol_banners.move_banner_up');
+      App.guiHelper.addTooltip(self.$('#patrolBannersButtons .moveBannerDown'),
+         'stonehearth_ace:ui.game.military_mode.patrol_banners.move_banner_down_description',
+         'stonehearth_ace:ui.game.military_mode.patrol_banners.move_banner_down');
+      App.guiHelper.addTooltip(self.$('#patrolBannersButtons .createBanner'),
+         'stonehearth_ace:ui.game.military_mode.patrol_banners.create_banner_description',
+         'stonehearth_ace:ui.game.military_mode.patrol_banners.create_banner');
+      App.guiHelper.addTooltip(self.$('#patrolBannersButtons .clearBanners'),
+         'stonehearth_ace:ui.game.military_mode.patrol_banners.clear_banners_description',
+         'stonehearth_ace:ui.game.military_mode.patrol_banners.clear_banners');
+
       self.hide();
    },
 

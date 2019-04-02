@@ -35,8 +35,14 @@ function AceResourceNodeComponent:spawn_resource(harvester_entity, collect_locat
    else
       -- if the pile comp was empty at the start of this, it's because it wasn't initialized properly
       -- so just use normal resource spawning, and don't consider whether the pile is empty for destroying
-      pile_comp = nil
-      spawned_resources = self:_place_spawned_items(harvester_entity, collect_location)
+      if pile_comp then
+         durability_to_consume = pile_comp:get_harvest_rate()
+         pile_comp = nil
+      end
+      spawned_resources = {}
+      for i = 1, durability_to_consume do
+         radiant.append_map(spawned_resources, self:_place_spawned_items(harvester_entity, collect_location))
+      end
 
          -- If we have the vitality town bonus, there's a chance we don't consume durability.
       local town = harvester_entity and stonehearth.town:get_town(radiant.entities.get_player_id(harvester_entity))

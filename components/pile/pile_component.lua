@@ -10,6 +10,10 @@ function PileComponent:initialize()
    self._harvest_rate = json.harvest_rate or 1
 end
 
+function PileComponent:get_harvest_rate()
+   return self._harvest_rate
+end
+
 function PileComponent:is_empty()
    return next(self._sv.items) == nil
 end

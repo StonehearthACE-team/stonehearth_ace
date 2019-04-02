@@ -156,6 +156,59 @@ end
 --    return result
 -- end
 
+function AceCraftOrder:ingredient_has_multiple_qualities(ingredient)
+   local tracking_data = self._usable_item_tracking_data
+   if ingredient.uri then
+      return self:_has_multiple_qualities_uri_ingredient(ingredient, tracking_data)
+   elseif ingredient.material then
+      return self:_has_multiple_qualities_material_ingredient(ingredient, tracking_data)
+   end
+end
+
+function AceCraftOrder:_has_multiple_qualities_uri_ingredient(ingredient, tracking_data)
+   local data = radiant.entities.get_component_data(ingredient.uri , 'stonehearth:entity_forms')
+   local lookup_key
+   if data and data.iconic_form then
+      lookup_key = data.iconic_form
+   else
+      lookup_key = ingredient.uri
+   end
+   local tracking_data_for_key = tracking_data:get(lookup_key)
+   if tracking_data_for_key then
+      local count = 0
+      for item_quality_key, entry in pairs(tracking_data_for_key.item_qualities) do
+         count = count + 1
+      end
+      return count > 1
+   end
+
+   return false
+end
+
+function AceCraftOrder:_has_multiple_qualities_material_ingredient(ingredient, tracking_data)
+   local material_id = stonehearth.catalog:get_material_object(ingredient.material):get_id()
+   -- Get cached uris that match the material. Speeds up material checking tremendously.
+   local uris_matching_material = stonehearth.catalog:get_materials_to_matching_uris()[material_id]
+
+   local ingredient_count = 0
+   if uris_matching_material then
+      local qualities = {}
+      for uri, _ in pairs(uris_matching_material) do
+         if tracking_data:contains(uri) then
+            local tracking_data_for_key = tracking_data:get(uri)
+            for item_quality_key, entry in pairs(tracking_data_for_key.item_qualities) do
+               qualities[item_quality_key] = true
+            end
+            if radiant.size(qualities) > 1 then
+               return true
+            end
+         end
+      end
+   end
+
+   return false
+end
+
 -- override this to consider stacks for items
 function AceCraftOrder:_has_uri_ingredients_for_item(ingredient, tracking_data)
    local data = radiant.entities.get_component_data(ingredient.uri , 'stonehearth:entity_forms')
