@@ -312,7 +312,7 @@
                }
             }
          },
-			"temperate": {
+         "temperate": {
             "seasons": {
                "spring": {
                   "display_name": "Frühling",
@@ -332,7 +332,7 @@
                }
             }
          },
-			"desert": {
+         "desert": {
             "seasons": {
                "spring": {
                   "display_name": "Frühling",
@@ -352,7 +352,7 @@
                }
             }
          },
-			"arctic": {
+         "arctic": {
             "seasons": {
                "spring": {
                   "display_name": "Frühling",
@@ -564,6 +564,18 @@
                   "display_name": "Pilzliebhaber",
                   "tooltip": "Lecker! Ich esse gerne Pilze und ich muss zugeben, dass [str(foodname)] besonders gut war!"
                }
+            },
+            "traits": {
+               "values": {
+                  "heliophile": {
+                     "display_name": "Preiset die Sonne!",
+                     "tooltip": "Es ist heute mein Lieblingswetter!"
+                  },
+                  "chionophile": {
+                     "display_name": "Umwerfende Kühle!",
+                     "tooltip": "Es ist heute mein Lieblingswetter!"
+                  }
+               }
             }
          }
       },
@@ -574,6 +586,8 @@
                   "description": "Kein Titel notwendig."
                },
                "goblin_killer": {
+                  "display_name": "Goblintöter(in",
+                  "description": "Durch das Töten von Goblins verdient.",
                   "1_display_name": " die/der Goblintöter/in",
                   "1_description": "Hat einen Goblin getötet!",
                   "5_display_name": " die/der Goblinschlächter/in",
@@ -1137,6 +1151,18 @@
             "herbivore_trait": {
                "description": "[name(i18n_data.entity)] ist ein Freund aller Tiere! Von Pflanzen weniger. Er/Sie mag kein Fleisch essen."
             }
+         },
+         "chionophile": {
+            "chionophile_trait": {
+               "display_name": "Chionophile",
+               "description": "Niemand kennt dieses Wort wirklich. Jeder weiß jedoch, wie sehr [name(i18n_data.entity)] kalte und verschneite Tage liebt!"
+            }
+         },
+         "heliophile": {
+            "heliophile_trait": {
+               "display_name": "Heliophile",
+               "description": "[name(i18n_data.entity)] liebt es, der Sonne zu huldigen! Das Licht und die Strahlen gehören zu ihren/seinen Lieblingssachen und machen sie/ihn wirklich glücklich."
+            }
          }
       }
    },
@@ -1487,6 +1513,14 @@
                "power_medic_3_description": "Der Kräuterkundler kann jetzt bis zu 6 Herdplätze gleichzeitig betreuen."
             },
             "description": "Der Kräuterarzt ist ein Künstler mit Heilmethoden und kann Tonika, Bandagen und Tränke herstellen und verwenden. Er kann aber auch mit Pflanzen, Samen und anderen Nahrungsmitteln arbeiten."
+         },
+         "herbalist_mortar_pewter": {
+            "display_name": "Zinnmörtel",
+            "description": "Ein schicker metallischer Mörser und Stößel, um die Geschwindigkeit des Kräuterarztes zu erhöhen."
+         },
+         "herbalist_pestle_pewter": {
+            "display_name": "Zinnstößel",
+            "description": "Für schöneres zerstampfen."
          }
       },
       "engineer": {
@@ -1969,7 +2003,47 @@
                "description": "Bastele einen schicken Halter, der bis zu 4 Brennholzpakete aufnehmen kann.",
                "flavor": ""
             },
-            "farmer_hoe_iron_recipe": {
+            "cook_spoon_copper_recipe": {
+               "recipe_name": "Kupferlöffel für den Koch",
+               "description": "Erstelle einen leichteren und saubereren Löffel, der die Effizienz des Kochs verbessert.",
+               "flavor": ""
+            },
+            "herbalist_mortar_pestle_pewter_recipe": {
+               "recipe_name": " Zinnmörtel für den Kräuterarzt",
+               "description": "Stelle einen ausgefallenen metallischen Mörser und Stößel her, um die Herstellungsgeschwindigkeit des Kräuterarztes zu erhöhen.",
+               "flavor": ""
+            },
+            "mason_chisel_iron_recipe": {
+               "recipe_name": "Eisenmeißel für den Steinmetz",
+               "description": "Stelle einen Satz Hammer und Meißel aus Eisen her, um die Verarbeitungsgeschwindigkeit der Steinmetzes zu verbessern.",
+               "flavor": ""
+            },
+	    "potter_cutter_iron_recipe": {
+               "recipe_name": "Eisenschneide für den Töpfer",
+               "description": "Stelle einen verbesserter, schärferer Schneide für den Töpfer her, damit er schneller arbeiten kann.",
+               "flavor": ""
+            },
+	    "blacksmith_hammer_steel_recipe": {
+               "recipe_name": "Stahlhammer für den Schmied",
+               "description": "Schmiede dem Schmied einen neuen und stärkeren Hammer aus Stahl, der die Verarbeitungsgeschwindigkeit erhöht.",
+               "flavor": "Der Hammer ist der treueste Gefährte eines Schmiedes, wie ein Schild für einen Ritter oder der Mond für die Nacht. -Lucan Varius, Feuerkünstler"
+            },
+	    "carpenter_saw_steel_recipe": {
+               "recipe_name": "Stahlsäge für den Schreiner",
+               "description": "Stelle eine verstärkte Stahlsäge her, damit der Schreiner schneller herstellen kann.",
+               "flavor": ""
+            },
+	    "trapper_knife_steel_recipe": {
+               "recipe_name": "Stahlmesser für den Trapper",
+               "description": "Dies scharfe und leichte Stahlmesser ermöglicht es dem Trapper Tiere schneller zu handhaben.",
+               "flavor": "Was meinst du mit Tiere *handhaben*?"
+            },
+	    "weaver_spindle_steel_recipe": {
+               "recipe_name": "Spindel & Stahlnadel für den Weber",
+               "description": "Erstelle eine Reihe von eleganten mit Silber beschichteten Nadeln, die die Herstellungsgeschwindigkeit des Webers verbessert.",
+               "flavor": ""
+            },
+	    "farmer_hoe_iron_recipe": {
                "recipe_name": "Eiserne Farmerhacke",
                "description": "Stell ein Werkzeug her, das die Arbeitseffizienz von Farmern leicht verbessert.",
                "flavor": ""
@@ -2253,7 +2327,7 @@
          "blacksmith_description": {
             "level_1_data": {
                "perk_000_name": "Frühe Metallarbeiten",
-               "perk_000_description": "Der Schmied muss das Schmelzen von Grunderzen und die Verwendung des Tiegels beherrschen, bevor er mit einem Amboss arbeiten kann."
+               "perk_000_description": "Der Schmied hat damit begonnen, zu lernen, wie man eine Schmiede verwendet und einen Tiegel erhitzet. Es wird etwas Übung benötigen, bevor er mit Eisen arbeiten und einen Amboss bauen kann!."
             },
             "level_2_data": {
                "perk_000_name": "Bronze & Eisenzeit!",
@@ -2617,6 +2691,10 @@
          "cook_cheese_vat_cheese_aged": {
             "display_name": "Reifer Käse",
             "description": "Dieser Käse ist gut gereift, fest und würzig! Es ist an der Zeit diese Delikatesse zu ernten."
+         },
+         "cook_spoon_copper": {
+            "display_name": "Kupferlöffel",
+            "description": "Leichter und sauberer. Dieser Löffel wird die Effizienz des Kochs verbessern."
          }
       },
       "carpenter": {
@@ -6650,6 +6728,34 @@
          "worker_tools_steel": {
             "display_name": "Tasche mit Stahlwerkzeugen für Arbeiter",
             "description": "Wird von Arbeitern verwendet, um ihre Effizienz und Geschwindigkeit beim Arbeiten erheblich zu steigern."
+         },
+         "blacksmith_hammer_steel": {
+            "display_name": "Stahlhammer",
+            "description": "Verbessert die Effizienz des Schmiedes, sodass er schneller herstellen kann."
+         },
+         "carpenter_saw_steel": {
+            "display_name": "Stahlsäge",
+            "description": "Eine verbesserte Version des Schreinerwerkzeugs, sorgt für schnellerer Herstellung."
+         },
+         "mason_chisel_iron": {
+            "display_name": "Eisenmeißel",
+            "description": "Mit diesem verbesserten Werkzeug kann der Steinmetz beim bearbeiten von Objekten schneller arbeiten."
+         },
+         "potter_cutter_iron": {
+            "display_name": "Eisenschneide",
+            "description": "Dieses vielseitige Werkzeug kann die Effizienz des Töpfers beim Herstellen verbessern."
+         },
+         "trapper_knife_steel": {
+            "display_name": "Stahlmesser",
+            "description": "Ein verbessertes und stärkeres Messer, das die Effizienz des Trappers erhöht."
+         },
+         "weaver_steel_needle": {
+            "display_name": "Spindel & Stahlnadel",
+            "description": "Durch eine silberbeschichtete Nadel wird der Weber wesentlich effizienter!"
+         },
+         "mason_hammer_iron": {
+            "display_name": "Eisenhammer",
+            "description": "Hämmert schöner."
          }
       },
       "tile": {
@@ -7009,17 +7115,17 @@
          },
          "zones_mode": {
             "farm": {
-               "properties": "Fruchteigenschaften:",
-               "statuses": "Aktueller Status:",
+               "properties": "Fruchteigenschaften",
+               "statuses": "Aktueller Status",
                "fertilizer_settings": {
-                  "title": "Dünger:",
+                  "title": "Dünger",
                   "none": "Kein",
                   "none_description": "Düngen nicht dieses Feld (heb deinen Ihren Dünger für wertvollere Pflanzen auf).",
                   "high_quality": "Hohe Qualität",
                   "high_quality_description": "Bevorzuge qualitativ hochwertigere Dünger für dieses Feld.",
                   "low_quality": "Gerine Qualität",
                   "low_quality_description": "Bevorzuge qualitativ minderwertigere Dünger für dieses Feld.",
-                  "specific": "Spezifischer Dünger:",
+                  "specific": "Spezifischer Dünger",
                   "specific_description": "Wähle einen Dünger aus, um nur diesen speziellen Dünger für dieses Feld zu verwenden."
                },
                "season": {
@@ -7043,6 +7149,7 @@
                   "shorter": "Umwelteinflüsse sorgen dafür, dass diese Kultur zum optimalen Wachstum <span class='text-value text-optimal'>[str(i18n_data.growth_time_percent)]</span> der normalen Zeit.",
                   "normal": "Umwelteinflüsse sorgen dafür, dass diese Kultur normal wächst.",
                   "longer": "Umwelteinflüsse führen dazu, dass diese Kultur schlechter wächst und <span class='text-value text-poor'>[str(i18n_data.growth_time_percent)]</span> der normalen Zeit benötigt.",
+                  "too_long": "Diese Pflanze wächst aufgrund von Umweltfaktoren <span class='text-bad'>unermesslich langsam</span>!",
                   "stopped": "Das Wachstum dieser Kultur ist aktuell <span class='text-bad'>gestoppt</span>."
                },
                "water_affinity": {
@@ -7060,11 +7167,11 @@
                   "current_level": "Diese Ernte erlebt derzeit <span class='light'><span class='text-value'>[str(i18n_data.current_light_level)]</span> max_light_level</span>. Dies berücksichtigt sowohl den Schatten- als auch den aktuellen Wetterzustand."
                },
                "flooded": {
-                  "property_name": "Überschwemmung",
-                  "status_name": "überschwemmt",
+                  "property_name": "Abdeckung",
+                  "status_name": "Abdeckung",
                   "requires": "Diese Pflanze muss mit Wasser bedeckt sein, damit sie wachsen kann.",
                   "prefers": "Diese Pflanze wächst schneller, wenn sie mit Wasser bedeckt ist, und wächst langsamer wenn es fehlt.",
-                  "prefers_not": "Diese Pflanze wächst langsamer, wenn sie mit Wasser bedeckt ist.",
+                  "prefers_not": "Diese Pflanze wächst langsamer, wenn sie mit Wasser oder Schnee bedeckt ist.",
                   "current_flooded": "Dieses Feld <span class='[str(i18n_data.flooded_status)]'>ist</span> derzeit überflutet.",
                   "current_not_flooded": "Dieses Feld ost derzeit <span class='[str(i18n_data.flooded_status)]'>nicht</span> überflutet."
                },
