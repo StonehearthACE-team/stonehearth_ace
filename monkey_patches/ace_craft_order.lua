@@ -173,6 +173,11 @@ function AceCraftOrder:_has_multiple_qualities_uri_ingredient(ingredient, tracki
    else
       lookup_key = ingredient.uri
    end
+
+   if not tracking_data:contains(lookup_key) then
+      return false
+   end
+
    local tracking_data_for_key = tracking_data:get(lookup_key)
    if tracking_data_for_key then
       local count = 0
