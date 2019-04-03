@@ -67,9 +67,12 @@ end
 -- harvest a single item
 function PileComponent:_harvest_next(owner)
    -- FILO / LIFO
+   local item
    local item_data = table.remove(self._sv.items)
-   local item = radiant.entities.create_entity(item_data.uri, { owner = owner or self._entity })
-   item_quality_lib.apply_quality(item, item_data.quality, { author = item_data.author, author_type = item_data.author_type })
+   if item_data then
+      item = radiant.entities.create_entity(item_data.uri, { owner = owner or self._entity })
+      item_quality_lib.apply_quality(item, item_data.quality, { author = item_data.author, author_type = item_data.author_type })
+   end
 
    return item
 end

@@ -180,7 +180,7 @@ App.StonehearthPromotionTree.reopen({
             if (!self._citizenJobData || !d.alias) return;
             var citizenJob = self._citizenJobData[d.alias];
             var level = citizenJob ? citizenJob.last_gained_lv : -1;
-            if (level >= 0 && d.alias != 'stonehearth:jobs:worker') {
+            if (level >= 0 && d.alias != self._baseWorkerJob) {
                return i18n.t('stonehearth:ui.game.citizen_character_sheet.level_abbreviation') + " " + level;
             } else {
                return "";
@@ -432,7 +432,7 @@ App.StonehearthPromotionTree.reopen({
       self.$('.jobData').hide();
 
       radiant.each(self._jobData, function(alias, jobData) {
-         if (alias != 'stonehearth:jobs:worker' && jobData.description.__self == jobAlias) {
+         if (alias != self._baseWorkerJob && jobData.description.__self == jobAlias) {
             var citizenJob = self._citizenJobData[alias];
             var highestLvl = citizenJob ? citizenJob.last_gained_lv : -1;
             var div = self.$("[uri='" + jobAlias + "']");
