@@ -61,9 +61,7 @@ App.StonehearthZonesModeView.reopen({
    },
 
    _ACE_CustomZoneViews: function(entity) {
-      if (entity['stonehearth_ace:grower_underfield']) {
-         return App.StonehearthAceUnderfarmView;
-      } else if (entity['stonehearth_ace:guard_zone']) {
+      if (entity['stonehearth_ace:guard_zone']) {
          return App.StonehearthAceGuardZoneView;
       }
 

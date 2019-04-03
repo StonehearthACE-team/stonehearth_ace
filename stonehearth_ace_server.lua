@@ -5,7 +5,6 @@ local service_creation_order = {
    'crafter_info',
    'water_pump',
    'water_signal',
-   'underfarming',
    'mechanical',
    'persistence'
 }
