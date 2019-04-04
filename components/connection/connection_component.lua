@@ -79,6 +79,12 @@ end
 
 -- this is performed in activate rather than post_activate so that all specific connection services can use it in post_activate
 function ConnectionComponent:activate()
+   local version = self:get_version()
+   if self._sv.version ~= version then
+      self._sv.version = version
+      self.__saved_variables:mark_changed()
+   end
+   
    local connected_stats
    if self._is_restore and next(self._sv.connected_stats) then
       connected_stats = self._sv.connected_stats

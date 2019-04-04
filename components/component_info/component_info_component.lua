@@ -82,10 +82,4 @@ function ComponentInfoComponent:_add_component_detail(component, name, ordinal, 
    return comp_detail
 end
 
--- hopefully force the ui to update traces
-function ComponentInfoComponent:_force_update()
-   self._sv.force_update = self._sv.force_update + 1
-   self.__saved_variables:mark_changed()
-end
-
 return ComponentInfoComponent

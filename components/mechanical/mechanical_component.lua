@@ -201,13 +201,15 @@ function MechanicalComponent:_update_component_info()
             def_produces = floor(self._def_produces),
             produces = floor(self._sv.produces)
          })
-   elseif self._def_consumes > 0 then
+   end
+   if self._def_consumes > 0 then
       comp_info:set_component_detail('stonehearth_ace:mechanical', 'consumes',
          'stonehearth_ace:component_info.stonehearth_ace.mechanical.consumes', {
             def_consumes = floor(self._def_consumes),
             produces = floor(self._sv.consumes)
          })
-   elseif self._def_resistance > 0 then
+   end
+   if self._def_resistance > 0 then
       comp_info:set_component_detail('stonehearth_ace:mechanical', 'resistance',
          'stonehearth_ace:component_info.stonehearth_ace.mechanical.resistance', {
             def_resistance = floor(self._def_resistance),
