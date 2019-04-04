@@ -162,6 +162,12 @@ function BaseJob:demote()
    self.__saved_variables:mark_changed()
    
    -- ADDED FOR ACE
+   
+   -- make sure the job json is loaded so we can remove commands and any other stuff dependent on the job
+   if not self._job_json then
+      self._job_json = radiant.resources.load_json(self._sv.json_path, true)
+   end
+
    local player_id = radiant.entities.get_player_id(self._sv._entity)
    local town = stonehearth.town:get_town(player_id)
    if town then
