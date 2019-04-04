@@ -20,7 +20,7 @@ function AceFirepitComponent:activate()
    self._transform_residue_jitter = '+' .. (self._json.transform_residue_jitter or '2h')
    self._buff_source = self._json.buff_source or false
    if self._buff_source then
-	  self._buff = self._json.buff or 'stonehearth_ace:buffs:weather:warmth_source'
+      self._buff = self._json.buff or 'stonehearth_ace:buffs:weather:warmth_source'
    end
 
    self:_ace_old_activate()
@@ -30,7 +30,7 @@ AceFirepitComponent._ace_old__light = FirepitComponent._light
 function AceFirepitComponent:_light()
    if self._buff_source then
       local buff = self._buff
-	  radiant.entities.add_buff(self._entity, buff)
+      radiant.entities.add_buff(self._entity, buff)
    end
    self:_ace_old__light()
 end
@@ -64,7 +64,7 @@ end
 function AceFirepitComponent:_transform_residue()
    local is_lit = self:is_lit()
    if is_lit then
-	   return
+      return
    end
    
    local entity_container = self._entity:get_component('entity_container')
@@ -79,7 +79,7 @@ function AceFirepitComponent:_transform_residue()
             entity_container:remove_child(id)
             radiant.entities.destroy_entity(child)
             self:_create_residue(self._charcoal_uri)
-		    self._log:debug('transforming a charcoal ember into charcoal...')			
+            self._log:debug('transforming a charcoal ember into charcoal...')            
          elseif child and child:is_valid() and child:get_uri() == self._ember_uri then
             entity_container:remove_child(id)
             radiant.entities.destroy_entity(child)
@@ -110,16 +110,16 @@ function AceFirepitComponent:_extinguish()
    if was_lit then
       if self._buff_source then
          local buff = self._buff
-	     radiant.entities.remove_buff(self._entity, buff)
+         radiant.entities.remove_buff(self._entity, buff)
       end
       if is_wood then
-		 if self._allow_charcoal then
-             self:_create_residue(self._ember_charcoal_uri)
-             self._log:debug('creating a charcoal ember...')
-		 else
-		 self:_create_residue(self._ember_uri)
-         self._log:debug('charcoal not allowed, creating common embers...')
-		 end
+         if self._allow_charcoal then
+            self:_create_residue(self._ember_charcoal_uri)
+            self._log:debug('creating a charcoal ember...')
+         else
+            self:_create_residue(self._ember_uri)
+            self._log:debug('charcoal not allowed, creating common embers...')
+         end
       elseif is_low_fuel then
          self:_create_residue(self._ember_uri)
          self._log:debug('creating common embers...')
@@ -137,15 +137,15 @@ function AceFirepitComponent:_create_residue(residue_uri)
    entity_container:add_child(residue)
    
    if entity_data then
-	  local offset = entity_data['drop_offset']
-	  if offset then
+      local offset = entity_data['drop_offset']
+      if offset then
          local facing = residue:get_component('mob')
-										:get_facing()
+                                 :get_facing()
          local offset = Point3(offset.x, offset.y, offset.z)
-		 local drop_offset = offset:rotated(facing)
-		 local mob = residue:add_component('mob')
-		 mob:move_to(drop_offset)
-	     end
+         local drop_offset = offset:rotated(facing)
+         local mob = residue:add_component('mob')
+         mob:move_to(drop_offset)
+         end
    end
    
 end

@@ -6,8 +6,11 @@ local AceEvolveComponent = class()
 
 AceEvolveComponent._ace_old_restore = EvolveComponent.restore
 function AceEvolveComponent:restore()
-   self._sv._evolve_timer = self._sv.evolve_timer
-   self._sv.evolve_timer = nil
+   if self._sv.evolve_timer then
+      self._sv._evolve_timer = self._sv.evolve_timer
+      self._sv.evolve_timer = nil
+   end
+   
    self._sv.last_calculated_water_volume = nil
    self._sv._local_water_modifier = nil
    self._sv._water_level = nil
