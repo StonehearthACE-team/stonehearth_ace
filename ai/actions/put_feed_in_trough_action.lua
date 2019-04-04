@@ -17,6 +17,6 @@ return ai:create_compound_action(FeedPastureTrough)
                   filter_fn = ai.BACK(2).filter_fn,
                   description = 'animal feed',
          })
-         :execute('stonehearth:goto_entity', { entity = ai.BACK(3).trough })
-         :execute('stonehearth:reserve_entity', { entity = ai.BACK(4).trough })
+         :execute('stonehearth:reserve_entity', { entity = ai.BACK(3).trough })
+         :execute('stonehearth:goto_entity', { entity = ai.BACK(4).trough })
          :execute('stonehearth_ace:feed_pasture_trough_adjacent', { pasture = ai.ARGS.pasture, trough = ai.BACK(5).trough, feed = ai.BACK(3).item })
