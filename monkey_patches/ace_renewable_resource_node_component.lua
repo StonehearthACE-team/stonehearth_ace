@@ -90,6 +90,21 @@ AceRenewableResourceNodeComponent._ace_old_renew = RenewableResourceNodeComponen
 function AceRenewableResourceNodeComponent:renew()
    self:_ace_old_renew()
 
+   if self._json.buffs_on_renewal then
+      for uri, stacks in pairs(self._json.buffs_on_renewal) do
+         if stacks then
+            if not type(stacks) == 'number' then
+               stacks = 1
+            end
+            radiant.entities.add_buff(self._entity, uri, {stacks = stacks})
+         else
+            -- don't keep trying; it won't change, and it's not entity-specific
+            -- so we can just remove it from the shared cached table
+            self._json.buffs_on_renewal[uri] = nil
+         end
+      end
+   end
+
    self:_auto_request_harvest()
 end
 

@@ -45,6 +45,50 @@ function AceBuff:_create_buff()
    end
 end
 
+-- override to allow removing stacks instead of entire buff on expire
+function Buff:_create_timer()
+   local duration = self._default_duration
+   if self._sv.expire_time then
+      duration = self._sv.expire_time - stonehearth.calendar:get_elapsed_time()
+      if self._timer then
+         self._timer:destroy()
+         self._timer = nil
+      end
+   end
+
+   -- called when timer expires
+   local destroy_fn
+   destroy_fn = function()
+      local stacks_to_remove = self._json.remove_stacks_on_expire
+      if stacks_to_remove then
+         self._sv.stacks = self._sv.stacks - (type(stacks_to_remove) == 'number' and stacks_to_remove or 1)
+         if self._sv.stacks > 0 then
+            self:_set_expiration_timer(duration, destroy_fn)
+            return
+         end
+      end
+
+      -- Set a flat so we'll know the buff is being destroyed because its timer expired
+      self._removed_due_to_expiration = true
+      self._sv.stacks = 0
+      -- once we've expired, add cooldown buff
+      if self._cooldown_buff then
+         radiant.entities.add_buff(self._sv._entity, self._cooldown_buff)
+      end
+      self:destroy()
+   end
+
+   self:_set_expiration_timer(duration, destroy_fn)
+end
+
+function AceBuff:_set_expiration_timer(duration, destroy_fn)
+   if duration then
+      self._timer = stonehearth.calendar:set_timer('Buff removal timer', duration, destroy_fn)
+      self._sv.expire_time = self._timer:get_expire_time()
+      self.__saved_variables:mark_changed()
+   end
+end
+
 function AceBuff:on_repeat_add(options)
    local repeat_add_action = self._json.repeat_add_action
    if repeat_add_action == 'renew_duration' then

@@ -29,7 +29,7 @@ function transform_lib.transform(entity, transformer, into_uri, options)
 
    local transformed_form
 
-   if into_uri then
+   if into_uri and into_uri ~= '' then
       --Create the transformed entity and put it on the ground
       transformed_form = radiant.entities.create_entity(into_uri, { owner = entity})
       
