@@ -63,6 +63,10 @@ function Buff:_create_timer()
       if stacks_to_remove then
          self._sv.stacks = self._sv.stacks - (type(stacks_to_remove) == 'number' and stacks_to_remove or 1)
          if self._sv.stacks > 0 then
+            -- TODO: add code for just removing a modifier rather than having to remove all and add all back in
+            self:_destroy_modifiers()
+            self:_restore_modifiers()
+
             self:_set_expiration_timer(duration, destroy_fn)
             return
          end
