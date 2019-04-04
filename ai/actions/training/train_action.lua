@@ -32,20 +32,6 @@ function Train:start_thinking(ai, entity, args)
    ai:set_think_output({entity = entity})
 end
 
-function find_training_dummy(entity)
-   local player_id = entity:get_player_id()
-   local job_uri = entity:get_component('stonehearth:job'):get_job_uri()
-   
-   return stonehearth.ai:filter_from_key('stonehearth_ace:training_dummy:'..job_uri, player_id,
-		function(target)
-			if stonehearth.player:are_player_ids_friendly(player_id, target:get_player_id()) then
-				local training_dummy = target:get_component('stonehearth_ace:training_dummy')
-				return training_dummy and training_dummy:can_train_entity(job_uri) or false
-			end
-			return false
-		end)
-end
-
 function _should_abort(source, training_enabled)
    return not training_enabled
 end
@@ -63,6 +49,5 @@ return ai:create_compound_action(Train)
          })
          :execute('stonehearth:drop_backpack_contents_on_ground', {})
 		   :execute('stonehearth:set_posture', { posture = 'stonehearth:combat' })
-         :execute('stonehearth:find_best_reachable_entity_by_type', 
-					{ filter_fn = ai.CALL(find_training_dummy, ai.ENTITY)})
-         :execute('stonehearth_ace:train_attack', { target = ai.BACK(1).item })
+         :execute('stonehearth_ace:find_training_dummy')
+         :execute('stonehearth_ace:train_attack', { target = ai.BACK(1).dummy })

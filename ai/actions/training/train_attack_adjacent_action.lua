@@ -65,6 +65,9 @@ function TrainAttackAdjacent:run(ai, entity, args)
 
    -- first tell the training dummy that it's "in combat"
    dummy:set_in_combat()
+
+   -- store this dummy in the entity's job component as the training dummy we're currently using
+   entity:get_component('stonehearth:job'):set_training_target(args.target)
    
    -- check if it's a healer class do a heal action instead of attacking
    -- if it's a ranged class, attack from range

@@ -447,6 +447,21 @@ function AceJobComponent:toggle_training(enabled)
 	end
 end
 
+function AceJobComponent:get_training_target()
+   local target = self._training_target
+   if target then
+      if not target:is_valid() or not stonehearth.player:are_player_ids_friendly(radiant.entities.get_player_id(self._entity), target:get_player_id()) then
+         target = nil
+         self._training_target = nil
+      end
+   end
+   return target
+end
+
+function AceJobComponent:set_training_target(target)
+   self._training_target = target
+end
+
 function AceJobComponent:_get_enable_command()
 	return 'stonehearth_ace:commands:toggle_training_on'
 end
