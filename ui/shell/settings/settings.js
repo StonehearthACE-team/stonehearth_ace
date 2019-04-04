@@ -141,6 +141,10 @@ $(top).on('stonehearthReady', function(cc) {
       _createGameplayDivForMod: function(mod, settings) {
          var self = this;
          var modData = self._mods && self._mods[mod];
+         var hasList = false;
+         var heightSinceList = 0;
+         var totalHeight = 0;
+
          if(modData) {
             // create the jQuery accordian structure
             var title = modData.title;
@@ -164,9 +168,31 @@ $(top).on('stonehearthReady', function(cc) {
                      var element = self._createGameplaySettingElements(mod, setting);
                      if(element) {
                         newSection.append(element);
+
+                        // TODO: these heights are hard-coded! bad! but a hack to get it to render enough space for drop downs
+                        switch (setting.type) {
+                           case 'list':
+                              hasList = true;
+                              totalHeight += 74;
+                              heightSinceList = 0;
+                              break;
+                           case 'boolean':
+                              totalHeight += 48;
+                              heightSinceList += 48;
+                              break;
+                           case 'number':
+                              totalHeight += 88;
+                              heightSinceList += 88;
+                              break;
+                        }
                      }
                   }
                });
+            }
+
+            if (hasList && heightSinceList < 200) {
+               // if there's a list, make sure we add some extra space at the bottom
+               newSection.height(totalHeight + 200 - heightSinceList);
             }
 
             return {header: newHeader, section: newSection};
