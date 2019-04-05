@@ -27,6 +27,13 @@ function ConsumerComponent:activate()
    end
 end
 
+function ConsumerComponent:destroy()
+   if self._fuel_decay_timer then
+      self._fuel_decay_timer:destroy()
+      self._fuel_decay_timer = nil
+   end
+end
+
 function ConsumerComponent:_initialize_fuel_settings()
    if self._json.time_decay and self._json.time_decay.interval then
       self._fuel_decay_timer = stonehearth.calendar:set_interval('workshop fuel decay', self._json.time_decay.interval, function()

@@ -52,11 +52,11 @@ function WaterSignal:destroy()
 end
 
 function WaterSignal:_reset()
-   self._sv.water_exists = false
-	self._sv.water_volume = nil
-	self._sv.waterfall_exists = false
-   self._sv.waterfall_volume = nil
-   self._sv.water_surface_level = nil
+   self._sv._water_exists = false
+	self._sv._water_volume = nil
+	self._sv._waterfall_exists = false
+   self._sv._waterfall_volume = nil
+   self._sv._water_surface_level = nil
 	self.__saved_variables:mark_changed()
 end
 
@@ -221,14 +221,14 @@ function WaterSignal:set_change_callback(f_cb)
 end
 
 function WaterSignal:get_water_exists()
-	return self._sv.water_exists
+	return self._sv._water_exists
 end
 
 function WaterSignal:set_water_exists(water_components)
 	local exists = next(water_components) ~= nil
 
-	local prev_exists = self._sv.water_exists
-	self._sv.water_exists = exists
+	local prev_exists = self._sv._water_exists
+	self._sv._water_exists = exists
 	
 	if exists ~= prev_exists then
       return true
@@ -237,7 +237,7 @@ function WaterSignal:set_water_exists(water_components)
 end
 
 function WaterSignal:get_water_volume()
-	return self._sv.water_volume
+	return self._sv._water_volume
 end
 
 function WaterSignal:set_water_volume(water_components)
@@ -247,8 +247,8 @@ function WaterSignal:set_water_volume(water_components)
       volume = volume + self:_get_intersection_volume(w)
 	end
 
-	local prev_volume = self._sv.water_volume
-	self._sv.water_volume = volume
+	local prev_volume = self._sv._water_volume
+	self._sv._water_volume = volume
 
 	if volume ~= prev_volume then
       return true
@@ -278,7 +278,7 @@ end
 ]]
 
 function WaterSignal:get_water_surface_level()
-   return self._sv.water_surface_level
+   return self._sv._water_surface_level
 end
 
 function WaterSignal:set_water_surface_level(water_components)
@@ -293,22 +293,22 @@ function WaterSignal:set_water_surface_level(water_components)
       end
    end
 
-   if level ~= self._sv.water_surface_level then
-      self._sv.water_surface_level = level
+   if level ~= self._sv._water_surface_level then
+      self._sv._water_surface_level = level
       return true
    end
    return false
 end
 
 function WaterSignal:get_waterfall_exists()
-	return self._sv.waterfall_exists
+	return self._sv._waterfall_exists
 end
 
 function WaterSignal:set_waterfall_exists(waterfall_components)
 	local exists = next(waterfall_components) ~= nil
 
-	local prev_exists = self._sv.waterfall_exists
-	self._sv.waterfall_exists = exists
+	local prev_exists = self._sv._waterfall_exists
+	self._sv._waterfall_exists = exists
 	
 	if exists ~= prev_exists then
       return true
@@ -317,7 +317,7 @@ function WaterSignal:set_waterfall_exists(waterfall_components)
 end
 
 function WaterSignal:get_waterfall_volume()
-	return self._sv.waterfall_volume
+	return self._sv._waterfall_volume
 end
 
 function WaterSignal:set_waterfall_volume(waterfall_components)
@@ -326,8 +326,8 @@ function WaterSignal:set_waterfall_volume(waterfall_components)
 		volume = volume + w:get_volume()
 	end
 
-	local prev_volume = self._sv.waterfall_volume
-	self._sv.waterfall_volume = volume
+	local prev_volume = self._sv._waterfall_volume
+	self._sv._waterfall_volume = volume
 
 	if volume ~= prev_volume then
       return true

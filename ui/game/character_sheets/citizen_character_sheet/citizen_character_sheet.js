@@ -219,5 +219,52 @@ App.StonehearthCitizenCharacterSheetView.reopen({
             self._titles = data;
          });
       }
-   }.observes('model.uri')
+   }.observes('model.uri'),
+
+   // base game version didn't take stacks into account
+   _sortBuffsByAttribute: function() {
+      var allBuffs = this.get('model.stonehearth:buffs.buffs');
+      var buffsByAttribute = {};
+      if (allBuffs) {
+         radiant.each(allBuffs, function(_, buff) {
+            //If the buff is private don't add it. Public buffs can be undefined or is_private = false
+            if (buff.invisible_to_player == undefined || !buff.invisible_to_player) {
+               var modifiers = buff.modifiers;
+               for (var mod in modifiers) {
+                  var new_buff_data = {}
+                  new_buff_data.display_name = buff.display_name;
+                  new_buff_data.axis = buff.axis;
+                  new_buff_data.icon = buff.icon;
+                  new_buff_data.shortDescription = '';
+                  if (buff.short_description != undefined) {
+                     new_buff_data.shortDescription = buff.short_description;
+                  } else {
+                     for (var attrib in modifiers[mod]) {
+                        if (attrib == 'multiply' || attrib == 'divide') {
+                           var number = 1 - Math.pow(modifiers[mod][attrib], buff.stacks);
+                           number = number * 100
+                           var rounded = Math.round( number * 10 ) / 10;
+                           rounded = Math.abs(rounded);
+                           new_buff_data.shortDescription += rounded + '% ';
+                        } else if (attrib == 'add') {
+                           var number = modifiers[mod][attrib] * buff.stacks;
+                           if (number < 0) {
+                              new_buff_data.shortDescription += number + ' ';
+                           } else {
+                              new_buff_data.shortDescription += '+' + number + ' ';
+                           }
+                        }
+                     }
+                  }
+                  //There are so many ways to modify a buff; let writer pick string
+                  if (buffsByAttribute[mod] == null) {
+                     buffsByAttribute[mod] = [];
+                  }
+                  buffsByAttribute[mod].push(new_buff_data);
+               }
+            }
+         });
+      }
+      return buffsByAttribute;
+   }
 });

@@ -593,10 +593,9 @@ function AceShepherdPastureComponent:needs_trough_feed()
 end
 
 function AceShepherdPastureComponent:get_animal_feed_material()
-   if self._sv.pasture_type then
-      return self._pasture_data[self._sv.pasture_type].feed_material
-   else
-      return nil --If we haven't determined the pasture type yet, there is no feed uri
+   local feed_material = self._sv.pasture_type and self._pasture_data[self._sv.pasture_type].feed_material
+   if not feed_material then
+      return 'fodder_bag'
    end
 end
 

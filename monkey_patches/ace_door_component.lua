@@ -66,6 +66,19 @@ function AceDoorComponent:activate(entity, json)
    self:_ace_old_activate(entity, json)
 end
 
+AceDoorComponent._ace_old_destroy = DoorComponent.destroy
+function AceDoorComponent:destroy()
+   self:_destroy_shepherded_animal_listeners()
+   self:_ace_old_destroy()
+end
+
+function AceDoorComponent:_destroy_shepherded_animal_listeners()
+   for id, listener in pairs(self._shepherded_animal_listeners) do
+      listener:destroy()
+      self._shepherded_animal_listeners[id] = nil
+   end
+end
+
 function AceDoorComponent:_get_filter_cache()
    local player_id = radiant.entities.get_player_id(self._entity)
    if self:is_lockable() and self:is_locked() then

@@ -241,6 +241,12 @@ function AceBuffsComponent:remove_buff(uri, remove_all_stacks)
 
          radiant.events.trigger_async(self._entity, 'stonehearth:buff_removed', uri)
       end
+   else
+      -- otherwise we just want to remove a single stack
+      local buff = self._sv.buffs[uri]
+      if buff then
+         buff:remove_stack()
+      end
    end
 end
 

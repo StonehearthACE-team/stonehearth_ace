@@ -34,7 +34,7 @@ function ConnectionService:initialize()
    self._sv = self.__saved_variables:get_data()
    self._sv.connections_ds = nil
    self._sv.graphs = nil
-   self.graphs = {}
+   self._graphs = {}
 
    local sv_needs_fix = not self._sv.connections or not self._sv.new_graph_id
    if sv_needs_fix then
@@ -64,6 +64,8 @@ function ConnectionService:destroy()
       self._game_shut_down_listener:destroy()
       self._game_shut_down_listener = nil
    end
+
+   self:_stop_all_traces()
 end
 
 function ConnectionService:_stop_all_traces()
@@ -82,7 +84,7 @@ function ConnectionService:get_graphs_by_type(type)
 end
 
 function ConnectionService:get_graph_by_id(id, player_id, type)
-   local graph = self.graphs[id]
+   local graph = self._graphs[id]
    if not graph and player_id and type then
       graph = self:_create_new_graph(type, player_id, id)
    end
@@ -155,7 +157,7 @@ end
 function ConnectionService:get_entities_in_selected_graphs_command(session, response, selected_id)
    local entities = {}
    if selected_id then
-      for _, graph in pairs(self.graphs) do
+      for _, graph in pairs(self._graphs) do
          if graph.nodes[selected_id] then
             for id, _ in pairs(graph.nodes) do
                entities[id] = true
@@ -195,7 +197,7 @@ function ConnectionService:_destroy_player_connections(player_id)
 end
 
 function ConnectionService:_create_new_graph(type, player_id, id)
-   local graphs = self.graphs
+   local graphs = self._graphs
    if not id then
       id = self._sv.new_graph_id
       while graphs[id] do
@@ -212,10 +214,10 @@ function ConnectionService:_create_new_graph(type, player_id, id)
 end
 
 function ConnectionService:_remove_graph(id)
-   local graph = self.graphs[id]
+   local graph = self._graphs[id]
    if graph then
       self:get_graphs_by_type(graph.type)[id] = nil
-      self.graphs[id] = nil
+      self._graphs[id] = nil
    end
 end
 

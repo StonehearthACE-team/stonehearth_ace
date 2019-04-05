@@ -218,7 +218,7 @@ function TileComponent:_update()
    if radiant.entities.get_component_data(self._entity, 'model_variants')[rotated_model_variant] then
       variant = rotated_model_variant
    end
-   self._entity:get_component('render_info'):set_model_variant(variant)
+   self._entity:add_component('stonehearth_ace:entity_modification'):set_model_variant(variant)
 
    if self._adjust_collision then
       local region = self._collision_regions[variant]

@@ -1,3 +1,4 @@
+local modifiers_lib = require 'stonehearth.lib.modifiers.modifiers_lib'
 local Buff = require 'stonehearth.components.buffs.buff'
 local AceBuff = class()
 
@@ -49,6 +50,38 @@ function AceBuff:_create_buff()
    end
 end
 
+function AceBuff:_create_modifiers(modifiers)
+   if modifiers then
+      local new_modifiers = modifiers_lib.add_attribute_modifiers(self._sv._entity, modifiers, { invisible_to_player = self._json.invisible_to_player})
+      table.insert(self._attribute_modifiers, new_modifiers)   -- insert the table of modifiers into it so we can easily remove a single stack
+   end
+end
+
+function AceBuff:_destroy_modifiers()
+   while #self._attribute_modifiers > 0 do
+      self:_destroy_last_stack_modifiers()
+   end
+end
+
+function AceBuff:_destroy_last_stack_modifiers()
+   local modifiers = table.remove(self._attribute_modifiers)
+   if modifiers then
+      for i, modifier in ipairs(modifiers) do
+         modifier:destroy()
+      end
+   end
+end
+
+function AceBuff:remove_stack()
+   self._sv.stacks = self._sv.stacks - 1
+   self:_destroy_last_stack_modifiers()
+   self.__saved_variables:mark_changed()
+
+   if self._sv.stacks < 1 then
+      self:destroy()
+   end
+end
+
 -- override to allow removing stacks instead of entire buff on expire
 function Buff:_create_timer()
    local duration = self._default_duration
@@ -67,9 +100,7 @@ function Buff:_create_timer()
       if stacks_to_remove then
          self._sv.stacks = self._sv.stacks - (type(stacks_to_remove) == 'number' and stacks_to_remove or 1)
          if self._sv.stacks > 0 then
-            -- TODO: add code for just removing a modifier rather than having to remove all and add all back in
-            self:_destroy_modifiers()
-            self:_restore_modifiers()
+            self:_destroy_last_stack_modifiers()
 
             self:_set_expiration_timer(duration, destroy_fn)
             return
