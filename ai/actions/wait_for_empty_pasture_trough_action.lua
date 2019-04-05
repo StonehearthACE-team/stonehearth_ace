@@ -40,7 +40,7 @@ function WaitForEmptyPastureTrough:start_thinking(ai, entity, args)
    self._pasture_component = args.pasture:get_component('stonehearth:shepherd_pasture')
    self._ready = false
 
-   self._on_feed_changed_listener = radiant.events.listen(args.pasture, 'stonehearth:shepherd_pasture:trough_feed_changed', self, self._on_feed_changed)
+   self._on_feed_changed_listener = radiant.events.listen(args.pasture, 'stonehearth_ace:shepherd_pasture:trough_feed_changed', self, self._on_feed_changed)
    self:_on_feed_changed(args.pasture, self._pasture_component:needs_trough_feed())  -- Safe to do sync since it can't call both clear_think_output and set_think_output.
 end
 

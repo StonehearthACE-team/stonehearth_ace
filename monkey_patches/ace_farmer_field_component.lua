@@ -314,9 +314,7 @@ end
 
 function AceFarmerFieldComponent:_create_climate_listeners()
    -- periodically check sunlight and adjust growth rates accordingly
-   if self._sunlight_timer then
-      self:_destroy_climate_listeners()
-   end
+   self:_destroy_climate_listeners()
 
    if not self._sv.sunlight_level then
       self._sv.sunlight_level = 1

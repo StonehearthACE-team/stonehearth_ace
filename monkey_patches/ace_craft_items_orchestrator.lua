@@ -4,6 +4,18 @@ local log = radiant.log.create_logger('crafter'):set_prefix('craft_items_orchest
 
 local AceCraftItemsOrchestrator = class()
 
+AceCraftItemsOrchestrator._ace_old_destroy = CraftItemsOrchestrator.destroy
+function AceCraftItemsOrchestrator:destroy()
+   if self._bulletin_clear_timer then
+      for id, timer in pairs(self._bulletin_clear_timer) do
+         timer:destroy()
+         self._bulletin_clear_timer[id] = nil
+      end
+   end
+
+   self:_ace_old_destroy()
+end
+
 -- Paul: only three lines are changed from the original function in order to support multiple crafters per order:
 --    the references to workshop_component:start_crafting_progress(...), order:reset_progress(...), and order:progress_to_next_stage(...)
 --- Find a workshop of an appropriate type, if needed, and perform the crafting action
@@ -186,9 +198,13 @@ function AceCraftItemsOrchestrator:_show_unreachable_ingredients_notification(ev
                                        :add_i18n_data('crafting_order', event_args.recipe_name)
 
             -- Set up a timer to clear the bulletin from our list after a day
-            stonehearth.calendar:set_timer("clear craft bulletins daily", constants.crafting.UNREACHABLE_INGREDIENT_NOTIFICATION_TIMEOUT,
+            if not self._bulletin_clear_timer then
+               self._bulletin_clear_timer = {}
+            end
+            self._bulletin_clear_timer[ingredient_name] = stonehearth.calendar:set_timer("clear craft bulletins daily", constants.crafting.UNREACHABLE_INGREDIENT_NOTIFICATION_TIMEOUT,
                function()
                   self._bulletins[ingredient_name] = nil
+                  self._bulletin_clear_timer[ingredient_name] = nil
                end)
          end
       end

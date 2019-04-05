@@ -5,6 +5,16 @@ local constants = radiant.mods.require('stonehearth.constants')
 
 local log = radiant.log.create_logger('craft_order_list')
 
+AceCraftOrderList._ace_old_destroy = CraftOrderList.destroy
+function AceCraftOrderList:destroy()
+   if self._stuck_timer then
+      self._stuck_timer:destroy()
+      self._stuck_timer = nil
+   end
+
+   self:_ace_old_destroy()
+end
+
 function AceCraftOrderList:_should_auto_craft_recipe_dependencies(player_id)
    return stonehearth.client_state:get_client_gameplay_setting(player_id, 'stonehearth_ace', 'auto_craft_recipe_dependencies', true)
 end
@@ -465,8 +475,10 @@ function AceCraftOrderList:get_next_order(crafter)
       -- Now set a timer to make the crafter reconsider the orders. It has to be done after a while because of a race
       -- We now wait for the thread to be suspended, so that this event will make it resume safely
       -- Otherwise there can be problems with multiple crafters or depending on whether the last order was stuck or not
-      stonehearth.calendar:set_timer("reconsider stuck orders", constants.crafting.RECONSIDER_ORDERS_COOLDOWN,
+      if not self._stuck_timer then
+         self._stuck_timer = stonehearth.calendar:set_timer("reconsider stuck orders", constants.crafting.RECONSIDER_ORDERS_COOLDOWN,
                              function() radiant.events.trigger(self, 'stonehearth:order_list_changed') end)
+      end
    end
 end
 

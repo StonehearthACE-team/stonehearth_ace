@@ -29,10 +29,6 @@ function FeedTroughAdjacent:_is_correct_feed(feed, pasture)
       end
    end
 
-   if shepherd_pasture:get_feed() ~= nil then
-      -- do not feed a pasture that already has feed
-      return false
-   end
    return true
 end
 

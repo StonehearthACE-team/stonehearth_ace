@@ -18,6 +18,10 @@ function AceBuff:destroy()
       self._duration_timer:destroy()
       self._duration_timer = nil
    end
+   if self._timer then
+      self._timer:destroy()
+      self._timer = nil
+   end
    if self._json.duration_statistics_key then
       self:_update_duration_stat()
    end
