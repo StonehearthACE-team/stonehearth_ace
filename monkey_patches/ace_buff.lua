@@ -102,7 +102,7 @@ function Buff:_create_timer()
          if self._sv.stacks > 0 then
             self:_destroy_last_stack_modifiers()
 
-            self:_set_expiration_timer(duration, destroy_fn)
+            self:_set_expiration_timer(self._default_duration, destroy_fn)
             return
          end
       end
