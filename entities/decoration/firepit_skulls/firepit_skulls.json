@@ -1,22 +1,74 @@
 {
+   "mixins": [
+      "file(firepit_skulls_ghost.json)"
+   ],
+   "type": "entity",
    "components": {
-	    "stonehearth:firepit": {
-			"allow_charcoal": false,
-			"buff_source": true,			
-			"ember_uri": "stonehearth_ace:decoration:ember_green"
-		},
-		"sensor_list": {
+      "stonehearth:entity_forms": {
+         "ghost_form": "file(firepit_skulls_ghost.json)",
+         "iconic_form": "file(firepit_skulls_iconic.json)",
+         "placeable_on_ground": true
+      },
+      "stonehearth:firepit": {
+         "buff_source": true
+      },
+      "stonehearth:lamp": {
+         "light_policy": "manual",
+         "light_effect": "stonehearth:effects:firepit_effect",
+         "light_origin": { "x": 0, "y": 1, "z": 0 }
+      },
+      "mob": {
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 0, "y": 2, "z": 0 }
+            },
+            {
+               "min": { "x": -1, "y": 0, "z": 1 },
+               "max": { "x": 0, "y": 2, "z": 2 }
+            },
+            {
+               "min": { "x": 1, "y": 0, "z": -1 },
+               "max": { "x": 2, "y": 2, "z": 0 }
+            },
+            {
+               "min": { "x": 1, "y": 0, "z": 1 },
+               "max": { "x": 2, "y": 2, "z": 2 }
+            }
+         ]
+      },
+      "sensor_list": {
          "sensors": {
             "warmth": {
-               "radius": 12
+               "radius": 10
             }
          }
       }
    },
    "entity_data": {
-		"stonehearth:table": {
-            "drop_effect": "carry_putdown",
-            "drop_offset": { "x": 0, "y": 0.2, "z": 0 }
-        }
+      "stonehearth:table": {
+         "drop_effect": "carry_putdown",
+         "drop_offset": { "x": 0, "y": 0.2, "z": 0 }
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 31,
+         "rarity": "uncommon",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 2,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:town_patrol": {
+         "auto_patrol": true,
+         "patrol_pattern": "perimeter"
+      },
+      "stonehearth:appeal": {
+         "appeal": 16
+      }
    }
 }

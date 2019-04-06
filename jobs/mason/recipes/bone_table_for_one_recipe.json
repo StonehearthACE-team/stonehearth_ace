@@ -1,0 +1,23 @@
+{
+   "type": "recipe",
+   "effort": 25,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.mason.recipes.bone_table_for_one_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.mason.recipes.bone_table_for_one_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.mason.recipes.bone_table_for_one_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/furniture/bone_table_for_one/bone_table_for_one.png",
+   "level_requirement": 2,
+   "workshop": "stonehearth_ace:mason:workbench_bone",
+   "manual_unlock": true,
+   "ingredients": [
+	   {
+         "material": "bone resource",
+         "count": 3
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:furniture:bone_table_for_one"
+      }
+   ]
+}

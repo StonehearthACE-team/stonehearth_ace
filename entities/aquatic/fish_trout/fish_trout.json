@@ -55,9 +55,15 @@
          "suffocate_if_out_of_water": {
             "entity_height": 0.5
          }
-      }
+      },
+      "stonehearth:evolve": {}
    },
    "entity_data": {
+      "stonehearth:evolve_data": {
+         "current_stage": "adult",
+         "next_stage": "",
+         "evolve_time": "10d"
+      },
       "stonehearth:entity_radius": 0.25,
       "stonehearth:species": {
          "id": "fish",
@@ -91,12 +97,6 @@
             "sellable": true,
             "shopkeeper_level": 3,
             "shopkeeper_type": "caravan"
-         }
-      },
-      "stonehearth:food_decay": {
-         "initial_decay": {
-            "min": 240,
-            "max": 240
          }
       }
    }

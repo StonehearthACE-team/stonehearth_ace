@@ -1,0 +1,27 @@
+{
+   "type": "recipe",
+   "effort": 40,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.mason.recipes.firepit_skulls_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.mason.recipes.firepit_skulls_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.mason.recipes.firepit_skulls_recipe.flavor)",
+   "portrait": "/stonehearth/entities/decoration/firepit_skulls/firepit_skulls.png",
+   "level_requirement": 5,
+   "workshop": "stonehearth_ace:mason:workbench_bone",
+   "manual_unlock": true,
+   "ingredients": [
+	   {
+         "material": "stone resource",
+         "count": 1
+      },
+		{
+         "uri": "stonehearth_ace:resources:bone:bone_skull",
+         "count": 4
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:decoration:firepit_skulls"
+      }
+   ]
+}

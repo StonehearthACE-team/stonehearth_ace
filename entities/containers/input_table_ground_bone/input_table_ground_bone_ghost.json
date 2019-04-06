@@ -1,0 +1,38 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(input_table_ground_bone.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": -0.5, "y": 0, "z": -0.5 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      },
+      "render_info": {
+         "scale": 0.1,
+         "animation_table": "/stonehearth/data/rigs/entities/containers/input_table/input_table.json"
+      },
+      "effect_list": {
+         "default": "/stonehearth/data/rigs/entities/containers/input_table/effects/idle.json"
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.containers.input_table_ground_bone.display_name)",
+         "description": "i18n(stonehearth_ace:entities.containers.input_table_ground_bone.description)",
+         "icon": "file(input_table_ground_bone.png)",
+         "category": "storage",
+         "material_tags": [
+            "bone",
+            "containers",
+            "crafted",
+            "furniture",
+            "stockpile_furniture"
+         ]
+      }
+   }
+}

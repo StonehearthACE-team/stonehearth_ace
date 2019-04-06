@@ -1,0 +1,27 @@
+{
+   "type": "recipe",
+   "effort": 16,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.mason.recipes.bone_stool_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.mason.recipes.bone_stool_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.mason.recipes.bone_stool_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/furniture/bone_stool/bone_stool.png",
+   "level_requirement": 3,
+   "workshop": "stonehearth_ace:mason:workbench_bone",
+   "manual_unlock": true,
+   "ingredients": [
+	   {
+         "material": "bone resource",
+         "count": 1
+      },
+		{
+         "material": "cloth resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:furniture:bone_stool"
+      }
+   ]
+}

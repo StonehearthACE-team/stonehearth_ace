@@ -1886,6 +1886,81 @@
                "description": "A good starting alternative for those that do not favor the shield. (Off-hand)",
                "flavor": ""
             },
+				"firepit_skulls_recipe": {
+               "recipe_name": "Skull Hearth",
+               "description": "Create an exotic firepit that will provide light and warmth.",
+               "flavor": "Might also cause nightmares"
+            },
+				"input_bin_bone_recipe": {
+               "recipe_name": "Bone Supply Bin",
+               "description": "Make a supply bin for quicker and weirder crafting.",
+               "flavor": ""
+            },
+				"input_table_ground_bone_recipe": {
+               "recipe_name": "Bone Supply Table",
+               "description": "Craft a supply table for stockpiling materials.",
+               "flavor": ""
+            },
+				"output_box_bone_recipe": {
+               "recipe_name": "Bone Finished Work Shelf",
+               "description": "Build an odd but efficient shelf for crafters to store finished products.",
+               "flavor": ""
+            },
+				"bone_chest_recipe": {
+               "recipe_name": "Bone Chest",
+               "description": "Creepily holds up to 64 items.",
+               "flavor": "Not a mimic. Promise."
+            },
+				"bone_bench_recipe": {
+               "recipe_name": "Bone Park Bench",
+               "description": "Create a creepy park bench out of several bones.",
+               "flavor": ""
+            },
+				"bone_comfy_bed_recipe": {
+               "recipe_name": "Bone Comfy Bed",
+               "description": "A comfortable bed for hearthlings to sleep.",
+               "flavor": "Stuff of nightmares"
+            },
+				"bone_comfy_chair_recipe": {
+               "recipe_name": "Bone Comfy Chair",
+               "description": "Build an odd yet elegant chair with bones and pillows.",
+               "flavor": ""
+            },
+				"bone_candle_holder_recipe": {
+               "recipe_name": "Skull Candle Holder",
+               "description": "Create a creepy light source that can be placed on surfaces or walls.",
+               "flavor": "If only the eye sockets would glow..."
+            },
+				"bone_floor_candle_holder_recipe": {
+               "recipe_name": "Skull Floor Candle Holder",
+               "description": "Carve a creepy light source to place on the floor.",
+               "flavor": ""
+            },
+				"bone_dining_table_recipe": {
+               "recipe_name": "Bone Dining Table",
+               "description": "Build a beautifully carved table for meals.",
+               "flavor": "Might cause some indigestion..."
+            },
+				"bone_stool_recipe": {
+               "recipe_name": "Bone Stool",
+               "description": "Craft a small and efficient seat.",
+               "flavor": ""
+            },
+				"bone_dresser_recipe": {
+               "recipe_name": "Bone Dresser",
+               "description": "Create a fancy dresser with a nice cloth out of bones.",
+               "flavor": ""
+            },
+				"bone_writing_desk_recipe": {
+               "recipe_name": "Bone Writing Desk",
+               "description": "Carve a nice bone desk for decoration.",
+               "flavor": "Improves the quality of ghost stories!"
+            },
+				"bone_table_for_one_recipe": {
+               "recipe_name": "Bone Table for One",
+               "description": "Create a small bone table for a single person.",
+               "flavor": ""
+            },
             "giant_bone_axe_recipe": {
                "recipe_name": "Giant Bone Axe",
                "description": "Carve a mighty axe from the clavicle of some great beast. (Two-handed)",
@@ -2018,32 +2093,32 @@
                "description": "Craft a set of hammer and chisel out of iron to improve the Mason's crafting speed.",
                "flavor": ""
             },
-				"potter_cutter_iron_recipe": {
+            "potter_cutter_iron_recipe": {
                "recipe_name": "Potter's Iron Cutter",
                "description": "Create an improved, sharper cutter for the Potter so they can craft faster.",
                "flavor": ""
             },
-				"blacksmith_hammer_steel_recipe": {
+            "blacksmith_hammer_steel_recipe": {
                "recipe_name": "Blacksmith's Steel Hammer",
                "description": "Forge a new and stronger hammer out of steel for the Blacksmith, improving their crafting speed.",
                "flavor": "The hammer is a blacksmith's most loyal companion, like a shield to a knight or the moon to the night. -Lucan Varius, Artifex Ignis"
             },
-				"carpenter_saw_steel_recipe": {
+            "carpenter_saw_steel_recipe": {
                "recipe_name": "Carpenter's Steel Saw",
                "description": "Make an enhanced steel saw that will allow the Carpenter to be faster when crafting.",
                "flavor": ""
             },
-				"trapper_knife_steel_recipe": {
+            "trapper_knife_steel_recipe": {
                "recipe_name": "Trapper's Steel Knife",
                "description": "This sharp and light steel knife will allow the trapper to handle animals faster.",
                "flavor": "What do you mean with *handle* animals?"
             },
-				"weaver_spindle_steel_recipe": {
+            "weaver_spindle_steel_recipe": {
                "recipe_name": "Weaver's Spindle & Steel Needle",
                "description": "Create a set of elegant, silver coated needles to improve the Weaver's crafting speed.",
                "flavor": ""
             },
-				"farmer_hoe_iron_recipe": {
+            "farmer_hoe_iron_recipe": {
                "recipe_name": "Iron Farmer's Hoe",
                "description": "Craft a tool that Farmers can use to slightly improve their working efficiency.",
                "flavor": ""
@@ -4300,6 +4375,38 @@
          "bench_log_juniper": {
             "display_name": "Juniper Carved Bench",
             "description": "In nature nothing is wasted and an old trunk can become a nice bench!"
+         },
+         "bench": {
+            "display_name": "Bone Park Bench",
+            "description": "Yes, it is safe to sit on it."
+         },
+         "bone_comfy_bed": {
+            "display_name": "Bone Comfy Bed",
+            "description": "A very comfortable bed. Physically, at least."
+         },
+         "bone_comfy_chair": {
+            "display_name": "Bone Comfy Chair",
+            "description": "The crimson pillows give it some charm."
+         },
+         "bone_dining_table": {
+            "display_name": "Bone Dining Table",
+            "description": "For a special and creepy time!"
+         },
+         "bone_dresser": {
+            "display_name": "Bone Dresser",
+            "description": "A fancy decoration for peculiar hearthlings."
+         },
+         "bone_stool": {
+            "display_name": "Bone Stool",
+            "description": "A simpler seat."
+         },
+         "bone_table_for_one": {
+            "display_name": "Bone Table for One",
+            "description": "For a lonely and shivering meal."
+         },
+         "bone_writing_desk": {
+            "display_name": "Bone Writing Desk",
+            "description": "Perfect for writing a horror story!"
          }
       },
       "recipes": {
@@ -4714,6 +4821,18 @@
                "description": "An awesome noble knight carved in stone.",
                "display_name_female": "Knight Statue (Female)"
             }
+         },
+         "firepit_skulls": {
+            "display_name": "Skull Hearth",
+            "description": "This exotic firepit will provide light, warmth and maybe nightmares."
+         },
+         "bone_candle_holder": {
+            "display_name": "Skull Candle Holder",
+            "description": "Guests love it... sometimes."
+         },
+         "bone_floor_candle_holder": {
+            "display_name": "Skull Floor Candle Holder",
+            "description": "Don't stare it too much."
          }
       },
       "pets": {
@@ -6670,6 +6789,22 @@
          "bog_butter_keg": {
             "display_name": "Bog Butter Keg",
             "description": "Someone buried this a long time ago... Peat lands give butter an unique flavor!"
+         },
+         "bone_chest": {
+            "display_name": "Bone Chest",
+            "description": "Creepily holds up to 64 items."
+         },
+         "input_bin_bone": {
+            "display_name": "Bone Supply Bin",
+            "description": "For quicker and weirder crafting."
+         },
+         "input_table_ground_bone": {
+            "display_name": "Bone Supply Table",
+            "description": "Sometimes a normal supply table just won't cut it."
+         },
+         "output_box_bone": {
+            "display_name": "Bone Finished Work Shelf",
+            "description": "The crimson cloth gives it some contrast."
          }
       },
       "tools": {

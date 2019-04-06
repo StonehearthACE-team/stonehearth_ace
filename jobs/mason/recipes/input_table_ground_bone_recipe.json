@@ -1,0 +1,23 @@
+{
+   "type": "recipe",
+   "effort": 22,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.mason.recipes.input_table_ground_bone_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.mason.recipes.input_table_ground_bone_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.mason.recipes.input_table_ground_bone_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/containers/input_table_ground_bone/input_table_ground_bone.png",
+   "level_requirement": 2,
+   "workshop": "stonehearth_ace:mason:workbench_bone",
+   "manual_unlock": true,
+   "ingredients": [
+	   {
+         "material": "bone resource",
+         "count": 3
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:containers:input_table:ground:bone"
+      }
+   ]
+}

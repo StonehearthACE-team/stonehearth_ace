@@ -1,0 +1,40 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(bone_floor_candle_holder.qb)",
+                     "file(bone_floor_candle_holder_2.qb)"
+                  ]
+               }
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0.05, "y": 0, "z": -0.05 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "allow_vertical_adjacent": true
+      },
+      "render_info": {
+         "scale": 0.11
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.decoration.bone_floor_candle_holder.display_name)",
+         "description": "i18n(stonehearth_ace:entities.decoration.bone_floor_candle_holder.description)",
+         "icon": "file(bone_floor_candle_holder.png)",
+         "category": "decoration",
+         "material_tags": [
+            "light_source",
+            "crafted",
+            "bone",
+            "stockpile_decoration"
+         ]
+      }
+   }
+}

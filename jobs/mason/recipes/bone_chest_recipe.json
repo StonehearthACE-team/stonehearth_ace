@@ -1,0 +1,31 @@
+{
+   "type": "recipe",
+   "effort": 25,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.mason.recipes.bone_chest_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.mason.recipes.bone_chest_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.mason.recipes.bone_chest_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/containers/bone_chest/bone_chest.png",
+   "level_requirement": 4,
+   "workshop": "stonehearth_ace:mason:workbench_bone",
+   "manual_unlock": true,
+   "ingredients": [
+	   {
+         "material": "bone resource",
+         "count": 3
+      },
+		{
+         "material": "cloth resource",
+         "count": 1
+      },
+		{
+         "uri": "stonehearth_ace:resources:bone:bone_skull",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:containers:bone_chest"
+      }
+   ]
+}

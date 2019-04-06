@@ -1,0 +1,30 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(bone_dresser.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": -0.7 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.furniture.bone_dresser.display_name)",
+         "description": "i18n(stonehearth_ace:entities.furniture.bone_dresser.description)",
+         "icon": "file(bone_dresser.png)",
+         "category": "furniture",
+         "material_tags": [
+            "bone",
+            "furniture",
+            "crafted",
+            "stockpile_furniture"
+         ]
+      }
+   }
+}

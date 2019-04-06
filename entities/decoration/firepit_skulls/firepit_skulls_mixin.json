@@ -1,0 +1,22 @@
+{
+   "components": {
+	    "stonehearth:firepit": {
+			"allow_charcoal": false,
+			"buff_source": true,			
+			"ember_uri": "stonehearth_ace:decoration:ember_green"
+		},
+		"sensor_list": {
+         "sensors": {
+            "warmth": {
+               "radius": 12
+            }
+         }
+      }
+   },
+   "entity_data": {
+		"stonehearth:table": {
+            "drop_effect": "carry_putdown",
+            "drop_offset": { "x": 0, "y": 0.2, "z": 0 }
+        }
+   }
+}

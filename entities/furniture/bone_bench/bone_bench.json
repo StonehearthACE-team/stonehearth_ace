@@ -1,0 +1,43 @@
+{
+   "type": "entity",
+   "mixins": "file(bone_bench_ghost.json)",
+   "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(bone_bench_iconic.json)",
+         "ghost_form": "file(bone_bench_ghost.json)",
+         "placeable_on_ground": true
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -2, "y": 0, "z": -1 },
+               "max": { "x": 2, "y": 2, "z": 1 }
+            }
+         ]
+      },
+      "stonehearth:mount": {
+         "mounted_posture": "stonehearth:sitting_on_chair",
+         "mount_offset": { "x": 0.3, "y": 0, "z": -0.5 }
+      },
+      "stonehearth:traveler_attraction": {}
+   },
+   "entity_data": {
+      "stonehearth:chair": {},
+      "stonehearth:net_worth": {
+         "value_in_gold": 23,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 2,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 17
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}
