@@ -19,7 +19,7 @@ App.RootController.reopen({
 
    _setAutoSaveInterval: function(interval) {
       var self = this;
-      self._autoSaveInterval = Math.max(self._minAutoSaveInterval, Math.min(self._maxAutoSaveInterval, parseInt(interval))) * 60 * 1000;
+      self._autoSaveInterval = Math.max(self._minAutoSaveInterval, Math.min(self._maxAutoSaveInterval, parseInt(interval || 0))) * 60 * 1000;
    },
 
    // have to override this to defer resume

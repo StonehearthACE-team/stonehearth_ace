@@ -3,7 +3,7 @@ App.SaveView.reopen({
       var self = this;
       self._super();
 
-      self._autoSaveUnique = false
+      self._autoSaveUnique = false;
 
       radiant.call('radiant:get_config', 'mods.stonehearth_ace.auto_save_unique_files')
          .done(function(response) {
