@@ -89,6 +89,12 @@ end
 
 AceRenewableResourceNodeComponent._ace_old_renew = RenewableResourceNodeComponent.renew
 function AceRenewableResourceNodeComponent:renew()
+   log:debug('attempting to renew entity %s...', self._entity)
+   if not self._entity:add_component('render_info') then
+      log:debug('failed to add render_info component to %s; rrn json: %s', self._entity, radiant.util.table_tostring(self._json))
+      self:_stop_renew_timer()
+      return
+   end
    self:_ace_old_renew()
 
    if self._json.buffs_on_renewal then
