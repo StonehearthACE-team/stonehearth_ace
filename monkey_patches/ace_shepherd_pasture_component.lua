@@ -599,6 +599,8 @@ function AceShepherdPastureComponent:get_animal_feed_material()
    local feed_material = self._sv.pasture_type and self._pasture_data[self._sv.pasture_type].feed_material
    if not feed_material then
       return 'fodder_bag'
+   else
+      return feed_material
    end
 end
 
