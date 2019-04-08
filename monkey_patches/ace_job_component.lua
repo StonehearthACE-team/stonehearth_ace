@@ -339,6 +339,13 @@ function AceJobComponent:_register_entity_types()
    end
 end
 
+AceJobComponent._ace_old__update_job_work_order = JobComponent._update_job_work_order
+function AceJobComponent:_update_job_work_order(player_id)
+   if self._training_target and self._training_target:get_player_id() ~= player_id then
+      self._training_target = nil
+   end
+end
+
 function AceJobComponent:_unregister_entity_types()
    local town = stonehearth.town:get_town(self._entity)
    if town then
@@ -450,7 +457,7 @@ end
 function AceJobComponent:get_training_target()
    local target = self._training_target
    if target then
-      if not target:is_valid() or not stonehearth.player:are_player_ids_friendly(radiant.entities.get_player_id(self._entity), target:get_player_id()) then
+      if not target:is_valid() or radiant.entities.get_workd_player_id(self._entity) ~= target:get_player_id() then
          target = nil
          self._training_target = nil
       end
