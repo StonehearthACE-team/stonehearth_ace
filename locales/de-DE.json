@@ -7255,13 +7255,13 @@
                "fertilizer_settings": {
                   "title": "Dünger",
                   "none": "Kein",
-                  "none_description": "Düngen nicht dieses Feld (heb deinen Ihren Dünger für wertvollere Pflanzen auf).",
+                  "none_description": "Dünge dieses Feld nicht.",
                   "high_quality": "Hohe Qualität",
-                  "high_quality_description": "Bevorzuge qualitativ hochwertigere Dünger für dieses Feld.",
+                  "high_quality_description": "Bevorzugt Dünger mit höherer Qualität.",
                   "low_quality": "Gerine Qualität",
-                  "low_quality_description": "Bevorzuge qualitativ minderwertigere Dünger für dieses Feld.",
+                  "low_quality_description": "Bevorzugt Dünger mit geringerer Qualität.",
                   "specific": "Spezifischer Dünger",
-                  "specific_description": "Wähle einen Dünger aus, um nur diesen speziellen Dünger für dieses Feld zu verwenden."
+                  "specific_description": "Wähle einen Dünger aus, um nur diesen speziellen Dünger zu verwenden."
                },
                "season": {
                   "property_name": "Bevorzugte Jahreszeit",
@@ -7281,9 +7281,9 @@
                   "short": "Diese Pflanze reift schnell (<span class='text-value'>[str(i18n_data.total_growth_time)]</span> vor Modifikatoren).",
                   "fair": "Diese Pflanze reift mäßig (<span class='text-value'>[str(i18n_data.total_growth_time)]</span> vor Modifikatoren).",
                   "long": "Diese Pflanze braucht lange um zu reifen (<span class='text-value'>[str(i18n_data.total_growth_time)]</span> vor Modifikatoren).",
-                  "shorter": "Umwelteinflüsse sorgen dafür, dass diese Kultur zum optimalen Wachstum <span class='text-value text-optimal'>[str(i18n_data.growth_time_percent)]</span> der normalen Zeit.",
+                  "shorter": "Umwelteinflüsse sorgen dafür, dass diese Kultur <span class='text-value text-optimal'>[str(i18n_data.growth_time_percent)] schneller</span> wächst als normal.",
                   "normal": "Umwelteinflüsse sorgen dafür, dass diese Kultur normal wächst.",
-                  "longer": "Umwelteinflüsse führen dazu, dass diese Kultur schlechter wächst und <span class='text-value text-poor'>[str(i18n_data.growth_time_percent)]</span> der normalen Zeit benötigt.",
+                  "longer": "Umwelteinflüsse führen dazu, dass diese Kultur <span class='text-value text-poor'>[str(i18n_data.growth_time_percent)] langsamer</span> wächst als normal.",
                   "too_long": "Diese Pflanze wächst aufgrund von Umweltfaktoren <span class='text-bad'>unermesslich langsam</span>!",
                   "stopped": "Das Wachstum dieser Kultur ist aktuell <span class='text-bad'>gestoppt</span>."
                },
