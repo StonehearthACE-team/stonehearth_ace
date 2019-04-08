@@ -709,7 +709,7 @@ App.StonehearthFarmView.reopen({
          tooltipTitle: localizations.growth_time.status_name,
          tooltip: growthTimeTooltip,
          i18n_data: {
-            growth_time_percent: self._formatPercentValue(growth_time_modifier)
+            growth_time_percent: self._formatMultiplierValue(1 / growth_time_modifier)
          }
       };
 
@@ -732,6 +732,10 @@ App.StonehearthFarmView.reopen({
 
    _formatPercentValue: function(value) {
       return Math.round(value * 100) + '%';
+   },
+
+   _formatMultiplierValue: function(value) {
+      return Math.round(Math.abs(1 - value) * 100) + '%';
    },
 
    _getLightIcon: function(value) {

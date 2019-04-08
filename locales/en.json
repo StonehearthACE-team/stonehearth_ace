@@ -1161,7 +1161,7 @@
          "heliophile": {
             "heliophile_trait": {
                "display_name": "Heliophile",
-               "description": "[name(i18n_data.entity)] loves praising the sun! Its light and rays are one of their favorite things and makes them really happy."
+               "description": "[name(i18n_data.entity)] loves praising the sun! Its light and rays are some of their favorite things and make them really happy."
             }
          }
       }
@@ -6547,67 +6547,67 @@
       "algae": {
          "green_algae": {
             "green_large_algae": {
-               "display_name": "Large Green Alga",
+               "display_name": "Large Green Algae",
                "description": "A quite tall water weed."
             },
             "green_medium_algae": {
-               "display_name": "Medium Green Alga",
+               "display_name": "Medium Green Algae",
                "description": "A good sized water weed."
             },
             "green_small_algae": {
-               "display_name": "Green Alga",
+               "display_name": "Green Algae",
                "description": "Not the smallest nor the largest specimen."
             },
             "green_algae": {
-               "display_name": "Small Green Alga",
+               "display_name": "Small Green Algae",
                "description": "A tiny water weed."
             },
             "green_algae_cut": {
-               "display_name": "Green Alga Stub",
-               "description": "The remains of a larger green alga. Will grow again if underwater and undisturbed."
+               "display_name": "Green Algae Stub",
+               "description": "The remains of a larger green algae. Will grow again if underwater and undisturbed."
             }
          },
          "brown_algae": {
             "brown_algae": {
-               "display_name": "Small Brown Alga",
+               "display_name": "Small Brown Algae",
                "description": "A tiny water weed."
             },
             "brown_algae_cut": {
-               "display_name": "Brown Alga Stub",
-               "description": "The remains of a larger brown alga. Will grow again if underwater and undisturbed."
+               "display_name": "Brown Algae Stub",
+               "description": "The remains of a larger brown algae. Will grow again if underwater and undisturbed."
             },
             "brown_large_algae": {
-               "display_name": "Large Brown Alga",
+               "display_name": "Large Brown Algae",
                "description": "Also known as kelp, it is a quite tall water weed."
             },
             "brown_medium_algae": {
-               "display_name": "Medium Brown Alga",
+               "display_name": "Medium Brown Algae",
                "description": "Also called kelp, this is a good sized water weed."
             },
             "brown_small_algae": {
-               "display_name": "Brown Alga",
+               "display_name": "Brown Algae",
                "description": "Alternatively called kelp, this is not a particularly large water weed."
             }
          },
          "red_algae": {
             "red_algae": {
-               "display_name": "Small Red Alga",
+               "display_name": "Small Red Algae",
                "description": "A tiny water weed."
             },
             "red_algae_cut": {
-               "display_name": "Red Alga Stub",
-               "description": "The remains of a larger red alga. Will grow again if underwater and undisturbed."
+               "display_name": "Red Algae Stub",
+               "description": "The remains of a larger red algae. Will grow again if underwater and undisturbed."
             },
             "red_large_algae": {
-               "display_name": "Large Red Alga",
+               "display_name": "Large Red Algae",
                "description": "A tall and peculiar water weed."
             },
             "red_medium_algae": {
-               "display_name": "Medium Red Alga",
+               "display_name": "Medium Red Algae",
                "description": "A nice water weed."
             },
             "red_small_algae": {
-               "display_name": "Red Alga",
+               "display_name": "Red Algae",
                "description": "There are taller water weeds out there..."
             }
          }
@@ -7255,13 +7255,13 @@
                "fertilizer_settings": {
                   "title": "Fertilizer",
                   "none": "None",
-                  "none_description": "Do not fertilize this field (save your fertilizer for more valuable crops).",
+                  "none_description": "Do not fertilize.",
                   "high_quality": "High Quality",
-                  "high_quality_description": "Prefer higher quality fertilizers for this field.",
+                  "high_quality_description": "Prefer higher quality fertilizers.",
                   "low_quality": "Low Quality",
-                  "low_quality_description": "Prefer lower quality fertilizers for this field.",
+                  "low_quality_description": "Prefer lower quality fertilizers.",
                   "specific": "Specific Fertilizer",
-                  "specific_description": "Select a fertilizer below to only use that specific fertilizer for this field."
+                  "specific_description": "Select a fertilizer below to only use that specific fertilizer."
                },
                "season": {
                   "property_name": "Preferred Seasons",
@@ -7281,9 +7281,9 @@
                   "short": "This crop matures quickly (<span class='text-value'>[str(i18n_data.total_growth_time)]</span> before modifiers).",
                   "fair": "This crop matures at a moderate rate (<span class='text-value'>[str(i18n_data.total_growth_time)]</span> before modifiers).",
                   "long": "This crop takes a long time to mature (<span class='text-value'>[str(i18n_data.total_growth_time)]</span> before modifiers).",
-                  "shorter": "Environmental factors make this crop take <span class='text-value text-optimal'>[str(i18n_data.growth_time_percent)]</span> of normal time to grow.",
+                  "shorter": "Environmental factors make this crop grow <span class='text-value text-optimal'>[str(i18n_data.growth_time_percent)] faster</span> than normal!",
                   "normal": "Environmental factors make this crop grow at a normal rate.",
-                  "longer": "Environmental factors make this crop take <span class='text-value text-poor'>[str(i18n_data.growth_time_percent)]</span> of normal time to grow.",
+                  "longer": "Environmental factors make this crop grow <span class='text-value text-poor'>[str(i18n_data.growth_time_percent)] slower</span> than normal!",
                   "too_long": "This crop is growing <span class='text-bad'>immeasurably slowly</span> due to environmental factors!",
                   "stopped": "This crop's growth is currently <span class='text-bad'>stopped</span>."
                },
