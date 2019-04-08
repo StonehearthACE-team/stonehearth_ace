@@ -1,0 +1,31 @@
+{
+   "components": {
+      "stonehearth:equipment_piece": {
+         "slot": "torso",
+         "render_type": "merge_with_model",
+         "ilevel": 2,
+			"injected_buffs": [
+				"stonehearth:buffs:devoted",
+            "stonehearth_ace:buffs:weather:hot_resist"
+         ],
+         "conditional_values": {
+            "season": {
+               "winter": -3,
+               "autumn": -3,
+               "spring": 0,
+               "summer": 1
+            }
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "category": "armor",
+         "material_tags": [
+            "worker_outfit",
+            "civillian_equipment",
+            "stockpile_equipment"
+         ]
+      }
+   }
+}

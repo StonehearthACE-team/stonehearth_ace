@@ -1,9 +1,17 @@
 {
-   "components": {
+	"mixins": [
+      "stonehearth_ace:mixins:outfit:hot:no_buff"
+   ],
+	"components": {
       "stonehearth:equipment_piece": {
-         "injected_buffs": [
-            "stonehearth_ace:buffs:weather:hot_resist"
-         ]
+         "conditional_values": {
+            "season": {
+               "winter": -3,
+               "autumn": -3,
+               "spring": 0,
+               "summer": 1
+            }
+         }
       }
    }
 }

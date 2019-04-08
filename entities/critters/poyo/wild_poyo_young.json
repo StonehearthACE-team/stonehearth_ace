@@ -2,9 +2,6 @@
    "type": "entity",
    "mixins": "stonehearth:poyo:young",
    "components": {
-      "mixintypes": {
-         "stonehearth:expendable_resources": "remove"
-      },
       "stonehearth:attributes": {
          "mixintypes": {
             "min_calories": "remove",
@@ -12,6 +9,14 @@
             "reproduction_rate_multiplier": "remove",
             "renewable_resource_rate_multiplier": "remove",
             "max_social_satisfaction": "remove"
+         }
+      },
+      "stonehearth:expendable_resources": {
+         "resources": {
+            "mixintypes": {
+               "calories": "remove",
+               "social_satisfaction": "remove"
+            }
          }
       }
    },

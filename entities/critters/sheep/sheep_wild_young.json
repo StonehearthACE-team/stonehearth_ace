@@ -3,7 +3,6 @@
    "mixins": "stonehearth:sheep:young",
    "components": {
       "mixintypes": {
-         "stonehearth:expendable_resources": "remove",
          "model_variants": "override"
       },
       "model_variants": {
@@ -20,6 +19,14 @@
             "reproduction_rate_multiplier": "remove",
             "renewable_resource_rate_multiplier": "remove",
             "max_social_satisfaction": "remove"
+         }
+      },
+      "stonehearth:expendable_resources": {
+         "resources": {
+            "mixintypes": {
+               "calories": "remove",
+               "social_satisfaction": "remove"
+            }
          }
       }
    },

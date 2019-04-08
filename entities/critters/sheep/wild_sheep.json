@@ -4,7 +4,6 @@
    "components": {
       "mixintypes": {
          "stonehearth:renewable_resource_node": "override",
-         "stonehearth:expendable_resources": "remove",
          "stonehearth:commands": "override"
       },
       "stonehearth:renewable_resource_node": {
@@ -23,6 +22,14 @@
             "reproduction_rate_multiplier": "remove",
             "renewable_resource_rate_multiplier": "remove",
             "max_social_satisfaction": "remove"
+         }
+      },
+      "stonehearth:expendable_resources": {
+         "resources": {
+            "mixintypes": {
+               "calories": "remove",
+               "social_satisfaction": "remove"
+            }
          }
       },
       "stonehearth:loot_drops": {

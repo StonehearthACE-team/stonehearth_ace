@@ -1,5 +1,8 @@
 {
-   "mixins": "stonehearth:mixins:item_properties",
+   "mixins": [
+      "stonehearth:mixins:item_properties",
+      "stonehearth_ace:mixins:outfit:cold:buffed"
+   ],
    "type": "entity",
    "components": {
       "model_variants": {
@@ -46,28 +49,13 @@
          "iconic_form": "file(cold_worker_outfit_iconic.json)"
       },
       "stonehearth:equipment_piece": {
-         "slot": "torso",
-         "render_type": "merge_with_model",
          "roles": [
             "worker_job"
          ],
-         "ilevel": 2,
          "additional_equipment": {
             "stonehearth_ace:armor:helmet_placeholder": true
          },
-         "injected_buffs": [
-            "stonehearth:buffs:devoted",
-            "stonehearth_ace:buffs:weather:cold_resist"
-         ],
-         "equip_effect": "stonehearth:effects:weapon_level_up",
-         "conditional_values": {
-            "season": {
-               "winter": 2,
-               "autumn": 1,
-               "spring": -3,
-               "summer": -3
-            }
-         }
+         "equip_effect": "stonehearth:effects:weapon_level_up"
       }
    },
    "entity_data": {
@@ -88,10 +76,7 @@
          "category": "armor",
          "material_tags": [
             "leather",
-            "worker_outfit",
-            "civillian_equipment",
-            "ascendancy_made",
-            "stockpile_equipment"
+            "ascendancy_made"
          ]
       }
    }
