@@ -31,12 +31,12 @@
                               <img class="cropPropertyImage" {{bind-attr src="view.cropProperties.growthTime.icon"}}/>
                            </div>
                         </td>
-                        <td>
+                        <td {{bind-attr class=view.showWater::hidden}}>
                            <div id="waterAffinity" class="cropProperty">
                               <img class="cropPropertyImage" {{bind-attr src="view.cropProperties.waterAffinity.icon"}}/>
                            </div>
                         </td>
-                        <td>
+                        <td {{bind-attr class=view.showWater::hidden}}>
                            <div id="floodPreference" class="cropProperty">
                               <img class="cropPropertyImage" {{bind-attr src="view.cropProperties.floodPreference.icon"}}/>
                            </div>
@@ -60,12 +60,12 @@
                               <img class="cropPropertyImage" {{bind-attr src="view.cropStatuses.relativeGrowthTime.icon"}}/>
                            </div>
                         </td>
-                        <td>
+                        <td {{bind-attr class=view.showWater::hidden}}>
                            <div id="currentWaterLevel" class="cropProperty">
                               <img class="cropPropertyImage" {{bind-attr src="view.cropStatuses.currentWaterLevel.icon"}}/>
                            </div>
                         </td>
-                        <td>
+                        <td {{bind-attr class=view.showWater::hidden}}>
                            <div id="currentFlooded" class="cropProperty">
                               <img class="cropPropertyImage" {{bind-attr src="view.cropStatuses.currentFlooded.icon"}}/>
                            </div>
@@ -75,7 +75,7 @@
                               <img class="cropPropertyImage" {{bind-attr src="view.cropStatuses.currentLightLevel.icon"}}/>
                            </div>
                         </td>
-                        <td>
+                        <td {{bind-attr class=view.showFertilizer::hidden}}>
                            <div id="currentFertilized" class="cropProperty">
                               <img class="cropPropertyImage" {{bind-attr src="view.cropStatuses.currentFertilized.icon"}}/>
                            </div>
@@ -84,7 +84,7 @@
                   </table>
                </div>
 
-               <div id="fertilizerSettings">
+               <div id="fertilizerSettings" {{bind-attr class=view.showFertilizer::hidden}}>
                   <h2>{{i18n stonehearth_ace:ui.game.zones_mode.farm.fertilizer_settings.title}}</h2>
                   <div>
                      <div id="fertilizerNone" class="fertilizerSetting">

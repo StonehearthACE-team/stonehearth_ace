@@ -96,6 +96,10 @@ App.StonehearthFarmView.reopen({
          this.seasons_trace.destroy();
          this.seasons_trace = null;
       }
+      if (this.farmer_info_trace) {
+         this.farmer_info_trace.destroy();
+         this.farmer_info_trace = null;
+      }
    },
 
    didInsertElement: function() {
@@ -373,60 +377,69 @@ App.StonehearthFarmView.reopen({
 
 
       var affinities = self._waterAffinities;
-      var size_mult = self._getSizeMult(size);
-      var waterAffinity = {
-         name: 'waterAffinity',
-         tooltipTitle: localizations.water_affinity.property_name,
-         icon: self._getWaterIcon(affinities.best_affinity.min_level)
-      };
-      if (affinities.next_affinity) {
-         waterAffinity.tooltip = localizations.water_affinity.range;
-         waterAffinity.i18n_data = {
-            min_water_level: self._formatFlatValue(affinities.best_affinity.min_level * size_mult),
-            max_water_level: self._formatFlatValue(affinities.next_affinity.min_level * size_mult)
+      // only include water affinity if it applies (i.e., if there's more than one possible affinity level)
+      if (affinities.best_affinity && (affinities.best_affinity.min_level > 0 || affinities.next_affinity))
+      {
+         var size_mult = self._getSizeMult(size);
+         var waterAffinity = {
+            name: 'waterAffinity',
+            tooltipTitle: localizations.water_affinity.property_name,
+            icon: self._getWaterIcon(affinities.best_affinity.min_level)
          };
+         if (affinities.next_affinity) {
+            waterAffinity.tooltip = localizations.water_affinity.range;
+            waterAffinity.i18n_data = {
+               min_water_level: self._formatFlatValue(affinities.best_affinity.min_level * size_mult),
+               max_water_level: self._formatFlatValue(affinities.next_affinity.min_level * size_mult)
+            };
+         }
+         else {
+            waterAffinity.tooltip = localizations.water_affinity.min_only;
+            waterAffinity.i18n_data = { min_water_level: self._formatFlatValue(affinities.best_affinity.min_level * size_mult) };
+         }
+
+         cropProperties.waterAffinity = waterAffinity;
+         self._setTooltipData(waterAffinity);
+         self._createPropertyTooltip(self.$('#waterAffinity'), waterAffinity.name);
+
+
+         var floodType = self._FLOOD_ICONS.DRY;
+         var floodTooltip = localizations.flooded.prefers_not;
+         var requireFlooding = details.require_flooding_to_grow;
+         var floodingMultiplier = details.flood_period_multiplier;
+         var frozenMultiplier = details.frozen_period_multiplier;
+         if (requireFlooding) {
+            floodType = self._FLOOD_ICONS.REQUIRED;
+            floodTooltip = localizations.flooded.requires;
+         }
+         else if (floodingMultiplier < 1) {
+            floodType = self._FLOOD_ICONS.FASTER;
+            floodTooltip = localizations.flooded.prefers;
+         }
+         else if (floodingMultiplier > 1) {
+            floodType = self._FLOOD_ICONS.DRY;
+            floodTooltip = localizations.flooded.prefers_not;
+         }
+
+         var floodPreference = {
+            name: 'floodPreference',
+            tooltipTitle: localizations.flooded.property_name,
+            requireFlooding: requireFlooding,
+            floodingMultiplier: floodingMultiplier,
+            frozenMultiplier: frozenMultiplier,
+            icon: self._IMAGES_DIR + 'property_flood_' + floodType + '.png',
+            tooltip: floodTooltip
+         };
+
+         cropProperties.floodPreference = floodPreference;
+         self._setTooltipData(floodPreference);
+         self._createPropertyTooltip(self.$('#floodPreference'), floodPreference.name);
+
+         self.set('showWater', true);
       }
       else {
-         waterAffinity.tooltip = localizations.water_affinity.min_only;
-         waterAffinity.i18n_data = { min_water_level: self._formatFlatValue(affinities.best_affinity.min_level * size_mult) };
+         self.set('showWater', false);
       }
-
-      cropProperties.waterAffinity = waterAffinity;
-      self._setTooltipData(waterAffinity);
-      self._createPropertyTooltip(self.$('#waterAffinity'), waterAffinity.name);
-
-
-      var floodType = self._FLOOD_ICONS.DRY;
-      var floodTooltip = localizations.flooded.prefers_not;
-      var requireFlooding = details.require_flooding_to_grow;
-      var floodingMultiplier = details.flood_period_multiplier;
-      var frozenMultiplier = details.frozen_period_multiplier;
-      if (requireFlooding) {
-         floodType = self._FLOOD_ICONS.REQUIRED;
-         floodTooltip = localizations.flooded.requires;
-      }
-      else if (floodingMultiplier < 1) {
-         floodType = self._FLOOD_ICONS.FASTER;
-         floodTooltip = localizations.flooded.prefers;
-      }
-      else if (floodingMultiplier > 1) {
-         floodType = self._FLOOD_ICONS.DRY;
-         floodTooltip = localizations.flooded.prefers_not;
-      }
-
-      var floodPreference = {
-         name: 'floodPreference',
-         tooltipTitle: localizations.flooded.property_name,
-         requireFlooding: requireFlooding,
-         floodingMultiplier: floodingMultiplier,
-         frozenMultiplier: frozenMultiplier,
-         icon: self._IMAGES_DIR + 'property_flood_' + floodType + '.png',
-         tooltip: floodTooltip
-      };
-
-      cropProperties.floodPreference = floodPreference;
-      self._setTooltipData(floodPreference);
-      self._createPropertyTooltip(self.$('#floodPreference'), floodPreference.name);
 
 
       var affinities = self._lightAffinities;
@@ -521,107 +534,111 @@ App.StonehearthFarmView.reopen({
       self._applyStatus(self.$('#currentSeason'), status);
 
 
-      switch (effective_humidity_level) {
-         case levels.NONE:
-            status = self._STATUSES.POOR;
-            break;
-         case levels.SOME:
-            status = self._STATUSES.AVERAGE;
-            break;
-         case levels.PLENTY:
-            status = self._STATUSES.OPTIMAL;
-            break;
-         case levels.EXTRA:
-            status = self._STATUSES.AVERAGE;
-      }
-
-      var currentWaterLevel = {
-         name: 'currentWaterLevel',
-         icon: self._getWaterIcon(current_water_level,
-            {
-               min: self._waterAffinities.best_affinity.min_level,
-               max: self._waterAffinities.next_affinity && self._waterAffinities.next_affinity.min_level
-            }),
-         status: status,
-         tooltipTitle: localizations.water_affinity.status_name,
-         tooltip: localizations.water_affinity.current_level,
-         i18n_data: { current_water_level: self._formatFlatValue(current_water_level * size_mult) }
-      };
-
-      cropStatuses.currentWaterLevel = currentWaterLevel;
-      self._setTooltipData(currentWaterLevel);
-      self._createPropertyTooltip(self.$('#currentWaterLevel'), currentWaterLevel.name);
-      self._applyStatus(self.$('#currentWaterLevel'), status);
-
-
-      status = self._STATUSES.AVERAGE;
-      var flood_icon = self._FLOOD_ICONS.DRY;
-      var flood_tooltip = localizations.flooded.current_not_flooded;
-      if (is_frozen) {
-         // frozen status takes precendence over flooding
-         flood_tooltip = localizations.frozen.current_frozen;
-         flood_icon = self._FLOOD_ICONS.FROZEN;
-         if (cropProperties.floodPreference.frozenMultiplier < 1) {
-            // unlikely...
-            status = self._STATUSES.OPTIMAL;
-         }
-         else if (cropProperties.floodPreference.frozenMultiplier > 1) {
-            status = self._STATUSES.POOR;
-         }
-      }
-      else {
-         if (is_flooded) {
-            flood_tooltip = localizations.flooded.current_flooded;
-         }
-         if (cropProperties.floodPreference.requireFlooding) {
-            if (!is_flooded) {
-               status = self._STATUSES.BAD;
-               flood_icon = self._FLOOD_ICONS.DRY_STOPPED;
-            }
-            else {
+      // only include water statuses if water properties are included
+      if (cropProperties.waterAffinity)
+      {
+         switch (effective_humidity_level) {
+            case levels.NONE:
+               status = self._STATUSES.POOR;
+               break;
+            case levels.SOME:
+               status = self._STATUSES.AVERAGE;
+               break;
+            case levels.PLENTY:
                status = self._STATUSES.OPTIMAL;
+               break;
+            case levels.EXTRA:
+               status = self._STATUSES.AVERAGE;
+         }
+
+         var currentWaterLevel = {
+            name: 'currentWaterLevel',
+            icon: self._getWaterIcon(current_water_level,
+               {
+                  min: self._waterAffinities.best_affinity.min_level,
+                  max: self._waterAffinities.next_affinity && self._waterAffinities.next_affinity.min_level
+               }),
+            status: status,
+            tooltipTitle: localizations.water_affinity.status_name,
+            tooltip: localizations.water_affinity.current_level,
+            i18n_data: { current_water_level: self._formatFlatValue(current_water_level * size_mult) }
+         };
+
+         cropStatuses.currentWaterLevel = currentWaterLevel;
+         self._setTooltipData(currentWaterLevel);
+         self._createPropertyTooltip(self.$('#currentWaterLevel'), currentWaterLevel.name);
+         self._applyStatus(self.$('#currentWaterLevel'), status);
+
+
+         status = self._STATUSES.AVERAGE;
+         var flood_icon = self._FLOOD_ICONS.DRY;
+         var flood_tooltip = localizations.flooded.current_not_flooded;
+         if (is_frozen) {
+            // frozen status takes precendence over flooding
+            flood_tooltip = localizations.frozen.current_frozen;
+            flood_icon = self._FLOOD_ICONS.FROZEN;
+            if (cropProperties.floodPreference.frozenMultiplier < 1) {
+               // unlikely...
+               status = self._STATUSES.OPTIMAL;
+            }
+            else if (cropProperties.floodPreference.frozenMultiplier > 1) {
+               status = self._STATUSES.POOR;
+            }
+         }
+         else {
+            if (is_flooded) {
+               flood_tooltip = localizations.flooded.current_flooded;
+            }
+            if (cropProperties.floodPreference.requireFlooding) {
+               if (!is_flooded) {
+                  status = self._STATUSES.BAD;
+                  flood_icon = self._FLOOD_ICONS.DRY_STOPPED;
+               }
+               else {
+                  status = self._STATUSES.OPTIMAL;
+                  flood_icon = self._FLOOD_ICONS.REQUIRED;
+               }
+            }
+            else if (cropProperties.floodPreference.floodingMultiplier < 1) {
+               if (!is_flooded) {
+                  status = self._STATUSES.POOR;
+                  flood_icon = self._FLOOD_ICONS.DRY_SLOWER;
+               }
+               else {
+                  status = self._STATUSES.OPTIMAL;
+                  flood_icon = self._FLOOD_ICONS.FASTER;
+               }
+            }
+            else if (cropProperties.floodPreference.floodingMultiplier > 1) {
+               if (is_flooded) {
+                  status = self._STATUSES.POOR;
+                  flood_icon = self._FLOOD_ICONS.SLOWER;
+               }
+               else {
+                  status = self._STATUSES.OPTIMAL;
+               }
+            }
+            else if (is_flooded) {
                flood_icon = self._FLOOD_ICONS.REQUIRED;
             }
          }
-         else if (cropProperties.floodPreference.floodingMultiplier < 1) {
-            if (!is_flooded) {
-               status = self._STATUSES.POOR;
-               flood_icon = self._FLOOD_ICONS.DRY_SLOWER;
+
+         var currentFlooded = {
+            name: 'currentFlooded',
+            icon: self._IMAGES_DIR + 'property_flood_' + flood_icon + '.png',
+            status: status,
+            tooltipTitle: localizations.flooded.status_name,
+            tooltip: flood_tooltip,
+            i18n_data: {
+               flooded_status: 'text-' + status
             }
-            else {
-               status = self._STATUSES.OPTIMAL;
-               flood_icon = self._FLOOD_ICONS.FASTER;
-            }
-         }
-         else if (cropProperties.floodPreference.floodingMultiplier > 1) {
-            if (is_flooded) {
-               status = self._STATUSES.POOR;
-               flood_icon = self._FLOOD_ICONS.SLOWER;
-            }
-            else {
-               status = self._STATUSES.OPTIMAL;
-            }
-         }
-         else if (is_flooded) {
-            flood_icon = self._FLOOD_ICONS.REQUIRED;
-         }
+         };
+
+         cropStatuses.currentFlooded = currentFlooded;
+         self._setTooltipData(currentFlooded);
+         self._createPropertyTooltip(self.$('#currentFlooded'), currentFlooded.name);
+         self._applyStatus(self.$('#currentFlooded'), status);
       }
-
-      var currentFlooded = {
-         name: 'currentFlooded',
-         icon: self._IMAGES_DIR + 'property_flood_' + flood_icon + '.png',
-         status: status,
-         tooltipTitle: localizations.flooded.status_name,
-         tooltip: flood_tooltip,
-         i18n_data: {
-            flooded_status: 'text-' + status
-         }
-      };
-
-      cropStatuses.currentFlooded = currentFlooded;
-      self._setTooltipData(currentFlooded);
-      self._createPropertyTooltip(self.$('#currentFlooded'), currentFlooded.name);
-      self._applyStatus(self.$('#currentFlooded'), status);
 
 
       if (current_light_level < cropProperties.lightAffinity.min_light_level) {
@@ -886,6 +903,26 @@ App.StonehearthFarmView.reopen({
          });
       }
    },
+
+   // hard-coded for farmers level 3 gaining fertilizer
+   // TODO: tie it into some constant somewhere or read in the perk data
+   _updatedFarmerJobInfo: function() {
+      var self = this;
+      if (!self.farmer_info_trace) {
+         self.farmer_info_trace = radiant.trace(self.get('farmer_job_info'))
+            .progress(function (o) {
+               if (self.isDestroyed || self.isDestroying) {
+                  return;
+               }
+               self.set('highest_level', o.highest_level);
+            });
+      }
+   }.observes('farmer_job_info'),
+
+   _showFertilizer: function() {
+      var self = this;
+      self.set('showFertilizer', self.get('highest_level') >= 3);
+   }.observes('highest_level'),
 
    isFallow: function() {
       return this.get('cropProperties') == null;
