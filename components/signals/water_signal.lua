@@ -52,9 +52,9 @@ function WaterSignal:destroy()
 end
 
 function WaterSignal:_reset()
-   self._sv._water_exists = false
+   self._sv._water_exists = nil
 	self._sv._water_volume = nil
-	self._sv._waterfall_exists = false
+	self._sv._waterfall_exists = nil
    self._sv._waterfall_volume = nil
    self._sv._water_surface_level = nil
 	self.__saved_variables:mark_changed()

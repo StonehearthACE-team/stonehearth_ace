@@ -28,8 +28,13 @@ function AquaticObjectComponent:post_activate()
    end
 
    self:_create_listeners()
-	self:_on_water_exists_changed()
-	self:_on_water_surface_level_changed()
+   
+   -- only call these if we're already placed in the world
+   local location = radiant.entities.get_world_location(self._entity)
+   if location then
+      self:_on_water_exists_changed()
+      self:_on_water_surface_level_changed()
+   end
 end
 
 function AquaticObjectComponent:_create_listeners()
@@ -66,7 +71,7 @@ end
 function AquaticObjectComponent:_on_water_exists_changed(exists)
 	if exists == nil then
 		exists = self._water_signal:get_water_exists()
-	end
+   end
 
 	self._sv.in_the_water = exists
 	self.__saved_variables:mark_changed()
@@ -88,7 +93,7 @@ end
 function AquaticObjectComponent:_on_water_surface_level_changed(level)
 	if level == nil then
 		level = self._water_signal:get_water_surface_level()
-	end
+   end
 
 	if self._floating_object then
 		self:float(level)
@@ -108,7 +113,7 @@ function AquaticObjectComponent:suffocate_entity(level)
 	local entity_height = self._suffocate_if_out_of_water.entity_height or 1
 	local entity_location = radiant.entities.get_world_location(self._entity)
 	local entity_breathing_line = nil
-	
+   
 	if entity_location then
 		entity_breathing_line = entity_location.y + entity_height
 		if level == nil then
