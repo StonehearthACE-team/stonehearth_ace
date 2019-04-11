@@ -795,6 +795,10 @@
             "sculpt_statue": {
                "display_name": "Make Art!",
                "description": "Order the Mason to put their best skills to use and create something beautiful out of this block of stone!"
+            },
+            "release_fish": {
+               "display_name": "Release Fish",
+               "description": "Let the little creature be free! Just make sure it's in the water..."
             }
          },
          "slaughter": {
@@ -1886,77 +1890,77 @@
                "description": "A good starting alternative for those that do not favor the shield. (Off-hand)",
                "flavor": ""
             },
-				"firepit_skulls_recipe": {
+            "firepit_skulls_recipe": {
                "recipe_name": "Skull Hearth",
                "description": "Create an exotic firepit that will provide light and warmth.",
                "flavor": "Might also cause nightmares"
             },
-				"input_bin_bone_recipe": {
+            "input_bin_bone_recipe": {
                "recipe_name": "Bone Supply Bin",
                "description": "Make a supply bin for quicker and weirder crafting.",
                "flavor": ""
             },
-				"input_table_ground_bone_recipe": {
+            "input_table_ground_bone_recipe": {
                "recipe_name": "Bone Supply Table",
                "description": "Craft a supply table for stockpiling materials.",
                "flavor": ""
             },
-				"output_box_bone_recipe": {
+            "output_box_bone_recipe": {
                "recipe_name": "Bone Finished Work Shelf",
                "description": "Build an odd but efficient shelf for crafters to store finished products.",
                "flavor": ""
             },
-				"bone_chest_recipe": {
+            "bone_chest_recipe": {
                "recipe_name": "Bone Chest",
                "description": "Creepily holds up to 64 items.",
                "flavor": "Not a mimic. Promise."
             },
-				"bone_bench_recipe": {
+            "bone_bench_recipe": {
                "recipe_name": "Bone Park Bench",
                "description": "Create a creepy park bench out of several bones.",
                "flavor": ""
             },
-				"bone_comfy_bed_recipe": {
+            "bone_comfy_bed_recipe": {
                "recipe_name": "Bone Comfy Bed",
                "description": "A comfortable bed for hearthlings to sleep.",
                "flavor": "Stuff of nightmares"
             },
-				"bone_comfy_chair_recipe": {
+            "bone_comfy_chair_recipe": {
                "recipe_name": "Bone Comfy Chair",
                "description": "Build an odd yet elegant chair with bones and pillows.",
                "flavor": ""
             },
-				"bone_candle_holder_recipe": {
+            "bone_candle_holder_recipe": {
                "recipe_name": "Skull Candle Holder",
                "description": "Create a creepy light source that can be placed on surfaces or walls.",
                "flavor": "If only the eye sockets would glow..."
             },
-				"bone_floor_candle_holder_recipe": {
+            "bone_floor_candle_holder_recipe": {
                "recipe_name": "Skull Floor Candle Holder",
                "description": "Carve a creepy light source to place on the floor.",
                "flavor": ""
             },
-				"bone_dining_table_recipe": {
+            "bone_dining_table_recipe": {
                "recipe_name": "Bone Dining Table",
                "description": "Build a beautifully carved table for meals.",
                "flavor": "Might cause some indigestion..."
             },
-				"bone_stool_recipe": {
+            "bone_stool_recipe": {
                "recipe_name": "Bone Stool",
                "description": "Craft a small and efficient seat.",
                "flavor": ""
             },
-				"bone_dresser_recipe": {
+            "bone_dresser_recipe": {
                "recipe_name": "Bone Dresser",
                "description": "Create a fancy dresser with a nice cloth out of bones.",
                "flavor": ""
             },
-				"bone_writing_desk_recipe": {
+            "bone_writing_desk_recipe": {
                "recipe_name": "Bone Writing Desk",
                "description": "Carve a nice bone desk for decoration.",
                "flavor": "Improves the quality of ghost stories!"
             },
-				"bone_table_for_one_recipe": {
+            "bone_table_for_one_recipe": {
                "recipe_name": "Bone Table for One",
                "description": "Create a small bone table for a single person.",
                "flavor": ""
@@ -2573,6 +2577,11 @@
                "recipe_name": "Portion of Wheat Dough",
                "description": "Mix and knead a malleable dough to be used on baking meals like bread.",
                "flavor": "Watch it grow!"
+            },
+            "cooking_oil_recipe": {
+               "recipe_name": "Cooking Oil",
+               "description": "Extract the oil from any oleaginous seeds or grains to be used as an ingredient.",
+               "flavor": "Cotton seeds, Sunflower seeds, Corn or even Paddy are examples of oil sources"
             },
             "dough_sweet_recipe": {
                "recipe_name": "Portion of Sweet Wheat Dough",
@@ -5595,6 +5604,10 @@
             "seared_meat_veggies_serving": {
                "display_name": "Serving of Seared Meat & Veggies"
             }
+         },
+         "cooking_oil": {
+            "display_name": "Cooking Oil",
+            "description": "Extracted from vegetables. Can also be used as cooking grease."
          }
       },
       "terrain": {
@@ -6444,7 +6457,7 @@
             "description": "A slippery aquatic little creature.",
             "iconic": {
                "display_name": "Captive Silver Fish",
-               "description": "Won't last more than a couple days. Better to release it somewhere!"
+               "description": "Won't last more than a couple days. Better to release it somewhere."
             }
          },
          "fish_silver_fry": {
@@ -6547,67 +6560,67 @@
       "algae": {
          "green_algae": {
             "green_large_algae": {
-               "display_name": "Large Green Algae",
+               "display_name": "Large Green Alga",
                "description": "A quite tall water weed."
             },
             "green_medium_algae": {
-               "display_name": "Medium Green Algae",
+               "display_name": "Medium Green Alga",
                "description": "A good sized water weed."
             },
             "green_small_algae": {
-               "display_name": "Green Algae",
+               "display_name": "Green Alga",
                "description": "Not the smallest nor the largest specimen."
             },
             "green_algae": {
-               "display_name": "Small Green Algae",
+               "display_name": "Small Green Alga",
                "description": "A tiny water weed."
             },
             "green_algae_cut": {
-               "display_name": "Green Algae Stub",
-               "description": "The remains of a larger green algae. Will grow again if underwater and undisturbed."
+               "display_name": "Green Alga Stub",
+               "description": "The remains of a larger green alga. Will grow again if underwater and undisturbed."
             }
          },
          "brown_algae": {
             "brown_algae": {
-               "display_name": "Small Brown Algae",
+               "display_name": "Small Brown Alga",
                "description": "A tiny water weed."
             },
             "brown_algae_cut": {
-               "display_name": "Brown Algae Stub",
-               "description": "The remains of a larger brown algae. Will grow again if underwater and undisturbed."
+               "display_name": "Brown Alga Stub",
+               "description": "The remains of a larger brown alga. Will grow again if underwater and undisturbed."
             },
             "brown_large_algae": {
-               "display_name": "Large Brown Algae",
+               "display_name": "Large Brown Alga",
                "description": "Also known as kelp, it is a quite tall water weed."
             },
             "brown_medium_algae": {
-               "display_name": "Medium Brown Algae",
+               "display_name": "Medium Brown Alga",
                "description": "Also called kelp, this is a good sized water weed."
             },
             "brown_small_algae": {
-               "display_name": "Brown Algae",
+               "display_name": "Brown Alga",
                "description": "Alternatively called kelp, this is not a particularly large water weed."
             }
          },
          "red_algae": {
             "red_algae": {
-               "display_name": "Small Red Algae",
+               "display_name": "Small Red Alga",
                "description": "A tiny water weed."
             },
             "red_algae_cut": {
-               "display_name": "Red Algae Stub",
-               "description": "The remains of a larger red algae. Will grow again if underwater and undisturbed."
+               "display_name": "Red Alga Stub",
+               "description": "The remains of a larger red alga. Will grow again if underwater and undisturbed."
             },
             "red_large_algae": {
-               "display_name": "Large Red Algae",
+               "display_name": "Large Red Alga",
                "description": "A tall and peculiar water weed."
             },
             "red_medium_algae": {
-               "display_name": "Medium Red Algae",
+               "display_name": "Medium Red Alga",
                "description": "A nice water weed."
             },
             "red_small_algae": {
-               "display_name": "Red Algae",
+               "display_name": "Red Alga",
                "description": "There are taller water weeds out there..."
             }
          }
@@ -7153,7 +7166,8 @@
                "gizmos": "Gizmos",
                "fungi": "Fungi",
                "drink": "Drinks",
-               "boulder": "Stonework"
+               "boulder": "Stonework",
+               "automatons_and_golems": "Automatons & Golems"
             }
          },
          "custom_tooltips": {
@@ -7570,7 +7584,10 @@
             "any_pet_food_resource_name": "Any Pet Food",
             "milk_resource_name": "Any Milk",
             "butter_resource_name": "Any Butter",
-            "strong_bone_resource_name": "Strong Bone"
+            "strong_bone_resource_name": "Strong Bone",
+            "grease_resource_name": "Any Cooking Grease",
+            "oil_resource_name": "Any Cooking Oil",
+            "oil_source_resource_name": "Any Oily Seeds or Grain"
          }
       },
       "hotkeys": {

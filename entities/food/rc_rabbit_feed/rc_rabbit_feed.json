@@ -1,0 +1,35 @@
+{
+   "mixins": [
+      "stonehearth:food:rabbit_feed"
+   ],
+   "type": "entity",
+   "components": {
+      "mixintypes": {
+         "model_variants": "override"
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(rc_rabbit_feed.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "shop_info": {
+            "buyable": false
+         }
+      },
+      "stonehearth:catalog": {
+         "icon": "file(rc_rabbit_feed.png)",
+         "is_item": true,
+         "category": "refined",
+         "material_tags": [
+            "stockpile_fodder",
+            "rabbit_feed_bag",
+            "animal_feed"
+         ]
+      }
+   }
+}

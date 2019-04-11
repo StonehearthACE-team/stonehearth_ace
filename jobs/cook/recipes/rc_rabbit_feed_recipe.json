@@ -1,16 +1,23 @@
 {
    "mixins": "/stonehearth/jobs/cook/recipes/rabbit_feed_recipe.json",
+	"portrait": "/stonehearth_ace/entities/food/rc_rabbit_feed/rc_rabbit_feed.png",
    "mixintypes": {
-		"ingredients": "override"
+		"ingredients": "override",
+		"produces": "override"
    },
    "ingredients": [
       {
-         "uri": "stonehearth:food:carrot:carrot_basket",
+         "uri": "stonehearth:food:golden_gourd:golden_gourd_basket",
          "count": 1
       },
 	  {
          "material": "herb resource",
-         "count": 1
+         "count": 2
+      }
+   ],
+	"produces": [
+      {
+         "item": "stonehearth_ace:food:rc_rabbit_feed"
       }
    ]
 }

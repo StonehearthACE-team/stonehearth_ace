@@ -1,0 +1,22 @@
+{
+   "type": "recipe",
+   "effort": 20,
+   "work_units": 1,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.cooking_oil_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.cooking_oil_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.cooking_oil_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/cooking_oil/cooking_oil.png",
+   "workshop": "stonehearth:cook:mill",
+   "level_requirement": 2,
+   "ingredients": [
+      {
+         "material": "oil_source resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:cooking_oil"
+      }
+   ]
+}

@@ -1,0 +1,31 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(captive_fish_dark.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0, "y": 0, "z": 0 }
+      },
+      "render_info": {
+         "scale": 0.05
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "is_item": true
+      },
+      "stonehearth:food_decay": {
+         "initial_decay": {
+            "min": 40,
+            "max": 60
+         }
+      }
+   }
+}

@@ -1,17 +1,19 @@
 {
    "type": "entity",
    "mixins": [
-      "stonehearth_ace:mixins:aquatic",
-      "file(fish_dark_ghost.json)"
+      "stonehearth_ace:mixins:aquatic"
    ],
    "components": {
-      "stonehearth:entity_forms": {
-         "iconic_form": "file(fish_dark_iconic.json)",
-         "ghost_form": "file(fish_dark_ghost.json)",
-         "placeable_on_ground": true,
-         "must_parent_to_terrain": true,
-         "hide_move_ui": true,
-         "hide_undeploy_ui": false
+      "render_info": {
+         "scale": 0.07,
+         "animation_table": "file(/data/rigs/entities/aquatic/fish)"
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(fish_dark.qb)"
+            ]
+         }
       },
       "stonehearth:loot_drops": {
          "force_auto_loot": true,
@@ -93,11 +95,15 @@
          "value_in_gold": 14,
          "rarity": "common",
          "shop_info": {
-            "buyable": true,
-            "sellable": true,
-            "shopkeeper_level": 1,
-            "shopkeeper_type": "caravan"
+            "buyable": false,
+            "sellable": false
          }
+      },
+      "stonehearth:catalog": {
+         "player_id": "animals",
+         "display_name": "i18n(stonehearth_ace:entities.aquatic.fish_dark.display_name)",
+         "description": "i18n(stonehearth_ace:entities.aquatic.fish_dark.description)",
+         "icon": "file(fish_dark.png)"
       }
    }
 }

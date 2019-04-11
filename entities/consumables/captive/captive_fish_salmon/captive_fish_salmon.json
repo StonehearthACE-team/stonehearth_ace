@@ -1,0 +1,38 @@
+{
+   "mixins": [
+      "stonehearth:mixins:item_properties",
+      "file(captive_fish_salmon_ghost.json)"
+   ],
+   "type": "entity",
+   "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(captive_fish_salmon_iconic.json)",
+         "ghost_form": "file(captive_fish_salmon_ghost.json)",
+         "placeable_on_ground": true
+      },
+      "stonehearth_ace:transform": {}
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 22,
+         "rarity": "uncommon",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 3,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:food_decay": {
+         "initial_decay": {
+            "min": 40,
+            "max": 60
+         }
+      },
+      "stonehearth_ace:transform_data": {
+         "transform_uri": "stonehearth_ace:fish:salmon",
+         "command": "stonehearth_ace:commands:transform:release_fish",
+         "transform_effect": "stonehearth:effects:fursplosion_effect"
+      }
+   }
+}

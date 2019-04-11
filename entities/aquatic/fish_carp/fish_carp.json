@@ -1,17 +1,19 @@
 {
    "type": "entity",
    "mixins": [
-      "stonehearth_ace:mixins:aquatic",
-      "file(fish_carp_ghost.json)"
+      "stonehearth_ace:mixins:aquatic"
    ],
    "components": {
-      "stonehearth:entity_forms": {
-         "iconic_form": "file(fish_carp_iconic.json)",
-         "ghost_form": "file(fish_carp_ghost.json)",
-         "placeable_on_ground": true,
-         "must_parent_to_terrain": true,
-         "hide_move_ui": true,
-         "hide_undeploy_ui": false
+      "render_info": {
+         "scale": 0.075,
+         "animation_table": "file(/data/rigs/entities/aquatic/fish)"
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(fish_carp.qb)"
+            ]
+         }
       },
       "stonehearth:loot_drops": {
          "force_auto_loot": true,
@@ -91,13 +93,17 @@
       },
       "stonehearth:net_worth": {
          "value_in_gold": 22,
-         "rarity": "common",
+         "rarity": "uncommon",
          "shop_info": {
-            "buyable": true,
-            "sellable": true,
-            "shopkeeper_level": 3,
-            "shopkeeper_type": "caravan"
+            "buyable": false,
+            "sellable": false
          }
+      },
+      "stonehearth:catalog": {
+         "player_id": "animals",
+         "display_name": "i18n(stonehearth_ace:entities.aquatic.fish_carp.display_name)",
+         "description": "i18n(stonehearth_ace:entities.aquatic.fish_carp.description)",
+         "icon": "file(fish_carp.png)"
       }
    }
 }

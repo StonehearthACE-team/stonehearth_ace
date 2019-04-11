@@ -1,17 +1,19 @@
 {
    "type": "entity",
    "mixins": [
-      "stonehearth_ace:mixins:aquatic",
-      "file(fish_big_ghost.json)"
+      "stonehearth_ace:mixins:aquatic"
    ],
    "components": {
-      "stonehearth:entity_forms": {
-         "iconic_form": "file(fish_big_iconic.json)",
-         "ghost_form": "file(fish_big_ghost.json)",
-         "placeable_on_ground": true,
-         "must_parent_to_terrain": true,
-         "hide_move_ui": true,
-         "hide_undeploy_ui": false
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(fish_big.qb)"
+            ]
+         }
+      },
+      "render_info": {
+         "scale": 0.1,
+         "animation_table": "file(/data/rigs/entities/aquatic/fish)"
       },
       "stonehearth:loot_drops": {
          "force_auto_loot": true,
@@ -90,14 +92,18 @@
          }
       },
       "stonehearth:net_worth": {
-         "value_in_gold": 18,
+         "value_in_gold": 19,
          "rarity": "common",
          "shop_info": {
-            "buyable": true,
-            "sellable": true,
-            "shopkeeper_level": 1,
-            "shopkeeper_type": "caravan"
+            "buyable": false,
+            "sellable": false
          }
+      },
+      "stonehearth:catalog": {
+         "player_id": "animals",
+         "display_name": "i18n(stonehearth_ace:entities.aquatic.fish_big.display_name)",
+         "description": "i18n(stonehearth_ace:entities.aquatic.fish_big.description)",
+         "icon": "file(fish_big.png)"
       }
    }
 }

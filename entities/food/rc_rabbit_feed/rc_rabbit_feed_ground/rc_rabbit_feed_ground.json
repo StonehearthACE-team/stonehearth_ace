@@ -1,0 +1,24 @@
+{
+   "mixins": [
+      "stonehearth:food:rabbit_feed:ground"
+   ],
+   "type": "entity",
+   "components": {
+      "mixintypes": {
+         "model_variants": "override"
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(rc_rabbit_feed_ground.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "icon": "file(../rc_rabbit_feed.png)",
+         "subject_override": "stonehearth_ace:food:rc_rabbit_feed"
+      }
+   }
+}
