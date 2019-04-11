@@ -335,7 +335,7 @@ App.StonehearthFarmView.reopen({
       radiant.each(details.preferred_seasons || {}, function(season, season_i18n) {
          preferredSeasons.push({
             name: season,
-            icon: self._IMAGES_DIR + 'property_season_' + season + '.png',
+            icon: stonehearth_ace.getSeasonIcon(season),
             tooltipTitle: localizations.season.property_name,
             tooltip: localizations.season.property_description,
             i18n_data: { season: season_i18n }
@@ -345,7 +345,7 @@ App.StonehearthFarmView.reopen({
          // no preferred seasons
          preferredSeasons.push({
             name: 'any',
-            icon: self._IMAGES_DIR + 'property_season_any.png',
+            icon: stonehearth_ace.getSeasonIcon('any'),
             tooltipTitle: localizations.season.no_season_title,
             tooltip: localizations.season.no_season_description
          });
@@ -521,7 +521,7 @@ App.StonehearthFarmView.reopen({
 
       var currentSeason = {
          name: season.id,
-         icon: self._IMAGES_DIR + 'property_season_' + season.id + '.png',
+         icon: stonehearth_ace.getSeasonIcon(season.id),
          status: status,
          tooltipTitle: localizations.season.status_name,
          tooltip: prefSeasonTooltip,

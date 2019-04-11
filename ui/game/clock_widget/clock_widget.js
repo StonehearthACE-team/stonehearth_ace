@@ -18,9 +18,12 @@ App.StonehearthCalendarView.reopen({
       var self = this;
       var season = self.get('season');
       if (season && season.id) {
-         self.$('#seasonImage')
-            .attr('src', '/stonehearth_ace/ui/game/modes/zones_mode/farm/images/property_season_' + season.id + '.png')
-            .show();
+         var icon = stonehearth_ace.getSeasonIcon(season.id);
+         if (icon) {
+            self.$('#seasonImage')
+               .attr('src', icon)
+               .show();
+         }
       }
       else {
          self.$('#seasonImage').hide();

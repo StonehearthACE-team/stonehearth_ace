@@ -187,6 +187,14 @@ var stonehearth_ace = {
             return result;
          }
       }
+   },
+
+   getSeasonIcon: function(season) {
+      var icon;
+      if (stonehearth_ace._season_icons) {
+         icon = stonehearth_ace._season_icons[season] || stonehearth_ace._season_icons['default'];
+      }
+      return icon;
    }
 }
 
@@ -195,4 +203,8 @@ $.getJSON('/stonehearth_ace/ui/data/equipment_types.json', function(data) {
       type_data.type = type;
    });
    stonehearth_ace._equipment_types = data;
+});
+
+$.getJSON('/stonehearth_ace/ui/data/season_icons.json', function(data) {
+   stonehearth_ace._season_icons = data;
 });
