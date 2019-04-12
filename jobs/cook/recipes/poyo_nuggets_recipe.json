@@ -1,0 +1,34 @@
+{
+   "type": "recipe",
+   "effort": 25,
+   "work_units": 6,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.poyo_nuggets_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.poyo_nuggets_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.poyo_nuggets_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/poyo_nuggets/poyo_nuggets/poyo_nuggets.png",
+   "workshop": "stonehearth:cook:workbench",
+   "level_requirement": 4,
+   "ingredients": [
+	  {
+         "uri": "stonehearth:food:poyo_meat",
+         "count": 1
+      },
+		{
+			"material": "grain_flour cooking_ingredient",
+			"count": 1
+		},
+		{
+			"material": "oil cooking_ingredient",
+			"count": 1
+		},
+      {
+         "material": "low_fuel",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:poyo_nuggets"
+      }
+   ]
+}

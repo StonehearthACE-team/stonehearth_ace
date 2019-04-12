@@ -1,0 +1,27 @@
+{
+   "type": "recipe",
+   "effort": 16,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.mason.recipes.bone_comfy_bed_pet_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.mason.recipes.bone_comfy_bed_pet_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.mason.recipes.bone_comfy_bed_pet_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/furniture/bone_comfy_bed_pet/bone_comfy_bed_pet.png",
+   "level_requirement": 3,
+   "workshop": "stonehearth_ace:mason:workbench_bone",
+   "manual_unlock": true,
+   "ingredients": [
+      {
+         "material": "bone resource",
+         "count": 2
+      },
+	  {
+         "material": "cloth resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:furniture:bone_comfy_bed_pet"
+      }
+   ]
+}

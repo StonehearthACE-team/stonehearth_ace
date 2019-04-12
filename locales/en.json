@@ -1082,6 +1082,10 @@
          "refreshed_belly": {
             "display_name": "Cool Belly",
             "description": "This was refreshing, I feel renewed! Diligence is increased.<ul><li>This hearthling is protected from hot weather for some time.</li></ul>"
+         },
+         "sweet_energy": {
+            "display_name": "Sweet Energy",
+            "description": "Woo, sugar rush! Diligence is increased, Speed and Crafting speed are slightly incresed."
          }
       },
       "loadouts": {
@@ -1965,6 +1969,16 @@
                "description": "Create a small bone table for a single person.",
                "flavor": ""
             },
+				"bone_comfy_bed_pet_recipe": {
+               "recipe_name": "Bone Animal Comfy Bed",
+               "description": "Allows animals to have a more comfortable sleep.",
+               "flavor": "Pets will always try to sleep on the bed that is closest to their owner's bed!"
+            },
+				"pet_food_bowl_bone_recipe": {
+               "recipe_name": "Bone Kibble Bowl",
+               "description": "Hearthlings can put kibble in this creepy bowl for their pets to eat.",
+               "flavor": "Warning: Dogs might be content chewing the bowl itself"
+            },
             "giant_bone_axe_recipe": {
                "recipe_name": "Giant Bone Axe",
                "description": "Carve a mighty axe from the clavicle of some great beast. (Two-handed)",
@@ -2658,6 +2672,16 @@
                "description": "Stir a mix of mushrooms with butter and spices.",
                "flavor": ""
             },
+            "fish_fingers_recipe": {
+               "recipe_name": "Fish Fingers",
+               "description": "Prepare and fry delicious and crunchy small cuts of fish.",
+               "flavor": "Tasty? Yes. Healthy? Well..."
+            },
+            "poyo_nuggets_recipe": {
+               "recipe_name": "Poyo Nuggets",
+               "description": "Slice, bread and fry tasty bits of poyo meat.",
+               "flavor": "NUGGETS!"
+            },
             "cheesecake_recipe": {
                "recipe_name": "Cheesecake",
                "description": "Bake a very soft and flavorful cheese cream and top it with delicious fruit jelly!",
@@ -2708,17 +2732,17 @@
                "flavor": ""
             },
             "kibble_recipe": {
-               "recipe_name": "Kibble",
+               "recipe_name": "Kibble (x3)",
                "description": "Bake nutritious and crunchy rations for pets. Exclusively vegetarian animals will not eat this kibble.",
                "flavor": ""
             },
             "kibble_fish_recipe": {
-               "recipe_name": "Fish Kibble",
+               "recipe_name": "Fish Kibble (x3)",
                "description": "Bake crunchy rations for pets. Exclusively vegetarian animals will not eat this kibble.",
                "flavor": "Fish kibble is not their favorite but will do the trick"
             },
             "kibble_veggie_recipe": {
-               "recipe_name": "Veggie Kibble",
+               "recipe_name": "Veggie Kibble (x3)",
                "description": "Bake delicious and healthy rations for pets. Exclusively carnivore animals will not eat this kibble.",
                "flavor": ""
             }
@@ -4416,6 +4440,10 @@
          "bone_writing_desk": {
             "display_name": "Bone Writing Desk",
             "description": "Perfect for writing a horror story!"
+         },
+         "bone_comfy_bed_pet": {
+            "description": "Allows pets a more comfortable sleep. They like it close to their owner's bed!",
+            "display_name": "Bone Animal Comfy Bed"
          }
       },
       "recipes": {
@@ -5608,6 +5636,26 @@
          "cooking_oil": {
             "display_name": "Cooking Oil",
             "description": "Extracted from vegetables. Can also be used as cooking grease."
+         },
+         "fish_fingers": {
+            "fish_fingers": {
+               "display_name": "Fish Fingers",
+               "description": "Delicious and crunchy deep fried small cuts of fish."
+            },
+            "fish_fingers_serving": {
+               "display_name": "Serving of Fish Fingers",
+               "description": ""
+            }
+         },
+         "poyo_nuggets": {
+            "poyo_nuggets": {
+               "display_name": "Poyo Nuggets",
+               "description": "Sliced, breaded and deep fried bits of poyo meat."
+            },
+            "poyo_nuggets_serving": {
+               "display_name": "Serving of Poyo Nuggets",
+               "description": "Nom nom nom"
+            }
          }
       },
       "terrain": {
@@ -6818,6 +6866,10 @@
          "output_box_bone": {
             "display_name": "Bone Finished Work Shelf",
             "description": "The crimson cloth gives it some contrast."
+         },
+         "pet_food_bowl_bone": {
+            "display_name": "Bone Kibble Bowl",
+            "description": "Hearthlings can put kibble in this creepy bowl for their pets to eat."
          }
       },
       "tools": {

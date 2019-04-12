@@ -1,0 +1,23 @@
+{
+   "type": "recipe",
+   "effort": 8,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.mason.recipes.pet_food_bowl_bone_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.mason.recipes.pet_food_bowl_bone_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.mason.recipes.pet_food_bowl_bone_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/containers/pet_food_bowl_bone/pet_food_bowl_bone.png",
+   "level_requirement": 2,
+   "workshop": "stonehearth_ace:mason:workbench_bone",
+   "manual_unlock": true,
+   "ingredients": [
+      {
+         "material": "bone resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:containers:pet_food_bowl:bone"
+      }
+	]
+}

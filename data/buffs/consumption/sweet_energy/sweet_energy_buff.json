@@ -1,0 +1,20 @@
+{
+   "type": "buff",
+   "axis": "buff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.sweet_energy.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.sweet_energy.description)",
+   "icon": "file(sweet_energy_buff.png)",
+   "duration": "4h",
+   "repeat_add_action": "renew_duration",
+   "modifiers": {
+      "diligence": {
+         "add": 15
+      },
+      "speed": {
+         "add": 5
+      },
+      "multiplicative_work_rate_modifier": {
+         "multiply": 1.1
+      }
+   }
+}

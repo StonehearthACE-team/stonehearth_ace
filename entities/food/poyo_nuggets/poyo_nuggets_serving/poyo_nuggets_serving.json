@@ -1,0 +1,38 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(poyo_nuggets_serving.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:item": {
+         "category": "food",
+         "destroy_on_uncarry": true
+      },
+      "stonehearth:food": {
+         "stonehearth:sitting_on_chair": {
+            "satisfaction": 170
+         },
+         "default": {
+            "satisfaction": 100
+         },
+         "quality": 6
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.poyo_nuggets.poyo_nuggets_serving.display_name)",
+         "description": "i18n(stonehearth_ace:entities.food.poyo_nuggets.poyo_nuggets_serving.description)",
+         "material_tags": [
+            "food",
+            "poyo_nuggets_serving",
+            "meat"
+         ],
+         "subject_override": "stonehearth_ace:food:poyo_nuggets"
+      }
+   }
+}
