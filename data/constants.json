@@ -2,65 +2,85 @@
    "type": "index",
    "constants": {
       "climates": {
-         "tropical_rainforest": {
-            "plant_water_affinity": "EXTREME",
+         "temperate_staple": {
+				"plant_water_affinity": "IRRELEVANT",
+            "plant_light_affinity": "MEDIUM"
+         },
+			"temperate_easy": {
+				"plant_water_affinity": "SIMPLE",
+            "plant_light_affinity": "MEDIUM"
+         },
+			"temperate_medium": {
+				"plant_water_affinity": "MEDIUM",
+            "plant_light_affinity": "MEDIUM"
+         },
+			"temperate_complex": {
+				"plant_water_affinity": "HIGH",
             "plant_light_affinity": "HIGH"
          },
-         "tropical_monsoon": {
-            "plant_water_affinity": "VERY_HIGH",
+			"desert_staple": {
+				"plant_water_affinity": "IRRELEVANT",
             "plant_light_affinity": "HIGH"
          },
-         "tropical_savanna": {
-            "plant_water_affinity": "HIGH",
+			"desert_easy": {
+				"plant_water_affinity": "VERY_LOW",
             "plant_light_affinity": "VERY_HIGH"
          },
-         "arid_shrubland": {
-            "plant_water_affinity": "MEDIUM",
-            "plant_light_affinity": "HIGH"
-         },
-         "arid_steppe": {
-            "plant_water_affinity": "LOW",
+			"desert_medium": {
+				"plant_water_affinity": "LOW",
             "plant_light_affinity": "VERY_HIGH"
          },
-         "arid_desert": {
-            "plant_water_affinity": "UNDESIRABLE",
-            "plant_light_affinity": "VERY_HIGH"
+			"desert_complex": {
+				"plant_water_affinity": "MEDIUM",
+            "plant_light_affinity": "EXTREME"
          },
-         "temperate_oceanic": {
-            "plant_water_affinity": "VERY_HIGH",
-            "plant_light_affinity": "MEDIUM"
+			"arctic_staple": {
+				"plant_water_affinity": "IRRELEVANT",
+            "plant_light_affinity": "VERY_LOW"
          },
-         "temperate_mediterranean": {
-            "plant_water_affinity": "HIGH",
-            "plant_light_affinity": "MEDIUM"
-         },
-         "temperate": {
-            "plant_water_affinity": "MEDIUM",
-            "plant_light_affinity": "MEDIUM"
-         },
-         "temperate_highland": {
-            "plant_water_affinity": "LOW",
-            "plant_light_affinity": "HIGH"
-         },
-         "continental_humid": {
-            "plant_water_affinity": "MEDIUM",
-            "plant_light_affinity": "HIGH"
-         },
-         "continental_dry": {
-            "plant_water_affinity": "LOW",
-            "plant_light_affinity": "MEDIUM"
-         },
-         "continental_subarctic": {
-            "plant_water_affinity": "VERY_LOW",
-            "plant_light_affinity": "MEDIUM"
-         },
-         "polar_tundra": {
-            "plant_water_affinity": "VERY_LOW",
+			"arctic_easy": {
+				"plant_water_affinity": "LOW",
             "plant_light_affinity": "LOW"
          },
-         "polar_ice_cap": {
-            "plant_water_affinity": "UNDESIRABLE",
+			"arctic_medium": {
+				"plant_water_affinity": "MEDIUM",
             "plant_light_affinity": "LOW"
+         },
+			"arctic_complex": {
+				"plant_water_affinity": "HIGH",
+            "plant_light_affinity": "MEDIUM"
+         },
+			"highlands_staple": {
+				"plant_water_affinity": "IRRELEVANT",
+            "plant_light_affinity": "LOW"
+         },
+			"highlands_easy": {
+				"plant_water_affinity": "SIMPLE",
+            "plant_light_affinity": "MEDIUM"
+         },
+			"highlands_medium": {
+				"plant_water_affinity": "HIGH",
+            "plant_light_affinity": "MEDIUM"
+         },
+			"highlands_complex": {
+				"plant_water_affinity": "VERY_HIGH",
+            "plant_light_affinity": "HIGH"
+         },
+			"tropical_staple": {
+				"plant_water_affinity": "IRRELEVANT",
+            "plant_light_affinity": "HIGH"
+         },
+			"tropical_easy": {
+				"plant_water_affinity": "HIGH",
+            "plant_light_affinity": "HIGH"
+         },
+			"tropical_medium": {
+				"plant_water_affinity": "VERY_HIGH",
+            "plant_light_affinity": "VERY_HIGH"
+         },
+			"tropical_complex": {
+				"plant_water_affinity": "EXTREME",
+            "plant_light_affinity": "VERY_HIGH"
          },
          "undeground": {
             "plant_water_affinity": "UNDESIRABLE",
@@ -68,6 +88,12 @@
          }
       },
       "plant_water_affinity": {
+			"IRRELEVANT": [
+				{
+               "min_level": 0,
+               "period_multiplier": 1
+            }
+			],
          "UNDESIRABLE": [
             {
                "min_level": -10,
@@ -160,6 +186,32 @@
 				{
                "min_level": 3,
                "period_multiplier": 10
+            }
+         ],
+			"SIMPLE": [
+				{
+               "min_level": -10,
+               "period_multiplier": 2
+            },
+            {
+               "min_level": -5,
+               "period_multiplier": 1.5
+            },
+            {
+               "min_level": 0.01,
+               "period_multiplier": 1
+            },
+            {
+               "min_level": 0.5,
+               "period_multiplier": 0.9
+            },
+				{
+               "min_level": 2.5,
+               "period_multiplier": 1
+            },
+				{
+               "min_level": 3.2,
+               "period_multiplier": 6
             }
          ],
          "MEDIUM": [

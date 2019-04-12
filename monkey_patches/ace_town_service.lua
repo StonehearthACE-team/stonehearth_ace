@@ -49,7 +49,7 @@ end
 
 function AceTownService:get_water_affinity_table(climate)
 	if not climate then
-		climate = 'temperate'
+		climate = 'temperate_medium'
    end
    
    local affinity_table = _water_affinities[climate]
@@ -68,7 +68,7 @@ end
 
 function AceTownService:get_light_affinity_table(climate)
 	if not climate then
-		climate = 'temperate'
+		climate = 'temperate_medium'
 	end
 
    local affinity_table = _light_affinities[climate]
