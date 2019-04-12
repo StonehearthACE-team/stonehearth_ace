@@ -256,6 +256,7 @@ function AceFarmerFieldComponent:set_crop(session, response, new_crop_id)
 
    self:_cache_best_levels()
    self:_update_effective_humidity_level()
+   self:_set_growth_factors()
 
    return result
 end
@@ -452,7 +453,9 @@ function AceFarmerFieldComponent:_set_growth_factors()
          self._sv.sunlight_level,
          self._sv.flooded and self._sv.current_crop_details.flood_period_multiplier,
          self._sv.frozen and self._sv.current_crop_details.frozen_period_multiplier)
-   
+   -- log:debug('setting growth factors: %s, %s, %s, %s, %s: %s', self._sv.current_crop_details.preferred_climate, self._sv.humidity_level, self._sv.sunlight_level,
+   --    self._sv.flooded, self._sv.frozen, self._sv.growth_time_modifier)
+
    local size = self._sv.size
    local contents = self._sv.contents
    if contents then
@@ -460,7 +463,9 @@ function AceFarmerFieldComponent:_set_growth_factors()
          for y=1, size.y do
             local dirt_plot = contents[x][y]
             if dirt_plot and dirt_plot.contents then
-               dirt_plot.contents:add_component('stonehearth:growing'):set_environmental_growth_time_modifier(self._sv.growth_time_modifier)
+               if dirt_plot.contents:get_uri() == self._sv.current_crop_alias then
+                  dirt_plot.contents:add_component('stonehearth:growing'):set_environmental_growth_time_modifier(self._sv.growth_time_modifier)
+               end
             end
          end
       end

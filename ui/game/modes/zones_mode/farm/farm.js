@@ -698,7 +698,7 @@ App.StonehearthFarmView.reopen({
       var growthTime = self._GROWTH_TIMES.NORMAL;
       var growthTimeTooltip = localizations.growth_time.normal;
 
-      if (currentFlooded.status == self._STATUSES.BAD) {
+      if (currentFlooded && currentFlooded.status == self._STATUSES.BAD) {
          growthTime = self._GROWTH_TIMES.LONGER;
          growthTimeTooltip = localizations.growth_time.stopped;
          status = self._STATUSES.BAD;
