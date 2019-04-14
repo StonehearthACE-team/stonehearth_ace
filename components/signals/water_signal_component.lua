@@ -151,8 +151,8 @@ end
 function WaterSignalComponent:clear_signals()
    for name, signal in pairs(self._sv._signals) do
       signal:destroy()
-      self._sv._signals[name] = nil
    end
+   self._sv._signals = {}
    self.__saved_variables:mark_changed()
 end
 

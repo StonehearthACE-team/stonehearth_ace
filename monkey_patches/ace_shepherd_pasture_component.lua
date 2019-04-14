@@ -416,15 +416,14 @@ function AceShepherdPastureComponent:_create_pasture_tasks()
 end
 
 function AceShepherdPastureComponent:_start_grass_spawn()
-	if not self._sv._grass_spawn_timer then
+   -- if the timer already existed, rebind it
+   if self._sv._grass_spawn_timer and self._sv._grass_spawn_timer.bind then
+      self._sv._grass_spawn_timer:bind(function()
+            self:_spawn_grass()
+         end)
+   else
+      self:_destroy_grass_spawn_timer()
 		self:_setup_grass_spawn_timer()
-	else
-		-- if the timer already existed, rebind it
-		if self._sv._grass_spawn_timer then
-         self._sv._grass_spawn_timer:bind(function()
-               self:_spawn_grass()
-            end)
-      end
 	end
 end
 
