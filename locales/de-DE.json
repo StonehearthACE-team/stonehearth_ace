@@ -795,6 +795,10 @@
             "sculpt_statue": {
                "display_name": "Kunst machen!",
                "description": "Befiehl einem Steinmetz sein Bestes zu geben und aus diesem Steinblock etwas Schönes zu schaffen!"
+            },
+            "release_fish": {
+               "display_name": "Fische freilassen",
+               "description": "Lass die kleinen Kreaturen frei! Stelle aber sicher, dass es im Wasser ist..."
             }
          },
          "slaughter": {
@@ -1078,6 +1082,10 @@
          "refreshed_belly": {
             "display_name": "Kalter Bauch",
             "description": "Das war erfrischend, ich fühle mich erneuert! Fleiß ist erhöht.<ul><li>Dieser Hearthling ist einige Zeit vor heißem Wetter geschützt.</li></ul>"
+         },
+         "sweet_energy": {
+            "display_name": "Süße Energie",
+            "description": "Woo, Zuckerrausch! Der Fleiß ist erhöht, die Geschwindigkeit und die Herstellungsgeschwindigkeit sind leicht erhöht."
          }
       },
       "loadouts": {
@@ -1886,80 +1894,90 @@
                "description": "Eine gute Einstiegsalternative für diejenigen, die den Schild nicht bevorzugen. (Zweithand)",
                "flavor": ""
             },
-				"firepit_skulls_recipe": {
+            "firepit_skulls_recipe": {
                "recipe_name": "Schädel-Herz",
                "description": "Erstelle eine exotische Feuerstelle, die für Licht und Wärme sorgt.",
                "flavor": "Könnte aber auch Albträume verursachen"
             },
-				"input_bin_bone_recipe": {
+            "input_bin_bone_recipe": {
                "recipe_name": "Knochenvorratsbehälter",
                "description": "Fertige einen Vorratsbehälter für schnellere und unheimlichere Fertigungen.",
                "flavor": ""
             },
-				"input_table_ground_bone_recipe": {
+            "input_table_ground_bone_recipe": {
                "recipe_name": "Knochenversorgungstisch",
                "description": "Stelle einen Vorratstisch für Vorratsmaterialien her.",
                "flavor": ""
             },
-				"output_box_bone_recipe": {
+            "output_box_bone_recipe": {
                "recipe_name": "Arbeitsregal für fertige Knochenprodukte",
                "description": "Bauen Sie ein seltsames, aber effizientes Regal, in dem Handwerker Fertigprodukte lagern können.",
                "flavor": ""
             },
-				"bone_chest_recipe": {
+            "bone_chest_recipe": {
                "recipe_name": "Knochentruhe",
                "description": "Hält gruselig bis zu 64 Artikel.",
                "flavor": "Das ist kein Mimic. Versprochen."
             },
-				"bone_bench_recipe": {
+            "bone_bench_recipe": {
                "recipe_name": "Parkbank aus Knochen",
                "description": "Erstelle eine gruselige Parkbank aus mehreren Knochen.",
                "flavor": ""
             },
-				"bone_comfy_bed_recipe": {
+            "bone_comfy_bed_recipe": {
                "recipe_name": "Bequemes Bett aus Knochen",
                "description": "Ein bequemes Bett für deine Hearthlinge zum Schlafen.",
                "flavor": "Der Stoff aus dem Alpträume sind."
             },
-				"bone_comfy_chair_recipe": {
+            "bone_comfy_chair_recipe": {
                "recipe_name": "Bequemer Stuhl aus Knochen",
                "description": "Baue einen seltsamen, aber eleganten Stuhl mit Knochen und Kissen.",
                "flavor": ""
             },
-				"bone_candle_holder_recipe": {
+            "bone_candle_holder_recipe": {
                "recipe_name": "Schädel-Kerzenhalter",
                "description": "Erstelle eine gruselige Lichtquelle, die auf Oberflächen oder Wänden platziert werden kann.",
                "flavor": "Wenn nur die Augenhöhlen leuchten würden ..."
             },
-				"bone_floor_candle_holder_recipe": {
+            "bone_floor_candle_holder_recipe": {
                "recipe_name": "Schädel-Kerzenhalter für den Boden",
                "description": "Schnitze eine gruselige Lichtquelle, um sie auf dem Boden zu stellen.",
                "flavor": ""
             },
-				"bone_dining_table_recipe": {
+            "bone_dining_table_recipe": {
                "recipe_name": "Esstisch aus Knochen",
                "description": "Baue einen wunderschön geschnitzten Tisch zum Essen.",
                "flavor": "Kann Verdauungsstörungen verursachen ..."
             },
-				"bone_stool_recipe": {
+            "bone_stool_recipe": {
                "recipe_name": "Knochenhocker",
                "description": "Bastele einen kleinen und effizienten Sitz.",
                "flavor": ""
             },
-				"bone_dresser_recipe": {
+            "bone_dresser_recipe": {
                "recipe_name": "Kommode aus Knochen",
                "description": "Erstelle einen schicken Kleiderschrank mit einem schönen Tuch aus Knochen.",
                "flavor": ""
             },
-				"bone_writing_desk_recipe": {
+            "bone_writing_desk_recipe": {
                "recipe_name": "Schreibtisch aus Knochen",
                "description": "Schnitze einen schönen Knochen-Schreibtisch zur Dekoration.",
                "flavor": "Verbessert die Qualität von Geistergeschichten!"
             },
-				"bone_table_for_one_recipe": {
+            "bone_table_for_one_recipe": {
                "recipe_name": "Tisch für einen, aus Knochen",
                "description": "Erstelle eine kleine Knochentisch für eine einzelne Person.",
                "flavor": ""
+            },
+	    "bone_comfy_bed_pet_recipe": {
+               "recipe_name": "Bequemes Tierbett aus Knochen",
+               "description": "Ermöglicht Tieren einen bequemeren Schlaf.",
+               "flavor": "Haustiere werden immer versuchen, in dem Bett zu schlafen, das dem Bett seines Besitzers am nächsten ist!"
+            },
+	    "pet_food_bowl_bone_recipe": {
+               "recipe_name": "Trockenfutterschüssel aus Knochen",
+               "description": "Hearthlinge können für Ihre Haustiere Trockenfutter in diese gruselige Schüssel geben.",
+               "flavor": "Warnung: Hunde könnten sich damit zufrieden geben, die Schüssel selbst zu kauen"
             },
             "giant_bone_axe_recipe": {
                "recipe_name": "Gigantische Knochenaxt",
@@ -2574,6 +2592,11 @@
                "description": "Mische und knete einen formbaren Teig und verwende ihn für Backmahlzeiten wie Brot.",
                "flavor": "Beobachte es wachsen!"
             },
+            "cooking_oil_recipe": {
+               "recipe_name": "Speiseöl",
+               "description": "Extrahiere das Öl aus ölhaltigen Samen oder Körnern, um es als Zutat zu verwenden.",
+               "flavor": "Baumwollsamen, Sonnenblumenkerne, Mais und sogar Reis enthält Öl"
+            },
             "dough_sweet_recipe": {
                "recipe_name": "Eine Portion süßer Weizenteig",
                "description": "Bereite einen einen elastischen und süßen Teig vor und backe ihn zu Zuckerwarens.",
@@ -2649,6 +2672,16 @@
                "description": "Eine Mischung aus Pilzen mit Butter und Gewürzen.",
                "flavor": ""
             },
+            "fish_fingers_recipe": {
+               "recipe_name": "Fischstäbchen",
+               "description": "Bereiten Sie köstliche und knusprige Fischstücke zu.",
+               "flavor": "Lecker? Ja. Gesund? Naja..."
+            },
+            "poyo_nuggets_recipe": {
+               "recipe_name": "BuckBuck Nuggets",
+               "description": "Schneide, paniere und braten leckere BuckBuck-Fleischstücke.",
+               "flavor": "NUGGETS!"
+            },
             "cheesecake_recipe": {
                "recipe_name": "Käsekuchen",
                "description": "Backe eine sehr weiche und würzige Käsecreme und garnieren Sie diese mit leckerem Fruchtgelee!",
@@ -2699,17 +2732,17 @@
                "flavor": ""
             },
             "kibble_recipe": {
-               "recipe_name": "Trockenfutter",
+               "recipe_name": "Trockenfutter (x3)",
                "description": "Backe nahrhafte und knusprige Rationen für Haustiere. Vegetarische Tiere fressen dieses Knabberzeug aber nicht.",
                "flavor": ""
             },
             "kibble_fish_recipe": {
-               "recipe_name": "Fischiges Trockenfutter",
+               "recipe_name": "Fischiges Trockenfutter (x3)",
                "description": "Backe nahrhafte und knusprige Rationen für Haustiere. Vegetarische Tiere fressen dieses Knabberzeug aber nicht.",
                "flavor": "Fischiges Trockenfutter ist nicht der Hit, tut aber seinen Teil."
             },
             "kibble_veggie_recipe": {
-               "recipe_name": "Vegatarisches Trockenfutter",
+               "recipe_name": "Vegatarisches Trockenfutter (x3)",
                "description": "Backe nahrhafte und knusprige Rationen für Haustiere. Fleischfressende Tiere fressen dieses Knabberzeug aber nicht.",
                "flavor": ""
             }
@@ -4407,6 +4440,10 @@
          "bone_writing_desk": {
             "display_name": "Schreibtisch aus Knochen",
             "description": "Perfekt für das Schreiben einer Horrorgeschichte!"
+         },
+         "bone_comfy_bed_pet": {
+            "description": "Ermöglicht Haustiere einen bequemeren Schlaf. Sie mögen es nahe am Bett ihres Besitzers!",
+            "display_name": "Bequemes Tierbett aus Knochen"
          }
       },
       "recipes": {
@@ -5595,6 +5632,30 @@
             "seared_meat_veggies_serving": {
                "display_name": "Eine Portion gebratenes Fleisch & Gemüse"
             }
+         },
+         "cooking_oil": {
+            "display_name": "Speiseöl",
+            "description": "Aus Gemüse extrahiert. Kann auch als Kochfett verwendet werden."
+         },
+         "fish_fingers": {
+            "fish_fingers": {
+               "display_name": "Fischstäbchen",
+               "description": "Köstliche und knusprige frittierte Fischstücke."
+            },
+            "fish_fingers_serving": {
+               "display_name": "Ein paar Fischstäbchen",
+               "description": ""
+            }
+         },
+         "poyo_nuggets": {
+            "poyo_nuggets": {
+               "display_name": "BuckBuck Nuggets",
+               "description": "In Scheiben geschnittene, panierte und frittierte BuckBuck-Fleischstücke."
+            },
+            "poyo_nuggets_serving": {
+               "display_name": "Ein paar BuckBuck Nuggets",
+               "description": "Nom nom nom"
+            }
          }
       },
       "terrain": {
@@ -6444,7 +6505,7 @@
             "description": "Ein flutschiges, kleines Wasserwesen.",
             "iconic": {
                "display_name": "Gefangener Silberfisch",
-               "description": "Wird nicht länger als ein paar Tage überleben. Besser du lässt ihn irgendwo frei!"
+               "description": "Wird nicht länger als ein paar Tage überleben. Besser du lässt ihn irgendwo frei."
             }
          },
          "fish_silver_fry": {
@@ -6805,6 +6866,10 @@
          "output_box_bone": {
             "display_name": "Arbeitsregal für fertige Knochenprodukte",
             "description": "Das purpurrote Tuch gibt ihm etwas Kontrast."
+         },
+         "pet_food_bowl_bone": {
+            "display_name": "Trockenfutterschüssel aus Knochen",
+            "description": "Hearthlinge können für Ihre Haustiere Trockenfutter in diese gruselige Schüssel geben."
          }
       },
       "tools": {
@@ -7153,7 +7218,8 @@
                "gizmos": "Gizmos",
                "fungi": "Pilze",
                "drink": "Getränke",
-               "boulder": "Mauerwerk"
+               "boulder": "Mauerwerk",
+               "automatons_and_golems": "Autonome & Golems"
             }
          },
          "custom_tooltips": {
@@ -7570,7 +7636,10 @@
             "any_pet_food_resource_name": "Irgendein Tierfutter",
             "milk_resource_name": "Irgendeine Milch",
             "butter_resource_name": "Irgendeine Butter",
-            "strong_bone_resource_name": "Starke Knochen"
+            "strong_bone_resource_name": "Starke Knochen",
+            "grease_resource_name": "Irgendein Kochfett",
+            "oil_resource_name": "Irgendein Speiseöl",
+            "oil_source_resource_name": "Irgendein fettiger Samen oder Getreide"
          }
       },
       "hotkeys": {
