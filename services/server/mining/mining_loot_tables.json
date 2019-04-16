@@ -177,6 +177,31 @@
                }
             }
          }
+      },
+      "meteor": {
+         "entries": {
+            "default": {
+               "num_rolls": 1,
+               "items": {
+                  "none": {
+                     "uri": "",
+                     "weight": 100
+                  },
+                  "hunk_of_stone": {
+                     "uri": "stonehearth:resources:stone:hunk_of_stone",
+                     "weight": 50
+                  },
+                  "iron_ore": {
+                     "uri": "stonehearth:resources:iron:ore",
+                     "weight": 80
+                  },
+                  "gold_ore": {
+                     "uri": "stonehearth:resources:gold:ore",
+                     "weight": 10
+                  }
+               }
+            }
+         }
       }
    }
 }

@@ -1,4 +1,7 @@
 {
+   "#2C2D40": {
+      "terrain_tag": "meteor"
+   },
    "#DDD5AC": {
       "loot_bag": "stonehearth_ace:loot_bag:bone_material",
       "facing": "random",
@@ -164,14 +167,28 @@
       "loot_bag": "stonehearth_ace:terrain:water_spring",
       "facing": "random",
       "force_iconic": false,
-      "placement_chance": 1,
       "fill_voxel_with_water": false
    },
    "#01DEEE": {
       "loot_bag": "stonehearth_ace:terrain:water_hole",
       "facing": "random",
       "force_iconic": false,
-      "placement_chance": 1,
       "fill_voxel_with_water": true
+   },
+   "#FF7001": {
+      "loot_bag": "stonehearth_ace:decoration:shipwreck_chest",
+      "facing": "random",
+      "placement_chance": 0.3,
+      "force_iconic": false
+   },
+   "#FF7002": {
+      "loot_bag": "stonehearth_ace:decoration:shipwreck_crate",
+      "facing": "random",
+      "placement_chance": 0.5,
+      "force_iconic": false
+   },
+   "#5D5431": {
+      "loot_bag": "stonehearth_ace:resources:wood:old_wood_log",
+      "drop_chance": 0.2
    }
 }

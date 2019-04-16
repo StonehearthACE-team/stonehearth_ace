@@ -1969,12 +1969,12 @@
                "description": "Create a small bone table for a single person.",
                "flavor": ""
             },
-				"bone_comfy_bed_pet_recipe": {
+            "bone_comfy_bed_pet_recipe": {
                "recipe_name": "Bone Animal Comfy Bed",
                "description": "Allows animals to have a more comfortable sleep.",
                "flavor": "Pets will always try to sleep on the bed that is closest to their owner's bed!"
             },
-				"pet_food_bowl_bone_recipe": {
+            "pet_food_bowl_bone_recipe": {
                "recipe_name": "Bone Kibble Bowl",
                "description": "Hearthlings can put kibble in this creepy bowl for their pets to eat.",
                "flavor": "Warning: Dogs might be content chewing the bowl itself"
@@ -5686,6 +5686,12 @@
          "water_hole": {
             "display_name": "Rock Crevice",
             "description": "This big fissure will suck away all the water that gets to it. It can be removed."
+         },
+         "ui": {
+            "meteor_block": {
+               "display_name": "Meteorite",
+               "description": "A gift from the skies! What wonders here lies?"
+            }
          }
       },
       "fungi": {
@@ -7741,6 +7747,16 @@
          "curdling": {
             "description": "It's getting bad, better pour it in a cheese vat soon!"
          }
+      }
+   },
+   "decoration": {
+      "shipwreck_crate": {
+         "display_name": "Mossy Old Crate",
+         "description": "Harvest it for loot; it contains treasure! Or does it?"
+      },
+      "shipwreck_chest": {
+         "display_name": "Mossy Old Chest",
+         "description": "Harvest it for loot, whoever lost it won't mind... Right?"
       }
    }
 }
