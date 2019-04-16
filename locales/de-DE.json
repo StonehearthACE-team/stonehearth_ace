@@ -1969,12 +1969,12 @@
                "description": "Erstelle eine kleine Knochentisch für eine einzelne Person.",
                "flavor": ""
             },
-	    "bone_comfy_bed_pet_recipe": {
+            "bone_comfy_bed_pet_recipe": {
                "recipe_name": "Bequemes Tierbett aus Knochen",
                "description": "Ermöglicht Tieren einen bequemeren Schlaf.",
                "flavor": "Haustiere werden immer versuchen, in dem Bett zu schlafen, das dem Bett seines Besitzers am nächsten ist!"
             },
-	    "pet_food_bowl_bone_recipe": {
+            "pet_food_bowl_bone_recipe": {
                "recipe_name": "Trockenfutterschüssel aus Knochen",
                "description": "Hearthlinge können für Ihre Haustiere Trockenfutter in diese gruselige Schüssel geben.",
                "flavor": "Warnung: Hunde könnten sich damit zufrieden geben, die Schüssel selbst zu kauen"
@@ -5686,6 +5686,12 @@
          "water_hole": {
             "display_name": "Felsspalte",
             "description": "Diese große Spalte saugt alles Wasser hinab, was in der Nähe ist. Sie kann entfernt werden."
+         },
+         "ui": {
+            "meteor_block": {
+               "display_name": "Meteorit",
+               "description": "Ein Geschenk vom Himmel! Welche Wunder liegen wohl hier?"
+            }
          }
       },
       "fungi": {
@@ -7741,6 +7747,16 @@
          "curdling": {
             "description": "Es wird schlecht, gieße es bald in einen Käsebottich!"
          }
+      }
+   },
+   "decoration": {
+      "shipwreck_crate": {
+         "display_name": "Moosige alte Kiste",
+         "description": "Ernte es für Beute; es enthält einen Schatz! Oder vielleicht auch nicht?"
+      },
+      "shipwreck_chest": {
+         "display_name": "Moosige alte Truhe",
+         "description": "Ernte es für Beute, wer es verloren hat wird bestimmt nichts dagegen haben ... Richtig?"
       }
    }
 }
