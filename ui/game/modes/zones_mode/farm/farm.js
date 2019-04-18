@@ -305,7 +305,7 @@ App.StonehearthFarmView.reopen({
          self._tooltipData = {};
 
          if(details.uri) {
-            var preferredClimate = details.preferred_climate || 'temperate';
+            var preferredClimate = details.preferred_climate || 'temperate_staple';
             var climatePrefs = App.constants.climates[preferredClimate];
             self._waterAffinities = self._getBestAffinityRange(App.constants.plant_water_affinity[climatePrefs.plant_water_affinity]);
             self._lightAffinities = self._getBestAffinityRange(App.constants.plant_light_affinity[climatePrefs.plant_light_affinity]);

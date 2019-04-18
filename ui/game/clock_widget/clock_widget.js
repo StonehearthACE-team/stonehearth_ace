@@ -5,8 +5,7 @@ App.StonehearthCalendarView.reopen({
 
       var img = $('<img>')
          .addClass('seasonImage')
-         .attr('id', 'seasonImage')
-         .attr('onerror', 'this.style.display = "none"');//hides broken/missing icons
+         .attr('id', 'seasonImage');
       self.$('#dateString')
          .append($('<br>'))
          .append(img);
