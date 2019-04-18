@@ -457,7 +457,7 @@ end
 function AceJobComponent:get_training_target()
    local target = self._training_target
    if target then
-      if not target:is_valid() or radiant.entities.get_workd_player_id(self._entity) ~= target:get_player_id() then
+      if not target:is_valid() or radiant.entities.get_worker_player_id(self._entity) ~= target:get_player_id() then
          target = nil
          self._training_target = nil
       end
