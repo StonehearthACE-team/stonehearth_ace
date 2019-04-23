@@ -1,0 +1,119 @@
+<script type="text/x-handlebars" data-template-name="fixtureList">
+    <div id="fixtureRoot" class="paper root">
+       <div id="fixtureContents" class="paper contents" >
+           <div id="close" class="button"></div>
+           <div id="fixtures">
+               <div id="window" class="fixtureTab paper">
+                   <div class="paper contents fixtureContainer">
+                       <div id="windowSearch" class="paper searchbar">
+                           <input class="searchInput" placeholder="{{i18n stonehearth:ui.game.build_mode.fixtures.search_placeholder}}" />
+                       </div>
+                       <div class="scrollable">
+                       {{#each f in view.window}}
+                       <div class="fixture button" {{ bind-attr style=f.style data-fixture_uri=f.data data-item_quality="f.item_quality" data-tooltip="f.tooltip" }}>
+                           <div class="selectBox"></div>
+                           <div {{ bind-attr class="f.item_quality_class" }}></div>
+                       </div>
+                       {{/each}}
+                       </div>
+                   </div>
+               </div>
+               <div id="door" class="fixtureTab">
+                   <div class="paper contents fixtureContainer">
+                       <div id="doorSearch" class="paper searchbar">
+                           <input class="searchInput" placeholder="{{i18n stonehearth:ui.game.build_mode.fixtures.search_placeholder}}" />
+                       </div>
+                       <div class="scrollable">
+                       {{#each f in view.door}}
+                       <div class="fixture button" {{ bind-attr style=f.style data-fixture_uri=f.data data-item_quality="f.item_quality" data-tooltip="f.tooltip" }}>
+                           <div {{ bind-attr class="f.item_quality_class" }}></div>
+                           <div class="selectBox"></div>
+                       </div>
+                       {{/each}}
+                       </div>
+                   </div>
+               </div>
+               <div id="furniture" class="fixtureTab">
+                   <div class="paper contents fixtureContainer">
+                       <div id="furnitureSearch" class="paper searchbar">
+                           <input class="searchInput" placeholder="{{i18n stonehearth:ui.game.build_mode.fixtures.search_placeholder}}" />
+                       </div>
+                       <div class="scrollable">
+                       <div class="paper fixtureLabel">{{ i18n stonehearth:ui.game.entities.item_categories.workshops }}</div>
+                       {{#each f in view.workshops}}
+                       <div class="fixture button" {{ bind-attr style=f.style data-fixture_uri=f.data data-item_quality="f.item_quality" data-tooltip="f.tooltip" }}>
+                           <div {{ bind-attr class="f.item_quality_class" }}></div>
+                           <div class="selectBox"></div>
+                       </div>
+                       {{/each}}
+                       <div class="paper fixtureLabel">{{ i18n stonehearth:ui.game.entities.item_categories.furniture }}</div>
+                       {{#each f in view.furniture}}
+                       <div class="fixture button" {{ bind-attr style=f.style data-fixture_uri=f.data data-item_quality="f.item_quality" data-tooltip="f.tooltip" }}>
+                           <div {{ bind-attr class="f.item_quality_class" }}></div>
+                           <div class="selectBox"></div>
+                       </div>
+                       {{/each}}
+                       <div class="paper fixtureLabel">{{ i18n stonehearth:ui.game.entities.item_categories.storage }}</div>
+                       {{#each f in view.storage}}
+                       <div class="fixture button" {{ bind-attr style=f.style data-fixture_uri=f.data  data-item_quality="f.item_quality" data-tooltip="f.tooltip" }}>
+                           <div {{ bind-attr class="f.item_quality_class" }}></div>
+                           <div class="selectBox">
+                           </div>
+                       </div>
+                       {{/each}}
+							    <div class="paper fixtureLabel">{{ i18n stonehearth:ui.game.entities.item_categories.training_equipment }}</div>
+                       {{#each f in view.training_equipment}}
+                       <div class="fixture button" {{ bind-attr style=f.style data-fixture_uri=f.data  data-item_quality="f.item_quality" data-tooltip="f.tooltip" }}>
+                           <div {{ bind-attr class="f.item_quality_class" }}></div>
+                           <div class="selectBox">
+                           </div>
+                       </div>
+                       {{/each}}
+                       </div>
+                   </div>
+               </div>
+               <div id="decoration" class="fixtureTab">
+                   <div class="paper contents fixtureContainer" >
+                       <div id="decorationSearch" class="paper searchbar">
+                           <input class="searchInput" placeholder="{{i18n stonehearth:ui.game.build_mode.fixtures.search_placeholder}}" />
+                       </div>
+                       <div class="scrollable">
+                       <div class="paper fixtureLabel">{{ i18n stonehearth:ui.game.entities.item_categories.decoration }}</div>
+                       {{#each f in view.decoration}}
+                       <div class="fixture button" {{ bind-attr style=f.style data-fixture_uri=f.data data-item_quality="f.item_quality" data-tooltip="f.tooltip" }}>
+                           <div {{ bind-attr class="f.item_quality_class" }}></div>
+                           <div class="selectBox"></div>
+                       </div>
+                       {{/each}}
+                       <div class="paper fixtureLabel">{{ i18n stonehearth:ui.game.entities.item_categories.construction }}</div>
+                       {{#each f in view.construction}}
+                       <div class="fixture button" {{ bind-attr style=f.style data-fixture_uri=f.data data-item_quality="f.item_quality" data-tooltip="f.tooltip" }}>
+                           <div {{ bind-attr class="f.item_quality_class" }}></div>
+                           <div class="selectBox"></div>
+                       </div>
+                       {{/each}}
+                       </div>
+                   </div>
+               </div>
+               <div id="inventory" class="fixtureTab">
+               </div>
+           </div>
+           <div id="fixtureKindsRoot" class="paper root" >
+               <div id="fixtureKinds" class="paper contents">
+                   <div id="decorationKind" {{action "changeFixture" "decoration" target="view"}} class="button fixturesKind" hotkey_action="build:decoration" tooltip="{{i18n stonehearth:ui.game.build_mode2.tooltips.decorations}}">
+                       <div class="selectBox"></div>
+                   </div>
+                   <div id="furnitureKind" {{action "changeFixture" "furniture" target="view"}} class="button fixturesKind" hotkey_action="build:furniture" tooltip="{{i18n stonehearth:ui.game.build_mode2.tooltips.furniture}}">
+                       <div class="selectBox"></div>
+                   </div>
+                   <div id="doorKind" {{action "changeFixture" "door" target="view"}} class="button fixturesKind" hotkey_action="build:door" tooltip="{{i18n stonehearth:ui.game.build_mode2.tooltips.doors}}">
+                       <div class="selectBox"></div>
+                   </div>
+                   <div id="windowKind" {{action "changeFixture" "window" target="view"}} class="button fixturesKind" hotkey_action="build:window" tooltip="{{i18n stonehearth:ui.game.build_mode2.tooltips.windows}}">
+                       <div class="selectBox"></div>
+                   </div>
+               </div>
+           </div>
+       </div>
+   </div>
+</script>

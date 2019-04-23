@@ -61,6 +61,9 @@
 	  },
       "food": {
          "recipes": {
+				"sausage": {
+					"recipe": ""
+				},
             "cooked_nuts": {
                "recipe": "file(cooked_nuts_recipe.json)"
             },
@@ -84,10 +87,7 @@
             },
 				"cereals_corn": {
                "recipe": "file(cereals_corn_recipe.json)"
-            },
-				"mixintypes": {
-					"sausage": "remove"
-				},
+            },			
 				"buttered_bulbs": {
                "recipe": "file(buttered_bulbs_recipe.json)"
             },

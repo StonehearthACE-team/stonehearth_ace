@@ -1,0 +1,31 @@
+{
+   "generator_info": {
+      "spawn_edge": {
+         "mixintypes": {
+				"out_edges": "override"
+			},
+         "out_edges": [
+            {
+               "type": "weighted_edge",
+               "out_edge": "do_nothing",
+               "weight": 397
+            },
+            {
+               "type": "weighted_edge",
+               "out_edge": "spawn_koda",
+               "weight": 1
+            },
+            {
+               "type": "weighted_edge",
+               "out_edge": "spawn_jacko",
+               "weight": 1
+            },
+				{
+               "type": "weighted_edge",
+               "out_edge": "spawn_ted",
+               "weight": 1
+            }
+         ]
+      }
+   }
+}

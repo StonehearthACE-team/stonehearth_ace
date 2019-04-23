@@ -12,7 +12,7 @@
          "scale": 0.11
       },
       "mob": {
-         "model_origin": { "x": 0.45, "y": 0, "z": 0.05 },
+         "model_origin": { "x": 0.45, "y": 0, "z": -0.6 },
          "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
       }
    },
@@ -22,7 +22,14 @@
          "description": "i18n(stonehearth_ace:entities.furniture.porcelain_bench_comfy.porcelain_bench_comfy_ghost.description)",
          "icon": "file(porcelain_bench_comfy.png)",
          "category": "furniture",
-         "material_tags":["clay", "porcelain", "furniture", "crafted", "chair", "stockpile_furniture"]
+         "material_tags": [
+            "clay",
+            "porcelain",
+            "furniture",
+            "crafted",
+            "chair",
+            "stockpile_furniture"
+         ]
       }
    }
 }

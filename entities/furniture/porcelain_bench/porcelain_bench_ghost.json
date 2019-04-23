@@ -9,7 +9,7 @@
          }
       },
       "mob": {
-         "model_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "model_origin": { "x": 0.5, "y": 0, "z": 0.3 },
          "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
       }
    },
@@ -19,7 +19,14 @@
          "description": "i18n(stonehearth_ace:entities.furniture.porcelain_bench.porcelain_bench_ghost.description)",
          "icon": "file(porcelain_bench.png)",
          "category": "furniture",
-         "material_tags":["clay", "porcelain", "furniture", "crafted", "chair", "stockpile_furniture"]
+         "material_tags": [
+            "clay",
+            "porcelain",
+            "furniture",
+            "crafted",
+            "chair",
+            "stockpile_furniture"
+         ]
       }
    }
 }

@@ -1,0 +1,23 @@
+{
+	"mixins": "/stonehearth/jobs/carpenter/recipes/weaver_spindle_recipe.json",
+	"recipe_name": "i18n(northern_alliance:jobs.mason.recipes.crude_weaver_spindle_recipe.recipe_name)",
+	"workshop": "stonehearth:mason:workbench",
+   "level_requirement": 2,
+   "mixintypes": {
+		"ingredients": "override"
+	},
+   "ingredients": [
+      {
+         "material": "stone resource",
+         "count": 1
+      },
+      {
+         "material": "fiber resource",
+         "count": 1
+      },
+		{
+         "material": "bone resource",
+         "count": 1
+      }
+   ]
+}
