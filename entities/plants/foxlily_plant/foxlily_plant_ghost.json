@@ -1,5 +1,19 @@
 {
-   "components": {},
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+               "file(foxlily_plant_2.qb)",
+               "/stonehearth/entities/plants/foxlily_plant/foxlily_plant.qb",			   
+                  ]
+               }
+            ]
+         },
+	  }, 
+   },
    "entity_data": {
       "stonehearth:catalog": {
          "material_tags": ["decoration"]
