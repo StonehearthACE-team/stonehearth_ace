@@ -8,8 +8,10 @@ FindBestTrainingDummyTrivial.args = {}
 FindBestTrainingDummyTrivial.priority = 1
 
 function FindBestTrainingDummyTrivial:start_thinking(ai, entity, args)
-   local target = entity:get_component('stonehearth:job'):get_training_target()
-   if target then
+   local job_comp = entity:get_component('stonehearth:job')
+   local job_uri = job_comp:get_job_uri()
+   local target = job_comp:get_training_target()
+   if target and target:get_component('stonehearth_ace:training_dummy'):can_train_entity(job_uri) then
       ai:set_think_output({dummy = target})
    end
 end

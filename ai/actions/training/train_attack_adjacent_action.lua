@@ -47,6 +47,10 @@ function TrainAttackAdjacent:_check_conditions(ai, entity, args)
       return 'training is disabled or unavailable for this entity'
    end
 
+   if not dummy:can_train_entity(job:get_job_uri()) then
+      return 'this dummy can\'t train this entity (probably can\'t get a lease)'
+   end
+
    local weapon = stonehearth.combat:get_main_weapon(entity)
    local weapon_data = weapon and radiant.entities.get_entity_data(weapon, 'stonehearth:combat:weapon_data')
    if not weapon_data then
@@ -89,7 +93,9 @@ function TrainAttackAdjacent:run(ai, entity, args)
    end
    
    -- the attack may have taken a long time, so set in combat again
-   dummy:set_in_combat()
+   if dummy and dummy:is_valid() then
+      dummy:set_in_combat()
+   end
 
    radiant.events.trigger_async(entity, 'stonehearth_ace:training_performed')
 end

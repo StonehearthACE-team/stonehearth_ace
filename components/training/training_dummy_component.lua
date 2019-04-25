@@ -77,7 +77,7 @@ function TrainingDummyComponent:_register_with_town(register)
 end
 
 function TrainingDummyComponent:can_train_entity(uri)
-   return uri and self._allowed_jobs[uri]
+   return uri and self._allowed_jobs[uri] and stonehearth.ai:can_acquire_ai_lease(self._entity, self._entity)
 end
 
 function TrainingDummyComponent:get_enabled()
