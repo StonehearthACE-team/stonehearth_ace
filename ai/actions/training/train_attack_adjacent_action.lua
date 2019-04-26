@@ -93,7 +93,7 @@ function TrainAttackAdjacent:run(ai, entity, args)
    end
    
    -- the attack may have taken a long time, so set in combat again
-   if dummy and dummy:is_valid() then
+   if dummy and args.target:is_valid() then
       dummy:set_in_combat()
    end
 
