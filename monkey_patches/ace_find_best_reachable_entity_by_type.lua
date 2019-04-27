@@ -23,7 +23,7 @@ function AceFindBestReachableEntityByType:_set_result(item, rating, args, entity
       end
    end
 
-   self._log:debug('selecting %s for %s', item, self._description)
+   self._log:debug('selecting %s (%s) for %s', item or 'NIL', rating or 'NIL', self._description)
    self._result = item
    self._ready = true
    self._ai:set_think_output({item = item, rating = rating})   -- Paul: changed to include rating

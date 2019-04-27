@@ -91,6 +91,11 @@ function PlaceSummonStoneTypeAction:start(ai, entity, args)
    ai:set_status_text_key('stonehearth:ai.actions.status_text.place_item_on_structure', { target = ai.CURRENT.carrying })
 end
 
+function PlaceSummonStoneTypeAction:compose_utility(entity, self_utility, child_utilities, current_activity)
+   return child_utilities:get('stonehearth:pickup_item_type') * 0.8
+        + child_utilities:get('stonehearth:goto_entity_type') * 0.2
+end
+
 local ai = stonehearth.ai
 return ai:create_compound_action(PlaceSummonStoneTypeAction)
          :execute('stonehearth:abort_on_event_triggered', {

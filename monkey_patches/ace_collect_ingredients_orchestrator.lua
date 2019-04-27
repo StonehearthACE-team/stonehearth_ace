@@ -48,24 +48,28 @@ function AceCollectIngredients:run(town, args)
       if self._prefer_high_quality then
          rating_fn = function(item, entity, entity_location, storage_location)
             local rating = radiant.entities.get_item_quality(item) / 3
-            return rating
+            --return rating
 
-            -- local distance_sq = (entity_location or radiant.entities.get_world_grid_location(entity))
-            --       :distance_to_squared(storage_location or radiant.entities.get_world_grid_location(item))
-            -- local distance_score = (1 - math.min(1, distance_sq / max_distance_for_rating_sq))
+            local distance_sq = math.max(0, (entity_location or radiant.entities.get_world_grid_location(entity))
+                  :distance_to_squared(storage_location or radiant.entities.get_world_grid_location(item)) - close_distance_for_rating_sq)
+            local distance_score = (1 - math.min(1, distance_sq / max_distance_for_rating_sq))
 
-            -- return rating * 0.8 + distance_score * 0.2
+            --log:debug('HQ distance sq %s and score %s for %s to %s', distance_sq, distance_score, entity, item)
+
+            return rating * 0.8 + distance_score * 0.2
          end
       else
          rating_fn = function(item, entity, entity_location, storage_location)
-            local rating = 2 - radiant.entities.get_item_quality(item)
-            return rating
+            local rating = 1 / radiant.entities.get_item_quality(item)
+            --return rating
 
-            -- local distance_sq = (entity_location or radiant.entities.get_world_grid_location(entity))
-            --       :distance_to_squared(storage_location or radiant.entities.get_world_grid_location(item))
-            -- local distance_score = (1 - math.min(1, distance_sq / max_distance_for_rating_sq))
+            local distance_sq = math.max(0, (entity_location or radiant.entities.get_world_grid_location(entity))
+                  :distance_to_squared(storage_location or radiant.entities.get_world_grid_location(item)) - close_distance_for_rating_sq)
+            local distance_score = (1 - math.min(1, distance_sq / max_distance_for_rating_sq))
+
+            --log:debug('LQ distance sq %s and score %s for %s to %s', distance_sq, distance_score, entity, item)
             
-            -- return rating * 0.8 + distance_score * 0.2
+            return rating * 0.8 + distance_score * 0.2
          end
       end
 
@@ -74,6 +78,8 @@ function AceCollectIngredients:run(town, args)
          local distance_sq = (entity_location or radiant.entities.get_world_grid_location(entity))
                :distance_to_squared(storage_location or radiant.entities.get_world_grid_location(item)) - close_distance_for_rating_sq
          local distance_score = (1 - math.min(1, distance_sq / max_distance_for_rating_sq))
+
+         --log:debug('distance sq %s and score %s for %s to %s', distance_sq, distance_score, entity, item)
          
          return distance_score
       end
