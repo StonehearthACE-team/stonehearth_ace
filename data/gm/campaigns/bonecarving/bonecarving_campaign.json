@@ -1,0 +1,20 @@
+{
+   "type": "campaign",
+   "rarity": "common",
+   "can_start": {
+      "test_1": {
+         "kingdom_check": {
+            "type": "deny_if",
+            "item": "kingdom",
+            "value": "northern_alliance:kingdoms:northern_alliance"
+         }
+      }
+   },
+   "arcs": {
+      "trigger": {
+         "bonecarving": "file(arcs/trigger/bonecarving_arc.json)"
+      },
+      "challenge": {},
+      "climax": {}
+   }
+}

@@ -1,0 +1,19 @@
+{
+   "type": "encounter",
+   "encounter_type": "delivery_quest",
+   "in_edge": "bone_gift_quest",
+   "out_edge": "setting_camp_dialogue",
+   "delivery_quest_info": {
+      "title": "i18n(stonehearth_ace:data.gm.campaigns.bonecarving.bone_gift_quest.title)",
+      "dialog_title": "i18n(stonehearth_ace:data.gm.campaigns.bonecarving.bone_gift_quest.dialog_title)",
+      "text": "i18n(stonehearth_ace:data.gm.campaigns.bonecarving.bone_gift_quest.text)",
+      "requirements": [
+         {
+            "type": "give_material",
+            "material": "bone resource",
+            "count": 5
+         }
+      ],
+      "abandon_out_edge": "return_dialogue"
+   }
+}

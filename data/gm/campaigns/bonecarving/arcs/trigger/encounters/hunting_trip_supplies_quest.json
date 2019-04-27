@@ -1,0 +1,35 @@
+{
+   "type": "encounter",
+   "encounter_type": "delivery_quest",
+   "in_edge": "hunting_trip_supplies_quest",
+   "out_edge": {
+      "type": "trigger_many",
+      "out_edges": [
+         "bonecarving_camp_removal",
+         "mason_dispatch_quest"
+      ]
+   },
+   "delivery_quest_info": {
+      "title": "i18n(stonehearth_ace:data.gm.campaigns.bonecarving.hunting_trip_supplies_quest.title)",
+      "dialog_title": "i18n(stonehearth_ace:data.gm.campaigns.bonecarving.hunting_trip_supplies_quest.dialog_title)",
+      "text": "i18n(stonehearth_ace:data.gm.campaigns.bonecarving.hunting_trip_supplies_quest.text)",
+      "requirements": [
+         {
+            "type": "give_material",
+            "material": "prepared_food",
+            "count": 3
+         },
+         {
+            "type": "give_item",
+            "uri": "stonehearth:consumables:coarse_bandage",
+            "count": 2
+         },
+         {
+            "type": "give_material",
+            "material": "bone resource",
+            "count": 5
+         }
+      ],
+      "abandon_out_edge": "return_dialogue"
+   }
+}

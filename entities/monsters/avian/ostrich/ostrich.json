@@ -2,7 +2,6 @@
    "components": {
 	  "mixintypes": {
          "stonehearth:renewable_resource_node": "remove",
-         "stonehearth:expendable_resources": "remove",
          "stonehearth:commands": "remove"
       },
       "stonehearth:resource_node": {
@@ -34,6 +33,14 @@
 		 "menace": {
             "type": "basic",
             "value": 0.001
+         }
+      },
+		"stonehearth:expendable_resources": {
+         "resources": {
+            "mixintypes": {
+               "calories": "remove",
+               "social_satisfaction": "remove"
+            }
          }
       }
    },

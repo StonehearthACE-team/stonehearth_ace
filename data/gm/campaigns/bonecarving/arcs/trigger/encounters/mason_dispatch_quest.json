@@ -1,0 +1,16 @@
+{
+   "type": "encounter",
+   "encounter_type": "dispatch_quest",
+   "in_edge": "mason_dispatch_quest",
+   "out_edge": "trip_finished_dialogue",
+   "dispatch_quest_info": {
+      "title": "i18n(stonehearth_ace:data.gm.campaigns.bonecarving.mason_dispatch_quest.title)",
+      "dialog_title": "i18n(stonehearth_ace:data.gm.campaigns.bonecarving.mason_dispatch_quest.dialog_title)",
+      "text": "i18n(stonehearth_ace:data.gm.campaigns.bonecarving.mason_dispatch_quest.text)",
+      "required_job": "stonehearth:jobs:mason",
+      "required_job_level": 2,
+      "return_delay": "36h+24h",
+      "xp_gained": 100,
+      "abandon_out_edge": "return_dialogue"
+   }
+}

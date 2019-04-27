@@ -1,0 +1,102 @@
+{
+   "type": "encounter",
+   "encounter_type": "dialog_tree",
+   "rarity": "common",
+   "in_edge": "bonecarving_gift_dialogue",
+   "dialog_tree_info": {
+      "start_node": "msg1",
+      "nodes": {
+         "msg1": {
+            "bulletin": {
+               "title": "i18n(stonehearth_ace:data.gm.campaigns.bonecarving.bonecarving_gift_dialogue.dialog_tree_info.dialog_nodes.msg1.bulletin_title)",
+               "dialog_title": "i18n(stonehearth_ace:data.gm.campaigns.bonecarving.bonecarving_gift_dialogue.dialog_tree_info.dialog_nodes.msg1.dialog_title)",
+               "portrait": "file(images/thorulf_and_rattley.png)",
+               "portrait_offset": 0,
+               "message": "i18n(stonehearth_ace:data.gm.campaigns.bonecarving.bonecarving_gift_dialogue.dialog_tree_info.dialog_nodes.msg1.bulletin_message.00)",
+               "choices": {
+                  "i18n(stonehearth_ace:data.gm.campaigns.bonecarving.bonecarving_gift_dialogue.dialog_tree_info.dialog_nodes.msg1.choice_000)": {
+                     "next_node": "msg1b"
+                  },
+                  "i18n(stonehearth_ace:data.gm.campaigns.bonecarving.bonecarving_gift_dialogue.dialog_tree_info.dialog_nodes.msg1.choice_001)": {
+                     "next_node": "msg2"
+                  }
+               }
+            }
+         },
+         "msg1b": {
+            "bulletin": {
+               "title": "i18n(stonehearth_ace:data.gm.campaigns.bonecarving.bonecarving_gift_dialogue.dialog_tree_info.dialog_nodes.msg1b.bulletin_title)",
+               "dialog_title": "i18n(stonehearth_ace:data.gm.campaigns.bonecarving.bonecarving_gift_dialogue.dialog_tree_info.dialog_nodes.msg1b.dialog_title)",
+               "portrait": "file(images/thorulf_and_rattley.png)",
+               "portrait_offset": 0,
+               "message": "i18n(stonehearth_ace:data.gm.campaigns.bonecarving.bonecarving_gift_dialogue.dialog_tree_info.dialog_nodes.msg1b.bulletin_message.00)",
+               "choices": {
+                  "i18n(stonehearth_ace:data.gm.campaigns.bonecarving.bonecarving_gift_dialogue.dialog_tree_info.dialog_nodes.msg1b.choice_000)": {
+                     "next_node": "msg2"
+                  }
+               }
+            }
+         },
+         "msg2": {
+            "bulletin": {
+               "title": "i18n(stonehearth_ace:data.gm.campaigns.bonecarving.bonecarving_gift_dialogue.dialog_tree_info.dialog_nodes.msg2.bulletin_title)",
+               "dialog_title": "i18n(stonehearth_ace:data.gm.campaigns.bonecarving.bonecarving_gift_dialogue.dialog_tree_info.dialog_nodes.msg2.dialog_title)",
+               "portrait": "file(images/thorulf_and_rattley.png)",
+               "portrait_offset": 0,
+               "message": "i18n(stonehearth_ace:data.gm.campaigns.bonecarving.bonecarving_gift_dialogue.dialog_tree_info.dialog_nodes.msg2.bulletin_message.00)",
+               "choices": {
+                  "i18n(stonehearth_ace:data.gm.campaigns.bonecarving.bonecarving_gift_dialogue.dialog_tree_info.dialog_nodes.msg2.choice_000)": {
+                     "next_node": "accept"
+                  },
+                  "i18n(stonehearth_ace:data.gm.campaigns.bonecarving.bonecarving_gift_dialogue.dialog_tree_info.dialog_nodes.msg2.choice_001)": {
+                     "next_node": "refuse"
+                  }
+               }
+            }
+         },
+         "refuse": {
+            "bulletin": {
+               "title": "i18n(stonehearth_ace:data.gm.campaigns.bonecarving.bonecarving_gift_dialogue.dialog_tree_info.dialog_nodes.refuse.bulletin_title)",
+               "dialog_title": "i18n(stonehearth_ace:data.gm.campaigns.bonecarving.bonecarving_gift_dialogue.dialog_tree_info.dialog_nodes.refuse.dialog_title)",
+               "portrait": "file(images/thorulf_and_rattley.png)",
+               "portrait_offset": 0,
+               "message": "i18n(stonehearth_ace:data.gm.campaigns.bonecarving.bonecarving_gift_dialogue.dialog_tree_info.dialog_nodes.refuse.bulletin_message.00)",
+               "choices": {
+                  "i18n(stonehearth_ace:data.gm.campaigns.bonecarving.bonecarving_gift_dialogue.dialog_tree_info.dialog_nodes.refuse.choice_000)": {
+                     "out_edge": {
+                        "type": "trigger_many",
+                        "out_edges": [
+                           "bonecarving_camp_removal",
+                           "delay_before_return"
+                        ]
+                     }
+                  },
+                  "i18n(stonehearth_ace:data.gm.campaigns.bonecarving.bonecarving_gift_dialogue.dialog_tree_info.dialog_nodes.refuse.choice_001)": {
+                     "out_edge": {
+                        "type": "trigger_many",
+                        "out_edges": [
+                           "bonecarving_camp_removal",
+                           "arc:finish"
+                        ]
+                     }
+                  }
+               }
+            }
+         },
+         "accept": {
+            "bulletin": {
+               "title": "i18n(stonehearth_ace:data.gm.campaigns.bonecarving.bonecarving_gift_dialogue.dialog_tree_info.dialog_nodes.accept.bulletin_title)",
+               "dialog_title": "i18n(stonehearth_ace:data.gm.campaigns.bonecarving.bonecarving_gift_dialogue.dialog_tree_info.dialog_nodes.accept.dialog_title)",
+               "portrait": "file(images/thorulf_and_rattley.png)",
+               "portrait_offset": 0,
+               "message": "i18n(stonehearth_ace:data.gm.campaigns.bonecarving.bonecarving_gift_dialogue.dialog_tree_info.dialog_nodes.accept.bulletin_message.00)",
+               "choices": {
+                  "i18n(stonehearth_ace:data.gm.campaigns.bonecarving.bonecarving_gift_dialogue.dialog_tree_info.dialog_nodes.accept.choice_000)": {
+                     "out_edge": "hunting_trip_supplies_quest"
+                  }
+               }
+            }
+         }
+      }
+   }
+}

@@ -1,0 +1,53 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:base_goblin_npc",
+   "components": {
+      "render_info": {
+         "scale": 0.08,
+         "animation_table": "/stonehearth/data/rigs/entities/monster/goblins/goblin"
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(rattley.qb)"
+            ]
+         }
+      },
+      "stonehearth:expendable_resources": {
+         "resources": {
+            "social_satisfaction": {
+               "initial_value": {
+                  "type": "random_between",
+                  "min": 20,
+                  "max": 50
+               }
+            }
+         }
+      },
+      "stonehearth:attributes": {
+         "social_loss_amount": {
+            "type": "derived",
+            "equation": "1.5"
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.npc.bonecarving.female.rattley.display_name)",
+         "description": "i18n(stonehearth_ace:entities.npc.bonecarving.female.rattley.description)",
+         "icon": "file(rattley.png)"
+      },
+      "stonehearth:ai_packs": {
+         "packs": [
+            "stonehearth:ai_pack:human",
+            "stonehearth:ai_pack:harvesting",
+            "stonehearth:ai_pack:restocking",
+            "stonehearth:ai_pack:sitting",
+            "stonehearth:ai_pack:free_time"
+         ],
+         "actions": [
+            "stonehearth:actions:celebrate:carouse_goblin"
+         ]
+      }
+   }
+}

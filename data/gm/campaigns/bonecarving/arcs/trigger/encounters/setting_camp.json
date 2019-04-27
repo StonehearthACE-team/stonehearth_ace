@@ -1,0 +1,66 @@
+{
+   "type": "encounter",
+   "encounter_type": "create_camp",
+   "rarity": "common",
+   "in_edge": "setting_camp",
+   "out_edge": "delay_before_bonecarving_gift",
+   "create_camp_info": {
+      "npc_player_id": "human_npcs",
+      "ctx_entity_registration_path": "bonecarving_camp",
+      "radius": 5,
+      "keep_grass": true,
+      "searcher_delay": "1h",
+      "on_searcher_failure": {
+         "retry": true
+      },
+      "spawn_range": {
+         "min": 120,
+         "max": 180
+      },
+      "boss": {
+         "from_population": {
+            "role": "bonecarving_thorulf",
+            "location": { "x": 2, "y": 0 },
+            "gender": "male"
+         },
+         "combat_leash_range": 30
+      },
+      "citizens": {
+         "rattley": {
+            "from_population": {
+               "role": "bonecarving_rattley",
+               "gender": "female",
+               "min": 1,
+               "max": 1,
+               "location": { "x": -2, "y": 0 }
+            },
+            "combat_leash_range": 10
+         }
+      },
+      "pieces": {
+         "firepit": {
+            "entity_uri": "stonehearth:decoration:firepit",
+            "position": { "x": 0, "y": 0 },
+            "rotation": 0,
+            "npc_player_id": "human_npcs"
+         },
+         "bedroll_1": {
+            "entity_uri": "stonehearth_ace:furniture:sleeping_bag",
+            "position": { "x": 0, "y": -5 },
+            "rotation": 90,
+            "npc_player_id": "human_npcs"
+         },
+         "bedroll_2": {
+            "entity_uri": "stonehearth_ace:furniture:sleeping_bag",
+            "position": { "x": 5, "y": 0 },
+            "rotation": 180,
+            "npc_player_id": "human_npcs"
+         },
+         "stockpile": {
+            "position": { "x": -4, "y": 4 },
+            "info": "file(bonecarving_camp/stockpile.json)",
+            "npc_player_id": "human_npcs"
+         }
+      }
+   }
+}

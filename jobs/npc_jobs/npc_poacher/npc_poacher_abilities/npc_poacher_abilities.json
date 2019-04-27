@@ -1,0 +1,30 @@
+{
+   "type": "entity",
+   "components": {
+      "stonehearth:equipment_piece": {
+         "injected_ai": {
+				"actions" : [
+               "stonehearth:actions:light_firepit"
+            ],
+            "ai_packs": [
+               "stonehearth:ai_pack:wimpy",
+               "stonehearth:ai_pack:panic",
+               "stonehearth:ai_pack:panic:flee",
+               "stonehearth:ai_pack:ranged_combat"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:combat:ranged_attacks": [
+         {
+            "name": "archer_armor_penetration_shot",
+            "effect": "archer_1h_shoot",
+            "active_frame": 42,
+            "target_armor_multiplier": 0.5,
+            "cooldown": 0,
+            "priority": 0
+         }
+      ]
+   }
+}

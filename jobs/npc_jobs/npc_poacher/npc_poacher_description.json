@@ -1,0 +1,30 @@
+{
+   "type": "job",
+   "alias": "stonehearth_ace:jobs:npc:poacher",
+   "is_npc_job": true,
+   "display_name": "i18n(stonehearth_ace:jobs.npc_poacher.npc_poacher_description.display_name)",
+   "controller": "stonehearth:class:worker",
+   "description": "i18n(stonehearth_ace:jobs.npc_poacher.npc_poacher_description.description)",
+   "requirements": "i18n(stonehearth:jobs.archer.archer_description.requirements)",
+   "default_stance": "defensive",
+   "abilities": "file(npc_poacher_abilities)",
+   "equipment": {
+      "mainhand": "stonehearth:weapons:bow"
+   },
+   "roles": [
+      "poacher_job",
+      "worker_job",
+      "archer_job",
+      "combat"
+   ],
+   "task_groups": [
+      "stonehearth:task_groups:placement"
+   ],
+   "icon": "file(../../poacher/images/icon.png)",
+   "max_level": 6,
+   "level_data": {
+      "1": {
+         "title": "i18n(stonehearth_ace:jobs.npc_poacher.npc_poacher_description.display_name)"
+      }
+   }
+}

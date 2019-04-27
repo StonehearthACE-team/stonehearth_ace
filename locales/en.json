@@ -283,6 +283,223 @@
                   "recipe_unlock_engineer": "New Legendary Mace recipe - Mason, Carpenter, and Engineer collaboration!",
                   "recipe_unlock_weaver": "New Legendary Hood recipe - Blacksmith, Geomancer, and Weaver collaboration!"
                }
+            },
+            "bonecarving": {
+               "rattley_arrival": {
+                  "dialog_tree_info": {
+                     "dialog_nodes": {
+                        "msg1": {
+                           "bulletin_title": "A fearsome goblin approaches!",
+                           "dialog_title": "Maybe not so fearsome...",
+                           "bulletin_message": {
+                              "00": "The goblin approaches, revealing itself a bit shorter than expected. \"BONES! BONES!\" They shout in a playful, almost childish voice.<p>\"BOOOONEEES!\" They continue.<p>It seems to be harmless.<p align='right'><font size=-6 color='#cccccc'>Is that a child? Are there goblin children?</font></p>"
+                           },
+                           "choice_000": "Bones!",
+                           "choice_001": "Huh?"
+                        },
+                        "msg2": {
+                           "bulletin_title": "The Little Goblin",
+                           "dialog_title": "They continue...",
+                           "bulletin_message": {
+                              "00": "They're clearly happy about it, hopping around in circles. \"BONES! BONES! MANY BONES!\"<p>Suddenly, a stern and yet compassionate hearthling voice rumbles nearby. \"There you are, Rattley!\""
+                           },
+                           "choice_000": "Who?"
+                        },
+                        "msg3": {
+                           "bulletin_title": "The Grizzled Traveller",
+                           "dialog_title": "Now a man approaches!",
+                           "bulletin_message": {
+                              "00": "He wears the colors of the Northern Alliance. Strong and grizzled, he rests his hand on the head of the little goblin. \"So there you are! Going out and making friends, eh?\"<p>He notices the people around. \"I apologize. Name's Thorulf, traveler and former Scout of the Library.\"<p>With a gentle pat the goblin goes back to jumping around."
+                           },
+                           "choice_000": "Greetings!",
+                           "choice_001": "You have a... pet goblin?"
+                        },
+                        "msg3b": {
+                           "bulletin_title": "The Grizzled Traveller",
+                           "dialog_title": "Thorulf looks upset",
+                           "bulletin_message": {
+                              "00": "\"What?\" he thunders. \"No, don't call her a pet! She's a goblin - not a squirrel. They're people too, you know?\"<p>He coughs, waving his hand as an apology.<p>\"I apologize. It's just... We've been through a lot, Rattley and I.\" He looks on her direction as she plays with a small bone club. \"Unfortunately not many places are prepared to accept or at least try to understand goblins...\""
+                           },
+                           "choice_000": "I see. Apologies!"
+                        },
+                        "msg4": {
+                           "bulletin_title": "The Grizzled Traveller",
+                           "dialog_title": "He continues...",
+                           "bulletin_message": {
+                              "00": "\"Rattley is like a daughter to me.\" he says with a bittersweet smile \"I am the reason she is alone in the world and she is the reason I left the Library. One watches over the other now!\" he laughs, shoving away the past back where it belongs.<p>\"I know you are busy so we'll go find a place to camp for some days!\" He waves his hand, calling Rattley closer."
+                           },
+                           "choice_000": "Sure!"
+                        },
+                        "msg5": {
+                           "bulletin_title": "Thorulf & Rattley",
+                           "dialog_title": "They turn around...",
+                           "bulletin_message": {
+                              "00": "\"Oh, I was almost forgetting...\" he scratches the back of his head and smirks \"I'll be busy setting up camp and won't have time to hunt so soon... Would you mind gifting little Rattley a couple of bones?\"<p>The little goblin reacts to it. \"BONES! GIVE BONES!\"<p>Thorulf stares back at her \"Rattley, what have I told you?\".<p>She looks down \"Please?\"<p>Thorulf smiles \"We would appreciate it, she loves carving them!\""
+                           },
+                           "choice_000": "Of course!"
+                        },
+                        "msg6": {
+                           "bulletin_title": "Thorulf & Rattley",
+                           "dialog_title": "They appreciate it",
+                           "bulletin_message": {
+                              "00": "\"Good!\" he exclaims, before turning around. \"We'll be nearby. Stay warm!\"<p>They start walking away."
+                           },
+                           "choice_000": "Farewell!"
+                        }
+                     }
+                  }
+               },
+               "bone_gift_quest": {
+                  "title": "Bones for Rattley",
+                  "dialog_title": "Give some bones to Rattley",
+                  "text": "The little goblin loves carving things out of bone!"
+               },
+               "setting_camp_dialogue": {
+                  "dialog_tree_info": {
+                     "dialog_nodes": {
+                        "msg1": {
+                           "bulletin_title": "Rattley is very happy!",
+                           "dialog_title": "The little goblin rejoices",
+                           "bulletin_message": {
+                              "00": "She quickly grab the materials. \"BONES! BONES!\"<p>Behind her, Thorulf is finishing setting up the camp. \"Rattley, thank them for the gift!\"<p>She looks back before continuing. \"BONES! You make Rattley happy!\""
+                           },
+                           "choice_000": "Have fun!"
+                        }
+                     }
+                  }
+               },
+               "bonecarving_gift_dialogue": {
+                  "dialog_tree_info": {
+                     "dialog_nodes": {
+                        "msg1": {
+                           "bulletin_title": "Thorulf and Rattley approaches!",
+                           "dialog_title": "They bring a gift",
+                           "bulletin_message": {
+                              "00": "\"Greetings once more, friends!\" says the northerner as he puts a small bowl for feeding pets by your banner. \"Rattley is showing herself to be a very promising bone carver!\"<p>\"BONES!\" She seems very happy and grateful.<p>Thorulf seems very proud \"We think you should have her latest creation.\" "
+                           },
+                           "choice_000": "So kind, thank you!",
+                           "choice_001": "Bone carving...?"
+                        },
+                        "msg2": {
+                           "bulletin_title": "Thorulf & Rattley",
+                           "dialog_title": "Thorulf & Rattley",
+                           "bulletin_message": {
+                              "00": "Thorulf looks around, scratching his moustache \"You folks from the southern lands are not used to carving bones.\"<p>He raises his brows, clearly having an idea \"I'm teaching Rattley, one more apprentice wouldn't hurt. We'll go on a hunting trip soon and I can teach a Mason, if willing.\" he smiles \"All I ask is some supplies for the days we'll be gone.\"<p>\"AND BONES!\" cheers Rattley."
+                           },
+                           "choice_000": "A good idea!",
+                           "choice_001": "Sorry, but no."
+                        },
+                        "msg1b": {
+                           "bulletin_title": "Thorulf & Rattley",
+                           "dialog_title": "Thorulf & Rattley",
+                           "bulletin_message": {
+                              "00": "\"You welcome!\" says Rattley with a smile.<p>Thorulf pats her on the head before continuing \"She is a great apprentice. Bone carving is an art as ancient as the stars, very important to my people.\" he rests his hand over his own heart \"Curiously enough it's also a tradition for the goblins.\""
+                           },
+                           "choice_000": "Fascinating."
+                        },
+                        "refuse": {
+                           "bulletin_title": "Thorulf is a bit disappointed",
+                           "dialog_title": "Thorulf & Rattley",
+                           "bulletin_message": {
+                              "00": "Thorulf seems a bit disappointed.<p>\"Well, I'm sure you know what is best for your people!\" he smiles and takes a deep breath in \"We'll go on our hunting trip and move on afterwards. We might come around here sometime soon if you wish to reconsider!\"<p>He nods and turns around to leave as Rattley waves goodbye to everyone."
+                           },
+                           "choice_000": "Safe travels, we'll meet again!",
+                           "choice_001": "[forfeit Bone Crafting] Bye!"
+                        },
+                        "accept": {
+                           "bulletin_title": "Thorulf and Rattley are delighted!",
+                           "dialog_title": "They are very excited!",
+                           "bulletin_message": {
+                              "00": "Thorulf rejoices \"Hah, good! I knew you'd appreciate the invitation. It's hard to not appreciate intricate bone craftsmanship!\"<p>\"BONES!\" cheers Rattley once more \"BONE FRIEND!\"<p>\"We will head back to our camp, send your Mason our way whenever they're ready!\""
+                           },
+                           "choice_000": "Will do!"
+                        }
+                     }
+                  }
+               },
+               "return_dialogue": {
+                  "dialog_tree_info": {
+                     "dialog_nodes": {
+                        "msg1": {
+                           "choice_000": "Safe travels, we'll meet again!",
+                           "choice_001": "[forfeit Bone Crafting] Bye!",
+                           "bulletin_title": "Thorulf & Rattley are leaving!",
+                           "dialog_title": "They are leaving...",
+                           "bulletin_message": {
+                              "00": "Thorulf sighs. \"Well, sometimes things just get in the way, eh?\" he smiles \"But I am sure we shall cross our paths again. Rattley surely wants to.\"<p>\"BONE FRIEND!\" she cheers.<p>\"Maybe next time we're around we could even teach you a bit about bone carving! Well, off we go!\""
+                           }
+                        }
+                     }
+                  }
+               },
+               "hunting_trip_supplies_quest": {
+                  "title": "Supplies for the trip",
+                  "dialog_title": "They'll need some food and some bones for Rattley.",
+                  "text": "And a bandage or two. Just for safety!"
+               },
+               "mason_dispatch_quest": {
+                  "text": "Select a Mason (Level 2+) to learn Bone Carving with Thorulf and Rattley!",
+                  "title": "Select a Mason",
+                  "dialog_title": "Select a Mason"
+               },
+               "trip_finished_dialogue": {
+                  "dialog_tree_info": {
+                     "dialog_nodes": {
+                        "msg1": {
+                           "bulletin_title": "Rattley runs into your town!",
+                           "dialog_title": "Rattley",
+                           "bulletin_message": {
+                              "00": "\"BONES!\" she cheers as she jumps around the town banner \"We back, bone friend!\"<p>Behind her, Thorulf and the Mason calmly approach while having a friendly conversation."
+                           },
+                           "choice_000": "Welcome back!"
+                        },
+                        "msg2": {
+                           "bulletin_title": "Thorulf & Rattley",
+                           "dialog_title": "Time to say goodbye...",
+                           "bulletin_message": {
+                              "00": "\"There you go!\" says Thorulf as they approach, he laughs \"Your Mason is back safely, well fed and full of knowledge to share!\"<p>Rattley silently approaches and holds on to the leg of her father, who continues \"I'm afraid it is time to say goodbye, now. Hopefully this knowledge will serve you very well from now on.\"<p>He smiles. \"May the stars always shine the brightest upon your town. Farewell!\""
+                           },
+                           "choice_000": "Travel under the stars, friends. "
+                        }
+                     }
+                  }
+               },
+               "bone_recipes_unlock": {
+                  "bulletin_title": "New Bone Carving recipes for the Mason!"
+               },
+               "return": {
+                  "dialog_tree_info": {
+                     "dialog_nodes": {
+                        "accept": {
+                           "bulletin_title": "Thorulf & Rattley have returned!",
+                           "dialog_title": "They walk into town...",
+                           "bulletin_message": {
+                              "00": "\"Many greetings! It seems our paths have crossed again.\" he smiles.<p>Rattley jumps in front of him \"BONE FRIEND!\"<p>They laugh and Thorulf continues \"She insisted to come. We have a proposition!\" he shows some of his own bone carved tools as he continues \"We're going on another hunting trip nearby and maybe a Mason would be interested in learning bone carving?\""
+                           },
+                           "choice_000": "Tell me more!",
+                           "choice_001": "Sorry, we have no interest."
+                        },
+                        "msg2": {
+                           "bulletin_title": "Thorulf & Rattley",
+                           "dialog_title": "Thorulf & Rattley",
+                           "bulletin_message": {
+                              "00": "\"Good to know you have interest!\" he smiles, opening his arms wide \"We can leave as soon as you're ready. But since we'll be out for a couple of days, some supplies wouldn't hurt... If that is alright!\"<p>Rattley waves from behind his legs. \"AND BONES!\"<p>\"And bones, of course!\" he laughs."
+                           },
+                           "choice_000": "Will do!",
+                           "choice_001": "Sorry, but no."
+                        },
+                        "farewell": {
+                           "bulletin_title": "Thorulf & Rattley are leaving!",
+                           "dialog_title": "They will leave...",
+                           "bulletin_message": {
+                              "00": "\"Oh, I understand.\" he gives a gentle yet disappointed smile.<p>\"No bones?\" Rattley sobs.<p>\"Maybe next time, right? I'm sure they must be very busy. Sometimes this is just how things are!\" he seems genuinely interested in teaching others, maybe someday he might return.<p>\"We wish you the best of luck and may the stars always shine upon your town!\""
+                           },
+                           "choice_000": "Safe travels, we'll meet again!",
+                           "choice_001": "[forfeit Bone Crafting] Bye!"
+                        }
+                     }
+                  }
+               }
             }
          }
       },
@@ -579,9 +796,9 @@
             },
             "kitties": {
                "values": {
-                  "ted": {
+                  "teddy": {
                      "display_name": "Forever Playful",
-                     "tooltip": "I was visited by the adorable ghost of a very mischievous kitten called Ted!"
+                     "tooltip": "I was visited by the adorable ghost of a very mischievous kitten called Teddy!"
                   }
                }
             }
@@ -3132,6 +3349,12 @@
             "display_name": "Farmer's Watermelon Cap",
             "description": "Can be used by Farmers for a small Speed gain and keeping their head fresh."
          }
+      },
+      "npc_poacher": {
+         "npc_poacher_description": {
+            "display_name": "Poacher",
+            "description": "A small time hunter."
+         }
       }
    },
    "entities": {
@@ -4894,8 +5117,8 @@
             "description": "Cute bear from east beyond Pal'Mum. It prefers vegetables but can eat anything."
          },
          "kitten": {
-            "ted": {
-               "display_name": "Spirit of Ted",
+            "teddy": {
+               "display_name": "Spirit of Teddy",
                "description": "Playful and adorable"
             }
          }
@@ -7025,6 +7248,22 @@
             },
             "wild_cattle_milk_serving": {
                "display_name": "Cup of Wild Cattle Milk"
+            }
+         }
+      },
+      "npc": {
+         "bonecarving": {
+            "male": {
+               "thorulf": {
+                  "display_name": "Traveller Thorulf",
+                  "description": "A former Explorer of the Library"
+               }
+            },
+            "female": {
+               "rattley": {
+                  "display_name": "Rattley",
+                  "description": "Goblin girl that loves bonecarving"
+               }
             }
          }
       }
