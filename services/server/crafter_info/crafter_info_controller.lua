@@ -162,7 +162,7 @@ function CrafterInfoController:_format_recipe(recipe)
    formatted_recipe.product_materials = {}
    for product, count in pairs(products) do
       local catalog_data = radiant.resources.load_json(product)
-      local product_catalog = catalog_data and catalog_data.entity_data["stonehearth:catalog"]
+      local product_catalog = catalog_data and catalog_data.entity_data and catalog_data.entity_data["stonehearth:catalog"]
 
       -- first verify that the recipe has catalog data and is not for a raw resource/wealth
       -- (category "resources/wealth"; if it's not raw, it should be "refined" or something else)
