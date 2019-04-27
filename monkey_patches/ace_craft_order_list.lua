@@ -273,19 +273,23 @@ function AceCraftOrderList:_ace_get_recipe_info_from_product(product, crafter_in
    for recipe_info, count in pairs(possible) do
       table.insert(choices, {
          recipe_info = recipe_info,
-         cost = recipe_info.recipe.cost / count
+         cost = recipe_info.recipe.cost / count,
+         can_craft = self:_can_craft_recipe(crafter_info:get_player_id(), recipe_info)
       })
    end
 
+   -- prefer craftable recipes (has job and level requirement)
    table.sort(choices, function(a, b)
-      return a.cost < b.cost
-   end)
-
-   for _, choice in ipairs(choices) do
-      if self:_can_craft_recipe(crafter_info:get_player_id(), choice.recipe_info) then
-         return choice.recipe_info
+      if a.can_craft and b.can_craft then
+         return a.cost < b.cost
+      elseif a.can_craft then
+         return true
+      elseif b.can_craft then
+         return false
+      else
+         return (a.recipe_info.recipe.level_requirement or 1) < (b.recipe_info.recipe.level_requirement or 1)
       end
-   end
+   end)
 
    local choice = choices[1]
    return choice and choice.recipe_info
