@@ -14,7 +14,10 @@ function AceCombatService:_on_target_killed(attacker, target)
       local nearby_units = self:_get_nearby_units(target, attacker, attacker_player_id)
       self:distribute_exp(attacker, target, nearby_units)
       self:_notify_combat_participants(attacker, target, nearby_units)
-      self:_record_kill_stats(attacker, target, nearby_units)
+
+      if radiant.entities.has_free_will(target) then
+         self:_record_kill_stats(attacker, target, nearby_units)
+      end
    end
 
    self:_queue_killed_entity_craft_order(target)
