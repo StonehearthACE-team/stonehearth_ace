@@ -1,0 +1,34 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(firepit_small.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:hide_child_entities_from_pathfinder": true,
+      "stonehearth:catalog": {
+         "portrait": "file(firepit_small.png)",
+         "display_name": "i18n(stonehearth_ace:entities.decoration.firepit_small.display_name)",
+         "description": "i18n(stonehearth_ace:entities.decoration.firepit_small.description)",
+         "icon": "file(firepit_small.png)",
+         "category": "decoration",
+         "material_tags": [
+            "firepit_small",
+            "firepit",
+            "light",
+            "light_source",
+            "stockpile_decoration"
+         ]
+      }
+   }
+}

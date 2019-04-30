@@ -1,0 +1,90 @@
+{
+   "type": "effect",
+   "tracks": {
+      "base_embers": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/fire/firepit_small_base.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": 0, "y": 0.1, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "base_dense": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth/data/horde/particles/fire/fire_red/fire.red.base_dense.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": 0, "y": 0.2, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "glow": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/fire/firepit_small_glow.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": 0, "y": 0.4, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "glow_extreme": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth/data/horde/particles/fire/fire_red/fire.red.glow_extreme.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": 0, "y": 0.4, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "cubemitter": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/fire/firepit_small_main.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": 0, "y": 0.1, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "embers": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/fire/firepit_small_embers.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": 0, "y": 0.1, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "pop": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/fire/firepit_small_pop.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": 0, "y": 0.2, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "crackle_sound": {
+         "type": "sound_effect",
+         "loop": true,
+         "start_time": 400,
+         "min_distance": 40,
+         "falloff": 2.5,
+         "volume": 70,
+         "track": "stonehearth:sounds:firepit_loop_sound"
+      },
+      "light": {
+         "type": "light",
+         "light": "/stonehearth/data/horde/animatedlights/fire/fire.animatedlight.json",
+         "transforms": { "x": 0, "y": 2, "z": 0 },
+         "shadows": true
+      }
+   }
+}

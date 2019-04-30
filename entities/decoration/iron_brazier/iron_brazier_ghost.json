@@ -1,0 +1,37 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(iron_brazier.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      },
+      "render_info": {
+         "scale": 0.105
+      }
+   },
+   "entity_data": {
+      "stonehearth:hide_child_entities_from_pathfinder": true,
+      "stonehearth:catalog": {
+         "portrait": "file(iron_brazier.png)",
+         "display_name": "i18n(stonehearth_ace:entities.decoration.iron_brazier.display_name)",
+         "description": "i18n(stonehearth_ace:entities.decoration.iron_brazier.description)",
+         "icon": "file(iron_brazier.png)",
+         "category": "decoration",
+         "material_tags": [
+            "iron_brazier",
+            "iron",
+            "light",
+            "light_source",
+            "stockpile_decoration"
+         ]
+      }
+   }
+}

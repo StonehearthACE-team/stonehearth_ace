@@ -1,0 +1,50 @@
+{
+   "type": "effect",
+   "tracks": {
+      "fire": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/fire/iron_brazier/brazier_fire.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": 0, "y": 1, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "fire_glitter": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/fire/iron_brazier/brazier_fire_glitter.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": 0, "y": 1, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "fire_glow": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/fire/iron_brazier/brazier_glow.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": 0, "y": 1.2, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "sound": {
+         "type": "sound_effect",
+         "loop": true,
+         "start_time": 0,
+         "min_distance": 20,
+         "falloff": 2.5,
+         "volume": 8,
+         "track": "stonehearth:sounds:brazier_loop"
+      },
+      "light": {
+         "type": "light",
+         "light": "/stonehearth/data/horde/animatedlights/fire/small_fire.animatedlight.json",
+         "transforms": { "x": 0, "y": 1.1, "z": 0 },
+         "shadows": true
+      }
+   }
+}

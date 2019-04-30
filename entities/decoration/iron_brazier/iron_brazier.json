@@ -1,0 +1,60 @@
+{
+   "mixins": "file(iron_brazier_ghost.json)",
+   "type": "entity",
+   "components": {
+      "stonehearth:entity_forms": {
+         "ghost_form": "file(iron_brazier_ghost.json)",
+         "iconic_form": "file(iron_brazier_iconic.json)",
+         "placeable_on_ground": true
+      },
+      "stonehearth:firepit": {
+         "fuel": "coal fuel",
+         "ember_uri": "stonehearth_ace:decoration:ember_small",
+         "allow_charcoal": false,
+         "buff_source": true,
+         "create_seats": false
+      },
+      "stonehearth:lamp": {
+         "light_policy": "manual",
+         "light_effect": "stonehearth_ace:effects:iron_brazier_effect"
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -0.2, "y": 0, "z": -0.2 },
+               "max": { "x": 1.2, "y": 2, "z": 1.2 }
+            }
+         ]
+      },
+      "stonehearth:traveler_attraction": {},
+      "sensor_list": {
+         "sensors": {
+            "warmth": {
+               "radius": 10
+            }
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:table": {
+         "drop_effect": "carry_putdown",
+         "drop_offset": { "x": 0, "y": 0.35, "z": 0 }
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 14,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 2,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 12
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}
