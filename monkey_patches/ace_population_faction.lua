@@ -33,6 +33,29 @@ function AcePopulationFaction:create_new_citizen_from_role_data(role, role_data,
    return citizen
 end
 
+function AcePopulationFaction:generate_random_name(gender, role_data)
+   if not role_data[gender] then
+      gender = constants.population.DEFAULT_GENDER
+   end
+
+   if role_data[gender].given_names then
+      local first_names = ""
+
+      first_names = role_data[gender].given_names
+
+      local name = first_names[rng:get_int(1, #first_names)]
+
+      local surnames = role_data[gender].surnames or role_data.surnames
+      if surnames then
+         local surname = surnames[rng:get_int(1, #surnames)]
+         name = name .. ' ' .. surname
+      end
+      return name
+   else
+      return nil
+   end
+end
+
 --Will show a simple notification that zooms to a citizen when clicked.
 --will expire if the citizen isn't around anymore
 -- override to add custom_data for current title
