@@ -9,7 +9,7 @@ local DEFAULT_FUEL = 'low_fuel'
 AceFirepitComponent._ace_old_activate = FirepitComponent.activate
 function AceFirepitComponent:activate()
    self._json = radiant.entities.get_json(self) or {}
-	self._fuel = self._json.fuel or DEFAULT_FUEL
+   self._fuel = self._json.fuel or DEFAULT_FUEL
    self._ember_uri = self._json.ember_uri or EMBER_URI
    self._ember_charcoal_uri = self._json.ember_charcoal_uri or EMBER_CHARCOAL_URI
    self._charcoal_uri = self._json.charcoal_uri or CHARCOAL_URI
@@ -17,7 +17,7 @@ function AceFirepitComponent:activate()
    self._transform_residue_time = self._json.transform_residue_time or 'midday'
    self._transform_residue_jitter = '+' .. (self._json.transform_residue_jitter or '2h')
    self._buff_source = self._json.buff_source or false
-	self._create_seats = (self._json.create_seats ~= false)
+   self._create_seats = (self._json.create_seats ~= false)
    if self._buff_source then
       self._buff = self._json.buff or 'stonehearth_ace:buffs:weather:warmth_source'
    end
@@ -31,14 +31,14 @@ end
 
 -- This entire function needs to be replaced for the seat creation conditional :(
 function AceFirepitComponent:_light()
-	self._log:debug('lighting the fire')
+   self._log:debug('lighting the fire')
 
    if self._buff_source then
       local buff = self._buff
       radiant.entities.add_buff(self._entity, buff)
    end
-	
-	local lamp = self._entity:get('stonehearth:lamp')
+   
+   local lamp = self._entity:get('stonehearth:lamp')
    if lamp then
       lamp:light_on()
    end
@@ -50,9 +50,15 @@ function AceFirepitComponent:_light()
    -- reserve children in firepit
    local entity_container = self._entity:get_component('entity_container')
 
-   local inventory = stonehearth.inventory:get_inventory(radiant.entities.get_player_id(self._entity))
+   local player_id = radiant.entities.get_player_id(self._entity)
+   local inventory = stonehearth.inventory:get_inventory(player_id)
    if entity_container and inventory then
       for id, child in entity_container:each_child() do
+         local owner = stonehearth.ai:get_ai_lease_owner(child)
+         if owner then
+            stonehearth.ai:release_ai_lease(child, owner, nil, player_id)
+         end
+         child:add_component('stonehearth:lease'):acquire(stonehearth.constants.ai.RESERVATION_LEASE_NAME, self._entity, true)
          inventory:remove_item(id)
       end
    end
@@ -60,7 +66,7 @@ function AceFirepitComponent:_light()
    radiant.events.trigger_async(stonehearth, 'stonehearth:fire:lit', {
          lit = true,
          entity = self._entity,
-         player_id = radiant.entities.get_player_id(self._entity),
+         player_id = player_id,
       })
 
    self:_reconsider_firepit_and_seats()
@@ -109,7 +115,7 @@ function AceFirepitComponent:_transform_residue()
             return
          elseif child and child:is_valid() and child:get_uri() == self._ember_charcoal_uri then
             radiant.entities.destroy_entity(child)
-            self:_create_residue(self._charcoal_uri)
+            self:_create_residue(self._charcoal_uri, false)
             self._log:debug('transforming a charcoal ember into charcoal...')            
          elseif child and child:is_valid() and child:get_uri() == self._ember_uri then
             radiant.entities.destroy_entity(child)
@@ -144,38 +150,41 @@ function AceFirepitComponent:_extinguish()
       end
       if is_wood then
          if self._allow_charcoal then
-            self:_create_residue(self._ember_charcoal_uri)
+            self:_create_residue(self._ember_charcoal_uri, true)
             self._log:debug('creating a charcoal ember...')
          else
-            self:_create_residue(self._ember_uri)
+            self:_create_residue(self._ember_uri, true)
             self._log:debug('charcoal not allowed, creating common embers...')
          end
       elseif is_fuel then
-         self:_create_residue(self._ember_uri)
+         self:_create_residue(self._ember_uri, true)
          self._log:debug('creating common embers...')
       end
    end
 end
 
-function AceFirepitComponent:_create_residue(residue_uri)
+function AceFirepitComponent:_create_residue(residue_uri, reserve)
    local player_id = radiant.entities.get_player_id(self._entity)
    local residue = radiant.entities.create_entity(residue_uri, { owner = player_id })
    local entity_container = self._entity:get_component('entity_container')
-   local entity_data = radiant.entities.get_entity_data(self._entity, 'stonehearth:table') or nil
+   local entity_data = radiant.entities.get_entity_data(self._entity, 'stonehearth:table')
    local drop_offset = nil
    
+   if reserve then
+      residue:add_component('stonehearth:lease'):acquire(stonehearth.constants.ai.RESERVATION_LEASE_NAME, self._entity, true)
+   end
    entity_container:add_child(residue)
    
    if entity_data then
       local offset = entity_data['drop_offset']
       if offset then
-         local facing = residue:get_component('mob')
+         local facing = self._entity:get_component('mob')
                                  :get_facing()
          local offset = Point3(offset.x, offset.y, offset.z)
          local drop_offset = offset:rotated(facing)
          local mob = residue:add_component('mob')
          mob:move_to(drop_offset)
-         end
+      end
    end
    
 end
@@ -188,6 +197,7 @@ function AceFirepitComponent:_retrieve_charcoal()
       if child and child:is_valid() and child:get_uri() == self._charcoal_uri and self._allow_charcoal then
          location = radiant.terrain.find_placement_point(location, 0, 3)
          radiant.terrain.place_entity(child, location)
+         child:add_component('stonehearth:lease'):release(stonehearth.constants.ai.RESERVATION_LEASE_NAME, self._entity)
       elseif child and child:is_valid() and child:get_uri() == self._ember_charcoal_uri then
          radiant.entities.destroy_entity(child)
       elseif child and child:is_valid() and child:get_uri() == self._ember_uri then
