@@ -283,6 +283,223 @@
                   "recipe_unlock_engineer": "Neues legendäres Streitkolben-Rezept - Zusammenarbeit von Steinmetz, Schreiner und Ingenieur!",
                   "recipe_unlock_weaver": "Neues legendäres Kapuzen-Rezept - Zusammenarbeit von Schmied, Geomant und Weber!"
                }
+            },
+            "bonecarving": {
+               "rattley_arrival": {
+                  "dialog_tree_info": {
+                     "dialog_nodes": {
+                        "msg1": {
+                           "bulletin_title": "Ein furchterregender Goblin nähert sich!",
+                           "dialog_title": "Vielleicht doch nicht so furchterregend...",
+                           "bulletin_message": {
+                              "00": "Der Goblin nähert sich und zeigt sich etwas kürzer als erwartet. \"KNOCHEN! KNOCHEN!\" Schreit ?Sie! mit einer verspielten, fast kindlichen Stimme.<p>\"KNNNOOOCCCHHHEEENNN!\" <p>Sie scheint harmlos zu sein.<p align='right'><font size=-6 color='#cccccc'>Ist das ein Kind? Haben Goblins Kinder?</font></p>"
+                           },
+                           "choice_000": "Knochen!",
+                           "choice_001": "Huh?"
+                        },
+                        "msg2": {
+                           "bulletin_title": "Die kleine Goblin",
+                           "dialog_title": "Sie fährt fort...",
+                           "bulletin_message": {
+                              "00": "Sie ist offensichtlich glücklich darüber und hüpft im Kreis herum. \"KNOCHEN! KNOCHEN! VIELE KNOCHEN!\"<p>Plötzlich dröhnt in der Nähe eine strenge und doch mitfühlende rührende Stimme. \"Da bist du ja, Rattley!\""
+                           },
+                           "choice_000": "Wer?"
+                        },
+                        "msg3": {
+                           "bulletin_title": "Der graue Reisende",
+                           "dialog_title": "Nun nähert sich auch noch ein Mann!",
+                           "bulletin_message": {
+                              "00": "Er trägt die Farben der Nordallianz. Kräftig und ergraut, legt er seine Hand auf dem Kopf der kleinen Goblin. \"Also da bist du! Einfach abhauen und dir neue Freunde suchen, nee?\"<p>Er bemerkt die Menschen in der Umgebung. \"Ich entschuldige mich. Thorulf, Reisender und ehemaliger Pfadfinder der Bibliothek.\"<p>Nach einem sanften Klaps springt die Goblin wieder herum."
+                           },
+                           "choice_000": "Grüße!",
+                           "choice_001": "Du hast einen ... Goblin als Haustier?"
+                        },
+                        "msg3b": {
+                           "bulletin_title": "Der graue Reisende",
+                           "dialog_title": "Thorulf sieht verärgert aus",
+                           "bulletin_message": {
+                              "00": "\"Was?\" donnert er. \"Nein, nenne sie kein Haustier! Sie ist ein Goblin - kein Eichhörnchen. Das sind auch Leute, weißt du?\"<p>He coughs, waving his hand as an apology.<p>\"I apologize. It's just... We've been through a lot, Rattley and I.\" He looks on her direction as she plays with a small bone club. \"Unfortunately not many places are prepared to accept or at least try to understand goblins...\""
+                           },
+                           "choice_000": "Ich verstehe. Entschuldigung!"
+                        },
+                        "msg4": {
+                           "bulletin_title": "Der graue Reisende",
+                           "dialog_title": "Er fährt fort...",
+                           "bulletin_message": {
+                              "00": "\"Rattley ist wie eine Tochter für mich.\" sagt er mit einem bittersüßen Lächeln \"Ich bin der Grund, warum sie allein in der Welt ist, und sie ist der Grund, warum ich die Bibliothek verlassen habe. Einer wacht jetzt über den anderen!\" er lacht und schiebt die Vergangenheit dahin, wo sie hingehört.<p>\"Ich weiß, dass du beschäftigt bist, also werden wir uns für einige Tage einen Platz zum Campen suchen!\" Er winkte mit seiner Hand und ruft Rattley zu sich."
+                           },
+                           "choice_000": "Sicher!"
+                        },
+                        "msg5": {
+                           "bulletin_title": "Thorulf & Rattley",
+                           "dialog_title": "Sie drehen sich um...",
+                           "bulletin_message": {
+                              "00": "\"Oh, ich hätte fast vergessen...\" Er kratzt sich am Hinterkopf und lächelt \"ch werde mit dem Aufstellen des Lagers beschäftigt sein und werde nicht so schnell auf die Jagd gehen können. Würde es euch etwas ausmachen, der kleinen Rattley ein paar Knochen zu schenken?\"<p>Die kleine Glblin reagiert darauf. \"KNOCHEN! KNOCHEN GEBEN!\"<p>Thorulf starrt sie an \"Rattley, was hab ich dir gesagt?\".<p>Sie schaut nach unten \"Bitte?\"<p>Thorulf lächelt \"Wir würden es schätzen, sie liebt es, sie zu schnitzen!\""
+                           },
+                           "choice_000": "Na sicher!"
+                        },
+                        "msg6": {
+                           "bulletin_title": "Thorulf & Rattley",
+                           "dialog_title": "Sie schätzen es",
+                           "bulletin_message": {
+                              "00": "\"Gut!\" ruft er, bevor er sich umdreht. \"Wir werden in der Nähe bleiben. Bleibt warm!\"<p>Sie beginnen sich zu Fuß zu entfernen."
+                           },
+                           "choice_000": "Bis später!"
+                        }
+                     }
+                  }
+               },
+               "bone_gift_quest": {
+                  "title": "Bones for Rattley",
+                  "dialog_title": "Give some bones to Rattley",
+                  "text": "The little goblin loves carving things out of bone!"
+               },
+               "setting_camp_dialogue": {
+                  "dialog_tree_info": {
+                     "dialog_nodes": {
+                        "msg1": {
+                           "bulletin_title": "Rattley is very happy!",
+                           "dialog_title": "The little goblin rejoices",
+                           "bulletin_message": {
+                              "00": "She quickly grab the materials. \"BONES! BONES!\"<p>Behind her, Thorulf is finishing setting up the camp. \"Rattley, thank them for the gift!\"<p>She looks back before continuing. \"BONES! You make Rattley happy!\""
+                           },
+                           "choice_000": "Have fun!"
+                        }
+                     }
+                  }
+               },
+               "bonecarving_gift_dialogue": {
+                  "dialog_tree_info": {
+                     "dialog_nodes": {
+                        "msg1": {
+                           "bulletin_title": "Thorulf and Rattley approaches!",
+                           "dialog_title": "They bring a gift",
+                           "bulletin_message": {
+                              "00": "\"Greetings once more, friends!\" says the northerner as he puts a small bowl for feeding pets by your banner. \"Rattley is showing herself to be a very promising bone carver!\"<p>\"BONES!\" She seems very happy and grateful.<p>Thorulf seems very proud \"We think you should have her latest creation.\" "
+                           },
+                           "choice_000": "So kind, thank you!",
+                           "choice_001": "Bone carving...?"
+                        },
+                        "msg2": {
+                           "bulletin_title": "Thorulf & Rattley",
+                           "dialog_title": "Thorulf & Rattley",
+                           "bulletin_message": {
+                              "00": "Thorulf looks around, scratching his moustache \"You folks from the southern lands are not used to carving bones.\"<p>He raises his brows, clearly having an idea \"I'm teaching Rattley, one more apprentice wouldn't hurt. We'll go on a hunting trip soon and I can teach a Mason, if willing.\" he smiles \"All I ask is some supplies for the days we'll be gone.\"<p>\"AND BONES!\" cheers Rattley."
+                           },
+                           "choice_000": "A good idea!",
+                           "choice_001": "Sorry, but no."
+                        },
+                        "msg1b": {
+                           "bulletin_title": "Thorulf & Rattley",
+                           "dialog_title": "Thorulf & Rattley",
+                           "bulletin_message": {
+                              "00": "\"You welcome!\" says Rattley with a smile.<p>Thorulf pats her on the head before continuing \"She is a great apprentice. Bone carving is an art as ancient as the stars, very important to my people.\" he rests his hand over his own heart \"Curiously enough it's also a tradition for the goblins.\""
+                           },
+                           "choice_000": "Fascinating."
+                        },
+                        "refuse": {
+                           "bulletin_title": "Thorulf is a bit disappointed",
+                           "dialog_title": "Thorulf & Rattley",
+                           "bulletin_message": {
+                              "00": "Thorulf seems a bit disappointed.<p>\"Well, I'm sure you know what is best for your people!\" he smiles and takes a deep breath in \"We'll go on our hunting trip and move on afterwards. We might come around here sometime soon if you wish to reconsider!\"<p>He nods and turns around to leave as Rattley waves goodbye to everyone."
+                           },
+                           "choice_000": "Safe travels, we'll meet again!",
+                           "choice_001": "[forfeit Bone Crafting] Bye!"
+                        },
+                        "accept": {
+                           "bulletin_title": "Thorulf and Rattley are delighted!",
+                           "dialog_title": "They are very excited!",
+                           "bulletin_message": {
+                              "00": "Thorulf rejoices \"Hah, good! I knew you'd appreciate the invitation. It's hard to not appreciate intricate bone craftsmanship!\"<p>\"BONES!\" cheers Rattley once more \"BONE FRIEND!\"<p>\"We will head back to our camp, send your Mason our way whenever they're ready!\""
+                           },
+                           "choice_000": "Will do!"
+                        }
+                     }
+                  }
+               },
+               "return_dialogue": {
+                  "dialog_tree_info": {
+                     "dialog_nodes": {
+                        "msg1": {
+                           "choice_000": "Safe travels, we'll meet again!",
+                           "choice_001": "[forfeit Bone Crafting] Bye!",
+                           "bulletin_title": "Thorulf & Rattley are leaving!",
+                           "dialog_title": "They are leaving...",
+                           "bulletin_message": {
+                              "00": "Thorulf sighs. \"Well, sometimes things just get in the way, eh?\" he smiles \"But I am sure we shall cross our paths again. Rattley surely wants to.\"<p>\"BONE FRIEND!\" she cheers.<p>\"Maybe next time we're around we could even teach you a bit about bone carving! Well, off we go!\""
+                           }
+                        }
+                     }
+                  }
+               },
+               "hunting_trip_supplies_quest": {
+                  "title": "Supplies for the trip",
+                  "dialog_title": "They'll need some food and some bones for Rattley.",
+                  "text": "And a bandage or two. Just for safety!"
+               },
+               "mason_dispatch_quest": {
+                  "text": "Select a Mason (Level 2+) to learn Bone Carving with Thorulf and Rattley!",
+                  "title": "Select a Mason",
+                  "dialog_title": "Select a Mason"
+               },
+               "trip_finished_dialogue": {
+                  "dialog_tree_info": {
+                     "dialog_nodes": {
+                        "msg1": {
+                           "bulletin_title": "Rattley runs into your town!",
+                           "dialog_title": "Rattley",
+                           "bulletin_message": {
+                              "00": "\"BONES!\" she cheers as she jumps around the town banner \"We back, bone friend!\"<p>Behind her, Thorulf and the Mason calmly approach while having a friendly conversation."
+                           },
+                           "choice_000": "Welcome back!"
+                        },
+                        "msg2": {
+                           "bulletin_title": "Thorulf & Rattley",
+                           "dialog_title": "Time to say goodbye...",
+                           "bulletin_message": {
+                              "00": "\"There you go!\" says Thorulf as they approach, he laughs \"Your Mason is back safely, well fed and full of knowledge to share!\"<p>Rattley silently approaches and holds on to the leg of her father, who continues \"I'm afraid it is time to say goodbye, now. Hopefully this knowledge will serve you very well from now on.\"<p>He smiles. \"May the stars always shine the brightest upon your town. Farewell!\""
+                           },
+                           "choice_000": "Travel under the stars, friends. "
+                        }
+                     }
+                  }
+               },
+               "bone_recipes_unlock": {
+                  "bulletin_title": "New Bone Carving recipes for the Mason!"
+               },
+               "return": {
+                  "dialog_tree_info": {
+                     "dialog_nodes": {
+                        "accept": {
+                           "bulletin_title": "Thorulf & Rattley have returned!",
+                           "dialog_title": "They walk into town...",
+                           "bulletin_message": {
+                              "00": "\"Many greetings! It seems our paths have crossed again.\" he smiles.<p>Rattley jumps in front of him \"BONE FRIEND!\"<p>They laugh and Thorulf continues \"She insisted to come. We have a proposition!\" he shows some of his own bone carved tools as he continues \"We're going on another hunting trip nearby and maybe a Mason would be interested in learning bone carving?\""
+                           },
+                           "choice_000": "Tell me more!",
+                           "choice_001": "Sorry, we have no interest."
+                        },
+                        "msg2": {
+                           "bulletin_title": "Thorulf & Rattley",
+                           "dialog_title": "Thorulf & Rattley",
+                           "bulletin_message": {
+                              "00": "\"Good to know you have interest!\" he smiles, opening his arms wide \"We can leave as soon as you're ready. But since we'll be out for a couple of days, some supplies wouldn't hurt... If that is alright!\"<p>Rattley waves from behind his legs. \"AND BONES!\"<p>\"And bones, of course!\" he laughs."
+                           },
+                           "choice_000": "Will do!",
+                           "choice_001": "Sorry, but no."
+                        },
+                        "farewell": {
+                           "bulletin_title": "Thorulf & Rattley are leaving!",
+                           "dialog_title": "They will leave...",
+                           "bulletin_message": {
+                              "00": "\"Oh, I understand.\" he gives a gentle yet disappointed smile.<p>\"No bones?\" Rattley sobs.<p>\"Maybe next time, right? I'm sure they must be very busy. Sometimes this is just how things are!\" he seems genuinely interested in teaching others, maybe someday he might return.<p>\"We wish you the best of luck and may the stars always shine upon your town!\""
+                           },
+                           "choice_000": "Safe travels, we'll meet again!",
+                           "choice_001": "[forfeit Bone Crafting] Bye!"
+                        }
+                     }
+                  }
+               }
             }
          }
       },
@@ -576,6 +793,14 @@
                      "tooltip": "Es ist heute mein Lieblingswetter!"
                   }
                }
+            },
+            "kitties": {
+               "values": {
+                  "teddy": {
+                     "display_name": "Für immer Verspielt",
+                     "tooltip": "Ich wurde von dem entzückenden Geist eines sehr schelmischen Kätzchens namens Teddy besucht!"
+                  }
+               }
             }
          }
       },
@@ -799,6 +1024,14 @@
             "release_fish": {
                "display_name": "Fische freilassen",
                "description": "Lass die kleinen Kreaturen frei! Stelle aber sicher, dass es im Wasser ist..."
+            },
+            "open_door": {
+               "display_name": "Öffne diese Tür!",
+               "description": "Öffne diese Tür und lass sie offen, jeder kann nun hindurchgehen!"
+            },
+            "close_door": {
+               "display_name": "Schließe diese Tür!",
+               "description": "Schließe diese Tür, um zu verhindern, dass Tiere oder Kreaturen hindurchgehen."
             }
          },
          "slaughter": {
@@ -1235,6 +1468,24 @@
                "recipe_name": "Gänseblümchensamen (x3)",
                "description": "Trennt die Samen von den Kräutern. Gänseblümchen breiten sich nach dem Einpflanzen aus.",
                "flavor": "Nur eine geschickte Hand kann die schwächeren Samen ernten, aber die Kräuter gehen dabei verloren."
+            },
+            "cotton_transmute_recipe": {
+               "recipe_name": "Baumwollsamen (x3)",
+               "description": "Trennt die Samen von der Fasern",
+               "flavor": "Baumwollsamen sind ölhaltige Samen und können zur Herstellung von Öl verwendet werden."
+            },
+            "sunflower_transmute_recipe": {
+               "flavor": "Sonnenblumenkerne sind ölhaltige Samen und können zur Herstellung von Öl verwendet werden."
+            },
+            "dwarfsbeard_transmute_recipe": {
+               "recipe_name": "Zwergenbartsamen (x3)",
+               "description": "Trennt die Samen von der Fasern",
+               "flavor": "Nur eine geschickte Hand kann die schwächeren Samen ernten, aber die Faser wird dabei zerstört."
+            },
+            "cherry_bush_transmute_recipe": {
+               "recipe_name": "Kirschbuschsamen (x3)",
+               "description": "Trennt die Samen von der Frucht",
+               "flavor": "Nur eine geschickte Hand kann die schwächeren Samen ernten, aber die Frucht wird dabei zerstört."
             },
             "moonbell_transmute_recipe": {
                "recipe_name": "Mondglocken Samen (x3)",
@@ -2061,6 +2312,11 @@
                "recipe_name": "Weidenbett",
                "description": "Große Weidentiere suchen dies nachts oder bei schlechtem Wetter auf, platzier es deswegen an einem sicheren Ort..",
                "flavor": "Große Tieren beinhalten Schafe, Strauße und Moo-Moos"
+            },
+            "firepit_small_recipe": {
+               "recipe_name": "Kleine Feuerstelle",
+               "description": "Eine kleinere Variante des beliebten Steinherzens.",
+               "flavor": "Passt in Häuser und ist warm und gemütlich!"
             }
          },
          "mason_workbench_bone": {
@@ -2464,7 +2720,7 @@
          },
          "freezing_simple_worker_outfit": {
             "display_name": "Einfacher Bärenmantel für Arbeiter",
-            "description": "Ein warmer und wuscheliger Mantel. Schützt vor Frost, aber ohne zusätzlichen Nutzen."
+            "description": "Ein warmer, wuscheliger Mantel. Schützt vor Frost, aber ohne zusätzlichen Nutzen."
          },
          "cold_worker_outfit": {
             "display_name": "Lederjacke für Arbeiter",
@@ -3124,6 +3380,12 @@
             "display_name": "Wassermelone-Kappe des Farmers",
             "description": "Kann vom Farmern für einen kleinen Geschwindigkeitsgewinn verwendet werden, und es hält den Kopf frisch."
          }
+      },
+      "npc_poacher": {
+         "npc_poacher_description": {
+            "display_name": "Wilderer",
+            "description": "Ein kleiner Zeitjäger."
+         }
       }
    },
    "entities": {
@@ -3319,6 +3581,17 @@
          "ladder": {
             "display_name": "Handarbeitsleiter",
             "description": "Das effizienteste Werkzeug für den Aufstieg."
+         },
+         "wooden_animal_door_small": {
+            "display_name": "Kleine Tiertür aus Holz",
+            "description": "Eine kleine Tür für Tierheime. Kann von einem Schäfer geöffnet oder geschlossen werden."
+         },
+         "animal_door_closed": {
+            "description": "Diese Tiertür ist geschlossen und erfordert einen Schäfer um sie zu öffnen."
+         },
+         "wooden_animal_door": {
+            "display_name": "Tiertür aus Holz",
+            "description": "Eine große Tür für Tierheime. Kann von einem Schäfer geöffnet oder geschlossen werden."
          }
       },
       "crops": {
@@ -4668,7 +4941,7 @@
                "description": "Der beste Freund eines Hearthlings aus glänzenden und bearbeitetem Stein."
             },
             "statue_marble_cat": {
-               "display_name": "Kätzchenstatue aus Stein",
+               "display_name": "Kätzchenstatue aus Marmor",
                "description": "Eine schlanke und schöne Katze, die aus kaltem und glattem Marmor."
             },
             "statue_marble_shepherd_girl": {
@@ -4870,6 +5143,18 @@
          "bone_floor_candle_holder": {
             "display_name": "Schädel-Kerzenhalter für den Boden",
             "description": "Starr es nicht zu sehr an."
+         },
+         "firepit_small": {
+            "display_name": "Kleine Feuerstelle",
+            "description": "Bietet etwas Wärme und Licht."
+         },
+         "iron_brazier": {
+            "display_name": "Gusseisernes Kohlebecken",
+            "description": "Ein feines Stück, das auch für Wärme sorgt. Benötigt Kohle."
+         },
+         "iron_brazier_tall": {
+            "display_name": "Hoher gusseisernes Kohlebecken",
+            "description": "Bietet Wärme und Licht. Benötigt Kohle."
          }
       },
       "pets": {
@@ -4884,6 +5169,12 @@
          "panda": {
             "display_name": "Pandawelpe",
             "description": "Süßer Bär aus dem Osten jenseits von Pal'Mum. Es bevorzugt Gemüse, kann aber alles essen."
+         },
+         "kitten": {
+            "teddy": {
+               "display_name": "Geist von Teddy",
+               "description": "Verspielt und bezaubernd"
+            }
          }
       },
       "critters": {
@@ -7011,6 +7302,22 @@
             },
             "wild_cattle_milk_serving": {
                "display_name": "Eine Tasse Milch, von einem wilden Tieres"
+            }
+         }
+      },
+      "npc": {
+         "bonecarving": {
+            "male": {
+               "thorulf": {
+                  "display_name": "Reisender Thorulf",
+                  "description": "Ein ehemaliger Pfadfinder der Bibliothek"
+               }
+            },
+            "female": {
+               "rattley": {
+                  "display_name": "Rattley",
+                  "description": "Goblindmädchen, das das Knochenschnitzen liebt"
+               }
             }
          }
       }
