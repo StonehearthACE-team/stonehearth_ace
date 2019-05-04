@@ -1,0 +1,60 @@
+{
+   "type": "entity",
+   "mixins": [
+      "stonehearth:mixins:placed_object"
+   ],
+   "components": {
+      "render_info": {
+         "scale": 0.125,
+         "animation_table": "/stonehearth/data/rigs/entities/construction/double_door/double_door.json"
+      },
+      "effect_list": {
+         "default": "/stonehearth/data/rigs/entities/construction/double_door/effects/open.json",
+         "initial_pose_animation": "idle.json"
+      },
+      "stonehearth:fixture": {
+         "valign": "bottom",
+         "cursor": "stonehearth:cursors:create_door",
+         "margin": {
+            "left": 1,
+            "right": 1,
+            "top": 1
+         },
+         "bounds": {
+            "min": { "x": -3, "y": 0 },
+            "max": { "x": 2, "y": 5 }
+         }
+      },
+      "stonehearth:portal": {
+         "cutter": [
+            {
+               "min": { "x": -3, "y": 0 },
+               "max": { "x": 2, "y": 5 }
+            }
+         ]
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(wooden_animal_door.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.construction.wooden_animal_door.display_name)",
+         "description": "i18n(stonehearth_ace:entities.construction.wooden_animal_door.description)",
+         "icon": "file(wooden_animal_door.png)",
+         "category": "door",
+         "material_tags": [
+            "wood",
+            "portal",
+            "crafted",
+            "animal_door",
+            "door",
+            "stockpile_portal"
+         ]
+      }
+   }
+}

@@ -1,0 +1,22 @@
+{
+   "type": "recipe",
+   "effort": 22,
+   "work_units": 8,
+   "recipe_name": "i18n(stonehearth_ace:jobs.blacksmith.recipes.iron_brazier_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.blacksmith.recipes.iron_brazier_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.blacksmith.recipes.iron_brazier_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/decoration/iron_brazier/iron_brazier.png",
+   "workshop": "stonehearth:blacksmith:workbench",
+   "level_requirement": 2,
+   "ingredients": [
+      {
+         "uri": "stonehearth:refined:iron_ingot",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:decoration:iron_brazier"
+      }
+   ]
+}

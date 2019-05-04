@@ -1,0 +1,57 @@
+{
+   "mixins": [
+      "file(wooden_animal_door_ghost.json)"
+   ],
+   "type": "entity",
+   "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(wooden_animal_door_iconic.json)",
+         "ghost_form": "file(wooden_animal_door_ghost.json)",
+         "hide_placement_ui": false,
+         "placeable_on_walls": true,
+         "placeable_on_ground": true
+      },
+      "mob": {
+         "region_origin": { "x": 0, "y": 0, "z": 0.5 }
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -3, "y": 0, "z": -0.5 },
+               "max": { "x": 2, "y": 5, "z": 1.5 }
+            }
+         ],
+         "region_collision_type": "none"
+      },
+      "stonehearth_ace:transform": {}
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 8,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 1,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 6
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      },
+      "stonehearth_ace:transform_data": {
+         "transform_uri": "stonehearth_ace:portals:wooden_animal_door:closed",
+         "command": "stonehearth_ace:commands:transform:close_door",
+         "request_action": "stonehearth_ace:transform",
+         "request_action_overlay_effect": "stonehearth_ace:effects:transform_shepherd_overlay_effect",
+         "transforming_worker_effect": "fiddle",
+         "transforming_worker_effect_times": 1,
+         "worker_required_job": {
+            "stonehearth:jobs:shepherd": true
+         }
+      }
+   }
+}

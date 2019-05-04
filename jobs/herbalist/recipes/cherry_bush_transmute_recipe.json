@@ -1,0 +1,28 @@
+{
+   "type": "recipe",
+   "effort": 22,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.herbalist.recipes.cherry_bush_transmute_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.cherry_bush_transmute_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.cherry_bush_transmute_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/plants/cherry_bush/seed/cherry_bush_plant_seed.png",
+   "workshop": "stonehearth:herbalist:workbench",
+   "level_requirement": 2,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:food:cherries:cherry_basket",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:plants:cherry_bush:seed"
+      },
+      {
+         "item": "stonehearth_ace:plants:cherry_bush:seed"
+      },
+      {
+         "item": "stonehearth_ace:plants:cherry_bush:seed"
+      }
+   ]
+}

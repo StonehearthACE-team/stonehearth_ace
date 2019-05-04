@@ -1,0 +1,77 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "mob": {
+         "align_to_grid": [
+            "x"
+         ],
+         "region_origin": { "x": 0, "y": 0, "z": 0.5 }
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(wooden_animal_door_small_closed.qb)"
+            ]
+         }
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": 0 },
+               "max": { "x": 1, "y": 1, "z": 1 }
+            }
+         ]
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": 0 },
+               "max": { "x": 1, "y": 2, "z": 1 }
+            }
+         ]
+      },
+      "stonehearth_ace:transform": {}
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.construction.wooden_animal_door_small.display_name)",
+         "description": "i18n(stonehearth_ace:entities.construction.animal_door_closed.description)",
+         "icon": "file(wooden_animal_door_small.png)",
+         "category": "door",
+         "material_tags": [
+            "wood",
+            "portal",
+            "crafted",
+            "door",
+            "animal_door",
+            "stockpile_portal"
+         ]
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 4,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 4
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      },
+      "stonehearth_ace:transform_data": {
+         "transform_uri": "stonehearth_ace:portals:wooden_animal_door_small",
+         "command": "stonehearth_ace:commands:transform:open_door",
+         "request_action": "stonehearth_ace:transform",
+         "request_action_overlay_effect": "stonehearth_ace:effects:transform_shepherd_overlay_effect",
+         "transforming_worker_effect": "fiddle",
+         "transforming_worker_effect_times": 1,
+         "worker_required_job": {
+            "stonehearth:jobs:shepherd": true
+         }
+      }
+   }
+}

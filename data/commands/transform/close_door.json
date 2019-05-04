@@ -1,0 +1,12 @@
+{
+   "type": "command",
+   "name": "close_door",
+   "display_name": "i18n(stonehearth_ace:data.commands.transform.close_door.display_name)",
+   "description": "i18n(stonehearth_ace:data.commands.transform.close_door.description)",
+   "default_enabled": true,
+   "ordinal": -99,
+   "icon": "file(close_door.png)",
+   "action": "call",
+   "function": "stonehearth_ace:transform_command",
+   "args": []
+}

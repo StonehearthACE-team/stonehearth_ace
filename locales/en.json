@@ -1024,6 +1024,14 @@
             "release_fish": {
                "display_name": "Release Fish",
                "description": "Let the little creature be free! Just make sure it's in the water..."
+            },
+            "open_door": {
+               "display_name": "Open this door!",
+               "description": "Open this door and leave it, everyone will be able to go through!"
+            },
+            "close_door": {
+               "display_name": "Close this door!",
+               "description": "Close this door, preventing animals or creatures from going through."
             }
          },
          "slaughter": {
@@ -1460,6 +1468,24 @@
                "recipe_name": "Daisy Seeds (x3)",
                "description": "Separate seeds from the herbs. Daisies will spread around after being planted.",
                "flavor": "Only a skilled hand can harvest the weaker seeds, but the herbs are lost in the process."
+            },
+            "cotton_transmute_recipe": {
+               "recipe_name": "Cotton Seeds (x3)",
+               "description": "Separate seeds from the fiber",
+               "flavor": "Cotton seeds are oleaginous seeds and can be used to make oil."
+            },
+            "sunflower_transmute_recipe": {
+               "flavor": "Sunflower seeds are oleaginous seeds and can be used to make oil."
+            },
+            "dwarfsbeard_transmute_recipe": {
+               "recipe_name": "Dwarfsbeard Seeds (x3)",
+               "description": "Separate seeds from the fiber",
+               "flavor": "Only a skilled hand can harvest the weaker seeds, but the fiber is destroyed in the process."
+            },
+            "cherry_bush_transmute_recipe": {
+               "recipe_name": "Cherry Bush Seeds (x3)",
+               "description": "Separate seeds from the fruit",
+               "flavor": "Only a skilled hand can harvest the weaker seeds, but the fruit is lost in the process."
             },
             "moonbell_transmute_recipe": {
                "recipe_name": "Moonbell Seeds (x3)",
@@ -2325,6 +2351,16 @@
                "recipe_name": "Cast Iron Holder",
                "description": "Craft a fancy holder that can store up to 4 Bundles O' Firewood.",
                "flavor": ""
+            },
+            "iron_brazier_recipe": {
+               "recipe_name": "Cast Iron Brazier",
+               "description": "Create a fine piece that provides light and some warmth.",
+               "flavor": "It requires an unit of any coal to be lit"
+            },
+            "iron_brazier_tall_recipe": {
+               "recipe_name": "Tall Cast Iron Brazier",
+               "description": "Craft a fancy piece of decoration that provides light and warmth.",
+               "flavor": "It requires an unit of any coal to be lit"
             },
             "cook_spoon_copper_recipe": {
                "recipe_name": "Cook's Copper Spoon",
@@ -3555,6 +3591,17 @@
          "ladder": {
             "display_name": "Crafted Ladder",
             "description": "The most efficient tool for going upwards."
+         },
+         "wooden_animal_door_small": {
+            "display_name": "Wooden Small Animal Door",
+            "description": "A small door for animal shelters. Can be opened or closed by a shepherd."
+         },
+         "animal_door_closed": {
+            "description": "This animal door is closed and requires a Shepherd to unlock it."
+         },
+         "wooden_animal_door": {
+            "display_name": "Wooden Animal Door",
+            "description": "A large door for animal shelters. Can be opened or closed by a shepherd."
          }
       },
       "crops": {

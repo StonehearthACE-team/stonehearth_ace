@@ -1,0 +1,89 @@
+{
+   "mixins": [
+      "stonehearth:mixins:placed_object",
+      "stonehearth:mixins:destructable_double_door"
+   ],
+   "type": "entity",
+   "components": {
+      "render_info": {
+         "scale": 0.125,
+         "animation_table": "/stonehearth/data/rigs/entities/construction/double_door/double_door.json"
+      },
+      "effect_list": {
+         "default": "/stonehearth/data/rigs/entities/construction/double_door/effects/closed.json",
+         "initial_pose_animation": "closed.json"
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(wooden_animal_door.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "region_origin": { "x": 0, "y": 0, "z": 0.5 }
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -3, "y": 0, "z": -0.5 },
+               "max": { "x": 2, "y": 5, "z": 1.5 }
+            }
+         ]
+      },
+      "stonehearth_ace:transform": {},
+      "sensor_list": {
+         "sensors": {
+            "door_sensor": {
+               "type": "sensor",
+               "radius": 3
+            }
+         }
+      },
+      "stonehearth:door": {
+         "sensor": "door_sensor"
+      }
+   },
+   "entity_data": {
+      "stonehearth:entity_radius": 0.5,
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.construction.wooden_animal_door.display_name)",
+         "description": "i18n(stonehearth_ace:entities.construction.animal_door_closed.description)",
+         "icon": "file(wooden_animal_door.png)",
+         "category": "door",
+         "material_tags": [
+            "wood",
+            "portal",
+            "crafted",
+            "door",
+            "animal_door",
+            "stockpile_portal"
+         ]
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 8,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 6
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      },
+      "stonehearth_ace:transform_data": {
+         "transform_uri": "stonehearth_ace:portals:wooden_animal_door",
+         "command": "stonehearth_ace:commands:transform:open_door",
+         "request_action": "stonehearth_ace:transform",
+         "request_action_overlay_effect": "stonehearth_ace:effects:transform_shepherd_overlay_effect",
+         "transforming_worker_effect": "fiddle",
+         "transforming_worker_effect_times": 1,
+         "worker_required_job": {
+            "stonehearth:jobs:shepherd": true
+         }
+      }
+   }
+}
