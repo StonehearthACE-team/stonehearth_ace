@@ -241,7 +241,11 @@ App.StonehearthUnitFrameView.reopen({
 
    _canPromoteSelectedEntity: function() {
       var self = this;
-      return self.get('model.stonehearth:job') && self.get('model.player_id') == App.stonehearthClient.getPlayerId();
+      if (self.get('model.stonehearth:job') && self.get('model.player_id') == App.stonehearthClient.getPlayerId()) {
+         var jobConst = App.jobConstants[self.get('model.stonehearth:job.job_uri')];
+         return jobConst && jobConst.description && !jobConst.description.is_npc_job;
+      }
+      return false;
    },
 
    showPromotionTree: function() {
@@ -356,7 +360,7 @@ App.StonehearthUnitFrameView.reopen({
 
    _updateJobChangeable: function() {
       var self = this;
-      self.set('canChangeJob', self.get('model.stonehearth:job') && self.get('model.player_id') == App.stonehearthClient.getPlayerId())
+      self.set('canChangeJob', self._canPromoteSelectedEntity())
    }.observes('model.stonehearth:job'),
 
    _updateEquipment: function () {

@@ -1,6 +1,8 @@
 local PopulationFaction = require 'stonehearth.services.server.population.population_faction'
 local AcePopulationFaction = class()
 
+local rng = _radiant.math.get_default_rng()
+
 AcePopulationFaction._ace_old_activate = PopulationFaction.activate
 function AcePopulationFaction:activate()
    self:_ace_old_activate()
