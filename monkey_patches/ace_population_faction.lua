@@ -37,7 +37,7 @@ end
 
 function AcePopulationFaction:generate_random_name(gender, role_data)
    if not role_data[gender] then
-      gender = constants.population.DEFAULT_GENDER
+      gender = stonehearth.constants.population.DEFAULT_GENDER
    end
 
    if role_data[gender].given_names then
