@@ -39,6 +39,11 @@ end
 
 function EatFeedOnGround:_rethink()
    local consumption = self._entity:get_component('stonehearth:consumption')
+   if not consumption then
+      self:_mark_unready()
+      return
+   end
+
    local hunger_score = consumption:get_hunger_score()
    local min_hunger_to_eat = consumption:get_min_hunger_to_eat_now()
 
