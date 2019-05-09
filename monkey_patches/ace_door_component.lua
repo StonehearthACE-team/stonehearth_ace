@@ -26,8 +26,8 @@ local get_door_filter = function(door_entity)
    if not filter then
       local json = radiant.entities.get_json(door_entity:get_component('stonehearth:door'))
       local allow_critters = not json or json.allow_critters ~= false
-      local allow_pasture_animals = not json or json.allow_pasture_animals ~= false
       local allow_larger = not json or json.allow_larger ~= false
+      local allow_pasture_animals = json and json.allow_pasture_animals
 
       local filter_fn = function(entity)
          local entity_player_id = radiant.entities.get_player_id(entity)
