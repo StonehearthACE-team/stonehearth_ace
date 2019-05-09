@@ -18,9 +18,6 @@ function transform_lib.transform(entity, transformer, into_uri, options)
    end
 
    local location = radiant.entities.get_world_grid_location(entity)
-   if not location then
-      return nil
-   end
    local facing = radiant.entities.get_facing(entity)
 
    if type(into_uri) == 'table' then
@@ -39,8 +36,8 @@ function transform_lib.transform(entity, transformer, into_uri, options)
 
       -- Have to remove entity because it can collide with transformed form
       radiant.terrain.remove_entity(entity)
-      if not radiant.terrain.is_standable(transformed_form, location) then
-         -- If cannot transform because the transformed form will not fit in the current location, set a timer to try again.
+      if location and not radiant.terrain.is_standable(transformed_form, location) then
+         -- If cannot transform because the transformed form will not fit in the current location, just return (evolve will try again after a new timer)
          radiant.terrain.place_entity_at_exact_location(entity, location, { force_iconic = false, facing = facing })
          radiant.entities.destroy_entity(transformed_form)
          return false
@@ -75,21 +72,28 @@ function transform_lib.transform(entity, transformer, into_uri, options)
          end
       end
 
-      radiant.terrain.place_entity_at_exact_location(transformed_form, location, { force_iconic = false, facing = facing } )
-
-      local transform_effect = options.transform_effect
-      if transform_effect then
-         radiant.effects.run_effect(transformed_form, transform_effect)
+      local mob = entity:get_component('mob')
+      if mob and mob:get_ignore_gravity() then
+         transformed_form:add_component('mob'):set_ignore_gravity(true)
       end
 
-      if options.auto_harvest then
-         local renewable_resource_node = transformed_form:get_component('stonehearth:renewable_resource_node')
-         local resource_node = transformed_form:get_component('stonehearth:resource_node')
+      if location then
+         radiant.terrain.place_entity_at_exact_location(transformed_form, location, { force_iconic = false, facing = facing } )
 
-         if renewable_resource_node and renewable_resource_node:is_harvestable() then
-            renewable_resource_node:request_harvest(entity:get_player_id())
-         elseif resource_node then
-            resource_node:request_harvest(entity:get_player_id())
+         local transform_effect = options.transform_effect
+         if transform_effect then
+            radiant.effects.run_effect(transformed_form, transform_effect)
+         end
+
+         if options.auto_harvest then
+            local renewable_resource_node = transformed_form:get_component('stonehearth:renewable_resource_node')
+            local resource_node = transformed_form:get_component('stonehearth:resource_node')
+
+            if renewable_resource_node and renewable_resource_node:is_harvestable() then
+               renewable_resource_node:request_harvest(entity:get_player_id())
+            elseif resource_node then
+               resource_node:request_harvest(entity:get_player_id())
+            end
          end
       end
    end

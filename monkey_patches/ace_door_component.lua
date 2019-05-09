@@ -24,11 +24,21 @@ local get_door_filter = function(door_entity)
    local player_id = radiant.entities.get_player_id(door_entity)
    local filter = DOOR_FILTERS[player_id]
    if not filter then
+      local json = radiant.entities.get_json(self)
+      local allow_critters = not json or json.allow_critters ~= false
+      local allow_larger = not json or json.allow_larger ~= false
+
       local filter_fn = function(entity)
          local entity_player_id = radiant.entities.get_player_id(entity)
          local is_not_hostile = stonehearth.player:are_player_ids_not_hostile(player_id, entity_player_id)
 
          if not is_not_hostile then
+            return false
+         end
+
+         local mob = entity:get_component('mob')
+         local mob_type = mob and mob:get_mob_collision_type()
+         if (mob_type == _radiant.om.Mob.TINY and not allow_critters) or (mob_type == _radiant.om.Mob.HUMANOID and not allow_larger) then
             return false
          end
 
