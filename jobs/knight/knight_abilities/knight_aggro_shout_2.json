@@ -1,0 +1,39 @@
+{
+   "type": "entity",
+   "components": {
+      "stonehearth:equipment_piece": {}
+   },
+   "entity_data": {
+      "stonehearth:combat:melee_attacks": [
+         {
+            "name": "knight_shout_2",
+            "effect": "combat_horn",
+            "active_frame": 20,
+            "cooldown": 24000,
+            "priority": 3,
+            "aggro_addition": 120,
+            "damage_multiplier": 0,
+            "minimum_damage": 0,
+            "inflictable_debuffs": {
+               "infection": {
+                  "uri": "stonehearth:buffs:knight:taunted_effect",
+                  "chance": 1.0
+               }
+            },
+            "aoe_effect": {
+               "aoe_range": 20,
+               "damage_multiplier": 0,
+               "minimum_damage": 0,
+               "aggro_addition": 120,
+               "aoe_target_limit": 10,
+               "inflictable_debuffs": {
+                  "infection": {
+                     "uri": "stonehearth:buffs:knight:taunted_effect",
+                     "chance": 1.0
+                  }
+               }
+            }
+         }
+      ]
+   }
+}

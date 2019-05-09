@@ -1,0 +1,48 @@
+{
+   "type" : "effect",
+   "tracks": {
+      "animation": {
+         "type": "animation_effect",
+         "start_time": 0,
+         "animation": "emote_shout.json",
+			"speed": 1.5,
+         "loop": false,
+         "response_frame": 20
+      },
+		"hide_mainhand" : {
+         "type": "hide_bone",
+         "start_time": 0,
+         "end_time": 0,
+         "bone": "mainHand"
+      },
+		"hide_shield" : {
+         "type": "hide_bone",
+         "start_time": 0,
+         "end_time": 0,
+         "bone": "leftArm"
+      },
+		"grab_horn" : {
+         "type": "attach_item_effect",
+         "start_time": 0,
+         "end_time": 0,
+         "item": "stonehearth_ace:knight:horn",
+         "bone": "offHand"
+      },
+       "sound": {
+         "type": "sound_effect",
+         "duration": 1000,
+         "start_time": 0,
+         "min_distance": 35,
+         "falloff" : 12,
+         "volume": 60,
+         "track" : {
+            "type": "one_of",
+            "items": [
+               "stonehearth_ace:sounds:knight_horn_01",
+               "stonehearth_ace:sounds:knight_horn_02",
+               "stonehearth_ace:sounds:knight_horn_03"
+            ]    
+         }
+      }
+   }
+}
