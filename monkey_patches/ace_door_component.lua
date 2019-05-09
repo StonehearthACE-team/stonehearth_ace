@@ -26,6 +26,7 @@ local get_door_filter = function(door_entity)
    if not filter then
       local json = radiant.entities.get_json(door_entity:get_component('stonehearth:door'))
       local allow_critters = not json or json.allow_critters ~= false
+      local allow_pasture_animals = not json or json.allow_pasture_animals ~= false
       local allow_larger = not json or json.allow_larger ~= false
 
       local filter_fn = function(entity)
@@ -44,11 +45,15 @@ local get_door_filter = function(door_entity)
 
          -- also disallow pasture animals from opening doors
          -- (still allow critters to do it so they don't get stuck away from food, etc.)
-         local equipment = entity:is_valid() and entity:get_component('stonehearth:equipment')
-         local tag = equipment and equipment:has_item_type('stonehearth:pasture_equipment:tag')
-         local shepherded = tag and tag:get_component('stonehearth:shepherded_animal')
+         if not allow_pasture_animals then
+            local equipment = entity:is_valid() and entity:get_component('stonehearth:equipment')
+            local tag = equipment and equipment:has_item_type('stonehearth:pasture_equipment:tag')
+            local shepherded = tag and tag:get_component('stonehearth:shepherded_animal')
 
-         return not shepherded or shepherded:get_following()
+            return not shepherded or shepherded:get_following()
+         end
+
+         return true
       end
 
       local frc = stonehearth.ai:create_filter_result_cache(filter_fn, player_id .. ' door movement_guard_shape frc')
