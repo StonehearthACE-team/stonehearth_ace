@@ -21,7 +21,7 @@
          }
       },
       "mob": {
-         "region_origin": { "x": 0, "y": 0, "z": 0.5 }
+         "region_origin": { "x": -0.5, "y": 0, "z": 0.5 }
       },
       "region_collision_shape": {
          "region": [
@@ -29,7 +29,8 @@
                "min": { "x": -3, "y": 0, "z": -0.5 },
                "max": { "x": 2, "y": 5, "z": 1.5 }
             }
-         ]
+         ],
+         "region_collision_type": "none"
       },
       "stonehearth_ace:transform": {},
       "sensor_list": {
@@ -39,6 +40,14 @@
                "radius": 3
             }
          }
+      },
+      "stonehearth:portal": {
+         "cutter": [
+            {
+               "min": { "x": -3, "y": 0 },
+               "max": { "x": 2, "y": 5 }
+            }
+         ]
       },
       "stonehearth:door": {
          "sensor": "door_sensor"

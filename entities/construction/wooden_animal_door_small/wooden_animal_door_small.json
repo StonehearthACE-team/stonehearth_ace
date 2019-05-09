@@ -20,15 +20,29 @@
       "region_collision_shape": {
          "region": [
             {
-               "min": { "x": -1, "y": 0, "z": 0 },
+               "min": { "x": -1, "y": -1, "z": 0 },
                "max": { "x": 1, "y": 2, "z": 1 }
             }
          ],
          "region_collision_type": "none"
       },
-      "stonehearth_ace:transform": {}
+      "stonehearth_ace:transform": {},
+      "stonehearth:door": {
+         "allow_larger": false,
+         "allow_critters": true,
+         "sensor": "door_sensor"
+      },
+      "sensor_list": {
+         "sensors": {
+            "door_sensor": {
+               "type": "sensor",
+               "radius": 1
+            }
+         }
+      }
    },
    "entity_data": {
+      "stonehearth:entity_radius": 0.5,
       "stonehearth:net_worth": {
          "value_in_gold": 4,
          "rarity": "common",

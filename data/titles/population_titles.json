@@ -2,57 +2,45 @@
    "none": {
       "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.none.description)"
    },
-   "goblin_killer": {
-      "ordinal": 1,
-      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.goblin_killer.display_name)",
-      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.goblin_killer.description)",
+	"slayer": {
+      "ordinal": 0,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.slayer.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.slayer.description)",
       "requirement": {
          "statistics": {
-            "category": "kills",
-            "name": "goblins"
+            "category": "totals",
+            "name": "kills"
          }
       },
       "ranks": [
          {
             "rank": 1,
-            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.goblin_killer.1_display_name)",
-            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.goblin_killer.1_description)",
-            "required_value": 1
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.slayer.40_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.slayer.40_description)",
+            "required_value": 40
          },
          {
             "rank": 2,
-            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.goblin_killer.5_display_name)",
-            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.goblin_killer.5_description)",
-            "required_value": 5
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.slayer.100_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.slayer.100_description)",
+            "required_value": 100
          },
          {
             "rank": 3,
-            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.goblin_killer.10_display_name)",
-            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.goblin_killer.10_description)",
-            "required_value": 10
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.slayer.250_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.slayer.250_description)",
+            "required_value": 250
          },
          {
             "rank": 4,
-            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.goblin_killer.20_display_name)",
-            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.goblin_killer.20_description)",
-            "required_value": 20
-         },
-         {
-            "rank": 5,
-            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.goblin_killer.50_display_name)",
-            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.goblin_killer.50_description)",
-            "required_value": 50
-         },
-         {
-            "rank": 6,
-            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.goblin_killer.100_display_name)",
-            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.goblin_killer.100_description)",
-            "required_value": 100
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.slayer.600_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.slayer.600_description)",
+            "required_value": 600
          }
       ]
    },
-   "defender": {
-      "ordinal": 2,
+	"defender": {
+      "ordinal": 0.1,
       "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.defender.display_name)",
       "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.defender.description)",
       "requirement": {
@@ -64,9 +52,9 @@
       "ranks": [
          {
             "rank": 1,
-            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.defender.10_display_name)",
-            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.defender.10_description)",
-            "required_value": 10
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.defender.25_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.defender.25_description)",
+            "required_value": 25
          },
          {
             "rank": 2,
@@ -91,6 +79,288 @@
             "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.defender.1000_display_name)",
             "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.defender.1000_description)",
             "required_value": 1000
+         }
+      ]
+   },
+   "goblin_killer": {
+      "ordinal": 1,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.goblin_killer.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.goblin_killer.description)",
+      "requirement": {
+         "statistics": {
+            "category": "kills",
+            "name": "goblins"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.goblin_killer.5_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.goblin_killer.5_description)",
+            "required_value": 5
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.goblin_killer.10_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.goblin_killer.10_description)",
+            "required_value": 10
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.goblin_killer.25_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.goblin_killer.25_description)",
+            "required_value": 25
+         },
+         {
+            "rank": 4,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.goblin_killer.50_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.goblin_killer.50_description)",
+            "required_value": 50
+         },
+         {
+            "rank": 5,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.goblin_killer.75_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.goblin_killer.75_description)",
+            "required_value": 75
+         },
+         {
+            "rank": 6,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.goblin_killer.100_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.goblin_killer.100_description)",
+            "required_value": 100
+         }
+      ]
+   },
+	"orc_killer": {
+      "ordinal": 2,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.orc_killer.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.orc_killer.description)",
+      "requirement": {
+         "statistics": {
+            "category": "kills",
+            "name": "orcs"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.orc_killer.5_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.orc_killer.5_description)",
+            "required_value": 5
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.orc_killer.10_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.orc_killer.10_description)",
+            "required_value": 10
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.orc_killer.25_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.orc_killer.25_description)",
+            "required_value": 25
+         },
+         {
+            "rank": 4,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.orc_killer.50_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.orc_killer.50_description)",
+            "required_value": 50
+         },
+         {
+            "rank": 5,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.orc_killer.75_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.orc_killer.75_description)",
+            "required_value": 75
+         },
+         {
+            "rank": 6,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.orc_killer.100_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.orc_killer.100_description)",
+            "required_value": 100
+         }
+      ]
+   },
+	"undead_killer": {
+      "ordinal": 3,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.undead_killer.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.undead_killer.description)",
+      "requirement": {
+         "statistics": {
+            "category": "kills",
+            "name": "undead"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.undead_killer.3_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.undead_killer.3_description)",
+            "required_value": 3
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.undead_killer.6_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.undead_killer.6_description)",
+            "required_value": 6
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.undead_killer.15_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.undead_killer.15_description)",
+            "required_value": 15
+         },
+         {
+            "rank": 4,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.undead_killer.25_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.undead_killer.25_description)",
+            "required_value": 25
+         },
+         {
+            "rank": 5,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.undead_killer.50_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.undead_killer.50_description)",
+            "required_value": 50
+         }
+      ]
+   },
+	"forest_killer": {
+      "ordinal": 4,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.forest_killer.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.forest_killer.description)",
+      "requirement": {
+         "statistics": {
+            "category": "kills",
+            "name": "forest"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.forest_killer.5_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.forest_killer.5_description)",
+            "required_value": 5
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.forest_killer.10_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.forest_killer.10_description)",
+            "required_value": 10
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.forest_killer.25_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.forest_killer.25_description)",
+            "required_value": 25
+         },
+         {
+            "rank": 4,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.forest_killer.50_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.forest_killer.50_description)",
+            "required_value": 50
+         },
+         {
+            "rank": 5,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.forest_killer.75_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.forest_killer.75_description)",
+            "required_value": 75
+         },
+         {
+            "rank": 6,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.forest_killer.100_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.forest_killer.100_description)",
+            "required_value": 100
+         }
+      ]
+   },
+	"titan_killer": {
+      "ordinal": 5,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.titan_killer.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.titan_killer.description)",
+      "requirement": {
+         "statistics": {
+            "category": "kills",
+            "name": "titans"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.titan_killer.1_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.titan_killer.1_description)",
+            "required_value": 1
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.titan_killer.5_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.titan_killer.5_description)",
+            "required_value": 5
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.titan_killer.10_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.titan_killer.10_description)",
+            "required_value": 10
+         },
+         {
+            "rank": 4,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.titan_killer.15_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.titan_killer.15_description)",
+            "required_value": 15
+         },
+         {
+            "rank": 5,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.titan_killer.25_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.titan_killer.25_description)",
+            "required_value": 25
+         }
+      ]
+   },
+	"hunter": {
+      "ordinal": 9,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.hunter.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.hunter.description)",
+      "requirement": {
+         "statistics": {
+            "category": "kills",
+            "name": "animals"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.hunter.10_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.hunter.10_description)",
+            "required_value": 10
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.hunter.30_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.hunter.30_description)",
+            "required_value": 30
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.hunter.75_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.hunter.75_description)",
+            "required_value": 75
+         },
+         {
+            "rank": 4,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.hunter.150_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.hunter.150_description)",
+            "required_value": 150
+         },
+         {
+            "rank": 5,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.hunter.300_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.hunter.300_description)",
+            "required_value": 300
+         },
+         {
+            "rank": 6,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.hunter.600_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.hunter.600_description)",
+            "required_value": 600
          }
       ]
    },
@@ -184,6 +454,12 @@
             "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.master_crafter.10_display_name)",
             "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.master_crafter.10_description)",
             "required_value": 10
+         },
+			{
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.master_crafter.25_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.master_crafter.25_description)",
+            "required_value": 25
          }
       ]
    },
@@ -229,23 +505,41 @@
          }
       },
       "ranks": [
-         {
+			{
             "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.incapacitated.1_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.incapacitated.1_description)",
+            "required_value": 1
+         },
+         {
+            "rank": 2,
             "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.incapacitated.2_display_name)",
             "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.incapacitated.2_description)",
             "required_value": 2
          },
          {
-            "rank": 2,
-            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.incapacitated.5_display_name)",
-            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.incapacitated.5_description)",
-            "required_value": 5
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.incapacitated.4_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.incapacitated.4_description)",
+            "required_value": 4
+         },
+			{
+            "rank": 4,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.incapacitated.8_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.incapacitated.8_description)",
+            "required_value": 8
          },
          {
-            "rank": 3,
-            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.incapacitated.10_display_name)",
-            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.incapacitated.10_description)",
-            "required_value": 10
+            "rank": 5,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.incapacitated.12_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.incapacitated.12_description)",
+            "required_value": 12
+         },
+			{
+            "rank": 6,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.incapacitated.20_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.incapacitated.20_description)",
+            "required_value": 20
          }
       ]
    }

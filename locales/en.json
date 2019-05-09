@@ -271,6 +271,9 @@
                         }
                      }
                   }
+               },
+               "returning_collector_encounter": {
+                  "title": "An explorer approaches your town."
                }
             },
             "town_progression": {
@@ -810,46 +813,222 @@
                "none": {
                   "description": "No title necessary."
                },
+               "slayer": {
+                  "display_name": "Slayer",
+                  "description": "Gained by killing any creature.",
+                  "40_display_name": " the Ravager",
+                  "40_description": "They defeated 40 foes!",
+                  "100_display_name": " the Butcherer",
+                  "100_description": "They defeated 100 foes! Was that really necessary?",
+                  "250_display_name": ", Nemesis",
+                  "250_description": "They defeated 250 foes! They can't be stopped!",
+                  "600_display_name": " the Soul Reaper",
+                  "600_description": "They defeated 600 foes! That has to be a war crime or something..."
+               },
+               "slayer_item": {
+                  "display_name": "Slayer",
+                  "description": "Gained by killing any creature.",
+                  "40_display_name": ", Bloodletter",
+                  "40_description": "It defeated 40 foes!",
+                  "100_display_name": ", Terrorizer",
+                  "100_description": "It defeated 100 foes! Probably needs some polishing.",
+                  "250_display_name": " of Death's Touch",
+                  "250_description": "It defeated 250 foes! This should be enough.",
+                  "600_display_name": ", Soul-Eater",
+                  "600_description": "It defeated 600 foes! It hungers!"
+               },
                "goblin_killer": {
                   "display_name": "Goblin Killer",
                   "description": "Gained by killing goblins.",
-                  "1_display_name": " the Goblin Killer",
-                  "1_description": "They killed a goblin!",
-                  "5_display_name": " the Goblin Slayer",
-                  "5_description": "They killed 5 goblins! There they went, killing again!",
-                  "10_display_name": " the Goblin Decimator",
-                  "10_description": "They killed 10 goblins! They're really good at it!",
-                  "20_display_name": ", Bane of Goblins",
-                  "20_description": "They killed 20 goblins! That's a lot!",
-                  "50_display_name": ", Destroyer of Goblins",
-                  "50_description": "They killed 50 goblins! Where are they finding all these goblins?!",
+                  "5_display_name": " the Goblin Killer",
+                  "5_description": "They killed 5 goblins!",
+                  "10_display_name": " the Goblin Crusher",
+                  "10_description": "They killed 10 goblins! There they went, killing again!",
+                  "25_display_name": " the Goblin Decimator",
+                  "25_description": "They killed 25 goblins! They're really good at it!",
+                  "50_display_name": ", Bane of Goblins",
+                  "50_description": "They killed 50 goblins! That's a lot!",
+                  "75_display_name": ", Goblin Slayer",
+                  "75_description": "They killed 75 goblins! Where are they finding all these goblins?!",
                   "100_display_name": ", Goblin-Eater",
                   "100_description": "They killed 100 goblins! Perhaps they should be in therapy, reexamining their priorities."
                },
                "goblin_killer_item": {
                   "display_name": "Goblin Killer",
                   "description": "Gained by killing goblins.",
-                  "1_display_name": " the Goblin Killer",
-                  "1_description": "It killed a goblin!",
-                  "5_display_name": " the Goblin Slayer",
-                  "5_description": "It killed 5 goblins! There it went, killing again!",
-                  "10_display_name": " the Goblin Decimator",
-                  "10_description": "It killed 10 goblins! It's really good at it!",
-                  "20_display_name": ", Bane of Goblins",
-                  "20_description": "It killed 20 goblins! That's a lot!",
-                  "50_display_name": ", Destroyer of Goblins",
-                  "50_description": "It killed 50 goblins! It's unstoppable, at least by goblins!",
-                  "100_display_name": ", Goblin-Eater",
-                  "100_description": "It killed 100 goblins! Has its bloodlust finally been sated?"
+                  "5_display_name": ", Goblin-Foe",
+                  "5_description": "It killed 5 goblins!",
+                  "10_display_name": " the Goblin Slasher",
+                  "10_description": "It killed 10 goblins! Will it stop?",
+                  "25_display_name": " the Goblin Destroyer",
+                  "25_description": "It killed 25 goblins! It's really good at it!",
+                  "50_display_name": ", Goblin-Bane",
+                  "50_description": "It killed 50 goblins! That's a lot!",
+                  "75_display_name": ", Goblin-Hewer",
+                  "75_description": "It killed 75 goblins! It's unstoppable, at least by goblins!",
+                  "100_display_name": ", Vanquisher of Goblins",
+                  "100_description": "It killed 100 goblins! Has its blood lust finally been sated?"
+               },
+               "orc_killer": {
+                  "display_name": "Orcish Killer",
+                  "description": "Gained by killing followers of the Red Kiln.",
+                  "5_display_name": ", Red Kiln's Foe",
+                  "5_description": "They killed 5 followers of the Red Kiln!",
+                  "10_display_name": " the Orc Slayer",
+                  "10_description": "They killed 10 followers of the Red Kiln! What a challenger!",
+                  "25_display_name": ", Bane of the Four Colors",
+                  "25_description": "They killed 25 followers of the Red Kiln! That requires some skills!",
+                  "50_display_name": ", Red Kiln Decimator",
+                  "50_description": "They killed 50 followers of the Red Kiln! Will they ever stop?",
+                  "75_display_name": ", Khanate-Ender",
+                  "75_description": "They killed 75 followers of the Red Kiln! Surely the orcs are convinced by now?",
+                  "100_display_name": ", Cid's Retribution",
+                  "100_description": "They killed 100 followers of the Red Kiln! They are worthy of this land!"
+               },
+               "orc_killer_item": {
+                  "display_name": "Orcish Killer",
+                  "description": "Gained by killing followers of the Red Kiln.",
+                  "5_display_name": ", Orc-Biter",
+                  "5_description": "It killed 5 followers of the Red Kiln!",
+                  "10_display_name": ", Kiln-Hewer",
+                  "10_description": "It killed 10 followers of the Red Kiln! A fine weapon!",
+                  "25_display_name": " the Red Death",
+                  "25_description": "It killed 25 followers of the Red Kiln! That's something!",
+                  "50_display_name": ", Usurper of Khans",
+                  "50_description": "It killed 50 followers of the Red Kiln! It strikes fear in their hearts!",
+                  "75_display_name": " of No Color",
+                  "75_description": "It killed 75 followers of the Red Kiln! Nothing can stop it!",
+                  "100_display_name": ", Hand of Cid",
+                  "100_description": "It killed 100 followers of the Red Kiln! This land is finally safe."
+               },
+               "undead_killer": {
+                  "display_name": "Undead Killer",
+                  "description": "Gained by killing the undead.",
+                  "3_display_name": " the Undead Hunter",
+                  "3_description": "They killed 3 undead!",
+                  "6_display_name": " the Gravekeeper",
+                  "6_description": "They killed 6 undead! Is 'killed' even the proper word?",
+                  "15_display_name": " the Undead-Scourge",
+                  "15_description": "They killed 15 undead! That's scary!",
+                  "25_display_name": ", Hope of the Living",
+                  "25_description": "They killed 25 undead! It feels safer already.",
+                  "50_display_name": " the Lightbringer",
+                  "50_description": "They killed 50 undead! The long night is over."
+               },
+               "undead_killer_item": {
+                  "display_name": "Undead Killer",
+                  "description": "Gained by killing the undead.",
+                  "3_display_name": ", Hope's Candle",
+                  "3_description": "It killed 3 undead!",
+                  "6_display_name": " the Cleanser",
+                  "6_description": "It killed 6 undead! What a blessing!",
+                  "15_display_name": ", Purifier",
+                  "15_description": "It killed 15 undead! Should be safe to go out tonight.",
+                  "25_display_name": " the Divine Intervener",
+                  "25_description": "It killed 25 undead! It definitely did its part!",
+                  "50_display_name": ", Dawnbreaker",
+                  "50_description": "It killed 50 undead! A beacon of hope!"
+               },
+               "forest_killer": {
+                  "display_name": "Wilderness Killer",
+                  "description": "Gained by killing minions of the Wilds.",
+                  "5_display_name": ", Log-Splinter",
+                  "5_description": "They killed 5 minions of the Wilds!",
+                  "10_display_name": " the Chopper",
+                  "10_description": "They killed 10 minions of the Wilds! Entlings, beware!",
+                  "25_display_name": " the Fur-Slayer",
+                  "25_description": "They killed 25 minions of the Wilds! Where's the howling now?",
+                  "50_display_name": ", Silencer of Roars",
+                  "50_description": "They killed 50 minions of the Wilds! It feels calmer out there...",
+                  "75_display_name": " the Untamed",
+                  "75_description": "They killed 75 minions of the Wilds! Deforestation is a crime!",
+                  "100_display_name": " of the Wild Hunt",
+                  "100_description": "They killed 100 minions of the Wilds! Shouldn't nature be your friend?"
+               },
+               "forest_killer_item": {
+                  "display_name": "Wilderness Killer",
+                  "description": "Gained by killing minions of the Wilds.",
+                  "5_display_name": " of the Forester",
+                  "5_description": "It killed 5 minions of the Wilds!",
+                  "10_display_name": ", Root-Cleaver",
+                  "10_description": "It killed 10 minions of the Wilds! Firewood, anyone?",
+                  "25_display_name": ", Sap-Drinker",
+                  "25_description": "It killed 25 minions of the Wilds! A ranger would be proud!",
+                  "50_display_name": ", Bane of Wolves",
+                  "50_description": "It killed 50 minions of the Wilds! What did nature do to it?",
+                  "75_display_name": ", Green-Ender",
+                  "75_description": "It killed 75 minions of the Wilds! It's time to stop, perhaps?",
+                  "100_display_name": " of the Wastelands",
+                  "100_description": "It killed 100 minions of the Wilds! Nature will never forget this!"
+               },
+               "titan_killer": {
+                  "display_name": "Titanstorm Killer",
+                  "description": "Gained by killing corrupted beings.",
+                  "1_display_name": " the Shadow Hunter",
+                  "1_description": "They killed 1 corrupted being!",
+                  "5_display_name": ", Challenger of Darkness",
+                  "5_description": "They killed 5 corrupted beings! Such bravery!",
+                  "10_display_name": " the Incorruptible",
+                  "10_description": "They killed 10 corrupted beings! They stood against darkness!",
+                  "15_display_name": " the Nameless-Slayer",
+                  "15_description": "They killed 15 corrupted beings! Made a difference during the last battle.",
+                  "25_display_name": ", Vanquisher of the Void",
+                  "25_description": "They killed 25 corrupted beings! They tipped the odds of light against darkness!"
+               },
+               "titan_killer_item": {
+                  "display_name": "Titanstorm Killer",
+                  "description": "Gained by killing corrupted beings.",
+                  "1_display_name": " of Light",
+                  "1_description": "It killed 1 corrupted being!",
+                  "5_display_name": " of the Fallen Shroud",
+                  "5_description": "It killed 5 corrupted beings! Incredible!",
+                  "10_display_name": ", Mistbreaker",
+                  "10_description": "It killed 10 corrupted beings! Worthy of a song!",
+                  "15_display_name": ", Void-Ripper",
+                  "15_description": "It killed 15 corrupted beings! A weapon of legend!",
+                  "25_display_name": ", Guardian of Worlds",
+                  "25_description": "It killed 25 corrupted beings! This world shall remember its name."
+               },
+               "hunter": {
+                  "display_name": "Great Hunter",
+                  "description": "Gained by hunting animals.",
+                  "10_display_name": ", Poacher",
+                  "10_description": "They hunted 10 wild animals!",
+                  "30_display_name": ", Accomplished Hunter",
+                  "30_description": "They hunted 30 wild animals! Poor animals...",
+                  "75_display_name": ", Master Hunter",
+                  "75_description": "They hunted 75 wild animals! That's food for months!",
+                  "150_display_name": ", Grandmaster Hunter",
+                  "150_description": "They hunted 150 wild animals! Is it an obsession?",
+                  "300_display_name": ", Legendary Hunter",
+                  "300_description": "They hunted 300 wild animals! Someone really loves barbecue!",
+                  "600_display_name": ", Truest Arrow",
+                  "600_description": "They hunted 600 wild animals! Be careful to not cause an extinction!"
+               },
+               "hunter_item": {
+                  "display_name": "Great Hunter",
+                  "description": "Gained by hunting animals.",
+                  "10_display_name": ", Companion",
+                  "10_description": "It hunted 10 wild animals!",
+                  "30_display_name": " the Prey-Catcher",
+                  "30_description": "It hunted 30 wild animals! It has just started!",
+                  "75_display_name": " of the Huntsman",
+                  "75_description": "It hunted 75 wild animals! A true hunting weapon!",
+                  "150_display_name": ", Pathfinder",
+                  "150_description": "It hunted 150 wild animals! No forest is safe...",
+                  "300_display_name": ", Eagle-Eye",
+                  "300_description": "It hunted 300 wild animals! That's a lot of jerky.",
+                  "600_display_name": ", Predator",
+                  "600_description": "It hunted 600 wild animals! Vegetarians must hate it!"
                },
                "defender": {
                   "display_name": "Defender",
                   "description": "Gained by getting kill assists (being involved in combat directly with or near killed enemies).",
-                  "10_display_name": ", Defender",
-                  "10_description": "They defended the town from 10 enemies!",
+                  "25_display_name": ", Town Watcher",
+                  "25_description": "They defended the town from 25 enemies!",
                   "50_display_name": ", Great Protector",
                   "50_description": "They defended the town from 50 enemies!",
-                  "100_display_name": ", Town Hero",
+                  "100_display_name": ", Local Hero",
                   "100_description": "They defended the town from 100 enemies! Is it finally safe?",
                   "500_display_name": " the Long Floating Hand of the Law",
                   "500_description": "They defended the town from 500 enemies! What an incredibly adversarial town!",
@@ -870,12 +1049,12 @@
                },
                "excellent_crafter": {
                   "display_name": "Excellent Crafter",
-                  "description": "Gained by crafting items of excellent quality (fine aren't good enough, and masterwork are tracked separately).",
+                  "description": "Gained by crafting items of excellent quality.",
                   "10_display_name": ", Excellent Crafter",
                   "10_description": "They crafted 10 excellent quality items!",
                   "25_display_name": ", Extraordinary Crafter",
                   "25_description": "They crafted 25 excellent quality items!",
-                  "100_display_name": " the Emperor of Excellence",
+                  "100_display_name": " the Seeker of Excellence",
                   "100_description": "They crafted 100 excellent quality items!"
                },
                "master_crafter": {
@@ -884,27 +1063,35 @@
                   "1_display_name": ", Master Crafter",
                   "1_description": "They crafted a masterwork quality item! Amazing!",
                   "10_display_name": " the Master of Quality",
-                  "10_description": "They crafted 10 masterwork quality items! Incredible!"
+                  "10_description": "They crafted 10 masterwork quality items! Incredible!",
+                  "25_display_name": " the Legend of Crafting",
+                  "25_description": "They crafted 25 masterwork quality items! Who knew that was even possible?"
                },
                "starving": {
-                  "display_name": "Starving",
+                  "display_name": "Starvation",
                   "description": "Gained by spending a lot of time being very hungry.",
                   "1_display_name": " the Hungry",
                   "1_description": "They've spent 4 hours starving!",
                   "2_display_name": " the Famished",
                   "2_description": "They've starved for 2 days and are still standing!",
                   "3_display_name": " of the Unbreakable Fast",
-                  "3_description": "They've starved for 10 days! Perhaps food gathering should prioritized slightly more."
+                  "3_description": "They've starved for 10 days! Perhaps food gathering should be slightly more prioritized."
                },
                "incapacitated": {
-                  "display_name": "Incapacitated",
+                  "display_name": "Incapacitation",
                   "description": "Gained by becoming incapacitated multiple times.",
-                  "1_display_name": " the Prone",
-                  "1_description": "They've been knocked down and gotten up and knocked back down again.",
-                  "2_display_name": " the Scarred",
-                  "2_description": "They've been incapacitated 5 times! Is it even possible to kill them?",
-                  "3_display_name": " the Nearly-Headless",
-                  "3_description": "They've been incapacitated 10 times! Will they ever learn to avoid life-threatening situations?"
+                  "1_display_name": ", Scathed",
+                  "1_description": "They have walked the edge of life and death! Exciting!",
+                  "2_display_name": " the Prone",
+                  "2_description": "They've been knocked down and gotten up just to be knocked back down again...",
+                  "4_display_name": " the Scarred",
+                  "4_description": "They've been incapacitated 4 times! Is it even possible to kill them?",
+                  "8_display_name": " the Nearly-Headless",
+                  "8_description": "They've been incapacitated 8 times! Will they ever learn to avoid life-threatening situations?",
+                  "12_display_name": " the Undying",
+                  "12_description": "They've been incapacitated 12 times! For how long can they trick death like this?",
+                  "20_display_name": " the Immortal",
+                  "20_description": "They've been incapacitated 20 times! It is unbelievable how lucky (or foolish) they are."
                }
             }
          }
@@ -2051,12 +2238,12 @@
             "pasture_bed_small_recipe": {
                "recipe_name": "Small Pasture Bedding",
                "description": "Small pasture animals will go to these during the night or bad weather, place them under shelter.",
-               "flavor": "Small animals include poyos and rabbits"
+               "flavor": "Must be placed inside a pasture. Small animals include poyos and rabbits"
             },
             "pasture_bed_recipe": {
                "recipe_name": "Pasture Bedding",
                "description": "Large pasture animals will go to these during the night or bad weather, place them under shelter.",
-               "flavor": "Large animals include sheep, ostriches and moo-moos"
+               "flavor": "Must be placed inside a pasture. Large animals include sheep, ostriches and moo-moos"
             }
          },
          "potter_description": {
@@ -2730,7 +2917,7 @@
          },
          "freezing_simple_worker_outfit": {
             "display_name": "Simple Worker Bear Coat",
-            "description": "A warm, fuzzy cloak. Protects from freezing weather but with no added benefits."
+            "description": "A warm, fuzzy cloak. Protects from freezing weather with no added benefits."
          },
          "cold_worker_outfit": {
             "display_name": "Worker Leather Jacket",
@@ -4666,11 +4853,11 @@
          },
          "pasture_bed_small": {
             "display_name": "Small Pasture Bedding",
-            "description": "Small pasture animals will look for these during the night or bad weather."
+            "description": "Pasture animals will rest during the night or bad weather. Must be placed in a pasture."
          },
          "pasture_bed": {
             "display_name": "Pasture Bedding",
-            "description": "Large pasture animals will look for these during the night or bad weather."
+            "description": "Pasture animals will rest during the night or bad weather. Must be placed in a pasture."
          },
          "banquet_table_highland_pine": {
             "display_name": "Highland Pine Banquet Table",
@@ -5329,6 +5516,12 @@
                "display_name": "Wild Calf",
                "description": "A cute little wild moo-moo."
             }
+         },
+         "boar": {
+            "display_name": "Wild Boar"
+         },
+         "boar_pet": {
+            "display_name": "Boar"
          }
       },
       "food": {
