@@ -203,7 +203,7 @@ $(top).on('stonehearthReady', function() {
             var self = this;
             var productCatalogData = App.catalog.getCatalogData(recipe.product_uri);
       
-            if (productCatalogData && (productCatalogData.equipment_required_level || productCatalogData.equipment_roles)) {
+            if (productCatalogData && (productCatalogData.equipment_required_level || productCatalogData.equipment_roles || productCatalogData.food_buffs)) {
                self.$('.detailsView').find('.tooltipstered').tooltipster('destroy');
                if (productCatalogData.equipment_roles) {
                   var classArray = stonehearth_ace.findRelevantClassesArray(productCatalogData.equipment_roles);
@@ -220,6 +220,14 @@ $(top).on('stonehearthReady', function() {
                   equipmentTypes = stonehearth_ace.getEquipmentTypesArray(productCatalogData.equipment_types);
                }
                self.set('equipmentTypes', equipmentTypes);
+
+               var foodBuffs = [];
+               radiant.each(productCatalogData.food_buffs, function (_, buff) {
+                  if (!buff.invisible_to_player && !buff.invisible_on_crafting) {
+                     foodBuffs.push(buff);
+                  }
+               });
+               self.set('foodBuffs', foodBuffs);
 
                var injectedBuffs = [];
                radiant.each(productCatalogData.injected_buffs, function (_, buff) {
@@ -266,6 +274,14 @@ $(top).on('stonehearthReady', function() {
 
          _createBuffTooltips: function () {
             var self = this;
+
+            var foodBuffs = self.get('foodBuffs');
+            radiant.each(foodBuffs, function(_, buff) {
+               var div = self.$('[data-id="' + buff.uri + '"]');
+               if (div.length > 0) {
+                  App.guiHelper.addTooltip(div, buff.description, i18n.t('stonehearth_ace:ui.game.unit_frame.food_buff') + i18n.t(buff.display_name));
+               }
+            });
 
             var injectedBuffs = self.get('injectedBuffs');
             radiant.each(injectedBuffs, function(_, buff) {

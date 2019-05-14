@@ -30,6 +30,13 @@ function ace_catalog_lib._update_catalog_data(catalog_data, uri, json)
    if json and json.entity_data and json.entity_data['stonehearth:buffs'] and json.entity_data['stonehearth:buffs'].inflictable_debuffs then
       catalog_data.inflictable_debuffs = ace_catalog_lib.get_buffs(json.entity_data['stonehearth:buffs'].inflictable_debuffs)
    end
+
+   if json and json.entity_data and json.entity_data['stonehearth:food_container'] and json.entity_data['stonehearth:food_container'].food then
+      local food_json = radiant.resources.load_json(json.entity_data['stonehearth:food_container'].food)
+      if food_json and food_json.entity_data and food_json.entity_data['stonehearth:food'] and food_json.entity_data['stonehearth:food'].applied_buffs then
+         catalog_data.food_buffs = ace_catalog_lib.get_buffs(food_json.entity_data['stonehearth:food'].applied_buffs)
+      end
+   end
 end
 
 function ace_catalog_lib.get_equipment_types(json)
