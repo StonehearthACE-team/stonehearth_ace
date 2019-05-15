@@ -125,15 +125,24 @@
                {{/each}}
             </div>
          </div>
+         <div id="foodBuffs">
+            {{#each view.foodBuffs}}
+               {{#if icon}}
+               <div {{bind-attr data-id="uri"}} {{bind-attr class="axis"}}>
+                  <img class="buffImg" {{bind-attr src="icon"}}> </br>
+               </div>
+               {{/if}}
+            {{/each}}
+         </div>
          <div id="injectedBuffs">
-               {{#each view.injectedBuffs}}
-                  {{#if icon}}
-                  <div {{bind-attr data-id="uri"}} {{bind-attr class="axis"}}>
-                     <img class="buffImg" {{bind-attr src="icon"}}> </br>
-                  </div>
-                  {{/if}}
-               {{/each}}
-            </div>
+            {{#each view.injectedBuffs}}
+               {{#if icon}}
+               <div {{bind-attr data-id="uri"}} {{bind-attr class="axis"}}>
+                  <img class="buffImg" {{bind-attr src="icon"}}> </br>
+               </div>
+               {{/if}}
+            {{/each}}
+         </div>
          <div id="inflictableDebuffs">
             {{#each view.inflictableDebuffs}}
                {{#if icon}}
