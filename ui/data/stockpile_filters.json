@@ -82,8 +82,14 @@
                "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/seeds.png",
                "filter": "stockpile_plant seed"
             },
-            "fish": {
+            "seeds_consumable": {
                "ordinal": 4,
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_seeds_consumable)",
+               "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/consumables_other.png",
+               "filter": "stockpile_seeds_consumable"
+            },
+            "fish": {
+               "ordinal": 5,
                "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_fish)",
                "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/fish.png",
                "filter": "stockpile_fish"
@@ -104,7 +110,8 @@
             "consumables": {
                "ordinal": 5,
                "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_consumables)",
-               "filter": "healing_item"
+               "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/healing_item.png",
+               "filter": "stockpile_healing_item"
             },
             "fertilizer": {
                "ordinal": 5.5,
@@ -115,7 +122,7 @@
             "consumables_other": {
                "ordinal": 6,
                "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_consumables_other)",
-               "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/consumables_other.png",
+               "icon": "/stonehearth/ui/game/modes/zones_mode/stockpile/images/taxonomy/healing_items.png",
                "filter": "stockpile_consumable"
             },
             "bulk_resources": {

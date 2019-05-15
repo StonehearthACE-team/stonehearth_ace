@@ -590,6 +590,9 @@
                   "display_name": "Winter",
                   "description": "Winter in the Arctic is a season of hardship, lasting seven months. Weather is severe, with biting winds and unforgiving blizzards making farming exceedingly difficult. Even venturing outside without a winter outfit can end tragically.<ul><li>Daytime sunlight levels are inadequate.</li><li>Very dry season.</li></ul>"
                }
+            },
+            "random_location_names": {
+               "000": "Valkyrie Woods"
             }
          }
       },
@@ -7941,7 +7944,8 @@
                   "tooltip_fiber": "Fiber",
                   "tooltip_algae": "Algae",
                   "tooltip_essences": "Essences",
-                  "tooltip_fertilizer": "Fertilizer"
+                  "tooltip_fertilizer": "Fertilizer",
+                  "tooltip_seeds_consumable": "Farming Seeds"
                }
             },
             "pasture": {
@@ -8036,6 +8040,12 @@
          "promotion_tree": {
             "requirements": {
                "one_of_job": "One of:"
+            }
+         },
+         "build_mode2": {
+            "tooltips": {
+               "clay_resource": "Raw Clay",
+               "clay_bricks_resource": "Clay Bricks"
             }
          }
       },
