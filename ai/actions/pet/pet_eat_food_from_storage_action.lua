@@ -11,7 +11,7 @@ PetEatFoodFromStorage.priority = 0
 local function make_food_filter(owner_id, food_preferences)
    return stonehearth.ai:filter_from_key('food_filter', tostring(food_preferences) .. ":" .. owner_id,
 		function(food)
-         if not radiant.entities.is_material(food, 'food') then
+         if not radiant.entities.is_material(food, 'food') and not radiant.entities.is_material(food, 'pet_food') then
             return false
          end
          if owner_id ~= '' and radiant.entities.get_player_id(food) ~= owner_id then
@@ -39,7 +39,13 @@ function PetEatFoodFromStorage:start_thinking(ai, entity, args)
 	local food_filter_fn = make_food_filter(owner_id, diet_data and diet_data.food_material or '') 
    ai:set_think_output( { 
 		food_filter_fn = food_filter_fn,
-		food_rating_fn = function() return 1 end
+      food_rating_fn = function(item)
+         if radiant.entities.is_material(item, 'pet_food') then
+            return 1
+         else
+            return 0
+         end
+      end
 	} )
 end
 

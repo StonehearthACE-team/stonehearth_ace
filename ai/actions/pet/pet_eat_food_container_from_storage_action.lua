@@ -46,7 +46,13 @@ function PetEatFoodContainerFromStorage:start_thinking(ai, entity, args)
 	local food_container_filter_fn = make_food_container_filter(owner_id, diet_data and diet_data.food_material or '') 
    ai:set_think_output( { 
       food_container_filter_fn = food_container_filter_fn,
-      food_rating_fn = function() return 1 end
+      food_rating_fn = function(item)
+         if radiant.entities.is_material(item, 'pet_food') then
+            return 1
+         else
+            return 0
+         end
+      end
 	})
 end
 

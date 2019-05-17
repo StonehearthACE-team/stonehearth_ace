@@ -7,6 +7,11 @@ function AceEatingLib.get_quality(food_stuff, food_preferences)
    if container_data then
       food = container_data.food
    end
+
+   if not stonehearth.catalog:is_material(food, 'food') then
+      return nil
+   end
+
    local food_data = radiant.entities.get_entity_data(food, 'stonehearth:food', false)
 
    if not food_data or not food_data.default then
