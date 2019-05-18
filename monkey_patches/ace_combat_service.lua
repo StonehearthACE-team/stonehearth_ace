@@ -116,7 +116,7 @@ function AceCombatService:distribute_exp(attacker, target, units)
       end
        -- TODO(yshan): SHOULD we split exp reward with all nearby combat units? We tried it and xp was too low.
        -- Paul: only split part of the exp
-      exp = math.floor((1 - EXP_SPLIT_AMOUNT) * exp + EXP_SPLIT_AMOUNT * exp * num_nearby_combatants)
+      exp = math.floor((1 - EXP_SPLIT_AMOUNT) * exp + EXP_SPLIT_AMOUNT * exp / num_nearby_combatants)
       for _, combat_unit in pairs(combat_units) do
          local job_component = combat_unit:get_component('stonehearth:job')
          job_component:add_exp(exp)
