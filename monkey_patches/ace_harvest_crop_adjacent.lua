@@ -34,7 +34,8 @@ function AceHarvestCropAdjacent:_harvest_one_time(ai, entity)
    local crop_quality = radiant.entities.get_item_quality(self._crop)
 
    -- if the crop we're harvesting is a megacrop, handle that
-   if self._crop:get_component('stonehearth:crop'):is_megacrop() then
+   local crop_comp = self._crop and self._crop:get_component('stonehearth:crop')
+   if crop_comp and crop_comp:is_megacrop() then
       if self:_harvest_megacrop_and_return(ai, player_id, crop_quality) then
          return true
       end
