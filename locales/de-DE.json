@@ -271,6 +271,9 @@
                         }
                      }
                   }
+               },
+               "returning_collector_encounter": {
+                  "title": "Ein Entdecker nähert sich deiner Stadt."
                }
             },
             "town_progression": {
@@ -587,6 +590,9 @@
                   "display_name": "Winter",
                   "description": "Der Winter in der Arktis ist eine harte Zeit von sieben Monaten. Das Wetter ist hart, der Wind beißend und unerbittliche Schneestürme machen die Landwirtschaft äußerst schwierig. Sich nach draußen ohne ein Winteroutfit zu wagen, kann tragisch enden.<ul><li>Tageslichtniveaus sind unzureichend.</li><li>Sehr trockene Jahreszeit.</li></ul>"
                }
+            },
+            "random_location_names": {
+               "000": "Walkürenwald"
             }
          }
       },
@@ -810,46 +816,222 @@
                "none": {
                   "description": "Kein Titel notwendig."
                },
-               "goblin_killer": {
-                  "display_name": "Goblintöter(in",
+               "slayer": {
+                  "display_name": "Mörder/in",
                   "description": "Durch das Töten von Goblins verdient.",
-                  "1_display_name": " die/der Goblintöter/in",
-                  "1_description": "Hat einen Goblin getötet!",
-                  "5_display_name": " die/der Goblinschlächter/in",
-                  "5_description": "Hat 5 Goblins getötet! Dort zieht sie/er wieder vondanen zum töten!",
-                  "10_display_name": " die/der Goblindezimator/in",
-                  "10_description": "Hat 10 Goblins getötet! Sie/Er ist wirklich gut darin!",
-                  "20_display_name": ", Fluch der Goblins",
-                  "20_description": "Hat 20 Goblins getötet! Das ist viel!",
-                  "50_display_name": ", Zerstörer/in der Goblins",
-                  "50_description": "Hat 50 Goblins getötet! Wo findet sie/er nur all diese Goblins?!",
+                  "40_display_name": " der Verheerer",
+                  "40_description": "Sie/Er hat 40 Gegner besiegt!",
+                  "100_display_name": " die/der Metzger/in",
+                  "100_description": "Sie/Er hat 100 Feinde besiegt! War das wirklich nötig?",
+                  "250_display_name": ", Nemesis",
+                  "250_description": "Sie/er hat 250 Gegner besiegt! Sie/er kann nicht gestoppt werden!",
+                  "600_display_name": " die/der Seelenschnitter/in",
+                  "600_description": "Sie/Er besiegte 600 Feinde! Das muss ein Kriegsverbrechen oder so etwas sein....."
+               },
+               "slayer_item": {
+                  "display_name": "Mörder/in",
+                  "description": "Durch das Töten von Goblins verdient.",
+                  "40_display_name": ", Blutschreiber",
+                  "40_description": "Sie/Er besiegte 40 Feinde!",
+                  "100_display_name": ", Schreckensbringer/in",
+                  "100_description": "Sie/Er hat 100 Feinde besiegt! Muss wahrscheinlich noch etwas verbessert werden.",
+                  "250_display_name": " die Berührung des Todes",
+                  "250_description": "Sie/Er besiegte 250 Feinde! Das sollte reichen.",
+                  "600_display_name": ", Seelenfresser/in",
+                  "600_description": "Sie/Er besiegte 600 Feinde! Sie/Er hat immernoch hunger!"
+               },
+               "goblin_killer": {
+                  "display_name": "Goblintöter/in",
+                  "description": "Durch das Töten von Goblins verdient.",
+                  "5_display_name": " die/der Goblintöter/in",
+                  "5_description": "Sie/Er hat 5 Goblins getötet!",
+                  "10_display_name": " die/der Goblinschlächter/in",
+                  "10_description": "Sie/Er hat 10 Goblins getötet! Dort zieht sie/er wieder vondanen zum töten!",
+                  "25_display_name": " die/der Goblindezimator/in",
+                  "25_description": "Sie/Er hat 25 Goblins getötet! Sie/Er ist wirklich gut darin!",
+                  "50_display_name": ", Fluch der Goblins",
+                  "50_description": "Sie/Er hat 50 Goblins getötet! Das ist viel!",
+                  "75_display_name": ", Zerstörer/in der Goblins",
+                  "75_description": "Sie/Er hat 75 Goblins getötet! Wo findet Sie/Er nur all diese Goblins?!",
                   "100_display_name": ", Goblinfresser/in",
-                  "100_description": "Hat 100 Goblins getötet! Vielleicht sollten sie/er in Therapie gehen und ihre/seine Prioritäten überprüfen."
+                  "100_description": "Sie/Er hat 100 Goblins getötet! Vielleicht sollte Sie/Er in Therapie gehen und ihre/seine Prioritäten überprüfen."
                },
                "goblin_killer_item": {
                   "display_name": "Goblintöter/in",
                   "description": "Durch das Töten von Kobolden verdient.",
-                  "1_display_name": " die/der Goblintöter/in",
-                  "1_description": "Hat einen Goblin getötet!",
-                  "5_display_name": " die/der Goblinschlächter/in",
-                  "5_description": "Hat 5 Goblins getötet! Dort zieht sie/er wieder vondanen zum töten!",
-                  "10_display_name": " die/der Goblindezimatorr/in",
-                  "10_description": "Hat 10 Goblins getötet! Sie/Er ist  wirklich gut darin!",
-                  "20_display_name": ", Fluch der Goblins",
-                  "20_description": "Hat 20 Goblins getötet! Das ist viel!",
-                  "50_display_name": ", Zerstörer der Goblins",
-                  "50_description": "Hat 50 Goblins getötet! Sie/Er ist nicht zu stoppen, zumindest durch Goblins!",
+                  "5_display_name": " die/der Goblintöter/in",
+                  "5_description": "Sie/Er hat 5 Goblins getötet!",
+                  "10_display_name": " die/der Goblinschlächter/in",
+                  "10_description": "Sie/Er hat 10 Goblins getötet! Dort zieht sie/er wieder vondanen zum töten!",
+                  "25_display_name": " die/der Goblindezimatorr/in",
+                  "25_description": "Sie/Er hat 25 Goblins getötet! Sie/Er ist  wirklich gut darin!",
+                  "50_display_name": ", Fluch der Goblins",
+                  "50_description": "Sie/Er hat 50 Goblins getötet! Das ist viel!",
+                  "75_display_name": ", Zerstörer der Goblins",
+                  "75_description": "Sie/Er hat 75 Goblins getötet! Sie/Er ist nicht zu stoppen, zumindest durch Goblins!",
                   "100_display_name": ", Goblinfresser/in",
-                  "100_description": "at 100 Goblins getötet! Ist ihr/sein Blutrausch endlich besänftigt?"
+                  "100_description": "Sie/Er hat 100 Goblins getötet! Ist ihr/sein Blutrausch endlich besänftigt?"
+               },
+               "orc_killer": {
+                  "display_name": "Orcish Killer",
+                  "description": "Gained by killing followers of the Red Kiln.",
+                  "5_display_name": ", Red Kiln's Foe",
+                  "5_description": "They killed 5 followers of the Red Kiln!",
+                  "10_display_name": " the Orc Slayer",
+                  "10_description": "They killed 10 followers of the Red Kiln! What a challenger!",
+                  "25_display_name": ", Bane of the Four Colors",
+                  "25_description": "They killed 25 followers of the Red Kiln! That requires some skills!",
+                  "50_display_name": ", Red Kiln Decimator",
+                  "50_description": "They killed 50 followers of the Red Kiln! Will they ever stop?",
+                  "75_display_name": ", Khanate-Ender",
+                  "75_description": "They killed 75 followers of the Red Kiln! Surely the orcs are convinced by now?",
+                  "100_display_name": ", Cid's Retribution",
+                  "100_description": "They killed 100 followers of the Red Kiln! They are worthy of this land!"
+               },
+               "orc_killer_item": {
+                  "display_name": "Orcish Killer",
+                  "description": "Gained by killing followers of the Red Kiln.",
+                  "5_display_name": ", Orc-Biter",
+                  "5_description": "It killed 5 followers of the Red Kiln!",
+                  "10_display_name": ", Khan-Opener",
+                  "10_description": "It killed 10 followers of the Red Kiln! A fine weapon!",
+                  "25_display_name": " the Red Death",
+                  "25_description": "It killed 25 followers of the Red Kiln! That's something!",
+                  "50_display_name": ", Usurper of Khans",
+                  "50_description": "It killed 50 followers of the Red Kiln! It strikes fear in their hearts!",
+                  "75_display_name": " of No Color",
+                  "75_description": "It killed 75 followers of the Red Kiln! Nothing can stop it!",
+                  "100_display_name": ", Hand of Cid",
+                  "100_description": "It killed 100 followers of the Red Kiln! This land is finally safe."
+               },
+               "undead_killer": {
+                  "display_name": "Undead Killer",
+                  "description": "Gained by killing the undead.",
+                  "3_display_name": " the Undead Hunter",
+                  "3_description": "They killed 3 undead!",
+                  "6_display_name": " the Gravekeeper",
+                  "6_description": "They killed 6 undead! Is 'killed' even the proper word?",
+                  "15_display_name": " the Undead-Scourge",
+                  "15_description": "They killed 15 undead! That's scary!",
+                  "25_display_name": ", Hope of the Living",
+                  "25_description": "They killed 25 undead! It feels safer already.",
+                  "50_display_name": " the Lightbringer",
+                  "50_description": "They killed 50 undead! The long night is over."
+               },
+               "undead_killer_item": {
+                  "display_name": "Undead Killer",
+                  "description": "Gained by killing the undead.",
+                  "3_display_name": ", Hope's Candle",
+                  "3_description": "It killed 3 undead!",
+                  "6_display_name": " the Cleanser",
+                  "6_description": "It killed 6 undead! What a blessing!",
+                  "15_display_name": ", Purifier",
+                  "15_description": "It killed 15 undead! Should be safe to go out tonight.",
+                  "25_display_name": " the Divine Intervener",
+                  "25_description": "It killed 25 undead! It definitely did its part!",
+                  "50_display_name": ", Dawnbreaker",
+                  "50_description": "It killed 50 undead! A beacon of hope!"
+               },
+               "forest_killer": {
+                  "display_name": "Wilderness Killer",
+                  "description": "Gained by killing minions of the Wilds.",
+                  "5_display_name": ", Log-Splinter",
+                  "5_description": "They killed 5 minions of the Wilds!",
+                  "10_display_name": " the Chopper",
+                  "10_description": "They killed 10 minions of the Wilds! Entlings, beware!",
+                  "25_display_name": " the Fur-Slayer",
+                  "25_description": "They killed 25 minions of the Wilds! Where's the howling now?",
+                  "50_display_name": ", Silencer of Roars",
+                  "50_description": "They killed 50 minions of the Wilds! It feels calmer out there...",
+                  "75_display_name": " the Untamed",
+                  "75_description": "They killed 75 minions of the Wilds! Deforestation is a crime!",
+                  "100_display_name": " of the Wild Hunt",
+                  "100_description": "They killed 100 minions of the Wilds! Shouldn't nature be your friend?"
+               },
+               "forest_killer_item": {
+                  "display_name": "Wilderness Killer",
+                  "description": "Gained by killing minions of the Wilds.",
+                  "5_display_name": " of the Forester",
+                  "5_description": "It killed 5 minions of the Wilds!",
+                  "10_display_name": ", Root-Cleaver",
+                  "10_description": "It killed 10 minions of the Wilds! Firewood, anyone?",
+                  "25_display_name": ", Sap-Drinker",
+                  "25_description": "It killed 25 minions of the Wilds! A ranger would be proud!",
+                  "50_display_name": ", Bane of the Woods",
+                  "50_description": "It killed 50 minions of the Wilds! What did nature do to it?",
+                  "75_display_name": ", Green-Ender",
+                  "75_description": "It killed 75 minions of the Wilds! It's time to stop, perhaps?",
+                  "100_display_name": " of the Wastelands",
+                  "100_description": "It killed 100 minions of the Wilds! Nature will never forget this!"
+               },
+               "titan_killer": {
+                  "display_name": "Titanstorm Killer",
+                  "description": "Gained by killing corrupted beings.",
+                  "1_display_name": " the Shadow Hunter",
+                  "1_description": "They killed 1 corrupted being!",
+                  "5_display_name": ", Challenger of Darkness",
+                  "5_description": "They killed 5 corrupted beings! Such bravery!",
+                  "10_display_name": " the Incorruptible",
+                  "10_description": "They killed 10 corrupted beings! They stood against darkness!",
+                  "15_display_name": " the Nameless-Slayer",
+                  "15_description": "They killed 15 corrupted beings! Made a difference during the last battle.",
+                  "25_display_name": ", Vanquisher of the Void",
+                  "25_description": "They killed 25 corrupted beings! They tipped the odds of light against darkness!"
+               },
+               "titan_killer_item": {
+                  "display_name": "Titanstorm Killer",
+                  "description": "Gained by killing corrupted beings.",
+                  "1_display_name": " of Light",
+                  "1_description": "It killed 1 corrupted being!",
+                  "5_display_name": " of the Fallen Shroud",
+                  "5_description": "It killed 5 corrupted beings! Incredible!",
+                  "10_display_name": ", Mistbreaker",
+                  "10_description": "It killed 10 corrupted beings! Worthy of a song!",
+                  "15_display_name": ", Void-Ripper",
+                  "15_description": "It killed 15 corrupted beings! A weapon of legend!",
+                  "25_display_name": ", Guardian of Worlds",
+                  "25_description": "It killed 25 corrupted beings! This world shall remember its name."
+               },
+               "hunter": {
+                  "display_name": "Great Hunter",
+                  "description": "Gained by hunting animals.",
+                  "10_display_name": ", Poacher",
+                  "10_description": "They hunted 10 wild animals!",
+                  "30_display_name": ", Accomplished Hunter",
+                  "30_description": "They hunted 30 wild animals! Poor animals...",
+                  "75_display_name": ", Master Hunter",
+                  "75_description": "They hunted 75 wild animals! That's food for months!",
+                  "150_display_name": ", Grandmaster Hunter",
+                  "150_description": "They hunted 150 wild animals! Is it an obsession?",
+                  "300_display_name": ", Legendary Hunter",
+                  "300_description": "They hunted 300 wild animals! Someone really loves barbecue!",
+                  "600_display_name": ", Truest Arrow",
+                  "600_description": "They hunted 600 wild animals! Be careful to not cause an extinction!"
+               },
+               "hunter_item": {
+                  "display_name": "Great Hunter",
+                  "description": "Gained by hunting animals.",
+                  "10_display_name": ", Companion",
+                  "10_description": "It hunted 10 wild animals!",
+                  "30_display_name": " the Prey-Catcher",
+                  "30_description": "It hunted 30 wild animals! It has just started!",
+                  "75_display_name": " of the Huntsman",
+                  "75_description": "It hunted 75 wild animals! A true hunting weapon!",
+                  "150_display_name": ", Pathfinder",
+                  "150_description": "It hunted 150 wild animals! No forest is safe...",
+                  "300_display_name": ", Eagle-Eye",
+                  "300_description": "It hunted 300 wild animals! That's a lot of jerky.",
+                  "600_display_name": ", Predator",
+                  "600_description": "It hunted 600 wild animals! Vegetarians must hate it!"
                },
                "defender": {
                   "display_name": "Verteidiger/in",
                   "description": "Verdient durch Tötungshilfen (direkt im Kampf oder in der Nähe von getöteten Feinden).",
-                  "10_display_name": ", Verteidiger/in",
-                  "10_description": "Verteidigte die Stadt vor 10 Feinden!",
+                  "25_display_name": ", Verteidiger/in",
+                  "25_description": "Verteidigte die Stadt vor 25 Feinden!",
                   "50_display_name": ", Große/r Beschützer/in",
                   "50_description": "Verteidigte die Stadt vor 50 Feinden!",
-                  "100_display_name": ", Stadtheld/in",
+                  "100_display_name": ", lokale/r Held/in",
                   "100_description": "Verteidigte die Stadt vor 100 Feinden! Ist es endlich sicher?",
                   "500_display_name": " der lange Arm des Gesetzes",
                   "500_description": "Verteidigte die Stadt vor 500 Feinden! Was für eine unglaublich widerspenstige Stadt!",
@@ -870,12 +1052,12 @@
                },
                "excellent_crafter": {
                   "display_name": "Ausgezeichnete/r Handwerker/in",
-                  "description": "Durch die Herstellung von Gegenständen von hervorragender Qualität verident (feine Qualität ist nicht gut genug, und Meisterwerke werden separat verfolgt).",
+                  "description": "Durch die Herstellung von Gegenständen mit hervorragender Qualität verdient.",
                   "10_display_name": ", ausgezeichnete/r Handwerker/in",
                   "10_description": "Sie/Er hat 10 Gegenstände von exzellenter Qualität hergestellt!",
                   "25_display_name": ", außergewöhnlich Handwerker",
                   "25_description": "Sie/Er hat 25 Gegenstände von exzellenter Qualität hergestellt!",
-                  "100_display_name": " die/der Kaiser/in der Exzellenz",
+                  "100_display_name": " die/der Sucher/in der Exzellenz",
                   "100_description": "Sie/Er hat 100 Gegenstände von exzellenter Qualität hergestellt!"
                },
                "master_crafter": {
@@ -884,10 +1066,12 @@
                   "1_display_name": ", Meisterhandwerker/in",
                   "1_description": "Sie/Er hat einen Gegenstand von meisterlicher Qualität hergestellt! Beeindruckend!",
                   "10_display_name": " die/der Meister/in der Qualität",
-                  "10_description": "Sie/Er hat 10 Gegenstände von meisterlicher Qualität hergestellt! Unglaublich!"
+                  "10_description": "Sie/Er hat 10 Gegenstände von meisterlicher Qualität hergestellt! Unglaublich!",
+                  "25_display_name": " die Legende des Handwerks",
+                  "25_description": "Sie/Er hat 25 Gegenstände in Meisterqualität hergestellt! Wer hätte gedacht, dass das überhaupt möglich ist?"
                },
                "starving": {
-                  "display_name": "Hungrige",
+                  "display_name": "Verhungert",
                   "description": "Wird verdient durch viel Zeit hungrig zu verbringen.",
                   "1_display_name": " die/der Hungrige",
                   "1_description": "Sie/Er hat 4 Stunden gehungert!",
@@ -899,12 +1083,48 @@
                "incapacitated": {
                   "display_name": "Lahmgelegt",
                   "description": "Durch mehrmaliges Lahm gelegt werden verdient.",
-                  "1_display_name": " die/der Anfällige",
-                  "1_description": "Sie/Er ist wurde niedergeschlagen, ist wieder aufgestanden und wurde niedergeschlagen worden.",
-                  "2_display_name": " die/der Narbige",
-                  "2_description": "Sie/Er wurde 5 Mal außer Gefecht gesetzt! Kann man sie/ihn überhaupt töten?",
-                  "3_display_name": " die/der Fast-Kopflose",
-                  "3_description": "Sie/Er wurde 10 Mal außer Gefecht gesetzt! Wird Sie/Er jemals lernen, lebensbedrohliche Situationen zu vermeiden?"
+                  "1_display_name": ", die/der Zerfetzt",
+                  "1_description": "Sie/Er war am Rande von Leben und Tod! Aufregend!",
+                  "2_display_name": " die/der Anfällige",
+                  "2_description": "Sie/Er ist wurde niedergeschlagen, ist wieder aufgestanden und wurde niedergeschlagen worden.",
+                  "4_display_name": " die/der Narbige",
+                  "4_description": "Sie/Er wurde 5 Mal außer Gefecht gesetzt! Kann man sie/ihn überhaupt töten?",
+                  "8_display_name": " die/der Fast-Kopflose",
+                  "8_description": "Sie/Er wurde 10 Mal außer Gefecht gesetzt! Wird Sie/Er jemals lernen, lebensbedrohliche Situationen zu vermeiden?"
+                  "12_display_name": " die/der Unvergängliche",
+                  "12_description": "Sie/Er wurden 12 Mal außer Gefecht gesetzt! Wie lange kann sie/er den Tod so austricksen?",
+                  "20_display_name": " die/der Unsterbliche",
+                  "20_description": "Sie/Er wurden 20 Mal außer Gefecht gesetzt! Es ist unglaublich, wieviel Glück (oder Dummheit) man haben kann."
+               },
+               "swimming": {
+                  "display_name": "Swimming",
+                  "description": "Gained by spending a lot of time swimming.",
+                  "1_display_name": " the Swimmer",
+                  "1_description": "They've spent a whole day swimming!",
+                  "2_display_name": " the Fish",
+                  "2_description": "They've spent three whole days swimming! They must love water.",
+                  "3_display_name": " the Seahorse",
+                  "3_description": "They've spent a whole month swimming! Such energy!",
+                  "4_display_name": " the Shark",
+                  "4_description": "They've spent three months swimming! What?!",
+                  "5_display_name": ", Aquaman",
+                  "5_description": "They've spent half a year swimming! I bet the other half was sleeping..."
+               },
+               "sweet_energy": {
+                  "display_name": "Sugar Binge",
+                  "description": "Gained by eating a lot of sweet foods!",
+                  "1_display_name": ", Munchie",
+                  "1_description": "They have eaten sweet foods 10 times! Still healthy enough, probably.",
+                  "2_display_name": ", Sweet Tooth",
+                  "2_description": "They have eaten sweet foods 25 times! Who can resist some candy?",
+                  "3_display_name": ", Sugar Rushed",
+                  "3_description": "They have eaten sweet foods 50 times! They really like it!",
+                  "4_display_name": " the Cookie-Eater",
+                  "4_description": "They have eaten sweet foods 100 times! That's a lot, watch out for your sugar levels!",
+                  "5_display_name": ", Candy-Lover",
+                  "5_description": "They have eaten sweet foods 200 times! That's probably not healthy...",
+                  "6_display_name": " the Sugar Monster",
+                  "6_description": "They have eaten sweet foods 500 times! Did they even manage to sleep lately?"
                }
             }
          }
@@ -1457,6 +1677,10 @@
                "training_perk_description": "Ein Ritter kann mit Übungspuppen seine defensiven Fähigkeiten trainieren und Erfahrung bis zu Level 3 zu sammeln"
             },
             "description": "Ein defensiver Kämpfer konzentrierte sich darauf, Verbündete vor Schaden zu schützen und Feinde zusammenzutreiben, sondern auch Angst in ihrem Herzen zu verbreiten!"
+         },
+         "knight_horn": {
+            "display_name": "Ritterhorn",
+            "description": "Um Angst zu stiften, versammele deine Mitstreiter oder beschütze die Kleinen.."
          }
       },
       "herbalist": {
@@ -1491,6 +1715,11 @@
                "recipe_name": "Mondglocken Samen (x3)",
                "description": "Trennt Samen von den Kräutern",
                "flavor": "Nur eine geschickte Hand kann die schwächeren Samen ernten, aber die Kräuter gehen dabei verloren."
+            },
+            "sugarbell_transmute_recipe": {
+               "recipe_name": "Zuckerglocken Samen (x3)",
+               "description": "Trennt die Samen von der Ernte.",
+               "flavor": "Nur eine geschickte Hand kann die schwächeren Samen ernten, aber die Zuckerglocken gehen dabei verloren."
             },
             "marblesprout_transmute_recipe": {
                "recipe_name": "Marmorsprossen Samen (x3)",
@@ -1850,6 +2079,16 @@
                "description": "Erforderlich für die Herstellung von Porzellan und wunderschön verzierter Keramik..",
                "flavor": "Mit den richtigen Zutaten und Können hat der Töpfer einen wesentlich effizienteren Weg zur Herstellung von Knochenlehm gefunden"
             },
+	    "clay_animal_door_recipe": {
+               "recipe_name": "Tiertür aus Lehm",
+               "description": "Eine große Tür für Tierunterkünfte, die von einem Schäfer geschlossen werden kann. Im geschlossenen Zustand dürfen nur Hearthlinge durchgehen!",
+               "flavor": ""
+            },
+	    "clay_animal_door_small_recipe": {
+               "recipe_name": "Kleine Tiertür aus Lehm",
+               "description": "Eine kleine Tür für Tierunterkünfte, die von einem Schäfer geschlossen werden kann..",
+               "flavor": "Wenn sie im Erdgeschoss aufgestellt werden, müssen die beiden darunter liegenden Kacheln ausgegraben werden, damit sie funktionieren.!"
+            },
             "clay_comfy_bed_recipe": {
                "recipe_name": "Bequemes Bett aus Ton",
                "description": "Es hat viel weniger Sand auf der Matratze.",
@@ -2051,12 +2290,12 @@
             "pasture_bed_small_recipe": {
                "recipe_name": "Kleines Weidenbett",
                "description": "Kleine Weidentiere suchen dies nachts oder bei schlechtem Wetter auf, platzier es deswegen an einem sicheren Ort.",
-               "flavor": "Kleine Tiere beinhalten BuckBucks und Kaninchen"
+               "flavor": "Muss innerhalb eines Geheges liegen. Kleine Tiere beinhalten BuckBucks und Kaninchen"
             },
             "pasture_bed_recipe": {
                "recipe_name": "Weidenbett",
                "description": "Große Weidentiere suchen dies nachts oder bei schlechtem Wetter auf, platzier es deswegen an einem sicheren Ort.",
-               "flavor": "Große Tieren beinhalten Schafe, Strauße und Moo-Moos"
+               "flavor": "Muss innerhalb eines Geheges liegen. Große Tieren beinhalten Schafe, Strauße und Moo-Moos"
             }
          },
          "potter_description": {
@@ -2102,6 +2341,16 @@
                "recipe_name": "Knochenschnitzerei Studio",
                "description": "Wird vom Steinmetz benötigt, um Möbel und Ausrüstung aus Knochenmaterial zu schnitzen.",
                "flavor": ""
+            },
+	    "stone_animal_door_recipe": {
+               "recipe_name": "Tiertür aus Stein",
+               "description": "Eine große Tür für Tierunterkünfte, die von einem Schäfer geschlossen werden kann. Im geschlossenen Zustand dürfen nur Herdplatten durchgehen!",
+               "flavor": ""
+            },
+	    "stone_animal_door_small_recipe": {
+               "recipe_name": "Kleine Tiertür aus Stein",
+               "description": "Eine kleine Tür für Tierunterkünfte, die von einem Schäfer geschlossen werden kann.",
+               "flavor": "Wenn sie im Erdgeschoss aufgestellt werden soll, müssen die beiden darunter liegenden Kacheln ausgegraben werden, damit sie funktioniert!"
             },
             "legendary_headpiece_recipe": {
                "recipe_name": "Gefallener Stern",
@@ -2351,6 +2600,16 @@
                "recipe_name": "Gusseiseer Halter",
                "description": "Bastele einen schicken Halter, der bis zu 4 Brennholzpakete aufnehmen kann.",
                "flavor": ""
+            },
+            "iron_brazier_recipe": {
+               "recipe_name": "Gusseisernes Kohlebecken",
+               "description": "Erschaffe ein feines Stück, das für Licht und etwas Wärme sorgt.",
+               "flavor": "Es erfordert eine Einheit Kohle um angezündet zu werden"
+            },
+            "iron_brazier_tall_recipe": {
+               "recipe_name": "Hohes gusseisernes Kohlebecken",
+               "description": "Erschaffe ein feines Stück, das für Licht und etwas Wärme sorgt.",
+               "flavor": "Es erfordert eine Einheit Kohle um angezündet zu werden"
             },
             "cook_spoon_copper_recipe": {
                "recipe_name": "Kupferlöffel für den Koch",
@@ -2720,7 +2979,7 @@
          },
          "freezing_simple_worker_outfit": {
             "display_name": "Einfacher Bärenmantel für Arbeiter",
-            "description": "Ein warmer, wuscheliger Mantel. Schützt vor Frost, aber ohne zusätzlichen Nutzen."
+            "description": "Ein warmer, wuscheliger Mantel. Schützt vor Frost und ohne zusätzlichen Nutzen."
          },
          "cold_worker_outfit": {
             "display_name": "Lederjacke für Arbeiter",
@@ -3063,6 +3322,16 @@
       },
       "carpenter": {
          "recipes": {
+	 "wooden_animal_door_recipe": {
+               "recipe_name": "Tiertür aus Holz",
+               "description": "Eine große Tür für Tierunterkünfte, die von einem Schäfer geschlossen werden kann. Im geschlossenen Zustand dürfen nur Hearthlinge durchgehen!",
+               "flavor": ""
+            },
+	    "wooden_animal_door_small_recipe": {
+               "recipe_name": "Kleine Tiertür aus Holz",
+               "description": "Eine kleine Türe für Tierunterkünfte, die von einem Schäfer geschlossen werden kann.",
+               "flavor": "Wenn sie im Erdgeschoss aufgestellt werden, müssen die beiden darunter liegenden Kacheln ausgegraben werden, damit sie funktionieren!"
+            },
             "long_bow_recipe": {
                "recipe_name": "Langbogen",
                "description": "Ein längerer Querschnitt macht ihn effizienter als einen durchschnittlichen Bogen."
@@ -3151,12 +3420,12 @@
             },
             "pasture_bed_small_recipe": {
                "recipe_name": "Kleines Weidenbett",
-               "description": "Kleine Weidentiere suchen dies nachts oder bei schlechtem Wetter auf, platzier es deswegen an einem sicheren Ort..",
+               "description": "Kleine Weidentiere suchen dies Nachts oder bei schlechtem Wetter auf. Muss innerhalb eines Geheges liegen.",
                "flavor": "Kleine Tiere beinhalten BuckBucks und Kaninchen"
             },
             "pasture_bed_recipe": {
                "recipe_name": "Weidenbett",
-               "description": "Große Weidentiere suchen dies nachts oder bei schlechtem Wetter auf, platzier es deswegen an einem sicheren Ort..",
+               "description": "Große Weidentiere suchen dies Nachts oder bei schlechtem Wetter auf,  Muss innerhalb eines Geheges liegen.",
                "flavor": "Große Tieren beinhalten Schafe, Strauße und Moo-Moos"
             },
             "fish_trap_recipe": {
@@ -3584,14 +3853,30 @@
          },
          "wooden_animal_door_small": {
             "display_name": "Kleine Tiertür aus Holz",
-            "description": "Eine kleine Tür für Tierheime. Kann von einem Schäfer geöffnet oder geschlossen werden."
+            "description": "Eine kleine Tür für Tierunterkünfte. Kann von einem Schäfer geöffnet oder geschlossen werden."
          },
          "animal_door_closed": {
-            "description": "Diese Tiertür ist geschlossen und erfordert einen Schäfer um sie zu öffnen."
+            "description": "Diese Tiertür ist für Tiere geschlossen und erfordert einen Schäfer um sie zu öffnen."
          },
          "wooden_animal_door": {
             "display_name": "Tiertür aus Holz",
-            "description": "Eine große Tür für Tierheime. Kann von einem Schäfer geöffnet oder geschlossen werden."
+            "description": "Eine große Tür für Tierunterkünfte. Kann von einem Schäfer geöffnet oder geschlossen werden."
+         },
+         "stone_animal_door": {
+            "description": "A large door for animal shelters. Can be opened or closed by a shepherd.",
+            "display_name": "Stone Animal Door"
+         },
+         "clay_animal_door": {
+            "description": "A large door for animal shelters. Can be opened or closed by a shepherd.",
+            "display_name": "Clay Animal Door"
+         },
+         "clay_animal_door_small": {
+            "description": "A small door for animal shelters. Can be opened or closed by a shepherd.",
+            "display_name": "Clay Small Animal Door"
+         },
+         "stone_animal_door_small": {
+            "description": "A small door for animal shelters. Can be opened or closed by a shepherd.",
+            "display_name": "Stone Small Animal Door"
          }
       },
       "crops": {
@@ -5319,6 +5604,12 @@
                "display_name": "Wildes Kalb",
                "description": "Ein süßes kleines und wildes Moo-Moo."
             }
+         },
+         "boar": {
+            "display_name": "Wilder Bär"
+         },
+         "boar_pet": {
+            "display_name": "Bär"
          }
       },
       "food": {
@@ -7734,7 +8025,8 @@
                   "tooltip_fiber": "Fasern",
                   "tooltip_algae": "Algen",
                   "tooltip_essences": "Essenzen",
-                  "tooltip_fertilizer": "Dünger"
+                  "tooltip_fertilizer": "Dünger",
+                  "tooltip_seeds_consumable": "Saatgut Samen"
                }
             },
             "pasture": {
@@ -7807,6 +8099,7 @@
                "quiver_bolts": "Bolzenköcher",
                "cleric_tome": "Heiliger Foliant"
             },
+            "food_buff": "Anwenden gibt: ",
             "injected_buff": "Gewährter Status: ",
             "inflictable_debuff": "Zufügter Status:: "
          },
@@ -7829,6 +8122,12 @@
          "promotion_tree": {
             "requirements": {
                "one_of_job": "Einer von:"
+            }
+         },
+         "build_mode2": {
+            "tooltips": {
+               "clay_resource": "Roher Ton",
+               "clay_bricks_resource": "Ziegelsteine"
             }
          }
       },
