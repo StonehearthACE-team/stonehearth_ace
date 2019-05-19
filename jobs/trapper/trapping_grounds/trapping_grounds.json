@@ -7,11 +7,29 @@
                "stonehearth:deer": 100,
                "stonehearth:monsters:forest:boar": 75,
                "stonehearth:deer_horned": 75,
-			   "stonehearth_ace:deer:young": 60,
-			   "stonehearth:monsters:avian:ostrich": 50,
-			   "stonehearth:monsters:avian:duckduck": 25,
-			   "stonehearth_ace:monsters:forest:bear_cub": 5,
-		       "stonehearth_ace:monsters:forest:bear": 1			   
+					"stonehearth_ace:deer:young": 60,
+					"stonehearth:monsters:avian:ostrich": 50,
+					"stonehearth:monsters:avian:duckduck": 25,
+					"stonehearth_ace:monsters:forest:bear_cub": 20,
+					"stonehearth_ace:monsters:forest:bear": 5		   
+            }
+         },
+			"terrain_spawn_intervals": {
+            "rock": {
+               "spawn_interval_min": "100m",
+               "spawn_interval_max": "180m"
+            },
+				"grass": {
+               "spawn_interval_min": "40m",
+               "spawn_interval_max": "70m"
+            },
+				"dirt": {
+               "spawn_interval_min": "70m",
+               "spawn_interval_max": "120m"
+            },
+            "default": {
+               "spawn_interval_min": "60m",
+               "spawn_interval_max": "100m"
             }
          },
          "trap_types": {

@@ -668,7 +668,7 @@
                "ui_label": "i18n(stonehearth_ace:data.heatmaps.wilderness.thresholds.none.display_name)",
                "description": "i18n(stonehearth_ace:data.heatmaps.wilderness.thresholds.none.description)",
                "icon": "/stonehearth_ace/ui/images/heatmaps/wilderness_none.png",
-               "max": 0.0001,
+               "max": 0.001,
                "heatmap_color": [
                   128,
                   128,
@@ -734,7 +734,7 @@
                   0.6,
                   0
                ],
-               "spawn_duration_multiplier": 1.5
+               "spawn_duration_multiplier": 1.2
             },
             {
                "ui_label": "i18n(stonehearth_ace:data.heatmaps.wilderness.thresholds.tons.display_name)",
@@ -752,7 +752,7 @@
                   0.5,
                   0.1
                ],
-               "spawn_duration_multiplier": 1
+               "spawn_duration_multiplier": 0.75
             }
          ]
       },

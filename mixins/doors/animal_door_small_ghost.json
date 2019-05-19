@@ -1,0 +1,50 @@
+{
+   "type": "mixin",
+   "components": {
+      "mob": {
+         "align_to_grid": [
+            "x"
+         ],
+         "region_origin": { "x": 0, "y": 0, "z": 0.5 }
+      },
+      "render_info": {
+         "animation_table": "/stonehearth/data/rigs/entities/construction/door/door.json"
+      },
+      "effect_list": {
+         "default": "/stonehearth/data/rigs/entities/construction/door/effects/closed.json",
+         "initial_pose_animation": "closed.json"
+      },
+      "stonehearth:fixture": {
+         "cursor": "stonehearth:cursors:create_door",
+         "margin": {
+            "left": 0,
+            "right": 0,
+            "top": 1,
+            "bottom": 1
+         },
+         "bounds": {
+            "min": { "x": -1, "y": 0 },
+            "max": { "x": 1, "y": 3 }
+         }
+      },
+      "stonehearth:portal": {
+         "cutter": [
+            {
+               "min": { "x": -1, "y": 0 },
+               "max": { "x": 1, "y": 3 }
+            }
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "category": "door",
+         "material_tags": [
+            "portal",
+            "door",
+            "animal_door",
+            "stockpile_portal"
+         ]
+      }
+   }
+}

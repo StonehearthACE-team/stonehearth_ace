@@ -1,0 +1,48 @@
+{
+   "type": "mixin",
+   "components": {
+      "render_info": {
+         "scale": 0.125,
+         "animation_table": "/stonehearth/data/rigs/entities/construction/double_door/double_door.json"
+      },
+      "effect_list": {
+         "default": "/stonehearth/data/rigs/entities/construction/double_door/effects/open.json",
+         "initial_pose_animation": "idle.json"
+      },
+      "mob": {
+         "region_origin": { "x": -0.5, "y": 0, "z": 0.5 }
+      },
+      "stonehearth:fixture": {
+         "valign": "bottom",
+         "cursor": "stonehearth:cursors:create_door",
+         "margin": {
+            "left": 1,
+            "right": 1,
+            "top": 1
+         },
+         "bounds": {
+            "min": { "x": -3, "y": 0 },
+            "max": { "x": 2, "y": 5 }
+         }
+      },
+      "stonehearth:portal": {
+         "cutter": [
+            {
+               "min": { "x": -3, "y": 0 },
+               "max": { "x": 2, "y": 5 }
+            }
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "category": "door",
+         "material_tags": [
+            "portal",
+            "animal_door",
+            "door",
+            "stockpile_portal"
+         ]
+      }
+   }
+}

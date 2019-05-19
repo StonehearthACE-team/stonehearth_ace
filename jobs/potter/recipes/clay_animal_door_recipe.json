@@ -1,0 +1,22 @@
+{
+   "type": "recipe",
+   "effort": 50,
+   "work_units": 10,
+   "recipe_name": "i18n(stonehearth_ace:jobs.potter.recipes.clay_animal_door_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.potter.recipes.clay_animal_door_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.potter.recipes.clay_animal_door_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/construction/clay_animal_door/clay_animal_door.png",
+   "workshop": "stonehearth:potter:kiln",
+   "level_requirement": 5,
+   "ingredients": [
+      {
+         "material": "clay resource",
+         "count": 4
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:portals:clay_animal_door"
+      }
+   ]
+}

@@ -8,7 +8,15 @@
          "min_distance": 20,
          "falloff": 6,
          "volume": 32,
-         "track": "stonehearth_ace:sounds:waterfall"
+			"track" : {
+            "type": "one_of",
+            "items": [
+               "stonehearth_ace:sounds:waterfall_01",
+               "stonehearth_ace:sounds:waterfall_02",
+               "stonehearth_ace:sounds:waterfall_03",
+               "stonehearth_ace:sounds:waterfall_04"
+            ]
+         }
       }
    }
 }

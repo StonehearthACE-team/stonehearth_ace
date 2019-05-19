@@ -17,12 +17,20 @@
          },
 		 "terrain_spawn_intervals": {
             "rock": {
+               "spawn_interval_min": "120m",
+               "spawn_interval_max": "200m"
+            },
+				"grass": {
+               "spawn_interval_min": "80m",
+               "spawn_interval_max": "120m"
+            },
+				"dirt": {
                "spawn_interval_min": "100m",
-               "spawn_interval_max": "130m"
+               "spawn_interval_max": "140m"
             },
             "default": {
-               "spawn_interval_min": "90m",
-               "spawn_interval_max": "120m"
+               "spawn_interval_min": "60m",
+               "spawn_interval_max": "100m"
             }
          }
       }

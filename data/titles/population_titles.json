@@ -542,5 +542,97 @@
             "required_value": 20
          }
       ]
+   },
+	"swimming": {
+      "ordinal": 22,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.swimming.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.swimming.description)",
+      "requirement": {
+         "statistics": {
+            "category": "buffs_duration",
+            "name": "swimming"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.swimming.1_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.swimming.1_description)",
+            "required_value": "1d"
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.swimming.2_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.swimming.2_description)",
+            "required_value": "3d"
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.swimming.3_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.swimming.3_description)",
+            "required_value": "7d"
+         },
+			{
+            "rank": 4,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.swimming.4_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.swimming.4_description)",
+            "required_value": "21d"
+         },
+			{
+            "rank": 5,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.swimming.5_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.swimming.5_description)",
+            "required_value": "42d"
+         }
+      ]
+   },
+	"sweet_energy": {
+      "ordinal": 23,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.sweet_energy.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.sweet_energy.description)",
+      "requirement": {
+         "statistics": {
+            "category": "buffs_gained",
+            "name": "sweet_energy"
+         }
+      },
+      "ranks": [
+			{
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.sweet_energy.1_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.sweet_energy.1_description)",
+            "required_value": 10
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.sweet_energy.2_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.sweet_energy.2_description)",
+            "required_value": 25
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.sweet_energy.3_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.sweet_energy.3_description)",
+            "required_value": 50
+         },
+			{
+            "rank": 4,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.sweet_energy.4_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.sweet_energy.4_description)",
+            "required_value": 100
+         },
+         {
+            "rank": 5,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.sweet_energy.5_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.sweet_energy.5_description)",
+            "required_value": 200
+         },
+			{
+            "rank": 6,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.sweet_energy.6_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.sweet_energy.6_description)",
+            "required_value": 500
+         }
+      ]
    }
 }

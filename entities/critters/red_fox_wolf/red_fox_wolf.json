@@ -5,34 +5,28 @@
          "entries": {
             "bones": {
                "num_rolls": {
-                  "min": 0,
-                  "max": 1
+                  "min": 1,
+                  "max": 2
                },
                "items": {
                   "bones": {
                      "uri": "stonehearth_ace:resources:bone:bone_material"
                   }
+               }
+            },
+				"jerky": {
+               "num_rolls": {
+                  "min": 3,
+                  "max": 4
                }
             }
          }
       }
    },
    "entity_data": {
-      "stonehearth:harvest_beast_loot_table": {
-         "entries": {
-            "bones": {
-               "num_rolls": {
-                  "min": 0,
-                  "max": 1
-               },
-               "items": {
-                  "bones": {
-                     "uri": "stonehearth_ace:resources:bone:bone_material"
-                  }
-               }
-            }
-         }
-      },
+      "mixintypes": {
+			"stonehearth:harvest_beast_loot_table": "remove"
+		},
 	  "stonehearth:catalog": {
         "display_name": "i18n(stonehearth_ace:entities.critters.red_fox_wolf.display_name)"
 	  }

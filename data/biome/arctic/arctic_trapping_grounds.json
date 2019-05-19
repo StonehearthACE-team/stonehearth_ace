@@ -11,9 +11,27 @@
             "bugs": {
                "stonehearth_ace:stag_beetle": 100,
                "stonehearth_ace:bitsy_spider": 100,
-			   "stonehearth:doodles": 100,
-			   "stonehearth:bitsy_ant": 0,
-			   "stonehearth:beetle": 0
+					"stonehearth:doodles": 100,
+					"stonehearth:bitsy_ant": 0,
+					"stonehearth:beetle": 0
+            }
+         },
+			"terrain_spawn_intervals": {
+            "rock": {
+               "spawn_interval_min": "160m",
+               "spawn_interval_max": "250m"
+            },
+				"grass": {
+               "spawn_interval_min": "60m",
+               "spawn_interval_max": "90m"
+            },
+				"dirt": {
+               "spawn_interval_min": "100m",
+               "spawn_interval_max": "150m"
+            },
+            "default": {
+               "spawn_interval_min": "60m",
+               "spawn_interval_max": "100m"
             }
          }
       }

@@ -1,0 +1,34 @@
+{
+   "mixins": [
+      "file(clay_animal_door_small_ghost.json)",
+      "stonehearth_ace:mixins:portals:animal_door_small"
+   ],
+   "type": "entity",
+   "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(clay_animal_door_small_iconic.json)",
+         "ghost_form": "file(clay_animal_door_small_ghost.json)"
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 4,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 2,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 4
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      },
+      "stonehearth_ace:transform_data": {
+         "transform_uri": "stonehearth_ace:portals:clay_animal_door_small:closed"
+      }
+   }
+}

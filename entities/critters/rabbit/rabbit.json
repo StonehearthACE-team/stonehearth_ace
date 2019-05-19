@@ -35,6 +35,12 @@
                      "uri": "stonehearth_ace:resources:bone:bone_material"
                   }
                }
+            },
+				"jerky": {
+               "num_rolls": {
+                  "min": 1,
+                  "max": 2
+               }
             }
          }
       },
@@ -55,8 +61,8 @@
 			   "jerky": {
                   "roll_type": "some_of",
                   "num_rolls": {
-                     "min": 0,
-                     "max": 1
+                     "min": 1,
+                     "max": 3
                   },
                   "items": {
                      "pelt": {
@@ -71,23 +77,11 @@
       "stonehearth:unit_info": {}
    },
    "entity_data": {
+		"mixintypes": {
+			"stonehearth:harvest_beast_loot_table": "remove"
+		},
       "stonehearth:pasture_animal": {
          "size": "small"
-      },
-      "stonehearth:harvest_beast_loot_table": {
-         "entries": {
-            "bones": {
-               "num_rolls": {
-                  "min": 0,
-                  "max": 1
-               },
-               "items": {
-                  "bones": {
-                     "uri": "stonehearth_ace:resources:bone:bone_material"
-                  }
-               }
-            }
-         }
       },
       "stonehearth:catalog": {
          "display_name": "i18n(stonehearth_ace:entities.critters.rabbit.display_name)"

@@ -1,55 +1,23 @@
 {
+   "mixins": [
+      "stonehearth_ace:mixins:portals:animal_door_small",
+      "file(wooden_animal_door_small_ghost.json)"
+   ],
    "type": "entity",
-   "mixins": "file(wooden_animal_door_small_ghost.json)",
    "components": {
       "stonehearth:entity_forms": {
          "iconic_form": "file(wooden_animal_door_small_iconic.json)",
-         "ghost_form": "file(wooden_animal_door_small_ghost.json)",
-         "placeable_on_walls": true,
-         "placeable_on_ground": true,
-         "hide_placement_ui": false
-      },
-      "destination": {
-         "region": [
-            {
-               "min": { "x": -1, "y": 1, "z": 0 },
-               "max": { "x": 1, "y": 2, "z": 1 }
-            }
-         ]
-      },
-      "region_collision_shape": {
-         "region": [
-            {
-               "min": { "x": -1, "y": 0, "z": 0 },
-               "max": { "x": 1, "y": 3, "z": 1 }
-            }
-         ],
-         "region_collision_type": "none"
-      },
-      "stonehearth_ace:transform": {},
-      "stonehearth:door": {
-         "allow_larger": false,
-         "allow_critters": true,
-         "sensor": "door_sensor"
-      },
-      "sensor_list": {
-         "sensors": {
-            "door_sensor": {
-               "type": "sensor",
-               "radius": 1
-            }
-         }
+         "ghost_form": "file(wooden_animal_door_small_ghost.json)"
       }
    },
    "entity_data": {
-      "stonehearth:entity_radius": 0.5,
       "stonehearth:net_worth": {
-         "value_in_gold": 4,
+         "value_in_gold": 3,
          "rarity": "common",
          "shop_info": {
             "buyable": true,
             "sellable": true,
-            "shopkeeper_level": 1,
+            "shopkeeper_level": 2,
             "shopkeeper_type": "caravan"
          }
       },
@@ -60,15 +28,7 @@
          "variable_quality": true
       },
       "stonehearth_ace:transform_data": {
-         "transform_uri": "stonehearth_ace:portals:wooden_animal_door_small:closed",
-         "command": "stonehearth_ace:commands:transform:close_door",
-         "request_action": "stonehearth_ace:transform",
-         "request_action_overlay_effect": "stonehearth_ace:effects:transform_shepherd_overlay_effect",
-         "transforming_worker_effect": "fiddle",
-         "transforming_worker_effect_times": 1,
-         "worker_required_job": {
-            "stonehearth:jobs:shepherd": true
-         }
+         "transform_uri": "stonehearth_ace:portals:wooden_animal_door_small:closed"
       }
    }
 }

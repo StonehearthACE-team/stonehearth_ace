@@ -1,0 +1,28 @@
+{
+   "type": "recipe",
+   "effort": 32,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.herbalist.recipes.sugarbell_transmute_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.sugarbell_transmute_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.sugarbell_transmute_recipe.flavor)",
+   "portrait": "/stonehearth/entities/plants/sugarbell/seed/sugarbell_plant_seed.png",
+   "workshop": "stonehearth:herbalist:workbench",
+   "level_requirement": 6,
+   "ingredients": [
+      {
+         "uri": "stonehearth:food:sugar:sugarbell_basket",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth:plants:sugarbell:seed"
+      },
+      {
+         "item": "stonehearth:plants:sugarbell:seed"
+      },
+      {
+         "item": "stonehearth:plants:sugarbell:seed"
+      }
+   ]
+}

@@ -1,0 +1,27 @@
+{
+   "mixins": [
+      "stonehearth_ace:mixins:portals:animal_door_ghost",
+      "stonehearth:mixins:placed_object"
+   ],
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(clay_animal_door.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.construction.clay_animal_door.display_name)",
+         "description": "i18n(stonehearth_ace:entities.construction.clay_animal_door.description)",
+         "icon": "file(clay_animal_door.png)",
+         "material_tags": [
+            "clay",
+            "crafted"
+         ]
+      }
+   }
+}

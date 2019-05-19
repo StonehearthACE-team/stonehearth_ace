@@ -2,10 +2,10 @@
    "type": "index",
    "trappable_animals": {
       "bugs": {
-         "wilderness_requirement_multiplier": 1
+         "wilderness_requirement_multiplier": 0.45
       },
       "critters": {
-         "wilderness_requirement_multiplier": 2
+         "wilderness_requirement_multiplier": 0.2
       },
       "big_game": {
          "name": "i18n(stonehearth_ace:data.trapping.all_trappable_animals.trappable_animals.big_game.name)",
@@ -13,7 +13,7 @@
          "icon": "/stonehearth/entities/critters/deer/deer.png",
          "ordinal": 3,
          "level_requirement": 6,
-         "wilderness_requirement_multiplier": 0.5
+         "wilderness_requirement_multiplier": 0.12
       }
    }
 }

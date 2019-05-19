@@ -893,7 +893,7 @@
                   "description": "Gained by killing followers of the Red Kiln.",
                   "5_display_name": ", Orc-Biter",
                   "5_description": "It killed 5 followers of the Red Kiln!",
-                  "10_display_name": ", Kiln-Hewer",
+                  "10_display_name": ", Khan-Opener",
                   "10_description": "It killed 10 followers of the Red Kiln! A fine weapon!",
                   "25_display_name": " the Red Death",
                   "25_description": "It killed 25 followers of the Red Kiln! That's something!",
@@ -957,7 +957,7 @@
                   "10_description": "It killed 10 minions of the Wilds! Firewood, anyone?",
                   "25_display_name": ", Sap-Drinker",
                   "25_description": "It killed 25 minions of the Wilds! A ranger would be proud!",
-                  "50_display_name": ", Bane of Wolves",
+                  "50_display_name": ", Bane of the Woods",
                   "50_description": "It killed 50 minions of the Wilds! What did nature do to it?",
                   "75_display_name": ", Green-Ender",
                   "75_description": "It killed 75 minions of the Wilds! It's time to stop, perhaps?",
@@ -1095,6 +1095,36 @@
                   "12_description": "They've been incapacitated 12 times! For how long can they trick death like this?",
                   "20_display_name": " the Immortal",
                   "20_description": "They've been incapacitated 20 times! It is unbelievable how lucky (or foolish) they are."
+               },
+               "swimming": {
+                  "display_name": "Swimming",
+                  "description": "Gained by spending a lot of time swimming.",
+                  "1_display_name": " the Swimmer",
+                  "1_description": "They've spent a whole day swimming!",
+                  "2_display_name": " the Fish",
+                  "2_description": "They've spent three whole days swimming! They must love water.",
+                  "3_display_name": " the Seahorse",
+                  "3_description": "They've spent a whole month swimming! Such energy!",
+                  "4_display_name": " the Shark",
+                  "4_description": "They've spent three months swimming! What?!",
+                  "5_display_name": ", Aquaman",
+                  "5_description": "They've spent half a year swimming! I bet the other half was sleeping..."
+               },
+               "sweet_energy": {
+                  "display_name": "Sugar Binge",
+                  "description": "Gained by eating a lot of sweet foods!",
+                  "1_display_name": ", Munchie",
+                  "1_description": "They have eaten sweet foods 10 times! Still healthy enough, probably.",
+                  "2_display_name": ", Sweet Tooth",
+                  "2_description": "They have eaten sweet foods 25 times! Who can resist some candy?",
+                  "3_display_name": ", Sugar Rushed",
+                  "3_description": "They have eaten sweet foods 50 times! They really like it!",
+                  "4_display_name": " the Cookie-Eater",
+                  "4_description": "They have eaten sweet foods 100 times! That's a lot, watch out for your sugar levels!",
+                  "5_display_name": ", Candy-Lover",
+                  "5_description": "They have eaten sweet foods 200 times! That's probably not healthy...",
+                  "6_display_name": " the Sugar Monster",
+                  "6_description": "They have eaten sweet foods 500 times! Did they even manage to sleep lately?"
                }
             }
          }
@@ -1686,6 +1716,11 @@
                "description": "Separate seeds from the herbs",
                "flavor": "Only a skilled hand can harvest the weaker seeds, but the herbs are lost in the process."
             },
+            "sugarbell_transmute_recipe": {
+               "recipe_name": "Sugarbell Seeds (x3)",
+               "description": "Separate seeds from the harvest",
+               "flavor": "Only a skilled hand can harvest the weaker seeds, but the sugarbells are lost in the process."
+            },
             "marblesprout_transmute_recipe": {
                "recipe_name": "Marblesprout Seeds (x3)",
                "description": "Separate seeds from the stone",
@@ -2044,6 +2079,16 @@
                "description": "Required for creating porcelain and beautiful ornate ceramics.",
                "flavor": "With the correct ingredients and skill, the potter has mastered a much more efficient way to produce bone clay"
             },
+				"clay_animal_door_recipe": {
+               "recipe_name": "Clay Animal Door",
+               "description": "A large door for animal shelters, it can be closed by a shepherd. When closed, only hearthlings may go through!",
+               "flavor": ""
+            },
+				"clay_animal_door_small_recipe": {
+               "recipe_name": "Clay Small Animal Door",
+               "description": "A small door for animal shelters, it can be closed by a shepherd.",
+               "flavor": "When placed on ground level, the two tiles of dirt underneath it must be dug out for it to work!"
+            },
             "clay_comfy_bed_recipe": {
                "recipe_name": "Clay Comfy Bed",
                "description": "It has a lot less sand on the mattress.",
@@ -2296,6 +2341,16 @@
                "recipe_name": "Bone Carving Studio",
                "description": "Required by the mason to carve furniture and equipment out of bone material.",
                "flavor": ""
+            },
+				"stone_animal_door_recipe": {
+               "recipe_name": "Stone Animal Door",
+               "description": "A large door for animal shelters, it can be closed by a shepherd. When closed, only hearthlings may go through!",
+               "flavor": ""
+            },
+				"stone_animal_door_small_recipe": {
+               "recipe_name": "Stone Small Animal Door",
+               "description": "A small door for animal shelters, it can be closed by a shepherd.",
+               "flavor": "When placed on ground level, the two tiles of dirt underneath it must be dug out for it to work!"
             },
             "legendary_headpiece_recipe": {
                "recipe_name": "Fallen Star",
@@ -3267,6 +3322,16 @@
       },
       "carpenter": {
          "recipes": {
+				"wooden_animal_door_recipe": {
+               "recipe_name": "Wooden Animal Door",
+               "description": "A large door for animal shelters, it can be closed by a shepherd. When closed, only hearthlings may go through!",
+               "flavor": ""
+            },
+				"wooden_animal_door_small_recipe": {
+               "recipe_name": "Wooden Small Animal Door",
+               "description": "A small door for animal shelters, it can be closed by a shepherd.",
+               "flavor": "When placed on ground level, the two tiles of dirt underneath it must be dug out for it to work!"
+            },
             "long_bow_recipe": {
                "recipe_name": "Long Bow",
                "description": "A longer cross-section makes it more efficient than an average bow."
@@ -3791,11 +3856,27 @@
             "description": "A small door for animal shelters. Can be opened or closed by a shepherd."
          },
          "animal_door_closed": {
-            "description": "This animal door is closed and requires a Shepherd to unlock it."
+            "description": "This door is closed for animals and requires a Shepherd to unlock it."
          },
          "wooden_animal_door": {
             "display_name": "Wooden Animal Door",
             "description": "A large door for animal shelters. Can be opened or closed by a shepherd."
+         },
+         "stone_animal_door": {
+            "description": "A large door for animal shelters. Can be opened or closed by a shepherd.",
+            "display_name": "Stone Animal Door"
+         },
+         "clay_animal_door": {
+            "description": "A large door for animal shelters. Can be opened or closed by a shepherd.",
+            "display_name": "Clay Animal Door"
+         },
+         "clay_animal_door_small": {
+            "description": "A small door for animal shelters. Can be opened or closed by a shepherd.",
+            "display_name": "Clay Small Animal Door"
+         },
+         "stone_animal_door_small": {
+            "description": "A small door for animal shelters. Can be opened or closed by a shepherd.",
+            "display_name": "Stone Small Animal Door"
          }
       },
       "crops": {
@@ -4860,11 +4941,11 @@
          },
          "pasture_bed_small": {
             "display_name": "Small Pasture Bedding",
-            "description": "Pasture animals will rest during the night or bad weather. Must be placed in a pasture."
+            "description": "Pasture animals will rest during the night or bad weather. Must be in a pasture."
          },
          "pasture_bed": {
             "display_name": "Pasture Bedding",
-            "description": "Pasture animals will rest during the night or bad weather. Must be placed in a pasture."
+            "description": "Pasture animals will rest during the night or bad weather. Must be in a pasture."
          },
          "banquet_table_highland_pine": {
             "display_name": "Highland Pine Banquet Table",

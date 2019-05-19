@@ -1,0 +1,39 @@
+{
+   "mixins": [
+      "stonehearth_ace:mixins:portals:animal_door:closed"
+   ],
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(clay_animal_door.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.construction.clay_animal_door.display_name)",
+         "description": "i18n(stonehearth_ace:entities.construction.animal_door_closed.description)",
+         "icon": "file(clay_animal_door.png)",
+         "material_tags": [
+            "clay",
+            "crafted"
+         ]
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 8,
+         "rarity": "common"
+      },
+      "stonehearth:appeal": {
+         "appeal": 6
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      },
+      "stonehearth_ace:transform_data": {
+         "transform_uri": "stonehearth_ace:portals:clay_animal_door"
+      }
+   }
+}
