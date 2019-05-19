@@ -20,15 +20,16 @@ local get_always_false_filter = function()
    return ALWAYS_FALSE_FRC
 end
 
-local get_door_filter = function(door_entity)
-   local player_id = radiant.entities.get_player_id(door_entity)
-   local filter = DOOR_FILTERS[player_id]
-   if not filter then
-      local json = radiant.entities.get_json(door_entity:get_component('stonehearth:door'))
-      local allow_critters = not json or json.allow_critters ~= false
-      local allow_larger = not json or json.allow_larger ~= false
-      local allow_pasture_animals = json and json.allow_pasture_animals
+local get_door_filter = function(door_comp)
+   local player_id = radiant.entities.get_player_id(door_comp._entity)
+   local json = radiant.entities.get_json(door_comp)
+   local allow_critters = not json or json.allow_critters ~= false
+   local allow_larger = not json or json.allow_larger ~= false
+   local allow_pasture_animals = json and json.allow_pasture_animals
+   local key = string.format('%s.%s.%s.%s', player_id, tostring(allow_critters), tostring(allow_larger), tostring(allow_pasture_animals))
+   local filter = DOOR_FILTERS[key]
 
+   if not filter then
       local filter_fn = function(entity)
          local entity_player_id = radiant.entities.get_player_id(entity)
          local is_not_hostile = stonehearth.player:are_player_ids_not_hostile(player_id, entity_player_id)
@@ -70,7 +71,7 @@ local get_door_filter = function(door_entity)
          frc = frc,
          listener = amenity_changed_listener
       }
-      DOOR_FILTERS[player_id] = filter
+      DOOR_FILTERS[key] = filter
    end
    return filter
 end
@@ -99,7 +100,7 @@ function AceDoorComponent:_get_filter_cache()
    if self:is_lockable() and self:is_locked() then
       return get_always_false_filter().cache
    else
-      return get_door_filter(self._entity).frc.cache
+      return get_door_filter(self).frc.cache
    end
 end
 
