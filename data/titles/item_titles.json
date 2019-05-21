@@ -269,8 +269,195 @@
          }
       ]
    },
-	"hunter": {
+	"ogre_killer": {
       "ordinal": 9,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.ogre_killer_item.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.ogre_killer_item.description)",
+      "requirement": {
+         "statistics": {
+            "category": "category_kills",
+            "name": "ogre"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.ogre_killer_item.3_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.ogre_killer_item.3_description)",
+            "required_value": 3
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.ogre_killer_item.6_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.ogre_killer_item.6_description)",
+            "required_value": 6
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.ogre_killer_item.12_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.ogre_killer_item.12_description)",
+            "required_value": 12
+         },
+			{
+            "rank": 4,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.ogre_killer_item.30_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.ogre_killer_item.30_description)",
+            "required_value": 30
+         }
+      ]
+   },
+	"mountain_killer": {
+      "ordinal": 9.01,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.mountain_killer_item.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.mountain_killer_item.description)",
+      "requirement": {
+         "statistics": {
+            "category": "category_kills",
+            "name": "ogre_boss"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.mountain_killer_item.1_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.mountain_killer_item.1_description)",
+            "required_value": 1
+         }
+      ]
+   },
+	"varanus_killer": {
+      "ordinal": 9.1,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.varanus_killer_item.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.varanus_killer_item.description)",
+      "requirement": {
+         "statistics": {
+            "category": "category_kills",
+            "name": "varanus"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.varanus_killer_item.5_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.varanus_killer_item.5_description)",
+            "required_value": 5
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.varanus_killer_item.10_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.varanus_killer_item.10_description)",
+            "required_value": 10
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.varanus_killer_item.25_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.varanus_killer_item.25_description)",
+            "required_value": 25
+         },
+			{
+            "rank": 4,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.varanus_killer_item.50_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.varanus_killer_item.50_description)",
+            "required_value": 50
+         }
+      ]
+   },
+	"zilla_killer": {
+      "ordinal": 9.11,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.zilla_killer_item.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.zilla_killer_item.description)",
+      "requirement": {
+         "statistics": {
+            "category": "category_kills",
+            "name": "varanus_boss"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.zilla_killer_item.1_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.zilla_killer_item.1_description)",
+            "required_value": 1
+         }
+      ]
+   },
+	"leader_killer": {
+      "ordinal": 9.2,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.leader_killer_item.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.leader_killer_item.description)",
+      "requirement": {
+         "statistics": {
+            "category": "category_kills",
+            "name": "goblin_miniboss"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.leader_killer_item.1_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.leader_killer_item.1_description)",
+            "required_value": 1
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.leader_killer_item.3_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.leader_killer_item.3_description)",
+            "required_value": 3
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.leader_killer_item.5_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.leader_killer_item.5_description)",
+            "required_value": 5
+         },
+			{
+            "rank": 4,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.leader_killer_item.10_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.leader_killer_item.10_description)",
+            "required_value": 10
+         }
+      ]
+   },
+	"ogo_killer": {
+      "ordinal": 9.21,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.ogo_killer_item.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.ogo_killer_item.description)",
+      "requirement": {
+         "statistics": {
+            "category": "category_kills",
+            "name": "goblin_boss"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.ogo_killer_item.1_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.ogo_killer_item.1_description)",
+            "required_value": 1
+         }
+      ]
+   },
+	"warchief_killer": {
+      "ordinal": 9.22,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.warchief_killer_item.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.warchief_killer_item.description)",
+      "requirement": {
+         "statistics": {
+            "category": "category_kills",
+            "name": "orc_boss"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.warchief_killer_item.1_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.warchief_killer_item.1_description)",
+            "required_value": 1
+         }
+      ]
+   },
+	"hunter": {
+      "ordinal": 9.99,
       "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.hunter_item.display_name)",
       "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.hunter_item.description)",
       "requirement": {
