@@ -39,10 +39,11 @@ end
 --    player_id of victim, category of victim (if available), total kills/assists, and notable victim kills
 function AceCombatService:_record_kill_stats(attacker, target, units)
    local enemy_player = get_player_id(target)
-   local catalog_data = stonehearth.catalog:get_catalog_data(target)
-   local enemy_category = catalog_data and catalog_data.category
 
-   if enemy_player and enemy_player ~= '' then
+   if enemy_player and enemy_player ~= '' then   
+      local catalog_data = stonehearth.catalog:get_catalog_data(target:get_uri())
+      local enemy_category = catalog_data and catalog_data.category
+
       for _, unit in pairs(units) do
          -- for the attacker, record kills; otherwise record assists
          -- only record assists for hearthlings that are in a combat stance
