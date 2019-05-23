@@ -121,4 +121,16 @@ function ace_entities.add_to_stat_list(entity, category, name, value, default)
    entity:add_component('stonehearth_ace:statistics'):add_to_stat_list(category, name, value, default)
 end
 
+function ace_entities.get_property_value(entity, property)
+   local pv_comp = entity:get_component('stonehearth_ace:property_values')
+   return pv_comp and pv_comp:get_property(property)
+end
+
+-- replace defaults to true, specify as false if you want to avoid replacing existing values
+-- returns true if successful
+function ace_entities.set_property_value(entity, property, value, replace)
+   local pv_comp = entity:add_component('stonehearth_ace:property_values')
+   return pv_comp:set_property(property, value, replace)
+end
+
 return ace_entities

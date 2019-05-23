@@ -156,6 +156,37 @@ end
 --    return result
 -- end
 
+function CraftOrder:is_missing_ingredient(ingredients)
+   -- these ingredients still maintain the old counts but are separated out
+   -- need to count them up
+   -- TODO: integrate this into the ingredient_list controller
+   local combined_ingredients = {}
+   for _, ingredient in ipairs(ingredients) do
+      local combined = combined_ingredients[ingredient.uri or ingredient.material]
+      if not combined then
+         combined = radiant.shallow_copy(ingredient)
+         combined.count = 0
+         combined_ingredients[ingredient.uri or ingredient.material] = combined
+      end
+      combined.count = combined.count + 1
+   end
+
+   local tracking_data = self._usable_item_tracking_data
+   -- Process all uri ingredients first since it is less expensive to early exit here
+   for _, ingredient in pairs(combined_ingredients) do
+      if ingredient.uri then
+         if not self:_has_uri_ingredients_for_item(ingredient, tracking_data) then
+            return ingredient
+         end
+      elseif ingredient.material then
+         if not self:_has_material_ingredients_for_item(ingredient, tracking_data) then
+            return ingredient
+         end
+      end
+   end
+   return false
+end
+
 function AceCraftOrder:ingredient_has_multiple_qualities(ingredient)
    local tracking_data = self._usable_item_tracking_data
    if ingredient.uri then

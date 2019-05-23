@@ -76,15 +76,6 @@ function UnitInfoComponent:set_icon(custom_icon)
 end
 ]]
 
-function AceUnitInfoComponent:is_notable()
-   return self._sv.is_notable or false
-end
-
-function AceUnitInfoComponent:set_notability(is_notable)
-   self._sv.is_notable = is_notable
-   self.__saved_variables:mark_changed()
-end
-
 function AceUnitInfoComponent:get_custom_data()
    return self._sv.custom_data
 end

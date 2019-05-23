@@ -43,13 +43,14 @@ function AceCombatService:_record_kill_stats(attacker, target, units)
    if enemy_player and enemy_player ~= '' then   
       local catalog_data = stonehearth.catalog:get_catalog_data(target:get_uri())
       local enemy_category = catalog_data and catalog_data.category
+      local enemy_specifier = radiant.entities.get_property_value(target, 'stats_specifier')
 
       for _, unit in pairs(units) do
          -- for the attacker, record kills; otherwise record assists
          -- only record assists for hearthlings that are in a combat stance
          local stance = self:get_stance(unit)
          if stance == 'defensive' or stance == 'aggressive' then
-            self:_record_kill_stats_for_entity(unit, unit == attacker and 'kills' or 'assists', enemy_player, enemy_category, true)
+            self:_record_kill_stats_for_entity(unit, unit == attacker and 'kills' or 'assists', enemy_player, enemy_category, enemy_specifier, true)
          end
       end
       self:_record_notable_kill_for_entity(attacker, target)
@@ -58,14 +59,14 @@ function AceCombatService:_record_kill_stats(attacker, target, units)
       local equipment = attacker:get_component('stonehearth:equipment')
       if equipment then
          for _, piece in pairs(equipment:get_all_items()) do
-            self:_record_kill_stats_for_entity(piece, 'kills', enemy_player, enemy_category, true)
+            self:_record_kill_stats_for_entity(piece, 'kills', enemy_player, enemy_category, enemy_specifier, true)
             self:_record_notable_kill_for_entity(piece, target)
          end
       end
    end
 end
 
-function AceCombatService:_record_kill_stats_for_entity(entity, category, name, enemy_category, increment_totals)
+function AceCombatService:_record_kill_stats_for_entity(entity, category, name, enemy_category, enemy_specifier, increment_totals)
    local stats_comp = entity:get_component('stonehearth_ace:statistics')
 
    if stats_comp then
@@ -73,6 +74,10 @@ function AceCombatService:_record_kill_stats_for_entity(entity, category, name, 
 
       if enemy_category then
          stats_comp:increment_stat('category_' .. category, enemy_category)
+      end
+
+      if enemy_specifier then
+         stats_comp:increment_stat('specific_' .. category, enemy_specifier)
       end
 
       if increment_totals then
@@ -84,9 +89,9 @@ end
 function AceCombatService:_record_notable_kill_for_entity(entity, target)
    local stats_comp = entity:get_component('stonehearth_ace:statistics')
    if stats_comp then
-      local unit_info = target:get_component('stonehearth:unit_info')
-      if unit_info and unit_info:is_notable() then
-         stats_comp:add_to_stat_list('notable_kills', 'names', unit_info:get_custom_name(target))
+      local is_notable = radiant.entities.get_property_value(target, 'notable')
+      if is_notable then
+         stats_comp:add_to_stat_list('notable_kills', 'names', radiant.entities.get_custom_name(target))
       end
    end
 end

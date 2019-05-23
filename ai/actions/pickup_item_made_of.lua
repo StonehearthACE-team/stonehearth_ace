@@ -27,7 +27,7 @@ PickupItemMadeOf.priority = 0
 
 local ai = stonehearth.ai
 return ai:create_compound_action(PickupItemMadeOf)
-         :execute('stonehearth:material_to_filter_fn', {
+         :execute('stonehearth_ace:material_to_filter_fn_for_pickup', {
             material = ai.ARGS.material,
             owner = ai.ARGS.owner_player_id or ai.ENTITY:get_player_id()
          })

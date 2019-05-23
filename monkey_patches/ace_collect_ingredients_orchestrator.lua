@@ -84,7 +84,18 @@ function AceCollectIngredients:run(town, args)
          return distance_score
       end
 
+      local first_loop = true
       while not ingredients:completed() do
+         -- if we're on the second or later ingredient, re-verify that all ingredients are available
+         if first_loop then
+            first_loop = false
+         else
+            local failed_ingredient = self._order:is_missing_ingredient(ingredients._remaining_ingredients)
+            if failed_ingredient then
+               return false
+            end
+         end
+
          local ing = ingredients:get_next_ingredient()
          local args = {
             ingredient = ing,

@@ -23,7 +23,7 @@ function AceCrafterComponent:clean_up_order()
    self:_distribute_all_crafting_ingredients()
    if self._sv.curr_order then
       self._sv.curr_order:reset_progress(self._entity)   -- Paul: added entity reference for multiple-crafter compatibility
-      self._sv.curr_order:set_crafting_status(self._entity, nil)  -- Paul: added entity reference for multiple-crafter compatibility
+      self._sv.curr_order:set_crafting_status(self._entity, false)  -- Paul: added entity reference for multiple-crafter compatibility
       self._sv.curr_order = nil
    end
    if self._sv.curr_workshop then

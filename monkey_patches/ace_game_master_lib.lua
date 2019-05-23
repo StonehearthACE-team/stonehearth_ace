@@ -5,12 +5,27 @@ ace_game_master_lib._ace_old_create_citizens = game_master_lib.create_citizens
 function ace_game_master_lib.create_citizens(population, info, origin, ctx)
    local citizens = ace_game_master_lib._ace_old_create_citizens(population, info, origin, ctx)
 
-   if info.statistics then
+   local tuning
+   if info.tuning then
+      tuning = radiant.resources.load_json(info.tuning)
+   end
+
+   local info_statistics = info and info.statistics
+   local tuning_statistics = tuning and tuning.statistics
+
+   if info_statistics or tuning_statistics then
+      -- tuning can override info for any individual aspect
+      local statistics = radiant.shallow_copy(info_statistics or {})
+      radiant.util.merge_into_table(statistics, tuning_statistics or {})
+
       for i, citizen in ipairs(citizens) do
-         if info.statistics.is_notable then
-            citizen:add_component('stonehearth:unit_info'):set_notability(true)
+         if statistics.is_notable then
+            radiant.entities.set_property_value(citizen, 'notable', true)
          end
          -- any other statistics-based settings?
+         if statistics.specifier then
+            radiant.entities.set_property_value(citizen, 'stats_specifier', statistics.specifier)
+         end
       end
    end
 
