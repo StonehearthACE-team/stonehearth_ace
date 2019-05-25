@@ -992,7 +992,7 @@
                   "25_display_name": ", Guardian of Worlds",
                   "25_description": "It killed 25 corrupted beings! This world shall remember its name."
                },
-					"ogre_killer": {
+               "ogre_killer": {
                   "display_name": "Ogre Killer",
                   "description": "Gained by killing ogres.",
                   "3_display_name": " the Ogre Slayer",
@@ -1004,7 +1004,7 @@
                   "30_display_name": ", Death from Below",
                   "30_description": "They killed 30 ogres! Size really doesn't matter."
                },
-					"ogre_killer_item": {
+               "ogre_killer_item": {
                   "display_name": "Ogre Killer",
                   "description": "Gained by killing ogres.",
                   "3_display_name": ", Ogre-foe",
@@ -1016,19 +1016,19 @@
                   "30_display_name": " the Tickler",
                   "30_description": "It killed 30 ogres! What an epic weapon!"
                },
-					"mountain_killer": {
+               "mountain_killer": {
                   "display_name": "Ogre Boss Killer",
                   "description": "Gained by killing the ogre boss.",
                   "1_display_name": ", Mountain-breaker",
                   "1_description": "They've killed the most fearsome ogre!"
                },
-					"mountain_killer_item": {
+               "mountain_killer_item": {
                   "display_name": "Ogre Boss Killer",
                   "description": "Gained by killing the ogre boss.",
                   "1_display_name": " the Underbiter",
                   "1_description": "It was used to kill the most fearsome ogre!"
                },
-					"varanus_killer": {
+               "varanus_killer": {
                   "display_name": "Lizard Killer",
                   "description": "Gained by killing varani and such.",
                   "5_display_name": ", Tail-Catcher",
@@ -1040,7 +1040,7 @@
                   "50_display_name": ", Cold-Blooded",
                   "50_description": "They killed 50 lizards! The species is probably endangered!"
                },
-					"varanus_killer_item": {
+               "varanus_killer_item": {
                   "display_name": "Lizard Killer",
                   "description": "Gained by killing varani and such.",
                   "5_display_name": ", Tongue-Splitter",
@@ -1052,19 +1052,19 @@
                   "50_display_name": ", Serpent's Fang",
                   "50_description": "It killed 50 lizards! Probably some amphibians too."
                },
-					"zilla_killer": {
+               "zilla_killer": {
                   "display_name": "Lizard Boss Killer",
                   "description": "Gained by killing the lizard boss.",
                   "1_display_name": ", Got-Zilla",
                   "1_description": "They've killed the most fearsome lizard!"
                },
-					"zilla_killer_item": {
+               "zilla_killer_item": {
                   "display_name": "Lizard Boss Killer",
                   "description": "Gained by killing the lizard boss.",
                   "1_display_name": ", Cinderforged",
                   "1_description": "It was used to kill the most fearsome lizard!"
                },
-					"leader_killer": {
+               "leader_killer": {
                   "display_name": "Leader Killer",
                   "description": "Gained by killing enemy leaders.",
                   "1_display_name": ", Rioter",
@@ -1076,7 +1076,7 @@
                   "10_display_name": ", Usurper",
                   "10_description": "They killed 10 enemy leaders! Chaos in their ranks!"
                },
-					"leader_killer_item": {
+               "leader_killer_item": {
                   "display_name": "Chieftain Killer",
                   "description": "Gained by killing enemy leaders.",
                   "1_display_name": ", Clearer",
@@ -1088,25 +1088,25 @@
                   "10_display_name": " the Unsettler",
                   "10_description": "It killed 10 enemy leaders! It loves anarchy!"
                },
-					"ogo_killer": {
+               "ogo_killer": {
                   "display_name": "Goblin Boss Killer",
                   "description": "Gained by killing the goblin boss.",
                   "1_display_name": " the Unbonked",
                   "1_description": "They've killed the most fearsome goblin!"
                },
-					"ogo_killer_item": {
+               "ogo_killer_item": {
                   "display_name": "Goblin Boss Killer",
                   "description": "Gained by killing the goblin boss.",
                   "1_display_name": ", Ogo's Demise",
                   "1_description": "It was used to kill the most fearsome goblin!"
                },
-					"warchief_killer": {
+               "warchief_killer": {
                   "display_name": "Orc Boss Challenger",
                   "description": "Gained by defeating the orc boss.",
                   "1_display_name": " the Khan's Duelist",
                   "1_description": "They've bested the most fearsome orc in combat!"
                },
-					"warchief_killer_item": {
+               "warchief_killer_item": {
                   "display_name": "Orc Boss Challenger",
                   "description": "Gained by defeating the orc boss.",
                   "1_display_name": ", Warchief's Mercy",
@@ -1547,7 +1547,7 @@
          },
          "armor_light": {
             "display_name": "Lightly Geared",
-            "description": "This hearthling is lightly armored and has increased speed but reduced courage and menace."
+            "description": "This hearthling is lightly armored and has no speed penalty but reduced courage and menace."
          },
          "armor_medium": {
             "display_name": "Fairly Geared",
@@ -1559,11 +1559,11 @@
          },
          "shield_heavy": {
             "display_name": "Heavy Shield",
-            "description": "Defense is overall increased but speed is slightly decreased."
+            "description": "Defense and courage are increased but speed is slightly reduced."
          },
          "shield_light": {
             "display_name": "Light Shield",
-            "description": "Courage and speed are slightly increased."
+            "description": "Courage is slightly increased but speed is slightly reduced."
          },
          "weather": {
             "chilly_debuff": {
@@ -2199,12 +2199,12 @@
                "description": "Required for creating porcelain and beautiful ornate ceramics.",
                "flavor": "With the correct ingredients and skill, the potter has mastered a much more efficient way to produce bone clay"
             },
-				"clay_animal_door_recipe": {
+            "clay_animal_door_recipe": {
                "recipe_name": "Clay Animal Door",
                "description": "A large door for animal shelters, it can be closed by a shepherd. When closed, only hearthlings may go through!",
                "flavor": ""
             },
-				"clay_animal_door_small_recipe": {
+            "clay_animal_door_small_recipe": {
                "recipe_name": "Clay Small Animal Door",
                "description": "A small door for animal shelters, it can be closed by a shepherd.",
                "flavor": "When placed on ground level, the two tiles of dirt underneath it must be dug out for it to work!"
@@ -2462,12 +2462,12 @@
                "description": "Required by the mason to carve furniture and equipment out of bone material.",
                "flavor": ""
             },
-				"stone_animal_door_recipe": {
+            "stone_animal_door_recipe": {
                "recipe_name": "Stone Animal Door",
                "description": "A large door for animal shelters, it can be closed by a shepherd. When closed, only hearthlings may go through!",
                "flavor": ""
             },
-				"stone_animal_door_small_recipe": {
+            "stone_animal_door_small_recipe": {
                "recipe_name": "Stone Small Animal Door",
                "description": "A small door for animal shelters, it can be closed by a shepherd.",
                "flavor": "When placed on ground level, the two tiles of dirt underneath it must be dug out for it to work!"
@@ -3442,12 +3442,12 @@
       },
       "carpenter": {
          "recipes": {
-				"wooden_animal_door_recipe": {
+            "wooden_animal_door_recipe": {
                "recipe_name": "Wooden Animal Door",
                "description": "A large door for animal shelters, it can be closed by a shepherd. When closed, only hearthlings may go through!",
                "flavor": ""
             },
-				"wooden_animal_door_small_recipe": {
+            "wooden_animal_door_small_recipe": {
                "recipe_name": "Wooden Small Animal Door",
                "description": "A small door for animal shelters, it can be closed by a shepherd.",
                "flavor": "When placed on ground level, the two tiles of dirt underneath it must be dug out for it to work!"
@@ -4341,6 +4341,14 @@
             "daisy": {
                "display_name": "Daisy Flowers",
                "description": "A common herb often used for decorations."
+            },
+            "foxlily": {
+               "display_name": "Fox Lily Flowers",
+               "description": "A rare and beautiful herb used by herbalists."
+            },
+            "sunflower": {
+               "display_name": "Sunflower",
+               "description": "A lovely and rare herb that makes anyone's day merrier!"
             }
          },
          "stone": {
@@ -7578,6 +7586,10 @@
          "pet_food_bowl_bone": {
             "display_name": "Bone Kibble Bowl",
             "description": "Hearthlings can put kibble in this creepy bowl for their pets to eat."
+         },
+         "input_keg_wood": {
+            "display_name": "Wooden Supply Keg",
+            "description": "A supply container, for quicker crafting. This container may only hold liquids."
          }
       },
       "tools": {
@@ -8146,7 +8158,8 @@
                   "tooltip_algae": "Algae",
                   "tooltip_essences": "Essences",
                   "tooltip_fertilizer": "Fertilizer",
-                  "tooltip_seeds_consumable": "Farming Seeds"
+                  "tooltip_seeds_consumable": "Farming Seeds",
+                  "tooltip_raw_drinks": "Raw Drinks"
                }
             },
             "pasture": {

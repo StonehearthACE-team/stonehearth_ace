@@ -1,0 +1,23 @@
+{
+   "components": {
+      "stonehearth:resource_node": {
+			"resource": "stonehearth_ace:resources:herb:foxlily",
+			"resource_loot_table": {
+            "entries": {
+               "second_herb": {
+                  "num_rolls": {
+                     "min": 0,
+                     "max": 1
+                  },
+                  "items": {
+                     "pelt": {
+                        "uri": "stonehearth_ace:resources:herb:foxlily",
+                        "weight": 1
+                     }
+                  }
+               }
+            }
+         }
+      }
+   }
+}

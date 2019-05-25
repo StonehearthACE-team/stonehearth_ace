@@ -1,3 +1,12 @@
 {
-   "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.sunflower_transmute_recipe.flavor)"
+   "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.sunflower_transmute_recipe.flavor)",
+	"mixintypes": {
+		"ingredients": "override"
+	},
+	"ingredients": [
+      {
+         "uri": "stonehearth_ace:resources:herb:sunflower",
+         "count": 1
+      }
+   ]
 }
