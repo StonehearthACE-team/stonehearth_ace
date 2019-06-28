@@ -1,0 +1,49 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(tea_serving.qb)"
+            ]
+         }
+      },
+      "effect_list": {
+         "effects": [
+            "stonehearth_ace:effects:drink:tea:serving"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:item": {
+         "category": "drink",
+         "destroy_on_uncarry": true
+      },
+      "stonehearth_ace:drink": {
+         "stonehearth:sitting_on_chair": {
+            "satisfaction": 60
+         },
+         "default": {
+            "satisfaction": 40
+         },
+         "applied_buffs": [
+            "stonehearth_ace:buffs:consumption:harmony_minor",
+            "stonehearth_ace:buffs:consumption:warm_belly"
+         ],
+         "quality": 4,
+         "effect_loops": 3
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.drink.tea.tea_serving.display_name)",
+         "description": "",
+         "material_tags": [
+            "drink",
+            "tea_serving",
+            "tea",
+            "tea_hour"
+         ],
+         "subject_override": "stonehearth_ace:drink:tea"
+      }
+   }
+}

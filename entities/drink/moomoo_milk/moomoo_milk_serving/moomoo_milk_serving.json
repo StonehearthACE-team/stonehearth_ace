@@ -15,25 +15,24 @@
          "category": "drink",
          "destroy_on_uncarry": true
       },
-      "stonehearth:food": {
+      "stonehearth_ace:drink": {
          "stonehearth:sitting_on_chair": {
             "satisfaction": 30
          },
          "default": {
-            "satisfaction": 15
+            "satisfaction": 20
          },
-         "eating_effect": "sitting_drink",
          "quality": 2
       },
       "stonehearth:catalog": {
          "display_name": "i18n(stonehearth_ace:entities.drink.moomoo_milk.moomoo_milk_serving.display_name)",
          "description": "i18n(stonehearth_ace:entities.drink.moomoo_milk.moomoo_milk_serving.description)",
          "material_tags": [
-            "food",
             "drink",
             "moomoo_milk_serving",
             "milk",
-            "dairy"
+            "dairy",
+            "coffee_hour"
          ],
          "subject_override": "stonehearth_ace:drink:dairy:moomoo_milk"
       }

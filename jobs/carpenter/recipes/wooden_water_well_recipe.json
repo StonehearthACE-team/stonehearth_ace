@@ -1,0 +1,34 @@
+{
+   "type": "recipe",
+   "effort": 30,
+   "work_units": 20,
+   "recipe_name": "i18n(stonehearth_ace:jobs.carpenter.recipes.wooden_water_well_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.carpenter.recipes.wooden_water_well_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.carpenter.recipes.wooden_water_well_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/construction/wooden_water_well/wooden_water_well.png",
+   "workshop": "stonehearth:carpenter:workbench",
+   "level_requirement": 2,
+   "ingredients": [
+		{
+         "material": "stone resource",
+         "count": 8
+      },
+      {
+         "material": "wood resource",
+         "count": 4
+      },
+		{
+         "uri": "stonehearth:resources:iron:ore",
+         "count": 1
+      },
+      {
+         "material": "fiber resource",
+         "count": 10
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:construction:wooden:water_well:building"
+      }
+   ]
+}

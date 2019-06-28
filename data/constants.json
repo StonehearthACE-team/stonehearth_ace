@@ -587,16 +587,92 @@
             }
          ]
       },
+		"attributes": {
+         "defaults": {
+            "drink_satiety_loss_multiplier": 1.0
+         }
+      },
       "thoughts": {
          "food_quality": {
             "INTOLERABLE": "stonehearth:thoughts:eating:ate_intolerable",
             "LOVELY": "stonehearth:thoughts:eating:ate_lovely"
+         },
+			"drink_quality": {
+				"INTOLERABLE": "stonehearth:thoughts:drinking:intolerable",
+            "UNPALATABLE": "stonehearth:thoughts:drinking:unpalatable",
+            "RAW": "stonehearth:thoughts:drinking:raw",
+				"BLAND": "stonehearth:thoughts:drinking:bland",
+            "PREPARED": "stonehearth:thoughts:drinking:prepared",            
+            "TASTY": "stonehearth:thoughts:drinking:tasty",
+				"LOVELY": "stonehearth:thoughts:drinking:lovely"
+         },
+			"drink_item_quality": {
+				"FINE": "stonehearth:thoughts:drinking:had_item_quality_fine",
+            "EXCELLENT": "stonehearth:thoughts:drinking:had_item_quality_excellent",
+            "MASTERWORK": "stonehearth:thoughts:drinking:had_item_quality_masterwork"
          }
       },
       "food_qualities": {
          "INTOLERABLE": -1,
          "LOVELY": 7,
          "MAXIMUM": 7
+      },
+		"drink_qualities" : {
+			"INTOLERABLE": -1,
+         "UNPALATABLE": 0,
+         "MINIMUM_VIABLE": 1,
+         "RAW_BLAND": 1,
+         "RAW_AVERAGE": 2,
+         "RAW_TASTY": 3,
+         "PREPARED_BLAND": 4,
+         "PREPARED_AVERAGE": 5,
+         "PREPARED_TASTY": 6,
+			"LOVELY": 7,
+         "MAXIMUM": 7
+      },      
+      "drink_satiety" : {
+         "MAX_DRINK_SATIETY" : 100,
+         "SATED": 70,
+         "VERY_THIRSTY": 10,
+         "THIRSTY": 40,
+         "MIN_DRINK_SATIETY" : 1, 
+         "HOURLY_DRINK_SATIETY_LOSS" : 1.5,
+         "DRINKTIME_START": 6,
+         "DRINKTIME_COFFEE_START": 8,
+         "DRINKTIME_TEA_START" : 18,
+			"DRINKTIME_LEISURE_START" : 21,
+         "DRINK_TIME_WINDOW": "2h",
+         "PREFERRED_DRINK_BONUS": 1.5,
+         "HAD_DRINK_RECENTLY_WINDOW": 2200
+      },
+		"drink_satiety_levels": {
+         "SATED": 1,
+         "NEUTRAL": 2,
+         "THIRSTY": 3,
+         "VERY_THIRSTY": 4
+      }, 
+		"score": {
+         "drink": {
+            "RAW_DRINK_COUNT_MULTIPLIER": 1,
+            "PREPARED_DRINK_COUNT_MULTIPLIER": 1,
+            "LUXURY_DRINK_COUNT_MULTIPLIER": 1,
+            "NO_PREPARED_DRINK_PENALTY": -8,
+            "NO_LUXURY_DRINK_PENALTY": -15
+         }
+      },
+		"crafting": {
+			"mixintypes": {
+				"ITEM_QUALITY_CHANCES": "override"
+			},
+         "GAME_TIME_PER_EFFORT": "2m",
+         "ITEM_QUALITY_CHANCES": [
+            [[1, 1]],
+            [[1, 1]],
+            [[1, 0.98], [2, 0.02]],
+            [[1, 0.96], [2, 0.04]],
+            [[1, 0.90], [2, 0.06], [3, 0.04]],
+            [[1, 0.86], [2, 0.08], [3, 0.06]]
+         ]
       },
       "heatmaps": {
          "ore": {

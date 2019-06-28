@@ -1,0 +1,39 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(tall_urn.qb)"
+            ]
+         }
+      },
+      "render_info": {
+         "scale": 0.2
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0, "y": 0, "z": 0 },
+         "align_to_grid": [
+            "x",
+            "z"
+         ],
+         "allow_vertical_adjacent": true
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.containers.tall_urn.display_name)",
+         "description": "i18n(stonehearth_ace:entities.containers.tall_urn.description)",
+         "icon": "file(tall_urn.png)",
+         "category": "storage",
+         "material_tags": [
+            "furniture",
+            "crafted",
+            "clay",
+            "crate",
+            "stockpile_furniture"
+         ]
+      }
+   }
+}

@@ -1,0 +1,26 @@
+{
+   "type": "recipe",
+   "effort": 50,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.spirit_fruit_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.spirit_fruit_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.spirit_fruit_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/drink/spirit_fruit/spirit_fruit/spirit_fruit.png",
+   "level_requirement": 3,
+   "workshop": "stonehearth_ace:cook:brewery",
+   "ingredients": [
+      {
+         "material": "raw_food fruit",
+         "count": 3
+      },
+      {
+         "material": "common_fuel",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:drink:spirit_fruit"
+      }
+   ]
+}

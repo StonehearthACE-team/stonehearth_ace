@@ -1,0 +1,20 @@
+{
+   "type": "buff",
+   "axis": "buff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.fruity_flavors.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.fruity_flavors.description)",
+   "icon": "file(fruity_flavors_buff.png)",
+   "duration": "4h",
+   "repeat_add_action": "renew_duration",
+   "modifiers": {
+      "multiplicative_work_rate_modifier": {
+         "multiply": 1.05
+      },
+      "willpower": {
+         "add": 10
+      },
+      "compassion": {
+         "add": 10
+      }
+   }
+}

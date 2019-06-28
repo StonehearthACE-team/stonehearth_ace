@@ -10,22 +10,32 @@
             "cook": {},
             "jerky": {},
             "morels": {
-               "ordinal": 3.1,
+               "ordinal": 4,
                "display_name": "i18n(stonehearth_ace:data.loadouts.items.winter_morel)",
                "type": "entity",
                "uri": "stonehearth_ace:food:winter_morel:winter_morel_basket",
                "icon": "file(images/items/winter_morel_basket.png)",
                "amount": 5
             },
+            "milk": {
+               "ordinal": 5,
+               "display_name": "i18n(stonehearth_ace:data.loadouts.items.milk)",
+               "type": "entity",
+               "uri": "stonehearth_ace:drink:dairy:wild_cattle_milk",
+               "icon": "file(images/items/wild_cattle_milk.png)",
+               "amount": 10
+            },
             "sleeping_bag": {
-               "ordinal": 3.2,
+               "ordinal": 6,
                "display_name": "i18n(stonehearth_ace:data.loadouts.items.sleeping_bag)",
                "type": "entity",
                "uri": "stonehearth_ace:furniture:sleeping_bag",
                "icon": "file(images/items/sleeping_bag.png)",
                "amount": 3
             },
-            "gold": {}
+            "gold": {
+               "ordinal": 7
+            }
          }
       },
       "merchant_caravan": {

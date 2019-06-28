@@ -1,0 +1,42 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(juice_prickly_pear_serving.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:item": {
+         "category": "drink",
+         "destroy_on_uncarry": true
+      },
+      "stonehearth_ace:drink": {
+         "stonehearth:sitting_on_chair": {
+            "satisfaction": 15
+         },
+         "default": {
+            "satisfaction": 10
+         },
+         "applied_buffs": [
+            "stonehearth_ace:buffs:consumption:fruity_flavors"
+         ],
+         "quality": 1
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.drink.juice_prickly_pear.juice_prickly_pear_serving.display_name)",
+         "description": "",
+         "material_tags": [
+            "drink",
+            "juice_prickly_pear_serving",
+            "juice",
+            "coffee_hour"
+         ],
+         "subject_override": "stonehearth_ace:drink:juice_prickly_pear"
+      }
+   }
+}

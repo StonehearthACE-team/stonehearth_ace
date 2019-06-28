@@ -1,0 +1,14 @@
+{
+	"type" : "encounter",
+	"encounter_type" : "wait",
+	"in_edge"  : "shrine_upgrade_ace_deity",
+	"out_edge" : {
+		"type": "trigger_many",
+		"out_edges": [
+			"ace_deity_cook"
+		]
+	},
+	"wait_info" :  {
+		"duration" : "1m"
+	}
+}

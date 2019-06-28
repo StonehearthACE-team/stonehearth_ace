@@ -16,8 +16,27 @@
          "builder_icon_hover": "/stonehearth_ace/entities/resources/clay/builder_clay_bricks_hover.png",
          "tooltip": "i18n(stonehearth_ace:ui.game.build_mode2.tooltips.clay_bricks_resource)"
       },
+      "thread resource": {
+         "name": "i18n(stonehearth_ace:ui.data.constants.thread_resource_name)"
+      },
+      "fiber resource": {
+         "name": "i18n(stonehearth_ace:ui.data.constants.fiber_resource_name)"
+      },
       "ore resource": {
+         "name": "i18n(stonehearth_ace:ui.data.constants.ore_resource_name)",
          "icon": "/stonehearth_ace/entities/resources/ore_icon.png"
+      },
+      "pelt resource": {
+         "name": "i18n(stonehearth_ace:ui.data.constants.pelt_resource_name)"
+      },
+      "cloth resource": {
+         "name": "i18n(stonehearth_ace:ui.data.constants.cloth_resource_name)"
+      },
+      "leather resource": {
+         "name": "i18n(stonehearth_ace:ui.data.constants.leather_resource_name)"
+      },
+      "herb resource": {
+         "name": "i18n(stonehearth_ace:ui.data.constants.herb_resource_name)"
       },
       "seed_hard cooking_ingredient": {
          "name": "i18n(stonehearth_ace:ui.data.constants.edible_nuts_resource_name)",
@@ -39,8 +58,8 @@
          "icon": "/stonehearth_ace/entities/food/dairy/butter_icon.png",
          "default_resource": "stonehearth_ace:food:dairy:butter"
       },
-      "oil_source resource": {
-         "name": "i18n(stonehearth_ace:ui.data.constants.oil_source_resource_name)",
+      "oil_source": {
+         "name": "i18n(stonehearth_ace:ui.data.constants.oil_source_name)",
          "icon": "/stonehearth_ace/entities/food/oil_source_icon.png",
          "default_resource": "stonehearth:plants:sunflower:seed"
       },
@@ -91,7 +110,7 @@
       },
       "chitin resource": {
          "name": "i18n(stonehearth_ace:ui.data.constants.chitin_resource_name)",
-         "icon": "/stonehearth/entities/resources/chitin/beetle_chitin/beetle_chitin.png",
+         "icon": "/stonehearth_ace/entities/resources/chitin_icon.png",
          "default_resource": "stonehearth:resources:beetle_chitin"
       },
       "wool resource": {
@@ -108,6 +127,9 @@
          "name": "i18n(stonehearth_ace:ui.data.constants.coal_resource_name)",
          "icon": "/stonehearth_ace/entities/resources/coal/coal_icon.png",
          "default_resource": "stonehearth:resources:coal:lump_of_coal"
+      },
+      "ingot resource": {
+         "name": "i18n(stonehearth_ace:ui.data.constants.ingot_resource_name)"
       },
       "ingot soft_metal": {
          "name": "i18n(stonehearth_ace:ui.data.constants.soft_metal_resource_name)",

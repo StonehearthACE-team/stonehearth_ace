@@ -1,0 +1,13 @@
+{
+   "type": "buff",
+   "axis": "buff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.merry_time.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.merry_time.description)",
+   "icon": "file(merry_time_buff.png)",
+   "duration": "6h",
+   "repeat_add_action": "renew_duration",
+   "script": "stonehearth_ace:buff_scripts:add_thought",
+   "thought": "stonehearth_ace:thoughts:drinking:merry_time",
+   "modifiers": {},
+   "disallowed_buffs": []
+}

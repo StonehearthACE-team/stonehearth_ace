@@ -1,0 +1,57 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(juice_watermelon.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 }
+      },
+      "stonehearth:stacks": {
+         "max_stacks": 6
+      }
+   },
+   "entity_data": {
+      "stonehearth_ace:drink_container": {
+         "effect": "fiddle",
+         "drink": "stonehearth_ace:drink:juice_watermelon:juice_watermelon_serving",
+         "stacks_per_serving": 1
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 5,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 2,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.drink.juice_watermelon.juice_watermelon.display_name)",
+         "description": "i18n(stonehearth_ace:entities.drink.juice_watermelon.juice_watermelon.description)",
+         "icon": "file(juice_watermelon.png)",
+         "is_item": true,
+         "category": "drink",
+         "material_tags": [
+            "drink_container",
+            "drink",
+            "juice_watermelon",
+            "juice",
+            "stockpile_drink",
+            "coffee_hour"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": 4
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

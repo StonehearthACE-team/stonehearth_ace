@@ -6,10 +6,13 @@
    "icon": "file(sweet_energy_buff.png)",
    "duration": "4h",
    "repeat_add_action": "renew_duration",
-	"gained_statistics_key": "sweet_energy",
+   "gained_statistics_key": "sweet_energy",
    "modifiers": {
       "diligence": {
          "add": 15
+      },
+      "sleepiness": {
+         "multiply": 0.9
       },
       "speed": {
          "add": 5

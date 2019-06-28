@@ -1,0 +1,57 @@
+{
+   "type": "entity",
+   "mixins": "file(input_keg_clay_ghost.json)",
+   "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(input_keg_clay_iconic.json)",
+         "ghost_form": "file(input_keg_clay_ghost.json)",
+         "placeable_on_ground": true
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": 0, "y": 0, "z": 0 },
+               "max": { "x": 1, "y": 1, "z": 1 }
+            }
+         ]
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": 0, "y": 0, "z": 0 },
+               "max": { "x": 1, "y": 1, "z": 1 }
+            }
+         ],
+         "adjacency_flags": [
+            "front"
+         ]
+      },
+      "stonehearth:storage": {
+         "type": "input_crate",
+         "capacity": 4,
+         "filter_list": "stonehearth_ace:ui:input_keg:filters",
+         "is_single_filter": true,
+         "default_filter": [
+            "drink_container beer"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 9,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 2,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 8
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

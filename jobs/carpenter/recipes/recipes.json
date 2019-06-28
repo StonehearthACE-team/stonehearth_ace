@@ -16,10 +16,25 @@
 	},
 	"storage": {
 	  "recipes": {
-		"fuel_holder_large_wood": {
-		  "recipe": "file(fuel_holder_large_wood_recipe.json)"
+			"fuel_holder_large_wood": {
+				"recipe": "file(fuel_holder_large_wood_recipe.json)"
+			},
+			"barrel_small": {
+				"recipe": "file(barrel_small_recipe.json)"
+			},
+			"output_cask_wood_small": {
+				"recipe": "file(output_cask_wood_small_recipe.json)"
+			},
+			"barrel": {
+				"recipe": "file(barrel_recipe.json)"
+			},
+			"output_cask_wood": {
+				"recipe": "file(output_cask_wood_recipe.json)"
+			},
+			"input_keg_wood": {
+				"recipe": "file(input_keg_wood_recipe.json)"
+			}
 		}
-	  }
 	},
 	"furniture": {
 	  "recipes": {
@@ -69,29 +84,35 @@
       }
    },
 	"utility": {
-	  "recipes": {
-		"training_dummy": {
-		  "recipe": "file(training_dummy_recipe.json)"
-      },
-      "training_target": {
-         "recipe": "file(training_target_recipe.json)"
-       },
-		"bundle_of_firewood": {
-		  "recipe": "file(bundle_of_firewood_recipe.json)"
-		},
-		"food_trough_wood": {
-		  "recipe": "file(food_trough_wood_recipe.json)"
-		},
-		"pasture_bed_small": {
-		  "recipe": "file(pasture_bed_small_recipe.json)"
-		},
-		"pasture_bed": {
-		  "recipe": "file(pasture_bed_recipe.json)"
-		},
-		"fish_trap": {
-		  "recipe": "file(fish_trap_recipe.json)"
+		"recipes": {
+			"training_dummy": {
+				"recipe": "file(training_dummy_recipe.json)"
+			},
+			"training_target": {
+				"recipe": "file(training_target_recipe.json)"
+			},
+			"bundle_of_firewood": {
+				"recipe": "file(bundle_of_firewood_recipe.json)"
+			},
+			"food_trough_wood": {
+				"recipe": "file(food_trough_wood_recipe.json)"
+			},
+			"pasture_bed_small": {
+				"recipe": "file(pasture_bed_small_recipe.json)"
+			},
+			"pasture_bed": {
+				"recipe": "file(pasture_bed_recipe.json)"
+			},
+			"fish_trap": {
+				"recipe": "file(fish_trap_recipe.json)"
+			},
+			"wooden_water_well": {
+				"recipe": "file(wooden_water_well_recipe.json)"
+			},
+			"water_well_roof_wood": {
+				"recipe": "file(water_well_roof_wood_recipe.json)"
+			}
 		}
-	  }
 	},
     "armor": {
       "recipes": {

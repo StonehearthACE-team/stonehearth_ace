@@ -6,7 +6,10 @@
    "script_controller": "stonehearth:trait_scripts:food_preference",
    "data": {
       "food_intolerances": "dairy",
+      "drink_intolerances": "dairy",
       "intolerance_effect": "stonehearth_ace:buffs:consumption:upset_belly",
-      "unpalatable_thought": "stonehearth:thoughts:eating:dairy_intolerant_ate_dairy"
+      "drink_intolerance_effect": "stonehearth_ace:buffs:consumption:upset_belly",
+      "unpalatable_thought": "stonehearth:thoughts:eating:dairy_intolerant_ate_dairy",
+      "drink_unpalatable_thought": "stonehearth:thoughts:drinking:dairy_intolerant_had_dairy"
    }
 }

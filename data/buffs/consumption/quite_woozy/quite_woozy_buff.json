@@ -1,0 +1,48 @@
+{
+   "type": "buff",
+   "axis": "debuff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.quite_woozy.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.quite_woozy.description)",
+   "icon": "file(quite_woozy_buff.png)",
+   "duration": "8h",
+   "script": "stonehearth:buff_scripts:add_buff_on_expire",
+   "buff_added_on_expire": "stonehearth_ace:buffs:consumption:morning_after",
+   "modifiers": {
+      "inspiration": {
+         "add": -6
+      },
+      "diligence": {
+         "add": -30
+      },
+      "willpower": {
+         "multiply": 0.5
+      },
+      "speed": {
+         "multiply": 0.7
+      },
+      "courage": {
+         "add": 60
+      },
+      "menace": {
+         "add": -25
+      },
+      "stamina": {
+         "add": -25
+      },
+      "social_loss_amount": {
+         "multiply": 12
+      },
+      "sleepiness": {
+         "multiply": 25
+      },
+      "multiplicative_work_rate_modifier": {
+         "multiply": 0.6
+      }
+   },
+   "disallowed_buffs": [
+      "stonehearth_ace:buffs:consumption:light_headed",
+      "stonehearth_ace:buffs:consumption:harmony_minor",
+      "stonehearth_ace:buffs:consumption:harmony",
+      "stonehearth_ace:buffs:consumption:harmony_major"
+   ]
+}

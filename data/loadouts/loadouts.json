@@ -7,15 +7,25 @@
             "berries": {},
             "carrots": {},
             "jerky": {},
+            "juice": {
+               "ordinal": 5,
+               "display_name": "i18n(stonehearth_ace:data.loadouts.items.juice)",
+               "type": "entity",
+               "uri": "stonehearth_ace:drink:juice_berry",
+               "icon": "file(images/items/juice_berry.png)",
+               "amount": 16
+            },
             "thatch": {
-               "ordinal": 4.1,
+               "ordinal": 6,
                "display_name": "i18n(stonehearth_ace:data.loadouts.items.thatching)",
                "type": "entity",
                "uri": "stonehearth_ace:resources:thatch_bale",
                "icon": "file(images/items/thatching.png)",
                "amount": 5
             },
-            "gold": {}
+            "gold": {
+               "ordinal": 7
+            }
          }
       },
       "merchant_caravan": {
@@ -24,7 +34,17 @@
             "footman": {},
             "herbalist": {},
             "berries": {},
-            "gold": {}
+            "juice": {
+               "ordinal": 5,
+               "display_name": "i18n(stonehearth_ace:data.loadouts.items.juice)",
+               "type": "entity",
+               "uri": "stonehearth_ace:drink:juice_carrot",
+               "icon": "file(images/items/juice_carrot.png)",
+               "amount": 6
+            },
+            "gold": {
+               "ordinal": 6
+            }
          }
       },
       "military_expedition": {
@@ -68,8 +88,16 @@
                "icon": "/stonehearth/data/loadouts/images/items/jerky.png",
                "amount": 12
             },
-            "gold": {
+            "beer": {
                "ordinal": 5,
+               "display_name": "i18n(stonehearth_ace:data.loadouts.items.beer)",
+               "type": "entity",
+               "uri": "stonehearth_ace:drink:beer",
+               "icon": "file(images/items/beer.png)",
+               "amount": 8
+            },
+            "gold": {
+               "ordinal": 6,
                "display_name": "i18n(stonehearth:data.loadouts.items.gold)",
                "type": "gold",
                "icon": "/stonehearth/data/loadouts/images/items/gold.png",
@@ -119,8 +147,16 @@
                "icon": "file(images/items/roast_venison.png)",
                "amount": 2
             },
-            "gold": {
+            "tea": {
                "ordinal": 5,
+               "display_name": "i18n(stonehearth_ace:data.loadouts.items.tea)",
+               "type": "entity",
+               "uri": "stonehearth_ace:drink:tea",
+               "icon": "file(images/items/tea.png)",
+               "amount": 2
+            },
+            "gold": {
+               "ordinal": 6,
                "display_name": "i18n(stonehearth:data.loadouts.items.gold)",
                "type": "gold",
                "icon": "/stonehearth/data/loadouts/images/items/gold.png",
@@ -134,7 +170,17 @@
             "weaver": {},
             "berries": {},
             "jerky": {},
-            "gold": {}
+            "juice": {
+               "ordinal": 4,
+               "display_name": "i18n(stonehearth_ace:data.loadouts.items.juice)",
+               "type": "entity",
+               "uri": "stonehearth_ace:drink:juice_berry",
+               "icon": "file(images/items/juice_berry.png)",
+               "amount": 10
+            },
+            "gold": {
+               "ordinal": 5
+            }
          }
       }
    }

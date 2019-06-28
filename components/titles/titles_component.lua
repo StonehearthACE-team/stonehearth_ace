@@ -60,8 +60,10 @@ function TitlesComponent:add_title(title, rank)
       self:_update_component_info()
 
       self:_select_new_title(title, rank)
-
-      self:_show_bulletin(title, rank)
+		
+		if stonehearth.client_state:get_client_gameplay_setting(self._entity:get_player_id(), 'stonehearth_ace', 'show_new_title_notification', true) then
+			self:_show_bulletin(title, rank)
+		end
    end
 end
 

@@ -91,12 +91,19 @@
          "default": "1",
          "ordinal": 12
       },
+		"show_new_title_notification": {
+         "type": "boolean",
+         "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.show_new_title_notification)",
+         "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.show_new_title_notification_description)",
+         "default": true,
+         "ordinal": 15
+      },
       "auto_select_new_titles": {
          "type": "boolean",
          "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.auto_select_new_titles)",
          "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.auto_select_new_titles_description)",
          "default": true,
-         "ordinal": 15
+         "ordinal": 16
       },
       "terrain_slice_buildings": {
          "type": "boolean",

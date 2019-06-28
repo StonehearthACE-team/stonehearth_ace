@@ -1,0 +1,26 @@
+{
+   "type": "recipe",
+   "effort": 20,
+   "work_units": 20,
+   "recipe_name": "i18n(stonehearth_ace:jobs.potter.recipes.output_cask_clay_small_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.potter.recipes.output_cask_clay_small_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.potter.recipes.output_cask_clay_small_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/containers/output_cask_clay_small/output_cask_clay_small.png",
+   "workshop": "stonehearth:potter:kiln",
+   "level_requirement": 3,
+   "ingredients": [
+      {
+         "material": "clay resource",
+         "count": 2
+      },
+		{
+         "material": "common_fuel",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:containers:output_cask:clay:small"
+      }
+   ]
+}

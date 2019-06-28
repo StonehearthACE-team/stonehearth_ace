@@ -1,0 +1,38 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(water_serving.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:item": {
+         "category": "drink",
+         "destroy_on_uncarry": true
+      },
+      "stonehearth_ace:drink": {
+         "stonehearth:sitting_on_chair": {
+            "satisfaction": 40
+         },
+         "default": {
+            "satisfaction": 30
+         },
+         "quality": 1
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.drink.water_serving.display_name)",
+         "description": "i18n(stonehearth_ace:entities.drink.water_serving.description)",
+         "material_tags": [
+            "drink",
+            "water_serving",
+            "water"
+         ],
+         "subject_override": "stonehearth_ace:resources:fluid:water"
+      }
+   }
+}

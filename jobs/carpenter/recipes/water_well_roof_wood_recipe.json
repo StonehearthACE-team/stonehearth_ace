@@ -1,0 +1,26 @@
+{
+   "type": "recipe",
+   "effort": 45,
+   "work_units": 20,
+   "recipe_name": "i18n(stonehearth_ace:jobs.carpenter.recipes.water_well_roof_wood_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.carpenter.recipes.water_well_roof_wood_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.carpenter.recipes.water_well_roof_wood_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/refined/water_well_roof_wood/water_well_roof_wood.png",
+   "workshop": "stonehearth:carpenter:toolbench",
+   "level_requirement": 4,
+   "ingredients": [
+      {
+         "material": "wood resource",
+         "count": 3
+      },
+      {
+         "material": "cloth resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:refined:water_well_roof:wood"
+      }
+   ]
+}

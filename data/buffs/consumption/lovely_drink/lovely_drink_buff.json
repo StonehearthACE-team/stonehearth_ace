@@ -1,0 +1,17 @@
+{
+   "type": "buff",
+   "axis": "buff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.lovely_drink.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.lovely_drink.description)",
+   "icon": "file(lovely_drink_buff.png)",
+   "duration": "8h",
+   "repeat_add_action": "renew_duration",
+   "modifiers": {
+      "stamina": {
+         "add": 10
+      },
+      "compassion": {
+         "add": 10
+      }
+   }
+}

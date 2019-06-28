@@ -1,0 +1,36 @@
+{
+   "type": "recipe",
+   "effort": 120,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.liquor_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.liquor_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.liquor_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/drink/liquor/liquor/liquor.png",
+   "level_requirement": 6,
+   "workshop": "stonehearth_ace:cook:brewery",
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:drink:wort",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth:food:sugar",
+         "count": 1
+      },
+      {
+         "material": "common_fuel",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:drink:liquor"
+      },
+		{
+         "item": "stonehearth_ace:drink:liquor"
+      },
+		{
+         "item": "stonehearth_ace:drink:liquor"
+      }
+   ]
+}

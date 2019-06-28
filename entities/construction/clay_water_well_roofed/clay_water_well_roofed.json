@@ -1,0 +1,78 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "render_info": {
+         "scale": 0.133,
+         "animation_table": "/stonehearth_ace/data/rigs/entities/construction/water_well/water_well.json"
+      },
+      "effect_list": {
+         "default": "/stonehearth_ace/data/rigs/entities/construction/water_well/effects/idle.json"
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(clay_water_well_roofed.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -2, "y": 0, "z": 0 },
+               "max": { "x": 0, "y": 1, "z": 1 }
+            }
+         ],
+         "adjacency_flags": [
+            "left",
+            "back_left",
+            "front_left"
+         ]
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -2, "y": 0, "z": -2 },
+               "max": { "x": 3, "y": 6, "z": 3 }
+            }
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth_ace:drink_container": {
+         "effect": "work_water_well",
+         "container_effect": "work",
+         "drink": "stonehearth_ace:drink:water_serving",
+         "source": true
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.construction.clay_water_well_roofed.display_name)",
+         "description": "i18n(stonehearth_ace:entities.construction.clay_water_well_roofed.description)",
+         "icon": "file(clay_water_well_roofed.png)",
+         "category": "construction",
+         "material_tags": [
+            "drink_container",
+            "clay",
+            "water_well",
+            "crafted",
+            "construction",
+            "stockpile_construction"
+         ]
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 60,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 15
+      }
+   }
+}

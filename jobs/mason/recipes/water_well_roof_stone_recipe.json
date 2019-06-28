@@ -1,0 +1,26 @@
+{
+   "type": "recipe",
+   "effort": 45,
+   "work_units": 20,
+   "recipe_name": "i18n(stonehearth_ace:jobs.mason.recipes.water_well_roof_stone_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.mason.recipes.water_well_roof_stone_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.mason.recipes.water_well_roof_stone_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/refined/water_well_roof_stone/water_well_roof_stone.png",
+   "workshop": "stonehearth:mason:pedestal",
+   "level_requirement": 4,
+   "ingredients": [
+      {
+         "material": "wood resource",
+         "count": 2
+      },
+      {
+         "material": "thatch resource",
+         "count": 8
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:refined:water_well_roof:stone"
+      }
+   ]
+}

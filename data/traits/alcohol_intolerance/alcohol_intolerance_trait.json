@@ -1,0 +1,12 @@
+{
+   "type": "trait",
+   "display_name": "i18n(stonehearth_ace:data.traits.alcohol_intolerance_trait.display_name)",
+   "description": "i18n(stonehearth_ace:data.traits.alcohol_intolerance_trait.description)",
+   "icon": "file(alcohol_intolerance_trait.png)",
+   "script_controller": "stonehearth:trait_scripts:food_preference",
+   "data": {
+      "drink_intolerances": "alcoholic",
+      "drink_intolerance_effect": "stonehearth_ace:buffs:consumption:upset_belly",
+      "drink_unpalatable_thought": "stonehearth:thoughts:drinking:alcohol_intolerant_had_alcohol"
+   }
+}

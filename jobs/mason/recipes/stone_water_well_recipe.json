@@ -1,0 +1,34 @@
+{
+   "type": "recipe",
+   "effort": 30,
+   "work_units": 20,
+   "recipe_name": "i18n(stonehearth_ace:jobs.mason.recipes.stone_water_well_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.mason.recipes.stone_water_well_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.mason.recipes.stone_water_well_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/construction/stone_water_well/stone_water_well.png",
+   "workshop": "stonehearth:mason:workbench",
+   "level_requirement": 2,
+   "ingredients": [
+		{
+         "material": "stone resource",
+         "count": 11
+      },
+		{
+         "material": "wood resource",
+         "count": 1
+      },
+		{
+         "uri": "stonehearth:resources:iron:ore",
+         "count": 1
+      },
+      {
+         "material": "fiber resource",
+         "count": 10
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:construction:stone:water_well:building"
+      }
+   ]
+}

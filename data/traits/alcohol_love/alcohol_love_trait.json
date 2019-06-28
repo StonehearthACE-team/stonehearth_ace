@@ -1,0 +1,12 @@
+{
+   "type": "trait",
+   "display_name": "i18n(stonehearth_ace:data.traits.alcohol_love_trait.display_name)",
+   "description": "i18n(stonehearth_ace:data.traits.alcohol_love_trait.description)",
+   "icon": "file(alcohol_love_trait.png)",
+   "script_controller": "stonehearth:trait_scripts:food_preference",
+   "data": {
+      "drink_preferences": "alcoholic",
+      "drink_preference_effect": "stonehearth_ace:buffs:consumption:lovely_drink",
+      "drink_lovely_thought": "stonehearth:thoughts:drinking:alcohol_lover_had_alcohol"
+   }
+}

@@ -1,0 +1,58 @@
+{
+   "type": "entity",
+   "mixins": "file(cook_fermenting_vat_wort_ghost.json)",
+   "components": {
+      "stonehearth:entity_forms": {
+         "ghost_form": "file(cook_fermenting_vat_wort_ghost.json)",
+         "iconic_form": "file(cook_fermenting_vat_wort_iconic.json)",
+         "placeable_on_ground": true,
+         "hide_undeploy_ui": true
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -2, "y": 0, "z": -2 },
+               "max": { "x": 1, "y": 1, "z": 1 }
+            }
+         ]
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -2, "y": 0, "z": -2 },
+               "max": { "x": 1, "y": 5, "z": 1 }
+            }
+         ]
+      },
+      "stonehearth_ace:vertical_pathing_region": {
+         "region": [
+            {
+               "min": { "x": 1, "y": 0, "z": -1 },
+               "max": { "x": 2, "y": 4, "z": 0 }
+            }
+         ]
+      },
+      "stonehearth:evolve": {}
+   },
+   "entity_data": {
+      "stonehearth:evolve_data": {
+         "next_stage": "stonehearth_ace:cook:fermenting_vat:beer",
+         "evolve_time": "3d+48h",
+         "auto_harvest": true
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 35,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": -3
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

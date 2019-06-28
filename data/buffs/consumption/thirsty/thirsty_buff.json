@@ -1,0 +1,17 @@
+{
+   "type": "buff",
+   "axis": "debuff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.thirsty.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.thirsty.description)",
+   "icon": "file(thirsty_buff.png)",
+   "persistent": false,
+   "modifiers": {
+      "diligence": {
+         "add": -5
+      },
+      "multiplicative_work_rate_modifier": {
+         "multiply": 0.95
+      }
+   },
+   "disallowed_buffs": []
+}

@@ -1,0 +1,21 @@
+{
+   "type" : "effect",
+   "tracks": {
+      "animation": {
+         "type": "animation_effect",
+			"speed": 0.9,
+         "start_time": 0,
+         "animation": "work.json",
+         "loop": false
+      },
+      "sound": {
+         "type": "sound_effect",
+         "duration": 1000,
+         "start_time": 0,
+         "min_distance": 32,
+         "falloff" : 15,
+         "volume": 65,
+         "track" : "stonehearth_ace:sounds:water_well"
+      }
+   }
+}

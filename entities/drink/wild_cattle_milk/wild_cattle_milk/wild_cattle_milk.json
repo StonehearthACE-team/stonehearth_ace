@@ -21,13 +21,13 @@
          "model_origin": { "x": 0, "y": 0, "z": 0 }
       },
       "stonehearth:stacks": {
-         "max_stacks": 4
+         "max_stacks": 6
       }
    },
    "entity_data": {
-      "stonehearth:food_container": {
+      "stonehearth_ace:drink_container": {
          "effect": "fiddle",
-         "food": "stonehearth_ace:drink:dairy:wild_cattle_milk:wild_cattle_milk_serving",
+         "drink": "stonehearth_ace:drink:dairy:wild_cattle_milk:wild_cattle_milk_serving",
          "stacks_per_serving": 1
       },
       "stonehearth:net_worth": {
@@ -47,14 +47,13 @@
          "is_item": true,
          "category": "drink",
          "material_tags": [
-            "food_container",
-            "raw_food",
             "drink_container",
             "raw_drink",
             "wild_cattle_milk",
             "milk",
             "dairy",
-            "stockpile_drink"
+            "stockpile_drink",
+            "coffee_hour"
          ]
       },
       "stonehearth:appeal": {

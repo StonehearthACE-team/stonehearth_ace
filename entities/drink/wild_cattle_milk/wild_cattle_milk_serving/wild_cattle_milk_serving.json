@@ -15,25 +15,24 @@
          "category": "drink",
          "destroy_on_uncarry": true
       },
-      "stonehearth:food": {
+      "stonehearth_ace:drink": {
          "stonehearth:sitting_on_chair": {
-            "satisfaction": 20
+            "satisfaction": 30
          },
          "default": {
-            "satisfaction": 10
+            "satisfaction": 20
          },
-         "eating_effect": "sitting_drink",
          "quality": 2
       },
       "stonehearth:catalog": {
          "display_name": "i18n(stonehearth_ace:entities.drink.wild_cattle_milk.wild_cattle_milk_serving.display_name)",
          "description": "",
          "material_tags": [
-            "food",
             "raw_drink",
             "wild_cattle_milk_serving",
             "milk",
-            "dairy"
+            "dairy",
+            "coffee_hour"
          ],
          "subject_override": "stonehearth_ace:drink:dairy:wild_cattle_milk"
       }

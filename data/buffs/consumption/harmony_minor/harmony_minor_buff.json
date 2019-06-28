@@ -1,0 +1,26 @@
+{
+   "type": "buff",
+   "axis": "buff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.harmony_minor.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.harmony_minor.description)",
+   "icon": "file(harmony_minor_buff.png)",
+   "duration": "4h",
+   "repeat_add_action": "renew_duration",
+   "modifiers": {
+      "xp_multiplier": {
+         "add": 0.06
+      },
+      "curiosity": {
+         "add": 5
+      },
+      "diligence": {
+         "add": 5
+      },
+      "multiplicative_work_rate_modifier": {
+         "multiply": 0.9
+      },
+      "inspiration": {
+         "add": 2
+      }
+   }
+}

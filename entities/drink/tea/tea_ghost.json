@@ -1,0 +1,36 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(tea.qb)"
+            ]
+         }
+      },
+      "render_info": {
+         "scale": 0.08
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0.08 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "allow_vertical_adjacent": true
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.drink.tea.tea.display_name)",
+         "description": "i18n(stonehearth_ace:entities.drink.tea.tea.description)",
+         "icon": "file(tea.png)",
+         "category": "drink",
+         "material_tags": [
+            "drink_container",
+            "drink",
+            "tea",
+            "tea_tea",
+            "stockpile_prepared_drink",
+            "tea_hour"
+         ]
+      }
+   }
+}

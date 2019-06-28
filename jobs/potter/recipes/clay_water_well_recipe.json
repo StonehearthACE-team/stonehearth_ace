@@ -1,0 +1,38 @@
+{
+   "type": "recipe",
+   "effort": 30,
+   "work_units": 20,
+   "recipe_name": "i18n(stonehearth_ace:jobs.potter.recipes.clay_water_well_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.potter.recipes.clay_water_well_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.potter.recipes.clay_water_well_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/construction/clay_water_well/clay_water_well.png",
+   "workshop": "stonehearth:potter:workbench",
+   "level_requirement": 2,
+   "ingredients": [
+		{
+         "material": "stone resource",
+         "count": 8
+      },
+      {
+         "material": "clay resource",
+         "count": 3
+      },
+		 {
+         "material": "wood resource",
+         "count": 1
+      },
+		{
+         "uri": "stonehearth:resources:iron:ore",
+         "count": 1
+      },
+      {
+         "material": "fiber resource",
+         "count": 10
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:construction:clay:water_well:building"
+      }
+   ]
+}

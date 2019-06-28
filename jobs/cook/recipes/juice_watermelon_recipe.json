@@ -1,0 +1,22 @@
+{
+   "type": "recipe",
+   "effort": 32,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.juice_watermelon_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.juice_watermelon_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.juice_watermelon_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/drink/juice_watermelon/juice_watermelon/juice_watermelon.png",
+   "level_requirement": 4,
+   "workshop": "stonehearth_ace:cook:brewery",
+   "ingredients": [
+		{
+         "uri": "stonehearth:food:watermelon:watermelon_basket",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:drink:juice_watermelon"
+      }
+   ]
+}

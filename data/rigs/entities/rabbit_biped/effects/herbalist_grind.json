@@ -1,13 +1,70 @@
 {
    "type" : "effect",
    "tracks": {
+      "animation": {
+         "type": "animation_effect",
+         "start_time": 0,
+         "animation": "herbalist_grind.json",
+         "loop": true
+      },
+      "grab_mortar" : {
+         "type": "attach_item_effect",
+         "start_time": 0,
+         "end_time": 0,
+         "item": "stonehearth:herbalist:mortar",
+         "bone": "offHand"
+      },
+      "grab_pestle" : {
+         "type": "attach_item_effect",
+         "start_time": 0,
+         "end_time": 0,
+         "item": "stonehearth:herbalist:pestle",
+         "bone": "mainHand"
+      },
       "sound": {
-         "duration": 500,
+         "type": "sound_effect",
+         "start_time": 50,
+         "min_distance": 27,
+         "falloff" : 5,
+         "volume": 60,
+			"duration": 500,
 			"loop": true
+         "track" : {
+            "type": "one_of",
+            "items": [
+               "stonehearth:sounds:herbalist_grind_01",
+               "stonehearth:sounds:herbalist_grind_02",
+               "stonehearth:sounds:herbalist_grind_03",
+               "stonehearth:sounds:herbalist_grind_04",
+               "stonehearth:sounds:herbalist_grind_05",
+               "stonehearth:sounds:herbalist_grind_06",
+               "stonehearth:sounds:herbalist_grind_07",
+               "stonehearth:sounds:herbalist_grind_08"
+            ]
+          }
       },
       "sound_2": {
-         "duration": 500,
+         "type": "sound_effect",
+         "start_time": 500,
+         "min_distance": 27,
+         "falloff" : 5,
+         "volume": 50,
+			"duration": 500,
 			"loop": true
+         "track" : {
+            "type": "one_of",
+            "items": [
+               "stonehearth:sounds:herbalist_grind_01",
+               "stonehearth:sounds:herbalist_grind_02",
+               "stonehearth:sounds:herbalist_grind_03",
+               "stonehearth:sounds:herbalist_grind_04",
+               "stonehearth:sounds:herbalist_grind_05",
+               "stonehearth:sounds:herbalist_grind_06",
+               "stonehearth:sounds:herbalist_grind_07",
+               "stonehearth:sounds:herbalist_grind_08"
+            ]
+         }
       }
    }
 }
+

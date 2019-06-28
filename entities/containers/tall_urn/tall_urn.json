@@ -1,0 +1,53 @@
+{
+   "type": "entity",
+   "mixins": "file(tall_urn_ghost.json)",
+   "components": {
+      "stonehearth:storage": {
+         "type": "urn",
+         "capacity": 64
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(tall_urn_iconic.json)",
+         "ghost_form": "file(tall_urn_ghost.json)",
+         "placeable_on_ground": true
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 1, "y": 3, "z": 1 }
+            }
+         ]
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 1, "y": 3, "z": 1 }
+            }
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 22,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 2,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:town_patrol": {
+         "auto_patrol": true,
+         "patrol_pattern": "perimeter"
+      },
+      "stonehearth:appeal": {
+         "appeal": 17
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

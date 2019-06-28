@@ -1,0 +1,13 @@
+{
+	"type" : "encounter",
+	"encounter_type" : "wait",
+	"in_edge"  : "shrine_upgrade_ace_valor",
+	"out_edge" : {
+		"type": "trigger_many",
+		"out_edges": [
+		]
+	},
+	"wait_info" :  {
+		"duration" : "1m"
+	}
+}

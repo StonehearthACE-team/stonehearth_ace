@@ -1,0 +1,30 @@
+{
+   "type": "recipe",
+   "effort": 16,
+   "work_units": 20,
+   "recipe_name": "i18n(stonehearth_ace:jobs.mason.recipes.tank_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.mason.recipes.tank_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.mason.recipes.tank_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/containers/tank/tank.png",
+   "workshop": "stonehearth:mason:pedestal",
+   "level_requirement": 3,
+   "ingredients": [
+      {
+         "material": "stone resource",
+         "count": 2
+      },
+		{
+         "material": "wood resource",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth:resources:iron:ore",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:containers:tank"
+      }
+   ]
+}

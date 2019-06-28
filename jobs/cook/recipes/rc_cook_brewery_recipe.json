@@ -1,0 +1,13 @@
+{
+   "type": "recipe",
+   "mixins": "/stonehearth_ace/jobs/cook/recipes/cook_brewery_recipe.json",
+   "portrait": "/stonehearth_ace/jobs/cook/rc_cook_brewery/rc_cook_brewery.png",
+   "mixintypes": {
+	  "produces": "override"
+   },
+   "produces": [
+      {
+         "item": "stonehearth_ace:rayyas_children:cook:brewery"
+      }
+   ]
+}

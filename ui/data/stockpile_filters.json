@@ -188,21 +188,65 @@
       },
       "food_and_drink": {
          "categories": {
-            "drinks": {
+            "raw_food": {
+               "ordinal": 1,
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_raw_food_fruits_veggies)",
+               "icon": "/stonehearth/ui/game/modes/zones_mode/stockpile/images/taxonomy/fruit.png",
+               "filter": "stockpile_raw_food vegetarian"
+            },
+            "raw_food_meat": {
+               "ordinal": 1.1,
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_raw_food_meat)",
+               "icon": "/stonehearth/ui/game/modes/zones_mode/stockpile/images/taxonomy/meat_uncooked.png",
+               "filter": "stockpile_cooking_ingredient animal_ingredient"
+            },
+            "raw_food_fungi": {
+               "ordinal": 1.2,
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_raw_food_fungi)",
+               "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/raw_food_fungi.png",
+               "filter": "stockpile_raw_food fungi"
+            },
+            "cooking_ingredient": {
+               "ordinal": 2,
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_cooking_ingredients)",
+               "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/cooking_ingredient.png",
+               "filter": "stockpile_cooking_ingredient other_ingredient"
+            },
+            "prepared_food_baked": {
                "ordinal": 3,
-               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_drinks)",
-               "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/drink.png",
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_prepared_food_baked)",
+               "icon": "/stonehearth/ui/game/modes/zones_mode/stockpile/images/taxonomy/baked.png",
+               "filter": "stockpile_prepared_food baked"
+            },
+            "prepared_food": {
+               "ordinal": 4,
+               "display_name": "i18n(stonehearth:ui.game.zones_mode.stockpile.filters.tooltip_prepared_food)",
+               "icon": "/stonehearth/ui/game/modes/zones_mode/stockpile/images/taxonomy/meat.png",
+               "filter": "stockpile_prepared_food"
+            },
+            "raw_drinks": {
+               "ordinal": 5,
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_raw_drinks)",
+               "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/raw_drink.png",
                "filter": "stockpile_drink"
             },
+            "brewing_ingredient": {
+               "ordinal": 6,
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_brewing_ingredient)",
+               "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/fluids.png",
+               "filter": "stockpile_brewing_ingredient"
+            },
+            "prepared_drinks": {
+               "ordinal": 7,
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_drinks)",
+               "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/drink.png",
+               "filter": "stockpile_prepared_drink"
+            },
             "animal_feed": {
-               "ordinal": 4,
+               "ordinal": 8,
                "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_animal_feed)",
                "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/animal_feed.png",
                "filter": "stockpile_fodder"
-            },
-            "cooking_ingredient": {
-               "ordinal": 1.1,
-               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_cooking_ingredients)"
             }
          }
       },

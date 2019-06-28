@@ -1,0 +1,30 @@
+{
+   "type": "recipe",
+   "effort": 36,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.smoothie_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.smoothie_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.smoothie_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/drink/smoothie/smoothie/smoothie.png",
+   "level_requirement": 5,
+   "workshop": "stonehearth_ace:cook:brewery",
+   "ingredients": [
+		{
+         "material": "raw_food fruit",
+         "count": 2
+      },
+		{
+         "material": "drink_container milk",
+         "count": 1
+      },
+		{
+         "uri": "stonehearth:food:sugar",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:drink:dairy:smoothie"
+      }
+   ]
+}

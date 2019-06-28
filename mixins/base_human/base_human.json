@@ -14,9 +14,29 @@
          "multiplicative_work_rate_modifier": {
             "type": "basic",
             "value": 1
+         },
+         "min_drink_satiety": {
+            "type": "basic",
+            "value": 0
+         },
+         "max_drink_satiety": {
+            "type": "basic",
+            "value": 100
          }
       },
-      "stonehearth:expendable_resources": {},
+      "stonehearth:expendable_resources": {
+         "resources": {
+            "drink_satiety": {
+               "min": {
+                  "linked_attribute": "min_drink_satiety"
+               },
+               "max": {
+                  "linked_attribute": "max_drink_satiety"
+               },
+               "initial_value": 90
+            }
+         }
+      },
       "stonehearth:carry_block": {},
       "stonehearth:posture": {
          "priorities": {
@@ -34,7 +54,29 @@
             "stonehearth:backpack_cloth_posture": 1050
          }
       },
-      "stonehearth:score": {},
+      "stonehearth:score": {
+         "raw_drink": {
+            "starting_score": 50,
+            "weight": 1,
+            "contributes_to": "food",
+            "max": 100,
+            "min": 1
+         },
+         "prepared_drink": {
+            "starting_score": 50,
+            "weight": 1,
+            "contributes_to": "food",
+            "max": 100,
+            "min": 1
+         },
+         "luxury_drink": {
+            "starting_score": 50,
+            "weight": 1,
+            "contributes_to": "food",
+            "max": 100,
+            "min": 1
+         }
+      },
       "stonehearth:equipment": {},
       "stonehearth:object_owner": {
          "allowed_ownerships": {}
@@ -42,8 +84,11 @@
       "stonehearth:social": {},
       "stonehearth:conversation": {},
       "stonehearth:subject_matter": {},
-      "stonehearth:consumption": {},
+      "stonehearth:consumption": {
+         "consumes_drinks": true
+      },
       "stonehearth:starvation": {},
+      "stonehearth_ace:thirst": {},
       "stonehearth:interactions": {},
       "stonehearth:customization": {},
       "stonehearth:appeal": {},
@@ -53,13 +98,29 @@
    },
    "entity_data": {
       "stonehearth:ai_packs": {
-         "packs": []
+         "packs": [
+            "stonehearth_ace:ai_pack:drinking"
+         ]
       },
       "stonehearth:idle_effects": {
          "effects": []
       },
       "stonehearth:incapacitate_data": {},
       "stonehearth:calories": {},
+      "stonehearth_ace:drink_satiety": {
+         "coffee_hour": 7,
+         "tea_hour": 17,
+         "leisure_hour": 21,
+         "drink_qualities": {
+            "UNPALATABLE": 0,
+            "RAW_BLAND": 1,
+            "RAW_AVERAGE": 2,
+            "RAW_TASTY": 3,
+            "PREPARED_BLAND": 4,
+            "PREPARED_AVERAGE": 5,
+            "PREPARED_TASTY": 6
+         }
+      },
       "stonehearth:catalog": {}
    }
 }

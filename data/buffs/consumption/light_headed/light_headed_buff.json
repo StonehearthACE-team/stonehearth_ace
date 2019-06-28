@@ -1,0 +1,49 @@
+{
+   "type": "buff",
+   "axis": "debuff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.light_headed.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.light_headed.description)",
+   "icon": "file(light_headed_buff.png)",
+   "duration": "6h",
+   "repeat_add_action": "stack_and_refresh",
+   "max_stacks": 5,
+   "remove_stacks_on_expire": 1,
+   "buff_evolve_on_max_stacks": "stonehearth_ace:buffs:consumption:quite_woozy",
+   "modifiers": {
+      "inspiration": {
+         "add": -1
+      },
+      "diligence": {
+         "add": -4
+      },
+      "willpower": {
+         "add": -3
+      },
+      "speed": {
+         "add": -3
+      },
+      "courage": {
+         "add": 10
+      },
+      "menace": {
+         "add": -5
+      },
+      "stamina": {
+         "add": -5
+      },
+      "social_loss_amount": {
+         "multiply": 2
+      },
+      "sleepiness": {
+         "multiply": 3
+      },
+      "multiplicative_work_rate_modifier": {
+         "multiply": 0.9
+      }
+   },
+   "disallowed_buffs": [
+      "stonehearth_ace:buffs:consumption:harmony_minor",
+      "stonehearth_ace:buffs:consumption:harmony",
+      "stonehearth_ace:buffs:consumption:harmony_major"
+   ]
+}

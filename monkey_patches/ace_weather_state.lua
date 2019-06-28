@@ -30,12 +30,16 @@ function AceWeatherState:_load_ace_values()
    self._sv._base_humidity = json.humidity or 0
    self._sv.humidity = self._sv._base_humidity
    self._sv.frozen = json.frozen or false
+	self._sv.unsheltered_npc_debuff = json.unsheltered_npc_debuff or nil
    
    if type(self._sv.unsheltered_debuff) == 'string' then
       self._sv.unsheltered_debuff = { self._sv.unsheltered_debuff }
    end
    if type(self._sv.unsheltered_animal_debuff) == 'string' then
       self._sv.unsheltered_animal_debuff = { self._sv.unsheltered_animal_debuff }
+   end
+	if type(self._sv.unsheltered_npc_debuff) == 'string' then
+      self._sv.unsheltered_npc_debuff = { self._sv.unsheltered_npc_debuff }
    end
 
    self.__saved_variables:mark_changed()
@@ -76,10 +80,36 @@ function AceWeatherState:_apply_buff()
 			end
 		end
    end
+	
+	-- NPC debuff
+   if self._sv.unsheltered_npc_debuff then
+		for _, unsheltered_npc_debuff in ipairs(self._sv.unsheltered_npc_debuff) do
+			self:_for_common_npc_character(function(npc)
+            add_buff(npc, unsheltered_npc_debuff)
+         end)
+		end
+   end
+end
+
+function AceWeatherState:_for_common_npc_character(fn)
+   local pops = stonehearth.population:get_all_populations()
+   for _, pop in pairs(pops) do
+		if not pop == 'titans' or not pop == 'animals' or not pop == 'aquatic_animals' then
+			if pop:is_npc() then
+				for _, citizen in pop:get_citizens():each() do
+					fn(citizen)
+				end
+			end
+		end
+	end
 end
 
 function AceWeatherState:get_unsheltered_animal_debuffs()
    return self._sv.unsheltered_animal_debuff
+end
+
+function AceWeatherState:get_unsheltered_npc_debuffs()
+   return self._sv.unsheltered_npc_debuff
 end
 
 function AceWeatherState:set_sunlight(value)

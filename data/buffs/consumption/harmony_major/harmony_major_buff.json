@@ -1,0 +1,30 @@
+{
+   "type": "buff",
+   "axis": "buff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.harmony_major.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.harmony_major.description)",
+   "icon": "file(harmony_major_buff.png)",
+   "duration": "8h",
+   "repeat_add_action": "renew_duration",
+   "modifiers": {
+      "xp_multiplier": {
+         "add": 0.25
+      },
+      "curiosity": {
+         "add": 15
+      },
+      "diligence": {
+         "add": 15
+      },
+      "multiplicative_work_rate_modifier": {
+         "multiply": 0.7
+      },
+      "inspiration": {
+         "add": 12
+      }
+   },
+   "disallowed_buffs": [
+      "stonehearth_ace:buffs:consumption:harmony_minor",
+      "stonehearth_ace:buffs:consumption:harmony"
+   ]
+}

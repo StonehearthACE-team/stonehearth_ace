@@ -1,0 +1,26 @@
+{
+   "type": "recipe",
+   "effort": 26,
+   "work_units": 20,
+   "recipe_name": "i18n(stonehearth_ace:jobs.carpenter.recipes.output_cask_wood_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.carpenter.recipes.output_cask_wood_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.carpenter.recipes.output_cask_wood_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/containers/output_cask_wood/output_cask_wood.png",
+   "workshop": "stonehearth:carpenter:toolbench",
+   "level_requirement": 5,
+   "ingredients": [
+      {
+         "material": "wood resource",
+         "count": 4
+      },
+      {
+         "uri": "stonehearth:resources:iron:ore",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:containers:output_cask:wood"
+      }
+   ]
+}

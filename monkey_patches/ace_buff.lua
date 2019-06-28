@@ -1,5 +1,6 @@
 local modifiers_lib = require 'stonehearth.lib.modifiers.modifiers_lib'
 local Buff = require 'stonehearth.components.buffs.buff'
+local rng = _radiant.math.get_default_rng()
 local AceBuff = class()
 
 local log = radiant.log.create_logger('buff')
@@ -148,6 +149,9 @@ function AceBuff:on_repeat_add(options)
       for i = 1, options.stacks do
          self:_add_stack()
       end
+		if self._sv.stacks == self._sv.max_stacks and self._json.buff_evolve_on_max_stacks then
+			self:_try_evolve()
+		end
       self:_destroy_timer()
       self:_create_timer()
       return true
@@ -158,6 +162,16 @@ function AceBuff:on_repeat_add(options)
    end
 
    return false
+end
+
+function AceBuff:_try_evolve()
+	if self._json.evolve_chance then
+		if rng:get_real(0, 1) < self._json.evolve_chance then
+		radiant.entities.add_buff(self._sv._entity, self._json.buff_evolve_on_max_stacks)
+		end
+	else
+	radiant.entities.add_buff(self._sv._entity, self._json.buff_evolve_on_max_stacks)
+	end
 end
 
 function AceBuff:_create_duration_timer()

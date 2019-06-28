@@ -252,6 +252,24 @@
       },
       "cooking_ingredients": {
          "categories": {
+            "corn_meal": {
+               "display_name": "i18n(stonehearth_ace:entities.food.corn_meal.display_name)"
+            },
+            "flour": {
+               "display_name": "i18n(stonehearth_ace:entities.food.flour.display_name)"
+            },
+            "rice_flour": {
+               "ordinal": 2.001,
+               "display_name": "i18n(stonehearth_ace:entities.food.rice.rice_flour.display_name)",
+               "icon": "/stonehearth_ace/entities/food/rice/rice_flour/rice_flour.png",
+               "filter": "cooking_ingredient rice_flour"
+            },
+            "raw_rice": {
+               "ordinal": 2.002,
+               "display_name": "i18n(stonehearth_ace:entities.food.rice.raw_rice.display_name)",
+               "icon": "/stonehearth_ace/entities/food/rice/raw_rice/raw_rice.png",
+               "filter": "cooking_ingredient raw_rice"
+            },
             "steak": {
                "ordinal": 11,
                "display_name": "i18n(stonehearth_ace:entities.food.steak.display_name)",

@@ -1,0 +1,53 @@
+{
+   "type": "entity",
+   "mixins": "file(large_stone_coffer_ghost.json)",
+   "components": {
+      "stonehearth:storage": {
+         "type": "crate",
+         "capacity": 32
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(large_stone_coffer_iconic.json)",
+         "ghost_form": "file(large_stone_coffer_ghost.json)",
+         "placeable_on_ground": true
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 1, "y": 2, "z": 1 }
+            }
+         ]
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 1, "y": 2, "z": 1 }
+            }
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:town_patrol": {
+         "auto_patrol": true,
+         "patrol_pattern": "perimeter"
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 4,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 2,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 1
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

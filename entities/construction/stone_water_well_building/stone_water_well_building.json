@@ -1,0 +1,76 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(stone_water_well_building_iconic.json)",
+         "ghost_form": "file(stone_water_well_building_ghost.json)",
+         "placeable_on_ground": true,
+         "hide_move_ui": true,
+         "hide_undeploy_ui": true
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(stone_water_well_building.qb)"
+            ]
+         }
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -2, "y": 0, "z": -2 },
+               "max": { "x": 3, "y": 1, "z": 3 }
+            }
+         ]
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -2, "y": 0, "z": -2 },
+               "max": { "x": 3, "y": 6, "z": 3 }
+            }
+         ]
+      },
+      "stonehearth_ace:transform": {}
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.construction.stone_water_well_building.display_name)",
+         "description": "i18n(stonehearth_ace:entities.construction.stone_water_well_building.description)",
+         "icon": "file(../stone_water_well/stone_water_well.png)",
+         "category": "construction",
+         "material_tags": [
+            "stone",
+            "building_site",
+            "crafted",
+            "construction",
+            "stockpile_construction"
+         ]
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 31,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth_ace:transform_data": {
+         "transform_uri": "stonehearth_ace:construction:stone:water_well",
+         "command": "stonehearth_ace:commands:transform:build_well",
+         "request_action": "stonehearth_ace:transform",
+         "request_action_overlay_effect": "stonehearth_ace:effects:transform_mason_overlay_effect",
+         "transforming_worker_effect": "work",
+         "auto_request": true,
+         "transforming_worker_effect_times": 25,
+         "transform_effect": "stonehearth:effects:poof_effect",
+         "worker_required_job": {
+            "stonehearth:jobs:mason": true
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 0
+      }
+   }
+}

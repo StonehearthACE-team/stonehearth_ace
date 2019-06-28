@@ -21,6 +21,27 @@
 			},
 			"fuel_holder_large_stone": {
 				"recipe": "file(fuel_holder_large_stone_recipe.json)"
+			},
+			"tank_small": {
+				"recipe": "file(tank_small_recipe.json)"
+			},
+			"output_cask_stone_small": {
+				"recipe": "file(output_cask_stone_small_recipe.json)"
+			},
+			"tank": {
+				"recipe": "file(tank_recipe.json)"
+			},
+			"output_cask_stone": {
+				"recipe": "file(output_cask_stone_recipe.json)"
+			},
+			"input_keg_stone": {
+				"recipe": "file(input_keg_stone_recipe.json)"
+			},
+			"small_stone_coffer": {
+				"recipe": "file(small_stone_coffer_recipe.json)"
+			},
+			"large_stone_coffer": {
+				"recipe": "file(large_stone_coffer_recipe.json)"
 			}
 		 }
 	  },
@@ -56,21 +77,27 @@
             "market_shelf_tall_ground_wood": {
                "recipe": "/stonehearth/jobs/mason/recipes/market_shelf_tall_ground_stone.json"
             },
-			"stone_training_dummy": {
+				"stone_training_dummy": {
                "recipe": "file(stone_training_dummy_recipe.json)"
             },
             "stone_training_target": {
                "recipe": "file(stone_training_target_recipe.json)"
             },
-			"food_trough_stone": {
-				"recipe": "file(food_trough_stone_recipe.json)"
-			},
-			"pasture_bed_small": {
-				"recipe": "file(pasture_bed_small_recipe.json)"
-			},
-			"pasture_bed": {
-				"recipe": "file(pasture_bed_recipe.json)"
-			}
+				"food_trough_stone": {
+					"recipe": "file(food_trough_stone_recipe.json)"
+				},
+				"pasture_bed_small": {
+					"recipe": "file(pasture_bed_small_recipe.json)"
+				},
+				"pasture_bed": {
+					"recipe": "file(pasture_bed_recipe.json)"
+				},
+				"stone_water_well": {
+					"recipe": "file(stone_water_well_recipe.json)"
+				},
+				"water_well_roof_stone": {
+					"recipe": "file(water_well_roof_stone_recipe.json)"
+				}
          }
       },
 	  "weapons": {

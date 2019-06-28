@@ -1,0 +1,26 @@
+{
+   "type": "recipe",
+   "effort": 10,
+   "work_units": 20,
+   "recipe_name": "i18n(stonehearth_ace:jobs.mason.recipes.tank_small_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.mason.recipes.tank_small_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.mason.recipes.tank_small_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/containers/tank_small/tank_small.png",
+   "workshop": "stonehearth:mason:workbench",
+   "level_requirement": 2,
+   "ingredients": [
+      {
+         "material": "stone resource",
+         "count": 1
+      },
+		{
+         "material": "wood resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:containers:tank:small"
+      }
+   ]
+}

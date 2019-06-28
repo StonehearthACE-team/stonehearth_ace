@@ -1,0 +1,53 @@
+{
+   "type" : "effect",
+   "tracks": {
+		"coals": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/fire/cook_coals_idle.cubemitter.json",
+         "loop": true,
+         "transforms": {
+            "x":0,
+            "y":0.3,
+            "z": 0,
+            "rx":90,
+            "ry":0,
+            "rz":0
+         }
+      },
+	   "embers": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/fire/cook_embers_idle.cubemitter.json",
+         "loop": true,
+         "transforms": {
+            "x":0,
+            "y":0.2,
+            "z": 0,
+            "rx":90,
+            "ry":0,
+            "rz":0
+         }
+      },
+      "smoke": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/fire/smoke_plume_idle.cubemitter.json",
+         "loop": true,
+         "transforms": {
+            "x":0.0,
+            "y":2.3,
+            "z":0.0,
+            "rx":90,
+            "ry":0,
+				"rz": 0
+         }
+      },
+      "sound": {
+         "type": "sound_effect",
+         "loop": true,
+         "start_time": 200,
+         "min_distance": 15,
+         "falloff": 4,
+         "volume": 40,
+			"track": "stonehearth:sounds:jobs_cook_oven"
+      }            
+   }
+}

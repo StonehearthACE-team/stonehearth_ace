@@ -1,0 +1,43 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(juice_watermelon_serving.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:item": {
+         "category": "drink",
+         "destroy_on_uncarry": true
+      },
+      "stonehearth_ace:drink": {
+         "stonehearth:sitting_on_chair": {
+            "satisfaction": 45
+         },
+         "default": {
+            "satisfaction": 30
+         },
+         "applied_buffs": [
+            "stonehearth_ace:buffs:consumption:fruity_flavors",
+            "stonehearth_ace:buffs:consumption:refreshed_belly"
+         ],
+         "quality": 3
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.drink.juice_watermelon.juice_watermelon_serving.display_name)",
+         "description": "",
+         "material_tags": [
+            "drink",
+            "juice_watermelon_serving",
+            "juice",
+            "coffee_hour"
+         ],
+         "subject_override": "stonehearth_ace:drink:juice_watermelon"
+      }
+   }
+}

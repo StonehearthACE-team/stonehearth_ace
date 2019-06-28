@@ -1,0 +1,22 @@
+{
+   "type": "recipe",
+   "effort": 10,
+   "work_units": 6,
+   "recipe_name": "i18n(stonehearth_ace:jobs.mason.recipes.large_stone_coffer_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.mason.recipes.large_stone_coffer_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.mason.recipes.large_stone_coffer_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/containers/large_stone_coffer/large_stone_coffer.png",
+   "workshop": "stonehearth:mason:workbench",
+   "level_requirement": 2,
+   "ingredients": [
+      {
+         "material": "stone resource",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:containers:large_stone_coffer"
+      }
+   ]
+}

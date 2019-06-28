@@ -5,7 +5,9 @@
             "eat_from": "eating from [name(data.target)]",
             "fertilize_field": "applying fertilizer",
             "transform": "transforming [name(data.target)]",
-            "train": "going for training"
+            "train": "going for training",
+            "consume_drink": "drinking [name(data.target)]",
+            "drink": "getting a drink"
          }
       }
    },
@@ -48,6 +50,14 @@
       },
       "gm": {
          "campaigns": {
+            "amberstone": {
+               "21_residents_reward_b": {
+                  "bulletin_title": "Amberstone Cook recipes unlocked!"
+               },
+               "21_residents_outro_a": {
+                  "dialogue": "\"What a nice home you've built for them! They will be here shortly, and I'm sure they'll be charmed! By the way, I'm certain they can teach you some of our cooking recipes as well...\""
+               }
+            },
             "ambient_threats": {
                "bear_attack": {
                   "mission": {
@@ -277,6 +287,32 @@
                }
             },
             "town_progression": {
+               "ace_guildmaster_reached": {
+                  "recipe_unlock_coins": "The Blacksmith can now mint gold coins!"
+               },
+               "ace_valor_reached": {
+                  "recipe_unlock_blacksmith": "New Legendary Mail recipe - Weaver, Engineer, and Blacksmith collaboration!",
+                  "recipe_unlock_geomancer": "New Legendary Tome recipe - Cook, Herbalist, and Geomancer collaboration!",
+                  "recipe_unlock_engineer": "New Legendary Mace recipe - Mason, Carpenter, and Engineer collaboration!",
+                  "recipe_unlock_weaver": "New Legendary Hood recipe - Blacksmith, Geomancer, and Weaver collaboration!"
+               }
+            },
+            "rc_town_progression": {
+               "ace_guildmaster_reached": {
+                  "recipe_unlock_coins": "The Blacksmith can now mint gold coins!",
+                  "recipe_unlock_cook": "The Cook can now make Desert Sun Tea!"
+               },
+               "ace_deity_reached": {
+                  "recipe_unlock_cook": "The Cook can now make Desert Sun Tea!"
+               },
+               "ace_valor_reached": {
+                  "recipe_unlock_blacksmith": "New Legendary Mail recipe - Weaver, Engineer, and Blacksmith collaboration!",
+                  "recipe_unlock_geomancer": "New Legendary Tome recipe - Cook, Herbalist, and Geomancer collaboration!",
+                  "recipe_unlock_engineer": "New Legendary Mace recipe - Mason, Carpenter, and Engineer collaboration!",
+                  "recipe_unlock_weaver": "New Legendary Hood recipe - Blacksmith, Geomancer, and Weaver collaboration!"
+               }
+            },
+            "na_town_progression": {
                "ace_guildmaster_reached": {
                   "recipe_unlock_coins": "The Blacksmith can now mint gold coins!"
                },
@@ -806,6 +842,61 @@
                      "display_name": "Forever Playful",
                      "tooltip": "I was visited by the adorable ghost of a very mischievous kitten called Teddy!"
                   }
+               }
+            },
+            "drinking": {
+               "merry_time": {
+                  "display_name": "Having a good time!",
+                  "tooltip": "Friends, drinks and a good time! What else could anyone wish for?"
+               },
+               "morning_after": {
+                  "display_name": "Exaggerated a little...",
+                  "tooltip": "Ugh... Bleh! Everything aches and my head is so heavy. Should not exaggerate so much..."
+               },
+               "dairy_intolerant_had_dairy": {
+                  "display_name": "Dairy intolerance (Drink)"
+               },
+               "alcohol_intolerant_had_alcohol": {
+                  "display_name": "Alcohol intolerance"
+               },
+               "alcohol_lover_had_alcohol": {
+                  "display_name": "Bohemian"
+               },
+               "juice_lover_had_juice": {
+                  "display_name": "Juice lover"
+               },
+               "tea_lover_had_tea": {
+                  "display_name": "Tea lover"
+               },
+               "dairy_lover_had_dairy": {
+                  "display_name": "Dairy lover (Drink)"
+               },
+               "item_quality": {
+                  "had_item_quality_fine": {
+                     "display_name": "Finely prepared drink"
+                  },
+                  "had_item_quality_excellent": {
+                     "display_name": "Excellently prepared drink"
+                  },
+                  "had_item_quality_masterwork": {
+                     "display_name": "Masterfully prepared drink!"
+                  }
+               }
+            },
+            "thirst": {
+               "values": {
+                  "sated": {
+                     "display_name": "Quenched",
+                     "tooltip": "Hmm, I've really enjoyed some beverages recently. I'll be good for a while..."
+                  }
+               },
+               "thirsty": {
+                  "display_name": "Thirsty",
+                  "tooltip": "I haven't had a drink in some time... Could use the refreshment soon."
+               },
+               "very_thirsty": {
+                  "display_name": "Very Thirsty",
+                  "tooltip": "Uh, I'm so dry... I need to drink something!"
                }
             }
          }
@@ -1372,6 +1463,18 @@
             "close_door": {
                "display_name": "Close this door!",
                "description": "Close this door, preventing animals or creatures from going through."
+            },
+            "fermenting_vat_fill": {
+               "display_name": "Fill Fermenting Vat",
+               "description": "Order the Cook to fill this fermenting vat with wort to start the production of beer!"
+            },
+            "build_well": {
+               "display_name": "Build Water Well",
+               "description": "Order the construction of this water well. A water well can't be undeployed or moved and can only be removed by destroying it."
+            },
+            "build_well_roof": {
+               "display_name": "Add Roof",
+               "description": "Use a crafted Water Well Roof of the same kind to add a fancy roof to make your citizens happier and your water always fresh!"
             }
          },
          "slaughter": {
@@ -1650,15 +1753,59 @@
          },
          "warm_belly": {
             "display_name": "Warm Belly",
-            "description": "All warm and fuzzy inside, it was delicious! Willpower is increased.<ul><li>This hearthling is protected from chilly and cold weather for some time.</li></ul>"
+            "description": "All warm and fuzzy inside, it was delicious! Willpower is increased.<ul><li>This hearthling is protected from chilly and cold weather for some time</li></ul>"
          },
          "refreshed_belly": {
             "display_name": "Cool Belly",
-            "description": "This was refreshing, I feel renewed! Diligence is increased.<ul><li>This hearthling is protected from hot weather for some time.</li></ul>"
+            "description": "This was refreshing, I feel renewed! Diligence is increased.<ul><li>This hearthling is protected from hot weather for some time</li></ul>"
          },
          "sweet_energy": {
             "display_name": "Sweet Energy",
-            "description": "Woo, sugar rush! Diligence is increased, Speed and Crafting speed are slightly increased."
+            "description": "Woo, sugar rush! Diligence is increased, Speed is slightly increased. The need for sleep is slightly decreased.<ul><li>Crafting is slightly faster</li></ul>"
+         },
+         "light_headed": {
+            "display_name": "Light-headed",
+            "description": "Having a merry time! Maybe a bit too much... Oh, well. Courage is increased. Diligence, Willpower, Speed and Stamina are slightly decreased.<ul><li>Crafting takes longer and has less chances of producing high quality items</li><li>This hearthling is less menacing to enemies</li><li>This hearthling will want to engage in more conversations and sleep</li></ul>"
+         },
+         "quite_woozy": {
+            "display_name": "Quite Woozy",
+            "description": "Is the world spinning or is it just me? Courage is greatly increased. Diligence, Willpower, Speed and Stamina are decreased.<ul><li>Crafting takes longer and has less chances of producing high quality items</li><li>This hearthling is much less menacing to enemies</li><li>This hearthling will want to engage in a lot more conversations and sleep</li><li>This hearthling will have the 'The Morning after...' effect applied when this effect expires</li></ul>"
+         },
+         "morning_after": {
+            "display_name": "The Morning After...",
+            "description": "Ouch... Next time I shouldn't exaggerate so much! Diligence, Willpower and Stamina are greatly reduced.<ul><li>Crafting takes longer</li></ul>"
+         },
+         "merry_time": {
+            "display_name": "Good Time",
+            "description": "The hearthling's mood is greatly increased."
+         },
+         "fruity_flavors": {
+            "display_name": "Fruity Flavors",
+            "description": "Enjoyed a delicious fruit beverage! Willpower and Compassion are increased.<ul><li>Crafting is slightly faster</li></ul>"
+         },
+         "harmony_minor": {
+            "display_name": "Minor Harmony",
+            "description": "Hmm... I feel a gentle peace inside. Diligence and Curiosity are slightly increased.<ul><li>Crafting is a little slower but with slightly increased quality</li><li>Experience gain is slightly increased</li></ul>"
+         },
+         "harmony": {
+            "display_name": "Harmony",
+            "description": "Perfectly balanced, as all things should be. Diligence and Curiosity are increased.<ul><li>Crafting is somewhat slower but with quite increased quality</li><li>Experience gain is increased</li></ul>"
+         },
+         "harmony_major": {
+            "display_name": "Greater Harmony",
+            "description": "Interior tranquility is the key to understanding oneself. Diligence and Curiosity are quite increased.<ul><li>Crafting is quite slower but with incredibly increased quality</li><li>Experience gain is greatly increased</li></ul>"
+         },
+         "thirsty": {
+            "description": "I could probably use something to drink...",
+            "display_name": "Thirsty"
+         },
+         "very_thirsty": {
+            "display_name": "Very Thirsty",
+            "description": "My mouth is dry! I really need something to drink!"
+         },
+         "lovely_drink": {
+            "display_name": "Lovely Drink",
+            "description": "Nothing more revigorating than having your favorite drink! Stamina and Compassion fairly increased."
          }
       },
       "loadouts": {
@@ -1671,7 +1818,11 @@
             "comfy_bed": "Bed",
             "roast_venison": "Venison",
             "training_target": "Targets",
-            "sleeping_bag": "Bedroll"
+            "sleeping_bag": "Bedroll",
+            "juice": "Juice",
+            "beer": "Beer",
+            "tea": "Tea",
+            "milk": "Milk"
          },
          "military_expedition": {
             "display_name": "Military Expedition",
@@ -1744,6 +1895,22 @@
                "display_name": "Heliophile",
                "description": "[name(i18n_data.entity)] loves praising the sun! Its light and rays are some of their favorite things and make them really happy."
             }
+         },
+         "alcohol_intolerance_trait": {
+            "display_name": "Alcohol Intolerance",
+            "description": "[name(i18n_data.entity)] has a strong dislike for alcoholic beverages. These just don't get along with their belly."
+         },
+         "alcohol_love_trait": {
+            "display_name": "Bohemian",
+            "description": "It is no secret how much [name(i18n_data.entity)] loves all types of alcoholic beverages. They always appreciate drinking these more than anything else, if possible."
+         },
+         "juice_love_trait": {
+            "display_name": "Juice Lover",
+            "description": "It is no secret how much [name(i18n_data.entity)] loves juices. They always appreciate drinking them more than anything else, if possible."
+         },
+         "tea_love_trait": {
+            "display_name": "Tea Lover",
+            "description": "It is no secret how much [name(i18n_data.entity)] loves all sorts of tea and infusions. They always appreciate drinking them more than anything else, if possible."
          }
       }
    },
@@ -1816,7 +1983,7 @@
             "cotton_transmute_recipe": {
                "recipe_name": "Cotton Seeds (x3)",
                "description": "Separate seeds from the fiber",
-               "flavor": "Cotton seeds are oleaginous seeds and can be used to make oil."
+               "flavor": "Only a skilled hand can harvest the weaker seeds, but the fiber is destroyed in the process."
             },
             "sunflower_transmute_recipe": {
                "flavor": "Sunflower seeds are oleaginous seeds and can be used to make oil."
@@ -2416,6 +2583,56 @@
                "recipe_name": "Pasture Bedding",
                "description": "Large pasture animals will go to these during the night or bad weather, place them under shelter.",
                "flavor": "Must be placed inside a pasture. Large animals include sheep, ostriches and moo-moos"
+            },
+            "tall_urn_recipe": {
+               "recipe_name": "Tall Urn",
+               "description": "For compactly storing up to 64 items.",
+               "flavor": "It's not easy to make all the urns the exact same size... So we came up with this idea!"
+            },
+            "output_cask_clay_small_recipe": {
+               "recipe_name": "Clay Small Production Cask",
+               "description": "Temporary storage for 32 finished products.",
+               "flavor": "Can only hold certain fluids and dry goods"
+            },
+            "output_cask_clay_recipe": {
+               "recipe_name": "Clay Production Cask",
+               "description": "Temporary storage for 48 finished products.",
+               "flavor": "Can only hold certain fluids and dry goods"
+            },
+            "input_keg_clay_recipe": {
+               "description": "A serving container for 4 raw or prepared drinks.",
+               "recipe_name": "Clay Serving Keg",
+               "flavor": ""
+            },
+            "amphora_recipe": {
+               "recipe_name": "Ceramic Amphora",
+               "description": "Stores up to 24 items of a certain kind.",
+               "flavor": "Can hold a diverse range of fluids and dry goods"
+            },
+            "amphora_red_recipe": {
+               "recipe_name": "Red Ceramic Amphora",
+               "description": "Stores up to 24 items of a certain kind.",
+               "flavor": "Can hold a diverse range of fluids and dry goods"
+            },
+            "amphora_blue_recipe": {
+               "recipe_name": "Blue Ceramic Amphora",
+               "description": "Stores up to 24 items of a certain kind.",
+               "flavor": "Can hold a diverse range of fluids and dry goods"
+            },
+            "amphora_green_recipe": {
+               "recipe_name": "Green Ceramic Amphora",
+               "description": "Stores up to 24 items of a certain kind.",
+               "flavor": "Can hold a diverse range of fluids and dry goods"
+            },
+            "clay_water_well_recipe": {
+               "recipe_name": "Clay Water Well",
+               "description": "Assemble the materials for building an ingenious mechanism for retrieving underground water.",
+               "flavor": "Once placed a well needs to be built and can't be moved anymore, only destroyed"
+            },
+            "water_well_roof_clay_recipe": {
+               "recipe_name": "Clay Water Well Roof",
+               "description": "Build a good-looking roof to spruce up your clay water well!",
+               "flavor": "Well done!"
             }
          },
          "potter_description": {
@@ -2686,6 +2903,51 @@
                "recipe_name": "Small Firepit",
                "description": "A smaller variant of the beloved stone hearth.",
                "flavor": "Fits interiors and is warm and cosy!"
+            },
+            "small_stone_coffer_recipe": {
+               "recipe_name": "Small Stone Coffer",
+               "description": "For neatly storing up to 8 items.",
+               "flavor": ""
+            },
+            "large_stone_coffer_recipe": {
+               "recipe_name": "Stone Coffer",
+               "description": "For neatly storing up to 32 items.",
+               "flavor": "Could be called a casket but that would certainly cause some confusion..."
+            },
+            "output_cask_stone_small_recipe": {
+               "recipe_name": "Stone Small Production Cask",
+               "description": "Temporary storage for 32 finished products.",
+               "flavor": "Can only hold certain fluids and dry goods"
+            },
+            "output_cask_stone_recipe": {
+               "recipe_name": "Stone Production Cask",
+               "description": "Temporary storage for 48 finished products.",
+               "flavor": "Can only hold certain fluids and dry goods"
+            },
+            "input_keg_stone_recipe": {
+               "description": "A serving container for 4 raw or prepared drinks.",
+               "recipe_name": "Stone Serving Keg",
+               "flavor": ""
+            },
+            "tank_recipe": {
+               "recipe_name": "Stone Tank",
+               "description": "Stores up to 24 items of a certain kind.",
+               "flavor": "Can hold a diverse range of fluids and dry goods"
+            },
+            "tank_small_recipe": {
+               "recipe_name": "Small Stone Tank",
+               "description": "Stores up to 6 items of a certain kind.",
+               "flavor": "Can hold a diverse range of fluids and dry goods"
+            },
+            "stone_water_well_recipe": {
+               "recipe_name": "Stone Water Well",
+               "description": "Assemble the materials for building an ingenious mechanism for retrieving underground water.",
+               "flavor": "Once placed a well needs to be built and can't be moved anymore, only destroyed"
+            },
+            "water_well_roof_stone_recipe": {
+               "recipe_name": "Stone Water Well Roof",
+               "description": "Build a good-looking roof to spruce up your stone water well!",
+               "flavor": "Well fitting!"
             }
          },
          "mason_workbench_bone": {
@@ -2772,7 +3034,7 @@
                "flavor": ""
             },
             "farmer_hoe_iron_recipe": {
-               "recipe_name": "Iron Farmer's Hoe",
+               "recipe_name": "Farmer's Iron Hoe",
                "description": "Craft a tool that Farmers can use to slightly improve their working efficiency.",
                "flavor": ""
             },
@@ -3116,11 +3378,22 @@
       },
       "cook": {
          "recipes": {
-            "food_preparation_name": "Food Preparation",
+            "food_preparation_name": "Preparation",
+            "drinks_name": "Drinks & Beverages",
             "cook_cheese_vat_recipe": {
                "recipe_name": "Cheese Vat",
                "description": "The Cook can use this to make cheese by crafting curdling mixtures. The longer it rests the more valuable it gets.",
                "flavor": "You can harvest the cheese at any time during the maturation process"
+            },
+            "cook_fermenting_vat_recipe": {
+               "recipe_name": "Fermentation Vat",
+               "description": "The Cook can use this to make beer by crafting wort.",
+               "flavor": "Beer makes hearthlings happy and slightly tipsy"
+            },
+            "cook_brewery_recipe": {
+               "recipe_name": "Copper Brewery",
+               "description": "Use to create exquisite brews and drinks.",
+               "flavor": "Can also be used for all sorts of mixing & preparing of beverages"
             },
             "curdling_mixture_recipe": {
                "recipe_name": "Curdling Mixture",
@@ -3230,7 +3503,7 @@
             "cooking_oil_recipe": {
                "recipe_name": "Cooking Oil",
                "description": "Extract the oil from any oleaginous seeds or grains to be used as an ingredient.",
-               "flavor": "Cotton seeds, Sunflower seeds, Corn or even Paddy are examples of oil sources"
+               "flavor": "Pumpkin seeds, Sunflower seeds, Corn or even Paddy are examples of oil sources"
             },
             "dough_sweet_recipe": {
                "recipe_name": "Portion of Sweet Wheat Dough",
@@ -3380,6 +3653,86 @@
                "recipe_name": "Veggie Kibble (x3)",
                "description": "Bake delicious and healthy rations for pets. Exclusively carnivore animals will not eat this kibble.",
                "flavor": ""
+            },
+            "malted_grains_recipe": {
+               "recipe_name": "Sack of Malted Grains",
+               "description": "Toast some grains until they're perfectly golden. An ingredient necessary for brewing.",
+               "flavor": "Malted Grains can also be milled for cooking oil"
+            },
+            "wort_recipe": {
+               "recipe_name": "Bucket of Wort",
+               "description": "An extract of mashed malted grains and herbs. Within a Fermentation Vat it can be turned into beer!",
+               "flavor": "Wort can also be further distilled into other drinks"
+            },
+            "spirit_recipe": {
+               "recipe_name": "Bucket of Malt Spirit",
+               "description": "A distilled, moderately strong alcoholic beverage from grains.",
+               "flavor": "A bit too dry..."
+            },
+            "spirit_fruit_recipe": {
+               "recipe_name": "Bucket of Fruit Spirit",
+               "description": "A distilled, moderately strong alcoholic beverage from fruits.",
+               "flavor": "Fruity and sweet, a festival favorite!"
+            },
+            "liquor_recipe": {
+               "recipe_name": "Bucket of Liquor (x3)",
+               "description": "A complex, flavorful and quite strong alcoholic beverage from fermented wort.",
+               "flavor": "A very fancy drink for a very fancy town"
+            },
+            "tea_recipe": {
+               "recipe_name": "Herbal Tea",
+               "description": "An aromatic and warm beverage very appreciated by many! Provides multiple bonuses to hearthlings.",
+               "flavor": "Prepared tea must be placed somewhere in order to be consumed"
+            },
+            "tea_desert_recipe": {
+               "recipe_name": "Desert Sun Tea",
+               "description": "An unique recipe to the children of Rayya, a flower tea from Pal'Mum. Provides multiple bonuses to hearthlings.",
+               "flavor": "Prepared tea must be placed somewhere in order to be consumed"
+            },
+            "tea_amberstone_recipe": {
+               "recipe_name": "Amberstone Tea",
+               "description": "A traditional recipe from the clan, delighting palates for centuries. Provides multiple bonuses to hearthlings.",
+               "flavor": "Prepared tea must be placed somewhere in order to be consumed"
+            },
+            "tea_fancy_recipe": {
+               "recipe_name": "Lavish Tea",
+               "description": "The elegant and heartwarming flavor of dried daisies and fruits. Provides multiple bonuses to hearthlings.",
+               "flavor": "Prepared tea must be placed somewhere in order to be consumed"
+            },
+            "juice_berry_recipe": {
+               "recipe_name": "Bucket of Berry Juice",
+               "description": "Create a fruity beverage from wild berries.",
+               "flavor": ""
+            },
+            "juice_cherry_recipe": {
+               "recipe_name": "Bucket of Cherry Juice",
+               "description": "A sour, flavorful recipe that uses wild cherries.",
+               "flavor": ""
+            },
+            "juice_prickly_pear_recipe": {
+               "recipe_name": "Bucket of Prickly Pear Juice",
+               "description": "A peculiar beverage made with prickly pears.",
+               "flavor": "Make sure that no spine will go with the juice..."
+            },
+            "juice_carrot_recipe": {
+               "recipe_name": "Bucket of Carrot Juice",
+               "description": "A nutritious and refreshing drink recipe that uses fruits and carrots.",
+               "flavor": "The best of two worlds"
+            },
+            "juice_watermelon_recipe": {
+               "recipe_name": "Bucket of Watermelon Juice",
+               "description": "Deliciously refreshing juice straight from hearty, ripe watermelons.",
+               "flavor": ""
+            },
+            "juice_heirbloom_recipe": {
+               "recipe_name": "Bucket of Heirbloom Juice",
+               "description": "A tasty juice with the peculiar, strong taste of heirbloom fruits.",
+               "flavor": ""
+            },
+            "smoothie_recipe": {
+               "recipe_name": "Bucket of Smoothie",
+               "description": "The fruity flavors go perfectly with the creamy milk in this refreshing and sweet beverage.",
+               "flavor": "A delicious combination"
             }
          },
          "cook_mill_powered": {
@@ -3393,7 +3746,7 @@
          },
          "cook_description": {
             "level_2_data": {
-               "recipe_unlock_2_description": "The Cook has learned to make slightly fancier recipes and can now build an oven, allowing them to create baked goods as well."
+               "recipe_unlock_2_description": "The Cook has learned to make slightly fancier recipes and can now build an oven for baked goods and a brewery for different beverages."
             },
             "level_4_data": {
                "ornate_perk_name": "Healthier Diets",
@@ -3438,6 +3791,22 @@
          "cook_spoon_copper": {
             "display_name": "Cook's Copper Spoon",
             "description": "Lighter and cleaner, this spoon will improve the Cook's efficiency."
+         },
+         "cook_brewery": {
+            "display_name": "Copper Brewery",
+            "description": "Excellent for crafting beverages and mixtures"
+         },
+         "cook_fermenting_vat_empty": {
+            "display_name": "Empty Fermentation Vat",
+            "description": "Used by the Cook for fermenting brews."
+         },
+         "cook_fermenting_vat_wort": {
+            "display_name": "Fermentation Vat with Wort",
+            "description": "The wort is fermenting and will then turn into beer!"
+         },
+         "cook_fermenting_vat_beer": {
+            "display_name": "Fermentation Vat with Beer",
+            "description": "The beer is ready and can now be filtered and collected!"
          }
       },
       "carpenter": {
@@ -3552,6 +3921,41 @@
                "recipe_name": "Fish Trap",
                "description": "Used by the Trapper to safely catch and harvest or capture fish. Can only place a limited amount.",
                "flavor": "You can toggle the catching mode when clicking the trap!"
+            },
+            "output_cask_wood_recipe": {
+               "recipe_name": "Wooden Production Cask",
+               "description": "Temporary storage for 48 finished products.",
+               "flavor": "Can only hold certain fluids and dry goods"
+            },
+            "output_cask_wood_small_recipe": {
+               "recipe_name": "Wooden Small Production Cask",
+               "description": "Temporary storage for 32 finished products.",
+               "flavor": "Can only hold certain fluids and dry goods"
+            },
+            "input_keg_wood_recipe": {
+               "description": "A serving container for 4 raw or prepared drinks.",
+               "recipe_name": "Wooden Serving Keg",
+               "flavor": ""
+            },
+            "barrel_recipe": {
+               "recipe_name": "Wooden Barrel",
+               "description": "Stores up to 24 items of a certain kind.",
+               "flavor": "Can hold a diverse range of fluids and dry goods"
+            },
+            "barrel_small_recipe": {
+               "recipe_name": "Small Wooden Barrel",
+               "description": "Stores up to 6 items of a certain kind.",
+               "flavor": "Can hold a diverse range of fluids and dry goods"
+            },
+            "wooden_water_well_recipe": {
+               "recipe_name": "Wooden Water Well",
+               "description": "Assemble the materials for building an ingenious mechanism for retrieving underground water.",
+               "flavor": "Once placed a well needs to be built and can't be moved anymore, only destroyed"
+            },
+            "water_well_roof_wood_recipe": {
+               "recipe_name": "Wooden Water Well Roof",
+               "description": "Build a good-looking roof to spruce up your wooden water well!",
+               "flavor": "Very well!"
             }
          },
          "carpenter_description": {
@@ -3997,6 +4401,51 @@
          "stone_animal_door_small": {
             "description": "A small door for animal shelters. Can be opened or closed by a shepherd.",
             "display_name": "Stone Small Animal Door"
+         },
+         "wooden_water_well": {
+            "display_name": "Wooden Water Well",
+            "description": "An ingenious mechanism for retrieving underground water."
+         },
+         "stone_water_well_roofed": {
+            "display_name": "Stone Roofed Water Well",
+            "description": "An ingenious mechanism for retrieving underground water."
+         },
+         "stone_water_well": {
+            "display_name": "Stone Water Well",
+            "description": "An ingenious mechanism for retrieving underground water."
+         },
+         "clay_water_well": {
+            "display_name": "Clay Water Well",
+            "description": "An ingenious mechanism for retrieving underground water."
+         },
+         "wooden_water_well_roofed": {
+            "description": "An ingenious mechanism for retrieving underground water.",
+            "display_name": "Wooden Roofed Water Well"
+         },
+         "clay_water_well_roofed": {
+            "display_name": "Clay Roofed Water Well",
+            "description": "An ingenious mechanism for retrieving underground water."
+         },
+         "wooden_water_well_building_ghost": {
+            "description": "Place a construction site for your carpenter to start working on a water well!"
+         },
+         "wooden_water_well_building": {
+            "display_name": "Well Construction Site",
+            "description": "This wooden water well is being built by a carpenter."
+         },
+         "stone_water_well_building_ghost": {
+            "description": "Place a construction site for your mason to start working on a water well!"
+         },
+         "clay_water_well_building_ghost": {
+            "description": "Place a construction site for your potter to start working on a water well!"
+         },
+         "stone_water_well_building": {
+            "display_name": "Well Construction Site",
+            "description": "This stone water well is being built by a mason."
+         },
+         "clay_water_well_building": {
+            "display_name": "Well Construction Site",
+            "description": "This clay water well is being built by a potter."
          }
       },
       "crops": {
@@ -4504,6 +4953,12 @@
          "bone_skull": {
             "display_name": "Skull",
             "description": "Don't... Don't think too much about it. Can be used as bone material."
+         },
+         "fluid": {
+            "water": {
+               "display_name": "Bucket of Water",
+               "description": "A very basic and important resource."
+            }
          }
       },
       "refined": {
@@ -4551,6 +5006,18 @@
          "steel_plate": {
             "display_name": "Steel Plate",
             "description": "A sheet of strong and valuable metal."
+         },
+         "water_well_roof_wood": {
+            "display_name": "Wooden Water Well Roof",
+            "description": "A worker or a carpenter can install this roof on a wooden water well!"
+         },
+         "water_well_roof_stone": {
+            "display_name": "Stone Water Well Roof",
+            "description": "A worker or a mason can install this roof on a stone water well!"
+         },
+         "water_well_roof_clay": {
+            "display_name": "Clay Water Well Roof",
+            "description": "A worker or a potter can install this roof on a clay water well!"
          }
       },
       "trees": {
@@ -5364,6 +5831,12 @@
             "statue_marble_farmer_male": {
                "display_name": "Marble Farmer Statue",
                "description": "A very detailed and realistic depiction of an old man with a farming hoe."
+            },
+            "statue_wolf_and_kitten": {
+               "statue_wolf_and_kitten_ghost": {
+                  "display_name": "Wolf & Kitten Statue",
+                  "description": "It is said that this beautiful piece celebrates the most unlikely love."
+               }
             }
          },
          "wall_axe": {
@@ -6366,6 +6839,10 @@
                "display_name": "Serving of Poyo Nuggets",
                "description": "Nom nom nom"
             }
+         },
+         "malted_grains": {
+            "display_name": "Sack of Malted Grains",
+            "description": "Golden, toasted grains for producing wort. Can also be milled for cooking oil."
          }
       },
       "terrain": {
@@ -6819,6 +7296,18 @@
          },
          "shield_hare": {
             "description": "Imbues the wearer with the healing power of Knut, so they can better stand in battle."
+         },
+         "chitin_armor": {
+            "display_name": "Chitin Breastplate",
+            "description": "Protective gear for footmen. Fares particularly well against toxins."
+         },
+         "chitin_helm": {
+            "display_name": "Chitin Helm",
+            "description": "A good defense for one's head. Fares particularly well against toxins."
+         },
+         "chitin_shield": {
+            "display_name": "Chitin Shield",
+            "description": "A somewhat sturdy shield made of chitin."
          }
       },
       "weapons": {
@@ -7588,8 +8077,84 @@
             "description": "Hearthlings can put kibble in this creepy bowl for their pets to eat."
          },
          "input_keg_wood": {
-            "display_name": "Wooden Supply Keg",
-            "description": "A supply container, for quicker crafting. This container may only hold liquids."
+            "description": "A serving container for 4 raw or prepared drinks.",
+            "display_name": "Wooden Serving Keg"
+         },
+         "input_keg_clay": {
+            "description": "A serving container for 4 raw or prepared drinks.",
+            "display_name": "Clay Serving Keg"
+         },
+         "input_keg_stone": {
+            "description": "A serving container for 4 raw or prepared drinks.",
+            "display_name": "Stone Serving Keg"
+         },
+         "output_cask_wood": {
+            "display_name": "Wooden Production Cask",
+            "description": "Temporary storage for 48 finished products."
+         },
+         "output_cask_clay": {
+            "display_name": "Clay Production Cask",
+            "description": "Temporary storage for 48 finished products."
+         },
+         "output_cask_stone": {
+            "display_name": "Stone Production Cask",
+            "description": "Temporary storage for 48 finished products."
+         },
+         "output_cask_wood_small": {
+            "display_name": "Wooden Small Production Cask",
+            "description": "Temporary storage for 32 finished products."
+         },
+         "output_cask_clay_small": {
+            "display_name": "Clay Small Production Cask",
+            "description": "Temporary storage for 32 finished products."
+         },
+         "output_cask_stone_small": {
+            "display_name": "Stone Small Production Cask",
+            "description": "Temporary storage for 32 finished products."
+         },
+         "barrel": {
+            "display_name": "Wooden Barrel",
+            "description": "Stores up to 24 items of a certain kind."
+         },
+         "barrel_small": {
+            "display_name": "Small Wooden Barrel",
+            "description": "Stores up to 6 items of a certain kind."
+         },
+         "amphora": {
+            "display_name": "Ceramic Amphora",
+            "description": "Stores up to 24 items of a certain kind."
+         },
+         "amphora_red": {
+            "display_name": "Red Ceramic Amphora",
+            "description": "Stores up to 24 items of a certain kind."
+         },
+         "amphora_blue": {
+            "display_name": "Blue Ceramic Amphora",
+            "description": "Stores up to 24 items of a certain kind."
+         },
+         "amphora_green": {
+            "display_name": "Green Ceramic Amphora",
+            "description": "Stores up to 24 items of a certain kind."
+         },
+         "tank": {
+            "display_name": "Stone Tank",
+            "description": "Stores up to 24 items of a certain kind."
+         },
+         "tank_small": {
+            "display_name": "Small Stone Tank",
+            "description": "Stores up to 6 items of a certain kind."
+         },
+         "small_stone_coffer": {
+            "description": "Stores up to 8 items",
+            "display_name": "Small Stone Coffer"
+         },
+         "large_stone_coffer": {
+            "description": "Stores up to 32 items",
+            "display_name": "Stone Coffer"
+         },
+         "tall_urn": {
+            "display_name": "Tall Urn",
+            "description": "Stores up to 64 items"
          }
       },
       "tools": {
@@ -7630,7 +8195,7 @@
             "description": "Greatly increases the work speed for general activities like building."
          },
          "farmer_hoe_iron": {
-            "display_name": "Iron Farmer's Hoe",
+            "display_name": "Farmer's Iron Hoe",
             "description": "Slightly increases the work speed of the Farmer."
          },
          "backpack_leather": {
@@ -7705,8 +8270,8 @@
          },
          "megacrop": {
             "watermelon_juice_serving": {
-               "display_name": "Cup of Watermelon Juice",
-               "description": "Refreshing!"
+               "display_name": "Cup of Mega Watermelon Juice",
+               "description": "Refreshing and sweet!"
             }
          },
          "sheep_milk": {
@@ -7726,6 +8291,157 @@
             "wild_cattle_milk_serving": {
                "display_name": "Cup of Wild Cattle Milk"
             }
+         },
+         "beer": {
+            "beer": {
+               "display_name": "Beer",
+               "description": "A flavorful brew. Makes hearthlings happy but also a little tipsy! "
+            },
+            "beer_serving": {
+               "display_name": "Beer Tankard",
+               "description": "What a merry day!"
+            }
+         },
+         "wort": {
+            "display_name": "Bucket of Wort",
+            "description": "An extract from grains. The Cook needs it to fill a fermentation vat!"
+         },
+         "spirit": {
+            "spirit": {
+               "display_name": "Malt Spirit",
+               "description": "A dry, complex and moderate brew. Makes hearthlings happy but also tipsy! "
+            },
+            "spirit_serving": {
+               "display_name": "Cup of Malt Spirit"
+            }
+         },
+         "spirit_fruit": {
+            "spirit_fruit": {
+               "display_name": "Fruit Spirit",
+               "description": "A fruity, savoury moderate brew. Makes hearthlings happy but also tipsy! "
+            },
+            "spirit_fruit_serving": {
+               "display_name": "Cup of Fruit Spirit"
+            }
+         },
+         "liquor": {
+            "liquor": {
+               "display_name": "Liquor",
+               "description": "A strong and sweet brew. Makes hearthlings happy but also quite tipsy! "
+            },
+            "liquor_serving": {
+               "display_name": "Cup of Liquor"
+            }
+         },
+         "tea_iconic": {
+            "description": "Place it somewhere so hearthlings can serve themselves!"
+         },
+         "tea": {
+            "tea": {
+               "display_name": "Herbal Tea",
+               "description": "An aromatic and warm beverage. Very appreciated by many!"
+            },
+            "tea_serving": {
+               "display_name": "Mug of Herbal Tea"
+            }
+         },
+         "tea_fancy": {
+            "tea_fancy": {
+               "display_name": "Lavish Tea",
+               "description": "The elegant and heartwarming flavor of dried daisies and fruits."
+            },
+            "tea_fancy_serving": {
+               "display_name": "Cup of Lavish Tea",
+               "description": "A civilized drink for a civilized age."
+            }
+         },
+         "tea_desert": {
+            "tea_desert": {
+               "display_name": "Desert Sun Tea",
+               "description": "An unique recipe to the children of Rayya, a flower tea from Pal'Mum."
+            },
+            "tea_desert_serving": {
+               "display_name": "Cup of Desert Sun Tea"
+            }
+         },
+         "tea_amberstone": {
+            "tea_amberstone": {
+               "display_name": "Amberstone Tea",
+               "description": "A traditional recipe from the clan, delighting palates for centuries."
+            },
+            "tea_amberstone_serving": {
+               "display_name": "Mug of Amberstone Tea"
+            }
+         },
+         "juice_berry": {
+            "juice_berry": {
+               "display_name": "Berry Juice",
+               "description": "A fruity and tasty beverage from wild berries."
+            },
+            "juice_berry_serving": {
+               "display_name": "Cup of Berry Juice"
+            }
+         },
+         "juice_carrot": {
+            "juice_carrot": {
+               "display_name": "Carrot Juice",
+               "description": "A nutritious and refreshing drink made of fruits and carrots."
+            },
+            "juice_carrot_serving": {
+               "display_name": "Cup of Carrot Juice"
+            }
+         },
+         "juice_cherry": {
+            "juice_cherry": {
+               "display_name": "Cherry Juice",
+               "description": "A sour, flavorful beverage made with wild cherries."
+            },
+            "juice_cherry_serving": {
+               "display_name": "Cup of Cherry Juice"
+            }
+         },
+         "juice_prickly_pear": {
+            "juice_prickly_pear": {
+               "display_name": "Prickly Pear Juice",
+               "description": "An interesting beverage made from prickly pears. Hopefully with no spines."
+            },
+            "juice_prickly_pear_serving": {
+               "display_name": "Cup of Prickly Pear Juice"
+            }
+         },
+         "juice_watermelon": {
+            "juice_watermelon": {
+               "display_name": "Watermelon Juice",
+               "description": "Deliciously refreshing juice from ripe watermelons."
+            },
+            "juice_watermelon_serving": {
+               "display_name": "Cup of Watermelon Juice"
+            }
+         },
+         "juice_heirbloom": {
+            "juice_heirbloom": {
+               "display_name": "Heirbloom Juice",
+               "description": "A tasty juice with the peculiar, strong taste of heirbloom fruits."
+            },
+            "juice_heirbloom_serving": {
+               "display_name": "Cup of Heirbloom Juice"
+            }
+         },
+         "smoothie": {
+            "smoothie": {
+               "display_name": "Smoothie",
+               "description": "The fruity flavors go perfectly with the milk in this refreshing, sweet beverage."
+            },
+            "smoothie_serving": {
+               "display_name": "Cup of Smoothie"
+            }
+         },
+         "unknown_drink": {
+            "display_name": "Drinkable Stuff"
+         },
+         "water_serving": {
+            "display_name": "Cup of Water",
+            "description": "The foundation of life!... Also quite bland."
          }
       },
       "npc": {
@@ -8131,7 +8847,7 @@
                   "tooltip_bones": "Bones",
                   "tooltip_fungi": "Fungi",
                   "tooltip_refined_goods": "Finished Goods",
-                  "tooltip_drinks": "Drinks",
+                  "tooltip_drinks": "Prepared Drinks",
                   "tooltip_animal_feed": "Animal Feed",
                   "tooltip_cooking_ingredients": "Cooking Ingredients",
                   "tooltip_precious_metals": "Precious Metals",
@@ -8159,7 +8875,17 @@
                   "tooltip_essences": "Essences",
                   "tooltip_fertilizer": "Fertilizer",
                   "tooltip_seeds_consumable": "Farming Seeds",
-                  "tooltip_raw_drinks": "Raw Drinks"
+                  "tooltip_raw_drinks": "Raw Drinks",
+                  "tooltip_dry_goods": "Dry Goods",
+                  "tooltip_fluids": "Other Fluids",
+                  "tooltip_water": "Water",
+                  "tooltip_animal_food": "Animal Food",
+                  "tooltip_edible_nuts": "Edible Nuts",
+                  "tooltip_brewing_ingredient": "Brewing Ingredients",
+                  "tooltip_raw_food_fruits_veggies": "Raw Fruits & Veggies",
+                  "tooltip_raw_food_meat": "Raw Meats & Animal Goods",
+                  "tooltip_prepared_food_baked": "Baked Goods",
+                  "tooltip_raw_food_fungi": "Raw Fungi"
                }
             },
             "pasture": {
@@ -8283,6 +9009,8 @@
                "default_to_worst_fertilizer_description": "When farmers fertilize crops, they use the best fertilizer available unless directed to use a specific type. Select this to have them use the worst available instead.",
                "default_fertilizer": "Default Fertilizer:",
                "default_fertilizer_description": "When creating a new farm, set its fertilizer preference to this.",
+               "show_new_title_notification": "Show notifications for Newly-Achieved Titles",
+               "show_new_title_notification_description": "When one of your citizens (or other items) achieves a title, display an in-game notification about it.",
                "auto_select_new_titles": "Auto Select Newly-Achieved Titles",
                "auto_select_new_titles_description": "When one of your citizens (or other items) achieves a title, automatically select it as their active title.",
                "terrain_slice_buildings": "Terrain Slice Buildings",
@@ -8384,7 +9112,15 @@
             "strong_bone_resource_name": "Strong Bone",
             "grease_resource_name": "Any Cooking Grease",
             "oil_resource_name": "Any Cooking Oil",
-            "oil_source_resource_name": "Any Oily Seeds or Grain"
+            "oil_source_name": "Any Oily Seeds or Grain",
+            "ingot_resource_name": "Any Metal Ingot",
+            "ore_resource_name": "Any Ore",
+            "fiber_resource_name": "Any Bundle of Fiber",
+            "thread_resource_name": "Any Thread",
+            "pelt_resource_name": "Any Fur Pelt",
+            "cloth_resource_name": "Any Bolt of Cloth",
+            "leather_resource_name": "Any Leather",
+            "herb_resource_name": "Any Herb"
          }
       },
       "hotkeys": {

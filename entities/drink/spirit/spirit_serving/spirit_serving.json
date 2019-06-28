@@ -1,0 +1,45 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(spirit_serving.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:item": {
+         "category": "drink",
+         "destroy_on_uncarry": true
+      },
+      "stonehearth_ace:drink": {
+         "stonehearth:sitting_on_chair": {
+            "satisfaction": 75
+         },
+         "default": {
+            "satisfaction": 50
+         },
+         "applied_buffs": [
+            "stonehearth_ace:buffs:consumption:merry_time",
+            "stonehearth_ace:buffs:consumption:light_headed",
+            "stonehearth_ace:buffs:consumption:light_headed"
+         ],
+         "quality": 5,
+         "effect_loops": 1
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.drink.spirit.spirit_serving.display_name)",
+         "description": "",
+         "material_tags": [
+            "drink",
+            "spirit_serving",
+            "alcoholic",
+            "leisure_hour"
+         ],
+         "subject_override": "stonehearth_ace:drink:spirit"
+      }
+   }
+}

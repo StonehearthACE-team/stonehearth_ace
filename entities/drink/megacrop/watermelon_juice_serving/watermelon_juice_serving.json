@@ -15,16 +15,17 @@
          "category": "drink",
          "destroy_on_uncarry": true
       },
-      "stonehearth:food": {
+      "stonehearth_ace:drink": {
          "stonehearth:sitting_on_chair": {
-            "satisfaction": 20
+            "satisfaction": 90
          },
          "default": {
-            "satisfaction": 10
+            "satisfaction": 60
          },
-         "eating_effect": "sitting_drink",
          "applied_buffs": [
-            "stonehearth_ace:buffs:consumption:refreshed_belly"
+            "stonehearth_ace:buffs:consumption:fruity_flavors",
+            "stonehearth_ace:buffs:consumption:refreshed_belly",
+            "stonehearth_ace:buffs:consumption:sweet_energy"
          ],
          "quality": 6
       },
@@ -42,9 +43,9 @@
          "is_item": true,
          "category": "drink",
          "material_tags": [
-            "food",
             "drink",
-            "vegetarian"
+            "juice",
+            "coffee_hour"
          ],
          "subject_override": "stonehearth_ace:decoration:megacrop:mega_watermelon"
       }

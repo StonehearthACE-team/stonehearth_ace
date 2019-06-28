@@ -1,0 +1,75 @@
+{
+   "mixins": [
+      "stonehearth:mixins:item_properties",
+      "stonehearth_ace:mixins:armor:medium_armor_torso"
+   ],
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "layer": "armor",
+            "transparent": "false",
+            "models": [
+               "file(chitin_armor.qb)"
+            ]
+         },
+         "female": {
+            "layer": "armor",
+            "transparent": "false",
+            "models": [
+               "file(chitin_armor_female.qb)"
+            ]
+         },
+         "orc_male": {
+            "layer": "armor",
+            "models": [
+               "file(chitin_armor_orc_male.qb)"
+            ]
+         },
+         "orc_female": {
+            "layer": "armor",
+            "models": [
+               "file(chitin_armor_orc_female.qb)"
+            ]
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(chitin_armor_iconic.json)"
+      },
+      "stonehearth:equipment_piece": {
+         "ilevel": 4,
+         "roles": [
+            "mail_wearer"
+         ],
+         "required_job_level": 1,
+         "equip_effect": "stonehearth:effects:weapon_level_up"
+      }
+   },
+   "entity_data": {
+      "stonehearth:combat:armor_data": {
+         "base_damage_reduction": 4
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 80,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 3,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.armor.chitin_armor.display_name)",
+         "description": "i18n(stonehearth_ace:entities.armor.chitin_armor.description)",
+         "icon": "file(chitin_armor.png)",
+         "category": "armor",
+         "material_tags": [
+            "chitin",
+            "crafted",
+            "chitin_armor",
+            "stockpile_equipment"
+         ]
+      }
+   }
+}

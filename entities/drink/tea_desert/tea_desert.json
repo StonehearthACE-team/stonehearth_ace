@@ -1,0 +1,70 @@
+{
+   "type": "entity",
+   "mixins": "file(tea_desert_ghost.json)",
+   "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(tea_desert_iconic.json)",
+         "ghost_form": "file(tea_desert_ghost.json)",
+         "placeable_on_ground": true
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": 0, "y": 0, "z": 0 },
+               "max": { "x": 1, "y": 2, "z": 1 }
+            }
+         ]
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": 0, "y": 0, "z": 0 },
+               "max": { "x": 1, "y": 1, "z": 1 }
+            }
+         ]
+      },
+      "stonehearth:traveler_attraction": {},
+      "stonehearth_ace:auto_replace": {},
+      "stonehearth:stacks": {
+         "max_stacks": 8
+      },
+      "stonehearth:loot_drops": {
+         "force_auto_loot": true,
+         "entries": {
+            "default": {
+               "items": {
+                  "cauldron": {
+                     "uri": "rayyas_children:decoration:monkey_shrine:teapot"
+                  }
+               }
+            }
+         }
+      },
+      "effect_list": {
+         "effects": [
+            "stonehearth_ace:effects:drink:tea_desert"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth_ace:drink_container": {
+         "effect": "fiddle",
+         "drink": "stonehearth_ace:drink:tea_desert:tea_desert_serving",
+         "stacks_per_serving": 1
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 58,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 45
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

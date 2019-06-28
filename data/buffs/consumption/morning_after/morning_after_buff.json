@@ -1,0 +1,25 @@
+{
+   "type": "buff",
+   "axis": "debuff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.morning_after.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.morning_after.description)",
+   "icon": "file(morning_after_buff.png)",
+   "duration": "12h",
+   "script": "stonehearth_ace:buff_scripts:add_thought",
+   "thought": "stonehearth:thoughts:drinking:morning_after",
+   "modifiers": {
+      "diligence": {
+         "multiply": 0.5
+      },
+      "willpower": {
+         "multiply": 0.6
+      },
+      "stamina": {
+         "multiply": 0.8
+      },
+      "multiplicative_work_rate_modifier": {
+         "multiply": 0.75
+      }
+   },
+   "disallowed_buffs": []
+}

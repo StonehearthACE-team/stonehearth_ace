@@ -15,25 +15,24 @@
          "category": "drink",
          "destroy_on_uncarry": true
       },
-      "stonehearth:food": {
+      "stonehearth_ace:drink": {
          "stonehearth:sitting_on_chair": {
-            "satisfaction": 25
+            "satisfaction": 45
          },
          "default": {
-            "satisfaction": 10
+            "satisfaction": 30
          },
-         "eating_effect": "sitting_drink",
          "quality": 3
       },
       "stonehearth:catalog": {
          "display_name": "i18n(stonehearth_ace:entities.drink.sheep_milk.sheep_milk_serving.display_name)",
          "description": "",
          "material_tags": [
-            "food",
             "drink",
             "sheep_milk_serving",
             "milk",
-            "dairy"
+            "dairy",
+            "coffee_hour"
          ],
          "subject_override": "stonehearth_ace:drink:dairy:sheep_milk"
       }
