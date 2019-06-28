@@ -245,7 +245,7 @@ App.StonehearthCitizenCharacterSheetView.reopen({
                for (var i = 0; i < buffsByAttribute[attributeName].length; i++) {
                   var buff = buffsByAttribute[attributeName][i]
                   buffString += `<span class="buffTooltipText"><span class="dataSpan ${buff.class}">${i18n.t(buff.shortDescription)}</span>`
-                              + `<img class="buffTooltipImg" src="${buff.icon}">${i18n.t(buff.display_name)}</span></br>`;
+                              + `<img class="buffTooltipImg" src="${buff.icon}"> ${i18n.t(buff.display_name)}</span></br>`;
                }
                buffString = buffString + '</div>';
             }
@@ -275,12 +275,13 @@ App.StonehearthCitizenCharacterSheetView.reopen({
                   } else {
                      for (var attrib in modifiers[mod]) {
                         if (attrib == 'multiply' || attrib == 'divide') {
-                           var number = 1 - Math.pow(modifiers[mod][attrib], buff.stacks);
-                           number = number * 100
-                           var rounded = Math.round( number * 10 ) / 10;
-                           new_buff_data.class = rounded < 0 ? 'debuffDataSpan' : 'buffDataSpan';
-                           rounded = Math.abs(rounded);
-                           new_buff_data.shortDescription += rounded + '% ';
+                           var number = Math.pow(modifiers[mod][attrib], buff.stacks);
+                           if (attrib == 'divide') {
+                              number = 1 / number;
+                           }
+                           var rounded = Math.round( (number - 1) * 1000 ) / 10;
+                           new_buff_data.class = rounded >= 0 ? 'buffDataSpan' : 'debuffDataSpan';
+                           new_buff_data.shortDescription += (rounded >= 0 ? '+' : '-') + Math.abs(rounded) + '% ';
                         } else if (attrib == 'add') {
                            var number = modifiers[mod][attrib] * buff.stacks;
                            if (number < 0) {
