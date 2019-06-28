@@ -23,7 +23,8 @@ local monkey_patches = {
    ace_subterranean_view_service = 'stonehearth.services.client.subterranean_view.subterranean_view_service',
    ace_renderer_service = 'stonehearth.services.client.renderer.renderer_service',
    ace_farmer_field_renderer = 'stonehearth.renderers.farmer_field.farmer_field_renderer',
-   ace_template_placement_tool = 'stonehearth.services.client.building.template_placement_tool'
+   ace_template_placement_tool = 'stonehearth.services.client.building.template_placement_tool',
+   ace_constants = 'stonehearth.constants'
 }
 
 local function monkey_patching()
@@ -31,7 +32,12 @@ local function monkey_patching()
       local monkey_see = require('monkey_patches.' .. from)
       local monkey_do = radiant.mods.require(into)
       radiant.log.write_('stonehearth_ace', 0, 'ACE client monkey-patching \'' .. from .. '\' => \'' .. into .. '\'')
-      radiant.mixin(monkey_do, monkey_see)
+      if monkey_see.ACE_USE_MERGE_INTO_TABLE then
+         -- use merge_into_table to also mixin other values, not just functions
+         radiant.util.merge_into_table(monkey_do, monkey_see)
+      else
+         radiant.mixin(monkey_do, monkey_see)
+      end
    end
 end
 

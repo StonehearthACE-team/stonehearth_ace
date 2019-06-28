@@ -112,7 +112,12 @@ local function monkey_patching()
       local monkey_do = radiant.mods.require(into)
       radiant.log.write_('stonehearth_ace', 0, 'ACE server monkey-patching sources \'' .. from .. '\' => \'' .. into .. '\'')
       --radiant.log.write_('stonehearth_ace', 0, 'ACE server monkey-patching data \'' .. tostring(monkey_see) .. '\' => \'' .. tostring(monkey_do) .. '\'')
-      radiant.mixin(monkey_do, monkey_see)
+      if monkey_see.ACE_USE_MERGE_INTO_TABLE then
+         -- use merge_into_table to also mixin other values, not just functions
+         radiant.util.merge_into_table(monkey_do, monkey_see)
+      else
+         radiant.mixin(monkey_do, monkey_see)
+      end
    end
 end
 
