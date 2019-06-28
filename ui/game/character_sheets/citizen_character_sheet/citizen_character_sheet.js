@@ -118,17 +118,17 @@ App.StonehearthCitizenCharacterSheetView.reopen({
          var jobData = allJobData[job_alias];
          if (jobData) {
             isWorker = jobData.description.is_worker;
-            hasPerks = false;
-            if (jobData.description.levelArray) {
-               jobData.description.levelArray.forEach(levelData => {
-                  if (levelData.perks && levelData.perks.length > 0) {
-                     hasPerks = true;
-                  }
-               });
-            }
+            hasPerks = self._hasPerks(jobData.description);
          }
          else {
             job_alias = alias;
+            isWorker = job_alias == 'stonehearth:jobs:worker';
+            hasPerks = job_alias != 'stonehearth:jobs:worker';
+            jobData = allJobData[job_alias];
+            if (jobData) {
+               isWorker = jobData.description.is_worker;
+               hasPerks = self._hasPerks(jobData.description);
+            }
          }
 
          if (hasPerks) {
@@ -164,6 +164,18 @@ App.StonehearthCitizenCharacterSheetView.reopen({
 
       //Make the job tooltips
       this._updateJobTooltips();
+   },
+
+   _hasPerks: function (jobDescription) {
+      var hasPerks = false;
+      if (jobDescription.levelArray) {
+         jobDescription.levelArray.forEach(levelData => {
+            if (levelData.perks && levelData.perks.length > 0) {
+               hasPerks = true;
+            }
+         });
+      }
+      return hasPerks;
    },
 
    //Given a perk div and target level, change the classes within to reflect the current level
@@ -221,6 +233,28 @@ App.StonehearthCitizenCharacterSheetView.reopen({
       }
    }.observes('model.uri'),
 
+   _showAttributeTooltip: function(obj, buffsByAttribute, attributeName) {
+      // create tooltip
+      var hasTooltip = App.tooltipHelper.hasTooltip(attributeName);
+      if (hasTooltip) {
+         App.tooltipHelper.createDynamicTooltip($(obj), function () {
+            //For each buff and debuff that's associated with this attribute,
+            //put it in the tooltip
+            if (buffsByAttribute[attributeName] != null) {
+               var buffString = '<div class="buffTooltip">';
+               for (var i = 0; i < buffsByAttribute[attributeName].length; i++) {
+                  var buff = buffsByAttribute[attributeName][i]
+                  buffString += `<span class="buffTooltipText"><span class="dataSpan ${buff.class}">${i18n.t(buff.shortDescription)}</span>`
+                              + `<img class="buffTooltipImg" src="${buff.icon}">${i18n.t(buff.display_name)}</span></br>`;
+               }
+               buffString = buffString + '</div>';
+            }
+
+            return $(App.tooltipHelper.getTooltip(attributeName, buffString, false));
+         });
+      }
+   },
+
    // base game version didn't take stacks into account
    _sortBuffsByAttribute: function() {
       var allBuffs = this.get('model.stonehearth:buffs.buffs');
@@ -244,14 +278,17 @@ App.StonehearthCitizenCharacterSheetView.reopen({
                            var number = 1 - Math.pow(modifiers[mod][attrib], buff.stacks);
                            number = number * 100
                            var rounded = Math.round( number * 10 ) / 10;
+                           new_buff_data.class = rounded < 0 ? 'debuffDataSpan' : 'buffDataSpan';
                            rounded = Math.abs(rounded);
                            new_buff_data.shortDescription += rounded + '% ';
                         } else if (attrib == 'add') {
                            var number = modifiers[mod][attrib] * buff.stacks;
                            if (number < 0) {
                               new_buff_data.shortDescription += number + ' ';
+                              new_buff_data.class = 'debuffDataSpan';
                            } else {
                               new_buff_data.shortDescription += '+' + number + ' ';
+                              new_buff_data.class = 'buffDataSpan';
                            }
                         }
                      }

@@ -154,6 +154,8 @@ end
 
 function stonehearth_ace:_on_required_loaded()
    monkey_patching()
+
+   self:_run_scripts('post_monkey_patching')
    
    radiant.events.trigger_async(radiant, 'stonehearth_ace:server:required_loaded')
 end

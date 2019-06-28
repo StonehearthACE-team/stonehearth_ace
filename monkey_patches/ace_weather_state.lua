@@ -93,12 +93,10 @@ end
 
 function AceWeatherState:_for_common_npc_character(fn)
    local pops = stonehearth.population:get_all_populations()
-   for _, pop in pairs(pops) do
-		if not pop == 'titans' or not pop == 'animals' or not pop == 'aquatic_animals' then
-			if pop:is_npc() then
-				for _, citizen in pop:get_citizens():each() do
-					fn(citizen)
-				end
+   for player_id, pop in pairs(pops) do
+		if player_id ~= 'titans' and player_id ~= 'animals' and player_id ~= 'aquatic_animals' and pop:is_npc() then
+         for _, citizen in pop:get_citizens():each() do
+            fn(citizen)
 			end
 		end
 	end
