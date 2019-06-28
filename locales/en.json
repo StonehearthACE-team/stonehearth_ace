@@ -854,33 +854,72 @@
                   "tooltip": "Ugh... Bleh! Everything aches and my head is so heavy. Should not exaggerate so much..."
                },
                "dairy_intolerant_had_dairy": {
-                  "display_name": "Dairy intolerance (Drink)"
+                  "display_name": "Dairy intolerance (Drink)",
+                  "tooltip": "I suppose I didn't have any better option other than the [str(drinkname)] that is now making me feel really sick..."
                },
                "alcohol_intolerant_had_alcohol": {
-                  "display_name": "Alcohol intolerance"
+                  "display_name": "Alcohol intolerance",
+                  "tooltip": "I can't stand alcoholic drinks and taking in that [str(drinkname)] was an awful feeling that I hope to never experience again!"
                },
                "alcohol_lover_had_alcohol": {
-                  "display_name": "Bohemian"
+                  "display_name": "Bohemian",
+                  "tooltip": "Woohoo, make way for this happy hearthling that just enjoyed an amazing [str(drinkname)]! Is there more?"
                },
                "juice_lover_had_juice": {
-                  "display_name": "Juice lover"
+                  "display_name": "Juice lover",
+                  "tooltip": "Yes, I loved that [str(drinkname)]! Juices are the best thing ever, aren't they?"
                },
                "tea_lover_had_tea": {
-                  "display_name": "Tea lover"
+                  "display_name": "Tea lover",
+                  "tooltip": "Hmm... Balance. I feel like this [str(drinkname)] has brought me to a perfect, tranquil state. Nothing can go wrong after this..."
                },
                "dairy_lover_had_dairy": {
-                  "display_name": "Dairy lover (Drink)"
+                  "display_name": "Dairy lover (Drink)",
+                  "tooltip": "I could hug the animal that provided me with that delicious [str(drinkname)]! Hearty and healthy!"
                },
                "item_quality": {
                   "had_item_quality_fine": {
-                     "display_name": "Finely prepared drink"
+                     "display_name": "Finely prepared drink",
+                     "tooltip": "There was something particularly special about this [str(drinkname)]. Whoever made it should be congratulated!"
                   },
                   "had_item_quality_excellent": {
-                     "display_name": "Excellently prepared drink"
+                     "display_name": "Excellently prepared drink",
+                     "tooltip": "Hmmm, this [str(drinkname)] was incredible! Or should I say... Excellent? I hope there is more for later!"
                   },
                   "had_item_quality_masterwork": {
-                     "display_name": "Masterfully prepared drink!"
+                     "display_name": "Masterfully prepared drink!",
+                     "tooltip": "I should stop everything and go congratulate whoever made this [str(drinkname)] I had today. It was simply brilliant, the work of a master!"
                   }
+               },
+               "intolerable": {
+                  "display_name": "Had an intolerable drink",
+                  "tooltip": "I've had something intolerable, [str(drinkname)]... I really shouldn't do that anymore, it's unbearable."
+               },
+               "unpalatable": {
+                  "display_name": "Had an awful drink",
+                  "tooltip": "After finishing this [str(drinkname)] I just can't really think anything other than how bad it was."
+               },
+               "raw": {
+                  "display_name": "My drink was simple",
+                  "tooltip": "After a sip or two of the [str(drinkname)] I already knew it wasn't... much."
+               },
+               "values": {
+                  "prepared": {
+                     "display_name": "My drink was prepared",
+                     "tooltip": "The effort put into the [str(drinkname)] I just enjoyed is noticeable and can't be denied!"
+                  }
+               },
+               "bland": {
+                  "display_name": "My drink was bland",
+                  "tooltip": "I had that [str(drinkname)] and it wasn't particularly tasty... I've drank better things before!"
+               },
+               "tasty": {
+                  "display_name": "My drink was tasty",
+                  "tooltip": "Shortly after drinking [str(drinkname)] I already feel like I could drink much more! It was delicious!"
+               },
+               "lovely": {
+                  "display_name": "Had a delightful drink!",
+                  "tooltip": "Ah, what a wonderful day! Enjoying that lovely [str(drinkname)] has made everything better already."
                }
             },
             "thirst": {
@@ -9084,6 +9123,13 @@
          }
       },
       "data": {
+			"tooltips": {
+				"curiosity": {
+					"bullet_points": {
+						"000": "The value itself represents a bonus percentage added over every experience gain."
+					}
+				}
+			},
          "constants": {
             "edible_nuts_resource_name": "Edible Nut",
             "fruits_resource_name": "Fruit",
