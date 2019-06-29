@@ -10,9 +10,13 @@
    "unsheltered_animal_debuff": [
       "stonehearth_ace:buffs:weather:cold_breath"
    ],
+   "unsheltered_npc_debuff": [
+      "stonehearth_ace:buffs:weather:chilly:npc",
+      "stonehearth_ace:buffs:weather:cold_breath"
+   ],
    "renderer": "stonehearth_ace:weather_renderers:windy_chilly",
    "ambient_sound_key": "windy",
-	"is_dark_during_daytime": true,
+   "is_dark_during_daytime": true,
    "thoughts": [
       "stonehearth:thoughts:weather:windy_chilly_negative",
       "stonehearth:thoughts:weather:windy_chilly_positive"

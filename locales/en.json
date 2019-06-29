@@ -911,7 +911,7 @@
                },
                "bland": {
                   "display_name": "My drink was bland",
-                  "tooltip": "I had that [str(drinkname)] and it wasn't particularly tasty... I've drank better things before!"
+                  "tooltip": "I had that [str(drinkname)] and it wasn't particularly tasty... I've had better things before!"
                },
                "tasty": {
                   "display_name": "My drink was tasty",
@@ -1783,6 +1783,15 @@
             "warmth_source_buff": {
                "display_name": "Source of Warmth",
                "description": "Home is where the hearth is..."
+            },
+            "chilly_debuff_npc": {
+               "description": "Speed and Damage are slightly reduced."
+            },
+            "cold_debuff_npc": {
+               "description": "Speed, Willpower and Damage are somewhat reduced."
+            },
+            "freezing_debuff_npc": {
+               "description": "Speed, Willpower and Damage are severely reduced."
             }
          },
          "shepherding": {
@@ -1845,6 +1854,10 @@
          "lovely_drink": {
             "display_name": "Lovely Drink",
             "description": "Nothing more revigorating than having your favorite drink! Stamina and Compassion fairly increased."
+         },
+         "toxin_resist": {
+            "display_name": "Toxin Resistance",
+            "description": "This hearthling is protected against weaker poisons and toxins."
          }
       },
       "loadouts": {
@@ -2639,7 +2652,7 @@
                "flavor": "Can only hold certain fluids and dry goods"
             },
             "input_keg_clay_recipe": {
-               "description": "A serving container for 4 raw or prepared drinks.",
+               "description": "A serving container for 4 simple or prepared drinks.",
                "recipe_name": "Clay Serving Keg",
                "flavor": ""
             },
@@ -2964,7 +2977,7 @@
                "flavor": "Can only hold certain fluids and dry goods"
             },
             "input_keg_stone_recipe": {
-               "description": "A serving container for 4 raw or prepared drinks.",
+               "description": "A serving container for 4 simple or prepared drinks.",
                "recipe_name": "Stone Serving Keg",
                "flavor": ""
             },
@@ -3704,17 +3717,17 @@
                "flavor": "Wort can also be further distilled into other drinks"
             },
             "spirit_recipe": {
-               "recipe_name": "Bucket of Malt Spirit",
+               "recipe_name": "Keg of Malt Spirit",
                "description": "A distilled, moderately strong alcoholic beverage from grains.",
                "flavor": "A bit too dry..."
             },
             "spirit_fruit_recipe": {
-               "recipe_name": "Bucket of Fruit Spirit",
+               "recipe_name": "Keg of Fruit Spirit",
                "description": "A distilled, moderately strong alcoholic beverage from fruits.",
                "flavor": "Fruity and sweet, a festival favorite!"
             },
             "liquor_recipe": {
-               "recipe_name": "Bucket of Liquor (x3)",
+               "recipe_name": "Keg of Liquor (x3)",
                "description": "A complex, flavorful and quite strong alcoholic beverage from fermented wort.",
                "flavor": "A very fancy drink for a very fancy town"
             },
@@ -3972,7 +3985,7 @@
                "flavor": "Can only hold certain fluids and dry goods"
             },
             "input_keg_wood_recipe": {
-               "description": "A serving container for 4 raw or prepared drinks.",
+               "description": "A serving container for 4 simple or prepared drinks.",
                "recipe_name": "Wooden Serving Keg",
                "flavor": ""
             },
@@ -4113,6 +4126,21 @@
                "recipe_name": "Small Porcelain Curtains",
                "description": "Softly lets the light in.",
                "flavor": ""
+            },
+            "chitin_armor_recipe": {
+               "recipe_name": "Chitin Armor",
+               "description": "Protective body gear.",
+               "flavor": "Fares particularly well against toxins"
+            },
+            "chitin_helm_recipe": {
+               "recipe_name": "Chitin Helm",
+               "description": "A good defense for one's head.",
+               "flavor": "Fares particularly well against toxins"
+            },
+            "chitin_shield_recipe": {
+               "recipe_name": "Chitin Shield",
+               "description": "A somewhat sturdy shield made of bug chitin.",
+               "flavor": "Maybe a bit too creepy?"
             },
             "clothing_armor_name": "Clothing & Tools",
             "weapons_name": "Combat Equipment"
@@ -8116,15 +8144,15 @@
             "description": "Hearthlings can put kibble in this creepy bowl for their pets to eat."
          },
          "input_keg_wood": {
-            "description": "A serving container for 4 raw or prepared drinks.",
+            "description": "A serving container for 4 simple or prepared drinks.",
             "display_name": "Wooden Serving Keg"
          },
          "input_keg_clay": {
-            "description": "A serving container for 4 raw or prepared drinks.",
+            "description": "A serving container for 4 simple or prepared drinks.",
             "display_name": "Clay Serving Keg"
          },
          "input_keg_stone": {
-            "description": "A serving container for 4 raw or prepared drinks.",
+            "description": "A serving container for 4 simple or prepared drinks.",
             "display_name": "Stone Serving Keg"
          },
          "output_cask_wood": {
@@ -8914,7 +8942,7 @@
                   "tooltip_essences": "Essences",
                   "tooltip_fertilizer": "Fertilizer",
                   "tooltip_seeds_consumable": "Farming Seeds",
-                  "tooltip_raw_drinks": "Raw Drinks",
+                  "tooltip_raw_drinks": "Simple Drinks",
                   "tooltip_dry_goods": "Dry Goods",
                   "tooltip_fluids": "Other Fluids",
                   "tooltip_water": "Water",
@@ -8997,7 +9025,7 @@
                "quiver_bolts": "Bolt Quiver",
                "cleric_tome": "Sacred Tome"
             },
-            "food_buff": "Consuming Applies: ",
+            "consumable_buff": "Consuming Applies: ",
             "injected_buff": "Grants Status: ",
             "inflictable_debuff": "Inflicts Status: "
          },
@@ -9123,13 +9151,13 @@
          }
       },
       "data": {
-			"tooltips": {
-				"curiosity": {
-					"bullet_points": {
-						"000": "The value itself represents a bonus percentage added over every experience gain."
-					}
-				}
-			},
+         "tooltips": {
+            "curiosity": {
+               "bullet_points": {
+                  "000": "The value itself represents a bonus percentage added over every experience gain."
+               }
+            }
+         },
          "constants": {
             "edible_nuts_resource_name": "Edible Nut",
             "fruits_resource_name": "Fruit",

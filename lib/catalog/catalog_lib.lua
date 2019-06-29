@@ -269,7 +269,14 @@ function catalog_lib._add_catalog_description(catalog, full_alias, json, base_da
       if entity_data['stonehearth:food_container'] and entity_data['stonehearth:food_container'].food then
          local food_json = radiant.resources.load_json(entity_data['stonehearth:food_container'].food)
          if food_json and food_json.entity_data and food_json.entity_data['stonehearth:food'] and food_json.entity_data['stonehearth:food'].applied_buffs then
-            catalog_data.food_buffs = catalog_lib.get_buffs(food_json.entity_data['stonehearth:food'].applied_buffs)
+            catalog_data.consumable_buffs = catalog_lib.get_buffs(food_json.entity_data['stonehearth:food'].applied_buffs)
+         end
+      end
+		
+		if entity_data['stonehearth_ace:drink_container'] and entity_data['stonehearth_ace:drink_container'].drink then
+         local drink_json = radiant.resources.load_json(entity_data['stonehearth_ace:drink_container'].drink)
+         if drink_json and drink_json.entity_data and drink_json.entity_data['stonehearth_ace:drink'] and drink_json.entity_data['stonehearth_ace:drink'].applied_buffs then
+            catalog_data.consumable_buffs = catalog_lib.get_buffs(drink_json.entity_data['stonehearth_ace:drink'].applied_buffs)
          end
       end
    end

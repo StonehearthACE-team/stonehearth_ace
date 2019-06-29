@@ -203,7 +203,7 @@ $(top).on('stonehearthReady', function() {
             var self = this;
             var productCatalogData = App.catalog.getCatalogData(recipe.product_uri);
       
-            if (productCatalogData && (productCatalogData.equipment_required_level || productCatalogData.equipment_roles || productCatalogData.food_buffs)) {
+            if (productCatalogData && (productCatalogData.equipment_required_level || productCatalogData.equipment_roles || productCatalogData.consumable_buffs)) {
                self.$('.detailsView').find('.tooltipstered').tooltipster('destroy');
                if (productCatalogData.equipment_roles) {
                   var classArray = stonehearth_ace.findRelevantClassesArray(productCatalogData.equipment_roles);
@@ -221,13 +221,13 @@ $(top).on('stonehearthReady', function() {
                }
                self.set('equipmentTypes', equipmentTypes);
 
-               var foodBuffs = [];
-               radiant.each(productCatalogData.food_buffs, function (_, buff) {
+               var consumableBuffs = [];
+               radiant.each(productCatalogData.consumable_buffs, function (_, buff) {
                   if (!buff.invisible_to_player && !buff.invisible_on_crafting) {
-                     foodBuffs.push(buff);
+                     consumableBuffs.push(buff);
                   }
                });
-               self.set('foodBuffs', foodBuffs);
+               self.set('consumableBuffs', consumableBuffs);
 
                var injectedBuffs = [];
                radiant.each(productCatalogData.injected_buffs, function (_, buff) {
@@ -275,11 +275,11 @@ $(top).on('stonehearthReady', function() {
          _createBuffTooltips: function () {
             var self = this;
 
-            var foodBuffs = self.get('foodBuffs');
-            radiant.each(foodBuffs, function(_, buff) {
+            var consumableBuffs = self.get('consumableBuffs');
+            radiant.each(consumableBuffs, function(_, buff) {
                var div = self.$('[data-id="' + buff.uri + '"]');
                if (div.length > 0) {
-                  App.guiHelper.addTooltip(div, buff.description, i18n.t('stonehearth_ace:ui.game.unit_frame.food_buff') + i18n.t(buff.display_name));
+                  App.guiHelper.addTooltip(div, buff.description, i18n.t('stonehearth_ace:ui.game.unit_frame.consumable_buff') + i18n.t(buff.display_name));
                }
             });
 

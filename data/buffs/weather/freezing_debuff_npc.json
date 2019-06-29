@@ -1,0 +1,24 @@
+{
+   "type": "buff",
+   "axis": "debuff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.weather.freezing_debuff.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.weather.freezing_debuff_npc.description)",
+   "duration": "1h",
+   "repeat_add_action": "renew_duration",
+   "icon": "file(cold_debuff.png)",
+   "modifiers": {
+      "willpower": {
+         "multiply": 0.4
+      },
+      "speed": {
+         "multiply": 0.6
+      },
+      "multiplicative_dmg_modifier": {
+         "multiply": 0.8
+      }
+   },
+   "disallowed_buffs": [
+      "stonehearth_ace:buffs:weather:chilly:npc",
+      "stonehearth_ace:buffs:weather:cold:npc"
+   ]
+}

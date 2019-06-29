@@ -1,0 +1,30 @@
+{
+   "type": "recipe",
+   "effort": 16,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.weaver.recipes.chitin_shield_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.weaver.recipes.chitin_shield_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.weaver.recipes.chitin_shield_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/armor/chitin_shield/chitin_shield.png",
+   "workshop": "stonehearth:weaver:workbench",
+   "level_requirement": 3,
+   "ingredients": [
+      {
+         "uri": "stonehearth:resources:beetle_chitin",
+         "count": 1
+      },
+      {
+         "material": "chitin resource",
+         "count": 1
+      },
+      {
+         "material": "leather resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:armor:chitin_shield"
+      }
+   ]
+}

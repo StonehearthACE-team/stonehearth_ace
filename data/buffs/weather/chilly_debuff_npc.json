@@ -1,0 +1,17 @@
+{
+   "type": "buff",
+   "axis": "debuff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.weather.chilly_debuff.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.weather.chilly_debuff_npc.description)",
+   "duration": "1h",
+   "repeat_add_action": "renew_duration",
+   "icon": "file(cold.png)",
+   "modifiers": {
+      "speed": {
+         "multiply": 0.85
+      },
+      "multiplicative_dmg_modifier": {
+         "multiply": 0.95
+      }
+   }
+}

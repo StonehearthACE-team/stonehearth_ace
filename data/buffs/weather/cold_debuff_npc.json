@@ -1,0 +1,23 @@
+{
+   "type": "buff",
+   "axis": "debuff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.weather.cold_debuff.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.weather.cold_debuff_npc.description)",
+   "duration": "1h",
+   "repeat_add_action": "renew_duration",
+   "icon": "file(cold.png)",
+   "modifiers": {
+      "willpower": {
+         "multiply": 0.5
+      },
+      "speed": {
+         "multiply": 0.75
+      },
+      "multiplicative_dmg_modifier": {
+         "multiply": 0.9
+      }
+   },
+   "disallowed_buffs": [
+      "stonehearth_ace:buffs:weather:chilly:npc"
+   ]
+}
