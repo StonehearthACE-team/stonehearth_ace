@@ -5,6 +5,9 @@
          {{#each view.buffs itemView="stonehearthBuffItem"}}
             <div class="item" {{bind-attr uri=this.uri}}>
                <img {{bind-attr src=this.icon}} />
+               {{#if this.hasStacks}}
+               <div class="stacks">{{this.stacks}}</div>
+               {{/if}}
             </div>
          {{/each}}
       </div>

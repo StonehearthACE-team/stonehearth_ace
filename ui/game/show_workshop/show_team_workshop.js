@@ -224,6 +224,10 @@ $(top).on('stonehearthReady', function() {
                var consumableBuffs = [];
                radiant.each(productCatalogData.consumable_buffs, function (_, buff) {
                   if (!buff.invisible_to_player && !buff.invisible_on_crafting) {
+                     // only show stacks if greater than 1
+                     if (buff.stacks > 1) {
+                        buff.hasStacks = true;
+                     }
                      consumableBuffs.push(buff);
                   }
                });
@@ -232,6 +236,10 @@ $(top).on('stonehearthReady', function() {
                var injectedBuffs = [];
                radiant.each(productCatalogData.injected_buffs, function (_, buff) {
                   if (!buff.invisible_to_player && !buff.invisible_on_crafting) {
+                     // only show stacks if greater than 1
+                     if (buff.stacks > 1) {
+                        buff.hasStacks = true;
+                     }
                      injectedBuffs.push(buff);
                   }
                });
@@ -240,6 +248,10 @@ $(top).on('stonehearthReady', function() {
                var inflictableDebuffs = [];
                radiant.each(productCatalogData.inflictable_debuffs, function (_, debuff) {
                   if (!debuff.invisible_to_player && !debuff.invisible_on_crafting) {
+                     // only show stacks if greater than 1
+                     if (buff.stacks > 1) {
+                        buff.hasStacks = true;
+                     }
                      inflictableDebuffs.push(debuff);
                   }
                });

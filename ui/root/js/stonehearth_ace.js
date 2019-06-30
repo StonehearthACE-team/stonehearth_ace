@@ -69,20 +69,32 @@ var stonehearth_ace = {
       var jobData = App.jobConstants;
       for( i=0; i<roles.length; i++ ) {
          var thisRole = roles[i];
-         var roleInfo = App.roleConstants[thisRole];
-         if (roleInfo) {
-            radiant.each(roleInfo, function(targetClass, value) {
-               var genericAlias = jobData[targetClass].description.generic_alias || targetClass;
-               if (!classes[genericAlias]) {
-                  classes[genericAlias] = true;
-                  var classInfo = {
-                     name : genericAlias,
-                     readableName:  jobData[genericAlias].description.display_name, 
-                     icon : jobData[genericAlias].description.icon
-                  };
-                  classArray.push(classInfo);
-               }
+         // first check if we have a special specification for this role
+         if (stonehearth_ace._job_roles && stonehearth_ace._job_roles[thisRole]) {
+            var roleData = stonehearth_ace._job_roles[thisRole];
+            classArray.push({
+               name: thisRole,
+               readableName: roleData.display_name,
+               description: roleData.description,
+               icon: roleData.icon
             });
+         }
+         else {
+            var roleInfo = App.roleConstants[thisRole];
+            if (roleInfo) {
+               radiant.each(roleInfo, function(targetClass, value) {
+                  var genericAlias = jobData[targetClass].description.generic_alias || targetClass;
+                  if (!classes[genericAlias]) {
+                     classes[genericAlias] = true;
+                     var classInfo = {
+                        name : genericAlias,
+                        readableName:  jobData[genericAlias].description.display_name, 
+                        icon : jobData[genericAlias].description.icon
+                     };
+                     classArray.push(classInfo);
+                  }
+               });
+            }
          }
       }
       return classArray;
@@ -207,4 +219,8 @@ $.getJSON('/stonehearth_ace/ui/data/equipment_types.json', function(data) {
 
 $.getJSON('/stonehearth_ace/ui/data/season_icons.json', function(data) {
    stonehearth_ace._season_icons = data;
+});
+
+$.getJSON('/stonehearth_ace/ui/data/job_roles.json', function(data) {
+   stonehearth_ace._job_roles = data;
 });

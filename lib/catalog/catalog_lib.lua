@@ -315,20 +315,35 @@ end
 
 function catalog_lib.get_buffs(buff_data)
    local buffs = {}
+   local buff_lookup = {}
    if buff_data then
       for buff, data in pairs(buff_data) do
-         local uri = type(data) == 'table' and data.uri or data
+         local uri = data
+         local stacks = 1
+         if type(data) == 'table' then
+            uri = data.uri
+            stacks = data.stacks or 1
+         end
+         
          local json = radiant.resources.load_json(uri)
          if json then
-            table.insert(buffs, {
-               uri = uri,
-               axis = json.axis,
-               display_name = json.display_name,
-               description = json.description,
-               icon = json.icon,
-               invisible_to_player = json.invisible_to_player,
-               invisible_on_crafting = json.invisible_on_crafting
-            })
+            local struct = buff_lookup[uri]
+            if struct then
+               struct.stacks = struct.stacks + stacks
+            else
+               struct = {
+                  uri = uri,
+                  axis = json.axis,
+                  display_name = json.display_name,
+                  description = json.description,
+                  icon = json.icon,
+                  stacks = stacks,
+                  invisible_to_player = json.invisible_to_player,
+                  invisible_on_crafting = json.invisible_on_crafting
+               }
+               buff_lookup[uri] = struct
+               table.insert(buffs, struct)
+            end
          end
       end
    end

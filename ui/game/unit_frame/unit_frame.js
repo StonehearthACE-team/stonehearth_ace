@@ -416,5 +416,33 @@ App.StonehearthUnitFrameView.reopen({
       } else {
          self.$('#equipmentPane').hide();
       }
-   }.observes('model.stonehearth:iconic_form.root_entity.uri')
+   }.observes('model.stonehearth:iconic_form.root_entity.uri'),
+
+   _updateBuffs: function() {
+      var self = this;
+      self._buffs = [];
+      var attributeMap = self.get('model.stonehearth:buffs.buffs');
+
+      if (attributeMap) {
+         radiant.each(attributeMap, function(name, buff) {
+            //only push public buffs (buffs who have an is_private unset or false)
+            if (buff.invisible_to_player == undefined || !buff.invisible_to_player) {
+               var this_buff = radiant.shallow_copy(buff);
+               // only show stacks if greater than 1
+               if (this_buff.stacks > 1) {
+                  this_buff.hasStacks = true;
+               }
+               self._buffs.push(this_buff);
+            }
+         });
+      }
+
+      self._buffs.sort(function(a, b){
+         var aUri = a.uri;
+         var bUri = b.uri;
+         return (aUri && bUri) ? aUri.localeCompare(bUri) : -1;
+      });
+
+      self.set('buffs', self._buffs);
+   }.observes('model.stonehearth:buffs')
 });

@@ -129,7 +129,10 @@
             {{#each view.consumableBuffs}}
                {{#if icon}}
                <div {{bind-attr data-id="uri"}} {{bind-attr class="axis"}}>
-                  <img class="buffImg" {{bind-attr src="icon"}}> </br>
+                  <img class="buffImg" {{bind-attr src="icon"}}>
+                  {{#if this.hasStacks}}
+                  <div class="stacks">{{this.stacks}}</div>
+                  {{/if}} </br>
                </div>
                {{/if}}
             {{/each}}
@@ -138,7 +141,10 @@
             {{#each view.injectedBuffs}}
                {{#if icon}}
                <div {{bind-attr data-id="uri"}} {{bind-attr class="axis"}}>
-                  <img class="buffImg" {{bind-attr src="icon"}}> </br>
+                  <img class="buffImg" {{bind-attr src="icon"}}>
+                  {{#if this.hasStacks}}
+                  <div class="stacks">{{this.stacks}}</div>
+                  {{/if}} </br>
                </div>
                {{/if}}
             {{/each}}
@@ -147,7 +153,10 @@
             {{#each view.inflictableDebuffs}}
                {{#if icon}}
                <div {{bind-attr data-id="uri"}} {{bind-attr class="axis"}}>
-                  <img class="buffImg" {{bind-attr src="icon"}}> </br>
+                  <img class="buffImg" {{bind-attr src="icon"}}>
+                  {{#if this.hasStacks}}
+                  <div class="stacks">{{this.stacks}}</div>
+                  {{/if}} </br>
                </div>
                {{/if}}
             {{/each}}
