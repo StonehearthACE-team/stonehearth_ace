@@ -1722,7 +1722,7 @@
             },
             "freezing_debuff": {
                "display_name": "Freezing Weather",
-               "description": "I'm freezing out here! I need warmth and I need it fast!<ul><li>This hearthling will take damage over time down to 40% of their health if outside.</li></ul>"
+               "description": "I'm freezing out here! I need warmth and I need it fast!<ul><li>This hearthling will take damage over time down to 60% of their health if outside.</li></ul>"
             },
             "animal_freezing_debuff": {
                "display_name": "Freezing Weather",
@@ -4246,6 +4246,24 @@
             "display_name": "Poacher",
             "description": "A small time hunter."
          }
+      },
+      "crafter": {
+         "freezing_crafter_outfit": {
+            "display_name": "Crafter Gilded Scarf",
+            "description": "An ornate wool scarf. Can only be worn by crafters. Protects from freezing weather."
+         }
+      },
+		"combat": {
+			"freezing_combat_outfit": {
+            "description": "Heavy cover of pelts. Can only be worn by fighters. Protects from freezing weather.",
+            "display_name": "Combatant Fur Cloak"
+         }
+		},
+      "field_work": {
+         "freezing_field_work_outfit": {
+            "description": "Warm. Can only be worn by field workers. Protects from freezing weather.",
+            "display_name": "Field Worker Comfy Hood"
+         }
       }
    },
    "entities": {
@@ -4494,25 +4512,25 @@
             "description": "An ingenious mechanism for retrieving underground water."
          },
          "wooden_water_well_building_ghost": {
-            "description": "Place a construction site for your carpenter to start working on a water well!"
+            "description": "Place a building site for your citizens to start working on a water well!"
          },
          "wooden_water_well_building": {
             "display_name": "Well Construction Site",
-            "description": "This wooden water well is being built by a carpenter."
+            "description": "This wooden water well requires building before it can be used."
          },
          "stone_water_well_building_ghost": {
-            "description": "Place a construction site for your mason to start working on a water well!"
+            "description": "Place a building site for your citizens to start working on a water well!"
          },
          "clay_water_well_building_ghost": {
-            "description": "Place a construction site for your potter to start working on a water well!"
+            "description": "Place a building site for your citizens to start working on a water well!"
          },
          "stone_water_well_building": {
             "display_name": "Well Construction Site",
-            "description": "This stone water well is being built by a mason."
+            "description": "This stone water well requires building before it can be used."
          },
          "clay_water_well_building": {
             "display_name": "Well Construction Site",
-            "description": "This clay water well is being built by a potter."
+            "description": "This clay water well requires building before it can be used."
          }
       },
       "crops": {

@@ -63,10 +63,11 @@
          "request_action_overlay_effect": "stonehearth_ace:effects:transform_mason_overlay_effect",
          "transforming_worker_effect": "work",
          "auto_request": true,
-         "transforming_worker_effect_times": 25,
+         "transforming_worker_effect_times": 32,
          "transform_effect": "stonehearth:effects:poof_effect",
          "worker_required_job": {
-            "stonehearth:jobs:mason": true
+            "stonehearth:jobs:mason": true,
+            "stonehearth:jobs:worker": true
          }
       },
       "stonehearth:appeal": {
