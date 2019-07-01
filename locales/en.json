@@ -900,21 +900,21 @@
                   "tooltip": "After finishing this [str(drinkname)] I just can't really think anything other than how bad it was."
                },
                "raw": {
-                  "display_name": "My drink was simple",
+                  "display_name": "Had a simple drink",
                   "tooltip": "After a sip or two of the [str(drinkname)] I already knew it wasn't... much."
                },
                "values": {
                   "prepared": {
-                     "display_name": "My drink was prepared",
+                     "display_name": "Had a prepared drink",
                      "tooltip": "The effort put into the [str(drinkname)] I just enjoyed is noticeable and can't be denied!"
                   }
                },
                "bland": {
-                  "display_name": "My drink was bland",
+                  "display_name": "Had a bland drink",
                   "tooltip": "I had that [str(drinkname)] and it wasn't particularly tasty... I've had better things before!"
                },
                "tasty": {
-                  "display_name": "My drink was tasty",
+                  "display_name": "Had a tasty drink",
                   "tooltip": "Shortly after drinking [str(drinkname)] I already feel like I could drink much more! It was delicious!"
                },
                "lovely": {
@@ -2652,7 +2652,7 @@
                "flavor": "Can only hold certain fluids and dry goods"
             },
             "input_keg_clay_recipe": {
-               "description": "A serving container for 4 simple or prepared drinks.",
+               "description": "A small serving container for 4 simple or prepared drinks.",
                "recipe_name": "Clay Serving Keg",
                "flavor": ""
             },
@@ -2977,7 +2977,7 @@
                "flavor": "Can only hold certain fluids and dry goods"
             },
             "input_keg_stone_recipe": {
-               "description": "A serving container for 4 simple or prepared drinks.",
+               "description": "A small serving container for 4 simple or prepared drinks.",
                "recipe_name": "Stone Serving Keg",
                "flavor": ""
             },
@@ -3985,7 +3985,7 @@
                "flavor": "Can only hold certain fluids and dry goods"
             },
             "input_keg_wood_recipe": {
-               "description": "A serving container for 4 simple or prepared drinks.",
+               "description": "A small serving container for 4 simple or prepared drinks.",
                "recipe_name": "Wooden Serving Keg",
                "flavor": ""
             },
@@ -4253,12 +4253,12 @@
             "description": "An ornate wool scarf. Can only be worn by crafters. Protects from freezing weather."
          }
       },
-		"combat": {
-			"freezing_combat_outfit": {
+      "combat": {
+         "freezing_combat_outfit": {
             "description": "Heavy cover of pelts. Can only be worn by fighters. Protects from freezing weather.",
             "display_name": "Combatant Fur Cloak"
          }
-		},
+      },
       "field_work": {
          "freezing_field_work_outfit": {
             "description": "Warm. Can only be worn by field workers. Protects from freezing weather.",
@@ -6700,7 +6700,7 @@
          },
          "kibble": {
             "display_name": "Kibble",
-            "description": "Nutritious food made exclusively for pets. A kibble bowl can be used for serving."
+            "description": "Simple, less efficient food for pets. A kibble bowl can be used for serving."
          },
          "kibble_veggie": {
             "display_name": "Veggie Kibble",
@@ -6708,7 +6708,7 @@
          },
          "kibble_fish": {
             "display_name": "Fish Kibble",
-            "description": "Nutritious food made exclusively for pets. A kibble bowl can be used for serving."
+            "description": "Carnivore food made exclusively for pets. A kibble bowl can be used for serving."
          },
          "megacrop_ostrich_feed": {
             "megacrop_ostrich_feed": {
@@ -8162,15 +8162,15 @@
             "description": "Hearthlings can put kibble in this creepy bowl for their pets to eat."
          },
          "input_keg_wood": {
-            "description": "A serving container for 4 simple or prepared drinks.",
+            "description": "A small serving container for 4 simple or prepared drinks.",
             "display_name": "Wooden Serving Keg"
          },
          "input_keg_clay": {
-            "description": "A serving container for 4 simple or prepared drinks.",
+            "description": "A small serving container for 4 simple or prepared drinks.",
             "display_name": "Clay Serving Keg"
          },
          "input_keg_stone": {
-            "description": "A serving container for 4 simple or prepared drinks.",
+            "description": "A small serving container for 4 simple or prepared drinks.",
             "display_name": "Stone Serving Keg"
          },
          "output_cask_wood": {
@@ -9038,26 +9038,26 @@
                "heavy_armor": "Heavy Armor",
                "tool": "Tool",
                "accessory": "Accessory",
-					"cape": "Cover",
+               "cape": "Cover",
                "backpack": "Backpack",
                "quiver_arrows": "Arrow Quiver",
                "quiver_bolts": "Bolt Quiver",
                "cleric_tome": "Sacred Tome"
             },
-				"job_roles": {
-					"crafter": {
-						"display_name": "Crafters",
-						"description": "Civillian jobs that are able to create items out of raw materials and resources. Carpenter or Blacksmith, for example."
-					},
-					"combat": {
-						"display_name": "Combatants",
-						"description": "Military jobs that are able to follow orders and engage in combat to defend the town! Footmen or Archers, for example."
-					},
-					"field_work": {
-						"display_name": "Field Workers",
-						"description": "Civillian jobs that will specialize in specifc, diverse activities outside of the main crafting chains. Farmers or Shepherds, for example."
-					}
-				},
+            "job_roles": {
+               "crafter": {
+                  "display_name": "Crafters",
+                  "description": "Civillian jobs that are able to create items out of raw materials and resources. Carpenter or Blacksmith, for example."
+               },
+               "combat": {
+                  "display_name": "Combatants",
+                  "description": "Military jobs that are able to follow orders and engage in combat to defend the town! Footmen or Archers, for example."
+               },
+               "field_work": {
+                  "display_name": "Field Workers",
+                  "description": "Civillian jobs that will specialize in specifc, diverse activities outside of the main crafting chains. Farmers or Shepherds, for example."
+               }
+            },
             "consumable_buff": "Consuming Applies: ",
             "injected_buff": "Grants Status: ",
             "inflictable_debuff": "Inflicts Status: "

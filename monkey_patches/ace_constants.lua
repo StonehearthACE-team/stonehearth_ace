@@ -35,8 +35,8 @@ ace_constants.drink_quality_thoughts[constants.drink_qualities.PREPARED_TASTY] =
 ace_constants.drink_quality_thoughts[constants.drink_qualities.LOVELY] = { 				constants.thoughts.drink_quality.LOVELY}
 
 ace_constants.drink_item_quality_thoughts = {}
-ace_constants.drink_item_quality_thoughts[constants.item_quality.FINE] = {					constants.thoughts.drink_item_quality.FINE }
-ace_constants.drink_item_quality_thoughts[constants.item_quality.EXCELLENT] = {			constants.thoughts.drink_item_quality.EXCELLENT }
-ace_constants.drink_item_quality_thoughts[constants.item_quality.MASTERWORK] = {			constants.thoughts.drink_item_quality.MASTERWORK }
+ace_constants.drink_item_quality_thoughts[constants.item_quality.FINE] = 					constants.thoughts.drink_item_quality.FINE 
+ace_constants.drink_item_quality_thoughts[constants.item_quality.EXCELLENT] = 			constants.thoughts.drink_item_quality.EXCELLENT 
+ace_constants.drink_item_quality_thoughts[constants.item_quality.MASTERWORK] = 			constants.thoughts.drink_item_quality.MASTERWORK 
 
 return ace_constants
