@@ -4238,7 +4238,7 @@
          },
          "farmer_mega_watermelon_hat": {
             "display_name": "Farmer's Watermelon Cap",
-            "description": "Can be used by Farmers for a small Speed gain and keeping their head fresh."
+            "description": "Can be used by Farmers for a small Speed gain and keeping their head refreshed."
          }
       },
       "npc_poacher": {
@@ -9038,11 +9038,26 @@
                "heavy_armor": "Heavy Armor",
                "tool": "Tool",
                "accessory": "Accessory",
+					"cape": "Cover",
                "backpack": "Backpack",
                "quiver_arrows": "Arrow Quiver",
                "quiver_bolts": "Bolt Quiver",
                "cleric_tome": "Sacred Tome"
             },
+				"job_roles": {
+					"crafter": {
+						"display_name": "Crafters",
+						"description": "Civillian jobs that are able to create items out of raw materials and resources. Carpenter or Blacksmith, for example."
+					},
+					"combat": {
+						"display_name": "Combatants",
+						"description": "Military jobs that are able to follow orders and engage in combat to defend the town! Footmen or Archers, for example."
+					},
+					"field_work": {
+						"display_name": "Field Workers",
+						"description": "Civillian jobs that will specialize in specifc, diverse activities outside of the main crafting chains. Farmers or Shepherds, for example."
+					}
+				},
             "consumable_buff": "Consuming Applies: ",
             "injected_buff": "Grants Status: ",
             "inflictable_debuff": "Inflicts Status: "

@@ -5,7 +5,8 @@
       "stonehearth:entity_forms": {
          "iconic_form": "file(tea_desert_iconic.json)",
          "ghost_form": "file(tea_desert_ghost.json)",
-         "placeable_on_ground": true
+         "placeable_on_ground": true,
+         "hide_undeploy_ui": true
       },
       "region_collision_shape": {
          "region": [
@@ -24,7 +25,9 @@
          ]
       },
       "stonehearth:traveler_attraction": {},
-      "stonehearth_ace:auto_replace": {},
+      "stonehearth_ace:auto_replace": {
+         "on_kill": true
+      },
       "stonehearth:stacks": {
          "max_stacks": 8
       },

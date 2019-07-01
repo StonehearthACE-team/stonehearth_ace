@@ -1,9 +1,16 @@
 {
-	"mixins": [
-      "stonehearth_ace:mixins:outfit:chilly:no_buff"
-   ],
 	"components": {
       "stonehearth:equipment_piece": {
+			"slot": "torso",
+         "render_type": "merge_with_model",
+         "ilevel": 2,
+			"mixintypes": {
+				"injected_buffs": "override"
+			},
+			"injected_buffs": [
+            "stonehearth:buffs:devoted",
+            "stonehearth_ace:buffs:weather:chilly_resist"
+         ],
          "conditional_values": {
             "season": {
                "winter": 1,
@@ -16,7 +23,13 @@
    },
    "entity_data": {
       "stonehearth:catalog": {
-	     "description": "i18n(stonehearth_ace:jobs.worker.winter_worker_outfit.description)"
+			"description": "i18n(stonehearth_ace:jobs.worker.winter_worker_outfit.description)",
+			"category": "armor",
+			"material_tags": [
+				"worker_outfit",
+            "civillian_equipment",
+            "stockpile_equipment"
+         ]
       }
    }
 }
