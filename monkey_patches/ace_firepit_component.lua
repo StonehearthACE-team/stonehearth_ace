@@ -5,6 +5,7 @@ local EMBER_URI = 'stonehearth_ace:decoration:ember'
 local EMBER_CHARCOAL_URI = 'stonehearth_ace:decoration:ember_charcoal'
 local CHARCOAL_URI = 'stonehearth_ace:resources:coal:piece_of_charcoal'
 local DEFAULT_FUEL = 'low_fuel'
+local VISION_OFFSET = 1
 
 AceFirepitComponent._ace_old_activate = FirepitComponent.activate
 function AceFirepitComponent:activate()
@@ -71,6 +72,29 @@ function AceFirepitComponent:_light()
 
    self:_reconsider_firepit_and_seats()
    self.__saved_variables:mark_changed()
+end
+
+-- a little patch to allow firepits that are sunk 1 voxel into the ground to also create seats
+AceFirepitComponent._ace_old__add_one_seat = FirepitComponent._add_one_seat
+function AceFirepitComponent:_add_one_seat(seat_number, location)
+	location.y = location.y + 1
+   local standable = radiant.terrain.is_standable(location)
+   if standable then
+      local line_of_sight = _physics:has_line_of_sight(self._entity, Point3(location.x, location.y + VISION_OFFSET, location.z))
+      if not line_of_sight then
+         return
+      end
+      local seat = radiant.entities.create_entity('stonehearth:decoration:firepit_seat', { owner = self._entity })
+      local seat_comp = seat:get_component('stonehearth:center_of_attention_spot')
+      seat_comp:add_to_center_of_attention(self._entity, seat_number)
+      self._sv.seats[seat_number] = seat
+      radiant.terrain.place_entity_at_exact_location(seat, location)
+      self._log:spam('place higher firepit seat at %s', tostring(location))
+	else
+	location.y = location.y - 1
+	
+	self:_ace_old__add_one_seat(seat_number, location)
+   end
 end
 
 AceFirepitComponent._ace_old__startup = FirepitComponent._startup

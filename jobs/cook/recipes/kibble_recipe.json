@@ -1,20 +1,16 @@
 {
    "type": "recipe",
-   "effort": 16,
+   "effort": 12,
    "work_units": 3,
    "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.kibble_recipe.recipe_name)",
    "description": "i18n(stonehearth_ace:jobs.cook.recipes.kibble_recipe.description)",
    "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.kibble_recipe.flavor)",
    "portrait": "/stonehearth_ace/entities/food/kibble/kibble/kibble.png",
-   "level_requirement": 3,
+   "level_requirement": 2,
    "workshop": "stonehearth:cook:oven",
    "ingredients": [
       {
          "material": "grain_flour cooking_ingredient",
-         "count": 1
-      },
-      {
-         "uri": "stonehearth:food:poyo_meat",
          "count": 1
       },
       {
@@ -28,6 +24,12 @@
    ],
    "produces": [
       {
+         "item": "stonehearth_ace:food:kibble"
+      },
+		{
+         "item": "stonehearth_ace:food:kibble"
+      },
+		{
          "item": "stonehearth_ace:food:kibble"
       },
 		{

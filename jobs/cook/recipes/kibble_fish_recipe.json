@@ -1,12 +1,12 @@
 {
    "type": "recipe",
-   "effort": 12,
+   "effort": 16,
    "work_units": 3,
    "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.kibble_fish_recipe.recipe_name)",
    "description": "i18n(stonehearth_ace:jobs.cook.recipes.kibble_fish_recipe.description)",
    "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.kibble_fish_recipe.flavor)",
    "portrait": "/stonehearth_ace/entities/food/kibble_fish/kibble_fish/kibble_fish.png",
-   "level_requirement": 2,
+   "level_requirement": 4,
    "workshop": "stonehearth:cook:oven",
    "ingredients": [
       {
@@ -17,13 +17,23 @@
          "material": "raw fish_meat",
          "count": 1
       },
-	  {
+		{
+         "uri": "stonehearth:food:egg",
+         "count": 1
+      },
+		{
          "material": "low_fuel",
          "count": 1
       }
    ],
    "produces": [
       {
+         "item": "stonehearth_ace:food:kibble_fish"
+      },
+		{
+         "item": "stonehearth_ace:food:kibble_fish"
+      },
+		{
          "item": "stonehearth_ace:food:kibble_fish"
       },
 		{
