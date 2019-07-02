@@ -1,0 +1,44 @@
+{
+   "mixins": "stonehearth_ace:combat:outfit:freezing",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "mixintypes": {
+            "default": "override",
+            "female": "override"
+         },
+         "default": {
+            "layer": "armor",
+            "transparent": "true",
+            "models": [
+               "file(na_freezing_combat_outfit.qb)"
+            ]
+         },
+         "female": {
+            "layer": "armor",
+            "transparent": "true",
+            "models": [
+               "file(na_freezing_combat_outfit_female.qb)"
+            ]
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(na_freezing_combat_outfit_iconic.json)"
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "icon": "file(na_freezing_combat_outfit.png)",
+         "mixintypes": {
+            "material_tags": "override"
+         },
+         "material_tags": [
+            "pelt",
+            "cloth",
+            "combat_outfit",
+            "na_made",
+            "stockpile_exotic_equipment"
+         ]
+      }
+   }
+}

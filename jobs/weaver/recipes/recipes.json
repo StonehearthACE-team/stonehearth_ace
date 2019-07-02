@@ -34,37 +34,46 @@
             },
 				"chitin_shield": {
                "recipe": "file(chitin_shield_recipe.json)"
-            }
+            },
+				"freezing_combat_outfit": {
+					"recipe": "file(freezing_combat_outfit_recipe.json)"
+				}
          }
 	  },
 	  "clothing_armor": {
-	     "ordinal": 50,
+			"ordinal": 50,
          "name": "i18n(stonehearth_ace:jobs.weaver.recipes.clothing_armor_name)",
-	     "recipes": {
-			"mixintypes": {
-				"cloth_padded_vest": "remove",
-				"cloth_padded_helmet": "remove",
-				"leather_vest": "remove",
-				"leather_helmet": "remove"
-			},
-            "backpack_leather": {
-               "recipe": "file(backpack_leather_recipe.json)"
-            },
-			"bakcpack_cloth": {
-			   "recipe": "file(backpack_cloth_recipe.json)"
-			},
-			"chilly_simple_worker_outfit": {
-			   "recipe": "file(chilly_simple_worker_outfit_recipe.json)"
-			},
-			"cold_simple_worker_outfit": {
-			   "recipe": "file(cold_simple_worker_outfit_recipe.json)"
-			},
-			"freezing_simple_worker_outfit": {
-			   "recipe": "file(freezing_simple_worker_outfit_recipe.json)"
-			},
-			"cold_worker_outfit": {
-			   "recipe": "file(cold_worker_outfit_recipe.json)"
-			}
+			"recipes": {
+				"mixintypes": {
+					"cloth_padded_vest": "remove",
+					"cloth_padded_helmet": "remove",
+					"leather_vest": "remove",
+					"leather_helmet": "remove"
+				},
+				"backpack_leather": {
+					"recipe": "file(backpack_leather_recipe.json)"
+				},
+				"bakcpack_cloth": {
+					"recipe": "file(backpack_cloth_recipe.json)"
+				},
+				"chilly_simple_worker_outfit": {
+					"recipe": "file(chilly_simple_worker_outfit_recipe.json)"
+				},
+				"cold_simple_worker_outfit": {
+					"recipe": "file(cold_simple_worker_outfit_recipe.json)"
+				},
+				"freezing_simple_worker_outfit": {
+					"recipe": "file(freezing_simple_worker_outfit_recipe.json)"
+				},
+				"cold_worker_outfit": {
+					"recipe": "file(cold_worker_outfit_recipe.json)"
+				},
+				"freezing_crafter_outfit": {
+					"recipe": "file(freezing_crafter_outfit_recipe.json)"
+				},
+				"freezing_field_work_outfit": {
+					"recipe": "file(freezing_field_work_outfit_recipe.json)"
+				}
          }
 	  },
 	  "furniture": {

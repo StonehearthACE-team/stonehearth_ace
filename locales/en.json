@@ -4032,6 +4032,24 @@
                "description": "The ACE Team would like to wish you all very happy and wonderful holidays!",
                "flavor": "This recipe shall be removed after New Year's Eve... So craft yours while you can!"
             },
+				"freezing_field_work_outfit_recipe": {
+               "recipe_name": "Field Worker Comfy Hood",
+               "description": "A warm, decorated hood. Protects from freezing weather.",
+					"rc_description": "A decorated hood. Protects from cold weather.",
+               "flavor": "This item can only be equipped by civillians that work outside, like Shepherds, Farmers or Trappers"
+            },
+				"freezing_crafter_outfit_recipe": {
+               "recipe_name": "Crafter Gilded Scarf",
+               "description": "A fuzzy and ornate wool scarf. Protects from freezing weather.",
+					"rc_description": "An ornate wool scarf. Protects from cold weather.",
+               "flavor": "This item can only be equipped by civillian crafters, like Carpenters, Blacksmiths or Cooks"
+            },
+				"freezing_combat_outfit_recipe": {
+               "recipe_name": "Combatant Fur Cloak",
+               "description": "A thick cape made of multiple furs. Protects from freezing weather.",
+					"rc_description": "A short cape made of fur. Protects from cold weather.",
+               "flavor": "This item can only be equipped by combat units, like Footmen, Archers or Clerics"
+            },
             "chilly_simple_worker_outfit_recipe": {
                "recipe_name": "Simple Winter Worker Outfit",
                "description": "Craft a Wool cap and gloves. Protects from chilly weather but with no added benefits.",
@@ -4251,6 +4269,15 @@
          "freezing_crafter_outfit": {
             "display_name": "Crafter Gilded Scarf",
             "description": "An ornate wool scarf. Can only be worn by crafters. Protects from freezing weather."
+         },
+         "cold_crafter_outfit": {
+            "description": "An ornate wool scarf. Can only be worn by crafters. Protects from cold weather."
+         },
+         "cold_combat_outfit": {
+            "description": "Heavy cover of pelts. Can only be worn by fighters. Protects from cold weather."
+         },
+         "cold_field_work_outfit": {
+            "description": "Warm. Can only be worn by field workers. Protects from cold weather."
          }
       },
       "combat": {
@@ -9046,15 +9073,15 @@
             },
             "job_roles": {
                "crafter": {
-                  "display_name": "Crafters",
+                  "display_name": "Any Crafter",
                   "description": "Civillian jobs that are able to create items out of raw materials and resources. Carpenter or Blacksmith, for example."
                },
                "combat": {
-                  "display_name": "Combatants",
+                  "display_name": "Any Combatant",
                   "description": "Military jobs that are able to follow orders and engage in combat to defend the town! Footmen or Archers, for example."
                },
                "field_work": {
-                  "display_name": "Field Workers",
+                  "display_name": "Any Field Worker",
                   "description": "Civillian jobs that will specialize in specifc, diverse activities outside of the main crafting chains. Farmers or Shepherds, for example."
                }
             },

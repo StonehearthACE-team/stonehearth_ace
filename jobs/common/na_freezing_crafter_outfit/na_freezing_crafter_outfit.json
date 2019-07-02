@@ -1,0 +1,44 @@
+{
+   "mixins": "stonehearth_ace:crafter:outfit:freezing",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "mixintypes": {
+            "default": "override",
+            "female": "override"
+         },
+         "default": {
+            "layer": "armor",
+            "transparent": "true",
+            "models": [
+               "file(na_freezing_crafter_outfit.qb)"
+            ]
+         },
+         "female": {
+            "layer": "armor",
+            "transparent": "true",
+            "models": [
+               "file(na_freezing_crafter_outfit_female.qb)"
+            ]
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(na_freezing_crafter_outfit_iconic.json)"
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "icon": "file(na_freezing_crafter_outfit.png)",
+         "mixintypes": {
+            "material_tags": "override"
+         },
+         "material_tags": [
+            "cloth",
+            "crafter_outfit",
+            "na_made",
+            "civillian_equipment",
+            "stockpile_equipment"
+         ]
+      }
+   }
+}

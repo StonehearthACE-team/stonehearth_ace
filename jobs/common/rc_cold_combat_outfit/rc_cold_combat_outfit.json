@@ -1,0 +1,57 @@
+{
+   "mixins": "stonehearth_ace:combat:outfit:freezing",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "mixintypes": {
+            "default": "override",
+            "female": "override"
+         },
+         "default": {
+            "layer": "armor",
+            "transparent": "true",
+            "models": [
+               "file(rc_cold_combat_outfit.qb)"
+            ]
+         },
+         "female": {
+            "layer": "armor",
+            "transparent": "true",
+            "models": [
+               "file(rc_cold_combat_outfit_female.qb)"
+            ]
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(rc_cold_combat_outfit_iconic.json)"
+      },
+      "stonehearth:equipment_piece": {
+         "ilevel": 1,
+         "mixintypes": {
+            "injected_buffs": "override"
+         },
+         "injected_buffs": [
+            "stonehearth_ace:buffs:weather:cold_resist"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 38
+      },
+      "stonehearth:catalog": {
+         "description": "i18n(stonehearth_ace:jobs.crafter.cold_combat_outfit.description)",
+         "icon": "file(rc_cold_combat_outfit.png)",
+         "mixintypes": {
+            "material_tags": "override"
+         },
+         "material_tags": [
+            "pelt",
+            "cloth",
+            "combat_outfit",
+            "rc_made",
+            "stockpile_exotic_equipment"
+         ]
+      }
+   }
+}

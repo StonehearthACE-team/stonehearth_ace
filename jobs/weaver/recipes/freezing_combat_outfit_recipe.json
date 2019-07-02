@@ -1,0 +1,26 @@
+{
+   "type": "recipe",
+   "effort": 60,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.weaver.recipes.freezing_combat_outfit_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.weaver.recipes.freezing_combat_outfit_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.weaver.recipes.freezing_combat_outfit_recipe.flavor)",
+   "portrait": "/stonehearth_ace/jobs/common/freezing_combat_outfit/freezing_combat_outfit.png",
+   "workshop": "stonehearth:weaver:workbench",
+   "level_requirement": 6,
+   "ingredients": [
+      {
+         "material": "pelt resource",
+         "count": 3
+      },
+	   {
+         "uri": "stonehearth:refined:silver_ingot",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:combat:outfit:freezing"
+      }
+   ]
+}

@@ -1,0 +1,25 @@
+{
+   "mixins": "/stonehearth_ace/jobs/weaver/recipes/freezing_crafter_outfit_recipe.json",
+   "type": "recipe",
+	"description": "i18n(stonehearth_ace:jobs.weaver.recipes.freezing_crafter_outfit_recipe.rc_description)",
+   "portrait": "/stonehearth_ace/jobs/common/rc_cold_crafter_outfit/rc_cold_crafter_outfit.png",
+   "mixintypes": {
+		"ingredients": "override",
+      "produces": "override"
+   },
+	"ingredients": [
+      {
+         "material": "wool resource",
+         "count": 1
+      },
+	   {
+         "uri": "stonehearth:refined:gold_flakes",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:rayyas_children:crafter:outfit:cold"
+      }
+   ]
+}

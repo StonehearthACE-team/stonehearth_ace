@@ -16,6 +16,9 @@
       },
       "weapons": {
          "recipes": {
+				"mixintypes": {
+					"freezing_combat_outfit": "remove"
+				},
             "cloth_padded_vest": {
                "recipe": "file(rc_cloth_padded_vest_recipe.json)"
             },
@@ -27,24 +30,35 @@
             },
             "cloth_padded_helmet": {
                "recipe": "file(rc_cloth_padded_helmet_recipe.json)"
-            }
+            },
+				"cold_combat_outfit": {
+					"recipe": "file(rc_cold_combat_outfit_recipe.json)"
+				}
          }
       },
 	  "clothing_armor": {
 	     "recipes": {
-			"mixintypes": {
-				"freezing_simple_worker_outfit": "remove",
-				"cold_worker_outfit": "remove"
-			},
-			"chilly_simple_worker_outfit": {
-			   "recipe": "file(rc_chilly_simple_worker_outfit_recipe.json)"
-			},
-			"cold_simple_worker_outfit": {
-			   "recipe": "file(rc_cold_simple_worker_outfit_recipe.json)"
-			},
-			"rc_winter_worker_outfit": {
-			   "recipe": "file(rc_winter_worker_outfit_recipe.json)"
-			}
+				"mixintypes": {
+					"freezing_simple_worker_outfit": "remove",
+					"cold_worker_outfit": "remove",
+					"freezing_crafter_outfit": "remove",
+					"freezing_field_work_outfit": "remove"
+				},
+				"chilly_simple_worker_outfit": {
+					"recipe": "file(rc_chilly_simple_worker_outfit_recipe.json)"
+				},
+				"cold_simple_worker_outfit": {
+					"recipe": "file(rc_cold_simple_worker_outfit_recipe.json)"
+				},
+				"rc_winter_worker_outfit": {
+					"recipe": "file(rc_winter_worker_outfit_recipe.json)"
+				},
+				"cold_field_work_outfit": {
+					"recipe": "file(rc_cold_field_work_outfit_recipe.json)"
+				},
+				"cold_crafter_outfit": {
+					"recipe": "file(rc_cold_crafter_outfit_recipe.json)"
+				}
          }
 	  }
    }
