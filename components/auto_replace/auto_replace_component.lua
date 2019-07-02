@@ -13,7 +13,11 @@ function AutoReplaceComponent:activate()
    if json.on_kill ~= false then
       self._kill_listener = radiant.events.listen(self._entity, 'stonehearth:kill_event', self, self._on_kill_event)
    end
-
+	
+	if json.on_destroy then
+		self._destroy_listener = radiant.events.listen(self._entity, 'radiant:entity:pre_destroy', self, self._on_destroy)
+	end
+	
    if json.reset_facing then
       self._parent_trace = self._entity:get_component('mob'):trace_parent('entity added or removed')
          :on_changed(function(parent_entity)
@@ -40,6 +44,11 @@ function AutoReplaceComponent:_destroy_listeners()
       self._kill_listener:destroy()
       self._kill_listener = nil
    end
+	
+	if self._destroy_listener then
+      self._destroy_listener:destroy()
+      self._destroy_listener = nil
+   end
 
    if self._parent_trace then
       self._parent_trace:destroy()
@@ -60,6 +69,27 @@ function AutoReplaceComponent:_on_kill_event(args)
          local location = radiant.entities.get_world_grid_location(self._entity)
          local parent = radiant.entities.get_parent(self._entity)
          if location and parent and radiant.terrain.is_standable(self._entity, location) then -- make sure location is valid
+            local placement_info = {
+                  location = location,
+                  normal = Point3(0, 1, 0),
+                  rotation = self._sv._original_rotation or self._entity:get_component('mob'):get_facing(),
+                  structure = parent,
+               }
+            local ghost_entity = town:place_item_type(self._entity:get_uri(), nil, placement_info)
+         end
+      end
+   end
+end
+
+function AutoReplaceComponent:_on_destroy(e)
+   local player_id = radiant.entities.get_player_id(self._entity)
+   local town = stonehearth.town:get_town(player_id)
+   if town then
+      local limit_data = radiant.entities.get_entity_data(self._entity:get_uri(), 'stonehearth:item_placement_limit')
+      if not limit_data or town:is_placeable(limit_data) then
+         local location = radiant.entities.get_world_grid_location(self._entity)
+         local parent = radiant.entities.get_parent(self._entity)
+         if location and parent and radiant.terrain.is_standable(self._entity, location) then
             local placement_info = {
                   location = location,
                   normal = Point3(0, 1, 0),
