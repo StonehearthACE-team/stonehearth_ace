@@ -123,7 +123,7 @@ function AceEquipmentComponent:unequip_item(equipped_item, replace_with_default)
    end
 
    -- check if there's a default item for the slot that we want to replace it with
-   if unequipped_item then
+   if unequipped_item and replace_with_default then
       local ep_data = radiant.entities.get_component_data(unequipped_item, 'stonehearth:equipment_piece')
       local slot = ep_data.slot
       local job = self._entity:get_component('stonehearth:job')

@@ -13,6 +13,9 @@ function ConsiderUnequipping:start_thinking(ai, entity, args)
    self._ready = false
    
    self._seasons_listener = radiant.events.listen(stonehearth.seasons, 'stonehearth:seasons:changed', self, self._on_seasons_changed)
+   self._periodic_timer = stonehearth.calendar:set_interval('consider unequipping', '2h+20m', function()
+         self:_consider_unequipping()
+      end)
 end
 
 function ConsiderUnequipping:_on_seasons_changed()
@@ -20,6 +23,10 @@ function ConsiderUnequipping:_on_seasons_changed()
 end
 
 function ConsiderUnequipping:_consider_unequipping()
+   if self._ready then
+      return
+   end
+
    local equipment = self._entity:get_component('stonehearth:equipment')
    if equipment then
       local items = {}
@@ -36,6 +43,7 @@ function ConsiderUnequipping:_consider_unequipping()
 
       if #items > 0 then
          self._items = items
+         self._ready = true
          self._ai:set_think_output()
       end
    end

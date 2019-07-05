@@ -321,9 +321,9 @@ end
 
 AceJobComponent._ace_old_demote = JobComponent.demote
 function AceJobComponent:demote(old_job_json, dont_drop_talisman)
-   self:_ace_old_demote(old_job_json, dont_drop_talisman)
-   
    self._sv._job_equipment_uris = {}
+
+   self:_ace_old_demote(old_job_json, dont_drop_talisman)
 
 	-- remove the training toggle command if it exists
 	if self:is_combat_job() then
