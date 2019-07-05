@@ -1,0 +1,22 @@
+{
+   "type": "buff",
+   "axis": "debuff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.toxin.toxin_sleeping.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.toxin.toxin_sleeping.description)",
+   "icon": "file(toxin_minor.png)",
+   "duration": "15m",
+   "repeat_add_action": "stack_and_refresh",
+   "max_stacks": 8,
+   "remove_stacks_on_expire": 2,
+   "effect": "stonehearth:effects:debuff_added:undead_infection",
+   "script": "stonehearth:buff_scripts:periodic_attribute_modification",
+   "script_info": {
+      "attribute": "sleepiness",
+      "value_change": 1,
+      "cannot_reach_zero": true,
+      "pulse": "10m",
+      "pulse_immediately": true,
+      "pulse_on_destroy": false
+   },
+   "modifiers": {}
+}
