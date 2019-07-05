@@ -1,0 +1,30 @@
+{
+   "type": "monster_tuning",
+   "estimated_difficulty": 1,
+   "attributes": {
+      "max_health": 280,
+      "muscle": 12,
+      "menace": 22,
+      "courage": 50,
+      "speed": 120,
+      "additive_armor_modifier": 2,
+      "exp_reward": 45
+   },
+   "equipment": {
+      "weapon": [
+         "stonehearth_ace:weapons:animals:cougar_teeth"
+      ]
+   },
+   "loot_drops": {
+      "entries": {
+         "default": {
+            "items": {
+               "wolf_pelt": {
+                  "type": "bag",
+                  "uri": "stonehearth_ace:loot_bag:cougar_default"
+               }
+            }
+         }
+      }
+   }
+}

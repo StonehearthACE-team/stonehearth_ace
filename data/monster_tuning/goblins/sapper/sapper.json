@@ -1,0 +1,39 @@
+{
+   "type": "monster_tuning",
+   "mixins": "stonehearth:monster_tuning:goblins:default",
+   "estimated_difficulty": 2,
+   "job": "stonehearth:jobs:npc:worker",
+   "attributes": {
+      "max_health": 120,
+      "muscle": 40,
+      "menace": 80,
+      "courage": 90,
+      "speed": 75,
+      "additive_armor_modifier": 2,
+      "exp_reward": 35
+   },
+   "unit_info": {
+      "description": "i18n(stonehearth_ace:data.monster_tuning.goblins.sapper.description)"
+   },
+   "equipment": {
+      "weapon": [
+         "stonehearth_ace:tools:mining_pick_iron"
+      ],
+      "armor": [
+         "stonehearth_ace:monsters:goblins:outfits:sapper"
+      ],
+      "abilities": "stonehearth:abilities:door_breaker_abilities"
+   },
+   "loot_drops": {
+      "entries": {
+         "default": {
+            "items": {
+               "tools": {
+                  "uri": "stonehearth_ace:tools:worker_tools_iron",
+                  "weight": 1
+               }
+            }
+         }
+      }
+   }
+}

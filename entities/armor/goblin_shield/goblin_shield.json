@@ -1,0 +1,57 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(goblin_shield.qb)"
+            ]
+         }
+      },
+      "stonehearth:equipment_piece": {
+         "slot": "leftArm",
+         "render_type": "attach_to_bone",
+         "postures": [
+            "stonehearth:combat",
+            "stonehearth:patrol",
+            "stonehearth:have_shield"
+         ],
+         "no_drop": true
+      }
+   },
+   "entity_data": {
+      "stonehearth:combat:armor_data": {
+         "base_damage_reduction": 2
+      },
+      "stonehearth:combat:melee_defenses": [
+         {
+            "name": "simple_shield_block",
+            "effect": "combat_1h_shield_block",
+            "active_frame": 4,
+            "cooldown": 10000,
+            "priority": 0,
+            "chance_of_success": 0.2
+         }
+      ],
+      "stonehearth:net_worth": {
+         "value_in_gold": 0,
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.armor.goblin_shield.display_name)",
+         "description": "i18n(stonehearth_ace:entities.armor.goblin_shield.description)",
+         "icon": "file(goblin_shield.png)",
+         "is_item": true,
+         "category": "armor",
+         "material_tags": [
+            "metal",
+            "armor",
+            "heavy_armor"
+         ]
+      }
+   }
+}

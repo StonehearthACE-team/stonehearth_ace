@@ -1,0 +1,27 @@
+{
+   "type" : "effect",
+   "tracks": {
+      "animation": {
+         "type": "animation_effect",
+         "start_time": 0,
+         "animation": "blowpipe_shoot.json",
+			"speed": 2.2,
+         "loop": false,
+         "response_frame": 11
+      },
+		"sound": {
+         "type": "sound_effect",
+         "duration": 1000,
+         "start_time": 500,
+         "min_distance": 20,
+         "falloff" : 4,
+         "volume": 110,
+         "track" : {
+            "type": "one_of",
+            "items": [
+               "stonehearth_ace:sounds:weapon:blowpipe"
+            ]    
+         }
+      }
+   }
+}

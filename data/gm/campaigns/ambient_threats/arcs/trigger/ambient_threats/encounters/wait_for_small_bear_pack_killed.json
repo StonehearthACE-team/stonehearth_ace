@@ -1,0 +1,10 @@
+{
+   "type": "encounter",
+   "encounter_type": "wait_for_event",
+   "in_edge": "wait_for_small_bear_pack_killed",
+   "out_edge": "small_bear_pack_killed",
+   "wait_for_event_info": {
+      "source": "pack_of_small_bears.bears",
+      "event": "stonehearth:kill_event"
+   }
+}

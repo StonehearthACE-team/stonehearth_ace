@@ -1,0 +1,40 @@
+{
+   "type": "monster_tuning",
+   "mixins": "stonehearth:monster_tuning:goblins:default",
+   "estimated_difficulty": 3,
+   "job": "stonehearth:jobs:npc:footman",
+   "attributes": {
+      "max_health": 320,
+      "muscle": 60,
+      "menace": 100,
+      "courage": 280,
+      "speed": 65,
+      "additive_armor_modifier": 6,
+      "exp_reward": 90
+   },
+   "unit_info": {
+      "description": "i18n(stonehearth_ace:data.monster_tuning.goblins.soldier.description)"
+   },
+   "equipment": {
+      "weapon": [
+         "stonehearth_ace:weapons:goblin_poker",
+         "stonehearth:weapons:jagged_cleaver"
+      ],
+      "armor": [
+         "stonehearth_ace:monsters:goblins:outfits:soldier"
+      ],
+      "shield": "stonehearth_ace:armor:goblin_shield"
+   },
+   "loot_drops": {
+      "entries": {
+         "default": {
+            "items": {
+               "wood": {
+                  "uri": "stonehearth:resources:wood:oak_log",
+                  "weight": 1
+               }
+            }
+         }
+      }
+   }
+}

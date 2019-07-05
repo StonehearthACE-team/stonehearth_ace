@@ -1,0 +1,26 @@
+{
+   "type" : "effect",
+   "tracks": {
+      "animation": {
+         "type": "animation_effect",
+         "start_time": 0,
+         "animation": "archer_1h_shoot.json",
+         "loop": false
+      },
+      "sound": {
+         "type": "sound_effect",
+         "duration": 1000,
+         "start_time": 1250,
+         "min_distance": 20,
+         "falloff" : 4,
+         "volume": 80,
+         "track" : {
+            "type": "one_of",
+            "items": [
+               "stonehearth:sounds:archer_shoot_01",
+               "stonehearth:sounds:archer_shoot_02"
+            ]    
+         }
+      }
+   }
+}

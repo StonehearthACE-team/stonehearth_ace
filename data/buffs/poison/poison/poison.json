@@ -1,0 +1,30 @@
+{
+   "type": "buff",
+   "axis": "debuff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.poison.poison.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.poison.poison.description)",
+   "icon": "file(poison_normal.png)",
+   "duration": "20h+16h",
+   "repeat_add_action": "renew_duration",
+   "modifiers": {
+      "muscle": {
+         "multiply": 0.6
+      },
+      "willpower": {
+         "multiply": 0.6
+      }
+   },
+   "script": "stonehearth:buff_scripts:periodic_health_modification",
+   "script_info": {
+      "health_change": -0.05,
+      "pulse": "20m",
+      "pulse_immediately": false,
+      "pulse_on_destroy": true,
+      "min_health": 0.3,
+      "cannot_kill": true,
+      "is_percentage": true
+   },
+   "disallowed_buffs": [
+      "stonehearth_ace:buffs:poison:minor_poison"
+   ]
+}

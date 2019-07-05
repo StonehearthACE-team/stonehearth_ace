@@ -1,0 +1,63 @@
+{
+   "type": "encounter",
+   "encounter_type": "create_mission",
+   "rarity": "common",
+   "in_edge": "pack_of_weak_cougars",
+   "out_edge": "wait_for_weak_cougar_pack_killed",
+   "can_start": {
+      "test_1": {
+         "number_active_check": {
+            "item": "number_active",
+            "type": "deny_if_greater_than",
+            "value": 3,
+            "start_node": "pack_of_weak_cougars",
+            "end_node": "weak_cougar_pack_killed"
+         }
+      }
+   },
+   "create_mission_info": {
+      "spawn_range": {
+         "min": 100,
+         "max": 300
+      },
+      "on_searcher_failure": {
+         "destroy_tree": {
+            "root": "pack_of_weak_cougars",
+            "destroy_root": true
+         }
+      },
+      "mission": {
+         "npc_player_id": "forest",
+         "ctx_entity_registration_path": "pack_of_weak_cougars",
+         "role": "spawn_enemies",
+         "offset": { "x": 0, "y": 0, "z": 0 },
+         "combat_bulletin": {
+            "title": "i18n(stonehearth:data.gm.campaigns.ambient_threats.random_encounter.combat_bulletin.title)"
+         },
+         "members": {
+            "weak_cougars": {
+               "from_population": {
+                  "role": "cougar",
+                  "location": { "x": 0, "z": 0 },
+                  "min": 1,
+                  "max": 2,
+                  "range": 5
+               },
+               "combat_leash_range": 15,
+               "tuning": "stonehearth_ace:monster_tuning:forest:weak_cougar"
+            },
+            "cougars": {
+               "from_population": {
+                  "role": "cougar",
+                  "location": { "x": 0, "z": 0 },
+                  "min": 0,
+                  "max": 1,
+                  "range": 5
+               },
+               "combat_leash_range": 15,
+               "tuning": "stonehearth_ace:monster_tuning:forest:default_cougar"
+            }
+         }
+      }
+   }
+}

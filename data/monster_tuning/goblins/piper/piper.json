@@ -1,0 +1,38 @@
+{
+   "type": "monster_tuning",
+   "mixins": "stonehearth:monster_tuning:goblins:default",
+   "estimated_difficulty": 1,
+   "job": "stonehearth:jobs:npc:archer",
+   "attributes": {
+      "max_health": 100,
+      "muscle": 40,
+      "menace": 90,
+      "courage": 150,
+      "speed": 55,
+      "additive_armor_modifier": 1,
+      "exp_reward": 15
+   },
+   "unit_info": {
+      "description": "i18n(stonehearth_ace:data.monster_tuning.goblins.piper.description)"
+   },
+   "equipment": {
+      "weapon": [
+         "stonehearth_ace:weapons:goblin_blowpipe"
+      ],
+      "armor": [
+         "stonehearth_ace:monsters:goblins:outfits:piper"
+      ]
+   },
+   "loot_drops": {
+      "entries": {
+         "default": {
+            "items": {
+               "wood": {
+                  "uri": "stonehearth_ace:resources:bone:bone_material",
+                  "weight": 1
+               }
+            }
+         }
+      }
+   }
+}

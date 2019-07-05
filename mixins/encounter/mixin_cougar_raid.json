@@ -22,15 +22,42 @@
             "max": 40
          },
          "sighted_bulletin": {
-            "title": "i18n(stonehearth:data.gm.campaigns.ambient_threats.random_raid.mission.sighted_bulletin.title)"
+            "title": "i18n(stonehearth_ace:data.gm.campaigns.ambient_threats.cougar_attack.mission.sighted_bulletin.title)"
          },
          "members": {
-            "cougars": {
+            "weak_cougar": {
                "from_population": {
                   "role": "cougar",
                   "location": { "x": 0, "z": 0 },
-                  "min": 1,
-                  "max": 2,
+                  "min": 0,
+                  "max": 0,
+                  "range": 20
+               }
+            },
+            "cougar": {
+               "from_population": {
+                  "role": "cougar",
+                  "location": { "x": 0, "z": 0 },
+                  "min": 0,
+                  "max": 0,
+                  "range": 20
+               }
+            },
+            "giant_cougar": {
+               "from_population": {
+                  "role": "cougar",
+                  "location": { "x": 0, "z": 0 },
+                  "min": 0,
+                  "max": 0,
+                  "range": 20
+               }
+            },
+            "scaled_cougar": {
+               "from_population": {
+                  "role": "cougar",
+                  "location": { "x": 0, "z": 0 },
+                  "min": 0,
+                  "max": 0,
                   "range": 20
                }
             }

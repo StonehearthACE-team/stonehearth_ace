@@ -1,0 +1,26 @@
+{
+	"can_start": {
+      "test_1": {
+         "number_active_check": {
+            "value": 2
+         }
+      }
+   },
+   "create_camp_info" : {
+      "citizens": {
+			"pipers": {
+            "from_population": {
+               "min": 0,
+               "max": 2,
+               "location": {
+                  "x": 0,
+                  "z": 0
+               },
+               "range": 5
+            },
+            "combat_leash_range": 60,
+            "tuning": "stonehearth_ace:monster_tuning:goblins:piper"
+         }
+      }
+   }
+}

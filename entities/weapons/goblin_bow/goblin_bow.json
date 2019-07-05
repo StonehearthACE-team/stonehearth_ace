@@ -1,0 +1,35 @@
+{
+   "mixins": "stonehearth:weapons:bow",
+   "type": "entity",
+   "components": {
+      "mixintypes": {
+         "model_variants": "override"
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(goblin_bow_equipped.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:combat:weapon_data": {
+         "base_damage": 11,
+         "base_ranged_damage": 11,
+         "range": 16,
+         "projectile_speed": 30,
+         "projectile_uri": "stonehearth_ace:weapons:arrow:primitive_arrow"
+      },
+      "stonehearth:combat:ranged_attacks": [
+         {
+            "name": "archer_1h_shoot",
+            "effect": "archer_1h_shoot",
+            "active_frame": 21,
+            "target_armor_multiplier": 0.8,
+            "cooldown": 0,
+            "priority": 0
+         }
+      ]
+   }
+}

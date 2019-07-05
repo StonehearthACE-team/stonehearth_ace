@@ -1,0 +1,25 @@
+{
+   "type": "entity",
+   "components": {
+      "render_info": {
+         "scale": 0.06
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(blowpipe_dart.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": -0.05, "y": 0, "z": 0.05 }
+      },
+      "stonehearth:projectile": {}
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.weapons.blowpipe_dart.display_name)",
+         "description": "i18n(stonehearth_ace:entities.weapons.blowpipe_dart.description)"
+      }
+   }
+}

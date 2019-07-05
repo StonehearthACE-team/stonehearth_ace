@@ -6,16 +6,26 @@
    "out_edge": "wait_to_destroy_raiding_party",
    "create_mission_info": {
       "mission": {
+			"sighted_bulletin": {
+            "title": "i18n(stonehearth_ace:data.gm.campaigns.ambient_threats.bear_attack.mission.sighted_bulletin.title_3)"
+         },
          "ctx_entity_registration_path": "bear_raid_rabid",
          "members": {
-            "bears": {
+            "rabid_bears": {
                "from_population": {
                   "min": 1,
-                  "max": 1
+                  "max": 2
                },
                "tuning": "stonehearth_ace:monster_tuning:forest:rabid_bear"
             },
-			"bears": {
+				"large_bears": {
+               "from_population": {
+                  "min": 0,
+                  "max": 3
+               },
+               "tuning": "stonehearth_ace:monster_tuning:forest:large_bear"
+            },
+				"bears": {
                "from_population": {
                   "min": 0,
                   "max": 4

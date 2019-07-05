@@ -62,7 +62,9 @@
                "bear_attack": {
                   "mission": {
                      "sighted_bulletin": {
-                        "title": "Feral Bear Approaching!"
+                        "title": "Feral Bear Approaching!",
+                        "title_2": "Feral Bears Approach!",
+                        "title_3": "Rabid Bears Approach!"
                      }
                   }
                },
@@ -70,6 +72,14 @@
                   "cougar": {
                      "display_name": "Giant Cat",
                      "description": "Definitely not a house cat. Terrifying!"
+                  }
+               },
+               "cougar_attack": {
+                  "mission": {
+                     "sighted_bulletin": {
+                        "title": "Wild Big Cats Approaching!",
+                        "title_2": "Wild Giant Cats Approaching!"
+                     }
                   }
                }
             },
@@ -287,6 +297,9 @@
                }
             },
             "town_progression": {
+               "ace_unlock_shrine_recipes": {
+                  "bulletin_title": "The Cook can now prepare Donation Boxes!"
+               },
                "ace_guildmaster_reached": {
                   "recipe_unlock_coins": "The Blacksmith can now mint gold coins!"
                },
@@ -1438,10 +1451,29 @@
       "monster_tuning": {
          "forest": {
             "rabid_bear": {
-               "description": "There is something unnatural and wrong with this animal..."
+               "description": "There is something unnatural and wrong with this animal...",
+               "display_name": "Rabid Bear"
             },
             "large_bear": {
-               "description": "This is a very large bear."
+               "description": "This is a very large bear.",
+               "display_name": "Large Bear"
+            }
+         },
+         "goblins": {
+            "archer": {
+               "description": "Enjoys hitting and running"
+            },
+            "piper": {
+               "description": "Appreciates poisons"
+            },
+            "wolf_trainer": {
+               "description": "Whips beasts into a dangerous frenzy"
+            },
+            "soldier": {
+               "description": "For shinies and glory!"
+            },
+            "sapper": {
+               "description": "Voluntary sapper. Wants to destroy things!"
             }
          }
       },
@@ -1813,7 +1845,7 @@
          },
          "light_headed": {
             "display_name": "Light-headed",
-            "description": "Having a merry time! Maybe a bit too much... Oh, well. Courage is increased. Diligence, Willpower, Speed and Stamina are slightly decreased.<ul><li>Crafting takes longer and has less chances of producing high quality items</li><li>This hearthling is less menacing to enemies</li><li>This hearthling will want to engage in more conversations and sleep</li></ul>"
+            "description": "Having a merry time! Maybe a bit too much... Oh, well. Courage is increased. Diligence, Willpower, Speed and Stamina are slightly decreased.<ul><li>Crafting takes longer and has less chances of producing high quality items</li><li>This hearthling is less menacing to enemies</li><li>This hearthling will want to engage in conversations and sleep a lot more than usual</li></ul>"
          },
          "quite_woozy": {
             "display_name": "Quite Woozy",
@@ -1821,7 +1853,7 @@
          },
          "morning_after": {
             "display_name": "The Morning After...",
-            "description": "Ouch... Next time I shouldn't exaggerate so much! Diligence, Willpower and Stamina are greatly reduced.<ul><li>Crafting takes longer</li></ul>"
+            "description": "Ouch... Next time I shouldn't exaggerate so much! Diligence, Willpower and Stamina are greatly reduced.<ul><li>Crafting takes longer</li><li>This hearthling will not be willing to start conversations</li></ul>"
          },
          "merry_time": {
             "display_name": "Good Time",
@@ -1857,7 +1889,21 @@
          },
          "toxin_resist": {
             "display_name": "Toxin Resistance",
-            "description": "This hearthling is protected against weaker poisons and toxins."
+            "description": "This hearthling is protected against weak poisons, toxins and infections."
+         },
+         "poison": {
+            "minor_poison": {
+               "display_name": "Weak Poison",
+               "description": "A weak, non-lethal poison. Will last some hours. Muscle and Willpower are fairly reduced.<ul><li>Losing 5% of their health points every 30 minutes</li><li>This poison will only damage them down to 75% of their total health</li></ul>"
+            },
+            "poison": {
+               "display_name": "Poison",
+               "description": "A non-lethal but dangerous poison. Might last a day or so. Muscle and Willpower are reduced.<ul><li>Losing 5% of their health points every 20 minutes</li><li>This poison will damage them down to only 30% of their total health</li></ul>"
+            },
+            "major_poison": {
+               "display_name": "Strong Poison",
+               "description": "A tough, lethal poison. Can last a couple of days. Muscle and Willpower are greatly reduced.<ul><li>Losing 5% of their health points every 10 minutes</li><li>This poison can damage them until they die and require constant medical attention</li></ul>"
+            }
          }
       },
       "loadouts": {
@@ -4032,22 +4078,22 @@
                "description": "The ACE Team would like to wish you all very happy and wonderful holidays!",
                "flavor": "This recipe shall be removed after New Year's Eve... So craft yours while you can!"
             },
-				"freezing_field_work_outfit_recipe": {
+            "freezing_field_work_outfit_recipe": {
                "recipe_name": "Field Worker Comfy Hood",
                "description": "A warm, decorated hood. Protects from freezing weather.",
-					"rc_description": "A decorated hood. Protects from cold weather.",
+               "rc_description": "A decorated hood. Protects from cold weather.",
                "flavor": "This item can only be equipped by civillians that work outside, like Shepherds, Farmers or Trappers"
             },
-				"freezing_crafter_outfit_recipe": {
+            "freezing_crafter_outfit_recipe": {
                "recipe_name": "Crafter Gilded Scarf",
                "description": "A fuzzy and ornate wool scarf. Protects from freezing weather.",
-					"rc_description": "An ornate wool scarf. Protects from cold weather.",
+               "rc_description": "An ornate wool scarf. Protects from cold weather.",
                "flavor": "This item can only be equipped by civillian crafters, like Carpenters, Blacksmiths or Cooks"
             },
-				"freezing_combat_outfit_recipe": {
+            "freezing_combat_outfit_recipe": {
                "recipe_name": "Combatant Fur Cloak",
                "description": "A thick cape made of multiple furs. Protects from freezing weather.",
-					"rc_description": "A short cape made of fur. Protects from cold weather.",
+               "rc_description": "A short cape made of fur. Protects from cold weather.",
                "flavor": "This item can only be equipped by combat units, like Footmen, Archers or Clerics"
             },
             "chilly_simple_worker_outfit_recipe": {
@@ -6153,6 +6199,10 @@
          "iron_brazier_tall": {
             "display_name": "Tall Cast Iron Brazier",
             "description": "Provides warmth and light. Requires any coal."
+         },
+         "ember_green": {
+            "display_name": "Green Embers",
+            "description": "How do they even do that...?"
          }
       },
       "pets": {
@@ -7420,6 +7470,10 @@
          "chitin_shield": {
             "display_name": "Chitin Shield",
             "description": "A somewhat sturdy shield made of chitin."
+         },
+         "goblin_shield": {
+            "display_name": "Goblin Shield",
+            "description": "Not as efficient as it looks like."
          }
       },
       "weapons": {
@@ -7721,6 +7775,22 @@
          },
          "short_sword": {
             "display_name": "Steel Short Sword"
+         },
+         "arrow": {
+            "display_name": "Arrow",
+            "description": "Hope it hits!"
+         },
+         "goblin_blowpipe": {
+            "display_name": "Blowpipe",
+            "description": "Primitive but dangerous."
+         },
+         "blowpipe_dart": {
+            "display_name": "Poisonous Dart",
+            "description": "Careful with this one!"
+         },
+         "goblin_poker": {
+            "display_name": "Goblin Poker",
+            "description": "A large fork used to poke your foes"
          }
       },
       "gizmos": {

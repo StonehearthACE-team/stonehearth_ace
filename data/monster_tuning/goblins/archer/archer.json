@@ -1,0 +1,38 @@
+{
+   "type": "monster_tuning",
+   "mixins": "stonehearth:monster_tuning:goblins:default",
+   "estimated_difficulty": 3,
+   "job": "stonehearth:jobs:npc:archer",
+   "attributes": {
+      "max_health": 250,
+      "muscle": 40,
+      "menace": 100,
+      "courage": 180,
+      "speed": 60,
+      "additive_armor_modifier": 4,
+      "exp_reward": 60
+   },
+   "unit_info": {
+      "description": "i18n(stonehearth_ace:data.monster_tuning.goblins.archer.description)"
+   },
+   "equipment": {
+      "weapon": [
+         "stonehearth_ace:weapons:goblin_bow"
+      ],
+      "armor": [
+         "stonehearth_ace:monsters:goblins:outfits:archer"
+      ]
+   },
+   "loot_drops": {
+      "entries": {
+         "default": {
+            "items": {
+               "wood": {
+                  "uri": "stonehearth:resources:wood:oak_log",
+                  "weight": 1
+               }
+            }
+         }
+      }
+   }
+}

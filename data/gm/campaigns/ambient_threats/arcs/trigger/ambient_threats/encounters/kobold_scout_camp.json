@@ -1,0 +1,15 @@
+{
+   "can_start": {
+      "test_1": {
+         "number_active_check": {
+            "value": 2
+         },
+			"campaign_requirement": {
+				"item": "campaign_completed",
+				"campaign_name": "combat",
+				"type": "deny_if_not",
+				"value": true
+			}
+      }
+   }
+}

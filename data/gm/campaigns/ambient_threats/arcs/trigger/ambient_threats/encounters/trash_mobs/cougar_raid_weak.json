@@ -1,0 +1,21 @@
+{
+   "type": "encounter",
+   "mixins": "stonehearth_ace:mixins:encounter:cougar_raid",
+   "encounter_type": "create_mission",
+   "in_edge": "cougar_raid_weak",
+   "out_edge": "wait_to_destroy_raiding_party",
+   "create_mission_info": {
+      "mission": {
+         "ctx_entity_registration_path": "cougar_raid_weak",
+         "members": {
+            "weak_cougar": {
+               "from_population": {
+                  "min": 2,
+                  "max": 4
+               },
+               "tuning": "stonehearth_ace:monster_tuning:forest:weak_cougar"
+            }
+         }
+      }
+   }
+}
