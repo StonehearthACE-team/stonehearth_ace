@@ -50,8 +50,8 @@ end
 function AceEquipmentPieceComponent:get_value(job_component)
 	-- evaluate the value of this item for the purposes of comparing to others for upgrading
 	local value = self:get_ilevel()
-	-- if current ilevel is < 0, that means the item is not unequippable. It's linked to another item
-	if value < 0 then
+	-- if current ilevel is < 0, that means the item is *probably* not unequippable. It's linked to another item
+	if value < 0 and not self:get_can_unequip() then
 		return nil
 	end
 
@@ -117,6 +117,10 @@ end
 function AceEquipmentPieceComponent:has_ai_task_group(task_group_uri)
 	local injected = self:_get_injected_ai()
 	return injected.task_groups and injected.task_groups[task_group_uri]
+end
+
+function AceEquipmentPieceComponent:get_can_unequip()
+   return self._json.can_unequip == true
 end
 
 return AceEquipmentPieceComponent

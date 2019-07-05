@@ -32,6 +32,7 @@ end
 function AutoReplaceComponent:create()
    if self._json.reset_facing then
       self._sv._original_rotation = self._entity:get_component('mob'):get_facing()
+      self.__saved_variables:mark_changed()
    end
 end
 
@@ -57,32 +58,24 @@ function AutoReplaceComponent:_destroy_listeners()
 end
 
 function AutoReplaceComponent:_on_kill_event(args)
+   self:_destroy_listeners()
+
    local kill_data = args.kill_data
    local player_id = radiant.entities.get_player_id(self._entity)
    if kill_data and kill_data.source_id == player_id then
       return -- don't replace with ghost if destroyed/cleared by the user
    end
-   local town = stonehearth.town:get_town(player_id)
-   if town then
-      local limit_data = radiant.entities.get_entity_data(self._entity:get_uri(), 'stonehearth:item_placement_limit')
-      if not limit_data or town:is_placeable(limit_data) then
-         local location = radiant.entities.get_world_grid_location(self._entity)
-         local parent = radiant.entities.get_parent(self._entity)
-         if location and parent and radiant.terrain.is_standable(self._entity, location) then -- make sure location is valid
-            local placement_info = {
-                  location = location,
-                  normal = Point3(0, 1, 0),
-                  rotation = self._sv._original_rotation or self._entity:get_component('mob'):get_facing(),
-                  structure = parent,
-               }
-            local ghost_entity = town:place_item_type(self._entity:get_uri(), nil, placement_info)
-         end
-      end
-   end
+   self:_try_replace(player_id)
 end
 
 function AutoReplaceComponent:_on_destroy(e)
+   self:_destroy_listeners()
+
    local player_id = radiant.entities.get_player_id(self._entity)
+   self:_try_replace(player_id)
+end
+
+function AutoReplaceComponent:_try_replace(player_id)
    local town = stonehearth.town:get_town(player_id)
    if town then
       local limit_data = radiant.entities.get_entity_data(self._entity:get_uri(), 'stonehearth:item_placement_limit')

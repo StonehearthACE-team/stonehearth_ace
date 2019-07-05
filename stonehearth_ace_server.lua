@@ -21,6 +21,7 @@ local monkey_patches = {
    ace_find_equipment_upgrade_action = 'stonehearth.ai.actions.upgrade_equipment.find_equipment_upgrade_action',
    ace_town_patrol_service = 'stonehearth.services.server.town_patrol.town_patrol_service',
    ace_equipment_piece_component = 'stonehearth.components.equipment_piece.equipment_piece_component',
+   ace_equipment_component = 'stonehearth.components.equipment.equipment_component',
    ace_farmer_field_component = 'stonehearth.components.farmer_field.farmer_field_component',
    ace_growing_component = 'stonehearth.components.growing.growing_component',
    ace_renewable_resource_node_component = 'stonehearth.components.renewable_resource_node.renewable_resource_node_component',
