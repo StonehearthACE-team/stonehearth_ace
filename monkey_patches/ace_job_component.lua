@@ -1,3 +1,5 @@
+local rng = _radiant.math.get_default_rng()
+
 local JobComponent = require 'stonehearth.components.job.job_component'
 
 local AceJobComponent = class()
@@ -18,6 +20,10 @@ function AceJobComponent:destroy(value, add_curiosity_addition)
 		self._training_performed_listener:destroy()
 		self._training_performed_listener = nil
 	end
+end
+
+function AceJobComponent:get_job_equipment_uris()
+   return self._sv._job_equipment_uris or {}
 end
 
 function AceJobComponent:add_exp(value, add_curiosity_addition, options)
@@ -315,7 +321,9 @@ end
 
 AceJobComponent._ace_old_demote = JobComponent.demote
 function AceJobComponent:demote(old_job_json, dont_drop_talisman)
-	self:_ace_old_demote(old_job_json, dont_drop_talisman)
+   self:_ace_old_demote(old_job_json, dont_drop_talisman)
+   
+   self._sv._job_equipment_uris = {}
 
 	-- remove the training toggle command if it exists
 	if self:is_combat_job() then
@@ -327,6 +335,40 @@ function AceJobComponent:demote(old_job_json, dont_drop_talisman)
    self:_unregister_entity_types()
 
 	radiant.events.trigger(self._entity, 'stonehearth_ace:on_demote', { old_job_json = old_job_json, dont_drop_talisman = dont_drop_talisman })
+end
+
+AceJobComponent._ace_old__equip_equipment = JobComponent._equip_equipment
+function AceJobComponent:_equip_equipment(json)
+   self._sv._job_equipment_uris = {}
+   
+   local equipment_component = self._entity:add_component('stonehearth:equipment')
+   if json and json.equipment then
+      -- iterate through the equipment in the table, placing one item from each value
+      -- on the entity.  they of the entry are irrelevant: they're just for documenation
+      for _, items in pairs(json.equipment) do
+         local equipment
+         if type(items) == 'string' then
+            -- create this piece
+            equipment = radiant.entities.create_entity(items)
+         elseif type(items) == 'table' then
+            -- pick an random item from the array
+            equipment = radiant.entities.create_entity(items[rng:get_int(1, #items)])
+         end
+         local unequipped_item = equipment_component:equip_item(equipment, false)
+         if unequipped_item then
+            local location = radiant.entities.get_world_grid_location(self._entity)
+            if location then
+               local placement_point = radiant.terrain.find_placement_point(location, 1, 4)
+               radiant.terrain.place_entity(unequipped_item, placement_point)
+            else
+               -- can happen duing re-embarkation with classes upgraded from classes that have equipment to drop.
+               radiant.entities.destroy_entity(unequipped_item)
+            end
+         end
+         table.insert(self._sv._job_equipment, equipment)
+         self._sv._job_equipment_uris[equipment:get_component('stonehearth:equipment_piece'):get_slot()] = equipment:get_uri()
+      end
+   end
 end
 
 function AceJobComponent:_register_entity_types()

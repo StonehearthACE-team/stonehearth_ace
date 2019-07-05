@@ -123,17 +123,16 @@ function AceEquipmentComponent:unequip_item(equipped_item, replace_with_default)
    end
 
    -- check if there's a default item for the slot that we want to replace it with
-   local ep_data = radiant.entities.get_component_data(unequipped_item, 'stonehearth:equipment_piece')
-   local slot = ep_data.slot
-   if unequipped_item and slot then
-      local default_item = self._sv.default_equipment[slot]
-      if replace_with_default and default_item then
-         self._sv.default_equipment[slot] = nil
-         self:equip_item(default_item)
-      elseif ep_data.no_drop and not default_item then
-         -- if there is no default to replace with, save the uri of this item for this slot
-         self._sv.default_equipment[slot] = uri
-         self.__saved_variables:mark_changed()
+   if unequipped_item then
+      local ep_data = radiant.entities.get_component_data(unequipped_item, 'stonehearth:equipment_piece')
+      local slot = ep_data.slot
+      local job = self._entity:get_component('stonehearth:job')
+      if slot and job then
+         -- get the job and see if we have a default equipment item for this slot
+         local uris = job:get_job_equipment_uris()
+         if uris[slot] then
+            self:equip_item(uris[slot])
+         end
       end
    end
 

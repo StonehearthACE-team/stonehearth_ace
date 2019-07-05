@@ -50,38 +50,58 @@ function AceCollectIngredients:run(town, args)
             local rating = radiant.entities.get_item_quality(item) / 3
             --return rating
 
-            local distance_sq = math.max(0, (entity_location or radiant.entities.get_world_grid_location(entity))
-                  :distance_to_squared(storage_location or radiant.entities.get_world_grid_location(item)) - close_distance_for_rating_sq)
-            local distance_score = (1 - math.min(1, distance_sq / max_distance_for_rating_sq))
+            local p1 = entity_location or radiant.entities.get_world_grid_location(entity)
+            local p2 = storage_location or radiant.entities.get_world_grid_location(item)
 
-            --log:debug('HQ distance sq %s and score %s for %s to %s', distance_sq, distance_score, entity, item)
+            if not p1 or not p2 then
+               log:debug('HQ distance sq no location! %s (%s) -> %s (%s)', entity, p1 or 'NIL', item, p2 or 'NIL')
+               return rating
+            else
+               local distance_sq = p1:distance_to_squared(p2) - close_distance_for_rating_sq
+               local distance_score = (1 - math.min(1, distance_sq / max_distance_for_rating_sq))
 
-            return rating * 0.8 + distance_score * 0.2
+               --log:debug('HQ distance sq %s and score %s for %s to %s', distance_sq, distance_score, entity, item)
+
+               return rating * 0.8 + distance_score * 0.2
+            end
          end
       else
          rating_fn = function(item, entity, entity_location, storage_location)
             local rating = 1 / radiant.entities.get_item_quality(item)
             --return rating
 
-            local distance_sq = math.max(0, (entity_location or radiant.entities.get_world_grid_location(entity))
-                  :distance_to_squared(storage_location or radiant.entities.get_world_grid_location(item)) - close_distance_for_rating_sq)
-            local distance_score = (1 - math.min(1, distance_sq / max_distance_for_rating_sq))
+            local p1 = entity_location or radiant.entities.get_world_grid_location(entity)
+            local p2 = storage_location or radiant.entities.get_world_grid_location(item)
 
-            --log:debug('LQ distance sq %s and score %s for %s to %s', distance_sq, distance_score, entity, item)
-            
-            return rating * 0.8 + distance_score * 0.2
+            if not p1 or not p2 then
+               log:debug('LQ distance sq no location! %s (%s) -> %s (%s)', entity, p1 or 'NIL', item, p2 or 'NIL')
+               return rating
+            else
+               local distance_sq = p1:distance_to_squared(p2) - close_distance_for_rating_sq
+               local distance_score = (1 - math.min(1, distance_sq / max_distance_for_rating_sq))
+
+               --log:debug('LQ distance sq %s and score %s for %s to %s', distance_sq, distance_score, entity, item)
+               
+               return rating * 0.8 + distance_score * 0.2
+            end
          end
       end
 
       local distance_rating_fn = function(item, entity, entity_location, storage_location)
          -- anything within the close distance is considered "best"; doesn't matter if it goes negative
-         local distance_sq = (entity_location or radiant.entities.get_world_grid_location(entity))
-               :distance_to_squared(storage_location or radiant.entities.get_world_grid_location(item)) - close_distance_for_rating_sq
-         local distance_score = (1 - math.min(1, distance_sq / max_distance_for_rating_sq))
+         local p1 = entity_location or radiant.entities.get_world_grid_location(entity)
+         local p2 = storage_location or radiant.entities.get_world_grid_location(item)
 
-         --log:debug('distance sq %s and score %s for %s to %s', distance_sq, distance_score, entity, item)
-         
-         return distance_score
+         if not p1 or not p2 then
+            return 0
+         else
+            local distance_sq = p1:distance_to_squared(p2) - close_distance_for_rating_sq
+            local distance_score = (1 - math.min(1, distance_sq / max_distance_for_rating_sq))
+
+            --log:debug('distance sq %s and score %s for %s to %s', distance_sq, distance_score, entity, item)
+            
+            return distance_score
+         end
       end
 
       local first_loop = true

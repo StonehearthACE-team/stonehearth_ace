@@ -32,11 +32,17 @@ function AceEquipmentPieceComponent:is_upgrade_for(unit)
       return false
    end
 
+   -- even if we don't have something equipped in this slot, if this item would have a negative value, don't equip it
+   local this_value = self:get_value(job_component)
+   if not this_value or this_value < 0 then
+      return false
+   end
+
    -- if we're not better than what's currently equipped, bail
    local equipped = equipment_component:get_item_in_slot(slot)
    if equipped and equipped:is_valid() then
       local current_value = equipped:get_component('stonehearth:equipment_piece'):get_value(job_component)
-      if not current_value or current_value >= self:get_value(job_component) then
+      if not current_value or current_value >= this_value then
          -- if current value is nil, that means the item is not unequippable. It's linked to another item
          return false
       end
@@ -120,7 +126,7 @@ function AceEquipmentPieceComponent:has_ai_task_group(task_group_uri)
 end
 
 function AceEquipmentPieceComponent:get_can_unequip()
-   return self._json.can_unequip == true
+   return self:get_ilevel() >= 0 or self._json.can_unequip == true
 end
 
 return AceEquipmentPieceComponent
