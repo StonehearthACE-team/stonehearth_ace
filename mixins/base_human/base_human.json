@@ -15,6 +15,11 @@
             "type": "basic",
             "value": 1
          },
+         "sleep_duration": {
+            "equation": "360 - 1.5 * diligence",
+            "min": 120,
+            "max": 480
+         },
          "min_drink_satiety": {
             "type": "basic",
             "value": 0
@@ -26,6 +31,13 @@
       },
       "stonehearth:expendable_resources": {
          "resources": {
+            "sleepiness": {
+               "initial_value": {
+                  "type": "random_between",
+                  "min": "min_value",
+                  "max": 4
+               }
+            },
             "drink_satiety": {
                "min": {
                   "linked_attribute": "min_drink_satiety"

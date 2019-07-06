@@ -660,6 +660,15 @@
             "NO_LUXURY_DRINK_PENALTY": -15
          }
       },
+		"sleep": {
+         "TIRED_THOUGHT_THRESHOLD": 16,
+         "FATIGUED_THOUGHT_THRESHOLD": 24,
+         "PET_SLEEP_DURATION": 4800,
+         "BEDTIME_START_HOUR": 1,  "__comment": "Effective sleepiness is increased between bedtime start/stop hours.",
+         "BEDTIME_END_HOUR": 7,
+         "BEDTIME_SLEEPINESS_BOOST": 6,
+         "MIN_SLEEPINESS_TO_SLEEP_ON_GROUND": 28
+      },
 		"crafting": {
 			"mixintypes": {
 				"ITEM_QUALITY_CHANCES": "override"
