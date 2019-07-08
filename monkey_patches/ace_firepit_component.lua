@@ -77,23 +77,25 @@ end
 -- a little patch to allow firepits that are sunk 1 voxel into the ground to also create seats
 AceFirepitComponent._ace_old__add_one_seat = FirepitComponent._add_one_seat
 function AceFirepitComponent:_add_one_seat(seat_number, location)
-	location.y = location.y + 1
-   local standable = radiant.terrain.is_standable(location)
-   if standable then
-      local line_of_sight = _physics:has_line_of_sight(self._entity, Point3(location.x, location.y + VISION_OFFSET, location.z))
-      if not line_of_sight then
-         return
+   -- check if there are any non-iconic entities with iconic forms (e.g., "placed" objects) in this location
+   -- if so, don't try to make a seat 1 higher, because then it could be on top of a table or whatever
+   -- if that entity should allow people to sit on it, it should handle that itself
+   local has_blocking_entity = false
+   for id, entity in pairs(radiant.terrain.get_entities_at_point(location)) do
+      local entity_forms = entity:get_component('stonehearth:entity_forms')
+      if entity_forms and entity_forms:get_iconic_entity() then
+         self._log:spam('firepit seat location %s has potentially blocking entity %s, not trying at higher location', tostring(location), entity)
+         has_blocking_entity = true
+         break
       end
-      local seat = radiant.entities.create_entity('stonehearth:decoration:firepit_seat', { owner = self._entity })
-      local seat_comp = seat:get_component('stonehearth:center_of_attention_spot')
-      seat_comp:add_to_center_of_attention(self._entity, seat_number)
-      self._sv.seats[seat_number] = seat
-      radiant.terrain.place_entity_at_exact_location(seat, location)
-      self._log:spam('place higher firepit seat at %s', tostring(location))
-	else
-	location.y = location.y - 1
-	
-	self:_ace_old__add_one_seat(seat_number, location)
+   end
+
+   local higher_location = Point3(location.x, location.y + 1, location.z)
+   if not has_blocking_entity and radiant.terrain.is_standable(higher_location) then
+      self:_ace_old__add_one_seat(seat_number, higher_location)
+   else
+      -- still try even if there's a blocking_entity, because it might not have solid collision and still be a standable spot
+      self:_ace_old__add_one_seat(seat_number, location)
    end
 end
 
