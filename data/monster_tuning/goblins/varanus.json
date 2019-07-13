@@ -1,0 +1,52 @@
+{
+   "type": "monster_tuning",
+   "estimated_difficulty": 4,
+   "scale": 0.18,
+   "attributes": {
+      "max_health": 1100,
+      "muscle": 52,
+      "menace": 85,
+      "courage": 90,
+      "speed": 45,
+      "additive_armor_modifier": 6,
+      "exp_reward": 140
+   },
+   "unit_info": {
+      "display_name": "i18n(stonehearth_ace:data.monster_tuning.goblins.varanus.display_name)",
+      "description": "i18n(stonehearth_ace:data.monster_tuning.goblins.varanus.description)"
+   },
+   "equipment": {
+      "weapon": [
+         "stonehearth:monsters:forest:alligator:teeth_weapon"
+      ]
+   },
+   "loot_drops": {
+      "entries": {
+         "default": {
+            "num_rolls": {
+               "min": 1,
+               "max": 1
+            },
+            "items": {
+               "default": {
+                  "uri": "stonehearth:loot_bag:varanus_default",
+                  "type": "bag",
+                  "weight": 10
+               }
+            }
+         },
+         "iron": {
+            "num_rolls": {
+               "min": 1,
+               "max": 2
+            },
+            "items": {
+               "iron": {
+                  "uri": "stonehearth:refined:iron_ingot",
+                  "weight": 10
+               }
+            }
+         }
+      }
+   }
+}

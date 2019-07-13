@@ -1,0 +1,47 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:item_properties",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(highland_vine.qb)"
+            ]
+         }
+      },
+      "stonehearth:stacks": {
+         "max_stacks": 6
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 2,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 2,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.resources.herb.highland_vine.display_name)",
+         "description": "i18n(stonehearth_ace:entities.resources.herb.highland_vine.description)",
+         "icon": "file(highland_vine.png)",
+         "is_item": true,
+         "category": "resources",
+         "material_tags": [
+            "plant",
+            "herb",
+            "resource",
+            "green",
+            "bitter",
+            "highland_vine",
+            "stockpile_plant"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": 1
+      }
+   }
+}

@@ -1,0 +1,60 @@
+{
+   "type": "encounter",
+   "mixins": "stonehearth_ace:mixins:encounter:goblin_raid",
+   "encounter_type": "create_mission",
+   "in_edge": "goblin_raid_6",
+   "out_edge": "wait_to_destroy_raiding_party",
+   "create_mission_info": {
+      "mission": {
+         "ctx_entity_registration_path": "goblin_raid_6",
+         "members": {
+            "thugs": {},
+            "guards": {},
+				"marauders": {
+					"from_population": {
+                  "min": 2,
+                  "max": 3
+               }
+				},
+				"soldiers": {
+					"from_population": {
+                  "min": 2,
+                  "max": 4
+               }
+				},
+				"miniboss": {
+					"from_population": {
+                  "min": 1,
+                  "max": 1
+               }
+				},
+				"pipers": {},
+				"archers": {
+					"from_population": {
+                  "min": 2,
+                  "max": 4
+               }
+				},
+				"sappers": {
+					"from_population": {
+                  "min": 0,
+                  "max": 1
+               }
+				},
+				"wolf_trainers": {
+					"from_population": {
+                  "min": 1,
+                  "max": 1
+               }
+				},
+				"wolves": {
+					"from_population": {
+                  "min": 3,
+                  "max": 8
+               }
+				},
+				"varanus": {}
+         }
+      }
+   }
+}

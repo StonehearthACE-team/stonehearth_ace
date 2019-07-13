@@ -1,4 +1,6 @@
 local EquipmentComponent = require 'stonehearth.components.equipment.equipment_component'
+local rng = _radiant.math.get_default_rng()
+
 local AceEquipmentComponent = class()
 
 AceEquipmentComponent._ace_old_activate = EquipmentComponent.activate

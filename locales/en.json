@@ -45,6 +45,12 @@
             },
             "mason_house": {
                "display_name": "Mason House"
+            },
+            "shepherd_coop": {
+               "display_name": "Shepherd's Animal Shelter"
+            },
+            "shepherd_barn": {
+               "display_name": "Shepherd's Large Animal Barn"
             }
          }
       },
@@ -79,6 +85,22 @@
                      "sighted_bulletin": {
                         "title": "Wild Big Cats Approaching!",
                         "title_2": "Wild Giant Cats Approaching!"
+                     }
+                  }
+               },
+               "goblin_raid": {
+                  "mission": {
+                     "sighted_bulletin": {
+                        "title": "Goblin Raiders Approaching!"
+                     }
+                  }
+               },
+               "random_raid": {
+                  "mission": {
+                     "epic_undead_raid": {
+                        "sighted_bulletin": {
+                           "title": "Undead Horde Approaching!"
+                        }
                      }
                   }
                }
@@ -1474,6 +1496,22 @@
             },
             "sapper": {
                "description": "Voluntary sapper. Wants to destroy things!"
+            },
+            "varanus": {
+               "display_name": "War Varanus",
+               "description": "Taken as an egg to be a war machine"
+            },
+            "miniboss": {
+               "display_name": "Captain [str(self.stonehearth:unit_info.custom_name)]",
+               "description": "Seeker of revenge, forever loyal to Ogo"
+            }
+         },
+         "undead": {
+            "epic_undead_bow": {
+               "description": "Brings poisoned arrows from the grave..."
+            },
+            "epic_undead_giant": {
+               "description": "Giants! Undead giants! We're doomed!"
             }
          }
       },
@@ -1537,7 +1575,7 @@
             },
             "fermenting_vat_fill": {
                "display_name": "Fill Fermenting Vat",
-               "description": "Order the Cook to fill this fermenting vat with wort to start the production of beer!"
+               "description": "Order the Cook or Herbalist to fill this fermenting vat with wort to start brewing! Wort is crafted by the Cook."
             },
             "build_well": {
                "display_name": "Build Water Well",
@@ -1546,6 +1584,10 @@
             "build_well_roof": {
                "display_name": "Add Roof",
                "description": "Use a crafted Water Well Roof of the same kind to add a fancy roof to make your citizens happier and your water always fresh!"
+            },
+            "fermenting_vat_gruit": {
+               "display_name": "Add Gruit",
+               "description": "Order the Cook or Herbalist to add gruit to the ale, letting it bitter and turn into beer, a more refined drink. Gruit is crafted by the Herbalist."
             }
          },
          "slaughter": {
@@ -2371,7 +2413,23 @@
                "recipe_name": "Gentle Flower Vase",
                "description": "A little thing to make a home feel more cosy.",
                "flavor": "Literally handpicked flowers are going to be placed in this vase. Some blossoms might be more striking than others *wink, wink*."
-            }
+            },
+            "gruit_recipe": {
+               "recipe_name": "Wrap of Gruit",
+               "description": "A bundle of bitter herbs and seasonings. This traditional recipe uses juniper berries.",
+               "flavor": "The Cook or Herbalist can add it to a Fermentation Vat with Ale to make beer"
+            },
+            "rc_gruit_recipe": {
+               "recipe_name": "Wrap of Gruit",
+               "description": "A bundle of bitter herbs and seasonings. Gruit is often made with wax plants in the desert.",
+               "flavor": "The Cook or Herbalist can add it to a Fermentation Vat with Ale to make beer"
+            },
+            "na_gruit_recipe": {
+               "recipe_name": "Wrap of Gruit",
+               "description": "A bundle of bitter herbs and seasonings. The northerners use pine cones for its flavor.",
+               "flavor": "The Cook or Herbalist can add it to a Fermentation Vat with Ale to make beer"
+            },
+            "refinement_name": "Seed Extraction"
          },
          "herbalist_hood": {
             "display_name": "Herbalist's Hood",
@@ -3491,8 +3549,8 @@
             },
             "cook_fermenting_vat_recipe": {
                "recipe_name": "Fermentation Vat",
-               "description": "The Cook can use this to make beer by crafting wort.",
-               "flavor": "Beer makes hearthlings happy and slightly tipsy"
+               "description": "The Cook can use this to make ale by crafting wort. Beer can be made using Gruit, crafted by the Herbalist.",
+               "flavor": "Ale & Beer makes hearthlings happy and only slightly tipsy"
             },
             "cook_brewery_recipe": {
                "recipe_name": "Copper Brewery",
@@ -3765,7 +3823,7 @@
             },
             "wort_recipe": {
                "recipe_name": "Bucket of Wort",
-               "description": "An extract of mashed malted grains and herbs. Within a Fermentation Vat it can be turned into beer!",
+               "description": "An extract of mashed malted grains and herbs. Within a Fermentation Vat it can be turned into ale or beer!",
                "flavor": "Wort can also be further distilled into other drinks"
             },
             "spirit_recipe": {
@@ -3902,15 +3960,23 @@
          },
          "cook_fermenting_vat_empty": {
             "display_name": "Empty Fermentation Vat",
-            "description": "Used by the Cook for fermenting brews."
+            "description": "Used by the Cook or Herbalist for fermenting brews."
          },
          "cook_fermenting_vat_wort": {
             "display_name": "Fermentation Vat with Wort",
-            "description": "The wort is fermenting and will then turn into beer!"
+            "description": "The wort is fermenting and will then turn into ale!"
          },
          "cook_fermenting_vat_beer": {
             "display_name": "Fermentation Vat with Beer",
             "description": "The beer is ready and can now be filtered and collected!"
+         },
+         "cook_fermenting_vat_ale": {
+            "display_name": "Fermentation Vat with Ale",
+            "description": "The ale is ready! Harvest it for the drink or add gruit to make beer."
+         },
+         "cook_fermenting_vat_gruit": {
+            "display_name": "Fermentation Vat with Gruit",
+            "description": "The mixture is bittering and getting flavorful. Soon it shall become beer!"
          }
       },
       "carpenter": {
@@ -4962,6 +5028,10 @@
             "sunflower": {
                "display_name": "Sunflower",
                "description": "A lovely and rare herb that makes anyone's day merrier!"
+            },
+            "highland_vine": {
+               "display_name": "Highland Vine Leaves",
+               "description": "A bitter and green herb obtained from harvesting vines."
             }
          },
          "stone": {
@@ -5052,6 +5122,10 @@
             "dwarfsbeard_bundle": {
                "display_name": "Dwarfsbeard Bundle",
                "description": "Very tangled, greasy and rough. Can be used as thatching or fiber."
+            },
+            "highland_vine_bundle": {
+               "display_name": "Highland Vine Stems",
+               "description": "Strong, flexible vine stems. Spinnable into thread."
             }
          },
          "coal": {
@@ -7256,6 +7330,13 @@
             },
             "goblin_small_totem": {
                "description": "It doesn't look so good and doesn't smell so good either."
+            },
+            "goblin_tent": {
+               "display_name": "Goblin Shack"
+            },
+            "goblin_barricade": {
+               "display_name": "Primitive Barricade",
+               "description": "Very rustic... and pointy!"
             }
          }
       },
@@ -7797,6 +7878,10 @@
          "goblin_poker": {
             "display_name": "Goblin Poker",
             "description": "A large fork used to poke your foes"
+         },
+         "goblin_pick": {
+            "display_name": "Crude Pick",
+            "description": "Excellent for breaking doors!"
          }
       },
       "gizmos": {
@@ -8492,7 +8577,7 @@
          },
          "wort": {
             "display_name": "Bucket of Wort",
-            "description": "An extract from grains. The Cook needs it to fill a fermentation vat!"
+            "description": "An extract from grains. The Cook or Herbalist need it to fill a fermentation vat!"
          },
          "spirit": {
             "spirit": {
@@ -8630,6 +8715,20 @@
          "water_serving": {
             "display_name": "Cup of Water",
             "description": "The foundation of life!... Also quite bland."
+         },
+         "gruit": {
+            "display_name": "Wrap of Gruit",
+            "description": "A bundle of bitter, dried herbs. Cooks and Herbalists use it to make beer."
+         },
+         "ale": {
+            "ale_serving": {
+               "display_name": "Ale Tankard",
+               "description": "Very pleasant!"
+            },
+            "ale": {
+               "display_name": "Ale",
+               "description": "A fruity, sweet brew. Makes hearthlings happy but also a little tipsy! "
+            }
          }
       },
       "npc": {
@@ -8645,6 +8744,30 @@
                   "display_name": "Rattley",
                   "description": "Goblin girl that loves bonecarving"
                }
+            }
+         }
+      },
+      "loot": {
+         "currency": {
+            "goblin": {
+               "display_name": "Goblin Banner Shred",
+               "description": "A trophy from defeating goblins... Must have some value!"
+            },
+            "red_kiln": {
+               "display_name": "Red Kiln Banner Shred",
+               "description": "A trophy from defeating servants of the warchief... Must have a good value!"
+            },
+            "titan": {
+               "display_name": "Corrupted Dust",
+               "description": "A trophy from corrupted, abyssal beings... Must have an excellent value!"
+            },
+            "undead": {
+               "display_name": "Undead Rags",
+               "description": "A trophy from defeating the undead... Must have quite some value!"
+            },
+            "forest": {
+               "description": "A trophy from defeating minions of the wilds... Must have a bit of value!",
+               "display_name": "Enchanted Dust"
             }
          }
       }
@@ -8706,6 +8829,11 @@
                   "recipe_name": "Grower's Terrarium",
                   "description": "Can be used to create cultivars and unlock new seeds or spores, fungal colonies and prepare plants.",
                   "flavor": "Place cultivars anywhere on the world and wait for them to develop into usable forms!"
+               },
+               "gruit_recipe": {
+                  "recipe_name": "Wrap of Gruit",
+                  "description": "A bundle of bitter herbs and seasonings. Birch catkins are often used in the highlands.",
+                  "flavor": "The Cook or Herbalist can add it to a Fermentation Vat with Ale to make beer"
                }
             }
          },
@@ -8858,6 +8986,7 @@
                "gizmos": "Gizmos",
                "fungi": "Fungi",
                "drink": "Drinks",
+               "brewing_ingredient": "Brewing Ingredients",
                "boulder": "Stonework",
                "automatons_and_golems": "Automatons & Golems"
             }
@@ -9330,7 +9459,9 @@
             "pelt_resource_name": "Any Fur Pelt",
             "cloth_resource_name": "Any Bolt of Cloth",
             "leather_resource_name": "Any Leather",
-            "herb_resource_name": "Any Herb"
+            "herb_resource_name": "Any Herb",
+            "seed_juniper_resource_name": "Juniper Berries",
+            "seed_pine_resource_name": "Pine Cones"
          }
       },
       "hotkeys": {

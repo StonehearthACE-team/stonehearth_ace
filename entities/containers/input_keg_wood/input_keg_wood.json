@@ -30,10 +30,10 @@
          "type": "input_crate",
          "capacity": 4,
          "filter_list": "stonehearth_ace:ui:input_keg:filters",
-         "is_single_filter": true,
-         "default_filter": [
-            "drink_container beer"
-         ]
+         "is_single_filter": true
+      },
+      "effect_list": {
+         "default": "/stonehearth_ace/data/rigs/entities/containers/container_small/effects/idle.json"
       }
    },
    "entity_data": {

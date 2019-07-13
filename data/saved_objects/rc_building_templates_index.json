@@ -54,6 +54,20 @@
                         "value": "stonehearth:jobs:blacksmith"
                      },
                      "file": "file(building_templates/rayyas_children/blacksmiths_workshop_ace.json)"
+                  },
+                  "rc_shepherd_barn_ace": {
+                     "unlock_requirement": {
+                        "type": "has_job",
+                        "value": "stonehearth:jobs:shepherd"
+                     },
+                     "file": "file(building_templates/rayyas_children/rc_shepherd_barn_ace.json)"
+                  },
+                  "rc_shepherd_coop_ace": {
+                     "unlock_requirement": {
+                        "type": "has_job",
+                        "value": "stonehearth:jobs:shepherd"
+                     },
+                     "file": "file(building_templates/rayyas_children/rc_shepherd_coop_ace.json)"
                   }
                }
             },

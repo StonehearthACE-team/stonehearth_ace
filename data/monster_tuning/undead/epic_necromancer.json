@@ -1,0 +1,39 @@
+{
+   "type": "monster_tuning",
+   "estimated_difficulty": 2,
+   "attributes": {
+      "max_health": {
+         "base": 700,
+         "net_worth_effect": {
+            "increase_by": 20,
+            "per": 1000
+         },
+         "max": 1600
+      },
+      "muscle": 30,
+      "menace": 80,
+      "courage": 120,
+      "speed": 60,
+      "additive_armor_modifier": 0,
+      "exp_reward": {
+         "base": 95,
+         "net_worth_effect": {
+            "increase_by": 5,
+            "per": 1000
+         },
+         "max": 150
+      }
+   },
+   "equipment": {
+      "weapon": [
+         "stonehearth:weapons:scythe",
+         "stonehearth_ace:weapons:giant_bone_pike",
+         "stonehearth_ace:weapons:giant_bone_sword"
+      ],
+      "shield": [
+         "stonehearth_ace:armor:giant_bone_shield",
+         "stonehearth_ace:armor:light_giant_bone_shield"
+      ]
+   },
+   "scale": 0.14
+}

@@ -1,17 +1,5 @@
 {
    "stockpile": {
-      "resources": {
-         "display_name": "i18n(stonehearth:ui.game.zones_mode.stockpile.filters.resources)",
-         "ordinal": 1,
-         "categories": {
-            "water": {
-               "ordinal": 1,
-               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_water)",
-               "icon": "/stonehearth_ace/entities/resources/fluid/water/water.png",
-               "filter": "water resource"
-            }
-         }
-      },
       "dry_goods": {
          "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_dry_goods)",
          "ordinal": 2,
@@ -82,8 +70,14 @@
                "icon": "/stonehearth_ace/entities/food/malted_grains/malted_grains.png",
                "filter": "brewing_ingredient malt"
             },
-            "edible_nuts": {
+            "gruit": {
                "ordinal": 6,
+               "display_name": "i18n(stonehearth_ace:entities.drink.gruit.display_name)",
+               "icon": "/stonehearth_ace/entities/drink/gruit/gruit.png",
+               "filter": "brewing_ingredient gruit"
+            },
+            "edible_nuts": {
+               "ordinal": 7,
                "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_edible_nuts)",
                "icon": "/stonehearth_ace/entities/trees/oak_tree/seed/edible_nuts_icon.png",
                "filter": "seed_hard cooking_ingredient"
@@ -244,29 +238,35 @@
                "icon": "/stonehearth_ace/entities/drink/tea_desert/tea_desert.png",
                "filter": "drink_container tea_desert"
             },
-            "spirit": {
+            "ale": {
                "ordinal": 6,
+               "display_name": "i18n(stonehearth_ace:entities.drink.ale.ale.display_name)",
+               "icon": "/stonehearth_ace/entities/drink/ale/ale/ale.png",
+               "filter": "drink_container ale"
+            },
+            "beer": {
+               "ordinal": 7,
+               "display_name": "i18n(stonehearth_ace:entities.drink.beer.beer.display_name)",
+               "icon": "/stonehearth_ace/entities/drink/beer/beer/beer.png",
+               "filter": "drink_container beer"
+            },
+            "spirit": {
+               "ordinal": 8,
                "display_name": "i18n(stonehearth_ace:entities.drink.spirit.spirit.display_name)",
                "icon": "/stonehearth_ace/entities/drink/spirit/spirit/spirit.png",
                "filter": "drink_container spirit"
             },
             "spirit_fruit": {
-               "ordinal": 7,
+               "ordinal": 9,
                "display_name": "i18n(stonehearth_ace:entities.drink.spirit_fruit.spirit_fruit.display_name)",
                "icon": "/stonehearth_ace/entities/drink/spirit_fruit/spirit_fruit/spirit_fruit.png",
                "filter": "drink_container spirit_fruit"
             },
             "liquor": {
-               "ordinal": 8,
+               "ordinal": 10,
                "display_name": "i18n(stonehearth_ace:entities.drink.liquor.liquor.display_name)",
                "icon": "/stonehearth_ace/entities/drink/liquor/liquor/liquor.png",
                "filter": "drink_container liquor"
-            },
-            "beer": {
-               "ordinal": 9,
-               "display_name": "i18n(stonehearth_ace:entities.drink.beer.beer.display_name)",
-               "icon": "/stonehearth_ace/entities/drink/beer/beer/beer.png",
-               "filter": "drink_container beer"
             }
          }
       },

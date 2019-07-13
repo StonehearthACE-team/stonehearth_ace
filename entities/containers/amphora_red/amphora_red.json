@@ -6,10 +6,7 @@
          "type": "crate",
          "capacity": 24,
          "filter_list": "stonehearth_ace:ui:stockpile:filters:fluids",
-         "is_single_filter": true,
-         "default_filter": [
-            "water resource"
-         ]
+         "is_single_filter": true
       },
       "stonehearth:entity_forms": {
          "iconic_form": "file(amphora_red_iconic.json)",
@@ -31,6 +28,9 @@
                "max": { "x": 1, "y": 2, "z": 1 }
             }
          ]
+      },
+      "effect_list": {
+         "default": "/stonehearth_ace/data/rigs/entities/containers/container_medium/effects/idle.json"
       }
    },
    "entity_data": {

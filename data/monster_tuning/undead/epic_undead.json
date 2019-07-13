@@ -1,0 +1,58 @@
+{
+   "type": "monster_tuning",
+   "estimated_difficulty": 3,
+   "scale": 0.12,
+   "attributes": {
+      "max_health": 600,
+      "muscle": 15,
+      "menace": 70,
+      "courage": 100,
+      "speed": 25,
+      "additive_armor_modifier": 3,
+      "exp_reward": 85
+   },
+   "equipment_scale": 0.12,
+   "equipment": {
+      "weapon": [
+         "stonehearth_ace:weapons:na_iron_short_sword",
+         "stonehearth:weapons:iron_mace",
+         "stonehearth_ace:weapons:na_iron_axe",
+         "stonehearth_ace:weapons:na_iron_battle_axe",
+         "stonehearth_ace:weapons:iron_short_sword",
+         "stonehearth_ace:weapons:na_iron_mace",
+         "stonehearth_ace:weapons:iron_axe",
+         "stonehearth_ace:weapons:iron_battle_axe"
+      ],
+      "helmet": [
+         "stonehearth:armor:leather_helmet",
+         "stonehearth:armor:cloth_padded_helmet",
+         "stonehearth:armor:bronze_helm",
+         "stonehearth:armor:iron_helm",
+         "stonehearth_ace:armor:na_leather_helmet",
+         "stonehearth_ace:armor:na_cloth_padded_helmet",
+         "stonehearth_ace:armor:na_bronze_helm",
+         "stonehearth_ace:armor:na_iron_helm"
+      ],
+      "shield": [
+         "stonehearth:armor:bronze_shield",
+         "stonehearth_ace:armor:light_iron_shield"
+      ]
+   },
+   "loot_drops": {
+      "entries": {
+         "default": {
+            "items": {
+               "none": {
+                  "weight": 25
+               },
+               "iron_mace": {
+                  "uri": "stonehearth:weapons:iron_mace"
+               },
+               "short_sword": {
+                  "uri": "stonehearth:weapons:short_sword"
+               }
+            }
+         }
+      }
+   }
+}

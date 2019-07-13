@@ -6,17 +6,17 @@
          "categories": {
             "camp": {
                "templates": {
-				  "mixintypes": {
-					 "blacksmith_house_new": "remove"
-				  },
-                  "blacksmith_house_ace": {
-					 "unlock_requirement": {
+						"mixintypes": {
+							"blacksmith_house_new": "remove"
+						},
+						"blacksmith_house_ace": {
+							"unlock_requirement": {
                         "type": "has_job",
                         "value": "stonehearth:jobs:blacksmith"
                      },
                      "file": "file(building_templates/blacksmith_house_ace.json)"
                   },
-				  "mason_house_ace": {
+						"mason_house_ace": {
                      "unlock_requirement": {
                         "type": "has_job",
                         "value": "stonehearth:jobs:mason"
@@ -29,6 +29,20 @@
                         "value": "stonehearth:jobs:potter"
                      },
                      "file": "file(building_templates/potter_house_ace.json)"
+                  },
+                  "shepherd_barn_ace": {
+                     "unlock_requirement": {
+                        "type": "has_job",
+                        "value": "stonehearth:jobs:shepherd"
+                     },
+                     "file": "file(building_templates/shepherd_barn_ace.json)"
+                  },
+                  "shepherd_coop_ace": {
+                     "unlock_requirement": {
+                        "type": "has_job",
+                        "value": "stonehearth:jobs:shepherd"
+                     },
+                     "file": "file(building_templates/shepherd_coop_ace.json)"
                   }
                }
             }

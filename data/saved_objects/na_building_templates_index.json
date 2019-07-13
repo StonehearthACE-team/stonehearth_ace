@@ -54,6 +54,20 @@
                         "value": "stonehearth:jobs:weaver"
                      },
                      "file": "file(building_templates/northern_alliance/workshop_weaver_ace.json)"
+                  },
+                  "na_shepherd_barn_ace": {
+                     "unlock_requirement": {
+                        "type": "has_job",
+                        "value": "stonehearth:jobs:shepherd"
+                     },
+                     "file": "file(building_templates/northern_alliance/na_shepherd_barn_ace.json)"
+                  },
+                  "na_shepherd_coop_ace": {
+                     "unlock_requirement": {
+                        "type": "has_job",
+                        "value": "stonehearth:jobs:shepherd"
+                     },
+                     "file": "file(building_templates/northern_alliance/na_shepherd_coop_ace.json)"
                   }
                }
             },

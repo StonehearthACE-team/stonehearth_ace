@@ -1,0 +1,48 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(currency_goblin.qb)"
+                  ]
+               }
+            ]
+         }
+      },
+      "effect_list": {
+         "default": "stonehearth:effects:treasure_glow"
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 10,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.loot.currency.goblin.display_name)",
+         "description": "i18n(stonehearth_ace:entities.loot.currency.goblin.description)",
+         "icon": "file(currency_goblin.png)",
+         "is_item": true,
+         "category": "trophy",
+         "material_tags": [
+            "stockpile_trophy",
+            "currency",
+            "goblin",
+            "loot"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": 3
+      }
+   }
+}

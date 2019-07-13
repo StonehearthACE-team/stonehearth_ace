@@ -1,0 +1,49 @@
+{
+   "type": "monster_tuning",
+   "estimated_difficulty": 3,
+   "job": "stonehearth:jobs:npc:archer",
+   "scale": 0.11,
+   "attributes": {
+      "max_health": 400,
+      "muscle": 15,
+      "menace": 70,
+      "courage": 100,
+      "speed": 35,
+      "additive_armor_modifier": 1,
+      "exp_reward": 80
+   },
+   "unit_info": {
+      "description": "i18n(stonehearth_ace:data.monster_tuning.undead.epic_undead_bow.description)"
+   },
+   "equipment_scale": 0.11,
+   "equipment": {
+      "weapon": [
+         "stonehearth_ace:weapons:goblin_bow"
+      ],
+      "helmet": [
+         "stonehearth:armor:leather_helmet",
+         "stonehearth:armor:cloth_padded_helmet",
+         "stonehearth_ace:armor:na_leather_helmet",
+         "stonehearth_ace:armor:na_cloth_padded_helmet",
+         "stonehearth_ace:armor:rc_leather_helmet",
+         "stonehearth_ace:armor:rc_cloth_padded_helmet"
+      ]
+   },
+   "loot_drops": {
+      "entries": {
+         "default": {
+            "items": {
+               "none": {
+                  "weight": 25
+               },
+               "iron_mace": {
+                  "uri": "stonehearth:weapons:iron_mace"
+               },
+               "short_sword": {
+                  "uri": "stonehearth:weapons:short_sword"
+               }
+            }
+         }
+      }
+   }
+}

@@ -12,6 +12,10 @@
             {
                "min": { "x": 0, "y": 4, "z": -1 },
                "max": { "x": 1, "y": 5, "z": 0 }
+            },
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 0, "y": 1, "z": 0 }
             }
          ],
          "adjacency_flags": [
@@ -41,11 +45,12 @@
          "transform_uri": "stonehearth_ace:cook:fermenting_vat:wort",
          "command": "stonehearth_ace:commands:transform:fermenting_vat_fill",
          "request_action": "stonehearth_ace:transform",
-         "request_action_overlay_effect": "stonehearth_ace:effects:transform_cook_overlay_effect",
+         "request_action_overlay_effect": "stonehearth_ace:effects:transform_brewer_overlay_effect",
          "transform_ingredient_uri": "stonehearth_ace:drink:wort",
          "auto_request": true,
          "worker_required_job": {
-            "stonehearth:jobs:cook": true
+            "stonehearth:jobs:cook": true,
+            "stonehearth:jobs:herbalist": true
          },
          "apply_ingredient_quality": true
       },

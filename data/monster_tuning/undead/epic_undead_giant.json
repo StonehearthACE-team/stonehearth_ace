@@ -1,0 +1,50 @@
+{
+   "type": "monster_tuning",
+   "estimated_difficulty": 5,
+   "scale": 0.25,
+   "attributes": {
+      "max_health": 1600,
+      "muscle": 40,
+      "menace": 90,
+      "courage": 200,
+      "speed": 60,
+      "additive_armor_modifier": 8,
+      "exp_reward": 170
+   },
+   "unit_info": {
+      "description": "i18n(stonehearth_ace:data.monster_tuning.undead.epic_undead_giant.description)"
+   },
+   "equipment_scale": 0.25,
+   "equipment": {
+      "weapon": [
+         "stonehearth:weapons:iron_mace",
+         "stonehearth:weapons:bronze_mace",
+         "stonehearth:weapons:stone_maul",
+         "stonehearth:weapons:crude_wooden_club",
+         "stonehearth_ace:weapons:na_iron_mace",
+         "stonehearth_ace:weapons:na_bronze_mace",
+         "stonehearth_ace:weapons:na_bronze_mace",
+         "stonehearth:weapons:giant_bone_mace"
+      ]
+   },
+   "loot_drops": {
+      "entries": {
+         "default": {
+            "items": {
+               "iron_mace": {
+                  "uri": "stonehearth:weapons:iron_mace"
+               },
+               "bronze_mace": {
+                  "uri": "stonehearth:weapons:bronze_mace"
+               },
+               "giant_bone_mace": {
+                  "uri": "stonehearth:weapons:giant_bone_mace"
+               },
+               "stone_maul": {
+                  "uri": "stonehearth:weapons:stone_maul"
+               }
+            }
+         }
+      }
+   }
+}

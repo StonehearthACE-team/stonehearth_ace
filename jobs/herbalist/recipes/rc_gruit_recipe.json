@@ -1,0 +1,30 @@
+{
+   "type": "recipe",
+   "effort": 40,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.herbalist.recipes.rc_gruit_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.rc_gruit_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.rc_gruit_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/drink/gruit/gruit.png",
+   "workshop": "stonehearth:herbalist:workbench",
+   "level_requirement": 5,
+   "ingredients": [
+		{
+			"material": "herb resource",
+			"count": 2
+		},
+      {
+         "uri": "stonehearth:plants:wax_plant:purple:seed",
+         "count": 1
+      },
+		{
+         "uri": "stonehearth:plants:wax_plant:green:seed",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:drink:gruit"
+      }
+   ]
+}

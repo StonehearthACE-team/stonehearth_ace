@@ -1,0 +1,47 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(gruit.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 }
+      },
+      "render_info": {
+         "color_map": "stonehearth_ace:color_map:ace",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/mob_material_map.json"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_gruith": {
+         "value_in_gold": 5,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.drink.gruit.display_name)",
+         "description": "i18n(stonehearth_ace:entities.drink.gruit.description)",
+         "icon": "file(gruit.png)",
+         "is_item": true,
+         "category": "brewing_ingredient",
+         "material_tags": [
+            "stockpile_brewing_ingredient",
+            "brewing_ingredient",
+            "gruit"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": 0
+      }
+   }
+}

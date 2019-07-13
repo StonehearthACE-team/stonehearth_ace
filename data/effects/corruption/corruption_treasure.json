@@ -1,0 +1,38 @@
+{
+   "type": "effect",
+   "tracks": {
+      "ghost_aura": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/corruption/treasure/corrupt_aura.cubemitter.json",
+         "start_time": 0,
+         "loop": true,
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "ghost_aura_glitter": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/corruption/treasure/corrupt_aura_glitter.cubemitter.json",
+         "start_time": 0,
+         "loop": true,
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "ghost_aura_cloud": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/corruption/treasure/corrupt_cloud.cubemitter.json",
+         "start_time": 0,
+         "loop": true,
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      }
+   }
+}
