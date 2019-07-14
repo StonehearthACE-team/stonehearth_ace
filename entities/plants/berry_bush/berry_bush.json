@@ -2,18 +2,16 @@
    "components": {
       "stonehearth:renewable_resource_node": {
          "half_renewed_model": {
-            "model": "/stonehearth/entities/plants/berry_bush/berry_bush.qb",
-            "matrix": "Matrix_2",
+            "model": "/stonehearth_ace/entities/plants/berry_bush/berry_bush_half_renewed.qb",
+            "matrix": "berries",
             "scale": 0.15,
-            "offset": {"x": 5, "y": 0, "z": 5}
+            "offset": {"x": 7, "y": 0, "z": 6}
          },
          "renewed_model": {
-            "model": "/stonehearth/entities/plants/berry_bush/berry_bush.qb",
-            "matrix": "Matrix_2",
-            "material": "materials/glowy_voxel.material.json",
-            "scale": 0.16,
-            "rotation": 180,
-            "offset": {"x": 5.5, "y": 0, "z": 5.5}
+            "model": "/stonehearth_ace/entities/plants/berry_bush/berry_bush_renewed.qb",
+            "matrix": "berries",
+            "scale": 0.15,
+            "offset": {"x": 7, "y": 0, "z": 6}
          }
       }
    }
