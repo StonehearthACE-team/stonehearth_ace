@@ -1,5 +1,16 @@
 {
-   "components": {},
+   "components": {
+      "model_variants": {
+         "default": {
+            "mixintypes": {
+               "models": "override"
+            },
+            "models": [
+               "/stonehearth/entities/plants/berry_bush/berry_bush_empty.qb"
+            ]
+         }
+      }
+   },
    "entity_data": {
       "stonehearth:catalog": {
          "material_tags": ["decoration"]
