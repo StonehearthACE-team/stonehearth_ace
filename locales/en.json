@@ -3991,6 +3991,10 @@
                "description": "A small door for animal shelters, it can be closed by a shepherd.",
                "flavor": "When placed on ground level, the two tiles of dirt underneath it must be dug out for it to work!"
             },
+            "wooden_sign_tavern_recipe": {
+               "recipe_name": "Tavern Wall-Mounted Sign",
+               "description": "A sign for a place where the night is long and merry."
+            },
             "long_bow_recipe": {
                "recipe_name": "Long Bow",
                "description": "A longer cross-section makes it more efficient than an average bow."
@@ -5835,6 +5839,42 @@
          "bone_comfy_bed_pet": {
             "description": "Allows pets a more comfortable sleep. They like it close to their owner's bed!",
             "display_name": "Bone Animal Comfy Bed"
+         },
+         "counter": {
+            "wood": {
+               "counter_wood_mid": {
+                  "display_name": "Wooden Counter Midsection",
+                  "description": "An appropriate surface for nightly gossip."
+               },
+               "counter_wood_mid_small": {
+                  "display_name": "Wooden Counter Small Midsection",
+                  "description": "An appropriate surface for nightly gossip."
+               },
+               "counter_wood_end_right": {
+                  "display_name": "Wooden Counter Right End",
+                  "description": "An appropriate surface for nightly gossip."
+               },
+               "counter_wood_end_left": {
+                  "display_name": "Wooden Counter Left End",
+                  "description": "An appropriate surface for nightly gossip."
+               },
+               "counter_wood_door": {
+                  "display_name": "Wooden Counter Door",
+                  "description": "Allows movement between both sides of the counter."
+               },
+               "counter_wood_corner_outer": {
+                  "display_name": "Wooden Counter Corner",
+                  "description": "An appropriate surface for nightly gossip."
+               },
+               "counter_wood_corner_inner": {
+                  "display_name": "Wooden Counter Inner Corner",
+                  "description": "An appropriate surface for nightly gossip."
+               }
+            }
+         },
+         "wooden_stool": {
+            "display_name": "Wooden Stool",
+            "description": "Higher seat for lower purposes."
          }
       },
       "recipes": {
@@ -6283,6 +6323,10 @@
          "ember_green": {
             "display_name": "Green Embers",
             "description": "How do they even do that...?"
+         },
+         "wooden_sign_tavern": {
+            "display_name": "Tavern Sign",
+            "description": "A sign for a place where the night is long and merry."
          }
       },
       "pets": {

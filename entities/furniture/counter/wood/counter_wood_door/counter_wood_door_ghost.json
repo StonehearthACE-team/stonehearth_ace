@@ -1,0 +1,31 @@
+{
+   "mixins": [
+      "stonehearth:mixins:placed_object",
+      "stonehearth_ace:mixins:portals:counter_door:ghost"
+   ],
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(counter_wood_door.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.furniture.counter.wood.counter_wood_door.display_name)",
+         "description": "i18n(stonehearth_ace:entities.furniture.counter.wood.counter_wood_door.description)",
+         "icon": "file(counter_wood_door.png)",
+         "category": "furniture",
+         "material_tags": [
+            "wood",
+            "counter",
+            "furniture",
+            "crafted",
+            "stockpile_furniture"
+         ]
+      }
+   }
+}

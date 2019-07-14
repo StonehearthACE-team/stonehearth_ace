@@ -1,0 +1,28 @@
+{
+   "type": "mixin",
+   "components": {
+      "render_info": {
+         "animation_table": "/stonehearth_ace/data/rigs/entities/furniture/counter_door/counter_door.json"
+      },
+      "effect_list": {
+         "default": "/stonehearth_ace/data/rigs/entities/furniture/counter_door/effects/closed.json",
+         "initial_pose_animation": "closed.json"
+      },
+      "stonehearth:portal": {
+         "cutter": [
+            {
+               "min": { "x": -1, "y": 0 },
+               "max": { "x": 2, "y": 2 }
+            }
+         ]
+      },
+      "mob": {
+         "align_to_grid": [
+            "z"
+         ],
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0 },
+         "allow_vertical_adjacent": true
+      }
+   }
+}
