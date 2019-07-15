@@ -154,6 +154,10 @@ end
 AceShepherdPastureComponent._ace_old_add_animal = ShepherdPastureComponent.add_animal
 function AceShepherdPastureComponent:add_animal(animal)
    self:_ace_old_add_animal(animal)
+   local rrn = animal:get_component('stonehearth:renewable_resource_node')
+   if rrn then
+      rrn:auto_request_harvest()
+   end
    self:_consider_maintain_animals()
 end
 
@@ -171,7 +175,7 @@ function AceShepherdPastureComponent:convert_and_add_animals(animals)
       self._sv.num_critters = self._sv.num_critters + 1
       self:_listen_for_renewables(animal)
       self:_listen_for_hungry_critter(animal)
-      self:_create_harvest_task(animal)
+      --self:_create_harvest_task(animal)
    end
 
    self:_calculate_reproduction_timer()
