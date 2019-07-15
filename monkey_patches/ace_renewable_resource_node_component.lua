@@ -25,14 +25,22 @@ function AceRenewableResourceNodeComponent:activate()
    end
 end
 
-AceRenewableResourceNodeComponent._ace_old_post_activate = RenewableResourceNodeComponent.post_activate
+--AceRenewableResourceNodeComponent._ace_old_post_activate = RenewableResourceNodeComponent.post_activate
 function AceRenewableResourceNodeComponent:post_activate()
    if not self._json then
       --self._entity:remove_component('stonehearth:renewable_resource_node')
       return
    end
    
-   self:_ace_old_post_activate()
+   if not self._sv.renew_timer and not self._sv.harvestable then
+      self:_update_renew_timer(true)
+   end
+   --If we're harvestable on load, fire the harvestable event again,
+   --in case we need to reinitialize tasks and other nonsavables on the event
+   if self._sv.harvestable then
+      radiant.events.trigger(self._entity, 'stonehearth:on_renewable_resource_renewed', {target = self._entity, available_resource = self._resource})
+   end
+   
    if self._sv.harvestable and self._is_create and self._json.auto_harvest_on_create ~= false then
       self._added_to_world_listener = self._entity:add_component('mob'):trace_parent('transform entity added or removed')
             :on_changed(function(parent)
@@ -126,15 +134,16 @@ function AceRenewableResourceNodeComponent:spawn_resource(harvester_entity, loca
       --start the countdown to respawn.
       self:_set_model_depleted()
 
-      self:_update_renew_timer()
-
       --Change the description
       if json.unripe_description then
          radiant.entities.set_description(self._entity, json.unripe_description)
       end
 
       self._sv.harvestable = false
+      self._sv._prev_rate_modifier = 1
       self.__saved_variables:mark_changed()
+
+      self:_update_renew_timer(true)
 
       return singular_item
    end
@@ -223,7 +232,7 @@ function AceRenewableResourceNodeComponent:renew()
    self:_auto_request_harvest()
 end
 
-function AceRenewableResourceNodeComponent:_update_renew_timer()
+function AceRenewableResourceNodeComponent:_update_renew_timer(create_if_no_timer)
    if self._sv.paused then
       -- Do not update the timer if paused.
       return
@@ -232,13 +241,18 @@ function AceRenewableResourceNodeComponent:_update_renew_timer()
    local renewal_time = self._renewal_time
    if self._sv.renew_timer then
       renewal_time = stonehearth.calendar:get_remaining_time(self._sv.renew_timer)
+   elseif self:is_harvestable() or not create_if_no_timer then
+      return
    end
 
    --Calculate renewal time based on stats
    local attributes = self._entity:get_component('stonehearth:attributes')
+   local prev_modifier
    if attributes then
+      prev_modifier = self._sv._prev_rate_modifier or 1
       local modifier = attributes:get_attribute('renewable_resource_rate_multiplier', 1)
-      renewal_time = radiant.math.round(renewal_time * modifier)
+      self._sv._prev_rate_modifier = modifier
+      renewal_time = radiant.math.round(renewal_time * modifier / prev_modifier)
    end
 
    self:_stop_renew_timer()
@@ -254,6 +268,7 @@ function AceRenewableResourceNodeComponent:_update_renew_timer()
          self:renew()
       end
    )
+   log:debug('%s set renew timer for duration %s', self._entity, renewal_time)
 
    if self._json.half_renewed_model or self._json.half_renewed_model_variant then
       renewal_time = renewal_time / 2
@@ -263,8 +278,11 @@ function AceRenewableResourceNodeComponent:_update_renew_timer()
                self:_set_model_half_renewed()
             end
          )
+         log:debug('%s set half-renewed timer for duration %s', self._entity, renewal_time)
       end
    end
+
+   self.__saved_variables:mark_changed()
 end
 
 AceRenewableResourceNodeComponent._ace_old__stop_renew_timer = RenewableResourceNodeComponent._stop_renew_timer
