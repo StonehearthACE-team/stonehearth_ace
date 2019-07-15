@@ -6,6 +6,13 @@
          "stonehearth:renewable_resource_node": "override",
          "stonehearth:commands": "override"
       },
+      "model_variants": {
+         "half_renewed": {
+            "models": [
+               "file(sheep_half_renewed.qb)"
+            ]
+         }
+      },
       "stonehearth:renewable_resource_node": {
          "resource": "stonehearth:resources:fiber:wool_bundle",
          "renewal_time": "48h+24h",
@@ -13,7 +20,8 @@
          "harvest_overlay_effect": "stonehearth_ace:effects:harvest_wool_overlay_effect",
          "auto_harvest": true,
          "renew_effect": "stonehearth:effects:fursplosion_effect",
-         "check_owner": false
+         "check_owner": false,
+         "half_renewed_model_variant": true
       },
       "stonehearth:attributes": {
          "mixintypes": {

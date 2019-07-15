@@ -1,5 +1,12 @@
 {
    "components": {
+		"model_variants": {
+         "half_renewed": {
+            "models": [
+               "file(sheep_half_renewed.qb)"
+            ]
+         }
+      },
       "stonehearth:attributes": {
          "min_sleepiness": {
             "type": "basic",
@@ -71,6 +78,7 @@
       },
       "stonehearth:renewable_resource_node": {
          "auto_harvest": true,
+         "half_renewed_model_variant": true,
          "resource_loot_table": {
             "entries": {
                "optional": {

@@ -1,15 +1,72 @@
 {
    "components": {
+		"mixintypes": {
+			"model_variants": "override"
+		},
       "model_variants": {
          "default": {
-            "mixintypes": {
-               "models": "override"
-            },
             "models": [
-               "/stonehearth/entities/plants/berry_bush/berry_bush_empty.qb"
+               {
+                  "type": "one_of",
+                  "items": [
+                     "/stonehearth/entities/plants/berry_bush/berry_bush_empty.qb"
+                  ]
+               }
+            ]
+         },
+         "autumn": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(berry_bush_autumn.qb)",
+                     "file(berry_bush_autumn_2.qb)",
+                     "file(berry_bush_autumn_3.qb)"
+                  ]
+               }
+            ]
+         },
+         "spring": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(berry_bush_spring.qb)"
+                  ]
+               }
+            ]
+         },
+         "winter": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(berry_bush_winter.qb)"
+                  ]
+               }
             ]
          }
-      }
+		},
+		"stonehearth:seasonal_model_switcher": {
+         "*": {
+            "spring": "spring",
+            "summer": "default",
+            "autumn": "autumn",
+            "winter": "winter"
+         },
+			"stonehearth:biome:arctic": {
+            "spring": "default",
+            "summer": "default",
+            "autumn": "autumn",
+            "winter": "winter"
+         },
+			"stonehearth:biome:desert": {
+            "spring": "default",
+            "summer": "autumn",
+            "autumn": "winter",
+            "winter": "winter"
+         }
+      },
    },
    "entity_data": {
       "stonehearth:catalog": {

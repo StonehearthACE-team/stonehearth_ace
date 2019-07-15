@@ -153,6 +153,9 @@ end
 function AceRenewableResourceNodeComponent:_set_model_half_renewed()
    if self._json.half_renewed_model then
       self._entity:add_component('stonehearth_ace:models'):add_model(HALF_RENEWED_MODEL_NAME, self._json.half_renewed_model)
+   else
+      local render_info = self._entity:add_component('render_info')
+      render_info:set_model_variant('half_renewed')
    end
 end
 
@@ -252,7 +255,7 @@ function AceRenewableResourceNodeComponent:_update_renew_timer()
       end
    )
 
-   if self._json.half_renewed_model then
+   if self._json.half_renewed_model or self._json.half_renewed_model_variant then
       renewal_time = renewal_time / 2
       if renewal_time >= 1 then
          self._sv.half_renew_timer = stonehearth.calendar:set_persistent_timer("RenewableResourceNodeComponent half-renew", renewal_time,
