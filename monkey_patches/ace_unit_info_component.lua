@@ -99,11 +99,6 @@ function AceUnitInfoComponent:select_title(title, rank)
    else
       self._sv.custom_data.current_title = nil
    end
-   
-   -- if this was just a regular entity before, set its custom name to its catalog display name
-   if not self._sv.custom_name then
-      self._sv.custom_name = self._sv.display_name or stonehearth.catalog:get_catalog_data(self._entity:get_uri()).display_name
-   end
 
    if self._sv.custom_data.current_title then
       self._sv.display_name = 'i18n(stonehearth_ace:ui.game.entities.custom_name_with_title)'
@@ -114,6 +109,14 @@ function AceUnitInfoComponent:select_title(title, rank)
    self.__saved_variables:mark_changed()
 
    self:_trigger_on_change()
+end
+
+function AceUnitInfoComponent:ensure_custom_name()
+   -- if this was just a regular entity before, set its custom name to its catalog display name
+   if not self._sv.custom_name then
+      self._sv.custom_name = self._sv.display_name or stonehearth.catalog:get_catalog_data(self._entity:get_uri()).display_name
+      self.__saved_variables:mark_changed()
+   end
 end
 
 function AceUnitInfoComponent:is_locked()

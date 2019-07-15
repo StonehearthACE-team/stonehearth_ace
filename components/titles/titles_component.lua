@@ -78,8 +78,11 @@ function TitlesComponent:_update_component_info()
 end
 
 function TitlesComponent:_select_new_title(title, rank)
+   local unit_info = self._entity:add_component('stonehearth:unit_info')
+   unit_info:ensure_custom_name()
+
    if stonehearth.client_state:get_client_gameplay_setting(self._entity:get_player_id(), 'stonehearth_ace', 'auto_select_new_titles', true) then
-      self._entity:add_component('stonehearth:unit_info'):select_title(title, rank)
+      unit_info:select_title(title, rank)
    end
 end
 
