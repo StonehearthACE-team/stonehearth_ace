@@ -14,7 +14,7 @@ end
 AceRenewableResourceNodeComponent._ace_old_activate = RenewableResourceNodeComponent.activate
 function AceRenewableResourceNodeComponent:activate()
    self:_ace_old_activate()
-   if self._sv.half_renew_timer then
+   if self._sv.half_renew_timer and self._sv.half_renew_timer.bind then
       self._sv.half_renew_timer:bind(function()
             self:_set_model_half_renewed()
          end)
@@ -174,6 +174,7 @@ function AceRenewableResourceNodeComponent:_set_model_half_renewed()
       local render_info = self._entity:add_component('render_info')
       render_info:set_model_variant('half_renewed')
    end
+   self:_destroy_half_renew_timer()
 end
 
 --- Reset the model to the default. Also, stop listening for effects
@@ -298,12 +299,15 @@ end
 
 AceRenewableResourceNodeComponent._ace_old__stop_renew_timer = RenewableResourceNodeComponent._stop_renew_timer
 function AceRenewableResourceNodeComponent:_stop_renew_timer()
+   self:_destroy_half_renew_timer()
+   self:_ace_old__stop_renew_timer()
+end
+
+function AceRenewableResourceNodeComponent:_destroy_half_renew_timer()
    if self._sv.half_renew_timer then
       self._sv.half_renew_timer:destroy()
       self._sv.half_renew_timer = nil
    end
-
-   self:_ace_old__stop_renew_timer()
 end
 
 AceRenewableResourceNodeComponent._ace_old__place_spawned_items = RenewableResourceNodeComponent._place_spawned_items
