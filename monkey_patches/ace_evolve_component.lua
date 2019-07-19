@@ -20,13 +20,43 @@ function AceEvolveComponent:restore()
    end
 end
 
-AceEvolveComponent._ace_old_activate = EvolveComponent.activate
+--AceEvolveComponent._ace_old_activate = EvolveComponent.activate
 function AceEvolveComponent:activate()
    if not self._sv._current_growth_recalculate_progress then
       self._sv._current_growth_recalculate_progress = 0
    end
+
+   self._evolve_time_multipliers = {}
    
-   self:_ace_old_activate()   -- need to call this before other functions because it sets self._evolve_data
+   self._evolve_data = radiant.entities.get_entity_data(self._entity, 'stonehearth:evolve_data')
+
+   -- had to insert this section, so can't just call _ace_old_activate
+   if self._evolve_data then
+      if self._evolve_data.biomes then
+         -- if there are special biome modifiers to be applied, make sure we do so
+         local biome_uri = stonehearth.world_generation:get_biome_alias()
+         local modifiers = self._evolve_data.biomes[biome_uri]
+         if modifiers then
+            self:_apply_modifiers('biome', modifiers)
+         end
+      end
+      self:_create_listeners()
+   end
+
+   local entity_forms = self._entity:get_component('stonehearth:entity_forms')
+   if entity_forms then
+      -- If we have an entity forms component, wait until we are actually in the world before starting the evolve component
+      self._added_to_world_trace = radiant.events.listen_once(self._entity, 'stonehearth:on_added_to_world', function()
+            self:_start()
+            self._added_to_world_trace = nil
+         end)
+   else
+      self:_start()
+   end
+   
+   self._growth_rate_listener = radiant.events.listen(radiant, 'stonehearth:growth_rate_may_have_changed', function()
+         self:_recalculate_duration()
+      end)
 end
 
 function AceEvolveComponent:post_activate()
@@ -44,6 +74,41 @@ function AceEvolveComponent:post_activate()
          self._entity:remove_component('stonehearth_ace:water_signal')
       end
    end
+
+   self:_create_listeners()
+end
+
+AceEvolveComponent._ace_old_destroy = EvolveComponent.destroy
+function AceEvolveComponent:destroy()
+   self:_ace_old_destroy()
+   self:_destroy_listeners()
+end
+
+function AceEvolveComponent:_create_listeners()
+   if self._evolve_data.seasons then
+      self._season_change_listener = radiant.events.listen(stonehearth.seasons, 'stonehearth:seasons:changed', function()
+         self:_check_season()
+         self:_recalculate_duration()
+      end)
+      self:_check_season()
+   end
+end
+
+function AceEvolveComponent:_destroy_listeners()
+   if self._season_change_listener then
+      self._season_change_listener:destroy()
+      self._season_change_listener = nil
+   end
+end
+
+function AceEvolveComponent:_check_season()
+   local season = stonehearth.seasons:get_current_season()
+   local modifiers = season and self._evolve_data.seasons[season.id]
+   self:_apply_modifiers('season', modifiers)
+end
+
+function AceEvolveComponent:_apply_modifiers(key, modifiers)
+   self._evolve_time_multipliers[key] = modifiers and modifiers.evolve_time_multiplier or 1
 end
 
 -- override the original to prepend evolve_timer with an underscore for performance reasons
@@ -142,7 +207,11 @@ function AceEvolveComponent:_calculate_growth_period(evolve_time)
 	local catalog_data = stonehearth.catalog:get_catalog_data(self._entity:get_uri())
 	if catalog_data.category == 'seed' or catalog_data.category == 'plants' then
 		evolve_time = stonehearth.town:calculate_growth_period(self._entity:get_player_id(), evolve_time)
-	end
+   end
+   
+   for _, multiplier in pairs(self._evolve_time_multipliers) do
+      evolve_time = evolve_time * multiplier
+   end
 
 	return evolve_time
 end

@@ -13,6 +13,8 @@ end
 
 AceRenewableResourceNodeComponent._ace_old_activate = RenewableResourceNodeComponent.activate
 function AceRenewableResourceNodeComponent:activate()
+   self._renewal_time_multipliers = {}
+
    self:_ace_old_activate()
    if self._sv.half_renew_timer and self._sv.half_renew_timer.bind then
       self._sv.half_renew_timer:bind(function()
@@ -31,6 +33,17 @@ function AceRenewableResourceNodeComponent:post_activate()
       --self._entity:remove_component('stonehearth:renewable_resource_node')
       return
    end
+
+   if self._json.biomes then
+      -- if there are special biome modifiers to be applied, make sure we do so
+      local biome_uri = stonehearth.world_generation:get_biome_alias()
+      local modifiers = self._json.biomes[biome_uri]
+      if modifiers then
+         self:_apply_modifiers('biome', modifiers)
+      end
+   end
+
+   self:_create_listeners()
    
    if self._sv.harvestable then
       --If we're harvestable on load, fire the harvestable event again,
@@ -56,6 +69,17 @@ AceRenewableResourceNodeComponent._ace_old_destroy = RenewableResourceNodeCompon
 function AceRenewableResourceNodeComponent:destroy()
    self:_ace_old_destroy()
    self:_destroy_added_to_world_listener()
+   self:_destroy_listeners()
+end
+
+function AceRenewableResourceNodeComponent:_create_listeners()
+   if self._json.seasons then
+      self._season_change_listener = radiant.events.listen(stonehearth.seasons, 'stonehearth:seasons:changed', function()
+         self:_check_season()
+         self:_update_renew_timer()
+      end)
+      self:_check_season()
+   end
 end
 
 function AceRenewableResourceNodeComponent:_destroy_added_to_world_listener()
@@ -63,6 +87,23 @@ function AceRenewableResourceNodeComponent:_destroy_added_to_world_listener()
       self._added_to_world_listener:destroy()
       self._added_to_world_listener = nil
    end
+end
+
+function AceRenewableResourceNodeComponent:_destroy_listeners()
+   if self._season_change_listener then
+      self._season_change_listener:destroy()
+      self._season_change_listener = nil
+   end
+end
+
+function AceRenewableResourceNodeComponent:_check_season()
+   local season = stonehearth.seasons:get_current_season()
+   local modifiers = season and self._json.seasons[season.id]
+   self:_apply_modifiers('season', modifiers)
+end
+
+function AceRenewableResourceNodeComponent:_apply_modifiers(key, modifiers)
+   self._renewal_time_multipliers[key] = modifiers and modifiers.renewal_time_multiplier or 1
 end
 
 function AceRenewableResourceNodeComponent:auto_request_harvest()
@@ -260,15 +301,18 @@ function AceRenewableResourceNodeComponent:_update_renew_timer(create_if_no_time
    end
 
    --Calculate renewal time based on stats
-   local attributes = self._entity:get_component('stonehearth:attributes')
-   local prev_modifier
-   if attributes then
-      prev_modifier = self._sv._prev_rate_modifier or 1
-      local modifier = attributes:get_attribute('renewable_resource_rate_multiplier', 1)
-      self._sv._prev_rate_modifier = modifier
-      renewal_time = radiant.math.round(renewal_time * modifier / prev_modifier)
-      half_renewal_time = radiant.math.round(half_renewal_time * modifier / prev_modifier)
+   local prev_modifier = self._sv._prev_rate_modifier or 1
+   local modifier = 1
+   for _, multiplier in pairs(self._renewal_time_multipliers) do
+      modifier = modifier * multiplier
    end
+   local attributes = self._entity:get_component('stonehearth:attributes')
+   if attributes then
+      modifier = modifier * attributes:get_attribute('renewable_resource_rate_multiplier', 1)
+   end
+   self._sv._prev_rate_modifier = modifier
+   renewal_time = radiant.math.round(renewal_time * modifier / prev_modifier)
+   half_renewal_time = radiant.math.round(half_renewal_time * modifier / prev_modifier)
 
    self:_stop_renew_timer()
 
