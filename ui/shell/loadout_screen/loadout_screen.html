@@ -1,0 +1,60 @@
+<script type="text/x-handlebars" data-template-name="stonehearthLoadoutScreen">
+   <div id="loadoutScreen">
+
+      <div id="title">{{i18n stonehearth:ui.shell.loadout.title}}</div>
+
+      <button class="quitButton">{{i18n stonehearth:ui.game.esc_menu.quit_to_menu}}</button>
+
+      <div id="loadoutsList">
+         {{#each loadout in view.loadoutsList}}
+            <div class="loadoutRowSelectable" {{bind-attr loadout_id=loadout.id}}>
+               <div class="loadoutRowBorder"/>
+               <div class="loadoutPadder" />
+               <div class="loadoutName">{{i18n_key loadout.display_name}}</div>
+               {{#each content in loadout.content}}
+                  <div class="loadoutContentColumn" {{bind-attr data-uri=content.uri}}>
+                     <div class="loadoutContentName">{{i18n_key content.display_name}}</div>
+                     <img class="loadoutContentIcon" {{bind-attr src=content.icon}}/>
+                     <div class="loadoutContentAmount">{{content.amount}}</div>
+                  </div>
+               {{/each}}
+            </div>
+         {{/each}}
+      </div>
+
+      <div id="selectedLoadout">
+         <img id="selectedLoadoutSplash" {{bind-attr src=view.selected.splash}}/>
+         <img id="selectedLoadoutSeal" {{bind-attr src=view.selected.seal}}/>
+         <div id="selectedLoadoutHeader">
+            <div id="selectedLoadoutTitle" class="loadoutTitle">{{i18n_key view.selected.display_name}}</div>
+            <div id="selectedLoadoutDescription">{{i18n_key view.selected.description}}</div>
+         </div>
+
+         <div id="selectedLayoutTable">
+            <div class="selectedLoadoutRow">
+               {{#each content in view.selected.content}}
+                     <div class="loadoutContentColumn" {{bind-attr data-uri=content.uri}}>
+                        <div class="loadoutContentName">{{i18n_key content.display_name}}</div>
+                        <img class="loadoutContentIcon" {{bind-attr src=content.icon}}/>
+                        <div class="loadoutContentAmount">{{content.amount}}</div>
+                     </div>
+               {{/each}}
+            </div>
+         </div>
+         <div id="selectedLoadoutFooter">
+            <div id="selectedLoadoutTooltip">{{i18n_key view.selected.tooltip}}</div>
+         </div>
+      </div>
+
+      <div id="loadoutCoins"/>
+      
+      {{#if view.petsCheckboxShown}}
+      <div id="petsCheckboxContainer">
+         <input type="checkbox" id="petsCheckbox">
+         <label for="petsCheckbox">{{i18n stonehearth:ui.shell.loadout.pets_checkbox}}</label>
+      </div>
+      {{/if}}
+
+      <button id="startButton" class="flat">{{i18n stonehearth:ui.shell.loadout.start}}</button>
+   </div>
+</script>

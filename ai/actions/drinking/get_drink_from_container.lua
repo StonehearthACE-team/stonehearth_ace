@@ -17,8 +17,11 @@ local function make_drink_container_filter(owner_id, drink_filter_fn)
          if not radiant.entities.is_material(item, 'drink_container') then
             return false
          end
-         if owner_id ~= '' and radiant.entities.get_player_id(item) ~= owner_id then
-            return false
+         if owner_id ~= '' then
+            local player_id = radiant.entities.get_player_id(item)
+            if player_id ~= '' and player_id ~= owner_id then
+               return false
+            end
          end
          return drink_filter_fn(item)
       end
@@ -48,5 +51,4 @@ return ai:create_compound_action(GetDrinkFromContainer)
             destination = ai.PREV.item
          })
          :execute('stonehearth:follow_path', { path = ai.PREV.path })
-         :execute('stonehearth:reserve_entity', { entity = ai.BACK(3).item })
-         :execute('stonehearth_ace:get_drink_from_container_adjacent', { container = ai.BACK(4).item })
+         :execute('stonehearth_ace:get_drink_from_container_adjacent', { container = ai.BACK(3).item })
