@@ -12,6 +12,13 @@ GetDrinkFromContainer.think_output = {
 }
 GetDrinkFromContainer.priority = {0, 1}
 
+local function _should_reserve(drink_container)
+   local container_data = radiant.entities.get_entity_data(drink_container, 'stonehearth_ace:drink_container')
+   if container_data then
+      return (container_data.stacks_per_serving or 1) > 0
+   end
+end
+
 local function make_drink_container_filter(owner_id, drink_filter_fn)
    return function(item)
          if not radiant.entities.is_material(item, 'drink_container') then
@@ -51,4 +58,5 @@ return ai:create_compound_action(GetDrinkFromContainer)
             destination = ai.PREV.item
          })
          :execute('stonehearth:follow_path', { path = ai.PREV.path })
-         :execute('stonehearth_ace:get_drink_from_container_adjacent', { container = ai.BACK(3).item })
+         :execute('stonehearth_ace:reserve_entity_if_condition', { entity = ai.BACK(3).item, condition = _should_reserve })
+         :execute('stonehearth_ace:get_drink_from_container_adjacent', { container = ai.BACK(4).item })

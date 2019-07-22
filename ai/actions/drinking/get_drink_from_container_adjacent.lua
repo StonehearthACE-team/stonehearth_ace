@@ -21,26 +21,23 @@ function GetDrinkFromContainerAdjacent:run(ai, entity, args)
       ai:abort(string.format("%s has no stonehearth_ace:drink_container entity data", tostring(container)))
       return
    end
+   
+   local quality_component = container:get_component("stonehearth:item_quality")
+   local container_quality = (quality_component and quality_component:get_quality()) or 0
 
 	if container_data.container_effect then
 		radiant.effects.run_effect(container, container_data.container_effect)
 	end
    radiant.entities.turn_to_face(entity, container)
-
-   local quality_component = container:get_component("stonehearth:item_quality")
-   local container_quality = (quality_component and quality_component:get_quality()) or 0
+   ai:execute('stonehearth:run_effect', { effect = container_data.effect })
 	
    local stacks_per_serving = container_data.stacks_per_serving or 1
-   if stacks_per_serving > 0 then
-      ai:execute('stonehearth:reserve_entity', { entity = container })
-   end
-   ai:execute('stonehearth:run_effect', { effect = container_data.effect })
    if stacks_per_serving > 0 then
       ai:unprotect_argument(container)
       if not radiant.entities.consume_stack(container, stacks_per_serving) then
          ai:abort('Cannot drink: Drink container is empty.')
          return
-		end
+      end
    end
 
    local drink = radiant.entities.create_entity(container_data.drink, { owner = entity })
