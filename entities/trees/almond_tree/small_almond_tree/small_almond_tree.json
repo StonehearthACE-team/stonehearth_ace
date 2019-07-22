@@ -132,7 +132,9 @@
                "renewal_time_multiplier": 4
             },
             "winter": {
-               "renewal_time_multiplier": 10
+               "disable_renewal": true,
+               "drop_resource": true,
+               "destroy_resource": true
             }
          }
       }

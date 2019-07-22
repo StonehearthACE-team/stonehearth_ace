@@ -1,6 +1,9 @@
 local item_quality_lib = require 'stonehearth_ace.lib.item_quality.item_quality_lib'
 local log = radiant.log.create_logger('renewable_resource_node')
 
+local Point3 = _radiant.csg.Point3
+local rng = _radiant.math.get_default_rng()
+
 local RenewableResourceNodeComponent = radiant.mods.require('stonehearth.components.renewable_resource_node.renewable_resource_node_component')
 local AceRenewableResourceNodeComponent = class()
 
@@ -104,6 +107,22 @@ end
 
 function AceRenewableResourceNodeComponent:_apply_modifiers(key, modifiers)
    self._renewal_time_multipliers[key] = modifiers and modifiers.renewal_time_multiplier or 1
+   self._disabled = modifiers and modifiers.disable_renewal
+   if modifiers then
+      if modifiers.drop_resource and self:is_harvestable() then
+         local x_offset = rng:get_int(0, 1) * 2
+         local z_offset = (x_offset == 0 and 2) or (rng:get_int(0, 1) * 2)
+         local offset = Point3(x_offset * (rng:get_int(0, 1) == 0 and -1 or 1), 0, z_offset * (rng:get_int(0, 1) == 0 and -1 or 1))
+         self:_do_spawn_resource(self._entity, radiant.entities.get_world_grid_location(self._entity) + offset)
+      elseif modifiers.destroy_resource then
+         self:_stop_renew_timer()
+         self:_deplete()
+      end
+   end
+
+   if self._disabled then
+      self:_stop_renew_timer()
+   end
 end
 
 function AceRenewableResourceNodeComponent:auto_request_harvest()
@@ -138,64 +157,72 @@ end
 
 function AceRenewableResourceNodeComponent:spawn_resource(harvester_entity, location, owner_player_id)
    if not self._json.spawn_resource_immediately or self:_can_pasture_animal_renewably_harvest() ~= false then
-      self:_cancel_harvest_request()
-      local json = self._json
-
-      local will_destroy_entity = false
-      -- if we have a durability and we've run out, destroy the entity
-      if self._sv.durability then
-         self._sv.durability = self._sv.durability - 1
-         if self._sv.durability <= 0 then
-            self._sv.harvestable = false
-            will_destroy_entity = true
-         end
-      end
-
-      local player_id = owner_player_id or radiant.entities.get_player_id(harvester_entity)
-      local spawned_resources, singular_item = self:_place_spawned_items(json, player_id, location, will_destroy_entity)
-
-      for id, item in pairs(spawned_resources) do
-         if not json.skip_owner_inventory then
-            -- add it to the inventory of the owner
-            local inventory = stonehearth.inventory:get_inventory(player_id)
-            if inventory then
-               inventory:add_item_if_not_full(item)
-            end
-         end
-      end
-
-      if json.resource_spawn_effect then
-         local proxy = radiant.entities.create_entity('stonehearth:object:transient', { debug_text = 'spawn effect effect anchor' })
-         local location = radiant.entities.get_world_grid_location(self._entity)
-         radiant.terrain.place_entity_at_exact_location(proxy, location)
-         local effect = radiant.effects.run_effect(proxy, json.resource_spawn_effect)
-         effect:set_finished_cb(function()
-            radiant.entities.destroy_entity(proxy)
-         end)
-      end
-
-      -- if we have a durability and we've run out, destroy the entity
-      if will_destroy_entity then
-         radiant.entities.destroy_entity(self._entity)
-         return singular_item
-      end
-
-      --start the countdown to respawn.
-      self:_set_model_depleted()
-
-      --Change the description
-      if json.unripe_description then
-         radiant.entities.set_description(self._entity, json.unripe_description)
-      end
-
-      self._sv.harvestable = false
-      self._sv._prev_rate_modifier = 1
-      self.__saved_variables:mark_changed()
+      local singular_item = self:_do_spawn_resource(harvester_entity, location, owner_player_id)
 
       self:_update_renew_timer(true)
 
       return singular_item
    end
+end
+
+function AceRenewableResourceNodeComponent:_do_spawn_resource(harvester_entity, location, owner_player_id)
+   self:_cancel_harvest_request()
+   local json = self._json
+
+   local will_destroy_entity = false
+   -- if we have a durability and we've run out, destroy the entity
+   if self._sv.durability then
+      self._sv.durability = self._sv.durability - 1
+      if self._sv.durability <= 0 then
+         self._sv.harvestable = false
+         will_destroy_entity = true
+      end
+   end
+
+   local player_id = owner_player_id or radiant.entities.get_player_id(harvester_entity)
+   local spawned_resources, singular_item = self:_place_spawned_items(json, player_id, location, will_destroy_entity)
+
+   for id, item in pairs(spawned_resources) do
+      if not json.skip_owner_inventory then
+         -- add it to the inventory of the owner
+         local inventory = stonehearth.inventory:get_inventory(player_id)
+         if inventory then
+            inventory:add_item_if_not_full(item)
+         end
+      end
+   end
+
+   if json.resource_spawn_effect then
+      local proxy = radiant.entities.create_entity('stonehearth:object:transient', { debug_text = 'spawn effect effect anchor' })
+      local location = radiant.entities.get_world_grid_location(self._entity)
+      radiant.terrain.place_entity_at_exact_location(proxy, location)
+      local effect = radiant.effects.run_effect(proxy, json.resource_spawn_effect)
+      effect:set_finished_cb(function()
+         radiant.entities.destroy_entity(proxy)
+      end)
+   end
+
+   -- if we have a durability and we've run out, destroy the entity
+   if will_destroy_entity then
+      radiant.entities.destroy_entity(self._entity)
+      return singular_item
+   end
+
+   --start the countdown to respawn.
+   self:_deplete()
+end
+
+function AceRenewableResourceNodeComponent:_deplete()
+   self:_set_model_depleted()
+
+   --Change the description
+   if self._json.unripe_description then
+      radiant.entities.set_description(self._entity, self._json.unripe_description)
+   end
+
+   self._sv.harvestable = false
+   self._sv._prev_rate_modifier = 1
+   self.__saved_variables:mark_changed()
 end
 
 function AceRenewableResourceNodeComponent:_set_model_depleted()
@@ -283,7 +310,7 @@ function AceRenewableResourceNodeComponent:renew()
 end
 
 function AceRenewableResourceNodeComponent:_update_renew_timer(create_if_no_timer)
-   if self._sv.paused then
+   if self._sv.paused or self._disabled then
       -- Do not update the timer if paused.
       return
    end
