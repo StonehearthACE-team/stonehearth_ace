@@ -111,6 +111,19 @@ function AceWaterfallComponent:_update_region()
       
       self._entity:add_component('region_collision_shape'):set_region(self._sv.region)
 
+      local destination_comp = self._entity:get_component('destination')
+      if not destination_comp then
+         destination_comp = self._entity:add_component('destination')
+         destination_comp:set_region(_radiant.sim.alloc_region3())
+         destination_comp:set_auto_update_adjacent(true)
+      end
+      destination_component:get_region():modify(function(cursor)
+         cursor:clear()
+         if cube then
+            cursor:add_cube(cube)
+         end
+      end)
+
       stonehearth_ace.water_signal:waterfall_component_modified(self._entity)
    end
 
