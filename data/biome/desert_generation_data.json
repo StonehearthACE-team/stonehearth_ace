@@ -28,6 +28,27 @@
    },
    "landscape": {
       "placement_table": {
+			"stonehearth_ace:trees:almond:small": {
+            "placement_type": "single",
+            "parameters": {
+               "ground_radius": 1,
+               "exclusion_radius": 3
+            }
+         },
+         "stonehearth_ace:trees:almond:medium": {
+            "placement_type": "single",
+            "parameters": {
+               "ground_radius": 2,
+               "exclusion_radius": 5
+            }
+         },
+			 "stonehearth_ace:trees:almond:large": {
+            "placement_type": "single",
+            "parameters": {
+               "ground_radius": 3,
+               "exclusion_radius": 5
+            }
+         },
          "stonehearth_ace:fungi:desert_truffle": {
             "placement_type": "dense",
             "parameters": {
@@ -36,7 +57,7 @@
                "exclusion_radius": 0
             }
          },
-		 "stonehearth_ace:terrain:pasture_grass": {
+			"stonehearth_ace:terrain:pasture_grass": {
             "placement_type": "dense",
             "parameters": {
                "grid_multiple": 2,
@@ -44,7 +65,7 @@
                "exclusion_radius": 1
             }
          },
-		 "stonehearth_ace:terrain:pasture_grass:short": {
+			"stonehearth_ace:terrain:pasture_grass:short": {
             "placement_type": "dense",
             "parameters": {
                "grid_multiple": 2,
@@ -52,12 +73,40 @@
                "exclusion_radius": 1
             }
          },
-		 "stonehearth_ace:terrain:pasture_grass:overgrown": {
+			"stonehearth_ace:terrain:pasture_grass:overgrown": {
             "placement_type": "dense",
             "parameters": {
                "grid_multiple": 1,
                "item_density": 0.2,
                "exclusion_radius": 1
+            }
+         }
+      },
+		"trees": {
+         "sizes": {
+            "stonehearth_ace:trees:almond": {
+               "small": 5,
+               "medium": 4,
+					"large": 1
+            }
+         },
+         "weights": {
+            "plains": {
+               "1": {
+                  "stonehearth_ace:trees:almond": 0.3
+               }
+            },
+            "foothills": {
+               "1": {
+                  "stonehearth_ace:trees:almond": 0.1
+               },
+               "2": {
+                  "stonehearth_ace:trees:almond": 0.05
+               }
+            },
+            "mountains": {
+               "1": {},
+               "2": {}
             }
          }
       },
@@ -67,21 +116,24 @@
                "plains": {
                   "1": {
                      "stonehearth_ace:fungi:desert_truffle": 0.6,
-					 "stonehearth_ace:terrain:pasture_grass:overgrown": 0.1,
-					 "stonehearth_ace:terrain:pasture_grass": 0.3,
-					 "stonehearth_ace:terrain:pasture_grass:short": 0.1
+							"stonehearth_ace:terrain:pasture_grass:overgrown": 0.1,
+							"stonehearth_ace:terrain:pasture_grass": 0.3,
+							"stonehearth_ace:terrain:pasture_grass:short": 0.1,
+							"stonehearth_ace:trees:almond:small": 0.6,
+							"stonehearth_ace:trees:almond:medium": 0.1
                   }
                },
                "foothills": {
                   "1": {
                      "stonehearth_ace:fungi:desert_truffle": 0.8,
-					 "stonehearth_ace:terrain:pasture_grass:overgrown": 0.1,
-					 "stonehearth_ace:terrain:pasture_grass": 0.4,
-					 "stonehearth_ace:terrain:pasture_grass:short": 0.2
+							"stonehearth_ace:terrain:pasture_grass:overgrown": 0.1,
+							"stonehearth_ace:terrain:pasture_grass": 0.4,
+							"stonehearth_ace:terrain:pasture_grass:short": 0.2,
+							"stonehearth_ace:trees:almond:small": 0.3
                   },
                   "2": {
                      "stonehearth_ace:fungi:desert_truffle": 1,
-					 "stonehearth_ace:terrain:pasture_grass:short": 0.3
+							"stonehearth_ace:terrain:pasture_grass:short": 0.3
                   }
                }
             }
