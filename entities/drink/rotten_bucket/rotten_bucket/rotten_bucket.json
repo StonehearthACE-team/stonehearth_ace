@@ -1,0 +1,42 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(rotten_bucket.qb)"
+            ]
+         }
+      },
+      "effect_list": {
+         "default": "stonehearth:effects:rotten_food"
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 0,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:food_decay": {
+         "initial_decay": {
+            "min": 10,
+            "max": 10
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.drink.rotten.bucket.display_name)",
+         "description": "i18n(stonehearth_ace:entities.drink.rotten.bucket.description)",
+         "icon": "file(rotten_bucket.png)",
+         "is_item": true,
+         "category": "uncategorized"
+      },
+      "stonehearth:appeal": {
+         "appeal": -20
+      }
+   }
+}

@@ -7,6 +7,11 @@
             "models": [
                "file(marblesprout_plant_harvested.qb)"
             ]
+         },
+         "half_renewed": {
+            "models": [
+               "file(marblesprout_plant_half_renewed_wild.qb)"
+            ]
          }
       },
       "stonehearth:renewable_resource_node": {
@@ -15,6 +20,7 @@
          "harvest_overlay_effect": "stonehearth:effects:harvest_plant_overlay_effect",
          "unripe_description": "i18n(stonehearth_ace:entities.plants.marblesprout_plant.unripe_description)",
          "renewal_time": "2d+12h",
+         "half_renewed_model_variant": true,
          "resource_loot_table": {
             "entries": {
                "optional": {
@@ -33,6 +39,22 @@
                      }
                   }
                }
+            }
+         },
+         "biomes": {
+				"stonehearth:biome:desert": {
+               "renewal_time_multiplier": 2
+            }
+         },
+         "seasons": {
+            "summer": {
+               "renewal_time_multiplier": 2
+            },
+            "autumn": {
+               "renewal_time_multiplier": 3
+            },
+				"winter": {
+               "renewal_time_multiplier": 6
             }
          }
       },

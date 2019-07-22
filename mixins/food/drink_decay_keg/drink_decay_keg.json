@@ -1,0 +1,20 @@
+{
+   "type": "mixin",
+   "mixins": "stonehearth_ace:mixins:drink_decay",
+   "entity_data": {
+      "stonehearth:food_decay": {
+         "initial_decay": {
+            "min": 2880,
+            "max": 3360
+         },
+         "decay_stages": {
+            "decay_1": {
+               "trigger_decay_value": 840,
+               "model_variant": "decay_1",
+               "description": "i18n(stonehearth_ace:drink.decay.decay_1.keg.description)"
+            }
+         },
+         "rotten_entity_alias": "stonehearth_ace:drink:rotten:keg"
+      }
+   }
+}

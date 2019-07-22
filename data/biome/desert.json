@@ -10,16 +10,47 @@
 				{
 					"uri": "stonehearth_ace:weather:sunny:hot",
 					"weight": 5
-				}
+				},
+				{
+               "uri": "stonehearth_ace:weather:sunny:sweltering",
+               "weight": 0.2
+            }
 			]
 		},
 		"summer": {
 			"humidity": -0.5,
 			"sunlight": 1,
+			"mixintypes": {
+				"weather": "override"
+			},
 			"weather": [
+            {
+               "uri": "stonehearth:weather:windy",
+               "weight": 1
+            },
+            {
+               "uri": "stonehearth:weather:cloudy:desert",
+               "weight": 2
+            },
+            {
+               "uri": "stonehearth:weather:sandy",
+               "weight": 6
+            },
+            {
+               "uri": "stonehearth:weather:sandstorm",
+               "weight": 7
+            },
+            {
+               "uri": "stonehearth:weather:lucky",
+               "weight": 0.05
+            },
 				{
                "uri": "stonehearth_ace:weather:sunny:hot",
                "weight": 10
+            },
+				{
+               "uri": "stonehearth_ace:weather:sunny:sweltering",
+               "weight": 6
             }
 			]
 		},

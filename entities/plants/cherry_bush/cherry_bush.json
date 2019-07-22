@@ -2,29 +2,6 @@
    "type": "entity",
    "mixins": "file(cherry_bush_ghost.json)",
    "components": {
-      "model_variants": {
-         "depleted": {
-            "models": [
-               "file(cherry_bush_empty.qb)"
-            ]
-         }
-      },
-      "destination": {
-         "region": [
-            {
-               "min": { "x": -1, "y": 0, "z": -1 },
-               "max": { "x": 2, "y": 1, "z": 2 }
-            }
-         ]
-      },
-      "region_collision_shape": {
-         "region": [
-            {
-               "min": { "x": -1, "y": 0, "z": -1 },
-               "max": { "x": 2, "y": 3, "z": 2 }
-            }
-         ]
-      },
       "stonehearth:renewable_resource_node": {
          "resource": "stonehearth_ace:food:cherries:cherry_basket",
          "category": "harvest",
@@ -50,7 +27,54 @@
                   }
                }
             }
+         },
+         "half_renewed_model": {
+            "model": "/stonehearth_ace/entities/plants/cherry_bush/cherry_bush_half_renewed.qb",
+            "matrix": "cherries",
+            "scale": 0.15,
+            "offset": { "x": 10, "y": 0, "z": 9 }
+         },
+         "renewed_model": {
+            "model": "/stonehearth_ace/entities/plants/cherry_bush/cherry_bush_renewed.qb",
+            "matrix": "cherries",
+            "scale": 0.15,
+            "offset": { "x": 10, "y": 0, "z": 9 }
+         },
+         "biomes": {
+            "stonehearth:biome:arctic": {
+               "renewal_time_multiplier": 1.5
+            },
+				"stonehearth:biome:desert": {
+               "renewal_time_multiplier": 3
+            }
+         },
+         "seasons": {
+            "summer": {
+               "renewal_time_multiplier": 2
+            },
+            "autumn": {
+               "renewal_time_multiplier": 4
+            },
+				"winter": {
+               "renewal_time_multiplier": 8
+            }
          }
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 2, "y": 1, "z": 2 }
+            }
+         ]
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 2, "y": 3, "z": 2 }
+            }
+         ]
       },
       "stonehearth:entity_forms": {
          "iconic_form": "file(cherry_bush_iconic.json)",

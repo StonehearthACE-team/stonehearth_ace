@@ -36,7 +36,29 @@
    "entity_data": {
       "stonehearth:evolve_data": {
          "next_stage": "stonehearth_ace:trees:parana_pine:small",
-         "evolve_time": "1d"
+         "evolve_time": "1d",
+         "biomes": {
+            "stonehearth:biome:arctic": {
+               "evolve_time_multiplier": 2
+            },
+            "stonehearth:biome:temperate": {
+               "evolve_time_multiplier": 1.2
+            },
+            "stonehearth:biome:desert": {
+               "evolve_time_multiplier": 5
+            }
+         },
+         "seasons": {
+            "spring": {
+               "evolve_time_multiplier": 1.5
+            },
+            "autumn": {
+               "evolve_time_multiplier": 1.5
+            },
+            "winter": {
+               "evolve_time_multiplier": 3
+            }
+         }
       },
       "stonehearth:net_worth": {
          "value_in_gold": 4,
@@ -54,7 +76,11 @@
       "stonehearth:catalog": {
          "description": "i18n(stonehearth_ace:entities.trees.parana_pine_tree.sapling_parana_pine_tree.description)",
          "category": "plants",
-         "material_tags":["plant", "tree", "stockpile_plant"],
+         "material_tags": [
+            "plant",
+            "tree",
+            "stockpile_plant"
+         ],
          "subject_override": "stonehearth_ace:trees:parana_pine:large"
       },
       "stonehearth:appeal": {

@@ -1,0 +1,20 @@
+{
+   "type": "mixin",
+   "mixins": "stonehearth:mixins:item_properties",
+   "entity_data": {
+      "stonehearth:food_decay": {
+         "initial_decay": {
+            "min": 168,
+            "max": 216
+         },
+         "decay_stages": {
+            "decay_1": {
+               "trigger_decay_value": 36,
+               "model_variant": "decay_1",
+               "description": "i18n(stonehearth_ace:drink.decay.decay_1.description)"
+            }
+         },
+         "rotten_entity_alias": "stonehearth_ace:drink:rotten:bucket"
+      }
+   }
+}

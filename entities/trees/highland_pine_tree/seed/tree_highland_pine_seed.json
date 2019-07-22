@@ -41,7 +41,7 @@
             "stockpile_plant",
             "plant",
             "resource",
-				"pine",
+            "pine",
             "seed",
             "seed_hard",
             "cooking_ingredient",
@@ -51,7 +51,29 @@
       },
       "stonehearth:evolve_data": {
          "next_stage": "stonehearth_ace:trees:highland_pine:sprout",
-         "evolve_time": "6h+3h"
+         "evolve_time": "6h+3h",
+         "biomes": {
+            "stonehearth:biome:arctic": {
+               "evolve_time_multiplier": 1.2
+            },
+            "stonehearth:biome:temperate": {
+               "evolve_time_multiplier": 2
+            },
+            "stonehearth:biome:desert": {
+               "evolve_time_multiplier": 5
+            }
+         },
+         "seasons": {
+            "spring": {
+               "evolve_time_multiplier": 1.2
+            },
+            "summer": {
+               "evolve_time_multiplier": 2
+            },
+            "autumn": {
+               "evolve_time_multiplier": 1.2
+            }
+         }
       },
       "stonehearth:net_worth": {
          "value_in_gold": 1,

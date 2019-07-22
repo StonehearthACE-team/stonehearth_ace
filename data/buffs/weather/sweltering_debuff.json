@@ -1,0 +1,33 @@
+{
+   "type": "buff",
+   "axis": "debuff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.weather.sweltering_debuff.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.weather.sweltering_debuff.description)",
+   "duration": "1h",
+   "repeat_add_action": "stack_and_refresh",
+   "max_stacks": 10,
+   "remove_stacks_on_expire": 2,
+   "evolve_chance": 0.03,
+   "buff_evolve_on_max_stacks": "stonehearth_ace:buffs:weather:sunstroke",
+   "icon": "file(hot_debuff.png)",
+   "modifiers": {
+      "willpower": {
+         "multiply": 0.88
+      },
+      "speed": {
+         "multiply": 0.96
+      },
+      "diligence": {
+         "multiply": 0.88
+      },
+      "calorie_burn_multiplier": {
+         "multiply": 0.85
+      },
+      "drink_satiety_loss_multiplier": {
+         "multiply": 1.3
+      }
+   },
+   "disallowed_buffs": [
+      "stonehearth_ace:buffs:weather:warmed"
+   ]
+}

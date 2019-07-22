@@ -1,0 +1,33 @@
+{
+   "components": {
+      "render_info": {
+         "scale": 0.5
+      }
+   },
+   "entity_data": {
+		"stonehearth:evolve_data": {
+         "biomes": {
+				"stonehearth_ace:biome:highlands": {
+               "evolve_time_multiplier": 1.5
+            },
+				"stonehearth:biome:temperate": {
+               "evolve_time_multiplier": 2
+            },
+            "stonehearth:biome:desert": {
+               "evolve_time_multiplier": 4
+            }
+         },
+         "seasons": {
+				"spring": {
+               "evolve_time_multiplier": 1.6
+            },
+				"summer": {
+               "evolve_time_multiplier": 1.2
+            },
+            "winter": {
+               "evolve_time_multiplier": 2
+            }
+         }
+      }
+	}
+}

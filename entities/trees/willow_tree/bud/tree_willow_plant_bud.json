@@ -38,10 +38,34 @@
    "entity_data": {
       "stonehearth:evolve_data": {
          "next_stage": "stonehearth_ace:trees:willow:small",
-         "evolve_time": "14h+2h"
+         "evolve_time": "14h+2h",
+         "biomes": {
+            "stonehearth:biome:arctic": {
+               "evolve_time_multiplier": 1.5
+            },
+            "stonehearth_ace:biome:highlands": {
+               "evolve_time_multiplier": 1.2
+            },
+            "stonehearth:biome:desert": {
+               "evolve_time_multiplier": 4
+            }
+         },
+         "seasons": {
+            "summer": {
+               "evolve_time_multiplier": 1.2
+            },
+            "autumn": {
+               "evolve_time_multiplier": 1.5
+            },
+            "winter": {
+               "evolve_time_multiplier": 2
+            }
+         }
       },
       "stonehearth:catalog": {
-         "material_tags":["stockpile_plant"],
+         "material_tags": [
+            "stockpile_plant"
+         ],
          "display_name": "i18n(stonehearth_ace:entities.trees.willow_tree.bud.tree_willow_plant_bud.display_name)",
          "description": "i18n(stonehearth_ace:entities.trees.willow_tree.bud.tree_willow_plant_bud.description)",
          "category": "plants"

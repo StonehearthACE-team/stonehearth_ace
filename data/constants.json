@@ -661,13 +661,16 @@
          }
       },
 		"sleep": {
-         "TIRED_THOUGHT_THRESHOLD": 16,
-         "FATIGUED_THOUGHT_THRESHOLD": 24,
+         "TIRED_THOUGHT_THRESHOLD": 14,
+         "FATIGUED_THOUGHT_THRESHOLD": 20,
+			"EXHAUSTED_THOUGHT_THRESHOLD": 26,
          "PET_SLEEP_DURATION": 4800,
          "BEDTIME_START_HOUR": 1,  "__comment": "Effective sleepiness is increased between bedtime start/stop hours.",
          "BEDTIME_END_HOUR": 7,
          "BEDTIME_SLEEPINESS_BOOST": 6,
-         "MIN_SLEEPINESS_TO_SLEEP_ON_GROUND": 28
+			"MIN_SLEEPINESS_TO_SLEEP": 22,
+         "MIN_SLEEPINESS_TO_SLEEP_ON_GROUND": 28,
+			"MAX_SLEEPINESS": 32
       },
 		"crafting": {
 			"mixintypes": {

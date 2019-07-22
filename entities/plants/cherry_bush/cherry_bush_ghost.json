@@ -12,8 +12,67 @@
       "model_variants": {
          "default": {
             "models": [
-               "file(cherry_bush.qb)"
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(cherry_bush.qb)",
+                     "file(cherry_bush_2.qb)",
+                     "file(cherry_bush_3.qb)"
+                  ]
+               }
             ]
+         },
+         "autumn": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(cherry_bush_autumn_1.qb)",
+                     "file(cherry_bush_autumn_2.qb)",
+                     "file(cherry_bush_autumn_3.qb)"
+                  ]
+               }
+            ]
+         },
+         "summer": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(cherry_bush_summer.qb)"
+                  ]
+               }
+            ]
+         },
+         "winter": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(cherry_bush_winter.qb)"
+                  ]
+               }
+            ]
+         }
+      },
+      "stonehearth:seasonal_model_switcher": {
+         "*": {
+            "spring": "default",
+            "summer": "summer",
+            "autumn": "autumn",
+            "winter": "winter"
+         },
+         "stonehearth:biome:arctic": {
+            "spring": "default",
+            "summer": "summer",
+            "autumn": "winter",
+            "winter": "winter"
+         },
+         "stonehearth:biome:desert": {
+            "spring": "summer",
+            "summer": "summer",
+            "autumn": "summer",
+            "winter": "autumn"
          }
       }
    },

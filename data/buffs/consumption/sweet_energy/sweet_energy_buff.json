@@ -11,14 +11,20 @@
       "diligence": {
          "add": 15
       },
-      "sleepiness": {
-         "multiply": 0.9
-      },
       "speed": {
          "add": 5
       },
       "multiplicative_work_rate_modifier": {
          "multiply": 1.1
       }
+   },
+   "script": "stonehearth:buff_scripts:periodic_attribute_modification",
+   "script_info": {
+      "attribute": "sleepiness",
+      "value_change": -1,
+      "cannot_reach_zero": false,
+      "pulse": "90m",
+      "pulse_immediately": true,
+      "pulse_on_destroy": false
    }
 }

@@ -1,0 +1,26 @@
+{
+   "components": {
+      "model_variants": {
+         "half_renewed": {
+            "models": [
+               "file(earthbud_half_renewed.qb)"
+            ]
+         }
+      },
+      "stonehearth:renewable_resource_node": {
+         "half_renewed_model_variant": true,
+			"seasons": {
+            "summer": {
+               "renewal_time_multiplier": 2
+            },
+            "autumn": {
+               "renewal_time_multiplier": 4
+            },
+				"winter": {
+               "renewal_time_multiplier": 8
+            }
+         }
+      }
+   },
+   "entity_data": {}
+}

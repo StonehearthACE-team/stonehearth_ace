@@ -16,5 +16,25 @@
    },
 	"statistics": {
       "specifier": "miniboss"
+   },
+	"loot_drops": {
+      "entries": {
+         "currency": {
+            "num_rolls": {
+               "min": 1,
+               "max": 1
+            },
+            "items": {
+               "none": {
+                  "uri": "",
+                  "weight": 0
+               },
+               "currency": {
+                  "uri": "stonehearth_ace:loot:currency:goblin",
+                  "weight": 1
+               }
+            }
+         }
+      }
    }
 }

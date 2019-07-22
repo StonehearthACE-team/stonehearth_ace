@@ -5,7 +5,8 @@
    "components": {
       "mixintypes": {
          "stonehearth:renewable_resource_node": "remove",
-         "stonehearth:commands": "override"
+         "stonehearth:commands": "override",
+         "stonehearth:resource_node": "override"
       },
       "stonehearth:attributes": {
          "mixintypes": {
@@ -23,6 +24,14 @@
                "social_satisfaction": "remove"
             }
          }
+      },
+      "stonehearth:resource_node": {
+         "category": "harvest",
+         "harvest_overlay_effect": "stonehearth:effects:chop_overlay_effect",
+         "harvester_effect": "fiddle",
+         "description": "harvest_animal",
+         "harvestable_by_harvest_tool": false,
+         "check_owner": true
       },
       "stonehearth:loot_drops": {
          "force_auto_loot": true,

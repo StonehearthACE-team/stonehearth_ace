@@ -5,9 +5,29 @@
    "attributes": {
       "max_health": 410
    },
+	"loot_drops": {
+      "entries": {
+         "currency": {
+            "num_rolls": {
+               "min": 1,
+               "max": 3
+            },
+            "items": {
+               "none": {
+                  "uri": "",
+                  "weight": 1
+               },
+               "currency": {
+                  "uri": "stonehearth_ace:loot:currency:goblin",
+                  "weight": 1
+               }
+            }
+         }
+      }
+   },
    "unit_info": {
-      "display_name": "i18n(stonehearth:data.gm.campaigns.goblin_war.goblin_raiding_camp_1.boss.display_name)",
-      "description": "i18n(stonehearth:data.gm.campaigns.goblin_war.goblin_raiding_camp_1.boss.description)"
+      "display_name": "i18n(stonehearth_ace:data.monster_tuning.goblins.miniboss.display_name)",
+      "description": "i18n(stonehearth_ace:data.monster_tuning.goblins.miniboss.description)"
    },
    "scale": 0.11
 }

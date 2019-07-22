@@ -1,11 +1,16 @@
 {
-   "mixins": "stonehearth:mixins:item_properties",
+   "mixins": "stonehearth_ace:mixins:drink_decay",
    "type": "entity",
    "components": {
       "model_variants": {
          "default": {
             "models": [
                "file(juice_cherry.qb)"
+            ]
+         },
+         "decay_1": {
+            "models": [
+               "file(juice_cherry_spoiling.qb)"
             ]
          }
       },

@@ -50,7 +50,29 @@
       },
       "stonehearth:evolve_data": {
          "next_stage": "stonehearth_ace:trees:parana_pine:sprout",
-         "evolve_time": "9h+3h"
+         "evolve_time": "9h+3h",
+         "biomes": {
+            "stonehearth:biome:arctic": {
+               "evolve_time_multiplier": 2
+            },
+            "stonehearth:biome:temperate": {
+               "evolve_time_multiplier": 1.2
+            },
+            "stonehearth:biome:desert": {
+               "evolve_time_multiplier": 5
+            }
+         },
+         "seasons": {
+            "spring": {
+               "evolve_time_multiplier": 1.5
+            },
+            "autumn": {
+               "evolve_time_multiplier": 1.5
+            },
+            "winter": {
+               "evolve_time_multiplier": 3
+            }
+         }
       },
       "stonehearth:net_worth": {
          "value_in_gold": 2,
