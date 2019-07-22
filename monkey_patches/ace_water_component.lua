@@ -1,9 +1,16 @@
 local Region3 = _radiant.csg.Region3
+local csg_lib = require 'stonehearth.lib.csg.csg_lib'
 
 local log = radiant.log.create_logger('water')
 
 local WaterComponent = require 'stonehearth.components.water.water_component'
 local AceWaterComponent = class()
+
+AceWaterComponent._ace_old_restore = WaterComponent.restore
+function AceWaterComponent:restore()
+   self:_ace_old_restore()
+   self:_update_destination()
+end
 
 AceWaterComponent._ace_old_activate = WaterComponent.activate
 function AceWaterComponent:activate()
@@ -85,6 +92,15 @@ function AceWaterComponent:set_region(boxed_region, height)
    self._calculated_up_to_date = false
    stonehearth_ace.water_signal:water_component_modified(self._entity)
    --self:_update_pathing()
+end
+
+function AceWaterComponent:_update_destination()
+   local destination = self._sv._top_layer:get():extruded('y', 0, 1)
+   local destination_component = self._entity:add_component('destination')
+   destination_component:set_auto_update_adjacent(true)
+   destination_component:get_region():modify(function(cursor)
+         cursor:copy_region(destination)
+      end)
 end
 
 -- function AceWaterComponent:_update_pathing()

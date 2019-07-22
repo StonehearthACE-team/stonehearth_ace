@@ -106,7 +106,8 @@ local monkey_patches = {
    ace_get_food_from_container_adjacent = 'stonehearth.ai.actions.get_food_from_container_adjacent',
    ace_ai_component = 'stonehearth.components.ai.ai_component',
    ace_personality_component = 'stonehearth.components.personality.personality_component',
-   ace_pet_component = 'stonehearth.components.pet.pet_component'
+   ace_pet_component = 'stonehearth.components.pet.pet_component',
+   ace_csg_lib = 'stonehearth.lib.csg.csg_lib'
 }
 
 local function monkey_patching()
