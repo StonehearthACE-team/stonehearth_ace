@@ -10,5 +10,18 @@
       "effect_list": {
          "default": "/stonehearth_ace/data/effects/waterfall/waterfall.json"
       }
+   },
+	"entity_data": {
+      "stonehearth_ace:drink_container": {
+         "effect": "carry_pickup_from_table",
+         "drink": "stonehearth_ace:drink:water_serving",
+         "stacks_per_serving": 0
+      },
+      "stonehearth:catalog": {
+         "material_tags": [
+            "drink_container",
+            "raw_drink"
+         ]
+      }
    }
 }
