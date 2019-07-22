@@ -5,6 +5,19 @@
             "attributes": {
                "max_health": 150
             }
+         },
+			"pipers": {
+            "from_population": {
+               "min": 1,
+               "max": 2,
+               "location": {
+                  "x": -4,
+                  "z": -4
+               },
+               "range": 3
+            },
+            "combat_leash_range": 50,
+            "tuning": "stonehearth_ace:monster_tuning:goblins:piper"
          }
       }
    }

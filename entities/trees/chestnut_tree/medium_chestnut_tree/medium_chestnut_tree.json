@@ -1,0 +1,135 @@
+{
+   "mixins": "stonehearth:mixins:tree",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(medium_chestnut_tree.qb)",
+                     "file(medium_chestnut_tree_2.qb)",
+                     "file(medium_chestnut_tree_3.qb)"
+                  ]
+               }
+            ]
+         },
+         "autumn": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(medium_chestnut_tree_autumn.qb)",
+                     "file(medium_chestnut_tree_autumn_2.qb)"
+                  ]
+               }
+            ]
+         },
+         "summer": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(medium_chestnut_tree_summer.qb)",
+                     "file(medium_chestnut_tree_summer_2.qb)"
+                  ]
+               }
+            ]
+         },
+         "winter": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(medium_chestnut_tree_winter.qb)"
+                  ]
+               }
+            ]
+         }
+      },
+      "stonehearth:seasonal_model_switcher": {
+         "*": {
+            "spring": "default",
+            "summer": "summer",
+            "autumn": "autumn",
+            "winter": "winter"
+         },
+         "stonehearth:biome:arctic": {
+            "spring": "default",
+            "summer": "autumn",
+            "autumn": "autumn",
+            "winter": "winter"
+         }
+      },
+      "stonehearth:resource_node": {
+         "durability": 6,
+         "resource": "stonehearth_ace:resources:wood:chestnut_log"
+      },
+      "mob": {
+         "align_to_grid": [
+            "x",
+            "z"
+         ],
+         "model_origin": { "x": -0.5, "y": 0, "z": -0.5 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 2, "y": 1, "z": 2 }
+            }
+         ]
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": 0, "y": 0, "z": 0 },
+               "max": { "x": 1, "y": 11, "z": 1 }
+            }
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:evolve_data": {
+         "next_stage": "stonehearth_ace:trees:chestnut:large",
+         "evolve_time": "3d",
+         "biomes": {
+            "stonehearth:biome:temperate": {
+               "evolve_time_multiplier": 1.2
+            },
+            "stonehearth_ace:biome:highlands": {
+               "evolve_time_multiplier": 1.5
+            },
+            "stonehearth:biome:arctic": {
+               "evolve_time_multiplier": 2
+            }
+         },
+         "seasons": {
+            "summer": {
+               "evolve_time_multiplier": 1.2
+            },
+            "autumn": {
+               "evolve_time_multiplier": 1.5
+            },
+            "winter": {
+               "evolve_time_multiplier": 2
+            }
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.trees.chestnut_tree.medium_chestnut_tree.display_name)",
+         "description": "i18n(stonehearth_ace:entities.trees.chestnut_tree.medium_chestnut_tree.description)"
+      },
+      "stonehearth:stump_data": {
+         "stump_alias": "stonehearth_ace:trees:chestnut:stump"
+      },
+      "stonehearth_ace:replant_data": {
+         "seed_alias": "stonehearth_ace:trees:chestnut:seed"
+      },
+      "stonehearth:appeal": {
+         "appeal": 4
+      }
+   }
+}

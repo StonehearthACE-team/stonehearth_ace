@@ -23,6 +23,24 @@
       "talkative": {}
    },
    "traits": {
+      "stonehearth_ace:traits:sleepyhead": {
+         "excludes": {
+            "stonehearth:traits:night_owl": true,
+            "stonehearth_ace:traits:light_sleeper": true
+         }
+      },
+      "stonehearth_ace:traits:light_sleeper": {
+         "excludes": {
+            "stonehearth:traits:night_owl": true,
+            "stonehearth_ace:traits:sleepyhead": true
+         }
+      },
+      "stonehearth:traits:night_owl": {
+         "excludes": {
+            "stonehearth_ace:traits:light_sleeper": true,
+            "stonehearth_ace:traits:sleepyhead": true
+         }
+      },
       "stonehearth:traits:pluviophile": {
          "excludes": {
             "stonehearth_ace:traits:heliophile": true,

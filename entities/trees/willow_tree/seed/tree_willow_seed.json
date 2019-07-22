@@ -48,7 +48,29 @@
       },
       "stonehearth:evolve_data": {
          "next_stage": "stonehearth_ace:trees:willow:sprout",
-         "evolve_time": "6h+3h"
+         "evolve_time": "6h+3h",
+         "biomes": {
+            "stonehearth:biome:arctic": {
+               "evolve_time_multiplier": 1.5
+            },
+            "stonehearth_ace:biome:highlands": {
+               "evolve_time_multiplier": 1.2
+            },
+            "stonehearth:biome:desert": {
+               "evolve_time_multiplier": 4
+            }
+         },
+         "seasons": {
+            "summer": {
+               "evolve_time_multiplier": 1.2
+            },
+            "autumn": {
+               "evolve_time_multiplier": 1.5
+            },
+            "winter": {
+               "evolve_time_multiplier": 2
+            }
+         }
       },
       "stonehearth:net_worth": {
          "value_in_gold": 1,

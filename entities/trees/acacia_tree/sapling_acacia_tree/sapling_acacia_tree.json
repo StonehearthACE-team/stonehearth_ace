@@ -1,0 +1,81 @@
+{
+   "components": {
+		   "mob": {
+      "model_origin": {
+         "x": 0,
+         "y": 0,
+         "z": 0
+      },
+      "region_origin": {
+         "x": 0.5,
+         "y": 0,
+         "z": -0.5
+      }
+   },
+   "mixintypes": {
+		"destination": "override",
+		"region_collision_shape": "override"
+   },
+      "destination": {
+      "region": [
+         {
+            "min": {
+               "x": -1,
+               "y": 0,
+               "z": -2
+            },
+            "max": {
+               "x": 2,
+               "y": 1,
+               "z": 1
+            }
+         }
+      ]
+   },
+   "region_collision_shape": {
+      "region": [
+         {
+            "min": {
+               "x": -1,
+               "y": 0,
+               "z": -2
+            },
+            "max": {
+               "x": 2,
+               "y": 8,
+               "z": 1
+            }
+         }
+      ]
+   }
+   },
+   "entity_data": {
+      "mixintypes": {
+         "stonehearth:stump_data": "remove"
+      },
+		"stonehearth:evolve_data": {
+         "biomes": {
+				"stonehearth:biome:temperate": {
+               "evolve_time_multiplier": 2
+            },
+				"stonehearth_ace:biome:highlands": {
+               "evolve_time_multiplier": 2.5
+            },
+            "stonehearth:biome:arctic": {
+               "evolve_time_multiplier": 4
+            }
+         },
+         "seasons": {
+				"spring": {
+               "evolve_time_multiplier": 1.2
+            },
+				"autumn": {
+               "evolve_time_multiplier": 1.5
+            },
+            "winter": {
+               "evolve_time_multiplier": 2
+            }
+         }
+      }
+   }
+}

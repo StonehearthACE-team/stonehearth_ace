@@ -1,0 +1,18 @@
+{
+   "type": "mixin",
+   "mixins": [
+      "stonehearth:mixins:destructable_siege_object"
+   ],
+   "components": {
+      "stonehearth:attributes": {
+         "max_health": {
+            "type": "basic",
+            "value": 450
+         },
+         "menace": {
+            "type": "basic",
+            "value": 11
+         }
+      }
+   }
+}

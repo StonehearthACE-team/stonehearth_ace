@@ -688,8 +688,12 @@
                "description": "It's a beautiful, sunny day! Even if also somewhat cold...<ul><li>Barely reduced sunlight levels.</li><li>Regular humidity levels.</li><li>Unsheltered hearthlings are too chilly to work as effectively.</li></ul>"
             },
             "sunny_hot": {
+               "display_name": "Hot & Sunny",
+               "description": "A nice and warm sunny day! Maybe too sunny, the heat is not good...<ul><li>Normal sunlight levels.</li><li>Fairly reduced humidity.</li><li>Unsheltered hearthlings are too hot to work as effectively.</li><li>Unsheltered pasture animals are affected by the heat.</li></ul>"
+            },
+            "sunny_sweltering": {
                "display_name": "Heat Wave",
-               "description": "A nice and warm sunny day! Maybe too sunny, the heat is unbearable...<ul><li>Normal sunlight levels.</li><li>Fairly reduced humidity.</li><li>Unsheltered hearthlings are too hot to work as effectively.</li><li>Unsheltered pasture animals are hurt by the heat.</li></ul>"
+               "description": "An unbearably hot and stale weather has come upon the town this day.<ul><li>Normal sunlight levels.</li><li>Reduced humidity.</li><li>Unsheltered hearthlings are sweltering and might get a heatstroke if too exposed to the sun.</li><li>Unsheltered pasture animals are hurt by the heat.</li></ul>"
             }
          },
          "snow": {
@@ -707,9 +711,9 @@
             }
          },
          "sandstorm": {
-            "description": "Cover your eyes. Cover your ears. In fact, just stay inside.<ul><li>Clouds of sand pass across the landscape, destroying crops and hurting everyone.</li><li>Extremely reduced sunlight levels.</li><li>Extremely reduced humidity.</li><li>Vision radius is slightly reduced.</li><li>Unsheltered hearthlings are too hot to work as effectively.</li><li>Unsheltered pasture animals are hurt by the heat.</li></ul>",
+            "description": "Cover your eyes. Cover your ears. In fact, just stay inside.<ul><li>Clouds of sand pass across the landscape, destroying crops and hurting everyone.</li><li>Extremely reduced sunlight levels.</li><li>Extremely reduced humidity.</li><li>Vision radius is slightly reduced.</li><li>Unsheltered hearthlings are sweltering and might get a heatstroke if exposed to the storm's heat too much.</li><li>Unsheltered pasture animals are hurt by the heat.</li></ul>",
             "sandy_day": {
-               "description": "There is sand and dust... everywhere!<ul><li>Fairly reduced sunlight levels.</li><li>Greatly reduced humidity.</li><li>Vision radius is only slightly reduced.</li><li>Unsheltered hearthlings are too hot to work as effectively.</li><li>Unsheltered pasture animals are hurt by the heat.</li></ul>"
+               "description": "There is sand and dust... everywhere!<ul><li>Fairly reduced sunlight levels.</li><li>Greatly reduced humidity.</li><li>Vision radius is only slightly reduced.</li><li>Unsheltered hearthlings are too hot to work as effectively.</li><li>Unsheltered pasture animals are affected by the heat.</li></ul>"
             }
          },
          "rain": {
@@ -808,8 +812,16 @@
                      "tooltip": "The sun is so strong today! It can be a little punishing but makes me feel so alive!"
                   },
                   "sunny_hot_negative": {
-                     "display_name": "Scorching around!",
+                     "display_name": "Getting sweaty!",
                      "tooltip": "Why does it have to be so warm today? I can't take this heat anymore..."
+                  },
+                  "sunny_sweltering_positive": {
+                     "display_name": "Silver linings!",
+                     "tooltip": "I know, I know... It is extremely hot. But that means we get to stay more under the shade, right?"
+                  },
+                  "sunny_sweltering_negative": {
+                     "display_name": "Scorching around!",
+                     "tooltip": "This is definitely not healthy... Must stay away from the sun... Must stay refreshed..."
                   },
                   "windy_chilly_positive": {
                      "display_name": "The winds of winter",
@@ -971,6 +983,18 @@
                "very_thirsty": {
                   "display_name": "Very Thirsty",
                   "tooltip": "Uh, I'm so dry... I need to drink something!"
+               }
+            },
+            "sleepiness": {
+               "values": {
+                  "good_dream": {
+                     "display_name": "Having a Good Dream",
+                     "tooltip": "Hmm... Is that a pot of gold? Oh my, I must be dreaming..."
+                  },
+                  "bad_dream": {
+                     "display_name": "Having a Bad Dream",
+                     "tooltip": "No... No... Run away, the giant poyo is here! FLY, YOU FOOLS!"
+                  }
                }
             }
          }
@@ -1503,7 +1527,7 @@
             },
             "miniboss": {
                "display_name": "Captain [str(self.stonehearth:unit_info.custom_name)]",
-               "description": "Seeker of revenge, forever loyal to Ogo"
+               "description": "Seeker of revenge, forever loyal to Ogo!"
             }
          },
          "undead": {
@@ -1792,7 +1816,7 @@
             },
             "animal_cold_debuff": {
                "display_name": "Cold Weather",
-               "description": "Baby, it's cold outside.<ul><li>This animal will take damage over time if unsheltered.</li></ul>"
+               "description": "Baby, it's cold outside.<ul><li>This animal will take damage over time if unsheltered.</li><li>This animal will reproduce somewhat slower.</li><li>This animal won't produce as much.</li></ul>"
             },
             "freezing_debuff": {
                "display_name": "Freezing Weather",
@@ -1800,7 +1824,7 @@
             },
             "animal_freezing_debuff": {
                "display_name": "Freezing Weather",
-               "description": "That animal should definitely be sheltered...<ul><li>This animal will take damage over time if unsheltered.</li></ul>"
+               "description": "That animal should definitely be sheltered...<ul><li>This animal will take damage over time if unsheltered.</li><li>This animal will reproduce a lot slower.</li><li>This animal won't produce as much.</li></ul>"
             },
             "hot_debuff": {
                "display_name": "Hot Weather",
@@ -1808,7 +1832,15 @@
             },
             "animal_hot_debuff": {
                "display_name": "Hot Weather",
-               "description": "The heat is punishing, even for the animals!<ul><li>This animal will take damage over time if unsheltered.</li></ul>"
+               "description": "The heat is punishing, even for the animals!<ul><li>This animal will reproduce slower.</li><li>This animal won't produce as much.</li></ul>"
+            },
+            "sweltering_debuff": {
+               "display_name": "Extremely Hot Weather",
+               "description": "I'm sweltering... Should stay indoors or have something refreshing to drink...<ul><li>This hearthling has an increasing chance of getting a sunstroke the longer they stay exposed to the heat.</li></ul>"
+            },
+            "animal_sweltering_debuff": {
+               "display_name": "Extremely Hot Weather",
+               "description": "This heat is unbearable for animals!<ul><li>This animal will reproduce much slower.</li><li>This animal won't produce as much.</li></ul>"
             },
             "soaked_debuff": {
                "display_name": "Soaked",
@@ -1820,7 +1852,7 @@
             },
             "sunstroke_debuff": {
                "display_name": "Sunstroke",
-               "description": "So warm... Getting dizzy... Need refreshment, now!<ul><li>This hearthling will take damage over time.</li></ul>"
+               "description": "So warm... Getting dizzy... I Need refreshment... NOW!<ul><li>This hearthling will take damage over time until they are knocked unconscious.</li><li>Being sheltered will allow this effect to slowly fade away.</li><li>Entering the water or drinking something refreshing will remove this effect.</li></ul>"
             },
             "freezing_water_debuff": {
                "display_name": "Freezing Water",
@@ -1844,7 +1876,11 @@
             },
             "hot_resist_buff": {
                "display_name": "Cool Outfit",
-               "description": "Protection from the sun and a good airflow keeps this hearthling protected from hot weather."
+               "description": "Light materials and a good airflow keeps this hearthling protected from hot weather."
+            },
+            "sweltering_resist_buff": {
+               "display_name": "Sunstroke Protection",
+               "description": "Efficient protection against the sun and blazing winds will keep this hearthling safe from the heat of very hot weather."
             },
             "refreshed_buff": {
                "display_name": "Refreshed",
@@ -1866,6 +1902,9 @@
             },
             "freezing_debuff_npc": {
                "description": "Speed, Willpower and Damage are severely reduced."
+            },
+            "hot_debuff_npc": {
+               "description": "Speed is reduced."
             }
          },
          "shepherding": {
@@ -1950,7 +1989,7 @@
          "toxin": {
             "toxin_sleeping": {
                "display_name": "Sleeping Toxin",
-               "description": "This is a weak toxin. It can stack up multiple times and will rapidly reduce its target's consciousness, putting them to sleep."
+               "description": "This is a weak toxin. It sticks for longer the more it is applied and will rapidly reduce its target's consciousness, putting them to sleep."
             }
          }
       },
@@ -2057,6 +2096,14 @@
          "tea_love_trait": {
             "display_name": "Tea Lover",
             "description": "It is no secret how much [name(i18n_data.entity)] loves all sorts of tea and infusions. They always appreciate drinking them more than anything else, if possible."
+         },
+         "light_sleeper_trait": {
+            "display_name": "Light Sleeper",
+            "description": "[name(i18n_data.entity)] is famous for waking up alongside the poyos - or earlier. They will sleep less than most hearthlings but also get tired sooner."
+         },
+         "sleepyhead_trait": {
+            "display_name": "Sleepyhead",
+            "description": "Waking up [name(i18n_data.entity)] can be a challenge. They love sleeping so much that they'll probably sleep a bit more than they should..."
          }
       }
    },
@@ -2824,7 +2871,13 @@
                "recipe_name": "Cleric Tome, 'The Walk of Cid'",
                "description": "A legendary tome for the followers of the Church of Plenty.",
                "flavor": "Through the ways of Cid healing shall be done"
-            }
+            },
+            "wooden_sign_geomancer_recipe": {
+               "recipe_name": "Geomancer's Wall-Mounted Sign",
+               "description": "A sign with the mark of the Geomancer, to be placed on buildings.",
+               "flavor": "It is a beautiful hearthbud flower!"
+            },
+            "decoration_name": "Decorations"
          },
          "geomancer_description": {
             "description": "Mastery of the Earth Magic provides the power to shape the terrain, create ores, stunning landscapes and even breathe life into rocks to raise golems that will work for the town."
@@ -3597,6 +3650,11 @@
                "description": "Crunchy nuts baked with a delightful caramelized sugar crust.",
                "flavor": "'This is SO GOOD' - Mer Burlyhands"
             },
+            "nuts_basket_recipe": {
+               "recipe_name": "Basket of Nuts",
+               "description": "An assortment of edible nuts ready to be used in cooking.",
+               "flavor": ""
+            },
             "huntsman_banquet_recipe": {
                "recipe_name": "Huntsman's Banquet",
                "description": "An exquisite cut of venison seasoned with fruity forest flavors.",
@@ -4130,6 +4188,46 @@
                "recipe_name": "Wooden Water Well Roof",
                "description": "Build a good-looking roof to spruce up your wooden water well!",
                "flavor": "Very well!"
+            },
+            "wooden_stool_recipe": {
+               "recipe_name": "Wooden Stool",
+               "description": "An alternative to chairs.",
+               "flavor": "A higher seat for lower purposes"
+            },
+            "counter_wood_corner_inner_recipe": {
+               "recipe_name": "Wooden Counter Inner Corner",
+               "description": "An inner corner piece for your counter.",
+               "flavor": ""
+            },
+            "counter_wood_corner_outer_recipe": {
+               "recipe_name": "Wooden Counter Corner",
+               "description": "A corner piece for your counter.",
+               "flavor": ""
+            },
+            "counter_wood_mid_recipe": {
+               "recipe_name": "Wooden Counter Midsection",
+               "description": "The main part of a wooden counter.",
+               "flavor": "An appropriate surface for nightly gossip."
+            },
+            "counter_wood_mid_small_recipe": {
+               "recipe_name": "Wooden Counter Small Midsection",
+               "description": "Half the size of a regular midsection.",
+               "flavor": "An appropriate surface for nightly gossip."
+            },
+            "counter_wood_end_left_recipe": {
+               "recipe_name": "Wooden Counter Left End",
+               "description": "For properly finishing your counter if not against a wall.",
+               "flavor": ""
+            },
+            "counter_wood_end_right_recipe": {
+               "recipe_name": "Wooden Counter Right End",
+               "description": "For properly finishing your counter if not against a wall.",
+               "flavor": "Make sure that the right end will end it right and not wrong"
+            },
+            "counter_wood_door_recipe": {
+               "recipe_name": "Wooden Counter Door",
+               "description": "Allows hearthlings to traverse between both sides of the counter.",
+               "flavor": "Only authorized per-- oh, nevermind..."
             }
          },
          "carpenter_description": {
@@ -4990,6 +5088,10 @@
             "old_wood_log": {
                "display_name": "Old Wood Log",
                "description": "A log. Made of wood, really old wood."
+            },
+            "almond_log": {
+               "display_name": "i18n(stonehearth_ace:entities.resources.wood.almond_log.display_name)",
+               "description": "i18n(stonehearth_ace:entities.resources.wood.almond_log.description)"
             }
          },
          "herb": {
@@ -5584,9 +5686,49 @@
          "almond_tree": {
             "seed": {
                "tree_almond_seed": {
-                  "description": "Can't be planted but may be eaten raw or used as an edible nut or fruit.",
+                  "description": "Green almonds can be eaten raw and are used as either edible nuts or fruits.",
                   "display_name": "Almond Tree Seed"
                }
+            },
+            "medium_almond_tree": {
+               "display_name": "i18n(stonehearth_ace:entities.trees.almond_tree.medium_almond_tree.display_name)",
+               "description": "i18n(stonehearth_ace:entities.trees.almond_tree.medium_almond_tree.description)"
+            },
+            "large_almond_tree": {
+               "display_name": "Large Almond Tree",
+               "description": "i18n(stonehearth_ace:entities.trees.almond_tree.large_almond_tree.description)"
+            },
+            "bud": {
+               "tree_almond_plant_bud": {
+                  "description": "It will soon start bearing nuts.",
+                  "display_name": "Budding Almond Tree"
+               }
+            },
+            "sapling_almond_tree": {
+               "description": "i18n(stonehearth_ace:entities.trees.almond_tree.sapling_almond_tree.description)",
+               "sapling_almond_tree_iconic": {
+                  "description": "i18n(stonehearth_ace:entities.trees.almond_tree.sapling_almond_tree.sapling_almond_tree_iconic.description)"
+               },
+               "sapling_almond_tree_ghost": {
+                  "description": "i18n(stonehearth_ace:entities.trees.almond_tree.sapling_almond_tree.sapling_almond_tree_ghost.description)",
+                  "display_name": "i18n(stonehearth_ace:entities.trees.almond_tree.sapling_almond_tree.sapling_almond_tree_ghost.display_name)"
+               }
+            },
+            "sprout": {
+               "tree_almond_sprout": {
+                  "description": "i18n(stonehearth_ace:entities.trees.almond_tree.sprout.tree_almond_sprout.description)",
+                  "display_name": "i18n(stonehearth_ace:entities.trees.almond_tree.sprout.tree_almond_sprout.display_name)"
+               }
+            },
+            "stem": {
+               "tree_almond_plant_stem": {
+                  "display_name": "i18n(stonehearth_ace:entities.trees.almond_tree.stem.tree_almond_plant_stem.display_name)",
+                  "description": "i18n(stonehearth_ace:entities.trees.almond_tree.stem.tree_almond_plant_stem.description)"
+               }
+            },
+            "small_almond_tree": {
+               "display_name": "i18n(stonehearth_ace:entities.trees.almond_tree.small_almond_tree.display_name)",
+               "description": "i18n(stonehearth_ace:entities.trees.almond_tree.small_almond_tree.description)"
             }
          }
       },
@@ -6327,6 +6469,10 @@
          "wooden_sign_tavern": {
             "display_name": "Tavern Sign",
             "description": "A sign for a place where the night is long and merry."
+         },
+         "wooden_sign_geomancer": {
+            "display_name": "Geomancer's Sign",
+            "description": "A sign with the mark of the Geomancer"
          }
       },
       "pets": {
@@ -7129,6 +7275,46 @@
          "malted_grains": {
             "display_name": "Sack of Malted Grains",
             "description": "Golden, toasted grains for producing wort. Can also be milled for cooking oil."
+         },
+         "nuts_basket": {
+            "display_name": "Basket of Nuts",
+            "description": "An assortment of edible nuts ready to be used in cooking."
+         },
+         "hazelnut": {
+            "hazelnut_basket": {
+               "display_name": "Basket of Hazelnuts",
+               "description": "Nutritious, tasty nuts. Can be eaten raw, pressed for oil or used in cooking."
+            },
+            "hazelnut_serving": {
+               "display_name": "Serving of Hazelnuts"
+            }
+         },
+         "almond": {
+            "almond_serving": {
+               "display_name": "Serving of Almonds"
+            },
+            "almond_basket": {
+               "display_name": "Basket of Almonds",
+               "description": "Tender and hearty nuts. Can be eaten raw, pressed for oil or used in cooking."
+            }
+         },
+         "chestnut": {
+            "chestnut_serving": {
+               "display_name": "Serving of Chestnuts"
+            },
+            "chestnut_basket": {
+               "display_name": "Basket of Chestnuts",
+               "description": "A delicious, popular nut. Can be eaten raw or used in cooking."
+            }
+         },
+         "walnut": {
+            "walnut_serving": {
+               "display_name": "Serving of Walnuts"
+            },
+            "walnut_basket": {
+               "display_name": "Basket of Walnuts",
+               "description": "A bold-flavored nut. Can be eaten raw or used in cooking."
+            }
          }
       },
       "terrain": {
@@ -8773,6 +8959,20 @@
                "display_name": "Ale",
                "description": "A fruity, sweet brew. Makes hearthlings happy but also a little tipsy! "
             }
+         },
+         "rotten": {
+            "bucket": {
+               "display_name": "Spoiled Drink Bucket",
+               "description": "Whatever it was, it's probably not wise to drink it anymore..."
+            },
+            "keg": {
+               "display_name": "Spoiled Drink Keg",
+               "description": "This drink has, surprisingly, spoiled. It took a very long time."
+            },
+            "milk": {
+               "display_name": "Spoiled Bucket of Milk",
+               "description": "Milk goes bad in a very short time, it's better to drink or use it fast!"
+            }
          }
       },
       "npc": {
@@ -9468,8 +9668,8 @@
             }
          },
          "constants": {
-            "edible_nuts_resource_name": "Edible Nut",
-            "fruits_resource_name": "Fruit",
+            "edible_nuts_resource_name": "Any Edible Nut",
+            "fruits_resource_name": "Any Fruit",
             "thatch_resource_name": "Thatching",
             "bone_resource_name": "Bone",
             "fungi_resource_name": "Fungi",
@@ -9505,7 +9705,8 @@
             "leather_resource_name": "Any Leather",
             "herb_resource_name": "Any Herb",
             "seed_juniper_resource_name": "Juniper Berries",
-            "seed_pine_resource_name": "Pine Cones"
+            "seed_pine_resource_name": "Pine Cones",
+            "nuts_basket_resource_name": "Any Basket of Nuts"
          }
       },
       "hotkeys": {
@@ -9617,6 +9818,16 @@
       "shipwreck_chest": {
          "display_name": "Mossy Old Chest",
          "description": "Harvest it for loot, whoever lost it won't mind... Right?"
+      }
+   },
+   "drink": {
+      "decay": {
+         "decay_1": {
+            "description": "It's starting to go bad, should probably drink it soon.",
+            "keg": {
+               "description": "Has been around for a long while and is a bit stale already."
+            }
+         }
       }
    }
 }

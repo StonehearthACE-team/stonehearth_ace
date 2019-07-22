@@ -12,6 +12,8 @@
          "stonehearth:thoughts:weather:sunny_chilly_negative": "stonehearth:thoughts:traits:heliophile",
          "stonehearth:thoughts:weather:sunny_hot_positive": "stonehearth:thoughts:traits:heliophile",
          "stonehearth:thoughts:weather:sunny_hot_negative": "stonehearth:thoughts:traits:heliophile",
+         "stonehearth:thoughts:weather:sunny_sweltering_positive": "stonehearth:thoughts:traits:heliophile",
+         "stonehearth:thoughts:weather:sunny_sweltering_negative": "stonehearth:thoughts:traits:heliophile",
          "stonehearth:thoughts:weather:rain_sunny_positive": "stonehearth:thoughts:traits:heliophile",
          "stonehearth:thoughts:weather:rain_sunny_negative": "stonehearth:thoughts:traits:heliophile",
          "stonehearth:thoughts:weather:snow_sunny_positive": "stonehearth:thoughts:traits:heliophile",
@@ -45,6 +47,12 @@
       },
       {
          "subject": "stonehearth_ace:subjects:weather:sunny:hot",
+         "sentiment": 1,
+         "permanent": true,
+         "unvarying": true
+      },
+      {
+         "subject": "stonehearth_ace:subjects:weather:sunny:sweltering",
          "sentiment": 1,
          "permanent": true,
          "unvarying": true

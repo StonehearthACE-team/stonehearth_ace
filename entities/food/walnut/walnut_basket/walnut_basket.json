@@ -1,0 +1,55 @@
+{
+   "mixins": "stonehearth:mixins:food_decay",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(walnut_basket.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0.05 }
+      },
+      "stonehearth:stacks": {
+         "max_stacks": 5
+      }
+   },
+   "entity_data": {
+      "stonehearth:food_container": {
+         "effect": "fiddle",
+         "food": "stonehearth_ace:food:walnut:walnut_serving",
+         "stacks_per_serving": 1
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 6,
+         "rarity": "uncommon",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 2,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.walnut.walnut_basket.display_name)",
+         "description": "i18n(stonehearth_ace:entities.food.walnut.walnut_basket.description)",
+         "icon": "file(walnut_basket.png)",
+         "is_item": true,
+         "category": "food",
+         "material_tags": [
+            "food_container",
+            "cooking_ingredient",
+            "nuts",
+            "nut_basket",
+            "walnut",
+            "stockpile_cooking_ingredient",
+            "other_ingredient"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": 2
+      }
+   }
+}

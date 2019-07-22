@@ -1,0 +1,92 @@
+{
+   "type": "entity",
+   "mixins": [
+      "stonehearth:mixins:tree",
+      "file(sapling_chestnut_tree_ghost.json)"
+   ],
+   "components": {
+      "render_info": {
+         "scale": 0.9
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(sapling_chestnut_tree_iconic.json)",
+         "ghost_form": "file(sapling_chestnut_tree_ghost.json)",
+         "placeable_on_ground": true,
+         "hide_placement_ui": true
+      },
+      "stonehearth:evolve": {},
+      "stonehearth:resource_node": {
+         "resource": "stonehearth_ace:resources:wood:chestnut_log",
+         "durability": 2
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": 0, "y": 0, "z": -1 },
+               "max": { "x": 1, "y": 1, "z": 0 }
+            }
+         ]
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": 0, "y": 0, "z": -1 },
+               "max": { "x": 1, "y": 8, "z": 0 }
+            }
+         ]
+      }
+   },
+   "entity_data": {
+      "mixintypes": {
+         "stonehearth:stump_data": "remove"
+      },
+      "stonehearth:evolve_data": {
+         "next_stage": "stonehearth_ace:trees:chestnut:small",
+         "evolve_time": "1d",
+         "biomes": {
+            "stonehearth:biome:temperate": {
+               "evolve_time_multiplier": 1.2
+            },
+            "stonehearth_ace:biome:highlands": {
+               "evolve_time_multiplier": 1.5
+            },
+            "stonehearth:biome:arctic": {
+               "evolve_time_multiplier": 2
+            }
+         },
+         "seasons": {
+            "summer": {
+               "evolve_time_multiplier": 1.2
+            },
+            "autumn": {
+               "evolve_time_multiplier": 1.5
+            },
+            "winter": {
+               "evolve_time_multiplier": 2
+            }
+         }
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 27,
+         "rarity": "uncommon",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "description": "i18n(stonehearth_ace:entities.trees.chestnut_tree.sapling_chestnut_tree.description)",
+         "category": "plants",
+         "material_tags": [
+            "plant",
+            "tree",
+            "stockpile_plant"
+         ],
+         "subject_override": "stonehearth_ace:trees:chestnut:large"
+      },
+      "stonehearth:appeal": {
+         "appeal": 2
+      }
+   }
+}

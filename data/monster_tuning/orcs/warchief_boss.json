@@ -1,5 +1,25 @@
 {
   "statistics": {
       "specifier": "orc_boss"
+   },
+	"loot_drops": {
+      "entries": {
+         "currency": {
+            "num_rolls": {
+               "min": 2,
+               "max": 5
+            },
+            "items": {
+               "none": {
+                  "uri": "",
+                  "weight": 1
+               },
+               "currency": {
+                  "uri": "stonehearth_ace:loot:currency:red_kiln",
+                  "weight": 1
+               }
+            }
+         }
+      }
    }
 }

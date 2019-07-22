@@ -1,5 +1,27 @@
 {
-   "components": {},
+   "components": {
+		"model_variants": {
+         "half_renewed": {
+            "models": [
+               "file(sugarbell_half_renewed.qb)"
+            ]
+         }
+      },
+      "stonehearth:renewable_resource_node": {
+         "half_renewed_model_variant": true,
+			"seasons": {
+            "spring": {
+               "renewal_time_multiplier": 3
+            },
+            "autumn": {
+               "renewal_time_multiplier": 1.5
+            },
+				"winter": {
+               "renewal_time_multiplier": 4
+            }
+         }
+      }
+	},
    "entity_data": {
       "stonehearth:net_worth": {
          "value_in_gold": 5,

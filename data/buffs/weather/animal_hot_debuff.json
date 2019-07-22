@@ -5,20 +5,16 @@
    "description": "i18n(stonehearth_ace:data.buffs.weather.animal_hot_debuff.description)",
    "duration": "45m",
    "repeat_add_action": "renew_duration",
-   "icon": "file(hot_debuff.png)",
+   "icon": "file(hot.png)",
    "modifiers": {
       "speed": {
          "multiply": 0.9
       },
       "reproduction_rate_multiplier": {
          "multiply": 3
+      },
+      "renewable_resource_rate_multiplier": {
+         "multiply": 2
       }
-   },
-   "script": "stonehearth:buff_scripts:periodic_health_modification",
-   "script_info": {
-      "health_change": -1,
-      "pulse": "1h",
-      "pulse_immediately": false,
-      "pulse_on_destroy": false
    }
 }

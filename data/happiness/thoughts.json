@@ -19,6 +19,31 @@
             }
          }
       },
+      "sleepiness": {
+         "values": {
+            "tired": {
+               "happiness_delta": -2
+            },
+            "fatigued": {
+               "happiness_delta": -10
+            },
+            "exhausted": {
+               "happiness_delta": -25
+            },
+            "good_dream": {
+               "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.sleepiness.values.good_dream.display_name)",
+               "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.sleepiness.values.good_dream.tooltip)",
+               "happiness_delta": 3,
+               "stackable": false
+            },
+            "bad_dream": {
+               "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.sleepiness.values.bad_dream.display_name)",
+               "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.sleepiness.values.bad_dream.tooltip)",
+               "happiness_delta": -3,
+               "stackable": false
+            }
+         }
+      },
       "weather": {
          "values": {
             "snow_early_positive": {
@@ -131,6 +156,20 @@
                "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.weather.values.sunny_hot_negative.tooltip)",
                "duration": "1d",
                "happiness_delta": -6,
+               "stackable": false
+            },
+            "sunny_sweltering_positive": {
+               "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.weather.values.sunny_sweltering_positive.display_name)",
+               "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.weather.values.sunny_sweltering_positive.tooltip)",
+               "duration": "1d",
+               "happiness_delta": 2,
+               "stackable": false
+            },
+            "sunny_sweltering_negative": {
+               "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.weather.values.sunny_sweltering_negative.display_name)",
+               "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.weather.values.sunny_sweltering_negative.tooltip)",
+               "duration": "1d",
+               "happiness_delta": -8,
                "stackable": false
             },
             "windy_chilly_positive": {

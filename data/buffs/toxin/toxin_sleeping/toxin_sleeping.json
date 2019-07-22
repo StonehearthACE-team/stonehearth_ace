@@ -5,18 +5,21 @@
    "description": "i18n(stonehearth_ace:data.buffs.toxin.toxin_sleeping.description)",
    "icon": "file(toxin_sleeping.png)",
    "duration": "15m",
-   "repeat_add_action": "stack_and_refresh",
-   "max_stacks": 8,
-   "remove_stacks_on_expire": 2,
+   "repeat_add_action": "extend_duration",
    "effect": "stonehearth:effects:debuff_added:undead_infection",
    "script": "stonehearth:buff_scripts:periodic_attribute_modification",
    "script_info": {
       "attribute": "sleepiness",
-      "value_change": 1,
+      "value_change": 2,
       "cannot_reach_zero": true,
-      "pulse": "10m",
+      "pulse": "5m",
       "pulse_immediately": true,
       "pulse_on_destroy": false
    },
-   "modifiers": {}
+   "modifiers": {},
+   "injected_ai": {
+      "actions": [
+         "stonehearth_ace:actions:compelled_behaviors:compelled_sleep"
+      ]
+   }
 }

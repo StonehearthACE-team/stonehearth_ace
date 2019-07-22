@@ -1,7 +1,14 @@
 {
-   "type": "entity",
    "components": {
+		"model_variants": {
+         "half_renewed": {
+            "models": [
+               "file(silkweed_half_renewed.qb)"
+            ]
+         }
+      },
       "stonehearth:renewable_resource_node": {
+			"half_renewed_model_variant": true,
          "resource_loot_table": {
             "entries": {
                "optional": {
@@ -12,6 +19,17 @@
                      }
                   }
                }
+            }
+         },
+			"seasons": {
+            "spring": {
+               "renewal_time_multiplier": 2
+            },
+            "autumn": {
+               "renewal_time_multiplier": 4
+            },
+				"winter": {
+               "renewal_time_multiplier": 6
             }
          }
       }

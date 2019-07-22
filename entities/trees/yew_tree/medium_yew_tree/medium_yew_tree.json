@@ -101,8 +101,8 @@
             "x",
             "z"
          ],
-         "model_origin": { "x": 0, "y": 0, "z": 0 },
-         "region_origin": { "x": 0, "y": 0, "z": 0 }
+         "model_origin": { "x": -0.5, "y": 0, "z": 0.5 },
+         "region_origin": { "x": -0.5, "y": 0, "z": 0.5 }
       },
       "render_info": {
          "scale": 1
@@ -131,7 +131,29 @@
    "entity_data": {
       "stonehearth:evolve_data": {
          "next_stage": "stonehearth_ace:trees:yew:large",
-         "evolve_time": "5d"
+         "evolve_time": "5d",
+         "biomes": {
+            "stonehearth:biome:arctic": {
+               "evolve_time_multiplier": 1.5
+            },
+            "stonehearth:biome:temperate": {
+               "evolve_time_multiplier": 1.5
+            },
+            "stonehearth:biome:desert": {
+               "evolve_time_multiplier": 4
+            }
+         },
+         "seasons": {
+            "spring": {
+               "evolve_time_multiplier": 1.5
+            },
+            "summer": {
+               "evolve_time_multiplier": 1.2
+            },
+            "winter": {
+               "evolve_time_multiplier": 2
+            }
+         }
       },
       "stonehearth:catalog": {
          "display_name": "i18n(stonehearth_ace:entities.trees.yew_tree.medium_yew_tree.display_name)",

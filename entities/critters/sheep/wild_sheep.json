@@ -4,7 +4,8 @@
    "components": {
       "mixintypes": {
          "stonehearth:renewable_resource_node": "override",
-         "stonehearth:commands": "override"
+         "stonehearth:commands": "override",
+         "stonehearth:resource_node": "override"
       },
       "model_variants": {
          "half_renewed": {
@@ -21,7 +22,26 @@
          "auto_harvest": true,
          "renew_effect": "stonehearth:effects:fursplosion_effect",
          "check_owner": false,
-         "half_renewed_model_variant": true
+         "half_renewed_model_variant": true,
+         "seasons": {
+            "spring": {
+               "evolve_time_multiplier": 2
+            },
+            "summer": {
+               "evolve_time_multiplier": 3
+            },
+            "autumn": {
+               "evolve_time_multiplier": 1.5
+            }
+         }
+      },
+      "stonehearth:resource_node": {
+         "category": "harvest",
+         "harvest_overlay_effect": "stonehearth:effects:chop_overlay_effect",
+         "harvester_effect": "fiddle",
+         "description": "harvest_animal",
+         "harvestable_by_harvest_tool": false,
+         "check_owner": true
       },
       "stonehearth:attributes": {
          "mixintypes": {

@@ -1,0 +1,34 @@
+{
+   "entity_data": {
+      "stonehearth:stump_data": {
+         "stump_alias": "stonehearth_ace:trees:pine:small:stump"
+      },
+      "stonehearth_ace:replant_data": {
+         "seed_alias": "stonehearth:trees:silver:pine:seed"
+      },
+		"stonehearth:evolve_data": {
+         "biomes": {
+				"stonehearth_ace:biome:highlands": {
+               "evolve_time_multiplier": 1.5
+            },
+				"stonehearth:biome:temperate": {
+               "evolve_time_multiplier": 2
+            },
+            "stonehearth:biome:desert": {
+               "evolve_time_multiplier": 4
+            }
+         },
+         "seasons": {
+				"spring": {
+               "evolve_time_multiplier": 1.5
+            },
+				"summer": {
+               "evolve_time_multiplier": 2
+            },
+            "winter": {
+               "evolve_time_multiplier": 1.5
+            }
+         }
+      }
+   }
+}

@@ -98,10 +98,34 @@
    "entity_data": {
       "stonehearth:evolve_data": {
          "next_stage": "stonehearth_ace:trees:highland_pine:small",
-         "evolve_time": "14h+2h"
+         "evolve_time": "14h+2h",
+         "biomes": {
+            "stonehearth:biome:arctic": {
+               "evolve_time_multiplier": 1.2
+            },
+            "stonehearth:biome:temperate": {
+               "evolve_time_multiplier": 2
+            },
+            "stonehearth:biome:desert": {
+               "evolve_time_multiplier": 5
+            }
+         },
+         "seasons": {
+            "spring": {
+               "evolve_time_multiplier": 1.2
+            },
+            "summer": {
+               "evolve_time_multiplier": 2
+            },
+            "autumn": {
+               "evolve_time_multiplier": 1.2
+            }
+         }
       },
       "stonehearth:catalog": {
-         "material_tags":["stockpile_plant"],
+         "material_tags": [
+            "stockpile_plant"
+         ],
          "display_name": "i18n(stonehearth_ace:entities.trees.highland_pine_tree.bud.tree_highland_pine_bud.display_name)",
          "description": "i18n(stonehearth_ace:entities.trees.highland_pine_tree.bud.tree_highland_pine_bud.description)",
          "category": "plants"

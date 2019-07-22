@@ -1,0 +1,32 @@
+{
+   "create_camp_info" : {
+      "citizens": {
+			"guards": {
+            "from_population": {
+               "min": 0,
+               "max": 2,
+               "location": {
+                  "x": 0,
+                  "z": 0
+               },
+               "range": 3
+            },
+            "combat_leash_range": 30,
+            "tuning": "stonehearth:monster_tuning:goblins:guard"
+         },
+         "pipers": {
+            "from_population": {
+               "min": 1,
+               "max": 1,
+               "location": {
+                  "x": 0,
+                  "z": 0
+               },
+               "range": 3
+            },
+            "combat_leash_range": 50,
+            "tuning": "stonehearth_ace:monster_tuning:goblins:piper"
+         }
+      }
+   }
+}

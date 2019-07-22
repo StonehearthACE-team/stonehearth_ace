@@ -18,12 +18,13 @@
       "destination": {
          "region": [
             {
-               "min": { "x": 0, "y": 0, "z": 0 },
+               "min": { "x": 0, "y": -2, "z": -1 },
                "max": { "x": 1, "y": 1, "z": 1 }
             }
          ],
          "adjacency_flags": [
-            "front"
+            "front",
+            "back"
          ]
       },
       "stonehearth:storage": {

@@ -1,0 +1,34 @@
+{
+   "components": {
+      "model_variants": {
+         "half_renewed": {
+            "models": [
+               "file(frostsnap_plant_half_renewed.qb)"
+            ]
+         }
+      },
+      "stonehearth:renewable_resource_node": {
+         "half_renewed_model_variant": true,
+			"biomes": {
+				"stonehearth_ace:biome:highlands": {
+               "renewal_time_multiplier": 1.5
+            },
+            "stonehearth:biome:temperate": {
+               "renewal_time_multiplier": 2
+            },
+				"stonehearth:biome:desert": {
+               "renewal_time_multiplier": 4
+            }
+         },
+         "seasons": {
+            "summer": {
+               "renewal_time_multiplier": 4
+            },
+            "autumn": {
+               "renewal_time_multiplier": 1.5
+            }
+         }
+      }
+   },
+   "entity_data": {}
+}

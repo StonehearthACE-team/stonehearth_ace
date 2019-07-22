@@ -1,11 +1,16 @@
 {
-   "mixins": "stonehearth:mixins:item_properties",
+   "mixins": "stonehearth_ace:mixins:drink_decay",
    "type": "entity",
    "components": {
       "model_variants": {
          "default": {
             "models": [
                "file(smoothie.qb)"
+            ]
+         },
+         "decay_1": {
+            "models": [
+               "file(smoothie_spoiling.qb)"
             ]
          }
       },

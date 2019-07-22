@@ -7,12 +7,12 @@
             "models": [
                "file(moonbell_plant_harvested.qb)"
             ]
+         },
+         "half_renewed": {
+            "models": [
+               "file(moonbell_plant_half_renewed.qb)"
+            ]
          }
-      },
-      "effect_list": {
-         "effects": [
-            "stonehearth_ace:effects:moonbell_glow"
-         ]
       },
       "stonehearth:renewable_resource_node": {
          "resource": "stonehearth_ace:resources:herb:moonbell",
@@ -20,6 +20,7 @@
          "harvest_overlay_effect": "stonehearth:effects:harvest_plant_overlay_effect",
          "unripe_description": "i18n(stonehearth_ace:entities.plants.moonbell_plant.unripe_description)",
          "renewal_time": "22h+2h",
+         "half_renewed_model_variant": true,
          "resource_loot_table": {
             "entries": {
                "optional": {
@@ -38,6 +39,25 @@
                      }
                   }
                }
+            }
+         },
+         "biomes": {
+            "stonehearth:biome:arctic": {
+               "renewal_time_multiplier": 2
+            },
+				"stonehearth:biome:desert": {
+               "renewal_time_multiplier": 4
+            }
+         },
+         "seasons": {
+            "summer": {
+               "renewal_time_multiplier": 2
+            },
+            "autumn": {
+               "renewal_time_multiplier": 4
+            },
+				"winter": {
+               "renewal_time_multiplier": 8
             }
          }
       },

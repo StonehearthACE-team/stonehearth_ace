@@ -22,7 +22,29 @@
    "entity_data": {
       "stonehearth:evolve_data": {
          "next_stage": "stonehearth_ace:trees:yew:stem",
-         "evolve_time": "14h+2h"
+         "evolve_time": "14h+2h",
+         "biomes": {
+            "stonehearth:biome:arctic": {
+               "evolve_time_multiplier": 1.5
+            },
+            "stonehearth:biome:temperate": {
+               "evolve_time_multiplier": 1.5
+            },
+            "stonehearth:biome:desert": {
+               "evolve_time_multiplier": 4
+            }
+         },
+         "seasons": {
+            "spring": {
+               "evolve_time_multiplier": 1.5
+            },
+            "summer": {
+               "evolve_time_multiplier": 1.2
+            },
+            "winter": {
+               "evolve_time_multiplier": 2
+            }
+         }
       },
       "stonehearth:catalog": {
          "material_tags": [

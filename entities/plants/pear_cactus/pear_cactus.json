@@ -1,0 +1,87 @@
+{
+   "components": {
+		"mixintypes": {
+			"model_variants": "override"
+		},
+		"model_variants": {
+         "default": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "/stonehearth/entities/plants/pear_cactus/pear_cactus_empty.qb"
+                  ]
+               }
+            ]
+         },
+         "autumn": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(pear_cactus_autumn.qb)"
+                  ]
+               }
+            ]
+         },
+         "spring": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+							"/stonehearth/entities/plants/pear_cactus/pear_cactus_spring_empty.qb",
+                     "file(pear_cactus_spring_2.qb)",
+							"file(pear_cactus_spring_3.qb)"
+                  ]
+               }
+            ]
+         },
+         "winter": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(pear_cactus_winter.qb)"
+                  ]
+               }
+            ]
+         }
+		},
+      "stonehearth:renewable_resource_node": {
+         "half_renewed_model": {
+            "model": "/stonehearth_ace/entities/plants/pear_cactus/pear_cactus_half_renewed.qb",
+            "matrix": "pears",
+            "scale": 0.15,
+            "offset": {"x": 7, "y": 0, "z": 5}
+         },
+         "renewed_model": {
+            "model": "/stonehearth_ace/entities/plants/pear_cactus/pear_cactus_renewed.qb",
+            "matrix": "pears",
+            "scale": 0.15,
+            "offset": {"x": 7, "y": 0, "z": 5}
+         },
+			"biomes": {
+				"stonehearth:biome:temperate": {
+               "renewal_time_multiplier": 2
+            },
+				"stonehearth_ace:biome:highlands": {
+               "renewal_time_multiplier": 4
+            },
+            "stonehearth:biome:arctic": {
+               "renewal_time_multiplier": 6
+            }
+         },
+         "seasons": {
+				"spring": {
+               "renewal_time_multiplier": 2
+            },
+            "summer": {
+               "renewal_time_multiplier": 1.5
+            },
+				"winter": {
+               "renewal_time_multiplier": 4
+            }
+         }
+      }
+   }
+}

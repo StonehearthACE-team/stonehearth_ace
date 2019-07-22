@@ -1,5 +1,25 @@
 {
-  "statistics": {
+	"loot_drops": {
+      "entries": {
+         "currency": {
+            "num_rolls": {
+               "min": 1,
+               "max": 3
+            },
+            "items": {
+               "none": {
+                  "uri": "",
+                  "weight": 0
+               },
+               "currency": {
+                  "uri": "stonehearth_ace:loot:currency:forest",
+                  "weight": 10
+               }
+            }
+         }
+      }
+   },
+	"statistics": {
       "specifier": "varanus_boss"
    }
 }

@@ -1,5 +1,25 @@
 {
   "statistics": {
       "specifier": "miniboss"
+   },
+	"loot_drops": {
+      "entries": {
+         "currency": {
+            "num_rolls": {
+               "min": 1,
+               "max": 3
+            },
+            "items": {
+               "none": {
+                  "uri": "",
+                  "weight": 0
+               },
+               "currency": {
+                  "uri": "stonehearth_ace:loot:currency:red_kiln",
+                  "weight": 1
+               }
+            }
+         }
+      }
    }
 }
