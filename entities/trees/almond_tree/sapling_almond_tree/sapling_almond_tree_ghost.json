@@ -23,6 +23,16 @@
                }
             ]
          },
+         "desert": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(sapling_almond_tree_desert.qb)"
+                  ]
+               }
+            ]
+         },
          "summer": {
             "models": [
                {
@@ -45,6 +55,12 @@
          }
       },
       "stonehearth:seasonal_model_switcher": {
+         "stonehearth:biome:desert": {
+            "spring": "default",
+            "summer": "summer",
+            "autumn": "desert",
+            "winter": "winter"
+         },
          "*": {
             "spring": "default",
             "summer": "summer",
