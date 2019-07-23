@@ -46,8 +46,48 @@ function AceRenewableResourceNodeComponent:post_activate()
       end
    end
 
-   self:_create_listeners()
-   
+   -- if the world is being generated, don't try to set up renewal stuff yet (season isn't properly set)
+   if self._json.seasons and not stonehearth.game_creation:is_world_created() then
+      self._world_created_listener = radiant.events.listen_once(stonehearth.game_creation, 'stonehearth:world_generation_complete', function()
+         -- listen for the first seasons changed event; ignore it, and then start listening for real
+         self._season_change_listener = radiant.events.listen(stonehearth.seasons, 'stonehearth:seasons:changed', self, self._create_listeners)
+      end)
+   else
+      self:_create_listeners(true)
+   end
+end
+
+AceRenewableResourceNodeComponent._ace_old_destroy = RenewableResourceNodeComponent.destroy
+function AceRenewableResourceNodeComponent:destroy()
+   self:_ace_old_destroy()
+   self:_destroy_added_to_world_listener()
+   self:_destroy_listeners()
+end
+
+function AceRenewableResourceNodeComponent:_create_listeners(season_set)
+   if self._json.seasons then
+      self._season_change_listener = radiant.events.listen(stonehearth.seasons, 'stonehearth:seasons:changed', function()
+         self:_check_season()
+
+         if not season_set then
+            season_set = true
+            self:_initialize_renewal()
+         else
+            self:_update_renew_timer(true)
+         end
+      end)
+
+      if season_set then
+         self:_check_season()
+      end
+   end
+
+   if season_set then
+      self:_initialize_renewal()
+   end
+end
+
+function AceRenewableResourceNodeComponent:_initialize_renewal()
    if self._sv.harvestable then
       --If we're harvestable on load, fire the harvestable event again,
       --in case we need to reinitialize tasks and other nonsavables on the event
@@ -68,23 +108,6 @@ function AceRenewableResourceNodeComponent:post_activate()
    end
 end
 
-AceRenewableResourceNodeComponent._ace_old_destroy = RenewableResourceNodeComponent.destroy
-function AceRenewableResourceNodeComponent:destroy()
-   self:_ace_old_destroy()
-   self:_destroy_added_to_world_listener()
-   self:_destroy_listeners()
-end
-
-function AceRenewableResourceNodeComponent:_create_listeners()
-   if self._json.seasons then
-      self._season_change_listener = radiant.events.listen(stonehearth.seasons, 'stonehearth:seasons:changed', function()
-         self:_check_season()
-         self:_update_renew_timer(true)
-      end)
-      self:_check_season()
-   end
-end
-
 function AceRenewableResourceNodeComponent:_destroy_added_to_world_listener()
    if self._added_to_world_listener then
       self._added_to_world_listener:destroy()
@@ -97,12 +120,16 @@ function AceRenewableResourceNodeComponent:_destroy_listeners()
       self._season_change_listener:destroy()
       self._season_change_listener = nil
    end
+   if self._world_created_listener then
+      self._world_created_listener:destroy()
+      self._world_created_listener = nil
+   end
 end
 
 function AceRenewableResourceNodeComponent:_check_season()
    local season = stonehearth.seasons:get_current_season()
    local modifiers = season and self._json.seasons[season.id]
-   log:debug('%s applying season modifiers for %s: %s', self._entity, tostring(season.id), modifiers and radiant.util.table_tostring(modifiers) or 'NIL')
+   --log:debug('%s applying season modifiers for %s: %s', self._entity, tostring(season.id), modifiers and radiant.util.table_tostring(modifiers) or 'NIL')
    self:_apply_modifiers('season', modifiers)
 end
 

@@ -120,7 +120,7 @@ function AceWaterfallComponent:_update_region()
       destination_comp:get_region():modify(function(cursor)
          cursor:clear()
          if cube then
-            cursor:add_cube(cube)
+            cursor:add_cube(cube:translated(self._sv.direction))
          end
       end)
 
