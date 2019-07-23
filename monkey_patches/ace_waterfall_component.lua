@@ -117,7 +117,7 @@ function AceWaterfallComponent:_update_region()
          destination_comp:set_region(_radiant.sim.alloc_region3())
          destination_comp:set_auto_update_adjacent(true)
       end
-      destination_component:get_region():modify(function(cursor)
+      destination_comp:get_region():modify(function(cursor)
          cursor:clear()
          if cube then
             cursor:add_cube(cube)

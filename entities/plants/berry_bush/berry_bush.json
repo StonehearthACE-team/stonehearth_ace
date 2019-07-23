@@ -1,6 +1,7 @@
 {
    "components": {
       "stonehearth:renewable_resource_node": {
+			"harvest_overlay_effect": "stonehearth_ace:effects:harvest_fruit_overlay_effect",
          "half_renewed_model": {
             "model": "/stonehearth_ace/entities/plants/berry_bush/berry_bush_half_renewed.qb",
             "matrix": "berries",
@@ -31,6 +32,14 @@
 				"winter": {
                "renewal_time_multiplier": 8
             }
+         }
+      },
+		"stonehearth:seasonal_model_switcher": {
+         "*": {
+            "spring": "spring",
+            "summer": "default",
+            "autumn": "autumn",
+            "winter": "winter"
          }
       }
    }

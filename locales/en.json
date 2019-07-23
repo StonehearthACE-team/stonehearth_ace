@@ -5090,8 +5090,20 @@
                "description": "A log. Made of wood, really old wood."
             },
             "almond_log": {
-               "display_name": "i18n(stonehearth_ace:entities.resources.wood.almond_log.display_name)",
-               "description": "i18n(stonehearth_ace:entities.resources.wood.almond_log.description)"
+               "display_name": "Almond Wood Log",
+               "description": "A log. Made of wood."
+            },
+				"chestnut_log": {
+               "display_name": "Chestnut Wood Log",
+               "description": "A log. Made of wood."
+            },
+				"hazelnut_log": {
+               "display_name": "Hazel Log",
+               "description": "A log. Made of wood."
+            },
+				"walnut_log": {
+               "display_name": "Walnut Wood Log",
+               "description": "A log. Made of wood."
             }
          },
          "herb": {
@@ -5663,40 +5675,176 @@
             "seed": {
                "tree_chestnut_seed": {
                   "display_name": "Chestnut Tree Seed",
-                  "description": "Can't be planted but may be used as an edible nut."
+                  "description": "Chestnuts can be used as edible nuts or planted."
+               },
+               "tree_chestnut_seed_ghost": {
+                  "display_name": "Chestnut Tree Seed",
+                  "description": "Can be planted to grow a tree that bears nuts from Summer to Autumn."
                }
+            },
+            "medium_chestnut_tree": {
+               "display_name": "Chestnut Tree",
+               "description": "In the prime of its life. Will bear nuts throughout Summer and Autumn."
+            },
+            "large_chestnut_tree": {
+               "display_name": "Large Chestnut Tree",
+               "description": "An older and stronger tree. Will bear nuts throughout Summer and Autumn."
+            },
+            "bud": {
+               "tree_chestnut_plant_bud": {
+                  "description": "It will soon start bearing nuts.",
+                  "display_name": "Budding Chestnut Tree"
+               }
+            },
+            "sapling_chestnut_tree": {
+               "description": "Baby Chestnut Tree.",
+               "sapling_chestnut_tree_iconic": {
+                  "description": "Plant it in the earth and watch it grow. Chestnut trees will bear nuts from Summer to Autumn."
+               },
+               "sapling_chestnut_tree_ghost": {
+                  "description": "Baby Chestnut Tree.",
+                  "display_name": "Chestnut Tree Sapling"
+               }
+            },
+            "sprout": {
+               "tree_chestnut_sprout": {
+                  "description": "Will bear a lot of nuts one day!",
+                  "display_name": "Chestnut Tree Sproutling"
+               }
+            },
+            "stem": {
+               "tree_chestnut_plant_stem": {
+                  "display_name": "Stemming Chestnut Tree",
+                  "description": "Up, up, up it goes!"
+               }
+            },
+            "small_chestnut_tree": {
+               "display_name": "Small Chestnut Tree",
+               "description": "So young and productive. Will bear nuts throughout the Autumn."
             }
          },
          "hazelnut_tree": {
             "seed": {
                "tree_hazelnut_seed": {
-                  "description": "Can't be planted but may be used as an edible nut.",
-                  "display_name": "Hazelnut Tree Seed"
+                  "description": "Hazelnuts can be used as edible nuts or planted.",
+                  "display_name": "Hazel Tree Seed"
+               },
+               "tree_hazelnut_seed_ghost": {
+                  "display_name": "Hazel Tree Seed",
+                  "description": "Can be planted to grow a tree that bears nuts in the Autumn."
                }
+            },
+            "medium_hazelnut_tree": {
+               "display_name": "Hazel Tree",
+               "description": "A beautiful tree. Will bear nuts throughout the Autumn."
+            },
+            "large_hazelnut_tree": {
+               "display_name": "Large Hazel Tree",
+               "description": "Old, gnarled and wise. Will bear nuts throughout the Autumn."
+            },
+            "bud": {
+               "tree_hazelnut_plant_bud": {
+                  "description": "It will soon start bearing nuts.",
+                  "display_name": "Budding Hazel Tree"
+               }
+            },
+            "sapling_hazelnut_tree": {
+               "description": "Baby Hazel Tree.",
+               "sapling_hazelnut_tree_iconic": {
+                  "description": "Plant it in the earth and watch it grow. Hazel trees will bear nuts in the Autumn."
+               },
+               "sapling_hazelnut_tree_ghost": {
+                  "description": "Baby Hazel Tree.",
+                  "display_name": "Hazel Tree Sapling"
+               }
+            },
+            "sprout": {
+               "tree_hazelnut_sprout": {
+                  "description": "Will bear a lot of nuts one day!",
+                  "display_name": "Hazel Tree Sproutling"
+               }
+            },
+            "stem": {
+               "tree_hazelnut_plant_stem": {
+                  "display_name": "Stemming Hazel Tree",
+                  "description": "Up, up, up it goes!"
+               }
+            },
+            "small_hazelnut_tree": {
+               "display_name": "Small Hazel Tree",
+               "description": "Has seen fewer seasons than most. Will bear nuts throughout the Autumn."
             }
          },
          "walnut_tree": {
             "seed": {
                "tree_walnut_seed": {
-                  "description": "Can't be planted but may be used as an edible nut.",
+                  "description": "Walnuts can be used as edible nuts or planted.",
                   "display_name": "Walnut Tree Seed"
+               },
+               "tree_walnut_seed_ghost": {
+                  "display_name": "Walnut Tree Seed",
+                  "description": "Can be planted to grow a tree that bears nuts in the Autumn."
                }
+            },
+            "medium_walnut_tree": {
+               "display_name": "Walnut Tree",
+               "description": "A fine tree with deep roots. Will bear nuts throughout the Autumn."
+            },
+            "large_walnut_tree": {
+               "display_name": "Large Walnut Tree",
+               "description": "Fully grown and marvelous. Will bear nuts throughout the Autumn."
+            },
+            "bud": {
+               "tree_walnut_plant_bud": {
+                  "description": "It will soon start bearing nuts.",
+                  "display_name": "Budding Walnut Tree"
+               }
+            },
+            "sapling_walnut_tree": {
+               "description": "Baby Walnut Tree.",
+               "sapling_walnut_tree_iconic": {
+                  "description": "Plant it in the earth and watch it grow. Walnut trees will bear nuts in the Autumn."
+               },
+               "sapling_walnut_tree_ghost": {
+                  "description": "Baby Walnut Tree.",
+                  "display_name": "Walnut Tree Sapling"
+               }
+            },
+            "sprout": {
+               "tree_walnut_sprout": {
+                  "description": "Will bear a lot of nuts one day!",
+                  "display_name": "Walnut Tree Sproutling"
+               }
+            },
+            "stem": {
+               "tree_walnut_plant_stem": {
+                  "display_name": "Stemming Walnut Tree",
+                  "description": "Up, up, up it goes!"
+               }
+            },
+            "small_walnut_tree": {
+               "display_name": "Small Walnut Tree",
+               "description": "Small and naive... For a tree. Will bear nuts throughout the Autumn."
             }
          },
          "almond_tree": {
             "seed": {
                "tree_almond_seed": {
-                  "description": "Green almonds can be eaten raw and are used as either edible nuts or fruits.",
+                  "description": "Green almonds can be eaten raw, planted or used as either edible nuts or fruits.",
                   "display_name": "Almond Tree Seed"
+               },
+               "tree_almond_seed_ghost": {
+                  "display_name": "Almond Tree Seed",
+                  "description": "Can be planted to grow a tree that bears nuts from Summer to Autumn."
                }
             },
             "medium_almond_tree": {
-               "display_name": "i18n(stonehearth_ace:entities.trees.almond_tree.medium_almond_tree.display_name)",
-               "description": "i18n(stonehearth_ace:entities.trees.almond_tree.medium_almond_tree.description)"
+               "display_name": "Almond Tree",
+               "description": "A sturdy and grown tree. Will bear nuts throughout Summer and Autumn."
             },
             "large_almond_tree": {
                "display_name": "Large Almond Tree",
-               "description": "i18n(stonehearth_ace:entities.trees.almond_tree.large_almond_tree.description)"
+               "description": "A mature, beautiful tree. Will bear nuts throughout Summer and Autumn."
             },
             "bud": {
                "tree_almond_plant_bud": {
@@ -5705,30 +5853,30 @@
                }
             },
             "sapling_almond_tree": {
-               "description": "i18n(stonehearth_ace:entities.trees.almond_tree.sapling_almond_tree.description)",
+               "description": "Baby Almond Tree.",
                "sapling_almond_tree_iconic": {
-                  "description": "i18n(stonehearth_ace:entities.trees.almond_tree.sapling_almond_tree.sapling_almond_tree_iconic.description)"
+                  "description": "Plant it in the earth and watch it grow. Almond trees will bear nuts from Summer to Autumn."
                },
                "sapling_almond_tree_ghost": {
-                  "description": "i18n(stonehearth_ace:entities.trees.almond_tree.sapling_almond_tree.sapling_almond_tree_ghost.description)",
-                  "display_name": "i18n(stonehearth_ace:entities.trees.almond_tree.sapling_almond_tree.sapling_almond_tree_ghost.display_name)"
+                  "description": "Baby Almond Tree.",
+                  "display_name": "Almond Tree Sapling"
                }
             },
             "sprout": {
                "tree_almond_sprout": {
-                  "description": "i18n(stonehearth_ace:entities.trees.almond_tree.sprout.tree_almond_sprout.description)",
-                  "display_name": "i18n(stonehearth_ace:entities.trees.almond_tree.sprout.tree_almond_sprout.display_name)"
+                  "description": "Will bear a lot of nuts one day!",
+                  "display_name": "Almond Tree Sproutling"
                }
             },
             "stem": {
                "tree_almond_plant_stem": {
-                  "display_name": "i18n(stonehearth_ace:entities.trees.almond_tree.stem.tree_almond_plant_stem.display_name)",
-                  "description": "i18n(stonehearth_ace:entities.trees.almond_tree.stem.tree_almond_plant_stem.description)"
+                  "display_name": "Stemming Almond Tree",
+                  "description": "Up, up, up it goes!"
                }
             },
             "small_almond_tree": {
-               "display_name": "i18n(stonehearth_ace:entities.trees.almond_tree.small_almond_tree.display_name)",
-               "description": "i18n(stonehearth_ace:entities.trees.almond_tree.small_almond_tree.description)"
+               "display_name": "Small Almond Tree",
+               "description": "A younger, smaller tree. Will bear nuts throughout the Autumn."
             }
          }
       },

@@ -7,7 +7,7 @@
          "category": "harvest",
          "renewal_time": "22h+2h",
          "unripe_description": "i18n(stonehearth_ace:entities.plants.cherry_bush.unripe_description)",
-         "harvest_overlay_effect": "stonehearth:effects:harvest_plant_overlay_effect",
+         "harvest_overlay_effect": "stonehearth_ace:effects:harvest_fruit_overlay_effect",
          "resource_loot_table": {
             "entries": {
                "optional": {
@@ -44,7 +44,7 @@
             "stonehearth:biome:arctic": {
                "renewal_time_multiplier": 1.5
             },
-				"stonehearth:biome:desert": {
+            "stonehearth:biome:desert": {
                "renewal_time_multiplier": 3
             }
          },
@@ -55,7 +55,7 @@
             "autumn": {
                "renewal_time_multiplier": 4
             },
-				"winter": {
+            "winter": {
                "renewal_time_multiplier": 8
             }
          }

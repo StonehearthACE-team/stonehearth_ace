@@ -47,7 +47,16 @@
             ]
          }
 		},
+		"stonehearth:seasonal_model_switcher": {
+         "*": {
+            "spring": "spring",
+            "summer": "default",
+            "autumn": "autumn",
+            "winter": "winter"
+         }
+      },
       "stonehearth:renewable_resource_node": {
+			"harvest_overlay_effect": "stonehearth_ace:effects:harvest_fruit_overlay_effect",
          "half_renewed_model": {
             "model": "/stonehearth_ace/entities/plants/pear_cactus/pear_cactus_half_renewed.qb",
             "matrix": "pears",

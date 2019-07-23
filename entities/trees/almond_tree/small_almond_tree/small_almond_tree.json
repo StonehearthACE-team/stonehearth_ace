@@ -110,9 +110,8 @@
       "stonehearth:renewable_resource_node": {
          "resource": "stonehearth_ace:food:almond:almond_basket",
          "category": "harvest",
-         "renewal_time": "16h+2h",
-         "unripe_description": "i18n(stonehearth_ace:entities.plants.cherry_bush.unripe_description)",
-         "harvest_overlay_effect": "stonehearth:effects:harvest_plant_overlay_effect",
+         "renewal_time": "36h+12h",
+         "harvest_overlay_effect": "stonehearth_ace:effects:harvest_nut_overlay_effect",
          "resource_loot_table": {
             "entries": {
                "optional": {
@@ -143,14 +142,15 @@
          },
          "seasons": {
             "spring": {
-               "renewal_time_multiplier": 6
+               "disable_renewal": true,
+               "destroy_resource": true
             },
             "summer": {
-               "renewal_time_multiplier": 4
+               "disable_renewal": true,
+               "destroy_resource": true
             },
             "winter": {
                "disable_renewal": true,
-               "drop_resource": true,
                "destroy_resource": true
             }
          }
@@ -159,7 +159,7 @@
    "entity_data": {
       "stonehearth:evolve_data": {
          "next_stage": "stonehearth_ace:trees:almond:medium",
-         "evolve_time": "3d",
+         "evolve_time": "21d+10d",
          "biomes": {
             "stonehearth:biome:temperate": {
                "evolve_time_multiplier": 1.2
