@@ -1,7 +1,7 @@
 local Entity = _radiant.om.Entity
 local FindBestCloseReachableEntityByType = radiant.class()
 
-FindBestCloseReachableEntityByType.name = 'find best reachable entity by type'
+FindBestCloseReachableEntityByType.name = 'find best close reachable entity by type'
 FindBestCloseReachableEntityByType.does = 'stonehearth_ace:find_best_close_reachable_entity_by_type'
 FindBestCloseReachableEntityByType.args = {
    filter_fn = 'function',             -- filter describing the kinds of entities to consider.
@@ -33,7 +33,7 @@ FindBestCloseReachableEntityByType.think_output = {
 }
 FindBestCloseReachableEntityByType.priority = {0, 1}  -- the rating of the found entity
 
-local log = radiant.log.create_logger('find_best_reachable_entity_by_type')
+local log = radiant.log.create_logger('find_best_close_reachable_entity_by_type')
 
 function FindBestCloseReachableEntityByType:start_thinking(ai, entity, args)
    assert(args.filter_fn)

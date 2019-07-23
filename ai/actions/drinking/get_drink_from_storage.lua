@@ -27,7 +27,7 @@ function GetDrinkFromContainerFromStorage:start_thinking(ai, entity, args)
    local owner_id = radiant.entities.get_player_id(entity)
    local key = tostring(args.drink_filter_fn) .. ':' .. owner_id
    ai:set_think_output({
-         drink_container_filter_fn = stonehearth.ai:filter_from_key('drink_filter', key, make_drink_container_filter(owner_id, args.drink_filter_fn)),
+         drink_container_filter_fn = stonehearth.ai:filter_from_key('drink_storage_filter', key, make_drink_container_filter(owner_id, args.drink_filter_fn)),
       })
 end
 

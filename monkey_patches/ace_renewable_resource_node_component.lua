@@ -79,7 +79,7 @@ function AceRenewableResourceNodeComponent:_create_listeners()
    if self._json.seasons then
       self._season_change_listener = radiant.events.listen(stonehearth.seasons, 'stonehearth:seasons:changed', function()
          self:_check_season()
-         self:_update_renew_timer()
+         self:_update_renew_timer(true)
       end)
       self:_check_season()
    end
@@ -102,6 +102,7 @@ end
 function AceRenewableResourceNodeComponent:_check_season()
    local season = stonehearth.seasons:get_current_season()
    local modifiers = season and self._json.seasons[season.id]
+   log:debug('%s applying season modifiers for %s: %s', self._entity, tostring(season.id), modifiers and radiant.util.table_tostring(modifiers) or 'NIL')
    self:_apply_modifiers('season', modifiers)
 end
 
