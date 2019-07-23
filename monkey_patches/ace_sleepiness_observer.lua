@@ -12,10 +12,10 @@ function AceSleepinessObserver:initialize()
 end
 
 AceSleepinessObserver._ace_old__on_hourly = SleepinessObserver._on_hourly
-function AceSleepinessObserver:_on_hourly()
-   self:_ace_old__on_hourly()
-	
+function AceSleepinessObserver:_on_hourly()	
 	if not self._sv.asleep then
+		self:_ace_old__on_hourly()
+		
 		local sleepiness = self._expendable_resources_component:get_value('sleepiness')	
 		self:_add_sleepiness_thoughts(sleepiness)
 	else
