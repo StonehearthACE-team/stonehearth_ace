@@ -80,7 +80,7 @@
          }
       },
       "stonehearth:resource_node": {
-         "durability": 6,
+         "durability": 7,
          "resource": "stonehearth_ace:resources:wood:almond_log"
       },
       "mob": {
@@ -106,6 +106,65 @@
                "max": { "x": 1, "y": 13, "z": 1 }
             }
          ]
+      },
+      "stonehearth:renewable_resource_node": {
+         "resource": "stonehearth_ace:food:almond:almond_basket",
+         "category": "harvest",
+         "renewal_time": "24h+6h",
+         "harvest_overlay_effect": "stonehearth_ace:effects:harvest_nut_overlay_effect",
+         "resource_loot_table": {
+            "entries": {
+               "extra_nuts": {
+                  "num_rolls": {
+                     "min": 1,
+                     "max": 2
+                  },
+                  "items": {
+                     "nuts": {
+                        "uri": "stonehearth_ace:food:almond:almond_basket",
+                        "weight": 1
+                     }
+                  }
+               },
+               "optional": {
+                  "num_rolls": {
+                     "min": 1,
+                     "max": 2
+                  },
+                  "items": {
+                     "seed": {
+                        "uri": "stonehearth_ace:trees:almond:seed",
+                        "weight": 1
+                     }
+                  }
+               }
+            }
+         },
+         "half_renewed_model": {
+            "model": "/stonehearth_ace/entities/trees/almond_tree/large_almond_tree/large_almond_tree_half_renewed.qb",
+            "matrix": "almonds",
+            "scale": 0.2,
+            "offset": { "x": 31, "y": -26, "z": 31 }
+         },
+         "renewed_model": {
+            "model": "/stonehearth_ace/entities/trees/almond_tree/large_almond_tree/large_almond_tree_renewed.qb",
+            "matrix": "almonds",
+            "scale": 0.2,
+            "offset": { "x": 31, "y": -26, "z": 31 }
+         },
+         "seasons": {
+            "spring": {
+               "disable_renewal": true,
+               "destroy_resource": true
+            },
+            "summer": {
+               "renewal_time_multiplier": 2
+            },
+            "winter": {
+               "disable_renewal": true,
+               "destroy_resource": true
+            }
+         }
       }
    },
    "entity_data": {
