@@ -2,7 +2,7 @@ local AcePeriodicAttributeModificationBuff = class()
 
 function AcePeriodicAttributeModificationBuff:on_buff_added(entity, buff)
    local json = buff:get_json()
-	local attribute = nil
+	local attribute_value = nil
    self._tuning = json.script_info
 	self._pulse_listener = nil
    assert(self._tuning.attribute)
@@ -15,12 +15,12 @@ function AcePeriodicAttributeModificationBuff:on_buff_added(entity, buff)
 	
 	local resources = self._entity:get_component('stonehearth:expendable_resources')
    if resources then
-		attribute = resources:get_value(self._tuning.attribute) or nil
+		attribute_value = resources:get_value(self._tuning.attribute) or nil
    else
 		return
    end
 	
-	if attribute then
+	if attribute_value then
 		self._pulse_listener = stonehearth.calendar:set_interval("Aura Buff "..buff:get_uri().." pulse", pulse_duration, 
 				function()
 					self:_on_pulse()
@@ -36,7 +36,7 @@ function AcePeriodicAttributeModificationBuff:on_buff_removed(entity, buff)
       self._pulse_listener:destroy()
       self._pulse_listener = nil
    end
-   if self._tuning.pulse_on_destroy and attribute then
+   if self._tuning.pulse_on_destroy and attribute_value then
       self:_on_pulse()
    end
 end

@@ -652,9 +652,9 @@
          "VERY_THIRSTY": 4
       }, 
 		"drink_max_distance": {
-         "DEFAULT": 30,
-         "THIRSTY": 50,
-         "VERY_THIRSTY": 80
+         "DEFAULT": 80,
+         "THIRSTY": 160,
+         "VERY_THIRSTY": 240
       }, 
 		"score": {
          "drink": {
@@ -670,9 +670,9 @@
          "FATIGUED_THOUGHT_THRESHOLD": 20,
 			"EXHAUSTED_THOUGHT_THRESHOLD": 26,
          "PET_SLEEP_DURATION": 4800,
-         "BEDTIME_START_HOUR": 1,  "__comment": "Effective sleepiness is increased between bedtime start/stop hours.",
+         "BEDTIME_START_HOUR": 1,
          "BEDTIME_END_HOUR": 7,
-         "BEDTIME_SLEEPINESS_BOOST": 6,
+         "BEDTIME_SLEEPINESS_BOOST": 8,
 			"MIN_SLEEPINESS_TO_SLEEP": 22,
          "MIN_SLEEPINESS_TO_SLEEP_ON_GROUND": 28,
 			"MAX_SLEEPINESS": 32

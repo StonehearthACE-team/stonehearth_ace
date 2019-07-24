@@ -22,16 +22,16 @@
       "destination": {
          "region": [
             {
-               "min": { "x": 0, "y": 0, "z": -1 },
-               "max": { "x": 1, "y": 1, "z": 0 }
+               "min": { "x": -1, "y": 0, "z": -2 },
+               "max": { "x": 2, "y": 1, "z": 1 }
             }
          ]
       },
       "region_collision_shape": {
          "region": [
             {
-               "min": { "x": 0, "y": 0, "z": -1 },
-               "max": { "x": 1, "y": 8, "z": 0 }
+               "min": { "x": -1, "y": 0, "z": -2 },
+               "max": { "x": 2, "y": 9, "z": 1 }
             }
          ]
       }
@@ -42,16 +42,16 @@
       },
       "stonehearth:evolve_data": {
          "next_stage": "stonehearth_ace:trees:hazelnut:small",
-         "evolve_time": "1d",
+         "evolve_time": "1d+12h",
          "biomes": {
             "stonehearth:biome:temperate": {
                "evolve_time_multiplier": 1.2
             },
-            "stonehearth_ace:biome:highlands": {
+            "stonehearth:biome:arctic": {
                "evolve_time_multiplier": 1.5
             },
-            "stonehearth:biome:arctic": {
-               "evolve_time_multiplier": 2
+            "stonehearth:biome:desert": {
+               "evolve_time_multiplier": 3
             }
          },
          "seasons": {
@@ -68,11 +68,12 @@
       },
       "stonehearth:net_worth": {
          "value_in_gold": 27,
-         "rarity": "uncommon",
+         "rarity": "rare",
          "shop_info": {
             "buyable": true,
             "sellable": true,
-            "shopkeeper_type": "caravan"
+            "shopkeeper_type": "caravan",
+            "shopkeeper_level": 2
          }
       },
       "stonehearth:catalog": {

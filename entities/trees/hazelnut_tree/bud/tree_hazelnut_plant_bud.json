@@ -3,7 +3,7 @@
    "mixins": "stonehearth:mixins:placed_object",
    "components": {
       "render_info": {
-         "scale": 0.9
+         "scale": 0.8
       },
       "stonehearth:evolve": {},
       "model_variants": {
@@ -25,28 +25,28 @@
          "region": [
             {
                "min": { "x": 0, "y": 0, "z": 0 },
-               "max": { "x": 1, "y": 5, "z": 1 }
+               "max": { "x": 1, "y": 7, "z": 1 }
             }
          ]
       },
       "mob": {
-         "model_origin": { "x": -0.45, "y": 0, "z": -0.45 },
+         "model_origin": { "x": -0.4, "y": 0, "z": -0.4 },
          "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
       }
    },
    "entity_data": {
       "stonehearth:evolve_data": {
          "next_stage": "stonehearth_ace:trees:hazelnut:small",
-         "evolve_time": "14h+2h",
+         "evolve_time": "2d+12h",
          "biomes": {
             "stonehearth:biome:temperate": {
                "evolve_time_multiplier": 1.2
             },
-            "stonehearth_ace:biome:highlands": {
+            "stonehearth:biome:arctic": {
                "evolve_time_multiplier": 1.5
             },
-            "stonehearth:biome:arctic": {
-               "evolve_time_multiplier": 2
+            "stonehearth:biome:desert": {
+               "evolve_time_multiplier": 3
             }
          },
          "seasons": {

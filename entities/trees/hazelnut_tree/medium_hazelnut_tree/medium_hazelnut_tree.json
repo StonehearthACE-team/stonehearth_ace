@@ -10,7 +10,8 @@
                   "items": [
                      "file(medium_hazelnut_tree.qb)",
                      "file(medium_hazelnut_tree_2.qb)",
-                     "file(medium_hazelnut_tree_3.qb)"
+                     "file(medium_hazelnut_tree_3.qb)",
+                     "file(medium_hazelnut_tree_4.qb)"
                   ]
                }
             ]
@@ -63,7 +64,7 @@
          }
       },
       "stonehearth:resource_node": {
-         "durability": 6,
+         "durability": 5,
          "resource": "stonehearth_ace:resources:wood:hazelnut_log"
       },
       "mob": {
@@ -77,33 +78,93 @@
       "destination": {
          "region": [
             {
-               "min": { "x": -1, "y": 0, "z": -1 },
-               "max": { "x": 2, "y": 1, "z": 2 }
+               "min": { "x": -2, "y": 0, "z": -1 },
+               "max": { "x": 3, "y": 1, "z": 2 }
             }
          ]
       },
       "region_collision_shape": {
          "region": [
             {
-               "min": { "x": 0, "y": 0, "z": 0 },
-               "max": { "x": 1, "y": 11, "z": 1 }
+               "min": { "x": -2, "y": 0, "z": -1 },
+               "max": { "x": 3, "y": 12, "z": 2 }
             }
          ]
+      },
+      "stonehearth:renewable_resource_node": {
+         "resource": "stonehearth_ace:food:hazelnut:hazelnut_basket",
+         "category": "harvest",
+         "renewal_time": "32h+6h",
+         "harvest_overlay_effect": "stonehearth_ace:effects:harvest_nut_overlay_effect",
+         "resource_loot_table": {
+            "entries": {
+               "extra_nuts": {
+                  "num_rolls": {
+                     "min": 0,
+                     "max": 1
+                  },
+                  "items": {
+                     "nuts": {
+                        "uri": "stonehearth_ace:food:hazelnut:hazelnut_basket",
+                        "weight": 1
+                     }
+                  }
+               },
+               "optional": {
+                  "num_rolls": {
+                     "min": 1,
+                     "max": 2
+                  },
+                  "items": {
+                     "seed": {
+                        "uri": "stonehearth_ace:trees:hazelnut:seed",
+                        "weight": 1
+                     }
+                  }
+               }
+            }
+         },
+         "half_renewed_model": {
+            "model": "/stonehearth_ace/entities/trees/hazelnut_tree/medium_hazelnut_tree/medium_hazelnut_tree_half_renewed.qb",
+            "matrix": "hazelnuts",
+            "scale": 0.2,
+            "offset": { "x": 31, "y": -16, "z": 31 }
+         },
+         "renewed_model": {
+            "model": "/stonehearth_ace/entities/trees/hazelnut_tree/medium_hazelnut_tree/medium_hazelnut_tree_renewed.qb",
+            "matrix": "hazelnuts",
+            "scale": 0.2,
+            "offset": { "x": 31, "y": -16, "z": 31 }
+         },
+         "seasons": {
+            "spring": {
+               "disable_renewal": true,
+               "destroy_resource": true
+            },
+            "summer": {
+               "disable_renewal": true,
+               "destroy_resource": true
+            },
+            "winter": {
+               "disable_renewal": true,
+               "destroy_resource": true
+            }
+         }
       }
    },
    "entity_data": {
       "stonehearth:evolve_data": {
          "next_stage": "stonehearth_ace:trees:hazelnut:large",
-         "evolve_time": "3d",
+         "evolve_time": "42d+18d",
          "biomes": {
             "stonehearth:biome:temperate": {
                "evolve_time_multiplier": 1.2
             },
-            "stonehearth_ace:biome:highlands": {
+            "stonehearth:biome:arctic": {
                "evolve_time_multiplier": 1.5
             },
-            "stonehearth:biome:arctic": {
-               "evolve_time_multiplier": 2
+            "stonehearth:biome:desert": {
+               "evolve_time_multiplier": 3
             }
          },
          "seasons": {
@@ -123,7 +184,7 @@
          "description": "i18n(stonehearth_ace:entities.trees.hazelnut_tree.medium_hazelnut_tree.description)"
       },
       "stonehearth:stump_data": {
-         "stump_alias": "stonehearth_ace:trees:hazelnut:stump"
+         "stump_alias": "stonehearth_ace:trees:hazelnut:medium:stump"
       },
       "stonehearth_ace:replant_data": {
          "seed_alias": "stonehearth_ace:trees:hazelnut:seed"

@@ -5,15 +5,57 @@
       "model_variants": {
          "default": {
             "models": [
-               "file(tree_hazelnut_seed_iconic.qb)"
+               {
+                  "type": "one_of",
+                  "items": [
+                     "/stonehearth/entities/plants/dirt_pile/dirt_pile_1.qb",
+                     "/stonehearth/entities/plants/dirt_pile/dirt_pile_2.qb",
+                     "/stonehearth/entities/plants/dirt_pile/dirt_pile_3.qb"
+                  ]
+               }
             ]
          }
       },
       "mob": {
-         "model_origin": { "x": 0, "y": 0, "z": 0 }
+         "model_origin": { "x": 0.1, "y": 0, "z": -0.1 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "mob_collision_type": "clutter"
+      },
+      "stonehearth:evolve": {},
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(tree_hazelnut_seed_iconic.json)",
+         "ghost_form": "file(tree_hazelnut_seed_ghost.json)",
+         "placeable_on_ground": true,
+         "hide_undeploy_ui": true
       }
    },
    "entity_data": {
+      "stonehearth:evolve_data": {
+         "next_stage": "stonehearth_ace:trees:hazelnut:sprout",
+         "evolve_time": "16h+12h",
+         "biomes": {
+            "stonehearth:biome:temperate": {
+               "evolve_time_multiplier": 1.2
+            },
+            "stonehearth:biome:arctic": {
+               "evolve_time_multiplier": 1.5
+            },
+            "stonehearth:biome:desert": {
+               "evolve_time_multiplier": 3
+            }
+         },
+         "seasons": {
+            "summer": {
+               "evolve_time_multiplier": 1.2
+            },
+            "autumn": {
+               "evolve_time_multiplier": 1.5
+            },
+            "winter": {
+               "evolve_time_multiplier": 2
+            }
+         }
+      },
       "stonehearth:net_worth": {
          "value_in_gold": 2,
          "rarity": "common",
