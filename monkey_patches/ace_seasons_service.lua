@@ -5,6 +5,8 @@ local CALENDAR_CONSTANTS = radiant.resources.load_json('/stonehearth/data/calend
 local DAYS_PER_YEAR = CALENDAR_CONSTANTS.days_per_month * CALENDAR_CONSTANTS.months_per_year
 local SECONDS_PER_DAY = CALENDAR_CONSTANTS.hours_per_day * CALENDAR_CONSTANTS.minutes_per_hour * CALENDAR_CONSTANTS.seconds_per_minute
 
+local log = radiant.log.create_logger('seasons')
+
 function AceSeasonsService:_load_season_config(biome_uri)
    self._seasons = self:_get_seasons_data(biome_uri)
 
@@ -21,6 +23,7 @@ function AceSeasonsService:_load_season_config(biome_uri)
    radiant.events.listen_once(radiant, 'stonehearth:start_date_set', function(e)
          self._is_in_transition = true  -- Force an update.
          self:_update_transition()
+         radiant.events.trigger_async(self, 'stonehearth:seasons:initial_set')
       end)
    
    self:_resolve_get_seasons_commands(self._get_seasons_futures)
