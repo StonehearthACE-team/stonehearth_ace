@@ -47,7 +47,7 @@ function TrainAttackAdjacent:_check_conditions(ai, entity, args)
       return 'training is disabled or unavailable for this entity'
    end
 
-   if not dummy:can_train_entity(job:get_job_uri()) then
+   if dummy:can_train_entity_level(job:get_job_uri()) < job:get_current_job_level() then
       return 'this dummy can\'t train this entity (probably can\'t get a lease)'
    end
 

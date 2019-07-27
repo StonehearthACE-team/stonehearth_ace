@@ -9,13 +9,16 @@ FindBestTrainingDummy.priority = 0.5
 
 function find_training_dummy(entity)
    local player_id = radiant.entities.get_work_player_id(entity)
-   local job_uri = entity:get_component('stonehearth:job'):get_job_uri()
+   local job_comp = entity:get_component('stonehearth:job')
+   local job_uri = job_comp:get_job_uri()
+   local job_level = job_comp:get_current_job_level()
    
-   return stonehearth.ai:filter_from_key('stonehearth_ace:training_dummy:'..job_uri, player_id,
+   return stonehearth.ai:filter_from_key('stonehearth_ace:training_dummy:'..job_uri..job_level, player_id,
 		function(target)
 			if player_id == target:get_player_id() then
-				local training_dummy = target:get_component('stonehearth_ace:training_dummy')
-				return training_dummy and training_dummy:can_train_entity(job_uri) or false
+            local training_dummy = target:get_component('stonehearth_ace:training_dummy')
+            local level = training_dummy and training_dummy:can_train_entity_level(job_uri)
+            return level and level >= job_level
 			end
 			return false
 		end)

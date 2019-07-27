@@ -79,6 +79,7 @@ function BaseJob:_load_json_tuning()
    end
 
    self._max_level = self._job_json.max_level or 0
+   self._max_training_level = self._job_json.max_training_level or 0
    
    if self._sv.last_gained_lv >= self._max_level then
       self._sv.is_max_level = true
@@ -140,6 +141,14 @@ function BaseJob:can_level_up()
       return false
    end
    return true
+end
+
+function BaseJob:get_max_training_level()
+   return self._max_training_level
+end
+
+function BaseJob:is_trainable()
+   return self._sv.last_gained_lv <= self._max_training_level
 end
 
 -- Returns all the data for all the levels

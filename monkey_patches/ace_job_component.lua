@@ -177,6 +177,10 @@ function AceJobComponent:level_up(skip_visual_effects)
       self:get_job_info():promote_member(self._entity)
    end
 
+   if not self:is_trainable() then
+      self:_remove_training_toggle()
+   end
+
    if not skip_visual_effects then
       radiant.effects.run_effect(self._entity, 'stonehearth:effects:level_up')
    end
@@ -326,9 +330,7 @@ function AceJobComponent:demote(old_job_json, dont_drop_talisman)
    self:_ace_old_demote(old_job_json, dont_drop_talisman)
 
 	-- remove the training toggle command if it exists
-	if self:is_combat_job() then
-		self:_remove_training_toggle()
-   end
+	self:_remove_training_toggle()
    
    self:_remove_equipment_preferences_toggle()
 
@@ -468,31 +470,28 @@ function AceJobComponent:is_combat_job()
 end
 
 function AceJobComponent:is_trainable()
-	return self:is_combat_job() and self:get_current_job_level() < self._max_level_from_training
+   local job_controller = self:get_curr_job_controller()
+   return job_controller and job_controller.is_trainable and job_controller:is_trainable()
 end
 
 function AceJobComponent:get_training_enabled()
-	if self:is_combat_job() then
-		return radiant.entities.get_attribute(self._entity, 'stonehearth_ace:training_enabled', 1) == 1
-	else
-		return nil
-	end
+	return radiant.entities.get_attribute(self._entity, 'stonehearth_ace:training_enabled', 1) == 1
 end
 
 function AceJobComponent:set_training_enabled(enabled)
-	if self:is_combat_job() then
-		local prev_enabled = self:get_training_enabled()
-		radiant.entities.set_attribute(self._entity, 'stonehearth_ace:training_enabled', enabled and 1 or 0)
-		if prev_enabled ~= enabled then
-         radiant.events.trigger_async(self._entity, 'stonehearth_ace:training_enabled_changed', enabled)
-		end
-	end
+	local prev_enabled = self:get_training_enabled()
+   radiant.entities.set_attribute(self._entity, 'stonehearth_ace:training_enabled', enabled and 1 or 0)
+   if prev_enabled ~= enabled then
+      radiant.events.trigger_async(self._entity, 'stonehearth_ace:training_enabled_changed', enabled)
+   end
 end
 
 function AceJobComponent:toggle_training(enabled)
-	if self:is_combat_job() then
-		self:set_training_enabled(enabled)
-		self:_add_training_toggle(enabled)
+   self:set_training_enabled(enabled)
+	if self:is_trainable() then
+      self:_add_training_toggle(enabled)
+   else
+      self:_remove_training_toggle()
 	end
 end
 
