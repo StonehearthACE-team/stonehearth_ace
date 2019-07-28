@@ -488,19 +488,11 @@ end
 
 -- returns the best affinity and then the next one so you can see the range until it would apply (and its effect)
 function AceFarmerFieldComponent:get_best_water_level()
-	if self:_is_fallow() then
-		return nil
-	end
-	
-	return stonehearth.town:get_best_water_level_from_climate(self._sv.current_crop_details.preferred_climate)
+	return stonehearth.town:get_best_water_level_from_climate(not self:_is_fallow() and self._sv.current_crop_details.preferred_climate)
 end
 
 function AceFarmerFieldComponent:get_best_light_level()
-	if self:_is_fallow() then
-		return nil
-	end
-	
-	return stonehearth.town:get_best_light_level_from_climate(self._sv.current_crop_details.preferred_climate)
+	return stonehearth.town:get_best_light_level_from_climate(not self:_is_fallow() and self._sv.current_crop_details.preferred_climate)
 end
 
 function AceFarmerFieldComponent:_cache_best_levels()

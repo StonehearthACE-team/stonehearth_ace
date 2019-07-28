@@ -49,7 +49,7 @@ end
 
 function AceTownService:get_water_affinity_table(climate)
 	if not climate then
-		climate = 'temperate_medium'
+		climate = self:_get_default_climate()
    end
    
    local affinity_table = _water_affinities[climate]
@@ -68,7 +68,7 @@ end
 
 function AceTownService:get_light_affinity_table(climate)
 	if not climate then
-		climate = 'temperate_medium'
+		climate = self:_get_default_climate()
 	end
 
    local affinity_table = _light_affinities[climate]
@@ -83,6 +83,19 @@ function AceTownService:get_light_affinity_table(climate)
    end
 
 	return affinity_table
+end
+
+function AceTownService:_get_default_climate()
+   if not self._default_climate then
+      local biome_uri = stonehearth.world_generation:get_biome_alias()
+      local biome = biome_uri and radiant.resources.load_json(biome_uri)
+      if biome then
+         self._default_climate = biome.climate or 'temperate_medium'
+      else
+         return 'temperate_medium'
+      end
+   end
+   return self._default_climate
 end
 
 -- returns the best affinity and then the next one so you can see the range until it would apply (and its effect)

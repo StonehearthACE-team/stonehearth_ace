@@ -108,6 +108,17 @@ function AceJobComponent:_on_job_json_changed()
 	radiant.events.trigger(self._entity, 'stonehearth_ace:on_job_json_changed')
 end
 
+function AceJobComponent:set_population_override(population_uri)
+   self._sv.population_override =  population_uri
+   self.__saved_variables:mark_changed()
+end
+
+function AceJobComponent:get_job_description_path(job_uri)
+   local player_id = radiant.entities.get_player_id(self._entity)
+   local job_controller = stonehearth.job:get_jobs_controller(player_id)
+   return job_controller:get_job_description(job_uri, self._sv.population_override)
+end
+
 -- Called by add_exp. Calls the profession-specific job controller to tell it to level up
 -- have to override the whole thing to add title data to the bulletin ><
 function AceJobComponent:level_up(skip_visual_effects)

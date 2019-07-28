@@ -35,6 +35,13 @@ function AcePopulationFaction:create_new_citizen_from_role_data(role, role_data,
    return citizen
 end
 
+AcePopulationFaction._ace_old_create_new_foreign_citizen = PopulationFaction.create_new_foreign_citizen
+function AcePopulationFaction:create_new_foreign_citizen(foreign_population_uri, role, gender, options)
+   local citizen = self:_ace_old_create_new_foreign_citizen(foreign_population_uri, role, gender, options)
+   citizen:add_component('stonehearth:job'):set_population_override(foreign_population_uri)
+   return citizen
+end
+
 function AcePopulationFaction:generate_random_name(gender, role_data)
    if not role_data[gender] then
       gender = stonehearth.constants.population.DEFAULT_GENDER
