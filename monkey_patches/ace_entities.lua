@@ -92,7 +92,7 @@ function ace_entities.get_current_title(entity)
    local name_component = entity:get_component('stonehearth:unit_info')
 
    if name_component then
-   current_title = name_component:get_current_title()
+      current_title = name_component:get_current_title()
    end
 
    return current_title or {display_name = '', description = ''}

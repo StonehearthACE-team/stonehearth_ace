@@ -41,6 +41,12 @@ function TitlesComponent:get_titles()
    return self._sv.titles
 end
 
+-- used by reembarking
+function TitlesComponent:set_titles(titles)
+   self._sv.titles = titles or {}
+   self.__saved_variables:mark_changed()
+end
+
 function TitlesComponent:has_title(title, rank)
    local title_rank = self._sv.titles[title]
    return title_rank and (not rank or title_rank >= rank)

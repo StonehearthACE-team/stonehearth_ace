@@ -81,8 +81,15 @@ function AceReembarkationEncounter:_get_citizen_record(citizen)
       population_override = stonehearth.population:get_population(self._sv.ctx.player_id):get_kingdom()
    end
 
+   local statistics_comp = citizen:get_component('stonehearth_ace:statistics')
+   local statistics = statistics_comp and statistics_comp:get_statistics()
+
+   local titles_comp = citizen:get_component('stonehearth_ace:titles')
+   local titles = titles_comp and titles_comp:get_titles()
+
    return {
       name = citizen:get_component('stonehearth:unit_info'):get_custom_name(),
+      custom_data = citizen:get_component('stonehearth:unit_info'):get_custom_data(),
       uri = citizen:get_uri(),
       model_variant = model_variant,
       customization = customization_styles,
@@ -95,6 +102,8 @@ function AceReembarkationEncounter:_get_citizen_record(citizen)
       item_preferences = citizen:get_component('stonehearth:appeal'):get_item_preferences(),
       item_preference_discovered_flags = citizen:get_component('stonehearth:appeal'):get_item_preference_discovered_flags(),
       equipment = equipment,
+      statistics = statistics,
+      titles = titles,
       -- TODO: Pets?
    }
 end

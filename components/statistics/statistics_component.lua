@@ -8,6 +8,16 @@ function StatisticsComponent:initialize()
    self._sv.statistics = {}
 end
 
+-- used by reembarking
+function StatisticsComponent:get_statistics()
+   return self._sv.statistics
+end
+
+function StatisticsComponent:set_statistics(statistics)
+   self._sv.statistics = statistics or {}
+   self.__saved_variables:mark_changed()
+end
+
 function StatisticsComponent:get_category_stats(category)
    return self._sv.statistics[category]
 end

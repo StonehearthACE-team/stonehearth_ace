@@ -37,7 +37,7 @@ end
 
 function AceGameCreationService:_apply_reembark_settings_to_citizen(citizen, citizen_spec)
    -- Set name.
-   radiant.entities.set_custom_name(citizen, citizen_spec.name)
+   citizen:add_component('stonehearth:unit_info'):set_custom_name(citizen_spec.name, citizen_spec.custom_data, true)
    citizen:set_debug_text(citizen_spec.name)
 
    -- Set attributes.
@@ -81,6 +81,14 @@ function AceGameCreationService:_apply_reembark_settings_to_citizen(citizen, cit
    for _, equipment_uri in ipairs(citizen_spec.equipment) do
       local equipment_entity = radiant.entities.create_entity(equipment_uri, { owner = session.player_id })
       equipment:equip_item(equipment_entity, true)
+   end
+
+   if citizen_spec.statistics then
+      citizen:add_component('stonehearth_ace:statistics'):set_statistics(citizen_spec.statistics)
+   end
+
+   if citizen_spec.titles then
+      citizen:add_component('stonehearth_ace:titles'):set_titles(citizen_spec.titles)
    end
 end
 
