@@ -31,18 +31,50 @@ end
 --If we have kingdom data for this job, use that, instead of the default
 function AcePlayerJobsController:_ensure_job_index(population_override)
    if not self._job_index then
+      -- first load the general population data
       local pop = stonehearth.population:get_population(self._sv.player_id)
       local job_index_location = 'stonehearth:jobs:index'
       if pop then
          job_index_location = pop:get_job_index()
       end
-      self._job_index = radiant.resources.load_json(job_index_location)
+
+      local job_index = radiant.resources.load_json(job_index_location)
+      self._job_index = job_index
+   end
+   
+   if population_override and not self._population_job_indexes[population_override] then
+      self._population_job_indexes[population_override] = {}
+      -- then, if a population was specified, load that
+      local pop = stonehearth.population:get_population(self._sv.player_id)
+      if pop then
+         local job_index_location = pop:get_job_index(population_override)
+         -- only proceed if it's actually a different job index
+         if job_index_location and job_index_location ~= pop:get_job_index() then
+            local job_index = radiant.resources.load_json(job_index_location)
+            self._population_job_indexes[population_override] = job_index
+
+            -- and mix it into the regular job index
+            local new_job_index = {}
+            -- make sure we override any duplicate entries with our population's entry for that job
+            -- create a new table since the original was the directly-loaded-from-json version
+            for k, v in pairs(job_index) do
+               new_job_index[k] = v
+            end
+            for k, v in pairs(self._job_index) do
+               -- override any existing entries with these ones
+               new_job_index[k] = v
+            end
+
+            self._job_index = new_job_index
+         end
+      end
    end
 end
 
 --If we have kingdom data for this job, use that, instead of the default
 function AcePlayerJobsController:get_job_description(job_uri, population_override)
-   local jobs = self:_ensure_job_index(population_override)
+   self:_ensure_job_index(population_override)
+
    if self._job_index and self._job_index.jobs and self._job_index.jobs[job_uri] then
       return self._job_index.jobs[job_uri].description
    else

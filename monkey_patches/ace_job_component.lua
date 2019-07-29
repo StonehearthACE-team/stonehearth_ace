@@ -113,6 +113,10 @@ function AceJobComponent:set_population_override(population_uri)
    self.__saved_variables:mark_changed()
 end
 
+function AceJobComponent:get_population_override()
+   return self._sv.population_override
+end
+
 function AceJobComponent:get_job_description_path(job_uri)
    local player_id = radiant.entities.get_player_id(self._entity)
    local job_controller = stonehearth.job:get_jobs_controller(player_id)

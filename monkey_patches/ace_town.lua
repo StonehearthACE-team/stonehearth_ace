@@ -17,7 +17,8 @@ AceTown._ace_old__requirements_met = Town._requirements_met
 function AceTown:_requirements_met(person, job_uri)
    local job_component = person:get_component('stonehearth:job')
    local player_id = radiant.entities.get_player_id(person)
-   local base_job = stonehearth.player:get_default_base_job(player_id)
+   local population_override = job_component:get_population_override()
+   local base_job = stonehearth.player:get_default_base_job(player_id, population_override)
 
    -- if person already has a controller for that job
    if job_component:get_controller(job_uri) or job_uri == base_job then
@@ -25,8 +26,7 @@ function AceTown:_requirements_met(person, job_uri)
    end
 
    -- convert to appropriate kingdom
-   local player_id = radiant.entities.get_player_id(person)
-   local job_index = stonehearth.player:get_jobs(player_id)
+   local job_index = stonehearth.player:get_jobs(player_id, population_override)
    local mod_job_uri = job_index[job_uri].description
 
    -- get desired job information

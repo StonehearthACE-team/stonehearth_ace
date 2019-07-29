@@ -1,4 +1,67 @@
 App.StonehearthPromotionTree.reopen({
+   didInsertElement: function() {
+      var self = this;
+
+      this.$().draggable({ handle: '.title' });
+
+      radiant.call('radiant:play_sound', {
+         'track': 'stonehearth:sounds:ui:promotion_menu:scroll_open'
+      });
+      //this._super();
+
+      var self = this;
+      self._addHandlers();
+
+      radiant.call_obj('stonehearth.inventory', 'get_item_tracker_command', 'stonehearth:basic_inventory_tracker')
+         .done(function(response) {
+            var itemTraces = {
+               "tracking_data": {
+                  "*": {
+                  }
+               }
+            };
+
+            self._playerInventoryTrace = new StonehearthDataTrace(response.tracker, itemTraces)
+               .progress(function (response) {
+                  if (self.isDestroyed || self.isDestroying) return;
+                  self.set('inventory_data', response.tracking_data);
+               });
+         })
+         .fail(function(response) {
+            console.error(response);
+         });
+
+      self._getJobIndex();
+   },
+
+   _getJobIndex: function() {
+      var self = this;
+      var citizen = self.get('citizen');
+      radiant.call_obj('stonehearth.player', 'get_job_index', citizen)
+         .done(function(response){
+            var jIndex = response.job_index;
+            var components = {
+               "jobs": {
+                  "*": {
+                     "description": {}
+                  }
+               }
+            };
+            self._jobsTrace = new StonehearthDataTrace(jIndex, components);
+            self._jobsTrace.progress(function(eobj) {
+               self._jobsTrace.destroy();
+               self._jobData = eobj.jobs;
+               if (eobj.base_job) {
+                  self._baseWorkerJob = eobj.base_job;
+               }
+               self._getCitizenData();
+            });
+         })
+         .fail(function(response) {
+            console.error('error getting job index');
+         });
+   },
+
    getParentJobs: function(jobDescription) {
       var parents = jobDescription.parent_jobs || [{"job": jobDescription.parent_job, "level_requirement": jobDescription.parent_level_requirement}];
       var parentJobs = [];

@@ -211,4 +211,24 @@ function AcePopulationFaction:get_titles_for_statistic(entity, stat_changed_args
    end
 end
 
+function AcePopulationFaction:get_job_index(population)
+   local job_index = 'stonehearth:jobs:index'
+   if self:is_npc() then
+      job_index = 'stonehearth:jobs:npc_job_index'
+   end
+
+   -- if a population is specified, try to use that population's job index
+   -- if it doesn't have one, it's depending on the default job index, so we don't want this population's job index redirect
+   if population then
+      local pop_data = radiant.resources.load_json(population)
+      if pop_data and pop_data.job_index then
+         job_index = pop_data.job_index
+      end
+   elseif self._data.job_index then
+      job_index = self._data.job_index
+   end
+
+   return job_index
+end
+
 return AcePopulationFaction
