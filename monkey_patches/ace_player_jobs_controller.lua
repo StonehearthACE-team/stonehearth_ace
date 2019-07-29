@@ -1,5 +1,4 @@
 --[[
-   not currently getting monkey-patched in
    the goal is to allow for population-specific jobs for citizens of different populations in the same kingdom
    e.g., an orc footman may have different skills/traits than an ascendancy footman
    also then allows for promotion to kingdom-specific classes (e.g., goblin shaman in a non-goblin kingdom)
@@ -9,14 +8,6 @@ local PlayerJobsController = require 'stonehearth.services.server.job.player_job
 local AcePlayerJobsController = class()
 
 -- For a given player, keep a table of job_info_controllers for that player
-
--- empty all state
-AcePlayerJobsController._ace_old_clear = PlayerJobsController.clear
-function AcePlayerJobsController:clear()
-   self:_ace_old_clear()
-
-   self._population_job_indexes = {}
-end
 
 function AcePlayerJobsController:_ensure_job_id(id)
    self:_ensure_job_index()
@@ -42,6 +33,9 @@ function AcePlayerJobsController:_ensure_job_index(population_override)
       self._job_index = job_index
    end
    
+   if not self._population_job_indexes then
+      self._population_job_indexes = {}
+   end
    if population_override and not self._population_job_indexes[population_override] then
       self._population_job_indexes[population_override] = {}
       -- then, if a population was specified, load that
