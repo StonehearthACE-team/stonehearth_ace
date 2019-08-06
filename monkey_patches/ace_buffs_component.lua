@@ -245,7 +245,7 @@ function AceBuffsComponent:remove_buff(uri, remove_all_stacks)
       -- otherwise we just want to remove a single stack
       local buff = self._sv.buffs[uri]
       if buff then
-         buff:remove_stack()
+         buff:remove_stack(false)
       end
    end
 end
