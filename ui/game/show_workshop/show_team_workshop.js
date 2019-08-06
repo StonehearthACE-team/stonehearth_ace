@@ -568,6 +568,124 @@ $(top).on('stonehearthReady', function() {
             }
             return outputHtml;
          },
+   
+         preview: function() {
+            var self = this;
+            var recipe = this._getOrCalculateRecipeData(this.currentRecipe.recipe_key);
+      
+            if (recipe) {
+               //stats
+               var productCatalogData = App.catalog.getCatalogData(recipe.product_uri);
+               var statHtml = '';
+      
+               if (productCatalogData)
+               {
+                  statHtml = self._addStats(recipe, productCatalogData);
+               }
+      
+               //handle the effort bubble - this is unique b/c it's on the recipe and not the recipe items
+               if (recipe['effort']) {
+                  statHtml += '<div class="stat effort">' + recipe['effort'] + "</div>"
+               }
+      
+               self.$('#stats').html('').append($(statHtml));
+               self._addStatTooltips(productCatalogData);
+      
+               //Add info about equippable
+               self._calculateEquipmentData(recipe);
+      
+               //Handle workshop requirement indicator
+               var $workshopRequirement = self.$('#requirementSection #workbench .requirementText')
+               if (recipe.hasWorkshop) {
+                  $workshopRequirement.text(i18n.t('stonehearth:ui.game.show_workshop.workshop_required') + recipe.workshop.name)
+               } else {
+                  $workshopRequirement.text(i18n.t('stonehearth:ui.game.show_workshop.workshop_none_required'))
+               }
+      
+               //level requirement indicator text
+               var $requirementText = self.$('#requirementSection #crafterLevel .requirementText')
+               if (recipe.level_requirement && recipe.level_requirement > 1) {
+                  $requirementText.text(
+                     i18n.t('stonehearth:ui.game.show_workshop.level_requirement_needed') +
+                     i18n.t(self.get('model.class_name')) +
+                     i18n.t('stonehearth:ui.game.show_workshop.level_requirement_level') +
+                     recipe.level_requirement)
+               } else {
+                  $requirementText.text(i18n.t('stonehearth:ui.game.show_workshop.level_requirement_none'))
+               }
+            }
+         },
+
+         _addStats: function(recipe, catalogData) {
+            var self = this;
+            var statHtml = '';
+
+            if (catalogData['combat_damage']) {
+               statHtml += '<div class="stat damage">' + catalogData['combat_damage'] + '<br><span class=name>' + i18n.t('stonehearth:ui.game.show_workshop.damage_stat') + '</span></div>';
+            }
+            if (catalogData['combat_armor']) {
+               statHtml += '<div class="stat armor">' + catalogData['combat_armor'] + '<br><span class=name>' + i18n.t('stonehearth:ui.game.show_workshop.armor_stat') + '</span></div>';
+            }
+            if (catalogData['net_worth']) {
+               statHtml += self._formattedRecipeProductProperty(recipe, 'net_worth', 'netWorth');
+            }
+            if (catalogData['appeal']) {
+               statHtml += self._formattedRecipeProductProperty(recipe, 'appeal', 'appeal');
+            }
+            if (catalogData['food_satisfaction']) {
+               var level = self._getSatisfactionLevel(App.constants.food_satisfaction_thresholds, catalogData['food_satisfaction']);
+               statHtml += self._formattedRecipeProductProperty(recipe, 'food_servings', 'satisfaction food ' + level);
+               //statHtml += `<div class="stat satisfaction">${catalogData['food_servings']} x <img class="food_${level}"/></div>`;
+            }
+            if (catalogData['drink_satisfaction']) {
+               var level = self._getSatisfactionLevel(App.constants.drink_satisfaction_thresholds, catalogData['drink_satisfaction']);
+               statHtml += self._formattedRecipeProductProperty(recipe, 'drink_servings', 'satisfaction drink ' + level);
+               //statHtml += `<div class="stat satisfaction">${catalogData['drink_servings']} x <img class="drink_${level}"/></div>`;
+            }
+
+            return statHtml;
+         },
+
+         _addStatTooltips: function(catalogData) {
+            var self = this;
+
+            App.tooltipHelper.createDynamicTooltip(self.$('.stat.appeal'), function () { return i18n.t('stonehearth:ui.game.show_workshop.tooltip_appeal_stat'); });
+            App.tooltipHelper.createDynamicTooltip(self.$('.stat.netWorth'), function () { return i18n.t('stonehearth:ui.game.show_workshop.tooltip_net_worth_stat'); });
+            App.tooltipHelper.createDynamicTooltip(self.$('.stat.effort'), function () { return i18n.t('stonehearth:ui.game.show_workshop.tooltip_effort_stat'); });
+            
+            var satisfactionLevel;
+            var servings;
+            if (catalogData) {
+               App.tooltipHelper.createDynamicTooltip(self.$('.stat.satisfaction'), function () {
+                  if (satisfactionLevel == null || servings == null) {
+                     if (catalogData['food_satisfaction']) {
+                        satisfactionLevel = 'food.' + self._getSatisfactionLevel(App.constants.food_satisfaction_thresholds, catalogData['food_satisfaction']);
+                        servings = catalogData['food_servings'];
+                     }
+                     else if (catalogData['drink_satisfaction']) {
+                        satisfactionLevel = 'drink.' + self._getSatisfactionLevel(App.constants.drink_satisfaction_thresholds, catalogData['drink_satisfaction']);
+                        servings = catalogData['drink_servings'];
+                     }
+                  }
+
+                  if (satisfactionLevel && servings) {
+                     return i18n.t(`stonehearth_ace:ui.game.unit_frame.satisfaction.${satisfactionLevel}`, {servings: servings});
+                  }
+               })
+            }
+         },
+
+         _getSatisfactionLevel: function(thresholds, val) {
+            if (val >= thresholds.HIGH) {
+               return 'high';
+            }
+            else if (val >= thresholds.AVERAGE) {
+               return 'average';
+            }
+            else {
+               return 'low';
+            }
+         },
 
          _getPropertyValue: function (product, catalogData, key) {
             var propertyValue = catalogData[key];

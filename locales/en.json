@@ -9807,6 +9807,18 @@
                   "description": "Civillian jobs that will specialize in specifc, diverse activities outside of the main crafting chains. Farmers or Shepherds, for example."
                }
             },
+            "satisfaction": {
+               "drink": {
+                  "high": "[str(servings)] servings of Ahhhh, very good, much quenching!",
+                  "average": "[str(servings)] servings of Ahh, good, some quenching",
+                  "low": "[str(servings)] servings of Ah, not much, want more"
+               },
+               "food": {
+                  "high": "[str(servings)] servings of Yum yum, very good, much filling!",
+                  "average": "[str(servings)] servings of Yum, good, some filling",
+                  "low": "[str(servings)] servings of Yum, not much, want more"
+               }
+            },
             "consumable_buff": "Consuming Applies: ",
             "injected_buff": "Grants Status: ",
             "inflictable_debuff": "Inflicts Status: "

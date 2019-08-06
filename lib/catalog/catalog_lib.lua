@@ -226,6 +226,8 @@ function catalog_lib._add_catalog_description(catalog, full_alias, json, base_da
          catalog_data.equipment_types = catalog_lib.get_equipment_types(json.components['stonehearth:equipment_piece'])
          catalog_data.injected_buffs = catalog_lib.get_buffs(json.components['stonehearth:equipment_piece'].injected_buffs)
       end
+      
+      catalog_data.max_stacks = json.components['stonehearth:stacks'] and json.components['stonehearth:stacks'].max_stacks
    end
 
    if entity_data ~= nil then
@@ -266,17 +268,33 @@ function catalog_lib._add_catalog_description(catalog, full_alias, json, base_da
          catalog_data.inflictable_debuffs = catalog_lib.get_buffs(entity_data['stonehearth:buffs'].inflictable_debuffs)
       end
 
+      local stacks = catalog_data.max_stacks or 1
+
       if entity_data['stonehearth:food_container'] and entity_data['stonehearth:food_container'].food then
+         local stacks_per_serving = entity_data['stonehearth:food_container'].stacks_per_serving or 1
+         catalog_data.food_servings = math.ceil(stacks / math.max(1, stacks_per_serving))
          local food_json = radiant.resources.load_json(entity_data['stonehearth:food_container'].food)
-         if food_json and food_json.entity_data and food_json.entity_data['stonehearth:food'] and food_json.entity_data['stonehearth:food'].applied_buffs then
-            catalog_data.consumable_buffs = catalog_lib.get_buffs(food_json.entity_data['stonehearth:food'].applied_buffs)
+         if food_json and food_json.entity_data and food_json.entity_data['stonehearth:food'] then
+            if food_json.entity_data['stonehearth:food'].applied_buffs then
+               catalog_data.consumable_buffs = catalog_lib.get_buffs(food_json.entity_data['stonehearth:food'].applied_buffs)
+            end
+            local satisfaction = food_json.entity_data['stonehearth:food'].default
+            catalog_data.food_satisfaction = satisfaction and satisfaction.satisfaction
+            catalog_data.food_quality = food_json.entity_data['stonehearth:food'].quality
          end
       end
 		
-		if entity_data['stonehearth_ace:drink_container'] and entity_data['stonehearth_ace:drink_container'].drink then
+      if entity_data['stonehearth_ace:drink_container'] and entity_data['stonehearth_ace:drink_container'].drink then
+         local stacks_per_serving = entity_data['stonehearth_ace:drink_container'].stacks_per_serving or 1
+         catalog_data.drink_servings = math.ceil(stacks / math.max(1, stacks_per_serving))
          local drink_json = radiant.resources.load_json(entity_data['stonehearth_ace:drink_container'].drink)
-         if drink_json and drink_json.entity_data and drink_json.entity_data['stonehearth_ace:drink'] and drink_json.entity_data['stonehearth_ace:drink'].applied_buffs then
-            catalog_data.consumable_buffs = catalog_lib.get_buffs(drink_json.entity_data['stonehearth_ace:drink'].applied_buffs)
+         if drink_json and drink_json.entity_data and drink_json.entity_data['stonehearth_ace:drink'] then
+            if drink_json.entity_data['stonehearth_ace:drink'].applied_buffs then
+               catalog_data.consumable_buffs = catalog_lib.get_buffs(drink_json.entity_data['stonehearth_ace:drink'].applied_buffs)
+            end
+            local satisfaction = drink_json.entity_data['stonehearth_ace:drink'].default
+            catalog_data.drink_satisfaction = satisfaction and satisfaction.satisfaction
+            catalog_data.drink_quality = drink_json.entity_data['stonehearth_ace:drink'].quality
          end
       end
    end
