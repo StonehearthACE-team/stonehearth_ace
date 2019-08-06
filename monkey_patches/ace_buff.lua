@@ -73,13 +73,15 @@ function AceBuff:_destroy_last_stack_modifiers()
    end
 end
 
-function AceBuff:remove_stack()
-   self._sv.stacks = self._sv.stacks - 1
-   self:_destroy_last_stack_modifiers()
-   self.__saved_variables:mark_changed()
+function AceBuff:remove_stack(allow_complete_removal)
+   if self._sv.max_stacks > 1 or allow_complete_removal then
+      self._sv.stacks = self._sv.stacks - 1
+      self:_destroy_last_stack_modifiers()
+      self.__saved_variables:mark_changed()
 
-   if self._sv.stacks < 1 then
-      self:destroy()
+      if self._sv.stacks < 1 then
+         self:destroy()
+      end
    end
 end
 
