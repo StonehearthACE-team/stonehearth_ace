@@ -275,12 +275,13 @@ function catalog_lib._add_catalog_description(catalog, full_alias, json, base_da
          catalog_data.food_servings = math.ceil(stacks / math.max(1, stacks_per_serving))
          local food_json = radiant.resources.load_json(entity_data['stonehearth:food_container'].food)
          if food_json and food_json.entity_data and food_json.entity_data['stonehearth:food'] then
-            if food_json.entity_data['stonehearth:food'].applied_buffs then
-               catalog_data.consumable_buffs = catalog_lib.get_buffs(food_json.entity_data['stonehearth:food'].applied_buffs)
+            local food = food_json.entity_data['stonehearth:food']
+            if food.applied_buffs then
+               catalog_data.consumable_buffs = catalog_lib.get_buffs(food.applied_buffs)
             end
-            local satisfaction = food_json.entity_data['stonehearth:food'].default
+            local satisfaction = food['stonehearth:sitting_on_chair'] or food.default
             catalog_data.food_satisfaction = satisfaction and satisfaction.satisfaction
-            catalog_data.food_quality = food_json.entity_data['stonehearth:food'].quality
+            catalog_data.food_quality = food.quality
          end
       end
 		
@@ -289,12 +290,13 @@ function catalog_lib._add_catalog_description(catalog, full_alias, json, base_da
          catalog_data.drink_servings = math.ceil(stacks / math.max(1, stacks_per_serving))
          local drink_json = radiant.resources.load_json(entity_data['stonehearth_ace:drink_container'].drink)
          if drink_json and drink_json.entity_data and drink_json.entity_data['stonehearth_ace:drink'] then
-            if drink_json.entity_data['stonehearth_ace:drink'].applied_buffs then
-               catalog_data.consumable_buffs = catalog_lib.get_buffs(drink_json.entity_data['stonehearth_ace:drink'].applied_buffs)
+            local drink = drink_json.entity_data['stonehearth_ace:drink']
+            if drink.applied_buffs then
+               catalog_data.consumable_buffs = catalog_lib.get_buffs(drink.applied_buffs)
             end
-            local satisfaction = drink_json.entity_data['stonehearth_ace:drink'].default
+            local satisfaction = drink['stonehearth:sitting_on_chair'] or drink.default
             catalog_data.drink_satisfaction = satisfaction and satisfaction.satisfaction
-            catalog_data.drink_quality = drink_json.entity_data['stonehearth_ace:drink'].quality
+            catalog_data.drink_quality = drink.quality
          end
       end
    end
