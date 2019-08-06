@@ -1,0 +1,39 @@
+{
+   "type": "recipe",
+   "effort": 36,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.nut_cake_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.nut_cake_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.nut_cake_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/nut_cake/nut_cake.png",
+   "level_requirement": 5,
+   "workshop": "stonehearth:cook:oven",
+   "work_effect": "work_wait",
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:food:nut_flour",
+         "count": 2
+      },
+		{
+         "uri": "stonehearth:food:sugar",
+         "count": 1
+      },
+		{
+         "material": "drink_container milk",
+         "count": 2
+      },
+      {
+         "uri": "stonehearth_ace:food:nuts_basket",
+         "count": 1
+      },
+		{
+         "material": "low_fuel",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:nut_cake"
+      }
+   ]
+}

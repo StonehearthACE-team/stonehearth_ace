@@ -45,14 +45,20 @@
          }
       },
       "stonehearth:seasonal_model_switcher": {
-         "*": {
+         "stonehearth:biome:arctic": {
             "spring": "default",
             "summer": "summer",
             "autumn": "autumn",
             "winter": "winter"
          },
-         "stonehearth:biome:arctic": {
-            "spring": "default",
+         "*": {
+            "spring": "summer",
+            "summer": "default",
+            "autumn": "autumn",
+            "winter": "winter"
+         },
+         "stonehearth:biome:desert": {
+            "spring": "summer",
             "summer": "autumn",
             "autumn": "autumn",
             "winter": "winter"

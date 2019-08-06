@@ -54,25 +54,64 @@
                "item_density": 0.2,
                "exclusion_radius": 7
             }
-         }
+         },
+			"stonehearth_ace:trees:walnut:small" : {
+				"placement_type" : "single",
+				"parameters" : {
+					"ground_radius" : 3,
+					"exclusion_radius" : 5
+				}
+			},
+			"stonehearth_ace:trees:walnut:medium" : {
+				"placement_type" : "single",
+				"parameters" : {
+					"ground_radius" : 4,
+					"exclusion_radius" : 6
+				}
+			},
+			"stonehearth_ace:trees:walnut:large" : {
+				"placement_type" : "single",
+				"parameters" : {
+					"ground_radius" : 5,
+					"exclusion_radius" : 7
+				}
+			}
       },
+		"trees": {
+			"sizes": {
+				"stonehearth_ace:trees:walnut" : {
+				"small" : 0,
+				"medium" : 4,
+				"large" : 3
+				}
+			},
+			"weights": {
+				"plains" : {
+					"1" : {
+						"stonehearth_ace:trees:walnut" : 0.45
+					}
+				}
+			}
+		},
       "scattered": {
          "plants": {
             "weights": {
                "plains": {
                   "1": {
                      "stonehearth_ace:fungi:winter_morel": 0.2,
-					 "stonehearth_ace:terrain:pasture_grass:overgrown": 0.1,
-					 "stonehearth_ace:terrain:pasture_grass": 0.2,
-					 "stonehearth_ace:terrain:pasture_grass:short": 0.1
+							"stonehearth_ace:terrain:pasture_grass:overgrown": 0.1,
+							"stonehearth_ace:terrain:pasture_grass": 0.2,
+							"stonehearth_ace:terrain:pasture_grass:short": 0.1,
+							"stonehearth_ace:trees:walnut:small" : 0.3,
                   }
                },
                "foothills": {
                   "1": {
                      "stonehearth_ace:fungi:winter_morel": 0.2,
-					 "stonehearth_ace:terrain:pasture_grass:overgrown": 0.1,
-					 "stonehearth_ace:terrain:pasture_grass": 0.2,
-					 "stonehearth_ace:terrain:pasture_grass:short": 0.1
+							"stonehearth_ace:terrain:pasture_grass:overgrown": 0.1,
+							"stonehearth_ace:terrain:pasture_grass": 0.2,
+							"stonehearth_ace:terrain:pasture_grass:short": 0.1,
+							"stonehearth_ace:trees:walnut:small" : 0.2,
                   },
                   "2": {
                      "stonehearth_ace:fungi:winter_morel": 0.1

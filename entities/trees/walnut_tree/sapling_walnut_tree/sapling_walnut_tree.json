@@ -17,7 +17,7 @@
       "stonehearth:evolve": {},
       "stonehearth:resource_node": {
          "resource": "stonehearth_ace:resources:wood:walnut_log",
-         "durability": 2
+         "durability": 3
       },
       "destination": {
          "region": [
@@ -42,27 +42,27 @@
       },
       "stonehearth:evolve_data": {
          "next_stage": "stonehearth_ace:trees:walnut:small",
-         "evolve_time": "1d",
+         "evolve_time": "1d+12h",
          "biomes": {
-            "stonehearth:biome:temperate": {
+            "stonehearth_ace:biome:highlands": {
                "evolve_time_multiplier": 1.2
             },
-            "stonehearth_ace:biome:highlands": {
+            "stonehearth:biome:temperate": {
                "evolve_time_multiplier": 1.5
             },
-            "stonehearth:biome:arctic": {
-               "evolve_time_multiplier": 2
+            "stonehearth:biome:desert": {
+               "evolve_time_multiplier": 3
             }
          },
          "seasons": {
             "summer": {
-               "evolve_time_multiplier": 1.2
-            },
-            "autumn": {
                "evolve_time_multiplier": 1.5
             },
-            "winter": {
+            "autumn": {
                "evolve_time_multiplier": 2
+            },
+            "winter": {
+               "evolve_time_multiplier": 1.2
             }
          }
       },

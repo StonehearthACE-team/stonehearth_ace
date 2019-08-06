@@ -1,0 +1,31 @@
+{
+   "type": "recipe",
+   "effort": 16,
+   "work_units": 2,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.nut_bread_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.nut_bread_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.nut_bread_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/nut_bread/nut_bread/nut_bread.png",
+   "workshop": "stonehearth:cook:oven",
+	"work_effect": "work_wait",
+   "level_requirement": 3,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:food:dough",
+         "count": 1
+      },
+		{
+         "uri": "stonehearth_ace:food:nut_flour",
+         "count": 1
+      },
+	   {
+         "material": "low_fuel",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:nut_bread"
+      }
+   ]
+}

@@ -1,0 +1,35 @@
+{
+   "type": "recipe",
+   "effort": 22,
+   "work_units": 6,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.nutty_meatballs_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.nutty_meatballs_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.nutty_meatballs_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/nutty_meatballs/nutty_meatballs/nutty_meatballs.png",
+   "workshop": "stonehearth:cook:oven",
+	"work_effect": "work_wait",
+   "level_requirement": 2,
+   "ingredients": [
+		{
+         "material": "food meat raw",
+         "count": 2
+      },
+      {
+         "uri": "stonehearth:food:egg",
+         "count": 1
+      },     
+		{
+         "uri": "stonehearth_ace:food:cooked_nuts",
+         "count": 1
+      },
+	   {
+         "material": "low_fuel",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:nutty_meatballs"
+      }
+   ]
+}

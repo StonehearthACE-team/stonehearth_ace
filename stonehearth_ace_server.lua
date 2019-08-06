@@ -33,6 +33,7 @@ local monkey_patches = {
    ace_town_service = 'stonehearth.services.server.town.town_service',
    ace_town = 'stonehearth.services.server.town.town',
    ace_evolve_component = 'stonehearth.components.evolve.evolve_component',
+	ace_carry_block_component = 'stonehearth.components.carry_block.carry_block_component',
    ace_crafting_progress = 'stonehearth.components.workshop.crafting_progress',
    ace_workshop_component = 'stonehearth.components.workshop.workshop_component',
    ace_craft_items_orchestrator = 'stonehearth.services.server.town.orchestrators.craft_items_orchestrator',

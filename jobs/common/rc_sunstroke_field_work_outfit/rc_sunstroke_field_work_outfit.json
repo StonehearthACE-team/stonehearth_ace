@@ -1,0 +1,103 @@
+{
+   "mixins": [
+      "stonehearth:mixins:item_properties"
+   ],
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "layer": "hat",
+            "transparent": "false",
+            "models": [
+               "file(rc_sunstroke_field_work_outfit.qb)"
+            ]
+         },
+         "female": {
+            "layer": "hat",
+            "transparent": "false",
+            "models": [
+               "file(rc_sunstroke_field_work_outfit_female.qb)"
+            ]
+         },
+         "rabbit_male": {
+            "layer": "hat",
+            "transparent": "false",
+            "models": [
+               "file(rc_sunstroke_field_work_outfit_rabbit.qb)"
+            ]
+         },
+         "rabbit_female": {
+            "layer": "hat",
+            "transparent": "false",
+            "models": [
+               "file(rc_sunstroke_field_work_outfit_rabbit.qb)"
+            ]
+         },
+         "orc_male": {
+            "layer": "hat",
+            "transparent": "false",
+            "models": [
+               "file(rc_sunstroke_field_work_outfit_orc_male.qb)"
+            ]
+         },
+         "orc_female": {
+            "layer": "hat",
+            "transparent": "false",
+            "models": [
+               "file(rc_sunstroke_field_work_outfit_orc_female.qb)"
+            ]
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(rc_sunstroke_field_work_outfit_iconic.json)"
+      },
+      "stonehearth:equipment_piece": {
+         "slot": "helmet",
+         "render_type": "merge_with_model",
+         "roles": [
+            "field_work",
+            "worker_job"
+         ],
+         "ilevel": 1,
+         "injected_buffs": [
+            "stonehearth_ace:buffs:weather:hot_resist",
+            "stonehearth_ace:buffs:weather:sunstroke_resist"
+         ],
+         "conditional_values": {
+            "season": {
+               "winter": -3,
+               "autumn": -3,
+               "spring": -3,
+               "summer": 0
+            }
+         },
+         "equip_effect": "stonehearth:effects:weapon_level_up"
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 13,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 2,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:jobs.field_work.sunstroke_field_work_outfit.rc_display_name)",
+         "description": "i18n(stonehearth_ace:jobs.field_work.sunstroke_field_work_outfit.description)",
+         "icon": "file(rc_sunstroke_field_work_outfit.png)",
+         "category": "armor",
+         "material_tags": [
+            "cloth",
+            "field_work_outfit",
+            "worker_outfit",
+            "rc_made",
+            "civillian_equipment",
+            "stockpile_equipment"
+         ]
+      }
+   }
+}

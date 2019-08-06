@@ -1,0 +1,30 @@
+{
+   "type": "recipe",
+   "effort": 40,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.weaver.recipes.sunstroke_crafter_outfit_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.weaver.recipes.sunstroke_crafter_outfit_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.weaver.recipes.sunstroke_crafter_outfit_recipe.flavor)",
+   "portrait": "/stonehearth_ace/jobs/common/sunstroke_crafter_outfit/sunstroke_crafter_outfit.png",
+   "workshop": "stonehearth:weaver:workbench",
+   "level_requirement": 4,
+   "ingredients": [
+      {
+         "material": "cloth resource",
+         "count": 1
+      },
+      {
+         "material": "thread resource",
+         "count": 1
+      },
+	   {
+         "material": "feather resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:crafter:outfit:sunstroke"
+      }
+   ]
+}

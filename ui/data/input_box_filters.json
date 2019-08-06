@@ -152,6 +152,18 @@
       },
       "animal_parts": {
          "categories": {
+            "hard_pelts": {
+               "ordinal": 2,
+               "display_name": "i18n(stonehearth_ace:entities.resources.skins.display_name)",
+               "icon": "/stonehearth/entities/resources/skin/varanus_skin/varanus_skin.png",
+               "filter": "resource animal_part skin"
+            },
+            "chitin": {
+               "ordinal": 2.1,
+               "display_name": "i18n(stonehearth_ace:entities.resources.chitin.display_name)",
+               "icon": "/stonehearth/entities/resources/chitin/beetle_chitin/beetle_chitin.png",
+               "filter": "resource animal_part chitin"
+            },
             "bone_material": {
                "ordinal": 2.5,
                "display_name": "i18n(stonehearth_ace:entities.resources.bone_material.display_name)",
@@ -269,6 +281,18 @@
                "display_name": "i18n(stonehearth_ace:entities.food.rice.raw_rice.display_name)",
                "icon": "/stonehearth_ace/entities/food/rice/raw_rice/raw_rice.png",
                "filter": "cooking_ingredient raw_rice"
+            },
+            "nuts_basket": {
+               "ordinal": 2.003,
+               "display_name": "i18n(stonehearth_ace:entities.food.nuts_basket.display_name)",
+               "icon": "/stonehearth_ace/entities/food/nuts_basket/nuts_basket.png",
+               "filter": "cooking_ingredient nut_basket"
+            },
+            "nut_flour": {
+               "ordinal": 2.004,
+               "display_name": "i18n(stonehearth_ace:entities.food.nut_flour.display_name)",
+               "icon": "/stonehearth_ace/entities/food/nut_flour/nut_flour.png",
+               "filter": "cooking_ingredient nut_flour"
             },
             "steak": {
                "ordinal": 11,

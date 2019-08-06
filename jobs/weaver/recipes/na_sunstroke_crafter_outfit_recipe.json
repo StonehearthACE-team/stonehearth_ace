@@ -1,0 +1,30 @@
+{
+   "mixins": "/stonehearth_ace/jobs/weaver/recipes/sunstroke_crafter_outfit_recipe.json",
+	"recipe_name": "i18n(stonehearth_ace:jobs.weaver.recipes.sunstroke_crafter_outfit_recipe.na_recipe_name)",
+	"description": "i18n(stonehearth_ace:jobs.weaver.recipes.sunstroke_crafter_outfit_recipe.na_description)",
+   "type": "recipe",
+   "portrait": "/stonehearth_ace/jobs/common/na_sunstroke_crafter_outfit/na_sunstroke_crafter_outfit.png",
+   "mixintypes": {
+		"ingredients": "override",
+      "produces": "override"
+   },
+	"ingredients": [
+      {
+         "material": "cloth resource",
+         "count": 1
+      },
+	   {
+         "material": "wool resource",
+         "count": 1
+      },
+      {
+         "material": "thread resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:northern_alliance:crafter:outfit:sunstroke"
+      }
+   ]
+}

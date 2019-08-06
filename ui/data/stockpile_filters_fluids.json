@@ -1,152 +1,8 @@
 {
    "stockpile": {
-      "dry_goods": {
-         "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_dry_goods)",
-         "ordinal": 2,
-         "categories": {
-            "thatch": {
-               "ordinal": 0,
-               "display_name": "i18n(stonehearth_ace:entities.resources.thatch_bale.display_name)",
-               "icon": "/stonehearth_ace/entities/resources/thatch_bale/thatch_bale.png",
-               "filter": "thatch_bale resource"
-            },
-            "wheat": {
-               "ordinal": 1,
-               "display_name": "i18n(stonehearth:entities.food.wheat_bale.display_name)",
-               "icon": "/stonehearth/entities/food/wheat_bale/wheat_bale.png",
-               "filter": "cooking_ingredient wheat"
-            },
-            "flour": {
-               "ordinal": 1.1,
-               "display_name": "i18n(stonehearth_ace:entities.food.flour.display_name)",
-               "icon": "/stonehearth/entities/food/flour/flour.png",
-               "filter": "cooking_ingredient flour"
-            },
-            "corn": {
-               "ordinal": 2,
-               "display_name": "i18n(stonehearth:entities.food.corn.corn_basket.display_name)",
-               "icon": "/stonehearth/entities/food/corn/corn_basket/corn_basket.png",
-               "filter": "food_container corn"
-            },
-            "corn_meal": {
-               "ordinal": 2.1,
-               "display_name": "i18n(stonehearth_ace:entities.food.corn_meal.display_name)",
-               "icon": "/stonehearth/entities/food/corn_meal/corn_meal.png",
-               "filter": "cooking_ingredient corn_meal"
-            },
-            "paddy_basket": {
-               "ordinal": 3,
-               "display_name": "i18n(stonehearth_ace:entities.food.rice.paddy_basket.display_name)",
-               "icon": "/stonehearth_ace/entities/food/rice/paddy_basket/paddy_basket.png",
-               "filter": "cooking_ingredient paddy_basket"
-            },
-            "raw_rice": {
-               "ordinal": 3.1,
-               "display_name": "i18n(stonehearth_ace:entities.food.rice.raw_rice.display_name)",
-               "icon": "/stonehearth_ace/entities/food/rice/raw_rice/raw_rice.png",
-               "filter": "cooking_ingredient raw_rice"
-            },
-            "rice_flour": {
-               "ordinal": 3.2,
-               "display_name": "i18n(stonehearth_ace:entities.food.rice.rice_flour.display_name)",
-               "icon": "/stonehearth_ace/entities/food/rice/rice_flour/rice_flour.png",
-               "filter": "cooking_ingredient rice_flour"
-            },
-            "sugarbell": {
-               "ordinal": 4,
-               "display_name": "i18n(stonehearth:entities.food.sugar.sugarbell_basket.display_name)",
-               "icon": "/stonehearth/entities/food/sugar/sugarbell_basket/sugarbell_basket.png",
-               "filter": "cooking_ingredient sugarbell"
-            },
-            "sugar": {
-               "ordinal": 4.1,
-               "display_name": "i18n(stonehearth:entities.food.sugar.display_name)",
-               "icon": "/stonehearth/entities/food/sugar/sugar.png",
-               "filter": "cooking_ingredient grain_sugar"
-            },
-            "malted_grains": {
-               "ordinal": 5,
-               "display_name": "i18n(stonehearth_ace:entities.food.malted_grains.display_name)",
-               "icon": "/stonehearth_ace/entities/food/malted_grains/malted_grains.png",
-               "filter": "brewing_ingredient malt"
-            },
-            "gruit": {
-               "ordinal": 6,
-               "display_name": "i18n(stonehearth_ace:entities.drink.gruit.display_name)",
-               "icon": "/stonehearth_ace/entities/drink/gruit/gruit.png",
-               "filter": "brewing_ingredient gruit"
-            },
-            "edible_nuts": {
-               "ordinal": 7,
-               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_edible_nuts)",
-               "icon": "/stonehearth_ace/entities/trees/oak_tree/seed/edible_nuts_icon.png",
-               "filter": "seed_hard cooking_ingredient"
-            }
-         }
-      },
-      "animal_food": {
-         "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_animal_food)",
-         "ordinal": 3,
-         "categories": {
-            "fodder": {
-               "ordinal": 1,
-               "display_name": "i18n(stonehearth:entities.food.fodder.fodder.display_name)",
-               "icon": "/stonehearth/entities/food/fodder/fodder/fodder.png",
-               "filter": "fodder_bag stockpile_fodder"
-            },
-            "rabbit_feed": {
-               "ordinal": 2,
-               "display_name": "i18n(stonehearth:entities.food.rabbit_feed.display_name)",
-               "icon": "/stonehearth/entities/food/rabbit_feed/rabbit_feed.png",
-               "filter": "rabbit_feed_bag stockpile_fodder"
-            },
-            "poyo_feed": {
-               "ordinal": 3,
-               "display_name": "i18n(stonehearth:entities.food.poyo_feed.poyo_feed.display_name)",
-               "icon": "/stonehearth/entities/food/poyo_feed/poyo_feed/poyo_feed.png",
-               "filter": "poyo_feed_bag stockpile_fodder"
-            },
-            "sheep_feed": {
-               "ordinal": 4,
-               "display_name": "i18n(stonehearth:entities.food.sheep_feed.display_name)",
-               "icon": "/stonehearth/entities/food/sheep_feed/sheep_feed.png",
-               "filter": "sheep_feed_bag stockpile_fodder"
-            },
-            "moomoo_feed": {
-               "ordinal": 5,
-               "display_name": "i18n(stonehearth_ace:entities.food.moomoo_feed.moomoo_feed.display_name)",
-               "icon": "/stonehearth_ace/entities/food/moomoo_feed/moomoo_feed/moomoo_feed.png",
-               "filter": "moomoo_feed_bag stockpile_fodder"
-            },
-            "ostrich_feed": {
-               "ordinal": 6,
-               "display_name": "i18n(stonehearth_ace:entities.food.ostrich_feed.ostrich_feed.display_name)",
-               "icon": "/stonehearth_ace/entities/food/ostrich_feed/ostrich_feed/ostrich_feed.png",
-               "filter": "ostrich_feed_bag stockpile_fodder"
-            },
-            "kibble": {
-               "ordinal": 7,
-               "display_name": "i18n(stonehearth_ace:entities.food.kibble.display_name)",
-               "icon": "/stonehearth_ace/entities/food/kibble/kibble/kibble.png",
-               "filter": "kibble stockpile_fodder"
-            },
-            "kibble_fish": {
-               "ordinal": 7.1,
-               "display_name": "i18n(stonehearth_ace:entities.food.kibble_fish.display_name)",
-               "icon": "/stonehearth_ace/entities/food/kibble_fish/kibble_fish/kibble_fish.png",
-               "filter": "kibble_fish stockpile_fodder"
-            },
-            "kibble_veggie": {
-               "ordinal": 7.2,
-               "display_name": "i18n(stonehearth_ace:entities.food.kibble_veggie.display_name)",
-               "icon": "/stonehearth_ace/entities/food/kibble_veggie/kibble_veggie/kibble_veggie.png",
-               "filter": "kibble_veggie stockpile_fodder"
-            }
-         }
-      },
       "raw_drinks": {
          "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_raw_drinks)",
-         "ordinal": 4,
+         "ordinal": 1,
          "categories": {
             "milk_sheep": {
                "ordinal": 1,
@@ -206,7 +62,7 @@
       },
       "prepared_drinks": {
          "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_drinks)",
-         "ordinal": 5,
+         "ordinal": 2,
          "categories": {
             "smoothie": {
                "ordinal": 1,
@@ -270,9 +126,159 @@
             }
          }
       },
+      "dry_goods": {
+         "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_dry_goods)",
+         "ordinal": 3,
+         "categories": {
+            "thatch": {
+               "ordinal": 0,
+               "display_name": "i18n(stonehearth_ace:entities.resources.thatch_bale.display_name)",
+               "icon": "/stonehearth_ace/entities/resources/thatch_bale/thatch_bale.png",
+               "filter": "thatch_bale resource"
+            },
+            "wheat": {
+               "ordinal": 1,
+               "display_name": "i18n(stonehearth:entities.food.wheat_bale.display_name)",
+               "icon": "/stonehearth/entities/food/wheat_bale/wheat_bale.png",
+               "filter": "cooking_ingredient wheat"
+            },
+            "flour": {
+               "ordinal": 1.1,
+               "display_name": "i18n(stonehearth_ace:entities.food.flour.display_name)",
+               "icon": "/stonehearth/entities/food/flour/flour.png",
+               "filter": "cooking_ingredient flour"
+            },
+            "corn": {
+               "ordinal": 2,
+               "display_name": "i18n(stonehearth:entities.food.corn.corn_basket.display_name)",
+               "icon": "/stonehearth/entities/food/corn/corn_basket/corn_basket.png",
+               "filter": "food_container corn"
+            },
+            "corn_meal": {
+               "ordinal": 2.1,
+               "display_name": "i18n(stonehearth_ace:entities.food.corn_meal.display_name)",
+               "icon": "/stonehearth/entities/food/corn_meal/corn_meal.png",
+               "filter": "cooking_ingredient corn_meal"
+            },
+            "paddy_basket": {
+               "ordinal": 3,
+               "display_name": "i18n(stonehearth_ace:entities.food.rice.paddy_basket.display_name)",
+               "icon": "/stonehearth_ace/entities/food/rice/paddy_basket/paddy_basket.png",
+               "filter": "cooking_ingredient paddy_basket"
+            },
+            "raw_rice": {
+               "ordinal": 3.1,
+               "display_name": "i18n(stonehearth_ace:entities.food.rice.raw_rice.display_name)",
+               "icon": "/stonehearth_ace/entities/food/rice/raw_rice/raw_rice.png",
+               "filter": "cooking_ingredient raw_rice"
+            },
+            "rice_flour": {
+               "ordinal": 3.2,
+               "display_name": "i18n(stonehearth_ace:entities.food.rice.rice_flour.display_name)",
+               "icon": "/stonehearth_ace/entities/food/rice/rice_flour/rice_flour.png",
+               "filter": "cooking_ingredient rice_flour"
+            },
+            "nut_flour": {
+               "ordinal": 4,
+               "display_name": "i18n(stonehearth_ace:entities.food.nut_flour.display_name)",
+               "icon": "/stonehearth_ace/entities/food/nut_flour/nut_flour.png",
+               "filter": "cooking_ingredient nut_flour"
+            },
+            "sugarbell": {
+               "ordinal": 5,
+               "display_name": "i18n(stonehearth:entities.food.sugar.sugarbell_basket.display_name)",
+               "icon": "/stonehearth/entities/food/sugar/sugarbell_basket/sugarbell_basket.png",
+               "filter": "cooking_ingredient sugarbell"
+            },
+            "sugar": {
+               "ordinal": 5.1,
+               "display_name": "i18n(stonehearth:entities.food.sugar.display_name)",
+               "icon": "/stonehearth/entities/food/sugar/sugar.png",
+               "filter": "cooking_ingredient grain_sugar"
+            },
+            "malted_grains": {
+               "ordinal": 6,
+               "display_name": "i18n(stonehearth_ace:entities.food.malted_grains.display_name)",
+               "icon": "/stonehearth_ace/entities/food/malted_grains/malted_grains.png",
+               "filter": "brewing_ingredient malt"
+            },
+            "gruit": {
+               "ordinal": 7,
+               "display_name": "i18n(stonehearth_ace:entities.drink.gruit.display_name)",
+               "icon": "/stonehearth_ace/entities/drink/gruit/gruit.png",
+               "filter": "brewing_ingredient gruit"
+            },
+            "edible_nuts": {
+               "ordinal": 8,
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_edible_nuts)",
+               "icon": "/stonehearth_ace/entities/trees/oak_tree/seed/edible_nuts_icon.png",
+               "filter": "seed_hard cooking_ingredient"
+            }
+         }
+      },
+      "animal_food": {
+         "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_animal_food)",
+         "ordinal": 4,
+         "categories": {
+            "fodder": {
+               "ordinal": 1,
+               "display_name": "i18n(stonehearth:entities.food.fodder.fodder.display_name)",
+               "icon": "/stonehearth/entities/food/fodder/fodder/fodder.png",
+               "filter": "fodder_bag stockpile_fodder"
+            },
+            "rabbit_feed": {
+               "ordinal": 2,
+               "display_name": "i18n(stonehearth:entities.food.rabbit_feed.display_name)",
+               "icon": "/stonehearth/entities/food/rabbit_feed/rabbit_feed.png",
+               "filter": "rabbit_feed_bag stockpile_fodder"
+            },
+            "poyo_feed": {
+               "ordinal": 3,
+               "display_name": "i18n(stonehearth:entities.food.poyo_feed.poyo_feed.display_name)",
+               "icon": "/stonehearth/entities/food/poyo_feed/poyo_feed/poyo_feed.png",
+               "filter": "poyo_feed_bag stockpile_fodder"
+            },
+            "sheep_feed": {
+               "ordinal": 4,
+               "display_name": "i18n(stonehearth:entities.food.sheep_feed.display_name)",
+               "icon": "/stonehearth/entities/food/sheep_feed/sheep_feed.png",
+               "filter": "sheep_feed_bag stockpile_fodder"
+            },
+            "moomoo_feed": {
+               "ordinal": 5,
+               "display_name": "i18n(stonehearth_ace:entities.food.moomoo_feed.moomoo_feed.display_name)",
+               "icon": "/stonehearth_ace/entities/food/moomoo_feed/moomoo_feed/moomoo_feed.png",
+               "filter": "moomoo_feed_bag stockpile_fodder"
+            },
+            "ostrich_feed": {
+               "ordinal": 6,
+               "display_name": "i18n(stonehearth_ace:entities.food.ostrich_feed.ostrich_feed.display_name)",
+               "icon": "/stonehearth_ace/entities/food/ostrich_feed/ostrich_feed/ostrich_feed.png",
+               "filter": "ostrich_feed_bag stockpile_fodder"
+            },
+            "kibble": {
+               "ordinal": 7,
+               "display_name": "i18n(stonehearth_ace:entities.food.kibble.display_name)",
+               "icon": "/stonehearth_ace/entities/food/kibble/kibble/kibble.png",
+               "filter": "kibble stockpile_fodder"
+            },
+            "kibble_fish": {
+               "ordinal": 7.1,
+               "display_name": "i18n(stonehearth_ace:entities.food.kibble_fish.display_name)",
+               "icon": "/stonehearth_ace/entities/food/kibble_fish/kibble_fish/kibble_fish.png",
+               "filter": "kibble_fish stockpile_fodder"
+            },
+            "kibble_veggie": {
+               "ordinal": 7.2,
+               "display_name": "i18n(stonehearth_ace:entities.food.kibble_veggie.display_name)",
+               "icon": "/stonehearth_ace/entities/food/kibble_veggie/kibble_veggie/kibble_veggie.png",
+               "filter": "kibble_veggie stockpile_fodder"
+            }
+         }
+      },
       "fluids": {
          "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_fluids)",
-         "ordinal": 6,
+         "ordinal": 5,
          "categories": {
             "cooking_oil": {
                "ordinal": 1,
@@ -309,6 +315,42 @@
                "display_name": "i18n(stonehearth_ace:entities.drink.wort.display_name)",
                "icon": "/stonehearth_ace/entities/drink/wort/wort.png",
                "filter": "brewing_ingredient wort"
+            }
+         }
+      },
+      "potions": {
+         "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_potions)",
+         "ordinal": 6,
+         "categories": {
+            "healing_tonic_small": {
+               "ordinal": 1,
+               "display_name": "i18n(stonehearth:entities.consumables.healing_tonic.small_healing_tonic.display_name)",
+               "icon": "/stonehearth/entities/consumables/healing_tonic/small_healing_tonic/small_healing_tonic.png",
+               "filter": "healing_item small consumable"
+            },
+            "courage_tonic": {
+               "ordinal": 4,
+               "display_name": "i18n(stonehearth:entities.consumables.courage_tonic.display_name)",
+               "icon": "/stonehearth/entities/consumables/courage_tonic/courage_tonic.png",
+               "filter": "courage_tonic"
+            },
+            "energy_tonic": {
+               "ordinal": 5,
+               "display_name": "i18n(stonehearth:entities.consumables.energy_tonic.display_name)",
+               "icon": "/stonehearth/entities/consumables/energy_tonic/energy_tonic.png",
+               "filter": "energy_tonic"
+            },
+            "stamina_tonic": {
+               "ordinal": 6,
+               "display_name": "i18n(stonehearth:entities.consumables.stamina_tonic.display_name)",
+               "icon": "/stonehearth/entities/consumables/stamina_tonic/stamina_tonic.png",
+               "filter": "stamina_tonic"
+            },
+            "strength_tonic": {
+               "ordinal": 7,
+               "display_name": "i18n(stonehearth:entities.consumables.strength_tonic.display_name)",
+               "icon": "/stonehearth/entities/consumables/strength_tonic/strength_tonic.png",
+               "filter": "strength_tonic"
             }
          }
       }

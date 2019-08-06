@@ -1,45 +1,8 @@
 {
    "stockpile": {
-      "dry_goods": {
-         "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_dry_goods)",
-         "ordinal": 1,
-         "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/cooking_ingredient.png",
-         "categories": {
-            "flour": {
-               "ordinal": 1.1,
-               "display_name": "i18n(stonehearth_ace:entities.food.flour.display_name)",
-               "icon": "/stonehearth/entities/food/flour/flour.png",
-               "filter": "cooking_ingredient flour"
-            },
-            "corn_meal": {
-               "ordinal": 2.1,
-               "display_name": "i18n(stonehearth_ace:entities.food.corn_meal.display_name)",
-               "icon": "/stonehearth/entities/food/corn_meal/corn_meal.png",
-               "filter": "cooking_ingredient corn_meal"
-            },
-            "rice_flour": {
-               "ordinal": 3.2,
-               "display_name": "i18n(stonehearth_ace:entities.food.rice.rice_flour.display_name)",
-               "icon": "/stonehearth_ace/entities/food/rice/rice_flour/rice_flour.png",
-               "filter": "cooking_ingredient rice_flour"
-            },
-            "sugar": {
-               "ordinal": 4.1,
-               "display_name": "i18n(stonehearth:entities.food.sugar.display_name)",
-               "icon": "/stonehearth/entities/food/sugar/sugar.png",
-               "filter": "cooking_ingredient grain_sugar"
-            },
-            "malted_grains": {
-               "ordinal": 5,
-               "display_name": "i18n(stonehearth_ace:entities.food.malted_grains.display_name)",
-               "icon": "/stonehearth_ace/entities/food/malted_grains/malted_grains.png",
-               "filter": "brewing_ingredient malt"
-            }
-         }
-      },
       "raw_drinks": {
          "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_raw_drinks)",
-         "ordinal": 2,
+         "ordinal": 1,
          "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/raw_drink.png",
          "categories": {
             "juice_berry": {
@@ -82,7 +45,7 @@
       },
       "prepared_drinks": {
          "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_drinks)",
-         "ordinal": 3,
+         "ordinal": 2,
          "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/drink.png",
          "categories": {
             "smoothie": {
@@ -108,6 +71,49 @@
                "display_name": "i18n(stonehearth_ace:entities.drink.liquor.liquor.display_name)",
                "icon": "/stonehearth_ace/entities/drink/liquor/liquor/liquor.png",
                "filter": "drink_container liquor"
+            }
+         }
+      },
+      "dry_goods": {
+         "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_dry_goods)",
+         "ordinal": 3,
+         "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/cooking_ingredient.png",
+         "categories": {
+            "flour": {
+               "ordinal": 1.1,
+               "display_name": "i18n(stonehearth_ace:entities.food.flour.display_name)",
+               "icon": "/stonehearth/entities/food/flour/flour.png",
+               "filter": "cooking_ingredient flour"
+            },
+            "corn_meal": {
+               "ordinal": 2.1,
+               "display_name": "i18n(stonehearth_ace:entities.food.corn_meal.display_name)",
+               "icon": "/stonehearth/entities/food/corn_meal/corn_meal.png",
+               "filter": "cooking_ingredient corn_meal"
+            },
+            "rice_flour": {
+               "ordinal": 3.2,
+               "display_name": "i18n(stonehearth_ace:entities.food.rice.rice_flour.display_name)",
+               "icon": "/stonehearth_ace/entities/food/rice/rice_flour/rice_flour.png",
+               "filter": "cooking_ingredient rice_flour"
+            },
+            "nut_flour": {
+               "ordinal": 4.1,
+               "display_name": "i18n(stonehearth_ace:entities.food.nut_flour.display_name)",
+               "icon": "/stonehearth_ace/entities/food/nut_flour/nut_flour.png",
+               "filter": "cooking_ingredient nut_flour"
+            },
+            "sugar": {
+               "ordinal": 5.1,
+               "display_name": "i18n(stonehearth:entities.food.sugar.display_name)",
+               "icon": "/stonehearth/entities/food/sugar/sugar.png",
+               "filter": "cooking_ingredient grain_sugar"
+            },
+            "malted_grains": {
+               "ordinal": 6,
+               "display_name": "i18n(stonehearth_ace:entities.food.malted_grains.display_name)",
+               "icon": "/stonehearth_ace/entities/food/malted_grains/malted_grains.png",
+               "filter": "brewing_ingredient malt"
             }
          }
       },
@@ -139,6 +145,43 @@
                "display_name": "i18n(stonehearth_ace:entities.drink.wort.display_name)",
                "icon": "/stonehearth_ace/entities/drink/wort/wort.png",
                "filter": "brewing_ingredient wort"
+            }
+         }
+      },
+      "potions": {
+         "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_potions)",
+         "ordinal": 5,
+         "icon": "/stonehearth/ui/game/modes/zones_mode/stockpile/images/taxonomy/healing_items.png",
+         "categories": {
+            "healing_tonic_small": {
+               "ordinal": 1,
+               "display_name": "i18n(stonehearth:entities.consumables.healing_tonic.small_healing_tonic.display_name)",
+               "icon": "/stonehearth/entities/consumables/healing_tonic/small_healing_tonic/small_healing_tonic.png",
+               "filter": "healing_item small consumable"
+            },
+            "courage_tonic": {
+               "ordinal": 4,
+               "display_name": "i18n(stonehearth:entities.consumables.courage_tonic.display_name)",
+               "icon": "/stonehearth/entities/consumables/courage_tonic/courage_tonic.png",
+               "filter": "courage_tonic"
+            },
+            "energy_tonic": {
+               "ordinal": 5,
+               "display_name": "i18n(stonehearth:entities.consumables.energy_tonic.display_name)",
+               "icon": "/stonehearth/entities/consumables/energy_tonic/energy_tonic.png",
+               "filter": "energy_tonic"
+            },
+            "stamina_tonic": {
+               "ordinal": 6,
+               "display_name": "i18n(stonehearth:entities.consumables.stamina_tonic.display_name)",
+               "icon": "/stonehearth/entities/consumables/stamina_tonic/stamina_tonic.png",
+               "filter": "stamina_tonic"
+            },
+            "strength_tonic": {
+               "ordinal": 7,
+               "display_name": "i18n(stonehearth:entities.consumables.strength_tonic.display_name)",
+               "icon": "/stonehearth/entities/consumables/strength_tonic/strength_tonic.png",
+               "filter": "strength_tonic"
             }
          }
       }

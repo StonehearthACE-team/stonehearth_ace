@@ -1,0 +1,29 @@
+{
+   "mixins": "/stonehearth_ace/jobs/weaver/recipes/sunstroke_crafter_outfit_recipe.json",
+	"recipe_name": "i18n(stonehearth_ace:jobs.weaver.recipes.sunstroke_crafter_outfit_recipe.rc_recipe_name)",
+   "type": "recipe",
+   "portrait": "/stonehearth_ace/jobs/common/rc_sunstroke_crafter_outfit/rc_sunstroke_crafter_outfit.png",
+   "mixintypes": {
+		"ingredients": "override",
+      "produces": "override"
+   },
+	"ingredients": [
+      {
+         "material": "cloth resource",
+         "count": 1
+      },
+      {
+         "material": "thread resource",
+         "count": 1
+      },
+	   {
+         "material": "fiber resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:rayyas_children:crafter:outfit:sunstroke"
+      }
+   ]
+}

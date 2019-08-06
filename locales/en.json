@@ -1684,6 +1684,16 @@
          "move_patrol_banner": {
             "display_name": "Move Patrol Banner",
             "description": "Place the selected patrol banner somewhere else, modifying the route."
+         },
+         "archer_bolts": {
+            "slow_bolts": {
+               "display_name": "Using Spiky Bolts",
+               "description": "Currently using spiky bolts, which slows enemy movement speed. Click to swap between bolt types."
+            },
+            "default_bolts": {
+               "display_name": "Using Default Bolts",
+               "description": "Using normal bolts. Click to swap to a different bolt type"
+            }
          }
       },
       "buffs": {
@@ -1836,7 +1846,7 @@
             },
             "sweltering_debuff": {
                "display_name": "Extremely Hot Weather",
-               "description": "I'm sweltering... Should stay indoors or have something refreshing to drink...<ul><li>This hearthling has an increasing chance of getting a sunstroke the longer they stay exposed to the heat.</li></ul>"
+               "description": "I'm sweltering... Should stay indoors or have something refreshing to drink...<ul><li>This hearthling has an increasing chance of getting a sunstroke the longer they stay exposed to the heat.</li><li>Wearing some sort of head protection like hats, helmets or hoods will prevent heatstrokes.</li></ul>"
             },
             "animal_sweltering_debuff": {
                "display_name": "Extremely Hot Weather",
@@ -1875,12 +1885,12 @@
                "description": "This hearthling is protected against freezing weather."
             },
             "hot_resist_buff": {
-               "display_name": "Cool Outfit",
-               "description": "Light materials and a good airflow keeps this hearthling protected from hot weather."
+               "display_name": "Safe from the Sun",
+               "description": "Light materials, good airflow or just a handy hat... Should be enough. This hearthling is protected from hot weather."
             },
             "sweltering_resist_buff": {
-               "display_name": "Sunstroke Protection",
-               "description": "Efficient protection against the sun and blazing winds will keep this hearthling safe from the heat of very hot weather."
+               "display_name": "Cool Outfit",
+               "description": "Efficient protection against the sun and blazing winds will keep this hearthling safe from the heat of extremely hot weather."
             },
             "refreshed_buff": {
                "display_name": "Refreshed",
@@ -3564,14 +3574,18 @@
             "description": "A heavy wool coat, for chilly winter nights. Improves speed."
          },
          "na_winter_worker_outfit": {
+				"display_name": "Winter Worker Parka",
             "description": "A heavy wool coat, for cold winter nights. Improves speed."
          },
          "chilly_simple_worker_outfit": {
             "display_name": "Simple Winter Worker Outfit",
+				"rc_display_name": "Simple Winter Worker Garb",
             "description": "Wool cap and gloves. Protects from chilly weather but with no added benefits."
          },
          "cold_simple_worker_outfit": {
-            "display_name": "Simple Worker Leather Jacket",
+            "display_name": "Simple Worker Jacket",
+				"na_display_name": "Simple Worker Parka",
+				"rc_display_name": "Simple Worker Coat",
             "description": "A tepid leather outfit. Protects from cold weather but with no added benefits."
          },
          "freezing_simple_worker_outfit": {
@@ -3579,15 +3593,15 @@
             "description": "A warm, fuzzy cloak. Protects from freezing weather with no added benefits."
          },
          "cold_worker_outfit": {
-            "display_name": "Worker Leather Jacket",
+            "display_name": "Winter Worker Jacket",
             "description": "A high quality leather outfit. Protects from cold weather and improves speed!"
          },
          "na_freezing_worker_outfit": {
-            "display_name": "Worker Bear Coat",
+            "display_name": "Winter Worker Bear Coat",
             "description": "A masterfully made outfit. Protects from freezing weather and improves speed!"
          },
          "rc_winter_worker_outfit": {
-            "display_name": "Winter Worker Outfit",
+            "display_name": "Winter Worker Garb",
             "description": "A reinforced wool outfit. Protects from chilly weather and improves speed!"
          }
       },
@@ -3715,6 +3729,11 @@
                "description": "A formidable alternative for wheat flour.",
                "flavor": ""
             },
+            "nut_flour_recipe": {
+               "recipe_name": "Sack of Nut Flour",
+               "description": "Finely ground nuts. Can be used as a flour.",
+               "flavor": "Baking with it is nuts!"
+            },
             "dough_recipe": {
                "recipe_name": "Portion of Wheat Dough",
                "description": "Mix and knead a malleable dough to be used on baking meals like bread.",
@@ -3819,6 +3838,21 @@
                "recipe_name": "Imperial Salad",
                "description": "An appetizing combination of cheese and greens.",
                "flavor": "It is said that the old emperors of the Phoenix Empire loved eating veggies like this"
+            },
+            "nut_bread_recipe": {
+               "recipe_name": "Nut Bread",
+               "description": "Spicy and soft.",
+               "flavor": "An Autumn favorite!"
+            },
+            "nutty_meatballs_recipe": {
+               "recipe_name": "Nutty Meatballs",
+               "description": "Brings forth the most exquisite flavors.",
+               "flavor": ""
+            },
+            "nut_cake_recipe": {
+               "recipe_name": "Nut Cake",
+               "description": "Delicious and sweet, as cake should be.",
+               "flavor": "Better appreciated with tea, close to your hearth, while it snows outside"
             },
             "melted_poyo_recipe": {
                "recipe_name": "Melted Poyo",
@@ -4252,31 +4286,59 @@
                "description": "The ACE Team would like to wish you all very happy and wonderful holidays!",
                "flavor": "This recipe shall be removed after New Year's Eve... So craft yours while you can!"
             },
+            "sunstroke_field_work_outfit_recipe": {
+               "recipe_name": "Summer Work Hat",
+					"na_recipe_name": "Summer Straw Work Hat",
+					"rc_recipe_name": "Summer Work Turban",
+               "description": "Simple and efficient. Protects from hot weather and sunstrokes.",
+					"na_description": "Simple and efficient. Protects the wearer from sunstrokes.",
+               "flavor": "This item can only be equipped by workers and other civillians that work outside, like Shepherds, Farmers or Trappers"
+            },
+            "sunstroke_crafter_outfit_recipe": {
+               "recipe_name": "Summer Felt Crafter Hat",
+					"na_recipe_name": "Summer Crafter Bonnet",
+					"rc_recipe_name": "Summer Crafter Fez",
+               "description": "A finely tailored hat. Protects from hot weather and sunstrokes.",
+					"na_description": "A finely tailored hat. Protects the wearer from sunstrokes.",
+               "flavor": "This item can only be equipped by civillian crafters, like Carpenters, Blacksmiths or Cooks"
+            },
             "freezing_field_work_outfit_recipe": {
                "recipe_name": "Field Worker Comfy Hood",
+					"rc_recipe_name": "Field Worker Spun Hood",
+					"na_recipe_name": "Field Worker Comfy Cowl",
                "description": "A warm, decorated hood. Protects from freezing weather.",
                "rc_description": "A decorated hood. Protects from cold weather.",
                "flavor": "This item can only be equipped by civillians that work outside, like Shepherds, Farmers or Trappers"
             },
             "freezing_crafter_outfit_recipe": {
-               "recipe_name": "Crafter Gilded Scarf",
+               "recipe_name": "Crafter Woven Scarf",
+					"rc_recipe_name": "Crafter Gilded Kerchief",
+					"na_recipe_name": "Crafter Adorned Shawl",
                "description": "A fuzzy and ornate wool scarf. Protects from freezing weather.",
                "rc_description": "An ornate wool scarf. Protects from cold weather.",
                "flavor": "This item can only be equipped by civillian crafters, like Carpenters, Blacksmiths or Cooks"
             },
             "freezing_combat_outfit_recipe": {
                "recipe_name": "Combatant Fur Cloak",
+					"na_recipe_name": "Combatant Fur Mantle",
+					"rc_recipe_name": "Combatant Fur Wrap",
                "description": "A thick cape made of multiple furs. Protects from freezing weather.",
                "rc_description": "A short cape made of fur. Protects from cold weather.",
                "flavor": "This item can only be equipped by combat units, like Footmen, Archers or Clerics"
             },
+				"na_worker_outfit_winter_recipe": {
+               "recipe_name": "Winter Worker Parka"
+            },
             "chilly_simple_worker_outfit_recipe": {
                "recipe_name": "Simple Winter Worker Outfit",
+					"rc_recipe_name": "Simple Winter Worker Garb",
                "description": "Craft a Wool cap and gloves. Protects from chilly weather but with no added benefits.",
                "flavor": "A family favorite for autumn days"
             },
             "cold_simple_worker_outfit_recipe": {
-               "recipe_name": "Simple Worker Leather Jacket",
+               "recipe_name": "Simple Worker Jacket",
+					"na_recipe_name": "Simple Worker Parka",
+					"rc_recipe_name": "Simple Worker Coat",
                "description": "Create a tepid leather outfit. Protects from cold weather but with no added benefits.",
                "flavor": ""
             },
@@ -4286,17 +4348,17 @@
                "flavor": "Bears can be found in wild caves or caught by very lucky trappers"
             },
             "cold_worker_outfit_recipe": {
-               "recipe_name": "Worker Leather Jacket",
+               "recipe_name": "Winter Worker Jacket",
                "description": "A sturdy and tepid leather outfit of good quality. Protects from cold weather and improves speed.",
                "flavor": "When winter arrives, look the part!"
             },
             "rc_winter_worker_outfit_recipe": {
-               "recipe_name": "Winter Worker Outfit",
+               "recipe_name": "Winter Worker Garb",
                "description": "A nice and thick wool outfit for protecting oneself from chilly weather. Also improves speed.",
                "flavor": "It can be surprisingly cold in the desert"
             },
             "na_freezing_worker_outfit_recipe": {
-               "recipe_name": "Worker Bear Coat",
+               "recipe_name": "Winter Worker Bear Coat",
                "description": "The finest northern craftsmanship, a resistant and very warm outfit. Protects from freezing weather and improves speed.",
                "flavor": "For the long winter"
             },
@@ -4314,6 +4376,11 @@
                "recipe_name": "Bedroll",
                "description": "Better than the ground but not really a homely bedding. Very portable, though!",
                "flavor": "A bed you can carry. Well, to be honest you can actually carry ANY bed..."
+            },
+            "simple_quiver_bolts_recipe": {
+               "recipe_name": "Spiky Bolt Quiver",
+               "description": "A quiver equippable by an archer. The bolts encased by it will slow down enemies.",
+               "flavor": "A bolt quiver can only be worn with crossbows"
             },
             "curtains_wide_recipe": {
                "recipe_name": "Wide Curtains",
@@ -4487,29 +4554,43 @@
       },
       "crafter": {
          "freezing_crafter_outfit": {
-            "display_name": "Crafter Gilded Scarf",
-            "description": "An ornate wool scarf. Can only be worn by crafters. Protects from freezing weather."
+            "display_name": "Crafter Woven Scarf",
+            "description": "An ornate wool scarf. Can only be worn by crafters. Protects from freezing weather.",
+				"rc_display_name": "Crafter Gilded Kerchief",
+				"na_display_name": "Crafter Adorned Shawl",
+				"rc_description": "An ornate wool scarf. Can only be worn by crafters. Protects from cold weather."
          },
-         "cold_crafter_outfit": {
-            "description": "An ornate wool scarf. Can only be worn by crafters. Protects from cold weather."
-         },
-         "cold_combat_outfit": {
-            "description": "Heavy cover of pelts. Can only be worn by fighters. Protects from cold weather."
-         },
-         "cold_field_work_outfit": {
-            "description": "Warm. Can only be worn by field workers. Protects from cold weather."
+         "sunstroke_crafter_outfit": {
+            "display_name": "Summer Felt Crafter Hat",
+            "description": "Can only be worn by crafters. Protects from hot weather and sunstrokes.",
+				"na_description": "Can only be worn by crafters. Protects the wearer from sunstrokes.",
+            "na_display_name": "Summer Crafter Bonnet",
+            "rc_display_name": "Summer Crafter Fez"
          }
       },
       "combat": {
          "freezing_combat_outfit": {
             "description": "Heavy cover of pelts. Can only be worn by fighters. Protects from freezing weather.",
-            "display_name": "Combatant Fur Cloak"
+            "display_name": "Combatant Fur Cape",
+            "na_display_name": "Combatant Fur Mantle",
+            "rc_display_name": "Combatant Fur Wrap",
+            "rc_description": "Heavy cover of pelts. Can only be worn by fighters. Protects from cold weather."
          }
       },
       "field_work": {
-         "freezing_field_work_outfit": {
-            "description": "Warm. Can only be worn by field workers. Protects from freezing weather.",
-            "display_name": "Field Worker Comfy Hood"
+         "freezing_field_work_outfit": {         
+            "display_name": "Field Worker Comfy Hood",
+				"description": "Warm. Can only be worn by field workers. Protects from freezing weather.",
+				"rc_display_name": "Field Worker Spun Hood",
+				"na_display_name": "Field Worker Comfy Cowl",
+				"rc_description": "Warm. Can only be worn by field workers. Protects from cold weather."
+         },
+         "sunstroke_field_work_outfit": {
+            "display_name": "Summer Work Hat",
+            "description": "A hat for workers and field workers. Protects from hot weather and sunstrokes.",
+				"na_description": "A hat for workers and field workers. Protects the wearer from sunstrokes.",
+            "na_display_name": "Summer Straw Work Hat",
+            "rc_display_name": "Summer Work Turban"
          }
       }
    },
@@ -5212,6 +5293,10 @@
             "wild_cattle_pelt": {
                "display_name": "Wild Cattle Pelt",
                "description": "The furry and rough hide of a large ruminant."
+            },
+            "deer_horn": {
+               "display_name": "Antler",
+               "description": "Hard and sharp. Can be used as bone material."
             }
          },
          "bone_material": {
@@ -5315,6 +5400,12 @@
                "display_name": "Bucket of Water",
                "description": "A very basic and important resource."
             }
+         },
+         "skins": {
+            "display_name": "Skins"
+         },
+         "chitin": {
+            "display_name": "Chitin"
          }
       },
       "refined": {
@@ -7463,6 +7554,35 @@
                "display_name": "Basket of Walnuts",
                "description": "A bold-flavored nut. Can be eaten raw or used in cooking."
             }
+         },
+         "nut_flour": {
+            "display_name": "Sack of Nut Flour",
+            "description": "Finely ground nuts. Can be used as a flour."
+         },
+         "nut_bread": {
+            "display_name": "Nut Bread",
+            "description": "Spicy and soft.",
+            "nut_bread_serving": {
+               "display_name": "Slice of Nut Bread"
+            }
+         },
+         "nut_cake": {
+            "nut_cake": {
+               "display_name": "Nut Cake",
+               "description": "Delicious and sweet, as cake should be."
+            },
+            "nut_cake_serving": {
+               "display_name": "Slice of Nut Cake",
+               "description": "Yum!"
+            }
+         },
+         "nutty_meatballs": {
+            "display_name": "Nutty Meatballs",
+            "description": "Brings forth the most exquisite flavors.",
+            "nutty_meatballs_serving": {
+               "display_name": "Serving of Nutty Meatballs",
+               "description": "Do you ever wonder where meatballs come from?"
+            }
          }
       },
       "terrain": {
@@ -7939,6 +8059,10 @@
          "goblin_shield": {
             "display_name": "Goblin Shield",
             "description": "Not as efficient as it looks like."
+         },
+         "simple_quiver_bolts": {
+            "display_name": "Spiky Bolt Quiver",
+            "description": "A light quiver of slowing crossbow bolts"
          }
       },
       "weapons": {
@@ -9594,7 +9718,8 @@
                   "tooltip_raw_food_fruits_veggies": "Raw Fruits & Veggies",
                   "tooltip_raw_food_meat": "Raw Meats & Animal Goods",
                   "tooltip_prepared_food_baked": "Baked Goods",
-                  "tooltip_raw_food_fungi": "Raw Fungi"
+                  "tooltip_raw_food_fungi": "Raw Fungi",
+                  "tooltip_potions": "Potions & Tonics"
                }
             },
             "pasture": {

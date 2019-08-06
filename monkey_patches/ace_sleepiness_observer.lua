@@ -34,7 +34,7 @@ end
 
 AceSleepinessObserver._ace_old__add_sleepiness_thoughts = SleepinessObserver._add_sleepiness_thoughts
 function AceSleepinessObserver:_add_sleepiness_thoughts(sleepiness)
-   if sleepiness > stonehearth.constants.sleep.EXHAUSTED_THOUGHT_THRESHOLD then
+   if sleepiness >= stonehearth.constants.sleep.EXHAUSTED_THOUGHT_THRESHOLD then
       radiant.entities.add_thought(self._entity, 'stonehearth:thoughts:sleepiness:exhausted')
    else
       self:_ace_old__add_sleepiness_thoughts(sleepiness)

@@ -1,0 +1,75 @@
+{
+   "mixins": [
+      "stonehearth:mixins:item_properties",
+      "stonehearth_ace:mixins:armor:quiver_bolts"
+   ],
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "layer": "clothing",
+            "transparent": "true",
+            "models": [
+               "file(simple_quiver_bolts.qb)"
+            ]
+         },
+         "female": {
+            "layer": "clothing",
+            "transparent": "true",
+            "models": [
+               "file(simple_quiver_bolts_female.qb)"
+            ]
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(simple_quiver_bolts_iconic.json)"
+      },
+      "stonehearth:equipment_piece": {
+         "ilevel": 1,
+         "required_job_level": 3,
+         "roles": [
+            "archer_job"
+         ],
+         "equip_effect": "stonehearth:effects:weapon_level_up"
+      },
+      "stonehearth:equipment_swap": {
+         "swap_options": {
+            "none": {
+               "command": "stonehearth_ace:commands:archer_bolts:default",
+               "ordinal": 1
+            },
+            "slow": {
+               "uri": "stonehearth:archer:abilities:slow_arrow",
+               "command": "stonehearth_ace:commands:archer_bolts:slow",
+               "ordinal": 2
+            }
+         },
+         "default": "slow"
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 27,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 2,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.armor.simple_quiver_bolts.display_name)",
+         "description": "i18n(stonehearth_ace:entities.armor.simple_quiver_bolts.description)",
+         "icon": "file(simple_quiver_bolts.png)",
+         "category": "weapons",
+         "material_tags": [
+            "leather",
+            "accessory",
+            "quiver",
+            "simple_quiver_bolts",
+            "stockpile_exotic_equipment"
+         ]
+      }
+   }
+}

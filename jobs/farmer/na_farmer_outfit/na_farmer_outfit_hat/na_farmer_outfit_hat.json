@@ -22,7 +22,10 @@
       "stonehearth:equipment_piece": {
          "render_type": "merge_with_model",
          "slot": "helmet",
-         "ilevel": 1,
+			"injected_buffs": [
+            "stonehearth_ace:buffs:weather:sunstroke_resist"
+         ],
+         "ilevel": 2,
          "no_drop": true
       }
    }

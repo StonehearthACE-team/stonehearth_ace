@@ -22,7 +22,11 @@
          "render_type": "merge_with_model",
          "slot": "helmet",
          "roles":["engineer_job"],
-         "no_drop": true
+         "no_drop": true,
+			"injected_buffs": [
+            "stonehearth_ace:buffs:weather:sunstroke_resist"
+         ],
+         "ilevel": 2
       }
    },
    "entity_data": {

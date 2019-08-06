@@ -15,13 +15,11 @@
    },
    "entity_data": {
       "stonehearth:net_worth": {
-         "value_in_gold": 2,
+         "value_in_gold": 3,
          "rarity": "common",
          "shop_info": {
-            "buyable": true,
-            "sellable": true,
-            "shopkeeper_level": 2,
-            "shopkeeper_type": "caravan"
+            "buyable": false,
+            "sellable": true
          }
       },
       "stonehearth:catalog": {
@@ -30,7 +28,14 @@
          "icon": "file(water_lily_purple.png)",
          "is_item": true,
          "category": "resources",
-         "material_tags":["plant", "herb", "resource", "flower", "water_lily_purple", "stockpile_plant"]
+         "material_tags": [
+            "plant",
+            "herb",
+            "resource",
+            "flower",
+            "water_lily_purple",
+            "stockpile_plant"
+         ]
       },
       "stonehearth:appeal": {
          "appeal": 2

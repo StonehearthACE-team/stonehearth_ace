@@ -1,0 +1,30 @@
+{
+   "type": "recipe",
+   "effort": 60,
+   "work_units": 10,
+   "recipe_name": "i18n(stonehearth_ace:jobs.weaver.recipes.simple_quiver_bolts_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.weaver.recipes.simple_quiver_bolts_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.weaver.recipes.simple_quiver_bolts_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/armor/simple_quiver_bolts/simple_quiver_bolts.png",
+   "workshop": "stonehearth:weaver:workbench",
+   "level_requirement": 4,
+   "ingredients": [
+      {
+         "material": "leather resource",
+         "count": 2
+      },
+      {
+         "uri": "stonehearth:resources:iron:ore",
+         "count": 1
+      },
+      {
+         "material": "feather resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:armor:simple_quiver_bolts"
+      }
+   ]
+}
