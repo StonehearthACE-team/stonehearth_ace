@@ -6,46 +6,32 @@
          "default": {
             "layer": "clothing",
             "transparent": false,
-            "models": [
-               "file(winter_worker_outfit_male.qb)"
-            ]
+            "models": []
          },
          "female": {
             "layer": "clothing",
             "transparent": "false",
-            "models": [
-               "file(winter_worker_outfit_female.qb)"
-            ]
+            "models": []
          },
          "rabbit_male": {
             "layer": "clothing",
             "transparent": "false",
-            "models": [
-               "file(winter_worker_outfit_rabbit_male.qb)",
-               "file(winter_worker_outfit_hood_rabbit_male.qb)"
-            ]
+            "models": []
          },
          "rabbit_female": {
             "layer": "clothing",
             "transparent": "false",
-            "models": [
-               "file(winter_worker_outfit_rabbit_female.qb)",
-               "file(winter_worker_outfit_hood_rabbit_female.qb)"
-            ]
+            "models": []
          },
          "orc_male": {
             "layer": "clothing",
             "transparent": "false",
-            "models": [
-               "file(winter_worker_outfit_orc_male.qb)"
-            ]
+            "models": []
          },
          "orc_female": {
             "layer": "clothing",
             "transparent": "false",
-            "models": [
-               "file(winter_worker_outfit_orc_female.qb)"
-            ]
+            "models": []
          },
          "dwarf": {
             "layer": "clothing",
@@ -61,7 +47,9 @@
       "stonehearth:equipment_piece": {
          "slot": "torso helmet",
          "render_type": "merge_with_model",
-         "roles":["worker_job"],
+         "roles": [
+            "worker_job"
+         ],
          "conditional_values": {
             "season": {
                "winter": 1,
@@ -91,7 +79,12 @@
          "description": "i18n(stonehearth:jobs.worker.winter_worker_outfit.description)",
          "icon": "file(winter_worker_outfit.png)",
          "category": "armor",
-         "material_tags":["cloth", "worker_outfit", "dwarf_made", "stockpile_equipment"]
+         "material_tags": [
+            "cloth",
+            "worker_outfit",
+            "dwarf_made",
+            "stockpile_equipment"
+         ]
       }
    }
 }

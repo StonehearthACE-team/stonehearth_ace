@@ -13,7 +13,10 @@
       "torso": "file(grower_outfit)",
       "mainhand": "stonehearth_ace:mountain_folk:grower:trowel"
    },
-   "roles":["grower_job", "crafter"],
+   "roles": [
+      "grower_job",
+      "crafter"
+   ],
    "talisman_uri": "stonehearth_ace:mountain_folk:grower:talisman",
    "default_stance": "passive",
    "icon": "file(images/icon.png)",
@@ -101,7 +104,7 @@
             {
                "name": "i18n(stonehearth:jobs.herbalist.herbalist_description.level_2_data.perk_000_name)",
                "id": "crafter_recipe_unlock_2",
-               "icon": "file(../../../stonehearth/jobs/common/images/collaborative_insight.png)",
+               "icon": "/stonehearth/jobs/common/images/collaborative_insight.png",
                "description": "i18n(stonehearth:jobs.herbalist.herbalist_description.level_2_data.perk_000_description)",
                "level": 2
             },

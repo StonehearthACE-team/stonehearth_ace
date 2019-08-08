@@ -3,48 +3,54 @@
    "tracks": {
       "cubemitter": {
          "type": "cubemitter",
-         "cubemitter": "/stonehearth/data/horde/particles/fire/tiny_fire.cubemitter.json",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/fire/mining_helmet_candle_fire.cubemitter.json",
          "loop": true,
-         "transforms": { "x": 0.4, "y": 1.6, "z": -0.3,
+         "transforms": { "x": -0.05, "y": 1.42, "z": -0.7,
             "rx": 90,
             "ry": 0,
             "rz": 0
-         }
+         },
+         "bone": "head"
       },
       "cubemitter_glow": {
          "type": "cubemitter",
-         "cubemitter": "/stonehearth/data/horde/particles/lamp/oil_lamp_glow.cubemitter.json",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/fire/mining_helmet_glow.cubemitter.json",
          "loop": true,
-         "transforms": { "x": 0.4, "y": 1.9, "z": -0.3,
+         "transforms": { "x": -0.05, "y": 1.42, "z": -0.7,
             "rx": 90,
             "ry": 0,
             "rz": 0
-         }
+         },
+         "bone": "head"
       },
       "light": {
          "type": "light",
-         "light": "/stonehearth/data/horde/animatedlights/lamp/oil_lamp.animatedlight.json",
-         "transforms": { "x": 0, "y": 1.6, "z": 0 }
+         "light": "/stonehearth_ace/data/horde/animatedlights/lamp/mining_helmet.animatedlight.json",
+         "transforms": { "x": 0, "y": 1, "z": -1.5 },
+         "shadows": true,
+         "bone": "head"
       },
       "cubemitter2": {
          "type": "cubemitter",
-         "cubemitter": "/stonehearth/data/horde/particles/fire/tiny_fire.cubemitter.json",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/fire/mining_helmet_candle_fire.cubemitter.json",
          "loop": true,
-         "transforms": { "x": -0.5, "y": 1.4, "z": -0.3,
+         "transforms": { "x": 0.05, "y": 1.22, "z": -0.8,
             "rx": 90,
             "ry": 0,
             "rz": 0
-         }
+         },
+         "bone": "head"
       },
       "cubemitter_glow2": {
          "type": "cubemitter",
-         "cubemitter": "/stonehearth/data/horde/particles/lamp/oil_lamp_glow.cubemitter.json",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/fire/mining_helmet_glow.cubemitter.json",
          "loop": true,
-         "transforms": { "x": -0.5, "y": 1.7, "z": -0.3,
+         "transforms": { "x": 0.05, "y": 1.22, "z": -0.8,
             "rx": 90,
             "ry": 0,
             "rz": 0
-         }
+         },
+         "bone": "head"
       }
    }
 }

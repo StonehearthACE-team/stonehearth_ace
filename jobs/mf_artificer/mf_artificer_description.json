@@ -15,7 +15,11 @@
       "mainhand": "stonehearth_ace:mountain_folk:artificer:staff",
       "helmet": "file(artificer_helm)"
    },
-   "roles":["engineer_job", "crafter", "artificer_job"],
+   "roles": [
+      "engineer_job",
+      "crafter",
+      "artificer_job"
+   ],
    "talisman_uri": "stonehearth_ace:mountain_folk:artificer:talisman",
    "default_stance": "passive",
    "promotion_activity_name": "promote_artificer",
@@ -36,7 +40,7 @@
       "recipe_list": "file(recipes/recipes.json)"
    },
    "workshop": {
-      "portrait": "file(artificer_workbench/artificer_workbench.png)",
+      "portrait": "",
       "workbench_type": "stonehearth_ace:mountain_folk:artificer:workbench",
       "skin_class": "artificer",
       "open_sound": "stonehearth:sounds:ui:mason_menu:menu_open",
@@ -55,7 +59,7 @@
       "craft_level_4": 20,
       "craft_level_5": 22,
       "craft_level_6": 24,
-	  "repair_entity": 6,
+      "repair_entity": 6,
       "refill_ammo": 8
    },
    "max_level": 6,
@@ -65,7 +69,7 @@
             {
                "name": "i18n(stonehearth:jobs.engineer.engineer_description.level_1_data.perk_000_name)",
                "id": "crafter_recipe_unlock_1",
-               "icon": "file(../common/images/standard_catalog.png)",
+               "icon": "/stonehearth/jobs/common/images/standard_catalog.png",
                "description": "i18n(stonehearth:jobs.engineer.engineer_description.level_1_data.perk_000_description)",
                "level": 1
             },
@@ -73,7 +77,7 @@
                "type": "increase_max_devices",
                "name": "i18n(stonehearth:jobs.engineer.engineer_description.level_1_data.perk_001_name)",
                "id": "engineer_increase_siege",
-               "icon": "file(images/level_1.png)",
+               "icon": "/stonehearth/jobs/engineer/images/level_1.png",
                "description": "i18n(stonehearth:jobs.engineer.engineer_description.level_1_data.perk_001_description)",
                "max_num_siege_weapons": {
                   "trap": 4,
@@ -85,7 +89,7 @@
             {
                "name": "i18n(stonehearth:jobs.engineer.engineer_description.level_1_data.perk_002_name)",
                "id": "engineer_repair_structures",
-               "icon": "file(images/level_0.png)",
+               "icon": "/stonehearth/jobs/engineer/images/level_0.png",
                "description": "i18n(stonehearth:jobs.engineer.engineer_description.level_1_data.perk_002_description)",
                "level": 1
             }
@@ -97,7 +101,7 @@
                "type": "apply_buff",
                "name": "i18n(stonehearth:jobs.engineer.engineer_description.level_2_data.perk_000_name)",
                "id": "engineer_diligence_up_2",
-               "icon": "file(../common/images/artistic_inspiration.png)",
+               "icon": "/stonehearth/jobs/common/images/artistic_inspiration.png",
                "buff_name": "stonehearth:buffs:engineer:diligence_2",
                "description": "i18n(stonehearth:jobs.engineer.engineer_description.level_2_data.perk_000_description)",
                "level": 2,
@@ -111,19 +115,19 @@
                "type": "increase_max_devices",
                "name": "i18n(stonehearth:jobs.engineer.engineer_description.level_3_data.perk_000_name)",
                "id": "engineer_increase_siege",
-               "icon": "file(images/level_3.png)",
+               "icon": "/stonehearth/jobs/engineer/images/level_3.png",
                "description": "i18n(stonehearth:jobs.engineer.engineer_description.level_3_data.perk_000_description)",
                "max_num_siege_weapons": {
                   "trap": 8,
                   "turret": 4
                },
-			   "max_num_automatons": 6,
+               "max_num_automatons": 6,
                "level": 3
             },
             {
                "name": "i18n(stonehearth:jobs.engineer.engineer_description.level_3_data.perk_001_name)",
                "id": "crafter_fine_items_unlock",
-               "icon": "file(../common/images/unlock_quality_fine.png)",
+               "icon": "/stonehearth/jobs/common/images/unlock_quality_fine.png",
                "description": "i18n(stonehearth:jobs.engineer.engineer_description.level_3_data.perk_001_description)",
                "level": 3
             }
@@ -135,7 +139,7 @@
             {
                "name": "i18n(stonehearth:jobs.engineer.engineer_description.level_5_data.perk_000_name)",
                "id": "crafter_excellent_items_unlock",
-               "icon": "file(../common/images/unlock_quality_excellent.png)",
+               "icon": "/stonehearth/jobs/common/images/unlock_quality_excellent.png",
                "description": "i18n(stonehearth:jobs.engineer.engineer_description.level_5_data.perk_000_description)",
                "level": 5
             }
@@ -148,13 +152,13 @@
                "type": "increase_max_devices",
                "name": "i18n(stonehearth:jobs.engineer.engineer_description.level_6_data.perk_000_name)",
                "id": "engineer_increase_siege",
-               "icon": "file(../common/images/master.png)",
+               "icon": "/stonehearth/jobs/common/images/master.png",
                "description": "i18n(stonehearth:jobs.engineer.engineer_description.level_6_data.perk_000_description)",
                "max_num_siege_weapons": {
                   "trap": 12,
                   "turret": 8
                },
-			   "max_num_automatons": 10,
+               "max_num_automatons": 10,
                "level": 6
             }
          ]

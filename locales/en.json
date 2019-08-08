@@ -1005,6 +1005,22 @@
                "none": {
                   "description": "No title necessary."
                },
+					"levels": {
+                  "display_name": "Character Level",
+                  "description": "Gained by levelling up on any job.",
+                  "6_display_name": ", Master",
+                  "6_description": "They have six job levels! They have walked the path of a master!",
+                  "12_display_name": ", Grandmaster",
+                  "12_description": "They now have twelve job levels! More than a master, a grand master!",
+                  "18_display_name": ", Jack-of-All-Trades",
+                  "18_description": "They have eighteen job levels! What? That's amazing!",
+                  "30_display_name": ", Blessed",
+                  "30_description": "They've reached thirty job levels, only few and dedicated souls can achieve that...",
+						"60_display_name": ", Living Legend",
+                  "60_description": "They've reached the impressive mark of sixty job levels! That's more experience than many hearthlings combined... Such wisdom!",
+						"90_display_name": ", Heir of Cid",
+                  "90_description": "They have ninety job levels - this is unbelievable! No hearthling could ever dream of such a feat... Their soul must've been touched by Cid himself!"
+               },
                "slayer": {
                   "display_name": "Slayer",
                   "description": "Gained by killing any creature.",
@@ -1434,6 +1450,32 @@
                   "5_description": "They have eaten sweet foods 200 times! That's probably not healthy...",
                   "6_display_name": " the Sugar Monster",
                   "6_description": "They have eaten sweet foods 500 times! Did they even manage to sleep lately?"
+               },
+					"drunk": {
+                  "display_name": "Bohemian",
+                  "description": "Gained by spending a lot of time under the effects of alcohol.",
+                  "1_display_name": " the Jolly",
+                  "1_description": "They've been more there than here for six days! That's a lot!",
+                  "2_display_name": " the Mug-Lifter",
+                  "2_description": "They've spent twelve entire days feeling quite, quite light-headed!",
+                  "3_display_name": " the Badger",
+                  "3_description": "They've been drinking for twenty entire days. Are they even working?",
+                  "4_display_name": ", Merry-Master",
+                  "4_description": "They've been merry for forty-five days. That's a lot of time to think...",
+                  "5_display_name": ", Party Animal",
+                  "5_description": "They've spent an entire year drinking. Honestly, we should just give them an award!"
+               },
+               "morning_after": {
+                  "display_name": "Limit Breaker",
+                  "description": "Gained by exaggerating a bit too much when drinking...",
+                  "1_display_name": ", Scorer",
+                  "1_description": "They did it! No one is perfect, everyone does it eventually... They've had too many drinks and will enjoy a nice morning after...",
+                  "2_display_name": " the Headache-Lover",
+                  "2_description": "They have passed the point and had a lot of drinks... Six times already! Perhaps they want some help?",
+                  "3_display_name": ", Weathered",
+                  "3_description": "They have had a bad morning after like eighteen times... They probably enjoy it somehow!",
+                  "4_display_name": " the Unquenched",
+                  "4_description": "They have been there and back again sixty times! Live and die by the bottle, they say..."
                }
             }
          }
@@ -2001,6 +2043,10 @@
                "display_name": "Sleeping Toxin",
                "description": "This is a weak toxin. It sticks for longer the more it is applied and will rapidly reduce its target's consciousness, putting them to sleep."
             }
+         },
+         "spring_flavors": {
+            "display_name": "Spring Flavors",
+            "description": "Ahh! Nothing like cool and fresh water straight from the source! Diligence and Compassion are increased.<ul><li>Crafting has a slightly increased quality chance</li><li>Experience gain is slightly increased</li></ul>"
          }
       },
       "loadouts": {
@@ -3574,18 +3620,18 @@
             "description": "A heavy wool coat, for chilly winter nights. Improves speed."
          },
          "na_winter_worker_outfit": {
-				"display_name": "Winter Worker Parka",
+            "display_name": "Winter Worker Parka",
             "description": "A heavy wool coat, for cold winter nights. Improves speed."
          },
          "chilly_simple_worker_outfit": {
             "display_name": "Simple Winter Worker Outfit",
-				"rc_display_name": "Simple Winter Worker Garb",
+            "rc_display_name": "Simple Winter Worker Garb",
             "description": "Wool cap and gloves. Protects from chilly weather but with no added benefits."
          },
          "cold_simple_worker_outfit": {
             "display_name": "Simple Worker Jacket",
-				"na_display_name": "Simple Worker Parka",
-				"rc_display_name": "Simple Worker Coat",
+            "na_display_name": "Simple Worker Parka",
+            "rc_display_name": "Simple Worker Coat",
             "description": "A tepid leather outfit. Protects from cold weather but with no added benefits."
          },
          "freezing_simple_worker_outfit": {
@@ -4288,57 +4334,57 @@
             },
             "sunstroke_field_work_outfit_recipe": {
                "recipe_name": "Summer Work Hat",
-					"na_recipe_name": "Summer Straw Work Hat",
-					"rc_recipe_name": "Summer Work Turban",
+               "na_recipe_name": "Summer Straw Work Hat",
+               "rc_recipe_name": "Summer Work Turban",
                "description": "Simple and efficient. Protects from hot weather and sunstrokes.",
-					"na_description": "Simple and efficient. Protects the wearer from sunstrokes.",
+               "na_description": "Simple and efficient. Protects the wearer from sunstrokes.",
                "flavor": "This item can only be equipped by workers and other civillians that work outside, like Shepherds, Farmers or Trappers"
             },
             "sunstroke_crafter_outfit_recipe": {
                "recipe_name": "Summer Felt Crafter Hat",
-					"na_recipe_name": "Summer Crafter Bonnet",
-					"rc_recipe_name": "Summer Crafter Fez",
+               "na_recipe_name": "Summer Crafter Bonnet",
+               "rc_recipe_name": "Summer Crafter Fez",
                "description": "A finely tailored hat. Protects from hot weather and sunstrokes.",
-					"na_description": "A finely tailored hat. Protects the wearer from sunstrokes.",
+               "na_description": "A finely tailored hat. Protects the wearer from sunstrokes.",
                "flavor": "This item can only be equipped by civillian crafters, like Carpenters, Blacksmiths or Cooks"
             },
             "freezing_field_work_outfit_recipe": {
                "recipe_name": "Field Worker Comfy Hood",
-					"rc_recipe_name": "Field Worker Spun Hood",
-					"na_recipe_name": "Field Worker Comfy Cowl",
+               "rc_recipe_name": "Field Worker Spun Hood",
+               "na_recipe_name": "Field Worker Comfy Cowl",
                "description": "A warm, decorated hood. Protects from freezing weather.",
                "rc_description": "A decorated hood. Protects from cold weather.",
                "flavor": "This item can only be equipped by civillians that work outside, like Shepherds, Farmers or Trappers"
             },
             "freezing_crafter_outfit_recipe": {
                "recipe_name": "Crafter Woven Scarf",
-					"rc_recipe_name": "Crafter Gilded Kerchief",
-					"na_recipe_name": "Crafter Adorned Shawl",
+               "rc_recipe_name": "Crafter Gilded Kerchief",
+               "na_recipe_name": "Crafter Adorned Shawl",
                "description": "A fuzzy and ornate wool scarf. Protects from freezing weather.",
                "rc_description": "An ornate wool scarf. Protects from cold weather.",
                "flavor": "This item can only be equipped by civillian crafters, like Carpenters, Blacksmiths or Cooks"
             },
             "freezing_combat_outfit_recipe": {
                "recipe_name": "Combatant Fur Cloak",
-					"na_recipe_name": "Combatant Fur Mantle",
-					"rc_recipe_name": "Combatant Fur Wrap",
+               "na_recipe_name": "Combatant Fur Mantle",
+               "rc_recipe_name": "Combatant Fur Wrap",
                "description": "A thick cape made of multiple furs. Protects from freezing weather.",
                "rc_description": "A short cape made of fur. Protects from cold weather.",
                "flavor": "This item can only be equipped by combat units, like Footmen, Archers or Clerics"
             },
-				"na_worker_outfit_winter_recipe": {
+            "na_worker_outfit_winter_recipe": {
                "recipe_name": "Winter Worker Parka"
             },
             "chilly_simple_worker_outfit_recipe": {
                "recipe_name": "Simple Winter Worker Outfit",
-					"rc_recipe_name": "Simple Winter Worker Garb",
+               "rc_recipe_name": "Simple Winter Worker Garb",
                "description": "Craft a Wool cap and gloves. Protects from chilly weather but with no added benefits.",
                "flavor": "A family favorite for autumn days"
             },
             "cold_simple_worker_outfit_recipe": {
                "recipe_name": "Simple Worker Jacket",
-					"na_recipe_name": "Simple Worker Parka",
-					"rc_recipe_name": "Simple Worker Coat",
+               "na_recipe_name": "Simple Worker Parka",
+               "rc_recipe_name": "Simple Worker Coat",
                "description": "Create a tepid leather outfit. Protects from cold weather but with no added benefits.",
                "flavor": ""
             },
@@ -4556,14 +4602,14 @@
          "freezing_crafter_outfit": {
             "display_name": "Crafter Woven Scarf",
             "description": "An ornate wool scarf. Can only be worn by crafters. Protects from freezing weather.",
-				"rc_display_name": "Crafter Gilded Kerchief",
-				"na_display_name": "Crafter Adorned Shawl",
-				"rc_description": "An ornate wool scarf. Can only be worn by crafters. Protects from cold weather."
+            "rc_display_name": "Crafter Gilded Kerchief",
+            "na_display_name": "Crafter Adorned Shawl",
+            "rc_description": "An ornate wool scarf. Can only be worn by crafters. Protects from cold weather."
          },
          "sunstroke_crafter_outfit": {
             "display_name": "Summer Felt Crafter Hat",
             "description": "Can only be worn by crafters. Protects from hot weather and sunstrokes.",
-				"na_description": "Can only be worn by crafters. Protects the wearer from sunstrokes.",
+            "na_description": "Can only be worn by crafters. Protects the wearer from sunstrokes.",
             "na_display_name": "Summer Crafter Bonnet",
             "rc_display_name": "Summer Crafter Fez"
          }
@@ -4578,17 +4624,17 @@
          }
       },
       "field_work": {
-         "freezing_field_work_outfit": {         
+         "freezing_field_work_outfit": {
             "display_name": "Field Worker Comfy Hood",
-				"description": "Warm. Can only be worn by field workers. Protects from freezing weather.",
-				"rc_display_name": "Field Worker Spun Hood",
-				"na_display_name": "Field Worker Comfy Cowl",
-				"rc_description": "Warm. Can only be worn by field workers. Protects from cold weather."
+            "description": "Warm. Can only be worn by field workers. Protects from freezing weather.",
+            "rc_display_name": "Field Worker Spun Hood",
+            "na_display_name": "Field Worker Comfy Cowl",
+            "rc_description": "Warm. Can only be worn by field workers. Protects from cold weather."
          },
          "sunstroke_field_work_outfit": {
             "display_name": "Summer Work Hat",
             "description": "A hat for workers and field workers. Protects from hot weather and sunstrokes.",
-				"na_description": "A hat for workers and field workers. Protects the wearer from sunstrokes.",
+            "na_description": "A hat for workers and field workers. Protects the wearer from sunstrokes.",
             "na_display_name": "Summer Straw Work Hat",
             "rc_display_name": "Summer Work Turban"
          }
@@ -9245,6 +9291,14 @@
                "display_name": "Spoiled Bucket of Milk",
                "description": "Milk goes bad in a very short time, it's better to drink or use it fast!"
             }
+         },
+         "water_serving_cool": {
+            "display_name": "Cup of Cool Water",
+            "description": "Just perfect, kept fresh and cool by the rocky undeground!"
+         },
+         "water_serving_spring": {
+            "display_name": "Cup of Spring Water",
+            "description": "This water is almost... magical?! Feels renewing!"
          }
       },
       "npc": {
@@ -9312,7 +9366,12 @@
             "grower_description": {
                "display_name": "Grower",
                "requirements": "Crafted by Blacksmith",
-               "description": "Growers will tend to plants and fungi alike, caring for underground or surface farms, crafting with herbs and looking after the wounded."
+               "description": "Growers will tend to plants and fungi alike, caring for underground or surface farms, crafting with herbs and looking after the wounded.",
+               "workshop": {
+                  "name": "Workshop Name",
+                  "description": "Workshop Description",
+                  "long_description": "Long Description"
+               }
             },
             "grower_trowel": {
                "grower_trowel_talisman": {
@@ -9355,7 +9414,9 @@
          },
          "artificer": {
             "artificer_description": {
-               "display_name": "Artificer"
+               "display_name": "Artificer",
+               "description": "Description",
+               "requirements": "Requirements"
             },
             "artificer_staff": {
                "artificer_staff_talisman": {
@@ -9366,6 +9427,10 @@
                   "display_name": "Artificer's Staff",
                   "description": "An advanced device that can channel both the powers of the Hearth and of machines."
                }
+            },
+            "artificer_outfit": {
+               "display_name": "Artificer Outfit",
+               "description": "Used by artificers"
             }
          },
          "druid": {
@@ -9809,14 +9874,14 @@
             },
             "satisfaction": {
                "drink": {
-                  "high": "[str(servings)] servings of Ahhhh, very good, much quenching!",
-                  "average": "[str(servings)] servings of Ahh, good, some quenching",
-                  "low": "[str(servings)] servings of Ah, not much, want more"
+                  "high": "This drink provides [str(servings)] highly satisfying servings",
+                  "average": "This drink provides [str(servings)] somewhat satisfying servings",
+                  "low": "This drink provides [str(servings)] mildly satiating servings"
                },
                "food": {
-                  "high": "[str(servings)] servings of Yum yum, very good, much filling!",
-                  "average": "[str(servings)] servings of Yum, good, some filling",
-                  "low": "[str(servings)] servings of Yum, not much, want more"
+                  "high": "This food provides [str(servings)] very filling meals",
+                  "average": "This food provides [str(servings)] quite filling meals",
+                  "low": "This food provides [str(servings)] meager meals"
                }
             },
             "consumable_buff": "Consuming Applies: ",

@@ -1,0 +1,23 @@
+{
+   "type": "buff",
+   "axis": "buff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.spring_flavors.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.spring_flavors.description)",
+   "icon": "file(spring_flavors_buff.png)",
+   "duration": "6h",
+   "repeat_add_action": "renew_duration",
+   "modifiers": {
+      "xp_multiplier": {
+         "add": 0.05
+      },
+      "diligence": {
+         "add": 10
+      },
+      "compassion": {
+         "add": 10
+      },
+      "inspiration": {
+         "add": 5
+      }
+   }
+}

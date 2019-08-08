@@ -16,6 +16,14 @@
          "model_origin": { "x": -0.5, "y": 0, "z": -0.5 },
          "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
       },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": 0, "y": 1, "z": -1 },
+               "max": { "x": 2, "y": 3, "z": 2 }
+            }
+         ]
+      },
       "region_collision_shape": {
          "region": [
             {
@@ -65,11 +73,18 @@
       }
    },
    "entity_data": {
+      "stonehearth_ace:drink_container": {
+         "effect": "carry_pickup",
+         "drink": "stonehearth_ace:drink:water_serving:spring",
+         "stacks_per_serving": 0
+      },
       "stonehearth:catalog": {
          "display_name": "i18n(stonehearth_ace:entities.terrain.water_spring.display_name)",
          "description": "i18n(stonehearth_ace:entities.terrain.water_spring.description)",
          "category": "terrain",
          "material_tags": [
+            "drink_container",
+            "coffee_time",
             "terrain"
          ]
       },

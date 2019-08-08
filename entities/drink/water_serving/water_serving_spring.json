@@ -1,0 +1,43 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(water_serving.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:item": {
+         "category": "drink",
+         "destroy_on_uncarry": true
+      },
+      "stonehearth_ace:drink": {
+         "stonehearth:sitting_on_chair": {
+            "satisfaction": 70
+         },
+         "default": {
+            "satisfaction": 50
+         },
+         "applied_buffs": [
+            "stonehearth_ace:buffs:consumption:spring_flavors",
+            "stonehearth_ace:buffs:consumption:refreshed_belly"
+         ],
+         "quality": 3
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.drink.water_serving_spring.display_name)",
+         "description": "i18n(stonehearth_ace:entities.drink.water_serving_spring.description)",
+         "material_tags": [
+            "drink",
+            "water_serving_cool",
+            "water",
+            "coffee_hour"
+         ],
+         "subject_override": "stonehearth_ace:resources:fluid:water"
+      }
+   }
+}

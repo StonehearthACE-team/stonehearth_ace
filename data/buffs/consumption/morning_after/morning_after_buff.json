@@ -5,6 +5,7 @@
    "description": "i18n(stonehearth_ace:data.buffs.morning_after.description)",
    "icon": "file(morning_after_buff.png)",
    "duration": "12h",
+   "effect": "stonehearth_ace:effects:morning_after_effect",
    "script": "stonehearth_ace:buff_scripts:add_thought",
    "thought": "stonehearth:thoughts:drinking:morning_after",
    "modifiers": {
@@ -24,5 +25,8 @@
          "multiply": 0.1
       }
    },
-   "disallowed_buffs": []
+   "disallowed_buffs": [
+      "stonehearth_ace:buffs:consumption:light_headed"
+   ],
+   "gained_statistics_key": "morning_after"
 }

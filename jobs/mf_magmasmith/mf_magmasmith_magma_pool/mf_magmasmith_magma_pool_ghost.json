@@ -11,7 +11,7 @@
       },
       "render_info": {
          "scale": 0.15,
-         "animation_table": "file(/data/rigs/jobs/blacksmith/blacksmith_forge/blacksmith_forge.json)"
+         "animation_table": "/stonehearth/data/rigs/jobs/blacksmith/blacksmith_forge/blacksmith_forge.json"
       },
       "model_variants": {
          "default": {
@@ -24,11 +24,13 @@
    "entity_data": {
       "stonehearth:hide_child_entities_from_pathfinder": true,
       "stonehearth:catalog": {
-         "display_name": "Magmasmith Forge",
-         "description": "Like a normal forge, except a lot hotter",
+         "display_name": "",
+         "description": "",
          "icon": "file(mf_magmasmith_magma_pool.png)",
          "category": "workshops",
-         "material_tags":["stockpile_tool"]
+         "material_tags": [
+            "stockpile_tool"
+         ]
       }
    }
 }
