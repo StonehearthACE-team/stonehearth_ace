@@ -1,4 +1,6 @@
 local validator = radiant.validator
+local constants = require 'constants'
+local NUM_STARTING_CITIZENS = constants.game_creation.num_starting_citizens
 
 local AceGameCreationService = class()
 
