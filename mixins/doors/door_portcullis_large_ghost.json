@@ -1,0 +1,34 @@
+{
+   "type": "mixin",
+   "components": {
+      "render_info": {
+         "animation_table": "/stonehearth/data/rigs/entities/construction/door_portcullis/door_portcullis.json",
+         "scale": 0.125
+      },
+      "effect_list": {
+         "default": "/stonehearth/data/rigs/entities/construction/door_portcullis/effects/closed.json",
+         "initial_pose_animation": "closed.json"
+      },
+      "stonehearth:fixture": {
+         "valign": "bottom",
+         "cursor": "stonehearth:cursors:create_door",
+         "margin": {
+            "left": 1,
+            "right": 1,
+            "top": 1
+         },
+         "bounds": {
+            "min": { "x": -3, "y": 0 },
+            "max": { "x": 2, "y": 5 }
+         }
+      },
+      "stonehearth:portal": {
+         "cutter": [
+            {
+               "min": { "x": -3, "y": 0 },
+               "max": { "x": 2, "y": 5 }
+            }
+         ]
+      }
+   }
+}

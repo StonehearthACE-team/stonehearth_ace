@@ -1,0 +1,31 @@
+{
+   "type": "entity",
+   "mixins": [
+      "stonehearth_ace:mixins:portals:door_portcullis_large:ghost",
+      "stonehearth:mixins:placed_object"
+   ],
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(portcullis_valor_large.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.decoration.valor_statue.portcullis_valor_large.display_name)",
+         "description": "i18n(stonehearth_ace:entities.decoration.valor_statue.portcullis_valor_large.description)",
+         "icon": "file(portcullis_valor_large.png)",
+         "category": "door",
+         "material_tags": [
+            "iron",
+            "portal",
+            "crafted",
+            "door",
+            "stockpile_portal"
+         ]
+      }
+   }
+}

@@ -4,7 +4,13 @@
 			"recipes": {
 				"legendary_parchment" : {
 					"recipe": "file(legendary_parchment_recipe.json)"
-				}
+				},
+            "legendary_rc_cloth": {
+               "recipe": "/rayyas_children/jobs/herbalist/recipes/legendary_rc_cloth_recipe.json"
+            },
+            "legendary_rc_stave": {
+               "recipe": "/rayyas_children/jobs/herbalist/recipes/legendary_rc_stave_recipe.json"
+            }
 			}
 		},
 		"refinement" : {
@@ -30,6 +36,18 @@
 				},
 				"sugarbell_transmute": {
 					"recipe": "file(sugarbell_transmute_recipe.json)"
+				},
+				"hazelnut_transmute": {
+					"recipe": "file(hazelnut_transmute_recipe.json)"
+				},
+				"chestnut_transmute": {
+					"recipe": "file(chestnut_transmute_recipe.json)"
+				},
+				"walnut_transmute": {
+					"recipe": "file(walnut_transmute_recipe.json)"
+				},
+				"almond_transmute": {
+					"recipe": "file(almond_transmute_recipe.json)"
 				}
 			}
 		},

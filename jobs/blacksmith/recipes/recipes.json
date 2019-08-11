@@ -23,7 +23,13 @@
 				},
 				"legendary_buckle" : {
 					"recipe" : "file(legendary_buckle_recipe.json)"
-				}
+				},
+				"rc_two_handed_sword_valor": {
+               "recipe": "/rayyas_children/jobs/blacksmith/recipes/rc_legendary_sword_recipe.json"
+            },
+            "legendary_rc_frame": {
+               "recipe": "/rayyas_children/jobs/blacksmith/recipes/legendary_rc_frame_recipe.json"
+            }
 			}
 		},
 		"storage" : {
@@ -98,7 +104,13 @@
 				},
 				"iron_brazier_tall" : {
 					"recipe" : "file(iron_brazier_tall_recipe.json)"
-				}
+				},
+				"suncatcher": {
+               "recipe": "/rayyas_children/jobs/blacksmith/recipes/wall_hanging_suncatcher_recipe.json"
+            },
+            "wall_hanging_key": {
+               "recipe": "/rayyas_children/jobs/blacksmith/recipes/wall_hanging_key_recipe.json"
+            }
 			}
 		},
 		"refined": {
@@ -201,6 +213,32 @@
 					"recipe" : "file(silver_shield_recipe.json)"
 				}
 			}
-		}
+		},
+		"furniture": {
+         "recipes": {
+            "chair_golden": {
+               "recipe": "/northern_alliance/jobs/blacksmith/recipes/chair_golden.json"
+            },
+            "input_shelf_wall_stone_gold": {
+               "recipe": "/northern_alliance/jobs/blacksmith/recipes/input_shelf_wall_stone_gold.json"
+            },
+            "table_stone_gold": {
+               "recipe": "/northern_alliance/jobs/blacksmith/recipes/table_stone_gold.json"
+            },
+            "wall_mounted_candle": {
+               "recipe": "/northern_alliance/jobs/blacksmith/recipes/wall_mounted_candle.json"
+            }
+         }
+      },
+		"building_parts": {
+         "recipes": {
+            "lamp_gold": {
+               "recipe": "/rayyas_children/jobs/blacksmith/recipes/lamp_gold_recipe.json"
+            },
+            "lamp_wall_gold": {
+               "recipe": "/rayyas_children/jobs/blacksmith/recipes/lamp_wall_gold_recipe.json"
+            }
+         }
+      }
 	}
 }

@@ -1,0 +1,25 @@
+{
+   "type": "recipe",
+   "effort": 24,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.herbalist.recipes.almond_transmute_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.almond_transmute_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.almond_transmute_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/trees/almond_tree/seed/tree_almond_seed.png",
+   "workshop": "stonehearth:herbalist:workbench",
+   "level_requirement": 3,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:food:almond:almond_basket",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:trees:almond:seed"
+      },
+      {
+         "item": "stonehearth_ace:trees:almond:seed"
+      }
+   ]
+}

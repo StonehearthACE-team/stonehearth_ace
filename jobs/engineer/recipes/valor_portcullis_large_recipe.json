@@ -1,0 +1,39 @@
+{
+   "type": "recipe",
+   "effort": 70,
+   "work_units": 12,
+   "recipe_name": "i18n(stonehearth_ace:jobs.engineer.recipes.portcullis_valor_large_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.engineer.recipes.portcullis_valor_large_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.engineer.recipes.portcullis_valor_large_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/decoration/valor_statue/portcullis_valor_large/portcullis_valor_large.png",
+   "workshop": "stonehearth:engineer:workbench",
+   "level_requirement": 5,
+   "manual_unlock": true,
+   "ingredients": [
+      {
+         "uri": "stonehearth:portals:stone_tunnel_door",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth:refined:iron_ingot",
+         "count": 3
+      },
+      {
+         "uri": "stonehearth:resources:coal:lump_of_coal",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth:refined:bronze_gear",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth:refined:iron_gear",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:portals:valor_statue:portcullis_valor:large"
+      }
+   ]
+}

@@ -91,6 +91,44 @@
             }
          }
       },
+      "fuels": {
+         "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.fuels)",
+         "filter": "any_fuel",
+         "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/fuels_general.png",
+         "ordinal": 1.1,
+         "categories": {
+            "any_fuel": {
+               "ordinal": 1,
+               "display_name": "i18n(stonehearth_ace:ui.data.constants.any_fuel_resource_name)",
+               "icon": "/stonehearth_ace/entities/resources/fuel/any_fuel_icon.png",
+               "filter": "any_fuel"
+            },
+            "low_fuel": {
+               "ordinal": 2,
+               "display_name": "i18n(stonehearth_ace:ui.data.constants.weak_fuel_resource_name)",
+               "icon": "/stonehearth_ace/entities/resources/fuel/low_fuel_icon.png",
+               "filter": "low_fuel"
+            },
+            "fuel": {
+               "ordinal": 3,
+               "display_name": "i18n(stonehearth_ace:ui.data.constants.fuel_resource_name)",
+               "icon": "/stonehearth_ace/entities/resources/fuel/fuel_icon.png",
+               "filter": "fuel"
+            },
+            "common_fuel": {
+               "ordinal": 4,
+               "display_name": "i18n(stonehearth_ace:ui.data.constants.common_fuel_resource_name)",
+               "icon": "/stonehearth_ace/entities/resources/fuel/common_fuel_icon.png",
+               "filter": "common_fuel"
+            },
+            "high_fuel": {
+               "ordinal": 5,
+               "display_name": "i18n(stonehearth_ace:ui.data.constants.high_fuel_resource_name)",
+               "icon": "/stonehearth_ace/entities/resources/fuel/high_fuel_icon.png",
+               "filter": "high_fuel"
+            }
+         }
+      },
       "ore": {
          "categories": {
             "ore": {
@@ -186,11 +224,83 @@
                "icon": "/stonehearth_ace/entities/resources/thatch_bale/thatch_bale.png",
                "filter": "thatch_bale resource"
             },
+            "daisy": {
+               "ordinal": 2.8,
+               "display_name": "i18n(stonehearth_ace:entities.resources.herb.daisy.display_name)",
+               "icon": "/stonehearth_ace/entities/resources/herb/daisy/daisy.png",
+               "filter": "resource herb daisy"
+            },
+            "foxlily": {
+               "ordinal": 2.81,
+               "display_name": "i18n(stonehearth_ace:entities.resources.herb.foxlily.display_name)",
+               "icon": "/stonehearth_ace/entities/resources/herb/foxlily/foxlily.png",
+               "filter": "resource herb foxlily"
+            },
+            "sunflower": {
+               "ordinal": 2.82,
+               "display_name": "i18n(stonehearth_ace:entities.resources.herb.sunflower.display_name)",
+               "icon": "/stonehearth_ace/entities/resources/herb/sunflower/sunflower.png",
+               "filter": "resource herb sunflower"
+            },
+            "marblesprout": {
+               "ordinal": 2.83,
+               "display_name": "i18n(stonehearth_ace:entities.resources.herb.marblesprout.display_name)",
+               "icon": "/stonehearth_ace/entities/resources/herb/marblesprout/marblesprout.png",
+               "filter": "resource herb marblesprout"
+            },
+            "moonbell": {
+               "ordinal": 2.84,
+               "display_name": "i18n(stonehearth_ace:entities.resources.herb.moonbell.display_name)",
+               "icon": "/stonehearth_ace/entities/resources/herb/moonbell/moonbell.png",
+               "filter": "resource herb moonbell"
+            },
+            "water_lily_pink": {
+               "ordinal": 2.851,
+               "display_name": "i18n(stonehearth_ace:entities.resources.herb.water_lily_pink.display_name)",
+               "icon": "/stonehearth_ace/entities/resources/herb/water_lily_pink/water_lily_pink.png",
+               "filter": "resource herb water_lily_pink"
+            },
+            "water_lily_purple": {
+               "ordinal": 2.852,
+               "display_name": "i18n(stonehearth_ace:entities.resources.herb.water_lily_purple.display_name)",
+               "icon": "/stonehearth_ace/entities/resources/herb/water_lily_purple/water_lily_purple.png",
+               "filter": "resource herb water_lily_purple"
+            },
+            "water_lily_white": {
+               "ordinal": 2.853,
+               "display_name": "i18n(stonehearth_ace:entities.resources.herb.water_lily_white.display_name)",
+               "icon": "/stonehearth_ace/entities/resources/herb/water_lily_white/water_lily_white.png",
+               "filter": "resource herb water_lily_white"
+            },
+            "water_lily_yellow": {
+               "ordinal": 2.854,
+               "display_name": "i18n(stonehearth_ace:entities.resources.herb.water_lily_yellow.display_name)",
+               "icon": "/stonehearth_ace/entities/resources/herb/water_lily_yellow/water_lily_yellow.png",
+               "filter": "resource herb water_lily_yellow"
+            },
+            "highland_vine_leaves": {
+               "ordinal": 2.9,
+               "display_name": "i18n(stonehearth_ace:entities.resources.herb.highland_vine.display_name)",
+               "icon": "/stonehearth_ace/entities/resources/herb/highland_vine/highland_vine.png",
+               "filter": "resource herb highland_vine"
+            },
+            "highland_vine_bundle": {
+               "ordinal": 2.91,
+               "display_name": "i18n(stonehearth_ace:entities.resources.fiber.highland_vine_bundle.display_name)",
+               "icon": "/stonehearth_ace/entities/resources/fiber/highland_vine_bundle/highland_vine_bundle.png",
+               "filter": "resource fiber highland_vine"
+            },
             "dwarfsbeard": {
                "ordinal": 4.21,
                "display_name": "i18n(stonehearth_ace:entities.resources.fiber.dwarfsbeard_bundle.display_name)",
                "icon": "/stonehearth_ace/entities/resources/fiber/dwarfsbeard_bundle/dwarfsbeard_bundle.png",
                "filter": "resource plant dwarfsbeard"
+            },
+            "cotton": {
+               "ordinal": 4.22,
+               "display_name": "i18n(stonehearth_ace:entities.resources.fiber.cotton_bundle.display_name)",
+               "icon": "/stonehearth_ace/entities/resources/fiber/cotton_bundle/cotton_bundle.png",
+               "filter": "resource plant cotton"
             },
             "red_algae": {
                "ordinal": 4.53,
@@ -219,50 +329,105 @@
                "display_name": "i18n(stonehearth_ace:entities.resources.herb.dried_algae.display_name)",
                "icon": "/stonehearth_ace/entities/resources/herb/dried_algae/dried_algae.png",
                "filter": "dried_algae resource"
+            },
+            "golem_parts": {
+               "ordinal": 5,
+               "display_name": "i18n(stonehearth:entities.refined.golem_parts.display_name)",
+               "icon": "/stonehearth/entities/refined/golem_parts/golem_parts.png",
+               "filter": "golem_parts resource"
             }
          }
       },
       "raw_foods": {
          "categories": {
+            "paddy": {
+               "ordinal": 7.5,
+               "display_name": "i18n(stonehearth_ace:entities.food.rice.paddy_basket.display_name)",
+               "icon": "/stonehearth_ace/entities/food/rice/paddy_basket/paddy_basket.png",
+               "filter": "paddy_basket"
+            },
+            "cherries": {
+               "ordinal": 8.1,
+               "display_name": "i18n(stonehearth_ace:entities.food.cherries.cherry_basket.display_name)",
+               "icon": "/stonehearth_ace/entities/food/cherries/cherry_basket/cherry_basket.png",
+               "filter": "raw_food cherry"
+            },
             "chanterelles": {
-               "ordinal": 9.1,
+               "ordinal": 12.4,
                "display_name": "i18n(stonehearth_ace:entities.food.chanterelle.chanterelle_basket.display_name)",
                "icon": "/stonehearth_ace/entities/food/chanterelle/chanterelle_basket/chanterelle_basket.png",
                "filter": "food_container chanterelle"
             },
             "boletes": {
-               "ordinal": 9.2,
+               "ordinal": 12.1,
                "display_name": "i18n(stonehearth_ace:entities.food.bolete.bolete_basket.display_name)",
                "icon": "/stonehearth_ace/entities/food/bolete/bolete_basket/bolete_basket.png",
                "filter": "food_container bolete"
             },
             "desert_truffles": {
-               "ordinal": 9.3,
+               "ordinal": 12.2,
                "display_name": "i18n(stonehearth_ace:entities.food.desert_truffle.desert_truffle_basket.display_name)",
                "icon": "/stonehearth_ace/entities/food/desert_truffle/desert_truffle_basket/desert_truffle_basket.png",
                "filter": "food_container desert_truffle"
             },
             "winter_morels": {
-               "ordinal": 9.4,
+               "ordinal": 12.3,
                "display_name": "i18n(stonehearth_ace:entities.food.winter_morel.winter_morel_basket.display_name)",
                "icon": "/stonehearth_ace/entities/food/winter_morel/winter_morel_basket/winter_morel_basket.png",
                "filter": "food_container winter_morel"
             },
             "parasol": {
-               "ordinal": 9.5,
+               "ordinal": 12.5,
                "display_name": "i18n(stonehearth_ace:entities.food.parasol.parasol_basket.display_name)",
                "icon": "/stonehearth_ace/entities/food/parasol/parasol_basket/parasol_basket.png",
                "filter": "food_container parasol"
             },
             "sweet_tooth": {
-               "ordinal": 9.6,
+               "ordinal": 12.6,
                "display_name": "i18n(stonehearth_ace:entities.food.sweet_tooth.sweet_tooth_basket.display_name)",
                "icon": "/stonehearth_ace/entities/food/sweet_tooth/sweet_tooth_basket/sweet_tooth_basket.png",
                "filter": "food_container sweet_tooth"
+            },
+            "chestnuts": {
+               "ordinal": 11,
+               "display_name": "i18n(stonehearth_ace:entities.food.chestnut.chestnut_basket.display_name)",
+               "icon": "/stonehearth_ace/entities/food/chestnut/chestnut_basket/chestnut_basket.png",
+               "filter": "food_container chestnut"
+            },
+            "almonds": {
+               "ordinal": 11.1,
+               "display_name": "i18n(stonehearth_ace:entities.food.almond.almond_basket.display_name)",
+               "icon": "/stonehearth_ace/entities/food/almond/almond_basket/almond_basket.png",
+               "filter": "food_container almond"
+            },
+            "walnuts": {
+               "ordinal": 11.2,
+               "display_name": "i18n(stonehearth_ace:entities.food.walnut.walnut_basket.display_name)",
+               "icon": "/stonehearth_ace/entities/food/walnut/walnut_basket/walnut_basket.png",
+               "filter": "food_container walnut"
+            },
+            "hazelnuts": {
+               "ordinal": 11.3,
+               "display_name": "i18n(stonehearth_ace:entities.food.hazelnut.hazelnut_basket.display_name)",
+               "icon": "/stonehearth_ace/entities/food/hazelnut/hazelnut_basket/hazelnut_basket.png",
+               "filter": "food_container hazelnut"
+            },
+            "fish_roe": {
+               "ordinal": 15,
+               "display_name": "i18n(stonehearth_ace:entities.food.fish_roe.fish_roe_basket.display_name)",
+               "icon": "/stonehearth_ace/entities/food/fish_roe/fish_roe_basket/fish_roe_basket.png",
+               "filter": "food_container fish_roe_fish_roe"
+            },
+            "fish_big_roe": {
+               "ordinal": 15.1,
+               "display_name": "i18n(stonehearth_ace:entities.food.fish_roe.fish_big_roe_basket.display_name)",
+               "icon": "/stonehearth_ace/entities/food/fish_roe/fish_big_roe_basket/fish_big_roe_basket.png",
+               "filter": "food_container fish_big_roe"
             }
          }
       },
       "cooking_ingredients": {
+         "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_cooking)",
          "categories": {
             "corn_meal": {
                "display_name": "i18n(stonehearth_ace:entities.food.corn_meal.display_name)"
@@ -283,13 +448,13 @@
                "filter": "cooking_ingredient raw_rice"
             },
             "nuts_basket": {
-               "ordinal": 2.003,
+               "ordinal": 2.3,
                "display_name": "i18n(stonehearth_ace:entities.food.nuts_basket.display_name)",
                "icon": "/stonehearth_ace/entities/food/nuts_basket/nuts_basket.png",
                "filter": "cooking_ingredient nut_basket"
             },
             "nut_flour": {
-               "ordinal": 2.004,
+               "ordinal": 2.31,
                "display_name": "i18n(stonehearth_ace:entities.food.nut_flour.display_name)",
                "icon": "/stonehearth_ace/entities/food/nut_flour/nut_flour.png",
                "filter": "cooking_ingredient nut_flour"
@@ -330,21 +495,179 @@
                "icon": "/stonehearth_ace/entities/food/batter_sweet/batter_sweet.png",
                "filter": "cooking_ingredient batter_sweet"
             },
+            "egg": {
+               "ordinal": 2.4,
+               "filter": "cooking_ingredient egg_egg"
+            },
+            "egg_large": {
+               "ordinal": 2.41,
+               "display_name": "i18n(stonehearth:entities.food.egg_large.display_name)",
+               "icon": "/stonehearth/entities/food/egg_large/egg_large.png",
+               "filter": "cooking_ingredient egg_large"
+            },
+            "butter": {
+               "ordinal": 2.49,
+               "display_name": "i18n(stonehearth_ace:ui.data.constants.butter_resource_name)",
+               "icon": "/stonehearth_ace/entities/food/dairy/butter_icon.png",
+               "filter": "butter cooking_ingredient"
+            },
+            "cooking_oil": {
+               "ordinal": 0.2,
+               "display_name": "i18n(stonehearth_ace:entities.food.cooking_oil.display_name)",
+               "icon": "/stonehearth_ace/entities/food/cooking_oil/cooking_oil.png",
+               "filter": "cooking_oil cooking_ingredient"
+            },
+            "sausage": {
+               "ordinal": 3.1,
+               "display_name": "i18n(stonehearth:entities.food.sausage.display_name)",
+               "icon": "/stonehearth/entities/food/sausage/sausage.png",
+               "filter": "sausage cooking_ingredient"
+            },
+            "broth": {
+               "ordinal": 3.2,
+               "display_name": "i18n(stonehearth_ace:entities.food.broth.broth.display_name)",
+               "icon": "/stonehearth_ace/entities/food/broth/broth/broth.png",
+               "filter": "broth food_container"
+            },
+            "any_fish_meat": {
+               "ordinal": 25,
+               "display_name": "i18n(stonehearth_ace:ui.data.constants.fish_meat_resource_name)",
+               "icon": "/stonehearth_ace/entities/food/fish_meat/fish_meat_icon.png",
+               "filter": "raw fish_meat"
+            },
+            "fish_meat": {
+               "ordinal": 25.1,
+               "display_name": "i18n(stonehearth_ace:entities.food.fish_meat.display_name)",
+               "icon": "/stonehearth_ace/entities/food/fish_meat/fish_meat.png",
+               "filter": "raw fish_meat_fish_meat"
+            },
+            "fish_carp_meat": {
+               "ordinal": 25.2,
+               "display_name": "i18n(stonehearth_ace:entities.food.fish_carp_meat.display_name)",
+               "icon": "/stonehearth_ace/entities/food/fish_carp_meat/fish_carp_meat.png",
+               "filter": "raw fish_carp_meat"
+            },
+            "fish_catfish_meat": {
+               "ordinal": 25.3,
+               "display_name": "i18n(stonehearth_ace:entities.food.fish_catfish_meat.display_name)",
+               "icon": "/stonehearth_ace/entities/food/fish_catfish_meat/fish_catfish_meat.png",
+               "filter": "raw fish_catfish_meat"
+            },
+            "fish_salmon_meat": {
+               "ordinal": 25.4,
+               "display_name": "i18n(stonehearth_ace:entities.food.fish_salmon_meat.display_name)",
+               "icon": "/stonehearth_ace/entities/food/fish_salmon_meat/fish_salmon_meat.png",
+               "filter": "raw fish_salmon_meat"
+            },
+            "fish_trout_meat": {
+               "ordinal": 25.5,
+               "display_name": "i18n(stonehearth_ace:entities.food.fish_trout_meat.display_name)",
+               "icon": "/stonehearth_ace/entities/food/fish_trout_meat/fish_trout_meat.png",
+               "filter": "raw fish_trout_meat"
+            }
+         }
+      },
+      "brewing_ingredients": {
+         "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_brewing)",
+         "filter": "brewing_ingredient",
+         "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/fluids.png",
+         "ordinal": 8.1,
+         "categories": {
+            "brewing_ingredients": {
+               "ordinal": 0.1,
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_brewing_ingredient)",
+               "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/fluids.png",
+               "filter": "stockpile_brewing_ingredient"
+            },
             "malted_grains": {
-               "ordinal": 3,
+               "ordinal": 1,
                "display_name": "i18n(stonehearth_ace:entities.food.malted_grains.display_name)",
                "icon": "/stonehearth_ace/entities/food/malted_grains/malted_grains.png",
                "filter": "brewing_ingredient malt"
             },
+            "juniper_berries": {
+               "ordinal": 2,
+               "display_name": "i18n(stonehearth_ace:ui.data.constants.seed_juniper_resource_name)",
+               "icon": "/stonehearth/entities/trees/juniper_tree/seed/tree_juniper_seed.png",
+               "filter": "seed juniper"
+            },
             "gruit": {
-               "ordinal": 3.1,
+               "ordinal": 3,
                "display_name": "i18n(stonehearth_ace:entities.drink.gruit.display_name)",
                "icon": "/stonehearth_ace/entities/drink/gruit/gruit.png",
                "filter": "brewing_ingredient gruit"
             }
          }
       },
+      "animal_food": {
+         "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_animal_feed)",
+         "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/animal_feed.png",
+         "ordinal": 9,
+         "categories": {
+            "animal_feed": {
+               "ordinal": 0.1,
+               "display_name": "i18n(stonehearth:jobs.cook.recipes.animal_feed_name)",
+               "icon": "/stonehearth/mixins/food/animal_feed/animal_feed.png",
+               "filter": "animal_feed"
+            },
+            "fodder": {
+               "ordinal": 1,
+               "display_name": "i18n(stonehearth:entities.food.fodder.fodder.display_name)",
+               "icon": "/stonehearth/entities/food/fodder/fodder/fodder.png",
+               "filter": "fodder_bag stockpile_fodder"
+            },
+            "rabbit_feed": {
+               "ordinal": 2,
+               "display_name": "i18n(stonehearth:entities.food.rabbit_feed.display_name)",
+               "icon": "/stonehearth/entities/food/rabbit_feed/rabbit_feed.png",
+               "filter": "rabbit_feed_bag stockpile_fodder"
+            },
+            "poyo_feed": {
+               "ordinal": 3,
+               "display_name": "i18n(stonehearth:entities.food.poyo_feed.poyo_feed.display_name)",
+               "icon": "/stonehearth/entities/food/poyo_feed/poyo_feed/poyo_feed.png",
+               "filter": "poyo_feed_bag stockpile_fodder"
+            },
+            "sheep_feed": {
+               "ordinal": 4,
+               "display_name": "i18n(stonehearth:entities.food.sheep_feed.display_name)",
+               "icon": "/stonehearth/entities/food/sheep_feed/sheep_feed.png",
+               "filter": "sheep_feed_bag stockpile_fodder"
+            },
+            "moomoo_feed": {
+               "ordinal": 5,
+               "display_name": "i18n(stonehearth_ace:entities.food.moomoo_feed.moomoo_feed.display_name)",
+               "icon": "/stonehearth_ace/entities/food/moomoo_feed/moomoo_feed/moomoo_feed.png",
+               "filter": "moomoo_feed_bag stockpile_fodder"
+            },
+            "ostrich_feed": {
+               "ordinal": 6,
+               "display_name": "i18n(stonehearth_ace:entities.food.ostrich_feed.ostrich_feed.display_name)",
+               "icon": "/stonehearth_ace/entities/food/ostrich_feed/ostrich_feed/ostrich_feed.png",
+               "filter": "ostrich_feed_bag stockpile_fodder"
+            },
+            "kibble": {
+               "ordinal": 7,
+               "display_name": "i18n(stonehearth_ace:entities.food.kibble.display_name)",
+               "icon": "/stonehearth_ace/entities/food/kibble/kibble/kibble.png",
+               "filter": "kibble stockpile_fodder"
+            },
+            "kibble_fish": {
+               "ordinal": 7.1,
+               "display_name": "i18n(stonehearth_ace:entities.food.kibble_fish.display_name)",
+               "icon": "/stonehearth_ace/entities/food/kibble_fish/kibble_fish/kibble_fish.png",
+               "filter": "kibble_fish stockpile_fodder"
+            },
+            "kibble_veggie": {
+               "ordinal": 7.2,
+               "display_name": "i18n(stonehearth_ace:entities.food.kibble_veggie.display_name)",
+               "icon": "/stonehearth_ace/entities/food/kibble_veggie/kibble_veggie/kibble_veggie.png",
+               "filter": "kibble_veggie stockpile_fodder"
+            }
+         }
+      },
       "cooked_food": {
+         "ordinal": 10,
          "categories": {}
       }
    }

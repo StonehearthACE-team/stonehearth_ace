@@ -11,6 +11,15 @@
          "recipes": {
             "legendary_headpiece": {
                "recipe": "file(legendary_headpiece_recipe.json)"
+            },
+				"rc_giants_shield": {
+               "recipe": "/rayyas_children/jobs/mason/recipes/rc_legendary_shield_recipe.json"
+            },
+            "legendary_rc_blade": {
+               "recipe": "/rayyas_children/jobs/mason/recipes/legendary_rc_blade_recipe.json"
+            },
+            "legendary_rc_gem": {
+               "recipe": "/rayyas_children/jobs/mason/recipes/legendary_rc_gem_recipe.json"
             }
 	     }
       },
@@ -156,13 +165,34 @@
 				},
 				"stone_animal_door_small": {
 					"recipe": "file(stone_animal_door_small_recipe.json)"
-				}
+				},
+				"window_box_stone_snow_poppy": {
+               "recipe": "/northern_alliance/jobs/mason/recipes/window_box_stone_snow_poppy_recipe.json"
+            }
          }
       },
 		"signage_decoration": {
          "recipes": {
             "firepit_small": {
                "recipe": "file(firepit_small_recipe.json)"
+            },
+				"statue_hare": {
+               "recipe": "/northern_alliance/jobs/mason/recipes/statue_hare.json"
+            },
+            "wall_mounted_antlers": {
+               "recipe": "/northern_alliance/jobs/mason/recipes/wall_mounted_antlers_recipe.json"
+            },
+            "wall_mounted_paw": {
+               "recipe": "/northern_alliance/jobs/mason/recipes/wall_mounted_paw_recipe.json"
+            },
+            "output_box_stone_wolf": {
+               "recipe": "/northern_alliance/jobs/mason/recipes/output_box_stone_wolf_recipe.json"
+            },
+            "input_bin_stone_wolf": {
+               "recipe": "/northern_alliance/jobs/mason/recipes/input_bin_stone_wolf_recipe.json"
+            },
+            "chest_stone_wolf": {
+               "recipe": "/northern_alliance/jobs/mason/recipes/chest_stone_wolf_recipe.json"
             }
 	     }
       },

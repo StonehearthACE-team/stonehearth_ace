@@ -1005,7 +1005,7 @@
                "none": {
                   "description": "No title necessary."
                },
-					"levels": {
+               "levels": {
                   "display_name": "Character Level",
                   "description": "Gained by levelling up on any job.",
                   "6_display_name": ", Master",
@@ -1016,9 +1016,9 @@
                   "18_description": "They have eighteen job levels! What? That's amazing!",
                   "30_display_name": ", Blessed",
                   "30_description": "They've reached thirty job levels, only few and dedicated souls can achieve that...",
-						"60_display_name": ", Living Legend",
+                  "60_display_name": ", Living Legend",
                   "60_description": "They've reached the impressive mark of sixty job levels! That's more experience than many hearthlings combined... Such wisdom!",
-						"90_display_name": ", Heir of Cid",
+                  "90_display_name": ", Heir of Cid",
                   "90_description": "They have ninety job levels - this is unbelievable! No hearthling could ever dream of such a feat... Their soul must've been touched by Cid himself!"
                },
                "slayer": {
@@ -1451,7 +1451,7 @@
                   "6_display_name": " the Sugar Monster",
                   "6_description": "They have eaten sweet foods 500 times! Did they even manage to sleep lately?"
                },
-					"drunk": {
+               "drunk": {
                   "display_name": "Bohemian",
                   "description": "Gained by spending a lot of time under the effects of alcohol.",
                   "1_display_name": " the Jolly",
@@ -1982,7 +1982,7 @@
          },
          "quite_woozy": {
             "display_name": "Quite Woozy",
-            "description": "Is the world spinning or is it just me? Courage is greatly increased. Diligence, Willpower, Speed and Stamina are decreased.<ul><li>Crafting takes longer and has less chances of producing high quality items</li><li>This hearthling is much less menacing to enemies</li><li>This hearthling will want to engage in a lot more conversations and sleep</li><li>This hearthling will have the 'The Morning after...' effect applied when this effect expires</li></ul>"
+            "description": "Is the world spinning or is it just me? Courage is greatly increased. Diligence, Willpower, Speed and Stamina are decreased.<ul><li>Crafting takes longer and has less chances of producing high quality items</li><li>This hearthling is much less menacing to enemies</li><li>This hearthling will want to engage in a lot more conversations</li><li>This hearthling will have the 'The Morning after...' effect applied when this effect expires</li></ul>"
          },
          "morning_after": {
             "display_name": "The Morning After...",
@@ -2224,6 +2224,26 @@
             "refined_fungi_name": "Fungal Refinement",
             "refined_seeds_name": "Regional Seeds",
             "farming_enhancements_name": "Farming Enhancements & Seeds",
+            "almond_transmute_recipe": {
+               "recipe_name": "Almond Tree Seeds (x2)",
+               "description": "Select the best nuts from the basket",
+               "flavor": "Only a skilled hand can choose the best nuts, but the rest are destroyed in the process."
+            },
+            "chestnut_transmute_recipe": {
+               "recipe_name": "Chestnut Tree Seeds (x2)",
+               "description": "Select the best nuts from the basket",
+               "flavor": "Only a skilled hand can choose the best nuts, but the rest are destroyed in the process."
+            },
+            "walnut_transmute_recipe": {
+               "recipe_name": "Walnut Tree Seeds (x2)",
+               "description": "Select the best nuts from the basket",
+               "flavor": "Only a skilled hand can choose the best nuts, but the rest are destroyed in the process."
+            },
+            "hazelnut_transmute_recipe": {
+               "recipe_name": "Hazel Tree Seeds (x2)",
+               "description": "Select the best nuts from the basket",
+               "flavor": "Only a skilled hand can choose the best nuts, but the rest are destroyed in the process."
+            },
             "daisy_transmute_recipe": {
                "recipe_name": "Daisy Seeds (x3)",
                "description": "Separate seeds from the herbs. Daisies will spread around after being planted.",
@@ -2613,6 +2633,15 @@
                "recipe_name": "Gear Box",
                "description": "Build a device that allows you to redirect mechanical power to any direction.",
                "flavor": "It can be placed in walls during building - like windows or doors."
+            },
+            "bronze_portcullis_large_recipe": {
+               "recipe_name": "Large Bronze Portcullis",
+               "description": "Useful for fortifying town entrypoints. This is a slightly larger alternative to the Bronze Portcullis."
+            },
+            "portcullis_valor_large_recipe": {
+               "recipe_name": "Large Castle Portcullis",
+               "description": "For times when only the strongest door will do. This is a slightly larger alternative to the Castle Portcullis.",
+               "flavor": "Definitely needs more iron"
             }
          },
          "engineer_description": {
@@ -4905,6 +4934,10 @@
          "clay_water_well_building": {
             "display_name": "Well Construction Site",
             "description": "This clay water well requires building before it can be used."
+         },
+         "bronze_portcullis_large": {
+            "display_name": "Large Bronze Portcullis",
+            "description": "Whenever size matters, go bigger."
          }
       },
       "crops": {
@@ -6721,6 +6754,10 @@
                "display_name_male": "Knight Statue (Male)",
                "description": "An awesome noble knight carved in stone.",
                "display_name_female": "Knight Statue (Female)"
+            },
+            "portcullis_valor_large": {
+               "display_name": "Large Castle Portcullis",
+               "description": "Sometimes you'll need a bigger door to keep the neighbors away."
             }
          },
          "firepit_skulls": {
@@ -9784,7 +9821,10 @@
                   "tooltip_raw_food_meat": "Raw Meats & Animal Goods",
                   "tooltip_prepared_food_baked": "Baked Goods",
                   "tooltip_raw_food_fungi": "Raw Fungi",
-                  "tooltip_potions": "Potions & Tonics"
+                  "tooltip_potions": "Potions & Tonics",
+                  "fuels": "Fuels",
+                  "tooltip_cooking": "Cooking",
+                  "tooltip_brewing": "Brewing"
                }
             },
             "pasture": {

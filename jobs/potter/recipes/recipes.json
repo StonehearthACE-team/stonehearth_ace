@@ -1,5 +1,25 @@
 {
    "craftable_recipes": {
+		"workbenches": {
+         "recipes": {
+            "kiln_upgrade": {
+               "recipe": "/rayyas_children/jobs/potter/recipes/kiln_upgrade_recipe.json"
+            },
+            "workbench_upgrade": {
+               "recipe": "/rayyas_children/jobs/potter/recipes/workbench_upgrade_recipe.json"
+            }
+         }
+      },
+		"legendary": {
+         "recipes": {
+            "legendary_rc_face": {
+               "recipe": "/rayyas_children/jobs/potter/recipes/legendary_rc_face_recipe.json"
+            },
+            "legendary_rc_inlay": {
+               "recipe": "/rayyas_children/jobs/potter/recipes/legendary_rc_inlay_recipe.json"
+            }
+         }
+      },
       "building_parts": {
          "recipes": {
             "simple_hatch_clay": {
@@ -47,7 +67,13 @@
 			},
 			"tall_urn": {
 				"recipe": "file(tall_urn_recipe.json)"
-			}
+			},
+			"chest": {
+            "recipe": "/rayyas_children/jobs/potter/recipes/chest_recipe.json"
+         },
+         "urn_large": {
+            "recipe": "/rayyas_children/jobs/potter/recipes/urn_large_recipe.json"
+         }
 		 }
 	  },
 	  "utility": {
@@ -100,7 +126,31 @@
 			},
 			"clay_animal_door_small": {
 				"recipe": "file(clay_animal_door_small_recipe.json)"
-			}
+			},
+			"door_clay_latticed": {
+               "recipe": "/rayyas_children/jobs/potter/recipes/door_clay_latticed_recipe.json"
+            },
+            "window_tall_latticed": {
+               "recipe": "/rayyas_children/jobs/potter/recipes/window_tall_latticed_recipe.json"
+            },
+            "lightbox": {
+               "recipe": "/rayyas_children/jobs/potter/recipes/lightbox_recipe.json"
+            },
+            "jar_green": {
+               "recipe": "/rayyas_children/jobs/potter/recipes/jar_green_recipe.json"
+            },
+            "jar_red": {
+               "recipe": "/rayyas_children/jobs/potter/recipes/jar_red_recipe.json"
+            },
+            "pot_oil_earthen": {
+               "recipe": "/rayyas_children/jobs/potter/recipes/pot_oil_earthen_recipe.json"
+            },
+            "pot_oil_green": {
+               "recipe": "/rayyas_children/jobs/potter/recipes/pot_oil_green_recipe.json"
+            },
+            "pot_oil_halfgreen": {
+               "recipe": "/rayyas_children/jobs/potter/recipes/pot_oil_halfgreen_recipe.json"
+            }
 		 }
 	  },
 	  "furniture": {
@@ -191,7 +241,46 @@
 			},
 			"pet_food_bowl_clay_green": {
 				"recipe": "file(pet_food_bowl_clay_green_recipe.json)"
-			}
+			},
+			"decorative_teapot": {
+               "recipe": "/rayyas_children/jobs/potter/recipes/decorative_teapot_recipe.json"
+            },
+            "pot_sunflower": {
+               "recipe": "/rayyas_children/jobs/potter/recipes/pot_sunflower_recipe.json"
+            },
+            "pot_fox_lily": {
+               "recipe": "/rayyas_children/jobs/potter/recipes/pot_fox_lily_recipe.json"
+            },
+            "pot_acacia": {
+               "recipe": "/rayyas_children/jobs/potter/recipes/pot_acacia_recipe.json"
+            },
+            "wall_hanging_sunflower": {
+               "recipe": "/rayyas_children/jobs/potter/recipes/wall_hanging_sunflower_recipe.json"
+            },
+            "wall_hanging_sunwreath": {
+               "recipe": "/rayyas_children/jobs/potter/recipes/wall_hanging_sunwreath_recipe.json"
+            },
+            "wind_chime": {
+               "recipe": "/rayyas_children/jobs/potter/recipes/wind_chime_recipe.json"
+            },
+            "monkey": {
+               "recipe": "/rayyas_children/jobs/potter/recipes/monkey_recipe.json"
+            },
+            "teapot": {
+               "recipe": "/rayyas_children/jobs/potter/recipes/teapot_recipe.json"
+            },
+            "pedestal_firepit": {
+               "recipe": "/rayyas_children/jobs/potter/recipes/pedestal_firepit_recipe.json"
+            },
+            "pedestal_floral_red": {
+               "recipe": "/rayyas_children/jobs/potter/recipes/pedestal_floral_red_recipe.json"
+            },
+            "pedestal_floral_coral": {
+               "recipe": "/rayyas_children/jobs/potter/recipes/pedestal_floral_coral_recipe.json"
+            },
+            "pedestal_floral_blue": {
+               "recipe": "/rayyas_children/jobs/potter/recipes/pedestal_floral_blue_recipe.json"
+            }
 		 }
 	  },
 	  "refined": {

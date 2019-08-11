@@ -1,0 +1,31 @@
+{
+   "type": "entity",
+   "mixins": [
+      "stonehearth_ace:mixins:portals:door_portcullis_large:ghost",
+      "stonehearth:mixins:placed_object"
+   ],
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(bronze_portcullis_large.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.construction.bronze_portcullis_large.display_name)",
+         "description": "i18n(stonehearth_ace:entities.construction.bronze_portcullis_large.description)",
+         "icon": "file(bronze_portcullis_large.png)",
+         "category": "door",
+         "material_tags": [
+            "bronze",
+            "portal",
+            "crafted",
+            "door",
+            "stockpile_portal"
+         ]
+      }
+   }
+}
