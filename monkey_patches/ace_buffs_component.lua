@@ -67,6 +67,18 @@ function AceBuffsComponent:add_buff(uri, options)
 
    local json = radiant.resources.load_json(uri, true)
 
+	if json.can_affect then
+		local can_affect = nil
+		for _, allowed_entity_category in pairs(json.can_affect) do
+			if radiant.entities.get_category(self._entity) == allowed_entity_category then
+				can_affect = true
+			end		
+		end
+		if not can_affect then
+			return
+		end
+	end		
+	
    if json.category and self:_category_is_disallowed(json.category) then
       return -- don't add this buff if its whole category is disallowed by other active buffs
    end
