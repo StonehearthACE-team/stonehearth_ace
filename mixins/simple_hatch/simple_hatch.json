@@ -1,4 +1,5 @@
 {
+   "type": "mixin",
    "components": {
       "stonehearth:entity_forms": {
          "placeable_on_walls": true,
@@ -25,6 +26,14 @@
       },
       "region_collision_shape": {
          "region_collision_type": "platform",
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 2, "y": 1, "z": 2 }
+            }
+         ]
+      },
+      "stonehearth_ace:vertical_pathing_region": {
          "region": [
             {
                "min": { "x": -1, "y": 0, "z": -1 },

@@ -17,12 +17,12 @@
       },
       "stonehearth:food": {
          "stonehearth:sitting_on_chair": {
-            "satisfaction": 80
+            "satisfaction": 87
          },
          "default": {
             "satisfaction": 60
          },
-			"applied_buffs": [
+         "applied_buffs": [
             "stonehearth_ace:buffs:consumption:sweet_energy"
          ],
          "quality": 6
@@ -30,9 +30,12 @@
       "stonehearth:catalog": {
          "display_name": "i18n(stonehearth_ace:entities.food.pie_cherry.pie_cherry_serving.display_name)",
          "description": "i18n(stonehearth_ace:entities.food.pie_cherry.pie_cherry_serving.description)",
-         "material_tags":["food", "prepared_dessert", "vegetarian"],
+         "material_tags": [
+            "food",
+            "prepared_dessert",
+            "vegetarian"
+         ],
          "subject_override": "stonehearth_ace:food:pie_cherry"
       }
    }
 }
-

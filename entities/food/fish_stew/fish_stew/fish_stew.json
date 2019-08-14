@@ -13,17 +13,17 @@
          "model_origin": { "x": 0, "y": 0, "z": 0.05 }
       },
       "stonehearth:stacks": {
-         "max_stacks": 40
+         "max_stacks": 12
       }
    },
    "entity_data": {
       "stonehearth:food_container": {
          "effect": "fiddle",
          "food": "stonehearth_ace:food:fish_stew:fish_stew_serving",
-         "stacks_per_serving": 6
+         "stacks_per_serving": 2
       },
       "stonehearth:net_worth": {
-         "value_in_gold": 15,
+         "value_in_gold": 11,
          "rarity": "common",
          "shop_info": {
             "buyable": true,
@@ -38,7 +38,16 @@
          "icon": "file(fish_stew.png)",
          "is_item": true,
          "category": "food",
-         "material_tags":["food_container", "prepared_food", "fish_stew", "stew", "meat", "fish", "refined", "stockpile_prepared_food"]
+         "material_tags": [
+            "food_container",
+            "prepared_food",
+            "fish_stew",
+            "stew",
+            "meat",
+            "fish",
+            "refined",
+            "stockpile_prepared_food"
+         ]
       },
       "stonehearth:appeal": {
          "appeal": 1

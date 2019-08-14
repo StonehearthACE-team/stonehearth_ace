@@ -75,7 +75,7 @@ function AceBuffsComponent:add_buff(uri, options)
 			end		
 		end
 		if not can_affect then
-			return
+			return -- don't add this buff if the entity's category is not in the "can_affect" list of the buff's json
 		end
 	end		
 	

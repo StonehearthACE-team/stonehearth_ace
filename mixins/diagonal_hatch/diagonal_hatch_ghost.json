@@ -1,7 +1,8 @@
 {
+   "type": "mixin",
    "components": {
       "mob": {
-         "model_origin": { "x": 0, "y": 0, "z": 0.5 },
+         "model_origin": { "x": 0, "y": 0, "z": -1.5 },
          "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
       },
       "render_info": {
@@ -14,8 +15,8 @@
       "stonehearth:portal": {
          "cutter": [
             {
-               "min": { "x": -1, "y": -2 },
-               "max": { "x": 2, "y": 2 }
+               "min": { "x": -1, "y": 0 },
+               "max": { "x": 2, "y": 4 }
             }
          ],
          "horizontal": true

@@ -17,17 +17,21 @@
       },
       "stonehearth:food": {
          "stonehearth:sitting_on_chair": {
-            "satisfaction": 160
+            "satisfaction": 100
          },
          "default": {
-            "satisfaction": 90
+            "satisfaction": 80
          },
          "quality": 6
       },
       "stonehearth:catalog": {
          "display_name": "i18n(stonehearth_ace:entities.food.roast_steak.roast_steak_serving.display_name)",
          "description": "",
-         "material_tags":["food", "roast_steak_serving", "meat"],
+         "material_tags": [
+            "food",
+            "roast_steak_serving",
+            "meat"
+         ],
          "subject_override": "stonehearth_ace:food:roast_steak"
       }
    }

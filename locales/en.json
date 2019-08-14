@@ -38,8 +38,16 @@
                },
                "workshop_blacksmith": {
                   "display_name": "Blacksmith's Workshop"
+               },
+					"mead_hall_ace": {
+                  "display_name": "Mead Hall"
                }
             },
+				"rayyas_children": {
+					"desert_pub_ace": {
+                  "display_name": "Desert Pub"
+               }
+				},
             "potter_house": {
                "display_name": "Potter House"
             },
@@ -2210,13 +2218,22 @@
          "knight_description": {
             "level_1_data": {
                "training_perk_name": "Squire Training",
-               "training_perk_description": "A knight can use Training Dummies to train their defensive taunting skills and earn experience up to Job Level 3"
+               "training_perk_description": "A knight can use Training Dummies to train their defensive taunting skills and earn experience up to Job Level 3",
+               "perk_000_description": "Increases Stamina, Courage, and draws attention from monsters. Greater fortitude allows the Knight to feel more comfortable in armor, also slightly increasing their Speed."
             },
-            "description": "A defensive fighter focused on protecting allies from harm and rounding up enemies, striking fear in their hearts!"
+            "description": "A defensive fighter focused on protecting allies from harm and rounding up enemies, striking fear in their hearts!",
+            "level_3_data": {
+               "perk_000_description": "The Stamina and Courage bonuses are increased greatly. The Speed bonus is doubled."
+            }
          },
          "knight_horn": {
             "display_name": "Knight's Horn",
             "description": "To strike fear, rally your fellow hearthlings or protect the little ones."
+         },
+         "knight_buffs": {
+            "health_1_buff": {
+               "description": "The knight becomes more menacing to enemies, drawing their attention in combat. They also get a health, speed and stamina bonus to keep up."
+            }
          }
       },
       "herbalist": {
@@ -2927,6 +2944,46 @@
                "recipe_name": "Clay Water Well Roof",
                "description": "Build a good-looking roof to spruce up your clay water well!",
                "flavor": "Well done!"
+            },
+            "clay_stool_recipe": {
+               "recipe_name": "Clay Stool",
+               "description": "An alternative to chairs.",
+               "flavor": "Should probably be a bit sturdier..."
+            },
+            "counter_clay_corner_inner_recipe": {
+               "recipe_name": "Clay Counter Inner Corner",
+               "description": "An inner corner piece for your counter.",
+               "flavor": ""
+            },
+            "counter_clay_corner_outer_recipe": {
+               "recipe_name": "Clay Counter Corner",
+               "description": "A corner piece for your counter.",
+               "flavor": ""
+            },
+            "counter_clay_mid_recipe": {
+               "recipe_name": "Clay Counter Midsection",
+               "description": "The main part of a clay counter.",
+               "flavor": "Feels like an oasis for the weary traveler"
+            },
+            "counter_clay_mid_small_recipe": {
+               "recipe_name": "Clay Counter Small Midsection",
+               "description": "Half the size of a regular midsection.",
+               "flavor": "Feels like an oasis for the weary traveler"
+            },
+            "counter_clay_end_left_recipe": {
+               "recipe_name": "Clay Counter Left End",
+               "description": "For properly finishing your counter if not against a wall.",
+               "flavor": ""
+            },
+            "counter_clay_end_right_recipe": {
+               "recipe_name": "Clay Counter Right End",
+               "description": "For properly finishing your counter if not against a wall.",
+               "flavor": "Is there a wrong end?"
+            },
+            "counter_clay_door_recipe": {
+               "recipe_name": "Clay Counter Door",
+               "description": "Allows hearthlings to traverse between both sides of the counter.",
+               "flavor": "Keep it closed, keep it clean"
             }
          },
          "potter_description": {
@@ -3248,6 +3305,46 @@
                "recipe_name": "Stone Water Well Roof",
                "description": "Build a good-looking roof to spruce up your stone water well!",
                "flavor": "Well fitting!"
+            },
+            "stone_stool_recipe": {
+               "recipe_name": "Stone Stool",
+               "description": "An alternative to chairs.",
+               "flavor": "Stone furniture tends to be... oversized"
+            },
+            "counter_stone_corner_inner_recipe": {
+               "recipe_name": "Stone Counter Inner Corner",
+               "description": "An inner corner piece for your counter.",
+               "flavor": ""
+            },
+            "counter_stone_corner_outer_recipe": {
+               "recipe_name": "Stone Counter Corner",
+               "description": "A corner piece for your counter.",
+               "flavor": ""
+            },
+            "counter_stone_mid_recipe": {
+               "recipe_name": "Stone Counter Midsection",
+               "description": "The main part of a stone counter.",
+               "flavor": "Home for revelers and patrons alike"
+            },
+            "counter_stone_mid_small_recipe": {
+               "recipe_name": "Stone Counter Small Midsection",
+               "description": "Half the size of a regular midsection.",
+               "flavor": "Home for revelers and patrons alike"
+            },
+            "counter_stone_end_left_recipe": {
+               "recipe_name": "Stone Counter Left End",
+               "description": "For properly finishing your counter if not against a wall.",
+               "flavor": ""
+            },
+            "counter_stone_end_right_recipe": {
+               "recipe_name": "Stone Counter Right End",
+               "description": "For properly finishing your counter if not against a wall.",
+               "flavor": "This end is probably the right one for your needs"
+            },
+            "counter_stone_door_recipe": {
+               "recipe_name": "Stone Counter Door",
+               "description": "Allows hearthlings to traverse between both sides of the counter.",
+               "flavor": "That top part must be quite heavy..."
             }
          },
          "mason_workbench_bone": {
@@ -4316,12 +4413,12 @@
             "counter_wood_mid_recipe": {
                "recipe_name": "Wooden Counter Midsection",
                "description": "The main part of a wooden counter.",
-               "flavor": "An appropriate surface for nightly gossip."
+               "flavor": "An appropriate surface for nightly gossip"
             },
             "counter_wood_mid_small_recipe": {
                "recipe_name": "Wooden Counter Small Midsection",
                "description": "Half the size of a regular midsection.",
-               "flavor": "An appropriate surface for nightly gossip."
+               "flavor": "An appropriate surface for nightly gossip"
             },
             "counter_wood_end_left_recipe": {
                "recipe_name": "Wooden Counter Left End",
@@ -6330,11 +6427,79 @@
                   "display_name": "Wooden Counter Inner Corner",
                   "description": "An appropriate surface for nightly gossip."
                }
+            },
+				"stone": {
+               "counter_stone_mid": {
+                  "display_name": "Stone Counter Midsection",
+                  "description": "The home of revelers and patrons alike."
+               },
+               "counter_stone_mid_small": {
+                  "display_name": "Stone Counter Small Midsection",
+                  "description": "The home of revelers and patrons alike."
+               },
+               "counter_stone_end_right": {
+                  "display_name": "Stone Counter Right End",
+                  "description": "The home of revelers and patrons alike."
+               },
+               "counter_stone_end_left": {
+                  "display_name": "Stone Counter Left End",
+                  "description": "The home of revelers and patrons alike."
+               },
+               "counter_stone_door": {
+                  "display_name": "Stone Counter Door",
+                  "description": "Allows movement between both sides of the counter."
+               },
+               "counter_stone_corner_outer": {
+                  "display_name": "Stone Counter Corner",
+                  "description": "The home of revelers and patrons alike."
+               },
+               "counter_stone_corner_inner": {
+                  "display_name": "Stone Counter Inner Corner",
+                  "description": "The home of revelers and patrons alike."
+               }
+            },
+				"clay": {
+               "counter_clay_mid": {
+                  "display_name": "Clay Counter Midsection",
+                  "description": "Feels like an oasis for the weary traveler."
+               },
+               "counter_clay_mid_small": {
+                  "display_name": "Clay Counter Small Midsection",
+                  "description": "Feels like an oasis for the weary traveler."
+               },
+               "counter_clay_end_right": {
+                  "display_name": "Clay Counter Right End",
+                  "description": "Feels like an oasis for the weary traveler."
+               },
+               "counter_clay_end_left": {
+                  "display_name": "Clay Counter Left End",
+                  "description": "Feels like an oasis for the weary traveler."
+               },
+               "counter_clay_door": {
+                  "display_name": "Clay Counter Door",
+                  "description": "Allows movement between both sides of the counter."
+               },
+               "counter_clay_corner_outer": {
+                  "display_name": "Clay Counter Corner",
+                  "description": "Feels like an oasis for the weary traveler."
+               },
+               "counter_clay_corner_inner": {
+                  "display_name": "Clay Counter Inner Corner",
+                  "description": "Feels like an oasis for the weary traveler."
+               }
             }
          },
          "wooden_stool": {
             "display_name": "Wooden Stool",
             "description": "Higher seat for lower purposes."
+         },
+			"stone_stool": {
+            "display_name": "Stone Stool",
+            "description": "Stone furniture tends to be... oversized."
+         },
+			"clay_stool": {
+            "display_name": "Clay Stool",
+            "description": "Hopefully shouldn't break so easily."
          }
       },
       "recipes": {

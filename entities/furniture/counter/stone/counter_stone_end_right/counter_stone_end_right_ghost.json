@@ -1,0 +1,36 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(counter_stone_end_right.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "align_to_grid": [
+            "z"
+         ],
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0 },
+         "allow_vertical_adjacent": true
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.furniture.counter.stone.counter_stone_end_right.display_name)",
+         "description": "i18n(stonehearth_ace:entities.furniture.counter.stone.counter_stone_end_right.description)",
+         "icon": "file(counter_stone_end_right.png)",
+         "category": "furniture",
+         "material_tags": [
+            "stone",
+            "counter",
+            "furniture",
+            "crafted",
+            "stockpile_furniture"
+         ]
+      }
+   }
+}

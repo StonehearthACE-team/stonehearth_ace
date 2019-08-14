@@ -3,5 +3,14 @@
    "recipe_name": "i18n(stonehearth_ace:entities.food.corn_meal.display_name)",
    "description": "i18n(stonehearth_ace:entities.food.corn_meal.description)",
 	"portrait": "/stonehearth_ace/entities/food/corn_meal/corn_meal.png",
-   "level_requirement": 2
+   "level_requirement": 3,
+	"mixintypes": {
+	  "ingredients": "override"
+   },
+   "ingredients": [
+      {
+         "uri": "stonehearth:food:corn:corn_basket",
+         "count": 1
+      }
+   ]
 }

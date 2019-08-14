@@ -1,7 +1,8 @@
 {
+   "type": "mixin",
    "components": {
       "stonehearth:entity_forms": {
-         "placeable_on_walls": false,
+         "placeable_on_walls": true,
          "placeable_on_ground": true
       },
       "sensor_list": {
@@ -18,8 +19,8 @@
       "destination": {
          "region": [
             {
-               "min": { "x": -1, "y": 0, "z": -2 },
-               "max": { "x": 2, "y": 3, "z": 2 }
+               "min": { "x": -1, "y": 0, "z": 0 },
+               "max": { "x": 2, "y": 3, "z": 4 }
             }
          ]
       },
@@ -27,8 +28,16 @@
          "region_collision_type": "platform",
          "region": [
             {
-               "min": { "x": -1, "y": 0, "z": -2 },
-               "max": { "x": 2, "y": 3, "z": 2 }
+               "min": { "x": -1, "y": 0, "z": 0 },
+               "max": { "x": 2, "y": 3, "z": 4 }
+            }
+         ]
+      },
+      "stonehearth_ace:vertical_pathing_region": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": 0 },
+               "max": { "x": 2, "y": 1, "z": 4 }
             }
          ]
       }

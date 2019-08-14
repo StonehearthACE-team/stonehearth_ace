@@ -1,4 +1,14 @@
 {
+	"effort": 15,
    "recipe_name": "i18n(stonehearth_ace:entities.food.flour.display_name)",
-	"portrait": "/stonehearth_ace/entities/food/flour/flour.png"
+	"portrait": "/stonehearth_ace/entities/food/flour/flour.png",
+	"mixintypes": {
+	  "ingredients": "override"
+   },
+   "ingredients": [
+      {
+         "uri": "stonehearth:food:wheat:wheat_bale",
+         "count": 2
+      }
+   ]
 }

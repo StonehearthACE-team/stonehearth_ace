@@ -13,7 +13,7 @@
          "model_origin": { "x": 0, "y": 0, "z": 0 }
       },
       "stonehearth:stacks": {
-         "max_stacks": 4
+         "max_stacks": 5
       }
    },
    "entity_data": {
@@ -23,7 +23,7 @@
          "stacks_per_serving": 1
       },
       "stonehearth:net_worth": {
-         "value_in_gold": 46,
+         "value_in_gold": 33,
          "rarity": "common",
          "shop_info": {
             "buyable": true,
@@ -38,7 +38,13 @@
          "icon": "file(sushi_vegetarian.png)",
          "is_item": true,
          "category": "food",
-         "material_tags":["food_container", "prepared_food", "sushi_vegetarian", "stockpile_prepared_food", "vegetarian"]
+         "material_tags": [
+            "food_container",
+            "prepared_food",
+            "sushi_vegetarian",
+            "stockpile_prepared_food",
+            "vegetarian"
+         ]
       },
       "stonehearth:appeal": {
          "appeal": 4

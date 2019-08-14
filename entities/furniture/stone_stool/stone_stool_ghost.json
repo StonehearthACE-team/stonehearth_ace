@@ -1,0 +1,32 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(stone_stool.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.furniture.stone_stool.display_name)",
+         "description": "i18n(stonehearth_ace:entities.furniture.stone_stool.description)",
+         "icon": "file(stone_stool.png)",
+         "category": "furniture",
+         "material_tags": [
+            "stone",
+            "furniture",
+            "crafted",
+            "chair",
+            "stool",
+            "stockpile_furniture"
+         ]
+      }
+   }
+}
