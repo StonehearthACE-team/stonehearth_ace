@@ -52,7 +52,8 @@
             }
          }
       },
-      "stonehearth:evolve": {}
+      "stonehearth:evolve": {},
+      "stonehearth_ace:fish_trap": {}
    },
    "entity_data": {
       "stonehearth:evolve_data": {
@@ -71,7 +72,7 @@
             "stonehearth_ace:trapper:fish_trap:trout"
          ],
          "evolve_effect": "stonehearth:effects:trap_trigger",
-         "evolve_time": "1h+2h",
+         "evolve_time": "6h+18h",
          "auto_harvest": true,
          "biomes": {
             "stonehearth_ace:biome:highlands": {
@@ -108,6 +109,10 @@
       },
       "stonehearth:appeal": {
          "appeal": -1
+      },
+      "stonehearth:item_placement_limit": {
+         "tag": "fish_trap",
+         "default": 0
       }
    }
 }

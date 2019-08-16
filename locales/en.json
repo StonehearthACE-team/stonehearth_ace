@@ -4681,8 +4681,14 @@
             "description": "Not so safely immobilizes its prey"
          },
          "trapper_description": {
+				"level_1_data": {
+               "trapper_level_1_description": "Long walks have increased the trapper's foot speed. The Trapper is also able to handle up to 3 fish traps for your town."
+            },
+				"level_3_data": {
+               "trapper_level_3_description": "Long practice helps the trapper salvage more from each animal. The added agility allows the Trapper to occupy themselves with 3 additional fish traps."
+            },
             "level_6_data": {
-               "trapper_level_6_description": "The trapper can now use metal clamp traps to capture big game and also has a thing or two to teach the Engineer about setting traps. Increases town trap limit by 6."
+               "trapper_level_6_description": "The trapper can now use metal clamp traps to capture big game and also has a thing or two to teach the Engineer about setting traps. Increases town trap limit and the fish trap limit by 6."
             },
             "description": "The Trapper can arm snares to capture and (ahem) &quot;harvest&quot; wild critters for a reliable source of food, pelts and bones."
          }
@@ -8665,7 +8671,8 @@
       },
       "gizmos": {
          "animal_traps": {
-            "animal_traps_limit_tag": "Animal Traps"
+            "game_trap_limit_tag": "Animal Traps",
+				"fish_trap_limit_tag": "Fish Traps"
          },
          "dummy_training": {
             "dummy_training_ghost": {

@@ -12,11 +12,49 @@
 	"task_groups": [
       "stonehearth_ace:task_groups:poaching"
    ],
+	"initial_num_animal_traps": {
+      "fish_trap": 3
+   },
    "level_data": {
+		"1": {
+			"mixintypes": {
+				"perks": "override"
+			},	
+         "perks": [
+            {
+               "type": "apply_buff",
+               "name": "i18n(stonehearth:jobs.trapper.trapper_description.level_1_data.perk_000_name)",
+               "id": "trapper_speed_up_1",
+               "icon": "/stonehearth/jobs/trapper/images/speed_up.png",
+               "buff_name": "stonehearth:buffs:trapper:speed_1",
+               "description": "i18n(stonehearth_ace:jobs.trapper.trapper_description.level_1_data.trapper_level_1_description)",
+               "level": 1,
+               "demote_fn": "remove_buff"
+            }
+         ]
+      },
+		"3": {
+			"mixintypes": {
+				"perks": "override"
+			},	
+         "perks": [
+            {
+					"type": "increase_max_placeable_traps",
+               "name": "i18n(stonehearth:jobs.trapper.trapper_description.level_3_data.perk_000_name)",
+               "id": "trapper_efficient_rendering",
+               "icon": "/stonehearth/jobs/trapper/images/loot_up.png",
+               "description": "i18n(stonehearth_ace:jobs.trapper.trapper_description.level_3_data.trapper_level_3_description)",
+               "level": 3,
+					"max_num_animal_traps": {
+                  "fish_trap": 6
+               }
+            }
+         ]
+      },
       "6": {	
          "mixintypes": {
-			"perks": "override"
-		 },	  
+				"perks": "override"
+			},	  
          "perks": [
             {
                "type": "increase_max_placeable_traps",
@@ -24,10 +62,13 @@
                "id": "trapper_increase_traps",
                "icon": "/stonehearth/jobs/trapper/images/trapperLevel6.png",
                "description": "i18n(stonehearth_ace:jobs.trapper.trapper_description.level_6_data.trapper_level_6_description)",
+					"level": 6,
                "max_num_siege_weapons": {
                   "trap": 6
                },
-               "level": 6
+					"max_num_animal_traps": {
+                  "fish_trap": 12
+               }					
             }
          ]
       }	 
