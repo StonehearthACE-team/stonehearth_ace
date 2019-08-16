@@ -29,10 +29,25 @@
       },
       "stonehearth:workshop": {
          "job_alias": "stonehearth:jobs:cook",
-         "workshop_effect": "/stonehearth/data/rigs/jobs/cook/cook_workbench/effects/work.json"
+         "workshop_effect": "/stonehearth_ace/data/rigs/jobs/cook/cook_workbench/effects/work.json"
       },
       "render_info": {
          "scale": 0.08
+      },
+      "effect_list": {
+         "default": "/stonehearth_ace/data/rigs/jobs/cook/cook_workbench/effects/idle.json"
+      },
+      "sensor_list": {
+         "sensors": {
+            "warmth": {
+               "radius": 3
+            }
+         }
+      },
+      "stonehearth:buffs": {
+         "buffs": {
+            "stonehearth_ace:buffs:weather:warmth_source": true
+         }
       }
    },
    "entity_data": {

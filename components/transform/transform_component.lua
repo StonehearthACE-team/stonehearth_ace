@@ -1,5 +1,6 @@
 local transform_lib = require 'stonehearth_ace.lib.transform.transform_lib'
 local log = radiant.log.create_logger('transform')
+local LootTable = require 'stonehearth.lib.loot_table.loot_table'
 
 local TransformComponent = class()
 
@@ -156,5 +157,37 @@ function TransformComponent:_refresh_attention_effect()
    end
 end
 ]]
+
+function TransformComponent:_place_additional_items(owner, collect_location)
+   local data = self._transform_data
+   if not data.additional_items then
+      return {}
+   end
+   local loot_table = nil
+   if data.additional_items then
+      loot_table = LootTable(data.additional_items)
+   end
+   local spawned_items
+   if loot_table then
+      spawned_items = radiant.entities.spawn_items(loot_table:roll_loot(), collect_location, 1, 3, { owner = owner })
+   else
+      spawned_items = {}
+   end
+
+   return spawned_items
+end
+
+function TransformComponent:spawn_additional_items(transforming_worker, collect_location, owner_player_id)
+   local spawned_resources = self:_place_additional_items(transforming_worker, collect_location)
+   local player_id = owner_player_id or (transforming_worker and radiant.entities.get_player_id(transforming_worker))
+   if transforming_worker then
+      for id, item in pairs(spawned_resources) do
+         -- add it to the inventory of the owner
+         stonehearth.inventory:get_inventory(player_id)
+                                 :add_item_if_not_full(item)
+
+      end
+   end
+end
 
 return TransformComponent

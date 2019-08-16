@@ -72,6 +72,11 @@ function TransformItemAdjacent:run(ai, entity, args)
          radiant.entities.destroy_entity(ing_item)
       end
 
+		if data.additional_items then
+			local location = radiant.entities.get_world_grid_location(entity)
+         transform_comp:spawn_additional_items(entity, location, args.owner_player_id)
+		end
+		
       if data and data.worker_finished_effect then
          ai:execute('stonehearth:run_effect', { effect = data.worker_finished_effect})
       end

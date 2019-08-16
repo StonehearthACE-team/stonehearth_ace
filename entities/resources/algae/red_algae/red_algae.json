@@ -13,10 +13,12 @@
    "entity_data": {
       "stonehearth:net_worth": {
          "value_in_gold": 2,
-         "rarity": "common",
+         "rarity": "uncommon",
          "shop_info": {
-            "buyable": false,
-            "sellable": true
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 1,
+            "shopkeeper_type": "caravan"
          }
       },
       "stonehearth:catalog": {
@@ -25,7 +27,13 @@
          "icon": "file(red_algae.png)",
          "is_item": true,
          "category": "resources",
-         "material_tags":["plant", "algae", "resource", "red_algae", "stockpile_plant"]
+         "material_tags": [
+            "plant",
+            "algae",
+            "resource",
+            "red_algae",
+            "stockpile_plant"
+         ]
       },
       "stonehearth:appeal": {
          "appeal": 1

@@ -1,0 +1,12 @@
+{
+   "type": "command",
+   "name": "capture_fish",
+   "display_name": "i18n(stonehearth_ace:data.commands.capture_fish.display_name)",
+   "description": "i18n(stonehearth_ace:data.commands.capture_fish.description)",
+   "default_enabled": true,
+   "ordinal": -99,
+   "icon": "file(capture_fish.png)",
+   "action": "call",
+   "function": "stonehearth_ace:transform_command",
+   "args": []
+}

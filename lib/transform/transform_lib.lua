@@ -36,7 +36,9 @@ function transform_lib.transform(entity, transformer, into_uri, options)
 
       -- Have to remove entity because it can collide with transformed form
       radiant.terrain.remove_entity(entity)
-      if location and not radiant.terrain.is_standable(transformed_form, location) then
+		
+		local aquatic_object = entity:get_component('stonehearth_ace:aquatic_object')
+      if location and not radiant.terrain.is_standable(transformed_form, location) and not aquatic_object then
          -- If cannot transform because the transformed form will not fit in the current location, just return (evolve will try again after a new timer)
          radiant.terrain.place_entity_at_exact_location(entity, location, { force_iconic = false, facing = facing })
          radiant.entities.destroy_entity(transformed_form)

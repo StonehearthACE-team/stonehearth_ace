@@ -10,15 +10,10 @@
             "models": [
                "file(fish_trap.qb)"
             ]
-         },
-         "sprung": {
-            "models": [
-               "file(fish_trap_sprung.qb)"
-            ]
          }
       },
       "mob": {
-         "model_origin": { "x": 0.05, "y": 0, "z": -0.4 },
+         "model_origin": { "x": -0.02, "y": 0, "z": -0.06 },
          "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
       }
    },
@@ -27,7 +22,12 @@
          "display_name": "i18n(stonehearth_ace:jobs.trapper.fish_trap.display_name)",
          "description": "i18n(stonehearth_ace:jobs.trapper.fish_trap.description)",
          "icon": "file(fish_trap.png)",
-         "material_tags":["wood", "construction", "fish_trap", "stockpile_gizmos"]
+         "material_tags": [
+            "wood",
+            "construction",
+            "fish_trap",
+            "stockpile_gizmos"
+         ]
       }
    }
 }

@@ -11,6 +11,43 @@
          "shopkeeper_gold": 500,
 		 "overall_price_multiplier": 1.5,
          "entries": [
+				{
+               "items_matching": {
+                  "drink_container": {
+                     "category": [
+                        "drink"
+                     ],
+                     "material": [
+                        "raw_drink"
+                     ]
+                  }
+               },
+               "quantity": {
+                  "min": 1,
+                  "max": 3
+               }
+            },
+				{
+               "items": [
+                  "stonehearth_ace:drink:spirit",
+						"stonehearth_ace:drink:ale"
+               ],
+               "quantity": {
+                  "min": 0,
+                  "max": 3
+               }
+            },
+				{
+               "items": [
+                  "stonehearth_ace:barrel_small",
+						"stonehearth_ace:tank_small",
+						"stonehearth_ace:amphora",
+               ],
+               "quantity": {
+                  "min": 0,
+                  "max": 2
+               }
+            }
          ]
       }
    }

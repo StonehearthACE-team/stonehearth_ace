@@ -1,0 +1,76 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "render_info": {
+         "scale": 0.13
+      },
+      "mob": {
+         "model_origin": { "x": -0.02, "y": 0, "z": -0.06 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(../fish_trap_sprung.qb)"
+            ]
+         }
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 2, "y": 3, "z": 2 }
+            }
+         ]
+      },
+      "region_collision_shape": {
+         "region_collision_type": "platform",
+         "region": [
+            {
+               "min": { "x": 0, "y": 0, "z": 0 },
+               "max": { "x": 1, "y": 2, "z": 1 }
+            }
+         ]
+      },
+      "stonehearth_ace:aquatic_object": {
+         "floating_object": {
+            "vertical_offset": -1
+         },
+         "destroy_if_out_of_water": true,
+         "water_signal_region": [
+            {
+               "min": { "x": 0, "y": 1, "z": 0 },
+               "max": { "x": 1, "y": 2, "z": 1 }
+            }
+         ]
+      },
+      "stonehearth_ace:transform": {}
+   },
+   "entity_data": {
+      "stonehearth_ace:transform_data": {
+         "transform_uri": "stonehearth_ace:trapper:fish_trap",
+         "request_action": "stonehearth_ace:transform",
+         "transforming_worker_effect": "fiddle",
+         "transforming_worker_effect_times": 1,
+         "transform_effect": "stonehearth:effects:trap_arm",
+         "auto_request": true,
+         "worker_required_job": {
+            "stonehearth:jobs:trapper": true
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:jobs.trapper.fish_trap.display_name)",
+         "description": "i18n(stonehearth_ace:jobs.trapper.fish_trap.empty_description)",
+         "icon": "file(../fish_trap.png)",
+         "material_tags": [
+            "wood",
+            "construction",
+            "fish_trap"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": -1
+      }
+   }
+}

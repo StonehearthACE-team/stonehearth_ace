@@ -1,0 +1,12 @@
+{
+   "type": "command",
+   "name": "require_low_fuel",
+   "display_name": "i18n(stonehearth_ace:data.commands.refuel.require_low_fuel.display_name)",
+   "description": "i18n(stonehearth_ace:data.commands.refuel.require_low_fuel.description)",
+   "default_enabled": true,
+   "ordinal": -100,
+   "icon": "/stonehearth_ace/entities/resources/fuel/low_fuel_icon.png",
+   "action": "call",
+   "function": "stonehearth_ace:transform_command",
+   "args": []
+}

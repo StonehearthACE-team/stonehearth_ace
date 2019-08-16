@@ -39,15 +39,15 @@
                "workshop_blacksmith": {
                   "display_name": "Blacksmith's Workshop"
                },
-					"mead_hall_ace": {
+               "mead_hall_ace": {
                   "display_name": "Mead Hall"
                }
             },
-				"rayyas_children": {
-					"desert_pub_ace": {
+            "rayyas_children": {
+               "desert_pub_ace": {
                   "display_name": "Desert Pub"
                }
-				},
+            },
             "potter_house": {
                "display_name": "Potter House"
             },
@@ -137,8 +137,8 @@
                         },
                         "drink_shop_1": {
                            "shop_info": {
-                              "name": "The Ewbrand Distillery",
-                              "title": "A merchant of drinks and liquor has camped nearby"
+                              "name": "Ewbrand the Brewer",
+                              "title": "A merchant of beverages has camped nearby"
                            }
                         },
                         "training_shop_1": {
@@ -206,7 +206,7 @@
                         "drink_shop_2": {
                            "shop_info": {
                               "name": "The Thoto Brewery",
-                              "title": "A northerner brewer has arrived with drinks for sale"
+                              "title": "A northern brewery has arrived with drinks for sale"
                            }
                         },
                         "training_shop_2": {
@@ -229,7 +229,7 @@
                         },
                         "fishing_shop_2": {
                            "shop_info": {
-                              "name": "'Smells Fishy Fishery'",
+                              "name": "Smells Fishy Fishery",
                               "title": "Traders from a large fishing business have arrived with wares"
                            }
                         },
@@ -1744,6 +1744,32 @@
                "display_name": "Using Default Bolts",
                "description": "Using normal bolts. Click to swap to a different bolt type"
             }
+         },
+         "refuel": {
+            "require_low_fuel": {
+               "description": "Lower Grade Fuel is required to bring this workshop back to action!",
+               "display_name": "Request Refuelling"
+            },
+            "require_high_fuel": {
+               "display_name": "Request Refuelling",
+               "description": "Higher Grade Fuel is required to bring this workshop back to action!"
+            },
+            "require_fuel": {
+               "display_name": "Request Refuelling",
+               "description": "Good Grade Fuel is required to bring this workshop back to action!"
+            },
+            "require_common_fuel": {
+               "display_name": "Request Refuelling",
+               "description": "Any Common Fuel can be used to bring this workshop back to action!"
+            },
+            "require_any_fuel": {
+               "display_name": "Request Refuelling",
+               "description": "Any Fuel can be used to bring this workshop back to action!"
+            }
+         },
+         "capture_fish": {
+            "display_name": "Capture Fish!",
+            "description": "Order the Trapper to capture this fish instead of harvesting it. A captured fish will remain contained in a small crate that can be placed somewhere else for release."
          }
       },
       "buffs": {
@@ -4357,8 +4383,8 @@
             },
             "fish_trap_recipe": {
                "recipe_name": "Fish Trap",
-               "description": "Used by the Trapper to safely catch and harvest or capture fish. Can only place a limited amount.",
-               "flavor": "You can toggle the catching mode when clicking the trap!"
+               "description": "Used by the Trapper to safely catch and harvest fish. It can also be used to capture fish for transport.",
+               "flavor": "Place it on water edges. It can be accessed from above and will float to the surface if placed underwater"
             },
             "output_cask_wood_recipe": {
                "recipe_name": "Wooden Production Cask",
@@ -4645,7 +4671,10 @@
       "trapper": {
          "fish_trap": {
             "display_name": "Fish Trap",
-            "description": "Safely capture fish. Will float when placed in the water."
+            "description": "Safely capture fish. Will float when placed in the water.",
+            "iconic_description": "Must be placed mostly underwater, will float. Can be accessed from above.",
+            "sprung_description": "It caught something! It will soon be harvested by a Trapper...",
+            "empty_description": "The trap was triggered but failed to get anything..."
          },
          "clamp_trap": {
             "display_name": "Clamp Trap",
@@ -6428,7 +6457,7 @@
                   "description": "An appropriate surface for nightly gossip."
                }
             },
-				"stone": {
+            "stone": {
                "counter_stone_mid": {
                   "display_name": "Stone Counter Midsection",
                   "description": "The home of revelers and patrons alike."
@@ -6458,7 +6487,7 @@
                   "description": "The home of revelers and patrons alike."
                }
             },
-				"clay": {
+            "clay": {
                "counter_clay_mid": {
                   "display_name": "Clay Counter Midsection",
                   "description": "Feels like an oasis for the weary traveler."
@@ -6493,11 +6522,11 @@
             "display_name": "Wooden Stool",
             "description": "Higher seat for lower purposes."
          },
-			"stone_stool": {
+         "stone_stool": {
             "display_name": "Stone Stool",
             "description": "Stone furniture tends to be... oversized."
          },
-			"clay_stool": {
+         "clay_stool": {
             "display_name": "Clay Stool",
             "description": "Hopefully shouldn't break so easily."
          }

@@ -8,7 +8,7 @@
       "inventory": {
          "shopkeeper_level": 1,
          "shopkeeper_gold": 350,
-		 "overall_price_multiplier": 1.2,
+			"overall_price_multiplier": 1.2,
          "entries": [
             {
                "items": [
@@ -19,6 +19,24 @@
                   "max": 12
                }
             },
+				{
+               "items": [
+                  "stonehearth_ace:food:fish_roe:fish_roe_basket"
+               ],
+               "quantity": {
+                  "min": 0,
+                  "max": 3
+               }
+            },
+				{
+               "items": [
+                  "stonehearth_ace:trapper:fish_trap"
+               ],
+               "quantity": {
+                  "min": 0,
+                  "max": 2
+               }
+            },
             {
                "items_matching": {
                   "exotic_fish": {
@@ -27,7 +45,7 @@
                      ],
                      "material": [
                         "fish_meat",
-						"raw"
+								"raw"
                      ]
                   }
                },
@@ -36,7 +54,7 @@
                   "max": 3
                }
             },
-			{
+				{
                "items_matching": {
                   "algae": {
                      "category": [
@@ -52,7 +70,7 @@
                   "max": 4
                }
             },
-			{
+				{
                "items": [
                   "stonehearth_ace:food:fish_stew"
                ],
@@ -61,7 +79,7 @@
                   "max": 4
                }
             },
-			{
+				{
                "items": [
                   "stonehearth_ace:food:roast_fish"
                ],

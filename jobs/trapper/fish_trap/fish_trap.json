@@ -5,7 +5,16 @@
       "stonehearth:entity_forms": {
          "iconic_form": "file(fish_trap_iconic.json)",
          "ghost_form": "file(fish_trap_ghost.json)",
-         "placeable_on_ground": true
+         "placeable_on_ground": true,
+         "placeable_on_walls": true
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 2, "y": 3, "z": 2 }
+            }
+         ]
       },
       "region_collision_shape": {
          "region_collision_type": "platform",
@@ -16,45 +25,89 @@
             }
          ]
       },
-      "destination": {
-         "region": [
-            {
-               "min": { "x": 0, "y": 0, "z": 0 },
-               "max": { "x": 1, "y": 1, "z": 1 }
-            }
-         ]
-      },
-      "stonehearth:bait_trap": {
-         "range": 16,
-         "trigger_on_failure_chance": 0.6
-      },
-      "sensor_list": {
-         "sensors": {
-            "interaction_sensor": {
-               "radius": 32
-            }
-         }
-      },
-      "stonehearth:sensor_ai_injector": {
-         "sensor": "interaction_sensor",
-         "ai": {
-            "actions": [
-               "stonehearth:actions:trapping:try_steal_bait",
-               "stonehearth:actions:trapping:trigger_trap"
-            ],
-            "observers": []
-         }
-      },
       "stonehearth_ace:aquatic_object": {
          "floating_object": {
             "vertical_offset": -1
+         },
+         "destroy_if_out_of_water": true,
+         "water_signal_region": [
+            {
+               "min": { "x": 0, "y": 1, "z": 0 },
+               "max": { "x": 1, "y": 2, "z": 1 }
+            }
+         ]
+      },
+      "stonehearth:loot_drops": {
+         "entries": {
+            "trap": {
+               "num_rolls": {
+                  "min": 1,
+                  "max": 1
+               },
+               "items": {
+                  "trap": {
+                     "uri": "stonehearth_ace:trapper:fish_trap"
+                  }
+               }
+            }
          }
-      }
+      },
+      "stonehearth:evolve": {}
    },
    "entity_data": {
-      "stonehearth:item_placement_limit": {
-         "tag": "animal_traps",
-         "default": 0
+      "stonehearth:evolve_data": {
+         "next_stage": [
+            "stonehearth_ace:trapper:fish_trap:empty",
+            "stonehearth_ace:trapper:fish_trap:silver",
+            "stonehearth_ace:trapper:fish_trap:silver",
+            "stonehearth_ace:trapper:fish_trap:long",
+            "stonehearth_ace:trapper:fish_trap:long",
+            "stonehearth_ace:trapper:fish_trap:dark",
+            "stonehearth_ace:trapper:fish_trap:dark",
+            "stonehearth_ace:trapper:fish_trap:big",
+            "stonehearth_ace:trapper:fish_trap:catfish",
+            "stonehearth_ace:trapper:fish_trap:carp",
+            "stonehearth_ace:trapper:fish_trap:salmon",
+            "stonehearth_ace:trapper:fish_trap:trout"
+         ],
+         "evolve_effect": "stonehearth:effects:trap_trigger",
+         "evolve_time": "1h+2h",
+         "auto_harvest": true,
+         "biomes": {
+            "stonehearth_ace:biome:highlands": {
+               "evolve_time_multiplier": 0.8
+            },
+            "stonehearth:biome:arctic": {
+               "evolve_time_multiplier": 1.5
+            },
+            "stonehearth:biome:desert": {
+               "evolve_time_multiplier": 2
+            }
+         },
+         "seasons": {
+            "spring": {
+               "evolve_time_multiplier": 1.2
+            },
+            "autumn": {
+               "evolve_time_multiplier": 1.5
+            },
+            "winter": {
+               "evolve_time_multiplier": 2.5
+            }
+         }
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 7,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 1,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": -1
       }
    }
 }

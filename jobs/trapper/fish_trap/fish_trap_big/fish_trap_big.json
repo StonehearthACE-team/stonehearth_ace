@@ -1,0 +1,130 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "render_info": {
+         "scale": 0.13,
+         "animation_table": "file(/data/rigs/entities/aquatic/fish/fish.json)"
+      },
+      "effect_list": {
+         "default": "/stonehearth_ace/data/rigs/entities/aquatic/fish/effects/idle_despair.json"
+      },
+      "mob": {
+         "model_origin": { "x": -0.02, "y": 0, "z": -0.06 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(../fish_trap_sprung.qb)",
+               "/stonehearth_ace/entities/aquatic/fish_big/fish_big.qb"
+            ]
+         }
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 2, "y": 3, "z": 2 }
+            }
+         ]
+      },
+      "region_collision_shape": {
+         "region_collision_type": "platform",
+         "region": [
+            {
+               "min": { "x": 0, "y": 0, "z": 0 },
+               "max": { "x": 1, "y": 2, "z": 1 }
+            }
+         ]
+      },
+      "stonehearth_ace:aquatic_object": {
+         "floating_object": {
+            "vertical_offset": -1
+         },
+         "destroy_if_out_of_water": true,
+         "water_signal_region": [
+            {
+               "min": { "x": 0, "y": 1, "z": 0 },
+               "max": { "x": 1, "y": 2, "z": 1 }
+            }
+         ]
+      },
+      "stonehearth:resource_node": {
+         "category": "poaching",
+         "resource": "stonehearth_ace:food:fish_meat",
+         "durability": 1,
+         "harvester_effect": "fiddle",
+         "resource_spawn_effect": "stonehearth:effects:gib_effect",
+         "resource_loot_table": {
+            "entries": {
+               "extra_meat": {
+                  "num_rolls": {
+                     "min": 1,
+                     "max": 2
+                  },
+                  "items": {
+                     "meat": {
+                        "uri": "stonehearth_ace:food:fish_meat"
+                     }
+                  }
+               },
+               "optional": {
+                  "num_rolls": {
+                     "min": 0,
+                     "max": 1
+                  },
+                  "items": {
+                     "roe": {
+                        "uri": "stonehearth_ace:food:fish_roe:fish_big_roe_basket"
+                     }
+                  }
+               }
+            }
+         }
+      },
+      "stonehearth_ace:transform": {},
+      "stonehearth_ace:stump": {}
+   },
+   "entity_data": {
+      "stonehearth:stump_data": {
+         "stump_alias": "stonehearth_ace:trapper:fish_trap"
+      },
+      "stonehearth_ace:transform_data": {
+         "transform_uri": "stonehearth_ace:trapper:fish_trap",
+         "request_action": "stonehearth_ace:transform",
+         "command": "stonehearth_ace:commands:capture_fish",
+         "request_action_overlay_effect": "stonehearth_ace:effects:harvest_fish_overlay_effect",
+         "transforming_worker_effect": "fiddle",
+         "transforming_worker_effect_times": 1,
+         "transform_effect": "stonehearth:effects:item_created",
+         "worker_required_job": {
+            "stonehearth:jobs:trapper": true
+         },
+         "additional_items": {
+            "entries": {
+               "optional": {
+                  "items": {
+                     "captive_fish": {
+                        "uri": "stonehearth_ace:consumables:captive:fish:big"
+                     }
+                  }
+               }
+            }
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:jobs.trapper.fish_trap.display_name)",
+         "description": "i18n(stonehearth_ace:jobs.trapper.fish_trap.sprung_description)",
+         "icon": "file(../fish_trap.png)",
+         "material_tags": [
+            "wood",
+            "construction",
+            "fish_trap"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": -3
+      }
+   }
+}

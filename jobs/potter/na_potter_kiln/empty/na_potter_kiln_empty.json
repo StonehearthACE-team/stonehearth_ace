@@ -1,0 +1,37 @@
+{
+   "type": "entity",
+   "mixins": "file(../na_potter_kiln.json)",
+   "components": {
+      "stonehearth:entity_forms": {
+         "ghost_form": "file(na_potter_kiln_empty_ghost.json)",
+         "iconic_form": "file(na_potter_kiln_empty_iconic.json)",
+         "hide_undeploy_ui": true,
+         "placeable_on_ground": true
+      },
+      "stonehearth_ace:transform": {},
+      "mixintypes": {
+         "effect_list": "remove",
+         "sensor_list": "remove",
+         "stonehearth:buffs": "remove",
+         "stonehearth:evolve": "remove"
+      }
+   },
+   "entity_data": {
+      "mixintypes": {
+         "stonehearth:evolve_data": "remove"
+      },
+      "stonehearth_ace:transform_data": {
+         "transform_uri": "stonehearth_ace:northern_alliance:potter:kiln",
+         "command": "stonehearth_ace:commands:refuel:require_common_fuel",
+         "request_action": "stonehearth_ace:transform",
+         "request_action_overlay_effect": "stonehearth_ace:effects:requires_fuel_overlay_effect",
+         "transform_ingredient_material": "common_fuel",
+         "transforming_worker_effect": "light_fire",
+         "transform_effect": "stonehearth:effects:fire_effect",
+         "auto_request": true,
+         "worker_required_job": {
+            "stonehearth:jobs:potter": true
+         }
+      }
+   }
+}

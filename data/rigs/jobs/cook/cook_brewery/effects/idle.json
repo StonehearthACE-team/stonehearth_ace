@@ -1,0 +1,31 @@
+{
+   "type" : "effect",
+   "tracks": {
+		"coals": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/fire/cook_coals_idle.cubemitter.json",
+         "loop": true,
+         "transforms": {
+            "x":1,
+            "y":0.3,
+            "z": 0,
+            "rx":90,
+            "ry":0,
+            "rz":0
+         }
+      },
+	   "embers": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/fire/cook_embers_idle.cubemitter.json",
+         "loop": true,
+         "transforms": {
+            "x":1,
+            "y":0.2,
+            "z": 0,
+            "rx":90,
+            "ry":0,
+            "rz":0
+         }
+      }           
+   }
+}

@@ -11,6 +11,78 @@
          "shopkeeper_gold": 750,
 		 "overall_price_multiplier": 1.2,
          "entries": [
+				{
+               "items_matching": {
+                  "brewing_ingredient": {
+                     "category": [
+                        "brewing_ingredient"
+                     ],
+                     "material": [
+                        "brewing_ingredient"
+                     ]
+                  }
+               },
+               "quantity": {
+                  "min": 3,
+                  "max": 8
+               }
+            },
+				{
+               "items_matching": {
+                  "drink_container": {
+                     "category": [
+                        "drink"
+                     ],
+                     "material": [
+                        "raw_drink"
+                     ]
+                  }
+               },
+               "quantity": {
+                  "min": 3,
+                  "max": 6
+               }
+            },
+				{
+               "items": [
+                  "stonehearth_ace:drink:spirit",
+						"stonehearth_ace:drink:spirit_fruit",
+						"stonehearth_ace:drink:ale",
+						"stonehearth_ace:drink:beer"
+               ],
+               "quantity": {
+                  "min": 2,
+                  "max": 8
+               }
+            },
+				{
+               "items": [
+                  "stonehearth_ace:containers:output_cask:wood:small",
+						"stonehearth_ace:containers:output_cask:clay:small",
+						"stonehearth_ace:containers:output_cask:stone:small",
+						"stonehearth_ace:containers:serving_keg:wood",
+						"stonehearth_ace:containers:serving_keg:clay",
+						"stonehearth_ace:containers:serving_keg:stone"
+               ],
+               "quantity": {
+                  "min": 0,
+                  "max": 5
+               }
+            },
+				{
+               "items": [
+                  "stonehearth_ace:barrel_small",
+						"stonehearth_ace:tank_small",
+						"stonehearth_ace:amphora",
+						"stonehearth_ace:amphora_blue",
+						"stonehearth_ace:amphora_green",
+						"stonehearth_ace:amphora_red"
+               ],
+               "quantity": {
+                  "min": 1,
+                  "max": 6
+               }
+            }
          ]
       }
    }

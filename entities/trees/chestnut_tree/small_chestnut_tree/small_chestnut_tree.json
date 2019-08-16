@@ -95,22 +95,6 @@
          "category": "harvest",
          "renewal_time": "36h+12h",
          "harvest_overlay_effect": "stonehearth_ace:effects:harvest_nut_overlay_effect",
-         "resource_loot_table": {
-            "entries": {
-               "optional": {
-                  "num_rolls": {
-                     "min": 0,
-                     "max": 2
-                  },
-                  "items": {
-                     "seed": {
-                        "uri": "stonehearth_ace:trees:chestnut:seed",
-                        "weight": 1
-                     }
-                  }
-               }
-            }
-         },
          "half_renewed_model": {
             "model": "/stonehearth_ace/entities/trees/chestnut_tree/small_chestnut_tree/small_chestnut_tree_half_renewed.qb",
             "matrix": "chestnuts",

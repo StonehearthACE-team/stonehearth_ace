@@ -1,14 +1,17 @@
 {
    "type" : "effect",
    "tracks": {
-      "coals": {
+		"coals": {
+         "cubemitter": "/stonehearth_ace/data/horde/particles/fire/forge_coals_idle.cubemitter.json"
+      },
+		"smoke": {
          "type": "cubemitter",
-         "cubemitter": "/stonehearth/data/horde/particles/fire/forge_coals.cubemitter.json",
-         "loop": true,
+         "loop" : true,
+         "cubemitter": "/stonehearth_ace/data/horde/particles/fire/smoke_plume_idle.cubemitter.json",
          "transforms": {
-            "x":-0.1,
-            "y":0.2,
-            "z":-0.8,
+            "x":0,
+            "y":4,
+            "z":0,
             "rx":90,
             "ry":0,
             "rz":0

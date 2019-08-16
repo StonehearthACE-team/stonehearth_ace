@@ -9,7 +9,25 @@
             "front",
             "back"
          ]
-	  }
+		},
+		"stonehearth:workshop": {
+         "workshop_effect": "/stonehearth_ace/data/rigs/jobs/cook/cook_workbench/effects/work.json"
+      },
+      "effect_list": {
+         "default": "/stonehearth_ace/data/rigs/jobs/cook/cook_workbench/effects/idle.json"
+      },
+      "sensor_list": {
+         "sensors": {
+            "warmth": {
+               "radius": 3
+            }
+         }
+      },
+      "stonehearth:buffs": {
+         "buffs": {
+            "stonehearth_ace:buffs:weather:warmth_source": true
+         }
+      }
    },
    "entity_data": {
 	  "stonehearth:table": {
