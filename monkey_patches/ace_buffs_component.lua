@@ -67,15 +67,29 @@ function AceBuffsComponent:add_buff(uri, options)
 
    local json = radiant.resources.load_json(uri, true)
 
-	if json.can_affect then
-		local can_affect = nil
-		for _, allowed_entity_category in pairs(json.can_affect) do
-			if radiant.entities.get_category(self._entity) == allowed_entity_category then
-				can_affect = true
+	if json.cant_affect then
+		local cant_affect = nil
+		for _, forbidden_species in pairs(json.cant_affect) do
+			local species_data = radiant.entities.get_entity_data(self._entity, 'stonehearth:species')
+			if species_data and species_data.id == allowed_species then
+				cant_affect = true
 			end		
 		end
-		if not can_affect then
-			return -- don't add this buff if the entity's category is not in the "can_affect" list of the buff's json
+		if cant_affect then
+			return -- don't add this buff if the entity's species is in the "cant_affect" list of the buff's json
+		end
+	end	
+		
+	if json.can_only_affect then
+		local can_only_affect = nil
+		for _, allowed_species in pairs(json.can_only_affect) do
+			local species_data = radiant.entities.get_entity_data(self._entity, 'stonehearth:species')
+			if species_data and species_data.id == allowed_species then
+				can_only_affect = true
+			end		
+		end
+		if not can_only_affect then
+			return -- don't add this buff if the entity's species is not in the "can_only_affect" list of the buff's json
 		end
 	end		
 	

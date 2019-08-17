@@ -4681,10 +4681,10 @@
             "description": "Not so safely immobilizes its prey"
          },
          "trapper_description": {
-				"level_1_data": {
+            "level_1_data": {
                "trapper_level_1_description": "Long walks have increased the trapper's foot speed. The Trapper is also able to handle up to 3 fish traps for your town."
             },
-				"level_3_data": {
+            "level_3_data": {
                "trapper_level_3_description": "Long practice helps the trapper salvage more from each animal. The added agility allows the Trapper to occupy themselves with 3 additional fish traps."
             },
             "level_6_data": {
@@ -8672,7 +8672,7 @@
       "gizmos": {
          "animal_traps": {
             "game_trap_limit_tag": "Animal Traps",
-				"fish_trap_limit_tag": "Fish Traps"
+            "fish_trap_limit_tag": "Fish Traps"
          },
          "dummy_training": {
             "dummy_training_ghost": {
@@ -9578,6 +9578,29 @@
                "display_name": "Enchanted Dust"
             }
          }
+      },
+      "peoples": {
+         "orc": {
+            "species": "Orc"
+         },
+			"goblin": {
+            "species": "Goblin"
+         },
+			"kobold": {
+            "species": "Kobold"
+         },
+			"ogre": {
+            "species": "Ogre"
+         },
+			"zombie": {
+            "species": "Zombie"
+         },
+			"skeleton": {
+            "species": "Skeleton"
+         },
+         "rabbit_biped": {
+            "species": "Rabbit Biped"
+         }
       }
    },
    "mountain_folk": {
@@ -9779,6 +9802,11 @@
                   "display_name": "Serving of Sweetened Varanus",
                   "description": "A delicious and traditional meat dish."
                }
+            }
+         },
+         "peoples": {
+            "dwarves": {
+               "species": "Dwarf"
             }
          }
       }
