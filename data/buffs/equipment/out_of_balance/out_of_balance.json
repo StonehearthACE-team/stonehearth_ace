@@ -5,6 +5,7 @@
    "description": "i18n(stonehearth_ace:data.buffs.out_of_balance.description)",
    "icon": "file(out_of_balance_normal.png)",
    "duration": "15m",
+   "cant_affect_siege": true,
    "repeat_add_action": "renew_duration",
    "modifiers": {
       "multiplicative_dmg_modifier": {

@@ -5,6 +5,7 @@
    "description": "i18n(stonehearth_ace:data.buffs.poison.minor_poison.description)",
    "icon": "file(poison_minor.png)",
    "duration": "8h+8h",
+   "cant_affect_siege": true,
    "repeat_add_action": "renew_duration",
    "modifiers": {
       "muscle": {

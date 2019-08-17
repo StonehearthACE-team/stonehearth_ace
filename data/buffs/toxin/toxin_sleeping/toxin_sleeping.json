@@ -5,6 +5,7 @@
    "description": "i18n(stonehearth_ace:data.buffs.toxin.toxin_sleeping.description)",
    "icon": "file(toxin_sleeping.png)",
    "duration": "15m",
+   "cant_affect_siege": true,
    "repeat_add_action": "extend_duration",
    "effect": "stonehearth_ace:effects:toxin_added",
    "script": "stonehearth:buff_scripts:periodic_attribute_modification",

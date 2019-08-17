@@ -5,6 +5,7 @@
    "description": "i18n(stonehearth_ace:data.buffs.major_open_wounds.description)",
    "icon": "file(open_wounds.png)",
    "duration": "40m",
+   "cant_affect_siege": true,
    "repeat_add_action": "renew_duration",
    "script": "stonehearth:buff_scripts:periodic_health_modification",
    "script_info": {

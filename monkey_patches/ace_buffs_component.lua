@@ -66,7 +66,14 @@ function AceBuffsComponent:add_buff(uri, options)
    end
 
    local json = radiant.resources.load_json(uri, true)
-
+	
+	if json.cant_affect_siege then
+		local siege_data = radiant.entities.get_entity_data(self._entity, 'stonehearth:siege_object')
+		if siege_data then
+			return -- don't add this buff if the entity is a siege object
+		end
+	end	
+	
 	if json.cant_affect then
 		local cant_affect = nil
 		for _, forbidden_species in pairs(json.cant_affect) do

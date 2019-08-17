@@ -5,6 +5,7 @@
    "description": "i18n(stonehearth_ace:data.buffs.minor_shaken.description)",
    "icon": "file(shaken_minor.png)",
    "duration": "30m",
+   "cant_affect_siege": true,
    "repeat_add_action": "renew_duration",
    "modifiers": {
       "courage": {
