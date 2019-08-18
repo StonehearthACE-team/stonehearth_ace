@@ -1,0 +1,16 @@
+{
+   "type": "encounter",
+   "encounter_type": "wait_for_requirements_met",
+   "in_edge": "ace_shrine_foreshadow_requirements",
+   "out_edge": "shrine_foreshadow_dialog",
+   "wait_for_requirements_met_info": {
+      "requirements": {
+         "net_worth_requirement": {
+            "item": "net_worth",
+            "type": "deny_if_less_than",
+            "value": 10000
+         }
+      },
+      "recheck_delay": "9h + 3h"
+   }
+}

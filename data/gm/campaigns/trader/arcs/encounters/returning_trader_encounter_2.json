@@ -1,8 +1,155 @@
 {
    "script_info": {
       "data": {
-         "wants": {},
+			"max_days_before_return": 8,
+			"wants": {
+            "stonehearth:blacksmith:talisman": {
+               "min": 1,
+               "max": 4
+            },
+            "stonehearth_ace:weapons:na_iron_pike": {
+               "min": 3,
+               "max": 7
+            },
+            "stonehearth_ace:weapons:iron_short_sword": {
+               "min": 2,
+               "max": 6
+            },
+            "stonehearth_ace:weapons:na_iron_short_sword": {
+               "min": 2,
+               "max": 6
+            },
+            "stonehearth:refined:iron_ingot": {
+               "min": 6,
+               "max": 10
+            },
+				"stonehearth:refined:bronze_ingot": {
+               "min": 6,
+               "max": 14
+            },
+				"stonehearth:refined:cloth_bolt": {
+               "min": 6,
+               "max": 12
+            },
+				"stonehearth:refined:leather_bolt": {
+               "min": 6,
+               "max": 12
+            },
+				"stonehearth_ace:resources:coal:piece_of_charcoal": {
+               "min": 10,
+               "max": 20
+            },
+				"stonehearth:resources:coal:lump_of_coal": {
+               "min": 8,
+               "max": 16
+            },
+            "stonehearth_ace:furniture:stone_comfy_bed": {
+               "min": 3,
+               "max": 7
+            },
+            "stonehearth_ace:furniture:pasture_bed": {
+               "min": 5,
+               "max": 10
+            },            
+            "stonehearth_ace:furniture:pasture_bed_small": {
+               "min": 12,
+               "max": 24
+            },
+				"stonehearth_ace:furniture:counter:wood:mid": {
+               "min": 8,
+               "max": 16
+            },
+				"stonehearth_ace:furniture:counter:stone:mid": {
+               "min": 8,
+               "max": 16
+            },
+            "stonehearth_ace:containers:barrel": {
+               "min": 4,
+               "max": 12
+            },
+				"stonehearth_ace:containers:tank": {
+               "min": 4,
+               "max": 12
+            },
+            "stonehearth_ace:containers:input_keg:wood": {
+               "min": 8,
+               "max": 16
+            },
+				"stonehearth_ace:containers:input_keg:stone": {
+               "min": 8,
+               "max": 16
+            },
+            "stonehearth_ace:containers:output_cask:wood": {
+               "min": 4,
+               "max": 8
+            },
+				"stonehearth_ace:containers:output_cask:stone": {
+               "min": 4,
+               "max": 8
+            },
+				"stonehearth_ace:construction:wooden:water_well:building": {
+					"min": 3,
+					"max": 6
+				},
+				"stonehearth_ace:construction:stone:water_well:building": {
+					"min": 3,
+					"max": 6
+				}
+         },
          "rewards": {
+				"mixintypes": {
+					"stonehearth:furniture:comfy_bed": "remove"
+				},
+            "stonehearth:containers:stone_chest": {
+               "type": "object",
+               "min": 1,
+               "max": 6
+            },
+            "stonehearth:refined:silver_ingot": {
+               "type": "object",
+               "min": 3,
+               "max": 6
+            },
+            "stonehearth:furniture:ornate_comfy_bed": {
+               "type": "object",
+               "min": 1,
+               "max": 3
+            },
+				"stonehearth_ace:decoration:ornate_curtains": {
+               "type": "object",
+               "min": 2,
+               "max": 4
+            },
+            "stonehearth_ace:weapons:giant_bone_pike": {
+               "type": "object",
+               "min": 1,
+               "max": 2
+            },
+				"stonehearth_ace:weapons:giant_bone_sword": {
+               "type": "object",
+               "min": 1,
+               "max": 2
+            },
+            "stonehearth_ace:armor:light_steel_shield": {
+               "type": "object",
+               "min": 1,
+               "max": 2
+            },
+            "stonehearth_ace:armor:steel_helm": {
+               "type": "object",
+               "min": 1,
+               "max": 2
+            },
+            "stonehearth_ace:weapons:silver_short_sword": {
+               "type": "object",
+               "min": 1,
+               "max": 1
+            },
+            "stonehearth:portals:bronze_portcullis": {
+               "type": "object",
+               "min": 1,
+               "max": 1
+            },
             "stonehearth:monsters:goblins:skull_trophy": {
                "type": "object",
                "min": 1,

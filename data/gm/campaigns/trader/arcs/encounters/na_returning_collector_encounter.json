@@ -1,0 +1,117 @@
+{
+   "type": "encounter",
+   "encounter_type": "script",
+   "in_edge": "na_returning_collector_encounter",
+   "can_start": {
+      "test_1": {
+         "script_check": {
+            "item": "script",
+            "type": "deny_if_not",
+            "value": true,
+            "script": "stonehearth:game_master:script:returning_trader_can_start"
+         },
+         "not_in_titanstorm": {
+            "type": "deny_if",
+            "item": "weather",
+            "value": "stonehearth:weather:titanstorm"
+         },
+			"kingdom_check": {
+            "type": "deny_if_not",
+            "item": "kingdom",
+            "value": "northern_alliance:kingdoms:northern_alliance"
+         }
+      }
+   },
+   "script_info": {
+      "script": "stonehearth:game_master:script_encounter:returning_trader",
+      "data": {
+         "expiration_timeout": "6h",
+         "score_threshold": 1000,
+         "title": "i18n(stonehearth:data.gm.campaigns.trader.returning_collector_encounter.title)",
+         "trade_details": "i18n(stonehearth:data.gm.campaigns.trader.returning_collector_encounter.trade_details)",
+         "waiting_title": "i18n(stonehearth:data.gm.campaigns.trader.returning_collector_encounter.waiting_title)",
+         "waiting_text": "i18n(stonehearth:data.gm.campaigns.trader.returning_collector_encounter.waiting_text)",
+         "return_title": "i18n(stonehearth:data.gm.campaigns.trader.returning_collector_encounter.return_title)",
+         "return_greetings_positive": "i18n(stonehearth:data.gm.campaigns.trader.returning_collector_encounter.return_greetings_positive)",
+         "return_greetings_negative": "i18n(stonehearth:data.gm.campaigns.trader.returning_collector_encounter.return_greetings_negative)",
+         "max_days_before_return": 5,
+         "wants": {
+            "stonehearth:trapper:talisman": {
+               "min": 3,
+               "max": 8
+            },
+            "stonehearth:footman:wooden_sword_talisman": {
+               "min": 3,
+               "max": 8
+            },
+            "stonehearth:furniture:stone_chair": {
+               "min": 5,
+               "max": 12
+            },
+            "stonehearth:construction:cobblestone_fence_gate": {
+               "min": 2,
+               "max": 4
+            },
+            "stonehearth:furniture:stone_table": {
+               "min": 3,
+               "max": 8
+            },
+            "stonehearth:furniture:stone_bed": {
+               "min": 6,
+               "max": 10
+            },
+            "stonehearth:portals:stone_door": {
+               "min": 2,
+               "max": 10
+            },
+            "stonehearth:portals:stone_window_frame": {
+               "min": 4,
+               "max": 10
+            },
+				"stonehearth_ace:furniture:pasture_bed": {
+               "min": 3,
+               "max": 8
+            },
+            "stonehearth_ace:furniture:counter:stone:mid": {
+               "min": 3,
+               "max": 8
+            },
+            "stonehearth_ace:furniture:pasture_bed_small": {
+               "min": 5,
+               "max": 12
+            },
+            "stonehearth_ace:containers:tank:small": {
+               "min": 3,
+               "max": 8
+            },
+            "stonehearth_ace:containers:food_trough_stone": {
+               "min": 3,
+               "max": 8
+            },
+            "stonehearth_ace:containers:input_keg:stone": {
+               "min": 3,
+               "max": 6
+            },
+            "stonehearth_ace:containers:output_cask:stone:small": {
+               "min": 3,
+               "max": 6
+            },
+            "stonehearth_ace:containers:pet_food_bowl:stone": {
+               "min": 5,
+               "max": 12
+            },
+				"stonehearth_ace:construction:stone:water_well:building": {
+					"min": 1,
+					"max": 3
+				}
+         },
+         "rewards": {
+            "stonehearth:monsters:golems:golem_restocking:auto": {
+               "type": "object",
+               "min": 1,
+               "max": 2
+            }
+         }
+      }
+   }
+}

@@ -3,5 +3,20 @@
       "out_edges": [
 		 "shrine_upgrade_ace_valor"
       ]
+   },
+	"delivery_quest_info": {
+		"mixintypes": {
+			"requirements": "override"
+		},
+      "requirements": [
+         {
+            "type": "net_worth",
+            "value": 16000
+         },
+         {
+            "type": "placed_item",
+            "uri": "northern_alliance:decoration:shrine:wolf"
+         }
+      ]
    }
 }

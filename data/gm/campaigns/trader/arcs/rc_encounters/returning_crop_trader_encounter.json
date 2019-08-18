@@ -1,0 +1,82 @@
+{
+   "script_info": {
+      "data": {
+         "max_days_before_return": 8,
+         "wants": {
+            "mixintypes": {
+					"stonehearth:food:carrot:carrot_basket": "remove"
+				},
+            "stonehearth_ace:food:rice:paddy_basket": {
+               "min": 3,
+               "max": 8
+            },
+            "stonehearth_ace:resources:fiber:cotton_bundle": {
+               "min": 3,
+               "max": 8
+            }
+         },
+         "rewards": {
+            "stonehearth:consumables:seeds:carrot_seeds": {
+               "type": "object",
+               "min": 1,
+               "max": 1
+            },
+            "stonehearth_ace:consumables:seeds:arctic_juniper_tree_seeds": {
+               "type": "object",
+               "min": 1,
+               "max": 1
+            },
+            "stonehearth_ace:consumables:seeds:arctic_pine_tree_seeds": {
+               "type": "object",
+               "min": 1,
+               "max": 1
+            },
+            "stonehearth_ace:consumables:seeds:birch_tree_seeds": {
+               "type": "object",
+               "min": 1,
+               "max": 1
+            },
+            "stonehearth_ace:consumables:seeds:highland_pine_tree_seeds": {
+               "type": "object",
+               "min": 1,
+               "max": 1
+            },
+            "stonehearth_ace:consumables:seeds:marblesprout_seeds": {
+               "type": "object",
+               "min": 1,
+               "max": 1
+            },
+            "stonehearth_ace:consumables:seeds:moonbell_seeds": {
+               "type": "object",
+               "min": 1,
+               "max": 1
+            },
+            "stonehearth_ace:consumables:seeds:pine_tree_seeds": {
+               "type": "object",
+               "min": 1,
+               "max": 1
+            },
+				"stonehearth_ace:consumables:seeds:snow_poppy_seeds": {
+               "type": "object",
+               "min": 1,
+               "max": 1
+            },
+				"stonehearth_ace:consumables:seeds:sweet_potato_seeds": {
+               "type": "object",
+               "min": 1,
+               "max": 1
+            },
+				"stonehearth_ace:consumables:seeds:violet_seeds": {
+               "type": "object",
+               "min": 1,
+               "max": 1
+            },			
+				"stonehearth_ace:consumables:seeds:yew_tree_seeds": {
+               "type": "object",
+               "min": 1,
+               "max": 1
+            }
+         }
+      }
+   }
+}

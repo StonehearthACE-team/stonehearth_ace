@@ -1,0 +1,54 @@
+{
+	"can_start": {
+      "test_1": {
+			"kingdom_check": {
+            "type": "deny_if_not",
+            "item": "kingdom",
+            "value": "stonehearth:kingdoms:ascendancy"
+         }
+      }
+   },
+   "script_info": {
+      "data": {
+         "max_days_before_return": 5,
+         "wants": {
+            "stonehearth_ace:furniture:pasture_bed": {
+               "min": 3,
+               "max": 8
+            },
+            "stonehearth_ace:furniture:counter:wood:mid": {
+               "min": 3,
+               "max": 8
+            },
+            "stonehearth_ace:furniture:pasture_bed_small": {
+               "min": 5,
+               "max": 12
+            },
+            "stonehearth_ace:containers:barrel:small": {
+               "min": 3,
+               "max": 8
+            },
+            "stonehearth_ace:containers:food_trough_wood": {
+               "min": 3,
+               "max": 8
+            },
+            "stonehearth_ace:containers:input_keg:wood": {
+               "min": 3,
+               "max": 6
+            },
+            "stonehearth_ace:containers:output_cask:wood:small": {
+               "min": 3,
+               "max": 6
+            },
+            "stonehearth_ace:containers:pet_food_bowl:wood": {
+               "min": 5,
+               "max": 12
+            },
+				"stonehearth_ace:construction:wooden:water_well:building": {
+					"min": 1,
+					"max": 3
+				}
+         }
+      }
+   }
+}

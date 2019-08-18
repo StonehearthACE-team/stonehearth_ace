@@ -1,0 +1,27 @@
+{
+   "components": {
+		"stonehearth:attributes": {
+         "max_social_satisfaction": {
+            "type": "basic",
+            "value": 1
+         }
+      },
+      "stonehearth:expendable_resources": {
+         "resources": {
+            "social_satisfaction": {
+               "min": {
+                  "value": 0
+               },
+               "max": {
+                  "linked_attribute": "max_social_satisfaction"
+               },
+               "initial_value": {
+                  "type": "random_between",
+                  "min": 0,
+                  "max": "max_value"
+               }
+            }
+         }
+      }
+   }
+}
