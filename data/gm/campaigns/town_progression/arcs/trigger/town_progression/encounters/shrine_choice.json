@@ -1,0 +1,40 @@
+{
+   "town_upgrade_choice_info": {
+      "choices": {
+         "deity": {
+            "mixintype": {
+					"out_edge": "override"
+				},
+				"out_edge": {
+               "type": "trigger_many",
+               "out_edges": [
+                  "shrine_quest_deity",
+                  "ace_unlock_shrine_recipes"
+               ]
+            }
+         },
+         "guildmaster": {
+            "mixintype": {
+					"out_edge": "override"
+				},
+				"out_edge": {
+               "type": "trigger_many",
+               "out_edges": [
+                  "shrine_quest_guildmaster"
+               ]
+            }
+         },
+         "valor": {
+            "mixintype": {
+					"out_edge": "override"
+				},
+				"out_edge": {
+               "type": "trigger_many",
+               "out_edges": [
+                  "shrine_quest_valor"
+               ]
+            }
+         }
+      }
+   }
+}

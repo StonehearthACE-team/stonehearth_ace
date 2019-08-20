@@ -18,7 +18,7 @@ function AceGameCreationService:generate_citizens_for_reembark_command(session, 
          embarking = true,
       })
 
-      self:_apply_reembark_settings_to_citizen(citizen, citizen_spec)
+      self:_apply_reembark_settings_to_citizen(session, citizen, citizen_spec)
 
       -- Replace existing.
       local generated_citizens = pop:get_generated_citizens()
@@ -37,7 +37,7 @@ function AceGameCreationService:generate_citizens_for_reembark_command(session, 
    response:resolve({ citizens = final_citizens, num_reembarked = math.min(#reembark_spec.citizens, NUM_STARTING_CITIZENS) })
 end
 
-function AceGameCreationService:_apply_reembark_settings_to_citizen(citizen, citizen_spec)
+function AceGameCreationService:_apply_reembark_settings_to_citizen(session, citizen, citizen_spec)
    -- Set name.
    citizen:add_component('stonehearth:unit_info'):set_custom_name(citizen_spec.name, citizen_spec.custom_data, true)
    citizen:set_debug_text(citizen_spec.name)
