@@ -1,5 +1,6 @@
 local csg_lib = require 'stonehearth.lib.csg.csg_lib'
 local entity_forms_lib = require 'stonehearth.lib.entity_forms.entity_forms_lib'
+local rng = _radiant.math.get_default_rng()
 
 local Town = require 'stonehearth.services.server.town.town'
 local AceTown = class()
@@ -182,6 +183,19 @@ function AceTown:spawn_traveler()
    self._sv._total_travelers_visited = self._sv._total_travelers_visited + 1
 
    return self:_ace_old_spawn_traveler()
+end
+
+function AceTown:_set_up_traveler(traveler)
+   local equipment_clothes = radiant.entities.create_entity('stonehearth:outfits:trader_outfit')
+	traveler:add_component('stonehearth:equipment'):equip_item(equipment_clothes)
+	local hat = rng:get_int(1, 10)
+	if hat > 5 then
+		local equipment_hat = radiant.entities.create_entity('stonehearth_ace:outfits:trader_outfit:hat')  
+		traveler:get_component('stonehearth:equipment'):equip_item(equipment_hat)	
+	end
+   traveler:add_component('stonehearth:traveler')
+   traveler:add_component('stonehearth:appeal'):generate_item_preferences()
+   traveler:add_component('stonehearth:object_owner'):add_ownership_type('bed')
 end
 
 function AceTown:get_persistence_data()

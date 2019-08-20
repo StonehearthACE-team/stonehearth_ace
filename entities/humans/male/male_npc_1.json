@@ -1,0 +1,47 @@
+{
+	"_comment": "Not being used for now - ACE",
+   "components": {
+		"stonehearth:attributes": {
+         "max_calories": {
+            "type": "basic",
+            "value": 88
+         },
+         "min_calories": {
+            "type": "basic",
+            "value": 20
+         },
+         "min_drink_satiety": {
+            "type": "basic",
+            "value": 30
+         },
+         "max_drink_satiety": {
+            "type": "basic",
+            "value": 100
+         }
+      },
+		"stonehearth:expendable_resources": {
+         "resources": {
+				"calories": {
+               "min": {
+                  "linked_attribute": "min_calories"
+               },
+               "max": {
+                  "linked_attribute": "max_calories"
+               },
+               "initial_value": 50
+            },
+            "drink_satiety": {
+               "min": {
+                  "linked_attribute": "min_drink_satiety"
+               },
+               "max": {
+                  "linked_attribute": "max_drink_satiety"
+               },
+               "initial_value": 50
+            }
+         }
+      }
+   },
+   "entity_data": {
+   }
+}

@@ -1,0 +1,32 @@
+{
+	"_comment": "Not being used for now - ACE",
+   "actions" : [
+      "stonehearth:actions:eat",
+      "stonehearth:actions:eat_carrying",
+      "stonehearth:actions:eat_item",
+      "stonehearth:actions:eat_on_chair",
+      "stonehearth:actions:get_food_on_ground",
+      "stonehearth:actions:get_food_from_container",
+      "stonehearth:actions:get_food_from_container_adjacent",
+      "stonehearth:actions:get_food_from_storage",
+      "stonehearth:actions:get_food_container_from_storage",
+      "stonehearth:actions:get_food_trivial",
+		"stonehearth_ace:actions:consume_drink",
+      "stonehearth_ace:actions:drink",
+      "stonehearth_ace:actions:drink_carrying",
+      "stonehearth_ace:actions:drink_on_chair",
+      "stonehearth_ace:actions:get_drink_on_ground",
+      "stonehearth_ace:actions:get_drink_from_container",
+      "stonehearth_ace:actions:get_drink_from_container_adjacent",
+      "stonehearth_ace:actions:get_drink_from_storage",
+      "stonehearth_ace:actions:get_drink_container_from_storage",
+      "stonehearth_ace:actions:get_drink_trivial"
+   ],
+   "observers": [
+      "stonehearth:observers:food_available_observer"
+   ],
+	"ai_packs": [
+      "stonehearth:ai_pack:movement",
+      "stonehearth:ai_pack:carrying"
+   ]
+}
