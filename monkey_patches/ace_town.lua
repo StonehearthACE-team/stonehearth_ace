@@ -307,4 +307,22 @@ function AceTown:_add_citizen_persistence_data(data, pop)
    data.crafters = crafters
 end
 
+-- this only handles actual instantiated actions! if the game is paused and you request a harvest task etc.,
+-- this won't return true until the game is unpaused and the actual action is created, has been selected by the AI, and is running!
+-- this won't happen unless someone is actually able to perform the task (e.g., pathing or other requirements are all met)
+-- it might also be useful to patch TaskGroup:_create_task and :_on_task_destroyed to separately track whether tasks (not actions) exist
+function AceTown:task_group_has_active_tasks(task_group)
+   if type(task_group) == 'string' then
+      task_group = self:get_task_group(task_group)
+   end
+
+   for task, _ in pairs(task_group._tasks) do
+      if next(task._running_actions) then
+         return true
+      end
+   end
+
+   return false
+end
+
 return AceTown
