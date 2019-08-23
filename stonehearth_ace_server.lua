@@ -110,6 +110,7 @@ local monkey_patches = {
    ace_personality_component = 'stonehearth.components.personality.personality_component',
    ace_pet_component = 'stonehearth.components.pet.pet_component',
    ace_csg_lib = 'stonehearth.lib.csg.csg_lib',
+   ace_safety_observer = 'stonehearth.ai.observers.safety_observer',
    ace_player_jobs_controller = 'stonehearth.services.server.job.player_jobs_controller'
 }
 

@@ -1,10 +1,24 @@
 local rng = _radiant.math.get_default_rng()
 local item_quality_lib = require 'stonehearth_ace.lib.item_quality.item_quality_lib'
+local WeightedSet = require 'stonehearth.lib.algorithms.weighted_set'
 
 local transform_lib = {}
 
 -- largely constructed from the original evolve_component:evolve() function
 function transform_lib.transform(entity, transformer, into_uri, options)
+   if type(into_uri) == 'table' then
+      -- allow for tables that are just lists of uris, and also for uri properties with weight values
+      if type(into_uri[1]) == 'number' then
+         into_uri = into_uri[rng:get_int(1, #into_uri)]
+      else
+         local items = WeightedSet(rng)
+         for uri, weight in pairs(into_uri) do
+            items:add(uri, weight)
+         end
+         into_uri = items:choose_random()
+      end
+   end
+
    options = options or {}
    if options.check_script then
       local script = radiant.mods.require(options.check_script)
@@ -19,10 +33,6 @@ function transform_lib.transform(entity, transformer, into_uri, options)
 
    local location = radiant.entities.get_world_grid_location(entity)
    local facing = radiant.entities.get_facing(entity)
-
-   if type(into_uri) == 'table' then
-      into_uri = into_uri[rng:get_int(1, #into_uri)]
-   end   
 
    local transformed_form
 

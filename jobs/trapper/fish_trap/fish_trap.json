@@ -57,24 +57,17 @@
    },
    "entity_data": {
       "stonehearth:evolve_data": {
-         "next_stage": [
-            "stonehearth_ace:trapper:fish_trap:empty",
-            "stonehearth_ace:trapper:fish_trap:silver",
-            "stonehearth_ace:trapper:fish_trap:silver",
-            "stonehearth_ace:trapper:fish_trap:silver",
-            "stonehearth_ace:trapper:fish_trap:long",
-            "stonehearth_ace:trapper:fish_trap:long",
-            "stonehearth_ace:trapper:fish_trap:long",
-            "stonehearth_ace:trapper:fish_trap:dark",
-            "stonehearth_ace:trapper:fish_trap:dark",
-            "stonehearth_ace:trapper:fish_trap:dark",
-            "stonehearth_ace:trapper:fish_trap:big",
-            "stonehearth_ace:trapper:fish_trap:big",
-            "stonehearth_ace:trapper:fish_trap:catfish",
-            "stonehearth_ace:trapper:fish_trap:carp",
-            "stonehearth_ace:trapper:fish_trap:salmon",
-            "stonehearth_ace:trapper:fish_trap:trout"
-         ],
+         "next_stage": {
+            "stonehearth_ace:trapper:fish_trap:empty": 1,
+            "stonehearth_ace:trapper:fish_trap:silver": 3,
+            "stonehearth_ace:trapper:fish_trap:long": 3,
+            "stonehearth_ace:trapper:fish_trap:dark": 3,
+            "stonehearth_ace:trapper:fish_trap:big": 2,
+            "stonehearth_ace:trapper:fish_trap:catfish": 1,
+            "stonehearth_ace:trapper:fish_trap:carp": 1,
+            "stonehearth_ace:trapper:fish_trap:salmon": 1,
+            "stonehearth_ace:trapper:fish_trap:trout": 1
+         },
          "evolve_effect": "stonehearth:effects:trap_trigger",
          "evolve_time": "12h+24h",
          "auto_harvest": true,

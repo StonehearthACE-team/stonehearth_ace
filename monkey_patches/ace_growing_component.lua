@@ -86,7 +86,7 @@ function AceGrowingComponent:set_custom_growth_time_multiplier(multiplier)
 end
 
 function AceGrowingComponent:_recalculate_duration(skip_creation)
-   if self._sv._growth_timer then
+   if self._sv._growth_timer and self._sv._growth_timer.get_duration then
 		local old_duration = self._sv._growth_timer:get_duration()
 		local old_expire_time = self._sv._growth_timer:get_expire_time()
 		local old_start_time = old_expire_time - old_duration
