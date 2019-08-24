@@ -7,6 +7,10 @@ function EquipDuring:on_buff_added(entity, buff)
       return
    end
 
+   if script_info.required_equipment and not equipment_comp:has_item_type(script_info.required_equipment) then
+      return
+   end
+
    local cache_key = script_info.equipment_cache_key or 'default'
 
    --[[
