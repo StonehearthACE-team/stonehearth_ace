@@ -200,19 +200,61 @@ App.StonehearthUnitFrameView.reopen({
    },
 
    // overriding this to get rid of the activity part
-   _updateUnitFrameWidth: function() {
+   _updateUnitFrameWidth: function(considerCommands) {
+      var self = this;
+
       //the following is some rough dynamic sizing to prevent descriptions and command buttons from overlapping
       //it has to happen after render to check the elements for the unit frame for the newly selected item, not the previous
       Ember.run.scheduleOnce('afterRender', this, function() {
-         var width = Math.max(this.$('#descriptionDiv').width() + this.$('#commandButtons').width() + 30, // + 30 to account for margins
+         var unitFrame = this.$('#unitFrame');
+         var commandButtons = this.$('#commandButtons');
+
+         var width = Math.max(this.$('#descriptionDiv').width() + commandButtons.width() + 19, // + 19 to account for margins
                               this.$('#topBar').width());
          if (this.get('hasPortrait')) {
             width += this.$('#portrait-frame').width();
          }
 
-         this.$('#unitFrame').css('width', Math.max(500, width) + 'px'); //don't want it getting too bitty
+         var commandsPos = 520 - commandButtons.width();
+
+         if (considerCommands == true && self._bestWidth == null) {
+            self._bestWidth = Math.max(520, width);
+            self._commandWidth = commandButtons.width();
+
+            var diff = self._bestWidth - 520;
+            if (diff > 0) {
+               commandsPos += diff;
+               // if it's wider than we want, we need to trim the command buttons to fit
+               unitFrame.hover(function(e) {
+                  unitFrame.css('width', self._bestWidth + 'px');
+                  commandButtons.css('width', self._commandWidth + 'px')
+               },
+               function(e) {
+                  unitFrame.css('width', 520 + 'px');
+                  commandButtons.css('width', (self._commandWidth - diff) + 'px');
+               });
+
+               commandButtons.css('width', (self._commandWidth - diff) + 'px');
+            }
+            else {
+               commandsPos += Math.min(-12, diff);
+            }
+         }
+
+         unitFrame.css('width', 520 + 'px'); //don't want it getting too bitty
+         commandButtons.css('left', (commandsPos + 12) + 'px')
       });
-   }.observes('model.uri', 'model.stonehearth:commands.commands', 'model.stonehearth:unit_info', 'model.stonehearth:job'),
+   }.observes('model.uri', 'model.stonehearth:unit_info', 'model.stonehearth:job'),
+
+   _resetCommandsWidthCheck: function() {
+      this.$('#unitFrame').off('mouseenter mouseleave');
+      this.$('#commandButtons').css('width', '');
+      delete this._bestWidth;
+   }.observes('model.uri'),
+
+   _updateCommandsWidth: function() {
+      this._updateUnitFrameWidth(true);
+   }.observes('model.stonehearth:commands.commands'),
 
 	_updateEnergy: function() {
       var self = this;

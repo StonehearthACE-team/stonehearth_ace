@@ -50,7 +50,11 @@
       height: 98px;
 
       .inner {
+         left: 0px;
+         height: 99px;
+
          #portrait-frame {
+            margin-left: 12px;
             height: 99px;
             width: 99px;
             background-size: cover;
@@ -61,6 +65,7 @@
          }
 
          #nameBlock {
+            margin-left: 12px;
             #moodIcon {
                display: inline-block;
                clear: both;
@@ -81,8 +86,8 @@
             }
             #activityDiv.hasPortrait {
                position: absolute;
-               bottom: -20px;
-               left: 88px;
+               bottom: -26px;
+               left: 112px;
             }
          }
 			
@@ -98,7 +103,11 @@
       }
 
       #commandButtons {
-         bottom: 12px;
+         .nobr;
+         top: 4px;
+         right: inherit;
+         overflow: hidden;
+         margin: 30px 0px 0px -10px;
       }
    }
 

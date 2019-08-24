@@ -7,7 +7,7 @@ function EquipDuring:on_buff_added(entity, buff)
       return
    end
 
-   self._cache_key = script_info.equipment_cache_key or 'default'
+   local cache_key = script_info.equipment_cache_key or 'default'
 
    --[[
       specify which items can be replaced by this new equipment
@@ -20,8 +20,12 @@ function EquipDuring:on_buff_added(entity, buff)
          ]
       }
    ]]
+   local is_cached
    for replacement, equipped in pairs(script_info.equipment_replacements) do
-      local slot = equipment_comp:cache_equipment(self._cache_key, replacement, equipped)
+      is_cached = equipment_comp:cache_equipment(cache_key, replacement, equipped)
+   end
+   if is_cached then
+      self._cache_key = cache_key
    end
 end
 
