@@ -149,10 +149,17 @@ function AceEquipmentComponent:unequip_item(equipped_item, replace_with_default,
    return unequipped_item
 end
 
-function AceEquipmentComponent:cache_equipment(key, uri, replacement)
-   local unequipped_item = self:unequip_item(uri)
+function AceEquipmentComponent:cache_equipment(key, replacement, equipped)
+   local unequipped_item
+   local equipped_uri
+   for _, uri in ipairs(equipped) do
+      unequipped_item = self:unequip_item(uri)
+      if unequipped_item then
+         equipped_uri = uri
+      end
+   end
    
-   local ep_data = radiant.entities.get_component_data(replacement or uri, 'stonehearth:equipment_piece')
+   local ep_data = radiant.entities.get_component_data(replacement or equipped_uri, 'stonehearth:equipment_piece')
    local slot = ep_data and ep_data.slot
    if slot then
       if not self._sv.cached_equipment[slot] then

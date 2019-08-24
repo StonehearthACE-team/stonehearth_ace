@@ -9,8 +9,19 @@ function EquipDuring:on_buff_added(entity, buff)
 
    self._cache_key = script_info.equipment_cache_key or 'default'
 
-   for equipped, replacement in pairs(script_info.equipment_replacements) do
-      local slot = equipment_comp:cache_equipment(self._cache_key, equipped, replacement)
+   --[[
+      specify which items can be replaced by this new equipment
+      e.g., maybe tier 1-2 herbalist hat will get replaced by the bee hat, but tier 3 herbalist hat has it built in or something?
+      "equipment_replacements": {
+         "new_item_uri": [
+            "potential_existing_uri",
+            "potential_existing_uri_2",
+            "potential_existing_uri_3"
+         ]
+      }
+   ]]
+   for replacement, equipped in pairs(script_info.equipment_replacements) do
+      local slot = equipment_comp:cache_equipment(self._cache_key, replacement, equipped)
    end
 end
 
