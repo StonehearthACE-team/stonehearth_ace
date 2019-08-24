@@ -69,18 +69,24 @@ function CrafterInfoController:_create_maps()
                         recipe_name, workshop_uri)
                   else
                      if not recipe_data.recipe.ace_smart_crafter_ignore then  -- ignore recipes that are explicitly marked to be ignored by smart crafter
-                        local formatted_recipe = self:_format_recipe(recipe_data.recipe)
-                        local keys = formatted_recipe.products
+                        local formatted_recipe = self:_format_recipe(recipe_name, recipe_data.recipe)
 
-                        if not next(keys) then
-                           log:error('For recipe "%s": no produced item exists as an alias in its manifest', recipe_name)
+                        if not formatted_recipe then
+                           -- if there's something wrong with the recipe data, don't actually map it
+                           log:debug('Skipping recipe "%s" because there\'s somethign wrong with it', recipe_name)
                         else
-                           self._formatted_recipes[recipe_data.recipe] = formatted_recipe
-                           self._recipe_map:add(keys, {
-                              job_key = job_key,
-                              order_list = order_list,
-                              recipe = formatted_recipe,
-                           })
+                           local keys = formatted_recipe.products
+
+                           if not next(keys) then
+                              log:error('For recipe "%s": no produced item exists as an alias in its manifest', recipe_name)
+                           else
+                              self._formatted_recipes[recipe_data.recipe] = formatted_recipe
+                              self._recipe_map:add(keys, {
+                                 job_key = job_key,
+                                 order_list = order_list,
+                                 recipe = formatted_recipe,
+                              })
+                           end
                         end
                      end
                   end
@@ -92,7 +98,7 @@ function CrafterInfoController:_create_maps()
    self.__saved_variables:mark_changed()
 end
 
-function CrafterInfoController:_format_recipe(recipe)
+function CrafterInfoController:_format_recipe(name, recipe)
    -- Format recipe to match show_team_workshop.js:_buildRecipeArray()
    local formatted_recipe = radiant.shallow_copy(recipe)
 
@@ -125,7 +131,12 @@ function CrafterInfoController:_format_recipe(recipe)
             formatted_ingredient.icon = resource.icon
          end
       else
-         local ingredient_data = radiant.resources.load_json(ingredient.uri)
+         local ingredient_data = radiant.resources.load_json(ingredient.uri, true, false)
+
+         if not ingredient_data then
+            log:error('recipe "%s" has invalid ingredient "%s"', name, ingredient.uri)
+            return
+         end
 
          formatted_ingredient.kind       = 'uri'
          formatted_ingredient.identifier = ingredient.uri
@@ -161,7 +172,12 @@ function CrafterInfoController:_format_recipe(recipe)
    local all_products = {}
    formatted_recipe.product_materials = {}
    for product, count in pairs(products) do
-      local catalog_data = radiant.resources.load_json(product)
+      local catalog_data = radiant.resources.load_json(product, true, false)
+      if not catalog_data then
+         log:error('recipe "%s" has invalid product "%s"', name, product)
+         return
+      end
+
       local product_catalog = catalog_data and catalog_data.entity_data and catalog_data.entity_data["stonehearth:catalog"]
 
       -- first verify that the recipe has catalog data and is not for a raw resource/wealth

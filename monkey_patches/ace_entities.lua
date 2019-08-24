@@ -72,6 +72,7 @@ function ace_entities.kill_entity(entity, kill_data)
          id = entity:get_id(),
          display_name = radiant.entities.get_display_name(entity),
          custom_name = radiant.entities.get_custom_name(entity),
+         custom_data = radiant.entities.get_custom_data(entity),
          player_id = entity:get_player_id(),
          uri = entity:get_uri(),
          kill_data = kill_data
