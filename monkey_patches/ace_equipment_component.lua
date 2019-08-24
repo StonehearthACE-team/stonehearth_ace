@@ -151,17 +151,18 @@ function AceEquipmentComponent:unequip_item(equipped_item, replace_with_default,
    return unequipped_item
 end
 
-function AceEquipmentComponent:cache_equipment(key, replacement, equipped)
+function AceEquipmentComponent:cache_equipment(key, new_equipment, equipped, replace)
    local unequipped_item
    local equipped_uri
+
+   -- need to check the slot on the new_equipment item
+   local ep_data = radiant.entities.get_component_data(new_equipment, 'stonehearth:equipment_piece')
+   local slot = ep_data and ep_data.slot
    
    for _, uri in ipairs(equipped) do
-      if uri == '' then
-         -- need to check the slot on the replacement item
-         local ep_data = radiant.entities.get_component_data(replacement, 'stonehearth:equipment_piece')
-         local slot = ep_data and ep_data.slot
-         if slot and not self._sv.equipped_items[slot] then
-            -- we don't have anything in this slot, so it's okay to "replace" it
+      if not replace then
+         if slot and not self._sv.equipped_items[slot] and self:has_item_type(uri) then
+            -- we don't have anything in this slot, so it's okay to add it
             equipped_uri = ''
             break
          end
@@ -178,20 +179,22 @@ function AceEquipmentComponent:cache_equipment(key, replacement, equipped)
       return
    end
    
-   local ep_data = radiant.entities.get_component_data(replacement or equipped_uri, 'stonehearth:equipment_piece')
-   local slot = ep_data and ep_data.slot
+   if not slot and equipped_uri then
+      ep_data = radiant.entities.get_component_data(equipped_uri, 'stonehearth:equipment_piece')
+      slot = ep_data and ep_data.slot
+   end
    if slot then
       if not self._sv.cached_equipment[slot] then
          self._sv.cached_equipment[slot] = {
             old = unequipped_item,
-            new = replacement
+            new = new_equipment
          }
       end
       self._sv.cached_equipment[slot].key = key
       self.__saved_variables:mark_changed()
 
-      if replacement and replacement ~= '' then
-         self:equip_item(replacement)
+      if new_equipment and new_equipment ~= '' then
+         self:equip_item(new_equipment)
       end
 
       return true

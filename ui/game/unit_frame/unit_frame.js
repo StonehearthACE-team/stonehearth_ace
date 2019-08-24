@@ -209,21 +209,19 @@ App.StonehearthUnitFrameView.reopen({
          var unitFrame = this.$('#unitFrame');
          var commandButtons = this.$('#commandButtons');
 
-         var width = Math.max(this.$('#descriptionDiv').width() + commandButtons.width() + 19, // + 19 to account for margins
-                              this.$('#topBar').width());
+         var width = Math.max(this.$('#descriptionDiv').width() + commandButtons.width() + 19); // + 19 to account for margins
          if (this.get('hasPortrait')) {
             width += this.$('#portrait-frame').width();
          }
 
-         var commandsPos = 520 - commandButtons.width();
-
          if (considerCommands == true && self._bestWidth == null) {
             self._bestWidth = Math.max(520, width);
             self._commandWidth = commandButtons.width();
+            self._commandsPos = 520 - self._commandWidth;
 
             var diff = self._bestWidth - 520;
             if (diff > 0) {
-               commandsPos += diff;
+               self._commandsPos += diff;
                // if it's wider than we want, we need to trim the command buttons to fit
                unitFrame.hover(function(e) {
                   unitFrame.css('width', self._bestWidth + 'px');
@@ -237,12 +235,12 @@ App.StonehearthUnitFrameView.reopen({
                commandButtons.css('width', (self._commandWidth - diff) + 'px');
             }
             else {
-               commandsPos += Math.min(-12, diff);
+               self._commandsPos += Math.min(-12, diff);
             }
+            commandButtons.css('left', (self._commandsPos + 12) + 'px')
          }
 
          unitFrame.css('width', 520 + 'px'); //don't want it getting too bitty
-         commandButtons.css('left', (commandsPos + 12) + 'px')
       });
    }.observes('model.uri', 'model.stonehearth:unit_info', 'model.stonehearth:job'),
 
@@ -250,6 +248,7 @@ App.StonehearthUnitFrameView.reopen({
       this.$('#unitFrame').off('mouseenter mouseleave');
       this.$('#commandButtons').css('width', '');
       delete this._bestWidth;
+      delete self._commandsPos;
    }.observes('model.uri'),
 
    _updateCommandsWidth: function() {

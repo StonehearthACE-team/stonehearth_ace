@@ -3,11 +3,7 @@ local EquipDuring = class()
 function EquipDuring:on_buff_added(entity, buff)
    local script_info = buff:get_json().script_info
    local equipment_comp = entity:get_component('stonehearth:equipment')
-   if not script_info.equipment_replacements or not equipment_comp then
-      return
-   end
-
-   if script_info.required_equipment and not equipment_comp:has_item_type(script_info.required_equipment) then
+   if not (script_info.equipment_replacements or script_info.equipment_additions) or not equipment_comp then
       return
    end
 
@@ -26,8 +22,12 @@ function EquipDuring:on_buff_added(entity, buff)
    ]]
    local is_cached
    for replacement, equipped in pairs(script_info.equipment_replacements) do
-      is_cached = equipment_comp:cache_equipment(cache_key, replacement, equipped)
+      is_cached = is_cached or equipment_comp:cache_equipment(cache_key, replacement, equipped, true)
    end
+   for addition, equipped in ipairs(script_info.equipment_additions) do
+      is_cached = is_cached or equipment_comp:cache_equipment(cache_key, addition, equipped, false)
+   end
+
    if is_cached then
       self._cache_key = cache_key
    end
