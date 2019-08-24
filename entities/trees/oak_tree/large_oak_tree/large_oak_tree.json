@@ -1,5 +1,26 @@
 {
 	"components": {
+		"stonehearth:loot_drops": {
+         "force_auto_loot": false,
+         "entries": {
+            "beehive": {
+               "num_rolls": {
+                  "min": 1,
+                  "max": 1
+               },
+               "items": {
+                  "none": {
+                     "uri": "",
+                     "weight": 2
+                  },
+                  "beehive": {
+                     "uri": "stonehearth_ace:beehive",
+                     "weight": 1
+                  }
+               }
+            }
+         }
+      },
 		"stonehearth:seasonal_model_switcher": {
          "*": {
             "spring": "spring",

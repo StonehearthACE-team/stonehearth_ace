@@ -27,6 +27,7 @@
       "stonehearth_ace:transform": {},
       "stonehearth_ace:stump": {},
       "stonehearth:resource_node": {
+         "category": "cheesemaking",
          "resource": "stonehearth_ace:food:dairy:cheese_cottage",
          "harvest_overlay_effect": "stonehearth_ace:effects:harvest_cheese_overlay_effect",
          "harvester_effect": "fiddle",
@@ -78,7 +79,8 @@
          "transform_effect": "stonehearth:effects:item_created",
          "auto_request": true,
          "worker_required_job": {
-            "stonehearth:jobs:cook": true
+            "stonehearth:jobs:cook": true,
+            "stonehearth:jobs:shepherd": true
          },
          "kill_entity": true
       },

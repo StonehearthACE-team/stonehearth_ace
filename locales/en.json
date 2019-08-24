@@ -2081,6 +2081,18 @@
          "spring_flavors": {
             "display_name": "Spring Flavors",
             "description": "Ahh! Nothing like cool and fresh water straight from the source! Diligence and Compassion are increased.<ul><li>Crafting has a slightly increased quality chance</li><li>Experience gain is slightly increased</li></ul>"
+         },
+         "beehive_buff": {
+            "display_name": "Buzzing with Bees",
+            "description": "Handle with care..."
+         },
+         "bee_attack": {
+            "display_name": "Swarmed by Bees",
+            "description": "Ouch! Owie! Ow! Go away!"
+         },
+         "bee_attack_resist": {
+            "display_name": "Protected from Swarms",
+            "description": "Stings won't bee a problem for this hearthling."
          }
       },
       "loadouts": {
@@ -2624,6 +2636,15 @@
          "herbalist_pestle_pewter": {
             "display_name": "Herbalist's Pewter Pestle",
             "description": "For nicer mashing."
+         },
+         "herbalist_beekeeping_hat": {
+            "display_name": "Herbalist's Beekeeping Hat",
+            "description": "Very useful for being safe while harvesting from beehives and skeps."
+         },
+         "herbalist_bee_skep": {
+            "display_name": "Bee Skep",
+            "description": "A neat house for bees, handled by the herbalist. Won't produce during the winter.",
+            "unripe_description": "Not yet ready for harvesting, poor busy little bees!"
          }
       },
       "engineer": {
@@ -4672,7 +4693,7 @@
          "fish_trap": {
             "display_name": "Fish Trap",
             "description": "Safely capture fish. Will float when placed in the water.",
-            "iconic_description": "Must be placed mostly underwater, will float. Can be accessed from above.",
+            "iconic_description": "Used by the Trapper to catch fish. Can be accessed from above.",
             "sprung_description": "It caught something! It will soon be harvested by a Trapper...",
             "empty_description": "The trap was triggered but failed to get anything..."
          },
@@ -4876,6 +4897,12 @@
          "fertilizer_upgrade_2": {
             "display_name": "Enhanced Fertilizer",
             "description": "A skilled farmer will use it to greatly improve the quality of their crops."
+         },
+         "captive": {
+            "captive_bees": {
+               "display_name": "Captive Bees",
+               "description": "Can be used to create a new bee colony. Won't last forever!"
+            }
          }
       },
       "construction": {
@@ -7165,6 +7192,14 @@
          },
          "boar_pet": {
             "display_name": "Boar"
+         },
+         "beehive": {
+            "display_name": "Bee Hive",
+            "description": "Careful, it is still active! A herbalist can harvest it for its resources and bees..."
+         },
+         "beehive_dead": {
+            "display_name": "Dead Bee Hive",
+            "description": "There are no bees here anymore... Harvest if for what's left of the resources!"
          }
       },
       "food": {
@@ -7865,6 +7900,16 @@
             "nutty_meatballs_serving": {
                "display_name": "Serving of Nutty Meatballs",
                "description": "Do you ever wonder where meatballs come from?"
+            }
+         },
+         "honey": {
+            "honey_wild": {
+               "display_name": "Wild Honey",
+               "description": "Sweet, with an earthen flavor. Can be eaten raw or used in cooking."
+            },
+            "honey": {
+               "display_name": "Honey",
+               "description": "Fruity, flowered honey. Delicious! Eat it raw or use in cooking."
             }
          }
       },
@@ -9583,19 +9628,19 @@
          "orc": {
             "species": "Orc"
          },
-			"goblin": {
+         "goblin": {
             "species": "Goblin"
          },
-			"kobold": {
+         "kobold": {
             "species": "Kobold"
          },
-			"ogre": {
+         "ogre": {
             "species": "Ogre"
          },
-			"zombie": {
+         "zombie": {
             "species": "Zombie"
          },
-			"skeleton": {
+         "skeleton": {
             "species": "Skeleton"
          },
          "rabbit_biped": {

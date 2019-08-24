@@ -1,0 +1,12 @@
+{
+   "type": "buff",
+   "axis": "buff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.bee_attack_resist.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.bee_attack_resist.description)",
+   "icon": "file(bee_attack_resist_buff.png)",
+   "repeat_add_action": "renew_duration",
+   "disallowed_buffs": [
+      "stonehearth_ace:buffs:bee_attack"
+   ],
+   "set_posture": "stonehearth:beekeeping_hat_posture"
+}

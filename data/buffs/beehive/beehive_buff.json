@@ -1,0 +1,18 @@
+{
+   "type": "buff",
+   "axis": "buff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.beehive_buff.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.beehive_buff.description)",
+   "icon": "file(beehive_buff.png)",
+   "script": "stonehearth:buff_scripts:aura",
+   "effect": "stonehearth:effects:rotten_food",
+   "script_info": {
+      "pulse": "12m",
+      "aura_buff": "stonehearth_ace:buffs:bee_attack",
+      "radius": 7,
+      "affect_self": false,
+      "target_type": "mob",
+      "sensor_name": "range",
+      "target_enemies": true
+   }
+}

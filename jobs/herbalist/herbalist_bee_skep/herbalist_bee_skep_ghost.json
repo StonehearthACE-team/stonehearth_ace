@@ -1,0 +1,36 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "mob": {
+         "align_to_grid": [
+            "x",
+            "z"
+         ],
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0, "y": 0, "z": 0 }
+      },
+      "render_info": {
+         "scale": 0.1
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(herbalist_bee_skep.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:hide_child_entities_from_pathfinder": true,
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:jobs.herbalist.herbalist_bee_skep.display_name)",
+         "description": "i18n(stonehearth_ace:jobs.herbalist.herbalist_bee_skep.description)",
+         "icon": "file(herbalist_bee_skep.png)",
+         "category": "workshops",
+         "material_tags": [
+            "tool",
+            "stockpile_tool"
+         ]
+      }
+   }
+}

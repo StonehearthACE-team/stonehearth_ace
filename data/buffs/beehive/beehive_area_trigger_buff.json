@@ -1,0 +1,15 @@
+{
+   "type": "buff",
+   "axis": "buff",
+   "invisible_to_player": true,
+   "script": "stonehearth:buff_scripts:aura",
+   "script_info": {
+      "pulse": "5m",
+      "aura_buff": "stonehearth_ace:buffs:beehive:area",
+      "radius": 7,
+      "affect_self": false,
+      "target_type": "mob",
+      "sensor_name": "range",
+      "target_enemies": true
+   }
+}

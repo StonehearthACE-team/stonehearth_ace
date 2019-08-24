@@ -1,0 +1,44 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(herbalist_beekeeping_hat_iconic.json)"
+      },
+      "stonehearth:equipment_piece": {
+         "slot": "beekeeping_hat",
+         "roles": [
+            "herbalist_job"
+         ],
+         "ilevel": 3,
+         "injected_buffs": [
+            "stonehearth_ace:buffs:bee_attack:resist"
+         ],
+         "equip_effect": "stonehearth:effects:weapon_level_up"
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 15,
+         "rarity": "uncommon",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 2,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:jobs.herbalist.herbalist_beekeeping_hat.display_name)",
+         "description": "i18n(stonehearth_ace:jobs.herbalist.herbalist_beekeeping_hat.description)",
+         "icon": "file(herbalist_beekeeping_hat.png)",
+         "category": "armor",
+         "material_tags": [
+            "hat",
+            "beekeeping_hat",
+            "civillian_equipment",
+            "stockpile_equipment"
+         ]
+      }
+   }
+}

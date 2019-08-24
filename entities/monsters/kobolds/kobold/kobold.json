@@ -1,5 +1,32 @@
 {
-   "components": {},
+   "components": {
+		"stonehearth:loot_drops": {
+         "entries": {
+            "bones": {
+               "num_rolls": {
+                  "min": 0,
+                  "max": 1
+               },
+               "items": {
+                  "bone": {
+                     "uri": "stonehearth_ace:resources:bone:bone_material"
+                  }
+               }
+            },
+			"skull": {
+               "num_rolls": {
+                  "min": 0,
+                  "max": 1
+               },
+               "items": {
+                  "skull": {
+                     "uri": "stonehearth_ace:resources:bone:bone_skull"
+                  }
+               }
+            }
+         }
+      }
+	},
    "entity_data": {
 		"stonehearth:species": {
          "id": "kobold",
