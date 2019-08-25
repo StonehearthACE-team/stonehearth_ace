@@ -173,7 +173,7 @@ function WaterSignalService:unregister_water_signal(water_signal)
 	end
 
    local signal = self._signals[id]
-   if signal then
+   if signal and signal.chunks then
       for chunk_id, _ in pairs(signal.chunks) do
          local chunk = self._signals_by_chunk[chunk_id]
          if chunk then
@@ -183,8 +183,8 @@ function WaterSignalService:unregister_water_signal(water_signal)
             end
          end
       end
-      self._signals[id] = nil
    end
+   self._signals[id] = nil
 end
 
 -- if the water component was modified, make sure it gets processed on the next tick

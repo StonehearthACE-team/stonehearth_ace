@@ -221,6 +221,7 @@ App.StonehearthUnitFrameView.reopen({
 
             var diff = self._bestWidth - 520;
             if (diff > 0) {
+               self._bestWidth += 12;
                self._commandsPos += diff;
                // if it's wider than we want, we need to trim the command buttons to fit
                unitFrame.hover(function(e) {
