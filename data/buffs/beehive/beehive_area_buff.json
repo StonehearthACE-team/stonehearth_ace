@@ -4,5 +4,11 @@
    "invisible_to_player": true,
    "duration": "10m",
    "cant_affect_siege": true,
-   "repeat_add_action": "renew_duration"
+   "repeat_add_action": "renew_duration",
+   "script": "stonehearth_ace:buff_scripts:equip_during_buff",
+   "script_info": {
+      "equipment_additions": {
+         "stonehearth_ace:herbalist:beekeeping_hat:equipped": "stonehearth_ace:herbalist:beekeeping_hat"
+      }
+   }
 }

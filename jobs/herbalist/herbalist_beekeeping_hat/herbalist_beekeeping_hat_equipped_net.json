@@ -3,7 +3,7 @@
    "type": "entity",
    "components": {
       "mob": {
-         "model_origin": { "x": 0.05, "y": 0.1, "z": 0.05 }
+         "model_origin": { "x": 0.05, "y": 5, "z": 0.08 }
       },
       "render_info": {
          "color_map": "stonehearth_ace:color_map:ace",
@@ -35,6 +35,11 @@
             "buyable": false,
             "sellable": false
          }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:jobs.herbalist.herbalist_beekeeping_hat.display_name)",
+         "description": "i18n(stonehearth_ace:jobs.herbalist.herbalist_beekeeping_hat.description)",
+         "icon": "file(herbalist_beekeeping_hat.png)"
       }
    }
 }

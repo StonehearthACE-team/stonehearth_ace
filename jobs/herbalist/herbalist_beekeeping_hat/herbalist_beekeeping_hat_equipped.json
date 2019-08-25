@@ -25,8 +25,12 @@
             "herbalist_job"
          ],
          "ilevel": 5,
+         "additional_equipment": {
+            "stonehearth_ace:herbalist:beekeeping_hat:equipped:net": true
+         },
          "injected_buffs": [
-            "stonehearth_ace:buffs:weather:sunstroke_resist"
+            "stonehearth_ace:buffs:weather:sunstroke_resist",
+            "stonehearth_ace:buffs:bee_attack:resist"
          ]
       }
    },

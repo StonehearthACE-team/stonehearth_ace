@@ -8,25 +8,19 @@ function EquipDuring:on_buff_added(entity, buff)
    end
 
    local cache_key = script_info.equipment_cache_key or 'default'
-
-   --[[
-      specify which items can be replaced by this new equipment
-      e.g., maybe tier 1-2 herbalist hat will get replaced by the bee hat, but tier 3 herbalist hat has it built in or something?
-      "equipment_replacements": {
-         "new_item_uri": [
-            "potential_existing_uri",
-            "potential_existing_uri_2",
-            "potential_existing_uri_3"
-         ]
-      }
-   ]]
    local is_cached
-   for replacement, equipped in pairs(script_info.equipment_replacements) do
-      is_cached = is_cached or equipment_comp:cache_equipment(cache_key, replacement, equipped, true)
-   end
-   for addition, equipped in ipairs(script_info.equipment_additions) do
-      is_cached = is_cached or equipment_comp:cache_equipment(cache_key, addition, equipped, false)
-   end
+	
+	if script_info.equipment_replacements then
+		for replacement, equipped in pairs(script_info.equipment_replacements) do
+			is_cached = is_cached or equipment_comp:cache_equipment(cache_key, replacement, equipped, true)
+		end
+	end
+	
+	if script_info.equipment_additions then
+		for addition, equipped in ipairs(script_info.equipment_additions) do
+			is_cached = is_cached or equipment_comp:cache_equipment(cache_key, addition, equipped, false)
+		end
+	end
 
    if is_cached then
       self._cache_key = cache_key
