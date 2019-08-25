@@ -1,5 +1,6 @@
 local EquipmentComponent = require 'stonehearth.components.equipment.equipment_component'
 local rng = _radiant.math.get_default_rng()
+local log = radiant.log.create_logger('equipment_component')
 
 local AceEquipmentComponent = class()
 
@@ -9,6 +10,9 @@ function AceEquipmentComponent:activate()
 
    if not self._sv.cached_equipment then
       self._sv.cached_equipment = {}
+   end
+   if not self._sv.caches then
+      self._sv.caches = {}
    end
 end
 
@@ -151,76 +155,93 @@ function AceEquipmentComponent:unequip_item(equipped_item, replace_with_default,
    return unequipped_item
 end
 
-function AceEquipmentComponent:cache_equipment(key, new_equipment, equipped, replace)
-   local unequipped_item
-   local equipped_uri
+function AceEquipmentComponent:has_cache(key)
+   return self._sv.caches[key]
+end
 
-   -- need to check the slot on the new_equipment item
-   local ep_data = radiant.entities.get_component_data(new_equipment, 'stonehearth:equipment_piece')
-   local slot = ep_data and ep_data.slot
-   
-   for _, uri in ipairs(equipped) do
-      if not replace then
-         if slot and not self._sv.equipped_items[slot] and self:has_item_type(uri) then
-            -- we don't have anything in this slot, so it's okay to add it
-            equipped_uri = ''
-            break
-         end
-      else
-         unequipped_item = self:unequip_item(uri)
-         if unequipped_item then
-            equipped_uri = uri
-            break
-         end
-      end
-   end
-
-   if not equipped_uri then
+function AceEquipmentComponent:cache_equipment(key, add_equipment, unequip_slots)
+   if self._sv.caches[key] then
+      -- we already have a cache for this key; don't try to apply it again, even if it's from a different source
       return
    end
-   
-   if not slot and equipped_uri then
-      ep_data = radiant.entities.get_component_data(equipped_uri, 'stonehearth:equipment_piece')
-      slot = ep_data and ep_data.slot
-   end
-   if slot then
-      if not self._sv.cached_equipment[slot] then
-         self._sv.cached_equipment[slot] = {
-            old = unequipped_item,
-            new = new_equipment
-         }
-      end
-      self._sv.cached_equipment[slot].key = key
-      self.__saved_variables:mark_changed()
 
-      if new_equipment and new_equipment ~= '' then
-         self:equip_item(new_equipment)
-      end
+   local is_cached = false
+
+   if add_equipment then
+      for _, equipment in ipairs(add_equipment) do
+         local slot, cache = self:_cache_add_equipment(equipment)
+         if cache then
+            is_cached = true
+            cache.key = key
+            self._sv.cached_equipment[slot] = cache
+         end
+		end
+   end
+
+   if unequip_slots then
+      for _, slot in ipairs(unequip_slots) do
+         local cache = self:_cache_unequip_slot(slot)
+         if cache then
+            is_cached = true
+            cache.key = key
+            self._sv.cached_equipment[slot] = cache
+         end
+		end
+   end
+
+   if is_cached then
+      self._sv.caches[key] = true
+      self.__saved_variables:mark_changed()
 
       return true
    end
 end
 
-function AceEquipmentComponent:unequip_cached(key)
+function AceEquipmentComponent:_cache_add_equipment(uri)
+   local ep_data = radiant.entities.get_component_data(uri, 'stonehearth:equipment_piece')
+   local slot = ep_data and ep_data.slot
+
+   if slot and not self._sv.cached_equipment[slot] then
+      local unequipped, item = self:equip_item(uri, false)
+      if item then
+         return slot, {
+            old = unequipped,
+            new = item
+         }
+      end
+   end
+end
+
+function AceEquipmentComponent:_cache_unequip_slot(slot)
+   if self._sv.equipped_items[slot] and not self._sv.cached_equipment[slot] then
+      return {
+         old = self:unequip_item(self._sv.equipped_items[slot])
+      }
+   end
+end
+
+function AceEquipmentComponent:reset_cached(key)
    for slot, item in pairs(self._sv.cached_equipment) do
       if item.key == key then
          local equipped = self._sv.equipped_items[slot]
          if item.old then
-            if not equipped or item.new == equipped:get_uri() then
+            if not equipped or item.new == equipped then
                self:equip_item(item.old, true)
             else
                -- otherwise, if we're not restoring it, we need to destroy the cached equipment item
                radiant.entities.destroy_entity(item.old)
             end
-         elseif equipped and item.new == equipped:get_uri() then
+         elseif equipped and item.new == equipped then
             self:unequip_item(equipped)
             radiant.entities.destroy_entity(equipped)
          end
 
          self._sv.cached_equipment[slot] = nil
-         self.__saved_variables:mark_changed()
       end
    end
+
+   self._sv.caches[key] = nil
+   self.__saved_variables:mark_changed()
 end
 
 return AceEquipmentComponent
