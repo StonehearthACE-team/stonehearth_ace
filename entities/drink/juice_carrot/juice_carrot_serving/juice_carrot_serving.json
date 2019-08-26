@@ -17,16 +17,17 @@
       },
       "stonehearth_ace:drink": {
          "stonehearth:sitting_on_chair": {
-            "satisfaction": 45
+            "satisfaction": 70
          },
          "default": {
-            "satisfaction": 30
+            "satisfaction": 60
          },
          "applied_buffs": [
             "stonehearth_ace:buffs:consumption:fruity_flavors",
             "stonehearth_ace:buffs:consumption:refreshed_belly"
          ],
-         "quality": 3
+         "quality": 3,
+         "effect_loops": 1
       },
       "stonehearth:catalog": {
          "display_name": "i18n(stonehearth_ace:entities.drink.juice_carrot.juice_carrot_serving.display_name)",

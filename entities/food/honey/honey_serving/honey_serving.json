@@ -2,15 +2,20 @@
    "mixins": "stonehearth:mixins:item_properties",
    "type": "entity",
    "components": {
+      "render_info": {
+         "color_map": "stonehearth_ace:color_map:ace",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/glass_material_map.json"
+         ]
+      },
       "model_variants": {
          "default": {
             "models": [
-               "file(butter_cookies_serving.qb)"
+               "file(plate.qb)",
+               "file(honey_1.qb)",
+               "file(honey_2.qb)"
             ]
          }
-      },
-      "mob": {
-         "model_origin": { "x": 0.05, "y": 0, "z": 0.05 }
       }
    },
    "entity_data": {
@@ -20,25 +25,25 @@
       },
       "stonehearth:food": {
          "stonehearth:sitting_on_chair": {
-            "satisfaction": 50
+            "satisfaction": 60
          },
          "default": {
-            "satisfaction": 40
+            "satisfaction": 50
          },
          "applied_buffs": [
             "stonehearth_ace:buffs:consumption:sweet_energy"
          ],
-         "quality": 6
+         "quality": 3
       },
       "stonehearth:catalog": {
-         "display_name": "i18n(stonehearth_ace:entities.food.butter_cookies.butter_cookies_serving.display_name)",
+         "display_name": "i18n(stonehearth_ace:entities.food.honey.honey_serving.display_name)",
          "description": "",
          "material_tags": [
             "food",
-            "prepared_dessert",
-            "dairy"
+            "honey_serving",
+            "vegetarian"
          ],
-         "subject_override": "stonehearth_ace:food:dairy:butter_cookies"
+         "subject_override": "stonehearth_ace:food:honey"
       }
    }
 }

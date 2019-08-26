@@ -17,16 +17,17 @@
       },
       "stonehearth_ace:drink": {
          "stonehearth:sitting_on_chair": {
-            "satisfaction": 70
+            "satisfaction": 80
          },
          "default": {
-            "satisfaction": 50
+            "satisfaction": 70
          },
          "applied_buffs": [
             "stonehearth_ace:buffs:consumption:spring_flavors",
             "stonehearth_ace:buffs:consumption:refreshed_belly"
          ],
-         "quality": 3
+         "quality": 3,
+         "effect_loops": 1
       },
       "stonehearth:catalog": {
          "display_name": "i18n(stonehearth_ace:entities.drink.water_serving_spring.display_name)",

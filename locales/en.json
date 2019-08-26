@@ -975,6 +975,10 @@
                "lovely": {
                   "display_name": "Had a delightful drink!",
                   "tooltip": "Ah, what a wonderful day! Enjoying that lovely [str(drinkname)] has made everything better already."
+               },
+               "average": {
+                  "display_name": "Had a decent drink",
+                  "tooltip": "[str(drinkname)] was not the best but it wasn't bad either! Honestly, it was quite alright!"
                }
             },
             "thirst": {
@@ -3850,15 +3854,16 @@
       "cook": {
          "recipes": {
             "food_preparation_name": "Preparation",
+				"brewing_name": "Brewing Ingredients",
             "drinks_name": "Drinks & Beverages",
             "cook_cheese_vat_recipe": {
                "recipe_name": "Cheese Vat",
-               "description": "The Cook can use this to make cheese by crafting curdling mixtures. The longer it rests the more valuable it gets.",
+               "description": "The Cook or Shepherd can use this to make cheese by crafting curdling mixtures. The longer it rests the more valuable it gets.",
                "flavor": "You can harvest the cheese at any time during the maturation process"
             },
             "cook_fermenting_vat_recipe": {
                "recipe_name": "Fermentation Vat",
-               "description": "The Cook can use this to make ale by crafting wort. Beer can be made using Gruit, crafted by the Herbalist.",
+               "description": "The Cook or Herbalist can use this to make ale by crafting wort. Beer can be made using Gruit, crafted by the Herbalist.",
                "flavor": "Ale & Beer makes hearthlings happy and only slightly tipsy"
             },
             "cook_brewery_recipe": {
@@ -4262,7 +4267,7 @@
          },
          "cook_cheese_vat_empty": {
             "display_name": "Empty Cheese Vat",
-            "description": "Used by the Cook to make cheese. The longer it rests, the better!"
+            "description": "Used by the Cook or Shepherd to make cheese. The longer it rests, the better!"
          },
          "cook_cheese_vat_filled": {
             "display_name": "Curdling Cheese Vat",
@@ -7933,6 +7938,9 @@
             "honey": {
                "display_name": "Honey",
                "description": "Fruity, flowered honey. Delicious! Eat it raw or use in cooking."
+            },
+            "honey_serving": {
+               "display_name": "Serving of Honey"
             }
          }
       },

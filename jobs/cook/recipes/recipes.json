@@ -38,9 +38,6 @@
 				},
 				"cooking_oil": {
 					"recipe": "file(cooking_oil_recipe.json)"
-				},
-				"malted_grains": {
-					"recipe": "file(malted_grains_recipe.json)"
 				}
          }
       },
@@ -65,10 +62,7 @@
             },
 				"sausage": {
 					"recipe": "/stonehearth/jobs/cook/recipes/sausage_recipe.json"
-				},
-				"wort": {
-					"recipe": "file(wort_recipe.json)"
-				},
+				},			
 				"curdling_mixture": {
 					"recipe": "file(curdling_mixture_recipe.json)"
 				},
@@ -191,6 +185,18 @@
 				}
          }
       },
+		"brewing_ingredients": {
+			"ordinal": 66,
+         "name": "i18n(stonehearth_ace:jobs.cook.recipes.brewing_name)",
+         "recipes": {
+				"malted_grains": {
+					"recipe": "file(malted_grains_recipe.json)"
+				},
+				"wort": {
+					"recipe": "file(wort_recipe.json)"
+				}
+         }
+		},
 		"drinks": {
 			"ordinal": 67,
          "name": "i18n(stonehearth_ace:jobs.cook.recipes.drinks_name)",

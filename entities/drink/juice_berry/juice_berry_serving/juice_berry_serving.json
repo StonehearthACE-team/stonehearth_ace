@@ -17,15 +17,16 @@
       },
       "stonehearth_ace:drink": {
          "stonehearth:sitting_on_chair": {
-            "satisfaction": 30
+            "satisfaction": 60
          },
          "default": {
-            "satisfaction": 20
+            "satisfaction": 50
          },
          "applied_buffs": [
             "stonehearth_ace:buffs:consumption:fruity_flavors"
          ],
-         "quality": 2
+         "quality": 2,
+         "effect_loops": 1
       },
       "stonehearth:catalog": {
          "display_name": "i18n(stonehearth_ace:entities.drink.juice_berry.juice_berry_serving.display_name)",

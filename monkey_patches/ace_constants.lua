@@ -24,12 +24,14 @@ ace_constants.drink_quality_thoughts[constants.drink_qualities.INTOLERABLE] = {	
 ace_constants.drink_quality_thoughts[constants.drink_qualities.UNPALATABLE] = {			constants.thoughts.drink_quality.UNPALATABLE}
 ace_constants.drink_quality_thoughts[constants.drink_qualities.RAW_BLAND] = { 			constants.thoughts.drink_quality.RAW,
 																													constants.thoughts.drink_quality.BLAND}
-ace_constants.drink_quality_thoughts[constants.drink_qualities.RAW_AVERAGE] = { 			constants.thoughts.drink_quality.RAW}
+ace_constants.drink_quality_thoughts[constants.drink_qualities.RAW_AVERAGE] = { 			constants.thoughts.drink_quality.RAW,
+																													constants.thoughts.drink_quality.AVERAGE}
 ace_constants.drink_quality_thoughts[constants.drink_qualities.RAW_TASTY] = { 			constants.thoughts.drink_quality.RAW,		
 																													constants.thoughts.drink_quality.TASTY}
 ace_constants.drink_quality_thoughts[constants.drink_qualities.PREPARED_BLAND] = { 		constants.thoughts.drink_quality.PREPARED,
 																													constants.thoughts.drink_quality.BLAND}
-ace_constants.drink_quality_thoughts[constants.drink_qualities.PREPARED_AVERAGE] = { 	constants.thoughts.drink_quality.PREPARED}
+ace_constants.drink_quality_thoughts[constants.drink_qualities.PREPARED_AVERAGE] = { 	constants.thoughts.drink_quality.PREPARED,
+																													constants.thoughts.drink_quality.AVERAGE}
 ace_constants.drink_quality_thoughts[constants.drink_qualities.PREPARED_TASTY] = { 		constants.thoughts.drink_quality.PREPARED,
 																													constants.thoughts.drink_quality.TASTY}
 ace_constants.drink_quality_thoughts[constants.drink_qualities.LOVELY] = { 				constants.thoughts.drink_quality.LOVELY}

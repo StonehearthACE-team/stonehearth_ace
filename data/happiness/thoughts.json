@@ -194,7 +194,7 @@
             "sated": {
                "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.thirst.values.sated.display_name)",
                "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.thirst.values.sated.tooltip)",
-               "happiness_delta": 5,
+               "happiness_delta": 4,
                "stackable": false
             },
             "neutral": {
@@ -206,13 +206,13 @@
             "thirsty": {
                "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.thirst.thirsty.display_name)",
                "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.thirst.thirsty.tooltip)",
-               "happiness_delta": -5,
+               "happiness_delta": -4,
                "stackable": false
             },
             "very_thirsty": {
                "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.thirst.very_thirsty.display_name)",
                "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.thirst.very_thirsty.tooltip)",
-               "happiness_delta": -12,
+               "happiness_delta": -8,
                "stackable": false
             }
          }
@@ -253,14 +253,14 @@
             "raw": {
                "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.drinking.raw.display_name)",
                "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.drinking.raw.tooltip)",
-               "happiness_delta": 1,
+               "happiness_delta": 0,
                "duration": "12h",
                "stackable": false
             },
             "prepared": {
                "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.drinking.values.prepared.display_name)",
                "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.drinking.values.prepared.tooltip)",
-               "happiness_delta": 5,
+               "happiness_delta": 3,
                "duration": "24h",
                "stackable": true,
                "max_stacks": 3
@@ -268,14 +268,23 @@
             "bland": {
                "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.drinking.bland.display_name)",
                "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.drinking.bland.tooltip)",
-               "happiness_delta": 2,
+               "happiness_delta": 1,
                "duration": "12h",
-               "stackable": false
+               "stackable": true,
+               "max_stacks": 3
+            },
+            "average": {
+               "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.drinking.average.display_name)",
+               "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.drinking.average.tooltip)",
+               "happiness_delta": 3,
+               "duration": "18h",
+               "stackable": true,
+               "max_stacks": 3
             },
             "tasty": {
                "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.drinking.tasty.display_name)",
                "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.drinking.tasty.tooltip)",
-               "happiness_delta": 6,
+               "happiness_delta": 5,
                "duration": "24h",
                "stackable": true,
                "max_stacks": 3

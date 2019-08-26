@@ -19,11 +19,19 @@
       },
       "mob": {
          "model_origin": { "x": 0, "y": 0, "z": 0 }
+      },
+      "stonehearth:stacks": {
+         "max_stacks": 3
       }
    },
    "entity_data": {
+      "stonehearth:food_container": {
+         "effect": "fiddle",
+         "food": "stonehearth_ace:food:honey:honey_serving",
+         "stacks_per_serving": 1
+      },
       "stonehearth:net_worth": {
-         "value_in_gold": 5,
+         "value_in_gold": 16,
          "rarity": "uncommon",
          "shop_info": {
             "buyable": true,
@@ -39,6 +47,7 @@
          "is_item": true,
          "category": "cooking_ingredient",
          "material_tags": [
+            "food_container",
             "stockpile_cooking_ingredient",
             "cooking_ingredient",
             "food",

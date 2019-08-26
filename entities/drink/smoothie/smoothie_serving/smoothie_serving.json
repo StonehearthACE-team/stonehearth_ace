@@ -17,17 +17,18 @@
       },
       "stonehearth_ace:drink": {
          "stonehearth:sitting_on_chair": {
-            "satisfaction": 75
+            "satisfaction": 80
          },
          "default": {
-            "satisfaction": 50
+            "satisfaction": 70
          },
          "applied_buffs": [
             "stonehearth_ace:buffs:consumption:fruity_flavors",
             "stonehearth_ace:buffs:consumption:refreshed_belly",
             "stonehearth_ace:buffs:consumption:sweet_energy"
          ],
-         "quality": 5
+         "quality": 5,
+         "effect_loops": 2
       },
       "stonehearth:catalog": {
          "display_name": "i18n(stonehearth_ace:entities.drink.smoothie.smoothie_serving.display_name)",
