@@ -4,7 +4,12 @@ function AceAuraBuff:_on_pulse()
    local player_id = radiant.entities.get_player_id(self._entity)
    local num_affected = 0
    -- get everyone around us
-   local aura_buff = self._tuning.aura_buff
+	
+   local aura_buffs = self._tuning.aura_buff
+	if type(aura_buffs) == 'string' then
+      aura_buffs = { aura_buffs }
+   end
+	
    local sensor_name = self._tuning.sensor_name or 'sight'
    local sensor = self._entity:add_component('sensor_list'):get_sensor(sensor_name)
    local enemies_within_range = false
@@ -40,10 +45,12 @@ function AceAuraBuff:_on_pulse()
    end
 
    for _, target in ipairs(target_entities) do
-      radiant.entities.add_buff(target, aura_buff)
-      if radiant.entities.has_buff(target, aura_buff) then
-         num_affected = num_affected + 1
-      end
+		for _, aura_buff in ipairs(aura_buffs) do
+			radiant.entities.add_buff(target, aura_buff)
+			if radiant.entities.has_buff(target, aura_buff) then
+				num_affected = num_affected + 1
+			end
+		end
    end
 
    if num_affected > 0 and self._tuning and self._tuning.pulse_effect then

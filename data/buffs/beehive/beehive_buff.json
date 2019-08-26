@@ -7,9 +7,13 @@
    "script": "stonehearth:buff_scripts:aura",
    "effect": "stonehearth:effects:rotten_food",
    "script_info": {
-      "pulse": "15m",
-      "aura_buff": "stonehearth_ace:buffs:bee_attack",
-      "radius": 7,
+      "pulse": "8m",
+      "aura_buff": [
+         "stonehearth_ace:buffs:bee_attack",
+         "stonehearth_ace:buffs:beehive:hat_1",
+         "stonehearth_ace:buffs:beehive:hat_2"
+      ],
+      "radius": 10,
       "affect_self": false,
       "target_type": "mob",
       "sensor_name": "range",

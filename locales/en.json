@@ -2087,12 +2087,16 @@
             "description": "Handle with care..."
          },
          "bee_attack": {
-            "display_name": "Swarmed by Bees",
-            "description": "Ouch! Owie! Ow! Go away!"
+            "display_name": "Attracting Bees",
+            "description": "Uh-oh... What is this buzzing?"
          },
          "bee_attack_resist": {
             "display_name": "Protected from Swarms",
             "description": "Stings won't bee a problem for this hearthling."
+         },
+         "bee_attack_swarmed": {
+            "display_name": "Swarmed by Bees",
+            "description": "Ouch! Owie! Ow! Go away!"
          }
       },
       "loadouts": {
@@ -2279,6 +2283,21 @@
             "refined_fungi_name": "Fungal Refinement",
             "refined_seeds_name": "Regional Seeds",
             "farming_enhancements_name": "Farming Enhancements & Seeds",
+            "herbalist_bee_skep_recipe": {
+               "recipe_name": "Bee Skep",
+               "description": "Supplies your town with beekeeping products but won't produce during the winter.",
+               "flavor": "You can obtain captive bees by harvesting wild beehives found when cutting trees!"
+            },
+            "herbalist_beekeeping_hat_recipe": {
+               "recipe_name": "Herbalist's Beekeeping Hat",
+               "description": "Provides protection when working with bees.",
+               "flavor": ""
+            },
+            "worker_beekeeping_hat_recipe": {
+               "recipe_name": "Worker's Beekeeping Hat",
+               "description": "Provides protection when hauling and passing by bee skeps or hives.",
+               "flavor": "A simpler and lighter variant for all the workers out there!"
+            },
             "almond_transmute_recipe": {
                "recipe_name": "Almond Tree Seeds (x2)",
                "description": "Select the best nuts from the basket",
@@ -3822,6 +3841,10 @@
          "rc_winter_worker_outfit": {
             "display_name": "Winter Worker Garb",
             "description": "A reinforced wool outfit. Protects from chilly weather and improves speed!"
+         },
+         "worker_beekeeping_hat": {
+            "display_name": "Worker's Beekeeping Hat",
+            "description": "Very useful for being safe while hauling and moving around bee skeps."
          }
       },
       "cook": {
@@ -10370,7 +10393,9 @@
             "herb_resource_name": "Any Herb",
             "seed_juniper_resource_name": "Juniper Berries",
             "seed_pine_resource_name": "Pine Cones",
-            "nuts_basket_resource_name": "Any Basket of Nuts"
+            "nuts_basket_resource_name": "Any Basket of Nuts",
+            "sweetener_resource_name": "Any Sweetener",
+            "honey_resource_name": "Any Honey"
          }
       },
       "hotkeys": {

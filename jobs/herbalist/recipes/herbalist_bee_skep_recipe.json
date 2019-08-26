@@ -1,0 +1,34 @@
+{
+   "type": "recipe",
+   "effort": 35,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.herbalist.recipes.herbalist_bee_skep_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.herbalist_bee_skep_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.herbalist_bee_skep_recipe.flavor)",
+   "portrait": "/stonehearth_ace/jobs/herbalist/herbalist_bee_skep/herbalist_bee_skep.png",
+   "workshop": "stonehearth:herbalist:workbench",
+   "level_requirement": 3,
+   "ingredients": [
+		{
+         "material": "wood resource",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth:containers:input_bin:woven",
+         "count": 1
+      },
+		{
+         "material": "thatch resource",
+         "count": 2
+      },
+		{
+         "uri": "stonehearth_ace:consumables:captive:bees",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:herbalist:bee_skep"
+      }
+   ]
+}

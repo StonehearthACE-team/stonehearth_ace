@@ -1,0 +1,26 @@
+{
+   "type": "recipe",
+   "effort": 32,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.herbalist.recipes.worker_beekeeping_hat_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.worker_beekeeping_hat_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.worker_beekeeping_hat_recipe.flavor)",
+   "portrait": "/stonehearth_ace/jobs/worker/worker_beekeeping_hat/worker_beekeeping_hat.png",
+   "workshop": "stonehearth:herbalist:workbench",
+   "level_requirement": 4,
+   "ingredients": [
+		{
+         "material": "thatch resource",
+         "count": 2
+      },
+		{
+         "material": "thread resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:worker:beekeeping_hat"
+      }
+   ]
+}

@@ -7,14 +7,14 @@
             "layer": "hat",
             "transparent": "false",
             "models": [
-               "file(herbalist_beekeeping_hat_equipped.qb)"
+               "file(worker_beekeeping_hat_equipped.qb)"
             ]
          },
          "female": {
             "layer": "hat",
             "transparent": "false",
             "models": [
-               "file(herbalist_beekeeping_hat_equipped_female.qb)"
+               "file(worker_beekeeping_hat_equipped_female.qb)"
             ]
          }
       },
@@ -22,11 +22,11 @@
          "slot": "helmet",
          "render_type": "merge_with_model",
          "roles": [
-            "herbalist_job"
+            "worker_job"
          ],
          "ilevel": 5,
          "additional_equipment": {
-            "stonehearth_ace:herbalist:beekeeping_hat:equipped:net": true
+            "stonehearth_ace:worker:beekeeping_hat:equipped:net": true
          }
       }
    },

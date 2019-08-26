@@ -3,33 +3,24 @@
    "axis": "debuff",
    "display_name": "i18n(stonehearth_ace:data.buffs.bee_attack.display_name)",
    "description": "i18n(stonehearth_ace:data.buffs.bee_attack.description)",
-   "icon": "file(bee_attack_buff.png)",
+   "icon": "file(bee_buff.png)",
    "duration": "15m+5m",
    "cant_affect_siege": true,
-   "repeat_add_action": "renew_duration",
+   "can_only_affect": [
+      "hearthling",
+      "dwarf"
+   ],
+   "repeat_add_action": "stack_and_refresh",
+   "max_stacks": 4,
+   "evolve_chance": 0.3,
+   "buff_evolve_on_max_stacks": "stonehearth_ace:buffs:bee_attack:swarmed",
    "modifiers": {
       "courage": {
-         "add": -10
+         "add": -1
       },
       "willpower": {
-         "add": -10
+         "add": -1
       }
    },
-   "effect": "stonehearth:effects:rotten_food",
-   "script": "stonehearth:buff_scripts:periodic_health_modification",
-   "script_info": {
-      "health_change": -1,
-      "min_health": 0.8,
-      "pulse": "10m",
-      "pulse_immediately": true,
-      "pulse_on_destroy": false,
-      "cannot_kill": true
-   },
-   "injected_ai": {
-      "actions": [
-         "stonehearth_ace:actions:compelled_behaviors:cower",
-         "stonehearth_ace:actions:compelled_behaviors:wander"
-      ]
-   },
-   "set_posture": "stonehearth:panic"
+   "effect": "stonehearth:effects:rotten_food"
 }
