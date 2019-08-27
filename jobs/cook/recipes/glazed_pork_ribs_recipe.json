@@ -1,0 +1,35 @@
+{
+   "type": "recipe",
+   "effort": 45,
+   "work_units": 10,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.glazed_pork_ribs_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.glazed_pork_ribs_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.glazed_pork_ribs_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/glazed_pork_ribs/glazed_pork_ribs/glazed_pork_ribs.png",
+   "workshop": "stonehearth:cook:oven",
+   "work_effect": "work_wait",
+   "level_requirement": 5,
+   "ingredients": [
+      {
+         "uri": "stonehearth:food:pork",
+         "count": 1
+      },
+		{
+         "material": "honey cooking_ingredient",
+         "count": 1
+      },
+		{
+         "material": "herb resource",
+         "count": 1
+      },
+		{
+         "material": "low_fuel",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:glazed_pork_ribs"
+      }
+   ]
+}

@@ -1,0 +1,23 @@
+{
+   "type": "effect",
+   "tracks": {
+      "cubemitter": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/bees/bees_beehive.cubemitter.json",
+         "transforms": { "x": 0, "y": 0.6, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "sound": {
+         "type": "sound_effect",
+         "loop": true,
+         "start_time": 10,
+         "min_distance": 15,
+         "falloff": 10,
+         "volume": 10,
+         "track": "stonehearth:sounds:flies"
+      }
+   }
+}

@@ -1,0 +1,30 @@
+{
+   "type": "recipe",
+   "effort": 22,
+   "work_units": 10,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.glazed_veggies_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.glazed_veggies_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.glazed_veggies_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/glazed_veggies/glazed_veggies/glazed_veggies.png",
+   "workshop": "stonehearth:cook:workbench",
+   "level_requirement": 3,
+   "ingredients": [
+      {
+         "material": "food_container raw_food vegetable",
+         "count": 2
+      },
+		{
+         "material": "honey cooking_ingredient",
+         "count": 1
+      },
+		{
+         "material": "low_fuel",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:glazed_veggies"
+      }
+   ]
+}

@@ -5,7 +5,7 @@
    "description": "i18n(stonehearth_ace:data.buffs.beehive_buff.description)",
    "icon": "file(beehive_buff.png)",
    "script": "stonehearth:buff_scripts:aura",
-   "effect": "stonehearth_ace:effects:beehive",
+   "effect": "stonehearth_ace:effects:bee_skep",
    "script_info": {
       "pulse": "5m",
       "aura_buff": [
@@ -13,7 +13,7 @@
          "stonehearth_ace:buffs:beehive:hat_1",
          "stonehearth_ace:buffs:beehive:hat_2"
       ],
-      "radius": 6,
+      "radius": 10,
       "affect_self": false,
       "target_type": "mob",
       "sensor_name": "range",

@@ -1,0 +1,35 @@
+{
+   "type": "recipe",
+   "effort": 40,
+   "work_units": 10,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.honeybuns_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.honeybuns_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.honeybuns_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/honeybuns/honeybuns/honeybuns.png",
+   "workshop": "stonehearth:cook:oven",
+   "work_effect": "work_wait",
+   "level_requirement": 4,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:food:batter",
+         "count": 1
+      },
+		{
+         "material": "honey cooking_ingredient",
+         "count": 1
+      },
+		{
+         "material": "butter cooking_ingredient",
+         "count": 1
+      },
+		{
+         "material": "low_fuel",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:honeybuns"
+      }
+   ]
+}
