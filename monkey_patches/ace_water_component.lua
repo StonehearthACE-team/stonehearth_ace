@@ -91,7 +91,16 @@ function AceWaterComponent:set_region(boxed_region, height)
 
    self._calculated_up_to_date = false
    stonehearth_ace.water_signal:water_component_modified(self._entity)
+   self:_update_destination()
    --self:_update_pathing()
+end
+
+AceWaterComponent._ace_old__raise_layer = WaterComponent._raise_layer
+function AceWaterComponent:_raise_layer()
+   local result = self:_ace_old__raise_layer()
+   if result then
+      self:_update_destination()
+   end
 end
 
 function AceWaterComponent:_update_destination()
