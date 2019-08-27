@@ -24,7 +24,7 @@ end
 
 local function make_drink_container_filter(owner_id, drink_filter_fn)
    return function(item)
-         if not radiant.entities.is_material(item, 'drink_container') then
+         if not radiant.entities.get_entity_data(item, 'stonehearth_ace:drink_container') then
             return false
          end
          if owner_id ~= '' then
