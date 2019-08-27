@@ -142,6 +142,41 @@ function AceConsumptionComponent:get_food_intolerances()
    return self._sv._food_intolerances
 end
 
+-- override this function to avoid recalculating things when just adding drink_satiety modification
+function AceConsumptionComponent:consume_calories(food_entity)
+   local entity = self._entity
+   local food_quality = self:_get_quality(food_entity)
+   local food_data = self:_get_food_data(food_entity)
+
+   local eat_event_data = {
+      consumer = entity,
+      time = stonehearth.calendar:get_time_and_date(),
+      food_uri = food_entity:get_uri(),
+      food_data = food_data,
+      food_name = radiant.entities.get_display_name(food_entity),
+      food_quality = food_quality
+   }
+   self:_add_food_thoughts(eat_event_data, food_entity)
+   radiant.events.trigger_async(entity, 'stonehearth:eat_food', eat_event_data)
+
+   local satisfaction = food_data.satisfaction
+   if self:_has_food_preferences() and food_quality > stonehearth.constants.food_qualities.UNPALATABLE then
+      satisfaction = satisfaction * stonehearth.constants.food.PREFERRED_FOOD_BONUS
+   end
+   self._expendable_resources_component:modify_value('calories', satisfaction)
+
+   local drink_satisfaction = food_data.drink_satisfaction
+   if drink_satisfaction then
+      -- don't apply a multiplier for a negative effect
+      if drink_satisfaction > 0 and self:_has_drink_preferences() and food_quality > stonehearth.constants.food_qualities.UNPALATABLE then
+         drink_satisfaction = drink_satisfaction * stonehearth.constants.drink_satiety.PREFERRED_DRINK_BONUS
+      end
+      self._expendable_resources_component:modify_value('drink_satiety', drink_satisfaction)
+   end
+
+   self._sv._last_eating_time = stonehearth.calendar:get_elapsed_time()
+end
+
 AceConsumptionComponent._ace_old__on_hourly = ConsumptionComponent._on_hourly	
 function AceConsumptionComponent:_on_hourly()
 	if self._sv._consumes_drinks then
@@ -229,6 +264,15 @@ function AceConsumptionComponent:consume_drink(drink_entity)
       satisfaction = satisfaction * stonehearth.constants.drink_satiety.PREFERRED_DRINK_BONUS
    end
    self._expendable_resources_component:modify_value('drink_satiety', satisfaction)
+
+   local food_satisfaction = drink_data.food_satisfaction
+   if food_satisfaction then
+      -- don't apply a multiplier for a negative effect
+      if food_satisfaction > 0 and self:_has_food_preferences() and drink_quality > stonehearth.constants.drink_qualities.UNPALATABLE then
+         food_satisfaction = food_satisfaction * stonehearth.constants.food.PREFERRED_DRINK_BONUS
+      end
+      self._expendable_resources_component:modify_value('calories', food_satisfaction)
+   end
 
    self._sv._last_drinking_time = stonehearth.calendar:get_elapsed_time()
 end
