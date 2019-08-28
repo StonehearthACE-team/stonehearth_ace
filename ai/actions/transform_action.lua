@@ -21,7 +21,7 @@ local function _transform_filter_fn(player_id, job_uri, category, item)
    --log:debug('checking %s in filter for %s _ %s _ %s', item, player_id, job_uri, category)
 
    -- make sure the entity has an appropriate job
-   local data = radiant.entities.get_entity_data(item, 'stonehearth_ace:transform_data')
+   local data = transform_comp:get_transform_options()
    if not data or (data.worker_required_job and not data.worker_required_job[job_uri]) then
       return false
    end

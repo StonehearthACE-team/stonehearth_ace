@@ -1,3 +1,32 @@
+--[[
+   transform data can be specified overall or for individual options, indexed by keys (e.g., for multiple different commands):
+   "entity_data": {
+      "stonehearth_ace:transform_data": {
+         "command": "...",
+         "transform_effect": "...",
+         "transform_script": "..."
+      }
+   }
+   -- or --
+   "entity_data": {
+      "stonehearth_ace:transform_data": {
+         "default_key": "key1",
+         "transform_options": {
+            "key1": {
+               "command": "...",
+               "transform_effect": "...",
+               "transform_script": "..."
+            },
+            "key2": {
+               "command": "...",
+               "transform_effect": "...",
+               "transform_script": "..."
+            }
+         }
+      }
+   }
+]]
+
 local transform_lib = require 'stonehearth_ace.lib.transform.transform_lib'
 local log = radiant.log.create_logger('transform')
 local LootTable = require 'stonehearth.lib.loot_table.loot_table'
@@ -5,18 +34,11 @@ local LootTable = require 'stonehearth.lib.loot_table.loot_table'
 local TransformComponent = class()
 
 function TransformComponent:activate()
-   self._transform_data = radiant.entities.get_entity_data(self._entity, 'stonehearth_ace:transform_data')
-   self:_create_request_listeners()
+   self._all_transform_data = radiant.entities.get_entity_data(self._entity, 'stonehearth_ace:transform_data')
 end
 
 function TransformComponent:post_activate()
-   -- if there's a transform_command, add that command
-   if self._transform_data.command then
-      local command_comp = self._entity:add_component('stonehearth:commands')
-      if not command_comp:has_command(self._transform_data.command) then
-         command_comp:add_command(self._transform_data.command)
-      end
-   end
+   self:_set_transform_option(self._sv.transform_key or self._all_transform_data.default_key)
 end
 
 function TransformComponent:destroy()
@@ -27,7 +49,7 @@ end
 function TransformComponent:_create_request_listeners()
    self:_destroy_request_listeners()
    
-   if self._transform_data.request_action then
+   if self._transform_data and self._transform_data.request_action then
       if self._transform_data.auto_request then
          self._added_to_world_listener = self._entity:add_component('mob'):trace_parent('transform entity added or removed')
             :on_changed(function(parent)
@@ -43,6 +65,44 @@ function TransformComponent:_destroy_request_listeners()
    if self._added_to_world_listener then
       self._added_to_world_listener:destroy()
       self._added_to_world_listener = nil
+   end
+end
+
+function TransformComponent:get_transform_key()
+   return self._sv.transform_key
+end
+
+function TransformComponent:get_transform_options()
+   return self._transform_data
+end
+
+function TransformComponent:set_transform_option(key)
+   self._sv.transform_key = key
+   self.__saved_variables:mark_changed()
+end
+
+function TransformComponent:_set_transform_option(key)
+   if key and self._all_transform_data.transform_options and self._all_transform_data.transform_options[key] then
+      self._transform_data = self._all_transform_data.transform_options[key]
+   elseif not self._all_transform_data.transform_options then
+      self._transform_data = self._all_transform_data
+   else
+      self._transform_data = nil
+   end
+   self:_create_request_listeners()
+   self:_set_up_commands()
+end
+
+function TransformComponent:_set_up_commands()
+   -- if there's a transform_command, add that command
+   local options = self._all_transform_data.transform_options or { default = self._all_transform_data }
+   for key, options in pairs(options) do
+      if options.command then
+         local command_comp = self._entity:add_component('stonehearth:commands')
+         if not command_comp:has_command(options.command) then
+            command_comp:add_command(options.command)
+         end
+      end
    end
 end
 

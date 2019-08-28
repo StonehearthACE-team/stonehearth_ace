@@ -29,9 +29,9 @@ function TransformItemAdjacent:run(ai, entity, args)
    local item = args.item
    local item_id = item:get_id()
    local transform_comp = item:get_component('stonehearth_ace:transform')
-   local data = radiant.entities.get_entity_data(item, 'stonehearth_ace:transform_data')
+   local data = transform_comp:get_transform_options()
 
-   if transform_comp then
+   if transform_comp and data then
       radiant.entities.turn_to_face(entity, item)
       ai:unprotect_argument(item)
 

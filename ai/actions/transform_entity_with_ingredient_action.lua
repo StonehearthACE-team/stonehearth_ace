@@ -10,10 +10,11 @@ TransformWithIngredient.args = {
 TransformWithIngredient.priority = 1.0
 
 function TransformWithIngredient:start_thinking(ai, entity, args)
-   local transform_data = radiant.entities.get_entity_data(args.item, 'stonehearth_ace:transform_data')
-   if transform_data.transform_ingredient_uri then
+   local transform_comp = args.item:get_component('stonehearth_ace:transform')
+   local transform_data = transform_comp:get_transform_options()
+   if transform_data and transform_data.transform_ingredient_uri then
       ai:set_think_output({ ingredient = {uri = transform_data.transform_ingredient_uri} })
-   elseif transform_data.transform_ingredient_material then
+   elseif transform_data and transform_data.transform_ingredient_material then
       ai:set_think_output({ ingredient = {material = transform_data.transform_ingredient_material} })
    end
 end

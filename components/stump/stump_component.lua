@@ -38,6 +38,10 @@ function StumpComponent:add_stump(killer_player_id)
          item_quality_lib.copy_quality(self._entity, the_stump)
       end
 
+      if self._stump_data.transform_option_key then
+         the_stump:add_component('stonehearth_ace:transform'):set_transform_option(self._stump_data.transform_option_key)
+      end
+
       radiant.terrain.place_entity_at_exact_location(the_stump, location, {force_iconic = false})
 
       --turn it to correct rotation
