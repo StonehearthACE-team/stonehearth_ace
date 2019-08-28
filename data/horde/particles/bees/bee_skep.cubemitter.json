@@ -13,13 +13,13 @@
 			"values": [0]
 		},
 		"origin": {
-         "surface": "SPHERE",
-         "values": [
-            2,
-            0,
-            360
-         ]
-      }
+			"surface": "SPHERE",
+			"values": [
+				2,
+				0,
+				360
+			]
+		}
 	},
 	"particle": {
 		"lifetime": {
@@ -55,7 +55,8 @@
 			"over_lifetime_z": {
 				"kind": "CURVE",
 				"values": [
-					[0, 0],
+					[0, -70],
+					[0.01, 0],
 					[0.25, 6],
 					[0.75, -6],
 					[1, 0]
@@ -111,9 +112,9 @@
 		},
 		"color": {
 			"start": {
-            "kind": "CONSTANT",
-            "values": [0.216, 0.216, 0.133, 1]
-         },
+				"kind": "CONSTANT",
+				"values": [0.216, 0.216, 0.133, 1]
+			},
 			"over_lifetime_a": {
 				"kind": "CURVE",
 				"values": [
