@@ -459,6 +459,12 @@
                "icon": "/stonehearth_ace/entities/food/nut_flour/nut_flour.png",
                "filter": "cooking_ingredient nut_flour"
             },
+            "any_raw_meat": {
+               "ordinal": 2.49,
+               "display_name": "i18n(stonehearth_ace:ui.data.constants.meat_resource_name)",
+               "icon": "/stonehearth_ace/entities/food/meat_icon.png",
+               "filter": "cooking_ingredient raw meat"
+            },
             "steak": {
                "ordinal": 11,
                "display_name": "i18n(stonehearth_ace:entities.food.steak.display_name)",
@@ -518,7 +524,7 @@
                "filter": "cooking_ingredient egg_large"
             },
             "butter": {
-               "ordinal": 2.49,
+               "ordinal": 2.48,
                "display_name": "i18n(stonehearth_ace:ui.data.constants.butter_resource_name)",
                "icon": "/stonehearth_ace/entities/food/dairy/butter_icon.png",
                "filter": "butter cooking_ingredient"

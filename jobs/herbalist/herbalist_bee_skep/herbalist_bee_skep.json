@@ -38,7 +38,7 @@
          "category": "beekeeping",
          "renewal_time": "48h+12h",
          "unripe_description": "i18n(stonehearth_ace:jobs.herbalist.herbalist_bee_skep.unripe_description)",
-         "harvest_overlay_effect": "stonehearth_ace:effects:harvest_fruit_overlay_effect",
+         "harvest_overlay_effect": "stonehearth_ace:effects:harvest_honey_overlay_effect",
          "resource_loot_table": {
             "entries": {
                "optional": {
@@ -78,11 +78,6 @@
                "radius": 32
             }
          }
-      },
-      "effect_list": {
-         "effects": [
-            "stonehearth_ace:effects:bee_skep"
-         ]
       },
       "stonehearth:buffs": {
          "buffs": {
