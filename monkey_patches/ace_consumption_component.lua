@@ -31,9 +31,9 @@ function AceConsumptionComponent:activate()
 		self._thirsty_threshold = ds and ds.thirsty_threshold or stonehearth.constants.drink_satiety.THIRSTY
 		self._very_thirsty_threshold = ds and ds.very_thirsty_threshold or stonehearth.constants.drink_satiety.VERY_THIRSTY
 		self._hourly_drink_satiety_loss = ds and ds.hourly_drink_satiety_loss or stonehearth.constants.drink_satiety.HOURLY_DRINK_SATIETY_LOSS
-		self._coffee_hour = ds and ds.coffee_hour or -1
-		self._tea_hour = ds and ds.tea_hour or -1
-		self._leisure_hour = ds and ds.leisure_hour or -1
+		self._morning_time = ds and ds.morning_time or -1
+		self._afternoon_time = ds and ds.afternoon_time or -1
+		self._night_time = ds and ds.night_time or -1
 		self._drink_qualities = ds and ds.drink_qualities or {}
 
 		self._max_drink_satiety_listener = radiant.events.listen(self._entity, 'stonehearth:attribute_changed:max_drink_satiety', self, self._on_max_drink_satiety_changed)
@@ -214,10 +214,15 @@ function AceConsumptionComponent:get_min_thirst_to_drink_now()
    local now = stonehearth.calendar:get_time_and_date()
 
    local minutes_to_drink_time = nil
-   if now.hour == self._coffee_hour or now.hour == self._tea_hour or now.hour == self._leisure_hour then
+   if now.hour == self._morning_time or now.hour == self._afternoon_time or now.hour == self._night_time then
       minutes_to_drink_time = now.minute
-   elseif now.hour == self._coffee_hour - 1 or now.hour == self._tea_hour - 1 or now.hour == self._leisure_hour - 1 then
+   elseif now.hour == self._morning_time - 1 or now.hour == self._night_time - 1 then
       minutes_to_drink_time = 60 - now.minute
+	elseif now.hour == self._afternoon_time - 1 then
+		local drink_satiety = self._expendable_resources_component:get_value('drink_satiety')
+		if drink_satiety <= self._thirsty_threshold then
+			minutes_to_drink_time = 60 - now.minute
+		end
    end
 
    local time_since_last_drink = stonehearth.calendar:get_elapsed_time() - (self._sv._last_drinking_time or 0)
