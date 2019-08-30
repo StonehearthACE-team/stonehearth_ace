@@ -8,7 +8,7 @@ local transform_lib = {}
 function transform_lib.transform(entity, transformer, into_uri, options)
    if type(into_uri) == 'table' then
       -- allow for tables that are just lists of uris, and also for uri properties with weight values
-      if type(into_uri[1]) == 'number' then
+      if type(into_uri[1]) == 'string' then
          into_uri = into_uri[rng:get_int(1, #into_uri)]
       else
          local items = WeightedSet(rng)
