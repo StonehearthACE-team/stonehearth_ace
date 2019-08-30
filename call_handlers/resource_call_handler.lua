@@ -293,4 +293,81 @@ function ResourceCallHandler:_is_ground(entity)
    return false
 end
 
+function ResourceCallHandler:place_buildable_entity(session, response, uri)
+   local entity = radiant.entities.create_entity(uri)
+   local buildable_data = radiant.entities.get_entity_data(entity, 'stonehearth_ace:buildable_data')
+   local requires_terrain = buildable_data.requires_terrain
+
+   stonehearth.selection:deactivate_all_tools()
+   
+   -- TODO: limit selector to valid building locations
+   stonehearth.selection:select_location()
+      :set_cursor_entity(entity)
+      :set_filter_fn(function (result, selector)
+            local this_entity = result.entity   
+            local normal = result.normal:to_int()
+            local brick = result.brick
+
+            if not this_entity then
+               return stonehearth.selection.FILTER_IGNORE
+            end
+
+            local rcs = this_entity:get_component('region_collision_shape')
+            local region_collision_type = rcs and rcs:get_region_collision_type()
+            if region_collision_type == _radiant.om.RegionCollisionShape.NONE then
+               return stonehearth.selection.FILTER_IGNORE
+            end
+
+            if normal.y ~= 1 then
+               return stonehearth.selection.FILTER_IGNORE
+            end
+
+            if this_entity:get_id() == radiant._root_entity_id then
+               local kind = radiant.terrain.get_block_kind_at(brick - normal)
+               if requires_terrain and kind == nil then
+                  return stonehearth.selection.FILTER_IGNORE
+               else
+                  return true
+               end
+            end
+
+            -- if the entity we're looking at is a child entity of our primary entity, ignore it
+            local parent = radiant.entities.get_parent(this_entity)
+            if not parent or parent == entity then
+               return stonehearth.selection.FILTER_IGNORE
+            end
+
+            return true
+         end)
+      :done(function(selector, location, rotation)
+            _radiant.call('stonehearth_ace:create_buildable_entity', uri, location, rotation)
+            radiant.entities.destroy_entity(entity)
+            response:resolve(true)
+         end)
+      :fail(function(selector)
+            selector:destroy()
+            response:reject('no location')
+         end)
+      :always(function()
+         end)
+      :go()
+end
+
+-- server function
+-- creates the ghost version of the entity in the world
+function ResourceCallHandler:create_buildable_entity(session, response, uri, location, rotation)
+   location = radiant.util.to_point3(location)
+   local entity = radiant.entities.create_entity(uri, { owner = session.player_id })
+   radiant.terrain.place_entity(entity, location, { force_iconic = false })
+   radiant.entities.turn_to(entity, rotation)
+
+   local buildable_data = radiant.entities.get_entity_data(entity, 'stonehearth_ace:buildable_data')
+   if buildable_data and buildable_data.initialize_script then
+      local script = radiant.mods.load_script(buildable_data.initialize_script)
+      if script and script.on_initialize then
+         script.on_initialize(entity)
+      end
+   end
+end
+
 return ResourceCallHandler

@@ -17,6 +17,15 @@
          "build_ladder": {
             "ordinal": 2
          },
+         "build_well": {
+            "ordinal": 3,
+            "name": "i18n(stonehearth_ace:ui.game.menu.build_menu.items.build_well.display_name)",
+            "description": "i18n(stonehearth_ace:ui.game.menu.build_menu.items.build_well.description)",
+            "class": "button",
+            "icon": "/stonehearth_ace/ui/game/start_menu/images/build_well.png",
+            "sticky": true,
+            "hotkey_action": "build:build_well"
+         },
          "box_move": {
             "ordinal": 10,
             "name": "i18n(stonehearth_ace:ui.game.menu.harvest_menu.items.box_move.display_name)",

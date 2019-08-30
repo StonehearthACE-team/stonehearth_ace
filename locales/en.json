@@ -7,7 +7,8 @@
             "transform": "transforming [name(data.target)]",
             "train": "going for training",
             "consume_drink": "drinking [name(data.target)]",
-            "drink": "getting a drink"
+            "drink": "getting a drink",
+            "build": "building [name(data.target)]"
          }
       }
    },
@@ -5092,6 +5093,10 @@
             "description": "A small door for animal shelters. Can be opened or closed by a shepherd.",
             "display_name": "Stone Small Animal Door"
          },
+         "simple_water_well": {
+            "display_name": "Simple Water Well",
+            "description": "An ingenious mechanism for retrieving underground water."
+         },
          "wooden_water_well": {
             "display_name": "Wooden Water Well",
             "description": "An ingenious mechanism for retrieving underground water."
@@ -9966,6 +9971,16 @@
             }
          },
          "menu": {
+            "build_menu": {
+               "items": {
+                  "build_well": {
+                     "display_name": "Dig Well",
+                     "description": "Dig a well to allow hearthlings easy access to water for drinking.",
+                     "tip_title": "Click to dig a well at that location",
+                     "tip_description": "Locations closer to water require less digging"
+                  }
+               }
+            },
             "crafter_menu": {
                "items": {
                   "artificer": {

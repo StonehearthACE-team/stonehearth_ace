@@ -15,13 +15,22 @@ TransformItemAdjacent.priority = 0
 
 function TransformItemAdjacent:start(ai, entity, args)
    -- TODO: check to make sure we'll be next to the entity
-   ai:set_status_text_key('stonehearth_ace:ai.actions.status_text.transform', { target = args.item })
+   local key
+   if radiant.entities.get_entity_data(args.item, 'stonehearth_ace:buildable_data') then
+      key = 'build'
+   else
+      key = 'transform'
+   end
+   ai:set_status_text_key('stonehearth_ace:ai.actions.status_text.' .. key, { target = args.item })
 end
 
 function TransformItemAdjacent:stop(ai, entity, args)
    local transform_comp = args.item and args.item:is_valid() and args.item:get_component('stonehearth_ace:transform')
    if transform_comp then
       transform_comp:_destroy_effect()
+   end
+   if self._progress_comp then
+      entity:remove_component('stonehearth_ace:progress')
    end
 end
 
@@ -49,11 +58,24 @@ function TransformItemAdjacent:run(ai, entity, args)
       local transformed_form
       if effect then
          transform_comp:perform_transform()
+
+         self._progress_comp = entity:add_component('stonehearth_ace:progress')
+         self._progress_comp:set_activity(radiant.entities.get_display_name(item))
+         self._progress_comp:reset_progress()
+
          if duration then
+            -- determine how long the effect will last and create a progress tracker for that
+            local total_duration = stonehearth.calendar:parse_duration(duration, true)
+            self._progress_comp:set_max_progress(100)
+            self._progress_comp:start_time_tracking(total_duration / 100, 1)
+
             ai:execute('stonehearth:run_effect_timed', { effect = effect, duration = duration})
          else
+            self._progress_comp:set_max_progress(times)
+
             for i = 1, times or 1 do
                ai:execute('stonehearth:run_effect', { effect = effect})
+               self._progress_comp:increment_progress()
             end
          end
          transformed_form = transform_comp:transform()

@@ -225,11 +225,10 @@ function AceShepherdPastureComponent:_consider_maintain_animals()
    if num_to_slaughter > 0 then
       -- just process through the animals with the normal iterator and try to harvest them
       -- first skip over named animals and renewably-harvestable animals
-      num_to_slaughter = self:_try_slaughter(num_to_slaughter, true, true, true)
-      num_to_slaughter = self:_try_slaughter(num_to_slaughter, true, false, true)
-      num_to_slaughter = self:_try_slaughter(num_to_slaughter, false, true, true)
-      num_to_slaughter = self:_try_slaughter(num_to_slaughter, false, false, true)
-		num_to_slaughter = self:_try_slaughter(num_to_slaughter, false, false, false)
+      num_to_slaughter = self:_try_slaughter(num_to_slaughter, true, true)
+      num_to_slaughter = self:_try_slaughter(num_to_slaughter, true, false)
+      num_to_slaughter = self:_try_slaughter(num_to_slaughter, false, true)
+      num_to_slaughter = self:_try_slaughter(num_to_slaughter, false, false)
    elseif num_to_slaughter < 0 then
       -- we've queued up too many! probably user increased the maintain level after slaughter requests went out
       for id, _ in pairs(self._sv._queued_slaughters) do
@@ -252,11 +251,11 @@ function AceShepherdPastureComponent:_consider_maintain_animals()
    self.__saved_variables:mark_changed()
 end
 
-function AceShepherdPastureComponent:_try_slaughter(num_to_slaughter, not_if_named, not_if_renewably_harvestable, not_if_sleeping)
+function AceShepherdPastureComponent:_try_slaughter(num_to_slaughter, not_if_named, not_if_renewably_harvestable)
    if num_to_slaughter > 0 then
       for id, critter in pairs(self._sv.tracked_critters) do
          if not self._sv._queued_slaughters[id] then
-            if self:_request_slaughter_animal(critter.entity, not_if_named, not_if_renewably_harvestable, not_if_sleeping) then
+            if self:_request_slaughter_animal(critter.entity, not_if_named, not_if_renewably_harvestable) then
                num_to_slaughter = num_to_slaughter - 1
                if num_to_slaughter < 1 then
                   break
@@ -268,7 +267,7 @@ function AceShepherdPastureComponent:_try_slaughter(num_to_slaughter, not_if_nam
    return num_to_slaughter
 end
 
-function AceShepherdPastureComponent:_request_slaughter_animal(animal, not_if_named, not_if_renewably_harvestable, not_if_sleeping)
+function AceShepherdPastureComponent:_request_slaughter_animal(animal, not_if_named, not_if_renewably_harvestable)
    if not animal:is_valid() then
       return false
    end
@@ -286,13 +285,6 @@ function AceShepherdPastureComponent:_request_slaughter_animal(animal, not_if_na
       end
    end
 	
-	if not_if_sleeping then
-      local buffs = animal:get_component('stonehearth:buffs')
-      if buffs and buffs:has_buff('stonehearth:buffs:sleeping') then
-         return false
-      end
-   end
-   
    local resource_component = animal:get_component('stonehearth:resource_node')
    if resource_component and resource_component:is_harvestable() then
       -- but don't request it on animals that are currently following a shepherd

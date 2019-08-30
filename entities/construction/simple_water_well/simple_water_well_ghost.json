@@ -41,23 +41,16 @@
             }
          ]
       },
+      "stonehearth:ghost_form": {},
       "stonehearth_ace:transform": {}
    },
    "entity_data": {
-      "stonehearth_ace:drink_container": {
-         "effect": "work_water_well",
-         "container_effect": "work",
-         "drink": "stonehearth_ace:drink:water_serving",
-         "stacks_per_serving": 0
-      },
       "stonehearth:catalog": {
          "display_name": "i18n(stonehearth_ace:entities.construction.simple_water_well.display_name)",
          "description": "i18n(stonehearth_ace:entities.construction.simple_water_well.description)",
          "icon": "file(simple_water_well.png)",
          "category": "construction",
          "material_tags": [
-            "drink_container",
-            "water_well",
             "construction"
          ]
       },
@@ -70,25 +63,24 @@
          }
       },
       "stonehearth_ace:transform_data": {
-         "transform_options": {
-            "wooden_well": {
-               "transform_uri": "stonehearth_ace:construction:wooden:water_well",
-               "command": "stonehearth_ace:commands:transform:build_well",
-               "request_action": "stonehearth_ace:transform",
-               "request_action_overlay_effect": "stonehearth_ace:effects:transform_worker_upgrade_overlay_effect",
-               "transform_ingredient_uri": "stonehearth_ace:refined:water_well_roof:wood",
-               "transforming_worker_effect": "work",
-               "transforming_worker_effect_times": 6,
-               "transform_effect": "stonehearth:effects:poof_effect",
-               "worker_required_job": {
-                  "stonehearth:jobs:worker": true,
-                  "stonehearth:jobs:carpenter": true
-               }
-            }
+         "transform_uri": "stonehearth_ace:construction:simple:water_well",
+         "auto_request": true,
+         "request_action": "stonehearth_ace:transform",
+         "request_action_overlay_effect": "stonehearth_ace:effects:transform_worker_upgrade_overlay_effect",
+         "transforming_worker_effect": "work",
+         "transforming_worker_effect_times": 5,
+         "transform_effect": "stonehearth:effects:poof_effect",
+         "worker_required_job": {
+            "stonehearth:jobs:worker": true,
+            "stonehearth:jobs:carpenter": true,
+            "stonehearth:jobs:mason": true,
+            "stonehearth:jobs:potter": true,
+            "stonehearth:jobs:blacksmith": true
          }
       },
-      "stonehearth:appeal": {
-         "appeal": -1
+      "stonehearth_ace:buildable_data": {
+         "requires_terrain": true,
+         "initialize_script": "stonehearth_ace:scripts:buildable:build_well"
       }
    }
 }

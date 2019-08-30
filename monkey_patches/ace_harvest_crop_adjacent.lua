@@ -129,7 +129,10 @@ function AceHarvestCropAdjacent:_set_quality(item, source)
 end
 
 function AceHarvestCropAdjacent:_create_product(player_id, crop_quality, num_stacks, max_stacks)
-   return self:_create_item(player_id, self._crop:get_component('stonehearth:crop'):get_product(), crop_quality, num_stacks, max_stacks)
+   local crop_comp = self._crop:get_component('stonehearth:crop')
+   if crop_comp then
+      return self:_create_item(player_id, crop_comp:get_product(), crop_quality, num_stacks, max_stacks)
+   end
 end
 
 function AceHarvestCropAdjacent:_create_item(player_id, uri, crop_quality, num_stacks, max_stacks)
@@ -185,7 +188,9 @@ function AceHarvestCropAdjacent:_harvest_megacrop_and_return(ai, player_id, crop
    -- spawn more of the product
    for i = 1, num_to_spawn do
       local product = self:_create_product(player_id, crop_quality, 1, true)
-      self:_place_item_on_ground(player_id, product)
+      if product then
+         self:_place_item_on_ground(player_id, product)
+      end
    end
 
    -- spawn other items

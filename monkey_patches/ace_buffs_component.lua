@@ -273,6 +273,9 @@ function AceBuffsComponent:remove_buff(uri, remove_all_stacks)
          self.__saved_variables:mark_changed()
 
          radiant.events.trigger_async(self._entity, 'stonehearth:buff_removed', uri)
+         if uri == 'stonehearth:buffs:sleeping' then
+            stonehearth.ai:reconsider_entity(self._entity, 'woke up')
+         end
       end
    else
       -- otherwise we just want to remove a single stack

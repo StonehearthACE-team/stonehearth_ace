@@ -33,12 +33,24 @@ local LootTable = require 'stonehearth.lib.loot_table.loot_table'
 
 local TransformComponent = class()
 
+function TransformComponent:initialize()
+   self._sv.option_overrides = {}
+end
+
+function TransformComponent:restore()
+   self._is_restore = true
+end
+
 function TransformComponent:activate()
    self._all_transform_data = radiant.entities.get_entity_data(self._entity, 'stonehearth_ace:transform_data')
 end
 
 function TransformComponent:post_activate()
-   self:_set_transform_option(self._sv.transform_key or self._all_transform_data.default_key)
+   if self._is_restore then
+      self:_set_transform_option(self._sv.transform_key or self._all_transform_data.default_key, self._sv.option_overrides)
+   else
+      self:set_transform_option(self._sv.transform_key or self._all_transform_data.default_key)
+   end
 end
 
 function TransformComponent:destroy()
@@ -73,15 +85,22 @@ function TransformComponent:get_transform_key()
 end
 
 function TransformComponent:get_transform_options()
-   return self._transform_data
+   if self._transform_data then
+      local options = {}
+      radiant.util.merge_into_table(options, self._transform_data)
+      radiant.util.merge_into_table(options, self._sv.option_overrides)
+      return options
+   end
 end
 
 function TransformComponent:set_transform_option(key)
    self._sv.transform_key = key
    self.__saved_variables:mark_changed()
+
+   self:_set_transform_option(key)
 end
 
-function TransformComponent:_set_transform_option(key)
+function TransformComponent:_set_transform_option(key, overrides)
    if key and self._all_transform_data.transform_options and self._all_transform_data.transform_options[key] then
       self._transform_data = self._all_transform_data.transform_options[key]
    elseif not self._all_transform_data.transform_options then
@@ -89,6 +108,12 @@ function TransformComponent:_set_transform_option(key)
    else
       self._transform_data = nil
    end
+
+   self._sv.option_overrides = {}
+   if overrides then
+      self:add_option_overrides(overrides)
+   end
+
    self:_create_request_listeners()
    self:_set_up_commands()
 end
@@ -104,6 +129,11 @@ function TransformComponent:_set_up_commands()
          end
       end
    end
+end
+
+function TransformComponent:add_option_overrides(overrides)
+   radiant.util.merge_into_table(self._sv.option_overrides, overrides)
+   self.__saved_variables:mark_changed()
 end
 
 function TransformComponent:transform()

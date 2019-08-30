@@ -20,6 +20,9 @@ App.StonehearthStartMenuView.reopen({
       self.menuActions.box_hunt = function(){
          self.boxHunt();
       };
+      self.menuActions.build_well = function(){
+         self.buildWell();
+      };
 
       self._super();
 
@@ -126,6 +129,25 @@ App.StonehearthStartMenuView.reopen({
             .done(function(response) {
                radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:ui:start_menu:popup'} );
                self.boxHunt();
+            })
+            .fail(function(response) {
+               App.stonehearthClient.hideTip(tip);
+            });
+      });
+   },
+
+   buildWell: function() {
+      var self = this;
+
+      var tip = App.stonehearthClient.showTip('stonehearth_ace:ui.game.menu.build_menu.items.build_well.tip_title', 'stonehearth_ace:ui.game.menu.build_menu.items.build_well.tip_description',
+         {i18n: true});
+
+      App.setGameMode('place');
+      return App.stonehearthClient._callTool('buildWell', function() {
+         return radiant.call('stonehearth_ace:place_buildable_entity', 'stonehearth_ace:construction:simple:water_well_ghost')
+            .done(function(response) {
+               radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:place_structure'} );
+               self.buildWell();
             })
             .fail(function(response) {
                App.stonehearthClient.hideTip(tip);
