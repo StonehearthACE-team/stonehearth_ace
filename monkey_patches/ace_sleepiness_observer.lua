@@ -1,4 +1,3 @@
-local constants = require 'stonehearth.constants'
 local rng = _radiant.math.get_default_rng()
 
 local SleepinessObserver = require 'stonehearth.ai.observers.sleepiness_observer'
@@ -17,7 +16,9 @@ function AceSleepinessObserver:_on_hourly()
 		self:_ace_old__on_hourly()
 		
 		local sleepiness = self._expendable_resources_component:get_value('sleepiness')	
-		self:_add_sleepiness_thoughts(sleepiness)
+		if sleepiness then
+			self:_add_sleepiness_thoughts(sleepiness)
+		end
 	else
 		local attributes_component = self._entity:get_component('stonehearth:attributes')
 		local spirit = attributes_component:get_attribute('spirit')
@@ -34,7 +35,7 @@ end
 
 AceSleepinessObserver._ace_old__add_sleepiness_thoughts = SleepinessObserver._add_sleepiness_thoughts
 function AceSleepinessObserver:_add_sleepiness_thoughts(sleepiness)
-   if sleepiness >= stonehearth.constants.sleep.EXHAUSTED_THOUGHT_THRESHOLD then
+   if sleepiness > stonehearth.constants.sleep.EXHAUSTED_THOUGHT_THRESHOLD then
       radiant.entities.add_thought(self._entity, 'stonehearth:thoughts:sleepiness:exhausted')
    else
       self:_ace_old__add_sleepiness_thoughts(sleepiness)

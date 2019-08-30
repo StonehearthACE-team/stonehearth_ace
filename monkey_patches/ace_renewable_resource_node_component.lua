@@ -293,8 +293,10 @@ function AceRenewableResourceNodeComponent:_can_pasture_animal_renewably_harvest
    local shepherded = collar and collar:get_component('stonehearth:shepherded_animal')
    local pasture = shepherded and shepherded:get_pasture()
    local shepherd_pasture = pasture and pasture:get_component('stonehearth:shepherd_pasture')
+	local buffs = self._entity:get_component('stonehearth:buffs')
+	local sleeping = buffs and buffs:has_buff('stonehearth:buffs:sleeping')
    local return_val
-   if shepherd_pasture then
+   if shepherd_pasture and not sleeping then
       return_val = shepherd_pasture:get_harvest_animals_renewable()
    end
 

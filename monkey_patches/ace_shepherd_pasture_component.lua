@@ -225,10 +225,11 @@ function AceShepherdPastureComponent:_consider_maintain_animals()
    if num_to_slaughter > 0 then
       -- just process through the animals with the normal iterator and try to harvest them
       -- first skip over named animals and renewably-harvestable animals
-      num_to_slaughter = self:_try_slaughter(num_to_slaughter, true, true)
-      num_to_slaughter = self:_try_slaughter(num_to_slaughter, true, false)
-      num_to_slaughter = self:_try_slaughter(num_to_slaughter, false, true)
-      num_to_slaughter = self:_try_slaughter(num_to_slaughter, false, false)
+      num_to_slaughter = self:_try_slaughter(num_to_slaughter, true, true, true)
+      num_to_slaughter = self:_try_slaughter(num_to_slaughter, true, false, true)
+      num_to_slaughter = self:_try_slaughter(num_to_slaughter, false, true, true)
+      num_to_slaughter = self:_try_slaughter(num_to_slaughter, false, false, true)
+		num_to_slaughter = self:_try_slaughter(num_to_slaughter, false, false, false)
    elseif num_to_slaughter < 0 then
       -- we've queued up too many! probably user increased the maintain level after slaughter requests went out
       for id, _ in pairs(self._sv._queued_slaughters) do
@@ -251,11 +252,11 @@ function AceShepherdPastureComponent:_consider_maintain_animals()
    self.__saved_variables:mark_changed()
 end
 
-function AceShepherdPastureComponent:_try_slaughter(num_to_slaughter, not_if_named, not_if_renewably_harvestable)
+function AceShepherdPastureComponent:_try_slaughter(num_to_slaughter, not_if_named, not_if_renewably_harvestable, not_if_sleeping)
    if num_to_slaughter > 0 then
       for id, critter in pairs(self._sv.tracked_critters) do
          if not self._sv._queued_slaughters[id] then
-            if self:_request_slaughter_animal(critter.entity, not_if_named, not_if_renewably_harvestable) then
+            if self:_request_slaughter_animal(critter.entity, not_if_named, not_if_renewably_harvestable, not_if_sleeping) then
                num_to_slaughter = num_to_slaughter - 1
                if num_to_slaughter < 1 then
                   break
@@ -267,7 +268,7 @@ function AceShepherdPastureComponent:_try_slaughter(num_to_slaughter, not_if_nam
    return num_to_slaughter
 end
 
-function AceShepherdPastureComponent:_request_slaughter_animal(animal, not_if_named, not_if_renewably_harvestable)
+function AceShepherdPastureComponent:_request_slaughter_animal(animal, not_if_named, not_if_renewably_harvestable, not_if_sleeping)
    if not animal:is_valid() then
       return false
    end
@@ -281,6 +282,13 @@ function AceShepherdPastureComponent:_request_slaughter_animal(animal, not_if_na
    if not_if_renewably_harvestable then
       local renewable_resource_component = animal:get_component('stonehearth:renewable_resource_node')
       if renewable_resource_component and renewable_resource_component:is_harvestable() then
+         return false
+      end
+   end
+	
+	if not_if_sleeping then
+      local buffs = animal:get_component('stonehearth:buffs')
+      if buffs and buffs:has_buff('stonehearth:buffs:sleeping') then
          return false
       end
    end
@@ -669,6 +677,39 @@ function AceShepherdPastureComponent:_destroy_trough_listener(id)
    if self._trough_listeners[id] then
       self._trough_listeners[id]:destroy()
       self._trough_listeners[id] = nil
+   end
+end
+
+function AceShepherdPastureComponent:_collect_strays()
+   for id, critter_data in pairs(self._sv.tracked_critters) do
+      local critter = critter_data.entity
+
+      if critter and critter:is_valid() then
+         local critter_location = radiant.entities.get_world_grid_location(critter)
+         if critter_location then -- Critter location can be nil if the critter is an egg that is being moved.
+            local region_shape = self._entity:add_component('region_collision_shape'):get_region():get()
+
+            local pasture_location = radiant.entities.get_world_grid_location(self._entity)
+            local world_region_shape = region_shape:translated(pasture_location):extruded('y', 0, 10)
+
+            local equipment_component = critter:get_component('stonehearth:equipment')
+            local pasture_collar = equipment_component:has_item_type('stonehearth:pasture_equipment:tag')
+            local shepherded_animal_component = pasture_collar:get_component('stonehearth:shepherded_animal')
+
+            if not world_region_shape:contains(critter_location) and shepherded_animal_component:can_follow() then
+               local town = stonehearth.town:get_town(self._entity)
+               local find_stray_task = town:create_task_for_group(
+                  'stonehearth:task_groups:herding',
+                  'stonehearth:find_stray_animal',
+                  {animal = critter, pasture = self._entity})
+                     :set_source(critter)
+                     :once()
+                     :start()
+
+               table.insert(self._added_pasture_tasks, find_stray_task)
+            end
+         end
+      end
    end
 end
 
