@@ -299,6 +299,10 @@ function catalog_lib._add_catalog_description(catalog, full_alias, json, base_da
             catalog_data.drink_quality = drink.quality
          end
       end
+
+      if entity_data['stonehearth_ace:buildable_data'] then
+         catalog_data.is_buildable = true
+      end
    end
 
    catalog[full_alias] = catalog_data

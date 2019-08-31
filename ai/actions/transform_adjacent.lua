@@ -22,6 +22,12 @@ function TransformItemAdjacent:start(ai, entity, args)
       key = 'transform'
    end
    ai:set_status_text_key('stonehearth_ace:ai.actions.status_text.' .. key, { target = args.item })
+
+   self._destroy_listener = radiant.events.listen_once(args.item, 'radiant:entity:pre_destroy', function()
+      if not self._completed_work then
+         ai:abort()
+      end
+   end)
 end
 
 function TransformItemAdjacent:stop(ai, entity, args)
@@ -29,8 +35,10 @@ function TransformItemAdjacent:stop(ai, entity, args)
    if transform_comp then
       transform_comp:_destroy_effect()
    end
-   if self._progress_comp then
-      entity:remove_component('stonehearth_ace:progress')
+
+   if self._destroy_listener then
+      self._destroy_listener:destroy()
+      self._destroy_listener = nil
    end
 end
 
@@ -58,28 +66,29 @@ function TransformItemAdjacent:run(ai, entity, args)
       local transformed_form
       if effect then
          transform_comp:perform_transform()
-
-         self._progress_comp = entity:add_component('stonehearth_ace:progress')
-         self._progress_comp:set_activity(radiant.entities.get_display_name(item))
-         self._progress_comp:reset_progress()
+         local progress = transform_comp:get_progress()
 
          if duration then
-            -- determine how long the effect will last and create a progress tracker for that
-            local total_duration = stonehearth.calendar:parse_duration(duration, true)
-            self._progress_comp:set_max_progress(100)
-            self._progress_comp:start_time_tracking(total_duration / 100, 1)
+            -- determine how long the effect will last based on previous progress
+            local this_duration = stonehearth.calendar:parse_duration(duration, true) * (1 - progress:get_progress_percentage())
 
-            ai:execute('stonehearth:run_effect_timed', { effect = effect, duration = duration})
+            ai:execute('stonehearth:run_effect_timed', { effect = effect, duration = this_duration})
          else
-            self._progress_comp:set_max_progress(times)
+            progress:set_max_progress(data.transforming_worker_effect_times)
 
             for i = 1, times or 1 do
+               if progress:is_finished() then
+                  break
+               end
+
                ai:execute('stonehearth:run_effect', { effect = effect})
-               self._progress_comp:increment_progress()
+               progress:increment_progress()
             end
          end
+         self._completed_work = true
          transformed_form = transform_comp:transform()
       else
+         self._completed_work = true
          transformed_form = transform_comp:perform_transform(true)
       end
 

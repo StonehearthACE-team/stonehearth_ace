@@ -89,7 +89,9 @@ App.StonehearthUnitFrameView.reopen({
           "work_order_refs": {}
       },
       "stonehearth_ace:titles": {},
-      "stonehearth_ace:progress": {}
+      "stonehearth_ace:transform": {
+         "progress": {}
+      }
   },
 
    didInsertElement: function() {
@@ -491,15 +493,18 @@ App.StonehearthUnitFrameView.reopen({
 
    _updateCraftingProgress: function() {
       var self = this;
-      var progress = self.get('model.stonehearth_ace:progress');
+      var progress = self.get('model.stonehearth_ace:transform.progress');
       if (progress) {
          var doneSoFar = progress.progress;
          var total = progress.max_progress;
          var percentage = Math.round((doneSoFar * 100) / total);
-         self.set('progress', percentage);
+         self.set('transformProgress', percentage);
          Ember.run.scheduleOnce('afterRender', self, function() {
-            self.$('#progress').css("width", percentage / 100 * this.$('#progressbar').width());
+            self.$('#transformProgress').css("width", percentage / 100 * this.$('#transformProgressbar').width());
          });
       }
-   }.observes('model.stonehearth_ace:progress.progress')
+      else {
+         self.set('transformProgress', null);
+      }
+   }.observes('model.stonehearth_ace:transform.progress')
 });

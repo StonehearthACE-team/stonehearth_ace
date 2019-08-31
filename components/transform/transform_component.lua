@@ -55,6 +55,7 @@ end
 
 function TransformComponent:destroy()
    self:_destroy_effect()
+   self:_destroy_progress()
    self:_destroy_request_listeners()
 end
 
@@ -78,6 +79,18 @@ function TransformComponent:_destroy_request_listeners()
       self._added_to_world_listener:destroy()
       self._added_to_world_listener = nil
    end
+end
+
+function TransformComponent:_destroy_progress()
+   if self._sv.progress then
+      self._sv.progress:destroy()
+      self._sv.progress = nil
+      self.__saved_variables:mark_changed()
+   end
+end
+
+function TransformComponent:get_progress()
+   return self._sv.progress
 end
 
 function TransformComponent:get_transform_key()
@@ -197,6 +210,19 @@ function TransformComponent:perform_transform(use_finish_cb)
    local data = self._transform_data
    if not data then
       return false
+   end
+   
+   if not self._sv.progress then
+      self._sv.progress = radiant.create_controller('stonehearth_ace:progress_tracker', self._entity)
+      self.__saved_variables:mark_changed()
+   end
+
+   local max_progress
+   local duration
+   if data.transforming_effect_duration then
+      duration = stonehearth.calendar:parse_duration(data.transforming_effect_duration, true)
+      self._sv.progress:set_max_progress(100)
+      self._sv.progress:start_time_tracking(duration / 100, 1)
    end
 
    if data.transforming_effect then

@@ -107,21 +107,20 @@
                   </div>
                {{/if}}
                {{#if view.model.stonehearth:ai}}
-                  {{#if view.model.stonehearth_ace:progress}}
-                     <div id="progressDiv">
-                        <div id="progressbar">
-                           <div id="item">
-                              {{i18n_key view.model.stonehearth_ace:progress.activity}}
-                           </div>
-                           <div id="progress"></div>
+                  <div id="activityDiv" {{bind-attr class=view.hasPortrait:hasPortrait}}>
+                     <div class="activity">{{i18n_key view.model.stonehearth:ai.status_text_key data=view.model.stonehearth:ai.status_text_data}}</div>
+                  </div>
+               {{/if}}
+               {{#if view.model.stonehearth_ace:transform.progress}}
+                  <div id="transformProgressbarDiv">
+                     <div id="transformProgressbar">
+                        <div id="item">
+                           {{i18n stonehearth_ace:ui.game.unit_frame.transform.progress}}
                         </div>
-                        <div id="percentComplete" class="description">{{view.progress}}%</div>
+                        <div id="transformProgress"></div>
                      </div>
-                  {{else}}
-                     <div id="activityDiv" {{bind-attr class=view.hasPortrait:hasPortrait}}>
-                        <div class="activity">{{i18n_key view.model.stonehearth:ai.status_text_key data=view.model.stonehearth:ai.status_text_data}}</div>
-                     </div>
-                  {{/if}}
+                     <div id="percentComplete" class="description">{{view.transformProgress}}%</div>
+                  </div>
                {{/if}}
                {{#if view.model.stonehearth:workshop.order}}
                   <div id="progressDiv">
