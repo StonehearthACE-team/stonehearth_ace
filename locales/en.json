@@ -1489,6 +1489,18 @@
                   "3_description": "They have had a bad morning after like eighteen times... They probably enjoy it somehow!",
                   "4_display_name": " the Unquenched",
                   "4_description": "They have been there and back again sixty times! Live and die by the bottle, they say..."
+               },
+               "bee_swarmed": {
+                  "display_name": "Swarmed!",
+                  "description": "Gained by being swarmed by bees.",
+                  "1_display_name": "the Stinged",
+                  "1_description": "They have been swarmed by bees once. Ouch, that probably hurts...",
+                  "2_display_name": "the Peppered",
+                  "2_description": "They have been swarmed by bees 5 times now! That's a lot, they're definitely not allergic to it.",
+                  "3_display_name": "the Pollinated",
+                  "3_description": "They have been swarmed by bees 15 times. Do they look like a flower or something? Bees really love them!",
+                  "4_display_name": ", Honorary Queen",
+                  "4_description": "They have been swarmed by bees 30 times! This is crazy, maybe bees just really want to follow them. Or maybe you should make them a beekeeper's hat..."
                }
             }
          }
@@ -2299,7 +2311,7 @@
             "herbalist_bee_skep_recipe": {
                "recipe_name": "Bee Skep",
                "description": "Supplies your town with beekeeping products but won't produce during the winter.",
-               "flavor": "You can obtain captive bees by harvesting wild beehives found when cutting trees!"
+               "flavor": "You can obtain captive bees by harvesting wild bee nests found when cutting trees!"
             },
             "herbalist_beekeeping_hat_recipe": {
                "recipe_name": "Herbalist's Beekeeping Hat",
@@ -2308,7 +2320,7 @@
             },
             "worker_beekeeping_hat_recipe": {
                "recipe_name": "Worker's Beekeeping Hat",
-               "description": "Provides protection when hauling and passing by bee skeps or hives.",
+               "description": "Provides protection when hauling and passing by bee skeps or nests.",
                "flavor": "A simpler and lighter variant for all the workers out there!"
             },
             "almond_transmute_recipe": {
@@ -2671,7 +2683,7 @@
          },
          "herbalist_beekeeping_hat": {
             "display_name": "Herbalist's Beekeeping Hat",
-            "description": "Very useful for being safe while harvesting from beehives and skeps."
+            "description": "Very useful for being safe while harvesting from bee nests and skeps."
          },
          "herbalist_bee_skep": {
             "display_name": "Bee Skep",
@@ -7244,11 +7256,11 @@
             "display_name": "Boar"
          },
          "beehive": {
-            "display_name": "Bee Hive",
+            "display_name": "Bee Nest",
             "description": "Careful, it is still active! An herbalist can harvest it for its resources and bees..."
          },
          "beehive_dead": {
-            "display_name": "Dead Bee Hive",
+            "display_name": "Dead Bee Nest",
             "description": "There are no bees here anymore... Harvest if for what's left of the resources!"
          }
       },
@@ -9977,7 +9989,7 @@
                "items": {
                   "build_well": {
                      "display_name": "Dig Water Well",
-                     "description": "Order the creation of a simple water well for hearthlings to have easy access to water",
+                     "description": "Order the creation of a simple water well for hearthlings to have access to clean water",
                      "tip_title": "Click to dig a well at that location",
                      "tip_description": "Make sure hearthlings can access the side with the rope attached. Locations closer to water will require less digging"
                   }
