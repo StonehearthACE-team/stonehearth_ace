@@ -1,6 +1,6 @@
 local AceJobInfoController = class()
 
-function AceJobInfoController:queue_order_if_possible(product_uri, amount)
+function AceJobInfoController:queue_order_if_possible(product_uri, amount, building)
    -- if we can craft this product, queue it up and return true
    if not self._sv.order_list then
       return false
@@ -15,8 +15,14 @@ function AceJobInfoController:queue_order_if_possible(product_uri, amount)
       return false
    end
 
-   self._sv.order_list:request_order_of(self._sv.player_id, product_uri, amount)
+   self._sv.order_list:request_order_of(self._sv.player_id, product_uri, amount, building)
    return true
+end
+
+function AceJobInfoController:remove_craft_orders_for_building(bid)
+   if self._sv.order_list then
+      self._sv.order_list:remove_craft_orders_for_building(bid)
+   end
 end
 
 return AceJobInfoController

@@ -27,9 +27,9 @@ AceCraftOrderList._ace_old_add_order = CraftOrderList.add_order
 -- Furthermore, when maintaining orders, it makes sure that there are no more than
 -- one instance of each recipe that's maintained.
 --
-function AceCraftOrderList:add_order(player_id, recipe, condition, associated_orders)
+function AceCraftOrderList:add_order(player_id, recipe, condition, building, associated_orders)
    if not self:_should_auto_craft_recipe_dependencies(player_id) then
-      return self:insert_order(player_id, recipe, condition)
+      return self:insert_order(player_id, recipe, condition, nil, building)
    end
 
    local is_recursive_call = associated_orders ~= nil
@@ -113,7 +113,7 @@ function AceCraftOrderList:add_order(player_id, recipe, condition, associated_or
             if not associated_orders then
                associated_orders = {}
             end
-            local associated_order = recipe_info.order_list:add_order(player_id, recipe_info.recipe, new_condition, associated_orders)
+            local associated_order = recipe_info.order_list:add_order(player_id, recipe_info.recipe, new_condition, building, associated_orders)
             if associated_order and associated_order ~= true then
                table.insert(associated_orders, {order_list = recipe_info.order_list, order = associated_order})
             end
@@ -144,7 +144,7 @@ function AceCraftOrderList:add_order(player_id, recipe, condition, associated_or
             --       I haven't found a way to accomplish that *and* have the ui update itself instantly
 
             old_order_index = self:find_index_of(order:get_id())
-            self:remove_order(order)
+            self:remove_order(order:get_id())
          else
             log:debug('an order already exists which fulfills the request')
             return true
@@ -152,7 +152,7 @@ function AceCraftOrderList:add_order(player_id, recipe, condition, associated_or
       end
    end
 
-   local result = self:insert_order(player_id, recipe, condition, old_order_index)
+   local result = self:insert_order(player_id, recipe, condition, old_order_index, building)
 
    -- if we got to this point, it's because we're auto-crafting dependencies
    result:set_auto_crafting(true)
@@ -169,11 +169,14 @@ function AceCraftOrderList:add_order(player_id, recipe, condition, associated_or
    return result
 end
 
-function AceCraftOrderList:insert_order(player_id, recipe, condition, maintain_order_index)
+function AceCraftOrderList:insert_order(player_id, recipe, condition, maintain_order_index, building)
    self:_ace_old_add_order(player_id, recipe, condition)
    log:debug('inserted order for %d %s', condition.at_least or condition.amount, recipe.recipe_name)
 
    local order = self._sv.orders[#self._sv.orders]
+   if building then
+      order:set_building_id(building)
+   end
 
 	local old_order_index = condition.order_index or maintain_order_index
 	if old_order_index then
@@ -195,7 +198,7 @@ function AceCraftOrderList:insert_order(player_id, recipe, condition, maintain_o
 end
 
 -- this is used by the job_info_controller:queue_order_if_possible
-function AceCraftOrderList:request_order_of(player_id, product, amount)
+function AceCraftOrderList:request_order_of(player_id, product, amount, building)
    local crafter_info = stonehearth_ace.crafter_info:get_crafter_info(player_id)
 
    local recipe_info = self:_ace_get_recipe_info_from_product(product, crafter_info)
@@ -206,7 +209,7 @@ function AceCraftOrderList:request_order_of(player_id, product, amount)
          type = 'make',
          amount = num
       }
-      return recipe_info.order_list:add_order(player_id, recipe_info.recipe, condition)
+      return recipe_info.order_list:add_order(player_id, recipe_info.recipe, condition, building)
    end
 end
 
@@ -341,27 +344,25 @@ function AceCraftOrderList:ace_get_ingredient_amount_in_order_list(crafter_info,
       total = 0,
    }
 
-   for _, order in pairs(self._sv.orders) do
-      if type(order) ~= 'number' then
-         if to_order_id and order:get_id() >= to_order_id then
-            break
-         end
-         local recipe = crafter_info:get_formatted_recipe(order:get_recipe())
+   for i, order in ipairs(self._sv.orders) do
+      if to_order_id and order:get_id() >= to_order_id then
+         break
+      end
+      local recipe = crafter_info:get_formatted_recipe(order:get_recipe())
 
-         if recipe then
-            local condition = order:get_condition()
+      if recipe then
+         local condition = order:get_condition()
 
-            local material_produces = ingredient.material and self:_recipe_produces_materials(recipe, ingredient.material)
-            local uri_produces = ingredient.uri and recipe.products[ingredient.uri]
-            local num_produces = material_produces or uri_produces
+         local material_produces = ingredient.material and self:_recipe_produces_materials(recipe, ingredient.material)
+         local uri_produces = ingredient.uri and recipe.products[ingredient.uri]
+         local num_produces = material_produces or uri_produces
 
-            if num_produces then
-               local amount = condition.remaining
-               if condition.type == 'maintain' then
-                  amount = condition.at_least
-               end
-               ingredient_count[condition.type] = ingredient_count[condition.type] + amount * num_produces
+         if num_produces then
+            local amount = condition.remaining
+            if condition.type == 'maintain' then
+               amount = condition.at_least
             end
+            ingredient_count[condition.type] = ingredient_count[condition.type] + amount * num_produces
          end
       end
    end
@@ -427,14 +428,12 @@ function AceCraftOrderList:_ace_find_craft_order(recipe_name, order_type)
    --log:debug('finding a recipe for "%s"', recipe_name)
    --log:debug('There are %d orders', radiant.size(self._sv.orders) - 1)
 
-   for _, order in pairs(self._sv.orders) do
-      if type(order) ~= 'number' then
-         local order_recipe_name = order:get_recipe().recipe_name
-         --log:debug('evaluating order with recipe "%s"', order_recipe_name)
+   for i, order in ipairs(self._sv.orders) do
+      local order_recipe_name = order:get_recipe().recipe_name
+      --log:debug('evaluating order with recipe "%s"', order_recipe_name)
 
-         if order_recipe_name == recipe_name and (not order_type or order:get_condition().type == order_type) then
-            return order
-         end
+      if order_recipe_name == recipe_name and (not order_type or order:get_condition().type == order_type) then
+         return order
       end
    end
 
@@ -483,6 +482,18 @@ function AceCraftOrderList:get_next_order(crafter)
          self._stuck_timer = stonehearth.calendar:set_timer("reconsider stuck orders", constants.crafting.RECONSIDER_ORDERS_COOLDOWN,
                              function() radiant.events.trigger(self, 'stonehearth:order_list_changed') end)
       end
+   end
+end
+
+function AceCraftOrderList:remove_craft_orders_for_building(bid)
+   local to_remove = {}
+   for i, order in ipairs(self._sv.orders) do
+      if order:get_building_id() == bid then
+         table.insert(to_remove, order:get_id())
+      end
+   end
+   for _, order_id in ipairs(to_remove) do
+      self:remove_order(order_id)
    end
 end
 

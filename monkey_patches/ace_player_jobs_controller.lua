@@ -9,6 +9,20 @@ local AcePlayerJobsController = class()
 
 -- For a given player, keep a table of job_info_controllers for that player
 
+function AcePlayerJobsController:request_craft_product(product_uri, amount, building)
+   for _, job_info in pairs(self._sv.jobs) do
+      if job_info:queue_order_if_possible(product_uri, amount, building) then
+         break
+      end
+   end
+end
+
+function AcePlayerJobsController:remove_craft_orders_for_building(bid)
+   for _, job_info in pairs(self._sv.jobs) do
+      job_info:remove_craft_orders_for_building(bid)
+   end
+end
+
 function AcePlayerJobsController:_ensure_job_id(id)
    self:_ensure_job_index()
 

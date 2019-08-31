@@ -14,6 +14,9 @@ function AceCrafterJobsNode:start()
 
    local resource_constants = stonehearth.constants.resources
 
+   log:debug('queuing crafting jobs for %s', self._building)
+   local bid = self._building:get_id()
+
    for resource_name, stacks in pairs(self._resources) do
       if stacks > 0 then
          local resource_constant_data = resource_constants[resource_name]
@@ -22,7 +25,7 @@ function AceCrafterJobsNode:start()
             local job_info = stonehearth.job:get_job_info(player_id, crafter_job)
             if job_info then
                local count = math.ceil(stacks / (resource_constant_data.stacks or 1))
-               job_info:queue_order_if_possible(resource_constant_data.default_resource, count)
+               job_info:queue_order_if_possible(resource_constant_data.default_resource, count, bid)
             end
          end
       end
@@ -35,7 +38,7 @@ function AceCrafterJobsNode:start()
          local real_uri = item_data[1]
          local quality = tonumber(item_data[2])
 
-         player_jobs_controller:request_craft_product(real_uri, count)
+         player_jobs_controller:request_craft_product(real_uri, count, bid)
       end
    end
 end

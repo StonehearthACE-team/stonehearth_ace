@@ -10,6 +10,7 @@ local service_creation_order = {
 }
 
 local monkey_patches = {
+   ace_building_service = 'stonehearth.services.server.building.building_service',
    ace_craft_order_list = 'stonehearth.components.workshop.craft_order_list',
    ace_craft_order = 'stonehearth.components.workshop.craft_order',
    ace_crafter_component = 'stonehearth.components.crafter.crafter_component',

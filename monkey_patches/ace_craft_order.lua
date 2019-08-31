@@ -337,4 +337,13 @@ function AceCraftOrder:set_associated_orders(associated_orders)
    self.__saved_variables:mark_changed()
 end
 
+function AceCraftOrder:get_building_id()
+   return self._sv.building_id
+end
+
+function AceCraftOrder:set_building_id(building_id)
+   self._sv.building_id = building_id
+   self.__saved_variables:mark_changed()
+end
+
 return AceCraftOrder
