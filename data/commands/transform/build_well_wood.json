@@ -1,0 +1,14 @@
+{
+   "type": "command",
+   "name": "build_well_wood",
+   "display_name": "i18n(stonehearth_ace:data.commands.transform.build_well_wood.display_name)",
+   "description": "i18n(stonehearth_ace:data.commands.transform.build_well_wood.description)",
+   "default_enabled": true,
+   "ordinal": 99,
+   "icon": "/stonehearth_ace/entities/construction/wooden_water_well/wooden_water_well.png",
+   "action": "call",
+   "function": "stonehearth_ace:transform_command",
+   "args": [
+      "wooden_well"
+   ]
+}

@@ -1656,10 +1656,6 @@
                "display_name": "Fill Fermenting Vat",
                "description": "Order the Cook or Herbalist to fill this fermenting vat with wort to start brewing! Wort is crafted by the Cook."
             },
-            "build_well": {
-               "display_name": "Build Water Well",
-               "description": "Order the construction of this water well. A water well can't be undeployed or moved and can only be removed by destroying it."
-            },
             "build_well_roof": {
                "display_name": "Add Roof",
                "description": "Use a crafted Water Well Roof of the same kind to add a fancy roof to make your citizens happier and your water always fresh!"
@@ -1667,6 +1663,18 @@
             "fermenting_vat_gruit": {
                "display_name": "Add Gruit",
                "description": "Order the Cook or Herbalist to add gruit to the ale, letting it bitter and turn into beer, a more refined drink. Gruit is crafted by the Herbalist."
+            },
+            "build_well_clay": {
+               "display_name": "Build Clay Water Well",
+               "description": "Order this simple well to be upgraded into a clay water well. Doing so requires Clay Water Well Parts, a refined item that can be crafted by the Potter."
+            },
+            "build_well_stone": {
+               "display_name": "Build Stone Water Well",
+               "description": "Order this simple well to be upgraded into a stone water well. Doing so requires Stone Water Well Parts, a refined item that can be crafted by the Mason."
+            },
+            "build_well_wood": {
+               "display_name": "Build Wooden Water Well",
+               "description": "Order this simple well to be upgraded into a wooden water well. Doing so requires Wooden Water Well Parts, a refined item that can be crafted by the Carpenter."
             }
          },
          "slaughter": {
@@ -3007,9 +3015,9 @@
                "flavor": "Can hold a diverse range of fluids and dry goods"
             },
             "clay_water_well_recipe": {
-               "recipe_name": "Clay Water Well",
-               "description": "Assemble the materials for building an ingenious mechanism for retrieving underground water.",
-               "flavor": "Once placed a well needs to be built and can't be moved anymore, only destroyed"
+               "recipe_name": "Clay Water Well Parts",
+               "description": "Assemble the materials for upgrading a simple well into a nice, better looking clay well.",
+               "flavor": "Requires a finished simple well. One can be dug by using the command inside the 'Place' menu!"
             },
             "water_well_roof_clay_recipe": {
                "recipe_name": "Clay Water Well Roof",
@@ -3368,9 +3376,9 @@
                "flavor": "Can hold a diverse range of fluids and dry goods"
             },
             "stone_water_well_recipe": {
-               "recipe_name": "Stone Water Well",
-               "description": "Assemble the materials for building an ingenious mechanism for retrieving underground water.",
-               "flavor": "Once placed a well needs to be built and can't be moved anymore, only destroyed"
+               "recipe_name": "Stone Water Well Parts",
+               "description": "Assemble the materials for upgrading a simple well into a nice, better looking stone well.",
+               "flavor": "Requires a finished simple well. One can be dug by using the command inside the 'Place' menu!"
             },
             "water_well_roof_stone_recipe": {
                "recipe_name": "Stone Water Well Roof",
@@ -4477,9 +4485,9 @@
                "flavor": "Can hold a diverse range of fluids and dry goods"
             },
             "wooden_water_well_recipe": {
-               "recipe_name": "Wooden Water Well",
-               "description": "Assemble the materials for building an ingenious mechanism for retrieving underground water.",
-               "flavor": "Once placed a well needs to be built and can't be moved anymore, only destroyed"
+               "recipe_name": "Wooden Water Well Parts",
+               "description": "Assemble the materials for upgrading a simple well into a nice, better looking wooden well.",
+               "flavor": "Requires a finished simple well. One can be dug by using the command inside the 'Place' menu!"
             },
             "water_well_roof_wood_recipe": {
                "recipe_name": "Wooden Water Well Roof",
@@ -5095,7 +5103,7 @@
          },
          "simple_water_well": {
             "display_name": "Simple Water Well",
-            "description": "An ingenious mechanism for retrieving underground water."
+            "description": "For retrieving underground water. Can be upgraded."
          },
          "wooden_water_well": {
             "display_name": "Wooden Water Well",
@@ -5121,30 +5129,12 @@
             "display_name": "Clay Roofed Water Well",
             "description": "An ingenious mechanism for retrieving underground water."
          },
-         "wooden_water_well_building_ghost": {
-            "description": "Place a building site for your citizens to start working on a water well!"
-         },
-         "wooden_water_well_building": {
-            "display_name": "Well Construction Site",
-            "description": "This wooden water well requires building before it can be used."
-         },
-         "stone_water_well_building_ghost": {
-            "description": "Place a building site for your citizens to start working on a water well!"
-         },
-         "clay_water_well_building_ghost": {
-            "description": "Place a building site for your citizens to start working on a water well!"
-         },
-         "stone_water_well_building": {
-            "display_name": "Well Construction Site",
-            "description": "This stone water well requires building before it can be used."
-         },
-         "clay_water_well_building": {
-            "display_name": "Well Construction Site",
-            "description": "This clay water well requires building before it can be used."
-         },
          "bronze_portcullis_large": {
             "display_name": "Large Bronze Portcullis",
             "description": "Whenever size matters, go bigger."
+         },
+         "simple_water_well_ghost": {
+            "description": "Will require some digging and hammering before it's working..."
          }
       },
       "crops": {
@@ -5751,6 +5741,18 @@
          "water_well_roof_clay": {
             "display_name": "Clay Water Well Roof",
             "description": "A worker or a potter can install this roof on a clay water well!"
+         },
+         "water_well_kit_wood": {
+            "display_name": "Wooden Water Well Parts",
+            "description": "Use this set of materials on a simple well to turn it into a better, nicer well."
+         },
+         "water_well_kit_stone": {
+            "display_name": "Stone Water Well Parts",
+            "description": "Use this set of materials on a simple well to turn it into a better, nicer well."
+         },
+         "water_well_kit_clay": {
+            "display_name": "Clay Water Well Parts",
+            "description": "Use this set of materials on a simple well to turn it into a better, nicer well."
          }
       },
       "trees": {
@@ -9974,10 +9976,10 @@
             "build_menu": {
                "items": {
                   "build_well": {
-                     "display_name": "Dig Well",
-                     "description": "Dig a well to allow hearthlings easy access to water for drinking.",
+                     "display_name": "Dig Water Well",
+                     "description": "Order the creation of a simple water well for hearthlings to have easy access to water",
                      "tip_title": "Click to dig a well at that location",
-                     "tip_description": "Locations closer to water require less digging"
+                     "tip_description": "Make sure hearthlings can access the side with the rope attached. Locations closer to water will require less digging"
                   }
                }
             },

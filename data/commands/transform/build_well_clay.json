@@ -1,0 +1,14 @@
+{
+   "type": "command",
+   "name": "build_well_clay",
+   "display_name": "i18n(stonehearth_ace:data.commands.transform.build_well_clay.display_name)",
+   "description": "i18n(stonehearth_ace:data.commands.transform.build_well_clay.description)",
+   "default_enabled": true,
+   "ordinal": 99,
+   "icon": "/stonehearth_ace/entities/construction/clay_water_well/clay_water_well.png",
+   "action": "call",
+   "function": "stonehearth_ace:transform_command",
+   "args": [
+      "clay_well"
+   ]
+}

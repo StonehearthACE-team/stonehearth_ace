@@ -73,22 +73,50 @@
          "transform_options": {
             "wooden_well": {
                "transform_uri": "stonehearth_ace:construction:wooden:water_well",
-               "command": "stonehearth_ace:commands:transform:build_well",
+               "command": "stonehearth_ace:commands:transform:build_well_wood",
                "request_action": "stonehearth_ace:transform",
-               "request_action_overlay_effect": "stonehearth_ace:effects:transform_worker_upgrade_overlay_effect",
-               "transform_ingredient_uri": "stonehearth_ace:refined:water_well_roof:wood",
-               "transforming_worker_effect": "work",
-               "transforming_worker_effect_times": 6,
+               "request_action_overlay_effect": "stonehearth_ace:effects:transform_carpenter_overlay_effect",
+               "transform_ingredient_uri": "stonehearth_ace:refined:water_well_kit:wood",
+               "transforming_worker_effect": "saw",
+               "transforming_worker_effect_times": 12,
                "transform_effect": "stonehearth:effects:poof_effect",
                "worker_required_job": {
                   "stonehearth:jobs:worker": true,
                   "stonehearth:jobs:carpenter": true
                }
+            },
+            "stone_well": {
+               "transform_uri": "stonehearth_ace:construction:stone:water_well",
+               "command": "stonehearth_ace:commands:transform:build_well_stone",
+               "request_action": "stonehearth_ace:transform",
+               "request_action_overlay_effect": "stonehearth_ace:effects:transform_mason_overlay_effect",
+               "transform_ingredient_uri": "stonehearth_ace:refined:water_well_kit:stone",
+               "transforming_worker_effect": "chisel",
+               "transforming_worker_effect_times": 12,
+               "transform_effect": "stonehearth:effects:poof_effect",
+               "worker_required_job": {
+                  "stonehearth:jobs:worker": true,
+                  "stonehearth:jobs:mason": true
+               }
+            },
+            "clay_well": {
+               "transform_uri": "stonehearth_ace:construction:clay:water_well",
+               "command": "stonehearth_ace:commands:transform:build_well_clay",
+               "request_action": "stonehearth_ace:transform",
+               "request_action_overlay_effect": "stonehearth_ace:effects:transform_potter_overlay_effect",
+               "transform_ingredient_uri": "stonehearth_ace:refined:water_well_kit:clay",
+               "transforming_worker_effect": "work",
+               "transforming_worker_effect_times": 12,
+               "transform_effect": "stonehearth:effects:poof_effect",
+               "worker_required_job": {
+                  "stonehearth:jobs:worker": true,
+                  "stonehearth:jobs:potter": true
+               }
             }
          }
       },
       "stonehearth:appeal": {
-         "appeal": -1
+         "appeal": -2
       }
    }
 }

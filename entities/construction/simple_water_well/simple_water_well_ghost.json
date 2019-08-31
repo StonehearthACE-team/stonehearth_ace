@@ -23,14 +23,9 @@
       "destination": {
          "region": [
             {
-               "min": { "x": -2, "y": 0, "z": 0 },
-               "max": { "x": 0, "y": 1, "z": 1 }
+               "min": { "x": -2, "y": 0, "z": -2 },
+               "max": { "x": 3, "y": 1, "z": 3 }
             }
-         ],
-         "adjacency_flags": [
-            "left",
-            "back_left",
-            "front_left"
          ]
       },
       "region_collision_shape": {
@@ -39,7 +34,8 @@
                "min": { "x": -2, "y": 0, "z": -2 },
                "max": { "x": 3, "y": 5, "z": 3 }
             }
-         ]
+         ],
+         "region_collision_type": "none"
       },
       "stonehearth:ghost_form": {},
       "stonehearth_ace:transform": {}
@@ -47,7 +43,7 @@
    "entity_data": {
       "stonehearth:catalog": {
          "display_name": "i18n(stonehearth_ace:entities.construction.simple_water_well.display_name)",
-         "description": "i18n(stonehearth_ace:entities.construction.simple_water_well.description)",
+         "description": "i18n(stonehearth_ace:entities.construction.simple_water_well_ghost.description)",
          "icon": "file(simple_water_well.png)",
          "category": "construction",
          "material_tags": [
@@ -67,7 +63,7 @@
          "auto_request": true,
          "request_action": "stonehearth_ace:transform",
          "request_action_overlay_effect": "stonehearth_ace:effects:transform_worker_upgrade_overlay_effect",
-         "transforming_worker_effect": "work",
+         "transforming_worker_effect": "hoe",
          "transforming_worker_effect_times": 5,
          "transform_effect": "stonehearth:effects:poof_effect",
          "worker_required_job": {

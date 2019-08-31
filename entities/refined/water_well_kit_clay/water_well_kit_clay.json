@@ -1,0 +1,37 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(water_well_kit_clay.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 24,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.refined.water_well_kit_clay.display_name)",
+         "description": "i18n(stonehearth_ace:entities.refined.water_well_kit_clay.description)",
+         "icon": "/stonehearth_ace/entities/construction/clay_water_well/clay_water_well.png",
+         "is_item": true,
+         "category": "refined",
+         "material_tags": [
+            "stockpile_refined_goods",
+            "clay",
+            "crafted",
+            "water_well_kit_clay",
+            "refined"
+         ]
+      }
+   }
+}
