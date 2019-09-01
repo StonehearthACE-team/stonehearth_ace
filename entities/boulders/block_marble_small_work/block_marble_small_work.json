@@ -60,12 +60,11 @@
          ]
       },
       "stonehearth_ace:transform_data": {
-         "transform_uri": [
-            "stonehearth_ace:boulder:block_marble:small:work",
-            "stonehearth_ace:boulder:block_marble:small:work",
-            "stonehearth_ace:decoration:statue:marble:poyo",
-            "stonehearth_ace:decoration:statue:marble:rabbit"
-         ],
+         "transform_uri": {
+            "stonehearth_ace:boulder:block_marble:small:work": 2,
+            "stonehearth_ace:decoration:statue:marble:poyo": 1,
+            "stonehearth_ace:decoration:statue:marble:rabbit": 1
+         },
          "command": "stonehearth_ace:commands:transform:sculpt_statue",
          "request_action": "stonehearth_ace:transform",
          "request_action_overlay_effect": "stonehearth_ace:effects:transform_mason_overlay_effect",

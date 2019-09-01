@@ -60,14 +60,11 @@
          ]
       },
       "stonehearth_ace:transform_data": {
-         "transform_uri": [
-            "stonehearth_ace:boulder:block_marble:large:work",
-            "stonehearth_ace:boulder:block_marble:large:work",
-            "stonehearth_ace:boulder:block_marble:large:work",
-            "stonehearth_ace:boulder:block_marble:large:work",
-            "stonehearth_ace:decoration:statue:marble:shepherd_girl",
-            "stonehearth_ace:decoration:statue:marble:farmer_male"
-         ],
+         "transform_uri": {
+            "stonehearth_ace:boulder:block_marble:large:work": 4,
+            "stonehearth_ace:decoration:statue:marble:shepherd_girl": 1,
+            "stonehearth_ace:decoration:statue:marble:farmer_male": 1
+         },
          "command": "stonehearth_ace:commands:transform:sculpt_statue",
          "request_action": "stonehearth_ace:transform",
          "request_action_overlay_effect": "stonehearth_ace:effects:transform_mason_overlay_effect",

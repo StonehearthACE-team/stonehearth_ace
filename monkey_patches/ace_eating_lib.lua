@@ -2,6 +2,8 @@ local EatingLib = require 'stonehearth.ai.lib.eating_lib'
 local AceEatingLib = class()
 
 function AceEatingLib.get_quality(food_stuff, food_preferences, food_intolerances)
+	local now = stonehearth.calendar:get_time_and_date()
+	local weather = stonehearth.weather:get_current_weather():get_uri()
    local food = food_stuff
    local food_uri = food:get_uri()
    local container_data = radiant.entities.get_entity_data(food, 'stonehearth:food_container', false)
@@ -31,6 +33,46 @@ function AceEatingLib.get_quality(food_stuff, food_preferences, food_intolerance
          return food_data.quality * stonehearth.constants.food.PREFERRED_FOOD_BONUS
       end
    end
+	
+	if stonehearth.constants.weather.cold_weathers[weather] then
+		if radiant.entities.is_material(food_stuff, 'warming') then
+         return food_data.quality + 4 or stonehearth.constants.food_qualities.COOKED_AVERAGE
+		elseif radiant.entities.is_material(food_stuff, 'refreshing') then
+			return food_data.quality - 1 or stonehearth.constants.food_qualities.RAW_AVERAGE
+		end
+	end
+	
+	if stonehearth.constants.weather.hot_weathers[weather] then
+		if radiant.entities.is_material(food_stuff, 'refreshing') then
+         return food_data.quality + 4 or stonehearth.constants.food_qualities.COOKED_AVERAGE
+		elseif radiant.entities.is_material(food_stuff, 'warming') then
+			return food_data.quality - 1 or stonehearth.constants.food_qualities.RAW_AVERAGE
+		end
+	end
+	
+	if now.hour >= stonehearth.constants.food.MEALTIME_DINNER_START and not radiant.entities.is_material(food_stuff, 'night_time') then
+      return food_data.quality - 2 or stonehearth.constants.food_qualities.RAW_BLAND
+	end 
+	
+	if now.hour >= stonehearth.constants.food.MEALTIME_START then
+		if radiant.entities.is_material(food_stuff, 'dinner_time') then
+         return food_data.quality - 1 or stonehearth.constants.food_qualities.RAW_BLAND
+		elseif not radiant.entities.is_material(food_stuff, 'lunch_time') then
+         return food_data.quality - 2 or stonehearth.constants.food_qualities.RAW_BLAND
+		elseif radiant.entities.is_material(food_stuff, 'lunch_time') then
+			return food_data.quality + 1 or stonehearth.constants.food_qualities.RAW_TASTY
+      end
+	end
+	
+	if now.hour >= stonehearth.constants.food.MEALTIME_BREAKFAST_START then
+		if radiant.entities.is_material(food_stuff, 'dinner_time') then
+         return food_data.quality - 1 or stonehearth.constants.food_qualities.RAW_BLAND
+		elseif not radiant.entities.is_material(food_stuff, 'breakfast_time') then
+         return food_data.quality - 2 or stonehearth.constants.food_qualities.RAW_BLAND
+      elseif radiant.entities.is_material(food_stuff, 'breakfast_time')then
+			return food_data.quality + 3 or stonehearth.constants.food_qualities.RAW_TASTY
+		end
+	end
 
    return food_data.quality or stonehearth.constants.food_qualities.RAW_BLAND
 end
