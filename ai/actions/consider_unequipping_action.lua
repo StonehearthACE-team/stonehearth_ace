@@ -58,6 +58,10 @@ function ConsiderUnequipping:destroy()
       self._seasons_listener:destroy()
       self._seasons_listener = nil
    end
+   if self._periodic_timer then
+      self._periodic_timer:destroy()
+      self._periodic_timer = nil
+   end
 end
 
 function ConsiderUnequipping:run(ai, entity, args)
