@@ -192,9 +192,12 @@ function TransformComponent:request_transform(player_id)
       task_tracker_component:cancel_current_task(false) -- cancel current task first and force the transform request
 
       if was_requested then
-         return false -- If someone had already requested to transform, just cancel the request and exit out
+         -- If someone had already requested to transform, just cancel the request and exit out
+         self:cancel_craft_order()
+         return false
       end
 
+      self:request_craft_order()
       local category = 'transform'  --data.category or 
       local success = task_tracker_component:request_task(player_id, category, data.request_action, data.request_action_overlay_effect)
       return success
@@ -304,6 +307,36 @@ function TransformComponent:spawn_additional_items(transforming_worker, collect_
 
       end
    end
+end
+
+-- for whatever ingredient is required and auto-crafted for the transformation, so that it can be modified/canceled
+function TransformComponent:request_craft_order()
+   local player_id = radiant.entities.get_player_id(self._entity)
+   local ingredient = self._transform_data and self._transform_data.transform_ingredient_auto_craft and self._transform_data.transform_ingredient_uri
+   if ingredient and stonehearth.client_state:get_client_gameplay_setting(player_id, 'stonehearth', 'building_auto_queue_crafters', true) then
+      local player_jobs = stonehearth.job:get_jobs_controller(player_id)
+      local order = player_jobs:request_craft_product(ingredient, 1)
+      self:set_craft_order(order)
+   end
+end
+
+function TransformComponent:set_craft_order(order)
+   if order then
+      self._sv.craft_order_id = order:get_id()
+      self._sv.craft_order_list = order:get_order_list()
+      self.__saved_variables:mark_changed()
+   end
+end
+
+function TransformComponent:cancel_craft_order()
+   local order_id = self._sv.craft_order_id
+   local order_list = self._sv.craft_order_list
+   if order_id and order_list then
+      order_list:remove_order(order_id, 1)
+   end
+   self._sv.craft_order_id = nil
+   self._sv.craft_order_list = nil
+   self.__saved_variables:mark_changed()
 end
 
 return TransformComponent

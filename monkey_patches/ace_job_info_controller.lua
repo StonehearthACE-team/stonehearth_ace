@@ -15,8 +15,7 @@ function AceJobInfoController:queue_order_if_possible(product_uri, amount, build
       return false
    end
 
-   self._sv.order_list:request_order_of(self._sv.player_id, product_uri, amount, building)
-   return true
+   return self._sv.order_list:request_order_of(self._sv.player_id, product_uri, amount, building)
 end
 
 function AceJobInfoController:remove_craft_orders_for_building(bid)

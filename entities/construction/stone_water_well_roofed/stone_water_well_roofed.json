@@ -40,6 +40,22 @@
                "max": { "x": 3, "y": 5, "z": 3 }
             }
          ]
+      },
+      "stonehearth:loot_drops": {
+         "force_auto_loot": true,
+         "entries": {
+            "default": {
+               "roll_type": "each_of",
+               "items": {
+                  "well_kit": {
+                     "uri": "stonehearth_ace:refined:water_well_kit:stone"
+                  },
+                  "roof": {
+                     "uri": "stonehearth_ace:refined:water_well_roof:stone"
+                  }
+               }
+            }
+         }
       }
    },
    "entity_data": {

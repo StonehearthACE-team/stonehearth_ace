@@ -41,7 +41,19 @@
             }
          ]
       },
-      "stonehearth_ace:transform": {}
+      "stonehearth_ace:transform": {},
+      "stonehearth:loot_drops": {
+         "force_auto_loot": true,
+         "entries": {
+            "default": {
+               "items": {
+                  "well_kit": {
+                     "uri": "stonehearth_ace:refined:water_well_kit:stone"
+                  }
+               }
+            }
+         }
+      }
    },
    "entity_data": {
       "stonehearth_ace:drink_container": {
@@ -78,6 +90,7 @@
          "request_action": "stonehearth_ace:transform",
          "request_action_overlay_effect": "stonehearth_ace:effects:transform_worker_upgrade_overlay_effect",
          "transform_ingredient_uri": "stonehearth_ace:refined:water_well_roof:stone",
+         "transform_ingredient_auto_craft": true,
          "transforming_worker_effect": "work",
          "transforming_worker_effect_times": 6,
          "transform_effect": "stonehearth:effects:poof_effect",
