@@ -114,12 +114,10 @@
                {{#if view.model.stonehearth_ace:transform.progress}}
                   <div id="transformProgressbarDiv">
                      <div id="transformProgressbar">
-                        <div id="item">
-                           {{i18n stonehearth_ace:ui.game.unit_frame.transform.progress}}
-                        </div>
+                        <div id="transformItem">{{i18n stonehearth_ace:ui.game.unit_frame.transform.progress}}</div>
                         <div id="transformProgress"></div>
                      </div>
-                     <div id="percentComplete" class="description">{{view.transformProgress}}%</div>
+                     <div id="transformPercentComplete" class="description">{{view.transformProgress}}%</div>
                   </div>
                {{/if}}
                {{#if view.model.stonehearth:workshop.order}}
@@ -128,9 +126,7 @@
                         <img {{bind-attr src="view.model.stonehearth:workshop.order.portrait"}} />
                      </div>
                      <div id="progressbar">
-                        <div id="item">
-                           {{i18n_key view.model.stonehearth:workshop.order.recipe.recipe_name}}
-                        </div>
+                        <div id="item">{{i18n_key view.model.stonehearth:workshop.order.recipe.recipe_name}}</div>
                         <div id="progress"></div>
                      </div>
                      <div id="percentComplete" class="description">{{view.progress}}%</div>
