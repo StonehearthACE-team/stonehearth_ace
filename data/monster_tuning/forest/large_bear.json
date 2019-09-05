@@ -19,5 +19,21 @@
       "weapon": [
          "stonehearth_ace:weapons:animals:bear_teeth"
       ]
+   },
+	"stonehearth:loot_drops": {
+      "entries": {
+			"big_bones": {
+            "num_rolls": {
+               "min": 0,
+               "max": 1
+            },
+            "items": {
+               "bone": {
+                  "uri": "stonehearth_ace:resources:bone:bone_big",
+						"weight": 1
+               }
+            }
+         }
+      }
    }
 }

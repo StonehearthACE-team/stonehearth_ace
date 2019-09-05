@@ -22,6 +22,18 @@
    },
    "stonehearth:loot_drops": {
       "entries": {
+			"big_bones": {
+            "num_rolls": {
+               "min": 1,
+               "max": 2
+            },
+            "items": {
+               "bone": {
+                  "uri": "stonehearth_ace:resources:bone:bone_big",
+						"weight": 1
+               }
+            }
+         },
          "default": {
             "items": {
                "skin": {

@@ -1,6 +1,22 @@
 {
    "loot_drops": {
       "entries": {
+			"big_bones": {
+            "num_rolls": {
+               "min": 0,
+               "max": 2
+            },
+            "items": {
+					"none": {
+                  "uri": "",
+						"weight": 4
+               },
+               "bone": {
+                  "uri": "stonehearth_ace:resources:bone:bone_big",
+						"weight": 1
+               }
+            }
+         },
          "currency": {
             "num_rolls": {
                "min": 0,
