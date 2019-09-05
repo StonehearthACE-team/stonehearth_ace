@@ -213,6 +213,29 @@ function AceCraftOrderList:request_order_of(player_id, product, amount, building
    end
 end
 
+function AceCraftOrderList:remove_order(order_id, amount)
+   local i = self:find_index_of(order_id)
+   if i then
+      local order = self._sv.orders[i]
+      if not amount or not order:reduce_quantity(amount) then
+         table.remove(self._sv.orders, i)
+         local order_id = order:get_id()
+
+         self._orders_cache[order_id] = nil
+         self._craftable_orders[order_id] = nil
+         if self._stuck_orders[order_id] then
+            self._stuck_orders[order_id] = nil
+         end
+
+         order:destroy()
+      end
+      
+      self:_on_order_list_changed()
+      return true
+   end
+   return false
+end
+
 AceCraftOrderList._ace_old_delete_order_command = CraftOrderList.delete_order_command
 -- In addition to the original delete_order_command function (from craft_order_list.lua),
 -- here it's also making sure that the ingredients needed for the order is removed

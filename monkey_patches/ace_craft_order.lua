@@ -346,4 +346,24 @@ function AceCraftOrder:set_building_id(building_id)
    self.__saved_variables:mark_changed()
 end
 
+function AceCraftOrder:get_order_list()
+   return self._sv.order_list
+end
+
+-- returns true if it successfully reduced the quantity to craft from a 'make' order
+-- returns false if the number remaining to make was less than or equal to the amount to reduce
+-- returns nil otherwise, e.g., if it's a 'maintain' order
+function AceCraftOrder:reduce_quantity(amount)
+   local condition = self._sv.condition
+   if condition.type == 'make' then
+      if condition.remaining > amount then
+         condition.remaining = condition.remaining - amount
+         self.__saved_variables:mark_changed()
+         return true
+      else
+         return false
+      end
+   end
+end
+
 return AceCraftOrder

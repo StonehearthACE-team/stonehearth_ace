@@ -11,8 +11,15 @@ local AcePlayerJobsController = class()
 
 function AcePlayerJobsController:request_craft_product(product_uri, amount, building)
    for _, job_info in pairs(self._sv.jobs) do
-      if job_info:queue_order_if_possible(product_uri, amount, building) then
-         break
+      local order = job_info:queue_order_if_possible(product_uri, amount, building)
+      if order then
+         -- it's just true if the order didn't need to be created
+         -- otherwise it returns the actual order
+         if order ~= true then
+            return order
+         else
+            return
+         end
       end
    end
 end
