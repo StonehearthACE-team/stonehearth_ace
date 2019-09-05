@@ -1,55 +1,126 @@
 {
-   "type": "monster_tuning",
-   "estimated_difficulty": 1,
-   "attributes": {
-      "max_health": 200,
-      "muscle": 0,
-      "menace": 70,
-      "courage": 150,
-      "speed": 100,
-      "additive_armor_modifier": 2,
-      "exp_reward": 80
-   },
-   "equipment": {
-      "weapon": [
-         "stonehearth:weapons:animals:wolf_undead_teeth"
-      ],
-      "abilities": "stonehearth:abilities:wolf_rider_abilities"
-   },
+	"mixintypes": {
+		"loot_drops": "override"
+	},
    "loot_drops": {
       "entries": {
-         "precious_metals": {
-            "num_rolls": 1,
+         "metals": {
+            "num_rolls": {
+					"min": 1,
+					"max": 1
+				},
             "items": {
                "none": {
-                  "weight": 4.5
+                  "weight": 30
                },
-               "gold_flakes": {
-                  "uri": "stonehearth:refined:gold_flakes",
-                  "weight": 0.5
+					"bronze_ingot": {
+                  "uri": "stonehearth:refined:bronze_ingot",
+                  "weight": 2
                },
-               "gold_ingot": {
-                  "uri": "stonehearth:refined:gold_ingot",
-                  "weight": 0.5
-               },
-               "gold_ore": {
-                  "uri": "stonehearth:resources:gold:ore",
-                  "weight": 0.5
-               },
-               "silver_ingot": {
-                  "uri": "stonehearth:refined:silver_ingot",
-                  "weight": 0.5
-               },
-               "steel_ingot": {
-                  "uri": "stonehearth:refined:steel_ingot",
+					"tin_ingot": {
+                  "uri": "stonehearth:refined:tin_ingot",
                   "weight": 1
                },
-               "iron_ingot": {
-                  "uri": "stonehearth:refined:iron_ingot",
+					"copper_ingot": {
+                  "uri": "stonehearth:refined:copper_ingot",
                   "weight": 1
                }
             }
-         }
+         },
+         "gear": {
+            "num_rolls": {
+					"min": 0,
+					"max": 1
+				},
+            "items": {
+               "none": {
+                  "weight": 80
+               },
+					"simple_quiver": {
+                  "uri": "stonehearth:armor:simple_quiver",
+                  "weight": 1
+               },
+					"long_bow": {
+						"uri": "stonehearth_ace:weapons:long_bow",
+						"weight": 1
+					},
+					"light_iron_shield": {
+                  "uri": "stonehearth_ace:armor:light_iron_shield",
+                  "weight": 1
+               },
+					"iron_mail": {
+                  "uri": "stonehearth:armor:iron_mail",
+                  "weight": 1
+               },
+               "iron_helm": {
+                  "uri": "stonehearth:armor:iron_helm",
+                  "weight": 1
+               },
+					"iron_axe": {
+                  "uri": "stonehearth_ace:weapons:iron_axe",
+                  "weight": 1
+               },
+					"iron_battle_axe": {
+                  "uri": "stonehearth_ace:weapons:iron_battle_axe",
+                  "weight": 1
+               },
+					"iron_sword": {
+                  "uri": "stonehearth_ace:weapons:iron_sword",
+                  "weight": 1
+               },
+					"iron_mace": {
+                  "uri": "stonehearth:weapons:iron_mace",
+                  "weight": 1
+               },
+					"bronze_shield": {
+                  "uri": "stonehearth:armor:bronze_shield",
+                  "weight": 1
+               },
+					"bronze_breastplate": {
+                  "uri": "stonehearth:armor:bronze_breastplate",
+                  "weight": 1
+               },
+               "bronze_helm": {
+                  "uri": "stonehearth:armor:bronze_helm",
+                  "weight": 1
+               },
+					"bronze_axe": {
+                  "uri": "stonehearth_ace:weapons:bronze_axe",
+                  "weight": 1
+               },
+					"bronze_sword": {
+                  "uri": "stonehearth:weapons:bronze_sword",
+                  "weight": 1
+               },
+					"bronze_mace": {
+                  "uri": "stonehearth:weapons:bronze_mace",
+                  "weight": 1
+               },
+               "bronze_circlet": {
+                  "uri": "stonehearth:armor:bronze_circlet",
+                  "weight": 1
+               }
+            }
+         },
+			"stuff": {
+            "num_rolls": {
+					"min": 0,
+					"max": 1
+				},
+            "items": {
+               "none": {
+                  "weight": 10
+               },
+               "small_healing_tonic": {
+                  "uri": "stonehearth:consumables:healing_tonic:small",
+                  "weight": 1
+               },
+					"coarse_bandage": {
+						"uri": "stonehearth:consumables:coarse_bandage",
+						"weight": 1
+					}			
+				}
+			}
       }
    }
 }
