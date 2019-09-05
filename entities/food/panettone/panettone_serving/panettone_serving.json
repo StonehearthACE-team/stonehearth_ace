@@ -17,10 +17,12 @@
       },
       "stonehearth:food": {
          "stonehearth:sitting_on_chair": {
-            "satisfaction": 90
+            "satisfaction": 90,
+				"drink_satisfaction": -10
          },
          "default": {
-            "satisfaction": 60
+            "satisfaction": 60,
+				"drink_satisfaction": -15
          },
          "applied_buffs": [
             "stonehearth_ace:buffs:consumption:sweet_energy"

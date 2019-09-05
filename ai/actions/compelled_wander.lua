@@ -1,14 +1,14 @@
 local CompelledWander = radiant.class()
 
 CompelledWander.name = 'compelled wander'
-CompelledWander.does = 'stonehearth:compelled_behavior'
+CompelledWander.does = 'stonehearth:unit_control'
 CompelledWander.args = {
    hold_position = {    -- is the unit allowed to move around in the action?
       type = 'boolean',
       default = false,
    }
 }
-CompelledWander.priority = 1
+CompelledWander.priority = 0
 CompelledWander.weight = 5
 
 function CompelledWander:start_thinking(ai, entity, args)

@@ -1,9 +1,9 @@
 local CompelledCower = radiant.class()
 
 CompelledCower.name = 'compelled cower'
-CompelledCower.does = 'stonehearth:compelled_behavior'
+CompelledCower.does = 'stonehearth:unit_control'
 CompelledCower.args = {}
-CompelledCower.priority = 1
+CompelledCower.priority = 0
 CompelledCower.weight = 1
 
 function CompelledCower:start_thinking(ai, entity, args)
