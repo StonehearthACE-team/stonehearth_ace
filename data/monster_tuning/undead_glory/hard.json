@@ -1,0 +1,89 @@
+{
+   "type": "monster_tuning",
+   "estimated_difficulty": 2,
+   "scale": 0.13,
+   "attributes": {
+      "max_health": 500,
+      "muscle": 1,
+      "menace": 70,
+      "courage": 100,
+      "speed": 20,
+      "additive_armor_modifier": 3,
+      "exp_reward": 75
+   },
+   "equipment_scale": 0.13,
+   "equipment": {
+      "weapon": [
+         "stonehearth:weapons:bronze_mace",
+         "stonehearth:weapons:iron_mace"
+      ]
+   },
+   "loot_drops": {
+      "entries": {
+         "precious_metals": {
+            "num_rolls": 2,
+            "items": {
+               "none": {
+                  "weight": 6
+               },
+               "gold_flakes": {
+                  "uri": "stonehearth:refined:gold_flakes",
+                  "weight": 1
+               },
+               "gold_ingot": {
+                  "uri": "stonehearth:refined:gold_ingot",
+                  "weight": 1
+               },
+               "gold_ore": {
+                  "uri": "stonehearth:resources:gold:ore",
+                  "weight": 1
+               },
+               "silver_ingot": {
+                  "uri": "stonehearth:refined:silver_ingot",
+                  "weight": 1
+               },
+               "steel_ingot": {
+                  "uri": "stonehearth:refined:steel_ingot",
+                  "weight": 1
+               },
+               "iron_ingot": {
+                  "uri": "stonehearth:refined:iron_ingot",
+                  "weight": 1
+               }
+            }
+         },
+         "gear": {
+            "num_rolls": 1,
+            "items": {
+               "none": {
+                  "weight": 94
+               },
+               "silver_mail": {
+                  "uri": "stonehearth:armor:silver_mail",
+                  "weight": 1
+               },
+               "silver_helmet": {
+                  "uri": "stonehearth:armor:silver_helmet",
+                  "weight": 1
+               },
+               "steel_shield": {
+                  "uri": "stonehearth:armor:steel_shield",
+                  "weight": 1
+               },
+               "steel_mail": {
+                  "uri": "stonehearth:armor:steel_mail",
+                  "weight": 1
+               },
+               "steel_helmet": {
+                  "uri": "stonehearth:armor:steel_helmet",
+                  "weight": 1
+               },
+               "steel_circlet": {
+                  "uri": "stonehearth:armor:steel_circlet",
+                  "weight": 1
+               }
+            }
+         }
+      }
+   }
+}

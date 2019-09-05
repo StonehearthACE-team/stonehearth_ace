@@ -30,6 +30,13 @@
                      },
                      "file": "file(building_templates/potter_house_ace.json)"
                   },
+						"herbalist_house_new": {
+                     "unlock_requirement": {
+                        "type": "has_job",
+                        "value": "stonehearth:jobs:herbalist"
+                     },
+                     "file": "file(building_templates/herbalist_house_ace.json)"
+                  },
                   "shepherd_barn_ace": {
                      "unlock_requirement": {
                         "type": "has_job",
