@@ -274,7 +274,7 @@ function AceConsumptionComponent:consume_drink(drink_entity)
    if food_satisfaction then
       -- don't apply a multiplier for a negative effect
       if food_satisfaction > 0 and self:_has_food_preferences() and drink_quality > stonehearth.constants.drink_qualities.UNPALATABLE then
-         food_satisfaction = food_satisfaction * stonehearth.constants.food.PREFERRED_DRINK_BONUS
+         food_satisfaction = food_satisfaction * stonehearth.constants.food.PREFERRED_FOOD_BONUS
       end
       self._expendable_resources_component:modify_value('calories', food_satisfaction)
    end
