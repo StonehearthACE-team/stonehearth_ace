@@ -1,0 +1,22 @@
+{
+   "type": "recipe",
+   "effort": 30,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.herbalist.recipes.herbalist_cauldron_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.herbalist_cauldron_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.herbalist_cauldron_recipe.flavor)",
+   "portrait": "/stonehearth_ace/jobs/herbalist/herbalist_cauldron/herbalist_cauldron.png",
+	"work_effect": "work",
+   "level_requirement": 1,
+   "ingredients": [
+		{
+         "material": "stone resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:herbalist:cauldron"
+      }
+   ]
+}

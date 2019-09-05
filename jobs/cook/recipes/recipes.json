@@ -8,6 +8,9 @@
 			"fermenting_vat": {
 			   "recipe": "file(fermenting_vat_recipe.json)"
 			},
+			"fermenting_carboy": {
+			   "recipe": "file(fermenting_carboy_recipe.json)"
+			},
 			"cook_brewery": {
 			   "recipe": "file(cook_brewery_recipe.json)"
 			}
@@ -200,6 +203,12 @@
          "recipes": {
 				"malted_grains": {
 					"recipe": "file(malted_grains_recipe.json)"
+				},
+				"unfermented_mead": {
+					"recipe": "file(unfermented_mead_recipe.json)"
+				},
+				"unfermented_mead_fruit": {
+					"recipe": "file(unfermented_mead_fruit_recipe.json)"
 				},
 				"wort": {
 					"recipe": "file(wort_recipe.json)"

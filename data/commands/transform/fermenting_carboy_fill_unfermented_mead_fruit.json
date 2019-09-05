@@ -1,0 +1,14 @@
+{
+   "type": "command",
+   "name": "fermenting_carboy_fill_unfermented_mead_fruit",
+   "display_name": "i18n(stonehearth_ace:data.commands.transform.fermenting_carboy_fill_unfermented_mead_fruit.display_name)",
+   "description": "i18n(stonehearth_ace:data.commands.transform.fermenting_carboy_fill_unfermented_mead_fruit.description)",
+   "default_enabled": true,
+   "ordinal": 99,
+   "icon": "file(fermenting_carboy_fill_unfermented_mead_fruit.png)",
+   "action": "call",
+   "function": "stonehearth_ace:transform_command",
+   "args": [
+      "mead_fruit"
+   ]
+}

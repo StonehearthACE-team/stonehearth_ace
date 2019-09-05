@@ -1687,6 +1687,26 @@
             "build_well_wood": {
                "display_name": "Build Wooden Water Well",
                "description": "Order this simple well to be upgraded into a wooden water well. Doing so requires Wooden Water Well Parts, a refined item that can be crafted by the Carpenter."
+            },
+            "build_well_roof_clay": {
+               "display_name": "Add Clay Roof",
+               "description": "Use a crafted Clay Water Well Roof to add a fancy roof to make your citizens happier and your water always fresh! The roof needs to be installed by a worker or the potter."
+            },
+            "build_well_roof_stone": {
+               "display_name": "Add Stone Roof",
+               "description": "Use a crafted Stone Water Well Roof to add a fancy roof to make your citizens happier and your water always fresh! The roof needs to be installed by a worker or the mason."
+            },
+            "build_well_roof_wood": {
+               "display_name": "Add Wooden Roof",
+               "description": "Use a crafted Wooden Water Well Roof to add a fancy roof to make your citizens happier and your water always fresh! The roof needs to be installed by a worker or the carpenter."
+            },
+            "fermenting_carboy_fill_unfermented_mead": {
+               "display_name": "Produce Mead",
+               "description": "Order the Cook or Herbalist to fill this fermenting vessel with unfermented mead! It can be crafted by the Cook or Herbalist."
+            },
+            "fermenting_carboy_fill_unfermented_mead_fruit": {
+               "display_name": "Produce Fruity Mead",
+               "description": "Order the Cook or Herbalist to fill this fermenting vessel with unfermented fruity mead! It can be crafted by the Cook or Herbalist."
             }
          },
          "slaughter": {
@@ -2651,6 +2671,31 @@
                "description": "A bundle of bitter herbs and seasonings. The northerners use pine cones for its flavor.",
                "flavor": "The Cook or Herbalist can add it to a Fermentation Vat with Ale to make beer"
             },
+            "herbalist_cauldron_recipe": {
+               "recipe_name": "Herbalist Stone Cauldron",
+               "description": "Used by the Herbalist for brewing & concocting potions.",
+               "flavor": "The wing of a bat, the eye of a newt... Wait, what?"
+            },
+            "herbalist_cauldron_iron_recipe": {
+               "recipe_name": "Herbalist's Iron Cauldron",
+               "description": "Used by the Herbalist for better brewing & concocting advanced potions.",
+               "flavor": "The wing of a bat, the eye of a newt... Wait, what?"
+            },
+            "cook_fermenting_carboy_recipe": {
+               "recipe_name": "Fermentation Carboy",
+               "description": "The Cook and Herbalist can use this to make mead. It requires unfermented mead, crafted by either of them.",
+               "flavor": "Mead is appreciated by many but will make hearthlings tipsy"
+            },
+            "unfermented_mead_recipe": {
+               "recipe_name": "Bucket of Unfermented Mead",
+               "description": "A mixture of water, honey and yeast. Within a Carboy it can be turned into mead!",
+               "flavor": "Take rainwater kept for years, and mix a sextarius of it with a pound of honey -'On Rural Affairs', early Phoenix Empire writings"
+            },
+            "unfermented_mead_fruit_recipe": {
+               "recipe_name": "Bucket of Unfermented Fruity Mead",
+               "description": "Like mead, but spiced up with some flavorful fruits. Within a Carboy it can be turned into fruity mead!",
+               "flavor": ""
+            },
             "refinement_name": "Seed Extraction"
          },
          "herbalist_hood": {
@@ -2689,6 +2734,10 @@
             "display_name": "Bee Skep",
             "description": "A neat house for bees, handled by the herbalist. Won't produce during the winter.",
             "unripe_description": "Not yet ready for harvesting, poor busy little bees!"
+         },
+         "herbalist_cauldron": {
+            "display_name": "Herbalist Stone Cauldron",
+            "description": "Used by the Herbalist for brewing & concocting potions."
          }
       },
       "engineer": {
@@ -3033,7 +3082,7 @@
             },
             "water_well_roof_clay_recipe": {
                "recipe_name": "Clay Water Well Roof",
-               "description": "Build a good-looking roof to spruce up your clay water well!",
+               "description": "Build a good-looking roof to spruce up your water well!",
                "flavor": "Well done!"
             },
             "clay_stool_recipe": {
@@ -3394,7 +3443,7 @@
             },
             "water_well_roof_stone_recipe": {
                "recipe_name": "Stone Water Well Roof",
-               "description": "Build a good-looking roof to spruce up your stone water well!",
+               "description": "Build a good-looking roof to spruce up your water well!",
                "flavor": "Well fitting!"
             },
             "stone_stool_recipe": {
@@ -4270,6 +4319,21 @@
                "recipe_name": "Bucket of Smoothie",
                "description": "The fruity flavors go perfectly with the creamy milk in this refreshing and sweet beverage.",
                "flavor": "A delicious combination"
+            },
+            "cook_fermenting_carboy_recipe": {
+               "recipe_name": "Fermentation Carboy",
+               "description": "The Cook and Herbalist can use this to make mead. It requires unfermented mead, crafted by either of them.",
+               "flavor": "Mead is appreciated by many but will make hearthlings tipsy"
+            },
+            "unfermented_mead_recipe": {
+               "recipe_name": "Bucket of Unfermented Mead",
+               "description": "A mixture of water, honey and yeast. Within a Carboy it can be turned into mead!",
+               "flavor": "Take rainwater kept for years, and mix a sextarius of it with a pound of honey -'On Rural Affairs', early Phoenix Empire writings"
+            },
+            "unfermented_mead_fruit_recipe": {
+               "recipe_name": "Bucket of Unfermented Fruity Mead",
+               "description": "Like mead, but spiced up with some flavorful fruits. Within a Carboy it can be turned into fruity mead!",
+               "flavor": ""
             }
          },
          "cook_mill_powered": {
@@ -4335,7 +4399,7 @@
          },
          "cook_fermenting_vat_empty": {
             "display_name": "Empty Fermentation Vat",
-            "description": "Used by the Cook or Herbalist for fermenting brews."
+            "description": "Used by the Cook or Herbalist for fermenting beers and ales."
          },
          "cook_fermenting_vat_wort": {
             "display_name": "Fermentation Vat with Wort",
@@ -4352,6 +4416,26 @@
          "cook_fermenting_vat_gruit": {
             "display_name": "Fermentation Vat with Gruit",
             "description": "The mixture is bittering and getting flavorful. Soon it shall become beer!"
+         },
+         "cook_fermenting_carboy_empty": {
+            "display_name": "Empty Carboy",
+            "description": "A ceramic vessel used by the Cook or Herbalist for fermenting brews."
+         },
+         "cook_fermenting_carboy_mead": {
+            "display_name": "Carboy with Mead",
+            "description": "The mead is ready and can now be racked into jugs!"
+         },
+         "cook_fermenting_carboy_mead_fruit": {
+            "display_name": "Carboy with Fruity Mead",
+            "description": "The fruity mead is ready and can now be racked into jugs!"
+         },
+         "cook_fermenting_carboy_unfermented_mead": {
+            "display_name": "Carboy with Mead",
+            "description": "The mead is bubbling and warm... It is not ready yet!"
+         },
+         "cook_fermenting_carboy_unfermented_mead_fruit": {
+            "display_name": "Carboy with Fruity Mead",
+            "description": "The fruits are fermenting and releasing all their flavors! Not yet ready..."
          }
       },
       "carpenter": {
@@ -4503,7 +4587,7 @@
             },
             "water_well_roof_wood_recipe": {
                "recipe_name": "Wooden Water Well Roof",
-               "description": "Build a good-looking roof to spruce up your wooden water well!",
+               "description": "Build a good-looking roof to spruce up your water well!",
                "flavor": "Very well!"
             },
             "wooden_stool_recipe": {
@@ -5744,15 +5828,15 @@
          },
          "water_well_roof_wood": {
             "display_name": "Wooden Water Well Roof",
-            "description": "A worker or a carpenter can install this roof on a wooden water well!"
+            "description": "A worker or a carpenter can install this roof on a water well!"
          },
          "water_well_roof_stone": {
             "display_name": "Stone Water Well Roof",
-            "description": "A worker or a mason can install this roof on a stone water well!"
+            "description": "A worker or a mason can install this roof on a water well!"
          },
          "water_well_roof_clay": {
             "display_name": "Clay Water Well Roof",
-            "description": "A worker or a potter can install this roof on a clay water well!"
+            "description": "A worker or a potter can install this roof on a water well!"
          },
          "water_well_kit_wood": {
             "display_name": "Wooden Water Well Parts",
@@ -9666,6 +9750,10 @@
             "milk": {
                "display_name": "Spoiled Bucket of Milk",
                "description": "Milk goes bad in a very short time, it's better to drink or use it fast!"
+            },
+            "jug": {
+               "display_name": "Spoiled Drink Jug",
+               "description": "This drink has spoiled... No one even thought that could happen."
             }
          },
          "water_serving_cool": {
@@ -9675,6 +9763,26 @@
          "water_serving_spring": {
             "display_name": "Cup of Spring Water",
             "description": "This water is almost... magical?! Feels renewing!"
+         },
+         "mead": {
+            "mead": {
+               "display_name": "Mead",
+               "description": "A dry beverage made from honey. Makes hearthlings happy but also tipsy! "
+            },
+            "mead_serving": {
+               "display_name": "Horn of Mead",
+               "description": "Cheers!"
+            }
+         },
+         "mead_fruit": {
+            "mead_fruit": {
+               "display_name": "Fruity Mead",
+               "description": "A sweet drink made of honey and fruits. Makes hearthlings happy but also tipsy! "
+            },
+            "mead_fruit_serving": {
+               "display_name": "Horn of Fruity Mead",
+               "description": "Sweet and flavorful!"
+            }
          }
       },
       "npc": {
@@ -9739,6 +9847,14 @@
          "rabbit_biped": {
             "species": "Rabbit Biped"
          }
+      },
+      "unfermented_mead": {
+         "display_name": "Unfermented Mead",
+         "description": "Water, honey, yeast. The Cook or Herbalist need it to fill a fermentation carboy!"
+      },
+      "unfermented_mead_fruit": {
+         "display_name": "Unfermented Fruity Mead",
+         "description": "Smells sweet. The Cook or Herbalist need it to fill a fermentation carboy!"
       }
    },
    "mountain_folk": {

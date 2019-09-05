@@ -1,0 +1,23 @@
+{
+   "mixins": [
+      "stonehearth:mixins:placed_object",
+      "file(../herbalist_cauldron/herbalist_cauldron_ghost.json)"
+   ],
+   "components": {
+      "mixintypes": {
+         "model_variants": "override"
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(na_herbalist_cauldron.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "icon": "file(na_herbalist_cauldron.png)"
+      }
+   }
+}

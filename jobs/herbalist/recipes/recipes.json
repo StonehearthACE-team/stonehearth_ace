@@ -4,7 +4,13 @@
          "recipes": {
             "herbalist_bee_skep": {
                "recipe": "file(herbalist_bee_skep_recipe.json)"
-            }
+            },
+				"fermenting_carboy": {
+					"recipe": "file(fermenting_carboy_recipe.json)"
+				},
+				"herbalist_cauldron": {
+					"recipe": "file(herbalist_cauldron_recipe.json)"
+				}
          }
       },
 		"tools": {
@@ -77,9 +83,6 @@
 				},
 				"marblesprout_drying" : {
 					"recipe" : "file(marblesprout_drying_recipe.json)"
-				},
-				"gruit" : {
-					"recipe" : "file(gruit_recipe.json)"
 				}
 			}
 		},
@@ -214,6 +217,21 @@
 					"recipe": "/stonehearth_ace/jobs/herbalist/recipes/paddy_seeds_recipe.json"
 				}
 			}
+		},
+		"brewing_ingredients": {
+			"ordinal": 59,
+         "name": "i18n(stonehearth_ace:jobs.cook.recipes.brewing_name)",
+         "recipes": {
+				"unfermented_mead": {
+					"recipe": "file(unfermented_mead_recipe.json)"
+				},
+				"unfermented_mead_fruit": {
+					"recipe": "file(unfermented_mead_fruit_recipe.json)"
+				},
+				"gruit" : {
+					"recipe" : "file(gruit_recipe.json)"
+				}
+         }
 		},
 		"decorations": {
 			"recipes" : {

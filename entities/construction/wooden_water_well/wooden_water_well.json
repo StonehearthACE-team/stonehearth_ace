@@ -73,17 +73,51 @@
          }
       },
       "stonehearth_ace:transform_data": {
-         "transform_uri": "stonehearth_ace:construction:wooden:water_well:roofed",
-         "command": "stonehearth_ace:commands:transform:build_well_roof",
-         "request_action": "stonehearth_ace:transform",
-         "request_action_overlay_effect": "stonehearth_ace:effects:transform_worker_upgrade_overlay_effect",
-         "transform_ingredient_uri": "stonehearth_ace:refined:water_well_roof:wood",
-         "transforming_worker_effect": "work",
-         "transforming_worker_effect_times": 6,
-         "transform_effect": "stonehearth:effects:poof_effect",
-         "worker_required_job": {
-            "stonehearth:jobs:worker": true,
-            "stonehearth:jobs:carpenter": true
+         "transform_options": {
+            "wood": {
+               "transform_uri": "stonehearth_ace:construction:wooden:water_well:roofed",
+               "command": "stonehearth_ace:commands:transform:build_well_roof_wood",
+               "request_action": "stonehearth_ace:transform",
+               "request_action_overlay_effect": "stonehearth_ace:effects:transform_worker_upgrade_overlay_effect",
+               "transform_ingredient_uri": "stonehearth_ace:refined:water_well_roof:wood",
+               "transforming_worker_effect": "work",
+               "transforming_worker_effect_times": 6,
+               "transform_effect": "stonehearth:effects:poof_effect",
+               "worker_required_job": {
+                  "stonehearth:jobs:worker": true,
+                  "stonehearth:jobs:carpenter": true
+               }
+            },
+            "stone": {
+               "transform_uri": "stonehearth_ace:construction:wooden:water_well:roofed",
+               "command": "stonehearth_ace:commands:transform:build_well_roof_stone",
+               "request_action": "stonehearth_ace:transform",
+               "request_action_overlay_effect": "stonehearth_ace:effects:transform_mason_overlay_effect",
+               "transform_ingredient_uri": "stonehearth_ace:refined:water_well_roof:stone",
+               "transforming_worker_effect": "work",
+               "transforming_worker_effect_times": 6,
+               "transform_effect": "stonehearth:effects:poof_effect",
+               "model_variant": "stone",
+               "worker_required_job": {
+                  "stonehearth:jobs:worker": true,
+                  "stonehearth:jobs:mason": true
+               }
+            },
+            "clay": {
+               "transform_uri": "stonehearth_ace:construction:wooden:water_well:roofed",
+               "command": "stonehearth_ace:commands:transform:build_well_roof_clay",
+               "request_action": "stonehearth_ace:transform",
+               "request_action_overlay_effect": "stonehearth_ace:effects:transform_potter_overlay_effect",
+               "transform_ingredient_uri": "stonehearth_ace:refined:water_well_roof:clay",
+               "transforming_worker_effect": "work",
+               "transforming_worker_effect_times": 6,
+               "transform_effect": "stonehearth:effects:poof_effect",
+               "model_variant": "clay",
+               "worker_required_job": {
+                  "stonehearth:jobs:worker": true,
+                  "stonehearth:jobs:potter": true
+               }
+            }
          }
       },
       "stonehearth:appeal": {

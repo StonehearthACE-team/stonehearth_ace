@@ -125,6 +125,11 @@ function transform_lib.transform(entity, transformer, into_uri, options)
    elseif options.destroy_entity ~= false then
       radiant.entities.destroy_entity(entity)
    end
+	
+	if options.model_variant then
+      local render_info = transformed_form:add_component('render_info')
+		render_info:set_model_variant(options.model_variant)
+   end
 
    return transformed_form
 end

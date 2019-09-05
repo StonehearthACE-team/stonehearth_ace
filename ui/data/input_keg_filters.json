@@ -72,14 +72,26 @@
                "icon": "/stonehearth_ace/entities/drink/smoothie/smoothie/smoothie.png",
                "filter": "drink_container smoothie"
             },
-            "ale": {
+            "mead": {
                "ordinal": 2,
+               "display_name": "i18n(stonehearth_ace:entities.drink.mead.mead.display_name)",
+               "icon": "/stonehearth_ace/entities/drink/mead/mead/mead.png",
+               "filter": "drink_container mead"
+            },
+            "mead_fruit": {
+               "ordinal": 2.1,
+               "display_name": "i18n(stonehearth_ace:entities.drink.mead_fruit.mead_fruit.display_name)",
+               "icon": "/stonehearth_ace/entities/drink/mead_fruit/mead_fruit/mead_fruit.png",
+               "filter": "drink_container mead_fruit"
+            },
+            "ale": {
+               "ordinal": 3,
                "display_name": "i18n(stonehearth_ace:entities.drink.ale.ale.display_name)",
                "icon": "/stonehearth_ace/entities/drink/ale/ale/ale.png",
                "filter": "drink_container ale"
             },
             "beer": {
-               "ordinal": 3,
+               "ordinal": 3.1,
                "display_name": "i18n(stonehearth_ace:entities.drink.beer.beer.display_name)",
                "icon": "/stonehearth_ace/entities/drink/beer/beer/beer.png",
                "filter": "drink_container beer"
@@ -91,13 +103,13 @@
                "filter": "drink_container spirit"
             },
             "spirit_fruit": {
-               "ordinal": 5,
+               "ordinal": 4.1,
                "display_name": "i18n(stonehearth_ace:entities.drink.spirit_fruit.spirit_fruit.display_name)",
                "icon": "/stonehearth_ace/entities/drink/spirit_fruit/spirit_fruit/spirit_fruit.png",
                "filter": "drink_container spirit_fruit"
             },
             "liquor": {
-               "ordinal": 6,
+               "ordinal": 5,
                "display_name": "i18n(stonehearth_ace:entities.drink.liquor.liquor.display_name)",
                "icon": "/stonehearth_ace/entities/drink/liquor/liquor/liquor.png",
                "filter": "drink_container liquor"

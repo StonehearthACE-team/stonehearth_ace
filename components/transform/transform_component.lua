@@ -156,6 +156,7 @@ function TransformComponent:transform()
       auto_harvest = self._transform_data.auto_harvest,
       transform_script = self._transform_data.transform_script,
       kill_entity = self._transform_data.kill_entity,
+		model_variant = self._transform_data.model_variant,
       destroy_entity = self._transform_data.destroy_entity,
       transform_event = function(transformed_form)
          radiant.events.trigger(self._entity, 'stonehearth_ace:on_transformed', {entity = self._entity, transformed_form = transformed_form})

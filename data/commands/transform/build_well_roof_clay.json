@@ -1,0 +1,14 @@
+{
+   "type": "command",
+   "name": "build_well_roof_clay",
+   "display_name": "i18n(stonehearth_ace:data.commands.transform.build_well_roof_clay.display_name)",
+   "description": "i18n(stonehearth_ace:data.commands.transform.build_well_roof_clay.description)",
+   "default_enabled": true,
+   "ordinal": 98,
+   "icon": "file(build_well_roof_clay.png)",
+   "action": "call",
+   "function": "stonehearth_ace:transform_command",
+   "args": [
+      "clay"
+   ]
+}

@@ -1,0 +1,18 @@
+{
+   "type": "entity",
+   "mixins": [
+      "file(na_herbalist_cauldron_ghost.json)",
+      "file(../herbalist_cauldron/herbalist_cauldron.json)"
+   ],
+   "components": {
+      "stonehearth:entity_forms": {
+         "ghost_form": "file(na_herbalist_cauldron_ghost.json)",
+         "iconic_form": "file(na_herbalist_cauldron_iconic.json)"
+      }
+   },
+   "entity_data": {
+      "mixintypes": {
+         "stonehearth:workshop": "remove"
+      }
+   }
+}
