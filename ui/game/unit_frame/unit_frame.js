@@ -238,10 +238,10 @@ App.StonehearthUnitFrameView.reopen({
 
                commandButtons.css('width', (self._commandWidth - diff) + 'px');
             }
-            else {
-               self._commandsPos += Math.min(-12, diff);
+            else if (width < self._bestWidth) {
+               self._commandsPos += Math.max(-12, width - self._bestWidth);
             }
-            commandButtons.css('left', (self._commandsPos + 12) + 'px')
+            commandButtons.css('left', (self._commandsPos + 12) + 'px');
          }
 
          unitFrame.css('width', 520 + 'px'); //don't want it getting too bitty
@@ -491,7 +491,7 @@ App.StonehearthUnitFrameView.reopen({
       self.set('buffs', self._buffs);
    }.observes('model.stonehearth:buffs'),
 
-   _updateCraftingProgress: function() {
+   _updateTransformProgress: function() {
       var self = this;
       var progress = self.get('model.stonehearth_ace:transform.progress');
       if (progress) {

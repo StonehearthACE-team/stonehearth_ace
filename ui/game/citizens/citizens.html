@@ -1,0 +1,210 @@
+<script type="text/x-handlebars" data-template-name="citizens">
+<div id="citizensManagement" class="gui citizensManager">
+   <div class="window">
+      <div class="title">{{i18n stonehearth:ui.game.citizens.work_orders_title}}<div class="closeButton"></div></div>
+
+      <div id="workerDetails" class="workOrderPanel">
+         <h2>{{i18n stonehearth:ui.game.citizens.worker_details}}</h2>
+         <div id="workerDetailsInnerPane" class="downSection">
+            <center>
+            <div id="selectedPortrait"/>
+            <div id="selectedName">
+               {{i18n_key view.selected.stonehearth:unit_info.display_name self=view.selected}}
+            </div>
+            <div id="selectedDescription">
+               <img id="selectedClassIcon" {{bind-attr src=view.selected.stonehearth:job.class_icon}}/>
+               <div id="selectedJobDescription">
+                  {{i18n_key view.selected.stonehearth:unit_info.description self=view.selected}}
+               </div>
+               <div id="expStat">
+                  <div class="bar" title="{{i18n stonehearth:ui.data.tooltips.exp_bar.description}}">
+                     <div class="expBar" {{bind-attr style=view.exp_bar_style}} />
+                     <div class="label">
+                        {{view.exp_bar_label}}
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+            <div id="traits">
+               {{#each view.traits itemView="stonehearthTraitItem"}}
+                  <div class="item" {{bind-attr uri=this.uri}}>
+                     <img {{bind-attr src=this.icon}} />
+                  </div>
+               {{/each}}
+            </div>
+
+            <div class="toolbar">
+               <a id="promote_to_job" href="#" {{action "showPromotionTree" view.selected.__self target="view"}} class='uisounds'>
+                  <button class="brown" {{bind-attr class=":commandButton enabled:buttonEnabled:buttonDisabled" }}>
+                     {{i18n_key "stonehearth:data.commands.promote_to_job.display_name"}}
+                  </button>
+               </a>
+               <a id="changeWorkingFor" href="#" {{action "changeWorkingFor" view.selected target="view"}} class='uisounds' title="{{i18n stonehearth:data.commands.change_working_for.description}}">
+                  <button class="brown" {{bind-attr class=":commandButton enabled:buttonEnabled:buttonDisabled view.isMultiplayer::hidden"}}>
+                     {{i18n stonehearth:data.commands.change_working_for.display_name}}
+                  </button>
+               </a>
+               {{#each command in view.selected_commands}}
+                  <a {{bind-attr id=command.name}} href="#" {{action "doCommand" command view.selected target="view"}} class='uisounds'>
+                     <button class="brown" {{bind-attr class=":commandButton enabled:buttonEnabled:buttonDisabled" }}>
+                        {{i18n_key command.display_name}}
+                     </button>
+                  </a>
+               {{/each}}
+            </div>
+            </center>
+         </div>
+      </div>
+
+      <div id="tasksWorkersList" class="workOrderPanel workersList">
+         <div id="listTitles">
+            <div class="listTitle statTitle" data-sort-key="job">
+               <button class="brown statButton">
+                  <div class="job statImg" />
+               </button>
+            </div>
+            <div class="listTitle" id="tasksTitleName" data-sort-key="name" {{bind-attr class="view.isMultiplayer::singlePlayer"}}>
+               <h2>{{i18n stonehearth:ui.game.citizens.workers_list_headers.name}}</h2>
+            </div>
+            <div class="listTitle statTitle" data-sort-key="mind">
+               <button class="brown statButton">
+                  <div class="mind statImg" />
+               </button>
+            </div>
+            <div class="listTitle statTitle" data-sort-key="body">
+               <button class="brown statButton">
+                  <div class="body statImg" />
+               </button>
+            </div>
+            <div class="listTitle statTitle" data-sort-key="spirit">
+               <button class="brown statButton">
+                  <div class="spirit statImg"  />
+               </button>
+            </div>
+            <div class="listTitle moodTitle" data-sort-key="happiness">
+               <h2>{{i18n stonehearth:ui.game.citizens.workers_list_headers.morale}}</h2>
+            </div>
+            <div class="listTitle" id="activityTitle" data-sort-key="activity" {{bind-attr class="view.isMultiplayer::singlePlayer"}}>
+               <h2>{{i18n stonehearth:ui.game.citizens.workers_list_headers.current_activity}}</h2>
+            </div>
+
+            <div class="listTitle" id="workingForTitle" data-sort-key="working-for" title="{{i18n stonehearth:ui.data.tooltips.working_for.description}}" {{bind-attr class="view.isMultiplayer::singlePlayer"}}>
+               <h2 {{bind-attr class="view.isMultiplayer::hidden"}}>{{i18n stonehearth:ui.game.citizens.workers_list_headers.working_for}}</h2>
+            </div>
+
+            <div class="listTitle workOrderTitle" data-sort-key="haul-enabled">
+               <h2>{{i18n stonehearth:ui.game.citizens.workers_list_headers.haul}}</h2>
+            </div>
+            <div class="listTitle workOrderTitle" data-sort-key="build-enabled">
+               <h2>{{i18n stonehearth:ui.game.citizens.workers_list_headers.build}}</h2>
+            </div>
+            <div class="listTitle workOrderTitle" data-sort-key="mine-enabled">
+               <h2>{{i18n stonehearth:ui.game.citizens.workers_list_headers.mine}}</h2>
+            </div>
+            <div class="listTitle workOrderTitle" data-sort-key="job-enabled">
+               <h2>{{i18n stonehearth:ui.game.citizens.workers_list_headers.job}}</h2>
+            </div>
+         </div>
+
+         <div class="downSection workersListTableContainer">
+            <table id="tasksListTable">
+               {{ view "stonehearthCitizenTasksContainer" containerParentView=view}}
+            </table>
+         </div>
+
+         <div id="buttonsBar">
+            <a href="#" {{action "changeAllWorkingFor" target="view"}} class='uisounds'>
+               <button id="changeAllWorkingFor" {{bind-attr class="view.isMultiplayer::hidden"}} title="{{i18n stonehearth:ui.game.citizens.change_all_title}}">
+                  {{i18n stonehearth:ui.game.citizens.change_all}}
+               </button>
+            </a>
+            <a href="#" {{action "suspendToggle" "haul" target="view"}} class='uisounds'>
+               <button id="haulSuspendButton" title="{{i18n stonehearth:ui.data.tooltips.suspend_button.description}}" {{bind-attr class=":suspendButton view.model.work_orders.haul.is_suspended:red:"}}>
+                  <div {{bind-attr class=":suspendButtonImg view.model.suspended_work_orders.haul:showResumeButton:showSuspendButton"}} />
+               </button>
+            </a>
+            <a href="#" {{action "suspendToggle" "build" target="view"}} class='uisounds'>
+               <button id="buildSuspendButton" title="{{i18n stonehearth:ui.data.tooltips.suspend_button.description}}" {{bind-attr class=":suspendButton view.model.work_orders.haul.is_suspended:red:"}}>
+                  <div {{bind-attr class=":suspendButtonImg view.model.suspended_work_orders.build:showResumeButton:showSuspendButton"}} />
+               </button>
+            </a>
+            <a href="#" {{action "suspendToggle" "mine" target="view"}} class='uisounds'>
+               <button id="mineSuspendButton" title="{{i18n stonehearth:ui.data.tooltips.suspend_button.description}}" {{bind-attr class=":suspendButton view.model.work_orders.haul.is_suspended:red:"}}>
+                  <div {{bind-attr class=":suspendButtonImg view.model.suspended_work_orders.mine:showResumeButton:showSuspendButton"}} />
+               </button>
+            </a>
+            <a href="#" {{action "suspendToggle" "job" target="view"}} class='uisounds'>
+               <button id="jobSuspendButton" title="{{i18n stonehearth:ui.data.tooltips.suspend_button.description}}" {{bind-attr class=":suspendButton view.model.work_orders.haul.is_suspended:red:"}}>
+                  <div {{bind-attr class=":suspendButtonImg view.model.suspended_work_orders.job:showResumeButton:showSuspendButton"}} />
+               </button>
+            </a>
+        </div>
+      </div>
+
+   </div>
+</div>
+</script>
+
+<script type="text/x-handlebars" data-template-name="citizenTasksRow">
+   {{#if view.citizenId}}
+   <td {{bind-attr class=":nameColumn view.taskView.isMultiplayer::singlePlayer"}}>
+      <div class="citizenName">
+         <img class="classIcon" {{bind-attr src=view.model.stonehearth:job.class_icon}}/>
+         {{i18n_key view.model.stonehearth:unit_info.display_name self=view.model}}
+      </div>
+   </td>
+
+   <td class="statColumn">
+      <div class="mind mindStat">{{view.model.stonehearth:attributes.attributes.mind.effective_value}}</div>   /
+      <div class="body bodyStat">{{view.model.stonehearth:attributes.attributes.body.effective_value}}</div>   /   
+      <div class="spirit spiritStat">{{view.model.stonehearth:attributes.attributes.spirit.effective_value}}</div>
+   </td>
+
+   <td class="moodColumn">
+      <img class="moodIcon" {{bind-attr src=view.moodData.current_mood_buff.icon}}/>
+   </td>
+
+   <td {{bind-attr class=":activityColumn view.taskView.isMultiplayer::singlePlayer"}}>
+      <div class="activity">
+         {{i18n_key view.model.stonehearth:ai.status_text_key data=view.model.stonehearth:ai.status_text_data}}
+      </div>
+   </td>
+
+   <td class="workingForColumn">
+      <a href="#" {{action "changeWorkingFor" target="view"}} {{bind-attr class=":uisounds view.taskView.isMultiplayer::hidden"}}>
+         <span class="workingForPlayerName" {{bind-attr style="view.colorStyle"}}>{{view.workingForPlayerName}}</span>
+      </a>
+   </td>
+
+   <td {{bind-attr class=":workOrderColumn view.taskView.model.suspended_work_orders.haul:red:"}}>
+      <input type="checkbox" class="ignoreClick" workOrder="haul" {{bind-attr citizenId=view.citizenId}}
+                                               {{bind-attr checked=view.haulChecked}}
+                                               {{bind-attr disabled=view.haulLocked}}
+                                               {{bind-attr id=view.haulId}}>
+      <label class="ignoreClick" {{bind-attr for=view.haulId}}></label>
+   </td>
+   <td {{bind-attr class=":workOrderColumn view.taskView.model.suspended_work_orders.build:red:"}}>
+      <input type="checkbox" class="ignoreClick" workOrder="build" {{bind-attr citizenId=view.citizenId}}
+                                               {{bind-attr checked=view.buildChecked}}
+                                               {{bind-attr disabled=view.buildLocked}}
+                                               {{bind-attr id=view.buildId}}>
+      <label class="ignoreClick" {{bind-attr for=view.buildId}}></label>
+   </td>
+   <td {{bind-attr class=":workOrderColumn view.taskView.model.suspended_work_orders.mine:red:"}}>
+      <input type="checkbox" class="ignoreClick" workOrder="mine" {{bind-attr citizenId=view.citizenId}}
+                                               {{bind-attr checked=view.mineChecked}}
+                                               {{bind-attr disabled=view.mineLocked}}
+                                               {{bind-attr id=view.mineId}}>
+      <label class="ignoreClick" {{bind-attr for=view.mineId}}></label>
+   </td>
+   <td {{bind-attr class=":workOrderColumn view.taskView.model.suspended_work_orders.job:red:"}}>
+      <input type="checkbox" class="ignoreClick" workOrder="job" {{bind-attr citizenId=view.citizenId}}
+                                               {{bind-attr checked=view.jobChecked}}
+                                               {{bind-attr disabled=view.jobLocked}}
+                                               {{bind-attr id=view.jobId}}>
+      <label class="ignoreClick" {{bind-attr for=view.jobId}}></label>
+   </td>
+   {{/if}}
+</script>
+
