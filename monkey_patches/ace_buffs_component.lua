@@ -37,7 +37,7 @@ function AceBuffsComponent:activate()
       end
    end
 
-   if self._json.seasonal_buffs then
+   if self._json and self._json.seasonal_buffs then
       self:_create_seasonal_listener()
    end
 end
