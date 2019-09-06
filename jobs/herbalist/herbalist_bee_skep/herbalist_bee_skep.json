@@ -88,19 +88,27 @@
             }
          ]
       },
-      "stonehearth_ace:critter_colony": {
+      "stonehearth:buffs": {
          "seasonal_buffs": {
             "spring": {
-               "stonehearth_ace:buffs:bee_skep": true
+               "add": {
+                  "stonehearth_ace:buffs:bee_skep": true
+               }
             },
             "summer": {
-               "stonehearth_ace:buffs:bee_skep": true
+               "add": {
+                  "stonehearth_ace:buffs:bee_skep": true
+               }
             },
             "autumn": {
-               "stonehearth_ace:buffs:bee_skep": true
+               "add": {
+                  "stonehearth_ace:buffs:bee_skep": true
+               }
             },
             "winter": {
-               "stonehearth_ace:buffs:bee_skep": false
+               "remove": {
+                  "stonehearth_ace:buffs:bee_skep": true
+               }
             }
          }
       }

@@ -26,13 +26,57 @@ function AceBuffsComponent:activate()
       self:_ace_old_activate()
    end
 
+   self._json = radiant.entities.get_json(self)
    if self._is_create then
-      local json = radiant.entities.get_json(self)
-      if json and json.buffs then
-         for buff, options in pairs(json.buffs) do
+      if self._json and self._json.buffs then
+         for buff, options in pairs(self._json.buffs) do
             if options then
                self:add_buff(buff, type(options) == 'table' and options)
             end
+         end
+      end
+   end
+
+   if self._json.seasonal_buffs then
+      self:_create_seasonal_listener()
+   end
+end
+
+AceBuffsComponent._ace_old_destroy = BuffsComponent.destroy
+function AceBuffsComponent:destroy()
+   self:_destroy_listeners()
+   self:_ace_old_destroy()
+end
+
+function AceBuffsComponent:_destroy_listeners()
+	if self._season_change_listener then
+      self._season_change_listener:destroy()
+      self._season_change_listener = nil
+   end
+end
+
+function AceBuffsComponent:_create_seasonal_listener()
+   self._season_change_listener = radiant.events.listen(stonehearth.seasons, 'stonehearth:seasons:changed', function()
+      self:_set_seasonal_buffs()
+   end)
+
+   if self._is_create then
+      self:_set_seasonal_buffs()
+   end
+end
+
+function AceBuffsComponent:_set_seasonal_buffs()
+   local current_season = stonehearth.seasons:get_current_season()
+   local season_data = current_season and self._json.seasonal_buffs[current_season.id]
+   if season_data then
+      if season_data.add then
+         for buff, options in pairs(season_data.add) do
+            self:add_buff(buff, type(options) == 'table' and options)
+         end
+      end
+      if season_data.remove then
+         for buff, options in pairs(season_data.remove) do
+            self:remove_buff(buff, type(options) == 'table' and options.remove_all_stacks)
          end
       end
    end
