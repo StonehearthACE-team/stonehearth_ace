@@ -10,6 +10,11 @@
             "type": "deny_if_less_than",
             "value": 2,
             "job_alias": "stonehearth:jobs:mason"
+         },
+         "days_elapsed_check": {
+            "type": "deny_if_less_than",
+            "item": "days_elapsed",
+            "value": 8
          }
       }
    }

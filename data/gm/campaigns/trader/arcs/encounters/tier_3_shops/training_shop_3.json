@@ -31,22 +31,22 @@
 				  "stonehearth:consumables:healing_tonic:small"
                ],
                "quantity": {
-                  "min": 2,
-                  "max": 8
-               }
+                  "min": 1,
+                  "max": 6
+               },
+					"price_multiplier": 2
             },
 			{
                "items": [
                   "stonehearth:consumables:heavy_bandage",
-				  "stonehearth:consumables:stamina_tonic",
 				  "stonehearth:consumables:strength_tonic",
-				  "stonehearth:consumables:courage_tonic",
-				  "stonehearth:consumables:energy_tonic"
+				  "stonehearth:consumables:courage_tonic"
                ],
                "quantity": {
                   "min": 0,
-                  "max": 4
-               }
+                  "max": 1
+               },
+					"price_multiplier": 3.5
             },
 			{
                "items": [
