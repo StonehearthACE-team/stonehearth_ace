@@ -1,5 +1,6 @@
 {
    "type": "campaign",
+   "encounter_type": "script",
    "rarity": "common",
    "can_start": {
       "test_1": {
@@ -7,6 +8,12 @@
             "type": "deny_if",
             "item": "kingdom",
             "value": "northern_alliance:kingdoms:northern_alliance"
+         },
+         "recipe_check": {
+            "item": "script",
+            "type": "deny_if",
+            "value": true,
+            "script": "stonehearth_ace:game_master:script:recipes_unlocked_can_start"
          }
       }
    },
@@ -16,5 +23,40 @@
       },
       "challenge": {},
       "climax": {}
+   },
+   "script_info": {
+      "jobs": {
+         "stonehearth:jobs:mason": {
+            "type": "all",
+            "recipes": [
+               "workbenches:mason_workbench_bone",
+               "bone_weapons_armor:giant_bone_axe",
+               "bone_weapons_armor:giant_bone_mace",
+               "bone_weapons_armor:giant_bone_shield",
+               "bone_weapons_armor:light_giant_bone_shield",
+               "bone_weapons_armor:giant_bone_hatchet",
+               "bone_weapons_armor:giant_bone_pike",
+               "bone_weapons_armor:giant_bone_sword",
+               "bone_weapons_armor:giant_bone_short_sword",
+               "bone_furniture:firepit_skulls",
+               "bone_furniture:bone_chest",
+               "bone_furniture:input_bin_bone",
+               "bone_furniture:input_table_ground_bone",
+               "bone_furniture:output_box_bone",
+               "bone_furniture:bone_candle_holder",
+               "bone_furniture:bone_floor_candle_holder",
+               "bone_furniture:bone_bench",
+               "bone_furniture:bone_comfy_bed",
+               "bone_furniture:bone_comfy_chair",
+               "bone_furniture:bone_dining_table",
+               "bone_furniture:bone_dresser",
+               "bone_furniture:bone_stool",
+               "bone_furniture:bone_table_for_one",
+               "bone_furniture:bone_writing_desk",
+               "bone_furniture:bone_comfy_bed_pet",
+               "bone_furniture:pet_food_bowl_bone"
+            ]
+         }
+      }
    }
 }
