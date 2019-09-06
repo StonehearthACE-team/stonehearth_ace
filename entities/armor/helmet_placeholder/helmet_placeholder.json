@@ -1,8 +1,18 @@
 {
    "type": "entity",
    "components": {
+      "model_variants": {
+         "default": {
+            "layer": "hat",
+            "transparent": "true",
+            "models": [
+               "file(helmet_placeholder.qb)"
+            ]
+         }
+      },
       "stonehearth:equipment_piece": {
          "slot": "helmet",
+         "render_type": "merge_with_model",
          "ilevel": -1,
          "destroy_on_drop": true
       }
