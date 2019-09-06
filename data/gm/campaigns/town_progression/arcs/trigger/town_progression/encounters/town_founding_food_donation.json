@@ -5,8 +5,16 @@
             "beer_definite": {
                "num_rolls": 2,
                "items": {
-                  "beer": {
-                     "uri": "stonehearth_ace:drink:beer",
+                  "ale": {
+                     "uri": "stonehearth_ace:drink:ale",
+                     "weight": 2
+                  },
+						"mead_fruit": {
+                     "uri": "stonehearth_ace:drink:mead_fruit",
+                     "weight": 1
+                  },
+						"mead": {
+                     "uri": "stonehearth_ace:drink:mead",
                      "weight": 1
                   }
                }
@@ -14,8 +22,8 @@
             "drink_variety": {
                "num_rolls": 3,
                "items": {
-						"beer": {
-                     "uri": "stonehearth_ace:drink:beer",
+						"ale": {
+                     "uri": "stonehearth_ace:drink:ale",
                      "weight": 1
                   },
                   "juice_carrot": {

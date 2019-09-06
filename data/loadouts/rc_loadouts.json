@@ -52,11 +52,22 @@
       "military_expedition": {
          "ordinal": 2.1,
          "content": {
+            "mixintypes": {
+               "mead": "remove"
+            },
             "footman": {},
             "archer": {},
             "training_dummy": {
                "uri": "stonehearth_ace:gizmos:clay_training_dummy",
                "icon": "file(images/items/clay_training_dummy.png)"
+            },
+            "beer": {
+               "ordinal": 5,
+               "display_name": "i18n(stonehearth_ace:data.loadouts.items.beer)",
+               "type": "entity",
+               "uri": "stonehearth_ace:drink:beer",
+               "icon": "file(images/items/beer.png)",
+               "amount": 8
             },
             "jerky": {},
             "gold": {}
