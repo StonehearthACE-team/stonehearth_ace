@@ -7,7 +7,7 @@ function AceMiningZoneRenderer:_get_color(is_enabled)
    local suspended_mult = is_enabled and 1 or 0.4
    local color
    if stonehearth.presence_client:is_multiplayer() then
-      color = stonehearth.presence_client:get_player_color(player_id)
+      color = stonehearth.presence_client:get_player_color(radiant.entities.get_player_id(self._entity))
    else
       color = Point3(255, 255, 0)
    end
@@ -45,8 +45,6 @@ function AceMiningZoneRenderer:_update()
 
    working_region:translate(-location)
 
-
-   local player_id = radiant.entities.get_player_id(self._entity)
    local color = self:_get_color(data.enabled)
 
    local EDGE_COLOR_ALPHA = 24
