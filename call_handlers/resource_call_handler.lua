@@ -57,6 +57,29 @@ function ResourceCallHandler:box_undeploy(session, response)
       :go()
 end
 
+function ResourceCallHandler:box_cancel_placement(session, response)
+   stonehearth.selection:select_xz_region('box_cancel_placement')
+      :set_max_size(50)
+      :require_supported(false)
+      :use_outline_marquee(Color4(192, 0, 0, 32), Color4(192, 0, 0, 255))
+      :set_cursor('stonehearth:cursors:cancel')
+      :allow_unselectable_support_entities(false)
+      :done(function(selector, box)
+            _radiant.call('stonehearth_ace:box_get_commandable_entities', box, {'stonehearth:commands:destroy_item'}, false)
+               :done(function(result)
+                  _radiant.call('stonehearth_ace:cancel_placement', result.entities)
+                  response:resolve(true)
+               end)
+               :fail(function(result)
+                  response:reject('no entities')
+               end)
+         end)
+      :fail(function(selector)
+            response:reject('no region')
+         end)
+      :go()
+end
+
 --[[
 function ResourceCallHandler:box_enable_auto_harvest(session, response)
    stonehearth.selection:select_xz_region('box_undeploy')
@@ -153,6 +176,12 @@ end
 function ResourceCallHandler:undeploy_items(session, response, entities)
    for _, entity in ipairs(entities) do
       _radiant.call('stonehearth:undeploy_item', entity)
+   end
+end
+
+function ResourceCallHandler:cancel_placement(session, response, entities)
+   for _, entity in ipairs(entities) do
+      _radiant.call('stonehearth:destroy_item', entity)
    end
 end
 

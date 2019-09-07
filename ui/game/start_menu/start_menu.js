@@ -11,6 +11,9 @@ App.StonehearthStartMenuView.reopen({
       self.menuActions.box_undeploy = function(){
          self.boxUndeploy();
       };
+      self.menuActions.box_cancel_placement = function(){
+         self.boxCancelPlacement();
+      };
       self.menuActions.box_enable_auto_harvest = function(){
          self.boxEnableAutoHarvest();
       };
@@ -77,6 +80,23 @@ App.StonehearthStartMenuView.reopen({
             .done(function(response) {
                radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:ui:start_menu:popup'} );
                self.boxUndeploy();
+            })
+            .fail(function(response) {
+               App.stonehearthClient.hideTip(tip);
+            });
+      });
+   },
+
+   boxCancelPlacement: function() {
+      var self = this;
+      var tip = App.stonehearthClient.showTip('stonehearth_ace:ui.game.menu.harvest_menu.items.box_cancel_placement.tip_title',
+            'stonehearth_ace:ui.game.menu.harvest_menu.items.box_cancel_placement.tip_description', {i18n : true});
+
+      return App.stonehearthClient._callTool('boxCancelPlacement', function() {
+         return radiant.call('stonehearth_ace:box_cancel_placement')
+            .done(function(response) {
+               radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:ui:start_menu:popup'} );
+               self.boxCancelPlacement();
             })
             .fail(function(response) {
                App.stonehearthClient.hideTip(tip);

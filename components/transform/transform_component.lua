@@ -57,6 +57,7 @@ function TransformComponent:destroy()
    self:_destroy_effect()
    self:_destroy_progress()
    self:_destroy_request_listeners()
+   self:cancel_craft_order()
 end
 
 function TransformComponent:_create_request_listeners()
@@ -162,7 +163,9 @@ function TransformComponent:transform()
          radiant.events.trigger(self._entity, 'stonehearth_ace:on_transformed', {entity = self._entity, transformed_form = transformed_form})
       end
    }
+   self._transforming = true
    local transformed = transform_lib.transform(self._entity, 'stonehearth_ace:transform', self._transform_data.transform_uri, options)
+   self._transforming = false
 
    if not transformed then
       -- if we failed, cancel the requested transform action, if there was one
@@ -330,6 +333,10 @@ function TransformComponent:set_craft_order(order)
 end
 
 function TransformComponent:cancel_craft_order()
+   if self._transforming then
+      return
+   end
+   
    local order_id = self._sv.craft_order_id
    local order_list = self._sv.craft_order_list
    if order_id and order_list then
