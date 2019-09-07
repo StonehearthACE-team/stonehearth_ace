@@ -35,7 +35,7 @@ function ProgressTracker:get_progress_percentage()
 end
 
 function ProgressTracker:set_max_progress(max_progress)
-   self._sv.max_progress = max_progress
+   self._sv.max_progress = max_progress or 1
    self.__saved_variables:mark_changed()
 end
 
