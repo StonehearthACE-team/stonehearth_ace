@@ -39,13 +39,20 @@ function AceTown:_requirements_met(person, job_uri)
    end
 
    -- if there are multiple parents, check for each of them
+   local parent_jobs = job_data.parent_jobs
+   if parent_jobs then
+      -- copy the table so we aren't overriding a cached resource
+      parent_jobs = radiant.shallow_copy(parent_jobs)
+   else
+      parent_jobs = {{job = job_data.parent_job, level_requirement = job_data.parent_level_requirement}}
+   end
+
    -- If we can't have the parent job, ignore that requirement.
-   local parent_jobs = job_data.parent_jobs or {{job = job_data.parent_job, level_requirement = job_data.parent_level_requirement}}
    local allowable_jobs = job_component:get_allowed_jobs()
    if allowable_jobs then
       for id, parent_job in pairs(parent_jobs) do
          if not allowable_jobs[parent_job.job] then
-            parent_jobs[parent_job.job] = nil
+            parent_jobs[id] = nil
          end
       end
    end
