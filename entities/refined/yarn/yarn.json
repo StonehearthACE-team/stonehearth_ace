@@ -1,0 +1,44 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "render_info": {
+         "scale": 0.09
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(yarn.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 2,
+         "rarity": "uncommon",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 1,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.refined.yarn.display_name)",
+         "description": "i18n(stonehearth_ace:entities.refined.yarn.description)",
+         "icon": "file(yarn.png)",
+         "is_item": true,
+         "category": "refined",
+         "material_tags": [
+            "yarn",
+            "fiber",
+            "thread",
+            "resource",
+            "refined",
+            "refined_cloth",
+            "stockpile_refined_weaver"
+         ]
+      }
+   }
+}

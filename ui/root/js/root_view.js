@@ -73,5 +73,16 @@ App.RootView.reopen({
                             {warning: 'warning'});
             });
       };
+	
+      App.stonehearthClient.showPromotionTree = function(entity_id, job_index) {
+         if (App.stonehearth.promotionTreeView) {
+            App.stonehearth.promotionTreeView.destroy();
+         } else {
+            App.stonehearth.promotionTreeView = App.gameView.addView(App.StonehearthPromotionTree, {
+               citizen: entity_id,
+               job_index: job_index
+            });
+         }
+      }
    }
 });

@@ -35,7 +35,7 @@
             </div>
 
             <div class="toolbar">
-               <a id="promote_to_job" href="#" {{action "showPromotionTree" view.selected.__self target="view"}} class='uisounds'>
+               <a id="promote_to_job" href="#" {{action "showPromotionTree" view.selected target="view"}} class='uisounds'>
                   <button class="brown" {{bind-attr class=":commandButton enabled:buttonEnabled:buttonDisabled" }}>
                      {{i18n_key "stonehearth:data.commands.promote_to_job.display_name"}}
                   </button>

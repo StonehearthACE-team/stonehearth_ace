@@ -8,6 +8,7 @@ AceJobComponent._ace_old_activate = JobComponent.activate
 function AceJobComponent:activate(value, add_curiosity_addition)
 	self:_ace_old_activate(value, add_curiosity_addition)
 
+	self:_update_job_index()
 	self._max_level_from_training = 3
 	self._training_performed_listener = radiant.events.listen(self._entity, 'stonehearth_ace:training_performed', self, self._on_training_performed)
 end
@@ -110,11 +111,20 @@ end
 
 function AceJobComponent:set_population_override(population_uri)
    self._sv.population_override =  population_uri
-   self.__saved_variables:mark_changed()
+   self:_update_job_index()
 end
 
 function AceJobComponent:get_population_override()
    return self._sv.population_override
+end
+
+-- this is just for the sake of the UI, so that opening the promotion tree doesn't require requesting the job index
+-- as such, we need to store it in _sv
+function AceJobComponent:_update_job_index()
+   local player_id = radiant.entities.get_player_id(self._entity)
+   local pop = stonehearth.population:get_population(player_id)
+   self._sv.job_index = pop and pop:get_job_index(self._sv.population_override)
+   self.__saved_variables:mark_changed()
 end
 
 function AceJobComponent:get_job_description_path(job_uri)
