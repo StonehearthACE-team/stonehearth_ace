@@ -71,6 +71,15 @@ App.StonehearthCitizenCharacterSheetView.reopen({
             e.preventDefault();
          }
       });
+
+      self.$('#description').off('click').click(function () {
+         if (self.get('uri')) {
+            if (radiant.isOwnedByAnotherPlayer(self.get('model'), App.stonehearthClient.getPlayerId())) {
+               return;
+            }
+            App.stonehearthClient.showPromotionTree(self.get('uri'), self.get('model.stonehearth:job.job_index'));
+         }
+      });
    },
 
    _onNameChanged: function() {

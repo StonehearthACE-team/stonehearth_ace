@@ -1,3 +1,11 @@
+App.StonehearthCitizensView.reopen({
+   actions: {
+      showPromotionTree: function(citizen) {
+         App.stonehearthClient.showPromotionTree(citizen.__self, citizen['stonehearth:job'].job_index);
+      }
+   }
+});
+
 App.StonehearthCitizenTasksRowView.reopen({
    didInsertElement: function() {
       this._super();

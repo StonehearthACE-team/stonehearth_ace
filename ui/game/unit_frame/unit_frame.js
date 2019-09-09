@@ -298,7 +298,7 @@ App.StonehearthUnitFrameView.reopen({
       if (self._canPromoteSelectedEntity()) {
          // do we need to do a click sound here? the promotion tree window makes a "paper" sound when it comes up
          radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:ui:start_menu:popup'} );
-         App.stonehearthClient.showPromotionTree(self.get('uri'));
+         App.stonehearthClient.showPromotionTree(self.get('uri'), self.get('model.stonehearth:job.job_index'));
       }
    },
 

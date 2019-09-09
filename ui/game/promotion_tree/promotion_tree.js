@@ -1,4 +1,11 @@
+var _cachedJobIndexes = {};
+
 App.StonehearthPromotionTree.reopen({
+   // init: function() {
+   //    this._super();
+   //    console.log('finished init');
+   // },
+
    didInsertElement: function() {
       var self = this;
 
@@ -12,6 +19,7 @@ App.StonehearthPromotionTree.reopen({
       var self = this;
       self._addHandlers();
 
+      //console.log('didInsertElement');
       radiant.call_obj('stonehearth.inventory', 'get_item_tracker_command', 'stonehearth:basic_inventory_tracker')
          .done(function(response) {
             var itemTraces = {
@@ -25,6 +33,7 @@ App.StonehearthPromotionTree.reopen({
                .progress(function (response) {
                   if (self.isDestroyed || self.isDestroying) return;
                   self.set('inventory_data', response.tracking_data);
+                  //console.log("finished getting inventory data");
                });
          })
          .fail(function(response) {
@@ -37,9 +46,21 @@ App.StonehearthPromotionTree.reopen({
    _getJobIndex: function() {
       var self = this;
       var citizen = self.get('citizen');
-      radiant.call_obj('stonehearth.player', 'get_job_index', citizen)
-         .done(function(response){
-            var jIndex = response.job_index;
+
+      var finishedGettingJobs = function (jobData) {
+         self._jobData = jobData.jobs;
+         if (jobData.base_job) {
+            self._baseWorkerJob = jobData.base_job;
+         }
+         self._getCitizenData();
+         //console.log("finished getting jobs");
+      };
+
+      var finishedGettingJobIndex = function (jobIndex) {
+         if (_cachedJobIndexes[jobIndex]) {
+            finishedGettingJobs(_cachedJobIndexes[jobIndex]);
+         }
+         else {
             var components = {
                "jobs": {
                   "*": {
@@ -47,19 +68,28 @@ App.StonehearthPromotionTree.reopen({
                   }
                }
             };
-            self._jobsTrace = new StonehearthDataTrace(jIndex, components);
+            self._jobsTrace = new StonehearthDataTrace(jobIndex, components);
             self._jobsTrace.progress(function(eobj) {
                self._jobsTrace.destroy();
-               self._jobData = eobj.jobs;
-               if (eobj.base_job) {
-                  self._baseWorkerJob = eobj.base_job;
-               }
-               self._getCitizenData();
+               _cachedJobIndexes[jobIndex] = eobj;
+               finishedGettingJobs(eobj);
             });
-         })
-         .fail(function(response) {
-            console.error('error getting job index');
-         });
+         }
+      }
+
+      var index = self.get('job_index');
+      if (index) {
+         finishedGettingJobIndex(index);
+      }
+      else {
+         radiant.call_obj('stonehearth.player', 'get_job_index', citizen)
+            .done(function(response){
+               finishedGettingJobIndex(response.job_index);
+            })
+            .fail(function(response) {
+               console.error('error getting job index');
+            });
+      }
    },
 
    getParentJobs: function(jobDescription) {
@@ -485,6 +515,8 @@ App.StonehearthPromotionTree.reopen({
       // get the kingdom-specific job alias
       var kingdomJob = self._jobData[jobAlias].description.__self || jobAlias;
       self._updateJobPerks(kingdomJob);
+
+      //console.log('finished updating UI');
    },
 
    // Go through the selected job and annotate the perk table accordingly
