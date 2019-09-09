@@ -6,6 +6,42 @@ App.StonehearthPromotionTree.reopen({
    //    console.log('finished init');
    // },
 
+   dismiss: function () {
+      radiant.call('radiant:play_sound', {
+         'track': 'stonehearth:sounds:ui:start_menu:page_down'
+      });
+
+      this.set('citizen', null);
+      this.set('job_index', null);
+
+      this._clearSettings();
+
+      this.hide();
+   },
+
+   show: function (citizen, job_index) {
+      this._super();
+
+      this._clearSettings();
+      this.set('citizen', citizen);
+      this.set('job_index', job_index);
+      this._getJobIndex();
+   },
+
+   _clearSettings: function () {
+      this._jobData = null;
+
+      if (this._jobsTrace) {
+         this._jobsTrace.destroy();
+         this._jobsTrace = null;
+      }
+
+      if (this._citizenTrace) {
+         this._citizenTrace.destroy();
+         this._citizenTrace = null;
+      }
+   },
+
    didInsertElement: function() {
       var self = this;
 
