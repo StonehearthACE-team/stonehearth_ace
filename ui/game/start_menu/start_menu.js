@@ -26,6 +26,9 @@ App.StonehearthStartMenuView.reopen({
       self.menuActions.build_well = function(){
          self.buildWell();
       };
+      self.menuActions.build_fence = function(){
+         self.buildFence();
+      };
 
       self._super();
 
@@ -168,6 +171,31 @@ App.StonehearthStartMenuView.reopen({
             .done(function(response) {
                radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:place_structure'} );
                self.buildWell();
+            })
+            .fail(function(response) {
+               App.stonehearthClient.hideTip(tip);
+            });
+      });
+   },
+
+   buildFence: function() {
+      var self = this;
+
+      var tip = App.stonehearthClient.showTip('stonehearth_ace:ui.game.menu.build_menu.items.build_fence.tip_title', 'stonehearth_ace:ui.game.menu.build_menu.items.build_fence.tip_description',
+         {i18n: true});
+
+      App.setGameMode('place');
+      return App.stonehearthClient._callTool('buildFence', function() {
+         // TODO: make fence pieces customizable
+         var fencePieces = [
+            'stonehearth:construction:picket_fence:end',
+            'stonehearth:construction:picket_fence:bar:single',
+            'stonehearth:construction:picket_fence:bar:double'
+         ];
+         return radiant.call('stonehearth_ace:choose_fence_location_command', fencePieces)
+            .done(function(response) {
+               radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:place_structure'} );
+               self.buildFence();
             })
             .fail(function(response) {
                App.stonehearthClient.hideTip(tip);

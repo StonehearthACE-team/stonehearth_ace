@@ -73,7 +73,7 @@ App.RootView.reopen({
                             {warning: 'warning'});
             });
       };
-	
+     
       App.stonehearthClient.showPromotionTree = function(entity_id, job_index) {
          if (App.stonehearth.promotionTreeView) {
             App.stonehearth.promotionTreeView.destroy();
