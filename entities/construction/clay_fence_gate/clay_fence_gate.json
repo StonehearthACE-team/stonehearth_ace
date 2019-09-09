@@ -1,0 +1,34 @@
+{
+   "type": "entity",
+   "mixins": [
+      "file(clay_fence_gate_ghost.json)",
+      "stonehearth:mixins:portals:double_gate",
+      "stonehearth:mixins:basic_destructable_door"
+   ],
+   "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(clay_fence_gate_iconic.json)",
+         "ghost_form": "file(clay_fence_gate_ghost.json)",
+         "fence": true,
+         "placeable_on_ground": true
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 6,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 1,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:territory": {
+         "marks_territory": true
+      },
+      "stonehearth:appeal": {
+         "appeal": 6
+      }
+   }
+}

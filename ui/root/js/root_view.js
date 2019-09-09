@@ -73,49 +73,16 @@ App.RootView.reopen({
                             {warning: 'warning'});
             });
       };
-	
+     
       App.stonehearthClient.showPromotionTree = function(entity_id, job_index) {
-         var view = App.stonehearth.promotionTreeView;
-         if (view && view.get('citizen.__self') == entity_id) {
-            view.dismiss();
-         } else if (view) {
-            view.show(entity_id, job_index);
+         if (App.stonehearth.promotionTreeView) {
+            App.stonehearth.promotionTreeView.destroy();
          } else {
             App.stonehearth.promotionTreeView = App.gameView.addView(App.StonehearthPromotionTree, {
                citizen: entity_id,
                job_index: job_index
             });
          }
-      };
-
-      App.stonehearthClient.showCharacterSheet = function(entity) {
-         if (this._petCharacterSheet != null && !this._petCharacterSheet.isDestroyed) {
-            this._petCharacterSheet.destroy();
-            this._petCharacterSheet = null;
-         }
-         if (this._characterSheet != null && !this._characterSheet.isDestroyed) {
-            if (this._characterSheet.get('uri') == entity) {
-               this._characterSheet.dismiss();
-            }
-            else {
-               this._characterSheet.set('uri', entity);
-               this._characterSheet.show();
-            }
-         } else {
-            this._characterSheet = App.gameView.addView(App.StonehearthCitizenCharacterSheetView, { uri: entity });
-         }
-      };
-
-      App.stonehearthClient.showPetCharacterSheet = function(entity) {
-         if (this._characterSheet != null && !this._characterSheet.isDestroyed) {
-            this._characterSheet.dismiss();
-         }
-
-         if (this._petCharacterSheet != null && !this._petCharacterSheet.isDestroyed) {
-            this._petCharacterSheet.set('uri', entity);
-         } else {
-            this._petCharacterSheet = App.gameView.addView(App.StonehearthPetCharacterSheetView, { uri: entity });
-         }
-      };
+      }
    }
 });
