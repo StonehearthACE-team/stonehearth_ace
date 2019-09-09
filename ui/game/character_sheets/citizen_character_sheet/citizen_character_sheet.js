@@ -1,3 +1,9 @@
+$(document).ready(function() {
+   $(top).off("radiant_open_character_sheet").on("radiant_open_character_sheet", function(_, e) {
+      App.stonehearthClient.showCharacterSheet(e.entity);
+   });
+});
+
 App.StonehearthCitizenCharacterSheetView.reopen({
    components: {
       'stonehearth:unit_info': {},
@@ -49,6 +55,101 @@ App.StonehearthCitizenCharacterSheetView.reopen({
       'stonehearth:teleportation': {},
       'stonehearth_ace:titles': {}
    },
+
+   dismiss: function () {
+      this.set('uri', null);
+      this.hide();
+   },
+
+   _updateJobData: function () {
+      if (this.get('uri')) {
+         this._super();
+      }
+   }.observes('model.stonehearth:job'),
+
+   _updateJobDataDetails: function() {
+      if (this.get('uri')) {
+         this._super();
+      }
+   }.observes('model.stonehearth:job.curr_job_controller'),
+
+   _updateJobDescription: function() {
+      if (this.get('uri')) {
+         this._super();
+      }
+   }.observes('model.stonehearth:job.curr_job_name'),
+
+   _updateHappiness : function() {
+      if (this.get('uri')) {
+         this._super();
+      }
+   }.observes('model.stonehearth:happiness'),
+
+   _setFirstJournalEntry: function() {
+      if (this.get('uri')) {
+         this._super();
+      }
+   }.observes('model.stonehearth:personality'),
+
+   _buildTraitsArray: function() {
+      if (this.get('uri')) {
+         this._super();
+      }
+   }.observes('model.stonehearth:traits'),
+
+   _setEquipmentData: function() {
+      if (this.get('uri')) {
+         this._super();
+      }
+   }.observes('model.stonehearth:equipment.equipped_items'),
+   
+   _setAttributeData: function() {
+      if (this.get('uri')) {
+         this._super();
+      }
+   }.observes('model.stonehearth:attributes' , 'model.stonehearth:buffs'),
+   
+   _updateExp: function() {
+      if (this.get('uri')) {
+         this._super();
+      }
+   }.observes('model.stonehearth:job.curr_job_controller'),
+   
+   _updateExpendableResource: function() {
+      if (this.get('uri')) {
+         this._super();
+      }
+   }.observes('model.stonehearth:expendable_resources', 'model.stonehearth:buffs'),
+
+   _updateMorale: function() {
+      if (this.get('uri')) {
+         this._super();
+      }
+   }.observes('model.stonehearth:score'),
+
+   _updateBackpackItems : function() {
+      if (this.get('uri')) {
+         this._super();
+      }
+   }.observes('model.stonehearth:storage.item_tracker'),
+
+   _onTeleportEnabled: function() {
+      if (this.get('uri')) {
+         this._super();
+      }
+   }.observes('model.stonehearth:teleportation'),
+
+   _updateItemPreferences: function () {
+      if (this.get('uri')) {
+         this._super();
+      }
+   }.observes('model.stonehearth:appeal', 'model.stonehearth:unit_info'),
+
+   _updateAppealArrows: function () {
+      if (this.get('uri')) {
+         this._super();
+      }
+   }.observes('model.stonehearth:appeal'),
 
    didInsertElement: function() {
       var self = this;
@@ -313,5 +414,59 @@ App.StonehearthCitizenCharacterSheetView.reopen({
          });
       }
       return buffsByAttribute;
+   },
+
+   _onEntitySelected: function(e) {
+      var self = this;
+      if (!self.get('uri')) {
+         return;
+      }
+
+      var entity = e.selected_entity
+
+      if (!entity || App.stonehearthClient.getPlayerId() != e.player_id) {
+         self.dismiss();
+         return;
+      }
+
+      // nuke the old trace
+      if (self.selectedEntityTrace) {
+         self.selectedEntityTrace.destroy();
+      }
+
+      // trace the properties so we can tell if we need to popup the properties window for the object
+      self.selectedEntityTrace = new StonehearthDataTrace(entity)
+         .progress(function(result) {
+            self._examineEntity(result);
+         })
+         .fail(function(e) {
+            console.log(e);
+         });
+   },
+
+   _examineEntity: function(entity) {
+      var self = this;
+
+      if (!entity) {
+         self.dismiss();
+         return;
+      }
+
+      var alias = entity.get('uri');
+      var catalogData = App.catalog.getCatalogData(alias);
+
+      var materials = "";
+      if ((typeof catalogData.materials) === 'string') {
+         materials = catalogData.materials.split(' ');
+      } else {
+         materials = catalogData.materials;
+      }
+      if (materials && materials.indexOf('human') >= 0) {
+         self.set('uri', entity.__self);
+         self._resetVars();
+      } else  {
+         self.dismiss();
+      }
+      self._segmentsInitialized = false;
    }
 });
