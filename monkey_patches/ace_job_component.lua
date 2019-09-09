@@ -7,7 +7,8 @@ local AceJobComponent = class()
 AceJobComponent._ace_old_activate = JobComponent.activate
 function AceJobComponent:activate(value, add_curiosity_addition)
 	self:_ace_old_activate(value, add_curiosity_addition)
-   self:_update_job_index()
+
+	self:_update_job_index()
 	self._max_level_from_training = 3
 	self._training_performed_listener = radiant.events.listen(self._entity, 'stonehearth_ace:training_performed', self, self._on_training_performed)
 end
