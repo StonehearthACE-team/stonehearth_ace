@@ -71,7 +71,7 @@ App.StonehearthCitizenCharacterSheetView.reopen({
             e.preventDefault();
          }
       });
-     
+				
       self.$('#description').off('click').click(function () {
          if (self.get('uri')) {
             if (radiant.isOwnedByAnotherPlayer(self.get('model'), App.stonehearthClient.getPlayerId())) {
