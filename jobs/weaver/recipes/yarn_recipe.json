@@ -1,0 +1,25 @@
+{
+   "type": "recipe",
+   "effort": 6,
+   "work_units": 1,
+   "recipe_name": "i18n(stonehearth_ace:jobs.weaver.recipes.yarn_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.weaver.recipes.yarn_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.weaver.recipes.yarn_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/refined/yarn/yarn.png",
+   "workshop": "stonehearth:weaver:spinning_wheel",
+   "level_requirement": 0,
+   "ingredients": [
+      {
+         "material": "wool resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:refined:yarn"
+      },
+		{
+         "item": "stonehearth_ace:refined:yarn"
+      }
+   ]
+}

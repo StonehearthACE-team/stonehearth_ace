@@ -150,15 +150,24 @@ function AceFarmerFieldComponent:notify_plant_location_finished(location)
    end)
 end
 
+AceFarmerFieldComponent._ace_old_notify_crop_harvestable = FarmerFieldComponent.notify_crop_harvestable
+function AceFarmerFieldComponent:notify_crop_harvestable(x, z)
+   self:_ace_old_notify_crop_harvestable(x, z)
+   self:_remove_from_fertilizable(Point3(x - 1, 0, z - 1))
+end
+
 function AceFarmerFieldComponent:notify_crop_fertilized(location)
    local p = Point3(location.x - self._location.x, 0, location.z - self._location.z)
+   self:_remove_from_fertilizable(p)
+   self:_update_crop_fertilized(p.x + 1, p.z + 1, true)
+end
+
+function AceFarmerFieldComponent:_remove_from_fertilizable(location)
    local fertilizable_layer = self._sv._fertilizable_layer
    local fertilizable_layer_region = fertilizable_layer:get_component('destination'):get_region()
    fertilizable_layer_region:modify(function(cursor)
       cursor:subtract_point(p)
    end)
-
-   self:_update_crop_fertilized(p.x + 1, p.z + 1, true)
 end
 
 function AceFarmerFieldComponent:notify_crop_harvested(location)

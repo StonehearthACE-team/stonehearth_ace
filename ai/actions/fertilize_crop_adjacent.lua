@@ -53,6 +53,11 @@ function FertilizeCropAdjacent:_fertilize_one_time(ai, entity)
    radiant.entities.turn_to_face(entity, self._crop)
    ai:execute('stonehearth:run_effect', { effect = 'fiddle' })
 
+   -- in the time the effect took to run, maybe something happened to the crop
+   if not self._crop or not self._crop:is_valid() then
+      return true
+   end
+
    self._crop:get_component('stonehearth:crop'):set_fertilized()
 
    -- determine quality value to apply based on fertilizer data
@@ -83,7 +88,9 @@ end
 function FertilizeCropAdjacent:run(ai, entity, args)
    self._log:detail('entering loop..')
    while self._crop and self._crop:is_valid() and self:_fertilize_one_time(ai, entity) do
-      radiant.events.trigger_async(entity, 'stonehearth_ace:fertilize_crop', {crop_uri = self._crop:get_uri()})
+      radiant.events.trigger_async(entity, 'stonehearth_ace:fertilize_crop', {
+            crop_uri = self._crop and self._crop:is_valid() and self._crop:get_uri()
+         })
       if self._location then
          self._farmer_field:notify_crop_fertilized(self._location)
       end

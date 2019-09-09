@@ -4654,6 +4654,11 @@
       },
       "weaver": {
          "recipes": {
+				"yarn_recipe": {
+               "recipe_name": "Ball of Yarn (x2)",
+               "description": "Spin animal wool into a versatile resource that can be used as both fiber or thread.",
+               "flavor": "You might want to store these far away from kittens..."
+            },
             "worker_holiday_hat_recipe": {
                "recipe_name": "Holiday Cheer Cap",
                "description": "The ACE Team would like to wish you all very happy and wonderful holidays!",
@@ -5859,6 +5864,13 @@
          "water_well_kit_clay": {
             "display_name": "Clay Water Well Parts",
             "description": "Use this set of materials on a simple well to turn it into a better, nicer well."
+         },
+         "thread": {
+            "description": "Spun from the fibers of plants."
+         },
+         "yarn": {
+            "display_name": "Ball of Yarn",
+            "description": "Spun from animal wool. It can be used as both fiber or thread."
          }
       },
       "trees": {
@@ -10563,6 +10575,24 @@
                   "plains": "Arid Shrubland",
                   "foothills": "Rocky Hills",
                   "mountains": "Canyons"
+               }
+            }
+         },
+         "select_game_story": {
+            "game_modes": {
+               "normal": {
+                  "description": "Adventure forth in a world fraught with danger! A balanced experience, your town will be subject to increasingly challenging invasions."
+               },
+               "peaceful": {
+                  "description": "A sandbox! Freely build your town without any invasions. You may look for a fight in the wilds or through special events, if you decide to."
+               },
+               "gentle": {
+                  "description": "Enemies are as challenging as in Normal - but with a slower pace. Progression and events have longer intervals between each other.",
+                  "display_name": "Gentle",
+                  "post_selection_text": "an intriguing place to start anew."
+               },
+               "hard": {
+                  "description": "Enemies will be stronger and the progression of challenges will be quicker and less merciful. Always be on your guard!"
                }
             }
          }

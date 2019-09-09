@@ -46,7 +46,7 @@ App.StonehearthPromotionTree.reopen({
    _getJobIndex: function() {
       var self = this;
       var citizen = self.get('citizen');
-
+     
       var finishedGettingJobs = function (jobData) {
          self._jobData = jobData.jobs;
          if (jobData.base_job) {
@@ -515,7 +515,7 @@ App.StonehearthPromotionTree.reopen({
       // get the kingdom-specific job alias
       var kingdomJob = self._jobData[jobAlias].description.__self || jobAlias;
       self._updateJobPerks(kingdomJob);
-
+     
       //console.log('finished updating UI');
    },
 
