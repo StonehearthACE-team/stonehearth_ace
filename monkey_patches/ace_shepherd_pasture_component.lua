@@ -45,6 +45,24 @@ function AceShepherdPastureComponent:activate()
    end
 
    self:_start_grass_spawn()
+
+   if self._sv.pasture_type then
+      self:_register_with_town()
+   end
+end
+
+-- overriding to get rid of registering with the town; we need to do that in :activate()
+function AceShepherdPastureComponent:post_activate()
+   if self._sv.pasture_type then
+      self:set_feed(self._sv._current_feed)
+      self:_create_pasture_tasks()
+
+      for id, animal_data in pairs(self._sv.tracked_critters) do
+         local animal = animal_data.entity
+         self:_create_harvest_task(animal)
+      end
+      --self:_register_with_town()
+   end
 end
 
 -- for some reason, overriding the destroy function doesn't work, so we have to override this one that only gets called during destroy
