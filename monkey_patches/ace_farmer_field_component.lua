@@ -166,7 +166,7 @@ function AceFarmerFieldComponent:_remove_from_fertilizable(location)
    local fertilizable_layer = self._sv._fertilizable_layer
    local fertilizable_layer_region = fertilizable_layer:get_component('destination'):get_region()
    fertilizable_layer_region:modify(function(cursor)
-      cursor:subtract_point(p)
+      cursor:subtract_point(location)
    end)
 end
 
