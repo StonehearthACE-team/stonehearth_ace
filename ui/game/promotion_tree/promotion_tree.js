@@ -16,12 +16,18 @@ App.StonehearthPromotionTree.reopen({
 
       this._clearSettings();
 
+      var index = App.stonehearth.modalStack.indexOf(this)
+      if (index > -1) {
+         App.stonehearth.modalStack.splice(index, 1);
+      }
+
       this.hide();
    },
 
    show: function (citizen, job_index) {
       this._super();
 
+      App.stonehearth.modalStack.push(this);
       this._clearSettings();
       this.set('citizen', citizen);
       this.set('job_index', job_index);

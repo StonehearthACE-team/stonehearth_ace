@@ -13,22 +13,12 @@ function FishTrapComponent:activate()
    local json = radiant.entities.get_json(self)
    self._buff_name = json.buff
    
-   self:_create_listeners()
-	
 	if self._trap_type then
-      self._parent_trace = self._entity:get_component('mob'):trace_parent('fish_trap added or removed')
-         :on_changed(function(parent_entity)
-            if not parent_entity then
-               local entity_forms_component = self._entity:get_component('stonehearth:entity_forms')
-               if entity_forms_component and not entity_forms_component:is_being_placed() then
-                  -- Unregister this object if it was undeployed
-                  self:_register_with_town(false)
-               end
-            else
-               -- Register this object if it is placed
-               self:_register_with_town(true)
-            end
+      self._parent_listener = self._entity:add_component('mob'):trace_parent('fish trap placed or removed')
+         :on_changed(function(parent)
+            self:_on_parent_changed(parent)
          end)
+         :push_object_state()
    end
 end
 
@@ -38,13 +28,6 @@ function FishTrapComponent:destroy()
 	if self._trap_type then
       self:_register_with_town(false)
    end
-end
-
-function FishTrapComponent:_create_listeners()
-   self._parent_listener = self._entity:add_component('mob'):trace_parent('fish trap placed or removed')
-      :on_changed(function(parent)
-         self:_on_parent_changed(parent)
-      end)
 end
 
 function FishTrapComponent:_destroy_listeners()
@@ -67,6 +50,17 @@ function FishTrapComponent:_register_with_town(register)
 end
 
 function FishTrapComponent:_on_parent_changed(parent)
+   if not parent then
+      local entity_forms_component = self._entity:get_component('stonehearth:entity_forms')
+      if entity_forms_component and not entity_forms_component:is_being_placed() then
+         -- Unregister this object if it was undeployed
+         self:_register_with_town(false)
+      end
+   else
+      -- Register this object if it is placed
+      self:_register_with_town(true)
+   end
+
    -- if there's a parent (we're placed) and we haven't applied a buff, or vice versa, add/remove the buff
    if (parent == nil) ~= (self._sv._applied_buff == nil) then
 

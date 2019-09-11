@@ -1,5 +1,7 @@
 local PastureItemComponent = class()
 
+local log = radiant.log.create_logger('pasture_item')
+
 function PastureItemComponent:initialize()
    self._sv.trough_feed_uri = nil
    self._sv.num_feed = 0
@@ -7,13 +9,8 @@ function PastureItemComponent:initialize()
    self._type = self._json.type
 end
 
-function PastureItemComponent:restore()
-   -- Register if we are placed in the world in our root form
-   local entity_forms_component = self._entity:get_component('stonehearth:entity_forms')
-   self._is_placed = not entity_forms_component or entity_forms_component:is_root_form_in_world()
-end
-
 function PastureItemComponent:post_activate()
+   -- Register if we are placed in the world
    self._parent_trace = self._entity:get_component('mob'):trace_parent('pasture item added or removed')
       :on_changed(function(parent_entity)
          if parent_entity then
@@ -22,9 +19,7 @@ function PastureItemComponent:post_activate()
             self:_register_with_town(false)
          end
       end)
-   if self._is_placed then
-      self:_register_with_town(true)
-   end
+      :push_object_state()
 end
 
 function PastureItemComponent:destroy()
@@ -42,8 +37,8 @@ end
 function PastureItemComponent:_register_with_town(register)
    local player_id = radiant.entities.get_player_id(self._entity)
    local town = stonehearth.town:get_town(player_id)
+   
    if town then
-      self._is_placed = register
       if register then
          town:register_pasture_item(self._entity, self._type)
       else

@@ -58,7 +58,19 @@ App.StonehearthCitizenCharacterSheetView.reopen({
 
    dismiss: function () {
       this.set('uri', null);
+
+      var index = App.stonehearth.modalStack.indexOf(this)
+      if (index > -1) {
+         App.stonehearth.modalStack.splice(index, 1);
+      }
+
       this.hide();
+   },
+
+   show: function () {
+      this._super();
+
+      App.stonehearth.modalStack.push(this);
    },
 
    _updateJobData: function () {
