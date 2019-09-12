@@ -42,6 +42,8 @@ local function monkey_patching()
          radiant.mixin(monkey_do, monkey_see)
       end
    end
+
+   radiant.events.trigger(radiant, 'stonehearth_ace:client:monkey_patched', monkey_patches)
 end
 
 local function create_service(name)
@@ -114,6 +116,8 @@ end
 
 function stonehearth_ace:_on_required_loaded()
    monkey_patching()
+
+   self:_run_scripts('post_monkey_patching')
    
    radiant.events.trigger_async(radiant, 'stonehearth_ace:client:required_loaded')
 end
