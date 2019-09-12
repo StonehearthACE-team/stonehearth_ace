@@ -1,0 +1,21 @@
+{
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "layer": "hat",
+            "transparent": "true",
+            "models": [
+               "file(worker_hat_placeholder.qb)"
+            ]
+         }
+      },
+      "stonehearth:equipment_piece": {
+         "slot": "helmet",
+         "render_type": "merge_with_model",
+         "can_unequip": true,
+         "destroy_on_drop": true
+      }
+   },
+   "entity_data": {}
+}
