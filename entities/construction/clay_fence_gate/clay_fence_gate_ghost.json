@@ -1,0 +1,24 @@
+{
+   "mixins": [
+      "stonehearth:mixins:portals:double_gate:ghost",
+      "stonehearth:mixins:placed_object"
+   ],
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(clay_fence_gate.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth:entities.construction.clay_fence_gate.clay_fence_gate_ghost.display_name)",
+         "description": "i18n(stonehearth:entities.construction.clay_fence_gate.clay_fence_gate_ghost.description)",
+         "icon": "file(clay_fence_gate.png)",
+         "category": "construction",
+         "material_tags": ["clay", "defense", "crafted", "portal", "gate", "stockpile_defense"]
+      }
+   }
+}
