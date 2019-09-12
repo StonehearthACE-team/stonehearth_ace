@@ -42,7 +42,7 @@ function TransformComponent:restore()
 end
 
 function TransformComponent:activate()
-   self._all_transform_data = radiant.entities.get_entity_data(self._entity, 'stonehearth_ace:transform_data')
+   self._all_transform_data = radiant.entities.get_entity_data(self._entity, 'stonehearth_ace:transform_data') or {}
 end
 
 function TransformComponent:post_activate()

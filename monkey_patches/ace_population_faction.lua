@@ -224,7 +224,7 @@ function AcePopulationFaction:get_job_index(population)
       if pop_data and pop_data.job_index then
          job_index = pop_data.job_index
       end
-   elseif self._data and self._data.job_index then
+   elseif self._data.job_index then
       job_index = self._data.job_index
    end
 

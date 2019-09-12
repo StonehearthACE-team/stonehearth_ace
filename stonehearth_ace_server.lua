@@ -130,8 +130,6 @@ local function monkey_patching()
          radiant.mixin(monkey_do, monkey_see)
       end
    end
-
-   radiant.events.trigger(radiant, 'stonehearth_ace:server:monkey_patched', monkey_patches)
 end
 
 local function create_service(name)

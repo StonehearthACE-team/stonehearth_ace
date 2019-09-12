@@ -1,6 +1,6 @@
 {
    "mixins": [
-      "stonehearth_ace:mixins:outfit:hat:summer:crafter"
+      "stonehearth:mixins:item_properties"
    ],
    "type": "entity",
    "components": {
@@ -52,9 +52,24 @@
          "iconic_form": "file(sunstroke_crafter_outfit_iconic.json)"
       },
       "stonehearth:equipment_piece": {
-         "injected_buffs": [
-            "stonehearth_ace:buffs:weather:hot_resist"
+         "slot": "helmet",
+         "render_type": "merge_with_model",
+         "roles": [
+            "crafter"
          ],
+         "ilevel": 1,
+         "injected_buffs": [
+            "stonehearth_ace:buffs:weather:hot_resist",
+            "stonehearth_ace:buffs:weather:sunstroke_resist"
+         ],
+         "conditional_values": {
+            "season": {
+               "winter": -3,
+               "autumn": -3,
+               "spring": -3,
+               "summer": 0
+            }
+         },
          "equip_effect": "stonehearth:effects:weapon_level_up"
       }
    },
@@ -76,7 +91,10 @@
          "category": "armor",
          "material_tags": [
             "cloth",
-            "ascendancy_made"
+            "crafter_outfit",
+            "ascendancy_made",
+            "civillian_equipment",
+            "stockpile_equipment"
          ]
       }
    }

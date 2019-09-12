@@ -1,6 +1,6 @@
 {
    "mixins": [
-      "stonehearth_ace:mixins:outfit:hat:freezing"
+      "stonehearth:mixins:item_properties"
    ],
    "type": "entity",
    "components": {
@@ -52,15 +52,27 @@
          "iconic_form": "file(freezing_field_work_outfit_iconic.json)"
       },
       "stonehearth:equipment_piece": {
+         "slot": "helmet",
+         "render_type": "merge_with_model",
          "roles": [
             "field_work"
          ],
-         "mixintypes": {
-            "equipment_types": "override"
-         },
+         "ilevel": 2,
+         "injected_buffs": [
+            "stonehearth_ace:buffs:weather:freezing_resist",
+            "stonehearth_ace:buffs:weather:sunstroke_resist"
+         ],
          "equipment_types": [
             "hood"
          ],
+         "conditional_values": {
+            "season": {
+               "winter": 2,
+               "autumn": 1,
+               "spring": -3,
+               "summer": -3
+            }
+         },
          "equip_effect": "stonehearth:effects:weapon_level_up"
       }
    },

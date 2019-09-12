@@ -1,6 +1,6 @@
 {
    "mixins": [
-      "stonehearth_ace:mixins:outfit:hat:summer:field_work"
+      "stonehearth:mixins:item_properties"
    ],
    "type": "entity",
    "components": {
@@ -52,6 +52,24 @@
          "iconic_form": "file(na_sunstroke_field_work_outfit_iconic.json)"
       },
       "stonehearth:equipment_piece": {
+         "slot": "helmet",
+         "render_type": "merge_with_model",
+         "roles": [
+            "field_work",
+            "worker_job"
+         ],
+         "ilevel": 1,
+         "injected_buffs": [
+            "stonehearth_ace:buffs:weather:sunstroke_resist"
+         ],
+         "conditional_values": {
+            "season": {
+               "winter": -3,
+               "autumn": -3,
+               "spring": -3,
+               "summer": 0
+            }
+         },
          "equip_effect": "stonehearth:effects:weapon_level_up"
       }
    },
@@ -73,7 +91,11 @@
          "category": "armor",
          "material_tags": [
             "cloth",
-            "na_made"
+            "field_work_outfit",
+            "worker_outfit",
+            "na_made",
+            "civillian_equipment",
+            "stockpile_equipment"
          ]
       }
    }
