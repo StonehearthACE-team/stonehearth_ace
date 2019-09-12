@@ -5,16 +5,23 @@ local JobComponent = require 'stonehearth.components.job.job_component'
 local AceJobComponent = class()
 
 AceJobComponent._ace_old_activate = JobComponent.activate
-function AceJobComponent:activate(value, add_curiosity_addition)
-	self:_ace_old_activate(value, add_curiosity_addition)
-   self:_update_job_index()
+function AceJobComponent:activate()
+   self:_ace_old_activate()
+   
 	self._max_level_from_training = 3
 	self._training_performed_listener = radiant.events.listen(self._entity, 'stonehearth_ace:training_performed', self, self._on_training_performed)
 end
 
+AceJobComponent._ace_old_post_activate = JobComponent.post_activate
+function AceJobComponent:post_activate()
+   self:_update_job_index()
+
+   self:_ace_old_post_activate()
+end
+
 AceJobComponent._ace_old_destroy = JobComponent.destroy
-function AceJobComponent:destroy(value, add_curiosity_addition)
-	self:_ace_old_destroy(value, add_curiosity_addition)
+function AceJobComponent:destroy()
+	self:_ace_old_destroy()
 
 	if self._training_performed_listener then
 		self._training_performed_listener:destroy()

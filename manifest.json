@@ -1106,13 +1106,13 @@
       "mixins:encounter:cougar_raid": "file(mixins/encounter/mixin_cougar_raid.json)",
       "mixins:encounter:epic_undead_raid": "file(mixins/encounter/mixin_epic_undead_raid.json)",
       "mixins:encounter:goblin_raid": "file(mixins/encounter/mixin_goblin_raid.json)",
-      "mixins:fence:bar:double": "file(mixins/fence/fence_bar_double.json)",
-      "mixins:fence:bar:quad": "file(mixins/fence/fence_bar_quad.json)",
-      "mixins:fence:bar:single": "file(mixins/fence/fence_bar_single.json)",
-      "mixins:fence:end": "file(mixins/fence/fence_end.json)",
-      "mixins:fence:gate": "file(mixins/fence/fence_gate.json)",
-      "mixins:fence:gate:big": "file(mixins/fence/fence_gate_big.json)",
       "mixins:fence:simple_fence": "file(mixins/fence/simple_fence.json)",
+		"mixins:outfit:hat": "file(mixins/armor/ace_hat.json)",
+		"mixins:outfit:hat:summer:combatant": "file(mixins/armor/ace_hat_summer_combatant.json)",
+		"mixins:outfit:hat:summer:field_work": "file(mixins/armor/ace_hat_summer_field_work.json)",
+		"mixins:outfit:hat:summer:crafter": "file(mixins/armor/ace_hat_summer_crafter.json)",
+		"mixins:outfit:hat:cold": "file(mixins/armor/ace_hat_cold.json)",
+		"mixins:outfit:hat:freezing": "file(mixins/armor/ace_hat_freezing.json)",
       "mixins:outfit:chilly:buffed": "file(mixins/armor/ace_outfit_chilly_buffed.json)",
       "mixins:outfit:chilly:no_buff": "file(mixins/armor/ace_outfit_chilly_no_buff.json)",
       "mixins:outfit:cold:buffed": "file(mixins/armor/ace_outfit_cold_buffed.json)",
@@ -3115,19 +3115,7 @@
       "stonehearth/data/rigs/entities/rabbit_biped/effects/saw.json": "stonehearth_ace/data/rigs/entities/rabbit_biped/effects/saw.json",
       "stonehearth/data/rigs/entities/rabbit_biped/effects/wrench.json": "stonehearth_ace/data/rigs/entities/rabbit_biped/effects/wrench.json",
       "stonehearth/data/rigs/entities/rabbit_biped/effects/chisel.json": "stonehearth_ace/data/rigs/entities/rabbit_biped/effects/chisel.json",
-      "stonehearth/data/rigs/jobs/cook/cook_oven/effects/work.json": "file(data/rigs/jobs/cook/cook_oven/effects/work.json)",
-      "stonehearth/entities/construction/clay_fence_bar_double/clay_fence_bar_double_ghost.json": "file(entities/construction/clay_fence_bar_double/clay_fence_bar_double_ghost.json)",
-      "stonehearth/entities/construction/clay_fence_bar_single/clay_fence_bar_single_ghost.json": "file(entities/construction/clay_fence_bar_single/clay_fence_bar_single_ghost.json)",
-      "stonehearth/entities/construction/clay_fence_end/clay_fence_end_ghost.json": "file(entities/construction/clay_fence_end/clay_fence_end_ghost.json)",
-      "stonehearth/entities/construction/cobblestone_fence_bar_double/cobblestone_fence_bar_double_ghost.json": "file(entities/construction/cobblestone_fence_bar_double/cobblestone_fence_bar_double_ghost.json)",
-      "stonehearth/entities/construction/cobblestone_fence_bar_single/cobblestone_fence_bar_single_ghost.json": "file(entities/construction/cobblestone_fence_bar_single/cobblestone_fence_bar_single_ghost.json)",
-      "stonehearth/entities/construction/cobblestone_fence_end/cobblestone_fence_end_ghost.json": "file(entities/construction/cobblestone_fence_end/cobblestone_fence_end_ghost.json)",
-      "stonehearth/entities/construction/picket_fence_bar_double/picket_fence_bar_double_ghost.json": "file(entities/construction/picket_fence_bar_double/picket_fence_bar_double_ghost.json)",
-      "stonehearth/entities/construction/picket_fence_bar_single/picket_fence_bar_single_ghost.json": "file(entities/construction/picket_fence_bar_single/picket_fence_bar_single_ghost.json)",
-      "stonehearth/entities/construction/picket_fence_end/picket_fence_end_ghost.json": "file(entities/construction/picket_fence_end/picket_fence_end_ghost.json)",
-      "stonehearth/entities/construction/ornate_picket_fence_bar_double/ornate_picket_fence_bar_double_ghost.json": "file(entities/construction/ornate_picket_fence_bar_double/ornate_picket_fence_bar_double_ghost.json)",
-      "stonehearth/entities/construction/ornate_picket_fence_bar_single/ornate_picket_fence_bar_single_ghost.json": "file(entities/construction/ornate_picket_fence_bar_single/ornate_picket_fence_bar_single_ghost.json)",
-      "stonehearth/entities/construction/ornate_picket_fence_end/ornate_picket_fence_end_ghost.json": "file(entities/construction/ornate_picket_fence_end/ornate_picket_fence_end_ghost.json)"
+      "stonehearth/data/rigs/jobs/cook/cook_oven/effects/work.json": "file(data/rigs/jobs/cook/cook_oven/effects/work.json)"
    },
    "overrides": {
       "stonehearth/data/rigs/entities/monster/goblins/goblin/effects/combat_1h_shield_block.json": "file(data/rigs/entities/monster/goblins/goblin/effects/combat_1h_shield_block.json)",
@@ -3536,14 +3524,6 @@
       "cancel_placement": {
          "controller": "file(call_handlers/resource_call_handler.lua)",
          "endpoint": "client"
-      },
-      "choose_fence_location_command": {
-         "controller": "file(call_handlers/fence_call_handler.lua)",
-         "endpoint": "client"
-      },
-      "build_fence_command": {
-         "controller": "file(call_handlers/fence_call_handler.lua)",
-         "endpoint": "server"
       },
       "box_harvest_and_replant_resources": {
          "controller": "file(call_handlers/resource_call_handler.lua)",

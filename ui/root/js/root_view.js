@@ -74,7 +74,7 @@ App.RootView.reopen({
                             {warning: 'warning'});
             });
       };
-     
+	
       App.stonehearthClient.showPromotionTree = function(entity_id, job_index) {
          var view = App.stonehearth.promotionTreeView;
          if (view && view.get('citizen.__self') == entity_id) {

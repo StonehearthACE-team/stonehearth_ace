@@ -1,7 +1,7 @@
 var _cachedJobIndexes = {};
 
 App.StonehearthPromotionTree.reopen({
-   // init: function() {
+	// init: function() {
    //    this._super();
    //    console.log('finished init');
    // },
@@ -47,7 +47,7 @@ App.StonehearthPromotionTree.reopen({
          this._citizenTrace = null;
       }
    },
-
+	
    didInsertElement: function() {
       var self = this;
 
@@ -61,7 +61,7 @@ App.StonehearthPromotionTree.reopen({
       var self = this;
       self._addHandlers();
 
-      //console.log('didInsertElement');
+		//console.log('didInsertElement');
       radiant.call_obj('stonehearth.inventory', 'get_item_tracker_command', 'stonehearth:basic_inventory_tracker')
          .done(function(response) {
             var itemTraces = {
@@ -75,7 +75,7 @@ App.StonehearthPromotionTree.reopen({
                .progress(function (response) {
                   if (self.isDestroyed || self.isDestroying) return;
                   self.set('inventory_data', response.tracking_data);
-                  //console.log("finished getting inventory data");
+						//console.log("finished getting inventory data");
                });
          })
          .fail(function(response) {
@@ -88,7 +88,7 @@ App.StonehearthPromotionTree.reopen({
    _getJobIndex: function() {
       var self = this;
       var citizen = self.get('citizen');
-     
+		
       var finishedGettingJobs = function (jobData) {
          self._jobData = jobData.jobs;
          if (jobData.base_job) {
@@ -113,10 +113,10 @@ App.StonehearthPromotionTree.reopen({
             self._jobsTrace = new StonehearthDataTrace(jobIndex, components);
             self._jobsTrace.progress(function(eobj) {
                self._jobsTrace.destroy();
-               _cachedJobIndexes[jobIndex] = eobj;
+					_cachedJobIndexes[jobIndex] = eobj;
                finishedGettingJobs(eobj);
             });
-         }
+			}
       }
 
       var index = self.get('job_index');
@@ -557,7 +557,7 @@ App.StonehearthPromotionTree.reopen({
       // get the kingdom-specific job alias
       var kingdomJob = self._jobData[jobAlias].description.__self || jobAlias;
       self._updateJobPerks(kingdomJob);
-     
+		
       //console.log('finished updating UI');
    },
 

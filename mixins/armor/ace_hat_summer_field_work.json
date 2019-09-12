@@ -1,0 +1,30 @@
+{
+   "mixins": "stonehearth_ace:mixins:outfit:hat",
+   "components": {
+      "stonehearth:equipment_piece": {
+         "roles": [
+            "field_work",
+            "worker_job"
+         ],
+         "ilevel": 1,
+         "conditional_values": {
+            "season": {
+               "winter": -3,
+               "autumn": -3,
+               "spring": -3,
+               "summer": 0
+            }
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "material_tags": [
+            "field_work_outfit",
+            "worker_outfit",
+            "civillian_equipment",
+            "stockpile_equipment"
+         ]
+      }
+   }
+}

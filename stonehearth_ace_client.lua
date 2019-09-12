@@ -26,7 +26,6 @@ local monkey_patches = {
    ace_zone_renderer = 'stonehearth.renderers.zone_renderer',
    ace_mining_zone_renderer = 'stonehearth.renderers.mining_zone.mining_zone_renderer',
    ace_template_placement_tool = 'stonehearth.services.client.building.template_placement_tool',
-   ace_xz_region_selector = 'stonehearth.services.client.selection.xz_region_selector',
    ace_constants = 'stonehearth.constants'
 }
 
@@ -42,6 +41,8 @@ local function monkey_patching()
          radiant.mixin(monkey_do, monkey_see)
       end
    end
+
+   radiant.events.trigger(radiant, 'stonehearth_ace:client:monkey_patched', monkey_patches)
 end
 
 local function create_service(name)
@@ -114,6 +115,8 @@ end
 
 function stonehearth_ace:_on_required_loaded()
    monkey_patching()
+
+   self:_run_scripts('post_monkey_patching')
    
    radiant.events.trigger_async(radiant, 'stonehearth_ace:client:required_loaded')
 end

@@ -1,0 +1,27 @@
+{
+	"mixins": "stonehearth_ace:mixins:outfit:hat",
+   "components": {
+      "stonehearth:equipment_piece": {
+         "roles": [
+            "combat"
+         ],
+			"ilevel": 1,
+			"conditional_values": {
+            "season": {
+               "winter": -3,
+               "autumn": -3,
+               "spring": -3,
+               "summer": 0
+            }
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "material_tags": [
+            "combat_outfit",
+            "stockpile_exotic_equipment"
+         ]
+      }
+   }
+}
