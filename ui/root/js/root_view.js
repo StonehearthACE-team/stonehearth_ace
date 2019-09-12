@@ -9,11 +9,12 @@ App.RootView.reopen({
 
       self._game_mode_manager.addCustomMode("military", "military"); //, null, "AceMilitaryModeView", true);
       self._game_mode_manager.addCustomMode("connection", "hud");
+      self._game_mode_manager.addCustomMode("fence", "hud", null, "AceBuildFenceModeView");
       self._game_mode_manager.addCustomEntityModeCheck(self._ACE_getCustomModeForEntity);
    },
 
    _ACE_getCustomModeForEntity: function(modes, entity) {
-      if (entity['stonehearth_ace:patrol_banner'] ||            entity['stonehearth:party']) {
+      if (entity['stonehearth_ace:patrol_banner'] || entity['stonehearth:party']) {
          return modes.MILITARY;
       }
 
@@ -117,5 +118,15 @@ App.RootView.reopen({
             this._petCharacterSheet = App.gameView.addView(App.StonehearthPetCharacterSheetView, { uri: entity });
          }
       };
+
+      App.stonehearthClient.showBuildFenceView = function() {
+         var view = App.stonehearth.buildFenceView;
+         if (view) {
+            view.show();
+         }
+         else {
+            App.stonehearth.buildFenceView = App.gameView.addView(App.AceBuildFenceModeView);
+         }
+      }
    }
 });

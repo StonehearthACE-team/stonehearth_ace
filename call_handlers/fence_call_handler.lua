@@ -50,7 +50,7 @@ local _create_fence_nodes = function(pattern, start_location, end_location, faci
       local uri = pattern[pattern_index]
       local fence_data = radiant.entities.get_entity_data(uri, 'stonehearth_ace:fence_data') or {}
       local is_end = fence_data.type == 'end'
-      local this_length = fence_data.length or 1
+      local this_length = math.max(1, fence_data.length or 1)
       if not is_end and last_was_end then
          this_length = this_length - 1
       end
@@ -60,9 +60,9 @@ local _create_fence_nodes = function(pattern, start_location, end_location, faci
       --log:debug('placing %s, length = %s, this_length = %s', uri, length, this_length)
 
       if this_length < 1 then
-         local mult = 1 - this_length
-         x = x + step_x * mult
-         z = z + step_z * mult
+         x = x - step_x
+         z = z - step_z
+         length = length + 1
       else
          for i = 1, math.floor(this_length / 2) do
             x = x + step_x

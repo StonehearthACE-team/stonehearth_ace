@@ -1,0 +1,64 @@
+<script type="text/x-handlebars" data-template-name="fenceMode">
+<div id="fenceMode" class="gui">
+   <div id="fenceSegmentsDiv">
+      {{#each segment in view.segments}}
+      <div class="fenceSegmentContainer">
+         <a class="fenceSegmentBtn" href="#" {{action "selectSegment" segment target="view"}}>
+            <img class="fenceSegmentImg" {{bind-attr src=segment.icon}}/>
+         </a>
+         <a class="toggleSegmentBtn" href="#" {{action "toggleSegment" segment target="view"}}>
+            <img class="toggleSegmentImg" {{bind-attr class="segment.enabled:enabled:disabled"}}/>
+         </a>
+      </div>
+      {{/each}}
+      <a id="addSegmentBtn" {{bind-attr class="view.canAddSegment::hidden"}}>
+         <img id="addSegmentImg"/>
+      </a>
+   </div>
+   <div id="fenceControls">
+      <a id="showLoadPreset" class="button" href="#" {{action "showLoadPreset" target="view"}}>
+         <img class="loadPresetImg"/>
+      </a>
+      <a id="showSavePreset" class="button" href="#" {{action "showSavePreset" target="view"}}>
+         <img class="savePresetImg"/>
+      </a>
+   </div>
+
+   <div id="presetSelection">
+      <div id="presetSearch"></div>
+      <div id="presetList">
+         {{#each preset in view.presets}}
+         <div class="presetRow" {{bind-attr class="preset.default:default: preset.available::unavailable"}}>
+            <div class="presetPreview">
+               {{#each segment in preset.segments}}
+               <img class="presetSegmentImg" {{bind-attr src=segment.icon class="segment.enabled:enabled:disabled"}}/>
+               {{/each}}
+            </div>
+            <div class="presetButtons">
+               {{#if view.showLoadButtons}}
+               <a id="loadPreset" class="button" href="#" {{action "loadPreset" preset target="view"}}>
+                  <img class="loadPresetImg"/>
+               </a>
+               {{/if}}
+               {{#if view.showSaveButtons}}
+               <a id="savePreset" class="button" href="#" {{action "savePreset" preset target="view"}}>
+                  <img class="savePresetImg"/>
+               </a>
+               {{/if}}
+               {{#if preset.default}}
+               {{else}}
+               <a id="deletePreset" class="button" href="#" {{action "deletePreset" preset target="view"}}>
+                  <img class="deletePresetImg"/>
+               </a>
+               {{/if}}
+            </div>
+         </div>
+         {{/each}}
+      </div>
+   </div>
+
+   <div id="segmentSelection">
+
+   </div>
+</div>
+</script>

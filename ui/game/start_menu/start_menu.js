@@ -27,7 +27,7 @@ App.StonehearthStartMenuView.reopen({
          self.buildWell();
       };
       self.menuActions.build_fence = function(){
-         self.buildFence();
+         //self.buildFence();
       };
 
       self._super();
@@ -184,7 +184,8 @@ App.StonehearthStartMenuView.reopen({
       var tip = App.stonehearthClient.showTip('stonehearth_ace:ui.game.menu.build_menu.items.build_fence.tip_title', 'stonehearth_ace:ui.game.menu.build_menu.items.build_fence.tip_description',
          {i18n: true});
 
-      App.setGameMode('place');
+      //App.setGameMode('fence');
+      //App.stonehearthClient.showBuildFenceView();
       return App.stonehearthClient._callTool('buildFence', function() {
          // TODO: make fence pieces customizable
          var fencePieces = [

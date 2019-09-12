@@ -86,6 +86,7 @@ $(document).ready(function() {
                var newView = App[view].create();
 
                if (newView) {
+                  newView.hide();
                   self.views[mode] = newView;
                   App.gameView.addView(newView);
 
@@ -189,10 +190,14 @@ $(document).ready(function() {
                   if (menu) {
                      App.gameMenu.showMenu(menu);
                   } else {
+                     var prevMode = self._currentMode;
                      self.setGameMode(mode);
-                     if (mode == self.modes.NORMAL) {
+                     // TODO: this is a hack; it shouldn't be a hack
+                     // instead of hardcoding in some menus that should get hidden when the gamemode is set to normal,
+                     // that should be happening naturally through menu configuration
+                     if (prevMode != self.modes.NORMAL) {
                         var currentMenu = App.gameMenu.getMenu();
-                        if (currentMenu == "zone_menu" || currentMenu == "build_menu") {
+                        if (currentMenu == self._getMenuForMode(prevMode)) {
                            App.gameMenu.hideMenu();
                         }
                      }
@@ -207,6 +212,10 @@ $(document).ready(function() {
       _getMenuForMode: function(gameMode) {
          if (gameMode == this.modes.ZONES) {
             return "zone_menu";
+         }
+
+         if (gameMode == this.modes.BUILD) {
+            return "custom_building_new";
          }
 
          return this.modeMenus[gameMode];

@@ -1,6 +1,155 @@
 $.widget( "stonehearth.stonehearthMenu", $.stonehearth.stonehearthMenu, {
+   showMenu: function(id) {
+      this.menu.find('.menuItemGroup').on('webkitAnimationEnd', function(e) {
+         var el = $(e.target);
+         if (el && el.hasClass('down')) {
+            el.hide();
+         }
+         //console.log("animationend");
+      });
+      this.menu.find('.menuItemGroup').each(function(_, el) {
+         if ($(el).hasClass('up')) {
+            $(el).removeClass('up').addClass('down');
+         }
+      });
+      this.menu.find('.selected').removeClass('selected');
 
-   _addItems: function(nodes, parentId, name, depth) {
+      var nodeData;
+
+      if (id) {
+         var subMenu = '[parent="' + id +'"]';
+         var subMenuElement = this.menu.find(subMenu);
+         subMenuElement.removeClass('down')
+         subMenuElement.show();
+         subMenuElement.addClass('up');
+         nodeData = this._dataToMenuItemMap[id]
+
+         var menuMode = this.menu.find('.rootGroup').find('#' + id);
+         if (menuMode) {
+            menuMode.addClass('selected');
+         }
+      }
+
+      this._currentOpenMenu = id;
+
+      // ACE: commented this part out
+      // $(top).trigger("start_menu_activated", {
+      //    id: id,
+      //    nodeData: nodeData
+      // });
+   },
+
+   _create: function() {
+      var self = this;
+      App.gameMenu = this;
+
+      this._dataToMenuItemMap = {};
+      this.menu = $('<div>').addClass('stonehearthMenu');
+
+      this._addItems(this.options.data)
+
+      // a bit of a hack. remove the root group then append it, so it's at the bottom of the menu div
+      //var rootGroup = this.menu.find('.rootGroup');
+      //this.menu.detach('.rootGroup');
+      //this.menu.append(rootGroup);
+
+      this.element.append(this.menu);
+
+      this.hideMenu();
+
+      this.menu.on('click', '.menuItem', function() {
+
+         // close all open tooltips
+         self.menu.find('.menuItem').tooltipster('hide');
+
+         var menuItem = $(this);
+         var id = menuItem.attr('id');
+         var nodeData = self._dataToMenuItemMap[id]
+
+         if (menuItem.hasClass('locked')) {
+            //XXX, play a "bonk" sound
+            return;
+         }
+
+         if (nodeData.clickSound) {
+            radiant.call('radiant:play_sound', {'track' : nodeData.clickSound});
+         }
+
+         // deactivate any tools that are open
+         App.stonehearthClient.deactivateAllTools();
+
+         // if this menu has sub-items, hide any menus that are open now so we can show a new one
+         var isOpening = false;
+         if (nodeData.items) {
+            if (self.getMenu() == id) {
+               radiant.call('radiant:play_sound', {'track' : nodeData.menuHideSound} );
+               self.hideMenu();
+            } else {
+               radiant.call('radiant:play_sound', {'track' : nodeData.menuShowSound} );
+               self.showMenu(id);
+               isOpening = true;
+            }
+         } else if (nodeData.has_custom_menu) {
+            if (self.getMenu() == id) {
+               self.menu.find('.menuItemGroup').on('webkitAnimationEnd', function (e) {
+                  var el = $(e.target);
+                  if (el && el.hasClass('down')) {
+                     el.hide();
+                  }
+               });
+               self.menu.find('.menuItemGroup').each(function (_, el) {
+                  if ($(el).hasClass('up')) {
+                     $(el).removeClass('up').addClass('down');
+                  }
+               });
+               self.menu.find('.selected').removeClass('selected');
+               self._currentOpenMenu = null;
+            } else {
+               self.showMenu(null);
+               self.menu.find('.rootGroup').find('#' + id).addClass('selected');
+               self._currentOpenMenu = id;
+               isOpening = true;
+            }
+         } else {
+            if (!nodeData.sticky) {
+               self.hideMenu();
+            }
+         }
+
+         // show the parent menu for this menu item
+         var parent = menuItem.parent();
+         var grandParentId = parent.attr('parent');
+         if (grandParentId) {
+            self.showMenu(grandParentId);
+         }
+
+         self._applyGameMode(nodeData, isOpening);
+
+         if (self.options.click) {
+            self.options.click(id, nodeData);
+         }
+         return false;
+      });
+
+      this.menu.on( 'click', '.close', function() {
+         self.showMenu(null);
+         
+         var menuItem = $(this);
+         var id = menuItem.attr('id');
+         var nodeData = self._dataToMenuItemMap[id]
+         self._applyGameMode(nodeData, false);
+      });
+
+      /*
+      $(document).click(function() {
+         if (!App.stonehearthClient.getActiveTool()) {
+            self.hideMenus();
+         }
+      });
+      */
+   },
+   
+   _addItems: function(nodes, parentId, name, depth, parent) {
       if (!nodes) {
          return;
       }
@@ -98,8 +247,10 @@ $.widget( "stonehearth.stonehearthMenu", $.stonehearth.stonehearthMenu, {
 
          self._buildTooltip(item);
 
+         node.parent = parent;
+
          if (node.items) {
-            self._addItems(node.items, key, node.name, depth + 1);
+            self._addItems(node.items, key, node.name, depth + 1, node);
          }
       });
 
@@ -107,6 +258,32 @@ $.widget( "stonehearth.stonehearthMenu", $.stonehearth.stonehearthMenu, {
          $('<div>').html(i18n.t(name))
                    .addClass('header')
                    .appendTo(el);
+      }
+   },
+
+   _applyGameMode: function(node, enable = true) {
+      var self = this;
+      // when a node is clicked on, go through that node and its ancestry until a gamemode is found and apply that gamemode
+      // when a node is clicked off, go through that node's ancestry until a gamemode is found and apply it; otherwise, reset gamemode
+      var curNode = node;
+      while (curNode) {
+         if (curNode != node || enable) {
+            if (self._tryApplyGameMode(curNode)) {
+               return;
+            }
+         }
+         curNode = curNode.parent;
+      }
+
+      if (node.game_mode && !enable) {
+         App.setGameMode('normal');
+      }
+   },
+
+   _tryApplyGameMode: function(node) {
+      if (node.game_mode) {
+         App.setGameMode(node.game_mode);
+         return true;
       }
    }
 });

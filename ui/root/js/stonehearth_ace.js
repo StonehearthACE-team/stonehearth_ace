@@ -1,6 +1,7 @@
 // used for functions that get used by multiple views
 var stonehearth_ace = {
    _allTitles: {},
+   _fence_mode: {},
 
    getEquipmentTypesArray: function(equipment_types) {
       if (!equipment_types) {
@@ -207,6 +208,19 @@ var stonehearth_ace = {
          icon = stonehearth_ace._season_icons[season] || stonehearth_ace._season_icons['default'];
       }
       return icon;
+   },
+
+   getFenceModeData: function() {
+      return stonehearth_ace._fence_mode;
+   },
+
+   updateFenceModeSettings: function(selected_preset, custom_presets) {
+      stonehearth_ace._fence_mode.selected_preset = selected_preset;
+      stonehearth_ace._fence_mode.custom_presets = custom_presets;
+      return radiant.call('radiant:set_config', 'mods.stonehearth_ace.fence_mode', {
+         selected_preset: selected_preset,
+         custom_presets: custom_presets
+      })
    }
 }
 
@@ -223,4 +237,16 @@ $.getJSON('/stonehearth_ace/ui/data/season_icons.json', function(data) {
 
 $.getJSON('/stonehearth_ace/ui/data/job_roles.json', function(data) {
    stonehearth_ace._job_roles = data;
+});
+
+$.getJSON('/stonehearth_ace/ui/data/fence_types.json', function(data) {
+   stonehearth_ace._fence_mode.types = data.fences;
+   stonehearth_ace._fence_mode.default_presets = data.default_presets;
+
+   radiant.call('radiant:get_config', 'mods.stonehearth_ace.fence_mode')
+      .done(function(response) {
+         var settings = response['mods.stonehearth_ace.fence_mode'] || {};
+         stonehearth_ace._fence_mode.selected_preset = settings.selected_preset;
+         stonehearth_ace._fence_mode.custom_presets = settings.custom_presets || [];
+      });
 });

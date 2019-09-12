@@ -303,6 +303,10 @@ function catalog_lib._add_catalog_description(catalog, full_alias, json, base_da
       if entity_data['stonehearth_ace:buildable_data'] then
          catalog_data.is_buildable = true
       end
+
+      if entity_data['stonehearth_ace:fence_data'] then
+         catalog_data.fence_length = entity_data['stonehearth_ace:fence_data'].length
+      end
    end
 
    catalog[full_alias] = catalog_data

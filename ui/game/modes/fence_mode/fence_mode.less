@@ -1,0 +1,69 @@
+#fenceMode {
+   position: absolute;
+   bottom: 250px;
+   left: 200px;
+
+   img {
+      height: 30px;
+   }
+
+   .loadPresetImg {
+      content: url(images/load_icon.png);
+   }
+   .savePresetImg {
+      content: url(images/save_icon.png);
+   }
+   .deletePresetImg {
+      content: url(images/delete_icon.png);
+   }
+
+   #fenceSegmentsDiv {
+      .fenceSegmentContainer {
+         display: inline-block;
+      }
+   }
+
+   #presetSelection {
+      position: absolute;
+      bottom: 100%;
+      left: 0px;
+      display: none;
+
+      #presetList {
+         .presetRow {
+            position: relative;
+            background-color: @paperBlue;
+            border: @paperOuterBorderStyle;
+            width: 300px;
+            overflow: hidden;
+
+            .presetPreview {
+               .presetSegmentImg {
+                  padding: 3px 0px 3px 3px;
+               }
+            }
+
+            .presetButtons {
+               position: absolute;
+               right: 5px;
+               top: 0px;
+               bottom: 0px;
+               margin: auto;
+               display: none;
+
+               .button {
+                  display: inline-block;
+               }
+            }
+         }
+
+         .presetRow:hover {
+            background-color: @paperDarkBlue;
+
+            .presetButtons {
+               display: block;
+            }
+         }
+      }
+   }
+}
