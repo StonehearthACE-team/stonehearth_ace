@@ -242,7 +242,11 @@ function CrafterInfoController:_get_least_valued_entity(uris)
    local lowest_value = 0
    for _, uri in ipairs(uris) do
       -- if it doesn't have a sell_cost specified, assume a very high value
-      local value = stonehearth.catalog:get_catalog_data(uri).sell_cost or 999
+      local catalog_data = stonehearth.catalog:get_catalog_data(uri)
+      if not catalog_data then
+         log:error('no catalog data for "%s"')
+      end
+      local value = catalog_data and catalog_data.sell_cost or 999
       if value < lowest_value or not least_valued_uri then
          least_valued_uri = uri
          lowest_value = value
