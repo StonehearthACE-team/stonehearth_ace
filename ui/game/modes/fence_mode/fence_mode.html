@@ -6,12 +6,12 @@
          <a href="#" {{action "selectSegment" segment target="view"}} {{bind-attr data-uri=segment.uri class=":fenceSegmentBtn segment.enabled:enabled:disabled"}}>
             <img class="fenceSegmentImg" {{bind-attr src=segment.icon}}/>
          </a>
-         <a href="#" {{action "toggleSegment" segment target="view"}} {{bind-attr class=":toggleSegmentBtn segment.enabled:enabled:disabled"}}>
+         <a href="#" {{action "toggleSegment" segment target="view"}} {{bind-attr data-index=_view.contentIndex class=":toggleSegmentBtn segment.enabled:enabled:disabled"}}>
             <img class="toggleSegmentImg"/>
          </a>
       </div>
       {{/each}}
-      <a id="addSegmentBtn" {{bind-attr class="view.canAddSegment::hidden"}}>
+      <a href="#" {{action "insertSegment" target="view"}} id="addSegmentBtn" {{bind-attr class="view.canAddSegment::hidden"}}>
          <img id="addSegmentImg"/>
       </a>
    </div>
@@ -61,7 +61,14 @@
    </div>
 
    <div id="segmentSelection">
-
+      <div id="allSegments">
+         {{#each segment in view.allSegments}}
+         <a href="#" {{action "setSegment" segment.uri target="view"}} {{bind-attr data-uri=segment.uri class=":segmentDiv segment.available::unavailable"}}>
+            <img {{bind-attr src=segment.icon}}/>
+            <div class="selectBox"></div>
+         </div>
+         {{/each}}
+      </div>
    </div>
 </div>
 </script>

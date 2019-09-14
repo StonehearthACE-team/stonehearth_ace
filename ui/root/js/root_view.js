@@ -74,6 +74,16 @@ App.RootView.reopen({
                             {warning: 'warning'});
             });
       };
+
+      App.stonehearthClient.deactivateAllTools = function() {
+         var self = this;
+         return radiant.call('stonehearth:deactivate_all_tools')
+            .always(function() {
+               if (self._activeTool && (self._activeTool.state() == "resolved" || self._activeTool.state() == "rejected")) {
+                  self._activeTool.state() = null;
+               }
+            });
+      };
      
       App.stonehearthClient.showPromotionTree = function(entity_id, job_index) {
          var view = App.stonehearth.promotionTreeView;
@@ -127,6 +137,6 @@ App.RootView.reopen({
          else {
             App.stonehearth.buildFenceView = App.gameView.addView(App.AceBuildFenceModeView);
          }
-      }
+      };
    }
 });

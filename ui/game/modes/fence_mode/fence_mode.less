@@ -59,7 +59,13 @@
 
       #addSegmentBtn {
          position: absolute;
-         display: none;
+         bottom: 100%;
+         margin-bottom: -15px;
+
+         #addSegmentImg {
+            content: url(images/add_segment.png);
+            //height: 40px;
+         }
       }
    }
 
@@ -139,6 +145,64 @@
                background-color: @paperBlue;
    
                .presetButtons {
+                  display: block;
+               }
+            }
+         }
+      }
+   }
+
+   #segmentSelection {
+      position: absolute;
+      bottom: 100%;
+      left: 0px;
+      padding-bottom: 20px;
+      display: none;
+
+      background-color: @paperDarkBlue;
+      border: @paperOuterBorderStyle;
+
+      #allSegments {
+         width: 300px;
+         max-height: 400px;
+         overflow-y: auto;
+         padding: 4px;
+
+         .segmentDiv {
+            position: relative;
+            display: inline-block;
+
+            img {
+               height: 40px;
+               padding: 4px;
+            }
+
+            &.unavailable {
+               img {
+                  opacity: 0.75;
+                  //-webkit-filter: invert(40%) grayscale(100%) brightness(40%) sepia(100%) hue-rotate(-50deg) saturate(400%) contrast(2);
+                  //filter: grayscale(100%) brightness(40%) sepia(100%) hue-rotate(-50deg) saturate(600%) contrast(0.8);
+               }
+            }
+
+            &:hover {
+               background-color: @paperBlue;
+            }
+
+            .selectBox {
+               position: absolute;
+               top: 0px;
+               left: 0px;
+               width: 60px;
+               height: 60px;
+               margin-left: -5px;
+               margin-top: -4px;
+               background: url(images/select_box.png);
+               display: none;
+            }
+
+            &.selected {
+               .selectBox {
                   display: block;
                }
             }
