@@ -1,11 +1,7 @@
 #fenceMode {
    position: absolute;
-   bottom: 250px;
+   bottom: 210px;
    left: 200px;
-
-   img {
-      height: 30px;
-   }
 
    .loadPresetImg {
       content: url(images/load_icon.png);
@@ -18,8 +14,70 @@
    }
 
    #fenceSegmentsDiv {
+      background-color: @paperBlue;
+      border: @paperInnerBorderStyle;
+      padding: 5px;
+
       .fenceSegmentContainer {
          display: inline-block;
+         padding: 5px;
+
+         .fenceSegmentBtn {
+            display: block;
+            width: 60px;
+            height: 60px;
+            background-image: url(images/background.png);
+
+            &.disabled {
+               background-image: url(images/backgroundDisabled.png);
+
+               .fenceSegmentImg {
+                  opacity: 0.5;
+               }
+            }
+
+            .fenceSegmentImg {
+               display: block;
+               height: 45px;
+               margin: auto;
+               padding-top: 8px;
+            }
+         }
+
+         .toggleSegmentBtn {
+            display: block;
+            padding-top: 10px;
+
+            &.enabled .toggleSegmentImg {
+               content: url(images/segmentEnable.png);
+            }
+            &.disabled .toggleSegmentImg {
+               content: url(images/segmentDisable.png);
+            }
+         }
+      }
+
+      #addSegmentBtn {
+         position: absolute;
+         display: none;
+      }
+   }
+
+   #fenceControls {
+      position: absolute;
+      height: 104px;
+      bottom: 0px;
+      right: 100%;
+      margin-right: 20px;
+      padding: 10px;
+      background-color: @paperBlue;
+      border: @paperInnerBorderStyle;
+      justify-content: space-around;
+      flex-direction: column;
+      display: flex;
+
+      img {
+         height: 40px;
       }
    }
 
@@ -27,19 +85,35 @@
       position: absolute;
       bottom: 100%;
       left: 0px;
+      padding-bottom: 20px;
       display: none;
+
+      #presetSearch {
+         //position: absolute;
+         //top: -33px;
+         //display: none;
+         width: 286px;
+         background-color: @paperDarkGrey;
+      }
 
       #presetList {
          .presetRow {
             position: relative;
-            background-color: @paperBlue;
+            background-color: @paperDarkBlue;
             border: @paperOuterBorderStyle;
             width: 300px;
-            overflow: hidden;
 
             .presetPreview {
+               width: 230px;
+               overflow: hidden;
+
                .presetSegmentImg {
                   padding: 3px 0px 3px 3px;
+                  height: 30px;
+
+                  &.disabled {
+                     opacity: 0.5;
+                  }
                }
             }
 
@@ -53,15 +127,20 @@
 
                .button {
                   display: inline-block;
+
+                  img {
+                     height: 30px;
+                     margin-top: 5px;
+                  }
                }
             }
-         }
 
-         .presetRow:hover {
-            background-color: @paperDarkBlue;
-
-            .presetButtons {
-               display: block;
+            &:hover {
+               background-color: @paperBlue;
+   
+               .presetButtons {
+                  display: block;
+               }
             }
          }
       }

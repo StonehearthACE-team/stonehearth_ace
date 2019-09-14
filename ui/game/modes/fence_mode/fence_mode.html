@@ -3,11 +3,11 @@
    <div id="fenceSegmentsDiv">
       {{#each segment in view.segments}}
       <div class="fenceSegmentContainer">
-         <a class="fenceSegmentBtn" href="#" {{action "selectSegment" segment target="view"}}>
+         <a href="#" {{action "selectSegment" segment target="view"}} {{bind-attr data-uri=segment.uri class=":fenceSegmentBtn segment.enabled:enabled:disabled"}}>
             <img class="fenceSegmentImg" {{bind-attr src=segment.icon}}/>
          </a>
-         <a class="toggleSegmentBtn" href="#" {{action "toggleSegment" segment target="view"}}>
-            <img class="toggleSegmentImg" {{bind-attr class="segment.enabled:enabled:disabled"}}/>
+         <a href="#" {{action "toggleSegment" segment target="view"}} {{bind-attr class=":toggleSegmentBtn segment.enabled:enabled:disabled"}}>
+            <img class="toggleSegmentImg"/>
          </a>
       </div>
       {{/each}}
@@ -25,29 +25,32 @@
    </div>
 
    <div id="presetSelection">
-      <div id="presetSearch"></div>
+      <input id="presetSearch" type="text" {{bind-attr value=view.presetSearch}} />
       <div id="presetList">
          {{#each preset in view.presets}}
-         <div class="presetRow" {{bind-attr class="preset.default:default: preset.available::unavailable"}}>
+         <div {{bind-attr data-name=preset.name class=":presetRow preset.default:default: preset.available::unavailable"}}>
             <div class="presetPreview">
                {{#each segment in preset.segments}}
-               <img class="presetSegmentImg" {{bind-attr src=segment.icon class="segment.enabled:enabled:disabled"}}/>
+               <img {{bind-attr src=segment.icon data-uri=segment.uri class=":presetSegmentImg segment.enabled:enabled:disabled"}}/>
                {{/each}}
             </div>
             <div class="presetButtons">
                {{#if view.showLoadButtons}}
-               <a id="loadPreset" class="button" href="#" {{action "loadPreset" preset target="view"}}>
+               <a class="loadPreset button" href="#" {{action "loadPreset" preset target="view"}}>
                   <img class="loadPresetImg"/>
                </a>
                {{/if}}
                {{#if view.showSaveButtons}}
-               <a id="savePreset" class="button" href="#" {{action "savePreset" preset target="view"}}>
-                  <img class="savePresetImg"/>
-               </a>
+                  {{#if preset.default}}
+                  {{else}}
+                  <a class="savePreset button" href="#" {{action "savePreset" preset target="view"}}>
+                     <img class="savePresetImg"/>
+                  </a>
+                  {{/if}}
                {{/if}}
                {{#if preset.default}}
                {{else}}
-               <a id="deletePreset" class="button" href="#" {{action "deletePreset" preset target="view"}}>
+               <a class="deletePreset button" href="#" {{action "deletePreset" preset target="view"}}>
                   <img class="deletePresetImg"/>
                </a>
                {{/if}}

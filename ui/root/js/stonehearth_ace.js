@@ -214,13 +214,13 @@ var stonehearth_ace = {
       return stonehearth_ace._fence_mode;
    },
 
-   updateFenceModeSettings: function(selected_preset, custom_presets) {
-      stonehearth_ace._fence_mode.selected_preset = selected_preset;
-      stonehearth_ace._fence_mode.custom_presets = custom_presets;
+   updateFenceModeSettings: function(selected_segments, custom_presets) {
+      stonehearth_ace._fence_mode.selected_segments = selected_segments || stonehearth_ace._fence_mode.selected_segments;
+      stonehearth_ace._fence_mode.custom_presets = custom_presets || stonehearth_ace._fence_mode.custom_presets;
       return radiant.call('radiant:set_config', 'mods.stonehearth_ace.fence_mode', {
-         selected_preset: selected_preset,
-         custom_presets: custom_presets
-      })
+         selected_segments: stonehearth_ace._fence_mode.selected_segments,
+         custom_presets: stonehearth_ace._fence_mode.custom_presets
+      });
    }
 }
 
@@ -240,13 +240,12 @@ $.getJSON('/stonehearth_ace/ui/data/job_roles.json', function(data) {
 });
 
 $.getJSON('/stonehearth_ace/ui/data/fence_types.json', function(data) {
-   stonehearth_ace._fence_mode.types = data.fences;
    stonehearth_ace._fence_mode.default_presets = data.default_presets;
 
    radiant.call('radiant:get_config', 'mods.stonehearth_ace.fence_mode')
       .done(function(response) {
          var settings = response['mods.stonehearth_ace.fence_mode'] || {};
-         stonehearth_ace._fence_mode.selected_preset = settings.selected_preset;
+         stonehearth_ace._fence_mode.selected_segments = settings.selected_segments;
          stonehearth_ace._fence_mode.custom_presets = settings.custom_presets || [];
       });
 });

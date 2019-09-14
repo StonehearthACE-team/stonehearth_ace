@@ -10484,6 +10484,44 @@
                "clay_resource": "Raw Clay",
                "clay_bricks_resource": "Clay Bricks"
             }
+         },
+         "fence_mode": {
+            "presets": {
+               "wood1": "Default Preset: Wood",
+               "ornate_wood1": "Default Preset: Ornate Wood",
+               "stone1": "Default Preset: Stone",
+               "clay1": "Default Preset: Clay",
+               "porcelain1": "Default Preset: Porcelain"
+            },
+            "buttons": {
+               "segment_enabled": {
+                  "title": "Segment Enabled",
+                  "description": "Click to disable this segment."
+               },
+               "segment_disabled": {
+                  "title": "Segment Disabled",
+                  "description": "Click to enable this segment."
+               },
+               "show_load": {
+                  "title": "Load Preset...",
+                  "description": "Select from a default or custom (NYI) preset for your fence."
+               },
+               "show_save": {
+                  "title": "Save Preset... (NYI)",
+                  "description": "Specify a name for saving your preset (NYI)."
+               },
+               "load_preset": {
+                  "title": "Load Preset"
+               },
+               "save_preset": {
+                  "title": "Overwrite Custom Preset",
+                  "description": "Default presets cannot be overwritten."
+               },
+               "delete_preset": {
+                  "title": "Delete Custom Preset",
+                  "description": "Default presets cannot be deleted."
+               }
+            }
          }
       },
       "shell": {
