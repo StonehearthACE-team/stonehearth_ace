@@ -26,6 +26,13 @@
 
    <div id="presetSelection">
       <input id="presetSearch" type="text" {{bind-attr value=view.presetSearch}} />
+      {{#if view.inSaveMode}}
+      <div class="presetButtons">
+         <a href="#" {{action "saveCurrentPreset" target="view"}} {{bind-attr class=":savePreset :button view.saveAllowed:enabled:disabled"}}>
+            <img class="savePresetImg"/>
+         </a>
+      </div>
+      {{/if}}
       <div id="presetList">
          {{#each preset in view.presets}}
          <div {{bind-attr data-name=preset.name class=":presetRow preset.default:default: preset.available::unavailable"}}>
@@ -35,12 +42,12 @@
                {{/each}}
             </div>
             <div class="presetButtons">
-               {{#if view.showLoadButtons}}
+               {{#if view.inLoadMode}}
                <a class="loadPreset button" href="#" {{action "loadPreset" preset target="view"}}>
                   <img class="loadPresetImg"/>
                </a>
                {{/if}}
-               {{#if view.showSaveButtons}}
+               {{#if view.inSaveMode}}
                   {{#if preset.default}}
                   {{else}}
                   <a class="savePreset button" href="#" {{action "savePreset" preset target="view"}}>

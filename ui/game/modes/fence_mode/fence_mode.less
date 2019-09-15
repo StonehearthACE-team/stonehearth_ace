@@ -36,6 +36,10 @@
                }
             }
 
+            &.selected {
+               outline: 5px rgb(255,192,0) solid;
+            }
+
             .fenceSegmentImg {
                display: block;
                height: 45px;
@@ -59,8 +63,8 @@
 
       #addSegmentBtn {
          position: absolute;
-         bottom: 100%;
-         margin-bottom: -15px;
+         top: 100%;
+         margin-top: -15px;
 
          #addSegmentImg {
             content: url(images/add_segment.png);
@@ -99,6 +103,7 @@
          //top: -33px;
          //display: none;
          width: 286px;
+         height: 30px;
          background-color: @paperDarkGrey;
       }
 
@@ -111,10 +116,12 @@
 
             .presetPreview {
                width: 230px;
+               padding: 3px;
                overflow: hidden;
+               white-space: nowrap;
 
                .presetSegmentImg {
-                  padding: 3px 0px 3px 3px;
+                  padding-right: -5px;
                   height: 30px;
 
                   &.disabled {
@@ -124,21 +131,11 @@
             }
 
             .presetButtons {
-               position: absolute;
-               right: 5px;
-               top: 0px;
-               bottom: 0px;
-               margin: auto;
                display: none;
+            }
 
-               .button {
-                  display: inline-block;
-
-                  img {
-                     height: 30px;
-                     margin-top: 5px;
-                  }
-               }
+            &.default {
+               background-color: @paperDarkerBorderBlue;
             }
 
             &:hover {
@@ -147,6 +144,28 @@
                .presetButtons {
                   display: block;
                }
+            }
+         }
+      }
+
+      .presetButtons {
+         position: absolute;
+         right: 5px;
+         top: 0px;
+         bottom: 0px;
+         margin: auto;
+
+         .button {
+            display: inline-block;
+
+            img {
+               height: 30px;
+               margin-top: 5px;
+            }
+
+            &.disabled {
+               filter: grayscale(100%);
+               opacity: 0.75;
             }
          }
       }
@@ -179,7 +198,8 @@
 
             &.unavailable {
                img {
-                  opacity: 0.75;
+                  opacity: 0.65;
+                  filter: grayscale(65%);
                   //-webkit-filter: invert(40%) grayscale(100%) brightness(40%) sepia(100%) hue-rotate(-50deg) saturate(400%) contrast(2);
                   //filter: grayscale(100%) brightness(40%) sepia(100%) hue-rotate(-50deg) saturate(600%) contrast(0.8);
                }
@@ -204,9 +224,25 @@
             &.selected {
                .selectBox {
                   display: block;
+                  z-index: 2;
                }
             }
          }
       }
    }
+}
+
+.requirementText {
+   color: @warningFontColor;
+}
+
+.requirement {
+   img {
+      height: 30px;
+      //padding: 2px;
+      vertical-align: middle;
+      margin-top: -8px;
+   }
+
+   color: @warningFontColor;
 }

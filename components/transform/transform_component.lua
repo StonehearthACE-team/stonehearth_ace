@@ -46,10 +46,12 @@ function TransformComponent:activate()
 end
 
 function TransformComponent:post_activate()
-   if self._is_restore then
-      self:_set_transform_option(self._sv.transform_key or self._all_transform_data.default_key, self._sv.option_overrides)
-   else
-      self:set_transform_option(self._sv.transform_key or self._all_transform_data.default_key)
+   if self._all_transform_data then
+      if self._is_restore then
+         self:_set_transform_option(self._sv.transform_key or self._all_transform_data.default_key, self._sv.option_overrides)
+      else
+         self:set_transform_option(self._sv.transform_key or self._all_transform_data.default_key)
+      end
    end
 end
 

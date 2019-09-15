@@ -10134,8 +10134,8 @@
                   "build_fence": {
                      "display_name": "Build Fence",
                      "description": "Order the creation of fences (WIP)",
-                     "tip_title": "Click and drag to place the foundation for a fence",
-                     "tip_description": "Customization coming soon!"
+                     "tip_title": "Click and drag to place fence foundations",
+                     "tip_description": "If i18n(stonehearth:ui.shell.settings.gameplay_tab.building_auto_queue_crafters) is enabled, your crafters will automatically queue recipes for all craftable foundations."
                   }
                }
             },
@@ -10486,12 +10486,22 @@
             }
          },
          "fence_mode": {
+            "crafter_requirement": "Requires: ",
+            "level_requirement": "Lvl [str(level)]",
             "presets": {
                "wood1": "Default Preset: Wood",
                "ornate_wood1": "Default Preset: Ornate Wood",
                "stone1": "Default Preset: Stone",
                "clay1": "Default Preset: Clay",
                "porcelain1": "Default Preset: Porcelain"
+            },
+            "preset_filter": {
+               "save_mode": {
+                  "description": "Specify preset name here and press Enter or click a Save button to save."
+               },
+               "load_mode": {
+                  "description": "Type here to filter presets by name."
+               }
             },
             "buttons": {
                "segment_enabled": {
@@ -10504,11 +10514,11 @@
                },
                "show_load": {
                   "title": "Load Preset...",
-                  "description": "Select from a default or custom (NYI) preset for your fence."
+                  "description": "Select from a default or custom preset for your fence."
                },
                "show_save": {
-                  "title": "Save Preset... (NYI)",
-                  "description": "Specify a name for saving your preset (NYI)."
+                  "title": "Save Preset...",
+                  "description": "Specify a name for your preset, then press Enter or click a Save button to save."
                },
                "load_preset": {
                   "title": "Load Preset"

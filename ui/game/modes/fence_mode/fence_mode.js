@@ -33,19 +33,19 @@ App.AceBuildFenceModeView = App.View.extend({
       self._super();
 
       self._fenceData = stonehearth_ace.getFenceModeData();
+      self._craftable = {};
 
       var segmentsDiv = self.$('#fenceSegmentsDiv');
       segmentsDiv.on('mousemove', function(e) {
          var segments = self.get('segments') || [];
-         if (self.$('#presetSelection').is(':visible') || self.$('#segmentSelection').is(':visible') ||
-               segments.length > 20) {
+         if (self.$('#presetSelection').is(':visible') || self.$('#segmentSelection').is(':visible') || segments.length > 20) {
             self.set('canAddSegment', false);
             return;
          }
 
          // find the appropriate insert index based on location
          var x = e.pageX - segmentsDiv.offset().left;
-         var y = e.pageY - segmentsDiv.offset().top;
+         var y = segmentsDiv.height() - (e.pageY - segmentsDiv.offset().top);
          var index = Math.floor((x - 5) / 75 + 0.5);
          self._insertIndex = index;
          var btn = self.$('#addSegmentBtn');
@@ -74,6 +74,53 @@ App.AceBuildFenceModeView = App.View.extend({
          return false;
       });
 
+      var presetSearch = self.$('#presetSearch');
+      presetSearch.keydown(function(e) {
+         if (e.keyCode === 27) {
+            self._togglePresetsVisibility(false);
+            return false;
+         }
+      })
+      .keyup(function(e) {
+         var text = presetSearch.val();
+         if (e.keyCode != 13 && e.keyCode != 27) {
+            // filter the results by the text
+            var lowerText = text.toLowerCase();
+            var customNameExists = false;
+            self.$('.presetRow').each(function() {
+               var thisRow = $(this);
+               var name = thisRow.data('name');
+               var isDefault = thisRow.hasClass('default');
+               var preset = self._getPreset(name, isDefault);
+               if (lowerText.length < 1 || preset.title.toLowerCase().includes(lowerText)) {
+                  thisRow.show();
+               }
+               else {
+                  thisRow.hide();
+               }
+               if (!isDefault && name == text) {
+                  customNameExists = true;
+               }
+            });
+            
+            self.set('saveAllowed', !customNameExists);
+         }
+         else if (e.keyCode == 13 && text.length > 0) {
+            var existingPreset = self._customPresets[text];
+            if (self.get('inSaveMode')) {
+               self._showSaveOverrideConfirmation(text);
+            }
+            else if (self.get('inLoadMode') && existingPreset) {
+               self._loadPreset(existingPreset);
+            }
+         }
+      });
+
+      App.tooltipHelper.createDynamicTooltip(presetSearch , function () {
+         var mode = self.get('inSaveMode') ? 'save_mode' : 'load_mode';
+         return i18n.t('stonehearth_ace:ui.game.fence_mode.preset_filter.' + mode + '.description');
+      });
+
       App.jobController.addChangeCallback('fence_mode', function() {
          self._updateAvailability();
       }, true);
@@ -93,6 +140,8 @@ App.AceBuildFenceModeView = App.View.extend({
    willDestroyElement: function() {
       App.jobController.removeChangeCallback('fence_mode');
       this.$().find('.tooltipstered').tooltipster('destroy');
+      this.$('#presetSearch').off('keydown').off('keyup');
+      this._super();
    },
 
    _loadSegments: function() {
@@ -118,6 +167,7 @@ App.AceBuildFenceModeView = App.View.extend({
       // maybe we'll divide them into categories at some point; for now, just sort them by uri and lump them all together
       segments.sort((a, b) => a.uri.localeCompare(b.uri));
       self.set('allSegments', segments);
+      self._updateAvailability();
       Ember.run.scheduleOnce('afterRender', self, '_updateAllSegmentTooltips');
    },
 
@@ -129,8 +179,7 @@ App.AceBuildFenceModeView = App.View.extend({
       self._customPresets = {};
 
       radiant.each(self._fenceData.default_presets, function(name, segments) {
-         var preset = self._createPresetObj(name, segments);
-         preset.default = true;
+         var preset = self._createPresetObj(name, segments, true);
          presets.push(preset);
          self._defaultPresets[name] = preset;
       });
@@ -142,14 +191,17 @@ App.AceBuildFenceModeView = App.View.extend({
       });
 
       self.set('presets', presets);
+      self.$('#presetSearch').val('');
       Ember.run.scheduleOnce('afterRender', self, '_updatePresetTooltips');
    },
 
-   _createPresetObj: function(name, segments) {
+   _createPresetObj: function(name, segments, isDefault) {
       var self = this;
       var preset = {
          name: name,
-         segments: self._getProperSegments(segments)
+         segments: self._getProperSegments(segments),
+         default: isDefault,
+         title: isDefault ? i18n.t('stonehearth_ace:ui.game.fence_mode.presets.' + name) : name
       }
       return preset;
    },
@@ -188,21 +240,82 @@ App.AceBuildFenceModeView = App.View.extend({
    },
 
    _updateAvailability: function() {
+      // go through all recipes and update availability of all fence segment crafting
+      var self = this;
+      if (!self._segments) {
+         return;
+      }
+      // var allSegments = self.get('allSegments');
+      // if (!allSegments) {
+      //    return;
+      // }
 
+      var jobData = App.jobController.getJobControllerData();
+      if (!jobData || !jobData.jobs) {
+         return;
+      }
+
+      _.forEach(jobData.jobs, function(jobControllerInfo, jobUri) {
+         if (!jobControllerInfo.recipe_list) {
+            return;
+         }
+
+         var jobInfo = App.jobConstants[jobUri];
+         var jobIcon;
+         if (jobInfo) {
+            jobIcon = jobInfo.description.icon;
+         }
+
+         var highestLevel = jobControllerInfo.num_members > 0 && jobControllerInfo.highest_level || 0;
+
+         _.forEach(jobControllerInfo.recipe_list, function(category) {
+            _.forEach(category.recipes, function(recipe_info, recipe_key) {
+               var recipe = recipe_info.recipe;
+               var product_uri = recipe.product_uri;
+
+               var segment = self._segments[product_uri];
+               if (!segment) {
+                  // if it's not one of our segments, we don't care about it
+                  return;
+               }
+
+               var available = false;
+               var crafterRequirement = null;
+               if (recipe.manual_unlock && !jobControllerInfo.manually_unlocked[recipe.recipe_key]) {
+                  // if it's locked, don't show that it's craftable
+               }
+               else if (recipe.level_requirement > highestLevel) {
+                  // show unmet requirement
+                  crafterRequirement = {
+                     jobUri: jobUri,
+                     jobIcon: jobIcon,
+                     level: recipe.level_requirement
+                  };
+               }
+               else {
+                  // it's craftable, remove requirement
+                  available = true;
+               }
+
+               Ember.set(segment, 'crafterRequirement', crafterRequirement);
+               Ember.set(segment, 'available', available);
+            });
+         });
+      });
    },
 
    _updateAllSegmentTooltips: function() {
       // this function is run only at the beginning to set up dynamic tooltips for all the possible segments in the palette window
       var self = this;
       self.$('.segmentDiv').each(function() {
-         self._createSegmentTooltip(self, $(this));
+         self._createSegmentTooltip($(this));
       });
    },
 
    _updateSegmentTooltips: function() {
       var self = this;
       self.$('.fenceSegmentBtn').each(function() {
-         self._createSegmentTooltip(self, $(this), 1000);
+         self._createSegmentTooltip($(this), 1000);
       });
       self.$('.toggleSegmentBtn').each(function() {
          var $el = $(this);
@@ -215,18 +328,55 @@ App.AceBuildFenceModeView = App.View.extend({
       });
    },
 
-   _createSegmentTooltip: function(self, $el, delay) {
+   _createSegmentTooltip: function($el, delay) {
+      var self = this;
       var uri = $el.data('uri');
       var segment = self._segments[uri];
       App.tooltipHelper.createDynamicTooltip($el, function () {
-         var crafterRequirement = self._getCrafterRequirementText(uri);
+         var crafterRequirement = self._getCrafterRequirementText(segment.crafterRequirement);
          return $(App.tooltipHelper.createTooltip(i18n.t(segment.display_name), i18n.t(segment.description), crafterRequirement));
       }, {delay: delay});
    },
 
-   _getCrafterRequirementText: function(uri) {
+   _getCrafterRequirementText: function(crafterRequirement) {
       // show crafter icon and level required (if it can be crafted), with formatting based on meeting requirements
+      var self = this;
+      if (crafterRequirement) {
+         return `<span class="requirement"><img class="jobIcon" src="${crafterRequirement.jobIcon}"/>` +
+               `${i18n.t('stonehearth_ace:ui.game.fence_mode.level_requirement', crafterRequirement)}</span>`;;
+      }
+      
       return null;
+   },
+
+   _getPresetCrafterRequirementText: function(preset) {
+      // go through each segment and combine the crafter requirements
+      var self = this;
+      var requirements = {};
+      preset.segments.forEach(seg => {
+         var segment = self._segments[seg.uri];
+         if (segment.crafterRequirement) {
+            var jobUri = segment.crafterRequirement.jobUri;
+            var lvl = requirements[jobUri] && requirements[jobUri].level || 1;
+            requirements[jobUri] = {
+               jobIcon: segment.crafterRequirement.jobIcon,
+               level: Math.max(lvl, segment.crafterRequirement.level)
+            }
+         }
+      });
+
+      var requirementText = '';
+      radiant.each(requirements, function(jobUri, requirement) {
+         if (requirementText.length > 0) {
+            requirementText += ', ';
+         }
+         requirementText += self._getCrafterRequirementText(requirement);
+      });
+
+      if (requirementText.length > 0)
+      {
+         return `<div class="requirementText">${i18n.t('stonehearth_ace:ui.game.fence_mode.crafter_requirement')}${requirementText}</div>`;
+      }
    },
 
    _updatePresetTooltips: function() {
@@ -237,7 +387,8 @@ App.AceBuildFenceModeView = App.View.extend({
          var preset = self._getPreset(name, isDefault);
          App.tooltipHelper.createDynamicTooltip($(this).find('.presetPreview'), function () {
             // maybe work in the crafting requirements to this tooltip (e.g., 3/4 craftable, requires [Mason] Lvl 2)
-            return preset.default ? i18n.t('stonehearth_ace:ui.game.fence_mode.presets.' + name) : name;
+            var requirementText = self._getPresetCrafterRequirementText(preset);
+            return $(App.tooltipHelper.createTooltip(preset.title, requirementText));
          });
 
          // $(this).find('.presetSegmentImg').each(function() {
@@ -266,22 +417,45 @@ App.AceBuildFenceModeView = App.View.extend({
       });
    },
 
-   _togglePresetsVisibility: function(visible) {
+   _togglePresetsVisibility: function(mode) {
       var self = this;
       var presets = self.$('#presetSelection');
-      if (visible == false || (!visible && presets.is(':visible'))) {
-         presets.hide();
-         if (visible != false) {
+      var visibility = false;
+      if (mode) {
+         visibility = !self.get(mode);
+         if (!visibility) {
+            mode = null;
+         }
+      }
+      if (!visibility) {
+         self._hidePresets();
+         if (!mode) {
             // if the user simply closed the presets window
             self.buildFence();
          }
       }
       else {
+         self._hideSegmentSelection();
          self._loadPresets();
+         self.set('inLoadMode', mode == 'inLoadMode');
+         self.set('inSaveMode', mode == 'inSaveMode');
          presets.show();
-         self.set('canAddSegment', false);
+         //self.set('canAddSegment', false);
          App.stonehearthClient.deactivateAllTools();
       }
+   },
+
+   _hidePresets: function() {
+      var self = this;
+      self.$('#presetSelection').hide();
+      self.set('inLoadMode', false);
+      self.set('inSaveMode', false);
+   },
+
+   _hideSegmentSelection: function() {
+      var self = this;
+      self.$('#segmentSelection').hide();
+      self.$('.fenceSegmentBtn').removeClass('selected');
    },
 
    _loadPreset: function(preset) {
@@ -359,6 +533,11 @@ App.AceBuildFenceModeView = App.View.extend({
 
    _updateSegmentsConfig: function() {
       var self = this;
+      stonehearth_ace.updateFenceModeSettings(self._getSegmentsConfigToSave());
+   },
+
+   _getSegmentsConfigToSave: function() {
+      var self = this;
       var segments = self.get('segments');
       var toSave = [];
       segments.forEach(segment => {
@@ -367,28 +546,35 @@ App.AceBuildFenceModeView = App.View.extend({
             enabled: segment.enabled
          })
       });
-      stonehearth_ace.updateFenceModeSettings(toSave);
+      return segments;
    },
 
    _updatePresetsConfig: function() {
       var self = this;
-      
-      //stonehearth_ace.updateFenceModeSettings();
+      stonehearth_ace.updateFenceModeSettings(null, self._customPresets);
    },
 
    _showSegmentSelection: function(segment) {
       var self = this;
       if (self._activeSegment == segment) {
          self._activeSegment = null;
-         self.$('#segmentSelection').hide();
+         self._hideSegmentSelection();
          self.buildFence();
       }
       else {
+         self._hidePresets();
          self._activeSegment = segment;
          self._selectSegmentInSelectionWindow(segment.uri);
          var index = Math.max(0, self.get('segments').indexOf(segment));
          self.$('#segmentSelection').css('left', index * 75 + 'px');
          self.$('#segmentSelection').show();
+
+         self.$('.fenceSegmentBtn').removeClass('selected');
+         // have to do this after render because we might be inserting a new segment
+         Ember.run.scheduleOnce('afterRender', self, function() {
+            $(self.$('.fenceSegmentBtn').get(index)).addClass('selected');
+         });
+
          self.set('canAddSegment', false);
          App.stonehearthClient.deactivateAllTools();
       }
@@ -399,6 +585,41 @@ App.AceBuildFenceModeView = App.View.extend({
       var allSegments = self.$('#segmentSelection');
       allSegments.find('.segmentDiv').removeClass('selected');
       allSegments.find('[data-uri="' + uri + '"]').addClass('selected');
+   },
+
+   _showSaveOverrideConfirmation: function(name) {
+      // TODO add save override confirmation dialog
+      // for now just do it! who cares, what are they gonna do about it?!
+      var self = this;
+      if (!name || name.length < 1) {
+         return;
+      }
+      if (self._customPresets[name]) {
+         // do confirmation and return if canceled
+      }
+      self._saveCustomPreset(name);
+   },
+
+   _saveCustomPreset: function(name) {
+      var self = this;
+      self._customPresets[name] = self._getSegmentsConfigToSave();
+      self._updatePresetsConfig();
+      self._loadPresets();
+      self._togglePresetsVisibility(false);
+   },
+
+   _showDeletePresetConfirmation: function(name) {
+      // TODO add save override confirmation dialog
+      // for now just do it! who cares, what are they gonna do about it?!
+      var self = this;
+      self._deleteCustomPreset(name);
+   },
+
+   _deleteCustomPreset: function(name) {
+      var self = this;
+      delete self._customPresets[name];
+      self._updatePresetsConfig();
+      self._loadPresets();
    },
 
    actions: {
@@ -422,7 +643,7 @@ App.AceBuildFenceModeView = App.View.extend({
             self._updateSegmentsConfig();
             self._activeSegment = null;
          }
-         self.$('#segmentSelection').hide();
+         self._hideSegmentSelection();
       },
 
       insertSegment: function() {
@@ -439,6 +660,7 @@ App.AceBuildFenceModeView = App.View.extend({
             self._setCurrentSegments(newSegments);
             self._updateSegmentsConfig();
             self.set('canAddSegment', false);
+            self._showSegmentSelection(self.get('segments')[self._insertIndex]);
          }
       },
 
@@ -453,16 +675,12 @@ App.AceBuildFenceModeView = App.View.extend({
 
       showLoadPreset: function() {
          var self = this;
-         self.set('showLoadButtons', true);
-         self.set('showSaveButtons', false);
-         self._togglePresetsVisibility();
+         self._togglePresetsVisibility('inLoadMode');
       },
 
       showSavePreset: function() {
          var self = this;
-         self.set('showLoadButtons', false);
-         self.set('showSaveButtons', true);
-         self._togglePresetsVisibility();
+         self._togglePresetsVisibility('inSaveMode');
       },
 
       loadPreset: function(preset) {
@@ -471,11 +689,18 @@ App.AceBuildFenceModeView = App.View.extend({
       },
 
       savePreset: function(preset) {
-
+         var self = this;
+         self._showSaveOverrideConfirmation(preset && preset.name);
       },
 
-      deletePreset: function(segment) {
+      saveCurrentPreset: function() {
+         var self = this;
+         self._showSaveOverrideConfirmation(self.get('saveAllowed') && self.$('#presetSearch').val());
+      },
 
+      deletePreset: function(preset) {
+         var self = this;
+         self._showDeletePresetConfirmation(preset.name);
       }
    }
 });
