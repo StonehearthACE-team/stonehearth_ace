@@ -7,7 +7,27 @@
 local PlayerJobsController = require 'stonehearth.services.server.job.player_jobs_controller'
 local AcePlayerJobsController = class()
 
+local log = radiant.log.create_logger('player_jobs_controller')
+
 -- For a given player, keep a table of job_info_controllers for that player
+
+AcePlayerJobsController._ace_old_reset = PlayerJobsController.reset
+function AcePlayerJobsController:reset()
+   self:_ace_old_reset()
+   
+   -- create all job info controllers so the client is aware of all possible recipes for your faction's crafters
+   -- even if you haven't promoted your hearthlings to those jobs yet
+   local pop = stonehearth.population:get_population(self._sv.player_id)
+   local job_index = pop:get_job_index()
+   local jobs = job_index and radiant.resources.load_json(job_index)
+   log:debug('ensuring all job controllers found in "%s"...', tostring(job_index))
+   if jobs then
+      for job_key, _ in pairs(jobs.jobs) do
+         log:debug('ensuring "%s"', job_key)
+         self:_ensure_job_id(job_key)
+      end
+   end
+end
 
 function AcePlayerJobsController:request_craft_product(product_uri, amount, building)
    for _, job_info in pairs(self._sv.jobs) do

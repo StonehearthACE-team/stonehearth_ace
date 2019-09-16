@@ -50,7 +50,7 @@
 
          .toggleSegmentBtn {
             display: block;
-            padding-top: 10px;
+            //padding-top: 10px;
 
             &.enabled .toggleSegmentImg {
                content: url(images/segmentEnable.png);
@@ -75,7 +75,7 @@
 
    #fenceControls {
       position: absolute;
-      height: 104px;
+      height: 94px;
       bottom: 0px;
       right: 100%;
       margin-right: 20px;
@@ -185,7 +185,7 @@
          width: 300px;
          max-height: 400px;
          overflow-y: auto;
-         padding: 4px;
+         padding: 8px;
 
          .segmentDiv {
             position: relative;
@@ -193,7 +193,7 @@
 
             img {
                height: 40px;
-               padding: 4px;
+               padding: 0px -4px 0px 0px;
             }
 
             &.unavailable {
@@ -215,8 +215,8 @@
                left: 0px;
                width: 60px;
                height: 60px;
-               margin-left: -5px;
-               margin-top: -4px;
+               margin-left: -9px;
+               margin-top: -8px;
                background: url(images/select_box.png);
                display: none;
             }
@@ -234,15 +234,25 @@
 
 .requirementText {
    color: @warningFontColor;
+
+   .requirement {
+      margin-top: inherit;
+
+      img {
+         margin-top: -8px;
+      }
+   }
 }
 
 .requirement {
+   margin-top: -10px;
+   display: inline-block;
+   color: @warningFontColor;
+
    img {
       height: 30px;
       //padding: 2px;
       vertical-align: middle;
-      margin-top: -8px;
+      margin-top: -2px;
    }
-
-   color: @warningFontColor;
 }

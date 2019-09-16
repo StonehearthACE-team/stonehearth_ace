@@ -53,8 +53,8 @@ App.AceBuildFenceModeView = App.View.extend({
          btn.css('left', left);
          self.set('canAddSegment', y < 60 && Math.abs(x - left) < 50);
       });
-      self.$().on('contextmenu', '.toggleSegmentBtn', function() {
-         var index = $(this).data('index');
+      self.$().on('contextmenu', '.fenceSegmentContainer', function() {
+         var index = $(this).find('.toggleSegmentBtn').data('index');
          var segments = self.get('segments');
          var newSegments = [];
          for (var i = 0; i < segments.length; i++) {
@@ -73,6 +73,15 @@ App.AceBuildFenceModeView = App.View.extend({
 
          return false;
       });
+      
+      self.$().on('click', '.presetPreview', function(e) {
+         if (self.get('inLoadMode')) {
+            $(this.parentElement).find('.loadPreset').click();
+         }
+         else if (self.get('inSaveMode')) {
+            $(this.parentElement).find('.savePreset').click();
+         }
+      })
 
       var presetSearch = self.$('#presetSearch');
       presetSearch.keydown(function(e) {
@@ -141,6 +150,7 @@ App.AceBuildFenceModeView = App.View.extend({
       App.jobController.removeChangeCallback('fence_mode');
       this.$().find('.tooltipstered').tooltipster('destroy');
       this.$('#presetSearch').off('keydown').off('keyup');
+      this.$().off('click', '.presetRow');
       this._super();
    },
 
@@ -308,14 +318,14 @@ App.AceBuildFenceModeView = App.View.extend({
       // this function is run only at the beginning to set up dynamic tooltips for all the possible segments in the palette window
       var self = this;
       self.$('.segmentDiv').each(function() {
-         self._createSegmentTooltip($(this));
+         self._createSegmentTooltip($(this), 250);
       });
    },
 
    _updateSegmentTooltips: function() {
       var self = this;
       self.$('.fenceSegmentBtn').each(function() {
-         self._createSegmentTooltip($(this), 1000);
+         self._createSegmentTooltip($(this), 250);
       });
       self.$('.toggleSegmentBtn').each(function() {
          var $el = $(this);
@@ -324,7 +334,7 @@ App.AceBuildFenceModeView = App.View.extend({
             return $(App.tooltipHelper.createTooltip(
                i18n.t('stonehearth_ace:ui.game.fence_mode.buttons.' + enabledStr + '.title'),
                i18n.t('stonehearth_ace:ui.game.fence_mode.buttons.' + enabledStr + '.description')));
-         }, {delay: 500});
+         }, {delay: 250});
       });
    },
 
@@ -454,6 +464,7 @@ App.AceBuildFenceModeView = App.View.extend({
 
    _hideSegmentSelection: function() {
       var self = this;
+      self._activeSegment = null;
       self.$('#segmentSelection').hide();
       self.$('.fenceSegmentBtn').removeClass('selected');
    },
@@ -546,18 +557,17 @@ App.AceBuildFenceModeView = App.View.extend({
             enabled: segment.enabled
          })
       });
-      return segments;
+      return toSave;
    },
 
    _updatePresetsConfig: function() {
       var self = this;
-      stonehearth_ace.updateFenceModeSettings(null, self._customPresets);
+      stonehearth_ace.updateFenceModeSettings(null, self._fenceData.custom_presets);
    },
 
    _showSegmentSelection: function(segment) {
       var self = this;
       if (self._activeSegment == segment) {
-         self._activeSegment = null;
          self._hideSegmentSelection();
          self.buildFence();
       }
@@ -602,7 +612,7 @@ App.AceBuildFenceModeView = App.View.extend({
 
    _saveCustomPreset: function(name) {
       var self = this;
-      self._customPresets[name] = self._getSegmentsConfigToSave();
+      self._fenceData.custom_presets[name] = self._getSegmentsConfigToSave();
       self._updatePresetsConfig();
       self._loadPresets();
       self._togglePresetsVisibility(false);
@@ -617,7 +627,7 @@ App.AceBuildFenceModeView = App.View.extend({
 
    _deleteCustomPreset: function(name) {
       var self = this;
-      delete self._customPresets[name];
+      delete self._fenceData.custom_presets[name];
       self._updatePresetsConfig();
       self._loadPresets();
    },
