@@ -23,7 +23,7 @@ function AcePopulationFaction:set_kingdom(kingdom)
    -- create all job info controllers so the client is aware of all possible recipes for your faction's crafters
    -- even if you haven't promoted your hearthlings to those jobs yet
    local job_index = self:get_job_index()
-   local jobs = job_index and radiant.resources.load_json()
+   local jobs = job_index and radiant.resources.load_json(job_index)
    if jobs then
       for job_key, _ in pairs(jobs.jobs) do
          local job_info = stonehearth.job:get_job_info(self._sv.player_id, job_key)
