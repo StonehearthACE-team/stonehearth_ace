@@ -5,55 +5,15 @@ $(document).ready(function() {
 });
 
 App.StonehearthCitizenCharacterSheetView.reopen({
-   components: {
-      'stonehearth:unit_info': {},
-      'stonehearth:buffs' : {
-         'buffs' : {
-            '*' : {}
-         }
-      },
-      'stonehearth:traits' : {
-         'traits': {
-            '*' : {}
-         }
-      },
-      'stonehearth:equipment' : {
-         'equipped_items' : {
-            '*' : {
-               'uri': {}
-            }
-         }
-      },
-      'stonehearth:attributes' : {},
-      'stonehearth:expendable_resources' : {},
-      'stonehearth:personality' : {},
-      'stonehearth:score' : {},
-      'stonehearth:happiness': {
-         'current_mood_buff': {}
-      },
-
-      'stonehearth:job' : {
-         'curr_job_controller' : {},
-         'job_controllers' : {
-            '*' : {}
-         }
-      },
-      'stonehearth:storage' : {
-         'item_tracker' : {
-            'tracking_data': {
-               'stonehearth:loot:gold' : {
-                  'items' : {
-                     '*' : {
-                        'stonehearth:stacks': {}
-                     }
-                  }
-               }
-            }
-         }
-      },
-      'stonehearth:appeal': {},
-      'stonehearth:teleportation': {},
+   ace_components: {
       'stonehearth_ace:titles': {}
+   },
+
+   init: function() {
+      var self = this;
+      stonehearth_ace.mergeInto(self.components, self.ace_components)
+
+      self._super();
    },
 
    dismiss: function () {

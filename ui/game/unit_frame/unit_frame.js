@@ -19,44 +19,7 @@ $(top).on("selection_has_component_info_changed", function (_, e) {
 });
 
 App.StonehearthUnitFrameView.reopen({
-   components: {
-      "stonehearth:ai": {
-          "status_text_data": {}
-      },
-      "stonehearth:attributes": {
-          "attributes": {}
-      },
-      "stonehearth:building": {},
-      "stonehearth:fabricator": {},
-      "stonehearth:incapacitation": {
-          "sm": {}
-      },
-      "stonehearth:item_quality": {
-      },
-      "stonehearth:commands": {
-          "commands": {}
-      },
-      "stonehearth:job": {
-          'curr_job_controller': {}
-      },
-      "stonehearth:buffs": {
-          "buffs": {
-              "*": {}
-          }
-      },
-      'stonehearth:expendable_resources': {},
-      "stonehearth:unit_info": {},
-      "stonehearth:stacks": {},
-      "stonehearth:material": {},
-      "stonehearth:workshop": {
-          "crafter": {},
-          "crafting_progress": {},
-          "order": {}
-      },
-      "stonehearth:happiness": {
-          "current_mood_buff": {}
-      },
-      "stonehearth:pet": {},
+   ace_components: {
       "stonehearth:party": {
           "members": {
               "*": {
@@ -69,21 +32,6 @@ App.StonehearthUnitFrameView.reopen({
               }
           }
       },
-      "stonehearth:party_member": {
-          "party": {
-              "stonehearth:unit_info": {}
-          }
-      },
-      "stonehearth:siege_weapon": {},
-      "stonehearth:door": {},
-      "stonehearth:iconic_form": {
-          "root_entity": {
-              "uri": {},
-              'stonehearth:item_quality': {},
-              "stonehearth:unit_info": {},
-              "stonehearth_ace:titles": {}
-          }
-      },
       "stonehearth:work_order": {
           "work_order_statuses": {},
           "work_order_refs": {}
@@ -92,7 +40,14 @@ App.StonehearthUnitFrameView.reopen({
       "stonehearth_ace:transform": {
          "progress": {}
       }
-  },
+   },
+
+   init: function() {
+      var self = this;
+      stonehearth_ace.mergeInto(self.components, self.ace_components)
+
+      self._super();
+   },
 
    didInsertElement: function() {
       var self = this;

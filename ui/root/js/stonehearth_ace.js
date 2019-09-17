@@ -3,6 +3,20 @@ var stonehearth_ace = {
    _allTitles: {},
    _fence_mode: {},
 
+   mergeInto: function(to_obj, from_obj) {
+      radiant.each(from_obj, function(name, data) {
+         if (Array.isArray(to_obj[name]) && Array.isArray(data)) {
+            to_obj[name] = to_obj[name].concat(data);
+         }
+         else if (typeof to_obj[name] == 'object' && typeof data == 'object') {
+            stonehearth_ace.mergeInto(to_obj[name], data);
+         }
+         else {
+            to_obj[name] = data;
+         }
+      });
+   },
+
    getEquipmentTypesArray: function(equipment_types) {
       if (!equipment_types) {
          return stonehearth_ace._equipment_types;
