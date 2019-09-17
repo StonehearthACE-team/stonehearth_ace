@@ -498,7 +498,7 @@ App.AceBuildFenceModeView = App.View.extend({
       self.buildFence();
    },
 
-   buildFence: function() {
+   buildFence: function(internalRecall) {
       var self = this;
 
       var curSegments = self.get('segments');
@@ -522,14 +522,14 @@ App.AceBuildFenceModeView = App.View.extend({
       var curTip = App.stonehearthClient._currentTip;
       var tip = App.stonehearthClient.showTip('stonehearth_ace:ui.game.menu.build_menu.items.build_fence.tip_title', 'stonehearth_ace:ui.game.menu.build_menu.items.build_fence.tip_description',
          {i18n: true});
-      self._recallingTool = tip == curTip;
+      self._recallingTool = !internalRecall && tip == curTip;
 
       var toolFn;
       toolFn = function() {
          return radiant.call('stonehearth_ace:choose_fence_location_command', fencePieces)
             .done(function(response) {
                radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:place_structure'} );
-               self.buildFence();
+               self.buildFence(true);
             })
             .fail(function(response) {
                if (!self._recallingTool) {

@@ -1,3 +1,4 @@
+local RegionCollisionType = _radiant.om.RegionCollisionShape
 local Entity = _radiant.om.Entity
 local Point3 = _radiant.csg.Point3
 local Cube3 = _radiant.csg.Cube3
@@ -6,10 +7,6 @@ local validator = radiant.validator
 --local csg_lib = require 'stonehearth.lib.csg.csg_lib'
 
 local FenceCallHandler = class()
-
-local FENCE_POST = 'fence_post'
-local FENCE_END_SINGLE = 'fence_end_single'
-local FENCE_END_DOUBLE = 'fence_end_double'
 
 local log = radiant.log.create_logger('fence_call_handler')
 
@@ -91,6 +88,34 @@ local _create_fence_nodes = function(pattern, start_location, end_location, faci
    end
 end
 
+local _get_entity_to_place = function(uri, location, rotation)
+   local entity = radiant.entities.create_entity(uri)
+   radiant.terrain.place_entity_at_exact_location(entity, location, {force_iconic = false})
+   entity:add_component('mob'):turn_to(rotation)
+
+   -- make sure this isn't colliding with another entity, even if that entity's collision type is "none" (if it's a ghost)
+   local rcs = entity:get_component('region_collision_shape')
+   local cr = rcs and rcs:get_region()
+   local wcr = cr and radiant.entities.local_to_world(cr:get(), entity)
+   local loc_entities = wcr and radiant.terrain.get_entities_in_region(wcr) or {}
+   for _, loc_entity in pairs(loc_entities) do
+      if loc_entity ~= entity then
+         local loc_rcs = loc_entity:get_component('region_collision_shape')
+         local loc_rc_type = loc_rcs and loc_rcs:get_region_collision_type()
+         if loc_rc_type and (loc_rc_type ~= RegionCollisionType.NONE or loc_entity:get_component('stonehearth:ghost_form')) then
+            local region = loc_rcs:get_region()
+            if region and wcr:intersects_region(radiant.entities.local_to_world(region:get(), loc_entity)) then
+               -- if we can't place the entity there, make a filler instead
+               radiant.entities.destroy_entity(entity)
+               return false
+            end
+         end
+      end
+   end
+
+   return entity
+end
+
 function FenceCallHandler:choose_fence_location_command(session, response, pattern)
    validator.expect_argument_types({'table'}, pattern)
    
@@ -100,7 +125,7 @@ function FenceCallHandler:choose_fence_location_command(session, response, patte
          local node = table.remove(render_nodes, i)
          if radiant.util.is_a(node, Entity) then
             radiant.entities.destroy_entity(node)
-         else
+         elseif node and node.destroy then
             node:destroy()
          end
       end
@@ -172,9 +197,7 @@ function FenceCallHandler:choose_fence_location_command(session, response, patte
                   last_index = index
                   if index > num_nodes then
                      log:debug('placing %s at %s facing %s', uri, location, rotation)
-                     local entity = radiant.entities.create_entity(uri)
-                     radiant.terrain.place_entity_at_exact_location(entity, location, {force_iconic = false})
-                     entity:add_component('mob'):turn_to(rotation)
+                     local entity = _get_entity_to_place(uri, location, rotation)
                      table.insert(render_nodes, entity)
                   end
                end)
@@ -183,14 +206,14 @@ function FenceCallHandler:choose_fence_location_command(session, response, patte
                destroy_render_nodes(last_index + 1)
             end
          end)
-      :set_can_contain_entity_filter(function(entity)
-            for _, render_entity in ipairs(render_nodes) do
-               if render_entity == entity then
-                  return true
-               end
-            end
-            return false
-         end)
+      :set_can_contain_entity_filter() --function(entity)
+      --       for _, render_entity in ipairs(render_nodes) do
+      --          if render_entity == entity then
+      --             return true
+      --          end
+      --       end
+      --       return false
+      --    end)
       :set_cursor('stonehearth:cursors:fence')
       :done(
          function(selector, box, start_location)
@@ -229,19 +252,23 @@ function FenceCallHandler:build_fence_command(session, response, pattern, start_
    if town then
       local ghosts = {}
       _create_fence_nodes(pattern, start_location, end_location, facing, function(index, uri, location, rotation)
-            local placement_info = {
-               location = location,
-               normal = Point3(0, 1, 0),
-               rotation = rotation,
-            }
-            local ghost_entity = town:place_item_type(uri, nil, placement_info)
-            if ghost_entity then
-               local uri_ghosts = ghosts[uri]
-               if not uri_ghosts then
-                  uri_ghosts = {}
-                  ghosts[uri] = uri_ghosts
+            local location_check = _get_entity_to_place(uri, location, rotation)
+            if location_check then
+               local placement_info = {
+                  location = location,
+                  normal = Point3(0, 1, 0),
+                  rotation = rotation,
+               }
+               local ghost_entity = town:place_item_type(uri, nil, placement_info)
+               if ghost_entity then
+                  local uri_ghosts = ghosts[uri]
+                  if not uri_ghosts then
+                     uri_ghosts = {}
+                     ghosts[uri] = uri_ghosts
+                  end
+                  table.insert(uri_ghosts, ghost_entity)
                end
-               table.insert(uri_ghosts, ghost_entity)
+               radiant.entities.destroy_entity(location_check)
             end
          end)
 
