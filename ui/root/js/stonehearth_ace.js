@@ -246,6 +246,6 @@ $.getJSON('/stonehearth_ace/ui/data/fence_types.json', function(data) {
       .done(function(response) {
          var settings = response['mods.stonehearth_ace.fence_mode'] || {};
          stonehearth_ace._fence_mode.selected_segments = settings.selected_segments;
-         stonehearth_ace._fence_mode.custom_presets = settings.custom_presets || [];
+         stonehearth_ace._fence_mode.custom_presets = settings.custom_presets || {};
       });
 });
