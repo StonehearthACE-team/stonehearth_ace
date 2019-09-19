@@ -130,7 +130,7 @@ function CrafterInfoController:_format_recipe(name, recipe)
             formatted_ingredient.name = resource.name
             formatted_ingredient.icon = resource.icon
          end
-      else
+      elseif ingredient.uri then
          local ingredient_data = radiant.resources.load_json(ingredient.uri, true, false)
 
          if not ingredient_data then
@@ -150,6 +150,10 @@ function CrafterInfoController:_format_recipe(name, recipe)
                formatted_ingredient.identifier = ingredient_data.components['stonehearth:entity_forms'].iconic_form
             end
          end
+      else
+         -- this ingredient has neither a material nor a uri
+         log:error('recipe "%s" has invalid ingredient: %s', name, radiant.util.table_tostring(ingredient))
+         return
       end
 
       formatted_ingredient.count = ingredient.count

@@ -329,7 +329,10 @@ $(top).on('stonehearthReady', function() {
                if (uri == 'stonehearth:loot:gold') {
                   num = 0;
                   radiant.each(v.items, function (_, item) {
-                     num += item['stonehearth:stacks'].stacks;
+                     var stacksComp = item['stonehearth:stacks'];
+                     if (stacksComp) {
+                        num += stacksComp.stacks;
+                     }
                   });
                }
       

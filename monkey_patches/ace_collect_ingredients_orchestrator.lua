@@ -170,4 +170,20 @@ function AceCollectIngredients:run(town, args)
    return true
 end
 
+function AceCollectIngredients:_on_aborted_looking_for_ingredients(event_args)
+   -- Register that this order is stuck, so that we don't reconsider it until we reach the end of the list
+   self._craft_order_list:register_stuck_order(self._order:get_id())
+
+   -- Show a notification to the player if needed
+   local recipe = self._order:get_recipe()
+   radiant.events.trigger(self._craft_order_list, 'stonehearth:cant_reach_ingredients',
+                            {
+                               ingredient = event_args.ingredient,
+                               recipe_name = recipe.display_name or recipe.recipe_key
+                            })
+
+   -- Destroy the current collecting task so that the craft items orchestrator knows that something went wrong
+   self:destroy()
+end
+
 return AceCollectIngredients
