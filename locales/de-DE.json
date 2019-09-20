@@ -350,21 +350,21 @@
                   "recipe_unlock_cook": "Der Koch kann jetzt Wüstensonnentee zubereiten!"
                },
                "ace_valor_reached": {
-                  "recipe_unlock_blacksmith": "New Legendary Mail recipe - Weaver, Engineer, and Blacksmith collaboration!",
-                  "recipe_unlock_geomancer": "New Legendary Tome recipe - Cook, Herbalist, and Geomancer collaboration!",
-                  "recipe_unlock_engineer": "New Legendary Mace recipe - Mason, Carpenter, and Engineer collaboration!",
-                  "recipe_unlock_weaver": "New Legendary Hood recipe - Blacksmith, Geomancer, and Weaver collaboration!"
+                  "recipe_unlock_blacksmith": "Neues legendäres Kettenpanzer-Rezept - Zusammenarbeit von Weber, Ingenieur und Schmied!",
+                  "recipe_unlock_geomancer": "Neues legendäres Foliant-Rezept - Zusammenarbeit von Koch, Kräuterarzt und Geomant!",
+                  "recipe_unlock_engineer": "Neues legendäres Streitkolben-Rezept - Zusammenarbeit von Steinmetz, Schreiner und Ingenieur!",
+                  "recipe_unlock_weaver": "Neues legendäres Kapuzen-Rezept - Zusammenarbeit von Schmied, Geomant und Weber!"
                }
             },
             "na_town_progression": {
                "ace_guildmaster_reached": {
-                  "recipe_unlock_coins": "The Blacksmith can now mint gold coins!"
+                  "recipe_unlock_coins": "Der Schmied kann jetzt Goldmünzen prägen!"
                },
                "ace_valor_reached": {
-                  "recipe_unlock_blacksmith": "New Legendary Mail recipe - Weaver, Engineer, and Blacksmith collaboration!",
-                  "recipe_unlock_geomancer": "New Legendary Tome recipe - Cook, Herbalist, and Geomancer collaboration!",
-                  "recipe_unlock_engineer": "New Legendary Mace recipe - Mason, Carpenter, and Engineer collaboration!",
-                  "recipe_unlock_weaver": "New Legendary Hood recipe - Blacksmith, Geomancer, and Weaver collaboration!"
+                  "recipe_unlock_blacksmith": "Neues legendäres Kettenpanzer-Rezept - Zusammenarbeit von Weber, Ingenieur und Schmied!",
+                  "recipe_unlock_geomancer": "Neues legendäres Foliant-Rezept - Zusammenarbeit von Koch, Kräuterarzt und Geomant!",
+                  "recipe_unlock_engineer": "Neues legendäres Streitkolben-Rezept - Zusammenarbeit von Steinmetz, Schreiner und Ingenieur!",
+                  "recipe_unlock_weaver": "Neues legendäres Kapuzen-Rezept - Zusammenarbeit von Schmied, Geomant und Weber!"
                }
             },
             "bonecarving": {
@@ -697,6 +697,10 @@
                "description": "Es ist ein wunderschöner sonniger Tag! Wenn auch etwas kalt....<ul><li>Kaum reduziertes Sonnenlicht.</li><li>Normale Luftfeuchtigkeit.</li><li>Ungeschützten Hearthlingen ist es zu kühl, um effektiv zu arbeiten.</li></ul>"
             },
             "sunny_hot": {
+               "display_name": "Heiß & Sonnig",
+               "description": "Ein schöner und warmer Sonnentag! Vielleicht zu sonnig, die Hitze ist nicht gut....<ul><li>Normales Sonnenlichtlevel.</li><li>Stark reduzierte Luftfeuchtigkeit.</li><li>Ungeschützten Hearthlingen ist es zu heiß, um effektiv zu arbeiten..</li><li>Nicht geschützte Weidetiere werden von der Hitze beeinflusst.</li></ul>"
+            },
+            "sunny_sweltering": {
                "display_name": "Hitzewelle",
                "description": "Ein schöner, warmer sonniger Tag! Vielleicht zu sonnig, die Hitze ist unerträglich...<ul><li>Normales Sonnenlicht.</li><li>Ziemlich reduzierte Luftfeuchtigkeit.</li><li>Ungeschützten Hearthlingen ist es zu heiß, um effektiv zu arbeiten.</li><li>Ungeschützte Weidetiere werden durch die Hitze verletzt.</li></ul>"
             }
@@ -817,8 +821,16 @@
                      "tooltip": "Die Sonne ist heute so stark! Es ist etwas strapazierend, aber ich fühle mich so lebendig!"
                   },
                   "sunny_hot_negative": {
-                     "display_name": "Sengende Hitze!",
+                     "display_name": "Schweißausbrüche!",
                      "tooltip": "Warum muss es heute so warm sein? Ich kann diese Hitze nicht mehr aushalten..."
+                  },
+                  "sunny_sweltering_positive": {
+                     "display_name": "Silver linings!",
+                     "tooltip": "I know, I know... It is extremely hot. But that means we get to stay more under the shade, right?"
+                  },
+                  "sunny_sweltering_negative": {
+                     "display_name": "Scorching around!",
+                     "tooltip": "This is definitely not healthy... Must stay away from the sun... Must stay refreshed..."
                   },
                   "windy_chilly_positive": {
                      "display_name": "Die Winde des Winters",
@@ -890,8 +902,8 @@
             },
             "drinking": {
                "merry_time": {
-                  "display_name": "Having a good time!",
-                  "tooltip": "Friends, drinks and a good time! What else could anyone wish for?"
+                  "display_name": "Eine gute Zeit haben!",
+                  "tooltip": "Freunde, Getränke und eine gute Zeit! Was könnte man sich sonst noch wünschen?Friends, drinks and a good time! What else could anyone wish for?"
                },
                "morning_after": {
                   "display_name": "Exaggerated a little...",
@@ -1007,12 +1019,12 @@
                   "description": "Kein Titel notwendig."
                },
                "levels": {
-                  "display_name": "Character Level",
-                  "description": "Gained by levelling up on any job.",
-                  "6_display_name": ", Master",
-                  "6_description": "They have six job levels! They have walked the path of a master!",
-                  "12_display_name": ", Grandmaster",
-                  "12_description": "They now have twelve job levels! More than a master, a grand master!",
+                  "display_name": "Charakterlevel",
+                  "description": "Wird durch den Aufstieg bei jedem Job gewonnen.",
+                  "6_display_name": ", Meister",
+                  "6_description": "Sie/Er hat 6 Joblevel! Sie/Er ist den Weg eines Meisters gegangen!",
+                  "12_display_name": ", Großmeister",
+                  "12_description": "Sie/Er hat nun 12 Joblevel! Mehr als ein Meister, ein Großmeister!",
                   "18_display_name": ", Jack-of-All-Trades",
                   "18_description": "They have eighteen job levels! What? That's amazing!",
                   "30_display_name": ", Blessed",
@@ -10519,8 +10531,8 @@
                "auto_craft_recipe_dependencies_description": "Wenn ein Gegenstand hergestellt wird, prüfen die Handwerker das Inventar, ob ausreichend Zutaten vorhanden sind. Ist dies nicht der Fall, werden genügend Zutaten automatisch bestellt, um die ursprüngliche Bestellung zu erfüllen.",
                "auto_craft_killed_items": "Automatische Rezepteinstellung zerstörter Gegenstände",
                "auto_craft_killed_items_description": "Wenn ein Gegenstand, den Sie besitzen, wie ein Tor, ein Übungspuppe oder eine Belagerungswaffe zerstört wird, wird automatisch ein neuer Fertigungsauftrag erstellt.",
-               "default_craft_order_quality_preference": "Standardeinstellung für die Fertigungsqualität",
-               "default_craft_order_quality_preference_description": "Bei der Herstellung eines Gegenstands werden die Handwerker Zutaten aufgrund ihrer Qualität berücksichtigen: niedrigere (-1), höhere (1) oder keine Präferenz (0). AUSWAHL VON -1 ODER 1 KANN DIE SPIELLEISTUNG NEGATIV AUSWIRKEN.",
+               "default_craft_order_prefer_high_quality": "Prefer High-Quality Crafting Ingredients",
+               "default_craft_order_prefer_high_quality_description": "When crafting an item, crafters who have achieved the Journeyman's Knowledge perk will prefer crafting with high-quality ingredients. Uncheck to always prefer low-quality ingredients.",
                "show_unreachable_ingredients_notification": "Alarm für nicht erreichbare Handwerkszutaten",
                "show_unreachable_ingredients_notification_description": "Zeigt eine Alarm an, wenn ein Handwerker eine Rezeptzutat nicht erreichen kann.<span class='warn'>WARNUNG:</span>Dies kann viele Alarme verursachen!",
                "auto_harvest_enabled": "Nachwachsende Rohstoffe automatischen Ernten",
