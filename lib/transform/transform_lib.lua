@@ -65,6 +65,28 @@ function transform_lib.transform(entity, transformer, into_uri, options)
             transformed_owner_component:set_owner(owner)
          end
       end
+		
+		-- If the transformed entity is a storage, transfer the contents (regardless of capacity)
+		local storage_component = entity:get_component('stonehearth:storage')
+		local has_storage = storage_component and not storage_component:is_empty()
+		if has_storage then 
+			local transformed_storage_component = transformed_form:get_component('stonehearth:storage')			
+			if transformed_storage_component then
+				-- apply the same storage filter on the transformed entity
+				local storage_filter = storage_component:get_filter()
+				if storage_filter then
+					transformed_storage_component:set_filter(storage_filter)
+				end
+				-- transfer the contents
+				local storage = storage_component:get_items()
+				for id, item in pairs(storage) do
+					if item and item:is_valid() then
+						local removed_item = storage_component:remove_item(id)
+						transformed_storage_component:add_item(removed_item, true)
+					end
+				end
+			end
+		end
 
       local unit_info = entity:get_component('stonehearth:unit_info')
       local custom_name = unit_info and unit_info:get_custom_name()

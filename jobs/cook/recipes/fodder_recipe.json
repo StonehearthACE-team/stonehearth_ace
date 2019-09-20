@@ -1,6 +1,6 @@
 {
    "type": "recipe",
-   "effort": 3,
+   "effort": 10,
    "work_units": 1,
    "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.fodder_recipe.recipe_name)",
    "description": "i18n(stonehearth_ace:jobs.cook.recipes.fodder_recipe.description)",
@@ -20,6 +20,15 @@
    ],
    "produces": [
       {
+         "item": "stonehearth:food:feed:fodder"
+      },
+		{
+         "item": "stonehearth:food:feed:fodder"
+      },
+		{
+         "item": "stonehearth:food:feed:fodder"
+      },
+		{
          "item": "stonehearth:food:feed:fodder"
       }
    ]

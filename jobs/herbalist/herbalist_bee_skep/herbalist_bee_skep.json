@@ -36,7 +36,7 @@
          "resource": "stonehearth_ace:food:honey",
          "start_unharvestable": true,
          "category": "beekeeping",
-         "renewal_time": "48h+12h",
+         "renewal_time": "32h+12h",
          "unripe_description": "i18n(stonehearth_ace:jobs.herbalist.herbalist_bee_skep.unripe_description)",
          "harvest_overlay_effect": "stonehearth_ace:effects:harvest_honey_overlay_effect",
          "resource_loot_table": {
@@ -80,7 +80,7 @@
          }
       },
       "movement_modifier_shape": {
-         "nav_preference_modifier": -0.3,
+         "nav_preference_modifier": -0.1,
          "region": [
             {
                "min": { "x": -6, "y": -1, "z": -6 },

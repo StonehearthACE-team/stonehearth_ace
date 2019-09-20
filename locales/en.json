@@ -2374,6 +2374,16 @@
                "description": "Separate seeds from the fiber",
                "flavor": "Only a skilled hand can harvest the weaker seeds, but the fiber is destroyed in the process."
             },
+            "silkweed_transmute_recipe": {
+               "recipe_name": "Silkweed Seeds (x3)",
+               "description": "Separate seeds from the fiber",
+               "flavor": "Only a skilled hand can harvest the weaker seeds, but the fiber is destroyed in the process."
+            },
+            "carrot_transmute_recipe": {
+               "recipe_name": "Carrot Seeds (x3)",
+               "description": "Separate seeds from the youngest leaves",
+               "flavor": "Only a skilled hand can harvest the weaker seeds, but the vegetable is destroyed in the process."
+            },
             "sunflower_transmute_recipe": {
                "flavor": "Sunflower seeds are oleaginous seeds and can be used to make oil."
             },
@@ -3354,6 +3364,11 @@
                "description": "Craft a knight's sidearm with the bones of a mythical creature.",
                "flavor": ""
             },
+            "bone_material_recipe": {
+               "recipe_name": "Bone Material (x2)",
+               "description": "Split the strong bone of an ogre into two simple pieces of bone material.",
+               "flavor": ""
+            },
             "stone_sword_recipe": {
                "flavor": "Training with stone swords is a cruel but efficient joke."
             },
@@ -3486,6 +3501,9 @@
                "recipe_name": "Stone Counter Door",
                "description": "Allows hearthlings to traverse between both sides of the counter.",
                "flavor": "That top part must be quite heavy..."
+            },
+            "wall_mounted_paw_recipe": {
+               "description": "Mark of the hunter, never seen or heard... Until it is too late."
             }
          },
          "mason_workbench_bone": {
@@ -4203,26 +4221,29 @@
                "flavor": ""
             },
             "rabbit_feed_recipe": {
+					"recipe_name": "Rabbit Feed (x3)",
                "description": "Selected carrots for rabbits. Improves the quality of animal produce."
             },
             "poyo_feed_recipe": {
+					"recipe_name": "Poyo Feed (x3)",
                "description": "Nicely milled food for poyos. Improves the quality of animal produce."
             },
             "sheep_feed_recipe": {
+					"recipe_name": "Sheep Feed (x3)",
                "description": "Tasty grasses for sheep. Improves the quality of animal produce."
             },
             "fodder_recipe": {
-               "recipe_name": "Animal Fodder",
+               "recipe_name": "Animal Fodder (x4)",
                "description": "Cheap and efficient for feeding animals, even if not exactly their favorite food...",
                "flavor": ""
             },
             "ostrich_feed_recipe": {
-               "recipe_name": "Ostrich Feed",
+               "recipe_name": "Ostrich Feed (x3)",
                "description": "A nutritious supplement for ostriches. Improves the quality of animal produce.",
                "flavor": ""
             },
             "moomoo_feed_recipe": {
-               "recipe_name": "Moo-Moo Feed",
+               "recipe_name": "Moo-Moo Feed (x3)",
                "description": "Tasty and hearty food appreciated by large ruminants. Improves the quality of animal produce.",
                "flavor": ""
             },
@@ -4825,7 +4846,7 @@
                "description": "A somewhat sturdy shield made of bug chitin.",
                "flavor": "Maybe a bit too creepy?"
             },
-            "clothing_armor_name": "Clothing & Tools",
+            "clothing_armor_name": "Clothing & Accessories",
             "weapons_name": "Combat Equipment"
          },
          "weaver_description": {
@@ -7190,6 +7211,11 @@
          "wooden_sign_geomancer": {
             "display_name": "Geomancer's Sign",
             "description": "A sign with the mark of the Geomancer"
+         },
+         "wall_mounted_paw": {
+            "wall_mounted_paw_ghost": {
+               "description": "Mark of the hunter, never seen or heard... Until it is too late."
+            }
          }
       },
       "pets": {
@@ -9001,6 +9027,11 @@
             "frost_trap_ghost": {
                "display_name": "Frost Trap",
                "description": "Use it when your enemies need to chill a bit!"
+            }
+         },
+         "titan_slayer": {
+            "titan_slayer_monument": {
+               "description": "A memorial to an alliance against the darkness. It radiates well-being."
             }
          }
       },

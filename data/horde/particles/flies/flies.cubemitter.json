@@ -1,0 +1,129 @@
+{
+	"name": "flies",
+	"duration": 5000,
+	"material": "materials/cubemitter.material.json",
+	"loops": true,
+	"emission": {
+		"rate": {
+			"kind": "CONSTANT",
+			"values": [1.2]
+		},
+		"angle": {
+			"kind": "CONSTANT",
+			"values": [0]
+		},
+		"origin": {
+			"surface": "SPHERE",
+			"values": [
+				0.1,
+				0,
+				360
+			]
+		}
+	},
+	"particle": {
+		"lifetime": {
+			"start": {
+				"kind": "RANDOM_BETWEEN",
+				"values": [2000, 4500]
+			}
+		},
+		"speed": {
+			"start": {
+				"kind": "RANDOM_BETWEEN",
+				"values": [-0.2, 0.4]
+			}
+		},
+		"velocity": {
+			"over_lifetime_x": {
+				"kind": "CURVE",
+				"values": [
+					[0, -2],
+					[0.5, 2],
+					[1, -2]
+				]
+			},
+			"over_lifetime_y": {
+				"kind": "CURVE",
+				"values": [
+					[0, 0],
+					[0.25, 2],
+					[0.75, -2],
+					[1, 2]
+				]
+			},
+			"over_lifetime_z": {
+				"kind": "CURVE",
+				"values": [
+					[0, -30],
+					[0.01, 0],
+					[0.25, 2],
+					[0.75, -2],
+					[1, 0]
+				]
+			}
+		},
+		"rotation": {
+			"over_lifetime_x": {
+				"kind": "RANDOM_BETWEEN_CURVES",
+				"values": [
+					[
+						[0, 0],
+						[1, 0]
+					],
+					[
+						[0, 90],
+						[1, 360]
+					]
+				]
+			},
+			"over_lifetime_y": {
+				"kind": "RANDOM_BETWEEN_CURVES",
+				"values": [
+					[
+						[0, 0],
+						[1, 0]
+					],
+					[
+						[0, 90],
+						[1, 90]
+					]
+				]
+			},
+			"over_lifetime_z": {
+				"kind": "RANDOM_BETWEEN_CURVES",
+				"values": [
+					[
+						[0, 0],
+						[1, 0]
+					],
+					[
+						[0, 90],
+						[1, 90]
+					]
+				]
+			}
+		},
+		"scale": {
+			"start": {
+				"kind": "RANDOM_BETWEEN",
+				"values": [0.05, 0.08]
+			}
+		},
+		"color": {
+			"start": {
+            "kind": "CONSTANT",
+            "values": [0.176, 0.176, 0.133, 1]
+         },
+			"over_lifetime_a": {
+				"kind": "CURVE",
+				"values": [
+					[0, 0],
+					[0.1, 1],
+					[0.9, 1],
+					[1, 0]
+				]
+			}
+		}
+	}
+}

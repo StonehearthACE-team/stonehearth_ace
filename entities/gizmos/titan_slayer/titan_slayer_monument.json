@@ -1,0 +1,25 @@
+{
+	"components": {
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+			"region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      },
+		"sensor_list": {
+         "sensors": {
+            "warmth": {
+               "radius": 25
+            }
+         }
+      },
+      "stonehearth:buffs": {
+         "buffs": {
+            "stonehearth_ace:buffs:weather:warmth_source": true
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "description": "i18n(stonehearth_ace:entities.gizmos.titan_slayer.titan_slayer_monument.description)"
+      }
+   }
+}
