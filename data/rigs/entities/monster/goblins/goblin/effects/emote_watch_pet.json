@@ -1,0 +1,62 @@
+{
+   "type" : "effect",
+   "tracks": {
+      "animation": {
+         "type": "animation_effect",
+         "start_time": 0,
+         "animation": "/stonehearth/data/rigs/entities/monster/goblins/goblin/animations/emote_watch_pet.json",
+         "loop": false
+      },
+      "emoticon": {
+         "type": "cubemitter",
+         "start_time" : 1333,
+         "end_time" : 4333,
+         "cubemitter": "particles/emote/emoticons/heart.cubemitter.json",
+         "transforms": {
+            "x":0,
+            "y":1,
+            "z":0,
+            "rx":90,
+            "ry":0,
+            "rz":0
+         },
+         "bone": "head"
+      },
+      "emoticon2": {
+         "type": "cubemitter",
+         "start_time" : 1333,
+         "end_time" : 4333,
+         "cubemitter": "particles/emote/emoticons/heart2.cubemitter.json",
+         "transforms": {
+            "x":0,
+            "y":1,
+            "z":0,
+            "rx":90,
+            "ry":0,
+            "rz":0
+         },
+         "bone": "head"
+      },
+      "sound": {
+         "type": "sound_effect",
+         "duration": 1000,
+         "start_time": 0,
+         "min_distance": 20,
+         "max_instances": 2,
+         "falloff" : 2.5,
+         "volume": 10,
+         "track" : {
+            "type": "one_of",
+            "items": [
+               "stonehearth:sounds:hearts_01",
+               "stonehearth:sounds:hearts_02",
+               "stonehearth:sounds:hearts_03",
+               "stonehearth:sounds:hearts_04",
+               "stonehearth:sounds:hearts_05",
+               "stonehearth:sounds:hearts_06",
+               "stonehearth:sounds:hearts_07"
+            ]
+         }
+      }
+   }
+}

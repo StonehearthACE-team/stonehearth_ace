@@ -1,0 +1,114 @@
+<script type="text/x-handlebars" data-template-name="stonehearthSelectGameStory">
+   <div id="selectGameStory">
+      <div id="chooseAdventureTitle" class="title">{{i18n stonehearth:ui.shell.select_game_story.title}}</div>
+
+      <a href="#" {{action "quitToMainMenu" target="view"}}>
+         <button class="quitButton">{{i18n stonehearth:ui.game.esc_menu.quit_to_menu}}</button>
+      </a>
+
+      <div id="storyBody">
+         <div id="sideImage" class="bodyElement"></div>
+
+         <div id="storyTextContainer" class="bodyElement">
+            <div id="storyText">
+               <div id="storySentenceStart">{{i18n stonehearth:ui.shell.select_game_story.story_start}}</div>
+               <div id="selectKingdomContainer" >
+                  <b id="selectKingdom" data-in-effect="fadeIn" class="fadedInText">{{i18n stonehearth:ui.shell.select_game_story.kingdom_section_start}}</b><a href="#" {{action 'showKingdomSelection' target=view}}>{{i18n_key view.selectedKingdom.display_name}}</a><b id="postSelectKingdom" data-in-effect="fadeIn" class="fadedInText"></b>
+               </div>
+               <div id="selectBiomeContainer" >
+                  <b id="selectBiome" data-in-effect="fadeIn" class="fadedInText">{{i18n stonehearth:ui.shell.select_game_story.biome_section_start}}</b><a href="#" {{action 'showBiomeSelection' target=view}} {{bind-attr class="view.isHostPlayer::disabled"}}>{{i18n_key view.selectedBiomeRandomName}}</a><b id="selectGameMode" data-in-effect="fadeIn" class="fadedInText">{{i18n stonehearth:ui.shell.select_game_story.game_mode_select_start}}</b><a href="#" {{action 'showGameModeSelection' target=view}} {{bind-attr class="view.isHostPlayer::disabled"}}>{{i18n_key view.selectedGameMode.post_selection_text}}</a>
+               </div>
+               <div id="beginButtonContainer">
+                  <a href="#"{{action 'beginStory' target=view}}>
+                     <button id="beginStoryButton" class="flat">{{i18n stonehearth:ui.shell.select_game_story.begin_button}}</button>
+                  </a>
+               </div>
+            </div>
+         </div>
+         <div id="storyPictureContainer" class="bodyElement"></div>
+         <img id="storyPictureCitizens" class="storyPicture reallyFaded" {{bind-attr src=view.selectedKingdom.story_board_image}}/>
+         <img id="storyPictureBackground" class="storyPicture somewhatFaded" {{bind-attr src=view.selectedBiome.story_board_image}}/>
+         <img id="storyPictureMonsters" class="storyPicture" {{bind-attr src=view.selectedBiomeMonsterPicture}}/>
+      </div>
+
+      <div id="kingdomPicker" class="storyPicker standAloneWindow">
+         <div class="pickerTitle">{{i18n stonehearth:ui.shell.select_game_story.kingdom_picker_title}}</div>
+         <table><tr>
+         {{#each kingdom in view.allKingdoms}}
+            <td>
+            <a {{action 'selectKingdom' kingdom.__self target=view}}>
+               <div class="pickerDiv">
+                  <img class="pickerImage" {{bind-attr src=kingdom.image}} />
+                  <div class="pickerInfo">
+                     <div class="name">{{i18n_key kingdom.display_name}}</div>
+                     <div class="description">
+                        {{{formatted_i18n_key kingdom.description}}}
+                     </div>
+                  </div>
+               </div>
+            </a>
+            </td>
+         {{/each}}
+         </tr></table>
+      </div>
+
+      <div id="biomePicker" class="storyPicker standAloneWindow">
+         <div class="pickerTitle">{{i18n stonehearth:ui.shell.select_game_story.biome_picker_title}}</div>
+         <table><tr>
+         {{#each biome in view.allBiomes}}
+            <td>
+            <a {{action 'selectBiome' biome.__self target=view}}>
+               <div class="pickerDiv">
+                  <img class="pickerImage" {{bind-attr src=biome.image}} />
+                  <div class="pickerInfo">
+                     <div class="name">
+                        {{i18n_key biome.display_name}}
+                        {{#if biome.is_favored}}
+                           {{i18n stonehearth:ui.shell.select_game_story.biome_favored_label}}
+                        {{/if}}
+                     </div>
+                     <div class="description">
+                        {{i18n_key biome.description}}
+                     </div>
+                  </div>
+               </div>
+            </a>
+            </td>
+         {{/each}}
+         </tr></table>
+      </div>
+
+      <div id="gameModePicker" class="storyPicker standAloneWindow">
+         <div class="pickerTitle">{{i18n stonehearth:ui.shell.select_game_story.game_mode_picker_title}}</div>
+         <table><tr>
+         {{#each gameMode in view.allGameModes}}
+            <td>
+            <a {{action 'selectGameMode' gameMode.__self target=view}}>
+               <div class="pickerDiv">
+                  <img class="pickerImage" {{bind-attr src=gameMode.image}} />
+                  <div class="pickerInfo">
+                     <div class="name">{{i18n_key gameMode.display_name}}</div>
+                     <div class="description">
+                        {{i18n_key gameMode.description}}
+                     </div>
+                  </div>
+               </div>
+            </a>
+            </td>
+         {{/each}}
+         </tr></table>
+      </div>
+
+      <div id="biomeWarning" class="gui">
+         <div class="window">
+            <div class="title">{{i18n stonehearth:ui.shell.select_game_story.biome_warning_title}}</div>
+            <div id="biomeWarningText">{{{view.warningText}}}</div>
+            <div class="buttonsDiv">
+               <button id="continueButton" {{action "continueSelection" target="view"}} >{{i18n stonehearth:ui.game.common.continue}}</button>
+               <button id="cancelButton" {{action "cancelSelection" target="view"}} >{{i18n stonehearth:ui.game.common.cancel}}</button>
+            </div>
+         </div>
+      </div>
+   </div>
+
+</script>
