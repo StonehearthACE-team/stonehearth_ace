@@ -5,6 +5,65 @@ local Region3 = _radiant.csg.Region3
 local FarmingService = require 'stonehearth.services.server.farming.farming_service'
 AceFarmingService = class()
 
+function AceFarmingService:_load_field_types()
+   local data = radiant.resources.load_json('stonehearth:farmer:all_crops')
+   self._field_types = data.field_types
+end
+
+function AceFarmingService:get_field_types()
+   return self._field_types
+end
+
+function AceFarmingService:get_field_type(field_type)
+   return self._field_types[field_type]
+end
+
+function AceFarmingService:create_new_field(session, location, size, field_type)
+   -- A little sanitization: what we get from the client isn't exactly a Point3
+   location = Point3(location.x, location.y, location.z)
+   local entity = radiant.entities.create_entity('stonehearth:farmer:field', { owner = session.player_id })
+   radiant.terrain.place_entity(entity, location)
+
+   self:_add_region_components(entity, size)
+
+   local town = stonehearth.town:get_town(session.player_id)
+
+   local farmer_field = entity:get_component('stonehearth:farmer_field')
+   farmer_field:on_field_created(town, size, field_type)
+
+   return entity
+end
+
+function AceFarmingService:_get_crop_list(session)
+   local player_id = session.player_id
+   local crop_list = self._data.player_crops[player_id]
+   if not crop_list then
+      -- xxx: look this up from the player info when that is avaiable
+      local kingdom = stonehearth.population:get_population(player_id)
+                                                :get_kingdom()
+
+      -- start out with the default crops for this player's kingdom.
+      crop_list = {}
+      local all_crops = self._all_crops
+      local kingdom_crops = self._initial_crops[kingdom]
+      if kingdom_crops and all_crops then
+         for key, crop in pairs(all_crops) do
+            crop_list[key] = {
+               crop_key = key,
+               crop_type = crop.crop_type,
+               crop_info = self:get_crop_details(crop.crop_type),
+               crop_level_requirement = crop.level_requirement,
+               ordinal = crop.ordinal,
+               initial_crop = kingdom_crops[key],
+               field_types = crop.field_types or {farm = true}
+            }
+         end
+      end
+      self._data.player_crops[player_id] = crop_list
+   end
+   return crop_list
+end
+
 --- Given a new crop type, record some important things about it
 function AceFarmingService:get_crop_details(crop_type)
    local details = self._crop_details[crop_type]

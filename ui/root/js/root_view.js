@@ -138,5 +138,26 @@ App.RootView.reopen({
             App.stonehearth.buildFenceView = App.gameView.addView(App.AceBuildFenceModeView);
          }
       };
+
+      App.stonehearthClient.createFarm = function(fieldType) {
+         var self = this;
+
+         App.setGameMode('zones');
+         var tip = self.showTip('stonehearth:ui.game.menu.zone_menu.items.create_farm.tip_title',
+               'stonehearth:ui.game.menu.zone_menu.items.create_farm.tip_description', { i18n: true });
+
+         return this._callTool('createFarm', function(){
+            return radiant.call('stonehearth:choose_new_field_location', fieldType)
+            .done(function(response) {
+               radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:place_structure'} );
+               radiant.call('stonehearth:select_entity', response.field);
+               self.createFarm(fieldType);
+            })
+            .fail(function(response) {
+               self.hideTip(tip);
+               console.log('new field created!');
+            });
+         });
+      };
    }
 });

@@ -254,10 +254,27 @@ function FenceCallHandler:build_fence_command(session, response, pattern, start_
       _create_fence_nodes(pattern, start_location, end_location, facing, function(index, uri, location, rotation)
             local location_check = _get_entity_to_place(uri, location, rotation)
             if location_check then
+               -- get the proper support structure; maybe there's a better way? couldn't find it in radiant.terrain or stonehearth.physics
+               -- actually just always do the root entity
+               local structure = radiant._root_entity
+               -- local support_point = location + Point3(0, -1, 0)
+               -- local supporting_entities = radiant.terrain.get_entities_at_point(support_point)
+               -- for _, support in pairs(supporting_entities) do
+               --    local rcs = support:get_component('region_collision_shape')
+               --    if rcs and rcs:get_region_collision_type() ~= RegionCollisionType.NONE then
+               --       local region = radiant.entities.local_to_world(rcs:get_region():get(), support)
+               --       if region and region:contains(support_point) then
+               --          structure = support
+               --          break
+               --       end
+               --    end
+               -- end
+
                local placement_info = {
                   location = location,
                   normal = Point3(0, 1, 0),
                   rotation = rotation,
+                  structure = structure
                }
                local ghost_entity = town:place_item_type(uri, nil, placement_info)
                if ghost_entity then

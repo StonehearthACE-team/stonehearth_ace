@@ -53,12 +53,15 @@ function TransformComponent:post_activate()
          self:set_transform_option(self._sv.transform_key or self._all_transform_data.default_key)
       end
    end
+
+   self:_create_placement_listener()
 end
 
 function TransformComponent:destroy()
    self:_destroy_effect()
    self:_destroy_progress()
    self:_destroy_request_listeners()
+   self:_destroy_placement_listener()
    self:cancel_craft_order()
 end
 
@@ -77,10 +80,26 @@ function TransformComponent:_create_request_listeners()
    end
 end
 
+function TransformComponent:_create_placement_listener()
+   if self._sv.craft_order_id and not self._placement_listener then
+      self._placement_listener = radiant.events.listen_once(self._entity, 'stonehearth:item_placed_on_structure', function()
+         -- set this so that the craft order isn't canceled, since placement is completing and the ghost isn't just being destroyed
+         self._transforming = true
+      end)
+   end
+end
+
 function TransformComponent:_destroy_request_listeners()
    if self._added_to_world_listener then
       self._added_to_world_listener:destroy()
       self._added_to_world_listener = nil
+   end
+end
+
+function TransformComponent:_destroy_placement_listener()
+   if self._placement_listener then
+      self._placement_listener:destroy()
+      self._placement_listener = nil
    end
 end
 
@@ -331,6 +350,7 @@ function TransformComponent:set_craft_order(order)
       self._sv.craft_order_id = order:get_id()
       self._sv.craft_order_list = order:get_order_list()
       self.__saved_variables:mark_changed()
+      self:_create_placement_listener()
    end
 end
 

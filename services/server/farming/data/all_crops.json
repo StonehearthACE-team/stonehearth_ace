@@ -1,132 +1,284 @@
 {
    "type": "index",
    "crops": {
+      "fallow": {
+         "field_types": "all"
+      },
       "heirbloom": {
          "ordinal": 0,
-         "level_requirement": 1
+         "level_requirement": 1,
+         "field_types": {
+            "farm": true
+         }
       },
       "turnip": {
          "ordinal": 1,
-         "level_requirement": 1
+         "level_requirement": 1,
+         "field_types": {
+            "farm": true,
+            "underfarm": true
+         }
       },
       "carrot": {
          "ordinal": 2,
-         "level_requirement": 1
+         "level_requirement": 1,
+         "field_types": {
+            "farm": true,
+            "underfarm": true
+         }
       },
       "golden_gourd": {
          "ordinal": 3,
-         "level_requirement": 1
+         "level_requirement": 1,
+         "field_types": {
+            "farm": true
+         }
       },
       "sweet_potato": {
          "ordinal": 4,
-         "level_requirement": 1
+         "level_requirement": 1,
+         "field_types": {
+            "farm": true,
+            "underfarm": true
+         }
       },
       "silkweed": {
          "ordinal": 5,
-         "level_requirement": 2
+         "level_requirement": 2,
+         "field_types": {
+            "farm": true
+         }
       },
       "cotton": {
          "crop_type": "stonehearth_ace:crops:cotton_crop",
          "ordinal": 6,
-         "level_requirement": 2
+         "level_requirement": 2,
+         "field_types": {
+            "farm": true
+         }
       },
       "cactus_flower": {
          "ordinal": 7,
-         "level_requirement": 2
+         "level_requirement": 2,
+         "field_types": {
+            "farm": true
+         }
       },
       "brightbell": {
          "ordinal": 8,
-         "level_requirement": 2
+         "level_requirement": 2,
+         "field_types": {
+            "farm": true
+         }
       },
       "moonbell": {
          "crop_type": "stonehearth_ace:crops:moonbell_crop",
          "ordinal": 9,
-         "level_requirement": 2
+         "level_requirement": 2,
+         "field_types": {
+            "farm": true
+         }
       },
       "snow_poppy": {
          "crop_type": "stonehearth_ace:crops:snow_poppy_crop",
          "ordinal": 10,
-         "level_requirement": 3
+         "level_requirement": 3,
+         "field_types": {
+            "farm": true
+         }
       },
       "pumpkin": {
          "ordinal": 11,
-         "level_requirement": 3
+         "level_requirement": 3,
+         "field_types": {
+            "farm": true
+         }
       },
       "watermelon": {
          "ordinal": 12,
-         "level_requirement": 3
+         "level_requirement": 3,
+         "field_types": {
+            "farm": true
+         }
       },
       "frostsnap": {
          "ordinal": 13,
-         "level_requirement": 3
+         "level_requirement": 3,
+         "field_types": {
+            "farm": true
+         }
       },
       "violet": {
          "crop_type": "stonehearth_ace:crops:violet_crop",
          "ordinal": 14,
-         "level_requirement": 4
+         "level_requirement": 4,
+         "field_types": {
+            "farm": true
+         }
       },
       "corn": {
          "ordinal": 15,
-         "level_requirement": 4
+         "level_requirement": 4,
+         "field_types": {
+            "farm": true
+         }
       },
       "wheat": {
          "ordinal": 16,
-         "level_requirement": 4
+         "level_requirement": 4,
+         "field_types": {
+            "farm": true
+         }
       },
       "paddy": {
          "crop_type": "stonehearth_ace:crops:paddy_crop",
          "ordinal": 17,
-         "level_requirement": 5
+         "level_requirement": 5,
+         "field_types": {
+            "farm": true
+         }
       },
       "marblesprout": {
          "crop_type": "stonehearth_ace:crops:marblesprout_crop",
          "ordinal": 18,
-         "level_requirement": 5
+         "level_requirement": 5,
+         "field_types": {
+            "farm": true,
+            "underfarm": true
+         }
       },
       "oak_tree": {
          "ordinal": 19,
-         "level_requirement": 5
+         "level_requirement": 5,
+         "field_types": {
+            "orchard": true
+         }
       },
       "acacia_tree": {
          "ordinal": 20,
-         "level_requirement": 5
+         "level_requirement": 5,
+         "field_types": {
+            "orchard": true
+         }
       },
       "juniper_tree": {
          "ordinal": 21,
-         "level_requirement": 5
+         "level_requirement": 5,
+         "field_types": {
+            "orchard": true
+         }
       },
       "cactus_tree": {
          "ordinal": 22,
-         "level_requirement": 5
+         "level_requirement": 5,
+         "field_types": {
+            "orchard": true
+         }
       },
       "pine_tree": {
          "ordinal": 23,
-         "level_requirement": 5
+         "level_requirement": 5,
+         "field_types": {
+            "orchard": true
+         }
       },
       "arctic_pine_tree": {
          "crop_type": "stonehearth_ace:crops:arctic_pine_tree_crop",
          "ordinal": 24,
-         "level_requirement": 5
+         "level_requirement": 5,
+         "field_types": {
+            "orchard": true
+         }
       },
       "arctic_juniper_tree": {
          "crop_type": "stonehearth_ace:crops:arctic_juniper_tree_crop",
          "ordinal": 25,
-         "level_requirement": 5
+         "level_requirement": 5,
+         "field_types": {
+            "orchard": true
+         }
       },
       "highland_pine_tree": {
          "crop_type": "stonehearth_ace:crops:highland_pine_crop",
          "ordinal": 26,
-         "level_requirement": 5
+         "level_requirement": 5,
+         "field_types": {
+            "orchard": true
+         }
       },
       "birch_tree": {
          "crop_type": "stonehearth_ace:crops:birch_tree_crop",
          "ordinal": 27,
-         "level_requirement": 5
+         "level_requirement": 5,
+         "field_types": {
+            "orchard": true
+         }
       },
       "yew_tree": {
          "crop_type": "stonehearth_ace:crops:yew_tree_crop",
          "ordinal": 28,
-         "level_requirement": 5
+         "level_requirement": 5,
+         "field_types": {
+            "orchard": true
+         }
+      }
+   },
+   "field_types": {
+      "farm": {
+         "sample_crop": "stonehearth:crops:turnip_crop",
+         "terrain": {
+            "grass": true,
+            "dirt": true
+         },
+         "size": {
+            "min": 1,
+            "max": 11
+         },
+         "spacing": {
+            "x": {
+               "before": 0,
+               "width": 1,
+               "after": 1
+            }
+         }
+      },
+      "underfarm": {
+         "sample_crop": "stonehearth:crops:turnip_crop",
+         "color": [206, 148, 78, 255],
+         "terrain": {
+            "dirt": true,
+            "rock": true
+         },
+         "size": {
+            "min": 1,
+            "max": 8
+         }
+      },
+      "orchard": {
+         "sample_crop": "stonehearth:crops:oak_tree_crop",
+         "color": [17, 142, 50, 255],
+         "terrain": {
+            "grass": true,
+            "dirt": true
+         },
+         "size": {
+            "min": 9,
+            "max": 50
+         },
+         "spacing": {
+            "x": {
+               "before": 4,
+               "width": 1,
+               "after": 0,
+               "furrow_width": 1
+            },
+            "y": {
+               "before": 4,
+               "width": 1,
+               "after": 0,
+               "furrow_width": 1
+            }
+         }
       }
    }
 }

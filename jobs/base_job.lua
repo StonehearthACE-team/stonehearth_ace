@@ -369,4 +369,11 @@ function BaseJob:allow_hunting(args)
    end
 end
 
+function BaseJob:unlock_town_ability(args)
+   local pop = stonehearth.population:get_population(self._sv._entity)
+   if pop and args.unlock_ability then
+      pop:unlock_ability(args.unlock_ability)
+   end
+end
+
 return BaseJob

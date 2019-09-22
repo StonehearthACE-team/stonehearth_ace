@@ -29,6 +29,27 @@ App.StonehearthStartMenuView.reopen({
       self.menuActions.build_fence = function(){
          //self.buildFence();
       };
+      self.menuActions.create_farm = function(nodeData) {
+         // if there's only one type of farm unlocked, go ahead and click that type
+         var unlocked = null;
+         radiant.each(nodeData.items, function(key, _) {
+            var el = self.$('#startMenu').find(`[id="${key}"]`);
+            if (!el.hasClass('locked')) {
+               if (unlocked == null) {
+                  unlocked = el;
+               }
+               else {
+                  unlocked = false;
+               }
+            }
+         });
+         if (unlocked) {
+            unlocked.click();
+         }
+      },
+      self.menuActions.create_field = function(nodeData) {
+         App.stonehearthClient.createFarm(nodeData.field_type);
+      }
 
       self._super();
 
@@ -36,6 +57,38 @@ App.StonehearthStartMenuView.reopen({
          // this is a call to a global function stored in task_manager.js
          _updateProcessingMeterShown();
       });
+   },
+
+   _trackJobs: function() {
+      // find all the jobs in the population
+      var self = this;
+      self._super();
+
+      var pop = App.population.getPopulationData();
+      radiant.each(pop.unlocked_abilities, function(ability, unlocked) {
+         if (unlocked) {
+            self.$('#startMenu').stonehearthMenu('unlockItem', 'unlocked_ability', ability);
+         }
+      });
+   },
+
+   // just override this function to add the population change call
+   _tracePopulation: function() {
+      var self = this;
+
+      App.population.addChangeCallback(self.CHANGE_CALLBACK_NAME, function() {
+         var pop = App.population.getPopulationData();
+         if (pop.citizens && pop.citizens.size != null) {
+            self._updateCitizensCount(pop.citizens.size);
+         }
+         self._countParties(pop.party_member_counts);
+         self._updateInventoryState(pop.inventory_state);
+         self._trackJobs();
+      }, true);
+
+      App.jobController.addChangeCallback(self.CHANGE_CALLBACK_NAME, function(){
+         self._trackJobs();
+      }, true);
    },
 
    boxHarvestAndReplant: function() {

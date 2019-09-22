@@ -9,6 +9,35 @@ function AcePopulationFaction:activate()
 
    -- load up titles for this faction
    self:_load_titles()
+
+   if not self._sv.unlocked_abilities then
+      self._sv.unlocked_abilities = {}
+      self.__saved_variables:mark_changed()
+   end
+
+   self:_load_unlocked_abilities()
+end
+
+function AcePopulationFaction:_load_unlocked_abilities()
+   if self._data then
+      -- if none specified by the kingdom, load some default unlocked abilities
+      local abilities = self._data.unlocked_abilities or stonehearth.constants.population.default_unlocked_abilities or {field_type_farm = true}
+      for ability, unlocked in pairs(abilities) do
+         if unlocked then
+            self._sv.unlocked_abilities[ability] = true
+         end
+      end
+      self.__saved_variables:mark_changed()
+   end
+end
+
+function AcePopulationFaction:has_unlocked_ability(ability)
+   return self._sv.unlocked_abilities[ability]
+end
+
+function AcePopulationFaction:unlock_ability(ability)
+   self._sv.unlocked_abilities[ability] = true
+   self.__saved_variables:mark_changed()
 end
 
 AcePopulationFaction._ace_old_set_kingdom = PopulationFaction.set_kingdom
@@ -18,6 +47,7 @@ function AcePopulationFaction:set_kingdom(kingdom)
 
    if no_kingdom then
       self:_load_titles()
+      self:_load_unlocked_abilities()
    end
 
    return no_kingdom

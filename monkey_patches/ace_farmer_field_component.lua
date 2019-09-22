@@ -8,6 +8,11 @@ local AceFarmerFieldComponent = class()
 
 local RECALCULATE_THRESHOLD = 0.04
 local SUNLIGHT_CHECK_TIME = '4h'
+local LOCATION_TYPES = {
+   EMPTY = 0,
+   FURROW = 1,
+   CROP = 2
+}
 
 AceFarmerFieldComponent._ace_old_restore = FarmerFieldComponent.restore
 function AceFarmerFieldComponent:restore()
@@ -112,29 +117,141 @@ function AceFarmerFieldComponent:get_contents()
    return self._sv.contents
 end
 
+function AceFarmerFieldComponent:_load_field_type()
+   self._field_type_data = stonehearth.farming:get_field_type(self._sv.field_type or 'farm') or {}
+   local spacing = self._field_type_data.spacing or {}
+   local x = spacing.x or {}
+   local y = spacing.y or {}
+   local space_x = {
+      before = x.before or 0,
+      width = x.width or 1,
+      after = x.after or 1,
+      furrow_width = x.furrow_width or 1
+   }
+   space_x.total_width = space_x.before + space_x.width + space_x.after
+   local space_y = {
+      before = y.before or 0,
+      width = y.width or 1,
+      after = y.after or 1,
+      furrow_width = y.furrow_width or 1
+   }
+   space_y.total_width = space_y.before + space_y.width + space_y.after
+
+   self._crop_spacing = {
+      x = space_x,
+      y = space_y
+   }
+end
+
 AceFarmerFieldComponent._ace_old_on_field_created = FarmerFieldComponent.on_field_created
-function AceFarmerFieldComponent:on_field_created(town, size)
+function AceFarmerFieldComponent:on_field_created(town, size, field_type)
    self:_ace_old_on_field_created(town, size)
    radiant.terrain.place_entity(self._sv._fertilizable_layer, self._location)
    self._sv._queued_overwatered = {}
+
+   -- change the soil layer to only fill in the spots this field type requires
+   self._sv.field_type = field_type
+   self:_load_field_type()
+   local space_x = self._crop_spacing.x
+   local space_y = self._crop_spacing.y
+
+   -- if there's actually a non-furrow space between planting spots, we need to remove those points from the soil layer
+   if space_x.furrow_width * 2 < space_x.before + space_x.after and space_y.furrow_width * 2 < space_y.before + space_y.after then
+      local soil_layer = self._sv._soil_layer
+      local soil_layer_region = soil_layer:get_component('destination'):get_region()
+      soil_layer_region:modify(function(cursor)
+         for x = 1, size.x do
+            for y = 1, size.y do
+               if self:_get_location_type(x, y) == LOCATION_TYPES.EMPTY then
+                  cursor:subtract_point(Point3(x - 1, 0, y - 1))
+               end
+            end
+         end
+      end)
+   end
 
    self:_create_water_listener()
    self:_create_climate_listeners()
    self:_check_sky_visibility()
 end
 
-AceFarmerFieldComponent._ace_old_notify_till_location_finished = FarmerFieldComponent.notify_till_location_finished
-function AceFarmerFieldComponent:notify_till_location_finished(location)
-   self:_ace_old_notify_till_location_finished(location)
+function AceFarmerFieldComponent:_is_location_furrow(x, y)
+   return self:_get_location_type(x, y) == LOCATION_TYPES.FURROW
+end
+
+function AceFarmerFieldComponent:_get_location_type(x, y)
+   local space_x = self._crop_spacing.x
+   local space_y = self._crop_spacing.y
+   local x_crop = x % space_x.total_width
+   local y_crop = y % space_y.total_width
+
+   if ((space_x.after == 0 and x_crop == 0) or (x_crop > space_x.before and x_crop - space_x.before <= space_x.width)) and
+         ((space_y.after == 0 and y_crop == 0) or (y_crop > space_y.before and y_crop - space_y.before <= space_y.width)) then
+      return LOCATION_TYPES.CROP
+   end
+
+   -- we have to be a little careful here because the furrow width is on both sides
+   -- and before and after wrap around on all the interior spaces
    
+   -- in the space before the first crop's furrow
+   if x <= space_x.before - space_x.furrow_width or y <= space_y.before - space_y.furrow_width then
+      return LOCATION_TYPES.EMPTY
+   end
+
+   -- in the space after the last crop's furrow
+   if (x + space_x.total_width > self._sv.size.x and x_crop > space_x.before + space_x.width + space_x.furrow_width) or
+         (x + space_x.total_width > self._sv.size.x and x_crop > space_x.before + space_x.width + space_x.furrow_width) then
+      return LOCATION_TYPES.EMPTY
+   end
+
+   if ((x_crop > space_x.before - space_x.furrow_width and x_crop <= space_x.total_width - space_x.after + space_x.furrow_width) or
+         x_crop <= -space_x.after + space_x.furrow_width) and
+         ((y_crop > space_y.before - space_y.furrow_width and y_crop <= space_y.total_width - space_y.after + space_y.furrow_width) or
+         y_crop <= -space_y.after + space_y.furrow_width) then
+      return LOCATION_TYPES.FURROW
+   end
+
+   return LOCATION_TYPES.EMPTY
+end
+
+function AceFarmerFieldComponent:notify_till_location_finished(location)
    local offset = location - radiant.entities.get_world_grid_location(self._entity)
    local x = offset.x + 1
    local y = offset.z + 1
+   local is_furrow = self:_is_location_furrow(x, y)
+   local dirt_plot = {
+      is_furrow = is_furrow,
+      x = x,
+      y = y
+   }
+
+   --self:_create_tilled_dirt(location, offset.x + 1, offset.z + 1)
+   self._sv.contents[offset.x + 1][offset.z + 1] = dirt_plot
+   local local_fertility = rng:get_gaussian(self._sv.general_fertility, stonehearth.constants.soil_fertility.VARIATION)
+   --local dirt_plot_component = dirt_plot:get_component('stonehearth:dirt_plot')
+
+   -- Have to update the soil model to make the plot visible.
+   --dirt_plot_component:update_soil_model(local_fertility, 50)
+
+   local soil_layer = self._sv._soil_layer
+   local soil_layer_region = soil_layer:get_component('destination')
+                                :get_region()
+
+   soil_layer_region:modify(function(cursor)
+      cursor:subtract_point(offset)
+   end)
+
+   -- Add the region to the plantable region if necessary
+   self:_try_mark_for_plant(dirt_plot)
+
+   
    local key = x .. '|' .. y
    if self._sv._queued_overwatered[key] then
       self._sv.contents[x][y].overwatered_model = self:_get_overwatered_model()
       self._sv._queued_overwatered[key] = nil
    end
+
+   self.__saved_variables:mark_changed()
 end
 
 AceFarmerFieldComponent._ace_old_notify_plant_location_finished = FarmerFieldComponent.notify_plant_location_finished

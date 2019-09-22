@@ -120,7 +120,7 @@ $.widget( "stonehearth.stonehearthMenu", $.stonehearth.stonehearthMenu, {
          var parent = menuItem.parent();
          var grandParentId = parent.attr('parent');
          if (grandParentId) {
-            self.showMenu(grandParentId);
+            //self.showMenu(grandParentId);
          }
 
          self._applyGameMode(nodeData, isOpening);
@@ -238,7 +238,13 @@ $.widget( "stonehearth.stonehearthMenu", $.stonehearth.stonehearthMenu, {
          if (node.required_job_role) {
             item.addClass('unlockable');
             item.attr('job_role', node.required_job_role);
-            item.addClass('locked'); // initially lock all nodes that require a job. The user of the menu will unlock them
+            item.addClass('locked'); // initially lock all nodes that require a job role. The user of the menu will unlock them
+         }
+
+         if (node.required_ability) {
+            item.addClass('unlockable');
+            item.attr('unlocked_ability', node.required_ability);
+            item.addClass('locked'); // initially lock all nodes that require an unlocked ability. The user of the menu will unlock them
          }
 
          if (node.menu_action) {

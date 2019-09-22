@@ -928,3 +928,16 @@ App.StonehearthFarmView.reopen({
       return this.get('cropProperties') == null;
    }.property('cropProperties')
 });
+
+App.StonehearthFarmCropPalette.reopen({
+   _isCropHidden: function (crop) {
+      if (!this.get('model') || !crop.crop_key) return false; // Too early. We'll recheck later.
+      var manually_unlocked = this.get('model.manually_unlocked');
+      
+      // also hide it if it's not available to this field's type
+      var fieldType = this.farm_view.get('model.stonehearth:farmer_field.field_type') || 'farm';
+      var correctFieldType = crop.field_types == 'all' || (typeof crop.field_types == 'object' && crop.field_types[fieldType]);
+
+      return !correctFieldType || (!crop.initial_crop && !manually_unlocked[crop.crop_key]);
+   },
+});
