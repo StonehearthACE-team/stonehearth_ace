@@ -29,7 +29,7 @@
          }
       },
       "render_info": {
-         "scale": 0.07
+         "scale": 0.2
       },
       "mob": {
          "model_origin": { "x": -0.05, "y": 0, "z": 0.05 },
@@ -41,7 +41,8 @@
          },
          "harvest_threshhold": "highland_pine_tree_4",
          "plant_overlay_effect": "stonehearth:effects:plant_crop_overlay_effect",
-         "megacrop_chance": 0
+         "megacrop_chance": 0,
+         "auto_harvest": "place"
       },
       "stonehearth:growing": {
          "growth_period": "32h",

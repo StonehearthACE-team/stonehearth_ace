@@ -17,8 +17,10 @@ function AceXZRegionSelector:_update_selected_cube(box)
    end
 
    if self._create_marquee_fn then
-      self._render_node, self._region_shape = self._create_marquee_fn(self, box, self._p0, self._stabbed_normal)
-      self._region_type = 'Region3'
+      self._render_node, self._region_shape, self._region_type = self._create_marquee_fn(self, box, self._p0, self._stabbed_normal)
+      if not self._region_type then
+         self._region_type = 'Region3'
+      end
    elseif self._create_node_fn then
       -- save these to be sent to the presence service to render on other players' clients
       self._region_shape = box

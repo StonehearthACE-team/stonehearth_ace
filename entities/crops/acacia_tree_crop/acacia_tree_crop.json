@@ -1,11 +1,15 @@
 {
    "components": {
-      "stonehearth:crop": {
-         "megacrop_chance": 0
+      "render_info": {
+         "scale": 0.2
       },
-	  "stonehearth:growing": {
-			"growth_period": "36h",
-			"preferred_climate": "desert_complex"
+      "stonehearth:crop": {
+         "megacrop_chance": 0,
+         "auto_harvest": "place"
+      },
+      "stonehearth:growing": {
+         "growth_period": "36h",
+         "preferred_climate": "desert_complex"
       }
    }
 }

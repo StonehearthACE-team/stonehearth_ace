@@ -3,16 +3,13 @@ local Region3 = _radiant.csg.Region3
 local rng = _radiant.math.get_default_rng()
 local log = radiant.log.create_logger('farmer_field')
 local FarmerFieldComponent = require 'stonehearth.components.farmer_field.farmer_field_component'
+local farming_lib = require 'stonehearth_ace.lib.farming.farming_lib'
 
 local AceFarmerFieldComponent = class()
 
 local RECALCULATE_THRESHOLD = 0.04
 local SUNLIGHT_CHECK_TIME = '4h'
-local LOCATION_TYPES = {
-   EMPTY = 0,
-   FURROW = 1,
-   CROP = 2
-}
+
 
 AceFarmerFieldComponent._ace_old_restore = FarmerFieldComponent.restore
 function AceFarmerFieldComponent:restore()
@@ -52,9 +49,11 @@ function AceFarmerFieldComponent:post_activate()
       self._sv._queued_overwatered = {}
    end
 
+   self._post_harvest_crop_listeners = {}
    if self._is_restore then
       self:_create_water_listener()
       self:_create_climate_listeners()
+      self:_create_post_harvest_crop_listeners()
    end
 
    self:_ensure_crop_counts()
@@ -119,28 +118,7 @@ end
 
 function AceFarmerFieldComponent:_load_field_type()
    self._field_type_data = stonehearth.farming:get_field_type(self._sv.field_type or 'farm') or {}
-   local spacing = self._field_type_data.spacing or {}
-   local x = spacing.x or {}
-   local y = spacing.y or {}
-   local space_x = {
-      before = x.before or 0,
-      width = x.width or 1,
-      after = x.after or 1,
-      furrow_width = x.furrow_width or 1
-   }
-   space_x.total_width = space_x.before + space_x.width + space_x.after
-   local space_y = {
-      before = y.before or 0,
-      width = y.width or 1,
-      after = y.after or 1,
-      furrow_width = y.furrow_width or 1
-   }
-   space_y.total_width = space_y.before + space_y.width + space_y.after
-
-   self._crop_spacing = {
-      x = space_x,
-      y = space_y
-   }
+   self._field_pattern = self._field_type_data.pattern or farming_lib.DEFAULT_PATTERN
 end
 
 AceFarmerFieldComponent._ace_old_on_field_created = FarmerFieldComponent.on_field_created
@@ -152,23 +130,18 @@ function AceFarmerFieldComponent:on_field_created(town, size, field_type)
    -- change the soil layer to only fill in the spots this field type requires
    self._sv.field_type = field_type
    self:_load_field_type()
-   local space_x = self._crop_spacing.x
-   local space_y = self._crop_spacing.y
 
-   -- if there's actually a non-furrow space between planting spots, we need to remove those points from the soil layer
-   if space_x.furrow_width * 2 < space_x.before + space_x.after and space_y.furrow_width * 2 < space_y.before + space_y.after then
-      local soil_layer = self._sv._soil_layer
-      local soil_layer_region = soil_layer:get_component('destination'):get_region()
-      soil_layer_region:modify(function(cursor)
-         for x = 1, size.x do
-            for y = 1, size.y do
-               if self:_get_location_type(x, y) == LOCATION_TYPES.EMPTY then
-                  cursor:subtract_point(Point3(x - 1, 0, y - 1))
-               end
+   local soil_layer = self._sv._soil_layer
+   local soil_layer_region = soil_layer:get_component('destination'):get_region()
+   soil_layer_region:modify(function(cursor)
+      for x = 1, size.x do
+         for y = 1, size.y do
+            if farming_lib.get_location_type(self._field_pattern, x, y) == farming_lib.LOCATION_TYPES.EMPTY then
+               cursor:subtract_point(Point3(x - 1, 0, y - 1))
             end
          end
-      end)
-   end
+      end
+   end)
 
    self:_create_water_listener()
    self:_create_climate_listeners()
@@ -176,42 +149,7 @@ function AceFarmerFieldComponent:on_field_created(town, size, field_type)
 end
 
 function AceFarmerFieldComponent:_is_location_furrow(x, y)
-   return self:_get_location_type(x, y) == LOCATION_TYPES.FURROW
-end
-
-function AceFarmerFieldComponent:_get_location_type(x, y)
-   local space_x = self._crop_spacing.x
-   local space_y = self._crop_spacing.y
-   local x_crop = x % space_x.total_width
-   local y_crop = y % space_y.total_width
-
-   if ((space_x.after == 0 and x_crop == 0) or (x_crop > space_x.before and x_crop - space_x.before <= space_x.width)) and
-         ((space_y.after == 0 and y_crop == 0) or (y_crop > space_y.before and y_crop - space_y.before <= space_y.width)) then
-      return LOCATION_TYPES.CROP
-   end
-
-   -- we have to be a little careful here because the furrow width is on both sides
-   -- and before and after wrap around on all the interior spaces
-   
-   -- in the space before the first crop's furrow
-   if x <= space_x.before - space_x.furrow_width or y <= space_y.before - space_y.furrow_width then
-      return LOCATION_TYPES.EMPTY
-   end
-
-   -- in the space after the last crop's furrow
-   if (x + space_x.total_width > self._sv.size.x and x_crop > space_x.before + space_x.width + space_x.furrow_width) or
-         (x + space_x.total_width > self._sv.size.x and x_crop > space_x.before + space_x.width + space_x.furrow_width) then
-      return LOCATION_TYPES.EMPTY
-   end
-
-   if ((x_crop > space_x.before - space_x.furrow_width and x_crop <= space_x.total_width - space_x.after + space_x.furrow_width) or
-         x_crop <= -space_x.after + space_x.furrow_width) and
-         ((y_crop > space_y.before - space_y.furrow_width and y_crop <= space_y.total_width - space_y.after + space_y.furrow_width) or
-         y_crop <= -space_y.after + space_y.furrow_width) then
-      return LOCATION_TYPES.FURROW
-   end
-
-   return LOCATION_TYPES.EMPTY
+   return farming_lib.get_location_type(self._field_pattern, x, y) == farming_lib.LOCATION_TYPES.FURROW
 end
 
 function AceFarmerFieldComponent:notify_till_location_finished(location)
@@ -265,6 +203,89 @@ function AceFarmerFieldComponent:notify_plant_location_finished(location)
    fertilizable_layer_region:modify(function(cursor)
       cursor:add_point(p)
    end)
+end
+
+function AceFarmerFieldComponent:_create_post_harvest_crop_listeners()
+   local contents = self._sv.contents
+   local size = self._sv.size
+   if contents then
+      for x = 1, size.x do
+         for y = 1, size.y do
+            local dirt_plot = contents[x][y]
+            if dirt_plot then
+               self:_create_post_harvest_crop_listener(dirt_plot)
+            end
+         end
+      end
+   end
+end
+
+function AceFarmerFieldComponent:update_post_harvest_crop(x, z, crop)
+   local dirt_plot = self._sv.contents and self._sv.contents[x][z]
+   log:debug('updating post-harvest crop: %s for plot %s', crop, radiant.util.table_tostring(dirt_plot))
+   if dirt_plot then
+      -- set up the listener
+      self:_destroy_post_harvest_crop_listener(dirt_plot)
+      dirt_plot.post_harvest_contents = crop
+      self:_create_post_harvest_crop_listener(dirt_plot)
+      self.__saved_variables:mark_changed()
+   end
+end
+
+function AceFarmerFieldComponent:_create_post_harvest_crop_listener(dirt_plot)
+   if dirt_plot.post_harvest_contents and not self._post_harvest_crop_listeners[dirt_plot] then
+      self._post_harvest_crop_listeners[dirt_plot] = radiant.events.listen_once(dirt_plot.post_harvest_contents, 'radiant:entity:pre_destroy', function()
+            dirt_plot.post_harvest_contents = nil
+            self:_destroy_post_harvest_crop_listener(dirt_plot)
+            self:_try_mark_for_plant(dirt_plot)
+         end)
+   end
+end
+
+function AceFarmerFieldComponent:_destroy_post_harvest_crop_listeners()
+   for _, listener in pairs(self._post_harvest_crop_listeners) do
+      listener:destroy()
+   end
+   self._post_harvest_crop_listeners = {}
+end
+
+function AceFarmerFieldComponent:_destroy_post_harvest_crop_listener(dirt_plot)
+   if self._post_harvest_crop_listeners[dirt_plot] then
+      self._post_harvest_crop_listeners[dirt_plot]:destroy()
+      self._post_harvest_crop_listeners[dirt_plot] = nil
+   end
+end
+
+function AceFarmerFieldComponent:auto_harvest_crop(auto_harvest_type, x, z)
+   -- automatically harvest the crop; if the type is 'place', place it 
+   self:_update_crop_fertilized(x, z, false)
+   local dirt_plot = self._sv.contents and self._sv.contents[x][z]
+   if dirt_plot and dirt_plot.contents then
+      local product_uri = dirt_plot.contents:get_component('stonehearth:crop'):get_product()
+      local product = product_uri and radiant.entities.create_entity(product_uri, { owner = self._entity })
+
+      local iconic = true
+      if auto_harvest_type == 'place' then
+         product:add_component('stonehearth:crop'):set_field(self, x, z)
+         dirt_plot.post_harvest_contents = product
+         iconic = false
+      end
+
+      radiant.entities.kill_entity(dirt_plot.contents)
+      dirt_plot.contents = nil
+      if product then
+         radiant.terrain.place_entity_at_exact_location(product, self._location + Point3(x - 1, 0, z - 1), {force_iconic = iconic})
+         self:_create_post_harvest_crop_listener(dirt_plot)
+      end
+      self.__saved_variables:mark_changed()
+   end
+end
+
+AceFarmerFieldComponent._ace_old__try_mark_for_plant = FarmerFieldComponent._try_mark_for_plant
+function AceFarmerFieldComponent:_try_mark_for_plant(dirt_plot)
+   if not dirt_plot.post_harvest_contents then
+      self:_ace_old__try_mark_for_plant(dirt_plot)
+   end
 end
 
 AceFarmerFieldComponent._ace_old_notify_crop_harvestable = FarmerFieldComponent.notify_crop_harvestable
@@ -696,6 +717,7 @@ function AceFarmerFieldComponent:_on_destroy()
 
    --self:_destroy_flood_listeners()
    self:_destroy_climate_listeners()
+   self:_destroy_post_harvest_crop_listeners()
 end
 
 AceFarmerFieldComponent._ace_old__reconsider_fields = FarmerFieldComponent._reconsider_fields

@@ -151,35 +151,35 @@
          "ordinal": 19,
          "level_requirement": 5,
          "field_types": {
-            "orchard": true
+            "treefarm": true
          }
       },
       "acacia_tree": {
          "ordinal": 20,
          "level_requirement": 5,
          "field_types": {
-            "orchard": true
+            "treefarm": true
          }
       },
       "juniper_tree": {
          "ordinal": 21,
          "level_requirement": 5,
          "field_types": {
-            "orchard": true
+            "treefarm": true
          }
       },
       "cactus_tree": {
          "ordinal": 22,
          "level_requirement": 5,
          "field_types": {
-            "orchard": true
+            "treefarm": true
          }
       },
       "pine_tree": {
          "ordinal": 23,
          "level_requirement": 5,
          "field_types": {
-            "orchard": true
+            "treefarm": true
          }
       },
       "arctic_pine_tree": {
@@ -187,7 +187,7 @@
          "ordinal": 24,
          "level_requirement": 5,
          "field_types": {
-            "orchard": true
+            "treefarm": true
          }
       },
       "arctic_juniper_tree": {
@@ -195,7 +195,7 @@
          "ordinal": 25,
          "level_requirement": 5,
          "field_types": {
-            "orchard": true
+            "treefarm": true
          }
       },
       "highland_pine_tree": {
@@ -203,7 +203,7 @@
          "ordinal": 26,
          "level_requirement": 5,
          "field_types": {
-            "orchard": true
+            "treefarm": true
          }
       },
       "birch_tree": {
@@ -211,7 +211,7 @@
          "ordinal": 27,
          "level_requirement": 5,
          "field_types": {
-            "orchard": true
+            "treefarm": true
          }
       },
       "yew_tree": {
@@ -219,7 +219,7 @@
          "ordinal": 28,
          "level_requirement": 5,
          "field_types": {
-            "orchard": true
+            "treefarm": true
          }
       }
    },
@@ -234,13 +234,7 @@
             "min": 1,
             "max": 11
          },
-         "spacing": {
-            "x": {
-               "before": 0,
-               "width": 1,
-               "after": 1
-            }
-         }
+         "pattern": [[2], [1]]
       },
       "underfarm": {
          "sample_crop": "stonehearth:crops:turnip_crop",
@@ -252,9 +246,10 @@
          "size": {
             "min": 1,
             "max": 8
-         }
+         },
+         "pattern": [[2]]
       },
-      "orchard": {
+      "treefarm": {
          "sample_crop": "stonehearth:crops:oak_tree_crop",
          "color": [17, 142, 50, 255],
          "terrain": {
@@ -265,20 +260,14 @@
             "min": 9,
             "max": 50
          },
-         "spacing": {
-            "x": {
-               "before": 4,
-               "width": 1,
-               "after": 0,
-               "furrow_width": 1
-            },
-            "y": {
-               "before": 4,
-               "width": 1,
-               "after": 0,
-               "furrow_width": 1
-            }
-         }
+         "pattern": [
+            [1, 1, 1, 0, 0, 0],
+            [1, 2, 1, 0, 0, 0],
+            [1, 1, 1, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0]
+         ]
       }
    }
 }

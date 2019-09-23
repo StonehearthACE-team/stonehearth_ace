@@ -133,16 +133,16 @@
                   "field_type": "underfarm",
                   "ordinal": 2
                },
-               "create_field_orchard": {
-                  "name": "i18n(stonehearth_ace:ui.game.menu.zone_menu.items.create_farm.create_field_orchard.display_name)",
-                  "description": "i18n(stonehearth_ace:ui.game.menu.zone_menu.items.create_farm.create_field_orchard.description)",
-                  "required_ability": "field_type_orchard",
-                  "required_job_text": "i18n(stonehearth_ace:ui.game.menu.zone_menu.items.create_farm.create_field_orchard.required_ability_text)",
+               "create_field_treefarm": {
+                  "name": "i18n(stonehearth_ace:ui.game.menu.zone_menu.items.create_farm.create_field_treefarm.display_name)",
+                  "description": "i18n(stonehearth_ace:ui.game.menu.zone_menu.items.create_farm.create_field_treefarm.description)",
+                  "required_ability": "field_type_treefarm",
+                  "required_job_text": "i18n(stonehearth_ace:ui.game.menu.zone_menu.items.create_farm.create_field_treefarm.required_ability_text)",
                   "class": "button",
-                  "icon": "/stonehearth_ace/ui/game/start_menu/images/zone_orchard.png",
+                  "icon": "/stonehearth_ace/ui/game/start_menu/images/zone_treefarm.png",
                   "sticky": true,
                   "menu_action": "create_field",
-                  "field_type": "orchard",
+                  "field_type": "treefarm",
                   "ordinal": 3
                }
             }

@@ -3,6 +3,20 @@ local rng = _radiant.math.get_default_rng()
 local CropComponent = require 'stonehearth.components.crop.crop_component'
 local AceCropComponent = class()
 
+function AceCropComponent:initialize()
+   -- Initializing save variables
+   self._sv.harvestable = false
+   self._sv.stage = nil
+   self._sv.product = nil
+   self._sv._field = nil
+   self._sv._field_offset_x = 0
+   self._sv._field_offset_y = 0
+
+   local json = radiant.entities.get_json(self) or {}
+   self._resource_pairings = json.resource_pairings
+   self._harvest_threshhold = json.harvest_threshhold
+end
+
 AceCropComponent._ace_old_activate = CropComponent.activate
 function AceCropComponent:activate()
    self:_ace_old_activate()
@@ -10,6 +24,7 @@ function AceCropComponent:activate()
    local json = radiant.entities.get_json(self) or {}
    self._megacrop_description = json.megacrop_description or stonehearth.constants.farming.default_megacrop_description
    self._megacrop_model_variant = json.megacrop_model_variant
+   self._auto_harvest = json.auto_harvest
 
    if not self._sv.megacrop_chance then
       self._sv.megacrop_chance = json.megacrop_chance or stonehearth.constants.farming.BASE_MEGACROP_CHANCE
@@ -40,10 +55,19 @@ function AceCropComponent:_on_grow_period(e)
    local was_harvestable = self._sv.harvestable
    self:_ace_old__on_grow_period(e)
    
-   -- if we just became harvestable, consider mega crop
-   if was_harvestable ~= self._sv.harvestable and self._sv.consider_megacrop then
-      if rng:get_real(0, 1) < self._sv.megacrop_chance then
-         self:_set_megacrop()
+   -- if we just became harvestable, consider mega crop and auto-harvest
+   if was_harvestable ~= self._sv.harvestable then
+      if self._sv.consider_megacrop then
+         if rng:get_real(0, 1) < self._sv.megacrop_chance then
+            self:_set_megacrop()
+         end
+      end
+
+      if self._auto_harvest then
+         -- auto-harvest the crop
+         if self._sv._field then
+            self._sv._field:auto_harvest_crop(self._auto_harvest, self._sv._field_offset_x, self._sv._field_offset_y)
+         end
       end
    end
 end

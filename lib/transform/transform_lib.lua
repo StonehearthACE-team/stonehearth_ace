@@ -4,6 +4,8 @@ local WeightedSet = require 'stonehearth.lib.algorithms.weighted_set'
 
 local transform_lib = {}
 
+local log = radiant.log.create_logger('transform_lib')
+
 -- largely constructed from the original evolve_component:evolve() function
 function transform_lib.transform(entity, transformer, into_uri, options)
    if type(into_uri) == 'table' then
@@ -81,6 +83,22 @@ function transform_lib.transform(entity, transformer, into_uri, options)
          -- but first check if it should get "stunted"
          if not transformed_form_data.stunted_chance or rng:get_real(0, 1) > transformed_form_data.stunted_chance then
             transformed_form:add_component('stonehearth:evolve')
+         end
+      end
+
+      local crop = entity:get_component('stonehearth:crop')
+      if crop then
+         local field = crop:get_field()
+         local x, y = crop:get_field_offset()
+         transformed_form:add_component('stonehearth:crop'):set_field(field, x, y)
+         crop:set_field()  -- we set the old crop to nil so it won't alert the field when it gets destroyed
+         transformed_form:remove_component('stonehearth_ace:stump')  -- don't want a stump after it gets harvested
+         if field then
+            field:update_post_harvest_crop(x, y, transformed_form)
+            -- also check if this crop will be evolving any more; if not, we can request a harvest
+            if not transformed_form:get_component('stonehearth:evolve') then
+               options.auto_harvest = true
+            end
          end
       end
 

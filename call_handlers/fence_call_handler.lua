@@ -196,7 +196,7 @@ function FenceCallHandler:choose_fence_location_command(session, response, patte
                   -- simplest to just create a full client entity; a single node might not encompass the full model, and would involve more parsing
                   last_index = index
                   if index > num_nodes then
-                     log:debug('placing %s at %s facing %s', uri, location, rotation)
+                     --log:debug('placing %s at %s facing %s', uri, location, rotation)
                      local entity = _get_entity_to_place(uri, location, rotation)
                      table.insert(render_nodes, entity)
                   end
