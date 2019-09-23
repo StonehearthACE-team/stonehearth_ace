@@ -174,7 +174,7 @@ function VineComponent:_stop_growth_timer()
       self._sv._growth_timer = nil
    end
 
-   self.__saved_variables:mark_changed()
+   --self.__saved_variables:mark_changed()
 end
 
 function VineComponent:_start_growth_timer()
@@ -184,7 +184,7 @@ function VineComponent:_start_growth_timer()
       local duration = self:_get_growth_period(self._sv.num_growths_remaining)
       if duration > 0 then
          self._sv._growth_timer = stonehearth.calendar:set_persistent_timer("VineComponent try_grow", duration, radiant.bind(self, 'try_grow'))
-         self.__saved_variables:mark_changed()
+         --self.__saved_variables:mark_changed()
       end
    end
 end

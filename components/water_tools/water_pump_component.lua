@@ -72,7 +72,7 @@ function WaterPumpComponent:_startup()
 			self._sv._pump_child_entity:add_component('stonehearth_ace:entity_modification'):set_region3('region_collision_shape', self._sv.topper_region)
 		end
 		radiant.terrain.place_entity_at_exact_location(self._sv._pump_child_entity, self._sv.location)
-		self.__saved_variables:mark_changed()
+		--self.__saved_variables:mark_changed()
 	else
 		-- make sure the child entity is properly positioned
 		radiant.terrain.place_entity_at_exact_location(self._sv._pump_child_entity, self._sv.location)
@@ -91,7 +91,7 @@ function WaterPumpComponent:_shutdown()
 		self._entity:add_component('stonehearth_ace:entity_modification'):reset_region3('region_collision_shape')
 	end
 	self._sv.location = nil
-	self.__saved_variables:mark_changed()
+	--self.__saved_variables:mark_changed()
 end
 
 function WaterPumpComponent:get_location()

@@ -14,8 +14,8 @@ end
 
 function WildernessSignalComponent:initialize()
    self._sv.wild_entities = {}
-   self._sv._wild_listeners = {}
-   self._sv.wilderness_values = {}
+   self._wild_listeners = {}
+   self._sv._wilderness_values = {}
    self._sv.wilderness_value = 0
    
    local json = radiant.entities.get_json(self)
@@ -29,6 +29,13 @@ end
 
 function WildernessSignalComponent:create()
 	self._is_create = true
+end
+
+function WildernessSignalComponent:restore()
+   if self._sv.wilderness_values then
+      self._sv._wilderness_values = self._sv.wilderness_values
+      self._sv.wilderness_values = nil
+   end
 end
 
 function WildernessSignalComponent:post_activate()
@@ -70,7 +77,7 @@ function WildernessSignalComponent:remove_entity(entity)
 end
 
 function WildernessSignalComponent:get_entity_wilderness_value(entity)
-   return self._sv.wilderness_values[entity:get_id()]
+   return self._sv._wilderness_values[entity:get_id()]
 end
 
 function WildernessSignalComponent:get_wilderness_value()
@@ -110,7 +117,7 @@ function WildernessSignalComponent:_shutdown()
 end
 
 function WildernessSignalComponent:_reset()
-   self._sv.wilderness_values = {}
+   self._sv._wilderness_values = {}
    self._sv.wilderness_value = 0
    
    if self._sv.signal_region then
@@ -130,23 +137,23 @@ end
 function WildernessSignalComponent:_set_entity_value(entity, value)
    value = value or wilderness_util.get_value_from_entity(entity, nil, self._sv.signal_region)
    local entity_id = entity:get_id()
-   self._sv.wilderness_values[entity_id] = value
+   self._sv._wilderness_values[entity_id] = value
    self._sv.wilderness_value = self._sv.wilderness_value + value
    self:_create_wild_listener(entity_id, entity)
    return value
 end
 
 function WildernessSignalComponent:_add_entity(entity_id, entity)
-   if not self._sv.wilderness_values[entity_id] then
+   if not self._sv._wilderness_values[entity_id] then
       return self:_set_entity_value(entity) ~= 0
    end
    return false
 end
 
 function WildernessSignalComponent:_remove_entity(entity_id, entity)
-   local value = self._sv.wilderness_values[entity_id]
+   local value = self._sv._wilderness_values[entity_id]
    if value then
-      self._sv.wilderness_values[entity_id] = nil
+      self._sv._wilderness_values[entity_id] = nil
       self._sv.wilderness_value = self._sv.wilderness_value - value
       self:_remove_wild_listener(entity_id)
       return value ~= 0
@@ -155,39 +162,39 @@ function WildernessSignalComponent:_remove_entity(entity_id, entity)
 end
 
 function WildernessSignalComponent:_create_wild_listener(entity_id, entity)
-   if not self._sv._wild_listeners[entity_id] then
-      self._sv._wild_listeners[entity_id] = radiant.events.listen(entity, 'stonehearth_ace:wilderness:wilderness_value_changed', function(value)
+   if not self._wild_listeners[entity_id] then
+      self._wild_listeners[entity_id] = radiant.events.listen(entity, 'stonehearth_ace:wilderness:wilderness_value_changed', function(value)
          self:update_entity_wilderness_value(entity, value)
       end)
    end
 end
 
 function WildernessSignalComponent:_remove_wild_listener(entity_id)
-   if self._sv._wild_listeners[entity_id] then
-      self._sv._wild_listeners[entity_id]:destroy()
-      self._sv._wild_listeners[entity_id] = nil
+   if self._wild_listeners[entity_id] then
+      self._wild_listeners[entity_id]:destroy()
+      self._wild_listeners[entity_id] = nil
    end
 end
 
 function WildernessSignalComponent:_remove_all_wild_listeners()
-   for _, listener in pairs(self._sv._wild_listeners) do
+   for _, listener in pairs(self._wild_listeners) do
       listener:destroy()
    end
-   self._sv._wild_listeners = {}
+   self._wild_listeners = {}
 end
 
 function WildernessSignalComponent:_on_entity_added(entity_id, entity)
    if self:_add_entity(entity_id, entity) then
       self:_trigger_changed_event()
    end
-   self.__saved_variables:mark_changed()
+   --self.__saved_variables:mark_changed()
 end
 
 function WildernessSignalComponent:_on_entity_removed(entity_id, entity)
    if self:_remove_entity(entity_id, entity) then
       self:_trigger_changed_event()
    end
-   self.__saved_variables:mark_changed()
+   --self.__saved_variables:mark_changed()
 end
 
 function WildernessSignalComponent:_trigger_changed_event()

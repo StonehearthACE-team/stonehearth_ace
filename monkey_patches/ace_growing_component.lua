@@ -50,7 +50,7 @@ function AceGrowingComponent:set_environmental_growth_time_modifier(modifier)
 	if modifier ~= self._sv._environmental_growth_time_modifier then
       self._sv._environmental_growth_time_modifier = modifier
       self:_recalculate_duration()
-		self.__saved_variables:mark_changed()
+		--self.__saved_variables:mark_changed()
    end
 end
 
@@ -64,7 +64,7 @@ function AceGrowingComponent:set_flooded(flooded)
    else
       self:_recalculate_duration(true)
    end
-   self.__saved_variables:mark_changed()
+   --self.__saved_variables:mark_changed()
 end
 
 function AceGrowingComponent:is_flooded()
@@ -81,7 +81,7 @@ function AceGrowingComponent:set_custom_growth_time_multiplier(multiplier)
    if self._sv.custom_growth_time_multiplier ~= multiplier then
       self._sv.custom_growth_time_multiplier = multiplier
       self:_recalculate_duration()
-		self.__saved_variables:mark_changed()
+		--self.__saved_variables:mark_changed()
    end
 end
 
@@ -149,7 +149,7 @@ function AceGrowingComponent:stop_growing()
       self._sv._growth_timer:destroy()
       self._sv._growth_timer = nil
    end
-   self.__saved_variables:mark_changed()
+   --self.__saved_variables:mark_changed()
 end
 
 return AceGrowingComponent

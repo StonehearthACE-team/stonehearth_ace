@@ -182,7 +182,7 @@ function PatrolBannerComponent:_recalc_path_to_next_banner()
                self.__saved_variables:mark_changed()
             end,
             function()
-               self.__saved_variables:mark_changed()
+               --self.__saved_variables:mark_changed()   -- why was this getting called here?
             end)
          return
       end

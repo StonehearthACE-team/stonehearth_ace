@@ -19,7 +19,7 @@ function WaterSignalComponent:activate()
       if not signal:get_id() then
          signal:destroy()
          self._sv._signals[name] = nil
-         self.__saved_variables:mark_changed()
+         --self.__saved_variables:mark_changed()
       end
    end
 
@@ -33,7 +33,7 @@ end
 
 function WaterSignalComponent:set_is_mobile(is_mobile)
    self._sv._is_mobile = is_mobile or false
-   self.__saved_variables:mark_changed()
+   --self.__saved_variables:mark_changed()
    self:_setup_location_trace()
 end
 
@@ -118,7 +118,7 @@ function WaterSignalComponent:set_signal(name, region, monitor_types, change_cal
       local entity_id = self:get_entity_id()
       signal = radiant.create_controller('stonehearth_ace:water_signal', entity_id, entity_id .. '|' .. name, region, monitor_types, change_callback)
       self._sv._signals[name] = signal
-      self.__saved_variables:mark_changed()
+      --self.__saved_variables:mark_changed()
    end
    signal:set_location(self._location)
 
@@ -144,7 +144,7 @@ function WaterSignalComponent:remove_signal(name)
    if self._sv._signals[name] then
       self._sv._signals[name]:destroy()
       self._sv._signals[name] = nil
-      self.__saved_variables:mark_changed()
+      --self.__saved_variables:mark_changed()
    end
 end
 
@@ -153,7 +153,7 @@ function WaterSignalComponent:clear_signals()
       signal:destroy()
    end
    self._sv._signals = {}
-   self.__saved_variables:mark_changed()
+   --self.__saved_variables:mark_changed()
 end
 
 return WaterSignalComponent

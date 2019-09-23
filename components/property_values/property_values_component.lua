@@ -1,6 +1,7 @@
 --[[
    this component considers appreciation of real estate assets and determines tax rates
    in accordance with federal, state, and municipal codes
+   now I wish I'd put a real comment here so I knew what this was used for; I mean, obviously I can see what it does, but what uses it?
 ]]
 
 local PropertyValues = class()

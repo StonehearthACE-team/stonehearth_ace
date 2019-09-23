@@ -40,6 +40,19 @@ function CropComponent:restore()
          self:_on_grow_period(e)
       end
    end
+
+   if self._sv.megacrop_chance then
+      self._sv._megacrop_chance = self._sv.megacrop_chance
+      self._sv.megacrop_chance = nil
+   end
+   if self._sv.consider_megacrop then
+      self._sv._consider_megacrop = self._sv.consider_megacrop
+      self._sv.consider_megacrop = nil
+   end
+   if self._sv.is_megacrop then
+      self._sv._is_megacrop = self._sv.is_megacrop
+      self._sv.is_megacrop = nil
+   end
 end
 
 function CropComponent:activate()
@@ -51,8 +64,8 @@ function CropComponent:activate()
    self._megacrop_model_variant = self._json.megacrop_model_variant
    self._auto_harvest = self._json.auto_harvest
 
-   if not self._sv.megacrop_chance then
-      self._sv.megacrop_chance = self._json.megacrop_chance or stonehearth.constants.farming.BASE_MEGACROP_CHANCE
+   if not self._sv._megacrop_chance then
+      self._sv._megacrop_chance = self._json.megacrop_chance or stonehearth.constants.farming.BASE_MEGACROP_CHANCE
    end
 end
 
@@ -134,8 +147,8 @@ end
 
 -- separate this out into its own function so it's easier to modify
 function CropComponent:_became_harvestable()
-   if self._sv.consider_megacrop then
-      if rng:get_real(0, 1) < self._sv.megacrop_chance then
+   if self._sv._consider_megacrop then
+      if rng:get_real(0, 1) < self._sv._megacrop_chance then
          self:_set_megacrop()
       end
    end
@@ -155,25 +168,25 @@ function CropComponent:set_fertilized()
 end
 
 function CropComponent:set_consider_megacrop()
-   if not self._sv.consider_megacrop then
-      self._sv.consider_megacrop = true
-      self.__saved_variables:mark_changed()
+   if not self._sv._consider_megacrop then
+      self._sv._consider_megacrop = true
+      --self.__saved_variables:mark_changed()
    end
 end
 
 function CropComponent:apply_megacrop_chance_multiplier(multiplier)
-   if multiplier ~= 1 and self._sv.megacrop_chance ~= 0 then
-      self._sv.megacrop_chance = self._sv.megacrop_chance * multiplier
-      self.__saved_variables:mark_changed()
+   if multiplier ~= 1 and self._sv._megacrop_chance ~= 0 then
+      self._sv._megacrop_chance = self._sv._megacrop_chance * multiplier
+      --self.__saved_variables:mark_changed()
    end
 end
 
 function CropComponent:is_megacrop()
-   return self._sv.is_megacrop
+   return self._sv._is_megacrop
 end
 
 function CropComponent:_set_megacrop()
-   self._sv.is_megacrop = true
+   self._sv._is_megacrop = true
    
    if self._megacrop_description then
       radiant.entities.set_description(self._entity, self._megacrop_description)
@@ -185,7 +198,7 @@ function CropComponent:_set_megacrop()
    end
    render_info:set_scale(render_info:get_scale() * (2 + rng:get_real(-0.05, 0.05)))
 
-   self.__saved_variables:mark_changed()
+   --self.__saved_variables:mark_changed()
 end
 
 return CropComponent

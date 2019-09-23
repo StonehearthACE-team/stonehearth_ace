@@ -36,7 +36,7 @@ end
 function WaterSignal:activate()
    if radiant.util.is_a(self._sv.entity_id, Entity) then
       self._sv.entity_id = self._sv.entity_id:get_id()
-      self.__saved_variables:mark_changed()
+      --self.__saved_variables:mark_changed()
       --log:debug('fixed water signal id to %s: %s', self._sv.entity_id, self:get_entity_id())
    end
    if self._on_activate then
@@ -57,7 +57,7 @@ function WaterSignal:_reset()
 	self._sv._waterfall_exists = nil
    self._sv._waterfall_volume = nil
    self._sv._water_surface_level = nil
-	self.__saved_variables:mark_changed()
+	--self.__saved_variables:mark_changed()
 end
 
 function WaterSignal:set_settings(signal_region, monitor_types, change_callback)
@@ -119,7 +119,7 @@ function WaterSignal:_update_region(big_change)
          self:_on_tick_water_signal()
       end
    end
-   self.__saved_variables:mark_changed()
+   --self.__saved_variables:mark_changed()
 end
 
 function WaterSignal:has_monitor_type(monitor_type)
@@ -377,7 +377,7 @@ function WaterSignal:_on_tick_water_signal(waters, waterfalls)
    
    if next(changes) then
       --log:debug('entity %s _on_water_signal_changed: %s', self._sv.entity_id, radiant.util.table_tostring(changes))
-      self.__saved_variables:mark_changed()
+      --self.__saved_variables:mark_changed()
       if self._change_cb then
          self._change_cb(changes)
       end

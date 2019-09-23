@@ -94,13 +94,13 @@ function AceTown:register_entity_type(type, entity)
       self._sv._registered_entity_types[type] = {}
    end
    self._sv._registered_entity_types[type][entity:get_id()] = true
-   self.__saved_variables:mark_changed()
+   --self.__saved_variables:mark_changed()
 end
 
 function AceTown:unregister_entity_type(type, entity)
    if self._sv._registered_entity_types and self._sv._registered_entity_types[type] then
       self._sv._registered_entity_types[type][entity:get_id()] = nil
-      self.__saved_variables:mark_changed()
+      --self.__saved_variables:mark_changed()
    end
 end
 
@@ -110,7 +110,7 @@ function AceTown:unregister_entity_types(entity)
          type_tbl[entity:get_id()] = nil
       end
    end
-   self.__saved_variables:mark_changed()
+   --self.__saved_variables:mark_changed()
 end
 
 function AceTown:is_entity_type_registered(type)
@@ -241,10 +241,14 @@ function AceTown:_get_farm_crops_data()
       local contents = farm:get_component('stonehearth:farmer_field'):get_contents()
       for x, col in pairs(contents) do
          for y, plot in pairs(col) do
+            local uri
             if plot.contents then
-               local uri = plot.contents:get_uri()
-               crops[uri] = (crops[uri] or 0) + 1
+               uri = plot.contents:get_uri()
             end
+            if plot.post_harvest_contents then
+               uri = plot.post_harvest_contents:get_uri()
+            end
+            crops[uri] = (crops[uri] or 0) + 1
          end
       end
    end

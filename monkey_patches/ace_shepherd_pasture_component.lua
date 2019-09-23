@@ -210,7 +210,7 @@ function AceShepherdPastureComponent:remove_animal(animal_id)
    self:_ace_old_remove_animal(animal_id)
 
    self._sv._queued_slaughters[animal_id] = nil
-   self.__saved_variables:mark_changed()
+   --self.__saved_variables:mark_changed()
 end
 
 function AceShepherdPastureComponent:_set_has_renewable()
@@ -266,7 +266,7 @@ function AceShepherdPastureComponent:_consider_maintain_animals()
       return
    end
 
-   self.__saved_variables:mark_changed()
+   --self.__saved_variables:mark_changed()
 end
 
 function AceShepherdPastureComponent:_try_slaughter(num_to_slaughter, not_if_named, not_if_renewably_harvestable)
@@ -452,14 +452,14 @@ end
 function AceShepherdPastureComponent:_setup_grass_spawn_timer()
 	local spawn_period = self:_calculate_grass_spawn_period()
    self._sv._grass_spawn_timer = stonehearth.calendar:set_persistent_timer("pasture spawn grass", spawn_period, radiant.bind(self, '_spawn_grass'))
-   self.__saved_variables:mark_changed()
+   --self.__saved_variables:mark_changed()
 end
 
 function AceShepherdPastureComponent:_destroy_grass_spawn_timer()
 	if self._sv._grass_spawn_timer then
 		self._sv._grass_spawn_timer:destroy()
       self._sv._grass_spawn_timer = nil
-      self.__saved_variables:mark_changed()
+      --self.__saved_variables:mark_changed()
 	end
 end
 
@@ -477,7 +477,7 @@ function AceShepherdPastureComponent:_recalculate_duration()
 		local scaled_time_remaining = self:_calculate_grass_spawn_period(time_remaining)
 		self:_destroy_grass_spawn_timer()
       self._sv._grass_spawn_timer = stonehearth.calendar:set_persistent_timer("pasture spawn grass", scaled_time_remaining, radiant.bind(self, '_spawn_grass'))
-      self.__saved_variables:mark_changed()
+      --self.__saved_variables:mark_changed()
 	end
 end
 

@@ -85,7 +85,7 @@ end
 function AceFarmerFieldComponent:_ensure_fertilize_layer()
    if not self._sv._fertilizable_layer then
       self._sv._fertilizable_layer = self:_create_field_layer('stonehearth_ace:farmer:field_layer:fertilizable')
-      self.__saved_variables:mark_changed()
+      --self.__saved_variables:mark_changed()
    end
    if self._is_restore then
       self._sv._fertilizable_layer:get_component('destination')
@@ -515,7 +515,6 @@ function AceFarmerFieldComponent:_update_climate()
       self._sv._last_set_water_level = self._sv._water_level
       self:_update_effective_humidity_level()
       self:_set_growth_factors()
-      self.__saved_variables:mark_changed()
    end
 end
 
@@ -587,7 +586,7 @@ function AceFarmerFieldComponent:_set_water_volume(volume)
    else
       self._sv._water_level = 0
    end
-   self.__saved_variables:mark_changed()
+   --self.__saved_variables:mark_changed()
 
    -- if the water level only changed by a tiny bit, we don't want to recalculate water levels for everything
    -- once the change meets a particular threshold, go ahead and propogate

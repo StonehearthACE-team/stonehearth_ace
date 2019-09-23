@@ -164,7 +164,7 @@ function AceCrafterComponent:_update_best_crafts(item)
          table.remove(best_crafts, worst_index)
       end
 
-      self.__saved_variables:mark_changed()
+      --self.__saved_variables:mark_changed()
    end
 end
 

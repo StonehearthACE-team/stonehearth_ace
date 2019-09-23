@@ -17,7 +17,7 @@ function BaseJob:initialize()
    self._sv.attained_perks = {}
    -- ADDED FOR ACE
    self._sv.max_num_training = {}
-   self._sv.lookup_values = {}
+   self._sv._lookup_values = {}
 
    -- These are for the UI only
    self._sv.is_max_level = false
@@ -50,6 +50,23 @@ function BaseJob:activate()
 end
 
 function BaseJob:restore()
+   if self._sv.lookup_values then
+      self._sv._lookup_values = self._sv.lookup_values
+      self._sv.lookup_values = nil
+   end
+   if self._sv.equipment_prefs then
+      self._sv._equipment_prefs = self._sv.equipment_prefs
+      self._sv.equipment_prefs = nil
+   end
+   if self._sv.equipment_roles_ordered then
+      self._sv._equipment_roles_ordered = self._sv.equipment_roles_ordered
+      self._sv.equipment_roles_ordered = nil
+   end
+   if self._sv.equipment_role then
+      self._sv._equipment_role = self._sv.equipment_role
+      self._sv.equipment_role = nil
+   end
+
    if not self._sv.json_path then
       self._sv.json_path = self._sv._json_path
       self._sv._json_path = nil
@@ -242,25 +259,25 @@ end
 -- BELOW FUNCTIONS ADDED IN ACE:
 
 function BaseJob:get_all_equipment_preferences()
-   if not self._sv.equipment_prefs or not self._sv.equipment_roles_ordered then
-      self._sv.equipment_prefs = {}
-      self._sv.equipment_roles_ordered = {}
-      self._sv.equipment_role = nil
+   if not self._sv._equipment_prefs or not self._sv._equipment_roles_ordered then
+      self._sv._equipment_prefs = {}
+      self._sv._equipment_roles_ordered = {}
+      self._sv._equipment_role = nil
 
       local equipment_prefs = self._job_json.equipment_preferences
       if equipment_prefs and equipment_prefs.roles then
          for role, prefs in pairs(equipment_prefs.roles) do
-            self._sv.equipment_prefs[role] = {types = prefs.types, multiplier = prefs.multiplier, command = prefs.command}
-            table.insert(self._sv.equipment_roles_ordered, role)
+            self._sv._equipment_prefs[role] = {types = prefs.types, multiplier = prefs.multiplier, command = prefs.command}
+            table.insert(self._sv._equipment_roles_ordered, role)
          end
-         table.sort(self._sv.equipment_roles_ordered)
-         self._sv.equipment_role = equipment_prefs.default_role
+         table.sort(self._sv._equipment_roles_ordered)
+         self._sv._equipment_role = equipment_prefs.default_role
       end
 
-      self.__saved_variables:mark_changed()
+      --self.__saved_variables:mark_changed()
    end
 
-   return self._sv.equipment_prefs
+   return self._sv._equipment_prefs
 end
 
 function BaseJob:get_equipment_preferences()
@@ -271,17 +288,17 @@ end
 
 function BaseJob:get_equipment_roles()
    self:get_all_equipment_preferences()
-   return self._sv.equipment_roles_ordered
+   return self._sv._equipment_roles_ordered
 end
 
 function BaseJob:get_equipment_role()
-   return self._sv.equipment_role
+   return self._sv._equipment_role
 end
 
 function BaseJob:set_equipment_role(role)
-   if self._sv.equipment_role ~= role then
-      self._sv.equipment_role = role
-      self.__saved_variables:mark_changed()
+   if self._sv._equipment_role ~= role then
+      self._sv._equipment_role = role
+      --self.__saved_variables:mark_changed()
 
       radiant.events.trigger(self._sv._entity, 'stonehearth_ace:equipment_role_changed')
       
@@ -293,7 +310,7 @@ function BaseJob:set_next_equipment_role(from_role)
    -- if the current equipment role is nil or cannot be found, set the role to the first one
    -- otherwise set it to the next one in the list, wrapping around to the first
    self:get_all_equipment_preferences()
-   local roles = self._sv.equipment_roles_ordered
+   local roles = self._sv._equipment_roles_ordered
    local cur_role = from_role or self:get_equipment_role()
    local new_role
    local first
@@ -327,13 +344,13 @@ function BaseJob:_register_with_town()
 end
 
 function BaseJob:get_lookup_value(key)
-   return self._sv.lookup_values[key]
+   return self._sv._lookup_values[key]
 end
 
 function BaseJob:set_lookup_values(args)
    if args.lookup_values then
       for key, value in pairs(args.lookup_values) do
-         self._sv.lookup_values[key] = value
+         self._sv._lookup_values[key] = value
       end
       self.__saved_variables:mark_changed()
    end

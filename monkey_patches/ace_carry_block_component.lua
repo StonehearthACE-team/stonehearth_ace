@@ -28,7 +28,7 @@ function AceCarryBlock:set_carrying(new_item, opt_relative_orientation)
 
    self._sv._carried_item = new_item
    self._is_carrying_cache = true
-   self.__saved_variables:mark_changed()
+   --self.__saved_variables:mark_changed()
 
    log:info('%s adding %s to carry bone', self._entity, new_item)
 

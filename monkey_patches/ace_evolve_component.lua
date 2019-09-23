@@ -131,7 +131,7 @@ function AceEvolveComponent:_stop_evolve_timer()
       self._sv._evolve_timer = nil
    end
 
-   self.__saved_variables:mark_changed()
+   --self.__saved_variables:mark_changed()
 end
 
 function AceEvolveComponent:evolve()
@@ -165,7 +165,7 @@ function AceEvolveComponent:_start_evolve_timer()
       local duration = self:_calculate_growth_period()
       self._sv._evolve_timer = stonehearth.calendar:set_persistent_timer("EvolveComponent renew", duration, radiant.bind(self, 'evolve'))
 
-      self.__saved_variables:mark_changed()
+      --self.__saved_variables:mark_changed()
    end
 end
 

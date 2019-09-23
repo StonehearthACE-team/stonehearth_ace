@@ -23,7 +23,7 @@ function AutoReplaceComponent:activate()
          :on_changed(function(parent_entity)
                if parent_entity then
                   self._sv._original_rotation = self._entity:get_component('mob'):get_facing()
-                  self.__saved_variables:mark_changed()
+                  --self.__saved_variables:mark_changed()
                end
             end)
    end
@@ -32,7 +32,7 @@ end
 function AutoReplaceComponent:create()
    if self._json.reset_facing then
       self._sv._original_rotation = self._entity:get_component('mob'):get_facing()
-      self.__saved_variables:mark_changed()
+      --self.__saved_variables:mark_changed()
    end
 end
 

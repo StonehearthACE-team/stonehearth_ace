@@ -325,7 +325,7 @@ end
 
 function AceCraftOrder:set_auto_crafting(value)
    self._sv._auto_crafting = value
-   self.__saved_variables:mark_changed()
+   --self.__saved_variables:mark_changed()
 end
 
 function AceCraftOrder:get_associated_orders()
@@ -334,7 +334,7 @@ end
 
 function AceCraftOrder:set_associated_orders(associated_orders)
    self._sv._associated_orders = associated_orders
-   self.__saved_variables:mark_changed()
+   --self.__saved_variables:mark_changed()
 end
 
 function AceCraftOrder:get_building_id()
