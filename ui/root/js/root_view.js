@@ -143,8 +143,9 @@ App.RootView.reopen({
          var self = this;
 
          App.setGameMode('zones');
-         var tip = self.showTip('stonehearth:ui.game.menu.zone_menu.items.create_farm.tip_title',
-               'stonehearth:ui.game.menu.zone_menu.items.create_farm.tip_description', { i18n: true });
+         var tip = self.showTipWithKeyBindings('stonehearth:ui.game.menu.zone_menu.items.create_farm.tip_title',
+               'stonehearth_ace:ui.game.menu.zone_menu.items.create_farm.tip_description',
+               {left_binding: 'build:rotate:left', right_binding: 'build:rotate:right'});
 
          return this._callTool('createFarm', function(){
             return radiant.call('stonehearth:choose_new_field_location', fieldType)

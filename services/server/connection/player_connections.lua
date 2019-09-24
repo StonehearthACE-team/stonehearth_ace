@@ -897,8 +897,9 @@ function PlayerConnections:_update_connector_locations(entity_struct, new_locati
          local connector = self._connectors[connector_id]
          --log:debug('rotating region %s by %s°, then translating by %s', connector.region, new_rotation, new_location or '[NIL]')
          if new_location then
-            connector.trans_region = rotate_region(connector.region, connection.origin_offset, new_rotation, entity_struct.align_x, entity_struct.align_z)
-                  :translated(new_location)
+            connector.trans_region = radiant.entities.local_to_world(connector.region:translated(connection.origin_offset), entity_struct.entity)
+            -- connector.trans_region = rotate_region(connector.region, connection.origin_offset, new_rotation, entity_struct.align_x, entity_struct.align_z)
+            --       :translated(new_location)
             --log:debug('connector %s trans_region bounds: %s', connector_id, connector.trans_region:get_bounds())
          else
             connector.trans_region = nil

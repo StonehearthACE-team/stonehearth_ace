@@ -1,7 +1,7 @@
 local TransformTaskGroup = class()
 TransformTaskGroup.name = 'transform'
 TransformTaskGroup.does = 'stonehearth:work'
-TransformTaskGroup.priority = 0.15
+TransformTaskGroup.priority = 0.82
 
 return stonehearth.ai:create_task_group(TransformTaskGroup)
          :work_order_tag("haul")

@@ -18,7 +18,7 @@ function AceFarmingService:get_field_type(field_type)
    return self._field_types[field_type]
 end
 
-function AceFarmingService:create_new_field(session, location, size, field_type)
+function AceFarmingService:create_new_field(session, location, size, field_type, rotation)
    -- A little sanitization: what we get from the client isn't exactly a Point3
    location = Point3(location.x, location.y, location.z)
    local entity = radiant.entities.create_entity('stonehearth:farmer:field', { owner = session.player_id })
@@ -29,7 +29,7 @@ function AceFarmingService:create_new_field(session, location, size, field_type)
    local town = stonehearth.town:get_town(session.player_id)
 
    local farmer_field = entity:get_component('stonehearth:farmer_field')
-   farmer_field:on_field_created(town, size, field_type)
+   farmer_field:on_field_created(town, size, field_type, rotation)
 
    return entity
 end

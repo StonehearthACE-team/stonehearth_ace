@@ -16,6 +16,9 @@ function AceFarmerFieldComponent:restore()
    self._is_restore = true
    self._sv.water_level = nil
    self._sv.last_set_water_level = nil
+   if not self._sv._rotation then
+      self._sv._rotation = 0
+   end
    
    self:_ace_old_restore()
 
@@ -122,13 +125,14 @@ function AceFarmerFieldComponent:_load_field_type()
 end
 
 AceFarmerFieldComponent._ace_old_on_field_created = FarmerFieldComponent.on_field_created
-function AceFarmerFieldComponent:on_field_created(town, size, field_type)
+function AceFarmerFieldComponent:on_field_created(town, size, field_type, rotation)
    self:_ace_old_on_field_created(town, size)
    radiant.terrain.place_entity(self._sv._fertilizable_layer, self._location)
    self._sv._queued_overwatered = {}
 
    -- change the soil layer to only fill in the spots this field type requires
    self._sv.field_type = field_type
+   self._sv._rotation = rotation
    self:_load_field_type()
 
    local soil_layer = self._sv._soil_layer
@@ -136,7 +140,8 @@ function AceFarmerFieldComponent:on_field_created(town, size, field_type)
    soil_layer_region:modify(function(cursor)
       for x = 1, size.x do
          for y = 1, size.y do
-            if farming_lib.get_location_type(self._field_pattern, x, y) == farming_lib.LOCATION_TYPES.EMPTY then
+            local rot_x, rot_y = farming_lib.get_crop_coords(size.x, size.y, self._sv._rotation, x, y)
+            if farming_lib.get_location_type(self._field_pattern, rot_x, rot_y) == farming_lib.LOCATION_TYPES.EMPTY then
                cursor:subtract_point(Point3(x - 1, 0, y - 1))
             end
          end
@@ -149,7 +154,8 @@ function AceFarmerFieldComponent:on_field_created(town, size, field_type)
 end
 
 function AceFarmerFieldComponent:_is_location_furrow(x, y)
-   return farming_lib.get_location_type(self._field_pattern, x, y) == farming_lib.LOCATION_TYPES.FURROW
+   local rot_x, rot_y = farming_lib.get_crop_coords(self._sv.size.x, self._sv.size.y, self._sv._rotation, x, y)
+   return farming_lib.get_location_type(self._field_pattern, rot_x, rot_y) == farming_lib.LOCATION_TYPES.FURROW
 end
 
 function AceFarmerFieldComponent:notify_till_location_finished(location)
