@@ -15,6 +15,11 @@ function AcePopulationFaction:activate()
       self.__saved_variables:mark_changed()
    end
 
+   if not self._sv._updated_town_name then
+      self._sv._updated_town_name = true
+      self:update_town_name()
+   end
+
    self:_load_unlocked_abilities()
 end
 
@@ -62,8 +67,27 @@ function AcePopulationFaction:create_new_citizen_from_role_data(role, role_data,
    if titles then
       titles:update_titles_json()
    end
+   self:_update_citizen_town_name(citizen)
 
    return citizen
+end
+
+function AcePopulationFaction:update_town_name()
+   for _, citizen in self._sv.citizens:each() do
+      self:_update_citizen_town_name(citizen)
+   end
+end
+
+function AcePopulationFaction:_update_citizen_town_name(citizen)
+   if not self:is_npc() then
+      local town = stonehearth.town:get_town(self._sv.player_id)
+      if town and town:get_town_name_set() then
+         local stats = citizen:get_component('stonehearth_ace:statistics')
+         if stats then
+            stats:set_stat('towns_lived', town:get_town_serial_number(), town:get_town_name())
+         end
+      end
+   end
 end
 
 AcePopulationFaction._ace_old_create_new_foreign_citizen = PopulationFaction.create_new_foreign_citizen

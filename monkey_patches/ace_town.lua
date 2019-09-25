@@ -14,6 +14,16 @@ function AceTown:_pre_activate()
    end
 end
 
+AceTown._ace_old_set_town_name = Town.set_town_name
+function AceTown:set_town_name(town_name, set_by_player)
+   self:_ace_old_set_town_name(town_name, set_by_player)
+
+   if set_by_player then
+      local population = stonehearth.population:get_population(self._sv.player_id)
+      population:update_town_name()
+   end
+end
+
 AceTown._ace_old__requirements_met = Town._requirements_met
 function AceTown:_requirements_met(person, job_uri)
    local job_component = person:get_component('stonehearth:job')
