@@ -4,6 +4,33 @@
    z-index: 1;
 
    #buffs {
+      top: inherit;
+      bottom: 100%;
+      left: 10px;
+      height: auto;
+      width: 520px;
+      padding-bottom: 15px;
+      justify-content: space-between;
+      flex-flow: row nowrap;
+
+      #positiveBuffs {
+         display: flex;
+         align-content: flex-start;
+         flex-flow: row wrap-reverse;
+      }
+
+      #negativeBuffs {
+         display: flex;
+         align-content: flex-end;
+         flex-flow: row-reverse wrap-reverse;
+
+         .item {
+            float: right;
+            margin-left: 4px;
+            margin-right: 0px;
+         }
+      }
+
       .item {
          position: relative;
          
@@ -160,11 +187,41 @@
          .commandButton {
             margin-top: 10px;
          }
+
+         #moreCommandsIndicator {
+            position: absolute;
+            top: -10px;
+            right: 0px;
+            display: none;
+            width: 24px;
+            height: 84px;
+            background: url(images/more_commands_indicator.png);
+            //background-size: cover;
+         }
       }
    }
 
    #combatControls {
-      bottom: 111px;
+      bottom: 4px;
+      left: -52px;
+      width: 44px;
+      height: auto;
+
+      #partyButton {
+         float: left;
+         margin-left: 3px;
+         margin-top: 3px;
+      }
+
+      #cancelCombatButton {
+         background-image: url('/stonehearth/ui/game/unit_frame/images/cancel_order.png');
+      }
+
+      .combatButton {
+         float: left;
+         margin-left: 3px;
+         margin-top: 3px;
+      }
    }
 
    #componentInfoButton {

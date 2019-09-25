@@ -140,6 +140,7 @@ App.StonehearthUnitFrameView.reopen({
 
    willDestroyElement: function() {
       this._nameHelper.destroy();
+      this.$('#info').off('mouseenter mouseleave');
       this._super();
    },
 
@@ -165,7 +166,9 @@ App.StonehearthUnitFrameView.reopen({
       //it has to happen after render to check the elements for the unit frame for the newly selected item, not the previous
       Ember.run.scheduleOnce('afterRender', this, function() {
          var unitFrame = this.$('#unitFrame');
+         var infoDiv = this.$('#info');
          var commandButtons = this.$('#commandButtons');
+         var moreCommandsIndicator = this.$('#moreCommandsIndicator');
 
          var width = Math.max(this.$('#descriptionDiv').width() + commandButtons.width() + 19); // + 19 to account for margins
          if (this.get('hasPortrait')) {
@@ -175,26 +178,32 @@ App.StonehearthUnitFrameView.reopen({
          if (considerCommands == true && self._bestWidth == null) {
             self._bestWidth = Math.max(520, width);
             self._commandWidth = commandButtons.width();
-            self._commandsPos = 520 - self._commandWidth;
+            self._commandsPos = 517 - self._commandWidth;
 
             var diff = self._bestWidth - 520;
             if (diff > 0) {
                self._bestWidth += 12;
                self._commandsPos += diff;
                // if it's wider than we want, we need to trim the command buttons to fit
-               unitFrame.hover(function(e) {
+               infoDiv.hover(function(e) {
                   unitFrame.css('width', self._bestWidth + 'px');
-                  commandButtons.css('width', self._commandWidth + 'px')
+                  commandButtons.css('width', self._commandWidth + 'px');
+                  moreCommandsIndicator.hide();
                },
                function(e) {
                   unitFrame.css('width', 520 + 'px');
                   commandButtons.css('width', (self._commandWidth - diff) + 'px');
+                  moreCommandsIndicator.show();
                });
 
                commandButtons.css('width', (self._commandWidth - diff) + 'px');
+               moreCommandsIndicator.show();
             }
-            else if (width < self._bestWidth) {
-               self._commandsPos += Math.max(-12, width - self._bestWidth);
+            else {
+               moreCommandsIndicator.hide();
+               if (width < self._bestWidth) {
+                  self._commandsPos += Math.max(-12, width - self._bestWidth);
+               }
             }
             commandButtons.css('left', (self._commandsPos + 12) + 'px');
          }
@@ -443,7 +452,20 @@ App.StonehearthUnitFrameView.reopen({
          return (aUri && bUri) ? aUri.localeCompare(bUri) : -1;
       });
 
-      self.set('buffs', self._buffs);
+      var positiveBuffs = [];
+      var negativeBuffs = [];
+      radiant.each(self._buffs, function(_, buff) {
+         if (buff.axis == 'debuff') {
+            negativeBuffs.push(buff);
+         }
+         else {
+            positiveBuffs.push(buff);
+         }
+      });
+
+      self.set('positiveBuffs', positiveBuffs);
+      self.set('negativeBuffs', negativeBuffs);
+      //self.set('buffs', self._buffs);
    }.observes('model.stonehearth:buffs'),
 
    _updateTransformProgress: function() {
