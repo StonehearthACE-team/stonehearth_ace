@@ -30,6 +30,7 @@ function AceFarmingCallHandler:choose_new_field_location(session, response, fiel
       for y = 1, max_size do
          if farming_lib.get_location_type(pattern, x, y) == farming_lib.LOCATION_TYPES.CROP then
             local entity = radiant.entities.create_entity(sample_crop)
+            entity:remove_component('region_collision_shape')
             if harvest_stage then
                entity:get_component('render_info'):set_model_variant(harvest_stage)
             end
@@ -122,8 +123,10 @@ function AceFarmingCallHandler:choose_new_field_location(session, response, fiel
             dirt = true
          }))
       :set_can_contain_entity_filter(function(entity)
-            for render_entity, _ in pairs(crop_entities) do
-               if render_entity == entity then
+            -- why doesn't this work?   
+            -- return crop_entities[entity] ~= nil
+            for crop_entity, _ in pairs(crop_entities) do
+               if crop_entity:get_id() == entity:get_id() then
                   return true
                end
             end
@@ -143,6 +146,12 @@ function AceFarmingCallHandler:choose_new_field_location(session, response, fiel
                         end)
          end)
       :fail(function(selector)
+            -- local q0, q1 = selector:_find_valid_region(selector._p0, selector._p1)
+            -- local is_valid_region = q0 == selector._p0 and q1 == selector._p1
+
+            -- local valid_dimensions = is_valid_region and selector:_are_valid_dimensions(selector._p0, selector._p1)
+            -- log:debug('placing field failed! %s, %s, %s, %s, %s, %s, %s, %s\n%s', field_type, radiant.util.table_tostring(prev_box),
+            --       selector._p0, selector._p1, q0, q1, tostring(is_valid_region), tostring(valid_dimensions), radiant.util.table_tostring(crop_entities))
             selector:destroy()
             response:reject('no region')
          end)
