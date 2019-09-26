@@ -577,15 +577,17 @@ function AceJobComponent:_remove_training_toggle(commands_component)
 	
 	-- remove commands
 	if not commands_component then
-		commands_component = self._entity:add_component('stonehearth:commands')
+		commands_component = self._entity:get_component('stonehearth:commands')
 	end
 
-	if commands_component:has_command(disable) then
-		commands_component:remove_command(disable)
-	end
-	if commands_component:has_command(enable) then
-		commands_component:remove_command(enable)
-	end
+   if commands_component then
+      if commands_component:has_command(disable) then
+         commands_component:remove_command(disable)
+      end
+      if commands_component:has_command(enable) then
+         commands_component:remove_command(enable)
+      end
+   end
 end
 
 function AceJobComponent:_on_training_performed()
@@ -614,7 +616,7 @@ function AceJobComponent:_add_equipment_preferences_toggle()
 end
 
 function AceJobComponent:_remove_equipment_preferences_toggle()
-   local commands_component = self._entity:add_component('stonehearth:commands')
+   local commands_component = self._entity:get_component('stonehearth:commands')
    if commands_component and self._sv.current_equipment_preferences_command then
       commands_component:remove_command(self._sv.current_equipment_preferences_command)
    end

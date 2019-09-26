@@ -429,6 +429,9 @@ function VineComponent:_try_grow()
             { owner = self._entity:get_player_id(), ignore_gravity = grow_direction ~= 'y+' and self._growth_data.ignore_gravity })
       new_vine:add_component('stonehearth_ace:vine'):set_num_growths_remaining(self._sv.num_growths_remaining)
       radiant.terrain.place_entity_at_exact_location(new_vine, grow_location, {force_iconic = false})
+      if self._growth_data.randomize_facing then
+         radiant.entities.turn_to(new_vine, rng:get_int(0, 3) * 90)
+      end
    end
 
    return new_vine
