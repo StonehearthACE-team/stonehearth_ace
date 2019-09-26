@@ -16,8 +16,8 @@ function AceFarmerFieldComponent:restore()
    self._is_restore = true
    self._sv.water_level = nil
    self._sv.last_set_water_level = nil
-   if not self._sv._rotation then
-      self._sv._rotation = 0
+   if not self._sv.rotation then
+      self._sv.rotation = 0
    end
    
    self:_ace_old_restore()
@@ -54,6 +54,7 @@ function AceFarmerFieldComponent:post_activate()
 
    self._post_harvest_crop_listeners = {}
    if self._is_restore then
+      self:_load_field_type()
       self:_create_water_listener()
       self:_create_climate_listeners()
       self:_create_post_harvest_crop_listeners()
@@ -119,6 +120,10 @@ function AceFarmerFieldComponent:get_contents()
    return self._sv.contents
 end
 
+function AceFarmerFieldComponent:get_rotation()
+   return self._sv.rotation
+end
+
 function AceFarmerFieldComponent:_load_field_type()
    self._field_type_data = stonehearth.farming:get_field_type(self._sv.field_type or 'farm') or {}
    self._field_pattern = self._field_type_data.pattern or farming_lib.DEFAULT_PATTERN
@@ -132,7 +137,11 @@ function AceFarmerFieldComponent:on_field_created(town, size, field_type, rotati
 
    -- change the soil layer to only fill in the spots this field type requires
    self._sv.field_type = field_type
-   self._sv._rotation = rotation
+   self._sv.rotation = rotation
+   -- for _, layer in ipairs(self:_get_field_layers()) do
+   --    radiant.entities.turn_to(layer, rotation * 90)
+   -- end
+
    self:_load_field_type()
 
    local soil_layer = self._sv._soil_layer
@@ -140,7 +149,7 @@ function AceFarmerFieldComponent:on_field_created(town, size, field_type, rotati
    soil_layer_region:modify(function(cursor)
       for x = 1, size.x do
          for y = 1, size.y do
-            local rot_x, rot_y = farming_lib.get_crop_coords(size.x, size.y, self._sv._rotation, x, y)
+            local rot_x, rot_y = farming_lib.get_crop_coords(size.x, size.y, self._sv.rotation, x, y)
             if farming_lib.get_location_type(self._field_pattern, rot_x, rot_y) == farming_lib.LOCATION_TYPES.EMPTY then
                cursor:subtract_point(Point3(x - 1, 0, y - 1))
             end
@@ -154,7 +163,7 @@ function AceFarmerFieldComponent:on_field_created(town, size, field_type, rotati
 end
 
 function AceFarmerFieldComponent:_is_location_furrow(x, y)
-   local rot_x, rot_y = farming_lib.get_crop_coords(self._sv.size.x, self._sv.size.y, self._sv._rotation, x, y)
+   local rot_x, rot_y = farming_lib.get_crop_coords(self._sv.size.x, self._sv.size.y, self._sv.rotation, x, y)
    return farming_lib.get_location_type(self._field_pattern, rot_x, rot_y) == farming_lib.LOCATION_TYPES.FURROW
 end
 
@@ -228,7 +237,7 @@ end
 
 function AceFarmerFieldComponent:update_post_harvest_crop(x, z, crop)
    local dirt_plot = self._sv.contents and self._sv.contents[x][z]
-   log:debug('updating post-harvest crop: %s for plot %s', crop, radiant.util.table_tostring(dirt_plot))
+   --log:debug('updating post-harvest crop: %s for plot %s', crop, radiant.util.table_tostring(dirt_plot))
    if dirt_plot then
       -- set up the listener
       self:_destroy_post_harvest_crop_listener(dirt_plot)
@@ -321,6 +330,7 @@ end
 AceFarmerFieldComponent._ace_old_plant_crop_at = FarmerFieldComponent.plant_crop_at
 function AceFarmerFieldComponent:plant_crop_at(x_offset, z_offset)
    local crop = self:_ace_old_plant_crop_at(x_offset, z_offset)
+   radiant.entities.turn_to(crop, self._sv.rotation * 90)
 
    local growing_comp = crop and crop:add_component('stonehearth:growing')
 	if growing_comp then
@@ -725,9 +735,13 @@ function AceFarmerFieldComponent:_on_destroy()
    self:_destroy_post_harvest_crop_listeners()
 end
 
+function AceFarmerFieldComponent:_get_field_layers()
+   return {self._sv._soil_layer, self._sv._plantable_layer, self._sv._harvestable_layer, self._sv._fertilizable_layer}
+end
+
 AceFarmerFieldComponent._ace_old__reconsider_fields = FarmerFieldComponent._reconsider_fields
 function AceFarmerFieldComponent:_reconsider_fields()
-   for _, layer in ipairs({self._sv._soil_layer, self._sv._plantable_layer, self._sv._harvestable_layer, self._sv._fertilizable_layer}) do
+   for _, layer in ipairs(self:_get_field_layers()) do
       stonehearth.ai:reconsider_entity(layer, 'worker count changed')
    end
 end
