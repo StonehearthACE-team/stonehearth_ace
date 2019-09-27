@@ -112,14 +112,30 @@ App.StonehearthUnitFrameView.reopen({
 
       var div = $("#componentInfoButton");
       App.hotkeyManager.makeTooltipWithHotkeys(div,
-         i18n.t('stonehearth_ace:ui.game.unit_frame.toggle_component_info.tooltip_title'),
-         i18n.t('stonehearth_ace:ui.game.unit_frame.toggle_component_info.tooltip_description'));
+            i18n.t('stonehearth_ace:ui.game.unit_frame.toggle_component_info.tooltip_title'),
+            i18n.t('stonehearth_ace:ui.game.unit_frame.toggle_component_info.tooltip_description'));
       div.on('click', self.toggleComponentInfo);
 
       div = self.$('#descriptionDiv');
       div.on('click', function() {
          self.showPromotionTree();
       });
+
+      App.hotkeyManager.makeTooltipWithHotkeys(this.$('#attackAllParties'),
+            'stonehearth_ace:ui.game.unit_frame.attack_with_all_parties.display_name',
+            'stonehearth_ace:ui.game.unit_frame.attack_with_all_parties.description');
+      App.hotkeyManager.makeTooltipWithHotkeys(this.$('#attackParty1'),
+            'stonehearth_ace:ui.game.unit_frame.attack_with_party_1.display_name',
+            'stonehearth_ace:ui.game.unit_frame.attack_with_party_1.description');
+      App.hotkeyManager.makeTooltipWithHotkeys(this.$('#attackParty2'),
+            'stonehearth_ace:ui.game.unit_frame.attack_with_party_2.display_name',
+            'stonehearth_ace:ui.game.unit_frame.attack_with_party_2.description');
+      App.hotkeyManager.makeTooltipWithHotkeys(this.$('#attackParty3'),
+            'stonehearth_ace:ui.game.unit_frame.attack_with_party_3.display_name',
+            'stonehearth_ace:ui.game.unit_frame.attack_with_party_3.description');
+      App.hotkeyManager.makeTooltipWithHotkeys(this.$('#attackParty4'),
+            'stonehearth_ace:ui.game.unit_frame.attack_with_party_4.display_name',
+            'stonehearth_ace:ui.game.unit_frame.attack_with_party_4.description');
 
       _selectionHasComponentInfoChanged();
    },
@@ -483,5 +499,58 @@ App.StonehearthUnitFrameView.reopen({
       else {
          self.set('transformProgress', null);
       }
-   }.observes('model.stonehearth_ace:transform.progress')
+   }.observes('model.stonehearth_ace:transform.progress'),
+
+   // override the base to just hide the combatButtonDiv instead of all the combatControls
+   _updateCombatTools: function() {
+      var isCombatClass = this.get('model.stonehearth:job.curr_job_controller.is_combat_class');
+      var playerId = this.get('model.player_id');
+      var currPlayerId = App.stonehearthClient.getPlayerId();
+      var isPlayerOwner = playerId == currPlayerId;
+      var combatControlsElement = this.$('#combatButtonDiv');
+      if (combatControlsElement) {
+         if (isPlayerOwner && (isCombatClass || this.get('model.stonehearth:party'))) {
+            combatControlsElement.show();
+         } else {
+            combatControlsElement.hide();
+         }
+      }
+   }.observes('model.stonehearth:job.curr_job_controller', 'model.stonehearth:party'),
+
+   _hostilityObserver: function () {
+      var self = this;
+      var playerID = self.get('model.player_id');
+      var thisPlayerID = App.stonehearthClient.getPlayerId();
+      if (playerID && playerID != thisPlayerID) {
+         radiant.call('stonehearth_ace:are_player_ids_hostile', playerID, thisPlayerID)
+               .done(function (e) {
+                  self.set('isHostile', e.are_hostile);
+               });
+      }
+      else {
+         self.set('isHostile', false);
+      }
+   }.observes('model.player_id'),
+
+   issueAttackCommand: function (party_id) {
+      var self = this;
+      radiant.call_obj('stonehearth.unit_control', 'get_party_by_population_name', party_id)
+         .done(function (response) {
+            if (response.result) {
+               radiant.call_obj('stonehearth.combat_server_commands', 'party_attack_target_entity', response.result, self.get('uri'));
+            }
+         });
+   },
+
+   actions: {
+      attackWithAllParties: function() {
+         for (var i = 1; i <= 4; i++) {
+            this.issueAttackCommand("party_" + i);
+         }
+      },
+
+      attackWithParty: function(party) {
+         this.issueAttackCommand(party);
+      }
+   }
 });

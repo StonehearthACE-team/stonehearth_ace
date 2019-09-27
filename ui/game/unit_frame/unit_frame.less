@@ -45,10 +45,6 @@
       }
    }
 
-   #nametag {
-      position: relative;
-   }
-
    #nameInput {
       position: absolute;
       top: -33px;
@@ -59,6 +55,10 @@
    #info {
       height: 98px;
 
+      &.hostile {
+         border-image: url(images/frame_hostile.png) 10 10 9 10;
+      }
+
       .inner {
          left: 0px;
          height: 99px;
@@ -67,6 +67,18 @@
             position: absolute;
             top: 0px;
             left: 10px;
+
+            #nametag {
+               position: relative;
+               
+               &.hostile {
+                  border-image: url(images/name_hostile.png) 4 32 4 32;
+
+                  .name {
+                     background-color: #551815;
+                  }
+               }
+            }
       
             .custom-select {
                position: absolute;
@@ -206,6 +218,7 @@
       left: -52px;
       width: 44px;
       height: auto;
+      display: block;
 
       #partyButton {
          float: left;
@@ -221,6 +234,26 @@
          float: left;
          margin-left: 3px;
          margin-top: 3px;
+      }
+
+      #attackAllParties {
+         background-image: url('images/attack_with_all_parties.png');
+      }
+
+      #attackParty1 {
+         background-image: url('images/attack_with_party_1.png');
+      }
+
+      #attackParty2 {
+         background-image: url('images/attack_with_party_2.png');
+      }
+
+      #attackParty3 {
+         background-image: url('images/attack_with_party_3.png');
+      }
+
+      #attackParty4 {
+         background-image: url('images/attack_with_party_4.png');
       }
    }
 
