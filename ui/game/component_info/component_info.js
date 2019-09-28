@@ -24,7 +24,7 @@ $(top).on('stonehearthReady', function (cc) {
    // need to apply the setting on load as well
    radiant.call('radiant:get_config', 'mods.stonehearth_ace.show_component_info')
    .done(function(o) {
-      var show_component_info = o['mods.stonehearth_ace.show_component_info'] || false;
+      var show_component_info = o['mods.stonehearth_ace.show_component_info'] != false;
       var e = {
          value: show_component_info
       };

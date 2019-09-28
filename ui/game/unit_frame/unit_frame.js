@@ -35,7 +35,7 @@ $(top).on('stonehearthReady', function (cc) {
    // need to apply the setting on load as well
    radiant.call('radiant:get_config', 'mods.stonehearth_ace.show_job_toggle_button')
    .done(function(o) {
-      var show_job_toggle_button = o['mods.stonehearth_ace.show_job_toggle_button'] || false;
+      var show_job_toggle_button = o['mods.stonehearth_ace.show_job_toggle_button'] != false;
       var e = {
          value: show_job_toggle_button
       };
