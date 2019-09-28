@@ -2203,6 +2203,18 @@
             },
             "fight_attack_party_4": {
                "display_name": "Attack With Party 4"
+            },
+				"zone_farms": {
+               "display_name": "Farm Type Menu"
+            },
+				"zone_underfarm": {
+               "display_name": "Underfarm Tool"
+            },
+				"zone_orchard": {
+               "display_name": "Orchard Tool"
+            },
+				"zone_treefarm": {
+               "display_name": "Timber Farm Tool"
             }
          }
       },
@@ -10226,20 +10238,27 @@
             "zone_menu": {
                "items": {
                   "create_farm": {
+							"display_name": "Farms",
+                     "description": "Create a zone that allows you to grow different things from the ground!",
                      "tip_description": "Right click to exit. Rotate with [str(left_binding)] and [str(right_binding)] keys",
                      "create_field_farm": {
-                        "display_name": "Create Normal Farm",
-                        "description": "Place a farm on grass or dirt that can grow normal crops.",
+                        "display_name": "Farm Field",
+                        "description": "Place a farm on grass or dirt that can grow conventional crops.",
                         "required_ability_text": "Your town has not yet unlocked this farm type."
                      },
                      "create_field_underfarm": {
-                        "display_name": "Create Underfarm",
+                        "display_name": "Underfarm Field",
                         "description": "Place a farm on dirt or rock that can grow low-light crops like mushrooms.",
                         "required_ability_text": "Your town has not yet unlocked this farm type."
                      },
+							"create_field_orchard": {
+                        "display_name": "Orchard",
+                        "description": "Place a farm on grass or dirt that can grow trees that bear nuts or fruits.",
+                        "required_ability_text": "Your town has not yet unlocked this farm type."
+                     },
                      "create_field_treefarm": {
-                        "display_name": "Create Tree Farm",
-                        "description": "Place a farm on grass or dirt that can grow trees.",
+                        "display_name": "Timber Farm",
+                        "description": "Place a farm on grass or dirt that can grow larger trees.",
                         "required_ability_text": "Your town has not yet unlocked this farm type."
                      }
                   }

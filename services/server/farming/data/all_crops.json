@@ -151,7 +151,8 @@
          "ordinal": 19,
          "level_requirement": 5,
          "field_types": {
-            "treefarm": true
+            "treefarm": true,
+				"orchard": true
          }
       },
       "acacia_tree": {
@@ -238,7 +239,7 @@
       },
       "underfarm": {
          "sample_crop": "stonehearth:crops:turnip_crop",
-         "color": [206, 148, 78, 255],
+         "color": [126, 103, 52, 255],
          "terrain": {
             "dirt": true,
             "rock": true
@@ -251,7 +252,7 @@
       },
       "treefarm": {
          "sample_crop": "stonehearth:trees:oak:bud",
-         "color": [17, 142, 50, 255],
+         "color": [117, 173, 92, 255],
          "terrain": {
             "grass": true,
             "dirt": true
@@ -277,6 +278,30 @@
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+         ]
+      },
+		"orchard": {
+         "sample_crop": "stonehearth_ace:trees:chestnut:bud",
+         "color": [246, 154, 113, 255],
+         "terrain": {
+            "grass": true,
+            "dirt": true
+         },
+         "size": {
+            "min": 7,
+            "max": 57
+         },
+         "pattern": [
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 1, 1, 1, 0, 0, 0, 0, 0],
+            [0, 0, 1, 2, 1, 0, 0, 0, 0, 0],
+            [0, 0, 1, 1, 1, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
          ]
       }
    }
