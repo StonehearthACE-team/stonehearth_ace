@@ -101,6 +101,33 @@
             height: 99px;
             width: 99px;
             background-size: cover;
+
+            #jobToggleDiv {
+               width: 40px;
+               height: 40px;
+               position: absolute;
+               left: -5px;
+               bottom: -5px;
+               z-index: 5;
+
+               a {
+                  width: 40px;
+                  height: 40px;
+                  display: block;
+               }
+
+               .jobEnabled {
+                  background-image: url(images/toggle_job_on.png);
+               }
+
+               .jobDisabled {
+                  background-image: url(images/toggle_job_off.png);
+               }
+
+               .jobSomeEnabled {
+                  background-image: url(images/toggle_job_some.png);
+               }
+            }
          }
 
          #portrait {

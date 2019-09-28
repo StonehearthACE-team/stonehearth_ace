@@ -1,4 +1,5 @@
 var _selectionHasComponentInfo = false;
+var _showJobToggleButton = false;
 
 var _selectionHasComponentInfoChanged = function() {
    if (_selectionHasComponentInfo) {
@@ -13,9 +14,33 @@ var _selectionHasComponentInfoChanged = function() {
    }
 };
 
+var _showJobToggleButtonChanged = function() {
+   let unitFrame = App.gameView.getView(App.StonehearthUnitFrameView);
+   if (unitFrame) {
+      unitFrame.set('jobToggleButtonSettingEnabled', _showJobToggleButton);
+   }
+};
+
 $(top).on("selection_has_component_info_changed", function (_, e) {
    _selectionHasComponentInfo = e.has_component_info;
    _selectionHasComponentInfoChanged();
+});
+
+$(top).on("show_job_toggle_button_changed", function (_, e) {
+   _showJobToggleButton = e.value;
+   _showJobToggleButtonChanged();
+});
+
+$(top).on('stonehearthReady', function (cc) {
+   // need to apply the setting on load as well
+   radiant.call('radiant:get_config', 'mods.stonehearth_ace.show_job_toggle_button')
+   .done(function(o) {
+      var show_job_toggle_button = o['mods.stonehearth_ace.show_job_toggle_button'] || false;
+      var e = {
+         value: show_job_toggle_button
+      };
+      $(top).trigger('show_job_toggle_button_changed', e);
+   });
 });
 
 App.StonehearthUnitFrameView.reopen({
@@ -40,6 +65,12 @@ App.StonehearthUnitFrameView.reopen({
       "stonehearth_ace:transform": {
          "progress": {}
       }
+   },
+
+   JOB_STATUS: {
+      DISABLED: 'jobDisabled',
+      ENABLED: 'jobEnabled',
+      SOME: 'jobSomeEnabled'
    },
 
    init: function() {
@@ -137,7 +168,40 @@ App.StonehearthUnitFrameView.reopen({
             'stonehearth_ace:ui.game.unit_frame.attack_with_party_4.display_name',
             'stonehearth_ace:ui.game.unit_frame.attack_with_party_4.description');
 
+      App.tooltipHelper.createDynamicTooltip(self.$('#jobToggleDiv'), function () {
+         var status = self.get('jobEnabledStatus');
+         if (!status) {
+            return;
+         }
+
+         var title, tooltip;
+         switch (status) {
+            case self.JOB_STATUS.DISABLED:
+               title = 'toggle_on';
+               tooltip = 'toggledOff';
+               break;
+
+            case self.JOB_STATUS.ENABLED:
+               title = 'toggle_off';
+               tooltip = 'toggledOn';
+               break;
+
+            case self.JOB_STATUS.SOME:
+               title = 'toggle_on';
+               tooltip = 'toggledSome';
+               break;
+         }
+
+         if (title && tooltip) {
+            title = i18n.t('stonehearth_ace:ui.game.unit_frame.job_toggle.' + title);
+            tooltip = i18n.t('stonehearth_ace:ui.game.unit_frame.job_toggle.' + tooltip);
+
+            return $(App.tooltipHelper.createTooltip(title, tooltip));
+         }
+      });
+
       _selectionHasComponentInfoChanged();
+      _showJobToggleButtonChanged();
    },
 
    _getNametagTooltipText: function(self) {
@@ -156,7 +220,12 @@ App.StonehearthUnitFrameView.reopen({
 
    willDestroyElement: function() {
       this._nameHelper.destroy();
+      this._nameHelper = null;
       this.$('#info').off('mouseenter mouseleave');
+      if (this._partyObserverTimer) {
+         Ember.run.cancel(this._partyObserverTimer);
+      }
+      this._partyObserverTimer = null;
       this._super();
    },
 
@@ -259,6 +328,12 @@ App.StonehearthUnitFrameView.reopen({
       self.notifyPropertyChange('canChangeName');
       self.$('#nameInput').hide();
    }.observes('name_entity'),
+
+   nameTagClass: function() {
+      var canChangeName = this.get('canChangeName') ? 'clickable' : 'noHover';
+      var isHostile = this.get('isHostile') ? ' hostile' : '';
+      return canChangeName + isHostile;
+   }.property('canChangeName', 'isHostile'),
 
    toggleComponentInfo: function() {
       $(top).trigger('component_info_toggled', {});
@@ -524,33 +599,199 @@ App.StonehearthUnitFrameView.reopen({
       if (playerID && playerID != thisPlayerID) {
          radiant.call('stonehearth_ace:are_player_ids_hostile', playerID, thisPlayerID)
                .done(function (e) {
+                  if (self.isDestroyed || self.isDestroying) {
+                     return;
+                  }
                   self.set('isHostile', e.are_hostile);
+                  self.set('canAttack', e.are_hostile && self.get('model.stonehearth:expendable_resources.resources.health'));
                });
       }
       else {
          self.set('isHostile', false);
+         self.set('canAttack', false);
       }
    }.observes('model.player_id'),
 
-   issueAttackCommand: function (party_id) {
+   _issueAttackCommand: function (party_id) {
       var self = this;
       radiant.call_obj('stonehearth.unit_control', 'get_party_by_population_name', party_id)
          .done(function (response) {
+            if (self.isDestroyed || self.isDestroying) {
+               return;
+            }
             if (response.result) {
                radiant.call_obj('stonehearth.combat_server_commands', 'party_attack_target_entity', response.result, self.get('uri'));
             }
          });
    },
 
+   _updateJobToggleButton: function () {
+      var self = this;
+      var jobOn = false;
+      var jobOff = false;
+
+      var members = self._getCitizenMembers();
+      radiant.each(members, function (i, member) {
+         var isEnabled = self._isJobEnabled(member);
+         if (isEnabled != null) {
+            if (isEnabled) {
+               jobOn = true;
+            }
+            else {
+               jobOff = true;
+            }
+         }
+      });
+
+      if (!jobOn && !jobOff) {
+         self.set('hasJob', false);
+      }
+      else {
+         self.set('hasJob', true);
+
+         if (!jobOn) {
+            // only job off
+            self.set('jobEnabledStatus', self.JOB_STATUS.DISABLED);
+         }
+         else if (!jobOff) {
+            // only job on
+            self.set('jobEnabledStatus', self.JOB_STATUS.ENABLED);
+         }
+         else {
+            // both job on and off
+            self.set('jobEnabledStatus', self.JOB_STATUS.SOME);
+         }
+      }
+   },
+
+   showJobToggle: function() {
+      return this.get('jobToggleButtonSettingEnabled') && this.get('hasJob');
+   }.property('jobToggleButtonSettingEnabled', 'hasJob'),
+
+   _getCitizenMembers: function(){
+      var self = this;
+      var members = [];
+
+      if (App.stonehearthClient.getPlayerId() != self.get('model.player_id')) {
+         return members;
+      }
+
+      // if it's a party, we'll need to process through each party member
+      var party = self.get('model.stonehearth:party');
+      if (party) {
+         radiant.each(self.get('model.stonehearth:party.members'), function (k, v) {
+            members.push({
+               "id": radiant.getEntityId(v.entity),
+               "stonehearth:work_order": v.entity["stonehearth:work_order"]
+            });
+         });
+      }
+      else {
+         members.push({
+            "id": radiant.getEntityId(self.get('model')),
+            "stonehearth:work_order": self.get("model.stonehearth:work_order")
+         });
+      }
+
+      return members;
+   },
+
+   _isJobEnabled: function (entity) {
+      var wo = entity["stonehearth:work_order"];
+      if (wo) {
+         var workOrders = wo.work_order_statuses;
+         var workOrderRefs = wo.work_order_refs;
+         if (!workOrders || !workOrderRefs) {
+            return null;
+         }
+         return workOrderRefs['job'] && workOrders['job'] != 'disabled';
+      }
+      return null;
+   },
+
+   _partyObserver: function(){
+      var self = this;
+      Ember.run.once(self, '_partyTimerCheck');
+   }.observes('model.stonehearth:party', 'model.stonehearth:party.members'),
+
+   _partyTimerCheck: function(){
+      var self = this;
+      var party = self.get('model.stonehearth:party');
+      if (party && party.members) {
+         // we have a party; if we don't have a party cache, create it
+         // since we're just now getting the party cache, we just selected a party, so we're already updating
+         // through the normal observer; otherwise, compare to existing cache and if different, update
+
+         let newCache = {};
+         radiant.each(party.members, function (i, member) {
+            newCache[i] = self._isJobEnabled(member.entity);
+         });
+
+         if (self._partyMembersJobEnabledCache) {
+            // check if the new cache is different from the old cache
+            let diff = false;
+            if (self._partyMembersJobEnabledCache.length != newCache.length) {
+                  diff = true;
+            }
+            else {
+               radiant.each(newCache, function (i, member) {
+                  if (self._partyMembersJobEnabledCache[i] !== member) {
+                     diff = true;
+                  }
+               });
+            }
+
+            if (diff) {
+               self._partyMembersJobEnabledCache = newCache;
+               self._updateJobToggleButton();
+            }
+         }
+         else {
+            self._partyMembersJobEnabledCache = newCache;
+         }
+
+         // check again in 100ms to see if the party members job status has changed
+         self._partyObserverTimer = Ember.run.later(self, '_partyObserver', 100);
+      }
+      else {
+         if (self._partyObserverTimer) {
+            Ember.run.cancel(self._partyObserverTimer);
+         }
+         self._partyObserverTimer = null;
+         self._partyMembersJobEnabledCache = null;
+      }
+   },
+
+   _updateObserver: function(){
+      var self = this;
+      Ember.run.once(self, '_updateJobToggleButton');
+   }.observes('model.stonehearth:work_order', 'model.stonehearth:party.members'),
+
    actions: {
       attackWithAllParties: function() {
          for (var i = 1; i <= 4; i++) {
-            this.issueAttackCommand("party_" + i);
+            this._issueAttackCommand("party_" + i);
          }
       },
 
       attackWithParty: function(party) {
-         this.issueAttackCommand(party);
-      }
+         this._issueAttackCommand(party);
+      },
+
+      toggleJob: function () {
+         var self = this;
+ 
+         if (self.get('model.player_id') == App.stonehearthClient.getPlayerId()) {
+            var members = self._getCitizenMembers();
+            var popUri = App.population.getUri();
+
+            var enable = self.get('jobEnabledStatus') != self.JOB_STATUS.ENABLED;
+
+            radiant.call('radiant:play_sound', { 'track': 'stonehearth:sounds:ui:action_click' });
+            radiant.each(members, function (i, member) {
+               radiant.call_obj(popUri, 'change_work_order_command', 'job', member.id, enable);
+            });
+         }
+      },
    }
 });

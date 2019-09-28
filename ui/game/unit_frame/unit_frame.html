@@ -27,14 +27,16 @@
       <div id="info" {{bind-attr class=view.isHostile:hostile}}>
          <div class="inner">
             <div id="portrait-frame">
-               <div id="portrait" title="{{i18n stonehearth:ui.game.unit_frame.focus_camera}}" {{bind-attr class=view.hasCharacterSheet:clickable:}}>
+               <div id="portrait" title="{{i18n stonehearth:ui.game.unit_frame.focus_camera}}" {{bind-attr class="view.hasCharacterSheet:clickable:"}}></div>
+               <div id='jobToggleDiv' {{bind-attr class="view.showJobToggle:button:hidden"}}>
+                  <a id='jobToggleButton' hotkey_action="ui:toggle_job" {{action "toggleJob" target="view"}} {{bind-attr class=view.jobEnabledStatus}}></a>
                </div>
             </div>
 
             <div id="nameBlock">
                <div id="topBar">
                   <input id="nameInput" type="text" {{bind-attr value=view.display_name}} />
-                  <div id="nametag" {{bind-attr class="view.canChangeName:clickable:noHover view.isHostile:hostile"}}>
+                  <div id="nametag" {{bind-attr class=view.nameTagClass}}>
                      <div class="name" {{bind-attr class=view.hasPortrait:compressed:extended}}>{{i18n_key view.display_name self=view.model}}</div>
                   </div>
                   <div id="qualityGem"></div>
@@ -179,7 +181,7 @@
             <div class="combatButton"><a id="defendLocation" hotkey_action="fight:defend" {{action "defendLocation" this target="view"}}></a></div>
             <div class="combatButton"><a id="cancelCombatButton" hotkey_action="fight:cancelOrders" {{action "cancelOrders" this target="view"}}></a></div>
          </div>
-         <div id="attackButtonDiv" {{bind-attr class=view.isHostile::hidden}} >
+         <div id="attackButtonDiv" {{bind-attr class=view.canAttack::hidden}} >
             <div class="combatButton"><a id="attackAllParties" hotkey_action="fight:attack_all_parties" {{action "attackWithAllParties" target="view"}}></a></div>
             <div class="combatButton"><a id="attackParty1" hotkey_action="fight:attack_party_1" {{action "attackWithParty" "party_1" target="view"}}></a></div>
             <div class="combatButton"><a id="attackParty2" hotkey_action="fight:attack_party_2" {{action "attackWithParty" "party_2" target="view"}}></a></div>

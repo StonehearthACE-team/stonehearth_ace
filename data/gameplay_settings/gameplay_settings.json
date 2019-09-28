@@ -150,6 +150,16 @@
          },
          "ordinal": 99
       },
+      "show_job_toggle_button": {
+         "type": "boolean",
+         "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.show_job_toggle_button)",
+         "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.show_job_toggle_button_description)",
+         "default": true,
+         "on_change": {
+            "fire_event": "show_job_toggle_button_changed"
+         },
+         "ordinal": 100
+      },
       "auto_save_unique_files": {
          "host_only": true,
          "type": "boolean",
