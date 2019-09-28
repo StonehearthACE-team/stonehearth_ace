@@ -298,7 +298,7 @@ App.StonehearthUnitFrameView.reopen({
    }.observes('model.uri', 'model.stonehearth:unit_info', 'model.stonehearth:job'),
 
    _resetCommandsWidthCheck: function() {
-      this.$('#unitFrame').off('mouseenter mouseleave');
+      this.$('#info').off('mouseenter mouseleave');
       this.$('#commandButtons').css('width', '');
       delete this._bestWidth;
       delete self._commandsPos;
