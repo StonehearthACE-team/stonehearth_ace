@@ -78,7 +78,7 @@ function AceFarmingCallHandler:choose_new_field_location(session, response, fiel
 
             -- now add/remove crop entities based on size
             -- only adjust them if the selection box has actually changed size
-            if not prev_box or prev_box.min ~= box.min or prev_box.max ~= box.max or prev_rotation ~= rotation then
+            if xz_region_selector._state == 'p0_selected' and (not prev_box or prev_box.min ~= box.min or prev_box.max ~= box.max or prev_rotation ~= rotation) then
                prev_box = box
                prev_rotation = rotation
 
@@ -122,16 +122,6 @@ function AceFarmingCallHandler:choose_new_field_location(session, response, fiel
             grass = true,
             dirt = true
          }))
-      :set_can_contain_entity_filter(function(entity)
-            -- why doesn't this work?   
-            -- return crop_entities[entity] ~= nil
-            for crop_entity, _ in pairs(crop_entities) do
-               if crop_entity:get_id() == entity:get_id() then
-                  return true
-               end
-            end
-            return false
-         end)
       :done(function(selector, box)
             local size = {
                x = box.max.x - box.min.x,

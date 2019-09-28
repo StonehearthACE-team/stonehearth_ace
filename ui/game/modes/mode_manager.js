@@ -223,7 +223,6 @@ $(document).ready(function() {
 
       _getModeForEntity: function(entity) {
          if ((!entity['stonehearth:ai'] && entity['stonehearth:storage']) ||
-               entity['stonehearth:farmer_field'] ||
                entity['stonehearth:trapping_grounds'] ||
                entity['stonehearth:shepherd_pasture'] ||
                entity['stonehearth:mining_zone'] ||

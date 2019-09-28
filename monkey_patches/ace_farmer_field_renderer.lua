@@ -16,6 +16,7 @@ function AceFarmerFieldRenderer:initialize(render_entity, datastore)
    self._water_color = Color4(constants.hydrology.DEFAULT_WATER_COLOR)
 
    self._farmer_field_data = radiant.entities.get_component_data(render_entity:get_entity(), 'stonehearth:farmer_field')
+   self._field_types = radiant.resources.load_json('stonehearth:farmer:all_crops').field_types or {}
    self._fertilized_dirt_model = self._farmer_field_data.fertilized_dirt
 
    self._fertilized_nodes = {}
@@ -49,6 +50,11 @@ function AceFarmerFieldRenderer:_update()
    local data = self._datastore:get_data()
    local size = data.size
    self._is_rotated = (data.rotation or 0) % 2 == 1
+
+   local field_data = self._field_types[data.field_type or 'farm'] or {}
+   local color = Color4(unpack(field_data.color or {55, 187, 56, 76}))
+   self._zone_renderer:set_designation_colors(color, color)
+
    local items = {}
 
    self:_update_dirt_models(data.effective_humidity_level)
