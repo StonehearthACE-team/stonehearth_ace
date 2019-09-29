@@ -151,7 +151,7 @@ function ace_entities.spawn_items(uris, origin, min_radius, max_radius, options)
          for i = 1, quantity do
             local location = radiant.terrain.find_placement_point(origin, min_radius, max_radius)
             local item = radiant.entities.create_entity(uri, options)
-            if quality > 1 then
+            if quality ~= 1 then
                item_quality_lib.apply_quality(entity, quality)
             end
 

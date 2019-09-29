@@ -21,7 +21,11 @@ function AceLootDropsComponent:_on_kill_event()
          end
          local town = stonehearth.town:get_town(self._sv.auto_loot_player_id)
 
-         local items = LootTable(loot_table)
+         local quality
+         if loot_table.apply_entity_quality then
+            quality = radiant.entities.get_item_quality(self._entity)
+         end
+         local items = LootTable(loot_table, quality)
                            :roll_loot()
          local spawned_entities = radiant.entities.spawn_items(items, location, 1, 3, { owner = self._entity })
 
@@ -45,10 +49,6 @@ function AceLootDropsComponent:_on_kill_event()
                if auto_loot and town then
                   town:loot_item(target)
                end
-            end
-
-            if loot_table.apply_entity_quality and quality > 1 then
-               item_quality_lib.apply_quality(entity, quality)
             end
          end
       end
