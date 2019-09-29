@@ -1,4 +1,5 @@
 local entity_forms = require 'stonehearth.lib.entity_forms.entity_forms_lib'
+local item_quality_lib = require 'stonehearth_ace.lib.item_quality.item_quality_lib'
 
 local log = radiant.log.create_logger('entities')
 
@@ -132,6 +133,35 @@ end
 function ace_entities.set_property_value(entity, property, value, replace)
    local pv_comp = entity:add_component('stonehearth_ace:property_values')
    return pv_comp:set_property(property, value, replace)
+end
+
+-- uris are key, value pairs of uri, quantity
+-- quantity can also be a table of quality/quantity pairs
+function ace_entities.spawn_items(uris, origin, min_radius, max_radius, options)
+   local items = {}
+
+   for uri, detail in pairs(uris) do
+      local qualities
+      if type(detail) == 'number' then
+         qualities = {[1] = detail}
+      else
+         qualities = detail
+      end
+      for quality, quantity in pairs(detail) do
+         for i = 1, quantity do
+            local location = radiant.terrain.find_placement_point(origin, min_radius, max_radius)
+            local item = radiant.entities.create_entity(uri, options)
+            if quality > 1 then
+               item_quality_lib.apply_quality(entity, quality)
+            end
+
+            items[item:get_id()] = item
+            radiant.terrain.place_entity(item, location)
+         end
+      end
+   end
+
+   return items
 end
 
 return ace_entities

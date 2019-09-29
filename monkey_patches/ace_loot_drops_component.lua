@@ -1,4 +1,5 @@
 local LootTable = require 'stonehearth.lib.loot_table.loot_table'
+local item_quality_lib = require 'stonehearth_ace.lib.item_quality.item_quality_lib'
 
 --[[
    Used to determine what loot a mob drops when it dies.  This program is for
@@ -24,6 +25,8 @@ function AceLootDropsComponent:_on_kill_event()
                            :roll_loot()
          local spawned_entities = radiant.entities.spawn_items(items, location, 1, 3, { owner = self._entity })
 
+         local quality = radiant.entities.get_item_quality(self._entity)
+
          --Add a loot command to each of the spawned items, or claim them automatically
          for id, entity in pairs(spawned_entities) do
             local target = entity
@@ -42,6 +45,10 @@ function AceLootDropsComponent:_on_kill_event()
                if auto_loot and town then
                   town:loot_item(target)
                end
+            end
+
+            if loot_table.apply_entity_quality and quality > 1 then
+               item_quality_lib.apply_quality(entity, quality)
             end
          end
       end
