@@ -2,6 +2,7 @@ local WeightedSet = require 'stonehearth.lib.algorithms.weighted_set'
 local rng = _radiant.math.get_default_rng()
 local log = radiant.log.create_logger('loot_table')
 
+local LootTable = require 'stonehearth.lib.loot_table.loot_table'
 local AceLootTable = class()
 
 function AceLootTable:__init(json, quality_override)
@@ -276,7 +277,7 @@ function AceLootTable:roll_loot(inc_recursive_uri_storage)
          if bool_is_not_looping then
             recursive_uri_storage[key] = value
             local recursive_uris = nil
-            local bag = AceLootTable(radiant.deep_copy(radiant.resources.load_json(key.item_uri, true)), key.quality)
+            local bag = LootTable(radiant.deep_copy(radiant.resources.load_json(key.item_uri, true)), key.quality)
             recursive_uris = bag:roll_loot(recursive_uri_storage)
             
             --add the recursive_uris found back into the rest of the uris found.
