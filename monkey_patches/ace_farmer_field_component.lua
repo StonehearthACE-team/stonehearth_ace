@@ -7,10 +7,6 @@ local farming_lib = require 'stonehearth_ace.lib.farming.farming_lib'
 
 local AceFarmerFieldComponent = class()
 
-local RECALCULATE_THRESHOLD = 0.04
-local SUNLIGHT_CHECK_TIME = '4h'
-
-
 AceFarmerFieldComponent._ace_old_restore = FarmerFieldComponent.restore
 function AceFarmerFieldComponent:restore()
    self._is_restore = true
@@ -51,6 +47,8 @@ function AceFarmerFieldComponent:post_activate()
    if not self._sv._queued_overwatered then
       self._sv._queued_overwatered = {}
    end
+
+   self._water_recalculate_threshold = stonehearth.constants.farming.WATER_RECALCULATE_THRESHOLD
 
    self._post_harvest_crop_listeners = {}
    if self._is_restore then
@@ -420,7 +418,7 @@ function AceFarmerFieldComponent:_create_climate_listeners()
    end)
    self:_update_season()
 
-   self._sunlight_timer = stonehearth.calendar:set_interval('farm sunlight check', SUNLIGHT_CHECK_TIME, function()
+   self._sunlight_timer = stonehearth.calendar:set_interval('farm sunlight check', stonehearth.constants.farming.SUNLIGHT_CHECK_FREQUENCY, function()
       self:_check_sky_visibility()
    end)
    self:_check_sky_visibility()
@@ -607,7 +605,7 @@ function AceFarmerFieldComponent:_set_water_volume(volume)
    -- if the water level only changed by a tiny bit, we don't want to recalculate water levels for everything
    -- once the change meets a particular threshold, go ahead and propogate
    local last_set = self._sv._last_set_water_level
-   if last_set and math.abs(last_set - self._sv._water_level) < RECALCULATE_THRESHOLD then
+   if last_set and math.abs(last_set - self._sv._water_level) < self._water_recalculate_threshold then
       return
    end
 

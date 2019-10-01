@@ -5,6 +5,28 @@ local log = radiant.log.create_logger('terrain')
 
 local CEILING_RAY = Point3(0, 15, 0)
 local SKYRAY_DISTANCE = 100
+local _SINE = {}
+local _COSINE = {}
+
+local _get_sine = function(pi_coeff)
+   local sine = _SINE[pi_coeff]
+   if not sine then
+      local angle = pi_coeff * math.pi
+      sine = math.sin(angle)
+      _SINE[pi_coeff] = sine
+   end
+   return sine
+end
+
+local _get_cosine = function(pi_coeff)
+   local cosine = _COSINE[pi_coeff]
+   if not cosine then
+      local angle = pi_coeff * math.pi
+      cosine = math.cos(angle)
+      _COSINE[pi_coeff] = cosine
+   end
+   return cosine
+end
 
 AceTerrainService = class()
 
@@ -12,24 +34,23 @@ function AceTerrainService:get_sky_visibility(location, distance)
    -- check straight above and at several east-west (x+ to x-) angles to determine amount of sunlight
    distance = distance or SKYRAY_DISTANCE
    
-   local num_vis = 0
-   for i = 1, 5 do
-      local x, y = self:_get_unit_sides_from_angle(i / 6)
+   local total_weight = 0
+   local vis_weight = 0
+   local num_angles = stonehearth.constants.terrain.NUM_SUNLIGHT_CHECK_ANGLES
+   for i = 1, num_angles - 1 do
+      local x = _get_cosine(i / num_angles)
+      local y = _get_sine(i / num_angles)
       local ray = Point3(x, y, 0) * distance
 
       local target = location + ray
       local end_point = _physics:shoot_ray(location, target, true, 0)
       if not radiant.terrain.is_blocked(end_point) then
-         num_vis = num_vis + 1
+         vis_weight = vis_weight + y
       end
+      total_weight = total_weight + y
    end
    
-   return num_vis / 5
-end
-
-function AceTerrainService:_get_unit_sides_from_angle(pi_coeff)
-   local angle = pi_coeff * math.pi
-   return math.cos(angle), math.sin(angle)
+   return vis_weight / total_weight
 end
 
 function AceTerrainService:is_sheltered(location, height)

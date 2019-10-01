@@ -940,6 +940,7 @@
          "DEFAULT_FLOODED_GROWTH_TIME_MULTIPLIER": 3,
          "DEFAULT_FROZEN_GROWTH_TIME_MULTIPLIER": 2,
          "BASE_MEGACROP_CHANCE": 0.001,
+         "SUNLIGHT_CHECK_FREQUENCY": "4h",
          "default_megacrop_description": "i18n(stonehearth_ace:entities.crops.megacrops.default_description)",
          "crop_growth_times": {
             "short": "60h",
@@ -966,6 +967,9 @@
          "default_unlocked_abilities": {
             "field_type_farm": true
          }
+      },
+      "terrain": {
+         "NUM_SUNLIGHT_CHECK_ANGLES": 6
       }
    }
 }
