@@ -321,8 +321,23 @@ function AceFarmerFieldComponent:_remove_from_fertilizable(location)
    end)
 end
 
-function AceFarmerFieldComponent:notify_crop_harvested(location)
-   self:_update_crop_fertilized(location.x - self._location.x + 1, location.z - self._location.z + 1, false)
+function AceFarmerFieldComponent:_remove_from_harvestable(x, z)
+   local harvestable_layer = self._sv._harvestable_layer
+   local harvestable_layer_region = harvestable_layer:get_component('destination')
+                                       :get_region()
+   harvestable_layer_region:modify(function(cursor)
+      cursor:subtract_point(Point3(x - 1, 0, z - 1))
+   end)
+end
+
+function AceFarmerFieldComponent:notify_crop_unharvestable(x, z)
+   -- if we're just setting it to an earlier stage, remove it from harvestable layer
+   self:_remove_from_harvestable(x, z)
+end
+
+AceFarmerFieldComponent._ace_old_notify_crop_destroyed = FarmerFieldComponent.notify_crop_destroyed
+function AceFarmerFieldComponent:notify_crop_destroyed(x, z)
+   self:_update_crop_fertilized(x, z, false)
 end
 
 AceFarmerFieldComponent._ace_old_plant_crop_at = FarmerFieldComponent.plant_crop_at

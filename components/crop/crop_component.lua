@@ -63,6 +63,7 @@ function CropComponent:activate()
    self._megacrop_description = self._json.megacrop_description or stonehearth.constants.farming.default_megacrop_description
    self._megacrop_model_variant = self._json.megacrop_model_variant
    self._auto_harvest = self._json.auto_harvest
+   self._post_harvest_stage = self._json.post_harvest_stage
 
    if not self._sv._megacrop_chance then
       self._sv._megacrop_chance = self._json.megacrop_chance or stonehearth.constants.farming.BASE_MEGACROP_CHANCE
@@ -91,6 +92,10 @@ end
 
 function CropComponent:get_product()
    return self._sv.product
+end
+
+function CropComponent:get_post_harvest_stage()
+   return self._post_harvest_stage
 end
 
 function CropComponent:destroy()
@@ -123,6 +128,12 @@ function CropComponent:_on_grow_period(e)
       if self._sv.stage == self._harvest_threshhold and self._sv._field then
          self._sv.harvestable = true
          self:_became_harvestable()
+      else
+         -- when resetting to an earlier stage, make it no longer harvestable
+         if self._sv.harvestable then
+            self._sv.harvestable = false
+            self:_notify_unharvestable()
+         end
       end
    end
    if e.finished then
@@ -145,9 +156,14 @@ function CropComponent:_notify_harvestable()
    self._sv._field:notify_crop_harvestable(self._sv._field_offset_x, self._sv._field_offset_y)
 end
 
+function CropComponent:_notify_unharvestable()
+   radiant.assert(self._sv._field, 'crop %s has no field!', self._entity)
+   self._sv._field:notify_crop_unharvestable(self._sv._field_offset_x, self._sv._field_offset_y)
+end
+
 -- separate this out into its own function so it's easier to modify
 function CropComponent:_became_harvestable()
-   if self._sv._consider_megacrop then
+   if self._sv._consider_megacrop and self._sv._is_megacrop == nil then
       if rng:get_real(0, 1) < self._sv._megacrop_chance then
          self:_set_megacrop()
       end

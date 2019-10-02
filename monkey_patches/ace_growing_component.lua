@@ -46,6 +46,20 @@ function AceGrowingComponent:post_activate()
    end
 end
 
+function AceGrowingComponent:set_growth_stage(stage)
+   stage = math.max(1, math.min(stage, #self._growth_stages))
+   self._sv.current_growth_stage = stage
+   self._sv._current_growth_recalculate_progress = 0
+   self.__saved_variables:mark_changed()
+   self:_apply_current_stage()
+   self:_set_growth_timer()
+   radiant.events.trigger(self._entity, 'stonehearth:growing', {
+      entity = self._entity,
+      stage = self:get_current_stage_name(),
+      finished = self:is_finished(),
+   })
+end
+
 function AceGrowingComponent:set_environmental_growth_time_modifier(modifier)
 	if modifier ~= self._sv._environmental_growth_time_modifier then
       self._sv._environmental_growth_time_modifier = modifier
@@ -118,14 +132,16 @@ function AceGrowingComponent:_calculate_growth_period(growth_period)
 end
 
 function AceGrowingComponent:_set_growth_timer()
-   local growth_period = self:_calculate_growth_period()
    if self._sv._growth_timer then
       self._sv._growth_timer:destroy()
       self._sv._growth_timer = nil
    end
-   local time_remaining = math.max(0, growth_period * (1 - self._sv._current_growth_recalculate_progress))
-   local scaled_time_remaining = self:_calculate_growth_period(time_remaining)
-   self._sv._growth_timer = stonehearth.calendar:set_persistent_timer("GrowingComponent grow_callback", scaled_time_remaining, radiant.bind(self, '_grow'))
+   if not self:is_finished() then
+      local growth_period = self:_calculate_growth_period()
+      local time_remaining = math.max(0, growth_period * (1 - self._sv._current_growth_recalculate_progress))
+      local scaled_time_remaining = self:_calculate_growth_period(time_remaining)
+      self._sv._growth_timer = stonehearth.calendar:set_persistent_timer("GrowingComponent grow_callback", scaled_time_remaining, radiant.bind(self, '_grow'))
+   end
 end
 
 AceGrowingComponent._ace_old__grow = GrowingComponent._grow

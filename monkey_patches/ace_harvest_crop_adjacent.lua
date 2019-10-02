@@ -82,15 +82,6 @@ function AceHarvestCropAdjacent:_harvest_one_time(ai, entity)
    return true
 end
 
-AceHarvestCropAdjacent._ace_old__unreserve_location = HarvestCropAdjacent._unreserve_location
-function AceHarvestCropAdjacent:_unreserve_location()
-   if self._location then
-      self._farmer_field:notify_crop_harvested(self._location)
-   end
-
-   self:_ace_old__unreserve_location()
-end
-
 AceHarvestCropAdjacent._ace_old__get_num_to_increment = HarvestCropAdjacent._get_num_to_increment
 function AceHarvestCropAdjacent:_get_num_to_increment(entity)
    local num_to_spawn = self:_ace_old__get_num_to_increment(entity)
@@ -227,6 +218,22 @@ function AceHarvestCropAdjacent:_harvest_megacrop_and_return(ai, player_id, crop
    -- of increasing the stacks on the carried item
    if pickup_new or megacrop_data.return_immediately then
       return true
+   end
+end
+
+function AceHarvestCropAdjacent:_destroy_crop()
+   if self._crop then
+      -- if this crop should merely reset to an earlier stage, do that instead
+      local crop = self._crop:get_component('stonehearth:crop')
+      local stage = crop and crop:get_post_harvest_stage()
+      if stage then
+         self._crop:get_component('stonehearth:growing'):set_growth_stage(stage)
+         -- reset visibility in case it was a megacrop that we hid
+         self._crop:get_component('render_info'):set_visible(true)
+      else
+         radiant.entities.kill_entity(self._crop)
+      end
+      self._crop = nil
    end
 end
 
