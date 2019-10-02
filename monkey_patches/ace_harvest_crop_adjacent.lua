@@ -5,12 +5,40 @@ local item_quality_lib = require 'stonehearth_ace.lib.item_quality.item_quality_
 local HarvestCropAdjacent = require 'stonehearth.ai.actions.harvest_crop_adjacent'
 local AceHarvestCropAdjacent = class()
 
-AceHarvestCropAdjacent._ace_old_start_thinking = HarvestCropAdjacent.start_thinking
 function AceHarvestCropAdjacent:start_thinking(ai, entity, args)
+   self._log = ai:get_log()
+   self._entity = entity
+   self._spawn_count = self:_get_num_to_increment(entity)
+
    self._farmer_field = args.field_layer:get_component('stonehearth:farmer_field_layer')
                                     :get_farmer_field()
 
-   self:_ace_old_start_thinking(ai, entity, args)
+   self._crop = self._farmer_field:crop_at(args.location)
+
+   if not self._crop or not self._crop:is_valid() then
+      self._log:detail('no crop at %s (%s)', args.location, tostring(self._crop))
+      return
+   end
+
+   local carrying = ai.CURRENT.carrying
+   if carrying then
+      -- make sure it's the right crop...
+      if not self:_is_same_crop(carrying, self._crop) then
+         self._log:detail('not the same')
+         return
+      end
+      -- make sure we can fit another load...
+      if not self:_can_carry_more(entity, carrying) then
+         self._log:detail('cannot carry more')
+         return
+      end
+   end
+   self._origin = radiant.entities.get_world_grid_location(args.field_layer)
+   self._location = args.location
+   self._destination = args.field_layer:get_component('destination')
+
+   ai:protect_argument(self._crop)
+   ai:set_think_output()
 end
 
 function AceHarvestCropAdjacent:_harvest_one_time(ai, entity)
