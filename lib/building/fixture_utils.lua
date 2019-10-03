@@ -292,6 +292,10 @@ function fixture_utils.filter_for_fixture_placement(e, normal, ignore_id, allow_
 
    local ed = radiant.entities.get_entity_data(e, 'stonehearth:build2:widget')
    if ed then
+      local c = e:get(ed.component)
+      if stonehearth.building:is_building(c:get_data():get_building_id()) then
+         return fixture_utils.filter.IGNORE
+      end
       return fixture_utils.filter.ACCEPT
    end
 
