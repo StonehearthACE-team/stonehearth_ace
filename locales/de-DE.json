@@ -2179,6 +2179,42 @@
             },
             "ui_box_undeploy_items": {
                "display_name": "Platzierung mehrerer Objekte gleichzeitig aufheben"
+            },
+            "show_promotion_tree": {
+               "display_name": "Change Jobs"
+            },
+            "toggle_job": {
+               "display_name": "Toggle Job Work Order Status"
+            },
+            "toggle_component_info": {
+               "display_name": "Toggle Entity Info"
+            },
+            "fight_attack_all_parties": {
+               "display_name": "Attack With All Parties"
+            },
+            "fight_attack_party_1": {
+               "display_name": "Attack With Party 1"
+            },
+            "fight_attack_party_2": {
+               "display_name": "Attack With Party 2"
+            },
+            "fight_attack_party_3": {
+               "display_name": "Attack With Party 3"
+            },
+            "fight_attack_party_4": {
+               "display_name": "Attack With Party 4"
+            },
+				"zone_farms": {
+               "display_name": "Farm Type Menu"
+            },
+				"zone_underfarm": {
+               "display_name": "Underfarm Tool"
+            },
+				"zone_orchard": {
+               "display_name": "Orchard Tool"
+            },
+				"zone_treefarm": {
+               "display_name": "Timber Farm Tool"
             }
          }
       },
@@ -10194,6 +10230,35 @@
                      "tip_description": "Rechtsklick um diesen Modus zu verlassen"
                   }
                }
+            },
+            "zone_menu": {
+               "items": {
+                  "create_farm": {
+							"display_name": "Farms",
+                     "description": "Create a zone that allows you to grow different things from the ground!",
+                     "tip_description": "Right click to exit. Rotate with [str(left_binding)] and [str(right_binding)] keys",
+                     "create_field_farm": {
+                        "display_name": "Farm Field",
+                        "description": "Place a farm on grass or dirt that can grow conventional crops.",
+                        "required_ability_text": "Your town has not yet unlocked this farm type."
+                     },
+                     "create_field_underfarm": {
+                        "display_name": "Underfarm Field",
+                        "description": "Place a farm on dirt or rock that can grow low-light crops like mushrooms.",
+                        "required_ability_text": "Your town has not yet unlocked this farm type."
+                     },
+							"create_field_orchard": {
+                        "display_name": "Orchard",
+                        "description": "Place a farm on grass or dirt that can grow trees that bear nuts or fruits.",
+                        "required_ability_text": "Your town has not yet unlocked this farm type."
+                     },
+                     "create_field_treefarm": {
+                        "display_name": "Timber Farm",
+                        "description": "Place a farm on grass or dirt that can grow larger trees.",
+                        "required_ability_text": "Your town has not yet unlocked this farm type."
+                     }
+                  }
+               }
             }
          },
          "visions": {
@@ -10452,10 +10517,37 @@
             "inflictable_debuff": "Zufügter Status: ",
             "transform": {
                "progress": "Baut... "
+            },
+            "attack_with_all_parties": {
+               "display_name": "Attack With All Parties",
+               "description": "Attack the selected entity with all combat parties."
+            },
+            "attack_with_party_1": {
+               "display_name": "Attack With Party 1",
+               "description": "Attack the selected entity with combat party 1."
+            },
+            "attack_with_party_2": {
+               "display_name": "Attack With Party 2",
+               "description": "Attack the selected entity with combat party 2."
+            },
+            "attack_with_party_3": {
+               "display_name": "Attack With Party 3",
+               "description": "Attack the selected entity with combat party 3."
+            },
+            "attack_with_party_4": {
+               "display_name": "Attack With Party 4",
+               "description": "Attack the selected entity with combat party 4."
+            },
+            "job_toggle": {
+               "toggle_on": "Toggle Job On",
+               "toggle_off": "Toggle Job Off",
+               "toggledOn": "The Job activity for this unit or party is currently on; click to toggle it off.",
+               "toggledOff": "The Job activity for this unit or party is currently off; click to toggle it on.",
+               "toggledSome": "The Job activity for some of this party is on, and for some it is off; click to toggle it on for all."
             }
          },
          "save_view": {
-            "auto_save_name": "Auto-Speicher ([str(i18n_data.date_time)])"
+            "auto_save_name": "Auto-Speichern ([str(i18n_data.date_time)])"
          },
          "componentInfo": {
             "title": "Objektinformationen"
@@ -10561,6 +10653,8 @@
                "show_processing_meter_description": "Zeigt die Verarbeitungsanzeige an, die für das Verständnis von Leistungsproblemen nützlich ist, rechts unten auf dem Bildschirm, links neben den Schaltflächen für die Spielgeschwindigkeit.",
                "show_component_info": "Detaillierte Informationen der Einheit anzeigen",
                "show_component_info_description": "Zeigt eine anklickbare Info-Schaltfläche im ausgewählten Einheitenfenster an, wenn das ausgewählte Objekt über weitere Informationen verfügt.",
+               "show_job_toggle_button": "Job-Umschalttaste anzeigen",
+               "show_job_toggle_button_description": "Zeigt eine anklickbare Schaltfläche im Fenster der ausgewählten Einheit an, um die Arbeitsreihnfolge für den ausgewählten Hearthling oder die ausgewählte Kampfgruppe umzuschalten.",
                "auto_save_max_files": "Maximale automatische Speicherungen",
                "auto_save_max_files_description": "Wenn automatisches Speicherne und automatisches Speichern eindeutiger Dateien aktiviert ist, werden ältere Dateien überschrieben, sobald diese Grenze erreicht ist.<span class='warn'>WARNUNG:</span>Wenn Sie das nächste Mal speichern, nachdem du eine niedrigere Anzahl eingestellt hast, werden möglicherweise viele ältere Speicherstände gelöscht.",
                "max_files": {
