@@ -337,6 +337,7 @@ end
 
 AceFarmerFieldComponent._ace_old_notify_crop_destroyed = FarmerFieldComponent.notify_crop_destroyed
 function AceFarmerFieldComponent:notify_crop_destroyed(x, z)
+   self:_ace_old_notify_crop_destroyed(x, z)
    self:_update_crop_fertilized(x, z, false)
 end
 

@@ -14,9 +14,11 @@ function AceHarvestCropAdjacent:start_thinking(ai, entity, args)
                                     :get_farmer_field()
 
    self._crop = self._farmer_field:crop_at(args.location)
+   self._origin = radiant.entities.get_world_grid_location(args.field_layer)
 
    if not self._crop or not self._crop:is_valid() then
-      self._log:detail('no crop at %s (%s)', args.location, tostring(self._crop))
+      self._log:detail('no crop at %s (%s); removing from harvestable region', args.location, tostring(self._crop))
+      self._farmer_field:notify_crop_destroyed(args.location.x - self._origin.x + 1, args.location.z - self._origin.z + 1)
       return
    end
 
@@ -33,7 +35,6 @@ function AceHarvestCropAdjacent:start_thinking(ai, entity, args)
          return
       end
    end
-   self._origin = radiant.entities.get_world_grid_location(args.field_layer)
    self._location = args.location
    self._destination = args.field_layer:get_component('destination')
 

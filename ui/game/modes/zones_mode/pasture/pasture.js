@@ -83,7 +83,7 @@ App.StonehearthPastureView.reopen({
       }
 
       if (capacity) {
-         var pastureData = self.get('model.uri.components.stonehearth:shepherd_pasture.pasture_data');
+         var pastureData = self.get('model.stonehearth:shepherd_pasture.pasture_data');
          var pastureType = self.get('model.stonehearth:shepherd_pasture.pasture_type');
          var min = pastureData[pastureType].min_population || 2;
          var vals = [];
