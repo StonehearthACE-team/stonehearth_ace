@@ -2,8 +2,9 @@ $(document).ready(function() {
    $(top).off("radiant_open_character_sheet").on("radiant_open_character_sheet", function(_, e) {
       App.stonehearthClient.showCharacterSheet(e.entity);
    });
-});
 
+// for some reason, sometimes App.StonehearthCitizenCharacterSheetView doesn't exist at the time we want to reopen it
+// since it isn't getting instantiated immediately, we can wait until document ready
 App.StonehearthCitizenCharacterSheetView.reopen({
    ace_components: {
       'stonehearth_ace:titles': {}
@@ -441,4 +442,6 @@ App.StonehearthCitizenCharacterSheetView.reopen({
       }
       self._segmentsInitialized = false;
    }
+});
+
 });

@@ -188,6 +188,7 @@ $(document).ready(function() {
                   var mode = self._getModeForEntity(result);
                   var menu = self._getMenuForMode(mode);
                   if (menu) {
+                     self.setGameMode(mode);
                      App.gameMenu.showMenu(menu);
                   } else {
                      var prevMode = self._currentMode;

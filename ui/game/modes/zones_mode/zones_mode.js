@@ -47,6 +47,24 @@ App.StonehearthZonesModeView.reopen({
       }
    },
 
+   // override this to not set the game mode; that should already be happening elsewhere
+   _showZoneUi: function(entity, viewType) {
+      var self = this;
+
+      if (self._propertyView && (self._propertyView.constructor != viewType || self._propertyView.isDestroyed)) {
+         self._propertyView.destroyWithoutDeselect();
+         self._propertyView = null;
+      };
+
+      var uri = typeof(entity) == 'string' ? entity : entity.__self;
+      if (!self._propertyView) {
+         self._propertyView = App.gameView.addView(viewType, { uri: uri });
+      } else {
+         self._propertyView.set('uri', uri);
+      }
+      //App.setGameMode('zones');
+   },
+
    _getCustomZoneView: function(entity) {
       var self = this;
       for (var i = 0; i < self.customEntityZoneViews.length; i++)
@@ -65,6 +83,6 @@ App.StonehearthZonesModeView.reopen({
          return App.StonehearthAceGuardZoneView;
       }
 
-      return null
+      return null;
    }
 });
