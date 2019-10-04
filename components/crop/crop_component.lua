@@ -60,8 +60,12 @@ function CropComponent:activate()
       self._growing_listener = radiant.events.listen(self._entity, 'stonehearth:growing', self, self._on_grow_period)
    end
 
-   self._megacrop_description = self._json.megacrop_description or stonehearth.constants.farming.default_megacrop_description
+   self._megacrop_description = self._json.megacrop_description or stonehearth.constants.farming.DEFAULT_MEGACROP_DESCRIPTION
    self._megacrop_model_variant = self._json.megacrop_model_variant
+   self._megacrop_change_scale = self._json.megacrop_change_scale
+   if self._megacrop_change_scale == nil then
+      self._megacrop_change_scale = stonehearth.constants.farming.DEFAULT_MEGACROP_SCALE
+   end
    self._auto_harvest = self._json.auto_harvest
    self._post_harvest_stage = self._json.post_harvest_stage
 
@@ -210,9 +214,11 @@ function CropComponent:_set_megacrop()
 
    local render_info = self._entity:get_component('render_info')
    if self._megacrop_model_variant then
-      self._entity:get_component('render_info'):set_model_variant(self._megacrop_model_variant)
+      render_info:set_model_variant(self._megacrop_model_variant)
    end
-   render_info:set_scale(render_info:get_scale() * (2 + rng:get_real(-0.05, 0.05)))
+   if self._megacrop_change_scale then
+      render_info:set_scale(render_info:get_scale() * (self._megacrop_change_scale + rng:get_real(-0.05, 0.05)))
+   end
 
    --self.__saved_variables:mark_changed()
 end

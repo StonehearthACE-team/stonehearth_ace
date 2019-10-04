@@ -101,6 +101,7 @@ local monkey_patches = {
    ace_reembarkation_encounter = 'stonehearth.services.server.game_master.controllers.encounters.reembarkation_encounter',
    ace_donation_dialog_encounter = 'stonehearth.services.server.game_master.controllers.encounters.donation_dialog_encounter',
    ace_combat_service = 'stonehearth.services.server.combat.combat_service',
+   ace_combat_server_commands_service = 'stonehearth.services.server.combat_server_commands.combat_server_commands_service',
    ace_game_master_lib = 'stonehearth.lib.game_master.game_master_lib',
    ace_population_faction = 'stonehearth.services.server.population.population_faction',
    ace_entities_call_handler = 'stonehearth.call_handlers.entities_call_handler',

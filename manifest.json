@@ -3706,6 +3706,10 @@
       "are_player_ids_hostile": {
          "controller": "file(call_handlers/player_call_handler.lua)",
          "endpoint": "server"
+      },
+      "cancel_combat_order_on_target": {
+         "controller": "file(call_handlers/combat_call_handler.lua)",
+         "endpoint": "server"
       }
    },
    "object_commands": {

@@ -167,6 +167,9 @@ App.StonehearthUnitFrameView.reopen({
       App.hotkeyManager.makeTooltipWithHotkeys(this.$('#attackParty4'),
             'stonehearth_ace:ui.game.unit_frame.attack_with_party_4.display_name',
             'stonehearth_ace:ui.game.unit_frame.attack_with_party_4.description');
+      App.hotkeyManager.makeTooltipWithHotkeys(this.$('#cancelAttack'),
+            'stonehearth_ace:ui.game.unit_frame.cancel_attack.display_name',
+            'stonehearth_ace:ui.game.unit_frame.cancel_attack.description');
 
       App.tooltipHelper.createDynamicTooltip(self.$('#jobToggleDiv'), function () {
          var status = self.get('jobEnabledStatus');
@@ -776,6 +779,10 @@ App.StonehearthUnitFrameView.reopen({
 
       attackWithParty: function(party) {
          this._issueAttackCommand(party);
+      },
+
+      cancelAttack: function() {
+         radiant.call('stonehearth_ace:cancel_combat_order_on_target', this.get('uri'));
       },
 
       toggleJob: function () {

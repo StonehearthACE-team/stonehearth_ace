@@ -286,4 +286,8 @@ function AcePopulationFaction:get_job_index(population)
    return job_index
 end
 
+function AcePopulationFaction:get_parties()
+   return self._sv.parties
+end
+
 return AcePopulationFaction
