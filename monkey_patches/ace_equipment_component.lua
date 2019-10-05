@@ -162,30 +162,23 @@ end
 function AceEquipmentComponent:cache_equipment(key, add_equipment, unequip_slots)
    if self._sv.caches[key] then
       -- we already have a cache for this key; don't try to apply it again, even if it's from a different source
-      return
+      return true
    end
 
    local is_cached = false
 
    if add_equipment then
       for _, equipment in ipairs(add_equipment) do
-         local slot, cache = self:_cache_add_equipment(equipment)
-         if cache then
+         local slot = self:_cache_add_equipment(equipment, key)
+         if slot then
             is_cached = true
-            cache.key = key
-            self._sv.cached_equipment[slot] = cache
          end
 		end
    end
 
    if unequip_slots then
       for _, slot in ipairs(unequip_slots) do
-         local cache = self:_cache_unequip_slot(slot)
-         if cache then
-            is_cached = true
-            cache.key = key
-            self._sv.cached_equipment[slot] = cache
-         end
+         is_cached = is_cached or self:_cache_unequip_slot(slot, key)
 		end
    end
 
@@ -197,26 +190,32 @@ function AceEquipmentComponent:cache_equipment(key, add_equipment, unequip_slots
    end
 end
 
-function AceEquipmentComponent:_cache_add_equipment(uri)
+function AceEquipmentComponent:_cache_add_equipment(uri, key)
    local ep_data = radiant.entities.get_component_data(uri, 'stonehearth:equipment_piece')
    local slot = ep_data and ep_data.slot
 
-   if slot and not self._sv.cached_equipment[slot] then
-      local unequipped, item = self:equip_item(uri, false)
-      if item then
-         return slot, {
-            old = unequipped,
-            new = item
-         }
+   if slot then
+      if not self._sv.cached_equipment[slot] then
+         local unequipped, item = self:equip_item(uri, false)
+         if item then
+            self._sv.cached_equipment[slot] = {
+               old = unequipped,
+               new = item,
+               key = key
+            }
+            return slot
+         end
       end
    end
 end
 
-function AceEquipmentComponent:_cache_unequip_slot(slot)
+function AceEquipmentComponent:_cache_unequip_slot(slot, key)
    if self._sv.equipped_items[slot] and not self._sv.cached_equipment[slot] then
-      return {
-         old = self:unequip_item(self._sv.equipped_items[slot])
+      self._sv.cached_equipment[slot] = {
+         old = self:unequip_item(self._sv.equipped_items[slot]),
+         key = key
       }
+      return true
    end
 end
 
