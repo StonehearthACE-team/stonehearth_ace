@@ -45,14 +45,18 @@ App.AceBuildFenceModeView = App.View.extend({
 
          // find the appropriate insert index based on location
          var x = e.pageX - segmentsDiv.offset().left;
-         var y = segmentsDiv.height() - (e.pageY - segmentsDiv.offset().top);
+         //var y = segmentsDiv.height() - (e.pageY - segmentsDiv.offset().top);
          var index = Math.floor((x - 5) / 75 + 0.5);
          self._insertIndex = index;
          var btn = self.$('#addSegmentBtn');
          var left = index * 75 - btn.width() / 2 + 5;
          btn.css('left', left);
-         self.set('canAddSegment', y < 60 && Math.abs(x - left) < 50);
+         self.set('canAddSegment', Math.abs(x - left) < 50);
+      })
+      .on('mouseleave', function(e) {
+         self.set('canAddSegment', false);
       });
+
       self.$().on('contextmenu', '.fenceSegmentContainer', function() {
          var index = $(this).find('.toggleSegmentBtn').data('index');
          var segments = self.get('segments');
@@ -334,7 +338,7 @@ App.AceBuildFenceModeView = App.View.extend({
             return $(App.tooltipHelper.createTooltip(
                i18n.t('stonehearth_ace:ui.game.fence_mode.buttons.' + enabledStr + '.title'),
                i18n.t('stonehearth_ace:ui.game.fence_mode.buttons.' + enabledStr + '.description')));
-         }, {delay: 250});
+         }, {delay: 250, position: 'bottom'});
       });
    },
 
@@ -399,7 +403,7 @@ App.AceBuildFenceModeView = App.View.extend({
             // maybe work in the crafting requirements to this tooltip (e.g., 3/4 craftable, requires [Mason] Lvl 2)
             var requirementText = self._getPresetCrafterRequirementText(preset);
             return $(App.tooltipHelper.createTooltip(preset.title, requirementText));
-         });
+         }, {position: 'right', offsetX: 60});
 
          // $(this).find('.presetSegmentImg').each(function() {
          //    self._createSegmentTooltip(self, $(this));

@@ -20,6 +20,7 @@
 
       .fenceSegmentContainer {
          display: inline-block;
+         position: relative;
          padding: 5px;
 
          .fenceSegmentBtn {
@@ -29,6 +30,7 @@
             background-image: url(images/background.png);
 
             &.disabled {
+               opacity: inherit;
                background-image: url(images/backgroundDisabled.png);
 
                .fenceSegmentImg {
@@ -36,8 +38,23 @@
                }
             }
 
+            .selectBox {
+               position: absolute;
+               top: 0px;
+               left: 0px;
+               width: 76px;
+               height: 76px;
+               margin-left: -4px;
+               margin-top: -4px;
+               background: url(images/select_box_large.png);
+               display: none;
+            }
+
             &.selected {
-               outline: 5px rgb(255,192,0) solid;
+               .selectBox {
+                  display: block;
+                  z-index: 2;
+               }
             }
 
             .fenceSegmentImg {

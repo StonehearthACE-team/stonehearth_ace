@@ -120,7 +120,7 @@ $.widget( "stonehearth.stonehearthMenu", $.stonehearth.stonehearthMenu, {
          var parent = menuItem.parent();
          var grandParentId = parent.attr('parent');
          if (grandParentId) {
-            //self.showMenu(grandParentId);
+            self.showMenu(grandParentId);
          }
 
          self._applyGameMode(nodeData, isOpening);

@@ -5,6 +5,7 @@
       <div class="fenceSegmentContainer">
          <a href="#" {{action "selectSegment" segment target="view"}} {{bind-attr data-uri=segment.uri class=":fenceSegmentBtn segment.enabled:enabled:disabled"}}>
             <img class="fenceSegmentImg" {{bind-attr src=segment.icon}}/>
+            <div class="selectBox"></div>
          </a>
          <a href="#" {{action "toggleSegment" segment target="view"}} {{bind-attr data-index=_view.contentIndex class=":toggleSegmentBtn segment.enabled:enabled:disabled"}}>
             <img class="toggleSegmentImg"/>
