@@ -2204,6 +2204,9 @@
             "fight_attack_party_4": {
                "display_name": "Attack With Party 4"
             },
+            "fight_cancel_attack": {
+               "display_name": "Cancel All Attacks"
+            },
 				"zone_farms": {
                "display_name": "Farm Type Menu"
             },
@@ -8025,7 +8028,7 @@
                "description": "In Scheiben geschnittene, panierte und frittierte BuckBuck-Fleischstücke."
             },
             "poyo_nuggets_serving": {
-               "display_name": "Ein paar BuckBuck Nuggets",
+               "display_name": "Ein paar BuckBuck-Nuggets",
                "description": "Nom nom nom"
             }
          },
@@ -8104,43 +8107,43 @@
          },
          "honey": {
             "honey_wild": {
-               "display_name": "Wild Honey",
-               "description": "Sweet, with an earthen flavor. Can be eaten raw or used in cooking."
+               "display_name": "Wilder Honig",
+               "description": "Süß, mit einem erdigen Geschmack. Kann roh verzehrt oder zum Kochen verwendet werden."
             },
             "honey": {
-               "display_name": "Honey",
-               "description": "Fruity, flowered honey. Delicious! Eat it raw or use in cooking."
+               "display_name": "Honig",
+               "description": "Fruchtiger, geblümter Honig. Köstlich! Iss es roh oder verwende es zum Kochen."
             },
             "honey_serving": {
-               "display_name": "Serving of Honey"
+               "display_name": "Etwas Honig"
             }
          },
          "honeybuns": {
             "honeybuns_serving": {
-               "display_name": "Honeybun",
-               "description": "Let me guess... Someone stole your sweetroll!"
+               "display_name": "Honig-Brötchen",
+               "description": "Lass mich raten ... Jemand hat deinen Schatz gestohlen!"
             },
             "honeybuns": {
-               "display_name": "Honeybuns",
-               "description": "Sweet and fluffy little buns."
+               "display_name": "Honig-Brötchen",
+               "description": "Süße und flauschige kleine Brötchen."
             }
          },
          "glazed_pork_ribs": {
             "glazed_pork_ribs": {
-               "display_name": "Glazed Pork Ribs",
-               "description": "Finely cut pork ribs, honey-glazed to perfection."
+               "display_name": "Glasierte Schweinerippchen",
+               "description": "Fein geschnittene Schweinerippchen, perfekt honigglasiert."
             },
             "glazed_pork_ribs_serving": {
-               "display_name": "Serving of Glazed Pork Ribs"
+               "display_name": "Ein paar Rippen vom glasierten Schweinerippchen"
             }
          },
          "glazed_veggies": {
             "glazed_veggies": {
-               "display_name": "Glazed Veggies",
-               "description": "Stirred and fried vegetables with a crusty, sugared glazing."
+               "display_name": "Glasiertes Gemüse",
+               "description": "Gebratenes Gemüse mit einer knusprigen, gezuckerten Glasur."
             },
             "glazed_veggies_serving": {
-               "display_name": "Serving of Glazed Veggies"
+               "display_name": "Ein wenig vom glasiertem Gemüse"
             }
          }
       },
@@ -10234,28 +10237,28 @@
             "zone_menu": {
                "items": {
                   "create_farm": {
-							"display_name": "Farms",
-                     "description": "Create a zone that allows you to grow different things from the ground!",
-                     "tip_description": "Right click to exit. Rotate with [str(left_binding)] and [str(right_binding)] keys",
+		     "display_name": "Farmen",
+                     "description": "Erstelle eine Zone, in der du verschiedene Dinge anbauen kannst!",
+                     "tip_description": "Klicke mit der rechten Maustaste, um den Vorgang zu beenden. Drehe mit den Tasten [str(left_binding)] und [str(right_binding)]",
                      "create_field_farm": {
-                        "display_name": "Farm Field",
-                        "description": "Place a farm on grass or dirt that can grow conventional crops.",
-                        "required_ability_text": "Your town has not yet unlocked this farm type."
+                        "display_name": "Farmfeld",
+                        "description": "Erstellee eine Farm auf Gras oder Erde, auf der kultivierbare Pflanzen wachsen können.",
+                        "required_ability_text": "Deine Stadt hat diesen Farmtyp noch nicht freigeschaltet."
                      },
                      "create_field_underfarm": {
-                        "display_name": "Underfarm Field",
-                        "description": "Place a farm on dirt or rock that can grow low-light crops like mushrooms.",
-                        "required_ability_text": "Your town has not yet unlocked this farm type."
+                        "display_name": "Untergrundfarmen",
+                        "description": "Erstelle eine Farm auf Erde oder Felsen, auf denen Pflanzen mit wenig Lichtbedürfniss wie Pilze wachsen können.",
+                        "required_ability_text": "Deine Stadt hat diesen Farmtyp noch nicht freigeschaltet."
                      },
-							"create_field_orchard": {
-                        "display_name": "Orchard",
-                        "description": "Place a farm on grass or dirt that can grow trees that bear nuts or fruits.",
-                        "required_ability_text": "Your town has not yet unlocked this farm type."
+		     "create_field_orchard": {
+                        "display_name": "Obstplantage",
+                        "description": "Erstelle eine Farm auf Gras oder Erde, auf der Bäume wachsen können, die Nüsse oder Früchte tragen.",
+                        "required_ability_text": "Deine Stadt hat diesen Farmtyp noch nicht freigeschaltet."
                      },
                      "create_field_treefarm": {
-                        "display_name": "Timber Farm",
-                        "description": "Place a farm on grass or dirt that can grow larger trees.",
-                        "required_ability_text": "Your town has not yet unlocked this farm type."
+                        "display_name": "Holzfarm",
+                        "description": "Erstelle eine Farm auf Gras oder Erde, auf der größere Bäume wachsen können.",
+                        "required_ability_text": "Deine Stadt hat diesen Farmtyp noch nicht freigeschaltet."
                      }
                   }
                }
@@ -10519,31 +10522,35 @@
                "progress": "Baut... "
             },
             "attack_with_all_parties": {
-               "display_name": "Attack With All Parties",
-               "description": "Attack the selected entity with all combat parties."
+               "display_name": "Angriff mit allen Gruppen",
+               "description": "Greife die ausgewählte Einheit mit allen Kampfgruppen an."
             },
             "attack_with_party_1": {
-               "display_name": "Attack With Party 1",
-               "description": "Attack the selected entity with combat party 1."
+               "display_name": "Angriff mit Gruppe 1",
+               "description": "Greife die ausgewählte Einheit mit Kampfgruppe 1 an."
             },
             "attack_with_party_2": {
-               "display_name": "Attack With Party 2",
-               "description": "Attack the selected entity with combat party 2."
+               "display_name": "Angriff mit Gruppe 2",
+               "description": "Greife die ausgewählte Einheit mit Kampfgruppe 2 an."
             },
             "attack_with_party_3": {
-               "display_name": "Attack With Party 3",
-               "description": "Attack the selected entity with combat party 3."
+               "display_name": "Angriff mit Gruppe 3",
+               "description": "Greife die ausgewählte Einheit mit Kampfgruppe 3 an."
             },
             "attack_with_party_4": {
-               "display_name": "Attack With Party 4",
-               "description": "Attack the selected entity with combat party 4."
+               "display_name": "Angriff mit Gruppe 4",
+               "description": "Greife die ausgewählte Einheit mit Kampfgruppe 4 an."
+            },
+            "cancel_attack": {
+               "display_name": "Alle Angriffe abbrechen",
+               "description": "Bricht alle Angriffe ab, die auf das ausgewählte Einheit zielt."
             },
             "job_toggle": {
-               "toggle_on": "Toggle Job On",
-               "toggle_off": "Toggle Job Off",
-               "toggledOn": "The Job activity for this unit or party is currently on; click to toggle it off.",
-               "toggledOff": "The Job activity for this unit or party is currently off; click to toggle it on.",
-               "toggledSome": "The Job activity for some of this party is on, and for some it is off; click to toggle it on for all."
+               "toggle_on": "Schalte Job ein",
+               "toggle_off": "Schalte Job aus",
+               "toggledOn": "Die Jobaktivität für diese Einheit oder Gruppe ist derzeit aktiv. Klicke hier um sie auszuschalten.",
+               "toggledOff": "Die Jobaktivität für diese Einheit oder Gruppe ist derzeit aus. Klicke hier um sie einzuschalten",
+               "toggledSome": "Die Jobaktivität für einige dieser Gruppe ist aktiviert und für einige deaktiviert. Klicke hier um sie für alle zu aktivieren."
             }
          },
          "save_view": {
