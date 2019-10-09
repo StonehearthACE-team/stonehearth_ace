@@ -106,6 +106,7 @@ local monkey_patches = {
    ace_population_faction = 'stonehearth.services.server.population.population_faction',
    ace_entities_call_handler = 'stonehearth.call_handlers.entities_call_handler',
    ace_farming_call_handler = 'stonehearth.call_handlers.farming_call_handler',
+   ace_resource_call_handler = 'stonehearth.call_handlers.resource_call_handler',
    ace_periodic_health_modification = 'stonehearth.data.buffs.scripts.periodic_health_modification',
 	ace_aura_buff = 'stonehearth.data.buffs.scripts.aura_buff',
    ace_tentacle_snared_debuff = 'stonehearth.data.buffs.tentacle_snared.tentacle_snared_debuff',

@@ -258,7 +258,9 @@ function AceTown:_get_farm_crops_data()
             if plot.post_harvest_contents then
                uri = plot.post_harvest_contents:get_uri()
             end
-            crops[uri] = (crops[uri] or 0) + 1
+            if uri then
+               crops[uri] = (crops[uri] or 0) + 1
+            end
          end
       end
    end

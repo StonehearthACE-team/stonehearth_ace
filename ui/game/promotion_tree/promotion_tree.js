@@ -211,11 +211,15 @@ App.StonehearthPromotionTree.reopen({
       });
 
       // now that we've processed all the nodes, we can go back and fill in the additionalParents parent references
+      var realParents = [];
       additionalParents.forEach(nodePair => {
          nodePair.parent = nodeMap[nodePair.parent];
+         if (nodePair.parent && nodePair.child) {
+            realParents.push(nodePair);
+         }
       });
 
-      root.additionalParents = additionalParents;
+      root.additionalParents = realParents;
       return root;
    },
 
