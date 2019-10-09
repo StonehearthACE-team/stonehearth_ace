@@ -83,26 +83,28 @@ App.StonehearthPastureView.reopen({
       }
 
       if (capacity) {
-         var pastureData = self.get('model.stonehearth:shepherd_pasture.pasture_data');
+         var pastureData = self.get('model.uri.components.stonehearth:shepherd_pasture.pasture_data');
          var pastureType = self.get('model.stonehearth:shepherd_pasture.pasture_type');
-         var min = pastureData[pastureType].min_population || 2;
-         var vals = [];
-         for (var i = capacity; i >= min; i--) {
-            vals.push(i + '');
-         }
-
-         var onChanged = function (key, value) {
-            var val = parseInt(value.key);
-            if (val != NaN) {
-               radiant.call('stonehearth_ace:set_pasture_maintain_animals', self.get('uri'), val);
+         if (pastureData && pastureType) {
+            var min = pastureData[pastureType] && pastureData[pastureType].min_population || 2;
+            var vals = [];
+            for (var i = capacity; i >= min; i--) {
+               vals.push(i + '');
             }
-         };
 
-         selector = App.guiHelper.createCustomSelector('pasture_maintainAnimals', vals, onChanged).container;
-         App.guiHelper.setListSelectorValue(selector, maintain + '');
+            var onChanged = function (key, value) {
+               var val = parseInt(value.key);
+               if (val != NaN) {
+                  radiant.call('stonehearth_ace:set_pasture_maintain_animals', self.get('uri'), val);
+               }
+            };
 
-         self._maintainSelector = selector;
-         self.$('#maintainAnimals').append(selector);
+            selector = App.guiHelper.createCustomSelector('pasture_maintainAnimals', vals, onChanged).container;
+            App.guiHelper.setListSelectorValue(selector, maintain + '');
+
+            self._maintainSelector = selector;
+            self.$('#maintainAnimals').append(selector);
+         }
       }
    }.observes('model.stonehearth:shepherd_pasture.pasture_type'),
 
