@@ -189,7 +189,7 @@ function AceTownPatrol:_add_to_patrol_list(object)
       self:_trigger_patrol_route_available(player_id)
 
 		self._sv._object_to_player_map[object_id] = player_id
-		self.__saved_variables:mark_changed()
+		--self.__saved_variables:mark_changed()
 	end
 
 	-- trace all objects that are patrollable in case their ownership changes
@@ -198,7 +198,7 @@ end
 
 function AceTownPatrol:__add_to_list(player_patrollable_objects, patrollable_object, object_id, player_id)
 	player_patrollable_objects[object_id] = patrollable_object
-	self.__saved_variables:mark_changed()
+	--self.__saved_variables:mark_changed()
 end
 
 function AceTownPatrol:__remove_from_list(player_patrollable_objects, object_id)
@@ -230,7 +230,7 @@ function AceTownPatrol:_remove_from_patrol_list(object_id)
 
 	self:_remove_player_id_trace(object_id)
 
-	self.__saved_variables:mark_changed()
+	--self.__saved_variables:mark_changed()
 end
 
 function AceTownPatrol:_get_auto_patrollable_objects(player_id)
