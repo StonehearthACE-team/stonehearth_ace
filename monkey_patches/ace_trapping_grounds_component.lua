@@ -23,7 +23,7 @@ function TrappingGroundsComponent:post_activate(entity, json)
    end
 end
 
-AceTrappingGroundsComponent._ace_old_destroy = TrappingGroundsComponent.destroy
+AceTrappingGroundsComponent._ace_old_destroy = TrappingGroundsComponent.__user_destroy
 function AceTrappingGroundsComponent:destroy()
    if self._wilderness_listener then
       self._wilderness_listener:destroy()

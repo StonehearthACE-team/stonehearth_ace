@@ -11,7 +11,8 @@
       "rayyas_children",
       "northern_alliance",
       "radiant",
-      "debug_tools"
+      "debug_tools",
+      "metaclass_override"
    ],
    "default_locale": "en",
    "client_init_script": "file(stonehearth_ace_client)",
@@ -3135,6 +3136,7 @@
       "stonehearth/data/rigs/jobs/cook/cook_oven/effects/work.json": "file(data/rigs/jobs/cook/cook_oven/effects/work.json)"
    },
    "overrides": {
+      "radiant/lib/unclasslib.lua": "file(radiant/lib/unclasslib.lua)",
       "stonehearth/data/rigs/entities/monster/goblins/goblin/effects/combat_1h_shield_block.json": "file(data/rigs/entities/monster/goblins/goblin/effects/combat_1h_shield_block.json)",
       "stonehearth/data/rigs/entities/monster/goblins/goblin/effects/combat_1h_shield_idle.json": "file(data/rigs/entities/monster/goblins/goblin/effects/combat_1h_shield_idle.json)",
       "stonehearth/data/rigs/entities/monster/goblins/goblin/effects/archer_1h_idle.json": "file(data/rigs/entities/monster/goblins/goblin/effects/archer_1h_idle.json)",

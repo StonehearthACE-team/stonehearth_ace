@@ -4,7 +4,7 @@ local log = radiant.log.create_logger('crafter'):set_prefix('craft_items_orchest
 
 local AceCraftItemsOrchestrator = class()
 
-AceCraftItemsOrchestrator._ace_old_destroy = CraftItemsOrchestrator.destroy
+AceCraftItemsOrchestrator._ace_old_destroy = CraftItemsOrchestrator.__user_destroy
 function AceCraftItemsOrchestrator:destroy()
    if self._bulletin_clear_timer then
       for id, timer in pairs(self._bulletin_clear_timer) do

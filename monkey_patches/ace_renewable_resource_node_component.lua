@@ -56,7 +56,7 @@ function AceRenewableResourceNodeComponent:post_activate()
    end
 end
 
-AceRenewableResourceNodeComponent._ace_old_destroy = RenewableResourceNodeComponent.destroy
+AceRenewableResourceNodeComponent._ace_old_destroy = RenewableResourceNodeComponent.__user_destroy
 function AceRenewableResourceNodeComponent:destroy()
    self:_destroy_listeners()
    self:_destroy_added_to_world_listener()

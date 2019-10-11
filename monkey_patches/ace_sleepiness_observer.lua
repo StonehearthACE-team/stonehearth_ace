@@ -3,13 +3,6 @@ local rng = _radiant.math.get_default_rng()
 local SleepinessObserver = require 'stonehearth.ai.observers.sleepiness_observer'
 local AceSleepinessObserver = class()
 
-AceSleepinessObserver._ace_old_initialize = SleepinessObserver.initialize
-function AceSleepinessObserver:initialize()
-   self._sv.asleep = nil
-	
-   self:_ace_old_initialize()
-end
-
 AceSleepinessObserver._ace_old__on_hourly = SleepinessObserver._on_hourly
 function AceSleepinessObserver:_on_hourly()	
 	if not self._sv.asleep then
