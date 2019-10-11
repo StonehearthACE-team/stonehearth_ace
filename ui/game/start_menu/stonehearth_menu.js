@@ -119,7 +119,7 @@ $.widget( "stonehearth.stonehearthMenu", $.stonehearth.stonehearthMenu, {
          // show the parent menu for this menu item
          var parent = menuItem.parent();
          var grandParentId = parent.attr('parent');
-         if (grandParentId) {
+         if (grandParentId && nodeData.ensure_parent_menu != false) {
             self.showMenu(grandParentId);
          }
 

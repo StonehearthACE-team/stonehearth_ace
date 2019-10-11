@@ -926,7 +926,15 @@ App.StonehearthFarmView.reopen({
 
    isFallow: function() {
       return this.get('cropProperties') == null;
-   }.property('cropProperties')
+   }.property('cropProperties'),
+
+   _selectedFarmChanged: function() {
+      if (this.palette) {
+         this.palette.destroy();
+         this.palette = null;
+      }
+      
+   }.observes('uri')
 });
 
 App.StonehearthFarmCropPalette.reopen({

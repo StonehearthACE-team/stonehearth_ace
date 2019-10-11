@@ -9,8 +9,12 @@ local log = radiant.log.create_logger('farming_call_handler')
 
 local AceFarmingCallHandler = class()
 
+-- store this outside the choose_new_field_location function so it doesn't reset after each farm placement
+local rotation = 0
+
 function AceFarmingCallHandler:choose_new_field_location(session, response, field_type)
    local bindings = _radiant.client.get_binding_system()
+   local orig_rotation = rotation
    
    field_type = field_type or 'farm'
    local data = radiant.resources.load_json('stonehearth:farmer:all_crops').field_types or {}
@@ -22,6 +26,7 @@ function AceFarmingCallHandler:choose_new_field_location(session, response, fiel
    local crop_data = radiant.entities.get_component_data(sample_crop, 'stonehearth:crop')
    local harvest_stage = crop_data and crop_data.harvest_threshhold
    local pattern = field_data.pattern or farming_lib.DEFAULT_PATTERN
+   local valid_terrain = field_data.terrain or {grass = true, dirt = true}
 
    local crop_entities = {}
    local crops = {}
@@ -30,7 +35,7 @@ function AceFarmingCallHandler:choose_new_field_location(session, response, fiel
       for y = 1, max_size do
          if farming_lib.get_location_type(pattern, x, y) == farming_lib.LOCATION_TYPES.CROP then
             local entity = radiant.entities.create_entity(sample_crop)
-            entity:remove_component('region_collision_shape')
+            entity:add_component('region_collision_shape'):set_region_collision_type(_radiant.om.RegionCollisionShape.NONE)
             if harvest_stage then
                entity:get_component('render_info'):set_model_variant(harvest_stage)
             end
@@ -53,7 +58,6 @@ function AceFarmingCallHandler:choose_new_field_location(session, response, fiel
    end
 
    local prev_box, prev_rotation
-   local rotation = 0
    stonehearth.selection:select_designation_region(stonehearth.constants.xz_region_reasons.NEW_FIELD)
       :set_min_size(size.min or 1)
       :set_max_size(max_size)
@@ -118,10 +122,7 @@ function AceFarmingCallHandler:choose_new_field_location(session, response, fiel
             return render_node, region_shape, region_type
          end)
       :set_cursor(field_data.cursor or 'stonehearth:cursors:zone_farm')
-      :set_find_support_filter(stonehearth.selection.valid_terrain_blocks_only_xz_region_support_filter(field_data.terrain or {
-            grass = true,
-            dirt = true
-         }))
+      :set_find_support_filter(stonehearth.selection.valid_terrain_blocks_only_xz_region_support_filter(valid_terrain))
       :done(function(selector, box)
             local size = {
                x = box.max.x - box.min.x,
@@ -144,6 +145,7 @@ function AceFarmingCallHandler:choose_new_field_location(session, response, fiel
             --       selector._p0, selector._p1, q0, q1, tostring(is_valid_region), tostring(valid_dimensions), radiant.util.table_tostring(crop_entities))
             selector:destroy()
             response:reject('no region')
+            rotation = orig_rotation
          end)
       :always(function()
             for crop_entity, render_trace in pairs(crop_entities) do
