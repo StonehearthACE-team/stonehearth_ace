@@ -122,7 +122,26 @@ function AceFarmingCallHandler:choose_new_field_location(session, response, fiel
             return render_node, region_shape, region_type
          end)
       :set_cursor(field_data.cursor or 'stonehearth:cursors:zone_farm')
-      :set_find_support_filter(stonehearth.selection.valid_terrain_blocks_only_xz_region_support_filter(valid_terrain))
+      :set_find_support_filter(function(result)
+         local entity = result.entity
+   
+         local rcs = entity:get_component('region_collision_shape')
+         local region_collision_type = rcs and rcs:get_region_collision_type()
+         if region_collision_type == _radiant.om.RegionCollisionShape.NONE then
+            return stonehearth.selection.FILTER_IGNORE
+         end
+   
+         if entity:get_id() ~= radiant._root_entity_id then
+            return false
+         end
+   
+         local brick = result.brick
+         local tag = radiant.terrain.get_block_tag_at(brick)
+         local kind = radiant.terrain.get_block_kind_from_tag(tag)
+         local name = radiant.terrain.get_block_name_from_tag(tag)
+         local is_valid = valid_terrain[kind] or valid_terrain[name]
+         return is_valid
+      end)
       :done(function(selector, box)
             local size = {
                x = box.max.x - box.min.x,
