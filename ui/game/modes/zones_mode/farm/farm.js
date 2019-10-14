@@ -355,6 +355,10 @@ App.StonehearthFarmView.reopen({
 
       var growth_time = details.growth_time;
       var total_growth_time = details.total_growth_time;
+      if (total_growth_time.minute > 0) {
+         total_growth_time.hour += 1;
+         total_growth_time.minute = 0;
+      }
       var time_str = total_growth_time.day > 0 ? 
             (total_growth_time.hour > 0 ? localizations.growth_time.days_and_hours : localizations.growth_time.days_only) : 
             localizations.growth_time.hours_only;
@@ -464,15 +468,15 @@ App.StonehearthFarmView.reopen({
             lightAffinity.i18n_data = { min_light_level: self._formatPercentValue(affinities.best_affinity.min_level) };
          }
 
+         cropProperties.lightAffinity = lightAffinity;
+         self._setTooltipData(lightAffinity);
+         self._createPropertyTooltip(self.$('#lightAffinity'), lightAffinity.name);
+
          self.set('showLight', true);
       }
       else {
          self.set('showLight', false);
       }
-
-      cropProperties.lightAffinity = lightAffinity;
-      self._setTooltipData(lightAffinity);
-      self._createPropertyTooltip(self.$('#lightAffinity'), lightAffinity.name);
 
       return cropProperties;
    },
@@ -649,29 +653,32 @@ App.StonehearthFarmView.reopen({
       }
 
 
-      if (current_light_level < cropProperties.lightAffinity.min_light_level) {
-         status = self._STATUSES.AVERAGE;
-      }
-      else if(cropProperties.lightAffinity.max_light_level && current_light_level > cropProperties.lightAffinity.max_light_level) {
-         status = self._STATUSES.AVERAGE;
-      }
-      else {
-         status = self._STATUSES.OPTIMAL;
-      }
+      if (cropProperties.lightAffinity)
+      {
+         if (current_light_level < cropProperties.lightAffinity.min_light_level) {
+            status = self._STATUSES.AVERAGE;
+         }
+         else if(cropProperties.lightAffinity.max_light_level && current_light_level > cropProperties.lightAffinity.max_light_level) {
+            status = self._STATUSES.AVERAGE;
+         }
+         else {
+            status = self._STATUSES.OPTIMAL;
+         }
 
-      var currentLightLevel = {
-         name: 'currentLightLevel',
-         icon: self._getLightIcon(current_light_level),
-         status: status,
-         tooltipTitle: localizations.light_affinity.status_name,
-         tooltip: localizations.light_affinity.current_level,
-         i18n_data: { current_light_level: self._formatPercentValue(current_light_level) }
-      };
+         var currentLightLevel = {
+            name: 'currentLightLevel',
+            icon: self._getLightIcon(current_light_level),
+            status: status,
+            tooltipTitle: localizations.light_affinity.status_name,
+            tooltip: localizations.light_affinity.current_level,
+            i18n_data: { current_light_level: self._formatPercentValue(current_light_level) }
+         };
 
-      cropStatuses.currentLightLevel = currentLightLevel;
-      self._setTooltipData(currentLightLevel);
-      self._createPropertyTooltip(self.$('#currentLightLevel'), currentLightLevel.name);
-      self._applyStatus(self.$('#currentLightLevel'), status);
+         cropStatuses.currentLightLevel = currentLightLevel;
+         self._setTooltipData(currentLightLevel);
+         self._createPropertyTooltip(self.$('#currentLightLevel'), currentLightLevel.name);
+         self._applyStatus(self.$('#currentLightLevel'), status);
+      }
 
 
       status = self._STATUSES.AVERAGE;

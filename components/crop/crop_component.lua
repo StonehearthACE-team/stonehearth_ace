@@ -140,7 +140,7 @@ function CropComponent:_on_grow_period(e)
          end
       end
    end
-   if e.finished then
+   if e.finished and not self._post_harvest_stage then
       --TODO: is growth ever really complete? Design the difference between "can't continue" and "growth complete"
       if self._growing_listener then
          self._growing_listener:destroy()
