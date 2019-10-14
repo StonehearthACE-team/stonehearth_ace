@@ -41,7 +41,7 @@
                               <img class="cropPropertyImage" {{bind-attr src="view.cropProperties.floodPreference.icon"}}/>
                            </div>
                         </td>
-                        <td>
+                        <td {{bind-attr class=view.showLight::hidden}}>
                            <div id="lightAffinity" class="cropProperty">
                               <img class="cropPropertyImage" {{bind-attr src="view.cropProperties.lightAffinity.icon"}}/>
                            </div>
@@ -70,7 +70,7 @@
                               <img class="cropPropertyImage" {{bind-attr src="view.cropStatuses.currentFlooded.icon"}}/>
                            </div>
                         </td>
-                        <td>
+                        <td {{bind-attr class=view.showLight::hidden}}>
                            <div id="currentLightLevel" class="cropProperty">
                               <img class="cropPropertyImage" {{bind-attr src="view.cropStatuses.currentLightLevel.icon"}}/>
                            </div>

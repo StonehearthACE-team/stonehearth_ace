@@ -443,23 +443,31 @@ App.StonehearthFarmView.reopen({
 
 
       var affinities = self._lightAffinities;
-      var lightAffinity = {
-         name: 'lightAffinity',
-         icon: self._getLightIcon(affinities.best_affinity.min_level),
-         tooltipTitle: localizations.light_affinity.property_name,
-         min_light_level: affinities.best_affinity.min_level
-      };
-      if (affinities.next_affinity) {
-         lightAffinity.max_light_level = affinities.next_affinity.min_level;
-         lightAffinity.tooltip = localizations.light_affinity.range;
-         lightAffinity.i18n_data = {
-            min_light_level: self._formatPercentValue(affinities.best_affinity.min_level),
-            max_light_level: self._formatPercentValue(affinities.next_affinity.min_level)
+      if (affinities.best_affinity && (affinities.best_affinity.min_level > 0 || affinities.next_affinity)) {
+         var lightAffinity = {
+            name: 'lightAffinity',
+            icon: self._getLightIcon(affinities.best_affinity.min_level),
+            tooltipTitle: localizations.light_affinity.property_name,
+            min_light_level: affinities.best_affinity.min_level
          };
+
+         if (affinities.next_affinity) {
+            lightAffinity.max_light_level = affinities.next_affinity.min_level;
+            lightAffinity.tooltip = localizations.light_affinity.range;
+            lightAffinity.i18n_data = {
+               min_light_level: self._formatPercentValue(affinities.best_affinity.min_level),
+               max_light_level: self._formatPercentValue(affinities.next_affinity.min_level)
+            };
+         }
+         else {
+            lightAffinity.tooltip = localizations.light_affinity.min_only;
+            lightAffinity.i18n_data = { min_light_level: self._formatPercentValue(affinities.best_affinity.min_level) };
+         }
+
+         self.set('showLight', true);
       }
       else {
-         lightAffinity.tooltip = localizations.light_affinity.min_only;
-         lightAffinity.i18n_data = { min_light_level: self._formatPercentValue(affinities.best_affinity.min_level) };
+         self.set('showLight', false);
       }
 
       cropProperties.lightAffinity = lightAffinity;
