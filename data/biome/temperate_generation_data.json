@@ -18,7 +18,7 @@
          "stonehearth_ace:fungi:bolete": {
             "placement_type": "dense",
             "parameters": {
-               "grid_multiple": 0.4,
+               "grid_multiple": 1,
                "item_density": 0.3,
                "exclusion_radius": 0
             }
@@ -26,7 +26,7 @@
 		 "stonehearth_ace:terrain:pasture_grass": {
             "placement_type": "dense",
             "parameters": {
-               "grid_multiple": 1.2,
+               "grid_multiple": 2,
                "item_density": 0.2,
                "exclusion_radius": 0
             }
@@ -34,7 +34,7 @@
 		 "stonehearth_ace:terrain:pasture_grass:short": {
             "placement_type": "dense",
             "parameters": {
-               "grid_multiple": 2.3,
+               "grid_multiple": 2,
                "item_density": 0.3,
                "exclusion_radius": 0
             }
@@ -42,7 +42,7 @@
 		 "stonehearth_ace:terrain:pasture_grass:overgrown": {
             "placement_type": "dense",
             "parameters": {
-               "grid_multiple": 0.6,
+               "grid_multiple": 1,
                "item_density": 0.2,
                "exclusion_radius": 0
             }
@@ -73,22 +73,22 @@
 			"sizes": {
 				"stonehearth_ace:trees:chestnut" : {
 				"small" : 0,
-				"medium" : 6,
-				"large" : 1
+				"medium" : 3,
+				"large" : 9
 				}
 			},
 			"weights": {
 				"plains" : {
 					"1" : {
-						"stonehearth_ace:trees:chestnut" : 0.08
+						"stonehearth_ace:trees:chestnut" : 0.11
 					}
 				},
 				"foothills" : {
 					"1" : {
-						"stonehearth_ace:trees:chestnut" : 0.05
+						"stonehearth_ace:trees:chestnut" : 0.08
 					},
 					"2" : {
-						"stonehearth_ace:trees:chestnut" : 0.04
+						"stonehearth_ace:trees:chestnut" : 0.06
 					}
 				}
 			}
@@ -102,8 +102,8 @@
 							"stonehearth_ace:terrain:pasture_grass:overgrown": 0.1,
 							"stonehearth_ace:terrain:pasture_grass": 0.3,
 							"stonehearth_ace:terrain:pasture_grass:short": 0.2,
-							"stonehearth_ace:trees:chestnut:small" : 0.2,
-							"stonehearth_ace:trees:chestnut:medium" : 0.1
+							"stonehearth_ace:trees:chestnut:small" : 0.3,
+							"stonehearth_ace:trees:chestnut:medium" : 0.2
                   }
                },
                "foothills": {

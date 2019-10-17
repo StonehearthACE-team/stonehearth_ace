@@ -55,7 +55,7 @@ function StumpComponent:add_stump(killer_player_id)
          local should_harvest = stonehearth.client_state:get_client_gameplay_setting(killer_player_id, 'stonehearth_ace', 'auto_harvest_tree_stumps', true)
          if should_harvest then
             local resource_component = the_stump:get_component('stonehearth:resource_node')
-            if resource_component then
+            if resource_component and radiant.entities.get_category(the_stump) == 'plants' then
                resource_component:request_harvest(killer_player_id)
             end
          end

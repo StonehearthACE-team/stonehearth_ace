@@ -10,44 +10,44 @@
 					"recipe": "file(rc_herbalist_cauldron_recipe.json)"
 				}
          }
-	  },
-	  "refinement_ingredients" : {
+	  },  
+	  "farming_enhancements": {
+         "recipes": {
+				"mixintypes": {
+					"turnip_seeds_recipe": "remove",
+					"carrot_seeds_recipe": "remove",
+					"pumpkin_seeds_recipe": "remove",
+					"brightbell_seeds_2_recipe": "remove",
+					"silkweed_seeds_2_recipe": "remove",
+					"frostsnap_seeds_2_recipe": "remove",
+					"wheat_seeds_recipe": "remove"
+				},
+				"corn_seeds_recipe": {
+					"recipe": "/stonehearth_ace/jobs/herbalist/recipes/corn_seeds_recipe.json"
+				},
+				"paddy_seeds_recipe": {
+					"recipe": "/stonehearth_ace/jobs/herbalist/recipes/paddy_seeds_recipe.json"
+				},
+				"cotton_seeds_2_recipe": {
+					"recipe": "/stonehearth_ace/jobs/herbalist/recipes/cotton_seeds_2_recipe.json"
+				},
+				"cactus_flower_seeds_2_recipe": {
+					"recipe": "/stonehearth_ace/jobs/herbalist/recipes/cactus_flower_seeds_2_recipe.json"
+				},
+				"watermelon_seeds_recipe": {
+					"recipe": "/stonehearth_ace/jobs/herbalist/recipes/watermelon_seeds_recipe.json"
+				},
+				"golden_gourd_seeds_recipe": {
+					"recipe": "/stonehearth_ace/jobs/herbalist/recipes/golden_gourd_seeds_recipe.json"
+				}
+			}
+	   },
+	   "brewing_ingredients" : {
 			"recipes" : {
 				"gruit" : {
 					"recipe" : "file(rc_gruit_recipe.json)"
 				}
 			}
-		},
-	  "farming_enhancements": {
-         "recipes": {
-			"mixintypes": {
-				"turnip_seeds_recipe": "remove",
-				"carrot_seeds_recipe": "remove",
-				"pumpkin_seeds_recipe": "remove",
-				"brightbell_seeds_2_recipe": "remove",
-				"silkweed_seeds_2_recipe": "remove",
-				"frostsnap_seeds_2_recipe": "remove",
-				"wheat_seeds_recipe": "remove"
-			},
-			"corn_seeds_recipe": {
-            "recipe": "/stonehearth_ace/jobs/herbalist/recipes/corn_seeds_recipe.json"
-         },
-			"paddy_seeds_recipe": {
-            "recipe": "/stonehearth_ace/jobs/herbalist/recipes/paddy_seeds_recipe.json"
-         },
-			"cotton_seeds_2_recipe": {
-            "recipe": "/stonehearth_ace/jobs/herbalist/recipes/cotton_seeds_2_recipe.json"
-         },
-			"cactus_flower_seeds_2_recipe": {
-            "recipe": "/stonehearth_ace/jobs/herbalist/recipes/cactus_flower_seeds_2_recipe.json"
-         },
-			"watermelon_seeds_recipe": {
-            "recipe": "/stonehearth_ace/jobs/herbalist/recipes/watermelon_seeds_recipe.json"
-         },
-			"golden_gourd_seeds_recipe": {
-            "recipe": "/stonehearth_ace/jobs/herbalist/recipes/golden_gourd_seeds_recipe.json"
-         }
-		 }
-	  }
+		}
    }
 }

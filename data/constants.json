@@ -687,6 +687,25 @@
          "MIN_SLEEPINESS_TO_SLEEP_ON_GROUND": 25,
 			"MAX_SLEEPINESS": 32
       },
+		"item_quality": {
+         "mixintypes": {
+				"bonuses": "override"
+			},
+         "bonuses": {
+            "net_worth": [
+               0,
+               0.6,
+               1.5,
+               4
+            ],
+            "appeal": [
+               0,
+               0.5,
+               1.2,
+               3
+            ]
+         }
+      },
 		"crafting": {
 			"mixintypes": {
 				"ITEM_QUALITY_CHANCES": "override"

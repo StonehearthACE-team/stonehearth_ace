@@ -26,7 +26,7 @@
          "stonehearth_ace:fungi:winter_morel": {
             "placement_type": "dense",
             "parameters": {
-               "grid_multiple": 0.8,
+               "grid_multiple": 1,
                "item_density": 0.2,
                "exclusion_radius": 0
             }
@@ -34,7 +34,7 @@
 		 "stonehearth_ace:terrain:pasture_grass": {
             "placement_type": "dense",
             "parameters": {
-               "grid_multiple": 1.4,
+               "grid_multiple": 1,
                "item_density": 0.2,
                "exclusion_radius": 5
             }
@@ -42,7 +42,7 @@
 		 "stonehearth_ace:terrain:pasture_grass:short": {
             "placement_type": "dense",
             "parameters": {
-               "grid_multiple": 2.4,
+               "grid_multiple": 2,
                "item_density": 0.3,
                "exclusion_radius": 3
             }
@@ -50,7 +50,7 @@
 		 "stonehearth_ace:terrain:pasture_grass:overgrown": {
             "placement_type": "dense",
             "parameters": {
-               "grid_multiple": 1.2,
+               "grid_multiple": 1,
                "item_density": 0.2,
                "exclusion_radius": 7
             }
@@ -82,13 +82,13 @@
 				"stonehearth_ace:trees:walnut" : {
 				"small" : 0,
 				"medium" : 4,
-				"large" : 3
+				"large" : 9
 				}
 			},
 			"weights": {
 				"plains" : {
 					"1" : {
-						"stonehearth_ace:trees:walnut" : 0.45
+						"stonehearth_ace:trees:walnut" : 0.32
 					}
 				}
 			}
@@ -102,7 +102,7 @@
 							"stonehearth_ace:terrain:pasture_grass:overgrown": 0.1,
 							"stonehearth_ace:terrain:pasture_grass": 0.2,
 							"stonehearth_ace:terrain:pasture_grass:short": 0.1,
-							"stonehearth_ace:trees:walnut:small" : 0.3,
+							"stonehearth_ace:trees:walnut:small" : 0.2,
                   }
                },
                "foothills": {
@@ -111,7 +111,7 @@
 							"stonehearth_ace:terrain:pasture_grass:overgrown": 0.1,
 							"stonehearth_ace:terrain:pasture_grass": 0.2,
 							"stonehearth_ace:terrain:pasture_grass:short": 0.1,
-							"stonehearth_ace:trees:walnut:small" : 0.2,
+							"stonehearth_ace:trees:walnut:small" : 0.15,
                   },
                   "2": {
                      "stonehearth_ace:fungi:winter_morel": 0.1

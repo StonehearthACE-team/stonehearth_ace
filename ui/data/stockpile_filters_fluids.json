@@ -130,6 +130,12 @@
                "icon": "/stonehearth_ace/entities/drink/spirit_fruit/spirit_fruit/spirit_fruit.png",
                "filter": "drink_container spirit_fruit"
             },
+            "spirit_hearth": {
+               "ordinal": 5.2,
+               "display_name": "i18n(stonehearth_ace:entities.drink.spirit_hearth.spirit_hearth.display_name)",
+               "icon": "/stonehearth_ace/entities/drink/spirit_hearth/spirit_hearth/spirit_hearth.png",
+               "filter": "drink_container spirit_hearth"
+            },
             "liquor": {
                "ordinal": 6,
                "display_name": "i18n(stonehearth_ace:entities.drink.liquor.liquor.display_name)",
@@ -364,6 +370,12 @@
                "icon": "/stonehearth/entities/consumables/healing_tonic/small_healing_tonic/small_healing_tonic.png",
                "filter": "healing_item small consumable"
             },
+            "hearth_healing_tonic": {
+               "ordinal": 1.1,
+               "display_name": "i18n(stonehearth_ace:entities.consumables.healing_tonic.hearth_healing_tonic.display_name)",
+               "icon": "/stonehearth_ace/entities/consumables/healing_tonic/hearth_healing_tonic/hearth_healing_tonic.png",
+               "filter": "healing_item hearth_healing_tonic consumable"
+            },
             "courage_tonic": {
                "ordinal": 4,
                "display_name": "i18n(stonehearth:entities.consumables.courage_tonic.display_name)",
@@ -387,6 +399,12 @@
                "display_name": "i18n(stonehearth:entities.consumables.strength_tonic.display_name)",
                "icon": "/stonehearth/entities/consumables/strength_tonic/strength_tonic.png",
                "filter": "strength_tonic"
+            },
+            "hearth_tonic": {
+               "ordinal": 8,
+               "display_name": "i18n(stonehearth_ace:entities.consumables.hearth_tonic.display_name)",
+               "icon": "/stonehearth_ace/entities/consumables/hearth_tonic/hearth_tonic.png",
+               "filter": "hearth_tonic"
             }
          }
       }

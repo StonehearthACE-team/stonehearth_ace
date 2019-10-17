@@ -1,0 +1,99 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:rabbit",
+   "components": {
+      "mixintypes": {
+         "stonehearth:loot_drops": "remove"
+      },
+      "stonehearth:attributes": {
+         "min_sleepiness": {
+            "type": "basic",
+            "value": 0
+         },
+         "max_sleepiness": {
+            "type": "basic",
+            "value": 32
+         }
+      },
+      "stonehearth:expendable_resources": {
+         "resources": {
+            "sleepiness": {
+               "min": {
+                  "linked_attribute": "min_sleepiness"
+               },
+               "max": {
+                  "linked_attribute": "max_sleepiness"
+               },
+               "initial_value": 0
+            }
+         }
+      },
+      "stonehearth:resource_node": {
+         "category": "herding",
+         "harvest_overlay_effect": "stonehearth:effects:chop_overlay_effect",
+         "resource_spawn_effect": "stonehearth:effects:gib_effect",
+         "harvester_effect": "fiddle",
+         "description": "harvest_animal",
+         "resource": "stonehearth:rabbit_jerky",
+         "harvestable_by_harvest_tool": false,
+         "check_owner": true,
+         "resource_loot_table": {
+            "entries": {
+               "pelt": {
+                  "items": {
+                     "pelt": {
+                        "uri": "stonehearth:resources:rabbit_pelt"
+                     }
+                  }
+               },
+               "bones": {
+                  "num_rolls": {
+                     "min": 0,
+                     "max": 1
+                  },
+                  "items": {
+                     "bones": {
+                        "uri": "stonehearth_ace:resources:bone:bone_material"
+                     }
+                  }
+               },
+               "jerky": {
+                  "roll_type": "some_of",
+                  "num_rolls": {
+                     "min": 1,
+                     "max": 4
+                  },
+                  "items": {
+                     "pelt": {
+                        "uri": "stonehearth:rabbit_jerky",
+                        "weight": 1
+                     }
+                  }
+               }
+            }
+         }
+      },
+      "stonehearth:unit_info": {}
+   },
+   "entity_data": {
+      "stonehearth:pasture_animal": {
+         "added_equipment": [
+            "stonehearth:pasture_equipment:adult_animal_collar"
+         ],
+         "food_material": "rabbit_feed_edible",
+         "type": "stonehearth_ace:rabbit:pasture",
+         "size": "small"
+      },
+      "stonehearth:calories": {
+         "breakfast_hour": 6,
+         "dinner_hour": 19,
+         "hungry_threshold": 0,
+         "famished_threshold": 0,
+         "malnourished_threshold": -10,
+         "hourly_calorie_loss": 0.5
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.critters.rabbit.display_name)"
+      }
+   }
+}

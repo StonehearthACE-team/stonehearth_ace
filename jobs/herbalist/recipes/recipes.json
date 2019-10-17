@@ -221,7 +221,10 @@
 				},
 				"paddy_seeds_recipe": {
 					"recipe": "/stonehearth_ace/jobs/herbalist/recipes/paddy_seeds_recipe.json"
-				}
+				},
+				"hearth_fertilizer": {
+               "recipe": "file(hearth_fertilizer_recipe.json)"
+            }
 			}
 		},
 		"brewing_ingredients": {
@@ -239,6 +242,16 @@
 				}
          }
 		},
+		"tonics": {
+         "recipes": {
+				"hearth_tonic": {
+               "recipe": "file(hearth_tonic_recipe.json)"
+            },
+				"hearth_healing_tonic": {
+               "recipe": "file(hearth_healing_tonic_recipe.json)"
+            }
+         }
+      },
 		"decorations": {
 			"recipes" : {
 				"plant_glass_herbalist" : {

@@ -71,6 +71,40 @@
                },
                "21_residents_outro_a": {
                   "dialogue": "\"What a nice home you've built for them! They will be here shortly, and I'm sure they'll be charmed! By the way, I'm certain they can teach you some of our cooking recipes as well...\""
+               },
+               "arcs": {
+                  "trigger": {
+                     "discovery": {
+                        "encounters": {
+                           "30_geomancy": {
+                              "30_geomancy_outro": {
+                                 "donation_dialog_info": {
+                                    "dialog_nodes": {
+                                       "simple_message": {
+                                          "bulletin_message": {
+                                             "00": "\"Your wayfaring student of Geomancy has returned as a full-fledged Geomancer! They proved themselves an able practitioner of the magic arts indeed!\"<br><br>\"Here - these precious Hearthbud flowers coalesce traces of Hearth's magic into Hearth Essence, which Geomancers can use in their craft - be sure to plant them.\""
+                                          }
+                                       }
+                                    }
+                                 }
+                              }
+                           },
+                           "50_titan": {
+                              "57_bun_geomancer_starter_kit": {
+                                 "donation_dialog_info": {
+                                    "dialog_nodes": {
+                                       "simple_message": {
+                                          "bulletin_message": {
+                                             "00": "The Rabbit Geomancer brought some Hearthbud, Hearth Essence, and raw materials along with them, to help start their new aboveground practice."
+                                          }
+                                       }
+                                    }
+                                 }
+                              }
+                           }
+                        }
+                     }
+                  }
                }
             },
             "ambient_threats": {
@@ -1815,6 +1849,10 @@
          "capture_fish": {
             "display_name": "Capture Fish!",
             "description": "Order the Trapper to capture this fish instead of harvesting it. A captured fish will remain contained in a small crate that can be placed somewhere else for release."
+         },
+         "capture_bees": {
+            "display_name": "Capture Bees!",
+            "description": "Order the Herbalist to capture the bees from this nest. Captive bees will remain contained in a small crate until they are used for crafting a Bee Skep."
          }
       },
       "buffs": {
@@ -2142,6 +2180,24 @@
          "bee_attack_swarmed": {
             "display_name": "Swarmed by Bees",
             "description": "Ouch! Owie! Ow! Go away!"
+         },
+         "hearth_tonic": {
+            "hearth_tonic_buff": {
+               "display_name": "Hearthbud Light Tonic",
+               "description": "Courage, Menace and Muscle are increased. A radiant aura of light radiates around the hearthling, slowly healing them over time."
+            }
+         },
+         "harmony_transcendental": {
+            "display_name": "Transcendental Harmony",
+            "description": "It's a magical level of enlightment. Diligence and Curiosity are very increased.<ul><li>Crafting is much slower but with incredibly increased quality</li><li>Experience gain is vastly increased</li></ul>"
+         },
+         "divine_flavors": {
+            "display_name": "Divine Flavors",
+            "description": "Deliciously inspired by the power of the Hearth! Muscle and Stamina are increased.<ul><li>This hearthling will heal 10% of their total health every 30 minutes</li></ul>"
+         },
+         "shepherd_crook_corn": {
+            "display_name": "Shepherd's Corn Crook",
+            "description": "Compassion is increased."
          }
       },
       "loadouts": {
@@ -2256,6 +2312,30 @@
          "sleepyhead_trait": {
             "display_name": "Sleepyhead",
             "description": "Waking up [name(i18n_data.entity)] can be a challenge. They love sleeping so much that they'll probably sleep a bit more than they should..."
+         }
+      },
+      "build": {
+         "building_brushes": {
+            "patterns": {
+               "thatch_peaked_roof": "A thatch roof made of Pesto, Lemon Ginger, Yukon Gold, and Antique Brass.",
+               "thatch_light_peaked_roof": "A thatch roof made of Sandal, Muesli and Shadow.",
+               "dry_turf_peaked_roof": "A thatch roof made of Pale Grass, Dry Turf, Dark Turf, and Stomped Path.",
+               "wood_dark_squares": "A pattern of Cioccolato, Bistre and Morocco Brown.",
+               "wood_dark_boards": "A pattern of Punga, Cocoa Brown, Clinker and Tobacco Brown.",
+               "wood_light_boards": "A pattern of Ash, Napa and Heathered Grey.",
+               "thatch_messy": "A Pattern of Pesto, Lemon Ginger, Yukon Gold and Antique Brass.",
+               "clay_grey_pattern": "A Pattern of Light Ash, Cloudy and Light Mountain Mist.",
+               "clay_gold_pattern": "A Pattern of Raffia, Winter Hazel and Ecru.",
+               "clay_red_pattern": "A Pattern of Copper Canyon, Korma and New Amber.",
+               "clay_sage_pattern": "A Pattern of Sage Light, Sage and Sage Dark.",
+               "clay_oasis_pattern": "A Pattern of Oasis Light, Oasis and Oasis Dark."
+            },
+            "colors": {
+               "#626139": "Pale Grass",
+               "#54533A": "Dry Turf",
+               "#4E4C33": "Dark Turf",
+               "#464530": "Stomped Path"
+            }
          }
       }
    },
@@ -2707,6 +2787,21 @@
                "description": "Like mead, but spiced up with some flavorful fruits. Within a Carboy it can be turned into fruity mead!",
                "flavor": ""
             },
+            "hearth_healing_tonic_recipe": {
+               "recipe_name": "Hearthbud Healing Tonic",
+               "description": "Used by the herbalist to efficiently heal wounds.",
+               "flavor": "The power of the Hearth has interesting healing properties"
+            },
+            "hearth_fertilizer_recipe": {
+               "recipe_name": "Hearthbud Fertilizer",
+               "description": "A skilled farmer will use it to increase the quality of their crops and improve the odds of getting megacrops.",
+               "flavor": "Each sack can be used to fertilize 33 crops"
+            },
+            "hearth_tonic_recipe": {
+               "recipe_name": "Hearthbud Light Tonic",
+               "description": "A powerful potion that will boost courage, muscle and menace of hearthlings, slowly healing them over time.",
+               "flavor": "May it be a light to you in dark places, when all other lights go out! -Sasha of Clan Amberstone"
+            },
             "refinement_name": "Seed Extraction"
          },
          "herbalist_hood": {
@@ -3155,6 +3250,9 @@
       },
       "geomancer": {
          "recipes": {
+            "earthbud_seeds_recipe": {
+               "recipe_name": "Hearthbud Seeds (x3)"
+            },
             "legendary_silk_recipe": {
                "recipe_name": "Woodland Silk",
                "description": "Gold and silk woven as one for the Elven King Hood.",
@@ -3170,7 +3268,8 @@
                "description": "A sign with the mark of the Geomancer, to be placed on buildings.",
                "flavor": "It is a beautiful hearthbud flower!"
             },
-            "decoration_name": "Decorations"
+            "decoration_name": "Decorations",
+            "hearth_enhancements_name": "Hearth-Enhanced Consumables"
          },
          "geomancer_description": {
             "description": "Mastery of the Earth Magic provides the power to shape the terrain, create ores, stunning landscapes and even breathe life into rocks to raise golems that will work for the town."
@@ -4221,15 +4320,15 @@
                "flavor": ""
             },
             "rabbit_feed_recipe": {
-					"recipe_name": "Rabbit Feed (x3)",
+               "recipe_name": "Rabbit Feed (x3)",
                "description": "Selected carrots for rabbits. Improves the quality of animal produce."
             },
             "poyo_feed_recipe": {
-					"recipe_name": "Poyo Feed (x3)",
+               "recipe_name": "Poyo Feed (x3)",
                "description": "Nicely milled food for poyos. Improves the quality of animal produce."
             },
             "sheep_feed_recipe": {
-					"recipe_name": "Sheep Feed (x3)",
+               "recipe_name": "Sheep Feed (x3)",
                "description": "Tasty grasses for sheep. Improves the quality of animal produce."
             },
             "fodder_recipe": {
@@ -4356,6 +4455,21 @@
                "recipe_name": "Bucket of Unfermented Fruity Mead",
                "description": "Like mead, but spiced up with some flavorful fruits. Within a Carboy it can be turned into fruity mead!",
                "flavor": ""
+            },
+            "hearth_ambrosia_recipe": {
+               "recipe_name": "Hearthbud Ambrosia",
+               "description": "A divine dessert, deeply satisfying and fortifying at the same time.",
+               "flavor": "The flavors are magical. Literally"
+            },
+            "hearth_fodder_recipe": {
+               "recipe_name": "Hearthbud Animal Fodder",
+               "description": "Animal fodder imbued with the essence of the hearth.",
+               "flavor": "Hearthbud Animal Fodder is appreciated by all animals and will greatly increase the quality of their products!"
+            },
+            "spirit_hearth_recipe": {
+               "recipe_name": "Hearthbud Spirit",
+               "description": "A delicious and magical beverage. Will empower hearthlings but also make them a little tipsy.",
+               "flavor": "It's hard to tell the magical effects from the... other effects"
             }
          },
          "cook_mill_powered": {
@@ -4974,6 +5088,9 @@
             "na_description": "Can only be worn by crafters. Protects the wearer from sunstrokes.",
             "na_display_name": "Summer Crafter Bonnet",
             "rc_display_name": "Summer Crafter Fez"
+         },
+         "na_sunstroke_crafter_outfit": {
+            "description": "Can only be worn by crafters. Protects from sunstrokes."
          }
       },
       "combat": {
@@ -4999,6 +5116,9 @@
             "na_description": "A hat for workers and field workers. Protects the wearer from sunstrokes.",
             "na_display_name": "Summer Straw Work Hat",
             "rc_display_name": "Summer Work Turban"
+         },
+         "na_sunstroke_field_work_outfit": {
+            "description": "A hat for workers and field workers. Protects from sunstrokes."
          }
       }
    },
@@ -5083,6 +5203,20 @@
                "display_name": "Captive Bees",
                "description": "Can be used to create a new bee colony. Won't last forever!"
             }
+         },
+         "healing_tonic": {
+            "hearth_healing_tonic": {
+               "display_name": "Hearthbud Healing Tonic",
+               "description": "The power of the Hearth used by the herbalist to heal wounds"
+            }
+         },
+         "fertilizer_hearth": {
+            "display_name": "Hearthbud Fertilizer",
+            "description": "A skilled farmer will use it to increase both the quality and the odds of megacrops."
+         },
+         "hearth_tonic": {
+            "display_name": "Hearthbud Light Tonic",
+            "description": "Temporarily boosts muscle, courage and menace. Slowly heals over time."
          }
       },
       "construction": {
@@ -7389,7 +7523,7 @@
          },
          "beehive": {
             "display_name": "Bee Nest",
-            "description": "Careful, it is still active! An herbalist can harvest it for its resources and bees..."
+            "description": "Careful, it is still active! Honey can be harvested but the bees will be lost."
          },
          "beehive_dead": {
             "display_name": "Dead Bee Nest",
@@ -8136,6 +8270,26 @@
             "glazed_veggies_serving": {
                "display_name": "Serving of Glazed Veggies"
             }
+         },
+         "hearth_fodder": {
+            "hearth_fodder": {
+               "display_name": "Hearthbud Animal Fodder",
+               "description": "Animal fodder imbued with the essence of the hearth."
+            },
+            "hearth_fodder_ground": {
+               "display_name": "Hearthbud Animal Fodder",
+               "description": "Delicious, attractive and will greatly increase the quality of animal products!"
+            }
+         },
+         "hearth_ambrosia": {
+            "hearth_ambrosia": {
+               "display_name": "Hearthbud Ambrosia",
+               "description": "A divine dessert, deeply satisfying and fortifying at the same time."
+            },
+            "hearth_ambrosia_serving": {
+               "display_name": "Serving of Hearthbud Ambrosia",
+               "description": "Full of magical flavors!"
+            }
          }
       },
       "terrain": {
@@ -8250,7 +8404,7 @@
          "winter_morel": {
             "winter_morel_ghost": {
                "display_name": "Winter Morels",
-               "description": "A very sought of northern fungi that tastes great!"
+               "description": "A very sought after northern fungi that tastes great!"
             },
             "colony": {
                "winter_morel_colony": {
@@ -9836,6 +9990,16 @@
                "display_name": "Horn of Fruity Mead",
                "description": "Sweet and flavorful!"
             }
+         },
+         "spirit_hearth": {
+            "spirit_hearth": {
+               "display_name": "Hearthbud Spirit",
+               "description": "A delicious and magical beverage. Empowering but strong."
+            },
+            "spirit_hearth_serving": {
+               "display_name": "Cup of Hearthbud Spirit",
+               "description": ""
+            }
          }
       },
       "npc": {
@@ -10376,7 +10540,8 @@
                   "tooltip_potions": "Potions & Tonics",
                   "fuels": "Fuels",
                   "tooltip_cooking": "Cooking",
-                  "tooltip_brewing": "Brewing"
+                  "tooltip_brewing": "Brewing",
+                  "fertilizers": "Fertilizers"
                }
             },
             "pasture": {
@@ -10507,7 +10672,8 @@
          "build_mode2": {
             "tooltips": {
                "clay_resource": "Raw Clay",
-               "clay_bricks_resource": "Clay Bricks"
+               "clay_bricks_resource": "Clay Bricks",
+               "thatch_resource": "Thatching"
             }
          }
       },
@@ -10633,7 +10799,7 @@
          "constants": {
             "edible_nuts_resource_name": "Any Edible Nut",
             "fruits_resource_name": "Any Fruit",
-            "thatch_resource_name": "Thatching",
+            "thatch_resource_name": "Any Thatch",
             "bone_resource_name": "Bone",
             "fungi_resource_name": "Any Undeployed Fungi",
             "chitin_resource_name": "Any Chitin",
@@ -10686,7 +10852,8 @@
             "prepared_food_fish_resource_name": "Food with Fish",
             "prepared_food_desserts_resource_name": "Prepared Desserts",
             "prepared_food_warming_resource_name": "Warming Food",
-            "prepared_food_refreshing_resource_name": "Refreshing Food"
+            "prepared_food_refreshing_resource_name": "Refreshing Food",
+            "any_fertilizer_resource_name": "Any Fertilizer"
          }
       },
       "hotkeys": {

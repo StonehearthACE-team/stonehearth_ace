@@ -1,0 +1,94 @@
+{
+   "name": "hearth sparkle",
+   "duration": 20,
+   "material": "materials/cubemitter_bloom.material.json",
+   "loops": true,
+   "mesh": {
+      "file": "",
+      "matrix": "",
+      "offset": {
+         "x": 0,
+         "y": 0,
+         "z": 0
+      }
+   },
+   "emission": {
+      "rate": {
+         "kind": "CONSTANT",
+         "values": [3]
+      },
+      "angle": {
+         "kind": "RANDOM_BETWEEN",
+         "values": [0, 90]
+      },
+      "origin": {
+         "surface": "RECTANGLE",
+         "values": [0.7, 0.7, 0, 0]
+      }
+   },
+   "particle": {
+      "lifetime": {
+         "start": {
+            "kind": "RANDOM_BETWEEN",
+            "values": [2000, 4000]
+         }
+      },
+      "speed": {
+         "start": {
+            "kind": "CONSTANT",
+            "values": [0.1]
+         },
+         "over_lifetime": {
+            "kind": "CURVE",
+            "values": [
+               [0, 1],
+               [0.37, 0.84],
+               [0.835, 0.42666666666666664],
+               [1, 0.2]
+            ]
+         },
+         "_start": {
+            "kind": "RANDOM_BETWEEN",
+            "values": [0.25, 2]
+         }
+      },
+      "velocity": {},
+      "scale": {
+         "start": {
+            "kind": "RANDOM_BETWEEN",
+            "values": [0.06, 0.12]
+         },
+         "over_lifetime": {
+            "kind": "CURVE",
+            "values": [
+               [0, 0],
+               [0.10299135208129882, 0.2580787658691406],
+               [0.2175, 0.3466666666666667],
+               [0.4566130828857422, 0.3746565246582031],
+               [0.7575, 0.24],
+               [0.9009737396240234, 0.1114804077148438],
+               [1, 0]
+            ]
+         }
+      },
+      "color": {
+         "start": {
+            "kind": "RANDOM_BETWEEN",
+            "values": [
+               [0.951, 0.778, 0.357, 1],
+               [0.944, 0.659, 0.174, 1]
+            ]
+         },
+         "over_lifetime_a": {
+            "kind": "CURVE",
+            "values": [
+               [0, 0],
+               [0.11, 0.4384888888888887],
+               [0.30298316955566407, 0.5982924830542669],
+               [0.6367091369628907, 0.1613161736382377],
+               [1, 0]
+            ]
+         }
+      }
+   }
+}

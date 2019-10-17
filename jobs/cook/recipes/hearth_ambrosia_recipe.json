@@ -1,0 +1,39 @@
+{
+   "type": "recipe",
+   "effort": 60,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.hearth_ambrosia_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.hearth_ambrosia_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.hearth_ambrosia_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/hearth_ambrosia/hearth_ambrosia/hearth_ambrosia.png",
+   "workshop": "stonehearth:cook:workbench",
+   "level_requirement": 6,
+	"manual_unlock": true,
+   "ingredients": [
+      {
+         "uri": "stonehearth:food:egg",
+         "count": 2
+      },
+	   {
+         "material": "sweetener cooking_ingredient",
+         "count": 1
+      },
+		{
+         "material": "earth_essence resource",
+         "count": 2
+      },
+	   {
+         "uri": "stonehearth:plants:earthbud:seed",
+         "count": 2
+      },
+		{
+			"material": "low_fuel",
+			"count": 1
+		}
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:hearth_ambrosia"
+      }
+   ]
+}

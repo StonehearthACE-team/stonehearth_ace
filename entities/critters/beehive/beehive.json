@@ -42,17 +42,23 @@
             }
          ]
       },
+      "sensor_list": {
+         "sensors": {
+            "range": {
+               "radius": 8
+            }
+         }
+      },
       "stonehearth:resource_node": {
-         "category": "beekeeping",
-         "harvest_overlay_effect": "stonehearth_ace:effects:harvest_bee_overlay_effect",
-         "harvester_effect": "fiddle",
+         "harvest_overlay_effect": "stonehearth_ace:effects:harvest_honey_overlay_effect",
+         "harvester_effect": "work",
          "durability": 1,
-         "resource": "stonehearth_ace:consumables:captive:bees",
+         "resource": "stonehearth_ace:food:honey:wild",
          "resource_loot_table": {
             "entries": {
                "extra_honey": {
                   "num_rolls": {
-                     "min": 1,
+                     "min": 0,
                      "max": 2
                   },
                   "items": {
@@ -65,24 +71,53 @@
             }
          }
       },
-      "sensor_list": {
-         "sensors": {
-            "range": {
-               "radius": 8
-            }
-         }
-      },
       "stonehearth:buffs": {
          "buffs": {
             "stonehearth_ace:buffs:beehive": true
          }
       },
-      "stonehearth:evolve": {}
+      "stonehearth:evolve": {},
+      "stonehearth_ace:transform": {}
    },
    "entity_data": {
+      "stonehearth_ace:transform_data": {
+         "transform_uri": "stonehearth_ace:beehive:dead",
+         "request_action": "stonehearth_ace:transform",
+         "command": "stonehearth_ace:commands:capture_bees",
+         "request_action_overlay_effect": "stonehearth_ace:effects:harvest_bee_overlay_effect",
+         "transforming_worker_effect": "fiddle",
+         "transforming_worker_effect_times": 1,
+         "transform_effect": "stonehearth:effects:fursplosion_effect",
+         "auto_request": true,
+         "worker_required_job": {
+            "stonehearth:jobs:herbalist": true
+         },
+         "additional_items": {
+            "entries": {
+               "captive_bees": {
+                  "items": {
+                     "bees": {
+                        "uri": "stonehearth_ace:consumables:captive:bees"
+                     }
+                  }
+               },
+               "extra_honey": {
+                  "num_rolls": {
+                     "min": 0,
+                     "max": 1
+                  },
+                  "items": {
+                     "honey": {
+                        "uri": "stonehearth_ace:food:honey:wild"
+                     }
+                  }
+               }
+            }
+         }
+      },
       "stonehearth:evolve_data": {
          "next_stage": "stonehearth_ace:beehive:dead",
-         "evolve_time": "2d+24h",
+         "evolve_time": "3d+48h",
          "seasons": {
             "winter": {
                "evolve_time_multiplier": 0
