@@ -202,15 +202,18 @@ function VineComponent:_start()
 end
 
 function VineComponent:_get_growth_period(growths_remaining)
-   local time = ''
+   local time
    for _, growth_time in ipairs(self._growth_data.growth_times) do
       if growths_remaining <= growth_time.growths_remaining then
          time = growth_time.time
       else
+         if not time then
+            time = growth_time.time
+         end
          break
       end
    end
-   time = stonehearth.calendar:parse_duration(time)
+   time = time and stonehearth.calendar:parse_duration(time) or 0
    if time > 0 then
       time = stonehearth.town:calculate_growth_period('', time)
    end

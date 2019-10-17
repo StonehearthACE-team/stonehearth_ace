@@ -4,7 +4,7 @@ local log = radiant.log.create_logger('renewable_resource_node')
 local Point3 = _radiant.csg.Point3
 local rng = _radiant.math.get_default_rng()
 
-local RenewableResourceNodeComponent = radiant.mods.require('stonehearth.components.renewable_resource_node.renewable_resource_node_component')
+local RenewableResourceNodeComponent = require 'stonehearth.components.renewable_resource_node.renewable_resource_node_component'
 local AceRenewableResourceNodeComponent = class()
 
 local RENEWED_MODEL_NAME = 'stonehearth:renewable_resource_node:renewed'
@@ -49,18 +49,19 @@ function AceRenewableResourceNodeComponent:post_activate()
    -- if the world is being generated, don't try to set up renewal stuff yet (season isn't properly set)
    if self._json.seasons and not stonehearth.game_creation:is_world_created() then
       self._world_created_listener = radiant.events.listen_once(stonehearth.game_creation, 'stonehearth:world_generation_complete', function()
-         self._season_change_listener = radiant.events.listen(stonehearth.seasons, 'stonehearth:seasons:initial_set', self, self._create_listeners)
+         self._season_change_listener = radiant.events.listen_once(stonehearth.seasons, 'stonehearth:seasons:initial_set', self, self._create_listeners)
       end)
    else
       self:_create_listeners()
    end
 end
 
-AceRenewableResourceNodeComponent._ace_old_destroy = RenewableResourceNodeComponent.destroy
+AceRenewableResourceNodeComponent._ace_old_destroy = RenewableResourceNodeComponent.__user_destroy
 function AceRenewableResourceNodeComponent:destroy()
-   self:_ace_old_destroy()
-   self:_destroy_added_to_world_listener()
    self:_destroy_listeners()
+   self:_destroy_added_to_world_listener()
+
+   self:_ace_old_destroy()
 end
 
 function AceRenewableResourceNodeComponent:_create_listeners()
@@ -116,6 +117,11 @@ function AceRenewableResourceNodeComponent:_destroy_listeners()
 end
 
 function AceRenewableResourceNodeComponent:_check_season()
+   if not self._entity:is_valid() then
+      log:error('RRN destroy function is cached!')
+      return
+   end
+
    local season = stonehearth.seasons:get_current_season()
    local modifiers = season and self._json.seasons[season.id]
    --log:debug('%s applying season modifiers for %s: %s', self._entity, tostring(season.id), modifiers and radiant.util.table_tostring(modifiers) or 'NIL')
@@ -243,7 +249,7 @@ function AceRenewableResourceNodeComponent:_deplete()
 end
 
 function AceRenewableResourceNodeComponent:_set_model_depleted()
-	if self._json.half_renewed_model then
+   if self._json.half_renewed_model then
       self._entity:add_component('stonehearth_ace:models'):remove_model(HALF_RENEWED_MODEL_NAME)
 	end
    if self._json.renewed_model then

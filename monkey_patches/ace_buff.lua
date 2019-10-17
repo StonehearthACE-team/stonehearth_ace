@@ -14,7 +14,7 @@ function AceBuff:create(entity, uri, json, options)
    self._options = options
 end
 
-AceBuff._ace_old_destroy = Buff.destroy
+AceBuff._ace_old_destroy = Buff.__user_destroy
 function AceBuff:destroy()
    if self._duration_timer then
       self._duration_timer:destroy()
@@ -24,7 +24,7 @@ function AceBuff:destroy()
       self._timer:destroy()
       self._timer = nil
    end
-   if self._json.duration_statistics_key then
+   if self._json and self._json.duration_statistics_key then
       self:_update_duration_stat()
    end
 

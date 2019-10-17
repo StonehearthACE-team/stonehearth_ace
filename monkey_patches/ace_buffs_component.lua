@@ -42,7 +42,7 @@ function AceBuffsComponent:activate()
    end
 end
 
-AceBuffsComponent._ace_old_destroy = BuffsComponent.destroy
+AceBuffsComponent._ace_old_destroy = BuffsComponent.__user_destroy
 function AceBuffsComponent:destroy()
    self:_destroy_listeners()
    self:_ace_old_destroy()

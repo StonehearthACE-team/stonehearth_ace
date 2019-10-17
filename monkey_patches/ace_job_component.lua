@@ -19,7 +19,7 @@ function AceJobComponent:post_activate()
    self:_ace_old_post_activate()
 end
 
-AceJobComponent._ace_old_destroy = JobComponent.destroy
+AceJobComponent._ace_old_destroy = JobComponent.__user_destroy
 function AceJobComponent:destroy()
 	self:_ace_old_destroy()
 

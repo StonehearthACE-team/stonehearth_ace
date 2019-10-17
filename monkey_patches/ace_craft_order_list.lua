@@ -5,7 +5,7 @@ local constants = radiant.mods.require('stonehearth.constants')
 
 local log = radiant.log.create_logger('craft_order_list')
 
-AceCraftOrderList._ace_old_destroy = CraftOrderList.destroy
+AceCraftOrderList._ace_old_destroy = CraftOrderList.__user_destroy
 function AceCraftOrderList:destroy()
    if self._stuck_timer then
       self._stuck_timer:destroy()
