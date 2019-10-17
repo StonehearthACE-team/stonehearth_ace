@@ -1,14 +1,12 @@
 --[[
    Every time the crop grows, update its resource node resource. More mature crops
    yield better resources.
-
-   Paul: overriding this whole file because they put component data accessors in the initialize function
-      and we can't override the initialize function (it gets cached for existing entities before our monkey patch runs)
 ]]
 local rng = _radiant.math.get_default_rng()
-local CropComponent = class()
+local CropComponent = require 'stonehearth.components.crop.crop_component'
+local AceCropComponent = class()
 
-function CropComponent:initialize()
+function AceCropComponent:initialize()
    -- Initializing save variables
    self._sv.harvestable = false
    self._sv.stage = nil
@@ -20,26 +18,15 @@ function CropComponent:initialize()
    self:_load_json()
 end
 
-function CropComponent:_load_json()
+function AceCropComponent:_load_json()
    self._json = radiant.entities.get_json(self) or {}
    self._resource_pairings = self._json.resource_pairings
    self._harvest_threshhold = self._json.harvest_threshhold
 end
 
-function CropComponent:restore()
-   local growing_component = self._entity:get_component('stonehearth:growing')
-   if growing_component then
-      local stage = growing_component:get_current_stage_name()
-      if stage ~= self._sv.stage then
-         -- If stages are mismatched somehow, fix it up.
-         -- There was a carrot crop whose stage got mixed up somehow
-         -- Likely due to a growing component listener firing when listener was not yet registered -yshan 3/2/2016
-         local e = {}
-         e.stage = stage
-         e.finished = growing_component:is_finished()
-         self:_on_grow_period(e)
-      end
-   end
+AceCropComponent._ace_old_restore = CropComponent.restore
+function AceCropComponent:restore()
+   self:_ace_old_restore()
 
    if self._sv.megacrop_chance then
       self._sv._megacrop_chance = self._sv.megacrop_chance
@@ -55,10 +42,9 @@ function CropComponent:restore()
    end
 end
 
-function CropComponent:activate()
-   if self._entity:get_component('stonehearth:growing') then
-      self._growing_listener = radiant.events.listen(self._entity, 'stonehearth:growing', self, self._on_grow_period)
-   end
+AceCropComponent._ace_old_activate = CropComponent.activate
+function AceCropComponent:activate()
+   self:_ace_old_activate()
 
    self._megacrop_description = self._json.megacrop_description or stonehearth.constants.farming.DEFAULT_MEGACROP_DESCRIPTION
    self._megacrop_model_variant = self._json.megacrop_model_variant
@@ -74,52 +60,12 @@ function CropComponent:activate()
    end
 end
 
-function CropComponent:post_activate()
-   if self._sv.harvestable and self._sv._field then
-      self:_notify_harvestable()
-   end
-end
-
-function CropComponent:set_field(field, x, y)
-   self._sv._field = field
-   self._sv._field_offset_x = x
-   self._sv._field_offset_y = y
-end
-
-function CropComponent:get_field()
-   return self._sv._field
-end
-
-function CropComponent:get_field_offset()
-   return self._sv._field_offset_x, self._sv._field_offset_y
-end
-
-function CropComponent:get_product()
-   return self._sv.product
-end
-
-function CropComponent:get_post_harvest_stage()
+function AceCropComponent:get_post_harvest_stage()
    return self._post_harvest_stage
 end
 
-function CropComponent:destroy()
-   if self._sv._field then
-      self._sv._field:notify_crop_destroyed(self._sv._field_offset_x, self._sv._field_offset_y)
-      self._sv._field = nil
-   end
-   if self._growing_listener then
-      self._growing_listener:destroy()
-      self._growing_listener = nil
-   end
-
-   if self._game_loaded_listener then
-      self._game_loaded_listener:destroy()
-      self._game_loaded_listener = nil
-   end
-end
-
 --- As we grow, change the resources we yield and, if appropriate, command harvest
-function CropComponent:_on_grow_period(e)
+function AceCropComponent:_on_grow_period(e)
    self._sv.stage = e.stage
    if e.stage then
       local resource_pairing_uri = self._resource_pairings[self._sv.stage]
@@ -150,23 +96,13 @@ function CropComponent:_on_grow_period(e)
    self.__saved_variables:mark_changed()
 end
 
---- Returns true if it's time to harvest, false otherwise
-function CropComponent:is_harvestable()
-   return self._sv.harvestable
-end
-
-function CropComponent:_notify_harvestable()
-   radiant.assert(self._sv._field, 'crop %s has no field!', self._entity)
-   self._sv._field:notify_crop_harvestable(self._sv._field_offset_x, self._sv._field_offset_y)
-end
-
-function CropComponent:_notify_unharvestable()
+function AceCropComponent:_notify_unharvestable()
    radiant.assert(self._sv._field, 'crop %s has no field!', self._entity)
    self._sv._field:notify_crop_unharvestable(self._sv._field_offset_x, self._sv._field_offset_y)
 end
 
 -- separate this out into its own function so it's easier to modify
-function CropComponent:_became_harvestable()
+function AceCropComponent:_became_harvestable()
    if self._sv._consider_megacrop and self._sv._is_megacrop == nil then
       if rng:get_real(0, 1) < self._sv._megacrop_chance then
          self:_set_megacrop()
@@ -183,29 +119,29 @@ function CropComponent:_became_harvestable()
    end
 end
 
-function CropComponent:set_fertilized()
+function AceCropComponent:set_fertilized()
    -- not really used at the moment, maybe refactor the fertilize ai to do more of it in here
 end
 
-function CropComponent:set_consider_megacrop()
+function AceCropComponent:set_consider_megacrop()
    if not self._sv._consider_megacrop then
       self._sv._consider_megacrop = true
       --self.__saved_variables:mark_changed()
    end
 end
 
-function CropComponent:apply_megacrop_chance_multiplier(multiplier)
+function AceCropComponent:apply_megacrop_chance_multiplier(multiplier)
    if multiplier ~= 1 and self._sv._megacrop_chance ~= 0 then
       self._sv._megacrop_chance = self._sv._megacrop_chance * multiplier
       --self.__saved_variables:mark_changed()
    end
 end
 
-function CropComponent:is_megacrop()
+function AceCropComponent:is_megacrop()
    return self._sv._is_megacrop
 end
 
-function CropComponent:_set_megacrop()
+function AceCropComponent:_set_megacrop()
    self._sv._is_megacrop = true
    
    if self._megacrop_description then
@@ -223,4 +159,4 @@ function CropComponent:_set_megacrop()
    --self.__saved_variables:mark_changed()
 end
 
-return CropComponent
+return AceCropComponent
