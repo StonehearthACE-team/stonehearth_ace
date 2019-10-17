@@ -38,11 +38,11 @@ App.StonehearthReembarkationBulletinDialog.reopen({
             var catalogData = App.catalog.getCatalogData(uriEntry.uri);
             if (catalogData.reembark_version) {
                radiant.each(uriEntry.item_qualities, function (itemQualityKey, item) {
-                  var key = uriEntry.uri + App.constants.item_quality.KEY_SEPARATOR + itemQualityKey;
+                  var key = (uriEntry.canonical_uri || uriEntry.uri) + App.constants.item_quality.KEY_SEPARATOR + itemQualityKey;
                   srcItems[key] = radiant.shallow_copy(uriEntry);
                   srcItems[key].uri = catalogData.reembark_version;
                   // ACE only changed this line:
-                  srcItems[key].count = catalogData.reembark_max_count ? Math.max(item.count, catalogData.reembark_max_count) : 1;
+                  srcItems[key].count = catalogData.reembark_max_count ? Math.min(item.count, catalogData.reembark_max_count) : 1;
                   srcItems[key].item_quality = itemQualityKey;
                });
             }
