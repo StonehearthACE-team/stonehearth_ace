@@ -4,6 +4,10 @@ local HARVEST_ACTION = 'stonehearth:harvest_resource'
 local ResourceNodeComponent = require 'stonehearth.components.resource_node.resource_node_component'
 local AceResourceNodeComponent = class()
 
+function AceResourceNodeComponent:get_durability()
+   return self._sv.durability
+end
+
 AceResourceNodeComponent._ace_old_set_harvestable_by_harvest_tool = ResourceNodeComponent.set_harvestable_by_harvest_tool
 function AceResourceNodeComponent:set_harvestable_by_harvest_tool(harvestable_by_harvest_tool)
    -- if this entity has a renewable component and the json says it's not harvestable by harvest tool,
@@ -121,6 +125,7 @@ function AceResourceNodeComponent:request_harvest(player_id, replant)
          self._entity:remove_component('stonehearth_ace:replant')
          self._entity:add_component('stonehearth_ace:stump')
       end
+      radiant.events.trigger(self._entity, 'stonehearth:resource_node:harvest_requested')
    end
 
    return result

@@ -490,7 +490,7 @@ App.StonehearthUnitFrameView.reopen({
 
             var catalogData = App.catalog.getCatalogData(self.get('model.stonehearth:iconic_form').root_entity.uri.__self);
             var equipmentTypes = [];
-            if (catalogData.equipment_types) {
+            if (catalogData && catalogData.equipment_types) {
                equipmentTypes = stonehearth_ace.getEquipmentTypesArray(catalogData.equipment_types);
             }
             self.set('equipmentTypes', equipmentTypes);
@@ -505,7 +505,7 @@ App.StonehearthUnitFrameView.reopen({
                if (equipmentPiece.required_job_level) {
                   tooltipString += i18n.t('stonehearth:ui.game.unit_frame.level_description', { level_req: equipmentPiece.required_job_level });
                }
-               if (catalogData.equipment_types) {
+               if (catalogData && catalogData.equipment_types) {
                   tooltipString += '<br>' + i18n.t('stonehearth_ace:ui.game.unit_frame.equipment_types_description',
                                                    { i18n_data: { types: stonehearth_ace.getEquipmentTypesString(self.get('equipmentTypes')) } });
                }

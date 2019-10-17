@@ -515,9 +515,11 @@ $(top).on('stonehearthReady', function() {
             if (isSingleItem) {
                outputHtml += '<div class="stat ' + cssClassName + '">'
                //Default case - recipe only produces one item, get the stats the normal way
-               var propertyValue = self._getPropertyValue(recipe.produces[0], productCatalogData, catalogDataKey);
-               if (propertyValue) {
-                  outputHtml +=  propertyValue;
+               if (productCatalogData) {
+                  var propertyValue = self._getPropertyValue(recipe.produces[0], productCatalogData, catalogDataKey);
+                  if (propertyValue) {
+                     outputHtml +=  propertyValue;
+                  }
                }
                outputHtml += '</div>';
             } else {

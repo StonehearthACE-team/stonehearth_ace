@@ -127,6 +127,38 @@ function ConnectionService:unregister_entity(entity)
    self:_stop_entity_traces(entity:get_id())
 end
 
+function ConnectionService:update_connector(entity, type, connection_max_connections, name, connector)
+   local result
+   local player_id = entity:get_player_id()
+   local player_connections = self:get_player_connections(player_id)
+   local all_players_connections = self:get_player_connections(ALL_PLAYERS)
+
+   if self:is_separated_by_player(type) then
+      result = player_connections:update_connector(entity, type, connection_max_connections, name, connector)
+   else
+      result = all_players_connections:update_connector(entity, type, connection_max_connections, name, connector)
+   end
+
+   self:_perform_update(player_id, result)
+   self:_start_entity_traces(entity, player_connections, all_players_connections)
+end
+
+function ConnectionService:remove_connector(entity, type, name)
+   local result
+   local player_id = entity:get_player_id()
+   local player_connections = self:get_player_connections(player_id)
+   local all_players_connections = self:get_player_connections(ALL_PLAYERS)
+
+   if self:is_separated_by_player(type) then
+      result = player_connections:remove_connector(entity, type, name)
+   else
+      result = all_players_connections:remove_connector(entity, type, name)
+   end
+
+   self:_perform_update(player_id, result)
+   self:_start_entity_traces(entity, player_connections, all_players_connections)
+end
+
 function ConnectionService:get_connection_types_command(session, response)
    return {types = self._registered_types}
 end
@@ -184,6 +216,15 @@ function ConnectionService:get_player_connections(player_id)
    end
 
    return connections
+end
+
+function ConnectionService:get_entity_from_connector(connector_id)
+   for _, connections in pairs(self._sv.connections) do
+      local entity = connections:get_entity_from_connector(connector_id)
+      if entity then
+         return entity
+      end
+   end
 end
 
 function ConnectionService:_destroy_player_connections(player_id)

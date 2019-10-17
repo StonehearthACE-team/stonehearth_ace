@@ -241,8 +241,8 @@ App.AceMilitaryModeView = App.View.extend({
             'prevBanner': pb.prev_banner,
             'nextBanner': pb.next_banner,
             'distance': pb.distance_to_next_banner && Math.round(pb.distance_to_next_banner),
-            'catalog_name': catalogData.display_name,
-            'icon': catalogData.icon
+            'catalog_name': catalogData && catalogData.display_name,
+            'icon': catalogData && catalogData.icon
          };
 /*
          self._bannerTraces[id] = self.radiantTrace.traceUri(banner.__self, self.patrolBannerTraceStructure)

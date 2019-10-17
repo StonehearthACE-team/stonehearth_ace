@@ -305,6 +305,9 @@ AceFarmerFieldComponent._ace_old_notify_crop_harvestable = FarmerFieldComponent.
 function AceFarmerFieldComponent:notify_crop_harvestable(x, z)
    self:_ace_old_notify_crop_harvestable(x, z)
    self:_remove_from_fertilizable(Point3(x - 1, 0, z - 1))
+   radiant.events.trigger(self._entity, 'stonehearth:farmer_field:crop_harvestable', {
+      crop = self._sv.contents[x][z].contents
+   })
 end
 
 function AceFarmerFieldComponent:notify_crop_fertilized(location)

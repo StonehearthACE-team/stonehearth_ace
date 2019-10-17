@@ -14,13 +14,11 @@ function ConnectionRenderer:initialize(render_entity, datastore)
    self._render_entity = render_entity
    self._datastore = datastore
    self._entity = self._render_entity:get_entity()
+   self._outline_nodes = {}
    self._connections = radiant.entities.get_component_data(self._entity, 'stonehearth_ace:connection')
-   -- if it doesn't have any connection data, we don't care about anything else
-   if not self._connections or not next(self._connections) then
-      return
-   end
 
-   self._align_to_grid = radiant.array_to_map(radiant.entities.get_component_data(self._entity, 'mob').align_to_grid or {})
+   local mob_data = radiant.entities.get_component_data(self._entity, 'mob')
+   self._align_to_grid = radiant.array_to_map(mob_data and mob_data.align_to_grid or {})
    self._parent_node = self._render_entity:get_node()
    self._outline_nodes = {}
 
@@ -149,84 +147,88 @@ function ConnectionRenderer:_update()
    --local location = radiant.entities.get_world_grid_location(self._entity)
    --local facing = radiant.entities.get_facing(self._entity)
 
-   local data = self._datastore:get_data().connected_stats
+   local data = self._datastore:get_data()
+   local connected_stats = data.connected_stats
    local hilight = {priority = -1}
 
    -- go through each connector this entity has and render stuff for it
-   for type, connection in pairs(self._connections) do
-      local type_data = data[type]
-      local available = true
-      local connected = false
-      if type_data then
-         available = type_data.num_connections < type_data.max_connections
-         connected = type_data.num_connections > 0
-      end
-
-      local origin_offset = Point3(self._align_to_grid.x and -0.5 or 0, self._align_to_grid.y and -0.5 or 0, self._align_to_grid.z and -0.5 or 0)
-            - (radiant.util.to_point3(connection.origin_offset) or Point3.zero)
-      
-      local nodes = {}
-      self._outline_nodes[type] = nodes
-
-      local colors = stonehearth_ace.connection_client:get_connection_type_colors(type) or
-         stonehearth_ace.connection_client:get_connection_type_colors('default')
-      
-      if colors then
-         for name, connector in pairs(connection.connectors) do
-            local color = nil
-            local EDGE_COLOR_ALPHA = 12
-            local FACE_COLOR_ALPHA = 6
-            
-            local connector_data = type_data and type_data.connectors[name]
-            local connector_available = true
-            local connector_connected = false
-            if connector_data then
-               connector_available = connector_data.num_connections < connector_data.max_connections
-               connector_connected = connector_data.num_connections > 0
+   for _, connections in ipairs({self._connections, data.dynamic_connections}) do
+      if connections then
+         for type, connection in pairs(connections) do
+            local type_data = connected_stats[type]
+            local available = true
+            local connected = false
+            if type_data then
+               available = type_data.num_connections < type_data.max_connections
+               connected = type_data.num_connections > 0
             end
 
-            local is_available = available and connector_available
-            local is_connected = connected and connector_connected
-            if is_available and colors.available_color then
-               color = colors.available_color
-            elseif is_connected and colors.connected_color then
-               color = colors.connected_color
-            end
+            local origin_offset = Point3(self._align_to_grid.x and -0.5 or 0, self._align_to_grid.y and -0.5 or 0, self._align_to_grid.z and -0.5 or 0)
             
-            if self._in_selected_graphs and not ignore_hilighting then
-               local hilight_color = colors.graph_hilight_color
-               local hilight_priority = colors.graph_hilight_priority
-               if hilight_color and hilight_priority > hilight.priority then
-                  hilight.color = hilight_color
-                  hilight.priority = hilight_priority
-               end
-            end
+            local nodes = {}
+            self._outline_nodes[type] = nodes
+
+            local colors = stonehearth_ace.connection_client:get_connection_type_colors(type) or
+               stonehearth_ace.connection_client:get_connection_type_colors('default')
             
-            -- only render actually available or connected connectors
-            if color and (is_available or is_connected) then
-               local r = import_region(connector.region):translated(origin_offset)
-               local inflation = Point3(-0.4, -0.4, -0.4)
-               --[[
-               for _, dir in ipairs({'x', 'y', 'z'}) do
-                  if cube.max[dir] - cube.min[dir] <= 1 then
-                     inflation[dir] = -0.4
+            if colors then
+               for name, connector in pairs(connection.connectors) do
+                  local color = nil
+                  local EDGE_COLOR_ALPHA = 12
+                  local FACE_COLOR_ALPHA = 6
+                  
+                  local connector_data = type_data and type_data.connectors[name]
+                  local connector_available = true
+                  local connector_connected = false
+                  if connector_data then
+                     connector_available = connector_data.num_connections < connector_data.max_connections
+                     connector_connected = connector_data.num_connections > 0
+                  end
+
+                  local is_available = available and connector_available
+                  local is_connected = connected and connector_connected
+                  if is_available and colors.available_color then
+                     color = colors.available_color
+                  elseif is_connected and colors.connected_color then
+                     color = colors.connected_color
+                  end
+                  
+                  if self._in_selected_graphs and not ignore_hilighting then
+                     local hilight_color = colors.graph_hilight_color
+                     local hilight_priority = colors.graph_hilight_priority
+                     if hilight_color and hilight_priority > hilight.priority then
+                        hilight.color = hilight_color
+                        hilight.priority = hilight_priority
+                     end
+                  end
+                  
+                  -- only render actually available or connected connectors
+                  if color and (is_available or is_connected) then
+                     local r = import_region(connector.region):translated(origin_offset)
+                     local inflation = Point3(-0.4, -0.4, -0.4)
+                     --[[
+                     for _, dir in ipairs({'x', 'y', 'z'}) do
+                        if cube.max[dir] - cube.min[dir] <= 1 then
+                           inflation[dir] = -0.4
+                        end
+                     end
+                     ]]
+                     local region = r:inflated(inflation)
+                     region:optimize('connector region')
+                     
+                     local render_node = _radiant.client.create_region_outline_node(self._parent_node, region,
+                        radiant.util.to_color4(color, EDGE_COLOR_ALPHA * 8), radiant.util.to_color4(color, FACE_COLOR_ALPHA * 5),
+                        '/stonehearth/data/horde/materials/transparent_box_nodepth.material.json', '/stonehearth/data/horde/materials/debug_shape_nodepth.material.json', 0)
+
+                     local face_render_node = _radiant.client.create_region_outline_node(RenderRootNode, region,
+                        radiant.util.to_color4(color, EDGE_COLOR_ALPHA * 8), radiant.util.to_color4(color, FACE_COLOR_ALPHA * 5),
+                        '/stonehearth/data/horde/materials/transparent_box.material.json', '/stonehearth/data/horde/materials/debug_shape.material.json', 0)
+                     
+                     face_render_node:set_parent(render_node)
+                     render_node:add_reference_to(face_render_node)
+                     table.insert(nodes, render_node)
                   end
                end
-               ]]
-               local region = r:inflated(inflation)
-               region:optimize('connector region')
-               
-               local render_node = _radiant.client.create_region_outline_node(self._parent_node, region,
-                  radiant.util.to_color4(color, EDGE_COLOR_ALPHA * 8), radiant.util.to_color4(color, FACE_COLOR_ALPHA * 5),
-                  '/stonehearth/data/horde/materials/transparent_box_nodepth.material.json', '/stonehearth/data/horde/materials/debug_shape_nodepth.material.json', 0)
-
-               local face_render_node = _radiant.client.create_region_outline_node(RenderRootNode, region,
-                  radiant.util.to_color4(color, EDGE_COLOR_ALPHA * 8), radiant.util.to_color4(color, FACE_COLOR_ALPHA * 5),
-                  '/stonehearth/data/horde/materials/transparent_box.material.json', '/stonehearth/data/horde/materials/debug_shape.material.json', 0)
-               
-               face_render_node:set_parent(render_node)
-               render_node:add_reference_to(face_render_node)
-               table.insert(nodes, render_node)
             end
          end
       end

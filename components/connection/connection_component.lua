@@ -56,10 +56,9 @@ function ConnectionComponent:fixup_post_load(old_save_data)
 end
 
 function ConnectionComponent:initialize()
-   local json = radiant.entities.get_json(self)
-   self._connections = json or {}
-   self:_format_connections()
+   self._connections = {}
    self._sv.connected_stats = {}
+   self._sv.dynamic_connections = {}
 end
 
 function ConnectionComponent:create()
@@ -90,6 +89,7 @@ function ConnectionComponent:activate()
       connected_stats = self._sv.connected_stats
    end
 
+   self:_format_connections()
    stonehearth_ace.connection:register_entity(self._entity, self._connections, connected_stats)
 end
 
@@ -99,18 +99,37 @@ function ConnectionComponent:destroy()
 end
 
 function ConnectionComponent:_format_connections()
-   for _, connections in pairs(self._connections) do
-      for _, connector in pairs(connections.connectors) do
-         -- transform all the region JSON data into Cube3 structures
-         -- since this is a cached table, this really only needs to happen once; simple type check?
-         if type(connector.region) == 'table' then
-            connector.region = import_region(connector.region)
-            connector.region:optimize('connector region')
-         else
-            return
-         end
+   local all_connections = {}
+   local json_connections = radiant.entities.get_json(self) or {}
+
+   for type, connection in pairs(json_connections) do
+      all_connections[type] = {
+         max_connections = connection.max_connections,
+         connectors = {}
+      }
+      for name, connector in pairs(connection.connectors) do
+         local connector_copy = radiant.shallow_copy(connector)
+         connector_copy.region = import_region(connector.region)
+         connector_copy.region:optimize('connector region')
+         all_connections[type].connectors[name] = connector_copy
       end
    end
+
+   for type, connection in pairs(self._sv.dynamic_connections) do
+      local connection_data = all_connections[type]
+      if not connection_data then
+         connection_data = {
+            max_connections = connection.max_connections,
+            connectors = {}
+         }
+         all_connections[type] = connection_data
+      end
+      for name, connector in pairs(connection.connectors) do
+         connection_data.connectors[name] = connector
+      end
+   end
+
+   self._connections = all_connections
 end
 
 function ConnectionComponent:get_connections(type)
@@ -134,11 +153,55 @@ function ConnectionComponent:get_connected_stats(type)
    return next(type_data) and type_data
 end
 
+function ConnectionComponent:update_dynamic_connector(type, connection_max_connections, name, connector)
+   local connections = self._sv.dynamic_connections[type]
+   if not connections then
+      connections = {
+         max_connections = connection_max_connections,
+         connectors = {}
+      }
+      self._sv.dynamic_connections[type] = connections
+   end
+   connections.connectors[name] = radiant.shallow_copy(connector)
+
+   local connections = self._connections[type]
+   if not connections then
+      connections = {
+         max_connections = connection_max_connections,
+         connectors = {}
+      }
+      self._connections[type] = connections
+   end
+   connections.connectors[name] = radiant.shallow_copy(connector)
+
+   self.__saved_variables:mark_changed()
+
+   stonehearth_ace.connection:update_connector(self._entity, type, connection_max_connections, name, connector)
+end
+
+function ConnectionComponent:remove_dynamic_connector(type, name)
+   local connections = self._sv.dynamic_connections[type]
+   if connections then
+      local connector = connections.connectors[name]
+      if connector then
+         connections.connectors[name] = nil
+         stonehearth_ace.connection:remove_connector(self._entity, type, name)
+         self._sv.connected_stats[type].connectors[name] = nil
+         self.__saved_variables:mark_changed()
+
+         connections = self._connections[type]
+         if connections then
+            connections.connectors[name] = nil
+         end
+      end
+   end
+end
+
 -- this is called by the connection service when this entity has any of its connectors change status
 -- it may be called with just the type and conn_name to initialize the data structures
 -- it may be called with just the type and the graph_id when it changes graphs and needs all connectors for that type to update graph_id
 function ConnectionComponent:set_connected_stats(type, conn_name, connected_to_id, graph_id, threshold)
-   --log:debug('[%s]:set_connected_stats(%s, %s, %s, %s, %s)', self._entity, type, conn_name or 'NIL', connected_to_id or 'NIL', graph_id or 'NIL', threshold or 'NIL')
+   log:debug('[%s]:set_connected_stats(%s, %s, %s, %s, %s)', self._entity, type, tostring(conn_name), tostring(connected_to_id), tostring(graph_id), tostring(threshold))
    local type_data = self._sv.connected_stats[type]
    if not type_data then
       type_data = {connectors = {}, num_connections = 0, max_connections = self._connections[type].max_connections}

@@ -429,10 +429,12 @@ App.StonehearthCitizenCharacterSheetView.reopen({
       var catalogData = App.catalog.getCatalogData(alias);
 
       var materials = "";
-      if ((typeof catalogData.materials) === 'string') {
-         materials = catalogData.materials.split(' ');
-      } else {
-         materials = catalogData.materials;
+      if (catalogData) {
+         if ((typeof catalogData.materials) === 'string') {
+            materials = catalogData.materials.split(' ');
+         } else {
+            materials = catalogData.materials;
+         }
       }
       if (materials && materials.indexOf('human') >= 0) {
          self.set('uri', entity.__self);
