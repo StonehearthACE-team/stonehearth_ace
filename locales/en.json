@@ -617,6 +617,27 @@
                      }
                   }
                }
+            },
+            "dragonborn_king": {
+               "arcs": {
+                  "trigger": {
+                     "dragonborn_king": {
+                        "encounters": {
+                           "dialog_thank_player_for_help": {
+                              "dialog_tree_info": {
+                                 "dialog_nodes": {
+                                    "hatch_and_attach": {
+                                       "bulletin_message": {
+                                          "000": "I am fading fast, but I have given the last of my spirit to this egg of the Great Dragon, so that the dragonling inside may finally hatch out into this world. I have known you for little time, Children of Monkey, but I trust you will aid this young whelp as you have aided me. May you carry yourselves with strength and compassion, as the Dragonborn once did."
+                                       }
+                                    }
+                                 }
+                              }
+                           }
+                        }
+                     }
+                  }
+               }
             }
          }
       },
@@ -4770,6 +4791,9 @@
                "recipe_name": "Wooden Counter Door",
                "description": "Allows hearthlings to traverse between both sides of the counter.",
                "flavor": "Only authorized per-- oh, nevermind..."
+            },
+            "rc_bow_valor_recipe": {
+               "flavor": "A bow that demands skill of its wielder, but returns it in gales of arrows over their foes"
             }
          },
          "carpenter_description": {
@@ -8858,7 +8882,8 @@
             "description": "A legendary tome for the followers of the Church of Plenty."
          },
          "rc_legendary_bow": {
-            "display_name": "Zephyr Bow"
+            "display_name": "Zephyr Bow",
+            "description": "The swiftest bow in the desert"
          },
          "rc_legendary_sword": {
             "display_name": "Desert Fang"
@@ -9091,6 +9116,11 @@
          "goblin_pick": {
             "display_name": "Crude Pick",
             "description": "Excellent for breaking doors!"
+         },
+         "maul_lantern": {
+            "maul_lantern_iconic": {
+               "description": "Wield the Holy Light of Hestia in defense of your town."
+            }
          }
       },
       "gizmos": {
