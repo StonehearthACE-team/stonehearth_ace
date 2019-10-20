@@ -84,6 +84,8 @@ function AceJobComponent:add_exp(value, add_curiosity_addition, options)
       self:level_up()
    end
 
+   self:_call_job('set_current_level_exp', self._sv.current_level_exp)
+
    self.__saved_variables:mark_changed()
 
    radiant.events.trigger(self._entity, 'stonehearth_ace:on_add_exp', { value = value, add_curiosity_addition = add_curiosity_addition, prevent_level_up = prevent_level_up })
@@ -267,8 +269,8 @@ function AceJobComponent:promote_to(job_uri, options)
       self:_set_custom_description(self:_get_current_job_title(self._job_json))
 
       --Whenever you get a new job, dump all the xp that you've accured so far to your next level
-      self._sv.current_level_exp = 0
       self._sv.xp_to_next_lv = self:_calculate_xp_to_next_lv()
+      self._sv.current_level_exp = math.min(self._sv.xp_to_next_lv and (self._sv.xp_to_next_lv - 1) or 0, self:_call_job('get_current_level_exp') or 0)
 
       --Add all existing perks, if any
       local class_perk_descriptions = self:_apply_existing_perks()

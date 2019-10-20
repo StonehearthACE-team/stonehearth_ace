@@ -393,4 +393,16 @@ function BaseJob:unlock_town_ability(args)
    end
 end
 
+function BaseJob:get_current_level_exp()
+   if self._job_json.save_current_level_experience then
+      return math.floor((self._sv._current_level_exp or 0) * (self._job_json.save_current_level_experience_multiplier or 1))
+   end
+end
+
+function BaseJob:set_current_level_exp(exp)
+   if self._job_json.save_current_level_experience then
+      self._sv._current_level_exp = exp
+   end
+end
+
 return BaseJob
