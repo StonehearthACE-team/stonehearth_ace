@@ -50,9 +50,12 @@ function AceGrowingComponent:set_growth_stage(stage)
    stage = math.max(1, math.min(stage, #self._growth_stages))
    self._sv.current_growth_stage = stage
    self._sv._current_growth_recalculate_progress = 0
+   self._sv.growth_attempts = 0
    self.__saved_variables:mark_changed()
+
    self:_apply_current_stage()
    self:_set_growth_timer()
+   
    radiant.events.trigger(self._entity, 'stonehearth:growing', {
       entity = self._entity,
       stage = self:get_current_stage_name(),
@@ -95,7 +98,7 @@ function AceGrowingComponent:set_custom_growth_time_multiplier(multiplier)
    if self._sv.custom_growth_time_multiplier ~= multiplier then
       self._sv.custom_growth_time_multiplier = multiplier
       self:_recalculate_duration()
-		--self.__saved_variables:mark_changed()
+		self.__saved_variables:mark_changed()
    end
 end
 
