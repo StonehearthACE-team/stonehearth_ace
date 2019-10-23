@@ -14,7 +14,7 @@ local ArtificerClass = class()
 radiant.mixin(ArtificerClass, CraftingJob)
 
 function ArtificerClass:initialize()
-   CraftingJob.initialize(self)
+   CraftingJob.__user_initialize(self)
    self._sv.max_num_automatons = {}
    self._sv.max_num_siege_weapons = {}
 end
