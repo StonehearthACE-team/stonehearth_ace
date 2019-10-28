@@ -934,6 +934,7 @@ App.StonehearthFarmView.reopen({
       }
    }.observes('farmer_job_info'),
 
+   // TODO: the level should not be hard-coded here; there should be a better check for whether fertilizer use is available
    _showFertilizer: function() {
       var self = this;
       self.set('showFertilizer', self.get('highest_level') >= 3);

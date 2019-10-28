@@ -1,3 +1,4 @@
+local LootTable = require 'stonehearth.lib.loot_table.loot_table'
 local item_quality_lib = require 'stonehearth_ace.lib.item_quality.item_quality_lib'
 local HARVEST_ACTION = 'stonehearth:harvest_resource'
 
@@ -17,25 +18,24 @@ function AceResourceNodeComponent:set_harvestable_by_harvest_tool(harvestable_by
    end
 end
 
-function AceResourceNodeComponent:_place_reclaimed_items(pile_comp, owner, location)
+function AceResourceNodeComponent:_place_reclaimed_items(pile_comp, owner, location, spill_items)
    local spawned_items, item_count = pile_comp:harvest_once(owner)
-   for _, item in pairs(spawned_items) do
-      local pt = radiant.terrain.find_placement_point(location, 0, 3)
-      radiant.terrain.place_entity(item, pt)
-   end
+   spawned_items = radiant.entities.output_spawned_items(spawned_items, location, 0, 3, {}, self._entity, owner, spill_items).spilled
 
    return spawned_items, item_count
 end
 
 -- this is modified only to add the player_id of the harvester to the kill_data of the kill_event
 -- and to add item quality for spawned items if this entity is of higher quality
-function AceResourceNodeComponent:spawn_resource(harvester_entity, collect_location, owner_player_id)
+function AceResourceNodeComponent:spawn_resource(harvester_entity, collect_location, owner_player_id, spill_items)
    local spawned_resources
    local durability_to_consume = 1
+   local player_id = owner_player_id or (harvester_entity and radiant.entities.get_player_id(harvester_entity))
+   spill_items = spill_items ~= false
 
    local pile_comp = self._entity:get_component('stonehearth_ace:pile')
    if pile_comp and not pile_comp:is_empty() then
-      spawned_resources, durability_to_consume = self:_place_reclaimed_items(pile_comp, harvester_entity, collect_location)
+      spawned_resources, durability_to_consume = self:_place_reclaimed_items(pile_comp, harvester_entity, collect_location, spill_items)
    else
       -- if the pile comp was empty at the start of this, it's because it wasn't initialized properly
       -- so just use normal resource spawning, and don't consider whether the pile is empty for destroying
@@ -45,7 +45,7 @@ function AceResourceNodeComponent:spawn_resource(harvester_entity, collect_locat
       end
       spawned_resources = {}
       for i = 1, durability_to_consume do
-         radiant.append_map(spawned_resources, self:_place_spawned_items(harvester_entity, collect_location))
+         radiant.append_map(spawned_resources, self:_place_spawned_items(harvester_entity, collect_location, player_id, spill_items))
       end
 
          -- If we have the vitality town bonus, there's a chance we don't consume durability.
@@ -68,16 +68,8 @@ function AceResourceNodeComponent:spawn_resource(harvester_entity, collect_locat
             end
          end
       end
-
-      local quality = radiant.entities.get_item_quality(self._entity)
-      if quality > 1 then
-         for id, item in pairs(spawned_resources) do
-            self:_set_quality(item, quality)
-         end
-      end
    end
 
-   local player_id = owner_player_id or (harvester_entity and radiant.entities.get_player_id(harvester_entity))
    if harvester_entity then
       for id, item in pairs(spawned_resources) do
          -- add it to the inventory of the owner
@@ -111,6 +103,34 @@ function AceResourceNodeComponent:spawn_resource(harvester_entity, collect_locat
    end
 
    self.__saved_variables:mark_changed()
+end
+
+function AceResourceNodeComponent:_place_spawned_items(harvester, location, owner, spill_items)
+   local json = radiant.entities.get_json(self)
+   if not json then
+      return {}
+   end
+   
+   local quality = radiant.entities.get_item_quality(self._entity)
+
+   local spawned_items
+   if json.resource_loot_table then
+      local uris = LootTable(json.resource_loot_table, quality):roll_loot()
+      spawned_items = radiant.entities.output_items(uris, location, 1, 3, { owner = owner }, self._entity, harvester, spill_items).spilled
+   else
+      spawned_items = {}
+   end
+
+   local resource = json.resource
+   if resource then
+      local uris = {[json.resource] = {[quality] = 1}}
+      local items = radiant.entities.output_items(uris, location, 0, 4, { owner = owner }, self._entity, harvester, spill_items)
+      --Create the harvested entity and put it on the ground
+      local item = (next(items.spilled) and items.spilled[next(items.spilled)]) or (next(items.succeeded) and items.succeeded[next(items.succeeded)])
+      spawned_items[item:get_id()] = item
+   end
+
+   return spawned_items
 end
 
 AceResourceNodeComponent._ace_old_request_harvest = ResourceNodeComponent.request_harvest

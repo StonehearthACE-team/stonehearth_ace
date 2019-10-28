@@ -228,6 +228,10 @@ function catalog_lib._add_catalog_description(catalog, full_alias, json, base_da
       end
       
       catalog_data.max_stacks = json.components['stonehearth:stacks'] and json.components['stonehearth:stacks'].max_stacks
+
+      if json.components['stonehearth:storage'] then
+         catalog_data.is_storage = true
+      end
    end
 
    if entity_data ~= nil then

@@ -33,10 +33,11 @@ function AceDigAdjacent:_mine_block(ai, entity, mining_zone, block)
    local mining_zone_component = mining_zone:get_component('stonehearth:mining_zone')
    local loot = mining_zone_component:mine_point(block)
    local work_player_id = radiant.entities.get_work_player_id(entity)
-   local items = radiant.entities.spawn_items(loot, worker_location, 1, 3, { owner = work_player_id })
+   local items = radiant.entities.output_items(loot, worker_location, 1, 3,
+         { owner = work_player_id }, mining_zone, entity, true, self:_get_quality_chances(entity, mining_zone, block)).spilled
 
    -- apply quality to mined items if relevant
-   self:_apply_quality(entity, work_player_id, items, mining_zone, block)
+   --self:_apply_quality(entity, work_player_id, items, mining_zone, block)
 
    local inventory = stonehearth.inventory:get_inventory(work_player_id)
    if inventory then
@@ -50,12 +51,12 @@ function AceDigAdjacent:_mine_block(ai, entity, mining_zone, block)
    return true
 end
 
-function AceDigAdjacent:_apply_quality(entity, player_id, items, mining_zone, block)
-   local quality_chances = self:_get_quality_chances(entity, mining_zone, block)
-   if quality_chances then
-      item_quality_lib.apply_qualities(items, quality_chances, {max_quality = item_quality_lib.get_max_random_quality(player_id)})
-   end
-end
+-- function AceDigAdjacent:_apply_quality(entity, player_id, items, mining_zone, block)
+--    local quality_chances = self:_get_quality_chances(entity, mining_zone, block)
+--    if quality_chances then
+--       item_quality_lib.apply_qualities(items, quality_chances, {max_quality = item_quality_lib.get_max_random_quality(player_id)})
+--    end
+-- end
 
 -- not using mining_zone or block, but maybe someone wants to override this function to take that into account
 -- e.g., higher/lower chances based on altitude

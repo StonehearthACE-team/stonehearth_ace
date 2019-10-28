@@ -122,6 +122,12 @@ function AceFarmerFieldComponent:get_rotation()
    return self._sv.rotation
 end
 
+function AceFarmerFieldComponent:get_current_crop_alias()
+   if not self:_is_fallow() then
+      return self._sv.current_crop_alias
+   end
+end
+
 function AceFarmerFieldComponent:_load_field_type()
    self._field_type_data = stonehearth.farming:get_field_type(self._sv.field_type or 'farm') or {}
    self._field_pattern = self._field_type_data.pattern or farming_lib.DEFAULT_PATTERN
@@ -294,6 +300,106 @@ function AceFarmerFieldComponent:auto_harvest_crop(auto_harvest_type, x, z)
    end
 end
 
+-- try to harvest a crop; used by harvest ai, auto-harvest/place (crop settings), and instructed harvests
+function AceFarmerFieldComponent:try_harvest_crop(harvester, x, z, num_stacks, auto_harvest_type)
+   --log:debug('%s try_harvest_crop(%s, %s, %s, %s, %s)', self._entity, tostring(harvester), tostring(x), tostring(z), tostring(num_stacks), tostring(auto_harvest_type))
+   local dirt_plot = self._sv.contents and self._sv.contents[x][z]
+   local crop = dirt_plot and dirt_plot.contents
+   if crop then
+      num_stacks = num_stacks or 1
+      local origin = self._location + Point3(x - 1, 0, z - 1)
+      local crop_comp = crop:get_component('stonehearth:crop')
+      if not crop_comp:is_harvestable() then
+         return false
+      end
+
+      local primary_item, other_items = crop_comp:get_harvest_items(harvester, num_stacks)
+      --log:debug('harvest %s items: %s, %s', crop, tostring(primary_item), radiant.util.table_tostring(other_items))
+
+      -- try to output the items
+      -- if there's a harvester entity or an auto_harvest_type specified, the harvesting will go through and spill if necessary
+      -- if there's a harvester entity, they will pick up the primary item (or add stacks to the one they're carrying)
+      -- if an auto_harvest_type is specified, the primary item will be placed in the exact crop location
+      -- if no harvester or auto_harvest_type, stick the primary item into the other items and try to output them all without spilling
+      --    if no items are successfully output, cancel the harvest
+      if not harvester and not auto_harvest_type and primary_item then
+         other_items[primary_item:get_id()] = primary_item
+         primary_item = nil
+      end
+      local items
+      if next(other_items) then
+         items = radiant.entities.output_spawned_items(other_items, origin, 0, 2, nil, crop, harvester, harvester or auto_harvest_type)
+         --log:debug('output result: %s', radiant.util.table_tostring(items))
+      end
+
+      if not harvester and not auto_harvest_type and (not items or not next(items.succeeded)) then
+         return false
+      end
+
+      local stage = crop_comp:get_post_harvest_stage()
+      local crop_uri = self:get_current_crop_alias()
+      if stage and crop:get_uri() == crop_uri then
+         crop:get_component('stonehearth:growing'):set_growth_stage(stage)
+         self:_update_crop_fertilized(x, z, false)
+      else
+         radiant.entities.kill_entity(crop)
+      end
+
+      if primary_item then
+         if harvester then
+            local carrying = radiant.entities.get_carrying(harvester)
+            if carrying then
+               if carrying:get_uri() == primary_item:get_uri() then
+                  local stacks_component = carrying:get_component('stonehearth:stacks')
+                  if stacks_component then
+                     -- if new item is a higher quality, add stacks from carrying to new primary item and replace carrying with it
+                     if radiant.entities.get_item_quality(carrying) < radiant.entities.get_item_quality(primary_item) then
+                        primary_item:add_component('stonehearth:stacks'):add_stack(stacks_component:get_stacks())
+                        self:_replace_harvester_carrying(harvester, primary_item)
+                     else
+                        -- if it's the same quality, just add the stacks to the carrying item
+                        carrying:add_component('stonehearth:stacks'):add_stack(primary_item:get_component('stonehearth:stacks'):get_stacks())
+                        radiant.entities.destroy_entity(primary_item)
+                        primary_item = nil
+                     end
+                  end
+               else
+                  self:_replace_harvester_carrying(harvester, primary_item)
+               end
+            else
+               self:_replace_harvester_carrying(harvester, primary_item)
+            end
+         elseif auto_harvest_type then
+            local iconic = true
+            if auto_harvest_type == 'place' then
+               primary_item:add_component('stonehearth:crop'):set_field(self, x, z)
+               primary_item:add_component('stonehearth_ace:output'):set_parent_output(self._entity)
+               dirt_plot.post_harvest_contents = primary_item
+               iconic = false
+            end
+
+            radiant.terrain.place_entity_at_exact_location(primary_item, origin, {force_iconic = iconic})
+            self:_create_post_harvest_crop_listener(dirt_plot)
+            self.__saved_variables:mark_changed()
+         end
+      end
+
+      return true
+   end
+end
+
+function AceFarmerFieldComponent:_replace_harvester_carrying(harvester, new_carrying)
+   local carrying = radiant.entities.remove_carrying(harvester)
+   if carrying then
+      radiant.entities.destroy_entity(carrying)
+   end
+
+   radiant.entities.pickup_item(harvester, new_carrying)
+   -- newly harvested drops go into your inventory immediately unless your inventory is full
+   stonehearth.inventory:get_inventory(radiant.entities.get_work_player_id(harvester))
+                           :add_item_if_not_full(new_carrying)
+end
+
 AceFarmerFieldComponent._ace_old__try_mark_for_plant = FarmerFieldComponent._try_mark_for_plant
 function AceFarmerFieldComponent:_try_mark_for_plant(dirt_plot)
    if not dirt_plot.post_harvest_contents then
@@ -353,7 +459,8 @@ function AceFarmerFieldComponent:plant_crop_at(x_offset, z_offset)
 	if growing_comp then
       growing_comp:set_environmental_growth_time_modifier(self._sv.growth_time_modifier)
       growing_comp:set_flooded(self._sv.flooded)
-	end
+   end
+   crop:add_component('stonehearth_ace:output'):set_parent_output(self._entity)
 end
 
 AceFarmerFieldComponent._ace_old_set_crop = FarmerFieldComponent.set_crop
@@ -693,6 +800,7 @@ function AceFarmerFieldComponent:_update_effective_humidity_level()
       relative_level = levels.SOME
    end
 
+   -- TODO: need to check pattern for eligible plots (furrows)
    if self._sv.effective_humidity_level ~= relative_level then
       local size = self._sv.size
       local contents = self._sv.contents

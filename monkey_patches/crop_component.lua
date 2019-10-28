@@ -2,6 +2,7 @@
    Every time the crop grows, update its resource node resource. More mature crops
    yield better resources.
 ]]
+local item_quality_lib = require 'stonehearth_ace.lib.item_quality.item_quality_lib'
 local rng = _radiant.math.get_default_rng()
 local CropComponent = class()
 
@@ -23,7 +24,6 @@ function CropComponent:_load_json()
    self._harvest_threshhold = self._json.harvest_threshhold
 end
 
-CropComponent._ace_old_restore = CropComponent.restore
 function CropComponent:restore()
    local growing_component = self._entity:get_component('stonehearth:growing')
    if growing_component then
@@ -156,6 +156,8 @@ end
 function CropComponent:_notify_harvestable()
    radiant.assert(self._sv._field, 'crop %s has no field!', self._entity)
    self._sv._field:notify_crop_harvestable(self._sv._field_offset_x, self._sv._field_offset_y)
+   -- try to auto-harvest the crop
+   self._sv._field:try_harvest_crop(nil, self._sv._field_offset_x, self._sv._field_offset_y, nil, self._auto_harvest)
 end
 
 function CropComponent:_notify_unharvestable()
@@ -172,13 +174,6 @@ function CropComponent:_became_harvestable()
    end
 
    self:_notify_harvestable()
-
-   if self._auto_harvest then
-      -- auto-harvest the crop
-      if self._sv._field then
-         self._sv._field:auto_harvest_crop(self._auto_harvest, self._sv._field_offset_x, self._sv._field_offset_y)
-      end
-   end
 end
 
 function CropComponent:set_fertilized()
@@ -219,6 +214,82 @@ function CropComponent:_set_megacrop()
    end
 
    --self.__saved_variables:mark_changed()
+end
+
+function CropComponent:get_harvest_items(owner, num_stacks)
+   local primary_item
+   local items = {}
+
+   owner = owner or self._entity
+   local product_uri = self:get_product()
+   local quality = radiant.entities.get_item_quality(self._entity)
+   local megacrop_data = radiant.entities.get_entity_data(self._entity, 'stonehearth_ace:megacrop') or {}
+   
+   if self:is_megacrop() then
+      local num_to_spawn = megacrop_data.num_to_spawn or 3
+      local other_items = megacrop_data.other_items
+      local pickup_new = other_items and megacrop_data.pickup_new ~= nil and megacrop_data.pickup_new
+      
+      -- spawn "other" items first, so we can easily separate the first one
+      if other_items then
+         for uri, count in pairs(other_items) do
+            for i = 1, count do
+               local item = self:_create_item(player_id, uri, quality)
+               if item then
+                  if not primary_item then
+                     primary_item = item
+                  else
+                     items[item:get_id()] = item
+                  end
+               end
+            end
+         end
+      end
+
+      -- spawn more of the product
+      for i = 1, num_to_spawn do
+         local item = self:_create_item(owner, product_uri, quality, 1, true)
+         if item then
+            items[item:get_id()] = item
+         end
+      end
+   end
+
+   if not primary_item and (not self:is_megacrop() or not megacrop_data.return_immediately) then
+      primary_item = self:_create_item(owner, product_uri, quality, num_stacks)
+   end
+
+   return primary_item, items
+end
+
+function CropComponent:_create_item(player_id, uri, crop_quality, num_stacks, max_stacks)
+   if not uri then
+      return
+   end
+
+   local product = radiant.entities.create_entity(uri, { owner = player_id })
+   local entity_forms = product:get_component('stonehearth:entity_forms')
+
+   --If there is an entity_forms component, then you want to put the iconic version
+   --in the farmer's arms, not the actual entity (ie, if we had a chair crop)
+   --This also prevents the item component from being added to the full sized versions of things.
+   if entity_forms then
+      local iconic = entity_forms:get_iconic_entity()
+      if iconic then
+         product = iconic
+      end
+   end
+
+   local stacks_component = product:get_component('stonehearth:stacks')
+   if stacks_component then
+      stacks_component:set_stacks((max_stacks and stacks_component:get_max_stacks()) or num_stacks or 1)
+   end
+
+   if crop_quality > 1 then
+      item_quality_lib.copy_quality(self._entity, product)
+   end
+
+   return product
 end
 
 return CropComponent

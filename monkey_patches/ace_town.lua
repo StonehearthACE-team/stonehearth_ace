@@ -14,6 +14,53 @@ function AceTown:_pre_activate()
    end
 end
 
+AceTown._ace_old_activate = Town.activate
+function AceTown:activate(loading)
+   self:_ace_old_activate(loading)
+   self:_create_default_storage_listeners()
+end
+
+AceTown._ace_old_destroy = Town.destroy
+function AceTown:destroy()
+   self:_destroy_default_storage_listeners()
+   self:_ace_old_destroy()
+end
+
+function AceTown:_destroy_default_storage_listeners()
+   for id, storage in pairs(self._sv.default_storage) do
+      self:_destroy_default_storage_listener(id)
+   end
+end
+
+function AceTown:_destroy_default_storage_listener(storage_id)
+   if self._default_storage_listener[storage_id] then
+      self._default_storage_listener[storage_id]:destroy()
+      self._default_storage_listener[storage_id] = nil
+   end
+end
+
+function AceTown:_create_default_storage_listeners()
+   self._default_storage_listener = {}
+   if not self._sv.default_storage then
+      self._sv.default_storage = {}
+      self.__saved_variables:mark_changed()
+   end
+
+   for _, storage in pairs(self._sv.default_storage) do
+      self:_create_default_storage_listener(storage)
+   end
+end
+
+function AceTown:_create_default_storage_listener(storage)
+   local storage_id = storage:get_id()
+   self:_destroy_default_storage_listener(storage_id)
+
+   self._default_storage_listener[storage_id] = radiant.events.listen(storage, 'radiant:entity:pre_destroy', function()
+         -- if it gets destroyed, make it no longer the default storage
+         self:remove_default_storage(storage_id)
+      end)
+end
+
 AceTown._ace_old_set_town_name = Town.set_town_name
 function AceTown:set_town_name(town_name, set_by_player)
    self:_ace_old_set_town_name(town_name, set_by_player)
@@ -346,6 +393,29 @@ function AceTown:task_group_has_active_tasks(task_group)
    end
 
    return false
+end
+
+function AceTown:get_default_storage()
+   return self._sv.default_storage
+end
+
+function AceTown:is_default_storage(storage)
+   return self._sv.default_storage[storage:get_id()] ~= nil
+end
+
+function AceTown:add_default_storage(storage)
+   if storage and storage:is_valid() then
+      self._sv.default_storage[storage:get_id()] = storage
+      self.__saved_variables:mark_changed()
+      storage:add_component('stonehearth_ace:input')
+      self:_create_default_storage_listener(storage)
+   end
+end
+
+function AceTown:remove_default_storage(storage_id)
+   self._sv.default_storage[storage_id] = nil
+   self.__saved_variables:mark_changed()
+   self:_destroy_default_storage_listener(storage_id)
 end
 
 return AceTown

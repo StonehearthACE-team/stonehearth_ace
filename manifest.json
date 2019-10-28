@@ -3425,9 +3425,11 @@
       "stonehearth/ui/game/traces/catalog.js": "file(ui/game/traces/catalog.js)",
       "stonehearth/ui/game/item_palette/item_palette.js": "file(ui/game/item_palette/item_palette.js)",
       "stonehearth/ui/game/modes/zones_mode/pasture/pasture.html": "file(ui/game/modes/zones_mode/pasture/pasture.html)",
+      "stonehearth/ui/game/modes/zones_mode/stockpile/stockpile.html": "file(ui/game/modes/zones_mode/stockpile/stockpile.html)",
       "stonehearth/ui/game/modes/build_mode/building_designer_3/fixture_list/fixture_list.html": "file(ui/game/modes/build_mode/building_designer_3/fixture_list/fixture_list.html)",
       "stonehearth/ui/game/unit_frame/unit_frame.html": "file(ui/game/unit_frame/unit_frame.html)",
       "stonehearth/ui/game/citizens/citizens.html": "file(ui/game/citizens/citizens.html)",
+      "stonehearth/ui/game/town/town.html": "file(ui/game/town/town.html)",
       "stonehearth/ui/game/character_sheets/citizen_character_sheet/citizen_character_sheet.html": "file(ui/game/character_sheets/citizen_character_sheet/citizen_character_sheet.html)",
       "stonehearth/ai/actions/chase_patrol_party_action.lua": "file(ai/actions/chase_patrol_party_action.lua)",
       "stonehearth/ai/actions/patrol_action.lua": "file(ai/actions/patrol_action.lua)",
@@ -3456,8 +3458,10 @@
       "entity_modification": "file(components/entity_modification/entity_modification_component.lua)",
       "fence": "file(components/fence/fence_component.lua)",
       "fish_trap": "file(components/fish_trap/fish_trap_component.lua)",
+      "input": "file(components/input/input_component.lua)",
       "mechanical": "file(components/mechanical/mechanical_component.lua)",
       "models": "file(components/models/models_component.lua)",
+      "output": "file(components/output/output_component.lua)",
       "pasture_item": "file(components/pasture_item/pasture_item_component.lua)",
       "patrol_banner": "file(components/patrol_banner/patrol_banner_component.lua)",
       "pile": "file(components/pile/pile_component.lua)",
@@ -3661,6 +3665,10 @@
          "controller": "file(call_handlers/town_inventory_call_handler.lua)",
          "endpoint": "server"
       },
+      "set_default_storage": {
+         "controller": "file(call_handlers/town_inventory_call_handler.lua)",
+         "endpoint": "server"
+      },
       "terrain_slice_buildings_setting_changed": {
          "controller": "file(call_handlers/settings_call_handler.lua)",
          "endpoint": "client"
@@ -3752,6 +3760,7 @@
          "file(ui/game/modes/zones_mode/trapping_grounds/trapping_grounds.js)",
          "file(ui/game/modes/zones_mode/farm/farm.js)",
          "file(ui/game/modes/zones_mode/pasture/pasture.js)",
+         "file(ui/game/modes/zones_mode/stockpile/stockpile.js)",
          "file(ui/game/modes/build_mode/build_mode.js)",
          "file(ui/game/modes/build_mode/building_designer_3/fixture_list/fixture_list.js)",
          "file(ui/game/modes/military_mode/military_mode.js)",
@@ -3778,9 +3787,11 @@
          "file(ui/game/modes/zones_mode/trapping_grounds/trapping_grounds.less)",
          "file(ui/game/modes/military_mode/military_mode.less)",
          "file(ui/game/modes/fence_mode/fence_mode.less)",
+         "file(ui/game/town/town.less)",
          "file(jobs/mf_artificer/skin/workshop.less)",
          "file(ui/game/modes/zones_mode/farm/farm.less)",
          "file(ui/game/modes/zones_mode/pasture/pasture.less)",
+         "file(ui/game/modes/zones_mode/stockpile/stockpile.less)",
          "file(ui/shell/select_roster/select_roster.less)",
          "file(ui/shell/loadout_screen/loadout_screen.less)",
          "file(ui/shell/settings/settings.less)",

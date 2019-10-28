@@ -9,8 +9,8 @@ local item_quality_lib = require 'stonehearth_ace.lib.item_quality.item_quality_
 
 local AceLootDropsComponent = class()
 
--- the only thing we're changing for ACE is the "local auto_loot = " line
-function AceLootDropsComponent:_on_kill_event()
+-- changed the "auto_loot = " line, also changed to use output system instead of just raw spawning items
+function AceLootDropsComponent:_on_kill_event(kill_data)
    local loot_table = self._sv.loot_table or radiant.entities.get_json(self)
    if loot_table then
       local location = radiant.entities.get_world_grid_location(self._entity)
@@ -28,7 +28,8 @@ function AceLootDropsComponent:_on_kill_event()
          end
          local items = LootTable(loot_table, quality)
                            :roll_loot()
-         local spawned_entities = radiant.entities.spawn_items(items, location, 1, 3, { owner = force_auto_loot and self._sv.auto_loot_player_id or self._entity })
+         local spawned_entities = radiant.entities.output_items(items, location, 1, 3,
+               { owner = force_auto_loot and (kill_data.source or self._sv.auto_loot_player_id) or self._entity }, self._entity, kill_data.source, true).spilled
 
          --Add a loot command to each of the spawned items, or claim them automatically
          for id, entity in pairs(spawned_entities) do

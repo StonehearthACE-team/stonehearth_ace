@@ -57,10 +57,10 @@ function AceShepherdPastureComponent:post_activate()
       self:set_feed(self._sv._current_feed)
       self:_create_pasture_tasks()
 
-      for id, animal_data in pairs(self._sv.tracked_critters) do
-         local animal = animal_data.entity
-         self:_create_harvest_task(animal)
-      end
+      -- for id, animal_data in pairs(self._sv.tracked_critters) do
+      --    local animal = animal_data.entity
+      --    self:_create_harvest_task(animal)
+      -- end
       --self:_register_with_town()
    end
 end
@@ -172,6 +172,7 @@ end
 AceShepherdPastureComponent._ace_old_add_animal = ShepherdPastureComponent.add_animal
 function AceShepherdPastureComponent:add_animal(animal)
    self:_ace_old_add_animal(animal)
+   animal:add_component('stonehearth_ace:output'):set_parent_output(self._entity)
    local rrn = animal:get_component('stonehearth:renewable_resource_node')
    if rrn then
       rrn:auto_request_harvest()
@@ -187,12 +188,14 @@ function AceShepherdPastureComponent:convert_and_add_animals(animals)
       local shepherded_animal_component = pasture_collar:get_component('stonehearth:shepherded_animal')
       shepherded_animal_component:set_animal(animal)
       shepherded_animal_component:set_pasture(self._entity)
+      animal:add_component('stonehearth_ace:output'):set_parent_output(self._entity)
 
       self._sv.tracked_critters[animal:get_id()] = {entity = animal}
       radiant.entities.set_player_id(animal, self._entity)
       self._sv.num_critters = self._sv.num_critters + 1
       self:_listen_for_renewables(animal)
       self:_listen_for_hungry_critter(animal)
+      
       --self:_create_harvest_task(animal)
    end
 
@@ -207,6 +210,14 @@ end
 
 AceShepherdPastureComponent._ace_old_remove_animal = ShepherdPastureComponent.remove_animal
 function AceShepherdPastureComponent:remove_animal(animal_id)
+   if self._sv.tracked_critters[animal_id] then
+      local animal = self._sv.tracked_critters[animal_id].entity
+      local output_comp = animal and animal:get_component('stonehearth_ace:output')
+      if output_comp then
+         output_comp:set_parent_output(nil)
+      end
+   end
+
    self:_ace_old_remove_animal(animal_id)
 
    self._sv._queued_slaughters[animal_id] = nil
@@ -312,8 +323,13 @@ function AceShepherdPastureComponent:_request_slaughter_animal(animal, not_if_na
          return false
       end
 
-      resource_component:request_harvest(self._entity:get_player_id())
       self._sv._queued_slaughters[animal:get_id()] = true
+      local output = self._entity:get_component('stonehearth_ace:output')
+      if output and output:has_any_input(true) then
+         resource_component:spawn_resource(nil, radiant.entities.get_world_location(animal), radiant.entities.get_player_id(self._entity), false)
+      else
+         resource_component:request_harvest(self._entity:get_player_id())
+      end
       return true
    end
 end
@@ -353,6 +369,10 @@ function AceShepherdPastureComponent:set_maintain_animals(value)
 
       self:_consider_maintain_animals()
    end
+end
+
+function AceShepherdPastureComponent:reconsider_maintain_animals()
+   self:_consider_maintain_animals()
 end
 
 function AceShepherdPastureComponent:set_harvest_animals_renewable(value)

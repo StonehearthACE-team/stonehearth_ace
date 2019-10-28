@@ -2,6 +2,34 @@ App.StonehearthTownView.reopen({
    lastClickedUri: null,
    lastClickedItem: null,
 
+   init: function() {
+      var self = this;
+      self._super();
+
+      radiant.call('stonehearth:get_town')
+         .done(function (response) {
+            self._townTrace = new StonehearthDataTrace(response.result, { 'town_bonuses': { '*': {} }, 'default_storage': { '*': {}} })
+               .progress(function (response) {
+                  if (self.isDestroyed || self.isDestroying) {
+                     return;
+                  }
+                  self._townDataChanged(response);
+               });
+         });
+   },
+
+   _townDataChanged: function(data) {
+      var self = this;
+      var bonuses = [];
+      radiant.each(data.town_bonuses, (uri, bonus) => {
+         bonuses.push({ display_name: bonus.display_name, description: bonus.description });
+      });
+      self.set('townBonuses', bonuses);
+
+      self._defaultStorage = data.default_storage;
+      self._updateDefaultStorage();
+   },
+
    didInsertElement: function () {
       var self = this;
       self._super();
@@ -38,7 +66,43 @@ App.StonehearthTownView.reopen({
                }
          }
       });
+
+      App.tooltipHelper.attachTooltipster(self.$('#defaultStorageLabel'),
+         $(App.tooltipHelper.createTooltip(null, i18n.t('stonehearth_ace:ui.game.zones_mode.stockpile.default_storage.tooltip')))
+      );
    },
+
+   _updateDefaultStorage: $.throttle(250, function () {
+      var self = this;
+      if (!self.$()) return;
+
+      var items = [];
+      radiant.each(self._defaultStorage, function (id, storage) {
+         var catalogData = App.catalog.getCatalogData(storage.uri);
+         if (catalogData) {
+            var item = {
+               id: id,
+               entityId: storage.__self,
+               icon: catalogData.icon
+            };
+            items.push(item);
+         }
+      });
+
+      self.set('defaultStorage', items);
+      self.set('hasDefaultStorage', items.length > 0);
+
+      Ember.run.scheduleOnce('afterRender', this, function() {
+         self.$('.defaultStorageItem').each(function() {
+            var $el = $(this);
+            var entity = self._getDefaultStorageEntity($el.attr('storage-id'));
+            var catalogData = App.catalog.getCatalogData(entity.uri);
+            App.tooltipHelper.createDynamicTooltip($el, function () {
+               return $(App.tooltipHelper.createTooltip(i18n.t(catalogData.display_name), i18n.t(catalogData.description)));
+            });
+         });
+      });
+   }),
 
    getItemsFromUri: function (this_uri, this_quality) {
       var self = this;
@@ -64,5 +128,20 @@ App.StonehearthTownView.reopen({
       }
 
       return items;
+   },
+
+   _getDefaultStorageEntity: function(id) {
+      return this._defaultStorage && this._defaultStorage[id];
+   },
+
+   actions: {
+      goToDefaultStorage: function(id) {
+         var entity = this._getDefaultStorageEntity(id);
+         var entityId = entity && entity.__self;
+         if (entityId) {
+            radiant.call('stonehearth:select_entity', entityId);
+            radiant.call('stonehearth:camera_look_at_entity', entityId);
+         }
+      }
    }
 });

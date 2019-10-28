@@ -67,14 +67,14 @@ $.widget( "stonehearth.stonehearthItemPalette", {
             if (catalogData) {
                v.display_name = catalogData.display_name;
                v.description = catalogData.description;
-               v.category = catalogData.category;
+               v.category = v.category || catalogData.category;   // don't override a manually supplied category
                v.icon = catalogData.icon;
                v.item_quality = v.item_quality || 1;
                v.deprecated = catalogData.deprecated;
                return v;
             }
          }
-         return false;  // Skip items with no URI ot catalog data.
+         return false;  // Skip items with no URI or catalog data.
       });
 
       // Sort all items globally. This ensures they are sorted within their categories on first add (but not subsequent ones).

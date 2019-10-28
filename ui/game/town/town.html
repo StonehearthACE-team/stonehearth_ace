@@ -1,0 +1,145 @@
+<script type="text/x-handlebars" data-template-name="town">
+<div id="town" class="gui">
+   <div class="window">
+      <div class="title">{{i18n stonehearth:ui.game.town_overview.title}}<div class="closeButton"></div></div>
+      <div id="info">
+         <div id="townTitle">
+            <div id="descriptor"></div>
+            <div id="name">{{view.town_name}}</div>
+         </div>
+
+         <div id="citizenCount">
+            <div id="workers" class="counter">
+               <div>{{view.num_workers}}</div>
+            </div>
+            <div id="crafters" class="counter">
+               <div>{{view.num_crafters}}</div>
+            </div>
+            <div id="soldiers" class="counter">
+               <div>{{view.num_soldiers}}</div>
+            </div>
+         </div>
+
+         <div id="moraleBanner">
+            <div id="townMoraleName">{{i18n stonehearth:ui.game.town_overview.town_morale}}</div>
+            <div id="moraleIcon" {{bind-attr style=view.morale_icon_style}} />
+         </div>
+
+      </div>
+      <div id="overviewTab" class="tabPage">
+         <div id="scores" class="downSection">
+            <div class="row" id="net_worth">
+               <div id="netWorthIcon" />
+               <div>{{i18n stonehearth:ui.game.town_overview.score.net_worth}}</div>
+               <div>
+                  {{view.net_worth}}
+                  <span class="goal">
+                    {{i18n stonehearth:ui.game.town_overview.score.next_requirement}}: {{view.netWorthImmigrationRequirement}}
+                  </span>
+               </div>
+            </div>
+
+            <div class="row indented" id="inventory">
+               <div id="inventoryIcon" />
+               <div>{{i18n stonehearth:ui.game.town_overview.score.inventory}}</div>
+               <div>{{view.score_inventory}}</div>
+            </div>
+
+            <div class="row indented" id="buildings">
+               <div id="buildingIcon" />
+               <div>{{i18n stonehearth:ui.game.town_overview.score.buildings}}</div>
+               <div>{{view.score_buildings}}</div>
+            </div>
+
+            <div class="row indented" id="agriculture">
+               <div id="agricultureIcon" />
+               <div>{{i18n stonehearth:ui.game.town_overview.score.agriculture}}</div>
+               <div>{{view.score_agriculture}}</div>
+            </div>
+
+            <div class="row" id="edibles">
+               <div id="ediblesIcon" />
+               <div>{{i18n stonehearth:ui.game.town_overview.score.edibles}}</div>
+               <div>
+                  {{view.edibles}}
+                  <span class="goal">
+                    {{i18n stonehearth:ui.game.town_overview.score.next_requirement}}: {{view.foodImmigrationRequirement}}
+                  </span>
+               </div>
+            </div>
+
+            <div class="row" id="military_strength">
+               <div id="militaryIcon" />
+               <div>{{i18n stonehearth:ui.game.town_overview.score.military_strength}}</div>
+               <div>{{view.military_strength}}</div>
+            </div>
+         </div>
+
+         <div id="defaultStorageContainer" {{bind-attr class="view.hasDefaultStorage::hidden"}}>
+            <div id="defaultStorageLabel">{{i18n stonehearth_ace:ui.game.zones_mode.stockpile.default_storage.display_name}}:</div>
+            <div id="defaultStorageList" class="downSection">
+               {{#each view.defaultStorage}}
+               <a href="#" {{action "goToDefaultStorage" this.id target="view"}} {{bind-attr storage-id=this.id}} class="uisounds defaultStorageItem">
+                  <div class="item">
+                     <img {{bind-attr src=this.icon}} class="image"/>
+                     <div class="selectBox"></div>
+                  </div>
+               </a>
+               {{/each}}
+            </div>
+         </div>
+      </div>
+
+      <div id="inventoryTab" class="tabPage">
+         <div id="inventoryPaletteContainer" class="downSection">
+            <div id="inventoryPalette"></div>
+         </div>
+         <div id="inventoryCountContainer">
+            <div id="inventoryCount">{{i18n stonehearth:ui.game.town_overview.inventory.item_count}}
+               <label id="countNumbers" class="notFull">{{view.inventory_item_count}}
+                  {{#if view.inventory_capacity}}
+                     / {{view.inventory_capacity}}
+                  {{/if}}
+                </label>
+            </div>
+         </div>
+      </div>
+
+      <div id="journalsTab" class="tabPage">
+         <div id="journalsDownSection" class="downSection" />
+         {{partial 'journalTab'}}
+      </div>
+
+      <div id="bonusesTab" class="tabPage">
+         <div id="bonusesDownSection" class="downSection">
+            {{#each view.townBonuses}}
+               <h2>{{i18n_key this.display_name}}</h2>
+               <p>{{{formatted_i18n_key this.description}}}</p>
+            {{/each}}
+         </div>
+      </div>
+   </div>
+
+   <div id="tabs">
+      <div class="tab inner-tab active" tabPage="overviewTab">{{i18n stonehearth:ui.game.town_overview.tab.town_overview}}</div>
+      <div class="tab inner-tab" tabPage="inventoryTab" id="inventoryTabButton">{{i18n stonehearth:ui.game.town_overview.tab.inventory}}</div>
+      <div class="tab inner-tab" tabPage="journalsTab">{{i18n stonehearth:ui.game.town_overview.tab.journal}}</div>
+      <div class="tab inner-tab" tabPage="bonusesTab">{{i18n stonehearth:ui.game.town_overview.tab.bonuses}}</div>
+   </div>
+
+</div>
+</script>
+
+<!-- Template for the journal tab -->
+<script type="text/x-handlebars" data-template-name="_journalTab">
+   <div class="book">
+      <div id="defaultMessage">{{i18n stonehearth:ui.game.town_overview.journal.default_message}}</div>
+   </div>
+
+   <div id=dateControls>
+      <a href='#' id="pageBackBtn" class="button" {{action "back" target=view}}></a>
+      <div id="journalDate">{{i18n stonehearth:ui.game.town_overview.journal.today}}</div>
+      <a href='#' id="pageForwardBtn" class="button" {{action "forward" target=view}}></a>
+   </div>
+
+</script>

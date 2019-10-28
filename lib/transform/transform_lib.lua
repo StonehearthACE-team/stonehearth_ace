@@ -102,6 +102,15 @@ function transform_lib.transform(entity, transformer, into_uri, options)
          end
       end
 
+      local output = entity:get_component('stonehearth_ace:output')
+      if output then
+         local transformed_output = transformed_form:add_component('stonehearth_ace:output')
+         transformed_output:set_parent_output(output:get_parent_output())
+         for id, input in pairs(output:get_inputs()) do
+            transformed_output:add_input(input)
+         end
+      end
+
       local mob = entity:get_component('mob')
       if mob and mob:get_ignore_gravity() then
          transformed_form:add_component('mob'):set_ignore_gravity(true)

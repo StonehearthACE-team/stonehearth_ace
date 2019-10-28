@@ -2,6 +2,14 @@ local rng = _radiant.math.get_default_rng()
 
 local item_quality_lib = {}
 
+function item_quality_lib.get_quality(quality, max_quality)
+   if type(quality) == 'table' then
+      return item_quality_lib.get_random_quality(quality, max_quality)
+   else
+      return math.min(quality or 1, max_quality or stonehearth.constants.item_quality.MASTERWORK)
+   end
+end
+
 function item_quality_lib.get_random_quality(quality_chances, max_quality)
    local roll = rng:get_real(0, 1)
    local output_quality = 1

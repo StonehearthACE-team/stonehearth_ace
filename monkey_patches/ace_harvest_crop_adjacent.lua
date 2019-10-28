@@ -18,7 +18,7 @@ function AceHarvestCropAdjacent:start_thinking(ai, entity, args)
 
    if not self._crop or not self._crop:is_valid() then
       self._log:detail('no crop at %s (%s); removing from harvestable region', args.location, tostring(self._crop))
-      self._farmer_field:notify_crop_destroyed(args.location.x - self._origin.x + 1, args.location.z - self._origin.z + 1)
+      self._farmer_field:notify_crop_destroyed(self._crop_x, self._crop_z)
       return
    end
 
@@ -58,57 +58,74 @@ function AceHarvestCropAdjacent:_harvest_one_time(ai, entity)
    radiant.entities.turn_to_face(entity, self._crop)
    ai:execute('stonehearth:run_effect', { effect = 'fiddle' })
 
-   local player_id = radiant.entities.get_work_player_id(self._entity)
+   local crop_uri = self._crop:get_uri()
+   local crop_comp = self._crop:get_component('stonehearth:crop')
+   local is_megacrop = crop_comp and crop_comp:is_megacrop()
+
    local harvest_count = self:_get_actual_spawn_count(entity)
-   local crop_quality = radiant.entities.get_item_quality(self._crop)
+   local result = self._farmer_field:try_harvest_crop(entity, self._location.x - self._origin.x + 1, self._location.z - self._origin.z + 1, harvest_count)
 
-   -- if the crop we're harvesting is a megacrop, handle that
-   local crop_comp = self._crop and self._crop:get_component('stonehearth:crop')
-   if crop_comp and crop_comp:is_megacrop() then
-      if self:_harvest_megacrop_and_return(ai, player_id, crop_quality) then
-         return true
-      end
-   end
-
-   -- bump up the count on the one we're carrying.
-   if carrying then
-      radiant.entities.increment_carrying(entity, harvest_count)
-      -- make sure the quality is applied
-      local carrying_quality = radiant.entities.get_item_quality(carrying)
-      if crop_quality > carrying_quality then
-         local stacks_component = carrying:get_component('stonehearth:stacks')
-         local new_carrying = radiant.entities.create_entity(carrying:get_uri(), {owner = carrying})
-         if stacks_component then
-            new_carrying:add_component('stonehearth:stacks'):set_stacks(stacks_component:get_stacks())
+   if result then
+      if is_megacrop then
+         local megacrop_data = radiant.entities.get_entity_data(self._crop, 'stonehearth_ace:megacrop') or {}
+         if megacrop_data.effect then
+            ai:execute('stonehearth:run_effect', { effect = megacrop_data.effect })
          end
-         self:_set_quality(new_carrying, self._crop)
-
-         radiant.entities.remove_carrying(carrying)
-         radiant.entities.destroy_entity(carrying)
-
-         radiant.entities.pickup_item(entity, new_carrying)
-         -- newly harvested drops go into your inventory immediately unless your inventory is full
-         stonehearth.inventory:get_inventory(radiant.entities.get_player_id(entity))
-                                 :add_item_if_not_full(new_carrying)
       end
 
+      --Fire the event that describes the harvest
+      radiant.events.trigger(entity, 'stonehearth:harvest_crop', {crop_uri = crop_uri})
+      --self._log:detail('destroying crop %s', tostring(self._crop))
       return true
    end
 
-   -- oops, not carrying!  stick something in our hands.
-   local product = self:_create_product(player_id, crop_quality, harvest_count)
-   if not product then
-      -- Product is nil likely because the crop has rotted in the field.
-      -- We should just destroy it and keep going.
-      return true
-   end
+   -- -- if the crop we're harvesting is a megacrop, handle that
+   -- local crop_comp = self._crop and self._crop:get_component('stonehearth:crop')
+   -- if crop_comp and crop_comp:is_megacrop() then
+   --    if self:_harvest_megacrop_and_return(ai, player_id, crop_quality) then
+   --       return true
+   --    end
+   -- end
 
-   self:_pickup_item(player_id, product)
+   -- -- bump up the count on the one we're carrying.
+   -- if carrying then
+   --    radiant.entities.increment_carrying(entity, harvest_count)
+   --    -- make sure the quality is applied
+   --    local carrying_quality = radiant.entities.get_item_quality(carrying)
+   --    if crop_quality > carrying_quality then
+   --       local stacks_component = carrying:get_component('stonehearth:stacks')
+   --       local new_carrying = radiant.entities.create_entity(carrying:get_uri(), {owner = carrying})
+   --       if stacks_component then
+   --          new_carrying:add_component('stonehearth:stacks'):set_stacks(stacks_component:get_stacks())
+   --       end
+   --       self:_set_quality(new_carrying, self._crop)
 
-   --Fire the event that describes the harvest
-   radiant.events.trigger(entity, 'stonehearth:harvest_crop', {crop_uri = self._crop:get_uri()})
-   self._log:detail('destroying crop %s', tostring(self._crop))
-   return true
+   --       radiant.entities.remove_carrying(carrying)
+   --       radiant.entities.destroy_entity(carrying)
+
+   --       radiant.entities.pickup_item(entity, new_carrying)
+   --       -- newly harvested drops go into your inventory immediately unless your inventory is full
+   --       stonehearth.inventory:get_inventory(radiant.entities.get_player_id(entity))
+   --                               :add_item_if_not_full(new_carrying)
+   --    end
+
+   --    return true
+   -- end
+
+   -- -- oops, not carrying!  stick something in our hands.
+   -- local product = self:_create_product(player_id, crop_quality, harvest_count)
+   -- if not product then
+   --    -- Product is nil likely because the crop has rotted in the field.
+   --    -- We should just destroy it and keep going.
+   --    return true
+   -- end
+
+   -- self:_pickup_item(player_id, product)
+
+   -- --Fire the event that describes the harvest
+   -- radiant.events.trigger(entity, 'stonehearth:harvest_crop', {crop_uri = self._crop:get_uri()})
+   -- self._log:detail('destroying crop %s', tostring(self._crop))
+   -- return true
 end
 
 AceHarvestCropAdjacent._ace_old__get_num_to_increment = HarvestCropAdjacent._get_num_to_increment
@@ -250,20 +267,24 @@ function AceHarvestCropAdjacent:_harvest_megacrop_and_return(ai, player_id, crop
    end
 end
 
+-- this is taken care of in the new harvest code; just need to override to get rid of default behavior
 function AceHarvestCropAdjacent:_destroy_crop()
-   if self._crop then
-      -- if this crop should merely reset to an earlier stage, do that instead
-      local crop = self._crop:get_component('stonehearth:crop')
-      local stage = crop and crop:get_post_harvest_stage()
-      if stage then
-         self._crop:get_component('stonehearth:growing'):set_growth_stage(stage)
-         -- reset visibility in case it was a megacrop that we hid
-         self._crop:get_component('render_info'):set_visible(true)
-      else
-         radiant.entities.kill_entity(self._crop)
-      end
-      self._crop = nil
-   end
+   self._crop = nil
+   -- if self._crop then
+   --    -- if this crop should merely reset to an earlier stage, do that instead
+   --    -- UNLESS the field has changed assigned crop
+   --    local crop = self._crop:get_component('stonehearth:crop')
+   --    local stage = crop and crop:get_post_harvest_stage()
+   --    local crop_uri = self._farmer_field and self._farmer_field:get_current_crop_alias()
+   --    if stage and self._crop:get_uri() == crop_uri then
+   --       self._crop:get_component('stonehearth:growing'):set_growth_stage(stage)
+   --       -- reset visibility in case it was a megacrop that we hid
+   --       self._crop:get_component('render_info'):set_visible(true)
+   --    else
+   --       radiant.entities.kill_entity(self._crop)
+   --    end
+   --    self._crop = nil
+   -- end
 end
 
 return AceHarvestCropAdjacent

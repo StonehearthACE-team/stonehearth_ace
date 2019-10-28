@@ -131,6 +131,12 @@ function AceTrappingGroundsComponent:_get_spawn_duration()
    return duration
 end
 
+AceTrappingGroundsComponent._ace_old_add_trap = TrappingGroundsComponent.add_trap
+function AceTrappingGroundsComponent:add_trap(trap)
+   self:_ace_old_add_trap(trap)
+   trap:add_component('stonehearth_ace:output'):set_parent_output(self._entity)
+end
+
 function AceTrappingGroundsComponent:_create_set_trap_task()
    local trap_uri = self._trap_types[self._sv.trapping_grounds_type] or 'stonehearth:trapper:snare_trap'
    local town = stonehearth.town:get_town(self._entity)

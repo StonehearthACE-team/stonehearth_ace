@@ -1,4 +1,5 @@
 local WeightedSet = require 'stonehearth.lib.algorithms.weighted_set'
+local item_quality_lib = require 'stonehearth_ace.lib.item_quality.item_quality_lib'
 local rng = _radiant.math.get_default_rng()
 local log = radiant.log.create_logger('loot_table')
 
@@ -165,11 +166,13 @@ function AceLootTable:_load_from_json(json, quality_override)
             log:error('no uri')
          end
 
+         local quality = item_quality_lib.get_quality(quality_override)
+
          entry_data = {
             item_uri = loc_item_uri,
             num_rolls = items_entry.num_rolls,
             item_type = out_item_type,
-            quality = quality_override or items_entry.quality or data.quality
+            quality = math.max(quality, items_entry.quality or data.quality or 1)
          }
 
          --If 'some_of' then randomly select with weigthedset

@@ -115,9 +115,25 @@ function AceGameCreationService:create_camp_command(session, response, pt)
       end
    end
 
+   if game_options.starting_items_container then
+      -- if a uri is being supplied, create the entity, otherwise assume it's already an entity
+      local starting_items_container = type(game_options.starting_items_container) == 'string' and
+            radiant.entities.create_entity(game_options.starting_items_container, {owner = player_id}) or game_options.starting_items_container
+      
+      -- if it hasn't already been placed, find a place for it
+      if not radiant.entities.get_world_grid_location(starting_items_container) then
+         local placement_location = radiant.terrain.find_placement_point(location, MIN_STARTING_ITEM_RADIUS, MAX_STARTING_ITEM_RADIUS)
+         radiant.terrain.place_entity(starting_items_container, placement_location)
+      end
+      starting_items_container:add_component('stonehearth_ace:input')
+      town:add_default_storage(starting_items_container)
+   end
+
+   local default_storage = town:get_default_storage()
+
    -- Spawn initial items
-   local starting_items = radiant.entities.spawn_items(game_options.starting_items, location,
-      MIN_STARTING_ITEM_RADIUS, MAX_STARTING_ITEM_RADIUS, { owner = player_id })
+   local starting_items = radiant.entities.output_items(game_options.starting_items, location,
+      MIN_STARTING_ITEM_RADIUS, MAX_STARTING_ITEM_RADIUS, { owner = player_id }, nil, default_storage, true).spilled
 
    -- add all the spawned items to the inventory, have citizens pick up items
    local i = 3
@@ -152,12 +168,9 @@ function AceGameCreationService:create_camp_command(session, response, pt)
          else
             local uri_exists = radiant.resources.load_json(item_spec.uri, true, false) ~= nil
             if uri_exists then
-               local spawned_items = radiant.entities.spawn_items({ [item_spec.uri] =  item_spec.count }, location,
-                  MIN_STARTING_ITEM_RADIUS, MAX_STARTING_ITEM_RADIUS, { owner = player_id })
+               local spawned_items = radiant.entities.output_items({ [item_spec.uri] = {[item_spec.item_quality or 1] = item_spec.count } }, location,
+                  MIN_STARTING_ITEM_RADIUS, MAX_STARTING_ITEM_RADIUS, { owner = player_id }, nil, default_storage, true).spilled
                for _, item in pairs(spawned_items) do
-                  if item_spec.item_quality > 1 then
-                     item:add_component('stonehearth:item_quality'):initialize_quality(item_spec.item_quality)
-                  end
                   inventory:add_item(item)
                end
             end

@@ -1,5 +1,6 @@
 local entity_forms = require 'stonehearth.lib.entity_forms.entity_forms_lib'
 local item_quality_lib = require 'stonehearth_ace.lib.item_quality.item_quality_lib'
+local item_io_lib = require 'stonehearth_ace.lib.item_io.item_io_lib'
 
 local log = radiant.log.create_logger('entities')
 
@@ -38,6 +39,28 @@ function ace_entities.consume_stack(item, num_stacks)
    end
 
    return success
+end
+
+-- added an extra parameter to these to include the source of the change
+-- so if a kill observer kills them, it can include the killer in the event data
+-- Returns true if the health could be modified by the specified amount
+function ace_entities.modify_health(entity, health_change, source)
+   if health_change > 0 then
+      -- We can only modify the health of an entity whose guts are now fully restored.
+      assert((radiant.entities.get_resource_percentage(entity, 'guts') or 1) >= 1)
+   end
+   local old_value = radiant.entities.get_health(entity)
+   local new_value = radiant.entities.modify_resource(entity, 'health', health_change, source)
+   return new_value and old_value ~= new_value
+end
+
+-- Returns the new value
+function ace_entities.modify_resource(entity, resource_name, change, source)
+   local expendable_resource_component = entity:get_component('stonehearth:expendable_resources')
+   if not expendable_resource_component then
+      return false
+   end
+   return expendable_resource_component:modify_value(resource_name, change, source)
 end
 
 -- Use when the entity is being killed in the world
@@ -137,8 +160,12 @@ end
 
 -- uris are key, value pairs of uri, quantity
 -- quantity can also be a table of quality/quantity pairs
-function ace_entities.spawn_items(uris, origin, min_radius, max_radius, options)
+function ace_entities.spawn_items(uris, origin, min_radius, max_radius, options, place_items, quality)
    local items = {}
+
+   local owner_id = options and options.owner
+   owner_id = owner_id and type(owner_id) ~= 'string' and owner_id:get_player_id()
+   local quality_options = quality and owner_id and {max_quality = item_quality_lib.get_max_random_quality(owner_id)}
 
    for uri, detail in pairs(uris) do
       local qualities
@@ -147,21 +174,59 @@ function ace_entities.spawn_items(uris, origin, min_radius, max_radius, options)
       else
          qualities = detail
       end
-      for quality, quantity in pairs(qualities) do
+      for item_quality, quantity in pairs(qualities) do
          for i = 1, quantity do
-            local location = radiant.terrain.find_placement_point(origin, min_radius, max_radius)
             local item = radiant.entities.create_entity(uri, options)
-            if quality ~= 1 then
-               item_quality_lib.apply_quality(entity, quality)
-            end
+            -- manually passed quality will override any quality from the table (e.g., from a LootTable), even if it's lower
+            item_quality_lib.apply_quality(item, quality or item_quality, quality_options)
 
             items[item:get_id()] = item
-            radiant.terrain.place_entity(item, location)
+
+            if place_items ~= false then
+               local location = radiant.terrain.find_placement_point(origin, min_radius, max_radius)
+               radiant.terrain.place_entity(item, location)
+            end
          end
       end
    end
 
    return items
+end
+
+-- if no valid output is specified
+function ace_entities.output_items(uris, origin, min_radius, max_radius, options, output, inputs, spill_fail_items, quality)
+   local output_comp = output and output:is_valid() and output:get_component('stonehearth_ace:output')
+   if inputs and type(inputs) ~= 'table' then
+      inputs = {[inputs:get_id()] = inputs}
+   end
+   if not output_comp and (not inputs or not next(inputs)) then
+      if spill_fail_items then
+         return {spilled = radiant.entities.spawn_items(uris, origin, min_radius, max_radius, options, true, quality), succeeded = {}, failed = {}}
+      else
+         return {spilled = {}, succeeded = {}, failed = {}}
+      end
+   end
+
+   local items = radiant.entities.spawn_items(uris, origin, min_radius, max_radius, options, false, quality)
+   return radiant.entities.output_spawned_items(items, origin, min_radius, max_radius, options, output, inputs, spill_fail_items)
+end
+
+function ace_entities.output_spawned_items(items, origin, min_radius, max_radius, options, output, inputs, spill_fail_items)
+   --local output_comp = output and output:is_valid() and output:get_component('stonehearth_ace:output')
+   if inputs and type(inputs) ~= 'table' then
+      inputs = {[inputs:get_id()] = inputs}
+   end
+
+   options = {
+      spill_fail_items = spill_fail_items,
+      spill_origin = origin,
+      spill_min_radius = min_radius,
+      spill_max_radius = max_radius,
+      output = output,
+      options = options
+   }
+
+   return item_io_lib.try_output(items, inputs, options)
 end
 
 return ace_entities

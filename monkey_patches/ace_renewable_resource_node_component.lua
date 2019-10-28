@@ -1,3 +1,4 @@
+local LootTable = require 'stonehearth.lib.loot_table.loot_table'
 local item_quality_lib = require 'stonehearth_ace.lib.item_quality.item_quality_lib'
 local log = radiant.log.create_logger('renewable_resource_node')
 
@@ -130,7 +131,7 @@ function AceRenewableResourceNodeComponent:_apply_modifiers(key, modifiers)
          local x_offset = rng:get_int(0, 1) * 2
          local z_offset = (x_offset == 0 and 2) or (rng:get_int(0, 1) * 2)
          local offset = Point3(x_offset * (rng:get_int(0, 1) == 0 and -1 or 1), 0, z_offset * (rng:get_int(0, 1) == 0 and -1 or 1))
-         self:_do_spawn_resource(self._entity, radiant.entities.get_world_grid_location(self._entity) + offset)
+         self:spawn_resource(self._entity, radiant.entities.get_world_grid_location(self._entity) + offset, true)
       elseif modifiers.destroy_resource then
          self:_stop_renew_timer()
          self:_deplete()
@@ -146,8 +147,14 @@ function AceRenewableResourceNodeComponent:auto_request_harvest()
    if not self:is_harvestable() then
       return
    end
-
    local player_id = self._entity:get_player_id()
+
+   local item = self:spawn_resource(nil, radiant.entities.get_world_grid_location(self._entity), player_id, false)
+   if item then
+      -- successfully auto-harvested; no need to request a manual harvest
+      return
+   end
+
    -- if a player has moved or harvested this item, that player has gained ownership of it
    -- if they haven't, there's no need to request it to be harvested because it's just growing in the wild with no owner
    
@@ -172,9 +179,9 @@ function AceRenewableResourceNodeComponent:get_auto_harvest_enabled(player_id)
    end
 end
 
-function AceRenewableResourceNodeComponent:spawn_resource(harvester_entity, location, owner_player_id)
+function AceRenewableResourceNodeComponent:spawn_resource(harvester_entity, location, owner_player_id, spill_items)
    if not self._json.spawn_resource_immediately or self:_can_pasture_animal_renewably_harvest() ~= false then
-      local singular_item = self:_do_spawn_resource(harvester_entity, location, owner_player_id)
+      local singular_item = self:_do_spawn_resource(harvester_entity, location, owner_player_id, spill_items ~= false)
 
       self:_update_renew_timer(true)
 
@@ -182,22 +189,16 @@ function AceRenewableResourceNodeComponent:spawn_resource(harvester_entity, loca
    end
 end
 
-function AceRenewableResourceNodeComponent:_do_spawn_resource(harvester_entity, location, owner_player_id)
+function AceRenewableResourceNodeComponent:_do_spawn_resource(harvester_entity, location, owner_player_id, spill_items)
    self:_cancel_harvest_request()
    local json = self._json
 
-   local will_destroy_entity = false
-   -- if we have a durability and we've run out, destroy the entity
-   if self._sv.durability then
-      self._sv.durability = self._sv.durability - 1
-      if self._sv.durability <= 0 then
-         self._sv.harvestable = false
-         will_destroy_entity = true
-      end
-   end
-
    local player_id = owner_player_id or radiant.entities.get_player_id(harvester_entity)
-   local spawned_resources, singular_item = self:_place_spawned_items(json, player_id, location, will_destroy_entity)
+   local spawned_resources, singular_item = self:_place_spawned_items(json, harvester_entity, player_id, location, self._sv.durability and self._sv.durability <= 1, spill_items)
+
+   if not spawned_resources then
+      return
+   end
 
    for id, item in pairs(spawned_resources) do
       if not json.skip_owner_inventory then
@@ -220,9 +221,13 @@ function AceRenewableResourceNodeComponent:_do_spawn_resource(harvester_entity, 
    end
 
    -- if we have a durability and we've run out, destroy the entity
-   if will_destroy_entity then
-      radiant.entities.destroy_entity(self._entity)
-      return singular_item
+   if self._sv.durability then
+      self._sv.durability = self._sv.durability - 1
+      if self._sv.durability <= 0 then
+         self._sv.harvestable = false
+         radiant.entities.destroy_entity(self._entity)
+         return singular_item
+      end
    end
 
    --start the countdown to respawn.
@@ -332,7 +337,7 @@ end
 
 function AceRenewableResourceNodeComponent:_update_renew_timer(create_if_no_timer)
    if self._sv.paused or self._disabled then
-      -- Do not update the timer if paused.
+      -- Do not update the timer if paused or disabled.
       return
    end
 
@@ -402,18 +407,50 @@ function AceRenewableResourceNodeComponent:_destroy_half_renew_timer()
    end
 end
 
-AceRenewableResourceNodeComponent._ace_old__place_spawned_items = RenewableResourceNodeComponent._place_spawned_items
-function AceRenewableResourceNodeComponent:_place_spawned_items(json, owner, location, will_destroy_entity)
-   local spawned_items, item = self:_ace_old__place_spawned_items(json, owner, location, will_destroy_entity)
-
+function AceRenewableResourceNodeComponent:_place_spawned_items(json, harvester, owner, location, will_destroy_entity, spill_items)
    local quality = radiant.entities.get_item_quality(self._entity)
-   if quality > 1 then
-      for id, item in pairs(spawned_items) do
-         self:_set_quality(item, quality)
+
+   local spawned_items
+   local item
+   local failed
+   if json.resource_loot_table then
+      local uris = LootTable(json.resource_loot_table, quality):roll_loot()
+      if next(uris) then
+         local output_items = radiant.entities.output_items(uris, location, 1, 3, { owner = owner }, self._entity, harvester, spill_items)
+         spawned_items = output_items.spilled
+         item = next(spawned_items) and spawned_items[next(spawned_items)]
+         if not next(output_items.succeeded) then
+            failed = true
+         end
+      else
+         spawned_items = {}
+      end
+   else
+      spawned_items = {}
+   end
+
+   local resource = json.resource
+   if resource then
+      local uris = {[json.resource] = {[quality] = 1}}
+      local items = radiant.entities.output_items(uris, location, 0, 2, { owner = owner }, self._entity, harvester, spill_items)
+      --Create the harvested entity and put it on the ground
+      local item = (next(items.spilled) and items.spilled[next(items.spilled)]) or (next(items.succeeded) and items.succeeded[next(items.succeeded)])
+
+      if item then
+         -- only place it in a specific place if it wasn't pushed into an input
+         if will_destroy_entity then
+            radiant.terrain.place_entity_at_exact_location(item, location)
+         end
+
+         spawned_items[item:get_id()] = item
+      else
+         failed = true
       end
    end
 
-   return spawned_items, item
+   if not failed then
+      return spawned_items, item
+   end
 end
 
 function AceRenewableResourceNodeComponent:_set_quality(item, quality)
