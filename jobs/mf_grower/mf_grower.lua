@@ -4,7 +4,7 @@ local GrowerClass = class()
 radiant.mixin(GrowerClass, CraftingJob)
 
 function GrowerClass:initialize()
-   CraftingJob.initialize(self)
+   CraftingJob.__user_initialize(self)
    self._sv.max_num_attended_hearthlings = 2
 end
 
@@ -100,6 +100,6 @@ function GrowerClass:destroy()
       self:_unregister_with_town()
    end
 
-   CraftingJob.destroy(self)
+   CraftingJob.__user_destroy(self)
 end
 return GrowerClass

@@ -2,7 +2,23 @@ local log = radiant.log.create_logger('shepherd')
 local rng = _radiant.math.get_default_rng()
 
 local ShepherdClass = radiant.mods.require('stonehearth.jobs.shepherd.shepherd')
+local BaseJob = require 'stonehearth.jobs.base_job'
 local AceShepherdClass = class()
+
+function AceShepherdClass:initialize()
+   BaseJob.__user_initialize(self)
+   self._sv.last_found_critter_time = nil
+   self._sv.trailed_animals = nil
+   self._sv.num_trailed_animals = 0
+end
+
+function AceShepherdClass:destroy()
+   if self._sv.is_current_class then
+      self:_abandon_following_animals()
+   end
+
+   BaseJob.__user_destroy(self)
+end
 
 AceShepherdClass._ace_old_can_find_animal_in_world = ShepherdClass.can_find_animal_in_world
 function AceShepherdClass:can_find_animal_in_world()
