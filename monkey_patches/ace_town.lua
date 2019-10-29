@@ -243,7 +243,9 @@ function AceTown:_get_farm_crops_data()
          for y, plot in pairs(col) do
             if plot.contents then
                local uri = plot.contents:get_uri()
+					if uri then
                crops[uri] = (crops[uri] or 0) + 1
+					end
             end
          end
       end

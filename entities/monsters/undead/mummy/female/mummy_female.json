@@ -1,0 +1,35 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth_ace:mixins:mummy",
+   "components": {
+      "render_info": {
+         "animation_table": "/stonehearth/data/rigs/entities/monster/undead/skeletons/female.json"
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(mummy.qb)"
+            ]
+         }
+      },
+      "stonehearth:carry_block": {}
+   },
+   "entity_data": {
+      "stonehearth:entity_radius": 0.75,
+      "stonehearth:entity_reach": 0.5,
+      "stonehearth:combat:melee_attacks": [
+         {
+            "name": "combat_1h_forehand",
+            "effect": "combat_1h_forehand",
+            "active_frame": 16,
+            "cooldown": 0,
+            "priority": 0
+         }
+      ],
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.monsters.undead.mummy.display_name)",
+         "description": "i18n(stonehearth_ace:entities.monsters.undead.mummy.description)",
+         "icon": "file(mummy_female.png)"
+      }
+   }
+}

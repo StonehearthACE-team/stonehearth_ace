@@ -7,27 +7,29 @@
    "components": {
       "model_variants": {
          "default": {
-            "layer": "clothing",
-            "transparent": false,
+            "layer": "hat",
+            "transparent": "false",
             "models": [
                "file(legendary_hood.qb)"
             ]
          },
          "female": {
-            "layer": "clothing",
-            "transparent": false,
+            "layer": "hat",
+            "transparent": "false",
             "models": [
                "file(legendary_hood_female.qb)"
             ]
          },
          "rabbit_male": {
-            "layer": "clothing",
+            "layer": "hat",
+            "transparent": "false",
             "models": [
                "file(legendary_hood_rabbit.qb)"
             ]
          },
          "rabbit_female": {
-            "layer": "clothing",
+            "layer": "hat",
+            "transparent": "false",
             "models": [
                "file(legendary_hood_rabbit.qb)"
             ]
@@ -38,7 +40,7 @@
       },
       "stonehearth:equipment_piece": {
          "additional_equipment": {
-            "stonehearth_ace:armor:legendary:hood:hood": true
+            "stonehearth_ace:armor:legendary:hood:body": true
          },
          "ilevel": 10,
          "roles": [

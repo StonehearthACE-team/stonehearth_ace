@@ -1,0 +1,50 @@
+{
+   "type": "encounter",
+   "mixins": "stonehearth_ace:mixins:encounter:mummy_raid",
+   "encounter_type": "create_mission",
+   "in_edge": "mummy_raid_4",
+   "out_edge": "wait_to_destroy_raiding_party",
+   "create_mission_info": {
+      "mission": {
+         "ctx_entity_registration_path": "mummy_raid_4",
+         "members": {
+            "easy_mummies": {
+               "from_population": {
+                  "min": 2,
+                  "max": 3
+               }
+            },
+            "medium_mummies": {
+               "from_population": {
+                  "min": 0,
+                  "max": 1
+               }
+            },
+            "insane_mummies": {
+               "from_population": {
+                  "min": 0,
+                  "max": 0
+               }
+            },
+            "epic_mummies": {
+               "from_population": {
+                  "min": 0,
+                  "max": 0
+               }
+            },
+            "necromancers": {
+               "from_population": {
+                  "min": 0,
+                  "max": 0
+               }
+            },
+            "epic_necromancers": {
+               "from_population": {
+                  "min": 0,
+                  "max": 0
+               }
+            }
+         }
+      }
+   }
+}

@@ -1,0 +1,119 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:undead",
+   "components": {
+      "render_info": {
+         "color_map": "stonehearth:color_map:mob",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/mob_material_map.json"
+         ]
+      },
+      "stonehearth:attributes": {
+         "max_health": {
+            "type": "basic",
+            "value": 100
+         },
+         "muscle": {
+            "type": "basic",
+            "value": 0
+         },
+         "menace": {
+            "type": "basic",
+            "value": 1
+         },
+         "courage": {
+            "type": "basic",
+            "value": 0
+         },
+         "speed": {
+            "type": "basic",
+            "value": 20
+         },
+         "exp_reward": {
+            "type": "basic",
+            "value": 0
+         }
+      },
+      "stonehearth:loot_drops": {
+         "entries": {
+            "default": {
+               "roll_type": "some_of",
+               "num_rolls": {
+                  "min": 0,
+                  "max": 1
+               },
+               "items": {
+                  "none": {
+                     "uri": "",
+                     "weight": 4
+                  },
+                  "coal": {
+                     "uri": "stonehearth:resources:coal:lump_of_coal",
+                     "weight": 1
+                  }
+               }
+            },
+            "bandages": {
+               "roll_type": "some_of",
+               "num_rolls": {
+                  "min": 1,
+                  "max": 2
+               },
+               "items": {
+                  "meat": {
+                     "uri": "stonehearth:consumables:coarse_bandage",
+                     "weight": 1
+                  }
+               }
+            },
+            "bones": {
+               "roll_type": "some_of",
+               "num_rolls": {
+                  "min": 0,
+                  "max": 2
+               },
+               "items": {
+                  "bones": {
+                     "uri": "stonehearth_ace:resources:bone:bone_material",
+                     "weight": 1
+                  }
+               }
+            },
+            "skull": {
+               "roll_type": "some_of",
+               "num_rolls": {
+                  "min": 0,
+                  "max": 1
+               },
+               "items": {
+                  "skull": {
+                     "uri": "stonehearth_ace:resources:bone:bone_skull"
+                  }
+               }
+            }
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:entity_radius": 0.75,
+      "stonehearth:entity_reach": 0.5,
+      "stonehearth:combat:melee_attacks": [
+         {
+            "name": "combat_1h_forehand",
+            "effect": "combat_1h_forehand",
+            "active_frame": 16,
+            "cooldown": 0,
+            "priority": 0
+         }
+      ],
+      "stonehearth:species": {
+         "id": "mummy",
+         "display_name": "i18n(stonehearth_ace:entities.peoples.mummy.species)"
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.monsters.undead.mummy.display_name)",
+         "description": "i18n(stonehearth_ace:entities.monsters.undead.mummy.description)",
+         "category": "undead"
+      }
+   }
+}

@@ -1,0 +1,84 @@
+{
+   "type": "monster_tuning",
+   "estimated_difficulty": 3,
+   "scale": 0.12,
+   "attributes": {
+      "max_health": 460,
+      "muscle": 22,
+      "menace": 80,
+      "courage": 120,
+      "speed": 20,
+      "additive_armor_modifier": 3,
+      "exp_reward": 72
+   },
+   "equipment": {
+      "weapon": [
+         "stonehearth_ace:weapons:undead:mummy_punch_hard"
+      ]
+   },
+   "loot_drops": {
+      "entries": {
+         "default": {
+            "items": {
+               "none": {
+                  "weight": 0
+               },
+               "iron_ore": {
+                  "uri": "stonehearth:resources:iron:ore",
+                  "weight": 3
+               },
+               "silver_ore": {
+                  "uri": "stonehearth:resources:silver:ore",
+                  "weight": 2
+               },
+               "gold_ore": {
+                  "uri": "stonehearth:resources:silver:ore",
+                  "weight": 1
+               },
+               "copper_ore": {
+                  "uri": "stonehearth:resources:copper:ore",
+                  "weight": 3
+               },
+               "tin_ore": {
+                  "uri": "stonehearth:resources:tin:ore",
+                  "weight": 3
+               }
+            }
+         },
+         "dusty_tome": {
+            "roll_type": "some_of",
+            "num_rolls": {
+               "min": 0,
+               "max": 1
+            },
+            "items": {
+               "none": {
+                  "uri": "",
+                  "weight": 1
+               },
+               "tome": {
+                  "uri": "stonehearth:loot:dusty_tome",
+                  "weight": 1
+               }
+            }
+         },
+         "currency": {
+            "roll_type": "some_of",
+            "num_rolls": {
+               "min": 0,
+               "max": 1
+            },
+            "items": {
+               "none": {
+                  "uri": "",
+                  "weight": 3
+               },
+               "currency": {
+                  "uri": "stonehearth_ace:loot:currency:undead",
+                  "weight": 1
+               }
+            }
+         }
+      }
+   }
+}

@@ -1,0 +1,71 @@
+{
+   "type": "monster_tuning",
+   "estimated_difficulty": 0,
+   "attributes": {
+      "max_health": 140,
+      "muscle": 4,
+      "menace": 45,
+      "courage": 120,
+      "speed": 18,
+      "additive_armor_modifier": 0,
+      "exp_reward": 12
+   },
+   "equipment": {
+      "weapon": [
+         "stonehearth_ace:weapons:undead:mummy_punch"
+      ]
+   },
+   "loot_drops": {
+      "entries": {
+         "default": {
+            "items": {
+               "none": {
+                  "weight": 3
+               },
+               "copper_ore": {
+                  "uri": "stonehearth:resources:copper:ore",
+                  "weight": 1
+               },
+               "tin_ore": {
+                  "uri": "stonehearth:resources:tin:ore",
+                  "weight": 1
+               }
+            }
+         },
+         "dusty_tome": {
+            "roll_type": "some_of",
+            "num_rolls": {
+               "min": 0,
+               "max": 1
+            },
+            "items": {
+               "none": {
+                  "uri": "",
+                  "weight": 3
+               },
+               "tome": {
+                  "uri": "stonehearth:loot:dusty_tome",
+                  "weight": 1
+               }
+            }
+         },
+         "currency": {
+            "roll_type": "some_of",
+            "num_rolls": {
+               "min": 0,
+               "max": 1
+            },
+            "items": {
+               "none": {
+                  "uri": "",
+                  "weight": 5
+               },
+               "currency": {
+                  "uri": "stonehearth_ace:loot:currency:undead",
+                  "weight": 1
+               }
+            }
+         }
+      }
+   }
+}

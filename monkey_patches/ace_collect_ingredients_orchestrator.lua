@@ -50,6 +50,10 @@ function AceCollectIngredients:run(town, args)
             local rating = radiant.entities.get_item_quality(item) / 3
             --return rating
 
+				if radiant.entities.is_material(item, 'preferred_ingredient') then
+               return rating
+            end
+				
             local p1 = entity_location or radiant.entities.get_world_grid_location(entity)
             local p2 = storage_location or radiant.entities.get_world_grid_location(item)
 
@@ -70,6 +74,10 @@ function AceCollectIngredients:run(town, args)
             local rating = 1 / radiant.entities.get_item_quality(item)
             --return rating
 
+				if radiant.entities.is_material(item, 'preferred_ingredient') then
+               return rating
+            end
+				
             local p1 = entity_location or radiant.entities.get_world_grid_location(entity)
             local p2 = storage_location or radiant.entities.get_world_grid_location(item)
 
@@ -88,6 +96,10 @@ function AceCollectIngredients:run(town, args)
       end
 
       local distance_rating_fn = function(item, entity, entity_location, storage_location)
+			if radiant.entities.is_material(item, 'preferred_ingredient') then
+            return 1
+         end
+			
          -- anything within the close distance is considered "best"; doesn't matter if it goes negative
          local p1 = entity_location or radiant.entities.get_world_grid_location(entity)
          local p2 = storage_location or radiant.entities.get_world_grid_location(item)

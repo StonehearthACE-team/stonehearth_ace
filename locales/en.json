@@ -1874,6 +1874,10 @@
          "capture_bees": {
             "display_name": "Capture Bees!",
             "description": "Order the Herbalist to capture the bees from this nest. Captive bees will remain contained in a small crate until they are used for crafting a Bee Skep."
+         },
+         "bee_skep": {
+            "display_name": "Start a Colony!",
+            "description": "Order the Herbalist to use a box of Captive Bees to start a colony inside this skep. Captive Bees can be obtained from wild Bee Nests that will sometimes drop from trees when you cut them."
          }
       },
       "buffs": {
@@ -2205,7 +2209,7 @@
          "hearth_tonic": {
             "hearth_tonic_buff": {
                "display_name": "Hearthbud Light Tonic",
-               "description": "Courage, Menace and Muscle are increased. A radiant aura of light radiates around the hearthling, slowly healing them over time."
+               "description": "Courage, Menace and Muscle are increased. A radiant aura of light encompasses the hearthling, slowly healing them over time."
             }
          },
          "harmony_transcendental": {
@@ -2431,9 +2435,9 @@
             "refined_seeds_name": "Regional Seeds",
             "farming_enhancements_name": "Farming Enhancements & Seeds",
             "herbalist_bee_skep_recipe": {
-               "recipe_name": "Bee Skep",
+               "recipe_name": "Empty Bee Skep",
                "description": "Supplies your town with beekeeping products but won't produce during the winter.",
-               "flavor": "You can obtain captive bees by harvesting wild bee nests found when cutting trees!"
+               "flavor": "Empty at first, you can obtain captive bees by harvesting wild bee nests found when cutting trees!"
             },
             "herbalist_beekeeping_hat_recipe": {
                "recipe_name": "Herbalist's Beekeeping Hat",
@@ -2820,7 +2824,7 @@
             },
             "hearth_tonic_recipe": {
                "recipe_name": "Hearthbud Light Tonic",
-               "description": "A powerful potion that will boost courage, muscle and menace of hearthlings, slowly healing them over time.",
+               "description": "A powerful potion that will boost courage, muscle, menace and slowly heal over time.",
                "flavor": "May it be a light to you in dark places, when all other lights go out! -Sasha of Clan Amberstone"
             },
             "refinement_name": "Seed Extraction"
@@ -2865,6 +2869,10 @@
          "herbalist_cauldron": {
             "display_name": "Herbalist Stone Cauldron",
             "description": "Used by the Herbalist for brewing & concocting potions."
+         },
+         "herbalist_bee_skep_empty": {
+            "display_name": "Empty Bee Skep",
+            "description": "This skep is empty and requires Captive Bees to form a colony."
          }
       },
       "engineer": {
@@ -8567,6 +8575,12 @@
                "display_name": "Primitive Barricade",
                "description": "Very rustic... and pointy!"
             }
+         },
+         "undead": {
+            "mummy": {
+               "display_name": "[str(self.stonehearth:unit_info.custom_name)]",
+               "description": "Long was their slumber, huge is their hunger..."
+            }
          }
       },
       "armor": {
@@ -10093,6 +10107,9 @@
          },
          "rabbit_biped": {
             "species": "Rabbit Biped"
+         },
+         "mummy": {
+            "species": "mummy"
          }
       },
       "unfermented_mead": {

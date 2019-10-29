@@ -246,6 +246,10 @@ function ResourceCallHandler:harvest_entity(session, response, entity, from_harv
    elseif resource_node then
       -- check that entity can be harvested using the harvest tool
       if not from_harvest_tool or resource_node:is_harvestable_by_harvest_tool() then
+			local loot_drops = entity:get_component('stonehearth:loot_drops')
+         if loot_drops then
+            loot_drops:set_auto_loot_player_id(session.player_id)
+         end
          resource_node:request_harvest(session.player_id, true)   -- Paul: this is the only real change
       end
    end

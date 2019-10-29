@@ -1,0 +1,14 @@
+{
+   "type": "command",
+   "name": "bee_skep",
+   "display_name": "i18n(stonehearth_ace:data.commands.bee_skep.display_name)",
+   "description": "i18n(stonehearth_ace:data.commands.bee_skep.description)",
+   "default_enabled": true,
+   "ordinal": 99,
+   "icon": "file(bee_skep.png)",
+   "action": "call",
+   "function": "stonehearth_ace:transform_command",
+   "args": [
+      "herbalist_bee_skep"
+   ]
+}
