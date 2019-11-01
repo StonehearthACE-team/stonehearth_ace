@@ -69,7 +69,7 @@ function AceFarmerFieldRenderer:_update()
    self._fertilized_zone_renderer:set_current_items(items)
    self._fertilized_zone_renderer:set_render_nodes(fertilized_node_array)
 
-   self:_render_water_signal_region(data.water_signal_region)
+   self:_render_water_signal_region(data)
 end
 
 function AceFarmerFieldRenderer:_on_ui_mode_changed()
@@ -79,7 +79,7 @@ function AceFarmerFieldRenderer:_on_ui_mode_changed()
       self._ui_view_mode = mode
 
       local data = self._datastore:get_data()
-      self:_render_water_signal_region(data.water_signal_region)
+      self:_render_water_signal_region(data)
    end
 end
 
@@ -124,7 +124,7 @@ function AceFarmerFieldRenderer:_update_dirt_models(effective_humidity_level)
    end
 end
 
-function AceFarmerFieldRenderer:_render_water_signal_region(region)
+function AceFarmerFieldRenderer:_render_water_signal_region(data)
    if self._water_signal_region_node then
       self._water_signal_region_node:destroy()
       self._water_signal_region_node = nil
@@ -134,7 +134,13 @@ function AceFarmerFieldRenderer:_render_water_signal_region(region)
       return
    end
 
-   if region then
+   local region = data.water_signal_region
+   local climate = data.current_crop_details and data.current_crop_details.preferred_climate
+   -- TODO: get default climate information for the biome for if the crop doesn't supply a preferred climate
+   local climate_data = climate and stonehearth.constants.climates[climate]
+   local water_affinity = climate_data and climate_data.plant_water_affinity
+
+   if region and water_affinity ~= 'IRRELEVANT' then
       local material = '/stonehearth/data/horde/materials/transparent_box_nodepth.material.json'
 
       -- extruded apparently doesn't work with non-integer values, so we have to recreate the region

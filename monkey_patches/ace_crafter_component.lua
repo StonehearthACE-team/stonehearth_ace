@@ -8,13 +8,36 @@ local AceCrafterComponent = class()
 
 local STANDARD_QUALITY_INDEX = 1
 
+AceCrafterComponent._ace_old_create = CrafterComponent.create
+function AceCrafterComponent:create()
+   local json = radiant.entities.get_json(self)
+   if json and json.auto_crafter then
+      self._is_auto_crafter = true
+   else
+      self:_ace_old_create()
+   end
+end
+
 AceCrafterComponent._ace_old_activate = CrafterComponent.activate
 function AceCrafterComponent:activate()
-   self:_ace_old_activate()
+   if not self._is_auto_crafter then
+      self:_ace_old_activate()
+   end
 
    if not self._sv._best_crafts then
       self._sv._best_crafts = {}
    end
+end
+
+AceCrafterComponent._ace_old_post_activate = CrafterComponent.post_activate
+function AceCrafterComponent:post_activate()
+   if not self._is_auto_crafter then
+      self:_ace_old_post_activate()
+   end
+end
+
+function AceCrafterComponent:is_auto_crafter()
+   return self._is_auto_crafter
 end
 
 --If you stop being a crafter, b/c you're killed or demoted,
@@ -168,12 +191,19 @@ function AceCrafterComponent:_update_best_crafts(item)
    end
 end
 
-AceCrafterComponent._ace_old_get_work_rate = CrafterComponent.get_work_rate
+-- don't just call the old function; we need to actually check if the happiness component is relevant (could be an auto-crafter)
 function AceCrafterComponent:get_work_rate()
-   local rate = self:_ace_old_get_work_rate()
+   -- Note: Job multiplier is turned off because we haven't had the chance to balance check it
+   -- local job_level = self._entity:get_component('stonehearth:job'):get_current_job_level()
+   -- assert(job_level >= 0)
+   -- local job_multiplier = 1 + (job_level - 1) * 0.20
+   local tiredness_multiplier = radiant.entities.has_buff(self._entity, 'stonehearth:buffs:groggy') and 0.75 or 1
+   local happiness_comp = self._entity:get_component('stonehearth:happiness')
+   local mood_multiplier = happiness_comp and happiness_comp:get_mood_work_rate_multiplier() or 1
+
    local multiplier = self._entity:get_component('stonehearth:attributes'):get_attribute('multiplicative_work_rate_modifier', 1)
 
-   return rate * multiplier
+   return multiplier * tiredness_multiplier * mood_multiplier -- * job_multiplier
 end
 
 return AceCrafterComponent

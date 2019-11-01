@@ -5,8 +5,6 @@
       - can "connect" input interfaces that are prioritized over default behavior
 ]]
 
-local item_io_lib = require 'stonehearth_ace.lib.item_io.item_io_lib'
-
 local OutputComponent = class()
 
 function OutputComponent:initialize()

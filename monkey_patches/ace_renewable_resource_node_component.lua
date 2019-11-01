@@ -149,10 +149,14 @@ function AceRenewableResourceNodeComponent:auto_request_harvest()
    end
    local player_id = self._entity:get_player_id()
 
-   local item = self:spawn_resource(nil, radiant.entities.get_world_grid_location(self._entity), player_id, false)
-   if item then
-      -- successfully auto-harvested; no need to request a manual harvest
-      return
+   -- only try fully auto-harvesting if there are any inputs
+   local output = self._entity:get_component('stonehearth_ace:output')
+   if output and output:has_any_input(true) then
+      local item = self:spawn_resource(nil, radiant.entities.get_world_grid_location(self._entity), player_id, false)
+      if item then
+         -- successfully auto-harvested; no need to request a manual harvest
+         return
+      end
    end
 
    -- if a player has moved or harvested this item, that player has gained ownership of it

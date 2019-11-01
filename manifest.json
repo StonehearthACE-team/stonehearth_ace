@@ -1114,6 +1114,7 @@
       "mixins:fence:gate": "file(mixins/fence/fence_gate.json)",
       "mixins:fence:gate:big": "file(mixins/fence/fence_gate_big.json)",
       "mixins:fence:simple_fence": "file(mixins/fence/simple_fence.json)",
+      "mixins:mechanical:auto_crafter": "file(mixins/mechanical/auto_crafter.json)",
       "mixins:outfit:chilly:buffed": "file(mixins/armor/ace_outfit_chilly_buffed.json)",
       "mixins:outfit:chilly:no_buff": "file(mixins/armor/ace_outfit_chilly_no_buff.json)",
       "mixins:outfit:cold:buffed": "file(mixins/armor/ace_outfit_cold_buffed.json)",
@@ -3448,6 +3449,7 @@
    },
    "components": {
       "aquatic_object": "file(components/aquatic_object/aquatic_object_component.lua)",
+      "auto_craft": "file(components/auto_craft/auto_craft_component.lua)",
       "auto_replace": "file(components/auto_replace/auto_replace_component.lua)",
       "component_info": "file(components/component_info/component_info_component.lua)",
       "connection": "file(components/connection/connection_component.lua)",

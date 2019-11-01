@@ -33,6 +33,8 @@ function AceGrowingComponent:activate()
       self._sv._enabled = true
    end
 
+   self._temp_growth_time_multiplier = 1
+
 	self:_ace_old_activate()
 end
 
@@ -102,6 +104,14 @@ function AceGrowingComponent:set_custom_growth_time_multiplier(multiplier)
    end
 end
 
+-- used for temporary (e.g., AI-applied) modifiers
+function AceGrowingComponent:modify_temp_growth_time_multiplier(multiplier)
+   if multiplier ~= 1 then
+      self._temp_growth_time_multiplier = self._temp_growth_time_multiplier * multiplier
+      self:_recalculate_duration()
+   end
+end
+
 function AceGrowingComponent:_recalculate_duration(skip_creation)
    if self._sv._growth_timer and self._sv._growth_timer.get_duration then
 		local old_duration = self._sv._growth_timer:get_duration()
@@ -125,7 +135,8 @@ function AceGrowingComponent:_calculate_growth_period(growth_period)
    end
    -- we don't want the biome/weather modifiers, those should be handled with sunlight/humidity values
    -- we only care about the vitality town bonus (and any other bonuses that may get modded in)
-   local scaled_growth_period = stonehearth.town:calculate_town_bonuses_growth_period(self._entity:get_player_id(), growth_period) * self._sv.custom_growth_time_multiplier
+   local scaled_growth_period = stonehearth.town:calculate_town_bonuses_growth_period(self._entity:get_player_id(), growth_period)
+         * self._sv.custom_growth_time_multiplier * self._temp_growth_time_multiplier
    
    if self._sv._environmental_growth_time_modifier then
 		scaled_growth_period = scaled_growth_period * self._sv._environmental_growth_time_modifier

@@ -18,7 +18,9 @@ function ConnectionRenderer:initialize(render_entity, datastore)
    self._connections = radiant.entities.get_component_data(self._entity, 'stonehearth_ace:connection')
 
    local mob_data = radiant.entities.get_component_data(self._entity, 'mob')
-   self._align_to_grid = radiant.array_to_map(mob_data and mob_data.align_to_grid or {})
+   local align_to_grid = radiant.array_to_map(mob_data and mob_data.align_to_grid or {})
+   local model_origin = mob_data and mob_data.model_origin and radiant.util.to_point3(mob_data.model_origin) or Point3.zero
+   self._origin_offset = Point3(align_to_grid.x and 0.5 or 0, align_to_grid.y and 0.5 or 0, align_to_grid.z and 0.5 or 0) + model_origin
    self._parent_node = self._render_entity:get_node()
    self._outline_nodes = {}
 
@@ -162,8 +164,6 @@ function ConnectionRenderer:_update()
                available = type_data.num_connections < type_data.max_connections
                connected = type_data.num_connections > 0
             end
-
-            local origin_offset = Point3(self._align_to_grid.x and -0.5 or 0, self._align_to_grid.y and -0.5 or 0, self._align_to_grid.z and -0.5 or 0)
             
             local nodes = {}
             self._outline_nodes[type] = nodes
@@ -204,7 +204,7 @@ function ConnectionRenderer:_update()
                   
                   -- only render actually available or connected connectors
                   if color and (is_available or is_connected) then
-                     local r = import_region(connector.region):translated(origin_offset)
+                     local r = import_region(connector.region):translated(self._origin_offset)
                      local inflation = Point3(-0.4, -0.4, -0.4)
                      --[[
                      for _, dir in ipairs({'x', 'y', 'z'}) do

@@ -211,7 +211,7 @@ function ace_entities.output_items(uris, origin, min_radius, max_radius, options
    return radiant.entities.output_spawned_items(items, origin, min_radius, max_radius, options, output, inputs, spill_fail_items)
 end
 
-function ace_entities.output_spawned_items(items, origin, min_radius, max_radius, options, output, inputs, spill_fail_items)
+function ace_entities.output_spawned_items(items, origin, min_radius, max_radius, options, output, inputs, spill_fail_items, delete_fail_items)
    --local output_comp = output and output:is_valid() and output:get_component('stonehearth_ace:output')
    if inputs and type(inputs) ~= 'table' then
       inputs = {[inputs:get_id()] = inputs}
@@ -223,10 +223,23 @@ function ace_entities.output_spawned_items(items, origin, min_radius, max_radius
       spill_min_radius = min_radius,
       spill_max_radius = max_radius,
       output = output,
+      delete_fail_items = delete_fail_items,
       options = options
    }
 
    return item_io_lib.try_output(items, inputs, options)
+end
+
+function ace_entities.can_output_spawned_items(items, output, inputs)
+   if inputs and type(inputs) ~= 'table' then
+      inputs = {[inputs:get_id()] = inputs}
+   end
+
+   local options = {
+      output = output
+   }
+
+   return item_io_lib.can_output(items, inputs, options)
 end
 
 return ace_entities
