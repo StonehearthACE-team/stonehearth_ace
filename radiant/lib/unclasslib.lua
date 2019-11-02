@@ -73,7 +73,6 @@ local reserved =
    __shared      = true,
    __user_init      = true,
    __initialized   = true,
-   __user_initialized   = true,   -- flag to prevent stack overflows
    __destroyed   = true   -- flag to prevent stack overflows
 }
 
@@ -86,7 +85,6 @@ local rename =
    __init   = '__user_init',
    __set   = '__user_set',
    __get   = '__user_get',
-   --initialize = '__user_initialize',
    destroy = '__user_destroy'
 }
 
@@ -279,24 +277,13 @@ function class_mt:__init(...)
 end
 
 --[[
-   handle initialize and destroy specially so only the metamethod gets cached
-   this way individual initialize/destroy functions can be monkey-patched
+   handle destroy specially so only the metamethod gets cached
+   this way individual destroy functions can be monkey-patched
+   *** initialize cannot be patched in this way because saved controllers are initialized before monkey patches can be applied
 ]]
 
-function class_mt:initialize(...)
-   if self.__user_initialized then return end   -- flag to prevent stack overflows
-   self.__user_initialized = true
-
-   for i, base in ipairs(self.__bases) do
-      self[base]:initialize(...)
-   end
-   if type(self.__user_initialize) == 'function' then
-      self:__user_initialize(...)
-   end
-end
-
 function class_mt:destroy(...)
-   if self.__destroyed then return end   -- flag to prevent stack overflows
+   if self.__destroyed then return end   -- flag to prevent stack overflows for improperly patched destroy functions
    self.__destroyed = true
 
    for i, base in ipairs(self.__bases) do
