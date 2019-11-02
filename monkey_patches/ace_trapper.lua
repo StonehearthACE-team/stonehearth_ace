@@ -3,12 +3,6 @@ local BaseJob = require 'stonehearth.jobs.base_job'
 local AceTrapperClass = class()
 local log = radiant.log.create_logger('trapper')
 
-function TrapperClass:initialize()
-   BaseJob.__user_initialize(self)
-   self._sv._tame_beast_percent_chance = 0
-   self._sv.max_num_siege_weapons = {}
-end
-
 AceTrapperClass._ace_old_should_tame = TrapperClass.should_tame
 function AceTrapperClass:should_tame(target)
    local trappable = radiant.entities.get_component_data('stonehearth:trapper:trapping_grounds', 'stonehearth:trapping_grounds').trappable_animal_weights

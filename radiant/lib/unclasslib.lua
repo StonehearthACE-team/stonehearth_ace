@@ -86,7 +86,7 @@ local rename =
    __init   = '__user_init',
    __set   = '__user_set',
    __get   = '__user_get',
-   initialize = '__user_initialize',
+   --initialize = '__user_initialize',
    destroy = '__user_destroy'
 }
 
@@ -299,11 +299,11 @@ function class_mt:destroy(...)
    if self.__destroyed then return end   -- flag to prevent stack overflows
    self.__destroyed = true
 
-   if type(self.__user_destroy) == 'function' then
-      self:__user_destroy(...)
-   end
    for i, base in ipairs(self.__bases) do
       self[base]:destroy(...)
+   end
+   if type(self.__user_destroy) == 'function' then
+      self:__user_destroy(...)
    end
 end
 

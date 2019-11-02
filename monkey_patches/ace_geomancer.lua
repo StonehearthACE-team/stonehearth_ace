@@ -16,11 +16,6 @@ local ACE_HELPER_RECIPES = {
    },
 }
 
-function AceGeomancerClass:initialize()
-   CraftingJob.__user_initialize(self)
-   self._sv.max_num_golems = {}
-end
-
 AceGeomancerClass._ace_old__register_with_town = GeomancerClass._register_with_town
 function AceGeomancerClass:_register_with_town()
 	self:_ace_old__register_with_town()
