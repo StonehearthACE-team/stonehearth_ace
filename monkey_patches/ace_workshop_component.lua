@@ -8,9 +8,13 @@ function AceWorkshopComponent:activate()
       self._sv.crafting_time_modifier = json.crafting_time_modifier
    end
 
-   local command_component = self._entity:add_component('stonehearth:commands')
-   if command_component then
-      command_component:remove_command('stonehearth:commands:show_workshop')
+   -- if this is an auto-crafter, get rid of the show workshop command
+   local crafter_component = self._entity:get_component('stonehearth:crafter')
+   if crafter_component and crafter_component:is_auto_crafter() then
+      local command_component = self._entity:add_component('stonehearth:commands')
+      if command_component then
+         command_component:remove_command('stonehearth:commands:show_workshop')
+      end
    end
 
    if self._ace_old_activate then
