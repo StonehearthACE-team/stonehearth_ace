@@ -11,7 +11,7 @@ local AceFarmerFieldRenderer = class()
 
 local log = radiant.log.create_logger('farmer_field.renderer')
 
-AceFarmerFieldRenderer._ace_old_initialize = FarmerFieldRenderer.__user_initialize
+AceFarmerFieldRenderer._ace_old_initialize = FarmerFieldRenderer.initialize
 function AceFarmerFieldRenderer:initialize(render_entity, datastore)
    self._water_color = Color4(constants.hydrology.DEFAULT_WATER_COLOR)
 
