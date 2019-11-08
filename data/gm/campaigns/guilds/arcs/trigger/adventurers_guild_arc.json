@@ -1,0 +1,12 @@
+{
+   "type": "arc",
+   "rarity": "common",
+   "encounters": {
+		"event_start": "file(encounters/event_start.json)",
+		"event_finish": "file(encounters/event_finish.json)",
+		"event_cleanup": "file(encounters/event_cleanup.json)",
+		"wait_for_morning": "file(encounters/wait_for_morning.json)",
+		"spawn_next_event": "file(encounters/spawn_next_event.json)",
+		"adv_returning_trader_encounter_1": "file(encounters/adventurers_guild/adv_returning_trader_encounter_1.json)"
+   }
+}

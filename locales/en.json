@@ -146,6 +146,13 @@
                         }
                      }
                   }
+               },
+               "undead_goblin_raid": {
+                  "mission": {
+                     "sighted_bulletin": {
+                        "title": "Undead Goblins Approaching!"
+                     }
+                  }
                }
             },
             "trader": {
@@ -636,6 +643,21 @@
                            }
                         }
                      }
+                  }
+               }
+            },
+            "guilds": {
+               "adventurers_guild": {
+                  "adv_returning_trader_encounter": {
+                     "title": "A member of the Adventurer's Guild approaches.",
+                     "waiting_title": "The Adventurer's Guild will be back in [str(i18n_data.hour_counter)] [str(i18n_data.period)]!",
+                     "waiting_text": "The Adventurer's Guild member will be back in [str(i18n_data.hour_counter)] [str(i18n_data.period)] to give you <strong>[str(i18n_data.reward_number)] [str(i18n_data.reward_item)]</strong> if you turn in <strong>[str(i18n_data.want_number)] [str(i18n_data.want_item)]</strong>!",
+                     "return_title": "The Adventurer's Guild member returns!",
+                     "return_greetings_positive": "Glory and wonder, friend! It seems you have the [str(i18n_data.want_number)] [str(i18n_data.want_item)] the Guild wanted. We're willing to give you [str(i18n_data.reward_number)] [str(i18n_data.reward_item)] in return for the trophies. Do we have a deal?",
+                     "return_greetings_negative": "The Adventurer's Guild has sent me back but I see you didn't procure the [str(i18n_data.want_number)] [str(i18n_data.want_item)] we wanted. We'll return in some days with a new offer. Follow the path of fame, friend!"
+                  },
+                  "adv_returning_trader_encounter_1": {
+                     "trade_details": "Glory and wonder, friends of [str(i18n_data.town_name)]! I come in the name of the Adventurer's Guild to make an offer for some adventure trophies. We're currently looking for <strong>[str(i18n_data.want_number)] [str(i18n_data.want_item)]</strong> and will provide <strong>[str(i18n_data.reward_item)]</strong> in return. You'd have [str(i18n_data.num_days)] days to gather these before we're back, sounds interesting enough? We'll return with a different offer should you refuse."
                   }
                }
             }
@@ -2968,7 +2990,7 @@
                "flavor": "For a good night of sleep..."
             },
             "clay_bed_crude_recipe": {
-               "recipe_name": "Clay Sleeping Spot",
+               "recipe_name": "Clay Bed Frame",
                "description": "A proper place to pass out when exhausted.",
                "flavor": "'It's like a pot, for sleeping!' - Clarence, Temporary Salesperson"
             },
@@ -3297,6 +3319,21 @@
                "description": "A sign with the mark of the Geomancer, to be placed on buildings.",
                "flavor": "It is a beautiful hearthbud flower!"
             },
+				"block_marble_small_recipe": {
+               "recipe_name": "Small Marble Block",
+               "description": "A neatly polished hunk of marble.",
+               "flavor": "Harvest it for marble stone or let a Mason sculpt it"
+            },
+				"block_marble_medium_recipe": {
+               "recipe_name": "Medium Marble Block",
+               "description": "Bring together some bits of marble into a medium block.",
+               "flavor": "Harvest it for marble stone or let a Mason sculpt it"
+            },
+				"block_marble_large_recipe": {
+               "recipe_name": "Huge Marble Block",
+               "description": "Merge a lot of chunks of marble into one large polished block.",
+               "flavor": "Harvest it for marble stone or let a Mason sculpt it"
+            },
             "decoration_name": "Decorations",
             "hearth_enhancements_name": "Hearth-Enhanced Consumables"
          },
@@ -3348,7 +3385,7 @@
                "flavor": "Thatch can be obtained by harvesting grass tufts, some plants like Wintermoss or digging into grassy terrain"
             },
             "stone_bed_crude_recipe": {
-               "recipe_name": "Stone Sleeping Spot",
+               "recipe_name": "Stone Bed Frame",
                "description": "You might not want to jump into this one.",
                "flavor": "The pretty frame might distract you from the discomfort of sleeping on hard stone"
             },
@@ -4676,7 +4713,7 @@
                "flavor": "Thatch can be obtained by harvesting grass tufts, some plants like Silkweed or digging into grassy terrain"
             },
             "wood_bed_crude_recipe": {
-               "recipe_name": "Mean Sleeping Spot",
+               "recipe_name": "Mean Bed Frame",
                "description": "Literally sleeping on a board.",
                "flavor": "Mean as in poor, not cruel. Though it's that too."
             },
@@ -6687,19 +6724,19 @@
          },
          "clay_bed_crude": {
             "clay_bed_crude_ghost": {
-               "display_name": "Clay Sleeping Spot",
+               "display_name": "Clay Bed Frame",
                "description": "A proper place to pass out when exhausted."
             }
          },
          "stone_bed_crude": {
             "stone_bed_crude_ghost": {
-               "display_name": "Stone Sleeping Spot",
+               "display_name": "Stone Bed Frame",
                "description": "Mind your head on this one."
             }
          },
          "wood_bed_crude": {
             "wood_bed_crude_ghost": {
-               "display_name": "Wooden Sleeping Spot",
+               "display_name": "Wooden Bed Frame",
                "description": "That one is really mean."
             }
          },
@@ -8580,6 +8617,16 @@
             "mummy": {
                "display_name": "[str(self.stonehearth:unit_info.custom_name)]",
                "description": "Long was their slumber, huge is their hunger..."
+            },
+            "zombie": {
+               "goblin": {
+                  "display_name": "[str(self.stonehearth:unit_info.custom_name)]",
+                  "description": "Not after shiny things anymore..."
+               }
+            },
+            "ogre": {
+               "display_name": "[str(self.stonehearth:unit_info.custom_name)]",
+               "description": "That's a big skeleton."
             }
          }
       },

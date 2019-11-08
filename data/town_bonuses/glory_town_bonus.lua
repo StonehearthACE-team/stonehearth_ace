@@ -8,6 +8,7 @@ local WAVES = {
       npc_player_id = "undead",
       members = {
          {from_population = {role = "zombie",       min=1, max=1},  tuning = "stonehearth:monster_tuning:undead_glory:easy"},
+			{from_population = {role = "zombie_goblin",     min=0, max=1},  tuning = "stonehearth_ace:monster_tuning:undead:easy_goblin_zombie"},
       }
    },
    [2] = {
@@ -15,6 +16,7 @@ local WAVES = {
       members = {
          {from_population = {role = "skeleton",     min=1, max=1},  tuning = "stonehearth:monster_tuning:undead_glory:medium"},
 			{from_population = {role = "mummy",     min=0, max=1},  tuning = "stonehearth_ace:monster_tuning:undead:easy_mummy"},
+			{from_population = {role = "zombie_goblin",     min=0, max=1},  tuning = "stonehearth_ace:monster_tuning:undead:easy_goblin_zombie"},
       }
    },
    [4] = {
@@ -24,6 +26,7 @@ local WAVES = {
          {from_population = {role = "skeleton",     min=1, max=1},  tuning = "stonehearth:monster_tuning:undead_glory:easy"},
          {from_population = {role = "wolf_skeleton", min=1, max=1},  tuning = "stonehearth:monster_tuning:undead_glory:wolf_skeleton"},
 			{from_population = {role = "mummy",     min=0, max=1},  tuning = "stonehearth_ace:monster_tuning:undead:medium_mummy"},
+			{from_population = {role = "zombie_goblin",     min=0, max=2},  tuning = "stonehearth_ace:monster_tuning:undead:easy_goblin_zombie"},
       }
    },
    [8] = {
@@ -32,6 +35,8 @@ local WAVES = {
          {from_population = {role = "necromancer", min=1, max=1},  tuning = "stonehearth:monster_tuning:undead_glory:necromancer"},
          {from_population = {role = "zombie_giant", min=1, max=2},  tuning = "stonehearth:monster_tuning:undead_glory:hard"},
 			{from_population = {role = "mummy",     min=1, max=1},  tuning = "stonehearth_ace:monster_tuning:undead:medium_mummy"},
+			{from_population = {role = "zombie_goblin",     min=1, max=2},  tuning = "stonehearth_ace:monster_tuning:undead:easy_goblin_zombie"},
+			{from_population = {role = "ogre_skeleton",     min=0, max=1},  tuning = "stonehearth_ace:monster_tuning:undead:ogre_skeleton_door_breaker"},
       }
    },
    [16] = {
@@ -41,6 +46,8 @@ local WAVES = {
          {from_population = {role = "zombie_giant", min=1, max=1},  tuning = "stonehearth:monster_tuning:undead_glory:hard"},
          {from_population = {role = "skeleton_giant", min=1, max=1},  tuning = "stonehearth:monster_tuning:undead_glory:skeleton_giant"},
 			{from_population = {role = "mummy",     min=0, max=2},  tuning = "stonehearth_ace:monster_tuning:undead:medium_mummy"},
+			{from_population = {role = "zombie_goblin",     min=1, max=3},  tuning = "stonehearth_ace:monster_tuning:undead:easy_goblin_zombie"},
+			{from_population = {role = "ogre_skeleton",     min=0, max=2},  tuning = "stonehearth_ace:monster_tuning:undead:ogre_skeleton_door_breaker"},
       }
    },
    [32] = {
@@ -50,6 +57,8 @@ local WAVES = {
          {from_population = {role = "zombie_giant", min=1, max=1},  tuning = "stonehearth:monster_tuning:undead_glory:very_hard"},
          {from_population = {role = "skeleton_giant", min=1, max=2},  tuning = "stonehearth:monster_tuning:undead_glory:skeleton_giant"},
 			{from_population = {role = "mummy",     min=1, max=2},  tuning = "stonehearth_ace:monster_tuning:undead:insane_mummy"},
+			{from_population = {role = "zombie_goblin",     min=2, max=4},  tuning = "stonehearth_ace:monster_tuning:undead:medium_goblin_zombie"},
+			{from_population = {role = "ogre_skeleton",     min=1, max=3},  tuning = "stonehearth_ace:monster_tuning:undead:ogre_skeleton_door_breaker"},
       }
    },
    [64] = {
@@ -61,6 +70,8 @@ local WAVES = {
          {from_population = {role = "skeleton",     min=2, max=3},  tuning = "stonehearth:monster_tuning:undead_glory:very_hard"},
          {from_population = {role = "skeleton_giant", min=2, max=3},  tuning = "stonehearth:monster_tuning:undead_glory:skeleton_giant"},
 			{from_population = {role = "mummy",     min=1, max=3},  tuning = "stonehearth_ace:monster_tuning:undead:epic_mummy"},
+			{from_population = {role = "zombie_goblin",     min=3, max=6},  tuning = "stonehearth_ace:monster_tuning:undead:medium_goblin_zombie"},
+			{from_population = {role = "ogre_skeleton",     min=2, max=4},  tuning = "stonehearth_ace:monster_tuning:undead:ogre_skeleton_door_breaker"},
       }
    },
    [128] = {
@@ -71,6 +82,8 @@ local WAVES = {
          {from_population = {role = "skeleton",     min=3, max=5},  tuning = "stonehearth:monster_tuning:undead_glory:very_hard"},
          {from_population = {role = "skeleton_giant", min=3, max=5},  tuning = "stonehearth:monster_tuning:undead_glory:skeleton_giant"},
 			{from_population = {role = "mummy",     min=2, max=4},  tuning = "stonehearth_ace:monster_tuning:undead:epic_mummy"},
+			{from_population = {role = "zombie_goblin",     min=5, max=8},  tuning = "stonehearth_ace:monster_tuning:undead:medium_goblin_zombie"},
+			{from_population = {role = "ogre_skeleton",     min=3, max=5},  tuning = "stonehearth_ace:monster_tuning:undead:ogre_skeleton_door_breaker"},
       }
    },
    [256] = {
@@ -81,6 +94,8 @@ local WAVES = {
          {from_population = {role = "skeleton",     min=5, max=8},  tuning = "stonehearth:monster_tuning:undead_glory:very_hard"},
          {from_population = {role = "skeleton_giant", min=5, max=8},  tuning = "stonehearth:monster_tuning:undead_glory:skeleton_giant"},
 			{from_population = {role = "mummy",     min=3, max=6},  tuning = "stonehearth_ace:monster_tuning:undead:epic_mummy"},
+			{from_population = {role = "zombie_goblin",     min=4, max=12},  tuning = "stonehearth_ace:monster_tuning:undead:medium_goblin_zombie"},
+			{from_population = {role = "ogre_skeleton",     min=4, max=8},  tuning = "stonehearth_ace:monster_tuning:undead:ogre_skeleton_door_breaker"},
       }
    },
 }

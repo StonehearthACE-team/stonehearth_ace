@@ -1,0 +1,14 @@
+{
+   "type": "encounter",
+   "encounter_type": "wait_for_time_of_day",
+   "in_edge": "start",
+   "out_edge": {
+      "type": "trigger_many",
+      "out_edges": [
+         "spawn_next_event"
+      ]
+   },
+   "wait_for_time_of_day_info": {
+      "time": "10:00+1h30m"
+   }
+}

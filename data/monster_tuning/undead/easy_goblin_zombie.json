@@ -1,0 +1,108 @@
+{
+   "type": "monster_tuning",
+   "estimated_difficulty": 1,
+   "attributes": {
+      "max_health": 180,
+      "muscle": 0,
+      "menace": 30,
+      "courage": 100,
+      "speed": 60,
+      "additive_armor_modifier": 4,
+      "exp_reward": 14
+   },
+   "equipment_scale": 0.08,
+   "equipment": {
+      "weapon": [
+         "stonehearth:mining_pick",
+         "stonehearth:worker_axe",
+         "stonehearth:weapons:stone_maul",
+         "stonehearth_ace:weapons:bronze_axe"
+      ]
+   },
+   "loot_drops": {
+      "entries": {
+         "default": {
+            "items": {
+               "none": {
+                  "uri": "",
+                  "weight": 6
+               },
+               "red_fox_pelt": {
+                  "uri": "stonehearth:resources:red_fox_pelt",
+                  "weight": 1
+               },
+               "racoon_pelt": {
+                  "uri": "stonehearth:resources:racoon_pelt",
+                  "weight": 1
+               },
+               "squirrel_pelt": {
+                  "uri": "stonehearth:resources:squirrel_pelt",
+                  "weight": 1
+               },
+               "rabbit_pelt": {
+                  "uri": "stonehearth:resources:rabbit_pelt",
+                  "weight": 1
+               },
+               "lump_of_coal": {
+                  "uri": "stonehearth:resources:coal:lump_of_coal",
+                  "weight": 1
+               },
+               "firewood": {
+                  "uri": "stonehearth_ace:resources:fuel:bundle_of_firewood",
+                  "weight": 1
+               },
+               "bandage": {
+                  "uri": "stonehearth:consumables:coarse_bandage",
+                  "weight": 1
+               },
+               "skull_trophy": {
+                  "uri": "stonehearth:monsters:goblins:skull_trophy",
+                  "weight": 1
+               }
+            }
+         },
+         "currency": {
+            "num_rolls": {
+               "min": 0,
+               "max": 1
+            },
+            "items": {
+               "none": {
+                  "uri": "",
+                  "weight": 10
+               },
+               "goblin_currency": {
+                  "uri": "stonehearth_ace:loot:currency:goblin",
+                  "weight": 1
+               },
+               "undead_currency": {
+                  "uri": "stonehearth_ace:loot:currency:undead",
+                  "weight": 1
+               }
+            }
+         },
+         "bones": {
+            "num_rolls": {
+               "min": 0,
+               "max": 1
+            },
+            "items": {
+               "bone": {
+                  "uri": "stonehearth_ace:resources:bone:bone_material"
+               }
+            }
+         },
+         "skull": {
+            "num_rolls": {
+               "min": 0,
+               "max": 1
+            },
+            "items": {
+               "skull": {
+                  "uri": "stonehearth_ace:resources:bone:bone_skull"
+               }
+            }
+         }
+      }
+   }
+}

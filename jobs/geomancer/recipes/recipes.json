@@ -12,6 +12,19 @@
             }
          }
       },
+		"resources": {
+         "recipes": {
+            "block_marble_small": {
+               "recipe": "file(block_marble_small_recipe.json)"
+            },
+            "block_marble_medium": {
+               "recipe": "file(block_marble_medium_recipe.json)"
+            },
+            "block_marble_large": {
+               "recipe": "file(block_marble_large_recipe.json)"
+            }
+         }
+      },
 		"hearth_enhancements": {
 			"ordinal": 12,
          "name": "i18n(stonehearth_ace:jobs.geomancer.recipes.hearth_enhancements_name)",

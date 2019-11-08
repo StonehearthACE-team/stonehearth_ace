@@ -20,8 +20,9 @@
       "entries": {
          "default": {
             "items": {
-               "none": {
-                  "weight": 0
+               "hard_coal": {
+                  "uri": "stonehearth_ace:resources:coal:hunk_of_hard_coal",
+                  "weight": 1
                },
                "iron_ore": {
                   "uri": "stonehearth:resources:iron:ore",
@@ -46,7 +47,7 @@
             "items": {
                "none": {
                   "uri": "",
-                  "weight": 1
+                  "weight": 2
                },
                "tome": {
                   "uri": "stonehearth:loot:dusty_tome",
@@ -68,6 +69,44 @@
                "currency": {
                   "uri": "stonehearth_ace:loot:currency:undead",
                   "weight": 1
+               }
+            }
+         },
+         "bandages": {
+            "roll_type": "some_of",
+            "num_rolls": {
+               "min": 1,
+               "max": 2
+            },
+            "items": {
+               "meat": {
+                  "uri": "stonehearth:consumables:coarse_bandage",
+                  "weight": 1
+               }
+            }
+         },
+         "bones": {
+            "roll_type": "some_of",
+            "num_rolls": {
+               "min": 1,
+               "max": 2
+            },
+            "items": {
+               "bones": {
+                  "uri": "stonehearth_ace:resources:bone:bone_material",
+                  "weight": 1
+               }
+            }
+         },
+         "skull": {
+            "roll_type": "some_of",
+            "num_rolls": {
+               "min": 1,
+               "max": 1
+            },
+            "items": {
+               "skull": {
+                  "uri": "stonehearth_ace:resources:bone:bone_skull"
                }
             }
          }

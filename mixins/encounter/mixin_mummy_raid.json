@@ -11,6 +11,26 @@
                "min": 1,
                "max": 21
             }
+         },
+         "kingdom_check": {
+            "type": "deny_if_not",
+            "item": "kingdom",
+            "value": "rayyas_children:kingdoms:rayyas_children"
+         }
+      },
+      "test_2": {
+         "time_of_day_check": {
+            "item": "time_of_day",
+            "type": "deny_if_between",
+            "value": {
+               "min": 1,
+               "max": 21
+            }
+         },
+         "biome_check": {
+            "type": "deny_if_not",
+            "item": "biome",
+            "value": "stonehearth:biome:desert"
          }
       }
    },

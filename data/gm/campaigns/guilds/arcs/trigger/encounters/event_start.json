@@ -1,0 +1,27 @@
+{
+   "type": "encounter",
+   "encounter_type": "wait",
+   "unique": true,
+   "in_edge": "event_start",
+   "out_edge": {
+      "type": "trigger_one",
+      "out_edges": [
+         "adv_returning_trader_encounter_1"
+      ],
+      "fallback": "event_finish"
+   },
+   "can_start": {
+      "all_tests": {
+         "no_events_active": {
+            "type": "deny_if_greater_than",
+            "item": "number_active",
+            "start_node": "event_start",
+            "end_node": "event_cleanup",
+            "value": 0
+         }
+      }
+   },
+   "wait_info": {
+      "duration": "1s"
+   }
+}
