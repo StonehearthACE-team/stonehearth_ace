@@ -2,6 +2,7 @@ local UnitInfoComponent = require 'stonehearth.components.unit_info.unit_info_co
 local AceUnitInfoComponent = class()
 local rng = _radiant.math.get_default_rng()
 local entity_forms = require 'stonehearth.lib.entity_forms.entity_forms_lib'
+local log = radiant.log.create_logger('unit_info_component')
 
 -- TODO: implement some kind of randomized naming so you can get uniquely named items from regular loot mechanics
 -- perhaps limit it to items of higher-than-base quality?
@@ -114,8 +115,15 @@ end
 function AceUnitInfoComponent:ensure_custom_name()
    -- if this was just a regular entity before, set its custom name to its catalog display name
    if not self._sv.custom_name then
-      self._sv.custom_name = self._sv.display_name or stonehearth.catalog:get_catalog_data(self._entity:get_uri()).display_name
-      self.__saved_variables:mark_changed()
+      local catalog_data = stonehearth.catalog:get_catalog_data(self._entity:get_uri())
+      if catalog_data then
+         self._sv.custom_name = self._sv.display_name or catalog_data.display_name
+         self.__saved_variables:mark_changed()
+      else
+         log:error('%s is missing catalog data', self._entity)
+         self._sv.custom_name = 'i18n(stonehearth_ace:ui.game.entities.missing_catalog_data)'
+         self.__saved_variables:mark_changed()
+      end
    end
 end
 
