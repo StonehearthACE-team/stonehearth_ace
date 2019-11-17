@@ -972,7 +972,11 @@
          }
       },
       "inventory": {
-         "MAX_INSIGNIFICANT_PATH_LENGTH": 12
+         "MAX_INSIGNIFICANT_PATH_LENGTH": 12,
+			"MIN_COUNT_FOR_PLENTIFUL_ITEMS": 20,
+			"restock_director": {
+            "FAILED_ITEM_REQUEUE_DELAY": "30m"
+         }
       },
       "persistence": {
          "crafters": {

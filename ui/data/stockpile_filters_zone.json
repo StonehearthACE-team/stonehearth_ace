@@ -1,0 +1,21 @@
+{
+   "mixins": "stonehearth:ui:stockpile:filters",
+   "stockpile": {
+      "food_and_drink": {
+         "categories": {
+            "raw_drinks": {
+               "ordinal": 5,
+               "display_name": "Simple Drinks",
+               "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/raw_drink.png",
+               "filter": "stockpile_drink"
+            },
+            "prepared_drinks": {
+               "ordinal": 7,
+               "display_name": "Prepared Drinks",
+               "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/drink.png",
+               "filter": "stockpile_prepared_drink"
+            }
+         }
+      }
+   }
+}

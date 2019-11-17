@@ -3197,20 +3197,25 @@
                "description": "For compactly storing up to 64 items.",
                "flavor": "It's not easy to make all the urns the exact same size... So we came up with this idea!"
             },
-            "output_cask_clay_small_recipe": {
-               "recipe_name": "Clay Small Production Cask",
-               "description": "Temporary storage for 32 finished products.",
+            "input_cask_clay_small_recipe": {
+               "recipe_name": "Clay Small Supply Cask",
+               "description": "Priority storage for 28 items.",
                "flavor": "Can only hold certain fluids and dry goods"
             },
-            "output_cask_clay_recipe": {
-               "recipe_name": "Clay Production Cask",
-               "description": "Temporary storage for 48 finished products.",
+            "input_cask_clay_recipe": {
+               "recipe_name": "Clay Supply Cask",
+               "description": "Priority storage for 48 items.",
                "flavor": "Can only hold certain fluids and dry goods"
             },
-            "input_keg_clay_recipe": {
+            "serving_keg_clay_recipe": {
                "description": "A small serving container for 4 simple or prepared drinks.",
                "recipe_name": "Clay Serving Keg",
                "flavor": ""
+            },
+				"output_tun_clay_recipe": {
+					"recipe_name": "Clay Production Tun",
+               "description": "Temporary storage for 32 items, tuns are able to hold different items as long as they're in the same category.",           
+               "flavor": "Used by crafters to store recently finished products"
             },
             "amphora_recipe": {
                "recipe_name": "Ceramic Amphora",
@@ -3319,17 +3324,17 @@
                "description": "A sign with the mark of the Geomancer, to be placed on buildings.",
                "flavor": "It is a beautiful hearthbud flower!"
             },
-				"block_marble_small_recipe": {
+            "block_marble_small_recipe": {
                "recipe_name": "Small Marble Block",
                "description": "A neatly polished hunk of marble.",
                "flavor": "Harvest it for marble stone or let a Mason sculpt it"
             },
-				"block_marble_medium_recipe": {
+            "block_marble_medium_recipe": {
                "recipe_name": "Medium Marble Block",
                "description": "Bring together some bits of marble into a medium block.",
                "flavor": "Harvest it for marble stone or let a Mason sculpt it"
             },
-				"block_marble_large_recipe": {
+            "block_marble_large_recipe": {
                "recipe_name": "Huge Marble Block",
                "description": "Merge a lot of chunks of marble into one large polished block.",
                "flavor": "Harvest it for marble stone or let a Mason sculpt it"
@@ -3421,7 +3426,7 @@
             },
             "output_box_bone_recipe": {
                "recipe_name": "Bone Finished Work Shelf",
-               "description": "Build an odd but efficient shelf for crafters to store finished products.",
+               "description": "Build an odd but efficient shelf for crafters to store items.",
                "flavor": ""
             },
             "bone_chest_recipe": {
@@ -3592,20 +3597,25 @@
                "description": "For neatly storing up to 32 items.",
                "flavor": "Could be called a casket but that would certainly cause some confusion..."
             },
-            "output_cask_stone_small_recipe": {
-               "recipe_name": "Stone Small Production Cask",
-               "description": "Temporary storage for 32 finished products.",
+            "input_cask_stone_small_recipe": {
+               "recipe_name": "Stone Small Supply Cask",
+               "description": "Priority storage for 28 items.",
                "flavor": "Can only hold certain fluids and dry goods"
             },
-            "output_cask_stone_recipe": {
-               "recipe_name": "Stone Production Cask",
-               "description": "Temporary storage for 48 finished products.",
+            "input_cask_stone_recipe": {
+               "recipe_name": "Stone Supply Cask",
+               "description": "Priority storage for 48 items.",
                "flavor": "Can only hold certain fluids and dry goods"
             },
-            "input_keg_stone_recipe": {
+            "serving_keg_stone_recipe": {
                "description": "A small serving container for 4 simple or prepared drinks.",
                "recipe_name": "Stone Serving Keg",
                "flavor": ""
+            },				
+				"output_tun_stone_recipe": {
+					"recipe_name": "Stone Production Tun",
+               "description": "Temporary storage for 32 items, tuns are able to hold different items as long as they're in the same category.",           
+               "flavor": "Used by crafters to store recently finished products"
             },
             "tank_recipe": {
                "recipe_name": "Stone Tank",
@@ -4762,20 +4772,25 @@
                "description": "Used by the Trapper to safely catch and harvest fish. It can also be used to capture fish for transport.",
                "flavor": "Place it on water edges. It can be accessed from above and will float to the surface if placed underwater"
             },
-            "output_cask_wood_recipe": {
-               "recipe_name": "Wooden Production Cask",
-               "description": "Temporary storage for 48 finished products.",
+            "input_cask_wood_recipe": {
+               "recipe_name": "Wooden Supply Cask",
+               "description": "Priority storage for 48 items.",
                "flavor": "Can only hold certain fluids and dry goods"
             },
-            "output_cask_wood_small_recipe": {
-               "recipe_name": "Wooden Small Production Cask",
-               "description": "Temporary storage for 32 finished products.",
+            "input_cask_wood_small_recipe": {
+               "recipe_name": "Wooden Small Supply Cask",
+               "description": "Priority storage for 28 items.",
                "flavor": "Can only hold certain fluids and dry goods"
             },
-            "input_keg_wood_recipe": {
+            "serving_keg_wood_recipe": {
                "description": "A small serving container for 4 simple or prepared drinks.",
                "recipe_name": "Wooden Serving Keg",
                "flavor": ""
+            },			
+				"output_tun_wood_recipe": {
+					"recipe_name": "Wooden Production Tun",
+               "description": "Temporary storage for 32 items, tuns are able to hold different items as long as they're in the same category.",           
+               "flavor": "Used by crafters to store recently finished products"
             },
             "barrel_recipe": {
                "recipe_name": "Wooden Barrel",
@@ -9655,41 +9670,41 @@
             "display_name": "Bone Kibble Bowl",
             "description": "Hearthlings can put kibble in this creepy bowl for their pets to eat."
          },
-         "input_keg_wood": {
+         "serving_keg_wood": {
             "description": "A small serving container for 4 simple or prepared drinks.",
             "display_name": "Wooden Serving Keg"
          },
-         "input_keg_clay": {
+         "serving_keg_clay": {
             "description": "A small serving container for 4 simple or prepared drinks.",
             "display_name": "Clay Serving Keg"
          },
-         "input_keg_stone": {
+         "serving_keg_stone": {
             "description": "A small serving container for 4 simple or prepared drinks.",
             "display_name": "Stone Serving Keg"
          },
-         "output_cask_wood": {
-            "display_name": "Wooden Production Cask",
-            "description": "Temporary storage for 48 finished products."
+         "input_cask_wood": {
+            "display_name": "Wooden Supply Cask",
+            "description": "Priority storage for 48 items."
          },
-         "output_cask_clay": {
-            "display_name": "Clay Production Cask",
-            "description": "Temporary storage for 48 finished products."
+         "input_cask_clay": {
+            "display_name": "Clay Supply Cask",
+            "description": "Priority storage for 48 items."
          },
-         "output_cask_stone": {
-            "display_name": "Stone Production Cask",
-            "description": "Temporary storage for 48 finished products."
+         "input_cask_stone": {
+            "display_name": "Stone Supply Cask",
+            "description": "Priority storage for 48 items."
          },
-         "output_cask_wood_small": {
-            "display_name": "Wooden Small Production Cask",
-            "description": "Temporary storage for 32 finished products."
+         "input_cask_wood_small": {
+            "display_name": "Wooden Small Supply Cask",
+            "description": "Priority storage for 28 items."
          },
-         "output_cask_clay_small": {
-            "display_name": "Clay Small Production Cask",
-            "description": "Temporary storage for 32 finished products."
+         "input_cask_clay_small": {
+            "display_name": "Clay Small Supply Cask",
+            "description": "Priority storage for 28 items."
          },
-         "output_cask_stone_small": {
-            "display_name": "Stone Small Production Cask",
-            "description": "Temporary storage for 32 finished products."
+         "input_cask_stone_small": {
+            "display_name": "Stone Small Supply Cask",
+            "description": "Priority storage for 28 items."
          },
          "barrel": {
             "display_name": "Wooden Barrel",
@@ -9734,6 +9749,18 @@
          "tall_urn": {
             "display_name": "Tall Urn",
             "description": "Stores up to 64 items"
+         },
+         "output_tun_wood": {
+            "display_name": "Wooden Production Tun",
+            "description": "Temporary storage for 32 items. Can hold different items from the same category."
+         },
+         "output_tun_stone": {
+            "description": "Temporary storage for 32 items. Can hold different items from the same category.",
+            "display_name": "Stone Production Tun"
+         },
+         "output_tun_clay": {
+            "description": "Temporary storage for 32 items. Can hold different items from the same category.",
+            "display_name": "Clay Production Tun"
          }
       },
       "tools": {
@@ -10635,7 +10662,8 @@
                   "fuels": "Fuels",
                   "tooltip_cooking": "Cooking",
                   "tooltip_brewing": "Brewing",
-                  "fertilizers": "Fertilizers"
+                  "fertilizers": "Fertilizers",
+                  "tooltip_production": "Production"
                }
             },
             "pasture": {

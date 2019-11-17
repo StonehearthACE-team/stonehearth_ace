@@ -1,0 +1,357 @@
+{
+   "stockpile": {
+      "raw_drinks": {
+         "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_raw_drinks)",
+         "ordinal": 1,
+         "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/raw_drink.png",
+         "categories": {
+            "milk_sheep": {
+               "ordinal": 1,
+               "display_name": "i18n(stonehearth_ace:entities.drink.sheep_milk.sheep_milk.display_name)",
+               "icon": "/stonehearth_ace/entities/drink/sheep_milk/sheep_milk/sheep_milk.png",
+               "filter": "drink_container sheep_milk"
+            },
+            "milk_moomoo": {
+               "ordinal": 2,
+               "display_name": "i18n(stonehearth_ace:entities.drink.moomoo_milk.moomoo_milk.display_name)",
+               "icon": "/stonehearth_ace/entities/drink/moomoo_milk/moomoo_milk/moomoo_milk.png",
+               "filter": "drink_container moomoo_milk"
+            },
+            "milk_wild_cattle": {
+               "ordinal": 3,
+               "display_name": "i18n(stonehearth_ace:entities.drink.wild_cattle_milk.wild_cattle_milk.display_name)",
+               "icon": "/stonehearth_ace/entities/drink/wild_cattle_milk/wild_cattle_milk/wild_cattle_milk.png",
+               "filter": "drink_container wild_cattle_milk"
+            },
+            "juice_berry": {
+               "ordinal": 4,
+               "display_name": "i18n(stonehearth_ace:entities.drink.juice_berry.juice_berry.display_name)",
+               "icon": "/stonehearth_ace/entities/drink/juice_berry/juice_berry/juice_berry.png",
+               "filter": "drink_container juice_berry"
+            },
+            "juice_prickly_pear": {
+               "ordinal": 5,
+               "display_name": "i18n(stonehearth_ace:entities.drink.juice_prickly_pear.juice_prickly_pear.display_name)",
+               "icon": "/stonehearth_ace/entities/drink/juice_prickly_pear/juice_prickly_pear/juice_prickly_pear.png",
+               "filter": "drink_container juice_prickly_pear"
+            },
+            "juice_cherry": {
+               "ordinal": 6,
+               "display_name": "i18n(stonehearth_ace:entities.drink.juice_cherry.juice_cherry.display_name)",
+               "icon": "/stonehearth_ace/entities/drink/juice_cherry/juice_cherry/juice_cherry.png",
+               "filter": "drink_container juice_cherry"
+            },
+            "juice_carrot": {
+               "ordinal": 7,
+               "display_name": "i18n(stonehearth_ace:entities.drink.juice_carrot.juice_carrot.display_name)",
+               "icon": "/stonehearth_ace/entities/drink/juice_carrot/juice_carrot/juice_carrot.png",
+               "filter": "drink_container juice_carrot"
+            },
+            "juice_watermelon": {
+               "ordinal": 8,
+               "display_name": "i18n(stonehearth_ace:entities.drink.juice_watermelon.juice_watermelon.display_name)",
+               "icon": "/stonehearth_ace/entities/drink/juice_watermelon/juice_watermelon/juice_watermelon.png",
+               "filter": "drink_container juice_watermelon"
+            },
+            "juice_heirbloom": {
+               "ordinal": 9,
+               "display_name": "i18n(stonehearth_ace:entities.drink.juice_heirbloom.juice_heirbloom.display_name)",
+               "icon": "/stonehearth_ace/entities/drink/juice_heirbloom/juice_heirbloom/juice_heirbloom.png",
+               "filter": "drink_container juice_heirbloom"
+            }
+         }
+      },
+      "prepared_drinks": {
+         "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_drinks)",
+         "ordinal": 2,
+         "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/drink.png",
+         "categories": {
+            "smoothie": {
+               "ordinal": 1,
+               "display_name": "i18n(stonehearth_ace:entities.drink.smoothie.smoothie.display_name)",
+               "icon": "/stonehearth_ace/entities/drink/smoothie/smoothie/smoothie.png",
+               "filter": "drink_container smoothie"
+            },
+            "tea": {
+               "ordinal": 2,
+               "display_name": "i18n(stonehearth_ace:entities.drink.tea.tea.display_name)",
+               "icon": "/stonehearth_ace/entities/drink/tea/tea.png",
+               "filter": "drink_container tea_tea"
+            },
+            "tea_fancy": {
+               "ordinal": 2.1,
+               "display_name": "i18n(stonehearth_ace:entities.drink.tea_fancy.tea_fancy.display_name)",
+               "icon": "/stonehearth_ace/entities/drink/tea_fancy/tea_fancy.png",
+               "filter": "drink_container tea_fancy"
+            },
+            "tea_amberstone": {
+               "ordinal": 2.2,
+               "display_name": "i18n(stonehearth_ace:entities.drink.tea_amberstone.tea_amberstone.display_name)",
+               "icon": "/stonehearth_ace/entities/drink/tea_amberstone/tea_amberstone.png",
+               "filter": "drink_container tea_amberstone"
+            },
+            "tea_desert": {
+               "ordinal": 2.3,
+               "display_name": "i18n(stonehearth_ace:entities.drink.tea_desert.tea_desert.display_name)",
+               "icon": "/stonehearth_ace/entities/drink/tea_desert/tea_desert.png",
+               "filter": "drink_container tea_desert"
+            },
+            "mead": {
+               "ordinal": 3,
+               "display_name": "i18n(stonehearth_ace:entities.drink.mead.mead.display_name)",
+               "icon": "/stonehearth_ace/entities/drink/mead/mead/mead.png",
+               "filter": "drink_container mead"
+            },
+            "mead_fruit": {
+               "ordinal": 3.1,
+               "display_name": "i18n(stonehearth_ace:entities.drink.mead_fruit.mead_fruit.display_name)",
+               "icon": "/stonehearth_ace/entities/drink/mead_fruit/mead_fruit/mead_fruit.png",
+               "filter": "drink_container mead_fruit"
+            },
+            "ale": {
+               "ordinal": 4,
+               "display_name": "i18n(stonehearth_ace:entities.drink.ale.ale.display_name)",
+               "icon": "/stonehearth_ace/entities/drink/ale/ale/ale.png",
+               "filter": "drink_container ale"
+            },
+            "beer": {
+               "ordinal": 4.1,
+               "display_name": "i18n(stonehearth_ace:entities.drink.beer.beer.display_name)",
+               "icon": "/stonehearth_ace/entities/drink/beer/beer/beer.png",
+               "filter": "drink_container beer"
+            },
+            "spirit": {
+               "ordinal": 5,
+               "display_name": "i18n(stonehearth_ace:entities.drink.spirit.spirit.display_name)",
+               "icon": "/stonehearth_ace/entities/drink/spirit/spirit/spirit.png",
+               "filter": "drink_container spirit"
+            },
+            "spirit_fruit": {
+               "ordinal": 5.1,
+               "display_name": "i18n(stonehearth_ace:entities.drink.spirit_fruit.spirit_fruit.display_name)",
+               "icon": "/stonehearth_ace/entities/drink/spirit_fruit/spirit_fruit/spirit_fruit.png",
+               "filter": "drink_container spirit_fruit"
+            },
+            "spirit_hearth": {
+               "ordinal": 5.2,
+               "display_name": "i18n(stonehearth_ace:entities.drink.spirit_hearth.spirit_hearth.display_name)",
+               "icon": "/stonehearth_ace/entities/drink/spirit_hearth/spirit_hearth/spirit_hearth.png",
+               "filter": "drink_container spirit_hearth"
+            },
+            "liquor": {
+               "ordinal": 6,
+               "display_name": "i18n(stonehearth_ace:entities.drink.liquor.liquor.display_name)",
+               "icon": "/stonehearth_ace/entities/drink/liquor/liquor/liquor.png",
+               "filter": "drink_container liquor"
+            }
+         }
+      },
+      "dry_goods": {
+         "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_dry_goods)",
+         "ordinal": 3,
+         "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/cooking_ingredient.png",
+         "categories": {
+            "thatch": {
+               "ordinal": 0,
+               "display_name": "i18n(stonehearth_ace:entities.resources.thatch_bale.display_name)",
+               "icon": "/stonehearth_ace/entities/resources/thatch_bale/thatch_bale.png",
+               "filter": "thatch_bale resource"
+            },
+            "wheat": {
+               "ordinal": 1,
+               "display_name": "i18n(stonehearth:entities.food.wheat_bale.display_name)",
+               "icon": "/stonehearth/entities/food/wheat_bale/wheat_bale.png",
+               "filter": "cooking_ingredient wheat"
+            },
+            "flour": {
+               "ordinal": 1.1,
+               "display_name": "i18n(stonehearth_ace:entities.food.flour.display_name)",
+               "icon": "/stonehearth/entities/food/flour/flour.png",
+               "filter": "cooking_ingredient flour"
+            },
+            "corn": {
+               "ordinal": 2,
+               "display_name": "i18n(stonehearth:entities.food.corn.corn_basket.display_name)",
+               "icon": "/stonehearth/entities/food/corn/corn_basket/corn_basket.png",
+               "filter": "food_container corn"
+            },
+            "corn_meal": {
+               "ordinal": 2.1,
+               "display_name": "i18n(stonehearth_ace:entities.food.corn_meal.display_name)",
+               "icon": "/stonehearth/entities/food/corn_meal/corn_meal.png",
+               "filter": "cooking_ingredient corn_meal"
+            },
+            "paddy_basket": {
+               "ordinal": 3,
+               "display_name": "i18n(stonehearth_ace:entities.food.rice.paddy_basket.display_name)",
+               "icon": "/stonehearth_ace/entities/food/rice/paddy_basket/paddy_basket.png",
+               "filter": "cooking_ingredient paddy_basket"
+            },
+            "raw_rice": {
+               "ordinal": 3.1,
+               "display_name": "i18n(stonehearth_ace:entities.food.rice.raw_rice.display_name)",
+               "icon": "/stonehearth_ace/entities/food/rice/raw_rice/raw_rice.png",
+               "filter": "cooking_ingredient raw_rice"
+            },
+            "rice_flour": {
+               "ordinal": 3.2,
+               "display_name": "i18n(stonehearth_ace:entities.food.rice.rice_flour.display_name)",
+               "icon": "/stonehearth_ace/entities/food/rice/rice_flour/rice_flour.png",
+               "filter": "cooking_ingredient rice_flour"
+            },
+            "nut_flour": {
+               "ordinal": 4,
+               "display_name": "i18n(stonehearth_ace:entities.food.nut_flour.display_name)",
+               "icon": "/stonehearth_ace/entities/food/nut_flour/nut_flour.png",
+               "filter": "cooking_ingredient nut_flour"
+            },
+            "sugarbell": {
+               "ordinal": 5,
+               "display_name": "i18n(stonehearth:entities.food.sugar.sugarbell_basket.display_name)",
+               "icon": "/stonehearth/entities/food/sugar/sugarbell_basket/sugarbell_basket.png",
+               "filter": "cooking_ingredient sugarbell"
+            },
+            "sugar": {
+               "ordinal": 5.1,
+               "display_name": "i18n(stonehearth:entities.food.sugar.display_name)",
+               "icon": "/stonehearth/entities/food/sugar/sugar.png",
+               "filter": "cooking_ingredient grain_sugar"
+            },
+            "malted_grains": {
+               "ordinal": 6,
+               "display_name": "i18n(stonehearth_ace:entities.food.malted_grains.display_name)",
+               "icon": "/stonehearth_ace/entities/food/malted_grains/malted_grains.png",
+               "filter": "brewing_ingredient malt"
+            },
+            "gruit": {
+               "ordinal": 7,
+               "display_name": "i18n(stonehearth_ace:entities.drink.gruit.display_name)",
+               "icon": "/stonehearth_ace/entities/drink/gruit/gruit.png",
+               "filter": "brewing_ingredient gruit"
+            },
+            "edible_nuts": {
+               "ordinal": 8,
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_edible_nuts)",
+               "icon": "/stonehearth_ace/entities/trees/oak_tree/seed/edible_nuts_icon.png",
+               "filter": "seed_hard cooking_ingredient"
+            }
+         }
+      },
+      "fluids": {
+         "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_fluids)",
+         "ordinal": 5,
+         "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/fluids.png",
+         "categories": {
+            "cooking_oil": {
+               "ordinal": 1,
+               "display_name": "i18n(stonehearth_ace:entities.food.cooking_oil.display_name)",
+               "icon": "/stonehearth_ace/entities/food/cooking_oil/cooking_oil.png",
+               "filter": "oil cooking_ingredient"
+            },
+            "butter": {
+               "ordinal": 2,
+               "display_name": "i18n(stonehearth_ace:entities.food.dairy.butter.display_name)",
+               "icon": "/stonehearth_ace/entities/food/dairy/butter/butter.png",
+               "filter": "butter_butter cooking_ingredient"
+            },
+            "whey_butter": {
+               "ordinal": 3,
+               "display_name": "i18n(stonehearth_ace:entities.food.dairy.whey_butter.display_name)",
+               "icon": "/stonehearth_ace/entities/food/dairy/whey_butter/whey_butter.png",
+               "filter": "whey_butter cooking_ingredient"
+            },
+            "bog_butter": {
+               "ordinal": 4,
+               "display_name": "i18n(stonehearth_ace:entities.food.dairy.bog_butter.display_name)",
+               "icon": "/stonehearth_ace/entities/food/dairy/bog_butter/bog_butter.png",
+               "filter": "bog_butter cooking_ingredient"
+            },
+            "honey_wild": {
+               "ordinal": 5,
+               "display_name": "i18n(stonehearth_ace:entities.food.honey.honey_wild.display_name)",
+               "icon": "/stonehearth_ace/entities/food/honey/honey_wild/honey_wild.png",
+               "filter": "cooking_ingredient honey_wild"
+            },
+            "honey": {
+               "ordinal": 5.1,
+               "display_name": "i18n(stonehearth_ace:entities.food.honey.honey.display_name)",
+               "icon": "/stonehearth_ace/entities/food/honey/honey/honey.png",
+               "filter": "cooking_ingredient honey_honey"
+            },
+            "unfermented_mead": {
+               "ordinal": 6,
+               "display_name": "i18n(stonehearth_ace:entities.unfermented_mead.display_name)",
+               "icon": "/stonehearth_ace/entities/drink/unfermented_mead/unfermented_mead.png",
+               "filter": "brewing_ingredient unfermented_mead"
+            },
+            "unfermented_mead_fruit": {
+               "ordinal": 6.1,
+               "display_name": "i18n(stonehearth_ace:entities.unfermented_mead_fruit.display_name)",
+               "icon": "/stonehearth_ace/entities/drink/unfermented_mead_fruit/unfermented_mead_fruit.png",
+               "filter": "brewing_ingredient unfermented_mead_fruit"
+            },
+            "curdling_mixture": {
+               "ordinal": 7,
+               "display_name": "i18n(stonehearth_ace:entities.food.dairy.curdling_mixture.display_name)",
+               "icon": "/stonehearth_ace/entities/food/dairy/curdling_mixture/curdling_mixture.png",
+               "filter": "curdling_mixture cooking_ingredient"
+            },
+            "wort": {
+               "ordinal": 8,
+               "display_name": "i18n(stonehearth_ace:entities.drink.wort.display_name)",
+               "icon": "/stonehearth_ace/entities/drink/wort/wort.png",
+               "filter": "brewing_ingredient wort"
+            }
+         }
+      },
+      "potions": {
+         "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_potions)",
+         "ordinal": 6,
+         "icon": "/stonehearth/ui/game/modes/zones_mode/stockpile/images/taxonomy/healing_items.png",
+         "categories": {
+            "healing_tonic_small": {
+               "ordinal": 1,
+               "display_name": "i18n(stonehearth:entities.consumables.healing_tonic.small_healing_tonic.display_name)",
+               "icon": "/stonehearth/entities/consumables/healing_tonic/small_healing_tonic/small_healing_tonic.png",
+               "filter": "healing_item small consumable"
+            },
+            "hearth_healing_tonic": {
+               "ordinal": 1.1,
+               "display_name": "i18n(stonehearth_ace:entities.consumables.healing_tonic.hearth_healing_tonic.display_name)",
+               "icon": "/stonehearth_ace/entities/consumables/healing_tonic/hearth_healing_tonic/hearth_healing_tonic.png",
+               "filter": "healing_item hearth_healing_tonic consumable"
+            },
+            "courage_tonic": {
+               "ordinal": 4,
+               "display_name": "i18n(stonehearth:entities.consumables.courage_tonic.display_name)",
+               "icon": "/stonehearth/entities/consumables/courage_tonic/courage_tonic.png",
+               "filter": "courage_tonic"
+            },
+            "energy_tonic": {
+               "ordinal": 5,
+               "display_name": "i18n(stonehearth:entities.consumables.energy_tonic.display_name)",
+               "icon": "/stonehearth/entities/consumables/energy_tonic/energy_tonic.png",
+               "filter": "energy_tonic"
+            },
+            "stamina_tonic": {
+               "ordinal": 6,
+               "display_name": "i18n(stonehearth:entities.consumables.stamina_tonic.display_name)",
+               "icon": "/stonehearth/entities/consumables/stamina_tonic/stamina_tonic.png",
+               "filter": "stamina_tonic"
+            },
+            "strength_tonic": {
+               "ordinal": 7,
+               "display_name": "i18n(stonehearth:entities.consumables.strength_tonic.display_name)",
+               "icon": "/stonehearth/entities/consumables/strength_tonic/strength_tonic.png",
+               "filter": "strength_tonic"
+            },
+            "hearth_tonic": {
+               "ordinal": 8,
+               "display_name": "i18n(stonehearth_ace:entities.consumables.hearth_tonic.display_name)",
+               "icon": "/stonehearth_ace/entities/consumables/hearth_tonic/hearth_tonic.png",
+               "filter": "hearth_tonic"
+            }
+         }
+      }
+   }
+}

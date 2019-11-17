@@ -1,0 +1,44 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "render_info": {
+         "scale": 0.15,
+         "animation_table": "/stonehearth_ace/data/rigs/entities/containers/container_large/container_large.json"
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(input_cask_clay.qb)",
+                     "file(input_cask_clay_2.qb)",
+                     "file(input_cask_clay_3.qb)",
+                     "file(input_cask_clay_4.qb)"
+                  ]
+               }
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.containers.input_cask_clay.display_name)",
+         "description": "i18n(stonehearth_ace:entities.containers.input_cask_clay.description)",
+         "icon": "file(input_cask_clay.png)",
+         "category": "storage",
+         "material_tags": [
+            "clay",
+            "containers",
+            "crafted",
+            "furniture",
+            "fluid_container",
+            "stockpile_furniture"
+         ]
+      }
+   }
+}
