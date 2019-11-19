@@ -34,7 +34,17 @@ function InputComponent:try_input(item, force_add)
       end
 
       if not self._sv.require_matching_filter or storage:passes(item) then
-         return storage:add_item(item, force_add, radiant.entities.get_player_id(self._entity))
+         -- if this storage is also a stockpile, we need to place it on the ground within its bounds instead, and let *that* put it into storage
+         local stockpile = self._entity:get_component('stonehearth:stockpile')
+         if stockpile then
+            local output_location = radiant.entities.get_destination_location(self._entity)
+            if output_location then
+               radiant.terrain.place_entity(item, output_location)
+               return true
+            end
+         else
+            return storage:add_item(item, force_add, radiant.entities.get_player_id(self._entity))
+         end
       end
    end
 end

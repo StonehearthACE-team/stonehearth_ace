@@ -1,6 +1,9 @@
 --[[
 connection json structure:
 connector regions are typically a 2-voxel region, including one voxel inside the entity and another outside it
+or the entire collision region (potentially with some uniform extension beyond it)
+connectors can be configured to trace component regions (with optional modifications)
+
 "stonehearth_ace:connection": {
    "type1": {
       "connectors": {
@@ -21,6 +24,14 @@ connector regions are typically a 2-voxel region, including one voxel inside the
                   "max": { "x": 2, "y": 1, "z": 1 }
                }
             ],
+            "max_connections": 1
+         },
+         "connector3": {
+            "region_component": "region_collision_shape",
+            "get_region_fn": "get_region", <-- optional, defaults to this
+            "extrusions": {
+               "x": [1, 1]
+            }
             "max_connections": 1
          }
       },
@@ -57,6 +68,7 @@ end
 
 function ConnectionComponent:initialize()
    self._connections = {}
+   self._region_traces = {}
    self._sv.connected_stats = {}
    self._sv.dynamic_connections = {}
 end
@@ -95,7 +107,66 @@ end
 
 function ConnectionComponent:destroy()
    log:debug('%s connection component destroyed', self._entity:get_id())
+   for _, trace in pairs(self._region_traces) do
+      if trace.trace then
+         trace.trace:destroy()
+      end
+   end
+   self._region_traces = nil
+
    stonehearth_ace.connection:unregister_entity(self._entity)
+end
+
+function ConnectionComponent:_get_region_trace(component, get_region_fn, extrusions, get_only)
+   local key = component .. '.' .. tostring(get_region_fn)
+   local trace = self._region_traces[key]
+   if get_only then
+      return trace
+   end
+
+   if not trace then
+      trace = {
+         connectors = {}
+      }
+      self._region_traces[key] = trace
+
+      local comp = self._entity:get_component(component)
+      local get_region_fn = comp and comp[get_region_fn or 'get_region']
+      local region = get_region_fn and get_region_fn(comp)
+      if region then
+         local update_region = function()
+            trace.region = region:get()
+            if extrusions then
+               for dim, args in pairs(extrusions) do
+                  trace.region = trace.region:extruded(dim, args[0], args[1])
+               end
+            end
+         end
+         update_region()
+
+         trace.trace = region:trace('dynamic connection region')
+            :on_changed(function()
+               update_region()
+               trace.region:optimize('dynamic connection region')
+
+               for _, connector in pairs(trace.connectors) do
+                  stonehearth_ace.connection:update_connector(self._entity, connector.type, connector.connection_max_connections, connector.name, connector.connector)
+               end
+            end)
+      end
+
+      trace.destroy = function()
+         if trace.trace then
+            trace.trace.destroy()
+            trace.trace = nil
+         end
+         if self._region_traces then
+            self._region_traces[key] = nil
+         end
+      end
+   end
+
+   return trace
 end
 
 function ConnectionComponent:_format_connections()
@@ -109,9 +180,14 @@ function ConnectionComponent:_format_connections()
       }
       for name, connector in pairs(connection.connectors) do
          local connector_copy = radiant.shallow_copy(connector)
-         connector_copy.region = import_region(connector.region)
-         connector_copy.region:optimize('connector region')
-         all_connections[type].connectors[name] = connector_copy
+         if connector.region then
+            connector_copy.region = import_region(connector.region)
+            connector_copy.region:optimize('connector region')
+
+            all_connections[type].connectors[name] = connector_copy
+         elseif connector.region_component then
+            self:_setup_dynamic_connector(type, connection.max_connections, name, connector_copy)
+         end
       end
    end
 
@@ -153,7 +229,17 @@ function ConnectionComponent:get_connected_stats(type)
    return next(type_data) and type_data
 end
 
-function ConnectionComponent:update_dynamic_connector(type, connection_max_connections, name, connector)
+function ConnectionComponent:_setup_dynamic_connector(type, connection_max_connections, name, connector)
+   local trace = self:_get_region_trace(connector.region_component, connector.get_region_fn, connector.extrusions)
+   trace.connectors[connector] = {
+      type = type,
+      connection_max_connections = connection_max_connections,
+      name = name,
+      connector = connector
+   }
+
+   connector.region = trace.region
+
    local connections = self._sv.dynamic_connections[type]
    if not connections then
       connections = {
@@ -175,6 +261,10 @@ function ConnectionComponent:update_dynamic_connector(type, connection_max_conne
    connections.connectors[name] = radiant.shallow_copy(connector)
 
    self.__saved_variables:mark_changed()
+end
+
+function ConnectionComponent:update_dynamic_connector(type, connection_max_connections, name, connector)
+   self:_setup_dynamic_connector(type, connection_max_connections, name, connector)
 
    stonehearth_ace.connection:update_connector(self._entity, type, connection_max_connections, name, connector)
 end
@@ -184,6 +274,17 @@ function ConnectionComponent:remove_dynamic_connector(type, name)
    if connections then
       local connector = connections.connectors[name]
       if connector then
+         -- if it had a dynamic region, remove the connector from that trace
+         if connector.region_component then
+            local trace = self:_get_region_trace(connector.region_component, connector.get_region_fn, nil, true)
+            if trace then
+               trace.connectors[connector] = nil
+               if not next(trace.connectors) then
+                  trace.destroy()
+               end
+            end
+         end
+
          connections.connectors[name] = nil
          stonehearth_ace.connection:remove_connector(self._entity, type, name)
          self._sv.connected_stats[type].connectors[name] = nil

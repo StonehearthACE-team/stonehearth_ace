@@ -1,3 +1,6 @@
+local Point3 = _radiant.csg.Point3
+local Region3 = _radiant.csg.Region3
+
 local entity_forms = require 'stonehearth.lib.entity_forms.entity_forms_lib'
 local item_quality_lib = require 'stonehearth_ace.lib.item_quality.item_quality_lib'
 local item_io_lib = require 'stonehearth_ace.lib.item_io.item_io_lib'
@@ -240,6 +243,32 @@ function ace_entities.can_output_spawned_items(items, output, inputs)
    }
 
    return item_io_lib.can_output(items, inputs, options)
+end
+
+-- copied from choose_unreserved_point_in_destination_action
+function ace_entities.get_destination_location(target, source)
+   local dst = target:get_component('destination')
+   if not dst then
+      return
+   end
+
+   local origin = radiant.entities.get_world_grid_location(target)
+
+   -- calculate the region minus the actual reserved region.
+   local rgn = Region3()
+   rgn:copy_region(dst:get_region():get())
+
+   local reserved = dst:get_reserved()
+   if reserved then
+      rgn:subtract_region(reserved:get())
+   end
+
+   if rgn:empty() then
+      return
+   end
+   local offset = rgn:get_closest_point(source and (radiant.entities.get_world_grid_location(source) - origin) or Point3.zero)
+   
+   return offset + origin
 end
 
 return ace_entities
