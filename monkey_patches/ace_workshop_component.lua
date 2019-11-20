@@ -53,7 +53,7 @@ function AceWorkshopComponent:available_for_work(crafter)
    end
 
    -- if we already have a crafter working here and it's not this crafter, it's not available
-   if self._sv.crafter and self._sv.crafter:get_id() ~= crafter:get_id() then
+   if self._sv.crafter and self._sv.crafter:is_valid() and self._sv.crafter:get_id() ~= crafter:get_id() then
       return false
    end
 
