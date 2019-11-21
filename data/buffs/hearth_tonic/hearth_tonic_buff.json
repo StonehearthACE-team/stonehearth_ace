@@ -1,0 +1,30 @@
+{
+   "type": "buff",
+   "axis": "buff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.hearth_tonic.hearth_tonic_buff.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.hearth_tonic.hearth_tonic_buff.description)",
+   "icon": "file(hearth_tonic_buff.png)",
+   "duration": "4h",
+   "repeat_add_action": "renew_duration",
+   "effect": "stonehearth_ace:effects:buff_tonic_hearth",
+   "restore_effect": true,
+   "modifiers": {
+      "muscle": {
+         "multiply": 1.33
+      },
+      "courage": {
+         "multiply": 1.33
+      },
+      "menace": {
+         "multiply": 2
+      }
+   },
+   "script": "stonehearth:buff_scripts:periodic_health_modification",
+   "script_info": {
+      "health_change": 0.08,
+      "pulse": "15m",
+      "pulse_immediately": false,
+      "pulse_on_destroy": true,
+      "is_percentage": true
+   }
+}

@@ -1,0 +1,82 @@
+{
+   "name": "hearth glow",
+   "duration": 8000,
+   "material": "materials/cubemitter_bloom.material.json",
+   "loops": true,
+   "mesh": {
+      "file": "",
+      "matrix": "",
+      "offset": {
+         "x": 0,
+         "y": 0,
+         "z": 0
+      }
+   },
+   "emission": {
+      "rate": {
+         "kind": "RANDOM_BETWEEN",
+         "values": [0.5, 0.9]
+      },
+      "angle": {
+         "kind": "CONSTANT",
+         "values": [0]
+      },
+      "origin": {
+         "surface": "POINT",
+         "values": {
+            "surface": "POINT"
+         }
+      }
+   },
+   "particle": {
+      "lifetime": {
+         "start": {
+            "kind": "RANDOM_BETWEEN",
+            "values": [5000, 7000]
+         }
+      },
+      "speed": {
+         "start": {
+            "kind": "CONSTANT",
+            "values": [0]
+         },
+         "_start": {
+            "kind": "RANDOM_BETWEEN",
+            "values": [0.25, 2]
+         }
+      },
+      "velocity": {},
+      "scale": {
+         "start": {
+            "kind": "CONSTANT",
+            "values": [0.8]
+         },
+         "over_lifetime": {
+            "kind": "CURVE",
+            "values": [
+               [0, 0],
+               [1, 1.4]
+            ]
+         }
+      },
+      "color": {
+         "start": {
+            "kind": "RANDOM_BETWEEN",
+            "values": [
+               [0.944, 0.821, 0.557, 1],
+               [0.931, 0.759, 0.472, 1]
+            ]
+         },
+         "over_lifetime_a": {
+            "kind": "CURVE",
+            "values": [
+               [0, 0],
+               [0.1474635124206543, 0.025564435081199405],
+               [0.51, 0.03731911111111111],
+               [0.8848009490966797, 0.019643821497034114],
+               [1, 0]
+            ]
+         }
+      }
+   }
+}

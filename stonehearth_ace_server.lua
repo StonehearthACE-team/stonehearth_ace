@@ -61,6 +61,7 @@ local monkey_patches = {
    ace_waterfall_component = 'stonehearth.components.waterfall.waterfall_component',
    ace_commands_component = 'stonehearth.components.commands.commands_component',
    ace_trapper = 'stonehearth.jobs.trapper.trapper',
+	ace_geomancer = 'stonehearth.jobs.geomancer.geomancer',
    ace_storage_component = 'stonehearth.components.storage.storage_component',
    ace_buffs_component = 'stonehearth.components.buffs.buffs_component',
    ace_buff = 'stonehearth.components.buffs.buff',
@@ -126,6 +127,14 @@ local monkey_patches = {
    ace_pet_component = 'stonehearth.components.pet.pet_component',
    ace_csg_lib = 'stonehearth.lib.csg.csg_lib',
    ace_safety_observer = 'stonehearth.ai.observers.safety_observer',
+   ace_cleric = 'stonehearth.jobs.cleric.cleric',
+   ace_encounter = 'stonehearth.services.server.game_master.controllers.encounter',
+   ace_collect_starting_resources = 'stonehearth.scenarios.quests.collect_starting_resources.collect_starting_resources',
+   ace_pillage_mission = 'stonehearth.services.server.game_master.controllers.missions.pillage_mission',
+   ace_raid_crops_mission = 'stonehearth.services.server.game_master.controllers.missions.raid_crops_mission',
+   ace_raid_stockpiles_mission = 'stonehearth.services.server.game_master.controllers.missions.raid_stockpiles_mission',
+   ace_spawn_enemies_mission = 'stonehearth.services.server.game_master.controllers.missions.spawn_enemies_mission',
+   ace_wander_mission = 'stonehearth.services.server.game_master.controllers.missions.wander_mission',
    ace_player_jobs_controller = 'stonehearth.services.server.job.player_jobs_controller'
 }
 

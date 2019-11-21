@@ -1,0 +1,26 @@
+{
+   "type": "recipe",
+   "effort": 45,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.geomancer.recipes.block_marble_large_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.geomancer.recipes.block_marble_large_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.geomancer.recipes.block_marble_large_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/boulders/block_marble_large/block_marble_large.png",
+   "workshop": "stonehearth:geomancer:workbench",
+   "level_requirement": 5,
+   "ingredients": [
+		{
+			"uri": "stonehearth_ace:resources:stone:marble_stone",
+			"count": 6
+		},
+	   {
+         "material": "earth_essence resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:boulder:block_marble:large"
+      }
+   ]
+}

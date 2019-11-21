@@ -1,27 +1,7 @@
 {
    "components": {
-      "stonehearth:attributes": {
-         "min_sleepiness": {
-            "type": "basic",
-            "value": 0
-         },
-         "max_sleepiness": {
-            "type": "basic",
-            "value": 32
-         }
-      },
-      "stonehearth:expendable_resources": {
-         "resources": {
-            "sleepiness": {
-               "min": {
-                  "linked_attribute": "min_sleepiness"
-               },
-               "max": {
-                  "linked_attribute": "max_sleepiness"
-               },
-               "initial_value": 0
-            }
-         }
+		"mixintypes": {
+         "stonehearth:resource_node": "remove"
       },
       "stonehearth:loot_drops": {
          "entries": {
@@ -43,47 +23,13 @@
                }
             }
          }
-      },
-      "stonehearth:resource_node": {
-			"resource_spawn_effect": "stonehearth:effects:gib_effect",
-         "resource_loot_table": {
-            "entries": {
-               "bones": {
-			      "num_rolls": {
-                     "min": 0,
-                     "max": 1
-                  },
-                  "items": {
-                     "bones": {
-                        "uri": "stonehearth_ace:resources:bone:bone_material"
-                     }
-                  }
-               },
-			   "jerky": {
-                  "roll_type": "some_of",
-                  "num_rolls": {
-                     "min": 1,
-                     "max": 3
-                  },
-                  "items": {
-                     "pelt": {
-                        "uri": "stonehearth:rabbit_jerky",
-                        "weight": 1
-                     }
-                  }
-               }
-            }
-         }
-      },
-      "stonehearth:unit_info": {}
+      }
    },
    "entity_data": {
 		"mixintypes": {
-			"stonehearth:harvest_beast_loot_table": "remove"
+			"stonehearth:harvest_beast_loot_table": "remove",
+			"stonehearth:pasture_animal": "remove"
 		},
-      "stonehearth:pasture_animal": {
-         "size": "small"
-      },
       "stonehearth:catalog": {
          "display_name": "i18n(stonehearth_ace:entities.critters.rabbit.display_name)"
       },

@@ -75,19 +75,19 @@ App.StonehearthCitizenCharacterSheetView.reopen({
          this._super();
       }
    }.observes('model.stonehearth:equipment.equipped_items'),
-
+   
    _setAttributeData: function() {
       if (this.get('uri')) {
          this._super();
       }
    }.observes('model.stonehearth:attributes' , 'model.stonehearth:buffs'),
-
+   
    _updateExp: function() {
       if (this.get('uri')) {
          this._super();
       }
    }.observes('model.stonehearth:job.curr_job_controller'),
-
+   
    _updateExpendableResource: function() {
       if (this.get('uri')) {
          this._super();
@@ -145,7 +145,7 @@ App.StonehearthCitizenCharacterSheetView.reopen({
             e.preventDefault();
          }
       });
-     
+				
       self.$('#description').off('click').click(function () {
          if (self.get('uri')) {
             if (radiant.isOwnedByAnotherPlayer(self.get('model'), App.stonehearthClient.getPlayerId())) {

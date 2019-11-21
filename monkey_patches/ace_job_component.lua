@@ -12,9 +12,16 @@ function AceJobComponent:activate(value, add_curiosity_addition)
 	self._training_performed_listener = radiant.events.listen(self._entity, 'stonehearth_ace:training_performed', self, self._on_training_performed)
 end
 
-AceJobComponent._ace_old_destroy = JobComponent.destroy
-function AceJobComponent:destroy(value, add_curiosity_addition)
-	self:_ace_old_destroy(value, add_curiosity_addition)
+AceJobComponent._ace_old_post_activate = JobComponent.post_activate
+function AceJobComponent:post_activate()
+   self:_update_job_index()
+
+   self:_ace_old_post_activate()
+end
+
+AceJobComponent._ace_old_destroy = JobComponent.__user_destroy
+function AceJobComponent:destroy()
+	self:_ace_old_destroy()
 
 	if self._training_performed_listener then
 		self._training_performed_listener:destroy()
@@ -572,15 +579,17 @@ function AceJobComponent:_remove_training_toggle(commands_component)
 	
 	-- remove commands
 	if not commands_component then
-		commands_component = self._entity:add_component('stonehearth:commands')
+		commands_component = self._entity:get_component('stonehearth:commands')
 	end
 
-	if commands_component:has_command(disable) then
-		commands_component:remove_command(disable)
-	end
-	if commands_component:has_command(enable) then
-		commands_component:remove_command(enable)
-	end
+   if commands_component then
+      if commands_component:has_command(disable) then
+         commands_component:remove_command(disable)
+      end
+      if commands_component:has_command(enable) then
+         commands_component:remove_command(enable)
+      end
+   end
 end
 
 function AceJobComponent:_on_training_performed()
@@ -609,7 +618,7 @@ function AceJobComponent:_add_equipment_preferences_toggle()
 end
 
 function AceJobComponent:_remove_equipment_preferences_toggle()
-   local commands_component = self._entity:add_component('stonehearth:commands')
+   local commands_component = self._entity:get_component('stonehearth:commands')
    if commands_component and self._sv.current_equipment_preferences_command then
       commands_component:remove_command(self._sv.current_equipment_preferences_command)
    end

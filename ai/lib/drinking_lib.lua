@@ -16,7 +16,7 @@ function DrinkingLib.get_quality(drink_stuff, drink_preferences, drink_intoleran
 
 	if drink_intolerances ~= '' then
       if radiant.entities.is_material(drink_stuff, drink_intolerances) then
-         return stonehearth.constants.drink_qualities.INTOLERABLE
+         return nil
       end
    end
 	

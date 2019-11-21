@@ -82,7 +82,7 @@
 				"plant_water_affinity": "EXTREME",
             "plant_light_affinity": "VERY_HIGH"
          },
-         "undeground": {
+         "underground": {
             "plant_water_affinity": "UNDESIRABLE",
             "plant_light_affinity": "UNDESIRABLE"
          }
@@ -693,6 +693,25 @@
          "MIN_SLEEPINESS_TO_SLEEP_ON_GROUND": 25,
 			"MAX_SLEEPINESS": 32
       },
+		"item_quality": {
+         "mixintypes": {
+				"bonuses": "override"
+			},
+         "bonuses": {
+            "net_worth": [
+               0,
+               0.6,
+               1.5,
+               4
+            ],
+            "appeal": [
+               0,
+               0.5,
+               1.2,
+               3
+            ]
+         }
+      },
 		"crafting": {
 			"mixintypes": {
 				"ITEM_QUALITY_CHANCES": "override"
@@ -962,7 +981,11 @@
          }
       },
       "inventory": {
-         "MAX_INSIGNIFICANT_PATH_LENGTH": 12
+         "MAX_INSIGNIFICANT_PATH_LENGTH": 12,
+			"MIN_COUNT_FOR_PLENTIFUL_ITEMS": 20,
+			"restock_director": {
+            "FAILED_ITEM_REQUEUE_DELAY": "30m"
+         }
       },
       "persistence": {
          "crafters": {

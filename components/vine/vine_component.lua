@@ -202,15 +202,18 @@ function VineComponent:_start()
 end
 
 function VineComponent:_get_growth_period(growths_remaining)
-   local time = ''
+   local time
    for _, growth_time in ipairs(self._growth_data.growth_times) do
       if growths_remaining <= growth_time.growths_remaining then
          time = growth_time.time
       else
+         if not time then
+            time = growth_time.time
+         end
          break
       end
    end
-   time = stonehearth.calendar:parse_duration(time)
+   time = time and stonehearth.calendar:parse_duration(time) or 0
    if time > 0 then
       time = stonehearth.town:calculate_growth_period('', time)
    end
@@ -429,6 +432,9 @@ function VineComponent:_try_grow()
             { owner = self._entity:get_player_id(), ignore_gravity = grow_direction ~= 'y+' and self._growth_data.ignore_gravity })
       new_vine:add_component('stonehearth_ace:vine'):set_num_growths_remaining(self._sv.num_growths_remaining)
       radiant.terrain.place_entity_at_exact_location(new_vine, grow_location, {force_iconic = false})
+      if self._growth_data.randomize_facing then
+         radiant.entities.turn_to(new_vine, rng:get_int(0, 3) * 90)
+      end
    end
 
    return new_vine

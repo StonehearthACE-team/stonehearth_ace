@@ -8,7 +8,7 @@ local DRANK_UNPALATABLE_THOUGHT = 'stonehearth:thoughts:drinking:unpalatable'
 local DRANK_INTOLERABLE_THOUGHT = 'stonehearth:thoughts:drinking:intolerable'
 local DRANK_LOVELY_THOUGHT = 'stonehearth:thoughts:drinking:lovely'
 
-AceFoodPreferenceTrait._ace_old_destroy = FoodPreferenceTrait.destroy
+AceFoodPreferenceTrait._ace_old_destroy = FoodPreferenceTrait.__user_destroy
 function AceFoodPreferenceTrait:destroy()
    self:_ace_old_destroy()
    

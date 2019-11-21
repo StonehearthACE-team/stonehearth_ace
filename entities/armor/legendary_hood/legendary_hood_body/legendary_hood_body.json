@@ -1,0 +1,43 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:item_properties",
+   "components": {
+      "render_info": {},
+      "model_variants": {
+         "default": {
+            "layer": "clothing",
+            "transparent": true,
+            "models": [
+               "file(legendary_hood_body.qb)"
+            ]
+         },
+         "female": {
+            "layer": "clothing",
+            "transparent": true,
+            "models": [
+               "file(legendary_hood_body_female.qb)"
+            ]
+         },
+         "rabbit_male": {
+            "layer": "clothing",
+            "transparent": true,
+            "models": [
+               "file(legendary_hood_body_rabbit.qb)"
+            ]
+         },
+         "rabbit_female": {
+            "layer": "clothing",
+            "transparent": true,
+            "models": [
+               "file(legendary_hood_body_rabbit.qb)"
+            ]
+         }
+      },
+      "stonehearth:equipment_piece": {
+         "render_type": "merge_with_model",
+         "ilevel": 2,
+         "no_drop": true
+      }
+   },
+   "entity_data": {}
+}

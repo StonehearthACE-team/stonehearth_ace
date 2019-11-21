@@ -1,0 +1,30 @@
+{
+   "type": "recipe",
+   "effort": 18,
+   "work_units": 20,
+   "recipe_name": "i18n(stonehearth_ace:jobs.potter.recipes.serving_keg_clay_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.potter.recipes.serving_keg_clay_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.potter.recipes.serving_keg_clay_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/containers/serving_keg_clay/serving_keg_clay.png",
+   "workshop": "stonehearth:potter:kiln",
+   "level_requirement": 4,
+   "ingredients": [
+      {
+         "material": "clay resource",
+         "count": 1
+      },
+      {
+         "material": "ore resource",
+         "count": 1
+      },
+		{
+         "material": "common_fuel",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:containers:serving_keg:clay"
+      }
+   ]
+}

@@ -1,0 +1,45 @@
+{
+   "type": "monster_tuning",
+   "mixins": "stonehearth:monster_tuning:ogres:default",
+   "estimated_difficulty": 4,
+   "job": "stonehearth:jobs:npc:knight",
+   "attributes": {
+      "max_health": 850,
+      "muscle": 0,
+      "menace": 65,
+      "courage": 300,
+      "speed": 50,
+      "additive_armor_modifier": 0,
+      "exp_reward": 150
+   },
+   "equipment": {
+      "weapon": [
+         "stonehearth:weapons:crude_wooden_club"
+      ],
+      "abilities": "stonehearth:abilities:door_breaker_abilities"
+   },
+   "loot_drops": {
+      "entries": {
+         "currency": {
+            "num_rolls": {
+               "min": 1,
+               "max": 1
+            },
+            "items": {
+               "none": {
+                  "uri": "",
+                  "weight": 3
+               },
+               "undead_currency": {
+                  "uri": "stonehearth_ace:loot:currency:undead",
+                  "weight": 2
+               },
+               "red_kiln_currency": {
+                  "uri": "stonehearth_ace:loot:currency:red_kiln",
+                  "weight": 1
+               }
+            }
+         }
+      }
+   }
+}

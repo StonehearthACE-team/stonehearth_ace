@@ -1,7 +1,7 @@
 local BrewingTaskGroup = class()
 BrewingTaskGroup.name = 'brewing'
 BrewingTaskGroup.does = 'stonehearth:work'
-BrewingTaskGroup.priority = 0.15
+BrewingTaskGroup.priority = 0.85
 
 return stonehearth.ai:create_task_group(BrewingTaskGroup)
          :work_order_tag("job")

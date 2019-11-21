@@ -1,0 +1,44 @@
+{
+   "type": "encounter",
+   "mixins": "stonehearth_ace:mixins:encounter:undead_goblin_raid",
+   "encounter_type": "create_mission",
+   "in_edge": "undead_goblin_raid_1",
+   "out_edge": "wait_to_destroy_raiding_party",
+   "create_mission_info": {
+      "mission": {
+         "ctx_entity_registration_path": "undead_goblin_raid_1",
+         "members": {
+            "easy_goblin_zombies": {
+               "from_population": {
+                  "min": 3,
+                  "max": 5
+               }
+            },
+            "medium_goblin_zombies": {
+               "from_population": {
+                  "min": 0,
+                  "max": 1
+               }
+            },
+            "ogre_skeleton": {
+               "from_population": {
+                  "min": 0,
+                  "max": 0
+               }
+            },
+            "wolf_skeleton": {
+               "from_population": {
+                  "min": 2,
+                  "max": 3
+               }
+            },
+            "epic_wolf_skeleton": {
+               "from_population": {
+                  "min": 0,
+                  "max": 1
+               }
+            }
+         }
+		}
+   }
+}

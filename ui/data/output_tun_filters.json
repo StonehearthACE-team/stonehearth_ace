@@ -1,0 +1,46 @@
+{
+   "stockpile": {
+      "production": {
+         "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_production)",
+         "ordinal": 1,
+         "categories": {
+            "raw_drinks": {
+               "ordinal": 1,
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_raw_drinks)",
+               "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/raw_drink.png",
+               "filter": "raw_drink"
+            },
+            "prepared_drinks": {
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_drinks)",
+               "ordinal": 2,
+               "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/drink.png",
+               "filter": "prepared_drink"
+            },
+            "dry_goods": {
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_dry_goods)",
+               "ordinal": 3,
+               "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/cooking_ingredient.png",
+               "filter": "dry_good"
+            },
+            "fluids": {
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_fluids)",
+               "ordinal": 4,
+               "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/fluids.png",
+               "filter": "other_fluid"
+            },
+            "animal_food": {
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_animal_food)",
+               "ordinal": 5,
+               "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/animal_feed.png",
+               "filter": "stockpile_fodder"
+            },
+            "potions": {
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_potions)",
+               "ordinal": 6,
+               "icon": "/stonehearth/ui/game/modes/zones_mode/stockpile/images/taxonomy/healing_items.png",
+               "filter": "tonic"
+            }
+         }
+      }
+   }
+}

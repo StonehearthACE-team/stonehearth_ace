@@ -307,6 +307,7 @@ function AceTown:_get_farm_crops_data()
             end
             if uri then
                crops[uri] = (crops[uri] or 0) + 1
+					end
             end
          end
       end

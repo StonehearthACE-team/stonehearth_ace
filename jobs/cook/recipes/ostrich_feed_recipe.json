@@ -1,6 +1,6 @@
 {
    "type": "recipe",
-   "effort": 6,
+   "effort": 18,
    "work_units": 1,
    "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.ostrich_feed_recipe.recipe_name)",
    "description": "i18n(stonehearth_ace:jobs.cook.recipes.ostrich_feed_recipe.description)",
@@ -24,6 +24,12 @@
    ],
    "produces": [
       {
+         "item": "stonehearth_ace:food:ostrich_feed"
+      },
+		{
+         "item": "stonehearth_ace:food:ostrich_feed"
+      },
+		{
          "item": "stonehearth_ace:food:ostrich_feed"
       }
    ]

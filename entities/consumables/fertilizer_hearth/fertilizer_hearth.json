@@ -1,0 +1,63 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(fertilizer_hearth.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": -0.05, "y": -0.1, "z": 0 }
+      },
+      "stonehearth:stacks": {
+         "max_stacks": 33
+      },
+      "effect_list": {
+         "default": "stonehearth_ace:effects:hearth_sparkle_effect"
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 26,
+         "rarity": "uncommon",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.consumables.fertilizer_hearth.display_name)",
+         "description": "i18n(stonehearth_ace:entities.consumables.fertilizer_hearth.description)",
+         "icon": "file(fertilizer_hearth.png)",
+         "is_item": true,
+         "category": "consumable",
+         "material_tags": [
+            "fertilizer",
+            "fertilizer_hearth",
+            "consumable",
+            "stockpile_fertilizer"
+         ]
+      },
+      "stonehearth_ace:fertilizer": {
+         "ilevel": 4,
+         "quality_chances": [
+            [
+               4,
+               0.2
+            ],
+            [
+               3,
+               0.6
+            ],
+            [
+               2,
+               0.4
+            ]
+         ],
+         "megacrop_multiplier": 40
+      }
+   }
+}

@@ -71,6 +71,40 @@
                },
                "21_residents_outro_a": {
                   "dialogue": "\"What a nice home you've built for them! They will be here shortly, and I'm sure they'll be charmed! By the way, I'm certain they can teach you some of our cooking recipes as well...\""
+               },
+               "arcs": {
+                  "trigger": {
+                     "discovery": {
+                        "encounters": {
+                           "30_geomancy": {
+                              "30_geomancy_outro": {
+                                 "donation_dialog_info": {
+                                    "dialog_nodes": {
+                                       "simple_message": {
+                                          "bulletin_message": {
+                                             "00": "\"Your wayfaring student of Geomancy has returned as a full-fledged Geomancer! They proved themselves an able practitioner of the magic arts indeed!\"<br><br>\"Here - these precious Hearthbud flowers coalesce traces of Hearth's magic into Hearth Essence, which Geomancers can use in their craft - be sure to plant them.\""
+                                          }
+                                       }
+                                    }
+                                 }
+                              }
+                           },
+                           "50_titan": {
+                              "57_bun_geomancer_starter_kit": {
+                                 "donation_dialog_info": {
+                                    "dialog_nodes": {
+                                       "simple_message": {
+                                          "bulletin_message": {
+                                             "00": "The Rabbit Geomancer brought some Hearthbud, Hearth Essence, and raw materials along with them, to help start their new aboveground practice."
+                                          }
+                                       }
+                                    }
+                                 }
+                              }
+                           }
+                        }
+                     }
+                  }
                }
             },
             "ambient_threats": {
@@ -110,6 +144,13 @@
                         "sighted_bulletin": {
                            "title": "Undead Horde Approaching!"
                         }
+                     }
+                  }
+               },
+               "undead_goblin_raid": {
+                  "mission": {
+                     "sighted_bulletin": {
+                        "title": "Undead Goblins Approaching!"
                      }
                   }
                }
@@ -581,6 +622,42 @@
                            "choice_001": "[forfeit Bone Crafting] Bye!"
                         }
                      }
+                  }
+               }
+            },
+            "dragonborn_king": {
+               "arcs": {
+                  "trigger": {
+                     "dragonborn_king": {
+                        "encounters": {
+                           "dialog_thank_player_for_help": {
+                              "dialog_tree_info": {
+                                 "dialog_nodes": {
+                                    "hatch_and_attach": {
+                                       "bulletin_message": {
+                                          "000": "I am fading fast, but I have given the last of my spirit to this egg of the Great Dragon, so that the dragonling inside may finally hatch out into this world. I have known you for little time, Children of Monkey, but I trust you will aid this young whelp as you have aided me. May you carry yourselves with strength and compassion, as the Dragonborn once did."
+                                       }
+                                    }
+                                 }
+                              }
+                           }
+                        }
+                     }
+                  }
+               }
+            },
+            "guilds": {
+               "adventurers_guild": {
+                  "adv_returning_trader_encounter": {
+                     "title": "A member of the Adventurer's Guild approaches.",
+                     "waiting_title": "The Adventurer's Guild will be back in [str(i18n_data.hour_counter)] [str(i18n_data.period)]!",
+                     "waiting_text": "The Adventurer's Guild member will be back in [str(i18n_data.hour_counter)] [str(i18n_data.period)] to give you <strong>[str(i18n_data.reward_number)] [str(i18n_data.reward_item)]</strong> if you turn in <strong>[str(i18n_data.want_number)] [str(i18n_data.want_item)]</strong>!",
+                     "return_title": "The Adventurer's Guild member returns!",
+                     "return_greetings_positive": "Glory and wonder, friend! It seems you have the [str(i18n_data.want_number)] [str(i18n_data.want_item)] the Guild wanted. We're willing to give you [str(i18n_data.reward_number)] [str(i18n_data.reward_item)] in return for the trophies. Do we have a deal?",
+                     "return_greetings_negative": "The Adventurer's Guild has sent me back but I see you didn't procure the [str(i18n_data.want_number)] [str(i18n_data.want_item)] we wanted. We'll return in some days with a new offer. Follow the path of fame, friend!"
+                  },
+                  "adv_returning_trader_encounter_1": {
+                     "trade_details": "Glory and wonder, friends of [str(i18n_data.town_name)]! I come in the name of the Adventurer's Guild to make an offer for some adventure trophies. We're currently looking for <strong>[str(i18n_data.want_number)] [str(i18n_data.want_item)]</strong> and will provide <strong>[str(i18n_data.reward_item)]</strong> in return. You'd have [str(i18n_data.num_days)] days to gather these before we're back, sounds interesting enough? We'll return with a different offer should you refuse."
                   }
                }
             }
@@ -1815,6 +1892,14 @@
          "capture_fish": {
             "display_name": "Capture Fish!",
             "description": "Order the Trapper to capture this fish instead of harvesting it. A captured fish will remain contained in a small crate that can be placed somewhere else for release."
+         },
+         "capture_bees": {
+            "display_name": "Capture Bees!",
+            "description": "Order the Herbalist to capture the bees from this nest. Captive bees will remain contained in a small crate until they are used for crafting a Bee Skep."
+         },
+         "bee_skep": {
+            "display_name": "Start a Colony!",
+            "description": "Order the Herbalist to use a box of Captive Bees to start a colony inside this skep. Captive Bees can be obtained from wild Bee Nests that will sometimes drop from trees when you cut them."
          }
       },
       "buffs": {
@@ -2142,6 +2227,24 @@
          "bee_attack_swarmed": {
             "display_name": "Swarmed by Bees",
             "description": "Ouch! Owie! Ow! Go away!"
+         },
+         "hearth_tonic": {
+            "hearth_tonic_buff": {
+               "display_name": "Hearthbud Light Tonic",
+               "description": "Courage, Menace and Muscle are increased. A radiant aura of light encompasses the hearthling, slowly healing them over time."
+            }
+         },
+         "harmony_transcendental": {
+            "display_name": "Transcendental Harmony",
+            "description": "It's a magical level of enlightment. Diligence and Curiosity are very increased.<ul><li>Crafting is much slower but with incredibly increased quality</li><li>Experience gain is vastly increased</li></ul>"
+         },
+         "divine_flavors": {
+            "display_name": "Divine Flavors",
+            "description": "Deliciously inspired by the power of the Hearth! Muscle and Stamina are increased.<ul><li>This hearthling will heal 10% of their total health every 30 minutes</li></ul>"
+         },
+         "shepherd_crook_corn": {
+            "display_name": "Shepherd's Corn Crook",
+            "description": "Compassion is increased."
          }
       },
       "loadouts": {
@@ -2296,6 +2399,30 @@
             "display_name": "Sleepyhead",
             "description": "Waking up [name(i18n_data.entity)] can be a challenge. They love sleeping so much that they'll probably sleep a bit more than they should..."
          }
+      },
+      "build": {
+         "building_brushes": {
+            "patterns": {
+               "thatch_peaked_roof": "A thatch roof made of Pesto, Lemon Ginger, Yukon Gold, and Antique Brass.",
+               "thatch_light_peaked_roof": "A thatch roof made of Sandal, Muesli and Shadow.",
+               "dry_turf_peaked_roof": "A thatch roof made of Pale Grass, Dry Turf, Dark Turf, and Stomped Path.",
+               "wood_dark_squares": "A pattern of Cioccolato, Bistre and Morocco Brown.",
+               "wood_dark_boards": "A pattern of Punga, Cocoa Brown, Clinker and Tobacco Brown.",
+               "wood_light_boards": "A pattern of Ash, Napa and Heathered Grey.",
+               "thatch_messy": "A Pattern of Pesto, Lemon Ginger, Yukon Gold and Antique Brass.",
+               "clay_grey_pattern": "A Pattern of Light Ash, Cloudy and Light Mountain Mist.",
+               "clay_gold_pattern": "A Pattern of Raffia, Winter Hazel and Ecru.",
+               "clay_red_pattern": "A Pattern of Copper Canyon, Korma and New Amber.",
+               "clay_sage_pattern": "A Pattern of Sage Light, Sage and Sage Dark.",
+               "clay_oasis_pattern": "A Pattern of Oasis Light, Oasis and Oasis Dark."
+            },
+            "colors": {
+               "#626139": "Pale Grass",
+               "#54533A": "Dry Turf",
+               "#4E4C33": "Dark Turf",
+               "#464530": "Stomped Path"
+            }
+         }
       }
    },
    "jobs": {
@@ -2369,9 +2496,9 @@
             "refined_seeds_name": "Regional Seeds",
             "farming_enhancements_name": "Farming Enhancements & Seeds",
             "herbalist_bee_skep_recipe": {
-               "recipe_name": "Bee Skep",
+               "recipe_name": "Empty Bee Skep",
                "description": "Supplies your town with beekeeping products but won't produce during the winter.",
-               "flavor": "You can obtain captive bees by harvesting wild bee nests found when cutting trees!"
+               "flavor": "Empty at first, you can obtain captive bees by harvesting wild bee nests found when cutting trees!"
             },
             "herbalist_beekeeping_hat_recipe": {
                "recipe_name": "Herbalist's Beekeeping Hat",
@@ -2412,6 +2539,16 @@
                "recipe_name": "Cotton Seeds (x3)",
                "description": "Separate seeds from the fiber",
                "flavor": "Only a skilled hand can harvest the weaker seeds, but the fiber is destroyed in the process."
+            },
+            "silkweed_transmute_recipe": {
+               "recipe_name": "Silkweed Seeds (x3)",
+               "description": "Separate seeds from the fiber",
+               "flavor": "Only a skilled hand can harvest the weaker seeds, but the fiber is destroyed in the process."
+            },
+            "carrot_transmute_recipe": {
+               "recipe_name": "Carrot Seeds (x3)",
+               "description": "Separate seeds from the youngest leaves",
+               "flavor": "Only a skilled hand can harvest the weaker seeds, but the vegetable is destroyed in the process."
             },
             "sunflower_transmute_recipe": {
                "flavor": "Sunflower seeds are oleaginous seeds and can be used to make oil."
@@ -2736,6 +2873,21 @@
                "description": "Like mead, but spiced up with some flavorful fruits. Within a Carboy it can be turned into fruity mead!",
                "flavor": ""
             },
+            "hearth_healing_tonic_recipe": {
+               "recipe_name": "Hearthbud Healing Tonic",
+               "description": "Used by the herbalist to efficiently heal wounds.",
+               "flavor": "The power of the Hearth has interesting healing properties"
+            },
+            "hearth_fertilizer_recipe": {
+               "recipe_name": "Hearthbud Fertilizer",
+               "description": "A skilled farmer will use it to increase the quality of their crops and improve the odds of getting megacrops.",
+               "flavor": "Each sack can be used to fertilize 33 crops"
+            },
+            "hearth_tonic_recipe": {
+               "recipe_name": "Hearthbud Light Tonic",
+               "description": "A powerful potion that will boost courage, muscle, menace and slowly heal over time.",
+               "flavor": "May it be a light to you in dark places, when all other lights go out! -Sasha of Clan Amberstone"
+            },
             "refinement_name": "Seed Extraction"
          },
          "herbalist_hood": {
@@ -2778,6 +2930,10 @@
          "herbalist_cauldron": {
             "display_name": "Herbalist Stone Cauldron",
             "description": "Used by the Herbalist for brewing & concocting potions."
+         },
+         "herbalist_bee_skep_empty": {
+            "display_name": "Empty Bee Skep",
+            "description": "This skep is empty and requires Captive Bees to form a colony."
          }
       },
       "engineer": {
@@ -2873,7 +3029,7 @@
                "flavor": "For a good night of sleep..."
             },
             "clay_bed_crude_recipe": {
-               "recipe_name": "Clay Sleeping Spot",
+               "recipe_name": "Clay Bed Frame",
                "description": "A proper place to pass out when exhausted.",
                "flavor": "'It's like a pot, for sleeping!' - Clarence, Temporary Salesperson"
             },
@@ -3080,20 +3236,25 @@
                "description": "For compactly storing up to 64 items.",
                "flavor": "It's not easy to make all the urns the exact same size... So we came up with this idea!"
             },
-            "output_cask_clay_small_recipe": {
-               "recipe_name": "Clay Small Production Cask",
-               "description": "Temporary storage for 32 finished products.",
+            "input_cask_clay_small_recipe": {
+               "recipe_name": "Clay Small Supply Cask",
+               "description": "Priority storage for 28 items.",
                "flavor": "Can only hold certain fluids and dry goods"
             },
-            "output_cask_clay_recipe": {
-               "recipe_name": "Clay Production Cask",
-               "description": "Temporary storage for 48 finished products.",
+            "input_cask_clay_recipe": {
+               "recipe_name": "Clay Supply Cask",
+               "description": "Priority storage for 48 items.",
                "flavor": "Can only hold certain fluids and dry goods"
             },
-            "input_keg_clay_recipe": {
+            "serving_keg_clay_recipe": {
                "description": "A small serving container for 4 simple or prepared drinks.",
                "recipe_name": "Clay Serving Keg",
                "flavor": ""
+            },
+				"output_tun_clay_recipe": {
+					"recipe_name": "Clay Production Tun",
+               "description": "Temporary storage for 32 items, tuns are able to hold different items as long as they're in the same category.",           
+               "flavor": "Used by crafters to store recently finished products"
             },
             "amphora_recipe": {
                "recipe_name": "Ceramic Amphora",
@@ -3184,6 +3345,9 @@
       },
       "geomancer": {
          "recipes": {
+            "earthbud_seeds_recipe": {
+               "recipe_name": "Hearthbud Seeds (x3)"
+            },
             "legendary_silk_recipe": {
                "recipe_name": "Woodland Silk",
                "description": "Gold and silk woven as one for the Elven King Hood.",
@@ -3199,7 +3363,23 @@
                "description": "A sign with the mark of the Geomancer, to be placed on buildings.",
                "flavor": "It is a beautiful hearthbud flower!"
             },
-            "decoration_name": "Decorations"
+            "block_marble_small_recipe": {
+               "recipe_name": "Small Marble Block",
+               "description": "A neatly polished hunk of marble.",
+               "flavor": "Harvest it for marble stone or let a Mason sculpt it"
+            },
+            "block_marble_medium_recipe": {
+               "recipe_name": "Medium Marble Block",
+               "description": "Bring together some bits of marble into a medium block.",
+               "flavor": "Harvest it for marble stone or let a Mason sculpt it"
+            },
+            "block_marble_large_recipe": {
+               "recipe_name": "Huge Marble Block",
+               "description": "Merge a lot of chunks of marble into one large polished block.",
+               "flavor": "Harvest it for marble stone or let a Mason sculpt it"
+            },
+            "decoration_name": "Decorations",
+            "hearth_enhancements_name": "Hearth-Enhanced Consumables"
          },
          "geomancer_description": {
             "description": "Mastery of the Earth Magic provides the power to shape the terrain, create ores, stunning landscapes and even breathe life into rocks to raise golems that will work for the town."
@@ -3249,7 +3429,7 @@
                "flavor": "Thatch can be obtained by harvesting grass tufts, some plants like Wintermoss or digging into grassy terrain"
             },
             "stone_bed_crude_recipe": {
-               "recipe_name": "Stone Sleeping Spot",
+               "recipe_name": "Stone Bed Frame",
                "description": "You might not want to jump into this one.",
                "flavor": "The pretty frame might distract you from the discomfort of sleeping on hard stone"
             },
@@ -3285,7 +3465,7 @@
             },
             "output_box_bone_recipe": {
                "recipe_name": "Bone Finished Work Shelf",
-               "description": "Build an odd but efficient shelf for crafters to store finished products.",
+               "description": "Build an odd but efficient shelf for crafters to store items.",
                "flavor": ""
             },
             "bone_chest_recipe": {
@@ -3393,6 +3573,11 @@
                "description": "Craft a knight's sidearm with the bones of a mythical creature.",
                "flavor": ""
             },
+            "bone_material_recipe": {
+               "recipe_name": "Bone Material (x2)",
+               "description": "Split the strong bone of an ogre into two simple pieces of bone material.",
+               "flavor": ""
+            },
             "stone_sword_recipe": {
                "flavor": "Training with stone swords is a cruel but efficient joke."
             },
@@ -3451,20 +3636,25 @@
                "description": "For neatly storing up to 32 items.",
                "flavor": "Could be called a casket but that would certainly cause some confusion..."
             },
-            "output_cask_stone_small_recipe": {
-               "recipe_name": "Stone Small Production Cask",
-               "description": "Temporary storage for 32 finished products.",
+            "input_cask_stone_small_recipe": {
+               "recipe_name": "Stone Small Supply Cask",
+               "description": "Priority storage for 28 items.",
                "flavor": "Can only hold certain fluids and dry goods"
             },
-            "output_cask_stone_recipe": {
-               "recipe_name": "Stone Production Cask",
-               "description": "Temporary storage for 48 finished products.",
+            "input_cask_stone_recipe": {
+               "recipe_name": "Stone Supply Cask",
+               "description": "Priority storage for 48 items.",
                "flavor": "Can only hold certain fluids and dry goods"
             },
-            "input_keg_stone_recipe": {
+            "serving_keg_stone_recipe": {
                "description": "A small serving container for 4 simple or prepared drinks.",
                "recipe_name": "Stone Serving Keg",
                "flavor": ""
+            },				
+				"output_tun_stone_recipe": {
+					"recipe_name": "Stone Production Tun",
+               "description": "Temporary storage for 32 items, tuns are able to hold different items as long as they're in the same category.",           
+               "flavor": "Used by crafters to store recently finished products"
             },
             "tank_recipe": {
                "recipe_name": "Stone Tank",
@@ -3525,6 +3715,9 @@
                "recipe_name": "Stone Counter Door",
                "description": "Allows hearthlings to traverse between both sides of the counter.",
                "flavor": "That top part must be quite heavy..."
+            },
+            "wall_mounted_paw_recipe": {
+               "description": "Mark of the hunter, never seen or heard... Until it is too late."
             }
          },
          "mason_workbench_bone": {
@@ -4242,26 +4435,29 @@
                "flavor": ""
             },
             "rabbit_feed_recipe": {
+               "recipe_name": "Rabbit Feed (x3)",
                "description": "Selected carrots for rabbits. Improves the quality of animal produce."
             },
             "poyo_feed_recipe": {
+               "recipe_name": "Poyo Feed (x3)",
                "description": "Nicely milled food for poyos. Improves the quality of animal produce."
             },
             "sheep_feed_recipe": {
+               "recipe_name": "Sheep Feed (x3)",
                "description": "Tasty grasses for sheep. Improves the quality of animal produce."
             },
             "fodder_recipe": {
-               "recipe_name": "Animal Fodder",
+               "recipe_name": "Animal Fodder (x4)",
                "description": "Cheap and efficient for feeding animals, even if not exactly their favorite food...",
                "flavor": ""
             },
             "ostrich_feed_recipe": {
-               "recipe_name": "Ostrich Feed",
+               "recipe_name": "Ostrich Feed (x3)",
                "description": "A nutritious supplement for ostriches. Improves the quality of animal produce.",
                "flavor": ""
             },
             "moomoo_feed_recipe": {
-               "recipe_name": "Moo-Moo Feed",
+               "recipe_name": "Moo-Moo Feed (x3)",
                "description": "Tasty and hearty food appreciated by large ruminants. Improves the quality of animal produce.",
                "flavor": ""
             },
@@ -4374,6 +4570,21 @@
                "recipe_name": "Bucket of Unfermented Fruity Mead",
                "description": "Like mead, but spiced up with some flavorful fruits. Within a Carboy it can be turned into fruity mead!",
                "flavor": ""
+            },
+            "hearth_ambrosia_recipe": {
+               "recipe_name": "Hearthbud Ambrosia",
+               "description": "A divine dessert, deeply satisfying and fortifying at the same time.",
+               "flavor": "The flavors are magical. Literally"
+            },
+            "hearth_fodder_recipe": {
+               "recipe_name": "Hearthbud Animal Fodder",
+               "description": "Animal fodder imbued with the essence of the hearth.",
+               "flavor": "Hearthbud Animal Fodder is appreciated by all animals and will greatly increase the quality of their products!"
+            },
+            "spirit_hearth_recipe": {
+               "recipe_name": "Hearthbud Spirit",
+               "description": "A delicious and magical beverage. Will empower hearthlings but also make them a little tipsy.",
+               "flavor": "It's hard to tell the magical effects from the... other effects"
             }
          },
          "cook_mill_powered": {
@@ -4551,7 +4762,7 @@
                "flavor": "Thatch can be obtained by harvesting grass tufts, some plants like Silkweed or digging into grassy terrain"
             },
             "wood_bed_crude_recipe": {
-               "recipe_name": "Mean Sleeping Spot",
+               "recipe_name": "Mean Bed Frame",
                "description": "Literally sleeping on a board.",
                "flavor": "Mean as in poor, not cruel. Though it's that too."
             },
@@ -4600,20 +4811,25 @@
                "description": "Used by the Trapper to safely catch and harvest fish. It can also be used to capture fish for transport.",
                "flavor": "Place it on water edges. It can be accessed from above and will float to the surface if placed underwater"
             },
-            "output_cask_wood_recipe": {
-               "recipe_name": "Wooden Production Cask",
-               "description": "Temporary storage for 48 finished products.",
+            "input_cask_wood_recipe": {
+               "recipe_name": "Wooden Supply Cask",
+               "description": "Priority storage for 48 items.",
                "flavor": "Can only hold certain fluids and dry goods"
             },
-            "output_cask_wood_small_recipe": {
-               "recipe_name": "Wooden Small Production Cask",
-               "description": "Temporary storage for 32 finished products.",
+            "input_cask_wood_small_recipe": {
+               "recipe_name": "Wooden Small Supply Cask",
+               "description": "Priority storage for 28 items.",
                "flavor": "Can only hold certain fluids and dry goods"
             },
-            "input_keg_wood_recipe": {
+            "serving_keg_wood_recipe": {
                "description": "A small serving container for 4 simple or prepared drinks.",
                "recipe_name": "Wooden Serving Keg",
                "flavor": ""
+            },			
+				"output_tun_wood_recipe": {
+					"recipe_name": "Wooden Production Tun",
+               "description": "Temporary storage for 32 items, tuns are able to hold different items as long as they're in the same category.",           
+               "flavor": "Used by crafters to store recently finished products"
             },
             "barrel_recipe": {
                "recipe_name": "Wooden Barrel",
@@ -4674,6 +4890,9 @@
                "recipe_name": "Wooden Counter Door",
                "description": "Allows hearthlings to traverse between both sides of the counter.",
                "flavor": "Only authorized per-- oh, nevermind..."
+            },
+            "rc_bow_valor_recipe": {
+               "flavor": "A bow that demands skill of its wielder, but returns it in gales of arrows over their foes"
             }
          },
          "carpenter_description": {
@@ -4864,7 +5083,7 @@
                "description": "A somewhat sturdy shield made of bug chitin.",
                "flavor": "Maybe a bit too creepy?"
             },
-            "clothing_armor_name": "Clothing & Tools",
+            "clothing_armor_name": "Clothing & Accessories",
             "weapons_name": "Combat Equipment"
          },
          "weaver_description": {
@@ -4992,6 +5211,9 @@
             "na_description": "Can only be worn by crafters. Protects the wearer from sunstrokes.",
             "na_display_name": "Summer Crafter Bonnet",
             "rc_display_name": "Summer Crafter Fez"
+         },
+         "na_sunstroke_crafter_outfit": {
+            "description": "Can only be worn by crafters. Protects from sunstrokes."
          }
       },
       "combat": {
@@ -5017,6 +5239,9 @@
             "na_description": "A hat for workers and field workers. Protects the wearer from sunstrokes.",
             "na_display_name": "Summer Straw Work Hat",
             "rc_display_name": "Summer Work Turban"
+         },
+         "na_sunstroke_field_work_outfit": {
+            "description": "A hat for workers and field workers. Protects from sunstrokes."
          }
       }
    },
@@ -5101,6 +5326,20 @@
                "display_name": "Captive Bees",
                "description": "Can be used to create a new bee colony. Won't last forever!"
             }
+         },
+         "healing_tonic": {
+            "hearth_healing_tonic": {
+               "display_name": "Hearthbud Healing Tonic",
+               "description": "The power of the Hearth used by the herbalist to heal wounds"
+            }
+         },
+         "fertilizer_hearth": {
+            "display_name": "Hearthbud Fertilizer",
+            "description": "A skilled farmer will use it to increase both the quality and the odds of megacrops."
+         },
+         "hearth_tonic": {
+            "display_name": "Hearthbud Light Tonic",
+            "description": "Temporarily boosts muscle, courage and menace. Slowly heals over time."
          }
       },
       "construction": {
@@ -6539,19 +6778,19 @@
          },
          "clay_bed_crude": {
             "clay_bed_crude_ghost": {
-               "display_name": "Clay Sleeping Spot",
+               "display_name": "Clay Bed Frame",
                "description": "A proper place to pass out when exhausted."
             }
          },
          "stone_bed_crude": {
             "stone_bed_crude_ghost": {
-               "display_name": "Stone Sleeping Spot",
+               "display_name": "Stone Bed Frame",
                "description": "Mind your head on this one."
             }
          },
          "wood_bed_crude": {
             "wood_bed_crude_ghost": {
-               "display_name": "Wooden Sleeping Spot",
+               "display_name": "Wooden Bed Frame",
                "description": "That one is really mean."
             }
          },
@@ -7229,6 +7468,11 @@
          "wooden_sign_geomancer": {
             "display_name": "Geomancer's Sign",
             "description": "A sign with the mark of the Geomancer"
+         },
+         "wall_mounted_paw": {
+            "wall_mounted_paw_ghost": {
+               "description": "Mark of the hunter, never seen or heard... Until it is too late."
+            }
          }
       },
       "pets": {
@@ -7402,7 +7646,7 @@
          },
          "beehive": {
             "display_name": "Bee Nest",
-            "description": "Careful, it is still active! An herbalist can harvest it for its resources and bees..."
+            "description": "Careful, it is still active! Honey can be harvested but the bees will be lost."
          },
          "beehive_dead": {
             "display_name": "Dead Bee Nest",
@@ -8149,6 +8393,26 @@
             "glazed_veggies_serving": {
                "display_name": "Serving of Glazed Veggies"
             }
+         },
+         "hearth_fodder": {
+            "hearth_fodder": {
+               "display_name": "Hearthbud Animal Fodder",
+               "description": "Animal fodder imbued with the essence of the hearth."
+            },
+            "hearth_fodder_ground": {
+               "display_name": "Hearthbud Animal Fodder",
+               "description": "Delicious, attractive and will greatly increase the quality of animal products!"
+            }
+         },
+         "hearth_ambrosia": {
+            "hearth_ambrosia": {
+               "display_name": "Hearthbud Ambrosia",
+               "description": "A divine dessert, deeply satisfying and fortifying at the same time."
+            },
+            "hearth_ambrosia_serving": {
+               "display_name": "Serving of Hearthbud Ambrosia",
+               "description": "Full of magical flavors!"
+            }
          }
       },
       "terrain": {
@@ -8263,7 +8527,7 @@
          "winter_morel": {
             "winter_morel_ghost": {
                "display_name": "Winter Morels",
-               "description": "A very sought of northern fungi that tastes great!"
+               "description": "A very sought after northern fungi that tastes great!"
             },
             "colony": {
                "winter_morel_colony": {
@@ -8401,6 +8665,22 @@
             "goblin_barricade": {
                "display_name": "Primitive Barricade",
                "description": "Very rustic... and pointy!"
+            }
+         },
+         "undead": {
+            "mummy": {
+               "display_name": "[str(self.stonehearth:unit_info.custom_name)]",
+               "description": "Long was their slumber, huge is their hunger..."
+            },
+            "zombie": {
+               "goblin": {
+                  "display_name": "[str(self.stonehearth:unit_info.custom_name)]",
+                  "description": "Not after shiny things anymore..."
+               }
+            },
+            "ogre": {
+               "display_name": "[str(self.stonehearth:unit_info.custom_name)]",
+               "description": "That's a big skeleton."
             }
          }
       },
@@ -8717,7 +8997,8 @@
             "description": "A legendary tome for the followers of the Church of Plenty."
          },
          "rc_legendary_bow": {
-            "display_name": "Zephyr Bow"
+            "display_name": "Zephyr Bow",
+            "description": "The swiftest bow in the desert"
          },
          "rc_legendary_sword": {
             "display_name": "Desert Fang"
@@ -8950,6 +9231,11 @@
          "goblin_pick": {
             "display_name": "Crude Pick",
             "description": "Excellent for breaking doors!"
+         },
+         "maul_lantern": {
+            "maul_lantern_iconic": {
+               "description": "Wield the Holy Light of Hestia in defense of your town."
+            }
          }
       },
       "gizmos": {
@@ -9040,6 +9326,11 @@
             "frost_trap_ghost": {
                "display_name": "Frost Trap",
                "description": "Use it when your enemies need to chill a bit!"
+            }
+         },
+         "titan_slayer": {
+            "titan_slayer_monument": {
+               "description": "A memorial to an alliance against the darkness. It radiates well-being."
             }
          }
       },
@@ -9418,41 +9709,41 @@
             "display_name": "Bone Kibble Bowl",
             "description": "Hearthlings can put kibble in this creepy bowl for their pets to eat."
          },
-         "input_keg_wood": {
+         "serving_keg_wood": {
             "description": "A small serving container for 4 simple or prepared drinks.",
             "display_name": "Wooden Serving Keg"
          },
-         "input_keg_clay": {
+         "serving_keg_clay": {
             "description": "A small serving container for 4 simple or prepared drinks.",
             "display_name": "Clay Serving Keg"
          },
-         "input_keg_stone": {
+         "serving_keg_stone": {
             "description": "A small serving container for 4 simple or prepared drinks.",
             "display_name": "Stone Serving Keg"
          },
-         "output_cask_wood": {
-            "display_name": "Wooden Production Cask",
-            "description": "Temporary storage for 48 finished products."
+         "input_cask_wood": {
+            "display_name": "Wooden Supply Cask",
+            "description": "Priority storage for 48 items."
          },
-         "output_cask_clay": {
-            "display_name": "Clay Production Cask",
-            "description": "Temporary storage for 48 finished products."
+         "input_cask_clay": {
+            "display_name": "Clay Supply Cask",
+            "description": "Priority storage for 48 items."
          },
-         "output_cask_stone": {
-            "display_name": "Stone Production Cask",
-            "description": "Temporary storage for 48 finished products."
+         "input_cask_stone": {
+            "display_name": "Stone Supply Cask",
+            "description": "Priority storage for 48 items."
          },
-         "output_cask_wood_small": {
-            "display_name": "Wooden Small Production Cask",
-            "description": "Temporary storage for 32 finished products."
+         "input_cask_wood_small": {
+            "display_name": "Wooden Small Supply Cask",
+            "description": "Priority storage for 28 items."
          },
-         "output_cask_clay_small": {
-            "display_name": "Clay Small Production Cask",
-            "description": "Temporary storage for 32 finished products."
+         "input_cask_clay_small": {
+            "display_name": "Clay Small Supply Cask",
+            "description": "Priority storage for 28 items."
          },
-         "output_cask_stone_small": {
-            "display_name": "Stone Small Production Cask",
-            "description": "Temporary storage for 32 finished products."
+         "input_cask_stone_small": {
+            "display_name": "Stone Small Supply Cask",
+            "description": "Priority storage for 28 items."
          },
          "barrel": {
             "display_name": "Wooden Barrel",
@@ -9497,6 +9788,18 @@
          "tall_urn": {
             "display_name": "Tall Urn",
             "description": "Stores up to 64 items"
+         },
+         "output_tun_wood": {
+            "display_name": "Wooden Production Tun",
+            "description": "Temporary storage for 32 items. Can hold different items from the same category."
+         },
+         "output_tun_stone": {
+            "description": "Temporary storage for 32 items. Can hold different items from the same category.",
+            "display_name": "Stone Production Tun"
+         },
+         "output_tun_clay": {
+            "description": "Temporary storage for 32 items. Can hold different items from the same category.",
+            "display_name": "Clay Production Tun"
          }
       },
       "tools": {
@@ -9844,6 +10147,16 @@
                "display_name": "Horn of Fruity Mead",
                "description": "Sweet and flavorful!"
             }
+         },
+         "spirit_hearth": {
+            "spirit_hearth": {
+               "display_name": "Hearthbud Spirit",
+               "description": "A delicious and magical beverage. Empowering but strong."
+            },
+            "spirit_hearth_serving": {
+               "display_name": "Cup of Hearthbud Spirit",
+               "description": ""
+            }
          }
       },
       "npc": {
@@ -9907,6 +10220,9 @@
          },
          "rabbit_biped": {
             "species": "Rabbit Biped"
+         },
+         "mummy": {
+            "species": "mummy"
          }
       },
       "unfermented_mead": {
@@ -10424,7 +10740,9 @@
                   "tooltip_potions": "Potions & Tonics",
                   "fuels": "Fuels",
                   "tooltip_cooking": "Cooking",
-                  "tooltip_brewing": "Brewing"
+                  "tooltip_brewing": "Brewing",
+                  "fertilizers": "Fertilizers",
+                  "tooltip_production": "Production"
                }
             },
             "pasture": {
@@ -10586,7 +10904,8 @@
          "build_mode2": {
             "tooltips": {
                "clay_resource": "Raw Clay",
-               "clay_bricks_resource": "Clay Bricks"
+               "clay_bricks_resource": "Clay Bricks",
+               "thatch_resource": "Thatching"
             }
          },
          "fence_mode": {
@@ -10762,7 +11081,7 @@
          "constants": {
             "edible_nuts_resource_name": "Any Edible Nut",
             "fruits_resource_name": "Any Fruit",
-            "thatch_resource_name": "Thatching",
+            "thatch_resource_name": "Any Thatch",
             "bone_resource_name": "Bone",
             "fungi_resource_name": "Any Undeployed Fungi",
             "chitin_resource_name": "Any Chitin",
@@ -10815,7 +11134,8 @@
             "prepared_food_fish_resource_name": "Food with Fish",
             "prepared_food_desserts_resource_name": "Prepared Desserts",
             "prepared_food_warming_resource_name": "Warming Food",
-            "prepared_food_refreshing_resource_name": "Refreshing Food"
+            "prepared_food_refreshing_resource_name": "Refreshing Food",
+            "any_fertilizer_resource_name": "Any Fertilizer"
          }
       }
    },

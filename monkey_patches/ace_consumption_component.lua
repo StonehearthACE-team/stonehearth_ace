@@ -51,7 +51,7 @@ function AceConsumptionComponent:post_activate()
    end
 end
 
-AceConsumptionComponent._ace_old_destroy = ConsumptionComponent.destroy
+AceConsumptionComponent._ace_old_destroy = ConsumptionComponent.__user_destroy
 function AceConsumptionComponent:destroy()
 	self:_ace_old_destroy()
 

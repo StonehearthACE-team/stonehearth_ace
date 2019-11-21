@@ -1,0 +1,123 @@
+{
+   "encounter_type": "create_mission",
+   "rarity": "common",
+   "out_edge": "wait_to_destroy_raiding_party",
+   "can_start": {
+      "test_1": {
+         "time_of_day_check": {
+            "item": "time_of_day",
+            "type": "deny_if_between",
+            "value": {
+               "min": 1,
+               "max": 21
+            }
+         },
+         "kingdom_check": {
+            "type": "deny_if_not",
+            "item": "kingdom",
+            "value": "rayyas_children:kingdoms:rayyas_children"
+         }
+      },
+      "test_2": {
+         "time_of_day_check": {
+            "item": "time_of_day",
+            "type": "deny_if_between",
+            "value": {
+               "min": 1,
+               "max": 21
+            }
+         },
+         "biome_check": {
+            "type": "deny_if_not",
+            "item": "biome",
+            "value": "stonehearth:biome:desert"
+         }
+      }
+   },
+   "create_mission_info": {
+      "spawn_range": {
+         "min": 50,
+         "max": 120
+      },
+      "on_searcher_failure": {
+         "destroy_tree": {
+            "root": "generate_random_raiding_party",
+            "destroy_root": false
+         }
+      },
+      "mission": {
+         "npc_player_id": "undead",
+         "role": "pillage",
+         "offset": { "x": 0, "y": 0, "z": 0 },
+         "pillage_radius": {
+            "min": 0,
+            "max": 50
+         },
+         "sighted_bulletin": {
+            "title": "i18n(stonehearth:data.gm.campaigns.ambient_threats.random_raid.mission.sighted_bulletin.title)"
+         },
+         "members": {
+            "easy_mummies": {
+               "from_population": {
+                  "role": "mummy",
+                  "location": { "x": 0, "z": 0 },
+                  "range": 10,
+                  "min": 0,
+                  "max": 0
+               },
+               "tuning": "stonehearth_ace:monster_tuning:undead:easy_mummy"
+            },
+            "medium_mummies": {
+               "from_population": {
+                  "role": "mummy",
+                  "location": { "x": 0, "z": 0 },
+                  "range": 10,
+                  "min": 0,
+                  "max": 0
+               },
+               "tuning": "stonehearth_ace:monster_tuning:undead:medium_mummy"
+            },
+            "insane_mummies": {
+               "from_population": {
+                  "role": "mummy",
+                  "location": { "x": 0, "z": 0 },
+                  "range": 10,
+                  "min": 0,
+                  "max": 0
+               },
+               "tuning": "stonehearth_ace:monster_tuning:undead:insane_mummy"
+            },
+            "epic_mummies": {
+               "from_population": {
+                  "role": "mummy",
+                  "location": { "x": 0, "z": 0 },
+                  "range": 10,
+                  "min": 0,
+                  "max": 0
+               },
+               "tuning": "stonehearth_ace:monster_tuning:undead:epic_mummy"
+            },
+            "necromancers": {
+               "from_population": {
+                  "role": "necromancer",
+                  "location": { "x": 0, "z": 0 },
+                  "range": 10,
+                  "min": 0,
+                  "max": 0
+               },
+               "tuning": "stonehearth:monster_tuning:undead:necromancer"
+            },
+            "epic_necromancers": {
+               "from_population": {
+                  "role": "necromancer",
+                  "location": { "x": 0, "z": 0 },
+                  "range": 10,
+                  "min": 0,
+                  "max": 0
+               },
+               "tuning": "stonehearth_ace:monster_tuning:undead:epic_necromancer"
+            }
+         }
+      }
+   }
+}

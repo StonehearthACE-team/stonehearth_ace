@@ -56,7 +56,64 @@
 					"returning_collector_encounter": {
 						"title": "i18n(stonehearth_ace:data.gm.campaigns.trader.returning_collector_encounter.title)"
 					}
-				}
+				},
+            "amberstone": {
+               "arcs": {
+                  "trigger": {
+                     "discovery": {
+                        "encounters": {
+                           "30_geomancy": {
+                              "30_geomancy_outro": {
+                                 "donation_dialog_info": {
+                                    "dialog_nodes": {
+                                       "simple_message": {
+                                          "bulletin_message": {
+                                             "00": "i18n(stonehearth_ace:data.gm.campaigns.amberstone.arcs.trigger.discovery.encounters.30_geomancy.30_geomancy_outro.donation_dialog_info.dialog_nodes.simple_message.bulletin_message.00)"
+                                          }
+                                       }
+                                    }
+                                 }
+                              }
+                           },
+                           "50_titan": {
+                              "57_bun_geomancer_starter_kit": {
+                                 "donation_dialog_info": {
+                                    "dialog_nodes": {
+                                       "simple_message": {
+                                          "bulletin_message": {
+                                             "00": "i18n(stonehearth_ace:data.gm.campaigns.amberstone.arcs.trigger.discovery.encounters.50_titan.57_bun_geomancer_starter_kit.donation_dialog_info.dialog_nodes.simple_message.bulletin_message.00)"
+                                          }
+                                       }
+                                    }
+                                 }
+                              }
+                           }
+                        }
+                     }
+                  }
+               }
+            },
+				"dragonborn_king": {
+               "arcs": {
+                  "trigger": {
+                     "dragonborn_king": {
+                        "encounters": {
+                           "dialog_thank_player_for_help": {
+                              "dialog_tree_info": {
+                                 "dialog_nodes": {
+                                    "hatch_and_attach": {
+                                       "bulletin_message": {
+                                          "000": "i18n(stonehearth_ace:data.gm.campaigns.dragonborn_king.arcs.trigger.dragonborn_king.encounters.dialog_thank_player_for_help.dialog_tree_info.dialog_nodes.hatch_and_attach.bulletin_message.000)"
+                                       }
+                                    }
+                                 }
+                              }
+                           }
+                        }
+                     }
+                  }
+               }
+            }
 			}
 		}
 	},

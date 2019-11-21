@@ -5,6 +5,9 @@
       },
       "stonehearth:shepherd_pasture": {
          "pasture_data": {
+				"mixintypes": {
+					"stonehearth:rabbit": "remove"
+				},
             "stonehearth_ace:ostrich": {
                "name": "i18n(stonehearth_ace:ui.game.zones_mode.pasture.ostrich_pasture_name)",
                "description": "i18n(stonehearth_ace:ui.game.zones_mode.pasture.ostrich_pasture_description)",
@@ -19,7 +22,7 @@
                "level_requirement": 5,
                "ordinal": 5
             },
-			"stonehearth_ace:moomoo": {
+				"stonehearth_ace:moomoo": {
                "name": "i18n(stonehearth_ace:ui.game.zones_mode.pasture.moomoo_pasture_name)",
                "description": "i18n(stonehearth_ace:ui.game.zones_mode.pasture.moomoo_pasture_description)",
                "icon": "/stonehearth_ace/entities/critters/moomoo/moomoo.png",
@@ -33,7 +36,12 @@
                "level_requirement": 4,              
                "ordinal": 4
             },
-            "stonehearth:rabbit": {
+            "stonehearth_ace:rabbit:pasture": {
+					"name": "i18n(stonehearth:ui.game.zones_mode.pasture.rabbit_pasture_name)",
+               "icon": "/stonehearth/entities/critters/rabbit/rabbit.png",
+               "min_population": 2,
+               "max_num_per_10_square_unit": 1,
+               "feed_uri": "stonehearth:food:rabbit_feed",					
                "description": "i18n(stonehearth_ace:ui.game.zones_mode.pasture.rabbit_pasture_description)",
                "reproduction_uri": "stonehearth_ace:rabbit:young",
                "base_reproduction_period": "24h",

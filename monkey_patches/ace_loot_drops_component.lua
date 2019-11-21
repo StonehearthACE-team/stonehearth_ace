@@ -18,7 +18,7 @@ function AceLootDropsComponent:_on_kill_event(kill_data)
          local auto_loot, force_auto_loot
          if self._sv.auto_loot_player_id then
             auto_loot = stonehearth.client_state:get_client_gameplay_setting(self._sv.auto_loot_player_id, 'stonehearth', 'auto_loot', false)
-            force_auto_loot = loot_table.force_auto_loot or self._entity:get_player_id() == self._sv.auto_loot_player_id
+				force_auto_loot = loot_table.force_auto_loot or self._entity:get_player_id() == self._sv.auto_loot_player_id
          end
          local town = stonehearth.town:get_town(self._sv.auto_loot_player_id)
 

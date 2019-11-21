@@ -82,7 +82,7 @@ function AceDoorComponent:activate(entity, json)
    self:_ace_old_activate(entity, json)
 end
 
-AceDoorComponent._ace_old_destroy = DoorComponent.destroy
+AceDoorComponent._ace_old_destroy = DoorComponent.__user_destroy
 function AceDoorComponent:destroy()
    self:_destroy_shepherded_animal_listeners()
    self:_ace_old_destroy()

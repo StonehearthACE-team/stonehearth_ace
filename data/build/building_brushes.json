@@ -1,0 +1,162 @@
+{
+   "type": "index",
+   "always_available": {
+      "thatch resource": {
+         "colors": {
+            "#A59465": {
+               "display_name": "i18n(stonehearth:data.build.building_brushes.colors.#A59465)",
+               "ordinal": 1
+            },
+            "#958455": {
+               "display_name": "i18n(stonehearth:data.build.building_brushes.colors.#958455)",
+               "ordinal": 2
+            },
+            "#86764A": {
+               "display_name": "i18n(stonehearth:data.build.building_brushes.colors.#86764A)",
+               "ordinal": 3
+            },
+            "#927923": {
+               "display_name": "i18n(stonehearth:data.build.building_brushes.colors.#927923)",
+               "ordinal": 4
+            },
+            "#806B27": {
+               "display_name": "i18n(stonehearth:data.build.building_brushes.colors.#806B27)",
+               "ordinal": 5
+            },
+            "#786322": {
+               "display_name": "i18n(stonehearth:data.build.building_brushes.colors.#786322)",
+               "ordinal": 6
+            },
+            "#6E5B21": {
+               "display_name": "i18n(stonehearth:data.build.building_brushes.colors.#6E5B21)",
+               "ordinal": 7
+            },
+            "#626139": {
+               "display_name": "i18n(stonehearth_ace:data.build.building_brushes.colors.#626139)",
+               "ordinal": 8
+            },
+            "#54533A": {
+               "display_name": "i18n(stonehearth_ace:data.build.building_brushes.colors.#54533A)",
+               "ordinal": 9
+            },
+            "#4E4C33": {
+               "display_name": "i18n(stonehearth_ace:data.build.building_brushes.colors.#4E4C33)",
+               "ordinal": 10
+            },
+            "#464530": {
+               "display_name": "i18n(stonehearth_ace:data.build.building_brushes.colors.#464530)",
+               "ordinal": 11
+            }
+         }
+      },
+      "wood resource": {
+         "colors": {
+            "mixintypes": {
+               "#A59465": "remove",
+               "#958455": "remove",
+               "#86764A": "remove",
+               "#927923": "remove",
+               "#786322": "remove",
+               "#6E5B21": "remove",
+               "#806B27": "remove"
+            }
+         }
+      }
+   },
+   "voxel": {
+      "thatch resource": {
+         "colors": {}
+      }
+   },
+   "pattern": {
+      "thatch resource": {
+         "patterns": {
+            "stonehearth:build:brushes:pattern:wood_dark_diagonal": {
+               "icon": "/stonehearth/ui/game/modes/build_mode/building_designer_2/images/brushes/wood_diagonal_dark.png",
+               "display_name": "i18n(stonehearth:data.build.building_brushes.patterns.wood_dark_diagonal)"
+            },
+            "stonehearth_ace:build:brushes:pattern:thatch_messy": {
+               "icon": "/stonehearth_ace/ui/game/modes/build_mode/building_designer_2/images/brushes/thatch_messy.png",
+               "display_name": "i18n(stonehearth_ace:data.build.building_brushes.patterns.thatch_messy)"
+            }
+         }
+      },
+      "wood resource": {
+         "patterns": {
+            "mixintypes": {
+               "stonehearth:build:brushes:pattern:wood_dark_diagonal": "remove"
+            },
+            "stonehearth_ace:build:brushes:pattern:wood_dark_squares": {
+               "icon": "/stonehearth_ace/ui/game/modes/build_mode/building_designer_2/images/brushes/wood_dark_squares.png",
+               "display_name": "i18n(stonehearth_ace:data.build.building_brushes.patterns.wood_dark_squares)"
+            },
+            "stonehearth_ace:build:brushes:pattern:wood_dark_boards": {
+               "icon": "/stonehearth_ace/ui/game/modes/build_mode/building_designer_2/images/brushes/wood_dark_boards.png",
+               "display_name": "i18n(stonehearth_ace:data.build.building_brushes.patterns.wood_dark_boards)"
+            },
+            "stonehearth_ace:build:brushes:pattern:wood_light_boards": {
+               "icon": "/stonehearth_ace/ui/game/modes/build_mode/building_designer_2/images/brushes/wood_light_boards.png",
+               "display_name": "i18n(stonehearth_ace:data.build.building_brushes.patterns.wood_light_boards)"
+            }
+         }
+      },
+      "clay_brick resource": {
+         "patterns": {
+            "stonehearth_ace:build:brushes:pattern:clay_grey_pattern": {
+               "icon": "/stonehearth_ace/ui/game/modes/build_mode/building_designer_2/images/brushes/clay_grey_pattern.png",
+               "display_name": "i18n(stonehearth_ace:data.build.building_brushes.patterns.clay_grey_pattern)"
+            },
+            "stonehearth_ace:build:brushes:pattern:clay_red_pattern": {
+               "icon": "/stonehearth_ace/ui/game/modes/build_mode/building_designer_2/images/brushes/clay_red_pattern.png",
+               "display_name": "i18n(stonehearth_ace:data.build.building_brushes.patterns.clay_red_pattern)"
+            },
+            "stonehearth_ace:build:brushes:pattern:clay_gold_pattern": {
+               "icon": "/stonehearth_ace/ui/game/modes/build_mode/building_designer_2/images/brushes/clay_gold_pattern.png",
+               "display_name": "i18n(stonehearth_ace:data.build.building_brushes.patterns.clay_gold_pattern)"
+            },
+            "stonehearth_ace:build:brushes:pattern:clay_sage_pattern": {
+               "icon": "/stonehearth_ace/ui/game/modes/build_mode/building_designer_2/images/brushes/clay_sage_pattern.png",
+               "display_name": "i18n(stonehearth_ace:data.build.building_brushes.patterns.clay_sage_pattern)"
+            },
+            "stonehearth_ace:build:brushes:pattern:clay_oasis_pattern": {
+               "icon": "/stonehearth_ace/ui/game/modes/build_mode/building_designer_2/images/brushes/clay_oasis_pattern.png",
+               "display_name": "i18n(stonehearth_ace:data.build.building_brushes.patterns.clay_oasis_pattern)"
+            }
+         }
+      }
+   },
+   "roof": {
+      "thatch resource": {
+         "patterns": {
+            "stonehearth:build:brushes:roof:thatch_peaked_roof": {
+               "icon": "/stonehearth/ui/game/modes/build_mode/building_designer_2/images/brushes/thatch_peaked_roof.png",
+               "display_name": "i18n(stonehearth_ace:data.build.building_brushes.patterns.thatch_peaked_roof)",
+               "type": "peaked"
+            },
+            "stonehearth_ace:build:brushes:roof:thatch_light_peaked_roof": {
+               "icon": "/stonehearth_ace/ui/game/modes/build_mode/building_designer_2/images/brushes/thatch_light_peaked_roof.png",
+               "display_name": "i18n(stonehearth_ace:data.build.building_brushes.patterns.thatch_light_peaked_roof)",
+               "type": "peaked"
+            },
+            "stonehearth_ace:build:brushes:roof:dry_turf_peaked_roof": {
+               "icon": "/stonehearth_ace/ui/game/modes/build_mode/building_designer_2/images/brushes/dry_turf_peaked_roof.png",
+               "display_name": "i18n(stonehearth_ace:data.build.building_brushes.patterns.dry_turf_peaked_roof)",
+               "type": "peaked"
+            }
+         }
+      },
+      "wood resource": {
+         "patterns": {
+            "mixintypes": {
+               "stonehearth:build:brushes:roof:thatch_peaked_roof": "remove"
+            }
+         }
+      }
+   },
+   "column": {
+      "thatch resource": {
+         "colors": {},
+         "default_color": "#86764A"
+      }
+   }
+}

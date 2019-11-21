@@ -50,10 +50,14 @@ function AceCollectIngredients:run(town, args)
             local rating = radiant.entities.get_item_quality(item) / 3
             --return rating
 
-            if radiant.entities.is_material(item, 'preferred_ingredient') then
+				if radiant.entities.is_material(item, 'preferred_ingredient') then
                return rating
             end
-
+				
+				if radiant.entities.is_material(item, 'undesirable_ingredient') then
+               rating = rating * 0.9
+            end
+				
             local p1 = entity_location or radiant.entities.get_world_grid_location(entity)
             local p2 = storage_location or radiant.entities.get_world_grid_location(item)
 
@@ -74,8 +78,12 @@ function AceCollectIngredients:run(town, args)
             local rating = 1 / radiant.entities.get_item_quality(item)
             --return rating
 
-            if radiant.entities.is_material(item, 'preferred_ingredient') then
+				if radiant.entities.is_material(item, 'preferred_ingredient') then
                return rating
+            end
+				
+				if radiant.entities.is_material(item, 'undesirable_ingredient') then
+               rating = rating * 0.9
             end
 
             local p1 = entity_location or radiant.entities.get_world_grid_location(entity)
@@ -96,8 +104,13 @@ function AceCollectIngredients:run(town, args)
       end
 
       local distance_rating_fn = function(item, entity, entity_location, storage_location)
-         if radiant.entities.is_material(item, 'preferred_ingredient') then
+
+			if radiant.entities.is_material(item, 'preferred_ingredient') then
             return 1
+         end
+			
+			if radiant.entities.is_material(item, 'undesirable_ingredient') then
+            return 0.9
          end
 
          -- anything within the close distance is considered "best"; doesn't matter if it goes negative
@@ -180,6 +193,22 @@ function AceCollectIngredients:run(town, args)
 
    --Note: if we are loading, and past this stage, then we just return true.
    return true
+end
+
+function AceCollectIngredients:_on_aborted_looking_for_ingredients(event_args)
+   -- Register that this order is stuck, so that we don't reconsider it until we reach the end of the list
+   self._craft_order_list:register_stuck_order(self._order:get_id())
+
+   -- Show a notification to the player if needed
+   local recipe = self._order:get_recipe()
+   radiant.events.trigger(self._craft_order_list, 'stonehearth:cant_reach_ingredients',
+                            {
+                               ingredient = event_args.ingredient,
+                               recipe_name = recipe.display_name or recipe.recipe_key
+                            })
+
+   -- Destroy the current collecting task so that the craft items orchestrator knows that something went wrong
+   self:destroy()
 end
 
 return AceCollectIngredients

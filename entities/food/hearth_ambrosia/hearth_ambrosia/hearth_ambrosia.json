@@ -1,0 +1,60 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(hearth_ambrosia.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 }
+      },
+      "stonehearth:stacks": {
+         "max_stacks": 6
+      },
+      "effect_list": {
+         "default": "stonehearth_ace:effects:hearth_sparkle_effect"
+      }
+   },
+   "entity_data": {
+      "stonehearth:food_container": {
+         "effect": "fiddle",
+         "food": "stonehearth_ace:food:hearth_ambrosia:hearth_ambrosia_serving",
+         "stacks_per_serving": 1
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 38,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.hearth_ambrosia.hearth_ambrosia.display_name)",
+         "description": "i18n(stonehearth_ace:entities.food.hearth_ambrosia.hearth_ambrosia.description)",
+         "icon": "file(hearth_ambrosia.png)",
+         "is_item": true,
+         "category": "food",
+         "material_tags": [
+            "food_container",
+            "prepared_dessert",
+            "prepared_food",
+            "hearth_ambrosia",
+            "refined",
+            "stockpile_prepared_food",
+            "vegetarian",
+            "breakfast_time"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": 25
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

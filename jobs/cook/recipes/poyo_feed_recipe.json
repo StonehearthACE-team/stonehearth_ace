@@ -1,5 +1,6 @@
 {
-   "effort": 5,
+   "effort": 14,
+	"recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.poyo_feed_recipe.recipe_name)",
    "description": "i18n(stonehearth_ace:jobs.cook.recipes.poyo_feed_recipe.description)",
    "level_requirement": 4,
    "mixintypes": {
@@ -9,6 +10,14 @@
       {
          "uri": "stonehearth:food:corn:corn_basket",
          "count": 2
+      }
+   ],
+	"produces": [
+      {
+         "item": "stonehearth:food:poyo_feed"
+      },
+		{
+         "item": "stonehearth:food:poyo_feed"
       }
    ]
 }

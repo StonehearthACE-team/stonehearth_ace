@@ -1,0 +1,97 @@
+{
+   "name": "hearth sparkle",
+   "duration": 2000,
+   "material": "materials/cubemitter_bloom.material.json",
+   "loops": true,
+   "emission": {
+      "rate": {
+         "kind": "RANDOM_BETWEEN",
+         "values": [-0.5, 1]
+      },
+      "angle": {
+         "kind": "CONSTANT",
+         "values": [0]
+      },
+      "origin": {
+         "surface": "RECTANGLE",
+         "values": [0.6, 0.6, 0, 0]
+      }
+   },
+   "particle": {
+      "lifetime": {
+         "start": {
+            "kind": "RANDOM_BETWEEN",
+            "values": [1000, 2000]
+         }
+      },
+      "speed": {
+         "start": {
+            "kind": "CONSTANT",
+            "values": [0]
+         },
+         "_start": {
+            "kind": "RANDOM_BETWEEN",
+            "values": [0.25, 2]
+         }
+      },
+      "velocity": {},
+      "rotation": {
+         "over_lifetime_x": {
+            "kind": "CURVE",
+            "values": [
+               [0, 0],
+               [1, 360]
+            ]
+         },
+         "over_lifetime_y": {
+            "kind": "CURVE",
+            "values": [
+               [0, 0],
+               [1, 360]
+            ]
+         },
+         "over_lifetime_z": {
+            "kind": "CURVE",
+            "values": [
+               [0, 0],
+               [1, 360]
+            ]
+         }
+      },
+      "scale": {
+         "start": {
+            "kind": "CONSTANT",
+            "values": [0.16]
+         },
+         "over_lifetime": {
+            "kind": "CURVE",
+            "values": [
+               [0, 0],
+               [0.3, 0.2],
+               [0.4, 0.6],
+               [0.44, 1],
+               [0.48, 0.6],
+               [0.5, 0.2],
+               [0.6, 0]
+            ]
+         }
+      },
+      "color": {
+         "start": {
+            "kind": "RANDOM_BETWEEN",
+            "values": [
+               [0.921, 0.758, 0.257, 1],
+               [0.944, 0.859, 0.374, 1]
+            ]
+         },
+         "over_lifetime_a": {
+            "kind": "CURVE",
+            "values": [
+               [0, 0],
+               [0.44, 1],
+               [1, 0]
+            ]
+         }
+      }
+   }
+}

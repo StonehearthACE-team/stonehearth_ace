@@ -1,0 +1,18 @@
+{
+   "type": "encounter",
+   "encounter_type": "generator",
+   "in_edge": "spawn_next_event",
+   "generator_info": {
+      "delay": "3d+3d",
+      "spawn_edge": {
+         "type": "trigger_one",
+         "out_edges": [
+            {
+               "out_edge": "event_start",
+               "type": "weighted_edge",
+               "weight": 1
+            }
+         ]
+      }
+   }
+}

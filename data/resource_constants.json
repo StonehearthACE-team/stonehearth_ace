@@ -1,6 +1,16 @@
 {
    "type": "index",
    "resources": {
+      "thatch resource": {
+         "name": "i18n(stonehearth_ace:ui.data.constants.thatch_resource_name)",
+         "icon": "/stonehearth_ace/entities/resources/thatch_bale/thatch_resource.png",
+         "stacks": 90,
+         "default_resource": "stonehearth_ace:resources:thatch_bale",
+         "builder_icon": "/stonehearth_ace/entities/resources/thatch_bale/builder_thatch.png",
+         "builder_icon_hover": "/stonehearth_ace/entities/resources/thatch_bale/builder_thatch_hover.png",
+         "builder_sound_uri": "stonehearth_ace:sounds:building_wall_thatch",
+         "tooltip": "i18n(stonehearth_ace:ui.game.build_mode2.tooltips.thatch_resource)"
+      },
       "wood resource": {
          "icon": "/stonehearth_ace/entities/resources/wood/wood_icon.png"
       },
@@ -103,11 +113,6 @@
          "name": "i18n(stonehearth_ace:ui.data.constants.fruits_resource_name)",
          "icon": "/stonehearth/entities/resources/seed_fruit/seed_fruit.png",
          "default_resource": "stonehearth:food:berries:berry_basket"
-      },
-      "thatch resource": {
-         "name": "i18n(stonehearth_ace:ui.data.constants.thatch_resource_name)",
-         "icon": "/stonehearth_ace/entities/resources/thatch_bale/thatch_resource.png",
-         "default_resource": "stonehearth_ace:resources:thatch_bale"
       },
       "bone resource": {
          "name": "i18n(stonehearth_ace:ui.data.constants.bone_resource_name)",

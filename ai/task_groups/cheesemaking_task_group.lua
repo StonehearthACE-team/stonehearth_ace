@@ -1,7 +1,7 @@
 local CheesemakingTaskGroup = class()
 CheesemakingTaskGroup.name = 'cheesemaking'
 CheesemakingTaskGroup.does = 'stonehearth:work'
-CheesemakingTaskGroup.priority = 0.15
+CheesemakingTaskGroup.priority = 0.83
 
 return stonehearth.ai:create_task_group(CheesemakingTaskGroup)
          :work_order_tag("job")

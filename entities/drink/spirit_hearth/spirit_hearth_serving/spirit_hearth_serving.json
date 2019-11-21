@@ -1,0 +1,48 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(spirit_hearth_serving.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:item": {
+         "category": "drink",
+         "destroy_on_uncarry": true
+      },
+      "stonehearth_ace:drink": {
+         "stonehearth:sitting_on_chair": {
+            "satisfaction": 100,
+            "food_satisfaction": 10
+         },
+         "default": {
+            "satisfaction": 85,
+            "food_satisfaction": 5
+         },
+         "applied_buffs": [
+            "stonehearth_ace:buffs:consumption:merry_time",
+            "stonehearth_ace:buffs:consumption:harmony_transcendental",
+            "stonehearth_ace:buffs:consumption:light_headed",
+            "stonehearth_ace:buffs:consumption:light_headed"
+         ],
+         "quality": 6,
+         "effect_loops": 1
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.drink.spirit_hearth.spirit_hearth_serving.display_name)",
+         "description": "i18n(stonehearth_ace:entities.drink.spirit_hearth.spirit_hearth_serving.description)",
+         "material_tags": [
+            "drink",
+            "spirit_hearth_serving",
+            "alcoholic",
+            "night_time"
+         ],
+         "subject_override": "stonehearth_ace:drink:spirit_hearth"
+      }
+   }
+}

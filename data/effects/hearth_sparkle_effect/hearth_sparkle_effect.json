@@ -1,0 +1,32 @@
+{
+   "type": "effect",
+   "tracks": {
+      "glitter": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/sparkle/hearth_projecting.cubemitter.json",
+         "transforms": { "x": 0, "y": 0.9, "z": -0.05,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "glitter1": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/sparkle/hearth_glint.cubemitter.json",
+         "transforms": { "x": 0, "y": 0.9, "z": -0.05,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "glow": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/sparkle/hearth_glow.cubemitter.json",
+         "transforms": { "x": 0, "y": 0.75, "z": -0.05,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      }
+   }
+}

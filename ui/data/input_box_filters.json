@@ -378,6 +378,9 @@
                "icon": "/stonehearth_ace/entities/refined/yarn/yarn.png",
                "filter": "yarn resource"
             },
+            "leather": {
+               "filter": "resource refined_leather leather"
+            },
             "dried_algae": {
                "ordinal": 4,
                "display_name": "i18n(stonehearth_ace:entities.resources.herb.dried_algae.display_name)",
@@ -389,6 +392,50 @@
                "display_name": "i18n(stonehearth:entities.refined.golem_parts.display_name)",
                "icon": "/stonehearth/entities/refined/golem_parts/golem_parts.png",
                "filter": "golem_parts resource"
+            }
+         }
+      },
+      "fertilizers": {
+         "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.fertilizers)",
+         "filter": "fertilizer",
+         "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/fertilizer.png",
+         "ordinal": 6.1,
+         "categories": {
+            "any_fertilizer": {
+               "ordinal": 1,
+               "display_name": "i18n(stonehearth_ace:ui.data.constants.any_fertilizer_resource_name)",
+               "icon": "/stonehearth_ace/entities/consumables/any_fertilizer_icon.png",
+               "filter": "fertilizer consumable"
+            },
+            "fertilizer": {
+               "ordinal": 2,
+               "display_name": "i18n(stonehearth_ace:entities.consumables.fertilizer.display_name)",
+               "icon": "/stonehearth_ace/entities/consumables/fertilizer/fertilizer.png",
+               "filter": "fertilizer_fertilizer consumable"
+            },
+            "fertilizer_upgrade": {
+               "ordinal": 3,
+               "display_name": "i18n(stonehearth_ace:entities.consumables.fertilizer_upgrade.display_name)",
+               "icon": "/stonehearth_ace/entities/consumables/fertilizer_upgrade/fertilizer_upgrade.png",
+               "filter": "fertilizer_upgrade consumable"
+            },
+            "fertilizer_upgrade_2": {
+               "ordinal": 4,
+               "display_name": "i18n(stonehearth_ace:entities.consumables.fertilizer_upgrade_2.display_name)",
+               "icon": "/stonehearth_ace/entities/consumables/fertilizer_upgrade_2/fertilizer_upgrade_2.png",
+               "filter": "fertilizer_upgrade_2 consumable"
+            },
+            "fertilizer_megacrop": {
+               "ordinal": 5,
+               "display_name": "i18n(stonehearth_ace:entities.consumables.fertilizer_megacrop.display_name)",
+               "icon": "/stonehearth_ace/entities/consumables/fertilizer_megacrop/fertilizer_megacrop.png",
+               "filter": "fertilizer_megacrop consumable"
+            },
+            "fertilizer_hearth": {
+               "ordinal": 6,
+               "display_name": "i18n(stonehearth_ace:entities.consumables.fertilizer_hearth.display_name)",
+               "icon": "/stonehearth_ace/entities/consumables/fertilizer_hearth/fertilizer_hearth.png",
+               "filter": "fertilizer_hearth consumable"
             }
          }
       },
@@ -723,6 +770,12 @@
                "display_name": "i18n(stonehearth:entities.food.fodder.fodder.display_name)",
                "icon": "/stonehearth/entities/food/fodder/fodder/fodder.png",
                "filter": "fodder_bag stockpile_fodder"
+            },
+            "hearth_fodder": {
+               "ordinal": 1.1,
+               "display_name": "i18n(stonehearth_ace:entities.food.hearth_fodder.hearth_fodder.display_name)",
+               "icon": "/stonehearth_ace/entities/food/hearth_fodder/hearth_fodder/hearth_fodder.png",
+               "filter": "hearth_fodder_bag stockpile_fodder"
             },
             "rabbit_feed": {
                "ordinal": 2,

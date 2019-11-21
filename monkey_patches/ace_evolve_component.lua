@@ -78,7 +78,7 @@ function AceEvolveComponent:post_activate()
    self:_create_listeners()
 end
 
-AceEvolveComponent._ace_old_destroy = EvolveComponent.destroy
+AceEvolveComponent._ace_old_destroy = EvolveComponent.__user_destroy
 function AceEvolveComponent:destroy()
    self:_ace_old_destroy()
    self:_destroy_listeners()

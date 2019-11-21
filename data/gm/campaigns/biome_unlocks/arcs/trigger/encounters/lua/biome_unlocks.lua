@@ -2,35 +2,58 @@ local BiomeUnlocks = class()
 
 function BiomeUnlocks:start(ctx, data)
 	local biome = stonehearth.world_generation:get_biome_alias()
-	local herbalist = stonehearth.job:get_job_info(ctx.player_id, 'stonehearth:jobs:herbalist')
-	
-	if not herbalist then 
-		herbalist = stonehearth.job:get_job_info(ctx.player_id, 'stonehearth_ace:mountain_folk:jobs:grower')
-	end
-		
-	if herbalist and biome == 'stonehearth:biome:temperate' then
-		herbalist:manually_unlock_recipe('refinement_seeds:oak_tree_seeds_recipe')
-		herbalist:manually_unlock_recipe('refinement_seeds:juniper_tree_seeds_recipe')
-		herbalist:manually_unlock_recipe('refinement_seeds:pine_tree_seeds_recipe')
-		herbalist:manually_unlock_recipe('refinement_seeds:brightbell_seeds_recipe')
-		herbalist:manually_unlock_recipe('refinement_seeds:silkweed_seeds_recipe')
-		herbalist:manually_unlock_recipe('refinement_seeds:frostsnap_seeds_recipe')
-	elseif herbalist and biome == 'stonehearth:biome:desert' then
-		herbalist:manually_unlock_recipe('refinement_seeds:cactus_tree_seeds_recipe')
-		herbalist:manually_unlock_recipe('refinement_seeds:acacia_tree_seeds_recipe')
-		herbalist:manually_unlock_recipe('refinement_seeds:cactus_flower_seeds_recipe')
-	elseif herbalist and biome == 'stonehearth:biome:arctic' then
-		herbalist:manually_unlock_recipe('refinement_seeds:arctic_pine_tree_seeds_recipe')
-		herbalist:manually_unlock_recipe('refinement_seeds:arctic_juniper_tree_seeds_recipe')
-		herbalist:manually_unlock_recipe('refinement_seeds:violet_seeds_recipe')
-		herbalist:manually_unlock_recipe('refinement_seeds:snow_poppy_seeds_recipe')
-	elseif herbalist and biome == 'stonehearth_ace:biome:highlands' then
-		herbalist:manually_unlock_recipe('refinement_seeds:birch_tree_seeds_recipe')
-		herbalist:manually_unlock_recipe('refinement_seeds:yew_tree_seeds_recipe')
-		herbalist:manually_unlock_recipe('refinement_seeds:highland_pine_tree_seeds_recipe')
-		herbalist:manually_unlock_recipe('refinement_seeds:moonbell_seeds_recipe')
-		herbalist:manually_unlock_recipe('refinement_seeds:cotton_seeds_recipe')
-		herbalist:manually_unlock_recipe('refinement_seeds:marblesprout_seeds_recipe')
+	local biome_recipes_json = radiant.resources.load_json('stonehearth_ace:data:biome_recipes')
+	for job_alias, biome_recipes in pairs(biome_recipes_json) do
+
+		local job_info = stonehearth.job:get_job_info(ctx.player_id, job_alias)
+
+		if job_info then
+			if biome_recipes.always then
+				if biome_recipes.always.disabled then
+					for recipe_key, value in pairs(biome_recipes.always.disabled.recipes) do
+						if value then
+							job_info:manually_lock_recipe(recipe_key)
+						end
+					end
+					for category_key, value in pairs(biome_recipes.always.disabled.categories) do
+						if value then
+							job_info:manually_lock_recipe_category(category_key)
+						end
+					end
+				end
+				if biome_recipes.always.enabled then
+					for recipe_key, value in pairs(biome_recipes.always.enabled.recipes) do
+						if value then
+							job_info:manually_unlock_recipe(recipe_key)
+						end
+					end
+				end
+			end
+
+			local biome_recipes_data = biome_recipes[biome]
+
+			if biome_recipes_data then
+				if biome_recipes_data.disabled then
+					for recipe_key, value in pairs(biome_recipes_data.disabled.recipes) do
+						if value then
+							job_info:manually_lock_recipe(recipe_key)
+						end
+					end
+					for category_key, value in pairs(biome_recipes_data.disabled.categories) do
+						if value then
+							job_info:manually_lock_recipe_category(category_key)
+						end
+					end
+				end
+				if biome_recipes_data.enabled then
+					for recipe_key, value in pairs(biome_recipes_data.enabled.recipes) do
+						if value then
+							job_info:manually_unlock_recipe(recipe_key)
+						end
+					end
+				end
+			end
+		end
 	end
 end
 

@@ -1,0 +1,25 @@
+{
+   "type": "buff",
+   "axis": "buff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.divine_flavors.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.divine_flavors.description)",
+   "icon": "file(divine_flavors_buff.png)",
+   "duration": "4h",
+   "repeat_add_action": "renew_duration",
+   "modifiers": {
+      "muscle": {
+         "add": 10
+      },
+      "stamina": {
+         "add": 10
+      }
+   },
+   "script": "stonehearth:buff_scripts:periodic_health_modification",
+   "script_info": {
+      "health_change": 0.1,
+      "pulse": "30m",
+      "pulse_immediately": false,
+      "pulse_on_destroy": true,
+      "is_percentage": true
+   }
+}

@@ -31,7 +31,7 @@ return ai:create_compound_action(LightFirepit)
             })
             :execute('stonehearth:pickup_item_made_of', {
                material = ai.ARGS.firepit:get_fuel_material(),
-               rating_fn = _rating_fn,
+					rating_fn = _rating_fn,
                owner_player_id = ai.CALL(radiant.entities.get_work_player_id, ai.ENTITY)
             })
             :execute('stonehearth:drop_carrying_into_entity', { entity = ai.ARGS.firepit:get_entity() })

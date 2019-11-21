@@ -1,0 +1,82 @@
+{
+   "type": "entity",
+   "mixins": "file(herbalist_bee_skep_empty_ghost.json)",
+   "components": {
+      "mixintypes": {
+         "model_variants": "override"
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(herbalist_bee_skep_empty.qb)",
+                     "file(herbalist_bee_skep_empty_2.qb)",
+                     "file(herbalist_bee_skep_empty_3.qb)"
+                  ]
+               }
+            ]
+         }
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 1, "y": 1, "z": 1 }
+            }
+         ],
+         "adjacency_flags": [
+            "front"
+         ]
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 1, "y": 3, "z": 1 }
+            }
+         ]
+      },
+      "stonehearth:entity_forms": {
+         "ghost_form": "file(herbalist_bee_skep_empty_ghost.json)",
+         "iconic_form": "file(herbalist_bee_skep_empty_iconic.json)",
+         "placeable_on_ground": true
+      },
+      "stonehearth_ace:transform": {}
+   },
+   "entity_data": {
+      "stonehearth_ace:transform_data": {
+			"default_key": "herbalist_bee_skep",
+         "transform_options": {          
+            "herbalist_bee_skep": {
+               "transform_uri": "stonehearth_ace:herbalist:bee_skep",
+               "command": "stonehearth_ace:commands:transform:bee_skep",
+               "request_action": "stonehearth_ace:transform",
+               "request_action_overlay_effect": "stonehearth_ace:effects:harvest_bee_overlay_effect",
+               "transform_ingredient_uri": "stonehearth_ace:consumables:captive:bees",
+               "auto_request": true,
+               "worker_required_job": {
+                  "stonehearth:jobs:herbalist": true
+               },
+               "apply_ingredient_quality": true
+            }
+         }
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 13,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 1
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}
