@@ -3680,6 +3680,14 @@
          "controller": "file(call_handlers/resource_call_handler.lua)",
          "endpoint": "client"
       },
+		"choose_fence_location_command": {
+         "controller": "file(call_handlers/fence_call_handler.lua)",
+         "endpoint": "client"
+      },
+      "build_fence_command": {
+         "controller": "file(call_handlers/fence_call_handler.lua)",
+         "endpoint": "server"
+      },
       "box_harvest_and_replant_resources": {
          "controller": "file(call_handlers/resource_call_handler.lua)",
          "endpoint": "client"
