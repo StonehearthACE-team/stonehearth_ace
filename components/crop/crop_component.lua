@@ -234,7 +234,7 @@ function CropComponent:get_harvest_items(owner, num_stacks)
       if other_items then
          for uri, count in pairs(other_items) do
             for i = 1, count do
-               local item = self:_create_item(player_id, uri, quality)
+               local item = self:_create_item(owner, uri, quality)
                if item then
                   if not primary_item then
                      primary_item = item

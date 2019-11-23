@@ -54,7 +54,7 @@ App.StonehearthStockpileView.reopen({
       }
    }.observes('model.uri'),
 
-   _isSingleFilter: function() {
+   isSingleFilter: function() {
       return this.get('model.stonehearth:storage.is_single_filter');
-   }.property('isSingleFilter')
+   }.property('model.stonehearth:storage.is_single_filter')
 });
