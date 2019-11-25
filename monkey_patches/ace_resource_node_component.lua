@@ -126,7 +126,7 @@ function AceResourceNodeComponent:_place_spawned_items(harvester, location, owne
       local uris = {[json.resource] = {[quality] = 1}}
       local items = radiant.entities.output_items(uris, location, 0, 4, { owner = owner }, self._entity, harvester, spill_items)
       --Create the harvested entity and put it on the ground
-      local item = (next(items.spilled) and items.spilled[next(items.spilled)]) or (next(items.succeeded) and items.succeeded[next(items.succeeded)])
+      local item = (next(items.spilled) and items.spilled[next(items.spilled)]) -- or (next(items.succeeded) and items.succeeded[next(items.succeeded)])
       spawned_items[item:get_id()] = item
    end
 

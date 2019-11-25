@@ -207,6 +207,7 @@ function AceRenewableResourceNodeComponent:_do_spawn_resource(harvester_entity, 
    local spawned_resources, singular_item = self:_place_spawned_items(json, harvester_entity, player_id, location, self._sv.durability and self._sv.durability <= 1, spill_items)
 
    if not spawned_resources then
+      -- items weren't spawned; perhaps an attempt at auto-harvesting with no valid output
       return
    end
 
@@ -422,16 +423,12 @@ function AceRenewableResourceNodeComponent:_place_spawned_items(json, harvester,
 
    local spawned_items
    local item
-   local failed
    if json.resource_loot_table then
       local uris = LootTable(json.resource_loot_table, quality):roll_loot()
       if next(uris) then
          local output_items = radiant.entities.output_items(uris, location, 1, 3, { owner = owner }, self._entity, harvester, spill_items)
          spawned_items = output_items.spilled
-         item = next(spawned_items) and spawned_items[next(spawned_items)]
-         if not next(output_items.succeeded) then
-            failed = true
-         end
+         item = (next(spawned_items) and spawned_items[next(spawned_items)]) or (next(output_items.succeeded) and output_items.succeeded[next(output_items.succeeded)])
       else
          spawned_items = {}
       end
@@ -453,12 +450,10 @@ function AceRenewableResourceNodeComponent:_place_spawned_items(json, harvester,
          end
 
          spawned_items[item:get_id()] = item
-      else
-         failed = true
       end
    end
 
-   if not failed then
+   if item then
       return spawned_items, item
    end
 end
