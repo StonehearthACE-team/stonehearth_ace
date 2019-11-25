@@ -137,7 +137,7 @@ function AceRenewableResourceNodeComponent:_apply_modifiers(key, modifiers)
          local x_offset = rng:get_int(0, 1) * 2
          local z_offset = (x_offset == 0 and 2) or (rng:get_int(0, 1) * 2)
          local offset = Point3(x_offset * (rng:get_int(0, 1) == 0 and -1 or 1), 0, z_offset * (rng:get_int(0, 1) == 0 and -1 or 1))
-         self:spawn_resource(self._entity, radiant.entities.get_world_grid_location(self._entity) + offset, true)
+         self:spawn_resource(self._entity, radiant.entities.get_world_grid_location(self._entity) + offset, self._entity:get_player_id(), true)
       elseif modifiers.destroy_resource then
          self:_stop_renew_timer()
          self:_deplete()
@@ -418,17 +418,22 @@ function AceRenewableResourceNodeComponent:_destroy_half_renew_timer()
    end
 end
 
+-- this can be called when a harvester entity (e.g., hearthling) tries to harvest, when season change or maturity triggers dropping resources,
+-- or when an auto-harvest is attempted (in which case spilling is disabled)
+-- in the latter case, if an item should've been created for harvest but there wasn't a place for it, cancel the harvest process (by just returning nil)
 function AceRenewableResourceNodeComponent:_place_spawned_items(json, harvester, owner, location, will_destroy_entity, spill_items)
    local quality = radiant.entities.get_item_quality(self._entity)
 
    local spawned_items
    local item
+   local failed
    if json.resource_loot_table then
       local uris = LootTable(json.resource_loot_table, quality):roll_loot()
       if next(uris) then
          local output_items = radiant.entities.output_items(uris, location, 1, 3, { owner = owner }, self._entity, harvester, spill_items)
          spawned_items = output_items.spilled
          item = (next(spawned_items) and spawned_items[next(spawned_items)]) or (next(output_items.succeeded) and output_items.succeeded[next(output_items.succeeded)])
+         failed = not item
       else
          spawned_items = {}
       end
@@ -441,7 +446,7 @@ function AceRenewableResourceNodeComponent:_place_spawned_items(json, harvester,
       local uris = {[json.resource] = {[quality] = 1}}
       local items = radiant.entities.output_items(uris, location, 0, 2, { owner = owner }, self._entity, harvester, spill_items)
       --Create the harvested entity and put it on the ground
-      local item = (next(items.spilled) and items.spilled[next(items.spilled)]) or (next(items.succeeded) and items.succeeded[next(items.succeeded)])
+      item = (next(items.spilled) and items.spilled[next(items.spilled)]) or (next(items.succeeded) and items.succeeded[next(items.succeeded)])
 
       if item then
          -- only place it in a specific place if it wasn't pushed into an input
@@ -450,10 +455,12 @@ function AceRenewableResourceNodeComponent:_place_spawned_items(json, harvester,
          end
 
          spawned_items[item:get_id()] = item
+      else
+         failed = true
       end
    end
 
-   if item then
+   if not failed then
       return spawned_items, item
    end
 end
