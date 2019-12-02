@@ -167,7 +167,7 @@ function TransformComponent:transform()
    local transformed = transform_lib.transform(self._entity, 'stonehearth_ace:transform', self._transform_data.transform_uri, options)
    self._transforming = false
 
-   if not transformed then
+   if transformed == false then
       -- if we failed, cancel the requested transform action, if there was one
       if self._transform_data.request_action then
          self._entity:add_component('stonehearth:task_tracker'):cancel_current_task(false)
