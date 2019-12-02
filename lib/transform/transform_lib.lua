@@ -141,11 +141,6 @@ function transform_lib.transform(entity, transformer, into_uri, options)
       if location then
          radiant.terrain.place_entity_at_exact_location(transformed_form, location, { force_iconic = false, facing = facing } )
 
-         local transform_effect = options.transform_effect
-         if transform_effect then
-            radiant.effects.run_effect(transformed_form, transform_effect)
-         end
-
          if options.auto_harvest then
             local renewable_resource_node = transformed_form:get_component('stonehearth:renewable_resource_node')
             local resource_node = transformed_form:get_component('stonehearth:resource_node')
@@ -157,6 +152,22 @@ function transform_lib.transform(entity, transformer, into_uri, options)
             end
          end
       end
+   end
+
+   local transform_effect = options.transform_effect
+   if location and transform_effect then
+      local proxy
+      if not transformed_form then
+         proxy = radiant.entities.create_entity('stonehearth:object:transient', { debug_text = 'spawn effect effect anchor' })
+         radiant.terrain.place_entity_at_exact_location(proxy, location)
+      end
+
+      local effect = radiant.effects.run_effect(transformed_form or proxy, transform_effect)
+      effect:set_finished_cb(function()
+         if proxy then
+            radiant.entities.destroy_entity(proxy)
+         end
+      end)
    end
 
    if options.transform_script then
