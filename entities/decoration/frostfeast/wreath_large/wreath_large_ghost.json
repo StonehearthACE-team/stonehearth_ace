@@ -1,0 +1,60 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(wreath_large.qb)",
+                     "file(wreath_large.qb)",
+                     "file(wreath_large.qb)",
+                     "file(wreath_large_2.qb)",
+                     "file(wreath_large_2.qb)",
+                     "file(wreath_large_3.qb)",
+                     "file(wreath_large_4.qb)"
+                  ]
+               },
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(decorations_1.qb)",
+                     "file(decorations_1.qb)",
+                     "file(decorations_1.qb)",
+                     "file(decorations_2.qb)",
+                     "file(decorations_3.qb)",
+                     "file(decorations_4.qb)",
+                     "file(decorations_5.qb)"
+                  ]
+               }
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": -0.4, "z": -0.5 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      },
+      "render_info": {
+         "scale": 0.15,
+         "color_map": "stonehearth_ace:color_map:frostfeast",
+         "material_maps": [
+            "stonehearth_ace:material_map:ace"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.decoration.frostfeast.wreath_large.display_name)",
+         "description": "i18n(stonehearth_ace:entities.decoration.frostfeast.wreath_large.description)",
+         "icon": "file(wreath_large.png)",
+         "category": "decoration",
+         "material_tags": [
+            "decoration",
+            "festival",
+            "frostfeast",
+            "stockpile_decoration"
+         ]
+      }
+   }
+}

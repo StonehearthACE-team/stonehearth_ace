@@ -1,0 +1,51 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(hot_coco_serving.qb)"
+            ]
+         }
+      },
+      "effect_list": {
+         "effects": [
+            "stonehearth_ace:effects:drink:frostfeast:hot_coco:serving"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:item": {
+         "category": "drink",
+         "destroy_on_uncarry": true
+      },
+      "stonehearth_ace:drink": {
+         "stonehearth:sitting_on_chair": {
+            "satisfaction": 90
+         },
+         "default": {
+            "satisfaction": 70
+         },
+         "applied_buffs": [
+            "stonehearth_ace:buffs:consumption:sweet_energy",
+            "stonehearth_ace:buffs:consumption:warm_belly"
+         ],
+         "quality": 6,
+         "effect_loops": 3
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.drink.frostfeast.hot_coco.hot_coco_serving.display_name)",
+         "description": "i18n(stonehearth_ace:entities.drink.frostfeast.hot_coco.hot_coco_serving.description)",
+         "material_tags": [
+            "drink",
+            "hot_coco_serving",
+            "hot_coco",
+            "afternoon_time",
+            "night_time",
+            "warming"
+         ],
+         "subject_override": "stonehearth_ace:drink:frostfeast:hot_coco"
+      }
+   }
+}

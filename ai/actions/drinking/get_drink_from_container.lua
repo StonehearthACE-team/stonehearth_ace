@@ -67,17 +67,26 @@ function GetDrinkFromContainer:_reconsider()
 
    --log:debug('%s reconsidering state %s (%s -> %s)', self._entity, tostring(state), tostring(self._max_distance), max_distance)
    if max_distance ~= self._max_distance then
-      if self._ready then
-         self._ai:clear_think_output()
+      local set_think_output = function()
+         self:_destroy_reconsidering_listener()
+         self._max_distance = max_distance
+         --log:debug('%s set_think_output', self._entity)
+         self._ai:set_think_output({
+            drink_container_filter_fn = self._drink_container_filter_fn,
+            max_distance = max_distance
+         })
       end
-      self._ready = true
-      self._max_distance = max_distance
 
-      --log:debug('%s set_think_output', self._entity)
-      self._ai:set_think_output({
-         drink_container_filter_fn = self._drink_container_filter_fn,
-         max_distance = max_distance
-      })
+      if self._ready then
+         self:_destroy_reconsidering_listener()
+         self._ai:clear_think_output()
+         self._reconsidering_listener = radiant.on_game_loop_once('setting think output', function()
+            set_think_output()
+         end)
+      else
+         self._ready = true
+         set_think_output()
+      end
    end
 end
 
@@ -93,6 +102,14 @@ function GetDrinkFromContainer:_destroy_listener()
    if self._drink_satiety_listener then
       self._drink_satiety_listener:destroy()
       self._drink_satiety_listener = nil
+   end
+   self:_destroy_reconsidering_listener()
+end
+
+function GetDrinkFromContainer:_destroy_reconsidering_listener()
+   if self._reconsidering_listener then
+      self._reconsidering_listener:destroy()
+      self._reconsidering_listener = nil
    end
 end
 

@@ -1,0 +1,37 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(decorated_tree_snowy.qb)"
+            ]
+         }
+      },
+      "render_info": {
+         "scale": 0.125,
+         "color_map": "stonehearth_ace:color_map:frostfeast",
+         "material_maps": [
+            "stonehearth_ace:material_map:ace"
+         ]
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.decoration.frostfeast.decorated_tree_snowy.display_name)",
+         "description": "i18n(stonehearth_ace:entities.decoration.frostfeast.decorated_tree.description)",
+         "icon": "file(decorated_tree_snowy.png)",
+         "category": "decoration",
+         "material_tags": [
+            "decoration",
+            "frostfeast",
+            "festival",
+            "stockpile_plant"
+         ]
+      }
+   }
+}

@@ -1,4 +1,18 @@
 {
+	"can_start": {
+      "test_1": {
+         "not_in_lucky_day": {
+            "type": "deny_if",
+            "item": "weather",
+            "value": "stonehearth:weather:lucky"
+         },
+			"not_in_lucky_day_desert": {
+            "type": "deny_if",
+            "item": "weather",
+            "value": "stonehearth:weather:lucky:desert"
+         }
+      }
+   },
    "out_edge": {
       "out_edges": [
          {

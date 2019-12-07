@@ -1,0 +1,31 @@
+{
+   "type": "entity",
+   "mixins": [
+      "file(clay_door_wreath_ghost.json)",
+      "stonehearth:mixins:portals:single_door",
+      "stonehearth_ace:mixins:reinforced_destructable_door"
+   ],
+   "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(clay_door_wreath_iconic.json)",
+         "ghost_form": "file(clay_door_wreath_ghost.json)",
+         "hide_placement_ui": false
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 52,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 46
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

@@ -1,0 +1,50 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(snowling_short.qb)",
+                     "file(snowling_short.qb)",
+                     "file(snowling_short.qb)",
+                     "file(snowling_short.qb)",
+                     "file(snowling_short_2.qb)",
+                     "file(snowling_short_2.qb)",
+                     "file(snowling_short_3.qb)",
+                     "file(snowling_short_4.qb)",
+                     "file(snowling_short_5.qb)"
+                  ]
+               }
+            ]
+         }
+      },
+      "render_info": {
+         "scale": 0.13
+      },
+      "mob": {
+         "align_to_grid": [
+            "x",
+            "z"
+         ],
+         "model_origin": { "x": -0.05, "y": 0, "z": 0 },
+         "region_origin": { "x": 0, "y": 0, "z": 0 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.decoration.frostfeast.snowling_short.display_name)",
+         "description": "i18n(stonehearth_ace:entities.decoration.frostfeast.snowling.description)",
+         "icon": "file(snowling_short.png)",
+         "category": "decoration",
+         "material_tags": [
+            "decoration",
+            "stockpile_decoration",
+            "festival",
+            "frostfeast"
+         ]
+      }
+   }
+}

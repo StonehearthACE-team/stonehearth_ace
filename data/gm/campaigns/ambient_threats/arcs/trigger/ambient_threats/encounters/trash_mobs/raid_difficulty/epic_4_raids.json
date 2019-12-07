@@ -1,11 +1,30 @@
 {
+	"can_start": {
+      "test_1": {
+         "not_in_lucky_day": {
+            "type": "deny_if",
+            "item": "weather",
+            "value": "stonehearth:weather:lucky"
+         },
+			"not_in_lucky_day_desert": {
+            "type": "deny_if",
+            "item": "weather",
+            "value": "stonehearth:weather:lucky:desert"
+         }
+      }
+   },
    "out_edge": {
       "out_edges": [
 			"goblin_raid_8",
 			"ace_alligator_raid_5",
 			"ace_undead_raid_4",
 			"mummy_raid_9",
-			"undead_goblin_raid_5"
+			"undead_goblin_raid_5",
+			{
+            "out_edge": "skip_raid",
+            "type": "weighted_edge",
+            "weight": 3
+         }
       ]
    }
 }

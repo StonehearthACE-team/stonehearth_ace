@@ -1,0 +1,27 @@
+{
+   "generator_info": {
+      "delay": "22h+72h",
+      "spawn_edge": {
+         "mixintypes": {
+				"out_edges": "override"
+			},
+         "out_edges": [
+            {
+               "out_edge": "randomize_daily_threat",
+               "type": "weighted_edge",
+               "weight": 2
+            },
+            {
+               "out_edge": "randomize_advanced_threats",
+               "type": "weighted_edge",
+               "weight": 4
+            },
+            {
+               "out_edge": "none",
+               "type": "weighted_edge",
+               "weight": 3
+            }
+         ]
+      }
+   }
+}

@@ -1,0 +1,26 @@
+{
+   "type" : "effect",
+   "tracks": {
+      "animation": {
+         "type": "animation_effect",
+         "start_time": 0,
+         "animation": "fiddle_frostfeast.json",
+         "loop": false
+      },
+      "emoticon": {
+         "type": "cubemitter",
+         "start_time" : 500,
+         "end_time" : 3000,
+         "cubemitter": "particles/emote/emoticons/twinkle.cubemitter.json",
+         "transforms": {
+            "x":0,
+            "y":1,
+            "z":0,
+            "rx":90,
+            "ry":0,
+            "rz":0
+         },
+         "bone": "head"
+      }
+   }
+}

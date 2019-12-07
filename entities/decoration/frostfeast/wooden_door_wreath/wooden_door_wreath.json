@@ -1,0 +1,34 @@
+{
+   "type": "entity",
+   "mixins": [
+      "file(wooden_door_wreath_ghost.json)",
+      "stonehearth:mixins:portals:single_door",
+      "stonehearth_ace:mixins:reinforced_destructable_door"
+   ],
+   "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(wooden_door_wreath_iconic.json)",
+         "ghost_form": "file(wooden_door_wreath_ghost.json)",
+         "hide_placement_ui": false
+      },
+      "effect_list": {
+         "default": "stonehearth_ace:effects:treasure_glow:frostfeast:door"
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 52,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 46
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

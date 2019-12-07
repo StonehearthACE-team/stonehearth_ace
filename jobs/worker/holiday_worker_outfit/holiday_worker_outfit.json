@@ -1,0 +1,88 @@
+{
+   "mixins": [
+      "stonehearth:mixins:item_properties",
+      "stonehearth_ace:mixins:outfit:freezing:no_buff"
+   ],
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "layer": "clothing",
+            "transparent": false,
+            "models": [
+               "file(holiday_worker_outfit.qb)"
+            ]
+         },
+         "female": {
+            "layer": "clothing",
+            "transparent": false,
+            "models": [
+               "file(holiday_worker_outfit_female.qb)"
+            ]
+         },
+         "rabbit_male": {
+            "layer": "clothing",
+            "models": [
+               "file(holiday_worker_outfit_rabbit.qb)"
+            ]
+         },
+         "rabbit_female": {
+            "layer": "clothing",
+            "models": [
+               "file(holiday_worker_outfit_rabbit.qb)"
+            ]
+         },
+         "orc_male": {
+            "layer": "clothing",
+            "models": [
+               "file(holiday_worker_outfit_orc_male.qb)"
+            ]
+         },
+         "orc_female": {
+            "layer": "clothing",
+            "models": [
+               "file(holiday_worker_outfit_orc_female.qb)"
+            ]
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(holiday_worker_outfit_iconic.json)"
+      },
+      "stonehearth:equipment_piece": {
+         "roles": [
+            "worker_job"
+         ],
+         "injected_buffs": [
+            "stonehearth_ace:buffs:holiday_cheer"
+         ],
+         "equip_effect": "stonehearth:effects:weapon_level_up",
+         "conditional_values": {
+            "season": {
+               "winter": 4,
+               "autumn": -3
+            }
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 45,
+         "rarity": "uncommon",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:jobs.worker.holiday_worker_outfit.display_name)",
+         "description": "i18n(stonehearth_ace:jobs.worker.holiday_worker_outfit.description)",
+         "icon": "file(holiday_worker_outfit.png)",
+         "category": "armor",
+         "material_tags": [
+            "festival",
+            "frostfeast",
+            "holiday_worker_outfit"
+         ]
+      }
+   }
+}

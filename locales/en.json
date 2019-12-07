@@ -955,6 +955,10 @@
                "fungi_lover_ate_fungi": {
                   "display_name": "Mushroom lover",
                   "tooltip": "Yum! I love eating fungi, and I must admit [str(foodname)] was particularly good!"
+               },
+               "merry_time_frostfeast": {
+                  "display_name": "Frostfeasting",
+                  "tooltip": "Ahh! What a joyous time of the year! Nothing like decorating your home, gathering around delicious food and enjoying it with your loved ones..."
                }
             },
             "traits": {
@@ -1784,6 +1788,12 @@
             "fermenting_carboy_fill_unfermented_mead_fruit": {
                "display_name": "Produce Fruity Mead",
                "description": "Order the Cook or Herbalist to fill this fermenting vessel with unfermented fruity mead! It can be crafted by the Cook or Herbalist."
+            },
+            "frostfeast": {
+               "open_present": {
+                  "display_name": "Open it!",
+                  "description": "Order someone to come and open this beautiful present. Merry Frostfeast!"
+               }
             }
          },
          "slaughter": {
@@ -1986,7 +1996,7 @@
             "description": "This creature is not really adapted to being on land... It has consequences!"
          },
          "holiday_cheer": {
-            "display_name": "Holiday Cheer",
+            "display_name": "Frostfeast Cheer",
             "description": "Woo! This hearthling is enjoying the holidays with slighly increased compassion and speed! "
          },
          "thorns": {
@@ -2245,6 +2255,12 @@
          "shepherd_crook_corn": {
             "display_name": "Shepherd's Corn Crook",
             "description": "Compassion is increased."
+         },
+         "frostfeast": {
+            "merry_time": {
+               "display_name": "Frostfeasting",
+               "description": "Feeling delighted with a really amazing feast! Willpower and Compassion are greatly increased.<ul><li>Experience gain is increased</li><li>This hearthling has a much higher chance of crafting things with increased quality</li></ul>"
+            }
          }
       },
       "loadouts": {
@@ -2456,6 +2472,11 @@
             "refined_fungi_name": "Fungal Refinement",
             "refined_seeds_name": "Regional Seeds",
             "farming_enhancements_name": "Farming Enhancements & Seeds",
+				"decorated_frostfeast_tree_recipe": {
+               "recipe_name": "Decorated Frostfeast Pine",
+               "description": "Get your town ready for the holidays with this traditional and beautiful decorated tree.",
+               "flavor": "A symbol of hope, gratitude and warmth!"
+            },
             "herbalist_bee_skep_recipe": {
                "recipe_name": "Empty Bee Skep",
                "description": "Supplies your town with beekeeping products but won't produce during the winter.",
@@ -2552,32 +2573,32 @@
             "parasol_colony_recipe": {
                "recipe_name": "Parasol Colony (x3)",
                "description": "Use existing fungus to create more colonies to grow into new fungi. Slightly toxic when raw, use for cooking!",
-               "flavor": "For creating colonis you need the whole, undeployed fungi - and not just the harvested basket"
+               "flavor": "For creating colonies you need the whole, undeployed fungi - and not just the harvested basket"
             },
             "sweet_tooth_colony_recipe": {
                "recipe_name": "Sweet Tooth Colony (x3)",
                "description": "Use existing fungus to create more colonies to grow into new fungi.",
-               "flavor": "For creating colonis you need the whole, undeployed fungi - and not just the harvested basket"
+               "flavor": "For creating colonies you need the whole, undeployed fungi - and not just the harvested basket"
             },
             "bolete_colony_recipe": {
                "recipe_name": "Bolete Colony (x3)",
                "description": "Use existing fungus to create more colonies to grow into new fungi.",
-               "flavor": "For creating colonis you need the whole, undeployed fungi - and not just the harvested basket"
+               "flavor": "For creating colonies you need the whole, undeployed fungi - and not just the harvested basket"
             },
             "chanterelle_colony_recipe": {
                "recipe_name": "Chanterelle Colony (x3)",
                "description": "Use existing fungus to create more colonies to grow into new fungi.",
-               "flavor": "For creating colonis you need the whole, undeployed fungi - and not just the harvested basket"
+               "flavor": "For creating colonies you need the whole, undeployed fungi - and not just the harvested basket"
             },
             "winter_morel_colony_recipe": {
                "recipe_name": "Winter Morel Colony (x3)",
                "description": "Use existing fungus to create more colonies to grow into new fungi.",
-               "flavor": "For creating colonis you need the whole, undeployed fungi - and not just the harvested basket"
+               "flavor": "For creating colonies you need the whole, undeployed fungi - and not just the harvested basket"
             },
             "desert_truffle_colony_recipe": {
                "recipe_name": "Desert Truffle Colony (x3)",
                "description": "Use existing fungus to create more colonies to grow into new fungi.",
-               "flavor": "For creating colonis you need the whole, undeployed fungi - and not just the harvested basket"
+               "flavor": "For creating colonies you need the whole, undeployed fungi - and not just the harvested basket"
             },
             "legendary_parchment_recipe": {
                "recipe_name": "Gilded Paper",
@@ -2956,6 +2977,9 @@
                "recipe_name": "Large Castle Portcullis",
                "description": "For times when only the strongest door will do. This is a slightly larger alternative to the Castle Portcullis.",
                "flavor": "Definitely needs more iron"
+            },
+            "bronze_gear_recipe": {
+               "flavor": "Luckily it has teeth that do not require brushing"
             }
          },
          "engineer_description": {
@@ -2964,6 +2988,21 @@
       },
       "potter": {
          "recipes": {
+				"present_small_recipe": {
+               "recipe_name": "Small Frostfeast Present",
+               "description": "Buy a delicate present for your town. Can be used as decoration or unwrapped.",
+               "flavor": "Small presents contain two random items"
+            },
+				"present_recipe": {
+               "recipe_name": "Frostfeast Present",
+               "description": "Buy a beautiful present for your town. Can be used as decoration or unwrapped.",
+               "flavor": "Presents contain up to four random items. One is guaranteed to be a special Frostfeast item!"
+            },
+				"present_large_recipe": {
+               "recipe_name": "Big Frostfeast Present",
+               "description": "Buy an amazing and big present for your town. Can be used as decoration or unwrapped.",
+               "flavor": "Big presents contain up to six random items. Two are guaranteed to be special Frostfeast items!"
+            },
             "bone_clay_recipe": {
                "recipe_name": "Mound of Bone Clay",
                "description": "Required for creating porcelain and beautiful ornate ceramics.",
@@ -3212,9 +3251,9 @@
                "recipe_name": "Clay Serving Keg",
                "flavor": ""
             },
-				"output_tun_clay_recipe": {
-					"recipe_name": "Clay Production Tun",
-               "description": "Temporary storage for 32 items, tuns are able to hold different items as long as they're in the same category.",           
+            "output_tun_clay_recipe": {
+               "recipe_name": "Clay Production Tun",
+               "description": "Temporary storage for 32 items, tuns are able to hold different items as long as they're in the same category.",
                "flavor": "Used by crafters to store recently finished products"
             },
             "amphora_recipe": {
@@ -3352,6 +3391,21 @@
             "bone_weapons_armor_name": "Weapons & Armor, Bone Carving",
             "bone_furniture_name": "Furniture & Decoration, Bone Carving",
             "bone_building_parts_name": "Building Parts, Bone Carving",
+				"present_small_recipe": {
+               "recipe_name": "Small Frostfeast Present",
+               "description": "Buy a delicate present for your town. Can be used as decoration or unwrapped.",
+               "flavor": "Small presents contain two random items"
+            },
+				"present_recipe": {
+               "recipe_name": "Frostfeast Present",
+               "description": "Buy a beautiful present for your town. Can be used as decoration or unwrapped.",
+               "flavor": "Presents contain up to four random items. One is guaranteed to be a special Frostfeast item!"
+            },
+				"present_large_recipe": {
+               "recipe_name": "Big Frostfeast Present",
+               "description": "Buy an amazing and big present for your town. Can be used as decoration or unwrapped.",
+               "flavor": "Big presents contain up to six random items. Two are guaranteed to be special Frostfeast items!"
+            },
             "mason_workbench_bone_recipe": {
                "recipe_name": "Bone Carving Studio",
                "description": "Required by the mason to carve furniture and equipment out of bone material.",
@@ -3611,10 +3665,10 @@
                "description": "A small serving container for 4 simple or prepared drinks.",
                "recipe_name": "Stone Serving Keg",
                "flavor": ""
-            },				
-				"output_tun_stone_recipe": {
-					"recipe_name": "Stone Production Tun",
-               "description": "Temporary storage for 32 items, tuns are able to hold different items as long as they're in the same category.",           
+            },
+            "output_tun_stone_recipe": {
+               "recipe_name": "Stone Production Tun",
+               "description": "Temporary storage for 32 items, tuns are able to hold different items as long as they're in the same category.",
                "flavor": "Used by crafters to store recently finished products"
             },
             "tank_recipe": {
@@ -4074,7 +4128,7 @@
          },
          "worker_holiday_hat": {
             "display_name": "Holiday Cheer Cap",
-            "description": "A traditional hat for enjoying the end of the year's holidays!"
+            "description": "A traditional hat for enjoying the holidays! Will protect from chilly weather."
          },
          "winter_worker_outfit": {
             "description": "A heavy wool coat, for chilly winter nights. Improves speed."
@@ -4113,6 +4167,10 @@
          "worker_beekeeping_hat": {
             "display_name": "Worker's Beekeeping Hat",
             "description": "Very useful for being safe while hauling and moving around bee skeps."
+         },
+         "holiday_worker_outfit": {
+            "display_name": "Worker Holiday Cheer Coat",
+            "description": "A fuzzy and warm coat, excellent for partaking in seasonal celebrations."
          }
       },
       "cook": {
@@ -4657,6 +4715,21 @@
       },
       "carpenter": {
          "recipes": {
+				"present_small_recipe": {
+               "recipe_name": "Small Frostfeast Present",
+               "description": "Buy a delicate present for your town. Can be used as decoration or unwrapped.",
+               "flavor": "Small presents contain two random items"
+            },
+				"present_recipe": {
+               "recipe_name": "Frostfeast Present",
+               "description": "Buy a beautiful present for your town. Can be used as decoration or unwrapped.",
+               "flavor": "Presents contain up to four random items. One is guaranteed to be a special Frostfeast item!"
+            },
+				"present_large_recipe": {
+               "recipe_name": "Big Frostfeast Present",
+               "description": "Buy an amazing and big present for your town. Can be used as decoration or unwrapped.",
+               "flavor": "Big presents contain up to six random items. Two are guaranteed to be special Frostfeast items!"
+            },
             "wooden_animal_door_recipe": {
                "recipe_name": "Wooden Animal Door",
                "description": "A large door for animal shelters, it can be closed by a shepherd. When closed, only hearthlings may go through!",
@@ -4786,10 +4859,10 @@
                "description": "A small serving container for 4 simple or prepared drinks.",
                "recipe_name": "Wooden Serving Keg",
                "flavor": ""
-            },			
-				"output_tun_wood_recipe": {
-					"recipe_name": "Wooden Production Tun",
-               "description": "Temporary storage for 32 items, tuns are able to hold different items as long as they're in the same category.",           
+            },
+            "output_tun_wood_recipe": {
+               "recipe_name": "Wooden Production Tun",
+               "description": "Temporary storage for 32 items, tuns are able to hold different items as long as they're in the same category.",
                "flavor": "Used by crafters to store recently finished products"
             },
             "barrel_recipe": {
@@ -4880,8 +4953,8 @@
             },
             "worker_holiday_hat_recipe": {
                "recipe_name": "Holiday Cheer Cap",
-               "description": "The ACE Team would like to wish you all very happy and wonderful holidays!",
-               "flavor": "This recipe shall be removed after New Year's Eve... So craft yours while you can!"
+               "description": "A traditional hat for enjoying the frostfeast holidays that will also protect from chilly weather.",
+               "flavor": "The ACE team wishes you very happy holidays!"
             },
             "sunstroke_field_work_outfit_recipe": {
                "recipe_name": "Summer Work Hat",
@@ -7434,6 +7507,109 @@
             "wall_mounted_paw_ghost": {
                "description": "Mark of the hunter, never seen or heard... Until it is too late."
             }
+         },
+         "frostfeast": {
+            "present_small": {
+               "display_name": "Small Frostfeast Present",
+               "description": "Oh! A wrapped box - what could possibly be inside?"
+            },
+            "present": {
+               "display_name": "Frostfeast Present",
+               "description": "It's a gift to all of us! Let's unwrap it!"
+            },
+            "present_large": {
+               "display_name": "Big Frostfeast Present",
+               "description": "Woah! So big! Is it a new hearth? Could be a new hearth..."
+            },
+            "decorated_tree": {
+               "display_name": "Decorated Frostfeast Pine",
+               "description": "A symbol of hope, gratitude and warmth! Perfect for snuggling presents underneath."
+            },
+            "decorated_tree_gold": {
+               "display_name": "Frostfeast Golden Pine"
+            },
+            "decorated_tree_silver": {
+               "display_name": "Frostfeast Silver Pine"
+            },
+            "decorated_tree_snowy": {
+               "display_name": "Frostfeast Snowy Pine"
+            },
+            "dining_table_red": {
+               "display_name": "Red Frostfeast Table"
+            },
+            "dining_table": {
+               "description": "Perfect for supporting food and gathering around in a cold night."
+            },
+            "dining_table_blue": {
+               "display_name": "Blue Frostfeast Table"
+            },
+            "dining_table_green": {
+               "display_name": "Green Frostfeast Table"
+            },
+            "dining_table_white": {
+               "display_name": "White Frostfeast Table"
+            },
+            "end_table_red": {
+               "display_name": "Red Frostfeast End Table"
+            },
+            "end_table": {
+               "description": "A nice and cozy small table. Really good for putting up the frostfeast tree..."
+            },
+            "end_table_green": {
+               "display_name": "Green Frostfeast End Table"
+            },
+            "end_table_white": {
+               "display_name": "White Frostfeast End Table"
+            },
+            "end_table_blue": {
+               "display_name": "Blue Frostfeast End Table"
+            },
+            "stocking_small": {
+               "display_name": "Frostfeast Stocking",
+               "description": "A fancy seasonal decoration to hang on walls or by the hearth."
+            },
+            "stocking": {
+               "display_name": "Big Frostfeast Stocking",
+               "description": "The more space you have, the more presents you get... right?"
+            },
+            "wreath": {
+               "display_name": "Frostfeast Pine Wreath",
+               "description": "A very appreciated decoration for the holidays."
+            },
+            "wreath_large": {
+               "display_name": "Big Frostfeast Pine Wreath",
+               "description": "For when you're feeling really festive."
+            },
+            "stone_door_wreath": {
+               "display_name": "Frostfeast Stone Door"
+            },
+            "door_wreath": {
+               "description": "A very warm and fancy way to welcome your neighbors."
+            },
+            "wooden_door_wreath": {
+               "display_name": "Frostfeast Wooden Door"
+            },
+            "clay_door_wreath": {
+               "display_name": "Frostfeast Clay Door"
+            },
+            "plushie_toy_deer": {
+               "display_name": "Frostfeast Plushie Reindeer",
+               "description": "Look at it, it wants a hug!"
+            },
+            "snowling": {
+               "display_name": "Frostfeast Snowling",
+               "description": "The holidays are magical so it will never melt! Hopefully..."
+            },
+            "snowling_short": {
+               "display_name": "Short Frostfeast Snowling"
+            },
+            "candles": {
+               "display_name": "Decorative Frostfeast Candles",
+               "description": "\"The fire flickers on a winter night, hope is renewed under Frostfeast's light.\""
+            },
+            "candles_iconic": {
+               "description": "Can be placed down or hanged on a wall. Beautiful!"
+            }
          }
       },
       "pets": {
@@ -8373,6 +8549,60 @@
             "hearth_ambrosia_serving": {
                "display_name": "Serving of Hearthbud Ambrosia",
                "description": "Full of magical flavors!"
+            }
+         },
+         "frostfeast": {
+            "ham": {
+               "ham": {
+                  "display_name": "Roasted Frostfeast Ham",
+                  "description": "Very tender and succulent pork meat, seasoned with spices and fruits."
+               },
+               "ham_iconic": {
+                  "description": "Place it somewhere so hearthlings can serve themselves!"
+               },
+               "ham_serving": {
+                  "display_name": "Serving of Frostfeast Ham",
+                  "description": "Nom nom nom!"
+               }
+            },
+            "ginger_cookies": {
+               "ginger_cookies_iconic": {
+                  "description": "Place it somewhere so hearthlings can serve themselves!"
+               },
+               "ginger_cookies": {
+                  "display_name": "Frostfeast Cookies",
+                  "description": "Cute and tasty little gingerbread treats."
+               },
+               "ginger_cookies_serving": {
+                  "display_name": "Frostfeast Cookie",
+                  "description": "\"Don't eat me! Don't eat me!\" said no gingerbread man, ever."
+               }
+            },
+            "seasonal_fruits": {
+               "seasonal_fruits_iconic": {
+                  "description": "Place it somewhere so hearthlings can serve themselves!"
+               },
+               "seasonal_fruits": {
+                  "display_name": "Seasonal Frostfeast Fruits",
+                  "description": "What a juicy and refreshing platter of fruits!"
+               },
+               "seasonal_fruits_serving": {
+                  "display_name": "Serving of Seasonal Fruits",
+                  "description": "Soft and healthy!"
+               }
+            },
+            "turkey": {
+               "turkey_iconic": {
+                  "description": "Place it somewhere so hearthlings can serve themselves!"
+               },
+               "turkey": {
+                  "display_name": "Roasted Froastfeast Turkey",
+                  "description": "Hearty and flavorful! A very traditional meal for large groups."
+               },
+               "turkey_serving": {
+                  "display_name": "Serving of Frostfeast Turkey",
+                  "description": "Now this is frostfeasting!"
+               }
             }
          }
       },
@@ -10117,6 +10347,47 @@
             "spirit_hearth_serving": {
                "display_name": "Cup of Hearthbud Spirit",
                "description": ""
+            }
+         },
+         "frostfeast": {
+            "hot_coco": {
+               "hot_coco": {
+                  "display_name": "Frostfeast Hot Coco",
+                  "description": "Warm, sweet and deliciously tasty! A seasonal beverage from exotic lands..."
+               },
+               "hot_coco_serving": {
+                  "display_name": "Mug of Hot Coco",
+                  "description": "The best of winter."
+               },
+               "hot_coco_iconic": {
+                  "description": "Place it somewhere so hearthlings can serve themselves!"
+               }
+            },
+            "egg_milk_punch": {
+               "egg_milk_punch_iconic": {
+                  "description": "Place it somewhere so hearthlings can serve themselves!"
+               },
+               "egg_milk_punch": {
+                  "display_name": "Frostfeast Egg Milk Punch",
+                  "description": "A creamy and sweet beverage mixed with some very flavorful spirits."
+               },
+               "egg_milk_punch_serving": {
+                  "display_name": "Noggin of Egg Milk Punch",
+                  "description": "Mmmmmmm..."
+               }
+            },
+            "mulled_wine": {
+               "mulled_wine_iconic": {
+                  "description": "Place it somewhere so hearthlings can serve themselves!"
+               },
+               "mulled_wine_serving": {
+                  "display_name": "Goblet of Mulled Wine",
+                  "description": "Warm and fruity, perfect for the winter holidays!"
+               },
+               "mulled_wine": {
+                  "display_name": "Frostfeast Mulled Wine",
+                  "description": "Heated, sweet wine with spices and fruits. A winter favorite!"
+               }
             }
          }
       },

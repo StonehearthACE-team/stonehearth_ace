@@ -1,0 +1,46 @@
+{
+	"can_start": {
+      "weather_tests": {
+         "not_in_titanstorm": {
+            "type": "deny_if",
+            "item": "weather",
+            "value": "stonehearth:weather:titanstorm"
+         },
+			"not_in_blizzard": {
+            "type": "deny_if",
+            "item": "weather",
+            "value": "stonehearth:weather:blizzard"
+         },
+			"not_in_thunderstorm": {
+            "type": "deny_if",
+            "item": "weather",
+            "value": "stonehearth:weather:thunderstorm"
+         },
+			"not_in_sandy": {
+            "type": "deny_if",
+            "item": "weather",
+            "value": "stonehearth:weather:sandy"
+         },
+			"not_in_sandstorm": {
+            "type": "deny_if",
+            "item": "weather",
+            "value": "stonehearth:weather:sandstorm"
+         },
+			"not_in_snow": {
+            "type": "deny_if",
+            "item": "weather",
+            "value": "stonehearth:weather:snow"
+         },
+			"not_in_sunny_hot": {
+            "type": "deny_if",
+            "item": "weather",
+            "value": "stonehearth_ace:weather:sunny:hot"
+         },
+			"not_in_sunny_sweltering": {
+            "type": "deny_if",
+            "item": "weather",
+            "value": "stonehearth_ace:weather:sunny:sweltering"
+         }
+      }
+   }
+}

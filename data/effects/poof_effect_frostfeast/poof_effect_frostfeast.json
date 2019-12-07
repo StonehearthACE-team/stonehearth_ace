@@ -1,0 +1,86 @@
+{
+   "type": "effect",
+   "tracks": {
+      "dust": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth/data/horde/particles/dust_poof/grey_dust_poof.cubemitter.json",
+         "loop": false,
+         "start_time": 0,
+         "end_time": 3100,
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "emoticon": {
+         "type": "cubemitter",
+         "start_time": 333,
+         "end_time": 600,
+         "cubemitter": "/stonehearth/data/horde/particles/emote/emoticons/confetti.cubemitter.json",
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "glitter": {
+         "type": "cubemitter",
+         "start_time": 333,
+         "end_time": 600,
+         "cubemitter": "/stonehearth/data/horde/particles/emote/emoticons/confetti_small.cubemitter.json",
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "emoticon2": {
+         "type": "cubemitter",
+         "start_time": 933,
+         "end_time": 1233,
+         "cubemitter": "/stonehearth/data/horde/particles/emote/emoticons/confetti.cubemitter.json",
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "glitter2": {
+         "type": "cubemitter",
+         "start_time": 933,
+         "end_time": 1233,
+         "cubemitter": "/stonehearth/data/horde/particles/emote/emoticons/confetti_small.cubemitter.json",
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "sound": {
+         "type": "sound_effect",
+         "start_time": 150,
+         "min_distance": 27,
+         "falloff": 5,
+         "volume": 60,
+         "track": "stonehearth:sounds:death_poof"
+      },
+      "sound_2": {
+         "type": "sound_effect",
+         "duration": 1000,
+         "start_time": 0,
+         "min_distance": 20,
+         "max_instances": 2,
+         "falloff": 2.5,
+         "volume": 25,
+         "track": {
+            "type": "one_of",
+            "items": [
+               "stonehearth:sounds:confetti_01",
+               "stonehearth:sounds:confetti_02",
+               "stonehearth:sounds:confetti_03"
+            ]
+         }
+      }
+   }
+}

@@ -1,0 +1,31 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(end_table_blue.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.decoration.frostfeast.end_table_blue.display_name)",
+         "description": "i18n(stonehearth_ace:entities.decoration.frostfeast.end_table.description)",
+         "icon": "file(end_table_blue.png)",
+         "category": "furniture",
+         "material_tags": [
+            "furniture",
+            "festival",
+            "frostfeast",
+            "stockpile_furniture"
+         ]
+      }
+   }
+}
