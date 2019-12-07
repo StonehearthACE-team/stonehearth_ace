@@ -1,0 +1,53 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(seasonal_fruits_serving.qb)"
+            ]
+         }
+      },
+      "render_info": {
+         "color_map": "stonehearth_ace:color_map:ace",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/mob_material_map.json"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:item": {
+         "category": "food",
+         "destroy_on_uncarry": true
+      },
+      "stonehearth:food": {
+         "stonehearth:sitting_on_chair": {
+            "satisfaction": 60,
+            "drink_satisfaction": 30
+         },
+         "default": {
+            "satisfaction": 45,
+            "drink_satisfaction": 20
+         },
+         "applied_buffs": [
+            "stonehearth_ace:buffs:consumption:merry_time:frostfeast",
+            "stonehearth_ace:buffs:consumption:fruity_flavors"
+         ],
+         "quality": 6
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.frostfeast.seasonal_fruits.seasonal_fruits_serving.display_name)",
+         "description": "i18n(stonehearth_ace:entities.food.frostfeast.seasonal_fruits.seasonal_fruits_serving.description)",
+         "material_tags": [
+            "food",
+            "seasonal_fruits_serving",
+            "seasonal_fruits",
+            "vegetarian",
+            "dinner_time",
+            "breakfast_time"
+         ],
+         "subject_override": "stonehearth_ace:food:frostfeast:seasonal_fruits"
+      }
+   }
+}

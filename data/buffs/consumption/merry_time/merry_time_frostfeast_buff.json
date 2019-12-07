@@ -1,0 +1,26 @@
+{
+   "type": "buff",
+   "axis": "buff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.frostfeast.merry_time.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.frostfeast.merry_time.description)",
+   "icon": "file(merry_time_frostfeast_buff.png)",
+   "duration": "8h",
+   "repeat_add_action": "renew_duration",
+   "script": "stonehearth_ace:buff_scripts:add_thought",
+   "thought": "stonehearth_ace:thoughts:eating:merry_time_frostfeast",
+   "modifiers": {
+      "xp_multiplier": {
+         "add": 0.1
+      },
+      "willpower": {
+         "add": 15
+      },
+      "compassion": {
+         "add": 15
+      },
+      "inspiration": {
+         "add": 8
+      }
+   },
+   "disallowed_buffs": []
+}

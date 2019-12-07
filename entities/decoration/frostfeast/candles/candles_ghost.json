@@ -1,0 +1,48 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(candles.qb)",
+                     "file(candles_2.qb)",
+                     "file(candles_3.qb)",
+                     "file(candles_4.qb)",
+                     "file(candles_5.qb)",
+                     "file(candles_6.qb)",
+                     "file(candles_7.qb)",
+                     "file(candles_8.qb)"
+                  ]
+               }
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0.01, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      },
+      "render_info": {
+         "color_map": "stonehearth_ace:color_map:ace",
+         "material_maps": [
+            "stonehearth_ace:material_map:ace"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.decoration.frostfeast.candles.display_name)",
+         "description": "i18n(stonehearth_ace:entities.decoration.frostfeast.candles.description)",
+         "icon": "file(candles.png)",
+         "category": "decoration",
+         "material_tags": [
+            "decoration",
+            "festival",
+            "frostfeast",
+            "stockpile_decoration"
+         ]
+      }
+   }
+}

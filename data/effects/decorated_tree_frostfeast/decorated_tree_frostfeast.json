@@ -1,0 +1,41 @@
+{
+   "type": "effect",
+   "tracks": {
+      "cubemitter": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/fire/frostfeast_candle_fire.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": 0, "y": 6.6, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         },
+         "bone": "head"
+      },
+      "cubemitter_glow": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/fire/frostfeast_candle_glow.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": 0, "y": 6.6, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         },
+         "bone": "head"
+      },
+      "light": {
+         "type": "light",
+         "light": "/stonehearth_ace/data/horde/animatedlights/lamp/frostfeast_candle.animatedlight.json",
+         "transforms": { "x": 0, "y": 5, "z": 0 }
+      },
+      "cubemitter_sparkle": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/sparkle/frostfeast_sparkle_tree.cubemitter.json",
+         "transforms": { "x": 0, "y": 3, "z": 0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0
+         }
+      }
+   }
+}

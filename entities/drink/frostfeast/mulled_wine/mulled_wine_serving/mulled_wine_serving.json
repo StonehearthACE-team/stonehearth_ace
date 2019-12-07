@@ -1,0 +1,58 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(mulled_wine_serving.qb)"
+            ]
+         }
+      },
+      "render_info": {
+         "color_map": "stonehearth_ace:color_map:ace",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/mob_material_map.json"
+         ]
+      },
+      "effect_list": {
+         "effects": [
+            "stonehearth_ace:effects:drink:frostfeast:mulled_wine:serving"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:item": {
+         "category": "drink",
+         "destroy_on_uncarry": true
+      },
+      "stonehearth_ace:drink": {
+         "stonehearth:sitting_on_chair": {
+            "satisfaction": 80
+         },
+         "default": {
+            "satisfaction": 60
+         },
+         "applied_buffs": [
+            "stonehearth_ace:buffs:consumption:fruity_flavors",
+            "stonehearth_ace:buffs:consumption:warm_belly",
+            "stonehearth_ace:buffs:consumption:light_headed"
+         ],
+         "quality": 6,
+         "effect_loops": 2
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.drink.frostfeast.mulled_wine.mulled_wine_serving.display_name)",
+         "description": "i18n(stonehearth_ace:entities.drink.frostfeast.mulled_wine.mulled_wine_serving.description)",
+         "material_tags": [
+            "drink",
+            "alcoholic",
+            "mulled_wine_serving",
+            "mulled_wine",
+            "night_time",
+            "warming"
+         ],
+         "subject_override": "stonehearth_ace:drink:frostfeast:mulled_wine"
+      }
+   }
+}

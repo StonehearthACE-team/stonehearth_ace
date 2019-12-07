@@ -4,7 +4,11 @@
       "stonehearth:resource_node": {
          "resource_loot_table": {
             "entries": {
-               "optional": {
+               "mandatory": {
+						"num_rolls": {
+                     "min": 0,
+                     "max": 2
+                  },
                   "items": {
                      "thatch": {
                         "uri": "stonehearth_ace:resources:thatch_bale",

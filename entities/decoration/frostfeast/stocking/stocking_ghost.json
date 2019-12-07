@@ -1,0 +1,49 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(stocking.qb)",
+                     "file(stocking_2.qb)",
+                     "file(stocking_3.qb)",
+                     "file(stocking_4.qb)",
+                     "file(stocking_5.qb)",
+                     "file(stocking_6.qb)",
+                     "file(stocking_7.qb)"
+                  ]
+               }
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": -0.5, "y": 0.5, "z": -0.4 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "allow_vertical_adjacent": true
+      },
+      "render_info": {
+         "scale": 0.1,
+         "animation_table": "/stonehearth_ace/data/rigs/entities/decoration/frostfeast/stocking/stocking.json"
+      },
+      "effect_list": {
+         "default": "/stonehearth_ace/data/rigs/entities/decoration/frostfeast/stocking/effects/idle.json"
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.decoration.frostfeast.stocking.display_name)",
+         "description": "i18n(stonehearth_ace:entities.decoration.frostfeast.stocking.description)",
+         "icon": "file(stocking.png)",
+         "category": "decoration",
+         "material_tags": [
+            "decoration",
+            "festival",
+            "frostfeast",
+            "stockpile_decoration"
+         ]
+      }
+   }
+}

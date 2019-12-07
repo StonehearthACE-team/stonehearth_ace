@@ -1,10 +1,29 @@
 {
+	"can_start": {
+      "test_1": {
+         "not_in_lucky_day": {
+            "type": "deny_if",
+            "item": "weather",
+            "value": "stonehearth:weather:lucky"
+         },
+			"not_in_lucky_day_desert": {
+            "type": "deny_if",
+            "item": "weather",
+            "value": "stonehearth:weather:lucky:desert"
+         }
+      }
+   },
    "out_edge": {
       "out_edges": [
 			"bear_raid_large",
 			"cougar_raid_regular",
 			"goblin_raid_3",
-			"mummy_raid_4"
+			"mummy_raid_4",
+			{
+            "out_edge": "skip_raid",
+            "type": "weighted_edge",
+            "weight": 3
+         }
       ]
    }
 }

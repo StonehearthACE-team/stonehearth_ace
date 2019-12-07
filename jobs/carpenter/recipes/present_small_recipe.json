@@ -1,0 +1,29 @@
+{
+   "type": "recipe",
+   "effort": 10   ,
+   "work_units": 6,
+   "recipe_name": "i18n(stonehearth_ace:jobs.carpenter.recipes.present_small_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.carpenter.recipes.present_small_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.carpenter.recipes.present_small_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/decoration/frostfeast/present_small/present_small.png",
+   "workshop": "stonehearth:carpenter:workbench",
+   "work_effect": "fiddle",
+   "level_requirement": 1,
+   "ingredients": [
+      {
+         "uri": "stonehearth:loot:gold",
+         "count": 1,
+         "min_stacks": 60
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:decoration:frostfeast:present:small",
+         "produce_scripts": ["stonehearth_ace:craft_script:stacks_per_product"],
+         "max_crafts": 1,
+         "stacks_per_product": {
+            "stonehearth:loot:gold": 60
+         }
+      }
+   ]
+}
