@@ -1,7 +1,7 @@
 {
    "mixins": [
-   "stonehearth:mixins:item_properties",
-   "stonehearth_ace:mixins:weapons:offhand_out_of_balance"
+      "stonehearth:mixins:item_properties",
+      "stonehearth_ace:mixins:weapons:offhand_out_of_balance"
    ],
    "type": "entity",
    "components": {
@@ -44,12 +44,12 @@
       ],
       "stonehearth:combat:melee_defenses": [
          {
-            "name": "simple_shield_block",
-            "effect": "combat_1h_shield_block",
-            "active_frame": 4,
-            "cooldown": 10000,
+            "name": "combat_dw_parry",
+            "effect": "combat_dw_parry",
+            "active_frame": 5,
+            "cooldown": 4000,
             "priority": 0,
-            "chance_of_success": 0.2
+            "chance_of_success": 0.3
          }
       ],
       "stonehearth:net_worth": {

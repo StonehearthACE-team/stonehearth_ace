@@ -1,15 +1,14 @@
 {
-	"type" : "encounter",
-	"encounter_type" : "wait",
-	"in_edge"  : "start",
-	"out_edge" : {
-		"type": "trigger_many",
-		"out_edges": [
-			"biome_unlocks",
-			"arc:finish"
-		]
-	},
-	"wait_info" :  {
-		"duration" : "5m"
-	}
+   "type": "encounter",
+   "encounter_type": "wait",
+   "in_edge": "start",
+   "out_edge": {
+      "type": "trigger_many",
+      "out_edges": [
+         "biome_unlocks"
+      ]
+   },
+   "wait_info": {
+      "duration": "5m"
+   }
 }

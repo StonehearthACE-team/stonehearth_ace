@@ -1,8 +1,14 @@
 {
-	"type": "encounter",
-	"encounter_type": "script",
-	"in_edge": "biome_unlocks",
-	"script_info": {
-		"script": "file(lua/biome_unlocks.lua)"
-	}
+   "type": "encounter",
+   "encounter_type": "script",
+   "in_edge": "biome_unlocks",
+   "out_edge": {
+      "type": "trigger_many",
+      "out_edges": [
+         "arc:finish"
+      ]
+   },
+   "script_info": {
+      "script": "file(lua/biome_unlocks.lua)"
+   }
 }
