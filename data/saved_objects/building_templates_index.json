@@ -7,7 +7,8 @@
             "camp": {
                "templates": {
 						"mixintypes": {
-							"blacksmith_house_new": "remove"
+							"blacksmith_house_new": "remove",
+							"herbalist_house_new": "remove"
 						},
 						"blacksmith_house_ace": {
 							"unlock_requirement": {
@@ -30,7 +31,7 @@
                      },
                      "file": "file(building_templates/potter_house_ace.json)"
                   },
-						"herbalist_house_new": {
+						"herbalist_house_ace": {
                      "unlock_requirement": {
                         "type": "has_job",
                         "value": "stonehearth:jobs:herbalist"

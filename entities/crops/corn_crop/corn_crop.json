@@ -1,6 +1,59 @@
 {
    "components": {
-	  "stonehearth:growing": {
+		"mixintypes": {
+			"model_variants": "override"
+		},
+		"model_variants": {
+         "default": {
+            "models": [
+               "/stonehearth/entities/crops/corn_crop/corn_4.qb"
+            ]
+         },
+         "corn_1": {
+            "models": [
+               "/stonehearth/entities/crops/corn_crop/corn_1.qb"
+            ]
+         },
+         "corn_2": {
+            "models": [
+               "/stonehearth/entities/crops/corn_crop/corn_2.qb"
+            ]
+         },
+         "corn_3": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "/stonehearth/entities/crops/corn_crop/corn_3.qb",
+                     "file(corn_3_2.qb)"
+                  ]
+               }
+            ]
+         },
+         "corn_4": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "/stonehearth/entities/crops/corn_crop/corn_4.qb",
+                     "file(corn_4_2.qb)"
+                  ]
+               }
+            ]
+         },
+         "corn_12": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "/stonehearth/entities/crops/corn_crop/corn_12.qb",
+                     "file(corn_12_2.qb)"
+                  ]
+               }
+            ]
+         }
+      },
+		"stonehearth:growing": {
 			"growth_period": "36h",
 			"preferred_climate": "temperate_complex"
       }

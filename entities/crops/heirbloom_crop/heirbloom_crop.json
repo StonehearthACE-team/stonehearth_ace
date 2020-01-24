@@ -1,5 +1,70 @@
 {
    "components": {
+		"mixintypes": {
+			"model_variants": "override"
+		},
+		"model_variants": {
+         "default": {
+            "models": [
+               "/stonehearth/entities/crops/heirbloom_crop/heirbloom_crop_4.qb"
+            ]
+         },
+         "heirbloom_1": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "/stonehearth/entities/crops/heirbloom_crop/heirbloom_crop_1.qb",
+                     "file(heirbloom_crop_1_2.qb)"
+                  ]
+               }
+            ]
+         },
+         "heirbloom_2": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "/stonehearth/entities/crops/heirbloom_crop/heirbloom_crop_2.qb",
+                     "file(heirbloom_crop_2_2.qb)"
+                  ]
+               }
+            ]
+         },
+         "heirbloom_3": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "/stonehearth/entities/crops/heirbloom_crop/heirbloom_crop_3.qb",
+                     "file(heirbloom_crop_3_2.qb)"
+                  ]
+               }
+            ]
+         },
+         "heirbloom_4": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "/stonehearth/entities/crops/heirbloom_crop/heirbloom_crop_4.qb",
+                     "file(heirbloom_crop_4_2.qb)"
+                  ]
+               }
+            ]
+         },
+         "heirbloom_12": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "/stonehearth/entities/crops/heirbloom_crop/heirbloom_crop_12.qb",
+                     "file(heirbloom_crop_12_2.qb)"
+                  ]
+               }
+            ]
+         }
+      },
 	  "stonehearth:growing": {
 			"growth_period": "16h",
 			"preferred_climate": "temperate_easy"

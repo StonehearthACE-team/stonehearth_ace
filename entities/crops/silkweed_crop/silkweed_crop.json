@@ -1,6 +1,70 @@
 {
    "components": {
-	  "stonehearth:growing": {
+		"mixintypes": {
+			"model_variants": "override"
+		},
+		"model_variants": {
+         "default": {
+            "models": [
+               "/stonehearth/entities/crops/silkweed_crop/silkweed_4.qb"
+            ]
+         },
+         "silkweed_1": {
+            "models": [
+               "/stonehearth/entities/crops/silkweed_crop/silkweed_1.qb"
+            ]
+         },
+         "silkweed_2": {
+            "models": [
+               "/stonehearth/entities/crops/silkweed_crop/silkweed_2.qb"
+            ]
+         },
+         "silkweed_3": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "/stonehearth/entities/crops/silkweed_crop/silkweed_3.qb",
+                     "file(silkweed_3_2.qb)"
+                  ]
+               }
+            ]
+         },
+         "silkweed_4": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "/stonehearth/entities/crops/silkweed_crop/silkweed_4.qb",
+                     "file(silkweed_4_2.qb)"
+                  ]
+               }
+            ]
+         },
+         "silkweed_5": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "/stonehearth/entities/plants/silkweed/silkweed/silkweed.qb",
+                     "file(silkweed_5_2.qb)"
+                  ]
+               }
+            ]
+         },
+         "silkweed_20": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "/stonehearth/entities/crops/silkweed_crop/silkweed_20.qb",
+                     "file(silkweed_20_2.qb)"
+                  ]
+               }
+            ]
+         }
+      },
+	   "stonehearth:growing": {
 			"growth_period": "24h",
 			"preferred_climate": "tropical_easy"
       }
