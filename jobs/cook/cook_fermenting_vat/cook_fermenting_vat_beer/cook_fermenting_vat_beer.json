@@ -23,7 +23,7 @@
          "region": [
             {
                "min": { "x": -2, "y": 0, "z": -2 },
-               "max": { "x": 1, "y": 5, "z": 1 }
+               "max": { "x": 1, "y": 4, "z": 1 }
             }
          ]
       },
@@ -32,6 +32,16 @@
             {
                "min": { "x": 1, "y": 0, "z": -1 },
                "max": { "x": 2, "y": 4, "z": 0 }
+            }
+         ]
+      },
+      "movement_modifier_shape": {
+         "modifier": -0.5,
+         "nav_preference_modifier": -0.8,
+         "region": [
+            {
+               "min": { "x": -2, "y": 4, "z": -2 },
+               "max": { "x": 1, "y": 5, "z": 1 }
             }
          ]
       },

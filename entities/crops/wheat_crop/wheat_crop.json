@@ -1,5 +1,70 @@
 {
    "components": {
+		"mixintypes": {
+			"model_variants": "override"
+		},
+		"model_variants": {
+         "default": {
+            "models": [
+               "/stonehearth/entities/crops/wheat_crop/wheat_4.qb"
+            ]
+         },
+         "wheat_1": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "/stonehearth/entities/crops/wheat_crop/wheat_1.qb",
+                     "file(wheat_1_2.qb)"
+                  ]
+               }
+            ]
+         },
+         "wheat_2": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "/stonehearth/entities/crops/wheat_crop/wheat_2.qb",
+                     "file(wheat_2_2.qb)"
+                  ]
+               }
+            ]
+         },
+         "wheat_3": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "/stonehearth/entities/crops/wheat_crop/wheat_3.qb",
+                     "file(wheat_3_2.qb)"
+                  ]
+               }
+            ]
+         },
+         "wheat_4": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "/stonehearth/entities/crops/wheat_crop/wheat_4.qb",
+                     "file(wheat_4_2.qb)"
+                  ]
+               }
+            ]
+         },
+         "wheat_12": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "/stonehearth/entities/crops/wheat_crop/wheat_12.qb",
+                     "file(wheat_12_2.qb)"
+                  ]
+               }
+            ]
+         }
+      },
 	  "stonehearth:growing": {
 			"growth_period": "32h",
 			"preferred_climate": "arctic_complex"

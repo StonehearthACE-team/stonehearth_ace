@@ -485,7 +485,7 @@
                            "bulletin_title": "Rattley is very happy!",
                            "dialog_title": "The little goblin rejoices",
                            "bulletin_message": {
-                              "00": "She quickly grab the materials. \"BONES! BONES!\"<p>Behind her, Thorulf is finishing setting up the camp. \"Rattley, thank them for the gift!\"<p>She looks back before continuing. \"BONES! You make Rattley happy!\""
+                              "00": "She quickly grabs the materials. \"BONES! BONES!\"<p>Behind her, Thorulf is finishing setting up the camp. \"Rattley, thank them for the gift!\"<p>She looks back before continuing. \"BONES! You make Rattley happy!\""
                            },
                            "choice_000": "Have fun!"
                         }
@@ -2511,7 +2511,7 @@
             "refined_fungi_name": "Fungal Refinement",
             "refined_seeds_name": "Regional Seeds",
             "farming_enhancements_name": "Farming Enhancements & Seeds",
-				"decorated_frostfeast_tree_recipe": {
+            "decorated_frostfeast_tree_recipe": {
                "recipe_name": "Decorated Frostfeast Pine",
                "description": "Get your town ready for the holidays with this traditional and beautiful decorated tree.",
                "flavor": "A symbol of hope, gratitude and warmth!"
@@ -3027,17 +3027,17 @@
       },
       "potter": {
          "recipes": {
-				"present_small_recipe": {
+            "present_small_recipe": {
                "recipe_name": "Small Frostfeast Present",
                "description": "Buy a delicate present for your town. Can be used as decoration or unwrapped.",
                "flavor": "Small presents contain two random items"
             },
-				"present_recipe": {
+            "present_recipe": {
                "recipe_name": "Frostfeast Present",
                "description": "Buy a beautiful present for your town. Can be used as decoration or unwrapped.",
                "flavor": "Presents contain up to four random items. One is guaranteed to be a special Frostfeast item!"
             },
-				"present_large_recipe": {
+            "present_large_recipe": {
                "recipe_name": "Big Frostfeast Present",
                "description": "Buy an amazing and big present for your town. Can be used as decoration or unwrapped.",
                "flavor": "Big presents contain up to six random items. Two are guaranteed to be special Frostfeast items!"
@@ -3430,17 +3430,17 @@
             "bone_weapons_armor_name": "Weapons & Armor, Bone Carving",
             "bone_furniture_name": "Furniture & Decoration, Bone Carving",
             "bone_building_parts_name": "Building Parts, Bone Carving",
-				"present_small_recipe": {
+            "present_small_recipe": {
                "recipe_name": "Small Frostfeast Present",
                "description": "Buy a delicate present for your town. Can be used as decoration or unwrapped.",
                "flavor": "Small presents contain two random items"
             },
-				"present_recipe": {
+            "present_recipe": {
                "recipe_name": "Frostfeast Present",
                "description": "Buy a beautiful present for your town. Can be used as decoration or unwrapped.",
                "flavor": "Presents contain up to four random items. One is guaranteed to be a special Frostfeast item!"
             },
-				"present_large_recipe": {
+            "present_large_recipe": {
                "recipe_name": "Big Frostfeast Present",
                "description": "Buy an amazing and big present for your town. Can be used as decoration or unwrapped.",
                "flavor": "Big presents contain up to six random items. Two are guaranteed to be special Frostfeast items!"
@@ -4329,12 +4329,12 @@
             },
             "raw_rice_recipe": {
                "recipe_name": "Sack of Raw Rice",
-               "description": "Delicious grains ready to be used in other recipes.",
+               "description": "Delicious grains ready to be used in other recipes. Raw Rice can also be used as a vegetable.",
                "flavor": "Who knew grass could be so tasty?"
             },
             "rice_flour_recipe": {
                "recipe_name": "Sack of Rice Flour",
-               "description": "A formidable alternative for wheat flour.",
+               "description": "A formidable alternative for wheat flour, can be used as any flour.",
                "flavor": ""
             },
             "nut_flour_recipe": {
@@ -4754,17 +4754,17 @@
       },
       "carpenter": {
          "recipes": {
-				"present_small_recipe": {
+            "present_small_recipe": {
                "recipe_name": "Small Frostfeast Present",
                "description": "Buy a delicate present for your town. Can be used as decoration or unwrapped.",
                "flavor": "Small presents contain two random items"
             },
-				"present_recipe": {
+            "present_recipe": {
                "recipe_name": "Frostfeast Present",
                "description": "Buy a beautiful present for your town. Can be used as decoration or unwrapped.",
                "flavor": "Presents contain up to four random items. One is guaranteed to be a special Frostfeast item!"
             },
-				"present_large_recipe": {
+            "present_large_recipe": {
                "recipe_name": "Big Frostfeast Present",
                "description": "Buy an amazing and big present for your town. Can be used as decoration or unwrapped.",
                "flavor": "Big presents contain up to six random items. Two are guaranteed to be special Frostfeast items!"
@@ -5767,7 +5767,7 @@
          },
          "paddy_crop": {
             "display_name": "Paddy Field",
-            "description": "Rice grows slowly and in water but is widely appreciated!",
+            "description": "Rice grows slowly and requires water but works both as a grain and a vegetable!",
             "growth_stage": {
                "000": {
                   "name": "Paddy Stub",
@@ -6016,6 +6016,9 @@
             },
             "racoon_pelt": {
                "display_name": "Raccoon Pelt"
+            },
+            "cougar_pelt": {
+               "display_name": "Big Cat Pelt"
             },
             "skunk_pelt": {
                "display_name": "Skunk Pelt"
@@ -7649,6 +7652,11 @@
             "candles_iconic": {
                "description": "Can be placed down or hanged on a wall. Beautiful!"
             }
+         },
+         "hearth_wolf": {
+            "hearth_wolf": {
+               "description": "Proof that your crafters learned the land and created worthy goods"
+            }
          }
       },
       "pets": {
@@ -8042,11 +8050,11 @@
          "rice": {
             "paddy_basket": {
                "display_name": "Basket of Paddy",
-               "description": "Unmilled grass seeds. Can be turned into raw rice with a mill."
+               "description": "Unmilled grass seeds. Can be turned into raw rice or flour."
             },
             "raw_rice": {
                "display_name": "Sack of Raw Rice",
-               "description": "Delicious grains ready to be used in cooking."
+               "description": "Delicious grains ready to be used in cooking or as a vegetable."
             },
             "rice_flour": {
                "display_name": "Sack of Rice Flour",

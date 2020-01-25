@@ -1,5 +1,92 @@
 {
    "components": {
+		"mixintypes": {
+			"model_variants": "override"
+		},
+		"model_variants": {
+         "default": {
+            "models": [
+               "/stonehearth/entities/crops/golden_gourd_crop/golden_gourd_crop_1.qb"
+            ]
+         },
+         "golden_gourd_1": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "/stonehearth/entities/crops/golden_gourd_crop/golden_gourd_crop_1.qb",
+                     "file(golden_gourd_crop_1_2.qb)"
+                  ]
+               }
+            ]
+         },
+         "golden_gourd_2": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "/stonehearth/entities/crops/golden_gourd_crop/golden_gourd_crop_2.qb",
+                     "file(golden_gourd_crop_2_2.qb)"
+                  ]
+               }
+            ]
+         },
+         "golden_gourd_3": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "/stonehearth/entities/crops/golden_gourd_crop/golden_gourd_crop_3.qb",
+                     "file(golden_gourd_crop_3_2.qb)"
+                  ]
+               }
+            ]
+         },
+         "golden_gourd_4": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "/stonehearth/entities/crops/golden_gourd_crop/golden_gourd_crop_4.qb",
+                     "file(golden_gourd_crop_4_2.qb)"
+                  ]
+               }
+            ]
+         },
+			"golden_gourd_5": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "/stonehearth/entities/crops/golden_gourd_crop/golden_gourd_crop_5.qb",
+                     "file(golden_gourd_crop_5_2.qb)"
+                  ]
+               }
+            ]
+         },
+			"golden_gourd_6": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "/stonehearth/entities/crops/golden_gourd_crop/golden_gourd_crop_6.qb",
+                     "file(golden_gourd_crop_6_2.qb)"
+                  ]
+               }
+            ]
+         },
+         "golden_gourd_12": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "/stonehearth/entities/crops/golden_gourd_crop/golden_gourd_crop_12.qb",
+                     "file(golden_gourd_crop_12_2.qb)"
+                  ]
+               }
+            ]
+         }
+      },
       "mob": {
          "model_origin": { "x": -0.05, "y": -0.01, "z": 0.05 }
       },

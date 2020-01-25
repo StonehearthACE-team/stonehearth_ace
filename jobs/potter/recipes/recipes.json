@@ -1,92 +1,140 @@
 {
-   "craftable_recipes": {
+	"craftable_recipes": {
 		"workbenches": {
-         "recipes": {
-            "kiln_upgrade": {
-               "recipe": "/rayyas_children/jobs/potter/recipes/kiln_upgrade_recipe.json"
-            },
-            "workbench_upgrade": {
-               "recipe": "/rayyas_children/jobs/potter/recipes/workbench_upgrade_recipe.json"
-            }
-         }
-      },
+			"recipes": {
+				"kiln_upgrade": {
+					"recipe": "/rayyas_children/jobs/potter/recipes/kiln_upgrade_recipe.json"
+				},
+				"workbench_upgrade": {
+					"recipe": "/rayyas_children/jobs/potter/recipes/workbench_upgrade_recipe.json"
+				}
+			}
+		},
 		"legendary": {
-         "recipes": {
-            "legendary_rc_face": {
-               "recipe": "/rayyas_children/jobs/potter/recipes/legendary_rc_face_recipe.json"
-            },
-            "legendary_rc_inlay": {
-               "recipe": "/rayyas_children/jobs/potter/recipes/legendary_rc_inlay_recipe.json"
-            }
-         }
-      },
-      "building_parts": {
-         "recipes": {
-            "simple_hatch_clay": {
-               "recipe": "file(simple_hatch_clay_recipe.json)"
-            },
-            "hidden_hatch_clay": {
-               "recipe": "file(hidden_hatch_clay_recipe.json)"
-            },
-            "diagonal_hatch_clay": {
-               "recipe": "file(diagonal_hatch_clay_recipe.json)"
-            },
-            "reinforced_clay_door": {
-               "recipe": "file(reinforced_clay_door_recipe.json)"
-            },
-            "reinforced_clay_door_lockable": {
-               "recipe": "file(reinforced_clay_door_lockable_recipe.json)"
-            }
-         }
-      },
-	  "storage": {
-		 "recipes": {
-			"fuel_holder_large_clay": {
-				"recipe": "file(fuel_holder_large_clay_recipe.json)"
-			},
-			"amphora": {
-				"recipe": "file(amphora_recipe.json)"
-			},
-			"amphora_blue": {
-				"recipe": "file(amphora_blue_recipe.json)"
-			},
-			"amphora_green": {
-				"recipe": "file(amphora_green_recipe.json)"
-			},
-			"amphora_red": {
-				"recipe": "file(amphora_red_recipe.json)"
-			},
-			"input_cask_clay_small": {
-				"recipe": "file(input_cask_clay_small_recipe.json)"
-			},
-			"input_cask_clay": {
-				"recipe": "file(input_cask_clay_recipe.json)"
-			},
-			"serving_keg_clay": {
-				"recipe": "file(serving_keg_clay_recipe.json)"
-			},
-			"output_tun_clay": {
-            "recipe": "file(output_tun_clay_recipe.json)"
-         },
-			"tall_urn": {
-				"recipe": "file(tall_urn_recipe.json)"
-			},
-			"chest": {
-            "recipe": "/rayyas_children/jobs/potter/recipes/chest_recipe.json"
-         },
-         "urn_large": {
-            "recipe": "/rayyas_children/jobs/potter/recipes/urn_large_recipe.json"
-         }
-		 }
-	  },
-	  "utility": {
-		 "recipes": {
-			"clay_training_dummy": {
-               "recipe": "file(clay_training_dummy_recipe.json)"
-            },
-            "clay_training_target": {
-               "recipe": "file(clay_training_target_recipe.json)"
-            },
+			"recipes": {
+				"legendary_rc_face": {
+					"recipe": "/rayyas_children/jobs/potter/recipes/legendary_rc_face_recipe.json"
+				},
+				"legendary_rc_inlay": {
+					"recipe": "/rayyas_children/jobs/potter/recipes/legendary_rc_inlay_recipe.json"
+				}
+			}
+		},
+		"building_parts": {
+			"recipes": {
+				"simple_hatch_clay": {
+					"recipe": "file(simple_hatch_clay_recipe.json)"
+				},
+				"hidden_hatch_clay": {
+					"recipe": "file(hidden_hatch_clay_recipe.json)"
+				},
+				"diagonal_hatch_clay": {
+					"recipe": "file(diagonal_hatch_clay_recipe.json)"
+				},
+				"reinforced_clay_door": {
+					"recipe": "file(reinforced_clay_door_recipe.json)"
+				},
+				"reinforced_clay_door_lockable": {
+					"recipe": "file(reinforced_clay_door_lockable_recipe.json)"
+				},
+				"porcelain_fence_bar_double": {
+					"recipe": "file(porcelain_fence_bar_double_recipe.json)"
+				},
+				"porcelain_fence_bar_single": {
+					"recipe": "file(porcelain_fence_bar_single_recipe.json)"
+				},
+				"porcelain_fence_end": {
+					"recipe": "file(porcelain_fence_end_recipe.json)"
+				},
+				"porcelain_fence_gate": {
+					"recipe": "file(porcelain_fence_gate_recipe.json)"
+				},
+				"porcelain_wall_lamp": {
+					"recipe": "file(porcelain_wall_lamp_recipe.json)"
+				},
+				"porcelain_lamp": {
+					"recipe": "file(porcelain_lamp_recipe.json)"
+				},
+				"clay_animal_door": {
+					"recipe": "file(clay_animal_door_recipe.json)"
+				},
+				"clay_animal_door_small": {
+					"recipe": "file(clay_animal_door_small_recipe.json)"
+				},
+				"door_clay_latticed": {
+					"recipe": "/rayyas_children/jobs/potter/recipes/door_clay_latticed_recipe.json"
+				},
+				"window_tall_latticed": {
+					"recipe": "/rayyas_children/jobs/potter/recipes/window_tall_latticed_recipe.json"
+				},
+				"lightbox": {
+					"recipe": "/rayyas_children/jobs/potter/recipes/lightbox_recipe.json"
+				},
+				"jar_green": {
+					"recipe": "/rayyas_children/jobs/potter/recipes/jar_green_recipe.json"
+				},
+				"jar_red": {
+					"recipe": "/rayyas_children/jobs/potter/recipes/jar_red_recipe.json"
+				},
+				"pot_oil_earthen": {
+					"recipe": "/rayyas_children/jobs/potter/recipes/pot_oil_earthen_recipe.json"
+				},
+				"pot_oil_green": {
+					"recipe": "/rayyas_children/jobs/potter/recipes/pot_oil_green_recipe.json"
+				},
+				"pot_oil_halfgreen": {
+					"recipe": "/rayyas_children/jobs/potter/recipes/pot_oil_halfgreen_recipe.json"
+				}
+			}
+		},
+		"storage": {
+			"recipes": {
+				"fuel_holder_large_clay": {
+					"recipe": "file(fuel_holder_large_clay_recipe.json)"
+				},
+				"amphora": {
+					"recipe": "file(amphora_recipe.json)"
+				},
+				"amphora_blue": {
+					"recipe": "file(amphora_blue_recipe.json)"
+				},
+				"amphora_green": {
+					"recipe": "file(amphora_green_recipe.json)"
+				},
+				"amphora_red": {
+					"recipe": "file(amphora_red_recipe.json)"
+				},
+				"input_cask_clay_small": {
+					"recipe": "file(input_cask_clay_small_recipe.json)"
+				},
+				"input_cask_clay": {
+					"recipe": "file(input_cask_clay_recipe.json)"
+				},
+				"serving_keg_clay": {
+					"recipe": "file(serving_keg_clay_recipe.json)"
+				},
+				"output_tun_clay": {
+					"recipe": "file(output_tun_clay_recipe.json)"
+				},
+				"tall_urn": {
+					"recipe": "file(tall_urn_recipe.json)"
+				},
+				"chest": {
+					"recipe": "/rayyas_children/jobs/potter/recipes/chest_recipe.json"
+				},
+				"urn_large": {
+					"recipe": "/rayyas_children/jobs/potter/recipes/urn_large_recipe.json"
+				}
+			}
+		},
+		"utility": {
+			"recipes": {
+				"clay_training_dummy": {
+					"recipe": "file(clay_training_dummy_recipe.json)"
+				},
+				"clay_training_target": {
+					"recipe": "file(clay_training_target_recipe.json)"
+				},
 				"food_trough_clay": {
 					"recipe": "file(food_trough_clay_recipe.json)"
 				},
@@ -112,231 +160,179 @@
 					"recipe": "file(present_large_recipe.json)"
 				}
 			}
-	  },
-	  "building_parts": {
-		 "recipes": {
-			"porcelain_fence_bar_double": {
-               "recipe": "file(porcelain_fence_bar_double_recipe.json)"
-            },
-			"porcelain_fence_bar_single": {
-               "recipe": "file(porcelain_fence_bar_single_recipe.json)"
-            },
-			"porcelain_fence_end": {
-               "recipe": "file(porcelain_fence_end_recipe.json)"
-            },
-			"porcelain_fence_gate": {
-               "recipe": "file(porcelain_fence_gate_recipe.json)"
-            },
-			"porcelain_wall_lamp": {
-               "recipe": "file(porcelain_wall_lamp_recipe.json)"
-            },
-			"porcelain_lamp": {
-               "recipe": "file(porcelain_lamp_recipe.json)"
-            },
-			"clay_animal_door": {
-				"recipe": "file(clay_animal_door_recipe.json)"
-			},
-			"clay_animal_door_small": {
-				"recipe": "file(clay_animal_door_small_recipe.json)"
-			},
-			"door_clay_latticed": {
-               "recipe": "/rayyas_children/jobs/potter/recipes/door_clay_latticed_recipe.json"
-            },
-            "window_tall_latticed": {
-               "recipe": "/rayyas_children/jobs/potter/recipes/window_tall_latticed_recipe.json"
-            },
-            "lightbox": {
-               "recipe": "/rayyas_children/jobs/potter/recipes/lightbox_recipe.json"
-            },
-            "jar_green": {
-               "recipe": "/rayyas_children/jobs/potter/recipes/jar_green_recipe.json"
-            },
-            "jar_red": {
-               "recipe": "/rayyas_children/jobs/potter/recipes/jar_red_recipe.json"
-            },
-            "pot_oil_earthen": {
-               "recipe": "/rayyas_children/jobs/potter/recipes/pot_oil_earthen_recipe.json"
-            },
-            "pot_oil_green": {
-               "recipe": "/rayyas_children/jobs/potter/recipes/pot_oil_green_recipe.json"
-            },
-            "pot_oil_halfgreen": {
-               "recipe": "/rayyas_children/jobs/potter/recipes/pot_oil_halfgreen_recipe.json"
-            }
-		 }
-	  },
-	  "furniture": {
-		 "recipes": {
-			"decorative_teapot": {
-               "recipe": "/rayyas_children/jobs/potter/recipes/decorative_teapot_recipe.json"
-            },
+		},
+		"furniture": {
+			"recipes": {
+				"decorative_teapot": {
+					"recipe": "/rayyas_children/jobs/potter/recipes/decorative_teapot_recipe.json"
+				},
 				"trading_post_monument": {
-               "recipe": "/rayyas_children/jobs/potter/recipes/trading_post_monument_recipe.json"
-            },
-            "monkey_shrine_monument": {
-               "recipe": "/rayyas_children/jobs/potter/recipes/monkey_shrine_monument_recipe.json"
-            },
-            "exotic_trade_monument": {
-               "recipe": "/rayyas_children/jobs/potter/recipes/exotic_trade_monument_recipe.json"
-            },
-			"clay_comfy_bed": {
-               "recipe": "file(clay_comfy_bed_recipe.json)"
-            },
-			"clay_bed_crude": {
-               "recipe": "file(clay_bed_crude_recipe.json)"
-            },
-			"porcelain_bench_comfy": {
-               "recipe": "file(porcelain_bench_comfy_recipe.json)"
-            },
-			"porcelain_bench": {
-               "recipe": "file(porcelain_bench_recipe.json)"
-            },
-			"porcelain_chair_comfy": {
-               "recipe": "file(porcelain_chair_comfy_recipe.json)"
-            },
-			"porcelain_chair": {
-               "recipe": "file(porcelain_chair_recipe.json)"
-            },
-			"porcelain_comfy_bed": {
-               "recipe": "file(porcelain_comfy_bed_recipe.json)"
-            },
-			"porcelain_dining_table": {
-               "recipe": "file(porcelain_dining_table_recipe.json)"
-            },
-			"porcelain_display_cabinet": {
-               "recipe": "file(porcelain_display_cabinet_recipe.json)"
-            },
-			"porcelain_display_cupboard": {
-               "recipe": "file(porcelain_display_cupboard_recipe.json)"
-            },
-			"porcelain_dresser": {
-               "recipe": "file(porcelain_dresser_recipe.json)"
-            },
-			"porcelain_end_table": {
-               "recipe": "file(porcelain_end_table_recipe.json)"
-            },
-			"porcelain_floor_tile": {
-               "recipe": "file(porcelain_floor_tile_recipe.json)"
-            },
-			"porcelain_jar_of_feathers": {
-               "recipe": "file(porcelain_jar_of_feathers_recipe.json)"
-            },
-			"porcelain_planter": {
-               "recipe": "file(porcelain_planter_recipe.json)"
-            },
-			"porcelain_shelf": {
-               "recipe": "file(porcelain_shelf_recipe.json)"
-            },
-			"porcelain_table": {
-               "recipe": "file(porcelain_table_recipe.json)"
-            },
-			"porcelain_teapot": {
-               "recipe": "file(porcelain_teapot_recipe.json)"
-            },
-			"porcelain_urn_short": {
-               "recipe": "file(porcelain_urn_short_recipe.json)"
-            },
-			"porcelain_urn_tall": {
-               "recipe": "file(porcelain_urn_tall_recipe.json)"
-            },
-			"porcelain_wall_tile_blue": {
-               "recipe": "file(porcelain_wall_tile_blue_recipe.json)"
-            },
-			"porcelain_wall_tile_gold": {
-               "recipe": "file(porcelain_wall_tile_gold_recipe.json)"
-            },
-			"simple_bed_pet": {
-			   "recipe": "file(simple_bed_pet_recipe.json)"
-			},
-			"clay_comfy_bed_pet": {
-			   "recipe": "file(clay_comfy_bed_pet_recipe.json)"
-			},
-			"porcelain_bed_pet": {
-			   "recipe": "file(porcelain_bed_pet_recipe.json)"
-			},
-			"pet_food_bowl_clay_blue": {
-				"recipe": "file(pet_food_bowl_clay_blue_recipe.json)"
-			},
-			"pet_food_bowl_clay_red": {
-				"recipe": "file(pet_food_bowl_clay_red_recipe.json)"
-			},
-			"pet_food_bowl_clay_green": {
-				"recipe": "file(pet_food_bowl_clay_green_recipe.json)"
-			},
-			"decorative_teapot": {
-               "recipe": "/rayyas_children/jobs/potter/recipes/decorative_teapot_recipe.json"
-            },
-            "pot_sunflower": {
-               "recipe": "/rayyas_children/jobs/potter/recipes/pot_sunflower_recipe.json"
-            },
-            "pot_fox_lily": {
-               "recipe": "/rayyas_children/jobs/potter/recipes/pot_fox_lily_recipe.json"
-            },
-            "pot_acacia": {
-               "recipe": "/rayyas_children/jobs/potter/recipes/pot_acacia_recipe.json"
-            },
-            "wall_hanging_sunflower": {
-               "recipe": "/rayyas_children/jobs/potter/recipes/wall_hanging_sunflower_recipe.json"
-            },
-            "wall_hanging_sunwreath": {
-               "recipe": "/rayyas_children/jobs/potter/recipes/wall_hanging_sunwreath_recipe.json"
-            },
-            "wind_chime": {
-               "recipe": "/rayyas_children/jobs/potter/recipes/wind_chime_recipe.json"
-            },
-            "monkey": {
-               "recipe": "/rayyas_children/jobs/potter/recipes/monkey_recipe.json"
-            },
-            "teapot": {
-               "recipe": "/rayyas_children/jobs/potter/recipes/teapot_recipe.json"
-            },
-            "pedestal_firepit": {
-               "recipe": "/rayyas_children/jobs/potter/recipes/pedestal_firepit_recipe.json"
-            },
-            "pedestal_floral_red": {
-               "recipe": "/rayyas_children/jobs/potter/recipes/pedestal_floral_red_recipe.json"
-            },
-            "pedestal_floral_coral": {
-               "recipe": "/rayyas_children/jobs/potter/recipes/pedestal_floral_coral_recipe.json"
-            },
-            "pedestal_floral_blue": {
-               "recipe": "/rayyas_children/jobs/potter/recipes/pedestal_floral_blue_recipe.json"
-            },
-			"clay_stool": {
-				"recipe": "file(clay_stool_recipe.json)"
-			},
-			"counter_clay_corner_inner": {
-				"recipe": "file(counter_clay_corner_inner_recipe.json)"
-			},
-			"counter_clay_corner_outer": {
-				"recipe": "file(counter_clay_corner_outer_recipe.json)"
-			},
-			"counter_clay_mid": {
-				"recipe": "file(counter_clay_mid_recipe.json)"
-			},
-			"counter_clay_mid_small": {
-				"recipe": "file(counter_clay_mid_small_recipe.json)"
-			},
-			"counter_clay_end_right": {
-				"recipe": "file(counter_clay_end_right_recipe.json)"
-			},
-			"counter_clay_end_left": {
-				"recipe": "file(counter_clay_end_left_recipe.json)"
-			},
-			"counter_clay_door": {
-				"recipe": "file(counter_clay_door_recipe.json)"
+					"recipe": "/rayyas_children/jobs/potter/recipes/trading_post_monument_recipe.json"
+				},
+				"monkey_shrine_monument": {
+					"recipe": "/rayyas_children/jobs/potter/recipes/monkey_shrine_monument_recipe.json"
+				},
+				"exotic_trade_monument": {
+					"recipe": "/rayyas_children/jobs/potter/recipes/exotic_trade_monument_recipe.json"
+				},
+				"clay_comfy_bed": {
+					"recipe": "file(clay_comfy_bed_recipe.json)"
+				},
+				"clay_bed_crude": {
+					"recipe": "file(clay_bed_crude_recipe.json)"
+				},
+				"porcelain_bench_comfy": {
+					"recipe": "file(porcelain_bench_comfy_recipe.json)"
+				},
+				"porcelain_bench": {
+					"recipe": "file(porcelain_bench_recipe.json)"
+				},
+				"porcelain_chair_comfy": {
+					"recipe": "file(porcelain_chair_comfy_recipe.json)"
+				},
+				"porcelain_chair": {
+					"recipe": "file(porcelain_chair_recipe.json)"
+				},
+				"porcelain_comfy_bed": {
+					"recipe": "file(porcelain_comfy_bed_recipe.json)"
+				},
+				"porcelain_dining_table": {
+					"recipe": "file(porcelain_dining_table_recipe.json)"
+				},
+				"porcelain_display_cabinet": {
+					"recipe": "file(porcelain_display_cabinet_recipe.json)"
+				},
+				"porcelain_display_cupboard": {
+					"recipe": "file(porcelain_display_cupboard_recipe.json)"
+				},
+				"porcelain_dresser": {
+					"recipe": "file(porcelain_dresser_recipe.json)"
+				},
+				"porcelain_end_table": {
+					"recipe": "file(porcelain_end_table_recipe.json)"
+				},
+				"porcelain_floor_tile": {
+					"recipe": "file(porcelain_floor_tile_recipe.json)"
+				},
+				"porcelain_jar_of_feathers": {
+					"recipe": "file(porcelain_jar_of_feathers_recipe.json)"
+				},
+				"porcelain_planter": {
+					"recipe": "file(porcelain_planter_recipe.json)"
+				},
+				"porcelain_shelf": {
+					"recipe": "file(porcelain_shelf_recipe.json)"
+				},
+				"porcelain_table": {
+					"recipe": "file(porcelain_table_recipe.json)"
+				},
+				"porcelain_teapot": {
+					"recipe": "file(porcelain_teapot_recipe.json)"
+				},
+				"porcelain_urn_short": {
+					"recipe": "file(porcelain_urn_short_recipe.json)"
+				},
+				"porcelain_urn_tall": {
+					"recipe": "file(porcelain_urn_tall_recipe.json)"
+				},
+				"porcelain_wall_tile_blue": {
+					"recipe": "file(porcelain_wall_tile_blue_recipe.json)"
+				},
+				"porcelain_wall_tile_gold": {
+					"recipe": "file(porcelain_wall_tile_gold_recipe.json)"
+				},
+				"simple_bed_pet": {
+					"recipe": "file(simple_bed_pet_recipe.json)"
+				},
+				"clay_comfy_bed_pet": {
+					"recipe": "file(clay_comfy_bed_pet_recipe.json)"
+				},
+				"porcelain_bed_pet": {
+					"recipe": "file(porcelain_bed_pet_recipe.json)"
+				},
+				"pet_food_bowl_clay_blue": {
+					"recipe": "file(pet_food_bowl_clay_blue_recipe.json)"
+				},
+				"pet_food_bowl_clay_red": {
+					"recipe": "file(pet_food_bowl_clay_red_recipe.json)"
+				},
+				"pet_food_bowl_clay_green": {
+					"recipe": "file(pet_food_bowl_clay_green_recipe.json)"
+				},
+				"decorative_teapot": {
+					"recipe": "/rayyas_children/jobs/potter/recipes/decorative_teapot_recipe.json"
+				},
+				"pot_sunflower": {
+					"recipe": "/rayyas_children/jobs/potter/recipes/pot_sunflower_recipe.json"
+				},
+				"pot_fox_lily": {
+					"recipe": "/rayyas_children/jobs/potter/recipes/pot_fox_lily_recipe.json"
+				},
+				"pot_acacia": {
+					"recipe": "/rayyas_children/jobs/potter/recipes/pot_acacia_recipe.json"
+				},
+				"wall_hanging_sunflower": {
+					"recipe": "/rayyas_children/jobs/potter/recipes/wall_hanging_sunflower_recipe.json"
+				},
+				"wall_hanging_sunwreath": {
+					"recipe": "/rayyas_children/jobs/potter/recipes/wall_hanging_sunwreath_recipe.json"
+				},
+				"wind_chime": {
+					"recipe": "/rayyas_children/jobs/potter/recipes/wind_chime_recipe.json"
+				},
+				"monkey": {
+					"recipe": "/rayyas_children/jobs/potter/recipes/monkey_recipe.json"
+				},
+				"teapot": {
+					"recipe": "/rayyas_children/jobs/potter/recipes/teapot_recipe.json"
+				},
+				"pedestal_firepit": {
+					"recipe": "/rayyas_children/jobs/potter/recipes/pedestal_firepit_recipe.json"
+				},
+				"pedestal_floral_red": {
+					"recipe": "/rayyas_children/jobs/potter/recipes/pedestal_floral_red_recipe.json"
+				},
+				"pedestal_floral_coral": {
+					"recipe": "/rayyas_children/jobs/potter/recipes/pedestal_floral_coral_recipe.json"
+				},
+				"pedestal_floral_blue": {
+					"recipe": "/rayyas_children/jobs/potter/recipes/pedestal_floral_blue_recipe.json"
+				},
+				"clay_stool": {
+					"recipe": "file(clay_stool_recipe.json)"
+				},
+				"counter_clay_corner_inner": {
+					"recipe": "file(counter_clay_corner_inner_recipe.json)"
+				},
+				"counter_clay_corner_outer": {
+					"recipe": "file(counter_clay_corner_outer_recipe.json)"
+				},
+				"counter_clay_mid": {
+					"recipe": "file(counter_clay_mid_recipe.json)"
+				},
+				"counter_clay_mid_small": {
+					"recipe": "file(counter_clay_mid_small_recipe.json)"
+				},
+				"counter_clay_end_right": {
+					"recipe": "file(counter_clay_end_right_recipe.json)"
+				},
+				"counter_clay_end_left": {
+					"recipe": "file(counter_clay_end_left_recipe.json)"
+				},
+				"counter_clay_door": {
+					"recipe": "file(counter_clay_door_recipe.json)"
+				}
 			}
-		 }
-	  },
-	  "refined": {
-         "recipes": {
-            "bone_clay_mound": {
-               "recipe": "file(bone_clay_mound_recipe.json)"
-            },
-			"bone_clay_mound_x3": {
-               "recipe": "file(bone_clay_mound_x3_recipe.json)"
-            }
-         }
-      }
-   }
+		},
+		"refined": {
+			"recipes": {
+				"bone_clay_mound": {
+					"recipe": "file(bone_clay_mound_recipe.json)"
+				},
+				"bone_clay_mound_x3": {
+					"recipe": "file(bone_clay_mound_x3_recipe.json)"
+				}
+			}
+		}
+	}
 }
