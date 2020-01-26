@@ -176,7 +176,10 @@ function PatrolBannerComponent:_recalc_path_to_next_banner()
                self._sv.distance_to_next_banner = path:get_path_length()
 
                local mob = self._entity:add_component('mob')
-               mob:turn_to_face_point(#points > 2 and points[3] or 0)
+               local face_point = #points > 2 and points[3]
+               if face_point then
+                  mob:turn_to_face_point(face_point)
+               end
                mob:turn_to(mob:get_facing() - 90)
 
                self.__saved_variables:mark_changed()
