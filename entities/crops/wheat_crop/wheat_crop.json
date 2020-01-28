@@ -65,7 +65,22 @@
             ]
          }
       },
-	  "stonehearth:growing": {
+		"stonehearth:loot_drops": {
+         "entries": {
+            "default": {
+               "items": {
+                  "none": {
+                     "weight": 2
+                  },
+                  "thatch": {
+                     "uri": "stonehearth_ace:resources:thatch_bale",
+                     "weight": 1
+                  }
+               }
+            }
+         }
+      },
+	   "stonehearth:growing": {
 			"growth_period": "32h",
 			"preferred_climate": "arctic_complex"
       }
