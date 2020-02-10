@@ -105,6 +105,7 @@ function AceItemPlacer:_perform_additional_initialization()
    local advanced_placement = radiant.entities.get_entity_data(self.entity_forms._entity, 'stonehearth_ace:advanced_placement')
    if advanced_placement then
       self._requires_support = advanced_placement.requires_support ~= false
+      self._required_terrain = advanced_placement.required_terrain
       self._required_components = advanced_placement.required_components or {}
       for comp, options in pairs(self._required_components) do
          -- if we need to tell other things to update in advance of item placement, do that here
@@ -240,6 +241,22 @@ function AceItemPlacer:_location_filter(result, selector)
    local return_val = self:_compute_additional_required_placement_conditions(result, selector)
    if return_val ~= true then
       return return_val
+   end
+
+   -- ACE required terrain option
+   -- specified in "stonehearth_ace:advanced_placement" entity_data like so (requiring either grass or dirt):
+   -- "required_terrain": {
+   --    "grass": true,
+   --    "dirt": true
+   -- }
+   if self._required_terrain then
+      local brick = result.brick
+      local tag = radiant.terrain.get_block_tag_at(brick)
+      local kind = radiant.terrain.get_block_kind_from_tag(tag)
+      local name = radiant.terrain.get_block_name_from_tag(tag)
+      if not (self._required_terrain[kind] or self._required_terrain[name]) then
+         return false
+      end
    end
 
    if self.placement_structure then
