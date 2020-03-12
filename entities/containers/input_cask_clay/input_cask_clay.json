@@ -5,13 +5,14 @@
       "stonehearth:entity_forms": {
          "iconic_form": "file(input_cask_clay_iconic.json)",
          "ghost_form": "file(input_cask_clay_ghost.json)",
-         "placeable_on_ground": true
+         "placeable_on_ground": true,
+         "placeable_on_walls": true
       },
       "destination": {
          "region": [
             {
-               "min": { "x": -1, "y": 0, "z": -1 },
-               "max": { "x": 2, "y": 1, "z": 2 }
+               "min": { "x": 0, "y": -3, "z": -2 },
+               "max": { "x": 1, "y": 1, "z": 1 }
             }
          ],
          "adjacency_flags": [
@@ -22,8 +23,8 @@
       "region_collision_shape": {
          "region": [
             {
-               "min": { "x": -1, "y": 0, "z": -1 },
-               "max": { "x": 2, "y": 3, "z": 2 }
+               "min": { "x": -1, "y": 0, "z": -2 },
+               "max": { "x": 2, "y": 3, "z": 1 }
             }
          ]
       },

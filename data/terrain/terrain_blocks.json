@@ -1,11 +1,37 @@
 {
    "block_types": {
+      "marble": {
+         "tag": 850,
+         "kind": "marble"
+      },
+      "marble_2": {
+         "tag": 851,
+         "kind": "marble"
+      },
+      "marble_3": {
+         "tag": 852,
+         "kind": "marble"
+      },
+      "feldspar": {
+         "tag": 860,
+         "kind": "feldspar"
+      },
+      "feldspar_2": {
+         "tag": 861,
+         "kind": "feldspar"
+      },
+      "feldspar_3": {
+         "tag": 862,
+         "kind": "feldspar"
+      },
       "meteor": {
          "tag": 900,
          "kind": "meteor"
       }
    },
    "selectable_kinds": {
-      "meteor": "stonehearth_ace:terrain:ui:meteor_block"
+      "meteor": "stonehearth_ace:terrain:ui:meteor_block",
+      "marble": "stonehearth_ace:terrain:ui:marble_block",
+      "feldspar": "stonehearth_ace:terrain:ui:feldspar_block"
    }
 }

@@ -1,0 +1,72 @@
+{
+   "type": "entity",
+   "mixins": "file(brewer_fermenting_carboy_mead_ghost.json)",
+   "components": {
+      "stonehearth:entity_forms": {
+         "ghost_form": "file(brewer_fermenting_carboy_mead_ghost.json)",
+         "iconic_form": "file(brewer_fermenting_carboy_mead_iconic.json)",
+         "placeable_on_ground": true,
+         "hide_undeploy_ui": true
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 1, "y": 1, "z": 1 }
+            }
+         ]
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 1, "y": 3, "z": 1 }
+            }
+         ]
+      },
+      "stonehearth_ace:stump": {},
+      "stonehearth:resource_node": {
+         "category": "brewing",
+         "resource": "stonehearth_ace:drink:mead",
+         "harvest_overlay_effect": "stonehearth_ace:effects:harvest_prepared_drink_overlay_effect",
+         "harvester_effect": "fiddle",
+         "durability": 1,
+         "resource_loot_table": {
+            "entries": {
+               "optional": {
+                  "num_rolls": {
+                     "min": 2,
+                     "max": 3
+                  },
+                  "items": {
+                     "cheese_slice": {
+                        "uri": "stonehearth_ace:drink:mead"
+                     }
+                  }
+               }
+            }
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:stump_data": {
+         "stump_alias": "stonehearth_ace:brewer:fermenting_carboy:empty",
+         "apply_quality": false,
+         "transform_option_key": "mead"
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 41,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 9
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": false
+      }
+   }
+}

@@ -1,0 +1,73 @@
+{
+   "type": "entity",
+   "mixins": "file(brewer_fermenting_carboy_empty_ghost.json)",
+   "components": {
+      "stonehearth:entity_forms": {
+         "ghost_form": "file(brewer_fermenting_carboy_empty_ghost.json)",
+         "iconic_form": "file(brewer_fermenting_carboy_empty_iconic.json)",
+         "placeable_on_ground": true
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 1, "y": 1, "z": 1 }
+            }
+         ]
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 1, "y": 3, "z": 1 }
+            }
+         ]
+      },
+      "stonehearth_ace:transform": {}
+   },
+   "entity_data": {
+      "stonehearth_ace:transform_data": {
+         "transform_options": {
+            "mead": {
+               "transform_uri": "stonehearth_ace:brewer:fermenting_carboy:unfermented_mead",
+               "command": "stonehearth_ace:commands:transform:fermenting_carboy_fill:unfermented_mead",
+               "request_action": "stonehearth_ace:transform",
+               "request_action_overlay_effect": "stonehearth_ace:effects:transform_brewer_overlay_effect",
+               "transform_ingredient_uri": "stonehearth_ace:drink:unfermented_mead",
+               "auto_request": true,
+               "worker_required_job": {
+                  "stonehearth_ace:jobs:brewer": true
+               },
+               "apply_ingredient_quality": true
+            },
+            "mead_fruit": {
+               "transform_uri": "stonehearth_ace:brewer:fermenting_carboy:unfermented_mead_fruit",
+               "command": "stonehearth_ace:commands:transform:fermenting_carboy_fill:unfermented_mead_fruit",
+               "request_action": "stonehearth_ace:transform",
+               "request_action_overlay_effect": "stonehearth_ace:effects:transform_brewer_overlay_effect",
+               "transform_ingredient_uri": "stonehearth_ace:drink:unfermented_mead_fruit",
+               "auto_request": true,
+               "worker_required_job": {
+                  "stonehearth_ace:jobs:brewer": true
+               },
+               "apply_ingredient_quality": true
+            }
+         }
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 8,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 2
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": false
+      }
+   }
+}

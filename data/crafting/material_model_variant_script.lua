@@ -1,4 +1,5 @@
 local entity_forms_lib = require 'stonehearth.lib.entity_forms.entity_forms_lib'
+local log = radiant.log.create_logger('craft_script')
 local material_model_variant = {}
 
 function material_model_variant.on_craft(ai, crafter, workshop, recipe, ingredients, product, item, extra_products)
@@ -8,6 +9,12 @@ function material_model_variant.on_craft(ai, crafter, workshop, recipe, ingredie
          local root, iconic = entity_forms_lib.get_forms(item)
          if root then
             root:add_component('stonehearth_ace:entity_modification'):set_model_variant(uri)
+
+            local loot_data = radiant.entities.get_entity_data(root, 'stonehearth_ace:variant_loot_data', false)
+            if loot_data then                                
+               root:add_component('stonehearth:loot_drops'):set_loot_table(loot_data[uri])
+               log:detail('Adding loot table...')
+            end
          end
          if iconic then
             iconic:add_component('stonehearth_ace:entity_modification'):set_model_variant(uri)

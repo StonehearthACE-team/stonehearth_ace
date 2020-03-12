@@ -1,0 +1,13 @@
+{
+   "type": "recipe",
+   "mixins": "/stonehearth_ace/jobs/brewer/recipes/brewer_distillery_recipe.json",
+   "portrait": "/stonehearth_ace/jobs/brewer/mf_brewer_distillery/mf_brewer_distillery.png",
+   "mixintypes": {
+	  "produces": "override"
+   },
+   "produces": [
+      {
+         "item": "stonehearth_ace:mountain_folk:brewer:distillery"
+      }
+   ]
+}

@@ -1,0 +1,67 @@
+{
+   "type": "job",
+   "enabled": true,
+   "job_id": "brewer",
+   "display_order": 10,
+   "alias": "stonehearth_ace:jobs:brewer",
+   "display_name": "i18n(stonehearth_ace:jobs.brewer.brewer_description.display_name)",
+   "controller": "stonehearth_ace:class:brewer",
+   "description": "i18n(stonehearth_ace:jobs.brewer.brewer_description.description)",
+   "requirements": "i18n(stonehearth_ace:jobs.brewer.brewer_description.requirements)",
+   "abilities": "file(brewer_abilities)",
+   "equipment": {
+      "torso": "stonehearth_ace:brewer:outfit",
+      "helmet": "file(brewer_outfit/brewer_outfit_hat)",
+      "boots": "stonehearth_ace:brewer:outfit:shoes",
+      "mainhand": "stonehearth_ace:brewer:tumbler"
+   },
+   "roles": [
+      "brewer_job",
+      "crafter"
+   ],
+   "talisman_uri": "stonehearth_ace:brewer:talisman",
+   "default_stance": "passive",
+   "icon": "file(images/icon.png)",
+   "promotion_activity_name": "promote_brewer",
+   "task_groups": [
+      "stonehearth:task_groups:common_tasks",
+      "stonehearth:task_groups:restock",
+      "stonehearth:task_groups:placement",
+      "stonehearth:task_groups:healing",
+      "stonehearth:task_groups:harvest",
+      "stonehearth:task_groups:rescue",
+      "stonehearth:task_groups:crafting",
+      "stonehearth:task_groups:town_alert",
+      "stonehearth_ace:task_groups:beekeeping",
+      "stonehearth_ace:task_groups:brewing"
+   ],
+   "crafter": {
+      "work_effect": "fiddle",
+      "recipe_list": "/stonehearth_ace/jobs/brewer/recipes/recipes.json"
+   },
+   "workshop": {
+      "portrait": "file(/jobs/brewer/brewer_workbench/brewer_workbench.png)",
+      "workbench_type": "stonehearth_ace:brewer:workbench",
+      "skin_class": "brewer",
+      "job_name": "brewer",
+      "open_sound": "stonehearth:sounds:ui:carpenter_menu:menu_open",
+      "close_sound": "stonehearth:sounds:ui:carpenter_menu:menu_closed"
+   },
+   "parent_job": "stonehearth:jobs:herbalist",
+   "parent_level_requirement": 2,
+   "xp_rewards": {
+      "craft_level_0": 24,
+      "craft_level_1": 25,
+      "craft_level_2": 26,
+      "craft_level_3": 29,
+      "craft_level_4": 31,
+      "craft_level_5": 32,
+      "craft_level_6": 33
+   },
+   "max_level": 6,
+   "level_data": {
+      "6": {
+         "title": "i18n(stonehearth_ace:jobs.brewer.brewer_description.level_6_data.title)"
+      }
+   }
+}

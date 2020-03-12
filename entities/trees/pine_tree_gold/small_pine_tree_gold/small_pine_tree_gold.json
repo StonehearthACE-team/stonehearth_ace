@@ -1,5 +1,54 @@
 {
 	"components": {
+		"model_variants": {
+         "autumn": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(small_pine_tree_gold_autumn.qb)",
+							"file(small_pine_tree_gold_autumn_2.qb)"
+                  ]
+               }
+            ]
+         },
+         "spring": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(small_pine_tree_gold_spring.qb)",
+							"file(small_pine_tree_gold_spring_2.qb)"
+                  ]
+               }
+            ]
+         },
+         "summer": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(small_pine_tree_gold_summer.qb)",
+							"file(small_pine_tree_gold_summer_2.qb)"
+                  ]
+               }
+            ]
+         }
+      },
+      "stonehearth:seasonal_model_switcher": {
+			"stonehearth:biome:arctic": {
+            "spring": "spring",
+            "summer": "summer",
+            "autumn": "autumn",
+            "winter": "default"
+         },
+			"*": {
+            "spring": "summer",
+            "summer": "summer",
+            "autumn": "summer",
+            "winter": "default"
+         }     
+      },
 		"stonehearth:loot_drops": {
          "entries": {
             "beehive": {

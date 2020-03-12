@@ -1,0 +1,133 @@
+{
+   "type": "entity",
+   "mixins": "file(brewer_wine_cask_empty_ghost.json)",
+   "components": {
+      "stonehearth:entity_forms": {
+         "ghost_form": "file(brewer_wine_cask_empty_ghost.json)",
+         "iconic_form": "file(brewer_wine_cask_empty_iconic.json)",
+         "placeable_on_ground": true
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -1, "y": -2, "z": -1 },
+               "max": { "x": 1, "y": 1, "z": 1 }
+            }
+         ]
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 1, "y": 2, "z": 1 }
+            }
+         ]
+      },
+      "stonehearth_ace:transform": {}
+   },
+   "entity_data": {
+      "stonehearth_ace:transform_data": {
+         "transform_options": {
+            "berry_wine": {
+               "transform_uri": "stonehearth_ace:brewer:fermenting_carboy:unfermented_mead",
+               "command": "stonehearth_ace:commands:transform:fermenting_carboy_fill:unfermented_mead",
+               "request_action": "stonehearth_ace:transform",
+               "request_action_overlay_effect": "stonehearth_ace:effects:transform_brewer_overlay_effect",
+               "transform_ingredient_uri": "stonehearth_ace:drink:must_berry",
+               "auto_request": true,
+               "worker_required_job": {
+                  "stonehearth_ace:jobs:brewer": true
+               },
+               "apply_ingredient_quality": true
+            },
+            "cherry_wine": {
+               "transform_uri": "stonehearth_ace:brewer:fermenting_carboy:unfermented_mead",
+               "command": "stonehearth_ace:commands:transform:fermenting_carboy_fill:unfermented_mead",
+               "request_action": "stonehearth_ace:transform",
+               "request_action_overlay_effect": "stonehearth_ace:effects:transform_brewer_overlay_effect",
+               "transform_ingredient_uri": "stonehearth_ace:drink:must_cherry",
+               "auto_request": true,
+               "worker_required_job": {
+                  "stonehearth_ace:jobs:brewer": true
+               },
+               "apply_ingredient_quality": true
+            },
+            "prickly_pear_wine": {
+               "transform_uri": "stonehearth_ace:brewer:fermenting_carboy:unfermented_mead",
+               "command": "stonehearth_ace:commands:transform:fermenting_carboy_fill:unfermented_mead",
+               "request_action": "stonehearth_ace:transform",
+               "request_action_overlay_effect": "stonehearth_ace:effects:transform_brewer_overlay_effect",
+               "transform_ingredient_uri": "stonehearth_ace:drink:must_prickly_pear",
+               "auto_request": true,
+               "worker_required_job": {
+                  "stonehearth_ace:jobs:brewer": true
+               },
+               "apply_ingredient_quality": true
+            },
+            "apple_wine": {
+               "transform_uri": "stonehearth_ace:brewer:fermenting_carboy:unfermented_mead",
+               "command": "stonehearth_ace:commands:transform:fermenting_carboy_fill:unfermented_mead",
+               "request_action": "stonehearth_ace:transform",
+               "request_action_overlay_effect": "stonehearth_ace:effects:transform_brewer_overlay_effect",
+               "transform_ingredient_uri": "stonehearth_ace:drink:must_apple",
+               "auto_request": true,
+               "worker_required_job": {
+                  "stonehearth_ace:jobs:brewer": true
+               },
+               "apply_ingredient_quality": true
+            },
+            "pear_wine": {
+               "transform_uri": "stonehearth_ace:brewer:fermenting_carboy:unfermented_mead",
+               "command": "stonehearth_ace:commands:transform:fermenting_carboy_fill:unfermented_mead",
+               "request_action": "stonehearth_ace:transform",
+               "request_action_overlay_effect": "stonehearth_ace:effects:transform_brewer_overlay_effect",
+               "transform_ingredient_uri": "stonehearth_ace:drink:must_pear",
+               "auto_request": true,
+               "worker_required_job": {
+                  "stonehearth_ace:jobs:brewer": true
+               },
+               "apply_ingredient_quality": true
+            },
+            "plum_wine": {
+               "transform_uri": "stonehearth_ace:brewer:fermenting_carboy:unfermented_mead",
+               "command": "stonehearth_ace:commands:transform:fermenting_carboy_fill:unfermented_mead",
+               "request_action": "stonehearth_ace:transform",
+               "request_action_overlay_effect": "stonehearth_ace:effects:transform_brewer_overlay_effect",
+               "transform_ingredient_uri": "stonehearth_ace:drink:must_plum",
+               "auto_request": true,
+               "worker_required_job": {
+                  "stonehearth_ace:jobs:brewer": true
+               },
+               "apply_ingredient_quality": true
+            },
+            "date_wine": {
+               "transform_uri": "stonehearth_ace:brewer:fermenting_carboy:unfermented_mead",
+               "command": "stonehearth_ace:commands:transform:fermenting_carboy_fill:unfermented_mead",
+               "request_action": "stonehearth_ace:transform",
+               "request_action_overlay_effect": "stonehearth_ace:effects:transform_brewer_overlay_effect",
+               "transform_ingredient_uri": "stonehearth_ace:drink:must_date",
+               "auto_request": true,
+               "worker_required_job": {
+                  "stonehearth_ace:jobs:brewer": true
+               },
+               "apply_ingredient_quality": true
+            }
+         }
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 15,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 1
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": false
+      }
+   }
+}

@@ -1,0 +1,26 @@
+{
+   "type": "recipe",
+   "effort": 45,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.brewer.recipes.brewer_wine_cask_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.brewer.recipes.brewer_wine_cask_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.brewer.recipes.brewer_wine_cask_recipe.flavor)",
+   "portrait": "/stonehearth_ace/jobs/brewer/brewer_wine_cask/brewer_wine_cask_empty/brewer_wine_cask_empty.png",
+   "work_effect": "work",
+   "level_requirement": 2,
+   "ingredients": [
+      {
+         "material": "wood resource",
+         "count": 3
+      },
+      {
+         "material": "ingot hard_metal",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:brewer:wine_cask:empty"
+      }
+   ]
+}

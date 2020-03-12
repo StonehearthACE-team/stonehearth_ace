@@ -1,0 +1,36 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": -0.5 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      },
+      "render_info": {
+         "scale": 0.1,
+         "animation_table": "file(/data/rigs/jobs/brewer/brewer_workbench/brewer_workbench.json)"
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(mf_brewer_workbench.qb)"
+            ]
+         }
+      },
+      "effect_list": {
+         "default": "file(/data/rigs/jobs/brewer/brewer_workbench/effects/idle.json)"
+      }
+   },
+   "entity_data": {
+      "stonehearth:hide_child_entities_from_pathfinder": true,
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:jobs.brewer.brewer_workbench.display_name)",
+         "description": "i18n(stonehearth_ace:jobs.brewer.brewer_workbench.description)",
+         "icon": "file(mf_brewer_workbench.png)",
+         "category": "workshops",
+         "material_tags": [
+            "tool",
+            "stockpile_tool"
+         ]
+      }
+   }
+}

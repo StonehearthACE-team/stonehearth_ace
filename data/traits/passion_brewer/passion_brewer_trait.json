@@ -1,0 +1,16 @@
+{
+   "type": "trait",
+   "mixins": "stonehearth:mixins:traits:passion_job",
+   "icon": "file(passion_brewer_trait.png)",
+   "data": {
+      "job_uri": "stonehearth_ace:jobs:brewer"
+   },
+   "subject_overrides": [
+      {
+         "subject": "stonehearth_ace:brewer:talisman",
+         "sentiment": 1,
+         "permanent": true,
+         "unvarying": true
+      }
+   ]
+}

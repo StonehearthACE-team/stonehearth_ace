@@ -1,0 +1,72 @@
+{
+   "type" : "effect",
+   "tracks": {
+		"smoke": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/brewer/kettle_smoke_plume.cubemitter.json",
+         "loop": true,
+         "transforms": {
+            "x":0.0,
+            "y":3.1,
+            "z":0.0,
+            "rx":90,
+            "ry":0,
+				"rz": 0
+         }
+      },
+		"coals": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/brewer/kettle_coals.cubemitter.json",
+         "loop": true,
+         "transforms": {
+            "x":0,
+            "y":0.3,
+            "z": 0,
+            "rx":90,
+            "ry":0,
+            "rz":0
+         }
+      },
+	   "embers": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/brewer/kettle_embers.cubemitter.json",
+         "loop": true,
+         "transforms": {
+            "x":0,
+            "y":0.2,
+            "z": 0,
+            "rx":90,
+            "ry":0,
+            "rz":0
+         }
+      },
+		"bubbling": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/brewer/kettle_bubbling.cubemitter.json",
+         "loop": true,
+         "transforms": { 
+				"x": 0,
+            "y": 2.7,
+            "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "sound": {
+         "type": "sound_effect",
+         "loop": true,
+         "start_time": 0,
+         "min_distance": 35,
+         "falloff": 4,
+         "volume": 70,
+        "track": "stonehearth_ace:sounds:boiling_02"
+      },
+      "animation": {
+         "type": "animation_effect",
+         "start_time": 0,
+         "animation": "work.json",
+         "loop": true
+      }      
+   }
+}

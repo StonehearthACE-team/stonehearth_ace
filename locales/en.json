@@ -67,10 +67,10 @@
          "campaigns": {
             "amberstone": {
                "21_residents_reward_b": {
-                  "bulletin_title": "Amberstone Cook recipes unlocked!"
+                  "bulletin_title": "Amberstone Cook & Brewer recipes unlocked!"
                },
                "21_residents_outro_a": {
-                  "dialogue": "\"What a nice home you've built for them! They will be here shortly, and I'm sure they'll be charmed! By the way, I'm certain they can teach you some of our cooking recipes as well...\""
+                  "dialogue": "\"What a nice home you've built for them! They will be here shortly, and I'm sure they'll be charmed! By the way, I'm certain they can teach you some of our delicious recipes as well...\""
                },
                "arcs": {
                   "trigger": {
@@ -385,10 +385,10 @@
             "rc_town_progression": {
                "ace_guildmaster_reached": {
                   "recipe_unlock_coins": "The Blacksmith can now mint gold coins!",
-                  "recipe_unlock_cook": "The Cook can now make Desert Sun Tea!"
+                  "recipe_unlock_brewer": "The Cook can now make Desert Sun Tea!"
                },
                "ace_deity_reached": {
-                  "recipe_unlock_cook": "The Cook can now make Desert Sun Tea!"
+                  "recipe_unlock_brewer": "The Cook can now make Desert Sun Tea!"
                },
                "ace_valor_reached": {
                   "recipe_unlock_blacksmith": "New Legendary Mail recipe - Weaver, Engineer, and Blacksmith collaboration!",
@@ -1090,6 +1090,14 @@
                      "tooltip": "No... No... Run away, the giant poyo is here! FLY, YOU FOOLS!"
                   }
                }
+            },
+            "violence": {
+               "values": {
+                  "bee_swarmed": {
+                     "display_name": "Recently stung",
+                     "tooltip": "Ow! Ouch! Oof! I'm covered in blisters... Those bees really got me!"
+                  }
+               }
             }
          }
       },
@@ -1745,17 +1753,9 @@
                "display_name": "Close this door!",
                "description": "Close this door, preventing animals or creatures from going through."
             },
-            "fermenting_vat_fill": {
-               "display_name": "Fill Fermenting Vat",
-               "description": "Order the Cook or Herbalist to fill this fermenting vat with wort to start brewing! Wort is crafted by the Cook."
-            },
             "build_well_roof": {
                "display_name": "Add Roof",
                "description": "Use a crafted Water Well Roof of the same kind to add a fancy roof to make your citizens happier and your water always fresh!"
-            },
-            "fermenting_vat_gruit": {
-               "display_name": "Add Gruit",
-               "description": "Order the Cook or Herbalist to add gruit to the ale, letting it bitter and turn into beer, a more refined drink. Gruit is crafted by the Herbalist."
             },
             "build_well_clay": {
                "display_name": "Build Clay Water Well",
@@ -1783,11 +1783,19 @@
             },
             "fermenting_carboy_fill_unfermented_mead": {
                "display_name": "Produce Mead",
-               "description": "Order the Cook or Herbalist to fill this fermenting vessel with unfermented mead! It can be crafted by the Cook or Herbalist."
+               "description": "Order the Brewer to fill this fermenting vessel with unfermented mead! This Carboy will continue producing Mead unless a new command is given."
             },
             "fermenting_carboy_fill_unfermented_mead_fruit": {
                "display_name": "Produce Fruity Mead",
-               "description": "Order the Cook or Herbalist to fill this fermenting vessel with unfermented fruity mead! It can be crafted by the Cook or Herbalist."
+               "description": "Order the Brewer to fill this fermenting vessel with unfermented fruity mead! This Carboy will continue producing Fruity Mead unless a new command is given."
+            },
+            "fermenting_vat_fill_wort": {
+               "display_name": "Produce Ale",
+               "description": "Order the Brewer to fill this fermenting vat with wort to start brewing! It will continue producing Ale unless a new command is given."
+            },
+            "fermenting_vat_fill_wort_gruit": {
+               "display_name": "Produce Beer",
+               "description": "Order the Brewer to fill this fermenting vat with gruit wort to start brewing! It will continue producing Beer unless a new command is given."
             },
             "frostfeast": {
                "open_present": {
@@ -2516,6 +2524,11 @@
                "description": "Get your town ready for the holidays with this traditional and beautiful decorated tree.",
                "flavor": "A symbol of hope, gratitude and warmth!"
             },
+            "brewer_tumbler_recipe": {
+               "recipe_name": "Brewer's Tumbler",
+               "description": "Required to promote a hearthling into a Brewer.",
+               "flavor": "You can survive out of food, but only out of drinks you can live -'On the Art of Brewing' by Franz Baden"
+            },
             "herbalist_bee_skep_recipe": {
                "recipe_name": "Empty Bee Skep",
                "description": "Supplies your town with beekeeping products but won't produce during the winter.",
@@ -2854,21 +2867,6 @@
                "description": "A little thing to make a home feel more cosy.",
                "flavor": "Literally handpicked flowers are going to be placed in this vase. Some blossoms might be more striking than others *wink, wink*."
             },
-            "gruit_recipe": {
-               "recipe_name": "Wrap of Gruit",
-               "description": "A bundle of bitter herbs and seasonings. This traditional recipe uses juniper berries.",
-               "flavor": "The Cook or Herbalist can add it to a Fermentation Vat with Ale to make beer"
-            },
-            "rc_gruit_recipe": {
-               "recipe_name": "Wrap of Gruit",
-               "description": "A bundle of bitter herbs and seasonings. Gruit is often made with wax plants in the desert.",
-               "flavor": "The Cook or Herbalist can add it to a Fermentation Vat with Ale to make beer"
-            },
-            "na_gruit_recipe": {
-               "recipe_name": "Wrap of Gruit",
-               "description": "A bundle of bitter herbs and seasonings. The northerners use pine cones for its flavor.",
-               "flavor": "The Cook or Herbalist can add it to a Fermentation Vat with Ale to make beer"
-            },
             "herbalist_cauldron_recipe": {
                "recipe_name": "Herbalist Stone Cauldron",
                "description": "Used by the Herbalist for brewing & concocting potions.",
@@ -2878,21 +2876,6 @@
                "recipe_name": "Herbalist's Iron Cauldron",
                "description": "Used by the Herbalist for better brewing & concocting advanced potions.",
                "flavor": "The wing of a bat, the eye of a newt... Wait, what?"
-            },
-            "cook_fermenting_carboy_recipe": {
-               "recipe_name": "Fermentation Carboy",
-               "description": "The Cook and Herbalist can use this to make mead. It requires unfermented mead, crafted by either of them.",
-               "flavor": "Mead is appreciated by many but will make hearthlings tipsy"
-            },
-            "unfermented_mead_recipe": {
-               "recipe_name": "Bucket of Unfermented Mead",
-               "description": "A mixture of water, honey and yeast. Within a Carboy it can be turned into mead!",
-               "flavor": "Take rainwater kept for years, and mix a sextarius of it with a pound of honey -'On Rural Affairs', early Phoenix Empire writings"
-            },
-            "unfermented_mead_fruit_recipe": {
-               "recipe_name": "Bucket of Unfermented Fruity Mead",
-               "description": "Like mead, but spiced up with some flavorful fruits. Within a Carboy it can be turned into fruity mead!",
-               "flavor": ""
             },
             "hearth_healing_tonic_recipe": {
                "recipe_name": "Hearthbud Healing Tonic",
@@ -2909,7 +2892,23 @@
                "description": "A powerful potion that will boost courage, muscle, menace and slowly heal over time.",
                "flavor": "May it be a light to you in dark places, when all other lights go out! -Sasha of Clan Amberstone"
             },
-            "refinement_name": "Seed Extraction"
+            "gruit_recipe": {
+               "recipe_name": "Wrap of Gruit",
+               "description": "A bundle of bitter herbs and seasonings. This traditional recipe uses juniper berries.",
+               "flavor": "The Brewer needs gruit for making beer"
+            },
+            "rc_gruit_recipe": {
+               "recipe_name": "Wrap of Gruit",
+               "description": "A bundle of bitter herbs and seasonings. Gruit is often made with wax plants in the desert.",
+               "flavor": "The Brewer needs gruit for making beer"
+            },
+            "na_gruit_recipe": {
+               "recipe_name": "Wrap of Gruit",
+               "description": "A bundle of bitter herbs and seasonings. The northerners use pine cones for its flavor.",
+               "flavor": "The Brewer needs gruit for making beer"
+            },
+            "refinement_name": "Seed Extraction",
+            "brewing_name": "Brewing Ingredients"
          },
          "herbalist_hood": {
             "display_name": "Herbalist's Hood",
@@ -3286,7 +3285,7 @@
                "flavor": "Can only hold certain fluids and dry goods"
             },
             "serving_keg_clay_recipe": {
-               "description": "A small serving container for 4 simple or prepared drinks.",
+               "description": "A small serving container that the Brewer can fill with a drink.",
                "recipe_name": "Clay Serving Keg",
                "flavor": ""
             },
@@ -3701,7 +3700,7 @@
                "flavor": "Can only hold certain fluids and dry goods"
             },
             "serving_keg_stone_recipe": {
-               "description": "A small serving container for 4 simple or prepared drinks.",
+               "description": "A small serving container that the Brewer can fill with a drink.",
                "recipe_name": "Stone Serving Keg",
                "flavor": ""
             },
@@ -4216,21 +4215,10 @@
          "recipes": {
             "food_preparation_name": "Preparation",
             "brewing_name": "Brewing Ingredients",
-            "drinks_name": "Drinks & Beverages",
             "cook_cheese_vat_recipe": {
                "recipe_name": "Cheese Vat",
                "description": "The Cook or Shepherd can use this to make cheese by crafting curdling mixtures. The longer it rests the more valuable it gets.",
                "flavor": "You can harvest the cheese at any time during the maturation process"
-            },
-            "cook_fermenting_vat_recipe": {
-               "recipe_name": "Fermentation Vat",
-               "description": "The Cook or Herbalist can use this to make ale by crafting wort. Beer can be made using Gruit, crafted by the Herbalist.",
-               "flavor": "Ale & Beer makes hearthlings happy and only slightly tipsy"
-            },
-            "cook_brewery_recipe": {
-               "recipe_name": "Copper Brewery",
-               "description": "Use to create exquisite brews and drinks.",
-               "flavor": "Can also be used for all sorts of mixing & preparing of beverages"
             },
             "curdling_mixture_recipe": {
                "recipe_name": "Curdling Mixture",
@@ -4539,96 +4527,6 @@
                "description": "Toast some grains until they're perfectly golden. An ingredient necessary for brewing.",
                "flavor": "Malted Grains can also be milled for cooking oil"
             },
-            "wort_recipe": {
-               "recipe_name": "Bucket of Wort",
-               "description": "An extract of mashed malted grains and herbs. Within a Fermentation Vat it can be turned into ale or beer!",
-               "flavor": "Wort can also be further distilled into other drinks"
-            },
-            "spirit_recipe": {
-               "recipe_name": "Keg of Malt Spirit",
-               "description": "A distilled, moderately strong alcoholic beverage from grains.",
-               "flavor": "A bit too dry..."
-            },
-            "spirit_fruit_recipe": {
-               "recipe_name": "Keg of Fruit Spirit",
-               "description": "A distilled, moderately strong alcoholic beverage from fruits.",
-               "flavor": "Fruity and sweet, a festival favorite!"
-            },
-            "liquor_recipe": {
-               "recipe_name": "Keg of Liquor (x3)",
-               "description": "A complex, flavorful and quite strong alcoholic beverage from fermented wort.",
-               "flavor": "A very fancy drink for a very fancy town"
-            },
-            "tea_recipe": {
-               "recipe_name": "Herbal Tea",
-               "description": "An aromatic and warm beverage very appreciated by many! Provides multiple bonuses to hearthlings.",
-               "flavor": "Prepared tea must be placed somewhere in order to be consumed"
-            },
-            "tea_desert_recipe": {
-               "recipe_name": "Desert Sun Tea",
-               "description": "An unique recipe to the children of Rayya, a flower tea from Pal'Mum. Provides multiple bonuses to hearthlings.",
-               "flavor": "Prepared tea must be placed somewhere in order to be consumed"
-            },
-            "tea_amberstone_recipe": {
-               "recipe_name": "Amberstone Tea",
-               "description": "A traditional recipe from the clan, delighting palates for centuries. Provides multiple bonuses to hearthlings.",
-               "flavor": "Prepared tea must be placed somewhere in order to be consumed"
-            },
-            "tea_fancy_recipe": {
-               "recipe_name": "Lavish Tea",
-               "description": "The elegant and heartwarming flavor of dried daisies and fruits. Provides multiple bonuses to hearthlings.",
-               "flavor": "Prepared tea must be placed somewhere in order to be consumed"
-            },
-            "juice_berry_recipe": {
-               "recipe_name": "Bucket of Berry Juice",
-               "description": "Create a fruity beverage from wild berries.",
-               "flavor": ""
-            },
-            "juice_cherry_recipe": {
-               "recipe_name": "Bucket of Cherry Juice",
-               "description": "A sour, flavorful recipe that uses wild cherries.",
-               "flavor": ""
-            },
-            "juice_prickly_pear_recipe": {
-               "recipe_name": "Bucket of Prickly Pear Juice",
-               "description": "A peculiar beverage made with prickly pears.",
-               "flavor": "Make sure that no spine will go with the juice..."
-            },
-            "juice_carrot_recipe": {
-               "recipe_name": "Bucket of Carrot Juice",
-               "description": "A nutritious and refreshing drink recipe that uses fruits and carrots.",
-               "flavor": "The best of two worlds"
-            },
-            "juice_watermelon_recipe": {
-               "recipe_name": "Bucket of Watermelon Juice",
-               "description": "Deliciously refreshing juice straight from hearty, ripe watermelons.",
-               "flavor": ""
-            },
-            "juice_heirbloom_recipe": {
-               "recipe_name": "Bucket of Heirbloom Juice",
-               "description": "A tasty juice with the peculiar, strong taste of heirbloom fruits.",
-               "flavor": ""
-            },
-            "smoothie_recipe": {
-               "recipe_name": "Bucket of Smoothie",
-               "description": "The fruity flavors go perfectly with the creamy milk in this refreshing and sweet beverage.",
-               "flavor": "A delicious combination"
-            },
-            "cook_fermenting_carboy_recipe": {
-               "recipe_name": "Fermentation Carboy",
-               "description": "The Cook and Herbalist can use this to make mead. It requires unfermented mead, crafted by either of them.",
-               "flavor": "Mead is appreciated by many but will make hearthlings tipsy"
-            },
-            "unfermented_mead_recipe": {
-               "recipe_name": "Bucket of Unfermented Mead",
-               "description": "A mixture of water, honey and yeast. Within a Carboy it can be turned into mead!",
-               "flavor": "Take rainwater kept for years, and mix a sextarius of it with a pound of honey -'On Rural Affairs', early Phoenix Empire writings"
-            },
-            "unfermented_mead_fruit_recipe": {
-               "recipe_name": "Bucket of Unfermented Fruity Mead",
-               "description": "Like mead, but spiced up with some flavorful fruits. Within a Carboy it can be turned into fruity mead!",
-               "flavor": ""
-            },
             "hearth_ambrosia_recipe": {
                "recipe_name": "Hearthbud Ambrosia",
                "description": "A divine dessert, deeply satisfying and fortifying at the same time.",
@@ -4638,11 +4536,6 @@
                "recipe_name": "Hearthbud Animal Fodder",
                "description": "Animal fodder imbued with the essence of the hearth.",
                "flavor": "Hearthbud Animal Fodder is appreciated by all animals and will greatly increase the quality of their products!"
-            },
-            "spirit_hearth_recipe": {
-               "recipe_name": "Hearthbud Spirit",
-               "description": "A delicious and magical beverage. Will empower hearthlings but also make them a little tipsy.",
-               "flavor": "It's hard to tell the magical effects from the... other effects"
             }
          },
          "cook_mill_powered": {
@@ -4656,7 +4549,7 @@
          },
          "cook_description": {
             "level_2_data": {
-               "recipe_unlock_2_description": "The Cook has learned to make slightly fancier recipes and can now build an oven for baked goods and a brewery for different beverages."
+               "recipe_unlock_2_description": "The Cook has learned to make slightly fancier recipes and can now build an oven for delicious baked goods."
             },
             "level_4_data": {
                "ornate_perk_name": "Healthier Diets",
@@ -4666,7 +4559,7 @@
                "mastery_name": "Master Chef",
                "mastery_description": "From burning sauces to delighting crowds, a long journey has brought the Cook to the mastery of their craft. They now can try the most exotic and amazing recipes known to hearthlings."
             },
-            "description": "The art of cooking will provide a diverse menu of hearty meals and fortifying drinks created with resources of many origins like vegetables, meat and foraged goods."
+            "description": "The art of cooking will provide a diverse menu of hearty or fortifying meals created with resources of many origins like vegetables, meat and foraged goods."
          },
          "cook_workbench_pumpkin": {
             "cook_workbench_pumpkin_ghost": {
@@ -4701,50 +4594,6 @@
          "cook_spoon_copper": {
             "display_name": "Cook's Copper Spoon",
             "description": "Lighter and cleaner, this spoon will improve the Cook's efficiency."
-         },
-         "cook_brewery": {
-            "display_name": "Copper Brewery",
-            "description": "Excellent for crafting beverages and mixtures"
-         },
-         "cook_fermenting_vat_empty": {
-            "display_name": "Empty Fermentation Vat",
-            "description": "Used by the Cook or Herbalist for fermenting beers and ales."
-         },
-         "cook_fermenting_vat_wort": {
-            "display_name": "Fermentation Vat with Wort",
-            "description": "The wort is fermenting and will then turn into ale!"
-         },
-         "cook_fermenting_vat_beer": {
-            "display_name": "Fermentation Vat with Beer",
-            "description": "The beer is ready and can now be filtered and collected!"
-         },
-         "cook_fermenting_vat_ale": {
-            "display_name": "Fermentation Vat with Ale",
-            "description": "The ale is ready! Harvest it for the drink or add gruit to make beer."
-         },
-         "cook_fermenting_vat_gruit": {
-            "display_name": "Fermentation Vat with Gruit",
-            "description": "The mixture is bittering and getting flavorful. Soon it shall become beer!"
-         },
-         "cook_fermenting_carboy_empty": {
-            "display_name": "Empty Carboy",
-            "description": "A ceramic vessel used by the Cook or Herbalist for fermenting brews."
-         },
-         "cook_fermenting_carboy_mead": {
-            "display_name": "Carboy with Mead",
-            "description": "The mead is ready and can now be racked into jugs!"
-         },
-         "cook_fermenting_carboy_mead_fruit": {
-            "display_name": "Carboy with Fruity Mead",
-            "description": "The fruity mead is ready and can now be racked into jugs!"
-         },
-         "cook_fermenting_carboy_unfermented_mead": {
-            "display_name": "Carboy with Mead",
-            "description": "The mead is bubbling and warm... It is not ready yet!"
-         },
-         "cook_fermenting_carboy_unfermented_mead_fruit": {
-            "display_name": "Carboy with Fruity Mead",
-            "description": "The fruits are fermenting and releasing all their flavors! Not yet ready..."
          },
          "cook_workbench": {
             "cook_workbench_ghost": {
@@ -4895,7 +4744,7 @@
                "flavor": "Can only hold certain fluids and dry goods"
             },
             "serving_keg_wood_recipe": {
-               "description": "A small serving container for 4 simple or prepared drinks.",
+               "description": "A small serving container that the Brewer can fill with a drink.",
                "recipe_name": "Wooden Serving Keg",
                "flavor": ""
             },
@@ -5315,6 +5164,247 @@
          },
          "na_sunstroke_field_work_outfit": {
             "description": "A hat for workers and field workers. Protects from sunstrokes."
+         }
+      },
+      "brewer": {
+         "recipes": {
+            "workbenches_name": "Workbenches & Tools",
+            "ingredients_name": "Ingredient Refinement",
+            "brewing_name": "Preparation",
+            "simple_drinks_name": "Simple Drinks",
+            "prepared_drinks_name": "Prepared Drinks",
+            "alcoholic_drinks_name": "Alcoholic Beverages",
+            "enhancements_name": "Special Brews",
+            "decoration_name": "Decorations",
+            "wooden_sign_brewer_recipe": {
+               "recipe_name": "Brewer's Wall-Mounted Sign",
+               "description": "A sign with the mark of the Brewer, to be placed on buildings.",
+               "flavor": "The hexagram is one of the oldest and most traditional brewing symbols"
+            },
+            "brewer_workbench_recipe": {
+               "recipe_name": "Brewer's Table",
+               "description": "Used by the Brewer for crafting simple drinks and ingredients.",
+               "flavor": ""
+            },
+            "brewer_kettle_recipe": {
+               "recipe_name": "Brewer's Kettle",
+               "description": "Used by the Brewer for mashing, heating and boiling brews.",
+               "flavor": "This is where the magic happens"
+            },
+            "brewer_fermenting_vat_recipe": {
+               "recipe_name": "Fermentation Vat",
+               "description": "The Brewer can use this to make either ale or beer using different types of wort.",
+               "flavor": "Ale & Beer makes hearthlings happy and only slightly tipsy"
+            },
+            "brewer_wine_cask_recipe": {
+               "recipe_name": "Wine Cask",
+               "description": "Using this vessel, the Brewer is able to ferment and age different wines from fruit must.",
+               "flavor": "Aged wines are both valuable commodities and exquisite beverages"
+            },
+            "brewer_treading_vat_recipe": {
+               "recipe_name": "Treading Vat",
+               "description": "The Brewer can use this vat to trample over fruits, crushing them and starting their fermentation.",
+               "flavor": "Treading vats are used to make must which is then fermented into wine"
+            },
+            "brewer_distillery_recipe": {
+               "recipe_name": "Copper Distillery",
+               "description": "The Brewer can use this to create exquisite prepared drinks.",
+               "flavor": "Distilled drinks tend to be very strong"
+            },
+            "brewer_fermenting_carboy_recipe": {
+               "recipe_name": "Fermentation Carboy",
+               "description": "The Brewer can use this to make mead or fruity mead with different types of unfermented mead.",
+               "flavor": "Mead is appreciated by many but will make hearthlings tipsy"
+            },
+            "wort_recipe": {
+               "recipe_name": "Bucket of Wort",
+               "description": "An extract of mashed malted grains and herbs. Within a Fermentation Vat it can be turned into ale!",
+               "flavor": "Pure malt wort can also be further distilled into other drinks"
+            },
+            "wort_gruit_recipe": {
+               "recipe_name": "Bucket of Gruit Wort",
+               "description": "A bitter and strong mash of grains and gruit. Within a Fermentation Vat it can be turned into beer!",
+               "flavor": "Beer is ready quicker than Ale and makes hearthlings slightly happier"
+            },
+            "must_berry_recipe": {
+               "recipe_name": "Bucket of Berry Must",
+               "description": "Crushed berries with skins and juice. Within a Wine Cask it can be turned into berry wine!",
+               "flavor": ""
+            },
+            "spirit_recipe": {
+               "recipe_name": "Keg of Malt Spirit",
+               "description": "A distilled, moderately strong alcoholic beverage from grains.",
+               "flavor": "A bit too dry..."
+            },
+            "spirit_fruit_recipe": {
+               "recipe_name": "Keg of Fruit Spirit",
+               "description": "A distilled, moderately strong alcoholic beverage from fruits.",
+               "flavor": "Fruity and sweet, a festival favorite!"
+            },
+            "liquor_recipe": {
+               "recipe_name": "Keg of Liquor (x3)",
+               "description": "A complex, flavorful and quite strong alcoholic beverage from fermented wort.",
+               "flavor": "A very fancy drink for a very fancy town"
+            },
+            "tea_recipe": {
+               "recipe_name": "Herbal Tea",
+               "description": "An aromatic and warm beverage very appreciated by many! Provides multiple bonuses to hearthlings.",
+               "flavor": "Prepared tea must be placed somewhere in order to be consumed"
+            },
+            "tea_desert_recipe": {
+               "recipe_name": "Desert Sun Tea",
+               "description": "An unique recipe to the children of Rayya, a flower tea from Pal'Mum. Provides multiple bonuses to hearthlings.",
+               "flavor": "Prepared tea must be placed somewhere in order to be consumed"
+            },
+            "tea_amberstone_recipe": {
+               "recipe_name": "Amberstone Tea",
+               "description": "A traditional recipe from the clan, delighting palates for centuries. Provides multiple bonuses to hearthlings.",
+               "flavor": "Prepared tea must be placed somewhere in order to be consumed"
+            },
+            "tea_fancy_recipe": {
+               "recipe_name": "Lavish Tea",
+               "description": "The elegant and heartwarming flavor of dried daisies and fruits. Provides multiple bonuses to hearthlings.",
+               "flavor": "Prepared tea must be placed somewhere in order to be consumed"
+            },
+            "juice_berry_recipe": {
+               "recipe_name": "Bucket of Berry Juice",
+               "description": "Create a fruity beverage from wild berries.",
+               "flavor": ""
+            },
+            "juice_cherry_recipe": {
+               "recipe_name": "Bucket of Cherry Juice",
+               "description": "A sour, flavorful recipe that uses wild cherries.",
+               "flavor": ""
+            },
+            "juice_prickly_pear_recipe": {
+               "recipe_name": "Bucket of Prickly Pear Juice",
+               "description": "A peculiar beverage made with prickly pears.",
+               "flavor": "Make sure that no spine will go with the juice..."
+            },
+            "juice_carrot_recipe": {
+               "recipe_name": "Bucket of Carrot Juice",
+               "description": "A nutritious and refreshing drink recipe that uses fruits and carrots.",
+               "flavor": "The best of two worlds"
+            },
+            "juice_watermelon_recipe": {
+               "recipe_name": "Bucket of Watermelon Juice",
+               "description": "Deliciously refreshing juice straight from hearty, ripe watermelons.",
+               "flavor": ""
+            },
+            "juice_heirbloom_recipe": {
+               "recipe_name": "Bucket of Heirbloom Juice",
+               "description": "A tasty juice with the peculiar, strong taste of heirbloom fruits.",
+               "flavor": ""
+            },
+            "smoothie_recipe": {
+               "recipe_name": "Bucket of Smoothie",
+               "description": "The fruity flavors go perfectly with the creamy milk in this refreshing and sweet beverage.",
+               "flavor": "A delicious combination"
+            },
+            "unfermented_mead_recipe": {
+               "recipe_name": "Bucket of Unfermented Mead",
+               "description": "A mixture of water, honey and yeast. Within a Carboy it can be turned into mead!",
+               "flavor": "Take rainwater kept for years, and mix a sextarius of it with a pound of honey -'On Rural Affairs', early Phoenix Empire writings"
+            },
+            "unfermented_mead_fruit_recipe": {
+               "recipe_name": "Bucket of Unfermented Fruity Mead",
+               "description": "Like mead, but spiced up with some flavorful fruits. Within a Carboy it can be turned into fruity mead!",
+               "flavor": ""
+            },
+            "spirit_hearth_recipe": {
+               "recipe_name": "Hearthbud Spirit",
+               "description": "A delicious and magical beverage. Will empower hearthlings but also make them a little tipsy.",
+               "flavor": "It's hard to tell the magical effects from the... other effects"
+            },
+            "beer_serving_keg_recipe": {
+               "recipe_name": "Fill Serving Keg with Beer",
+               "description": "Provides 16 tankards of beer. It needs to be placed down before being used.",
+               "flavor": "Tapped drinks prevent waste, thus dispensing more servings"
+            }
+         },
+         "brewer_outfit": {
+            "display_name": "Brewer Outfit",
+            "description": "Traditional garments of the Brewer"
+         },
+         "brewer_tumbler": {
+            "brewer_tumbler_talisman": {
+               "display_name": "Brewer's Tumbler",
+               "description": "Required to promote a hearthling into a Brewer"
+            },
+            "display_name": "Brewer's Tumbler",
+            "description": "One of the most essential tools for a Brewer."
+         },
+         "brewer_description": {
+            "display_name": "Brewer",
+            "requirements": "Crafted by Herbalist",
+            "description": "A master of beverages, the Brewer will provide your town with delicious and enhancing drinks using many different tools and traditional techniques.",
+            "level_6_data": {
+               "title": "Brewmaster"
+            }
+         },
+         "brewer_workbench": {
+            "display_name": "Brewer's Table",
+            "description": "Used by the Brewer for crafting simple drinks and ingredients."
+         },
+         "brewer_distillery": {
+            "display_name": "Copper Distillery",
+            "description": "Excellent for crafting more complex beverages and mixtures."
+         },
+         "brewer_fermenting_vat_empty": {
+            "display_name": "Empty Fermentation Vat",
+            "description": "Used by the Brewer for fermenting ale and beer."
+         },
+         "brewer_fermenting_vat_wort": {
+            "display_name": "Fermentation Vat",
+            "description": "The pure malt wort is fermenting and will then turn into ale!"
+         },
+         "brewer_fermenting_vat_beer": {
+            "display_name": "Fermentation Vat",
+            "description": "The beer is ready! It can now be filtered and collected!"
+         },
+         "brewer_fermenting_vat_ale": {
+            "display_name": "Fermentation Vat",
+            "description": "The ale is ready! It can now be filtered and collected!"
+         },
+         "brewer_fermenting_vat_wort_gruit": {
+            "display_name": "Fermentation Vat",
+            "description": "The bitter and flavorful wort is fermenting. Soon it shall become beer!"
+         },
+         "brewer_fermenting_carboy_empty": {
+            "display_name": "Empty Fermentation Carboy",
+            "description": "A ceramic vessel used by the Brewer for fermenting mead."
+         },
+         "brewer_fermenting_carboy_mead": {
+            "display_name": "Fermentation Carboy",
+            "description": "The mead is ready and can now be racked into jugs!"
+         },
+         "brewer_fermenting_carboy_mead_fruit": {
+            "display_name": "Fermentation Carboy",
+            "description": "The fruity mead is ready and can now be racked into jugs!"
+         },
+         "brewer_fermenting_carboy_unfermented_mead": {
+            "display_name": "Fermentation Carboy",
+            "description": "The mead is bubbling and warm! It is not ready yet..."
+         },
+         "brewer_fermenting_carboy_unfermented_mead_fruit": {
+            "display_name": "Fermentation Carboy",
+            "description": "The fruits are fermenting with all their flavors! It is not ready yet..."
+         },
+         "brewer_kettle": {
+            "display_name": "Brewing Kettle",
+            "description": "Used for mashing, heating and boiling brews."
+         },
+         "brewer_treading_vat": {
+            "display_name": "Treading Vat",
+            "description": "Used by the Brewer for crushing and mashing fruits.",
+            "must": {
+               "display_name": "Crushed Fruits",
+               "description": "Stomp, stomp, stomp."
+            }
+         },
+         "brewer_wine_cask_empty": {
+            "display_name": "Empty Wine Cask",
+            "description": "A special cask used by the Brewer for aging wines."
          }
       }
    },
@@ -6225,6 +6315,18 @@
          "yarn": {
             "display_name": "Ball of Yarn",
             "description": "Spun from animal wool. It can be used as both fiber or thread."
+         },
+         "serving_keg_wood": {
+            "description": "A small serving container that the Brewer can fill with a drink.",
+            "display_name": "Wooden Serving Keg"
+         },
+         "serving_keg_clay": {
+            "description": "A small serving container that the Brewer can fill with a drink.",
+            "display_name": "Clay Serving Keg"
+         },
+         "serving_keg_stone": {
+            "description": "A small serving container that the Brewer can fill with a drink.",
+            "display_name": "Stone Serving Keg"
          }
       },
       "trees": {
@@ -7657,6 +7759,10 @@
             "hearth_wolf": {
                "description": "Proof that your crafters learned the land and created worthy goods"
             }
+         },
+         "wooden_sign_brewer": {
+            "display_name": "Brewer's Sign",
+            "description": "A sign with the mark of the Brewer"
          }
       },
       "pets": {
@@ -8651,6 +8757,38 @@
                   "description": "Now this is frostfeasting!"
                }
             }
+         },
+         "apples": {
+            "apple_basket": {
+               "display_name": "Basket of Apples"
+            },
+            "apple_serving": {
+               "display_name": "Apple"
+            }
+         },
+         "dates": {
+            "date_basket": {
+               "display_name": "Basket of Dates"
+            },
+            "date_serving": {
+               "display_name": "Date"
+            }
+         },
+         "pears": {
+            "pear_basket": {
+               "display_name": "Basket of Pears"
+            },
+            "pear_serving": {
+               "display_name": "Pear"
+            }
+         },
+         "plums": {
+            "plum_basket": {
+               "display_name": "Basket of Plums"
+            },
+            "plum_serving": {
+               "display_name": "Plum"
+            }
          }
       },
       "terrain": {
@@ -8686,6 +8824,14 @@
             "meteor_block": {
                "display_name": "Meteorite",
                "description": "A gift from the sky! What wonders here lie?"
+            },
+            "marble_block": {
+               "display_name": "Marble Vein",
+               "description": "Provides hunks o' marble when mined."
+            },
+            "feldspar_block": {
+               "display_name": "Feldspar Vein",
+               "description": "Provides hunks o' feldspar and sometimes mounds o' ball clay when mined."
             }
          }
       },
@@ -9947,18 +10093,6 @@
             "display_name": "Bone Kibble Bowl",
             "description": "Hearthlings can put kibble in this creepy bowl for their pets to eat."
          },
-         "serving_keg_wood": {
-            "description": "A small serving container for 4 simple or prepared drinks.",
-            "display_name": "Wooden Serving Keg"
-         },
-         "serving_keg_clay": {
-            "description": "A small serving container for 4 simple or prepared drinks.",
-            "display_name": "Clay Serving Keg"
-         },
-         "serving_keg_stone": {
-            "description": "A small serving container for 4 simple or prepared drinks.",
-            "display_name": "Stone Serving Keg"
-         },
          "input_cask_wood": {
             "display_name": "Wooden Supply Cask",
             "description": "Priority storage for 48 items."
@@ -10141,6 +10275,14 @@
          }
       },
       "drink": {
+         "unfermented_mead": {
+            "display_name": "Unfermented Mead",
+            "description": "Water, honey, yeast. The Brewer needs it to fill a fermentation carboy!"
+         },
+         "unfermented_mead_fruit": {
+            "display_name": "Unfermented Fruity Mead",
+            "description": "Smells sweet. The Brewer needs it to fill a fermentation carboy!"
+         },
          "moomoo_milk": {
             "moomoo_milk": {
                "display_name": "Moo-Moo Milk",
@@ -10183,11 +10325,17 @@
             "beer_serving": {
                "display_name": "Beer Tankard",
                "description": "What a merry day!"
+            },
+            "serving_keg_iconic": {
+               "description": "Place it somewhere so hearthlings can serve themselves!"
+            },
+            "serving_keg": {
+               "display_name": "Serving Keg of Beer"
             }
          },
          "wort": {
             "display_name": "Bucket of Wort",
-            "description": "An extract from grains. The Cook or Herbalist need it to fill a fermentation vat!"
+            "description": "An extract from grains. The Brewer needs it to make ale."
          },
          "spirit": {
             "spirit": {
@@ -10328,7 +10476,7 @@
          },
          "gruit": {
             "display_name": "Wrap of Gruit",
-            "description": "A bundle of bitter, dried herbs. Cooks and Herbalists use it to make beer."
+            "description": "A bundle of bitter, dried herbs. Brewers can use it to make beer."
          },
          "ale": {
             "ale_serving": {
@@ -10436,6 +10584,38 @@
                   "description": "Heated, sweet wine with spices and fruits. A winter favorite!"
                }
             }
+         },
+         "must_berry": {
+            "display_name": "Bucket of Berry Must",
+            "description": "Crushed berries, juice and solids. A Brewer needs it to fill a wine cask!"
+         },
+         "wort_gruit": {
+            "display_name": "Bucket of Gruit Wort",
+            "description": "A mash of malted grains and spices. The Brewer needs it to make beer."
+         },
+         "must_apple": {
+            "display_name": "Bucket of Apple Must",
+            "description": "Squishy, solid bits and juice. A Brewer needs it to fill a wine cask!"
+         },
+         "must_cherry": {
+            "display_name": "Bucket of Cherry Must",
+            "description": "A fragrant mash of juice and skins. A Brewer needs it to fill a wine cask!"
+         },
+         "must_date": {
+            "display_name": "Bucket of Date Must",
+            "description": "Sweet and sticky crushed fruits. A Brewer needs it to fill a wine cask!"
+         },
+         "must_pear": {
+            "display_name": "Bucket of Pear Must",
+            "description": "A juicy, sweet puree. A Brewer needs it to fill a wine cask!"
+         },
+         "must_plum": {
+            "display_name": "Bucket of Plum Must",
+            "description": "Flavorful juice and bits of fruit. A Brewer needs it to fill a wine cask!"
+         },
+         "must_prickly_pear": {
+            "display_name": "Bucket of Prickly Pear Must",
+            "description": "A surprisingly sweet and tasty mash. A Brewer needs it to fill a wine cask!"
          }
       },
       "npc": {
@@ -10503,14 +10683,6 @@
          "mummy": {
             "species": "mummy"
          }
-      },
-      "unfermented_mead": {
-         "display_name": "Unfermented Mead",
-         "description": "Water, honey, yeast. The Cook or Herbalist need it to fill a fermentation carboy!"
-      },
-      "unfermented_mead_fruit": {
-         "display_name": "Unfermented Fruity Mead",
-         "description": "Smells sweet. The Cook or Herbalist need it to fill a fermentation carboy!"
       }
    },
    "mountain_folk": {
@@ -10579,7 +10751,7 @@
                "gruit_recipe": {
                   "recipe_name": "Wrap of Gruit",
                   "description": "A bundle of bitter herbs and seasonings. Birch catkins are often used in the highlands.",
-                  "flavor": "The Cook or Herbalist can add it to a Fermentation Vat with Ale to make beer"
+                  "flavor": "The Brewer needs gruit to make beer"
                }
             }
          },
@@ -11013,7 +11185,7 @@
                   "tooltip_edible_nuts": "Edible Nuts",
                   "tooltip_brewing_ingredient": "Brewing Ingredients",
                   "tooltip_raw_food_fruits_veggies": "Raw Fruits & Veggies",
-                  "tooltip_raw_food_meat": "Raw Meats & Animal Goods",
+                  "tooltip_raw_food_meat": "Raw Meats",
                   "tooltip_prepared_food_baked": "Baked Goods",
                   "tooltip_raw_food_fungi": "Raw Fungi",
                   "tooltip_potions": "Potions & Tonics",
@@ -11021,7 +11193,12 @@
                   "tooltip_cooking": "Cooking",
                   "tooltip_brewing": "Brewing",
                   "fertilizers": "Fertilizers",
-                  "tooltip_production": "Production"
+                  "tooltip_production": "Production",
+                  "tooltip_raw_food_veggies": "Raw Veggies",
+                  "tooltip_raw_food_fruits": "Raw Fruits",
+                  "tooltip_raw_food_animal_goods": "Raw Animal Goods",
+                  "tooltip_raw_food_nuts": "Raw Nuts",
+                  "tooltip_serving_vessels": "Drink Serving Vessels"
                }
             },
             "pasture": {
@@ -11414,7 +11591,8 @@
             "prepared_food_desserts_resource_name": "Prepared Desserts",
             "prepared_food_warming_resource_name": "Warming Food",
             "prepared_food_refreshing_resource_name": "Refreshing Food",
-            "any_fertilizer_resource_name": "Any Fertilizer"
+            "any_fertilizer_resource_name": "Any Fertilizer",
+            "refined_serving_keg_resource_name": "Any Serving Keg"
          }
       }
    },

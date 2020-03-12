@@ -1,16 +1,72 @@
 {
 	"palettes" : {
 		"spring" : {
-			"meteor": "#2C2D40"
+			"rock_layer_1": "#707883",
+         "rock_layer_2": "#848D9C",
+         "rock_layer_3": "#98A3B5",
+         "rock_layer_4": "#ADB9CF",
+         "rock_layer_5": "#C1CFE8",
+         "rock_layer_6": "#D4DFF2",
+         "rock_layer_7": "#E6ECF8",
+         "rock_layer_8": "#F2F5FB",
+			"meteor": "#2C2D40",
+			"marble": "#DBDBDB",
+			"marble_2": "#DDD3C8",
+			"marble_3": "#DDC3AA",
+			"feldspar": "#EAAC86",
+			"feldspar_2": "#E7A075",
+			"feldspar_3": "#E49565"
 		},
 		"summer" : {
-			"meteor": "#2C2D40"
+			"rock_layer_1": "#333637",
+         "rock_layer_2": "#474C50",
+         "rock_layer_3": "#5C626A",
+         "rock_layer_4": "#707883",
+         "rock_layer_5": "#848D9C",
+         "rock_layer_6": "#98A3B5",
+         "rock_layer_7": "#ADB9CF",
+         "rock_layer_8": "#C1CFE8",
+			"meteor": "#2C2D40",
+			"marble": "#DBDBDB",
+			"marble_2": "#DDD3C8",
+			"marble_3": "#DDC3AA",
+			"feldspar": "#EAAC86",
+			"feldspar_2": "#E7A075",
+			"feldspar_3": "#E49565"
 		},
 		"autumn" : {
-			"meteor": "#2C2D40"
+			"rock_layer_1": "#707883",
+         "rock_layer_2": "#98A3B5",
+         "rock_layer_3": "#C1CFE8",
+         "rock_layer_4": "#D4DFF2",
+         "rock_layer_5": "#E6ECF8",
+         "rock_layer_6": "#F2F5FB",
+         "rock_layer_7": "#F4FDFF",
+         "rock_layer_8": "#F7FEFF",
+			"meteor": "#2C2D40",
+			"marble": "#DBDBDB",
+			"marble_2": "#DDD3C8",
+			"marble_3": "#DDC3AA",
+			"feldspar": "#EAAC86",
+			"feldspar_2": "#E7A075",
+			"feldspar_3": "#E49565"
 		},
 		"winter" : {
-			"meteor": "#2C2D40"
+			"rock_layer_1": "#C1CFE8",
+         "rock_layer_2": "#D4DFF2",
+         "rock_layer_3": "#E6ECF8",
+         "rock_layer_4": "#F2F5FB",
+         "rock_layer_5": "#F4FDFF",
+         "rock_layer_6": "#F7FEFF",
+         "rock_layer_7": "#FAFAFA",
+         "rock_layer_8": "#FCFCFC",
+			"meteor": "#2C2D40",
+			"marble": "#DBDBDB",
+			"marble_2": "#DDD3C8",
+			"marble_3": "#DDC3AA",
+			"feldspar": "#EAAC86",
+			"feldspar_2": "#E7A075",
+			"feldspar_3": "#E49565"
 		}
 	},
    "terrain": {
@@ -19,10 +75,29 @@
 		"plains_2" : "i18n(stonehearth_ace:ui.shell.select_settlement.arctic.terrain_codes.plains)",
 		"foothills_1" : "i18n(stonehearth_ace:ui.shell.select_settlement.arctic.terrain_codes.foothills)",
 		"foothills_2" : "i18n(stonehearth_ace:ui.shell.select_settlement.arctic.terrain_codes.foothills)"
-	  }
+	  },
+	  "mountains": {
+         "step_size": 10,
+         "step_count": 8
+      }
    },
    "landscape": {
       "placement_table": {
+			"stonehearth:trees:snowy:juniper:small": {
+            "placement_type": "dense",
+            "parameters": {
+               "grid_multiple": 2,
+               "item_density": 0.5,
+               "exclusion_radius": 2
+            },
+            "mountains": {
+               "placement_type": "single",
+               "parameters": {
+                  "ground_radius": 0,
+                  "exclusion_radius": 3
+               }
+            }
+         },
          "stonehearth_ace:fungi:winter_morel": {
             "placement_type": "dense",
             "parameters": {
@@ -79,6 +154,9 @@
       },
 		"trees": {
 			"sizes": {
+				"stonehearth:trees:gold:juniper": {
+               "large": 1
+            },
 				"stonehearth_ace:trees:walnut" : {
 				"small" : 0,
 				"medium" : 4,
@@ -123,8 +201,42 @@
                   }
                }
             }
+         },
+			"boulders": {
+            "namespace": "stonehearth:boulder:arctic",
+            "noise_map_parameters": {
+               "__comment": "Same as noise map parameters of plants. this is after trees, water, berries and plants are generated",
+               "terrain_based": {
+                  "plains": {
+                     "1": {
+                        "probability": 0.2,
+                        "density": 0.3
+                     },
+                     "2": {
+                        "probability": 0.4,
+                        "density": 0.5
+                     }
+                  },
+                  "foothills": {
+                     "1": {
+                        "probability": 0.3,
+                        "density": 0.9
+                     }
+                  },
+                  "mountains": {
+                     "1": {
+                        "probability": 0.3,
+                        "density": 0.5
+                     }
+                  }
+               }
+            },
+				"cutoffs" : {
+					"small" : 0.1,
+					"medium" : 0.5
+				}
          }
-      },
+		},
 	  "water": {
          "depth": {
             "shallow": 6,

@@ -1,0 +1,13 @@
+{
+   "type": "recipe",
+   "mixins": "/stonehearth_ace/jobs/brewer/recipes/brewer_workbench_recipe.json",
+   "portrait": "/stonehearth_ace/jobs/brewer/rc_brewer_workbench/rc_brewer_workbench.png",
+   "mixintypes": {
+	  "produces": "override"
+   },
+   "produces": [
+      {
+         "item": "stonehearth_ace:rayyas_children:brewer:workbench"
+      }
+   ]
+}

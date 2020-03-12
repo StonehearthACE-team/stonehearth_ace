@@ -1,0 +1,30 @@
+{
+   "type": "recipe",
+   "effort": 3,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.brewer.recipes.beer_serving_keg_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.brewer.recipes.beer_serving_keg_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.brewer.recipes.beer_serving_keg_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/drink/beer/beer_serving_keg/beer_serving_keg.png",
+   "level_requirement": 1,
+	"work_effect": "fiddle",
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:drink:beer",
+         "count": 2
+      },
+		{
+			"material": "refined serving_keg",
+			"count": 1
+		}
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:drink:beer:serving_keg",
+         "produce_scripts": [
+				"stonehearth_ace:craft_script:material_model_variant"
+			],
+         "model_variant_material": "refined serving_keg"
+      }
+   ]
+}

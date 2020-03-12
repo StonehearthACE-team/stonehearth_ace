@@ -18,11 +18,18 @@
       },
       "temperament": {},
       "outlook": {},
-      "passion_jobs": {},
+      "passion_jobs": {
+         "stonehearth_ace:traits:passion_brewer": {}
+      },
       "build": {},
       "talkative": {}
    },
    "traits": {
+      "stonehearth_ace:traits:alcohol_intolerance": {
+         "excludes": {
+            "stonehearth_ace:traits:passion_brewer": true
+         }
+      },
       "stonehearth_ace:traits:sleepyhead": {
          "excludes": {
             "stonehearth:traits:night_owl": true,

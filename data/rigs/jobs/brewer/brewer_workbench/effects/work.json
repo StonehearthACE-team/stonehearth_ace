@@ -1,0 +1,55 @@
+{
+   "type" : "effect",
+   "tracks": {
+		"bubbling": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/brewer/workbench_bubbling.cubemitter.json",
+         "loop": true,
+         "transforms": { 
+				"x": 0,
+            "y": 2.3,
+            "z": 0.4,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+		"bubbling_2": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/brewer/workbench_bubbling_2.cubemitter.json",
+         "loop": true,
+         "transforms": { 
+				"x": 0,
+            "y": 2.05,
+            "z": 0,
+            "rx": -30,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "sound": {
+         "type": "sound_effect",
+         "loop": true,
+         "start_time": 0,
+         "min_distance": 35,
+         "falloff": 4,
+         "volume": 70,
+        "track": "stonehearth_ace:sounds:brewer:workbench"
+      },
+		"sound_2": {
+         "type": "sound_effect",
+         "loop": false,
+         "start_time": 300,
+         "min_distance": 10,
+         "falloff": 4,
+         "volume": 50,
+         "track": "stonehearth_ace:sounds:pouring_liquid"
+      },
+      "animation": {
+         "type": "animation_effect",
+         "start_time": 0,
+         "animation": "work.json",
+         "loop": true
+      }      
+   }
+}

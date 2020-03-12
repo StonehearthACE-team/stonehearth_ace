@@ -190,18 +190,36 @@
          "categories": {
             "raw_food": {
                "ordinal": 1,
-               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_raw_food_fruits_veggies)",
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_raw_food_veggies)",
+               "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/veggies.png",
+               "filter": "stockpile_raw_food vegetable"
+            },
+            "raw_food_fruits": {
+               "ordinal": 1.1,
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_raw_food_fruits)",
                "icon": "/stonehearth/ui/game/modes/zones_mode/stockpile/images/taxonomy/fruit.png",
-               "filter": "stockpile_raw_food vegetarian"
+               "filter": "stockpile_raw_food fruit"
             },
             "raw_food_meat": {
-               "ordinal": 1.1,
+               "ordinal": 1.2,
                "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_raw_food_meat)",
                "icon": "/stonehearth/ui/game/modes/zones_mode/stockpile/images/taxonomy/meat_uncooked.png",
+               "filter": "stockpile_cooking_ingredient meat_ingredient"
+            },
+            "raw_food_animal_goods": {
+               "ordinal": 1.3,
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_raw_food_animal_goods)",
+               "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/animal_goods.png",
                "filter": "stockpile_cooking_ingredient animal_ingredient"
             },
+            "raw_food_nuts": {
+               "ordinal": 1.4,
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_raw_food_nuts)",
+               "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/raw_food_nuts.png",
+               "filter": "stockpile_cooking_ingredient nuts"
+            },
             "raw_food_fungi": {
-               "ordinal": 1.2,
+               "ordinal": 1.5,
                "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_raw_food_fungi)",
                "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/raw_food_fungi.png",
                "filter": "stockpile_raw_food fungi"
@@ -229,6 +247,12 @@
                "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_brewing_ingredient)",
                "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/fluids.png",
                "filter": "stockpile_brewing_ingredient"
+            },
+            "serving_vessels": {
+               "ordinal": 7.1,
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_serving_vessels)",
+               "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/serving_vessels.png",
+               "filter": "stockpile_serving_vessel"
             },
             "animal_feed": {
                "ordinal": 8,

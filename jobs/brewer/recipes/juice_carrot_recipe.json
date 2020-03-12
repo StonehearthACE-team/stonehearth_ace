@@ -1,0 +1,26 @@
+{
+   "type": "recipe",
+   "effort": 32,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.brewer.recipes.juice_carrot_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.brewer.recipes.juice_carrot_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.brewer.recipes.juice_carrot_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/drink/juice_carrot/juice_carrot/juice_carrot.png",
+   "level_requirement": 3,
+   "workshop": "stonehearth_ace:brewer:workbench",
+   "ingredients": [
+		{
+         "uri": "stonehearth:food:carrot:carrot_basket",
+         "count": 1
+      },
+		{
+         "material": "raw_food fruit",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:drink:juice_carrot"
+      }
+   ]
+}

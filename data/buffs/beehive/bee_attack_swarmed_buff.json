@@ -4,9 +4,11 @@
    "display_name": "i18n(stonehearth_ace:data.buffs.bee_attack_swarmed.display_name)",
    "description": "i18n(stonehearth_ace:data.buffs.bee_attack_swarmed.description)",
    "icon": "file(bee_attack_buff.png)",
-   "duration": "15m",
+   "duration": "15m+15m",
    "cant_affect_siege": true,
-   "repeat_add_action": "renew_duration",
+   "repeat_add_action": "stack_and_refresh",
+   "max_stacks": 1,
+   "buff_evolve_on_max_stacks": "stonehearth_ace:buffs:bee_attack:swarmed:cooldown",
    "modifiers": {
       "courage": {
          "add": -10
@@ -19,13 +21,16 @@
    "restore_effect": true,
    "script": "stonehearth:buff_scripts:periodic_health_modification",
    "script_info": {
-      "health_change": -1,
+      "health_change": -3,
       "min_health": 0.8,
       "pulse": "5m",
       "pulse_immediately": true,
       "pulse_on_destroy": true,
       "cannot_kill": true
    },
+   "disallowed_buffs": [
+      "stonehearth_ace:buffs:bee_attack"
+   ],
    "injected_ai": {
       "actions": [
          "stonehearth_ace:actions:compelled_behaviors:cower",

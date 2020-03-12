@@ -1,0 +1,11 @@
+{
+   "type": "job",
+   "mixins": "stonehearth_ace:jobs:brewer",
+   "crafter": {
+      "recipe_list": "file(recipes/rc_recipes.json)"
+   },
+   "equipment": {
+      "helmet": "file(rc_brewer_outfit/rc_brewer_outfit_hat)",
+      "torso": "stonehearth_ace:rayyas_children:brewer:outfit"
+   }
+}

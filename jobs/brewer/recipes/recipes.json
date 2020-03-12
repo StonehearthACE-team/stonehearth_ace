@@ -1,0 +1,137 @@
+{
+   "craftable_recipes": {
+      "workbenches": {
+         "ordinal": 1,
+         "name": "i18n(stonehearth_ace:jobs.brewer.recipes.workbenches_name)",
+         "recipes": {
+            "brewer_workbench": {
+               "recipe": "file(brewer_workbench_recipe.json)"
+            },
+            "fermenting_vat": {
+               "recipe": "file(fermenting_vat_recipe.json)"
+            },
+            "fermenting_carboy": {
+               "recipe": "file(fermenting_carboy_recipe.json)"
+            },
+            "brewer_distillery": {
+               "recipe": "file(brewer_distillery_recipe.json)"
+            },
+            "brewer_kettle": {
+               "recipe": "file(brewer_kettle_recipe.json)"
+            },
+            "brewer_treading_vat": {
+               "recipe": "file(brewer_treading_vat_recipe.json)"
+            },
+            "brewer_wine_cask": {
+               "recipe": "file(brewer_wine_cask_recipe.json)"
+            }
+         }
+      },
+      "ingredients": {
+         "ordinal": 10,
+         "name": "i18n(stonehearth_ace:jobs.brewer.recipes.ingredients_name)",
+         "recipes": {}
+      },
+      "brewing": {
+         "ordinal": 20,
+         "name": "i18n(stonehearth_ace:jobs.brewer.recipes.brewing_name)",
+         "recipes": {
+            "unfermented_mead": {
+               "recipe": "file(unfermented_mead_recipe.json)"
+            },
+            "unfermented_mead_fruit": {
+               "recipe": "file(unfermented_mead_fruit_recipe.json)"
+            },
+            "wort": {
+               "recipe": "file(wort_recipe.json)"
+            },
+            "wort_gruit": {
+               "recipe": "file(wort_gruit_recipe.json)"
+            },
+            "must_berry": {
+               "recipe": "file(must_berry_recipe.json)"
+            }
+         }
+      },
+      "simple_drinks": {
+         "ordinal": 30,
+         "name": "i18n(stonehearth_ace:jobs.brewer.recipes.simple_drinks_name)",
+         "recipes": {
+            "juice_berry": {
+               "recipe": "file(juice_berry_recipe.json)"
+            },
+            "juice_cherry": {
+               "recipe": "file(juice_cherry_recipe.json)"
+            },
+            "juice_prickly_pear": {
+               "recipe": "file(juice_prickly_pear_recipe.json)"
+            },
+            "juice_watermelon": {
+               "recipe": "file(juice_watermelon_recipe.json)"
+            },
+            "juice_carrot": {
+               "recipe": "file(juice_carrot_recipe.json)"
+            },
+            "juice_heirbloom": {
+               "recipe": "file(juice_heirbloom_recipe.json)"
+            }
+         }
+      },
+      "prepared_drinks": {
+         "ordinal": 40,
+         "name": "i18n(stonehearth_ace:jobs.brewer.recipes.prepared_drinks_name)",
+         "recipes": {
+            "tea": {
+               "recipe": "file(tea_recipe.json)"
+            },
+            "tea_fancy": {
+               "recipe": "file(tea_fancy_recipe.json)"
+            },
+            "tea_desert": {
+               "recipe": "file(tea_desert_recipe.json)"
+            },
+            "tea_amberstone": {
+               "recipe": "file(tea_amberstone_recipe.json)"
+            },
+            "smoothie": {
+               "recipe": "file(smoothie_recipe.json)"
+            }
+         }
+      },
+      "alcoholic_drinks": {
+         "ordinal": 50,
+         "name": "i18n(stonehearth_ace:jobs.brewer.recipes.alcoholic_drinks_name)",
+         "recipes": {
+            "spirit": {
+               "recipe": "file(spirit_recipe.json)"
+            },
+            "spirit_fruit": {
+               "recipe": "file(spirit_fruit_recipe.json)"
+            },
+            "liquor": {
+               "recipe": "file(liquor_recipe.json)"
+            },
+            "spirit_hearth": {
+               "recipe": "file(spirit_hearth_recipe.json)"
+            },
+            "beer_serving_keg": {
+               "recipe": "file(beer_serving_keg_recipe.json)"
+            }
+         }
+      },
+      "enhancements": {
+         "ordinal": 60,
+         "name": "i18n(stonehearth_ace:jobs.brewer.recipes.enhancements_name)",
+         "recipes": {}
+      },
+      "decoration": {
+         "ordinal": 80,
+         "name": "i18n(stonehearth_ace:jobs.brewer.recipes.decoration_name)",
+         "recipes": {
+            "wooden_sign_brewer": {
+               "recipe": "file(wooden_sign_brewer_recipe.json)"
+            }
+         }
+      }
+   }
+}

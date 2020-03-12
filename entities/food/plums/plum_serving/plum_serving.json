@@ -1,0 +1,50 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(plum_serving.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:item": {
+         "category": "food",
+         "destroy_on_uncarry": true
+      },
+      "stonehearth:food": {
+         "stonehearth:sitting_on_chair": {
+            "satisfaction": 18,
+            "drink_satisfaction": 20
+         },
+         "default": {
+            "satisfaction": 15,
+            "drink_satisfaction": 10
+         },
+         "quality": 3
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 0,
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.plums.plum_serving.display_name)",
+         "description": "i18n(stonehearth_ace:entities.food.plums.plum_serving.description)",
+         "icon": "file(plum_serving.png)",
+         "is_item": true,
+         "category": "food",
+         "material_tags": [
+            "food",
+            "vegetarian",
+            "breakfast_time"
+         ],
+         "subject_override": "stonehearth_ace:plants:cherry_bush"
+      }
+   }
+}

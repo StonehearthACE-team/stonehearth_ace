@@ -4,15 +4,6 @@
 		 "recipes": {
 			"cheese_vat": {
 			   "recipe": "file(cheese_vat_recipe.json)"
-			},
-			"fermenting_vat": {
-			   "recipe": "file(fermenting_vat_recipe.json)"
-			},
-			"fermenting_carboy": {
-			   "recipe": "file(fermenting_carboy_recipe.json)"
-			},
-			"cook_brewery": {
-			   "recipe": "file(cook_brewery_recipe.json)"
 			}
 		 }
 	  },
@@ -206,67 +197,7 @@
          "recipes": {
 				"malted_grains": {
 					"recipe": "file(malted_grains_recipe.json)"
-				},
-				"unfermented_mead": {
-					"recipe": "file(unfermented_mead_recipe.json)"
-				},
-				"unfermented_mead_fruit": {
-					"recipe": "file(unfermented_mead_fruit_recipe.json)"
-				},
-				"wort": {
-					"recipe": "file(wort_recipe.json)"
-				}
-         }
-		},
-		"drinks": {
-			"ordinal": 67,
-         "name": "i18n(stonehearth_ace:jobs.cook.recipes.drinks_name)",
-         "recipes": {
-            "spirit": {
-               "recipe": "file(spirit_recipe.json)"
-            },
-            "spirit_fruit": {
-               "recipe": "file(spirit_fruit_recipe.json)"
-            },
-            "liquor": {
-               "recipe": "file(liquor_recipe.json)"
-            },
-				"tea": {
-               "recipe": "file(tea_recipe.json)"
-            },
-				"tea_fancy": {
-               "recipe": "file(tea_fancy_recipe.json)"
-            },
-				"tea_desert": {
-               "recipe": "file(tea_desert_recipe.json)"
-            },
-				"tea_amberstone": {
-               "recipe": "file(tea_amberstone_recipe.json)"
-            },
-				"juice_berry": {
-               "recipe": "file(juice_berry_recipe.json)"
-            },
-				"juice_cherry": {
-               "recipe": "file(juice_cherry_recipe.json)"
-            },
-				"juice_prickly_pear": {
-               "recipe": "file(juice_prickly_pear_recipe.json)"
-            },
-				"juice_watermelon": {
-               "recipe": "file(juice_watermelon_recipe.json)"
-            },
-				"juice_carrot": {
-               "recipe": "file(juice_carrot_recipe.json)"
-            },
-				"juice_heirbloom": {
-               "recipe": "file(juice_heirbloom_recipe.json)"
-            },
-				"smoothie": {
-               "recipe": "file(smoothie_recipe.json)"
-            },
-				"spirit_hearth": {
-               "recipe": "file(spirit_hearth_recipe.json)"
-            }
+				}			
          }
 		},
 	   "animal_feed": {

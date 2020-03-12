@@ -1,0 +1,26 @@
+{
+   "type": "recipe",
+   "effort": 40,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.brewer.recipes.brewer_treading_vat_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.brewer.recipes.brewer_treading_vat_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.brewer.recipes.brewer_treading_vat_recipe.flavor)",
+   "portrait": "/stonehearth_ace/jobs/brewer/brewer_treading_vat/brewer_treading_vat.png",
+   "work_effect": "work",
+   "level_requirement": 2,
+   "ingredients": [
+      {
+         "material": "wood resource",
+         "count": 2
+      },
+      {
+         "material": "ingot hard_metal",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:brewer:treading_vat"
+      }
+   ]
+}

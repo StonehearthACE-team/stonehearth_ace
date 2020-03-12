@@ -44,6 +44,10 @@ function AceBuff:_create_buff()
          self:on_repeat_add(self._options)
       end
    end
+	
+	if self._sv.stacks == self._sv.max_stacks and self._json.buff_evolve_on_max_stacks then
+		self:_try_evolve()
+	end
 
    if self._json.duration_statistics_key and self._sv._entity:get_component('stonehearth_ace:statistics') then
       self:_create_duration_timer()

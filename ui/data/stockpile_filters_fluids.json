@@ -342,15 +342,15 @@
             },
             "unfermented_mead": {
                "ordinal": 6,
-               "display_name": "i18n(stonehearth_ace:entities.unfermented_mead.display_name)",
+               "display_name": "i18n(stonehearth_ace:entities.drink.unfermented_mead.display_name)",
                "icon": "/stonehearth_ace/entities/drink/unfermented_mead/unfermented_mead.png",
-               "filter": "brewing_ingredient unfermented_mead"
+               "filter": "brewing_ingredient unfermented_mead standard"
             },
             "unfermented_mead_fruit": {
                "ordinal": 6.1,
-               "display_name": "i18n(stonehearth_ace:entities.unfermented_mead_fruit.display_name)",
+               "display_name": "i18n(stonehearth_ace:entities.drink.unfermented_mead_fruit.display_name)",
                "icon": "/stonehearth_ace/entities/drink/unfermented_mead_fruit/unfermented_mead_fruit.png",
-               "filter": "brewing_ingredient unfermented_mead_fruit"
+               "filter": "brewing_ingredient unfermented_mead fruit"
             },
             "curdling_mixture": {
                "ordinal": 7,
@@ -362,7 +362,13 @@
                "ordinal": 8,
                "display_name": "i18n(stonehearth_ace:entities.drink.wort.display_name)",
                "icon": "/stonehearth_ace/entities/drink/wort/wort.png",
-               "filter": "brewing_ingredient wort"
+               "filter": "brewing_ingredient wort standard"
+            },
+            "wort_gruit": {
+               "ordinal": 8.1,
+               "display_name": "i18n(stonehearth_ace:entities.drink.wort_gruit.display_name)",
+               "icon": "/stonehearth_ace/entities/drink/wort_gruit/wort_gruit.png",
+               "filter": "brewing_ingredient wort gruit"
             }
          }
       },

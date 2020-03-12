@@ -1,0 +1,31 @@
+{
+   "type": "recipe",
+   "effort": 60,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.brewer.recipes.spirit_hearth_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.brewer.recipes.spirit_hearth_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.brewer.recipes.spirit_hearth_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/drink/spirit_hearth/spirit_hearth/spirit_hearth.png",
+   "workshop": "stonehearth_ace:brewer:distillery",
+   "level_requirement": 6,
+	"manual_unlock": true,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:food:malted_grains",
+         "count": 1
+      },
+	   {
+         "uri": "stonehearth:plants:earthbud:seed",
+         "count": 2
+      },
+		{
+			"material": "low_fuel",
+			"count": 1
+		}
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:drink:spirit_hearth"
+      }
+   ]
+}

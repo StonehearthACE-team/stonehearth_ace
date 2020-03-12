@@ -1,4 +1,57 @@
 {
+	"components": {
+		"model_variants": {
+         "autumn": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(medium_pine_tree_snowy_autumn.qb)",
+							"file(medium_pine_tree_snowy_autumn_2.qb)"
+                  ]
+               }
+            ]
+         },
+         "spring": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(medium_pine_tree_snowy_spring.qb)",
+							"file(medium_pine_tree_snowy_spring_2.qb)",
+							"file(medium_pine_tree_snowy_spring_3.qb)"
+                  ]
+               }
+            ]
+         },
+         "summer": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(medium_pine_tree_snowy_summer.qb)",
+							"file(medium_pine_tree_snowy_summer_2.qb)",
+							"file(medium_pine_tree_snowy_summer_3.qb)"
+                  ]
+               }
+            ]
+         }
+      },
+      "stonehearth:seasonal_model_switcher": {
+			"stonehearth:biome:arctic": {
+            "spring": "spring",
+            "summer": "summer",
+            "autumn": "autumn",
+            "winter": "default"
+         },
+			"*": {
+            "spring": "summer",
+            "summer": "summer",
+            "autumn": "summer",
+            "winter": "default"
+         }     
+      }
+	},
    "entity_data": {
       "stonehearth:stump_data": {
          "stump_alias": "stonehearth_ace:trees:pine:medium:stump"

@@ -1,0 +1,54 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(beer_serving_keg.qb)"
+            ]
+         },
+         "stone": {
+            "models": [
+               "file(beer_serving_keg_stone.qb)"
+            ]
+         },
+         "clay": {
+            "models": [
+               "file(beer_serving_keg_clay.qb)"
+            ]
+         }
+      },
+      "stonehearth_ace:entity_modification": {
+         "model_variants": {
+            "stonehearth_ace:refined:serving_keg:wood": "default",
+            "stonehearth_ace:refined:serving_keg:stone": "stone",
+            "stonehearth_ace:refined:serving_keg:clay": "clay"
+         }
+      },
+      "mob": {
+         "model_origin": { "x": -0.05, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "allow_vertical_adjacent": true
+      },
+      "render_info": {
+         "scale": 0.09
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.drink.beer.serving_keg.display_name)",
+         "description": "i18n(stonehearth_ace:entities.drink.beer.beer.description)",
+         "icon": "file(beer_serving_keg.png)",
+         "category": "drink",
+         "material_tags": [
+            "drink_container",
+            "prepared_drink",
+            "beer",
+            "alcoholic",
+            "stockpile_serving_vessel",
+            "serving_vessel",
+            "night_time"
+         ]
+      }
+   }
+}

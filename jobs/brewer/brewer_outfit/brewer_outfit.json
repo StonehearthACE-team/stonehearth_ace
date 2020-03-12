@@ -1,0 +1,37 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:item_properties",
+   "components": {
+      "render_info": {},
+      "model_variants": {
+         "default": {
+            "layer": "clothing",
+            "transparent": "false",
+            "models": [
+               "file(brewer_outfit.qb)"
+            ]
+         },
+         "female": {
+            "layer": "clothing",
+            "transparent": "false",
+            "models": [
+               "file(brewer_outfit_female.qb)"
+            ]
+         }
+      },
+      "stonehearth:equipment_piece": {
+         "slot": "torso",
+         "render_type": "merge_with_model"
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:jobs.brewer.brewer_outfit.display_name)",
+         "description": "i18n(stonehearth_ace:jobs.brewer.brewer_outfit.description)",
+         "icon": "file(brewer_outfit.png)",
+         "material_tags": [
+            "cloth"
+         ]
+      }
+   }
+}

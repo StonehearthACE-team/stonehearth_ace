@@ -1,0 +1,13 @@
+{
+   "type": "recipe",
+   "mixins": "/stonehearth_ace/jobs/brewer/recipes/brewer_kettle_recipe.json",
+   "portrait": "/stonehearth_ace/jobs/brewer/na_brewer_kettle/na_brewer_kettle.png",
+   "mixintypes": {
+	  "produces": "override"
+   },
+   "produces": [
+      {
+         "item": "stonehearth_ace:northern_alliance:brewer:kettle"
+      }
+   ]
+}

@@ -1,0 +1,30 @@
+{
+   "type": "recipe",
+   "effort": 45,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.brewer.recipes.brewer_distillery_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.brewer.recipes.brewer_distillery_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.brewer.recipes.brewer_distillery_recipe.flavor)",
+   "portrait": "/stonehearth_ace/jobs/brewer/brewer_distillery/brewer_distillery.png",
+   "work_effect": "work",
+   "level_requirement": 5,
+   "ingredients": [
+		{
+         "material": "stone resource",
+         "count": 1
+      },
+      {
+         "material": "wood resource",
+         "count": 2
+      },
+		{
+			"uri": "stonehearth:refined:copper_ingot",
+			"count": 1
+		}
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:brewer:distillery"
+      }
+   ]
+}

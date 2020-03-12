@@ -1,0 +1,22 @@
+{
+   "type": "recipe",
+   "effort": 10,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.brewer.recipes.wooden_sign_brewer_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.brewer.recipes.wooden_sign_brewer_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.brewer.recipes.wooden_sign_brewer_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/decoration/wooden_sign_brewer/wooden_sign_brewer.png",
+   "level_requirement": 1,
+	"work_effect": "work",
+   "ingredients": [
+      {
+         "material": "wood resource",
+         "count": 3
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:decoration:wooden_sign_brewer"
+      }
+   ]
+}

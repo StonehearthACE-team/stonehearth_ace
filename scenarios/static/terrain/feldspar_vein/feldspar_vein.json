@@ -1,0 +1,18 @@
+{
+   "mixins": "/stonehearth/scenarios/static/terrain/ore_vein/ore_vein.json",
+   "name": "feldspar_vein",
+   "kind": "feldspar",
+   "biomes": [
+      "stonehearth:biome:desert"
+   ],
+   "weight": 90,
+   "data": {
+      "num_veins_min": 2,
+      "num_veins_max": 3,
+      "vein_length_min": 12,
+      "vein_length_max": 36,
+      "vein_radius": 4,
+      "mother_lode_radius_min": 3,
+      "mother_lode_radius_max": 5
+   }
+}

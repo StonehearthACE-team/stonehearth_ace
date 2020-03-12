@@ -1,0 +1,41 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:item_properties",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(brewer_tumbler.qb)"
+            ]
+         }
+      },
+      "effect_list": {
+         "default": "stonehearth:effects:talisman_glow"
+      },
+      "stonehearth:promotion_talisman": {
+         "job": "stonehearth_ace:jobs:brewer"
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 10,
+         "rarity": "rare",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 1,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:jobs.brewer.brewer_tumbler.brewer_tumbler_talisman.display_name)",
+         "description": "i18n(stonehearth_ace:jobs.brewer.brewer_tumbler.brewer_tumbler_talisman.description)",
+         "icon": "file(brewer_tumbler.png)",
+         "is_item": true,
+         "category": "tools",
+         "material_tags": [
+            "stockpile_tool"
+         ]
+      }
+   }
+}

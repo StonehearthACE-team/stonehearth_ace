@@ -1,0 +1,16 @@
+{
+   "type": "buff",
+   "axis": "buff",
+   "invisible_to_player": true,
+   "script": "stonehearth:buff_scripts:aura",
+   "script_info": {
+      "pulse": "10m",
+      "aura_buff": [
+         "stonehearth_ace:buffs:brewer_treading_vat:shoes"
+      ],
+      "radius": 1,
+      "affect_self": false,
+      "target_type": "mob",
+      "sensor_name": "range"
+   }
+}

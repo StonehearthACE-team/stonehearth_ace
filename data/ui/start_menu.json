@@ -204,8 +204,20 @@
          "herbalist": {
             "ordinal": 8
          },
-         "geomancer": {
+			"brewer": {
+				"name": "i18n(stonehearth_ace:ui.game.menu.crafter_menu.items.brewer.display_name)",
+            "description": "i18n(stonehearth_ace:ui.game.menu.crafter_menu.items.brewer.description)",
+            "class": "button",
+            "required_job": "stonehearth_ace:jobs:brewer",
+            "required_job_text": "i18n(stonehearth_ace:ui.game.menu.crafter_menu.items.brewer.required_job_text)",
+            "icon": "/stonehearth_ace/jobs/brewer/images/brewer_menu_icon.png",
+            "sticky": true,
+            "menu_action": "show_crafter_ui",
+            "hotkey_action": "craft:brewer",
             "ordinal": 9
+         },
+         "geomancer": {
+            "ordinal": 10
          }
       }
    },

@@ -5,9 +5,6 @@
             "herbalist_bee_skep": {
                "recipe": "file(herbalist_bee_skep_recipe.json)"
             },
-				"fermenting_carboy": {
-					"recipe": "file(fermenting_carboy_recipe.json)"
-				},
 				"herbalist_cauldron": {
 					"recipe": "file(herbalist_cauldron_recipe.json)"
 				}
@@ -20,6 +17,9 @@
             },
 				"worker_beekeeping_hat": {
                "recipe": "file(worker_beekeeping_hat_recipe.json)"
+            },
+				"brewer_tumbler": {
+               "recipe": "file(brewer_tumbler_recipe.json)"
             }
          }
       },
@@ -229,14 +229,8 @@
 		},
 		"brewing_ingredients": {
 			"ordinal": 59,
-         "name": "i18n(stonehearth_ace:jobs.cook.recipes.brewing_name)",
-         "recipes": {
-				"unfermented_mead": {
-					"recipe": "file(unfermented_mead_recipe.json)"
-				},
-				"unfermented_mead_fruit": {
-					"recipe": "file(unfermented_mead_fruit_recipe.json)"
-				},
+         "name": "i18n(stonehearth_ace:jobs.herbalist.recipes.brewing_name)",
+         "recipes": {			
 				"gruit" : {
 					"recipe" : "file(gruit_recipe.json)"
 				}

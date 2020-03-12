@@ -1,0 +1,55 @@
+{
+   "type": "entity",
+   "mixins": "file(mf_brewer_workbench_ghost.json)",
+   "components": {
+      "destination": {
+         "region": [
+            {
+               "min": { "x": 0, "y": 0, "z": 0 },
+               "max": { "x": 1, "y": 1, "z": 2 }
+            }
+         ],
+         "adjacency_flags": [
+            "front"
+         ]
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": 0 },
+               "max": { "x": 2, "y": 3, "z": 2 }
+            }
+         ]
+      },
+      "stonehearth:workshop": {
+         "job_alias": "stonehearth_ace:jobs:brewer",
+         "workshop_effect": "/stonehearth_ace/data/rigs/jobs/brewer/brewer_workbench/effects/work.json"
+      },
+      "stonehearth:entity_forms": {
+         "ghost_form": "file(mf_brewer_workbench_ghost.json)",
+         "iconic_form": "file(mf_brewer_workbench_iconic.json)",
+         "placeable_on_ground": true
+      }
+   },
+   "entity_data": {
+      "stonehearth:table": {
+         "drop_effect": "carry_putdown_on_table",
+         "drop_offset": { "x": 0, "y": -100, "z": 0 }
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 9,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 8
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

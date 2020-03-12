@@ -1,7 +1,7 @@
 {
    "mixins": "/rayyas_children/jobs/cook/recipes/recipes.json",
    "craftable_recipes": {
-	  "workbenches": {
+      "workbenches": {
          "recipes": {
             "cook_workbench": {
                "recipe": "file(rc_cook_workbench_recipe.json)"
@@ -9,22 +9,19 @@
             "cook_mill": {
                "recipe": "file(rc_cook_mill_recipe.json)"
             },
-				"cook_oven": {
+            "cook_oven": {
                "recipe": "file(rc_cook_oven_recipe.json)"
-            },
-				"cook_brewery": {
-               "recipe": "file(rc_cook_brewery_recipe.json)"
             }
          }
-	  },
+      },
       "chefs_specials": {
          "recipes": {
-				"faction_fish_dish": {
-					"recipe": "file(catfish_tagine_recipe.json)"
-				}			
+            "faction_fish_dish": {
+               "recipe": "file(catfish_tagine_recipe.json)"
+            }
          }
       },
-	  "animal_feed": {
+      "animal_feed": {
          "recipes": {
             "fodder": {
                "recipe": "file(rc_fodder_recipe.json)"
@@ -32,10 +29,10 @@
             "ostrich_feed": {
                "recipe": "file(rc_ostrich_feed_recipe.json)"
             },
-				"moomoo_feed": {
+            "moomoo_feed": {
                "recipe": "file(rc_moomoo_feed_recipe.json)"
             },
-				"sheep_feed": {
+            "sheep_feed": {
                "recipe": "file(rc_sheep_feed_recipe.json)"
             },
             "poyo_feed": {

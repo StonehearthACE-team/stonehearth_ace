@@ -1,0 +1,24 @@
+{
+   "type": "buff",
+   "axis": "buff",
+   "invisible_to_player": true,
+   "duration": "10m",
+   "cant_affect_siege": true,
+   "repeat_add_action": "renew_duration",
+   "script": "stonehearth_ace:buff_scripts:equip_during_buff",
+   "script_info": {
+      "unequip_slots": {
+         "boots": true
+      },
+      "equipment_cache_key": "brewer_shoes",
+      "requires_any_of": [
+         "stonehearth_ace:brewer:outfit",
+         "stonehearth_ace:northern_alliance:brewer:outfit",
+         "stonehearth_ace:rayyas_children:brewer:outfit",
+         "stonehearth_ace:mountain_folk:brewer:outfit"
+      ],
+      "add_equipment": [
+         "stonehearth_ace:brewer:outfit:shoes_placeholder"
+      ]
+   }
+}

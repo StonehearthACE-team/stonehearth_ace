@@ -1,0 +1,23 @@
+{
+   "type": "recipe",
+   "effort": 60,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.brewer.recipes.must_berry_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.brewer.recipes.must_berry_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.brewer.recipes.must_berry_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/drink/must_berry/must_berry.png",
+   "level_requirement": 2,
+   "workshop": "stonehearth_ace:brewer:treading_vat",
+   "work_effect": "treading_purple",
+   "ingredients": [
+      {
+         "uri": "stonehearth:food:berries:berry_basket",
+         "count": 3
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:drink:must_berry"
+      }
+   ]
+}
