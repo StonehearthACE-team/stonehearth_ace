@@ -1,0 +1,29 @@
+{
+   "type": "entity",
+   "mixins": ["file(simple_window_planter_ghost.json)", "stonehearth_ace:mixins:herbalist_planter:window_box"],
+   "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(simple_window_planter_iconic.json)",
+         "ghost_form": "file(simple_window_planter_ghost.json)",
+         "placeable_on_walls": true
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 6,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 1,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 6
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

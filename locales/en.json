@@ -1814,8 +1814,16 @@
             "description": "This hearthling is currently allowed to train. Click to forbid it!"
          },
          "toggle_training_on": {
-            "description": "This hearthling is currently not allowed to train. Click to allow it!",
-            "display_name": "Allow Training"
+            "display_name": "Allow Training",
+            "description": "This hearthling is currently not allowed to train. Click to allow it!"
+         },
+         "toggle_planter_harvest_on": {
+            "display_name": "Allow Harvesting",
+            "description": "This planter will currently not be harvested when possible. Click to enable harvesting!"
+         },
+         "toggle_planter_harvest_off": {
+            "display_name": "Forbid Harvesting",
+            "description": "This planter will currently be harvested when possible. Click to disable harvesting!"
          },
          "enable_auto_harvest": {
             "display_name": "Enable Auto-Harvest",
@@ -2921,9 +2929,15 @@
                "taming_local_flora_description": "The Herbalist has acquired sufficient knowledge of the area to learn how to cultivate the local flora",
                "collaborative_insight_description": "The Herbalist is now skillful enough to use materials created by the other crafters and is also able to become a Cleric"
             },
+            "level_3_data": {
+               "unlock_quality_name": "Journeyman's Knowledge",
+               "unlock_quality_description": "When inspiration strikes, the Herbalist may now craft an especially Fine quality of item. Planting and tending in planters also increases the chance of Fine quality harvests."
+            },
             "level_5_data": {
                "item_proficiency_2_name": "Item Mastery",
-               "item_proficiency_2_description": "The Herbalist's medical prowess increases the effectiveness of healing items by 100%."
+               "item_proficiency_2_description": "The Herbalist's medical prowess increases the effectiveness of healing items by 100%.",
+               "unlock_quality_2_name": "Master's Insight",
+               "unlock_quality_2_description": "The Herbalist can now create items of Excellent quality, and will make Fine quality items more often. Planting and tending in planters also increases the chance of higher quality harvests."
             },
             "level_6_data": {
                "power_medic_3_name": "Great Physician",
@@ -5875,6 +5889,14 @@
             "copper_garden_lantern_ghost": {
                "display_name": "Copper Garden Lantern",
                "description": "The light produced by the moonbells flicker softly."
+            }
+         }
+      },
+      "herbalist_planters": {
+         "simple_window_planter": {
+            "simple_window_planter_ghost": {
+               "display_name": "Simple Window Planter",
+               "description": "A small planter for growing three herbs."
             }
          }
       },
@@ -10719,6 +10741,13 @@
                "species": "Dwarf"
             }
          }
+      }
+   },
+   "herbalist_crops": {
+      "brightbell": {
+         "display_name": "Brightbell",
+         "description": "What do you know, it's exactly like a wild Brightbell! Dani, you should change this text!",
+         "harvest_text": "harvesting brightbells"
       }
    },
    "plants": {

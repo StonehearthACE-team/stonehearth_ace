@@ -4,7 +4,7 @@ local ToggleEnabledComponent = class()
 
 function ToggleEnabledComponent:create()
 	local json = radiant.entities.get_json(self)
-	self._sv.enabled = false or json.enabled
+	self._sv.enabled = json.enabled or false
 	self._sv.enable_command = json.enable_command or 'stonehearth_ace:commands:toggle_enabled_on'
 	self._sv.disable_command = json.disable_command or 'stonehearth_ace:commands:toggle_enabled_off'
 	self._sv.enable_effect_name = json.enable_effect

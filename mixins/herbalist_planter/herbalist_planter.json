@@ -1,0 +1,19 @@
+{
+   "components": {
+      "stonehearth:storage": {
+         "is_hidden": true,
+         "capacity": 1,
+         "filter_list": "stonehearth_ace:ui:hidden_storage:filters",
+         "default_filter": []
+      },
+      "stonehearth_ace:toggle_enabled": {
+         "enable_command": "stonehearth_ace:commands:toggle_planter_harvest_on",
+         "disable_command": "stonehearth_ace:commands:toggle_planter_harvest_off",
+         "enabled": true
+      },
+      "stonehearth_ace:input": {
+         "require_matching_filter": false
+      },
+      "stonehearth_ace:output": {}
+   }
+}

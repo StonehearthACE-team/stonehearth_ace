@@ -31,8 +31,20 @@
       "stonehearth:consumable": {
          "script": "stonehearth:consumables:scripts:heal_target",
          "work_units": 3,
-         "health_healed": 120,
-         "guts_healed": 6
+         "consumable_qualities": [
+            {
+               "health_healed": 120,
+               "guts_healed": 6
+            },
+            {
+               "health_healed": 140,
+               "guts_healed": 7
+            },
+            {
+               "health_healed": 160,
+               "guts_healed": 8
+            }
+         ]
       },
       "stonehearth:catalog": {
          "display_name": "i18n(stonehearth_ace:entities.consumables.healing_tonic.hearth_healing_tonic.display_name)",
@@ -47,6 +59,9 @@
             "consumable",
             "stockpile_consumable"
          ]
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
       }
    }
 }

@@ -20,7 +20,7 @@ App.StonehearthZonesModeView.reopen({
       var viewType = null;
        if (entity['stonehearth:player_market_stall']) {
          viewType = App.StonehearthPlayerMarketStallView;
-      } else if (entity['stonehearth:storage'] && entity['stonehearth:storage'].is_public) {
+      } else if (entity['stonehearth:storage'] && entity['stonehearth:storage'].is_public && !entity['stonehearth:storage'].is_hidden) {
          // TODO: sigh, the above is probably wrong, but highly convenient.
          viewType = App.StonehearthStockpileView;
       } else if (entity['stonehearth:farmer_field']) {

@@ -31,6 +31,9 @@ local transform_lib = require 'stonehearth_ace.lib.transform.transform_lib'
 local log = radiant.log.create_logger('transform')
 local LootTable = require 'stonehearth.lib.loot_table.loot_table'
 
+local TRANSFORM_ACTION = 'stonehearth_ace:transform_entity'
+local TRANSFORM_WITH_INGREDIENT_ACTION = 'stonehearth_ace:transform_entity_with_ingredient'
+
 local TransformComponent = class()
 
 function TransformComponent:initialize()
@@ -39,6 +42,16 @@ end
 
 function TransformComponent:restore()
    self._is_restore = true
+
+   -- restoring from an old version, cancel any requested transform request
+   if self._sv._is_transformable_player_id == nil then
+      local task_tracker_component = self._entity:get_component('stonehearth:task_tracker')
+      if task_tracker_component and 
+            (task_tracker_component:is_activity_requested(TRANSFORM_ACTION) or 
+            task_tracker_component:is_activity_requested(TRANSFORM_WITH_INGREDIENT_ACTION)) then
+         task_tracker_component:cancel_current_task(false)
+      end
+   end
 end
 
 function TransformComponent:activate()
@@ -52,6 +65,7 @@ function TransformComponent:post_activate()
       else
          self:set_transform_option(self._sv.transform_key or self._all_transform_data.default_key)
       end
+      self:_create_transform_tasks()
    end
 
    self:_create_placement_listener()
@@ -62,6 +76,7 @@ function TransformComponent:destroy()
    self:_destroy_progress()
    self:_destroy_request_listeners()
    self:_destroy_placement_listener()
+   self:_destroy_transform_tasks()
    self:cancel_craft_order()
 end
 
@@ -111,6 +126,51 @@ function TransformComponent:_destroy_progress()
    end
 end
 
+function TransformComponent:_create_transform_tasks()
+   self:_destroy_transform_tasks()
+
+   local town = stonehearth.town:get_town(self._sv._is_transformable_player_id)
+
+   if town then
+      local ingredient
+      if self._transform_data.transform_ingredient_uri then
+         ingredient = {uri = self._transform_data.transform_ingredient_uri}
+      elseif self._transform_data.transform_ingredient_material then
+         ingredient = {material = self._transform_data.transform_ingredient_material}
+      end
+      local args = {
+         item = self._entity,
+         ingredient = ingredient
+      }
+      local action = self:_get_transform_action()
+      
+      local transform_task = town:create_task_for_group(
+         'stonehearth_ace:task_groups:transform',
+         action,
+         args)
+            :set_source(self._entity)
+            :start()
+      table.insert(self._added_transform_tasks, transform_task)
+   end
+end
+
+function TransformComponent:_destroy_transform_tasks()
+   if self._added_transform_tasks then
+      for _, task in ipairs(self._added_transform_tasks) do
+         task:destroy()
+      end
+   end
+   self._added_transform_tasks = {}
+end
+
+function TransformComponent:_get_transform_action()
+   if self._transform_data and (self._transform_data.transform_ingredient_uri or self._transform_data.transform_ingredient_material) then
+      return TRANSFORM_WITH_INGREDIENT_ACTION
+   else
+      return TRANSFORM_ACTION
+   end
+end
+
 function TransformComponent:get_progress()
    return self._sv.progress
 end
@@ -126,6 +186,23 @@ function TransformComponent:get_transform_options()
       radiant.util.merge_into_table(options, self._sv.option_overrides)
       return options
    end
+end
+
+-- called by ai to see if working entity meets requirements
+function TransformComponent:can_transform_with(entity)
+   -- check if there's a job requirement and if it's being met by the entity
+   local req_jobs = self._transform_data and self._transform_data.worker_required_job
+   if not req_jobs then
+      return true
+   end
+
+   local job_comp = entity:get_component('stonehearth:job')
+   local job_uri = job_comp and job_comp:get_job_uri() or ''
+   if req_jobs[job_uri] then
+      return true
+   end
+
+   return false
 end
 
 function TransformComponent:set_transform_option(key)
@@ -211,23 +288,26 @@ function TransformComponent:request_transform(player_id)
       return false
    end
 
+   -- continue using the task tracker system because that handles some things nicely for us (including overlay effect)
    if data.request_action then
       local task_tracker_component = self._entity:add_component('stonehearth:task_tracker')
-      local was_requested = task_tracker_component:is_activity_requested(data.request_action)
+      local was_requested = task_tracker_component:is_activity_requested(TRANSFORM_WITH_INGREDIENT_ACTION) or
+                            task_tracker_component:is_activity_requested(TRANSFORM_ACTION)
 
       task_tracker_component:cancel_current_task(false) -- cancel current task first and force the transform request
 
       if was_requested then
          -- If someone had already requested to transform, just cancel the request and exit out
          self:cancel_craft_order()
-         return false
+         return self:_set_transformable(player_id, false)
       end
 
       self:request_craft_order()
       local category = 'transform'  --data.category or 
-      local success = task_tracker_component:request_task(player_id, category, data.request_action, data.request_action_overlay_effect)
-      return success
+      local success = task_tracker_component:request_task(player_id, category, self:_get_transform_action(), data.request_action_overlay_effect)
+      return self:_set_transformable(player_id, success)
    else
+      -- we only care about setting is_transformable if we're dealing with an action
       self:perform_transform(true)
       return true
    end
@@ -259,6 +339,19 @@ function TransformComponent:perform_transform(use_finish_cb)
    elseif not data.transforming_worker_effect then
       self:transform()
    end
+end
+
+function TransformComponent:is_transformable()
+   return self._sv._is_transformable_player_id
+end
+
+function TransformComponent:_set_transformable(player_id, is_transformable)
+   local transform_player_id = is_transformable and player_id or false
+   if self._sv._is_transformable_player_id ~= transform_player_id then
+      self._sv._is_transformable_player_id = transform_player_id
+      self:_create_transform_tasks()
+   end
+   return self:is_transformable()
 end
 
 function TransformComponent:_run_effect(effect, use_finish_cb)
@@ -322,9 +415,9 @@ function TransformComponent:_place_additional_items(owner, collect_location)
    return spawned_items
 end
 
-function TransformComponent:spawn_additional_items(transforming_worker, collect_location, owner_player_id)
+function TransformComponent:spawn_additional_items(transforming_worker, collect_location)
    local spawned_resources = self:_place_additional_items(transforming_worker, collect_location)
-   local player_id = owner_player_id or (transforming_worker and radiant.entities.get_player_id(transforming_worker))
+   local player_id = transforming_worker and radiant.entities.get_player_id(transforming_worker) or self._entity:get_player_id()
    if transforming_worker then
       for id, item in pairs(spawned_resources) do
          -- add it to the inventory of the owner

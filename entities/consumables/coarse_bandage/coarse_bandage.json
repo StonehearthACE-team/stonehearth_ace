@@ -6,6 +6,27 @@
 				"material_tags": "override"
 			},
          "material_tags": ["healing_item", "coarse_bandage", "bandage", "consumable", "stockpile_healing_item"]
+      },
+      "stonehearth:consumable": {
+         "script": "stonehearth:consumables:scripts:heal_target",
+         "work_units": 2,
+         "consumable_qualities": [
+            {
+               "health_healed": 60,
+               "guts_healed": 4
+            },
+            {
+               "health_healed": 70,
+               "guts_healed": 5
+            },
+            {
+               "health_healed": 80,
+               "guts_healed": 6
+            }
+         ]
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
       }
    }
 }

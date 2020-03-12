@@ -6,10 +6,6 @@ TransformItemAdjacent.name = 'transform adjacent'
 TransformItemAdjacent.does = 'stonehearth_ace:transform_adjacent'
 TransformItemAdjacent.args = {
    item = Entity,      -- the entity to transform
-   owner_player_id = {
-      type = 'string',
-      default = stonehearth.ai.NIL,
-   },
 }
 TransformItemAdjacent.priority = 0
 
@@ -105,7 +101,7 @@ function TransformItemAdjacent:run(ai, entity, args)
 
 		if data.additional_items then
 			local location = radiant.entities.get_world_grid_location(entity)
-         transform_comp:spawn_additional_items(entity, location, args.owner_player_id)
+         transform_comp:spawn_additional_items(entity, location)
 		end
 		
       if data and data.worker_finished_effect then

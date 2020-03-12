@@ -43,7 +43,12 @@ function InputComponent:try_input(item, force_add)
                return true
             end
          else
-            return storage:add_item(item, force_add, radiant.entities.get_player_id(self._entity))
+            local forcing = not self._sv.require_matching_filter or force_add
+            local result = storage:add_item(item, forcing, radiant.entities.get_player_id(self._entity))
+            if forcing and result then
+               stonehearth.ai:reconsider_entity(item, 'added item to storage')
+            end
+            return result
          end
       end
    end

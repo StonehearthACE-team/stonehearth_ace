@@ -1,0 +1,39 @@
+{
+   "default_allowed_crops": {
+      "brightbell": true
+   },
+   "crops": {
+      "brightbell": {
+         "seed_uri": "stonehearth:plants:brightbell:seed",
+         "product_uri": "stonehearth:resources:herb:brightbell",
+         "harvester_effect": "fiddle",
+         "render_scale": 0.1,
+         "tending_multiplier": 0.5,
+         "level": 1,
+         "growth_time": "4h",
+         "bonus_product_growth_time": "12h",
+         "growth_levels": [
+            {
+               "model": "file(crops/brightbell/brightbell_1.qb)",
+               "offset": {"x": 0.3, "y": 0, "z": 0.3}
+            },
+            {
+               "model": "file(crops/brightbell/brightbell_2.qb)",
+               "offset": {"x": 0.3, "y": 0, "z": 0.3}
+            },
+            {
+               "model": "file(crops/brightbell/brightbell_3.qb)",
+               "offset": {"x": 0.3, "y": 0, "z": 0.3}
+            },
+            {
+               "model": "file(crops/brightbell/brightbell_4.qb)",
+               "offset": {"x": 0.3, "y": 0, "z": 0.3}
+            }
+         ],
+         "display_name": "i18n(stonehearth_ace:herbalist_crops.brightbell.display_name)",
+         "description": "i18n(stonehearth_ace:herbalist_crops.brightbell.description)",
+         "harvest_status_text": "i18n(stonehearth_ace:herbalist_crops.brightbell.harvest_text)",
+         "icon": "file(crops/brightbell/brightbell.png)"
+      }
+   }
+}

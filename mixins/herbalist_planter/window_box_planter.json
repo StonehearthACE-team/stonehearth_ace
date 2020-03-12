@@ -1,0 +1,32 @@
+{
+   "mixins": "stonehearth_ace:mixins:herbalist_planter",
+   "components": {
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": 0 },
+               "max": { "x": 1, "y": 1, "z": 1 }
+            }
+         ]
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": 0 },
+               "max": { "x": 1, "y": 1, "z": 1 }
+            }
+         ]
+      },
+      "stonehearth:storage": {
+         "capacity": 2
+      },
+      "stonehearth_ace:herbalist_planter": {
+         "scale_multiplier": 0.5,
+         "plant_locations": [
+            { "x": -0.55, "y": 0.6, "z": 0.5 },
+            { "x": 0, "y": 0.6, "z": 0.5 },
+            { "x": 0.55, "y": 0.6, "z": 0.5 }
+         ]
+      }
+   }
+}

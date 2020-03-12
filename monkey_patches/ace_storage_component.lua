@@ -19,6 +19,11 @@ function AceStorageComponent:activate()
       if json.default_filter then
          self:set_filter(json.default_filter)
       end
+      self._sv.is_hidden = json.is_hidden or false -- public inventory that's accessible, but hidden from UI
+      -- also set the filter to none if it's hidden storage
+      -- if self._sv.is_hidden then
+      --    self:_set_filter_to_none()
+      -- end
    end
 
    -- communicate this setting to the renderer

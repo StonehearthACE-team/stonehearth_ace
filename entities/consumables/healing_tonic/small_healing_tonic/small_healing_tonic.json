@@ -6,6 +6,27 @@
 				"material_tags": "override"
 			},
          "material_tags": ["healing_item", "small", "tonic", "healing_tonic", "consumable", "stockpile_healing_item"]
+      },
+      "stonehearth:consumable": {
+         "script": "stonehearth:consumables:scripts:heal_target",
+         "work_units": 1,
+         "consumable_qualities": [
+            {
+               "health_healed": 30,
+               "guts_healed": 2
+            },
+            {
+               "health_healed": 40,
+               "guts_healed": 3
+            },
+            {
+               "health_healed": 50,
+               "guts_healed": 4
+            }
+         ]
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
       }
    }
 }
