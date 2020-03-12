@@ -1,3 +1,5 @@
+-- NOT USED ANYMORE (unstable 2020-03-11)
+
 local TransformItem = radiant.class()
 local log = radiant.log.create_logger('transform_action')
 

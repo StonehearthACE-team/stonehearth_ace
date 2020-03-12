@@ -12,4 +12,13 @@ function AceHerbalistClass:get_healing_item_effect_multiplier()
    return self._sv.healing_item_effect_multiplier or 1
 end
 
+function AceHerbalistClass:increase_planter_tend_amount(args)
+   self._sv.planter_tend_amount = args.planter_tend_amount
+   self.__saved_variables:mark_changed()
+end
+
+function AceHerbalistClass:get_planter_tend_amount()
+   return self._sv.planter_tend_amount or 1
+end
+
 return AceHerbalistClass

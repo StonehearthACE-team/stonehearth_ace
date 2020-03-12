@@ -233,10 +233,12 @@
                      <div class="jobPerks">
                         {{#each this.description.levelArray}}
                            {{#each this.perks}}
-                           <div class="perkDiv tooltip" locked="true" {{bind-attr name=this.name description=this.description divLevel=this.level}}>
-                              <img {{bind-attr src=this.icon imgLevel=this.level}}/>
-                              <span class="levelLabel" {{bind-attr lbLevel=this.level}}>{{i18n stonehearth:ui.game.citizen_character_sheet.level_abbreviation}} <span class="levelText">{{this.level}}</span></span>
-                           </div>
+                              {{#if this.icon}}
+                              <div class="perkDiv tooltip" locked="true" {{bind-attr name=this.name description=this.description divLevel=this.level}}>
+                                 <img {{bind-attr src=this.icon imgLevel=this.level}}/>
+                                 <span class="levelLabel" {{bind-attr lbLevel=this.level}}>{{i18n stonehearth:ui.game.citizen_character_sheet.level_abbreviation}} <span class="levelText">{{this.level}}</span></span>
+                              </div>
+                              {{/if}}
                            {{/each}}
                         {{/each}}
                      </div>

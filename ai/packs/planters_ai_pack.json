@@ -1,0 +1,18 @@
+{
+   "type": "ai_pack",
+   "actions": [
+      "stonehearth_ace:actions:herbalist:clear_herbalist_planter",
+      "stonehearth_ace:actions:herbalist:clear_herbalist_planter_adjacent",
+      "stonehearth_ace:actions:herbalist:harvest_herbalist_planter",
+      "stonehearth_ace:actions:herbalist:harvest_herbalist_planter_adjacent",
+      "stonehearth_ace:actions:herbalist:plant_herbalist_planter",
+      "stonehearth_ace:actions:herbalist:plant_herbalist_planter_adjacent"
+   ],
+   "ai_packs": [
+      "stonehearth:ai_pack:core",
+      "stonehearth:ai_pack:movement"
+   ],
+   "task_groups": [
+      "stonehearth_ace:task_groups:planters"
+   ]
+}

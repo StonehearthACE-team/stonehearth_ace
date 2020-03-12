@@ -13,7 +13,11 @@
                "description": "i18n(stonehearth_ace:drink.decay.decay_1.description)"
             }
          },
-         "rotten_entity_alias": "stonehearth_ace:drink:rotten:bucket"
+         "rotten_entity_alias": "stonehearth_ace:drink:rotten:bucket",
+         "storage_modifiers": {
+            "freezer": 0.2,
+            "cooler": 0.5
+         }
       }
    }
 }

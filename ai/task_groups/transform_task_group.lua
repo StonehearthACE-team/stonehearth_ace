@@ -5,4 +5,5 @@ TransformTaskGroup.priority = 0.82
 
 return stonehearth.ai:create_task_group(TransformTaskGroup)
          :work_order_tag("haul")
-         :declare_permanent_task('stonehearth_ace:transform', {category = 'transform'}, 1.0)
+         :declare_multiple_tasks('stonehearth_ace:transform_entity', 1.0)
+         :declare_multiple_tasks('stonehearth_ace:transform_entity_with_ingredient', 1.0)
