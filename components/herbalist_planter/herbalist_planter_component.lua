@@ -207,7 +207,11 @@ function HerbalistPlanterComponent:get_unit_crop_level()
 end
 
 function HerbalistPlanterComponent:_update_unit_crop_level()
-   self._unit_crop_level = (self._planted_crop_stats and self._planted_crop_stats.level or 1) / self._max_crop_level
+   self._unit_crop_level = self:get_planted_crop_level() / self._max_crop_level
+end
+
+function HerbalistPlanterComponent:get_planted_crop_level()
+   return self._planted_crop_stats and self._planted_crop_stats.level or 1
 end
 
 function HerbalistPlanterComponent:get_harvester_effect()
@@ -291,16 +295,16 @@ function HerbalistPlanterComponent:_bonus_grow()
       end
    end
 
-   if not self._storage:is_full() then
+   if not self._storage:is_full() and self._bonus_product_uri then
       --local player_id = self._entity:get_player_id()
-      self:_create_product(self._bonus_product_uri, 1, self._entity)
+      self:_create_product(self._bonus_product_uri, 1)
    end
 end
 
 function HerbalistPlanterComponent:_create_product(product_uri, quantity, input)
    local quality = self._sv._quality or 1
    return radiant.entities.output_items({[product_uri] = quantity or 1}, radiant.entities.get_world_grid_location(self._entity), 0, 1, 
-                                        { owner = self._entity:get_player_id() }, self._entity, input, input ~= nil, quality)
+                                        { owner = self._entity:get_player_id() }, self._entity, input or self._entity, input ~= nil, quality)
 end
 
 -- called by ai to harvest the planter

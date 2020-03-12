@@ -45,7 +45,7 @@ function PlantHerbalistPlanterAdjacent:run(ai, entity, args)
    planter_comp:plant_crop(entity)
    radiant.entities.destroy_entity(seed)
 
-   radiant.events.trigger(entity, 'stonehearth_ace:plant_planter', {planter = planter})
+   radiant.events.trigger(entity, 'stonehearth_ace:interact_herbalist_planter', {type = 'plant_planter', planter = planter})
 end
 
 return PlantHerbalistPlanterAdjacent
