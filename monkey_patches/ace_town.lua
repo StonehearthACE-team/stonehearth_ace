@@ -191,7 +191,7 @@ function AceTown:register_pasture_item(item, type)
          if csg_lib.are_equivalent_regions(item_reg, pasture_reg:intersect_region(item_reg)) then
             local pasture_comp = pasture:get_component('stonehearth:shepherd_pasture')
             pasture_comp:register_item(item, type)
-            break
+            return pasture
          end
       end
    end

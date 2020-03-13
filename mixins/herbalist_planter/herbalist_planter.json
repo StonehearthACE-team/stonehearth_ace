@@ -8,12 +8,16 @@
       },
       "stonehearth_ace:toggle_enabled": {
          "enable_command": "stonehearth_ace:commands:toggle_planter_harvest_on",
-         "disable_command": "stonehearth_ace:commands:toggle_planter_harvest_off",
-         "enabled": true
+         "disable_command": "stonehearth_ace:commands:toggle_planter_harvest_off"
       },
       "stonehearth_ace:input": {
          "require_matching_filter": false
       },
-      "stonehearth_ace:output": {}
+      "stonehearth_ace:output": {},
+      "stonehearth_ace:herbalist_planter": {
+         "harvest_enabled": true,
+         "default_crop": "brightbell",
+         "start_planted": false
+      }
    }
 }

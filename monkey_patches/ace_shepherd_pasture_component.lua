@@ -22,9 +22,7 @@ function AceShepherdPastureComponent:activate()
    end
 
    self._pasture_items = {}
-   self._empty_troughs = {}
-   self._fed_troughs = {}
-   self._trough_listeners = {}
+   self._troughs = {}
    
    self._weather_check_alarm = stonehearth.calendar:set_alarm(WEATHER_CHECK_TIME, function()
       self:_recalculate_duration()
@@ -86,11 +84,6 @@ function AceShepherdPastureComponent:_unregister_with_town()
    if self._grass_harvest_timer then
       self._grass_harvest_timer:destroy()
       self._grass_harvest_timer = nil
-   end
-
-   -- destroy trough listeners
-   for id, _ in pairs(self._trough_listeners) do
-      self:_destroy_trough_listener(id)
    end
 end
 
@@ -612,28 +605,14 @@ end
 
 AceShepherdPastureComponent._ace_old_recalculate_feed_need = ShepherdPastureComponent.recalculate_feed_need
 function AceShepherdPastureComponent:recalculate_feed_need()
-   if next(self._trough_listeners) then
-      radiant.events.trigger_async(self._entity, 'stonehearth_ace:shepherd_pasture:trough_feed_changed', self._entity, self:needs_trough_feed())
-   else
+   if not next(self._troughs) then
       self:_ace_old_recalculate_feed_need()
    end
 end
 
 AceShepherdPastureComponent._ace_old_needs_feed = ShepherdPastureComponent.needs_feed
 function AceShepherdPastureComponent:needs_feed()
-   if next(self._trough_listeners) then
-      return false
-   else
-      return self:_ace_old_needs_feed()
-   end
-end
-
-function AceShepherdPastureComponent:needs_trough_feed()
-   if next(self._trough_listeners) then
-      return next(self._empty_troughs) ~= nil
-   else
-      return false
-   end
+   return not next(self._troughs) and self:_ace_old_needs_feed()
 end
 
 function AceShepherdPastureComponent:get_animal_feed_material()
@@ -649,65 +628,21 @@ function AceShepherdPastureComponent:get_pasture_items()
    return self._pasture_items
 end
 
--- gets the first empty trough, or nil
-function AceShepherdPastureComponent:get_empty_trough()
-   if next(self._trough_listeners) then
-      local id = next(self._empty_troughs)
-      if id then
-         return self._pasture_items[id]
-      end
-   end
-end
-
-function AceShepherdPastureComponent:get_fed_troughs()
-   if next(self._fed_troughs) then
-      local troughs = {}
-      for id, _ in pairs(self._fed_troughs) do
-         table.insert(troughs, self._pasture_items[id])
-      end
-      return troughs
-   end
-end
-
 function AceShepherdPastureComponent:register_item(item, type)
    local id = item:get_id()
    if not self._pasture_items[id] then
       self._pasture_items[id] = item
 
+      -- just keep track of troughs so we know if feeding can happen through them or has to happen the old way
       if type == 'trough' then
-         self._trough_listeners[id] = radiant.events.listen(item, 'stonehearth_ace:trough:empty_status_changed', function(empty_status)
-            self:_on_trough_empty_status_changed(item, empty_status)
-         end)
-         self:_on_trough_empty_status_changed(item, item:get_component('stonehearth_ace:pasture_item'):is_empty())
+         self._troughs[id] = item
       end
    end
 end
 
-function AceShepherdPastureComponent:_on_trough_empty_status_changed(item, empty_status)
-   local id = item:get_id()
-   if empty_status then
-      self._empty_troughs[id] = true
-      self._fed_troughs[id] = nil
-      stonehearth.ai:reconsider_entity(item)
-   else
-      self._empty_troughs[id] = nil
-      self._fed_troughs[id] = true
-   end
-   self:recalculate_feed_need()
-end
-
 function AceShepherdPastureComponent:unregister_item(id)
    self._pasture_items[id] = nil
-   self._empty_troughs[id] = nil
-   self._fed_troughs[id] = nil
-   self:_destroy_trough_listener(id)
-end
-
-function AceShepherdPastureComponent:_destroy_trough_listener(id)
-   if self._trough_listeners[id] then
-      self._trough_listeners[id]:destroy()
-      self._trough_listeners[id] = nil
-   end
+   self._troughs[id] = nil
 end
 
 function AceShepherdPastureComponent:_collect_strays()

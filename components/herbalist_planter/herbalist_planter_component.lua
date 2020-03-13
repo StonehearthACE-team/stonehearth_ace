@@ -27,8 +27,14 @@ function HerbalistPlanterComponent:create()
    self._sv._amount_tended = 0    -- use effects to make the planter sparkle a bit with more tending?
    self._sv.allowed_crops = self._json.allowed_crops or all_plant_data.default_allowed_crops
 
-   -- DEBUG: until UI implemented
-   self:set_current_crop('brightbell')
+   if self._json.default_crop and self._sv.allowed_crops[self._json.default_crop] then
+      self:set_current_crop(self._json.default_crop)
+      if self._json.start_planted then
+         self:plant_crop()
+      end
+   end
+
+   self:set_harvest_enabled(self._json.harvest_enabled ~= false)
 end
 
 function HerbalistPlanterComponent:restore()
@@ -157,6 +163,11 @@ function HerbalistPlanterComponent:_load_planted_crop_stats()
       self._planted_crop_stats = all_plant_data.crops[self._sv.planted_crop]
    end
    self:_update_unit_crop_level()
+end
+
+function HerbalistPlanterComponent:set_harvest_enabled(enabled)
+   local toggle_comp = self._entity:add_component('stonehearth_ace:toggle_enabled')
+   toggle_comp:set_enabled(enabled)
 end
 
 function HerbalistPlanterComponent:_is_enabled()
@@ -351,7 +362,7 @@ function HerbalistPlanterComponent:tend_to_crop(tender, amount)
    if self._sv.planted_crop then
       local tend_amount = amount
       if not tend_amount then
-         local job_component = tender:get_component('stonehearth:job')
+         local job_component = tender and tender:get_component('stonehearth:job')
          local job_controller = job_component and job_component:get_curr_job_controller()
          if job_controller and job_controller.get_planter_tend_amount then
             tend_amount = job_controller:get_planter_tend_amount()
@@ -383,7 +394,8 @@ function HerbalistPlanterComponent:_set_recently_tended_timer()
 end
 
 function HerbalistPlanterComponent:_update_quality(tender)
-   self._sv._quality = item_quality_lib.get_quality_table(tender, self._planted_crop_stats.level or 1, math.max(1, math.min(self._max_tending_quality, self._sv._amount_tended)))
+   self._sv._quality = tender and item_quality_lib.get_quality_table(tender, self._planted_crop_stats.level or 1,
+         math.max(1, math.min(self._max_tending_quality, self._sv._amount_tended)))
    
    local quality_buff = self._json.quality_buffs and self._json.quality_buffs[math.min(math.floor(self._sv._amount_tended), #self._json.quality_buffs)]
    if quality_buff then

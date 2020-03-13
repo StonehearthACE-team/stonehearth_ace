@@ -1,6 +1,21 @@
 local PastureItemComponent = class()
 
 local log = radiant.log.create_logger('pasture_item')
+local RESTOCK_ACTION = 'stonehearth_ace:feed_pasture_trough'
+
+local function make_feed_filter_fn(material, owner)
+   return function(item)
+         if not radiant.entities.is_material(item, material) then
+            -- not the right material?  bail.
+            return false
+         end
+         if owner ~= '' and radiant.entities.get_player_id(item) ~= owner then
+            -- not owned by the right person?  also bail!
+            return false
+         end
+         return true
+      end
+end
 
 function PastureItemComponent:initialize()
    self._sv.trough_feed_uri = nil
@@ -25,6 +40,7 @@ end
 function PastureItemComponent:destroy()
    self:_register_with_town(false)
    self:_destroy_traces()
+   self:_destroy_restock_tasks()
 end
 
 function PastureItemComponent:_destroy_traces()
@@ -34,17 +50,61 @@ function PastureItemComponent:_destroy_traces()
    end
 end
 
+function PastureItemComponent:_create_restock_tasks()
+   self:_destroy_restock_tasks()
+
+   if self._pasture and self:is_empty() then
+      local feed_material = self._pasture:add_component('stonehearth:shepherd_pasture'):get_animal_feed_material()
+
+      if feed_material then
+         local town = stonehearth.town:get_town(self._entity)
+
+         local args = {
+            pasture = self._pasture,
+            trough = self._entity,
+            feed_filter_fn = make_feed_filter_fn(feed_material, self._entity:get_player_id())
+         }
+
+         local restock_task = town:create_task_for_group(
+            'stonehearth:task_groups:herding',
+            RESTOCK_ACTION,
+            args)
+               :set_source(self._entity)
+               :start()
+         table.insert(self._added_restock_tasks, restock_task)
+      end
+   end
+   stonehearth.ai:reconsider_entity(self._entity)
+end
+
+function PastureItemComponent:_destroy_restock_tasks()
+   if self._added_restock_tasks then
+      for _, task in ipairs(self._added_restock_tasks) do
+         task:destroy()
+      end
+   end
+   self._added_restock_tasks = {}
+end
+
 function PastureItemComponent:_register_with_town(register)
    local player_id = radiant.entities.get_player_id(self._entity)
    local town = stonehearth.town:get_town(player_id)
    
+   self._pasture = nil
+
    if town then
       if register then
-         town:register_pasture_item(self._entity, self._type)
+         self._pasture = town:register_pasture_item(self._entity, self._type)
       else
          town:unregister_pasture_item(self._entity)
       end
    end
+
+   self:_create_restock_tasks()
+end
+
+function PastureItemComponent:get_pasture()
+   return self._pasture
 end
 
 function PastureItemComponent:is_empty()
@@ -62,7 +122,7 @@ function PastureItemComponent:eat_from_trough(animal)
       if num_feed < 1 then
          self._sv.trough_feed_uri = nil
          self._sv._feed_quality = nil
-         self:_signal_empty_status_changed(true)
+         self:_create_restock_tasks()
       end
       self.__saved_variables:mark_changed()
 
@@ -82,11 +142,7 @@ function PastureItemComponent:set_trough_feed(feed)
    
    self.__saved_variables:mark_changed()
 
-   self:_signal_empty_status_changed(false)
-end
-
-function PastureItemComponent:_signal_empty_status_changed(empty_status)
-   radiant.events.trigger(self._entity, 'stonehearth_ace:trough:empty_status_changed', empty_status)
+   self:_create_restock_tasks()
 end
 
 return PastureItemComponent
