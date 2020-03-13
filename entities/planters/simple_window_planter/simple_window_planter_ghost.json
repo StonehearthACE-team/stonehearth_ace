@@ -9,7 +9,7 @@
          }
       },
       "mob": {
-         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "model_origin": { "x": 0, "y": -0.3, "z": 0 },
          "region_origin": { "x": 0, "y": 0, "z": 0.5 },
          "allow_vertical_adjacent": true,
          "align_to_grid": [
@@ -26,7 +26,10 @@
          "description": "i18n(stonehearth_ace:entities.herbalist_planters.simple_window_planter.simple_window_planter_ghost.description)",
          "icon": "file(simple_window_planter.png)",
          "category": "decoration",
-         "material_tags": ["crafted", "herbalist_planter"]
+         "material_tags": [
+            "crafted",
+            "herbalist_planter"
+         ]
       }
    }
 }
