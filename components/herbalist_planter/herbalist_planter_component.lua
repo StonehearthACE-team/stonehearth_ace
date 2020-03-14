@@ -78,6 +78,18 @@ function HerbalistPlanterComponent:_create_listeners()
       function(enabled)
          self:_reconsider()
       end)
+
+   self._added_to_world_listener = self._entity:add_component('mob'):trace_parent('planter added or removed')
+      :on_changed(function(parent)
+         if parent then
+            self:_restart_timers()
+         else
+            local cur_time = stonehearth.calendar:get_elapsed_time()
+            self:_stop_growth(cur_time)
+            self:_stop_bonus_growth(cur_time)
+         end
+      end)
+      :push_object_state()
 end
 
 function HerbalistPlanterComponent:_destroy_listeners()
@@ -126,15 +138,21 @@ function HerbalistPlanterComponent:_destroy_recently_tended_timer()
    end
 end
 
-function HerbalistPlanterComponent:_stop_growth()
+function HerbalistPlanterComponent:_stop_growth(cur_time)
    if self._sv._growth_timer then
+      if cur_time then
+         self._sv._growth_timer_duration_remaining = self._sv._growth_timer:get_expire_time() - cur_time
+      end
       self._sv._growth_timer:destroy()
       self._sv._growth_timer = nil
    end
 end
 
-function HerbalistPlanterComponent:_stop_bonus_growth()
+function HerbalistPlanterComponent:_stop_bonus_growth(cur_time)
    if self._sv._bonus_growth_timer then
+      if cur_time then
+         self._sv._bonus_growth_timer_duration_remaining = self._sv._bonus_growth_timer:get_expire_time() - cur_time
+      end
       self._sv._bonus_growth_timer:destroy()
       self._sv._bonus_growth_timer = nil
    end
@@ -164,6 +182,13 @@ function HerbalistPlanterComponent:_load_planted_crop_stats()
       self._planted_crop_stats = nil
    else
       self._planted_crop_stats = all_plant_data.crops[self._sv.planted_crop]
+      if self._storage and self._planted_crop_stats and self._planted_crop_stats.growth_levels and self._sv.crop_growth_level then
+         local growth_level_data = self._planted_crop_stats.growth_levels[self._sv.crop_growth_level]
+         self._bonus_product_uri = growth_level_data and (growth_level_data.bonus_product_uri or
+               self._planted_crop_stats.bonus_product_uri or self._planted_crop_stats.product_uri)
+      else
+         self._bonus_product_uri = nil
+      end
    end
    self:_update_unit_crop_level()
 end
@@ -270,7 +295,7 @@ function HerbalistPlanterComponent:_grow()
          local growth_time = growth_level_data and growth_level_data.growth_time or self._planted_crop_stats.growth_time
          local growth_period = stonehearth.calendar:parse_duration(growth_time)
          growth_period = stonehearth.town:calculate_growth_period(self._entity:get_player_id(), growth_period)
-         self._sv._growth_timer = stonehearth.calendar:set_persistent_timer("herbalist_planter growth", growth_period, radiant.bind(self, '_grow'))
+         self._sv._growth_timer_duration_remaining = growth_period
       else
          -- otherwise, set harvestable
          self._sv.harvestable = true
@@ -283,12 +308,33 @@ function HerbalistPlanterComponent:_grow()
          if bonus_product_growth_time then
             local bonus_growth_period = stonehearth.calendar:parse_duration(bonus_product_growth_time)
             bonus_growth_period = stonehearth.town:calculate_growth_period(self._entity:get_player_id(), bonus_growth_period)
-            self._sv._bonus_growth_timer = stonehearth.calendar:set_persistent_interval("herbalist_planter growth", bonus_growth_period, radiant.bind(self, '_bonus_grow'))
+            self._sv._bonus_growth_timer_duration_remaining = bonus_growth_period
             self._bonus_product_uri = growth_level_data.bonus_product_uri or self._planted_crop_stats.bonus_product_uri or self._planted_crop_stats.product_uri
          end
       end
 
+      self:_restart_timers()
       self.__saved_variables:mark_changed()
+   end
+end
+
+function HerbalistPlanterComponent:_restart_timers()
+   -- only actually start the timers if we're in the world
+   local location = radiant.entities.get_world_grid_location(self._entity)
+   if not location then
+      return
+   end
+
+   if self._sv._growth_timer_duration_remaining and not self._sv._growth_timer then
+      self._sv._growth_timer = stonehearth.calendar:set_persistent_timer("herbalist_planter growth",
+            self._sv._growth_timer_duration_remaining, radiant.bind(self, '_grow'))
+      self._sv._growth_timer_duration_remaining = nil
+   end
+
+   if self._sv._bonus_growth_timer_duration_remaining and not self._sv._bonus_growth_timer then
+      self._sv._bonus_growth_timer = stonehearth.calendar:set_persistent_timer("herbalist_planter growth",
+            self._sv._bonus_growth_timer_duration_remaining, radiant.bind(self, '_bonus_grow'))
+      self._sv._bonus_growth_timer_duration_remaining = nil
    end
 end
 
