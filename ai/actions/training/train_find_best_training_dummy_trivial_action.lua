@@ -13,7 +13,7 @@ function FindBestTrainingDummyTrivial:start_thinking(ai, entity, args)
    local job_level = job_comp:get_current_job_level()
    local target = job_comp:get_training_target()
 
-   if target and target:get_component('stonehearth_ace:training_dummy'):can_train_entity_level(job_uri) >= job_level then
+   if target and target:is_valid() and target:get_component('stonehearth_ace:training_dummy'):can_train_entity_level(job_uri) >= job_level then
       ai:set_think_output({dummy = target})
    end
 end

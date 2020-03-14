@@ -21,24 +21,21 @@ local all_plant_data = radiant.resources.load_json('stonehearth_ace:data:herbali
 local PLANT_ACTION = 'stonehearth_ace:plant_herbalist_planter'
 local CLEAR_ACTION = 'stonehearth_ace:clear_herbalist_planter'
 
-function HerbalistPlanterComponent:create()
+function HerbalistPlanterComponent:initialize()
    self._json = radiant.entities.get_json(self) or {}
+end
+
+function HerbalistPlanterComponent:create()
+   self._is_create = true
    
    self._sv._amount_tended = 0    -- use effects to make the planter sparkle a bit with more tending?
    self._sv.allowed_crops = self._json.allowed_crops or all_plant_data.default_allowed_crops
 
    if self._json.default_crop and self._sv.allowed_crops[self._json.default_crop] then
       self:set_current_crop(self._json.default_crop)
-      if self._json.start_planted then
-         self:plant_crop()
-      end
    end
 
    self:set_harvest_enabled(self._json.harvest_enabled ~= false)
-end
-
-function HerbalistPlanterComponent:restore()
-   self._json = radiant.entities.get_json(self)
 end
 
 function HerbalistPlanterComponent:activate()
@@ -55,10 +52,16 @@ function HerbalistPlanterComponent:activate()
    self._tend_hard_cooldown = stonehearth.calendar:parse_duration(stonehearth.constants.herbalist_planters.TEND_HARD_COOLDOWN)
 
    self:_load_current_crop_stats()
-   self:_load_planted_crop_stats()
+
+   if self._is_create and self._json.start_planted then
+      self:plant_crop()
+   else
+      self:_load_planted_crop_stats()
+      self:_create_planter_tasks()
+      self:_set_recently_tended_timer()
+   end
+
    self:_create_listeners()
-   self:_create_planter_tasks()
-   self:_set_recently_tended_timer()
 end
 
 function HerbalistPlanterComponent:destroy()
