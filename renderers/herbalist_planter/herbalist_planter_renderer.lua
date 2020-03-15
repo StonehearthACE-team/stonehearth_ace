@@ -83,7 +83,7 @@ function HerbalistPlanterRenderer:_update()
 end
 
 function HerbalistPlanterRenderer:_create_node(offset, scale, model, model_offset)
-   local node = _radiant.client.create_qubicle_matrix_node(self._node, model, 'Matrix_25', self._origin)
+   local node = _radiant.client.create_qubicle_matrix_node(self._node, model, 'crop', self._origin)
    if node then
       model_offset = model_offset or Point3.zero
       local full_offset = self._origin:scaled(scale) + Point3(offset.x - self._align_x + model_offset.x, offset.y + model_offset.y, offset.z - self._align_z + model_offset.z)

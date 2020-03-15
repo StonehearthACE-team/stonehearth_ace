@@ -1,0 +1,70 @@
+{
+   "type": "entity",
+   "mixins": [
+      "file(planter_large_ghost.json)",
+      "stonehearth_ace:mixins:herbalist_planter"
+   ],
+   "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(planter_large_iconic.json)",
+         "ghost_form": "file(planter_large_ghost.json)",
+         "placeable_on_ground": true
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 1, "y": 1, "z": 1 }
+            }
+         ]
+      },
+      "movement_modifier_shape": {
+         "modifier": -0.5,
+         "nav_preference_modifier": -0.5,
+         "region": [
+            {
+               "min": { "x": -1, "y": 1, "z": -1 },
+               "max": { "x": 1, "y": 2, "z": 1 }
+            }
+         ]
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 1, "y": 1, "z": 1 }
+            }
+         ]
+      },
+      "stonehearth_ace:herbalist_planter": {
+         "scale_multiplier": 1,
+         "plant_locations": [
+            { "x": 0.25, "y": 0.7, "z": 0.3 },
+            { "x": -0.55, "y": 0.7, "z": 0.3 },
+            { "x": 0.25, "y": 0.7, "z": -0.6 },
+            { "x": -0.55, "y": 0.7, "z": -0.6 }
+         ]
+      },
+      "stonehearth:storage": {
+         "capacity": 4
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 6,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 1,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 6
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

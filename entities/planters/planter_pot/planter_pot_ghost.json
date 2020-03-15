@@ -1,0 +1,32 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(planter_pot.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "allow_vertical_adjacent": true
+      },
+      "render_info": {
+         "scale": 0.1
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.herbalist_planters.simple_window_planter.simple_window_planter_ghost.display_name)",
+         "description": "i18n(stonehearth_ace:entities.herbalist_planters.simple_window_planter.simple_window_planter_ghost.description)",
+         "icon": "file(planter_pot.png)",
+         "category": "decoration",
+         "material_tags": [
+            "crafted",
+            "herbalist_planter"
+         ]
+      }
+   }
+}

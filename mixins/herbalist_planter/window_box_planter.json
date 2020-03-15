@@ -13,7 +13,7 @@
          "region": [
             {
                "min": { "x": -1, "y": 0, "z": 0 },
-               "max": { "x": 1, "y": 1, "z": 1 }
+               "max": { "x": 1, "y": 1, "z": 2 }
             }
          ]
       },
@@ -21,10 +21,12 @@
          "capacity": 2
       },
       "stonehearth_ace:herbalist_planter": {
+         "harvest_enabled": false,
+         "start_planted": true,
          "scale_multiplier": 1,
          "plant_locations": [
-            { "x": -0.6, "y": 0.6, "z": 0.3 },
-            { "x": 0.2, "y": 0.6, "z": 0.3 }
+            { "x": -0.55, "y": 0.4, "z": 0.35 },
+            { "x": 0.25, "y": 0.4, "z": 0.35 }
          ]
       }
    }

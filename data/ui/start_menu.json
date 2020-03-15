@@ -13,7 +13,7 @@
    },
    "place_menu": {
       "ordinal": 4,
-	   "items": {
+      "items": {
          "place_item": {
             "ordinal": 1
          },
@@ -108,7 +108,7 @@
             "ordinal": 1
          },
          "create_farm": {
-				"name": "i18n(stonehearth_ace:ui.game.menu.zone_menu.items.create_farm.display_name)",
+            "name": "i18n(stonehearth_ace:ui.game.menu.zone_menu.items.create_farm.display_name)",
             "description": "i18n(stonehearth_ace:ui.game.menu.zone_menu.items.create_farm.description)",
             "icon": "/stonehearth/ui/game/start_menu/images/zone_farm.png",
             "hotkey_action": "zone:farms",
@@ -124,7 +124,7 @@
                   "icon": "/stonehearth_ace/ui/game/start_menu/images/zone_farm.png",
                   "sticky": true,
                   "menu_action": "create_field",
-						"hotkey_action": "zone:farm",
+                  "hotkey_action": "zone:farm",
                   "field_type": "farm",
                   "ordinal": 1
                },
@@ -137,11 +137,11 @@
                   "icon": "/stonehearth_ace/ui/game/start_menu/images/zone_underfarm.png",
                   "sticky": true,
                   "menu_action": "create_field",
-						"hotkey_action": "zone:underfarm",
+                  "hotkey_action": "zone:underfarm",
                   "field_type": "underfarm",
                   "ordinal": 2
                },
-					"create_field_orchard": {
+               "create_field_orchard": {
                   "name": "i18n(stonehearth_ace:ui.game.menu.zone_menu.items.create_farm.create_field_orchard.display_name)",
                   "description": "i18n(stonehearth_ace:ui.game.menu.zone_menu.items.create_farm.create_field_orchard.description)",
                   "required_ability": "field_type_orchard",
@@ -150,7 +150,7 @@
                   "icon": "/stonehearth_ace/ui/game/start_menu/images/zone_orchard.png",
                   "sticky": true,
                   "menu_action": "create_field",
-						"hotkey_action": "zone:orchard",
+                  "hotkey_action": "zone:orchard",
                   "field_type": "orchard",
                   "ordinal": 3
                },
@@ -163,7 +163,7 @@
                   "icon": "/stonehearth_ace/ui/game/start_menu/images/zone_treefarm.png",
                   "sticky": true,
                   "menu_action": "create_field",
-						"hotkey_action": "zone:treefarm",
+                  "hotkey_action": "zone:treefarm",
                   "field_type": "treefarm",
                   "ordinal": 4
                }
@@ -204,8 +204,8 @@
          "herbalist": {
             "ordinal": 8
          },
-			"brewer": {
-				"name": "i18n(stonehearth_ace:ui.game.menu.crafter_menu.items.brewer.display_name)",
+         "brewer": {
+            "name": "i18n(stonehearth_ace:ui.game.menu.crafter_menu.items.brewer.display_name)",
             "description": "i18n(stonehearth_ace:ui.game.menu.crafter_menu.items.brewer.description)",
             "class": "button",
             "required_job": "stonehearth_ace:jobs:brewer",
@@ -227,24 +227,24 @@
          "town_alert": {
             "ordinal": 0
          },
-         "party_1" : {
+         "party_1": {
             "ordinal": 1
          },
-         "party_2" : {
+         "party_2": {
             "ordinal": 2
          },
-         "party_3" : {
+         "party_3": {
             "ordinal": 3
          },
-         "party_4" : {
+         "party_4": {
             "ordinal": 4
          }
       }
    },
-   "multiplayer_menu" : {
+   "multiplayer_menu": {
       "ordinal": 9
    },
-   "bulletin_manager" : {
+   "bulletin_manager": {
       "ordinal": 10
    }
 }
