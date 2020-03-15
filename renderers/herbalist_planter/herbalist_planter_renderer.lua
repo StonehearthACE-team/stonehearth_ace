@@ -82,13 +82,15 @@ function HerbalistPlanterRenderer:_update()
    end
 end
 
-function HerbalistPlanterRenderer:_create_node(offset, scale, model, model_offset)
+function HerbalistPlanterRenderer:_create_node(location, scale, model, model_offset)
    local node = _radiant.client.create_qubicle_matrix_node(self._node, model, 'crop', self._origin)
    if node then
+      local offset = location.offset or Point3.zero
+      local rotation = location.rotation or 0
       model_offset = model_offset or Point3.zero
       local full_offset = self._origin:scaled(scale) + Point3(offset.x - self._align_x + model_offset.x, offset.y + model_offset.y, offset.z - self._align_z + model_offset.z)
       log:debug('%s rendering %s at %s scale at %s', self._entity, model, scale, full_offset)
-      node:set_transform(full_offset.x, full_offset.y, full_offset.z, 0, 0, 0, scale, scale, scale)
+      node:set_transform(full_offset.x, full_offset.y, full_offset.z, rotation, 0, 0, scale, scale, scale)
       node:set_material('materials/voxel.material.json')
       --node:set_visible(true)
       table.insert(self._plant_nodes, node)

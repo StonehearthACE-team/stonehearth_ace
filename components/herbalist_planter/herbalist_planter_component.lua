@@ -39,7 +39,7 @@ function HerbalistPlanterComponent:create()
 end
 
 function HerbalistPlanterComponent:activate()
-   self._num_crops = self._json.plant_locations and #self._json.plant_locations or 0
+   self._num_crops = self._json.num_products or (self._json.plant_locations and #self._json.plant_locations) or 0
    self._storage = self._entity:get_component('stonehearth:storage')
 
    local max_crop_level = 1
