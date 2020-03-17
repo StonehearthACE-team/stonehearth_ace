@@ -1,0 +1,33 @@
+{
+   "type": "entity",
+   "mixins": [
+		"stonehearth_ace:mixins:herbalist_planter:window_box",
+		"/stonehearth/entities/decoration/golden_clay_wall_planter/golden_clay_wall_planter_ghost.json"
+	],
+	"components": {
+		"stonehearth_ace:herbalist_planter": {
+         "default_crop": "brightbell",
+			"mixintypes": {
+				"plant_locations": "override"
+			},
+			"plant_locations": [
+            {
+               "offset": { "x": -0.1, "y": 0.4, "z": 0.05 },
+					"rotation": 90
+            },
+            {
+               "offset": { "x": -0.8, "y": 0.4, "z": 0.15 },
+					"rotation": 270
+            }
+         ]
+      }
+	},
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 6
+      },
+      "stonehearth:appeal": {
+         "appeal": 6
+      }
+   }
+}

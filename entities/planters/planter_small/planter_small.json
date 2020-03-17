@@ -39,8 +39,13 @@
       "stonehearth_ace:herbalist_planter": {
          "scale_multiplier": 1,
          "plant_locations": [
-            { "x": 0.25, "y": 0.7, "z": 0.35 },
-            { "x": -0.55, "y": 0.7, "z": 0.35 }
+            {
+               "offset": { "x": 0.475, "y": 0.7, "z": 0.05 }
+            },
+            {
+               "offset": { "x": -0.375, "y": 0.7, "z": -0.05 },
+               "rotation": 90
+            }
          ]
       },
       "stonehearth:storage": {

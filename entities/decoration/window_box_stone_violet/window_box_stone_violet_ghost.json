@@ -1,0 +1,26 @@
+{
+   "components": {
+		"mixintypes": {
+			"model_variants": "override"
+		},
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(window_box.qb)"
+            ]
+         }
+      },
+		"mob": {
+         "model_origin": { "y": -0.55 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth:entities.decoration.window_box_stone_violet.window_box_stone_violet_ghost.display_name)",
+         "description": "i18n(stonehearth:entities.decoration.window_box_stone_violet.window_box_stone_violet_ghost.description)",
+         "icon": "file(window_box_stone_violet.png)",
+         "category": "decoration",
+         "material_tags": ["decoration", "crafted", "stockpile_decoration"]
+      }
+   }
+}

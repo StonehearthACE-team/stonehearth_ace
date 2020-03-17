@@ -25,8 +25,12 @@
          "start_planted": true,
          "scale_multiplier": 1,
          "plant_locations": [
-            { "x": -0.55, "y": 0.4, "z": 0.35 },
-            { "x": 0.25, "y": 0.4, "z": 0.35 }
+            {
+               "offset": { "x": -0.05, "y": 0.4, "z": 0.05 }
+            },
+            {
+               "offset": { "x": -0.85, "y": 0.4, "z": 0.05 }
+            }
          ]
       }
    }
