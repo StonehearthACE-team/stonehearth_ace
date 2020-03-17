@@ -19,17 +19,6 @@ function HerbalistPlanterRenderer:initialize(render_entity, datastore)
    self._plant_locations = planter_data.plant_locations or {}
    self._scale_multiplier = planter_data.scale_multiplier or 1
 
-   self._align_x = 1
-   self._align_z = 1
-   local mob_data = radiant.entities.get_component_data(self._entity, 'mob') or {}
-   for _, dir in ipairs(mob_data.align_to_grid or {}) do
-      if dir == 'x' then
-         self._align_x = 0.5
-      elseif dir == 'z' then
-         self._align_z = 0.5
-      end
-   end
-
    self._datastore_trace = self._datastore:trace('drawing planter')
                                           :on_changed(function ()
                                                 self:_update()
@@ -77,20 +66,22 @@ function HerbalistPlanterRenderer:_update()
       local render_scale = plant_data.render_scale or 0.1
 
       for _, location in ipairs(self._plant_locations) do
-         self:_create_node(location, self._scale_multiplier * (growth_level_data.render_scale or render_scale), growth_level_data.model, growth_level_data.offset)
+         self:_create_node(location, self._scale_multiplier * (growth_level_data.render_scale or render_scale), growth_level_data)
       end
    end
 end
 
-function HerbalistPlanterRenderer:_create_node(location, scale, model, model_offset)
-   local node = _radiant.client.create_qubicle_matrix_node(self._node, model, 'crop', self._origin)
+function HerbalistPlanterRenderer:_create_node(location, scale, growth_level_data)
+   local model = growth_level_data.model
+   local model_offset = growth_level_data.offset or Point3.zero
+
+   local node = _radiant.client.create_qubicle_matrix_node(self._node, model, growth_level_data.matrix or 'crop', Point3(model_offset.x, model_offset.y, model_offset.z))
+
    if node then
       local offset = location.offset or Point3.zero
       local rotation = location.rotation or 0
-      model_offset = model_offset or Point3.zero
-      local full_offset = self._origin:scaled(scale) + Point3(offset.x - self._align_x + model_offset.x, offset.y + model_offset.y, offset.z - self._align_z + model_offset.z)
-      log:debug('%s rendering %s at %s scale at %s', self._entity, model, scale, full_offset)
-      node:set_transform(full_offset.x, full_offset.y, full_offset.z, 0, rotation, 0, scale, scale, scale)
+      log:debug('%s rendering %s at %s scale at %s', self._entity, model, scale, offset)
+      node:set_transform(offset.x, offset.y, offset.z, 0, rotation, 0, scale, scale, scale)
       node:set_material('materials/voxel.material.json')
       --node:set_visible(true)
       table.insert(self._plant_nodes, node)
