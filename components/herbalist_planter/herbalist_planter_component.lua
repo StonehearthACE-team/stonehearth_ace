@@ -288,6 +288,7 @@ function HerbalistPlanterComponent:_grow()
 
    if self._planted_crop_stats and self._sv.crop_growth_level then
       self._sv.crop_growth_level = math.min(self._sv.crop_growth_level + 1, #self._planted_crop_stats.growth_levels)
+      self._sv._bonus_growth_period = nil
       local growth_level_data = self._planted_crop_stats.growth_levels[self._sv.crop_growth_level]
 
       -- if relevant, start a timer for the next growth level
@@ -308,6 +309,7 @@ function HerbalistPlanterComponent:_grow()
          if bonus_product_growth_time then
             local bonus_growth_period = stonehearth.calendar:parse_duration(bonus_product_growth_time)
             bonus_growth_period = stonehearth.town:calculate_growth_period(self._entity:get_player_id(), bonus_growth_period)
+            self._sv._bonus_growth_period = bonus_growth_period
             self._sv._bonus_growth_timer_duration_remaining = bonus_growth_period
             self._bonus_product_uri = growth_level_data.bonus_product_uri or self._planted_crop_stats.bonus_product_uri or self._planted_crop_stats.product_uri
          end
@@ -331,16 +333,20 @@ function HerbalistPlanterComponent:_restart_timers()
       self._sv._growth_timer_duration_remaining = nil
    end
 
-   if self._sv._bonus_growth_timer_duration_remaining and not self._sv._bonus_growth_timer then
-      self._sv._bonus_growth_timer = stonehearth.calendar:set_persistent_timer("herbalist_planter growth",
-            self._sv._bonus_growth_timer_duration_remaining, radiant.bind(self, '_bonus_grow'))
-      self._sv._bonus_growth_timer_duration_remaining = nil
+   if not self._sv._bonus_growth_timer then
+      local time = self._sv._bonus_growth_timer_duration_remaining or self._sv._bonus_growth_period
+      if time then
+         self._sv._bonus_growth_timer = stonehearth.calendar:set_persistent_timer("herbalist_planter growth", time, radiant.bind(self, '_bonus_grow'))
+         self._sv._bonus_growth_timer_duration_remaining = nil
+      end
    end
 end
 
 -- create bonus product and stick in storage
 -- if there's no space, destroy an existing different item if possible
 function HerbalistPlanterComponent:_bonus_grow()
+   self:_stop_bonus_growth()
+
    if not self._storage then
       return
    end
@@ -359,6 +365,8 @@ function HerbalistPlanterComponent:_bonus_grow()
       --local player_id = self._entity:get_player_id()
       self:_create_product(self._bonus_product_uri, 1)
    end
+
+   self:_restart_timers()
 end
 
 function HerbalistPlanterComponent:_create_product(product_uri, quantity, input)
