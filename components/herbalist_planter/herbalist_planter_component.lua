@@ -34,8 +34,6 @@ function HerbalistPlanterComponent:create()
    if self._json.default_crop and self._sv.allowed_crops[self._json.default_crop] then
       self:set_current_crop(self._json.default_crop)
    end
-
-   self:set_harvest_enabled(self._json.harvest_enabled ~= false)
 end
 
 function HerbalistPlanterComponent:activate()
@@ -62,6 +60,12 @@ function HerbalistPlanterComponent:activate()
    end
 
    self:_create_listeners()
+end
+
+function HerbalistPlanterComponent:post_activate()
+   if self._is_create then
+      self:set_harvest_enabled(self._json.harvest_enabled ~= false)
+   end
 end
 
 function HerbalistPlanterComponent:destroy()
