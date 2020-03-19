@@ -369,10 +369,11 @@ function HerbalistPlanterComponent:_bonus_grow()
    self:_restart_timers()
 end
 
-function HerbalistPlanterComponent:_create_product(product_uri, quantity, input)
+function HerbalistPlanterComponent:_create_product(product_uri, quantity, harvester)
    local quality = self._sv._quality or 1
-   return radiant.entities.output_items({[product_uri] = quantity or 1}, radiant.entities.get_world_grid_location(self._entity), 0, 1, 
-                                        { owner = self._entity:get_player_id() }, self._entity, input or self._entity, input ~= nil, quality)
+   local input = harvester or self._entity
+   return radiant.entities.output_items({[product_uri] = quantity or 1}, radiant.entities.get_world_grid_location(input), 0, 1, 
+                                        { owner = self._entity:get_player_id() }, self._entity, input, harvester ~= nil, quality)
 end
 
 -- called by ai to harvest the planter
