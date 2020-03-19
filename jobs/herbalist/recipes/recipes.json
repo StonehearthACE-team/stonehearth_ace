@@ -7,6 +7,15 @@
             },
 				"herbalist_cauldron": {
 					"recipe": "file(herbalist_cauldron_recipe.json)"
+				},
+				"herbalist_planter_pot": {
+					"recipe": "file(herbalist_planter_pot_recipe.json)"
+				},
+				"herbalist_planter_small": {
+					"recipe": "file(herbalist_planter_small_recipe.json)"
+				},
+				"herbalist_planter_large": {
+					"recipe": "file(herbalist_planter_large_recipe.json)"
 				}
          }
       },
@@ -89,6 +98,9 @@
 				},
 				"marblesprout_drying" : {
 					"recipe" : "file(marblesprout_drying_recipe.json)"
+				},
+				"gruit" : {
+					"recipe" : "file(gruit_recipe.json)"
 				}
 			}
 		},
@@ -226,15 +238,6 @@
                "recipe": "file(hearth_fertilizer_recipe.json)"
             }
 			}
-		},
-		"brewing_ingredients": {
-			"ordinal": 59,
-         "name": "i18n(stonehearth_ace:jobs.herbalist.recipes.brewing_name)",
-         "recipes": {			
-				"gruit" : {
-					"recipe" : "file(gruit_recipe.json)"
-				}
-         }
 		},
 		"tonics": {
          "recipes": {

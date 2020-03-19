@@ -32,7 +32,10 @@
 				},
 				"cooking_oil": {
 					"recipe": "file(cooking_oil_recipe.json)"
-				}
+				},
+				"malted_grains": {
+					"recipe": "file(malted_grains_recipe.json)"
+				}	
          }
       },
 	  "food_preparation": {
@@ -191,15 +194,6 @@
             }
          }
       },
-		"brewing_ingredients": {
-			"ordinal": 66.9,
-         "name": "i18n(stonehearth_ace:jobs.cook.recipes.brewing_name)",
-         "recipes": {
-				"malted_grains": {
-					"recipe": "file(malted_grains_recipe.json)"
-				}			
-         }
-		},
 	   "animal_feed": {
          "recipes": {
             "fodder": {

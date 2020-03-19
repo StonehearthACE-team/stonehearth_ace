@@ -19,13 +19,15 @@
    },
    "entity_data": {
       "stonehearth:catalog": {
-         "display_name": "i18n(stonehearth_ace:entities.herbalist_planters.simple_window_planter.simple_window_planter_ghost.display_name)",
-         "description": "i18n(stonehearth_ace:entities.herbalist_planters.simple_window_planter.simple_window_planter_ghost.description)",
+         "display_name": "i18n(stonehearth_ace:entities.herbalist_planters.planter_pot.display_name)",
+         "description": "i18n(stonehearth_ace:entities.herbalist_planters.planter_pot.description)",
          "icon": "file(planter_pot.png)",
-         "category": "decoration",
+         "category": "herbalist_planter",
          "material_tags": [
             "crafted",
-            "herbalist_planter"
+            "herbalist_planter",
+            "tool",
+            "stockpile_tool"
          ]
       }
    }

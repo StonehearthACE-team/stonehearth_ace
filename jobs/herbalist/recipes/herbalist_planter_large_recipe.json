@@ -1,0 +1,27 @@
+{
+   "type": "recipe",
+   "effort": 32,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.herbalist.recipes.herbalist_planter_large_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.herbalist_planter_large_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.herbalist_planter_large_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/planters/planter_large/planter_large.png",
+   "workshop": "stonehearth:herbalist:workbench",
+	"work_effect": "fiddle",
+   "level_requirement": 5,
+   "ingredients": [
+		{
+         "material": "wood resource",
+         "count": 2
+      },
+		{
+         "material": "clay resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:planters:large"
+      }
+   ]
+}

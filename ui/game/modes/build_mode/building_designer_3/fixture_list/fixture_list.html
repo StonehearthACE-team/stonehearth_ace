@@ -108,6 +108,13 @@
                            <div class="selectBox"></div>
                        </div>
                        {{/each}}
+							  <div class="paper fixtureLabel">{{ i18n stonehearth:ui.game.entities.item_categories.herbalist_planter }}</div>
+                       {{#each f in view.herbalist_planter}}
+                       <div class="fixture button" {{ bind-attr style=f.style data-fixture_uri=f.data data-item_quality="f.item_quality" data-tooltip="f.tooltip" }}>
+                           <div {{ bind-attr class="f.item_quality_class" }}></div>
+                           <div class="selectBox"></div>
+                       </div>
+                       {{/each}}
                        </div>
                    </div>
                </div>

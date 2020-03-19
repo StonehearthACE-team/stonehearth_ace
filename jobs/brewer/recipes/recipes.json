@@ -30,7 +30,14 @@
       "ingredients": {
          "ordinal": 10,
          "name": "i18n(stonehearth_ace:jobs.brewer.recipes.ingredients_name)",
-         "recipes": {}
+         "recipes": {
+				"gruit" : {
+					"recipe" : "file(gruit_recipe.json)"
+				},
+				"malted_grains": {
+					"recipe": "file(malted_grains_recipe.json)"
+				}	
+			}
       },
       "brewing": {
          "ordinal": 20,

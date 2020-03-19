@@ -1,0 +1,20 @@
+{
+   "effort": 15,
+   "recipe_name": "i18n(stonehearth_ace:jobs.mason.recipes.window_box_violet_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.mason.recipes.window_box_violet_recipe.description)",
+	"flavor": "i18n(stonehearth_ace:jobs.mason.recipes.window_box_violet_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/decoration/window_box_stone_violet/window_box_stone_violet.png",
+	"mixintypes": {
+		"ingredients": "override"
+	},
+   "ingredients": [
+      {
+         "material": "stone resource",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth:plants:violet:seed",
+         "count": 2
+      }
+   ]
+}

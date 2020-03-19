@@ -1,0 +1,19 @@
+{
+   "effort": 16,
+   "recipe_name": "i18n(stonehearth_ace:jobs.potter.recipes.potted_cactus_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.potter.recipes.potted_cactus_recipe.description)",
+   "portrait": "/stonehearth_ace/entities/decoration/potted_cactus/potted_cactus.png",
+	"mixintypes": {
+		"ingredients": "override"
+	},
+   "ingredients": [
+      {
+         "material": "clay resource",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth:plants:cactus:seed",
+         "count": 2
+      }
+   ]
+}

@@ -2545,6 +2545,21 @@
                "description": "Supplies your town with beekeeping products but won't produce during the winter.",
                "flavor": "Empty at first, you can obtain captive bees by harvesting wild bee nests found when cutting trees!"
             },
+				"herbalist_planter_pot_recipe": {
+               "recipe_name": "Simple Herbalist Pot",
+               "description": "The Herbalist can use this pot to cultivate a single renewable herb.",
+               "flavor": "Changing the cultivated herb requires the respective seed"
+            },
+				"herbalist_planter_small_recipe": {
+               "recipe_name": "Herbalist Planter",
+               "description": "The Herbalist can use this container to cultivate two renewable herbs.",
+               "flavor": "Changing the cultivated herb requires the respective seed"
+            },
+				"herbalist_planter_large_recipe": {
+               "recipe_name": "Large Herbalist Planter",
+               "description": "The Herbalist can use this nice planter to cultivate four renewable herbs.",
+               "flavor": "Changing the cultivated herb requires the respective seed"
+            },
             "herbalist_beekeeping_hat_recipe": {
                "recipe_name": "Herbalist's Beekeeping Hat",
                "description": "Provides protection when working with bees.",
@@ -3196,7 +3211,7 @@
                "description": "Gloriously giant feathers made of textiles.",
                "flavor": "No poyos were harmed in the making of this decoration."
             },
-            "porcelain_planter_recipe": {
+            "porcelain_daisy_vase_recipe": {
                "recipe_name": "Porcelain Flower Planter",
                "description": "The poetically perfect stand and vase are housing delicate daisies.",
                "flavor": "*Sniff* so gorgeous, so perfect"
@@ -3380,6 +3395,14 @@
                "recipe_name": "Clay Counter Door",
                "description": "Allows hearthlings to traverse between both sides of the counter.",
                "flavor": "Keep it closed, keep it clean"
+            },
+				"golden_clay_wall_planter_recipe": {
+               "recipe_name": "Window Planter with Brightbells",
+               "description": "A decorative planter to be placed under window frames. Comes with Brightbells but a different herb can be chosen and planted by the Herbalist."
+            },
+				"potted_cactus_recipe": {
+               "recipe_name": "Window Planter with Cacti",
+               "description": "A decorative planter to be placed under window frames. Comes with Cacti but a different herb can be chosen and planted by the Herbalist."
             }
          },
          "potter_description": {
@@ -3788,6 +3811,11 @@
             },
             "wall_mounted_paw_recipe": {
                "description": "Mark of the hunter, never seen or heard... Until it is too late."
+            },
+				"window_box_violet_recipe": {
+               "recipe_name": "Window Planter with Violets",
+               "description": "A decorative planter to be placed under window frames. Comes with Violets but a different herb can be chosen and planted by the Herbalist.",
+               "flavor": "For when your window view is boring enough"
             }
          },
          "mason_workbench_bone": {
@@ -4832,6 +4860,14 @@
             },
             "rc_bow_valor_recipe": {
                "flavor": "A bow that demands skill of its wielder, but returns it in gales of arrows over their foes"
+            },
+				"window_box_brightbell_recipe": {
+               "recipe_name": "Window Planter with Brightbells",
+               "description": "A decorative planter to be placed under window frames. Comes with Brightbells but a different herb can be chosen and planted by the Herbalist."
+            },
+				"window_box_frostsnap_recipe": {
+               "recipe_name": "Window Planter with Frostsnaps",
+               "description": "A decorative planter to be placed under window frames. Comes with Frostsnaps but a different herb can be chosen and planted by the Herbalist."
             }
          },
          "carpenter_description": {
@@ -5232,6 +5268,13 @@
                "recipe_name": "Fermentation Carboy",
                "description": "The Brewer can use this to make mead or fruity mead with different types of unfermented mead.",
                "flavor": "Mead is appreciated by many but will make hearthlings tipsy"
+            },
+			   "gruit_recipe": {
+               "flavor": "The Brewer can use the Herbalist's lab for this recipe!"
+            },
+			   "malted_grains_recipe": {
+               "description": "Toast some grains until they're perfectly golden. An ingredient for brewing but can also be milled for cooking oil.",
+               "flavor": "The Brewer can use the Cook's oven for this recipe!"
             },
             "wort_recipe": {
                "recipe_name": "Bucket of Wort",
@@ -5986,11 +6029,37 @@
          }
       },
       "herbalist_planters": {
-         "simple_window_planter": {
-            "simple_window_planter_ghost": {
-               "display_name": "Simple Window Planter",
-               "description": "A small planter for growing three herbs."
-            }
+         "window_box_brightbell": {
+            "display_name": "Wooden Window Planter",
+            "description": "A decorative planter. Includes Brightbells but another herb can be chosen."
+         },
+         "window_box_frostsnap": {
+            "display_name": "Wooden Window Planter",
+            "description": "A decorative planter. Includes Frostsnaps but another herb can be chosen."
+         },
+         "window_box_stone_violet": {
+            "display_name": "Stone Window Planter",
+            "description": "A decorative planter. Comes with Violets but another herb can be chosen."
+         },
+         "golden_clay_wall_planter": {
+            "display_name": "Clay Window Planter",
+            "description": "A decorative planter. Includes Brightbells but another herb can be chosen."
+         },
+         "potted_cactus": {
+            "display_name": "Clay Window Planter",
+            "description": "A decorative planter. Comes with Cacti but another herb can be chosen."
+         },
+         "planter_large": {
+            "display_name": "Large Herbalist Planter",
+            "description": "This nice planter provides twice the resources of a regular one."
+         },
+         "planter_small": {
+            "display_name": "Herbalist Planter",
+            "description": "The Herbalist can cultivate renewable herbs in it."
+         },
+         "planter_pot": {
+            "display_name": "Simple Herbalist Pot",
+            "description": "This pot can be used to cultivate a single renewable herb."
          }
       },
       "resources": {
@@ -7513,10 +7582,10 @@
                "description": "Step gently."
             }
          },
-         "porcelain_planter": {
-            "porcelain_planter_ghost": {
-               "display_name": "Porcelain Flower Planter",
-               "description": "Beautiful and delicate daisies in a vase."
+         "porcelain_daisy_vase": {
+            "porcelain_daisy_vase_ghost": {
+               "display_name": "Porcelain Daisy Vase",
+               "description": "Beautiful and delicate daisies in a magnificent container."
             }
          },
          "porcelain_teapot": {
@@ -10950,7 +11019,8 @@
                "drink": "Drinks",
                "brewing_ingredient": "Brewing Ingredients",
                "boulder": "Stonework",
-               "automatons_and_golems": "Automatons & Golems"
+               "automatons_and_golems": "Automatons & Golems",
+					"herbalist_planter": "Herb Planters"
             }
          },
          "custom_tooltips": {

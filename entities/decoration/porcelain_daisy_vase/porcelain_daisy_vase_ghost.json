@@ -4,7 +4,7 @@
       "model_variants": {
          "default": {
             "models": [
-               "file(porcelain_planter.qb)"
+               "file(porcelain_daisy_vase.qb)"
             ]
          }
       },
@@ -22,11 +22,17 @@
    },
    "entity_data": {
       "stonehearth:catalog": {
-         "display_name": "i18n(stonehearth_ace:entities.decoration.porcelain_planter.porcelain_planter_ghost.display_name)",
-         "description": "i18n(stonehearth_ace:entities.decoration.porcelain_planter.porcelain_planter_ghost.description)",
-         "icon": "file(porcelain_planter.png)",
+         "display_name": "i18n(stonehearth_ace:entities.decoration.porcelain_daisy_vase.porcelain_daisy_vase_ghost.display_name)",
+         "description": "i18n(stonehearth_ace:entities.decoration.porcelain_daisy_vase.porcelain_daisy_vase_ghost.description)",
+         "icon": "file(porcelain_daisy_vase.png)",
          "category": "decoration",
-         "material_tags":["decoration", "porcelain", "crafted", "clay", "stockpile_decoration"]
+         "material_tags": [
+            "decoration",
+            "porcelain",
+            "crafted",
+            "clay",
+            "stockpile_decoration"
+         ]
       }
    }
 }

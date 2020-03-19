@@ -2,6 +2,7 @@ App.StonehearthBuildingFixtureListView.reopen({
    categories: {
       training_equipment: true,
 		mechanism: true,
+		herbalist_planter: true,
 		fluid_control: true,
 		decoration: true,
       construction: true,

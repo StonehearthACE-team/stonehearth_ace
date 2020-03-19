@@ -1,6 +1,9 @@
 {
    "default_allowed_crops": {
-      "brightbell": true
+      "brightbell": true,
+      "frostsnap": true,
+      "violet": true,
+      "cactus_flower": true
    },
    "crops": {
       "brightbell": {
@@ -10,7 +13,7 @@
          "render_scale": 0.1,
          "tending_multiplier": 0.5,
          "level": 1,
-         "growth_time": "4h",
+         "growth_time": "2h",
          "bonus_product_growth_time": "12h",
          "growth_levels": [
             {
@@ -34,6 +37,102 @@
          "description": "i18n(stonehearth_ace:herbalist_crops.brightbell.description)",
          "harvest_status_text": "i18n(stonehearth_ace:herbalist_crops.brightbell.harvest_text)",
          "icon": "file(crops/brightbell/brightbell.png)"
+      },
+      "frostsnap": {
+         "seed_uri": "stonehearth:plants:frostsnap:seed",
+         "product_uri": "stonehearth:resources:herb:frostsnap",
+         "harvester_effect": "fiddle",
+         "render_scale": 0.1,
+         "tending_multiplier": 0.5,
+         "level": 1,
+         "growth_time": "2h",
+         "bonus_product_growth_time": "12h",
+         "growth_levels": [
+            {
+               "model": "file(crops/frostsnap/frostsnap_1.qb)",
+               "offset": { "x": 4, "y": 0, "z": 4 }
+            },
+            {
+               "model": "file(crops/frostsnap/frostsnap_2.qb)",
+               "offset": { "x": 4, "y": 0, "z": 4 }
+            },
+            {
+               "model": "file(crops/frostsnap/frostsnap_3.qb)",
+               "offset": { "x": 4, "y": 0, "z": 4 }
+            },
+            {
+               "model": "file(crops/frostsnap/frostsnap_4.qb)",
+               "offset": { "x": 4, "y": 0, "z": 4 }
+            }
+         ],
+         "display_name": "i18n(stonehearth_ace:herbalist_crops.frostsnap.display_name)",
+         "description": "i18n(stonehearth_ace:herbalist_crops.frostsnap.description)",
+         "harvest_status_text": "i18n(stonehearth_ace:herbalist_crops.frostsnap.harvest_text)",
+         "icon": "file(crops/frostsnap/frostsnap.png)"
+      },
+      "violet": {
+         "seed_uri": "stonehearth:plants:violet:seed",
+         "product_uri": "stonehearth:resources:herb:violet",
+         "harvester_effect": "fiddle",
+         "render_scale": 0.1,
+         "tending_multiplier": 0.5,
+         "level": 1,
+         "growth_time": "2h",
+         "bonus_product_growth_time": "12h",
+         "growth_levels": [
+            {
+               "model": "file(crops/violet/violet_1.qb)",
+               "offset": { "x": 4, "y": 0, "z": 4 }
+            },
+            {
+               "model": "file(crops/violet/violet_2.qb)",
+               "offset": { "x": 4, "y": 0, "z": 4 }
+            },
+            {
+               "model": "file(crops/violet/violet_3.qb)",
+               "offset": { "x": 4, "y": 0, "z": 4 }
+            },
+            {
+               "model": "file(crops/violet/violet_4.qb)",
+               "offset": { "x": 4, "y": 0, "z": 4 }
+            }
+         ],
+         "display_name": "i18n(stonehearth_ace:herbalist_crops.violet.display_name)",
+         "description": "i18n(stonehearth_ace:herbalist_crops.violet.description)",
+         "harvest_status_text": "i18n(stonehearth_ace:herbalist_crops.violet.harvest_text)",
+         "icon": "file(crops/violet/violet.png)"
+      },
+      "cactus_flower": {
+         "seed_uri": "stonehearth:plants:cactus:seed",
+         "product_uri": "stonehearth:resources:herb:cactus_flower",
+         "harvester_effect": "fiddle",
+         "render_scale": 0.07,
+         "tending_multiplier": 0.5,
+         "level": 1,
+         "growth_time": "2h",
+         "bonus_product_growth_time": "12h",
+         "growth_levels": [
+            {
+               "model": "file(crops/cactus_flower/cactus_flower_1.qb)",
+               "offset": { "x": 6, "y": 0, "z": 6 }
+            },
+            {
+               "model": "file(crops/cactus_flower/cactus_flower_2.qb)",
+               "offset": { "x": 6, "y": 0, "z": 6 }
+            },
+            {
+               "model": "file(crops/cactus_flower/cactus_flower_3.qb)",
+               "offset": { "x": 6, "y": 0, "z": 6 }
+            },
+            {
+               "model": "file(crops/cactus_flower/cactus_flower_4.qb)",
+               "offset": { "x": 6, "y": 0, "z": 6 }
+            }
+         ],
+         "display_name": "i18n(stonehearth_ace:herbalist_crops.cactus_flower.display_name)",
+         "description": "i18n(stonehearth_ace:herbalist_crops.cactus_flower.description)",
+         "harvest_status_text": "i18n(stonehearth_ace:herbalist_crops.cactus_flower.harvest_text)",
+         "icon": "file(crops/cactus_flower/cactus_flower.png)"
       }
    }
 }
