@@ -4,6 +4,9 @@
          "status_text": {
             "eat_from": "ißt vom [name(data.target)]",
             "fertilize_field": "Dünger auftragen",
+            "clear_herbalist_planter": "entrümpele [name(data.target)]",
+            "harvest_herbalist_planter": "ernte [name(data.target)]",
+            "plant_herbalist_planter": "pflanze in [name(data.target)]",
             "transform": "transformiere [name(data.target)]",
             "train": "geht zum Training",
             "consume_drink": "trinkt [name(data.target)]",
@@ -955,6 +958,10 @@
                "fungi_lover_ate_fungi": {
                   "display_name": "Pilzliebhaber",
                   "tooltip": "Lecker! Ich esse gerne Pilze und ich muss zugeben, dass [str(foodname)] besonders gut war!"
+               },
+               "merry_time_frostfeast": {
+                  "display_name": "Frostfeasting",
+                  "tooltip": "Ahh! What a joyous time of the year! Nothing like decorating your home, gathering around delicious food and enjoying it with your loved ones..."
                }
             },
             "traits": {
@@ -1084,6 +1091,14 @@
                   "bad_dream": {
                      "display_name": "Hatte einen schlechten Traum",
                      "tooltip": "Nein ... Nein ... Lauft weg, der Riesenbuckbuck ist da! FLIEHT IHR NARREN!"
+                  }
+               }
+            },
+            "violence": {
+               "values": {
+                  "bee_swarmed": {
+                     "display_name": "Recently stung",
+                     "tooltip": "Ow! Ouch! Oof! I'm covered in blisters... Those bees really got me!"
                   }
                }
             }
@@ -1771,11 +1786,11 @@
             },
             "fermenting_carboy_fill_unfermented_mead": {
                "display_name": "Produce Mead",
-               "description": "Order the Cook or Herbalist to fill this fermenting vessel with unfermented mead! It can be crafted by the Cook or Herbalist."
+               "description": "Order the Brewer to fill this fermenting vessel with unfermented mead! This Carboy will continue producing Mead unless a new command is given."
             },
             "fermenting_carboy_fill_unfermented_mead_fruit": {
                "display_name": "Produce Fruity Mead",
-               "description": "Order the Cook or Herbalist to fill this fermenting vessel with unfermented fruity mead! It can be crafted by the Cook or Herbalist."
+               "description": "Order the Brewer to fill this fermenting vessel with unfermented fruity mead! This Carboy will continue producing Fruity Mead unless a new command is given."
             },
             "fermenting_vat_fill_wort": {
                "display_name": "Produce Ale",
@@ -2330,16 +2345,16 @@
             "fight_cancel_attack": {
                "display_name": "Cancel All Attacks"
             },
-				"zone_farms": {
+            "zone_farms": {
                "display_name": "Farm Type Menu"
             },
-				"zone_underfarm": {
+            "zone_underfarm": {
                "display_name": "Underfarm Tool"
             },
-				"zone_orchard": {
+            "zone_orchard": {
                "display_name": "Orchard Tool"
             },
-				"zone_treefarm": {
+            "zone_treefarm": {
                "display_name": "Timber Farm Tool"
             }
          }
@@ -2526,9 +2541,24 @@
                "flavor": "You can survive out of food, but only out of drinks you can live -'On the Art of Brewing' by Franz Baden"
             },
             "herbalist_bee_skep_recipe": {
-               "recipe_name": "Bee Skep",
+               "recipe_name": "Empty Bee Skep",
                "description": "Supplies your town with beekeeping products but won't produce during the winter.",
-               "flavor": "You can obtain captive bees by harvesting wild bee nests found when cutting trees!"
+               "flavor": "Empty at first, you can obtain captive bees by harvesting wild bee nests found when cutting trees!"
+            },
+				"herbalist_planter_pot_recipe": {
+               "recipe_name": "Simple Herbalist Pot",
+               "description": "The Herbalist can use this pot to cultivate a single renewable herb.",
+               "flavor": "Changing the cultivated herb requires the respective seed"
+            },
+				"herbalist_planter_small_recipe": {
+               "recipe_name": "Herbalist Planter",
+               "description": "The Herbalist can use this container to cultivate two renewable herbs.",
+               "flavor": "Changing the cultivated herb requires the respective seed"
+            },
+				"herbalist_planter_large_recipe": {
+               "recipe_name": "Large Herbalist Planter",
+               "description": "The Herbalist can use this nice planter to cultivate four renewable herbs.",
+               "flavor": "Changing the cultivated herb requires the respective seed"
             },
             "herbalist_beekeeping_hat_recipe": {
                "recipe_name": "Herbalist's Beekeeping Hat",
@@ -3365,6 +3395,14 @@
                "recipe_name": "Clay Counter Door",
                "description": "Allows hearthlings to traverse between both sides of the counter.",
                "flavor": "Keep it closed, keep it clean"
+            },
+				"golden_clay_wall_planter_recipe": {
+               "recipe_name": "Window Planter with Brightbells",
+               "description": "A decorative planter to be placed under window frames. Comes with Brightbells but a different herb can be chosen and planted by the Herbalist."
+            },
+				"potted_cactus_recipe": {
+               "recipe_name": "Window Planter with Cacti",
+               "description": "A decorative planter to be placed under window frames. Comes with Cacti but a different herb can be chosen and planted by the Herbalist."
             }
          },
          "potter_description": {
@@ -3385,6 +3423,9 @@
       },
       "geomancer": {
          "recipes": {
+            "earthbud_seeds_recipe": {
+               "recipe_name": "Hearthbud Seeds (x3)"
+            },
             "legendary_silk_recipe": {
                "recipe_name": "Waldseide",
                "description": "Gold und Seide zusammengewebt für den Umhang des Elfenkönigs.",
@@ -3770,6 +3811,11 @@
             },
             "wall_mounted_paw_recipe": {
                "description": "Mark of the hunter, never seen or heard... Until it is too late."
+            },
+				"window_box_violet_recipe": {
+               "recipe_name": "Window Planter with Violets",
+               "description": "A decorative planter to be placed under window frames. Comes with Violets but a different herb can be chosen and planted by the Herbalist.",
+               "flavor": "For when your window view is boring enough"
             }
          },
          "mason_workbench_bone": {
@@ -4814,6 +4860,14 @@
             },
             "rc_bow_valor_recipe": {
                "flavor": "A bow that demands skill of its wielder, but returns it in gales of arrows over their foes"
+            },
+				"window_box_brightbell_recipe": {
+               "recipe_name": "Window Planter with Brightbells",
+               "description": "A decorative planter to be placed under window frames. Comes with Brightbells but a different herb can be chosen and planted by the Herbalist."
+            },
+				"window_box_frostsnap_recipe": {
+               "recipe_name": "Window Planter with Frostsnaps",
+               "description": "A decorative planter to be placed under window frames. Comes with Frostsnaps but a different herb can be chosen and planted by the Herbalist."
             }
          },
          "carpenter_description": {
@@ -5214,6 +5268,13 @@
                "recipe_name": "Fermentation Carboy",
                "description": "The Brewer can use this to make mead or fruity mead with different types of unfermented mead.",
                "flavor": "Mead is appreciated by many but will make hearthlings tipsy"
+            },
+			   "gruit_recipe": {
+               "flavor": "The Brewer can use the Herbalist's lab for this recipe!"
+            },
+			   "malted_grains_recipe": {
+               "description": "Toast some grains until they're perfectly golden. An ingredient for brewing but can also be milled for cooking oil.",
+               "flavor": "The Brewer can use the Cook's oven for this recipe!"
             },
             "wort_recipe": {
                "recipe_name": "Bucket of Wort",
@@ -5968,11 +6029,37 @@
          }
       },
       "herbalist_planters": {
-         "simple_window_planter": {
-            "simple_window_planter_ghost": {
-               "display_name": "Simple Window Planter",
-               "description": "A small planter for growing three herbs."
-            }
+         "window_box_brightbell": {
+            "display_name": "Wooden Window Planter",
+            "description": "A decorative planter. Includes Brightbells but another herb can be chosen."
+         },
+         "window_box_frostsnap": {
+            "display_name": "Wooden Window Planter",
+            "description": "A decorative planter. Includes Frostsnaps but another herb can be chosen."
+         },
+         "window_box_stone_violet": {
+            "display_name": "Stone Window Planter",
+            "description": "A decorative planter. Comes with Violets but another herb can be chosen."
+         },
+         "golden_clay_wall_planter": {
+            "display_name": "Clay Window Planter",
+            "description": "A decorative planter. Includes Brightbells but another herb can be chosen."
+         },
+         "potted_cactus": {
+            "display_name": "Clay Window Planter",
+            "description": "A decorative planter. Comes with Cacti but another herb can be chosen."
+         },
+         "planter_large": {
+            "display_name": "Large Herbalist Planter",
+            "description": "This nice planter provides twice the resources of a regular one."
+         },
+         "planter_small": {
+            "display_name": "Herbalist Planter",
+            "description": "The Herbalist can cultivate renewable herbs in it."
+         },
+         "planter_pot": {
+            "display_name": "Simple Herbalist Pot",
+            "description": "This pot can be used to cultivate a single renewable herb."
          }
       },
       "resources": {
@@ -10931,7 +11018,8 @@
                "drink": "Getränke",
                "brewing_ingredient": "Brauereizutaten",
                "boulder": "Mauerwerk",
-               "automatons_and_golems": "Autonome & Golems"
+               "automatons_and_golems": "Autonome & Golems",
+					"herbalist_planter": "Herb Planters"
             }
          },
          "custom_tooltips": {
@@ -10970,6 +11058,11 @@
                      "display_name": "Züchter Handwerks-Menü",
                      "description": "Baut Holzmöbel und Dekor.",
                      "required_job_text": "Benötigt einen Schreiner"
+                  },
+                  "brewer": {
+                     "display_name": "Brewer Craft Menu",
+                     "description": "Provides the town with beverages and joy",
+                     "required_job_text": "Requires a brewer"
                   }
                }
             },
@@ -11373,7 +11466,8 @@
          "build_mode2": {
             "tooltips": {
                "clay_resource": "Roher Ton",
-               "clay_bricks_resource": "Ziegelsteine"
+               "clay_bricks_resource": "Ziegelsteine",
+               "thatch_resource": "Überdachung"
             }
          },
          "fence_mode": {
