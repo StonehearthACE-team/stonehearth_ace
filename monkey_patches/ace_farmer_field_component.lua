@@ -4,6 +4,7 @@ local rng = _radiant.math.get_default_rng()
 local log = radiant.log.create_logger('farmer_field')
 local FarmerFieldComponent = require 'stonehearth.components.farmer_field.farmer_field_component'
 local farming_lib = require 'stonehearth_ace.lib.farming.farming_lib'
+local entity_forms_lib = require 'stonehearth.lib.entity_forms.entity_forms_lib'
 
 local AceFarmerFieldComponent = class()
 
@@ -372,6 +373,8 @@ function AceFarmerFieldComponent:try_harvest_crop(harvester, x, z, num_stacks, a
          elseif auto_harvest_type then
             local iconic = true
             if auto_harvest_type == 'place' then
+               -- if it's an iconic, make sure we get the actual root entity
+               primary_item = entity_forms_lib.get_root_entity(primary_item)
                primary_item:add_component('stonehearth:crop'):set_field(self, x, z)
                primary_item:add_component('stonehearth_ace:output'):set_parent_output(self._entity)
                dirt_plot.post_harvest_contents = primary_item

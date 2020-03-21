@@ -268,6 +268,11 @@ function CropComponent:_create_item(player_id, uri, crop_quality, num_stacks, ma
    end
 
    local product = radiant.entities.create_entity(uri, { owner = player_id })
+   
+   if crop_quality > 1 then
+      item_quality_lib.copy_quality(self._entity, product)
+   end
+
    local entity_forms = product:get_component('stonehearth:entity_forms')
 
    --If there is an entity_forms component, then you want to put the iconic version
@@ -283,10 +288,6 @@ function CropComponent:_create_item(player_id, uri, crop_quality, num_stacks, ma
    local stacks_component = product:get_component('stonehearth:stacks')
    if stacks_component then
       stacks_component:set_stacks((max_stacks and stacks_component:get_max_stacks()) or num_stacks or 1)
-   end
-
-   if crop_quality > 1 then
-      item_quality_lib.copy_quality(self._entity, product)
    end
 
    return product
