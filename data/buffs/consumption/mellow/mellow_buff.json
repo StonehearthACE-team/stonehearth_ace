@@ -1,0 +1,30 @@
+{
+   "type": "buff",
+   "axis": "debuff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.mellow.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.mellow.description)",
+   "icon": "file(mellow_buff.png)",
+   "duration": "4h",
+   "repeat_add_action": "renew_duration",
+   "effect": "stonehearth_ace:effects:mellow_effect",
+   "restore_effect": true,
+   "modifiers": {
+      "willpower": {
+         "add": -2
+      },
+      "courage": {
+         "add": 5
+      },
+      "stamina": {
+         "add": -5
+      },
+      "social_loss_amount": {
+         "multiply": 3
+      }
+   },
+   "disallowed_buffs": [
+      "stonehearth_ace:buffs:consumption:harmony_minor",
+      "stonehearth_ace:buffs:consumption:harmony",
+      "stonehearth_ace:buffs:consumption:harmony_major"
+   ]
+}

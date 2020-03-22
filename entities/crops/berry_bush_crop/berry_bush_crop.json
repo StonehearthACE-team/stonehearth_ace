@@ -1,0 +1,103 @@
+{
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "/stonehearth/entities/plants/berry_bush/berry_bush.qb"
+            ]
+         },
+         "berry_bush_1": {
+            "models": [
+               "/stonehearth/entities/plants/dirt_pile/dirt_pile_1.qb",
+               "/stonehearth/entities/plants/dirt_pile/dirt_pile_2.qb",
+               "/stonehearth/entities/plants/dirt_pile/dirt_pile_3.qb"
+            ]
+         },
+         "berry_bush_2": {
+            "models": [
+               "/stonehearth/entities/plants/berry_bush/sprout/berry_bush_sprout.qb"
+            ]
+         },
+         "berry_bush_3": {
+            "models": [
+               "/stonehearth/entities/plants/berry_bush/stem/berry_bush_stem.qb"
+            ]
+         },
+         "berry_bush_4": {
+            "models": [
+               "/stonehearth/entities/plants/berry_bush/bud/berry_bush_bud.qb"
+            ]
+         }
+      },
+      "render_info": {
+         "scale": 0.1
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "mob_collision_type": "clutter"
+      },
+      "stonehearth:crop": {
+         "resource_pairings": {
+            "default": "stonehearth:plants:berry_bush"
+         },
+         "harvest_threshhold": "default",
+         "plant_overlay_effect": "stonehearth:effects:plant_crop_overlay_effect",
+         "megacrop_chance": 0,
+         "auto_harvest": "place"
+      },
+      "stonehearth:growing": {
+         "growth_period": "3h",
+         "preferred_climate": "temperate_staple",
+         "growth_stages": [
+            {
+               "model_name": "berry_bush_1",
+               "name": "Yew Seed",
+               "description": "Even a large tree has humble beginnings."
+            },
+            {
+               "model_name": "berry_bush_2",
+               "name": "Yew Seedling",
+               "description": "It's just getting started."
+            },
+            {
+               "model_name": "berry_bush_3",
+               "name": "Yew Sprout",
+               "description": "Getting closer and closer..."
+            },
+            {
+               "model_name": "berry_bush_4",
+               "name": "Yew Sapling",
+               "description": "Ready to be transferred to a bigger plot."
+            },
+            {
+               "model_name": "default",
+               "name": "Yew Sapling",
+               "description": "Ready to be transferred to a bigger plot."
+            }
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 1,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "Yew Tree Sapling",
+         "description": "Need more Yew wood? Prepare your plots for reforestation!",
+         "icon": "file(berry_bush_crop.png)",
+         "material_tags": [
+            "crop",
+            "yew_tree_sapling"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": 1
+      }
+   }
+}

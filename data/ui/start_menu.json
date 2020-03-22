@@ -127,8 +127,60 @@
                   "hotkey_action": "zone:farm",
                   "field_type": "farm",
                   "ordinal": 1
+               },              
+					"create_field_bush_farm": {
+                  "name": "i18n(stonehearth_ace:ui.game.menu.zone_menu.items.create_farm.create_field_bush_farm.display_name)",
+                  "description": "i18n(stonehearth_ace:ui.game.menu.zone_menu.items.create_farm.create_field_bush_farm.description)",
+                  "required_ability": "field_type_farm",
+                  "required_job_text": "i18n(stonehearth_ace:ui.game.menu.zone_menu.items.create_farm.create_field_bush_farm.required_ability_text)",
+                  "class": "button",
+                  "icon": "/stonehearth_ace/ui/game/start_menu/images/zone_bush_farm.png",
+                  "sticky": true,
+                  "menu_action": "create_field",
+                  "hotkey_action": "zone:bush_farm",
+                  "field_type": "bush_farm",
+                  "ordinal": 2
                },
-               "create_field_underfarm": {
+					"create_field_decorative_flowers": {
+                  "name": "i18n(stonehearth_ace:ui.game.menu.zone_menu.items.create_farm.create_field_decorative_flowers.display_name)",
+                  "description": "i18n(stonehearth_ace:ui.game.menu.zone_menu.items.create_farm.create_field_decorative_flowers.description)",
+                  "required_ability": "field_type_decorative_flowers",
+                  "required_job_text": "i18n(stonehearth_ace:ui.game.menu.zone_menu.items.create_farm.create_field_decorative_flowers.required_ability_text)",
+                  "class": "button",
+                  "icon": "/stonehearth_ace/ui/game/start_menu/images/zone_decorative_flowers.png",
+                  "sticky": true,
+                  "menu_action": "create_field",
+                  "hotkey_action": "zone:decorative_flowers",
+                  "field_type": "decorative_flowers",
+                  "ordinal": 3
+               },
+               "create_field_orchard": {
+                  "name": "i18n(stonehearth_ace:ui.game.menu.zone_menu.items.create_farm.create_field_orchard.display_name)",
+                  "description": "i18n(stonehearth_ace:ui.game.menu.zone_menu.items.create_farm.create_field_orchard.description)",
+                  "required_ability": "field_type_treefarm",
+                  "required_job_text": "i18n(stonehearth_ace:ui.game.menu.zone_menu.items.create_farm.create_field_orchard.required_ability_text)",
+                  "class": "button",
+                  "icon": "/stonehearth_ace/ui/game/start_menu/images/zone_orchard.png",
+                  "sticky": true,
+                  "menu_action": "create_field",
+                  "hotkey_action": "zone:orchard",
+                  "field_type": "orchard",
+                  "ordinal": 4
+               },					            					
+					"create_field_treefarm": {
+                  "name": "i18n(stonehearth_ace:ui.game.menu.zone_menu.items.create_farm.create_field_treefarm.display_name)",
+                  "description": "i18n(stonehearth_ace:ui.game.menu.zone_menu.items.create_farm.create_field_treefarm.description)",
+                  "required_ability": "field_type_treefarm",
+                  "required_job_text": "i18n(stonehearth_ace:ui.game.menu.zone_menu.items.create_farm.create_field_treefarm.required_ability_text)",
+                  "class": "button",
+                  "icon": "/stonehearth_ace/ui/game/start_menu/images/zone_treefarm.png",
+                  "sticky": true,
+                  "menu_action": "create_field",
+                  "hotkey_action": "zone:treefarm",
+                  "field_type": "treefarm",
+                  "ordinal": 5
+               },
+					"create_field_underfarm": {
                   "name": "i18n(stonehearth_ace:ui.game.menu.zone_menu.items.create_farm.create_field_underfarm.display_name)",
                   "description": "i18n(stonehearth_ace:ui.game.menu.zone_menu.items.create_farm.create_field_underfarm.description)",
                   "required_ability": "field_type_underfarm",
@@ -139,33 +191,7 @@
                   "menu_action": "create_field",
                   "hotkey_action": "zone:underfarm",
                   "field_type": "underfarm",
-                  "ordinal": 2
-               },
-               "create_field_orchard": {
-                  "name": "i18n(stonehearth_ace:ui.game.menu.zone_menu.items.create_farm.create_field_orchard.display_name)",
-                  "description": "i18n(stonehearth_ace:ui.game.menu.zone_menu.items.create_farm.create_field_orchard.description)",
-                  "required_ability": "field_type_orchard",
-                  "required_job_text": "i18n(stonehearth_ace:ui.game.menu.zone_menu.items.create_farm.create_field_orchard.required_ability_text)",
-                  "class": "button",
-                  "icon": "/stonehearth_ace/ui/game/start_menu/images/zone_orchard.png",
-                  "sticky": true,
-                  "menu_action": "create_field",
-                  "hotkey_action": "zone:orchard",
-                  "field_type": "orchard",
-                  "ordinal": 3
-               },
-               "create_field_treefarm": {
-                  "name": "i18n(stonehearth_ace:ui.game.menu.zone_menu.items.create_farm.create_field_treefarm.display_name)",
-                  "description": "i18n(stonehearth_ace:ui.game.menu.zone_menu.items.create_farm.create_field_treefarm.description)",
-                  "required_ability": "field_type_orchard",
-                  "required_job_text": "i18n(stonehearth_ace:ui.game.menu.zone_menu.items.create_farm.create_field_treefarm.required_ability_text)",
-                  "class": "button",
-                  "icon": "/stonehearth_ace/ui/game/start_menu/images/zone_treefarm.png",
-                  "sticky": true,
-                  "menu_action": "create_field",
-                  "hotkey_action": "zone:treefarm",
-                  "field_type": "treefarm",
-                  "ordinal": 4
+                  "ordinal": 6
                }
             }
          },

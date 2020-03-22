@@ -2169,6 +2169,10 @@
             "display_name": "Sweet Energy",
             "description": "Woo, sugar rush! Diligence is increased, Speed is slightly increased. The need for sleep is slightly decreased.<ul><li>Crafting is slightly faster</li></ul>"
          },
+         "mellow": {
+            "display_name": "Slightly Mellow",
+            "description": "It's good and it's not that strong! Courage is slightly increased. Willpower and Stamina are slightly decreased.<ul><li>This hearthling will want to engage in conversations a bit more than usual</li></ul>"
+         },
          "light_headed": {
             "display_name": "Light-headed",
             "description": "Having a merry time! Maybe a bit too much... Oh, well. Courage is increased. Diligence, Willpower, Speed and Stamina are slightly decreased.<ul><li>Crafting takes longer and has less chances of producing high quality items</li><li>This hearthling is less menacing to enemies</li><li>This hearthling will want to engage in conversations and sleep a lot more than usual</li></ul>"
@@ -2350,6 +2354,12 @@
             },
             "zone_underfarm": {
                "display_name": "Underfarm Tool"
+            },
+            "zone_bush_farm": {
+               "display_name": "Bush Farm Tool"
+            },
+            "zone_decorative_flowers": {
+               "display_name": "Decorative Flowers Tool"
             },
             "zone_orchard": {
                "display_name": "Orchard Tool"
@@ -2545,17 +2555,17 @@
                "description": "Supplies your town with beekeeping products but won't produce during the winter.",
                "flavor": "Empty at first, you can obtain captive bees by harvesting wild bee nests found when cutting trees!"
             },
-				"herbalist_planter_pot_recipe": {
+            "herbalist_planter_pot_recipe": {
                "recipe_name": "Simple Herbalist Pot",
                "description": "The Herbalist can use this pot to cultivate a single renewable herb.",
                "flavor": "Changing the cultivated herb requires the respective seed"
             },
-				"herbalist_planter_small_recipe": {
+            "herbalist_planter_small_recipe": {
                "recipe_name": "Herbalist Planter",
                "description": "The Herbalist can use this container to cultivate two renewable herbs.",
                "flavor": "Changing the cultivated herb requires the respective seed"
             },
-				"herbalist_planter_large_recipe": {
+            "herbalist_planter_large_recipe": {
                "recipe_name": "Large Herbalist Planter",
                "description": "The Herbalist can use this nice planter to cultivate four renewable herbs.",
                "flavor": "Changing the cultivated herb requires the respective seed"
@@ -3308,12 +3318,12 @@
             },
             "input_cask_clay_small_recipe": {
                "recipe_name": "Clay Small Supply Cask",
-               "description": "Priority storage for 28 items.",
+               "description": "Priority storage for 32 items.",
                "flavor": "Can only hold certain fluids and dry goods"
             },
             "input_cask_clay_recipe": {
                "recipe_name": "Clay Supply Cask",
-               "description": "Priority storage for 48 items.",
+               "description": "Priority storage for 64 items.",
                "flavor": "Can only hold certain fluids and dry goods"
             },
             "serving_keg_clay_recipe": {
@@ -3396,11 +3406,11 @@
                "description": "Allows hearthlings to traverse between both sides of the counter.",
                "flavor": "Keep it closed, keep it clean"
             },
-				"golden_clay_wall_planter_recipe": {
+            "golden_clay_wall_planter_recipe": {
                "recipe_name": "Window Planter with Brightbells",
                "description": "A decorative planter to be placed under window frames. Comes with Brightbells but a different herb can be chosen and planted by the Herbalist."
             },
-				"potted_cactus_recipe": {
+            "potted_cactus_recipe": {
                "recipe_name": "Window Planter with Cacti",
                "description": "A decorative planter to be placed under window frames. Comes with Cacti but a different herb can be chosen and planted by the Herbalist."
             }
@@ -3731,12 +3741,12 @@
             },
             "input_cask_stone_small_recipe": {
                "recipe_name": "Stone Small Supply Cask",
-               "description": "Priority storage for 28 items.",
+               "description": "Priority storage for 32 items.",
                "flavor": "Can only hold certain fluids and dry goods"
             },
             "input_cask_stone_recipe": {
                "recipe_name": "Stone Supply Cask",
-               "description": "Priority storage for 48 items.",
+               "description": "Priority storage for 64 items.",
                "flavor": "Can only hold certain fluids and dry goods"
             },
             "serving_keg_stone_recipe": {
@@ -3812,7 +3822,7 @@
             "wall_mounted_paw_recipe": {
                "description": "Mark of the hunter, never seen or heard... Until it is too late."
             },
-				"window_box_violet_recipe": {
+            "window_box_violet_recipe": {
                "recipe_name": "Window Planter with Violets",
                "description": "A decorative planter to be placed under window frames. Comes with Violets but a different herb can be chosen and planted by the Herbalist.",
                "flavor": "For when your window view is boring enough"
@@ -4780,12 +4790,12 @@
             },
             "input_cask_wood_recipe": {
                "recipe_name": "Wooden Supply Cask",
-               "description": "Priority storage for 48 items.",
+               "description": "Priority storage for 64 items.",
                "flavor": "Can only hold certain fluids and dry goods"
             },
             "input_cask_wood_small_recipe": {
                "recipe_name": "Wooden Small Supply Cask",
-               "description": "Priority storage for 28 items.",
+               "description": "Priority storage for 32 items.",
                "flavor": "Can only hold certain fluids and dry goods"
             },
             "serving_keg_wood_recipe": {
@@ -4861,11 +4871,11 @@
             "rc_bow_valor_recipe": {
                "flavor": "A bow that demands skill of its wielder, but returns it in gales of arrows over their foes"
             },
-				"window_box_brightbell_recipe": {
+            "window_box_brightbell_recipe": {
                "recipe_name": "Window Planter with Brightbells",
                "description": "A decorative planter to be placed under window frames. Comes with Brightbells but a different herb can be chosen and planted by the Herbalist."
             },
-				"window_box_frostsnap_recipe": {
+            "window_box_frostsnap_recipe": {
                "recipe_name": "Window Planter with Frostsnaps",
                "description": "A decorative planter to be placed under window frames. Comes with Frostsnaps but a different herb can be chosen and planted by the Herbalist."
             }
@@ -5269,10 +5279,10 @@
                "description": "The Brewer can use this to make mead or fruity mead with different types of unfermented mead.",
                "flavor": "Mead is appreciated by many but will make hearthlings tipsy"
             },
-			   "gruit_recipe": {
+            "gruit_recipe": {
                "flavor": "The Brewer can use the Herbalist's lab for this recipe!"
             },
-			   "malted_grains_recipe": {
+            "malted_grains_recipe": {
                "description": "Toast some grains until they're perfectly golden. An ingredient for brewing but can also be milled for cooking oil.",
                "flavor": "The Brewer can use the Cook's oven for this recipe!"
             },
@@ -5380,6 +5390,16 @@
                "recipe_name": "Fill Serving Keg with Beer",
                "description": "Provides 16 tankards of beer. It needs to be placed down before being used.",
                "flavor": "Tapped drinks prevent waste, thus dispensing more servings"
+            },
+				"ale_serving_keg_recipe": {
+               "recipe_name": "Fill Serving Keg with Ale",
+               "description": "Provides 16 tankards of ale. It needs to be placed down before being used.",
+               "flavor": "Tapped drinks prevent waste, thus dispensing more servings"
+            },
+				"beer_buttered_serving_keg_recipe": {
+               "recipe_name": "Serving Keg of Buttered Beer",
+               "description": "A special brew of the Ascendancy. Sweet, flavorful and with little alcohol content.",
+               "flavor": "Requires placement before it can be used"
             }
          },
          "brewer_outfit": {
@@ -10189,27 +10209,27 @@
          },
          "input_cask_wood": {
             "display_name": "Wooden Supply Cask",
-            "description": "Priority storage for 48 items."
+            "description": "Priority storage for 64 items."
          },
          "input_cask_clay": {
             "display_name": "Clay Supply Cask",
-            "description": "Priority storage for 48 items."
+            "description": "Priority storage for 64 items."
          },
          "input_cask_stone": {
             "display_name": "Stone Supply Cask",
-            "description": "Priority storage for 48 items."
+            "description": "Priority storage for 64 items."
          },
          "input_cask_wood_small": {
             "display_name": "Wooden Small Supply Cask",
-            "description": "Priority storage for 28 items."
+            "description": "Priority storage for 32 items."
          },
          "input_cask_clay_small": {
             "display_name": "Clay Small Supply Cask",
-            "description": "Priority storage for 28 items."
+            "description": "Priority storage for 32 items."
          },
          "input_cask_stone_small": {
             "display_name": "Stone Small Supply Cask",
-            "description": "Priority storage for 28 items."
+            "description": "Priority storage for 32 items."
          },
          "barrel": {
             "display_name": "Wooden Barrel",
@@ -10580,6 +10600,12 @@
             "ale": {
                "display_name": "Ale",
                "description": "A fruity, sweet brew. Makes hearthlings happy but also a little tipsy! "
+            },
+            "serving_keg_iconic": {
+               "description": "Place it somewhere so hearthlings can serve themselves!"
+            },
+            "serving_keg": {
+               "display_name": "Serving Keg of Ale"
             }
          },
          "rotten": {
@@ -10710,6 +10736,19 @@
          "must_prickly_pear": {
             "display_name": "Bucket of Prickly Pear Must",
             "description": "A surprisingly sweet and tasty mash. A Brewer needs it to fill a wine cask!"
+         },
+         "beer_buttered": {
+            "beer_buttered_serving": {
+               "display_name": "Buttered Beer Tankard",
+               "description": "Sweet, delicious and not very strong!"
+            },
+            "serving_keg_iconic": {
+               "description": "Place it somewhere so hearthlings can serve themselves!"
+            },
+            "serving_keg": {
+               "display_name": "Serving Keg of Buttered Beer",
+               "description": "An Ascendancy favorite! Sweet, flavorful and with little alcohol content."
+            }
          }
       },
       "npc": {
@@ -11039,7 +11078,7 @@
                "brewing_ingredient": "Brewing Ingredients",
                "boulder": "Stonework",
                "automatons_and_golems": "Automatons & Golems",
-					"herbalist_planter": "Herb Planters"
+               "herbalist_planter": "Herb Planters"
             }
          },
          "custom_tooltips": {
@@ -11156,6 +11195,16 @@
                      "create_field_treefarm": {
                         "display_name": "Timber Farm",
                         "description": "Place a farm on grass or dirt that can grow larger trees.",
+                        "required_ability_text": "Your town has not yet unlocked this farm type."
+                     },
+                     "create_field_bush_farm": {
+                        "display_name": "Bush Farm",
+                        "description": "Place a farm on grass or dirt that can grow ornamental and fruit-bearing shrubs.",
+                        "required_ability_text": "Your town has not yet unlocked this farm type."
+                     },
+                     "create_field_decorative_flowers": {
+                        "display_name": "Decorative Flower Field",
+                        "description": "Place a farm on grass or dirt that can grow beautiful flowers. These will not be automatically harvested.",
                         "required_ability_text": "Your town has not yet unlocked this farm type."
                      }
                   }

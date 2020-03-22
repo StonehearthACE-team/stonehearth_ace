@@ -25,6 +25,12 @@
                "icon": "file(images/harvest_increase_1.png)",
                "description": "i18n(stonehearth_ace:jobs.farmer.farmer_description.level_2_data.perk_000_description)",
                "level": 2
+            },
+				{
+               "id": "farmer_unlock_flowers",
+               "level": 2,
+               "type": "unlock_town_ability",
+               "unlock_ability": "field_type_decorative_flowers"
             }
          ]
       },
@@ -69,7 +75,7 @@
                "description": "i18n(stonehearth:jobs.farmer.farmer_description.level_5_data.perk_000_description)",
                "level": 5,
                "type": "unlock_town_ability",
-               "unlock_ability": "field_type_orchard"
+               "unlock_ability": "field_type_treefarm"
             }
          ]
       },
