@@ -1,0 +1,77 @@
+<script type="text/x-handlebars" data-template-name="acePlanter">
+   <div id="planterWindow" class="gui">
+      <div class="window">
+         <div class="title">
+            {{ view.unit_name }}<div class="closeButton"></div>
+         </div>
+
+         <p>{{i18n stonehearth_ace:ui.game.herbalist_planter.help}}</p>
+         <h2>{{i18n stonehearth_ace:ui.game.herbalist_planter.choose_crop_type}}</h2>
+         <table id="cropPanel">
+            <tr><td>
+               <div class="chooseCropType">
+                  <a {{action "chooseCropTypeLinkClicked" target="view"}}>
+                     <div class="cropType">
+                        <img class="cropTypeImage" {{bind-attr src="view.plantedCropData.icon"}} />
+                     </div>
+                  </a>
+               </div>
+            </td><td>
+               {{#if view.plantedCropData}}
+               <div class="cropDescription">
+                  <div class="name">{{i18n_key view.plantedCropData.display_name}}</div>
+                  <p>{{i18n_key view.plantedCropData.description}}</p>
+               </div>
+               {{/if}}
+            </td></tr>
+         </table>
+         {{#if view.currentCropData}}
+         <div class="currentCropData">
+            <a {{action "chooseCropTypeLinkClicked" target="view"}}>
+               <span class="queuedTitle">{{i18n stonehearth_ace:ui.game.herbalist_planter.queued_crop}}</span>
+               <img class="currentCropTypeImage" {{bind-attr src="view.currentCropData.icon"}} />
+               <span>{{i18n_key view.currentCropData.display_name}}</span>
+            </a>
+         </div>
+         {{/if}}
+         <div id="produces">
+            <span class="producesTitle">{{i18n stonehearth_ace:ui.game.herbalist_planter.produces}}</span>
+            <span>{{view.produces}}</span>
+         </div>
+         <div id="enableHarvest" class="setting">
+            <input id="enableHarvestCheckbox" type="checkbox" value="enableHarvest">
+            <label for="enableHarvestCheckbox">{{i18n stonehearth_ace:ui.game.herbalist_planter.harvest_crop}}</label>
+         </div>
+      </div>
+   </div>
+</script>
+
+<script type="text/x-handlebars" data-template-name="acePlanterTypePalette">
+   <div id="cropTypePalette" class="gui">
+      <div class="window">
+         <div class="title">{{i18n stonehearth_ace:ui.game.herbalist_planter.choose_crop_type}}</div>
+
+         <div class="list downSection">
+            <table>
+               <tbody>
+               {{#each view.cropTypes}}
+                  <tr {{bind-attr cropType=this.type class="row"}}>
+                     <td>
+                        <div class="icon">
+                           <img class="image" {{bind-attr src=this.icon}} />
+                        </div>
+                     </td>
+                     <td>
+                        <div class="info">
+                           <div class="name">{{i18n_key this.name}}</div>
+                           <div class="description">{{i18n_key this.description}}</div>
+                        </div>
+                     </td>
+                  </tr>
+               {{/each}}
+               </tbody>
+            </table>
+         </div>
+      </div>
+   </div>
+</script>

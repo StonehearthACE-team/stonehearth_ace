@@ -10988,10 +10988,29 @@
       }
    },
    "herbalist_crops": {
+      "no_crop": {
+         "display_name": "Empty",
+         "description": "Just a planter full of dirt."
+      },
       "brightbell": {
          "display_name": "Brightbell",
          "description": "What do you know, it's exactly like a wild Brightbell! Dani, you should change this text!",
          "harvest_text": "harvesting brightbells"
+      },
+      "cactus_flower": {
+         "display_name": "Cactus Flower",
+         "description": "What do you know, it's exactly like a wild Cactus Flower! Dani, you should change this text!",
+         "harvest_text": "harvesting cactus flowers"
+      },
+      "frostsnap": {
+         "display_name": "Frostsnap",
+         "description": "What do you know, it's exactly like a wild Frostsnap! Dani, you should change this text!",
+         "harvest_text": "harvesting frostsnaps"
+      },
+      "violet": {
+         "display_name": "Violet",
+         "description": "What do you know, it's exactly like a wild Violet! Dani, you should change this text!",
+         "harvest_text": "harvesting violets"
       }
    },
    "plants": {
@@ -11323,6 +11342,14 @@
                "rabbit_pasture_description": "Rabbits reproduce quickly and can be slaughtered for jerky, pelts and sometimes bone",
                "poyo_pasture_description": "Poyos lay eggs, a fine cooking ingredient. Slaughtering poyo will yield meat and, often, feathers and bone"
             }
+         },
+         "herbalist_planter": {
+            "help": "Herbalists can plant, tend to, and harvest various types of herbs in this planter.",
+            "choose_crop_type": "Choose Herb",
+            "queued_crop": "Queued for Planting: ",
+            "harvest_crop": "Enable Harvesting",
+            "harvest_crop_description": "If enabled, whenever the herb is fully grown, the herbalist will harvest it.",
+            "produces": "Produces per Harvest: "
          },
          "military_mode": {
             "patrol_banners": {

@@ -1,0 +1,118 @@
+#planterWindow {
+   position: absolute;
+   left: 20px;
+   top: 500px;
+   width: 450px;
+   
+   table {
+      table-layout: fixed;
+      margin: 2px;
+      border-collapse: collapse;
+   }
+
+   td {
+      vertical-align: top;
+      padding: 4px;
+   }
+
+   .cropType {
+      display: flex;
+      width: 110px;
+      height: 110px;
+      margin: auto;
+      background: url(images/crop_type_image_bg.png);
+   }
+
+   .chooseCropType {
+      position: relative;
+      width: 112px;
+      padding: 0px;
+   }
+   .cropTypeImage {
+      width: 100px;
+      height: 100px;
+      margin: auto;
+   }
+
+   .cropDescription {
+      width: 300px;
+      
+      .name {
+         font-size: 18px;
+      }
+   }
+
+   .currentCropData {
+      .currentCropTypeImage {
+         display: inline-block;
+         height: 40px;
+         height: 40px;
+         margin-left: 5px;
+         margin-bottom: -10px;
+      }
+
+      margin-top: -5px;
+
+      a:hover span {
+         color: @hoverColor;
+      }
+      a:not(:hover) .queuedTitle {
+         color: #588dd1;
+      }
+      
+      .queuedTitle {
+         font-size: 18px;
+         font-family: @controlFontFamily;
+      }
+   }
+
+   #produces {
+      font-family: @controlFontFamily;
+      font-size: 18px;
+      margin: 10px 0px 5px;
+
+      .producesTitle {
+         color: #459236;
+         margin-right: 10px;
+      }
+   }
+
+   .name {
+      .controlFont;
+   }
+
+   .hidden {
+      display: none;
+   }
+}
+
+#cropTypePalette {
+   position: absolute;
+   left: 28px;
+   top: 208px;
+
+   .window {
+      width: 450px;
+   }
+
+   .list {
+
+      tr {
+         .button;
+      }
+
+      .icon {
+         margin-right: 10px;
+         img {
+            width: 72px;
+            height: 72px;
+         }
+      }
+
+      .info {
+         .name {
+            .controlFont;
+         }
+      }
+   }
+}

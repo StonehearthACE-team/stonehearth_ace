@@ -34,6 +34,10 @@ $(document).ready(function() {
       _currentView: null,
       _currentVisionMode: 'normal',
 
+      _trace_components: {
+         "stonehearth:storage": {}
+      },
+
       init: function() {
          var self = this;
 
@@ -177,8 +181,8 @@ $(document).ready(function() {
             return;
          }
 
-         this._selectedEntityTraceDone = false;
-         self.selectedEntityTrace = radiant.trace(entity)
+         self._selectedEntityTraceDone = false;
+         self.selectedEntityTrace = new RadiantTrace(entity, self._trace_components)
             .progress(function(result) {
                if (this._selectedEntityTraceDone) {
                   return;
@@ -223,6 +227,11 @@ $(document).ready(function() {
       },
 
       _getModeForEntity: function(entity) {
+         var custom_mode = this._getCustomModeForEntity(entity);
+         if (custom_mode) {
+            return custom_mode;
+         }
+         
          if ((!entity['stonehearth:ai'] && entity['stonehearth:storage'] && !entity['stonehearth:storage'].is_hidden) ||
                entity['stonehearth:trapping_grounds'] ||
                entity['stonehearth:shepherd_pasture'] ||
@@ -237,9 +246,7 @@ $(document).ready(function() {
             return this.modes.BUILD;
          }
    
-         var custom_mode = this._getCustomModeForEntity(entity);
-   
-         return custom_mode || this.modes.NORMAL;
+         return this.modes.NORMAL;
       },
    
       _getCustomModeForEntity: function(entity) {

@@ -403,4 +403,8 @@ function ResourceCallHandler:create_buildable_entity(session, response, uri, loc
    end
 end
 
+function ResourceCallHandler:get_all_herbalist_planter_data(session, response)
+   response:resolve({data = radiant.resources.load_json('stonehearth_ace:data:herbalist_planter_crops')})
+end
+
 return ResourceCallHandler

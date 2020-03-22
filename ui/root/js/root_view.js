@@ -11,6 +11,7 @@ App.RootView.reopen({
       self._game_mode_manager.addCustomMode("connection", "hud");
       self._game_mode_manager.addCustomMode("farm", "hud", "create_farm");
       self._game_mode_manager.addCustomMode("fence", "hud", null, "AceBuildFenceModeView");
+      //self._game_mode_manager.addCustomMode("planter", "normal", null, "AceHerbalistPlanterView");
       self._game_mode_manager.addCustomEntityModeCheck(self._ACE_getCustomModeForEntity);
    },
 
@@ -26,6 +27,10 @@ App.RootView.reopen({
       if (entity['stonehearth_ace:connection']) {
          return modes.CONNECTION;
       }
+
+      // if (entity['stonehearth_ace:herbalist_planter']) {
+      //    return modes.PLANTER;
+      // }
 
       return null;
    },

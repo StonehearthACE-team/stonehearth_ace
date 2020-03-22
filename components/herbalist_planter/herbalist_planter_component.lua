@@ -37,7 +37,12 @@ function HerbalistPlanterComponent:create()
 end
 
 function HerbalistPlanterComponent:activate()
-   self._num_crops = self._json.num_products or (self._json.plant_locations and #self._json.plant_locations) or 0
+   local prev_num_products = self._sv.num_products
+   self._sv.num_products = self._json.num_products or (self._json.plant_locations and #self._json.plant_locations) or 0
+   if self._sv.num_products ~= prev_num_products then
+      self.__saved_variables:mark_changed()
+   end
+
    self._storage = self._entity:get_component('stonehearth:storage')
 
    local max_crop_level = 1
@@ -72,17 +77,11 @@ function HerbalistPlanterComponent:destroy()
    self:_stop_growth()
    self:_stop_bonus_growth()
    self:_stop_active_effect()
-   self:_destroy_listeners()
    self:_destroy_planter_tasks()
    self:_destroy_recently_tended_timer()
 end
 
 function HerbalistPlanterComponent:_create_listeners()
-   self._enabled_listener = radiant.events.listen(self._entity, 'stonehearth_ace:enabled_changed',
-      function(enabled)
-         self:_reconsider()
-      end)
-
    self._added_to_world_listener = self._entity:add_component('mob'):trace_parent('planter added or removed')
       :on_changed(function(parent)
          if parent then
@@ -94,13 +93,6 @@ function HerbalistPlanterComponent:_create_listeners()
          end
       end)
       :push_object_state()
-end
-
-function HerbalistPlanterComponent:_destroy_listeners()
-   if self._enabled_listener then
-      self._enabled_listener:destroy()
-      self._enabled_listener = nil
-   end
 end
 
 -- if necessary, create the proper plant/clear task (harvesting and tending are handled in other ways)
@@ -198,17 +190,19 @@ function HerbalistPlanterComponent:_load_planted_crop_stats()
 end
 
 function HerbalistPlanterComponent:set_harvest_enabled(enabled)
-   local toggle_comp = self._entity:add_component('stonehearth_ace:toggle_enabled')
-   toggle_comp:set_enabled(enabled)
+   if enabled ~= self._sv.harvest_enabled then
+      self._sv.harvest_enabled = enabled
+      self.__saved_variables:mark_changed()
+      self:_reconsider()
+   end
 end
 
-function HerbalistPlanterComponent:_is_enabled()
-   local toggle_comp = self._entity:get_component('stonehearth_ace:toggle_enabled')
-   return not toggle_comp or toggle_comp:get_enabled()
+function HerbalistPlanterComponent:is_harvest_enabled()
+   return self._sv.harvest_enabled
 end
 
 function HerbalistPlanterComponent:is_harvestable()
-   return self._sv.harvestable and self:_is_enabled()
+   return self._sv.harvestable and self:is_harvest_enabled()
 end
 
 function HerbalistPlanterComponent:is_plantable()
@@ -384,12 +378,26 @@ end
 function HerbalistPlanterComponent:create_products(harvester)
    if self:is_harvestable() then
       local items
-      if self._planted_crop_stats and self._planted_crop_stats.product_uri and self._num_crops > 0 then
-         items = self:_create_product(self._planted_crop_stats.product_uri, self._num_crops, harvester)
+      if self._planted_crop_stats and self._planted_crop_stats.product_uri and self._sv.num_products > 0 then
+         items = self:_create_product(self._planted_crop_stats.product_uri, self._sv.num_products, harvester)
       end
       self:_reset_growth()
 
       return items
+   end
+end
+
+function HerbalistPlanterComponent:set_harvest_enabled_command(session, response, enabled)
+   self:set_harvest_enabled(enabled)
+   return true
+end
+
+function HerbalistPlanterComponent:set_current_crop_command(session, response, crop)
+   if crop ~= self._sv.current_crop then
+      self:set_current_crop(crop)
+      return true
+   else
+      return false
    end
 end
 
@@ -409,6 +417,11 @@ function HerbalistPlanterComponent:plant_crop(planter)
       self._sv.planted_crop = nil
    end
    self:_load_planted_crop_stats()
+
+   -- dump out all bonus products in storage; should they just get destroyed instead? this is nicer
+   if self._storage then
+      self._storage:drop_all(radiant.entities.get_world_grid_location(planter))
+   end
 
    self:_reset_growth()
    self:tend_to_crop(planter, 0)

@@ -3900,6 +3900,10 @@
          "controller": "file(call_handlers/resource_call_handler.lua)",
          "endpoint": "server"
       },
+      "get_all_herbalist_planter_data": {
+         "controller": "file(call_handlers/resource_call_handler.lua)",
+         "endpoint": "client"
+      },
       "get_all_client_gameplay_settings_command": {
          "controller": "file(call_handlers/settings_call_handler.lua)",
          "endpoint": "server"
@@ -4042,6 +4046,10 @@
          "get_connection_types_command",
          "get_connections_data_command",
          "get_entities_in_selected_graphs_command"
+      ],
+      "herbalist_planter": [
+         "set_current_crop_command",
+         "set_harvest_enabled_command"
       ]
    },
    "ui": {
@@ -4049,6 +4057,7 @@
          "file(ui/game/modes/zones_mode/trapping_grounds/trapping_grounds.html)",
          "file(ui/game/modes/military_mode/military_mode.html)",
          "file(ui/game/modes/fence_mode/fence_mode.html)",
+         "file(ui/game/modes/planter/planter.html)",
          "file(ui/game/component_info/component_info.html)",
          "file(ui/shell/loadout_screen/loadout_screen.html)",
          "file(ui/game/bulletin/bulletin_dialog/achievement_acquired_bulletin_dialog/achievement_acquired_bulletin_dialog.html)"
@@ -4072,6 +4081,7 @@
          "file(ui/game/modes/build_mode/building_designer_3/fixture_list/fixture_list.js)",
          "file(ui/game/modes/military_mode/military_mode.js)",
          "file(ui/game/modes/fence_mode/fence_mode.js)",
+         "file(ui/game/modes/planter/planter.js)",
          "file(ui/game/town/town.js)",
          "file(ui/game/task_manager/task_manager.js)",
          "file(ui/game/component_info/component_info.js)",
@@ -4097,6 +4107,7 @@
          "file(ui/game/modes/zones_mode/trapping_grounds/trapping_grounds.less)",
          "file(ui/game/modes/military_mode/military_mode.less)",
          "file(ui/game/modes/fence_mode/fence_mode.less)",
+         "file(ui/game/modes/planter/planter.less)",
          "file(ui/game/town/town.less)",
          "file(jobs/mf_artificer/skin/workshop.less)",
          "file(ui/game/modes/zones_mode/farm/farm.less)",

@@ -82,6 +82,9 @@ App.StonehearthZonesModeView.reopen({
       if (entity['stonehearth_ace:guard_zone']) {
          return App.StonehearthAceGuardZoneView;
       }
+      else if (entity['stonehearth_ace:herbalist_planter']) {
+         return App.AceHerbalistPlanterView;
+      }
 
       return null;
    }
