@@ -1,0 +1,25 @@
+{
+   "components": {
+      "mob": {
+         "mob_collision_type": "tiny",
+         "allow_vertical_adjacent": true
+      }
+   },
+   "entity_data": {
+      "stonehearth:render_materials": {
+         "hud": "materials/ghost_item.json"
+      },
+      "stonehearth:item": {
+         "clearable": true
+      },
+      "navgrid": {
+         "has_physics": true
+      },
+      "stonehearth:target_type": {
+         "target_type": "item"
+      },
+      "stonehearth:catalog": {
+         "is_item": true
+      }
+   }
+}

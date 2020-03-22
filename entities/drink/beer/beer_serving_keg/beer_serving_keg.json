@@ -1,97 +1,28 @@
 {
    "type": "entity",
-   "mixins": "file(beer_serving_keg_ghost.json)",
+   "mixins": [
+      "stonehearth_ace:mixins:drink:serving_keg",
+      "file(beer_serving_keg_ghost.json)"
+   ],
    "components": {
       "stonehearth:entity_forms": {
          "iconic_form": "file(beer_serving_keg_iconic.json)",
          "ghost_form": "file(beer_serving_keg_ghost.json)",
          "placeable_on_ground": true
       },
-      "region_collision_shape": {
-         "region": [
-            {
-               "min": { "x": 0, "y": 0, "z": 0 },
-               "max": { "x": 1, "y": 1, "z": 1 }
-            }
-         ]
-      },
-      "destination": {
-         "region": [
-            {
-               "min": { "x": 0, "y": -2, "z": -1 },
-               "max": { "x": 1, "y": 1, "z": 1 }
-            }
-         ],
-         "adjacency_flags": [
-            "front"
-         ]
-      },
-      "stonehearth:traveler_attraction": {},
-      "stonehearth_ace:auto_replace": {
-         "on_kill": false,
-         "on_destroy": true
-      },
       "stonehearth:stacks": {
          "max_stacks": 16
-      },
-      "stonehearth:loot_drops": {
-         "force_auto_loot": true,
-         "entries": {
-            "default": {
-               "items": {
-                  "keg": {
-                     "uri": "stonehearth_ace:refined:serving_keg:wood"
-                  }
-               }
-            }
-         }
       }
    },
    "entity_data": {
-      "stonehearth_ace:variant_loot_data": {
-         "stonehearth_ace:refined:serving_keg:stone": {
-            "force_auto_loot": true,
-            "entries": {
-               "default": {
-                  "items": {
-                     "keg": {
-                        "uri": "stonehearth_ace:refined:serving_keg:stone"
-                     }
-                  }
-               }
-            }
-         },
-         "stonehearth_ace:refined:serving_keg:clay": {
-            "force_auto_loot": true,
-            "entries": {
-               "default": {
-                  "items": {
-                     "keg": {
-                        "uri": "stonehearth_ace:refined:serving_keg:clay"
-                     }
-                  }
-               }
-            }
-         }
-      },
       "stonehearth_ace:drink_container": {
-         "effect": "fiddle",
-         "drink": "stonehearth_ace:drink:beer:beer_serving",
-         "stacks_per_serving": 1
+         "drink": "stonehearth_ace:drink:beer:beer_serving"
       },
       "stonehearth:net_worth": {
-         "value_in_gold": 35,
-         "rarity": "common",
-         "shop_info": {
-            "buyable": false,
-            "sellable": true
-         }
+         "value_in_gold": 35
       },
       "stonehearth:appeal": {
          "appeal": 12
-      },
-      "stonehearth:item_quality": {
-         "variable_quality": true
       }
    }
 }

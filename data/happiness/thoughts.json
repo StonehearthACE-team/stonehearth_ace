@@ -1,6 +1,20 @@
 {
    "type": "index",
    "thoughts": {
+      "space": {
+         "averaging_period": "5m",
+         "thresholds": {
+            "very_cramped": {
+               "happiness_delta": -6
+            },
+            "cramped": {
+               "happiness_delta": -3
+            },
+            "spacious": {
+               "happiness_delta": 4
+            }
+         }
+      },
       "traits": {
          "values": {
             "heliophile": {
