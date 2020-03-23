@@ -420,7 +420,7 @@ function HerbalistPlanterComponent:plant_crop(planter)
 
    -- dump out all bonus products in storage; should they just get destroyed instead? this is nicer
    if self._storage then
-      self._storage:drop_all(radiant.entities.get_world_grid_location(planter))
+      self._storage:drop_all(planter and radiant.entities.get_world_grid_location(planter))
    end
 
    self:_reset_growth()
