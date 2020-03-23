@@ -770,6 +770,13 @@ App.StonehearthUnitFrameView.reopen({
       Ember.run.once(self, '_updateJobToggleButton');
    }.observes('model.stonehearth:work_order', 'model.stonehearth:party.members'),
 
+   // override this to only call these functions if the combat command buttons are visible (e.g., player could be using hotkey)
+   _callCombatCommand: function(command) {
+      if (this.$('#combatButtonDiv').is(':visible')) {
+         App.stonehearthClient.giveCombatCommand(command, this.get('uri'));
+      }
+   },
+
    actions: {
       attackWithAllParties: function() {
          for (var i = 1; i <= 4; i++) {
