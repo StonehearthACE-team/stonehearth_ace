@@ -628,6 +628,19 @@ function AceShepherdPastureComponent:get_pasture_items()
    return self._pasture_items
 end
 
+function AceShepherdPastureComponent:get_fed_troughs()
+   local troughs = {}
+   
+   for _, trough in pairs(self._troughs) do
+      local trough_comp = trough and trough:is_valid() and trough:get_component('stonehearth_ace:pasture_item')
+      if trough_comp and not trough_comp:is_empty() then
+         table.insert(troughs, trough)
+      end
+   end
+
+   return troughs
+end
+
 function AceShepherdPastureComponent:register_item(item, type)
    local id = item:get_id()
    if not self._pasture_items[id] then

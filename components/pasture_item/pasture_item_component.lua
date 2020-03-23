@@ -53,25 +53,30 @@ end
 function PastureItemComponent:_create_restock_tasks()
    self:_destroy_restock_tasks()
 
-   if self._pasture and self:is_empty() then
-      local feed_material = self._pasture:add_component('stonehearth:shepherd_pasture'):get_animal_feed_material()
+   if self._pasture then
+      if self:is_empty() then
+         local feed_material = self._pasture:add_component('stonehearth:shepherd_pasture'):get_animal_feed_material()
 
-      if feed_material then
-         local town = stonehearth.town:get_town(self._entity)
+         if feed_material then
+            local town = stonehearth.town:get_town(self._entity)
 
-         local args = {
-            pasture = self._pasture,
-            trough = self._entity,
-            feed_filter_fn = make_feed_filter_fn(feed_material, self._entity:get_player_id())
-         }
+            local args = {
+               pasture = self._pasture,
+               trough = self._entity,
+               feed_filter_fn = make_feed_filter_fn(feed_material, self._entity:get_player_id())
+            }
 
-         local restock_task = town:create_task_for_group(
-            'stonehearth:task_groups:herding',
-            RESTOCK_ACTION,
-            args)
-               :set_source(self._entity)
-               :start()
-         table.insert(self._added_restock_tasks, restock_task)
+            local restock_task = town:create_task_for_group(
+               'stonehearth:task_groups:herding',
+               RESTOCK_ACTION,
+               args)
+                  :set_source(self._entity)
+                  :start()
+            table.insert(self._added_restock_tasks, restock_task)
+         end
+      else
+         -- otherwise, we just refilled it
+         radiant.events.trigger_async(self._pasture, 'stonehearth_ace:shepherd_pasture:trough_feed_changed', {trough = self._entity})
       end
    end
    stonehearth.ai:reconsider_entity(self._entity)

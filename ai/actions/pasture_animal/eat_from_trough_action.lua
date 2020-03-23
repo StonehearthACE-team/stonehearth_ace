@@ -38,7 +38,7 @@ function EatTroughFeed:start_thinking(ai, entity, args)
    end
 end
 
-function EatTroughFeed:_rethink()
+function EatTroughFeed:_rethink(trough)
    local consumption = self._entity:get_component('stonehearth:consumption')
    if not consumption then
       -- probably still an egg or something?
@@ -55,7 +55,8 @@ function EatTroughFeed:_rethink()
    end
 
    local pasture_comp = pasture:get_component('stonehearth:shepherd_pasture')
-   local troughs = pasture_comp:get_fed_troughs()
+   -- prioritize newly restocked troughs
+   local troughs = trough and trough.trough and {trough.trough} or pasture_comp:get_fed_troughs()
 
    self._ai:set_debug_progress(string.format('hunger = %s; min to eat now = %s', hunger_score, min_hunger_to_eat))
    if troughs and hunger_score >= min_hunger_to_eat then
