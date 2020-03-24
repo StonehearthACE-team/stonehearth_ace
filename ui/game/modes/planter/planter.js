@@ -27,9 +27,8 @@ App.AceHerbalistPlanterView = App.StonehearthBaseZonesModeView.extend({
       this._super();
       var self = this;
 
-      var planter = self.get('model.stonehearth_ace:herbalist_planter');
-
       self.$('#enableHarvestCheckbox').change(function() {
+         var planter = self.get('model.stonehearth_ace:herbalist_planter');
          radiant.call_obj(planter && planter.__self, 'set_harvest_enabled_command', this.checked);
       })
 
@@ -82,8 +81,8 @@ App.AceHerbalistPlanterView = App.StonehearthBaseZonesModeView.extend({
    _planterChanged: function() {
       var self = this;
       var harvestCrop = self.get('model.stonehearth_ace:herbalist_planter.harvest_enabled');
-      self.$('#harvestCropCheckbox').prop('checked', harvestCrop);
-   }.observes('model.stonehearth_ace:herbalist_planter'),
+      self.$('#enableHarvestCheckbox').prop('checked', harvestCrop);
+   }.observes('model.stonehearth_ace:herbalist_planter.harvest_enabled'),
 
    _showPlanterTypePalette: function() {
       if (!this.palette) {
@@ -124,14 +123,14 @@ App.AcePlanterTypePaletteView = App.View.extend({
       cropDataArray.push({
          type: 'no_crop',
          icon: no_crop.icon,
-         name: no_crop.name,
+         display_name: no_crop.display_name,
          description: no_crop.description
       });
       radiant.each(self.planter_data.crops, function(key, data) {
          var planterData = {
             type: key,
             icon: data.icon,
-            name: data.name,
+            display_name: data.display_name,
             description: data.description
          }
          cropDataArray.push(planterData);
