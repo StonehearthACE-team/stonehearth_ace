@@ -57,8 +57,6 @@ function HerbalistPlanterRenderer:_update()
    self._cur_growth_level = growth_level
    self:_destroy_plant_nodes()
 
-   self._origin = radiant.entities.get_world_grid_location(self._entity)
-
    if plant and growth_level then
       local plant_data = all_plant_data.crops[plant] or {}
       local growth_levels = plant_data.growth_levels or {}
@@ -80,7 +78,7 @@ function HerbalistPlanterRenderer:_create_node(location, scale, growth_level_dat
    if node then
       local offset = location.offset or Point3.zero
       local rotation = location.rotation or 0
-      log:debug('%s rendering %s at %s scale at %s', self._entity, model, scale, offset)
+      --log:debug('%s rendering %s at %s scale at %s', self._entity, model, scale, offset)
       node:set_transform(offset.x, offset.y, offset.z, 0, rotation, 0, scale, scale, scale)
       node:set_material('materials/voxel.material.json')
       --node:set_visible(true)

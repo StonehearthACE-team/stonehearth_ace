@@ -274,6 +274,7 @@
          ]
       },
       "treefarm": {
+         "allow_disable_harvest": true,
          "sample_crop": "stonehearth:trees:oak:bud",
          "color": [
             41,
@@ -285,6 +286,7 @@
             "grass": true,
             "dirt": true
          },
+         "dirt_models": "tree",
          "size": {
             "min": 7,
             "max": 72
@@ -488,6 +490,7 @@
          ]
       },
       "orchard": {
+         "allow_disable_harvest": true,
          "sample_crop": "stonehearth_ace:trees:chestnut:bud",
          "color": [
             247,
@@ -499,6 +502,7 @@
             "grass": true,
             "dirt": true
          },
+         "dirt_models": "tree",
          "size": {
             "min": 7,
             "max": 57
@@ -627,6 +631,7 @@
          ]
       },
       "bush_farm": {
+         "allow_disable_harvest": true,
          "sample_crop": "stonehearth:plants:berry_bush",
          "color": [
             140,

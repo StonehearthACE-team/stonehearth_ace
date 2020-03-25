@@ -169,11 +169,17 @@ function AceRenewableResourceNodeComponent:auto_request_harvest()
    -- if they haven't, there's no need to request it to be harvested because it's just growing in the wild with no owner
    
    if player_id ~= '' then
-      -- check pasture animal settings first
-      local auto_harvest = self:_can_pasture_animal_renewably_harvest()
-      -- if it's not an animal, check general auto harvest settings
-      if auto_harvest == nil then
-         auto_harvest = self:get_auto_harvest_enabled(player_id)
+      -- if it's a crop, check the farm's harvest setting
+      local crop_comp = self._entity:get_component('stonehearth:crop')
+      if crop_comp then
+         auto_harvest = crop_comp:get_field():is_harvest_enabled()
+      else
+         -- then check pasture animal settings
+         local auto_harvest = self:_can_pasture_animal_renewably_harvest()
+         -- if it's not a crop or an animal, check general auto harvest settings
+         if auto_harvest == nil then
+            auto_harvest = self:get_auto_harvest_enabled(player_id)
+         end
       end
       if auto_harvest then
          --log:debug('requesting auto harvest for %s', self._entity)

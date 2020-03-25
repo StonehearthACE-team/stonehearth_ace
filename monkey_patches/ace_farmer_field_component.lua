@@ -4,7 +4,13 @@ local rng = _radiant.math.get_default_rng()
 local log = radiant.log.create_logger('farmer_field')
 local FarmerFieldComponent = require 'stonehearth.components.farmer_field.farmer_field_component'
 local farming_lib = require 'stonehearth_ace.lib.farming.farming_lib'
+local transform_lib = require 'stonehearth_ace.lib.transform.transform_lib'
 local entity_forms_lib = require 'stonehearth.lib.entity_forms.entity_forms_lib'
+
+local FERTILIZER_MODEL_FAILSAFE = {
+   model = 'stonehearth_ace/entities/farming/fertilize_applied/fertilize_applied.qb',
+   offset = { x = 5, y = 1, z = 5}
+}
 
 local AceFarmerFieldComponent = class()
 
@@ -26,6 +32,12 @@ function AceFarmerFieldComponent:restore()
    end
 
    self:_cache_best_levels()
+end
+
+AceFarmerFieldComponent._ace_old_activate = FarmerFieldComponent.activate
+function AceFarmerFieldComponent:activate()
+   self._json = radiant.entities.get_json(self)
+   self:_ace_old_activate()
 end
 
 function AceFarmerFieldComponent:post_activate()
@@ -57,11 +69,51 @@ function AceFarmerFieldComponent:post_activate()
       self:_create_water_listener()
       self:_create_climate_listeners()
       self:_create_post_harvest_crop_listeners()
+   else
+      self._sv.harvest_enabled = true
    end
 
    self:_ensure_crop_counts()
    self:_ensure_fertilize_layer()
    self:_ensure_fertilizer_preference()
+end
+
+function AceFarmerFieldComponent:set_harvest_enabled(enabled)
+   if enabled ~= self._sv.harvest_enabled then
+      self._sv.harvest_enabled = enabled
+      self.__saved_variables:mark_changed()
+      stonehearth.ai:reconsider_entity(self._sv._harvestable_layer, 'field changed harvest enabled state')
+
+      -- if there are post_harvest entities (e.g., evolve rn/rrn crops), toggle the harvest requests accordingly
+      local size = self._sv.size
+      local contents = self._sv.contents
+      if contents then
+         for x = 1, size.x do
+            for y = 1, size.y do
+               local dirt_plot = contents[x][y]
+               if dirt_plot and dirt_plot.post_harvest_contents then
+                  if enabled then
+                     transform_lib.request_auto_harvest(dirt_plot.post_harvest_contents)
+                  else
+                     local renewable_resource_node = dirt_plot.post_harvest_contents:get_component('stonehearth:renewable_resource_node')
+                     if renewable_resource_node then
+                        renewable_resource_node:cancel_harvest_request()
+                     end
+
+                     local resource_node = dirt_plot.post_harvest_contents:get_component('stonehearth:resource_node')
+                     if resource_node then
+                        resource_node:cancel_harvest_request()
+                     end
+                  end
+               end
+            end
+         end
+      end
+   end
+end
+
+function AceFarmerFieldComponent:is_harvest_enabled()
+   return self._sv.harvest_enabled
 end
 
 function AceFarmerFieldComponent:_ensure_crop_counts()
@@ -75,6 +127,7 @@ function AceFarmerFieldComponent:_ensure_crop_counts()
          for y=1, size.y do
             local dirt_plot = contents[x][y]
             if dirt_plot and dirt_plot.is_fertilized then
+               dirt_plot.fertilizer_model = dirt_plot.fertilizer_model or FERTILIZER_MODEL_FAILSAFE
                num_fertilized = num_fertilized + 1
             end
          end
@@ -132,6 +185,9 @@ end
 function AceFarmerFieldComponent:_load_field_type()
    self._field_type_data = stonehearth.farming:get_field_type(self._sv.field_type or 'farm') or {}
    self._field_pattern = self._field_type_data.pattern or farming_lib.DEFAULT_PATTERN
+   self._sv.allow_disable_harvest = self._field_type_data.allow_disable_harvest
+
+   self._dirt_models = self._field_type_data.dirt_models and self._json.dirt_models[self._field_type_data.dirt_models] or self._json.dirt_models.default
 end
 
 AceFarmerFieldComponent._ace_old_on_field_created = FarmerFieldComponent.on_field_created
@@ -419,10 +475,10 @@ function AceFarmerFieldComponent:notify_crop_harvestable(x, z)
    })
 end
 
-function AceFarmerFieldComponent:notify_crop_fertilized(location)
+function AceFarmerFieldComponent:notify_crop_fertilized(location, fertilizer_model)
    local p = Point3(location.x - self._location.x, 0, location.z - self._location.z)
    self:_remove_from_fertilizable(p)
-   self:_update_crop_fertilized(p.x + 1, p.z + 1, true)
+   self:_update_crop_fertilized(p.x + 1, p.z + 1, true, fertilizer_model)
 end
 
 function AceFarmerFieldComponent:_remove_from_fertilizable(location)
@@ -508,7 +564,7 @@ function AceFarmerFieldComponent:set_fertilizer_preference(preference)
    end
 end
 
-function AceFarmerFieldComponent:_update_crop_fertilized(x, z, fertilized)
+function AceFarmerFieldComponent:_update_crop_fertilized(x, z, fertilized, fertilizer_model)
    if self._sv.contents == nil then
       --from 'notify_crop_destroyed' in base component:
       --Sigh the crop component hangs on to us instead of the entity
@@ -525,6 +581,7 @@ function AceFarmerFieldComponent:_update_crop_fertilized(x, z, fertilized)
          self._sv.num_fertilized = self._sv.num_fertilized - 1
       end
       dirt_plot.is_fertilized = fertilized
+      dirt_plot.fertilizer_model = fertilized and (fertilizer_model or FERTILIZER_MODEL_FAILSAFE) or nil
       self.__saved_variables:mark_changed()
    end
 end
@@ -835,11 +892,7 @@ function AceFarmerFieldComponent:_update_effective_humidity_level()
 end
 
 function AceFarmerFieldComponent:_get_overwatered_model()
-   if not self._json then
-      self._json = radiant.entities.get_json(self)
-   end
-
-   local model = self._json.overwatered_dirt
+   local model = self._dirt_models.overwatered_dirt
    if type(model) == 'table' then
       if #model > 0 then
          model = model[rng:get_int(1, #model)]

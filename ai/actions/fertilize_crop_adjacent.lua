@@ -62,6 +62,7 @@ function FertilizeCropAdjacent:_fertilize_one_time(ai, entity)
 
    -- determine quality value to apply based on fertilizer data
    local fertilizer_data = radiant.entities.get_entity_data(carrying, 'stonehearth_ace:fertilizer')
+   self._fertilizer_dirt_model = fertilizer_data.dirt_model
    local quality_chances = fertilizer_data.quality_chances
    local fertilizer_quality = radiant.entities.get_item_quality(carrying)
    if fertilizer_quality > 1 then
@@ -92,7 +93,7 @@ function FertilizeCropAdjacent:run(ai, entity, args)
             crop_uri = self._crop and self._crop:is_valid() and self._crop:get_uri()
          })
       if self._location then
-         self._farmer_field:notify_crop_fertilized(self._location)
+         self._farmer_field:notify_crop_fertilized(self._location, self._fertilizer_dirt_model)
       end
       self:_unreserve_location()
 

@@ -139,6 +139,13 @@ App.StonehearthFarmView.reopen({
          self._setFertilizerSetting(self._FERTILIZER.HIGH);
       });
 
+      self.$('#enableHarvestCheckbox').change(function() {
+         radiant.call('stonehearth_ace:set_farm_harvest_enabled', self.get('uri'), this.checked);
+      })
+
+      // tooltips
+      App.guiHelper.addTooltip(self.$('#enableHarvest'), 'stonehearth_ace:ui.game.zones_mode.farm.enable_harvest_description');
+
       radiant.call_obj('stonehearth.inventory', 'get_item_tracker_command', 'stonehearth_ace:fertilizer_tracker')
          .done(function(response) {
             if (self.isDestroying || self.isDestroyed) {
@@ -167,6 +174,12 @@ App.StonehearthFarmView.reopen({
             console.error(response);
          });
    },
+
+   _harvestEnabledChanged: function() {
+      var self = this;
+      var harvestCrop = self.get('model.stonehearth:farmer_field.harvest_enabled');
+      self.$('#enableHarvestCheckbox').prop('checked', harvestCrop);
+   }.observes('model.stonehearth:farmer_field.harvest_enabled'),
 
    _updateFertilizers: $.throttle(250, function (self) {
       self = self || this;
@@ -489,6 +502,9 @@ App.StonehearthFarmView.reopen({
 
       var cropStatuses = self._doUpdateStatuses();
       self.set('cropStatuses', cropStatuses);
+
+      var allowDisableHarvest = this.get('model.stonehearth:farmer_field.allow_disable_harvest');
+      this.set('allowDisableHarvest', allowDisableHarvest);
    }.observes('model.stonehearth:farmer_field'),
 
    // same as properties, statuses can be added by overriding this function
@@ -949,7 +965,6 @@ App.StonehearthFarmView.reopen({
          this.palette.destroy();
          this.palette = null;
       }
-      
    }.observes('uri')
 });
 

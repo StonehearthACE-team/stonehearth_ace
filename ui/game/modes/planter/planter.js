@@ -78,7 +78,7 @@ App.AceHerbalistPlanterView = App.StonehearthBaseZonesModeView.extend({
       self.set('produces', produces + (produces && bonus_items ? ' (+)' : ''));
    }.observes('model.stonehearth:storage.num_items'),
 
-   _planterChanged: function() {
+   _harvestEnabledChanged: function() {
       var self = this;
       var harvestCrop = self.get('model.stonehearth_ace:herbalist_planter.harvest_enabled');
       self.$('#enableHarvestCheckbox').prop('checked', harvestCrop);

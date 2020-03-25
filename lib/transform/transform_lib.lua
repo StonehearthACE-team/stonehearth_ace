@@ -116,10 +116,6 @@ function transform_lib.transform(entity, transformer, into_uri, options)
          transformed_form:remove_component('stonehearth_ace:stump')  -- don't want a stump after it gets harvested
          if field then
             field:update_post_harvest_crop(x, y, transformed_form)
-            -- also check if this crop will be evolving any more; if not, we can request a harvest
-            if not transformed_form:get_component('stonehearth:evolve') then
-               options.auto_harvest = true
-            end
          end
       end
 
@@ -140,16 +136,7 @@ function transform_lib.transform(entity, transformer, into_uri, options)
       if location then
          radiant.terrain.place_entity_at_exact_location(transformed_form, location, { force_iconic = false, facing = facing } )
 
-         if options.auto_harvest then
-            local renewable_resource_node = transformed_form:get_component('stonehearth:renewable_resource_node')
-            local resource_node = transformed_form:get_component('stonehearth:resource_node')
-
-            if renewable_resource_node and renewable_resource_node:is_harvestable() then
-               renewable_resource_node:request_harvest(entity:get_player_id())
-            elseif resource_node then
-               resource_node:request_harvest(entity:get_player_id())
-            end
-         end
+         transform_lib.request_auto_harvest(transformed_form, options.auto_harvest)
       end
    end
 
@@ -191,6 +178,21 @@ function transform_lib.transform(entity, transformer, into_uri, options)
    end
 
    return transformed_form
+end
+
+-- also used by farmer_field component when toggling harvest_enabled status
+function transform_lib.request_auto_harvest(entity, should_auto_harvest)
+   local crop_comp = entity:get_component('stonehearth:crop')
+   if should_auto_harvest or (crop_comp and crop_comp:get_field():is_harvest_enabled() and not entity:get_component('stonehearth:evolve')) then
+      local renewable_resource_node = entity:get_component('stonehearth:renewable_resource_node')
+      local resource_node = entity:get_component('stonehearth:resource_node')
+
+      if renewable_resource_node and renewable_resource_node:is_harvestable() then
+         renewable_resource_node:request_harvest(entity:get_player_id())
+      elseif resource_node then
+         resource_node:request_harvest(entity:get_player_id())
+      end
+   end
 end
 
 return transform_lib
