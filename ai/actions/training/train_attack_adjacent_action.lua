@@ -100,13 +100,13 @@ function TrainAttackAdjacent:_attack_once(ai, entity, args)
       ai:execute('stonehearth:combat:attack_melee_adjacent', { target = args.target })
    end
 
-   if args.target:is_valid() then
-      ai:execute('stonehearth:combat:idle', { target = args.target })
-   end
-
    -- the attack may have taken a long time, so set in combat again
    if dummy and args.target:is_valid() then
       dummy:set_in_combat()
+   end
+
+   if args.target:is_valid() then
+      ai:execute('stonehearth:combat:idle', { target = args.target })
    end
 
    radiant.events.trigger_async(entity, 'stonehearth_ace:training_performed')
