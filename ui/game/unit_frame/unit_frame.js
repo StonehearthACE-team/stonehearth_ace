@@ -298,7 +298,41 @@ App.StonehearthUnitFrameView.reopen({
 
          unitFrame.css('width', 520 + 'px'); //don't want it getting too bitty
       });
-   }.observes('model.uri', 'model.stonehearth:unit_info', 'model.stonehearth:job'),
+   }.observes('model.uri', 'model.stonehearth:unit_info', 'job_uri'),
+
+   _updatePortrait: function() {
+      if (!this.$()) {
+         return;
+      }
+      var uri = this.uri;
+
+      if (uri && this._hasPortrait()) {
+         var portrait_url = '';
+         if (this.get('model.stonehearth:party')) {
+            portrait_url = this.get('model.stonehearth:unit_info.icon');
+         } else {
+            portrait_url = '/r/get_portrait/?type=headshot&animation=idle_breathe.json&entity=' + uri + '&cache_buster=' + Math.random();
+         }
+         //this.set('portraitSrc', portrait_url);
+         this.set('hasPortrait', true);
+         this.$('#portrait-frame').removeClass('hidden');
+         this.$('#portrait').css('background-image', 'url(' + portrait_url + ')');
+      } else {
+         this.set('hasPortrait', false);
+         this.set('portraitSrc', "");
+         this.$('#portrait').css('background-image', '');
+         this.$('#portrait-frame').addClass('hidden');
+      }
+
+      this._updateDisplayNameAndDescription();
+   }.observes('model.stonehearth:unit_info', 'job_uri'),   // overridden this fn just to prevent it from refreshing every time they get exp
+
+   _jobUriChanged: function() {
+      var job_uri = this.get('model.stonehearth:job.job_uri');
+      if (job_uri != this.get('job_uri')) {
+         this.set('job_uri', job_uri);
+      }
+   }.observes('model.stonehearth:job.job_uri'),
 
    _resetCommandsWidthCheck: function() {
       this.$('#info').off('mouseenter mouseleave');

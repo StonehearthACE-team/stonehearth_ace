@@ -61,18 +61,26 @@ function TrainAttackAdjacent:_check_conditions(ai, entity, args)
 end
 
 function TrainAttackAdjacent:run(ai, entity, args)
-   local dummy = args.target and args.target:get_component('stonehearth_ace:training_dummy')
-   if not dummy or not dummy:get_enabled() then
-      ai:abort('dummy has been disabled')
-      return
+   while self:_attack_once(ai, entity, args) do
    end
+
+   ai:unprotect_argument(args.target)
+end
+
+function TrainAttackAdjacent:_attack_once(ai, entity, args)
+   local check_conditions = self:_check_conditions(ai, entity, args)
+   if check_conditions then
+      return false
+   end
+
+   local dummy = args.target and args.target:get_component('stonehearth_ace:training_dummy')
 
    -- first tell the training dummy that it's "in combat"
    dummy:set_in_combat()
 
    -- store this dummy in the entity's job component as the training dummy we're currently using
-   entity:get_component('stonehearth:job'):set_training_target(args.target)
-   
+   --entity:get_component('stonehearth:job'):set_training_target(args.target)
+
    -- check if it's a healer class do a heal action instead of attacking
    -- if it's a ranged class, attack from range
    --if entity:get_component('stonehearth:job'):has_ai_pack('stonehearth:ai_pack:healing_combat') then
@@ -91,13 +99,19 @@ function TrainAttackAdjacent:run(ai, entity, args)
    else
       ai:execute('stonehearth:combat:attack_melee_adjacent', { target = args.target })
    end
-   
+
+   if args.target:is_valid() then
+      ai:execute('stonehearth:combat:idle', { target = args.target })
+   end
+
    -- the attack may have taken a long time, so set in combat again
    if dummy and args.target:is_valid() then
       dummy:set_in_combat()
    end
 
    radiant.events.trigger_async(entity, 'stonehearth_ace:training_performed')
+
+   return true
 end
 
 return TrainAttackAdjacent

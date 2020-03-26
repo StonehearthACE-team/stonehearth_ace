@@ -208,6 +208,7 @@ function AceGameCreationService:generate_citizens_for_reembark_command(session, 
    validator.expect_argument_types({'table'}, reembark_spec)
 
    local pop = stonehearth.population:get_population(session.player_id)
+   local kingdom = pop:get_kingdom()
 
    for index, citizen_spec in ipairs(reembark_spec.citizens) do
       local gender = citizen_spec.model_variant
@@ -217,7 +218,7 @@ function AceGameCreationService:generate_citizens_for_reembark_command(session, 
          embarking = true,
       })
 
-      self:_apply_reembark_settings_to_citizen(session, citizen, citizen_spec)
+      self:_apply_reembark_settings_to_citizen(session, kingdom, citizen, citizen_spec)
 
       -- Replace existing.
       local generated_citizens = pop:get_generated_citizens()
@@ -236,7 +237,7 @@ function AceGameCreationService:generate_citizens_for_reembark_command(session, 
    response:resolve({ citizens = final_citizens, num_reembarked = math.min(#reembark_spec.citizens, NUM_STARTING_CITIZENS) })
 end
 
-function AceGameCreationService:_apply_reembark_settings_to_citizen(session, citizen, citizen_spec)
+function AceGameCreationService:_apply_reembark_settings_to_citizen(session, kingdom, citizen, citizen_spec)
    -- Set name.
    citizen:add_component('stonehearth:unit_info'):set_custom_name(citizen_spec.name, citizen_spec.custom_data, true)
    citizen:set_debug_text(citizen_spec.name)
@@ -258,7 +259,11 @@ function AceGameCreationService:_apply_reembark_settings_to_citizen(session, cit
    if citizen_spec.allowed_jobs then
       job:set_allowed_jobs(citizen_spec.allowed_jobs)
    end
-   job:set_population_override(citizen_spec.population_override)
+   -- set population override if it's a different population than this kingdom (use ascendancy as failsafe for old reembark files)
+   local population_override = citizen_spec.population_override or 'stonehearth:kingdoms:ascendancy'
+   if population_override ~= kingdom then
+      job:set_population_override(population_override)
+   end
    for job_uri, level in pairs(citizen_spec.job_levels) do
       job:promote_to(job_uri, { skip_visual_effects = true, dont_drop_talisman = true })
       for _ = 1, level - 1 do
