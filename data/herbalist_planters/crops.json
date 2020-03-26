@@ -21,10 +21,12 @@
          "growth_time": "2h",
          "bonus_product_growth_time": "12h",
          "growth_levels": [
-            {
-               "model": "file(crops/brightbell/brightbell_1.qb)",
-               "offset": { "x": 4, "y": 0, "z": 4 }
-            },
+            [
+               {
+                  "model": "file(crops/brightbell/brightbell_1.qb)",
+                  "offset": { "x": 4, "y": 0, "z": 4 }
+               }
+            ],
             {
                "model": "file(crops/brightbell/brightbell_2.qb)",
                "offset": { "x": 4, "y": 0, "z": 4 }

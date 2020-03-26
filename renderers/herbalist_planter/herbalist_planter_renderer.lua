@@ -64,23 +64,36 @@ function HerbalistPlanterRenderer:_update()
       local render_scale = plant_data.render_scale or 0.1
 
       for _, location in ipairs(self._plant_locations) do
-         self:_create_node(location, self._scale_multiplier * (growth_level_data.render_scale or render_scale), growth_level_data)
+         self:_create_nodes(location, self._scale_multiplier * (growth_level_data.render_scale or render_scale), growth_level_data)
       end
    end
 end
 
-function HerbalistPlanterRenderer:_create_node(location, scale, growth_level_data)
-   local model = growth_level_data.model
-   local model_offset = growth_level_data.offset or Point3.zero
+function HerbalistPlanterRenderer:_create_nodes(location, scale, growth_level_data)
+   -- if this node data is an array, process through and create each node
+   if growth_level_data.model then
+      self:_create_node(location, scale, growth_level_data)
+   elseif #growth_level_data > 0 then
+      for _, data in ipairs(growth_level_data) do
+         self:_create_node(location, scale, data)
+      end
+   end
+end
 
-   local node = _radiant.client.create_qubicle_matrix_node(self._node, model, growth_level_data.matrix or 'crop', Point3(model_offset.x, model_offset.y, model_offset.z))
+function HerbalistPlanterRenderer:_create_node(location, scale, node_data)
+   local model = node_data.model
+   local offset = node_data.offset or Point3.zero
+   local matrix = node_data.matrix or 'crop'
+
+   local node = _radiant.client.create_qubicle_matrix_node(self._node, model, matrix, Point3(offset.x, offset.y, offset.z))
 
    if node then
-      local offset = location.offset or Point3.zero
+      local position = location.offset or Point3.zero
       local rotation = location.rotation or 0
-      --log:debug('%s rendering %s at %s scale at %s', self._entity, model, scale, offset)
-      node:set_transform(offset.x, offset.y, offset.z, 0, rotation, 0, scale, scale, scale)
-      node:set_material('materials/voxel.material.json')
+      local material = node_data.material or 'materials/voxel.material.json'
+      --log:debug('%s rendering %s at %s scale at %s', self._entity, model, scale, position)
+      node:set_transform(position.x, position.y, position.z, 0, rotation, 0, scale, scale, scale)
+      node:set_material(material)
       --node:set_visible(true)
       table.insert(self._plant_nodes, node)
    end
