@@ -14,6 +14,7 @@
 ]]
 
 local item_quality_lib = require 'stonehearth_ace.lib.item_quality.item_quality_lib'
+local LootTable = require 'stonehearth.lib.loot_table.loot_table'
 
 local HerbalistPlanterComponent = class()
 local all_plant_data = radiant.resources.load_json('stonehearth_ace:data:herbalist_planter_crops')
@@ -238,6 +239,12 @@ function HerbalistPlanterComponent:get_product_uri()
    end
 end
 
+function HerbalistPlanterComponent:get_additional_products()
+   if self._planted_crop_stats then
+      return self._planted_crop_stats.additional_products
+   end
+end
+
 -- unit crop level is [0, 1] based on the planted crop level divided by the max level of all crops
 function HerbalistPlanterComponent:get_unit_crop_level()
    return self._unit_crop_level
@@ -384,6 +391,33 @@ function HerbalistPlanterComponent:create_products(harvester)
       self:_reset_growth()
 
       return items
+   end
+end
+
+function HerbalistPlanterComponent:_place_additional_items(owner, collect_location)
+   local loot_table = {}
+   if self:get_additional_products() then
+      loot_table = LootTable(self:get_additional_products())
+   end
+   local spawned_items
+   if loot_table then
+      spawned_items = radiant.entities.output_items(loot_table:roll_loot(), collect_location, 1, 3, { owner = owner }, self._entity, owner, true).spilled
+   else
+      spawned_items = {}
+   end
+
+   return spawned_items
+end
+
+function HerbalistPlanterComponent:spawn_additional_items(harvester, collect_location)
+   local spawned_resources = self:_place_additional_items(harvester, collect_location)
+   local player_id = self._entity:get_player_id()
+   if harvester then
+      for id, item in pairs(spawned_resources) do
+         stonehearth.inventory:get_inventory(player_id)
+                                 :add_item_if_not_full(item)
+
+      end
    end
 end
 

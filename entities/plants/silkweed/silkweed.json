@@ -11,6 +11,17 @@
 			"half_renewed_model_variant": true,
          "resource_loot_table": {
             "entries": {
+					"herb": {
+						"num_rolls": {
+                     "min": 1,
+                     "max": 1
+                  },
+                  "items": {
+                     "herb": {
+                        "uri": "stonehearth_ace:resources:herb:silkweed"
+                     }
+                  }
+               },
                "mandatory": {
 						"num_rolls": {
                      "min": 0,
