@@ -254,11 +254,86 @@
       },
       "plants": {
          "categories": {
+            "herbs": {
+               "display_name": "i18n(stonehearth_ace:ui.data.constants.herb_resource_name)"
+            },
+            "aromatic_herbs": {
+               "ordinal": 1.01,
+               "display_name": "i18n(stonehearth_ace:ui.data.constants.aromatic_herb_resource_name)",
+               "icon": "/stonehearth/entities/resources/herb/herbs.png",
+               "filter": "resource herb aromatic"
+            },
+            "bitter_herbs": {
+               "ordinal": 1.02,
+               "display_name": "i18n(stonehearth_ace:ui.data.constants.bitter_herb_resource_name)",
+               "icon": "/stonehearth/entities/resources/herb/herbs.png",
+               "filter": "resource herb bitter"
+            },
+            "red_herbs": {
+               "ordinal": 1.03,
+               "display_name": "i18n(stonehearth_ace:ui.data.constants.red_herb_resource_name)",
+               "icon": "/stonehearth/entities/resources/herb/herbs.png",
+               "filter": "resource herb red"
+            },
+            "green_herbs": {
+               "ordinal": 1.04,
+               "display_name": "i18n(stonehearth_ace:ui.data.constants.green_herb_resource_name)",
+               "icon": "/stonehearth/entities/resources/herb/herbs.png",
+               "filter": "resource herb green"
+            },
+            "blue_herbs": {
+               "ordinal": 1.05,
+               "display_name": "i18n(stonehearth_ace:ui.data.constants.blue_herb_resource_name)",
+               "icon": "/stonehearth/entities/resources/herb/herbs.png",
+               "filter": "resource herb blue"
+            },
+            "yellow_herbs": {
+               "ordinal": 1.06,
+               "display_name": "i18n(stonehearth_ace:ui.data.constants.yellow_herb_resource_name)",
+               "icon": "/stonehearth/entities/resources/herb/herbs.png",
+               "filter": "resource herb yellow"
+            },
+            "white_herbs": {
+               "ordinal": 1.07,
+               "display_name": "i18n(stonehearth_ace:ui.data.constants.white_herb_resource_name)",
+               "icon": "/stonehearth/entities/resources/herb/herbs.png",
+               "filter": "resource herb white"
+            },
+            "purple_herbs": {
+               "ordinal": 1.08,
+               "display_name": "i18n(stonehearth_ace:ui.data.constants.purple_herb_resource_name)",
+               "icon": "/stonehearth/entities/resources/herb/herbs.png",
+               "filter": "resource herb purple"
+            },
+            "fibers": {
+               "display_name": "i18n(stonehearth_ace:ui.data.constants.fiber_resource_name)"
+            },
+            "seed": {
+               "display_name": "i18n(stonehearth_ace:ui.data.constants.seed_resource_name)"
+            },
+            "seed_hard": {
+               "display_name": "i18n(stonehearth_ace:ui.data.constants.seed_hard_resource_name)"
+            },
+            "seed_fruit": {
+               "display_name": "i18n(stonehearth_ace:ui.data.constants.seed_fruit_resource_name)"
+            },
             "thatch": {
                "ordinal": 1.11,
                "display_name": "i18n(stonehearth_ace:entities.resources.thatch_bale.display_name)",
                "icon": "/stonehearth_ace/entities/resources/thatch_bale/thatch_bale.png",
                "filter": "thatch_bale resource"
+            },
+            "cactus_flower": {
+               "display_name": "i18n(stonehearth_ace:entities.resources.herb.cactus_flower.display_name)"
+            },
+            "cactus_tulip_red": {
+               "display_name": "i18n(stonehearth_ace:entities.resources.herb.cactus_tulip_red.display_name)"
+            },
+            "cactus_tulip_blue": {
+               "display_name": "i18n(stonehearth_ace:entities.resources.herb.cactus_tulip_blue.display_name)"
+            },
+            "cactus_tulip_yellow": {
+               "display_name": "i18n(stonehearth_ace:entities.resources.herb.cactus_tulip_yellow.display_name)"
             },
             "daisy": {
                "ordinal": 2.8,
@@ -314,6 +389,18 @@
                "icon": "/stonehearth_ace/entities/resources/herb/water_lily_yellow/water_lily_yellow.png",
                "filter": "resource herb water_lily_yellow"
             },
+            "wax_plant_green_leaves": {
+               "ordinal": 2.88,
+               "display_name": "i18n(stonehearth_ace:entities.resources.herb.wax_plant_green.display_name)",
+               "icon": "/stonehearth_ace/entities/resources/herb/wax_plant_green/wax_plant_green.png",
+               "filter": "resource herb wax_plant_green"
+            },
+            "wax_plant_purple_leaves": {
+               "ordinal": 2.89,
+               "display_name": "i18n(stonehearth_ace:entities.resources.herb.wax_plant_purple.display_name)",
+               "icon": "/stonehearth_ace/entities/resources/herb/wax_plant_purple/wax_plant_purple.png",
+               "filter": "resource herb wax_plant_purple"
+            },
             "highland_vine_leaves": {
                "ordinal": 2.9,
                "display_name": "i18n(stonehearth_ace:entities.resources.herb.highland_vine.display_name)",
@@ -325,6 +412,15 @@
                "display_name": "i18n(stonehearth_ace:entities.resources.fiber.highland_vine_bundle.display_name)",
                "icon": "/stonehearth_ace/entities/resources/fiber/highland_vine_bundle/highland_vine_bundle.png",
                "filter": "resource fiber highland_vine"
+            },
+            "silkweed_leaves": {
+               "ordinal": 3.99,
+               "display_name": "i18n(stonehearth_ace:entities.resources.herb.silkweed.display_name)",
+               "icon": "/stonehearth_ace/entities/resources/herb/silkweed/silkweed.png",
+               "filter": "resource herb silkweed"
+            },
+            "silkweed": {
+               "display_name": "i18n(stonehearth_ace:entities.resources.fiber.silkweed_bundle.display_name)"
             },
             "dwarfsbeard": {
                "ordinal": 4.21,

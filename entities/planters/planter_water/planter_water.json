@@ -1,0 +1,82 @@
+{
+   "type": "entity",
+   "mixins": [
+      "file(planter_water_ghost.json)",
+      "stonehearth_ace:mixins:herbalist_planter"
+   ],
+   "components": {
+      "render_info": {
+         "color_map": "stonehearth:color_map:water",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/water_material_map.json"
+         ]
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(planter_water_iconic.json)",
+         "ghost_form": "file(planter_water_ghost.json)",
+         "placeable_on_ground": true
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 1, "y": 1, "z": 1 }
+            }
+         ]
+      },
+      "movement_modifier_shape": {
+         "modifier": -0.5,
+         "nav_preference_modifier": -0.8,
+         "region": [
+            {
+               "min": { "x": -1, "y": 1, "z": -1 },
+               "max": { "x": 1, "y": 2, "z": 1 }
+            }
+         ]
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 1, "y": 1, "z": 1 }
+            }
+         ]
+      },
+      "stonehearth_ace:herbalist_planter": {
+         "allowed_crops": {
+            "water_lily_pink": true,
+            "water_lily_white": true,
+            "water_lily_purple": true,
+            "water_lily_yellow": true,
+            "algae_brown": true,
+            "algae_green": true,
+            "algae_red": true
+         },
+         "scale_multiplier": 1,
+         "plant_locations": [
+            {
+               "offset": { "x": 0, "y": 0.65, "z": 0 }
+            }
+         ]
+      },
+      "stonehearth:storage": {
+         "capacity": 1
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 14,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 14
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

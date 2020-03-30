@@ -89,7 +89,7 @@ function HerbalistPlanterRenderer:_create_node(location, scale, node_data)
 
    if node then
       local position = location.offset or Point3.zero
-      local rotation = location.rotation or 0
+      local rotation = node_data.rotation or location.rotation or 0
       local material = node_data.material or 'materials/voxel.material.json'
       --log:debug('%s rendering %s at %s scale at %s', self._entity, model, scale, position)
       node:set_transform(position.x, position.y, position.z, 0, rotation, 0, scale, scale, scale)

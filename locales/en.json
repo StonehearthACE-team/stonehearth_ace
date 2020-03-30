@@ -2574,6 +2574,11 @@
                "description": "The Herbalist can use this nice planter to cultivate four renewable herbs.",
                "flavor": "Changing the cultivated herb requires the respective seed"
             },
+				"herbalist_planter_water_recipe": {
+               "recipe_name": "Herbalist Water Planter",
+               "description": "The Herbalist can create a special planter to cultivate aquatic resources.",
+               "flavor": "Algae can be replanted from their own resources"
+            },
             "herbalist_beekeeping_hat_recipe": {
                "recipe_name": "Herbalist's Beekeeping Hat",
                "description": "Provides protection when working with bees.",
@@ -6084,6 +6089,10 @@
          "planter_pot": {
             "display_name": "Simple Herbalist Pot",
             "description": "This pot can be used to cultivate a single renewable herb."
+         },
+         "planter_water": {
+            "display_name": "Herbalist Water Planter",
+            "description": "Can be used to cultivate aquatic resources like algae or lilies."
          }
       },
       "resources": {
@@ -6132,47 +6141,87 @@
          "herb": {
             "moonbell": {
                "display_name": "Moonbell Flowers",
-               "description": "An herb commonly used for medicinal purposes"
+               "description": "Glowy! Useful as a blue bitter herb."
             },
             "marblesprout": {
                "display_name": "Marblesprout Flower",
-               "description": "An uncommon herb that will harden and turn into marble when dried."
+               "description": "Hardens into marble when dried! Also useful as a white bitter herb."
             },
             "dried_algae": {
                "display_name": "Dried Algae",
-               "description": "In their dried and pressed form, algae can be used as an herb."
+               "description": "Useful in culinary but also as a yellow bitter herb."
             },
             "water_lily_white": {
                "display_name": "White Water Lily",
-               "description": "This beautiful flower from the wetlands can be used as an herb."
+               "description": "Serene and quaint. Useful as a white bitter herb."
             },
             "water_lily_yellow": {
-               "description": "This beautiful flower from the wetlands can be used as an herb.",
+               "description": "Wonderful! Useful as a yellow bitter herb.",
                "display_name": "Yellow Water Lily"
             },
             "water_lily_purple": {
                "display_name": "Purple Water Lily",
-               "description": "This beautiful flower from the wetlands can be used as an herb."
+               "description": "Stupendous! Useful as a purple bitter herb."
             },
             "water_lily_pink": {
                "display_name": "Pink Water Lily",
-               "description": "This beautiful flower from the wetlands can be used as an herb."
+               "description": "Magnificent! Useful as a red bitter herb."
             },
             "daisy": {
                "display_name": "Daisy Flowers",
-               "description": "A common herb often used for decorations."
+               "description": "Common and pretty. Useful as a white aromatic herb."
             },
             "foxlily": {
-               "display_name": "Fox Lily Flowers",
-               "description": "A rare and beautiful herb used by herbalists."
+               "display_name": "Fox Lily Flower",
+               "description": "Rare and beautiful. Useful as a red or yellow aromatic herb."
             },
             "sunflower": {
                "display_name": "Sunflower",
-               "description": "A lovely and rare herb that makes anyone's day merrier!"
+               "description": "A lovely, merry flower. Useful as a yellow or white aromatic herb."
             },
             "highland_vine": {
                "display_name": "Highland Vine Leaves",
-               "description": "A bitter and green herb obtained from harvesting vines."
+               "description": "Rough and supple. Useful as a green bitter herb."
+            },
+            "silkweed": {
+               "display_name": "Silkweed Leaves",
+               "description": "Broad and velvety. Useful as a green bitter herb."
+            },
+            "wax_plant_green": {
+               "display_name": "Green Wax Plant Leaves",
+               "description": "Keeps the moisture in. Useful as a green bitter herb."
+            },
+            "wax_plant_purple": {
+               "display_name": "Purple Wax Plant Leaves",
+               "description": "Keeps the moisture in. Useful as a purple aromatic herb."
+            },
+            "brightbell": {
+               "description": "A common medicinal herb. Useful as a red aromatic herb."
+            },
+            "cactus_tulip_blue": {
+               "description": "A bright desert flower. Useful as a blue aromatic herb.",
+               "display_name": "Blue Tulip Cactus Flower"
+            },
+            "cactus_tulip_red": {
+               "description": "An intense desert flower. Useful as a red aromatic herb.",
+               "display_name": "Red Tulip Cactus Flower"
+            },
+            "cactus_tulip_yellow": {
+               "description": "A radiant desert flower. Useful as a yellow aromatic herb.",
+               "display_name": "Yellow Tulip Cactus Flower"
+            },
+            "cactus_flower": {
+               "display_name": "Cactus Flowers",
+               "description": "Simple, pretty desert blossoms. Useful as a red aromatic herb."
+            },
+            "frostsnap": {
+               "description": "Chill to the touch! Useful as a blue bitter herb."
+            },
+            "snow_poppy": {
+               "description": "A vibrant arctic flower. Useful as a red bitter herb."
+            },
+            "violet": {
+               "description": "An exquisite arctic blossom. Useful as a purple aromatic herb."
             }
          },
          "stone": {
@@ -6274,6 +6323,9 @@
             "highland_vine_bundle": {
                "display_name": "Highland Vine Stems",
                "description": "Strong, flexible vine stems. Spinnable into thread."
+            },
+            "silkweed_bundle": {
+               "display_name": "Silkweed Fiber Bundle"
             }
          },
          "coal": {
@@ -11033,7 +11085,7 @@
    "herbalist_crops": {
       "no_crop": {
          "display_name": "Empty",
-         "description": "Just a planter full of dirt."
+         "description": "Just a planter full of potential."
       },
       "brightbell": {
          "display_name": "Brightbell",
@@ -11104,6 +11156,31 @@
          "display_name": "Sunflower",
          "description": "What do you know, it's exactly like a wild Sunflower! Dani, you should change this text!",
          "harvest_text": "harvesting sunflower"
+      },
+      "silkweed": {
+         "display_name": "Silkweed",
+         "description": "What do you know, it's exactly like a wild Silkweed! Dani, you should change this text!",
+         "harvest_text": "harvesting silkweed"
+      },
+      "earthbud": {
+         "display_name": "Hearthbud",
+         "description": "What do you know, it's exactly like a wild Hearthbud! Dani, you should change this text!",
+         "harvest_text": "harvesting hearthbud"
+      },
+      "sugarbell": {
+         "display_name": "Sugarbell",
+         "description": "What do you know, it's exactly like a wild Sugarbell! Dani, you should change this text!",
+         "harvest_text": "harvesting sugarbell"
+      },
+      "wax_plant_green": {
+         "display_name": "Green Wax Plant",
+         "description": "What do you know, it's exactly like a wild Green Wax Plant! Dani, you should change this text!",
+         "harvest_text": "harvesting green wax plant"
+      },
+      "wax_plant_purple": {
+         "display_name": "Purple Wax Plant",
+         "description": "What do you know, it's exactly like a wild Purple Wax Plant! Dani, you should change this text!",
+         "harvest_text": "harvesting purple wax plant"
       }
    },
    "plants": {
@@ -11132,7 +11209,7 @@
                "brewing_ingredient": "Brewing Ingredients",
                "boulder": "Stonework",
                "automatons_and_golems": "Automatons & Golems",
-               "herbalist_planter": "Herb Planters"
+               "herbalist_planter": "Herbalist Planters"
             }
          },
          "custom_tooltips": {
@@ -11402,7 +11479,7 @@
                   "tooltip_other_plants": "Other Plants",
                   "tooltip_seeds": "Seeds",
                   "tooltip_fish": "Captive Fish",
-                  "tooltip_herbs": "Herbs",
+                  "tooltip_herbs": "Aromatic Herbs",
                   "tooltip_fiber": "Fiber",
                   "tooltip_algae": "Algae",
                   "tooltip_essences": "Essences",
@@ -11429,7 +11506,8 @@
                   "tooltip_raw_food_fruits": "Raw Fruits",
                   "tooltip_raw_food_animal_goods": "Raw Animal Goods",
                   "tooltip_raw_food_nuts": "Raw Nuts",
-                  "tooltip_serving_vessels": "Drink Serving Vessels"
+                  "tooltip_serving_vessels": "Drink Serving Vessels",
+                  "tooltip_bitter_herbs": "Bitter Herbs"
                }
             },
             "pasture": {
@@ -11449,11 +11527,11 @@
             }
          },
          "herbalist_planter": {
-            "help": "Herbalists can plant, tend to, and harvest various types of herbs in this planter.",
-            "choose_crop_type": "Choose Herb",
+            "help": "Herbalists can plant, tend to, and harvest various types of resources in this planter.",
+            "choose_crop_type": "Choose Resource",
             "queued_crop": "Queued for Planting: ",
             "harvest_crop": "Enable Harvesting",
-            "harvest_crop_description": "If enabled, whenever the herb is fully grown, the herbalist will harvest it.",
+            "harvest_crop_description": "If enabled, whenever the resource is fully grown, the herbalist will harvest it.",
             "produces": "Produces per Harvest: "
          },
          "military_mode": {
@@ -11833,7 +11911,18 @@
             "prepared_food_warming_resource_name": "Warming Food",
             "prepared_food_refreshing_resource_name": "Refreshing Food",
             "any_fertilizer_resource_name": "Any Fertilizer",
-            "refined_serving_keg_resource_name": "Any Serving Keg"
+            "refined_serving_keg_resource_name": "Any Serving Keg",
+            "seed_resource_name": "Any Seed",
+            "seed_hard_resource_name": "Any Hard Seed",
+            "seed_fruit_resource_name": "Any Fruit Seed",
+            "aromatic_herb_resource_name": "Any Aromatic Herb",
+            "bitter_herb_resource_name": "Any Bitter Herb",
+            "red_herb_resource_name": "Red Herbs",
+            "green_herb_resource_name": "Green Herbs",
+            "blue_herb_resource_name": "Blue Herbs",
+            "yellow_herb_resource_name": "Yellow Herbs",
+            "white_herb_resource_name": "White Herbs",
+            "purple_herb_resource_name": "Purple Herbs"
          }
       }
    },
