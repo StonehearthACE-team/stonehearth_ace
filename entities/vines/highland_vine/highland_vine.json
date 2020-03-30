@@ -45,16 +45,16 @@
                "origin": { "x": 5, "y": 0, "z": 5 },
                "models": {
                   "spring": [
-                     "file(highland_vine_ground_spring.qb)"
+                     { "model": "file(highland_vine_ground_spring.qb)" }
                   ],
                   "default": [
-                     "file(highland_vine_ground.qb)"
+                     { "model": "file(highland_vine_ground.qb)" }
                   ],
                   "autumn": [
-                     "file(highland_vine_ground_autumn.qb)"
+                     { "model": "file(highland_vine_ground_autumn.qb)" }
                   ],
                   "winter": [
-                     "file(highland_vine_ground_winter.qb)"
+                     { "model": "file(highland_vine_ground_winter.qb)" }
                   ]
                }
             },
@@ -63,16 +63,16 @@
                "origin": { "x": 5, "y": -7, "z": 5 },
                "models": {
                   "spring": [
-                     "file(highland_vine_ceiling_spring.qb)"
+                     { "model": "file(highland_vine_ceiling_spring.qb)" }
                   ],
                   "default": [
-                     "file(highland_vine_ceiling.qb)"
+                     { "model": "file(highland_vine_ceiling.qb)" }
                   ],
                   "autumn": [
-                     "file(highland_vine_ceiling_autumn.qb)"
+                     { "model": "file(highland_vine_ceiling_autumn.qb)" }
                   ],
                   "winter": [
-                     "file(highland_vine_ceiling_winter.qb)"
+                     { "model": "file(highland_vine_ceiling_winter.qb)" }
                   ]
                }
             },
@@ -81,16 +81,16 @@
                "origin": { "x": 5, "y": 0, "z": 5 },
                "models": {
                   "spring": [
-                     "file(highland_vine_wall_spring.qb)"
+                     { "model": "file(highland_vine_wall_spring.qb)" }
                   ],
                   "default": [
-                     "file(highland_vine_wall.qb)"
+                     { "model": "file(highland_vine_wall.qb)" }
                   ],
                   "autumn": [
-                     "file(highland_vine_wall_autumn.qb)"
+                     { "model": "file(highland_vine_wall_autumn.qb)" }
                   ],
                   "winter": [
-                     "file(highland_vine_wall_winter.qb)"
+                     { "model": "file(highland_vine_wall_winter.qb)" }
                   ]
                }
             }
@@ -141,6 +141,11 @@
                }
             }
          }
+      },
+      "stonehearth:commands": {
+         "commands": [
+            "stonehearth_ace:commands:harvest_highland_vine"
+         ]
       }
    },
    "entity_data": {

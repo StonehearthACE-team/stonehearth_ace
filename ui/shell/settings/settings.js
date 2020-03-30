@@ -96,7 +96,6 @@ $(top).on('stonehearthReady', function(cc) {
 
       _applyGameplaySettings: function() {
          var self = this;
-         self._super();
 
          radiant.each(self._settings, function(mod, modSettings){
             if(mod == 'stonehearth') {
@@ -136,6 +135,7 @@ $(top).on('stonehearthReady', function(cc) {
          });
 
          radiant.call('stonehearth_ace:set_client_gameplay_settings_command', self._settings);
+         self._super(); // call this last, because it triggers a client-side event ('stonehearth_ace:client_config_changed')
       },
 
       _createGameplayDivForMod: function(mod, settings) {

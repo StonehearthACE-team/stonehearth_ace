@@ -30,4 +30,12 @@ function AceJobService:_load_kingdom_job_data()
    end
 end
 
+function AceJobService:get_job_info(player_id, job_id, population_override)
+   local player = self._sv.players[player_id]
+   if not player then
+      return
+   end
+   return player:get_job(job_id, population_override)
+end
+
 return AceJobService

@@ -30,7 +30,8 @@ local monkey_patches = {
    ace_template_placement_tool = 'stonehearth.services.client.building.template_placement_tool',
    ace_xz_region_selector = 'stonehearth.services.client.selection.xz_region_selector',
    ace_farming_call_handler = 'stonehearth.call_handlers.farming_call_handler',
-   ace_constants = 'stonehearth.constants'
+   ace_constants = 'stonehearth.constants',
+   ace_settings_call_handler = 'stonehearth.call_handlers.settings_call_handler'
 }
 
 local function monkey_patching()

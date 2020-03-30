@@ -1,5 +1,6 @@
 local rng = _radiant.math.get_default_rng()
 local item_quality_lib = require 'stonehearth_ace.lib.item_quality.item_quality_lib'
+local resources_lib = require 'stonehearth_ace.lib.resources.resources_lib'
 local WeightedSet = require 'stonehearth.lib.algorithms.weighted_set'
 
 local transform_lib = {}
@@ -136,7 +137,7 @@ function transform_lib.transform(entity, transformer, into_uri, options)
       if location then
          radiant.terrain.place_entity_at_exact_location(transformed_form, location, { force_iconic = false, facing = facing } )
 
-         transform_lib.request_auto_harvest(transformed_form, options.auto_harvest)
+         resources_lib.request_auto_harvest(transformed_form, options.auto_harvest)
       end
    end
 
@@ -178,21 +179,6 @@ function transform_lib.transform(entity, transformer, into_uri, options)
    end
 
    return transformed_form
-end
-
--- also used by farmer_field component when toggling harvest_enabled status
-function transform_lib.request_auto_harvest(entity, should_auto_harvest)
-   local crop_comp = entity:get_component('stonehearth:crop')
-   if should_auto_harvest or (crop_comp and crop_comp:get_field():is_harvest_enabled() and not entity:get_component('stonehearth:evolve')) then
-      local renewable_resource_node = entity:get_component('stonehearth:renewable_resource_node')
-      local resource_node = entity:get_component('stonehearth:resource_node')
-
-      if renewable_resource_node and renewable_resource_node:is_harvestable() then
-         renewable_resource_node:request_harvest(entity:get_player_id())
-      elseif resource_node then
-         resource_node:request_harvest(entity:get_player_id())
-      end
-   end
 end
 
 return transform_lib

@@ -98,23 +98,15 @@ function AceJobComponent:add_exp(value, add_curiosity_addition, options)
    radiant.events.trigger(self._entity, 'stonehearth_ace:on_add_exp', { value = value, add_curiosity_addition = add_curiosity_addition, prevent_level_up = prevent_level_up })
 end
 
-AceJobComponent._ace_old_level_up = JobComponent.level_up
-function AceJobComponent:level_up(skip_visual_effects)
-	self:_ace_old_level_up(skip_visual_effects)
-
-	-- remove the training toggle command if we reach max level
-	if not self:is_trainable() then
-		self:_remove_training_toggle()
-	end
-
-	radiant.events.trigger(self._entity, 'stonehearth_ace:on_level_up', { skip_visual_effects = skip_visual_effects })
-end
-
 AceJobComponent._ace_old__on_job_json_changed = JobComponent._on_job_json_changed
 function AceJobComponent:_on_job_json_changed()
 	self:_ace_old__on_job_json_changed()
 
 	radiant.events.trigger(self._entity, 'stonehearth_ace:on_job_json_changed')
+end
+
+function AceJobComponent:get_job_info()
+   return stonehearth.job:get_job_info(radiant.entities.get_player_id(self._entity), self._sv.job_uri, self._sv.population_override)
 end
 
 function AceJobComponent:set_population_override(population_uri)
