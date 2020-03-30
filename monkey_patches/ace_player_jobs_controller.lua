@@ -78,7 +78,7 @@ end
 function AcePlayerJobsController:_ensure_job_id(id, population_override)
    self:_ensure_job_index(population_override)
 
-   if self._job_index and self._job_index.jobs and self._job_index.jobs[id] then
+   if not self._sv.jobs[id] and self._job_index and self._job_index.jobs and self._job_index.jobs[id] then
       local info = self._job_index.jobs[id]
       self._sv.jobs[id] = radiant.create_controller('stonehearth:job_info_controller', info, self._sv.player_id)
       self.__saved_variables:mark_changed()
