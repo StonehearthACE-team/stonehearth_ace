@@ -1707,6 +1707,10 @@
             "display_name": "Disallow Hunting",
             "description": "This hearthling will hunt any wild game they see. Click to forbid it!"
          },
+         "harvest_highland_vine": {
+            "display_name": "Harvest Entire Vine",
+            "description": "Toggle harvest requests for all segments of this vine."
+         },
          "transform": {
             "prepare_mega_pumpkin_soup": {
                "display_name": "Prepare Pumpkin Soup",
@@ -11815,6 +11819,8 @@
                "auto_select_new_titles_description": "When one of your citizens (or other items) achieves a title, automatically select it as their active title.",
                "terrain_slice_buildings": "Terrain Slice Buildings",
                "terrain_slice_buildings_description": "In Terrain Slice mode, don't render entities supported by visible, non-terrain entities.",
+               "highlight_entire_vine_on_select": "Highlight Entire Selected Vines",
+               "highlight_entire_vine_on_select_description": "When you select a vine, highlight all vines that are part of the same growth.",
                "water_signal_update_frequency": "Water Signal Update Rate",
                "water_signal_update_frequency_description": "Only update water signals this many ticks of the water system. Increase this value to improve performance with lots of flowing water.",
                "show_processing_meter": "Show Processing Meter",

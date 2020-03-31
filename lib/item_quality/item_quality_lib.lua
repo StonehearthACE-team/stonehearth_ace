@@ -170,4 +170,19 @@ function item_quality_lib.get_quality_table(hearthling, recipe_lvl_req, ingredie
    return calculated_chances
 end
 
+function item_quality_lib.get_max_crafting_quality(player_id)
+   -- Towns with the Guildmaster bonus can produce masterwork items.
+   local quality = stonehearth.constants.item_quality.EXCELLENT or 3
+   local town = stonehearth.town:get_town(player_id)
+   if town then
+      for _, bonus in pairs(town:get_active_town_bonuses()) do
+         if bonus.get_max_crafting_quality then
+            quality = bonus:get_max_crafting_quality()
+         end
+      end
+   end
+   
+   return quality
+end
+
 return item_quality_lib

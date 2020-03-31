@@ -155,6 +155,13 @@ function AceResourceNodeComponent:_set_quality(item, quality)
    item_quality_lib.apply_quality(item, quality)
 end
 
+function AceResourceNodeComponent:is_harvest_requested()
+   local task_tracker_component = self._entity:get_component('stonehearth:task_tracker')
+   if task_tracker_component and task_tracker_component:is_activity_requested(HARVEST_ACTION) then
+      return true
+   end
+end
+
 function AceResourceNodeComponent:cancel_harvest_request()
    local task_tracker_component = self._entity:get_component('stonehearth:task_tracker')
    if task_tracker_component and task_tracker_component:is_activity_requested(HARVEST_ACTION) then

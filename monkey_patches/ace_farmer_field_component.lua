@@ -4,7 +4,7 @@ local rng = _radiant.math.get_default_rng()
 local log = radiant.log.create_logger('farmer_field')
 local FarmerFieldComponent = require 'stonehearth.components.farmer_field.farmer_field_component'
 local farming_lib = require 'stonehearth_ace.lib.farming.farming_lib'
-local transform_lib = require 'stonehearth_ace.lib.transform.transform_lib'
+local resources_lib = require 'stonehearth_ace.lib.resources.resources_lib'
 local entity_forms_lib = require 'stonehearth.lib.entity_forms.entity_forms_lib'
 
 local FERTILIZER_MODEL_FAILSAFE = {
@@ -68,7 +68,7 @@ function AceFarmerFieldComponent:post_activate()
       self:_load_field_type()
       self:_create_water_listener()
       self:_create_climate_listeners()
-      self:_create_post_harvest_crop_listeners()
+      self:_create_all_post_harvest_crop_listeners()
    else
       self._sv.harvest_enabled = true
    end
@@ -93,17 +93,9 @@ function AceFarmerFieldComponent:set_harvest_enabled(enabled)
                local dirt_plot = contents[x][y]
                if dirt_plot and dirt_plot.post_harvest_contents then
                   if enabled then
-                     transform_lib.request_auto_harvest(dirt_plot.post_harvest_contents)
+                     resources_lib.request_auto_harvest(dirt_plot.post_harvest_contents)
                   else
-                     local renewable_resource_node = dirt_plot.post_harvest_contents:get_component('stonehearth:renewable_resource_node')
-                     if renewable_resource_node then
-                        renewable_resource_node:cancel_harvest_request()
-                     end
-
-                     local resource_node = dirt_plot.post_harvest_contents:get_component('stonehearth:resource_node')
-                     if resource_node then
-                        resource_node:cancel_harvest_request()
-                     end
+                     resources_lib.cancel_harvest_request(dirt_plot.post_harvest_contents)
                   end
                end
             end
@@ -281,7 +273,7 @@ function AceFarmerFieldComponent:notify_plant_location_finished(location)
    end)
 end
 
-function AceFarmerFieldComponent:_create_post_harvest_crop_listeners()
+function AceFarmerFieldComponent:_create_all_post_harvest_crop_listeners()
    local contents = self._sv.contents
    local size = self._sv.size
    if contents then
@@ -289,7 +281,7 @@ function AceFarmerFieldComponent:_create_post_harvest_crop_listeners()
          for y = 1, size.y do
             local dirt_plot = contents[x][y]
             if dirt_plot then
-               self:_create_post_harvest_crop_listener(dirt_plot)
+               self:_create_post_harvest_crop_listeners(dirt_plot)
             end
          end
       end
@@ -301,33 +293,53 @@ function AceFarmerFieldComponent:update_post_harvest_crop(x, z, crop)
    --log:debug('updating post-harvest crop: %s for plot %s', crop, radiant.util.table_tostring(dirt_plot))
    if dirt_plot then
       -- set up the listener
-      self:_destroy_post_harvest_crop_listener(dirt_plot)
+      self:_destroy_post_harvest_crop_listeners(dirt_plot)
       dirt_plot.post_harvest_contents = crop
-      self:_create_post_harvest_crop_listener(dirt_plot)
+      self:_create_post_harvest_crop_listeners(dirt_plot)
       self.__saved_variables:mark_changed()
    end
 end
 
-function AceFarmerFieldComponent:_create_post_harvest_crop_listener(dirt_plot)
-   if dirt_plot.post_harvest_contents and not self._post_harvest_crop_listeners[dirt_plot] then
-      self._post_harvest_crop_listeners[dirt_plot] = radiant.events.listen_once(dirt_plot.post_harvest_contents, 'radiant:entity:pre_destroy', function()
-            dirt_plot.post_harvest_contents = nil
-            self:_destroy_post_harvest_crop_listener(dirt_plot)
-            self:_try_mark_for_plant(dirt_plot)
+function AceFarmerFieldComponent:_create_post_harvest_crop_listeners(dirt_plot)
+   local entity = dirt_plot.post_harvest_contents
+
+   if entity and not self._post_harvest_crop_listeners[dirt_plot] then
+      local on_removed = function()
+         dirt_plot.post_harvest_contents = nil
+         self:_destroy_post_harvest_crop_listeners(dirt_plot)
+         self:_try_mark_for_plant(dirt_plot)
+      end
+
+      local listeners = {
+         -- if the entity is destroyed
+         pre_destroy = radiant.events.listen_once(entity, 'radiant:entity:pre_destroy', on_removed),
+         -- if the entity's parent changes and it's no longer in the world (e.g., picked up or iconified)
+         parent_changed = radiant.events.listen(entity, 'radiant:mob:parent_changed', function()
+            if radiant.entities.get_world_grid_location(entity) == nil then
+               entity:remove_component('stonehearth:crop')
+               on_removed()
+            end
          end)
+      }
+      self._post_harvest_crop_listeners[dirt_plot] = listeners
    end
 end
 
-function AceFarmerFieldComponent:_destroy_post_harvest_crop_listeners()
-   for _, listener in pairs(self._post_harvest_crop_listeners) do
-      listener:destroy()
+function AceFarmerFieldComponent:_destroy_all_post_harvest_crop_listeners()
+   for _, listeners in pairs(self._post_harvest_crop_listeners) do
+      for _, listener in pairs(listeners) do
+         listener:destroy()
+      end
    end
    self._post_harvest_crop_listeners = {}
 end
 
-function AceFarmerFieldComponent:_destroy_post_harvest_crop_listener(dirt_plot)
-   if self._post_harvest_crop_listeners[dirt_plot] then
-      self._post_harvest_crop_listeners[dirt_plot]:destroy()
+function AceFarmerFieldComponent:_destroy_post_harvest_crop_listeners(dirt_plot)
+   local listeners = self._post_harvest_crop_listeners[dirt_plot]
+   if listeners then
+      for _, listener in pairs(listeners) do
+         listener:destroy()
+      end
       self._post_harvest_crop_listeners[dirt_plot] = nil
    end
 end
@@ -351,7 +363,7 @@ function AceFarmerFieldComponent:auto_harvest_crop(auto_harvest_type, x, z)
       dirt_plot.contents = nil
       if product then
          radiant.terrain.place_entity_at_exact_location(product, self._location + Point3(x - 1, 0, z - 1), {force_iconic = iconic})
-         self:_create_post_harvest_crop_listener(dirt_plot)
+         self:_create_post_harvest_crop_listeners(dirt_plot)
       end
       self.__saved_variables:mark_changed()
    end
@@ -438,7 +450,7 @@ function AceFarmerFieldComponent:try_harvest_crop(harvester, x, z, num_stacks, a
             end
 
             radiant.terrain.place_entity_at_exact_location(primary_item, origin, {force_iconic = iconic})
-            self:_create_post_harvest_crop_listener(dirt_plot)
+            self:_create_post_harvest_crop_listeners(dirt_plot)
             self.__saved_variables:mark_changed()
          end
       end
@@ -913,7 +925,7 @@ function AceFarmerFieldComponent:_on_destroy()
 
    --self:_destroy_flood_listeners()
    self:_destroy_climate_listeners()
-   self:_destroy_post_harvest_crop_listeners()
+   self:_destroy_all_post_harvest_crop_listeners()
 end
 
 function AceFarmerFieldComponent:_get_field_layers()

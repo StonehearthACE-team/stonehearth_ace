@@ -8,6 +8,7 @@ local rng = _radiant.math.get_default_rng()
 local RenewableResourceNodeComponent = require 'stonehearth.components.renewable_resource_node.renewable_resource_node_component'
 local AceRenewableResourceNodeComponent = class()
 
+local HARVEST_ACTION = 'stonehearth:harvest_renewable_resource'
 local RENEWED_MODEL_NAME = 'stonehearth:renewable_resource_node:renewed'
 local HALF_RENEWED_MODEL_NAME = 'stonehearth:renewable_resource_node:half_renewed'
 
@@ -474,6 +475,13 @@ end
 
 function AceRenewableResourceNodeComponent:_set_quality(item, quality)
    item_quality_lib.apply_quality(item, quality)
+end
+
+function AceRenewableResourceNodeComponent:is_harvest_requested()
+   local task_tracker_component = self._entity:get_component('stonehearth:task_tracker')
+   if task_tracker_component and task_tracker_component:is_activity_requested(HARVEST_ACTION) then
+      return true
+   end
 end
 
 function AceRenewableResourceNodeComponent:cancel_harvest_request()

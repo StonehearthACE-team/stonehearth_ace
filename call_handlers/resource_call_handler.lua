@@ -407,4 +407,13 @@ function ResourceCallHandler:get_all_herbalist_planter_data(session, response)
    response:resolve({data = radiant.resources.load_json('stonehearth_ace:data:herbalist_planter_crops')})
 end
 
+function ResourceCallHandler:toggle_vine_harvest_request(session, response, entity)
+   validator.expect_argument_types({'Entity'}, entity)
+
+   local vine = entity:get_component('stonehearth_ace:vine')
+   if vine then
+      vine:toggle_group_harvest_request()
+   end
+end
+
 return ResourceCallHandler

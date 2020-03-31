@@ -52,8 +52,10 @@ function HerbalistPlanterComponent:activate()
    end
    self._max_crop_level = max_crop_level
 
-   self._max_tending_quality = stonehearth.constants.herbalist_planters.MAX_TENDING_QUALITY
-   self._tend_hard_cooldown = stonehearth.calendar:parse_duration(stonehearth.constants.herbalist_planters.TEND_HARD_COOLDOWN)
+   self._tend_hard_cooldown = stonehearth.calendar:parse_duration(self._json.tend_hard_cooldown or 
+         stonehearth.constants.herbalist_planters.TEND_HARD_COOLDOWN)
+   self._quality_modification_interval = stonehearth.calendar:parse_duration(self._json.quality_modification_interval or 
+         stonehearth.constants.herbalist_planters.DEFAULT_QUALITY_MODIFICATION_INTERVAL)
 
    self:_load_current_crop_stats()
 
@@ -133,6 +135,10 @@ function HerbalistPlanterComponent:_destroy_recently_tended_timer()
       self._recently_tended_timer:destroy()
       self._recently_tended_timer = nil
    end
+   if self._quality_modification_timer then
+      self._quality_modification_timer:destroy()
+      self._quality_modification_timer = nil
+   end
 end
 
 function HerbalistPlanterComponent:_stop_growth(cur_time)
@@ -183,8 +189,12 @@ function HerbalistPlanterComponent:_load_planted_crop_stats()
          local growth_level_data = self._planted_crop_stats.growth_levels[self._sv.crop_growth_level]
          self._bonus_product_uri = growth_level_data and (growth_level_data.bonus_product_uri or
                self._planted_crop_stats.bonus_product_uri or self._planted_crop_stats.product_uri)
+         self._bonus_product_loot_table = growth_level_data and (growth_level_data.bonus_product_loot_table or self._planted_crop_stats.bonus_product_loot_table)
+         self._quality_modification_rate = growth_level_data and growth_level_data.quality_modification_rate or self._planted_crop_stats.quality_modification_rate or
+               stonehearth.constants.herbalist_planters.DEFAULT_QUALITY_MODIFICATION_RATE
       else
          self._bonus_product_uri = nil
+         self._bonus_product_loot_table = nil
       end
    end
    self:_update_unit_crop_level()
@@ -213,7 +223,7 @@ end
 function HerbalistPlanterComponent:is_tendable()
    if self._sv.planted_crop and self._planted_crop_stats then
       -- if the recently tended timer is going, we're still in hard cooldown for tending
-      return self._sv.crop_growth_level < #self._planted_crop_stats.growth_levels and not self._recently_tended_timer
+      return not self._recently_tended_timer
    else
       return false
    end
@@ -236,12 +246,6 @@ end
 function HerbalistPlanterComponent:get_product_uri()
    if self._planted_crop_stats then
       return self._planted_crop_stats.product_uri
-   end
-end
-
-function HerbalistPlanterComponent:get_additional_products()
-   if self._planted_crop_stats then
-      return self._planted_crop_stats.additional_products
    end
 end
 
@@ -287,6 +291,13 @@ function HerbalistPlanterComponent:_reset_growth()
    self:_reconsider()
 end
 
+function HerbalistPlanterComponent:_reset_tend_quality()
+   local expendable = self._entity:get_component('stonehearth:expendable_resources')
+   if expendable then
+      expendable:set_value('tend_quality', expendable:get_min_value('tend_quality') or 0)
+   end
+end
+
 function HerbalistPlanterComponent:_grow()
    self:_stop_growth()
    self:_stop_bonus_growth()
@@ -317,6 +328,7 @@ function HerbalistPlanterComponent:_grow()
             self._sv._bonus_growth_period = bonus_growth_period
             self._sv._bonus_growth_timer_duration_remaining = bonus_growth_period
             self._bonus_product_uri = growth_level_data.bonus_product_uri or self._planted_crop_stats.bonus_product_uri or self._planted_crop_stats.product_uri
+            self._bonus_product_loot_table = growth_level_data.bonus_product_loot_table or self._planted_crop_stats.bonus_product_loot_table
          end
       end
 
@@ -356,68 +368,49 @@ function HerbalistPlanterComponent:_bonus_grow()
       return
    end
 
-   if self._storage:is_full() then
-      for id, item in pairs(self._storage:get_items()) do
-         if item and (not item:is_valid() or item:get_uri() ~= self._bonus_product_uri) then
-            self._storage:remove_item(id)
-            radiant.entities.destroy_entity(item)
-            break
-         end
-      end
-   end
-
-   if not self._storage:is_full() and self._bonus_product_uri then
+   if not self._storage:is_full() and (self._bonus_product_uri or self._bonus_product_loot_table) then
       --local player_id = self._entity:get_player_id()
-      self:_create_product(self._bonus_product_uri, 1)
+      self:_create_products(nil, self._bonus_product_uri, 1, self._bonus_product_loot_table)
    end
 
    self:_restart_timers()
 end
 
-function HerbalistPlanterComponent:_create_product(product_uri, quantity, harvester)
-   local quality = self._sv._quality or 1
+function HerbalistPlanterComponent:_create_product(items, quality, input, spill_failed, owner, location)
+   return radiant.entities.output_items(items, location, 0, 1, { owner = owner }, self._entity, input, spill_failed, quality)
+end
+
+function HerbalistPlanterComponent:_create_products(harvester, product_uri, quantity, loot_table_data)
+   local quality = self:_get_quality()
    local input = harvester or self._entity
-   return radiant.entities.output_items({[product_uri] = quantity or 1}, radiant.entities.get_world_grid_location(input), 0, 1, 
-                                        { owner = self._entity:get_player_id() }, self._entity, input, harvester ~= nil, quality)
+   local spill_failed = harvester ~= nil
+   local owner = self._entity:get_player_id()
+   local location = radiant.entities.get_world_grid_location(input)
+   
+   local items
+   if product_uri and quantity > 0 then
+      items = self:_create_product({[product_uri] = quantity}, quality, input, spill_failed, owner, location)
+   end
+
+   local loot_table_items
+   local loot_table = loot_table_data and LootTable(loot_table_data)
+   if loot_table then
+      loot_table_items = self:_create_product(loot_table:roll_loot(), quality, input, spill_failed, owner, location)
+   end
+
+   return (items or loot_table_items) and radiant.entities.combine_output_tables(items, loot_table_items)
 end
 
 -- called by ai to harvest the planter
 function HerbalistPlanterComponent:create_products(harvester)
    if self:is_harvestable() then
       local items
-      if self._planted_crop_stats and self._planted_crop_stats.product_uri and self._sv.num_products > 0 then
-         items = self:_create_product(self._planted_crop_stats.product_uri, self._sv.num_products, harvester)
+      if self._planted_crop_stats then
+         items = self:_create_products(harvester, self._planted_crop_stats.product_uri, self._sv.num_products, self._planted_crop_stats.additional_products)
       end
       self:_reset_growth()
 
       return items
-   end
-end
-
-function HerbalistPlanterComponent:_place_additional_items(owner, collect_location)
-   local loot_table = {}
-   if self:get_additional_products() then
-      loot_table = LootTable(self:get_additional_products())
-   end
-   local spawned_items
-   if loot_table then
-      spawned_items = radiant.entities.output_items(loot_table:roll_loot(), collect_location, 1, 3, { owner = owner }, self._entity, owner, true).spilled
-   else
-      spawned_items = {}
-   end
-
-   return spawned_items
-end
-
-function HerbalistPlanterComponent:spawn_additional_items(harvester, collect_location)
-   local spawned_resources = self:_place_additional_items(harvester, collect_location)
-   local player_id = self._entity:get_player_id()
-   if harvester then
-      for id, item in pairs(spawned_resources) do
-         stonehearth.inventory:get_inventory(player_id)
-                                 :add_item_if_not_full(item)
-
-      end
    end
 end
 
@@ -458,6 +451,7 @@ function HerbalistPlanterComponent:plant_crop(planter)
    end
 
    self:_reset_growth()
+   self:_reset_tend_quality()
    self:tend_to_crop(planter, 0)
    self:_destroy_planter_tasks()
 end
@@ -482,7 +476,7 @@ function HerbalistPlanterComponent:tend_to_crop(tender, amount)
       self._sv._amount_tended = self._sv._amount_tended + tend_amount * (self._planted_crop_stats.tending_multiplier or 1)
       self._sv._last_tended = stonehearth.calendar:get_elapsed_time()
       self:_set_recently_tended_timer()
-      self:_update_quality(tender)
+      self:_set_quality_table(tender)
       self:_reconsider()
    end
 end
@@ -500,12 +494,27 @@ function HerbalistPlanterComponent:_set_recently_tended_timer()
                self:_reconsider()
             end)
    end
+
+   -- also set up an interval for reducing quality periodically (reset whenever it's tended)
+   local expendable = self._entity:get_component('stonehearth:expendable_resources')
+   if expendable and self._planted_crop_stats then
+      self._quality_modification_timer = stonehearth.calendar:set_interval('herbalist_planter periodic quality modification',
+         self._quality_modification_interval,
+         function()
+            expendable:modify_value('tend_quality', self._quality_modification_rate)
+         end)
+   end
 end
 
-function HerbalistPlanterComponent:_update_quality(tender)
-   self._sv._quality = tender and item_quality_lib.get_quality_table(tender, self._planted_crop_stats.level or 1,
-         math.max(1, math.min(self._max_tending_quality, self._sv._amount_tended)))
-   
+function HerbalistPlanterComponent:_get_quality()
+   local expendable = self._entity:get_component('stonehearth:expendable_resources')
+   local max_quality = item_quality_lib.get_max_crafting_quality(self._entity:get_player_id())
+   local ingredient_quality = math.max(1, math.min(max_quality, expendable and expendable:get_value('tend_quality') or 1))
+   return self._sv._quality_table and item_quality_lib.modify_quality_table(self._sv._quality_table, ingredient_quality)
+end
+
+function HerbalistPlanterComponent:_set_quality_table(tender)
+   self._sv._quality_table = item_quality_lib.get_quality_table(tender, self._planted_crop_stats.level or 1)
    local quality_buff = self._json.quality_buffs and self._json.quality_buffs[math.min(math.floor(self._sv._amount_tended), #self._json.quality_buffs)]
    if quality_buff then
       self._entity:add_component('stonehearth:buffs'):add_buff(quality_buff)

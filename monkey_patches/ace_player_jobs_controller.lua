@@ -15,14 +15,32 @@ AcePlayerJobsController._ace_old_reset = PlayerJobsController.reset
 function AcePlayerJobsController:reset()
    self:_ace_old_reset()
    
+   self:_ensure_all_job_indexes()
+end
+
+function AcePlayerJobsController:post_activate()
+   self:_ensure_all_job_indexes()
+end
+
+function AcePlayerJobsController:_ensure_all_job_indexes()
    -- create all job info controllers so the client is aware of all possible recipes for your faction's crafters
    -- even if you haven't promoted your hearthlings to those jobs yet
+   self:_ensure_job_index()
+   
    local pop = stonehearth.population:get_population(self._sv.player_id)
-   local job_index = pop:get_job_index()
-   local jobs = job_index and radiant.resources.load_json(job_index)
-   log:debug('ensuring all job controllers found in "%s"...', tostring(job_index))
-   if jobs then
-      for job_key, _ in pairs(jobs.jobs) do
+   for id, citizen in pop:get_citizens():each() do
+      if citizen:is_valid() then
+         local job = citizen:get_component('stonehearth:job')
+         local pop_override = job and job:get_population_override()
+         if pop_override then
+            self:_ensure_job_index(pop_override)
+         end
+      end
+   end
+
+   log:debug('ensuring all job controllers for %s...', tostring(self._sv.player_id))
+   if self._job_index and self._job_index.jobs then
+      for job_key, _ in pairs(self._job_index.jobs) do
          log:debug('ensuring "%s"', job_key)
          self:_ensure_job_id(job_key)
       end
@@ -50,10 +68,17 @@ function AcePlayerJobsController:remove_craft_orders_for_building(bid)
    end
 end
 
-function AcePlayerJobsController:_ensure_job_id(id)
-   self:_ensure_job_index()
+function AcePlayerJobsController:get_job(id, population_override)
+   if not self._sv.jobs[id] then
+      self:_ensure_job_id(id, population_override)
+   end
+   return self._sv.jobs[id]
+end
 
-   if self._job_index and self._job_index.jobs and self._job_index.jobs[id] then
+function AcePlayerJobsController:_ensure_job_id(id, population_override)
+   self:_ensure_job_index(population_override)
+
+   if not self._sv.jobs[id] and self._job_index and self._job_index.jobs and self._job_index.jobs[id] then
       local info = self._job_index.jobs[id]
       self._sv.jobs[id] = radiant.create_controller('stonehearth:job_info_controller', info, self._sv.player_id)
       self.__saved_variables:mark_changed()

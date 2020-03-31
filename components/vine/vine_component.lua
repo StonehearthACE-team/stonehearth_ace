@@ -15,7 +15,7 @@ local get_block_kind_from_tag = radiant.terrain.get_block_kind_from_tag
 local get_entities_in_region = radiant.terrain.get_entities_in_region
 
 local WeightedSet = require 'stonehearth.lib.algorithms.weighted_set'
-local ConnectionUtils = require 'lib.connection.connection_utils'
+local resources_lib = require 'stonehearth_ace.lib.resources.resources_lib'
 local log = radiant.log.create_logger('vine_component')
 
 local VineComponent = class()
@@ -55,38 +55,11 @@ function VineComponent:initialize()
       self._sv.casts_shadows = true
    end
 
-   local json = radiant.entities.get_json(self)
-
-   if not self._sv.render_options or not self._sv._render_models then
-      local json_options = json.render_options or {}
-
-      local options = {faces = {}, seasonal_model_switcher = json_options.seasonal_model_switcher}
-      local models = {}
-      local faces = {'bottom', 'top', 'side'}
-
-      for _, face in ipairs(faces) do
-         local j_o = json_options[face]
-         if j_o then
-            options.faces[face] = {
-               scale = j_o.scale or 0.1,
-               origin = radiant.util.to_point3(j_o.origin) or Point3.zero
-            }
-            models[face] = {}
-            for season, qbs in pairs(j_o.models) do
-               models[face][season] = qbs[rng:get_int(1, #qbs)]
-            end
-         end
-      end
-
-      self._sv.render_options = options
-      self._sv._render_models = models
-      if json_options.casts_shadows ~= nil then
-         self._sv.casts_shadows = json_options.casts_shadows
-      end
-   end
+   self._json = radiant.entities.get_json(self)
+   self._json_options = radiant.deep_copy(self._json.render_options or {})
 
    self._uri = self._entity:get_uri()
-   self._growth_data = json.growth_data or {}
+   self._growth_data = self._json.growth_data or {}
    self._growth_roller = WeightedSet(rng)
    self._corner_roller = WeightedSet(rng)
    for dir, chance in pairs(self._growth_data.growth_directions or {}) do
@@ -108,6 +81,30 @@ function VineComponent:initialize()
 end
 
 function VineComponent:create()
+   local options = {faces = {}, seasonal_model_switcher = self._json.seasonal_model_switcher and radiant.deep_copy(self._json.seasonal_model_switcher)}
+   local models = {}
+   local faces = {'bottom', 'top', 'side'}
+
+   for _, face in ipairs(faces) do
+      local j_o = self._json_options[face]
+      if j_o then
+         options.faces[face] = {
+            scale = j_o.scale or 0.1,
+            origin = radiant.util.to_point3(j_o.origin) or Point3.zero
+         }
+         models[face] = {}
+         for season, qbs in pairs(j_o.models) do
+            models[face][season] = qbs[rng:get_int(1, #qbs)]
+         end
+      end
+   end
+
+   self._sv.render_options = options
+   self._sv._render_models = models
+   if self._json_options.casts_shadows ~= nil then
+      self._sv.casts_shadows = self._json_options.casts_shadows
+   end
+
    if self._sv.render_options.seasonal_model_switcher then
       self._sv._switch_season_time = rng:get_real(0, 1)  -- Choose a point in the transition at which this instance switches.
    end
@@ -166,6 +163,10 @@ function VineComponent:destroy()
    end
 
    self:_stop_growth_timer()
+
+   if self._sv.vine_group and self._entity:is_valid() then
+      self._sv.vine_group:remove_vine(self._entity:get_id())
+   end
 end
 
 function VineComponent:_stop_growth_timer()
@@ -218,6 +219,33 @@ function VineComponent:_get_growth_period(growths_remaining)
       time = stonehearth.town:calculate_growth_period('', time)
    end
    return time
+end
+
+-- if no vine group exists, create it; this should only get called on the root entity
+function VineComponent:get_vine_group()
+   if not self._sv.vine_group then
+      self:set_vine_group(radiant.create_controller('stonehearth_ace:vine_group'))
+   end
+
+   return self._sv.vine_group
+end
+
+-- when a vine grows, it should set the vine group on the new vine entity
+function VineComponent:set_vine_group(group)
+   self._sv.vine_group = group
+   if group then
+      group:add_vine(self._entity)
+   end
+
+   self.__saved_variables:mark_changed()
+end
+
+function VineComponent:toggle_group_harvest_request()
+   if self._sv.vine_group then
+      self:get_vine_group():toggle_harvest_requests()
+   else
+      resources_lib.toggle_harvest_requests({self._entity})
+   end
 end
 
 function VineComponent:set_num_growths_remaining(num)
@@ -430,7 +458,11 @@ function VineComponent:_try_grow()
    if grow_location then
       new_vine = radiant.entities.create_entity(self._uri,
             { owner = self._entity:get_player_id(), ignore_gravity = grow_direction ~= 'y+' and self._growth_data.ignore_gravity })
-      new_vine:add_component('stonehearth_ace:vine'):set_num_growths_remaining(self._sv.num_growths_remaining)
+      
+      local vine_comp = new_vine:add_component('stonehearth_ace:vine')
+      vine_comp:set_vine_group(self:get_vine_group())
+      vine_comp:set_num_growths_remaining(self._sv.num_growths_remaining)
+
       radiant.terrain.place_entity_at_exact_location(new_vine, grow_location, {force_iconic = false})
       if self._growth_data.randomize_facing then
          radiant.entities.turn_to(new_vine, rng:get_int(0, 3) * 90)
