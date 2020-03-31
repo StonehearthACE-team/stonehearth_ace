@@ -5,7 +5,7 @@
       "destination": {
          "region": [
             {
-               "min": { "x": 0, "y": 0, "z": 0 },
+               "min": { "x": 0, "y": -5, "z": 0 },
                "max": { "x": 1, "y": 1, "z": 1 }
             }
          ]
@@ -21,23 +21,19 @@
       },
       "stonehearth:resource_node": {
          "category": "harvest",
+         "resource": "stonehearth_ace:resources:herb:water_lily:purple",
          "harvest_overlay_effect": "stonehearth:effects:harvest_plant_overlay_effect",
          "resource_spawn_effect": "stonehearth:effects:harvest_plants_effect",
          "resource_loot_table": {
             "entries": {
                "optional": {
                   "num_rolls": {
-                     "min": 1,
+                     "min": 0,
                      "max": 1
                   },
                   "items": {
-                     "none": {
-                        "uri": "",
-                        "weight": 3
-                     },
-                     "pelt": {
-                        "uri": "stonehearth_ace:resources:herb:water_lily:purple",
-                        "weight": 1
+                     "pad": {
+                        "uri": "stonehearth_ace:resources:herb:water_lily:lily_pad"
                      }
                   }
                }
