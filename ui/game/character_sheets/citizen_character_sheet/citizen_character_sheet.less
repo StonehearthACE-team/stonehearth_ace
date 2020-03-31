@@ -28,6 +28,25 @@
       }
    }
 
+   #lockTitle {
+      display: inline-flex;
+      background-repeat: no-repeat;
+      background-size: 24px;
+      height: 31px;
+      padding: 0px 12px;
+      margin-right: -24px;
+      z-index: 2;
+
+      &.locked {
+         background-image: url(../../unit_frame/images/lock.png);
+         .button;
+      }
+      &.unlocked {
+         background-image: url(../../unit_frame/images/unlock.png);
+         .button;
+      }
+   }
+
    .custom-select {
       position: absolute;
       top: 50px;

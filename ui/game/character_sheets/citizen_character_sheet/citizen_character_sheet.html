@@ -8,6 +8,7 @@
 
          <div id="header">
             <input id="name" type="text" {{bind-attr value=view.model.unit_name}} />
+            <div id="lockTitle" {{bind-attr class=view.titleLockClass}}></div>
             <div id="descriptionSection">
                <div id="description">
                   <img class ="classIconImg" {{bind-attr src=view.currJobIcon}}/>

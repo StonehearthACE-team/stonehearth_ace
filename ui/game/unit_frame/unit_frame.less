@@ -79,6 +79,25 @@
                   }
                }
             }
+
+            #lockTitle {
+               display: inline-flex;
+               background-repeat: no-repeat;
+               background-size: 20px;
+               height: 20px;
+               padding: 5px 10px;
+               margin-left: -20px;
+               z-index: 2;
+         
+               &.locked {
+                  background-image: url(images/lock.png);
+                  .button;
+               }
+               &.unlocked {
+                  background-image: url(images/unlock.png);
+                  .button;
+               }
+            }
       
             .custom-select {
                position: absolute;

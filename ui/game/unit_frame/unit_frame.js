@@ -139,7 +139,26 @@ App.StonehearthUnitFrameView.reopen({
       });
       self.$('#nameInput').blur(function() {
          self.$('#nameInput').hide();
-      })
+      });
+
+      self.$('#lockTitle').click(function() {
+         // toggle title lock for this entity
+         var name_entity = self.get('name_entity');
+         var uri = self.get(name_entity + '.__self');
+         radiant.call('stonehearth_ace:lock_title', uri, !self.get(name_entity + '.stonehearth:unit_info.title_locked'))
+      });
+
+      App.tooltipHelper.createDynamicTooltip(self.$('#lockTitle'), function () {
+         var name_entity = self.get('name_entity');
+         var locked = self.get(name_entity + '.stonehearth:unit_info.title_locked');
+         if (locked == null) {
+            return;
+         }
+
+         var sLocked = locked ? 'unlock' : 'lock';
+         return $(App.tooltipHelper.createTooltip(i18n.t(`stonehearth_ace:ui.game.unit_frame.${sLocked}_title.title`),
+               i18n.t(`stonehearth_ace:ui.game.unit_frame.${sLocked}_title.description`)));
+      });
 
       var div = $("#componentInfoButton");
       App.hotkeyManager.makeTooltipWithHotkeys(div,
@@ -234,8 +253,13 @@ App.StonehearthUnitFrameView.reopen({
 
    _showTitleSelectionList: function() {
       var self = this;
-
       var name_entity = self.get('name_entity');
+
+      // make sure they don't have title locked
+      if (self.get(name_entity + '.stonehearth:unit_info.title_locked')) {
+         return;
+      }
+
       var result = stonehearth_ace.createTitleSelectionList(self._titles, self.get(name_entity + '.stonehearth_ace:titles.titles'), self.get('uri'), self.get('custom_name'));
       if (result) {
          result.container.css({
@@ -363,6 +387,15 @@ App.StonehearthUnitFrameView.reopen({
       var canChangeName = playerCheck && unit_info && !unit_info.locked;
       self.set('canChangeName', canChangeName);
       self.notifyPropertyChange('canChangeName');
+
+      var titleLockClass = null;
+      // first check if titles are even an option for this entity
+      if (playerCheck && unit_info && self.get(name_entity + '.stonehearth_ace:titles')) {
+         titleLockClass = unit_info.title_locked ? 'locked' : 'unlocked';
+      }
+      self.set('titleLockClass', titleLockClass);
+      self.notifyPropertyChange('titleLockClass');
+
       self.$('#nameInput').hide();
    }.observes('name_entity'),
 

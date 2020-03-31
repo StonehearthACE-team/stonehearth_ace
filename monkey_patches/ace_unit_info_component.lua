@@ -12,6 +12,7 @@ local log = radiant.log.create_logger('unit_info_component')
 AceUnitInfoComponent._ace_old_create = UnitInfoComponent.create
 function AceUnitInfoComponent:create()
    self._is_create = true
+   self._sv.title_locked = false
 
    local json = radiant.entities.get_json(self) or {}
    if json.display_name then
@@ -32,6 +33,17 @@ function AceUnitInfoComponent:create()
    
    if self._ace_old_create then
       self:_ace_old_create()
+   end
+end
+
+AceUnitInfoComponent._ace_old_restore = UnitInfoComponent.restore
+function AceUnitInfoComponent:restore()
+   if self._ace_old_restore then
+      self:_ace_old_restore()
+   end
+
+   if self._sv.title_locked == nil then
+      self._sv.title_locked = true
    end
 end
 
@@ -81,11 +93,25 @@ function AceUnitInfoComponent:get_custom_data()
    return self._sv.custom_data
 end
 
+function AceUnitInfoComponent:get_title_locked()
+   return self._sv.title_locked
+end
+
+function AceUnitInfoComponent:set_title_locked(locked)
+   self._sv.title_locked = locked and true or false
+   self.__saved_variables:mark_changed()
+end
+
 function AceUnitInfoComponent:get_current_title()
    return self._sv.custom_data and self._sv.custom_data.current_title
 end
 
 function AceUnitInfoComponent:select_title(title, rank)
+   -- only make the change if it's not locked
+   if self._sv.title_locked then
+      return
+   end
+
    -- if no rank is provided, assume the highest rank of that title we have
    if not self._sv.custom_data then
       self._sv.custom_data = {}

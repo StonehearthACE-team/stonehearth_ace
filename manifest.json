@@ -3939,18 +3939,6 @@
          "controller": "file(call_handlers/fence_call_handler.lua)",
          "endpoint": "server"
       },
-      "get_all_client_gameplay_settings_command": {
-         "controller": "file(call_handlers/settings_call_handler.lua)",
-         "endpoint": "server"
-      },
-      "set_client_gameplay_settings_command": {
-         "controller": "file(call_handlers/settings_call_handler.lua)",
-         "endpoint": "server"
-      },
-      "set_client_gameplay_setting_command": {
-         "controller": "file(call_handlers/settings_call_handler.lua)",
-         "endpoint": "server"
-      },
       "update_client_connections_command": {
          "controller": "file(call_handlers/advanced_placement_call_handler.lua)",
          "endpoint": "client"
@@ -4015,6 +4003,18 @@
          "controller": "file(call_handlers/town_inventory_call_handler.lua)",
          "endpoint": "server"
       },
+      "get_all_client_gameplay_settings_command": {
+         "controller": "file(call_handlers/settings_call_handler.lua)",
+         "endpoint": "server"
+      },
+      "set_client_gameplay_settings_command": {
+         "controller": "file(call_handlers/settings_call_handler.lua)",
+         "endpoint": "server"
+      },
+      "set_client_gameplay_setting_command": {
+         "controller": "file(call_handlers/settings_call_handler.lua)",
+         "endpoint": "server"
+      },
       "terrain_slice_buildings_setting_changed": {
          "controller": "file(call_handlers/settings_call_handler.lua)",
          "endpoint": "client"
@@ -4060,6 +4060,10 @@
          "endpoint": "server"
       },
       "select_title_command": {
+         "controller": "file(call_handlers/titles_call_handler.lua)",
+         "endpoint": "server"
+      },
+      "lock_title": {
          "controller": "file(call_handlers/titles_call_handler.lua)",
          "endpoint": "server"
       },

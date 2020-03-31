@@ -145,7 +145,23 @@ App.StonehearthCitizenCharacterSheetView.reopen({
             e.preventDefault();
          }
       });
-				
+
+      self.$('#lockTitle').click(function() {
+         // toggle title lock for this entity
+         radiant.call('stonehearth_ace:lock_title', self.get('uri'), !self.get('model.stonehearth:unit_info.title_locked'))
+      });
+
+      App.tooltipHelper.createDynamicTooltip(self.$('#lockTitle'), function () {
+         var locked = self.get('model.stonehearth:unit_info.title_locked');
+         if (locked == null) {
+            return;
+         }
+
+         var sLocked = locked ? 'unlock' : 'lock';
+         return $(App.tooltipHelper.createTooltip(i18n.t(`stonehearth_ace:ui.game.unit_frame.${sLocked}_title.title`),
+               i18n.t(`stonehearth_ace:ui.game.unit_frame.${sLocked}_title.description`)));
+      });
+		
       self.$('#description').off('click').click(function () {
          if (self.get('uri')) {
             if (radiant.isOwnedByAnotherPlayer(self.get('model'), App.stonehearthClient.getPlayerId())) {
@@ -174,6 +190,14 @@ App.StonehearthCitizenCharacterSheetView.reopen({
       else {
          text = unit_name;
       }
+
+      var titleLockClass = null;
+      // first check if titles are even an option for this entity
+      if (unit_info && self.get('model.stonehearth_ace:titles')) {
+         titleLockClass = unit_info.title_locked ? 'locked' : 'unlocked';
+      }
+      self.set('titleLockClass', titleLockClass);
+      self.notifyPropertyChange('titleLockClass');
 
       App.guiHelper.addTooltip(self.$('#name'), text, title || "");
    }.observes('model.stonehearth:unit_info'),
@@ -296,6 +320,11 @@ App.StonehearthCitizenCharacterSheetView.reopen({
 
    _showTitleSelectionList: function(e) {
       var self = this;
+
+      // make sure they don't have title locked
+      if (self.get('model.stonehearth:unit_info.title_locked')) {
+         return;
+      }
 
       var result = stonehearth_ace.createTitleSelectionList(self._titles, self.get('model.stonehearth_ace:titles.titles'), self.get('uri'), self.get('model.custom_name'));
       if (result) {

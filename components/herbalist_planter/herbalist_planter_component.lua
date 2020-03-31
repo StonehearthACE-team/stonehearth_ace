@@ -219,8 +219,13 @@ function HerbalistPlanterComponent:is_plantable()
    return self._sv.planted_crop ~= self._sv.current_crop
 end
 
-function HerbalistPlanterComponent:is_tendable()
+function HerbalistPlanterComponent:is_tendable(level)
    if self._sv.planted_crop and self._planted_crop_stats then
+      -- if a level is specified and the current crop is a higher level, no luck
+      if level and level < self:get_planted_crop_level() then
+         return false
+      end
+      
       -- if the recently tended timer is going, we're still in hard cooldown for tending
       return not self._recently_tended_timer
    else
