@@ -2570,7 +2570,7 @@
                "description": "The Herbalist can use this nice planter to cultivate four renewable herbs.",
                "flavor": "Changing the cultivated herb requires the respective seed"
             },
-				"herbalist_planter_water_recipe": {
+            "herbalist_planter_water_recipe": {
                "recipe_name": "Herbalist Water Planter",
                "description": "The Herbalist can create a special planter to cultivate aquatic resources.",
                "flavor": "Algae can be replanted from their own resources"
@@ -6218,6 +6218,10 @@
             },
             "violet": {
                "description": "An exquisite arctic blossom. Useful as a purple aromatic herb."
+            },
+            "water_lily_pad": {
+               "display_name": "Lily Pad",
+               "description": "Floaty leaf, a frog's favorite. Useful as a green aromatic herb."
             }
          },
          "stone": {
@@ -7496,30 +7500,50 @@
             "water_lily_white_ghost": {
                "display_name": "White Flowered Lily Pads",
                "description": "A pretty flower that can be used as an ornamental decoration or harvested."
+            },
+            "water_lily_white_seed": {
+               "display_name": "White Water Lily Seed Pod",
+               "description": "An Herbalist can use this seed pod to grow white water lilies in a water planter."
             }
          },
          "water_lily_pad": {
             "water_lily_pad_ghost": {
                "display_name": "Lily Pads",
                "description": "Beautiful floating leaves that form an exotic decoration."
+            },
+            "water_lily_pad_seed": {
+               "display_name": "Lily Pad Seed Pod",
+               "description": "An Herbalist can use this seed pod to grow lily pads in a water planter."
             }
          },
          "water_lily_pink": {
             "water_lily_pink_ghost": {
                "display_name": "Pink Flowered Lily Pads",
                "description": "A pretty flower that can be used as an ornamental decoration or harvested."
+            },
+            "water_lily_pink_seed": {
+               "description": "An Herbalist can use this seed pod to grow pink water lilies in a water planter.",
+               "display_name": "Pink Water Lily Seed Pod"
             }
          },
          "water_lily_purple": {
             "water_lily_purple_ghost": {
                "display_name": "Purple Flowered Lily Pads",
                "description": "A pretty flower that can be used as an ornamental decoration or harvested."
+            },
+            "water_lily_purple_seed": {
+               "display_name": "Purple Water Lily Seed Pod",
+               "description": "An Herbalist can use this seed pod to grow purple water lilies in a water planter."
             }
          },
          "water_lily_yellow": {
             "water_lily_yellow_ghost": {
                "display_name": "Yellow Flowered Lily Pads",
                "description": "A pretty flower that can be used as an ornamental decoration or harvested."
+            },
+            "water_lily_yellow_seed": {
+               "display_name": "Yellow Water Lily Seed Pod",
+               "description": "An Herbalist can use this seed pod to grow yellow water lilies in a water planter."
             }
          },
          "dwarfsbeard": {
@@ -11177,6 +11201,46 @@
          "display_name": "Purple Wax Plant",
          "description": "What do you know, it's exactly like a wild Purple Wax Plant! Dani, you should change this text!",
          "harvest_text": "harvesting purple wax plant"
+      },
+		"water_lily_pad": {
+         "display_name": "Lily Pad",
+         "description": "What do you know, it's exactly like wild Lily Pads! Dani, you should change this text!",
+         "harvest_text": "harvesting lily pad"
+      },
+		"water_lily_pink": {
+         "display_name": "Pink Water Lily",
+         "description": "What do you know, it's exactly like wild Pink Water Lilies! Dani, you should change this text!",
+         "harvest_text": "harvesting pink water lily"
+      },
+		"water_lily_purple": {
+         "display_name": "Purple Water Lily",
+         "description": "What do you know, it's exactly like wild Purple Water Lilies! Dani, you should change this text!",
+         "harvest_text": "harvesting purple water lily"
+      },
+		"water_lily_white": {
+         "display_name": "White Water Lily",
+         "description": "What do you know, it's exactly like wild White Water Lilies! Dani, you should change this text!",
+         "harvest_text": "harvesting white water lily"
+      },
+		"water_lily_yellow": {
+         "display_name": "Yellow Water Lily",
+         "description": "What do you know, it's exactly like wild Yellow Water Lilies! Dani, you should change this text!",
+         "harvest_text": "harvesting yellow water lily"
+      },
+		"algae_brown": {
+         "display_name": "Brown Alga",
+         "description": "What do you know, it's exactly like wild brown algae! Dani, you should change this text!",
+         "harvest_text": "harvesting brown alga"
+      },
+		"algae_green": {
+         "display_name": "Green Alga",
+         "description": "What do you know, it's exactly like wild green algae! Dani, you should change this text!",
+         "harvest_text": "harvesting green alga"
+      },
+		"algae_red": {
+         "display_name": "Red Alga",
+         "description": "What do you know, it's exactly like wild red algae! Dani, you should change this text!",
+         "harvest_text": "harvesting red alga"
       }
    },
    "plants": {

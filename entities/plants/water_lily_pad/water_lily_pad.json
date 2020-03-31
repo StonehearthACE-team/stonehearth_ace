@@ -5,7 +5,7 @@
       "destination": {
          "region": [
             {
-               "min": { "x": 0, "y": 0, "z": 0 },
+               "min": { "x": 0, "y": -5, "z": 0 },
                "max": { "x": 1, "y": 1, "z": 1 }
             }
          ]
@@ -21,19 +21,9 @@
       },
       "stonehearth:resource_node": {
          "category": "harvest",
+         "resource": "stonehearth_ace:resources:herb:water_lily:lily_pad",
          "harvest_overlay_effect": "stonehearth:effects:harvest_plant_overlay_effect",
-         "resource_spawn_effect": "stonehearth:effects:harvest_plants_effect",
-         "resource_loot_table": {
-            "entries": {
-               "optional": {
-                  "num_rolls": {
-                     "min": 0,
-                     "max": 0
-                  },
-                  "items": {}
-               }
-            }
-         }
+         "resource_spawn_effect": "stonehearth:effects:harvest_plants_effect"
       },
       "stonehearth:entity_forms": {
          "iconic_form": "file(water_lily_pad_iconic.json)",
