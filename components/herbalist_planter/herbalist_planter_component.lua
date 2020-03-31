@@ -29,7 +29,6 @@ end
 function HerbalistPlanterComponent:create()
    self._is_create = true
    
-   self._sv._amount_tended = 0    -- use effects to make the planter sparkle a bit with more tending?
    self._sv.allowed_crops = self._json.allowed_crops or all_plant_data.default_allowed_crops
 
    if self._json.default_crop and self._sv.allowed_crops[self._json.default_crop] then
@@ -283,7 +282,6 @@ function HerbalistPlanterComponent:stop_active_effect()
 end
 
 function HerbalistPlanterComponent:_reset_growth()
-   self._sv._amount_tended = 0
    self._sv.crop_growth_level = 0
    self._sv.harvestable = false
    self.__saved_variables:mark_changed()
@@ -291,10 +289,14 @@ function HerbalistPlanterComponent:_reset_growth()
    self:_reconsider()
 end
 
-function HerbalistPlanterComponent:_reset_tend_quality()
+function HerbalistPlanterComponent:_reset_tend_quality(multiplier)
    local expendable = self._entity:get_component('stonehearth:expendable_resources')
    if expendable then
-      expendable:set_value('tend_quality', expendable:get_min_value('tend_quality') or 0)
+      local value = expendable:get_min_value('tend_quality') or 0
+      if multiplier then
+         value = value + ((expendable:get_value('tend_quality') or 0) - value) * multiplier
+      end
+      expendable:set_value('tend_quality', value)
    end
 end
 
@@ -409,6 +411,7 @@ function HerbalistPlanterComponent:create_products(harvester)
          items = self:_create_products(harvester, self._planted_crop_stats.product_uri, self._sv.num_products, self._planted_crop_stats.additional_products)
       end
       self:_reset_growth()
+      self:_reset_tend_quality(0.5)
 
       return items
    end
@@ -473,7 +476,7 @@ function HerbalistPlanterComponent:tend_to_crop(tender, amount)
             tend_amount = 0
          end
       end
-      self._sv._amount_tended = self._sv._amount_tended + tend_amount * (self._planted_crop_stats.tending_multiplier or 1)
+      self:_modify_tend_quality(tend_amount * (self._planted_crop_stats.tending_multiplier or 1))
       self._sv._last_tended = stonehearth.calendar:get_elapsed_time()
       self:_set_recently_tended_timer()
       self:_set_quality_table(tender)
@@ -506,16 +509,27 @@ function HerbalistPlanterComponent:_set_recently_tended_timer()
    end
 end
 
-function HerbalistPlanterComponent:_get_quality()
+function HerbalistPlanterComponent:_get_tend_quality()
    local expendable = self._entity:get_component('stonehearth:expendable_resources')
+   return expendable and expendable:get_value('tend_quality') or 1
+end
+
+function HerbalistPlanterComponent:_modify_tend_quality(amount)
+   local expendable = self._entity:get_component('stonehearth:expendable_resources')
+   if expendable then
+      expendable:modify_value('tend_quality', amount)
+   end
+end
+
+function HerbalistPlanterComponent:_get_quality()
    local max_quality = item_quality_lib.get_max_crafting_quality(self._entity:get_player_id())
-   local ingredient_quality = math.max(1, math.min(max_quality, expendable and expendable:get_value('tend_quality') or 1))
+   local ingredient_quality = math.max(1, math.min(max_quality, self:_get_tend_quality()))
    return self._sv._quality_table and item_quality_lib.modify_quality_table(self._sv._quality_table, ingredient_quality)
 end
 
 function HerbalistPlanterComponent:_set_quality_table(tender)
-   self._sv._quality_table = item_quality_lib.get_quality_table(tender, self._planted_crop_stats.level or 1)
-   local quality_buff = self._json.quality_buffs and self._json.quality_buffs[math.min(math.floor(self._sv._amount_tended), #self._json.quality_buffs)]
+   self._sv._quality_table = tender and item_quality_lib.get_quality_table(tender, self._planted_crop_stats.level or 1)
+   local quality_buff = self._json.quality_buffs and self._json.quality_buffs[math.min(math.floor(self:_get_tend_quality()), #self._json.quality_buffs)]
    if quality_buff then
       self._entity:add_component('stonehearth:buffs'):add_buff(quality_buff)
    end

@@ -91,6 +91,7 @@ App.AceHerbalistPlanterView = App.StonehearthBaseZonesModeView.extend({
             planter: planterComponent && planterComponent.__self,
             planter_view: this,
             planter_data: this.get('allCropData'),
+            allowed_crops: planterComponent.allowed_crops
          });
       }
    },
@@ -126,14 +127,17 @@ App.AcePlanterTypePaletteView = App.View.extend({
          display_name: no_crop.display_name,
          description: no_crop.description
       });
+      var allowed_crops = self.allowed_crops || self.planter_data.default_allowed_crops;
       radiant.each(self.planter_data.crops, function(key, data) {
-         var planterData = {
-            type: key,
-            icon: data.icon,
-            display_name: data.display_name,
-            description: data.description
+         if (allowed_crops[key]) {
+            var planterData = {
+               type: key,
+               icon: data.icon,
+               display_name: data.display_name,
+               description: data.description
+            }
+            cropDataArray.push(planterData);
          }
-         cropDataArray.push(planterData);
       });
       self.set('cropTypes', cropDataArray);
 
