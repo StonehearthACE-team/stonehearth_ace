@@ -204,14 +204,16 @@ function ace_entities.output_items(uris, origin, min_radius, max_radius, options
    end
    if not output_comp and (not inputs or not next(inputs)) then
       if spill_fail_items then
-         return {spilled = radiant.entities.spawn_items(uris, origin, min_radius, max_radius, options, true, quality), succeeded = {}, failed = {}}
+         local result = ace_entities.get_empty_output_table()
+         result.spilled = ace_entities.spawn_items(uris, origin, min_radius, max_radius, options, true, quality)
+         return result
       else
-         return {spilled = {}, succeeded = {}, failed = {}}
+         return ace_entities.get_empty_output_table()
       end
    end
 
-   local items = radiant.entities.spawn_items(uris, origin, min_radius, max_radius, options, false, quality)
-   return radiant.entities.output_spawned_items(items, origin, min_radius, max_radius, options, output, inputs, spill_fail_items)
+   local items = ace_entities.spawn_items(uris, origin, min_radius, max_radius, options, false, quality)
+   return ace_entities.output_spawned_items(items, origin, min_radius, max_radius, options, output, inputs, spill_fail_items)
 end
 
 function ace_entities.output_spawned_items(items, origin, min_radius, max_radius, options, output, inputs, spill_fail_items, delete_fail_items)
@@ -243,6 +245,25 @@ function ace_entities.can_output_spawned_items(items, output, inputs)
    }
 
    return item_io_lib.can_output(items, inputs, options)
+end
+
+function ace_entities.get_empty_output_table()
+   return {spilled = {}, succeeded = {}, failed = {}}
+end
+
+function ace_entities.combine_output_tables(t1, t2)
+   local result = ace_entities.get_empty_output_table()
+
+   for category, items in pairs(result) do
+      if t1 and t1[category] then
+         radiant.util.merge_into_table(items, t1[category])
+      end
+      if t2 and t2[category] then
+         radiant.util.merge_into_table(items, t2[category])
+      end
+   end
+
+   return result
 end
 
 -- copied from choose_unreserved_point_in_destination_action

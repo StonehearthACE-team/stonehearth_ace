@@ -38,11 +38,6 @@ function HarvestHerbalistPlanterAdjacent:run(ai, entity, args)
 
       local products = planter_comp:create_products(entity)
       radiant.events.trigger(entity, 'stonehearth_ace:interact_herbalist_planter', {type = 'harvest_planter', planter = planter, products = products})
-		
-		if planter_comp:get_additional_products() then
-			local location = radiant.entities.get_world_grid_location(entity)
-         planter_comp:spawn_additional_items(entity, location)
-		end
    end
 end
 

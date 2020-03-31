@@ -981,7 +981,8 @@
          }
       },
       "herbalist_planters": {
-         "MAX_TENDING_QUALITY": 3,
+         "DEFAULT_QUALITY_MODIFICATION_RATE": -0.1,
+         "DEFAULT_QUALITY_MODIFICATION_INTERVAL": "55m+10m",
          "tend_effects": [
             "fiddle"
          ],

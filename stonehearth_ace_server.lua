@@ -137,6 +137,7 @@ local monkey_patches = {
    ace_raid_stockpiles_mission = 'stonehearth.services.server.game_master.controllers.missions.raid_stockpiles_mission',
    ace_spawn_enemies_mission = 'stonehearth.services.server.game_master.controllers.missions.spawn_enemies_mission',
    ace_wander_mission = 'stonehearth.services.server.game_master.controllers.missions.wander_mission',
+   ace_guildmaster_town_bonus = 'stonehearth.data.town_bonuses.guildmaster_town_bonus',
    ace_player_jobs_controller = 'stonehearth.services.server.job.player_jobs_controller'
 }
 
