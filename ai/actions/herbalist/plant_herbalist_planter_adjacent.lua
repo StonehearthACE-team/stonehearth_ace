@@ -31,8 +31,9 @@ function PlantHerbalistPlanterAdjacent:run(ai, entity, args)
    end
    
    local seed = radiant.entities.remove_carrying(entity)
+   seed = entity_forms.get_root_entity(seed) or seed  -- why doesn't get_root_entity just return the entity if no forms specified?
    local req_seed = planter_comp:get_seed_uri()
-   if not seed:is_valid() or entity_forms.get_root_entity(seed):get_uri() ~= req_seed then
+   if not seed:is_valid() or seed:get_uri() ~= req_seed then
       ai:abort('not carrying the right seed!')
       return
    end
