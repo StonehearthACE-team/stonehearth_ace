@@ -1707,6 +1707,10 @@
             "display_name": "Jagd verbieten",
             "description": "Dieser Hearthling wird jedes Wild jagen. Klicke um es zu verbieten!"
          },
+         "harvest_highland_vine": {
+            "display_name": "Ganze Rebe ernten",
+            "description": "Aktiviere das Ernten aller Segmente dieser Rebe."
+         },
          "transform": {
             "prepare_mega_pumpkin_soup": {
                "display_name": "Kürbissuppe vorbereiten",
@@ -2570,7 +2574,7 @@
                "description": "Der Kräuterarzt kann mit diesem schönen Pflanzgefäß vier erneuerbare Kräuter anbauen.",
                "flavor": "Das Wechseln des angebauten Krauts erfordert ein entsprechendes Saatgut"
             },
-	    "herbalist_planter_water_recipe": {
+            "herbalist_planter_water_recipe": {
                "recipe_name": "Kräuterarzt Wasserpflanzer",
                "description": "Der Kräuterarzt kann einen speziellen Pflanzer für die Kultivierung von Wasserressourcen schaffen.",
                "flavor": "Algen können aus eigener Kraft neu gepflanzt werdens"
@@ -6219,6 +6223,10 @@
             },
             "violet": {
                "description": "Eine exquisite arktische Blüte. Ein violettes aromatisches Kraut."
+            },
+            "water_lily_pad": {
+               "display_name": "Seerose",
+               "description": "Ein schwimmendes Blatt, der Favorit jedes Frosches. Ein grünes aromatisches Kraut."
             }
          },
          "stone": {
@@ -7495,32 +7503,52 @@
          },
          "water_lily_white": {
             "water_lily_white_ghost": {
-               "display_name": "Weißblühende Seerose",
+               "display_name": "Weiße Seerose",
                "description": "Eine hübsche Blume, die als Dekoration verwendet oder geerntet werden kann."
+            },
+            "water_lily_white_seed": {
+               "display_name": "Samenkapsel der weißen Seerose",
+               "description": "Ein Kräuterarzt kann diese Samenkapsel verwenden, um weiße Seerosen in einem Wasserpflanzer zu züchten."
             }
          },
          "water_lily_pad": {
             "water_lily_pad_ghost": {
                "display_name": "Seerose",
                "description": "Schöne schwimmende Blätter, die eine exotische Dekoration bilden."
+            },
+            "water_lily_pad_seed": {
+               "display_name": "Samenkapsel der Seerose",
+               "description": "Ein Kräuterarzt kann diese Samenkapsel verwenden, um Seerosen in einem Wasserpflanzer zu züchten."
             }
          },
          "water_lily_pink": {
             "water_lily_pink_ghost": {
-               "display_name": "Pinkblühende Seerose",
+               "display_name": "Pinke Seerose",
                "description": "Eine hübsche Blume, die als Dekoration verwendet oder geerntet werden kann."
+            },
+            "water_lily_pink_seed": {
+               "description": "Ein Kräuterarzt kann diese Samenkapsel verwenden, um rosa Seerosen in einem Wasserpflanzer zu züchten.",
+               "display_name": "Samenkapsel der pinken Seerose"
             }
          },
          "water_lily_purple": {
             "water_lily_purple_ghost": {
-               "display_name": "Lilablühende Seerose",
+               "display_name": "Lila Seerose",
                "description": "Eine hübsche Blume, die als Dekoration verwendet oder geerntet werden kann."
+            },
+            "water_lily_purple_seed": {
+               "display_name": "Samenkapsel der lila Seerose",
+               "description": "Ein Kräuterarzt kann diese Samenkapsel verwenden, um lila Seerosen in einem Wasserpflanzer zu züchten."
             }
          },
          "water_lily_yellow": {
             "water_lily_yellow_ghost": {
-               "display_name": "Gelbblühende Seerose",
+               "display_name": "Gelbe Seerose",
                "description": "Eine hübsche Blume, die als Dekoration verwendet oder geerntet werden kann."
+            },
+            "water_lily_yellow_seed": {
+               "display_name": "Samenkapsel der gelben Seerose",
+               "description": "Ein Kräuterarzt kann diese Samenkapsel verwenden, um gelbe Seerosen in einem Wasserpflanzer zu züchten."
             }
          },
          "dwarfsbeard": {
@@ -11178,6 +11206,46 @@
          "display_name": "Violette Wachspflanze",
          "description": "What do you know, it's exactly like a wild Purple Wax Plant! Dani, you should change this text!",
          "harvest_text": "ernte violette Wachspflanze"
+      },
+		"water_lily_pad": {
+         "display_name": "Seerosenblatt",
+         "description": "What do you know, it's exactly like wild Lily Pads! Dani, you should change this text!",
+         "harvest_text": "ernte Seerose"
+      },
+		"water_lily_pink": {
+         "display_name": "Rosa Seerose",
+         "description": "What do you know, it's exactly like wild Pink Water Lilies! Dani, you should change this text!",
+         "harvest_text": "ente rose Seerose"
+      },
+		"water_lily_purple": {
+         "display_name": "Lila Seerose",
+         "description": "What do you know, it's exactly like wild Purple Water Lilies! Dani, you should change this text!",
+         "harvest_text": "ernte lila Seerose"
+      },
+		"water_lily_white": {
+         "display_name": "Weiße Seerose",
+         "description": "What do you know, it's exactly like wild White Water Lilies! Dani, you should change this text!",
+         "harvest_text": "ernte weiße Seerose"
+      },
+		"water_lily_yellow": {
+         "display_name": "Gelbe Seerose",
+         "description": "What do you know, it's exactly like wild Yellow Water Lilies! Dani, you should change this text!",
+         "harvest_text": "ernte gelbe Seerose"
+      },
+		"algae_brown": {
+         "display_name": "Braunalge",
+         "description": "What do you know, it's exactly like wild brown algae! Dani, you should change this text!",
+         "harvest_text": "ernte Braunalge brown alga"
+      },
+		"algae_green": {
+         "display_name": "Grünalge",
+         "description": "What do you know, it's exactly like wild green algae! Dani, you should change this text!",
+         "harvest_text": "ernte Grünalge"
+      },
+		"algae_red": {
+         "display_name": "Rotalge",
+         "description": "What do you know, it's exactly like wild red algae! Dani, you should change this text!",
+         "harvest_text": "ernte Rotalge"
       }
    },
    "plants": {
@@ -11561,6 +11629,14 @@
                "tooltip_title": "Objektinformationen umschalten",
                "tooltip_description": "Klick um zusätzliche Informationen zu diesem Objekt ein- oder auszublenden."
             },
+            "lock_title": {
+               "title": "Klicke zum Sperren des Titels",
+               "description": "Sperre den Titel dieser Entität gegen automatische oder manuelle Änderungen."
+            },
+            "unlock_title": {
+               "title": "Klicke zum Entsperren des Titels",
+               "description": "Schalte den Titel dieser Entität frei, so dass er manuell geändert werden kann und falls in den ACE-Gameplay-Einstellungen festgelegt, automatisch geändert wird."
+            },
             "equipment_types_description": "Type: [str(i18n_data.types)]",
             "equipment_types": {
                "bow": "Bogen",
@@ -11752,6 +11828,8 @@
                "auto_select_new_titles_description": "Wenn einer deiner Bürger (oder anderer Artikel) einen Titel erhält, wird er automatisch als aktiver Titel ausgewählt.",
                "terrain_slice_buildings": "Gelände-Gebäude-Schnitt",
                "terrain_slice_buildings_description": "Rendere keine Objekte im Gelände-Schnitt-Modus, die von sichtbaren Objekten außerhalb des Geländes unterstützt werden.",
+               "highlight_entire_vine_on_select": "Ganze ausgewählte Reben hervorheben",
+               "highlight_entire_vine_on_select_description": "Wenn du eine Rebe auswählst, werden alle Teil der Rebe hervorgehoben die das selbe Wachstumsstadium haben.",
                "water_signal_update_frequency": "Wassersignal-Aktualisierungsrate",
                "water_signal_update_frequency_description": "Aktualisiere die Wassersignale nach einer bestimmte Anzahl von Ticks des Wassersystems. Erhöhe diesen Wert, um die Leistung mit viel fließendem Wasser zu verbessern.",
                "show_processing_meter": "Verarbeitungsanzeige anzeigen",
