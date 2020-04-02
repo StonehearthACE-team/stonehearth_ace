@@ -696,8 +696,23 @@
       "water_lily_pad": {
          "seed_uri": "stonehearth_ace:plants:water_lily:lily_pad:seed",
          "product_uri": "stonehearth_ace:resources:herb:water_lily:lily_pad",
+         "additional_products": {
+            "entries": {
+               "extra": {
+                  "num_rolls": {
+                     "min": 0,
+                     "max": 1
+                  },
+                  "items": {
+                     "lily_pad": {
+                        "uri": "stonehearth_ace:resources:herb:water_lily:lily_pad"
+                     }
+                  }
+               }
+            }
+         },
          "harvester_effect": "fiddle",
-         "render_scale": 0.15,
+         "render_scale": 0.13,
          "tending_multiplier": 0.5,
          "level": 1,
          "growth_time": "2h",
@@ -705,19 +720,19 @@
          "growth_levels": [
             {
                "model": "file(crops/water_planter/water_lily_pad/water_lily_pad_1.qb)",
-               "offset": { "x": 4, "y": 0, "z": 4 }
+               "offset": { "x": 6, "y": 4, "z": 6 }
             },
             {
                "model": "file(crops/water_planter/water_lily_pad/water_lily_pad_2.qb)",
-               "offset": { "x": 4, "y": 0, "z": 4 }
+               "offset": { "x": 6, "y": 4, "z": 6 }
             },
             {
                "model": "file(crops/water_planter/water_lily_pad/water_lily_pad_3.qb)",
-               "offset": { "x": 4, "y": 0, "z": 4 }
+               "offset": { "x": 6, "y": 4, "z": 6 }
             },
             {
                "model": "file(crops/water_planter/water_lily_pad/water_lily_pad_4.qb)",
-               "offset": { "x": 4, "y": 0, "z": 4 }
+               "offset": { "x": 6, "y": 4, "z": 6 }
             }
          ],
          "display_name": "i18n(stonehearth_ace:herbalist_crops.water_lily_pad.display_name)",
@@ -728,8 +743,23 @@
       "water_lily_pink": {
          "seed_uri": "stonehearth_ace:plants:water_lily:pink:seed",
          "product_uri": "stonehearth_ace:resources:herb:water_lily:pink",
+         "additional_products": {
+            "entries": {
+               "extra": {
+                  "num_rolls": {
+                     "min": 0,
+                     "max": 1
+                  },
+                  "items": {
+                     "lily_pad": {
+                        "uri": "stonehearth_ace:resources:herb:water_lily:lily_pad"
+                     }
+                  }
+               }
+            }
+         },
          "harvester_effect": "fiddle",
-         "render_scale": 0.15,
+         "render_scale": 0.13,
          "tending_multiplier": 0.5,
          "level": 1,
          "growth_time": "2h",
@@ -737,19 +767,19 @@
          "growth_levels": [
             {
                "model": "file(crops/water_planter/water_lily_pink/water_lily_pink_1.qb)",
-               "offset": { "x": 4, "y": 0, "z": 4 }
+               "offset": { "x": 6, "y": 4, "z": 6 }
             },
             {
                "model": "file(crops/water_planter/water_lily_pink/water_lily_pink_2.qb)",
-               "offset": { "x": 4, "y": 0, "z": 4 }
+               "offset": { "x": 6, "y": 4, "z": 6 }
             },
             {
                "model": "file(crops/water_planter/water_lily_pink/water_lily_pink_3.qb)",
-               "offset": { "x": 4, "y": 0, "z": 4 }
+               "offset": { "x": 6, "y": 4, "z": 6 }
             },
             {
                "model": "file(crops/water_planter/water_lily_pink/water_lily_pink_4.qb)",
-               "offset": { "x": 4, "y": 0, "z": 4 }
+               "offset": { "x": 6, "y": 4, "z": 6 }
             }
          ],
          "display_name": "i18n(stonehearth_ace:herbalist_crops.water_lily_pink.display_name)",
@@ -760,8 +790,23 @@
       "water_lily_purple": {
          "seed_uri": "stonehearth_ace:plants:water_lily:purple:seed",
          "product_uri": "stonehearth_ace:resources:herb:water_lily:purple",
+         "additional_products": {
+            "entries": {
+               "extra": {
+                  "num_rolls": {
+                     "min": 0,
+                     "max": 1
+                  },
+                  "items": {
+                     "lily_pad": {
+                        "uri": "stonehearth_ace:resources:herb:water_lily:lily_pad"
+                     }
+                  }
+               }
+            }
+         },
          "harvester_effect": "fiddle",
-         "render_scale": 0.15,
+         "render_scale": 0.13,
          "tending_multiplier": 0.5,
          "level": 1,
          "growth_time": "2h",
@@ -769,19 +814,19 @@
          "growth_levels": [
             {
                "model": "file(crops/water_planter/water_lily_purple/water_lily_purple_1.qb)",
-               "offset": { "x": 4, "y": 0, "z": 4 }
+               "offset": { "x": 6, "y": 4, "z": 6 }
             },
             {
                "model": "file(crops/water_planter/water_lily_purple/water_lily_purple_2.qb)",
-               "offset": { "x": 4, "y": 0, "z": 4 }
+               "offset": { "x": 6, "y": 4, "z": 6 }
             },
             {
                "model": "file(crops/water_planter/water_lily_purple/water_lily_purple_3.qb)",
-               "offset": { "x": 4, "y": 0, "z": 4 }
+               "offset": { "x": 6, "y": 4, "z": 6 }
             },
             {
                "model": "file(crops/water_planter/water_lily_purple/water_lily_purple_4.qb)",
-               "offset": { "x": 4, "y": 0, "z": 4 }
+               "offset": { "x": 6, "y": 4, "z": 6 }
             }
          ],
          "display_name": "i18n(stonehearth_ace:herbalist_crops.water_lily_purple.display_name)",
@@ -792,8 +837,23 @@
       "water_lily_white": {
          "seed_uri": "stonehearth_ace:plants:water_lily:white:seed",
          "product_uri": "stonehearth_ace:resources:herb:water_lily:white",
+         "additional_products": {
+            "entries": {
+               "extra": {
+                  "num_rolls": {
+                     "min": 0,
+                     "max": 1
+                  },
+                  "items": {
+                     "lily_pad": {
+                        "uri": "stonehearth_ace:resources:herb:water_lily:lily_pad"
+                     }
+                  }
+               }
+            }
+         },
          "harvester_effect": "fiddle",
-         "render_scale": 0.15,
+         "render_scale": 0.13,
          "tending_multiplier": 0.5,
          "level": 1,
          "growth_time": "2h",
@@ -801,19 +861,19 @@
          "growth_levels": [
             {
                "model": "file(crops/water_planter/water_lily_white/water_lily_white_1.qb)",
-               "offset": { "x": 4, "y": 0, "z": 4 }
+               "offset": { "x": 6, "y": 4, "z": 6 }
             },
             {
                "model": "file(crops/water_planter/water_lily_white/water_lily_white_2.qb)",
-               "offset": { "x": 4, "y": 0, "z": 4 }
+               "offset": { "x": 6, "y": 4, "z": 6 }
             },
             {
                "model": "file(crops/water_planter/water_lily_white/water_lily_white_3.qb)",
-               "offset": { "x": 4, "y": 0, "z": 4 }
+               "offset": { "x": 6, "y": 4, "z": 6 }
             },
             {
                "model": "file(crops/water_planter/water_lily_white/water_lily_white_4.qb)",
-               "offset": { "x": 4, "y": 0, "z": 4 }
+               "offset": { "x": 6, "y": 4, "z": 6 }
             }
          ],
          "display_name": "i18n(stonehearth_ace:herbalist_crops.water_lily_white.display_name)",
@@ -824,8 +884,23 @@
       "water_lily_yellow": {
          "seed_uri": "stonehearth_ace:plants:water_lily:yellow:seed",
          "product_uri": "stonehearth_ace:resources:herb:water_lily:yellow",
+         "additional_products": {
+            "entries": {
+               "extra": {
+                  "num_rolls": {
+                     "min": 0,
+                     "max": 1
+                  },
+                  "items": {
+                     "lily_pad": {
+                        "uri": "stonehearth_ace:resources:herb:water_lily:lily_pad"
+                     }
+                  }
+               }
+            }
+         },
          "harvester_effect": "fiddle",
-         "render_scale": 0.15,
+         "render_scale": 0.13,
          "tending_multiplier": 0.5,
          "level": 1,
          "growth_time": "2h",
@@ -833,19 +908,19 @@
          "growth_levels": [
             {
                "model": "file(crops/water_planter/water_lily_yellow/water_lily_yellow_1.qb)",
-               "offset": { "x": 4, "y": 0, "z": 4 }
+               "offset": { "x": 6, "y": 4, "z": 6 }
             },
             {
                "model": "file(crops/water_planter/water_lily_yellow/water_lily_yellow_2.qb)",
-               "offset": { "x": 4, "y": 0, "z": 4 }
+               "offset": { "x": 6, "y": 4, "z": 6 }
             },
             {
                "model": "file(crops/water_planter/water_lily_yellow/water_lily_yellow_3.qb)",
-               "offset": { "x": 4, "y": 0, "z": 4 }
+               "offset": { "x": 6, "y": 4, "z": 6 }
             },
             {
                "model": "file(crops/water_planter/water_lily_yellow/water_lily_yellow_4.qb)",
-               "offset": { "x": 4, "y": 0, "z": 4 }
+               "offset": { "x": 6, "y": 4, "z": 6 }
             }
          ],
          "display_name": "i18n(stonehearth_ace:herbalist_crops.water_lily_yellow.display_name)",
@@ -865,19 +940,19 @@
          "growth_levels": [
             {
                "model": "file(crops/water_planter/algae_brown/algae_brown_1.qb)",
-               "offset": { "x": 4, "y": 0, "z": 4 }
+               "offset": { "x": 8, "y": 5.5, "z": 8 }
             },
             {
                "model": "file(crops/water_planter/algae_brown/algae_brown_2.qb)",
-               "offset": { "x": 4, "y": 0, "z": 4 }
+               "offset": { "x": 8, "y": 5.5, "z": 8 }
             },
             {
                "model": "file(crops/water_planter/algae_brown/algae_brown_3.qb)",
-               "offset": { "x": 4, "y": 0, "z": 4 }
+               "offset": { "x": 8, "y": 5.5, "z": 8 }
             },
             {
                "model": "file(crops/water_planter/algae_brown/algae_brown_4.qb)",
-               "offset": { "x": 4, "y": 0, "z": 4 }
+               "offset": { "x": 8, "y": 5.5, "z": 8 }
             }
          ],
          "display_name": "i18n(stonehearth_ace:herbalist_crops.algae_brown.display_name)",
@@ -897,19 +972,19 @@
          "growth_levels": [
             {
                "model": "file(crops/water_planter/algae_red/algae_red_1.qb)",
-               "offset": { "x": 4, "y": 0, "z": 4 }
+               "offset": { "x": 8, "y": 5.5, "z": 8 }
             },
             {
                "model": "file(crops/water_planter/algae_red/algae_red_2.qb)",
-               "offset": { "x": 4, "y": 0, "z": 4 }
+               "offset": { "x": 8, "y": 5.5, "z": 8 }
             },
             {
                "model": "file(crops/water_planter/algae_red/algae_red_3.qb)",
-               "offset": { "x": 4, "y": 0, "z": 4 }
+               "offset": { "x": 8, "y": 5.5, "z": 8 }
             },
             {
                "model": "file(crops/water_planter/algae_red/algae_red_4.qb)",
-               "offset": { "x": 4, "y": 0, "z": 4 }
+               "offset": { "x": 8, "y": 5.5, "z": 8 }
             }
          ],
          "display_name": "i18n(stonehearth_ace:herbalist_crops.algae_red.display_name)",
@@ -929,19 +1004,19 @@
          "growth_levels": [
             {
                "model": "file(crops/water_planter/algae_green/algae_green_1.qb)",
-               "offset": { "x": 4, "y": 0, "z": 4 }
+               "offset": { "x": 8, "y": 5.5, "z": 8 }
             },
             {
                "model": "file(crops/water_planter/algae_green/algae_green_2.qb)",
-               "offset": { "x": 4, "y": 0, "z": 4 }
+               "offset": { "x": 8, "y": 5.5, "z": 8 }
             },
             {
                "model": "file(crops/water_planter/algae_green/algae_green_3.qb)",
-               "offset": { "x": 4, "y": 0, "z": 4 }
+               "offset": { "x": 8, "y": 5.5, "z": 8 }
             },
             {
                "model": "file(crops/water_planter/algae_green/algae_green_4.qb)",
-               "offset": { "x": 4, "y": 0, "z": 4 }
+               "offset": { "x": 8, "y": 5.5, "z": 8 }
             }
          ],
          "display_name": "i18n(stonehearth_ace:herbalist_crops.algae_green.display_name)",

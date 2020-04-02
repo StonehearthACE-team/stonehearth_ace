@@ -17,8 +17,12 @@
       "stonehearth:expendable_resources": {
          "resources": {
             "tend_quality": {
-               "min": 0,
-               "max": 5,
+               "min": {
+                  "value": 0
+               },
+               "max": {
+                  "value": 5
+               },
                "initial_value": "min_value"
             }
          }

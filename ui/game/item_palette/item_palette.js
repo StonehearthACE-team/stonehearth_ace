@@ -1,5 +1,5 @@
 // "reopen" the existing widget
-$.widget( "stonehearth.stonehearthItemPalette", {
+$.widget( "stonehearth.stonehearthItemPalette", $.stonehearth.stonehearthItemPalette, {
 
    options: {
       showZeroes: false,
