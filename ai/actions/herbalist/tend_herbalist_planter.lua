@@ -27,7 +27,7 @@ end
 function TendHerbalistPlanter:start_thinking(ai, entity, args)
    local player_id = radiant.entities.get_work_player_id(entity)
    local tend_soft_cooldown = stonehearth.calendar:parse_duration(stonehearth.constants.herbalist_planters.TEND_SOFT_COOLDOWN)
-   local job_level = entity:get_component('job'):get_current_job_level()
+   local job_level = entity:get_component('stonehearth:job'):get_current_job_level()
 
    local filter_fn = stonehearth.ai:filter_from_key('stonehearth:tend_herbalist_planter', player_id, function(item)
          return _tend_filter_fn(player_id, job_level, item)

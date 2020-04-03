@@ -184,11 +184,16 @@ function HerbalistPlanterComponent:_load_planted_crop_stats()
       self._planted_crop_stats = nil
    else
       self._planted_crop_stats = all_plant_data.crops[self._sv.planted_crop]
-      if self._storage and self._planted_crop_stats and self._planted_crop_stats.growth_levels and self._sv.crop_growth_level then
-         local growth_level_data = self._planted_crop_stats.growth_levels[self._sv.crop_growth_level]
-         self._bonus_product_uri = growth_level_data and (growth_level_data.bonus_product_uri or
-               self._planted_crop_stats.bonus_product_uri or self._planted_crop_stats.product_uri)
-         self._bonus_product_loot_table = growth_level_data and (growth_level_data.bonus_product_loot_table or self._planted_crop_stats.bonus_product_loot_table)
+      local growth_level = math.max(1, self._sv.crop_growth_level or 1)
+      if self._planted_crop_stats and self._planted_crop_stats.growth_levels then
+         local growth_level_data = self._planted_crop_stats.growth_levels[growth_level]
+         
+         if self._storage then
+            self._bonus_product_uri = growth_level_data and (growth_level_data.bonus_product_uri or
+                  self._planted_crop_stats.bonus_product_uri or self._planted_crop_stats.product_uri)
+            self._bonus_product_loot_table = growth_level_data and (growth_level_data.bonus_product_loot_table or self._planted_crop_stats.bonus_product_loot_table)
+         end
+
          self._quality_modification_rate = growth_level_data and growth_level_data.quality_modification_rate or self._planted_crop_stats.quality_modification_rate or
                stonehearth.constants.herbalist_planters.DEFAULT_QUALITY_MODIFICATION_RATE
       else

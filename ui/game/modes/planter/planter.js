@@ -120,23 +120,45 @@ App.AcePlanterTypePaletteView = App.View.extend({
       var self = this;
 
       var cropDataArray = [];
+
       var no_crop = self.planter_data.no_crop;
       cropDataArray.push({
          type: 'no_crop',
          icon: no_crop.icon,
+         level: -1,
          display_name: no_crop.display_name,
          description: no_crop.description
       });
+
       var allowed_crops = self.allowed_crops || self.planter_data.default_allowed_crops;
       radiant.each(self.planter_data.crops, function(key, data) {
          if (allowed_crops[key]) {
             var planterData = {
                type: key,
                icon: data.icon,
-               display_name: data.display_name,
-               description: data.description
+               level: Math.max(0, data.level || 0),
+               display_name: i18n.t(data.display_name),
+               description: i18n.t(data.description)
             }
             cropDataArray.push(planterData);
+         }
+      });
+      
+      cropDataArray.sort((a, b) => {
+         if (a.level < b.level) {
+            return -1;
+         }
+         else if (a.level > b.level) {
+            return 1;
+         }
+         else if (a.display_name < b.display_name) {
+            return -1;
+         }
+         else if (a.display_name > b.display_name) {
+            return 1;
+         }
+         else {
+            return 0;
          }
       });
       self.set('cropTypes', cropDataArray);
