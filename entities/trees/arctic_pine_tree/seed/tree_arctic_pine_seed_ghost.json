@@ -1,0 +1,40 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "type": "entity",
+   "components": {
+      "render_info": {
+         "scale": 1
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "/stonehearth/entities/trees/pine_tree_gold/large_gold_pine_tree/large_gold_pine_tree.qb",
+                     "/stonehearth/entities/trees/pine_tree_silver/large_silver_pine_tree/large_silver_pine_tree.qb",
+                     "/stonehearth/entities/trees/pine_tree_snowy/large_snowy_pine_tree/large_snowy_pine_tree.qb"
+                  ]
+               }
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": -0.5, "y": 0, "z": 0.5 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "align_to_grid": [
+            "x",
+            "z"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "icon": "file(tree_arctic_pine_seed.png)",
+         "material_tags": [
+            "plant"
+         ],
+         "category": "seed"
+      }
+   }
+}

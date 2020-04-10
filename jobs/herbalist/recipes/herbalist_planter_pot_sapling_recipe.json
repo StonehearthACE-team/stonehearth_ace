@@ -1,0 +1,23 @@
+{
+   "type": "recipe",
+   "effort": 45,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.herbalist.recipes.herbalist_planter_pot_sapling_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.herbalist_planter_pot_sapling_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.herbalist_planter_pot_sapling_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/planters/planter_pot_sapling/planter_pot_sapling.png",
+   "workshop": "stonehearth:herbalist:workbench",
+	"work_effect": "fiddle",
+   "level_requirement": 3,
+   "ingredients": [
+		{
+         "material": "clay resource",
+         "count": 5
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:planters:pot:sapling"
+      }
+   ]
+}

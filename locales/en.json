@@ -2579,6 +2579,11 @@
                "description": "The Herbalist can create a special planter to cultivate aquatic resources.",
                "flavor": "Algae can be replanted from their own resources"
             },
+            "herbalist_planter_pot_sapling_recipe": {
+               "recipe_name": "Herbalist Tree-Planting Pot",
+               "description": "The Herbalist can use this large pot to cultivate tree saplings.",
+               "flavor": "Saplings are cultivated from the seeds of the tree"
+            },
             "herbalist_beekeeping_hat_recipe": {
                "recipe_name": "Herbalist's Beekeeping Hat",
                "description": "Provides protection when working with bees.",
@@ -6093,6 +6098,10 @@
          "planter_water": {
             "display_name": "Herbalist Water Planter",
             "description": "Can be used to cultivate aquatic resources like algae or lilies."
+         },
+         "planter_pot_sapling": {
+            "display_name": "Herbalist Tree-Planting Pot",
+            "description": "This large pot can be used for growing tree saplings."
          }
       },
       "resources": {
@@ -7004,6 +7013,20 @@
             "small_almond_tree": {
                "display_name": "Small Almond Tree",
                "description": "A younger, smaller tree. Will bear nuts throughout the Autumn."
+            }
+         },
+         "arctic_pine_tree": {
+            "seed": {
+               "tree_arctic_pine_seed": {
+                  "display_name": "Arctic Pine Tree Seed"
+               }
+            }
+         },
+         "arctic_juniper_tree": {
+            "seed": {
+               "arctic_tree_juniper_seed_ghost": {
+                  "display_name": "Arctic Juniper Tree Seed"
+               }
             }
          }
       },
@@ -11206,45 +11229,125 @@
          "description": "What do you know, it's exactly like a wild Purple Wax Plant! Dani, you should change this text!",
          "harvest_text": "harvesting purple wax plant"
       },
-		"water_lily_pad": {
+      "water_lily_pad": {
          "display_name": "Lily Pad",
          "description": "What do you know, it's exactly like wild Lily Pads! Dani, you should change this text!",
          "harvest_text": "harvesting lily pad"
       },
-		"water_lily_pink": {
+      "water_lily_pink": {
          "display_name": "Pink Water Lily",
          "description": "What do you know, it's exactly like wild Pink Water Lilies! Dani, you should change this text!",
          "harvest_text": "harvesting pink water lily"
       },
-		"water_lily_purple": {
+      "water_lily_purple": {
          "display_name": "Purple Water Lily",
          "description": "What do you know, it's exactly like wild Purple Water Lilies! Dani, you should change this text!",
          "harvest_text": "harvesting purple water lily"
       },
-		"water_lily_white": {
+      "water_lily_white": {
          "display_name": "White Water Lily",
          "description": "What do you know, it's exactly like wild White Water Lilies! Dani, you should change this text!",
          "harvest_text": "harvesting white water lily"
       },
-		"water_lily_yellow": {
+      "water_lily_yellow": {
          "display_name": "Yellow Water Lily",
          "description": "What do you know, it's exactly like wild Yellow Water Lilies! Dani, you should change this text!",
          "harvest_text": "harvesting yellow water lily"
       },
-		"algae_brown": {
+      "algae_brown": {
          "display_name": "Brown Alga",
          "description": "What do you know, it's exactly like wild brown algae! Dani, you should change this text!",
          "harvest_text": "harvesting brown alga"
       },
-		"algae_green": {
+      "algae_green": {
          "display_name": "Green Alga",
          "description": "What do you know, it's exactly like wild green algae! Dani, you should change this text!",
          "harvest_text": "harvesting green alga"
       },
-		"algae_red": {
+      "algae_red": {
          "display_name": "Red Alga",
          "description": "What do you know, it's exactly like wild red algae! Dani, you should change this text!",
          "harvest_text": "harvesting red alga"
+      },
+      "oak_sapling": {
+         "display_name": "Oak Sapling",
+         "description": "What do you know, it's exactly like a wild oak tree! Dani, you should change this text!",
+         "harvest_text": "harvesting oak sapling"
+      },
+      "pine_sapling": {
+         "description": "What do you know, it's exactly like a wild pine tree! Dani, you should change this text!",
+         "harvest_text": "harvesting pine sapling",
+         "display_name": "Pine Sapling"
+      },
+      "juniper_sapling": {
+         "display_name": "Juniper Sapling",
+         "description": "What do you know, it's exactly like a wild juniper tree! Dani, you should change this text!",
+         "harvest_text": "harvesting juniper sapling"
+      },
+      "cactus_sapling": {
+         "display_name": "Cactus Sapling",
+         "description": "What do you know, it's exactly like a wild cactus! Dani, you should change this text!",
+         "harvest_text": "harvesting cactus sapling"
+      },
+      "acacia_sapling": {
+         "display_name": "Acacia Sapling",
+         "description": "What do you know, it's exactly like a wild acacia tree! Dani, you should change this text!",
+         "harvest_text": "harvesting acacia sapling"
+      },
+      "almond_sapling": {
+         "display_name": "Almond Tree Sapling",
+         "description": "What do you know, it's exactly like a wild almond tree! Dani, you should change this text!",
+         "harvest_text": "harvesting almond tree sapling"
+      },
+      "hazelnut_sapling": {
+         "display_name": "Hazel Tree Sapling",
+         "description": "What do you know, it's exactly like a wild hazel tree! Dani, you should change this text!",
+         "harvest_text": "harvesting hazel tree sapling"
+      },
+      "chestnut_sapling": {
+         "display_name": "Chestnut Tree Sapling",
+         "description": "What do you know, it's exactly like a wild chestnut tree! Dani, you should change this text!",
+         "harvest_text": "harvesting chestnut tree sapling"
+      },
+      "walnut_sapling": {
+         "display_name": "Walnut Tree Sapling",
+         "description": "What do you know, it's exactly like a wild walnut tree! Dani, you should change this text!",
+         "harvest_text": "harvesting walnut tree sapling"
+      },
+      "arctic_juniper_sapling": {
+         "display_name": "Arctic Juniper Sapling",
+         "description": "What do you know, it's exactly like a wild arctic juniper tree! Dani, you should change this text!",
+         "harvest_text": "harvesting arctic juniper sapling"
+      },
+      "arctic_pine_sapling": {
+         "display_name": "Arctic Pine Sapling",
+         "description": "What do you know, it's exactly like a wild arctic pine tree! Dani, you should change this text!",
+         "harvest_text": "harvesting arctic pine sapling"
+      },
+      "birch_sapling": {
+         "display_name": "Birch Sapling",
+         "description": "What do you know, it's exactly like a wild birch tree! Dani, you should change this text!",
+         "harvest_text": "harvesting birch sapling"
+      },
+      "highland_pine_sapling": {
+         "display_name": "Highland Pine Sapling",
+         "description": "What do you know, it's exactly like a wild highland pine tree! Dani, you should change this text!",
+         "harvest_text": "harvesting highland pine sapling"
+      },
+      "parana_pine_sapling": {
+         "display_name": "Parana Pine Sapling",
+         "description": "What do you know, it's exactly like a wild parana pine tree! Dani, you should change this text!",
+         "harvest_text": "harvesting parana pine sapling"
+      },
+      "willow_sapling": {
+         "display_name": "Willow Sapling",
+         "description": "What do you know, it's exactly like a wild willow tree! Dani, you should change this text!",
+         "harvest_text": "harvesting willow sapling"
+      },
+      "yew_sapling": {
+         "display_name": "Yew Sapling",
+         "description": "What do you know, it's exactly like a wild yew tree! Dani, you should change this text!",
+         "harvest_text": "harvesting yew sapling"
       }
    },
    "plants": {

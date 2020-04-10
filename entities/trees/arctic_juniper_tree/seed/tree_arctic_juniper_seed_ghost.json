@@ -1,0 +1,35 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "type": "entity",
+   "components": {
+      "render_info": {
+         "scale": 1
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "/stonehearth/entities/trees/juniper_tree_gold/large_gold_juniper_tree/large_gold_juniper_tree.qb",
+                     "/stonehearth/entities/trees/juniper_tree_snowy/large_snowy_juniper_tree/large_snowy_juniper_tree.qb"
+                  ]
+               }
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": -0.075, "y": 0, "z": 0.075 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "icon": "file(tree_arctic_juniper_seed.png)",
+         "material_tags": [
+            "plant"
+         ],
+         "category": "seed"
+      }
+   }
+}

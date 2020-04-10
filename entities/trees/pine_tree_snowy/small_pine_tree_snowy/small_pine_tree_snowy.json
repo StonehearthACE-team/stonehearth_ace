@@ -51,8 +51,28 @@
             "winter": "default"
          }     
       },
+		"stonehearth:resource_node": {
+         "resource_loot_table": {
+            "entries": {
+               "optional": {
+                  "items": {
+                     "pelt": {
+                        "uri": "stonehearth_ace:trees:arctic_pine:seed"
+                     }
+                  }
+               }
+            }
+         }
+      },
 		"stonehearth:loot_drops": {
          "entries": {
+				"optional": {
+               "items": {
+                  "pelt": {
+                     "uri": "stonehearth_ace:trees:arctic_pine:seed"
+                  }
+               }
+            },	
             "beehive": {
                "items": {
                   "none": {

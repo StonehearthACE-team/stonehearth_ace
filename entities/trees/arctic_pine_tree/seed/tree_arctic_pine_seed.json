@@ -1,0 +1,92 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "render_info": {
+         "scale": 0.3
+      },
+      "stonehearth:evolve": {},
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(tree_arctic_pine_seed_iconic.json)",
+         "ghost_form": "file(tree_arctic_pine_seed_ghost.json)",
+         "placeable_on_ground": true,
+         "hide_undeploy_ui": true
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "/stonehearth/entities/plants/dirt_pile/dirt_pile_1.qb",
+                     "/stonehearth/entities/plants/dirt_pile/dirt_pile_2.qb",
+                     "/stonehearth/entities/plants/dirt_pile/dirt_pile_3.qb"
+                  ]
+               }
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "mob_collision_type": "clutter"
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.trees.arctic_pine_tree.seed.tree_arctic_pine_seed.display_name)",
+         "description": "i18n(stonehearth:entities.trees.pine_tree.seed.tree_pine_seed.description)",
+         "icon": "file(tree_arctic_pine_seed.png)",
+         "material_tags": [
+            "stockpile_plant",
+            "plant",
+            "resource",
+            "seed",
+            "seed_hard",
+            "cooking_ingredient",
+            "stockpile_cooking_ingredient"
+         ],
+         "category": "seed"
+      },
+      "stonehearth:evolve_data": {
+         "next_stage": [
+            "stonehearth:trees:gold:pine:sprout",
+            "stonehearth:trees:silver:pine:sprout",
+            "stonehearth:trees:snowy:pine:sprout"
+         ],
+         "evolve_time": "6h+3h",
+         "biomes": {
+            "stonehearth_ace:biome:highlands": {
+               "evolve_time_multiplier": 1.5
+            },
+            "stonehearth:biome:temperate": {
+               "evolve_time_multiplier": 2
+            },
+            "stonehearth:biome:desert": {
+               "evolve_time_multiplier": 4
+            }
+         },
+         "seasons": {
+            "spring": {
+               "evolve_time_multiplier": 1.5
+            },
+            "summer": {
+               "evolve_time_multiplier": 2
+            },
+            "winter": {
+               "evolve_time_multiplier": 1.5
+            }
+         }
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 1,
+         "rarity": "rare",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_type": "caravan",
+            "shopkeeper_level": 2
+         }
+      }
+   }
+}

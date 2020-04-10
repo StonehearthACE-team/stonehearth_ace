@@ -1,0 +1,84 @@
+{
+   "type": "entity",
+   "mixins": [
+      "file(planter_pot_sapling_ghost.json)",
+      "stonehearth_ace:mixins:herbalist_planter"
+   ],
+   "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(planter_pot_sapling_iconic.json)",
+         "ghost_form": "file(planter_pot_sapling_ghost.json)",
+         "placeable_on_ground": true
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -0.25, "y": 0, "z": -0.25 },
+               "max": { "x": 1.25, "y": 1, "z": 1.25 }
+            }
+         ]
+      },
+      "movement_modifier_shape": {
+         "modifier": -0.5,
+         "nav_preference_modifier": -0.5,
+         "region": [
+            {
+               "min": { "x": -0.25, "y": 1, "z": -0.25 },
+               "max": { "x": 1.25, "y": 2, "z": 1.25 }
+            }
+         ]
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 2, "y": 1, "z": 2 }
+            }
+         ]
+      },
+      "stonehearth_ace:herbalist_planter": {
+         "allowed_crops": {
+            "oak_sapling": true,
+            "pine_sapling": true,
+            "juniper_sapling": true,
+            "acacia_sapling": true,
+            "cactus_sapling": true,
+            "almond_sapling": true,
+            "walnut_sapling": true,
+            "hazelnut_sapling": true,
+            "chestnut_sapling": true,
+            "birch_sapling": true,
+            "highland_pine_sapling": true,
+            "yew_sapling": true,
+            "willow_sapling": true,
+            "arctic_pine_sapling": true,
+            "arctic_juniper_sapling": true,
+            "parana_pine_sapling": true
+         },
+         "plant_locations": [
+            {
+               "offset": { "x": 0, "y": 0.75, "z": 0 }
+            }
+         ]
+      },
+      "stonehearth:storage": {
+         "capacity": 1
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 11,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 13
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}
