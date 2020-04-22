@@ -6,6 +6,7 @@ local ConsumablesLib = require 'stonehearth.ai.lib.consumables_lib'
 
 local healing_lib = {}
 
+local log = radiant.log.create_logger('healing_lib')
 local max_percent_health_redux
 
 function healing_lib.get_conditions_needing_cure(entity)
@@ -64,7 +65,14 @@ end
 function healing_lib.get_effective_max_health_percent(entity)
    -- limits only apply to player factions, not npc factions
    local player_id = radiant.entities.get_work_player_id(entity)
-   if not player_id or player_id == '' or stonehearth.population:get_population(player_id):is_npc() then
+   if not player_id or player_id == '' then
+      return 1
+   end
+
+   local pop = stonehearth.population:get_population(player_id)
+   if not pop then
+      log:error('player_id "'..player_id..'" doesn\'t have a population')
+   elseif pop:is_npc() then
       return 1
    end
 
