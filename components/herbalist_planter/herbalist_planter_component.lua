@@ -303,6 +303,10 @@ function HerbalistPlanterComponent:_reset_tend_quality(multiplier)
    local expendable = self._entity:get_component('stonehearth:expendable_resources')
    if expendable then
       local value = expendable:get_min_value('tend_quality') or 0
+      if self._sv.seed_quality then
+         value = math.max(self._sv.seed_quality, value)
+      end
+      
       if multiplier then
          value = value + ((expendable:get_value('tend_quality') or 0) - value) * multiplier
       end
@@ -450,11 +454,13 @@ end
 
 -- ai will call this to set the planted crop to the current crop selection and start it growing
 -- this also gets called to clear the planted crop (when current_crop is nil)
-function HerbalistPlanterComponent:plant_crop(planter)
+function HerbalistPlanterComponent:plant_crop(planter, seed)
    if self._sv.current_crop then
       self._sv.planted_crop = self._sv.current_crop
+      self._sv.seed_quality = radiant.entities.get_item_quality(seed)
    else
       self._sv.planted_crop = nil
+      self._sv.seed_quality = nil
    end
    self:_load_planted_crop_stats()
 

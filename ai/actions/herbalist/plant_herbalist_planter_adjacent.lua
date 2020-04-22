@@ -43,7 +43,7 @@ function PlantHerbalistPlanterAdjacent:run(ai, entity, args)
    planter_comp:run_planter_plant_effect()
    ai:execute('stonehearth:run_effect', { effect = effect })
 
-   planter_comp:plant_crop(entity)
+   planter_comp:plant_crop(entity, seed)
    radiant.entities.destroy_entity(seed)
 
    radiant.events.trigger(entity, 'stonehearth_ace:interact_herbalist_planter', {type = 'plant_planter', planter = planter})

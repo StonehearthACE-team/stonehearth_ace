@@ -126,8 +126,8 @@ App.AcePlanterTypePaletteView = App.View.extend({
          type: 'no_crop',
          icon: no_crop.icon,
          level: -1,
-         display_name: no_crop.display_name,
-         description: no_crop.description
+         display_name: i18n.t(no_crop.display_name),
+         description: i18n.t(no_crop.description)
       });
 
       var allowed_crops = self.allowed_crops || self.planter_data.default_allowed_crops;
@@ -143,7 +143,7 @@ App.AcePlanterTypePaletteView = App.View.extend({
             cropDataArray.push(planterData);
          }
       });
-      
+
       cropDataArray.sort((a, b) => {
          if (a.level < b.level) {
             return -1;

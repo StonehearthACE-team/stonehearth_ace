@@ -49,7 +49,7 @@ function AceBuffsComponent:destroy()
 end
 
 function AceBuffsComponent:_destroy_listeners()
-	if self._season_change_listener then
+   if self._season_change_listener then
       self._season_change_listener:destroy()
       self._season_change_listener = nil
    end
@@ -102,6 +102,15 @@ function AceBuffsComponent:has_category_buffs(category)
    return self._sv.buffs_by_category[category] ~= nil
 end
 
+function AceBuffsComponent:remove_category_buffs(category)
+   local category_buffs = self:get_buffs_by_category(category)
+   if category_buffs then
+      for buff_id, _ in pairs(category_buffs) do
+         self:remove_buff(buff_id, true)
+      end
+   end
+end
+
 function AceBuffsComponent:add_buff(uri, options)
    assert(not string.find(uri, '%.'), 'tried to add a buff with a uri containing "." Use an alias instead')
 
@@ -110,40 +119,42 @@ function AceBuffsComponent:add_buff(uri, options)
    end
 
    local json = radiant.resources.load_json(uri, true)
-	
-	if json.cant_affect_siege then
-		local siege_data = radiant.entities.get_entity_data(self._entity, 'stonehearth:siege_object')
-		if siege_data then
-			return -- don't add this buff if the entity is a siege object
-		end
-	end	
-	
-	if json.cant_affect then
-		local cant_affect = nil
-		for _, forbidden_species in pairs(json.cant_affect) do
-			local species_data = radiant.entities.get_entity_data(self._entity, 'stonehearth:species')
-			if species_data and species_data.id == allowed_species then
-				cant_affect = true
-			end		
-		end
-		if cant_affect then
-			return -- don't add this buff if the entity's species is in the "cant_affect" list of the buff's json
-		end
-	end	
-		
-	if json.can_only_affect then
-		local can_only_affect = nil
-		for _, allowed_species in pairs(json.can_only_affect) do
-			local species_data = radiant.entities.get_entity_data(self._entity, 'stonehearth:species')
-			if species_data and species_data.id == allowed_species then
-				can_only_affect = true
-			end		
-		end
-		if not can_only_affect then
-			return -- don't add this buff if the entity's species is not in the "can_only_affect" list of the buff's json
-		end
-	end		
-	
+   
+   if json.cant_affect_siege then
+      local siege_data = radiant.entities.get_entity_data(self._entity, 'stonehearth:siege_object')
+      if siege_data then
+         return -- don't add this buff if the entity is a siege object
+      end
+   end
+
+   if json.cant_affect then
+      local species_data = radiant.entities.get_entity_data(self._entity, 'stonehearth:species')
+      if species_data then
+         for _, forbidden_species in pairs(json.cant_affect) do
+            if species_data.id == allowed_species then
+               return -- don't add this buff if the entity's species is in the "cant_affect" list of the buff's json
+            end
+         end
+      end
+   end
+
+   if json.can_only_affect then
+      local can_only_affect = false
+      local species_data = radiant.entities.get_entity_data(self._entity, 'stonehearth:species')
+
+      if species_data then
+         for _, allowed_species in pairs(json.can_only_affect) do
+            if species_data.id == allowed_species then
+               can_only_affect = true
+               break
+            end
+         end
+      end
+      if not can_only_affect then
+         return -- don't add this buff if the entity's species is not in the "can_only_affect" list of the buff's json
+      end
+   end
+
    if json.category and self:_category_is_disallowed(json.category) then
       return -- don't add this buff if its whole category is disallowed by other active buffs
    end
@@ -222,12 +233,7 @@ function AceBuffsComponent:add_buff(uri, options)
             end
             cur_disallowed[uri] = true
 
-            local category_buffs = self:get_buffs_by_category(dis_category)
-            if category_buffs then
-               for buff_id, _ in pairs(category_buffs) do
-                  self:remove_buff(buff_id, true)
-               end
-            end
+            self:remove_category_buffs(dis_category)
          end
       end
 
