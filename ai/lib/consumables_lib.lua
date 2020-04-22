@@ -12,14 +12,38 @@ function ConsumablesLib.use_consumable(consumable, user, target_entity)
       consumable = root
    end
 
-   local consumable_data = radiant.entities.get_entity_data(consumable, 'stonehearth:consumable')
+   local consumable_data = ConsumablesLib.get_consumable_data(consumable)
    if not consumable_data then
       radiant.verify(false, "Unable to use consumable %s because it has no entity data for consumables", consumable)
       return false
    end
 
+   local use_script = consumable_data.script
+   if not SCRIPTS_CACHE[use_script] then
+      SCRIPTS_CACHE[use_script] = radiant.mods.load_script(use_script)()
+   end
+   local script = SCRIPTS_CACHE[use_script]
+   if not script then
+      radiant.verify(false, "Could not find script %s for consumable %s", use_script, consumable)
+      return false
+   end
+   if not script.use then
+      radiant.verify(false, "Could not find function use() for script %s for consumable %s", use_script, consumable)
+      return false
+   end
+   return script.use(consumable, consumable_data, user, target_entity)
+end
+
+function ConsumablesLib.get_consumable_data(consumable)
+   local root, iconic = entity_forms_lib.get_forms(consumable)
+   if root then
+      consumable = root
+   end
+
+   local consumable_data = radiant.entities.get_entity_data(consumable, 'stonehearth:consumable')
+
    -- determine if quality-based tiers of consumable data exist, and use the appropriate one
-   if consumable_data.consumable_qualities then
+   if consumable_data and consumable_data.consumable_qualities then
       local quality = radiant.entities.get_item_quality(consumable)
       -- assume that we want to use the highest quality data <= to the consumable's quality
       -- e.g., if no masterwork data specified, have a masterwork consumable use excellent data (or fine, etc., whatever's available)
@@ -43,20 +67,7 @@ function ConsumablesLib.use_consumable(consumable, user, target_entity)
       end
    end
 
-   local use_script = consumable_data.script
-   if not SCRIPTS_CACHE[use_script] then
-      SCRIPTS_CACHE[use_script] = radiant.mods.load_script(use_script)()
-   end
-   local script = SCRIPTS_CACHE[use_script]
-   if not script then
-      radiant.verify(false, "Could not find script %s for consumable %s", use_script, consumable)
-      return false
-   end
-   if not script.use then
-      radiant.verify(false, "Could not find function use() for script %s for consumable %s", use_script, consumable)
-      return false
-   end
-   return script.use(consumable, consumable_data, user, target_entity)
+   return consumable_data
 end
 
 return ConsumablesLib

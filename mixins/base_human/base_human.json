@@ -27,6 +27,12 @@
          "max_drink_satiety": {
             "type": "basic",
             "value": 100
+         },
+         "effective_max_health_percent": {
+            "type": "basic",
+            "value": 100,
+            "min": 10,
+            "max": 100
          }
       },
       "stonehearth:expendable_resources": {

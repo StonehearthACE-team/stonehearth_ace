@@ -1,3 +1,4 @@
+local healing_lib = require 'stonehearth_ace.ai.lib.healing_lib'
 local HealTarget = radiant.mods.require('stonehearth.entities.consumables.scripts.heal_target')
 local AceHealTarget = class()
 
@@ -10,16 +11,20 @@ function AceHealTarget.use(consumable, consumable_data, user, target_entity)
       return false
    end
 
+   -- first "cure" any conditions that this consumable should cure
+   local buffs_component = target_entity:get_component('stonehearth:buffs')
+   if buffs_component and consumable_data.cures_conditions then
+      for condition, cures_it in pairs(consumable_data.cures_conditions) do
+         if cures_it then
+            -- remove all buffs that have this condition as their category
+            buffs_component:remove_category_buffs(condition)
+         end
+      end
+   end
+
    local current_health = radiant.entities.get_health(target_entity)
    if current_health > 0 then
-      local healed_amount = consumable_data.health_healed
-
-      -- Apply job perks to amount healed
-      local job_component = user:get_component('stonehearth:job')
-      local job_controller = job_component and job_component:get_curr_job_controller()
-      if job_controller and job_controller.get_healing_item_effect_multiplier then
-         healed_amount = math.floor(healed_amount * job_controller:get_healing_item_effect_multiplier())
-      end
+      local healed_amount = consumable_data.health_healed * healing_lib.get_healing_multiplier(user)
 
       radiant.entities.modify_health(target_entity, healed_amount)
    else

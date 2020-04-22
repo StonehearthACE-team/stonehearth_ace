@@ -10,6 +10,9 @@
       "stonehearth:consumable": {
          "script": "stonehearth:consumables:scripts:heal_target",
          "work_units": 2,
+         "cures_conditions": {
+            "wounded": true
+         },
          "consumable_qualities": [
             {
                "health_healed": 60,
