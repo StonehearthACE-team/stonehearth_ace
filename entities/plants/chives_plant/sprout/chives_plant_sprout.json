@@ -1,0 +1,39 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "render_info": {
+         "scale": 0.11
+      },
+      "stonehearth:evolve": {},
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(chives_plant_sprout.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": -0.1, "y": 0, "z": -0.1 },
+         "mob_collision_type": "clutter",
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:evolve_data": {
+         "next_stage": "stonehearth_ace:plants:chives:stem",
+         "evolve_time": "15h+2h"
+      },
+      "stonehearth:catalog": {
+         "material_tags": [
+            "stockpile_plant"
+         ],
+         "display_name": "i18n(stonehearth_ace:entities.plants.chives_plant.sprout.chives_plant_sprout.display_name)",
+         "description": "i18n(stonehearth_ace:entities.plants.chives_plant.sprout.chives_plant_sprout.description)",
+         "category": "plants"
+      },
+      "stonehearth:appeal": {
+         "appeal": 1
+      }
+   }
+}

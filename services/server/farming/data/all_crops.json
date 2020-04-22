@@ -87,6 +87,46 @@
             "decorative_flowers": true
          }
       },
+      "poppy": {
+         "crop_type": "stonehearth_ace:crops:poppy_crop",
+         "ordinal": 10,
+         "level_requirement": 3,
+         "field_types": {
+            "decorative_flowers": true
+         }
+      },
+      "rose": {
+         "crop_type": "stonehearth_ace:crops:rose_crop",
+         "ordinal": 10,
+         "level_requirement": 2,
+         "field_types": {
+            "decorative_flowers": true
+         }
+      },
+      "oleander": {
+         "crop_type": "stonehearth_ace:crops:oleander_crop",
+         "ordinal": 10,
+         "level_requirement": 3,
+         "field_types": {
+            "decorative_flowers": true
+         }
+      },
+      "daffodil": {
+         "crop_type": "stonehearth_ace:crops:daffodil_crop",
+         "ordinal": 10,
+         "level_requirement": 2,
+         "field_types": {
+            "decorative_flowers": true
+         }
+      },
+      "nightshade": {
+         "crop_type": "stonehearth_ace:crops:nightshade_crop",
+         "ordinal": 10,
+         "level_requirement": 5,
+         "field_types": {
+            "decorative_flowers": true
+         }
+      },
       "pumpkin": {
          "ordinal": 11,
          "level_requirement": 3,
@@ -252,7 +292,6 @@
          ]
       },
       "underfarm": {
-         "sample_crop": "",
          "color": [
             113,
             82,
@@ -663,7 +702,7 @@
          ]
       },
       "decorative_flowers": {
-         "sample_crop": "",
+         "allow_disable_harvest": true,
          "color": [
             229,
             145,

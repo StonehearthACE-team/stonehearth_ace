@@ -1,0 +1,23 @@
+{
+   "type": "recipe",
+   "effort": 120,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.herbalist.recipes.nightshade_seeds_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.nightshade_seeds_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.nightshade_seeds_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/consumables/seeds/nightshade_seeds/nightshade_seeds.png",
+   "workshop": "stonehearth:herbalist:workbench",
+   "level_requirement": 5,
+   "manual_unlock": true,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:plants:nightshade:seed",
+         "count": 8
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:consumables:seeds:nightshade_seeds"
+      }
+   ]
+}

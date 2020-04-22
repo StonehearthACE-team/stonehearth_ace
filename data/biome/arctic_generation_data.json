@@ -106,6 +106,46 @@
                "exclusion_radius": 0
             }
          },
+			"stonehearth_ace:plants:rose": {
+				"placement_type": "dense",
+				"parameters": {
+					"grid_multiple": 2,
+					"item_density": 0.4,
+					"exclusion_radius": 0
+         }
+      },
+		"stonehearth_ace:plants:chives": {
+				"placement_type": "dense",
+				"parameters": {
+					"grid_multiple": 2,
+					"item_density": 0.4,
+					"exclusion_radius": 0
+         }
+      },
+		"stonehearth_ace:plants:bog_myrtle": {
+            "placement_type": "dense",
+            "parameters": {
+               "grid_multiple": 3,
+               "item_density": 0.2,
+               "exclusion_radius": 1
+            }
+         },
+			"stonehearth_ace:plants:nightshade": {
+            "placement_type": "dense",
+            "parameters": {
+               "grid_multiple": 2,
+               "item_density": 0.3,
+               "exclusion_radius": 1
+            }
+         },
+			"stonehearth_ace:plants:daffodil": {
+            "placement_type": "dense",
+            "parameters": {
+               "grid_multiple": 3,
+               "item_density": 0.3,
+               "exclusion_radius": 1
+            }
+         },
 		 "stonehearth_ace:terrain:pasture_grass": {
             "placement_type": "dense",
             "parameters": {
@@ -176,7 +216,11 @@
             "weights": {
                "plains": {
                   "1": {
+							"stonehearth_ace:plants:bog_myrtle" : 1.1,
+							"stonehearth_ace:plants:daffodil" : 1.0,
                      "stonehearth_ace:fungi:winter_morel": 0.2,
+							"stonehearth_ace:plants:rose": 1.8,
+							"stonehearth_ace:plants:chives": 1.0,
 							"stonehearth_ace:terrain:pasture_grass:overgrown": 0.1,
 							"stonehearth_ace:terrain:pasture_grass": 0.2,
 							"stonehearth_ace:terrain:pasture_grass:short": 0.1,
@@ -185,14 +229,20 @@
                },
                "foothills": {
                   "1": {
-                     "stonehearth_ace:fungi:winter_morel": 0.2,
+                     "stonehearth_ace:fungi:winter_morel": 0.3,
+							"stonehearth_ace:plants:rose": 0.4,
+							"stonehearth_ace:plants:chives": 0.5,
+							"stonehearth_ace:plants:nightshade": 0.7,
 							"stonehearth_ace:terrain:pasture_grass:overgrown": 0.1,
 							"stonehearth_ace:terrain:pasture_grass": 0.2,
 							"stonehearth_ace:terrain:pasture_grass:short": 0.1,
 							"stonehearth_ace:trees:walnut:small" : 0.15
                   },
                   "2": {
-                     "stonehearth_ace:fungi:winter_morel": 0.1
+                     "stonehearth_ace:fungi:winter_morel": 0.2,
+							"stonehearth_ace:plants:nightshade": 0.9,
+							"stonehearth_ace:plants:rose": 0.1,
+							"stonehearth_ace:plants:chives": 0.1
                   }
                },
                "mountains": {

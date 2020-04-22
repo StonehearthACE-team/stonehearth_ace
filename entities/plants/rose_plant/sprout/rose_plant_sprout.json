@@ -1,0 +1,39 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "render_info": {
+         "scale": 0.12
+      },
+      "stonehearth:evolve": {},
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(rose_plant_sprout.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": -0.09, "y": 0, "z": -0.09 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "mob_collision_type": "clutter"
+      }
+   },
+   "entity_data": {
+      "stonehearth:evolve_data": {
+         "next_stage": "stonehearth_ace:plants:rose:stem",
+         "evolve_time": "15h+2h"
+      },
+      "stonehearth:catalog": {
+         "material_tags": [
+            "stockpile_plant"
+         ],
+         "display_name": "i18n(stonehearth_ace:entities.plants.rose_plant.sprout.rose_plant_sprout.display_name)",
+         "description": "i18n(stonehearth_ace:entities.plants.rose_plant.sprout.rose_plant_sprout.description)",
+         "category": "plants"
+      },
+      "stonehearth:appeal": {
+         "appeal": 1
+      }
+   }
+}

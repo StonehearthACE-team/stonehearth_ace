@@ -47,6 +47,38 @@
                "exclusion_radius": 0
             }
          },
+			"stonehearth_ace:plants:nightshade": {
+            "placement_type": "dense",
+            "parameters": {
+               "grid_multiple": 3,
+               "item_density": 0.5,
+               "exclusion_radius": 1
+            }
+         },
+			"stonehearth_ace:plants:oleander": {
+            "placement_type": "dense",
+            "parameters": {
+               "grid_multiple": 3,
+               "item_density": 0.6,
+               "exclusion_radius": 0
+            }
+         },
+			"stonehearth_ace:plants:daffodil": {
+            "placement_type": "dense",
+            "parameters": {
+               "grid_multiple": 3,
+               "item_density": 0.1,
+               "exclusion_radius": 1
+            }
+         },
+			"stonehearth_ace:plants:sage": {
+            "placement_type": "dense",
+            "parameters": {
+               "grid_multiple": 2,
+               "item_density": 0.5,
+               "exclusion_radius": 0
+            }
+         },
 		 "stonehearth_ace:terrain:pasture_grass": {
             "placement_type": "dense",
             "parameters": {
@@ -115,14 +147,64 @@
 						"stonehearth_ace:trees:chestnut" : 0.06
 					}
 				}
-			}
+			},
+			"noise_map_parameters": {
+            "mean_offset": {
+               "boundary": -5,
+               "water": 50
+            },
+            "terrain_based": {
+               "plains": {
+                  "1": {
+                     "density": 0,
+                     "mean": -40,
+                     "std_dev": 0
+                  },
+                  "2": {
+                     "density": 1,
+                     "mean": -5,
+                     "std_dev": 50
+                  }
+               },
+               "foothills": {
+                  "1": {
+                     "density": 0.8,
+                     "mean": 11,
+                     "std_dev": 15
+                  },
+                  "2": {
+                     "density": 0.7,
+                     "mean": 7,
+                     "std_dev": 20
+                  }
+               },
+               "mountains": {
+                  "1": {
+                     "density": 0.7,
+                     "mean": 6,
+                     "std_dev": 20
+                  },
+                  "2": {
+                     "density": 0.5,
+                     "mean": 0,
+                     "std_dev": 30
+                  },
+                  "3": {
+                     "density": 0.3,
+                     "mean": -8,
+                     "std_dev": 40
+                  }
+               }
+            }
+         }
 		},
       "scattered": {
          "plants": {
             "weights": {
                "plains": {
                   "1": {
-                     "stonehearth_ace:fungi:bolete": 0.1,
+							"stonehearth_ace:plants:daffodil": 0.8,
+							"stonehearth_ace:plants:sage": 0.5,
 							"stonehearth_ace:terrain:pasture_grass:overgrown": 0.1,
 							"stonehearth_ace:terrain:pasture_grass": 0.3,
 							"stonehearth_ace:terrain:pasture_grass:short": 0.2,
@@ -133,6 +215,10 @@
                "foothills": {
                   "1": {
                      "stonehearth_ace:fungi:bolete": 0.1,
+							"stonehearth_ace:plants:daffodil": 0.6,
+							"stonehearth_ace:plants:sage": 0.2,
+							"stonehearth_ace:plants:nightshade": 1,
+							"stonehearth_ace:plants:oleander": 0.8,
 							"stonehearth_ace:terrain:pasture_grass:overgrown": 0.1,
 							"stonehearth_ace:terrain:pasture_grass": 0.3,
 							"stonehearth_ace:terrain:pasture_grass:short": 0.2,
@@ -140,6 +226,8 @@
                   },
                   "2": {
                      "stonehearth_ace:fungi:bolete": 0.1,
+							"stonehearth_ace:plants:nightshade": 1.6,
+							"stonehearth_ace:plants:oleander": 1.6,
 							"stonehearth_ace:terrain:pasture_grass:overgrown": 0.1,
 							"stonehearth_ace:terrain:pasture_grass": 0.3,
 							"stonehearth_ace:terrain:pasture_grass:short": 0.2,
@@ -148,7 +236,9 @@
                },
                "mountains": {
                   "1": {
-                     "stonehearth_ace:fungi:bolete": 0.2
+                     "stonehearth_ace:fungi:bolete": 0.2,
+							"stonehearth_ace:plants:nightshade": 0.4,
+							"stonehearth_ace:plants:oleander": 1.0
                   }
                }
             }

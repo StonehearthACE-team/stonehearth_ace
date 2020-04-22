@@ -1,0 +1,50 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:item_properties",
+   "components": {
+      "render_info": {
+         "scale": 0.15
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(bog_myrtle.qb)"
+            ]
+         }
+      },
+      "stonehearth:stacks": {
+         "max_stacks": 6
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 2,
+         "rarity": "uncommon",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 2,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.resources.herb.bog_myrtle.display_name)",
+         "description": "i18n(stonehearth_ace:entities.resources.herb.bog_myrtle.description)",
+         "icon": "file(bog_myrtle.png)",
+         "is_item": true,
+         "category": "resources",
+         "material_tags": [
+            "plant",
+            "herb",
+            "green",
+            "bitter",
+            "resource",
+            "bog_myrtle",
+            "stockpile_plant"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": 1
+      }
+   }
+}

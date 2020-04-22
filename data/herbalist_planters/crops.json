@@ -18,7 +18,17 @@
       "sugarbell": true,
       "earthbud": true,
       "wax_plant_green": true,
-      "wax_plant_purple": true
+      "wax_plant_purple": true,
+      "poppy": true,
+      "rose": true,
+      "dill": true,
+      "chives": true,
+      "bog_myrtle": true,
+      "nightshade": true,
+      "daffodil": true,
+      "oleander": true,
+      "parsley": true,
+      "sage": true
    },
    "no_crop": {
       "display_name": "i18n(stonehearth_ace:herbalist_crops.no_crop.display_name)",
@@ -281,6 +291,326 @@
          "description": "i18n(stonehearth_ace:herbalist_crops.snow_poppy.description)",
          "harvest_status_text": "i18n(stonehearth_ace:herbalist_crops.snow_poppy.harvest_text)",
          "icon": "file(crops/planter/snow_poppy/snow_poppy.png)"
+      },
+      "poppy": {
+         "seed_uri": "stonehearth_ace:plants:poppy:seed",
+         "product_uri": "stonehearth_ace:resources:herb:poppy",
+         "harvester_effect": "fiddle",
+         "render_scale": 0.1,
+         "tending_multiplier": 0.5,
+         "level": 1,
+         "growth_time": "2h",
+         "bonus_product_growth_time": "12h",
+         "growth_levels": [
+            {
+               "model": "file(crops/planter/poppy/poppy_1.qb)",
+               "offset": { "x": 3.5, "y": 0, "z": 4 }
+            },
+            {
+               "model": "file(crops/planter/poppy/poppy_2.qb)",
+               "offset": { "x": 3.5, "y": 0, "z": 4 }
+            },
+            {
+               "model": "file(crops/planter/poppy/poppy_3.qb)",
+               "offset": { "x": 3.5, "y": 0, "z": 4 }
+            },
+            {
+               "model": "file(crops/planter/poppy/poppy_4.qb)",
+               "offset": { "x": 3.5, "y": 0, "z": 4 }
+            }
+         ],
+         "display_name": "i18n(stonehearth_ace:herbalist_crops.poppy.display_name)",
+         "description": "i18n(stonehearth_ace:herbalist_crops.poppy.description)",
+         "harvest_status_text": "i18n(stonehearth_ace:herbalist_crops.poppy.harvest_text)",
+         "icon": "file(crops/planter/poppy/poppy.png)"
+      },
+      "rose": {
+         "seed_uri": "stonehearth_ace:plants:rose:seed",
+         "product_uri": "stonehearth_ace:resources:herb:rose",
+         "harvester_effect": "fiddle",
+         "render_scale": 0.1,
+         "tending_multiplier": 0.5,
+         "level": 1,
+         "growth_time": "2h",
+         "bonus_product_growth_time": "12h",
+         "growth_levels": [
+            {
+               "model": "file(crops/planter/rose/rose_1.qb)",
+               "offset": { "x": 3.5, "y": 0, "z": 4 }
+            },
+            {
+               "model": "file(crops/planter/rose/rose_2.qb)",
+               "offset": { "x": 3.5, "y": 0, "z": 4 }
+            },
+            {
+               "model": "file(crops/planter/rose/rose_3.qb)",
+               "offset": { "x": 3.5, "y": 0, "z": 4 }
+            },
+            {
+               "model": "file(crops/planter/rose/rose_4.qb)",
+               "offset": { "x": 3.5, "y": 0, "z": 4 }
+            }
+         ],
+         "display_name": "i18n(stonehearth_ace:herbalist_crops.rose.display_name)",
+         "description": "i18n(stonehearth_ace:herbalist_crops.rose.description)",
+         "harvest_status_text": "i18n(stonehearth_ace:herbalist_crops.rose.harvest_text)",
+         "icon": "file(crops/planter/rose/rose.png)"
+      },
+      "dill": {
+         "seed_uri": "stonehearth_ace:plants:dill:seed",
+         "product_uri": "stonehearth_ace:resources:herb:dill",
+         "harvester_effect": "fiddle",
+         "render_scale": 0.08,
+         "tending_multiplier": 0.5,
+         "level": 1,
+         "growth_time": "2h",
+         "bonus_product_growth_time": "12h",
+         "growth_levels": [
+            {
+               "model": "file(crops/planter/dill/dill_1.qb)",
+               "offset": { "x": 4.5, "y": 0, "z": 5 }
+            },
+            {
+               "model": "file(crops/planter/dill/dill_2.qb)",
+               "offset": { "x": 4.5, "y": 0, "z": 5 }
+            },
+            {
+               "model": "file(crops/planter/dill/dill_3.qb)",
+               "offset": { "x": 4.5, "y": 0, "z": 5 }
+            },
+            {
+               "model": "file(crops/planter/dill/dill_4.qb)",
+               "offset": { "x": 4.5, "y": 0, "z": 5 }
+            }
+         ],
+         "display_name": "i18n(stonehearth_ace:herbalist_crops.dill.display_name)",
+         "description": "i18n(stonehearth_ace:herbalist_crops.dill.description)",
+         "harvest_status_text": "i18n(stonehearth_ace:herbalist_crops.dill.harvest_text)",
+         "icon": "file(crops/planter/dill/dill.png)"
+      },
+      "chives": {
+         "seed_uri": "stonehearth_ace:plants:chives:seed",
+         "product_uri": "stonehearth_ace:resources:herb:chives",
+         "harvester_effect": "fiddle",
+         "render_scale": 0.085,
+         "tending_multiplier": 0.5,
+         "level": 1,
+         "growth_time": "2h",
+         "bonus_product_growth_time": "12h",
+         "growth_levels": [
+            {
+               "model": "file(crops/planter/chives/chives_1.qb)",
+               "offset": { "x": 4.5, "y": 0, "z": 4.5 }
+            },
+            {
+               "model": "file(crops/planter/chives/chives_2.qb)",
+               "offset": { "x": 4.5, "y": 0, "z": 4.5 }
+            },
+            {
+               "model": "file(crops/planter/chives/chives_3.qb)",
+               "offset": { "x": 4.5, "y": 0, "z": 4.5 }
+            },
+            {
+               "model": "file(crops/planter/chives/chives_4.qb)",
+               "offset": { "x": 4.5, "y": 0, "z": 4.5 }
+            }
+         ],
+         "display_name": "i18n(stonehearth_ace:herbalist_crops.chives.display_name)",
+         "description": "i18n(stonehearth_ace:herbalist_crops.chives.description)",
+         "harvest_status_text": "i18n(stonehearth_ace:herbalist_crops.chives.harvest_text)",
+         "icon": "file(crops/planter/chives/chives.png)"
+      },
+      "bog_myrtle": {
+         "seed_uri": "stonehearth_ace:plants:bog_myrtle:seed",
+         "product_uri": "stonehearth_ace:resources:herb:bog_myrtle",
+         "harvester_effect": "fiddle",
+         "render_scale": 0.09,
+         "tending_multiplier": 0.5,
+         "level": 1,
+         "growth_time": "2h",
+         "bonus_product_growth_time": "12h",
+         "growth_levels": [
+            {
+               "model": "file(crops/planter/bog_myrtle/bog_myrtle_1.qb)",
+               "offset": { "x": 5, "y": 0, "z": 5 }
+            },
+            {
+               "model": "file(crops/planter/bog_myrtle/bog_myrtle_2.qb)",
+               "offset": { "x": 5, "y": 0, "z": 5 }
+            },
+            {
+               "model": "file(crops/planter/bog_myrtle/bog_myrtle_3.qb)",
+               "offset": { "x": 5, "y": 0, "z": 5 }
+            },
+            {
+               "model": "file(crops/planter/bog_myrtle/bog_myrtle_4.qb)",
+               "offset": { "x": 5, "y": 0, "z": 5 }
+            }
+         ],
+         "display_name": "i18n(stonehearth_ace:herbalist_crops.bog_myrtle.display_name)",
+         "description": "i18n(stonehearth_ace:herbalist_crops.bog_myrtle.description)",
+         "harvest_status_text": "i18n(stonehearth_ace:herbalist_crops.bog_myrtle.harvest_text)",
+         "icon": "file(crops/planter/bog_myrtle/bog_myrtle.png)"
+      },
+      "nightshade": {
+         "seed_uri": "stonehearth_ace:plants:nightshade:seed",
+         "product_uri": "stonehearth_ace:resources:herb:nightshade",
+         "harvester_effect": "fiddle",
+         "render_scale": 0.1,
+         "tending_multiplier": 0.5,
+         "level": 1,
+         "growth_time": "2h",
+         "bonus_product_growth_time": "12h",
+         "growth_levels": [
+            {
+               "model": "file(crops/planter/nightshade/nightshade_1.qb)",
+               "offset": { "x": 4, "y": 0, "z": 4 }
+            },
+            {
+               "model": "file(crops/planter/nightshade/nightshade_2.qb)",
+               "offset": { "x": 4, "y": 0, "z": 4 }
+            },
+            {
+               "model": "file(crops/planter/nightshade/nightshade_3.qb)",
+               "offset": { "x": 4, "y": 0, "z": 4 }
+            },
+            {
+               "model": "file(crops/planter/nightshade/nightshade_4.qb)",
+               "offset": { "x": 4, "y": 0, "z": 4 }
+            }
+         ],
+         "display_name": "i18n(stonehearth_ace:herbalist_crops.nightshade.display_name)",
+         "description": "i18n(stonehearth_ace:herbalist_crops.nightshade.description)",
+         "harvest_status_text": "i18n(stonehearth_ace:herbalist_crops.nightshade.harvest_text)",
+         "icon": "file(crops/planter/nightshade/nightshade.png)"
+      },
+      "daffodil": {
+         "seed_uri": "stonehearth_ace:plants:daffodil:seed",
+         "product_uri": "stonehearth_ace:resources:herb:daffodil",
+         "harvester_effect": "fiddle",
+         "render_scale": 0.08,
+         "tending_multiplier": 0.5,
+         "level": 1,
+         "growth_time": "2h",
+         "bonus_product_growth_time": "12h",
+         "growth_levels": [
+            {
+               "model": "file(crops/planter/daffodil/daffodil_1.qb)",
+               "offset": { "x": 5, "y": 0, "z": 6.5 }
+            },
+            {
+               "model": "file(crops/planter/daffodil/daffodil_2.qb)",
+               "offset": { "x": 5, "y": 0, "z": 6.5 }
+            },
+            {
+               "model": "file(crops/planter/daffodil/daffodil_3.qb)",
+               "offset": { "x": 5, "y": 0, "z": 6.5 }
+            },
+            {
+               "model": "file(crops/planter/daffodil/daffodil_4.qb)",
+               "offset": { "x": 5, "y": 0, "z": 6.5 }
+            }
+         ],
+         "display_name": "i18n(stonehearth_ace:herbalist_crops.daffodil.display_name)",
+         "description": "i18n(stonehearth_ace:herbalist_crops.daffodil.description)",
+         "harvest_status_text": "i18n(stonehearth_ace:herbalist_crops.daffodil.harvest_text)",
+         "icon": "file(crops/planter/daffodil/daffodil.png)"
+      },
+      "oleander": {
+         "seed_uri": "stonehearth_ace:plants:oleander:seed",
+         "product_uri": "stonehearth_ace:resources:herb:oleander",
+         "harvester_effect": "fiddle",
+         "render_scale": 0.1,
+         "tending_multiplier": 0.5,
+         "level": 1,
+         "growth_time": "2h",
+         "bonus_product_growth_time": "12h",
+         "growth_levels": [
+            {
+               "model": "file(crops/planter/oleander/oleander_1.qb)",
+               "offset": { "x": 4, "y": 0, "z": 4 }
+            },
+            {
+               "model": "file(crops/planter/oleander/oleander_2.qb)",
+               "offset": { "x": 4, "y": 0, "z": 4 }
+            },
+            {
+               "model": "file(crops/planter/oleander/oleander_3.qb)",
+               "offset": { "x": 4, "y": 0, "z": 4 }
+            },
+            {
+               "model": "file(crops/planter/oleander/oleander_4.qb)",
+               "offset": { "x": 4, "y": 0, "z": 4 }
+            }
+         ],
+         "display_name": "i18n(stonehearth_ace:herbalist_crops.oleander.display_name)",
+         "description": "i18n(stonehearth_ace:herbalist_crops.oleander.description)",
+         "harvest_status_text": "i18n(stonehearth_ace:herbalist_crops.oleander.harvest_text)",
+         "icon": "file(crops/planter/oleander/oleander.png)"
+      },
+      "parsley": {
+         "seed_uri": "stonehearth_ace:plants:parsley:seed",
+         "product_uri": "stonehearth_ace:resources:herb:parsley",
+         "harvester_effect": "fiddle",
+         "render_scale": 0.08,
+         "tending_multiplier": 0.5,
+         "level": 1,
+         "growth_time": "2h",
+         "bonus_product_growth_time": "12h",
+         "growth_levels": [
+            {
+               "model": "file(crops/planter/parsley/parsley_1.qb)",
+               "offset": { "x": 4, "y": 0, "z": 4 }
+            },
+            {
+               "model": "file(crops/planter/parsley/parsley_2.qb)",
+               "offset": { "x": 4, "y": 0, "z": 4 }
+            },
+            {
+               "model": "file(crops/planter/parsley/parsley_3.qb)",
+               "offset": { "x": 4, "y": 0, "z": 4 }
+            },
+            {
+               "model": "file(crops/planter/parsley/parsley_4.qb)",
+               "offset": { "x": 4, "y": 0, "z": 4 }
+            }
+         ],
+         "display_name": "i18n(stonehearth_ace:herbalist_crops.parsley.display_name)",
+         "description": "i18n(stonehearth_ace:herbalist_crops.parsley.description)",
+         "harvest_status_text": "i18n(stonehearth_ace:herbalist_crops.parsley.harvest_text)",
+         "icon": "file(crops/planter/parsley/parsley.png)"
+      },
+      "sage": {
+         "seed_uri": "stonehearth_ace:plants:sage:seed",
+         "product_uri": "stonehearth_ace:resources:herb:sage",
+         "harvester_effect": "fiddle",
+         "render_scale": 0.09,
+         "tending_multiplier": 0.5,
+         "level": 1,
+         "growth_time": "2h",
+         "bonus_product_growth_time": "12h",
+         "growth_levels": [
+            {
+               "model": "file(crops/planter/sage/sage_1.qb)",
+               "offset": { "x": 4.5, "y": 0, "z": 4.5 }
+            },
+            {
+               "model": "file(crops/planter/sage/sage_2.qb)",
+               "offset": { "x": 4.5, "y": 0, "z": 4.5 }
+            },
+            {
+               "model": "file(crops/planter/sage/sage_3.qb)",
+               "offset": { "x": 4.5, "y": 0, "z": 4.5 }
+            },
+            {
+               "model": "file(crops/planter/sage/sage_4.qb)",
+               "offset": { "x": 4.5, "y": 0, "z": 4.5 }
+            }
+         ],
+         "display_name": "i18n(stonehearth_ace:herbalist_crops.sage.display_name)",
+         "description": "i18n(stonehearth_ace:herbalist_crops.sage.description)",
+         "harvest_status_text": "i18n(stonehearth_ace:herbalist_crops.sage.harvest_text)",
+         "icon": "file(crops/planter/sage/sage.png)"
       },
       "daisy": {
          "seed_uri": "stonehearth_ace:vines:daisies:seed",

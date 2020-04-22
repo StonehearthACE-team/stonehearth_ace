@@ -1,0 +1,55 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:item_properties",
+   "components": {
+      "render_info": {
+         "scale": 0.08
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(parsley.qb)"
+            ]
+         }
+      },
+      "stonehearth:stacks": {
+         "max_stacks": 6
+      },
+      "mob": {
+         "model_origin": { "x": 0.05, "y": 0, "z": 0 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 3,
+         "rarity": "uncommon",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 2,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.resources.herb.parsley.display_name)",
+         "description": "i18n(stonehearth_ace:entities.resources.herb.parsley.description)",
+         "icon": "file(parsley.png)",
+         "is_item": true,
+         "category": "resources",
+         "material_tags": [
+            "plant",
+            "herb",
+            "white",
+            "green",
+            "aromatic",
+            "resource",
+            "parsley",
+            "flower",
+            "stockpile_plant"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": 3
+      }
+   }
+}

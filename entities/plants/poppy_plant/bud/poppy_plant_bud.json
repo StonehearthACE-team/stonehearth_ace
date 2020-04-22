@@ -1,0 +1,39 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "render_info": {
+         "scale": 0.15
+      },
+      "stonehearth:evolve": {},
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(poppy_plant_bud.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "mob_collision_type": "clutter"
+      }
+   },
+   "entity_data": {
+      "stonehearth:evolve_data": {
+         "next_stage": "stonehearth_ace:plants:poppy",
+         "evolve_time": "15h+2h"
+      },
+      "stonehearth:catalog": {
+         "material_tags": [
+            "stockpile_plant"
+         ],
+         "display_name": "i18n(stonehearth_ace:entities.plants.poppy_plant.bud.poppy_plant_bud.display_name)",
+         "description": "i18n(stonehearth_ace:entities.plants.poppy_plant.bud.poppy_plant_bud.description)",
+         "category": "plants"
+      },
+      "stonehearth:appeal": {
+         "appeal": 1
+      }
+   }
+}

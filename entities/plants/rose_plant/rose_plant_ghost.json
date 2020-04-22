@@ -1,0 +1,39 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "render_info": {
+         "scale": 0.18
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(rose_plant.qb)",
+                     "file(rose_plant_2.qb)"
+                  ]
+               }
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": -0.09, "y": 0, "z": -0.09 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "mob_collision_type": "clutter"
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.plants.rose_plant.display_name)",
+         "description": "i18n(stonehearth_ace:entities.plants.rose_plant.description)",
+         "icon": "file(rose_plant.png)",
+         "category": "plants",
+         "material_tags": [
+            "plant",
+            "decoration",
+            "stockpile_plant"
+         ]
+      }
+   }
+}

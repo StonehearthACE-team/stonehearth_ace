@@ -358,14 +358,14 @@
         "placement_type" : "single",
         "parameters" : {
           "ground_radius" : 2,
-          "exclusion_radius" : 6
+          "exclusion_radius" : 7
         }
       },
       "stonehearth_ace:trees:highland_pine:large" : {
         "placement_type" : "single",
         "parameters" : {
           "ground_radius" : 3,
-          "exclusion_radius" : 8
+          "exclusion_radius" : 9
         }
       },
 		"stonehearth_ace:trees:hazelnut:small" : {
@@ -397,14 +397,30 @@
           "exclusion_radius" : 1
         }
       },
-      "stonehearth:plants:frostsnap" : {
-        "placement_type" : "dense",
-        "parameters" : {
-          "grid_multiple" : 3,
-          "item_density" : 0.2,
-          "exclusion_radius" : 1
-        }
+      "stonehearth_ace:plants:poppy": {
+         "placement_type": "dense",
+         "parameters": {
+            "grid_multiple": 2,
+            "item_density": 0.3,
+            "exclusion_radius": 1
+         }
       },
+		"stonehearth_ace:plants:rose": {
+         "placement_type": "dense",
+         "parameters": {
+            "grid_multiple": 2,
+            "item_density": 0.4,
+            "exclusion_radius": 0
+         }
+      },
+		"stonehearth_ace:plants:dill": {
+         "placement_type": "dense",
+         "parameters": {
+            "grid_multiple": 2,
+            "item_density": 0.5,
+            "exclusion_radius": 1
+         }
+      },		
       "stonehearth_ace:plants:cotton_plant" : {
         "placement_type" : "dense",
         "parameters" : {
@@ -658,8 +674,10 @@
         "__comment" : "for example, a small probability with a large density would be more clustered than a large probability with small density.",
         "weights" : {
           "plains" : {
-            "1" : {
-					"stonehearth_ace:plants:moonbell" : 1,
+            "1" : {			   
+					"stonehearth_ace:plants:poppy" : 1.1,
+					"stonehearth_ace:plants:rose" : 1.6,
+					"stonehearth_ace:plants:dill" : 0.8,
 					"stonehearth_ace:plants:cotton_plant" : 1.5,
 					"stonehearth_ace:plants:marblesprout:wild" : 0.1,
 					"stonehearth_ace:fungi:chanterelle" : 0.2,
@@ -672,8 +690,10 @@
           },
           "foothills" : {
             "1" : {
-					"stonehearth:plants:frostsnap" : 1,
-					"stonehearth_ace:plants:moonbell" : 7,
+					"stonehearth_ace:plants:poppy" : 1.5,
+					"stonehearth_ace:plants:rose" : 0.4,
+					"stonehearth_ace:plants:dill" : 1.5,
+					"stonehearth_ace:plants:moonbell" : 2,
 					"stonehearth_ace:plants:cotton_plant" : 1,
 					"stonehearth_ace:plants:marblesprout:wild" : 2,
 					"stonehearth_ace:fungi:chanterelle" : 0.3,
@@ -683,8 +703,8 @@
 					"stonehearth_ace:trees:hazelnut:small" : 0.8
             },
             "2" : {
-					"stonehearth:plants:frostsnap" : 1,
-					"stonehearth_ace:plants:moonbell" : 1,
+					"stonehearth_ace:plants:moonbell" : 3,
+					"stonehearth_ace:plants:dill" : 1.2,
 					"stonehearth_ace:plants:marblesprout:wild" : 0.5,
 					"stonehearth_ace:fungi:chanterelle" : 0.2,
 					"stonehearth_ace:terrain:pasture_grass:overgrown": 0.1,
@@ -695,14 +715,12 @@
           },
           "mountains" : {
             "1" : {
-					"stonehearth:plants:frostsnap" : 1,
-					"stonehearth_ace:plants:moonbell" : 2,
+					"stonehearth_ace:plants:moonbell" : 1,
 					"stonehearth_ace:plants:marblesprout:wild" : 3,
 					"stonehearth_ace:fungi:chanterelle" : 0.1
             },
             "3" : {
-					"stonehearth_ace:plants:moonbell" : 0.5,
-					"stonehearth:plants:frostsnap" : 1
+					"stonehearth_ace:plants:moonbell" : 0.5
             }
           }
         },

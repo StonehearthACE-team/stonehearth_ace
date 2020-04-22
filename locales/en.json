@@ -2543,6 +2543,7 @@
          "recipes": {
             "refined_fungi_name": "Fungal Refinement",
             "refined_seeds_name": "Regional Seeds",
+            "planters_name": "Herb Planters",
             "farming_enhancements_name": "Farming Enhancements & Seeds",
             "decorated_frostfeast_tree_recipe": {
                "recipe_name": "Decorated Frostfeast Pine",
@@ -2624,10 +2625,65 @@
                "description": "Separate seeds from the fiber",
                "flavor": "Only a skilled hand can harvest the weaker seeds, but the fiber is destroyed in the process."
             },
+            "poppy_transmute_recipe": {
+               "recipe_name": "Poppy Seeds (x2)",
+               "description": "Separate seeds from the herbs",
+               "flavor": "Only a skilled hand can harvest the weaker seeds, but the herbs are lost in the process."
+            },
+            "rose_transmute_recipe": {
+               "recipe_name": "Rose Seeds (x2)",
+               "description": "Separate seeds from the herbs",
+               "flavor": "Only a skilled hand can harvest the weaker seeds, but the herbs are lost in the process."
+            },
+            "dill_transmute_recipe": {
+               "recipe_name": "Dill Seeds (x2)",
+               "description": "Separate seeds from the herbs",
+               "flavor": "Only a skilled hand can harvest the weaker seeds, but the herbs are lost in the process."
+            },
+            "chives_transmute_recipe": {
+               "recipe_name": "Chives Seeds (x2)",
+               "description": "Separate seeds from the herbs",
+               "flavor": "Only a skilled hand can harvest the weaker seeds, but the herbs are lost in the process."
+            },
+            "bog_myrtle_transmute_recipe": {
+               "recipe_name": "Bog Myrtle Seeds (x2)",
+               "description": "Separate seeds from the herbs",
+               "flavor": "Only a skilled hand can harvest the weaker seeds, but the herbs are lost in the process."
+            },
+            "nightshade_transmute_recipe": {
+               "recipe_name": "Nightshade Seeds (x2)",
+               "description": "Separate seeds from the herbs",
+               "flavor": "Only a skilled hand can harvest the weaker seeds, but the herbs are lost in the process."
+            },
+            "daffodil_transmute_recipe": {
+               "recipe_name": "Daffodil Seeds (x2)",
+               "description": "Separate seeds from the herbs",
+               "flavor": "Only a skilled hand can harvest the weaker seeds, but the herbs are lost in the process."
+            },
+            "oleander_transmute_recipe": {
+               "recipe_name": "Oleander Seeds (x2)",
+               "description": "Separate seeds from the herbs",
+               "flavor": "Only a skilled hand can harvest the weaker seeds, but the herbs are lost in the process."
+            },
+            "oleander_seeds_2_recipe": {
+               "recipe_name": "Oleander Seeds",
+               "description": "Trade or gift it to allow other cultures to cultivate oleander flowers!",
+               "flavor": "This farming crop is already known to your farmers by default"
+            },
+            "parsley_transmute_recipe": {
+               "recipe_name": "Parsley Seeds (x2)",
+               "description": "Separate seeds from the herbs",
+               "flavor": "Only a skilled hand can harvest the weaker seeds, but the herbs are lost in the process."
+            },
+            "sage_transmute_recipe": {
+               "recipe_name": "Sage Seeds (x2)",
+               "description": "Separate seeds from the herbs",
+               "flavor": "Only a skilled hand can harvest the weaker seeds, but the herbs are lost in the process."
+            },
             "silkweed_transmute_recipe": {
-               "recipe_name": "Silkweed Seeds (x3)",
-               "description": "Separate seeds from the fiber",
-               "flavor": "Only a skilled hand can harvest the weaker seeds, but the fiber is destroyed in the process."
+               "recipe_name": "Silkweed Seeds (x2)",
+               "description": "Separate seeds from the herbs",
+               "flavor": "Only a skilled hand can harvest the weaker seeds, but the herbs are lost in the process."
             },
             "carrot_transmute_recipe": {
                "recipe_name": "Carrot Seeds (x3)",
@@ -2710,22 +2766,22 @@
             "oak_tree_seeds_recipe": {
                "recipe_name": "Acorns",
                "description": "Domesticate Oak trees and learn how to farm them.",
-               "flavor": "The crate must be placed on the ground before it can be used"
+               "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
             },
             "juniper_tree_seeds_recipe": {
                "recipe_name": "Dried Juniper Berries",
                "description": "Domesticate Juniper trees and learn how to farm them.",
-               "flavor": "The crate must be placed on the ground before it can be used"
+               "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
             },
             "pine_tree_seeds_recipe": {
                "recipe_name": "Pine Cones",
                "description": "Domesticate Pine trees and learn how to farm them.",
-               "flavor": "The crate must be placed on the ground before it can be used"
+               "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
             },
             "brightbell_seeds_recipe": {
                "recipe_name": "Brightbell Seeds",
-               "description": "Domesticate Brightbell flowers and learn how to farm them.",
-               "flavor": "The crate must be placed on the ground before it can be used"
+               "description": "Domesticate Brightbell flowers and learn how to grow them.",
+               "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
             },
             "brightbell_seeds_2_recipe": {
                "recipe_name": "Brightbell Seeds",
@@ -2735,7 +2791,7 @@
             "silkweed_seeds_recipe": {
                "recipe_name": "Silkweed Seeds",
                "description": "Domesticate Silkweed plants and learn how to farm them.",
-               "flavor": "The crate must be placed on the ground before it can be used"
+               "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
             },
             "silkweed_seeds_2_recipe": {
                "recipe_name": "Silkweed Seeds",
@@ -2744,8 +2800,8 @@
             },
             "frostsnap_seeds_recipe": {
                "recipe_name": "Frostsnap Seeds",
-               "description": "Domesticate Frostsnap flowers and learn how to farm them.",
-               "flavor": "The crate must be placed on the ground before it can be used"
+               "description": "Domesticate Frostsnap flowers and learn how to grow them.",
+               "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
             },
             "frostsnap_seeds_2_recipe": {
                "recipe_name": "Frostsnap Seeds",
@@ -2755,17 +2811,17 @@
             "acacia_tree_seeds_recipe": {
                "recipe_name": "Acacia Seeds",
                "description": "Domesticate Acacia trees and learn how to farm them.",
-               "flavor": "The crate must be placed on the ground before it can be used"
+               "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
             },
             "cactus_tree_seeds_recipe": {
                "recipe_name": "Cactus Tree Seeds",
                "description": "Domesticate Cactus trees and learn how to farm them.",
-               "flavor": "The crate must be placed on the ground before it can be used"
+               "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
             },
             "cactus_flower_seeds_recipe": {
                "recipe_name": "Cactus Flower Seeds",
-               "description": "Domesticate Cactus flowers and learn how to farm them.",
-               "flavor": "The crate must be placed on the ground before it can be used"
+               "description": "Domesticate Cactus flowers and learn how to grow them.",
+               "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
             },
             "cactus_flower_seeds_2_recipe": {
                "recipe_name": "Cactus Flower Seeds",
@@ -2775,17 +2831,17 @@
             "arctic_pine_tree_seeds_recipe": {
                "recipe_name": "Arctic Pine Cones",
                "description": "Domesticate Arctic Pine trees and learn how to farm them.",
-               "flavor": "The crate must be placed on the ground before it can be used"
+               "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
             },
             "arctic_juniper_tree_seeds_recipe": {
                "recipe_name": "Dried Arctic Juniper Berries",
                "description": "Domesticate Arctic Juniper trees and learn how to farm them.",
-               "flavor": "The crate must be placed on the ground before it can be used"
+               "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
             },
             "violet_seeds_recipe": {
                "recipe_name": "Violet Seeds",
-               "description": "Domesticate Violet flowers and learn how to farm them.",
-               "flavor": "The crate must be placed on the ground before it can be used"
+               "description": "Domesticate Violet flowers and learn how to grow them.",
+               "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
             },
             "violet_seeds_2_recipe": {
                "recipe_name": "Violet Seeds",
@@ -2794,8 +2850,8 @@
             },
             "snow_poppy_seeds_recipe": {
                "recipe_name": "Snow Poppy Seeds",
-               "description": "Domesticate Snow Poppy flowers and learn how to farm them.",
-               "flavor": "The crate must be placed on the ground before it can be used"
+               "description": "Domesticate Snow Poppy flowers and learn how to grow them.",
+               "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
             },
             "snow_poppy_seeds_2_recipe": {
                "recipe_name": "Snow Poppy Seeds",
@@ -2805,22 +2861,47 @@
             "birch_tree_seeds_recipe": {
                "recipe_name": "Birch Catkins",
                "description": "Domesticate Birch trees and learn how to farm them.",
-               "flavor": "The crate must be placed on the ground before it can be used"
+               "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
             },
             "yew_tree_seeds_recipe": {
                "recipe_name": "Dried Yew Berries",
                "description": "Domesticate Yew trees and learn how to farm them.",
-               "flavor": "The crate must be placed on the ground before it can be used"
+               "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
             },
             "highland_pine_tree_seeds_recipe": {
                "recipe_name": "Highland Pine Cones",
                "description": "Domesticate Highland Pine trees and learn how to farm them.",
-               "flavor": "The crate must be placed on the ground before it can be used"
+               "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
             },
             "moonbell_seeds_recipe": {
                "recipe_name": "Moonbell Seeds",
-               "description": "Domesticate Moonbell flowers and learn how to farm them.",
-               "flavor": "The crate must be placed on the ground before it can be used"
+               "description": "Domesticate Moonbell flowers and learn how to grow them.",
+               "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
+            },
+            "poppy_seeds_recipe": {
+               "recipe_name": "Poppy Seeds",
+               "description": "Domesticate Poppy flowers and learn how to grow them.",
+               "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
+            },
+            "rose_seeds_recipe": {
+               "recipe_name": "Rose Seeds",
+               "description": "Domesticate Rose flowers and learn how to grow them.",
+               "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
+            },
+            "nightshade_seeds_recipe": {
+               "recipe_name": "Nightshade Seeds",
+               "description": "Domesticate Nightshade flowers and learn how to grow them.",
+               "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
+            },
+            "daffodil_seeds_recipe": {
+               "recipe_name": "Daffodil Seeds",
+               "description": "Domesticate Daffodil flowers and learn how to grow them.",
+               "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
+            },
+            "oleander_seeds_recipe": {
+               "recipe_name": "Oleander Seeds",
+               "description": "Domesticate Oleander flowers and learn how to grow them.",
+               "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
             },
             "moonbell_seeds_2_recipe": {
                "recipe_name": "Moonbell Seeds",
@@ -2830,7 +2911,7 @@
             "cotton_seeds_recipe": {
                "recipe_name": "Cotton Seeds",
                "description": "Domesticate Cotton plants and learn how to farm them.",
-               "flavor": "The crate must be placed on the ground before it can be used"
+               "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
             },
             "cotton_seeds_2_recipe": {
                "recipe_name": "Cotton Seeds",
@@ -2839,8 +2920,8 @@
             },
             "marblesprout_seeds_recipe": {
                "recipe_name": "Marblesprout Seeds",
-               "description": "Domesticate Marblesprout flowers and learn how to farm them.",
-               "flavor": "The crate must be placed on the ground before it can be used"
+               "description": "Domesticate Marblesprout flowers and learn how to grow them.",
+               "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
             },
             "marblesprout_seeds_2_recipe": {
                "recipe_name": "Marblesprout Seeds",
@@ -3421,8 +3502,8 @@
                "flavor": "Keep it closed, keep it clean"
             },
             "golden_clay_wall_planter_recipe": {
-               "recipe_name": "Window Planter with Brightbells",
-               "description": "A decorative planter to be placed under window frames. Comes with Brightbells but a different herb can be chosen and planted by the Herbalist."
+               "recipe_name": "Window Planter with Oleanders",
+               "description": "A decorative planter to be placed under window frames. Comes with Oleanders but a different herb can be chosen and planted by the Herbalist."
             },
             "potted_cactus_recipe": {
                "recipe_name": "Window Planter with Cacti",
@@ -5560,6 +5641,26 @@
             "paddy_seeds": {
                "display_name": "Paddy Seeds",
                "description": "Learn to grow rice."
+            },
+            "poppy_seeds": {
+               "display_name": "Poppy Seeds",
+               "description": "Learn to grow decorative poppy flowers."
+            },
+            "rose_seeds": {
+               "display_name": "Rose Seeds",
+               "description": "Learn to grow decorative rose flowers."
+            },
+            "nightshade_seeds": {
+               "description": "Learn to grow decorative nightshade flowers.",
+               "display_name": "Nightshade Seeds"
+            },
+            "daffodil_seeds": {
+               "description": "Learn to grow decorative daffodil flowers.",
+               "display_name": "Daffodil Seeds"
+            },
+            "oleander_seeds": {
+               "display_name": "Oleander Seeds",
+               "description": "Learn to grow decorative oleander flowers."
             }
          },
          "fertilizer": {
@@ -6046,6 +6147,28 @@
          },
          "megacrops": {
             "default_description": "This crop's gone mega!"
+         },
+         "poppy_crop": {
+            "display_name": "Poppy Flower",
+            "description": "Can be used as a healing herb",
+            "growth_stage": {
+               "000": {
+                  "description": "Still growing!",
+                  "name": "Poppy Seedlings"
+               },
+               "001": {
+                  "name": "Poppy Sprouts",
+                  "description": "Just need some time and care."
+               },
+               "002": {
+                  "name": "Poppy Buds",
+                  "description": "It's almost there!  Look, it has buds!"
+               },
+               "003": {
+                  "name": "Poppies",
+                  "description": "Can be harvested for healing herbs."
+               }
+            }
          }
       },
       "decorations": {
@@ -6077,7 +6200,7 @@
          },
          "golden_clay_wall_planter": {
             "display_name": "Clay Window Planter",
-            "description": "A decorative planter. Includes Brightbells but another herb can be chosen."
+            "description": "A decorative planter. Includes Oleanders but another herb can be chosen."
          },
          "potted_cactus": {
             "display_name": "Clay Window Planter",
@@ -6235,6 +6358,46 @@
             "water_lily_pad": {
                "display_name": "Lily Pad",
                "description": "Floaty leaf, a frog's favorite. Useful as a green aromatic herb."
+            },
+            "poppy": {
+               "display_name": "Poppy Flowers",
+               "description": "Vibrant, contrasting petals. Useful as a red bitter herb."
+            },
+            "bog_myrtle": {
+               "display_name": "Bog Myrtle Leaves",
+               "description": "Supple leaves with a strong smell. Useful as a green bitter herb."
+            },
+            "chives": {
+               "display_name": "Sheaf of Chives",
+               "description": "Delicate flavors! Useful as a green or purple aromatic herb."
+            },
+            "daffodil": {
+               "display_name": "Daffodil Flower",
+               "description": "Like little golden trumpets. Useful as a yellow aromatic herb."
+            },
+            "dill": {
+               "display_name": "Sheaf of Dill",
+               "description": "Slightly bittersweet. Useful as a green or yellow aromatic herb."
+            },
+            "nightshade": {
+               "display_name": "Nightshade Flower",
+               "description": "As dangerous as they are pretty. Useful as a purple bitter herb."
+            },
+            "oleander": {
+               "display_name": "Oleander Flowers",
+               "description": "Stunning petals. Literally. Useful as a red bitter herb."
+            },
+            "parsley": {
+               "display_name": "Sheaf of Parsley",
+               "description": "Enhances flavors, smells like dew. Useful as a green or white aromatic herb."
+            },
+            "rose": {
+               "display_name": "Rose Flowers",
+               "description": "A powerful romance ingredient. Useful as a red aromatic herb."
+            },
+            "sage": {
+               "display_name": "Sheaf of Sage",
+               "description": "Sweet and rustic, smells of pine. Useful as a green or blue aromatic herb."
             }
          },
          "stone": {
@@ -7410,26 +7573,26 @@
       },
       "plants": {
          "moonbell_plant": {
-            "display_name": "Wild Moonbell",
+            "display_name": "Moonbell",
             "description": "Can be harvested for healing herbs",
             "unripe_description": "This plant has been harvested and has not grown back yet",
             "seed": {
                "moonbell_plant_seed_ghost": {
-                  "display_name": "Wild Moonbell Seed",
+                  "display_name": "Moonbell Seed",
                   "description": "Once planted, it will grow into healing herbs"
                },
                "moonbell_plant_sprout": {
-                  "display_name": "Wild Moonbell Sproutling",
+                  "display_name": "Moonbell Sproutling",
                   "description": "Just need some time and care."
                }
             },
             "stem": {
                "moonbell_plant_stem": {
-                  "display_name": "Wild Moonbell Stemming Plant",
+                  "display_name": "Moonbell Stemming Plant",
                   "description": "Still Growing!"
                },
                "moonbell_plant_bud": {
-                  "display_name": "Wild Moonbell Budding Plant",
+                  "display_name": "Moonbell Budding Plant",
                   "description": "Its almost there! Look, it has buds!"
                }
             }
@@ -7491,7 +7654,7 @@
          "cotton_plant": {
             "cotton_plant": {
                "unripe_description": "This plant has been harvested and hasn't grown back yet.",
-               "display_name": "Wild Cotton",
+               "display_name": "Cotton",
                "description": "This plant's fiber can be spun into thread."
             },
             "cotton_plant_bud": {
@@ -7507,7 +7670,7 @@
                "description": "Just needs some time and care."
             },
             "cotton_plant_seed": {
-               "display_name": "Wild Cotton Seed",
+               "display_name": "Cotton Seed",
                "description": "Can be planted to grow fiber which can be spun into thread."
             },
             "cotton_plant_bloom": {
@@ -7592,6 +7755,326 @@
          "dwarfsbeard_stem": {
             "display_name": "Stemming Dwarfsbeard",
             "description": "Still growing!"
+         },
+         "poppy_plant": {
+            "display_name": "Poppy",
+            "description": "Can be harvested for red bitter herbs.",
+            "bud": {
+               "poppy_plant_bud": {
+                  "display_name": "Poppy Budding Plant",
+                  "description": "It's almost there! Look, it has buds!"
+               }
+            },
+            "seed": {
+               "poppy_plant_seed_ghost": {
+                  "display_name": "Poppy Seed",
+                  "description": "Will provide red bitter herbs when it grows."
+               },
+               "poppy_plant_seed": {
+                  "display_name": "Poppy Seed",
+                  "description": "Avoid smoking it. Can be planted or ground for cooking oil."
+               }
+            },
+            "sprout": {
+               "poppy_plant_sprout": {
+                  "display_name": "Poppy Sproutling",
+                  "description": "Just needs some time and care."
+               }
+            },
+            "stem": {
+               "poppy_plant_stem": {
+                  "display_name": "Poppy Stemming Plant",
+                  "description": "Still growing!"
+               }
+            }
+         },
+         "rose_plant": {
+            "display_name": "Rose",
+            "description": "Can be harvested for red aromatic herbs.",
+            "bud": {
+               "rose_plant_bud": {
+                  "display_name": "Rose Budding Plant",
+                  "description": "It's almost there! Look, it has buds!"
+               }
+            },
+            "stem": {
+               "rose_plant_stem": {
+                  "display_name": "Rose Stemming Plant",
+                  "description": "Still growing!"
+               }
+            },
+            "sprout": {
+               "rose_plant_sprout": {
+                  "display_name": "Rose Sproutling",
+                  "description": "Just needs some time and care."
+               }
+            },
+            "seed": {
+               "rose_plant_seed": {
+                  "display_name": "Rose Seed",
+                  "description": "Can be planted to grow a rose."
+               },
+               "rose_plant_seed_ghost": {
+                  "display_name": "Rose Seed",
+                  "description": "Will provide red aromatic herbs when it grows."
+               }
+            }
+         },
+         "dill_plant": {
+            "display_name": "Dill",
+            "description": "Can be harvested for green and yellow aromatic herbs.",
+            "bud": {
+               "dill_plant_bud": {
+                  "display_name": "Dill Budding Plant",
+                  "description": "It's almost there! Look, it has buds!"
+               }
+            },
+            "stem": {
+               "dill_plant_stem": {
+                  "display_name": "Dill Stemming Plant",
+                  "description": "Still growing!"
+               }
+            },
+            "sprout": {
+               "dill_plant_sprout": {
+                  "display_name": "Dill Sproutling",
+                  "description": "Just needs some time and care."
+               }
+            },
+            "seed": {
+               "dill_plant_seed": {
+                  "display_name": "Dill Seed",
+                  "description": "A traditional seasoning from the highlands. Can be planted."
+               },
+               "dill_plant_seed_ghost": {
+                  "display_name": "Dill Seed",
+                  "description": "Will provide green and yellow aromatic herbs when it grows."
+               }
+            }
+         },
+         "chives_plant": {
+            "display_name": "Chives",
+            "description": "Can be harvested for green and purple aromatic herbs.",
+            "bud": {
+               "chives_plant_bud": {
+                  "display_name": "Chives Budding Plant",
+                  "description": "It's almost there! Look, it has buds!"
+               }
+            },
+            "stem": {
+               "chives_plant_stem": {
+                  "display_name": "Chives Stemming Plant",
+                  "description": "Still growing!"
+               }
+            },
+            "sprout": {
+               "chives_plant_sprout": {
+                  "display_name": "Chives Sproutling",
+                  "description": "Just needs some time and care."
+               }
+            },
+            "seed": {
+               "chives_plant_seed_ghost": {
+                  "description": "Will provide green and purple aromatic herbs when it grows.",
+                  "display_name": "Chives Seed"
+               },
+               "chives_plant_seed": {
+                  "display_name": "Chives Seed",
+                  "description": "A traditional seasoning from the north. Can be planted."
+               }
+            }
+         },
+         "bog_myrtle_plant": {
+            "display_name": "Bog Myrtle",
+            "description": "Can be harvested for green bitter herbs.",
+            "bud": {
+               "bog_myrtle_plant_bud": {
+                  "display_name": "Bog Myrtle Budding Plant",
+                  "description": "It's almost there!"
+               }
+            },
+            "stem": {
+               "bog_myrtle_plant_stem": {
+                  "display_name": "Bog Myrtle Stemming Plant",
+                  "description": "Still growing!"
+               }
+            },
+            "sprout": {
+               "bog_myrtle_plant_sprout": {
+                  "display_name": "Bog Myrtle Sproutling",
+                  "description": "Just needs some time and care."
+               }
+            },
+            "seed": {
+               "bog_myrtle_plant_seed_ghost": {
+                  "display_name": "Bog Myrtle Seed",
+                  "description": "Will provide green bitter herbs when it grows."
+               },
+               "bog_myrtle_plant_seed": {
+                  "display_name": "Bog Myrtle Seed",
+                  "description": "A common wetland small shrub. Can be planted."
+               }
+            }
+         },
+         "nightshade_plant": {
+            "display_name": "Nightshade",
+            "description": "Can be harvested for purple bitter herbs.",
+            "bud": {
+               "nightshade_plant_bud": {
+                  "display_name": "Nightshade Budding Plant",
+                  "description": "It's almost there! Look, it has buds!"
+               }
+            },
+            "stem": {
+               "nightshade_plant_stem": {
+                  "description": "Still growing!",
+                  "display_name": "Nightshade Stemming Plant"
+               }
+            },
+            "sprout": {
+               "nightshade_plant_sprout": {
+                  "display_name": "Nightshade Sproutling",
+                  "description": "Just needs some time and care."
+               }
+            },
+            "seed": {
+               "nightshade_plant_seed_ghost": {
+                  "display_name": "Nightshade Seed",
+                  "description": "Will provide purple bitter herbs when it grows."
+               },
+               "nightshade_plant_seed": {
+                  "display_name": "Nightshade Seed",
+                  "description": "Highly toxic and dangerous! Can be planted."
+               }
+            }
+         },
+         "daffodil_plant": {
+            "display_name": "Daffodil",
+            "description": "Can be harvested for yellow aromatic herbs.",
+            "bud": {
+               "daffodil_plant_bud": {
+                  "display_name": "Daffodil Budding Plant",
+                  "description": "It's almost there! Look, it has buds!"
+               }
+            },
+            "stem": {
+               "daffodil_plant_stem": {
+                  "display_name": "Daffodil Stemming Plant",
+                  "description": "Still growing!"
+               }
+            },
+            "sprout": {
+               "daffodil_plant_sprout": {
+                  "description": "Just needs some time and care.",
+                  "display_name": "Daffodil Sproutling"
+               }
+            },
+            "seed": {
+               "daffodil_plant_seed_ghost": {
+                  "display_name": "Daffodil Seed",
+                  "description": "Will provide yellow aromatic herbs when it grows."
+               },
+               "daffodil_plant_seed": {
+                  "display_name": "Daffodil Seed",
+                  "description": "A beautiful yellow flower. Can be planted."
+               }
+            }
+         },
+         "oleander_plant": {
+            "display_name": "Oleander",
+            "description": "Can be harvested for red bitter herbs.",
+            "bud": {
+               "oleander_plant_bud": {
+                  "display_name": "Oleander Budding Plant",
+                  "description": "It's almost there! Look, it has buds!"
+               }
+            },
+            "stem": {
+               "oleander_plant_stem": {
+                  "display_name": "Oleander Stemming Plant",
+                  "description": "Still growing!"
+               }
+            },
+            "sprout": {
+               "oleander_plant_sprout": {
+                  "display_name": "Oleander Sproutling",
+                  "description": "Just needs some time and care."
+               }
+            },
+            "seed": {
+               "oleander_plant_seed_ghost": {
+                  "description": "Will provide red bitter herbs when it grows.",
+                  "display_name": "Oleander Seed"
+               },
+               "oleander_plant_seed": {
+                  "display_name": "Oleander Seed",
+                  "description": "Careful, it's a toxic seed! Can be planted."
+               }
+            }
+         },
+         "parsley_plant": {
+            "display_name": "Parsley",
+            "description": "Can be harvested for green and white aromatic herbs.",
+            "bud": {
+               "parsley_plant_bud": {
+                  "display_name": "Parsley Budding Plant",
+                  "description": "Its almost there! Look, it has buds!"
+               }
+            },
+            "stem": {
+               "parsley_plant_stem": {
+                  "display_name": "Parsley Stemming Plant",
+                  "description": "Still growing!"
+               }
+            },
+            "sprout": {
+               "parsley_plant_sprout": {
+                  "display_name": "Parsley Sproutling",
+                  "description": "Just needs some time and care."
+               }
+            },
+            "seed": {
+               "parsley_plant_seed_ghost": {
+                  "display_name": "Parsley Seed",
+                  "description": "Will provide green and white aromatic herbs when it grows."
+               },
+               "parsley_plant_seed": {
+                  "display_name": "Parsley Seed",
+                  "description": "A traditional seasoning from milder climates. Can be planted."
+               }
+            }
+         },
+         "sage_plant": {
+            "display_name": "Sage",
+            "description": "Can be harvested for green and blue aromatic herbs.",
+            "bud": {
+               "sage_plant_bud": {
+                  "display_name": "Sage Budding Plant",
+                  "description": "It's almost there! Look, it has buds!"
+               }
+            },
+            "sprout": {
+               "sage_plant_sprout": {
+                  "description": "Just needs some time and care.",
+                  "display_name": "Sage Sproutling"
+               }
+            },
+            "stem": {
+               "sage_plant_stem": {
+                  "display_name": "Sage Stemming Plant",
+                  "description": "Still growing!"
+               }
+            },
+            "seed": {
+               "sage_plant_seed_ghost": {
+                  "display_name": "Sage Seed",
+                  "description": "Will provide green and blue aromatic herbs when it grows."
+               },
+               "sage_plant_seed": {
+                  "display_name": "Sage Seed",
+                  "description": "A common herb from the woodlands. Can be planted."
+               }
+            }
          }
       },
       "decoration": {
@@ -10988,6 +11471,11 @@
                   "recipe_name": "Wrap of Gruit",
                   "description": "A bundle of bitter herbs and seasonings. Birch catkins are often used in the highlands.",
                   "flavor": "The Brewer needs gruit to make beer"
+               },
+               "oleander_seeds_2_recipe": {
+                  "recipe_name": "Oleander Seeds",
+                  "description": "Trade or gift it to allow other cultures to cultivate oleander flowers!",
+                  "flavor": "This farming crop is already known to your growers by default"
                }
             }
          },
@@ -11348,6 +11836,56 @@
          "display_name": "Yew Sapling",
          "description": "What do you know, it's exactly like a wild yew tree! Dani, you should change this text!",
          "harvest_text": "harvesting yew sapling"
+      },
+      "poppy": {
+         "display_name": "Poppy",
+         "description": "What do you know, it's exactly like a wild Poppy! Dani, you should change this text!",
+         "harvest_text": "harvesting poppy"
+      },
+      "rose": {
+         "display_name": "Rose",
+         "description": "What do you know, it's exactly like a wild Rose! Dani, you should change this text!",
+         "harvest_text": "harvesting rose"
+      },
+      "dill": {
+         "display_name": "Dill",
+         "description": "What do you know, it's exactly like a wild Dill! Dani, you should change this text!",
+         "harvest_text": "harvesting dill"
+      },
+      "chives": {
+         "display_name": "Chives",
+         "description": "What do you know, it's exactly like a wild Chives! Dani, you should change this text!",
+         "harvest_text": "harvesting chives"
+      },
+      "bog_myrtle": {
+         "display_name": "Bog Myrtle",
+         "description": "What do you know, it's exactly like a wild Bog Myrtle! Dani, you should change this text!",
+         "harvest_text": "harvesting bog myrtle"
+      },
+      "nightshade": {
+         "display_name": "Nightshade",
+         "description": "What do you know, it's exactly like a wild Nightshade! Dani, you should change this text!",
+         "harvest_text": "harvesting nightshade"
+      },
+      "daffodil": {
+         "display_name": "Daffodil",
+         "description": "What do you know, it's exactly like a wild Daffodil! Dani, you should change this text!",
+         "harvest_text": "harvesting daffodil"
+      },
+      "oleander": {
+         "display_name": "Oleander",
+         "description": "What do you know, it's exactly like a wild Oleander! Dani, you should change this text!",
+         "harvest_text": "harvesting oleander"
+      },
+      "parsley": {
+         "display_name": "Parsley",
+         "description": "What do you know, it's exactly like a wild Parsley! Dani, you should change this text!",
+         "harvest_text": "harvesting parsley"
+      },
+      "sage": {
+         "display_name": "Sage",
+         "description": "What do you know, it's exactly like a wild Sage! Dani, you should change this text!",
+         "harvest_text": "harvesting sage"
       }
    },
    "plants": {
@@ -12097,7 +12635,25 @@
             "blue_herb_resource_name": "Blue Herbs",
             "yellow_herb_resource_name": "Yellow Herbs",
             "white_herb_resource_name": "White Herbs",
-            "purple_herb_resource_name": "Purple Herbs"
+            "purple_herb_resource_name": "Purple Herbs",
+            "herb_red_resource_name": "Any Red Herb",
+            "herb_green_resource_name": "Any Green Herb",
+            "herb_blue_resource_name": "Any Blue Herb",
+            "herb_yellow_resource_name": "Any Yellow Herb",
+            "herb_white_resource_name": "Any White Herb",
+            "herb_purple_resource_name": "Any Purple Herb",
+            "herb_red_aromatic_resource_name": "Any Red Aromatic Herb",
+            "herb_green_aromatic_resource_name": "Any Green Aromatic Herb",
+            "herb_blue_aromatic_resource_name": "Any Blue Aromatic Herb",
+            "herb_yellow_aromatic_resource_name": "Any Yellow Aromatic Herb",
+            "herb_white_aromatic_resource_name": "Any White Aromatic Herb",
+            "herb_purple_aromatic_resource_name": "Any Purple Aromatic Herb",
+            "herb_red_bitter_resource_name": "Any Red Bitter Herb",
+            "herb_green_bitter_resource_name": "Any Green Bitter Herb",
+            "herb_blue_bitter_resource_name": "Any Blue Bitter Herb",
+            "herb_yellow_bitter_resource_name": "Any Yellow Bitter Herb",
+            "herb_white_bitter_resource_name": "Any White Bitter Herb",
+            "herb_purple_bitter_resource_name": "Any Purple Bitter Herb"
          }
       }
    },

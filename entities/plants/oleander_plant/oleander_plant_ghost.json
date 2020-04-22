@@ -1,0 +1,39 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "render_info": {
+         "scale": 0.18
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(oleander_plant.qb)",
+                     "file(oleander_plant_2.qb)"
+                  ]
+               }
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "mob_collision_type": "clutter",
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.plants.oleander_plant.display_name)",
+         "description": "i18n(stonehearth_ace:entities.plants.oleander_plant.description)",
+         "icon": "file(oleander_plant.png)",
+         "category": "plants",
+         "material_tags": [
+            "plant",
+            "decoration",
+            "stockpile_plant"
+         ]
+      }
+   }
+}

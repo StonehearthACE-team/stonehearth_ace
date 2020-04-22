@@ -7,21 +7,6 @@
             },
 				"herbalist_cauldron": {
 					"recipe": "file(herbalist_cauldron_recipe.json)"
-				},
-				"herbalist_planter_pot": {
-					"recipe": "file(herbalist_planter_pot_recipe.json)"
-				},
-				"herbalist_planter_small": {
-					"recipe": "file(herbalist_planter_small_recipe.json)"
-				},
-				"herbalist_planter_large": {
-					"recipe": "file(herbalist_planter_large_recipe.json)"
-				},
-				"herbalist_planter_water": {
-					"recipe": "file(herbalist_planter_water_recipe.json)"
-				},
-				"herbalist_planter_pot_sapling": {
-					"recipe": "file(herbalist_planter_pot_sapling_recipe.json)"
 				}
          }
       },
@@ -51,6 +36,27 @@
             }
 			}
 		},
+		"planters": {
+			"ordinal": 20,
+         "name": "i18n(stonehearth_ace:jobs.herbalist.recipes.planters_name)",
+         "recipes": {
+				"herbalist_planter_pot": {
+					"recipe": "file(herbalist_planter_pot_recipe.json)"
+				},
+				"herbalist_planter_small": {
+					"recipe": "file(herbalist_planter_small_recipe.json)"
+				},
+				"herbalist_planter_large": {
+					"recipe": "file(herbalist_planter_large_recipe.json)"
+				},
+				"herbalist_planter_water": {
+					"recipe": "file(herbalist_planter_water_recipe.json)"
+				},
+				"herbalist_planter_pot_sapling": {
+					"recipe": "file(herbalist_planter_pot_sapling_recipe.json)"
+				}
+         }
+      },
 		"refinement" : {
 			"name": "i18n(stonehearth_ace:jobs.herbalist.recipes.refinement_name)",
 			"recipes" : {
@@ -92,6 +98,36 @@
 				},
 				"almond_transmute": {
 					"recipe": "file(almond_transmute_recipe.json)"
+				},
+				"poppy_transmute": {
+					"recipe": "file(poppy_transmute_recipe.json)"
+				},
+				"rose_transmute": {
+					"recipe": "file(rose_transmute_recipe.json)"
+				},
+				"dill_transmute": {
+					"recipe": "file(dill_transmute_recipe.json)"
+				},
+				"chives_transmute": {
+					"recipe": "file(chives_transmute_recipe.json)"
+				},
+				"bog_myrtle_transmute": {
+					"recipe": "file(bog_myrtle_transmute_recipe.json)"
+				},
+				"nightshade_transmute": {
+					"recipe": "file(nightshade_transmute_recipe.json)"
+				},
+				"daffodil_transmute": {
+					"recipe": "file(daffodil_transmute_recipe.json)"
+				},
+				"oleander_transmute": {
+					"recipe": "file(oleander_transmute_recipe.json)"
+				},
+				"parsley_transmute": {
+					"recipe": "file(parsley_transmute_recipe.json)"
+				},
+				"sage_transmute": {
+					"recipe": "file(sage_transmute_recipe.json)"
 				}
 			}
 		},
@@ -167,6 +203,21 @@
 				},
 				"moonbell_seeds_recipe": {
 					"recipe": "/stonehearth_ace/jobs/herbalist/recipes/moonbell_seeds_recipe.json"
+				},
+				"poppy_seeds_recipe": {
+					"recipe": "/stonehearth_ace/jobs/herbalist/recipes/poppy_seeds_recipe.json"
+				},
+				"rose_seeds_recipe": {
+					"recipe": "/stonehearth_ace/jobs/herbalist/recipes/rose_seeds_recipe.json"
+				},
+				"nightshade_seeds_recipe": {
+					"recipe": "/stonehearth_ace/jobs/herbalist/recipes/nightshade_seeds_recipe.json"
+				},
+				"daffodil_seeds_recipe": {
+					"recipe": "/stonehearth_ace/jobs/herbalist/recipes/daffodil_seeds_recipe.json"
+				},
+				"oleander_seeds_recipe": {
+					"recipe": "/stonehearth_ace/jobs/herbalist/recipes/oleander_seeds_recipe.json"
 				},
 				"cotton_seeds_recipe": {
 					"recipe": "/stonehearth_ace/jobs/herbalist/recipes/cotton_seeds_recipe.json"

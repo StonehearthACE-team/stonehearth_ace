@@ -1,0 +1,16 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(poppy_plant_iconic.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": -0.05, "y": 0, "z": -0.05 }
+      }
+   }
+}

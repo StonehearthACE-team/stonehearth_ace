@@ -260,49 +260,49 @@
             "aromatic_herbs": {
                "ordinal": 1.01,
                "display_name": "i18n(stonehearth_ace:ui.data.constants.aromatic_herb_resource_name)",
-               "icon": "/stonehearth/entities/resources/herb/herbs.png",
+               "icon": "/stonehearth_ace/entities/resources/herb/herb_aromatic_icon.png",
                "filter": "resource herb aromatic"
             },
             "bitter_herbs": {
                "ordinal": 1.02,
                "display_name": "i18n(stonehearth_ace:ui.data.constants.bitter_herb_resource_name)",
-               "icon": "/stonehearth/entities/resources/herb/herbs.png",
+               "icon": "/stonehearth_ace/entities/resources/herb/herb_bitter_icon.png",
                "filter": "resource herb bitter"
             },
             "red_herbs": {
                "ordinal": 1.03,
                "display_name": "i18n(stonehearth_ace:ui.data.constants.red_herb_resource_name)",
-               "icon": "/stonehearth/entities/resources/herb/herbs.png",
+               "icon": "/stonehearth_ace/entities/resources/herb/herb_red_icon.png",
                "filter": "resource herb red"
             },
             "green_herbs": {
                "ordinal": 1.04,
                "display_name": "i18n(stonehearth_ace:ui.data.constants.green_herb_resource_name)",
-               "icon": "/stonehearth/entities/resources/herb/herbs.png",
+               "icon": "/stonehearth_ace/entities/resources/herb/herb_green_icon.png",
                "filter": "resource herb green"
             },
             "blue_herbs": {
                "ordinal": 1.05,
                "display_name": "i18n(stonehearth_ace:ui.data.constants.blue_herb_resource_name)",
-               "icon": "/stonehearth/entities/resources/herb/herbs.png",
+               "icon": "/stonehearth_ace/entities/resources/herb/herb_blue_icon.png",
                "filter": "resource herb blue"
             },
             "yellow_herbs": {
                "ordinal": 1.06,
                "display_name": "i18n(stonehearth_ace:ui.data.constants.yellow_herb_resource_name)",
-               "icon": "/stonehearth/entities/resources/herb/herbs.png",
+               "icon": "/stonehearth_ace/entities/resources/herb/herb_yellow_icon.png",
                "filter": "resource herb yellow"
             },
             "white_herbs": {
                "ordinal": 1.07,
                "display_name": "i18n(stonehearth_ace:ui.data.constants.white_herb_resource_name)",
-               "icon": "/stonehearth/entities/resources/herb/herbs.png",
+               "icon": "/stonehearth_ace/entities/resources/herb/herb_white_icon.png",
                "filter": "resource herb white"
             },
             "purple_herbs": {
                "ordinal": 1.08,
                "display_name": "i18n(stonehearth_ace:ui.data.constants.purple_herb_resource_name)",
-               "icon": "/stonehearth/entities/resources/herb/herbs.png",
+               "icon": "/stonehearth_ace/entities/resources/herb/herb_purple_icon.png",
                "filter": "resource herb purple"
             },
             "fibers": {
@@ -341,8 +341,68 @@
                "icon": "/stonehearth_ace/entities/resources/herb/daisy/daisy.png",
                "filter": "resource herb daisy"
             },
-            "foxlily": {
+            "daffodil": {
+               "ordinal": 2.801,
+               "display_name": "i18n(stonehearth_ace:entities.resources.herb.daffodil.display_name)",
+               "icon": "/stonehearth_ace/entities/resources/herb/daffodil/daffodil.png",
+               "filter": "resource herb daffodil"
+            },
+            "oleander": {
+               "ordinal": 2.802,
+               "display_name": "i18n(stonehearth_ace:entities.resources.herb.oleander.display_name)",
+               "icon": "/stonehearth_ace/entities/resources/herb/oleander/oleander.png",
+               "filter": "resource herb oleander"
+            },
+            "nightshade": {
+               "ordinal": 2.803,
+               "display_name": "i18n(stonehearth_ace:entities.resources.herb.nightshade.display_name)",
+               "icon": "/stonehearth_ace/entities/resources/herb/nightshade/nightshade.png",
+               "filter": "resource herb nightshade"
+            },
+            "poppy": {
+               "ordinal": 2.804,
+               "display_name": "i18n(stonehearth_ace:entities.resources.herb.poppy.display_name)",
+               "icon": "/stonehearth_ace/entities/resources/herb/poppy/poppy.png",
+               "filter": "resource herb poppy"
+            },
+            "rose": {
+               "ordinal": 2.805,
+               "display_name": "i18n(stonehearth_ace:entities.resources.herb.rose.display_name)",
+               "icon": "/stonehearth_ace/entities/resources/herb/rose/rose.png",
+               "filter": "resource herb rose"
+            },
+            "bog_myrtle": {
+               "ordinal": 2.806,
+               "display_name": "i18n(stonehearth_ace:entities.resources.herb.bog_myrtle.display_name)",
+               "icon": "/stonehearth_ace/entities/resources/herb/bog_myrtle/bog_myrtle.png",
+               "filter": "resource herb bog_myrtle"
+            },
+            "sage": {
+               "ordinal": 2.807,
+               "display_name": "i18n(stonehearth_ace:entities.resources.herb.sage.display_name)",
+               "icon": "/stonehearth_ace/entities/resources/herb/sage/sage.png",
+               "filter": "resource herb sage"
+            },
+            "parsley": {
+               "ordinal": 2.808,
+               "display_name": "i18n(stonehearth_ace:entities.resources.herb.parsley.display_name)",
+               "icon": "/stonehearth_ace/entities/resources/herb/parsley/parsley.png",
+               "filter": "resource herb parsley"
+            },
+            "chives": {
+               "ordinal": 2.809,
+               "display_name": "i18n(stonehearth_ace:entities.resources.herb.chives.display_name)",
+               "icon": "/stonehearth_ace/entities/resources/herb/chives/chives.png",
+               "filter": "resource herb chives"
+            },
+            "dill": {
                "ordinal": 2.81,
+               "display_name": "i18n(stonehearth_ace:entities.resources.herb.dill.display_name)",
+               "icon": "/stonehearth_ace/entities/resources/herb/dill/dill.png",
+               "filter": "resource herb dill"
+            },
+            "foxlily": {
+               "ordinal": 2.815,
                "display_name": "i18n(stonehearth_ace:entities.resources.herb.foxlily.display_name)",
                "icon": "/stonehearth_ace/entities/resources/herb/foxlily/foxlily.png",
                "filter": "resource herb foxlily"

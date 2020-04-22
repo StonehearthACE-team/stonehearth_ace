@@ -2,6 +2,9 @@
    "mixins": "stonehearth:mixins:placed_object",
    "type": "entity",
    "components": {
+      "render_info": {
+         "scale": 0.16
+      },
       "model_variants": {
          "default": {
             "models": [
@@ -25,6 +28,9 @@
          "display_name": "i18n(stonehearth_ace:entities.plants.moonbell_plant.seed.moonbell_plant_seed_ghost.display_name)",
          "description": "i18n(stonehearth_ace:entities.plants.moonbell_plant.seed.moonbell_plant_seed_ghost.description)",
          "icon": "file(moonbell_plant_seed.png)",
+         "material_tags": [
+            "plant"
+         ],
          "category": "seed"
       }
    }

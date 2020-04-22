@@ -1,0 +1,25 @@
+{
+   "type": "recipe",
+   "effort": 25,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.herbalist.recipes.parsley_transmute_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.parsley_transmute_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.parsley_transmute_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/plants/parsley_plant/seed/parsley_plant_seed.png",
+   "workshop": "stonehearth:herbalist:workbench",
+   "level_requirement": 1,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:resources:herb:parsley",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:plants:parsley:seed"
+      },
+      {
+         "item": "stonehearth_ace:plants:parsley:seed"
+      }
+   ]
+}

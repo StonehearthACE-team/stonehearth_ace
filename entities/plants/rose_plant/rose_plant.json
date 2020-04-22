@@ -1,0 +1,28 @@
+{
+   "type": "entity",
+   "mixins": "file(rose_plant_ghost.json)",
+   "components": {
+      "stonehearth:resource_node": {
+         "resource": "stonehearth_ace:resources:herb:rose",
+         "category": "harvest",
+         "harvest_overlay_effect": "stonehearth:effects:harvest_plant_overlay_effect",
+         "resource_spawn_effect": "stonehearth:effects:harvest_plants_effect",
+         "description": "harvest_plant"
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(rose_plant_iconic.json)",
+         "ghost_form": "file(rose_plant_ghost.json)",
+         "placeable_on_ground": true
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 2,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      }
+   }
+}

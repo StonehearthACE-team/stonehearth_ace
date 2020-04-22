@@ -1,0 +1,111 @@
+{
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "/stonehearth_ace/entities/plants/poppy_plant/sprout/poppy_plant_sprout.qb"
+            ]
+         },
+         "poppy_1": {
+            "models": [
+               "/stonehearth_ace/entities/plants/poppy_plant/sprout/poppy_plant_sprout.qb"
+            ]
+         },
+         "poppy_2": {
+            "models": [
+               "/stonehearth_ace/entities/plants/poppy_plant/stem/poppy_plant_stem.qb"
+            ]
+         },
+         "poppy_3": {
+            "models": [
+               "/stonehearth_ace/entities/plants/poppy_plant/bud/poppy_plant_bud.qb"
+            ]
+         },
+         "poppy_4": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "/stonehearth_ace/entities/plants/poppy_plant/poppy_plant.qb",
+                     "/stonehearth_ace/entities/plants/poppy_plant/poppy_plant_2.qb"
+                  ]
+               }
+            ]
+         }
+      },
+      "render_info": {
+         "scale": 0.13
+      },
+      "mob": {
+         "model_origin": { "x": -0.05, "y": 0, "z": -0.05 },
+         "mob_collision_type": "clutter"
+      },
+      "stonehearth:crop": {
+         "resource_pairings": {
+            "snow_poppy_4": "stonehearth_ace:resources:herb:poppy"
+         },
+         "harvest_threshhold": "poppy_4",
+         "plant_overlay_effect": "stonehearth:effects:plant_crop_overlay_effect"
+      },
+      "stonehearth:growing": {
+         "growth_period": "32h",
+         "preferred_seasons": {
+            "stonehearth:biome:temperate": [
+               "spring"
+            ],
+            "stonehearth:biome:desert": [
+               "autumn"
+            ],
+            "stonehearth:biome:arctic": [
+               "spring"
+            ]
+         },
+         "preferred_climate": "highlands_staple",
+         "growth_stages": [
+            {
+               "model_name": "poppy_1",
+               "name": "i18n(stonehearth_ace:entities.crops.poppy_crop.growth_stage.000.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.poppy_crop.growth_stage.000.description)"
+            },
+            {
+               "model_name": "poppy_2",
+               "name": "i18n(stonehearth_ace:entities.crops.poppy_crop.growth_stage.001.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.poppy_crop.growth_stage.001.description)"
+            },
+            {
+               "model_name": "poppy_3",
+               "name": "i18n(stonehearth_ace:entities.crops.poppy_crop.growth_stage.002.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.poppy_crop.growth_stage.002.description)"
+            },
+            {
+               "model_name": "poppy_4",
+               "name": "i18n(stonehearth_ace:entities.crops.poppy_crop.growth_stage.003.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.poppy_crop.growth_stage.003.description)"
+            }
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 1,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.crops.poppy_crop.display_name)",
+         "description": "i18n(stonehearth_ace:entities.crops.poppy_crop.description)",
+         "icon": "/stonehearth_ace/entities/plants/poppy_plant/poppy_plant.png",
+         "material_tags": [
+            "crop",
+            "poppy"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": 1
+      }
+   }
+}

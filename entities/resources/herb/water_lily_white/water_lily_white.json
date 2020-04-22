@@ -2,6 +2,9 @@
    "type": "entity",
    "mixins": "stonehearth:mixins:item_properties",
    "components": {
+      "render_info": {
+         "scale": 0.15
+      },
       "model_variants": {
          "default": {
             "models": [
@@ -19,10 +22,12 @@
    "entity_data": {
       "stonehearth:net_worth": {
          "value_in_gold": 3,
-         "rarity": "common",
+         "rarity": "rare",
          "shop_info": {
-            "buyable": false,
-            "sellable": true
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 3,
+            "shopkeeper_type": "caravan"
          }
       },
       "stonehearth:catalog": {

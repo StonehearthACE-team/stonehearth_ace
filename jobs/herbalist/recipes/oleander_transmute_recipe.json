@@ -1,0 +1,25 @@
+{
+   "type": "recipe",
+   "effort": 25,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.herbalist.recipes.oleander_transmute_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.oleander_transmute_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.oleander_transmute_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/plants/oleander_plant/seed/oleander_plant_seed.png",
+   "workshop": "stonehearth:herbalist:workbench",
+   "level_requirement": 3,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:resources:herb:oleander",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:plants:oleander:seed"
+      },
+      {
+         "item": "stonehearth_ace:plants:oleander:seed"
+      }
+   ]
+}

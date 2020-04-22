@@ -2,6 +2,9 @@
    "type": "entity",
    "mixins": "stonehearth:mixins:item_properties",
    "components": {
+      "render_info": {
+         "scale": 0.14
+      },
       "model_variants": {
          "default": {
             "models": [
@@ -18,8 +21,8 @@
    },
    "entity_data": {
       "stonehearth:net_worth": {
-         "value_in_gold": 4,
-         "rarity": "rare",
+         "value_in_gold": 3,
+         "rarity": "uncommon",
          "shop_info": {
             "buyable": true,
             "sellable": true,
