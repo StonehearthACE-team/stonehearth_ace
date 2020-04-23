@@ -5,6 +5,28 @@ local get_player_id = radiant.entities.get_player_id
 
 local EXP_SPLIT_AMOUNT = 0.7  -- each entity involved will get 30% of the raw exp value; 70% will be divided out among them
 
+AceCombatService._ace_old_calculate_healing = CombatService.calculate_healing
+function AceCombatService:calculate_healing(healer, target, heal_info)
+   local total_healing = self:_ace_old_calculate_healing(healer, target, heal_info)
+
+   local attributes_component = target:get_component('stonehearth:attributes')
+   if attributes_component then
+      local additive_heal_modifier = attributes_component:get_attribute('additive_heal_received_modifier')
+      local multiplicative_heal_modifier = attributes_component:get_attribute('multiplicative_heal_received_modifier')
+
+      if multiplicative_heal_modifier then
+         total_healing = total_healing + total_healing * multiplicative_heal_modifier
+      end
+      if additive_heal_modifier then
+         total_healing = total_healing + additive_heal_modifier
+      end
+
+      total_healing = radiant.math.round(total_healing)
+   end
+
+   return total_healing
+end
+
 --AceCombatService._ace_old__on_target_killed = CombatService._on_target_killed
 function AceCombatService:_on_target_killed(attacker, target)
    local attacker_player_id = get_player_id(attacker)
