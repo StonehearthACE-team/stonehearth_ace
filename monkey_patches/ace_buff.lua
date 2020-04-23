@@ -55,6 +55,21 @@ function AceBuff:_create_buff()
    end
 end
 
+-- base game erroneously references self._sv.stacking_buff_type instead of self._json.repeat_add_action
+-- re-add modifiers on load, since attributes component doesn't save them
+function AceBuff:_restore_modifiers()
+   local num_stacks = self._sv.stacks
+   if num_stacks == 1 then
+      self:_create_modifiers(self._json.modifiers)
+   elseif num_stacks > 1 then
+      if self._json.repeat_add_action == 'stack_and_refresh' then
+         for i=1, num_stacks do
+            self:_create_modifiers(self._json.modifiers)
+         end
+      end
+   end
+end
+
 function AceBuff:_create_modifiers(modifiers)
    if modifiers then
       local new_modifiers = modifiers_lib.add_attribute_modifiers(self._sv._entity, modifiers, { invisible_to_player = self._json.invisible_to_player})

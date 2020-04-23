@@ -696,14 +696,12 @@
       "healing": {
          "SPECIAL_ATTENTION_CONDITIONS": {
             "poisoned": 0.75,
-            "wounded": 0.5
+            "wounded": 0.1
          },
          "FILTER_GUTS_DIVISOR": 3,
          "FILTER_GUTS_MAX_DIFF": 10,
          "FILTER_HEALTH_DIVISOR": 20,
-         "FILTER_HEALTH_MAX_DIFF": 80,
-         "WOUNDED_PERCENT_THRESHOLD": 0.15,
-         "WOUNDED_BUFF": "stonehearth_ace:buffs:wounded"
+         "FILTER_HEALTH_MAX_DIFF": 80
       },
 		"item_quality": {
          "mixintypes": {

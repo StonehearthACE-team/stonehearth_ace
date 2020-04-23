@@ -45,6 +45,20 @@ function ace_entities.consume_stack(item, num_stacks)
    return success
 end
 
+function ace_entities.get_effective_health_percentage(entity)
+   local effective_max_health_percent = healing_lib.get_effective_max_health_percent(entity)
+   if effective_max_health_percent < 1 then
+      local expendable_resource_component = entity:get_component('stonehearth:expendable_resources')
+      if expendable_resource_component then
+         local cur_health = expendable_resource_component:get_value('health')
+         local max_health = expendable_resource_component:get_max_value('health')
+         return cur_health / (effective_max_health_percent * max_health)
+      end
+   end
+
+   return radiant.entities.get_health_percentage(entity)
+end
+
 -- added an extra parameter to these to include the source of the change
 -- so if a kill observer kills them, it can include the killer in the event data
 -- Returns true if the health could be modified by the specified amount
@@ -72,11 +86,14 @@ function ace_entities.modify_health(entity, health_change, source)
          end
       elseif health_change < 0 then
          -- if decreasing health, apply a "wounded" debuff stack if they drop below a threshold
-         local threshold = stonehearth.constants.healing.WOUNDED_PERCENT_THRESHOLD
-         local max_health = expendable_resource_component:get_max_value('health')
-         if math.floor((1 - old_value / max_health) / threshold) < math.floor((1 - (old_value + health_change) / max_health) / threshold) then
-            radiant.entities.add_buff(entity, stonehearth.constants.healing.WOUNDED_BUFF)
-         end
+         -- nope! don't automatically apply wounds, let those get specifically applied by monsters/events
+         -- "WOUNDED_BUFF": "stonehearth_ace:buffs:wounded"
+         -- "WOUNDED_PERCENT_THRESHOLD": 0.15
+         -- local threshold = stonehearth.constants.healing.WOUNDED_PERCENT_THRESHOLD
+         -- local max_health = expendable_resource_component:get_max_value('health')
+         -- if math.floor((1 - old_value / max_health) / threshold) < math.floor((1 - (old_value + health_change) / max_health) / threshold) then
+         --    radiant.entities.add_buff(entity, stonehearth.constants.healing.WOUNDED_BUFF)
+         -- end
       end
 
       local new_value = radiant.entities.modify_resource(entity, 'health', health_change, source)
