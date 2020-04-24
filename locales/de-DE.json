@@ -2245,6 +2245,10 @@
                "description": "Dies ist ein schwaches Gift. Je mehr gift angewendet wurde, umso länger wirkt es und wird das Bewusstsein der Zielperson schnell reduzieren und sie einschläfern."
             }
          },
+         "wounded": {
+            "display_name": "Verwundet",
+            "description": "Kann erst nach Behandlung durch einen Kräuterarzt vollständig geheilt werden."
+         },
          "spring_flavors": {
             "display_name": "Frühlingsgeschmack",
             "description": "Ahh! Nichts geht über ein frisches und kühles Wasser direkt aus der Quelle! Fleiß und Mitgefühl warden erhöht.<ul><li>Die Wahrscheinlichkeit, bei der Herstellung eine gute Qualität zu erhalten, steigt</li><li>Die Erfahrung wächst etwas schneller</li></ul>"
@@ -2543,6 +2547,7 @@
          "recipes": {
             "refined_fungi_name": "Pilzverfeinerung",
 	    "refined_seeds_name": "Regionale Samen",
+            "planters_name": "Kräuter-Pflanzer",
 	    "farming_enhancements_name": "Landwirtschaftliche Verbesserungen & Samen",
             "decorated_frostfeast_tree_recipe": {
                "recipe_name": "Geschmückte frostfeste Kiefer",
@@ -2624,10 +2629,65 @@
                "description": "Trenne die Samen von der Faser",
                "flavor": "Baumwollsamen sind ölhaltige Samen und können zur Herstellung von Öl verwendet werden."
             },
+            "poppy_transmute_recipe": {
+               "recipe_name": "Mohn-Samen (x2)",
+               "description": "Trenne die Samen von den Kräutern",
+               "flavor": "Nur eine geschickte Hand kann die schwächeren Samen ernten, aber die Kräuter werden dabei zerstört."
+            },
+            "rose_transmute_recipe": {
+               "recipe_name": "Rosen-Samen (x2)",
+               "description": "Trenne die Samen von den Kräutern",
+               "flavor": "Nur eine geschickte Hand kann die schwächeren Samen ernten, aber die Kräuter werden dabei zerstört."
+            },
+            "dill_transmute_recipe": {
+               "recipe_name": "Dill-Samen (x2)",
+               "description": "Trenne die Samen von den Kräutern",
+               "flavor": "Nur eine geschickte Hand kann die schwächeren Samen ernten, aber die Kräuter werden dabei zerstört."
+            },
+            "chives_transmute_recipe": {
+               "recipe_name": "Schnittlauch-Samen (x2)",
+               "description": "Trenne die Samen von den Kräutern",
+               "flavor": "Nur eine geschickte Hand kann die schwächeren Samen ernten, aber die Kräuter werden dabei zerstört."
+            },
+            "bog_myrtle_transmute_recipe": {
+               "recipe_name": "Sumpfmyrte-Samen (x2)",
+               "description": "Trenne die Samen von den Kräutern",
+               "flavor": "Nur eine geschickte Hand kann die schwächeren Samen ernten, aber die Kräuter werden dabei zerstört."
+            },
+            "nightshade_transmute_recipe": {
+               "recipe_name": "Nachtschatten-Samen (x2)",
+               "description": "Trenne die Samen von den Kräutern",
+               "flavor": "Nur eine geschickte Hand kann die schwächeren Samen ernten, aber die Kräuter werden dabei zerstört."
+            },
+            "daffodil_transmute_recipe": {
+               "recipe_name": "Narzissen-Samen (x2)",
+               "description": "Trenne die Samen von den Kräutern",
+               "flavor": "Nur eine geschickte Hand kann die schwächeren Samen ernten, aber die Kräuter werden dabei zerstört."
+            },
+            "oleander_transmute_recipe": {
+               "recipe_name": "Oleander-Samen (x2)",
+               "description": "Trenne die Samen von den Kräutern",
+               "flavor": "Nur eine geschickte Hand kann die schwächeren Samen ernten, aber die Kräuter werden dabei zerstört."
+            },
+            "oleander_seeds_2_recipe": {
+               "recipe_name": "Oleander-Samen",
+               "description": "Handeln oder verschenke sie, damit andere Kulturen Oleanderblüten anbauen können",
+               "flavor": "Diese Nutzpflanze ist deinen Bauern bereits standardmäßig bekannt"
+            },
+            "parsley_transmute_recipe": {
+               "recipe_name": "Petersilien-Samen (x2)",
+               "description": "Trenne die Samen von den Kräutern",
+               "flavor": "Nur eine geschickte Hand kann die schwächeren Samen ernten, aber die Kräuter werden dabei zerstört."
+            },
+            "sage_transmute_recipe": {
+               "recipe_name": "Salbei-Samen (x2)",
+               "description": "Trenne die Samen von den Kräutern",
+               "flavor": "Nur eine geschickte Hand kann die schwächeren Samen ernten, aber die Kräuter werden dabei zerstört."
+            },
             "silkweed_transmute_recipe": {
-               "recipe_name": "Seidenpflanzen-Samen (x3)",
-               "description": "Trenne die Samen von der Faser",
-               "flavor": "Nur eine geschickte Hand kann die schwächeren Samen ernten, aber die Faser wird dabei zerstört."
+               "recipe_name": "Seidenpflanzen-Samen (x2)",
+               "description": "Trenne die Samen von den Kräutern",
+               "flavor": "Nur eine geschickte Hand kann die schwächeren Samen ernten, aber die Kräuter werden dabei zerstört."
             },
             "carrot_transmute_recipe": {
                "recipe_name": "Karotten-Samen (x3)",
@@ -2709,23 +2769,23 @@
             },
             "oak_tree_seeds_recipe": {
                "recipe_name": "Eicheln",
-               "description": "Zähme Eichen und lerne wie man sie bewirtschaftet.",
-               "flavor": "Die Kiste muss vor dem Einsatz auf dem Boden abgestellt werden"
+               "description": "Domestiziere die Eichen und lerne wie man sie züchtet.",
+               "flavor": "Interagiere mit der fertigen Kiste, um diese Frucht zu entsperren. Dadurch wird dieses Objekt verbraucht."
             },
             "juniper_tree_seeds_recipe": {
                "recipe_name": "Getrocknete Wacholderbeeren",
-               "description": "Zähme Wacholderbäume und lerne wie man sie bewirtschaftet.",
-               "flavor": "Die Kiste muss vor dem Einsatz auf dem Boden abgestellt werden"
+               "description": "Domestiziere die Wacholderbäume und lerne wie man sie züchtet.",
+               "flavor": "Interagiere mit der fertigen Kiste, um diese Frucht zu entsperren. Dadurch wird dieses Objekt verbraucht."
             },
             "pine_tree_seeds_recipe": {
                "recipe_name": "Kiefernzapfen",
-               "description": "Zähme Kiefern und lerne wie man sie bewirtschaftet.",
-               "flavor": "Die Kiste muss vor dem Einsatz auf dem Boden abgestellt werden"
+               "description": "Domestiziere die Kiefern und lerne wie man sie züchtet.",
+               "flavor": "Interagiere mit der fertigen Kiste, um diese Frucht zu entsperren. Dadurch wird dieses Objekt verbraucht."
             },
             "brightbell_seeds_recipe": {
                "recipe_name": "Glockenblumen-Samen",
-               "description": "Zähme Glockenblumen und lerne wie man sie bewirtschaftet.",
-               "flavor": "Die Kiste muss vor dem Einsatz auf dem Boden abgestellt werden"
+               "description": "Domestiziere die Glockenblumen und lerne wie man sie züchtet.",
+               "flavor": "Interagiere mit der fertigen Kiste, um diese Frucht zu entsperren. Dadurch wird dieses Objekt verbraucht."
             },
             "brightbell_seeds_2_recipe": {
                "recipe_name": "Glockenblumen-Samen",
@@ -2734,8 +2794,8 @@
             },
             "silkweed_seeds_recipe": {
                "recipe_name": "Seidenpflanzen-Samen",
-               "description": "Zähme Seidenpflanzen und lerne wie man sie bewirtschaftet.",
-               "flavor": "Die Kiste muss vor dem Einsatz auf dem Boden abgestellt werden"
+               "description": "Domestiziere die Seidenpflanzen und lerne wie man sie züchtet.",
+               "flavor": "Interagiere mit der fertigen Kiste, um diese Frucht zu entsperren. Dadurch wird dieses Objekt verbraucht."
             },
             "silkweed_seeds_2_recipe": {
                "recipe_name": "Seidenpflanzen-Samen",
@@ -2744,8 +2804,8 @@
             },
             "frostsnap_seeds_recipe": {
                "recipe_name": "Eisblumen-Samen",
-               "description": "Zähme Eisblumen und lerne wie man sie bewirtschaftet.",
-               "flavor": "Die Kiste muss vor dem Einsatz auf dem Boden abgestellt werden"
+               "description": "Domestiziere die Eisblumen und lerne wie man sie züchtet.",
+               "flavor": "Interagiere mit der fertigen Kiste, um diese Frucht zu entsperren. Dadurch wird dieses Objekt verbraucht."
             },
             "frostsnap_seeds_2_recipe": {
                "recipe_name": "Eisblumen-Samen",
@@ -2754,18 +2814,18 @@
             },
             "acacia_tree_seeds_recipe": {
                "recipe_name": "Akazien-Samen",
-               "description": "Zähme Akazienbäume und lerne wie man sie bewirtschaftet.",
-               "flavor": "Die Kiste muss vor dem Einsatz auf dem Boden abgestellt werden"
+               "description": "Domestiziere die Akazienbäume und lerne wie man sie züchtet.",
+               "flavor": "Interagiere mit der fertigen Kiste, um diese Frucht zu entsperren. Dadurch wird dieses Objekt verbraucht."
             },
             "cactus_tree_seeds_recipe": {
                "recipe_name": "Kaktusbaums-Samen",
-               "description": "Zähme Kaktusbäume und lerne wie man sie bewirtschaftet.",
-               "flavor": "Die Kiste muss vor dem Einsatz auf dem Boden abgestellt werden"
+               "description": "Domestiziere die Kaktusbäume und lerne wie man sie züchtet.",
+               "flavor": "Interagiere mit der fertigen Kiste, um diese Frucht zu entsperren. Dadurch wird dieses Objekt verbraucht."
             },
             "cactus_flower_seeds_recipe": {
                "recipe_name": "Kaktusblumen-Samen",
-               "description": "Zähme Kaktusblumen und lerne wie man sie bewirtschaftet.",
-               "flavor": "Die Kiste muss vor dem Einsatz auf dem Boden abgestellt werden"
+               "description": "Domestiziere die Kaktusblumen und lerne wie man sie züchtet.",
+               "flavor": "Interagiere mit der fertigen Kiste, um diese Frucht zu entsperren. Dadurch wird dieses Objekt verbraucht."
             },
             "cactus_flower_seeds_2_recipe": {
                "recipe_name": "Kaktusblumen-Samen",
@@ -2774,18 +2834,18 @@
             },
             "arctic_pine_tree_seeds_recipe": {
                "recipe_name": "Arktische Kiefernzapfen",
-               "description": "Zähme arktische Kiefern und lerne wie man sie bewirtschaftet.",
-               "flavor": "Die Kiste muss vor dem Einsatz auf dem Boden abgestellt werden"
+               "description": "Domestiziere die arktischen Kiefern und lerne wie man sie züchtet.",
+               "flavor": "Interagiere mit der fertigen Kiste, um diese Frucht zu entsperren. Dadurch wird dieses Objekt verbraucht."
             },
             "arctic_juniper_tree_seeds_recipe": {
                "recipe_name": "Getrocknete arktische Wacholderbeeren",
-               "description": "Zähme arktische Wacholderbäume und lerne wie man sie bewirtschaftet.",
-               "flavor": "Die Kiste muss vor dem Einsatz auf dem Boden abgestellt werden"
+               "description": "Domestiziere die arktischen Wacholderbäume und lerne wie man sie züchtet.",
+               "flavor": "Interagiere mit der fertigen Kiste, um diese Frucht zu entsperren. Dadurch wird dieses Objekt verbraucht."
             },
             "violet_seeds_recipe": {
                "recipe_name": "Veilchen-Samen",
-               "description": "Zähme Veilchen und lerne wie man sie bewirtschaftet.",
-               "flavor": "Die Kiste muss vor dem Einsatz auf dem Boden abgestellt werden"
+               "description": "Domestiziere die Veilchen und lerne wie man sie züchtet.",
+               "flavor": "Interagiere mit der fertigen Kiste, um diese Frucht zu entsperren. Dadurch wird dieses Objekt verbraucht."
             },
             "violet_seeds_2_recipe": {
                "recipe_name": "Veilchen-Samen",
@@ -2794,8 +2854,8 @@
             },
             "snow_poppy_seeds_recipe": {
                "recipe_name": "Schneemohn-Samen",
-               "description": "Zähme Schneemohn und lerne wie man sie bewirtschaftet.",
-               "flavor": "Die Kiste muss vor dem Einsatz auf dem Boden abgestellt werden"
+               "description": "Domestiziere den Schneemohn und lerne wie man ihn züchtet.",
+               "flavor": "Interagiere mit der fertigen Kiste, um diese Frucht zu entsperren. Dadurch wird dieses Objekt verbraucht."
             },
             "snow_poppy_seeds_2_recipe": {
                "recipe_name": "Schneemohn-Samen",
@@ -2804,23 +2864,48 @@
             },
             "birch_tree_seeds_recipe": {
                "recipe_name": "Birken-Kätzchen",
-               "description": "Zähme Birken und lerne wie man sie bewirtschaftet.",
-               "flavor": "Die Kiste muss vor dem Einsatz auf dem Boden abgestellt werden"
+               "description": "Domestiziere die Birken und lerne wie man sie züchtet.",
+               "flavor": "Interagiere mit der fertigen Kiste, um diese Frucht zu entsperren. Dadurch wird dieses Objekt verbraucht."
             },
             "yew_tree_seeds_recipe": {
                "recipe_name": "Getrocknete Eibenbeeren",
-               "description": "Zähme Eibenbäume und lerne wie man sie bewirtschaftet.",
-               "flavor": "Die Kiste muss vor dem Einsatz auf dem Boden abgestellt werden"
+               "description": "Domestiziere die Eibenbäume und lerne wie man sie züchtet.",
+               "flavor": "Interagiere mit der fertigen Kiste, um diese Frucht zu entsperren. Dadurch wird dieses Objekt verbraucht."
             },
             "highland_pine_tree_seeds_recipe": {
                "recipe_name": "Hochland-Kiefernzapfen",
-               "description": "Zähme Hochland-Kiefern und lerne wie man sie bewirtschaftet.",
-               "flavor": "Die Kiste muss vor dem Einsatz auf dem Boden abgestellt werden"
+               "description": "Domestiziere die Hochland-Kiefern und lerne wie man sie züchtet.",
+               "flavor": "Interagiere mit der fertigen Kiste, um diese Frucht zu entsperren. Dadurch wird dieses Objekt verbraucht."
             },
             "moonbell_seeds_recipe": {
                "recipe_name": "Mondglocken-Samen",
-               "description": "Zähme Mondglockenund lerne wie man sie bewirtschaftet.",
-               "flavor": "Die Kiste muss vor dem Einsatz auf dem Boden abgestellt werden"
+               "description": "Domestiziere die Mondglocken und lerne wie man sie züchtet.",
+               "flavor": "Interagiere mit der fertigen Kiste, um diese Frucht zu entsperren. Dadurch wird dieses Objekt verbraucht."
+            },
+            "poppy_seeds_recipe": {
+               "recipe_name": "Mohn-Samen",
+               "description": "Domestiziere die Mohnblumen und lerne wie man sie züchtet.",
+               "flavor": "Interagiere mit der fertigen Kiste, um diese Frucht zu entsperren. Dadurch wird dieses Objekt verbraucht."
+            },
+            "rose_seeds_recipe": {
+               "recipe_name": "Rosen-Samen",
+               "description": "Domestiziere die Rosen und lerne wie man sie züchtet..",
+               "flavor": "Interagiere mit der fertigen Kiste, um diese Frucht zu entsperren. Dadurch wird dieses Objekt verbraucht."
+            },
+            "nightshade_seeds_recipe": {
+               "recipe_name": "Nachtschatten-Samen",
+               "description": "Domestiziere den Nachtschattenund lerne wie man ihn züchtet.",
+               "flavor": "Interagiere mit der fertigen Kiste, um diese Frucht zu entsperren. Dadurch wird dieses Objekt verbraucht."
+            },
+            "daffodil_seeds_recipe": {
+               "recipe_name": "Narzissen-Samen",
+               "description": "Domestiziere die Narzissen und lerne wie man sie züchtet.",
+               "flavor": "Interagiere mit der fertigen Kiste, um diese Frucht zu entsperren. Dadurch wird dieses Objekt verbraucht."
+            },
+            "oleander_seeds_recipe": {
+               "recipe_name": "Oleander-Samen",
+               "description": "Domestiziere den Oleander und lerne wie man ihn züchtet.",
+               "flavor": "Interagiere mit der fertigen Kiste, um diese Frucht zu entsperren. Dadurch wird dieses Objekt verbraucht."
             },
             "moonbell_seeds_2_recipe": {
                "recipe_name": "Mondglocken-Samen",
@@ -2829,8 +2914,8 @@
             },
             "cotton_seeds_recipe": {
                "recipe_name": "Baumwoll-Samen",
-               "description": "Zähme Baumwollpflanzen und lerne wie man sie bewirtschaftet.",
-               "flavor": "Die Kiste muss vor dem Einsatz auf dem Boden abgestellt werden"
+               "description": "Domestiziere Baumwollpflanzen und lerne wie man sie züchtet.",
+               "flavor": "Interagiere mit der fertigen Kiste, um diese Frucht zu entsperren. Dadurch wird dieses Objekt verbraucht."
             },
             "cotton_seeds_2_recipe": {
                "recipe_name": "Baumwoll-Samen",
@@ -2839,8 +2924,8 @@
             },
             "marblesprout_seeds_recipe": {
                "recipe_name": "Marmorsprossen-Samen",
-               "description": "Zähme Marmorsprossen und lerne wie man sie bewirtschaftet.",
-               "flavor": "Die Kiste muss vor dem Einsatz auf dem Boden abgestellt werden"
+               "description": "Domestiziere Marmorsprossen und lerne wie man sie züchtet.",
+               "flavor": "Interagiere mit der fertigen Kiste, um diese Frucht zu entsperren. Dadurch wird dieses Objekt verbraucht."
             },
             "marblesprout_seeds_2_recipe": {
                "recipe_name": "Marmorsprossen-Samen",
@@ -3421,7 +3506,7 @@
                "flavor": "Halte es geschlossen, halte es sauber"
             },
             "golden_clay_wall_planter_recipe": {
-               "recipe_name": "Fensterpflanzgefäß mit Glockenblumen",
+               "recipe_name": "Fensterpflanzgefäß mit Oleander",
                "description": "Ein dekoratives Pflanzgefäß, das unter die Fensterrahmen gestellt wird. Wird mit den Glockenblumen geliefert, aber ein anderes Kraut kann vom Kräuterarzt gepflanzt werden."
             },
             "potted_cactus_recipe": {
@@ -5561,6 +5646,26 @@
             "paddy_seeds": {
                "display_name": "Rais-Samen",
                "description": "Lerne Reis anzubauen."
+            },
+            "poppy_seeds": {
+               "display_name": "Mohn-Samen",
+               "description": "Lerne dekorative Mohnblumen zu züchten."
+            },
+            "rose_seeds": {
+               "display_name": "Rosen-Samen",
+               "description": "Lerne dekorative Rosen zu züchten."
+            },
+            "nightshade_seeds": {
+               "description": "Lerne dekorative Nachtschatten zu züchten.",
+               "display_name": "Nachtschatten-Samen"
+            },
+            "daffodil_seeds": {
+               "description": "Lerne dekorative Narzissen zu züchten.",
+               "display_name": "Narzissen-Samen"
+            },
+            "oleander_seeds": {
+               "display_name": "Oleander-Samen",
+               "description": "Lerne dekorative Oleanderblumen zu züchten."
             }
          },
          "fertilizer": {
@@ -5782,19 +5887,19 @@
       },
       "crops": {
          "moonbell_crop": {
-            "display_name": "Mondglockenblume",
+            "display_name": "Mondglocken-Blume",
             "description": "Kann als Heilkraut verwendet werden",
             "growth_stage": {
                "000": {
-                  "name": "Mondglockensetzling",
+                  "name": "Mondglocken-Setzling",
                   "description": "Voller Potenzial."
                },
                "001": {
-                  "name": "Mondglockensprosse",
+                  "name": "Mondglocken-Sprosse",
                   "description": "Stummlig"
                },
                "002": {
-                  "name": "Mondglockenknospe",
+                  "name": "Mondglocken-Knospe",
                   "description": "Unbeholfene, schlaksige Phase."
                },
                "003": {
@@ -5804,19 +5909,19 @@
             }
          },
          "marblesprout_crop": {
-            "display_name": "Marmorsprossenblume",
+            "display_name": "Marmorsprossen-Blume",
             "description": "Die Blume trotzt der Schwerkraft",
             "growth_stage": {
                "000": {
-                  "name": "Marmorsproßensetzling",
+                  "name": "Marmorsproßen-Setzling",
                   "description": "Voller Potenzial."
                },
                "001": {
-                  "name": "Marmorsproßensprosse",
+                  "name": "Marmorsproßen-Sprosse",
                   "description": "Stummlig"
                },
                "002": {
-                  "name": "Marmorsproßenknospe",
+                  "name": "Marmorsproßen-Knospe",
                   "description": "Unbeholfene, schlaksige Phase."
                },
                "003": {
@@ -5830,23 +5935,23 @@
             "description": "Die Faser dieser Pflanze kann in einen Faden gesponnen werden",
             "growth_stage": {
                "000": {
-                  "name": "Baumwollsetzling",
+                  "name": "Baumwoll-Setzling",
                   "description": "Hat eine lange Reise in die Zukunft."
                },
                "001": {
-                  "name": "Baumwollsprosse",
+                  "name": "Baumwoll-Sprosse",
                   "description": "Das Leben fängt gerade erst an..."
                },
                "002": {
-                  "name": "Baumwollknospe",
+                  "name": "Baumwoll-Knospe",
                   "description": "Stetig wachsend! Sollte bald anfangen zu blühen!"
                },
                "003": {
-                  "name": "Baumwollblüte",
+                  "name": "Baumwoll-Blüte",
                   "description": "Es blüht! Genieße es solange es geht..."
                },
                "004": {
-                  "name": "Verblassende Baumwollblüte",
+                  "name": "Verblassende Baumwoll-Blüte",
                   "description": "Die Blumen verblassen bereits..."
                },
                "005": {
@@ -5863,20 +5968,20 @@
             }
          },
          "violet_crop": {
-            "display_name": "Veilchenblumen",
+            "display_name": "Veilchen-Blume",
             "description": "Kann als Heilkraut verwendet werden",
             "growth_stage": {
                "000": {
-                  "name": "Veilchensetzling",
+                  "name": "Veilchen-Setzling",
                   "description": "Immernoch wachsend!"
                },
                "001": {
-                  "name": "Veilchensprossen",
+                  "name": "Veilchen-Sprosse",
                   "description": "Braucht nur etwas Zeit und Pflege."
                },
                "002": {
-                  "name": "Veilchenknospen",
-                  "description": "Es ist fast da! Schau es hat Knospen!"
+                  "name": "Veilchen-Knospe",
+                  "description": "Es ist fast soweit! Schau es hat Knospen!"
                },
                "003": {
                   "name": "Veilchen",
@@ -5885,20 +5990,20 @@
             }
          },
          "snow_poppy_crop": {
-            "display_name": "Schneemohnblume",
+            "display_name": "Schneemohn-Blume",
             "description": "Kann als Heilkraut verwendet werden",
             "growth_stage": {
                "000": {
-                  "name": "Schneemohnsetzling",
+                  "name": "Schneemohn-Setzling",
                   "description": "Immernoch wachsend!"
                },
                "001": {
-                  "name": "Schneemohnsprossen",
+                  "name": "Schneemohn-Sprosse",
                   "description": "Braucht nur etwas Zeit und Pflege."
                },
                "002": {
-                  "name": "Schneemohnknospen",
-                  "description": "Es ist fast da! Schau es hat Knospen!"
+                  "name": "Schneemohn-Knospe",
+                  "description": "Es ist fast soweit! Schau es hat Knospen!"
                },
                "003": {
                   "name": "Schneemohn",
@@ -5951,7 +6056,7 @@
             "display_name": "Eiben-Sprössling"
          },
          "paddy_crop": {
-            "display_name": "Rohreis",
+            "display_name": "Reisfeld",
             "description": "Rohreis wächst langsam im Wasser, wird aber allgemein geschätzt!",
             "growth_stage": {
                "000": {
@@ -6028,15 +6133,15 @@
             "description": "Kein Holz mehr? Diese Setzlinge können zu arktischen Kiefern herwachsen!",
             "growth_stage": {
                "000": {
-                  "name": "Arktische Kiefernbeere",
+                  "name": "Arktische Kiefern-Beere",
                   "description": "Eine neue Kiefer, die Wurzeln schlägt."
                },
                "001": {
-                  "name": "Arktischer Kiefernsetzling",
+                  "name": "Arktischer Kiefern-Setzling",
                   "description": "Eine zarte Wachstumsstufe."
                },
                "002": {
-                  "name": "Arktische Kiefernsprosse",
+                  "name": "Arktische Kiefern-Sprosse",
                   "description": "Eine perfekte kleine Kiefer. Immernoch wachsend!"
                },
                "003": {
@@ -6047,6 +6152,28 @@
          },
          "megacrops": {
             "default_description": "Diese Frucht ist Mega!"
+         },
+         "poppy_crop": {
+            "display_name": "Mohn-Blume",
+            "description": "Kann als Heilkraut verwendet werden",
+            "growth_stage": {
+               "000": {
+                  "description": "Wächst noch!",
+                  "name": "Mohn-Setzling"
+               },
+               "001": {
+                  "name": "Mohn-Sproße",
+                  "description": "Braucht nur etwas Zeit und Sorgfalt."
+               },
+               "002": {
+                  "name": "Mohn-Knospe",
+                  "description": "Es ist fast soweit!  Schau es hat Knospen!"
+               },
+               "003": {
+                  "name": "Mohn-Blumen",
+                  "description": "Kann für Heilkräuter geerntet werden."
+               }
+            }
          }
       },
       "decorations": {
@@ -6078,7 +6205,7 @@
          },
          "golden_clay_wall_planter": {
             "display_name": "Pflanzgefäß aus Ton",
-            "description": "Ein dekoratives Pflanzgefäß. Enthält Glockenblumen, aber ein anderes Kraut kann gepflanzt werden."
+            "description": "Ein dekoratives Pflanzgefäß. Enthält Oleander, aber ein anderes Kraut kann gepflanzt werden."
          },
          "potted_cactus": {
             "display_name": "Pflanzgefäß aus Ton",
@@ -6236,6 +6363,46 @@
             "water_lily_pad": {
                "display_name": "Seerose",
                "description": "Ein schwimmendes Blatt, der Favorit jedes Frosches. Ein grünes aromatisches Kraut."
+            },
+            "poppy": {
+               "display_name": "Mohn-Blüten",
+               "description": "Lebendige, kontrastierende Blütenblätter. Nützlich als rotes bitteres Kraut."
+            },
+            "bog_myrtle": {
+               "display_name": "Blätter der Sumpfmyrte",
+               "description": "Geschmeidige Blätter mit starkem Geruch. Nützlich als grünes bitteres Kraut."
+            },
+            "chives": {
+               "display_name": "Schnittlauch-Bündel",
+               "description": "Zarte Aromen! Nützlich als grünes oder lila aromatisches Kraut."
+            },
+            "daffodil": {
+               "display_name": "Narzissen-Blüten",
+               "description": "Wie kleine goldene Trompeten. Nützlich als gelbes aromatisches Kraut."
+            },
+            "dill": {
+               "display_name": "Dill-Bündel",
+               "description": "Leicht bittersüß. Nützlich als grünes oder gelbes aromatisches Kraut."
+            },
+            "nightshade": {
+               "display_name": "Nachtschatten-Blüten",
+               "description": "So gefährlich wie hübsch. Nützlich als lila bitteres Kraut."
+            },
+            "oleander": {
+               "display_name": "Oleander",
+               "description": "Überwaltigende Blütenblätter. Buchstäblich. Nützlich als rotes bitteres Kraut."
+            },
+            "parsley": {
+               "display_name": "Petersilien-Bündel",
+               "description": "Verbessert die Aromen, riecht nach Tau. Nützlich als grünes oder weißes aromatisches Kraut."
+            },
+            "rose": {
+               "display_name": "Rosen-Blüten",
+               "description": "Eine kraftvolle romantische Zutat. Nützlich als rotes aromatisches Kraut."
+            },
+            "sage": {
+               "display_name": "Salbei-Bündel",
+               "description": "üß und rustikal, riecht nach Kiefer. Nützlich als grünes oder blaues aromatisches Kraut."
             }
          },
          "stone": {
@@ -6671,7 +6838,7 @@
          "highland_pine_tree": {
             "bud": {
                "tree_highland_pine_bud": {
-                  "display_name": "Hochlandkieferknospe",
+                  "display_name": "Hochlandkiefer-Knospe",
                   "description": "Wird richtig groß wachsen!"
                }
             },
@@ -6729,7 +6896,7 @@
             },
             "bud": {
                "tree_willow_plant_bud": {
-                  "display_name": "Trauerweidenknospe",
+                  "display_name": "Trauerweiden-Knospe",
                   "description": "Schön wachsend..."
                }
             },
@@ -7411,27 +7578,27 @@
       },
       "plants": {
          "moonbell_plant": {
-            "display_name": "Wilde Mondglocke",
+            "display_name": "Mondglocke",
             "description": "Kann für Heilkräuter geerntet werden",
             "unripe_description": "Diese Pflanze wurde geerntet und ist noch nicht nachgewachsen",
             "seed": {
                "moonbell_plant_seed_ghost": {
-                  "display_name": "Wilde Mondglocken Samen",
+                  "display_name": "Mondglocken-Samen",
                   "description": "Einmal gepflanzt, wird es zu Heilkräutern wachsen"
                },
                "moonbell_plant_sprout": {
-                  "display_name": "Wilder Mondglocken Sprössling",
+                  "display_name": "Mondglocken Sprössling",
                   "description": "Braucht nur etwas Zeit und Sorgfalt."
                }
             },
             "stem": {
                "moonbell_plant_stem": {
-                  "display_name": "Wilde stummlige Mondglocke",
+                  "display_name": "Stummlige Mondglocke",
                   "description": "Immernoch wachsend!"
                },
                "moonbell_plant_bud": {
-                  "display_name": "Wilde Mondglockenknospe",
-                  "description": "Es ist fast da! Schau, es hat Knospen!"
+                  "display_name": "Mondglocken-Knospe",
+                  "description": "Es ist fast soweit! Schau, es hat Knospen!"
                }
             }
          },
@@ -7441,7 +7608,7 @@
             "unripe_description": "Diese Pflanze wurde geerntet und ist noch nicht nachgewachsen",
             "seed": {
                "marblesprout_plant_seed_ghost": {
-                  "display_name": "Wilde Marmorsprossen Samen",
+                  "display_name": "Wilde Marmorsprossen-Samen",
                   "description": "Einmal gepflanzt, wird es zu Marmorsprossen wachsen"
                },
                "marblesprout_plant_sprout": {
@@ -7455,8 +7622,8 @@
                   "description": "Immernoch wachsend!"
                },
                "marblesprout_plant_bud": {
-                  "display_name": "Wild Marmorsprossenknospe",
-                  "description": "Es ist fast da! Schau, es hat Knospen!"
+                  "display_name": "Wilde Marmorsprossen-Knospe",
+                  "description": "Es ist fast soweit! Schau es hat Knospen!"
                }
             }
          },
@@ -7466,13 +7633,13 @@
             "description": "Ernte für köstliche Kirschpflaumen.",
             "bud": {
                "cherry_bush_plant_bud": {
-                  "display_name": "Kirschbusch Knospe",
+                  "display_name": "Kirschbusch-Knospe",
                   "description": "Es ist fast da! Schau, es hat Knospen!"
                }
             },
             "seed": {
                "cherry_bush_plant_seed_ghost": {
-                  "display_name": "Kirschbusch Samen",
+                  "display_name": "Kirschbusch-Samen",
                   "description": "Kann gepflanzt werden, um einen Strauch mit köstlichen Kirschpflaumen anzubauen."
                }
             },
@@ -7492,11 +7659,11 @@
          "cotton_plant": {
             "cotton_plant": {
                "unripe_description": "Diese Pflanze wurde geerntet und ist noch nicht nachgewachsen.",
-               "display_name": "Wilde Baumwolle",
+               "display_name": "Baumwolle",
                "description": "Die Fasern dieser Pflanze können in Fäden gesponnen werden."
             },
             "cotton_plant_bud": {
-               "display_name": "Baumwoll Knospe",
+               "display_name": "Baumwoll-Knospe",
                "description": "Sie ist fast da! Sollte bald zu blühen beginnen."
             },
             "cotton_plant_stem": {
@@ -7508,7 +7675,7 @@
                "description": "Braucht nur etwas Zeit und Pflege."
             },
             "cotton_plant_seed": {
-               "display_name": "Wilde Baumwollsamen",
+               "display_name": "Baumwoll-Samen",
                "description": "Kann gepflanzt werden, um Fasern anzubauen, die zu Fäden gesponnen werden können."
             },
             "cotton_plant_bloom": {
@@ -7517,11 +7684,11 @@
             },
             "cotton_plant_fading": {
                "display_name": "Verblassende Baumwolle",
-               "description": "Die Blüten verblassen ... Aber es wird bald Baumwollknospen geben!"
+               "description": "Die Blüten verblassen ... Aber es wird bald Baumwoll-Knospen geben!"
             },
             "cotton_plant_maturing": {
                "display_name": "Reifende Baumwolle",
-               "description": "Die Baumwollknospen haben begonnen zu reifen und sollten bald fertig sein!"
+               "description": "Die Baumwoll-Knospen haben begonnen zu reifen und sollten bald fertig sein!"
             }
          },
          "water_lily_white": {
@@ -7593,6 +7760,326 @@
          "dwarfsbeard_stem": {
             "display_name": "Stummliger Zwergenbart",
             "description": "Immernoch wachsend!"
+         },
+         "poppy_plant": {
+            "display_name": "Mohn",
+            "description": "Kann für rote bittere Kräuter geerntet werden.",
+            "bud": {
+               "poppy_plant_bud": {
+                  "display_name": "Mohn-Knospe",
+                  "description": "Es ist fast soweit! Schau es hat Knospen!"
+               }
+            },
+            "seed": {
+               "poppy_plant_seed_ghost": {
+                  "display_name": "Mohn-Samen",
+                  "description": "Liefert rote bittere Kräuter, wenn es wächst."
+               },
+               "poppy_plant_seed": {
+                  "display_name": "Mohn-Samen",
+                  "description": "Nicht rauchen! Kann zum Kochen von Öl gepflanzt oder gemahlen werden."
+               }
+            },
+            "sprout": {
+               "poppy_plant_sprout": {
+                  "display_name": "Mohn-Sprosse",
+                  "description": "Braucht nur etwas Zeit und Pflege."
+               }
+            },
+            "stem": {
+               "poppy_plant_stem": {
+                  "display_name": "Stummliger Mohn",
+                  "description": "Wächst noch!"
+               }
+            }
+         },
+         "rose_plant": {
+            "display_name": "Rose",
+            "description": "Kann für rote aromatische Kräuter geerntet werden.",
+            "bud": {
+               "rose_plant_bud": {
+                  "display_name": "Rosen-Knospe",
+                  "description": "Es ist fast soweit! Schau es hat Knospen!"
+               }
+            },
+            "stem": {
+               "rose_plant_stem": {
+                  "display_name": "Stummlige Rose",
+                  "description": "Wächst noch!"
+               }
+            },
+            "sprout": {
+               "rose_plant_sprout": {
+                  "display_name": "Rosen-Sprosse",
+                  "description": "Braucht nur etwas Zeit und Pflege."
+               }
+            },
+            "seed": {
+               "rose_plant_seed": {
+                  "display_name": "Rosen-Samen",
+                  "description": "Kann gepflanzt werden, um eine Rose zu züchten."
+               },
+               "rose_plant_seed_ghost": {
+                  "display_name": "Rosen-Samen",
+                  "description": "Liefert rote aromatische Kräuter, wenn es wächst."
+               }
+            }
+         },
+         "dill_plant": {
+            "display_name": "Dill",
+            "description": "Kann für grüne und gelbe aromatische Kräuter geerntet werden.",
+            "bud": {
+               "dill_plant_bud": {
+                  "display_name": "Dill-Knospe",
+                  "description": "Es ist fast soweit! Schau es hat Knospen!"
+               }
+            },
+            "stem": {
+               "dill_plant_stem": {
+                  "display_name": "Stummliger Dill",
+                  "description": "Wächst noch!"
+               }
+            },
+            "sprout": {
+               "dill_plant_sprout": {
+                  "display_name": "Dill-Sprosse",
+                  "description": "Braucht nur etwas Zeit und Pflege."
+               }
+            },
+            "seed": {
+               "dill_plant_seed": {
+                  "display_name": "Dill-Samen",
+                  "description": "Ein traditionelles Gewürz aus dem Hochland. Kann gepflanzt werden."
+               },
+               "dill_plant_seed_ghost": {
+                  "display_name": "Dill-Samen",
+                  "description": "Liefert grüne und gelbe aromatische Kräuter, wenn es wächst."
+               }
+            }
+         },
+         "chives_plant": {
+            "display_name": "Schnittlauch",
+            "description": "Kann für grüne und lila aromatische Kräuter geerntet werden.",
+            "bud": {
+               "chives_plant_bud": {
+                  "display_name": "Schnittlauch-Knospe",
+                  "description": "Es ist fast soweit! Schau es hat Knospen!"
+               }
+            },
+            "stem": {
+               "chives_plant_stem": {
+                  "display_name": "Stummliger Schnittlauch",
+                  "description": "Wächst noch!"
+               }
+            },
+            "sprout": {
+               "chives_plant_sprout": {
+                  "display_name": "Schnittlauch-Sprosse",
+                  "description": "Braucht nur etwas Zeit und Pflege."
+               }
+            },
+            "seed": {
+               "chives_plant_seed_ghost": {
+                  "description": "Liefert grüne und lila aromatische Kräuter, wenn es wächst.",
+                  "display_name": "Schnittlauch-Samen"
+               },
+               "chives_plant_seed": {
+                  "display_name": "Schnittlauch-Samen",
+                  "description": "Ein traditionelles Gewürz aus dem Norden. Kann gepflanzt werden."
+               }
+            }
+         },
+         "bog_myrtle_plant": {
+            "display_name": "Sumpfmyrte",
+            "description": "Kann für grüne bittere Kräuter geerntet werden.",
+            "bud": {
+               "bog_myrtle_plant_bud": {
+                  "display_name": "Sumpfmyrten-Knospe",
+                  "description": "Es ist fast soweit!"
+               }
+            },
+            "stem": {
+               "bog_myrtle_plant_stem": {
+                  "display_name": "Stummlige Sumpfmyrte",
+                  "description": "Wächst noch!"
+               }
+            },
+            "sprout": {
+               "bog_myrtle_plant_sprout": {
+                  "display_name": "Sumpfmyrten-Sprosse",
+                  "description": "Braucht nur etwas Zeit und Pflege."
+               }
+            },
+            "seed": {
+               "bog_myrtle_plant_seed_ghost": {
+                  "display_name": "Sumpfmyrten-Samen",
+                  "description": "Liefert grüne bittere Kräuter, wenn es wächst."
+               },
+               "bog_myrtle_plant_seed": {
+                  "display_name": "Sumpfmyrten-Samen",
+                  "description": "Ein gewöhnlicher kleiner Strauch aus Feuchtgebieten. Kann gepflanzt werden."
+               }
+            }
+         },
+         "nightshade_plant": {
+            "display_name": "Nachtschatten",
+            "description": "Kann für lila bittere Kräuter geerntet werden.",
+            "bud": {
+               "nightshade_plant_bud": {
+                  "display_name": "Nachtschatten-Knospe",
+                  "description": "Es ist fast soweit! Schau es hat Knospen!"
+               }
+            },
+            "stem": {
+               "nightshade_plant_stem": {
+                  "description": "Wächst noch!",
+                  "display_name": "Stummliger Nachtschatten"
+               }
+            },
+            "sprout": {
+               "nightshade_plant_sprout": {
+                  "display_name": "Nachtschatten-Sprosse",
+                  "description": "Braucht nur etwas Zeit und Pflege."
+               }
+            },
+            "seed": {
+               "nightshade_plant_seed_ghost": {
+                  "display_name": "Nachtschatten-Samen",
+                  "description": "Liefert lila bittere Kräuter, wenn es wächst."
+               },
+               "nightshade_plant_seed": {
+                  "display_name": "Nachtschatten-Samen",
+                  "description": "Hochgiftig und gefährlich! Kann gepflanzt werden."
+               }
+            }
+         },
+         "daffodil_plant": {
+            "display_name": "Narzisse",
+            "description": "Kann für gelbe aromatische Kräuter geerntet werden.",
+            "bud": {
+               "daffodil_plant_bud": {
+                  "display_name": "Narzissen-Knospe",
+                  "description": "Es ist fast soweit! Schau es hat Knospen!"
+               }
+            },
+            "stem": {
+               "daffodil_plant_stem": {
+                  "display_name": "Stummlige Narzisse",
+                  "description": "Wächst noch!"
+               }
+            },
+            "sprout": {
+               "daffodil_plant_sprout": {
+                  "description": "Braucht nur etwas Zeit und Pflege.",
+                  "display_name": "Narzissen-Sprosse"
+               }
+            },
+            "seed": {
+               "daffodil_plant_seed_ghost": {
+                  "display_name": "Narzissen-Samen",
+                  "description": "Liefert gelbe aromatische Kräuter, wenn es wächst."
+               },
+               "daffodil_plant_seed": {
+                  "display_name": "Narzissen-Samen",
+                  "description": "Eine schöne gelbe Blume. Kann gepflanzt werden."
+               }
+            }
+         },
+         "oleander_plant": {
+            "display_name": "Oleander",
+            "description": "Kann für rote bittere Kräuter geerntet werden.",
+            "bud": {
+               "oleander_plant_bud": {
+                  "display_name": "Oleander-Knopse",
+                  "description": "Es ist fast soweit! Schau es hat Knospen!"
+               }
+            },
+            "stem": {
+               "oleander_plant_stem": {
+                  "display_name": "Stummliger Oleander",
+                  "description": "Wächst noch!"
+               }
+            },
+            "sprout": {
+               "oleander_plant_sprout": {
+                  "display_name": "Oleander-Sprosse",
+                  "description": "Braucht nur etwas Zeit und Pflege."
+               }
+            },
+            "seed": {
+               "oleander_plant_seed_ghost": {
+                  "description": "Liefert rote bittere Kräuter, wenn es wächst.",
+                  "display_name": "Oleander-Samen"
+               },
+               "oleander_plant_seed": {
+                  "display_name": "Oleander-Samen",
+                  "description": "Vorsicht, es ist ein giftiger Samen! Kann gepflanzt werden."
+               }
+            }
+         },
+         "parsley_plant": {
+            "display_name": "Petersilie",
+            "description": "Kann für grüne und weiße aromatische Kräuter geerntet werden.",
+            "bud": {
+               "parsley_plant_bud": {
+                  "display_name": "Petersilien-Knospe",
+                  "description": "Es ist fast soweit! Schau es hat Knospen!"
+               }
+            },
+            "stem": {
+               "parsley_plant_stem": {
+                  "display_name": "Stummlige Petersilie",
+                  "description": "Wächst noch!"
+               }
+            },
+            "sprout": {
+               "parsley_plant_sprout": {
+                  "display_name": "Petersilien-Sprosse",
+                  "description": "Braucht nur etwas Zeit und Pflege."
+               }
+            },
+            "seed": {
+               "parsley_plant_seed_ghost": {
+                  "display_name": "Petersilien-Samen",
+                  "description": "Liefert grüne und weiße aromatische Kräuter, wenn es wächst."
+               },
+               "parsley_plant_seed": {
+                  "display_name": "Petersilien-Samen",
+                  "description": "Ein traditionelles Gewürz aus milderen Klimazonen. Kann gepflanzt werden."
+               }
+            }
+         },
+         "sage_plant": {
+            "display_name": "Salbei",
+            "description": "Kann für grüne und blaue aromatische Kräuter geerntet werden.",
+            "bud": {
+               "sage_plant_bud": {
+                  "display_name": "Salbei-Knopse",
+                  "description": "Es ist fast soweit! Schau es hat Knospen!"
+               }
+            },
+            "sprout": {
+               "sage_plant_sprout": {
+                  "description": "Braucht nur etwas Zeit und Pflege.",
+                  "display_name": "Salbei-Sprosse"
+               }
+            },
+            "stem": {
+               "sage_plant_stem": {
+                  "display_name": "Stummliger Salbei",
+                  "description": "Wächst noch!"
+               }
+            },
+            "seed": {
+               "sage_plant_seed_ghost": {
+                  "display_name": "Salbei-Samen",
+                  "description": "Liefert grüne und blaue aromatische Kräuter, wenn es wächst."
+               },
+               "sage_plant_seed": {
+                  "display_name": "Salbei-Samen",
+                  "description": "Ein gewöhnliches Kraut aus den Wäldern. Kann gepflanzt werden."
+               }
+            }
          }
       },
       "decoration": {
@@ -10989,6 +11476,11 @@
                   "recipe_name": "Fruchtwickel",
                   "description": "Ein Bündel bitterer Kräuter und Gewürze. Birkenkätzchen werden oft im Hochland verwendet.",
                   "flavor": "Der Koch oder Kräuterarzt kann es in einen Gärbottich mit Ale geben, um Bier herzustellen."
+               },
+               "oleander_seeds_2_recipe": {
+                  "recipe_name": "Oleander-Samen",
+                  "description": "Handeln damit oder verschenke es, damit andere Kulturen Oleanderblumen kultivieren können!",
+                  "flavor": "Diese Feldfrucht ist deinen Züchtern standardmäßig bereits bekannt"
                }
             }
          },
@@ -11349,6 +11841,56 @@
          "display_name": "Eiben-Sprössling",
          "description": "What do you know, it's exactly like a wild yew tree! Dani, you should change this text!",
          "harvest_text": "ernte Eiben-Sprössling"
+      },
+      "poppy": {
+         "display_name": "Mohn",
+         "description": "What do you know, it's exactly like a wild Poppy! Dani, you should change this text!",
+         "harvest_text": "ernte Mohn"
+      },
+      "rose": {
+         "display_name": "Rose",
+         "description": "What do you know, it's exactly like a wild Rose! Dani, you should change this text!",
+         "harvest_text": "ernte Rose"
+      },
+      "dill": {
+         "display_name": "Dill",
+         "description": "What do you know, it's exactly like a wild Dill! Dani, you should change this text!",
+         "harvest_text": "ernte Dill"
+      },
+      "chives": {
+         "display_name": "Schnittlauch",
+         "description": "What do you know, it's exactly like a wild Chives! Dani, you should change this text!",
+         "harvest_text": "ernte Schnittlauch"
+      },
+      "bog_myrtle": {
+         "display_name": "Sumpfmyrte",
+         "description": "What do you know, it's exactly like a wild Bog Myrtle! Dani, you should change this text!",
+         "harvest_text": "ernte Sumpfmyrte"
+      },
+      "nightshade": {
+         "display_name": "Nachtschatten",
+         "description": "What do you know, it's exactly like a wild Nightshade! Dani, you should change this text!",
+         "harvest_text": "ernte Nachtschatten"
+      },
+      "daffodil": {
+         "display_name": "Narzisse",
+         "description": "What do you know, it's exactly like a wild Daffodil! Dani, you should change this text!",
+         "harvest_text": "ernte Narzisse"
+      },
+      "oleander": {
+         "display_name": "Oleander",
+         "description": "What do you know, it's exactly like a wild Oleander! Dani, you should change this text!",
+         "harvest_text": "ernte Oleander"
+      },
+      "parsley": {
+         "display_name": "Petersilie",
+         "description": "What do you know, it's exactly like a wild Parsley! Dani, you should change this text!",
+         "harvest_text": "ernte Petersilie"
+      },
+      "sage": {
+         "display_name": "Salbei",
+         "description": "What do you know, it's exactly like a wild Sage! Dani, you should change this text!",
+         "harvest_text": "ernte Salbei"
       }
    },
    "plants": {
@@ -12098,7 +12640,25 @@
             "blue_herb_resource_name": "Blaue Kräuter",
             "yellow_herb_resource_name": "Gelbe Kräuter",
             "white_herb_resource_name": "Weiße Kräuter",
-            "purple_herb_resource_name": "Lila Kräuter"
+            "purple_herb_resource_name": "Lila Kräuter",
+            "herb_red_resource_name": "Irgendein rotes Kraut",
+            "herb_green_resource_name": "Irgendein grünes Kraut",
+            "herb_blue_resource_name": "Irgendein blaues Kraut",
+            "herb_yellow_resource_name": "Irgendein gelbes Kraut",
+            "herb_white_resource_name": "Irgendein weißes Kraut",
+            "herb_purple_resource_name": "Irgendein lila Kraut",
+            "herb_red_aromatic_resource_name": "Irgendein rotes aromatisches Kraut",
+            "herb_green_aromatic_resource_name": "Irgendein grünes aromatisches Kraut",
+            "herb_blue_aromatic_resource_name": "Irgendein blaues aromatisches Kraut",
+            "herb_yellow_aromatic_resource_name": "Irgendein gelbes aromatisches Kraut",
+            "herb_white_aromatic_resource_name": "Irgendein weißes aromatisches Kraut",
+            "herb_purple_aromatic_resource_name": "Irgendein lilanes aromatisches Kraut",
+            "herb_red_bitter_resource_name": "Irgendein rotes bitteres Kraut",
+            "herb_green_bitter_resource_name": "Irgendein grünes bitteres Kraut",
+            "herb_blue_bitter_resource_name": "Irgendein blaues bitteres Kraut",
+            "herb_yellow_bitter_resource_name": "Irgendein gelbes bitteres Kraut",
+            "herb_white_bitter_resource_name": "Irgendein weißes bitteres Kraut",
+            "herb_purple_bitter_resource_name": "Irgendein lilanes bitteres Kraut"
          }
       }
    },
