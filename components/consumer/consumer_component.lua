@@ -1,7 +1,22 @@
 --[[
    primary usage is consuming fuel for workbenches:
-   tracks how much fuel it has (could use container_component, but might bloat that with added functionality - maybe TODO?)
-   fuel can be set to passively decay over time, with limits
+   tracks how much fuel it has; fuel can be set to passively decay over time, with limits
+
+   different fuel types add different capacity, and there's a minimum useful fuel level at which all crafting can take place, 
+   but different recipes will then reduce the current fuel level by different amounts, in addition to the slow, passive reduction over time
+   fuel consumers would have a fuel interface with several options: 
+      by default it prioritizes the most efficient acceptable fuel available, but you can use only a specific fuel, or no fuel (disabled)
+   if it's below the minimum fuel level (outside of after crafting has already started) then the consumer is considered disabled
+      (for workshops, this means it can't be used for crafting)
+   when fuel level drops below a certain threshold above the minimum useful level, a refueling task will automatically be generated (or not) based on its selected fuel type
+      e.g., min level of 100, reduced by 10 every ~hour, firewood gives 40, wood gives 60, charcoal gives 120, coal gives 130
+      copper/tin smelting cost 20, bronze is 40, iron is 60, steel is 80, silver/gold are 100
+      cook / other food recipes would only cost ~10; potter's would cost somewhere on the lower end as well, maybe 20-50
+   and the min restock level threshold would be something like the same as the minimum useful level, so forge would be 100
+      (starts being usable at 100, stops being auto-refueled once it hits 200)
+      while the cook's oven might have a min level of 30 and stop getting auto-refueled once it hits 60
+   auto-refueling would also only happen as long as recipes are queued beyond what's currently being crafted
+   can specify what specific fuels (or what material "types") are allowed for a consumer
 ]]
 
 local ConsumerComponent = class()

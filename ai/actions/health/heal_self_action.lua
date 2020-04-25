@@ -11,4 +11,4 @@ return ai:create_compound_action(HealSelf)
          :execute('stonehearth_ace:pickup_healing_item', {
             target = ai.ENTITY
          })
-         :execute('stonehearth:heal_entity_adjacent', { container = ai.ENTITY, item = ai.PREV.entity })
+         :execute('stonehearth:heal_entity_adjacent', { container = ai.ENTITY, item = ai.PREV.item })

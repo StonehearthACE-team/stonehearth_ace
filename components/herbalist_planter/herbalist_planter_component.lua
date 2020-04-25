@@ -457,7 +457,7 @@ end
 function HerbalistPlanterComponent:plant_crop(planter, seed)
    if self._sv.current_crop then
       self._sv.planted_crop = self._sv.current_crop
-      self._sv.seed_quality = radiant.entities.get_item_quality(seed)
+      self._sv.seed_quality = seed and radiant.entities.get_item_quality(seed) or 1
    else
       self._sv.planted_crop = nil
       self._sv.seed_quality = nil
