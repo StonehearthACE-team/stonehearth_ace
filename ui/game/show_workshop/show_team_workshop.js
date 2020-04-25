@@ -12,6 +12,35 @@ $(top).on('stonehearthReady', function() {
       }
    });
 
+   $(top).on("radiant_selection_changed.show_team_workshop", function (_, e) {
+      App.workshopManager._selectedEntityTraceDone = false;
+      if (e && e.selected_entity) {
+         App.workshopManager.selectedEntityTrace = new RadiantTrace(e.selected_entity)
+            .progress(function(result) {
+               if (App.workshopManager._selectedEntityTraceDone) {
+                  return;
+               }
+               App.workshopManager._selectedEntityTraceDone = true;
+
+               var data = {};
+               if (result && result['stonehearth:workshop']) {
+                  data.uri = result.uri;
+                  data.entity = result;
+               }
+
+               if (!App.workshopManager.selectedWorkshopEntity || App.workshopManager.selectedWorkshopEntity.uri != data.uri) {
+                  App.workshopManager.selectedWorkshopEntity = data;
+                  $(top).trigger('selected_workshop_entity_changed', data);
+               }
+            });
+      }
+      else {
+         var data = {};
+         App.workshopManager.selectedWorkshopEntity = data;
+         $(top).trigger('selected_workshop_entity_changed', data);
+      }
+   });
+
    App.workshopManager.pauseOrResumeTrackingItems = $.debounce(1, function () {
       var self = this;
       if (!self.usableItemTracker) return;  // We'll be called later.
@@ -153,7 +182,30 @@ $(top).on('stonehearthReady', function() {
             });
 
             self._updateCraftOrderPreference();
+
+            $(top).on("selected_workshop_entity_changed", function (_, e) {
+               self._updateSelectedWorkshopEntity(e);
+            });
          },
+
+         _updateSelectedWorkshopEntity: function(e) {
+            var self = this;
+            
+            if (!e) {
+               e = App.workshopManager.selectedWorkshopEntity;
+            }
+
+            var uri = e && e.uri;
+            var recipes = self.get('recipes');
+            radiant.each(recipes, function(_, recipeCategory) {
+               radiant.each(recipeCategory.recipes, function(_, recipe) {
+                  var isWorkshopSelected = !recipe.workshop || (uri && recipe.workshop.uri == uri);
+                  if (recipe.is_workshop_selected != isWorkshopSelected) {
+                     Ember.set(recipe, 'is_workshop_selected', isWorkshopSelected);
+                  }
+               });
+            });
+         }.observes('recipes'),
 
          _updateCraftInsertShown: function(div) {
             var self = this;
