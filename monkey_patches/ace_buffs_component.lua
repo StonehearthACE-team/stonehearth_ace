@@ -174,10 +174,7 @@ function AceBuffsComponent:add_buff(uri, options)
    options.stacks = options.stacks or 1
 
    if json.category then
-      local buffs_by_category = self._sv.buffs_by_category[json.category]
-      if not buffs_by_category then
-         buffs_by_category = {}
-      end
+      local buffs_by_category = self._sv.buffs_by_category[json.category] or {}
 
       -- if this buff is already applied and we're just refreshing and/or stacking, ignore this bit
       if json.unique_in_category and json.rank and not buffs_by_category[uri] then
