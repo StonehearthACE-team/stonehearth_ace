@@ -177,10 +177,10 @@ function AceBuffsComponent:add_buff(uri, options)
       local buffs_by_category = self._sv.buffs_by_category[json.category]
       if not buffs_by_category then
          buffs_by_category = {}
-         self._sv.buffs_by_category[json.category] = buffs_by_category
       end
 
-      if json.unique_in_category and json.rank then
+      -- if this buff is already applied and we're just refreshing and/or stacking, ignore this bit
+      if json.unique_in_category and json.rank and not buffs_by_category[uri] then
          -- if this buff should be unique in this category, check if there are any buffs of a higher or equal rank already in it
          -- if there are, cancel out; otherwise, remove all lower rank buffs and continue
          for buff_id, _ in pairs(buffs_by_category) do
@@ -196,6 +196,8 @@ function AceBuffsComponent:add_buff(uri, options)
       end
 
       buffs_by_category[uri] = true
+      -- reset this down here in case it was a unique in category buff that removed all previous buffs in the category
+      self._sv.buffs_by_category[json.category] = buffs_by_category
    end
 
    local buff

@@ -34,19 +34,18 @@ function MaterialMap:add(keys, value)
    end
 end
 
--- Returns a table containing all the values that share all within `keys`
+-- Returns a table containing all the values (as keys!) that share all within `keys`
 --
 function MaterialMap:intersecting_values(keys)
    local keys_table = radiant.util.split_string(keys, ' ')
 
    local last_key = table.remove(keys_table)
-   local values = radiant.keys(self._map[last_key] or {})
+   local values = radiant.shallow_copy(self._map[last_key] or {})
 
    for _, key in ipairs(keys_table) do
-      for index = #values, 1, -1 do
-         local value = values[index]
+      for value, _ in pairs(values) do
          if not self:contains(key, value) then
-            table.remove(values, index)
+            values[value] = nil
          end
       end
    end
