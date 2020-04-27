@@ -296,10 +296,11 @@ function CraftOrder:should_execute_order(crafter)
    --If a workshop is required and there is no placed workshop, return false
    if self._recipe.workshop then
       local workshop_data = self._inventory:get_items_of_type(self._recipe.workshop.uri)
+      local workshop_entity_data
       
       if not workshop_data or workshop_data.count < 1 then
          -- Not an exact match. Maybe a valid equivalent?
-         local workshop_entity_data = radiant.entities.get_entity_data(self._recipe.workshop.uri, 'stonehearth:workshop')
+         workshop_entity_data = radiant.entities.get_entity_data(self._recipe.workshop.uri, 'stonehearth:workshop')
          if workshop_entity_data then
             local equivalents = workshop_entity_data.equivalents
             if equivalents then
@@ -320,7 +321,7 @@ function CraftOrder:should_execute_order(crafter)
       end
 
       -- if this workshop uses fuel, we need to check if any of these workshops actually have fuel available
-      if workshop_entity_data.fuel_settings and workshop_entity_data.fuel_settings.uses_fuel then
+      if workshop_entity_data and workshop_entity_data.fuel_settings and workshop_entity_data.fuel_settings.uses_fuel then
          local found_workshop = false
          for _, workshop in pairs(workshop_data.items) do
             local workshop_comp = workshop:get_component('stonehearth:workshop')
