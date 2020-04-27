@@ -231,7 +231,7 @@ function CrafterInfoController:_get_recipe_cost(ingredients)
          local uris = stonehearth_ace.crafter_info:get_uris(ingredient.material)
          _, cost = self:_get_least_valued_entity(uris)
       else -- ingredient.kind == 'uri'
-         _, cost = self:_get_least_valued_entity({ingredient.uri})
+         _, cost = self:_get_least_valued_entity({[ingredient.uri] = true})
       end
       total_cost = total_cost + cost * ingredient.count
    end
