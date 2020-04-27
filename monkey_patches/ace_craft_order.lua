@@ -293,22 +293,27 @@ function CraftOrder:should_execute_order(crafter)
       return false
    end
 
+   -- If crafter is incapacitated, return false
+   local incapacitation = crafter:get_component('stonehearth:incapacitation')
+   if incapacitation and incapacitation:is_incapacitated() then
+      log:detail('craft order: cannot execute order with recipe %s, crafter %s is incapacitated', self._recipe.recipe_name, crafter)
+      return false
+   end
+
    --If a workshop is required and there is no placed workshop, return false
    if self._recipe.workshop then
       local workshop_data = self._inventory:get_items_of_type(self._recipe.workshop.uri)
-      local workshop_entity_data
+      local workshop_entity_data = radiant.entities.get_entity_data(self._recipe.workshop.uri, 'stonehearth:workshop')
       
-      if not workshop_data or workshop_data.count < 1 then
+      if workshop_entity_data and (not workshop_data or workshop_data.count < 1) then
          -- Not an exact match. Maybe a valid equivalent?
-         workshop_entity_data = radiant.entities.get_entity_data(self._recipe.workshop.uri, 'stonehearth:workshop')
-         if workshop_entity_data then
-            local equivalents = workshop_entity_data.equivalents
-            if equivalents then
-               for _, equivalent in ipairs(equivalents) do
-                  workshop_data = self._inventory:get_items_of_type(equivalent)
-                  if workshop_data and workshop_data.count > 0 then
-                     break
-                  end
+         local equivalents = workshop_entity_data.equivalents
+         if equivalents then
+            for _, equivalent in ipairs(equivalents) do
+               workshop_data = self._inventory:get_items_of_type(equivalent)
+               if workshop_data and workshop_data.count > 0 then
+                  workshop_entity_data = radiant.entities.get_entity_data(equivalent, 'stonehearth:workshop')
+                  break
                end
             end
          end
@@ -339,13 +344,6 @@ function CraftOrder:should_execute_order(crafter)
             return false
          end
       end
-   end
-
-   -- If crafter is incapacitated, return false
-   local incapacitation = crafter:get_component('stonehearth:incapacitation')
-   if incapacitation and incapacitation:is_incapacitated() then
-      log:detail('craft order: cannot execute order with recipe %s, crafter %s is incapacitated', self._recipe.recipe_name, crafter)
-      return false
    end
 
    log:detail('returning true from should_execute_order')

@@ -89,7 +89,7 @@ function AceWorkshopComponent:available_for_work(crafter)
    local crafter_component = crafter:get_component('stonehearth:crafter')
    if crafter_component then
       local order = crafter_component:get_current_order()
-      if order and order:get_id() == self._sv.order:get_id() then
+      if order and (order:get_id() == self._sv.order:get_id()) then
          return true
       end
    end
