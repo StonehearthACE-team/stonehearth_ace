@@ -192,7 +192,7 @@ function AceWorkshopComponent:unreserve_fuel(crafter)
                local town = stonehearth.town:get_town(player_id)
                location = town:get_landing_location()
             end
-            radiant.terrain.place_entity(fuel, radiant.terrain.find_placement_point(location, 1, 4))
+            radiant.terrain.place_entity(fuel, radiant.terrain.find_placement_point(location, 0, 2))
          end
       end
 
@@ -216,15 +216,23 @@ function AceWorkshopComponent:consume_fuel(crafter)
       if type(fuel) == 'number' and expendable_resources then
          expendable_resources:modify_value('reserved_fuel_level', -fuel)
       else
-         local fuel_data = radiant.entities.get_entity_data(fuel, 'stonehearth_ace:fuel') or {}
-         -- assume that any individual fuel entity provides at least the amount necessary for one craft
-         radiant.entities.destroy_entity(fuel)
+         -- first check if there's now a high enough fuel level that we can just take from that
+         -- instead of consuming the fuel entity
+         local fuel_per_craft = self:get_fuel_per_craft()
+         local fuel_level = expendable_resources and expendable_resources:get_value('fuel_level') or 0
+         if fuel_level >= fuel_per_craft then
+            self:unreserve_fuel(crafter)
+            expendable_resources:modify_value('fuel_level', -fuel_per_craft)
+         else
+            local fuel_data = radiant.entities.get_entity_data(fuel, 'stonehearth_ace:fuel') or {}
+            -- assume that any individual fuel entity provides at least the amount necessary for one craft
+            radiant.entities.destroy_entity(fuel)
 
-         if expendable_resources then
-            local fuel_per_craft = self:get_fuel_per_craft()
-            local fuel_amount = math.max(fuel_per_craft, fuel_data.fuel_amount or 1) - fuel_per_craft
-            if fuel_amount > 0 then
-               expendable_resources:modify_value('fuel_level', fuel_amount)
+            if expendable_resources then
+               local fuel_amount = math.max(fuel_per_craft, fuel_data.fuel_amount or 1) - fuel_per_craft
+               if fuel_amount > 0 then
+                  expendable_resources:modify_value('fuel_level', fuel_amount)
+               end
             end
          end
       end

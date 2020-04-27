@@ -302,52 +302,58 @@ function CraftOrder:should_execute_order(crafter)
 
    --If a workshop is required and there is no placed workshop, return false
    if self._recipe.workshop then
-      local workshop_data = self._inventory:get_items_of_type(self._recipe.workshop.uri)
-      local workshop_entity_data = radiant.entities.get_entity_data(self._recipe.workshop.uri, 'stonehearth:workshop')
-      
-      if workshop_entity_data and (not workshop_data or workshop_data.count < 1) then
+      local workshop_uri = self._recipe.workshop.uri
+      local found_valid_workshop = false
+
+      if self:_has_valid_workshop(crafter, workshop_uri) then
+         found_valid_workshop = true
+      else
          -- Not an exact match. Maybe a valid equivalent?
-         local equivalents = workshop_entity_data.equivalents
-         if equivalents then
-            for _, equivalent in ipairs(equivalents) do
-               workshop_data = self._inventory:get_items_of_type(equivalent)
-               if workshop_data and workshop_data.count > 0 then
-                  workshop_entity_data = radiant.entities.get_entity_data(equivalent, 'stonehearth:workshop')
-                  break
+         local workshop_entity_data = radiant.entities.get_entity_data(workshop_uri, 'stonehearth:workshop')
+         if workshop_entity_data then
+            local equivalents = workshop_entity_data.equivalents
+            if equivalents then
+               for _, equivalent in ipairs(equivalents) do
+                  if self:_has_valid_workshop(crafter, equivalent) then
+                     found_valid_workshop = true
+                     break
+                  end
                end
             end
          end
       end
 
-      if not workshop_data or workshop_data.count < 1 then
+      if not found_valid_workshop then
          log:detail('craft_order: cannot execute order with recipe %s, no workshops of appropriate type: %s',
                     tostring(self._recipe.recipe_name), tostring(self._recipe.workshop.uri))
          return false
-      end
-
-      -- if this workshop uses fuel, we need to check if any of these workshops actually have fuel available
-      if workshop_entity_data and workshop_entity_data.fuel_settings and workshop_entity_data.fuel_settings.uses_fuel then
-         local found_workshop = false
-         for _, workshop in pairs(workshop_data.items) do
-            local workshop_comp = workshop:get_component('stonehearth:workshop')
-            if workshop_comp then
-               if workshop_comp:reserve_fuel(crafter) then
-                  found_workshop = true
-                  break
-               end
-            end
-         end
-
-         if not found_workshop then
-            log:detail('craft_order: cannot execute order with recipe %s, no workshops with available fuel for crafter %s',
-                       self._recipe.recipe_name, crafter)
-            return false
-         end
       end
    end
 
    log:detail('returning true from should_execute_order')
    return true
+end
+
+function AceCraftOrder:_has_valid_workshop(crafter, workshop_uri)
+   local workshop_data = self._inventory:get_items_of_type(workshop_uri)
+
+   if workshop_data and workshop_data.count > 0 then
+      local comp_data = radiant.entities.get_component_data(workshop_uri, 'stonehearth:workshop')
+      if comp_data and comp_data.fuel_settings and comp_data.fuel_settings.uses_fuel then
+         for _, workshop in pairs(workshop_data.items) do
+            local workshop_comp = workshop:get_component('stonehearth:workshop')
+            if workshop_comp then
+               if workshop_comp:reserve_fuel(crafter) then
+                  return true
+               end
+            end
+         end
+      else
+         return true
+      end
+   end
+
+   return false
 end
 
 function AceCraftOrder:conditions_fulfilled(crafter)
