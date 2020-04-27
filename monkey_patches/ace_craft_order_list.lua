@@ -484,6 +484,11 @@ function AceCraftOrderList:get_next_order(crafter)
             end
             if craftable then
                return order
+            else
+               local crafter_comp = crafter:get_component('stonehearth:crafter')
+               if crafter_comp then
+                  crafter_comp:unreserve_fuel()
+               end
             end
          end
       end

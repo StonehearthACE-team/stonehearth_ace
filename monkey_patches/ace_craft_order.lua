@@ -276,6 +276,81 @@ function AceCraftOrder:_has_uri_ingredients_for_item(ingredient, tracking_data)
    return tracking_data_for_key.count >= ingredient.count
 end
 
+--[[
+   Used to determine if we should proceed with executing the order.
+   If this order has a condition which are unsatisfied, (ie, less than x amount
+   was built, or less than x inventory exists in the world) return true.
+   If this order's conditions are met, and we don't need to execute this
+   order, return false.
+   returns: true if conditions are not yet met, false if conditions are met
+]]
+function CraftOrder:should_execute_order(crafter)
+   --If the crafter is not appropriately leveled, return false
+   local job_level = crafter:get_component('stonehearth:job'):get_current_job_level()
+   if job_level and self._recipe.level_requirement and
+      job_level < self._recipe.level_requirement then
+      log:detail('craft_order: cannot execute order with recipe %s, crafter %s does not meet requriements', self._recipe.recipe_name, crafter)
+      return false
+   end
+
+   --If a workshop is required and there is no placed workshop, return false
+   if self._recipe.workshop then
+      local workshop_data = self._inventory:get_items_of_type(self._recipe.workshop.uri)
+      
+      if not workshop_data or workshop_data.count < 1 then
+         -- Not an exact match. Maybe a valid equivalent?
+         local workshop_entity_data = radiant.entities.get_entity_data(self._recipe.workshop.uri, 'stonehearth:workshop')
+         if workshop_entity_data then
+            local equivalents = workshop_entity_data.equivalents
+            if equivalents then
+               for _, equivalent in ipairs(equivalents) do
+                  workshop_data = self._inventory:get_items_of_type(equivalent)
+                  if workshop_data and workshop_data.count > 0 then
+                     break
+                  end
+               end
+            end
+         end
+      end
+
+      if not workshop_data or workshop_data.count < 1 then
+         log:detail('craft_order: cannot execute order with recipe %s, no workshops of appropriate type: %s',
+                    tostring(self._recipe.recipe_name), tostring(self._recipe.workshop.uri))
+         return false
+      end
+
+      -- if this workshop uses fuel, we need to check if any of these workshops actually have fuel available
+      if workshop_entity_data.fuel_settings and workshop_entity_data.fuel_settings.uses_fuel then
+         local found_workshop = false
+         for _, workshop in pairs(workshop_data.items) do
+            local workshop_comp = workshop:get_component('stonehearth:workshop')
+            if workshop_comp then
+               if workshop_comp:reserve_fuel(crafter) then
+                  found_workshop = true
+                  break
+               end
+            end
+         end
+
+         if not found_workshop then
+            log:detail('craft_order: cannot execute order with recipe %s, no workshops with available fuel for crafter %s',
+                       self._recipe.recipe_name, crafter)
+            return false
+         end
+      end
+   end
+
+   -- If crafter is incapacitated, return false
+   local incapacitation = crafter:get_component('stonehearth:incapacitation')
+   if incapacitation and incapacitation:is_incapacitated() then
+      log:detail('craft order: cannot execute order with recipe %s, crafter %s is incapacitated', self._recipe.recipe_name, crafter)
+      return false
+   end
+
+   log:detail('returning true from should_execute_order')
+   return true
+end
+
 function AceCraftOrder:conditions_fulfilled(crafter)
    -- if we don't satisfy the order conditions, return false
    -- we're doing this BEFORE the has_ingredients because it is cheaper to early out
