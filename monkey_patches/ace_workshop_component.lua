@@ -30,7 +30,9 @@ end
 
 AceWorkshopComponent._ace_old_destroy = WorkshopComponent.destroy
 function AceWorkshopComponent:destroy()
-   self:_unreserve_all_fuel()
+   if self:uses_fuel() then
+      self:_unreserve_all_fuel()
+   end
    self:_destroy_fuel_effect()
    self:_ace_old_destroy()
 end
@@ -59,7 +61,9 @@ end
 
 function AceWorkshopComponent:finish_crafting_progress()
    self:_destroy_crafting_progress()
-   self:unreserve_fuel(self._sv.crafter)
+   if self:uses_fuel() then
+      self:unreserve_fuel(self._sv.crafter)
+   end
    self._sv.order = nil
    self._sv.crafter = nil
 end
@@ -72,7 +76,7 @@ end
 
 function AceWorkshopComponent:available_for_work(crafter)
    if not self._sv.crafting_progress then
-      if not self._uses_fuel or self:reserve_fuel(crafter) then
+      if not self:uses_fuel() or self:reserve_fuel(crafter) then
          return true
       end
    end
