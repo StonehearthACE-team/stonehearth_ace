@@ -317,6 +317,12 @@
             "seed_fruit": {
                "display_name": "i18n(stonehearth_ace:ui.data.constants.seed_fruit_resource_name)"
             },
+            "seed_earthbud": {
+               "ordinal": 1.5,
+               "display_name": "i18n(stonehearth:entities.plants.earthbud.seed.earthbud_plant_seed.display_name)",
+               "icon": "/stonehearth/entities/plants/earthbud/seed/earthbud_plant_seed.png",
+               "filter": "seed earthbud"
+            },
             "thatch": {
                "ordinal": 1.11,
                "display_name": "i18n(stonehearth_ace:entities.resources.thatch_bale.display_name)",
@@ -902,8 +908,26 @@
                "icon": "/stonehearth/entities/trees/juniper_tree/seed/tree_juniper_seed.png",
                "filter": "seed juniper"
             },
-            "gruit": {
+            "pine_cones": {
                "ordinal": 3,
+               "display_name": "i18n(stonehearth_ace:ui.data.constants.seed_pine_resource_name)",
+               "icon": "/stonehearth/entities/trees/pine_tree/seed/tree_pine_seed.png",
+               "filter": "seed pine"
+            },
+            "wax_plant_purple_seed": {
+               "ordinal": 4,
+               "display_name": "i18n(stonehearth:entities.plants.wax_plant_purple.seed.wax_plant_purple_plant_seed.display_name)",
+               "icon": "/stonehearth/entities/plants/wax_plant_purple/seed/wax_plant_purple_plant_seed.png",
+               "filter": "seed wax_plant_purple"
+            },
+            "birch_seed": {
+               "ordinal": 5,
+               "display_name": "i18n(stonehearth_ace:entities.trees.birch_tree.seed.tree_birch_seed_ghost.display_name)",
+               "icon": "/stonehearth_ace/entities/trees/birch_tree/seed/tree_birch_seed.png",
+               "filter": "seed birch"
+            },
+            "gruit": {
+               "ordinal": 6,
                "display_name": "i18n(stonehearth_ace:entities.drink.gruit.display_name)",
                "icon": "/stonehearth_ace/entities/drink/gruit/gruit.png",
                "filter": "brewing_ingredient gruit"

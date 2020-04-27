@@ -1,0 +1,18 @@
+{
+   "type": "buff",
+   "axis": "debuff",
+   "category": "wound_cut",
+   "unique_in_category": true,
+   "rank": 4,
+   "display_name": "i18n(stonehearth_ace:data.buffs.wounds.ugly_rend.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.wounds.ugly_rend.description)",
+   "icon": "file(ugly_rend.png)",
+   "cant_affect_siege": true,
+   "repeat_add_action": "stack_and_refresh",
+   "max_stacks": 2,
+   "modifiers": {
+      "effective_max_health_percent": {
+         "add": -20
+      }
+   }
+}

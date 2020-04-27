@@ -1,0 +1,18 @@
+{
+   "type": "buff",
+   "axis": "debuff",
+   "category": "wound_cold",
+   "unique_in_category": true,
+   "rank": 1,
+   "display_name": "i18n(stonehearth_ace:data.buffs.wounds.frostbite.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.wounds.frostbite.description)",
+   "icon": "file(frostbite.png)",
+   "cant_affect_siege": true,
+   "repeat_add_action": "stack_and_refresh",
+   "max_stacks": 10,
+   "modifiers": {
+      "effective_max_health_percent": {
+         "add": -4
+      }
+   }
+}

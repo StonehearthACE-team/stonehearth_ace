@@ -4,7 +4,10 @@
    "display_name": "i18n(stonehearth_ace:data.buffs.weather.freezing_debuff.display_name)",
    "description": "i18n(stonehearth_ace:data.buffs.weather.freezing_debuff.description)",
    "duration": "1h",
-   "repeat_add_action": "renew_duration",
+   "repeat_add_action": "stack_and_refresh",
+   "max_stacks": 1,
+   "evolve_chance": 0.01,
+   "buff_evolve": "stonehearth_ace:buffs:wounds:frostbite",
    "icon": "file(cold_debuff.png)",
    "modifiers": {
       "willpower": {

@@ -1,0 +1,18 @@
+{
+   "type": "buff",
+   "axis": "neutral",
+   "category": "wound_scar",
+   "unique_in_category": true,
+   "rank": 1,
+   "display_name": "i18n(stonehearth_ace:data.buffs.wounds.scary_scar.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.wounds.scary_scar.description)",
+   "icon": "file(scary_scar.png)",
+   "cant_affect_siege": true,
+   "repeat_add_action": "stack_and_refresh",
+   "max_stacks": 7,
+   "modifiers": {
+      "menace": {
+         "add": 5
+      }
+   }
+}

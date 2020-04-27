@@ -47,6 +47,28 @@
 				"stonehearth_ace:buffs:weather:warmth_source": true
 			}
       },
+		"stonehearth:expendable_resources": {
+         "resources": {
+            "fuel_level": {
+					"min": {
+                  "value": 0
+               },
+               "max": {
+                  "value": 200
+               },
+               "initial_value": 0
+            },
+            "reserved_fuel_level": {
+					"min": {
+                  "value": 0
+               },
+               "max": {
+                  "value": 200
+               },
+               "initial_value": 0
+            }
+         }
+      },
       "stonehearth:storage": {
          "type": "input_crate",
          "capacity": 3

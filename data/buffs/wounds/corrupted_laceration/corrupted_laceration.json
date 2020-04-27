@@ -1,0 +1,18 @@
+{
+   "type": "buff",
+   "axis": "debuff",
+   "category": "wound_corrupt",
+   "unique_in_category": true,
+   "rank": 1,
+   "display_name": "i18n(stonehearth_ace:data.buffs.wounds.corrupted_laceration.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.wounds.corrupted_laceration.description)",
+   "icon": "file(corrupted_laceration.png)",
+   "cant_affect_siege": true,
+   "repeat_add_action": "stack_and_refresh",
+   "max_stacks": 7,
+   "modifiers": {
+      "effective_max_health_percent": {
+         "add": -15
+      }
+   }
+}

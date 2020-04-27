@@ -1,0 +1,18 @@
+{
+   "type": "buff",
+   "axis": "debuff",
+   "category": "wound_blunt",
+   "unique_in_category": true,
+   "rank": 1,
+   "display_name": "i18n(stonehearth_ace:data.buffs.wounds.bruise.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.wounds.bruise.description)",
+   "icon": "file(bruise.png)",
+   "cant_affect_siege": true,
+   "repeat_add_action": "stack_and_refresh",
+   "max_stacks": 8,
+   "modifiers": {
+      "effective_max_health_percent": {
+         "add": -1
+      }
+   }
+}

@@ -45,7 +45,7 @@ function AceBuff:_create_buff()
       end
    end
 	
-	if self._sv.stacks == self._sv.max_stacks and self._json.buff_evolve_on_max_stacks then
+	if self._sv.stacks == self._sv.max_stacks and self._json.buff_evolve then
 		self:_try_evolve()
 	end
 
@@ -170,7 +170,7 @@ function AceBuff:on_repeat_add(options)
       for i = 1, options.stacks do
          self:_add_stack()
       end
-		if self._sv.stacks == self._sv.max_stacks and self._json.buff_evolve_on_max_stacks then
+		if self._sv.stacks == self._sv.max_stacks and self._json.buff_evolve then
 			self:_try_evolve()
 		end
       self:_destroy_timer()
@@ -188,10 +188,10 @@ end
 function AceBuff:_try_evolve()
 	if self._json.evolve_chance then
 		if rng:get_real(0, 1) < self._json.evolve_chance then
-		radiant.entities.add_buff(self._sv._entity, self._json.buff_evolve_on_max_stacks)
+		radiant.entities.add_buff(self._sv._entity, self._json.buff_evolve)
 		end
 	else
-	radiant.entities.add_buff(self._sv._entity, self._json.buff_evolve_on_max_stacks)
+	radiant.entities.add_buff(self._sv._entity, self._json.buff_evolve)
 	end
 end
 

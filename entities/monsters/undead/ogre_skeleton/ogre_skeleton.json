@@ -46,16 +46,32 @@
       "stonehearth:carry_block": {}
    },
    "entity_data": {
-      "stonehearth:combat": {
-         "no_shuffle": true
-      },
       "stonehearth:buffs": {
          "inflictable_debuffs": {
+            "severe_concussion": {
+               "uri": "stonehearth_ace:buffs:wounds:severe_concussion",
+               "chance": 0.12
+            },
+            "crushing_blow": {
+               "uri": "stonehearth_ace:buffs:wounds:crushing_blow",
+               "chance": 0.08
+            },
+            "scratch": {
+               "uri": "stonehearth_ace:buffs:wounds:scratch",
+               "chance": 0.05
+            },
+            "minor_sting": {
+               "uri": "stonehearth_ace:buffs:wounds:minor_sting",
+               "chance": 0.02
+            },
             "infection": {
                "uri": "stonehearth:buffs:undead_infection",
                "chance": 0.5
             }
          }
+      },
+      "stonehearth:combat": {
+         "no_shuffle": true
       },
       "stonehearth:entity_radius": 1.25,
       "stonehearth:entity_reach": 1.5,

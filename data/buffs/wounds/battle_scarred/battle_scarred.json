@@ -1,0 +1,20 @@
+{
+   "type": "buff",
+   "axis": "neutral",
+   "category": "wound_scar",
+   "unique_in_category": true,
+   "rank": 2,
+   "display_name": "i18n(stonehearth_ace:data.buffs.wounds.battle_scarred.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.wounds.battle_scarred.description)",
+   "icon": "file(battle_scarred.png)",
+   "cant_affect_siege": true,
+   "repeat_add_action": "renew_duration",
+   "modifiers": {
+      "menace": {
+         "add": 50
+      },
+      "courage": {
+         "add": 30
+      }
+   }
+}

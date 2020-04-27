@@ -1,0 +1,18 @@
+{
+   "type": "buff",
+   "axis": "debuff",
+   "category": "wound_piercing",
+   "unique_in_category": true,
+   "rank": 2,
+   "display_name": "i18n(stonehearth_ace:data.buffs.wounds.prick.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.wounds.prick.description)",
+   "icon": "file(prick.png)",
+   "cant_affect_siege": true,
+   "repeat_add_action": "stack_and_refresh",
+   "max_stacks": 3,
+   "modifiers": {
+      "effective_max_health_percent": {
+         "add": -6
+      }
+   }
+}
