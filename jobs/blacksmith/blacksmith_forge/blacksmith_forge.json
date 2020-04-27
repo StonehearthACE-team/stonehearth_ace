@@ -2,7 +2,12 @@
    "type": "entity",
    "components": {
       "stonehearth:workshop": {
-         "workshop_effect": "/stonehearth_ace/data/rigs/jobs/blacksmith/blacksmith_forge/effects/work.json"
+         "workshop_effect": "/stonehearth_ace/data/rigs/jobs/blacksmith/blacksmith_forge/effects/work.json",
+         "fuel_settings": {
+            "uses_fuel": true,
+            "fuel_per_craft": 4,
+            "fuel_effect": "stonehearth:effects:firepit_effect"
+         }
       },
       "mixintypes": {
 		 "destination": "override",
@@ -41,6 +46,10 @@
 			"buffs": {
 				"stonehearth_ace:buffs:weather:warmth_source": true
 			}
+      },
+      "stonehearth:storage": {
+         "type": "input_crate",
+         "capacity": 3
       }
    },
    "entity_data": {

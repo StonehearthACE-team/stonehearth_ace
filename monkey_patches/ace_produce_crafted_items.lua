@@ -8,6 +8,12 @@ function AceProduceCraftedItems:run(ai, entity, args)
    local order_progress = args.order:get_progress(entity)   -- Paul: changed this line
 
    if order_progress == stonehearth.constants.crafting_status.CRAFTING then
+      -- if fuel was involved, consume it
+      local workshop_comp = args.workshop:get_component('stonehearth:workshop')
+      if workshop_comp and workshop_comp:uses_fuel() then
+         workshop_comp:consume_fuel(entity)
+      end
+
       -- don't fully destroy the ingredients yet, we want to be able to pass them to other scripts
       local ingredients, ingredient_quality = self:_pre_destroy_ingredients(args)
       self:_add_outputs_to_bench(ai, entity, args.workshop, args.order:get_recipe(), ingredients, ingredient_quality)

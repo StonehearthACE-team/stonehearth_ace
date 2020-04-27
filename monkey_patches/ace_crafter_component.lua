@@ -137,4 +137,12 @@ function AceCrafterComponent:get_work_rate()
    return multiplier * tiredness_multiplier * mood_multiplier -- * job_multiplier
 end
 
+function AceCrafterComponent:get_fuel_reserved_workshop()
+   return self._sv._fuel_reserved_workshop
+end
+
+function AceCrafterComponent:set_fuel_reserved_workshop(workshop)
+   self._sv._fuel_reserved_workshop = workshop
+end
+
 return AceCrafterComponent
