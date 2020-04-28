@@ -26,6 +26,25 @@ function AceStorageComponent:activate()
       -- end
    end
 
+   if json.limit_all_filter ~= false then
+      local filter = {}
+      local data = radiant.resources.load_json(self._sv.filter_list, true, false)
+      
+      if data and data.stockpile then
+         for _, group in pairs(data.stockpile) do
+            if group.categories then
+               for _, entry in pairs(group.categories) do
+                  if entry.filter then
+                     table.insert(filter, entry.filter)
+                  end
+               end
+            end
+         end
+      end
+
+      self._limited_all_filter = filter
+   end
+
    -- communicate this setting to the renderer
 	self._sv.render_filter_model = json.render_filter_model
 	self._sv.render_filter_model_threshold = json.render_filter_model_threshold or 0.5
@@ -46,6 +65,14 @@ function AceStorageComponent:_on_contents_changed()
 		end
 	end
 
+end
+
+function AceStorageComponent:get_limited_all_filter()
+   return self._limited_all_filter
+end
+
+function AceStorageComponent:get_filter()
+   return self._sv.filter or self._limited_all_filter
 end
 
 return AceStorageComponent

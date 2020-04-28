@@ -20,4 +20,14 @@ function AceInventory:_add_more_trackers()
    end
 end
 
+AceInventory._ace_old_set_storage_filter = Inventory.set_storage_filter
+function AceInventory:set_storage_filter(storage_entity, filter)
+   local storage = storage_entity:get_component('stonehearth:storage')
+   if not filter then
+      filter = storage:get_limited_all_filter()
+   end
+
+   return self:_ace_old_set_storage_filter(storage_entity, filter)
+end
+
 return AceInventory

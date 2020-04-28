@@ -14,7 +14,6 @@ function AceWorkshopComponent:activate()
    if self:uses_fuel() then
       self._reserved_fuel = {}
    end
-   self:_run_fuel_effect()
 
    -- if this is an auto-crafter, get rid of the show workshop command
    local crafter_component = self._entity:get_component('stonehearth:crafter')
@@ -42,6 +41,17 @@ function AceWorkshopComponent:post_activate()
       end
    end
 
+   -- should we also listen for expendable resources changes?
+   self._storage_item_added_listener = radiant.events.listen(self._entity, 'stonehearth:storage:item_added', function()
+         self:_update_fuel_effect()
+      end)
+   self._storage_item_removed_listener = radiant.events.listen(self._entity, 'stonehearth:storage:item_removed', function()
+         if self._entity:get_component('stonehearth:storage'):is_empty() then
+            self:_update_fuel_effect()
+         end
+      end)
+   self:_update_fuel_effect()
+
    if self._ace_old_post_activate then
       self:_ace_old_post_activate()
    end
@@ -53,7 +63,19 @@ function AceWorkshopComponent:destroy()
       self:_unreserve_all_fuel()
    end
    self:_destroy_fuel_effect()
+   self:_destroy_no_fuel_effect()
    self:_ace_old_destroy()
+end
+
+function AceWorkshopComponent:_destroy_listeners()
+   if self._storage_item_added_listener then
+      self._storage_item_added_listener:destroy()
+      self._storage_item_added_listener = nil
+   end
+   if self._storage_item_removed_listener then
+      self._storage_item_removed_listener:destroy()
+      self._storage_item_removed_listener = nil
+   end
 end
 
 function AceWorkshopComponent:set_crafting_time_modifier(modifier)
@@ -128,12 +150,21 @@ function AceWorkshopComponent:get_fuel_effect()
    return self._fuel_settings.fuel_effect
 end
 
+function AceWorkshopComponent:get_no_fuel_effect()
+   return self._fuel_settings.no_fuel_effect
+end
+
 function AceWorkshopComponent:get_fueled_buff()
    return self._fuel_settings.fueled_buff
 end
 
+function AceWorkshopComponent:get_no_fuel_model_variant()
+   return self._fuel_settings.no_fuel_model_variant
+end
+
 function AceWorkshopComponent:is_fueled()
-   if self._fueled_while_working then
+   local storage = self._entity:get_component('stonehearth:storage')
+   if storage and storage:get_num_items() > 0 then
       return true
    end
 
@@ -255,9 +286,6 @@ function AceWorkshopComponent:consume_fuel(crafter)
          else
             local fuel_data = radiant.entities.get_entity_data(fuel, 'stonehearth_ace:fuel') or {}
             -- assume that any individual fuel entity provides at least the amount necessary for one craft
-            -- probably don't need to release the lease since the entity is just getting destroyed
-            -- radiant.entities.release_lease(fuel, FUEL_LEASE_NAME, self._entity)
-            radiant.entities.destroy_entity(fuel)
 
             if expendable_resources then
                local fuel_amount = math.max(fuel_per_craft, fuel_data.fuel_amount or 1) - fuel_per_craft
@@ -265,11 +293,17 @@ function AceWorkshopComponent:consume_fuel(crafter)
                   expendable_resources:modify_value('fuel_level', fuel_amount)
                end
             end
+
+            -- probably don't need to release the lease since the entity is just getting destroyed
+            -- do we even need to remove it from storage?
+            -- radiant.entities.release_lease(fuel, FUEL_LEASE_NAME, self._entity)
+            self._entity:get_component('stonehearth:storage'):remove_item(fuel:get_id())
+            radiant.entities.destroy_entity(fuel)
          end
       end
 
       self:_update_fueled_buff()
-      self:_run_fuel_effect()
+      self:_update_fuel_effect()
       self:_clear_crafter_fuel_workshop(crafter_id)
 
       self._reserved_fuel[crafter_id] = nil
@@ -281,6 +315,7 @@ function AceWorkshopComponent:run_effect()
    self:_ace_old_run_effect()
    self._fueled_while_working = true
    self:_update_fueled_buff()
+   self:_update_fuel_effect()
 end
 
 AceWorkshopComponent._ace_old_stop_running_effect = WorkshopComponent.stop_running_effect
@@ -288,12 +323,13 @@ function AceWorkshopComponent:stop_running_effect()
    self:_ace_old_stop_running_effect()
    self._fueled_while_working = false
    self:_update_fueled_buff()
+   self:_update_fuel_effect()
 end
 
-function WorkshopComponent:_update_fueled_buff()
+function AceWorkshopComponent:_update_fueled_buff()
    local buff = self:get_fueled_buff()
    if buff then
-      if self:is_fueled() then
+      if self._fueled_while_working or self:is_fueled() then
          if not radiant.entities.has_buff(self._entity, buff) then
             radiant.entities.add_buff(self._entity, buff)
          end
@@ -303,24 +339,71 @@ function WorkshopComponent:_update_fueled_buff()
    end
 end
 
-function WorkshopComponent:_run_fuel_effect()
-   local effect = self:get_fuel_effect()
-   if effect and not self._fuel_effect and self:is_fueled() then
-      self._fuel_effect = radiant.effects.run_effect(self._entity, effect)
-      self._fuel_effect:set_finished_cb(function()
-            self:_destroy_fuel_effect()
-            self:_run_fuel_effect()
-         end)
+function AceWorkshopComponent:_update_fuel_effect()
+   if self._effect then
+      self:_destroy_fuel_effect()
+      self:_destroy_no_fuel_effect()
+      self:_reset_fuel_model_variant()
+      return
+   end
+   
+   local is_fueled = self:is_fueled()
+
+   if is_fueled then
+      self:_destroy_no_fuel_effect()
+      self:_reset_fuel_model_variant()
+
+      local effect = self:get_fuel_effect()
+      if effect and not self._fuel_effect then
+         self._fuel_effect = radiant.effects.run_effect(self._entity, effect)
+         self._fuel_effect:set_finished_cb(function()
+               self:_destroy_fuel_effect()
+               self:_update_fuel_effect()
+            end)
+      end
    else
       self:_destroy_fuel_effect()
+      self:_set_fuel_model_variant()
+      
+      local effect = self:get_no_fuel_effect()
+      if effect and not self._no_fuel_effect then
+         self._no_fuel_effect = radiant.effects.run_effect(self._entity, effect)
+         self._no_fuel_effect:set_finished_cb(function()
+               self:_destroy_no_fuel_effect()
+               self:_update_fuel_effect()
+            end)
+      end
    end
 end
 
-function WorkshopComponent:_destroy_fuel_effect()
+function AceWorkshopComponent:_destroy_fuel_effect()
    if self._fuel_effect then
       self._fuel_effect:set_finished_cb(nil)
                   :stop()
       self._fuel_effect = nil
+   end
+end
+
+function AceWorkshopComponent:_destroy_no_fuel_effect()
+   if self._no_fuel_effect then
+      self._no_fuel_effect:set_finished_cb(nil)
+                  :stop()
+      self._no_fuel_effect = nil
+   end
+end
+
+function AceWorkshopComponent:_reset_fuel_model_variant()
+   -- nothing to reset if there is no model variant for no fuel
+   local model_variant = self:get_no_fuel_model_variant()
+   if model_variant then
+      self._entity:add_component('stonehearth_ace:entity_modification'):reset_model_variant()
+   end
+end
+
+function AceWorkshopComponent:_set_fuel_model_variant()
+   local model_variant = self:get_no_fuel_model_variant()
+   if model_variant then
+      self._entity:add_component('stonehearth_ace:entity_modification'):set_model_variant(model_variant)
    end
 end
 
