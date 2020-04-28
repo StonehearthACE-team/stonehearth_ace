@@ -98,6 +98,7 @@ local monkey_patches = {
    ace_kill_at_zero_health_observer = 'stonehearth.ai.observers.kill_at_zero_health_observer',
    ace_job_service = 'stonehearth.services.server.job.job_service',
    ace_constants = 'stonehearth.constants',
+   ace_shared_filters = 'stonehearth.ai.filters.shared_filters',
    ace_eating_lib = 'stonehearth.ai.lib.eating_lib',
    ace_food_preference_script = 'stonehearth.data.traits.food_preference.food_preference_script',
    ace_stacks_component = 'stonehearth.components.stacks.stacks_component',

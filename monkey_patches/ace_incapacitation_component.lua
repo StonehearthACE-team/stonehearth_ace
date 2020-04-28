@@ -49,4 +49,41 @@ function AceIncapacitationComponent:_declare_state_transitions(sm)
       end
 end
 
+AceIncapacitationComponent._ace_old__declare_state_event_handlers = IncapacitationComponent._declare_state_event_handlers
+function AceIncapacitationComponent:_declare_state_event_handlers(sm)
+   self:_ace_old__declare_state_event_handlers(sm)
+
+   sm._states[STATES.RECUPERATING]['hourly'] = function(event_args, event_source)
+         -- if we have been rescued, then our guts no longer go down
+         -- Increase our guts based on where we are:
+         local guts_recovery_data = self._ic_data.rescued_guts_hourly_recovery
+         local hourly_increase = guts_recovery_data['on_ground']
+         local parent = radiant.entities.get_parent(self._entity)
+         if parent and parent:is_valid() then
+            local bed_data = radiant.entities.get_entity_data(parent, 'stonehearth:bed')
+            if bed_data then
+               local mount_component = parent:get_component('stonehearth:mount')
+               if mount_component and mount_component:get_user() == self._entity then
+                  if bed_data.priority_care then
+                     hourly_increase = guts_recovery_data['in_priority_care_bed']
+                  else
+                     local object_owner_component = self._entity:get_component('stonehearth:object_owner')
+                     local bed = object_owner_component and object_owner_component:get_owned_object('bed')
+                     -- check if sleeping in own bed versus just any bed
+
+                     if bed == parent then
+                        hourly_increase = guts_recovery_data['in_own_bed']
+                     else
+                        hourly_increase = guts_recovery_data['in_unowned_bed']
+                     end
+                  end
+               end
+            end
+         end
+
+         local expendable_resource_component = self._entity:get_component('stonehearth:expendable_resources')
+         expendable_resource_component:modify_value(GUTS_RESOURCE_NAME, hourly_increase)
+      end
+end
+
 return AceIncapacitationComponent
