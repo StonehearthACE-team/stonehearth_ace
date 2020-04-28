@@ -2245,10 +2245,6 @@
                "description": "Dies ist ein schwaches Gift. Je mehr gift angewendet wurde, umso länger wirkt es und wird das Bewusstsein der Zielperson schnell reduzieren und sie einschläfern."
             }
          },
-         "wounded": {
-            "display_name": "Verwundet",
-            "description": "Kann erst nach Behandlung durch einen Kräuterarzt vollständig geheilt werden."
-         },
          "spring_flavors": {
             "display_name": "Frühlingsgeschmack",
             "description": "Ahh! Nichts geht über ein frisches und kühles Wasser direkt aus der Quelle! Fleiß und Mitgefühl warden erhöht.<ul><li>Die Wahrscheinlichkeit, bei der Herstellung eine gute Qualität zu erhalten, steigt</li><li>Die Erfahrung wächst etwas schneller</li></ul>"
@@ -2291,6 +2287,84 @@
             "merry_time": {
                "display_name": "Frostschlemmerei",
                "description": "Ich freue mich über dieses wirklich leckere Festmahl! Willenskraft und Mitgefühl warden stark erhöht.<ul><li>Die Erfahrung wächst schneller</li><li>Dieser Hearthling hat eine viel Größere Chance, Dinge mit erhöhter Qualität herzustellen</li></ul>"
+            }
+         },
+         "wounds": {
+            "scratch": {
+               "display_name": "Wunde: Kratzer",
+               "description": "Autsch! Es tut ein bisschen weh, aber es ist nur ein Kratzer....<ul><li>Effektives Gesundheitsmaximum 💜 ist sehr leicht vermindert</li><li>Diese Wunde erfordert 🌿 irgendeine Behandlung, um entfernt zu werden</li><li>⏳ Diese Wunde wird auch von selbst heilen, aber es wird einige Zeit dauern</li></ul>"
+            },
+	    "small_cut": {
+               "display_name": "Wunde: Kleiner Schnitt",
+               "description": "Es tut sehr weh! Aber das wird schon wieder.... Richtig?<ul><li>Effektives Gesundheitsmaximum 💜 ist leicht vermindert</li><li>Diese Wunde erfordert mindestens eine 💊 grobe Bandage, um entfernt zu werden</li><li>⏳ Auch diese Wunde wird von selbst heilen, aber es wird sehr lange dauern.</li><li>Wenn diese Wunde zu lange unbehandelt bleibt, kann sie 🌡️ hohes Fieber verursachen</li></ul>"
+            },
+	    "deep_slash": {
+               "display_name": "Wunde: Tiefer Schnitt",
+               "description": "Uh, das sieht nicht gut aus...<ul><li>Effektives Gesundheitsmaximum 💜 ist etwas gesenkt</li><li>Diese Wunde erfordert mindestens eine 💊 leichte Bandage, um entfernt zu werden</li><li>❌ Diese Wunde wird niemals von selbst heilen</li><li>Wenn diese Wunde zu lange unbehandelt bleibt, kann sie zu 🌡️ Infektionen führen</li><li>Die Behandlung dieser Wunde hat eine geringe Chance, den Zustand 💫 Gruselige Narbe dauerhaft hinzuzufügen</li></ul>"
+            },
+	    "ugly_rend": {
+               "display_name": "Wunde: Hässlicher Riss",
+               "description": "Autsch! Aua! So schmerzhaft, dass ich nicht mal hinsehen kann!<ul><li>Effektives Gesundheitsmaximum 💜 ist ziemlich gesenkt</li><li>Diese Wunde erfordert mindestens einen 💊 schweren Verband, um entfernt zu werden </li><li>❌ Diese Wunde wird niemals von selbst heilen</li><li>Wenn diese Wunde zu lange unbehandelt bleibt, kann sie zu 🌡️ Infektionen führen</li><li>Die Behandlung dieser Wunde hat eine geringe Chance, den Zustand 💫 Gruselige Narbe dauerhaft hinzuzufügen</li></ul>"
+            },
+	    "bruise": {
+               "display_name": "Wunde: Bluterguss",
+               "description": "Es ist alles violett, bucklig und schmerzhaft... Könnte schlimmer sein, denke ich.<ul><li>Effektives Gesundheitsmaximum 💜 ist sehr leicht abgesenkt</li><li>Diese Wunde erfordert 🌿 irgendeine Behandlung, um entfernt zu werden</li><li>⏳ Diese Wunde wird auch von selbst heilen, aber es wird einige Zeit dauern</li></ul>"
+            },
+	    "severe_concussion": {
+               "display_name": "Wunde: Schwere Gehirnerschütterung",
+               "description": "Oh, wow. Was für ein Schlag, mir ist ein bisschen schwindelig....<ul><li>Effektives Gesundheitsmaximum 💜 ist leicht abgesenkt</li><li>Diese Wunde erfordert mindestens eine 💊 einfache Kompresse, um entfernt zu werden</li><li>⏳ Diese Wunde wird auch von selbst heilen, aber es wird sehr lange dauern.</li></ul>"
+            },
+	    "crushing_blow": {
+               "display_name": "Wunde: Quetschender Schlag",
+               "description": "Gah! Das tut weh und sieht... sehr geschwollen aus.<ul><li>Effektives Gesundheitsmaximum 💜 ist etwas niedriger</li><li>Diese Wunde erfordert mindestens eine 💊 Kräuterkompresse, um entfernt zu werden</li><li>❌ Diese Wunde wird niemals von selbst heilen</li><li>Wenn diese Wunde zu lange unbehandelt bleibt, kann sie 🌡️ hohes Fieber verursachen</li></ul>"
+            },
+	    "broken_bone": {
+               "display_name": "Wunde: Gebrochener Knochen",
+               "description": "Oh! Ich glaube, ich habe mir etwas gebrochen....<ul><li>Effektives Gesundheitsmaximum 💜 ist ziemlich gesenkt</li><li>Diese Wunde erfordert eine 💊 harte Kompresse, um entfernt zu werden</li><li>❌ Diese Wunde wird niemals von selbst heilen</li><li>Wenn diese Wunde zu lange unbehandelt bleibt, kann sie 🌡️ hohes Fieber verursachen</li></ul>"
+            },
+	    "minor_sting": {
+               "display_name": "Wunde: Kleiner Stich",
+               "description": "Autsch! Spitz, aber zum Glück nur eine oberflächliche Wunde...<ul><li>Effektives Gesundheitsmaximum 💜 ist sehr leicht abgesenkt</li><li>Diese Wunde erfordert 🌿 irgendeine Behandlung, um entfernt zu werden.</li><li>⏳ Diese Wunde wird auch von selbst heilen, aber es wird einige Zeit dauern.</li></ul>"
+            },
+	    "prick": {
+               "display_name": "Wunde: Einstich",
+               "description": "Wie ein kleines Loch! Es tut weh...<ul><li>Effektives Gesundheitsmaximum 💜 ist leicht abgesenkt</li><li>Diese Wunde erfordert mindestens eine 💊 grobe Salbe, um entfernt zu werden</li><li>⏳ Diese Wunde wird auch von selbst heilen, aber es wird sehr lange dauern.</li><li>Wenn diese Wunde zu lange unbehandelt bleibt, kann sie 🌡️ hohes Fieber verursachen</li></ul>"
+            },
+	    "mean_stab": {
+               "display_name": "Wunde: Gemeiner Stich",
+               "description": "Oh-oh... Das sieht tief aus. Ich brauche Hilfe!<ul><li>Effektive maximale Gesundheit 💜 ist etwas niedrigerd</li><li>Bei dieser Wunde wird mindestens eine 💊 gewöhnliche Salbe benötigt, um entfernt zu werden</li><li>❌ Diese Wunde wird niemals von selbst heilen</li><li>Wenn diese Wunde zu lange unbehandelt bleibt, kann sie zu einer 🌡️ Infektionen führen</li></ul>"
+            },
+	    "nasty_gash": {
+               "display_name": "Wunde: Böse Schnittwunde",
+               "description": "Autsch... Ich hoffe, das ist nicht durch mich gegangen.<ul><li>Effektives Gesundheitsmaximum 💜 ist ziemlich gesenkt</li><li>Diese Wunde erfordert mindestens eine 💊 ordentliche Salbe, um entfernt zu werden</li><li>❌ Diese Wunde wird niemals von selbst heilen</li><li>Wenn diese Wunde zu lange unbehandelt bleibt, kann sie zu einer 🌡️ Infektion führen</li><li>Die Behandlung dieser Wunde hat eine geringe Chance, den Zustand 💫 Gruselige Narbe dauerhaft hinzuzufügen</li></ul>"
+            },
+	    "frostbite": {
+               "display_name": "Wunde: Frostbeulen",
+               "description": "Oh! Das sieht nicht gut aus, ich sollte nicht zu lange draußen in der Kälte bleiben...<ul><li>Effektives Gesundheitsmaximum 💜 ist leicht abgesenkt</li><li>Diese Wunde erfordert mindestens eine 💊 grobe Salbe, um entfernt zu werden</li><li>❌ Diese Wunde wird niemals von selbst heilen</li><li>Die Behandlung dieser Wunde hat eine geringe Chance, den Zustand 💫 Frostbrand dauerhaft hinzuzufügen</li></ul>"
+            },
+	    "bad_burn": {
+               "display_name": "Wunde: Schwere Verbrennung",
+               "description": "Das war viel zu heiß!<ul><li>Effektives Gesundheitsmaximum 💜 ist etwas gesenkt</li><li>Diese Wunde erfordert mindestens eine 💊 Kräuterkompresse, um entfernt zu werden</li><li>❌ Diese Wunde wird niemals von selbst heilen</li><li>Die Behandlung dieser Wunde hat eine geringe Chance, den Zustand dauerhaft zu verschlimmern 💫 Gruselige Narbe</li></ul>"
+            },
+	    "corrupted_laceration": {
+               "display_name": "Wunde: Infizierte Schnittwunde",
+               "description": "Diese Wunde sieht... unnatürlich aus. Schaurig!<ul><li>Effektives Gesundheitsmaximum 💜 ist ziemlich gesenkt</li><li>Diese Wunde erfordert eine 💊 Herzknospensalbe, um entfernt zu werden</li><li>❌ Diese Wunde wird niemals von selbst heilen</li><li>Wenn diese Wunde zu lange unbehandelt bleibt, kann sie zu einer 🌡️ Infektion führen</li><li>Die Behandlung dieser Wunde hat eine geringe Chance, den Zustand 💫 Zerrissene Seele dauerhaft hinzuzufügen</li></ul>"
+            },
+	    "scary_scar": {
+               "display_name": "Gruselige Narbe",
+               "description": "Dieser Hearthling zeigt stolz seine Narben. Die Bedrohung ist leicht erhöht."
+            },
+	    "battle_scarred": {
+               "display_name": "Schlachtnarben",
+               "description": "Wenn du mehr Narben hast, als du zählen kannst, trage sie wie eine Trophäe! Bedrohung und Mut werden erhöht."
+            },
+	    "frostbitten": {
+               "display_name": "Frostbrand",
+               "description": "Sich frontal einem Schneesturm zu stellen, ist eine unvergessliche Erfahrung, die mich etwas... ...unvollständig hinterlassen hat. Nun, Lektion gelernt! Muskeln und Geschwindigkeit sind leicht reduziert."
+            },
+	    "torn_soul": {
+               "display_name": "Zerrissene Seele",
+               "description": "Ich bin immer noch hier... Aber ich bin nicht mehr derselbe, seit ich von bösen Kreaturen verwundet wurde. Der Geist ist reduziert."
             }
          }
       },
@@ -3034,7 +3108,7 @@
             },
             "rc_gruit_recipe": {
                "recipe_name": "Fruchtwickel",
-               "description": "Ein Bündel von Bitterkräutern und Gewürzen. Es wird in der Wüste oft mit Wachspflanzen hergestellt.",
+               "description": "Ein Bündel von Bitterkräutern und Gewürzen. Es wird in der Wüste oft aus Wachspflanzensamen hergestellt.",
                "flavor": " Der Koch oder Kräuterarzt kann es in einen Gärbottich mit Ale geben, um Bier herzustellen"
             },
             "na_gruit_recipe": {
@@ -12547,18 +12621,18 @@
          "select_game_story": {
             "game_modes": {
                "normal": {
-                  "description": "Abenteuer in einer Welt voller Gefahren! Eine ausgewogene Erfahrung, Ihre Stadt wird immer herausfordernderen Invasionen ausgesetzt sein."
+                  "description": "Abenteuer in einer Welt voller Gefahren! Die ausgewogenste und angemessenste Erfahrung: Deine Stadt wird zunehmend herausfordernden Invasionen und Gefahren ausgesetzt sein."
                },
                "peaceful": {
-                  "description": "Ein Sandkasten! Baue deine Ihre Stadt frei und ohne Invasionen. Du kannst den Kampf in der Wildnis oder durch besondere Ereignisse suchen, wenn du es wünscht."
+                  "description": "Ein Sandkasten! Baue deine Stadt nach lust und laune ohne Invasionen. Du kannst den Kampf in der Wildnis oder durch besondere Ereignisse suchen, wenn du es wünscht. Wunden und andere Effekte haben einen geringen Einfluss auf die Gesundheit."
                },
                "gentle": {
-                  "description": "Feinde sind genauso herausfordernd wie bei Normal - aber mit einem langsameren Tempo. Verlauf und Ereignisse haben längere Intervalle.",
+                  "description": "Feinde sind genauso herausfordernd wie bei Normal - aber mit einem langsameren Tempo. Verlauf und Ereignisse haben längere Intervalle. Wunden und dergleichen haben einen geringeren Einfluss auf die Gesundheit",
                   "display_name": "Sanft",
                   "post_selection_text": "ein faszinierender Ort, um neu zu beginnen."
                },
                "hard": {
-                  "description": "Die Feinde werden stärker und der Fortschritt der Herausforderungen wird schneller und weniger barmherzig sein. Sei immer auf der Hut!"
+                  "description": "Die Feinde werden stärker und der Fortschritt der Herausforderungen wird schneller und weniger barmherzig sein. Sei immer auf der Hut! Wunden und andere Effekte können sehr gefährlich sein - oder sogar tödlich!"
                }
             }
          }
