@@ -6,6 +6,7 @@
          "fuel_settings": {
             "uses_fuel": true,
             "fuel_per_craft": 4,
+            "fueled_buff": "stonehearth_ace:buffs:weather:warmth_source",
             "fuel_effect": "stonehearth:effects:firepit_effect"
          }
       },
@@ -41,11 +42,6 @@
                "radius": 20
             }
          }
-      },
-	   "stonehearth:buffs": {
-			"buffs": {
-				"stonehearth_ace:buffs:weather:warmth_source": true
-			}
       },
 		"stonehearth:expendable_resources": {
          "resources": {

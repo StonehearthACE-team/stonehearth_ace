@@ -138,17 +138,17 @@ function AceCrafterComponent:get_work_rate()
 end
 
 function AceCrafterComponent:get_fuel_reserved_workshop()
-   return self._sv._fuel_reserved_workshop
+   return self._fuel_reserved_workshop
 end
 
 function AceCrafterComponent:set_fuel_reserved_workshop(workshop)
-   self._sv._fuel_reserved_workshop = workshop
+   self._fuel_reserved_workshop = workshop
 end
 
 function AceCrafterComponent:unreserve_fuel()
-   local workshop_component = self._sv._fuel_reserved_workshop and self._sv._fuel_reserved_workshop:get_component('stonehearth:workshop')
+   local workshop_component = self._fuel_reserved_workshop and self._fuel_reserved_workshop:get_component('stonehearth:workshop')
    if workshop_component then
-      workshop_component:unreserve_fuel(self._entity)
+      workshop_component:unreserve_fuel(self._entity:get_id())
    end
 end
 

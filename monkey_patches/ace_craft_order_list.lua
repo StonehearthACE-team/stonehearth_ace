@@ -238,7 +238,7 @@ end
 
 AceCraftOrderList._ace_old_delete_order_command = CraftOrderList.delete_order_command
 -- In addition to the original delete_order_command function (from craft_order_list.lua),
--- here it's also making sure that the ingredients needed for the order is removed
+-- here it's also making sure that the ingredients needed for the order are removed
 -- from the reserved ingredients table.
 --
 function AceCraftOrderList:delete_order_command(session, response, order_id, delete_associated_orders)

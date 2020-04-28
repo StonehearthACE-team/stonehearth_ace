@@ -16,7 +16,7 @@ function AceCraftOrder:on_item_created()
    self:_ace_old_on_item_created()
 end
 
--- Paul: the following overrides and additions are all in order to support multiple crafters on the same order
+-- Paul: a lot of the following overrides and additions are just to support multiple crafters on the same order
 
 AceCraftOrder._ace_old_activate = CraftOrder.activate
 function AceCraftOrder:activate()
@@ -44,6 +44,17 @@ function AceCraftOrder:activate()
    end
 
    self.__saved_variables:mark_changed()
+end
+
+AceCraftOrder._ace_old_destroy = CraftOrder.__user_destroy
+function AceCraftOrder:destroy()
+   for _, crafter in pairs(self._sv.curr_crafters) do
+      local crafter_comp = crafter:is_valid() and crafter:get_component('stonehearth:crafter')
+      if crafter_comp then
+         crafter_comp:unreserve_fuel()
+      end
+   end
+   self:_ace_old_destroy()
 end
 
 -- false for lower quality, true for higher quality
@@ -137,24 +148,6 @@ function AceCraftOrder:set_crafting_status(crafter, is_crafting)
    end
    self:_on_changed()
 end
-
--- AceCraftOrder._ace_old_has_ingredients = CraftOrder.has_ingredients
--- function AceCraftOrder:has_ingredients()
---    local result = self:_ace_old_has_ingredients()
-   
---    -- only bother checking fuel requirements if we have all the other ingredients
---    if result then
---       local fuel_required = self._sv.condition.fuel_requirement
---       if fuel_required then
-
---          local tracking_data = self._inventory:get_item_tracker('stonehearth_ace:fuel_tracker'):get_tracking_data()
-         
-         
---       end
---    end
-
---    return result
--- end
 
 function CraftOrder:is_missing_ingredient(ingredients)
    -- these ingredients still maintain the old counts but are separated out

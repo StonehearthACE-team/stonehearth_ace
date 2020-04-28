@@ -1,6 +1,8 @@
 local WorkshopComponent = radiant.mods.require('stonehearth.components.workshop.workshop_component')
 local AceWorkshopComponent = class()
 
+local FUEL_LEASE_NAME = 'stonehearth_ace:workshop_fuel_lease'
+
 AceWorkshopComponent._ace_old_activate = WorkshopComponent.activate -- doesn't exist!
 function AceWorkshopComponent:activate()
    local json = radiant.entities.get_json(self) or {}
@@ -9,8 +11,8 @@ function AceWorkshopComponent:activate()
    end
    
    self._fuel_settings = json.fuel_settings or {}
-   if self:uses_fuel() and not self._sv._reserved_fuel then
-      self._sv._reserved_fuel = {}
+   if self:uses_fuel() then
+      self._reserved_fuel = {}
    end
    self:_run_fuel_effect()
 
@@ -25,6 +27,23 @@ function AceWorkshopComponent:activate()
 
    if self._ace_old_activate then
       self:_ace_old_activate()
+   end
+end
+
+AceWorkshopComponent._ace_old_post_activate = WorkshopComponent.post_activate -- doesn't exist!
+function AceWorkshopComponent:post_activate()
+   local expendable_resources = self._entity:get_component('stonehearth:expendable_resources')
+   if expendable_resources then
+      local fuel_level = expendable_resources:get_value('fuel_level')
+      local reserved_fuel_level = expendable_resources:get_value('reserved_fuel_level')
+      if fuel_level and reserved_fuel_level then
+         expendable_resources:modify_value('fuel_level', reserved_fuel_level)
+         expendable_resources:set_value('reserved_fuel_level', 0)
+      end
+   end
+
+   if self._ace_old_post_activate then
+      self:_ace_old_post_activate()
    end
 end
 
@@ -90,7 +109,7 @@ function AceWorkshopComponent:available_for_work(crafter)
    if crafter_component then
       local order = crafter_component:get_current_order()
       if order and self._sv.order and (order:get_id() == self._sv.order:get_id()) then
-         return true
+         return not self:uses_fuel() or self:reserve_fuel(crafter)
       end
    end
 
@@ -109,9 +128,27 @@ function AceWorkshopComponent:get_fuel_effect()
    return self._fuel_settings.fuel_effect
 end
 
+function AceWorkshopComponent:get_fueled_buff()
+   return self._fuel_settings.fueled_buff
+end
+
+function AceWorkshopComponent:is_fueled()
+   if self._fueled_while_working then
+      return true
+   end
+
+   local expendable_resources = self._entity:get_component('stonehearth:expendable_resources')
+   if expendable_resources then
+      return (expendable_resources:get_value('fuel_level') or 0) + (expendable_resources:get_value('reserved_fuel_level') or 0) >= self:get_fuel_per_craft()
+   end
+
+   return false
+end
+
 function AceWorkshopComponent:reserve_fuel(crafter)
-   local reserved = self._sv._reserved_fuel
-   if reserved[crafter] then
+   local reserved = self._reserved_fuel
+   local crafter_id = crafter:get_id()
+   if reserved[crafter_id] then
       return true
    end
 
@@ -131,22 +168,23 @@ function AceWorkshopComponent:reserve_fuel(crafter)
       expendable_resources:modify_value('reserved_fuel_level', fuel_per_craft)
       
       self:_reserve_crafter_fuel_workshop(crafter)
-      reserved[crafter] = fuel_per_craft
+      reserved[crafter_id] = fuel_per_craft
 
       return true
    end
 
    -- if that fails, check if there's fuel in storage that can be reserved (just grab the first item; assume the filter works)
    local storage = self._entity:get_component('stonehearth:storage')
-   local item_id = next(storage:get_items())
-   if item_id then
-      local item = storage:remove_item(item_id)
-      --radiant.terrain.remove_entity(item)
-      
-      self:_reserve_crafter_fuel_workshop(crafter)
-      reserved[crafter] = item
-      
-      return true
+   local items = storage and storage:get_items()
+   if items then
+      for _, item in pairs(items) do
+         if radiant.entities.acquire_lease(item, FUEL_LEASE_NAME, self._entity, false) then
+            self:_reserve_crafter_fuel_workshop(crafter)
+            reserved[crafter_id] = item
+            
+            return true
+         end
+      end
    end
 end
 
@@ -155,7 +193,7 @@ function AceWorkshopComponent:_reserve_crafter_fuel_workshop(crafter)
    local crafter_comp = crafter and crafter:get_component('stonehearth:crafter')
    if crafter_comp then
       local workshop = crafter_comp:get_fuel_reserved_workshop()
-      local workshop_comp = workshop and workshop:get_component('stonehearth:workshop')
+      local workshop_comp = workshop and workshop:is_valid() and workshop:get_component('stonehearth:workshop')
       if workshop_comp then
          workshop_comp:unreserve_fuel(crafter)
       end
@@ -164,68 +202,61 @@ function AceWorkshopComponent:_reserve_crafter_fuel_workshop(crafter)
    end
 end
 
-function AceWorkshopComponent:_clear_crafter_fuel_workshop(crafter)
-   local crafter_comp = crafter and crafter:get_component('stonehearth:crafter')
+function AceWorkshopComponent:_clear_crafter_fuel_workshop(crafter_id)
+   local crafter = radiant.entities.get_entity(crafter_id)
+   local crafter_comp = crafter and crafter:is_valid() and crafter:get_component('stonehearth:crafter')
    if crafter_comp then
       crafter_comp:set_fuel_reserved_workshop()
    end
 end
 
-function AceWorkshopComponent:unreserve_fuel(crafter)
-   local fuel = self._sv._reserved_fuel[crafter]
+function AceWorkshopComponent:unreserve_fuel(crafter_id)
+   local fuel = self._reserved_fuel[crafter_id]
    if fuel then
       if type(fuel) == 'number' then
          local expendable_resources = self._entity:get_component('stonehearth:expendable_resources')
          expendable_resources:modify_value('reserved_fuel_level', -fuel)
          expendable_resources:modify_value('fuel_level', fuel)
       else
-         -- it's a fuel entity; shove it back in storage, even if there's no room there
-         local storage = self._entity:get_component('stonehearth:storage')
-         if storage then
-            storage:add_item(fuel, true)
-         else
-            -- if storage got destroyed before we did, dump it on the ground
-            local entity = entity_forms_lib.get_in_world_form(self._entity) or self._entity
-            local location = radiant.entities.get_world_grid_location(entity)
-            if not location then
-               local player_id = radiant.entities.get_player_id(entity)
-               local town = stonehearth.town:get_town(player_id)
-               location = town:get_landing_location()
-            end
-            radiant.terrain.place_entity(fuel, radiant.terrain.find_placement_point(location, 0, 2))
-         end
+         -- it's a fuel entity; release its lease
+         radiant.entities.release_lease(fuel, FUEL_LEASE_NAME, self._entity)
       end
 
-      self:_clear_crafter_fuel_workshop(crafter)
+      self:_clear_crafter_fuel_workshop(crafter_id)
       
-      self._sv._reserved_fuel[crafter] = nil
+      self._reserved_fuel[crafter_id] = nil
    end
 end
 
 function AceWorkshopComponent:_unreserve_all_fuel()
-   for crafter, _ in pairs(self._sv._reserved_fuel) do
-      self:unreserve_fuel(crafter)
+   for crafter_id, _ in pairs(self._reserved_fuel) do
+      self:unreserve_fuel(crafter_id)
    end
 end
 
 function AceWorkshopComponent:consume_fuel(crafter)
    -- get whatever fuel the crafter has reserved and consume it
-   local fuel = self._sv._reserved_fuel[crafter]
+   local crafter_id = crafter:get_id()
+   local fuel = self._reserved_fuel[crafter_id]
    if fuel then
       local expendable_resources = self._entity:get_component('stonehearth:expendable_resources')
-      if type(fuel) == 'number' and expendable_resources then
-         expendable_resources:modify_value('reserved_fuel_level', -fuel)
+      if type(fuel) == 'number' then
+         if expendable_resources then
+            expendable_resources:modify_value('reserved_fuel_level', -fuel)
+         end
       else
          -- first check if there's now a high enough fuel level that we can just take from that
          -- instead of consuming the fuel entity
          local fuel_per_craft = self:get_fuel_per_craft()
          local fuel_level = expendable_resources and expendable_resources:get_value('fuel_level') or 0
          if fuel_level >= fuel_per_craft then
-            self:unreserve_fuel(crafter)
+            self:unreserve_fuel(crafter_id)
             expendable_resources:modify_value('fuel_level', -fuel_per_craft)
          else
             local fuel_data = radiant.entities.get_entity_data(fuel, 'stonehearth_ace:fuel') or {}
             -- assume that any individual fuel entity provides at least the amount necessary for one craft
+            -- probably don't need to release the lease since the entity is just getting destroyed
+            -- radiant.entities.release_lease(fuel, FUEL_LEASE_NAME, self._entity)
             radiant.entities.destroy_entity(fuel)
 
             if expendable_resources then
@@ -237,29 +268,51 @@ function AceWorkshopComponent:consume_fuel(crafter)
          end
       end
 
+      self:_update_fueled_buff()
       self:_run_fuel_effect()
-      self:_clear_crafter_fuel_workshop(crafter)
+      self:_clear_crafter_fuel_workshop(crafter_id)
 
-      self._sv._reserved_fuel[crafter] = nil
+      self._reserved_fuel[crafter_id] = nil
+   end
+end
+
+AceWorkshopComponent._ace_old_run_effect = WorkshopComponent.run_effect
+function AceWorkshopComponent:run_effect()
+   self:_ace_old_run_effect()
+   self._fueled_while_working = true
+   self:_update_fueled_buff()
+end
+
+AceWorkshopComponent._ace_old_stop_running_effect = WorkshopComponent.stop_running_effect
+function AceWorkshopComponent:stop_running_effect()
+   self:_ace_old_stop_running_effect()
+   self._fueled_while_working = false
+   self:_update_fueled_buff()
+end
+
+function WorkshopComponent:_update_fueled_buff()
+   local buff = self:get_fueled_buff()
+   if buff then
+      if self:is_fueled() then
+         if not radiant.entities.has_buff(self._entity, buff) then
+            radiant.entities.add_buff(self._entity, buff)
+         end
+      else
+         radiant.entities.remove_buff(self._entity, buff)
+      end
    end
 end
 
 function WorkshopComponent:_run_fuel_effect()
    local effect = self:get_fuel_effect()
-   if effect and not self._fuel_effect then
-      local expendable_resources = self._entity:get_component('stonehearth:expendable_resources')
-      if expendable_resources then
-         local fuel_level = (expendable_resources:get_value('fuel_level') or 0) + (expendable_resources:get_value('reserved_fuel_level') or 0)
-         if fuel_level > 0 and not self._fuel_effect then
-            self._fuel_effect = radiant.effects.run_effect(self._entity, effect)
-            self._fuel_effect:set_finished_cb(function()
-                  self:_destroy_fuel_effect()
-                  self:_run_fuel_effect()
-               end)
-         else
+   if effect and not self._fuel_effect and self:is_fueled() then
+      self._fuel_effect = radiant.effects.run_effect(self._entity, effect)
+      self._fuel_effect:set_finished_cb(function()
             self:_destroy_fuel_effect()
-         end
-      end
+            self:_run_fuel_effect()
+         end)
+   else
+      self:_destroy_fuel_effect()
    end
 end
 
