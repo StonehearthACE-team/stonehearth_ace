@@ -13,6 +13,7 @@ function AceWorkshopComponent:activate()
    self._fuel_settings = json.fuel_settings or {}
    if self:uses_fuel() then
       self._reserved_fuel = {}
+      self._reserved_fuel_items = {}
    end
 
    -- if this is an auto-crafter, get rid of the show workshop command
@@ -42,14 +43,23 @@ function AceWorkshopComponent:post_activate()
    end
 
    -- should we also listen for expendable resources changes?
-   self._storage_item_added_listener = radiant.events.listen(self._entity, 'stonehearth:storage:item_added', function()
+   self._storage_filter_changed_listener = radiant.events.listen(self._entity, 'stonehearth:storage:filter_changed', function(args)
+         self:_reconsider_all_item_leases()
+      end)
+   self._storage_item_added_listener = radiant.events.listen(self._entity, 'stonehearth:storage:item_added', function(args)
+         self:_acquire_item_lease(args.item)
          self:_update_fuel_effect()
       end)
-   self._storage_item_removed_listener = radiant.events.listen(self._entity, 'stonehearth:storage:item_removed', function()
+   self._storage_item_removed_listener = radiant.events.listen(self._entity, 'stonehearth:storage:item_removed', function(args)
+         if args.item then
+            self:_release_item_lease(args.item)
+         end
          if self._entity:get_component('stonehearth:storage'):is_empty() then
             self:_update_fuel_effect()
          end
       end)
+
+   self:_reconsider_all_item_leases()
    self:_update_fuel_effect()
 
    if self._ace_old_post_activate then
@@ -68,6 +78,10 @@ function AceWorkshopComponent:destroy()
 end
 
 function AceWorkshopComponent:_destroy_listeners()
+   if self._storage_filter_changed_listener then
+      self._storage_filter_changed_listener:destroy()
+      self._storage_filter_changed_listener = nil
+   end
    if self._storage_item_added_listener then
       self._storage_item_added_listener:destroy()
       self._storage_item_added_listener = nil
@@ -76,6 +90,35 @@ function AceWorkshopComponent:_destroy_listeners()
       self._storage_item_removed_listener:destroy()
       self._storage_item_removed_listener = nil
    end
+end
+
+function AceWorkshopComponent:_reconsider_all_item_leases()
+   -- refresh (acquire or release) leases on all items based on the new filter (unless they're already reserved)
+   local storage = self._entity:get_component('stonehearth:storage')
+   if storage then
+      for _, item in pairs(storage:get_items()) do
+         self:_reconsider_item_lease(item)
+      end
+   end
+end
+
+function AceWorkshopComponent:_reconsider_item_lease(item)
+   local storage = self._entity:get_component('stonehearth:storage')
+   if storage then
+      if self._reserved_fuel_items[item:get_id()] or storage:passes(item) then
+         self:_acquire_item_lease(item)
+      else
+         self:_release_item_lease(item)
+      end
+   end
+end
+
+function AceWorkshopComponent:_acquire_item_lease(item)
+   radiant.entities.acquire_lease(item, FUEL_LEASE_NAME, self._entity, false)
+end
+
+function AceWorkshopComponent:_release_item_lease(item)
+   radiant.entities.release_lease(item, FUEL_LEASE_NAME, self._entity)
 end
 
 function AceWorkshopComponent:set_crafting_time_modifier(modifier)
@@ -178,6 +221,8 @@ end
 
 function AceWorkshopComponent:reserve_fuel(crafter)
    local reserved = self._reserved_fuel
+   local reserved_items = self._reserved_fuel_items
+
    local crafter_id = crafter:get_id()
    if reserved[crafter_id] then
       return true
@@ -209,9 +254,11 @@ function AceWorkshopComponent:reserve_fuel(crafter)
    local items = storage and storage:get_items()
    if items then
       for _, item in pairs(items) do
-         if radiant.entities.acquire_lease(item, FUEL_LEASE_NAME, self._entity, false) then
+         local item_id = item:get_id()
+         if not reserved_items[item_id] then
             self:_reserve_crafter_fuel_workshop(crafter)
             reserved[crafter_id] = item
+            reserved_items[item_id] = crafter_id
             
             return true
          end
@@ -249,8 +296,9 @@ function AceWorkshopComponent:unreserve_fuel(crafter_id)
          expendable_resources:modify_value('reserved_fuel_level', -fuel)
          expendable_resources:modify_value('fuel_level', fuel)
       else
-         -- it's a fuel entity; release its lease
-         radiant.entities.release_lease(fuel, FUEL_LEASE_NAME, self._entity)
+         -- it's a fuel entity
+         self._reserved_fuel_items[fuel:get_id()] = nil
+         self:_reconsider_item_lease(fuel)
       end
 
       self:_clear_crafter_fuel_workshop(crafter_id)
@@ -294,6 +342,7 @@ function AceWorkshopComponent:consume_fuel(crafter)
                end
             end
 
+            self._reserved_fuel_items[fuel:get_id()] = nil
             -- probably don't need to release the lease since the entity is just getting destroyed
             -- do we even need to remove it from storage?
             -- radiant.entities.release_lease(fuel, FUEL_LEASE_NAME, self._entity)
