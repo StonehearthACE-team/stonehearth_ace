@@ -22,7 +22,7 @@ end
 function ace_shared_filters.make_is_priority_care_available_bed_filter(entity)
    local player_id = entity:get_player_id()
 
-   return stonehearth.ai:filter_from_key('stonehearth:sleep:sleep_in_unowned_bed', player_id, function(target)
+   return stonehearth.ai:filter_from_key('stonehearth:sleep:sleep_in_priority_care_bed', player_id, function(target)
          if target:get_player_id() ~= player_id then
             return false
          end

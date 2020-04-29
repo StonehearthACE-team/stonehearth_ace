@@ -99,11 +99,12 @@ function healing_lib.filter_healing_item(item, conditions, level)
          return false
       end
 
-      -- we also only want to use cures *for* curing; if they don't require a cure, don't use a cure consumable
       conditions = conditions or {}
-      if #conditions == 0 and consumable_data.cures_conditions and next(consumable_data.cures_conditions) then
-         return false
-      end
+      -- we want to prioritize using cures *for* curing; if they don't require a cure, ideally don't use a cure consumable
+      -- but this will be done in the rater so that we can still use items that also cure if they're the only items
+      -- if #conditions == 0 and consumable_data.cures_conditions and next(consumable_data.cures_conditions) then
+      --    return false
+      -- end
 
       if #conditions > 0 then
          if not consumable_data.cures_conditions then
@@ -136,8 +137,24 @@ function healing_lib.rate_healing_item(item, conditions, missing_guts, missing_h
       local health_healed = math.floor((consumable_data.health_healed or 0) * (healing_multiplier or 1) / healing_constants.FILTER_HEALTH_DIVISOR)
       
       -- if curing a condition, or no condition but it fully restores their guts, it's fulfilling the primary purpose
-      if conditions or guts_healed >= missing_guts then
+      if conditions and #conditions > 0 then
          value = 0.5
+      elseif guts_healed >= missing_guts then
+         -- if the consumable would cure conditions, rate it down (we'd prefer to save those for actually curing conditions)
+         if not consumable_data.cures_conditions then
+            value = 0.5
+         else
+            local cures_something = false
+            for _, cures_it in pairs(consumable_data.cures_conditions) do
+               if cures_it then
+                  cures_something = true
+                  break
+               end
+            end
+            if not cures_something then
+               value = 0.5
+            end
+         end
       end
 
       -- an extra 0.2 if it fully heals health
@@ -171,7 +188,7 @@ function healing_lib.make_healing_filter(healer, target)
       condition_str = condition_str .. condition
    end
 
-   return stonehearth.ai:filter_from_key('drink_filter', condition_str .. '|' .. level, function(item)
+   return stonehearth.ai:filter_from_key('drink_filter', condition_str .. '|' .. level .. '|' .. guts .. '|' .. health, function(item)
             return healing_lib.filter_healing_item(item, conditions, level)
          end)
 end

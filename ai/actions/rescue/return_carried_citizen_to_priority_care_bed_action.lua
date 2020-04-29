@@ -5,7 +5,7 @@ local shared_filters = require 'stonehearth.ai.filters.shared_filters'
 local Entity = _radiant.om.Entity
 
 local ReturnCarriedCitizenToPriorityCareBed = radiant.class()
-ReturnCarriedCitizenToPriorityCareBed.name = 'rescue citizen'
+ReturnCarriedCitizenToPriorityCareBed.name = 'rescue citizen to priority care'
 ReturnCarriedCitizenToPriorityCareBed.does = 'stonehearth:return_carried_citizen_to_town'
 ReturnCarriedCitizenToPriorityCareBed.args = {
    citizen = Entity, -- the entity to rescue
