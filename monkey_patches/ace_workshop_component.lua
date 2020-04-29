@@ -1,7 +1,9 @@
+local constants = require 'stonehearth.constants'
+
 local WorkshopComponent = radiant.mods.require('stonehearth.components.workshop.workshop_component')
 local AceWorkshopComponent = class()
 
-local FUEL_LEASE_NAME = 'stonehearth_ace:workshop_fuel_lease'
+local FUEL_LEASE_NAME = constants.ai.RESERVATION_LEASE_NAME
 
 AceWorkshopComponent._ace_old_activate = WorkshopComponent.activate -- doesn't exist!
 function AceWorkshopComponent:activate()
@@ -48,19 +50,19 @@ function AceWorkshopComponent:post_activate()
       end)
    self._storage_item_added_listener = radiant.events.listen(self._entity, 'stonehearth:storage:item_added', function(args)
          self:_acquire_item_lease(args.item)
-         self:_update_fuel_effect()
+         self:_update_fueled()
       end)
    self._storage_item_removed_listener = radiant.events.listen(self._entity, 'stonehearth:storage:item_removed', function(args)
          if args.item then
             self:_release_item_lease(args.item)
          end
          if self._entity:get_component('stonehearth:storage'):is_empty() then
-            self:_update_fuel_effect()
+            self:_update_fueled()
          end
       end)
 
    self:_reconsider_all_item_leases()
-   self:_update_fuel_effect()
+   self:_update_fueled()
 
    if self._ace_old_post_activate then
       self:_ace_old_post_activate()
@@ -255,7 +257,7 @@ function AceWorkshopComponent:reserve_fuel(crafter)
    if items then
       for _, item in pairs(items) do
          local item_id = item:get_id()
-         if not reserved_items[item_id] then
+         if not reserved_items[item_id] and radiant.entities.get_entity_data(item, 'stonehearth_ace:fuel') then
             self:_reserve_crafter_fuel_workshop(crafter)
             reserved[crafter_id] = item
             reserved_items[item_id] = crafter_id
@@ -351,8 +353,7 @@ function AceWorkshopComponent:consume_fuel(crafter)
          end
       end
 
-      self:_update_fueled_buff()
-      self:_update_fuel_effect()
+      self:_update_fueled()
       self:_clear_crafter_fuel_workshop(crafter_id)
 
       self._reserved_fuel[crafter_id] = nil
@@ -363,14 +364,17 @@ AceWorkshopComponent._ace_old_run_effect = WorkshopComponent.run_effect
 function AceWorkshopComponent:run_effect()
    self:_ace_old_run_effect()
    self._fueled_while_working = true
-   self:_update_fueled_buff()
-   self:_update_fuel_effect()
+   self:_update_fueled()
 end
 
 AceWorkshopComponent._ace_old_stop_running_effect = WorkshopComponent.stop_running_effect
 function AceWorkshopComponent:stop_running_effect()
    self:_ace_old_stop_running_effect()
    self._fueled_while_working = false
+   self:_update_fueled()
+end
+
+function AceWorkshopComponent:_update_fueled()
    self:_update_fueled_buff()
    self:_update_fuel_effect()
 end
