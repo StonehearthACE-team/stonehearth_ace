@@ -1,0 +1,23 @@
+{
+   "stockpile": {
+      "resources": {
+         "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.fuels)",
+         "filter": "fuels",
+         "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/fuels.png",
+         "categories": {
+            "common_fuel": {
+               "ordinal": 1,
+               "display_name": "i18n(stonehearth_ace:ui.data.constants.common_fuel_resource_name)",
+               "icon": "/stonehearth_ace/entities/resources/fuel/common_fuel_icon.png",
+               "filter": "common_fuel"
+            },
+            "firewood": {
+               "ordinal": 2,
+               "display_name": "i18n(stonehearth_ace:entities.resources.fuel.bundle_of_firewood.display_name)",
+               "icon": "/stonehearth_ace/entities/resources/fuel/bundle_of_firewood/bundle_of_firewood.png",
+               "filter": "firewood refined"
+            }
+         }
+      }
+   }
+}

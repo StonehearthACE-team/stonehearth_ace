@@ -1,0 +1,34 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(comfy_bed_herbalist.qb)"
+            ]
+         },
+         "sleeping": {
+            "models": [
+               "file(comfy_bed_herbalist_sleeping.qb)"
+            ]
+         }
+      },
+      "render_info": {
+         "scale": 0.22
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "Stone Comfy Bed",
+         "description": "Much warmer and softer than the stone itself.",
+         "icon": "file(comfy_bed_herbalist.png)",
+         "category": "furniture",
+         "material_tags":["stone", "furniture", "crafted", "stockpile_furniture"]
+      }
+   }
+}
