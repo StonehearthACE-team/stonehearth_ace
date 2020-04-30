@@ -35,7 +35,7 @@ local function rate_input_bin(entity)
    local priority_range = bounds.MAX_PRIORITY - bounds.MIN_PRIORITY
    local storage = entity:get_component('stonehearth:storage')
    
-   return (1 - storage:num_items() / storage:get_capacity()) / (priority_range + 1) + storage:get_input_bin_priority()
+   return math.min(1, 1 - storage:num_items() / storage:get_capacity()) / (priority_range + 1) + storage:get_input_bin_priority()
 end
 
 
@@ -50,7 +50,8 @@ local function make_item_for_bin_predicate(player_id, bin)
    local content_valid_function = storage:get_filter_function()
    local inventory = stonehearth.inventory:get_inventory(player_id)
    local exists = radiant.entities.exists
-   return stonehearth.ai:filter_from_key('item_for_input_bin', player_id .. ';' .. storage:get_filter_key(), function(item)
+   local priority = storage:get_input_bin_priority()
+   return stonehearth.ai:filter_from_key('item_for_input_bin', player_id .. ';' .. priority .. ';' .. storage:get_filter_key(), function(item)
       if not exists(item) then  -- TODO: Why is this even happening?
          return false
       end
@@ -58,7 +59,7 @@ local function make_item_for_bin_predicate(player_id, bin)
       local source = inventory:container_for(item)
       if source then
          local source_storage = source:get_component('stonehearth:storage')
-         if source_storage:get_type() == 'input_crate' then
+         if source_storage:get_type() == 'input_crate' and source_storage:get_input_bin_priority() >= priority then
             return false
          end
       end
@@ -112,6 +113,7 @@ return ai:create_compound_action(FillInputBin)
             range = 32,
             storage = ai.BACK(4).item,
             owner_player_id = ai.BACK(6).owner_player_id,
+            reserve_space = true,
          })
          :execute('stonehearth:fill_storage_from_backpack', {
             filter_fn = ai.CALL(make_item_for_bin_predicate, ai.BACK(7).owner_player_id, ai.BACK(5).item),

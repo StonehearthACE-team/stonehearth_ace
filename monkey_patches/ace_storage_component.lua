@@ -47,8 +47,9 @@ function AceStorageComponent:activate()
 
    local bounds = stonehearth.constants.inventory.input_bins
    local priority_range = bounds.MAX_PRIORITY - bounds.MIN_PRIORITY
-   self._input_bin_priority = (priority_range / (priority_range + 1)) *
-                              (math.min(math.max(json.priority or 1, bounds.MIN_PRIORITY), bounds.MAX_PRIORITY) - bounds.MIN_PRIORITY) / priority_range
+   local priority = math.min(math.max(json.priority or 1, bounds.MIN_PRIORITY), bounds.MAX_PRIORITY)
+   self._is_input_bin_highest_priority = (priority == bounds.MAX_PRIORITY)
+   self._input_bin_priority = (priority_range / (priority_range + 1)) * (priority - bounds.MIN_PRIORITY) / priority_range
 
    -- communicate this setting to the renderer
 	self._sv.render_filter_model = json.render_filter_model
@@ -78,6 +79,10 @@ end
 
 function AceStorageComponent:get_filter()
    return self._sv.filter or self._limited_all_filter
+end
+
+function AceStorageComponent:is_input_bin_highest_priority()
+   return self._is_input_bin_highest_priority
 end
 
 function AceStorageComponent:get_input_bin_priority()
