@@ -1,0 +1,30 @@
+{
+   "mixins": "/stonehearth_ace/scenarios/static/plantlife_nest/plantlife_nest.json",
+   "name": "water_lily_desert_large",
+   "mixintypes": {
+      "habitat_types": "override"
+   },
+   "habitat_types": [
+      "water"
+   ],
+   "biomes": [
+      "stonehearth:biome:desert"
+   ],
+   "size": {
+      "width": 48,
+      "length": 48
+   },
+   "weight": 5,
+   "data": {
+      "entity_type": [
+         "stonehearth_ace:plants:water_lily:lily_pad",
+         "stonehearth_ace:plants:water_lily:yellow",
+         "stonehearth_ace:plants:water_lily:yellow",
+         "stonehearth_ace:plants:water_lily:purple"
+      ],
+      "quantity": {
+         "min": 6,
+         "max": 12
+      }
+   }
+}

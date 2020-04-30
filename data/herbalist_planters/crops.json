@@ -25,7 +25,7 @@
       "chives": true,
       "bog_myrtle": true,
       "nightshade": true,
-      "daffodil": true,
+      "daylily": true,
       "oleander": true,
       "parsley": true,
       "sage": true
@@ -484,9 +484,9 @@
          "harvest_status_text": "i18n(stonehearth_ace:herbalist_crops.nightshade.harvest_text)",
          "icon": "file(crops/planter/nightshade/nightshade.png)"
       },
-      "daffodil": {
-         "seed_uri": "stonehearth_ace:plants:daffodil:seed",
-         "product_uri": "stonehearth_ace:resources:herb:daffodil",
+      "daylily": {
+         "seed_uri": "stonehearth_ace:plants:daylily:seed",
+         "product_uri": "stonehearth_ace:resources:herb:daylily",
          "harvester_effect": "fiddle",
          "render_scale": 0.08,
          "tending_multiplier": 0.5,
@@ -495,26 +495,26 @@
          "bonus_product_growth_time": "12h",
          "growth_levels": [
             {
-               "model": "file(crops/planter/daffodil/daffodil_1.qb)",
+               "model": "file(crops/planter/daylily/daylily_1.qb)",
                "offset": { "x": 5, "y": 0, "z": 6.5 }
             },
             {
-               "model": "file(crops/planter/daffodil/daffodil_2.qb)",
+               "model": "file(crops/planter/daylily/daylily_2.qb)",
                "offset": { "x": 5, "y": 0, "z": 6.5 }
             },
             {
-               "model": "file(crops/planter/daffodil/daffodil_3.qb)",
+               "model": "file(crops/planter/daylily/daylily_3.qb)",
                "offset": { "x": 5, "y": 0, "z": 6.5 }
             },
             {
-               "model": "file(crops/planter/daffodil/daffodil_4.qb)",
+               "model": "file(crops/planter/daylily/daylily_4.qb)",
                "offset": { "x": 5, "y": 0, "z": 6.5 }
             }
          ],
-         "display_name": "i18n(stonehearth_ace:herbalist_crops.daffodil.display_name)",
-         "description": "i18n(stonehearth_ace:herbalist_crops.daffodil.description)",
-         "harvest_status_text": "i18n(stonehearth_ace:herbalist_crops.daffodil.harvest_text)",
-         "icon": "file(crops/planter/daffodil/daffodil.png)"
+         "display_name": "i18n(stonehearth_ace:herbalist_crops.daylily.display_name)",
+         "description": "i18n(stonehearth_ace:herbalist_crops.daylily.description)",
+         "harvest_status_text": "i18n(stonehearth_ace:herbalist_crops.daylily.harvest_text)",
+         "icon": "file(crops/planter/daylily/daylily.png)"
       },
       "oleander": {
          "seed_uri": "stonehearth_ace:plants:oleander:seed",

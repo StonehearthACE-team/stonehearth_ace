@@ -1,0 +1,30 @@
+{
+   "mixins": "/stonehearth_ace/scenarios/static/plantlife_nest/plantlife_nest.json",
+   "name": "water_lily_temperate",
+   "mixintypes": {
+      "habitat_types": "override"
+   },
+   "habitat_types": [
+      "water"
+   ],
+   "biomes": [
+      "stonehearth:biome:temperate"
+   ],
+   "size": {
+      "width": 16,
+      "length": 16
+   },
+   "weight": 8,
+   "data": {
+      "entity_type": [
+         "stonehearth_ace:plants:water_lily:lily_pad",
+         "stonehearth_ace:plants:water_lily:white",
+         "stonehearth_ace:plants:water_lily:white",
+         "stonehearth_ace:plants:water_lily:pink"
+      ],
+      "quantity": {
+         "min": 5,
+         "max": 15
+      }
+   }
+}
