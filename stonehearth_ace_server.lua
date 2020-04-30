@@ -142,7 +142,8 @@ local monkey_patches = {
    ace_spawn_enemies_mission = 'stonehearth.services.server.game_master.controllers.missions.spawn_enemies_mission',
    ace_wander_mission = 'stonehearth.services.server.game_master.controllers.missions.wander_mission',
    ace_guildmaster_town_bonus = 'stonehearth.data.town_bonuses.guildmaster_town_bonus',
-   ace_player_jobs_controller = 'stonehearth.services.server.job.player_jobs_controller'
+   ace_player_jobs_controller = 'stonehearth.services.server.job.player_jobs_controller',
+	ace_scenario_modder_services = 'stonehearth.services.server.static_scenario.scenario_modder_services'
 }
 
 local function monkey_patching()

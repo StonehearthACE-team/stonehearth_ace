@@ -437,6 +437,14 @@
           "exclusion_radius" : 2
         }
       },
+		"stonehearth:plants:violet": {
+            "placement_type": "dense",
+            "parameters": {
+               "grid_multiple": 2,
+               "item_density": 0.1,
+               "exclusion_radius": 1
+            }
+         },
 	  "stonehearth_ace:plants:dwarfsbeard": {
             "placement_type": "dense",
             "parameters": {
@@ -677,6 +685,7 @@
             "1" : {			   
 					"stonehearth_ace:plants:poppy" : 1.1,
 					"stonehearth_ace:plants:rose" : 1.6,
+					"stonehearth:plants:violet": 0.5,
 					"stonehearth_ace:plants:dill" : 0.8,
 					"stonehearth_ace:plants:cotton_plant" : 1.5,
 					"stonehearth_ace:plants:marblesprout:wild" : 0.1,
@@ -693,6 +702,7 @@
 					"stonehearth_ace:plants:poppy" : 1.5,
 					"stonehearth_ace:plants:rose" : 0.4,
 					"stonehearth_ace:plants:dill" : 1.5,
+					"stonehearth:plants:violet": 1.4,
 					"stonehearth_ace:plants:moonbell" : 2,
 					"stonehearth_ace:plants:cotton_plant" : 1,
 					"stonehearth_ace:plants:marblesprout:wild" : 2,
@@ -704,6 +714,7 @@
             },
             "2" : {
 					"stonehearth_ace:plants:moonbell" : 3,
+					"stonehearth:plants:violet": 2,
 					"stonehearth_ace:plants:dill" : 1.2,
 					"stonehearth_ace:plants:marblesprout:wild" : 0.5,
 					"stonehearth_ace:fungi:chanterelle" : 0.2,
