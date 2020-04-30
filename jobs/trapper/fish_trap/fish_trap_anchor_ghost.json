@@ -1,0 +1,76 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "render_info": {
+         "scale": 0.1
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(fish_trap_anchor.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": 0, "y": 0, "z": 0 },
+               "max": { "x": 1, "y": 1, "z": 1 }
+            }
+         ]
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": 0, "y": 0, "z": 0 },
+               "max": { "x": 1, "y": 1, "z": 1 }
+            }
+         ],
+         "region_collision_type": "none"
+      },
+      "stonehearth:ghost_form": {},
+      "stonehearth_ace:transform": {},
+      "stonehearth_ace:fish_trap": {}
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.construction.simple_water_well.display_name)",
+         "description": "i18n(stonehearth_ace:entities.construction.simple_water_well_ghost.description)",
+         "icon": "file(simple_water_well.png)",
+         "category": "construction",
+         "material_tags": [
+            "construction"
+         ]
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 0,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth_ace:transform_data": {
+         "transform_uri": "stonehearth_ace:trapper:fish_trap_anchor",
+         "auto_request": true,
+         "request_action": "stonehearth_ace:transform",
+         "request_action_overlay_effect": "stonehearth_ace:effects:transform_worker_upgrade_overlay_effect",
+         "transforming_worker_effect": "fiddle",
+         "transforming_worker_effect_times": 1,
+         "transform_effect": "stonehearth:effects:poof_effect",
+         "worker_required_job": {
+            "stonehearth:jobs:trapper": true
+         }
+      },
+      "stonehearth_ace:buildable_data": {
+         "requires_terrain": true,
+         "recheck_filter_on_rotation": true,
+         "placement_filter_script": "stonehearth_ace:scripts:buildable:place_fish_trap"
+      }
+   }
+}

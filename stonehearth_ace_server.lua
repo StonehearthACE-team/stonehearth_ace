@@ -88,6 +88,7 @@ local monkey_patches = {
    ace_find_entity_type_in_storage_action = 'stonehearth.ai.actions.find_entity_type_in_storage_action',
    --ace_place_carrying_on_structure_adjacent_action = 'stonehearth.ai.actions.place_carrying_on_structure_adjacent_action',
    ace_terrain_service = 'stonehearth.services.server.terrain.terrain_service',
+   ace_trapping_service = 'stonehearth.services.server.trapping.trapping_service',
    ace_weather_state = 'stonehearth.services.server.weather.weather_state',
    ace_weather_service = 'stonehearth.services.server.weather.weather_service',
    ace_seasons_service = 'stonehearth.services.server.seasons.seasons_service',

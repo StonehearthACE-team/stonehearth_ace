@@ -28,6 +28,10 @@ App.RootView.reopen({
          return modes.CONNECTION;
       }
 
+      if (entity['stonehearth_ace:fish_trap']) {
+         return modes.ZONES;
+      }
+
       // if (entity['stonehearth_ace:herbalist_planter']) {
       //    return modes.PLANTER;
       // }

@@ -487,6 +487,8 @@
       "commands:transform:sculpt_block": "file(data/commands/transform/sculpt_block.json)",
       "commands:transform:sculpt_statue": "file(data/commands/transform/sculpt_statue.json)",
       "commands:transform:stomp_mega_cotton_pet_bed": "file(data/commands/transform/stomp_mega_cotton_pet_bed.json)",
+      "commands:trapper:place_fish_trap": "file(data/commands/place_fish_trap/place_fish_trap.json)",
+      "commands:trapper:remove_fish_trap": "file(data/commands/remove_fish_trap/remove_fish_trap.json)",
       "construction:clay:water_well": "file(entities/construction/clay_water_well/clay_water_well.json)",
       "construction:clay:water_well:roofed": "file(entities/construction/clay_water_well_roofed/clay_water_well_roofed.json)",
       "construction:ladder": "file(entities/construction/ladder)",
@@ -1908,6 +1910,7 @@
       "scorpion": "file(entities/critters/scorpion/scorpion.json)",
       "scorpion_bug_meat": "file(entities/critters/scorpion/scorpion_bug_meat/scorpion_bug_meat.json)",
       "scripts:buildable:build_well": "file(data/buildable/build_well.lua)",
+      "scripts:buildable:place_fish_trap": "file(data/buildable/place_fish_trap.lua)",
       "sheep:wild": "file(entities/critters/sheep/wild_sheep.json)",
       "sheep:wild:young": "file(entities/critters/sheep/sheep_wild_young.json)",
       "sky_settings:foggy_highlands": "file(data/weather/foggy_highlands/foggy_highlands_sky_settings.json)",
@@ -2027,6 +2030,8 @@
       "traits_index": "file(data/traits/traits_index.json)",
       "trapper:clamp_trap": "file(jobs/trapper/clamp_trap/clamp_trap.json)",
       "trapper:fish_trap": "file(jobs/trapper/fish_trap/fish_trap.json)",
+      "trapper:fish_trap_anchor": "file(jobs/trapper/fish_trap/fish_trap_anchor.json)",
+      "trapper:fish_trap_anchor_ghost": "file(jobs/trapper/fish_trap/fish_trap_anchor_ghost.json)",
       "trapper:fish_trap:big": "file(jobs/trapper/fish_trap/fish_trap_big/fish_trap_big.json)",
       "trapper:fish_trap:carp": "file(jobs/trapper/fish_trap/fish_trap_carp/fish_trap_carp.json)",
       "trapper:fish_trap:catfish": "file(jobs/trapper/fish_trap/fish_trap_catfish/fish_trap_catfish.json)",
@@ -3726,6 +3731,7 @@
       "stonehearth/ai/actions/health/heal_self_action.lua": "stonehearth_ace/ai/actions/health/heal_self_action.lua",
       "stonehearth/ai/actions/health/rest_in_bed_action.lua": "stonehearth_ace/ai/actions/health/rest_in_bed_action.lua",
       "stonehearth/ai/actions/rescue/return_carried_citizen_to_owned_bed_action.lua": "stonehearth_ace/ai/actions/rescue/return_carried_citizen_to_owned_bed_action.lua",
+      "stonehearth/ai/actions/fill_input_bin_action.lua": "stonehearth_ace/ai/actions/fill_input_bin_action.lua",
       "stonehearth/ai/actions/find_path_to_location_action.lua": "stonehearth_ace/ai/actions/find_path_to_location_action.lua",
       "stonehearth/ai/actions/wait_for_unfed_pasture_action.lua": "stonehearth_ace/ai/actions/wait_for_unfed_pasture_action.lua",
       "stonehearth/ai/actions/feed_pasture_adjacent_action.lua": "stonehearth_ace/ai/actions/feed_pasture_adjacent_action.lua",
@@ -3924,15 +3930,19 @@
       "wilderness": "file(components/wilderness/wilderness_component.lua)",
       "wilderness_signal": "file(components/signals/wilderness_signal_component.lua)"
    },
+   "client_components": {
+      "fish_trap": "file(components/fish_trap/fish_trap_component.lua)"
+   },
    "component_renderers": {
       "connection": "file(renderers/connection/connection_renderer.lua)",
-      "tile": "file(renderers/tile/tile_renderer.lua)",
+      "fish_trap": "file(renderers/fish_trap/fish_trap_renderer.lua)",
       "fence": "file(renderers/fence/fence_renderer.lua)",
       "herbalist_planter": "file(renderers/herbalist_planter/herbalist_planter_renderer.lua)",
       "models": "file(renderers/models/models_renderer.lua)",
       "patrol_banner": "file(renderers/patrol_banner/patrol_banner_renderer.lua)",
       "pasture_item": "file(renderers/pasture_item/pasture_item_renderer.lua)",
       "place_terrain": "file(renderers/place_terrain/place_terrain_renderer.lua)",
+      "tile": "file(renderers/tile/tile_renderer.lua)",
       "vine": "file(renderers/vine/vine_renderer.lua)"
    },
    "controllers": {
@@ -4216,6 +4226,7 @@
          "file(ui/game/item_palette/item_palette.js)",
          "file(ui/game/show_workshop/show_team_workshop.js)",
          "file(ui/game/widgets/terrain_vision/terrain_vision.js)",
+         "file(ui/game/event_triggered_actions/event_triggered_actions.js)",
          "file(ui/game/start_menu/start_menu.js)",
          "file(ui/game/start_menu/stonehearth_menu.js)",
          "file(ui/game/modes/zones_mode/zones_mode.js)",

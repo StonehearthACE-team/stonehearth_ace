@@ -1,0 +1,11 @@
+{
+   "type": "command",
+   "name": "remove_fish_trap",
+   "display_name": "i18n(stonehearth_ace:data.commands.remove_fish_trap.display_name)",
+   "description": "i18n(stonehearth_ace:data.commands.remove_fish_trap.description)",
+   "icon": "file(remove_fish_trap.png)",
+   "ordinal": 1,
+   "action": "call",
+   "function": "stonehearth:destroy_entity",
+   "args": []
+}

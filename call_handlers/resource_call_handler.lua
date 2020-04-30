@@ -330,11 +330,17 @@ function ResourceCallHandler:place_buildable_entity(session, response, uri)
    local entity = radiant.entities.create_entity(uri)
    local buildable_data = radiant.entities.get_entity_data(entity, 'stonehearth_ace:buildable_data')
    local requires_terrain = buildable_data.requires_terrain
+   local placement_filter_fn
+   if buildable_data.placement_filter_script then
+      local script = radiant.mods.load_script(buildable_data.placement_filter_script)
+      placement_filter_fn = script and script.placement_filter_fn
+   end
 
    stonehearth.selection:deactivate_all_tools()
    
    -- TODO: limit selector to valid building locations
    stonehearth.selection:select_location()
+      :set_recheck_filter_on_rotation(buildable_data.recheck_filter_on_rotation)
       :set_cursor_entity(entity)
       :set_filter_fn(function (result, selector)
             local this_entity = result.entity   
@@ -355,12 +361,11 @@ function ResourceCallHandler:place_buildable_entity(session, response, uri)
                return stonehearth.selection.FILTER_IGNORE
             end
 
+            local kind
             if this_entity:get_id() == radiant._root_entity_id then
-               local kind = radiant.terrain.get_block_kind_at(brick - normal)
+               kind = radiant.terrain.get_block_kind_at(brick - normal)
                if requires_terrain and kind == nil then
                   return stonehearth.selection.FILTER_IGNORE
-               else
-                  return true
                end
             end
 
@@ -370,7 +375,11 @@ function ResourceCallHandler:place_buildable_entity(session, response, uri)
                return stonehearth.selection.FILTER_IGNORE
             end
 
-            return true
+            if placement_filter_fn then
+               return placement_filter_fn(selector, entity, this_entity, brick, normal, kind)
+            else
+               return true
+            end
          end)
       :done(function(selector, location, rotation)
             _radiant.call('stonehearth_ace:create_buildable_entity', uri, location, rotation)

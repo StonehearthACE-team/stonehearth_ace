@@ -255,5 +255,24 @@ App.StonehearthStartMenuView.reopen({
                App.stonehearthClient.hideTip(tip);
             });
       });
+   },
+
+   buildFishTrap: function() {
+      var self = this;
+
+      var tip = App.stonehearthClient.showTip('stonehearth_ace:ui.game.menu.build_menu.items.build_well.tip_title', 'stonehearth_ace:ui.game.menu.build_menu.items.build_well.tip_description',
+         {i18n: true});
+
+      App.setGameMode('place');
+      return App.stonehearthClient._callTool('buildFishTrap', function() {
+         return radiant.call('stonehearth_ace:place_buildable_entity', 'stonehearth_ace:trapper:fish_trap_anchor_ghost')
+            .done(function(response) {
+               radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:place_structure'} );
+               self.buildFishTrap();
+            })
+            .fail(function(response) {
+               App.stonehearthClient.hideTip(tip);
+            });
+      });
    }
 });

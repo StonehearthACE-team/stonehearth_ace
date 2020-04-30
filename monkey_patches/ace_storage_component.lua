@@ -45,6 +45,11 @@ function AceStorageComponent:activate()
       self._limited_all_filter = filter
    end
 
+   local bounds = stonehearth.constants.inventory.input_bins
+   local priority_range = bounds.MAX_PRIORITY - bounds.MIN_PRIORITY
+   self._input_bin_priority = (priority_range / (priority_range + 1)) *
+                              (math.min(math.max(json.priority or 1, bounds.MIN_PRIORITY), bounds.MAX_PRIORITY) - bounds.MIN_PRIORITY) / priority_range
+
    -- communicate this setting to the renderer
 	self._sv.render_filter_model = json.render_filter_model
 	self._sv.render_filter_model_threshold = json.render_filter_model_threshold or 0.5
@@ -73,6 +78,10 @@ end
 
 function AceStorageComponent:get_filter()
    return self._sv.filter or self._limited_all_filter
+end
+
+function AceStorageComponent:get_input_bin_priority()
+   return self._input_bin_priority
 end
 
 return AceStorageComponent

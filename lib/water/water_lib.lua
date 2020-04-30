@@ -1,22 +1,33 @@
 local Point3 = _radiant.csg.Point3
+local Cube3 = _radiant.csg.Cube3
+local Region3 = _radiant.csg.Region3
+local csg_lib = require 'stonehearth.lib.csg.csg_lib'
 
 local water_lib = {}
 
-function water_lib.get_water_below_cliff(land_point, pref_dir)
-   -- try to find water below the cliff, starting in the preferred direction and checking all other directions if necessary
+function water_lib.get_water_in_front_of_entity(entity)
+   local location = radiant.entities.get_world_grid_location(entity)
+   if location then
+      return water_lib.get_water_below_cliff(location, radiant.entities.get_facing(entity))
+   end
+end
+
+function water_lib.get_water_below_cliff(land_point, pref_dir, allow_rotation)
+   -- try to find water below the cliff, starting in the preferred direction and checking all other directions if necessary and allowed
    local rot = pref_dir or 0
-   for i = 0, 3 do
+   for i = 0, allow_rotation and 3 or 0 do
       local pt = Point3(0, 0, -1):rotated(rot)
-      local water = water_lib._get_water_below(land_point + pt)
+      local origin = land_point + pt
+      local water = water_lib._get_water_below(origin)
       if water then
-         return water, rot
+         return water, origin, rot
       end
       rot = (rot + 90) % 360
    end
 end
 
 function water_lib._get_water_below(air_point)
-   local ground_point = radiant.terrain.get_point_on_terrain(pt)
+   local ground_point = radiant.terrain.get_point_on_terrain(air_point)
    local entities_present = radiant.terrain.get_entities_at_point(ground_point)
 
    for id, entity in pairs(entities_present) do
@@ -27,35 +38,34 @@ function water_lib._get_water_below(air_point)
    end
 end
 
--- get a partial region of a [partial] water region centered on an origin
-function water_lib.get_water_region(water, origin, ignore_region, min_width, min_volume, max_width, max_volume)
+function water_lib.get_contiguous_water_subregion(water, origin, square_radius)
    local water_comp = water:get_component('stonehearth:water')
    if not water_comp then
       return
    end
 
-   local region = Region3(water_comp:get_region():get())
-   if ignore_region then
-      region:subtract_region(ignore_region)
+   local location = radiant.entities.get_world_grid_location(water)
+   local region = water_comp.get_region and water_comp:get_region() or water_comp:get_data().region
+   if location and region then
+      return water_lib.get_contiguous_subregion(region:get():translated(location), origin, square_radius)
    end
-   if region:empty() then
-      return
+end
+
+-- get a partial contiguous region of a region centered on an origin
+function water_lib.get_contiguous_subregion(region, origin, square_radius)
+   local bounds = region:get_bounds()
+   local clipper = Region3(Cube3(Point3(origin.x - square_radius, bounds.min.y, origin.z - square_radius),
+                                 Point3(origin.x + square_radius, bounds.max.y, origin.z + square_radius)))
+   local intersection = region:intersect_region(clipper)
+
+   -- we only want a single contiguous region from the origin point
+   local contained_origin = radiant.terrain.get_point_on_terrain(origin)
+   local regions = csg_lib.get_contiguous_regions(intersection)
+   for _, r in ipairs(regions) do
+      if r:contains(contained_origin) then
+         return r
+      end
    end
-
-   local volume = region:get_area()
-   if min_volume and volume < min_volume then
-      return
-   end
-
-   -- if any remaining region is smaller than the minimum volume, just return the whole remainder
-   if max_volume and min_volume and (volume - max_volume < min_volume) then
-      return region
-   end
-
-   -- project the region onto a 2d plane to simplify process?
-   local projection = region:project_onto_xz_plane()
-
-   
 end
 
 return water_lib

@@ -30,6 +30,8 @@ function WaterSignalService:initialize()
    self._changed_pathing = {}
    self._changed_waterfalls = {}
    self._changed_waterfall_volumes = {}
+   self._water_change_listeners = {}
+   self._waterfall_change_listeners = {}
    self._next_tick_callbacks = {}
    self._current_tick = 0
    self:set_update_frequency(radiant.util.get_config('water_signal_update_frequency', 1))
@@ -205,6 +207,46 @@ function WaterSignalService:waterfall_component_modified(entity, volume_change)
       self._changed_waterfall_volumes[entity:get_id()] = entity:get_component('stonehearth:waterfall')
    else
       self._changed_waterfalls[entity:get_id()] = entity:get_component('stonehearth:waterfall')
+   end
+end
+
+function WaterSignalService:register_water_change_listener(id, water_id, callback_fn)
+   local listeners = self._water_change_listeners[water_id]
+   if not listeners then
+      listeners = {}
+      self._water_change_listeners[water_id] = listeners
+   end
+
+   listeners[id] = callback_fn or true
+end
+
+function WaterSignalService:unregister_water_change_listener(id, water_id)
+   local listeners = self._water_change_listeners[water_id]
+   if listeners then
+      listeners[id] = nil
+      if not next(listeners) then
+         self._water_change_listeners[water_id] = nil
+      end
+   end
+end
+
+function WaterSignalService:register_waterfall_change_listener(id, waterfall_id, callback_fn)
+   local listeners = self._waterfall_change_listeners[waterfall_id]
+   if not listeners then
+      listeners = {}
+      self._waterfall_change_listeners[waterfall_id] = listeners
+   end
+
+   listeners[id] = callback_fn or true
+end
+
+function WaterSignalService:unregister_waterfall_change_listener(id, waterfall_id)
+   local listeners = self._waterfall_change_listeners[waterfall_id]
+   if listeners then
+      listeners[id] = nil
+      if not next(listeners) then
+         self._waterfall_change_listeners[waterfall_id] = nil
+      end
    end
 end
 
@@ -396,10 +438,39 @@ function WaterSignalService:_on_tick()
    for water_id, water in pairs(self._changed_waters) do
       water:reset_changed_on_tick()
       self._changed_waters[water_id] = nil
+      local listeners = self._water_change_listeners[water_id]
+      if listeners then
+         local trigger_event = false
+         for entity_id, callback_fn in pairs(listeners) do
+            if callback_fn == true then
+               trigger_event = true
+            else
+               callback_fn(water)
+            end
+         end
+         if trigger_event then
+            radiant.events.trigger_async(water, 'stonehearth_ace:water_component:changed')
+         end
+      end
    end
+
    for waterfall_id, waterfall in pairs(self._changed_waterfalls) do
       waterfall:reset_changed_on_tick()
       self._changed_waterfalls[waterfall_id] = nil
+      local listeners = self._waterfall_change_listeners[water_id]
+      if listeners then
+         local trigger_event = false
+         for entity_id, callback_fn in pairs(listeners) do
+            if callback_fn == true then
+               trigger_event = true
+            else
+               callback_fn(waterfall)
+            end
+         end
+         if trigger_event then
+            radiant.events.trigger_async(waterfall, 'stonehearth_ace:waterfall_component:changed')
+         end
+      end
    end
 
    self._processing_on_tick = false
