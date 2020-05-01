@@ -76,7 +76,8 @@ end
 
 function DrinkingLib.make_drink_filter(drink_preferences, drink_intolerances)
    return stonehearth.ai:filter_from_key('drink_filter', tostring(drink_preferences, drink_intolerances), function(item)
-            return DrinkingLib.get_quality(item, drink_preferences, drink_intolerances) ~= nil
+            local quality = DrinkingLib.get_quality(item, drink_preferences, drink_intolerances)
+            return quality and quality >= stonehearth.constants.drink_qualities.MINIMUM_VIABLE
          end)
 end
 

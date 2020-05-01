@@ -71,6 +71,21 @@ function AceRestockDirector:_generate_next_errand()
       return
    end
 
+   local best_storage_component = best_storage:get('stonehearth:storage')
+   local best_filter_fn
+   if best_storage_component:get_type() == 'input_crate' then
+      local storage_priority = best_storage_component:get_input_bin_priority()
+      best_filter_fn = function(item)
+         if self:_is_higher_priority_for_item(item, storage_priority) then
+            return filter_fn(item)
+         else
+            return false
+         end
+      end
+   else
+      best_filter_fn = filter_fn
+   end
+
 
    -- Find nearby items that we can opportunistically include.
    local search_src_entity
@@ -83,7 +98,7 @@ function AceRestockDirector:_generate_next_errand()
    local target_item_id = target_item:get_id()
    self._covered_items[target_item_id] = errand_id  -- Need to do this before the search so we don't choose this as an extra item.
    local storage_space_lease = best_storage:get_component('stonehearth:storage'):reserve_space(nil, 'restock errand')  -- Get an initial lease for one item.
-   self._active_nearby_item_search = NearbyItemSearch(self._player_id, search_src_entity, filter_fn, self._is_restockable_predicate, self._covered_items, MAX_EXTRA_ITEMS, function(extra_items)
+   self._active_nearby_item_search = NearbyItemSearch(self._player_id, search_src_entity, best_filter_fn, self._is_restockable_predicate, self._covered_items, MAX_EXTRA_ITEMS, function(extra_items)
          local item_location = get_world_location(search_src_entity)
          if item_location and get_world_location(best_storage) then  -- The target item may have gotten moved/destroyed while we were searching.
             -- Replace the initial lease with one that also includes the extra items, if possible.
@@ -137,6 +152,15 @@ function AceRestockDirector:_is_storage_higher_priority_for_item(item, new_stora
    end
 
    return new_storage_comp:get_input_bin_priority() > current_storage:get_component('stonehearth:storage'):get_input_bin_priority()
+end
+
+function AceRestockDirector:_is_higher_priority_for_item(item, priority)
+   local current_storage = self._inventory:container_for(item)
+   if not current_storage then
+      return true
+   end
+
+   return priority > current_storage:get_component('stonehearth:storage'):get_input_bin_priority()
 end
 
 function AceRestockDirector:_make_is_restockable_predicate(allow_stored)

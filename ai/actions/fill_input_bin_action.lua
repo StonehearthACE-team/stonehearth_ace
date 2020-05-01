@@ -60,7 +60,10 @@ local function make_item_for_bin_predicate(player_id, bin)
       if source then
          local source_storage = source:get_component('stonehearth:storage')
          if source_storage:get_type() == 'input_crate' and source_storage:get_input_bin_priority() >= priority then
-            return false
+            -- if the filter was changed/removed, we do want to move its items to other input bins
+            if source_storage:passes(item) then
+               return false
+            end
          end
       end
 

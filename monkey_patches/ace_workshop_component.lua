@@ -4,6 +4,7 @@ local WorkshopComponent = radiant.mods.require('stonehearth.components.workshop.
 local AceWorkshopComponent = class()
 
 local FUEL_LEASE_NAME = constants.ai.RESERVATION_LEASE_NAME
+local log = radiant.log.create_logger('workshop')
 
 AceWorkshopComponent._ace_old_activate = WorkshopComponent.activate -- doesn't exist!
 function AceWorkshopComponent:activate()
@@ -116,11 +117,13 @@ function AceWorkshopComponent:_reconsider_item_lease(item)
 end
 
 function AceWorkshopComponent:_acquire_item_lease(item)
-   radiant.entities.acquire_lease(item, FUEL_LEASE_NAME, self._entity, false)
+   local success = radiant.entities.acquire_lease(item, FUEL_LEASE_NAME, self._entity, true) -- , false)
+   --log:debug('%s %s acquiring lease for %s', self._entity, success and 'SUCCEEDED' or 'FAILED', item)
 end
 
 function AceWorkshopComponent:_release_item_lease(item)
-   radiant.entities.release_lease(item, FUEL_LEASE_NAME, self._entity)
+   local success = radiant.entities.release_lease(item, FUEL_LEASE_NAME, self._entity)
+   --log:debug('%s %s releasing lease for %s', self._entity, success and 'SUCCEEDED' or 'FAILED', item)
 end
 
 function AceWorkshopComponent:set_crafting_time_modifier(modifier)

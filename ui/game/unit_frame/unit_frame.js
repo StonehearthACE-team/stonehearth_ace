@@ -324,6 +324,31 @@ App.StonehearthUnitFrameView.reopen({
       });
    }.observes('model.uri', 'model.stonehearth:unit_info', 'job_uri'),
 
+   _modelUpdated: function() {
+      var self = this;
+      var uri = self.get('uri');
+      self.set('moodData', null);
+      if (uri && self._uri != uri) {
+         self._uri = uri;
+         radiant.call('stonehearth:get_mood_datastore', uri)
+            .done(function (response) {
+               if (self.isDestroying || self.isDestroyed || self._uri != uri) {
+                  return;
+               }
+               if (self._moodTrace) {
+                  self._moodTrace.destroy();
+               }
+               self._moodTrace = new RadiantTrace(response.mood_datastore, { current_mood_buff: {} })
+                  .progress(function (data) {
+                     if (self.isDestroying || self.isDestroyed || self._uri != uri) {
+                        return;
+                     }
+                     self.set('moodData', data);
+                  })
+            });
+      }
+   }.observes('model.uri'),
+
    _updatePortrait: function() {
       if (!this.$()) {
          return;

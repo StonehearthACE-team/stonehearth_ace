@@ -27,7 +27,7 @@ function water_lib.get_water_below_cliff(land_point, pref_dir, allow_rotation)
 end
 
 function water_lib._get_water_below(air_point)
-   local ground_point = radiant.terrain.get_point_on_terrain(air_point)
+   local ground_point = radiant.terrain.get_standable_point(air_point)
    local entities_present = radiant.terrain.get_entities_at_point(ground_point)
 
    for id, entity in pairs(entities_present) do
