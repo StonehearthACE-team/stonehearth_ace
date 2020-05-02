@@ -238,7 +238,7 @@ function AceCraftOrder:_has_multiple_qualities_material_ingredient(ingredient, t
    return false
 end
 
--- override this to consider stacks for items
+-- override this to consider stacks for items and also make sure items aren't inside of workshops (because that's fuel/reserved)
 function AceCraftOrder:_has_uri_ingredients_for_item(ingredient, tracking_data)
    local data = radiant.entities.get_component_data(ingredient.uri , 'stonehearth:entity_forms')
    local lookup_key
@@ -255,18 +255,60 @@ function AceCraftOrder:_has_uri_ingredients_for_item(ingredient, tracking_data)
       return false
    end
 
-   if ingredient.min_stacks then
-      local count = 0
-      for id, item in pairs(tracking_data_for_key.items) do
-         local stacks_comp = item:get_component('stonehearth:stacks')
-         if stacks_comp then
-            count = count + stacks_comp:get_stacks()
+   local count = 0
+   for id, item in pairs(tracking_data_for_key.items) do
+      if not item:get_component('stonehearth:workshop') then
+         if ingredient.min_stacks then
+            local stacks_comp = item:get_component('stonehearth:stacks')
+            if stacks_comp then
+               count = count + stacks_comp:get_stacks()
+            end
+         else
+            count = count + 1
+         end
+
+         if count >= (ingredient.min_stacks or ingredient.count) then
+            return true
          end
       end
-      return count >= ingredient.min_stacks
    end
-   
-   return tracking_data_for_key.count >= ingredient.count
+
+   return false
+end
+
+function AceCraftOrder:_has_material_ingredients_for_item(ingredient, tracking_data)
+   local material_id = stonehearth.catalog:get_material_object(ingredient.material):get_id()
+   -- Get cached uris that match the material. Speeds up material checking tremendously.
+   local uris_matching_material = stonehearth.catalog:get_materials_to_matching_uris()[material_id]
+
+   local ingredient_count = 0
+   if uris_matching_material then
+      -- Iterate through every uri that provides this ingredient's material
+      -- and check whether we have that item in our usable items tracker
+      for uri, _ in pairs(uris_matching_material) do
+         if tracking_data:contains(uri) then
+            local data = tracking_data:get(uri)
+            for id, item in pairs(data.items) do
+               if not item:get_component('stonehearth:workshop') then
+                  if ingredient.min_stacks then
+                     local stacks_comp = item:get_component('stonehearth:stacks')
+                     if stacks_comp then
+                        ingredient_count = ingredient_count + stacks_comp:get_stacks()
+                     end
+                  else
+                     ingredient_count = ingredient_count + 1
+                  end
+         
+                  if ingredient_count >= (ingredient.min_stacks or ingredient.count) then
+                     return true
+                  end
+               end
+            end
+         end
+      end
+   end
+
+   return false
 end
 
 --[[

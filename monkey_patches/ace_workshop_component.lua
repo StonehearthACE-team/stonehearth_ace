@@ -14,10 +14,8 @@ function AceWorkshopComponent:activate()
    end
    
    self._fuel_settings = json.fuel_settings or {}
-   if self:uses_fuel() then
-      self._reserved_fuel = {}
-      self._reserved_fuel_items = {}
-   end
+   self._reserved_fuel = {}
+   self._reserved_fuel_items = {}
 
    -- if this is an auto-crafter, get rid of the show workshop command
    local crafter_component = self._entity:get_component('stonehearth:crafter')
@@ -35,35 +33,37 @@ end
 
 AceWorkshopComponent._ace_old_post_activate = WorkshopComponent.post_activate -- doesn't exist!
 function AceWorkshopComponent:post_activate()
-   local expendable_resources = self._entity:get_component('stonehearth:expendable_resources')
-   if expendable_resources then
-      local fuel_level = expendable_resources:get_value('fuel_level')
-      local reserved_fuel_level = expendable_resources:get_value('reserved_fuel_level')
-      if fuel_level and reserved_fuel_level then
-         expendable_resources:modify_value('fuel_level', reserved_fuel_level)
-         expendable_resources:set_value('reserved_fuel_level', 0)
+   if self:uses_fuel() then
+      local expendable_resources = self._entity:get_component('stonehearth:expendable_resources')
+      if expendable_resources then
+         local fuel_level = expendable_resources:get_value('fuel_level')
+         local reserved_fuel_level = expendable_resources:get_value('reserved_fuel_level')
+         if fuel_level and reserved_fuel_level then
+            expendable_resources:modify_value('fuel_level', reserved_fuel_level)
+            expendable_resources:set_value('reserved_fuel_level', 0)
+         end
       end
-   end
 
-   -- should we also listen for expendable resources changes?
-   self._storage_filter_changed_listener = radiant.events.listen(self._entity, 'stonehearth:storage:filter_changed', function(args)
-         self:_reconsider_all_item_leases()
-      end)
-   self._storage_item_added_listener = radiant.events.listen(self._entity, 'stonehearth:storage:item_added', function(args)
-         self:_acquire_item_lease(args.item)
-         self:_update_fueled()
-      end)
-   self._storage_item_removed_listener = radiant.events.listen(self._entity, 'stonehearth:storage:item_removed', function(args)
-         if args.item then
-            self:_release_item_lease(args.item)
-         end
-         if self._entity:get_component('stonehearth:storage'):is_empty() then
+      -- should we also listen for expendable resources changes?
+      self._storage_filter_changed_listener = radiant.events.listen(self._entity, 'stonehearth:storage:filter_changed', function(args)
+            self:_reconsider_all_item_leases()
+         end)
+      self._storage_item_added_listener = radiant.events.listen(self._entity, 'stonehearth:storage:item_added', function(args)
+            self:_reconsider_item_lease(args.item)
             self:_update_fueled()
-         end
-      end)
+         end)
+      self._storage_item_removed_listener = radiant.events.listen(self._entity, 'stonehearth:storage:item_removed', function(args)
+            if args.item then
+               self:_release_item_lease(args.item)
+            end
+            if self._entity:get_component('stonehearth:storage'):is_empty() then
+               self:_update_fueled()
+            end
+         end)
 
-   self:_reconsider_all_item_leases()
-   self:_update_fueled()
+      self:_reconsider_all_item_leases()
+      self:_update_fueled()
+   end
 
    if self._ace_old_post_activate then
       self:_ace_old_post_activate()
@@ -108,7 +108,7 @@ end
 function AceWorkshopComponent:_reconsider_item_lease(item)
    local storage = self._entity:get_component('stonehearth:storage')
    if storage then
-      if self._reserved_fuel_items[item:get_id()] or storage:passes(item) then
+      if radiant.entities.get_entity_data(item, 'stonehearth_ace:fuel') and (self._reserved_fuel_items[item:get_id()] or storage:passes(item)) then
          self:_acquire_item_lease(item)
       else
          self:_release_item_lease(item)
