@@ -379,7 +379,7 @@ end
 function BaseJob:add_perk_commands(args)
    if args.commands then
       local command_comp = self._sv._entity:add_component('stonehearth:commands')
-      for _, command in ipairs(args.commands) then
+      for _, command in ipairs(args.commands) do
          command_comp:add_command(command)
       end
    end
@@ -389,7 +389,7 @@ function BaseJob:remove_perk_commands(args)
    if args.commands then
       local command_comp = self._sv._entity:get_component('stonehearth:commands')
       if command_comp then
-         for _, command in ipairs(args.commands) then
+         for _, command in ipairs(args.commands) do
             command_comp:remove_command(command)
          end
       end
