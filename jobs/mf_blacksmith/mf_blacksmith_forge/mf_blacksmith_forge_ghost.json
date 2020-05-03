@@ -18,6 +18,11 @@
             "models": [
                "file(mf_blacksmith_forge.qb)"
             ]
+         },
+         "no_fuel": {
+            "models": [
+               "file(mf_blacksmith_forge_no_fuel.qb)"
+            ]
          }
       }
    },
@@ -28,7 +33,9 @@
          "description": "i18n(stonehearth:jobs.blacksmith.blacksmith_forge.blacksmith_forge_ghost.description)",
          "icon": "file(mf_blacksmith_forge.png)",
          "category": "workshops",
-         "material_tags":["stockpile_tool"]
+         "material_tags": [
+            "stockpile_tool"
+         ]
       }
    }
 }

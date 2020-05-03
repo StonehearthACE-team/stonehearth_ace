@@ -14,6 +14,11 @@
             "models": [
                "file(na_blacksmith_forge_advanced.qb)"
             ]
+         },
+         "no_fuel": {
+            "models": [
+               "file(na_blacksmith_forge_advanced_no_fuel.qb)"
+            ]
          }
       }
    },
@@ -24,7 +29,9 @@
          "description": "i18n(stonehearth_ace:jobs.blacksmith.blacksmith_forge_advanced.blacksmith_forge_advanced_ghost.description)",
          "icon": "file(na_blacksmith_forge_advanced.png)",
          "category": "workshops",
-         "material_tags":["stockpile_tool"]
+         "material_tags": [
+            "stockpile_tool"
+         ]
       }
    }
 }

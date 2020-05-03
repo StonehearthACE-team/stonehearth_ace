@@ -1,0 +1,41 @@
+{
+   "stockpile": {
+      "resources": {
+         "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.fuels)",
+         "filter": "fuels",
+         "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/fuels_general.png",
+         "categories": {
+            "charcoal": {
+               "ordinal": 1,
+               "display_name": "i18n(stonehearth_ace:entities.resources.coal.piece_of_charcoal.display_name)",
+               "icon": "/stonehearth_ace/entities/resources/coal/piece_of_charcoal/piece_of_charcoal.png",
+               "filter": "charcoal fuel"
+            },
+            "coke": {
+               "ordinal": 2,
+               "display_name": "i18n(stonehearth_ace:entities.resources.coal.slab_of_coke.display_name)",
+               "icon": "/stonehearth_ace/entities/resources/coal/slab_of_coke/slab_of_coke.png",
+               "filter": "slab_of_coke fuel"
+            },
+            "coal": {
+               "ordinal": 3,
+               "display_name": "i18n(stonehearth_ace:entities.resources.coal.lump_of_coal.display_name)",
+               "icon": "/stonehearth_ace/entities/resources/coal/lump_of_coal/lump_of_coal.png",
+               "filter": "lump_of_coal fuel"
+            },
+            "hard_coal": {
+               "ordinal": 4,
+               "display_name": "i18n(stonehearth_ace:entities.resources.coal.hunk_of_hard_coal.display_name)",
+               "icon": "/stonehearth_ace/entities/resources/coal/hunk_of_hard_coal/hunk_of_hard_coal.png",
+               "filter": "hard_coal high_fuel"
+            },
+            "everglowing_ember": {
+               "ordinal": 5,
+               "display_name": "i18n(stonehearth_ace:entities.resources.coal.everglowing_ember.display_name)",
+               "icon": "/stonehearth_ace/entities/resources/coal/everglowing_ember/everglowing_ember.png",
+               "filter": "everglowing_ember high_fuel"
+            }
+         }
+      }
+   }
+}

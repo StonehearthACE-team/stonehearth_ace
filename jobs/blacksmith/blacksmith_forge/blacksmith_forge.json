@@ -1,17 +1,6 @@
 {	
    "type": "entity",
    "components": {
-      "stonehearth:workshop": {
-         "workshop_effect": "/stonehearth_ace/data/rigs/jobs/blacksmith/blacksmith_forge/effects/work.json",
-         "fuel_settings": {
-            "uses_fuel": true,
-            "fuel_per_craft": 4,
-            "fueled_buff": "stonehearth_ace:buffs:weather:warmth_source",
-            "fuel_effect": "/stonehearth_ace/data/rigs/jobs/blacksmith/blacksmith_forge/effects/idle.json",
-            "no_fuel_effect": "stonehearth:effects:attention_effect",
-            "no_fuel_model_variant": "default"
-         }
-      },
       "mixintypes": {
 		 "destination": "override",
 		 "region_collision_shape": "override",
@@ -34,44 +23,6 @@
                "min": { "x": -2, "y": 0, "z": -2 },
                "max": { "x": 2, "y": 4, "z": 2 }
             }
-         ]
-      },
-		"sensor_list": {
-         "sensors": {
-            "warmth": {
-               "radius": 20
-            }
-         }
-      },
-		"stonehearth:expendable_resources": {
-         "resources": {
-            "fuel_level": {
-					"min": {
-                  "value": 0
-               },
-               "max": {
-                  "value": 200
-               },
-               "initial_value": 0
-            },
-            "reserved_fuel_level": {
-					"min": {
-                  "value": 0
-               },
-               "max": {
-                  "value": 200
-               },
-               "initial_value": 0
-            }
-         }
-      },
-      "stonehearth:storage": {
-         "type": "input_crate",
-         "priority": 2,
-         "capacity": 3,
-         "filter_list": "stonehearth_ace:ui:workbench_fuel:common:filters",
-         "default_filter": [
-            "common_fuel"
          ]
       }
    },

@@ -1,0 +1,35 @@
+{
+   "stockpile": {
+      "resources": {
+         "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.fuels)",
+         "filter": "fuels",
+         "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/fuels_general.png",
+         "categories": {
+            "peat": {
+               "ordinal": 1,
+               "display_name": "i18n(stonehearth_ace:entities.resources.fuel.bit_of_peat.display_name)",
+               "icon": "/stonehearth_ace/entities/resources/fuel/bit_of_peat/bit_of_peat.png",
+               "filter": "peat low_fuel"
+            },
+            "wood": {
+               "ordinal": 2,
+               "display_name": "i18n(stonehearth:ui.data.constants.wood_resource_name)",
+               "icon": "/stonehearth_ace/entities/resources/wood/wood_icon.png",
+               "filter": "wood low_fuel"
+            },
+            "firewood": {
+               "ordinal": 3,
+               "display_name": "i18n(stonehearth_ace:entities.resources.fuel.bundle_of_firewood.display_name)",
+               "icon": "/stonehearth_ace/entities/resources/fuel/bundle_of_firewood/bundle_of_firewood.png",
+               "filter": "firewood low_fuel"
+            },
+            "brown_coal": {
+               "ordinal": 4,
+               "display_name": "i18n(stonehearth_ace:entities.resources.coal.chunk_of_brown_coal.display_name)",
+               "icon": "/stonehearth_ace/entities/resources/coal/chunk_of_brown_coal/chunk_of_brown_coal.png",
+               "filter": "brown_coal low_fuel"
+            }
+         }
+      }
+   }
+}
