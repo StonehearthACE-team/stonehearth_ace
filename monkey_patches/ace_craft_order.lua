@@ -20,6 +20,8 @@ end
 
 AceCraftOrder._ace_old_activate = CraftOrder.activate
 function AceCraftOrder:activate()
+   self._inventory = stonehearth.inventory:get_inventory(self._sv.player_id)
+
    self:_ace_old_activate()
 
    if not self._sv.order_progress_by_crafter then
@@ -257,7 +259,8 @@ function AceCraftOrder:_has_uri_ingredients_for_item(ingredient, tracking_data)
 
    local count = 0
    for id, item in pairs(tracking_data_for_key.items) do
-      if not item:get_component('stonehearth:workshop') then
+      local container = self._inventory and self._inventory:container_for(item)
+      if not container or not container:get_component('stonehearth:workshop') then
          if ingredient.min_stacks then
             local stacks_comp = item:get_component('stonehearth:stacks')
             if stacks_comp then
@@ -289,7 +292,8 @@ function AceCraftOrder:_has_material_ingredients_for_item(ingredient, tracking_d
          if tracking_data:contains(uri) then
             local data = tracking_data:get(uri)
             for id, item in pairs(data.items) do
-               if not item:get_component('stonehearth:workshop') then
+               local container = self._inventory and self._inventory:container_for(item)
+               if not container or not container:get_component('stonehearth:workshop') then
                   if ingredient.min_stacks then
                      local stacks_comp = item:get_component('stonehearth:stacks')
                      if stacks_comp then

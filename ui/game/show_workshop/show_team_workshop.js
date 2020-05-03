@@ -199,7 +199,20 @@ $(top).on('stonehearthReady', function() {
             var recipes = self.get('recipes');
             radiant.each(recipes, function(_, recipeCategory) {
                radiant.each(recipeCategory.recipes, function(_, recipe) {
-                  var isWorkshopSelected = !recipe.workshop || (uri && recipe.workshop.uri == uri);
+                  var isWorkshopSelected = !recipe.workshop;
+                  if (recipe.workshop && uri) {
+                     if (recipe.workshop.uri == uri) {
+                        isWorkshopSelected = true;
+                     }
+                     else if (recipe.workshop.equivalents) {
+                        for (var i = 0; i < recipe.workshop.equivalents.length; i++) {
+                           if (recipe.workshop.equivalents[i] == uri) {
+                              isWorkshopSelected = true;
+                              break;
+                           }
+                        }
+                     }
+                  }
                   if (recipe.is_workshop_selected != isWorkshopSelected) {
                      Ember.set(recipe, 'is_workshop_selected', isWorkshopSelected);
                   }
