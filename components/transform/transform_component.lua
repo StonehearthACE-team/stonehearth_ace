@@ -83,15 +83,14 @@ end
 function TransformComponent:_create_request_listeners()
    self:_destroy_request_listeners()
    
-   if self._transform_data and self._transform_data.request_action then
-      if self._transform_data.auto_request then
-         self._added_to_world_listener = self._entity:add_component('mob'):trace_parent('transform entity added or removed')
-            :on_changed(function(parent)
-               if parent then
-                  self:request_transform(self._entity:get_player_id())
-               end
-            end)
-      end
+   local data = self:get_transform_options()
+   if data and data.request_action and data.auto_request then
+      self._added_to_world_listener = self._entity:add_component('mob'):trace_parent('transform entity added or removed')
+         :on_changed(function(parent)
+            if parent then
+               self:request_transform(self._entity:get_player_id())
+            end
+         end)
    end
 end
 
@@ -132,11 +131,12 @@ function TransformComponent:_create_transform_tasks()
    local town = stonehearth.town:get_town(self._sv._is_transformable_player_id)
 
    if town then
+      local data = self:get_transform_options()
       local ingredient
-      if self._transform_data.transform_ingredient_uri then
-         ingredient = {uri = self._transform_data.transform_ingredient_uri}
-      elseif self._transform_data.transform_ingredient_material then
-         ingredient = {material = self._transform_data.transform_ingredient_material}
+      if data.transform_ingredient_uri then
+         ingredient = {uri = data.transform_ingredient_uri}
+      elseif data.transform_ingredient_material then
+         ingredient = {material = data.transform_ingredient_material}
       end
       local args = {
          item = self._entity,
@@ -164,7 +164,8 @@ function TransformComponent:_destroy_transform_tasks()
 end
 
 function TransformComponent:_get_transform_action()
-   if self._transform_data and (self._transform_data.transform_ingredient_uri or self._transform_data.transform_ingredient_material) then
+   local data = self:get_transform_options()
+   if data and (data.transform_ingredient_uri or data.transform_ingredient_material) then
       return TRANSFORM_WITH_INGREDIENT_ACTION
    else
       return TRANSFORM_ACTION
@@ -180,10 +181,13 @@ function TransformComponent:get_transform_key()
 end
 
 function TransformComponent:get_transform_options()
-   if self._transform_data then
+   if self._compiled_options then
+      return self._compiled_options
+   elseif self._transform_data then
       local options = {}
       radiant.util.merge_into_table(options, self._transform_data)
       radiant.util.merge_into_table(options, self._sv.option_overrides)
+      self._compiled_options = options
       return options
    end
 end
@@ -191,7 +195,8 @@ end
 -- called by ai to see if working entity meets requirements
 function TransformComponent:can_transform_with(entity)
    -- check if there's a job requirement and if it's being met by the entity
-   local req_jobs = self._transform_data and self._transform_data.worker_required_job
+   local data = self:get_transform_options()
+   local req_jobs = data and data.worker_required_job
    if not req_jobs then
       return true
    end
@@ -226,6 +231,7 @@ function TransformComponent:_set_transform_option(key, overrides)
       self:add_option_overrides(overrides)
    end
 
+   self._compiled_options = nil
    self:_create_request_listeners()
    self:_set_up_commands()
 end
@@ -244,31 +250,33 @@ function TransformComponent:_set_up_commands()
 end
 
 function TransformComponent:add_option_overrides(overrides)
+   self._compiled_options = nil
    radiant.util.merge_into_table(self._sv.option_overrides, overrides)
    self.__saved_variables:mark_changed()
 end
 
 function TransformComponent:transform()
+   local transform_data = self:get_transform_options()
    local options = {
-      check_script = self._transform_data.transform_check_script,
-      transform_effect = self._transform_data.transform_effect,
-      auto_harvest = self._transform_data.auto_harvest,
-      transform_script = self._transform_data.transform_script,
-      kill_entity = self._transform_data.kill_entity,
-		model_variant = self._transform_data.model_variant,
-      destroy_entity = self._transform_data.destroy_entity,
+      check_script = transform_data.transform_check_script,
+      transform_effect = transform_data.transform_effect,
+      auto_harvest = transform_data.auto_harvest,
+      transform_script = transform_data.transform_script,
+      kill_entity = transform_data.kill_entity,
+		model_variant = transform_data.model_variant,
+      destroy_entity = transform_data.destroy_entity,
       transform_event = function(transformed_form)
          radiant.events.trigger(self._entity, 'stonehearth_ace:on_transformed', {entity = self._entity, transformed_form = transformed_form})
       end
    }
    self._transforming = true
-   local transformed = transform_lib.transform(self._entity, 'stonehearth_ace:transform', self._transform_data.transform_uri, options)
+   local transformed = transform_lib.transform(self._entity, 'stonehearth_ace:transform', transform_data.transform_uri, options)
    self._transforming = false
 
    -- specifically check for false; nil means it happened but no new entity was created to replace this one
    if transformed == false then
       -- if we failed, cancel the requested transform action, if there was one
-      if self._transform_data.request_action then
+      if transform_data.request_action then
          self._entity:add_component('stonehearth:task_tracker'):cancel_current_task(false)
       end
    end
@@ -277,7 +285,7 @@ function TransformComponent:transform()
 end
 
 function TransformComponent:request_transform(player_id)
-   local data = self._transform_data
+   local data = self:get_transform_options()
    if not data then
       return false
    end
@@ -316,7 +324,7 @@ end
 -- this function gets called directly by request_transform unless a request_action is specified
 -- if such an action is specified, this function should be called as part of that AI action
 function TransformComponent:perform_transform(use_finish_cb)
-   local data = self._transform_data
+   local data = self:get_transform_options()
    if not data then
       return false
    end
@@ -397,7 +405,7 @@ end
 ]]
 
 function TransformComponent:_place_additional_items(owner, collect_location)
-   local data = self._transform_data
+   local data = self:get_transform_options()
    if not data.additional_items then
       return {}
    end
@@ -430,8 +438,9 @@ end
 
 -- for whatever ingredient is required and auto-crafted for the transformation, so that it can be modified/canceled
 function TransformComponent:request_craft_order()
+   local data = self:get_transform_options()
    local player_id = radiant.entities.get_player_id(self._entity)
-   local ingredient = self._transform_data and self._transform_data.transform_ingredient_auto_craft and self._transform_data.transform_ingredient_uri
+   local ingredient = data and data.transform_ingredient_auto_craft and data.transform_ingredient_uri
    if ingredient and stonehearth.client_state:get_client_gameplay_setting(player_id, 'stonehearth', 'building_auto_queue_crafters', true) then
       local player_jobs = stonehearth.job:get_jobs_controller(player_id)
       local order = player_jobs:request_craft_product(ingredient, 1)

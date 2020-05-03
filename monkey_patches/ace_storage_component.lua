@@ -81,6 +81,23 @@ function AceStorageComponent:get_filter()
    return self._sv.filter or self._limited_all_filter
 end
 
+function AceStorageComponent:get_filter_key()
+   if not self._cached_filter_key then
+      local filter = self._sv.filter
+      if filter then
+         if filter.is_exact_filter then
+            self._cached_filter_key = filter.uri
+         else
+            self._cached_filter_key = table.concat(filter, '+')
+         end
+      else
+         self._cached_filter_key = 'hash_tag_no_filter'
+      end
+   end
+
+   return self._cached_filter_key
+end
+
 function AceStorageComponent:is_input_bin_highest_priority()
    return self._is_input_bin_highest_priority
 end

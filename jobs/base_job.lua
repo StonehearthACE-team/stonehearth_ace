@@ -376,6 +376,26 @@ function BaseJob:_remove_commands()
    end
 end
 
+function BaseJob:add_perk_commands(args)
+   if args.commands then
+      local command_comp = self._sv._entity:add_component('stonehearth:commands')
+      for _, command in ipairs(args.commands) then
+         command_comp:add_command(command)
+      end
+   end
+end
+
+function BaseJob:remove_perk_commands(args)
+   if args.commands then
+      local command_comp = self._sv._entity:get_component('stonehearth:commands')
+      if command_comp then
+         for _, command in ipairs(args.commands) then
+            command_comp:remove_command(command)
+         end
+      end
+   end
+end
+
 function BaseJob:allow_hunting(args)
    local command_comp = self._sv._entity:add_component('stonehearth:commands')
    local avoid_hunting = self._sv._entity:add_component('stonehearth:properties'):has_property('avoid_hunting')
