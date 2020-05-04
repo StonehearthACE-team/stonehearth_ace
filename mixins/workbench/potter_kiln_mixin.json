@@ -1,12 +1,12 @@
 {
    "components": {
       "stonehearth:workshop": {
-         "workshop_effect": "/stonehearth_ace/data/rigs/jobs/blacksmith/blacksmith_forge_advanced/effects/work.json",
+         "workshop_effect": "/stonehearth/data/rigs/jobs/potter/potter_kiln/effects/work.json",
          "fuel_settings": {
             "uses_fuel": true,
-            "fuel_per_craft": 4,
+            "fuel_per_craft": 2,
             "fueled_buff": "stonehearth_ace:buffs:weather:warmth_source",
-            "fuel_effect": "/stonehearth_ace/data/rigs/jobs/blacksmith/blacksmith_forge_advanced/effects/idle.json",
+            "fuel_effect": "/stonehearth/data/rigs/jobs/potter/potter_kiln/effects/idle.json",
             "no_fuel_effect": "stonehearth_ace:effects:requires_fuel_overlay_effect",
             "no_fuel_model_variant": "no_fuel"
          }
@@ -14,7 +14,7 @@
       "sensor_list": {
          "sensors": {
             "warmth": {
-               "radius": 22
+               "radius": 8
             }
          }
       },
@@ -42,11 +42,11 @@
       },
       "stonehearth:storage": {
          "type": "input_crate",
-         "priority": 3,
+         "priority": 2,
          "capacity": 6,
-         "filter_list": "stonehearth_ace:ui:workbench_fuel:good_grade:filters",
+         "filter_list": "stonehearth_ace:ui:workbench_fuel:common:filters",
          "default_filter": [
-            "lump_of_coal fuel"
+            "firewood common_fuel"
          ]
       }
    },

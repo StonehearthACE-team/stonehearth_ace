@@ -7,8 +7,7 @@
             "fuel_per_craft": 2,
             "fueled_buff": "stonehearth_ace:buffs:weather:warmth_source",
             "fuel_effect": "/stonehearth_ace/data/rigs/jobs/blacksmith/blacksmith_forge/effects/idle.json",
-            "no_fuel_effect": "stonehearth_ace:effects:requires_fuel_overlay_effect",
-            "no_fuel_model_variant": "default"
+            "no_fuel_effect": "stonehearth_ace:effects:requires_fuel_overlay_effect"
          }
       },
       "sensor_list": {
@@ -44,7 +43,10 @@
          "type": "input_crate",
          "priority": 2,
          "capacity": 4,
-         "filter_list": "stonehearth_ace:ui:workbench_fuel:common:filters"
+         "filter_list": "stonehearth_ace:ui:workbench_fuel:common:filters",
+         "default_filter": [
+            "charcoal common_fuel"
+         ]
       }
    },
    "entity_data": {}

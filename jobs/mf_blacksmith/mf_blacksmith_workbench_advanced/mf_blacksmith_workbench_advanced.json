@@ -1,6 +1,9 @@
 {
    "type": "entity",
-   "mixins": "file(mf_blacksmith_workbench_advanced_ghost.json)",
+   "mixins": [
+      "file(mf_blacksmith_workbench_advanced_ghost.json)",
+      "stonehearth_ace:mixins:workbench:blacksmith_workbench_advanced"
+   ],
    "components": {
       "destination": {
          "region": [
@@ -22,9 +25,6 @@
             }
          ]
       },
-      "effect_list": {
-         "default": "/stonehearth_ace/data/rigs/jobs/blacksmith/blacksmith_workbench_advanced/effects/idle.json"
-      },
       "stonehearth:workshop": {
          "job_alias": "stonehearth:jobs:blacksmith"
       },
@@ -32,18 +32,6 @@
          "ghost_form": "file(mf_blacksmith_workbench_advanced_ghost.json)",
          "iconic_form": "file(mf_blacksmith_workbench_advanced_iconic.json)",
          "placeable_on_ground": true
-      },
-      "sensor_list": {
-         "sensors": {
-            "warmth": {
-               "radius": 6
-            }
-         }
-      },
-      "stonehearth:buffs": {
-         "buffs": {
-            "stonehearth_ace:buffs:weather:warmth_source": true
-         }
       }
    },
    "entity_data": {

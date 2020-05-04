@@ -1,6 +1,9 @@
 {
    "type": "entity",
-   "mixins": "file(blacksmith_crucible_ghost.json)",
+   "mixins": [
+      "file(blacksmith_crucible_ghost.json)",
+      "stonehearth_ace:mixins:workbench:blacksmith_crucible"
+   ],
    "components": {
       "destination": {
          "region": [
@@ -22,9 +25,6 @@
             }
          ]
       },
-      "effect_list": {
-         "default": "/stonehearth_ace/data/rigs/jobs/blacksmith/blacksmith_crucible/effects/idle.json"
-      },
       "stonehearth:workshop": {
          "job_alias": "stonehearth:jobs:blacksmith",
          "workshop_effect": "/stonehearth_ace/data/rigs/jobs/blacksmith/blacksmith_crucible/effects/work.json"
@@ -33,18 +33,6 @@
          "ghost_form": "file(blacksmith_crucible_ghost.json)",
          "iconic_form": "file(blacksmith_crucible_iconic.json)",
          "placeable_on_ground": true
-      },
-      "sensor_list": {
-         "sensors": {
-            "warmth": {
-               "radius": 18
-            }
-         }
-      },
-      "stonehearth:buffs": {
-         "buffs": {
-            "stonehearth_ace:buffs:weather:warmth_source": true
-         }
       }
    },
    "entity_data": {

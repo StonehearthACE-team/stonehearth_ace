@@ -1,14 +1,14 @@
 {
    "type": "entity",
-   "mixins": "file(mf_potter_kiln_ghost.json)",
+   "mixins": [
+      "file(mf_potter_kiln_ghost.json)",
+      "stonehearth_ace:mixins:workbench:potter_kiln"
+   ],
    "components": {
       "stonehearth:entity_forms": {
          "ghost_form": "file(mf_potter_kiln_ghost.json)",
          "iconic_form": "file(mf_potter_kiln_iconic.json)",
          "placeable_on_ground": true
-      },
-      "effect_list": {
-         "default": "/stonehearth/data/rigs/jobs/potter/potter_kiln/effects/idle.json"
       },
       "mob": {
          "model_origin": { "x": 0, "y": 0, "z": 0 },

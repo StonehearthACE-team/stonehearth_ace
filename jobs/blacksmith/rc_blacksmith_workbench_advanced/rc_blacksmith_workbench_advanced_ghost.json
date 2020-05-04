@@ -17,6 +17,11 @@
             "models": [
                "file(rc_blacksmith_workbench_advanced.qb)"
             ]
+         },
+         "no_fuel": {
+            "models": [
+               "file(rc_blacksmith_workbench_advanced_no_fuel.qb)"
+            ]
          }
       }
    },
@@ -27,7 +32,9 @@
          "description": "i18n(stonehearth_ace:jobs.blacksmith.blacksmith_workbench_advanced.blacksmith_workbench_advanced_ghost.description)",
          "icon": "file(rc_blacksmith_workbench_advanced.png)",
          "category": "workshops",
-         "material_tags":["stockpile_tool"]
+         "material_tags": [
+            "stockpile_tool"
+         ]
       }
    }
 }

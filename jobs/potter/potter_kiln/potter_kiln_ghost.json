@@ -1,0 +1,24 @@
+{
+   "components": {
+		"mixintypes": {
+			"model_variants": "override"
+		},
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(potter_kiln.qb)"
+            ]
+         },
+			"no_fuel": {
+            "models": [
+               "file(potter_kiln_no_fuel.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "icon": "file(potter_kiln.png)"
+      }
+   }
+}

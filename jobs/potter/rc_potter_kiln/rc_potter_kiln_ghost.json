@@ -6,6 +6,11 @@
             "models": [
                "file(rc_potter_kiln.qb)"
             ]
+         },
+         "no_fuel": {
+            "models": [
+               "file(rc_potter_kiln_no_fuel.qb)"
+            ]
          }
       },
       "mob": {
@@ -23,7 +28,9 @@
          "description": "i18n(stonehearth:jobs.potter.potter_kiln.potter_kiln_ghost.description)",
          "icon": "file(rc_potter_kiln.png)",
          "category": "workshops",
-         "material_tags":["stockpile_tool"]
+         "material_tags": [
+            "stockpile_tool"
+         ]
       }
    }
 }

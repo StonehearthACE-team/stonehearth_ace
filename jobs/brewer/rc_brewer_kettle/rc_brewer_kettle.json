@@ -1,6 +1,9 @@
 {
    "type": "entity",
-   "mixins": "file(rc_brewer_kettle_ghost.json)",
+   "mixins": [
+      "file(rc_brewer_kettle_ghost.json)",
+      "stonehearth_ace:mixins:workbench:brewer_kettle"
+   ],
    "components": {
       "destination": {
          "region": [
