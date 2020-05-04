@@ -27,19 +27,16 @@ function FishTrapComponent:post_activate()
       self._parent_listener = self._entity:add_component('mob'):trace_parent('fish trap placed')
          :on_changed(function(parent)
             if parent then
-               self:_destroy_parent_listener()
-               self:recheck_water_entity()
-
-               if not self._entity:get_component('stonehearth:ghost_form') then
-                  self:_perform_server_non_ghost_setup()
-               end
+               self:_perform_server_setup()
             end
          end)
          :push_object_state()
    end
 end
 
-function FishTrapComponent:_perform_server_non_ghost_setup()
+function FishTrapComponent:_perform_server_setup()
+   self:_destroy_parent_listener()
+
    local biome = stonehearth.world_generation:get_biome_alias()
    local settings = radiant.shallow_copy(self._json)
    
@@ -55,11 +52,15 @@ function FishTrapComponent:_perform_server_non_ghost_setup()
       end)
    self:_update_settings_for_season()
 
-   self._transform_listener = radiant.events.listen(self._entity, 'stonehearth_ace:on_transformed', function()
+   if not self._entity:get_component('stonehearth:ghost_form') then
+      self._transform_listener = radiant.events.listen(self._entity, 'stonehearth_ace:on_transformed', function()
          self:reset_trap()
       end)
 
-   self:_ensure_trap_timer()
+      self:reset_trap()
+   end
+   
+   self:recheck_water_entity()
 end
 
 function FishTrapComponent:_update_settings_for_season()
@@ -155,6 +156,7 @@ function FishTrapComponent:reset_trap()
    self.__saved_variables:mark_changed()
 
    self:_ensure_trap_timer()
+   self:_update_description()
 end
 
 function FishTrapComponent:_update_transform_options()
@@ -163,7 +165,7 @@ function FishTrapComponent:_update_transform_options()
          additional_items_filter_script = 'stonehearth_ace:loot_table:filter_scripts:no_items_with_property_value',
          additional_items_filter_args = {
             min_water_volume = { {
-               condition = ">",
+               comparator = ">",
                value = self:_get_effective_volume()
             } }
          }
@@ -272,6 +274,7 @@ function FishTrapComponent:_recalc_effective_water_volume()
       self._conflicting_traps = 0
    end
 
+   self:_ensure_trap_timer()
    self:_update_description()
 end
 

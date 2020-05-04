@@ -283,8 +283,11 @@ function TransformComponent:transform()
    self._transforming = false
 
    -- specifically check for false; nil means it happened but no new entity was created to replace this one
-   if transformed == false then
-      -- if we failed, cancel the requested transform action, if there was one
+   -- actually, all the more reason to cancel; otherwise it'll just keep going!
+   if not transformed then
+      -- if we failed, cancel the requested transform action, if there was one, and destroy the progress
+      self:_set_transformable()
+      self:_destroy_progress()
       if transform_data.request_action then
          self._entity:add_component('stonehearth:task_tracker'):cancel_current_task(false)
       end

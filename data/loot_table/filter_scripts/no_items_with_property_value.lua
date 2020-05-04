@@ -46,7 +46,7 @@ function no_items_with_property_value.filter_entry(args, entry_data)
    return true
 end
 
-function no_items_with_property_value.filter_item(args, item_data)
+function no_items_with_property_value.filter_item(args, item_data, entry_data)
    for p, v in pairs(args) do
       if _eval_property(item_data[p], v) then
          return false
