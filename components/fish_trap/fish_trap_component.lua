@@ -160,11 +160,11 @@ end
 function FishTrapComponent:_update_transform_options()
    if self._sv.trap_tripped then
       local overrides = {
-         additional_items_filter_script = 'stonehearth_ace:loot_table:filter_scripts:no_items_with_property_value'
+         additional_items_filter_script = 'stonehearth_ace:loot_table:filter_scripts:no_items_with_property_value',
          additional_items_filter_args = {
             min_water_volume = { {
                condition = ">",
-               rule.value = self:_get_effective_volume()
+               value = self:_get_effective_volume()
             } }
          }
       }
