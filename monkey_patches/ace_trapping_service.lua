@@ -50,14 +50,18 @@ function AceTrappingService:register_fish_trap(trap, water_entity)
       self._fish_traps[water_id] = trap_data
    end
 
-   trap_data[trap:get_id()] = trap
+   local trap_id = trap:get_id()
+   trap_data[trap_id] = trap
+   self:_queue_inform_traps_of_potential_conflict(water_id, trap_id)
 end
 
 function AceTrappingService:unregister_fish_trap(trap_id, water_id)
    local trap_data = self._fish_traps and self._fish_traps[water_id]
    if trap_data then
       trap_data.traps[trap_id] = nil
-      if not next(trap_data.traps) then
+      if next(trap_data.traps) then
+         self:_queue_inform_traps_of_potential_conflict(water_id)
+      else
          self:_remove_water_entity(water_id)
       end
    end
@@ -74,6 +78,47 @@ function AceTrappingService:_remove_water_entity(water_id)
          end
       end
       self._fish_traps[water_id] = nil
+   end
+end
+
+function AceTrappingService:_queue_inform_traps_of_potential_conflict(water_id, except_trap_id)
+   if not self._queued_inform then
+      self._queued_inform = {}
+   end
+
+   local queued = self._queued_inform[water_id]
+   if queued then
+      if queued.except_trap_id ~= except_trap_id then
+         queued.except_trap_id = nil
+      end
+   else
+      self._queued_inform[water_id] = {except_trap_id = except_trap_id}
+   end
+
+   if not self._on_next_game_loop then
+      self._on_next_game_loop = radiant.on_game_loop_once('inform fish traps of potential conflicts', function()
+            local queued = self._queued_inform
+            self._queued_inform = {}
+            self._on_next_game_loop = nil
+
+            for water_id, detail in pairs(queued) do
+               local trap_data = self._fish_traps[water_id]
+               if trap_data then
+                  self:_inform_traps_of_potential_conflict(trap_data.traps, detail.except_trap_id)
+               end
+            end
+         end)
+   end
+end
+
+function AceTrappingService:_inform_traps_of_potential_conflict(traps, except_id)
+   for trap_id, trap in pairs(traps) do
+      if trap_id ~= except_id then
+         local trap_component = trap:get_component('stonehearth_ace:fish_trap')
+         if trap_component then
+            trap_component:recheck_effective_water_volume()
+         end
+      end
    end
 end
 

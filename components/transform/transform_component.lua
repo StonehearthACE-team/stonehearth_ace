@@ -132,17 +132,15 @@ function TransformComponent:_create_transform_tasks()
 
    if town then
       local data = self:get_transform_options()
-      local ingredient
-      if data.transform_ingredient_uri then
-         ingredient = {uri = data.transform_ingredient_uri}
-      elseif data.transform_ingredient_material then
-         ingredient = {material = data.transform_ingredient_material}
-      end
+      local ingredient = self:_get_transform_ingredient()
+      
       local args = {
          item = self._entity,
          ingredient = ingredient
       }
       local action = self:_get_transform_action()
+      self._sv._transform_action = action
+      self._sv._transform_ingredient = ingredient
       
       local transform_task = town:create_task_for_group(
          'stonehearth_ace:task_groups:transform',
@@ -170,6 +168,17 @@ function TransformComponent:_get_transform_action()
    else
       return TRANSFORM_ACTION
    end
+end
+
+function TransformComponent:_get_transform_ingredient()
+   local data = self:get_transform_options()
+   local ingredient
+   if data.transform_ingredient_uri then
+      ingredient = {uri = data.transform_ingredient_uri}
+   elseif data.transform_ingredient_material then
+      ingredient = {material = data.transform_ingredient_material}
+   end
+   return ingredient
 end
 
 function TransformComponent:get_progress()
@@ -284,7 +293,7 @@ function TransformComponent:transform()
    return transformed
 end
 
-function TransformComponent:request_transform(player_id)
+function TransformComponent:request_transform(player_id, ignore_duplicate_request)
    local data = self:get_transform_options()
    if not data then
       return false
@@ -299,20 +308,43 @@ function TransformComponent:request_transform(player_id)
    -- continue using the task tracker system because that handles some things nicely for us (including overlay effect)
    if data.request_action then
       local task_tracker_component = self._entity:add_component('stonehearth:task_tracker')
-      local was_requested = task_tracker_component:is_activity_requested(TRANSFORM_WITH_INGREDIENT_ACTION) or
-                            task_tracker_component:is_activity_requested(TRANSFORM_ACTION)
+
+      -- first check if this precise transform was requested; if it was, either ignore or cancel the request
+      local transform_action = self:_get_transform_action()
+      local is_duplicate
+      if transform_action == self._sv._transform_action and
+            data.request_action_overlay_effect == task_tracker_component:get_current_task_effect_name() then
+         local ingredient = self:_get_transform_ingredient()
+         if self._sv._transform_ingredient then
+            is_duplicate = ingredient and ingredient.uri == transform_ingredient_uri and ingredient.material == transform_ingredient_material
+         elseif not ingredient then
+            is_duplicate = true
+         end
+      end
+      
+      if ignore_duplicate_request and is_duplicate then
+         return true
+      end
+
+      local was_requested = task_tracker_component:is_activity_requested(TRANSFORM_ACTION) or
+            task_tracker_component:is_activity_requested(TRANSFORM_WITH_INGREDIENT_ACTION)
 
       task_tracker_component:cancel_current_task(false) -- cancel current task first and force the transform request
 
       if was_requested then
-         -- If someone had already requested to transform, just cancel the request and exit out
+         -- If someone had already requested to transform, cancel that request
          self:cancel_craft_order()
-         return self:_set_transformable(player_id, false)
+         local result = self:_set_transformable(player_id, false)
+         
+         -- if it was a duplicate request, all we did was cancel; otherwise, let's continue making the new request
+         if is_duplicate then
+            return result
+         end
       end
 
       self:request_craft_order()
       local category = 'transform'  --data.category or 
-      local success = task_tracker_component:request_task(player_id, category, self:_get_transform_action(), data.request_action_overlay_effect)
+      local success = task_tracker_component:request_task(player_id, category, transform_action, data.request_action_overlay_effect)
       return self:_set_transformable(player_id, success)
    else
       -- we only care about setting is_transformable if we're dealing with an action
@@ -411,7 +443,7 @@ function TransformComponent:_place_additional_items(owner, collect_location)
    end
    local loot_table = nil
    if data.additional_items then
-      loot_table = LootTable(data.additional_items)
+      loot_table = LootTable(data.additional_items, data.additional_items_quality, data.additional_items_filter_script, data.additional_items_filter_args)
    end
    local spawned_items
    if loot_table then
@@ -434,6 +466,8 @@ function TransformComponent:spawn_additional_items(transforming_worker, collect_
 
       end
    end
+
+   return spawned_resources
 end
 
 -- for whatever ingredient is required and auto-crafted for the transformation, so that it can be modified/canceled

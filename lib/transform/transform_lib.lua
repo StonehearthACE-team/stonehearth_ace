@@ -159,7 +159,7 @@ function transform_lib.transform(entity, transformer, into_uri, options)
 
    if options.transform_script then
       local script = radiant.mods.require(options.transform_script)
-      script.transform(entity, transformed_form, transformer)
+      script.transform(entity, transformed_form, transformer, options)
    end
 
    if options.transform_event then

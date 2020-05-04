@@ -489,6 +489,8 @@
       "commands:transform:stomp_mega_cotton_pet_bed": "file(data/commands/transform/stomp_mega_cotton_pet_bed.json)",
       "commands:trapper:place_fish_trap": "file(data/commands/place_fish_trap/place_fish_trap.json)",
       "commands:trapper:remove_fish_trap": "file(data/commands/remove_fish_trap/remove_fish_trap.json)",
+      "commands:trapper:toggle_fish_trap_capture": "file(data/commands/toggle_fish_trap_capture/toggle_fish_trap_capture.json)",
+      "commands:trapper:toggle_fish_trap_harvest": "file(data/commands/toggle_fish_trap_capture/toggle_fish_trap_harvest.json)",
       "construction:clay:water_well": "file(entities/construction/clay_water_well/clay_water_well.json)",
       "construction:clay:water_well:roofed": "file(entities/construction/clay_water_well_roofed/clay_water_well_roofed.json)",
       "construction:ladder": "file(entities/construction/ladder)",
@@ -1249,6 +1251,7 @@
       "loot_bag:pasture_grass_random": "file(data/loot_bag/pasture_grass_random.json)",
       "loot_bag:peat_mining": "file(data/loot_bag/peat_mining.json)",
       "loot_bag:shipwreck_loot": "file(data/loot_bag/shipwreck_loot.json)",
+      "loot_table:filter_scripts:no_items_with_property_value": "file(data/loot_table/filter_scripts/no_items_with_property_value.lua)",
       "mason:workbench_bone": "file(jobs/mason/mason_workbench_bone/mason_workbench_bone.json)",
       "material_map:ace": "file(data/materials/material_maps/stonehearth_ace_material_map.json)",
       "mechanical:scripts:cook_mill_powered": "file(data/mechanical/cook_mill_powered_script.lua)",
@@ -4067,6 +4070,10 @@
          "endpoint": "client"
       },
       "toggle_vine_harvest_request": {
+         "controller": "file(call_handlers/resource_call_handler.lua)",
+         "endpoint": "server"
+      },
+      "toggle_fish_trap_capture": {
          "controller": "file(call_handlers/resource_call_handler.lua)",
          "endpoint": "server"
       },

@@ -425,4 +425,13 @@ function ResourceCallHandler:toggle_vine_harvest_request(session, response, enti
    end
 end
 
+function ResourceCallHandler:toggle_fish_trap_capture(session, response, entity, enabled)
+   validator.expect_argument_types({'Entity'}, entity)
+
+   local fish_trap = entity:get_component('stonehearth_ace:fish_trap')
+   if fish_trap then
+      fish_trap:set_capture_enabled(enabled)
+   end
+end
+
 return ResourceCallHandler

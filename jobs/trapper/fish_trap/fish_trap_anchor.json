@@ -32,24 +32,103 @@
             }
          ]
       },
-      "stonehearth_ace:fish_trap": {},
+      "stonehearth_ace:fish_trap": {
+         "trap_timer": "45m+30m",
+         "min_effective_water_volume": 100,
+         "low_water_volume": 200,
+         "high_water_volume": 300,
+         "capture_loot": {
+            "entries": {
+               "optional": {
+                  "items": {
+                     "none": {
+                        "weight": 10
+                     },
+                     "silver": {
+                        "uri": "stonehearth_ace:consumables:captive:fish:silver",
+                        "weight": 1
+                     },
+                     "long": {
+                        "uri": "stonehearth_ace:consumables:captive:fish:long",
+                        "weight": 3
+                     },
+                     "dark": {
+                        "uri": "stonehearth_ace:consumables:captive:fish:dark",
+                        "weight": 3
+                     },
+                     "big": {
+                        "uri": "stonehearth_ace:consumables:captive:fish:big",
+                        "weight": 3,
+                        "min_water_volume": 200
+                     },
+                     "catfish": {
+                        "uri": "stonehearth_ace:consumables:captive:fish:catfish",
+                        "weight": 2,
+                        "min_water_volume": 200
+                     },
+                     "carp": {
+                        "uri": "stonehearth_ace:consumables:captive:fish:carp",
+                        "weight": 1,
+                        "min_water_volume": 200
+                     },
+                     "salmon": {
+                        "uri": "stonehearth_ace:consumables:captive:fish:salmon",
+                        "weight": 1,
+                        "min_water_volume": 300
+                     },
+                     "trout": {
+                        "uri": "stonehearth_ace:consumables:captive:fish:trout",
+                        "weight": 1,
+                        "min_water_volume": 300
+                     }
+                  }
+               }
+            }
+         },
+         "harvest_loot": {
+            "entries": {
+               "meat": {
+                  "num_rolls": {
+                     "min": 2,
+                     "max": 3
+                  },
+                  "items": {
+                     "meat": {
+                        "uri": "stonehearth_ace:food:fish_meat"
+                     },
+                     "trout": {
+                        "uri": "stonehearth_ace:food:fish_meat:trout",
+                        "min_water_volume": 250
+                     }
+                  }
+               },
+               "optional": {
+                  "num_rolls": {
+                     "min": 0,
+                     "max": 1
+                  },
+                  "items": {
+                     "roe": {
+                        "uri": "stonehearth_ace:food:fish_roe:fish_big_roe_basket"
+                     }
+                  }
+               }
+            }
+         }
+      },
+      "stonehearth_ace:transform": {},
       "stonehearth:commands": {
          "commands": [
-            "stonehearth_ace:commands:trapper:remove_fish_trap"
+            "stonehearth_ace:commands:trapper:remove_fish_trap",
+            "stonehearth_ace:commands:trapper:toggle_fish_trap_capture"
          ]
       }
    },
    "entity_data": {
       "stonehearth:catalog": {
-         "display_name": "i18n(stonehearth_ace:entities.construction.simple_water_well.display_name)",
-         "description": "i18n(stonehearth_ace:entities.construction.simple_water_well.description)",
-         "icon": "file(simple_water_well.png)",
-         "category": "construction",
-         "material_tags": [
-            "drink_container",
-            "water_well",
-            "construction"
-         ]
+         "display_name": "i18n(stonehearth_ace:jobs.trapper.fish_trap.display_name)",
+         "description": "i18n(stonehearth_ace:jobs.trapper.fish_trap.description)",
+         "icon": "file(fish_trap.png)"
       },
       "stonehearth:net_worth": {
          "value_in_gold": 0,
@@ -61,6 +140,17 @@
       },
       "stonehearth:appeal": {
          "appeal": -2
+      },
+      "stonehearth_ace:transform_data": {
+         "request_action": "stonehearth_ace:transform",
+         "request_action_overlay_effect": "stonehearth_ace:effects:harvest_fish_overlay_effect",
+         "transforming_worker_effect": "fiddle",
+         "transforming_worker_effect_times": 1,
+         "transform_effect": "stonehearth:effects:item_created",
+         "worker_required_job": {
+            "stonehearth:jobs:trapper": true
+         },
+         "destroy_entity": false
       }
    }
 }

@@ -77,12 +77,14 @@ function AceUnitInfoComponent:_propogate_custom_name(custom_name, custom_data)
    end
 end
 
---[[
-function UnitInfoComponent:set_description(custom_description)
-   self._sv.description = custom_description
-   self:_trigger_on_change()
+function AceUnitInfoComponent:set_description(custom_description)
+   if self._sv.description ~= custom_description then
+      self._sv.description = custom_description
+      self:_trigger_on_change()
+   end
 end
 
+--[[
 function UnitInfoComponent:set_icon(custom_icon)
    self._sv.icon = custom_icon
    self:_trigger_on_change()

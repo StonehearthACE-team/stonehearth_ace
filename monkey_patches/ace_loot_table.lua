@@ -6,8 +6,10 @@ local log = radiant.log.create_logger('loot_table')
 local LootTable = require 'stonehearth.lib.loot_table.loot_table'
 local AceLootTable = class()
 
-function AceLootTable:__init(json, quality_override)
+function AceLootTable:__init(json, quality_override, filter_script, filter_args)
    self:_clear()
+   self._filter_script = filter_script and radiant.mods.load_script(filter_script) or {}
+   self._filter_args = filter_args or {}
    self:_load_from_json(json, quality_override)
 end
 
@@ -125,66 +127,74 @@ function AceLootTable:_load_from_json(json, quality_override)
       return
    end
 
-   for name, data in pairs (json.entries) do
-      local entry = nil
+   local entry_filter_fn = self._filter_script.filter_entry
+   local item_filter_fn = self._filter_script.filter_item
+   local filter_args = self._filter_args
 
-      entry = {
-         roll_type = 'some_of',
-         num_rolls = 1,
-         items = nil
-      }
-      entry.num_rolls = self:_determine_num_rolls(data.num_rolls)
-      
-      if data.roll_type then
-         entry.roll_type = data.roll_type
-      end
-      
-      --If 'some_of' then randomly select with weigthedset
-      if entry.roll_type == 'some_of' then
-         entry.items = WeightedSet(rng)
-      --Elseif 'each_of' then select all with a table
-      elseif entry.roll_type == 'each_of' then
-         entry.items = {}
-      end
+   for name, data in pairs(json.entries) do
+      if not entry_filter_fn or entry_filter_fn(filter_args, data) then
+         local entry = nil
 
-      for items_name, items_entry in pairs(data.items) do
-         local out_item_type = 'item'
-         local loc_item_uri = nil
-         local entry_data = nil
-
-         if items_entry.type then
-            out_item_type = items_entry.type
-         end
-
-         items_entry.num_rolls = self:_determine_num_rolls(items_entry.num_rolls)
-
-         if items_entry.uri then
-            loc_item_uri = items_entry.uri
-         elseif items_name == 'none' or items_name == '' then
-            loc_item_uri = ''
-         else
-            log:error('no uri')
-         end
-
-         local quality = item_quality_lib.get_quality(quality_override)
-
-         entry_data = {
-            item_uri = loc_item_uri,
-            num_rolls = items_entry.num_rolls,
-            item_type = out_item_type,
-            quality = math.max(quality, items_entry.quality or data.quality or 1)
+         entry = {
+            roll_type = 'some_of',
+            num_rolls = 1,
+            items = nil
          }
-
+         entry.num_rolls = self:_determine_num_rolls(data.num_rolls)
+         
+         if data.roll_type then
+            entry.roll_type = data.roll_type
+         end
+         
          --If 'some_of' then randomly select with weigthedset
          if entry.roll_type == 'some_of' then
-            entry.items:add(entry_data,items_entry.weight or 1)
+            entry.items = WeightedSet(rng)
          --Elseif 'each_of' then select all with a table
          elseif entry.roll_type == 'each_of' then
-            table.insert(entry.items, entry_data)
+            entry.items = {}
          end
-      end
 
-      table.insert(self._entries, entry)
+         for items_name, items_entry in pairs(data.items) do
+            local out_item_type = 'item'
+            local loc_item_uri = nil
+            local entry_data = nil
+
+            if items_entry.type then
+               out_item_type = items_entry.type
+            end
+
+            items_entry.num_rolls = self:_determine_num_rolls(items_entry.num_rolls)
+
+            if items_entry.uri then
+               loc_item_uri = items_entry.uri
+            elseif items_name == 'none' or items_name == '' then
+               loc_item_uri = ''
+            else
+               log:error('no uri')
+            end
+
+            local quality = item_quality_lib.get_quality(quality_override)
+
+            entry_data = {
+               item_uri = loc_item_uri,
+               num_rolls = items_entry.num_rolls,
+               item_type = out_item_type,
+               quality = math.max(quality, items_entry.quality or data.quality or 1)
+            }
+
+            if not item_filter_fn or item_filter_fn(filter_args, items_entry, entry_data) then
+               --If 'some_of' then randomly select with weigthedset
+               if entry.roll_type == 'some_of' then
+                  entry.items:add(entry_data,items_entry.weight or 1)
+               --Elseif 'each_of' then select all with a table
+               elseif entry.roll_type == 'each_of' then
+                  table.insert(entry.items, entry_data)
+               end
+            end
+         end
+
+         table.insert(self._entries, entry)
+      end
    end
 end
 
@@ -280,7 +290,7 @@ function AceLootTable:roll_loot(inc_recursive_uri_storage)
          if bool_is_not_looping then
             recursive_uri_storage[key] = value
             local recursive_uris = nil
-            local bag = LootTable(radiant.deep_copy(radiant.resources.load_json(key.item_uri, true)), key.quality)
+            local bag = LootTable(radiant.deep_copy(radiant.resources.load_json(key.item_uri, true)), key.quality, self._filter_script, self._filter_args)
             recursive_uris = bag:roll_loot(recursive_uri_storage)
             
             --add the recursive_uris found back into the rest of the uris found.

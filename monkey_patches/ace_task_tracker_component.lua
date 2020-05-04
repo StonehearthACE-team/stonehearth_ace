@@ -6,6 +6,10 @@ function AceTaskTrackerComponent:get_current_task()
    return self._sv.task_activity_name
 end
 
+function AceTaskTrackerComponent:get_current_task_effect_name()
+   return self._sv._task_effect_name
+end
+
 AceTaskTrackerComponent._ace_old_request_task = TaskTrackerComponent.request_task
 function AceTaskTrackerComponent:request_task(player_id, category, task_activity_name, task_effect_name)
    local result = self:_ace_old_request_task(player_id, category, task_activity_name, task_effect_name)

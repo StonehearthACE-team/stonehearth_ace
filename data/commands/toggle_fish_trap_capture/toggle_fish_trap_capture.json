@@ -1,0 +1,14 @@
+{
+   "type": "command",
+   "name": "toggle_fish_trap_capture",
+   "display_name": "i18n(stonehearth_ace:data.commands.toggle_fish_trap_capture.display_name)",
+   "description": "i18n(stonehearth_ace:data.commands.toggle_fish_trap_capture.description)",
+   "default_enabled": true,
+   "ordinal": 99,
+   "icon": "file(toggle_fish_trap_capture.png)",
+   "action": "call",
+   "function": "stonehearth_ace:toggle_fish_trap_capture",
+   "args": [
+      true
+   ]
+}
