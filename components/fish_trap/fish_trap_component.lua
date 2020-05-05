@@ -49,6 +49,7 @@ function FishTrapComponent:_perform_server_setup()
    
    self._season_listener = radiant.events.listen(stonehearth.seasons, 'stonehearth:seasons:changed', function()
          self:_update_settings_for_season()
+         self:_recalc_effective_water_volume()
       end)
    self:_update_settings_for_season()
 
@@ -75,7 +76,6 @@ function FishTrapComponent:_update_settings_for_season()
    self._settings = settings
 
    self._min_effective_volume = settings.min_effective_water_volume or stonehearth.constants.trapping.fish_traps.MIN_EFFECTIVE_WATER_VOLUME
-   self:_recalc_effective_water_volume()
 end
 
 function FishTrapComponent:destroy()

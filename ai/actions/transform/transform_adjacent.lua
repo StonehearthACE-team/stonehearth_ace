@@ -42,6 +42,11 @@ function TransformItemAdjacent:run(ai, entity, args)
    local item = args.item
    local item_id = item:get_id()
    local transform_comp = item:get_component('stonehearth_ace:transform')
+   if not transform_comp:is_transformable() then
+      ai:abort('not transformable!')
+      return
+   end
+
    local data = transform_comp:get_transform_options()
 
    if transform_comp and data then
