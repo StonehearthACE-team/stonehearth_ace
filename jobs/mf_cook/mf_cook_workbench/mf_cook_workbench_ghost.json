@@ -4,7 +4,12 @@
       "model_variants": {
          "default": {
             "models": [
-               "file(na_cook_bench.qb)"
+               "file(mf_cook_bench.qb)"
+            ]
+         },
+         "no_fuel": {
+            "models": [
+               "file(mf_cook_bench_no_fuel.qb)"
             ]
          }
       },

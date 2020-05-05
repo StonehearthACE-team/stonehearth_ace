@@ -1,22 +1,6 @@
 {
    "type": "entity",
-   "components": {
-      "effect_list": {
-         "default": "/stonehearth_ace/data/rigs/jobs/cook/cook_oven/effects/idle.json"
-      },
-		"sensor_list": {
-         "sensors": {
-            "warmth": {
-               "radius": 6
-            }
-         }
-      },
-	   "stonehearth:buffs": {
-			"buffs": {
-				"stonehearth_ace:buffs:weather:warmth_source": true
-			}
-		}
-   },
+   "components": {},
    "entity_data": {
 	  "stonehearth:workshop": {
          "equivalents": [ "stonehearth_ace:rayyas_children:cook:oven", "stonehearth_ace:northern_alliance:cook:oven", "stonehearth_ace:mountain_folk:cook:oven" ]

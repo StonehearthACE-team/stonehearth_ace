@@ -10,6 +10,11 @@
             "models": [
                "file(na_cook_oven.qb)"
             ]
+         },
+         "no_fuel": {
+            "models": [
+               "file(na_cook_oven_no_fuel.qb)"
+            ]
          }
       }
    },
@@ -17,10 +22,12 @@
       "stonehearth:hide_child_entities_from_pathfinder": true,
       "stonehearth:catalog": {
          "display_name": "i18n(stonehearth:jobs.cook.cook_oven.cook_oven_ghost.display_name)",
-         "description": "i18n(stonehearth:jobs.cook.cook_oven.cook_oven_ghost.description)",
+         "description": "i18n(stonehearth_ace:jobs.cook.cook_oven.cook_oven_ghost.description)",
          "icon": "file(na_cook_oven.png)",
          "category": "workshops",
-         "material_tags":["stockpile_tool"]
+         "material_tags": [
+            "stockpile_tool"
+         ]
       }
    }
 }

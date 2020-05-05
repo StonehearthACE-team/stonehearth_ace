@@ -1,0 +1,54 @@
+{
+   "components": {
+      "stonehearth:workshop": {
+         "workshop_effect": "/stonehearth_ace/data/rigs/jobs/cook/cook_workbench/effects/work.json",
+         "fuel_settings": {
+            "uses_fuel": true,
+            "fuel_per_craft": 1,
+            "fueled_buff": "stonehearth_ace:buffs:weather:warmth_source",
+            "fuel_effect": "/stonehearth_ace/data/rigs/jobs/cook/cook_workbench/effects/idle.json",
+            "no_fuel_effect": "stonehearth_ace:effects:requires_fuel_overlay_effect",
+            "no_fuel_model_variant": "no_fuel"
+         }
+      },
+      "sensor_list": {
+         "sensors": {
+            "warmth": {
+               "radius": 4
+            }
+         }
+      },
+      "stonehearth:expendable_resources": {
+         "resources": {
+            "fuel_level": {
+               "min": {
+                  "value": 0
+               },
+               "max": {
+                  "value": 100
+               },
+               "initial_value": 0
+            },
+            "reserved_fuel_level": {
+               "min": {
+                  "value": 0
+               },
+               "max": {
+                  "value": 100
+               },
+               "initial_value": 0
+            }
+         }
+      },
+      "stonehearth:storage": {
+         "type": "input_crate",
+         "priority": 3,
+         "capacity": 2,
+         "filter_list": "stonehearth_ace:ui:workbench_fuel:low_grade:filters",
+         "default_filter": [
+            "firewood low_fuel"
+         ]
+      }
+   },
+   "entity_data": {}
+}

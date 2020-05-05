@@ -1,6 +1,9 @@
 {
    "type": "entity",
-   "mixins": "file(rc_cook_workbench_ghost.json)",
+   "mixins": [
+      "file(rc_cook_workbench_ghost.json)",
+      "stonehearth_ace:mixins:workbench:cook_workbench"
+   ],
    "components": {
       "stonehearth:entity_forms": {
          "ghost_form": "file(rc_cook_workbench_ghost.json)",
@@ -33,21 +36,6 @@
       },
       "render_info": {
          "scale": 0.085
-      },
-      "effect_list": {
-         "default": "/stonehearth_ace/data/rigs/jobs/cook/cook_workbench/effects/idle.json"
-      },
-      "sensor_list": {
-         "sensors": {
-            "warmth": {
-               "radius": 3
-            }
-         }
-      },
-      "stonehearth:buffs": {
-         "buffs": {
-            "stonehearth_ace:buffs:weather:warmth_source": true
-         }
       }
    },
    "entity_data": {

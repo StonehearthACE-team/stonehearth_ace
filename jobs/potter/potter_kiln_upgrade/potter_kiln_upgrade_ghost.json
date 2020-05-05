@@ -1,0 +1,24 @@
+{
+   "components": {
+		"mixintypes": {
+			"model_variants": "override"
+		},
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(potter_kiln_upgrade.qb)"
+            ]
+         },
+			"no_fuel": {
+            "models": [
+               "/rayyas_children/jobs/potter/potter_kiln_upgrade/potter_kiln_upgrade.qb"
+            ]
+         }
+      }
+   },
+	"entity_data": {
+		"stonehearth:catalog": {
+			"description": "i18n(stonehearth_ace:jobs.potter.potter_kiln_upgrade.potter_kiln_upgrade_ghost.description)"
+		}
+	}
+}

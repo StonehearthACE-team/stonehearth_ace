@@ -1,0 +1,25 @@
+{
+   "components": {
+      "mixintypes": {
+			"model_variants": "override"
+		},
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(cook_oven.qb)"
+            ]
+         },
+			"no_fuel": {
+            "models": [
+               "file(cook_oven_no_fuel.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+			"description": "i18n(stonehearth_ace:jobs.cook.cook_oven.cook_oven_ghost.description)",
+         "icon": "file(cook_oven.png)"
+      }
+   }
+}

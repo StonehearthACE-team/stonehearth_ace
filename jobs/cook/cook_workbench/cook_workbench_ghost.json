@@ -2,11 +2,27 @@
    "components": {
       "render_info": {
          "scale": 0.085
+      },
+		"mixintypes": {
+			"model_variants": "override"
+		},
+		"model_variants": {
+         "default": {
+            "models": [
+               "file(cook_bench.qb)"
+            ]
+         },
+         "no_fuel": {
+            "models": [
+               "file(cook_bench_no_fuel.qb)"
+            ]
+         }
       }
    },
    "entity_data": {
       "stonehearth:catalog": {
-         "description": "i18n(stonehearth_ace:jobs.cook.cook_workbench.cook_workbench_ghost.description)"
+         "description": "i18n(stonehearth_ace:jobs.cook.cook_workbench.cook_workbench_ghost.description)",
+			"icon": "file(cook_workbench.png)"
       }
    }
 }

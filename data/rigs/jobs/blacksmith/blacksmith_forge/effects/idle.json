@@ -61,6 +61,16 @@
          "falloff" : 5,
          "volume": 40,
          "track": "stonehearth:sounds:firepit_loop_sound"
+      },
+		"ignite_sound": {
+         "type": "sound_effect",
+         "loop": false,
+         "start_time": 0,
+         "duration": 2000,
+         "min_distance": 40,
+         "falloff": 3,
+         "volume": 60,
+         "track": "stonehearth:sounds:firepit_ignite_sound"
       }  
    }
 }
