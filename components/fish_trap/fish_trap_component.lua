@@ -22,6 +22,10 @@ function FishTrapComponent:initialize()
    self._sv._is_capture_enabled = false
 end
 
+function FishTrapComponent:create()
+   self._is_create = true
+end
+
 function FishTrapComponent:post_activate()
    if radiant.is_server then
       self._parent_listener = self._entity:add_component('mob'):trace_parent('fish trap placed')
@@ -52,16 +56,17 @@ function FishTrapComponent:_perform_server_setup()
          self:_recalc_effective_water_volume()
       end)
    self:_update_settings_for_season()
+   self:recheck_water_entity()
 
    if not self._entity:get_component('stonehearth:ghost_form') then
       self._transform_listener = radiant.events.listen(self._entity, 'stonehearth_ace:on_transformed', function()
          self:reset_trap()
       end)
 
-      self:reset_trap()
+      if self._is_create then
+         self:reset_trap()
+      end
    end
-   
-   self:recheck_water_entity()
 end
 
 function FishTrapComponent:_update_settings_for_season()
