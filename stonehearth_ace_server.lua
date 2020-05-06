@@ -27,6 +27,7 @@ local monkey_patches = {
    ace_expendable_resources_component = 'stonehearth.components.expendable_resources.expendable_resources_component',
    ace_farmer_field_component = 'stonehearth.components.farmer_field.farmer_field_component',
    ace_growing_component = 'stonehearth.components.growing.growing_component',
+   ace_projectile_component = 'stonehearth.components.projectile.projectile_component',
    ace_renewable_resource_node_component = 'stonehearth.components.renewable_resource_node.renewable_resource_node_component',
    ace_resource_node_component = 'stonehearth.components.resource_node.resource_node_component',
    ace_task_tracker_component = 'stonehearth.components.task_tracker.task_tracker_component',

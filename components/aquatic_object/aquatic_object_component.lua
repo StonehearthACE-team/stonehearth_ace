@@ -1,17 +1,15 @@
 local Point3 = _radiant.csg.Point3
 local Cube3 = _radiant.csg.Cube3
 
-local ConnectionUtils = require 'lib.connection.connection_utils'
+local ConnectionUtils = require 'stonehearth_ace.lib.connection.connection_utils'
 local log = radiant.log.create_logger('aquatic_object')
 
 local AquaticObjectComponent = class()
 
 function AquaticObjectComponent:initialize()
 	self._sv.in_the_water = nil
-	self._sv.original_y = nil
-end
-
-function AquaticObjectComponent:activate()
+   self._sv.original_y = nil
+   
    self._json = radiant.entities.get_json(self)
    if self._json then
       self._require_water_to_grow = self._json.require_water_to_grow
@@ -19,6 +17,10 @@ function AquaticObjectComponent:activate()
       self._suffocate_if_out_of_water = self._json.suffocate_if_out_of_water
       self._floating_object = self._json.floating_object
    end
+end
+
+function AquaticObjectComponent:create()
+   self._sv._floating_enabled = self._floating_object
 end
 
 function AquaticObjectComponent:post_activate()
@@ -81,7 +83,7 @@ function AquaticObjectComponent:_on_water_exists_changed(exists)
 	end
    
    -- if water goes away completely, water_surface_level may not get reported, but it should definitely suffocate
-	if self._suffocate_if_out_of_water and not exists then
+	if not exists then
 		self:suffocate_entity()
 	end
 	
@@ -95,14 +97,10 @@ function AquaticObjectComponent:_on_water_surface_level_changed(level)
 		level = self._water_signal:get_water_surface_level()
    end
 
-	if self._floating_object then
-		self:float(level)
-	end
+   self:float(level)
    
    -- if a surface level is getting reported, water exists, so this handles the case of water suddenly appearing
-	if self._suffocate_if_out_of_water then 
-		self:suffocate_entity(level)
-	end
+   self:suffocate_entity(level)
 end
 
 function AquaticObjectComponent:suffocate_entity(level)
@@ -136,8 +134,15 @@ function AquaticObjectComponent:queue_destruction()
    stonehearth_ace.water_signal:add_next_tick_callback(self._queued_destruction, self)
 end
 
+function AquaticObjectComponent:set_float_enabled(enabled)
+   self._sv._floating_enabled = enabled
+   if enabled then
+      self:float()
+   end
+end
+
 function AquaticObjectComponent:float(level)
-	if not self._floating_object then
+	if not self._floating_object or not self._sv._floating_enabled then
 		return
    end
    
@@ -151,10 +156,11 @@ function AquaticObjectComponent:float(level)
 
       if level then
          location.y = math.max(self._sv.original_y, level + vertical_offset)
+         self._entity:add_component('mob'):set_ignore_gravity(true)
       else
          location.y = self._sv.original_y
       end
-      self._entity:add_component('mob'):set_ignore_gravity(level ~= nil)
+      
       radiant.entities.move_to(self._entity, location)
    end
 end

@@ -31,9 +31,13 @@ function build_well.on_initialize(entity)
       end
 
       local options = transform_comp:get_transform_options()
+      local duration = options.transforming_effect_duration
+      if radiant.util.is_string(duration) then
+         duration = stonehearth.calendar:parse_duration(duration)
+      end
       transform_comp:add_option_overrides({
          transforming_worker_effect_times = options.transforming_worker_effect_times and options.transforming_worker_effect_times * multiplier,
-         transforming_effect_duration = options.transforming_effect_duration and options.transforming_effect_duration * multiplier
+         transforming_effect_duration = duration and duration * multiplier
       })
    end
 end

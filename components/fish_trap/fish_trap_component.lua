@@ -56,7 +56,7 @@ function FishTrapComponent:_perform_server_setup()
          self:_recalc_effective_water_volume()
       end)
    self:_update_settings_for_season()
-   self:recheck_water_entity()
+   self:recheck_water_entity(true)
 
    if not self._entity:get_component('stonehearth:ghost_form') then
       self._transform_listener = radiant.events.listen(self._entity, 'stonehearth_ace:on_transformed', function()
@@ -65,6 +65,9 @@ function FishTrapComponent:_perform_server_setup()
 
       if self._is_create then
          self:reset_trap()
+      else
+         self:_drop_trap()
+         self:_run_trip_effects()
       end
    end
 end
@@ -146,22 +149,95 @@ end
 function FishTrapComponent:_trip_trap()
    self:_destroy_trap_timer()
 
-   if self._settings.trap_tripped_effect then
-      radiant.effects.run(self._entity, self._settings.trap_tripped_effect)
-   end
    self._sv.trap_tripped = true
    self.__saved_variables:mark_changed()
 
+   self:_run_trip_effects()
    self:_update_description()
    self:_update_transform_options()
 end
 
+function FishTrapComponent:_run_trip_effects()
+   if self._sv.trap_tripped then
+      self:_stop_trip_effects()
+      if self._settings.trip_effect then
+         self._trip_effect = radiant.effects.run(self._entity, self._settings.trip_effect)
+      end
+      if self._settings.trap_tripped_effect then
+         self:_ensure_trap_entity()
+         self._trap_tripped_effect = radiant.effects.run(self._sv._trap_entity, self._settings.trap_tripped_effect)
+      end
+   end
+end
+
+function FishTrapComponent:_stop_trip_effects()
+   if self._trip_effect then
+      self._trip_effect:stop()
+      self._trip_effect = nil
+   end
+   if self._trap_tripped_effect then
+      self._trap_tripped_effect:stop()
+      self._trap_tripped_effect = nil
+   end
+end
+
 function FishTrapComponent:reset_trap()
+   self:_stop_trip_effects()
    self._sv.trap_tripped = false
    self.__saved_variables:mark_changed()
 
+   self:_drop_trap()
    self:_ensure_trap_timer()
    self:_update_description()
+end
+
+function FishTrapComponent:_ensure_trap_entity()
+   if not self._sv._trap_entity then
+      local trap = radiant.entities.create_entity(self._settings.trap_uri or 'stonehearth_ace:trapper:fish_trap', {ignore_gravity = true})
+      radiant.terrain.place_entity_at_exact_location(trap, radiant.entities.get_grid_in_front(self._entity), {force_iconic = false})
+
+      self._sv._trap_entity = trap
+   end
+end
+
+function FishTrapComponent:_drop_trap()
+   self:_ensure_trap_entity()
+
+   -- if the trap is already dropped, we don't need to do anything
+   local destination = radiant.terrain.get_standable_point(radiant.entities.get_grid_in_front(self._entity))
+   if radiant.entities.get_world_location(self._sv._trap_entity) == destination then
+      return
+   end
+
+   self._sv._trap_entity:add_component('stonehearth_ace:entity_mover')
+      :set_destinations({destination})
+      :set_movement_type(stonehearth.constants.entity_mover.movement_types.DIRECT)
+      :set_facing_type(stonehearth.constants.entity_mover.facing_types.NONE)
+      :set_speed(1)
+      :start_nonpersistent_movement()
+end
+
+function FishTrapComponent:_prep_raise_trap()
+   self:_ensure_trap_entity()
+
+   self._sv._trap_entity:add_component('stonehearth_ace:entity_mover')
+      :set_destinations({radiant.entities.get_grid_in_front(self._entity)})
+      :set_movement_type(stonehearth.constants.entity_mover.movement_types.DIRECT)
+      :set_facing_type(stonehearth.constants.entity_mover.facing_types.NONE)
+      :set_speed(2)
+end
+
+function FishTrapComponent:raise_trap(finish_cb)
+   self:_ensure_trap_entity()
+
+   self._sv._trap_entity:add_component('stonehearth_ace:entity_mover')
+      :start_nonpersistent_movement(nil, finish_cb)
+end
+
+function FishTrapComponent:_get_trap_move_time()
+   self:_ensure_trap_entity()
+
+   return self._sv._trap_entity:add_component('stonehearth_ace:entity_mover'):get_estimated_direct_time_to_next_destination()
 end
 
 function FishTrapComponent:_update_transform_options()
@@ -180,6 +256,9 @@ function FishTrapComponent:_update_transform_options()
       else
          overrides.additional_items = self._settings.harvest_loot
       end
+      self:_prep_raise_trap()
+      overrides.transforming_effect_duration = self:_get_trap_move_time()
+      overrides.start_transforming_script = 'stonehearth_ace:scripts:transform:fish_trap'
 
       local transform_comp = self._entity:add_component('stonehearth_ace:transform')
       transform_comp:add_option_overrides(overrides)
@@ -187,16 +266,16 @@ function FishTrapComponent:_update_transform_options()
    end
 end
 
-function FishTrapComponent:recheck_water_entity()
+function FishTrapComponent:recheck_water_entity(is_startup)
    local water, origin = water_lib.get_water_in_front_of_entity(self._entity)
-   self:set_water_entity(water, origin)
+   self:set_water_entity(water, origin, is_startup)
 end
 
-function FishTrapComponent:set_water_entity(water, origin)
+function FishTrapComponent:set_water_entity(water, origin, is_startup)
    local water_id = water and water:get_id()
    local prev_water_id = self._sv.water_entity and self._sv.water_entity:get_id()
 
-   if water_id ~= prev_water_id then
+   if is_startup or water_id ~= prev_water_id then
       if radiant.is_server then
          local entity_id = self._entity:get_id()
          

@@ -24,7 +24,7 @@ function transform_lib.transform(entity, transformer, into_uri, options)
 
    options = options or {}
    if options.check_script then
-      local script = radiant.mods.require(options.check_script)
+      local script = radiant.mods.load_script(options.check_script)
       if script and not script.should_transform(entity, transformer, into_uri, options) then
          return false
       end
@@ -158,7 +158,7 @@ function transform_lib.transform(entity, transformer, into_uri, options)
    end
 
    if options.transform_script then
-      local script = radiant.mods.require(options.transform_script)
+      local script = radiant.mods.load_script(options.transform_script)
       script.transform(entity, transformed_form, transformer, options)
    end
 

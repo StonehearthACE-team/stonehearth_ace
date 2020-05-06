@@ -372,13 +372,18 @@ function TransformComponent:perform_transform(use_finish_cb)
    local max_progress
    local duration
    if data.transforming_effect_duration then
-      duration = stonehearth.calendar:parse_duration(data.transforming_effect_duration, true)
-      self._sv.progress:set_max_progress(100)
-      self._sv.progress:start_time_tracking(duration / 100, 1)
+      self._sv.progress:start_time_tracking(data.transforming_effect_duration)
    end
 
    if data.transforming_effect then
       self:_run_effect(data.transforming_effect, use_finish_cb)
+   elseif data.start_transforming_script then
+      local script = radiant.mods.load_script(data.start_transforming_script)
+      script.start_transforming(self._entity, data, function()
+            if use_finish_cb then
+               self:transform()
+            end
+         end)
    elseif not data.transforming_worker_effect then
       self:transform()
    end

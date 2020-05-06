@@ -2,6 +2,8 @@ local Entity = _radiant.om.Entity
 local item_quality_lib = require 'stonehearth_ace.lib.item_quality.item_quality_lib'
 local TransformItemAdjacent = radiant.class()
 
+local log = radiant.log.create_logger('transform_adjacent')
+
 TransformItemAdjacent.name = 'transform adjacent'
 TransformItemAdjacent.does = 'stonehearth_ace:transform_adjacent'
 TransformItemAdjacent.args = {
@@ -51,7 +53,6 @@ function TransformItemAdjacent:run(ai, entity, args)
 
    if transform_comp and data then
       radiant.entities.turn_to_face(entity, item)
-      ai:unprotect_argument(item)
 
       local effect = data.transforming_worker_effect
       local times = data.transforming_worker_effect_times
@@ -71,8 +72,12 @@ function TransformItemAdjacent:run(ai, entity, args)
 
          if duration then
             -- determine how long the effect will last based on previous progress
-            local this_duration = stonehearth.calendar:parse_duration(duration, true) * (1 - progress:get_progress_percentage())
+            if radiant.util.is_string(duration) then
+               duration = stonehearth.calendar:parse_duration(duration)
+            end
+            local this_duration = duration * (1 - progress:get_progress_percentage())
 
+            log:debug('running effect %s for %s (of %s)', effect, this_duration, duration)
             ai:execute('stonehearth:run_effect_timed', { effect = effect, duration = this_duration})
          else
             progress:set_max_progress(data.transforming_worker_effect_times)
@@ -87,9 +92,11 @@ function TransformItemAdjacent:run(ai, entity, args)
             end
          end
          self._completed_work = true
+         ai:unprotect_argument(item)
          transformed_form = transform_comp:transform()
       else
          self._completed_work = true
+         ai:unprotect_argument(item)
          transformed_form = transform_comp:perform_transform(true)
       end
 

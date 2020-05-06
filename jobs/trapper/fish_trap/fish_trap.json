@@ -7,109 +7,11 @@
          "ghost_form": "file(fish_trap_ghost.json)",
          "placeable_on_ground": true,
          "placeable_on_walls": true
-      },
-      "destination": {
-         "region": [
-            {
-               "min": { "x": -1, "y": 0, "z": -1 },
-               "max": { "x": 2, "y": 3, "z": 2 }
-            }
-         ]
-      },
-      "region_collision_shape": {
-         "region_collision_type": "platform",
-         "region": [
-            {
-               "min": { "x": 0, "y": 0, "z": 0 },
-               "max": { "x": 1, "y": 2, "z": 1 }
-            }
-         ]
-      },
-      "stonehearth_ace:aquatic_object": {
-         "floating_object": {
-            "vertical_offset": -1
-         },
-         "destroy_if_out_of_water": true,
-         "water_signal_region": [
-            {
-               "min": { "x": 0, "y": 1, "z": 0 },
-               "max": { "x": 1, "y": 2, "z": 1 }
-            }
-         ]
-      },
-      "stonehearth:loot_drops": {
-         "entries": {
-            "trap": {
-               "num_rolls": {
-                  "min": 1,
-                  "max": 1
-               },
-               "items": {
-                  "trap": {
-                     "uri": "stonehearth_ace:trapper:fish_trap"
-                  }
-               }
-            }
-         }
-      },
-      "stonehearth:evolve": {},
-      "stonehearth_ace:fish_trap": {}
+      }
    },
    "entity_data": {
-      "stonehearth:evolve_data": {
-         "next_stage": {
-            "stonehearth_ace:trapper:fish_trap:empty": 1,
-            "stonehearth_ace:trapper:fish_trap:silver": 3,
-            "stonehearth_ace:trapper:fish_trap:long": 3,
-            "stonehearth_ace:trapper:fish_trap:dark": 3,
-            "stonehearth_ace:trapper:fish_trap:big": 2,
-            "stonehearth_ace:trapper:fish_trap:catfish": 1,
-            "stonehearth_ace:trapper:fish_trap:carp": 1,
-            "stonehearth_ace:trapper:fish_trap:salmon": 1,
-            "stonehearth_ace:trapper:fish_trap:trout": 1
-         },
-         "evolve_effect": "stonehearth:effects:trap_trigger",
-         "evolve_time": "12h+24h",
-         "auto_harvest": true,
-         "biomes": {
-            "stonehearth_ace:biome:highlands": {
-               "evolve_time_multiplier": 0.8
-            },
-            "stonehearth:biome:arctic": {
-               "evolve_time_multiplier": 1.5
-            },
-            "stonehearth:biome:desert": {
-               "evolve_time_multiplier": 2
-            }
-         },
-         "seasons": {
-            "spring": {
-               "evolve_time_multiplier": 1.2
-            },
-            "autumn": {
-               "evolve_time_multiplier": 1.5
-            },
-            "winter": {
-               "evolve_time_multiplier": 2.5
-            }
-         }
-      },
-      "stonehearth:net_worth": {
-         "value_in_gold": 7,
-         "rarity": "common",
-         "shop_info": {
-            "buyable": true,
-            "sellable": true,
-            "shopkeeper_level": 1,
-            "shopkeeper_type": "caravan"
-         }
-      },
       "stonehearth:appeal": {
          "appeal": -1
-      },
-      "stonehearth:item_placement_limit": {
-         "tag": "fish_trap",
-         "default": 0
       }
    }
 }

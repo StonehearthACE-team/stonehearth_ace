@@ -1,4 +1,4 @@
-local DEFAULT_INTERVAL = '5s'
+local TIMER_INTERVAL = '5s'
 local DEFAULT_PROGRESS_PER_TICK = 1
 
 local ProgressTracker = class()
@@ -44,9 +44,11 @@ function ProgressTracker:increment_progress(amount)
    self.__saved_variables:mark_changed()
 end
 
-function ProgressTracker:start_time_tracking(interval, progress_per_tick)
-   self._sv.timer_interval = interval or DEFAULT_INTERVAL
-   self._sv.progress_per_tick = progress_per_tick or DEFAULT_PROGRESS_PER_TICK
+function ProgressTracker:start_time_tracking(total_time)
+   if radiant.util.is_string(total_time) then
+      total_time = stonehearth.calendar:parse_duration(total_time)
+   end
+   self._sv.max_progress = total_time
    self.__saved_variables:mark_changed()
 
    self:_create_timer()
@@ -59,9 +61,13 @@ end
 function ProgressTracker:_create_timer()
    self:_destroy_timer()
 
-   if self._sv.timer_interval and self._sv.progress_per_tick and self._sv.progress < self._sv.max_progress then
-      self._timer = stonehearth.calendar:set_interval("update progress", self._sv.timer_interval, function()
-         self:increment_progress(self._sv.progress_per_tick)
+   if self._sv.progress < self._sv.max_progress then
+      self._sv._last_update_time = stonehearth.calendar:get_elapsed_time()
+      self._timer = stonehearth.calendar:set_interval("update progress", TIMER_INTERVAL, function()
+         local current_time = stonehearth.calendar:get_elapsed_time()
+         self:increment_progress(current_time - self._sv._last_update_time)
+         self._sv._last_update_time = current_time
+
          if self:is_finished() then
             self:_destroy_timer()
             radiant.events.trigger_async(self, 'stonehearth_ace:progress_tracker:finished')
