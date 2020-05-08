@@ -8,7 +8,6 @@ local AquaticObjectComponent = class()
 
 function AquaticObjectComponent:initialize()
 	self._sv.in_the_water = nil
-   self._sv.original_y = nil
    
    self._json = radiant.entities.get_json(self)
    if self._json then
@@ -20,7 +19,7 @@ function AquaticObjectComponent:initialize()
 end
 
 function AquaticObjectComponent:create()
-   self._sv._floating_enabled = self._floating_object
+   self._sv._floating_enabled = self._floating_object and self._floating_object.floating_enabled ~= false
 end
 
 function AquaticObjectComponent:post_activate()
@@ -137,7 +136,7 @@ end
 function AquaticObjectComponent:set_float_enabled(enabled)
    self._sv._floating_enabled = enabled
    if enabled then
-      self:float()
+      self:float(self._water_signal and self._water_signal:get_water_surface_level())
    end
 end
 
@@ -149,16 +148,13 @@ function AquaticObjectComponent:float(level)
 	local vertical_offset = self._floating_object.vertical_offset or 0
 	local location = radiant.entities.get_world_location(self._entity)
    if location then
-      if not self._sv.original_y then
-         self._sv.original_y = location.y
-         self.__saved_variables:mark_changed()
-      end
+      local lowest = radiant.terrain.get_standable_point(location).y
 
       if level then
-         location.y = math.max(self._sv.original_y, level + vertical_offset)
+         location.y = math.max(lowest, level + vertical_offset)
          self._entity:add_component('mob'):set_ignore_gravity(true)
       else
-         location.y = self._sv.original_y
+         location.y = lowest
       end
       
       radiant.entities.move_to(self._entity, location)

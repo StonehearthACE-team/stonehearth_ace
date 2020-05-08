@@ -11,9 +11,11 @@ function AceFoodDecayService:_get_decay_rate(entity, tuning, rate)
          if storage then
             local best_rate = 1
             -- check if the storage matches any materials in the decay modifiers
-            for material, modified_rate in pairs(tuning.storage_modifiers) do
-               if modified_rate < best_rate and radiant.entities.is_material(storage, material) then
-                  best_rate = modified_rate
+            if tuning.storage_modifiers then
+               for material, modified_rate in pairs(tuning.storage_modifiers) do
+                  if modified_rate < best_rate and radiant.entities.is_material(storage, material) then
+                     best_rate = modified_rate
+                  end
                end
             end
             if tuning.any_storage_modifier then

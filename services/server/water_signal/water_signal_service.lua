@@ -457,7 +457,7 @@ function WaterSignalService:_on_tick()
    for waterfall_id, waterfall in pairs(self._changed_waterfalls) do
       waterfall:reset_changed_on_tick()
       self._changed_waterfalls[waterfall_id] = nil
-      local listeners = self._waterfall_change_listeners[water_id]
+      local listeners = self._waterfall_change_listeners[waterfall_id]
       if listeners then
          local trigger_event = false
          for entity_id, callback_fn in pairs(listeners) do

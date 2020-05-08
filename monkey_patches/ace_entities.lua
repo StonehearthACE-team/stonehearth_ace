@@ -338,4 +338,28 @@ function ace_entities.get_destination_location(target, source)
    return offset + origin
 end
 
+function ace_entities.get_facing(entity)
+   if not entity or not entity:is_valid() then
+      return nil
+   end
+
+   local mob = entity:get_component('mob')
+   if not mob then
+      return nil
+   end
+
+   local rotation = mob:get_rotation()
+   if rotation.x ~= 0 or rotation.z ~= 0 then
+      -- if it's rotated on x or z, mob:get_facing() will cause a c++ assert fail!
+      -- so get the flat y rotation instead
+      rotation.x = 0
+      rotation.z = 0
+      rotation:normalize()
+      -- angle in radians = 2 * acos(q.w); multiply by 180 / pi to convert to degrees
+      return 360 * math.acos(rotation.w) / math.pi
+   else
+      return mob:get_facing()
+   end
+end
+
 return ace_entities

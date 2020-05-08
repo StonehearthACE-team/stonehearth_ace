@@ -204,8 +204,7 @@ function AceFirepitComponent:_create_residue(residue_uri, reserve)
    if entity_data then
       local offset = entity_data['drop_offset']
       if offset then
-         local facing = self._entity:get_component('mob')
-                                 :get_facing()
+         local facing = radiant.entities.get_facing(self._entity)
          local offset = Point3(offset.x, offset.y, offset.z)
          local drop_offset = offset:rotated(facing)
          local mob = residue:add_component('mob')

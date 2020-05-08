@@ -64,6 +64,10 @@ function EntityMoverComponent:set_bounds(bounds)
    return self
 end
 
+function EntityMoverComponent:get_speed()
+   return self._sv._speed
+end
+
 function EntityMoverComponent:set_speed(speed)
    self._sv._speed = speed
    return self
@@ -86,8 +90,16 @@ function EntityMoverComponent:add_destination(destination)
    return self
 end
 
-function EntityMoverComponent:hit_destination()
-   table.remove(self._sv._destinations, 1)
+function EntityMoverComponent:hit_destination(destinations)
+   local d = table.remove(destinations, 1)
+   local sv_destinations = self._sv._destinations
+   if destinations ~= sv_destinations and #sv_destinations > 0 then
+      -- if we're using a custom destinations list, check the first "real" destination to see if we need to clear it
+      local destination = self:_get_destination_point(sv_destinations[1])
+      if destination == d then
+         table.remove(sv_destinations, 1)
+      end
+   end
    -- if #self._sv._destinations < 1 then
    --    -- we hit the final destination; moving should finish now
    --    self:_finished_movement()
@@ -95,9 +107,10 @@ function EntityMoverComponent:hit_destination()
 end
 
 function EntityMoverComponent:skip_destination()
-   if #self._sv._destinations > 0 then
-      self:hit_destination()
-      self:_update_mover('destinations', self._sv._destinations)
+   local destinations = self._sv._destinations
+   if #destinations > 0 then
+      self:hit_destination(destinations)
+      self:_update_mover('destinations', destinations)
    end
 end
 
@@ -107,8 +120,8 @@ function EntityMoverComponent:set_facing_type(facing_type)
 end
 
 function EntityMoverComponent:set_movement_type(movement_type, custom_script)
-   assert(movement_type ~= stonehearth.constants.entity_mover.movement_types.CUSTOM or not custom_script,
-          'entity_mover requires a standard movement type or a custom script')
+   -- assert(movement_type == stonehearth.constants.entity_mover.movement_types.CUSTOM or not custom_script,
+   --        'entity_mover requires a standard movement type or a custom script')
 
    self._sv._movement_type = movement_type
    self._sv._custom_script = custom_script
@@ -126,6 +139,7 @@ function EntityMoverComponent:start_persistent_movement()
    self._tick_cb = nil
    self._finished_cb = nil
    self:_start_movement()
+   return self
 end
 
 function EntityMoverComponent:start_nonpersistent_movement(tick_cb, finished_cb)
@@ -135,6 +149,7 @@ function EntityMoverComponent:start_nonpersistent_movement(tick_cb, finished_cb)
    self._finished_cb = finished_cb
 
    self:_start_movement()
+   return self
 end
 
 function EntityMoverComponent:_start_movement()
@@ -165,7 +180,7 @@ function EntityMoverComponent:_setup_movement_fn()
    
    if self._sv._custom_script then
       local script = radiant.mods.load_script(self._sv._custom_script)
-      self._movement_obj = script(self._entity, self, self._sv._destinations)
+      self._movement_obj = script(self._entity, self)
       self._movement_fn = self._movement_obj.move_on_game_loop
    else
       local movement_types = stonehearth.constants.entity_mover.movement_types
@@ -173,7 +188,7 @@ function EntityMoverComponent:_setup_movement_fn()
       if self._sv._movement_type == movement_types.DIRECT then
          self._movement_fn = function()
             local move_distance = self:_get_distance_per_gameloop(self._sv._speed)
-            self:_move_directly(move_distance)
+            self:_move_directly(self._sv._destinations, move_distance)
             return #self._sv._destinations > 0
          end
       end
@@ -182,17 +197,20 @@ end
 
 function EntityMoverComponent:pause_movement()
    self._sv._is_moving = false
+   return self
 end
 
 function EntityMoverComponent:resume_movement()
    if self._gameloop_trace then
       self._sv._is_moving = true
    end
+   return self
 end
 
 function EntityMoverComponent:stop_movement()
    self:_destroy_mover()
    self._sv._is_moving = false
+   return self
 end
 
 function EntityMoverComponent:_finished_movement()
@@ -227,7 +245,7 @@ end
 -- speed in blocks/s at normal gamespeed
 function EntityMoverComponent:_get_distance_per_gameloop(speed)
    local game_speed = stonehearth.game_speed:get_game_speed()
-   local distance = speed * SECONDS_PER_GAMELOOP * game_speed
+   local distance = (speed or self._sv._speed) * SECONDS_PER_GAMELOOP * game_speed
    return distance
 end
 
@@ -248,7 +266,7 @@ function EntityMoverComponent:_get_vector_to_target(location, target)
    return self:_get_destination_point(target) - location
 end
 
-function EntityMoverComponent:_move_directly_to_destination(location, destination, max_distance)
+function EntityMoverComponent:_move_directly_to_destination(destinations, location, destination, max_distance)
    local vector = self:_get_vector_to_target(location, destination)
    local distance_to = vector:length()
    max_distance = max_distance or distance_to
@@ -258,18 +276,16 @@ function EntityMoverComponent:_move_directly_to_destination(location, destinatio
       vector:normalize()
       vector:scale(distance)
    else
-      self:hit_destination()
+      self:hit_destination(destinations)
    end
 
    return location + vector, max_distance - distance, vector
 end
 
-function EntityMoverComponent:_move_directly(move_distance)
-   local destinations = self._sv._destinations
-
+function EntityMoverComponent:_move_directly(destinations, move_distance)
    local location = self._mob:get_world_location()
    while #destinations > 0 and move_distance > 0 do
-      location, move_distance = self:_move_directly_to_destination(location, destinations[1], move_distance)
+      location, move_distance = self:_move_directly_to_destination(destinations, location, destinations[1], move_distance)
    end
 
    self:_update_facing(location)
