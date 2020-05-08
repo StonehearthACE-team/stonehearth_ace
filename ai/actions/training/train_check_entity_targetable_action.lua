@@ -31,7 +31,7 @@ local function is_entity_infront_of_target(entity, target)
    end
    -- determine if current position is infront of the target
    local mob = target:get_component('mob')
-   local facing = radiant.math.round(mob:get_facing() / 90) * 90
+   local facing = radiant.math.round(radiant.entities.get_facing(target) / 90) * 90
    local facing_vector = radiant.math.rotate_about_y_axis(-Point3.unit_z, facing):to_closest_int()
    local entity_location = radiant.entities.get_location(entity)
    local target_location = mob:get_world_grid_location()

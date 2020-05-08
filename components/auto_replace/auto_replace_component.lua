@@ -22,7 +22,7 @@ function AutoReplaceComponent:activate()
       self._parent_trace = self._entity:get_component('mob'):trace_parent('entity added or removed')
          :on_changed(function(parent_entity)
                if parent_entity then
-                  self._sv._original_rotation = self._entity:get_component('mob'):get_facing()
+                  self._sv._original_rotation = radiant.entities.get_facing(self._entity)
                   --self.__saved_variables:mark_changed()
                end
             end)
@@ -31,7 +31,7 @@ end
 
 function AutoReplaceComponent:create()
    if self._json.reset_facing then
-      self._sv._original_rotation = self._entity:get_component('mob'):get_facing()
+      self._sv._original_rotation = radiant.entities.get_facing(self._entity)
       --self.__saved_variables:mark_changed()
    end
 end
@@ -86,7 +86,7 @@ function AutoReplaceComponent:_try_replace(player_id)
             local placement_info = {
                   location = location,
                   normal = Point3(0, 1, 0),
-                  rotation = self._sv._original_rotation or self._entity:get_component('mob'):get_facing(),
+                  rotation = self._sv._original_rotation or radiant.entities.get_facing(self._entity),
                   structure = parent,
                }
             local ghost_entity = town:place_item_type(self._entity:get_uri(), nil, placement_info)

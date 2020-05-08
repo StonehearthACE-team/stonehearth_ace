@@ -42,7 +42,7 @@ local function find_training_location(entity, target)
    -- test and go closer until it's a valid location (i.e., it has line of sight; don't worry about reachability for now)
 
    local mob = target:get_component('mob')
-   local facing = radiant.math.round(mob:get_facing() / 90) * 90
+   local facing = radiant.math.round(radiant.entities.get_facing(target) / 90) * 90
    local location = mob:get_world_grid_location()
    local best_location = nil
    local rng = _radiant.math.get_default_rng()

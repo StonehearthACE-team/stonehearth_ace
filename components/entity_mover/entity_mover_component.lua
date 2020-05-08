@@ -278,8 +278,12 @@ function EntityMoverComponent:_move_directly_to_destination(destinations, locati
    else
       self:hit_destination(destinations)
    end
+   
+   local new_location = location + vector
+   self:_update_facing(new_location)
+   self._mob:move_to(new_location)
 
-   return location + vector, max_distance - distance, vector
+   return new_location, max_distance - distance, vector
 end
 
 function EntityMoverComponent:_move_directly(destinations, move_distance)
@@ -287,9 +291,6 @@ function EntityMoverComponent:_move_directly(destinations, move_distance)
    while #destinations > 0 and move_distance > 0 do
       location, move_distance = self:_move_directly_to_destination(destinations, location, destinations[1], move_distance)
    end
-
-   self:_update_facing(location)
-   self._mob:move_to(location)
 end
 
 function EntityMoverComponent:_update_facing(destination)

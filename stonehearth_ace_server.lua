@@ -43,6 +43,7 @@ local monkey_patches = {
    ace_craft_items_orchestrator = 'stonehearth.services.server.town.orchestrators.craft_items_orchestrator',
    ace_collect_ingredients_orchestrator = 'stonehearth.services.server.town.orchestrators.collect_ingredients_orchestrator',
    ace_drop_carrying_in_storage_adjacent_action = 'stonehearth.ai.actions.drop_carrying_in_storage_adjacent_action',
+   ace_drop_carrying_into_entity_adjacent_at = 'stonehearth.ai.actions.drop_carrying_into_entity_adjacent_at',
    ace_drop_crafting_ingredients = 'stonehearth.ai.actions.drop_crafting_ingredients',
    ace_put_another_restockable_item_into_backpack_action = 'stonehearth.ai.actions.put_another_restockable_item_into_backpack_action',
    ace_produce_crafted_items = 'stonehearth.ai.actions.produce_crafted_items',

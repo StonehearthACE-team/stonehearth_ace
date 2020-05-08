@@ -362,4 +362,13 @@ function ace_entities.get_facing(entity)
    end
 end
 
+-- Returns the (voxel, integer) grid location in front of the specified entity.
+function ace_entities.get_grid_in_front(entity)
+   local mob = entity:get_component('mob')
+   local facing = radiant.math.round(radiant.entities.get_facing(entity) / 90) * 90
+   local location = mob:get_world_grid_location()
+   local offset = radiant.math.rotate_about_y_axis(-Point3.unit_z, facing):to_closest_int()
+   return location + offset
+end
+
 return ace_entities

@@ -45,7 +45,7 @@ function StumpComponent:add_stump(killer_player_id)
       radiant.terrain.place_entity_at_exact_location(the_stump, location, {force_iconic = false})
 
       --turn it to correct rotation
-      local rotation = self._entity:get_component('mob'):get_facing()
+      local rotation = radiant.entities.get_facing(self._entity)
       radiant.entities.turn_to(the_stump, rotation)
 
       the_stump:remove_component("stonehearth_ace:stump")

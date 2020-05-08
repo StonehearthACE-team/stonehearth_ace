@@ -16,7 +16,7 @@ function water_lib.get_water_below_cliff(land_point, pref_dir, allow_rotation)
    -- try to find water below the cliff, starting in the preferred direction and checking all other directions if necessary and allowed
    local rot = pref_dir or 0
    for i = 0, allow_rotation and 3 or 0 do
-      local pt = Point3(0, 0, -1):rotated(rot)
+      local pt = radiant.math.rotate_about_y_axis(-Point3.unit_z, rot):to_closest_int()
       local origin = land_point + pt
       local water = water_lib._get_water_below(origin)
       if water then
