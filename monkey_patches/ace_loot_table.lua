@@ -8,7 +8,8 @@ local AceLootTable = class()
 
 function AceLootTable:__init(json, quality_override, filter_script, filter_args)
    self:_clear()
-   self._filter_script = filter_script and radiant.mods.load_script(filter_script) or {}
+   self._filter_script = filter_script
+   self._loaded_filter_script = filter_script and radiant.mods.load_script(filter_script) or {}
    self._filter_args = filter_args or {}
    self:_load_from_json(json, quality_override)
 end
@@ -127,8 +128,8 @@ function AceLootTable:_load_from_json(json, quality_override)
       return
    end
 
-   local entry_filter_fn = self._filter_script.filter_entry
-   local item_filter_fn = self._filter_script.filter_item
+   local entry_filter_fn = self._loaded_filter_script.filter_entry
+   local item_filter_fn = self._loaded_filter_script.filter_item
    local filter_args = self._filter_args
 
    for name, data in pairs(json.entries) do

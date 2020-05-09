@@ -216,7 +216,7 @@ function FishTrapComponent:_drop_trap()
    if self._sv.water_entity and self._sv.water_entity:is_valid() then
       local comp_data = radiant.entities.get_component_data(self._sv._trap_entity, 'stonehearth_ace:aquatic_object')
       local float_offset = comp_data and comp_data.floating_object and comp_data.floating_object.vertical_offset or 0
-      destination.y = self._sv.water_entity:get_component('stonehearth:water'):get_water_level() + float_offset
+      destination.y = math.max(destination.y, self._sv.water_entity:get_component('stonehearth:water'):get_water_level() + float_offset)
    end
    if radiant.entities.get_world_location(self._sv._trap_entity) == destination then
       return
@@ -226,7 +226,7 @@ function FishTrapComponent:_drop_trap()
       :set_destinations({destination})
       :set_movement_type(stonehearth.constants.entity_mover.movement_types.DIRECT)
       :set_facing_type(stonehearth.constants.entity_mover.facing_types.NONE)
-      :set_speed(1)
+      :set_speed(5)
       :start_nonpersistent_movement(nil, function()
             self._sv._trap_entity:add_component('stonehearth_ace:aquatic_object'):set_float_enabled(true)
          end)
