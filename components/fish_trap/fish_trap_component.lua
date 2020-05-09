@@ -15,6 +15,8 @@ local water_lib = require 'stonehearth_ace.lib.water.water_lib'
 
 local FishTrapComponent = class()
 
+local log = radiant.log.create_logger('fish_trap')
+
 function FishTrapComponent:initialize()
    self._json = radiant.entities.get_json(self)
    self._square_radius = self._json.square_radius or 5
@@ -201,7 +203,7 @@ end
 
 function FishTrapComponent:_ensure_trap_entity()
    if not self._sv._trap_entity then
-      local trap = radiant.entities.create_entity(self._json.trap_uri or 'stonehearth_ace:trapper:fish_trap', {ignore_gravity = true})
+      local trap = radiant.entities.create_entity(self._json.trap_uri or 'stonehearth_ace:trapper:fish_trap', {ignore_gravity = true, owner = self._entity})
       radiant.terrain.place_entity_at_exact_location(trap, radiant.entities.get_grid_in_front(self._entity), {force_iconic = false})
 
       self._sv._trap_entity = trap
@@ -290,7 +292,7 @@ end
 
 function FishTrapComponent:set_water_entity(water, origin, is_startup)
    local water_id = water and water:get_id()
-   local prev_water_id = self._sv.water_entity and self._sv.water_entity:get_id()
+   local prev_water_id = self._sv.water_entity and self._sv.water_entity:is_valid() and self._sv.water_entity:get_id()
 
    if is_startup or water_id ~= prev_water_id then
       if radiant.is_server then
@@ -325,6 +327,11 @@ end
 
 function FishTrapComponent:_update_water_region()
    if self._sv.water_entity then
+      if not self._sv.water_entity:is_valid() then
+         self._sv.water_entity = nil
+         self:recheck_water_entity()
+         return
+      end
       self._sv.water_region = water_lib.get_contiguous_water_subregion(self._sv.water_entity, self._sv.origin, self._square_radius)
    else
       self._sv.water_region = nil

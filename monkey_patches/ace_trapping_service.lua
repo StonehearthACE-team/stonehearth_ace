@@ -6,28 +6,26 @@ local rng = _radiant.math.get_default_rng()
 local TrappingService = require 'stonehearth.services.server.trapping.trapping_service'
 AceTrappingService = class()
 
-local _fish_traps_setup = false
+-- AceTrappingService._ace_old_destroy = TrappingService.__user_destroy
+-- function AceTrappingService:destroy()
+--    self:_destroy_all_listeners()
+--    self:_ace_old_destroy()
+-- end
 
-AceTrappingService._ace_old_destroy = TrappingService.__user_destroy
-function AceTrappingService:destroy()
-   self:_destroy_all_listeners()
-   self:_ace_old_destroy()
-end
+-- function AceTrappingService:_destroy_all_listeners()
+--    if self._fish_traps then
+--       for _, trap_data in pairs(self._fish_traps) do
+--          self:_destroy_predestroy_listener(trap_data)
+--       end
+--    end
+-- end
 
-function AceTrappingService:_destroy_all_listeners()
-   if self._fish_traps then
-      for _, trap_data in pairs(self._fish_traps) do
-         self:_destroy_predestroy_listener(trap_data)
-      end
-   end
-end
-
-function AceTrappingService:_destroy_predestroy_listener(trap_data)
-   if trap_data.water_predestroy_listener then
-      trap_data.water_predestroy_listener:destroy()
-      trap_data.water_predestroy_listener = nil
-   end
-end
+-- function AceTrappingService:_destroy_predestroy_listener(trap_data)
+--    if trap_data.water_predestroy_listener then
+--       trap_data.water_predestroy_listener:destroy()
+--       trap_data.water_predestroy_listener = nil
+--    end
+-- end
 
 -- register fish traps and index them by the water entity they fish from
 -- making it easy for a trap to check what other traps it might be contesting
@@ -42,16 +40,16 @@ function AceTrappingService:register_fish_trap(trap, water_entity)
       trap_data = {
          traps = {},
          water_entity = water_entity,
-         water_predestroy_listener = radiant.events.listen(water_entity, 'radiant:entity:pre_destroy', function()
-               self:_remove_water_entity(water_id)
-            end)
+         -- water_predestroy_listener = radiant.events.listen(water_entity, 'radiant:entity:pre_destroy', function()
+         --       self:_remove_water_entity(water_id)
+         --    end)
       }
 
       self._fish_traps[water_id] = trap_data
    end
 
    local trap_id = trap:get_id()
-   trap_data[trap_id] = trap
+   trap_data.traps[trap_id] = trap
    self:_queue_inform_traps_of_potential_conflict(water_id, trap_id)
 end
 
@@ -70,13 +68,13 @@ end
 function AceTrappingService:_remove_water_entity(water_id)
    local trap_data = self._fish_traps and self._fish_traps[water_id]
    if trap_data then
-      self:_destroy_predestroy_listener(trap_data)
-      for _, trap in pairs(trap_data.traps) do
-         local trap_component = trap:get_component('stonehearth_ace:fish_trap')
-         if trap_component then
-            trap_component:recheck_water_entity()
-         end
-      end
+      -- self:_destroy_predestroy_listener(trap_data)
+      -- for _, trap in pairs(trap_data.traps) do
+      --    local trap_component = trap:get_component('stonehearth_ace:fish_trap')
+      --    if trap_component then
+      --       trap_component:recheck_water_entity()
+      --    end
+      -- end
       self._fish_traps[water_id] = nil
    end
 end

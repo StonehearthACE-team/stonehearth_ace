@@ -54,6 +54,7 @@ local monkey_patches = {
    ace_client_state_service = 'stonehearth.services.server.client_state.client_state_service',
    ace_client_state = 'stonehearth.services.server.client_state.client_state',
    ace_loot_drops_component = 'stonehearth.components.loot_drops.loot_drops_component',
+   ace_landmark_lib = 'stonehearth.lib.landmark.landmark_lib',
    ace_loot_table = 'stonehearth.lib.loot_table.loot_table',
    ace_mining_zone_component = 'stonehearth.components.mining_zone.mining_zone_component',
    ace_incapacitation_component = 'stonehearth.components.incapacitation.incapacitation_component',
