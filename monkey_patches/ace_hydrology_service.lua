@@ -2,6 +2,8 @@ local csg_lib = require 'stonehearth.lib.csg.csg_lib'
 local HydrologyService = require 'stonehearth.services.server.hydrology.hydrology_service'
 local AceHydrologyService = class()
 
+local log = radiant.log.create_logger('hydrology')
+
 AceHydrologyService._ace_old__create_tick_timer = HydrologyService._create_tick_timer
 function AceHydrologyService:_create_tick_timer()
    self:_ace_old__create_tick_timer()
@@ -42,6 +44,7 @@ function HydrologyService:create_water_body_with_region(region, height, merge_ad
    local water_entity = self:_create_water_body_internal(location, boxed_region, height)
 
    if merge_adjacent then
+      log:debug('debug: merging water bodies %s with %s', radiant.util.table_tostring(water_entities), water_entity)
       for _, adjacent_water in ipairs(water_entities) do
          water_entity = self:merge_water_bodies(water_entity, adjacent_water, true)
       end
