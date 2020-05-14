@@ -1809,6 +1809,18 @@
                   "display_name": "Öffne es!",
                   "description": "Lasse jemanden dieses schöne Geschenk öffnen. Fröhliches Frostfest!"
                }
+            },
+            "fermenting_carboy_fill_vinegar": {
+               "display_name": "Stelle Essig aus Met her",
+               "description": "Befehle deinem Brauer, diesen Gärbottich mit irgendeinem Met zu befüllen. Das vorhandene Getränk verwandelt sich dann in zwei Krüge Essig! Dieser Ballon wird weiterhin Essig produzieren, bis ein neuer Befehl erteilt wird."
+            },
+            "fermenting_vat_fill_vinegar": {
+               "display_name": "Stelle Ale & Bier aus Met her",
+               "description": "Befehle deinem Brauer, diesen Gärbottich mit Ale oder Bier zu befüllen. Das vorhandene Getränk verwandelt sich dann in einen Krug Essig! Es wird weiterhin Essig produzieren, bis ein neuer Befehl erteilt wird."
+            },
+            "wine_cask_fill_vinegar": {
+               "display_name": "Stelle Essig aus Wein her",
+               "description": "Befehle deinem Brauer, diesen Gärbottich mit igeendeinem Wein zu befüllen. Das vorhandene Getränk verwandelt sich dann in drei Krüge Essig! Das Fass wird weiterhin Essig produzieren, bis ein neuer Befehl erteilt wird."
             }
          },
          "slaughter": {
@@ -3078,12 +3090,12 @@
             },
             "herbalist_cauldron_recipe": {
                "recipe_name": "Steinkessel des Kräuterarztes",
-               "description": "Wird vom Kräuterarzt zum Brauen und Zubereiten von Tränken genutzt.",
-               "flavor": "Der Flügel einer Fledermaus, das Auge eines Molchs... Warte, was?"
+               "description": "Wird vom Kräuterarzt zum Brauen und Zubereiten von einfachen Tränken genutzt.",
+               "flavor": "Feuerholz nicht mitgeliefert"
             },
-            "herbalist_cauldron_iron_recipe": {
-               "recipe_name": "Eiserner Kessel des Kräuterarztes",
-               "description": "Wird vom Kräuterarzt zum besseren Brauen und zur Zubereitung fortgeschrittener Tränke verwendet.",
+            "herbalist_metal_cauldron_recipe": {
+               "recipe_name": "Metallkessel des Kräuterarztes",
+               "description": "Wird vom Kräuterarzt zum Brauen und zur Zubereitung verbesserter Tränke verwendet.",
                "flavor": "Der Flügel einer Fledermaus, das Auge eines Molchs... Warte, was?"
             },
             "hearth_healing_tonic_recipe": {
@@ -3169,11 +3181,25 @@
          "herbalist_bee_skep_empty": {
             "display_name": "Leerer Bienenstock",
             "description": "Dieser Bienenstock ist leer und muss mit gefangenen Bienen bevölkert werden."
+         },
+         "herbalist_metal_cauldron": {
+            "display_name": "Metallkessel des Kräuterarztes",
+            "description": "Wird zum Brauen verbesserter Tränke verwendet. Benötigt jeden gewöhnlichen Brennstoff."
          }
       },
       "engineer": {
          "recipes": {
             "mechanisms_name": "Maschinen & Mechanismen",
+            "refrigerator_small_recipe": {
+               "recipe_name": "Kleiner Kühlschrank",
+               "description": "Bewahrt bis zu 16 Gegenstände für eine sehr lange Zeit auf und verhindert, dass sie verderben.",
+               "flavor": "Schick!"
+            },
+            "refrigerator_recipe": {
+               "recipe_name": "Kühlschrank",
+               "description": "Bewahrt bis zu 48 Gegenstände für eine sehr lange Zeit auf und verhindert, dass sie verderben.",
+               "flavor": "Nichts geht über den Geschmack eines 1 Jahre alten Brotes"
+            },
             "bronze_crossbow_recipe": {
                "recipe_name": "Bronzearmbrust",
                "description": "Eine starke Fernkampfwaffe, die langsam aber effizient ist, um feindliche Rüstungen zu knacken."
@@ -3233,7 +3259,8 @@
             },
             "bronze_gear_recipe": {
                "flavor": "Zum Glück hat es Zähne, die nicht geputzt werden müssen"
-            }
+            },
+            "storage_name": "Lager"
          },
          "engineer_description": {
             "description": "Der Ingenieur ist ein Meister der Erstellen von Maschinen und Verteidigungsanlagen, der Reparatur von Einrichtungen und des Entwerfens von Mechanismen, die andere Berufe verbessern können."
@@ -3529,6 +3556,11 @@
                "description": "Lagert bis zu 24 Gegenstände einer bestimmten Art.",
                "flavor": "Kann eine breite Auswahl von Flüssigkeiten und Trockengütern aufnehmen"
             },
+            "cold_storage_box_recipe": {
+               "recipe_name": "Kühle Box",
+               "description": "Bewahrt bis zu 20 Gegenstände vor dem Verderben. Sie Verderben nicht so schnell wie wenn sie draußen liegen.",
+               "flavor": "Der kühle Hauch von Eisblumen kann die Dinge länger frisch halten!"
+            },
             "clay_water_well_recipe": {
                "recipe_name": "Brunnenteile aus Ton",
                "description": "Stelle die Teile für die Aufwertung eines einfachen Brunnens zu einem schönen, besser aussehenden Tonbrunnen her.",
@@ -3540,7 +3572,7 @@
                "flavor": "Gut gemacht!"
             },
             "clay_stool_recipe": {
-               "recipe_name": "Clay Stool",
+               "recipe_name": "Hocker aus Ton",
                "description": "Eine Alternative zu Stühlen.",
                "flavor": "Könnte etwas robuster sein..."
             },
@@ -3951,6 +3983,11 @@
                "recipe_name": "Kleiner Steintank",
                "description": "Lagert bis zu 6 Gegenstände einer bestimmtem Art.",
                "flavor": "Kann eine breite Auswahl von Flüssigkeiten und Trockengütern aufnhemen"
+            },
+            "cold_storage_cabinet_recipe": {
+               "recipe_name": "Kühler Schrank",
+               "description": "Bewahrt bis zu 32 Gegenstände vor dem Verderben. Sie verderben nicht so schnell, wie wenn sie draußen liegen.",
+               "flavor": "Der kühle Hauch von Eisblumen kann die Dinge länger frisch halten!"
             },
             "stone_water_well_recipe": {
                "recipe_name": "Brunnenteile aus Stein",
@@ -4462,8 +4499,8 @@
             },
             "curdling_mixture_recipe": {
                "recipe_name": "Gerinnungsmischungen",
-               "description": "Eine Fermentationsmischung aus Milch und einigen Zusatzstoffen. Innerhalb eines Käsebottich kann daraus Käse hergestellt werden!",
-               "flavor": "Du möchtest wahrscheinlich nicht wissen, was da sonst noch alles rein kommt..."
+               "description": "Eine Fermentationsmischung aus Milch und einigen anderen Zusatzstoffen. Innerhalb eines Käsebottich kann daraus Käse hergestellt werden!",
+               "flavor": "Essig kann vom Brauer zur Verfügung gestellt werden."
             },
             "cereals_corn_recipe": {
                "recipe_name": "Eine Schüssel mit Getreideflocken",
@@ -5466,7 +5503,7 @@
             },
             "brewer_fermenting_carboy_recipe": {
                "recipe_name": "Gärballon",
-               "description": "Der Brauer kann dies zur Herstellung von Met oder fruchtigem Met aus verschiedenen Arten von ungegorenem Met verwenden.",
+               "description": "Der Brauer kann dies zur Herstellung von Met oder fruchtigem Met aus ungegorenem Met und Essig aus fertigem Met oder Wein verwenden.",
                "flavor": "Met wird von vielen geschätzt, aber es macht Hearthlinge beschwipst"
             },
             "gruit_recipe": {
@@ -5642,7 +5679,7 @@
          },
          "brewer_fermenting_carboy_empty": {
             "display_name": "Leerer Gärballon",
-            "description": "Ein Keramikgefäß, das vom Brauer für die Gärung von Met verwendet wird."
+            "description": "Ein Keramikgefäß, das vom Brauer für die Gärung von Met und Essig verwendet wird."
          },
          "brewer_fermenting_carboy_mead": {
             "display_name": "Gärballon",
@@ -5652,6 +5689,10 @@
             "display_name": "Gärballon",
             "description": "Der fruchtige Met ist fertig und kann nun in Krüge abgefüllt werden!"
          },
+         "brewer_fermenting_carboy_vinegar": {
+            "display_name": "Gärballon",
+            "description": "Der Essig ist fertig und kann nun in Krüge gefüllt werden!"
+         },
          "brewer_fermenting_carboy_unfermented_mead": {
             "display_name": "Gärballon",
             "description": "Der Met sprudelt und ist warm! Es ist noch nicht fertig..."
@@ -5659,6 +5700,10 @@
          "brewer_fermenting_carboy_unfermented_mead_fruit": {
             "display_name": "Gärballon",
             "description": "Die Früchte gären mit all ihren Aromen! Es ist noch nicht fertig..."
+         },
+         "brewer_fermenting_carboy_unfermented_vinegar": {
+            "display_name": "Gärballon",
+            "description": "Das Getränk durchläuft eine weitere Gärung! Es ist noch nicht fertig..."
          },
          "brewer_kettle": {
             "display_name": "Braukessel",
@@ -5675,6 +5720,14 @@
          "brewer_wine_cask_empty": {
             "display_name": "Leeres Weinfass",
             "description": "Ein spezielles Fass, das vom Brauer für die Reifung von Weine verwendet wird."
+         },
+         "brewer_fermenting_vat_unfermented_vinegar": {
+            "display_name": "Gärbottich",
+            "description": "Das Getränk gärt wieder und wird sich bald in Essig verwandeln!"
+         },
+         "brewer_fermenting_vat_vinegar": {
+            "display_name": "Gärbottich",
+            "description": "Der Essig ist fertig! Jetzt kann er in einen Krug gefüllt werden!"
          }
       }
    },
@@ -5793,6 +5846,10 @@
          "hearth_tonic": {
             "display_name": "Leichtes Herzknospen-Elixier",
             "description": "Verstärkt vorübergehend Muskeln, Mut und Bedrohung. heilt langsam mit der Zeit."
+         },
+         "cold_tonic": {
+            "display_name": "Erfrischendes Elixier",
+            "description": "Schützt vor heißem Wetter"
          }
       },
       "construction": {
@@ -7674,11 +7731,14 @@
             "seed": {
                "moonbell_plant_seed_ghost": {
                   "display_name": "Mondglocken-Samen",
-                  "description": "Einmal gepflanzt, wird es zu Heilkräutern wachsen"
+                  "description": "Es soll wachsen, bis es zu glühen beginnt und blaue bittere Kräuter liefert."
                },
                "moonbell_plant_sprout": {
                   "display_name": "Mondglocken Sprössling",
                   "description": "Braucht nur etwas Zeit und Sorgfalt."
+               },
+               "moonbell_plant_seed": {
+                  "description": "Einmal gepflanzt, wird sie blaue bittere Kräuter liefern."
                }
             },
             "stem": {
@@ -7698,12 +7758,16 @@
             "unripe_description": "Diese Pflanze wurde geerntet und ist noch nicht nachgewachsen",
             "seed": {
                "marblesprout_plant_seed_ghost": {
-                  "display_name": "Wilde Marmorsprossen-Samen",
-                  "description": "Einmal gepflanzt, wird es zu Marmorsprossen wachsen"
+                  "display_name": "Marmorsprossen-Samen",
+                  "description": "Einmal gepflanzt, wird es zu weiße bittere Kräuter liefern."
                },
                "marblesprout_plant_sprout": {
                   "display_name": "Wilder Marmorsprossen Sprössling",
                   "description": "Braucht nur etwas Zeit und Sorgfalt."
+               },
+               "marblesprout_plant_seed": {
+                  "description": "Einmal gepflanzt, wird es zu weiße bittere Kräuter liefern.",
+                  "display_name": "Marmorsprossen-Samen"
                }
             },
             "stem": {
@@ -7730,7 +7794,11 @@
             "seed": {
                "cherry_bush_plant_seed_ghost": {
                   "display_name": "Kirschbusch-Samen",
-                  "description": "Kann gepflanzt werden, um einen Strauch mit köstlichen Kirschpflaumen anzubauen."
+                  "description": "Wird schmackhafte Früchte liefern, wenn es wächst."
+               },
+               "cherry_bush_plant_seed": {
+                  "description": "Kann gepflanzt werden, um einen Strauch mit köstlichen Kirschpflaumen wachsen zu lassen.",
+                  "display_name": "Kirschbusch-Samen"
                }
             },
             "sprout": {
@@ -7779,6 +7847,10 @@
             "cotton_plant_maturing": {
                "display_name": "Reifende Baumwolle",
                "description": "Die Baumwoll-Knospen haben begonnen zu reifen und sollten bald fertig sein!"
+            },
+            "cotton_plant_seed_ghost": {
+               "display_name": "Baumwoll-Samnsaatgut",
+               "description": "Wird aufblühen und dann Fasern liefern, wenn sie verwelken."
             }
          },
          "water_lily_white": {
@@ -7840,7 +7912,7 @@
             "description": "Er ist fast ausgewachsen!"
          },
          "dwarfsbeard_seed": {
-            "display_name": "Zwergenbart",
+            "display_name": "Zwergenbart-Samen",
             "description": "Kann gepflanzt werden, um eine raue Faser zu züchten, die auch als Stroh verwendet werden können."
          },
          "dwarfsbeard_sprout": {
@@ -8170,6 +8242,10 @@
                   "description": "Ein gewöhnliches Kraut aus den Wäldern. Kann gepflanzt werden."
                }
             }
+         },
+         "dwarfsbeard_seed_ghost": {
+            "display_name": "Zwergenbart-Samen",
+            "description": "Wächst zu einem öligen Strauch heran, der Fasern und Stroh liefert."
          }
       },
       "decoration": {
@@ -8894,7 +8970,11 @@
          },
          "steak": {
             "display_name": "Rohes Steak",
-            "description": "Ein hochwertiges Stück rohes Fleisch."
+            "description": "Ein hochwertiges Stück rohes Fleisch.",
+            "rotten": {
+               "display_name": "Verdorbenes Steak",
+               "description": "Einst prächtig, jetzt stinkend... Hat keinen Nutzen mehr."
+            }
          },
          "roast_steak": {
             "roast_steak": {
@@ -9342,7 +9422,7 @@
             }
          },
          "cooking_oil": {
-            "display_name": "Speiseöl",
+            "display_name": "Krug mit Speiseöl",
             "description": "Aus Gemüse extrahiert. Kann auch als Kochfett verwendet werden."
          },
          "fish_fingers": {
@@ -9584,6 +9664,16 @@
             "plum_serving": {
                "display_name": "Pflaumen"
             }
+         },
+         "prepared_food": {
+            "rotten": {
+               "display_name": "Verdorbenes zubereitetes Essen",
+               "description": "Oh nein... Was für eine Verschwendung!"
+            }
+         },
+         "vinegar": {
+            "display_name": "Krug mit Essig",
+            "description": "Riecht stark und schmeckt sehr sauer. Nützlich zum Kochen und sogar für bestimmte Medikamente."
          }
       },
       "terrain": {
@@ -10967,6 +11057,22 @@
          "output_tun_clay": {
             "description": "Temporäres Lager für 32 Gegenstände, die Tonne kann verschiedene Gegenstände aufnehmen, solange sie von der gleichen Kategorie sind.",
             "display_name": "Produktionstonne aus Ton"
+         },
+         "cold_storage_cabinet": {
+            "display_name": "Kühler Schrank",
+            "description": "Bewahrt bis zu 32 Gegenstände etwas länger als gewöhnlich vor dem Verderben."
+         },
+         "cold_storage_box": {
+            "display_name": "Kühle Box",
+            "description": "Bewahrt bis zu 20 Gegenstände etwas länger als gewöhnlich vor dem Verderben."
+         },
+         "refrigerator": {
+            "display_name": "Kühlschrank",
+            "description": "Hält bis zu 48 Gegenstände wirklich lange frisch."
+         },
+         "refrigerator_small": {
+            "display_name": "Kleiner Kühlschrank",
+            "description": "Hält bis zu 16 Gegenstände wirklich lange frisch."
          }
       },
       "tools": {
@@ -11988,6 +12094,9 @@
          "seed": {
             "moonbell_plant_seed_ghost": {
                "display_name": "Mondglocken-Samen"
+            },
+            "moonbell_plant_seed": {
+               "display_name": "Mondglocken-Samen"
             }
          }
       }
@@ -12307,7 +12416,14 @@
                   "tooltip_raw_food_animal_goods": "Rohe Tierprodukte",
                   "tooltip_raw_food_nuts": "Rohe Nüsse",
                   "tooltip_serving_vessels": "Serviergefäße für Getränke",
-                  "tooltip_bitter_herbs": "Bittere Kräuter"
+                  "tooltip_bitter_herbs": "Bittere Kräuter",
+                  "dresser": "Sonstiges",
+                  "tooltip_field_work_outfit": "Bauern-Outfits und Hüte",
+                  "tooltip_crafter_outfit": "Handwerker-Outfits & Hüte",
+                  "tooltip_job_tool": "Job-Werkzeuge",
+                  "tooltip_worker_outfit": "Arbeiter-Outfits & Hüte",
+                  "tooltip_worker_tools": "Arbeiter-Werkzeuge"
+		  "tooltip_backpack": "Arbeiter-Rucksäcke"
                }
             },
             "pasture": {
@@ -12861,6 +12977,9 @@
             "keg": {
                "description": "Gibt es schon seit langem und ist schon etwas abgestanden."
             }
+         },
+         "decay_brewing_ingredient": {
+            "description": "Es wird in einigen Tagen verderben, muss bald verarbeitet werden!"
          }
       }
    }
