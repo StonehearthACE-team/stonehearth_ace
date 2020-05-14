@@ -1,7 +1,21 @@
 {
+	"mixintypes": {
+      "type": "remove"
+   },
    "entity_data": {
       "stonehearth:catalog": {
          "material_tags": ["meat_ingredient"]
+      },
+		"stonehearth:food_decay": {
+			"initial_decay": {
+            "min": 600,
+            "max": 720
+         },
+			"any_storage_modifier": 0.7,
+         "storage_modifiers": {
+            "freezer": 0.2,
+            "cooler": 0.7
+         }
       }
    }
 }

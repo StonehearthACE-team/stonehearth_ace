@@ -3,8 +3,15 @@
    "entity_data": {
       "stonehearth:food_decay": {
          "initial_decay": {
-            "min": 3360,
-            "max": 4800
+            "min": 840,
+            "max": 960
+         },
+         "decay_stages": {
+            "decay_1": {
+               "trigger_decay_value": 240,
+               "model_variant": "decay_1",
+               "description": "i18n(stonehearth_ace:drink.decay.decay_1.keg.description)"
+            }
          },
          "rotten_entity_alias": "stonehearth_ace:drink:rotten:jug"
       }

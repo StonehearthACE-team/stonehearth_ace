@@ -1,0 +1,90 @@
+{
+   "mixins": "stonehearth_ace:ui:all_input:filters",
+   "stockpile": {
+      "mixintypes": {
+         "resources": "remove",
+         "fuels": "remove",
+         "ore": "remove",
+         "ingots": "remove",
+         "animal_parts": "remove",
+         "plants": "remove",
+         "cloth": "remove",
+         "fertilizers": "remove",
+         "brewing_ingredients": "remove",
+         "animal_food": "remove",
+         "dry_goods": "remove",
+         "potions": "remove"
+      },
+      "raw_foods": {
+         "ordinal": 1,
+         "categories": {
+            "mixintypes": {
+               "any_fruit": "remove",
+               "any_fungi": "remove",
+               "any_nuts": "remove",
+               "raw_vegetables": "remove"
+            }
+         }
+      },
+      "raw_drinks": {
+         "ordinal": 2
+      },
+      "cooked_food": {
+         "ordinal": 3
+      },
+      "prepared_drinks": {
+         "ordinal": 4,
+         "categories": {
+            "mixintypes": {
+               "tea": "remove",
+               "tea_fancy": "remove",
+               "tea_amberstone": "remove",
+               "tea_desert": "remove"
+            }
+         }
+      },
+      "cooking_ingredients": {
+         "ordinal": 5,
+         "categories": {
+            "mixintypes": {
+               "cooking_ingredients": "remove",
+               "any_flour": "remove",
+               "corn_meal": "remove",
+               "flour": "remove",
+               "rice_flour": "remove",
+               "raw_rice": "remove",
+               "nut_flour": "remove",
+               "sugar": "remove",
+               "any_raw_meat": "remove",
+               "wheat": "remove",
+               "any_dough": "remove",
+               "dough": "remove",
+               "batter": "remove",
+               "honey_wild": "remove",
+               "honey": "remove",
+               "dough_sweet": "remove",
+               "batter_sweet": "remove",
+               "any_grease_oil": "remove",
+               "butter": "remove",
+               "cooking_oil": "remove",
+               "vinegar": "remove",
+               "any_fish_meat": "remove"
+            }
+         }
+      },
+      "fluids": {
+         "ordinal": 6,
+         "categories": {
+            "mixintypes": {
+               "cooking_oil": "remove",
+               "vinegar": "remove",
+               "butter": "remove",
+               "whey_butter": "remove",
+               "bog_butter": "remove",
+               "honey_wild": "remove",
+               "honey": "remove"
+            }
+         }
+      }
+   }
+}

@@ -1,0 +1,65 @@
+{
+   "mixins": "stonehearth:mixins:boulder",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(medium_marble_boulder_1.qb)"
+            ]
+         }
+      },
+      "stonehearth:resource_node": {
+         "resource": "stonehearth_ace:resources:stone:marble_stone",
+         "durability": 4
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0, "y": 0, "z": 0 },
+         "align_to_grid": [
+            "x",
+            "z"
+         ]
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 1, "y": 1, "z": 1 }
+            }
+         ]
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 1, "y": 2, "z": 1 }
+            }
+         ]
+      },
+      "stonehearth_ace:transform": {}
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.boulders.marble_boulder.medium.display_name)",
+         "description": "i18n(stonehearth_ace:entities.boulders.marble_boulder.medium.description)"
+      },
+      "stonehearth:appeal": {
+         "appeal": 3
+      },
+      "stonehearth_ace:transform_data": {
+         "transform_uri": "stonehearth_ace:boulder:block_marble:medium",
+         "command": "stonehearth_ace:commands:transform:sculpt_block",
+         "request_action": "stonehearth_ace:transform",
+         "request_action_overlay_effect": "stonehearth_ace:effects:transform_mason_overlay_effect",
+         "transforming_worker_effect": "mine",
+         "transforming_worker_effect_times": 12,
+         "transform_effect": "stonehearth:effects:poof_effect",
+         "worker_required_job": {
+            "stonehearth:jobs:worker": true,
+            "stonehearth:jobs:blacksmith": true,
+            "stonehearth:jobs:mason": true
+         }
+      }
+   }
+}

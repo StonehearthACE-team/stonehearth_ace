@@ -1,0 +1,34 @@
+{
+   "type": "recipe",
+   "effort": 50,
+   "work_units": 6,
+   "recipe_name": "i18n(stonehearth_ace:jobs.engineer.recipes.refrigerator_small_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.engineer.recipes.refrigerator_small_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.engineer.recipes.refrigerator_small_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/containers/refrigerator_small/refrigerator_small.png",
+   "workshop": "stonehearth:engineer:workbench",
+   "level_requirement": 2,
+   "ingredients": [
+      {
+         "material": "wood resource",
+         "count": 2
+      },
+		{
+         "uri": "stonehearth:refined:steel_ingot",
+         "count": 1
+      },
+		{
+         "uri": "stonehearth:refined:iron_gear",
+         "count": 2
+      },
+		{
+         "uri": "stonehearth_ace:consumables:cold_tonic",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:containers:refrigerator:small"
+      }
+   ]
+}

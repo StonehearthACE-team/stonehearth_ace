@@ -7,7 +7,27 @@
          "category": "harvest",
          "harvest_overlay_effect": "stonehearth:effects:harvest_plant_overlay_effect",
          "resource_spawn_effect": "stonehearth:effects:harvest_plants_effect",
-         "description": "harvest_plant"
+         "description": "harvest_plant",
+         "resource_loot_table": {
+            "entries": {
+               "optional": {
+                  "items": {
+                     "none": {
+                        "uri": "",
+                        "weight": 7
+                     },
+                     "extra_herb": {
+                        "uri": "stonehearth_ace:resources:herb:poppy",
+                        "weight": 3
+                     },
+                     "seed": {
+                        "uri": "stonehearth_ace:plants:poppy:seed",
+                        "weight": 1
+                     }
+                  }
+               }
+            }
+         }
       },
       "stonehearth:entity_forms": {
          "iconic_form": "file(poppy_plant_iconic.json)",
@@ -25,7 +45,7 @@
          }
       },
       "stonehearth:appeal": {
-         "appeal": 2
+         "appeal": 3
       }
    }
 }

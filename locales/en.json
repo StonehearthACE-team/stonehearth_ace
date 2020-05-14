@@ -1809,6 +1809,18 @@
                   "display_name": "Open it!",
                   "description": "Order someone to come and open this beautiful present. Merry Frostfeast!"
                }
+            },
+            "fermenting_carboy_fill_vinegar": {
+               "display_name": "Produce Vinegar from Mead",
+               "description": "Order the Brewer to fill this fermenting vessel with any mead. The existing drink will then turn into two jugs of vinegar! This Carboy will continue producing Vinegar unless a new command is given."
+            },
+            "fermenting_vat_fill_vinegar": {
+               "display_name": "Produce Vinegar from Ale & Beer",
+               "description": "Order the Brewer to fill this fermenting vat with ale or beer. The existing drink will then turn into one jug of vinegar! It will continue producing Vinegar unless a new command is given."
+            },
+            "wine_cask_fill_vinegar": {
+               "display_name": "Produce Vinegar from Wine",
+               "description": "Order the Brewer to fill this fermenting cask with any wine. The existing drink will then turn into three jugs of vinegar! The Cask will continue producing Vinegar unless a new command is given."
             }
          },
          "slaughter": {
@@ -3056,12 +3068,12 @@
             },
             "herbalist_cauldron_recipe": {
                "recipe_name": "Herbalist Stone Cauldron",
-               "description": "Used by the Herbalist for brewing & concocting potions.",
-               "flavor": "The wing of a bat, the eye of a newt... Wait, what?"
+               "description": "Used by the Herbalist for brewing & concocting simple potions.",
+               "flavor": "Firewood not included"
             },
-            "herbalist_cauldron_iron_recipe": {
-               "recipe_name": "Herbalist's Iron Cauldron",
-               "description": "Used by the Herbalist for better brewing & concocting advanced potions.",
+            "herbalist_metal_cauldron_recipe": {
+               "recipe_name": "Herbalist Metal Cauldron",
+               "description": "Used by the Herbalist for brewing more advanced potions.",
                "flavor": "The wing of a bat, the eye of a newt... Wait, what?"
             },
             "hearth_healing_tonic_recipe": {
@@ -3147,11 +3159,25 @@
          "herbalist_bee_skep_empty": {
             "display_name": "Empty Bee Skep",
             "description": "This skep is empty and requires Captive Bees to form a colony."
+         },
+         "herbalist_metal_cauldron": {
+            "display_name": "Herbalist Metal Cauldron",
+            "description": "Used for brewing more advanced potions. Requires any common fuel."
          }
       },
       "engineer": {
          "recipes": {
             "mechanisms_name": "Machines & Mechanisms",
+            "refrigerator_small_recipe": {
+               "recipe_name": "Small Refrigerator",
+               "description": "Preserves up to 16 items for a very long time, preventing them from spoiling.",
+               "flavor": "Fancy!"
+            },
+            "refrigerator_recipe": {
+               "recipe_name": "Refrigerator",
+               "description": "Preserves up to 48 items for a very long time, preventing them from spoiling.",
+               "flavor": "Nothing beats the taste of year-old bread"
+            },
             "bronze_crossbow_recipe": {
                "recipe_name": "Bronze Crossbow",
                "description": "A strong ranged weapon that is slow but efficient in cracking enemy armor."
@@ -3211,7 +3237,8 @@
             },
             "bronze_gear_recipe": {
                "flavor": "Luckily it has teeth that do not require brushing"
-            }
+            },
+            "storage_name": "Storage"
          },
          "engineer_description": {
             "description": "The Engineer is a master of creating contraptions and defenses, repairing facilities and designing mechanisms that can improve other professions."
@@ -3506,6 +3533,11 @@
                "recipe_name": "Green Ceramic Amphora",
                "description": "Stores up to 24 items of a certain kind.",
                "flavor": "Can hold a diverse range of fluids and dry goods"
+            },
+            "cold_storage_box_recipe": {
+               "recipe_name": "Cold Storage Box",
+               "description": "Preserves up to 20 items from spoiling as fast as they do when left outside.",
+               "flavor": "The chilly touch of Frostsnaps can keep things fresh for longer!"
             },
             "clay_water_well_recipe": {
                "recipe_name": "Clay Water Well Parts",
@@ -3929,6 +3961,11 @@
                "recipe_name": "Small Stone Tank",
                "description": "Stores up to 6 items of a certain kind.",
                "flavor": "Can hold a diverse range of fluids and dry goods"
+            },
+            "cold_storage_cabinet_recipe": {
+               "recipe_name": "Cold Storage Cabinet",
+               "description": "Preserves up to 32 items from spoiling as fast as they do when left outside.",
+               "flavor": "The chilly touch of Frostsnaps can keep things fresh for longer!"
             },
             "stone_water_well_recipe": {
                "recipe_name": "Stone Water Well Parts",
@@ -4439,8 +4476,8 @@
             },
             "curdling_mixture_recipe": {
                "recipe_name": "Curdling Mixture",
-               "description": "A fermentation mixture of milk and some additives. Within a cheese vat this can be turned into cheese!",
-               "flavor": "You probably don't want to know what else goes in there..."
+               "description": "A fermentation mixture of milk and some other additives. Within a cheese vat this can be turned into cheese!",
+               "flavor": "Vinegar can be provided by the Brewer"
             },
             "cereals_corn_recipe": {
                "recipe_name": "Bowl of Corn Cereal",
@@ -5443,7 +5480,7 @@
             },
             "brewer_fermenting_carboy_recipe": {
                "recipe_name": "Fermentation Carboy",
-               "description": "The Brewer can use this to make mead or fruity mead with different types of unfermented mead.",
+               "description": "The Brewer can use this to make mead or fruity mead with unfermented mead and vinegar with finished mead or wine.",
                "flavor": "Mead is appreciated by many but will make hearthlings tipsy"
             },
             "gruit_recipe": {
@@ -5619,7 +5656,7 @@
          },
          "brewer_fermenting_carboy_empty": {
             "display_name": "Empty Fermentation Carboy",
-            "description": "A ceramic vessel used by the Brewer for fermenting mead."
+            "description": "A ceramic vessel used by the Brewer for producing mead or vinegar."
          },
          "brewer_fermenting_carboy_mead": {
             "display_name": "Fermentation Carboy",
@@ -5629,6 +5666,10 @@
             "display_name": "Fermentation Carboy",
             "description": "The fruity mead is ready and can now be racked into jugs!"
          },
+         "brewer_fermenting_carboy_vinegar": {
+            "display_name": "Fermentation Carboy",
+            "description": "The vinegar is ready and can now be racked into jugs!"
+         },
          "brewer_fermenting_carboy_unfermented_mead": {
             "display_name": "Fermentation Carboy",
             "description": "The mead is bubbling and warm! It is not ready yet..."
@@ -5636,6 +5677,10 @@
          "brewer_fermenting_carboy_unfermented_mead_fruit": {
             "display_name": "Fermentation Carboy",
             "description": "The fruits are fermenting with all their flavors! It is not ready yet..."
+         },
+         "brewer_fermenting_carboy_unfermented_vinegar": {
+            "display_name": "Fermentation Carboy",
+            "description": "The beverage is undergoing another fermentation! It is not ready yet..."
          },
          "brewer_kettle": {
             "display_name": "Brewing Kettle",
@@ -5652,6 +5697,14 @@
          "brewer_wine_cask_empty": {
             "display_name": "Empty Wine Cask",
             "description": "A special cask used by the Brewer for aging wines."
+         },
+         "brewer_fermenting_vat_unfermented_vinegar": {
+            "display_name": "Fermentation Vat",
+            "description": "The beverage is fermenting once again and will soon turn into vinegar!"
+         },
+         "brewer_fermenting_vat_vinegar": {
+            "display_name": "Fermentation Vat",
+            "description": "The vinegar is ready! It can now be racked into a jug!"
          }
       }
    },
@@ -5770,6 +5823,10 @@
          "hearth_tonic": {
             "display_name": "Hearthbud Light Tonic",
             "description": "Temporarily boosts muscle, courage and menace. Slowly heals over time."
+         },
+         "cold_tonic": {
+            "display_name": "Refreshing Tonic",
+            "description": "Protects from hot weather"
          }
       },
       "construction": {
@@ -7651,11 +7708,14 @@
             "seed": {
                "moonbell_plant_seed_ghost": {
                   "display_name": "Moonbell Seed",
-                  "description": "Once planted, it will grow into healing herbs"
+                  "description": "It shall grow until it starts glowing, providing blue bitter herbs."
                },
                "moonbell_plant_sprout": {
                   "display_name": "Moonbell Sproutling",
                   "description": "Just need some time and care."
+               },
+               "moonbell_plant_seed": {
+                  "description": "Once planted, it will provide blue bitter herbs."
                }
             },
             "stem": {
@@ -7675,12 +7735,16 @@
             "unripe_description": "This plant has been harvested and has not grown back yet",
             "seed": {
                "marblesprout_plant_seed_ghost": {
-                  "display_name": "Wild Marblesprout Seed",
-                  "description": "Once planted, it will grow into a Marblesprout"
+                  "display_name": "Marblesprout Seed",
+                  "description": "Once it grows, it will provide a white bitter herb."
                },
                "marblesprout_plant_sprout": {
                   "display_name": "Wild Marblesprout Sproutling",
                   "description": "Just need some time and care."
+               },
+               "marblesprout_plant_seed": {
+                  "description": "Once planted, it will provide a white bitter herb.",
+                  "display_name": "Marblesprout Seed"
                }
             },
             "stem": {
@@ -7707,7 +7771,11 @@
             "seed": {
                "cherry_bush_plant_seed_ghost": {
                   "display_name": "Cherry Bush Seed",
-                  "description": "Can be planted to grow a bush of delicious cherry plums."
+                  "description": "Will provide tasty fruits when it grows."
+               },
+               "cherry_bush_plant_seed": {
+                  "description": "Can be planted to grow a bush of delicious cherry plums.",
+                  "display_name": "Cherry Bush Seed"
                }
             },
             "sprout": {
@@ -7756,6 +7824,10 @@
             "cotton_plant_maturing": {
                "display_name": "Maturing Cotton",
                "description": "The cotton buds have started maturing and shall be ready soon enough!"
+            },
+            "cotton_plant_seed_ghost": {
+               "display_name": "Cotton Seed",
+               "description": "Will blossom and then provide fiber when it fades."
             }
          },
          "water_lily_white": {
@@ -7817,7 +7889,7 @@
             "description": "It's almost full grown!"
          },
          "dwarfsbeard_seed": {
-            "display_name": "Dwarfsbeard",
+            "display_name": "Dwarfsbeard Seed",
             "description": "Can be planted to grow a rough fiber that can also be used as thatch."
          },
          "dwarfsbeard_sprout": {
@@ -8147,6 +8219,10 @@
                   "description": "A common herb from the woodlands. Can be planted."
                }
             }
+         },
+         "dwarfsbeard_seed_ghost": {
+            "display_name": "Dwarfsbeard Seed",
+            "description": "Will grow into a greasy bush that provides fiber and thatching."
          }
       },
       "decoration": {
@@ -8871,7 +8947,11 @@
          },
          "steak": {
             "display_name": "Raw Steak",
-            "description": "A high quality piece of raw prime meat."
+            "description": "A high quality piece of raw prime meat.",
+            "rotten": {
+               "display_name": "Rotten Steak",
+               "description": "Once magnificent, now stinky... Has no use anymore."
+            }
          },
          "roast_steak": {
             "roast_steak": {
@@ -9319,7 +9399,7 @@
             }
          },
          "cooking_oil": {
-            "display_name": "Cooking Oil",
+            "display_name": "Jug of Cooking Oil",
             "description": "Extracted from vegetables. Can also be used as cooking grease."
          },
          "fish_fingers": {
@@ -9561,6 +9641,16 @@
             "plum_serving": {
                "display_name": "Plum"
             }
+         },
+         "prepared_food": {
+            "rotten": {
+               "display_name": "Spoiled Prepared Food",
+               "description": "Oh no... What a waste!"
+            }
+         },
+         "vinegar": {
+            "display_name": "Jug of Vinegar",
+            "description": "Smells strong and tastes very acid. Useful for cooking and even for certain medicine."
          }
       },
       "terrain": {
@@ -10944,6 +11034,22 @@
          "output_tun_clay": {
             "description": "Temporary storage for 32 items. Can hold different items from the same category.",
             "display_name": "Clay Production Tun"
+         },
+         "cold_storage_cabinet": {
+            "display_name": "Cold Storage Cabinet",
+            "description": "Keeps up to 32 items from spoiling for a little longer than usual."
+         },
+         "cold_storage_box": {
+            "display_name": "Cold Storage Box",
+            "description": "Keeps up to 20 items from spoiling for a little longer than usual."
+         },
+         "refrigerator": {
+            "display_name": "Refrigerator",
+            "description": "Keeps up to 48 items fresh for a really long time."
+         },
+         "refrigerator_small": {
+            "display_name": "Small Refrigerator",
+            "description": "Keeps up to 16 items fresh for a really long time."
          }
       },
       "tools": {
@@ -11965,6 +12071,9 @@
          "seed": {
             "moonbell_plant_seed_ghost": {
                "display_name": "Moonbell Seed"
+            },
+            "moonbell_plant_seed": {
+               "display_name": "Moonbell Seed"
             }
          }
       }
@@ -12284,7 +12393,14 @@
                   "tooltip_raw_food_animal_goods": "Raw Animal Goods",
                   "tooltip_raw_food_nuts": "Raw Nuts",
                   "tooltip_serving_vessels": "Drink Serving Vessels",
-                  "tooltip_bitter_herbs": "Bitter Herbs"
+                  "tooltip_bitter_herbs": "Bitter Herbs",
+                  "dresser": "Misc",
+                  "tooltip_field_work_outfit": "Field Worker Outfits & Hats",
+                  "tooltip_crafter_outfit": "Crafter Outfits & Hats",
+                  "tooltip_job_tool": "Job Tools",
+                  "tooltip_worker_outfit": "Worker Outfits & Hats",
+                  "tooltip_worker_tools": "Worker Tools",
+                  "tooltip_backpack": "Worker Backpacks"
                }
             },
             "pasture": {
@@ -12838,6 +12954,9 @@
             "keg": {
                "description": "Has been around for a long while and is a bit stale already."
             }
+         },
+         "decay_brewing_ingredient": {
+            "description": "It will spoil in some days, needs to be prepared soon!"
          }
       }
    }

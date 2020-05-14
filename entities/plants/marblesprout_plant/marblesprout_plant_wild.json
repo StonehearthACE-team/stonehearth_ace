@@ -2,59 +2,30 @@
    "type": "entity",
    "mixins": "file(marblesprout_plant_ghost.json)",
    "components": {
-      "model_variants": {
-         "depleted": {
-            "models": [
-               "file(marblesprout_plant_harvested.qb)"
-            ]
-         },
-         "half_renewed": {
-            "models": [
-               "file(marblesprout_plant_half_renewed_wild.qb)"
-            ]
-         }
-      },
-      "stonehearth:renewable_resource_node": {
+      "stonehearth:resource_node": {
          "resource": "stonehearth_ace:resources:herb:marblesprout",
          "category": "harvest",
          "harvest_overlay_effect": "stonehearth:effects:harvest_plant_overlay_effect",
-         "unripe_description": "i18n(stonehearth_ace:entities.plants.marblesprout_plant.unripe_description)",
-         "renewal_time": "2d+12h",
-         "half_renewed_model_variant": true,
+         "resource_spawn_effect": "stonehearth:effects:harvest_plants_effect",
+         "description": "harvest_plant",
          "resource_loot_table": {
             "entries": {
                "optional": {
-                  "num_rolls": {
-                     "min": 1,
-                     "max": 1
-                  },
                   "items": {
                      "none": {
                         "uri": "",
                         "weight": 4
                      },
-                     "pelt": {
+                     "extra_herb": {
+                        "uri": "stonehearth_ace:resources:herb:marblesprout",
+                        "weight": 6
+                     },
+                     "seed": {
                         "uri": "stonehearth_ace:plants:marblesprout:seed",
                         "weight": 1
                      }
                   }
                }
-            }
-         },
-         "biomes": {
-				"stonehearth:biome:desert": {
-               "renewal_time_multiplier": 2
-            }
-         },
-         "seasons": {
-            "summer": {
-               "renewal_time_multiplier": 2
-            },
-            "autumn": {
-               "renewal_time_multiplier": 3
-            },
-				"winter": {
-               "renewal_time_multiplier": 6
             }
          }
       },
@@ -89,10 +60,11 @@
          "rarity": "common",
          "shop_info": {
             "buyable": false,
-            "sellable": true,
-            "shopkeeper_level": 1,
-            "shopkeeper_type": "caravan"
+            "sellable": false
          }
+      },
+      "stonehearth:appeal": {
+         "appeal": 4
       }
    }
 }

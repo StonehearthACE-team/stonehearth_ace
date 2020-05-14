@@ -1,0 +1,53 @@
+{
+   "stockpile": {
+      "contents": {
+         "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.dresser)",
+         "filter": "goods",
+         "ordinal": 1,
+         "categories": {
+            "tool": {
+               "ordinal": 1,
+               "display_name": "i18n(stonehearth:ui.game.zones_mode.stockpile.filters.tooltip_tools)",
+               "icon": "/stonehearth/ui/game/modes/zones_mode/stockpile/images/taxonomy/tool.png",
+               "filter": "stockpile_tool"
+            },
+            "field_work_outfit": {
+               "ordinal": 2,
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_field_work_outfit)",
+               "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/field_worker_outfit.png",
+               "filter": "civillian_equipment field_work_outfit"
+            },
+            "crafter_outfit": {
+               "ordinal": 3,
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_crafter_outfit)",
+               "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/crafter_outfit.png",
+               "filter": "civillian_equipment crafter_outfit"
+            },
+            "job_tool": {
+               "ordinal": 4,
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_job_tool)",
+               "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/job_tools.png",
+               "filter": "civillian_equipment job_tool"
+            },
+            "worker_outfit": {
+               "ordinal": 5,
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_worker_outfit)",
+               "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/civillian_equipment.png",
+               "filter": "civillian_equipment worker_outfit"
+            },
+            "worker_tools": {
+               "ordinal": 6,
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_worker_tools)",
+               "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/worker_tools.png",
+               "filter": "civillian_equipment worker_tools"
+            },
+            "backpack": {
+               "ordinal": 7,
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_backpack)",
+               "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/backpack.png",
+               "filter": "civillian_equipment backpack"
+            }
+         }
+      }
+   }
+}

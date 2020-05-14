@@ -1,16 +1,31 @@
 {
   "components": {
-	"mob": {
-      "model_origin": {
-         "x": 0,
-         "y": 0,
-         "z": -0.3
+		"mixintypes": {
+			"model_variants": "override"
+		},
+		"model_variants": {
+         "default": {
+            "models": [
+               "file(iron_door.qb)"
+            ]
+         }
       },
-      "region_origin": {
-         "x": 0.5,
-         "y": 0,
-         "z": 0.5
+		"mob": {
+			"model_origin": {
+				"x": 0,
+				"y": 0,
+				"z": -0.3
+			},
+			"region_origin": {
+				"x": 0.5,
+				"y": 0,
+				"z": 0.5
+			}
+		}
+	},
+   "entity_data": {
+      "stonehearth:catalog": {
+         "icon": "file(iron_door.png)"
       }
-    }
-  }
+   }
 }

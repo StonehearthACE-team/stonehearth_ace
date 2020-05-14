@@ -7,15 +7,32 @@
          "category": "harvest",
          "harvest_overlay_effect": "stonehearth:effects:harvest_plant_overlay_effect",
          "resource_spawn_effect": "stonehearth:effects:harvest_plants_effect",
-         "description": "harvest_plant"
+         "description": "harvest_plant",
+         "resource_loot_table": {
+            "entries": {
+               "optional": {
+                  "items": {
+                     "none": {
+                        "uri": "",
+                        "weight": 7
+                     },
+                     "extra_herb": {
+                        "uri": "stonehearth_ace:resources:herb:chives",
+                        "weight": 3
+                     },
+                     "seed": {
+                        "uri": "stonehearth_ace:plants:chives:seed",
+                        "weight": 1
+                     }
+                  }
+               }
+            }
+         }
       },
       "stonehearth:entity_forms": {
          "iconic_form": "file(chives_plant_iconic.json)",
          "ghost_form": "file(chives_plant_ghost.json)",
          "placeable_on_ground": true
-      },
-      "mob": {
-         "model_origin": { "x": -0.1, "y": 0, "z": -0.1 }
       }
    },
    "entity_data": {
@@ -26,6 +43,9 @@
             "buyable": false,
             "sellable": true
          }
+      },
+      "stonehearth:appeal": {
+         "appeal": 3
       }
    }
 }

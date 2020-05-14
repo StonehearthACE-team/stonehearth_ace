@@ -100,7 +100,7 @@
                "ordinal": 3,
                "display_name": "i18n(stonehearth_ace:entities.drink.mead.mead.display_name)",
                "icon": "/stonehearth_ace/entities/drink/mead/mead/mead.png",
-               "filter": "drink_container mead"
+               "filter": "drink_container mead standard"
             },
             "mead_fruit": {
                "ordinal": 3.1,
@@ -248,11 +248,17 @@
                "icon": "/stonehearth_ace/entities/food/cooking_oil/cooking_oil.png",
                "filter": "oil cooking_ingredient"
             },
+            "vinegar": {
+               "ordinal": 1.1,
+               "display_name": "i18n(stonehearth_ace:entities.food.vinegar.display_name)",
+               "icon": "/stonehearth_ace/entities/food/vinegar/vinegar.png",
+               "filter": "vinegar cooking_ingredient"
+            },
             "butter": {
                "ordinal": 2,
                "display_name": "i18n(stonehearth_ace:entities.food.dairy.butter.display_name)",
                "icon": "/stonehearth_ace/entities/food/dairy/butter/butter.png",
-               "filter": "butter_butter cooking_ingredient"
+               "filter": "butter standard cooking_ingredient"
             },
             "whey_butter": {
                "ordinal": 3,
@@ -276,7 +282,7 @@
                "ordinal": 5.1,
                "display_name": "i18n(stonehearth_ace:entities.food.honey.honey.display_name)",
                "icon": "/stonehearth_ace/entities/food/honey/honey/honey.png",
-               "filter": "cooking_ingredient honey_honey"
+               "filter": "cooking_ingredient honey standard"
             },
             "unfermented_mead": {
                "ordinal": 6,

@@ -1,0 +1,30 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "type": "entity",
+   "components": {
+      "render_info": {
+         "color_map": "stonehearth_ace:color_map:ace",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/glass_material_map.json"
+         ]
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0.1 }
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(cold_tonic.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.consumables.cold_tonic.display_name)",
+         "description": "i18n(stonehearth_ace:entities.consumables.cold_tonic.description)",
+         "icon": "file(cold_tonic.png)",
+         "category": "consumable"
+      }
+   }
+}

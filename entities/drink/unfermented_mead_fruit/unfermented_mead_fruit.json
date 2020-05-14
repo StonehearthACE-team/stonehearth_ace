@@ -1,5 +1,5 @@
 {
-   "mixins": "stonehearth:mixins:item_properties",
+   "mixins": "stonehearth_ace:mixins:drink_decay",
    "type": "entity",
    "components": {
       "model_variants": {
@@ -20,6 +20,17 @@
       }
    },
    "entity_data": {
+      "stonehearth:food_decay": {
+         "initial_decay": {
+            "min": 360,
+            "max": 384
+         },
+         "decay_stages": {
+            "decay_1": {
+               "description": "i18n(stonehearth_ace:drink.decay.decay_brewing_ingredient.description)"
+            }
+         }
+      },
       "stonehearth:net_worth": {
          "value_in_gold": 36,
          "rarity": "common",

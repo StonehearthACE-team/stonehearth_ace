@@ -2,6 +2,11 @@
    "type": "entity",
    "mixins": "file(bone_dresser_ghost.json)",
    "components": {
+      "stonehearth:storage": {
+         "type": "crate",
+         "capacity": 8,
+         "filter_list": "stonehearth_ace:ui:dresser:filters"
+      },
       "stonehearth:entity_forms": {
          "iconic_form": "file(bone_dresser_iconic.json)",
          "ghost_form": "file(bone_dresser_ghost.json)",

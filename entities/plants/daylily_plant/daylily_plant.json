@@ -7,7 +7,27 @@
          "category": "harvest",
          "harvest_overlay_effect": "stonehearth:effects:harvest_plant_overlay_effect",
          "resource_spawn_effect": "stonehearth:effects:harvest_plants_effect",
-         "description": "harvest_plant"
+         "description": "harvest_plant",
+         "resource_loot_table": {
+            "entries": {
+               "optional": {
+                  "items": {
+                     "none": {
+                        "uri": "",
+                        "weight": 5
+                     },
+                     "extra_herb": {
+                        "uri": "stonehearth_ace:resources:herb:daylily",
+                        "weight": 5
+                     },
+                     "seed": {
+                        "uri": "stonehearth_ace:plants:daylily:seed",
+                        "weight": 1
+                     }
+                  }
+               }
+            }
+         }
       },
       "stonehearth:entity_forms": {
          "iconic_form": "file(daylily_plant_iconic.json)",
@@ -23,6 +43,9 @@
             "buyable": false,
             "sellable": true
          }
+      },
+      "stonehearth:appeal": {
+         "appeal": 4
       }
    }
 }

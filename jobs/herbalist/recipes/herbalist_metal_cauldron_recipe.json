@@ -1,0 +1,22 @@
+{
+   "type": "recipe",
+   "effort": 40,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.herbalist.recipes.herbalist_metal_cauldron_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.herbalist_metal_cauldron_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.herbalist_metal_cauldron_recipe.flavor)",
+   "portrait": "/stonehearth_ace/jobs/herbalist/herbalist_metal_cauldron/herbalist_metal_cauldron.png",
+	"work_effect": "work",
+   "level_requirement": 4,
+   "ingredients": [
+		{
+         "material": "ingot hard_metal",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:herbalist:metal_cauldron"
+      }
+   ]
+}

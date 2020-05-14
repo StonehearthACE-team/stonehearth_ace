@@ -1,5 +1,8 @@
 {
-   "mixins": "stonehearth:mixins:item_properties",
+   "mixins": [
+      "stonehearth:mixins:item_properties",
+      "stonehearth_ace:mixins:food:seed:seed_iconic"
+   ],
    "type": "entity",
    "components": {
       "render_info": {
@@ -19,15 +22,7 @@
    "entity_data": {
       "stonehearth:catalog": {
          "display_name": "i18n(stonehearth_ace:entities.plants.poppy_plant.seed.poppy_plant_seed.display_name)",
-         "description": "i18n(stonehearth_ace:entities.plants.poppy_plant.seed.poppy_plant_seed.description)",
-         "is_item": true,
-         "category": "seed"
-      },
-      "stonehearth:food_decay": {
-         "initial_decay": {
-            "min": 168,
-            "max": 168
-         }
+         "description": "i18n(stonehearth_ace:entities.plants.poppy_plant.seed.poppy_plant_seed.description)"
       }
    }
 }

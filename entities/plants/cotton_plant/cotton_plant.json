@@ -2,62 +2,30 @@
    "type": "entity",
    "mixins": "file(cotton_plant_ghost.json)",
    "components": {
-      "model_variants": {
-         "depleted": {
-            "models": [
-               "file(cotton_plant_harvested.qb)"
-            ]
-         },
-         "half_renewed": {
-            "models": [
-               "file(cotton_plant_half_renewed.qb)"
-            ]
-         }
-      },
-      "stonehearth:renewable_resource_node": {
+      "stonehearth:resource_node": {
          "resource": "stonehearth_ace:resources:fiber:cotton_bundle",
          "category": "harvest",
          "harvest_overlay_effect": "stonehearth:effects:harvest_plant_overlay_effect",
-         "unripe_description": "i18n(stonehearth_ace:entities.plants.cotton_plant.cotton_plant.unripe_description)",
-         "renewal_time": "30h",
-         "half_renewed_model_variant": true,
+         "resource_spawn_effect": "stonehearth:effects:harvest_plants_effect",
+         "description": "harvest_plant",
          "resource_loot_table": {
             "entries": {
                "optional": {
-                  "num_rolls": {
-                     "min": 1,
-                     "max": 1
-                  },
                   "items": {
                      "none": {
                         "uri": "",
-                        "weight": 4
+                        "weight": 5
                      },
-                     "pelt": {
+                     "extra_herb": {
+                        "uri": "stonehearth_ace:resources:fiber:cotton_bundle",
+                        "weight": 5
+                     },
+                     "seed": {
                         "uri": "stonehearth_ace:plants:cotton_plant:seed",
                         "weight": 1
                      }
                   }
                }
-            }
-         },
-         "biomes": {
-            "stonehearth:biome:arctic": {
-               "renewal_time_multiplier": 3
-            },
-				"stonehearth:biome:desert": {
-               "renewal_time_multiplier": 1.5
-            }
-         },
-         "seasons": {
-            "spring": {
-               "renewal_time_multiplier": 3
-            },
-            "autumn": {
-               "renewal_time_multiplier": 2
-            },
-				"winter": {
-               "renewal_time_multiplier": 6
             }
          }
       },
@@ -74,8 +42,7 @@
          "rarity": "common",
          "shop_info": {
             "buyable": false,
-            "sellable": true,
-            "shopkeeper_type": "caravan"
+            "sellable": true
          }
       },
       "stonehearth:appeal": {

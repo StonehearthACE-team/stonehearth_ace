@@ -1,0 +1,30 @@
+{
+   "type": "recipe",
+   "effort": 25,
+   "work_units": 6,
+   "recipe_name": "i18n(stonehearth_ace:jobs.mason.recipes.cold_storage_cabinet_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.mason.recipes.cold_storage_cabinet_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.mason.recipes.cold_storage_cabinet_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/containers/cold_storage_cabinet/cold_storage_cabinet.png",
+   "workshop": "stonehearth:mason:pedestal",
+   "level_requirement": 4,
+   "ingredients": [
+      {
+         "material": "stone resource",
+         "count": 3
+      },
+		{
+         "material": "wood resource",
+         "count": 1
+      },
+		{
+         "uri": "stonehearth:resources:herb:frostsnap",
+         "count": 6
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:containers:cold_storage_cabinet"
+      }
+   ]
+}

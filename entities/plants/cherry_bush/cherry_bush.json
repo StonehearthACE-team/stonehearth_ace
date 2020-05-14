@@ -8,26 +8,6 @@
          "renewal_time": "22h+2h",
          "unripe_description": "i18n(stonehearth_ace:entities.plants.cherry_bush.unripe_description)",
          "harvest_overlay_effect": "stonehearth_ace:effects:harvest_fruit_overlay_effect",
-         "resource_loot_table": {
-            "entries": {
-               "optional": {
-                  "num_rolls": {
-                     "min": 1,
-                     "max": 1
-                  },
-                  "items": {
-                     "none": {
-                        "uri": "",
-                        "weight": 4
-                     },
-                     "pelt": {
-                        "uri": "stonehearth_ace:plants:cherry_bush:seed",
-                        "weight": 1
-                     }
-                  }
-               }
-            }
-         },
          "half_renewed_model": {
             "model": "/stonehearth_ace/entities/plants/cherry_bush/cherry_bush_half_renewed.qb",
             "matrix": "cherries",

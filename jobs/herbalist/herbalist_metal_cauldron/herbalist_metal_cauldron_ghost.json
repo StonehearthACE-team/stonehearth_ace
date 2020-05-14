@@ -1,0 +1,41 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "render_info": {
+         "scale": 0.09,
+         "animation_table": "file(/data/rigs/jobs/herbalist/herbalist_cauldron/herbalist_cauldron.json)"
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(herbalist_metal_cauldron.qb)"
+            ]
+         },
+         "no_fuel": {
+            "models": [
+               "file(herbalist_metal_cauldron_no_fuel.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "align_to_grid": [
+            "x",
+            "z"
+         ],
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0, "y": 0, "z": 0 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:hide_child_entities_from_pathfinder": true,
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:jobs.herbalist.herbalist_metal_cauldron.display_name)",
+         "description": "i18n(stonehearth_ace:jobs.herbalist.herbalist_metal_cauldron.description)",
+         "icon": "file(herbalist_metal_cauldron.png)",
+         "category": "workshops",
+         "material_tags": [
+            "stockpile_tool"
+         ]
+      }
+   }
+}
