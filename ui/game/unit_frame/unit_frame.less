@@ -1,6 +1,6 @@
 #unitFrame {
    left: 70px;
-   height: 120px;
+   height: inherit;
    z-index: 2;
 
    #buffs {
@@ -237,13 +237,58 @@
 
       #commandButtons {
          .nobr;
-         top: 4px;
+         bottom: 0px;
          right: inherit;
-         overflow: hidden;
          margin: 20px 0px 0px -10px;
+
+         #commandOverflowWrapper {
+            overflow: hidden;
+            display: flex;
+            align-items: flex-end;
+         }
 
          .commandButton {
             margin-top: 10px;
+            position: static;
+         }
+
+         .commandGroup {
+            display: inline-block;
+
+            .commandGroupImage {
+               position: relative;
+               width: 54px;
+               height: 54px;
+               background: url(images/command-button-bg.png);
+               background-size: cover;
+               border: 2px solid #000;
+            }
+
+            &:hover > .groupedCommands {
+               display: block;
+            }
+            &:hover > .commandGroupImage {
+               opacity: 0;
+            }
+         }
+
+         .groupedCommands {
+            display: none;
+            position: absolute;
+            bottom: 0px;
+            margin-left: 4px;
+
+            .inlineBlock {
+               display: block;
+            }
+            .commandButton {
+               margin: 0px;
+            }
+            .inlineBlock + .inlineBlock {
+               margin-top: 4px;
+            }
+
+            background-color: rgba(0, 0, 0, 0.3);
          }
       }
 

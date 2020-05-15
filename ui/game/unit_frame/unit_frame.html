@@ -161,13 +161,35 @@
             </div>
 
             <div id="commandButtons" {{bind-attr class=view.commandsEnabled::hidden}}>
-               {{#each view.commands itemView="stonehearthCommandButton"}}
+               <div id="commandOverflowWrapper">
+               {{#each view.groupedCommands}}
+                  {{#if this.groupName}}
+                  <div class="commandGroup" {{bind-attr groupName=this.groupName}}>
+                     <div class="commandButton commandGroupImage">
+                        <img {{bind-attr src="icon"}}>
+                     </div>
+
+                     <div class="groupedCommands">
+                        {{#each this.commands itemView="stonehearthCommandButton"}}
+                        <a {{bind-attr id=this.name}} href="#" {{action "doCommand" this target="view"}} class='uisounds'>
+                           <div {{bind-attr class=":commandButton :groupedCommand enabled:buttonEnabled:buttonDisabled"}}>
+                              <img {{bind-attr src="icon"}}>
+                           </div>
+                        </a>
+                        {{/each}}
+                     </div>
+                  </div>
+                  {{else}}
+                  {{#each this.commands itemView="stonehearthCommandButton"}}
                   <a {{bind-attr id=this.name}} href="#" {{action "doCommand" this target="view"}} class='uisounds'>
                      <div {{bind-attr class=":commandButton enabled:buttonEnabled:buttonDisabled"}}>
                         <img {{bind-attr src="icon"}}>
                      </div>
                   </a>
+                  {{/each}}
+                  {{/if}}
                {{/each}}
+               </div>
             </div>
 
          </div>

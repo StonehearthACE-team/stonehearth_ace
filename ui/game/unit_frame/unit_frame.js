@@ -75,7 +75,7 @@ App.StonehearthUnitFrameView.reopen({
 
    init: function() {
       var self = this;
-      stonehearth_ace.mergeInto(self.components, self.ace_components)
+      stonehearth_ace.mergeInto(self.components, self.ace_components);
 
       self._super();
    },
@@ -392,6 +392,77 @@ App.StonehearthUnitFrameView.reopen({
 
    _updateCommandsWidth: function() {
       this._updateUnitFrameWidth(true);
+   }.observes('groupedCommands'),
+
+   _updateCommandGroups: function() {
+      // Hide commands if this is another player's entity, unless the command is
+      // set to be visible to all players
+      var self = this;
+      var playerId = App.stonehearthClient.getPlayerId();
+      var entityPlayerId = self.get('model.player_id');
+      var filterFn = null;
+      var playerIdValid = !entityPlayerId || entityPlayerId == playerId || entityPlayerId == 'critters' || entityPlayerId == 'animals';
+      if (!playerIdValid) {
+         filterFn = function(key, value) {
+            if (!value.visible_to_all_players) {
+               return false;
+            }
+         };
+      }
+      var commands = radiant.map_to_array(self.get('model.stonehearth:commands.commands'), filterFn);
+      var groups = {};
+      commands.forEach(command => {
+         var group = command.group;
+         if (group) {
+            if (!groups[group]) {
+               groups[group] = [];
+            }
+            groups[group].push(command);
+         }
+      });
+
+      var sortFn = function(a, b){
+         var aName = a.ordinal ? a.ordinal : 0;
+         var bName = b.ordinal ? b.ordinal : 0;
+         var n = bName - aName;
+         return n;
+      };
+      
+      var groupedCommands = [];
+      radiant.each(groups, function(group, groupCommands) {
+         if (groupCommands.length > 1) {
+            // if there's more than one command in the group, add the group instead
+            var groupData = stonehearth_ace.getCommandGroup(group);
+            if (groupData) {
+               var groupData = radiant.shallow_copy(groupData);
+               groupData.groupName = group;
+               groupData.commands = groupCommands;
+
+               groupCommands.forEach(command => {
+                  var index = $.inArray(command, commands);
+                  if (index >= 0) {
+                     commands.splice(index, 1);
+                  }
+               });
+
+               groupCommands.sort(sortFn);
+               groupedCommands.push(groupData);
+            }
+         }
+      });
+      //$.merge(groupedCommands, commands);
+      // now make a grouping container for each individual command
+      commands.forEach(command => {
+         var groupContainer = {
+            ordinal: command.ordinal,
+            commands: [command]
+         }
+         groupedCommands.push(groupContainer);
+      });
+
+      groupedCommands.sort(sortFn);
+      
+      self.set('groupedCommands', groupedCommands);
    }.observes('model.stonehearth:commands.commands'),
 
 	_updateEnergy: function() {
@@ -901,3 +972,21 @@ App.StonehearthUnitFrameView.reopen({
       },
    }
 });
+
+// App.StonehearthCommandButtonView.reopen({
+//    didInsertElement: function () {
+//       if (this.$().find('.commandGroup').length == 0) {
+//          this._super();
+//       }
+//    },
+
+//    willDestroyElement: function() {
+//       this.$().find('.tooltipstered').tooltipster('destroy');
+//    },
+
+//    actions: {
+//       doCommand: function(command) {
+//          App.stonehearthClient.doCommand(this.get("parentView.uri"), this.get("parentView.model.player_id"), command);
+//       }
+//    }
+// });
