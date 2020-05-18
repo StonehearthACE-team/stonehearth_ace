@@ -42,8 +42,8 @@ function AceCollectIngredients:run(town, args)
 
       --Then, if the ingredients are not still completed, get more from the world
 
-      local max_distance_for_rating_sq = stonehearth.constants.inventory.MAX_SIGNIFICANT_PATH_LENGTH * stonehearth.constants.inventory.MAX_SIGNIFICANT_PATH_LENGTH
-      local close_distance_for_rating_sq = stonehearth.constants.inventory.MAX_INSIGNIFICANT_PATH_LENGTH * stonehearth.constants.inventory.MAX_INSIGNIFICANT_PATH_LENGTH
+      -- local max_distance_for_rating_sq = stonehearth.constants.inventory.MAX_SIGNIFICANT_PATH_LENGTH * stonehearth.constants.inventory.MAX_SIGNIFICANT_PATH_LENGTH
+      -- local close_distance_for_rating_sq = stonehearth.constants.inventory.MAX_INSIGNIFICANT_PATH_LENGTH * stonehearth.constants.inventory.MAX_INSIGNIFICANT_PATH_LENGTH
       local rating_fn
       if self._prefer_high_quality then
          rating_fn = function(item, entity, entity_location, storage_location)
@@ -57,21 +57,23 @@ function AceCollectIngredients:run(town, args)
 				if radiant.entities.is_material(item, 'undesirable_ingredient') then
                rating = rating * 0.9
             end
+
+            return rating
 				
-            local p1 = entity_location or radiant.entities.get_world_grid_location(entity)
-            local p2 = storage_location or radiant.entities.get_world_grid_location(item)
+            -- local p1 = entity_location or radiant.entities.get_world_grid_location(entity)
+            -- local p2 = storage_location or radiant.entities.get_world_grid_location(item)
 
-            if not p1 or not p2 then
-               log:debug('HQ distance sq no location! %s (%s) -> %s (%s)', entity, p1 or 'NIL', item, p2 or 'NIL')
-               return rating
-            else
-               local distance_sq = p1:distance_to_squared(p2) - close_distance_for_rating_sq
-               local distance_score = (1 - math.min(1, distance_sq / max_distance_for_rating_sq))
+            -- if not p1 or not p2 then
+            --    log:debug('HQ distance sq no location! %s (%s) -> %s (%s)', entity, p1 or 'NIL', item, p2 or 'NIL')
+            --    return rating
+            -- else
+            --    local distance_sq = p1:distance_to_squared(p2) - close_distance_for_rating_sq
+            --    local distance_score = (1 - math.min(1, distance_sq / max_distance_for_rating_sq))
 
-               --log:debug('HQ distance sq %s and score %s for %s to %s', distance_sq, distance_score, entity, item)
+            --    --log:debug('HQ distance sq %s and score %s for %s to %s', distance_sq, distance_score, entity, item)
 
-               return rating * 0.8 + distance_score * 0.2
-            end
+            --    return rating * 0.8 + distance_score * 0.2
+            -- end
          end
       else
          rating_fn = function(item, entity, entity_location, storage_location)
@@ -86,20 +88,22 @@ function AceCollectIngredients:run(town, args)
                rating = rating * 0.9
             end
 
-            local p1 = entity_location or radiant.entities.get_world_grid_location(entity)
-            local p2 = storage_location or radiant.entities.get_world_grid_location(item)
+            return rating
 
-            if not p1 or not p2 then
-               log:debug('LQ distance sq no location! %s (%s) -> %s (%s)', entity, p1 or 'NIL', item, p2 or 'NIL')
-               return rating
-            else
-               local distance_sq = p1:distance_to_squared(p2) - close_distance_for_rating_sq
-               local distance_score = (1 - math.min(1, distance_sq / max_distance_for_rating_sq))
+            -- local p1 = entity_location or radiant.entities.get_world_grid_location(entity)
+            -- local p2 = storage_location or radiant.entities.get_world_grid_location(item)
 
-               --log:debug('LQ distance sq %s and score %s for %s to %s', distance_sq, distance_score, entity, item)
+            -- if not p1 or not p2 then
+            --    log:debug('LQ distance sq no location! %s (%s) -> %s (%s)', entity, p1 or 'NIL', item, p2 or 'NIL')
+            --    return rating
+            -- else
+            --    local distance_sq = p1:distance_to_squared(p2) - close_distance_for_rating_sq
+            --    local distance_score = (1 - math.min(1, distance_sq / max_distance_for_rating_sq))
+
+            --    --log:debug('LQ distance sq %s and score %s for %s to %s', distance_sq, distance_score, entity, item)
                
-               return rating * 0.8 + distance_score * 0.2
-            end
+            --    return rating * 0.8 + distance_score * 0.2
+            -- end
          end
       end
 
@@ -110,23 +114,25 @@ function AceCollectIngredients:run(town, args)
          end
 			
 			if radiant.entities.is_material(item, 'undesirable_ingredient') then
-            return 0.9
-         end
-
-         -- anything within the close distance is considered "best"; doesn't matter if it goes negative
-         local p1 = entity_location or radiant.entities.get_world_grid_location(entity)
-         local p2 = storage_location or radiant.entities.get_world_grid_location(item)
-
-         if not p1 or not p2 then
             return 0
-         else
-            local distance_sq = p1:distance_to_squared(p2) - close_distance_for_rating_sq
-            local distance_score = (1 - math.min(1, distance_sq / max_distance_for_rating_sq))
-
-            --log:debug('distance sq %s and score %s for %s to %s', distance_sq, distance_score, entity, item)
-            
-            return distance_score
          end
+
+         return 0.5
+
+         -- -- anything within the close distance is considered "best"; doesn't matter if it goes negative
+         -- local p1 = entity_location or radiant.entities.get_world_grid_location(entity)
+         -- local p2 = storage_location or radiant.entities.get_world_grid_location(item)
+
+         -- if not p1 or not p2 then
+         --    return 0
+         -- else
+         --    local distance_sq = p1:distance_to_squared(p2) - close_distance_for_rating_sq
+         --    local distance_score = (1 - math.min(1, distance_sq / max_distance_for_rating_sq))
+
+         --    --log:debug('distance sq %s and score %s for %s to %s', distance_sq, distance_score, entity, item)
+            
+         --    return distance_score
+         -- end
       end
 
       local first_loop = true

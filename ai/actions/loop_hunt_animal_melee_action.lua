@@ -23,7 +23,7 @@ return ai:create_compound_action(LoopHuntAnimalMelee)
       })
          :execute('stonehearth:chase_entity', {
             target = ai.UP.ARGS.target,
-            stop_distance = ai.UP.BACK(2).melee_range_ideal,
+            stop_distance = ai.UP.BACK(1).melee_range_ideal,
          })
          :execute('stonehearth:combat:attack_melee_adjacent', { target = ai.UP.ARGS.target })
          :execute('stonehearth:combat:set_global_attack_cooldown')

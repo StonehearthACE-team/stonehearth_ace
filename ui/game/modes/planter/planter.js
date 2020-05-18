@@ -19,7 +19,17 @@ App.AceHerbalistPlanterView = App.StonehearthBaseZonesModeView.extend({
             if (self.isDestroying || self.isDestroyed) {
                return;
             }
-            self.set('allCropData', response.data);
+            var data = response.data;
+            // also index all the crops by seed
+            var seed_index = {};
+            radiant.each(data.crops, function(crop, cropData) {
+               if (cropData.seed_uri) {
+                  seed_index[cropData.seed_uri] = crop;
+               }
+            });
+            data.seed_index = seed_index;
+            self.set('allCropData', data);
+            self._updateAvailableSeeds();
          });
    },
 
@@ -27,10 +37,23 @@ App.AceHerbalistPlanterView = App.StonehearthBaseZonesModeView.extend({
       this._super();
       var self = this;
 
+      radiant.call_obj('stonehearth.inventory', 'get_item_tracker_command', 'stonehearth:usable_item_tracker')
+         .done(function(response) {
+            if (self.isDestroying || self.isDestroyed) {
+               return;
+            }
+
+            self._playerInventoryTrace = new StonehearthDataTrace(response.tracker, {})
+               .progress(function (response) {
+                  self._inventoryTrackingData = response.tracking_data;
+                  self._updateAvailableSeeds();
+               });
+         });
+
       self.$('#enableHarvestCheckbox').change(function() {
          var planter = self.get('model.stonehearth_ace:herbalist_planter');
          radiant.call_obj(planter && planter.__self, 'set_harvest_enabled_command', this.checked);
-      })
+      });
 
       // tooltips
       App.guiHelper.addTooltip(self.$('#enableHarvest'), 'stonehearth_ace:ui.game.herbalist_planter.harvest_crop_description');
@@ -43,6 +66,34 @@ App.AceHerbalistPlanterView = App.StonehearthBaseZonesModeView.extend({
 
       this._super();
    },
+
+   _updateAvailableSeeds: $.throttle(250, function() {
+      var self = this;
+      var allCropData = self.get('allCropData');
+      if (!allCropData || !self._inventoryTrackingData) {
+         return;
+      }
+
+      var availableSeeds = {}
+      radiant.each(self._inventoryTrackingData, function (uri, uri_entry) {
+         var rootUri = uri_entry.canonical_uri || uri;
+         var crop = allCropData.seed_index[rootUri];
+         if (crop && uri_entry.count > 0) {
+            var bestQuality = 1;
+            radiant.each(uri_entry.item_qualities, function (item_quality_key, item) {
+               if (item.count > 0 && item_quality_key > bestQuality) {
+                  bestQuality = item_quality_key;
+               }
+            });
+            availableSeeds[crop] = bestQuality;
+         }
+      });
+
+      self._availableSeeds = availableSeeds;
+      if (self.palette) {
+         self.palette.updateAvailableSeeds(availableSeeds);
+      }
+   }),
 
    _planterCropTypeChange: function() {
       var self = this;
@@ -91,7 +142,8 @@ App.AceHerbalistPlanterView = App.StonehearthBaseZonesModeView.extend({
             planter: planterComponent && planterComponent.__self,
             planter_view: this,
             planter_data: this.get('allCropData'),
-            allowed_crops: planterComponent.allowed_crops
+            allowed_crops: planterComponent.allowed_crops,
+            available_seeds: this._availableSeeds
          });
       }
    },
@@ -106,6 +158,10 @@ App.AceHerbalistPlanterView = App.StonehearthBaseZonesModeView.extend({
       if (this.palette) {
          this.palette.destroy();
          this.palette = null;
+      }
+      if (this._playerInventoryTrace) {
+         this._playerInventoryTrace.destroy();
+         this._playerInventoryTrace = null;
       }
       this._super();
    },
@@ -140,30 +196,20 @@ App.AcePlanterTypePaletteView = App.View.extend({
                display_name: i18n.t(data.display_name),
                description: i18n.t(data.description)
             }
+            if (self.available_seeds) {
+               var bestQuality = self._getAvailableSeedQuality(self.available_seeds, key);
+               planterData.bestQuality = bestQuality;
+               planterData.bestQualityClass = 'quality' + bestQuality;
+            }
             cropDataArray.push(planterData);
          }
       });
 
-      cropDataArray.sort((a, b) => {
-         if (a.level < b.level) {
-            return -1;
-         }
-         else if (a.level > b.level) {
-            return 1;
-         }
-         else if (a.display_name < b.display_name) {
-            return -1;
-         }
-         else if (a.display_name > b.display_name) {
-            return 1;
-         }
-         else {
-            return 0;
-         }
-      });
+      cropDataArray.sort(self.available_seeds ? self._sortWithQuality : self._sortWithoutQuality);
       self.set('cropTypes', cropDataArray);
+      //self.updateAvailableSeeds(self.available_seeds);
 
-      this.$().on( 'click', '[cropType]', function() {
+      self.$().on( 'click', '[cropType]', function() {
          var cropType = $(this).attr('cropType');
          if (cropType) {
             if (cropType == 'no_crop') {
@@ -173,6 +219,71 @@ App.AcePlanterTypePaletteView = App.View.extend({
          }
          self.destroy();
       });
+   },
+
+   updateAvailableSeeds: function(availableSeeds) {
+      var self = this;
+      if (availableSeeds) {
+         var cropTypes = self.get('cropTypes');
+         radiant.each(cropTypes, function(i, data) {
+            var bestQuality = self._getAvailableSeedQuality(availableSeeds, data.type);
+            Ember.set(data, 'bestQuality', bestQuality);
+            Ember.set(data, 'bestQualityClass', 'quality' + bestQuality);
+         });
+         cropTypes.sort(self._sortWithQuality);
+      }
+   },
+
+   _getAvailableSeedQuality: function(availableSeeds, cropType) {
+      return cropType == 'no_crop' ? 1 : availableSeeds[cropType] || 0;
+   },
+
+   _sortWithoutQuality: function(a, b) {
+      if (a.level < b.level) {
+         return -1;
+      }
+      else if (a.level > b.level) {
+         return 1;
+      }
+      else if (a.display_name < b.display_name) {
+         return -1;
+      }
+      else if (a.display_name > b.display_name) {
+         return 1;
+      }
+      else {
+         return 0;
+      }
+   },
+
+   _sortWithQuality: function(a, b) {
+      if (Math.sign(a.bestQuality) > Math.sign(b.bestQuality)) {
+         return -1;
+      }
+      else if (Math.sign(a.bestQuality) < Math.sign(b.bestQuality)) {
+         return 1;
+      }
+      else if (a.level > b.level) {
+         return a.bestQuality ? -1 : 1;
+      }
+      else if (a.level < b.level) {
+         return a.bestQuality ? 1 : -1;
+      }
+      else if (a.bestQuality > b.bestQuality) {
+         return -1;
+      }
+      else if (a.bestQuality < b.bestQuality) {
+         return 1;
+      }
+      else if (a.display_name < b.display_name) {
+         return -1;
+      }
+      else if (a.display_name > b.display_name) {
+         return 1;
+      }
+      else {
+         return 0;
+      }
    },
 
    willDestroyElement: function() {

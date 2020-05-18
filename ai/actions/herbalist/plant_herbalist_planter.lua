@@ -10,11 +10,16 @@ PlantHerbalistPlanter.args = {
 }
 PlantHerbalistPlanter.priority = 0
 
+local seed_rating_fn = function(item)
+   return radiant.entities.get_item_quality(item) / 3
+end
+
 local ai = stonehearth.ai
 return ai:create_compound_action(PlantHerbalistPlanter)
          :execute('stonehearth:clear_carrying_now')
          :execute('stonehearth:pickup_item_with_uri', {
-            uri = ai.ARGS.seed_uri
+            uri = ai.ARGS.seed_uri,
+            rating_fn = seed_rating_fn
          })
          :execute('stonehearth:goto_entity', { entity = ai.ARGS.planter })
          :execute('stonehearth:reserve_entity', { entity = ai.ARGS.planter })

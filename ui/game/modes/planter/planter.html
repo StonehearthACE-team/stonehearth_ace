@@ -55,14 +55,15 @@
             <table>
                <tbody>
                {{#each view.cropTypes}}
-                  <tr {{bind-attr cropType=this.type class="row"}}>
+                  <tr {{bind-attr cropType=this.type class="row this.bestQualityClass"}}>
                      <td>
                         <div class="icon">
                            <img class="image" {{bind-attr src=this.icon}} />
                         </div>
                      </td>
                      <td>
-                        <div class="info">
+                        <div class="info"}}>
+                           <div class="qualityDiv"></div>
                            <div class="name">{{this.display_name}}</div>
                            <div class="description">{{this.description}}</div>
                         </div>
