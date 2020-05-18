@@ -386,7 +386,8 @@ function HerbalistPlanterComponent:_bonus_grow()
 
    if not self._storage:is_full() and (self._bonus_product_uri or self._bonus_product_loot_table) then
       --local player_id = self._entity:get_player_id()
-      self:_create_products(nil, self._bonus_product_uri, 1, self._bonus_product_loot_table)
+      local num_products = math.min(self._json.num_bonus_products or 1, self._storage:get_capacity() - self._storage:get_num_items())
+      self:_create_products(nil, self._bonus_product_uri, num_products, self._bonus_product_loot_table)
    end
 
    self:_restart_timers()
@@ -411,7 +412,16 @@ function HerbalistPlanterComponent:_create_products(harvester, product_uri, quan
    local loot_table_items
    local loot_table = loot_table_data and LootTable(loot_table_data)
    if loot_table then
-      loot_table_items = self:_create_product(loot_table:roll_loot(), quality, input, spill_failed, owner, location)
+      for i = 1, quantity do
+         local these_loot_table_items = self:_create_product(loot_table:roll_loot(), quality, input, spill_failed, owner, location)
+         if these_loot_table_items then
+            if loot_table_items then
+               loot_table_items = radiant.entities.combine_output_tables(these_loot_table_items, loot_table_items)
+            else
+               loot_table_items = these_loot_table_items
+            end
+         end
+      end
    end
 
    return (items or loot_table_items) and radiant.entities.combine_output_tables(items, loot_table_items)
