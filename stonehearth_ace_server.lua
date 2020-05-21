@@ -31,6 +31,7 @@ local monkey_patches = {
    ace_renewable_resource_node_component = 'stonehearth.components.renewable_resource_node.renewable_resource_node_component',
    ace_resource_node_component = 'stonehearth.components.resource_node.resource_node_component',
    ace_task_tracker_component = 'stonehearth.components.task_tracker.task_tracker_component',
+   ace_terrain_patch_component = 'stonehearth.components.terrain_patch.terrain_patch_component',
    ace_shepherd_pasture_component = 'stonehearth.components.shepherd_pasture.shepherd_pasture_component',
    ace_shepherd_service = 'stonehearth.services.server.shepherd.shepherd_service',
    ace_swimming_service = 'stonehearth.services.server.swimming.swimming_service',

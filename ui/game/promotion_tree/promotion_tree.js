@@ -158,8 +158,12 @@ App.StonehearthPromotionTree.reopen({
    _buildTreeData: function() {
       var self = this;
 
+      var isValidJob = function(job) {
+         return job && job.description && job.description.enabled;
+      };
+
       var arr = radiant.map_to_array(self._jobData).filter(function(job) {
-         return job.description && job.description.enabled && job.description.display_order;
+         return isValidJob(job) && job.description.display_order;
       });
       arr.sort(function(a, b) {
          return a.description.display_order - b.description.display_order;
@@ -183,7 +187,7 @@ App.StonehearthPromotionTree.reopen({
          if (parents.length > 0) {
             var parentJobs = [];
             parents.forEach(parentJob => {
-               if (self._jobData[parentJob.job]) {
+               if (isValidJob(self._jobData[parentJob.job])) {
                   parentJobs.push(parentJob);
                }
             });
