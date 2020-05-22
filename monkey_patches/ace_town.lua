@@ -119,22 +119,24 @@ function AceTown:_requirements_met(person, job_uri)
       local parent_controller = job_component:get_controller(parent_job.job)
       local required_level = parent_job.level_requirement or 0
 
-      if parent_job.one_of then
-         if one_of == nil then
-            one_of = false
-         end
-         if parent_controller and parent_controller:get_job_level() >= required_level then
-            one_of = true
-         end
-      else
-         if parent_controller then
-            -- if the parent doesn't meet the level requirement, it fails
-            if parent_controller:get_job_level() < required_level then
-               return false
+      if parent_job.enabled then
+         if parent_job.one_of then
+            if one_of == nil then
+               one_of = false
+            end
+            if parent_controller and parent_controller:get_job_level() >= required_level then
+               one_of = true
             end
          else
-            -- if there is no controller for the parent, it fails
-            return false
+            if parent_controller then
+               -- if the parent doesn't meet the level requirement, it fails
+               if parent_controller:get_job_level() < required_level then
+                  return false
+               end
+            else
+               -- if there is no controller for the parent, it fails
+               return false
+            end
          end
       end
    end

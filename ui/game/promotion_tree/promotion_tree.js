@@ -135,35 +135,46 @@ App.StonehearthPromotionTree.reopen({
    },
 
    getParentJobs: function(jobDescription) {
+      var self = this;
       var parents = jobDescription.parent_jobs || [{"job": jobDescription.parent_job, "level_requirement": jobDescription.parent_level_requirement}];
       var parentJobs = [];
       var oneOf = [];
+      var hadParent = false;
       parents.forEach(parentJob => {
          if (parentJob.job) {
-            var job = {"job": parentJob.job, "level_requirement": parentJob.level_requirement || 0, "one_of": parentJob.one_of};
-            if (parentJob.one_of) {
-               oneOf.push(job);
+            hadParent = true;
+            if (self._isValidJob(parentJob.job)) {
+               var job = {"job": parentJob.job, "level_requirement": parentJob.level_requirement || 0, "one_of": parentJob.one_of};
+               if (parentJob.one_of) {
+                  oneOf.push(job);
+               }
+               parentJobs.push(job);
             }
-            parentJobs.push(job);
          }
       });
       if (oneOf.length == 1) {
          // if there's only one parent marked as "one of" then it's effectively mandatory
          oneOf[0].one_of = false;
       }
+      // if we're left with no parents, but we originally had some that just aren't available, make the base worker job our parent
+      if (parentJobs.length < 1 && hadParent) {
+         parentJobs.push({"job": self._baseWorkerJob});
+      }
       return parentJobs;
+   },
+
+   _isValidJob: function(alias) {
+      var self = this;
+      var job = alias && self._jobData && self._jobData[alias]
+      return job && job.description && job.description.enabled;
    },
    
    // Transform the job data map into a tree for use by D3.
    _buildTreeData: function() {
       var self = this;
 
-      var isValidJob = function(job) {
-         return job && job.description && job.description.enabled;
-      };
-
-      var arr = radiant.map_to_array(self._jobData).filter(function(job) {
-         return isValidJob(job) && job.description.display_order;
+      var arr = radiant.map_to_array(self._jobData, function(alias, job) {
+         return self._isValidJob(alias) && (job.description.display_order || job.description.display_order == 0) ? job : false;
       });
       arr.sort(function(a, b) {
          return a.description.display_order - b.description.display_order;
@@ -183,18 +194,8 @@ App.StonehearthPromotionTree.reopen({
 
          self._buildTreeNode(node, job);
 
-         var parents = self.getParentJobs(job.description);
-         if (parents.length > 0) {
-            var parentJobs = [];
-            parents.forEach(parentJob => {
-               if (isValidJob(self._jobData[parentJob.job])) {
-                  parentJobs.push(parentJob);
-               }
-            });
-            if (parentJobs.length < 1) {
-               parentJobs.push({"job": self._baseWorkerJob});
-            }
-
+         var parentJobs = self.getParentJobs(job.description);
+         if (parentJobs.length > 0) {
             var parent = parentJobs[0];
             var parentNode = nodeMap[parent.job] || {};
             nodeMap[parent.job] = parentNode;
