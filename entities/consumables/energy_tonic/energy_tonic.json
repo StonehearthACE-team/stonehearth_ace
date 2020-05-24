@@ -1,6 +1,17 @@
 {
    "components": {
-      "stonehearth_ace:auto_replace": {}
+      "stonehearth_ace:auto_replace": {},
+      "stonehearth:equipment_piece": {
+         "render_type": "none",
+         "slot": "consumable",
+         "ilevel": 3,
+         "roles": [
+            "worker_job"
+         ],
+         "injected_buffs": [
+            "stonehearth_ace:buffs:equipped_consumable"
+         ]
+      }
    },
 	"entity_data": {
 		"mixintypes": {
@@ -21,7 +32,26 @@
             {
                "buff": "stonehearth_ace:buffs:tonic:energy_tonic:masterwork"
             }
-         ]
+         ],
+         "script_info": {
+            "condition": {
+               "type": "or",
+               "conditions": [
+                  {
+                     "type": "stonehearth:expendable_resources",
+                     "resource_name": "health",
+                     "comparison": "<",
+                     "use_percent": true,
+                     "value": 0.70
+                  },
+                  {
+                     "type": "stonehearth:buffs",
+                     "buff_uri": "stonehearth:buffs:groggy",
+                     "has_buff": true
+                  }
+               ]
+            }
+         }
       },
       "stonehearth:catalog": {
          "material_tags": [

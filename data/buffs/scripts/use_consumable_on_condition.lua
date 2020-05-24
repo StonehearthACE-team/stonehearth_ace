@@ -1,6 +1,6 @@
 --[[
-   script_info:
-   {
+   in the "stonehearth:consumable" entity_data of the equipment/consumable entity:
+   "script_info": {
       "condition": {
          "type": "or",   -- can be "and", "or", or a supported type (generally expressed as a component name)
          "conditions": [
