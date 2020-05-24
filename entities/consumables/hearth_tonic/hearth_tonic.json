@@ -25,7 +25,20 @@
       },
       "stonehearth:consumable": {
          "script": "stonehearth:consumables:scripts:buff_town",
-         "buff": "stonehearth_ace:buffs:hearth_tonic"
+         "consumable_qualities": [
+            {
+               "buff": "stonehearth_ace:buffs:tonic:hearth_tonic"
+            },
+            {
+               "buff": "stonehearth_ace:buffs:tonic:hearth_tonic:fine"
+            },
+            {
+               "buff": "stonehearth_ace:buffs:tonic:hearth_tonic:excellent"
+            },
+            {
+               "buff": "stonehearth_ace:buffs:tonic:hearth_tonic:masterwork"
+            }
+         ]
       },
       "stonehearth:catalog": {
          "material_tags": [
@@ -34,6 +47,9 @@
             "consumable",
             "stockpile_consumable"
          ]
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
       }
    }
 }

@@ -1,0 +1,147 @@
+{
+   "name": "nightsight tonic eye glow",
+   "duration": 8000,
+   "material": "materials/cubemitter_bloom.material.json",
+   "loops": true,
+   "mesh": {
+      "file": "",
+      "matrix": "",
+      "offset": { "x": 0, "y": 0, "z": 0 }
+   },
+   "emission": {
+      "rate": {
+         "kind": "RANDOM_BETWEEN",
+         "values": [
+            16,
+            24
+         ]
+      },
+      "angle": {
+         "kind": "CONSTANT",
+         "values": [
+            0
+         ]
+      },
+      "origin": {
+         "surface": "POINT"
+      }
+   },
+   "particle": {
+      "lifetime": {
+         "start": {
+            "kind": "RANDOM_BETWEEN",
+            "values": [
+               100,
+               300
+            ]
+         }
+      },
+      "speed": {
+         "start": {
+            "kind": "CONSTANT",
+            "values": [
+               0
+            ]
+         }
+      },
+      "velocity": {
+         "over_lifetime_x": {
+            "kind": "CURVE",
+            "values": [
+               [
+                  0,
+                  2
+               ],
+               [
+                  0.5,
+                  -2
+               ],
+               [
+                  1,
+                  2
+               ]
+            ]
+         }
+      },
+      "rotation": {
+         "over_lifetime_y": {
+            "kind": "RANDOM_BETWEEN_CURVES",
+            "values": [
+               [
+                  [
+                     0,
+                     0
+                  ],
+                  [
+                     1,
+                     0
+                  ]
+               ],
+               [
+                  [
+                     0,
+                     90
+                  ],
+                  [
+                     1,
+                     90
+                  ]
+               ]
+            ]
+         }
+      },
+      "scale": {
+         "start": {
+            "kind": "RANDOM_BETWEEN",
+            "values": [
+               0.15,
+               0.22
+            ]
+         }
+      },
+      "color": {
+         "start": {
+            "kind": "RANDOM_BETWEEN",
+            "values": [
+               [
+                  0.844,
+                  0.921,
+                  0.557,
+                  1
+               ],
+               [
+                  0.929,
+                  0.94,
+                  0.05,
+                  1
+               ]
+            ]
+         },
+         "over_lifetime_a": {
+            "kind": "CURVE",
+            "values": [
+               [
+                  0,
+                  0.0
+               ],
+               [
+                  0.14746351242065431,
+                  0.3
+               ],
+               [
+                  0.51,
+                  0.1
+               ],
+               [
+                  0.88480094909667972,
+                  0.05
+               ],
+               [
+                  1,
+                  0
+               ]
+            ]
+         }
+      }
+   }
+}

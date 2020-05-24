@@ -981,6 +981,10 @@
                   "teddy": {
                      "display_name": "Forever Playful",
                      "tooltip": "I was visited by the adorable ghost of a very mischievous kitten called Teddy!"
+                  },
+                  "mila": {
+                     "display_name": "Feisty Kitten Spirit",
+                     "tooltip": "The kind spirit of Mila got bigger, more ferocious and defended the town!"
                   }
                }
             },
@@ -2235,6 +2239,20 @@
                "description": "This is a weak toxin. It sticks for longer the more it is applied and will rapidly reduce its target's consciousness, putting them to sleep."
             }
          },
+         "infection": {
+            "minor_infection": {
+               "display_name": "High Fever",
+               "description": "Feels dizzy and faint... I think one of my wounds is slightly infected. Stamina and Willpower are slightly lowered.<ul><li>High Fever may pass on its own but can also turn into an infection if stacked enough</li><ul>"
+            },
+            "infection": {
+               "display_name": "Infection",
+               "description": "Eww! My wounds are looking really bad. I need help or this will get worse! Stamina, Willpower and Muscle are quite lowered.<ul><li>An infection can become deadly if stacked high enough</li><ul>"
+            },
+            "major_infection": {
+               "display_name": "Severe Infection",
+               "description": "The infection is out of control and this hearthling's life is urgently threatened. Body and Willpower are completely lowered.<ul><li>This hearthling will take a lot of damage over time</li><ul>"
+            }
+         },
          "spring_flavors": {
             "display_name": "Spring Flavors",
             "description": "Ahh! Nothing like cool and fresh water straight from the source! Diligence and Compassion are increased.<ul><li>Crafting has a slightly increased quality chance</li><li>Experience gain is slightly increased</li></ul>"
@@ -2355,6 +2373,78 @@
             "torn_soul": {
                "display_name": "Torn Soul",
                "description": "I'm still here... But I have never been the same since I was wounded by evil creatures. Spirit is reduced."
+            }
+         },
+         "cold_tonic": {
+            "cold_tonic_buff": {
+               "display_name": "Refreshing Tonic",
+               "description": "Blabla"
+            }
+         },
+         "courage_tonic_2": {
+            "courage_tonic_2_buff": {
+               "display_name": "Enhanced Courage Tonic",
+               "description": "Blublu"
+            }
+         },
+         "creativity_tonic": {
+            "creativity_tonic_buff": {
+               "display_name": "Creativity Tonic",
+               "description": "Bleble"
+            }
+         },
+         "creativity_tonic_2": {
+            "creativity_tonic_2_buff": {
+               "display_name": "Enhanced Creativity Tonic",
+               "description": "Bloblo"
+            }
+         },
+         "curiosity_tonic": {
+            "curiosity_tonic_buff": {
+               "display_name": "Curiosity Tonic",
+               "description": "blibli"
+            }
+         },
+         "energy_tonic_2": {
+            "energy_tonic_2_buff": {
+               "display_name": "Enhanced Energy Tonic",
+               "description": "blabla"
+            }
+         },
+         "nightsight_tonic": {
+            "nightsight_tonic_buff": {
+               "display_name": "Nightsight Tonic",
+               "description": "bloblo"
+            }
+         },
+         "stamina_tonic_2": {
+            "stamina_tonic_2_buff": {
+               "display_name": "Enhanced Stamina Tonic",
+               "description": "bloblo"
+            }
+         },
+         "strength_tonic_2": {
+            "strength_tonic_2_buff": {
+               "display_name": "Enhanced Strength Tonic",
+               "description": "bleble"
+            }
+         },
+         "warmth_tonic": {
+            "warmth_tonic_buff": {
+               "display_name": "Warmth Tonic",
+               "description": "blublu"
+            }
+         },
+         "water_resist_tonic": {
+            "water_resist_tonic_buff": {
+               "display_name": "Hydrophobic Tonic",
+               "description": "blinblin"
+            }
+         },
+         "water_resist_tonic_2": {
+            "water_resist_tonic_2_buff": {
+               "display_name": "Enhanced Hydrophobic Tonic",
+               "description": "brumbrum"
             }
          }
       },
@@ -2613,6 +2703,7 @@
             "refined_seeds_name": "Regional Seeds",
             "planters_name": "Herb Planters",
             "farming_enhancements_name": "Farming Enhancements & Seeds",
+            "bandages_name": "Healing Items",
             "decorated_frostfeast_tree_recipe": {
                "recipe_name": "Decorated Frostfeast Pine",
                "description": "Get your town ready for the holidays with this traditional and beautiful decorated tree.",
@@ -3073,7 +3164,7 @@
             },
             "herbalist_metal_cauldron_recipe": {
                "recipe_name": "Herbalist Metal Cauldron",
-               "description": "Used by the Herbalist for brewing more advanced potions.",
+               "description": "Used by the Herbalist for brewing more advanced potions. Replaces the stone cauldron.",
                "flavor": "The wing of a bat, the eye of a newt... Wait, what?"
             },
             "hearth_healing_tonic_recipe": {
@@ -3090,6 +3181,71 @@
                "recipe_name": "Hearthbud Light Tonic",
                "description": "A powerful potion that will boost courage, muscle, menace and slowly heal over time.",
                "flavor": "May it be a light to you in dark places, when all other lights go out! -Sasha of Clan Amberstone"
+            },
+            "healing_tonic_recipe": {
+               "recipe_name": "Healing Tonic",
+               "description": "Used by the herbalist to somewhat heal wounds.",
+               "flavor": ""
+            },
+            "cold_tonic_recipe": {
+               "recipe_name": "Refreshing Tonic",
+               "description": "Protects from hot weather",
+               "flavor": ""
+            },
+            "nightsight_tonic_recipe": {
+               "recipe_name": "Nightsight Tonic",
+               "description": "Provides better view at night",
+               "flavor": ""
+            },
+            "warmth_tonic_recipe": {
+               "recipe_name": "Warmth Tonic",
+               "description": "Protects from cold weather",
+               "flavor": ""
+            },
+            "water_resist_tonic_recipe": {
+               "recipe_name": "Hydrophobic Tonic",
+               "description": "Repels water from rain",
+               "flavor": ""
+            },
+            "water_resist_tonic_2_recipe": {
+               "recipe_name": "Enhanced Hydrophobic Tonic",
+               "description": "Repels so much water that hearthlings can walk at normal speed when underwater",
+               "flavor": ""
+            },
+            "strength_tonic_2_recipe": {
+               "recipe_name": "Enhanced Strength Tonic",
+               "description": "Also increases damage",
+               "flavor": ""
+            },
+            "stamina_tonic_2_recipe": {
+               "recipe_name": "Enhanced Stamina Tonic",
+               "description": "Increases heal received",
+               "flavor": ""
+            },
+            "energy_tonic_2_recipe": {
+               "recipe_name": "Enhanced Energy Tonic",
+               "description": "Makes them talk less",
+               "flavor": ""
+            },
+            "curiosity_tonic_recipe": {
+               "recipe_name": "Curiosity Tonic",
+               "description": "Increases their curiosity and the ratio at which they gain experience",
+               "flavor": ""
+            },
+            "creativity_tonic_2_recipe": {
+               "recipe_name": "Enhanced Creativity Tonic",
+               "description": "Also increases the chance for higher quality crafts",
+               "flavor": ""
+            },
+            "creativity_tonic_recipe": {
+               "recipe_name": "Creativity Tonic",
+               "description": "Makes crafting faster",
+               "flavor": ""
+            },
+            "courage_tonic_2_recipe": {
+               "recipe_name": "Enhanced Courage Tonic",
+               "description": "Also increases armor",
+               "flavor": ""
             },
             "gruit_recipe": {
                "recipe_name": "Wrap of Gruit",
@@ -4185,12 +4341,12 @@
             },
             "blacksmith_forge_advanced_recipe": {
                "recipe_name": "Enhanced Blacksmith Furnace",
-               "description": "Improved and more efficient than regular furnaces, this furnace is hot enough to smelt precious metals.",
+               "description": "Improved and more efficient, this furnace is hot enough to smelt precious metals. Replaces the regular furnace.",
                "flavor": "All that is gold does not glitter; but if it does, a good furnace will smelt it. -Lucan Varius, Artifex Ignis"
             },
             "blacksmith_workbench_advanced_recipe": {
                "recipe_name": "Enhanced Blacksmith Anvil",
-               "description": "This incredible anvil can keep the metal hot for the most intricate and powerful crafts.",
+               "description": "This incredible anvil can keep the metal hot for the most intricate and powerful crafts. Replaces the regular anvil.",
                "flavor": "Balance between heating and hammering is essential. Or just do both at once. -Lucan Varius, Artifex Ignis"
             },
             "charcoal_recipe": {
@@ -5814,6 +5970,10 @@
             "hearth_healing_tonic": {
                "display_name": "Hearthbud Healing Tonic",
                "description": "The power of the Hearth used by the herbalist to heal wounds"
+            },
+            "healing_tonic": {
+               "display_name": "Healing Tonic",
+               "description": "Can be used by the Herbalist to heal some wounds."
             }
          },
          "fertilizer_hearth": {
@@ -5827,6 +5987,50 @@
          "cold_tonic": {
             "display_name": "Refreshing Tonic",
             "description": "Protects from hot weather"
+         },
+         "nightsight_tonic": {
+            "display_name": "Nightsight Tonic",
+            "description": "Provides better view at night"
+         },
+         "warmth_tonic": {
+            "display_name": "Warmth Tonic",
+            "description": "Protects from cold weather"
+         },
+         "water_resist_tonic": {
+            "display_name": "Hydrophobic Tonic",
+            "description": "Repels water from rain"
+         },
+         "water_resist_tonic_2": {
+            "display_name": "Enhanced Hydrophobic Tonic",
+            "description": "Repels so much water that hearthlings can walk at normal speed when underwater"
+         },
+         "strength_tonic_2": {
+            "display_name": "Enhanced Strength Tonic",
+            "description": "Also increases damage"
+         },
+         "stamina_tonic_2": {
+            "display_name": "Enhanced Stamina Tonic",
+            "description": "Also makes them less hungry"
+         },
+         "energy_tonic_2": {
+            "display_name": "Enhanced Energy Tonic",
+            "description": "Makes them less sleepy"
+         },
+         "curiosity_tonic": {
+            "display_name": "Curiosity Tonic",
+            "description": "Increases their curiosity and the ratio at which they gain experience"
+         },
+         "creativity_tonic_2": {
+            "display_name": "Enhanced Creativity Tonic",
+            "description": "Also increases the chance for higher quality crafts"
+         },
+         "creativity_tonic": {
+            "display_name": "Creativity Tonic",
+            "description": "Makes crafting faster"
+         },
+         "courage_tonic_2": {
+            "display_name": "Enhanced Courage Tonic",
+            "description": "Also increases armor"
          }
       },
       "construction": {
@@ -8630,6 +8834,10 @@
             "teddy": {
                "display_name": "Spirit of Teddy",
                "description": "Playful and adorable"
+            },
+            "mila": {
+               "display_name": "Spirit of Mila",
+               "description": "Feisty and brave!"
             }
          }
       },
@@ -9882,6 +10090,10 @@
                "display_name_arctic": "Groveling",
                "display_name_desert": "Cactusling",
                "display_name_highlands": "Birchling"
+            },
+            "mila": {
+               "display_name": "Spirit of Mila",
+               "description": "Ready to defend others!"
             }
          },
          "avian": {

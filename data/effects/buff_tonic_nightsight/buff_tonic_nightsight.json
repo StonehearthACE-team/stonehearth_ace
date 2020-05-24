@@ -1,0 +1,65 @@
+{
+   "type": "effect",
+   "tracks": {
+      "upward_particles": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/tonic/buff_tonic_nightsight.cubemitter.json",
+         "start_time": 0,
+         "end_time": 1200,
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "upward_particles_large": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/tonic/buff_tonic_nightsight_large.cubemitter.json",
+         "start_time": 0,
+         "end_time": 400,
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "sound": {
+         "type": "sound_effect",
+         "duration": 1000,
+         "start_time": 0,
+         "min_distance": 28,
+         "falloff": 7,
+         "volume": 90,
+         "track": {
+            "type": "one_of",
+            "items": [
+               "stonehearth:sounds:item_created_01"
+            ]
+         }
+      },
+      "glow_1": {
+         "type": "cubemitter",
+         "start_time": 0,
+         "loop": true,
+         "cubemitter": "/stonehearth_ace/data/horde/particles/tonic/nightsight_tonic_eye_glow.cubemitter.json",
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         },
+         "bone": "eyeL"
+      },
+      "glow_2": {
+         "type": "cubemitter",
+         "start_time": 0,
+         "loop": true,
+         "cubemitter": "/stonehearth_ace/data/horde/particles/tonic/nightsight_tonic_eye_glow.cubemitter.json",
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         },
+         "bone": "eyeR"
+      }
+   }
+}

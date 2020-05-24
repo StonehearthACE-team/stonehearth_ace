@@ -3,10 +3,33 @@
       "stonehearth_ace:auto_replace": {}
    },
 	"entity_data": {
+		"mixintypes": {
+			"stonehearth:consumable": "override"
+		},
+		"stonehearth:consumable": {
+         "script": "stonehearth:consumables:scripts:buff_town",
+         "consumable_qualities": [
+            {
+               "buff": "stonehearth:buffs:courage_tonic"
+            },
+            {
+               "buff": "stonehearth_ace:buffs:tonic:courage_tonic:fine"
+            },
+            {
+               "buff": "stonehearth_ace:buffs:tonic:courage_tonic:excellent"
+            },
+            {
+               "buff": "stonehearth_ace:buffs:tonic:courage_tonic:masterwork"
+            }
+         ]
+      },
       "stonehearth:catalog": {
          "material_tags": [
             "tonic"
          ]
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
       }
    }
 }

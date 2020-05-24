@@ -1,0 +1,27 @@
+{
+   "type": "recipe",
+   "effort": 18,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.herbalist.recipes.courage_tonic_2_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.courage_tonic_2_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.courage_tonic_2_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/consumables/courage_tonic_2/courage_tonic_2.png",
+   "workshop": "stonehearth_ace:herbalist:metal_cauldron",
+	"work_effect": "fiddle",
+   "level_requirement": 6,
+   "ingredients": [
+      {
+         "material": "herb blue bitter resource",
+         "count": 6
+      },
+		{
+         "material": "herb white aromatic resource",
+         "count": 3
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:consumables:courage_tonic_2"
+      }
+   ]
+}

@@ -3,10 +3,12 @@
    "type": "entity",
    "components": {
       "render_info": {
-         "color_map": "stonehearth:color_map:mob",
+         "color_map": "stonehearth_ace:color_map:ace",
          "material_maps": [
+            "/stonehearth/data/materials/material_maps/glass_material_map.json",
             "/stonehearth/data/materials/material_maps/mob_material_map.json"
-         ]
+         ],
+         "scale": 0.09
       },
       "model_variants": {
          "default": {
@@ -33,15 +35,19 @@
          "work_units": 3,
          "consumable_qualities": [
             {
-               "health_healed": 120,
+               "health_healed": 250,
+               "guts_healed": 5
+            },
+            {
+               "health_healed": 300,
                "guts_healed": 6
             },
             {
-               "health_healed": 140,
+               "health_healed": 350,
                "guts_healed": 7
             },
             {
-               "health_healed": 160,
+               "health_healed": 450,
                "guts_healed": 8
             }
          ]
@@ -57,7 +63,7 @@
             "tonic",
             "hearth_healing_tonic",
             "consumable",
-            "stockpile_consumable"
+            "stockpile_healing_item"
          ]
       },
       "stonehearth:item_quality": {

@@ -6,13 +6,14 @@
    "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.hearth_healing_tonic_recipe.description)",
    "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.hearth_healing_tonic_recipe.flavor)",
    "portrait": "/stonehearth_ace/entities/consumables/healing_tonic/hearth_healing_tonic/hearth_healing_tonic.png",
-   "workshop": "stonehearth_ace:herbalist:cauldron",
+   "workshop": "stonehearth_ace:herbalist:metal_cauldron",
    "level_requirement": 5,
+	"work_effect": "fiddle",
 	"manual_unlock": true,
    "ingredients": [
       {
          "material": "earth_essence resource",
-         "count": 1
+         "count": 2
       }
    ],
    "produces": [

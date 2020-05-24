@@ -1,0 +1,24 @@
+{
+   "type": "buff",
+   "axis": "debuff",
+   "category": "infection",
+   "unique_in_category": true,
+   "rank": 3,
+   "display_name": "i18n(stonehearth_ace:data.buffs.wounds.infection.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.wounds.infection.description)",
+   "icon": "file(infection.png)",
+   "cant_affect_siege": true,
+   "repeat_add_action": "stack_and_refresh",
+   "max_stacks": 10,
+   "modifiers": {
+      "stamina": {
+         "add": -0.08
+      },
+      "muscle": {
+         "add": -0.08
+      },
+      "willpower": {
+         "add": -0.08
+      }
+   }
+}

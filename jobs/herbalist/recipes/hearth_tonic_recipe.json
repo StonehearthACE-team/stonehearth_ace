@@ -6,13 +6,18 @@
    "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.hearth_tonic_recipe.description)",
    "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.hearth_tonic_recipe.flavor)",
    "portrait": "/stonehearth_ace/entities/consumables/hearth_tonic/hearth_tonic.png",
-   "workshop": "stonehearth_ace:herbalist:cauldron",
+   "workshop": "stonehearth_ace:herbalist:metal_cauldron",
    "level_requirement": 6,
+	"work_effect": "fiddle",
 	"manual_unlock": true,
    "ingredients": [
 		{
-         "material": "herb resource",
-         "count": 4
+         "material": "herb white aromatic resource",
+         "count": 2
+      },
+		{
+         "material": "herb yellow aromatic resource",
+         "count": 2
       },
       {
          "material": "earth_essence resource",

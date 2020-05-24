@@ -1,0 +1,18 @@
+{
+   "type": "buff",
+   "axis": "buff",
+   "category": "cold_tonic",
+   "unique_in_category": true,
+   "rank": 5,
+   "display_name": "i18n(stonehearth_ace:data.buffs.cold_tonic.cold_tonic_buff.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.cold_tonic.cold_tonic_buff.description)",
+   "icon": "file(cold_tonic_buff.png)",
+   "duration": "4h",
+   "repeat_add_action": "renew_duration",
+   "effect": "stonehearth_ace:effects:buff_tonic_cold_added",
+   "disallowed_buffs": [
+      "stonehearth_ace:buffs:weather:hot",
+      "stonehearth_ace:buffs:weather:sweltering",
+      "stonehearth_ace:buffs:weather:sunstroke"
+   ]
+}

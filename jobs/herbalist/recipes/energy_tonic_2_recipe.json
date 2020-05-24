@@ -1,0 +1,27 @@
+{
+   "type": "recipe",
+   "effort": 18,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.herbalist.recipes.energy_tonic_2_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.energy_tonic_2_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.energy_tonic_2_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/consumables/energy_tonic_2/energy_tonic_2.png",
+   "workshop": "stonehearth_ace:herbalist:metal_cauldron",
+	"work_effect": "fiddle",
+   "level_requirement": 4,
+   "ingredients": [
+      {
+         "material": "herb green bitter resource",
+         "count": 4
+      },
+      {
+         "material": "herb red aromatic resource",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:consumables:energy_tonic_2"
+      }
+   ]
+}

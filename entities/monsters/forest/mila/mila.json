@@ -1,0 +1,103 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:monster",
+   "mixintypes": {
+      "player_id": "remove"
+   },
+   "components": {
+      "render_info": {
+         "animation_table": "/stonehearth/data/rigs/entities/monster/forest/jacko",
+         "scale": 0.14,
+         "material": "materials/transparent_with_depth_bloom.material.json",
+         "color_map": "stonehearth_ace:color_map:ace",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/mob_material_map.json"
+         ]
+      },
+      "sensor_list": {
+         "sensors": {
+            "sight": {
+               "type": "sensor",
+               "radius": 50
+            }
+         }
+      },
+      "stonehearth:equipment": {
+         "items": [
+            "stonehearth_ace:weapons:animals:mila_teeth"
+         ]
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(mila.qb)"
+            ]
+         }
+      },
+      "stonehearth:attributes": {
+         "max_health": {
+            "type": "basic",
+            "value": 2000
+         },
+         "muscle": {
+            "type": "basic",
+            "value": 0
+         },
+         "menace": {
+            "type": "basic",
+            "value": 150
+         },
+         "courage": {
+            "type": "basic",
+            "value": 999
+         },
+         "speed": {
+            "type": "basic",
+            "value": 140
+         },
+         "exp_reward": {
+            "type": "basic",
+            "value": 0
+         }
+      },
+      "stonehearth:loot_drops": {
+         "entries": {
+            "default": {
+               "items": {
+                  "skin": {
+                     "uri": "",
+                     "weight": 1
+                  }
+               }
+            }
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:species": {
+         "id": "ghost",
+         "display_name": "i18n(stonehearth:entities.critters.ghost.species)"
+      },
+      "stonehearth:entity_radius": 2.5,
+      "stonehearth:ai_packs": {
+         "actions": [
+            "stonehearth:actions:dispatcher:human_unit_control",
+            "stonehearth:actions:depart_visible_area",
+            "stonehearth:actions:depart_visible_area_in_place",
+            "stonehearth:actions:find_point_beyond_visible"
+         ],
+         "task_groups": [
+            "stonehearth:task_groups:solo:unit_control"
+         ]
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.monsters.forest.mila.display_name)",
+         "description": "i18n(stonehearth_ace:entities.monsters.forest.mila.description)",
+         "icon": "file(mila.png)",
+         "subject_override": "stonehearth:pets:kitten"
+      },
+      "stonehearth:calories": {
+         "hourly_calorie_loss": 0
+      }
+   }
+}
