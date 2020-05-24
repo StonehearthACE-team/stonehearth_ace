@@ -5,6 +5,10 @@ local log = radiant.log.create_logger('equipment_piece')
 
 AceEquipmentPieceComponent.EQUIPMENT_PREFERENCE_MULTIPLIER = 10
 
+function AceEquipmentPieceComponent:get_required_job_level(job)
+   return (job and self._json.required_job_levels and self._json.required_job_levels[job]) or self._json.required_job_level or 0
+end
+
 function AceEquipmentPieceComponent:is_upgrade_for(unit)
    -- upgradable items have a slot.  if there's not slot (e.g. the job outfits that
    -- just contain abilities), there's no possibility for upgrade
@@ -27,7 +31,7 @@ function AceEquipmentPieceComponent:is_upgrade_for(unit)
       return false
    end
 
-   if self:get_required_job_level() > job_component:get_current_job_level() then
+   if self:get_required_job_level(job_component:get_job_uri()) > job_component:get_current_job_level() then
       -- not high enough level to equip this
       return false
    end
