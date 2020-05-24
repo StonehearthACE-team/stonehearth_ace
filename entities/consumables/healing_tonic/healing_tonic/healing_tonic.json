@@ -1,0 +1,74 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "render_info": {
+         "color_map": "stonehearth_ace:color_map:ace",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/glass_material_map.json"
+         ],
+         "scale": 0.09
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(healing_tonic.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 1,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 1,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:consumable": {
+         "script": "stonehearth:consumables:scripts:heal_target",
+         "work_units": 2,
+         "consumable_qualities": [
+            {
+               "health_healed": 80,
+               "guts_healed": 3
+            },
+            {
+               "health_healed": 110,
+               "guts_healed": 3
+            },
+            {
+               "health_healed": 150,
+               "guts_healed": 4
+            },
+            {
+               "health_healed": 220,
+               "guts_healed": 5
+            }
+         ]
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.consumables.healing_tonic.healing_tonic.display_name)",
+         "description": "i18n(stonehearth_ace:entities.consumables.healing_tonic.healing_tonic.description)",
+         "icon": "file(healing_tonic.png)",
+         "is_item": true,
+         "category": "consumable",
+         "material_tags": [
+            "healing_item",
+            "tonic",
+            "healing_tonic",
+            "consumable",
+            "stockpile_healing_item"
+         ]
+      }
+   }
+}

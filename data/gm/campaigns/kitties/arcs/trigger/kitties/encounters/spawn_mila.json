@@ -1,0 +1,18 @@
+{
+   "type": "encounter",
+   "encounter_type": "script",
+   "in_edge": "spawn_mila",
+   "can_start": {
+      "unique": {
+         "number_active_check": {
+            "type": "deny_if_not",
+            "item": "number_spawned",
+            "node_name": "spawn_mila",
+            "value": 0
+         }
+      }
+   },
+   "script_info": {
+      "script": "stonehearth_ace:game_master:script_encounter:kitties:mila"
+   }
+}

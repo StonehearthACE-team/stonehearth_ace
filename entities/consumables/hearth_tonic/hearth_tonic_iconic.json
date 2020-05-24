@@ -2,6 +2,14 @@
    "mixins": "stonehearth:mixins:item_properties",
    "type": "entity",
    "components": {
+      "render_info": {
+         "color_map": "stonehearth_ace:color_map:ace",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/glass_material_map.json",
+            "/stonehearth/data/materials/material_maps/mob_material_map.json"
+         ],
+         "scale": 0.09
+      },
       "model_variants": {
          "default": {
             "models": [

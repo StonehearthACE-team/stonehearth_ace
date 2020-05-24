@@ -1,0 +1,30 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "render_info": {
+         "scale": 0.08
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(water_resist_tonic.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 }
+      },
+      "stonehearth:commands": {
+         "commands": [
+            "stonehearth:commands:use_consumable"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "is_item": true,
+         "category": "consumable"
+      }
+   }
+}

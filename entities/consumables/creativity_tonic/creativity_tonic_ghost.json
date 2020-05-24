@@ -1,0 +1,27 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "type": "entity",
+   "components": {
+      "render_info": {
+         "scale": 0.08
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0.1 }
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(creativity_tonic.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.consumables.creativity_tonic.display_name)",
+         "description": "i18n(stonehearth_ace:entities.consumables.creativity_tonic.description)",
+         "icon": "file(creativity_tonic.png)",
+         "category": "consumable"
+      }
+   }
+}

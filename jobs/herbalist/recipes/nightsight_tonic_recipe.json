@@ -1,0 +1,27 @@
+{
+   "type": "recipe",
+   "effort": 18,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.herbalist.recipes.nightsight_tonic_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.nightsight_tonic_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.nightsight_tonic_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/consumables/nightsight_tonic/nightsight_tonic.png",
+	"work_effect": "fiddle",
+   "workshop": "stonehearth_ace:herbalist:metal_cauldron",
+   "level_requirement": 4,
+   "ingredients": [
+      {
+         "material": "herb purple aromatic resource",
+         "count": 4
+      },
+		{
+         "material": "herb yellow bitter resource",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:consumables:nightsight_tonic"
+      }
+   ]
+}

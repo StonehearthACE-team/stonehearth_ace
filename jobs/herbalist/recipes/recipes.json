@@ -301,14 +301,64 @@
 		},
 		"tonics": {
          "recipes": {
+				"mixintypes": {
+					"small_herbal_tonic": "remove"
+				},
 				"hearth_tonic": {
                "recipe": "file(hearth_tonic_recipe.json)"
+            },				
+				"cold_tonic": {
+               "recipe": "file(cold_tonic_recipe.json)"
+            },
+				"nightsight_tonic": {
+               "recipe": "file(nightsight_tonic_recipe.json)"
+            },
+				"curiosity_tonic": {
+               "recipe": "file(curiosity_tonic_recipe.json)"
+            },
+				"warmth_tonic": {
+               "recipe": "file(warmth_tonic_recipe.json)"
+            },
+				"creativity_tonic": {
+               "recipe": "file(creativity_tonic_recipe.json)"
+            },
+				"creativity_tonic_2": {
+               "recipe": "file(creativity_tonic_2_recipe.json)"
+            },
+				"water_resist_tonic": {
+               "recipe": "file(water_resist_tonic_recipe.json)"
+            },
+				"water_resist_tonic_2": {
+               "recipe": "file(water_resist_tonic_2_recipe.json)"
+            },
+				"courage_tonic_2": {
+               "recipe": "file(courage_tonic_2_recipe.json)"
+            },
+				"stamina_tonic_2": {
+               "recipe": "file(stamina_tonic_2_recipe.json)"
+            },
+				"strength_tonic_2": {
+               "recipe": "file(strength_tonic_2_recipe.json)"
+            },
+				"energy_tonic_2": {
+               "recipe": "file(energy_tonic_2_recipe.json)"
+            }				
+         }
+      },
+		"bandages": {
+			"name": "i18n(stonehearth_ace:jobs.herbalist.recipes.bandages_name)",
+			"recipes" : {
+				"small_healing_tonic": {
+               "recipe": "/stonehearth/jobs/herbalist/recipes/small_healing_tonic_recipe.json"
             },
 				"hearth_healing_tonic": {
                "recipe": "file(hearth_healing_tonic_recipe.json)"
+            },
+				"healing_tonic": {
+               "recipe": "file(healing_tonic_recipe.json)"
             }
-         }
-      },
+			}
+		},
 		"decorations": {
 			"recipes" : {
 				"plant_glass_herbalist" : {

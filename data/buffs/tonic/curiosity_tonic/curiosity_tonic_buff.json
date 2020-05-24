@@ -1,0 +1,21 @@
+{
+   "type": "buff",
+   "axis": "buff",
+   "category": "curiosity_tonic",
+   "unique_in_category": true,
+   "rank": 5,
+   "display_name": "i18n(stonehearth_ace:data.buffs.curiosity_tonic.curiosity_tonic_buff.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.curiosity_tonic.curiosity_tonic_buff.description)",
+   "icon": "file(curiosity_tonic_buff.png)",
+   "duration": "4h",
+   "repeat_add_action": "renew_duration",
+   "effect": "stonehearth_ace:effects:buff_tonic_curiosity_added",
+   "modifiers": {
+      "curiosity": {
+         "add": 50
+      },
+      "xp_multiplier": {
+         "add": 0.05
+      }
+   }
+}

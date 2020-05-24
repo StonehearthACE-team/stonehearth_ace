@@ -1,0 +1,27 @@
+{
+   "type": "recipe",
+   "effort": 18,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.herbalist.recipes.creativity_tonic_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.creativity_tonic_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.creativity_tonic_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/consumables/creativity_tonic/creativity_tonic.png",
+   "workshop": "stonehearth_ace:herbalist:cauldron",
+	"work_effect": "fiddle",
+   "level_requirement": 2,
+   "ingredients": [    
+		{
+         "material": "herb yellow aromatic resource",
+         "count": 2
+      },
+		{
+         "material": "herb green aromatic resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:consumables:creativity_tonic"
+      }
+   ]
+}

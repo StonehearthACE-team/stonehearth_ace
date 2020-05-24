@@ -1,0 +1,27 @@
+{
+   "type": "recipe",
+   "effort": 18,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.herbalist.recipes.warmth_tonic_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.warmth_tonic_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.warmth_tonic_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/consumables/warmth_tonic/warmth_tonic.png",
+	"work_effect": "fiddle",
+   "workshop": "stonehearth_ace:herbalist:metal_cauldron",
+   "level_requirement": 4,
+   "ingredients": [
+      {
+         "material": "herb red bitter resource",
+         "count": 3
+      },
+		{
+         "material": "herb yellow bitter resource",
+         "count": 3
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:consumables:warmth_tonic"
+      }
+   ]
+}

@@ -1,0 +1,14 @@
+{
+   "type": "buff",
+   "axis": "buff",
+   "category": "nightsight_tonic",
+   "unique_in_category": true,
+   "rank": 5,
+   "display_name": "i18n(stonehearth_ace:data.buffs.nightsight_tonic.nightsight_tonic_buff.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.nightsight_tonic.nightsight_tonic_buff.description)",
+   "icon": "file(nightsight_tonic_buff.png)",
+   "duration": "4h",
+   "repeat_add_action": "renew_duration",
+   "effect": "stonehearth_ace:effects:buff_tonic_nightsight",
+   "restore_effect": true
+}

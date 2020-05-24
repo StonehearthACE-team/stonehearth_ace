@@ -2,6 +2,7 @@
    "mixins": "file(cold_tonic_ghost.json)",
    "type": "entity",
    "components": {
+      "stonehearth_ace:auto_replace": {},
       "stonehearth:commands": {
          "commands": [
             "stonehearth:commands:use_consumable"
@@ -26,14 +27,31 @@
       },
       "stonehearth:consumable": {
          "script": "stonehearth:consumables:scripts:buff_town",
-         "buff": "stonehearth_ace:buffs:cold_tonic"
+         "consumable_qualities": [
+            {
+               "buff": "stonehearth_ace:buffs:tonic:cold_tonic"
+            },
+            {
+               "buff": "stonehearth_ace:buffs:tonic:cold_tonic:fine"
+            },
+            {
+               "buff": "stonehearth_ace:buffs:tonic:cold_tonic:excellent"
+            },
+            {
+               "buff": "stonehearth_ace:buffs:tonic:cold_tonic:masterwork"
+            }
+         ]
       },
       "stonehearth:catalog": {
          "material_tags": [
             "cold_tonic",
+            "tonic",
             "consumable",
             "stockpile_consumable"
          ]
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
       }
    }
 }

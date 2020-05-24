@@ -1,0 +1,27 @@
+{
+   "type": "buff",
+   "axis": "buff",
+   "category": "energy_tonic",
+   "unique_in_category": true,
+   "rank": 5,
+   "display_name": "i18n(stonehearth_ace:data.buffs.energy_tonic_2.energy_tonic_2_buff.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.energy_tonic_2.energy_tonic_2_buff.description)",
+   "icon": "file(energy_tonic_2_buff.png)",
+   "duration": "4h",
+   "repeat_add_action": "renew_duration",
+   "effect": "stonehearth:effects:buff_tonic_energy_added",
+   "modifiers": {
+      "sleepiness": {
+         "multiply": 0.4
+      },
+      "diligence": {
+         "multiply": 2
+      },
+      "social_loss_amount": {
+         "multiply": 0.1
+      },
+      "speed": {
+         "multiply": 1.2
+      }
+   }
+}

@@ -1,0 +1,57 @@
+{
+   "mixins": "file(energy_tonic_2_ghost.json)",
+   "type": "entity",
+   "components": {
+      "stonehearth_ace:auto_replace": {},
+      "stonehearth:commands": {
+         "commands": [
+            "stonehearth:commands:use_consumable"
+         ]
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(energy_tonic_2_iconic.json)",
+         "ghost_form": "file(energy_tonic_2_ghost.json)",
+         "placeable_on_ground": true
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 11,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 1,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:consumable": {
+         "script": "stonehearth:consumables:scripts:buff_town",
+         "consumable_qualities": [
+            {
+               "buff": "stonehearth_ace:buffs:tonic:energy_tonic_2"
+            },
+            {
+               "buff": "stonehearth_ace:buffs:tonic:energy_tonic_2:fine"
+            },
+            {
+               "buff": "stonehearth_ace:buffs:tonic:energy_tonic_2:excellent"
+            },
+            {
+               "buff": "stonehearth_ace:buffs:tonic:energy_tonic_2:masterwork"
+            }
+         ]
+      },
+      "stonehearth:catalog": {
+         "material_tags": [
+            "energy_tonic_2",
+            "tonic",
+            "consumable",
+            "stockpile_consumable"
+         ]
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

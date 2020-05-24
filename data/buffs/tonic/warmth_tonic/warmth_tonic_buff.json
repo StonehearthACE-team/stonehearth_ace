@@ -1,0 +1,19 @@
+{
+   "type": "buff",
+   "axis": "buff",
+   "category": "warmth_tonic",
+   "unique_in_category": true,
+   "rank": 5,
+   "display_name": "i18n(stonehearth_ace:data.buffs.warmth_tonic.warmth_tonic_buff.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.warmth_tonic.warmth_tonic_buff.description)",
+   "icon": "file(warmth_tonic_buff.png)",
+   "duration": "4h",
+   "repeat_add_action": "renew_duration",
+   "effect": "stonehearth_ace:effects:buff_tonic_warmth_added",
+   "disallowed_buffs": [
+      "stonehearth_ace:buffs:weather:chilly",
+      "stonehearth_ace:buffs:weather:cold",
+      "stonehearth_ace:buffs:weather:freezing",
+      "stonehearth_ace:buffs:weather:freezing:water"
+   ]
+}

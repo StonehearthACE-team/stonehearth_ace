@@ -1,0 +1,17 @@
+{
+   "type": "buff",
+   "axis": "buff",
+   "category": "water_resist_tonic",
+   "unique_in_category": true,
+   "rank": 5,
+   "display_name": "i18n(stonehearth_ace:data.buffs.water_resist_tonic_2.water_resist_tonic_2_buff.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.water_resist_tonic_2.water_resist_tonic_2_buff.description)",
+   "icon": "file(water_resist_tonic_2_buff.png)",
+   "duration": "4h",
+   "repeat_add_action": "renew_duration",
+   "effect": "stonehearth_ace:effects:buff_tonic_water_resist_added",
+   "disallowed_buffs": [
+      "stonehearth_ace:buffs:weather:soaked",
+      "stonehearth:buffs:swimming"
+   ]
+}
