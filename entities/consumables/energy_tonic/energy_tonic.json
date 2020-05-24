@@ -19,12 +19,14 @@
 		},
 		"stonehearth:consumable": {
          "script": "stonehearth:consumables:scripts:buff_town",
+         "use_effect": "fiddle",
          "consumable_qualities": [
             {
                "buff": "stonehearth:buffs:energy_tonic"
             },
             {
-               "buff": "stonehearth_ace:buffs:tonic:energy_tonic:fine"
+               "buff": "stonehearth_ace:buffs:tonic:energy_tonic:fine",
+               "use_effect": false
             },
             {
                "buff": "stonehearth_ace:buffs:tonic:energy_tonic:excellent"
@@ -33,24 +35,22 @@
                "buff": "stonehearth_ace:buffs:tonic:energy_tonic:masterwork"
             }
          ],
-         "script_info": {
-            "condition": {
-               "type": "or",
-               "conditions": [
-                  {
-                     "type": "stonehearth:expendable_resources",
-                     "resource_name": "health",
-                     "comparison": "<",
-                     "use_percent": true,
-                     "value": 0.70
-                  },
-                  {
-                     "type": "stonehearth:buffs",
-                     "buff_uri": "stonehearth:buffs:groggy",
-                     "has_buff": true
-                  }
-               ]
-            }
+         "use_condition": {
+            "type": "or",
+            "conditions": [
+               {
+                  "type": "stonehearth:expendable_resources",
+                  "resource_name": "health",
+                  "comparison": "<",
+                  "use_percent": true,
+                  "value": 0.70
+               },
+               {
+                  "type": "stonehearth:buffs",
+                  "buff_uri": "stonehearth:buffs:groggy",
+                  "has_buff": true
+               }
+            ]
          }
       },
       "stonehearth:catalog": {

@@ -34,20 +34,15 @@ function UseConsumableOnCondition:on_buff_added(entity, buff)
       return
    end
    local consumable_data = ConsumablesLib.get_consumable_data(consumable)
-   self._script_info = consumable_data and consumable_data.script_info
-   if not self._script_info then
+   self._use_condition = consumable_data and consumable_data.use_condition
+   if not self._use_condition then
       return
    end
 
    -- set up triggers for when to use it
    self._listeners = {}
-   -- immediately consider using it so we might not have to create and destroy listeners
-   -- but wait for one game tick so that the item can finish equipping before we might try using/destroying it
-   radiant.on_game_loop_once('setup equipped consumable checks', function()
-         if not self:_consider_using() then
-            self:_create_listeners(self._script_info.condition)
-         end
-      end)
+   self:_create_listeners(self._use_condition)
+   self:_consider_using()
 end
 
 function UseConsumableOnCondition:_create_listeners(condition)
@@ -83,8 +78,11 @@ function UseConsumableOnCondition:_create_listener(event_name, check_fn)
 end
 
 function UseConsumableOnCondition:_consider_using()
-   if self:_consider_using_condition(self._script_info.condition) then
-      return self:_use_consumable()
+   local check_fn = function()
+      return self:_consider_using_condition(self._use_condition)
+   end
+   if check_fn() then
+      radiant.events.trigger_async(self._entity, 'stonehearth_ace:equipped_consumable:usable', check_fn)
    end
 end
 
@@ -136,21 +134,6 @@ function UseConsumableOnCondition:_consider_using_condition(condition)
             end
          end
       end
-   end
-end
-
-function UseConsumableOnCondition:_use_consumable()
-   local equipment_comp = self._entity:get_component('stonehearth:equipment')
-   local consumable = equipment_comp and equipment_comp:get_item_in_slot('consumable')
-   if consumable then
-      if ConsumablesLib.use_consumable(consumable, self._entity, self._entity) then
-         radiant.entities.destroy_entity(consumable)
-         return true
-      end
-   else
-      -- if we no longer have a consumable equipped, we should remove this buff to destroy all the listeners
-      radiant.entities.remove_buff(self._entity, self._buff:get_uri())
-      return true
    end
 end
 
