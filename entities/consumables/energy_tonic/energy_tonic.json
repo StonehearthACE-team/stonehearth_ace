@@ -25,18 +25,19 @@
                "buff": "stonehearth:buffs:energy_tonic"
             },
             {
-               "buff": "stonehearth_ace:buffs:tonic:energy_tonic:fine",
-               "use_effect": false
+               "buff": "stonehearth_ace:buffs:tonic:energy_tonic:fine"
             },
             {
-               "buff": "stonehearth_ace:buffs:tonic:energy_tonic:excellent"
+               "buff": "stonehearth_ace:buffs:tonic:energy_tonic:excellent",
+               "usable_while_incapacitated": true,
+               "use_effect": false
             },
             {
                "buff": "stonehearth_ace:buffs:tonic:energy_tonic:masterwork"
             }
          ],
          "use_condition": {
-            "type": "or",
+            "type": "and",
             "conditions": [
                {
                   "type": "stonehearth:expendable_resources",

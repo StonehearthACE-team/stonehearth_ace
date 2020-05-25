@@ -6,7 +6,7 @@ UseEquippedConsumable.name = 'use equipped consumable'
 UseEquippedConsumable.does = 'stonehearth:top'
 UseEquippedConsumable.args = {}
 UseEquippedConsumable.think_output = {}
-UseEquippedConsumable.priority = 0.5   -- TODO: figure out an appropriate priority for this; it should take priority over most/all non-compelled behavior
+UseEquippedConsumable.priority = 0.96   -- TODO: figure out an appropriate priority for this; it should take priority over most/all non-compelled behavior
 
 local log = radiant.log.create_logger('use_equipped_consumable')
 
@@ -20,15 +20,27 @@ function UseEquippedConsumable:start_thinking(ai, entity, args)
 end
 
 function UseEquippedConsumable:_on_equipped_consumable_usable(recheck_fn)
+   log:debug('_on_equipped_consumable_usable')
+   local consumable_changed = self:_update_equipped_consumable()
    self._recheck_fn = recheck_fn
 
-   log:debug('consumable is usable; checking incapacitated')
+   -- the equipped consumable may have changed (these are async events so they may have swapped to a new one that can't be used yet)
+   -- if so, we need to check if the new one is usable; if not, unready
+   if consumable_changed then
+      if not recheck_fn() then
+         self:_unready_up()
+         return
+      end
+   end
+
    if not self:_is_incapacitated() then
       self:_ready_up()
    end
 end
 
 function UseEquippedConsumable:_on_incapacitate_state_changed()
+   self:_update_equipped_consumable()
+
    if not self:_is_incapacitated() then
       log:debug('no longer incapacitated; rechecking if usable')
       if self._recheck_fn and self._recheck_fn() then
@@ -39,8 +51,31 @@ function UseEquippedConsumable:_on_incapacitate_state_changed()
    end
 end
 
+-- returns true if the consumable has changed (but not from nil)
+function UseEquippedConsumable:_update_equipped_consumable()
+   local prev_equipped = self._equipped_consumable
+   self._equipped_consumable = self:_get_equipped_consumable()
+   if not self._equipped_consumable then
+      self._recheck_fn = nil
+      self._ignore_incapacitate = nil
+      return prev_equipped ~= nil
+   end
+
+   local different = prev_equipped and (not prev_equipped:is_valid() or prev_equipped:get_id() ~= self._equipped_consumable:get_id())
+
+   if not prev_equipped or different then
+      local consumable_data = self._equipped_consumable and ConsumablesLib.get_consumable_data(self._equipped_consumable)
+      self._ignore_incapacitate = consumable_data and consumable_data.usable_while_incapacitated
+   end
+
+   if different then
+      self._recheck_fn = nil
+      return true
+   end
+end
+
 function UseEquippedConsumable:_ready_up()
-   log:debug('ready up! (%s)', tostring(self._ready))
+   log:debug('ready up! (was %s)', tostring(self._ready))
    if not self._ready then
       self._ready = true
       self._ai:set_think_output({})
@@ -48,7 +83,7 @@ function UseEquippedConsumable:_ready_up()
 end
 
 function UseEquippedConsumable:_unready_up()
-   log:debug('UNready up! (%s)', tostring(self._ready))
+   log:debug('UNready up! (was %s)', tostring(self._ready))
    if self._ready then
       self._ready = false
       self._ai:clear_think_output()
@@ -56,8 +91,15 @@ function UseEquippedConsumable:_unready_up()
 end
 
 function UseEquippedConsumable:_is_incapacitated()
-   local incapacitation = self._entity:get_component('stonehearth:incapacitation')
-   return incapacitation and incapacitation:is_incapacitated()
+   if not self._ignore_incapacitate then
+      local incapacitation = self._entity:get_component('stonehearth:incapacitation')
+      return incapacitation and incapacitation:is_incapacitated()
+   end
+end
+
+function UseEquippedConsumable:_get_equipped_consumable()
+   local equipment_comp = self._entity:get_component('stonehearth:equipment')
+   return equipment_comp and equipment_comp:get_item_in_slot('consumable')
 end
 
 function UseEquippedConsumable:stop_thinking(ai, entity)

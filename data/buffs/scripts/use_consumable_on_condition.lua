@@ -93,12 +93,16 @@ function UseConsumableOnCondition:_consider_using_condition(condition)
             return false
          end
       end
+      return true
+
    elseif condition.type == 'or' then
       for _, sub_cond in ipairs(condition.conditions) do
          if self:_consider_using_condition(sub_cond) then
             return true
          end
       end
+      return false
+      
    else
       if condition.type == 'stonehearth:expendable_resources' then
          -- supports <, <=, >, and >=
