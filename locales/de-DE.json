@@ -981,6 +981,10 @@
                   "teddy": {
                      "display_name": "Für immer Verspielt",
                      "tooltip": "Ich wurde von dem entzückenden Geist eines sehr schelmischen Kätzchens namens Teddy besucht!"
+                  },
+                  "mila": {
+                     "display_name": "Launischer Kätzchengeist",
+                     "tooltip": "Der freundliche Geist von Mila wurde größer, wilder und verteidigte die Stadt!"
                   }
                }
             },
@@ -2254,7 +2258,21 @@
          "toxin": {
             "toxin_sleeping": {
                "display_name": "Schlafgift",
-               "description": "Dies ist ein schwaches Gift. Je mehr gift angewendet wurde, umso länger wirkt es und wird das Bewusstsein der Zielperson schnell reduzieren und sie einschläfern."
+               "description": "Dies ist ein schwaches Gift. Je mehr gift angewendet wird, umso länger wirkt es und wird das Bewusstsein der Zielperson schnell reduzieren und sie einschläfern."
+            }
+         },
+         "infection": {
+            "minor_infection": {
+               "display_name": "Hohes Fieber",
+               "description": "Ich fühle mich schwindelig und schwach... Ich glaube, eine meiner Wunden ist leicht infiziert. Ausdauer und Willenskraft sind leicht vermindert.<ul><li>Hohes Fieber kann sich von selbst verfliegen, kann sich aber auch in eine Infektion verwandeln, wenn sie nicht behandelt wird</li><ul>"
+            },
+            "infection": {
+               "display_name": "Infektion",
+               "description": "Eww! Meine Wunden sehen wirklich schlimm aus. Ich brauche Hilfe, sonst wird es noch schlimmer! Ausdauer, Willensstärke und Muskelkraft sind ziemlich vermindert.<ul><li>Eine Infektion kann tödlich werden, wenn sie nicht behandelt wird</li><ul>"
+            },
+            "major_infection": {
+               "display_name": "Schwere Infektion",
+               "description": "Die Infektion ist außer Kontrolle geraten, und das Leben dieses Hearthlings ist extrem bedroht. Körper und Willenskraft sind vollständig geschwächt.<ul><li>Dieser Hearthling wird mit der Zeit großen Schaden nehmen</li><ul>"
             }
          },
          "spring_flavors": {
@@ -2377,6 +2395,78 @@
             "torn_soul": {
                "display_name": "Zerrissene Seele",
                "description": "Ich bin immer noch hier... Aber ich bin nicht mehr derselbe, seit ich von bösen Kreaturen verwundet wurde. Der Geist ist reduziert."
+            }
+         },
+         "cold_tonic": {
+            "cold_tonic_buff": {
+               "display_name": "Erfrischendes Elixier",
+               "description": "Blabla"
+            }
+         },
+         "courage_tonic_2": {
+            "courage_tonic_2_buff": {
+               "display_name": "Elixier des verbesserten Mutes",
+               "description": "Blublu"
+            }
+         },
+         "creativity_tonic": {
+            "creativity_tonic_buff": {
+               "display_name": "Kreativitäts-Elixier",
+               "description": "Bleble"
+            }
+         },
+         "creativity_tonic_2": {
+            "creativity_tonic_2_buff": {
+               "display_name": "Elixier der verbessertesn Kreativität",
+               "description": "Bloblo"
+            }
+         },
+         "curiosity_tonic": {
+            "curiosity_tonic_buff": {
+               "display_name": "Elixier der Neugierde",
+               "description": "blibli"
+            }
+         },
+         "energy_tonic_2": {
+            "energy_tonic_2_buff": {
+               "display_name": "Elixier der verbesserten Energie",
+               "description": "blabla"
+            }
+         },
+         "nightsight_tonic": {
+            "nightsight_tonic_buff": {
+               "display_name": "Nachtsicht-Elixier",
+               "description": "bloblo"
+            }
+         },
+         "stamina_tonic_2": {
+            "stamina_tonic_2_buff": {
+               "display_name": "Elixier der verbesserten Ausdauer",
+               "description": "bloblo"
+            }
+         },
+         "strength_tonic_2": {
+            "strength_tonic_2_buff": {
+               "display_name": "Elixier der verbesserten Stärke",
+               "description": "bleble"
+            }
+         },
+         "warmth_tonic": {
+            "warmth_tonic_buff": {
+               "display_name": "Wärme-Elixier",
+               "description": "blublu"
+            }
+         },
+         "water_resist_tonic": {
+            "water_resist_tonic_buff": {
+               "display_name": "Wasserabweisungs-Elixier",
+               "description": "blinblin"
+            }
+         },
+         "water_resist_tonic_2": {
+            "water_resist_tonic_2_buff": {
+               "display_name": "Elixier der verbesserten Wasserabweisung",
+               "description": "brumbrum"
             }
          }
       },
@@ -3095,7 +3185,7 @@
             },
             "herbalist_metal_cauldron_recipe": {
                "recipe_name": "Metallkessel des Kräuterarztes",
-               "description": "Wird vom Kräuterarzt zum Brauen und zur Zubereitung verbesserter Tränke verwendet.",
+               "description": "Wird vom Kräuterarzt zum Brauen und zur Zubereitung verbesserter Tränke verwendet. Ersetzt den Steinkessel.",
                "flavor": "Der Flügel einer Fledermaus, das Auge eines Molchs... Warte, was?"
             },
             "hearth_healing_tonic_recipe": {
@@ -3112,6 +3202,71 @@
                "recipe_name": "Leichtes Herzknospen-Elixier",
                "description": "Ein mächtiger Trank, der Mut, Stärke und Bedrohung stärkt und mit der Zeit langsam heilt.",
                "flavor": "Möge es für dich ein Licht an dunklen Orten sein, wenn alle anderen Lichter erloschen sind! -Sasha of Clan Amberstone"
+            },
+            "healing_tonic_recipe": {
+               "recipe_name": "Heilungs-Elixier",
+               "description": "Wird vom Kräuterarzt verwendet, um Wunden zu heilen.",
+               "flavor": ""
+            },
+            "cold_tonic_recipe": {
+               "recipe_name": "Erfrischendes Elixier",
+               "description": "Schützt vor heißem Wetter",
+               "flavor": ""
+            },
+            "nightsight_tonic_recipe": {
+               "recipe_name": "Nachtsicht-Elixier",
+               "description": "Bietet bessere Sicht bei Nacht",
+               "flavor": ""
+            },
+            "warmth_tonic_recipe": {
+               "recipe_name": "Wärme-Elixier",
+               "description": "Schützt vor kaltem Wetter",
+               "flavor": ""
+            },
+            "water_resist_tonic_recipe": {
+               "recipe_name": "Wasserabweisungs-Elixier",
+               "description": "Stösst Regenwasser ab",
+               "flavor": ""
+            },
+            "water_resist_tonic_2_recipe": {
+               "recipe_name": "Elixier der verbesserten Wasserabweisung",
+               "description": "Weist so viel Wasser ab, dass Hearthlinge unter Wasser mit normaler Geschwindigkeit laufen können",
+               "flavor": ""
+            },
+            "strength_tonic_2_recipe": {
+               "recipe_name": "Elixier der verbesserten Stärke",
+               "description": "Erhöht auch den Schaden",
+               "flavor": ""
+            },
+            "stamina_tonic_2_recipe": {
+               "recipe_name": "Elixier der verbesserten Ausdauer",
+               "description": "Erhöht die erhaltene Heilung",
+               "flavor": ""
+            },
+            "energy_tonic_2_recipe": {
+               "recipe_name": "Elixier der verbesserten Energie",
+               "description": "Lässt sie weniger reden",
+               "flavor": ""
+            },
+            "curiosity_tonic_recipe": {
+               "recipe_name": "Elixier der Neugierde",
+               "description": "Steigert die Neugierde und das Maß in dem Sie Erfahrungen sammeln",
+               "flavor": ""
+            },
+            "creativity_tonic_2_recipe": {
+               "recipe_name": "Elixier der verbessertesn Kreativität",
+               "description": "Erhöht auch die Chance für qualitativ hochwertigere Produkte",
+               "flavor": ""
+            },
+            "creativity_tonic_recipe": {
+               "recipe_name": "Kreativitäts-Elixier",
+               "description": "Macht das Herstellen schneller",
+               "flavor": ""
+            },
+            "courage_tonic_2_recipe": {
+               "recipe_name": "Elixier des verbesserten Mutes",
+               "description": "Erhöht auch die Panzerung",
+               "flavor": ""
             },
             "gruit_recipe": {
                "recipe_name": "Fruchtwickel",
@@ -4207,12 +4362,12 @@
             },
             "blacksmith_forge_advanced_recipe": {
                "recipe_name": "Verbesserter Schmiedeofen",
-               "description": "Verbessert und effizienter als herkömmliche Öfen, ist dieser Ofen heiß genug, um Edelmetalle zu schmelzen.",
+               "description": "Dieser verbesserte und effizientere Ofen ist heiß genug, um Edelmetalle zu schmelzen. Ersetzt den regulären Ofen.",
                "flavor": "Alles, was Gold ist, glitzert nicht; aber wenn doch, wird es in einem guter Ofen schmelzen. -Lucan Varius, Feuerkünstler"
             },
             "blacksmith_workbench_advanced_recipe": {
                "recipe_name": "Verbesserter Schmiedeamboss",
-               "description": "Dieser unglaubliche Amboss kann das Metall lange genug heiß halten, selbst für die kompliziertesten und anspruchsvollsteb Handwerke.",
+               "description": "Dieser unglaubliche Amboss kann das Metall lange genug heiß halten, selbst für die kompliziertesten und anspruchsvollsteb Handwerke. Ersetzt den regulären Amboss.",
                "flavor": "Die Balance zwischen Heizen und Hämmern ist von wesentlicher Bedeutung. Oder mach einfach beide auf einmal. -Lucan Varius, Feuerkünstler"
             },
             "charcoal_recipe": {
@@ -5837,6 +5992,10 @@
             "hearth_healing_tonic": {
                "display_name": "Herzknospen-Heilungselixier",
                "description": "Wird vom Kräuterarzt genutzt, um Wunden effizient zu heilen "
+            },
+            "healing_tonic": {
+               "display_name": "Heilungs-Elixier",
+               "description": "Kann vom Kräuterarzt zum Heilen einiger Wunden verwendet werden."
             }
          },
          "fertilizer_hearth": {
@@ -5850,6 +6009,50 @@
          "cold_tonic": {
             "display_name": "Erfrischendes Elixier",
             "description": "Schützt vor heißem Wetter"
+         },
+         "nightsight_tonic": {
+            "display_name": "Nachtsicht-Elixier",
+            "description": "Bietet bessere Sicht bei Nacht"
+         },
+         "warmth_tonic": {
+            "display_name": "Wärme-Elixier",
+            "description": "Schützt vor kaltem Wetter"
+         },
+         "water_resist_tonic": {
+            "display_name": "Wasserabweisungs-Elixier",
+            "description": "Stösst Regenwasser ab"
+         },
+         "water_resist_tonic_2": {
+            "display_name": "Elixier der verbesserten Wasserabweisung",
+            "description": "Weist so viel Wasser ab, dass Hearthlinge unter Wasser mit normaler Geschwindigkeit laufen können."
+         },
+         "strength_tonic_2": {
+            "display_name": "Elixier der verbesserten Stärke",
+            "description": "Erhöht auch den Schaden"
+         },
+         "stamina_tonic_2": {
+            "display_name": "Elixier der verbesserten Ausdauer",
+            "description": "Macht sie auch weniger hungrig"
+         },
+         "energy_tonic_2": {
+            "display_name": "Elixier der verbesserten Energie",
+            "description": "Macht sie weniger schläfrig"
+         },
+         "curiosity_tonic": {
+            "display_name": "Elixier der Neugierde",
+            "description": "Steigert die Neugierde und das Maß in dem Sie Erfahrungen sammeln"
+         },
+         "creativity_tonic_2": {
+            "display_name": "Elixier der verbesserten Kreativität",
+            "description": "Erhöht auch die Chance für qualitativ hochwertigere Produkte"
+         },
+         "creativity_tonic": {
+            "display_name": "Kreativitäts-Elixier",
+            "description": "Macht das Herstellen schneller"
+         },
+         "courage_tonic_2": {
+            "display_name": "Elixier des verbesserten Mutes",
+            "description": "Erhöht auch die Panzerung"
          }
       },
       "construction": {
@@ -8653,6 +8856,10 @@
             "teddy": {
                "display_name": "Geist von Teddy",
                "description": "Verspielt und bezaubernd"
+            },
+            "mila": {
+               "display_name": "Geist von Mila",
+               "description": "Kämpferisch und mutig!"
             }
          }
       },
@@ -9905,6 +10112,10 @@
                "display_name_arctic": "Hainling",
                "display_name_desert": "Kaktusling",
                "display_name_highlands": "Birkling"
+            },
+            "mila": {
+               "display_name": "Geist von Mila",
+               "description": "Bereit andere zu verteidigen!"
             }
          },
          "avian": {
