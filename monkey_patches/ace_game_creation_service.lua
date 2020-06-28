@@ -296,6 +296,13 @@ function AceGameCreationService:_apply_reembark_settings_to_citizen(session, kin
    if citizen_spec.titles then
       citizen:add_component('stonehearth_ace:titles'):set_titles(citizen_spec.titles)
    end
+
+   if citizen_spec.buffs then
+      local buffs = citizen:add_component('stonehearth:buffs')
+      for buff_uri, options in pairs(citizen_spec.buffs) do
+         buffs:add_buff(buff_uri, options)
+      end
+   end
 end
 
 return AceGameCreationService

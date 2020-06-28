@@ -36,19 +36,57 @@
          "capacity": 2
       },
       "stonehearth_ace:water_pump": {
-         "rate": 1,
-         "height": 2,
-         "depth": 0
+         "rotations": [
+            {
+               "dimension": "y",
+               "direction": {"x": 0, "y": 1, "z": 0},
+               "model": "file(pipe_y.qb)",
+               "max_length": 8,
+               "origin": {"x": 0, "y": 2, "z": 0},
+               "offset": {"x": -5, "y": 0, "z": 5}
+            },
+            {
+               "dimension": "x",
+               "direction": {"x": -1, "y": 0, "z": 0},
+               "model": "file(pipe_xz.qb)",
+               "max_length": 8,
+               "origin": {"x": -1, "y": 0, "z": 0},
+               "offset": {"x": -5, "y": 0, "z": 5}
+            },
+            {
+               "dimension": "x",
+               "direction": {"x": 1, "y": 0, "z": 0},
+               "model": "file(pipe_xz.qb)",
+               "max_length": 8,
+               "origin": {"x": 1, "y": 0, "z": 0},
+               "offset": {"x": -5, "y": 0, "z": 5},
+               "rotation": 180
+            },
+            {
+               "dimension": "z",
+               "direction": {"x": 0, "y": 0, "z": -1},
+               "model": "file(pipe_xz.qb)",
+               "max_length": 8,
+               "origin": {"x": 0, "y": 0, "z": 0},
+               "offset": {"x": -5, "y": 0, "z": 5},
+               "rotation": 270
+            },
+            {
+               "dimension": "z",
+               "direction": {"x": 0, "y": 0, "z": 1},
+               "model": "file(pipe_xz.qb)",
+               "max_length": 8,
+               "origin": {"x": 0, "y": 0, "z": 1},
+               "offset": {"x": -5, "y": 0, "z": 5},
+               "rotation": 90
+            }
+         ]
       },
-      "stonehearth_ace:entity_modification": {
-         "regions": {
-            "region_with_topper": [
-               {
-                  "min": { "x": -1, "y": 0, "z": 0 },
-                  "max": { "x": 0, "y": 1, "z": 1 }
-               }
-            ]
-         }
+      "stonehearth_ace:water_sponge": {
+         "input_location": {"x": -1, "y": 0, "z": 0},
+         "output_location": {"x": -1, "y": 2, "z": 0},
+         "input_rate": 2,
+         "output_rate": 12
       },
       "effect_list": {
          "default": "file(/data/rigs/entities/gizmos/water_pump/effects/closed.json)",

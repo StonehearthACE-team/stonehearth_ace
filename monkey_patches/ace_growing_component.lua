@@ -160,7 +160,11 @@ end
 
 AceGrowingComponent._ace_old__grow = GrowingComponent._grow
 function AceGrowingComponent:_grow()
-	self:_ace_old__grow()
+   if not radiant.entities.is_entity_town_suspended(self._entity) then
+      self:_ace_old__grow()
+   else
+      self:_set_growth_timer()
+   end
 
 	self._sv._current_growth_recalculate_progress = 0
 end

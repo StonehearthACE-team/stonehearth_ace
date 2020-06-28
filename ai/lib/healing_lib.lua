@@ -15,22 +15,37 @@ function healing_lib.get_conditions_needing_cure(entity)
    local buffs = entity and entity:is_valid() and entity:get_component('stonehearth:buffs')
    if buffs then
       for condition, rest_priority in pairs(stonehearth.constants.healing.SPECIAL_ATTENTION_CONDITIONS) do
-         if buffs:has_category_buffs(condition) then
-            table.insert(conditions, condition)
+         local category_buffs = buffs:get_buffs_by_category(condition)
+         if category_buffs then
+            local condition_ranks = {}
+            for _, buff in pairs(category_buffs) do
+               table.insert(condition_ranks, buff:get_rank())
+            end
+            -- sort in descending order
+            table.sort(condition_ranks, function(a, b) return a > b end)
+            local entry = {
+               condition = condition,
+               priority = stonehearth.constants.healing.SPECIAL_ATTENTION_CONDITIONS[condition],
+               highest_rank = condition_ranks[1],
+               ranks = condition_ranks
+            }
+            entry.highest_priority = entry.highest_rank * entry.priority
+            table.insert(conditions, entry)
          end
       end
    end
+   
+   table.sort(conditions, function(a, b)
+      return a.highest_priority > b.highest_priority
+   end)
 
    return conditions
 end
 
 function healing_lib.get_highest_priority_condition(entity)
-   local conditions = healing_lib.get_conditions_needing_cure(entity)
-   table.sort(conditions, function(a, b)
-      return stonehearth.constants.healing.SPECIAL_ATTENTION_CONDITIONS[a] > stonehearth.constants.healing.SPECIAL_ATTENTION_CONDITIONS[b]
-   end)
-   if #conditions > 0 then
-      return conditions[1], stonehearth.constants.healing.SPECIAL_ATTENTION_CONDITIONS[conditions[1]]
+   local _, condition = next(healing_lib.get_conditions_needing_cure(entity))
+   if condition then
+      return condition.condition, condition.highest_priority
    end
 end
 
@@ -108,18 +123,24 @@ function healing_lib.filter_healing_item(item, conditions, level)
 
       if #conditions > 0 then
          if not consumable_data.cures_conditions then
-            return false
+            -- if this item doesn't cure anything, we can use it for anything (even if it isn't very good at it)
+            return true
          end
-         local cures_it = false
+
          for _, condition in ipairs(conditions) do
-            if consumable_data.cures_conditions[condition] then
-               cures_it = true
-               break
+            local cures_rank = consumable_data.cures_conditions[condition.condition]
+            if cures_rank then
+               return true
+               -- we're now partially treating buffs of higher ranks, so we don't care what rank it can fully cure
+               -- for i = #condition.ranks, 1, -1 do
+               --    if cures_rank >= condition.ranks[i] then
+               --       return true
+               --    end
+               -- end
             end
          end
-         if not cures_it then
-            return false
-         end
+
+         return false
       end
 
       return true
@@ -137,35 +158,70 @@ function healing_lib.rate_healing_item(item, conditions, missing_guts, missing_h
       local health_healed = math.floor((consumable_data.health_healed or 0) * (healing_multiplier or 1) / healing_constants.FILTER_HEALTH_DIVISOR)
       
       -- if curing a condition, or no condition but it fully restores their guts, it's fulfilling the primary purpose
-      if conditions and #conditions > 0 then
-         value = 0.5
-      elseif guts_healed >= missing_guts then
-         -- if the consumable would cure conditions, rate it down (we'd prefer to save those for actually curing conditions)
-         if not consumable_data.cures_conditions then
-            value = 0.5
-         else
-            local cures_something = false
-            for _, cures_it in pairs(consumable_data.cures_conditions) do
-               if cures_it then
-                  cures_something = true
-                  break
+      if conditions and #conditions > 0 and consumable_data.cures_conditions then
+         local _, this_condition = next(conditions)
+         local highest_priority_condition = this_condition.highest_priority
+			local highest_priority_cure = 0
+         for _, condition in ipairs(conditions) do
+            local cures_rank = consumable_data.cures_conditions[condition.condition]
+            -- don't bother considering this condition if the cure doesn't exist or if the highest priority for it is lower than our current highest cure
+            if cures_rank and condition.highest_priority > highest_priority_cure then
+               if cures_rank == condition.highest_rank then
+                  highest_priority_cure = math.max(highest_priority_cure, condition.highest_priority)
+               elseif cures_rank > condition.highest_rank then
+                  -- if it would "over-cure" (cure higher rank conditions), rate it lower by half a rank; we'd prefer to save those for the higher rank conditions
+                  highest_priority_cure = math.max(highest_priority_cure, condition.priority * (condition.highest_rank - 0.5))
+               else
+                  -- it will partially cure, so rank it based on how much
+                  highest_priority_cure = math.max(highest_priority_cure, condition.highest_priority / (2 ^ (condition.highest_rank - cures_rank)))
+                  -- for i = 2, i < #condition.ranks do
+                  --    if cures_rank >= condition.ranks[i] then
+                  --       highest_priority_cure = math.max(highest_priority_cure, condition.priority * condition.ranks[i])
+                  --       break
+                  --    end
+                  -- end
                end
             end
-            if not cures_something then
-               value = 0.5
+         end
+
+         if highest_priority_cure > 0 then
+            if highest_priority_condition > 0 then
+               value = 0.6 * highest_priority_cure / highest_priority_condition
+            else
+               value = 0.6
+            end
+         end
+      elseif guts_healed >= missing_guts then
+         -- if the consumable would cure conditions, rate it down (we'd prefer to save those for actually curing conditions)
+         if (not conditions or #conditions == 0) then
+            -- no conditions and it doesn't cure anything: give it the full value
+            if not consumable_data.cures_conditions then
+               value = 0.6
+            else
+               -- if it cures something but we have no conditions, that's bad!
+               local cures_something = false
+               for _, cures_it in pairs(consumable_data.cures_conditions) do
+                  if cures_it then
+                     cures_something = true
+                     break
+                  end
+               end
+               if not cures_something then
+                  value = 0.6
+               end
             end
          end
       end
 
-      -- an extra 0.2 if it fully heals health
+      -- an extra 0.1 if it fully heals health
       if health_healed >= missing_health then
-         value = value + 0.2
+         value = value + 0.1
       end
 
       -- the remaining potential 0.3 is for efficiency (if guts are missing, that's all we care about; otherwise we only care about health)
       value = value + 0.3 - 0.3 * 
-            (missing_guts > 0 and math.max(math.abs(guts_healed - missing_guts), healing_constants.FILTER_GUTS_MAX_DIFF) / healing_constants.FILTER_GUTS_MAX_DIFF or
-            math.max(math.abs(health_healed - missing_health), healing_constants.FILTER_HEALTH_MAX_DIFF) / healing_constants.FILTER_HEALTH_MAX_DIFF)
+            ((missing_guts > 0 and math.min(math.abs(guts_healed - missing_guts), healing_constants.FILTER_GUTS_MAX_DIFF) / healing_constants.FILTER_GUTS_MAX_DIFF) or
+            (math.min(math.abs(health_healed - missing_health), healing_constants.FILTER_HEALTH_MAX_DIFF) / healing_constants.FILTER_HEALTH_MAX_DIFF))
    end
 
    return value
@@ -182,13 +238,18 @@ function healing_lib.make_healing_filter(healer, target)
       return nil
    end
 
+   -- this potentially makes a ton of different item filters; will this negatively impact performance?
    local condition_str = ''
-   table.sort(conditions)
    for _, condition in ipairs(conditions) do
-      condition_str = condition_str .. condition
+      local rank_str = tostring(condition.highest_rank)
+      for i = 2, #condition.ranks do
+         rank_str = rank_str .. ',' .. condition.ranks[i]
+      end
+
+      condition_str = condition_str .. condition.condition .. ':' .. rank_str .. '|'
    end
 
-   return stonehearth.ai:filter_from_key('drink_filter', condition_str .. '|' .. level .. '|' .. guts .. '|' .. health, function(item)
+   return stonehearth.ai:filter_from_key('healing_item_filter', condition_str .. level .. '|' .. guts .. '|' .. health, function(item)
             return healing_lib.filter_healing_item(item, conditions, level)
          end)
 end

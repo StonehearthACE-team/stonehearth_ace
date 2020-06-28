@@ -27,6 +27,7 @@ function GetDrinkFromContainerFromStorage:start_thinking(ai, entity, args)
    local owner_id = radiant.entities.get_player_id(entity)
    local key = tostring(args.drink_filter_fn) .. ':' .. owner_id
    ai:set_think_output({
+         owner_player_id = owner_id,
          drink_container_filter_fn = stonehearth.ai:filter_from_key('drink_container_storage_filter', key, make_drink_container_filter(owner_id, args.drink_filter_fn)),
       })
 end
@@ -43,12 +44,16 @@ return ai:create_compound_action(GetDrinkFromContainerFromStorage)
             rating_fn = ai.ARGS.drink_rating_fn,
             description = 'find path to drink container',
          })
-         :execute('stonehearth:pickup_item_type_from_storage', {
+         :execute('stonehearth:find_entity_type_in_storage', {
             filter_fn = ai.ARGS.drink_filter_fn,
             rating_fn = ai.ARGS.drink_rating_fn,
             storage = ai.PREV.storage,
+            owner_player_id = ai.BACK(3).owner_player_id,
             description = 'find path to drink container',
          })
-         :execute('stonehearth:reserve_entity', { entity = ai.PREV.item })
+         :execute('stonehearth:goto_entity_in_storage', {
+            entity = ai.PREV.item,
+         })
+         :execute('stonehearth:reserve_entity', { entity = ai.BACK(2).item })
          :execute('stonehearth:drop_carrying_now', {})
-         :execute('stonehearth_ace:get_drink_from_container_adjacent', { container = ai.BACK(3).item })
+         :execute('stonehearth_ace:get_drink_from_container_adjacent', { container = ai.BACK(4).item })

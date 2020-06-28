@@ -38,9 +38,11 @@ function WaitForSpecialAttentionCondition:_on_buff_added()
    self._ai:set_utility(priority or 0)
    if priority ~= self._priority then
       self._priority = priority
-      self:_signal()
-   else
-      self:_clear_signal()
+      if priority then
+         self:_signal()
+      else
+         self:_clear_signal()
+      end
    end
 end
 
@@ -57,6 +59,7 @@ function WaitForSpecialAttentionCondition:_clear_signal()
       return
    end
 
+   self._signaled = false
    self._ai:clear_think_output()
 end
 

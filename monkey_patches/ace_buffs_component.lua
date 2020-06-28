@@ -1,4 +1,5 @@
 local BuffsComponent = radiant.mods.require('stonehearth.components.buffs.buffs_component')
+local rng = _radiant.math.get_default_rng()
 local AceBuffsComponent = class()
 
 AceBuffsComponent._ace_old_create = BuffsComponent.create
@@ -98,15 +99,35 @@ function AceBuffsComponent:get_buffs_by_category(category)
    end
 end
 
+function AceBuffsComponent:get_buffs()
+   return self._sv.buffs
+end
+
+function AceBuffsComponent:get_reembarkable_buffs()
+   local buffs = {}
+   for buff_id, buff in pairs(self._sv.buffs) do
+      if buff:is_reembarkable() then
+         buffs[buff_id] = buff:get_options()
+      end
+   end
+   return buffs
+end
+
 function AceBuffsComponent:has_category_buffs(category)
    return self._sv.buffs_by_category[category] ~= nil
 end
 
-function AceBuffsComponent:remove_category_buffs(category)
+function AceBuffsComponent:remove_category_buffs(category, rank, reduce_ranks)
    local category_buffs = self:get_buffs_by_category(category)
    if category_buffs then
-      for buff_id, _ in pairs(category_buffs) do
-         self:remove_buff(buff_id, true)
+      for buff_id, buff in pairs(category_buffs) do
+         -- if rank is specified, only remove the buff if it has a rank <= that rank
+         if not rank or (rank >= buff:get_rank()) then
+            self:remove_buff(buff_id, true)
+         elseif rank and reduce_ranks then
+            -- if reduce_ranks option is specified, proportionately reduce the effective rank of the buff
+            buff:reduce_rank(rank)
+         end
       end
    end
 end
@@ -315,6 +336,14 @@ function AceBuffsComponent:remove_buff(uri, remove_all_stacks)
                   self:_remove_managed_property(name, details)
                end
             end
+				
+				if json.leftover_buffs then
+					for leftover_buff, chance in pairs(json.leftover_buffs) do
+						if rng:get_real(0, 1) < chance then
+							radiant.entities.add_buff(self._entity, leftover_buff)
+						end  
+					end
+				end
          end
 
          self._sv.buffs[uri] = nil

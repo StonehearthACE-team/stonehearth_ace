@@ -219,4 +219,36 @@ function AceBuff:_update_duration_stat()
    end
 end
 
+function AceBuff:is_reembarkable()
+   return self._json.reembarkable
+end
+
+function AceBuff:get_options()
+   return {
+      stacks = self._sv.stacks
+   }
+end
+
+function AceBuff:get_stacks()
+   return self._sv.stacks
+end
+
+function AceBuff:get_rank()
+   return self._sv.rank or self._json.rank or 1
+end
+
+function AceBuff:reduce_rank(amount)
+   -- the amount is logarithmic: reducing a rank 3 "by" 2 reduces it by 1 to 2; reducing it "by" 1 reduces it by 1/2 to 2.5
+   local rank = self:get_rank()
+   if amount >= rank then
+      self:destroy()
+   elseif amount > 0 then
+      local new_rank = rank - (1 / (2 ^ (rank - amount - 1)))
+      -- round it down slightly to account for weirdness
+      new_rank = math.floor(new_rank * 100000) / 100000
+      self._sv.rank = new_rank
+      self.__saved_variables:mark_changed()
+   end
+end
+
 return AceBuff

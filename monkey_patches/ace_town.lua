@@ -7,6 +7,8 @@ local AceTown = class()
 
 AceTown._ace_old__pre_activate = Town._pre_activate
 function AceTown:_pre_activate()
+   self._suspendable_entities = {}
+
    self:_ace_old__pre_activate()
 
    if not self._sv._total_travelers_visited then
@@ -418,6 +420,53 @@ function AceTown:remove_default_storage(storage_id)
    self._sv.default_storage[storage_id] = nil
    self.__saved_variables:mark_changed()
    self:_destroy_default_storage_listener(storage_id)
+end
+
+AceTown._ace_old_suspend_town = Town.suspend_town
+function AceTown:suspend_town()
+   self:_ace_old_suspend_town()
+
+   self:_suspend_suspendable_entities()
+end
+
+AceTown._ace_old_continue_town = Town.continue_town
+function AceTown:continue_town()
+   self:_continue_suspendable_entities()
+
+   self:_ace_old_continue_town()
+end
+
+function AceTown:register_suspendable_entity(entity)
+   if entity and entity:is_valid() then
+      self._suspendable_entities[entity:get_id()] = entity
+
+      -- if register is called after suspend applied on load
+      if self._sv._is_suspended then
+         local suspendable = entity:get_component('stonehearth_ace:suspendable')
+         suspendable:town_suspended()
+      end
+   end
+end
+
+function AceTown:unregister_suspendable_entity(entity)
+   if entity then
+      self._suspendable_entities[entity:get_id()] = nil
+   end
+end
+
+function AceTown:_suspend_suspendable_entities()
+   -- suspend farms (growing); evolve/herbalist_planter also? this should be made generic as a separate component (like an interface)
+   for _, entity in pairs(self._suspendable_entities) do
+      local suspendable = entity:get_component('stonehearth_ace:suspendable')
+      suspendable:town_suspended()
+   end
+end
+
+function AceTown:_continue_suspendable_entities()
+   for _, entity in pairs(self._suspendable_entities) do
+      local suspendable = entity:get_component('stonehearth_ace:suspendable')
+      suspendable:town_continued()
+   end
 end
 
 return AceTown

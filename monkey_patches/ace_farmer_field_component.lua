@@ -63,19 +63,25 @@ function AceFarmerFieldComponent:post_activate()
 
    self._water_recalculate_threshold = stonehearth.constants.farming.WATER_RECALCULATE_THRESHOLD
 
-   self._post_harvest_crop_listeners = {}
-   if self._is_restore then
-      self:_load_field_type()
-      self:_create_water_listener()
-      self:_create_climate_listeners()
-      self:_create_all_post_harvest_crop_listeners()
-   else
-      self._sv.harvest_enabled = true
-   end
-
    self:_ensure_crop_counts()
    self:_ensure_fertilize_layer()
    self:_ensure_fertilizer_preference()
+
+   self._post_harvest_crop_listeners = {}
+   if self._is_restore then
+      self:_load_field_type()
+      self:_create_listeners()
+   else
+      self._sv.harvest_enabled = true
+   end
+end
+
+function AceFarmerFieldComponent:_create_listeners()
+   if not self._is_suspended then
+      self:_create_water_listener()
+      self:_create_climate_listeners()
+      self:_create_all_post_harvest_crop_listeners()
+   end
 end
 
 function AceFarmerFieldComponent:set_harvest_enabled(enabled)
@@ -102,6 +108,16 @@ function AceFarmerFieldComponent:set_harvest_enabled(enabled)
          end
       end
    end
+end
+
+function AceFarmerFieldComponent:town_suspended()
+   self._is_suspended = true
+   self:_destroy_listeners()
+end
+
+function AceFarmerFieldComponent:town_continued()
+   self._is_suspended = nil
+   self:_create_listeners()
 end
 
 function AceFarmerFieldComponent:is_harvest_enabled()
@@ -232,7 +248,7 @@ function AceFarmerFieldComponent:notify_till_location_finished(location)
    }
 
    --self:_create_tilled_dirt(location, offset.x + 1, offset.z + 1)
-   self._sv.contents[offset.x + 1][offset.z + 1] = dirt_plot
+   self._sv.contents[x][y] = dirt_plot
    local local_fertility = rng:get_gaussian(self._sv.general_fertility, stonehearth.constants.soil_fertility.VARIATION)
    --local dirt_plot_component = dirt_plot:get_component('stonehearth:dirt_plot')
 
@@ -253,7 +269,7 @@ function AceFarmerFieldComponent:notify_till_location_finished(location)
    
    local key = x .. '|' .. y
    if self._sv._queued_overwatered[key] then
-      self._sv.contents[x][y].overwatered_model = self:_get_overwatered_model()
+      dirt_plot.overwatered_model = self:_get_overwatered_model()
       self._sv._queued_overwatered[key] = nil
    end
 
@@ -787,6 +803,16 @@ function AceFarmerFieldComponent:_create_water_listener()
    self:_set_water_volume(self._water_signal:get_water_volume())
 end
 
+function AceFarmerFieldComponent:_destroy_water_listener()
+   local water_component = self._entity:add_component('stonehearth_ace:water_signal')
+   if self._water_signal then
+      water_component:remove_signal('farmer_field')
+   end
+   if self._flood_signal then
+      water_component:remove_signal('farmer_field_flood')
+   end
+end
+
 function AceFarmerFieldComponent:_set_water_volume(volume)
    if volume then
       -- we consider the normal ideal water volume to crop ratio to be a filled half perimeter around an 11x11 farm of 66 crops
@@ -872,27 +898,34 @@ function AceFarmerFieldComponent:_update_effective_humidity_level()
       relative_level = levels.SOME
    end
 
-   -- TODO: need to check pattern for eligible plots (furrows)
    if self._sv.effective_humidity_level ~= relative_level then
       local size = self._sv.size
       local contents = self._sv.contents
       if relative_level == levels.EXTRA then
-         -- randomly assign ~40% of furrow tiles (min of 1 per furrow column) to have puddles
-         for x = 2, size.x, 2 do
-            for i = 1, math.max(1, size.y * 0.4) do
-               local y = rng:get_int(1, size.y)
+         -- randomly assign ~20% of tiles to have puddles (only allowed in furrows)
+         local num_desired = size.x * size.y * 0.2
+         -- cap the number of attempts in case this field layout just doesn't allow for that many
+         for i = 1, num_desired * 5 do
+            local x = rng:get_int(1, size.x)
+            local y = rng:get_int(1, size.y)
+            if self:_is_location_furrow(x, y) then
                local plot = contents[x][y]
                if plot then
                   plot.overwatered_model = self:_get_overwatered_model()
                else
                   self._sv._queued_overwatered[x .. '|' .. y] = true
                end
+
+               num_desired = num_desired - 1
+               if num_desired <= 0 then
+                  break
+               end
             end
          end
       else
          self._sv._queued_overwatered = {}
-         for x = 2, size.x, 2 do
-            for _, plot in pairs(contents[x]) do
+         for _, row in pairs(contents) do
+            for _, plot in pairs(row) do
                plot.overwatered_model = nil
             end
          end
@@ -923,7 +956,12 @@ function AceFarmerFieldComponent:_on_destroy()
    radiant.entities.destroy_entity(self._sv._fertilizable_layer)
    self._sv._fertilizable_layer = nil
 
+   self:_destroy_listeners()
+end
+
+function AceFarmerFieldComponent:_destroy_listeners()
    --self:_destroy_flood_listeners()
+   self:_destroy_water_listener()
    self:_destroy_climate_listeners()
    self:_destroy_all_post_harvest_crop_listeners()
 end
