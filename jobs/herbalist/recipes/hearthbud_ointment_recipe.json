@@ -1,0 +1,32 @@
+{
+   "type": "recipe",
+   "effort": 55,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.herbalist.recipes.hearthbud_ointment_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.hearthbud_ointment_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.hearthbud_ointment_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/consumables/hearthbud_ointment/hearthbud_ointment.png",
+   "workshop": "stonehearth_ace:herbalist:metal_cauldron",
+	"work_effect": "fiddle",
+	"manual_unlock": true,
+   "level_requirement": 6,
+   "ingredients": [
+      {
+         "material": "earth_essence resource",
+         "count": 2
+      },
+      {
+         "material": "herb yellow aromatic resource",
+         "count": 3
+      },
+	   {
+         "uri": "stonehearth:plants:earthbud:seed",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:consumables:hearthbud_ointment"
+      }
+   ]
+}

@@ -1,0 +1,19 @@
+{
+	"description": "i18n(stonehearth_ace:jobs.herbalist.recipes.coarse_bandage_recipe.description)",
+	"flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.coarse_bandage_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/consumables/coarse_bandage/coarse_bandage.png",
+	"work_effect": "fiddle",
+	"mixintypes": {
+		"ingredients": "override"
+	},
+   "ingredients": [
+      {
+         "material": "fiber resource",
+         "count": 2
+      },
+      {
+         "material": "herb red aromatic resource",
+         "count": 1
+      }
+   ]
+}

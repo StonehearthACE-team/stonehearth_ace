@@ -695,9 +695,22 @@
       },
       "healing": {
          "SPECIAL_ATTENTION_CONDITIONS": {
-            "poisoned": 0.75,
-            "wounded": 0.1
+				"wound_corrupt": 1,
+				"infection": 0.9,
+				"wound_fire": 0.8,
+				"poison": 0.7,
+            "wound_pierce": 0.6,
+            "wound_impact": 0.6,
+				"wound_cut": 0.6,
+				"wound_cold": 0.5,
+				"toxin": 0.4	
          },
+			"__comment": "Basic conditions are conditions that will always be healed by any treatment if rank 1",
+			"BASIC_CONDITIONS": {
+				"wound_pierce": true,
+				"wound_impact": true,
+				"wound_cut": true
+			},
          "FILTER_GUTS_DIVISOR": 3,
          "FILTER_GUTS_MAX_DIFF": 10,
          "FILTER_HEALTH_DIVISOR": 20,

@@ -1,0 +1,19 @@
+{
+   "type": "buff",
+   "axis": "neutral",
+   "category": "wound_torn_soul",
+   "unique_in_category": true,
+   "rank": 1,
+   "display_name": "i18n(stonehearth_ace:data.buffs.wounds.torn_soul.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.wounds.torn_soul.description)",
+   "icon": "file(torn_soul.png)",
+   "reembarkable": true,
+   "cant_affect_siege": true,
+   "repeat_add_action": "renew_duration",
+   "modifiers": {
+      "spirit": {
+         "min": 1,
+         "add": -2
+      }
+   }
+}

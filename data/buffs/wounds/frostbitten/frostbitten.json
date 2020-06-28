@@ -1,0 +1,22 @@
+{
+   "type": "buff",
+   "axis": "neutral",
+   "category": "wound_frostbitten",
+   "unique_in_category": true,
+   "rank": 1,
+   "display_name": "i18n(stonehearth_ace:data.buffs.wounds.frostbitten.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.wounds.frostbitten.description)",
+   "icon": "file(frostbitten.png)",
+   "reembarkable": true,
+   "cant_affect_siege": true,
+   "repeat_add_action": "stack_and_refresh",
+   "max_stacks": 3,
+   "modifiers": {
+      "muscle": {
+         "add": -3
+      },
+      "speed": {
+         "add": -3
+      }
+   }
+}

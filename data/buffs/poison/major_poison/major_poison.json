@@ -1,9 +1,14 @@
 {
    "type": "buff",
    "axis": "debuff",
+   "category": "poison",
+   "rank": 3,
+   "unique_in_category": true,
    "display_name": "i18n(stonehearth_ace:data.buffs.poison.major_poison.display_name)",
    "description": "i18n(stonehearth_ace:data.buffs.poison.major_poison.description)",
    "icon": "file(poison.png)",
+   "queue_crafting_order": "stonehearth_ace:consumables:strong_antidote",
+   "reembarkable": true,
    "duration": "2d+24h",
    "cant_affect_siege": true,
    "repeat_add_action": "renew_duration",
@@ -24,9 +29,5 @@
       "pulse_immediately": false,
       "pulse_on_destroy": false,
       "is_percentage": true
-   },
-   "disallowed_buffs": [
-      "stonehearth_ace:buffs:poison:minor_poison",
-      "stonehearth_ace:buffs:poison:poison"
-   ]
+   }
 }

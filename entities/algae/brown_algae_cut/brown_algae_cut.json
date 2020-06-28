@@ -15,7 +15,27 @@
          "harvester_effect": "fiddle",
          "harvest_overlay_effect": "stonehearth:effects:harvest_plant_overlay_effect",
          "resource_spawn_effect": "stonehearth:effects:harvest_plants_effect",
-         "resource": "stonehearth_ace:resources:algae:brown_algae"
+         "resource": "stonehearth_ace:resources:algae:brown_algae",
+         "resource_loot_table": {
+            "entries": {
+               "optional": {
+                  "num_rolls": {
+                     "min": 0,
+                     "max": 1
+                  },
+                  "items": {
+                     "none": {
+                        "uri": "",
+                        "weight": 10
+                     },
+                     "leeches": {
+                        "uri": "stonehearth_ace:consumables:leeches",
+                        "weight": 1
+                     }
+                  }
+               }
+            }
+         }
       },
       "mob": {
          "align_to_grid": [

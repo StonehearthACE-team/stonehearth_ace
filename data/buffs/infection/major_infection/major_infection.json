@@ -4,21 +4,28 @@
    "category": "infection",
    "unique_in_category": true,
    "rank": 3,
-   "display_name": "i18n(stonehearth_ace:data.buffs.wounds.infection.display_name)",
-   "description": "i18n(stonehearth_ace:data.buffs.wounds.infection.description)",
-   "icon": "file(infection.png)",
+   "display_name": "i18n(stonehearth_ace:data.buffs.infection.major_infection.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.infection.major_infection.description)",
+   "icon": "file(major_infection.png)",
+   "queue_crafting_order": "stonehearth_ace:consumables:fever_cordial",
+   "reembarkable": true,
+   "thought": "stonehearth:thoughts:infection:major_infection",
+   "thought_remove_on_destroy": true,
    "cant_affect_siege": true,
-   "repeat_add_action": "stack_and_refresh",
-   "max_stacks": 10,
+   "repeat_add_action": "renew_duration",
    "modifiers": {
-      "stamina": {
-         "add": -0.08
-      },
-      "muscle": {
-         "add": -0.08
+      "body": {
+         "max": 1
       },
       "willpower": {
-         "add": -0.08
+         "multiply": 0.1
       }
+   },
+   "script": "stonehearth:buff_scripts:periodic_health_modification",
+   "script_info": {
+      "health_change": -0.042,
+      "pulse": "1h",
+      "pulse_immediately": false,
+      "is_percentage": true
    }
 }

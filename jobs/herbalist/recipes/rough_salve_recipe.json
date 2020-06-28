@@ -1,0 +1,26 @@
+{
+   "type": "recipe",
+   "effort": 10,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.herbalist.recipes.rough_salve_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.rough_salve_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.rough_salve_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/consumables/rough_salve/rough_salve.png",
+   "workshop": "stonehearth:herbalist:workbench",
+   "level_requirement": 2,
+   "ingredients": [
+      {
+         "material": "honey cooking_ingredient",
+         "count": 1
+      },
+		{
+         "material": "herb green aromatic resource",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:consumables:rough_salve"
+      }
+   ]
+}

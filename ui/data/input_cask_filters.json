@@ -324,41 +324,119 @@
             "healing_tonic_small": {
                "ordinal": 1,
                "display_name": "i18n(stonehearth:entities.consumables.healing_tonic.small_healing_tonic.display_name)",
-               "icon": "/stonehearth/entities/consumables/healing_tonic/small_healing_tonic/small_healing_tonic.png",
-               "filter": "healing_item small consumable"
+               "icon": "/stonehearth_ace/entities/consumables/healing_tonic/small_healing_tonic/small_healing_tonic.png",
+               "filter": "small_healing_tonic"
+            },
+            "healing_tonic": {
+               "ordinal": 1.1,
+               "display_name": "i18n(stonehearth_ace:entities.consumables.healing_tonic.healing_tonic.display_name)",
+               "icon": "/stonehearth_ace/entities/consumables/healing_tonic/healing_tonic/healing_tonic.png",
+               "filter": "healing_tonic"
             },
             "hearth_healing_tonic": {
-               "ordinal": 1.1,
+               "ordinal": 1.5,
                "display_name": "i18n(stonehearth_ace:entities.consumables.healing_tonic.hearth_healing_tonic.display_name)",
                "icon": "/stonehearth_ace/entities/consumables/healing_tonic/hearth_healing_tonic/hearth_healing_tonic.png",
-               "filter": "healing_item hearth_healing_tonic consumable"
+               "filter": "hearth_healing_tonic"
+            },
+            "creativity_tonic": {
+               "ordinal": 2,
+               "display_name": "i18n(stonehearth_ace:entities.consumables.creativity_tonic.display_name)",
+               "icon": "/stonehearth_ace/entities/consumables/creativity_tonic/creativity_tonic.png",
+               "filter": "creativity_tonic"
+            },
+            "creativity_tonic_2": {
+               "ordinal": 2.1,
+               "display_name": "i18n(stonehearth_ace:entities.consumables.creativity_tonic_2.display_name)",
+               "icon": "/stonehearth_ace/entities/consumables/creativity_tonic_2/creativity_tonic_2.png",
+               "filter": "creativity_tonic_2"
             },
             "courage_tonic": {
-               "ordinal": 4,
+               "ordinal": 3,
                "display_name": "i18n(stonehearth:entities.consumables.courage_tonic.display_name)",
-               "icon": "/stonehearth/entities/consumables/courage_tonic/courage_tonic.png",
+               "icon": "/stonehearth_ace/entities/consumables/courage_tonic/courage_tonic.png",
                "filter": "courage_tonic"
             },
+            "courage_tonic_2": {
+               "ordinal": 3.1,
+               "display_name": "i18n(stonehearth_ace:entities.consumables.courage_tonic_2.display_name)",
+               "icon": "/stonehearth_ace/entities/consumables/courage_tonic_2/courage_tonic_2.png",
+               "filter": "courage_tonic_2"
+            },
             "energy_tonic": {
-               "ordinal": 5,
+               "ordinal": 4,
                "display_name": "i18n(stonehearth:entities.consumables.energy_tonic.display_name)",
-               "icon": "/stonehearth/entities/consumables/energy_tonic/energy_tonic.png",
+               "icon": "/stonehearth_ace/entities/consumables/energy_tonic/energy_tonic.png",
                "filter": "energy_tonic"
             },
+            "energy_tonic_2": {
+               "ordinal": 4.1,
+               "display_name": "i18n(stonehearth_ace:entities.consumables.energy_tonic_2.display_name)",
+               "icon": "/stonehearth_ace/entities/consumables/energy_tonic_2/energy_tonic_2.png",
+               "filter": "energy_tonic_2"
+            },
             "stamina_tonic": {
-               "ordinal": 6,
+               "ordinal": 5,
                "display_name": "i18n(stonehearth:entities.consumables.stamina_tonic.display_name)",
-               "icon": "/stonehearth/entities/consumables/stamina_tonic/stamina_tonic.png",
+               "icon": "/stonehearth_ace/entities/consumables/stamina_tonic/stamina_tonic.png",
                "filter": "stamina_tonic"
             },
+            "stamina_tonic_2": {
+               "ordinal": 5.1,
+               "display_name": "i18n(stonehearth_ace:entities.consumables.stamina_tonic_2.display_name)",
+               "icon": "/stonehearth_ace/entities/consumables/stamina_tonic_2/stamina_tonic_2.png",
+               "filter": "stamina_tonic_2"
+            },
             "strength_tonic": {
-               "ordinal": 7,
+               "ordinal": 6,
                "display_name": "i18n(stonehearth:entities.consumables.strength_tonic.display_name)",
-               "icon": "/stonehearth/entities/consumables/strength_tonic/strength_tonic.png",
+               "icon": "/stonehearth_ace/entities/consumables/strength_tonic/strength_tonic.png",
                "filter": "strength_tonic"
             },
-            "hearth_tonic": {
+            "strength_tonic_2": {
+               "ordinal": 6.1,
+               "display_name": "i18n(stonehearth_ace:entities.consumables.strength_tonic_2.display_name)",
+               "icon": "/stonehearth_ace/entities/consumables/strength_tonic_2/strength_tonic_2.png",
+               "filter": "strength_tonic_2"
+            },
+            "water_resist_tonic": {
+               "ordinal": 7,
+               "display_name": "i18n(stonehearth_ace:entities.consumables.water_resist_tonic.display_name)",
+               "icon": "/stonehearth_ace/entities/consumables/water_resist_tonic/water_resist_tonic.png",
+               "filter": "water_resist_tonic"
+            },
+            "water_resist_tonic_2": {
+               "ordinal": 7.1,
+               "display_name": "i18n(stonehearth_ace:entities.consumables.water_resist_tonic_2.display_name)",
+               "icon": "/stonehearth_ace/entities/consumables/water_resist_tonic_2/water_resist_tonic_2.png",
+               "filter": "water_resist_tonic_2"
+            },
+            "cold_tonic": {
                "ordinal": 8,
+               "display_name": "i18n(stonehearth_ace:entities.consumables.cold_tonic.display_name)",
+               "icon": "/stonehearth_ace/entities/consumables/cold_tonic/cold_tonic.png",
+               "filter": "cold_tonic"
+            },
+            "warmth_tonic": {
+               "ordinal": 9,
+               "display_name": "i18n(stonehearth_ace:entities.consumables.warmth_tonic.display_name)",
+               "icon": "/stonehearth_ace/entities/consumables/warmth_tonic/warmth_tonic.png",
+               "filter": "warmth_tonic"
+            },
+            "nightsight_tonic": {
+               "ordinal": 10,
+               "display_name": "i18n(stonehearth_ace:entities.consumables.nightsight_tonic.display_name)",
+               "icon": "/stonehearth_ace/entities/consumables/nightsight_tonic/nightsight_tonic.png",
+               "filter": "nightsight_tonic"
+            },
+            "curiosity_tonic": {
+               "ordinal": 11,
+               "display_name": "i18n(stonehearth_ace:entities.consumables.curiosity_tonic.display_name)",
+               "icon": "/stonehearth_ace/entities/consumables/curiosity_tonic/curiosity_tonic.png",
+               "filter": "curiosity_tonic"
+            },
+            "hearth_tonic": {
+               "ordinal": 20,
                "display_name": "i18n(stonehearth_ace:entities.consumables.hearth_tonic.display_name)",
                "icon": "/stonehearth_ace/entities/consumables/hearth_tonic/hearth_tonic.png",
                "filter": "hearth_tonic"

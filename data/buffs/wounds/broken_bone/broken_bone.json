@@ -1,12 +1,14 @@
 {
    "type": "buff",
    "axis": "debuff",
-   "category": "wound_blunt",
+   "category": "wound_impact",
    "unique_in_category": true,
    "rank": 4,
    "display_name": "i18n(stonehearth_ace:data.buffs.wounds.broken_bone.display_name)",
    "description": "i18n(stonehearth_ace:data.buffs.wounds.broken_bone.description)",
    "icon": "file(broken_bone.png)",
+   "queue_crafting_order": "stonehearth_ace:consumables:tough_compress",
+   "reembarkable": true,
    "cant_affect_siege": true,
    "repeat_add_action": "stack_and_refresh",
    "max_stacks": 2,
@@ -14,5 +16,11 @@
       "effective_max_health_percent": {
          "add": -20
       }
+   },
+   "script": "stonehearth_ace:buff_scripts:periodic_buff_chance",
+   "script_info": {
+      "periodic_chance_buff": "stonehearth_ace:buffs:infection:minor_infection",
+      "chance": 0.75,
+      "tick": "6h"
    }
 }

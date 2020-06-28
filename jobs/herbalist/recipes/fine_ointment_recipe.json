@@ -1,0 +1,31 @@
+{
+   "type": "recipe",
+   "effort": 50,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.herbalist.recipes.fine_ointment_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.fine_ointment_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.fine_ointment_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/consumables/fine_ointment/fine_ointment.png",
+   "workshop": "stonehearth_ace:herbalist:metal_cauldron",
+	"work_effect": "fiddle",
+   "level_requirement": 4,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:consumables:royal_jelly",
+         "count": 1
+      },
+		{
+         "material": "herb green aromatic resource",
+         "count": 2
+      },
+		{
+         "material": "herb white aromatic resource",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:consumables:fine_ointment"
+      }
+   ]
+}

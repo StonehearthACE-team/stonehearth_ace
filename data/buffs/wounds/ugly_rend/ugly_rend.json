@@ -7,12 +7,23 @@
    "display_name": "i18n(stonehearth_ace:data.buffs.wounds.ugly_rend.display_name)",
    "description": "i18n(stonehearth_ace:data.buffs.wounds.ugly_rend.description)",
    "icon": "file(ugly_rend.png)",
+   "queue_crafting_order": "stonehearth:consumables:heavy_bandage",
+   "reembarkable": true,
    "cant_affect_siege": true,
    "repeat_add_action": "stack_and_refresh",
    "max_stacks": 2,
+   "leftover_buffs": {
+      "stonehearth_ace:buffs:wounds:scary_scar": 0.5
+   },
    "modifiers": {
       "effective_max_health_percent": {
          "add": -20
       }
+   },
+   "script": "stonehearth_ace:buff_scripts:periodic_buff_chance",
+   "script_info": {
+      "periodic_chance_buff": "stonehearth_ace:buffs:infection:infection",
+      "chance": 0.6,
+      "tick": "8h"
    }
 }

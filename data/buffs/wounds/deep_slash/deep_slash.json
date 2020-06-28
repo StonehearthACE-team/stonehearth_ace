@@ -7,12 +7,23 @@
    "display_name": "i18n(stonehearth_ace:data.buffs.wounds.deep_slash.display_name)",
    "description": "i18n(stonehearth_ace:data.buffs.wounds.deep_slash.description)",
    "icon": "file(deep_slash.png)",
+   "queue_crafting_order": "stonehearth:consumables:light_bandage",
+   "reembarkable": true,
    "cant_affect_siege": true,
    "repeat_add_action": "stack_and_refresh",
    "max_stacks": 3,
+   "leftover_buffs": {
+      "stonehearth_ace:buffs:wounds:scary_scar": 0.3
+   },
    "modifiers": {
       "effective_max_health_percent": {
          "add": -8
       }
+   },
+   "script": "stonehearth_ace:buff_scripts:periodic_buff_chance",
+   "script_info": {
+      "periodic_chance_buff": "stonehearth_ace:buffs:infection:infection",
+      "chance": 0.5,
+      "tick": "12h"
    }
 }

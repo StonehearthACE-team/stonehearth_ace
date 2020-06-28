@@ -1,0 +1,61 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "render_info": {
+         "color_map": "stonehearth_ace:color_map:ace",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/glass_material_map.json"
+         ],
+         "scale": 0.08
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(antidote.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 7,
+         "rarity": "uncommon",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 2,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:consumable": {
+         "script": "stonehearth:consumables:scripts:heal_target",
+         "work_units": 3,
+         "health_healed": 0,
+         "guts_healed": 0,
+         "cures_conditions": {
+            "poison": 2
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.consumables.antidote.display_name)",
+         "description": "i18n(stonehearth_ace:entities.consumables.antidote.description)",
+         "icon": "file(antidote.png)",
+         "is_item": true,
+         "category": "consumable",
+         "material_tags": [
+            "healing_item",
+            "antidote",
+            "standard",
+            "consumable",
+            "stockpile_healing_item"
+         ]
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

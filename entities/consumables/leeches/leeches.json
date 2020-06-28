@@ -1,0 +1,89 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "render_info": {
+         "scale": 0.09
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(leeches.qb)",
+                     "file(leeches_2.qb)",
+                     "file(leeches_3.qb)",
+                     "file(leeches_4.qb)",
+                     "file(leeches_5.qb)"
+                  ]
+               }
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 8,
+         "rarity": "rare",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:consumable": {
+         "script": "stonehearth:consumables:scripts:heal_target",
+         "work_units": 5,
+         "health_healed": 0,
+         "cures_conditions": {
+            "infection": 1,
+            "poison": 1
+         },
+         "consumable_qualities": [
+            {
+               "guts_healed": 6,
+               "applies_effects": {
+                  "stonehearth_ace:buffs:wounds:light_burn": 1
+               }
+            },
+            {
+               "guts_healed": 8,
+               "applies_effects": {
+                  "stonehearth_ace:buffs:wounds:light_burn": 0.9
+               }
+            },
+            {
+               "guts_healed": 12,
+               "applies_effects": {
+                  "stonehearth_ace:buffs:wounds:light_burn": 0.8
+               }
+            },
+            {
+               "guts_healed": 18,
+               "applies_effects": {
+                  "stonehearth_ace:buffs:wounds:light_burn": 0.5
+               }
+            }
+         ]
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.consumables.leeches.display_name)",
+         "description": "i18n(stonehearth_ace:entities.consumables.leeches.description)",
+         "icon": "file(leeches.png)",
+         "is_item": true,
+         "category": "consumable",
+         "material_tags": [
+            "healing_item",
+            "leeches",
+            "consumable",
+            "stockpile_healing_item"
+         ]
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

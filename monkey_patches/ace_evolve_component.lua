@@ -63,6 +63,8 @@ function AceEvolveComponent:post_activate()
    -- if it doesn't have any evolve_data, try to remove the component because it should no longer be active
    if not self._evolve_data then
       self._entity:remove_component('stonehearth:evolve')
+   else
+      self:_create_listeners()
    end
 
    -- if we had an evolve water signal for this entity, destroy it
@@ -74,8 +76,6 @@ function AceEvolveComponent:post_activate()
          self._entity:remove_component('stonehearth_ace:water_signal')
       end
    end
-
-   self:_create_listeners()
 end
 
 AceEvolveComponent._ace_old_destroy = EvolveComponent.__user_destroy

@@ -1,5 +1,6 @@
 local healing_lib = require 'stonehearth_ace.ai.lib.healing_lib'
 local HealTarget = radiant.mods.require('stonehearth.entities.consumables.scripts.heal_target')
+local rng = _radiant.math.get_default_rng()
 local AceHealTarget = class()
 
 function AceHealTarget.use(consumable, consumable_data, user, target_entity)
@@ -11,16 +12,32 @@ function AceHealTarget.use(consumable, consumable_data, user, target_entity)
       return false
    end
 
-   -- first "cure" any conditions that this consumable should cure
+	-- First remove any conditions that this consumable should cure
    local buffs_component = target_entity:get_component('stonehearth:buffs')
    if buffs_component and consumable_data.cures_conditions then
-      for condition, cures_it in pairs(consumable_data.cures_conditions) do
-         if cures_it then
+      for condition, cures_rank in pairs(consumable_data.cures_conditions) do
+         if cures_rank then
             -- remove all buffs that have this condition as their category
-            buffs_component:remove_category_buffs(condition)
+            buffs_component:remove_category_buffs(condition, cures_rank, true)
          end
       end
    end
+	
+	-- then treat the basic, level 1 wounds defined in the constants if any is left
+	if buffs_component then
+      for basic_condition, _ in pairs(stonehearth.constants.healing.BASIC_CONDITIONS) do
+         buffs_component:remove_category_buffs(basic_condition, 1)
+      end
+   end
+	
+	-- finally, apply any buffs that the consumable might apply
+	if consumable_data.applies_effects then
+		for effect, chance in pairs(consumable_data.applies_effects) do
+			if rng:get_real(0, 1) < chance then
+				radiant.entities.add_buff(target_entity, effect)
+			end  
+		end
+	end
 
    local current_health = radiant.entities.get_health(target_entity)
    if current_health > 0 then

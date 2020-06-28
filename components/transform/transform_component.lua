@@ -319,7 +319,7 @@ function TransformComponent:request_transform(player_id, ignore_duplicate_reques
             data.request_action_overlay_effect == task_tracker_component:get_current_task_effect_name() then
          local ingredient = self:_get_transform_ingredient()
          if self._sv._transform_ingredient then
-            is_duplicate = ingredient and ingredient.uri == transform_ingredient_uri and ingredient.material == transform_ingredient_material
+            is_duplicate = ingredient and ingredient.uri == self._sv._transform_ingredient.uri and ingredient.material == self._sv._transform_ingredient.material
          elseif not ingredient then
             is_duplicate = true
          end

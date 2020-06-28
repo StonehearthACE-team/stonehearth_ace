@@ -1,0 +1,73 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "render_info": {
+         "scale": 0.09
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(herbal_compress.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 13,
+         "rarity": "uncommon",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 2,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:consumable": {
+         "script": "stonehearth:consumables:scripts:heal_target",
+         "work_units": 3,
+         "cures_conditions": {
+            "wound_impact": 3
+         },
+         "consumable_qualities": [
+            {
+               "health_healed": 70,
+               "guts_healed": 3
+            },
+            {
+               "health_healed": 100,
+               "guts_healed": 3
+            },
+            {
+               "health_healed": 130,
+               "guts_healed": 4
+            },
+            {
+               "health_healed": 180,
+               "guts_healed": 4
+            }
+         ]
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.consumables.herbal_compress.display_name)",
+         "description": "i18n(stonehearth_ace:entities.consumables.herbal_compress.description)",
+         "icon": "file(herbal_compress.png)",
+         "is_item": true,
+         "category": "consumable",
+         "material_tags": [
+            "healing_item",
+            "herbal_compress",
+            "compress",
+            "consumable",
+            "stockpile_healing_item"
+         ]
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

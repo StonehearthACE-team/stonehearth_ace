@@ -3,13 +3,18 @@
    "axis": "debuff",
    "category": "wound_cold",
    "unique_in_category": true,
-   "rank": 1,
+   "rank": 2,
    "display_name": "i18n(stonehearth_ace:data.buffs.wounds.frostbite.display_name)",
    "description": "i18n(stonehearth_ace:data.buffs.wounds.frostbite.description)",
    "icon": "file(frostbite.png)",
+   "queue_crafting_order": "stonehearth_ace:consumables:rough_salve",
+   "reembarkable": true,
    "cant_affect_siege": true,
    "repeat_add_action": "stack_and_refresh",
    "max_stacks": 10,
+   "leftover_buffs": {
+      "stonehearth_ace:buffs:wounds:frostbitten": 0.1
+   },
    "modifiers": {
       "effective_max_health_percent": {
          "add": -4

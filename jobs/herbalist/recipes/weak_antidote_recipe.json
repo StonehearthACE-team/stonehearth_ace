@@ -1,0 +1,23 @@
+{
+   "type": "recipe",
+   "effort": 16,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.herbalist.recipes.weak_antidote_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.weak_antidote_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.weak_antidote_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/consumables/weak_antidote/weak_antidote.png",
+   "workshop": "stonehearth_ace:herbalist:cauldron",
+	"work_effect": "fiddle",
+   "level_requirement": 1,
+   "ingredients": [
+      {
+         "material": "herb green resource",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:consumables:weak_antidote"
+      }
+   ]
+}

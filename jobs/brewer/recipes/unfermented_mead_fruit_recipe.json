@@ -7,17 +7,17 @@
    "flavor": "i18n(stonehearth_ace:jobs.brewer.recipes.unfermented_mead_fruit_recipe.flavor)",
    "portrait": "/stonehearth_ace/entities/drink/unfermented_mead_fruit/unfermented_mead_fruit.png",
    "workshop": "stonehearth_ace:brewer:kettle",
-	"work_effect": "fiddle",
+   "work_effect": "brewer_stirring",
    "level_requirement": 3,
    "ingredients": [
-		{
-			"material": "honey cooking_ingredient",
-			"count": 2
-		},
-		{
-			"material": "raw_food fruit",
-			"count": 2
-		}
+      {
+         "material": "honey cooking_ingredient",
+         "count": 2
+      },
+      {
+         "material": "raw_food fruit",
+         "count": 2
+      }
    ],
    "produces": [
       {

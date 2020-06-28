@@ -1,0 +1,70 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "render_info": {
+         "scale": 0.09
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(fever_cordial.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 20,
+         "rarity": "rare",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 2,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:consumable": {
+         "script": "stonehearth:consumables:scripts:heal_target",
+         "work_units": 6,
+         "health_healed": 0,
+         "cures_conditions": {
+            "infection": 3
+         },
+         "consumable_qualities": [
+            {
+               "guts_healed": 8
+            },
+            {
+               "guts_healed": 10
+            },
+            {
+               "guts_healed": 14
+            },
+            {
+               "guts_healed": 20
+            }
+         ]
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.consumables.fever_cordial.display_name)",
+         "description": "i18n(stonehearth_ace:entities.consumables.fever_cordial.description)",
+         "icon": "file(fever_cordial.png)",
+         "is_item": true,
+         "category": "consumable",
+         "material_tags": [
+            "healing_item",
+            "fever_cordial",
+            "cordial",
+            "consumable",
+            "stockpile_healing_item"
+         ]
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

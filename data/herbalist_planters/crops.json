@@ -1035,7 +1035,12 @@
                   },
                   "items": {
                      "lily_pad": {
-                        "uri": "stonehearth_ace:resources:herb:water_lily:lily_pad"
+                        "uri": "stonehearth_ace:resources:herb:water_lily:lily_pad",
+                        "weight": 4
+                     },
+                     "leeches": {
+                        "uri": "stonehearth_ace:consumables:leeches",
+                        "weight": 1
                      }
                   }
                }
@@ -1082,7 +1087,12 @@
                   },
                   "items": {
                      "lily_pad": {
-                        "uri": "stonehearth_ace:resources:herb:water_lily:lily_pad"
+                        "uri": "stonehearth_ace:resources:herb:water_lily:lily_pad",
+                        "weight": 4
+                     },
+                     "leeches": {
+                        "uri": "stonehearth_ace:consumables:leeches",
+                        "weight": 1
                      }
                   }
                }
@@ -1129,7 +1139,12 @@
                   },
                   "items": {
                      "lily_pad": {
-                        "uri": "stonehearth_ace:resources:herb:water_lily:lily_pad"
+                        "uri": "stonehearth_ace:resources:herb:water_lily:lily_pad",
+                        "weight": 4
+                     },
+                     "leeches": {
+                        "uri": "stonehearth_ace:consumables:leeches",
+                        "weight": 1
                      }
                   }
                }
@@ -1176,7 +1191,12 @@
                   },
                   "items": {
                      "lily_pad": {
-                        "uri": "stonehearth_ace:resources:herb:water_lily:lily_pad"
+                        "uri": "stonehearth_ace:resources:herb:water_lily:lily_pad",
+                        "weight": 4
+                     },
+                     "leeches": {
+                        "uri": "stonehearth_ace:consumables:leeches",
+                        "weight": 1
                      }
                   }
                }
@@ -1223,7 +1243,12 @@
                   },
                   "items": {
                      "lily_pad": {
-                        "uri": "stonehearth_ace:resources:herb:water_lily:lily_pad"
+                        "uri": "stonehearth_ace:resources:herb:water_lily:lily_pad",
+                        "weight": 4
+                     },
+                     "leeches": {
+                        "uri": "stonehearth_ace:consumables:leeches",
+                        "weight": 1
                      }
                   }
                }
@@ -1261,6 +1286,26 @@
       "algae_brown": {
          "seed_uri": "stonehearth_ace:resources:algae:brown_algae",
          "product_uri": "stonehearth_ace:resources:algae:brown_algae",
+         "additional_products": {
+            "entries": {
+               "extra": {
+                  "num_rolls": {
+                     "min": 0,
+                     "max": 1
+                  },
+                  "items": {
+                     "nothing": {
+                        "uri": "",
+                        "weight": 6
+                     },
+                     "leeches": {
+                        "uri": "stonehearth_ace:consumables:leeches",
+                        "weight": 1
+                     }
+                  }
+               }
+            }
+         },
          "harvester_effect": "fiddle",
          "render_scale": 0.1,
          "tending_multiplier": 0.5,
@@ -1293,6 +1338,26 @@
       "algae_red": {
          "seed_uri": "stonehearth_ace:resources:algae:red_algae",
          "product_uri": "stonehearth_ace:resources:algae:red_algae",
+         "additional_products": {
+            "entries": {
+               "extra": {
+                  "num_rolls": {
+                     "min": 0,
+                     "max": 1
+                  },
+                  "items": {
+                     "nothing": {
+                        "uri": "",
+                        "weight": 6
+                     },
+                     "leeches": {
+                        "uri": "stonehearth_ace:consumables:leeches",
+                        "weight": 1
+                     }
+                  }
+               }
+            }
+         },
          "harvester_effect": "fiddle",
          "render_scale": 0.1,
          "tending_multiplier": 0.5,
@@ -1325,6 +1390,26 @@
       "algae_green": {
          "seed_uri": "stonehearth_ace:resources:algae:green_algae",
          "product_uri": "stonehearth_ace:resources:algae:green_algae",
+         "additional_products": {
+            "entries": {
+               "extra": {
+                  "num_rolls": {
+                     "min": 0,
+                     "max": 1
+                  },
+                  "items": {
+                     "nothing": {
+                        "uri": "",
+                        "weight": 6
+                     },
+                     "leeches": {
+                        "uri": "stonehearth_ace:consumables:leeches",
+                        "weight": 1
+                     }
+                  }
+               }
+            }
+         },
          "harvester_effect": "fiddle",
          "render_scale": 0.1,
          "tending_multiplier": 0.5,

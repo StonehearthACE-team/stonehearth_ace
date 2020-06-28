@@ -289,12 +289,22 @@ function AceGameCreationService:_apply_reembark_settings_to_citizen(session, kin
       equipment:equip_item(equipment_entity, true)
    end
 
+	-- Set Statistics
    if citizen_spec.statistics then
       citizen:add_component('stonehearth_ace:statistics'):set_statistics(citizen_spec.statistics)
    end
 
+	-- Set Titles
    if citizen_spec.titles then
       citizen:add_component('stonehearth_ace:titles'):set_titles(citizen_spec.titles)
+   end
+	
+	-- Set Buffs
+	if citizen_spec.buffs then
+      local buffs = citizen:add_component('stonehearth:buffs')
+      for buff_uri, options in pairs(citizen_spec.buffs) do
+         buffs:add_buff(buff_uri, options)
+      end
    end
 end
 

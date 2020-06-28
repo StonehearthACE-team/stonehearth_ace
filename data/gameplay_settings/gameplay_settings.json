@@ -19,19 +19,26 @@
          "default": true,
          "ordinal": 2
       },
+		"auto_queue_medicine": {
+         "type": "boolean",
+         "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.auto_queue_medicine)",
+         "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.auto_queue_medicine_description)",
+         "default": true,
+         "ordinal": 3
+      },
       "default_craft_order_prefer_high_quality": {
          "type": "boolean",
          "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.default_craft_order_prefer_high_quality)",
          "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.default_craft_order_prefer_high_quality_description)",
          "default": true,
-         "ordinal": 3
+         "ordinal": 4
       },
       "show_unreachable_ingredients_notification": {
          "type": "boolean",
          "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.show_unreachable_ingredients_notification)",
          "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.show_unreachable_ingredients_notification_description)",
          "default": false,
-         "ordinal": 4
+         "ordinal": 5
       },
       "enable_auto_harvest": {
          "type": "boolean",

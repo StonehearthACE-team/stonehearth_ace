@@ -3,16 +3,27 @@
    "axis": "debuff",
    "category": "wound_corrupt",
    "unique_in_category": true,
-   "rank": 1,
+   "rank": 4,
    "display_name": "i18n(stonehearth_ace:data.buffs.wounds.corrupted_laceration.display_name)",
    "description": "i18n(stonehearth_ace:data.buffs.wounds.corrupted_laceration.description)",
    "icon": "file(corrupted_laceration.png)",
+   "queue_crafting_order": "stonehearth_ace:consumables:hearthbud_ointment",
+   "reembarkable": true,
    "cant_affect_siege": true,
    "repeat_add_action": "stack_and_refresh",
    "max_stacks": 7,
+   "leftover_buffs": {
+      "stonehearth_ace:buffs:wounds:torn_soul": 0.2
+   },
    "modifiers": {
       "effective_max_health_percent": {
          "add": -15
       }
+   },
+   "script": "stonehearth_ace:buff_scripts:periodic_buff_chance",
+   "script_info": {
+      "periodic_chance_buff": "stonehearth_ace:buffs:infection:infection",
+      "chance": 0.6,
+      "tick": "8h"
    }
 }

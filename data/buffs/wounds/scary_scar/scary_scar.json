@@ -7,8 +7,11 @@
    "display_name": "i18n(stonehearth_ace:data.buffs.wounds.scary_scar.display_name)",
    "description": "i18n(stonehearth_ace:data.buffs.wounds.scary_scar.description)",
    "icon": "file(scary_scar.png)",
+   "reembarkable": true,
    "cant_affect_siege": true,
    "repeat_add_action": "stack_and_refresh",
+   "evolve_chance": 1,
+   "buff_evolve": "stonehearth_ace:buffs:wounds:battle_scarred",
    "max_stacks": 7,
    "modifiers": {
       "menace": {

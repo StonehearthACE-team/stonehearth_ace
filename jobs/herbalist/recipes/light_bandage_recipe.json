@@ -1,3 +1,21 @@
 {
-   "effort": 20
+	"effort": 20,
+	"description": "i18n(stonehearth_ace:jobs.herbalist.recipes.light_bandage_recipe.description)",
+	"flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.light_bandage_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/consumables/light_bandage/light_bandage.png",
+	"work_effect": "fiddle",
+   "level_requirement": 4,
+	"mixintypes": {
+		"ingredients": "override"
+	},
+   "ingredients": [
+      {
+         "material": "thread resource",
+         "count": 2
+      },
+	   {
+         "material": "herb red aromatic resource",
+         "count": 2
+      }
+   ]
 }

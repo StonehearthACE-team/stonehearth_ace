@@ -86,6 +86,9 @@ function AceReembarkationEncounter:_get_citizen_record(citizen)
 
    local titles_comp = citizen:get_component('stonehearth_ace:titles')
    local titles = titles_comp and titles_comp:get_titles()
+	
+	local buffs_comp = citizen:get_component('stonehearth:buffs')
+	local reembarkable_buffs = buffs_comp:get_reembarkable_buffs() or {}
 
    return {
       name = citizen:get_component('stonehearth:unit_info'):get_custom_name(),
@@ -104,6 +107,7 @@ function AceReembarkationEncounter:_get_citizen_record(citizen)
       equipment = equipment,
       statistics = statistics,
       titles = titles,
+		buffs = reembarkable_buffs,
       -- TODO: Pets?
    }
 end

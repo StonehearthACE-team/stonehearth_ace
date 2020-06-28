@@ -1,0 +1,19 @@
+{
+   "type": "buff",
+   "axis": "debuff",
+   "category": "wound_fire",
+   "unique_in_category": true,
+   "rank": 1,
+   "display_name": "i18n(stonehearth_ace:data.buffs.wounds.light_burn.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.wounds.light_burn.description)",
+   "icon": "file(light_burn.png)",
+   "cant_affect_siege": true,
+   "duration": "2d",
+   "repeat_add_action": "stack_and_refresh",
+   "max_stacks": 4,
+   "modifiers": {
+      "effective_max_health_percent": {
+         "add": -2
+      }
+   }
+}

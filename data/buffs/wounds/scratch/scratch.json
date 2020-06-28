@@ -6,9 +6,12 @@
    "rank": 1,
    "display_name": "i18n(stonehearth_ace:data.buffs.wounds.scratch.display_name)",
    "description": "i18n(stonehearth_ace:data.buffs.wounds.scratch.description)",
+   "queue_crafting_order": "stonehearth:consumables:healing_tonic:small",
    "icon": "file(scratch.png)",
    "cant_affect_siege": true,
    "repeat_add_action": "stack_and_refresh",
+   "duration": "2d",
+   "remove_stacks_on_expire": 2,
    "max_stacks": 8,
    "modifiers": {
       "effective_max_health_percent": {

@@ -1,0 +1,15 @@
+{
+   "type": "buff",
+   "axis": "debuff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.warmth_tonic.warmth_tonic_worn_off_buff.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.warmth_tonic.warmth_tonic_worn_off_buff.description)",
+   "icon": "file(../tonic_worn_off_buff.png)",
+   "duration": "2h",
+   "repeat_add_action": "renew_duration",
+   "modifiers": {
+      "body": {
+         "min": 1,
+         "add": -1
+      }
+   }
+}

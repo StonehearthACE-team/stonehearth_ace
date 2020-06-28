@@ -23,7 +23,27 @@
          "category": "harvest",
          "resource": "stonehearth_ace:resources:herb:water_lily:lily_pad",
          "harvest_overlay_effect": "stonehearth:effects:harvest_plant_overlay_effect",
-         "resource_spawn_effect": "stonehearth:effects:harvest_plants_effect"
+         "resource_spawn_effect": "stonehearth:effects:harvest_plants_effect",
+         "resource_loot_table": {
+            "entries": {
+               "optional": {
+                  "num_rolls": {
+                     "min": 0,
+                     "max": 1
+                  },
+                  "items": {
+                     "none": {
+                        "uri": "",
+                        "weight": 4
+                     },
+                     "leeches": {
+                        "uri": "stonehearth_ace:consumables:leeches",
+                        "weight": 1
+                     }
+                  }
+               }
+            }
+         }
       },
       "stonehearth:entity_forms": {
          "iconic_form": "file(water_lily_pad_iconic.json)",

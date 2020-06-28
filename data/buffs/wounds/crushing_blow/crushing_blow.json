@@ -1,12 +1,14 @@
 {
    "type": "buff",
    "axis": "debuff",
-   "category": "wound_blunt",
+   "category": "wound_impact",
    "unique_in_category": true,
    "rank": 3,
    "display_name": "i18n(stonehearth_ace:data.buffs.wounds.crushing_blow.display_name)",
    "description": "i18n(stonehearth_ace:data.buffs.wounds.crushing_blow.description)",
    "icon": "file(crushing_blow.png)",
+   "queue_crafting_order": "stonehearth_ace:consumables:herbal_compress",
+   "reembarkable": true,
    "cant_affect_siege": true,
    "repeat_add_action": "stack_and_refresh",
    "max_stacks": 3,
@@ -14,5 +16,11 @@
       "effective_max_health_percent": {
          "add": -8
       }
+   },
+   "script": "stonehearth_ace:buff_scripts:periodic_buff_chance",
+   "script_info": {
+      "periodic_chance_buff": "stonehearth_ace:buffs:infection:minor_infection",
+      "chance": 0.5,
+      "tick": "6h"
    }
 }

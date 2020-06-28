@@ -3,22 +3,25 @@
    "axis": "debuff",
    "category": "infection",
    "unique_in_category": true,
-   "rank": 3,
-   "display_name": "i18n(stonehearth_ace:data.buffs.wounds.infection.display_name)",
-   "description": "i18n(stonehearth_ace:data.buffs.wounds.infection.description)",
-   "icon": "file(infection.png)",
+   "rank": 1,
+   "display_name": "i18n(stonehearth_ace:data.buffs.infection.minor_infection.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.infection.minor_infection.description)",
+   "icon": "file(minor_infection.png)",
+   "thought": "stonehearth:thoughts:infection:minor_infection",
+   "thought_remove_on_destroy": true,
+   "duration": "12h+8h",
    "cant_affect_siege": true,
    "repeat_add_action": "stack_and_refresh",
+   "remove_stacks_on_expire": 2,
+   "evolve_chance": 1,
+   "buff_evolve": "stonehearth_ace:buffs:infection:infection",
    "max_stacks": 10,
    "modifiers": {
       "stamina": {
-         "add": -0.08
-      },
-      "muscle": {
-         "add": -0.08
+         "add": -0.5
       },
       "willpower": {
-         "add": -0.08
+         "add": -0.5
       }
    }
 }

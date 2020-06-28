@@ -1,9 +1,13 @@
 {
    "type": "buff",
    "axis": "debuff",
+   "category": "poison",
+   "rank": 1,
+   "unique_in_category": true,
    "display_name": "i18n(stonehearth_ace:data.buffs.poison.minor_poison.display_name)",
    "description": "i18n(stonehearth_ace:data.buffs.poison.minor_poison.description)",
    "icon": "file(poison_minor.png)",
+   "queue_crafting_order": "stonehearth_ace:consumables:weak_antidote",
    "duration": "8h+8h",
    "cant_affect_siege": true,
    "repeat_add_action": "renew_duration",

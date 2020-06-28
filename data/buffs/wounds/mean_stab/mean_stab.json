@@ -1,12 +1,14 @@
 {
    "type": "buff",
    "axis": "debuff",
-   "category": "wound_piercing",
+   "category": "wound_pierce",
    "unique_in_category": true,
    "rank": 3,
    "display_name": "i18n(stonehearth_ace:data.buffs.wounds.mean_stab.display_name)",
    "description": "i18n(stonehearth_ace:data.buffs.wounds.mean_stab.description)",
    "icon": "file(mean_stab.png)",
+   "queue_crafting_order": "stonehearth_ace:consumables:common_salve",
+   "reembarkable": true,
    "cant_affect_siege": true,
    "repeat_add_action": "stack_and_refresh",
    "max_stacks": 2,
@@ -14,5 +16,11 @@
       "effective_max_health_percent": {
          "add": -12
       }
+   },
+   "script": "stonehearth_ace:buff_scripts:periodic_buff_chance",
+   "script_info": {
+      "periodic_chance_buff": "stonehearth_ace:buffs:infection:infection",
+      "chance": 0.5,
+      "tick": "12h"
    }
 }

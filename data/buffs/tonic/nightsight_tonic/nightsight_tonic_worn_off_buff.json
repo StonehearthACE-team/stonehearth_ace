@@ -1,0 +1,14 @@
+{
+   "type": "buff",
+   "axis": "debuff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.nightsight_tonic.nightsight_tonic_worn_off_buff.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.nightsight_tonic.nightsight_tonic_worn_off_buff.description)",
+   "icon": "file(../tonic_worn_off_buff.png)",
+   "duration": "4h",
+   "repeat_add_action": "renew_duration",
+   "modifiers": {
+      "sleepiness": {
+         "multiply": 3
+      }
+   }
+}

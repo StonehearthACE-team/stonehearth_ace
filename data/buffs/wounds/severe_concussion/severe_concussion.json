@@ -1,14 +1,17 @@
 {
    "type": "buff",
    "axis": "debuff",
-   "category": "wound_blunt",
+   "category": "wound_impact",
    "unique_in_category": true,
    "rank": 2,
    "display_name": "i18n(stonehearth_ace:data.buffs.wounds.severe_concussion.display_name)",
    "description": "i18n(stonehearth_ace:data.buffs.wounds.severe_concussion.description)",
    "icon": "file(severe_concussion.png)",
+   "queue_crafting_order": "stonehearth_ace:consumables:simple_compress",
    "cant_affect_siege": true,
    "repeat_add_action": "stack_and_refresh",
+   "duration": "7d",
+   "remove_stacks_on_expire": 2,
    "max_stacks": 6,
    "modifiers": {
       "effective_max_health_percent": {

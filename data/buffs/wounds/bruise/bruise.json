@@ -1,14 +1,17 @@
 {
    "type": "buff",
    "axis": "debuff",
-   "category": "wound_blunt",
+   "category": "wound_impact",
    "unique_in_category": true,
    "rank": 1,
    "display_name": "i18n(stonehearth_ace:data.buffs.wounds.bruise.display_name)",
    "description": "i18n(stonehearth_ace:data.buffs.wounds.bruise.description)",
    "icon": "file(bruise.png)",
+   "queue_crafting_order": "stonehearth:consumables:healing_tonic:small",
    "cant_affect_siege": true,
    "repeat_add_action": "stack_and_refresh",
+   "duration": "2d",
+   "remove_stacks_on_expire": 2,
    "max_stacks": 8,
    "modifiers": {
       "effective_max_health_percent": {

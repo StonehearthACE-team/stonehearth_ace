@@ -1,0 +1,31 @@
+{
+   "type": "recipe",
+   "effort": 50,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.herbalist.recipes.strong_antidote_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.strong_antidote_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.strong_antidote_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/consumables/strong_antidote/strong_antidote.png",
+   "workshop": "stonehearth_ace:herbalist:metal_cauldron",
+	"work_effect": "fiddle",
+   "level_requirement": 5,
+   "ingredients": [
+      {
+         "material": "herb green resource",
+         "count": 4
+      },
+		{
+         "material": "herb blue resource",
+         "count": 3
+      },
+		{
+         "material": "herb purple bitter resource",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:consumables:strong_antidote"
+      }
+   ]
+}

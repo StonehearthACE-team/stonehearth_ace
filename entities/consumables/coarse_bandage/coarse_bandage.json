@@ -1,7 +1,28 @@
 {
-   "components": {},
+   "components": {
+		"mixintypes": {
+			"model_variants": "override"
+		},
+		"render_info": {
+			"scale": 0.08
+		},
+		"model_variants": {
+         "default": {
+            "models": [
+               "file(coarse_bandage.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": -0.04, "y": 0, "z": 0 }
+      }
+	},
    "entity_data": {
+		"stonehearth:net_worth": {
+         "value_in_gold": 4
+      },
       "stonehearth:catalog": {
+			"icon": "file(coarse_bandage.png)",
 			"mixintypes": {
 				"material_tags": "override"
 			},
@@ -11,20 +32,25 @@
          "script": "stonehearth:consumables:scripts:heal_target",
          "work_units": 2,
          "cures_conditions": {
-            "wounded": true
+            "wound_cut": 2,
+				"wound_fire": 1
          },
          "consumable_qualities": [
             {
-               "health_healed": 60,
-               "guts_healed": 4
+               "health_healed": 30,
+               "guts_healed": 2
             },
             {
-               "health_healed": 70,
-               "guts_healed": 5
+               "health_healed": 40,
+               "guts_healed": 2
+            },
+            {
+               "health_healed": 50,
+               "guts_healed": 3
             },
             {
                "health_healed": 80,
-               "guts_healed": 6
+               "guts_healed": 4
             }
          ]
       },

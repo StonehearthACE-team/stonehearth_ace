@@ -7,36 +7,36 @@
    "flavor": "i18n(stonehearth_ace:jobs.brewer.recipes.beer_buttered_serving_keg_recipe.flavor)",
    "portrait": "/stonehearth_ace/entities/drink/beer_buttered/beer_buttered_serving_keg/beer_buttered_serving_keg.png",
    "level_requirement": 5,
-	"workshop": "stonehearth_ace:brewer:kettle",
-	"work_effect": "fiddle",
+   "workshop": "stonehearth_ace:brewer:kettle",
+   "work_effect": "brewer_stirring",
    "ingredients": [
       {
          "uri": "stonehearth_ace:drink:beer",
          "count": 2
       },
-		{
+      {
          "uri": "stonehearth:food:egg",
          "count": 1
       },
-		{
+      {
          "material": "butter cooking_ingredient",
          "count": 1
       },
-		{
+      {
          "uri": "stonehearth:food:sugar",
          "count": 1
       },
-		{
-			"material": "refined serving_keg",
-			"count": 1
-		}
+      {
+         "material": "refined serving_keg",
+         "count": 1
+      }
    ],
    "produces": [
       {
          "item": "stonehearth_ace:drink:beer_buttered:serving_keg",
          "produce_scripts": [
-				"stonehearth_ace:craft_script:material_model_variant"
-			],
+            "stonehearth_ace:craft_script:material_model_variant"
+         ],
          "model_variant_material": "refined serving_keg"
       }
    ]

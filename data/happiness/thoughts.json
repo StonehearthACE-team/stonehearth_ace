@@ -33,6 +33,36 @@
             }
          }
       },
+      "infection": {
+         "mutually_exclusive": true,
+         "values": {
+            "undead_infection": {
+               "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.infection.values.undead_infection.display_name)",
+               "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.infection.values.undead_infection.tooltip)",
+               "duration": "4h",
+               "happiness_delta": -6,
+               "stackable": false
+            },
+            "minor_infection": {
+               "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.infection.values.minor_infection.display_name)",
+               "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.infection.values.minor_infection.tooltip)",
+               "happiness_delta": -4,
+               "stackable": false
+            },
+            "infection": {
+               "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.infection.values.infection.display_name)",
+               "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.infection.values.infection.tooltip)",
+               "happiness_delta": -10,
+               "stackable": false
+            },
+            "major_infection": {
+               "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.infection.values.major_infection.display_name)",
+               "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.infection.values.major_infection.tooltip)",
+               "happiness_delta": -20,
+               "stackable": false
+            }
+         }
+      },
       "violence": {
          "values": {
             "bee_swarmed": {

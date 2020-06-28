@@ -1105,6 +1105,26 @@
                      "tooltip": "Ow! Ouch! Oof! I'm covered in blisters... Those bees really got me!"
                   }
                }
+            },
+            "infection": {
+               "values": {
+                  "undead_infection": {
+                     "display_name": "Hurt by Undead...",
+                     "tooltip": "Oh no, oh no, oh no... Am I turning green? Am I okay?!"
+                  },
+                  "minor_infection": {
+                     "display_name": "Feeling feverish",
+                     "tooltip": "This fever is not normal, I'm shaking, feeling bad and I know there's something wrong..."
+                  },
+                  "infection": {
+                     "display_name": "Infected wounds",
+                     "tooltip": "Some of my wounds are not really healing... They're getting worse and I'm not feeling good."
+                  },
+                  "major_infection": {
+                     "display_name": "Having hallucinations",
+                     "tooltip": "The fever is unbearable, the discomfort is horrible... I can see a light... Should I go to the light?"
+                  }
+               }
             }
          }
       },
@@ -2222,15 +2242,15 @@
          "poison": {
             "minor_poison": {
                "display_name": "Weak Poison",
-               "description": "A weak, non-lethal poison. Will last some hours. Muscle and Willpower are fairly reduced.<ul><li>Losing 5% of their health points every 30 minutes</li><li>This poison will only damage them down to 75% of their total health</li></ul>"
+               "description": "A weak, non-lethal poison. Will last some hours. Muscle and Willpower are fairly reduced.<ul><li>💬 Type & Severity: Poison (Low)</li><li>💊 This poison can be treated with Leeches or Weak Antidote</li><li>💢 Losing 5% of their health points every 30 minutes</li><li>❗ This poison will only damage them down to 75% of their total health</li></ul>"
             },
             "poison": {
                "display_name": "Poison",
-               "description": "A non-lethal but dangerous poison. Might last a day or so. Muscle and Willpower are reduced.<ul><li>Losing 5% of their health points every 20 minutes</li><li>This poison will damage them down to only 30% of their total health</li></ul>"
+               "description": "A non-lethal but dangerous poison. Might last a day or so. Muscle and Willpower are reduced.<ul><li>💬 Type & Severity: Poison (Medium)</li><li>💊 This poison needs to be treated with at least an Antidote to be completely removed with a single treatment</li><li>💢 Losing 5% of their health points every 20 minutes</li><li>❗ This poison will damage them down to only 30% of their total health</li></ul>"
             },
             "major_poison": {
                "display_name": "Strong Poison",
-               "description": "A tough, lethal poison. Can last a couple of days. Muscle and Willpower are greatly reduced.<ul><li>Losing 5% of their health points every 10 minutes</li><li>This poison can damage them until they die and require constant medical attention</li></ul>"
+               "description": "A tough, lethal poison. Can last a couple of days. Muscle and Willpower are greatly reduced.<ul><li>💬 Type & Severity: Poison (High)</li><li>💊 This poison needs to be treated with at least a Strong Antidote to be completely removed with a single treatment</li><li>💢 Losing 5% of their health points every 10 minutes</li><li>❗ This poison can damage them until they are knocked unconscious and require constant assistance or treatment</li></ul>"
             }
          },
          "toxin": {
@@ -2242,15 +2262,15 @@
          "infection": {
             "minor_infection": {
                "display_name": "High Fever",
-               "description": "Feels dizzy and faint... I think one of my wounds is slightly infected. Stamina and Willpower are slightly lowered.<ul><li>High Fever may pass on its own but can also turn into an infection if stacked enough</li><ul>"
+               "description": "Feels dizzy and faint... I think one of my wounds is slightly infected. Stamina and Willpower are slightly lowered.<ul><li>💬 Type & Severity: Infection (Medium)</li><li>💊 This infection can be treated with Leeches or Fever Cordial</li><li>❗ High Fever may pass on its own but can also turn into an infection if stacked enough</li><ul>"
             },
             "infection": {
                "display_name": "Infection",
-               "description": "Eww! My wounds are looking really bad. I need help or this will get worse! Stamina, Willpower and Muscle are quite lowered.<ul><li>An infection can become deadly if stacked high enough</li><ul>"
+               "description": "Eww! Things are looking really bad. I need help or this will get worse! Stamina, Muscle and Willpower are quite lowered.<ul><li>💬 Type & Severity: Infection (High)</li><li>💊 This infection needs to be treated with at least a Fever Cordial to be completely removed with a single treatment</li><li>❗ An infection may pass on its own but can become very dangerous if stacked high enough</li><ul>"
             },
             "major_infection": {
                "display_name": "Severe Infection",
-               "description": "The infection is out of control and this hearthling's life is urgently threatened. Body and Willpower are completely lowered.<ul><li>This hearthling will take a lot of damage over time</li><ul>"
+               "description": "The infection is out of control and this hearthling's life is urgently threatened. Body and Willpower are completely lowered.<ul><li>💬 Type & Severity: Infection (Extreme)</li><li>💊 This infection needs to be treated with at least a Fever Cordial to be completely removed with a single treatment</li><li>❗ This hearthling will take a lot of damage over time until the infection is removed.</li><ul>"
             }
          },
          "spring_flavors": {
@@ -2300,151 +2320,195 @@
          "wounds": {
             "scratch": {
                "display_name": "Wound: Scratch",
-               "description": "Owie! It hurts a little but it's just a nick...<ul><li>Effective maximum health is 💜 very slightly lowered</li><li>This wound requires 🌿 any treatment to be removed</li><li>⏳ This wound will also heal on its own, but it will take some time</li></ul>"
+               "description": "Owie! It hurts a little but it's just a nick...<ul><li>💬 Type & Severity: Cut (Low)</li><li>💚🔻 Effective maximum health is very slightly lowered</li><li>🌿 This wound will be removed with any medical treatment</li><li>⏳ This wound will also heal on its own, but it will take some time</li></ul>"
             },
             "small_cut": {
                "display_name": "Wound: Small Cut",
-               "description": "It hurts a lot! It will be fine... Right?<ul><li>Effective maximum health is 💜 slightly lowered</li><li>This wound requires at least a 💊 Coarse Bandage to be removed</li><li>⏳ This wound will also heal on its own, but it will take a very long time</li><li>If left untreated for too long, this wound may cause 🌡️ High Fever</li></ul>"
+               "description": "It hurts a lot! It will be fine... Right?<ul><li>💬 Type & Severity: Cut (Medium)</li><li>💛🔻 Effective maximum health is slightly lowered</li><li>💊 This wound will be removed by treatment with any bandage, Coarse Bandage or better</li><li>⏳ This wound will also heal on its own, but it will take a very long time</li><li>🌡️ If left untreated, this wound may cause High Fever</li></ul>"
             },
             "deep_slash": {
                "display_name": "Wound: Deep Slash",
-               "description": "Uh, that doesn't look good...<ul><li>Effective maximum health is 💜 somewhat lowered</li><li>This wound requires at least a 💊 Light Bandage to be removed</li><li>❌ This wound will never heal on its own</li><li>If left untreated for too long, this wound may cause 🌡️ Infection</li><li>Treating this wound has a small chance of permanently adding the condition 💫 Scary Scar</li></ul>"
+               "description": "Uh, that doesn't look good...<ul><li>💬 Type & Severity: Cut (High)</li><li>💜🔻 Effective maximum health is somewhat lowered</li><li>💊 This wound can be treated with any bandage but requires at least a Light Bandage to be completely removed with a single treatment</li><li>❌ This wound will never heal on its own</li><li>🌡️ If left untreated, this wound may cause Infection</li><li>💫 Treating this wound has a small chance of permanently adding the condition Scary Scar</li></ul>"
             },
             "ugly_rend": {
                "display_name": "Wound: Ugly Rend",
-               "description": "Ouch! Ow! So painful, I can't even look at it!<ul><li>Effective maximum health is 💜 quite lowered</li><li>This wound requires a 💊 Heavy Bandage to be removed</li><li>❌ This wound will never heal on its own</li><li>If left untreated for too long, this wound may cause 🌡️ Infection</li><li>Treating this wound has a small chance of permanently adding the condition 💫 Scary Scar</li></ul>"
+               "description": "Ouch! Ow! So painful, I can't even look at it!<ul><li>💬 Type & Severity: Cut (Extreme)</li><li>🖤🔻 Effective maximum health is quite lowered</li><li>💊 This wound can be treated with any bandage but requires at least a Heavy Bandage to be completely removed with a single treatment</li><li>❌ This wound will never heal on its own</li><li>🌡️ If left untreated, this wound may cause Infection</li><li>💫 Treating this wound has a small chance of permanently adding the condition Scary Scar</li></ul>"
             },
             "bruise": {
                "display_name": "Wound: Bruise",
-               "description": "It's all purple, bumpy and aching... Could be worse, I guess.<ul><li>Effective maximum health is 💜 very slightly lowered</li><li>This wound requires 🌿 any treatment to be removed</li><li>⏳ This wound will also heal on its own, but it will take some time</li></ul>"
+               "description": "It's all purple, bumpy and aching... Could be worse, I guess.<ul><li>💬 Type & Severity: Impact (Low)</li><li>💚🔻 Effective maximum health is very slightly lowered</li><li>🌿 This wound will be removed with any medical treatment</li><li>⏳ This wound will also heal on its own, but it will take some time</li></ul>"
             },
             "severe_concussion": {
                "display_name": "Wound: Severe Concussion",
-               "description": "Oh, woah. What a knock, I'm a bit dizzy...<ul><li>Effective maximum health is 💜 slightly lowered</li><li>This wound requires at least a 💊 Simple Compress to be removed</li><li>⏳ This wound will also heal on its own, but it will take a very long time</li></ul>"
+               "description": "Oh, woah. What a knock, I'm a bit dizzy...<ul><li>💬 Type & Severity: Impact (Medium)</li><li>💛🔻 Effective maximum health is slightly lowered</li><li>💊 This wound will be removed by treatment with any compress, Simple Compress or better</li><li>⏳ This wound will also heal on its own, but it will take a very long time</li></ul>"
             },
             "crushing_blow": {
                "display_name": "Wound: Crushing Blow",
-               "description": "Gah! This hurts and looks... Very swollen.<ul><li>Effective maximum health is 💜 somewhat lowered</li><li>This wound requires at least a 💊 Herbal Compress to be removed</li><li>❌ This wound will never heal on its own</li><li>If left untreated for too long, this wound may cause 🌡️ High Fever</li></ul>"
+               "description": "Gah! This hurts and looks... Very swollen.<ul><li>💬 Type & Severity: Impact (High)</li><li>💜🔻 Effective maximum health is somewhat lowered</li><li>💊 This wound can be treated with any compress but requires at least a Herbal Compress to be completely removed with a single treatment</li><li>❌ This wound will never heal on its own</li><li>🌡️ If left untreated, this wound may cause High Fever</li></ul>"
             },
             "broken_bone": {
                "display_name": "Wound: Broken Bone",
-               "description": "Ugh! I think I broke something...<ul><li>Effective maximum health is 💜 quite lowered</li><li>This wound requires a 💊 Tough Compress to be removed</li><li>❌ This wound will never heal on its own</li><li>If left untreated for too long, this wound may cause 🌡️ High Fever</li></ul>"
+               "description": "Ugh! I think I broke something...<ul><li>💬 Type & Severity: Impact (Extreme)</li><li>🖤🔻 Effective maximum health is quite lowered</li><li>💊 This wound can be treated with any compress but requires at least a Tough Compress to be completely removed with a single treatment</li><li>❌ This wound will never heal on its own</li><li>🌡️ If left untreated, this wound may cause High Fever</li></ul>"
             },
             "minor_sting": {
                "display_name": "Wound: Minor Sting",
-               "description": "Ouch! Pointy, but luckily a superficial wound...<ul><li>Effective maximum health is 💜 very slightly lowered</li><li>This wound requires 🌿 any treatment to be removed</li><li>⏳ This wound will also heal on its own, but it will take some time</li></ul>"
+               "description": "Ouch! Pointy, but luckily a superficial wound...<ul><li>💬 Type & Severity: Pierce (Low)</li><li>💚🔻 Effective maximum health is very slightly lowered</li><li>🌿 This wound will be removed with any medical treatment</li><li>⏳ This wound will also heal on its own, but it will take some time</li></ul>"
             },
             "prick": {
                "display_name": "Wound: Prick",
-               "description": "Like a little hole! It hurts...<ul><li>Effective maximum health is 💜 slightly lowered</li><li>This wound requires at least a 💊 Rough Salve to be removed</li><li>⏳ This wound will also heal on its own, but it will take a very long time</li><li>If left untreated for too long, this wound may cause 🌡️ High Fever</li></ul>"
+               "description": "Like a little hole! It hurts...<ul><li>💬 Type & Severity: Pierce (Medium)</li><li>💛🔻 Effective maximum health is slightly lowered</li><li>💊 This wound will be removed by treatment with any salve, Rough Salve or better</li><li>⏳ This wound will also heal on its own, but it will take a very long time</li><li>🌡️ If left untreated, this wound may cause High Fever</li></ul>"
             },
             "mean_stab": {
                "display_name": "Wound: Mean Stab",
-               "description": "Uh-oh... This looks deep. I need help!<ul><li>Effective maximum health is 💜 somewhat lowered</li><li>This wound requires at least a 💊 Common Salve to be removed</li><li>❌ This wound will never heal on its own</li><li>If left untreated for too long, this wound may cause 🌡️ Infection</li></ul>"
+               "description": "Uh-oh... This looks deep. I need help!<ul><li>💬 Type & Severity: Pierce (High)</li><li>💜🔻 Effective maximum health is somewhat lowered</li><li>💊 This wound can be treated with any salve but requires at least a Common Salve to be completely removed with a single treatment</li><li>❌ This wound will never heal on its own</li><li>🌡️ If left untreated, this wound may cause Infection</li></ul>"
             },
             "nasty_gash": {
                "display_name": "Wound: Nasty Gash",
-               "description": "Ugh... I hope that didn't go through me.<ul><li>Effective maximum health is 💜 quite lowered</li><li>This wound requires a 💊 Neat Salve to be removed</li><li>❌ This wound will never heal on its own</li><li>If left untreated for too long, this wound may cause 🌡️ Infection</li><li>Treating this wound has a small chance of permanently adding the condition 💫 Scary Scar</li></ul>"
+               "description": "Ugh... I hope that didn't go through me.<ul><li>💬 Type & Severity: Pierce (Extreme)</li><li>🖤🔻 Effective maximum health is quite lowered</li><li>💊 This wound can be treated with any salve but requires at least a Neat Salve to be completely removed with a single treatment</li><li>❌ This wound will never heal on its own</li><li>🌡️ If left untreated, this wound may cause Infection</li><li>💫 Treating this wound has a small chance of permanently adding the condition Scary Scar</li></ul>"
             },
             "frostbite": {
                "display_name": "Wound: Frostbite",
-               "description": "Ew! Doesn't look good, I shouldn't stay out in the cold for too long...<ul><li>Effective maximum health is 💜 slightly lowered</li><li>This wound requires at least a 💊 Rough Salve to be removed</li><li>❌ This wound will never heal on its own</li><li>Treating this wound has a small chance of permanently adding the condition 💫 Frostbitten</li></ul>"
+               "description": "Ew! Doesn't look good, I shouldn't stay out in the cold for too long...<ul><li>💬 Type & Severity: Cold (Medium)</li><li>💛🔻 Effective maximum health is slightly lowered</li><li>💊 This wound will be removed by treatment with any salve, Rough Salve or better</li><li>❌ This wound will never heal on its own</li><li>💫 Treating this wound has a small chance of permanently adding the condition Frostbitten</li></ul>"
+            },
+				"light_burn": {
+               "display_name": "Wound: Light Burn",
+               "description": "That was way too hot!<ul><li>💬 Type & Severity: Fire (Low)</li><li>💚🔻 Effective maximum health is very slightly lowered</li><li>💊 This wound requires any bandage or ointment to be treated and will be completely removed</li><li>⏳ This wound will also heal on its own, but it will take some time</li></ul>"
             },
             "bad_burn": {
                "display_name": "Wound: Bad Burn",
-               "description": "That was way too hot!<ul><li>Effective maximum health is 💜 somewhat lowered</li><li>This wound requires at least a 💊 Herbal Compress to be removed</li><li>❌ This wound will never heal on its own</li><li>Treating this wound has a small chance of permanently adding the condition 💫 Scary Scar</li></ul>"
+               "description": "That was way too hot!<ul><li>💬 Type & Severity: Fire (High)</li><li>💜🔻 Effective maximum health is somewhat lowered</li><li>💊 This wound requires any bandage or ointment to be treated but might require multiple treatments before being removed</li><li>❌ This wound will never heal on its own</li><li>💫 Treating this wound has a small chance of permanently adding the condition Scary Scar</li></ul>"
             },
             "corrupted_laceration": {
                "display_name": "Wound: Corrupted Laceration",
-               "description": "This wound looks... unnatural. Scary!<ul><li>Effective maximum health is 💜 quite lowered</li><li>This wound requires a 💊 Hearthbud Ointment to be removed</li><li>❌ This wound will never heal on its own</li><li>If left untreated for too long, this wound may cause 🌡️ Infection</li><li>Treating this wound has a small chance of permanently adding the condition 💫 Torn Soul</li></ul>"
+               "description": "This wound looks... unnatural. Scary!<ul><li>💬 Type & Severity: Corrupted (Extreme)</li><li>🖤🔻 Effective maximum health is quite lowered</li><li>💊 This wound can only be treated with a Hearthbud Ointment</li><li>❌ This wound will never heal on its own</li><li>🌡️ If left untreated, this wound may cause Infection</li><li>💫 Treating this wound has a small chance of permanently adding the condition Torn Soul</li></ul>"
             },
             "scary_scar": {
                "display_name": "Scary Scar",
-               "description": "This hearthling proudly displays their scars. Menace is slightly increased."
+               "description": "This hearthling proudly displays their scars. Menace is slightly & permanently increased."
             },
             "battle_scarred": {
                "display_name": "Battle-Scarred",
-               "description": "When you have more scars than you can count, wear them like a trophy! Menace and Courage are increased."
+               "description": "When you have more scars than you can count, wear them like a trophy! Menace and Courage are permanently increased."
             },
             "frostbitten": {
                "display_name": "Frostbitten",
-               "description": "Facing a blizzard head-on is an unforgettable experience that has left me somewhat... Incomplete. Well, lesson learned! Muscle and Speed are slightly reduced."
+               "description": "Facing a blizzard head-on is an unforgettable experience that has left me somewhat... Incomplete. Well, lesson learned! Muscle and Speed are slightly & permanently reduced."
             },
             "torn_soul": {
                "display_name": "Torn Soul",
-               "description": "I'm still here... But I have never been the same since I was wounded by evil creatures. Spirit is reduced."
+               "description": "I'm still here... But I have never been the same since I was wounded by evil creatures. Spirit is permanently reduced."
             }
          },
          "cold_tonic": {
             "cold_tonic_buff": {
                "display_name": "Refreshing Tonic",
-               "description": "Blabla"
+               "description": "An aura of cold involves this hearthling, protecting them from hot weather."
+            },
+            "cold_tonic_worn_off_buff": {
+               "display_name": "Refreshing Tonic (After-effect)",
+               "description": "This hearthling's body is tired after being magically enveloped for too long. Body is reduced."
+            }
+         },
+         "courage_tonic": {
+            "courage_tonic_buff": {
+               "description": "Courage is slightly increased for a while."
             }
          },
          "courage_tonic_2": {
             "courage_tonic_2_buff": {
                "display_name": "Enhanced Courage Tonic",
-               "description": "Blublu"
+               "description": "Courage and Armor are increased for a while."
             }
          },
          "creativity_tonic": {
             "creativity_tonic_buff": {
                "display_name": "Creativity Tonic",
-               "description": "Bleble"
+               "description": "Crafting Speed is slightly increased for a while."
             }
          },
          "creativity_tonic_2": {
             "creativity_tonic_2_buff": {
                "display_name": "Enhanced Creativity Tonic",
-               "description": "Bloblo"
+               "description": "Crafting Speed and Inspiration are increased for a while."
             }
          },
          "curiosity_tonic": {
             "curiosity_tonic_buff": {
                "display_name": "Curiosity Tonic",
-               "description": "blibli"
+               "description": "Curiosity and Experience Gain are slightly increased for a while."
+            },
+            "curiosity_tonic_worn_off_buff": {
+               "display_name": "Curiosity Tonic (After-effect)",
+               "description": "This hearthlings' intellect is exhausted after forced enlightment. Mind is reduced."
+            }
+         },
+         "energy_tonic": {
+            "energy_tonic_buff": {
+               "description": "Speed and Diligence are slightly increased for a while. Sleepiness is reduced."
             }
          },
          "energy_tonic_2": {
             "energy_tonic_2_buff": {
                "display_name": "Enhanced Energy Tonic",
-               "description": "blabla"
+               "description": "Speed and Diligence are increased for a while. Sleepiness is reduced. This hearthling will focus more on working and engage in less conversations with others."
             }
          },
          "nightsight_tonic": {
             "nightsight_tonic_buff": {
                "display_name": "Nightsight Tonic",
-               "description": "bloblo"
+               "description": "The eyes of this hearthling are magically enhanced, allowing them to see in the dark without penalties for a while."
+            },
+            "nightsight_tonic_worn_off_buff": {
+               "display_name": "Nightsight Tonic (After-effect)",
+               "description": "Sudden changes to how light and darkness are perceived has confused this hearthling's body clock. They'll feel more sleepy."
+            }
+         },
+         "stamina_tonic": {
+            "stamina_tonic_buff": {
+               "description": "Stamina is slightly increased for a while, boosting their health."
             }
          },
          "stamina_tonic_2": {
             "stamina_tonic_2_buff": {
                "display_name": "Enhanced Stamina Tonic",
-               "description": "bloblo"
+               "description": "Stamina is increased for a while, greatly boosting their health. Healing received is also increased."
+            }
+         },
+         "strength_tonic": {
+            "strength_tonic_buff": {
+               "description": "Muscle is slightly increased for a while, boosting their combat damage."
             }
          },
          "strength_tonic_2": {
             "strength_tonic_2_buff": {
                "display_name": "Enhanced Strength Tonic",
-               "description": "bleble"
+               "description": "Muscle is increased for a while, greatly boosting their combat damage. Armor Penetration is also increased."
             }
          },
          "warmth_tonic": {
             "warmth_tonic_buff": {
                "display_name": "Warmth Tonic",
-               "description": "blublu"
+               "description": "An aura of heat involves this hearthling, protecting them from cold weather."
+            },
+            "warmth_tonic_worn_off_buff": {
+               "display_name": "Warmth Tonic (After-effect)",
+               "description": "This hearthling's body is tired after being magically enveloped for too long. Body is reduced."
             }
          },
          "water_resist_tonic": {
             "water_resist_tonic_buff": {
                "display_name": "Hydrophobic Tonic",
-               "description": "blinblin"
+               "description": "This hearthling is surrounded by a thin magical layer that will prevent them from getting soaked."
             }
          },
          "water_resist_tonic_2": {
             "water_resist_tonic_2_buff": {
                "display_name": "Enhanced Hydrophobic Tonic",
-               "description": "brumbrum"
+               "description": "This hearthling is protected by a much stronger magical layer that will entirely avoid water, allowing them to even run underwater!"
+            },
+            "water_resist_tonic_2_worn_off_buff": {
+               "display_name": "Hydrophobic Tonic (After-effect)",
+               "description": "Excessive impermeability has caused this hearthling to feel thirstier more quickly."
             }
          }
       },
@@ -3169,7 +3233,7 @@
             },
             "hearth_healing_tonic_recipe": {
                "recipe_name": "Hearthbud Healing Tonic",
-               "description": "Used by the herbalist to efficiently heal wounds.",
+               "description": "Used by the herbalist to recover a lot of health.",
                "flavor": "The power of the Hearth has interesting healing properties"
             },
             "hearth_fertilizer_recipe": {
@@ -3179,73 +3243,161 @@
             },
             "hearth_tonic_recipe": {
                "recipe_name": "Hearthbud Light Tonic",
-               "description": "A powerful potion that will boost courage, muscle, menace and slowly heal over time.",
+               "description": "A powerful potion that will boost courage, muscle, menace and slowly heal your entire town over time.",
                "flavor": "May it be a light to you in dark places, when all other lights go out! -Sasha of Clan Amberstone"
+            },
+            "small_healing_tonic_recipe": {
+               "description": "Used by the herbalist to recover a tiny amount of health.",
+               "flavor": ""
             },
             "healing_tonic_recipe": {
                "recipe_name": "Healing Tonic",
-               "description": "Used by the herbalist to somewhat heal wounds.",
+               "description": "Used by the herbalist to recover a medium amount of health.",
                "flavor": ""
             },
             "cold_tonic_recipe": {
                "recipe_name": "Refreshing Tonic",
-               "description": "Protects from hot weather",
-               "flavor": ""
+               "description": "This tonic will protect your entire town from hot weather. Causes after-effects when the quality isn't excellent or higher.",
+               "flavor": "Known as 'Frost Embrace' in the famous Illustrated Alchemical Catalogue by Zokumos of Panaples"
             },
             "nightsight_tonic_recipe": {
                "recipe_name": "Nightsight Tonic",
-               "description": "Provides better view at night",
-               "flavor": ""
+               "description": "All of your citizens will get enhanced sight, allowing them to see in the dark. Causes after-effects when the quality isn't excellent or higher.",
+               "flavor": "Called 'Cat's Eye Tincture' by Picollo Flanel in his celebrated Alchemist's Handbook"
             },
             "warmth_tonic_recipe": {
                "recipe_name": "Warmth Tonic",
-               "description": "Protects from cold weather",
-               "flavor": ""
+               "description": "This tonic will protect your entire town from cold weather. Causes after-effects when the quality isn't excellent or higher.",
+               "flavor": "Known as 'Dragon's Touch' in the famous Illustrated Alchemical Catalogue by Zokumos of Panaples"
             },
             "water_resist_tonic_recipe": {
                "recipe_name": "Hydrophobic Tonic",
-               "description": "Repels water from rain",
+               "description": "Protection from getting soaked will be granted to all of the hearthlings.",
                "flavor": ""
             },
             "water_resist_tonic_2_recipe": {
                "recipe_name": "Enhanced Hydrophobic Tonic",
-               "description": "Repels so much water that hearthlings can walk at normal speed when underwater",
-               "flavor": ""
+               "description": "Protects the whole town from getting soaked, allows running underwater. Causes after-effects when the quality isn't excellent or higher.",
+               "flavor": "Known as 'Mermaid's Kiss' in the famous Illustrated Alchemical Catalogue by Zokumos of Panaples"
+            },
+            "strength_tonic_recipe": {
+               "description": "Increases Muscle of all the hearthlings for a while, also boosting their damage."
             },
             "strength_tonic_2_recipe": {
                "recipe_name": "Enhanced Strength Tonic",
-               "description": "Also increases damage",
-               "flavor": ""
+               "description": "Increases Muscle and the Armor Penetration of all the hearthlings for a while.",
+               "flavor": "Referred as 'Giant's Breath' by the alchemical textbooks of Lady Marie Gem"
+            },
+            "stamina_tonic_recipe": {
+               "description": "Increases the Stamina of all your hearthlings for a while."
             },
             "stamina_tonic_2_recipe": {
                "recipe_name": "Enhanced Stamina Tonic",
-               "description": "Increases heal received",
-               "flavor": ""
+               "description": "Increases the Stamina and the Healing Received of all your hearthlings for a while.",
+               "flavor": "Referred as 'Vigorous Vial' by the alchemical textbooks of Lady Marie Gem"
+            },
+            "energy_tonic_recipe": {
+               "description": "This tonic makes your citizens less sleepy and move faster for a while."
             },
             "energy_tonic_2_recipe": {
                "recipe_name": "Enhanced Energy Tonic",
-               "description": "Makes them talk less",
-               "flavor": ""
+               "description": "This tonic makes your citizens even less sleepy, even more faster and generally avoid conversations for a while.",
+               "flavor": "Referred as 'Draft of Quicksilver' by the alchemical textbooks of Lady Marie Gem"
             },
             "curiosity_tonic_recipe": {
                "recipe_name": "Curiosity Tonic",
-               "description": "Increases their curiosity and the ratio at which they gain experience",
-               "flavor": ""
+               "description": "This tonic will increase everyone's Curiosity and Experience Gain. Causes after-effects when the quality isn't excellent or higher.",
+               "flavor": "Called the 'Philospher's Draught' by Picollo Flanel in his celebrated Alchemist's Handbook"
             },
             "creativity_tonic_2_recipe": {
                "recipe_name": "Enhanced Creativity Tonic",
-               "description": "Also increases the chance for higher quality crafts",
-               "flavor": ""
+               "description": "All of your hearthlings will enjoy faster crafting speed and increased chances for higher quality crafting.",
+               "flavor": "Called 'Sip of Clearmind' by Picollo Flanel in his celebrated Alchemist's Handbook"
             },
             "creativity_tonic_recipe": {
                "recipe_name": "Creativity Tonic",
-               "description": "Makes crafting faster",
+               "description": "All of your hearthlings will enjoy slightly faster crafting speed.",
                "flavor": ""
+            },
+            "courage_tonic_recipe": {
+               "description": "Increases the Courage of all citizens for a while."
             },
             "courage_tonic_2_recipe": {
                "recipe_name": "Enhanced Courage Tonic",
-               "description": "Also increases armor",
+               "description": "Increases the Courage and the Armor value of all citizens for a while.",
+               "flavor": "Referred as 'Bearskin Potion' by the alchemical textbooks of Lady Marie Gem"
+            },
+            "fever_cordial_recipe": {
+               "recipe_name": "Fever Cordial",
+               "description": "This foul-smelling extract can be used for treating infections of any severity.",
+               "flavor": "Old Nanny used to say that rubbing moldy bread on infected wounds can be helpful..."
+            },
+            "weak_antidote_recipe": {
+               "recipe_name": "Weak Antidote",
+               "description": "This simple potion can be used against poisons and will efficiently treat any poison of low severity.",
                "flavor": ""
+            },
+            "antidote_recipe": {
+               "recipe_name": "Antidote",
+               "description": "This mixture can be used against poisons and will efficiently treat any poison of low or medium severity.",
+               "flavor": ""
+            },
+            "strong_antidote_recipe": {
+               "recipe_name": "Strong Antidote",
+               "description": "This delicate concoction can be used against poisons and will efficiently treat any poison up to high severity.",
+               "flavor": ""
+            },
+            "rough_salve_recipe": {
+               "recipe_name": "Rough Salve",
+               "description": "A simple and rustic paste that can be applied on any pierce. Efficiently treats wounds up to medium severity.",
+               "flavor": "Salves can also be used for cold wounds"
+            },
+            "common_salve_recipe": {
+               "recipe_name": "Common Salve",
+               "description": "A refined, buttery medication that can be applied on any pierce. Efficiently treats wounds up to high severity.",
+               "flavor": "Salves can also be used for cold wounds"
+            },
+            "neat_salve_recipe": {
+               "recipe_name": "Neat Salve",
+               "description": "Smooth and fragrant, this salve can be applied on any pierce. Efficiently treats wounds up to extreme severity.",
+               "flavor": "Salves can also be used for cold wounds"
+            },
+				"coarse_bandage_recipe": {
+               "description": "Some cloth and healing herbs for cleaning any cut. Efficiently treats wounds up to medium severity.",
+               "flavor": "Bandages can also be used for fire wounds"
+            },
+            "light_bandage_recipe": {
+               "description": "Better woven cloth and herbs for cleaning any cut. Efficiently treats wounds up to high severity.",
+               "flavor": "Bandages can also be used for fire wounds"
+            },
+            "heavy_bandage_recipe": {
+               "description": "A piece of thicker cloth with vinegar and herbs is perfect for cleaning any cut. Efficiently treats wounds up to extreme severity.",
+               "flavor": "Bandages can also be used for fire wounds"
+            },
+            "simple_compress_recipe": {
+               "recipe_name": "Simple Compress",
+               "description": "A rough gauze meant for pressuring any impact. Efficiently treats wounds up to medium severity.",
+               "flavor": ""
+            },
+            "herbal_compress_recipe": {
+               "recipe_name": "Herbal Compress",
+               "description": "A fine cloth soaked in herbal extracts for healing any impact. Efficiently treats wounds up to high severity.",
+               "flavor": ""
+            },
+            "tough_compress_recipe": {
+               "recipe_name": "Tough Compress",
+               "description": "A hard strap with curative herbs for healing any impact. Efficiently treats wounds up to extreme severity.",
+               "flavor": "People will want to sign up your leather compress..."
+            },
+            "fine_ointment_recipe": {
+               "recipe_name": "Fine Ointment",
+               "description": "This complex cream can be used for healing many types of wounds, although not very efficiently.",
+               "flavor": "Ointments can be used for impact, cut, pierce, cold and fire wounds"
+            },
+            "hearthbud_ointment_recipe": {
+               "recipe_name": "Hearthbud Ointment",
+               "description": "A magical, arcane fluid that will efficiently heal many types of wounds up to high severity.",
+               "flavor": "The power of the hearth is also the only known treatment to corrupted wounds"
             },
             "gruit_recipe": {
                "recipe_name": "Wrap of Gruit",
@@ -3289,7 +3441,7 @@
                "power_medic_3_name": "Great Physician",
                "power_medic_3_description": "The Herbalist can now attend to up to 6 hearthlings at a time."
             },
-            "description": "A performer of healing practices, the Herbalist can craft and use tonics, bandages and potions but also work with plants, seeds and other foraging goods."
+            "description": "A performer of healing practices, the Herbalist can craft and use tonics, medications and potions but also work with plants, seeds and other foraging goods."
          },
          "herbalist_mortar_pewter": {
             "display_name": "Herbalist's Pewter Mortar",
@@ -3793,7 +3945,7 @@
             "legendary_tome_recipe": {
                "recipe_name": "Cleric Tome, 'The Walk of Cid'",
                "description": "A legendary tome for the followers of the Church of Plenty.",
-               "flavor": "Through the ways of Cid healing shall be done"
+               "flavor": "Through the ways of Cid, healing shall be done"
             },
             "wooden_sign_geomancer_recipe": {
                "recipe_name": "Geomancer's Wall-Mounted Sign",
@@ -5969,11 +6121,14 @@
          "healing_tonic": {
             "hearth_healing_tonic": {
                "display_name": "Hearthbud Healing Tonic",
-               "description": "The power of the Hearth used by the herbalist to heal wounds"
+               "description": "The power of Hearth used by the herbalist for recovering lots of health."
             },
             "healing_tonic": {
                "display_name": "Healing Tonic",
-               "description": "Can be used by the Herbalist to heal some wounds."
+               "description": "Can be used by the Herbalist to recover some health."
+            },
+            "small_healing_tonic": {
+               "description": "Can be used by the Herbalist to recover minuscule amounts of health."
             }
          },
          "fertilizer_hearth": {
@@ -5982,55 +6137,132 @@
          },
          "hearth_tonic": {
             "display_name": "Hearthbud Light Tonic",
-            "description": "Temporarily boosts muscle, courage and menace. Slowly heals over time."
+            "description": "Temporarily boosts Muscle, Courage and Menace. Slowly heals over time."
          },
          "cold_tonic": {
             "display_name": "Refreshing Tonic",
-            "description": "Protects from hot weather"
+            "description": "Temporarily protects from hot weather."
          },
          "nightsight_tonic": {
             "display_name": "Nightsight Tonic",
-            "description": "Provides better view at night"
+            "description": "Temporarily provides better sight in the dark."
          },
          "warmth_tonic": {
             "display_name": "Warmth Tonic",
-            "description": "Protects from cold weather"
+            "description": "Temporarily protects from cold weather."
          },
          "water_resist_tonic": {
             "display_name": "Hydrophobic Tonic",
-            "description": "Repels water from rain"
+            "description": "Temporarily protects citizens from getting soaked."
          },
          "water_resist_tonic_2": {
             "display_name": "Enhanced Hydrophobic Tonic",
-            "description": "Repels so much water that hearthlings can walk at normal speed when underwater"
+            "description": "Temporarily protects citizens from getting soaked and slowed in water."
          },
          "strength_tonic_2": {
             "display_name": "Enhanced Strength Tonic",
-            "description": "Also increases damage"
+            "description": "Temporarily buffs Muscle and Armor Penetration."
          },
          "stamina_tonic_2": {
             "display_name": "Enhanced Stamina Tonic",
-            "description": "Also makes them less hungry"
+            "description": "Temporarily buffs Stamina and Healing Received."
          },
          "energy_tonic_2": {
             "display_name": "Enhanced Energy Tonic",
-            "description": "Makes them less sleepy"
+            "description": "Temporarily buffs Speed, Diligence and makes them less sleepy and talkative."
          },
          "curiosity_tonic": {
             "display_name": "Curiosity Tonic",
-            "description": "Increases their curiosity and the ratio at which they gain experience"
+            "description": "Temporarily buffs Curiosity and Experience Gain."
          },
          "creativity_tonic_2": {
             "display_name": "Enhanced Creativity Tonic",
-            "description": "Also increases the chance for higher quality crafts"
+            "description": "Temporarily buffs Crafting Speed and Inspiration."
          },
          "creativity_tonic": {
             "display_name": "Creativity Tonic",
-            "description": "Makes crafting faster"
+            "description": "Temporarily buffs Crafting Speed."
          },
          "courage_tonic_2": {
             "display_name": "Enhanced Courage Tonic",
-            "description": "Also increases armor"
+            "description": "Temporarily buffs Courage and Armor."
+         },
+         "courage_tonic": {
+            "description": "Temporarily buffs Courage."
+         },
+         "strength_tonic": {
+            "description": "Temporarily buffs Muscle."
+         },
+         "stamina_tonic": {
+            "description": "Temporarily buffs Stamina."
+         },
+         "energy_tonic": {
+            "description": "Temporarily buffs Speed, Diligence and makes them less sleepy."
+         },
+         "simple_compress": {
+            "display_name": "Simple Compress",
+            "description": "Used by the Herbalist for treating impacts up to medium severity."
+         },
+         "herbal_compress": {
+            "display_name": "Herbal Compress",
+            "description": "Used by the Herbalist for treating impacts up to high severity."
+         },
+         "tough_compress": {
+            "display_name": "Tough Compress",
+            "description": "Used by the Herbalist for treating impacts up to extreme severity."
+         },
+         "antidote": {
+            "display_name": "Antidote",
+            "description": "Used by the Herbalist for treating poison up to medium severity."
+         },
+         "common_salve": {
+            "display_name": "Common Salve",
+            "description": "Used by the Herbalist for treating pierce wounds up to high severity."
+         },
+         "fever_cordial": {
+            "display_name": "Fever Cordial",
+            "description": "Used by the Herbalist for treating infections of any severity."
+         },
+         "fine_ointment": {
+            "display_name": "Fine Ointment",
+            "description": "Used by the Herbalist for treating most wounds up to medium severity."
+         },
+         "hearthbud_ointment": {
+            "display_name": "Hearthbud Ointment",
+            "description": "Used by the Herbalist for treating most wounds up to high severity."
+         },
+         "neat_salve": {
+            "display_name": "Neat Salve",
+            "description": "Used by the Herbalist for treating pierce wounds up to extreme severity."
+         },
+         "rough_salve": {
+            "display_name": "Rough Salve",
+            "description": "Used by the Herbalist for treating pierce wounds up to medium severity."
+         },
+			"coarse_bandage": {
+            "description": "Used by the Herbalist for treating cutting wounds up to medium severity."
+         },
+			"light_bandage": {
+            "description": "Used by the Herbalist for treating cutting wounds up to high severity."
+         },
+			"heavy_bandage": {
+            "description": "Used by the Herbalist for treating cutting wounds up to extreme severity."
+         },
+         "strong_antidote": {
+            "display_name": "Strong Antidote",
+            "description": "Used by the Herbalist for treating poison up to high severity."
+         },
+         "weak_antidote": {
+            "display_name": "Weak Antidote",
+            "description": "Used by the Herbalist for treating poison up to low severity."
+         },
+         "royal_jelly": {
+            "display_name": "Royal Jelly",
+            "description": "Can be used for treating most wounds up to low severity or crafting medications."
+         },
+         "leeches": {
+            "display_name": "Leeches",
+            "description": "Can be used for treating infections or poisons. Might leave Light Burns."
          }
       },
       "construction": {
@@ -12849,7 +13081,9 @@
                "auto_craft_recipe_dependencies": "Auto Craft Recipe Dependencies",
                "auto_craft_recipe_dependencies_description": "When crafting an item, crafters will check the inventory to see if there are sufficient ingredients to use. If not, they will queue up orders for enough ingredients to fulfill the original order.",
                "auto_craft_killed_items": "Auto Craft Killed Items",
-               "auto_craft_killed_items_description": "When an item you own is killed—like a door, a training dummy, or a siege weapon—queue a craft order for a new one.",
+               "auto_craft_killed_items_description": "When an item you own is killed — like a door, a training dummy, or a siege weapon — queue a craft order for a new one.",
+               "auto_queue_medicine": "Auto Craft Required Healing Items",
+               "auto_queue_medicine_description": "When a hearthling receives a wound or a negative condition that can be treated with a specific item, queue a craft order for that item unless your town already has it.",
                "default_craft_order_prefer_high_quality": "Prefer High-Quality Crafting Ingredients",
                "default_craft_order_prefer_high_quality_description": "When crafting an item, crafters who have achieved the Journeyman's Knowledge perk will prefer crafting with high-quality ingredients. Uncheck to always prefer low-quality ingredients.",
                "show_unreachable_ingredients_notification": "Unreachable Crafting Ingredients Alert",
