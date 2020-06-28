@@ -1308,6 +1308,7 @@
       "gizmos:training_target": "file(entities/gizmos/training_target/training_target.json)",
       "gizmos:water_gate": "file(entities/gizmos/water_gate/water_gate.json)",
       "gizmos:water_pump": "file(entities/gizmos/water_pump/water_pump.json)",
+      "gizmos:water_pump_pipe": "file(entities/gizmos/water_pump/water_pump_pipe.json)",
       "gizmos:water_pump_topper": "file(entities/gizmos/water_pump/water_pump_topper.json)",
       "grasshopper": "file(entities/critters/grasshopper/grasshopper.json)",
       "grasshopper_bug_meat": "file(entities/critters/grasshopper/grasshopper_bug_meat/grasshopper_bug_meat.json)",
@@ -4254,6 +4255,7 @@
       "replant": "file(components/replant/replant_component.lua)",
       "statistics": "file(components/statistics/statistics_component.lua)",
       "stump": "file(components/stump/stump_component.lua)",
+      "suspendable": "file(components/suspendable/suspendable_component.lua)",
       "thirst": "file(components/thirst/thirst_component.lua)",
       "tile": "file(components/tile/tile_component.lua)",
       "titles": "file(components/titles/titles_component.lua)",
@@ -4264,6 +4266,7 @@
       "vine": "file(components/vine/vine_component.lua)",
       "water_gate": "file(components/water_tools/water_gate_component.lua)",
       "water_pump": "file(components/water_tools/water_pump_component.lua)",
+      "water_sponge": "file(components/water_tools/water_sponge_component.lua)",
       "water_signal": "file(components/signals/water_signal_component.lua)",
       "water_wheel": "file(components/mechanical/water_wheel_component.lua)",
       "wilderness": "file(components/wilderness/wilderness_component.lua)",
@@ -4282,7 +4285,8 @@
       "pasture_item": "file(renderers/pasture_item/pasture_item_renderer.lua)",
       "place_terrain": "file(renderers/place_terrain/place_terrain_renderer.lua)",
       "tile": "file(renderers/tile/tile_renderer.lua)",
-      "vine": "file(renderers/vine/vine_renderer.lua)"
+      "vine": "file(renderers/vine/vine_renderer.lua)",
+      "water_pump": "file(renderers/water_pump/water_pump_renderer.lua)"
    },
    "controllers": {
       "class:brewer": "file(jobs/brewer/brewer.lua)",

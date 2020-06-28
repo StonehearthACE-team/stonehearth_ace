@@ -3,7 +3,7 @@ stonehearth_ace = {}
 local service_creation_order = {
    'connection',
    'crafter_info',
-   'water_pump',
+   'water_processor',
    'water_signal',
    'mechanical',
    'persistence'
@@ -86,6 +86,7 @@ local monkey_patches = {
    ace_posture_component = 'stonehearth.components.posture.posture_component',
    ace_effect_manager = 'radiant.modules.effects.effect_manager',
    ace_entities = 'radiant.modules.entities',
+   ace_util = 'radiant.lib.util',
    ace_inventory = 'stonehearth.services.server.inventory.inventory',
    ace_restock_director = 'stonehearth.services.server.inventory.restock_director',
    ace_farming_service = 'stonehearth.services.server.farming.farming_service',

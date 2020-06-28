@@ -19,59 +19,61 @@ function DrinkingLib.get_quality(drink_stuff, drink_preferences, drink_intoleran
       return nil
    end
 
+   local qualities = stonehearth.constants.drink_qualities
+
 	if drink_intolerances ~= '' then
       if radiant.entities.is_material(drink_stuff, drink_intolerances) then
-         return stonehearth.constants.drink_qualities.INTOLERABLE
+         return qualities.INTOLERABLE
       end
    end
 	
    if drink_preferences ~= '' then
       if not radiant.entities.is_material(drink_stuff, drink_preferences) then
-         return stonehearth.constants.drink_qualities.UNPALATABLE
+         return qualities.UNPALATABLE
       end
    end
 	
 	if stonehearth.constants.weather.cold_weathers[weather] then
 		if radiant.entities.is_material(drink_stuff, 'warming') then
-         return get_modified_drink_quality(drink_data.quality, 3, stonehearth.constants.drink_qualities.PREPARED_AVERAGE)
+         return get_modified_drink_quality(drink_data.quality, 3, qualities.PREPARED_AVERAGE)
 		elseif radiant.entities.is_material(drink_stuff, 'refreshing') then
-			return get_modified_drink_quality(drink_data.quality, -2, stonehearth.constants.drink_qualities.RAW_AVERAGE)
+			return get_modified_drink_quality(drink_data.quality, -2, qualities.RAW_AVERAGE)
 		end
 	end
 	
 	if stonehearth.constants.weather.hot_weathers[weather] then
 		if radiant.entities.is_material(drink_stuff, 'refreshing') then
-         return get_modified_drink_quality(drink_data.quality, 3, stonehearth.constants.drink_qualities.PREPARED_AVERAGE)
+         return get_modified_drink_quality(drink_data.quality, 3, qualities.PREPARED_AVERAGE)
 		elseif radiant.entities.is_material(drink_stuff, 'warming') then
-			return get_modified_drink_quality(drink_data.quality, -2, stonehearth.constants.drink_qualities.RAW_AVERAGE)
+			return get_modified_drink_quality(drink_data.quality, -2, qualities.RAW_AVERAGE)
 		end
 	end
 	
 	if now.hour >= stonehearth.constants.drink_satiety.DRINKTIME_NIGHT_START and not radiant.entities.is_material(drink_stuff, 'night_time') then
-      return get_modified_drink_quality(drink_data.quality, -2, stonehearth.constants.drink_qualities.RAW_BLAND)
+      return get_modified_drink_quality(drink_data.quality, -2, qualities.RAW_BLAND)
 	end 
 	
 	if now.hour >= stonehearth.constants.drink_satiety.DRINKTIME_AFTERNOON_START then
 		if radiant.entities.is_material(drink_stuff, 'night_time') then
-         return get_modified_drink_quality(drink_data.quality, -2, stonehearth.constants.drink_qualities.RAW_BLAND)
+         return get_modified_drink_quality(drink_data.quality, -2, qualities.RAW_BLAND)
 		elseif not radiant.entities.is_material(drink_stuff, 'afternoon_time') then
-         return get_modified_drink_quality(drink_data.quality, -3, stonehearth.constants.drink_qualities.RAW_BLAND)
+         return get_modified_drink_quality(drink_data.quality, -3, qualities.RAW_BLAND)
 		elseif radiant.entities.is_material(drink_stuff, 'afternoon_time') then
-			return get_modified_drink_quality(drink_data.quality, 2, stonehearth.constants.drink_qualities.RAW_TASTY)
+			return get_modified_drink_quality(drink_data.quality, 2, qualities.RAW_TASTY)
       end
 	end
 	
 	if now.hour >= stonehearth.constants.drink_satiety.DRINKTIME_MORNING_START then
 		if radiant.entities.is_material(drink_stuff, 'night_time') then
-         return get_modified_drink_quality(drink_data.quality, -6, stonehearth.constants.drink_qualities.RAW_BLAND)
+         return get_modified_drink_quality(drink_data.quality, -6, qualities.RAW_BLAND)
 		elseif not radiant.entities.is_material(drink_stuff, 'morning_time') then
-         return get_modified_drink_quality(drink_data.quality, -1, stonehearth.constants.drink_qualities.RAW_BLAND)
+         return get_modified_drink_quality(drink_data.quality, -1, qualities.RAW_BLAND)
       elseif radiant.entities.is_material(drink_stuff, 'morning_time')then
-			return get_modified_drink_quality(drink_data.quality, 2, stonehearth.constants.drink_qualities.RAW_TASTY)
+			return get_modified_drink_quality(drink_data.quality, 2, qualities.RAW_TASTY)
 		end
 	end
 
-   return drink_data.quality or stonehearth.constants.drink_qualities.RAW_BLAND
+   return drink_data.quality or qualities.RAW_BLAND
 end
 
 function DrinkingLib.make_drink_filter(drink_preferences, drink_intolerances)
@@ -82,14 +84,14 @@ function DrinkingLib.make_drink_filter(drink_preferences, drink_intolerances)
 end
 
 function DrinkingLib.make_drink_rater(drink_preferences, drink_intolerances)
+   local qualities = stonehearth.constants.drink_qualities
    return function(item)
       local quality = DrinkingLib.get_quality(item, drink_preferences, drink_intolerances)
       if not quality then
          log:error('nil drink quality %s: %s, %s', tostring(item), tostring(drink_preferences), tostring(drink_intolerances))
          return 0
       else
-         return (quality - stonehearth.constants.drink_qualities.MINIMUM_VIABLE)
-               / (stonehearth.constants.drink_qualities.MAXIMUM - stonehearth.constants.drink_qualities.MINIMUM_VIABLE)
+         return (quality - qualities.MINIMUM_VIABLE) / (qualities.MAXIMUM - qualities.MINIMUM_VIABLE)
       end
    end
 end

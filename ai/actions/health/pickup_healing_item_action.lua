@@ -35,26 +35,47 @@ function PickupHealingItem:start_thinking(ai, entity, args)
    self:_rethink()
 end
 
+function PickupHealingItem:stop_thinking(ai, entity, args)
+   if self._level_changed_listener then
+      self._level_changed_listener:destroy()
+      self._level_changed_listener = nil
+   end
+   if self._on_game_loop then
+      self._on_game_loop:destroy()
+      self._on_game_loop = nil
+   end
+end
+
 function PickupHealingItem:start(ai, entity, args)
    self._started = true
 end
 
 function PickupHealingItem:_rethink()
    if not self._started then
-      if self._ready then
-         self._ai:clear_think_output()
-      end
-
       local filter_fn = healing_lib.make_healing_filter(self._healer, self._target)
       if not filter_fn then
          return
       end
 
-      self._ready = true
-      self._ai:set_think_output({
-         filter_fn = filter_fn,
-         rating_fn = healing_lib.make_healing_rater(self._healer, self._target),
-      })
+      local set_ready = function()
+         self._ready = true
+         self._ai:set_think_output({
+            filter_fn = filter_fn,
+            rating_fn = healing_lib.make_healing_rater(self._healer, self._target),
+         })
+      end
+
+      if self._ready then
+         self._ready = nil
+         self._ai:clear_think_output()
+         -- don't call clear_think_output and set_think_output on the same frame
+         self._on_game_loop = radiant.on_game_loop_once('pickup_healing_item_action set_think_output', function()
+            self._on_game_loop = nil
+            set_ready()
+         end)
+      else
+         set_ready()
+      end
    end
 end
 

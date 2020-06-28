@@ -21,8 +21,31 @@ function ContainerComponent:get_total_capacity()
 	return self._sv.capacity
 end
 
-function ContainerComponent:get_available_capacity()
+function ContainerComponent:get_available_capacity(type)
+   if type and type ~= self._sv.type then
+      return 0
+   end
+
 	return self._sv.capacity - self._sv.volume
+end
+
+function ContainerComponent:get_volume()
+   return self._sv.volume
+end
+
+function ContainerComponent:is_empty()
+   return self._sv.volume <= 0
+end
+
+function ContainerComponent:is_full()
+   return self._sv.volume >= self._sv.capacity
+end
+
+function ContainerComponent:clear(type)
+   if not type or type == self._sv.type then
+      self._sv.volume = 0
+      self.__saved_variables:mark_changed()
+   end
 end
 
 -- returns the volume we failed to add

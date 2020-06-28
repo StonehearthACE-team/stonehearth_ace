@@ -18,6 +18,7 @@ local service_creation_order = {
 }
 
 local monkey_patches = {
+   ace_util = 'radiant.lib.util',
    ace_portal_component = 'stonehearth.components.portal.portal_component',
    ace_item_placer = 'stonehearth.services.client.build_editor.item_placer',
    ace_entity_or_location_selector = 'stonehearth.services.client.selection.entity_or_location_selector',

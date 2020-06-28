@@ -30,6 +30,9 @@ function GetDrinkFromContainerAdjacent:run(ai, entity, args)
 	end
    radiant.entities.turn_to_face(entity, container)
    ai:execute('stonehearth:run_effect', { effect = container_data.effect })
+
+   -- go ahead and release it for others while we sit and drink
+   stonehearth.ai:release_ai_lease(container, entity)
 	
    local stacks_per_serving = container_data.stacks_per_serving or 1
    if stacks_per_serving > 0 then
@@ -41,7 +44,6 @@ function GetDrinkFromContainerAdjacent:run(ai, entity, args)
    end
 
    local drink = radiant.entities.create_entity(container_data.drink, { owner = entity })
-   stonehearth.ai:pickup_item(ai, entity, drink)
 
    if container_quality > stonehearth.constants.item_quality.NORMAL then
       drink:add_component('stonehearth:item_quality'):initialize_quality(container_quality, nil, nil, {override_allow_variable_quality=true})

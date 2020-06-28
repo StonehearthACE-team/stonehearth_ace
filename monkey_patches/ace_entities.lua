@@ -371,4 +371,11 @@ function ace_entities.get_grid_in_front(entity)
    return location + offset
 end
 
+function ace_entities.is_entity_town_suspended(entity)
+   local town = stonehearth.town:get_town(entity)
+   if town then
+      return town:is_town_suspended()
+   end
+end
+
 return ace_entities
