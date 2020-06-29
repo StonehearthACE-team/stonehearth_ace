@@ -25,6 +25,7 @@ end
 
 function AceWeatherState:_load_ace_values()
    local json = radiant.resources.load_json(self._sv.uri, true, true)
+   self._json = json
    self._sv._base_sunlight = json.sunlight or 1
    self._sv.sunlight = self._sv._base_sunlight
    self._sv._base_humidity = json.humidity or 0
@@ -138,6 +139,10 @@ end
 
 function AceWeatherState:get_frozen()
    return self._sv.frozen
+end
+
+function AceWeatherState:get_json()
+   return self._json
 end
 
 return AceWeatherState

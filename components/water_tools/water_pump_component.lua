@@ -59,14 +59,15 @@ function WaterPumpComponent:destroy()
 	end
 end
 
-function WaterPumpComponent:set_pipe_extension(rotation_index, length, region)
+-- whatever calls this should also call the water_sponge component's set_output_location
+function WaterPumpComponent:set_pipe_extension(rotation_index, length, collision_region)
    local data
    local rotation = self._rotations[rotation_index]
    if rotation then
       local rcs = self._sv._pump_child_entity:add_component('region_collision_shape')
       rcs:get_region():modify(function(cursor)
          cursor:clear()
-         cursor:copy_region(region)
+         cursor:copy_region(collision_region)
       end)
 
       data = radiant.shallow_copy(rotation)

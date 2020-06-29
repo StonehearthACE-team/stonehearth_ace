@@ -8,6 +8,8 @@ Eat.does = 'stonehearth:eat'
 Eat.args = {}
 Eat.priority = {0, 1}
 
+local log = radiant.log.create_logger('eat_action')
+
 function Eat:start_thinking(ai, entity, args)
    if radiant.entities.get_resource(entity, 'calories') == nil then
       ai:set_debug_progress('dead: have no calories resource')
@@ -20,15 +22,15 @@ function Eat:start_thinking(ai, entity, args)
 
    -- Mutable state
    self._ready = false
+   self._started = false
    local consumption = self._entity:get_component('stonehearth:consumption')
-   local food_preferences = consumption:get_food_preferences()
-	local food_intolerances = consumption:get_food_intolerances()
-   self._food_filter_fn = EatingLib.make_food_filter(food_preferences, food_intolerances)
-   self._food_rating_fn = consumption:distinguishes_food_quality() and EatingLib.make_food_rater(food_preferences, food_intolerances) or function(item) return 1 end
+   self._food_preferences = consumption:get_food_preferences()
+	self._food_intolerances = consumption:get_food_intolerances()
 
    self._calorie_listener = radiant.events.listen(self._entity, 'stonehearth:expendable_resource_changed:calories', self, self._rethink)
-   self._timer = stonehearth.calendar:set_interval("eat_action hourly", '10m+5m', function() self:_rethink() end, '20m')
-   self:_rethink()  -- Safe to do sync since it can't call both clear_think_output and set_think_output.
+   self._marked_unready_listener = radiant.events.listen(self._entity, 'stonehearth_ace:entity:looking_for_food:marked_unready', self, self._rethink)
+   self._timer = stonehearth.calendar:set_interval("eat_action hourly", '25m+5m', function() self:_reconsider_filter() end)
+   self:_reconsider_filter(true)
 end
 
 function Eat:stop_thinking(ai, entity, args)
@@ -36,14 +38,49 @@ function Eat:stop_thinking(ai, entity, args)
       self._calorie_listener:destroy()
       self._calorie_listener = nil
    end
+   if self._marked_unready_listener then
+      self._marked_unready_listener:destroy()
+      self._marked_unready_listener = nil
+   end
    if self._timer then
       self._timer:destroy()
       self._timer = nil
    end
 end
 
+function Eat:start(ai, entity, args)
+   self._started = true
+end
+
 function Eat:stop(ai, entity, args)
    radiant.events.trigger_async(self._entity, 'stonehearth:entity:stopped_looking_for_food')
+end
+
+function Eat:_reconsider_filter(force_rethink)
+   local hour_type = EatingLib.get_current_hour_type()
+   local weather_type = stonehearth.weather:get_current_weather_type()
+
+   if hour_type ~= self._hour_type or weather_type ~= self._weather_type then
+      log:debug('%s reconsidering filter at hour %s and weather %s', self._entity, tostring(hour_type), tostring(weather_type))
+      self._hour_type = hour_type
+      self._weather_type = weather_type
+
+      self._food_filter_fn = EatingLib.make_food_filter(self._food_preferences, self._food_intolerances, hour_type, weather_type)
+      local consumption = self._entity:get_component('stonehearth:consumption')
+      if consumption:distinguishes_food_quality() then
+         self._food_rating_fn = EatingLib.make_food_rater(self._food_preferences, self._food_intolerances, hour_type, weather_type)
+      else
+         self._food_rating_fn = nil
+      end
+
+      if force_rethink then
+         self:_rethink()
+      else
+         self:_mark_unready(true)
+      end
+   else
+      self:_rethink()
+   end
 end
 
 function Eat:_rethink()
@@ -62,6 +99,7 @@ function Eat:_rethink()
 end
 
 function Eat:_mark_ready()
+   --log:debug('%s marking ready (currently %s)', self._entity, tostring(self._ready))
    if not self._ready then
       self._ready = true
       self._ai:set_think_output({
@@ -72,11 +110,17 @@ function Eat:_mark_ready()
    end
 end
 
-function Eat:_mark_unready()
-   if self._ready then
+function Eat:_mark_unready(reconsidering)
+   --log:debug('%s marking unready (currently %s)', self._entity, tostring(self._ready))
+   if not self._started and self._ready then
       self._ready = false
       self._ai:clear_think_output()
-      radiant.events.trigger_async(self._entity, 'stonehearth:entity:stopped_looking_for_food')
+
+      if reconsidering then
+         radiant.events.trigger_async(self._entity, 'stonehearth_ace:entity:looking_for_food:marked_unready')
+      else
+         radiant.events.trigger_async(self._entity, 'stonehearth:entity:stopped_looking_for_food')
+      end
    end
 end
 

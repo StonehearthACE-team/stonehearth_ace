@@ -644,7 +644,7 @@
          "PREPARED_TASTY": 6,
 			"LOVELY": 7,
          "MAXIMUM": 7
-      },      
+      },
       "drink_satiety" : {
          "MAX_DRINK_SATIETY" : 100,
          "SATED": 70,
@@ -664,12 +664,12 @@
          "NEUTRAL": 2,
          "THIRSTY": 3,
          "VERY_THIRSTY": 4
-      }, 
+      },
 		"drink_max_distance": {
          "DEFAULT": 80,
          "THIRSTY": 160,
          "VERY_THIRSTY": 240
-      }, 
+      },
 		"score": {
          "drink": {
             "RAW_DRINK_COUNT_MULTIPLIER": 1,
@@ -978,26 +978,11 @@
 				"orc_npcs": true,
 				"orcs": true,
 				"mountain_folk_npcs": true
-			},
-			"cold_weathers": {
-				"stonehearth:weather:blizzard": true,
-				"stonehearth:weather:snow": true,
-				"stonehearth:weather:snow:sunny": true,
-				"stonehearth_ace:subjects:weather:cloudy:chilly": true,
-				"stonehearth_ace:subjects:weather:cloudy:cold": true,
-				"stonehearth_ace:subjects:weather:foggy:chilly": true,
-				"stonehearth_ace:subjects:weather:rain:chilly": true,
-				"stonehearth_ace:subjects:weather:snow:early": true,
-				"stonehearth_ace:subjects:weather:snow:late": true,
-				"stonehearth_ace:subjects:weather:sunny:chilly": true
-			},
-			"hot_weathers": {
-				"stonehearth:weather:sandstorm": true,
-				"stonehearth:weather:sandy": true,
-				"stonehearth:weather:sunny:desert": true,
-				"stonehearth_ace:weather:sunny:hot": true,
-				"stonehearth_ace:weather:sunny:sweltering": true
-			}
+         },
+         "weather_types": {
+            "COLD": "cold_weather",
+            "HOT": "hot_weather"
+         }
 		},
       "farming": {
          "NONPREFERRED_SEASON_GROWTH_TIME_MULTIPLIER": 1.5,

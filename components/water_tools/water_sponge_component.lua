@@ -187,7 +187,7 @@ function WaterSpongeComponent:on_tick_water_processor()
    local input_rate = self:get_input_rate()
    if self._sv.input_enabled and input_rate > 0 then
       if self._container then
-         input_rate = math.min(input_rate, self._container:get_available_capacity('stonehearth:water')
+         input_rate = math.min(input_rate, self._container:get_available_capacity('stonehearth:water'))
       elseif not self._destroy_water then
          input_rate = 0
       end

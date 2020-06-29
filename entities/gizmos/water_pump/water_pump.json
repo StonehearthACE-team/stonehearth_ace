@@ -11,16 +11,16 @@
       "destination": {
          "region": [
             {
-               "min": { "x": -1, "y": 0, "z": 0 },
-               "max": { "x": 0, "y": 2, "z": 1 }
+               "min": { "x": 0, "y": 0, "z": 0 },
+               "max": { "x": 1, "y": 1, "z": 1 }
             }
          ]
       },
       "region_collision_shape": {
          "region": [
             {
-               "min": { "x": -1, "y": 0, "z": 0 },
-               "max": { "x": 0, "y": 2, "z": 1 }
+               "min": { "x": 0, "y": 0, "z": 0 },
+               "max": { "x": 1, "y": 1, "z": 1 }
             }
          ],
          "region_collision_type": "platform"
@@ -33,7 +33,7 @@
       },
       "stonehearth_ace:container": {
          "type": "stonehearth:water",
-         "capacity": 2
+         "capacity": 10
       },
       "stonehearth_ace:water_pump": {
          "rotations": [
@@ -41,55 +41,56 @@
                "dimension": "y",
                "direction": {"x": 0, "y": 1, "z": 0},
                "model": "file(pipe_y.qb)",
+               "model_offset": {"x": 5, "y": 0, "z": 5},
                "max_length": 8,
-               "origin": {"x": 0, "y": 2, "z": 0},
-               "offset": {"x": -5, "y": 0, "z": 5}
-            },
-            {
-               "dimension": "x",
-               "direction": {"x": -1, "y": 0, "z": 0},
-               "model": "file(pipe_xz.qb)",
-               "max_length": 8,
-               "origin": {"x": -1, "y": 0, "z": 0},
-               "offset": {"x": -5, "y": 0, "z": 5}
-            },
-            {
-               "dimension": "x",
-               "direction": {"x": 1, "y": 0, "z": 0},
-               "model": "file(pipe_xz.qb)",
-               "max_length": 8,
-               "origin": {"x": 1, "y": 0, "z": 0},
-               "offset": {"x": -5, "y": 0, "z": 5},
-               "rotation": 180
+               "origin": {"x": 0, "y": 1, "z": 0}
             },
             {
                "dimension": "z",
                "direction": {"x": 0, "y": 0, "z": -1},
                "model": "file(pipe_xz.qb)",
+               "model_offset": {"x": 5, "y": 0, "z": 5},
                "max_length": 8,
-               "origin": {"x": 0, "y": 0, "z": 0},
-               "offset": {"x": -5, "y": 0, "z": 5},
-               "rotation": 270
+               "origin": {"x": 0, "y": 0, "z": -1},
+               "rotation": 0
+            },
+            {
+               "dimension": "x",
+               "direction": {"x": -1, "y": 0, "z": 0},
+               "model": "file(pipe_xz.qb)",
+               "model_offset": {"x": 5, "y": 0, "z": 5},
+               "max_length": 8,
+               "origin": {"x": -1, "y": 0, "z": 0},
+               "rotation": 90
             },
             {
                "dimension": "z",
                "direction": {"x": 0, "y": 0, "z": 1},
                "model": "file(pipe_xz.qb)",
+               "model_offset": {"x": 5, "y": 0, "z": 5},
                "max_length": 8,
                "origin": {"x": 0, "y": 0, "z": 1},
-               "offset": {"x": -5, "y": 0, "z": 5},
-               "rotation": 90
+               "rotation": 180
+            },
+            {
+               "dimension": "x",
+               "direction": {"x": 1, "y": 0, "z": 0},
+               "model": "file(pipe_xz.qb)",
+               "model_offset": {"x": 5, "y": 0, "z": 5},
+               "max_length": 8,
+               "origin": {"x": 1, "y": 0, "z": 0},
+               "rotation": 270
             }
          ]
       },
       "stonehearth_ace:water_sponge": {
-         "input_location": {"x": -1, "y": 0, "z": 0},
-         "output_location": {"x": -1, "y": 2, "z": 0},
+         "input_location": {"x": 0, "y": 0, "z": 0},
+         "output_location": {"x": 0, "y": 1, "z": 0},
          "input_rate": 2,
          "output_rate": 12
       },
       "effect_list": {
-         "default": "file(/data/rigs/entities/gizmos/water_pump/effects/closed.json)",
+         "default": "file(/data/rigs/entities/gizmos/water_gate/effects/closed.json)",
          "initial_pose_animation": "closed.json"
       },
       "stonehearth:bone_transform": {

@@ -1,3 +1,3 @@
-local HerdingTaskGroup = radiant.mods.require('stonehearth.ai.task_groups.herding_task_group')
-HerdingTaskGroup:declare_multiple_tasks('stonehearth_ace:feed_pasture_trough', 1.0)
+local SoloBasicNeedsTaskGroup = radiant.mods.require('stonehearth.ai.task_groups.solo_basic_needs_task_group')
+SoloBasicNeedsTaskGroup:declare_permanent_task('stonehearth_ace:drink', {}, {0.4, 0.8})
 return {}

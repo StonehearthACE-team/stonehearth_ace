@@ -49,4 +49,20 @@ function AceWeatherService:_get_weather_for_season(season, avoid_bad_weather)
    return weighted_set:choose_random()
 end
 
+function AceWeatherService:get_weather_type(weather)
+   local json = weather and weather:get_json()
+   if json then
+      for weather_type, property in pairs(stonehearth.constants.weather.weather_types) do
+         if json[property] then
+            return weather_type
+         end
+      end
+   end
+end
+
+function AceWeatherService:get_current_weather_type()
+   local weather = self:get_current_weather()
+   return self:get_weather_type(weather)
+end
+
 return AceWeatherService

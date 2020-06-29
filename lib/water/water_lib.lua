@@ -90,6 +90,7 @@ function water_lib.get_water_pump_rotations(uri)
             matrix = rotation.matrix,
             material = rotation.material,
             scale = rotation.scale,
+            model_offset = rotation.model_offset,
          })
       end
    end
