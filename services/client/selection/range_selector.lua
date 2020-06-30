@@ -6,7 +6,15 @@
 
 local SelectorBase = require 'stonehearth.services.client.selection.selector_base'
 local selector_util = require 'stonehearth.services.client.selection.selector_util'
+local csg_lib = require 'stonehearth.lib.csg.csg_lib'
+local RulerWidget = require 'stonehearth.services.client.selection.ruler_widget'
+local Color4 = _radiant.csg.Color4
 local Point3 = _radiant.csg.Point3
+local Cube3 = _radiant.csg.Cube3
+local Point2 = _radiant.csg.Point2
+local Rect2 = _radiant.csg.Rect2
+local Region2 = _radiant.csg.Region2
+local Region3 = _radiant.csg.Region3
 local bindings = _radiant.client.get_binding_system()
 local Entity = _radiant.om.Entity
 local XYZRangeSelector = class()
@@ -16,13 +24,59 @@ radiant.mixin(XYZRangeSelector, SelectorBase)
 
 local OFFSCREEN = Point3(0, -100000, 0)
 local INVALID_CURSOR = 'stonehearth:cursors:invalid_hover'
+local log = radiant.log.create_logger('xyz_range_selector')
 
-function XYZRangeSelector:resolve(...)
-   XYZRangeSelector._last_facing = self._rotation
-   self:_call_once('done', ...)
-   self:_call_once('always')
-   self:_cleanup()
-   return self
+local DEFAULT_BOX_COLOR = Color4(192, 192, 192, 255)
+
+local INTERSECTION_NODE_NAME = 'xyz range selector intersection node'
+local MAX_RESONABLE_DRAG_DISTANCE = 512
+local MODEL_OFFSET = Point3(-0.5, 0, -0.5)
+local TERRAIN_NODES = 1
+
+function XYZRangeSelector:__init(reason)
+   self._reason = tostring(reason)
+   self._state = 'start'
+   self._ruler_color_valid = Color4(255, 255, 255, 128)
+   self._ruler_color_invalid = Color4(255, 0, 0, 128)
+   self._require_supported = false
+   self._require_unblocked = false
+   self._show_rulers = true
+   self._min_size = 0
+   self._max_size = radiant.math.MAX_INT32
+   self._select_front_brick = true
+   self._validation_offset = Point3(0, 0, 0)
+   self._allow_select_cursor = false
+   self._allow_unselectable_support_entities = false
+   self._invalid_cursor = INVALID_CURSOR
+   self._valid_region_cache = Region3()
+   self._on_keyboad_event_fn = nil
+   self._on_mouse_event_fn = nil
+
+   self._find_support_filter_fn = stonehearth.selection.find_supported_xz_region_filter
+
+   local identity_end_point_transform = function(q0, q1)
+      if not q0 or not q1 then
+         return nil, nil
+      end
+      return Point3(q0), Point3(q1)   -- return a copy to be safe
+   end
+
+   self._get_proposed_points_fn = identity_end_point_transform
+   self._get_resolved_points_fn = identity_end_point_transform
+
+   self._cursor_fn = function(selected_cube, stabbed_normal)
+      if not selected_cube then
+         return self._invalid_cursor
+      end
+      return self._cursor
+   end
+
+   self._last_ignored_entities = {}
+   self._ignored_entities = {}
+
+   self:_initialize_dispatch_table()
+
+   self:use_outline_marquee(DEFAULT_BOX_COLOR, DEFAULT_BOX_COLOR)
 end
 
 function XYZRangeSelector:_shift_down()
@@ -133,89 +187,37 @@ function XYZRangeSelector:_update_rulers(p0, p1, is_region)
    end
 end
 
---[[
-
-
-]]
-
-local csg_lib = require 'stonehearth.lib.csg.csg_lib'
-local selector_util = require 'stonehearth.services.client.selection.selector_util'
-local RulerWidget = require 'stonehearth.services.client.selection.ruler_widget'
-local XZRegionSelector = require 'stonehearth.services.client.selection.xz_region_selector'
-local XYZRangeSelector = class()
-local Color4 = _radiant.csg.Color4
-local Point3 = _radiant.csg.Point3
-local Cube3 = _radiant.csg.Cube3
-local Point2 = _radiant.csg.Point2
-local Rect2 = _radiant.csg.Rect2
-local Region2 = _radiant.csg.Region2
-local Region3 = _radiant.csg.Region3
-
-radiant.mixin(XYZRangeSelector, XZRegionSelector)
-
-local log = radiant.log.create_logger('xyz_range_selector')
-
-local DEFAULT_BOX_COLOR = Color4(192, 192, 192, 255)
-
-local INTERSECTION_NODE_NAME = 'xyz range selector intersection node'
-local MAX_RESONABLE_DRAG_DISTANCE = 512
-local MODEL_OFFSET = Point3(-0.5, 0, -0.5)
-local TERRAIN_NODES = 1
-
-function XYZRangeSelector:__init(reason)
-   self._reason = tostring(reason)
-   self._state = 'start'
-   self._ruler_color_valid = Color4(255, 255, 255, 128)
-   self._ruler_color_invalid = Color4(255, 0, 0, 128)
-   self._require_supported = false
-   self._require_unblocked = false
-   self._show_rulers = true
-   self._min_size = 0
-   self._max_size = radiant.math.MAX_INT32
-   self._select_front_brick = true
-   self._validation_offset = Point3(0, 0, 0)
-   self._allow_select_cursor = false
-   self._allow_unselectable_support_entities = false
-   self._invalid_cursor = 'stonehearth:cursors:invalid_hover'
-   self._valid_region_cache = Region3()
-   self._on_keyboad_event_fn = nil
-   self._on_mouse_event_fn = nil
-
-   self._find_support_filter_fn = stonehearth.selection.find_supported_xz_region_filter
-
-   local identity_end_point_transform = function(q0, q1)
-      if not q0 or not q1 then
-         return nil, nil
-      end
-      return Point3(q0), Point3(q1)   -- return a copy to be safe
+function XYZRangeSelector:_update_ruler(ruler, p0, p1, dimension, is_region)
+   local d = dimension
+   local dn = d == 'x' and 'z' or 'x'
+   local min = math.min(p0[d], p1[d])
+   local max = math.max(p0[d], p1[d])
+   local length = math.floor(max - min + (is_region and 0 or 1) + 0.5)
+   if length <= 1 then
+      ruler:hide()
+      return
    end
 
-   self._get_proposed_points_fn = identity_end_point_transform
-   self._get_resolved_points_fn = identity_end_point_transform
+   local color = self:_is_valid_length(length) and self._ruler_color_valid or self._ruler_color_invalid
+   ruler:set_color(color)
 
-   self._cursor_fn = function(selected_cube, stabbed_normal)
-      if not selected_cube then
-         return self._invalid_cursor
-      end
-      return self._cursor
+   local min_point = Point3(p1)
+   min_point[d] = min
+
+   local max_point = Point3(p1)
+   max_point[d] = max
+
+   if is_region then
+      min_point[dn] = min_point[dn] - 1
+      max_point = max_point - Point3(1, 0, 1)
    end
 
-   self._last_ignored_entities = {}
-   self._ignored_entities = {}
+   -- don't use Point3.zero since we need it to be mutable
+   local normal = Point3(0, 0, 0)
+   normal[dn] = p0[dn] <= p1[dn] and 1 or -1
 
-   self:_initialize_dispatch_table()
-
-   self:use_outline_marquee(DEFAULT_BOX_COLOR, DEFAULT_BOX_COLOR)
-end
-
-function XYZRangeSelector:set_min_size(value)
-   self._min_size = value
-   return self
-end
-
-function XYZRangeSelector:set_max_size(value)
-   self._max_size = value
-   return self
+   ruler:set_points(min_point, max_point, normal, string.format('%d', length))
+   ruler:show()
 end
 
 function XYZRangeSelector:set_show_rulers(value)
@@ -298,25 +300,6 @@ end
 
 function XYZRangeSelector:set_cursor_fn(cursor_fn)
    self._cursor_fn = cursor_fn
-   return self
-end
-
-function XYZRangeSelector:use_designation_marquee(color)
-   self._create_node_fn = _radiant.client.create_designation_node
-   self._box_color = color
-   self._line_color = color
-   return self
-end
-
-function XYZRangeSelector:use_outline_marquee(box_color, line_color)
-   self._create_node_fn = _radiant.client.create_selection_node
-   self._box_color = box_color
-   self._line_color = line_color
-   return self
-end
-
-function XYZRangeSelector:use_manual_marquee(marquee_fn)
-   self._create_marquee_fn = marquee_fn
    return self
 end
 
@@ -707,61 +690,6 @@ function XYZRangeSelector:_are_valid_dimensions(p0, p1)
    local size = csg_lib.create_cube(p0, p1):get_size()
    local valid = self:_is_valid_length(size.x) and self:_is_valid_length(size.z)
    return valid
-end
-
-function XYZRangeSelector:_update_rulers(p0, p1, is_region)
-   if not self._show_rulers or not self._x_ruler or not self._y_ruler or not self._z_ruler then
-      return
-   end
-
-   if p0 and p1 then
-      -- if we're selecting the hover brick, the rulers are on the bottom of the selection
-      -- if we're selecting the terrain brick, the rulers are on the top of the selection
-      local offset = (self._select_front_brick or is_region) and Point3.zero or Point3.unit_y
-      local q0, q1 = p0 + offset, p1 + offset
-
-      local rotation = self:get_rotation()
-      if rotation then
-         self:_update_ruler(self['_' .. rotation.dimension .. '_ruler'], q0, q1, rotation.dimension, is_region)
-      end
-   else
-      self._x_ruler:hide()
-      self._y_ruler:hide()
-      self._z_ruler:hide()
-   end
-end
-
-function XYZRangeSelector:_update_ruler(ruler, p0, p1, dimension, is_region)
-   local d = dimension
-   local dn = d == 'x' and 'z' or 'x'
-   local min = math.min(p0[d], p1[d])
-   local max = math.max(p0[d], p1[d])
-   local length = math.floor(max - min + (is_region and 0 or 1) + 0.5)
-   if length <= 1 then
-      ruler:hide()
-      return
-   end
-
-   local color = self:_is_valid_length(length) and self._ruler_color_valid or self._ruler_color_invalid
-   ruler:set_color(color)
-
-   local min_point = Point3(p1)
-   min_point[d] = min
-
-   local max_point = Point3(p1)
-   max_point[d] = max
-
-   if is_region then
-      min_point[dn] = min_point[dn] - 1
-      max_point = max_point - Point3(1, 0, 1)
-   end
-
-   -- don't use Point3.zero since we need it to be mutable
-   local normal = Point3(0, 0, 0)
-   normal[dn] = p0[dn] <= p1[dn] and 1 or -1
-
-   ruler:set_points(min_point, max_point, normal, string.format('%d', length))
-   ruler:show()
 end
 
 function XYZRangeSelector:_update_cursor(box, stabbed_normal)

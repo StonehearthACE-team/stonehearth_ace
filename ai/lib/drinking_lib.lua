@@ -48,15 +48,15 @@ function DrinkingLib.get_quality(drink_stuff, drink_preferences, drink_intoleran
 	
 	if weather_type == weather_types.COLD then
 		if radiant.entities.is_material(drink_stuff, 'warming') then
-         return quality + 3
+         quality = quality + 3
 		elseif radiant.entities.is_material(drink_stuff, 'refreshing') then
-			return quality - 2
+			quality = quality - 2
 		end
 	elseif weather_type == weather_types.HOT then
 		if radiant.entities.is_material(drink_stuff, 'refreshing') then
-         return quality + 3
+         quality = quality + 3
 		elseif radiant.entities.is_material(drink_stuff, 'warming') then
-			return quality - 2
+			quality = quality - 2
 		end
 	end
 
@@ -64,27 +64,27 @@ function DrinkingLib.get_quality(drink_stuff, drink_preferences, drink_intoleran
 	
    if hour_type == times.DRINKTIME_NIGHT_START then
       if not radiant.entities.is_material(drink_stuff, 'night_time') then
-         return quality - 2
+         quality = quality - 2
       end
 	elseif hour_type == times.DRINKTIME_AFTERNOON_START then
 		if radiant.entities.is_material(drink_stuff, 'night_time') then
-         return quality - 2
+         quality = quality - 2
 		elseif not radiant.entities.is_material(drink_stuff, 'afternoon_time') then
-         return quality - 3
+         quality = quality - 3
 		elseif radiant.entities.is_material(drink_stuff, 'afternoon_time') then
-			return quality + 2
+			quality = quality + 2
       end
 	else  --if hour_type == times.DRINKTIME_MORNING_START then
 		if radiant.entities.is_material(drink_stuff, 'night_time') then
-         return quality - 6
+         quality = quality - 6
 		elseif not radiant.entities.is_material(drink_stuff, 'morning_time') then
-         return quality - 1
+         quality = quality - 1
       elseif radiant.entities.is_material(drink_stuff, 'morning_time')then
-			return quality + 2
+			quality = quality + 2
 		end
 	end
 
-   return quality
+   return math.max(quality, qualities.UNPALATABLE)
 end
 
 function DrinkingLib.make_drink_filter(drink_preferences, drink_intolerances, hour_type, weather_type)

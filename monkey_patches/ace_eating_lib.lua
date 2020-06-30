@@ -56,15 +56,15 @@ function AceEatingLib.get_quality(food_stuff, food_preferences, food_intolerance
 	
 	if weather_type == weather_types.COLD then
 		if radiant.entities.is_material(food_stuff, 'warming') then
-         return quality + 4
+         quality = quality + 4
 		elseif radiant.entities.is_material(food_stuff, 'refreshing') then
-			return quality - 1
+			quality = quality - 1
 		end
 	elseif weather_type == weather_types.HOT then
 		if radiant.entities.is_material(food_stuff, 'refreshing') then
-         return quality + 4
+         quality = quality + 4
 		elseif radiant.entities.is_material(food_stuff, 'warming') then
-			return quality - 1
+			quality = quality - 1
 		end
    end
    
@@ -72,27 +72,27 @@ function AceEatingLib.get_quality(food_stuff, food_preferences, food_intolerance
    
    if hour_type == times.MEALTIME_DINNER_START then
       if not radiant.entities.is_material(food_stuff, 'night_time') then
-         return quality - 2
+         quality = quality - 2
       end
    elseif hour_type == times.MEALTIME_START then
 		if radiant.entities.is_material(food_stuff, 'dinner_time') then
-         return quality - 1
+         quality = quality - 1
 		elseif not radiant.entities.is_material(food_stuff, 'lunch_time') then
-         return quality - 2
+         quality = quality - 2
 		elseif radiant.entities.is_material(food_stuff, 'lunch_time') then
-			return quality + 1
+			quality = quality + 1
       end
 	elseif hour_type == times.MEALTIME_BREAKFAST_START then
 		if radiant.entities.is_material(food_stuff, 'dinner_time') then
-         return quality - 1
+         quality = quality - 1
 		elseif not radiant.entities.is_material(food_stuff, 'breakfast_time') then
-         return quality - 2
+         quality = quality - 2
       elseif radiant.entities.is_material(food_stuff, 'breakfast_time')then
-			return quality + 3
+			quality = quality + 3
 		end
 	end
 
-   return quality
+   return math.max(quality, qualities.UNPALATABLE)
 end
 
 function AceEatingLib.make_food_filter(food_preferences, food_intolerances, hour_type, weather_type)
