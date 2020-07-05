@@ -61,9 +61,6 @@ function XYZRangeSelector:__init(reason)
       return Point3(q0), Point3(q1)   -- return a copy to be safe
    end
 
-   self._get_proposed_points_fn = identity_end_point_transform
-   self._get_resolved_points_fn = identity_end_point_transform
-
    self._cursor_fn = function(selected_cube, stabbed_normal)
       if not selected_cube then
          return self._invalid_cursor
@@ -100,7 +97,7 @@ function XYZRangeSelector:set_rotations(rotations)
 end
 
 function XYZRangeSelector:get_rotation()
-   return self._rotations[self._rotation + 1]
+   return self._rotations[self._rotation]
 end
 
 function XYZRangeSelector:set_rotation(rotation)
@@ -129,95 +126,6 @@ function XYZRangeSelector:set_render_params(material, color, custom_fn)
    self._render_material = material or (not custom_fn and '/stonehearth/data/horde/materials/transparent_box_nodepth.material.json')
    self._render_color = color or (not custom_fn and Color4(80, 192, 0, 255))
    self._render_custom_fn = custom_fn
-end
-
--- handles keyboard events from the input service
-function XYZRangeSelector:_on_keyboard_event(e)
-   local event_consumed = false
-   local deltaRot = 0
-   local deltaExt = 0
-
-   local num_rotations = #self._rotations
-
-   if num_rotations > 1 then
-      if bindings:is_action_active('stonehearth_ace:range_selection:rotate:left') then
-         deltaRot = 1
-      elseif bindings:is_action_active('stonehearth_ace:range_selection:rotate:right') then
-         deltaRot = num_rotations - 1
-      elseif bindings:is_action_active('stonehearth_ace:range_selection:lengthen') then
-         deltaExt = 1
-      elseif bindings:is_action_active('stonehearth_ace:range_selection:shorten') then
-         deltaExt = num_rotations - 1
-      end
-
-      if deltaRot ~= 0 then
-         local new_rotation = ((self._rotation - 1 + deltaRot) % num_rotations) + 1
-         self:set_rotation(new_rotation)
-         event_consumed = true
-      end
-
-      if deltaExt ~= 0 then
-         self:set_length(self._length + deltaExt)
-         event_consumed = true
-      end
-   end
-
-   return event_consumed
-end
-
-function XYZRangeSelector:_update_rulers(p0, p1, is_region)
-   if not self._show_rulers or not self._x_ruler or not self._y_ruler or not self._z_ruler then
-      return
-   end
-
-   if p0 and p1 then
-      -- if we're selecting the hover brick, the rulers are on the bottom of the selection
-      -- if we're selecting the terrain brick, the rulers are on the top of the selection
-      local offset = (self._select_front_brick or is_region) and Point3.zero or Point3.unit_y
-      local q0, q1 = p0 + offset, p1 + offset
-
-      local rotation = self:get_rotation()
-      if rotation then
-         self:_update_ruler(self['_' .. rotation.dimension .. '_ruler'], q0, q1, rotation.dimension, is_region)
-      end
-   else
-      self._x_ruler:hide()
-      self._y_ruler:hide()
-      self._z_ruler:hide()
-   end
-end
-
-function XYZRangeSelector:_update_ruler(ruler, p0, p1, dimension, is_region)
-   local d = dimension
-   local dn = d == 'x' and 'z' or 'x'
-   local min = math.min(p0[d], p1[d])
-   local max = math.max(p0[d], p1[d])
-   local length = math.floor(max - min + (is_region and 0 or 1) + 0.5)
-   if length <= 1 then
-      ruler:hide()
-      return
-   end
-
-   local color = self:_is_valid_length(length) and self._ruler_color_valid or self._ruler_color_invalid
-   ruler:set_color(color)
-
-   local min_point = Point3(p1)
-   min_point[d] = min
-
-   local max_point = Point3(p1)
-   max_point[d] = max
-
-   if is_region then
-      min_point[dn] = min_point[dn] - 1
-      max_point = max_point - Point3(1, 0, 1)
-   end
-
-   -- don't use Point3.zero since we need it to be mutable
-   local normal = Point3(0, 0, 0)
-   normal[dn] = p0[dn] <= p1[dn] and 1 or -1
-
-   ruler:set_points(min_point, max_point, normal, string.format('%d', length))
-   ruler:show()
 end
 
 function XYZRangeSelector:set_show_rulers(value)
@@ -266,20 +174,6 @@ end
 -- this filter returns false
 function XYZRangeSelector:set_can_contain_entity_filter(filter_fn)
    self._can_contain_entity_filter_fn = filter_fn
-   return self
-end
-
-function XYZRangeSelector:set_ghost_ignored_entity_filter(filter_fn)
-   self._ghost_ignored_entity_filter_fn = filter_fn
-   return self
-end
-
--- used to constrain the selected region
--- examples include forcing the region to be square, enforcing minimum or maximum sizes,
--- or quantizing the region to certain step sizes
-function XYZRangeSelector:set_end_point_transforms(get_proposed_points_fn, get_resolved_points_fn)
-   self._get_proposed_points_fn = get_proposed_points_fn
-   self._get_resolved_points_fn = get_resolved_points_fn
    return self
 end
 
@@ -360,7 +254,6 @@ end
 function XYZRangeSelector:_cleanup()
    log:spam('cleaning up: %s', self._reason)
    stonehearth.selection:register_tool(self, false)
-   stonehearth.presence_client:update_xz_selection(nil)
 
    self:_restore_ignored_entities()
 
@@ -456,108 +349,6 @@ function XYZRangeSelector:_get_brick_at(x, y)
    return brick, normal
 end
 
--- Given a candidate p1, compute the 'best' p1 which results in a valid xz region.
--- The basic algorithm is simple:
---     1) For each row, scan until you reach an invalid point or the x limit of a previous row.
---     2) Add each valid point to a region.
---     3) Return the point in the region closest to p1.
--- The rest of the code is just optimization and bookkeeping.
-function XYZRangeSelector:_compute_endpoint(q0, q1)
-   if not q0 or not q1 then
-      return nil
-   end
-
-   -- if q0 has changed, invalidate our cache
-   if q0 ~= self._valid_region_origin then
-      self._valid_region_cache:clear()
-      self._valid_region_origin = Point3(q0)
-   end
-
-   -- if the endpoints are already validated, then the whole cube is valid
-   if self._valid_region_cache:contains(q0) and self._valid_region_cache:contains(q1) then
-      return q1
-   end
-
-   if not self:_is_valid_location(q0) then
-      return nil
-   end
-
-   local dx = q1.x > q0.x and 1 or -1
-   local dz = q1.z > q0.z and 1 or -1
-   local r0 = Point3(q0) -- row start point
-   local r1 = Point3(q0) -- row end point
-   local limit_x = q1.x
-   local valid_x, start_x
-
-   -- iterate over all rows
-   for j = q0.z, q1.z, dz do
-      if not limit_x then
-         -- row is completely obstructed, no further rows can be valid
-         break
-      end
-
-      r0.z = j
-      r1.z = j
-
-      r1.x = limit_x
-      local unverified_region = Region3(csg_lib.create_cube(r0, r1))
-      unverified_region:subtract_region(self._valid_region_cache)
-
-      if not unverified_region:empty() then
-         local valid_x = nil
-         local start_x = unverified_region:get_closest_point(q0).x
-
-         -- if we're not at the row start, valid_x was the previous point
-         if start_x ~= r0.x then
-            valid_x = start_x - dx
-         end
-
-         -- iterate over the untested columns in the row
-         for i = start_x, limit_x, dx do
-            r1.x = i
-            if self:_is_valid_location(r1) then
-               valid_x = i
-            else
-               -- the new limit is the last valid x value
-               limit_x = valid_x
-               break
-            end
-         end
-
-         if valid_x then
-            -- add the row to the valid_region
-            r1.x = valid_x
-            local valid_row = csg_lib.create_cube(r0, r1)
-            self._valid_region_cache:add_cube(valid_row)
-         end
-      end
-   end
-
-   self._valid_region_cache:optimize('xzregionselector:_compute_endpoint')
-   local resolved_q1 = self._valid_region_cache:get_closest_point(q1)
-   return resolved_q1
-end
-
-function XYZRangeSelector:_find_valid_region(q0, q1)
-   if not q0 or not q1 then
-      return nil, nil
-   end
-
-   -- validation offset is an annoying hack used to validate regions that are offset from the selected region
-   -- used for things like mining zones, roads, and floors
-   local offset = self._validation_offset
-   local v0, v1 = q0 + offset, q1 + offset
-
-   v1 = self:_compute_endpoint(v0, v1)
-   if not v1 then
-      return nil, nil
-   end
-
-   q1 = v1 - offset
-
-   return q0, q1
-end
-
 function XYZRangeSelector:_update()
    if not self._action then
       return
@@ -568,73 +359,22 @@ function XYZRangeSelector:_update()
       return
    end
 
-   local selected_cube = self._p0 and self._p1 and csg_lib.create_cube(self._p0, self._p1)
+   local current_region = self:get_current_region()
 
-   self:_update_selected_cube(selected_cube)
-   if self._region_type == 'Region3' and self._region_shape then
-      local bounds = self._region_shape:get_bounds()
-      self:_update_rulers(bounds.min, bounds.max, true)
-   else
-      self:_update_rulers(self._p0, self._p1, false)
-   end
+   self:_update_rulers(current_region)
    self:_update_cursor(selected_cube, self._stabbed_normal)
-   self:_update_ignored_entities()
+
+   local rotation = self:get_rotation()
+   local length = self:_get_length()
 
    if self._action == 'notify' then
-      self:notify(selected_cube, self._p0)
+      self:notify(rotation, length, current_region)
    elseif self._action == 'resolve' then
-      self:resolve(selected_cube, self._p0, self._stabbed_normal)
+      self:resolve(rotation, length, current_region, self:get_point_in_current_direction(length))
    else
       log:error('uknown action: %s', self._action)
       assert(false)
    end
-
-   if self._region_shape then
-      stonehearth.presence_client:update_xz_selection(self._action, self._region_shape, self._region_type, self._reason)
-   end
-end
-
-function XYZRangeSelector:_resolve_endpoints(q0, q1, stabbed_normal)
-   log:spam('selected endpoints: %s, %s', tostring(q0), tostring(q1))
-
-   q0, q1 = self._get_proposed_points_fn(q0, q1, stabbed_normal)
-   log:spam('proposed endpoints: %s, %s', tostring(q0), tostring(q1))
-
-   q0, q1 = self:_find_valid_region(q0, q1)
-   log:spam('validated endpoints: %s, %s', tostring(q0), tostring(q1))
-
-   q0, q1 = self:_limit_dimensions(q0, q1)
-   log:spam('bounded endpoints: %s, %s', tostring(q0), tostring(q1))
-
-   q0, q1 = self._get_resolved_points_fn(q0, q1, stabbed_normal)
-   log:spam('resolved endpoints: %s, %s', tostring(q0), tostring(q1))
-
-   if not q0 or not q1 then
-      return nil, nil
-   end
-
-   return q0, q1
-end
-
-function XYZRangeSelector:_limit_dimensions(q0, q1)
-   if not q0 or not q1 then
-      return nil, nil
-   end
-
-   local new_q1 = Point3(q1)
-   local size = csg_lib.create_cube(q0, q1):get_size()
-
-   if size.x > self._max_size then
-      local sign = q1.x >= q0.x and 1 or -1
-      new_q1.x = q0.x + sign*(self._max_size-1)
-   end
-
-   if size.z > self._max_size then
-      local sign = q1.z >= q0.z and 1 or -1
-      new_q1.z = q0.z + sign*(self._max_size-1)
-   end
-
-   return q0, new_q1
 end
 
 function XYZRangeSelector:_on_mouse_event(event)
@@ -681,15 +421,95 @@ function XYZRangeSelector:_on_mouse_event(event)
    return event_consumed
 end
 
-function XYZRangeSelector:_is_valid_length(length)
-   local valid = length >= self._min_size and length <= self._max_size
-   return valid
+-- handles keyboard events from the input service
+function XYZRangeSelector:_on_keyboard_event(e)
+   local event_consumed = false
+   local deltaRot = 0
+   local deltaExt = 0
+
+   local num_rotations = #self._rotations
+
+   if num_rotations > 1 then
+      if bindings:is_action_active('stonehearth_ace:range_selection:rotate:left') then
+         deltaRot = 1
+      elseif bindings:is_action_active('stonehearth_ace:range_selection:rotate:right') then
+         deltaRot = num_rotations - 1
+      elseif bindings:is_action_active('stonehearth_ace:range_selection:lengthen') then
+         deltaExt = 1
+      elseif bindings:is_action_active('stonehearth_ace:range_selection:shorten') then
+         deltaExt = num_rotations - 1
+      end
+
+      if deltaRot ~= 0 then
+         self._action = 'notify'
+         local new_rotation = ((self._rotation - 1 + deltaRot) % num_rotations) + 1
+         self:set_rotation(new_rotation)
+         event_consumed = true
+      end
+
+      if deltaExt ~= 0 then
+         self._action = 'notify'
+         self:set_length(self._length + deltaExt)
+         event_consumed = true
+      end
+   end
+
+   self:_update()
+
+   return event_consumed
 end
 
-function XYZRangeSelector:_are_valid_dimensions(p0, p1)
-   local size = csg_lib.create_cube(p0, p1):get_size()
-   local valid = self:_is_valid_length(size.x) and self:_is_valid_length(size.z)
-   return valid
+function XYZRangeSelector:_update_rulers(region)
+   if not self._show_rulers or not self._x_ruler or not self._y_ruler or not self._z_ruler then
+      return
+   end
+
+   if region then
+      local bounds = region:get_bounds()
+      local q0, q1 = bounds.min, bounds.max
+
+      local rotation = self:get_rotation()
+      if rotation then
+         self:_update_ruler(self['_' .. rotation.dimension .. '_ruler'], q0, q1, rotation.dimension, is_region)
+      end
+   else
+      self._x_ruler:hide()
+      self._y_ruler:hide()
+      self._z_ruler:hide()
+   end
+end
+
+function XYZRangeSelector:_update_ruler(ruler, p0, p1, dimension, is_region)
+   local d = dimension
+   local dn = d == 'x' and 'z' or 'x'
+   local min = math.min(p0[d], p1[d])
+   local max = math.max(p0[d], p1[d])
+   local length = math.floor(max - min + (is_region and 0 or 1) + 0.5)
+   if length <= 1 then
+      ruler:hide()
+      return
+   end
+
+   local color = self._ruler_color_valid --or self._ruler_color_invalid
+   ruler:set_color(color)
+
+   local min_point = Point3(p1)
+   min_point[d] = min
+
+   local max_point = Point3(p1)
+   max_point[d] = max
+
+   if is_region then
+      min_point[dn] = min_point[dn] - 1
+      max_point = max_point - Point3(1, 0, 1)
+   end
+
+   -- don't use Point3.zero since we need it to be mutable
+   local normal = Point3(0, 0, 0)
+   normal[dn] = p0[dn] <= p1[dn] and 1 or -1
+
+   ruler:set_points(min_point, max_point, normal, string.format('%d', length))
+   ruler:show()
 end
 
 function XYZRangeSelector:_update_cursor(box, stabbed_normal)
@@ -709,75 +529,9 @@ function XYZRangeSelector:_update_cursor(box, stabbed_normal)
    end
 end
 
-function XYZRangeSelector:_update_ignored_entities()
-   if not self._ghost_ignored_entity_filter_fn then
-      return
-   end
-
-   -- ghost entities that are new to the ignored_entities set
-   self:_each_item_not_in_map(self._ignored_entities, self._last_ignored_entities, function(item)
-         self:_set_ghost_mode(item.entity)
-      end)
-
-   -- unghost entities that have left the ignored_entities set
-   self:_each_item_not_in_map(self._last_ignored_entities, self._ignored_entities, function(item)
-         self:_set_entity_material(item.entity, item.material)
-      end)
-
-   self._last_ignored_entities = self._ignored_entities
-   self._ignored_entities = {}
-end
-
--- calls fn for each item in map that is not in the reference_map
-function XYZRangeSelector:_each_item_not_in_map(map, reference_map, fn)
-   for id, item in pairs(map) do
-      if not reference_map[id] then
-         fn(item)
-      end
-   end
-end
-
-function XYZRangeSelector:_add_to_ignored_entities(entity)
-   local id = entity:get_id()
-   local value = self._last_ignored_entities[id]
-
-   if not value then
-      local render_entity = _radiant.client.get_render_entity(entity)
-      local material = render_entity:get_material_override()
-      value = {
-         entity = entity,
-         material = material
-      }
-   end
-
-   self._ignored_entities[id] = value
-end
-
-function XYZRangeSelector:_restore_ignored_entities()
-   for id, item in pairs(self._last_ignored_entities) do
-      self:_set_entity_material(item.entity, item.material)
-   end
-end
-
-function XYZRangeSelector:_set_ghost_mode(entity, ghost_mode)
-   if not entity:is_valid() then
-      return
-   end
-
-   local render_entity = _radiant.client.get_render_entity(entity)
-   local material = render_entity:get_material_path('hud')
-   if material and material ~= '' then
-      render_entity:set_material_override(material)
-   end
-end
-
-function XYZRangeSelector:_set_entity_material(entity, material)
-   if not entity:is_valid() then
-      return
-   end
-
-   local render_entity = _radiant.client.get_render_entity(entity)
-   render_entity:set_material_override(material)
+function XYZRangeSelector:get_point_in_current_direction(distance)
+   local rotation = self:get_rotation()
+   return rotation and (rotation.origin + distance * rotation.direction)
 end
 
 function XYZRangeSelector:_recalc_current_region()
@@ -915,7 +669,7 @@ function XYZRangeSelector:go()
                                        return true
                                     end
                                  end
-                                 return false
+                                 return self:_on_keyboard_event(e)
                               end)
 
    -- TODO: want to be able to call this
