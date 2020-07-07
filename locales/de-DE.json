@@ -1105,6 +1105,26 @@
                      "tooltip": "Au! Autsch! Autsch! Ich bin mit Blasen übersät... Diese Bienen haben mich richtig gut erwischt!"
                   }
                }
+            },
+            "infection": {
+               "values": {
+                  "undead_infection": {
+                     "display_name": "Verletzt durch Untoten...",
+                     "tooltip": "Oh nein, oh nein, oh nein, oh nein... Werde ich grün? Geht es mir gut?!"
+                  },
+                  "minor_infection": {
+                     "display_name": "Fieberhaftes Gefühl",
+                     "tooltip": "Dieses Fieber ist nicht normal, ich zittere, fühle mich schlecht und ich weiß, dass etwas nicht stimmt..."
+                  },
+                  "infection": {
+                     "display_name": "Infizierte Wunden",
+                     "tooltip": "Einige meiner Wunden heilen nicht wirklich... Sie werden schlimmer und ich fühle mich nicht gut."
+                  },
+                  "major_infection": {
+                     "display_name": "Halluzinationen haben",
+                     "tooltip": "Das Fieber ist unerträglich, das Unwohlsein ist schrecklich... Ich kann ein Licht sehen... Soll ich zum Licht gehen?"
+                  }
+               }
             }
          }
       },
@@ -2244,7 +2264,7 @@
          "poison": {
             "minor_poison": {
                "display_name": "Schwaches Gift",
-               "description": "Ein schwaches, nicht tödliches Gift. Wird einige Stunden anhalten. Stärke und Willenskraft sind deutlich reduziert.<ul><li>Verlust von 5% der Gesundheitspunkte alle 30 Minuten</li><li>Dieses Gift schädigt nur bis zu 75% der gesamten Gesundheit</li></ul>"
+               "description": "Ein schwaches, nicht tödliches Gift. Wird einige Stunden anhalten. Stärke und Willenskraft sind deutlich reduziert.<ul><li></li><li>Dieses Gift schädigt nur bis zu 75% der gesamten Gesundheit</li></ul>"
             },
             "poison": {
                "display_name": "Gift",
@@ -2322,151 +2342,195 @@
          "wounds": {
             "scratch": {
                "display_name": "Wunde: Kratzer",
-               "description": "Autsch! Es tut ein bisschen weh, aber es ist nur ein Kratzer....<ul><li>Effektives Gesundheitsmaximum 💜 ist sehr leicht vermindert</li><li>Diese Wunde erfordert 🌿 irgendeine Behandlung, um entfernt zu werden</li><li>⏳ Diese Wunde wird auch von selbst heilen, aber es wird einige Zeit dauern</li></ul>"
+               "description": "Autsch! Es tut ein bisschen weh, aber es ist nur ein Kratzer....<ul><li>💬 Art und Schweregrad: Schnitt (Niedrig)</li><li>💜🔻 Gesundheitsmaximum ist sehr leicht vermindert</li><li>Diese Wunde erfordert 🌿 irgendeine Behandlung, um entfernt zu werden</li><li>⏳ Diese Wunde wird auch von selbst heilen, aber es wird einige Zeit dauern</li></ul>"
             },
             "small_cut": {
                "display_name": "Wunde: Kleiner Schnitt",
-               "description": "Es tut sehr weh! Aber das wird schon wieder.... Richtig?<ul><li>Effektives Gesundheitsmaximum 💜 ist leicht vermindert</li><li>Diese Wunde erfordert mindestens eine 💊 grobe Bandage, um entfernt zu werden</li><li>⏳ Auch diese Wunde wird von selbst heilen, aber es wird sehr lange dauern.</li><li>Wenn diese Wunde zu lange unbehandelt bleibt, kann sie 🌡️ hohes Fieber verursachen</li></ul>"
+               "description": "Es tut sehr weh! Aber das wird schon wieder.... Richtig?<ul><li>💬 Art und Schweregrad: Schnitt (Mittel)</li><li>💜🔻 Gesundheitsmaximum ist leicht vermindert</li><li>Diese Wunde erfordert mindestens eine 💊 grobe Bandage, um entfernt zu werden</li><li>⏳ Auch diese Wunde wird von selbst heilen, aber es wird sehr lange dauern.</li><li>Wenn diese Wunde zu lange unbehandelt bleibt, kann sie 🌡️ hohes Fieber verursachen</li></ul>"
             },
             "deep_slash": {
                "display_name": "Wunde: Tiefer Schnitt",
-               "description": "Uh, das sieht nicht gut aus...<ul><li>Effektives Gesundheitsmaximum 💜 ist etwas gesenkt</li><li>Diese Wunde erfordert mindestens eine 💊 leichte Bandage, um entfernt zu werden</li><li>❌ Diese Wunde wird niemals von selbst heilen</li><li>Wenn diese Wunde zu lange unbehandelt bleibt, kann sie zu 🌡️ Infektionen führen</li><li>Die Behandlung dieser Wunde hat eine geringe Chance, den Zustand 💫 Gruselige Narbe dauerhaft hinzuzufügen</li></ul>"
+               "description": "Uh, das sieht nicht gut aus...<ul><li>💬 Art und Schweregrad: Schnitt (Hoch)</li><li>💜🔻 Gesundheitsmaximum ist etwas gesenkt</li><li>Diese Wunde erfordert mindestens eine 💊 leichte Bandage, um entfernt zu werden</li><li>❌ Diese Wunde wird niemals von selbst heilen</li><li>Wenn diese Wunde zu lange unbehandelt bleibt, kann sie zu 🌡️ Infektionen führen</li><li>Die Behandlung dieser Wunde hat eine geringe Chance, den Zustand 💫 Gruselige Narbe dauerhaft hinzuzufügen</li></ul>"
             },
             "ugly_rend": {
                "display_name": "Wunde: Hässlicher Riss",
-               "description": "Autsch! Aua! So schmerzhaft, dass ich nicht mal hinsehen kann!<ul><li>Effektives Gesundheitsmaximum 💜 ist ziemlich gesenkt</li><li>Diese Wunde erfordert mindestens einen 💊 schweren Verband, um entfernt zu werden </li><li>❌ Diese Wunde wird niemals von selbst heilen</li><li>Wenn diese Wunde zu lange unbehandelt bleibt, kann sie zu 🌡️ Infektionen führen</li><li>Die Behandlung dieser Wunde hat eine geringe Chance, den Zustand 💫 Gruselige Narbe dauerhaft hinzuzufügen</li></ul>"
+               "description": "Autsch! Aua! So schmerzhaft, dass ich nicht mal hinsehen kann!<ul><li>💬 Art und Schweregrad: Schnitt (Extrem)</li><li>💜🔻 Gesundheitsmaximum ist ziemlich gesenkt</li><li>Diese Wunde erfordert mindestens einen 💊 schweren Verband, um entfernt zu werden </li><li>❌ Diese Wunde wird niemals von selbst heilen</li><li>Wenn diese Wunde zu lange unbehandelt bleibt, kann sie zu 🌡️ Infektionen führen</li><li>Die Behandlung dieser Wunde hat eine geringe Chance, den Zustand 💫 Gruselige Narbe dauerhaft hinzuzufügen</li></ul>"
             },
             "bruise": {
                "display_name": "Wunde: Bluterguss",
-               "description": "Es ist alles violett, bucklig und schmerzhaft... Könnte schlimmer sein, denke ich.<ul><li>Effektives Gesundheitsmaximum 💜 ist sehr leicht abgesenkt</li><li>Diese Wunde erfordert 🌿 irgendeine Behandlung, um entfernt zu werden</li><li>⏳ Diese Wunde wird auch von selbst heilen, aber es wird einige Zeit dauern</li></ul>"
+               "description": "Es ist alles violett, bucklig und schmerzhaft... Könnte schlimmer sein, denke ich.<ul><li>💬 Art und Schweregrad: Aufprall (Niedrig)</li><li>💜🔻 Gesundheitsmaximum ist sehr leicht abgesenkt</li><li>Diese Wunde erfordert 🌿 irgendeine Behandlung, um entfernt zu werden</li><li>⏳ Diese Wunde wird auch von selbst heilen, aber es wird einige Zeit dauern</li></ul>"
             },
             "severe_concussion": {
                "display_name": "Wunde: Schwere Gehirnerschütterung",
-               "description": "Oh, wow. Was für ein Schlag, mir ist ein bisschen schwindelig....<ul><li>Effektives Gesundheitsmaximum 💜 ist leicht abgesenkt</li><li>Diese Wunde erfordert mindestens eine 💊 einfache Kompresse, um entfernt zu werden</li><li>⏳ Diese Wunde wird auch von selbst heilen, aber es wird sehr lange dauern.</li></ul>"
+               "description": "Oh, wow. Was für ein Schlag, mir ist ein bisschen schwindelig....<ul><li>💬 Art und Schweregrad: Aufprall (Mittel)</li><li>💜🔻 Gesundheitsmaximum ist leicht abgesenkt</li><li>Diese Wunde erfordert mindestens eine 💊 einfache Kompresse, um entfernt zu werden</li><li>⏳ Diese Wunde wird auch von selbst heilen, aber es wird sehr lange dauern.</li></ul>"
             },
             "crushing_blow": {
                "display_name": "Wunde: Quetschender Schlag",
-               "description": "Gah! Das tut weh und sieht... sehr geschwollen aus.<ul><li>Effektives Gesundheitsmaximum 💜 ist etwas niedriger</li><li>Diese Wunde erfordert mindestens eine 💊 Kräuterkompresse, um entfernt zu werden</li><li>❌ Diese Wunde wird niemals von selbst heilen</li><li>Wenn diese Wunde zu lange unbehandelt bleibt, kann sie 🌡️ hohes Fieber verursachen</li></ul>"
+               "description": "Gah! Das tut weh und sieht... sehr geschwollen aus.<ul><li>💬 Art und Schweregrad: Aufprall (Hoch)</li><li>💜🔻 Gesundheitsmaximum ist etwas niedriger</li><li>Diese Wunde erfordert mindestens eine 💊 Kräuterkompresse, um entfernt zu werden</li><li>❌ Diese Wunde wird niemals von selbst heilen</li><li>Wenn diese Wunde zu lange unbehandelt bleibt, kann sie 🌡️ hohes Fieber verursachen</li></ul>"
             },
             "broken_bone": {
                "display_name": "Wunde: Gebrochener Knochen",
-               "description": "Oh! Ich glaube, ich habe mir etwas gebrochen....<ul><li>Effektives Gesundheitsmaximum 💜 ist ziemlich gesenkt</li><li>Diese Wunde erfordert eine 💊 harte Kompresse, um entfernt zu werden</li><li>❌ Diese Wunde wird niemals von selbst heilen</li><li>Wenn diese Wunde zu lange unbehandelt bleibt, kann sie 🌡️ hohes Fieber verursachen</li></ul>"
+               "description": "Oh! Ich glaube, ich habe mir etwas gebrochen....<ul><li>💬 Art und Schweregrad: Aufprall (Extrem)</li><li>💜🔻 Gesundheitsmaximum ist ziemlich gesenkt</li><li>Diese Wunde erfordert eine 💊 harte Kompresse, um entfernt zu werden</li><li>❌ Diese Wunde wird niemals von selbst heilen</li><li>Wenn diese Wunde zu lange unbehandelt bleibt, kann sie 🌡️ hohes Fieber verursachen</li></ul>"
             },
             "minor_sting": {
                "display_name": "Wunde: Kleiner Stich",
-               "description": "Autsch! Spitz, aber zum Glück nur eine oberflächliche Wunde...<ul><li>Effektives Gesundheitsmaximum 💜 ist sehr leicht abgesenkt</li><li>Diese Wunde erfordert 🌿 irgendeine Behandlung, um entfernt zu werden.</li><li>⏳ Diese Wunde wird auch von selbst heilen, aber es wird einige Zeit dauern.</li></ul>"
+               "description": "Autsch! Spitz, aber zum Glück nur eine oberflächliche Wunde...<ul><li>💬 Art und Schweregrad: Einstich (Niedrig)</li><li>💜🔻 Gesundheitsmaximum ist sehr leicht abgesenkt</li><li>Diese Wunde erfordert 🌿 irgendeine Behandlung, um entfernt zu werden.</li><li>⏳ Diese Wunde wird auch von selbst heilen, aber es wird einige Zeit dauern.</li></ul>"
             },
             "prick": {
                "display_name": "Wunde: Einstich",
-               "description": "Wie ein kleines Loch! Es tut weh...<ul><li>Effektives Gesundheitsmaximum 💜 ist leicht abgesenkt</li><li>Diese Wunde erfordert mindestens eine 💊 grobe Salbe, um entfernt zu werden</li><li>⏳ Diese Wunde wird auch von selbst heilen, aber es wird sehr lange dauern.</li><li>Wenn diese Wunde zu lange unbehandelt bleibt, kann sie 🌡️ hohes Fieber verursachen</li></ul>"
+               "description": "Wie ein kleines Loch! Es tut weh...<ul><li>💬 Art und Schweregrad: Einstich (Mittel)</li><li>💜🔻 Gesundheitsmaximum ist leicht abgesenkt</li><li>Diese Wunde erfordert mindestens eine 💊 grobe Salbe, um entfernt zu werden</li><li>⏳ Diese Wunde wird auch von selbst heilen, aber es wird sehr lange dauern.</li><li>Wenn diese Wunde zu lange unbehandelt bleibt, kann sie 🌡️ hohes Fieber verursachen</li></ul>"
             },
             "mean_stab": {
                "display_name": "Wunde: Gemeiner Stich",
-               "description": "Oh-oh... Das sieht tief aus. Ich brauche Hilfe!<ul><li>Effektive maximale Gesundheit 💜 ist etwas niedrigerd</li><li>Bei dieser Wunde wird mindestens eine 💊 gewöhnliche Salbe benötigt, um entfernt zu werden</li><li>❌ Diese Wunde wird niemals von selbst heilen</li><li>Wenn diese Wunde zu lange unbehandelt bleibt, kann sie zu einer 🌡️ Infektionen führen</li></ul>"
+               "description": "Oh-oh... Das sieht tief aus. Ich brauche Hilfe!<ul><li>💬 Art und Schweregrad: Einstich (Hoch)</li><li>💜🔻 Gesundheitsmaximum ist etwas niedrigerd</li><li>Bei dieser Wunde wird mindestens eine 💊 gewöhnliche Salbe benötigt, um entfernt zu werden</li><li>❌ Diese Wunde wird niemals von selbst heilen</li><li>Wenn diese Wunde zu lange unbehandelt bleibt, kann sie zu einer 🌡️ Infektionen führen</li></ul>"
             },
             "nasty_gash": {
                "display_name": "Wunde: Böse Schnittwunde",
-               "description": "Autsch... Ich hoffe, das ist nicht durch mich gegangen.<ul><li>Effektives Gesundheitsmaximum 💜 ist ziemlich gesenkt</li><li>Diese Wunde erfordert mindestens eine 💊 ordentliche Salbe, um entfernt zu werden</li><li>❌ Diese Wunde wird niemals von selbst heilen</li><li>Wenn diese Wunde zu lange unbehandelt bleibt, kann sie zu einer 🌡️ Infektion führen</li><li>Die Behandlung dieser Wunde hat eine geringe Chance, den Zustand 💫 Gruselige Narbe dauerhaft hinzuzufügen</li></ul>"
+               "description": "Autsch... Ich hoffe, das ist nicht durch mich gegangen.<ul><li>💬 Art und Schweregrad: Einstich (Extrem)</li><li>💜🔻 Gesundheitsmaximum ist ziemlich gesenkt</li><li>Diese Wunde erfordert mindestens eine 💊 ordentliche Salbe, um entfernt zu werden</li><li>❌ Diese Wunde wird niemals von selbst heilen</li><li>Wenn diese Wunde zu lange unbehandelt bleibt, kann sie zu einer 🌡️ Infektion führen</li><li>Die Behandlung dieser Wunde hat eine geringe Chance, den Zustand 💫 Gruselige Narbe dauerhaft hinzuzufügen</li></ul>"
             },
             "frostbite": {
                "display_name": "Wunde: Frostbeulen",
-               "description": "Oh! Das sieht nicht gut aus, ich sollte nicht zu lange draußen in der Kälte bleiben...<ul><li>Effektives Gesundheitsmaximum 💜 ist leicht abgesenkt</li><li>Diese Wunde erfordert mindestens eine 💊 grobe Salbe, um entfernt zu werden</li><li>❌ Diese Wunde wird niemals von selbst heilen</li><li>Die Behandlung dieser Wunde hat eine geringe Chance, den Zustand 💫 Frostbrand dauerhaft hinzuzufügen</li></ul>"
+               "description": "Oh! Das sieht nicht gut aus, ich sollte nicht zu lange draußen in der Kälte bleiben...<ul><li>💬 Art und Schweregrad: Kalt (Mittel)</li><li>💜🔻 Gesundheitsmaximum ist leicht abgesenkt</li><li>Diese Wunde erfordert mindestens eine 💊 grobe Salbe, um entfernt zu werden</li><li>❌ Diese Wunde wird niemals von selbst heilen</li><li>Die Behandlung dieser Wunde hat eine geringe Chance, den Zustand 💫 Frostbrand dauerhaft hinzuzufügen</li></ul>"
+            },
+	    "light_burn": {
+               "display_name": "Wunde: Leichte Verbrennung",
+               "description": "Das war viel zu heiß!<ul><li>💬 Art und Schweregrad: Feuer (Niedrig)</li><li>💚🔻 Gesundheitsmaximum ist sehr leicht vermindert</li><li>💊 This wound requires any bandage or ointment to be treated and will be completely removed</li><li>⏳ This wound will also heal on its own, but it will take some time</li></ul>"
             },
             "bad_burn": {
                "display_name": "Wunde: Schwere Verbrennung",
-               "description": "Das war viel zu heiß!<ul><li>Effektives Gesundheitsmaximum 💜 ist etwas gesenkt</li><li>Diese Wunde erfordert mindestens eine 💊 Kräuterkompresse, um entfernt zu werden</li><li>❌ Diese Wunde wird niemals von selbst heilen</li><li>Die Behandlung dieser Wunde hat eine geringe Chance, den Zustand dauerhaft zu verschlimmern 💫 Gruselige Narbe</li></ul>"
+               "description": "Das war viel zu heiß!<ul><li>💬 Art und Schweregrad: Feuer (Hoch)</li><li>💜🔻 Gesundheitsmaximum ist etwas gesenkt</li><li>Diese Wunde erfordert mindestens eine 💊 Kräuterkompresse, um entfernt zu werden</li><li>❌ Diese Wunde wird niemals von selbst heilen</li><li>Die Behandlung dieser Wunde hat eine geringe Chance, den Zustand dauerhaft zu verschlimmern 💫 Gruselige Narbe</li></ul>"
             },
             "corrupted_laceration": {
                "display_name": "Wunde: Infizierte Schnittwunde",
-               "description": "Diese Wunde sieht... unnatürlich aus. Schaurig!<ul><li>Effektives Gesundheitsmaximum 💜 ist ziemlich gesenkt</li><li>Diese Wunde erfordert eine 💊 Herzknospensalbe, um entfernt zu werden</li><li>❌ Diese Wunde wird niemals von selbst heilen</li><li>Wenn diese Wunde zu lange unbehandelt bleibt, kann sie zu einer 🌡️ Infektion führen</li><li>Die Behandlung dieser Wunde hat eine geringe Chance, den Zustand 💫 Zerrissene Seele dauerhaft hinzuzufügen</li></ul>"
+               "description": "Diese Wunde sieht... unnatürlich aus. Schaurig!<ul><li>💬 Art und Schweregrad: Korrumpiert (Extrem)</li><li>💜🔻 Gesundheitsmaximum ist ziemlich gesenkt</li><li>Diese Wunde erfordert eine 💊 Herzknospensalbe, um entfernt zu werden</li><li>❌ Diese Wunde wird niemals von selbst heilen</li><li>Wenn diese Wunde zu lange unbehandelt bleibt, kann sie zu einer 🌡️ Infektion führen</li><li>Die Behandlung dieser Wunde hat eine geringe Chance, den Zustand 💫 Zerrissene Seele dauerhaft hinzuzufügen</li></ul>"
             },
             "scary_scar": {
                "display_name": "Gruselige Narbe",
-               "description": "Dieser Hearthling zeigt stolz seine Narben. Die Bedrohung ist leicht erhöht."
+               "description": "Dieser Hearthling zeigt stolz seine Narben. Die Bedrohung ist leicht & dauerhaft erhöht."
             },
             "battle_scarred": {
                "display_name": "Schlachtnarben",
-               "description": "Wenn du mehr Narben hast, als du zählen kannst, trage sie wie eine Trophäe! Bedrohung und Mut werden erhöht."
+               "description": "Wenn du mehr Narben hast, als du zählen kannst, trage sie wie eine Trophäe! Bedrohung und Mut sind dauerhaft erhöht."
             },
             "frostbitten": {
                "display_name": "Frostbrand",
-               "description": "Sich frontal einem Schneesturm zu stellen, ist eine unvergessliche Erfahrung, die mich etwas... ...unvollständig hinterlassen hat. Nun, Lektion gelernt! Muskeln und Geschwindigkeit sind leicht reduziert."
+               "description": "Sich frontal einem Schneesturm zu stellen, ist eine unvergessliche Erfahrung, die mich etwas... ...unvollständig hinterlassen hat. Nun, Lektion gelernt! Muskeln und Geschwindigkeit sind dauerhaft leicht reduziert."
             },
             "torn_soul": {
                "display_name": "Zerrissene Seele",
-               "description": "Ich bin immer noch hier... Aber ich bin nicht mehr derselbe, seit ich von bösen Kreaturen verwundet wurde. Der Geist ist reduziert."
+               "description": "Ich bin immer noch hier... Aber ich bin nicht mehr derselbe, seit ich von bösen Kreaturen verwundet wurde. Der Geist ist dauerhaft reduziert."
             }
          },
          "cold_tonic": {
             "cold_tonic_buff": {
                "display_name": "Erfrischendes Elixier",
-               "description": "Blabla"
+               "description": "Eine Aura der Kälte umgibt diesen Hearthling und schützt sie/ihn vor heißem Wetter."
+            },
+            "cold_tonic_worn_off_buff": {
+               "display_name": "Erfrischendes Elixier (Nachwirkung)",
+               "description": "Der Körper dieses Hearthlings ist müde, nachdem er zu lange magisch umhüllt war. Körper ist reduziert."
+            }
+         },
+         "courage_tonic": {
+            "courage_tonic_buff": {
+               "description": "Der Mut ist für eine Weile leicht erhöht."
             }
          },
          "courage_tonic_2": {
             "courage_tonic_2_buff": {
                "display_name": "Elixier des verbesserten Mutes",
-               "description": "Blublu"
+               "description": "Mut und Rüstung sind für eine Weile erhöht."
             }
          },
          "creativity_tonic": {
             "creativity_tonic_buff": {
                "display_name": "Kreativitäts-Elixier",
-               "description": "Bleble"
+               "description": "Die Handwerksgeschwindigkeit ist für eine Weile leicht erhöht."
             }
          },
          "creativity_tonic_2": {
             "creativity_tonic_2_buff": {
                "display_name": "Elixier der verbessertesn Kreativität",
-               "description": "Bloblo"
+               "description": "Handwerksgeschwindigkeit und Inspiration sind für eine Weile erhöht."
             }
          },
          "curiosity_tonic": {
             "curiosity_tonic_buff": {
                "display_name": "Elixier der Neugierde",
-               "description": "blibli"
+               "description": "Neugierde und Erfahrungsgewinn sind für eine Weile leicht erhöht."
+            },
+            "curiosity_tonic_worn_off_buff": {
+               "display_name": "Elixier der Neugierde (Nachwirkung)",
+               "description": "Der Intellekt dieser Hearthlings ist nach der erzwungenen Aufklärung erschöpft. Verstand ist reduziert."
+            }
+         },
+         "energy_tonic": {
+            "energy_tonic_buff": {
+               "description": "Geschwindigkeit und Fleiß sind für eine Weile leicht erhöht. Schläfrigkeit ist reduziert."
             }
          },
          "energy_tonic_2": {
             "energy_tonic_2_buff": {
                "display_name": "Elixier der verbesserten Energie",
-               "description": "blabla"
+               "description": "Geschwindigkeit und Fleiß sind für eine Weile erhöht. Die Schläfrigkeit ist verringert. Der Hearthling konzentriert sich mehr auf die Arbeit und führt weniger Gespräche mit anderen."
             }
          },
          "nightsight_tonic": {
             "nightsight_tonic_buff": {
                "display_name": "Nachtsicht-Elixier",
-               "description": "bloblo"
+               "description": "Die Augen dieses Hearthlings sind auf magische Weise verstärkt, so dass sie eine Zeit lang im Dunkeln ohne Strafe sehen können.."
+            },
+            "nightsight_tonic_worn_off_buff": {
+               "display_name": "Nachtsicht-Elixier (Nachwirkung)",
+               "description": "Plötzliche Veränderungen in der Wahrnehmung von Licht und Dunkelheit haben die innere Uhr dieses Hearthlings durcheinander gebracht. Sie werden sich schläfriger fühlen."
+            }
+         },
+         "stamina_tonic": {
+            "stamina_tonic_buff": {
+               "description": "Die Ausdauer ist für eine Weile leicht erhöht, was die Gesundheit fördert."
             }
          },
          "stamina_tonic_2": {
             "stamina_tonic_2_buff": {
                "display_name": "Elixier der verbesserten Ausdauer",
-               "description": "bloblo"
+               "description": "Die Ausdauer ist für eine Weile erhöht, was die Gesundheit stark fördert. Heilungsrate ist auch gesteigert."
+            }
+         },
+         "strength_tonic": {
+            "strength_tonic_buff": {
+               "description": "Die Muskeln sind für eine Weile leicht erhöht, was den Kampfschaden erhöht.."
             }
          },
          "strength_tonic_2": {
             "strength_tonic_2_buff": {
                "display_name": "Elixier der verbesserten Stärke",
-               "description": "bleble"
+               "description": "Die Muskeln sind für eine Weile erhöht, was den Kampfschaden stark erhöht. Auch die Panzerdurchdringung ist erhöht.."
             }
          },
          "warmth_tonic": {
             "warmth_tonic_buff": {
                "display_name": "Wärme-Elixier",
-               "description": "blublu"
+               "description": "Eine Aura der Wärme umgibt diesen Hearthling, die sie/ihn vor Kälte schützt."
+            },
+            "warmth_tonic_worn_off_buff": {
+               "display_name": "Wärme-Elixier (Nachwirkung)",
+               "description": "Der Körper dieses Hearthlings ist müde, nachdem er zu lange magisch umhüllt war. Körper ist reduziert."
             }
          },
          "water_resist_tonic": {
             "water_resist_tonic_buff": {
                "display_name": "Wasserabweisungs-Elixier",
-               "description": "blinblin"
+               "description": "Dieser Hearthling ist von einer dünnen magischen Schicht umgeben, die verhindert, dass sie durchnässt wird."
             }
          },
          "water_resist_tonic_2": {
             "water_resist_tonic_2_buff": {
                "display_name": "Elixier der verbesserten Wasserabweisung",
-               "description": "brumbrum"
+               "description": "Dieser Hearthling ist durch eine viel stärkere magische Schicht geschützt, die Wasser völlig vermeidet und es ihnen sogar erlaubt, unter Wasser zu laufen!"
+            },
+            "water_resist_tonic_2_worn_off_buff": {
+               "display_name": "Wasserabweisungs-Elixier (Nachwirkung)",
+               "description": "Die übermäßige Undurchlässigkeit hat dazu geführt, dass dieser Hearthling schneller durstig wird."
             }
          }
       },
@@ -3203,6 +3267,10 @@
                "description": "Ein mächtiger Trank, der Mut, Stärke und Bedrohung stärkt und mit der Zeit langsam heilt.",
                "flavor": "Möge es für dich ein Licht an dunklen Orten sein, wenn alle anderen Lichter erloschen sind! -Sasha of Clan Amberstone"
             },
+            "small_healing_tonic_recipe": {
+               "description": "Wird vom Kräuterarzt verwendet, um eine winzige Menge Gesundheit wiederherzustellen.",
+               "flavor": ""
+            },
             "healing_tonic_recipe": {
                "recipe_name": "Heilungs-Elixier",
                "description": "Wird vom Kräuterarzt verwendet, um Wunden zu heilen.",
@@ -3210,63 +3278,147 @@
             },
             "cold_tonic_recipe": {
                "recipe_name": "Erfrischendes Elixier",
-               "description": "Schützt vor heißem Wetter",
-               "flavor": ""
+               "description": "Dieses Tonikum wird deine ganze Stadt vor heißem Wetter schützen. Verursacht Nachwirkungen, wenn die Qualität nicht ausgezeichnet oder höher ist.",
+               "flavor": "Bekannt als 'Frostumarmung' aus dem berühmten illustrierten alchemistischen Katalog von Zokumos von Panapel"
             },
             "nightsight_tonic_recipe": {
                "recipe_name": "Nachtsicht-Elixier",
-               "description": "Bietet bessere Sicht bei Nacht",
-               "flavor": ""
+               "description": "Alle deine Bürger erhalten eine verbesserte Sehkraft, die es ihnen ermöglicht in der Dunkelheit zu sehen. Verursacht Nachwirkungen, wenn die Qualität nicht ausgezeichnet oder höher ist.",
+               "flavor": "Von Picollo Flanel in seinem berühmten Alchemisten-Handbuch als 'Katzenaugentinktur' bezeichnet"
             },
             "warmth_tonic_recipe": {
                "recipe_name": "Wärme-Elixier",
-               "description": "Schützt vor kaltem Wetter",
-               "flavor": ""
+               "description": "Dieses Stärkungsmittel wird Ihre deine Stadt vor Kälte schützen. Verursacht Nachwirkungen, wenn die Qualität nicht ausgezeichnet oder höher ist.",
+               "flavor": "Bekannt als 'Drachenberührung' aus dem berühmten illustrierten alchemistischen Katalog von Zokumos von Panaples"
             },
             "water_resist_tonic_recipe": {
                "recipe_name": "Wasserabweisungs-Elixier",
-               "description": "Stösst Regenwasser ab",
+               "description": "Alle Hearthlinge sind vorm Durchnässen geschützt..",
                "flavor": ""
             },
             "water_resist_tonic_2_recipe": {
                "recipe_name": "Elixier der verbesserten Wasserabweisung",
-               "description": "Weist so viel Wasser ab, dass Hearthlinge unter Wasser mit normaler Geschwindigkeit laufen können",
-               "flavor": ""
+               "description": "Schützt die ganze Stadt vor Durchnässung, ermöglicht das Laufen unter Wasser. Verursacht Nachwirkungen, wenn die Qualität nicht ausgezeichnet oder höher ist.",
+               "flavor": "Bekannt als 'Der Kuss der Meerjungfrau' aus dem berühmten illustrierten alchemistischen Katalog von Zokumos von Panapel"
+            },
+            "strength_tonic_recipe": {
+               "description": "Erhöht die Muskulatur aller Hearthlinge für eine Weile, wodurch auch ihr Schaden verstärkt wird."
             },
             "strength_tonic_2_recipe": {
                "recipe_name": "Elixier der verbesserten Stärke",
-               "description": "Erhöht auch den Schaden",
-               "flavor": ""
+               "description": "Erhöht für eine Weile die Muskeln und Rüstungsdurchdringung aller Hearthlinge.",
+               "flavor": "In den alchemistischen Lehrbüchern von Lady Marie Gem als 'Riesenatem' bezeichnet"
+            },
+            "stamina_tonic_recipe": {
+               "description": "Erhöht die Ausdauer all Hearthlinge für eine Weile."
             },
             "stamina_tonic_2_recipe": {
                "recipe_name": "Elixier der verbesserten Ausdauer",
-               "description": "Erhöht die erhaltene Heilung",
-               "flavor": ""
+               "description": "Erhöht für eine Weile die Ausdauer und die empfangene Heilung aller Hearthlinge.",
+               "flavor": "n den alchemistischen Lehrbüchern von Lady Marie Gem als 'Kräftige Ampulle' bezeichnet"
+            },
+            "energy_tonic_recipe": {
+               "description": "Dieser Tonikum macht deine Bürger weniger schläfrig und Sie bewegen sich für eine Weile schneller."
             },
             "energy_tonic_2_recipe": {
                "recipe_name": "Elixier der verbesserten Energie",
-               "description": "Lässt sie weniger reden",
-               "flavor": ""
+               "description": "Dieses Tonikum macht deine Bürger noch weniger schläfrig, noch schneller und verhindert im allgemeinen Gespräche für eine Weile.",
+               "flavor": "In den alchemistischen Lehrbüchern von Lady Marie Gem als "Entwurf des Quecksilbers" bezeichnet"
             },
             "curiosity_tonic_recipe": {
                "recipe_name": "Elixier der Neugierde",
-               "description": "Steigert die Neugierde und das Maß in dem Sie Erfahrungen sammeln",
-               "flavor": ""
+               "description": "Dieses Tonikum wird die Neugierde und den Erfahrungsgewinn aller Hearthlinge erhöhen. Verursacht Nachwirkungen, wenn die Qualität nicht ausgezeichnet oder höher ist.",
+               "flavor": "Von Picollo Flanel in seinem gefeierten Alchemisten-Handbuch als 'Entwurf des Philosophen' bezeichnet"
             },
             "creativity_tonic_2_recipe": {
                "recipe_name": "Elixier der verbessertesn Kreativität",
-               "description": "Erhöht auch die Chance für qualitativ hochwertigere Produkte",
-               "flavor": ""
+               "description": "Alle deine Hearthlinge werden sich über eine schnellere Fertigungsgeschwindigkeit und bessere Chancen auf eine qualitativ hochwertigere Fertigung freuen.",
+               "flavor": "Von Picollo Flanel in seinem berühmten Alchemisten-Handbuch als 'Schluck des Klarengeistes' genannt"
             },
             "creativity_tonic_recipe": {
                "recipe_name": "Kreativitäts-Elixier",
-               "description": "Macht das Herstellen schneller",
+               "description": "Alle deine Hearthlinge werden sich über eine etwas höhere Arbeitsgeschwindigkeit freuen.",
                "flavor": ""
+            },
+            "courage_tonic_recipe": {
+               "description": "Steigert für eine Weile den Mut aller Bürger."
             },
             "courage_tonic_2_recipe": {
                "recipe_name": "Elixier des verbesserten Mutes",
-               "description": "Erhöht auch die Panzerung",
+               "description": "Erhöht für eine Weile den Mut und den Rüstungswert aller Bürger.",
+               "flavor": "In den alchemistischen Lehrbüchern von Lady Marie Gem als 'Bärenhauttrank' bezeichnet"
+            },
+            "fever_cordial_recipe": {
+               "recipe_name": "Herzliches Fieber",
+               "description": "Dieser übel riechende Extrakt kann zur Behandlung von Infektionen jeder Schwere verwendet werden.",
+               "flavor": "Das alte Kindermädchen pflegte zu sagen, dass das Einreiben infizierter Wunden mit verschimmeltem Brot hilfreich sein kann..."
+            },
+            "weak_antidote_recipe": {
+               "recipe_name": "Schwaches Gegenmittel",
+               "description": "Dieser einfache Trank kann gegen Gifte verwendet werden und wird jedes Gift von geringer Schwere wirksam behandeln.",
                "flavor": ""
+            },
+            "antidote_recipe": {
+               "recipe_name": "Gegenmittel",
+               "description": "Diese Mischung kann gegen Gifte eingesetzt werden und wird jedes Gift von geringer oder mittlerer Schwere wirksam behandeln.",
+               "flavor": ""
+            },
+            "strong_antidote_recipe": {
+               "recipe_name": "Starkes Gegenmittel",
+               "description": "Dieses delikate Gebräu kann gegen Gifte verwendet werden und behandelt effizient jedes Gift bis zu einem hohen Schweregrad.",
+               "flavor": ""
+            },
+            "rough_salve_recipe": {
+               "recipe_name": "Grobe Salbe",
+               "description": "Eine einfache und rustikale Salbe, die auf jeden Einstich aufgetragen werden kann. Behandelt effizient Wunden bis zu mittlerem Schweregrad.",
+               "flavor": "Salben können auch bei Kältewunden verwendet werden"
+            },
+            "common_salve_recipe": {
+               "recipe_name": "Gewöhnliche Salbe",
+               "description": "Ein raffiniertes, butterartiges Medikament, das auf jeden Einstich aufgetragen werden kann. Effiziente Behandlung von Wunden bis zu hohem Schweregrad.",
+               "flavor": "Salben können auch bei Kältewunden verwendet werden"
+            },
+            "neat_salve_recipe": {
+               "recipe_name": "Ordentliche Salbe",
+               "description": "Geschmeidig und duftend, kann diese Salbe auf jeden Einstich aufgetragen werden. Behandelt effizient Wunden bis zu extremer Schwere.",
+               "flavor": "Salben können auch bei Kältewunden verwendet werden"
+            },
+	    "coarse_bandage_recipe": {
+               "description": "Einige Tücher und Heilkräuter zur Reinigung von Schnittwunden. Wirksame Behandlung von Wunden bis zu mittlerem Schweregrad.",
+               "flavor": "Verbände können auch bei Brandwunden verwendet werden"
+            },
+            "light_bandage_recipe": {
+               "description": "Besseres gewebtes Tuch und bessere Kräuter zur Reinigung von Schnittwunden. Effiziente Behandlung von Wunden bis zu hohem Schweregrad.",
+               "flavor": "Verbände können auch bei Brandwunden verwendet werden"
+            },
+            "heavy_bandage_recipe": {
+               "description": "Ein Stück dickeres Tuch mit Essig und Kräutern ist perfekt, um jeden Schnitt zu reinigen. Effiziente Behandelt Behandlung von Wunden bis zu extremer Schwere.",
+               "flavor": "Verbände können auch bei Brandwunden verwendet werden"
+            },
+            "simple_compress_recipe": {
+               "recipe_name": "Einfache Kompresse",
+               "description": "Eine raue Mullbinde, die dazu dient Prellungen unter Druck zu setzen. Zur effizienten Behandlung von Wunden bis zu mittlerem Schweregrad.",
+               "flavor": ""
+            },
+            "herbal_compress_recipe": {
+               "recipe_name": "Kräuterkompresse",
+               "description": "Ein feines mit Kräuterextrakten getränktes Tuch zur Heilung jeder Prellung. Zur effizienten Behandlung von Wunden bis zu hohem Schweregrad.",
+               "flavor": ""
+            },
+            "tough_compress_recipe": {
+               "recipe_name": "Starke Kompresse",
+               "description": "Ein harter Riemen mit Heilkräutern zur Heilung jeder Prellung. Effiziente Behandlung von Wunden bis zu extremer Schwere.",
+               "flavor": "Die Leute werden deine Lederkompresse lieben..."
+            },
+            "fine_ointment_recipe": {
+               "recipe_name": "Feine Salbe",
+               "description": "Diese komplexe Creme kann zur Heilung vieler Arten von Wunden verwendet werden, wenn auch nicht sehr effizient.",
+               "flavor": "Salben können bei Schlag-, Schnitt-, Stich-, Kälte- und Brandwunden verwendet werden"
+            },
+            "hearthbud_ointment_recipe": {
+               "recipe_name": "Herzknospen-Salbe",
+               "description": "Eine magische, arkane Flüssigkeit, die viele Arten von Wunden bis zu hohem Schweregrad effizient heilen kann.",
+               "flavor": "Die Kraft des Herzens ist auch die einzige bekannte Behandlung für korrupte Wunden"
             },
             "gruit_recipe": {
                "recipe_name": "Fruchtwickel",
@@ -3310,7 +3462,7 @@
                "power_medic_3_name": "Großer Arzt",
                "power_medic_3_description": "Der Kräuterkundler kann jetzt bis zu 6 Hearthlinge gleichzeitig betreuen."
             },
-            "description": "Der Kräuterarzt ist ein Künstler mit Heilmethoden und kann Tonika, Bandagen und Tränke herstellen und verwenden. Er kann aber auch mit Pflanzen, Samen und anderen Nahrungsmitteln arbeiten."
+            "description": "Der Kräuterarzt ist ein Künstler mit Heilmethoden und kann Tonikums, Medikamente und Tränke herstellen und verwenden. Er kann aber auch mit Pflanzen, Samen und anderen Nahrungsmitteln arbeiten."
          },
          "herbalist_mortar_pewter": {
             "display_name": "Zinnmörtel",
@@ -3809,7 +3961,7 @@
             "legendary_silk_recipe": {
                "recipe_name": "Waldseide",
                "description": "Gold und Seide zusammengewebt für den Umhang des Elfenkönigs.",
-               "flavor": "No regular weaver can weave with natural magic like elves do"
+               "flavor": "Kein normaler Weber kann mit natürlicher Magie weben wie die Elfen"
             },
             "legendary_tome_recipe": {
                "recipe_name": "Klerikerfoliant, 'Der Spaziergang von Cid'",
@@ -5991,11 +6143,14 @@
          "healing_tonic": {
             "hearth_healing_tonic": {
                "display_name": "Herzknospen-Heilungselixier",
-               "description": "Wird vom Kräuterarzt genutzt, um Wunden effizient zu heilen "
+               "description": "Der Kräuterarzt nutzt die Kraft des Herzens, um viel Gesundheit werherzustellen."
             },
             "healing_tonic": {
                "display_name": "Heilungs-Elixier",
-               "description": "Kann vom Kräuterarzt zum Heilen einiger Wunden verwendet werden."
+               "description": "Kann vom Kräuterarzt verwendet werden, um einen Teil der Gesundheit wiederherzustellen."
+            },
+            "small_healing_tonic": {
+               "description": "Kann vom Kräuterarzt verwendet werden, um winzige Mengen an Gesundheit wiederherzustellen."
             }
          },
          "fertilizer_hearth": {
@@ -6008,51 +6163,128 @@
          },
          "cold_tonic": {
             "display_name": "Erfrischendes Elixier",
-            "description": "Schützt vor heißem Wetter"
+            "description": "Schützt vorübergehend vor heißem Wetter."
          },
          "nightsight_tonic": {
             "display_name": "Nachtsicht-Elixier",
-            "description": "Bietet bessere Sicht bei Nacht"
+            "description": "Bietet vorübergehend bessere Sicht bei Dunkelheit."
          },
          "warmth_tonic": {
             "display_name": "Wärme-Elixier",
-            "description": "Schützt vor kaltem Wetter"
+            "description": "Schützt vorübergehend vor kaltem Wetter."
          },
          "water_resist_tonic": {
             "display_name": "Wasserabweisungs-Elixier",
-            "description": "Stösst Regenwasser ab"
+            "description": "Schützt die Bürger vorübergehend vorm Durchnässen."
          },
          "water_resist_tonic_2": {
             "display_name": "Elixier der verbesserten Wasserabweisung",
-            "description": "Weist so viel Wasser ab, dass Hearthlinge unter Wasser mit normaler Geschwindigkeit laufen können."
+            "description": "Schützt Bürger vorübergehend davor, im Wasser aufgeweicht und verlangsamt zu werden."
          },
          "strength_tonic_2": {
             "display_name": "Elixier der verbesserten Stärke",
-            "description": "Erhöht auch den Schaden"
+            "description": "Verstärkt vorübergehend die Muskeln und die Rüstungsdurchdringung."
          },
          "stamina_tonic_2": {
             "display_name": "Elixier der verbesserten Ausdauer",
-            "description": "Macht sie auch weniger hungrig"
+            "description": "Stärkt vorübergehend Ausdauer und erhaltene Heilung."
          },
          "energy_tonic_2": {
             "display_name": "Elixier der verbesserten Energie",
-            "description": "Macht sie weniger schläfrig"
+            "description": "Er verbessert vorübergehend Geschwindigkeit und Fleiß und macht sie weniger schläfrig und gesprächig."
          },
          "curiosity_tonic": {
             "display_name": "Elixier der Neugierde",
-            "description": "Steigert die Neugierde und das Maß in dem Sie Erfahrungen sammeln"
+            "description": "Stärkt vorübergehend Neugier und Erfahrungsgewinn."
          },
          "creativity_tonic_2": {
             "display_name": "Elixier der verbesserten Kreativität",
-            "description": "Erhöht auch die Chance für qualitativ hochwertigere Produkte"
+            "description": "Verbessert vorübergehend die Herstellungsgeschwindigkeit und Inspiration beim Handwerk."
          },
          "creativity_tonic": {
             "display_name": "Kreativitäts-Elixier",
-            "description": "Macht das Herstellen schneller"
+            "description": "Verbessert vorübergehend die Herstellungsgeschwindigkeit."
          },
          "courage_tonic_2": {
             "display_name": "Elixier des verbesserten Mutes",
-            "description": "Erhöht auch die Panzerung"
+            "description": "Erhöht vorübergehend Mut und Panzerung."
+         },
+         "courage_tonic": {
+            "description": "Erhöht vorübergehend den Mut."
+         },
+         "strength_tonic": {
+            "description": "Erhöht vorübergehend die Muskeln."
+         },
+         "stamina_tonic": {
+            "description": "Erhöht vorübergehend die Ausdauer."
+         },
+         "energy_tonic": {
+            "description": "Erhöht vorübergehend Geschwindigkeit, Fleiß und macht sie weniger schläfrig."
+         },
+         "simple_compress": {
+            "display_name": "Einfache Kompresse",
+            "description": "Wird vom Kräuterarzt zur Behandlung von Prellungen bis zu mittlerem Schweregrad verwendet."
+         },
+         "herbal_compress": {
+            "display_name": "Kräuterkompresse",
+            "description": "Wird vom Kräuterarzt zur Behandlung von Prellungen bis zu hohem Schweregrad verwendet."
+         },
+         "tough_compress": {
+            "display_name": "Starke Kompresse",
+            "description": "Wird vom Kräuterarzt zur Behandlung von Prellungen bis zu extremer Schwere verwendet."
+         },
+         "antidote": {
+            "display_name": "Gegenmittel",
+            "description": "Wird vom Kräuterarzt zur Behandlung von Gift bis zu mittlerem Schweregrad verwendet."
+         },
+         "common_salve": {
+            "display_name": "Gewöhnliche Salbe",
+            "description": "Wird vom Kräuterarzt zur Behandlung von Stichwunden bis zu hohem Schweregrad verwendet."
+         },
+         "fever_cordial": {
+            "display_name": "Herzliches Fieber",
+            "description": "Wird vom Kräuterarzt zur Behandlung von Infektionen jeder Schwere verwendet."
+         },
+         "fine_ointment": {
+            "display_name": "Feine Salbe",
+            "description": "Wird vom Kräuterarzt zur Behandlung der meisten Wunden bis zu mittlerem Schweregrad verwendet."
+         },
+         "hearthbud_ointment": {
+            "display_name": "Herzknospen-Salbe",
+            "description": "Wird vom Kräuterarzt zur Behandlung der meisten Wunden bis zu hohem Schweregrad verwendet."
+         },
+         "neat_salve": {
+            "display_name": "Ordentliche Salbe",
+            "description": "Wird vom Kräuterarzt zur Behandlung von Stichwunden bis zu extremer Schwere verwendet."
+         },
+         "rough_salve": {
+            "display_name": "Rauhe Salbe",
+            "description": "Wird vom Kräuterarzt zur Behandlung von Stichwunden bis zu mittlerem Schweregrad verwendet."
+         },
+	 "coarse_bandage": {
+            "description": "Wird vom Kräuterarzt zur Behandlung von Schnittwunden bis zu mittlerem Schweregrad verwendet."
+         },
+	 "light_bandage": {
+            "description": "Wird vom Kräuterarzt zur Behandlung von Schnittwunden bis zu hohem Schweregrad verwendet."
+         },
+	 "heavy_bandage": {
+            "description": "Wird vom Kräuterarzt zur Behandlung von Schnittwunden bis zu extremer Schwere verwendet."
+         },
+         "strong_antidote": {
+            "display_name": "Starkes Gegenmittel",
+            "description": "Wird vom Herbalist zur Behandlung von Gift mit hohem Schweregrad verwendet."
+         },
+         "weak_antidote": {
+            "display_name": "Schwaches Gegenmittel",
+            "description": "Wird vom Herbalist zur Behandlung von Gift mit geringem Schweregrad verwendet."
+         },
+         "royal_jelly": {
+            "display_name": "Köngliches Gelee",
+            "description": "Kann zur Behandlung der meisten Wunden bis zu einem geringen Schweregrad oder zur Herstellung von Medikamenten verwendet werden."
+         },
+         "leeches": {
+            "display_name": "Blutegel",
+            "description": "Kann zur Behandlung von Infektionen oder Giften verwendet werden. Kann leichte Verbrennungen hinterlassen."
          }
       },
       "construction": {
@@ -12871,7 +13103,9 @@
                "auto_craft_recipe_dependencies": "Automatische Rezepteinstellung",
                "auto_craft_recipe_dependencies_description": "Wenn ein Gegenstand hergestellt wird, prüfen die Handwerker das Inventar, ob ausreichend Zutaten vorhanden sind. Ist dies nicht der Fall, werden genügend Zutaten automatisch bestellt, um die ursprüngliche Bestellung zu erfüllen.",
                "auto_craft_killed_items": "Automatische Rezepteinstellung zerstörter Gegenstände",
-               "auto_craft_killed_items_description": "Wenn ein Gegenstand, den Sie besitzen, wie ein Tor, ein Ãœbungspuppe oder eine Belagerungswaffe zerstört wird, wird automatisch ein neuer Fertigungsauftrag erstellt.",
+               "auto_craft_killed_items_description": "Wenn ein Gegenstand, den Sie besitzen, wie eine Tür, ein Übungspuppe oder eine Belagerungswaffe zerstört wird, wird automatisch ein neuer Fertigungsauftrag erstellt.",
+               "auto_queue_medicine": "Automatische Herstellung von notwendigen Heilungsgegenständen",
+               "auto_queue_medicine_description": "Wenn ein Heartling eine Wunde oder einen negativen Zustand erhält, der mit einem bestimmten Gegenstand behandelt werden kann, wird automatisch eine Bestellung für diesen Gegenstand in die Warteschlange getan, es sei denn, deine Stadt hat ihn bereits.",
                "default_craft_order_prefer_high_quality": "Standardeinstellung für die Fertigungsqualität",
                "default_craft_order_prefer_high_quality_description": "Bei der Herstellung eines Gegenstands werden die Handwerker Zutaten aufgrund ihrer Qualität berücksichtigen: niedrigere (-1), höhere (1) oder keine Präferenz (0). AUSWAHL VON -1 ODER 1 KANN SICH AUF DIE SPIELLEISTUNG NEGATIV AUSWIRKEN.",
                "show_unreachable_ingredients_notification": "Alarm für nicht erreichbare Handwerkszutaten",
