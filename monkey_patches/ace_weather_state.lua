@@ -18,7 +18,7 @@ end
 
 AceWeatherState._ace_old_start = WeatherState.start
 function AceWeatherState:start(instigating_player_id)
-   self:_ace_old_start()
+   self:_ace_old_start(instigating_player_id)
 
    radiant.events.trigger(radiant, 'stonehearth_ace:weather_state_started', self)
 end

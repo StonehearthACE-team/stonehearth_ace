@@ -19,6 +19,7 @@ local service_creation_order = {
 
 local monkey_patches = {
    ace_util = 'radiant.lib.util',
+   ace_csg_lib = 'stonehearth.lib.csg.csg_lib',
    ace_portal_component = 'stonehearth.components.portal.portal_component',
    ace_item_placer = 'stonehearth.services.client.build_editor.item_placer',
    ace_entity_or_location_selector = 'stonehearth.services.client.selection.entity_or_location_selector',
@@ -34,6 +35,8 @@ local monkey_patches = {
    ace_farming_call_handler = 'stonehearth.call_handlers.farming_call_handler',
    ace_new_game_call_handler = 'stonehearth.call_handlers.new_game_call_handler',
    ace_constants = 'stonehearth.constants',
+   ace_selection_service = 'stonehearth.services.client.selection.selection_service',
+   ace_ruler_widget = 'stonehearth.services.client.selection.ruler_widget',
    ace_settings_call_handler = 'stonehearth.call_handlers.settings_call_handler'
 }
 

@@ -59,6 +59,10 @@ function WaterPumpComponent:destroy()
 	end
 end
 
+function WaterPumpComponent:get_rotations()
+   return self._rotations
+end
+
 -- whatever calls this should also call the water_sponge component's set_output_location
 function WaterPumpComponent:set_pipe_extension(rotation_index, length, collision_region)
    local data

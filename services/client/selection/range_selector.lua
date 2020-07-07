@@ -17,8 +17,8 @@ local Region2 = _radiant.csg.Region2
 local Region3 = _radiant.csg.Region3
 local bindings = _radiant.client.get_binding_system()
 local Entity = _radiant.om.Entity
+local RegionCollisionType = _radiant.om.RegionCollisionShape
 local XYZRangeSelector = class()
-local FootprintWidget = require 'services.client.selection.footprint_widget'
 
 radiant.mixin(XYZRangeSelector, SelectorBase)
 
@@ -30,7 +30,7 @@ local DEFAULT_BOX_COLOR = Color4(192, 192, 192, 255)
 
 local INTERSECTION_NODE_NAME = 'xyz range selector intersection node'
 local MAX_RESONABLE_DRAG_DISTANCE = 512
-local MODEL_OFFSET = Point3(-0.5, 0, -0.5)
+local MODEL_OFFSET = Point3(0.5, 0, 0.5)
 local TERRAIN_NODES = 1
 
 function XYZRangeSelector:__init(reason)
@@ -41,8 +41,8 @@ function XYZRangeSelector:__init(reason)
    self._require_supported = false
    self._require_unblocked = false
    self._show_rulers = true
-   self._min_size = 0
-   self._max_size = radiant.math.MAX_INT32
+   self._rotation = 1
+   self._length = 0
    self._select_front_brick = true
    self._validation_offset = Point3(0, 0, 0)
    self._allow_select_cursor = false
@@ -71,9 +71,7 @@ function XYZRangeSelector:__init(reason)
    self._last_ignored_entities = {}
    self._ignored_entities = {}
 
-   self:_initialize_dispatch_table()
-
-   self:use_outline_marquee(DEFAULT_BOX_COLOR, DEFAULT_BOX_COLOR)
+   self:set_render_params()
 end
 
 function XYZRangeSelector:_shift_down()
@@ -84,6 +82,7 @@ end
 -- "rotations" are considered relative to this entity (in terms of its position and rotation)
 function XYZRangeSelector:set_relative_entity(entity)
    self._relative_entity = entity
+   return self
 end
 
 -- this is a list of the axes (relative to the entity's rotation) along which the range can be specified
@@ -126,6 +125,7 @@ function XYZRangeSelector:set_render_params(material, color, custom_fn)
    self._render_material = material or (not custom_fn and '/stonehearth/data/horde/materials/transparent_box_nodepth.material.json')
    self._render_color = color or (not custom_fn and Color4(80, 192, 0, 255))
    self._render_custom_fn = custom_fn
+   return self
 end
 
 function XYZRangeSelector:set_show_rulers(value)
@@ -255,8 +255,6 @@ function XYZRangeSelector:_cleanup()
    log:spam('cleaning up: %s', self._reason)
    stonehearth.selection:register_tool(self, false)
 
-   self:_restore_ignored_entities()
-
    self._fail_cb = nil
    self._progress_cb = nil
    self._done_cb = nil
@@ -295,6 +293,7 @@ function XYZRangeSelector:_cleanup()
    if self._intersection_nodes then
       for _, node in ipairs(self._intersection_nodes) do
          node.node:destroy()
+         node.vis_node:destroy()
       end
       self._intersection_nodes = nil
    end
@@ -336,8 +335,14 @@ function XYZRangeSelector:_get_brick_at(x, y)
    local brick, normal = selector_util.get_selected_brick(x, y, function(result)
          local entity = result.entity
 
+         --log:debug('getting brick at %s, %s: %s "%s"', x, y, tostring(entity), tostring(result.node_name))
+
+         -- if self._relative_entity and (self._relative_entity ~= entity) then
+         --    return stonehearth.selection.FILTER_IGNORE
+         -- end
+
          for _, node in ipairs(self._intersection_nodes) do
-            if result.node_name == node.node_name then
+            if result.node_name == node.name then
                -- we hit an intersection node created by the user to catch points floating
                -- in air.  use this brick
                return true
@@ -362,7 +367,7 @@ function XYZRangeSelector:_update()
    local current_region = self:get_current_region()
 
    self:_update_rulers(current_region)
-   self:_update_cursor(selected_cube, self._stabbed_normal)
+   self:_update_cursor(current_region, self._stabbed_normal)
 
    local rotation = self:get_rotation()
    local length = self:_get_length()
@@ -370,11 +375,21 @@ function XYZRangeSelector:_update()
    if self._action == 'notify' then
       self:notify(rotation, length, current_region)
    elseif self._action == 'resolve' then
-      self:resolve(rotation, length, current_region, self:get_point_in_current_direction(length))
+      self:resolve(self._rotation, length, current_region, self:get_point_in_current_direction(length))
    else
       log:error('uknown action: %s', self._action)
       assert(false)
    end
+end
+
+function XYZRangeSelector:_world_to_local(pt, entity)
+   local mob = entity:add_component('mob')
+   local region_origin = mob:get_region_origin()
+   --local new_pt = (pt - mob:get_world_grid_location() - region_origin):rotated(-mob:get_facing()) + region_origin
+   local new_pt = (pt - mob:get_world_grid_location()):rotated(-mob:get_facing())
+
+   --log:debug('world_to_local for %s: %s => %s', entity, pt, new_pt)
+   return new_pt
 end
 
 function XYZRangeSelector:_on_mouse_event(event)
@@ -396,21 +411,22 @@ function XYZRangeSelector:_on_mouse_event(event)
 
       if brick and brick ~= self._last_brick then
          self._last_brick = brick
+         local local_brick = self._relative_entity and self:_world_to_local(brick, self._relative_entity) or brick
 
          -- search intersection nodes for which rotation this could be
          local rotation_index
          for i, node in ipairs(self._intersection_nodes) do
-            if node.cube:contains(brick) then
+            if node.cube:contains(local_brick) then
                rotation_index = i
                break
             end
          end
 
          if rotation_index then
-            self._rotation = rotation_index
+            self:set_rotation(rotation_index)
             local rotation = self:get_rotation()
-            local node = self._intersection_nodes[rotation_index]
-            local cube = csg_lib.create_cube(brick, node.min_point)
+            --local node = self._intersection_nodes[rotation_index]
+            local cube = csg_lib.create_cube(rotation.origin, local_brick)
             self:set_length(cube:get_size()[rotation.dimension])
          end
       end
@@ -429,15 +445,19 @@ function XYZRangeSelector:_on_keyboard_event(e)
 
    local num_rotations = #self._rotations
 
-   if num_rotations > 1 then
-      if bindings:is_action_active('stonehearth_ace:range_selection:rotate:left') then
+   if num_rotations > 0 then
+      if bindings:is_action_active('build:rotate:left') then
+         log:debug('rotating left')
          deltaRot = 1
-      elseif bindings:is_action_active('stonehearth_ace:range_selection:rotate:right') then
+      elseif bindings:is_action_active('build:rotate:right') then
+         log:debug('rotating right')
          deltaRot = num_rotations - 1
-      elseif bindings:is_action_active('stonehearth_ace:range_selection:lengthen') then
+      elseif bindings:is_action_active('build:raise_template') then
+         log:debug('increasing length')
          deltaExt = 1
-      elseif bindings:is_action_active('stonehearth_ace:range_selection:shorten') then
-         deltaExt = num_rotations - 1
+      elseif bindings:is_action_active('build:sink_template') then
+         log:debug('decreasing length')
+         deltaExt = -1
       end
 
       if deltaRot ~= 0 then
@@ -449,7 +469,7 @@ function XYZRangeSelector:_on_keyboard_event(e)
 
       if deltaExt ~= 0 then
          self._action = 'notify'
-         self:set_length(self._length + deltaExt)
+         self:set_length(self:_get_length() + deltaExt)
          event_consumed = true
       end
    end
@@ -470,21 +490,25 @@ function XYZRangeSelector:_update_rulers(region)
 
       local rotation = self:get_rotation()
       if rotation then
-         self:_update_ruler(self['_' .. rotation.dimension .. '_ruler'], q0, q1, rotation.dimension, is_region)
+         self:_update_ruler(self._x_ruler, q0, q1, 'x')
+         self:_update_ruler(self._y_ruler, q0, q1, 'y')
+         self:_update_ruler(self._z_ruler, q0, q1, 'z')
+
+         return
       end
-   else
-      self._x_ruler:hide()
-      self._y_ruler:hide()
-      self._z_ruler:hide()
    end
+
+   self._x_ruler:hide()
+   self._y_ruler:hide()
+   self._z_ruler:hide()
 end
 
-function XYZRangeSelector:_update_ruler(ruler, p0, p1, dimension, is_region)
+function XYZRangeSelector:_update_ruler(ruler, p0, p1, dimension)
    local d = dimension
    local dn = d == 'x' and 'z' or 'x'
    local min = math.min(p0[d], p1[d])
    local max = math.max(p0[d], p1[d])
-   local length = math.floor(max - min + (is_region and 0 or 1) + 0.5)
+   local length = math.floor(max - min + 0.5)
    if length <= 1 then
       ruler:hide()
       return
@@ -499,10 +523,8 @@ function XYZRangeSelector:_update_ruler(ruler, p0, p1, dimension, is_region)
    local max_point = Point3(p1)
    max_point[d] = max
 
-   if is_region then
-      min_point[dn] = min_point[dn] - 1
+   min_point[dn] = min_point[dn] - 1
       max_point = max_point - Point3(1, 0, 1)
-   end
 
    -- don't use Point3.zero since we need it to be mutable
    local normal = Point3(0, 0, 0)
@@ -531,7 +553,7 @@ end
 
 function XYZRangeSelector:get_point_in_current_direction(distance)
    local rotation = self:get_rotation()
-   return rotation and (rotation.origin + distance * rotation.direction)
+   return rotation and (rotation.origin + rotation.direction * distance)
 end
 
 function XYZRangeSelector:_recalc_current_region()
@@ -542,7 +564,7 @@ function XYZRangeSelector:_recalc_current_region()
    local node = self._intersection_nodes[self._rotation]
 
    if length and rotation and node and length > 0 then
-      local cube = csg_lib.create_cube(rotation.origin, rotation.origin + (length - 1) * rotation.direction)
+      local cube = csg_lib.create_cube(rotation.origin, rotation.origin + rotation.direction * (length - 1))
 
       -- make sure there are no entities with collision in this cube (or check custom filter)
       local cube_is_good = true
@@ -588,9 +610,10 @@ function XYZRangeSelector:_update_render()
    end
 
    if self._render_material and self._render_color and self._current_region then
-      self._render_node = _radiant.client.create_region_outline_node(RenderRootNode, self._current_region,
-                           radiant.util.to_color4(self._render_color, 32),
-                           radiant.util.to_color4(self._render_color, 192),
+      local render_node = self._relative_entity and _radiant.client.get_render_entity(self._relative_entity):get_node() or RenderRootNode
+      self._render_node = _radiant.client.create_region_outline_node(render_node, self._current_region,
+                           radiant.util.to_color4(self._render_color, 192),   -- edge color
+                           radiant.util.to_color4(self._render_color, 192),   -- fill color
                            self._render_material, 1)
             :set_visible(true)
             :set_casts_shadows(false)
@@ -611,10 +634,11 @@ function XYZRangeSelector:go()
 
    stonehearth.selection:register_tool(self, true)
 
+   local entity_render_node = self._relative_entity and _radiant.client.get_render_entity(self._relative_entity):get_node()
    if self._show_rulers then
-      self._x_ruler = RulerWidget()
-      self._y_ruler = RulerWidget()
-      self._z_ruler = RulerWidget()
+      self._x_ruler = RulerWidget():set_base_node(entity_render_node)
+      self._y_ruler = RulerWidget():set_base_node(entity_render_node)
+      self._z_ruler = RulerWidget():set_base_node(entity_render_node)
    end
 
    -- load up the rotations
@@ -628,9 +652,9 @@ function XYZRangeSelector:go()
       -- { origin = Point3, dimension = string, direction = Point3, min_length = number, max_length = number }
       --local direction = direction:rotated(facing)
       local origin = rotation.origin
-      local render_node = self._relative_entity and _radiant.client.get_render_entity(self._relative_entity):get_node() or RenderRootNode
-      local min_point = origin + (rotation.min_length - 1) * rotation.direction
-      local max_point = origin + (rotation.max_length - 1) * rotation.direction
+      local render_node = entity_render_node or RenderRootNode
+      local min_point = origin   -- + rotation.direction * (rotation.min_length - 1)
+      local max_point = origin + rotation.direction * (rotation.max_length - 1)
       local cube = csg_lib.create_cube(min_point, max_point)
       local name = INTERSECTION_NODE_NAME .. i
 
@@ -639,11 +663,20 @@ function XYZRangeSelector:go()
                                                    :set_visible(false)
                                                    :set_can_query(true)
 
+      local vis_node = _radiant.client.create_region_outline_node(render_node, Region3(cube),
+                           radiant.util.to_color4(Point3(255, 255, 255), 64), -- edge color
+                           radiant.util.to_color4(Point3(255, 255, 255), 24), -- fill color
+                           self._render_material, 1)
+                           :set_name(name)
+                           :set_visible(true)
+                           :set_can_query(false)
+
       table.insert(nodes, {
          min_point = min_point,
          cube = cube,
          name = name,
-         node = node
+         node = node,
+         vis_node = vis_node
       })
    end
    self._intersection_nodes = nodes
