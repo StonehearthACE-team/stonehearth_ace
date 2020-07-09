@@ -36,7 +36,6 @@ local monkey_patches = {
    ace_new_game_call_handler = 'stonehearth.call_handlers.new_game_call_handler',
    ace_constants = 'stonehearth.constants',
    ace_selection_service = 'stonehearth.services.client.selection.selection_service',
-   ace_ruler_widget = 'stonehearth.services.client.selection.ruler_widget',
    ace_settings_call_handler = 'stonehearth.call_handlers.settings_call_handler'
 }
 

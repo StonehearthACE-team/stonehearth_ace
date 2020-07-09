@@ -1,0 +1,12 @@
+{
+   "type": "command",
+   "name": "place_water_pipe",
+   "group": "stonehearth_ace:water_tools",
+   "display_name": "i18n(stonehearth_ace:data.commands.place_water_pipe.display_name)",
+   "description": "i18n(stonehearth_ace:data.commands.place_water_pipe.description)",
+   "ordinal": 10,
+   "icon": "file(place_water_pipe.png)",
+   "action": "fire_event",
+   "event_name": "stonehearth_ace_place_water_pipe",
+   "event_data": {}
+}

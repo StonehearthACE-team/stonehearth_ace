@@ -1,0 +1,15 @@
+{
+   "type": "command",
+   "name": "water_sponge_enable_flow",
+   "group": "stonehearth_ace:water_tools",
+   "display_name": "i18n(stonehearth_ace:data.commands.water_sponge.enable_flow.display_name)",
+   "description": "i18n(stonehearth_ace:data.commands.water_sponge.enable_flow.description)",
+   "ordinal": 5,
+   "icon": "file(water_sponge_enable_flow.png)",
+   "action": "call",
+   "function": "stonehearth_ace:set_water_sponge_flow_enabled",
+   "args": [
+      true,
+      true
+   ]
+}

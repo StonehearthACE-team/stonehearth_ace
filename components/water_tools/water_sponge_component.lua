@@ -20,6 +20,8 @@ function WaterSpongeComponent:initialize()
    self._destroy_water = self._json.destroy_water
    -- if the sponge is in absorb mode, disable once it's at full capacity; if in release mode, disable once it's empty
    self._auto_disable_on_full_or_empty = self._json.auto_disable_on_full_or_empty
+
+   self._effects = {}
 end
 
 function WaterSpongeComponent:create()
@@ -61,6 +63,49 @@ function WaterSpongeComponent:destroy()
       self._parent_trace:destroy()
       self._parent_trace = nil
    end
+   self:_stop_effects()
+end
+
+function WaterSpongeComponent:_ensure_effect(condition, name, ...)
+   if condition then
+      self:_start_effect(name, self._json.effects[name], ...)
+   else
+      self:_stop_effect(name)
+   end
+end
+
+function WaterSpongeComponent:_start_effect(name, effect, location, location_is_relative)
+   if not self._effects[name] then
+      local entity = self._entity
+      if location then
+         -- if this effect should happen at a separate location, make a proxy entity there
+         entity = radiant.entities.create_entity('stonehearth:object:transient', { debug_text = name .. ' effect anchor' })
+         
+         -- assume the location is relative unless otherwise specified (e.g., input/output location)
+         if location_is_relative ~= false then
+            location = radiant.entities.get_world_grid_location(self._entity) + location:rotated(radiant.entities.get_facing(self._entity))
+         end
+
+         radiant.terrain.place_entity_at_exact_location(proxy, location)
+      end
+
+      self._effects[name] = radiant.effects.run_effect(entity, effect)
+         :set_cleanup_on_finish(false)
+   end
+end
+
+function WaterSpongeComponent:_stop_effect(name)
+   if self._effects[name] then
+      self._effects[name]:stop()
+      self._effects[name] = nil
+   end
+end
+
+function WaterSpongeComponent:_stop_effects()
+   for _, effect in pairs(self._effects) do
+      effect:stop()
+   end
+   self._effects = {}
 end
 
 function WaterSpongeComponent:_startup()
@@ -69,11 +114,14 @@ function WaterSpongeComponent:_startup()
 		return
 	end
 
-	stonehearth_ace.water_processor:register_water_processor(self._entity:get_id(), self, location.y)
+   stonehearth_ace.water_processor:register_water_processor(self._entity:get_id(), self, location.y)
+   self:_update_commands()
+   self:_update_effects()
 end
 
 function WaterSpongeComponent:_shutdown()
-	stonehearth_ace.water_processor:unregister_water_processor(self._entity:get_id(), self)
+   stonehearth_ace.water_processor:unregister_water_processor(self._entity:get_id(), self)
+   self:_update_effects()
 end
 
 function WaterSpongeComponent:get_input_rate()
@@ -114,6 +162,15 @@ function WaterSpongeComponent:set_enabled(input, output)
    self.__saved_variables:mark_changed()
 
    self:_update_commands()
+   self:_update_effects()
+end
+
+function WaterSpongeComponent:is_flow_enabled()
+   return self._sv.input_enabled and self._sv.output_enabled
+end
+
+function WaterSpongeComponent:is_flow_disabled()
+   return not self._sv.input_enabled and not self._sv.output_enabled
 end
 
 function WaterSpongeComponent:reset_processed_this_tick()
@@ -142,15 +199,17 @@ function WaterSpongeComponent:on_tick_water_processor()
    if self._sv.output_enabled and output_rate > 0 then
       local output_location = self._sv._output_location
       if output_location then
-         output_location = radiant.entities.local_to_world(output_location, self._entity)
+         output_location = location + output_location:rotated(radiant.entities.get_facing(self._entity))
 
-         local destination_container, is_solid = self:_get_destination_container(output_location)
+         local destination_container, destination_sponge, is_solid = self:_get_destination_container(output_location)
          if destination_container then
             -- since we're outputting first, we want to process from the end of the line first
             -- that way our destination container will have as much space as it can before we try to output
-            destination_container:on_tick_water_processor()
+            if destination_sponge then
+               destination_sponge:on_tick_water_processor()
+            end
             output_rate = math.min(output_rate, destination_container:get_available_capacity('stonehearth:water'))
-         elseif solid then
+         elseif is_solid then
             output_rate = 0
          end
 
@@ -182,7 +241,7 @@ function WaterSpongeComponent:on_tick_water_processor()
       end
    end
 
-   -- then input water into our container (or destroy if we don't have one and are set to destroy)
+   -- then input water into our container (or destroy water if we don't have one and are set to destroy)
 
    local input_rate = self:get_input_rate()
    if self._sv.input_enabled and input_rate > 0 then
@@ -195,7 +254,7 @@ function WaterSpongeComponent:on_tick_water_processor()
       if input_rate > 0 then
          local input_location = self._sv._input_location
          if input_location then
-            input_location = radiant.entities.local_to_world(input_location, self._entity)
+            input_location = location + input_location:rotated(radiant.entities.get_facing(self._entity))
             local volume_not_removed = input_rate
 
             -- pull water up from the lowest depth first
@@ -252,13 +311,16 @@ function WaterSpongeComponent:_get_destination_container(location)
 
 	local entities = radiant.terrain.get_entities_at_point(location)
 
-	local container_component = nil
+   local container_component = nil
+   local sponge_component = nil
 	local is_solid = false
 
 	for id, entity in pairs(entities) do
 		local container = entity:get_component('stonehearth_ace:container')
 		if container and container:get_type() == 'stonehearth:water' then
-			container_component = container
+         container_component = container
+         sponge_component = entity:get_component('stonehearth_ace:water_sponge')
+         break
       end
       local rcs = entity:get_component('region_collision_shape')
 		if rcs and rcs:get_region_collision_type() == _radiant.om.RegionCollisionShape.SOLID then
@@ -266,7 +328,7 @@ function WaterSpongeComponent:_get_destination_container(location)
 		end
 	end
 
-	return container_component, is_solid
+	return container_component, sponge_component, is_solid
 end
 
 -- when input/output is enabled/disabled, adjust commands accordingly
@@ -274,7 +336,37 @@ end
 -- a sponge will have four total commands but two at a time: toggle mode (absorb/release) and toggle enabled
 -- a "buffer" could have four separate commands with two at a time: enable/disable input and enable/disable output
 function WaterSpongeComponent:_update_commands()
+   local commands = self._json.commands
+   if commands then
+      local commands_comp = self._entity:add_component('stonehearth:commands')
 
+      self:_ensure_command(not self:is_flow_enabled(), commands_comp, commands.enable_flow)
+
+      self:_ensure_command(not self:is_flow_disabled(), commands_comp, commands.disable_flow)
+   end
+end
+
+function WaterSpongeComponent:_ensure_command(condition, commands_comp, command)
+   if command then
+      if condition then
+         commands_comp:add_command(command)
+      else
+         commands_comp:remove_command(command)
+      end
+   end
+end
+
+function WaterSpongeComponent:_update_effects()
+   local effects = self._json.effects
+   if effects then
+      if effects.flow_enabled then
+         self:_ensure_effect(self:is_flow_enabled(), 'flow_enabled')
+      end
+
+      if effects.flow_disabled then
+         self:_ensure_effect(self:is_flow_disabled(), 'flow_disabled')
+      end
+   end
 end
 
 return WaterSpongeComponent

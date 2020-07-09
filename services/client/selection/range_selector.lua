@@ -447,16 +447,12 @@ function XYZRangeSelector:_on_keyboard_event(e)
 
    if num_rotations > 0 then
       if bindings:is_action_active('build:rotate:left') then
-         log:debug('rotating left')
          deltaRot = 1
       elseif bindings:is_action_active('build:rotate:right') then
-         log:debug('rotating right')
          deltaRot = num_rotations - 1
       elseif bindings:is_action_active('build:raise_template') then
-         log:debug('increasing length')
          deltaExt = 1
       elseif bindings:is_action_active('build:sink_template') then
-         log:debug('decreasing length')
          deltaExt = -1
       end
 

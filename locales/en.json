@@ -1947,6 +1947,32 @@
          "bee_skep": {
             "display_name": "Start a Colony!",
             "description": "Order the Herbalist to use a box of Captive Bees to start a colony inside this skep. Captive Bees can be obtained from wild Bee Nests that will sometimes drop from trees when you cut them."
+         },
+         "build_fish_trap": {
+            "display_name": "Place Fish Trap",
+            "description": "Order the placement of fish traps",
+            "tip_title": "Click to place a fish trap at that location",
+            "tip_description": "Traps will automatically rotate to face the water, but you can also switch between valid rotations with [str(left_binding)] and [str(right_binding)] keys"
+         },
+         "place_water_pipe": {
+            "display_name": "Extend Water Pipe",
+            "description": "Extend a water pipe from this item; it can't be moved or undeployed while extended",
+            "tip_title": "Click to extend the pipe",
+            "tip_description": "Move the mouse or use keyboard keys [[str(left_binding)]] and [[str(right_binding)]] to rotate between positions and [[str(shorter_binding)]] and [[str(longer_binding)]] to change length"
+         },
+         "remove_water_pipe": {
+            "display_name": "Remove Water Pipe",
+            "description": "Remove the water pipe extending from this item; it can't be moved or undeployed while extended"
+         },
+         "water_sponge": {
+            "enable_flow": {
+               "display_name": "Enable Flow",
+               "description": "Enable the flow of water into and/or out of this item"
+            },
+            "disable_flow": {
+               "display_name": "Disable Flow",
+               "description": "Disable the flow of water into and/or out of this item"
+            }
          }
       },
       "buffs": {
@@ -12563,7 +12589,7 @@
                      "display_name": "Build Fence",
                      "description": "Order the creation of fences",
                      "tip_title": "Click and drag to place fence foundations",
-                     "tip_description": "If i18n(stonehearth:ui.shell.settings.gameplay_tab.building_auto_queue_crafters) is enabled, your crafters will automatically queue recipes for all craftable foundations."
+                     "tip_description": "If i18n(stonehearth:ui.shell.settings.gameplay_tab.building_auto_queue_crafters) is enabled, your crafters will automatically queue recipes for all craftable foundations"
                   }
                }
             },

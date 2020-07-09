@@ -1,0 +1,12 @@
+{
+   "type": "command",
+   "name": "remove_water_pipe",
+   "group": "stonehearth_ace:water_tools",
+   "display_name": "i18n(stonehearth_ace:data.commands.remove_water_pipe.display_name)",
+   "description": "i18n(stonehearth_ace:data.commands.remove_water_pipe.description)",
+   "ordinal": 10,
+   "icon": "file(remove_water_pipe.png)",
+   "action": "call",
+   "function": "stonehearth_ace:remove_water_pump_pipe_command",
+   "args": []
+}

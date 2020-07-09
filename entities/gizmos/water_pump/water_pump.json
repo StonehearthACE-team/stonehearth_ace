@@ -25,12 +25,6 @@
          ],
          "region_collision_type": "platform"
       },
-      "stonehearth_ace:toggle_enabled": {
-         "enabled": false,
-         "alert_on_reload": true,
-         "enable_effect": "opened",
-         "disable_effect": "closed"
-      },
       "stonehearth_ace:container": {
          "type": "stonehearth:water",
          "capacity": 10
@@ -87,7 +81,15 @@
          "input_location": {"x": 0, "y": 0, "z": 0},
          "output_location": {"x": 0, "y": 1, "z": 0},
          "input_rate": 2,
-         "output_rate": 12
+         "output_rate": 12,
+         "commands": {
+            "enable_flow": "stonehearth_ace:commands:water_sponge:enable_flow",
+            "disable_flow": "stonehearth_ace:commands:water_sponge:disable_flow"
+         },
+         "effects": {
+            "flow_enabled": "opened",
+            "flow_disabled": "closed"
+         }
       },
       "effect_list": {
          "default": "file(/data/rigs/entities/gizmos/water_gate/effects/closed.json)",
