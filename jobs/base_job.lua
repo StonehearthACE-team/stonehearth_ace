@@ -267,11 +267,15 @@ function BaseJob:get_all_equipment_preferences()
       local equipment_prefs = self._job_json.equipment_preferences
       if equipment_prefs and equipment_prefs.roles then
          for role, prefs in pairs(equipment_prefs.roles) do
-            self._sv._equipment_prefs[role] = {types = prefs.types, multiplier = prefs.multiplier, command = prefs.command}
+            self._sv._equipment_prefs[role] = {
+               types = prefs.types,
+               multiplier = prefs.multiplier,
+               command = prefs.command,
+            }
             table.insert(self._sv._equipment_roles_ordered, role)
          end
          table.sort(self._sv._equipment_roles_ordered)
-         self._sv._equipment_role = equipment_prefs.default_role
+         self:set_equipment_role(equipment_prefs.default_role)
       end
 
       --self.__saved_variables:mark_changed()
@@ -297,10 +301,12 @@ end
 
 function BaseJob:set_equipment_role(role)
    if self._sv._equipment_role ~= role then
+      self:_remove_current_role_buffs()
       self._sv._equipment_role = role
+      self:_add_current_role_buffs()
       --self.__saved_variables:mark_changed()
 
-      radiant.events.trigger(self._sv._entity, 'stonehearth_ace:equipment_role_changed')
+      radiant.events.trigger_async(self._sv._entity, 'stonehearth_ace:equipment_role_changed')
       
       return role
    end
@@ -318,6 +324,9 @@ function BaseJob:set_next_equipment_role(from_role)
    for i, role in ipairs(roles) do
       if not first then
          first = role
+         if not cur_role then
+            break
+         end
       end
       if role == cur_role then
          local temp
@@ -406,6 +415,27 @@ function BaseJob:allow_hunting(args)
    end
 end
 
+function BaseJob:add_equipment_role_buffs(args)
+   local role_buffs = self:_get_current_equipment_role_buffs()
+
+   -- if there are buffs for the current role and the new setting changes it, remove the current buffs
+   if role_buffs then
+      local new_role_buffs = args.equipment_role_buffs[self:get_equipment_role()]
+      -- check for nil, because if it's false (or an array that's empty or contains buffs), we want to remove existing buffs
+      if new_role_buffs ~= nil then
+         self:_remove_current_role_buffs(role_buffs)
+      end
+   end
+
+   self._sv._equipment_role_buffs = radiant.util.merge_into_table(self._sv._equipment_role_buffs or {}, args.equipment_role_buffs)
+   self:_add_current_role_buffs()
+end
+
+function BaseJob:remove_equipment_role_buffs(args)
+   self:_remove_current_role_buffs()
+   self._sv._equipment_role_buffs = nil
+end
+
 function BaseJob:unlock_town_ability(args)
    local pop = stonehearth.population:get_population(self._sv._entity)
    if pop and args.unlock_ability then
@@ -422,6 +452,32 @@ end
 function BaseJob:set_current_level_exp(exp)
    if self._job_json.save_current_level_experience then
       self._sv._current_level_exp = exp
+   end
+end
+
+function BaseJob:_get_current_equipment_role_buffs()
+   local prefs = self:get_equipment_preferences()
+   local role = self:get_equipment_role()
+   local buffs = self._sv._equipment_role_buffs
+
+   return role and buffs and buffs[role]
+end
+
+function BaseJob:_remove_current_role_buffs(buffs)
+   buffs = buffs or self:_get_current_equipment_role_buffs()
+   if buffs then
+      for _, buff in ipairs(buffs) do
+         radiant.entities.remove_buff(self._sv._entity, buff)
+      end
+   end
+end
+
+function BaseJob:_add_current_role_buffs()
+   local buffs = self:_get_current_equipment_role_buffs()
+   if buffs then
+      for _, buff in ipairs(buffs) do
+         radiant.entities.add_buff(self._sv._entity, buff)
+      end
    end
 end
 

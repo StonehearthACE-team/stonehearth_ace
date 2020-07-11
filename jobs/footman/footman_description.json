@@ -36,7 +36,17 @@
                "description": "i18n(stonehearth_ace:jobs.footman.footman_description.level_1_data.training_perk_description)",
                "id": "training_perk",
                "icon": "file(images/training.png)",
-               "level": 1
+               "level": 1,
+               "equipment_role_buffs": {
+                  "dual_wield_footman": [
+                     "stonehearth:buffs:groggy"
+                  ],
+                  "one_handed_footman": [
+                     "stonehearth:buffs:groggy"
+                  ]
+               },
+               "type": "add_equipment_role_buffs",
+               "demote_fn": "remove_equipment_role_buffs"
             }
          ]
       },
@@ -47,7 +57,12 @@
                "id": "training_complete",
                "icon": "file(images/training_complete.png)",
                "description": "i18n(stonehearth_ace:jobs.footman.footman_description.level_3_data.training_complete_description)",
-               "level": 3
+               "level": 3,
+               "equipment_role_buffs": {
+                  "one_handed_footman": false
+               },
+               "type": "add_equipment_role_buffs",
+               "demote_fn": "remove_equipment_role_buffs"
             }
          ]
       },
