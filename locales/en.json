@@ -909,6 +909,9 @@
             "windy_chilly": {
                "display_name": "Chilly Winds",
                "description": "The air is dry and cold as the winds howl across the lands.<ul><li>Normal sunlight levels.</li><li>Regular humidity levels.</li><li>Unsheltered hearthlings are too chilly to work as effectively.</li></ul>"
+            },
+            "windy_springtime": {
+               "display_name": "Springtime Winds"
             }
          },
          "thunderstorm": {
@@ -930,6 +933,12 @@
             "sunny_sweltering": {
                "display_name": "Heat Wave",
                "description": "An unbearably hot and stale weather has come upon the town this day.<ul><li>Normal sunlight levels.</li><li>Reduced humidity.</li><li>Unsheltered hearthlings are sweltering and might get a heatstroke if too exposed to the sun.</li><li>Unsheltered pasture animals are hurt by the heat.</li></ul>"
+            },
+            "sunny_autumn": {
+               "display_name": "Autumn Breeze"
+            },
+            "sunny_stagnant": {
+               "display_name": "Stagnant Air"
             }
          },
          "snow": {
@@ -944,12 +953,18 @@
             "snow_late": {
                "display_name": "Late Snow",
                "description": "There's still snow to fall this year...<ul><li>Fairly reduced sunlight levels.</li><li>Regular humidity levels.</li><li>Unsheltered hearthlings are too cold to work as effectively.</li><li>Unsheltered pasture animals are hurt by the cold.</li></ul>"
+            },
+            "snow_drifts": {
+               "display_name": "Snow Drifts"
             }
          },
          "sandstorm": {
             "description": "Cover your eyes. Cover your ears. In fact, just stay inside.<ul><li>Clouds of sand pass across the landscape, destroying crops and hurting everyone.</li><li>Extremely reduced sunlight levels.</li><li>Extremely reduced humidity.</li><li>Vision radius is slightly reduced.</li><li>Unsheltered hearthlings are sweltering and might get a heatstroke if exposed to the storm's heat too much.</li><li>Unsheltered pasture animals are hurt by the heat.</li></ul>",
             "sandy_day": {
                "description": "There is sand and dust... everywhere!<ul><li>Fairly reduced sunlight levels.</li><li>Greatly reduced humidity.</li><li>Vision radius is only slightly reduced.</li><li>Unsheltered hearthlings are too hot to work as effectively.</li><li>Unsheltered pasture animals are affected by the heat.</li></ul>"
+            },
+            "sandy_drifts": {
+               "display_name": "Sand Drifts"
             }
          },
          "rain": {
@@ -977,10 +992,19 @@
             "cloudy_cold": {
                "display_name": "Cloudy & Cold",
                "description": "The clouds are heavy and dark, the air is dry and cold.<ul><li>Fairly reduced sunlight levels.</li><li>Regular humidity levels.</li><li>Unsheltered hearthlings are too cold to work as effectively.</li><li>Unsheltered pasture animals are hurt by the cold.</li></ul>"
+            },
+            "distant_storm": {
+               "display_name": "Distant Storm"
             }
          },
          "blizzard": {
             "description": "Wind, and snow, and hail, oh my!<ul><li>Extremely reduced sunlight levels.</li><li>Quite reduced humidity.</li><li>Vision radius is greatly reduced.</li><li>Unsheltered hearthlings are hurt by the cold.</li><li>Unsheltered pasture animals are hurt by the cold.</li></ul>"
+         },
+         "hailstorm": {
+            "display_name": "Hailstorm"
+         },
+         "whiteout": {
+            "display_name": "Whiteout"
          }
       },
       "happiness": {

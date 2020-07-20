@@ -1,0 +1,24 @@
+{
+   "display_name": "i18n(stonehearth_ace:data.weather.windy.windy_springtime.display_name)",
+   "description": "i18n(stonehearth_ace:data.weather.windy.windy_springtime.description)",
+   "icon": "file(windy_springtime.png)",
+   "sky_settings": "stonehearth:sky_settings:windy",
+   "unsheltered_debuff": [
+      "stonehearth_ace:buffs:weather:springtime",
+      "stonehearth_ace:buffs:weather:cold_breath"
+   ],
+   "unsheltered_animal_debuff": [
+      "stonehearth_ace:buffs:weather:cold_breath"
+   ],
+   "unsheltered_npc_debuff": [
+      "stonehearth_ace:buffs:weather:springtime:npc",
+      "stonehearth_ace:buffs:weather:cold_breath"
+   ],
+   "renderer": "stonehearth_ace:weather_renderers:windy_springtime",
+   "ambient_sound_key": "windy",
+   "is_dark_during_daytime": true,
+   "thoughts": [
+      "stonehearth:thoughts:weather:windy_springtime_negative",
+      "stonehearth:thoughts:weather:windy_springtime_positive"
+   ]
+}

@@ -1,0 +1,24 @@
+{
+   "display_name": "i18n(stonehearth_ace:data.weather.whiteout.display_name)",
+   "description": "i18n(stonehearth_ace:data.weather.whiteout.description)",
+   "icon": "file(whiteout.png)",
+   "sky_settings": "stonehearth:sky_settings:whiteout",
+   "ambient_sound_key": "whiteout",
+   "thoughts": [
+      "stonehearth:thoughts:weather:whiteout_negative",
+      "stonehearth:thoughts:weather:whiteout_negative",
+      "stonehearth:thoughts:weather:whiteout_negative",
+      "stonehearth:thoughts:weather:whiteout_negative",
+      "stonehearth:thoughts:weather:whiteout_positive"
+   ],
+   "unsheltered_resistance_buff": "stonehearth:buffs:weather:cold_resist",
+   "unsheltered_debuff": "stonehearth:buffs:weather:cold",
+   "unsheltered_animal_debuff": "stonehearth:buffs:weather:cold:animal",
+   "camera_attached_effect": "stonehearth:effects:whiteout_effect",
+   "subject_matter": "stonehearth:subjects:weather:whiteout",
+   "plant_growth_time_multiplier": 10,
+   "vision_multiplier": 0.4,
+   "hide_cloud_shadows": true,
+   "snow_accumulation_per_minute": 0.003,
+   "is_dark_during_daytime": true
+}

@@ -1,0 +1,25 @@
+{
+   "display_name": "i18n(stonehearth_ace:data.weather.sandstorm.sandy_drifts.display_name)",
+   "description": "i18n(stonehearth_ace:data.weather.sandstorm.sandy_drifts.description)",
+   "icon": "file(sandy_drifts.png)",
+   "sky_settings": "stonehearth:sky_settings:sandy",
+   "unsheltered_debuff": [
+      "stonehearth_ace:buffs:weather:drifts",
+      "stonehearth_ace:buffs:weather:cold_breath"
+   ],
+   "unsheltered_animal_debuff": [
+      "stonehearth_ace:buffs:weather:cold_breath"
+   ],
+   "unsheltered_npc_debuff": [
+      "stonehearth_ace:buffs:weather:drifts:npc",
+      "stonehearth_ace:buffs:weather:cold_breath"
+   ],
+   "renderer": "stonehearth_ace:weather_renderers:sandy_drifts",
+   "ambient_sound_key": "sandy",
+   "is_dark_during_daytime": true,
+   "thoughts": [
+      "stonehearth:thoughts:weather:sandy_drifts_negative",
+      "stonehearth:thoughts:weather:sandy_drifts_positive"
+   ],
+   "cold_weather": true
+}
