@@ -7,8 +7,11 @@
    "display_name": "i18n(stonehearth_ace:data.buffs.wounds.bruise.display_name)",
    "description": "i18n(stonehearth_ace:data.buffs.wounds.bruise.description)",
    "icon": "file(bruise.png)",
-   "queue_crafting_order": "stonehearth:consumables:healing_tonic:small",
    "cant_affect_siege": true,
+   "can_only_affect": [
+      "hearthling",
+      "dwarf"
+   ],
    "repeat_add_action": "stack_and_refresh",
    "duration": "2d",
    "remove_stacks_on_expire": 2,

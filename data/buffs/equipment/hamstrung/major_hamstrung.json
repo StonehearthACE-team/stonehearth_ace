@@ -1,19 +1,22 @@
 {
    "type": "buff",
    "axis": "debuff",
+   "category": "debuff_hamstrung",
+   "unique_in_category": true,
+   "rank": 3,
    "display_name": "i18n(stonehearth_ace:data.buffs.major_hamstrung.display_name)",
    "description": "i18n(stonehearth_ace:data.buffs.major_hamstrung.description)",
    "icon": "file(hamstrung.png)",
    "duration": "25m",
    "cant_affect_siege": true,
+   "cant_affect": [
+      "hearthling",
+      "dwarf"
+   ],
    "repeat_add_action": "renew_duration",
    "modifiers": {
       "speed": {
-         "multiply": 0.7
+         "multiply": 0.5
       }
-   },
-   "disallowed_buffs": [
-      "stonehearth_ace:buffs:minor_hamstrung",
-      "stonehearth_ace:buffs:hamstrung"
-   ]
+   }
 }

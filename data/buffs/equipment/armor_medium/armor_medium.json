@@ -1,6 +1,9 @@
 {
    "type": "buff",
    "axis": "buff",
+   "category": "armor_weight",
+   "unique_in_category": true,
+   "rank": 2,
    "display_name": "i18n(stonehearth_ace:data.buffs.armor_medium.display_name)",
    "description": "i18n(stonehearth_ace:data.buffs.armor_medium.description)",
    "icon": "file(armor_medium.png)",
@@ -12,8 +15,5 @@
       "speed": {
          "add": -4
       }
-   },
-   "disallowed_buffs": [
-      "stonehearth_ace:buffs:armor_light"
-   ]
+   }
 }

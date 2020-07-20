@@ -1,0 +1,17 @@
+{
+   "type": "buff",
+   "axis": "buff",
+   "display_name": "i18n(stonehearth_ace:jobs.cleric.cleric_buffs.major_debuff_aura_buff.display_name)",
+   "description": "i18n(stonehearth_ace:jobs.cleric.cleric_buffs.major_debuff_aura_buff.description)",
+   "icon": "file(cleric_buff_lower_muscle.png)",
+   "script": "stonehearth:buff_scripts:aura",
+   "script_info": {
+      "pulse": "20m",
+      "aura_buff": "stonehearth_ace:buffs:cleric:major_debuff_aura_effect",
+      "radius": 15,
+      "pulse_immediately": true,
+      "target_self": false,
+      "target_enemies": true,
+      "target_type": "mob"
+   }
+}

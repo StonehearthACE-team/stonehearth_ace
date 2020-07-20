@@ -1,18 +1,22 @@
 {
    "type": "buff",
    "axis": "debuff",
+   "category": "debuff_fracture",
+   "unique_in_category": true,
+   "rank": 2,
    "display_name": "i18n(stonehearth_ace:data.buffs.fracture.display_name)",
    "description": "i18n(stonehearth_ace:data.buffs.fracture.description)",
    "icon": "file(fracture_normal.png)",
    "duration": "1h",
    "cant_affect_siege": true,
+   "cant_affect": [
+      "hearthling",
+      "dwarf"
+   ],
    "repeat_add_action": "renew_duration",
    "modifiers": {
       "multiplicative_armor_modifier": {
          "add": -0.2
       }
-   },
-   "disallowed_buffs": [
-      "stonehearth_ace:buffs:minor_fracture"
-   ]
+   }
 }

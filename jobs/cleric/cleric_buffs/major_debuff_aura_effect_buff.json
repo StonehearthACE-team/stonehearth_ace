@@ -1,0 +1,27 @@
+{
+   "type": "buff",
+   "axis": "debuff",
+   "category": "cleric_debuff_aura",
+   "unique_in_category": true,
+   "rank": 2,
+   "display_name": "i18n(stonehearth_ace:jobs.cleric.cleric_buffs.major_debuff_aura_effect_buff.display_name)",
+   "description": "i18n(stonehearth_ace:jobs.cleric.cleric_buffs.major_debuff_aura_effect_buff.description)",
+   "icon": "file(cleric_buff_made_weak.png)",
+   "duration": "22m",
+   "repeat_add_action": "stack_and_refresh",
+   "max_stacks": 5,
+   "remove_stacks_on_expire": 1,
+   "cant_affect": [
+      "hearthling",
+      "dwarf"
+   ],
+   "persistent": false,
+   "modifiers": {
+      "multiplicative_dmg_modifier": {
+         "multiply": 0.93
+      },
+      "speed": {
+         "add": -6
+      }
+   }
+}

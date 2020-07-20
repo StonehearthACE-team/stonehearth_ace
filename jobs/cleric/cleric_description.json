@@ -4,6 +4,23 @@
    "task_groups": [
       "stonehearth_ace:task_groups:training"
    ],
+	"equipment_preferences": {
+      "roles": {
+         "healing_cleric": {
+            "command": "stonehearth_ace:commands:toggle_job_role:healing_cleric",
+            "types": [
+               "cleric_tome"
+            ]
+         },
+         "support_cleric": {
+            "command": "stonehearth_ace:commands:toggle_job_role:support_cleric",
+            "types": [
+               "cleric_scepter", "light_shield"
+            ]
+         }
+      },
+      "default_role": "healing_cleric"
+   },
    "xp_rewards": {
       "training": 1
    },
@@ -17,6 +34,54 @@
                "id": "training_perk",
                "icon": "file(images/training.png)",
                "level": 1
+            }
+         ]
+      },
+		"2": {
+			"mixintypes": {
+				"perks": "override"
+		   },
+         "perks": [
+            {
+               "type": "add_equipment_role_buffs",
+               "name": "i18n(stonehearth_ace:jobs.cleric.cleric_description.level_1_data.perk_001_name)",
+               "id": "cleric_courage_aura",
+               "icon": "/stonehearth/jobs/cleric/images/cleric_perk_raise_muscle.png",
+               "description": "i18n(stonehearth_ace:jobs.cleric.cleric_description.level_1_data.perk_001_description)",
+               "level": 2,
+					"equipment_role_buffs": {
+                  "healing_cleric": [
+                     "stonehearth:buffs:cleric:minor_muscle_aura"
+                  ],
+                  "support_cleric": [
+                     "stonehearth_ace:buffs:cleric:minor_debuff_aura"
+                  ]
+               },	
+               "demote_fn": "remove_equipment_role_buffs"
+            }
+         ]
+      },
+		"5": {
+			"mixintypes": {
+				"perks": "override"
+		   },
+         "perks": [
+            {
+               "type": "add_equipment_role_buffs",
+               "name": "i18n(stonehearth_ace:jobs.cleric.cleric_description.level_5_data.perk_000_name)",
+               "id": "cleric_courage_aura_2",
+               "icon": "/stonehearth/jobs/cleric/images/cleric_perk_raise_muscle_2.png",
+               "description": "i18n(stonehearth_ace:jobs.cleric.cleric_description.level_5_data.perk_000_description)",
+               "level": 5,
+					"equipment_role_buffs": {
+                  "healing_cleric": [
+                     "stonehearth:buffs:cleric:major_muscle_aura"
+                  ],
+                  "support_cleric": [
+                     "stonehearth_ace:buffs:cleric:major_debuff_aura"
+                  ]
+               },	
+               "demote_fn": "remove_equipment_role_buffs"
             }
          ]
       }

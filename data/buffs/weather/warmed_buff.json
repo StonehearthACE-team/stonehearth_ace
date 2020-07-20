@@ -6,16 +6,8 @@
    "icon": "file(hot_buff.png)",
    "duration": "1h",
    "repeat_add_action": "renew_duration",
-   "disallowed_buffs": [
-      "stonehearth_ace:buffs:weather:chilly",
-      "stonehearth_ace:buffs:weather:chilly:npc",
-      "stonehearth_ace:buffs:weather:cold",
-      "stonehearth_ace:buffs:weather:cold:npc",
-      "stonehearth_ace:buffs:weather:cold:animal",
-      "stonehearth_ace:buffs:weather:freezing",
-      "stonehearth_ace:buffs:weather:freezing:npc",
-      "stonehearth_ace:buffs:weather:freezing:animal",
-      "stonehearth_ace:buffs:weather:soaked",
-      "stonehearth_ace:buffs:weather:soaked:animal"
+   "disallowed_categories": [
+      "weather_cold",
+      "weather_soaked"
    ]
 }

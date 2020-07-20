@@ -1,0 +1,109 @@
+{
+   "type": "effect",
+   "tracks": {
+      "Trail": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth/data/horde/particles/heal/in_progress_heal_cast.cubemitter.json",
+         "loop": false,
+         "start_time": 0,
+         "end_time": 1000,
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0
+         },
+         "bone": "mainHand"
+      },
+      "Trail_2": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth/data/horde/particles/heal/in_progress_heal_cast.cubemitter.json",
+         "loop": false,
+         "start_time": 0,
+         "end_time": 1000,
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0
+         },
+         "bone": "offHand"
+      },
+      "Glow": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth/data/horde/particles/heal/in_progress_heal_cast_glow.cubemitter.json",
+         "loop": false,
+         "start_time": 0,
+         "end_time": 1166,
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0
+         },
+         "bone": "mainHand"
+      },
+      "Glow_2": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth/data/horde/particles/heal/in_progress_heal_cast_glow.cubemitter.json",
+         "loop": false,
+         "start_time": 0,
+         "end_time": 1166,
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0
+         },
+         "bone": "offHand"
+      },
+      "Burst": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth/data/horde/particles/heal/in_progress_heal_cast_burst.cubemitter.json",
+         "loop": false,
+         "start_time": 1050,
+         "end_time": 1666,
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0
+         },
+         "bone": "mainHand"
+      },
+      "Burst_Glow": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth/data/horde/particles/heal/in_progress_heal_cast_burst_glow.cubemitter.json",
+         "loop": false,
+         "start_time": 1050,
+         "end_time": 1666,
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0
+         },
+         "bone": "mainHand"
+      },
+      "Burst_Glow_2": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth/data/horde/particles/heal/in_progress_heal_cast_burst_glow.cubemitter.json",
+         "loop": false,
+         "start_time": 1050,
+         "end_time": 1666,
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0
+         },
+         "bone": "offHand"
+      },
+      "offhand_burst": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth/data/horde/particles/heal/in_progress_heal_cast_offhand_burst.cubemitter.json",
+         "loop": false,
+         "start_time": 1050,
+         "end_time": 1300,
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": -90,
+            "ry": 0,
+            "rz": 0
+         },
+         "bone": "offHand"
+      }
+   }
+}

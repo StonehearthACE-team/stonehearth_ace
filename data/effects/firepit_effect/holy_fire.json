@@ -1,0 +1,61 @@
+{
+   "type": "effect",
+   "tracks": {
+      "cubemitter": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/fire/holy_fire.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": 0, "y": 0.4, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "cubemitter_2": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/fire/holy_fire_2.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "base": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth/data/horde/particles/heal/in_progress_heal.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "ignite_sound": {
+         "type": "sound_effect",
+         "start_time": 0,
+         "min_distance": 25,
+         "falloff": 3,
+         "volume": 60,
+         "track": "stonehearth:sounds:firearrow_hit"
+      },
+      "crackle_sound": {
+         "type": "sound_effect",
+         "loop": true,
+         "start_time": 300,
+         "min_distance": 40,
+         "falloff": 2.5,
+         "volume": 20,
+         "track": "stonehearth:sounds:firearrow_burn"
+      },
+      "sound": {
+         "type": "sound_effect",
+         "loop": true,
+         "start_time": 10,
+         "min_distance": 30,
+         "falloff": 30,
+         "volume": 40,
+         "track": "stonehearth:sounds:twinkle"
+      }
+   }
+}

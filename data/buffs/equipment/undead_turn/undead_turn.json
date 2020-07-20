@@ -1,0 +1,44 @@
+{
+   "type": "buff",
+   "axis": "debuff",
+   "category": "debuff_undead",
+   "unique_in_category": true,
+   "rank": 1,
+   "display_name": "i18n(stonehearth_ace:data.buffs.undead_turn.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.undead_turn.description)",
+   "icon": "file(undead_turn.png)",
+   "effect": "stonehearth_ace:effects:holy_fire",
+   "restore_effect": true,
+   "duration": "40m",
+   "cant_affect_siege": true,
+   "can_only_affect": [
+      "undead",
+      "skeleton",
+      "zombie",
+      "mummy"
+   ],
+   "repeat_add_action": "renew_duration",
+   "script": "stonehearth:buff_scripts:periodic_health_modification",
+   "script_info": {
+      "health_change": -0.06,
+      "pulse": "10m",
+      "pulse_immediately": true,
+      "pulse_on_destroy": false,
+      "is_percentage": true
+   },
+   "modifiers": {
+      "speed": {
+         "add": 60,
+         "max": 60
+      },
+      "courage": {
+         "max": 0
+      }
+   },
+   "injected_ai": {
+      "actions": [
+         "stonehearth_ace:actions:compelled_behaviors:wander"
+      ]
+   },
+   "set_posture": "stonehearth:panic"
+}

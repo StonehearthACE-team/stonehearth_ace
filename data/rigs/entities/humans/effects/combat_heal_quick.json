@@ -1,0 +1,32 @@
+{
+   "type" : "effect",
+   "tracks": {
+      "animation" : {
+            "type": "animation_effect",
+            "start_time": 0,
+				"speed": 2,
+            "animation": "combat_1h_heal_short.json",
+            "loop": false
+      },
+      "harp_loop": {
+         "type": "sound_effect",
+         "loop" : false,
+         "start_time": 50,
+         "min_distance": 20,
+         "max_instances": 2,
+         "falloff" : 3.15,
+         "volume" : 100,
+         "track" : "stonehearth:sounds:cleric_heal_aura_charge"
+      },
+      "twinkle": {
+         "type": "sound_effect",
+         "loop" : true,
+         "start_time": 275,
+         "end_time": 8000,
+         "min_distance": 20,
+         "falloff" : 3.15,
+         "volume" : 100,
+         "track" : "stonehearth:sounds:twinkle"         
+      }
+   }
+}

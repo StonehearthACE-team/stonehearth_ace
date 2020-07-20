@@ -1,0 +1,20 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth_ace:mixins:base_friendly_stranger_npc:human",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(fisher.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.npc.friendly_strangers.male.fisher.display_name)",
+         "description": "i18n(stonehearth_ace:entities.npc.friendly_strangers.male.fisher.description)",
+         "icon": "file(fisher.png)"
+      }
+   }
+}

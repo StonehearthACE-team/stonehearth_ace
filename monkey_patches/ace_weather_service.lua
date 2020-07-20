@@ -11,8 +11,8 @@ function AceWeatherService:_initialize()
    if not next(self._sv.next_weather_types) then
       local day_since_epoch = stonehearth.calendar:get_day_since_epoch()
       for i = 0, NUM_DAYS_TO_PLAN_AHEAD - 1 do
-         local season = stonehearth.seasons:get_season_for_day(day_since_epoch + i)
-         table.insert(self._sv.next_weather_types, self:_get_weather_for_season(season, true))
+         local season, completion = stonehearth.seasons:get_season_for_day(day_since_epoch + i)
+         table.insert(self._sv.next_weather_types, self:_get_weather_for_season(season, completion, true))
       end
    end
    
@@ -25,24 +25,74 @@ function AceWeatherService:_initialize()
    end
 end
 
-function AceWeatherService:_get_weather_for_season(season, avoid_bad_weather)
-   local weighted_set = WeightedSet(rng)
-   for _, entry in ipairs(season.weather) do
-      -- check if this weather is bad if we want to avoid it
-      if avoid_bad_weather then
-         local weather = radiant.resources.load_json(entry.uri)
-         if not weather.is_bad_weather then
-            weighted_set:add(entry.uri, entry.weight)
-         end
-      else
-         weighted_set:add(entry.uri, entry.weight)
+function AceWeatherService:_switch_weather(instigating_player_id)
+   self:_switch_to(self._sv.next_weather_types[1], instigating_player_id)
+
+   -- Consume the oldest weather choice and generate a new weather choice at the end.
+   -- worst queue pop ever.
+   local new_weather_types = {}
+   for i, v in ipairs(self._sv.next_weather_types) do
+      if i > 1 then
+         table.insert(new_weather_types, v)
       end
+   end
+   
+   local day_since_epoch = stonehearth.calendar:get_day_since_epoch()
+   local season, completion = stonehearth.seasons:get_season_for_day(day_since_epoch + NUM_DAYS_TO_PLAN_AHEAD - 1)
+
+   local newly_selected_weather_type = self._sv.weather_override or self:_get_weather_for_season(season, completion)
+   table.insert(new_weather_types, newly_selected_weather_type)
+   self._sv.next_weather_types = new_weather_types
+   self.__saved_variables:mark_changed()
+end
+
+function AceWeatherService:set_weather_override(weather_uri, instigating_player_id)  -- nil clears override
+   self._sv.weather_override = weather_uri
+   self._sv.next_weather_types = {}
+   local day_since_epoch = stonehearth.calendar:get_day_since_epoch()
+   for i = 0, NUM_DAYS_TO_PLAN_AHEAD - 1 do
+      local season, completion = stonehearth.seasons:get_season_for_day(day_since_epoch + i)
+      table.insert(self._sv.next_weather_types, self._sv.weather_override or self:_get_weather_for_season(season, completion))
+   end
+   self:_switch_weather(instigating_player_id)
+end
+
+function AceWeatherService:_get_weather_for_season(season, completion, avoid_bad_weather)
+   local weighted_set = WeightedSet(rng)
+	local current_stage = nil
+   for _, entry in ipairs(season.weather) do
+		current_stage = nil
+		if radiant.util.is_table(entry.weight) and completion then
+			-- check which stage of the season we are if multiple season stages are present
+			current_stage = 1 + math.floor(completion / (1 / radiant.size(entry.weight)))
+		end
+		-- check if this weather is bad if we want to avoid it
+		if avoid_bad_weather then
+			local weather = radiant.resources.load_json(entry.uri)
+			if not weather.is_bad_weather then
+				if current_stage then
+					weighted_set:add(entry.uri, entry.weight[current_stage]) -- if season stages are present
+				else
+					weighted_set:add(entry.uri, entry.weight)
+				end
+			end
+		else
+			if current_stage then
+				weighted_set:add(entry.uri, entry.weight[current_stage]) -- if season stages are present
+			else
+				weighted_set:add(entry.uri, entry.weight)
+			end
+		end
    end
 
    -- if all the weather is bad, just add it all
    if avoid_bad_weather and weighted_set:is_empty() then
       for _, entry in ipairs(season.weather) do
-         weighted_set:add(entry.uri, entry.weight)
+			if current_stage then
+				weighted_set:add(entry.uri, entry.weight[current_stage]) -- if season stages are present
+			else
+				weighted_set:add(entry.uri, entry.weight)
+			end
       end
    end
 

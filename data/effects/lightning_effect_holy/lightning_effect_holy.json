@@ -1,0 +1,97 @@
+{
+   "type": "effect",
+   "tracks": {
+      "lightning_maina": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/lightning/lightninga_holy_main.cubemitter.json",
+         "start_time": 0,
+         "end_time": 2000,
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "lightning_mainb": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/lightning/lightningb_holy_main.cubemitter.json",
+         "start_time": 0,
+         "end_time": 2000,
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "lightning_mainc": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/lightning/lightningc_holy_main.cubemitter.json",
+         "start_time": 0,
+         "end_time": 2000,
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "lightning_maind": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/lightning/lightningd_holy_main.cubemitter.json",
+         "start_time": 0,
+         "end_time": 2000,
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "lightning_strike_base_small": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/lightning/lightning_strike_holy_base_small.cubemitter.json",
+         "start_time": 0,
+         "end_time": 2000,
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "lightning_strike_smoke_small": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/lightning/lightning_strike_holy_smoke_small.cubemitter.json",
+         "start_time": 0,
+         "end_time": 2000,
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "light": {
+         "type": "light",
+         "light": "/stonehearth/data/horde/animatedlights/lightning/lightning.animatedlight.json",
+         "transforms": { "x": 0, "y": 20, "z": 0 }
+      },
+      "sound": {
+         "type": "sound_effect",
+         "duration": 6000,
+         "start_time": 0,
+         "falloff": 0,
+         "volume": 50,
+         "track": {
+            "type": "one_of",
+            "items": [
+               "stonehearth:sounds:weather:thunder_01",
+               "stonehearth:sounds:weather:thunder_02",
+               "stonehearth:sounds:weather:thunder_03",
+               "stonehearth:sounds:weather:thunder_04",
+               "stonehearth:sounds:weather:thunder_05",
+               "stonehearth:sounds:weather:thunder_06",
+               "stonehearth:sounds:weather:thunder_07",
+               "stonehearth:sounds:weather:thunder_08",
+               "stonehearth:sounds:weather:thunder_09"
+            ]
+         }
+      }
+   }
+}

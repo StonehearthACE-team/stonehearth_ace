@@ -1,0 +1,23 @@
+{
+   "components": {
+		"mixintypes": {
+			"model_variants": "override"
+		},
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(cleric_tome.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 16,
+         "rarity": "rare"
+      },
+      "stonehearth:catalog": {
+         "icon": "file(cleric_tome.png)"
+      }
+   }
+}

@@ -1,0 +1,79 @@
+{
+   "mixins": [
+      "stonehearth:mixins:item_properties",
+      "stonehearth_ace:mixins:weapons:cleric_scepter_rebuked_major"
+   ],
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(gold_scepter_equipped.qb)"
+            ]
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(gold_scepter_iconic.json)"
+      },
+      "stonehearth:equipment_piece": {
+         "postures": [
+            "stonehearth:combat",
+            "stonehearth:patrol"
+         ],
+         "ilevel": 14,
+         "roles": [
+            "cleric_job"
+         ],
+         "required_job_level": 5,
+         "equip_effect": "stonehearth:effects:weapon_level_up"
+      }
+   },
+   "entity_data": {
+      "stonehearth:buffs": {
+         "inflictable_debuffs": {
+            "undead_smite": {
+               "uri": "stonehearth_ace:buffs:undead_smite",
+               "chance": 0.15
+            }
+         }
+      },
+      "stonehearth:combat:weapon_data": {
+         "base_damage": 14,
+         "reach": 1.4
+      },
+      "stonehearth:combat:melee_attacks": [
+         {
+            "name": "combat_1h_backhand",
+            "effect": "combat_1h_backhand",
+            "active_frame": 17,
+            "cooldown": 0,
+            "priority": 0
+         },
+         {
+            "name": "combat_1h_forehand",
+            "effect": "combat_1h_forehand",
+            "active_frame": 16,
+            "cooldown": 0,
+            "priority": 0
+         }
+      ],
+      "stonehearth:net_worth": {
+         "value_in_gold": 127,
+         "rarity": "uncommon",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.weapons.gold_scepter.display_name)",
+         "description": "i18n(stonehearth_ace:entities.weapons.gold_scepter.description)",
+         "icon": "file(gold_scepter.png)",
+         "category": "weapons",
+         "material_tags": [
+            "gold",
+            "crafted"
+         ]
+      }
+   }
+}

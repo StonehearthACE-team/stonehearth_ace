@@ -1,6 +1,9 @@
 {
    "type": "buff",
    "axis": "debuff",
+   "category": "weather_cold",
+   "unique_in_category": true,
+   "rank": 3,
    "display_name": "i18n(stonehearth_ace:data.buffs.weather.animal_freezing_debuff.display_name)",
    "description": "i18n(stonehearth_ace:data.buffs.weather.animal_freezing_debuff.description)",
    "duration": "1h",
@@ -23,8 +26,5 @@
       "pulse": "1h",
       "pulse_immediately": true,
       "pulse_on_destroy": false
-   },
-   "disallowed_buffs": [
-      "stonehearth_ace:buffs:weather:cold:animal"
-   ]
+   }
 }

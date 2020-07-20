@@ -87,7 +87,16 @@
             },
             "silver_mace": {
                "recipe": "file(rc_silver_mace_recipe.json)"
-            }
+            },
+				"bronze_short_spear" : {
+					"recipe" : "file(rc_bronze_short_spear_recipe.json)"
+				},
+				"iron_short_spear" : {
+					"recipe" : "file(rc_iron_short_spear_recipe.json)"
+				},
+				"steel_short_spear" : {
+					"recipe" : "file(rc_steel_short_spear_recipe.json)"
+				}
          }
       },
       "armor": {
@@ -154,7 +163,10 @@
             },
             "silver_shield": {
                "recipe": "file(rc_silver_shield_recipe.json)"
-            }
+            },
+				"iron_archer_mail" : {
+					"recipe" : "file(rc_iron_archer_mail_recipe.json)"
+				}
          }
       }
    }

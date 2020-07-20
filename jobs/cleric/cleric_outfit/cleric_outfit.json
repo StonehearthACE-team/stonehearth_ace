@@ -1,0 +1,29 @@
+{
+   "components": {
+      "model_variants": {
+			"mixintypes": {
+				"default": "override",
+				"female": "override"
+			},
+         "default": {
+            "layer": "clothing",
+            "transparent": "false",
+            "models": [
+               "file(cleric_outfit.qb)"
+            ]
+         },
+         "female": {
+            "layer": "clothing",
+            "transparent": "false",
+            "models": [
+               "file(cleric_outfit_female.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "icon": "file(cleric_outfit.png)"
+      }
+   }
+}

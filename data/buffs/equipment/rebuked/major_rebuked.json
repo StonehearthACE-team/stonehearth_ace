@@ -1,0 +1,25 @@
+{
+   "type": "buff",
+   "axis": "debuff",
+   "category": "debuff_rebuked",
+   "unique_in_category": true,
+   "rank": 3,
+   "display_name": "i18n(stonehearth_ace:data.buffs.major_rebuked.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.major_rebuked.description)",
+   "icon": "file(rebuked.png)",
+   "duration": "30m",
+   "cant_affect_siege": true,
+   "cant_affect": [
+      "hearthling",
+      "dwarf"
+   ],
+   "repeat_add_action": "renew_duration",
+   "modifiers": {
+      "courage": {
+         "multiply": 0.7
+      },
+      "multiplicative_heal_received_modifier": {
+         "multiply": 0.2
+      }
+   }
+}

@@ -1,0 +1,278 @@
+{
+   "name": "fire",
+   "duration": 2000,
+   "material": "materials/cubemitter_add_bloom.material.json",
+   "loops": true,
+   "emission": {
+      "rate": {
+         "kind": "CONSTANT",
+         "values": [
+            100
+         ]
+      },
+      "angle": {
+         "kind": "CONSTANT",
+         "values": [
+            0
+         ]
+      },
+      "origin": {
+         "surface": "POINT",
+         "values": {
+            "surface": "POINT"
+         }
+      }
+   },
+   "particle": {
+      "lifetime": {
+         "start": {
+            "kind": "RANDOM_BETWEEN",
+            "values": [
+               100,
+               200
+            ]
+         }
+      },
+      "speed": {
+         "start": {
+            "kind": "RANDOM_BETWEEN",
+            "values": [
+               4,
+               7
+            ]
+         },
+         "over_lifetime": {
+            "kind": "CURVE",
+            "values": [
+               [
+                  0,
+                  1
+               ],
+               [
+                  0.7,
+                  1
+               ],
+               [
+                  0.8,
+                  0.4
+               ],
+               [
+                  1,
+                  0
+               ]
+            ]
+         }
+      },
+      "acceleration": {
+         "over_lifetime_y": {
+            "kind": "CONSTANT",
+            "values": [
+               0.05
+            ]
+         }
+      },
+      "velocity": {
+         "over_lifetime_x": {
+            "kind": "RANDOM_BETWEEN_CURVES",
+            "values": [
+               [
+                  [
+                     0,
+                     -2
+                  ],
+                  [
+                     0.4,
+                     2
+                  ],
+                  [
+                     0.6,
+                     -2
+                  ],
+                  [
+                     1,
+                     2
+                  ]
+               ],
+               [
+                  [
+                     0,
+                     2
+                  ],
+                  [
+                     0.4,
+                     -2
+                  ],
+                  [
+                     0.6,
+                     2
+                  ],
+                  [
+                     1,
+                     -2
+                  ]
+               ]
+            ]
+         },
+         "over_lifetime_y": {
+            "kind": "RANDOM_BETWEEN_CURVES",
+            "values": [
+               [
+                  [
+                     0,
+                     2
+                  ],
+                  [
+                     0.4,
+                     -2
+                  ],
+                  [
+                     0.6,
+                     2
+                  ],
+                  [
+                     1,
+                     -2
+                  ]
+               ],
+               [
+                  [
+                     0,
+                     -2
+                  ],
+                  [
+                     0.4,
+                     2
+                  ],
+                  [
+                     0.6,
+                     -2
+                  ],
+                  [
+                     1,
+                     2
+                  ]
+               ]
+            ]
+         },
+         "over_lifetime_z": {
+            "kind": "RANDOM_BETWEEN_CURVES",
+            "values": [
+               [
+                  [
+                     0,
+                     2
+                  ],
+                  [
+                     0.4,
+                     -2
+                  ],
+                  [
+                     0.6,
+                     2
+                  ],
+                  [
+                     1,
+                     -2
+                  ]
+               ],
+               [
+                  [
+                     0,
+                     -2
+                  ],
+                  [
+                     0.4,
+                     2
+                  ],
+                  [
+                     0.6,
+                     -2
+                  ],
+                  [
+                     1,
+                     2
+                  ]
+               ]
+            ]
+         }
+      },
+      "rotation": {
+         "over_lifetime_x": {
+            "kind": "RANDOM_BETWEEN_CURVES",
+            "values": [
+               [
+                  [
+                     0,
+                     -360
+                  ],
+                  [
+                     1,
+                     360
+                  ]
+               ],
+               [
+                  [
+                     0,
+                     360
+                  ],
+                  [
+                     1,
+                     360
+                  ]
+               ]
+            ]
+         }
+      },
+      "scale": {
+         "start": {
+            "kind": "RANDOM_BETWEEN",
+            "values": [
+               0.05,
+               0.2
+            ]
+         },
+         "over_lifetime": {
+            "kind": "RANDOM_BETWEEN_CURVES",
+            "values": [
+               [
+                  [
+                     0,
+                     1
+                  ],
+                  [
+                     1,
+                     0.2
+                  ]
+               ],
+               [
+                  [
+                     0,
+                     1.8
+                  ],
+                  [
+                     1,
+                     0.5
+                  ]
+               ]
+            ]
+         }
+      },
+      "color": {
+         "start": {
+            "kind": "RANDOM_BETWEEN",
+            "values": [
+               [0.986, 0.825, 0.326, 1],
+               [1, 0.889, 0.36, 1]
+            ]
+         },
+         "over_lifetime_a": {
+            "kind": "CURVE",
+            "values": [
+               [0, 0],
+               [0.4074578857421875, 0.869198252360026],
+               [1, 0]
+            ]
+         }
+      }
+   }
+}

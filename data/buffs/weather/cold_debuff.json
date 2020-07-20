@@ -1,6 +1,9 @@
 {
    "type": "buff",
    "axis": "debuff",
+   "category": "weather_cold",
+   "unique_in_category": true,
+   "rank": 2,
    "display_name": "i18n(stonehearth_ace:data.buffs.weather.cold_debuff.display_name)",
    "description": "i18n(stonehearth_ace:data.buffs.weather.cold_debuff.description)",
    "duration": "45m",
@@ -19,8 +22,5 @@
       "calorie_burn_multiplier": {
          "multiply": 1.3
       }
-   },
-   "disallowed_buffs": [
-      "stonehearth_ace:buffs:weather:chilly"
-   ]
+   }
 }

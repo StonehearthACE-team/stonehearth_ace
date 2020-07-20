@@ -9,7 +9,7 @@
 		 "mixintypes": {
 			"roles": "override"
 		 },
-		 "roles": ["footman_job"],
+		 "roles": ["footman_job", "cleric_job"],
          "render_type": "attach_to_bone",
          "equipment_types": ["shield", "light_shield"],
          "injected_buffs": [
@@ -19,7 +19,7 @@
    },
    "entity_data": {
       "stonehearth:catalog": {
-         "material_tags":["wood", "shield", "light_shield", "light_armor", "wooden_shield", "stockpile_equipment"]
+         "material_tags":["wood", "shield", "light_shield", "light_armor", "crafted", "stockpile_equipment"]
       }
    }
 }

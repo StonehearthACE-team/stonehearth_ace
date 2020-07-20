@@ -1,5 +1,8 @@
 {
-   "mixins": "stonehearth_ace:mixins:weapons:bow",
+	"mixins": [
+      "stonehearth:mixins:item_properties",
+      "stonehearth_ace:mixins:weapons:bow"
+   ],
    "type": "entity",
    "components": {
       "stonehearth:equipment_piece": {

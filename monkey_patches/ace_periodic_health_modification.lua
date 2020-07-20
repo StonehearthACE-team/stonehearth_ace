@@ -15,6 +15,22 @@ function AcePeriodicHealthModificationBuff:_on_pulse()
       health_change = max_health * health_change
       min_health = max_health * min_health
    end
+	if self._tuning.buff_modifiers then
+		for buff, data in pairs(self._tuning.buff_modifiers) do
+			if radiant.entities.has_buff(self._entity, buff) then
+				if data.min_health and data.min_health.multiply then
+					min_health = min_health * data.min_health.multiply
+				elseif data.min_health and data.min_health.add then
+					min_health = min_health + data.min_health.add
+				end
+				if data.health_change and data.health_change.multiply then
+					health_change = health_change * data.health_change.multiply
+				elseif data.health_change and data.health_change.add then
+					health_change = health_change + data.health_change.add
+				end
+			end
+		end
+	end
    
    local current_health = resources:get_value('health')
    local current_guts = resources:get_percentage('guts') or 1

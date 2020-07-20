@@ -1,6 +1,7 @@
 {
-   "mixins": ["stonehearth:mixins:item_properties",
-   "stonehearth_ace:mixins:weapons:crossbow"
+   "mixins": [
+      "stonehearth:mixins:item_properties",
+      "stonehearth_ace:mixins:weapons:crossbow"
    ],
    "type": "entity",
    "components": {
@@ -32,8 +33,8 @@
    },
    "entity_data": {
       "stonehearth:combat:weapon_data": {
-         "base_damage": 26,
-         "base_ranged_damage": 26,
+         "base_damage": 27,
+         "base_ranged_damage": 27,
          "range": 35,
          "projectile_speed": 75
       },
@@ -57,9 +58,8 @@
          "category": "weapons",
          "material_tags": [
             "wood",
-            "bow_crossbow",
             "ascendancy_made",
-            "ranged_weapon"
+            "crafted"
          ]
       }
    }

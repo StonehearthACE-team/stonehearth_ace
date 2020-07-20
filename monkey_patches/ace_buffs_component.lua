@@ -151,8 +151,8 @@ function AceBuffsComponent:add_buff(uri, options)
    if json.cant_affect then
       local species_data = radiant.entities.get_entity_data(self._entity, 'stonehearth:species')
       if species_data then
-         for _, forbidden_species in pairs(json.cant_affect) do
-            if species_data.id == allowed_species then
+         for _ ,forbidden_species in ipairs(json.cant_affect) do
+            if species_data.id == forbidden_species then
                return -- don't add this buff if the entity's species is in the "cant_affect" list of the buff's json
             end
          end
@@ -164,7 +164,7 @@ function AceBuffsComponent:add_buff(uri, options)
       local species_data = radiant.entities.get_entity_data(self._entity, 'stonehearth:species')
 
       if species_data then
-         for _, allowed_species in pairs(json.can_only_affect) do
+         for _ ,allowed_species in ipairs(json.can_only_affect) do
             if species_data.id == allowed_species then
                can_only_affect = true
                break

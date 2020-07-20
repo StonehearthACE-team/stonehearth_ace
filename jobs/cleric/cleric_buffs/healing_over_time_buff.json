@@ -1,0 +1,19 @@
+{
+   "type": "buff",
+   "axis": "buff",
+   "display_name": "i18n(stonehearth_ace:jobs.cleric.cleric_buffs.healing_over_time_buff.display_name)",
+   "description": "i18n(stonehearth_ace:jobs.cleric.cleric_buffs.healing_over_time_buff.description)",
+   "icon": "file(healing_over_time_buff.png)",
+   "duration": "60m",
+   "repeat_add_action": "renew_duration",
+   "effect": "stonehearth:effects:heal:in_progress",
+   "restore_effect": true,
+   "script": "stonehearth:buff_scripts:periodic_health_modification",
+   "script_info": {
+      "health_change": 0.06,
+      "pulse": "10m",
+      "pulse_immediately": false,
+      "pulse_on_destroy": true,
+      "is_percentage": true
+   }
+}

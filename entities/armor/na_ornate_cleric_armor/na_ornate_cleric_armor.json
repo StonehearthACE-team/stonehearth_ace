@@ -1,0 +1,53 @@
+{
+   "mixins": "stonehearth_ace:armor:ornate_cleric_armor",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "mixintypes": {
+            "default": "override",
+            "female": "override"
+         },
+         "default": {
+            "layer": "armor",
+            "transparent": "false",
+            "models": [
+               "file(na_ornate_cleric_armor.qb)"
+            ]
+         },
+         "female": {
+            "layer": "armor",
+            "transparent": "false",
+            "models": [
+               "file(na_ornate_cleric_armor_female.qb)"
+            ]
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(na_ornate_cleric_armor_iconic.json)"
+      },
+      "stonehearth:equipment_piece": {
+         "injected_buffs": [
+            "stonehearth_ace:buffs:weather:cold_resist"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.armor.na_ornate_cleric_armor.display_name)",
+         "icon": "file(na_ornate_cleric_armor.png)",
+         "mixintypes": {
+            "material_tags": "override"
+         },
+         "material_tags": [
+            "ornate",
+            "crafted",
+            "armor",
+            "na_made",
+            "light_armor",
+            "cleric_armor",
+            "torso",
+            "stockpile_equipment"
+         ]
+      }
+   }
+}

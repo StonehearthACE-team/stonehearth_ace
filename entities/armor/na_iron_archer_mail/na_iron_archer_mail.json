@@ -1,0 +1,61 @@
+{
+   "mixins": "stonehearth_ace:armor:iron_archer_mail",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "mixintypes": {
+            "default": "override",
+            "female": "override"
+         },
+         "default": {
+            "layer": "clothing",
+            "transparent": "false",
+            "models": [
+               "file(na_iron_archer_mail.qb)"
+            ]
+         },
+         "female": {
+            "layer": "clothing",
+            "transparent": "false",
+            "models": [
+               "file(na_iron_archer_mail_female.qb)"
+            ]
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(na_iron_archer_mail_iconic.json)"
+      },
+      "stonehearth:equipment_piece": {
+         "mixintypes": {
+            "additional_equipment": "override"
+         },
+         "additional_equipment": {
+            "stonehearth_ace:armor:iron_archer_mail:buckler": true,
+            "stonehearth_ace:armor:na_iron_archer_mail:hat": true
+         },
+         "injected_buffs": [
+            "stonehearth_ace:buffs:weather:cold_resist"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.armor.na_iron_archer_mail.display_name)",
+         "description": "i18n(stonehearth_ace:entities.armor.na_iron_archer_mail.description)",
+         "icon": "file(na_iron_archer_mail.png)",
+         "mixintypes": {
+            "material_tags": "override"
+         },
+         "material_tags": [
+            "iron",
+            "armor",
+            "torso",
+            "light_armor",
+            "na_made",
+            "archer_mail",
+            "crafted",
+            "stockpile_equipment"
+         ]
+      }
+   }
+}

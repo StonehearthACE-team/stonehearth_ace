@@ -1,0 +1,78 @@
+{
+   "mixins": [
+      "stonehearth:mixins:item_properties",
+      "stonehearth_ace:mixins:weapons:cleric_tome"
+   ],
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(cleric_tome_3_equipped.qb)"
+            ]
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(cleric_tome_3_iconic.json)"
+      },
+      "stonehearth:equipment_piece": {
+         "postures": [
+            "stonehearth:combat",
+            "stonehearth:patrol"
+         ],
+         "ilevel": 12,
+         "roles": [
+            "cleric_job"
+         ],
+         "required_job_level": 4,
+         "equip_effect": "stonehearth:effects:weapon_level_up"
+      }
+   },
+   "entity_data": {
+      "stonehearth:combat:healing_data": {
+         "base_healing": 12
+      },
+      "stonehearth:combat:healing_spells": [
+         {
+            "name": "combat_heal_hot",
+            "effect": "combat_heal_quick",
+            "active_frame": 21,
+            "cooldown": 30000,
+            "bonus_healing_multiplier": 0.2,
+            "in_progress_heal_cast_effect": "stonehearth_ace:effects:heal:in_progress_cast:quick",
+            "buff": "stonehearth_ace:buffs:cleric:healing_over_time",
+            "priority": 0.6
+         },
+         {
+            "name": "combat_heal_strong",
+            "effect": "combat_heal_long",
+            "active_frame": 210,
+            "cooldown": 45000,
+            "bonus_healing_multiplier": 4.5,
+            "in_progress_heal_cast_effect": "stonehearth_ace:effects:heal:in_progress_cast:long",
+            "target_effect": "stonehearth_ace:effects:combat_heal_strong_effect",
+            "priority": 0.4
+         }
+      ],
+      "stonehearth:net_worth": {
+         "value_in_gold": 45,
+         "rarity": "rare",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 3,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.weapons.cleric_tome_3.display_name)",
+         "description": "i18n(stonehearth_ace:entities.weapons.cleric_tome_3.description)",
+         "icon": "file(cleric_tome_3.png)",
+         "category": "weapons",
+         "material_tags": [
+            "ornate",
+            "crafted"
+         ]
+      }
+   }
+}

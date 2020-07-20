@@ -1,0 +1,30 @@
+{
+   "type": "recipe",
+   "effort": 55,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.blacksmith.recipes.gold_scepter_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.blacksmith.recipes.gold_scepter_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.blacksmith.recipes.gold_scepter_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/weapons/gold_scepter/gold_scepter.png",
+   "workshop": "stonehearth_ace:blacksmith:workbench_advanced",
+   "level_requirement": 6,
+   "ingredients": [
+      {
+         "uri": "stonehearth:refined:steel_ingot",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth:refined:gold_ingot",
+         "count": 2
+      },
+      {
+         "material": "cloth resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:weapons:gold_scepter"
+      }
+   ]
+}

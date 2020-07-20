@@ -1,0 +1,14 @@
+{
+   "mixins": "/stonehearth_ace/jobs/weaver/recipes/ornate_cleric_armor_recipe.json",
+	"recipe_name": "i18n(stonehearth_ace:entities.armor.rc_ornate_cleric_armor.display_name)",
+   "type": "recipe",
+   "portrait": "/stonehearth_ace/entities/armor/rc_ornate_cleric_armor/rc_ornate_cleric_armor.png",
+   "mixintypes": {
+      "produces": "override"
+   },
+   "produces": [
+      {
+         "item": "stonehearth_ace:armor:rc_ornate_cleric_armor"
+      }
+   ]
+}

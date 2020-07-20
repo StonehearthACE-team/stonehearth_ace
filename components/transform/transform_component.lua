@@ -84,7 +84,7 @@ function TransformComponent:_create_request_listeners()
    self:_destroy_request_listeners()
    
    local data = self:get_transform_options()
-   if data and data.request_action and data.auto_request then
+   if data and data.request_action and data.auto_request and self._entity:get_player_id() ~= "" then
       self._added_to_world_listener = self._entity:add_component('mob'):trace_parent('transform entity added or removed')
          :on_changed(function(parent)
             if parent then

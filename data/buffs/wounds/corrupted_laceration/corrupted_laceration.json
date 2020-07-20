@@ -10,6 +10,10 @@
    "queue_crafting_order": "stonehearth_ace:consumables:hearthbud_ointment",
    "reembarkable": true,
    "cant_affect_siege": true,
+   "can_only_affect": [
+      "hearthling",
+      "dwarf"
+   ],
    "repeat_add_action": "stack_and_refresh",
    "max_stacks": 7,
    "leftover_buffs": {

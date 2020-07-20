@@ -1,7 +1,7 @@
 {
    "mixins": [
       "stonehearth:mixins:item_properties",
-	  "stonehearth_ace:mixins:weapons:twohanded_shaken"
+      "stonehearth_ace:mixins:weapons:twohanded_shaken"
    ],
    "type": "entity",
    "components": {
@@ -66,12 +66,12 @@
          }
       ],
       "stonehearth:net_worth": {
-         "value_in_gold": 32,
+         "value_in_gold": 35,
          "rarity": "common",
          "shop_info": {
             "buyable": true,
             "sellable": true,
-            "shopkeeper_level": 2,
+            "shopkeeper_level": 3,
             "shopkeeper_type": "caravan"
          }
       },
@@ -84,7 +84,7 @@
             "steel",
             "ascendancy_made",
             "crafted",
-            "steel_lance"
+            "polearm"
          ]
       }
    }

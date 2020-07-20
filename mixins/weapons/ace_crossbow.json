@@ -6,7 +6,10 @@
          "render_type": "attach_to_bone",
          "additional_equipment": {
             "stonehearth_ace:armor:accessory_placeholder": true,
-            "stonehearth_ace:armor:offhand_placeholder": true
+            "stonehearth_ace:armor:offhand_placeholder": true,
+            "stonehearth_ace:archer:default_shot_placeholder": true,
+            "stonehearth_ace:archer:speed_shot_placeholder": true,
+            "stonehearth_ace:archer:double_shot_placeholder": true
          },
          "equipment_types": [
             "crossbow"
@@ -19,7 +22,7 @@
    "entity_data": {
       "stonehearth:combat:weapon_data": {
          "projectile_uri": "stonehearth:weapons:bolt",
-         "projectile_start_offset": { "x": -0.2, "y": 1.5, "z": -1 },
+         "projectile_start_offset": { "x": 0.7, "y": 2, "z": -1 },
          "projectile_end_offset": { "x": 0, "y": 1.5, "z": 0 }
       },
       "stonehearth:combat:ranged_attacks": [
@@ -27,7 +30,7 @@
             "name": "archer_xbow_shoot",
             "effect": "archer_xbow_shoot",
             "active_frame": 17,
-            "cooldown": 4000,
+            "cooldown": 2500,
             "priority": 1
          }
       ],

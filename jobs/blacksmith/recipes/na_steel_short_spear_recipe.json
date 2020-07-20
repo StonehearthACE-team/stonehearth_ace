@@ -1,0 +1,14 @@
+{
+   "mixins": "/stonehearth_ace/jobs/blacksmith/recipes/steel_short_spear_recipe.json",
+   "type": "recipe",
+   "recipe_name": "i18n(stonehearth_ace:entities.weapons.na_steel_short_spear.display_name)",
+   "portrait": "/stonehearth_ace/entities/weapons/na_steel_short_spear/na_steel_short_spear.png",
+   "mixintypes": {
+      "produces": "override"
+   },
+   "produces": [
+      {
+         "item": "stonehearth_ace:weapons:na_steel_short_spear"
+      }
+   ]
+}

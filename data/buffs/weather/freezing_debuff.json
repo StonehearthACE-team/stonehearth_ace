@@ -1,6 +1,9 @@
 {
    "type": "buff",
    "axis": "debuff",
+   "category": "weather_cold",
+   "unique_in_category": true,
+   "rank": 3,
    "display_name": "i18n(stonehearth_ace:data.buffs.weather.freezing_debuff.display_name)",
    "description": "i18n(stonehearth_ace:data.buffs.weather.freezing_debuff.description)",
    "duration": "1h",
@@ -26,16 +29,37 @@
    "script": "stonehearth:buff_scripts:periodic_health_modification",
    "script_info": {
       "health_change": -0.05,
-      "min_health": 0.6,
+      "min_health": 0.2,
       "cannot_kill": true,
       "pulse": "30m",
       "pulse_immediately": true,
       "pulse_on_destroy": false,
-      "is_percentage": true
-   },
-   "disallowed_buffs": [
-      "stonehearth_ace:buffs:weather:chilly",
-      "stonehearth_ace:buffs:weather:cold",
-      "stonehearth_ace:buffs:consumption:warm_belly"
-   ]
+      "is_percentage": true,
+      "buff_modifiers": {
+         "stonehearth_ace:buffs:weather:cold_resist": {
+            "min_health": {
+               "multiply": 3.5
+            },
+            "health_change": {
+               "multiply": 0.8
+            }
+         },
+         "stonehearth_ace:buffs:weather:chilly_resist": {
+            "min_health": {
+               "multiply": 2
+            },
+            "health_change": {
+               "multiply": 0.9
+            }
+         },
+         "stonehearth_ace:buffs:consumption:warm_belly": {
+            "min_health": {
+               "multiply": 1.5
+            },
+            "health_change": {
+               "multiply": 0.95
+            }
+         }
+      }
+   }
 }

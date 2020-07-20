@@ -6,7 +6,10 @@
    "components": {},
    "entity_data": {
       "stonehearth:catalog": {
-         "material_tags":["wood", "na_mode", "spear_horn", "crafted"]
+			"mixintypes": {
+				"material_tags": "override"
+			},
+         "material_tags":["legendary", "twohanded", "crafted", "melee_weapon", "na_made", "polearm", "stockpile_weapon"]
       }
    }
 }
