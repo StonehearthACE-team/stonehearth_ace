@@ -145,6 +145,7 @@ local monkey_patches = {
    ace_safety_observer = 'stonehearth.ai.observers.safety_observer',
    ace_cleric = 'stonehearth.jobs.cleric.cleric',
    ace_encounter = 'stonehearth.services.server.game_master.controllers.encounter',
+   ace_node = 'stonehearth.services.server.game_master.controllers.node',
    ace_collect_starting_resources = 'stonehearth.scenarios.quests.collect_starting_resources.collect_starting_resources',
    ace_pillage_mission = 'stonehearth.services.server.game_master.controllers.missions.pillage_mission',
    ace_raid_crops_mission = 'stonehearth.services.server.game_master.controllers.missions.raid_crops_mission',
