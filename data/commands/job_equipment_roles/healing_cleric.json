@@ -1,0 +1,13 @@
+{
+   "type": "command",
+   "name": "healing_cleric",
+   "display_name": "i18n(stonehearth_ace:data.commands.job_equipment_roles.healing_cleric.display_name)",
+   "description": "i18n(stonehearth_ace:data.commands.job_equipment_roles.healing_cleric.description)",
+   "icon": "file(healing_cleric.png)",
+   "action": "call",
+   "ordinal": -99,
+   "function": "stonehearth_ace:change_job_equipment_role",
+   "args": [
+      "healing_cleric"
+   ]
+}

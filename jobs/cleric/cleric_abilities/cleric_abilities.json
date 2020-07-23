@@ -3,10 +3,24 @@
    "components": {
       "stonehearth:equipment_piece": {
          "injected_ai": {
+				"mixintypes": {
+					"ai_packs": "override"
+				},
             "ai_packs": [
+				   "stonehearth:ai_pack:patrolling",
+               "stonehearth:ai_pack:wimpy",
+               "stonehearth:ai_pack:panic:flee",
+               "stonehearth:ai_pack:combat_control",
+               "stonehearth:ai_pack:healing",
                "stonehearth_ace:ai_pack:training"
             ]
-         }
+         },
+         "military_score": 30
       }
+   },
+   "entity_data": {
+		"mixintypes": {
+			"stonehearth:combat:healing_spells": "remove"
+		}
    }
 }

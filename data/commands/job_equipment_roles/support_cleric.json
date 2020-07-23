@@ -1,0 +1,13 @@
+{
+   "type": "command",
+   "name": "support_cleric",
+   "display_name": "i18n(stonehearth_ace:data.commands.job_equipment_roles.support_cleric.display_name)",
+   "description": "i18n(stonehearth_ace:data.commands.job_equipment_roles.support_cleric.description)",
+   "icon": "file(support_cleric.png)",
+   "action": "call",
+   "ordinal": -99,
+   "function": "stonehearth_ace:change_job_equipment_role",
+   "args": [
+      "support_cleric"
+   ]
+}

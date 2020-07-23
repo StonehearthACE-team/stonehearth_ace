@@ -5,6 +5,10 @@
 	"type": "entity",
    "components": {
       "stonehearth:equipment_piece": {
+			"mixintypes": {
+			"roles": "override"
+		 },
+		 "roles": ["footman_job", "cleric_job"],
 		 "required_job_level": 1
       }
    },
@@ -13,7 +17,7 @@
 	     "mixintypes": {
 			"material_tags": "override"
 		 },
-         "material_tags":["bronze", "shield", "light_shield", "medium_armor", "ascendancy_made", "bronze_shield", "stockpile_equipment"]
+         "material_tags":["bronze", "shield", "crafted", "medium_armor", "ascendancy_made", "stockpile_equipment"]
       }
    }
 }

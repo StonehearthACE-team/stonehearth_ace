@@ -1,0 +1,148 @@
+{
+   "type": "effect",
+   "tracks": {
+      "beam": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/heal/combat_heal_strong.beam.cubemitter.json",
+         "start_time": 0,
+         "loop": true,
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "glow": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/heal/combat_heal_strong.glow.cubemitter.json",
+         "start_time": 0,
+         "loop": true,
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "sparkles": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/heal/combat_heal_strong.sparkles.cubemitter.json",
+         "start_time": 0,
+         "loop": true,
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "base": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/heal/combat_heal_strong.base.cubemitter.json",
+         "start_time": 0,
+         "loop": true,
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "upward_particles": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth/data/horde/particles/heal/single_target_heal.cubemitter.json",
+         "loop": true,
+         "start_time": 0,
+         "end_time": 1000,
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "glow_minor": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth/data/horde/particles/heal/single_target_heal_glow.cubemitter.json",
+         "loop": true,
+         "start_time": 400,
+         "end_time": 1200,
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "base_2": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth/data/horde/particles/heal/single_target_heal_base.cubemitter.json",
+         "loop": true,
+         "start_time": 0,
+         "end_time": 500,
+         "transforms": { "x": 0, "y": 0.25, "z": 1,
+            "rx": 90,
+            "ry": 90,
+            "rz": 0
+         }
+      },
+      "base_3": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth/data/horde/particles/heal/single_target_heal_base.cubemitter.json",
+         "loop": true,
+         "start_time": 0,
+         "end_time": 500,
+         "transforms": { "x": 1, "y": 0.25, "z": 0,
+            "rx": 90,
+            "ry": 180,
+            "rz": 0
+         }
+      },
+      "base_4": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth/data/horde/particles/heal/single_target_heal_base.cubemitter.json",
+         "loop": true,
+         "start_time": 0,
+         "end_time": 500,
+         "transforms": { "x": 0, "y": 0.25, "z": -1,
+            "rx": 90,
+            "ry": 270,
+            "rz": 0
+         }
+      },
+      "base_5": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth/data/horde/particles/heal/single_target_heal_base.cubemitter.json",
+         "loop": true,
+         "start_time": 0,
+         "end_time": 500,
+         "transforms": { "x": -1, "y": 0.25, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "sound": {
+         "type": "sound_effect",
+         "duration": 1000,
+         "start_time": 5,
+         "min_distance": 25,
+         "max_instances": 2,
+         "falloff": 1.8,
+         "volume": 70,
+         "track": "stonehearth:sounds:cleric_heal_swirl"
+      },
+      "sound_2": {
+         "type": "sound_effect",
+         "duration": 1000,
+         "start_time": 10,
+         "min_distance": 28,
+         "max_instances": 2,
+         "falloff": 4,
+         "volume": 40,
+         "track": {
+            "type": "one_of",
+            "items": [
+               "stonehearth:sounds:cleric_heal_01",
+               "stonehearth:sounds:cleric_heal_02",
+               "stonehearth:sounds:cleric_heal_03"
+            ]
+         }
+      }
+   }
+}

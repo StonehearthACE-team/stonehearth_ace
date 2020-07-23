@@ -1,6 +1,9 @@
 {
    "type": "buff",
    "axis": "buff",
+   "category": "consumption_harmony",
+   "unique_in_category": true,
+   "rank": 3,
    "display_name": "i18n(stonehearth_ace:data.buffs.harmony_major.display_name)",
    "description": "i18n(stonehearth_ace:data.buffs.harmony_major.description)",
    "icon": "file(harmony_major_buff.png)",
@@ -22,9 +25,5 @@
       "inspiration": {
          "add": 12
       }
-   },
-   "disallowed_buffs": [
-      "stonehearth_ace:buffs:consumption:harmony_minor",
-      "stonehearth_ace:buffs:consumption:harmony"
-   ]
+   }
 }

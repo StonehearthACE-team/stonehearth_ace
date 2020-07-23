@@ -12,10 +12,19 @@
             "value": 2,
             "start_node": "pack_of_small_bears",
             "end_node": "small_bear_pack_killed"
+         },
+			"season_check": {
+            "item": "script",
+            "type": "deny_if_not",
+            "value": true,
+            "script": "stonehearth_ace:game_master:script:season_check"
          }
       }
    },
    "create_mission_info": {
+		"forbidden_seasons": [
+			"winter"
+		],
       "spawn_range": {
          "min": 150,
          "max": 400

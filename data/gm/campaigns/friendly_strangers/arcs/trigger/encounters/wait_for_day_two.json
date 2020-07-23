@@ -1,0 +1,15 @@
+{
+   "type": "encounter",
+   "encounter_type": "wait",
+   "in_edge": "start",
+   "out_edge": {
+      "type": "trigger_many",
+      "out_edges": [
+         "wait_for_fisher_requirements",
+         "wait_for_smith_requirements"
+      ]
+   },
+   "wait_info": {
+      "duration": "12h"
+   }
+}

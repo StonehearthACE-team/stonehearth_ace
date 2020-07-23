@@ -9,6 +9,10 @@
    "icon": "file(small_cut.png)",
    "queue_crafting_order": "stonehearth:consumables:coarse_bandage",
    "cant_affect_siege": true,
+   "can_only_affect": [
+      "hearthling",
+      "dwarf"
+   ],
    "repeat_add_action": "stack_and_refresh",
    "duration": "7d",
    "remove_stacks_on_expire": 2,

@@ -1,7 +1,7 @@
 {
    "mixins": [
-   "stonehearth:mixins:item_properties",
-   "stonehearth_ace:mixins:weapons:bow"
+      "stonehearth:mixins:item_properties",
+      "stonehearth_ace:mixins:weapons:bow"
    ],
    "type": "entity",
    "components": {
@@ -64,10 +64,9 @@
          "icon": "file(composite_bow.png)",
          "category": "weapons",
          "material_tags": [
-            "wood",
-            "bone",
+            "composite",
             "ascendancy_made",
-            "composite_bow"
+            "crafted"
          ]
       }
    }

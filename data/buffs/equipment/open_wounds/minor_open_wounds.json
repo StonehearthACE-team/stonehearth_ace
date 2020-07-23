@@ -1,11 +1,18 @@
 {
    "type": "buff",
    "axis": "debuff",
+   "category": "debuff_open_wounds",
+   "unique_in_category": true,
+   "rank": 1,
    "display_name": "i18n(stonehearth_ace:data.buffs.minor_open_wounds.display_name)",
    "description": "i18n(stonehearth_ace:data.buffs.minor_open_wounds.description)",
    "icon": "file(open_wounds_minor.png)",
    "duration": "40m",
    "cant_affect_siege": true,
+   "cant_affect": [
+      "hearthling",
+      "dwarf"
+   ],
    "repeat_add_action": "renew_duration",
    "script": "stonehearth:buff_scripts:periodic_health_modification",
    "script_info": {

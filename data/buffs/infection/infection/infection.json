@@ -13,6 +13,10 @@
    "thought": "stonehearth:thoughts:infection:infection",
    "thought_remove_on_destroy": true,
    "cant_affect_siege": true,
+   "can_only_affect": [
+      "hearthling",
+      "dwarf"
+   ],
    "repeat_add_action": "stack_and_refresh",
    "evolve_chance": 1,
    "buff_evolve": "stonehearth_ace:buffs:infection:major_infection",

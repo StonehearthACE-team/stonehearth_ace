@@ -1,0 +1,26 @@
+{
+   "type": "recipe",
+   "effort": 35,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.blacksmith.recipes.bronze_scepter_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.blacksmith.recipes.bronze_scepter_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.blacksmith.recipes.bronze_scepter_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/weapons/bronze_scepter/bronze_scepter.png",
+   "workshop": "stonehearth:blacksmith:workbench",
+   "level_requirement": 3,
+   "ingredients": [
+      {
+         "uri": "stonehearth:refined:bronze_ingot",
+         "count": 3
+      },
+      {
+         "material": "cloth resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:weapons:bronze_scepter"
+      }
+   ]
+}

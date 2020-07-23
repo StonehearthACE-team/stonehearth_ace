@@ -1,0 +1,27 @@
+{
+   "mixins": "stonehearth_ace:mixins:weapon",
+   "components": {
+      "stonehearth:equipment_piece": {
+         "slot": "mainhand",
+         "render_type": "attach_to_bone",
+         "equipment_types": [
+            "mainhand",
+            "cleric_scepter"
+         ],
+         "injected_buffs": [
+            "stonehearth_ace:buffs:using_scepter"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:combat:weapon_data": {
+         "range": 14
+      },
+      "stonehearth:catalog": {
+         "material_tags": [
+            "cleric_scepter",
+            "stockpile_exotic_equipment"
+         ]
+      }
+   }
+}

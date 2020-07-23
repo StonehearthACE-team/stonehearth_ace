@@ -1,0 +1,68 @@
+{
+   "mixins": [
+      "stonehearth:mixins:item_properties",
+      "stonehearth_ace:mixins:weapons:cleric_tome"
+   ],
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(cleric_tome_2_equipped.qb)"
+            ]
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(cleric_tome_2_iconic.json)"
+      },
+      "stonehearth:equipment_piece": {
+         "postures": [
+            "stonehearth:combat",
+            "stonehearth:patrol"
+         ],
+         "ilevel": 8,
+         "roles": [
+            "cleric_job"
+         ],
+         "required_job_level": 2,
+         "equip_effect": "stonehearth:effects:weapon_level_up"
+      }
+   },
+   "entity_data": {
+      "stonehearth:combat:healing_data": {
+         "base_healing": 8
+      },
+      "stonehearth:combat:healing_spells": [
+         {
+            "name": "combat_heal_hot",
+            "effect": "combat_heal_quick",
+            "active_frame": 21,
+            "cooldown": 30000,
+            "bonus_healing_multiplier": 0.2,
+            "in_progress_heal_cast_effect": "stonehearth_ace:effects:heal:in_progress_cast:quick",
+            "buff": "stonehearth_ace:buffs:cleric:healing_over_time",
+            "priority": 0.6
+         }
+      ],
+      "stonehearth:net_worth": {
+         "value_in_gold": 22,
+         "rarity": "uncommon",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 2,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.weapons.cleric_tome_2.display_name)",
+         "description": "i18n(stonehearth_ace:entities.weapons.cleric_tome_2.description)",
+         "icon": "file(cleric_tome_2.png)",
+         "category": "weapons",
+         "material_tags": [
+            "leather",
+            "crafted"
+         ]
+      }
+   }
+}

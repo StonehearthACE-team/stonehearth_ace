@@ -1,0 +1,15 @@
+{
+   "type": "encounter",
+   "encounter_type": "wait",
+   "in_edge": "delay_before_fisher_arrival",
+   "out_edge": {
+      "type": "trigger_many",
+      "out_edges": [
+         "fisher_spawn",
+         "fisher_wait"
+      ]
+   },
+   "wait_info": {
+      "duration": "2h+6h"
+   }
+}

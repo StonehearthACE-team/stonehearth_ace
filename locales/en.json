@@ -663,6 +663,153 @@
                      "trade_details": "Glory and wonder, friends of [str(i18n_data.town_name)]! I come in the name of the Adventurer's Guild to make an offer for some adventure trophies. We're currently looking for <strong>[str(i18n_data.want_number)] [str(i18n_data.want_item)]</strong> and will provide <strong>[str(i18n_data.reward_item)]</strong> in return. You'd have [str(i18n_data.num_days)] days to gather these before we're back, sounds interesting enough? We'll return with a different offer should you refuse."
                   }
                }
+            },
+            "friendly_strangers": {
+               "fisher_arrival": {
+                  "dialog_tree_info": {
+                     "dialog_nodes": {
+                        "dialog_title": "Bruno the Fisher",
+                        "msg1": {
+                           "bulletin_message": {
+                              "00": "\"Um, hello?<p>Oh, there you are! I'm Bruno, the most famous and accomplished fisherman of the realm! <font size=-4>Or at least of this realm...</font>\"<p>He shakes his backpack full of fishing equipment.<p>\"I was 'trolling through the area, but I'm afraid I've sold the last fish to your neighbors...\" He shrugs and then suddenly straightens his face, thinking of something. \"Well, I'm actually also hooked on buying fish! No trout about it, sometimes I buy just for the halibut! You could probably net some if you have, let's say, a trapper...\""
+                           },
+                           "choice_000": "Do tell!"
+                        },
+                        "msg2": {
+                           "bulletin_message": {
+                              "00": "So you do want to get into fishing, eh? Well, of course you can easily get some fish if you have a skilled fisher...\" Bruno points to the fancy fishing rod on his back. \"But if you don't, you can still have your highly nutritious fish by trapping them with<font color='#3399ff'> Fish Traps! </font>And I assure you they are very nutritious. And tasty... And juicy... Mmmm...\"<p>He looks distracted for a moment.<p>\"Oh, right.<font color='#3399ff'> Fish traps! </font>So, would you like to know the catch?\""
+                           },
+                           "choice_000": "For sure!"
+                        },
+                        "msg3": {
+                           "bulletin_message": {
+                              "00": "\"Okay, let's reel in that enthusiasm, shall we? I tease, I like enthusiasm! WOOOO!<p>Anyway, it's quite simple!<font color='#b3d9ff'> If you check with your trapper, you'll notice that they can probably place a </font><font color='#3399ff'>Fish Trap. </font>These must be placed on the edges of water bodies like lakes or rivers - you won't even be able to place them in the wrong place! Once placed, your trapper will do some work to get it set up, and soon enough it will start attracting our slippery friends!<br><font size=-4>Hmmm... I probably shouldn't call them friends if I'm going to eat them...</font>\""
+                           },
+                           "choice_000": "Sounds easy!"
+                        },
+                        "msg4": {
+                           "bulletin_message": {
+                              "00": "\"It does! But that's just a drop in the ocean; I don't want to drown you with all my knowledge.\" He scratches his chin for a second. \"However I should probably school you on a few other things! One is that you don't always have to harvest the meat of the fish you get! By interacting with the<font color='#3399ff'> trap's anchor</font>, you'll notice that you can<font color='#b3d9ff'> tell the trapper to just capture the fish </font>instead. This allows you to release it somewhere else, creating your own aquarium or pond!<br><font size=-4>Just... don't try releasing them on land...</font>\""
+                           },
+                           "choice_000": "Ornamental!"
+                        },
+                        "msg5": {
+                           "bulletin_message": {
+                              "00": "\"About their use... Once set up,<font color='#b3d9ff'> a trap will work by itself, and the trapper will just have to check it every now and then</font> like their other traps.<font color='#3399ff'> Fish Traps </font>will provide not only fish but also things like fish roe!<font color='#b3d9ff'> Just remember to not place them too close to one another</font>: that can reduce their efficiency...\"<p>He punches the air with excitement.<p>\"And that's it, you're ready to start swimming up the great river of fishing!\""
+                           },
+                           "choice_000": "Very good!"
+                        },
+                        "msg_cancel": {
+                           "bulletin_message": {
+                              "00": "\"Oh, maybe. I know a lot of folks! Every now and then we break from the reef and back again... Sometimes I feel like I have a fish memory with people, heh. So forgive me if I didn't recognize you!<br><font size=-4>I feel kind of bad now...</font><br>Anyway, I suppose you wouldn't be interested in a tip or two about<font color='#3399ff'> Fish Traps</font>, then? I cod give them now if you want, just let minnow!\""
+                           }
+                        },
+                        "msg_farewell": {
+                           "bulletin_message": {
+                              "00": "\"Great, now we're all caught up! Feel free to drop me a line anytime! I'll probably slack off here for now... I don't mean to sound fishy, just need to relax a bit by the fire and then I'll continue my journey tomorrow! And hopefully you'll be doing some catches so we can trade next time I swim around. Gotta aim for those net-gains!\"<p>Bruno gives you a very excited thumbs up.<p>\"Thanks for the hospitality!\""
+                           },
+                           "choice_000": "See you around!"
+                        }
+                     }
+                  }
+               },
+               "smith_arrival": {
+                  "dialog_tree_info": {
+                     "dialog_nodes": {
+                        "dialog_title": "Fernand the Great",
+                        "msg1": {
+                           "bulletin_message": {
+                              "00": "A strong man with a waxed mustache prances into town. \"Hah! There you are! No, no need to get up. I found the lack of smoke columns disturbing! Even thought that this settlement was abandoned! Where are the smelters? The kilns? The ovens with delicious <i>empanadas!? </i>\"<p>He dramatically shakes his fists to the skies and silence reigns before he coughs and speaks with a more serious tone.<br>\"Pardon me,<i> pollito. </i>I am Fernand the Great, master smith and wordsmith. Now, I might be<i> el maestro </i>only at the forgery, but do you know what is common between the simplest cook or herbalist and the mightiest smith,<i> pollito? </i>\""
+                           },
+                           "choice_000": "Enlighten us!"
+                        },
+                        "msg2": {
+                           "bulletin_message": {
+                              "00": "\"They work with fire!\" He gestures with passion. \"And fire needs<font color='#3399ff'> fuels!</font> As the legendary Lucan Varius once said, the strongest fire needs the purest fuels! And believe me, I know a lot about that.\" He looks around, proudly. \"This is a young town but I sense good things about it. Fernand is good with that too, be assured,<i> pollito. </i>I'll tell you what...\"<p>The smith curls his mustache with one finger, thinking.<br>\"I happened to be passing by with some traders, looking for new customers. Fernand always needs new customers. I could teach you a lot about<font color='#3399ff'> fuels </font>now - and maybe one day you'll be a good customer too,<i> suena bien? </i>\""
+                           },
+                           "choice_000": "Deal!"
+                        },
+                        "msg3": {
+                           "bulletin_message": {
+                              "00": "\"That's the spirit!\"<br>He crosses his arms, lecturing with confidence.<p>\"Well,<i> pollito</i>, <font color='#b3d9ff'>fuels are essential for many workshops and tools </font>that require a fire to function. They are also important for certain light or heat sources like fire pits or braziers - but not all. There are mainly three grades of fuels:<font color='#3399ff'> Lower Grade</font>, like Firewood or Peat;<font color='#3399ff'> Good Grade </font>like Charcoal or Lumps o' Coal, and<font color='#3399ff'> High Grade</font>, like Hard Coal.\"<p>He continues. \"Together, lower and good grade fuels are called<font color='#3399ff'> Common Fuels. </font>Simple things like heating water for preparing a tonic might only need a lower grade fuel, but more complex things like smelting metals will require better ones!\""
+                           },
+                           "choice_000": "Hot!"
+                        },
+                        "msg4": {
+                           "bulletin_message": {
+                              "00": "\"It's always important to know what fuels you need,<i> pollito! </i> Interacting with any of these<font color='#3399ff'> workbenches </font>will let you see what fuels they accept and even select the ones that you want to use. No point in wasting good coal to fry an egg, hah!\" He bursts in laughter. \"Many fuels can be acquired from natural sources like cutting trees or mining. But the<font color='#b3d9ff'> most efficient fuels are the crafted ones! </font>A single log can become<font color='#3399ff'> Firewood </font>in the hands of any basic crafter like a carpenter, mason or potter. But we,<i> maestros del fuego</i>, masters of the fire,<font color='#b3d9ff'> can create the best fuels</font>.<p>I know, you're probably wondering how to wield such power!\""
+                           },
+                           "choice_000": "Yes! How?!"
+                        },
+                        "msg5": {
+                           "bulletin_message": {
+                              "00": "\"I must say it is easier than it sounds! No, it's not because I'm already an accomplished, renowned and generally amazing blacksmith. It really is simple!\" He smiles, posing. \"Once a workshop is built and its fuels are chosen, pretty much anyone can help with keeping it fueled! You don't need to be an artisan like Fernand to dump some coal into a fire, no!<font color='#b3d9ff'> All workers and citizens will help in keeping your things fueled</font>, as long as you have fuel available. Oh!\" He remembers something. \"And you don't have to worry about wasting it either.<font color='#b3d9ff'> Fuel barely burns when not being used</font>, you'll only spend it when something is crafted!\""
+                           },
+                           "choice_000": "I see!"
+                        },
+                        "msg6": {
+                           "bulletin_message": {
+                              "00": "\"Remember,<i> pollito! </i>The real secret for mastering<i> el arte </i>of fuels is to<font color='#3399ff'> optimize! </font>Learn which fuels are more efficient, which ones provides you with<font color='#b3d9ff'> more crafts per unit</font>, which ones are best for each purpose and always keep them close to their respective workbenches by<font color='#b3d9ff'> using supply tables or shelves! </font>Nothing beats the smell of burning coal in the morning, and having your fuel readily available is essential for any crafter that wants to work with no interruptions!\"<p>He pats you on the shoulder, proudly.<p>\"<i>Pollito </i>you're now on your way to greatness, I'm sure!\""
+                           },
+                           "choice_000": "Huh!"
+                        },
+                        "msg_cancel": {
+                           "bulletin_message": {
+                              "00": "\"Hmmm, maybe!\" He ponders over it for a second. \"Or perhaps you've seen a painting of me. Fernand is quite famous, you know. Very famous!\"<p>He rests his strong hands on his waist, smiling.<p>\"But if we've talked before, forgive me for not recalling - too many promising towns, aspiring apprentices and naughty rivals to keep track of!\" He laughs. \"Either way, if you want I could give you some advice on <font color='#3399ff'>fuels</font> and how crafters use them!\""
+                           }
+                        },
+                        "msg_farewell": {
+                           "bulletin_message": {
+                              "00": "\"Very well, very well.\" He stretches his back and moves his neck around. \"Being a master smith can be taxing sometimes! I'll spend some time around, meet the townsfolk and share tales by the fire, if you don't mind! It was<i> un placer, pollito! </i>\"<p>He smiles.<p>\"No need to worry, I won't cause any trouble other than a few broken hearts, and will be leaving tomorrow... And mark my words! Fernand the Great shall visit and trade with the good people of [str(i18n_data.town_name)] one day!"
+                           },
+                           "choice_000": "We hope so! Stay safe!"
+                        }
+                     }
+                  }
+               },
+               "common": {
+                  "dialog_nodes": {
+                     "bulletin_title": "A friendly stranger approaches",
+                     "msg_cancel": {
+                        "choice_000": "Alright then!",
+                        "choice_001": "It's all good. [skip tutorial]"
+                     },
+                     "msg_denial": {
+                        "choice_000": "Nah, it's not needed! [skip tutorial]"
+                     },
+                     "msg_met_again": {
+                        "choice_000": "Have we met before?"
+                     },
+                     "gift_title": "Someone left us a gift and a letter!",
+                     "gift_accept": {
+                        "choice_000": "Thank you very much!"
+                     }
+                  }
+               },
+               "smith_gift": {
+                  "donation_dialog_info": {
+                     "dialog_nodes": {
+                        "letter": {
+                           "dialog_title": "From: Fernand the Great",
+                           "message": {
+                              "00": "<i>\"Many greetings,<i> pollito!</i><p>I've just left to meet my caravan and go home. The world needs Fernand and Fernand needs the world.<br>But I didn't want to leave without sharing one last thing to help you get started!<p>Keep on growing!<br><font size=-4>PS: Store that chunk o' hard coal well, it will be very useful in the future!</font>\"</i><p>The gift package contains:"
+                           }
+                        }
+                     }
+                  }
+               },
+               "fisher_gift": {
+                  "donation_dialog_info": {
+                     "dialog_nodes": {
+                        "letter": {
+                           "dialog_title": "From: Bruno the Fisher",
+                           "message": {
+                              "00": "<i>\"Hey, friends!<p>As I write this, I'm about to leave on my boat. One must always follow the currents. I had a good time here and actually managed to fish a little during the evening!<br>I feel that the first fish from your town should stay where they belong, though. Hopefully we'll meet again and I'll bring lots of goods!<br>Stay safe!\"</i><p>The gift package contains:"
+                           }
+                        }
+                     }
+                  }
+               }
             }
          }
       },
@@ -736,7 +883,7 @@
             "seasons": {
                "spring": {
                   "display_name": "Spring",
-                  "description": "Spring in the Arctic is a season of change, only lasting one month. While the highlands retain their snow cover year-round, the lowlands around the lakes start to thaw out and young grass begins to sprout.<ul><li>Daytime sunlight levels are average.</li><li>Humidity is alright.</li></ul>"
+                  "description": "Spring in the Arctic is a season of change, only lasting one month. While the highlands retain some cold year-round, the lowlands around the lakes start to thaw out and young grass begins to sprout.<ul><li>Daytime sunlight levels are average.</li><li>Humidity is alright.</li></ul>"
                },
                "summer": {
                   "display_name": "Summer",
@@ -744,7 +891,7 @@
                },
                "autumn": {
                   "display_name": "Autumn",
-                  "description": "Autumn in the Arctic is a season of freeze, only lasting one month. Although blizzards are rare, snow is a daily occurrence. It is the last chance to build shelter before the unforgiving winter arrives.<ul><li>Daytime sunlight levels are poor.</li><li>Humidity is high.</li></ul>"
+                  "description": "Autumn in the Arctic is a season of freeze, only lasting one month. Although blizzards are rare, snow can be a daily occurrence. It is the last chance to build shelter before the unforgiving winter arrives.<ul><li>Daytime sunlight levels are poor.</li><li>Humidity is high.</li></ul>"
                },
                "winter": {
                   "display_name": "Winter",
@@ -762,6 +909,9 @@
             "windy_chilly": {
                "display_name": "Chilly Winds",
                "description": "The air is dry and cold as the winds howl across the lands.<ul><li>Normal sunlight levels.</li><li>Regular humidity levels.</li><li>Unsheltered hearthlings are too chilly to work as effectively.</li></ul>"
+            },
+            "windy_springtime": {
+               "display_name": "Springtime Winds"
             }
          },
          "thunderstorm": {
@@ -783,6 +933,12 @@
             "sunny_sweltering": {
                "display_name": "Heat Wave",
                "description": "An unbearably hot and stale weather has come upon the town this day.<ul><li>Normal sunlight levels.</li><li>Reduced humidity.</li><li>Unsheltered hearthlings are sweltering and might get a heatstroke if too exposed to the sun.</li><li>Unsheltered pasture animals are hurt by the heat.</li></ul>"
+            },
+            "sunny_autumn": {
+               "display_name": "Autumn Breeze"
+            },
+            "sunny_stagnant": {
+               "display_name": "Stagnant Air"
             }
          },
          "snow": {
@@ -797,12 +953,18 @@
             "snow_late": {
                "display_name": "Late Snow",
                "description": "There's still snow to fall this year...<ul><li>Fairly reduced sunlight levels.</li><li>Regular humidity levels.</li><li>Unsheltered hearthlings are too cold to work as effectively.</li><li>Unsheltered pasture animals are hurt by the cold.</li></ul>"
+            },
+            "snow_drifts": {
+               "display_name": "Snow Drifts"
             }
          },
          "sandstorm": {
             "description": "Cover your eyes. Cover your ears. In fact, just stay inside.<ul><li>Clouds of sand pass across the landscape, destroying crops and hurting everyone.</li><li>Extremely reduced sunlight levels.</li><li>Extremely reduced humidity.</li><li>Vision radius is slightly reduced.</li><li>Unsheltered hearthlings are sweltering and might get a heatstroke if exposed to the storm's heat too much.</li><li>Unsheltered pasture animals are hurt by the heat.</li></ul>",
             "sandy_day": {
                "description": "There is sand and dust... everywhere!<ul><li>Fairly reduced sunlight levels.</li><li>Greatly reduced humidity.</li><li>Vision radius is only slightly reduced.</li><li>Unsheltered hearthlings are too hot to work as effectively.</li><li>Unsheltered pasture animals are affected by the heat.</li></ul>"
+            },
+            "sandy_drifts": {
+               "display_name": "Sand Drifts"
             }
          },
          "rain": {
@@ -830,10 +992,19 @@
             "cloudy_cold": {
                "display_name": "Cloudy & Cold",
                "description": "The clouds are heavy and dark, the air is dry and cold.<ul><li>Fairly reduced sunlight levels.</li><li>Regular humidity levels.</li><li>Unsheltered hearthlings are too cold to work as effectively.</li><li>Unsheltered pasture animals are hurt by the cold.</li></ul>"
+            },
+            "distant_storm": {
+               "display_name": "Distant Storm"
             }
          },
          "blizzard": {
             "description": "Wind, and snow, and hail, oh my!<ul><li>Extremely reduced sunlight levels.</li><li>Quite reduced humidity.</li><li>Vision radius is greatly reduced.</li><li>Unsheltered hearthlings are hurt by the cold.</li><li>Unsheltered pasture animals are hurt by the cold.</li></ul>"
+         },
+         "hailstorm": {
+            "display_name": "Hailstorm"
+         },
+         "whiteout": {
+            "display_name": "Whiteout"
          }
       },
       "happiness": {
@@ -1887,31 +2058,39 @@
          "job_equipment_roles": {
             "one_handed_footman": {
                "display_name": "Prefer Weapon & Shield",
-               "description": "This Footman currently prefers using a mainhand weapon and a shield. Click to change!"
+               "description": "This Footman currently prefers using a mainhand weapon and a shield. Click to change!<ul><li>A balanced role ideal for a single soldier or small groups</li><li>Certain mainhand weapons will inflict negative conditions on their enemies, like hamstrung or flanked</li></ul>"
             },
             "two_handed_footman": {
                "display_name": "Prefer Two-Handed Weapons",
-               "description": "This Footman currently prefers using a two-handed weapon. Click to change!"
+               "description": "This Footman currently prefers using a two-handed weapon. Click to change!<ul><li>This role is more fragile however has the highest damage output for a Footman</li><li>Two-handed weapons can cause open wounds, damaging foes over time</li></ul>"
             },
             "dual_wield_footman": {
                "display_name": "Prefer Dual Wielding",
-               "description": "This Footman currently prefers using a mainhand weapon with an off-hand weapon. Click to change!"
+               "description": "This Footman currently prefers using a mainhand weapon with an off-hand weapon. Click to change!<ul><li>Off-hand weapons have lower damage but can put enemies out of balance, lowering their inflicted damage</li><li>This versatile role is very good for support</li></ul>"
             },
             "one_handed_knight": {
                "display_name": "Prefer Weapon & Shield",
-               "description": "This Knight currently prefers using a mainhand weapon and a shield. Click to change!"
+               "description": "This Knight currently prefers using a mainhand weapon and a shield. Click to change!<ul><li>A very defensive role, efficient in holding the attention of the enemies</li><li>If using an impact weapon, the Knight can also lower the armor of their foes</li></ul>"
             },
             "two_handed_knight": {
                "display_name": "Prefer Polearms",
-               "description": "This Knight currently prefers using a two-handed weapon. Click to change!"
+               "description": "This Knight currently prefers using a two-handed weapon. Click to change!<ul><li>Knight polearms are excellent for crowd control, inflicting fear upon multiple enemies</li><li>They can't use shields when using polearms, greatly reducing their tanking capabilities</li></ul>"
             },
             "bow_archer": {
                "display_name": "Prefer Bows",
-               "description": "This Archer currently prefers using a bow. Click to change!"
+               "description": "This Archer currently prefers using a bow. Click to change!<ul><li>Bows are fast and excellent against crowds</li></ul>"
             },
             "crossbow_archer": {
                "display_name": "Prefer Crossbows",
-               "description": "This Archer currently prefers using a crossbow. Click to change!"
+               "description": "This Archer currently prefers using a crossbow. Click to change!<ul><li>Crossbows have high damage and armor penetration but are much slower</li><li>They can't use the Double Shot ability when using crossbows</li></ul>"
+            },
+            "support_cleric": {
+               "display_name": "Prefer Scepter & Shield",
+               "description": "This Cleric currently prefers using a scepter and a shield. Click to change!<ul><li>They will engage enemies on melee combat</li><li>They will focus on support spells that weaken and hinder their foes</li><li>They can't use any direct healing spells, only their healing aura</li></ul>"
+            },
+            "healing_cleric": {
+               "display_name": "Prefer Healing Tome",
+               "description": "This Cleric currently prefers using a healing tome. Click to change!<ul><li>They will try to keep some distance and use weak ranged attacks</li><li>They will focus on powerful healing spells and strengthening their allies</li></ul>"
             }
          },
          "manage_parties": {
@@ -2115,15 +2294,15 @@
             },
             "animal_cold_debuff": {
                "display_name": "Cold Weather",
-               "description": "Baby, it's cold outside.<ul><li>This animal will take damage over time if unsheltered.</li><li>This animal will reproduce somewhat slower.</li><li>This animal won't produce as much.</li></ul>"
+               "description": "Baby, it's cold outside.<ul><li>This animal will take damage over time if unsheltered</li><li>This animal will reproduce somewhat slower.</li><li>This animal won't produce as much</li></ul>"
             },
             "freezing_debuff": {
                "display_name": "Freezing Weather",
-               "description": "I'm freezing out here! I need warmth and I need it fast!<ul><li>This hearthling will take damage over time down to 60% of their health if outside.</li></ul>"
+               "description": "I'm freezing out here! I need warmth and I need it fast!<ul><li>This hearthling will take damage over time down to 20% of their health if outside</li><li>This hearthling might be exposed to Frostbites if not wearing clothing that provides cold protection</li><li>Damage taken is both reduced and slowed down by clothing that provides chilly and cold protection</li></ul>"
             },
             "animal_freezing_debuff": {
                "display_name": "Freezing Weather",
-               "description": "That animal should definitely be sheltered...<ul><li>This animal will take damage over time if unsheltered.</li><li>This animal will reproduce a lot slower.</li><li>This animal won't produce as much.</li></ul>"
+               "description": "That animal should definitely be sheltered...<ul><li>This animal will take damage over time if unsheltered.</li><li>This animal will reproduce a lot slower</li><li>This animal won't produce as much</li></ul>"
             },
             "hot_debuff": {
                "display_name": "Hot Weather",
@@ -2131,15 +2310,15 @@
             },
             "animal_hot_debuff": {
                "display_name": "Hot Weather",
-               "description": "The heat is punishing, even for the animals!<ul><li>This animal will reproduce slower.</li><li>This animal won't produce as much.</li></ul>"
+               "description": "The heat is punishing, even for the animals!<ul><li>This animal will reproduce slower.</li><li>This animal won't produce as much</li></ul>"
             },
             "sweltering_debuff": {
                "display_name": "Extremely Hot Weather",
-               "description": "I'm sweltering... Should stay indoors or have something refreshing to drink...<ul><li>This hearthling has an increasing chance of getting a sunstroke the longer they stay exposed to the heat.</li><li>Wearing some sort of head protection like hats, helmets or hoods will prevent heatstrokes.</li></ul>"
+               "description": "I'm sweltering... Should stay indoors or have something refreshing to drink...<ul><li>This hearthling has an increasing chance of getting a sunstroke the longer they stay exposed to the heat.</li><li>Wearing some sort of head protection like hats, helmets or hoods will prevent heatstrokes</li></ul>"
             },
             "animal_sweltering_debuff": {
                "display_name": "Extremely Hot Weather",
-               "description": "This heat is unbearable for animals!<ul><li>This animal will reproduce much slower.</li><li>This animal won't produce as much.</li></ul>"
+               "description": "This heat is unbearable for animals!<ul><li>This animal will reproduce much slower.</li><li>This animal won't produce as much</li></ul>"
             },
             "soaked_debuff": {
                "display_name": "Soaked",
@@ -2151,11 +2330,11 @@
             },
             "sunstroke_debuff": {
                "display_name": "Sunstroke",
-               "description": "So warm... Getting dizzy... I Need refreshment... NOW!<ul><li>This hearthling will take damage over time until they are knocked unconscious.</li><li>Being sheltered will allow this effect to slowly fade away.</li><li>Entering the water or drinking something refreshing will remove this effect.</li></ul>"
+               "description": "So warm... Getting dizzy... I Need refreshment... NOW!<ul><li>This hearthling will take damage over time until they are knocked unconscious.</li><li>Being sheltered will allow this effect to slowly fade away</li><li>Entering the water or drinking something refreshing will remove this effect</li></ul>"
             },
             "freezing_water_debuff": {
                "display_name": "Freezing Water",
-               "description": "Oof! This water is so cold, I shouldn't be here!<ul><li>This hearthling will take damage over time down to 10% of their health while in the water.</li></ul>"
+               "description": "Oof! This water is so cold, I shouldn't be here!<ul><li>This hearthling will take damage over time down to 10% of their health while in the water</li></ul>"
             },
             "refreshing_water_buff": {
                "display_name": "Refreshing Water",
@@ -2163,15 +2342,15 @@
             },
             "chilly_resist_buff": {
                "display_name": "Lightly Bundled",
-               "description": "This hearthling is protected against chilly weather."
+               "description": "This hearthling is protected against chilly weather.<ul><li>Damage from Freezing weather is very slightly reduced</li></ul>"
             },
             "cold_resist_buff": {
                "display_name": "Bundled",
-               "description": "This hearthling is protected against cold weather."
+               "description": "This hearthling is protected against cold weather.<ul><li>Damage from Freezing weather is reduced, and they're immune to Frostbites</li></ul>"
             },
             "freezing_resist_buff": {
                "display_name": "Very Bundled",
-               "description": "This hearthling is protected against freezing weather."
+               "description": "This hearthling is protected against freezing weather.<ul><li>Provides immunity to Frostbites</li></ul>"
             },
             "hot_resist_buff": {
                "display_name": "Safe from the Sun",
@@ -2213,7 +2392,7 @@
          },
          "warm_belly": {
             "display_name": "Warm Belly",
-            "description": "All warm and fuzzy inside, it was delicious! Willpower is increased.<ul><li>This hearthling is protected from chilly and cold weather for some time</li></ul>"
+            "description": "All warm and fuzzy inside, it was delicious! Willpower is increased.<ul><li>This hearthling is protected from chilly and cold weather for some time</li><li>Damage from freezing weather is slightly reduced</li></ul>"
          },
          "refreshed_belly": {
             "display_name": "Cool Belly",
@@ -2406,7 +2585,7 @@
                "display_name": "Wound: Frostbite",
                "description": "Ew! Doesn't look good, I shouldn't stay out in the cold for too long...<ul><li>💬 Type & Severity: Cold (Medium)</li><li>💛🔻 Effective maximum health is slightly lowered</li><li>💊 This wound will be removed by treatment with any salve, Rough Salve or better</li><li>❌ This wound will never heal on its own</li><li>💫 Treating this wound has a small chance of permanently adding the condition Frostbitten</li></ul>"
             },
-				"light_burn": {
+            "light_burn": {
                "display_name": "Wound: Light Burn",
                "description": "That was way too hot!<ul><li>💬 Type & Severity: Fire (Low)</li><li>💚🔻 Effective maximum health is very slightly lowered</li><li>💊 This wound requires any bandage or ointment to be treated and will be completely removed</li><li>⏳ This wound will also heal on its own, but it will take some time</li></ul>"
             },
@@ -2546,6 +2725,42 @@
                "display_name": "Hydrophobic Tonic (After-effect)",
                "description": "Excessive impermeability has caused this hearthling to feel thirstier more quickly."
             }
+         },
+         "minor_flanked": {
+            "display_name": "Slightly Flanked",
+            "description": "Menace and healing received are somewhat lowered."
+         },
+         "major_flanked": {
+            "display_name": "Very Flanked",
+            "description": "Menace and healing received are greatly lowered."
+         },
+         "flanked": {
+            "display_name": "Flanked",
+            "description": "Menace and healing received are quite lowered."
+         },
+         "rebuked": {
+            "description": "Courage is slightly reduced, healing received is quite lowered.",
+            "display_name": "Rebuked"
+         },
+         "minor_rebuked": {
+            "display_name": "Slightly Rebuked",
+            "description": "Courage is insignificantly reduced, healing received is somewhat lowered."
+         },
+         "major_rebuked": {
+            "display_name": "Very Rebuked",
+            "description": "Courage is somewhat reduced, healing received is greatly lowered."
+         },
+         "undead_smite": {
+            "display_name": "Smite Undead",
+            "description": "A powerful charge of holy power upon an unholy foe, dealing catastrophic damage!<ul><li>Has a small, random chance of happening</li><li>Can only affect the Undead</li></ul>"
+         },
+         "undead_turn": {
+            "display_name": "Turn Undead",
+            "description": "A burst of sacred energy that will somewhat damage and also stun the enemy for a moment.<ul><li>Has a small, random chance of happening</li><li>Can only affect the Undead</li></ul>"
+         },
+         "using_scepter": {
+            "display_name": "Using Scepters",
+            "description": "Courage is greatly increased!"
          }
       },
       "loadouts": {
@@ -2770,9 +2985,45 @@
          "cleric_description": {
             "level_1_data": {
                "training_perk_name": "Healer Training",
-               "training_perk_description": "A cleric can use Sheep tamed by a Shepherd to practice their magical gestures and earn experience up to Job Level 3"
+               "training_perk_description": "A cleric can use Sheep tamed by a Shepherd to practice their magical gestures and earn experience up to Job Level 3",
+               "perk_001_name": "Minor Strength & Weakness",
+               "perk_001_description": "The cleric's presence improves the muscle of those around them when preferring a healing tome - but hinders and weakens enemies when using a scepter and shield."
             },
-            "description": "A combat healer that channels holy magic to not only mend wounds but also boost their allies through auras and effects."
+            "description": "A combat healer that channels holy magic to not only mend wounds but also boost their allies through auras and effects.",
+            "level_5_data": {
+               "perk_000_name": "Major Strength & Weakness",
+               "perk_000_description": "The cleric's presence greatly improves the muscle of those around them when preferring a healing tome - but hinders and weakens enemies even more when using a scepter and shield."
+            }
+         },
+         "cleric_buffs": {
+            "ornate_cleric_armor_buff": {
+               "display_name": "Blessed Regalia",
+               "description": "Increases Willpower by 5% and Healing Efficiency by 10%"
+            },
+            "healing_over_time_buff": {
+               "display_name": "Regenerating",
+               "description": "A Cleric's spell is healing me over time!<ul><li>Recovers 6% of their health every 10 minutes.</li></ul>"
+            },
+            "divine_intervention_buff": {
+               "display_name": "Divine Intervention",
+               "description": "Armor is incomprehensibly increased for a short time, protecting this hearthling from harm."
+            },
+            "minor_debuff_aura_buff": {
+               "display_name": "Minor Weakening Aura",
+               "description": "Slightly reduces the attack strength and the speed of enemies around the Cleric"
+            },
+            "minor_debuff_aura_effect_buff": {
+               "display_name": "Minor Weakening",
+               "description": "Attack strength and speed reduced slightly from the presence of a cleric"
+            },
+            "major_debuff_aura_buff": {
+               "display_name": "Major Weakening Aura",
+               "description": "Reduces the attack strength and speed of enemies around the Cleric"
+            },
+            "major_debuff_aura_effect_buff": {
+               "display_name": "Major Weakening",
+               "description": "Attack strength and speed reduced from the presence of a cleric"
+            }
          }
       },
       "knight": {
@@ -2814,6 +3065,16 @@
                "description": "Required to promote a hearthling into a Brewer.",
                "flavor": "You can survive out of food, but only out of drinks you can live -'On the Art of Brewing' by Franz Baden"
             },
+            "cleric_tome_2_recipe": {
+               "recipe_name": "Fine Tome of Healing",
+               "description": "Improves the healing done by a Cleric.",
+               "flavor": "This tome also unlocks a quick-to-cast spell that slowly heals the target over time"
+            },
+            "cleric_tome_3_recipe": {
+               "recipe_name": "Ornate Tome of Healing",
+               "description": "Greatly improves the healing done by a Cleric.",
+               "flavor": "This tome unlocks the same powers as the 'Fine Tome of Healing' but also a slow-to-cast, very intense healing spell"
+            },
             "herbalist_bee_skep_recipe": {
                "recipe_name": "Empty Bee Skep",
                "description": "Supplies your town with beekeeping products but won't produce during the winter.",
@@ -2844,15 +3105,15 @@
                "description": "The Herbalist can use this large pot to cultivate tree saplings.",
                "flavor": "Saplings are cultivated from the seeds of the tree"
             },
-            "herbalist_beekeeping_hat_recipe": {
-               "recipe_name": "Herbalist's Beekeeping Hat",
+            "professional_beekeeping_hat_recipe": {
+               "recipe_name": "Professional Beekeeping Hat",
                "description": "Provides protection when working with bees.",
-               "flavor": ""
+               "flavor": "Can be used by any crafter"
             },
-            "worker_beekeeping_hat_recipe": {
-               "recipe_name": "Worker's Beekeeping Hat",
+            "simple_beekeeping_hat_recipe": {
+               "recipe_name": "Simple Beekeeping Hat",
                "description": "Provides protection when hauling and passing by bee skeps or nests.",
-               "flavor": "A simpler and lighter variant for all the workers out there!"
+               "flavor": "A simpler and lighter variant for all the field workers out there!"
             },
             "almond_transmute_recipe": {
                "recipe_name": "Almond Tree Seeds (x2)",
@@ -3398,7 +3659,7 @@
                "description": "Smooth and fragrant, this salve can be applied on any pierce. Efficiently treats wounds up to extreme severity.",
                "flavor": "Salves can also be used for cold wounds"
             },
-				"coarse_bandage_recipe": {
+            "coarse_bandage_recipe": {
                "description": "Some cloth and healing herbs for cleaning any cut. Efficiently treats wounds up to medium severity.",
                "flavor": "Bandages can also be used for fire wounds"
             },
@@ -3487,10 +3748,6 @@
             "display_name": "Herbalist's Pewter Pestle",
             "description": "For nicer mashing."
          },
-         "herbalist_beekeeping_hat": {
-            "display_name": "Herbalist's Beekeeping Hat",
-            "description": "Very useful for being safe while harvesting from bee nests and skeps."
-         },
          "herbalist_bee_skep": {
             "display_name": "Bee Skep",
             "description": "A neat house for bees, handled by the herbalist. Won't produce during the winter.",
@@ -3531,8 +3788,8 @@
                "description": "Not fast but a strong, powerful mechanical weapon that can pierce through armor."
             },
             "legendary_chainmail_recipe": {
-               "recipe_name": "Silver Chainmail Links",
-               "description": "Pieces of silver chainmail linked together for the Vanguard's Chainmail.",
+               "recipe_name": "Silver Chain Mail Links",
+               "description": "Pieces of silver chain mail linked together for the Vanguard's Chain Mail.",
                "flavor": "May contain traces of gold"
             },
             "legendary_mace_recipe": {
@@ -3981,7 +4238,7 @@
             "legendary_tome_recipe": {
                "recipe_name": "Cleric Tome, 'The Walk of Cid'",
                "description": "A legendary tome for the followers of the Church of Plenty.",
-               "flavor": "Through the ways of Cid, healing shall be done"
+               "flavor": "Through the ways of Cid, healing shall be done. This tome unlocks a protective shield spell."
             },
             "wooden_sign_geomancer_recipe": {
                "recipe_name": "Geomancer's Wall-Mounted Sign",
@@ -4597,7 +4854,7 @@
             },
             "steel_chainmail_recipe": {
                "recipe_name": "Steel Mail",
-               "description": "A very fancy and strong chainmail suit of armor for a Footman."
+               "description": "A very fancy and strong chain mail suit of armor for a Footman."
             },
             "light_iron_shield_recipe": {
                "recipe_name": "Light Iron Shield",
@@ -4620,6 +4877,28 @@
             "bronze_sword_recipe": {
                "recipe_name": "Bronze Sword",
                "description": "Basic, but better than a sharpened stick. Can hamstring opponents."
+            },
+            "bronze_short_spear_recipe": {
+               "recipe_name": "Bronze Short Spear",
+               "description": "A reliable weapon for keeping others at bay. Can flank opponents.",
+               "flavor": ""
+            },
+            "iron_short_spear_recipe": {
+               "recipe_name": "Iron Bill",
+               "description": "A common but efficient weapon. Can flank opponents.",
+               "flavor": "The hook is great for pulling troublemakers!"
+            },
+            "steel_short_spear_recipe": {
+               "recipe_name": "Steel Short Poleaxe",
+               "description": "A favorite among watchmen and guards. Can flank opponents.",
+               "flavor": ""
+            },
+            "iron_archer_mail_recipe": {
+               "recipe_name": "Iron Ring Mail",
+               "description": "A leather armor with large metal rings sewn to it. Includes a small buckler and provides some protection to archers.",
+               "rc_description": "Lightweight and comfortable chain mail gear. Includes a small buckler and provides some protection to archers.",
+               "na_description": "A simple chain mail shirt with a cloth coif and a kettle helm. Includes a small buckler and provides some protection to archers.",
+               "flavor": "For when the situation gets really dire..."
             },
             "iron_battle_axe_recipe": {
                "recipe_name": "Iron Battle Axe",
@@ -4685,6 +4964,21 @@
                "description": "Blunt. Strong. Unstoppable. Can break armor.",
                "flavor": "Lightbringer"
             },
+            "bronze_scepter_recipe": {
+               "recipe_name": "Bronze Scepter",
+               "description": "A good weapon for the Cleric that goes into the breach.",
+               "flavor": "Can be used alongside a light shield"
+            },
+            "silver_scepter_recipe": {
+               "recipe_name": "Silver Scepter",
+               "description": "A reliable and blessed weapon for a Cleric, if they decide to go up close and personal.",
+               "flavor": ""
+            },
+            "gold_scepter_recipe": {
+               "recipe_name": "Gold Scepter",
+               "description": "A very powerful and sacred Cleric's weapon, the Undead shall tremble upon seeing it!",
+               "flavor": "It's time to SMITE!"
+            },
             "silver_mail_recipe": {
                "recipe_name": "Silver Platemail",
                "description": "Become the real Knight in shiny armor."
@@ -4695,7 +4989,7 @@
                "flavor": "Can also be used for an extremely expensive belt"
             },
             "legendary_mail_recipe": {
-               "recipe_name": "Vanguard's Chainmail",
+               "recipe_name": "Vanguard's Chain Mail",
                "description": "Chain armor akin to the ones from the Empire's royal vanguard.",
                "flavor": "It is said the cape was their demise"
             },
@@ -4799,10 +5093,6 @@
          "rc_winter_worker_outfit": {
             "display_name": "Winter Worker Garb",
             "description": "A reinforced wool outfit. Protects from chilly weather and improves speed!"
-         },
-         "worker_beekeeping_hat": {
-            "display_name": "Worker's Beekeeping Hat",
-            "description": "Very useful for being safe while hauling and moving around bee skeps."
          },
          "holiday_worker_outfit": {
             "display_name": "Worker Holiday Cheer Coat",
@@ -5588,7 +5878,7 @@
             },
             "legendary_cape_recipe": {
                "recipe_name": "Imperial Cape",
-               "description": "A majestic cape tailored for the Vanguard's Chainmail.",
+               "description": "A majestic cape tailored for the Vanguard's Chain Mail.",
                "flavor": "Capes like these were proudly worn by the Vanguard"
             },
             "porcelain_curtains_recipe": {
@@ -5615,6 +5905,11 @@
                "recipe_name": "Chitin Shield",
                "description": "A somewhat sturdy shield made of bug chitin.",
                "flavor": "Maybe a bit too creepy?"
+            },
+            "ornate_cleric_armor_recipe": {
+               "recipe_name": "Ornate Cleric's Robes",
+               "description": "Craft a sacred and more protective outfit for the Cleric. It also provides some bonuses.",
+               "flavor": "Your faith is your shield... but some leather will probably help"
             },
             "clothing_armor_name": "Clothing & Accessories",
             "weapons_name": "Combat Equipment"
@@ -6050,6 +6345,14 @@
             "display_name": "Fermentation Vat",
             "description": "The vinegar is ready! It can now be racked into a jug!"
          }
+      },
+      "professional_beekeeping_hat": {
+         "description": "Very useful for being safe while harvesting from bee nests and skeps.",
+         "display_name": "Professional Beekeeping Hat"
+      },
+      "simple_beekeeping_hat": {
+         "display_name": "Simple Beekeeping Hat",
+         "description": "Very useful for being safe while hauling and moving around bee skeps."
       }
    },
    "entities": {
@@ -6275,13 +6578,13 @@
             "display_name": "Rough Salve",
             "description": "Used by the Herbalist for treating pierce wounds up to medium severity."
          },
-			"coarse_bandage": {
+         "coarse_bandage": {
             "description": "Used by the Herbalist for treating cutting wounds up to medium severity."
          },
-			"light_bandage": {
+         "light_bandage": {
             "description": "Used by the Herbalist for treating cutting wounds up to high severity."
          },
-			"heavy_bandage": {
+         "heavy_bandage": {
             "description": "Used by the Herbalist for treating cutting wounds up to extreme severity."
          },
          "strong_antidote": {
@@ -7202,11 +7505,11 @@
          },
          "legendary_cape": {
             "display_name": "Imperial Cape",
-            "description": "A majestic cape tailored for the Vanguard's Chainmail."
+            "description": "A majestic cape tailored for the Vanguard's Chain Mail."
          },
          "legendary_chainmail": {
-            "display_name": "Silver Chainmail Links",
-            "description": "Pieces of silver chainmail linked together for the Vanguard's Chainmail."
+            "display_name": "Silver Chain Mail Links",
+            "description": "Pieces of silver chain mail linked together for the Vanguard's Chain Mail."
          },
          "legendary_handle": {
             "display_name": "Sturdy Handle",
@@ -10421,7 +10724,7 @@
          },
          "steel_chainmail": {
             "display_name": "Steel Mail",
-            "description": "A very fancy and strong chainmail suit of armor."
+            "description": "A very fancy and strong chain mail suit of armor."
          },
          "steel_helm": {
             "display_name": "Steel Helm",
@@ -10448,7 +10751,7 @@
             "description": "A beautiful hood worthy of the finest archer."
          },
          "legendary_mail": {
-            "display_name": "Vanguard's Chainmail",
+            "display_name": "Vanguard's Chain Mail",
             "description": "Chain armor akin to the ones from the Empire's royal vanguard."
          },
          "rc_bronze_breastplate": {
@@ -10635,6 +10938,32 @@
          "simple_quiver_bolts": {
             "display_name": "Spiky Bolt Quiver",
             "description": "A light quiver of slowing crossbow bolts"
+         },
+         "iron_archer_mail": {
+            "display_name": "Iron Ring Mail",
+            "description": "An enhanced leather armor with sewn larger metal rings to keep it lighter."
+         },
+         "iron_archer_mail_buckler": {
+            "display_name": "Small Buckler",
+            "description": "Gotta protect that arm!"
+         },
+         "na_iron_archer_mail": {
+            "display_name": "Iron Watchman Armor",
+            "description": "A simple chain mail shirt with a cloth coif and a kettle helm."
+         },
+         "rc_iron_archer_mail": {
+            "display_name": "Iron Light Chain Mail",
+            "description": "Lightweight and comfortable chain mail gear for protection."
+         },
+         "ornate_cleric_armor": {
+            "display_name": "Ornate Cleric's Robes",
+            "description": "A sacred and more protective outfit for the Cleric."
+         },
+         "na_ornate_cleric_armor": {
+            "display_name": "Ornate Cleric's Garments"
+         },
+         "rc_ornate_cleric_armor": {
+            "display_name": "Ornate Cleric's Vest"
          }
       },
       "weapons": {
@@ -10962,6 +11291,56 @@
             "maul_lantern_iconic": {
                "description": "Wield the Holy Light of Hestia in defense of your town."
             }
+         },
+         "bronze_short_spear": {
+            "description": "A reliable weapon for keeping enemies at bay.",
+            "display_name": "Bronze Short Spear"
+         },
+         "iron_short_spear": {
+            "display_name": "Iron Bill",
+            "description": "A common but efficient weapon to fend off invaders."
+         },
+         "steel_short_spear": {
+            "display_name": "Steel Short Poleaxe",
+            "description": "A favorite among watchmen and guards, great for flanking!"
+         },
+         "na_iron_short_spear": {
+            "display_name": "Iron Hafted Axe"
+         },
+         "na_bronze_short_spear": {
+            "display_name": "Bronze Northern Short Spear"
+         },
+         "na_steel_short_spear": {
+            "display_name": "Steel Short Kesja"
+         },
+         "rc_bronze_short_spear": {
+            "display_name": "Bronze Short Bardiche"
+         },
+         "rc_iron_short_spear": {
+            "display_name": "Iron Short War Fork"
+         },
+         "rc_steel_short_spear": {
+            "display_name": "Steel Desert Short Poleaxe"
+         },
+         "cleric_tome_2": {
+            "display_name": "Fine Tome of Healing",
+            "description": "Improves the healing done by a Cleric and unlocks a new healing spell."
+         },
+         "cleric_tome_3": {
+            "display_name": "Ornate Tome of Healing",
+            "description": "Magnifies the healing done by a Cleric and unlocks two new healing spells."
+         },
+         "bronze_scepter": {
+            "description": "A Cleric that goes into the breach will need a sturdy companion.",
+            "display_name": "Bronze Scepter"
+         },
+         "gold_scepter": {
+            "display_name": "Gold Scepter",
+            "description": "A very powerful and sacred Cleric's weapon. Can smite the undead."
+         },
+         "silver_scepter": {
+            "display_name": "Silver Scepter",
+            "description": "A reliable and blessed weapon for a Cleric. Can smite the undead."
          }
       },
       "gizmos": {
@@ -12009,6 +12388,18 @@
                   "description": "Goblin girl that loves bonecarving"
                }
             }
+         },
+         "friendly_strangers": {
+            "male": {
+               "fisher": {
+                  "display_name": "Bruno the Fisher",
+                  "description": "Grandmaster Angler"
+               },
+               "smith": {
+                  "display_name": "Fernand the Great",
+                  "description": "Prestigious blacksmith from the southern lands"
+               }
+            }
          }
       },
       "loot": {
@@ -12058,7 +12449,10 @@
             "species": "Rabbit Biped"
          },
          "mummy": {
-            "species": "mummy"
+            "species": "Mummy"
+         },
+         "undead": {
+            "species": "Undead"
          }
       }
    },
@@ -12968,7 +13362,7 @@
                "backpack": "Backpack",
                "quiver_arrows": "Arrow Quiver",
                "quiver_bolts": "Bolt Quiver",
-               "cleric_tome": "Sacred Tome"
+               "cleric_tome": "Healing Tome"
             },
             "job_roles": {
                "crafter": {

@@ -1,0 +1,37 @@
+{
+   "mixins": "stonehearth_ace:weapons:bronze_short_spear",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "mixintypes": {
+            "default": "override"
+         },
+         "default": {
+            "models": [
+               "file(na_bronze_short_spear_equipped.qb)"
+            ]
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(na_bronze_short_spear_iconic.json)"
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.weapons.na_bronze_short_spear.display_name)",
+         "icon": "file(na_bronze_short_spear.png)",
+         "mixintypes": {
+            "material_tags": "override"
+         },
+         "material_tags": [
+            "bronze",
+            "mainhand",
+            "melee_weapon",
+            "na_made",
+            "crafted",
+            "short_spear",
+            "stockpile_weapon"
+         ]
+      }
+   }
+}

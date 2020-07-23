@@ -1,0 +1,25 @@
+{
+   "display_name": "i18n(stonehearth_ace:data.weather.snow.snow_drifts.display_name)",
+   "description": "i18n(stonehearth_ace:data.weather.snow.snow_drifts.description)",
+   "icon": "file(snow_drifts.png)",
+   "sky_settings": "stonehearth:sky_settings:snow",
+   "unsheltered_debuff": [
+      "stonehearth_ace:buffs:weather:drifts",
+      "stonehearth_ace:buffs:weather:cold_breath"
+   ],
+   "unsheltered_animal_debuff": [
+      "stonehearth_ace:buffs:weather:cold_breath"
+   ],
+   "unsheltered_npc_debuff": [
+      "stonehearth_ace:buffs:weather:drifts:npc",
+      "stonehearth_ace:buffs:weather:cold_breath"
+   ],
+   "renderer": "stonehearth_ace:weather_renderers:snow_drifts",
+   "ambient_sound_key": "snow",
+   "is_dark_during_daytime": true,
+   "thoughts": [
+      "stonehearth:thoughts:weather:snow_drifts_negative",
+      "stonehearth:thoughts:weather:snow_drifts_positive"
+   ],
+   "cold_weather": true
+}

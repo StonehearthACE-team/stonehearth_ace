@@ -1,0 +1,51 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:item_properties",
+   "components": {
+      "render_info": {},
+      "model_variants": {
+         "default": {
+            "layer": "hat",
+            "transparent": "false",
+            "models": [
+               "file(iron_archer_mail_hat.qb)"
+            ]
+         },
+         "female": {
+            "layer": "hat",
+            "transparent": "false",
+            "models": [
+               "file(iron_archer_mail_hat_female.qb)"
+            ]
+         },
+         "rabbit_male": {
+            "layer": "hat",
+            "transparent": "false",
+            "models": [
+               "file(iron_archer_mail_hat_rabbit.qb)"
+            ]
+         },
+         "rabbit_female": {
+            "layer": "hat",
+            "transparent": "false",
+            "models": [
+               "file(iron_archer_mail_hat_rabbit.qb)"
+            ]
+         }
+      },
+      "stonehearth:equipment_piece": {
+         "render_type": "merge_with_model",
+         "slot": "helmet",
+         "injected_buffs": [
+            "stonehearth_ace:buffs:weather:sunstroke_resist"
+         ],
+         "ilevel": 2,
+         "no_drop": true
+      }
+   },
+   "entity_data": {
+      "stonehearth:combat:armor_data": {
+         "base_damage_reduction": 2
+      }
+   }
+}

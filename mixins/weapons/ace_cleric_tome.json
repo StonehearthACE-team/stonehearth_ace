@@ -4,15 +4,51 @@
       "stonehearth:equipment_piece": {
          "slot": "mainhand",
          "render_type": "attach_to_bone",
+         "additional_equipment": {
+            "stonehearth:armor:offhand_placeholder": true
+         },
          "equipment_types": [
             "cleric_tome"
-         ]
+         ],
+         "injected_ai": {
+            "ai_packs": [
+               "stonehearth:ai_pack:ranged_combat",
+               "stonehearth:ai_pack:healing_combat"
+            ]
+         }
       }
    },
    "entity_data": {
+      "stonehearth:combat:weapon_data": {
+         "base_ranged_damage": 2,
+         "reach": 1.5,
+         "range": 14,
+         "projectile_speed": 18,
+         "projectile_uri": "stonehearth_ace:weapons:light_orb",
+         "projectile_start_offset": { "x": -0.2, "y": 1.5, "z": -1 },
+         "projectile_end_offset": { "x": 0, "y": 1.5, "z": 0 }
+      },
+      "stonehearth:combat:ranged_attacks": [
+         {
+            "name": "cleric_tome_attack",
+            "effect": "combat_1h_backhand",
+            "active_frame": 12,
+            "cooldown": 0,
+            "priority": 0
+         }
+      ],
+      "stonehearth:combat:healing_spells": [
+         {
+            "name": "combat_heal",
+            "effect": "combat_1h_heal",
+            "active_frame": 67,
+            "cooldown": 6000,
+            "priority": 0
+         }
+      ],
       "stonehearth:catalog": {
          "material_tags": [
-            "tome",
+            "cleric_tome",
             "stockpile_exotic_equipment"
          ]
       }

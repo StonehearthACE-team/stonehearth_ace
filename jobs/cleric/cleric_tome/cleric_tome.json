@@ -1,0 +1,27 @@
+{
+   "type": "entity",
+   "components": {
+		"mixintypes": {
+			"model_variants": "override"
+		},
+		"model_variants": {
+         "default": {
+            "models": [
+               "file(cleric_tome_equipped.qb)"
+            ]
+         }
+      },
+		"stonehearth:equipment_piece": {
+         "ilevel": 5,
+         "no_drop": true
+      }
+	},
+   "entity_data": {
+		"mixintypes": {
+			"stonehearth:combat:melee_attacks": "remove"
+		},
+      "stonehearth:catalog": {
+			"icon": "file(cleric_tome.png)"
+      }
+	}
+}

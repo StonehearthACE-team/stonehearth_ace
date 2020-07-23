@@ -1,7 +1,7 @@
 {
    "mixins": [
-   "stonehearth:mixins:item_properties",
-   "stonehearth_ace:mixins:weapons:crossbow"
+      "stonehearth:mixins:item_properties",
+      "stonehearth_ace:mixins:weapons:crossbow"
    ],
    "type": "entity",
    "components": {
@@ -33,8 +33,8 @@
    },
    "entity_data": {
       "stonehearth:combat:weapon_data": {
-         "base_damage": 34,
-         "base_ranged_damage": 34,
+         "base_damage": 35,
+         "base_ranged_damage": 35,
          "range": 40,
          "projectile_speed": 82
       },
@@ -59,7 +59,7 @@
          "material_tags": [
             "bronze",
             "ascendancy_made",
-            "bronze_crossbow"
+            "crafted"
          ]
       }
    }

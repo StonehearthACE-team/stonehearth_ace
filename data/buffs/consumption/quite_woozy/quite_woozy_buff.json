@@ -1,6 +1,9 @@
 {
    "type": "buff",
    "axis": "debuff",
+   "category": "consumption_alcohol",
+   "unique_in_category": true,
+   "rank": 3,
    "display_name": "i18n(stonehearth_ace:data.buffs.quite_woozy.display_name)",
    "description": "i18n(stonehearth_ace:data.buffs.quite_woozy.description)",
    "icon": "file(quite_woozy_buff.png)",
@@ -38,12 +41,8 @@
          "multiply": 0.6
       }
    },
-   "disallowed_buffs": [
-      "stonehearth_ace:buffs:consumption:mellow",
-      "stonehearth_ace:buffs:consumption:light_headed",
-      "stonehearth_ace:buffs:consumption:harmony_minor",
-      "stonehearth_ace:buffs:consumption:harmony",
-      "stonehearth_ace:buffs:consumption:harmony_major"
+   "disallowed_categories": [
+      "consumption_harmony"
    ],
    "duration_statistics_key": "drunk"
 }

@@ -1,0 +1,66 @@
+{
+   "mixins": [
+      "stonehearth:mixins:item_properties",
+      "stonehearth_ace:mixins:armor:light_armor_torso"
+   ],
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "layer": "armor",
+            "transparent": "false",
+            "models": [
+               "file(ornate_cleric_armor.qb)"
+            ]
+         },
+         "female": {
+            "layer": "armor",
+            "transparent": "false",
+            "models": [
+               "file(ornate_cleric_armor_female.qb)"
+            ]
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(ornate_cleric_armor_iconic.json)"
+      },
+      "stonehearth:equipment_piece": {
+         "ilevel": 2,
+         "roles": [
+            "cleric_job"
+         ],
+         "required_job_level": 4,
+         "injected_buffs": [
+            "stonehearth_ace:buffs:cleric:ornate_cleric_armor"
+         ],
+         "equip_effect": "stonehearth:effects:weapon_level_up"
+      }
+   },
+   "entity_data": {
+      "stonehearth:combat:armor_data": {
+         "base_damage_reduction": 3
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 65,
+         "rarity": "uncommon",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 3,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.armor.ornate_cleric_armor.display_name)",
+         "description": "i18n(stonehearth_ace:entities.armor.ornate_cleric_armor.description)",
+         "icon": "file(ornate_cleric_armor.png)",
+         "category": "armor",
+         "material_tags": [
+            "ornate",
+            "crafted",
+            "cleric_armor",
+            "ascendancy_made"
+         ]
+      }
+   }
+}

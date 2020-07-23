@@ -1,0 +1,30 @@
+{
+   "type": "recipe",
+   "effort": 35,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.blacksmith.recipes.iron_archer_mail_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.blacksmith.recipes.iron_archer_mail_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.blacksmith.recipes.iron_archer_mail_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/armor/iron_archer_mail/iron_archer_mail.png",
+   "workshop": "stonehearth:blacksmith:workbench",
+   "level_requirement": 3,
+   "ingredients": [    
+	   {
+         "material": "leather resource",
+         "count": 2
+      },
+      {
+         "material": "thread resource",
+         "count": 1
+      },
+		{
+         "uri": "stonehearth:refined:iron_ingot",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:armor:iron_archer_mail"
+      }
+   ]
+}

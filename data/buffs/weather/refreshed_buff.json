@@ -6,12 +6,10 @@
    "icon": "file(cold_buff.png)",
    "duration": "1h",
    "repeat_add_action": "renew_duration",
+   "disallowed_categories": [
+      "weather_hot"
+   ],
    "disallowed_buffs": [
-      "stonehearth_ace:buffs:weather:hot",
-      "stonehearth_ace:buffs:weather:hot:npc",
-      "stonehearth_ace:buffs:weather:hot:animal",
-      "stonehearth_ace:buffs:weather:sweltering",
-      "stonehearth_ace:buffs:weather:sweltering:animal",
       "stonehearth_ace:buffs:weather:sunstroke"
    ]
 }

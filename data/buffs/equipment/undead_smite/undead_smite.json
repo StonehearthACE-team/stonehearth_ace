@@ -1,0 +1,28 @@
+{
+   "type": "buff",
+   "axis": "debuff",
+   "category": "debuff_undead",
+   "unique_in_category": true,
+   "rank": 2,
+   "display_name": "i18n(stonehearth_ace:data.buffs.undead_smite.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.undead_smite.description)",
+   "icon": "file(undead_smite.png)",
+   "effect": "stonehearth_ace:effects:lightning_effect:holy",
+   "duration": "16m",
+   "cant_affect_siege": true,
+   "can_only_affect": [
+      "undead",
+      "skeleton",
+      "zombie",
+      "mummy"
+   ],
+   "repeat_add_action": "renew_duration",
+   "script": "stonehearth:buff_scripts:periodic_health_modification",
+   "script_info": {
+      "health_change": -0.3,
+      "pulse": "5m",
+      "pulse_immediately": false,
+      "pulse_on_destroy": false,
+      "is_percentage": true
+   }
+}

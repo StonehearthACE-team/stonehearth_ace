@@ -1,0 +1,90 @@
+{
+   "name": "fire",
+   "duration": 2222,
+   "material": "materials/cubemitter_add_bloom.material.json",
+   "loops": false,
+   "mesh": {
+      "file": "stonehearth/data/models/vfx/lightning/lightningb.qb",
+      "matrix": "",
+      "offset": {
+         "x": 0,
+         "y": 0,
+         "z": 15
+      }
+   },
+   "emission": {
+      "rate": {
+         "kind": "BURST",
+         "values": [
+            [16, 1, 1],
+            [24, 1, 1]
+         ]
+      },
+      "angle": {
+         "kind": "RANDOM_BETWEEN",
+         "values": [0, 90]
+      },
+      "origin": {
+         "surface": "POINT"
+      }
+   },
+   "particle": {
+      "lifetime": {
+         "start": {
+            "kind": "RANDOM_BETWEEN",
+            "values": [50, 60]
+         }
+      },
+      "speed": {
+         "start": {
+            "kind": "CONSTANT",
+            "values": [0]
+         }
+      },
+      "rotation": {
+         "over_lifetime_x": {
+            "kind": "CONSTANT",
+            "values": [90]
+         },
+         "over_lifetime_y": {
+            "kind": "RANDOM_BETWEEN",
+            "values": [0, 30]
+         }
+      },
+      "scale": {
+         "start": {
+            "kind": "CONSTANT",
+            "values": [0.6]
+         },
+         "start_x": {
+            "kind": "CONSTANT",
+            "values": [1]
+         },
+         "start_y": {
+            "kind": "CONSTANT",
+            "values": [1]
+         },
+         "start_z": {
+            "kind": "CONSTANT",
+            "values": [6]
+         }
+      },
+      "color": {
+         "start": {
+            "kind": "RANDOM_BETWEEN",
+            "values": [
+               [0.564, 0.519, 0.281, 1],
+               [0.578, 0.546, 0.296, 1]
+            ]
+         },
+         "over_lifetime_a": {
+            "kind": "CURVE",
+            "values": [
+               [0, 1],
+               [0.5, 1],
+               [1, 0]
+            ]
+         }
+      }
+   }
+}

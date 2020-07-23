@@ -1,18 +1,22 @@
 {
    "type": "buff",
    "axis": "debuff",
+   "category": "debuff_out_of_balance",
+   "unique_in_category": true,
+   "rank": 2,
    "display_name": "i18n(stonehearth_ace:data.buffs.out_of_balance.display_name)",
    "description": "i18n(stonehearth_ace:data.buffs.out_of_balance.description)",
    "icon": "file(out_of_balance_normal.png)",
    "duration": "15m",
    "cant_affect_siege": true,
+   "cant_affect": [
+      "hearthling",
+      "dwarf"
+   ],
    "repeat_add_action": "renew_duration",
    "modifiers": {
       "multiplicative_dmg_modifier": {
          "add": -0.2
       }
-   },
-   "disallowed_buffs": [
-      "stonehearth_ace:buffs:minor_out_of_balance"
-   ]
+   }
 }

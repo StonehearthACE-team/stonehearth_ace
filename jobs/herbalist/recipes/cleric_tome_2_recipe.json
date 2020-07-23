@@ -1,0 +1,35 @@
+{
+   "type": "recipe",
+   "effort": 48,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.herbalist.recipes.cleric_tome_2_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.cleric_tome_2_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.cleric_tome_2_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/weapons/cleric_tome_2/cleric_tome_2.png",
+   "workshop": "stonehearth:herbalist:workbench",
+	"work_effect": "fiddle",
+   "level_requirement": 3,
+   "ingredients": [
+      {
+         "material": "leather resource",
+         "count": 1
+      },
+		{
+         "material": "thread resource",
+         "count": 1
+      },
+		{
+         "material": "herb red aromatic resource",
+         "count": 1
+      },
+		{
+         "material": "herb blue resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:weapons:cleric_tome_2"
+      }
+   ]
+}

@@ -1,6 +1,9 @@
 {
    "type": "buff",
    "axis": "debuff",
+   "category": "weather_cold",
+   "unique_in_category": true,
+   "rank": 4,
    "display_name": "i18n(stonehearth_ace:data.buffs.weather.freezing_water_debuff.display_name)",
    "description": "i18n(stonehearth_ace:data.buffs.weather.freezing_water_debuff.description)",
    "icon": "file(water_debuff.png)",
@@ -24,12 +27,35 @@
       "pulse": "15m",
       "pulse_immediately": true,
       "pulse_on_destroy": false,
-      "is_percentage": true
+      "is_percentage": true,
+      "buff_modifiers": {
+         "stonehearth_ace:buffs:weather:cold_resist": {
+            "min_health": {
+               "multiply": 5
+            },
+            "health_change": {
+               "multiply": 0.8
+            }
+         },
+         "stonehearth_ace:buffs:weather:chilly_resist": {
+            "min_health": {
+               "multiply": 2.5
+            },
+            "health_change": {
+               "multiply": 0.9
+            }
+         },
+         "stonehearth_ace:buffs:consumption:warm_belly": {
+            "min_health": {
+               "multiply": 1.5
+            },
+            "health_change": {
+               "multiply": 0.95
+            }
+         }
+      }
    },
    "disallowed_buffs": [
-      "stonehearth_ace:buffs:weather:chilly",
-      "stonehearth_ace:buffs:weather:cold",
-      "stonehearth_ace:buffs:weather:freezing",
       "stonehearth_ace:buffs:weather:warmed",
       "stonehearth_ace:buffs:weather:cold_breath"
    ]

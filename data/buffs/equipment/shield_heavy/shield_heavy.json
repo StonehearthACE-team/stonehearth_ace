@@ -1,6 +1,9 @@
 {
    "type": "buff",
    "axis": "buff",
+   "category": "shield_weight",
+   "unique_in_category": true,
+   "rank": 2,
    "display_name": "i18n(stonehearth_ace:data.buffs.shield_heavy.display_name)",
    "description": "i18n(stonehearth_ace:data.buffs.shield_heavy.description)",
    "icon": "file(shield_heavy.png)",
@@ -15,8 +18,5 @@
       "multiplicative_armor_modifier": {
          "add": 0.1
       }
-   },
-   "disallowed_buffs": [
-      "stonehearth_ace:buffs:shield_light"
-   ]
+   }
 }

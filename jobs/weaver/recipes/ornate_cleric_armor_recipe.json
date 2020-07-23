@@ -1,0 +1,34 @@
+{
+   "type": "recipe",
+   "effort": 55,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.weaver.recipes.ornate_cleric_armor_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.weaver.recipes.ornate_cleric_armor_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.weaver.recipes.ornate_cleric_armor_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/armor/ornate_cleric_armor/ornate_cleric_armor.png",
+   "workshop": "stonehearth:weaver:workbench",
+   "level_requirement": 5,
+   "ingredients": [
+      {
+         "material": "leather resource",
+         "count": 2
+      },
+		{
+         "material": "cloth resource",
+         "count": 2
+      },
+      {
+         "material": "thread resource",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth:refined:gold_flakes",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:armor:ornate_cleric_armor"
+      }
+   ]
+}

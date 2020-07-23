@@ -3,7 +3,12 @@
 		"stonehearth_ace:mixins:weapons:mainhand"
 	],
 	"type": "entity",
-   "components": {},
+   "components": {
+		"stonehearth:equipment_piece": {
+         "ilevel": 10,
+         "no_drop": true
+      }
+	},
    "entity_data": {
 	  "stonehearth:combat:melee_attacks": [
 			{

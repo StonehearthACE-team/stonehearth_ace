@@ -9,6 +9,10 @@
    "icon": "file(prick.png)",
    "queue_crafting_order": "stonehearth_ace:consumables:rough_salve",
    "cant_affect_siege": true,
+   "can_only_affect": [
+      "hearthling",
+      "dwarf"
+   ],
    "repeat_add_action": "stack_and_refresh",
    "duration": "7d",
    "remove_stacks_on_expire": 1,

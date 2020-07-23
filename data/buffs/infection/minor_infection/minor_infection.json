@@ -11,6 +11,10 @@
    "thought_remove_on_destroy": true,
    "duration": "12h+8h",
    "cant_affect_siege": true,
+   "can_only_affect": [
+      "hearthling",
+      "dwarf"
+   ],
    "repeat_add_action": "stack_and_refresh",
    "remove_stacks_on_expire": 2,
    "evolve_chance": 1,

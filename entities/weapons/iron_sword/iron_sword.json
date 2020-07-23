@@ -1,7 +1,7 @@
 {
    "mixins": [
-   "stonehearth:mixins:item_properties",
-   "stonehearth_ace:mixins:weapons:mainhand_hamstrung"
+      "stonehearth:mixins:item_properties",
+      "stonehearth_ace:mixins:weapons:mainhand_hamstrung"
    ],
    "type": "entity",
    "components": {
@@ -30,7 +30,7 @@
    },
    "entity_data": {
       "stonehearth:combat:weapon_data": {
-         "base_damage": 15,
+         "base_damage": 16,
          "reach": 1.8
       },
       "stonehearth:combat:melee_attacks": [
@@ -62,7 +62,7 @@
          "shop_info": {
             "buyable": true,
             "sellable": true,
-            "shopkeeper_level": 3,
+            "shopkeeper_level": 2,
             "shopkeeper_type": "caravan"
          }
       },
@@ -75,7 +75,8 @@
             "iron",
             "ascendancy_made",
             "crafted",
-            "iron_sword"
+            "sword",
+            "long"
          ]
       }
    }

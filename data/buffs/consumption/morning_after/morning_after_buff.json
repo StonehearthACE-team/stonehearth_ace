@@ -1,6 +1,9 @@
 {
    "type": "buff",
    "axis": "debuff",
+   "category": "consumption_alcohol",
+   "unique_in_category": true,
+   "rank": 4,
    "display_name": "i18n(stonehearth_ace:data.buffs.morning_after.display_name)",
    "description": "i18n(stonehearth_ace:data.buffs.morning_after.description)",
    "icon": "file(morning_after_buff.png)",
@@ -25,10 +28,9 @@
          "multiply": 0.1
       }
    },
-   "disallowed_buffs": [
-      "stonehearth_ace:buffs:consumption:mellow",
-      "stonehearth_ace:buffs:consumption:light_headed",
-      "stonehearth_ace:buffs:consumption:merry_time"
+   "disallowed_categories": [
+      "consumption_harmony",
+      "consumption_merry_time"
    ],
    "gained_statistics_key": "morning_after"
 }

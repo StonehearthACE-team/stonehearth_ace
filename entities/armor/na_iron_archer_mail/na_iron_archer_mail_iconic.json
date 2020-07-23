@@ -1,0 +1,23 @@
+{
+   "mixins": "/stonehearth_ace/entities/armor/iron_archer_mail/iron_archer_mail_iconic.json",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "mixintypes": {
+            "default": "override"
+         },
+         "default": {
+            "models": [
+               "file(na_iron_archer_mail_iconic.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.armor.na_iron_archer_mail.display_name)",
+         "description": "i18n(stonehearth_ace:entities.armor.na_iron_archer_mail.description)",
+         "icon": "file(na_iron_archer_mail.png)"
+      }
+   }
+}

@@ -1,7 +1,7 @@
 {
    "mixins": [
-   "stonehearth:mixins:item_properties",
-   "stonehearth_ace:mixins:weapons:twohanded_open_wounds"
+      "stonehearth:mixins:item_properties",
+      "stonehearth_ace:mixins:weapons:twohanded_open_wounds"
    ],
    "type": "entity",
    "components": {
@@ -15,7 +15,7 @@
       "stonehearth:entity_forms": {
          "iconic_form": "file(iron_battle_axe_iconic.json)"
       },
-      "stonehearth:equipment_piece": {       
+      "stonehearth:equipment_piece": {
          "postures": [
             "stonehearth:combat",
             "stonehearth:patrol"
@@ -61,7 +61,7 @@
             "iron",
             "crafted",
             "ascendancy_made",
-            "iron_battle_axe"
+            "axe"
          ]
       }
    }

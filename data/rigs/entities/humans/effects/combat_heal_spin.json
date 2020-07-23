@@ -1,0 +1,41 @@
+{
+   "type" : "effect",
+   "tracks": {
+      "animation": {
+         "type": "animation_effect",
+         "start_time": 0,
+         "animation": "combat_1h_forehand_spin.json",
+         "loop": false
+      },
+      "sound": {
+         "type": "sound_effect",
+         "duration": 1000,
+         "start_time": 200,
+         "min_distance": 32,
+         "falloff" : 4,
+         "volume": 25,
+         "track" : {
+            "type": "one_of",
+            "items": [
+               "stonehearth:sounds:cleric_heal_01",
+               "stonehearth:sounds:cleric_heal_02",
+               "stonehearth:sounds:cleric_heal_03"
+            ]
+         }
+      },
+      "jump": {
+         "type": "cubemitter",
+         "start_time" : 530,
+         "end_time" : 1030,
+         "cubemitter": "/stonehearth_ace/data/horde/particles/heal/spin.cubemitter.json",
+         "transforms": {
+            "x":0,
+            "y":0.2,
+            "z":0,
+            "rx":90,
+            "ry":0,
+            "rz":0
+         }
+      }
+   }
+}

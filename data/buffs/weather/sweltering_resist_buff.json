@@ -1,13 +1,11 @@
 {
    "type": "buff",
    "axis": "buff",
+   "category": "weather_hot_resistance",
+   "unique_in_category": true,
+   "rank": 2,
    "display_name": "i18n(stonehearth_ace:data.buffs.weather.sweltering_resist_buff.display_name)",
    "description": "i18n(stonehearth_ace:data.buffs.weather.sweltering_resist_buff.description)",
    "icon": "file(sweltering_resist_buff.png)",
-   "repeat_add_action": "renew_duration",
-   "disallowed_buffs": [
-      "stonehearth_ace:buffs:weather:hot",
-      "stonehearth_ace:buffs:weather:hot_resist",
-      "stonehearth_ace:buffs:weather:sweltering"
-   ]
+   "repeat_add_action": "renew_duration"
 }

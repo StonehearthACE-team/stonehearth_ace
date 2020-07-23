@@ -1,0 +1,26 @@
+{
+   "mixins": "/stonehearth_ace/entities/weapons/steel_short_spear/steel_short_spear_iconic.json",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "mixintypes": {
+            "default": "override"
+         },
+         "default": {
+            "models": [
+               "file(na_steel_short_spear.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": -0.05, "y": 0, "z": 0.05 },
+         "region_origin": { "x": 0, "y": 0, "z": 0 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.weapons.na_steel_short_spear.display_name)",
+         "icon": "file(na_steel_short_spear.png)"
+      }
+   }
+}

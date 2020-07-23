@@ -1,6 +1,9 @@
 {
    "type": "buff",
    "axis": "debuff",
+   "category": "consumption_alcohol",
+   "unique_in_category": true,
+   "rank": 2,
    "display_name": "i18n(stonehearth_ace:data.buffs.light_headed.display_name)",
    "description": "i18n(stonehearth_ace:data.buffs.light_headed.description)",
    "icon": "file(light_headed_buff.png)",
@@ -51,10 +54,7 @@
          "multiply": 0.9
       }
    },
-   "disallowed_buffs": [
-      "stonehearth_ace:buffs:consumption:mellow",
-      "stonehearth_ace:buffs:consumption:harmony_minor",
-      "stonehearth_ace:buffs:consumption:harmony",
-      "stonehearth_ace:buffs:consumption:harmony_major"
+   "disallowed_categories": [
+      "consumption_harmony"
    ]
 }

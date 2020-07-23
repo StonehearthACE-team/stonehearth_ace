@@ -1,0 +1,25 @@
+{
+   "type": "buff",
+   "axis": "debuff",
+   "category": "debuff_flanked",
+   "unique_in_category": true,
+   "rank": 1,
+   "display_name": "i18n(stonehearth_ace:data.buffs.minor_flanked.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.minor_flanked.description)",
+   "icon": "file(flanked_minor.png)",
+   "duration": "30m",
+   "cant_affect_siege": true,
+   "cant_affect": [
+      "hearthling",
+      "dwarf"
+   ],
+   "repeat_add_action": "renew_duration",
+   "modifiers": {
+      "menace": {
+         "multiply": 0.8
+      },
+      "multiplicative_heal_received_modifier": {
+         "multiply": 0.8
+      }
+   }
+}

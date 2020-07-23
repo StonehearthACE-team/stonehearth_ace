@@ -1,0 +1,79 @@
+{
+   "mixins": [
+      "stonehearth:mixins:item_properties",
+      "stonehearth_ace:mixins:armor:light_armor_torso"
+   ],
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "layer": "clothing",
+            "transparent": "false",
+            "models": [
+               "file(iron_archer_mail.qb)"
+            ]
+         },
+         "female": {
+            "layer": "clothing",
+            "transparent": "false",
+            "models": [
+               "file(iron_archer_mail_female.qb)"
+            ]
+         },
+         "rabbit_male": {
+            "layer": "clothing",
+            "models": [
+               "file(iron_archer_mail_rabbit.qb)"
+            ]
+         },
+         "rabbit_female": {
+            "layer": "clothing",
+            "models": [
+               "file(iron_archer_mail_rabbit.qb)"
+            ]
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(iron_archer_mail_iconic.json)"
+      },
+      "stonehearth:equipment_piece": {
+         "additional_equipment": {
+            "stonehearth_ace:armor:iron_archer_mail:buckler": true,
+            "stonehearth_ace:armor:iron_archer_mail:hat": true
+         },
+         "ilevel": 5,
+         "roles": [
+            "archer_job"
+         ],
+         "required_job_level": 3,
+         "equip_effect": "stonehearth:effects:weapon_level_up"
+      }
+   },
+   "entity_data": {
+      "stonehearth:combat:armor_data": {
+         "base_damage_reduction": 5
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 52,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 2,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.armor.iron_archer_mail.display_name)",
+         "description": "i18n(stonehearth_ace:entities.armor.iron_archer_mail.description)",
+         "icon": "file(iron_archer_mail.png)",
+         "category": "armor",
+         "material_tags": [
+            "iron",
+            "ascendancy_made",
+            "crafted",
+            "archer_mail"
+         ]
+      }
+   }
+}

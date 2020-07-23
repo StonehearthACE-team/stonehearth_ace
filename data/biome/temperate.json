@@ -13,72 +13,192 @@
       "spring": {
 			"humidity": 0.5,
 			"sunlight": 0.9,
+			"mixintypes": {
+				"weather": "override"
+			},
          "weather": [
 				{
+               "uri": "stonehearth_ace:weather:snow:late",
+               "weight": [3, 0, 0]
+            },
+				{
+               "uri": "stonehearth_ace:weather:rain:chilly",
+               "weight": [3, 0, 0]
+            },
+				{
+               "uri": "stonehearth_ace:weather:cloudy:chilly",
+               "weight": [3, 1, 0]
+            },
+				{
 					"uri": "stonehearth_ace:weather:sunny:chilly",
-					"weight": 1
+					"weight": [2, 1 ,0]
 				},
 				{
-               "uri": "stonehearth_ace:weather:snow:late",
-               "weight": 1
+               "uri": "stonehearth:weather:foggy",
+               "weight": [2, 3, 0]
+            },
+				{
+               "uri": "stonehearth:weather:cloudy",
+               "weight": [1, 3]
+            },
+            {
+               "uri": "stonehearth:weather:rain",
+               "weight": [1, 3]
+            },
+            {
+               "uri": "stonehearth:weather:rain:sunny",
+               "weight": [1, 2, 5]
+            },				
+				{
+               "uri": "stonehearth:weather:sunny",
+               "weight": [0, 3, 6]
+            },
+				{
+					"uri": "stonehearth_ace:weather:sunny:hot",
+					"weight": [0, 0, 2]
+				},
+				{
+               "uri": "stonehearth:weather:lucky",
+               "weight": 0.05
             }
          ]
       },
 		"summer": {
 			"humidity": 0.3,
 			"sunlight": 0.95,
+			"mixintypes": {
+				"weather": "override"
+			},
 			"weather": [
+            {
+               "uri": "stonehearth:weather:rain",
+               "weight": [1, 0, 2]
+            },
+            {
+               "uri": "stonehearth:weather:rain:sunny",
+               "weight": [2, 0, 1]
+            },
+            {
+               "uri": "stonehearth:weather:cloudy",
+               "weight": [2, 1, 2]
+            },	
+            {
+               "uri": "stonehearth:weather:windy",
+               "weight": [0, 2, 3]
+            },				
+				{
+               "uri": "stonehearth:weather:sunny",
+               "weight": [3, 9, 3]
+            },
 				{
 					"uri": "stonehearth_ace:weather:sunny:hot",
-					"weight": 6
+					"weight": [2, 4, 1]
 				},
 				{
                "uri": "stonehearth_ace:weather:sunny:sweltering",
-               "weight": 1
+               "weight": [0, 1, 0]
+            },
+		   	{
+               "uri": "stonehearth:weather:lucky",
+               "weight": 0.05
             }
 			]
 		},
       "autumn": {
 			"humidity": 0.4,
 			"sunlight": 0.8,
+			"mixintypes": {
+				"weather": "override"
+			},
          "weather": [
 				{
+               "uri": "stonehearth:weather:sunny",
+               "weight": [3, 2, 1]
+            },
+            {
+               "uri": "stonehearth:weather:cloudy",
+               "weight": [5, 4, 2]
+            },
+            {
+               "uri": "stonehearth:weather:rain:sunny",
+               "weight": [6, 3, 1]
+            },
+            {
+               "uri": "stonehearth:weather:rain",
+               "weight": 5
+            },
+            {
+               "uri": "stonehearth:weather:thunderstorm",
+               "weight": [0, 2]
+            },
+				{
                "uri": "stonehearth_ace:weather:cloudy:chilly",
-               "weight": 4
+               "weight": [0, 2, 4]
             },
 				{
                "uri": "stonehearth_ace:weather:rain:chilly",
-               "weight": 1
+               "weight": [0, 0, 1]
             },
 				{
                "uri": "stonehearth_ace:weather:foggy:chilly",
-               "weight": 1
+               "weight": [0, 1, 2]
             },
 				{
                "uri": "stonehearth_ace:weather:snow:early",
-               "weight": 1
+               "weight": [0, 1, 2]
+            },
+				{
+               "uri": "stonehearth:weather:lucky",
+               "weight": 0.05
             }
          ]
       },
 		"winter": {
 			"humidity": 0.3,
 			"sunlight": 0.7,
+			"mixintypes": {
+				"weather": "override"
+			},
 			"weather": [
 				{
+               "uri": "stonehearth:weather:sunny",
+               "weight": [1, 0, 1]
+            },
+				{
                "uri": "stonehearth_ace:weather:sunny:chilly",
-               "weight": 2
+               "weight": 3
             },
             {
                "uri": "stonehearth_ace:weather:cloudy:chilly",
                "weight": 3
             },
-				{
-               "uri": "stonehearth_ace:weather:cloudy:cold",
-               "weight": 4
-            },
             {
                "uri": "stonehearth_ace:weather:windy:chilly",
-               "weight": 4
+               "weight": 3
+            },
+				{
+               "uri": "stonehearth_ace:weather:cloudy:cold",
+               "weight": 3
+            },
+				{
+               "uri": "stonehearth_ace:weather:rain:chilly",
+               "weight": [2, 0, 1]
+            },
+            {
+               "uri": "stonehearth:weather:snow:sunny",
+               "weight": [2, 5, 4]
+            },
+            {
+               "uri": "stonehearth:weather:snow",
+               "weight": [1, 6, 3]
+            },
+            {
+               "uri": "stonehearth:weather:blizzard",
+               "weight": [0, 4, 3]
+            },
+            {
+               "uri": "stonehearth:weather:lucky",
+               "weight": 0.025
             }
 			]
 		}

@@ -24,7 +24,7 @@ function AceNode:check_requirement_met(ctx, name, rule)
    end
 
    -- grab the lhs...
-   local return_true, lhs = self:_get_requirement_value(ctx, item)
+   local return_true, lhs = self:_get_requirement_value(ctx, item, rule)
    if return_true then
       return true
    end
@@ -33,7 +33,7 @@ function AceNode:check_requirement_met(ctx, name, rule)
    return self:_compare_requirement_condition(typ, lhs, rhs)
 end
 
-function AceNode:_get_requirement_value(ctx, item)
+function AceNode:_get_requirement_value(ctx, item, rule)
    local lhs
    
    if item == 'kingdom' then

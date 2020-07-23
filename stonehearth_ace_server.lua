@@ -92,6 +92,7 @@ local monkey_patches = {
    ace_farming_service = 'stonehearth.services.server.farming.farming_service',
    ace_food_decay_service = 'stonehearth.services.server.food_decay.food_decay_service',
    ace_hydrology_service = 'stonehearth.services.server.hydrology.hydrology_service',
+	ace_free_time_observer = 'stonehearth.ai.observers.free_time_observer',
    ace_find_best_reachable_entity_by_type = 'stonehearth.ai.actions.find_best_reachable_entity_by_type',
    ace_find_entity_type_in_storage_action = 'stonehearth.ai.actions.find_entity_type_in_storage_action',
    --ace_place_carrying_on_structure_adjacent_action = 'stonehearth.ai.actions.place_carrying_on_structure_adjacent_action',

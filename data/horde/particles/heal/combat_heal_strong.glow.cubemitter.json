@@ -1,0 +1,124 @@
+{
+   "name": "fire",
+   "duration": 4000,
+   "material": "materials/cubemitter_add_bloom.material.json",
+   "loops": false,
+   "mesh": {
+      "file": "",
+      "matrix": "",
+      "offset": {
+         "x": 0,
+         "y": 0,
+         "z": 0
+      }
+   },
+   "emission": {
+      "rate": {
+         "kind": "BURST",
+         "values": [
+            [0, 1, 1]
+         ]
+      },
+      "angle": {
+         "kind": "CONSTANT",
+         "values": [90]
+      },
+      "origin": {
+         "surface": "POINT"
+      },
+      "translation_y": {
+         "kind": "CONSTANT",
+         "values": [100]
+      }
+   },
+   "particle": {
+      "lifetime": {
+         "start": {
+            "kind": "CONSTANT",
+            "values": [1600]
+         }
+      },
+      "speed": {
+         "start": {
+            "kind": "CONSTANT",
+            "values": [0]
+         }
+      },
+      "acceleration": {
+         "over_lifetime_y": {
+            "kind": "CONSTANT",
+            "values": [-0.5]
+         }
+      },
+      "rotation": {
+         "over_lifetime_x": {
+            "kind": "CONSTANT",
+            "values": [90]
+         }
+      },
+      "scale": {
+         "start": {
+            "kind": "CONSTANT",
+            "values": [1]
+         },
+         "start_x": {
+            "kind": "CONSTANT",
+            "values": [80]
+         },
+         "start_y": {
+            "kind": "CONSTANT",
+            "values": [80]
+         },
+         "start_z": {
+            "kind": "CONSTANT",
+            "values": [200]
+         },
+         "over_lifetime_x": {
+            "kind": "CURVE",
+            "values": [
+               [0, 1],
+               [0.12982383728027344, 0.9440380223592122],
+               [0.2653603935241699, 0.8596258544921875],
+               [0.40690338134765625, 0.7462384541829428],
+               [0.5380990600585938, 0.6244009399414063],
+               [0.6583638000488281, 0.49069020589192713],
+               [0.7758270263671875, 0.34456807454427085],
+               [0.897244873046875, 0.16339538574218748],
+               [1, 0]
+            ]
+         },
+         "over_lifetime_y": {
+            "kind": "CURVE",
+            "values": [
+               [0, 1],
+               [0.12982383728027344, 0.9440380223592122],
+               [0.2653603935241699, 0.8596258544921875],
+               [0.40690338134765625, 0.7462384541829428],
+               [0.5380990600585938, 0.6244009399414063],
+               [0.6583638000488281, 0.49069020589192713],
+               [0.7758270263671875, 0.34456807454427085],
+               [0.897244873046875, 0.16339538574218748],
+               [1, 0]
+            ]
+         }
+      },
+      "color": {
+         "start": {
+            "kind": "RANDOM_BETWEEN",
+            "values": [
+               [0.264, 0.219, 0.081, 1],
+               [0.278, 0.246, 0.096, 1]
+            ]
+         },
+         "over_lifetime_a": {
+            "kind": "CURVE",
+            "values": [
+               [0, 0],
+               [0.2, 0.035887703703703706],
+               [0.75, 0.003066666666666676],
+               [1, 0]
+            ]
+         }
+      }
+   }
+}

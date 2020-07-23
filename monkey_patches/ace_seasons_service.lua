@@ -7,6 +7,45 @@ local SECONDS_PER_DAY = CALENDAR_CONSTANTS.hours_per_day * CALENDAR_CONSTANTS.mi
 
 local log = radiant.log.create_logger('seasons')
 
+-- Also return the season completion on that day
+function AceSeasonsService:get_season_for_day(day_since_epoch)
+   if not self._seasons then
+      return nil  -- Not loaded yet.
+   else
+      assert(next(self._seasons))
+		table.sort(self._seasons, function(a, b)
+			return a.start_day < b.start_day
+		end)
+
+		for i, season in ipairs(self._seasons) do
+			season.end_day = self._seasons[i == #self._seasons and 1 or (i + 1)].start_day
+		end
+		
+		local day_of_year = 1 + day_since_epoch % DAYS_PER_YEAR
+		local season = nil
+		local current_season = nil
+      for i = #self._seasons, 1, -1 do
+         season = self._seasons[i]
+         if day_of_year >= season.start_day then
+				current_season = season
+				break
+         end
+      end
+		
+		if current_season then
+			local duration = current_season.end_day - current_season.start_day
+			local day_of_season = math.max(1, (day_of_year - season.start_day))
+			local completion = math.max(0, math.min(day_of_season / duration, 1))
+			if completion then
+				return current_season, completion
+			else
+				return current_season
+			end
+		end
+      assert(false, 'Could not find season for day ' .. tostring(day_of_year))
+   end
+end
+
 function AceSeasonsService:_load_season_config(biome_uri)
    self._seasons = self:_get_seasons_data(biome_uri)
 

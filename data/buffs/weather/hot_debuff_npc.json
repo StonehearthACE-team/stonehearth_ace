@@ -1,6 +1,9 @@
 {
    "type": "buff",
    "axis": "debuff",
+   "category": "weather_hot",
+   "unique_in_category": true,
+   "rank": 1,
    "display_name": "i18n(stonehearth_ace:data.buffs.weather.hot_debuff.display_name)",
    "description": "i18n(stonehearth_ace:data.buffs.weather.hot_debuff_npc.description)",
    "duration": "1h",
@@ -10,8 +13,5 @@
       "speed": {
          "multiply": 0.8
       }
-   },
-   "disallowed_buffs": [
-      "stonehearth_ace:buffs:weather:chilly:npc"
-   ]
+   }
 }
