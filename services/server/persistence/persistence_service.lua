@@ -39,9 +39,15 @@ function PersistenceService:_load_all_persistence_data()
 
    self._towns = {}
    for save_id, data in pairs(self._all_persistence_data) do
-      for _, town in pairs(data) do
+      local towns = data.towns or data
+      for player_id, town in pairs(data) do
          town.save_id = save_id
          table.insert(self._towns, town)
+      end
+
+      -- TODO: also track other information about the save in the persistence data, like biome, age, etc.
+      if data.biome then
+
       end
    end
 
@@ -57,7 +63,7 @@ function PersistenceService:_load_all_persistence_data()
             end
             for _, crafter in ipairs(crafters) do
                crafter.job_uri = job_uri
-               crafter.save_id = town.save_id   -- allow us to easily reference this crafter's town
+               crafter.town = town   -- allow us to easily reference this crafter's town
                table.insert(crafter_type, crafter)
                table.insert(self._all_crafters, crafter)
             end
@@ -76,7 +82,7 @@ function PersistenceService:get_random_town()
    end
 end
 
-function PersistenceService:get_town_by_save_id(save_id)
+function PersistenceService:get_save_by_id(save_id)
    return self._all_persistence_data[save_id]
 end
 
@@ -104,8 +110,12 @@ function PersistenceService:save_town_data()
       return
    end
 
-   local data = stonehearth.town:get_persistence_data()
-   if data and next(data) then
+   local town_data = stonehearth.town:get_persistence_data()
+   if town_data and next(town_data) then
+      -- TODO: add biome data, age, any other data we want to track about each save
+      local data = {
+         towns = town_data,
+      }
       radiant.mods.write_object('persistence/' .. game_id, data)
    end
 end

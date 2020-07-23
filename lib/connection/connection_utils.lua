@@ -6,21 +6,6 @@ local connection_utils = {}
 
 local MIDDLE_OFFSET = Point3(0.5, 0, 0.5)
 
-function connection_utils.import_region(region)
-   local r = Region3()
-   for _, cube in pairs(region) do
-      local c = radiant.util.to_cube3(cube)
-      if c then
-         r:add_cube(c)
-      end
-   end
-   if r:get_area() > 0 then
-      return r
-   else
-      return nil
-   end
-end
-
 -- ONLY WORKS FOR CARDINAL ROTATIONS
 function connection_utils.rotate_region(region, origin, rotation, align_x, align_z)
    -- if we're aligning to the x axis, rotating to 90 or 270 means we ignore the z offset, and always ignore the x offset

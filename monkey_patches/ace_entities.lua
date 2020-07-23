@@ -378,4 +378,16 @@ function ace_entities.is_entity_town_suspended(entity)
    end
 end
 
+function ace_entities.is_solid_location(location)
+   local entities = radiant.terrain.get_entities_at_point(location)
+
+   for _, entity in pairs(entities) do
+      if radiant.entities.is_solid_entity(entity) then
+         return true
+      end
+   end
+
+   return false
+end
+
 return ace_entities

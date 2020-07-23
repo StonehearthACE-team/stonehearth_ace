@@ -24,4 +24,47 @@ function ace_util.to_color4(pt, a)
    return pt and ((pt.x and pt.y and pt.z and Color4(pt.x, pt.y, pt.z, a)) or (pt.r and pt.g and pt.b and Color4(pt.r, pt.g, pt.b, a))) or nil
 end
 
+function ace_util.get_rotations_table(json)
+   local result = {}
+
+   for _, rotation in pairs(json and json.rotations or {}) do
+      local origin = radiant.util.to_point3(rotation.origin) or Point3.zero
+      local offset = radiant.util.to_point3(rotation.offset) or Point3.zero
+      local direction = radiant.util.to_point3(rotation.direction)
+      local min_length = rotation.min_length or json.min_length or 1
+      local max_length = rotation.max_length or json.max_length or min_length
+      local matrix = rotation.matrix or json.matrix
+      local material = rotation.material or json.material
+      local scale = rotation.scale or json.scale
+      local connector_region
+      if rotation.connector_region then
+         connector_region = Region3()
+         connector_region:load(rotation.connector_region)
+      end
+      local connection_type = rotation.connection_type or json.connection_type
+
+      if origin and direction and min_length then
+         table.insert(result, {
+            origin = origin,
+            direction = direction,
+            min_length = min_length,
+            max_length = max_length,
+            dimension = rotation.dimension,
+            rotation = rotation.rotation,
+            model = rotation.model,
+            matrix = matrix,
+            material = material,
+            scale = scale,
+            offset = offset,
+            support_last_block = rotation.support_last_block,
+            connection_type = connection_type,
+            connector_id = rotation.connector_id,
+            connector_region = connector_region,
+         })
+      end
+   end
+
+   return result
+end
+
 return ace_util

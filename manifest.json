@@ -523,6 +523,8 @@
       "commands:manage_party_2": "file(data/commands/manage_parties/manage_party_2.json)",
       "commands:manage_party_3": "file(data/commands/manage_parties/manage_party_3.json)",
       "commands:manage_party_4": "file(data/commands/manage_parties/manage_party_4.json)",
+      "commands:mechanical:adjust_gearbox_axles": "file(data/commands/mechanical/adjust_gearbox_axles.json)",
+      "commands:mechanical:reset_gearbox_axles": "file(data/commands/mechanical/reset_gearbox_axles.json)",
       "commands:patrol_banner:move": "file(data/commands/patrol_banner/move_patrol_banner.json)",
       "commands:patrol_banner:remove": "file(data/commands/patrol_banner/remove_patrol_banner.json)",
       "commands:slaughter:wild_animal": "file(data/commands/slaughter/slaughter.json)",
@@ -1290,6 +1292,7 @@
       "game_master:script:recipes_unlocked_can_start": "file(services/server/game_master/controllers/scripts/recipes_unlocked_can_start.lua)",
       "game_mode:gentle": "file(data/game_mode/gentle/gentle.json)",
       "gizmos:axles:gear_box": "file(entities/gizmos/axle_gear_box/axle_gear_box.json)",
+      "gizmos:axles:gear_box_axle": "file(entities/gizmos/axle_gear_box/gear_box_axle.json)",
       "gizmos:axles:horizontal": "file(entities/gizmos/axle_horizontal/axle_horizontal.json)",
       "gizmos:axles:horizontal:switch": "file(entities/gizmos/axle_horizontal_switch/axle_horizontal_switch.json)",
       "gizmos:axles:vertical": "file(entities/gizmos/axle_vertical/axle_vertical.json)",
@@ -4241,6 +4244,7 @@
       "auto_replace": "file(components/auto_replace/auto_replace_component.lua)",
       "component_info": "file(components/component_info/component_info_component.lua)",
       "connection": "file(components/connection/connection_component.lua)",
+      "dynamic_connection": "file(components/connection/dynamic_connection_component.lua)",
       "consumer": "file(components/consumer/consumer_component.lua)",
       "container": "file(components/container/container_component.lua)",
       "critter_colony": "file(components/critter_colony/critter_colony_component.lua)",
@@ -4249,6 +4253,7 @@
       "entity_mover": "file(components/entity_mover/entity_mover_component.lua)",
       "fence": "file(components/fence/fence_component.lua)",
       "fish_trap": "file(components/fish_trap/fish_trap_component.lua)",
+      "gearbox": "file(components/mechanical/gearbox_component.lua)",
       "herbalist_planter": "file(components/herbalist_planter/herbalist_planter_component.lua)",
       "input": "file(components/input/input_component.lua)",
       "mechanical": "file(components/mechanical/mechanical_component.lua)",
@@ -4293,8 +4298,7 @@
       "pasture_item": "file(renderers/pasture_item/pasture_item_renderer.lua)",
       "place_terrain": "file(renderers/place_terrain/place_terrain_renderer.lua)",
       "tile": "file(renderers/tile/tile_renderer.lua)",
-      "vine": "file(renderers/vine/vine_renderer.lua)",
-      "water_pump": "file(renderers/water_pump/water_pump_renderer.lua)"
+      "vine": "file(renderers/vine/vine_renderer.lua)"
    },
    "controllers": {
       "class:brewer": "file(jobs/brewer/brewer.lua)",
@@ -4316,6 +4320,14 @@
       "water_signal": "file(components/signals/water_signal.lua)"
    },
    "functions": {
+      "dump_selected_building": {
+         "controller": "file(call_handlers/building_call_handler.lua)",
+         "endpoint": "client"
+      },
+      "dump_building_server": {
+         "controller": "file(call_handlers/building_call_handler.lua)",
+         "endpoint": "server"
+      },
       "toggle_enabled_command": {
          "controller": "file(call_handlers/toggle_enabled_call_handler.lua)",
          "endpoint": "server"
@@ -4544,15 +4556,27 @@
          "controller": "file(call_handlers/combat_call_handler.lua)",
          "endpoint": "server"
       },
+      "select_gearbox_axles_command": {
+         "controller": "file(call_handlers/mechanical_call_handler.lua)",
+         "endpoint": "client"
+      },
+      "set_gearbox_axle_command": {
+         "controller": "file(call_handlers/mechanical_call_handler.lua)",
+         "endpoint": "server"
+      },
+      "reset_gearbox_axles_command": {
+         "controller": "file(call_handlers/mechanical_call_handler.lua)",
+         "endpoint": "server"
+      },
       "select_water_pump_pipe_command": {
          "controller": "file(call_handlers/water_tools_call_handler.lua)",
          "endpoint": "client"
       },
-      "remove_water_pump_pipe_command": {
+      "set_water_pump_pipe_command": {
          "controller": "file(call_handlers/water_tools_call_handler.lua)",
          "endpoint": "server"
       },
-      "set_water_pump_pipe_command": {
+      "remove_water_pump_pipe_command": {
          "controller": "file(call_handlers/water_tools_call_handler.lua)",
          "endpoint": "server"
       },
@@ -4591,6 +4615,7 @@
          "file(ui/game/bulletin/bulletin_dialog/achievement_acquired_bulletin_dialog/achievement_acquired_bulletin_dialog.html)"
       ],
       "js": [
+         "file(ui/debug/console/console_commands.js)",
          "file(ui/root/js/root_view.js)",
          "file(ui/root/js/root_controller.js)",
          "file(ui/shell/settings/settings.js)",

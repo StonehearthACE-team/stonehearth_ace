@@ -16,75 +16,141 @@
             }
          ]
       },
+      "stonehearth_ace:dynamic_connection": {},
       "stonehearth_ace:connection": {
          "mechanical": {
             "connectors": {
                "xlow": {
-                  "region": [
-                     {
-                        "min": { "x": -1, "y": 0, "z": 0 },
-                        "max": { "x": 1, "y": 1, "z": 1 }
-                     }
-                  ],
+                  "region_component": "stonehearth_ace:dynamic_connection",
                   "max_connections": 1,
                   "region_intersection_threshold": 1
                },
                "xhigh": {
-                  "region": [
-                     {
-                        "min": { "x": 0, "y": 0, "z": 0 },
-                        "max": { "x": 2, "y": 1, "z": 1 }
-                     }
-                  ],
+                  "region_component": "stonehearth_ace:dynamic_connection",
                   "max_connections": 1,
                   "region_intersection_threshold": 1
                },
                "ylow": {
-                  "region": [
-                     {
-                        "min": { "x": 0, "y": -1, "z": 0 },
-                        "max": { "x": 1, "y": 1, "z": 1 }
-                     }
-                  ],
+                  "region_component": "stonehearth_ace:dynamic_connection",
                   "max_connections": 1,
                   "region_intersection_threshold": 1
                },
                "yhigh": {
-                  "region": [
-                     {
-                        "min": { "x": 0, "y": 0, "z": 0 },
-                        "max": { "x": 1, "y": 2, "z": 1 }
-                     }
-                  ],
+                  "region_component": "stonehearth_ace:dynamic_connection",
                   "max_connections": 1,
                   "region_intersection_threshold": 1
                },
                "zlow": {
-                  "region": [
-                     {
-                        "min": { "x": 0, "y": 0, "z": -1 },
-                        "max": { "x": 1, "y": 1, "z": 1 }
-                     }
-                  ],
+                  "region_component": "stonehearth_ace:dynamic_connection",
                   "max_connections": 1,
                   "region_intersection_threshold": 1
                },
                "zhigh": {
-                  "region": [
-                     {
-                        "min": { "x": 0, "y": 0, "z": 0 },
-                        "max": { "x": 1, "y": 1, "z": 2 }
-                     }
-                  ],
+                  "region_component": "stonehearth_ace:dynamic_connection",
                   "max_connections": 1,
                   "region_intersection_threshold": 1
                }
             },
-            "max_connections": 4
+            "max_connections": 6
          }
       },
       "stonehearth_ace:mechanical": {
-         "resistance": 2
+         "resistance": 5
+      },
+      "stonehearth_ace:gearbox": {
+         "max_length": 8,
+         "connection_type": "mechanical",
+         "matrix": "Matrix",
+         "rotations": [
+            {
+               "dimension": "y",
+               "direction": {"x": 0, "y": 1, "z": 0},
+               "model": "file(axle_vertical.qb)",
+               "offset": {"x": 5, "y": 0, "z": 5},
+               "origin": {"x": 0, "y": 1, "z": 0},
+               "connector_id": "yhigh",
+               "connector_region": [
+                  {
+                     "min": { "x": 0, "y": 0, "z": 0 },
+                     "max": { "x": 1, "y": 2, "z": 1 }
+                  }
+               ]
+            },
+            {
+               "dimension": "z",
+               "direction": {"x": 0, "y": 0, "z": -1},
+               "model": "file(axle_horizontal.qb)",
+               "offset": {"x": 5, "y": 0, "z": 5},
+               "origin": {"x": 0, "y": 0, "z": -1},
+               "rotation": 0,
+               "connector_id": "zlow",
+               "connector_region": [
+                  {
+                     "min": { "x": 0, "y": 0, "z": -1 },
+                     "max": { "x": 1, "y": 1, "z": 1 }
+                  }
+               ]
+            },
+            {
+               "dimension": "x",
+               "direction": {"x": -1, "y": 0, "z": 0},
+               "model": "file(axle_horizontal.qb)",
+               "offset": {"x": 5, "y": 0, "z": 5},
+               "origin": {"x": -1, "y": 0, "z": 0},
+               "rotation": 90,
+               "connector_id": "xlow",
+               "connector_region": [
+                  {
+                     "min": { "x": -1, "y": 0, "z": 0 },
+                     "max": { "x": 1, "y": 1, "z": 1 }
+                  }
+               ]
+            },
+            {
+               "dimension": "z",
+               "direction": {"x": 0, "y": 0, "z": 1},
+               "model": "file(axle_horizontal.qb)",
+               "offset": {"x": 5, "y": 0, "z": 5},
+               "origin": {"x": 0, "y": 0, "z": 1},
+               "rotation": 180,
+               "connector_id": "zhigh",
+               "connector_region": [
+                  {
+                     "min": { "x": 0, "y": 0, "z": 0 },
+                     "max": { "x": 1, "y": 1, "z": 2 }
+                  }
+               ]
+            },
+            {
+               "dimension": "x",
+               "direction": {"x": 1, "y": 0, "z": 0},
+               "model": "file(axle_horizontal.qb)",
+               "offset": {"x": 5, "y": 0, "z": 5},
+               "origin": {"x": 1, "y": 0, "z": 0},
+               "rotation": 270,
+               "connector_id": "xhigh",
+               "connector_region": [
+                  {
+                     "min": { "x": 0, "y": 0, "z": 0 },
+                     "max": { "x": 2, "y": 1, "z": 1 }
+                  }
+               ]
+            },
+            {
+               "dimension": "y",
+               "direction": {"x": 0, "y": -1, "z": 0},
+               "model": "file(axle_vertical.qb)",
+               "offset": {"x": 5, "y": 0, "z": 5},
+               "origin": {"x": 0, "y": 0, "z": 0},
+               "connector_id": "ylow",
+               "connector_region": [
+                  {
+                     "min": { "x": 0, "y": -1, "z": 0 },
+                     "max": { "x": 1, "y": 1, "z": 1 }
+                  }
+               ]
+            }
+         ]
       }
    },
    "entity_data": {

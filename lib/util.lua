@@ -1,3 +1,5 @@
+local Point3 = _radiant.csg.Point3
+
 local util = {}
 
 -- Taken from https://web.archive.org/web/20131225070434/http://snippets.luacode.org/snippets/Deep_Comparison_of_Two_Values_3

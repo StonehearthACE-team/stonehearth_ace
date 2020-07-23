@@ -1954,6 +1954,16 @@
             "tip_title": "Click to place a fish trap at that location",
             "tip_description": "Traps will automatically rotate to face the water, but you can also switch between valid rotations with [str(left_binding)] and [str(right_binding)] keys"
          },
+         "adjust_gearbox_axles": {
+            "display_name": "Adjust Gearbox Axles",
+            "description": "Extend/collapse axles from this item; it can't be moved or undeployed while any are extended",
+            "tip_title": "Click to extend or collapse an axle; right-click to finish",
+            "tip_description": "Move the mouse or use keyboard keys [[str(left_binding)]] and [[str(right_binding)]] to rotate between positions and [[str(shorter_binding)]] and [[str(longer_binding)]] to change length"
+         },
+         "reset_gearbox_axles": {
+            "display_name": "Collapse All Axles",
+            "description": "Collapse all axles extending from this item; it can't be moved or undeployed while any are extended"
+         },
          "place_water_pipe": {
             "display_name": "Extend Water Pipe",
             "description": "Extend a water pipe from this item; it can't be moved or undeployed while extended",

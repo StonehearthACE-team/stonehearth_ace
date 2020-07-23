@@ -39,9 +39,9 @@ connectors can be configured to trace component regions (with optional modificat
    }
 }
 ]]
+local Region3 = _radiant.csg.Region3
 local ConnectionUtils = require 'lib.connection.connection_utils'
 local _update_entity_connection_data = ConnectionUtils._update_entity_connection_data
-local import_region = ConnectionUtils.import_region
 
 local log = radiant.log.create_logger('connection_component')
 local ConnectionComponent = class()
@@ -89,6 +89,7 @@ function ConnectionComponent:restore()
 end
 
 -- this is performed in activate rather than post_activate so that all specific connection services can use it in post_activate
+-- dynamic connection components should therefore create their regions in initialize/create or in their get_region function
 function ConnectionComponent:activate()
    local version = self:get_version()
    if self._sv.version ~= version then
@@ -117,8 +118,17 @@ function ConnectionComponent:destroy()
    stonehearth_ace.connection:unregister_entity(self._entity)
 end
 
-function ConnectionComponent:_get_region_trace(component, get_region_fn, extrusions, get_only)
-   local key = component .. '.' .. tostring(get_region_fn)
+function ConnectionComponent:_get_region_trace(type, name, connector, get_only)
+   local component = connector.region_component
+   local get_region_fn = connector.get_region_fn or 'get_region'
+   local get_region_fn_args = connector.get_region_fn_args or (component == 'stonehearth_ace:dynamic_connection' and {type, name}) or {}
+   local extrusions = connector.extrusions
+
+   local key = component .. '.' .. get_region_fn
+   if next(get_region_fn_args) then
+      key = key .. '(' .. table.concat(get_region_fn_args, ', ') .. ')'
+   end
+
    local trace = self._region_traces[key]
    if get_only then
       return trace
@@ -131,8 +141,8 @@ function ConnectionComponent:_get_region_trace(component, get_region_fn, extrusi
       self._region_traces[key] = trace
 
       local comp = self._entity:get_component(component)
-      local get_region_fn = comp and comp[get_region_fn or 'get_region']
-      local region = get_region_fn and get_region_fn(comp)
+      local fn = comp and comp[get_region_fn]
+      local region = fn and fn(comp, unpack(get_region_fn_args))
       if region then
          local update_region = function()
             trace.region = region:get()
@@ -147,10 +157,15 @@ function ConnectionComponent:_get_region_trace(component, get_region_fn, extrusi
          trace.trace = region:trace('dynamic connection region')
             :on_changed(function()
                update_region()
-               trace.region:optimize('dynamic connection region')
+               log:debug('updated %s trace region to %s', key, trace.region:get_bounds())
+               --trace.region:optimize('dynamic connection region')
 
-               for _, connector in pairs(trace.connectors) do
-                  stonehearth_ace.connection:update_connector(self._entity, connector.type, connector.connection_max_connections, connector.name, connector.connector)
+               for _, conn in pairs(trace.connectors) do
+                  log:debug('updating connector %s|%s|%s', self._entity, conn.type, conn.name)
+                  conn.connector.region = Region3(trace.region)
+                  self.__saved_variables:mark_changed()
+                  
+                  stonehearth_ace.connection:update_connector(self._entity, conn.type, conn.connection_max_connections, conn.name, conn.connector)
                end
             end)
       end
@@ -181,7 +196,9 @@ function ConnectionComponent:_format_connections()
       for name, connector in pairs(connection.connectors) do
          local connector_copy = radiant.shallow_copy(connector)
          if connector.region then
-            connector_copy.region = import_region(connector.region)
+            local region = Region3()
+            region:load(connector.region)
+            connector_copy.region = region
             connector_copy.region:optimize('connector region')
 
             all_connections[type].connectors[name] = connector_copy
@@ -230,7 +247,7 @@ function ConnectionComponent:get_connected_stats(type)
 end
 
 function ConnectionComponent:_setup_dynamic_connector(type, connection_max_connections, name, connector)
-   local trace = self:_get_region_trace(connector.region_component, connector.get_region_fn, connector.extrusions)
+   local trace = self:_get_region_trace(type, name, connector)
    trace.connectors[connector] = {
       type = type,
       connection_max_connections = connection_max_connections,
@@ -276,7 +293,7 @@ function ConnectionComponent:remove_dynamic_connector(type, name)
       if connector then
          -- if it had a dynamic region, remove the connector from that trace
          if connector.region_component then
-            local trace = self:_get_region_trace(connector.region_component, connector.get_region_fn, nil, true)
+            local trace = self:_get_region_trace(type, name, connector, true)
             if trace then
                trace.connectors[connector] = nil
                if not next(trace.connectors) then

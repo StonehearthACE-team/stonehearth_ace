@@ -5,7 +5,7 @@
       - counterclockwise vertical, checking for waterfalls that would make the wheel turn counterclockwise in its default orientation
 ]]
 
-local ConnectionUtils = require 'lib.connection.connection_utils'
+local Region3 = _radiant.csg.Region3
 local BOTTOM = 'water_wheel:bottom'
 local CLOCKWISE = 'water_wheel:clockwise'
 local COUNTERCLOCKWISE = 'water_wheel:counterclockwise'
@@ -33,7 +33,8 @@ function WaterWheelComponent:post_activate()
       local ws = self._entity:add_component('stonehearth_ace:water_signal')
       
       if regions.bottom then
-         local r = ConnectionUtils.import_region(regions.bottom)
+         local r = Region3()
+         r:load(regions.bottom)
          self._max_bottom_volume = math.max(1, r:get_area())
          self._bottom_signal = ws:set_signal(BOTTOM, r, {'water_volume'},
             function(changes)
@@ -44,7 +45,8 @@ function WaterWheelComponent:post_activate()
       end
 
       if regions.clockwise then
-         local r = ConnectionUtils.import_region(regions.clockwise)
+         local r = Region3()
+         r:load(regions.clockwise)
          self._clockwise_signal = ws:set_signal(CLOCKWISE, r, {'waterfall_volume'},
             function(changes)
                self:_clockwise_changed(changes)
@@ -54,7 +56,8 @@ function WaterWheelComponent:post_activate()
       end
 
       if regions.counterclockwise then
-         local r = ConnectionUtils.import_region(regions.counterclockwise)
+         local r = Region3()
+         r:load(regions.counterclockwise)
          self._counterclockwise_signal = ws:set_signal(COUNTERCLOCKWISE, r, {'waterfall_volume'},
             function(changes)
                self:_counterclockwise_changed(changes)

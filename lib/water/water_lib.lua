@@ -68,38 +68,4 @@ function water_lib.get_contiguous_subregion(region, origin, square_radius)
    end
 end
 
-function water_lib.get_water_pump_rotations(uri)
-   local json = radiant.entities.get_component_data(uri, 'stonehearth_ace:water_pump')
-   local rotations = {}
-
-   for _, rotation in pairs(json and json.rotations or {}) do
-      local origin = radiant.util.to_point3(rotation.origin) or Point3.zero
-      local direction = radiant.util.to_point3(rotation.direction)
-      local min_length = rotation.min_length or json.min_length or 1
-      local max_length = rotation.max_length or json.max_length or min_length
-
-      if origin and direction and min_length and max_length then
-         table.insert(rotations, {
-            origin = origin,
-            direction = direction,
-            min_length = min_length,
-            max_length = max_length,
-            dimension = rotation.dimension,
-            rotation = rotation.rotation,
-            model = rotation.model,
-            matrix = rotation.matrix,
-            material = rotation.material,
-            scale = rotation.scale,
-            model_offset = rotation.model_offset,
-         })
-      end
-   end
-
-   return rotations
-end
-
-function water_lib.get_water_pump_extension_region(entity, rotation, length)
-   
-end
-
 return water_lib

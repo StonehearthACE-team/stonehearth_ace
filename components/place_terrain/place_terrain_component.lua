@@ -6,7 +6,6 @@
       and have it determine the proper tags based on elevation in this biome
 ]]
 
-local connection_utils = require 'stonehearth_ace.lib.connection.connection_utils'
 local terrain_blocks = radiant.resources.load_json('stonehearth:terrain_blocks')
 local Point3 = _radiant.csg.Point3
 local Cube3 = _radiant.csg.Cube3
@@ -24,7 +23,14 @@ function PlaceTerrainComponent:activate()
    
    local json = radiant.entities.get_json(self) or {}
    local terrain_tag = json.terrain_tag and terrain_blocks.block_types[json.terrain_tag].tag or DEFAULT_TERRAIN_TAG
-   local region = json.region and connection_utils.import_region(json.region) or DEFAULT_REGION
+   local region = json.region
+   if region then
+      local r = Region3()
+      r:load(region)
+      region = r
+   else
+      region = DEFAULT_REGION
+   end
 
    self._sv.spec = {
       terrain_tag = terrain_tag,

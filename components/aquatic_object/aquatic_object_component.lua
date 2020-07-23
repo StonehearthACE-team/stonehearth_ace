@@ -1,7 +1,7 @@
 local Point3 = _radiant.csg.Point3
+local Region3 = _radiant.csg.Region3
 local Cube3 = _radiant.csg.Cube3
 
-local ConnectionUtils = require 'stonehearth_ace.lib.connection.connection_utils'
 local log = radiant.log.create_logger('aquatic_object')
 
 local AquaticObjectComponent = class()
@@ -41,7 +41,9 @@ end
 function AquaticObjectComponent:_create_listeners()
    local signal_region = self._json.water_signal_region
    if signal_region then
-      signal_region = ConnectionUtils.import_region(signal_region)
+      local region = Region3()
+      region:load(signal_region)
+      signal_region = region
    else
       -- make sure it's extruded downwards by 1
       signal_region = {y = {1, 0}}
