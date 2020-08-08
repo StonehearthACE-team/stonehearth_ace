@@ -98,6 +98,26 @@
          "default": "1",
          "ordinal": 12
       },
+      "show_farm_water_regions": {
+         "type": "boolean",
+         "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.show_farm_water_regions)",
+         "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.show_farm_water_regions_description)",
+         "default": true,
+         "on_change": {
+            "call": "show_farm_water_regions_setting_changed"
+         },
+         "ordinal": 13
+      },
+      "show_connector_regions": {
+         "type": "boolean",
+         "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.show_connector_regions)",
+         "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.show_connector_regions_description)",
+         "default": true,
+         "on_change": {
+            "call": "show_connector_regions_setting_changed"
+         },
+         "ordinal": 14
+      },
 		"show_new_title_notification": {
          "type": "boolean",
          "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.show_new_title_notification)",

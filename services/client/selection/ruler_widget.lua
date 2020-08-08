@@ -31,9 +31,10 @@ function RulerWidget:set_base_node(base_node)
    return self
 end
 
-function RulerWidget:set_points(start, finish, normal, label)
+function RulerWidget:set_points(start, finish, normal, label, dimension)
    self._normal = normal
    self._label = label
+   self._dimension = dimension or (normal.x == 0 and 'x' or 'z')
    self._start = start + normal + Point3(-0.5, 0.01, -0.5)
    self._finish = finish + normal + Point3(0.5, 0.01, 0.5)
    if normal.z < 0 then
@@ -141,10 +142,7 @@ function RulerWidget:_add_triangle(mesh, p0, p1, p2, color)
 end
 
 function RulerWidget:_get_width()
-   if self._normal.x == 0 then
-      return math.abs(self._finish.x - self._start.x)
-   end
-   return math.abs(self._finish.z - self._start.z)
+   return math.abs(self._finish[self._dimension] - self._start[self._dimension])
 end
 
 function RulerWidget:_get_height()

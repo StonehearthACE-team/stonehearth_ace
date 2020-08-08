@@ -156,16 +156,18 @@ function ConnectionComponent:_get_region_trace(type, name, connector, get_only)
 
          trace.trace = region:trace('dynamic connection region')
             :on_changed(function()
-               update_region()
-               log:debug('updated %s trace region to %s', key, trace.region:get_bounds())
-               --trace.region:optimize('dynamic connection region')
+               if self._entity:is_valid() then
+                  update_region()
+                  log:debug('updated %s trace region to %s', key, trace.region:get_bounds())
+                  --trace.region:optimize('dynamic connection region')
 
-               for _, conn in pairs(trace.connectors) do
-                  log:debug('updating connector %s|%s|%s', self._entity, conn.type, conn.name)
-                  conn.connector.region = Region3(trace.region)
-                  self.__saved_variables:mark_changed()
-                  
-                  stonehearth_ace.connection:update_connector(self._entity, conn.type, conn.connection_max_connections, conn.name, conn.connector)
+                  for _, conn in pairs(trace.connectors) do
+                     log:debug('updating connector %s|%s|%s', self._entity, conn.type, conn.name)
+                     conn.connector.region = Region3(trace.region)
+                     self.__saved_variables:mark_changed()
+
+                     stonehearth_ace.connection:update_connector(self._entity, conn.type, conn.connection_max_connections, conn.name, conn.connector)
+                  end
                end
             end)
       end

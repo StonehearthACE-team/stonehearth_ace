@@ -4613,6 +4613,14 @@
          "controller": "file(call_handlers/settings_call_handler.lua)",
          "endpoint": "server"
       },
+      "show_connector_regions_setting_changed": {
+         "controller": "file(call_handlers/settings_call_handler.lua)",
+         "endpoint": "client"
+      },
+      "show_farm_water_regions_setting_changed": {
+         "controller": "file(call_handlers/settings_call_handler.lua)",
+         "endpoint": "client"
+      },
       "terrain_slice_buildings_setting_changed": {
          "controller": "file(call_handlers/settings_call_handler.lua)",
          "endpoint": "client"

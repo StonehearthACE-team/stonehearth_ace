@@ -13,6 +13,7 @@ function ConnectionRenderer:initialize(render_entity, datastore)
    self._entity = self._render_entity:get_entity()
    self._outline_nodes = {}
    self._connections = radiant.entities.get_component_data(self._entity, 'stonehearth_ace:connection')
+   self._show_connectors = radiant.util.get_config('show_connector_regions', true)
 
    local mob_data = radiant.entities.get_component_data(self._entity, 'mob')
    local align_to_grid = radiant.array_to_map(mob_data and mob_data.align_to_grid or {})
@@ -24,6 +25,7 @@ function ConnectionRenderer:initialize(render_entity, datastore)
    self._ui_view_mode = stonehearth.renderer:get_ui_mode()
    self._ui_mode_listener = radiant.events.listen(radiant, 'stonehearth:ui_mode_changed', self, self._on_ui_mode_changed)
    self._in_selected_graphs_listener = radiant.events.listen(self._entity, 'stonehearth_ace:entity_in_selected_graphs_changed', self, self._on_entity_in_selected_graphs_changed)
+   self._show_connectors_listener = radiant.events.listen(radiant, 'show_connector_regions_setting_changed', self, self._on_show_connectors_changed)
    --self._hilight_changed_listener = radiant.events.listen(self._entity, 'stonehearth:hilighted_changed', self, self._on_hilight_changed)
 
    self._datastore_trace = self._datastore:trace_data('entity connection available and connector status')
@@ -135,6 +137,11 @@ function ConnectionRenderer:_on_ui_mode_changed()
    end
 end
 
+function ConnectionRenderer:_on_show_connectors_changed(show)
+   self._show_connectors = show
+   self:_update()
+end
+
 function ConnectionRenderer:_in_appropriate_mode()
    return self._ui_view_mode == 'hud'
 end
@@ -148,7 +155,7 @@ function ConnectionRenderer:_update()
    self:_destroy_outline_nodes()
    local ignore_hilighting = true   --self:_do_hilight_check() -- TODO: fix the hilighting!
 
-   if not self:_in_appropriate_mode() then
+   if not self._show_connectors or not self:_in_appropriate_mode() then
       return
    end
 
