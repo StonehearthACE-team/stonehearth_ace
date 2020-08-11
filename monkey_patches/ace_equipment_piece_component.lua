@@ -97,6 +97,11 @@ function AceEquipmentPieceComponent:_get_conditional_value(condition_type, condi
 	return 0
 end
 
+function AceEquipmentPieceComponent:is_type(type)
+   local types = self:_get_equipment_types()
+   return types[type]
+end
+
 function AceEquipmentPieceComponent:_get_equipment_types()
    if not self._equipment_types then
       self._equipment_types = catalog_lib.get_equipment_types(self._json)
