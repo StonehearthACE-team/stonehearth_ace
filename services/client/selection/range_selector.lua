@@ -7,7 +7,7 @@
 local SelectorBase = require 'stonehearth.services.client.selection.selector_base'
 local selector_util = require 'stonehearth.services.client.selection.selector_util'
 local csg_lib = require 'stonehearth.lib.csg.csg_lib'
-local RulerWidget = require 'stonehearth.services.client.selection.ruler_widget'
+local XYZRulerWidget = require 'stonehearth_ace.services.client.selection.xyz_ruler_widget'
 local Color4 = _radiant.csg.Color4
 local Point3 = _radiant.csg.Point3
 local Cube3 = _radiant.csg.Cube3
@@ -395,14 +395,10 @@ function XYZRangeSelector:_update()
    end
 
    local current_region = self:get_current_region()
-   local forward = _radiant.renderer.get_camera():get_forward()
-   local dim = math.abs(forward.x) > math.abs(forward.z) and 'z' or 'x'
-   local normal = Point3(0, 0, 0)
-   normal[dim] = forward[dim] >= 0 and 1 or -1
-   self._normal = normal
+   self._camera_forward = _radiant.renderer.get_camera():get_forward()
 
-   self:_update_rulers(current_region, self._normal)
-   self:_update_cursor(current_region, self._normal)
+   self:_update_rulers(current_region, self._camera_forward)
+   self:_update_cursor(current_region, self._camera_forward)
 
    --local rotation = self:get_rotation()
    local length = self:_get_length()
@@ -435,7 +431,12 @@ function XYZRangeSelector:_world_to_local(pt, entity)
    return new_pt
 end
 
-function XYZRangeSelector:_local_to_world(pt, entity)
+function XYZRangeSelector:_local_to_world(pt)
+   local entity = self._relative_entity
+   if not entity then
+      return pt
+   end
+   
    local mob = entity:add_component('mob')
    local new_pt = pt:rotated(-mob:get_facing()) + mob:get_world_grid_location()
 
@@ -530,20 +531,21 @@ function XYZRangeSelector:_on_keyboard_event(e)
    return event_consumed
 end
 
-function XYZRangeSelector:_update_rulers(region, normal)
+function XYZRangeSelector:_update_rulers(region, forward)
    if not self._show_rulers or not self._x_ruler or not self._y_ruler or not self._z_ruler then
       return
    end
 
    if region then
-      local bounds = region:get_bounds()
+      local r = self._relative_entity and radiant.entities.local_to_world(region, self._relative_entity) or region
+      local bounds = r:get_bounds()
       local q0, q1 = bounds.min, bounds.max
 
       local rotation = self:get_rotation()
       if rotation then
-         self:_update_ruler(self._x_ruler, q0, q1, 'x', normal)
-         self:_update_ruler(self._y_ruler, q0, q1, 'y', normal)
-         self:_update_ruler(self._z_ruler, q0, q1, 'z', normal)
+         self:_update_ruler(self._x_ruler, q0, q1, 'x', forward)
+         self:_update_ruler(self._y_ruler, q0, q1, 'y', forward)
+         self:_update_ruler(self._z_ruler, q0, q1, 'z', forward)
 
          return
       end
@@ -554,9 +556,33 @@ function XYZRangeSelector:_update_rulers(region, normal)
    self._z_ruler:hide()
 end
 
-function XYZRangeSelector:_update_ruler(ruler, p0, p1, dimension, normal)
+function XYZRangeSelector:_update_ruler(ruler, p0, p1, dimension, forward)
    local d = dimension
-   local dn = d == 'x' and 'z' or 'x'
+   local start = Point3(p1)
+   local finish = Point3(p0)
+   if forward.x >= 0 then
+      start.x, finish.x = finish.x, start.x
+   end
+   if forward.z >= 0 then
+      start.z, finish.z = finish.z, start.z
+   end
+   
+   -- TODO: is forward backward?!
+   local normal
+   if d == 'y' then
+      normal = self:_get_normal_from_forward(forward)
+      -- we determine a normal vector on the x-z plane
+      -- then we determine the orthogonal dimension to that vector
+      -- change the start point so that its value in that orthogonal dimension is instead the finish point's value
+      -- this implementation is a hacky way of avoiding actually determining the dimension, and just applying the change to both x and z
+      start.x = start.x + math.abs(normal.z) * (finish.x - start.x)
+      start.z = start.z + math.abs(normal.x) * (finish.z - start.z)
+   else
+      normal = Point3(0, 0, 0)
+      local dn = d == 'x' and 'z' or 'x'
+      normal[dn] = forward[dn] >= 0 and -1 or 1
+   end
+
    local min = math.min(p0[d], p1[d])
    local max = math.max(p0[d], p1[d])
    local length = math.floor(max - min + 0.5)
@@ -568,24 +594,19 @@ function XYZRangeSelector:_update_ruler(ruler, p0, p1, dimension, normal)
    local color = self._ruler_color_valid --or self._ruler_color_invalid
    ruler:set_color(color)
 
-   local min_point = Point3(p1)
-   min_point[d] = min
-
-   local max_point = Point3(p1)
-   max_point[d] = max
-
-   min_point[dn] = min_point[dn] - 1
-   max_point = max_point - Point3(1, 0, 1)
-
-   -- don't use Point3.zero since we need it to be mutable
-   local normal = Point3(0, 0, 0)
-   normal[dn] = p0[dn] <= p1[dn] and 1 or -1
-
-   ruler:set_points(min_point, max_point, normal, string.format('%d', length), d)
+   ruler:set_points(start, finish, dimension, normal, string.format('%d', length))
    ruler:show()
 end
 
-function XYZRangeSelector:_update_cursor(box, normal)
+function XYZRangeSelector:_get_normal_from_forward(forward)
+   local dim = math.abs(forward.x) > math.abs(forward.z) and 'z' or 'x'
+   local normal = Point3(0, 0, 0)
+   normal[dim] = forward[dim] >= 0 and -1 or 1
+   return normal
+end
+
+function XYZRangeSelector:_update_cursor(box, forward)
+   local normal = self:_get_normal_from_forward(forward)
    local cursor = self._cursor_fn and self._cursor_fn(box, normal)
 
    if cursor == self._current_cursor then
@@ -675,7 +696,7 @@ function XYZRangeSelector:_recalc_current_region(final_point)
 end
 
 function XYZRangeSelector:_add_point_if_not_solid(region, local_point)
-   local world_point = self._relative_entity and self:_local_to_world(local_point, self._relative_entity) or local_point
+   local world_point = self:_local_to_world(local_point)
    if not radiant.entities.is_solid_location(world_point) then
       region:add_cube(Cube3(local_point))
    end
@@ -743,9 +764,9 @@ function XYZRangeSelector:go()
 
    local entity_render_node = self._relative_entity and _radiant.client.get_render_entity(self._relative_entity):get_node()
    if self._show_rulers then
-      self._x_ruler = RulerWidget():set_base_node(entity_render_node)
-      self._y_ruler = RulerWidget():set_base_node(entity_render_node)
-      self._z_ruler = RulerWidget():set_base_node(entity_render_node)
+      self._x_ruler = XYZRulerWidget()--:set_base_node(entity_render_node)
+      self._y_ruler = XYZRulerWidget()--:set_base_node(entity_render_node)
+      self._z_ruler = XYZRulerWidget()--:set_base_node(entity_render_node)
    end
 
    -- load up the rotations
