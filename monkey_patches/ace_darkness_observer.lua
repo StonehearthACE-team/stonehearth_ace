@@ -15,13 +15,17 @@ function AceDarknessObserver:_update()
       return
    end
 
-   local score
+   local score = LIGHT_SCORE
 
    if self:_is_in_darkness() then
-      score = DARK_SCORE
       radiant.events.trigger_async(self._sv._entity, 'stonehearth:status:in_darkness')
-   else
-      score = LIGHT_SCORE
+
+      -- only make it a negative score if they're not sleepy; TODO: also check traits?
+      -- (not necessarily sleeping; it's fine if it's dark when they want to sleep and are preparing to do so)
+      local sleepiness = radiant.entities.get_resource(self._sv._entity, 'sleepiness') or 0
+      if sleepiness < stonehearth.constants.darkness.MIN_SLEEPINESS_TO_PREFER_DARKNESS then
+         score = DARK_SCORE
+      end
    end
 
    radiant.entities.add_thought(self._sv._entity, 'stonehearth:thoughts:darkness', { value = score })
