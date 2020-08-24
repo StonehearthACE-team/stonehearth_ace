@@ -1,0 +1,32 @@
+{
+   "data": {
+      "thought_replacement_map": {
+         "stonehearth:thoughts:weather:hailstorm_positive": "stonehearth:thoughts:traits:storm_chaser",
+         "stonehearth:thoughts:weather:hailstorm_negative": "stonehearth:thoughts:traits:storm_chaser",
+			"stonehearth:thoughts:weather:distant_storm_positive": "stonehearth:thoughts:traits:storm_chaser",
+         "stonehearth:thoughts:weather:distant_storm_negative": "stonehearth:thoughts:traits:storm_chaser",
+			"stonehearth:thoughts:weather:whiteout_positive": "stonehearth:thoughts:traits:storm_chaser",
+         "stonehearth:thoughts:weather:whiteout_negative": "stonehearth:thoughts:traits:storm_chaser"
+      }
+   },
+   "subject_overrides": [
+      {
+         "subject": "stonehearth_ace:subjects:weather:hailstorm",
+         "sentiment": 1,
+         "permanent": true,
+         "unvarying": true
+      },
+		{
+         "subject": "stonehearth_ace:subjects:weather:distant_storm",
+         "sentiment": 1,
+         "permanent": true,
+         "unvarying": true
+      },
+		{
+         "subject": "stonehearth_ace:subjects:weather:whiteout",
+         "sentiment": 1,
+         "permanent": true,
+         "unvarying": true
+      }
+   ]
+}

@@ -38,6 +38,10 @@
                "uri": "stonehearth:weather:cloudy",
                "weight": [0, 2]
             },
+				{
+					"uri": "stonehearth_ace:weather:windy:springtime",
+					"weight": [2, 3]
+				},
             {
                "uri": "stonehearth:weather:rain",
                "weight": [0, 2]
@@ -46,6 +50,10 @@
                "uri": "stonehearth:weather:rain:sunny",
                "weight": [0, 1]
             },
+				{
+               "uri": "stonehearth_ace:weather:distant_storm",
+               "weight": [1, 2]
+            },	
             {
                "uri": "stonehearth:weather:sunny",
                "weight": [0, 2]
@@ -76,6 +84,10 @@
                "weight": [1, 0]
             },
             {
+               "uri": "stonehearth_ace:weather:hailstorm",
+               "weight": 1
+            },
+            {
                "uri": "stonehearth:weather:rain:sunny",
                "weight": [2, 1]
             },
@@ -86,7 +98,11 @@
 				{
 					"uri": "stonehearth_ace:weather:sunny:hot",
 					"weight": [0, 1, 0]
-				},				
+				},
+				{
+               "uri": "stonehearth_ace:weather:sunny:stagnant",
+               "weight": [0, 2, 0]
+            },				
 				{
                "uri": "stonehearth_ace:weather:sunny:chilly",
                "weight": [0, 0, 2]
@@ -129,7 +145,7 @@
                "weight": [1, 0]
             },					
 				{
-               "uri": "stonehearth_ace:weather:sunny:chilly",
+               "uri": "stonehearth_ace:weather:sunny:autumn",
                "weight": 1
             },
 				{
@@ -159,6 +175,10 @@
             {
                "uri": "stonehearth:weather:blizzard",
                "weight": [0, 1]
+            },
+            {
+               "uri": "stonehearth_ace:weather:snow:drifts",
+               "weight": [0, 0, 1]
             },				
 				{
                "uri": "stonehearth:weather:lucky",
@@ -204,6 +224,14 @@
             {
                "uri": "stonehearth:weather:blizzard",
                "weight": [1, 7, 3]
+            },
+            {
+               "uri": "stonehearth_ace:weather:whiteout",
+               "weight": [0, 5, 2]
+            },
+            {
+               "uri": "stonehearth_ace:weather:snow:drifts",
+               "weight": [1, 4, 3]
             },
             {
                "uri": "stonehearth:weather:lucky",

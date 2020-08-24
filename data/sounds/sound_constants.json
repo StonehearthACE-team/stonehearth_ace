@@ -67,17 +67,29 @@
       },
       "snow": {
          "day": {
+            "track": [
+               "stonehearth_ace:ambient:amb_autumn_winter_day_04"
+            ],
             "volume": 40
          },
          "night": {
+            "track": [
+               "stonehearth_ace:ambient:amb_autumn_winter_night_03"
+            ],
             "volume": 45
          }
       },
       "sunny": {
          "day": {
+            "track": [
+               "stonehearth_ace:ambient:amb_spring_summer_day_01"
+            ],
             "volume": 40
          },
          "night": {
+            "track": [
+               "stonehearth_ace:ambient:amb_spring_summer_night_01"
+            ],
             "volume": 45
          }
       },
@@ -111,6 +123,326 @@
          },
          "night": {
             "volume": 62
+         }
+      },
+      "cloudy_winter": {
+         "day": {
+            "track": [
+               "stonehearth_ace:ambient:amb_autumn_winter_day_01",
+               "stonehearth_ace:ambient:amb_autumn_winter_day_02",
+               "stonehearth_ace:ambient:amb_autumn_winter_day_03"
+            ],
+            "loop": true,
+            "fade_in": 2000,
+            "volume": 42
+         },
+         "night": {
+            "track": [
+               "stonehearth_ace:ambient:amb_autumn_winter_night_01",
+               "stonehearth_ace:ambient:amb_autumn_winter_night_02",
+               "stonehearth_ace:ambient:amb_autumn_winter_night_03",
+               "stonehearth_ace:ambient:amb_autumn_winter_night_04",
+               "stonehearth:ambient:amb_asc_summer_night_05"
+            ],
+            "loop": true,
+            "fade_in": 2000,
+            "volume": 48
+         }
+      },
+      "distant_storm": {
+         "day": {
+            "track": [
+               "stonehearth_ace:ambient:amb_distant_thunder_day_01",
+               "stonehearth_ace:ambient:amb_distant_thunder_day_02"
+            ],
+            "loop": true,
+            "fade_in": 2000,
+            "volume": 50
+         },
+         "night": {
+            "track": [
+               "stonehearth_ace:ambient:amb_distant_thunder_night_01",
+               "stonehearth_ace:ambient:amb_distant_thunder_night_02"
+            ],
+            "loop": true,
+            "fade_in": 2000,
+            "volume": 55
+         }
+      },
+      "foggy_winter": {
+         "day": {
+            "track": [
+               "stonehearth:ambient:foggy",
+               "stonehearth_ace:ambient:amb_foggy_winter_day_01"
+            ],
+            "loop": true,
+            "fade_in": 2000,
+            "volume": 42
+         },
+         "night": {
+            "track": [
+               "stonehearth:ambient:foggy",
+               "stonehearth_ace:ambient:amb_foggy_winter_night_01"
+            ],
+            "loop": true,
+            "fade_in": 2000,
+            "volume": 48
+         }
+      },
+      "hailstorm": {
+         "day": {
+            "track": [
+               "stonehearth_ace:ambient:amb_hailstorm"
+            ],
+            "loop": true,
+            "fade_in": 2000,
+            "volume": 75
+         },
+         "night": {
+            "track": [
+               "stonehearth_ace:ambient:amb_hailstorm"
+            ],
+            "loop": true,
+            "fade_in": 2000,
+            "volume": 85
+         }
+      },
+      "rain_winter": {
+         "day": {
+            "track": [
+               "stonehearth_ace:ambient:amb_rain_winter"
+            ],
+            "loop": true,
+            "fade_in": 2000,
+            "volume": 50
+         },
+         "night": {
+            "track": [
+               "stonehearth_ace:ambient:amb_rain_winter"
+            ],
+            "loop": true,
+            "fade_in": 2000,
+            "volume": 55
+         }
+      },
+      "snow_drifts": {
+         "day": {
+            "track": [
+               "stonehearth:ambient:blizzard",
+               "stonehearth_ace:ambient:amb_snow_drifts_day_01"
+            ],
+            "loop": true,
+            "fade_in": 2000,
+            "volume": 55
+         },
+         "night": {
+            "track": [
+               "stonehearth:ambient:blizzard",
+               "stonehearth_ace:ambient:amb_snow_drifts_night_01"
+            ],
+            "loop": true,
+            "fade_in": 2000,
+            "volume": 60
+         }
+      },
+      "snow_early": {
+         "day": {
+            "track": [
+               "stonehearth_ace:ambient:amb_autumn_winter_day_02",
+               "stonehearth_ace:ambient:amb_autumn_winter_day_03",
+               "stonehearth_ace:ambient:amb_autumn_winter_day_04"
+            ],
+            "loop": true,
+            "fade_in": 2000,
+            "volume": 42
+         },
+         "night": {
+            "track": [
+               "stonehearth_ace:ambient:amb_autumn_winter_night_03",
+               "stonehearth_ace:ambient:amb_autumn_winter_night_04",
+               "stonehearth_ace:ambient:amb_autumn_winter_night_05",
+               "stonehearth_ace:ambient:amb_autumn_winter_night_06"
+            ],
+            "loop": true,
+            "fade_in": 2000,
+            "volume": 48
+         }
+      },
+      "sunny_autumn": {
+         "day": {
+            "track": [
+               "stonehearth_ace:ambient:amb_autumn_winter_day_01",
+               "stonehearth_ace:ambient:amb_autumn_winter_day_02",
+               "stonehearth:ambient:amb_asc_summer_day_06"
+            ],
+            "loop": true,
+            "fade_in": 2000,
+            "volume": 42
+         },
+         "night": {
+            "track": [
+               "stonehearth_ace:ambient:amb_autumn_winter_night_01",
+               "stonehearth_ace:ambient:amb_autumn_winter_night_02",
+               "stonehearth:ambient:amb_asc_summer_night_05"
+            ],
+            "loop": true,
+            "fade_in": 2000,
+            "volume": 48
+         }
+      },
+      "sunny_chilly": {
+         "day": {
+            "track": [
+               "stonehearth_ace:ambient:amb_autumn_winter_day_03",
+               "stonehearth_ace:ambient:amb_autumn_winter_day_04",
+               "stonehearth:ambient:amb_asc_summer_day_05"
+            ],
+            "loop": true,
+            "fade_in": 2000,
+            "volume": 45
+         },
+         "night": {
+            "track": [
+               "stonehearth_ace:ambient:amb_autumn_winter_night_03",
+               "stonehearth_ace:ambient:amb_autumn_winter_night_05",
+               "stonehearth:ambient:amb_asc_summer_night_03"
+            ],
+            "loop": true,
+            "fade_in": 2000,
+            "volume": 50
+         }
+      },
+      "sunny_hot": {
+         "day": {
+            "track": [
+               "stonehearth_ace:ambient:amb_spring_summer_day_01",
+               "stonehearth_ace:ambient:amb_spring_summer_day_02",
+               "stonehearth_ace:ambient:amb_spring_summer_day_03",
+               "stonehearth:ambient:amb_asc_summer_day_01",
+               "stonehearth:ambient:amb_asc_summer_day_02"
+            ],
+            "loop": true,
+            "fade_in": 2000,
+            "volume": 44
+         },
+         "night": {
+            "track": [
+               "stonehearth_ace:ambient:amb_spring_summer_night_01",
+               "stonehearth_ace:ambient:amb_spring_summer_night_02",
+               "stonehearth_ace:ambient:amb_spring_summer_night_03",
+               "stonehearth:ambient:amb_asc_summer_night_01",
+               "stonehearth:ambient:amb_asc_summer_night_02"
+            ],
+            "loop": true,
+            "fade_in": 2000,
+            "volume": 50
+         }
+      },
+      "sunny_stagnant": {
+         "day": {
+            "track": [
+               "stonehearth_ace:ambient:amb_sunny_stagnant_day_01",
+               "stonehearth_ace:ambient:amb_sunny_stagnant_day_02"
+            ],
+            "loop": true,
+            "fade_in": 2000,
+            "volume": 46
+         },
+         "night": {
+            "track": [
+               "stonehearth_ace:ambient:amb_sunny_stagnant_night_01",
+               "stonehearth_ace:ambient:amb_sunny_stagnant_night_02"
+            ],
+            "loop": true,
+            "fade_in": 2000,
+            "volume": 52
+         }
+      },
+      "sunny_sweltering": {
+         "day": {
+            "track": [
+               "stonehearth_ace:ambient:amb_spring_summer_day_01",
+               "stonehearth_ace:ambient:amb_spring_summer_day_02",
+               "stonehearth_ace:ambient:amb_spring_summer_day_03",
+               "stonehearth_ace:ambient:amb_spring_summer_day_04",
+               "stonehearth_ace:ambient:amb_spring_summer_day_05"
+            ],
+            "loop": true,
+            "fade_in": 2000,
+            "volume": 42
+         },
+         "night": {
+            "track": [
+               "stonehearth_ace:ambient:amb_spring_summer_night_01",
+               "stonehearth_ace:ambient:amb_spring_summer_night_02",
+               "stonehearth_ace:ambient:amb_spring_summer_night_03",
+               "stonehearth_ace:ambient:amb_spring_summer_night_04"
+            ],
+            "loop": true,
+            "fade_in": 2000,
+            "volume": 48
+         }
+      },
+      "whiteout": {
+         "day": {
+            "track": [
+               "stonehearth_ace:ambient:amb_whiteout"
+            ],
+            "loop": true,
+            "fade_in": 2000,
+            "volume": 70
+         },
+         "night": {
+            "track": [
+               "stonehearth_ace:ambient:amb_whiteout"
+            ],
+            "loop": true,
+            "fade_in": 2000,
+            "volume": 80
+         }
+      },
+      "windy_chilly": {
+         "day": {
+            "track": [
+               "stonehearth_ace:ambient:amb_windy_chilly_day_01",
+               "stonehearth_ace:ambient:amb_windy_chilly_day_02",
+               "stonehearth_ace:ambient:amb_windy_chilly_day_03",
+               "stonehearth_ace:ambient:amb_autumn_winter_day_04"
+            ],
+            "loop": true,
+            "fade_in": 2000,
+            "volume": 50
+         },
+         "night": {
+            "track": [
+               "stonehearth_ace:ambient:amb_windy_chilly_night_01",
+               "stonehearth_ace:ambient:amb_autumn_winter_night_05",
+               "stonehearth_ace:ambient:amb_autumn_winter_night_06"
+            ],
+            "loop": true,
+            "fade_in": 2000,
+            "volume": 55
+         }
+      },
+      "windy_springtime": {
+         "day": {
+            "track": [
+               "stonehearth_ace:ambient:amb_windy_springtime_day_01",
+               "stonehearth_ace:ambient:amb_windy_springtime_day_02",
+               "stonehearth_ace:ambient:amb_windy_springtime_day_03"
+            ],
+            "loop": true,
+            "fade_in": 2000,
+            "volume": 46
+         },
+         "night": {
+            "track": [
+               "stonehearth_ace:ambient:amb_windy_springtime_night_01",
+               "stonehearth_ace:ambient:amb_windy_springtime_night_02"
+            ],
+            "loop": true,
+            "fade_in": 2000,
+            "volume": 54
          }
       }
    }

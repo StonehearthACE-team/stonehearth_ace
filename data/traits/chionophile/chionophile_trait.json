@@ -27,7 +27,11 @@
          "stonehearth:thoughts:weather:sunny_chilly_positive": "stonehearth:thoughts:traits:chionophile",
          "stonehearth:thoughts:weather:sunny_chilly_negative": "stonehearth:thoughts:traits:chionophile",
          "stonehearth:thoughts:weather:windy_chilly_positive": "stonehearth:thoughts:traits:chionophile",
-         "stonehearth:thoughts:weather:windy_chilly_negative": "stonehearth:thoughts:traits:chionophile"
+         "stonehearth:thoughts:weather:windy_chilly_negative": "stonehearth:thoughts:traits:chionophile",
+         "stonehearth:thoughts:weather:snow_drifts_positive": "stonehearth:thoughts:traits:chionophile",
+         "stonehearth:thoughts:weather:snow_drifts_negative": "stonehearth:thoughts:traits:chionophile",
+         "stonehearth:thoughts:weather:whiteout_positive": "stonehearth:thoughts:traits:chionophile",
+         "stonehearth:thoughts:weather:whiteout_negative": "stonehearth:thoughts:traits:chionophile"
       }
    },
    "subject_overrides": [
@@ -87,6 +91,18 @@
       },
       {
          "subject": "stonehearth_ace:subjects:weather:sunny:chilly",
+         "sentiment": 1,
+         "permanent": true,
+         "unvarying": true
+      },
+      {
+         "subject": "stonehearth_ace:subjects:weather:snow:drifts",
+         "sentiment": 1,
+         "permanent": true,
+         "unvarying": true
+      },
+      {
+         "subject": "stonehearth_ace:subjects:weather:whiteout",
          "sentiment": 1,
          "permanent": true,
          "unvarying": true

@@ -1,0 +1,71 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(bough_bale.qb)"
+            ]
+         },
+         "autumn": {
+            "models": [
+               "file(bough_bale_autumn.qb)"
+            ]
+         },
+         "spring": {
+            "models": [
+               "file(bough_bale_spring.qb)"
+            ]
+         }
+      },
+      "stonehearth:seasonal_model_switcher": {
+         "*": {
+            "spring": "spring",
+            "summer": "default",
+            "autumn": "autumn",
+            "winter": "autumn"
+         }
+      },
+      "mob": {
+         "model_origin": { "x": -0.05, "y": 0, "z": 0.05 }
+      },
+      "stonehearth:stacks": {
+         "max_stacks": 120
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 1,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.resources.bough_bale.display_name)",
+         "description": "i18n(stonehearth_ace:entities.resources.bough_bale.description)",
+         "icon": "file(bough_bale.png)",
+         "is_item": true,
+         "category": "resources",
+         "material_tags": [
+            "resource",
+            "thatch",
+            "bough_bale",
+            "stockpile_fuel",
+            "low_fuel",
+            "any_fuel",
+            "common_fuel",
+            "plant",
+            "stockpile_plant"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": -1
+      },
+      "stonehearth_ace:fuel": {
+         "fuel_amount": 3
+      }
+   }
+}

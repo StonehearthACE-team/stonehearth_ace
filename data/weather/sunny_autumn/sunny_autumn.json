@@ -2,24 +2,27 @@
    "display_name": "i18n(stonehearth_ace:data.weather.sunny.sunny_autumn.display_name)",
    "description": "i18n(stonehearth_ace:data.weather.sunny.sunny_autumn.description)",
    "icon": "file(sunny_autumn.png)",
-   "sky_settings": "stonehearth:sky_settings:sunny",
-   "unsheltered_resistance_buff": "stonehearth_ace:buffs:weather:hot_resist",
+   "sky_settings": "stonehearth_ace:sky_settings:sunny:autumn",
    "unsheltered_debuff": [
-      "stonehearth_ace:buffs:weather:hot"
+      "stonehearth_ace:buffs:weather:chilly",
+      "stonehearth_ace:buffs:weather:cold_breath"
    ],
    "unsheltered_animal_debuff": [
-      "stonehearth_ace:buffs:weather:hot:animal"
+      "stonehearth_ace:buffs:weather:cold_breath"
    ],
-   "ambient_sound_key": "sunny",
+   "unsheltered_npc_debuff": [
+      "stonehearth_ace:buffs:weather:chilly:npc",
+      "stonehearth_ace:buffs:weather:cold_breath"
+   ],
+   "ambient_sound_key": "sunny_autumn",
    "thoughts": [
       "stonehearth:thoughts:weather:sunny_autumn_negative",
-      "stonehearth:thoughts:weather:sunny_autumn_negative",
+      "stonehearth:thoughts:weather:sunny_autumn_positive",
+      "stonehearth:thoughts:weather:sunny_autumn_positive",
       "stonehearth:thoughts:weather:sunny_autumn_positive"
    ],
-   "is_bad_weather": true,
    "subject_matter": "stonehearth_ace:subjects:weather:sunny:autumn",
-   "snow_accumulation_per_minute": -0.003,
-   "humidity": -0.4,
+   "humidity": 0.2,
    "sunlight": 1,
-   "hot_weather": true
+   "cold_weather": true
 }

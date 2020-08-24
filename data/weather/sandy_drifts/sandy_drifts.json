@@ -2,24 +2,24 @@
    "display_name": "i18n(stonehearth_ace:data.weather.sandstorm.sandy_drifts.display_name)",
    "description": "i18n(stonehearth_ace:data.weather.sandstorm.sandy_drifts.description)",
    "icon": "file(sandy_drifts.png)",
-   "sky_settings": "stonehearth:sky_settings:sandy",
+   "sky_settings": "stonehearth_ace:sky_settings:sandy:drifts",
    "unsheltered_debuff": [
-      "stonehearth_ace:buffs:weather:drifts",
-      "stonehearth_ace:buffs:weather:cold_breath"
+      "stonehearth_ace:buffs:weather:hot"
    ],
    "unsheltered_animal_debuff": [
-      "stonehearth_ace:buffs:weather:cold_breath"
-   ],
-   "unsheltered_npc_debuff": [
-      "stonehearth_ace:buffs:weather:drifts:npc",
-      "stonehearth_ace:buffs:weather:cold_breath"
+      "stonehearth_ace:buffs:weather:hot:animal"
    ],
    "renderer": "stonehearth_ace:weather_renderers:sandy_drifts",
-   "ambient_sound_key": "sandy",
+   "ambient_sound_key": "sandstorm",
    "is_dark_during_daytime": true,
    "thoughts": [
       "stonehearth:thoughts:weather:sandy_drifts_negative",
+      "stonehearth:thoughts:weather:sandy_drifts_negative",
       "stonehearth:thoughts:weather:sandy_drifts_positive"
    ],
-   "cold_weather": true
+   "is_bad_weather": true,
+   "subject_matter": "stonehearth_ace:subjects:weather:sandy_drifts",
+   "humidity": -0.8,
+   "sunlight": 0.8,
+   "hot_weather": true
 }

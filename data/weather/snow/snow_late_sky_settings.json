@@ -1,0 +1,343 @@
+{
+   "sky_gradient": "file(/data/texture_gradient/skybox/snow_late/sky_gradient.png)",
+   "celestials": [
+      {
+         "name": "sun",
+         "shadows_enabled": true,
+         "light_colors": [
+            {
+               "time": "midnight",
+               "value": [0, 0, 0]
+            },
+            {
+               "time": "sunrise_start",
+               "value": [0, 0, 0]
+            },
+            {
+               "time": "sunrise_peak_start",
+               "value": [0.192, 0.204, 0.294]
+            },
+            {
+               "time": "sunrise_peak_end",
+               "value": [0.288, 0.353, 0.412]
+            },
+            {
+               "time": "sunrise_end",
+               "value": [0.349, 0.349, 0.471]
+            },
+            {
+               "time": "midday",
+               "value": [0.355, 0.355, 0.493]
+            },
+            {
+               "time": "sunset_start",
+               "value": [0.356, 0.427, 0.471]
+            },
+            {
+               "time": "sunset_peak_start",
+               "value": [0.353, 0.449, 0.42]
+            },
+            {
+               "time": "sunset_peak_mid",
+               "value": [0.239, 0.382, 0.309]
+            },
+            {
+               "time": "sunset_peak_end",
+               "value": [0.273, 0.227, 0.369]
+            },
+            {
+               "time": "sunset_end",
+               "value": [0, 0, 0]
+            }
+         ],
+         "ambient_colors": [
+            {
+               "time": "midnight",
+               "value": [0, 0, 0]
+            },
+            {
+               "time": "sunrise_start",
+               "value": [0, 0, 0]
+            },
+            {
+               "time": "sunrise_peak_start",
+               "value": [0.441, 0.345, 0.269]
+            },
+            {
+               "time": "sunrise_peak_end",
+               "value": [0.567, 0.441, 0.588]
+            },
+            {
+               "time": "sunrise_end",
+               "value": [0.621, 0.556, 0.713]
+            },
+            {
+               "time": "midday",
+               "value": [0.591, 0.578, 0.794]
+            },
+            {
+               "time": "sunset_start",
+               "value": [0.62, 0.557, 0.714]
+            },
+            {
+               "time": "sunset_peak_start",
+               "value": [0.5, 0.373, 0.309]
+            },
+            {
+               "time": "sunset_peak_end",
+               "value": [0.404, 0.29, 0.265]
+            },
+            {
+               "time": "sunset_end",
+               "value": [0, 0, 0]
+            }
+         ],
+         "angles": [
+            {
+               "time": "sunrise_start",
+               "value": [0, 115, 0]
+            },
+            {
+               "time": "sunrise_peak_start",
+               "value": [-15, 105, 0]
+            },
+            {
+               "time": "sunrise_peak_end",
+               "value": [-45, 100, 0]
+            },
+            {
+               "time": "midday",
+               "value": [-90, 90, 0]
+            },
+            {
+               "time": "sunset_start",
+               "value": [-135, 80, 0]
+            },
+            {
+               "time": "sunset_end",
+               "value": [-165, 75, 0]
+            },
+            {
+               "time": "day_length",
+               "value": [-180, 65, 0]
+            }
+         ],
+         "depth_offset_values": [
+            {
+               "time": "sunrise_start",
+               "value": [0.001, 0, 0]
+            },
+            {
+               "time": "sunrise_end",
+               "value": [0.001, 0, 0]
+            },
+            {
+               "time": "midday",
+               "value": [0.001, 0, 0]
+            },
+            {
+               "time": "sunset_start",
+               "value": [0.001, 0, 0]
+            },
+            {
+               "time": "sunset_end",
+               "value": [0.001, 0, 0]
+            }
+         ]
+      },
+      {
+         "name": "moon",
+         "shadows_enabled": true,
+         "light_colors": [
+            {
+               "time": "midnight",
+               "value": [0.227, 0.232, 0.369]
+            },
+            {
+               "time": "sunrise_start",
+               "value": [0.192, 0.204, 0.294]
+            },
+            {
+               "time": "sunrise_peak_start",
+               "value": [0, 0, 0]
+            },
+            {
+               "time": "sunrise_peak_end",
+               "value": [0, 0, 0]
+            },
+            {
+               "time": "sunrise_end",
+               "value": [0, 0, 0]
+            },
+            {
+               "time": "sunset_peak_end",
+               "value": [0, 0, 0]
+            },
+            {
+               "time": "sunset_end",
+               "value": [0.275, 0.227, 0.369]
+            },
+            {
+               "time": "day_length",
+               "value": [0.227, 0.232, 0.369]
+            }
+         ],
+         "ambient_colors": [
+            {
+               "time": "midnight",
+               "value": [0.346, 0.234, 0.327]
+            },
+            {
+               "time": "sunrise_start",
+               "value": [0.439, 0.345, 0.271]
+            },
+            {
+               "time": "sunrise_peak_start",
+               "value": [0, 0, 0]
+            },
+            {
+               "time": "sunset_peak_end",
+               "value": [0, 0, 0]
+            },
+            {
+               "time": "sunset_end",
+               "value": [0.404, 0.29, 0.267]
+            },
+            {
+               "time": "day_length",
+               "value": [0.279, 0.179, 0.268]
+            }
+         ],
+         "angles": [
+            {
+               "time": "midnight",
+               "value": [-90, 90, 0]
+            },
+            {
+               "time": "sunrise_peak_end",
+               "value": [-165, 90, 0]
+            },
+            {
+               "time": "sunset_peak_start",
+               "value": [-15, 90, 0]
+            },
+            {
+               "time": "day_length",
+               "value": [-90, 90, 0]
+            }
+         ],
+         "depth_offset_values": [
+            {
+               "time": "midnight",
+               "value": [0.001, 0, 0]
+            },
+            {
+               "time": "day_length",
+               "value": [0.001, 0, 0]
+            }
+         ]
+      }
+   ],
+   "params": {
+      "height_fog": [
+         {
+            "time": "midnight",
+            "value": [75, 0.7, 5, 100]
+         },
+         {
+            "time": "sunrise_peak_mid",
+            "value": [70, 0.65, 5, 150]
+         },
+         {
+            "time": "midday",
+            "value": [65, 0.6, 5, 200]
+         },
+         {
+            "time": "sunset_peak_mid",
+            "value": [70, 0.65, 5, 150]
+         },
+         {
+            "time": "day_length",
+            "value": [75, 0.7, 5, 100]
+         }
+      ],
+      "height_fog2": [
+         {
+            "time": "midnight",
+            "value": [0.5, 0.5, 1]
+         },
+         {
+            "time": "day_length",
+            "value": [0.5, 0.5, 1]
+         }
+      ],
+      "height_fog_color_mult": [
+         {
+            "time": "midnight",
+            "value": [0.267, 0.269, 0.286, 1]
+         },
+         {
+            "time": "sunrise_peak_mid",
+            "value": [0.314, 0.315, 0.325, 1]
+         },
+         {
+            "time": "sunrise_end",
+            "value": [0.557, 0.565, 0.588, 1]
+         },
+         {
+            "time": "midday",
+            "value": [0.912, 0.945, 1, 1]
+         },
+         {
+            "time": "sunset_start",
+            "value": [0.555, 0.569, 0.59, 1]
+         },
+         {
+            "time": "sunset_peak_mid",
+            "value": [0.314, 0.316, 0.325, 1]
+         },
+         {
+            "time": "day_length",
+            "value": [0.267, 0.269, 0.286, 1]
+         }
+      ],
+      "scattering": [
+         {
+            "time": "midnight",
+            "value": [0, 1, 1, 120]
+         },
+         {
+            "time": "midday",
+            "value": [0, 1, 1, 100]
+         },
+         {
+            "time": "day_length",
+            "value": [0, 1, 1, 120]
+         }
+      ]
+   },
+   "colors": {
+      "starfield_brightness": [
+         {
+            "time": "midnight",
+            "value": [0, 0, 0]
+         },
+         {
+            "time": "sunrise_start",
+            "value": [0, 0, 0]
+         },
+         {
+            "time": "sunrise_end",
+            "value": [0, 0, 0]
+         },
+         {
+            "time": "sunset_start",
+            "value": [0, 0, 0]
+         },
+         {
+            "time": "sunset_end",
+            "value": [0, 0, 0]
+         }
+      ]
+   }
+}

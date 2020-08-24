@@ -2,12 +2,20 @@
    "data": {
       "thought_replacement_map": {
          "stonehearth:thoughts:weather:rain_chilly_positive": "stonehearth:thoughts:traits:pluviophile",
-         "stonehearth:thoughts:weather:rain_chilly_negative": "stonehearth:thoughts:traits:pluviophile"
+         "stonehearth:thoughts:weather:rain_chilly_negative": "stonehearth:thoughts:traits:pluviophile",
+			"stonehearth:thoughts:weather:hailstorm_positive": "stonehearth:thoughts:traits:pluviophile",
+         "stonehearth:thoughts:weather:hailstorm_negative": "stonehearth:thoughts:traits:pluviophile"
       }
    },
    "subject_overrides": [
       {
          "subject": "stonehearth_ace:subjects:weather:rain:chilly",
+         "sentiment": 1,
+         "permanent": true,
+         "unvarying": true
+      },
+		{
+         "subject": "stonehearth_ace:subjects:weather:hailstorm",
          "sentiment": 1,
          "permanent": true,
          "unvarying": true

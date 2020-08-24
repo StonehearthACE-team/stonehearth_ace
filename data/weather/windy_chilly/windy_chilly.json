@@ -2,7 +2,7 @@
    "display_name": "i18n(stonehearth_ace:data.weather.windy.windy_chilly.display_name)",
    "description": "i18n(stonehearth_ace:data.weather.windy.windy_chilly.description)",
    "icon": "file(windy_chilly.png)",
-   "sky_settings": "stonehearth:sky_settings:windy",
+   "sky_settings": "stonehearth_ace:sky_settings:windy:chilly",
    "unsheltered_debuff": [
       "stonehearth_ace:buffs:weather:chilly",
       "stonehearth_ace:buffs:weather:cold_breath"
@@ -15,7 +15,7 @@
       "stonehearth_ace:buffs:weather:cold_breath"
    ],
    "renderer": "stonehearth_ace:weather_renderers:windy_chilly",
-   "ambient_sound_key": "windy",
+   "ambient_sound_key": "windy_chilly",
    "is_dark_during_daytime": true,
    "thoughts": [
       "stonehearth:thoughts:weather:windy_chilly_negative",

@@ -2,8 +2,7 @@
    "display_name": "i18n(stonehearth_ace:data.weather.hailstorm.display_name)",
    "description": "i18n(stonehearth_ace:data.weather.hailstorm.description)",
    "icon": "file(hailstorm.png)",
-   "sky_settings": "stonehearth:sky_settings:hailstorm",
-   "controller": "stonehearth:weather_scripts:hailstorm",
+   "sky_settings": "stonehearth_ace:sky_settings:hailstorm",
    "ambient_sound_key": "hailstorm",
    "thoughts": [
       "stonehearth:thoughts:weather:hailstorm_negative",
@@ -12,11 +11,21 @@
       "stonehearth:thoughts:weather:hailstorm_negative",
       "stonehearth:thoughts:weather:hailstorm_positive"
    ],
-   "camera_attached_effect": "stonehearth:effects:tstorm_effect",
-   "subject_matter": "stonehearth:subjects:weather:hailstorm",
-   "plant_growth_time_multiplier": 0.8,
+   "camera_attached_effect": "stonehearth_ace:effects:hailstorm_effect",
+   "subject_matter": "stonehearth_ace:subjects:weather:hailstorm",
+   "unsheltered_debuff": [
+      "stonehearth_ace:buffs:weather:soaked"
+   ],
+   "unsheltered_animal_debuff": [
+      "stonehearth_ace:buffs:weather:soaked:animal"
+   ],
+   "unsheltered_npc_debuff": [
+      "stonehearth_ace:buffs:weather:soaked"
+   ],
+   "is_bad_weather": true,
+   "humidity": 3.5,
+   "sunlight": 0.4,
    "vision_multiplier": 0.6,
    "hide_cloud_shadows": true,
-   "snow_accumulation_per_minute": -0.0015,
    "is_dark_during_daytime": true
 }

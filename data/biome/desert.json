@@ -18,6 +18,10 @@
                "uri": "stonehearth:weather:thunderstorm",
                "weight": [2, 1, 0]
             },
+				{
+               "uri": "stonehearth_ace:weather:distant_storm",
+               "weight": [2, 1, 0]
+            },	
             {
                "uri": "stonehearth:weather:rain",
                "weight": [2, 1, 1]
@@ -78,10 +82,18 @@
 				{
                "uri": "stonehearth_ace:weather:sunny:sweltering",
                "weight": [2, 3, 1]
+            },
+				{
+               "uri": "stonehearth_ace:weather:sunny:stagnant",
+               "weight": [2, 3, 2]
             },				
             {
                "uri": "stonehearth:weather:sandy",
                "weight": [0, 3, 1]
+            },
+            {
+               "uri": "stonehearth_ace:weather:sandy:drifts",
+               "weight": [1, 2, 1]
             },
             {
                "uri": "stonehearth:weather:sandstorm",
@@ -102,6 +114,10 @@
          "weather": [
 				{
                "uri": "stonehearth_ace:weather:sunny:hot",
+               "weight": [1, 0]
+            },
+            {
+               "uri": "stonehearth_ace:weather:sandy:drifts",
                "weight": [1, 0]
             },
             {

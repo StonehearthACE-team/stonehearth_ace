@@ -17,7 +17,11 @@
          "stonehearth:thoughts:weather:rain_sunny_positive": "stonehearth:thoughts:traits:heliophile",
          "stonehearth:thoughts:weather:rain_sunny_negative": "stonehearth:thoughts:traits:heliophile",
          "stonehearth:thoughts:weather:snow_sunny_positive": "stonehearth:thoughts:traits:heliophile",
-         "stonehearth:thoughts:weather:snow_sunny_negative": "stonehearth:thoughts:traits:heliophile"
+         "stonehearth:thoughts:weather:snow_sunny_negative": "stonehearth:thoughts:traits:heliophile",
+         "stonehearth:thoughts:weather:sunny_stagnant_positive": "stonehearth:thoughts:traits:heliophile",
+         "stonehearth:thoughts:weather:sunny_stagnant_negative": "stonehearth:thoughts:traits:heliophile",
+         "stonehearth:thoughts:weather:sunny_autumn_positive": "stonehearth:thoughts:traits:heliophile",
+         "stonehearth:thoughts:weather:sunny_autumn_negative": "stonehearth:thoughts:traits:heliophile"
       }
    },
    "subject_overrides": [
@@ -53,6 +57,18 @@
       },
       {
          "subject": "stonehearth_ace:subjects:weather:sunny:sweltering",
+         "sentiment": 1,
+         "permanent": true,
+         "unvarying": true
+      },
+      {
+         "subject": "stonehearth_ace:subjects:weather:sunny:stagnant",
+         "sentiment": 1,
+         "permanent": true,
+         "unvarying": true
+      },
+      {
+         "subject": "stonehearth_ace:subjects:weather:sunny:autumn",
          "sentiment": 1,
          "permanent": true,
          "unvarying": true
