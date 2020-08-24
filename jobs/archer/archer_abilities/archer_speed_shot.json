@@ -1,9 +1,22 @@
 {
    "type": "entity",
-   "components": {
-      "stonehearth:equipment_piece": {
-			"slot": "combat_default_skill",
-         "no_drop": true
-		}
+   "entity_data": {
+		"mixintypes": {
+			"stonehearth:combat:ranged_attacks": "override"
+		},
+      "stonehearth:combat:ranged_attacks": [
+         {
+            "name": "archer_draw_speed_up",
+            "effect": "archer_1h_shoot_fast",
+				"required_equipment": {
+					"mainhand": [
+						"bow"
+					]
+				},
+            "active_frame": 21,
+            "cooldown": 0,
+            "priority": 0
+         }
+      ]
    }
 }

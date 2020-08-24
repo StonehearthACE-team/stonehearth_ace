@@ -230,15 +230,57 @@
                   },
                   "hunk_of_stone": {
                      "uri": "stonehearth:resources:stone:hunk_of_stone",
-                     "weight": 50
+                     "weight": 50,
+                     "quality": [
+                        [
+                           4,
+                           0.005
+                        ],
+                        [
+                           3,
+                           0.1
+                        ],
+                        [
+                           2,
+                           0.6
+                        ]
+                     ]
                   },
                   "iron_ore": {
                      "uri": "stonehearth:resources:iron:ore",
-                     "weight": 80
+                     "weight": 80,
+                     "quality": [
+                        [
+                           4,
+                           0.002
+                        ],
+                        [
+                           3,
+                           0.08
+                        ],
+                        [
+                           2,
+                           0.5
+                        ]
+                     ]
                   },
                   "gold_ore": {
                      "uri": "stonehearth:resources:gold:ore",
-                     "weight": 10
+                     "weight": 10,
+                     "quality": [
+                        [
+                           4,
+                           0.001
+                        ],
+                        [
+                           3,
+                           0.06
+                        ],
+                        [
+                           2,
+                           0.4
+                        ]
+                     ]
                   }
                }
             }

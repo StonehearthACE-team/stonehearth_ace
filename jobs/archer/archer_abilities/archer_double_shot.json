@@ -1,9 +1,26 @@
 {
    "type": "entity",
-   "components": {
-      "stonehearth:equipment_piece": {
-			"slot": "combat_skill_1",
-         "no_drop": true
-		}
+   "entity_data": {
+		"mixintypes": {
+			"stonehearth:combat:ranged_attacks": "override"
+		},
+      "stonehearth:combat:ranged_attacks": [
+         {
+            "name": "archer_double_shot",
+            "effect": "archer_1h_double_shot",
+				"required_equipment": {
+					"mainhand": [
+						"bow"
+					]
+				},
+            "active_frame": 21,
+            "active_frames": [
+               21,
+               24
+            ],
+            "cooldown": 8000,
+            "priority": 0
+         }
+      ]
    }
 }
