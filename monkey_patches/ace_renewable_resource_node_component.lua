@@ -1,5 +1,6 @@
 local LootTable = require 'stonehearth.lib.loot_table.loot_table'
 local item_quality_lib = require 'stonehearth_ace.lib.item_quality.item_quality_lib'
+local util = require 'stonehearth_ace.lib.util'
 local log = radiant.log.create_logger('renewable_resource_node')
 
 local Point3 = _radiant.csg.Point3
@@ -55,6 +56,14 @@ function AceRenewableResourceNodeComponent:post_activate()
       end)
    else
       self:_create_listeners()
+   end
+
+   local loot_table_filter_script = self._json.loot_table_filter_script
+   if loot_table_filter_script == nil then
+      self._loot_table_filter_script = 'stonehearth_ace:loot_table:filter_scripts:no_items_with_property_value'
+   else
+      self._loot_table_filter_script = loot_table_filter_script
+      self._loot_table_filter_args = self._json.loot_table_filter_args
    end
 end
 
@@ -436,7 +445,8 @@ function AceRenewableResourceNodeComponent:_place_spawned_items(json, harvester,
    local item
    local failed
    if json.resource_loot_table then
-      local uris = LootTable(json.resource_loot_table, quality):roll_loot()
+      local filter_args = self._loot_table_filter_args or (self._loot_table_filter_script and util.get_current_conditions_loot_table_filter_args())
+      local uris = LootTable(json.resource_loot_table, quality, self._loot_table_filter_script, filter_args):roll_loot()
       if next(uris) then
          local output_items = radiant.entities.output_items(uris, location, 1, 3, { owner = owner }, self._entity, harvester, spill_items)
          spawned_items = output_items.spilled

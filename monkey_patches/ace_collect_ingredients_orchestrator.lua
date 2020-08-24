@@ -55,10 +55,10 @@ function AceCollectIngredients:run(town, args)
             end
 				
 				if radiant.entities.is_material(item, 'undesirable_ingredient') then
-               rating = rating * 0.9
+               return rating * 0.1
             end
 
-            return rating
+            return rating * 0.5
 				
             -- local p1 = entity_location or radiant.entities.get_world_grid_location(entity)
             -- local p2 = storage_location or radiant.entities.get_world_grid_location(item)
@@ -85,10 +85,10 @@ function AceCollectIngredients:run(town, args)
             end
 				
 				if radiant.entities.is_material(item, 'undesirable_ingredient') then
-               rating = rating * 0.9
+               return rating * 0.1
             end
 
-            return rating
+            return rating * 0.5
 
             -- local p1 = entity_location or radiant.entities.get_world_grid_location(entity)
             -- local p2 = storage_location or radiant.entities.get_world_grid_location(item)

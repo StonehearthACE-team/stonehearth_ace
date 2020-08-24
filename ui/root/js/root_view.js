@@ -13,6 +13,10 @@ App.RootView.reopen({
       self._game_mode_manager.addCustomMode("fence", "hud", null, "AceBuildFenceModeView");
       //self._game_mode_manager.addCustomMode("planter", "normal", null, "AceHerbalistPlanterView");
       self._game_mode_manager.addCustomEntityModeCheck(self._ACE_getCustomModeForEntity);
+
+      App.getGameModeManager = function() {
+         return self._game_mode_manager;
+      };
    },
 
    _ACE_getCustomModeForEntity: function(modes, entity) {

@@ -7,7 +7,7 @@
 local SelectorBase = require 'stonehearth.services.client.selection.selector_base'
 local selector_util = require 'stonehearth.services.client.selection.selector_util'
 local csg_lib = require 'stonehearth.lib.csg.csg_lib'
-local RulerWidget = require 'stonehearth.services.client.selection.ruler_widget'
+local XYZRulerWidget = require 'stonehearth_ace.services.client.selection.xyz_ruler_widget'
 local Color4 = _radiant.csg.Color4
 local Point3 = _radiant.csg.Point3
 local Cube3 = _radiant.csg.Cube3
@@ -24,13 +24,16 @@ radiant.mixin(XYZRangeSelector, SelectorBase)
 
 local OFFSCREEN = Point3(0, -100000, 0)
 local INVALID_CURSOR = 'stonehearth:cursors:invalid_hover'
+local REMOVE_CURSOR = 'stonehearth:cursors:clear'
 local log = radiant.log.create_logger('xyz_range_selector')
 
-local DEFAULT_BOX_COLOR = Color4(192, 192, 192, 255)
+local DEFAULT_BOX_COLOR = Color4(80, 192, 0, 255)
+local DEFAULT_CANCEL_BOX_COLOR = Color4(240, 24, 24, 255)
 
 local INTERSECTION_NODE_NAME = 'xyz range selector intersection node'
 local MAX_RESONABLE_DRAG_DISTANCE = 512
 local MODEL_OFFSET = Point3(0.5, 0, 0.5)
+local RENDER_INFLATION = Point3(-0.02, -0.02, -0.02)
 local TERRAIN_NODES = 1
 
 function XYZRangeSelector:__init(reason)
@@ -43,11 +46,13 @@ function XYZRangeSelector:__init(reason)
    self._show_rulers = true
    self._rotation = 1
    self._length = 0
+   self._ignore_children = true
    self._select_front_brick = true
    self._validation_offset = Point3(0, 0, 0)
    self._allow_select_cursor = false
    self._allow_unselectable_support_entities = false
    self._invalid_cursor = INVALID_CURSOR
+   self._remove_cursor = REMOVE_CURSOR
    self._valid_region_cache = Region3()
    self._on_keyboad_event_fn = nil
    self._on_mouse_event_fn = nil
@@ -61,8 +66,10 @@ function XYZRangeSelector:__init(reason)
       return Point3(q0), Point3(q1)   -- return a copy to be safe
    end
 
-   self._cursor_fn = function(selected_cube, stabbed_normal)
-      if not selected_cube then
+   self._cursor_fn = function(selected_cube, normal)
+      if self:is_current_rotation_in_use() then
+         return self._remove_cursor
+      elseif not selected_cube then
          return self._invalid_cursor
       end
       return self._cursor
@@ -80,8 +87,9 @@ function XYZRangeSelector:_shift_down()
 end
 
 -- "rotations" are considered relative to this entity (in terms of its position and rotation)
-function XYZRangeSelector:set_relative_entity(entity)
+function XYZRangeSelector:set_relative_entity(entity, ignore_children)
    self._relative_entity = entity
+   self._ignore_children = ignore_children ~= false   -- default to true
    return self
 end
 
@@ -91,6 +99,7 @@ end
 -- { origin = Point3, dimension = string, direction = Point3, min_length = number, max_length = number }
 function XYZRangeSelector:set_rotations(rotations)
    self._rotations = rotations
+   self._rotations_in_use = {}
    self._region_needs_refresh = true
    return self
 end
@@ -121,10 +130,26 @@ function XYZRangeSelector:_get_length()
    return math.max(rotation.min_length, math.min(rotation.max_length, self._length or rotation.max_length))
 end
 
-function XYZRangeSelector:set_render_params(material, color, custom_fn)
-   self._render_material = material or (not custom_fn and '/stonehearth/data/horde/materials/transparent_box_nodepth.material.json')
-   self._render_color = color or (not custom_fn and Color4(80, 192, 0, 255))
+function XYZRangeSelector:set_rotation_in_use(index, in_use)
+   self._rotations_in_use[index] = in_use
+   return self
+end
+
+function XYZRangeSelector:set_multi_select_enabled(enabled)
+   self._multi_select_enabled = enabled
+   return self
+end
+
+function XYZRangeSelector:set_render_params(material, color, cancel_color)
+   self._render_material = material or '/stonehearth/data/horde/materials/transparent_box_nodepth.material.json'
+   self._render_color = color or DEFAULT_BOX_COLOR
+   self._render_cancel_color = cancel_color or DEFAULT_CANCEL_BOX_COLOR
+   return self
+end
+
+function XYZRangeSelector:set_custom_render_fn(custom_fn, disable_default_render)
    self._render_custom_fn = custom_fn
+   self._disable_default_render = custom_fn and disable_default_render
    return self
 end
 
@@ -189,6 +214,11 @@ end
 
 function XYZRangeSelector:set_invalid_cursor(invalid_cursor)
    self._invalid_cursor = invalid_cursor
+   return self
+end
+
+function XYZRangeSelector:set_remove_cursor(remove_cursor)
+   self._remove_cursor = remove_cursor
    return self
 end
 
@@ -365,17 +395,26 @@ function XYZRangeSelector:_update()
    end
 
    local current_region = self:get_current_region()
+   self._camera_forward = _radiant.renderer.get_camera():get_forward()
 
-   self:_update_rulers(current_region)
-   self:_update_cursor(current_region, self._stabbed_normal)
+   self:_update_rulers(current_region, self._camera_forward)
+   self:_update_cursor(current_region, self._camera_forward)
 
-   local rotation = self:get_rotation()
+   --local rotation = self:get_rotation()
    local length = self:_get_length()
 
    if self._action == 'notify' then
-      self:notify(rotation, length, current_region)
+      self:notify(false, self._rotation, length, current_region)
+   elseif self._action == 'notify_resolve' then
+      local region, point, in_use
+      in_use = self:is_current_rotation_in_use()
+      if not in_use then
+         region, point = self:get_final_region_and_point(length)
+      end
+      self:notify(true, self._rotation, in_use and 0 or length, region, point)
    elseif self._action == 'resolve' then
-      self:resolve(self._rotation, length, current_region, self:get_point_in_current_direction(length))
+      local region, point = self:get_final_region_and_point(length)
+      self:resolve(self._rotation, length, region, point)
    else
       log:error('uknown action: %s', self._action)
       assert(false)
@@ -392,6 +431,18 @@ function XYZRangeSelector:_world_to_local(pt, entity)
    return new_pt
 end
 
+function XYZRangeSelector:_local_to_world(pt)
+   local entity = self._relative_entity
+   if not entity then
+      return pt
+   end
+   
+   local mob = entity:add_component('mob')
+   local new_pt = pt:rotated(-mob:get_facing()) + mob:get_world_grid_location()
+
+   return new_pt
+end
+
 function XYZRangeSelector:_on_mouse_event(event)
    if not event then
       return false
@@ -402,8 +453,13 @@ function XYZRangeSelector:_on_mouse_event(event)
       self._action = 'reject'
       event_consumed = true
    elseif event:up(1) then
-      self._action = 'resolve'
-      event_consumed = true
+      if self._multi_select_enabled then
+         self._action = 'notify_resolve'
+         event_consumed = true
+      else
+         self._action = 'resolve'
+         event_consumed = true
+      end
    else
       self._action = 'notify'
 
@@ -475,20 +531,21 @@ function XYZRangeSelector:_on_keyboard_event(e)
    return event_consumed
 end
 
-function XYZRangeSelector:_update_rulers(region)
+function XYZRangeSelector:_update_rulers(region, forward)
    if not self._show_rulers or not self._x_ruler or not self._y_ruler or not self._z_ruler then
       return
    end
 
    if region then
-      local bounds = region:get_bounds()
+      local r = self._relative_entity and radiant.entities.local_to_world(region, self._relative_entity) or region
+      local bounds = r:get_bounds()
       local q0, q1 = bounds.min, bounds.max
 
       local rotation = self:get_rotation()
       if rotation then
-         self:_update_ruler(self._x_ruler, q0, q1, 'x')
-         self:_update_ruler(self._y_ruler, q0, q1, 'y')
-         self:_update_ruler(self._z_ruler, q0, q1, 'z')
+         self:_update_ruler(self._x_ruler, q0, q1, 'x', forward)
+         self:_update_ruler(self._y_ruler, q0, q1, 'y', forward)
+         self:_update_ruler(self._z_ruler, q0, q1, 'z', forward)
 
          return
       end
@@ -499,9 +556,33 @@ function XYZRangeSelector:_update_rulers(region)
    self._z_ruler:hide()
 end
 
-function XYZRangeSelector:_update_ruler(ruler, p0, p1, dimension)
+function XYZRangeSelector:_update_ruler(ruler, p0, p1, dimension, forward)
    local d = dimension
-   local dn = d == 'x' and 'z' or 'x'
+   local start = Point3(p1)
+   local finish = Point3(p0)
+   if forward.x >= 0 then
+      start.x, finish.x = finish.x, start.x
+   end
+   if forward.z >= 0 then
+      start.z, finish.z = finish.z, start.z
+   end
+   
+   -- TODO: is forward backward?!
+   local normal
+   if d == 'y' then
+      normal = self:_get_normal_from_forward(forward)
+      -- we determine a normal vector on the x-z plane
+      -- then we determine the orthogonal dimension to that vector
+      -- change the start point so that its value in that orthogonal dimension is instead the finish point's value
+      -- this implementation is a hacky way of avoiding actually determining the dimension, and just applying the change to both x and z
+      start.x = start.x + math.abs(normal.z) * (finish.x - start.x)
+      start.z = start.z + math.abs(normal.x) * (finish.z - start.z)
+   else
+      normal = Point3(0, 0, 0)
+      local dn = d == 'x' and 'z' or 'x'
+      normal[dn] = forward[dn] >= 0 and -1 or 1
+   end
+
    local min = math.min(p0[d], p1[d])
    local max = math.max(p0[d], p1[d])
    local length = math.floor(max - min + 0.5)
@@ -513,29 +594,26 @@ function XYZRangeSelector:_update_ruler(ruler, p0, p1, dimension)
    local color = self._ruler_color_valid --or self._ruler_color_invalid
    ruler:set_color(color)
 
-   local min_point = Point3(p1)
-   min_point[d] = min
-
-   local max_point = Point3(p1)
-   max_point[d] = max
-
-   min_point[dn] = min_point[dn] - 1
-      max_point = max_point - Point3(1, 0, 1)
-
-   -- don't use Point3.zero since we need it to be mutable
-   local normal = Point3(0, 0, 0)
-   normal[dn] = p0[dn] <= p1[dn] and 1 or -1
-
-   ruler:set_points(min_point, max_point, normal, string.format('%d', length))
+   ruler:set_points(start, finish, dimension, normal, string.format('%d', length))
    ruler:show()
 end
 
-function XYZRangeSelector:_update_cursor(box, stabbed_normal)
-   local cursor = self._cursor_fn and self._cursor_fn(box, stabbed_normal)
+function XYZRangeSelector:_get_normal_from_forward(forward)
+   local dim = math.abs(forward.x) > math.abs(forward.z) and 'z' or 'x'
+   local normal = Point3(0, 0, 0)
+   normal[dim] = forward[dim] >= 0 and -1 or 1
+   return normal
+end
+
+function XYZRangeSelector:_update_cursor(box, forward)
+   local normal = self:_get_normal_from_forward(forward)
+   local cursor = self._cursor_fn and self._cursor_fn(box, normal)
 
    if cursor == self._current_cursor then
       return
    end
+
+   self._current_cursor = cursor
 
    if self._cursor_obj then
       self._cursor_obj:destroy()
@@ -549,54 +627,107 @@ end
 
 function XYZRangeSelector:get_point_in_current_direction(distance)
    local rotation = self:get_rotation()
-   return rotation and (rotation.origin + rotation.direction * distance)
+   local distance_mod = rotation.support_last_block and 1 or 0
+   return rotation and (rotation.origin + rotation.direction * math.max(0, distance - distance_mod))
 end
 
-function XYZRangeSelector:_recalc_current_region()
-   self._region_needs_refresh = false
-
+function XYZRangeSelector:_recalc_current_region(final_point)
    local rotation = self:get_rotation()
    local length = self:_get_length()
    local node = self._intersection_nodes[self._rotation]
+   local region
 
    if length and rotation and node and length > 0 then
-      local cube = csg_lib.create_cube(rotation.origin, rotation.origin + rotation.direction * (length - 1))
+      local support_last_block = final_point and rotation.support_last_block
+      local cube
+      if support_last_block then
+         length = length - 1
+      end
+      if length > 0 then
+         cube = csg_lib.create_cube(rotation.origin, rotation.origin + rotation.direction * (length - 1))
+      end
 
       -- make sure there are no entities with collision in this cube (or check custom filter)
       local cube_is_good = true
-      local entities = radiant.terrain.get_entities_in_cube(cube)
-      for _, entity in pairs(entities) do
-         if (self._can_contain_entity_filter_fn and not self._can_contain_entity_filter_fn(entity, self)) then
-            cube_is_good = false
-            break
-         else
-            local rcs = entity:get_component('region_collision_shape')
-            local rc_type = rcs and rcs:get_region_collision_type()
-            if rc_type == RegionCollisionType.SOLID or rc_type == RegionCollisionType.PLATFORM then
+      if cube then
+         local world_cube = self._relative_entity and radiant.entities.local_to_world(cube, self._relative_entity) or cube
+         local entities = radiant.terrain.get_entities_in_cube(world_cube)
+         for _, entity in pairs(entities) do
+            if self._relative_entity and self._ignore_children and radiant.entities.is_child_of(entity, self._relative_entity) then
+               -- ignore
+            elseif self._can_contain_entity_filter_fn and not self._can_contain_entity_filter_fn(entity, self) then
                cube_is_good = false
                break
+            else
+               local rcs = entity:get_component('region_collision_shape')
+               local rc_type = rcs and rcs:get_region_collision_type()
+               if rc_type == RegionCollisionType.SOLID or rc_type == RegionCollisionType.PLATFORM then
+                  cube_is_good = false
+                  break
+               end
             end
          end
       end
 
       if cube_is_good then
-         self._current_region = Region3(cube)
+         region = Region3()
+         if cube then
+            region:add_cube(cube)
+         end
+
+         if support_last_block then
+            -- determine if the block at the end point needs support, and if so, add the necessary block under it and on the normal sides
+            local local_point = final_point - Point3.unit_y
+            self:_add_point_if_not_solid(region, local_point)
+
+            -- this is a hack for now, just to see if it's at all reasonable
+            local normal = Point3.unit_x
+            if rotation.direction.x ~= 0 then
+               normal = Point3.unit_z
+            end
+
+            self:_add_point_if_not_solid(region, final_point + normal)
+            self:_add_point_if_not_solid(region, final_point - normal)
+         end
       end
-   else
-      self._current_region = nil
    end
 
-   self:_update_render()
+   return region
+end
 
-   return self._current_region
+function XYZRangeSelector:_add_point_if_not_solid(region, local_point)
+   local world_point = self:_local_to_world(local_point)
+   if not radiant.entities.is_solid_location(world_point) then
+      region:add_cube(Cube3(local_point))
+   end
 end
 
 function XYZRangeSelector:get_current_region()
    if not self._current_region or self._region_needs_refresh then
-      self:_recalc_current_region()
+      self._region_needs_refresh = false
+      self._current_region = self:_recalc_current_region()
+      self:_update_render()
    end
 
    return self._current_region
+end
+
+function XYZRangeSelector:get_final_region_and_point(length)
+   local point = self:get_point_in_current_direction(length)
+   return self:_recalc_current_region(point), point
+end
+
+function XYZRangeSelector:get_current_connector_region()
+   local rotation = self:get_rotation()
+   if rotation.connector_region then
+      local length = self:is_current_rotation_in_use() and 0 or self:_get_length()
+      local offset = rotation.direction * length
+      return rotation.connector_region:translated(offset)
+   end
+end
+
+function XYZRangeSelector:is_current_rotation_in_use()
+   return self._rotations_in_use[self._rotation]
 end
 
 function XYZRangeSelector:_update_render()
@@ -605,11 +736,12 @@ function XYZRangeSelector:_update_render()
       self._render_node = nil
    end
 
-   if self._render_material and self._render_color and self._current_region then
+   if not self._disable_default_render and self._render_material and self._current_region then
+      local color = self:is_current_rotation_in_use() and self._render_cancel_color or self._render_color
       local render_node = self._relative_entity and _radiant.client.get_render_entity(self._relative_entity):get_node() or RenderRootNode
-      self._render_node = _radiant.client.create_region_outline_node(render_node, self._current_region,
-                           radiant.util.to_color4(self._render_color, 192),   -- edge color
-                           radiant.util.to_color4(self._render_color, 192),   -- fill color
+      self._render_node = _radiant.client.create_region_outline_node(render_node, self._current_region:inflated(RENDER_INFLATION),
+                           radiant.util.to_color4(color, 192),   -- edge color
+                           radiant.util.to_color4(color, 192),   -- fill color
                            self._render_material, 1)
             :set_visible(true)
             :set_casts_shadows(false)
@@ -632,9 +764,9 @@ function XYZRangeSelector:go()
 
    local entity_render_node = self._relative_entity and _radiant.client.get_render_entity(self._relative_entity):get_node()
    if self._show_rulers then
-      self._x_ruler = RulerWidget():set_base_node(entity_render_node)
-      self._y_ruler = RulerWidget():set_base_node(entity_render_node)
-      self._z_ruler = RulerWidget():set_base_node(entity_render_node)
+      self._x_ruler = XYZRulerWidget()--:set_base_node(entity_render_node)
+      self._y_ruler = XYZRulerWidget()--:set_base_node(entity_render_node)
+      self._z_ruler = XYZRulerWidget()--:set_base_node(entity_render_node)
    end
 
    -- load up the rotations
@@ -659,7 +791,7 @@ function XYZRangeSelector:go()
                                                    :set_visible(false)
                                                    :set_can_query(true)
 
-      local vis_node = _radiant.client.create_region_outline_node(render_node, Region3(cube),
+      local vis_node = _radiant.client.create_region_outline_node(render_node, Region3(cube:inflated(RENDER_INFLATION * 2)),
                            radiant.util.to_color4(Point3(255, 255, 255), 64), -- edge color
                            radiant.util.to_color4(Point3(255, 255, 255), 24), -- fill color
                            self._render_material, 1)

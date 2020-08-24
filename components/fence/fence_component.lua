@@ -5,12 +5,10 @@
    since manual rotations could cause issues, use a renderer to set that
 ]]
 
-local ConnectionUtils = require 'lib.connection.connection_utils'
+local Region3 = _radiant.csg.Region3
 local log = radiant.log.create_logger('fence')
 
 local FenceComponent = class()
-
-local import_region = ConnectionUtils.import_region
 
 local _rotations = {
    ['x-'] = 180,
@@ -24,10 +22,13 @@ function FenceComponent:initialize()
    self._connection_type = json.connection_type
    self._thresholds = {}
    for _, threshold in pairs(json.thresholds or {}) do
+      local region = Region3()
+      region:load(threshold.collision_region)
+
       table.insert(self._thresholds, {
          threshold = threshold.threshold,
          model = threshold.model,
-         collision_region = import_region(threshold.collision_region)
+         collision_region = region
       })
    end
    table.sort(self._thresholds, function(a, b) return a.threshold > b.threshold end)

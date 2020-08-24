@@ -4,7 +4,6 @@ local Point3 = _radiant.csg.Point3
 local Cube3 = _radiant.csg.Cube3
 local Region3 = _radiant.csg.Region3
 local validator = radiant.validator
-local water_lib = require 'stonehearth_ace.lib.water.water_lib'
 
 local WaterToolsCallHandler = class()
 
@@ -13,7 +12,7 @@ local log = radiant.log.create_logger('water_tools_call_handler')
 function WaterToolsCallHandler:select_water_pump_pipe_command(session, response, pump)
    validator.expect_argument_types({'Entity'}, pump)
 
-   local rotations = water_lib.get_water_pump_rotations(pump:get_uri())
+   local rotations = radiant.util.get_rotations_table(radiant.entities.get_component_data(pump, 'stonehearth_ace:water_pump'))
    if #rotations < 1 then
       response:reject({})
       return

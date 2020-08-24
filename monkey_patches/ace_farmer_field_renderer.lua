@@ -14,6 +14,7 @@ local log = radiant.log.create_logger('farmer_field.renderer')
 AceFarmerFieldRenderer._ace_old_initialize = FarmerFieldRenderer.initialize
 function AceFarmerFieldRenderer:initialize(render_entity, datastore)
    self._water_color = Color4(constants.hydrology.DEFAULT_WATER_COLOR)
+   self._show_water_region = radiant.util.get_config('show_farm_water_regions', true)
 
    self._farmer_field_data = radiant.entities.get_component_data(render_entity:get_entity(), 'stonehearth:farmer_field')
    self._field_types = radiant.resources.load_json('stonehearth:farmer:all_crops').field_types or {}
@@ -26,6 +27,7 @@ function AceFarmerFieldRenderer:initialize(render_entity, datastore)
 
    self._ui_view_mode = stonehearth.renderer:get_ui_mode()
    self._ui_mode_listener = radiant.events.listen(radiant, 'stonehearth:ui_mode_changed', self, self._on_ui_mode_changed)
+   self._show_water_region_listener = radiant.events.listen(radiant, 'show_farm_water_regions_setting_changed', self, self._on_show_water_region_changed)
 end
 
 AceFarmerFieldRenderer._ace_old_destroy = FarmerFieldRenderer.__user_destroy
@@ -83,6 +85,12 @@ function AceFarmerFieldRenderer:_on_ui_mode_changed()
    end
 end
 
+function AceFarmerFieldRenderer:_on_show_water_region_changed(show)
+   self._show_water_region = show
+   local data = show and self._datastore:get_data()   -- if we're not showing, we don't need to actually get the data
+   self:_render_water_signal_region(data)
+end
+
 function AceFarmerFieldRenderer:_in_appropriate_mode()
    return self._ui_view_mode == 'hud'
 end
@@ -134,7 +142,7 @@ function AceFarmerFieldRenderer:_render_water_signal_region(data)
       self._water_signal_region_node = nil
    end
 
-   if not self:_in_appropriate_mode() then
+   if not self._show_water_region or not self:_in_appropriate_mode() then
       return
    end
 

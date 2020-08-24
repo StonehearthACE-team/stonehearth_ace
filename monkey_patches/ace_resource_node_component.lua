@@ -1,9 +1,25 @@
 local LootTable = require 'stonehearth.lib.loot_table.loot_table'
 local item_quality_lib = require 'stonehearth_ace.lib.item_quality.item_quality_lib'
+local util = require 'stonehearth_ace.lib.util'
 local HARVEST_ACTION = 'stonehearth:harvest_resource'
 
 local ResourceNodeComponent = require 'stonehearth.components.resource_node.resource_node_component'
 local AceResourceNodeComponent = class()
+
+AceResourceNodeComponent._ace_old_activate = ResourceNodeComponent.activate
+function AceResourceNodeComponent:activate()
+   if self._ace_old_activate then
+      self:_ace_old_activate()
+   end
+
+   local loot_table_filter_script = self._json.loot_table_filter_script
+   if loot_table_filter_script == nil then
+      self._loot_table_filter_script = 'stonehearth_ace:loot_table:filter_scripts:no_items_with_property_value'
+   else
+      self._loot_table_filter_script = loot_table_filter_script
+      self._loot_table_filter_args = self._json.loot_table_filter_args
+   end
+end
 
 function AceResourceNodeComponent:get_durability()
    return self._sv.durability
@@ -115,7 +131,8 @@ function AceResourceNodeComponent:_place_spawned_items(harvester, location, owne
 
    local spawned_items
    if json.resource_loot_table then
-      local uris = LootTable(json.resource_loot_table, quality):roll_loot()
+      local filter_args = self._loot_table_filter_args or (self._loot_table_filter_script and util.get_current_conditions_loot_table_filter_args())
+      local uris = LootTable(json.resource_loot_table, quality, self._loot_table_filter_script, filter_args):roll_loot()
       spawned_items = radiant.entities.output_items(uris, location, 1, 3, { owner = owner }, self._entity, harvester, spill_items).spilled
    else
       spawned_items = {}

@@ -174,4 +174,47 @@ function AceCombatService:_get_nearby_non_max_level_combat_units(target, attacke
    return combat_units, count
 end
 
+-- get the highest priority action that is ready now
+-- assumes actions are sorted by descending priority
+-- ACE: modifies filter_fn to consider any required equipment types
+function AceCombatService:choose_attack_action(entity, actions)
+   local filter_fn = function(combat_state, action_info)
+      if not combat_state:in_cooldown(action_info.name) then
+         -- check any equipment requirements
+         if action_info.required_equipment then
+            for slot, types in pairs(action_info.required_equipment) do
+               local item = radiant.entities.get_equipped_item(entity, slot)
+               local ep = item and item:add_component('stonehearth:equipment_piece')
+               -- types is specified as an array of types, any one of which is acceptable
+               local wants_no_item = not next(types) or (#types == 1 and types[1] == '')
+               
+               -- if there is an item equipped there, but there shouldn't be, or vice-versa
+               if (ep and wants_no_item) or (not ep and not wants_no_item) then
+                  return false
+               end
+
+               -- check if any of these types is present
+               local found_type = false
+               for _, eq_type in ipairs(types) do
+                  -- if it allows for nothing equipped here and that's the case
+                  -- or if it requires a specific type equipped and that's the case
+                  if (not ep and eq_type == '') or (ep and ep:is_type(eq_type)) then
+                     found_type = true
+                     break
+                  end
+               end
+               -- if it didn't find a valid type, it was no good
+               -- we only return false early: true will get returned later if all conditions are met
+               if not found_type then
+                  return false
+               end
+            end
+         end
+
+         return true
+      end
+   end
+   return self:_choose_combat_action(entity, actions, filter_fn)
+end
+
 return AceCombatService

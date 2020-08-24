@@ -120,6 +120,10 @@ $(document).ready(function() {
          return this._currentMode;
       },
 
+      getView: function(mode) {
+         return this.views[mode];
+      },
+
       setGameMode: function (mode) {
          if (mode != this._currentMode) {
             App.stonehearthClient.deactivateAllTools();

@@ -18,6 +18,7 @@ local service_creation_order = {
 }
 
 local monkey_patches = {
+   ace_client_entities = 'radiant.modules.client_entities',
    ace_util = 'radiant.lib.util',
    ace_csg_lib = 'stonehearth.lib.csg.csg_lib',
    ace_portal_component = 'stonehearth.components.portal.portal_component',

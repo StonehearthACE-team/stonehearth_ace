@@ -272,6 +272,8 @@ function PlayerConnections:_register_connector(entity, type, connection_max_conn
    
    self._connectors[connector_id] = connect
 
+   log:debug('registered connector %s with region %s', connector_id, connect.region:get_bounds())
+
    return connect
 end
 
@@ -310,19 +312,19 @@ function PlayerConnections:update_connector(entity, type, connection_max_connect
    local entity_id = entity:get_id()
    local entity_struct = self:get_entity_struct(entity_id)
    local id = self:_get_entity_connector_id(entity_id, type, name)
-   local c = self:get_entity_connector(id)
-   local changed_types_2, graphs_changed_2
-   if c then
-      changed_types_2, graphs_changed_2 = self:_remove_entity_from_graphs(entity_struct, type, name)
-   else
-      self:_register_connector(entity, type, connection_max_connections, name, id, connector)
-   end
+   -- local c = self:get_entity_connector(id)
+   -- local changed_types_2, graphs_changed_2
+   -- if c then
+   --    changed_types_2, graphs_changed_2 = self:_remove_entity_from_graphs(entity_struct, type, name)
+   -- end
+
+   self:_register_connector(entity, type, connection_max_connections, name, id, connector)
    
-   local changed_types, graphs_changed = self:update_entity(entity_id, true, type, id)
-   if c then
-      combine_tables(changed_types, changed_types_2)
-      graphs_changed = combine_type_tables(graphs_changed, graphs_changed_2)
-   end
+   local changed_types, graphs_changed = self:update_entity(entity_id, false, type, id)
+   -- if c then
+   --    combine_tables(changed_types, changed_types_2)
+   --    graphs_changed = combine_type_tables(graphs_changed, graphs_changed_2)
+   -- end
    return self:_get_changes(changed_types, graphs_changed)
 end
 
@@ -922,7 +924,7 @@ function PlayerConnections:_find_best_potential_connections(connection, entity_i
    if connection.num_connections < connection.max_connections then
       for _, connector_id in pairs(connection.connectors) do
          local connector = self._connectors[connector_id]
-         if connector.max_connections > 0 then
+         if connector.max_connections > 0 and connector.region_area > 0 then
             local potential_connectors = self:_find_best_potential_connectors(connector, entity_id_to_ignore)
             for _, conn in ipairs(potential_connectors) do
                table.insert(result, conn)
@@ -956,7 +958,8 @@ function PlayerConnections:_find_best_potential_connectors(connector, entity_id_
             --log:debug('conn %s: %s, %s', id, conn.connection.entity_struct.id, connection.entity_struct.id)
             if not ids_to_ignore[conn.entity_id]
                   and conn.max_connections > 0
-                  and conn.trans_region then
+                  and conn.trans_region
+                  and conn.region_area > 0 then
                
                local intersects = r:intersects_region(conn.trans_region)
                if intersects then

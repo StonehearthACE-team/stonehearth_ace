@@ -6,11 +6,12 @@
 local Point3 = _radiant.csg.Point3
 local Cube3 = _radiant.csg.Cube3
 local Region3 = _radiant.csg.Region3
-local water_lib = require 'stonehearth_ace.lib.water.water_lib'
 
 local log = radiant.log.create_logger('water_pump')
 
 local WaterPumpComponent = class()
+
+local RENDER_MODEL = 'stonehearth_ace:water_pump'
 
 function WaterPumpComponent:initialize()
    self._json = radiant.entities.get_json(self)
@@ -36,14 +37,14 @@ function WaterPumpComponent:restore()
       self._is_create = true
    end
 
-   if not self._sv._pump_child_entity then
+   if self._sv.pipe_render_data then
       self._sv.pipe_render_data = nil
       self.__saved_variables:mark_changed()
    end
 end
 
 function WaterPumpComponent:activate()
-   self._rotations = water_lib.get_water_pump_rotations(self._entity:get_uri())
+   self._rotations = radiant.util.get_rotations_table(self._json)
 end
 
 function WaterPumpComponent:post_activate()
@@ -76,27 +77,31 @@ function WaterPumpComponent:get_rotations()
 end
 
 -- whatever calls this should also call the water_sponge component's set_output_location
+-- refactored to outsource pipe rendering to the models component instead of using a custom renderer
 function WaterPumpComponent:set_pipe_extension(rotation_index, length, collision_region)
    local data
    local rotation = self._rotations[rotation_index]
 
    local rcs = self._sv._pump_child_entity:add_component('region_collision_shape')
    local region = rcs:get_region()
-   region:modify(function(cursor)
-      cursor:clear()
-   end)
+   local models_comp = self._entity:add_component('stonehearth_ace:models')
 
-   if rotation then
+   if rotation and length > 0 then
       region:modify(function(cursor)
+         -- copy_region also clears the existing region
          cursor:copy_region(collision_region)
       end)
 
-      data = radiant.shallow_copy(rotation)
+      local data = radiant.shallow_copy(rotation)
       data.length = length
-   end
+      models_comp:set_model_options(RENDER_MODEL, data)
+   else
+      region:modify(function(cursor)
+         cursor:clear()
+      end)
 
-   self._sv.pipe_render_data = data
-   self.__saved_variables:mark_changed()
+      models_comp:remove_model(RENDER_MODEL)
+   end
 
    self:_update_commands()
 end
@@ -111,6 +116,12 @@ function WaterPumpComponent:_update_commands()
       -- also disable the move/undeploy commands, if they exist, since it doesn't play well with the extended pipe
       commands:set_command_enabled('stonehearth:commands:move_item', false)
       commands:set_command_enabled('stonehearth:commands:undeploy_item', false)
+
+      -- also cancel any move/undeploy tasks for it currently underway
+      local entity_forms_component = self._entity:get_component('stonehearth:entity_forms')
+      if entity_forms_component then
+         entity_forms_component:cancel_placement_tasks()
+      end
    else
       commands:remove_command('stonehearth_ace:commands:water_pipe:remove')
       commands:add_command('stonehearth_ace:commands:water_pipe:place')

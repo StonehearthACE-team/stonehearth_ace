@@ -9,7 +9,7 @@ local AceLootTable = class()
 function AceLootTable:__init(json, quality_override, filter_script, filter_args)
    self:_clear()
    self._filter_script = filter_script
-   self._loaded_filter_script = filter_script and radiant.mods.load_script(filter_script) or {}
+   self._loaded_filter_script = radiant.util.is_string(filter_script) and radiant.mods.load_script(filter_script) or filter_script or {}
    self._filter_args = filter_args or {}
    self:_load_from_json(json, quality_override)
 end
@@ -180,13 +180,13 @@ function AceLootTable:_load_from_json(json, quality_override)
                item_uri = loc_item_uri,
                num_rolls = items_entry.num_rolls,
                item_type = out_item_type,
-               quality = math.max(quality, items_entry.quality or data.quality or 1)
+               quality = math.max(quality, item_quality_lib.get_quality(items_entry.quality or data.quality or 1))
             }
 
             if not item_filter_fn or item_filter_fn(filter_args, items_entry, entry_data) then
                --If 'some_of' then randomly select with weigthedset
                if entry.roll_type == 'some_of' then
-                  entry.items:add(entry_data,items_entry.weight or 1)
+                  entry.items:add(entry_data, items_entry.weight or 1)
                --Elseif 'each_of' then select all with a table
                elseif entry.roll_type == 'each_of' then
                   table.insert(entry.items, entry_data)

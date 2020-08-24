@@ -28,4 +28,12 @@ function SettingsCallHandler:water_signal_update_frequency_setting_changed(sessi
    end
 end
 
+function SettingsCallHandler:show_farm_water_regions_setting_changed(session, response, show)
+   radiant.events.trigger(radiant, 'show_farm_water_regions_setting_changed', show)
+end
+
+function SettingsCallHandler:show_connector_regions_setting_changed(session, response, show)
+   radiant.events.trigger(radiant, 'show_connector_regions_setting_changed', show)
+end
+
 return SettingsCallHandler

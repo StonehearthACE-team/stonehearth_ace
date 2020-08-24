@@ -4,12 +4,10 @@
    since manual rotations could cause issues, use a renderer to set that
 ]]
 
-local ConnectionUtils = require 'lib.connection.connection_utils'
+local Region3 = _radiant.csg.Region3
 local log = radiant.log.create_logger('tile')
 
 local TileComponent = class()
-
-local import_region = ConnectionUtils.import_region
 
 local _rotations = {
    ['z+'] = 0,
@@ -65,7 +63,9 @@ function TileComponent:initialize()
    if self._adjust_collision and json.collision_regions then
       self._collision_regions = {}
       for name, region in pairs(json.collision_regions) do
-         self._collision_regions[name] = import_region(region)
+         local r = Region3()
+         r:load(region)
+         self._collision_regions[name] = r
       end
    end
    self._sv.rotation = 0
