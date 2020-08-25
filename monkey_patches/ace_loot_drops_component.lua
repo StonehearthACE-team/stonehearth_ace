@@ -1,5 +1,6 @@
 local LootTable = require 'stonehearth.lib.loot_table.loot_table'
 local item_quality_lib = require 'stonehearth_ace.lib.item_quality.item_quality_lib'
+local util = require 'stonehearth_ace.lib.util'
 
 --[[
    Used to determine what loot a mob drops when it dies.  This program is for
@@ -16,7 +17,15 @@ end
 
 -- changed the "auto_loot = " line, also changed to use output system instead of just raw spawning items
 function AceLootDropsComponent:_on_kill_event(kill_data)
-   local loot_table = self._sv.loot_table or radiant.entities.get_json(self)
+   local loot_table, filter_script, filter_args = self._sv.loot_table, self._sv._filter_script, self._sv._filter_args
+   if not loot_table then
+      loot_table = radiant.entities.get_json(self)
+      if loot_table then
+         filter_script = loot_table.filter_script
+         filter_args = loot_table.filter_args
+      end
+   end
+
    if loot_table then
       local location = radiant.entities.get_world_grid_location(self._entity)
       if location then
@@ -32,7 +41,10 @@ function AceLootDropsComponent:_on_kill_event(kill_data)
             quality = radiant.entities.get_item_quality(self._entity)
          end
 
-         local items = LootTable(loot_table, quality, self._sv._filter_script, self._sv._filter_args)
+         if filter_script and not filter_args then
+            filter_args = util.get_current_conditions_loot_table_filter_args()
+         end
+         local items = LootTable(loot_table, quality, filter_script, filter_args)
                            :roll_loot()
          local spawned_entities = radiant.entities.output_items(items, location, 1, 3,
                { owner = force_auto_loot and (kill_data.source or self._sv.auto_loot_player_id) or self._entity }, self._entity, kill_data.source, true).spilled

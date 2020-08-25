@@ -94,9 +94,31 @@ function item_quality_lib.get_max_random_quality(player_id)
             or stonehearth.constants.item_quality.EXCELLENT
 end
 
+function item_quality_lib.add_quality_tables(qt1, qt2)
+   if not qt1 then
+      return qt2
+   end
+   if not qt2 then
+      return qt1
+   end
+
+   local qualities = {}
+   local new_qt = {}
+   for _, quality_chance in ipairs(qt1) do
+      qualities[quality_chance[1]] = quality_chance[2]
+   end
+   for _, quality_chance in ipairs(qt2) do
+      qualities[quality_chance[1]] = (qualities[quality_chance[1]] or 0) + quality_chance[2]
+   end
+
+   for i = #qualities, 1, -1 do
+      table.insert(new_qt, {i, qualities[i]})
+   end
+end
+
 function item_quality_lib.modify_quality_table(qualities, ingredient_quality)
    local modified_chances = {}
-   for i=#qualities, 1, -1 do
+   for i = #qualities, 1, -1 do
       local value = qualities[i]
       local quality, chance = value[1], value[2]
       if i > 1 then

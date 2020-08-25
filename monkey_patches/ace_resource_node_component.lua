@@ -14,7 +14,7 @@ function AceResourceNodeComponent:activate()
 
    local loot_table_filter_script = self._json.loot_table_filter_script
    if loot_table_filter_script == nil then
-      self._loot_table_filter_script = 'stonehearth_ace:loot_table:filter_scripts:no_items_with_property_value'
+      self._loot_table_filter_script = 'stonehearth_ace:loot_table:filter_scripts:items_with_property_value'
    else
       self._loot_table_filter_script = loot_table_filter_script
       self._loot_table_filter_args = self._json.loot_table_filter_args
