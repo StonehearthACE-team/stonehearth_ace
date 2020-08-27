@@ -230,18 +230,20 @@ function AceLootTable:roll_loot(inc_recursive_uri_storage)
                --Changing this to 'choose_random_entry' breaks what 'uris' is supposed to be, must fix later
                local uri = {}
                local inc_item = entry.items:choose_random()
-               uri = {
-                  item_uri = inc_item.item_uri,
-                  item_type = inc_item.item_type,
-                  num_rolls = inc_item.num_rolls,
-                  quality = inc_item.quality
-               }
-                  
-               if uri and uri.item_uri ~= '' then
-                  --this should be where we use num_rolls to add multiple of the same thing
-                  for count = 1, uri.num_rolls do
-                     local quantity = (uris_interim[uri] or 0) + 1
-                     uris_interim[uri] = quantity
+               if inc_item then
+                  uri = {
+                     item_uri = inc_item.item_uri,
+                     item_type = inc_item.item_type,
+                     num_rolls = inc_item.num_rolls,
+                     quality = inc_item.quality
+                  }
+                     
+                  if uri and uri.item_uri ~= '' then
+                     --this should be where we use num_rolls to add multiple of the same thing
+                     for count = 1, uri.num_rolls do
+                        local quantity = (uris_interim[uri] or 0) + 1
+                        uris_interim[uri] = quantity
+                     end
                   end
                end
             end
