@@ -4531,6 +4531,10 @@
          "controller": "file(call_handlers/services_call_handler.lua)",
          "endpoint": "client"
       },
+      "get_game_mode_json": {
+         "controller": "file(call_handlers/game_mode_call_handler.lua)",
+         "endpoint": "server"
+      },
       "change_job_equipment_role": {
          "controller": "file(call_handlers/job_equipment_roles_call_handler.lua)",
          "endpoint": "server"

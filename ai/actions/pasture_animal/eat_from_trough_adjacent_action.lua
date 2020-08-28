@@ -14,6 +14,8 @@ function EatTroughFeedAdjacent:run(ai, entity, args)
    local trough = args.trough
 
    local feed_uri, quality = trough:get_component('stonehearth_ace:pasture_item'):eat_from_trough(entity)
+   self._animal_feed_data = nil
+   self._feed_quality = nil
 
    -- only if there was food to be eaten and it was successfully decremented from the trough will it return the feed uri
    if feed_uri then
@@ -53,9 +55,6 @@ function EatTroughFeedAdjacent:stop(ai, entity, args)
       if equipment_component and equipment_component:has_item_type('stonehearth:pasture_equipment:tag') then
          radiant.entities.add_buff(entity, 'stonehearth:buffs:shepherd:compassionate_shepherd')
       end
-
-      self._animal_feed_data = nil
-      self._feed_quality = nil
    end
 end
 

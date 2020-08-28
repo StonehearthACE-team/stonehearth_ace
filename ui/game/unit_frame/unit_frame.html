@@ -46,8 +46,13 @@
                   </div>
                   {{#if view.model.stonehearth:expendable_resources.resources.health}}
                      <div id="bubble">
+                        {{#if view.maxHealableHealth}}
+                           <div id="maxHealableHeart"></div>
+                           <div class="value">{{view.currentHealth}} / <span class="maxHealableHealth">{{view.maxHealableHealth}}</span></div>
+                        {{else}}
                         <div id="heart"></div>
                         <div class="value">{{view.currentHealth}} / {{view.maxHealth}}</div>
+                        {{/if}}
                      </div>
                   {{else}}
                      {{#if view.needsRescue}}

@@ -79,13 +79,6 @@ function TrainMoveToTargetableLocation:start_thinking(ai, entity, args)
    end
 end
 
-function TrainMoveToTargetableLocation:stop(ai, entity, args)
-   if self._training_enabled_listener then
-      self._training_enabled_listener:destroy()
-      self._training_enabled_listener = nil
-   end
-end
-
 local ai = stonehearth.ai
 return ai:create_compound_action(TrainMoveToTargetableLocation)
          :execute('stonehearth:goto_location', {

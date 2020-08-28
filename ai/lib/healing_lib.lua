@@ -98,7 +98,7 @@ function healing_lib.get_effective_max_health_percent(entity)
          local game_mode_json = stonehearth.game_creation:get_game_mode_json()
          max_percent_health_redux = game_mode_json.max_percent_health_redux or 0
       end
-      local effective_max_health_percent = attributes_component:get_attribute('effective_max_health_percent', 1)
+      local effective_max_health_percent = attributes_component:get_attribute('effective_max_health_percent', 100)
       return math.max(effective_max_health_percent, 100 - max_percent_health_redux) / 100
    end
 

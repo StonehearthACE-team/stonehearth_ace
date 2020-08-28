@@ -84,6 +84,14 @@ App.StonehearthUnitFrameView.reopen({
       var self = this;
       self._super();
 
+      radiant.call('stonehearth_ace:get_game_mode_json')
+         .done(function(response) {
+            self._game_mode_json = response.game_mode_json;
+            if (self._game_mode_json) {
+               self._updateHealth();
+            }
+         });
+
       // get rid of the default behavior, use ours (more expanded) instead
       self.$('#nametag')
          .off('click')
@@ -683,6 +691,31 @@ App.StonehearthUnitFrameView.reopen({
          self.$('#equipmentPane').hide();
       }
    }.observes('model.stonehearth:iconic_form.root_entity.uri'),
+
+   _updateHealth: function() {
+      var self = this;
+      var currentHealth = self.get('model.stonehearth:expendable_resources.resources.health');
+      if (currentHealth == null) {
+         return;
+      }
+
+      self.set('currentHealth', Math.floor(currentHealth));
+
+      var maxHealth = self.get('model.stonehearth:attributes.attributes.max_health.user_visible_value');
+      var maxHealableHealth;
+
+      if (self._game_mode_json) {
+         // if we have a game mode, consider the max_percent_health_redux and the effective_max_health_percent attribute
+         var maxRedux = self._game_mode_json.max_percent_health_redux || 0;
+         var effMaxHealthPercent = self.get('model.stonehearth:attributes.attributes.effective_max_health_percent.user_visible_value') || 100;
+         var modifier = Math.max(effMaxHealthPercent, 100 - maxRedux) * 0.01;
+         maxHealableHealth = Math.ceil(maxHealth * modifier);
+      }
+      maxHealth = Math.ceil(maxHealth);
+      
+      self.set('maxHealth', maxHealth);
+      self.set('maxHealableHealth', maxHealableHealth && maxHealableHealth != maxHealth ? maxHealableHealth : null);
+   }.observes('model.stonehearth:expendable_resources', 'model.stonehearth:attributes.attributes.max_health'),
 
    _updateBuffs: function() {
       var self = this;

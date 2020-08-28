@@ -10,6 +10,7 @@ function WaitForSpecialAttentionCondition:start_thinking(ai, entity, args)
    self._ai = ai
    self._entity = entity
    self._signaled = false
+   self._priority = nil
    if not self._buff_listener then
       self._buff_listener = radiant.events.listen(entity, 'stonehearth:buff_added', self, self._on_buff_added)
    end

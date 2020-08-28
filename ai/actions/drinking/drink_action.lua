@@ -23,7 +23,10 @@ function Drink:start_thinking(ai, entity, args)
    self._started = false
    local consumption = self._entity:get_component('stonehearth:consumption')
    self._drink_preferences = consumption:get_drink_preferences()
-	self._drink_intolerances = consumption:get_drink_intolerances()
+   self._drink_intolerances = consumption:get_drink_intolerances()
+   
+   self._hour_type = nil
+   self._weather_type = nil
 
    self._drink_satiety_listener = radiant.events.listen(self._entity, 'stonehearth:expendable_resource_changed:drink_satiety', self, self._rethink)
    self._marked_unready_listener = radiant.events.listen(self._entity, 'stonehearth_ace:entity:looking_for_drink:marked_unready', self, self._rethink)

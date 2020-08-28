@@ -25,7 +25,10 @@ function Eat:start_thinking(ai, entity, args)
    self._started = false
    local consumption = self._entity:get_component('stonehearth:consumption')
    self._food_preferences = consumption:get_food_preferences()
-	self._food_intolerances = consumption:get_food_intolerances()
+   self._food_intolerances = consumption:get_food_intolerances()
+   
+   self._hour_type = nil
+   self._weather_type = nil
 
    self._calorie_listener = radiant.events.listen(self._entity, 'stonehearth:expendable_resource_changed:calories', self, self._rethink)
    self._marked_unready_listener = radiant.events.listen(self._entity, 'stonehearth_ace:entity:looking_for_food:marked_unready', self, self._rethink)

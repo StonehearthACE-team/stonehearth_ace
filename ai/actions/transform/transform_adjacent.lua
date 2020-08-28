@@ -21,6 +21,8 @@ function TransformItemAdjacent:start(ai, entity, args)
    end
    ai:set_status_text_key('stonehearth_ace:ai.actions.status_text.' .. key, { target = args.item })
 
+   self._completed_work = false
+
    self._destroy_listener = radiant.events.listen_once(args.item, 'radiant:entity:pre_destroy', function()
       if not self._completed_work then
          ai:abort()
