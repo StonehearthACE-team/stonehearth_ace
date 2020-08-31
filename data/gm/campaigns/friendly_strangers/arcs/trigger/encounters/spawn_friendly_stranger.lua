@@ -17,9 +17,7 @@ function SpawnFriendlyStranger:start(ctx, data)
 		radiant.effects.run_effect(stranger, 'stonehearth:effects:spawn_entity')
 	end
 
-   self._sv.despawn_timer = stonehearth.calendar:set_persistent_timer('despawn friendly stranger', '1d', function()
-         self:_despawn()
-      end)	
+   self._sv.despawn_timer = stonehearth.calendar:set_persistent_timer('despawn friendly stranger', '1d', radiant.bind(self, '_despawn'))
 end
 
 function SpawnFriendlyStranger:_despawn()
