@@ -3,6 +3,9 @@
 		"mixintypes": {
 			"model_variants": "override"
 		},
+		"render_info": {
+         "scale": 0.11
+      },
       "model_variants": {
          "default": {
             "models": [
@@ -19,6 +22,7 @@
    },
    "entity_data": {
       "stonehearth:catalog": {
+			"description": "i18n(stonehearth_ace:entities.plants.foxlily_plant.description)",
          "material_tags": ["decoration"]
       }
    }

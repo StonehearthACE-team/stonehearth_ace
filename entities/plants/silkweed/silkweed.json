@@ -1,14 +1,14 @@
 {
    "components": {
-		"model_variants": {
-         "half_renewed": {
-            "models": [
-               "file(silkweed_half_renewed.qb)"
-            ]
-         }
-      },
-      "stonehearth:renewable_resource_node": {
-			"half_renewed_model_variant": true,
+		"mixintypes": {
+			"stonehearth:renewable_resource_node": "remove"
+		},
+      "stonehearth:resource_node": {
+         "resource": "stonehearth:resources:fiber:silkweed_bundle",
+         "category": "harvest",
+         "harvest_overlay_effect": "stonehearth:effects:harvest_plant_overlay_effect",
+         "resource_spawn_effect": "stonehearth:effects:harvest_plants_effect",
+         "description": "harvest_plant",
          "resource_loot_table": {
             "entries": {
 					"herb": {
@@ -22,7 +22,7 @@
                      }
                   }
                },
-               "mandatory": {
+               "thatch": {
 						"num_rolls": {
                      "min": 0,
                      "max": 1
@@ -32,18 +32,19 @@
                         "uri": "stonehearth_ace:resources:thatch_bale"
                      }
                   }
+               },
+               "seed": {
+                  "items": {
+                     "none": {
+                        "uri": "",
+                        "weight": 10
+                     },
+                     "seed": {
+                        "uri": "stonehearth:plants:silkweed:seed",
+                        "weight": 1
+                     }
+                  }
                }
-            }
-         },
-			"seasons": {
-            "spring": {
-               "renewal_time_multiplier": 2
-            },
-            "autumn": {
-               "renewal_time_multiplier": 4
-            },
-				"winter": {
-               "renewal_time_multiplier": 6
             }
          }
       }

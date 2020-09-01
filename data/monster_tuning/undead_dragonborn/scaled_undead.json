@@ -1,0 +1,63 @@
+{
+   "type": "monster_tuning",
+   "estimated_difficulty": "s1",
+   "attributes": {
+      "max_health": {
+         "base": 200,
+         "net_worth_effect": {
+            "increase_by": 10,
+            "per": 200
+         },
+         "max": 10000
+      },
+      "muscle": {
+         "base": 10,
+         "net_worth_effect": {
+            "increase_by": 5,
+            "per": 1000
+         },
+         "max": 300
+      },
+      "menace": 60,
+      "courage": {
+         "base": 100,
+         "net_worth_effect": {
+            "increase_by": 15,
+            "per": 1500
+         },
+         "max": 300
+      },
+      "speed": 40,
+      "exp_reward": {
+         "base": 50,
+         "net_worth_effect": {
+            "increase_by": 10,
+            "per": 500
+         },
+         "max": 300
+      }
+   },
+   "equipment": {
+      "weapon": [
+         "stonehearth:weapons:stone_maul",
+         "stonehearth:weapons:bronze_sword",
+         "stonehearth:weapons:iron_mace"
+      ],
+      "cut": "stonehearth_ace:weapons:inflicted_wounds:cut:hard",
+		"impact": "stonehearth_ace:weapons:inflicted_wounds:impact:hard"
+   },
+   "loot_drops": {
+      "entries": {
+         "items": {
+            "num_rolls": 1,
+            "items": {
+               "stone": {
+                  "uri": "stonehearth:loot_bag:undead_dragonborn",
+                  "type": "bag",
+                  "weight": 10
+               }
+            }
+         }
+      }
+   }
+}

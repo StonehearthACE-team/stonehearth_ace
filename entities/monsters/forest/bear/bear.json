@@ -1,6 +1,11 @@
 {
    "type": "entity",
-   "mixins": "stonehearth:mixins:monster",
+   "mixins": [
+		"stonehearth:mixins:monster",
+		"stonehearth_ace:mixins:inflicted_wounds:cut:easy",
+		"stonehearth_ace:mixins:inflicted_wounds:pierce:very_easy",
+		"stonehearth_ace:mixins:inflicted_wounds:impact:very_easy"
+	],
    "player_id": "forest",
    "components": {
       "render_info": {
@@ -77,18 +82,6 @@
       }
    },
    "entity_data": {
-      "stonehearth:buffs": {
-         "inflictable_debuffs": {
-            "scratch": {
-               "uri": "stonehearth_ace:buffs:wounds:scratch",
-               "chance": 0.1
-            },
-            "minor_sting": {
-               "uri": "stonehearth_ace:buffs:wounds:minor_sting",
-               "chance": 0.08
-            }
-         }
-      },
       "stonehearth:bait_trap": {
          "can_trap": true,
          "catch_chance": 1,

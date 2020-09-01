@@ -117,6 +117,34 @@
                "max": { "x": 2, "y": 29, "z": 1 }
             }
          ]
+      },
+      "stonehearth:loot_drops": {
+         "entries": {
+            "bough_bale": {
+               "mixintypes": {
+                  "season": "remove"
+               },
+               "items": {
+                  "bough_bale": {
+                     "uri": "stonehearth_ace:resources:bough_bale:evergreen"
+                  }
+               }
+            },
+            "maybe_bough_bale": {
+               "mixintypes": {
+                  "season": "remove"
+               },
+               "num_rolls": {
+                  "min": 0,
+                  "max": 2
+               },
+               "items": {
+                  "bough_bale": {
+                     "uri": "stonehearth_ace:resources:bough_bale:evergreen"
+                  }
+               }
+            }
+         }
       }
    },
    "entity_data": {
@@ -156,7 +184,7 @@
       },
       "stonehearth_ace:replant_data": {
          "seed_alias": "stonehearth_ace:trees:highland_pine:seed",
-			"sapling_alias": "stonehearth_ace:trees:highland_pine:sapling"
+         "sapling_alias": "stonehearth_ace:trees:highland_pine:sapling"
       },
       "stonehearth:appeal": {
          "appeal": 2

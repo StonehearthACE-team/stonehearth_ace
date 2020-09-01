@@ -719,7 +719,7 @@
                         "dialog_title": "Fernand the Great",
                         "msg1": {
                            "bulletin_message": {
-                              "00": "A strong man with a waxed mustache prances into town. \"Hah! There you are! No, no need to get up. I found the lack of smoke columns disturbing! Even thought that this settlement was abandoned! Where are the smelters? The kilns? The ovens with delicious <i>empanadas!? </i>\"<p>He dramatically shakes his fists to the skies and silence reigns before he coughs and speaks with a more serious tone.<br>\"Pardon me,<i> pollito. </i>I am Fernand the Great, master smith and wordsmith. Now, I might be<i> el maestro </i>only at the forgery, but do you know what is common between the simplest cook or herbalist and the mightiest smith,<i> pollito? </i>\""
+                              "00": "A strong man with a waxed mustache prances into town. \"Hah! There you are! No, no need to get up. I found the lack of smoke columns disturbing! Even thought that this settlement was abandoned! Where are the smelters? The kilns? The ovens with delicious<i> empanadas?!</i>\"<p>He dramatically shakes his fists to the skies and silence reigns before he coughs and speaks with a more serious tone.<br>\"Pardon me, <i>pollito.</i> I am Fernand the Great, master smith and wordsmith. Now, I might be <i>el maestro</i> only at the forgery, but do you know what is common between the simplest cook or herbalist and the mightiest smith, <i>pollito? </i>\""
                            },
                            "choice_000": "Enlighten us!"
                         },
@@ -792,7 +792,7 @@
                         "letter": {
                            "dialog_title": "From: Fernand the Great",
                            "message": {
-                              "00": "<i>\"Many greetings,<i> pollito!</i><p>I've just left to meet my caravan and go home. The world needs Fernand and Fernand needs the world.<br>But I didn't want to leave without sharing one last thing to help you get started!<p>Keep on growing!<br><font size=-4>PS: Store that chunk o' hard coal well, it will be very useful in the future!</font>\"</i><p>The gift package contains:"
+                              "00": "<i>\"Many greetings,<i> pollito!</i><p>I've just left to meet my caravan and go home. The world needs Fernand and Fernand needs the world.<br>But I didn't want to leave without sharing one last thing to help you get started!<p>Keep on growing!<br><font size=-4>PS: Store that hunk o' hard coal well, it will be very useful in the future!</font>\"</i><p>The gift package contains:"
                            }
                         }
                      }
@@ -912,7 +912,7 @@
             },
             "windy_springtime": {
                "display_name": "Springtime Winds",
-               "description": "The air is dry and cold as the winds howl across the lands.<ul><li>Normal sunlight levels.</li><li>Slightly increased humidity.</li></ul>"
+               "description": "A soft breeze flows past saying good bye to the winter and carrying new blossoms with it!<ul><li>Normal sunlight levels.</li><li>Slightly increased humidity.</li></ul>"
             }
          },
          "thunderstorm": {
@@ -933,13 +933,15 @@
             },
             "sunny_sweltering": {
                "display_name": "Heat Wave",
-               "description": "An unbearably hot and stale weather has come upon the town this day.<ul><li>Normal sunlight levels.</li><li>Reduced humidity.</li><li>Unsheltered hearthlings are sweltering and might get a heatstroke if too exposed to the sun.</li><li>Unsheltered pasture animals are hurt by the heat.</li></ul>"
+               "description": "An unbearably hot wind blows upon the town this day.<ul><li>Normal sunlight levels.</li><li>Reduced humidity.</li><li>Unsheltered hearthlings are sweltering and might get a heatstroke if too exposed to the sun.</li><li>Unsheltered pasture animals are hurt by the heat.</li></ul>"
             },
             "sunny_autumn": {
-               "display_name": "Autumn Breeze"
+               "display_name": "Autumn Breeze",
+               "description": "A typical autumn day with a gentle breeze and a beautiful sky.<ul><li>Normal sunlight levels.</li><li>Regular humidity levels.</li></ul>"
             },
             "sunny_stagnant": {
-               "display_name": "Stagnant Air"
+               "display_name": "Stagnant Air",
+               "description": "Not a single cloud, not a single breeze... Just the stale, sweltering sun above.<ul><li>Excessive sunlight levels.</li><li>Quite reduced humidity levels.</li><li>Unsheltered hearthlings are sweltering and might get a heatstroke if too exposed to the sun.</li><li>Unsheltered pasture animals are hurt by the heat.</li></ul>"
             }
          },
          "snow": {
@@ -956,7 +958,8 @@
                "description": "There's still snow to fall this year...<ul><li>Fairly reduced sunlight levels.</li><li>Regular humidity levels.</li><li>Unsheltered hearthlings are too cold to work as effectively.</li><li>Unsheltered pasture animals are hurt by the cold.</li></ul>"
             },
             "snow_drifts": {
-               "display_name": "Snow Drifts"
+               "display_name": "Snow Drifts",
+               "description": "The winds are blowing gusts of snow!<ul><li>Normal sunlight levels.</li><li>Quite reduced humidity levels.</li><li>Unsheltered hearthlings are too cold to work as effectively.</li><li>Unsheltered pasture animals are hurt by the cold.</li></ul>"
             }
          },
          "sandstorm": {
@@ -965,7 +968,8 @@
                "description": "There is sand and dust... everywhere!<ul><li>Fairly reduced sunlight levels.</li><li>Greatly reduced humidity.</li><li>Vision radius is only slightly reduced.</li><li>Unsheltered hearthlings are too hot to work as effectively.</li><li>Unsheltered pasture animals are affected by the heat.</li></ul>"
             },
             "sandy_drifts": {
-               "display_name": "Sand Drifts"
+               "display_name": "Sand Drifts",
+               "description": "The wind is blowing up twirls of sand!<ul><li>Normal sunlight levels.</li><li>Somewhat reduced humidity.</li><li>Vision radius is only slightly reduced.</li><li>Unsheltered hearthlings are too hot to work as effectively.</li><li>Unsheltered pasture animals are affected by the heat.</li></ul>"
             }
          },
          "rain": {
@@ -995,17 +999,21 @@
                "description": "The clouds are heavy and dark, the air is dry and cold.<ul><li>Fairly reduced sunlight levels.</li><li>Regular humidity levels.</li><li>Unsheltered hearthlings are too cold to work as effectively.</li><li>Unsheltered pasture animals are hurt by the cold.</li></ul>"
             },
             "distant_storm": {
-               "display_name": "Distant Storm"
+               "display_name": "Distant Storm",
+               "description": "Somewhere out there a storm is raging, luck was on our side today!<ul><li>Slightly reduced sunlight levels.</li><li>Slightly increased humidity.</li></ul>"
             }
          },
          "blizzard": {
-            "description": "Wind, and snow, and hail, oh my!<ul><li>Extremely reduced sunlight levels.</li><li>Quite reduced humidity.</li><li>Vision radius is greatly reduced.</li><li>Unsheltered hearthlings are hurt by the cold.</li><li>Unsheltered pasture animals are hurt by the cold.</li></ul>"
+            "description": "Wind and snow! Lots of snow! Oh my!<ul><li>Extremely reduced sunlight levels.</li><li>Quite reduced humidity.</li><li>Vision radius is greatly reduced.</li><li>Unsheltered hearthlings are hurt by the cold.</li><li>Unsheltered pasture animals are hurt by the cold.</li></ul>"
          },
          "hailstorm": {
-            "display_name": "Hailstorm"
+            "display_name": "Hailstorm",
+            "description": "A strong storm and chilly winds! Take shelter!<ul><li>Extremely reduced sunlight levels.</li><li>Disastrously increased humidity.</li><li>Vision radius is reduced.</li><li>Unsheltered hearthlings and pasture animals get soaked wet.</li><li>Unsheltered hearthlings can get bruised by the hail.</li><li>Unsheltered hearthlings are too chilly to work as effectively.</li></ul>"
          },
          "whiteout": {
-            "display_name": "Whiteout"
+            "display_name": "Whiteout",
+            "description": "There is a storm coming... And it's unlike anything we've ever seen.<ul><li>Slightly reduced sunlight levels.</li><li>Quite reduced humidity.</li><li>During the whiteout, vision radius is greatly reduced and hearthlings caught in it will have severely reduced capabilities and speed.</li><li>The whiteout happens near the middle of the day.</li><li>Unsheltered hearthlings are hurt by the cold.</li><li>Unsheltered pasture animals are hurt by the cold.</li></ul>",
+            "bulletin_name": "The whiteout has started! Everyone should go inside!"
          }
       },
       "happiness": {
@@ -1091,6 +1099,66 @@
                   "windy_chilly_negative": {
                      "display_name": "This wind hurts me!",
                      "tooltip": "It feels like a thousand of little cold blades on my face... Ugh!"
+                  },
+                  "whiteout_debuff": {
+                     "display_name": "Caught in the Whiteout",
+                     "tooltip": "Oh no, I am not in shelter! It's happening now! I'm afraid! HELP ME!"
+                  },
+                  "blizzard_negative": {
+                     "display_name": "Freezing and worried",
+                     "tooltip": "It's cold, it's stormy and I'm being covered in snow. I like snowlings... but I don't want to be one!"
+                  },
+                  "hailstorm_positive": {
+                     "display_name": "Lovely ice pebbles",
+                     "tooltip": "Oh, woah! I love hail! Now where's my juice? I gotta catch some free ice cubes..."
+                  },
+                  "sandy_drifts_positive": {
+                     "display_name": "A thousand and one nights",
+                     "tooltip": "Ahh, nothing beats the beauty of the desert when the sands are dancing under the moon..."
+                  },
+                  "sandy_drifts_negative": {
+                     "display_name": "I don't like sand.",
+                     "tooltip": "It's coarse, it's rough and it gets everywhere."
+                  },
+                  "snow_drifts_positive": {
+                     "display_name": "Beautiful flow of snow",
+                     "tooltip": "Look, look at the snow drifts! So beautiful... I wish I could see that every day!"
+                  },
+                  "snow_drifts_negative": {
+                     "display_name": "Snow in the face!",
+                     "tooltip": "Well, yeah. When you're walking outside and a whirl of snow just punches you in the face you know this day ain't getting much better..."
+                  },
+                  "sunny_autumn_positive": {
+                     "display_name": "Chilly autumn mood!",
+                     "tooltip": "The golden and red leaves... The shorter days... The brown grass... It is the best time of the year again!"
+                  },
+                  "sunny_autumn_negative": {
+                     "display_name": "Autumn sadness...",
+                     "tooltip": "Oh no... This day looks so much like, well, autumn. It has autumn written everywhere. And you know what autumn means... It means winter."
+                  },
+                  "sunny_stagnant_positive": {
+                     "display_name": "Just another plain day...",
+                     "tooltip": "It could be worse, right? No clouds at all, just the big and shiny sun above us!"
+                  },
+                  "sunny_stagnant_negative": {
+                     "display_name": "There's no end to this day...",
+                     "tooltip": "There's nothing, nothing going on. The sky is so clear the sun is heating us like an oven... Is the world an oven?"
+                  },
+                  "whiteout_positive": {
+                     "display_name": "Less work and more play?",
+                     "tooltip": "I mean... Look outside. It's not like we can work today... So let's just find shelter and enjoy some tea?"
+                  },
+                  "whiteout_negative": {
+                     "display_name": "Don't go into the light!",
+                     "tooltip": "What if the light is everywhere?! Can't even tell the ground from the sky! Whiteouts are so dangerous and scary!"
+                  },
+                  "windy_springtime_positive": {
+                     "display_name": "Blossoms and Joy!",
+                     "tooltip": "Woooo! It's spring again! Look at this beautiful day! The flowers, the butterflies, the soft breeze!"
+                  },
+                  "windy_springtime_negative": {
+                     "display_name": "Achoooo! Sorry!",
+                     "tooltip": "Oh, great. Winter ends and now it's sneezing and allergy season. GO AWAY, POLLEN!"
                   }
                }
             },
@@ -2163,6 +2231,10 @@
                "display_name": "Disable Flow",
                "description": "Disable the flow of water into and/or out of this item"
             }
+         },
+         "collect_bees": {
+            "display_name": "Start a New Colony!",
+            "description": "Order the Herbalist to start a new bee colony from this skep by developing some eggs into a new queen. This action requires one unit of Royal Jelly and the existing skep will not be able to produce for a few days."
          }
       },
       "buffs": {
@@ -2384,6 +2456,14 @@
             },
             "hot_debuff_npc": {
                "description": "Speed is reduced."
+            },
+            "hailstorm_debuff": {
+               "display_name": "Hailed",
+               "description": "Ouch! I'm getting hit by tiny ice pebbles! It's rather annoying..."
+            },
+            "whiteout_debuff": {
+               "display_name": "Caught in the Whiteout",
+               "description": "I can't see anything! I can't even tell if my eyes are burning from the cold or the brightness!<ul><li>This hearthling is blinded and lost in the middle of the whiteout and will slow down and feel hunger much faster.</li><li>When this debuff is stacked enough, panic may take over and they'll just wander around until it's over or something worse happens...</li><li>Seek shelter immediately! Try disabling jobs or calling the alarm to force all hearthlings inside.</li></ul>"
             }
          },
          "shepherding": {
@@ -2762,6 +2842,14 @@
          "using_scepter": {
             "display_name": "Using Scepters",
             "description": "Courage is greatly increased!"
+         },
+         "undead_infection": {
+            "display_name": "Undead Infection"
+         },
+         "recently_treated": {
+            "recently_treated_buff": {
+               "description": "This hearthling has recently received medical attention and will need to rest before further treatment.<ul><li>No new infections will develop while this effect is active</li><li>Existing infections will remain and require specific treatment</li></ul>"
+            }
          }
       },
       "loadouts": {
@@ -3051,11 +3139,14 @@
       },
       "herbalist": {
          "recipes": {
+            "refinement_name": "Seed Extraction: Plants",
+            "refinement_large_name": "Seed Extraction: Shrubs & Trees",
             "refined_fungi_name": "Fungal Refinement",
-            "refined_seeds_name": "Regional Seeds",
+            "refined_seeds_name": "Farming: Regional Seeds",
             "planters_name": "Herb Planters",
-            "farming_enhancements_name": "Farming Enhancements & Seeds",
+            "farming_enhancements_name": "Farming: Enhancements & Seeds",
             "bandages_name": "Healing Items",
+            "brewing_name": "Brewing Ingredients",
             "decorated_frostfeast_tree_recipe": {
                "recipe_name": "Decorated Frostfeast Pine",
                "description": "Get your town ready for the holidays with this traditional and beautiful decorated tree.",
@@ -3098,7 +3189,7 @@
             },
             "herbalist_planter_water_recipe": {
                "recipe_name": "Herbalist Water Planter",
-               "description": "The Herbalist can create a special planter to cultivate aquatic resources.",
+               "description": "The Herbalist can create a special planter to cultivate aquatic resources and get leeches, useful for treating infections.",
                "flavor": "Algae can be replanted from their own resources"
             },
             "herbalist_planter_pot_sapling_recipe": {
@@ -3137,12 +3228,12 @@
                "flavor": "Only a skilled hand can choose the best nuts, but the rest are destroyed in the process."
             },
             "daisy_transmute_recipe": {
-               "recipe_name": "Daisy Seeds (x3)",
+               "recipe_name": "Daisy Seeds (x2)",
                "description": "Separate seeds from the herbs. Daisies will spread around after being planted.",
                "flavor": "Only a skilled hand can harvest the weaker seeds, but the herbs are lost in the process."
             },
             "cotton_transmute_recipe": {
-               "recipe_name": "Cotton Seeds (x3)",
+               "recipe_name": "Cotton Seeds (x2)",
                "description": "Separate seeds from the fiber",
                "flavor": "Only a skilled hand can harvest the weaker seeds, but the fiber is destroyed in the process."
             },
@@ -3207,35 +3298,84 @@
                "flavor": "Only a skilled hand can harvest the weaker seeds, but the herbs are lost in the process."
             },
             "carrot_transmute_recipe": {
-               "recipe_name": "Carrot Seeds (x3)",
+               "recipe_name": "Carrot Seeds (x2)",
                "description": "Separate seeds from the youngest leaves",
                "flavor": "Only a skilled hand can harvest the weaker seeds, but the vegetable is destroyed in the process."
             },
             "sunflower_transmute_recipe": {
+               "recipe_name": "Sunflower Seeds (x2)",
                "flavor": "Sunflower seeds are oleaginous seeds and can be used to make oil."
             },
+            "foxlily_transmute_recipe": {
+               "recipe_name": "Fox Lily Seeds (x2)"
+            },
+            "berry_bush_transmute_recipe": {
+               "recipe_name": "Berry Bush Seeds (x2)"
+            },
+            "brightbell_transmute_recipe": {
+               "recipe_name": "Brightbell Seeds (x2)"
+            },
+            "cactus_transmute_recipe": {
+               "recipe_name": "Cactus Seeds (x2)"
+            },
+            "cactus_tulip_blue_transmute_recipe": {
+               "recipe_name": "Blue Tulip Cactus Seeds (x2)"
+            },
+            "cactus_tulip_red_transmute_recipe": {
+               "recipe_name": "Red Tulip Cactus Seeds (x2)"
+            },
+            "cactus_tulip_yellow_transmute_recipe": {
+               "recipe_name": "Yellow Tulip Cactus Seeds (x2)"
+            },
+            "frostsnap_transmute_recipe": {
+               "recipe_name": "Frostsnap Seeds (x2)"
+            },
+            "pear_cactus_recipe": {
+               "recipe_name": "Prickly Pear Cactus Seeds (x2)"
+            },
+            "snow_poppy_transmute_recipe": {
+               "recipe_name": "Snow Poppy Seeds (x2)"
+            },
+            "sweet_potato_transmute_recipe": {
+               "recipe_name": "Sweet Potato Seeds (x2)"
+            },
+            "tumbleweed_transmute_recipe": {
+               "recipe_name": "Tumbleweed Seeds (x2)"
+            },
+            "violet_transmute_recipe": {
+               "recipe_name": "Violet Seeds (x2)"
+            },
+            "wax_plant_green_transmute_recipe": {
+               "recipe_name": "Green Wax Plant Seeds (x2)"
+            },
+            "wax_plant_purple_transmute_recipe": {
+               "recipe_name": "Purple Wax Plant Seeds (x2)"
+            },
+            "wintermoss_transmute_recipe": {
+               "recipe_name": "Wintermoss Seeds (x2)"
+            },
             "dwarfsbeard_transmute_recipe": {
-               "recipe_name": "Dwarfsbeard Seeds (x3)",
+               "recipe_name": "Dwarfsbeard Seeds (x2)",
                "description": "Separate seeds from the fiber",
                "flavor": "Only a skilled hand can harvest the weaker seeds, but the fiber is destroyed in the process."
             },
             "cherry_bush_transmute_recipe": {
-               "recipe_name": "Cherry Bush Seeds (x3)",
+               "recipe_name": "Cherry Bush Seeds (x2)",
                "description": "Separate seeds from the fruit",
                "flavor": "Only a skilled hand can harvest the weaker seeds, but the fruit is lost in the process."
             },
             "moonbell_transmute_recipe": {
-               "recipe_name": "Moonbell Seeds (x3)",
+               "recipe_name": "Moonbell Seeds (x2)",
                "description": "Separate seeds from the herbs",
                "flavor": "Only a skilled hand can harvest the weaker seeds, but the herbs are lost in the process."
             },
             "sugarbell_transmute_recipe": {
-               "recipe_name": "Sugarbell Seeds (x3)",
+               "recipe_name": "Sugarbell Seeds (x2)",
                "description": "Separate seeds from the harvest",
                "flavor": "Only a skilled hand can harvest the weaker seeds, but the sugarbells are lost in the process."
             },
             "marblesprout_transmute_recipe": {
-               "recipe_name": "Marblesprout Seeds (x3)",
+               "recipe_name": "Marblesprout Seeds (x2)",
                "description": "Separate seeds from the stone",
                "flavor": "Only a skilled hand can harvest the weaker seeds, but the flower is lost in the process."
             },
@@ -3711,9 +3851,7 @@
                "recipe_name": "Wrap of Gruit",
                "description": "A bundle of bitter herbs and seasonings. The northerners use pine cones for its flavor.",
                "flavor": "The Brewer needs gruit for making beer"
-            },
-            "refinement_name": "Seed Extraction",
-            "brewing_name": "Brewing Ingredients"
+            }
          },
          "herbalist_hood": {
             "display_name": "Herbalist's Hood",
@@ -3765,6 +3903,9 @@
          "herbalist_metal_cauldron": {
             "display_name": "Herbalist Metal Cauldron",
             "description": "Used for brewing more advanced potions. Requires any common fuel."
+         },
+         "herbalist_bee_skep_regrowing": {
+            "description": "This bee skep needs a few days to regrow a productive colony."
          }
       },
       "engineer": {
@@ -6557,7 +6698,7 @@
          },
          "common_salve": {
             "display_name": "Common Salve",
-            "description": "Used by the Herbalist for treating pierce wounds up to high severity."
+            "description": "Used by the Herbalist for treating pierces up to high severity."
          },
          "fever_cordial": {
             "display_name": "Fever Cordial",
@@ -6573,20 +6714,20 @@
          },
          "neat_salve": {
             "display_name": "Neat Salve",
-            "description": "Used by the Herbalist for treating pierce wounds up to extreme severity."
+            "description": "Used by the Herbalist for treating pierces up to extreme severity."
          },
          "rough_salve": {
             "display_name": "Rough Salve",
-            "description": "Used by the Herbalist for treating pierce wounds up to medium severity."
+            "description": "Used by the Herbalist for treating pierces up to medium severity."
          },
          "coarse_bandage": {
-            "description": "Used by the Herbalist for treating cutting wounds up to medium severity."
+            "description": "Used by the Herbalist for treating cuts up to medium severity."
          },
          "light_bandage": {
-            "description": "Used by the Herbalist for treating cutting wounds up to high severity."
+            "description": "Used by the Herbalist for treating cuts up to high severity."
          },
          "heavy_bandage": {
-            "description": "Used by the Herbalist for treating cutting wounds up to extreme severity."
+            "description": "Used by the Herbalist for treating cuts up to extreme severity."
          },
          "strong_antidote": {
             "display_name": "Strong Antidote",
@@ -7125,7 +7266,7 @@
          },
          "planter_water": {
             "display_name": "Herbalist Water Planter",
-            "description": "Can be used to cultivate aquatic resources like algae or lilies."
+            "description": "Can be used to cultivate aquatic resources like algae or lilies. Provides leeches."
          },
          "planter_pot_sapling": {
             "display_name": "Herbalist Tree-Planting Pot",
@@ -7491,7 +7632,12 @@
          },
          "bough_bale": {
             "display_name": "Bale of Boughs",
-            "description": "Thick branches laden with leaves. Can be used as thatching or lower grade fuel."
+            "description": "Thick branches laden with leaves. Can be used as thatching or lower grade fuel.",
+            "decay_1": "It's drying and should soon become a Bundle o' Firewood."
+         },
+         "bough_bale_evergreen": {
+            "display_name": "Bale of Evergreen Boughs",
+            "description": "Full of green needles! Can be used as thatching, fuel and even in recipes!"
          }
       },
       "refined": {
@@ -9003,6 +9149,185 @@
          "dwarfsbeard_seed_ghost": {
             "display_name": "Dwarfsbeard Seed",
             "description": "Will grow into a greasy bush that provides fiber and thatching."
+         },
+         "brightbell_plant": {
+            "display_name": "Brightbell",
+            "description": "Can be harvested for red aromatic herbs.",
+            "seed": {
+               "brightbell_plant_seed_ghost": {
+                  "display_name": "Brightbell Seed",
+                  "description": "Will provide red aromatic herbs when it grows."
+               },
+               "brightbell_plant_seed": {
+                  "display_name": "Brightbell Seed",
+                  "description": "A delicate and common forest flower. Can be planted."
+               }
+            }
+         },
+         "cactus_plant": {
+            "display_name": "Cactus",
+            "description": "Can be harvested for red aromatic herbs.",
+            "seed": {
+               "cactus_plant_seed_ghost": {
+                  "display_name": "Cactus Seed",
+                  "description": "Will provide red aromatic herbs when it grows."
+               },
+               "cactus_plant_seed": {
+                  "display_name": "Cactus Seed",
+                  "description": "A resilient flower from arid lands. Can be planted."
+               }
+            }
+         },
+         "frostsnap_plant": {
+            "display_name": "Frostsnap",
+            "description": "Can be harvested for blue bitter herbs.",
+            "seed": {
+               "frostsnap_plant_seed_ghost": {
+                  "display_name": "Frostsnap Seed",
+                  "description": "Will provide blue bitter herbs when it grows."
+               },
+               "frostsnap_plant_seed": {
+                  "display_name": "Frostsnap Seed",
+                  "description": "A chilly, small mountain flower. Can be planted."
+               }
+            }
+         },
+         "silkweed_plant": {
+            "display_name": "Silkweed",
+            "description": "Can be harvested for fibers and green bitter herbs.",
+            "seed": {
+               "silkweed_plant_seed_ghost": {
+                  "display_name": "Silkweed Seed",
+                  "description": "Will provide fiber and green bitter herbs when it grows."
+               },
+               "silkweed_plant_seed": {
+                  "display_name": "Silkweed Seed",
+                  "description": "A common wetland weed. Can be planted."
+               }
+            }
+         },
+         "cactus_tulip_blue_plant": {
+            "description": "Can be harvested for blue aromatic herbs.",
+            "seed": {
+               "cactus_tulip_blue_plant_seed_ghost": {
+                  "description": "Will provide blue aromatic herbs when it grows."
+               },
+               "cactus_tulip_blue_plant_seed": {
+                  "description": "A pretty desert blossom. Can be planted."
+               }
+            }
+         },
+         "cactus_tulip_red_plant": {
+            "description": "Can be harvested for red aromatic herbs.",
+            "seed": {
+               "cactus_tulip_red_plant_seed_ghost": {
+                  "description": "Will provide red aromatic herbs when it grows."
+               },
+               "cactus_tulip_red_plant_seed": {
+                  "description": "A pretty desert blossom. Can be planted."
+               }
+            }
+         },
+         "cactus_tulip_yellow_plant": {
+            "description": "Can be harvested for yellow aromatic herbs.",
+            "seed": {
+               "cactus_tulip_yellow_plant_seed_ghost": {
+                  "description": "Will provide yellow aromatic herbs when it grows."
+               },
+               "cactus_tulip_yellow_plant_seed": {
+                  "description": "A pretty desert blossom. Can be planted."
+               }
+            }
+         },
+         "earthbud_plant": {
+            "description": "Can be harvested for concentrated hearth essence.",
+            "seed": {
+               "earthbud_plant_seed_ghost": {
+                  "description": "Will provide hearth essence when it grows."
+               },
+               "earthbud_plant_seed": {
+                  "description": "A mysterious, magical flower. Can be planted."
+               }
+            }
+         },
+         "foxlily_plant": {
+            "description": "Can be harvested for red and yellow aromatic herbs.",
+            "seed": {
+               "foxlily_plant_seed_ghost": {
+                  "display_name": "Fox Lily Seed",
+                  "description": "Will provide red and yellow aromatic herbs when it grows."
+               },
+               "foxlily_plant_seed": {
+                  "display_name": "Fox Lily Seed",
+                  "description": "Rare and beautiful fox tails. Can be planted."
+               }
+            }
+         },
+         "snow_poppy_plant": {
+            "description": "Can be harvested for red bitter herbs.",
+            "seed": {
+               "snow_poppy_plant_seed_ghost": {
+                  "description": "Will provide red bitter herbs when it grows."
+               },
+               "snow_poppy_plant_seed": {
+                  "description": "A typical flower from the north. Can be planted."
+               }
+            }
+         },
+         "sugarbell_plant": {
+            "description": "Can be harvested and refined into sugar.",
+            "seed": {
+               "sugarbell_plant_seed_ghost": {
+                  "description": "Will provide vegetables that can be refined into sugar when it grows."
+               },
+               "sugarbell_plant_seed": {
+                  "description": "A glowy vegetable rich in sugar. Can be planted."
+               }
+            }
+         },
+         "sunflower_plant": {
+            "description": "Can be harvested for yellow and white aromatic herbs.",
+            "seed": {
+               "sunflower_plant_seed_ghost": {
+                  "description": "Will provide yellow and white aromatic herbs when it grows."
+               },
+               "sunflower_plant_seed": {
+                  "description": "Bright and happy like the sun. Can be planted or used as an oil source."
+               }
+            }
+         },
+         "violet_plant": {
+            "description": "Can be harvested for purple aromatic herbs.",
+            "seed": {
+               "violet_plant_seed_ghost": {
+                  "description": "Will provide purple aromatic herbs when it grows."
+               },
+               "violet_plant_seed": {
+                  "description": "A neat arctic purple flower. Can be planted."
+               }
+            }
+         },
+         "wax_plant_green": {
+            "description": "Can be harvested for green bitter herbs.",
+            "seed": {
+               "wax_plant_green_seed_ghost": {
+                  "description": "Will provide green bitter herbs when it grows."
+               },
+               "wax_plant_green_seed": {
+                  "description": "A cute little arid plant. Can be planted."
+               }
+            }
+         },
+         "wax_plant_purple": {
+            "description": "Can be harvested for purple aromatic herbs.",
+            "seed": {
+               "wax_plant_purple_seed_ghost": {
+                  "description": "Will provide purple aromatic herbs when it grows."
+               },
+               "wax_plant_purple_seed": {
+                  "description": "A cute little arid plant. Can be planted."
+               }
+            }
          }
       },
       "decoration": {
@@ -11346,6 +11671,10 @@
          "silver_scepter": {
             "display_name": "Silver Scepter",
             "description": "A reliable and blessed weapon for a Cleric. Can smite the undead."
+         },
+         "poison_arrow": {
+            "display_name": "Poisonous Arrow",
+            "description": "Can poison the target upon hitting."
          }
       },
       "gizmos": {
@@ -12681,268 +13010,268 @@
       },
       "brightbell": {
          "display_name": "Brightbell",
-         "description": "What do you know, it's exactly like a wild Brightbell! Dani, you should change this text!",
+         "description": "A homely, common flower from the woodlands. Needs a couple of days to be fully grown and will provide red aromatic herbs when harvested.",
          "harvest_text": "harvesting brightbells"
       },
       "cactus_flower": {
          "display_name": "Cactus Flower",
-         "description": "What do you know, it's exactly like a wild Cactus Flower! Dani, you should change this text!",
+         "description": "Small and highly adapted desert plants with a delicate flower. Needs a couple of days to be fully grown and will provide red aromatic herbs when harvested.",
          "harvest_text": "harvesting cactus flowers"
       },
       "frostsnap": {
          "display_name": "Frostsnap",
-         "description": "What do you know, it's exactly like a wild Frostsnap! Dani, you should change this text!",
+         "description": "A tiny mountain flower that is chill to the touch. Needs a few days to be fully grown and will provide blue bitter herbs when harvested.",
          "harvest_text": "harvesting frostsnaps"
       },
       "violet": {
          "display_name": "Violet",
-         "description": "What do you know, it's exactly like a wild Violet! Dani, you should change this text!",
+         "description": "A pretty and valuable northern blossom. Needs a couple of days to be fully grown and will provide purple aromatic herbs when harvested.",
          "harvest_text": "harvesting violets"
       },
       "cactus_tulip_blue": {
          "display_name": "Blue Tulip Cactus",
-         "description": "What do you know, it's exactly like a wild Blue Tulip Cactus! Dani, you should change this text!",
+         "description": "An exotic and colorful desert tulip. Needs some days to be fully grown and will provide blue aromatic herbs when harvested.",
          "harvest_text": "harvesting blue tulip cactus"
       },
       "cactus_tulip_red": {
          "display_name": "Red Tulip Cactus",
-         "description": "What do you know, it's exactly like a wild Red Tulip Cactus! Dani, you should change this text!",
+         "description": "An exotic and colorful desert tulip. Needs some days to be fully grown and will provide red aromatic herbs when harvested.",
          "harvest_text": "harvesting red tulip cactus"
       },
       "cactus_tulip_yellow": {
          "display_name": "Yellow Tulip Cactus",
-         "description": "What do you know, it's exactly like a wild Yellow Tulip Cactus! Dani, you should change this text!",
+         "description": "An exotic and colorful desert tulip. Needs some days to be fully grown and will provide yellow aromatic herbs when harvested.",
          "harvest_text": "harvesting yellow tulip cactus"
       },
       "snow_poppy": {
          "display_name": "Snow Poppy",
-         "description": "What do you know, it's exactly like a wild Snow Poppy! Dani, you should change this text!",
+         "description": "A typical and toxic small northern flower. Needs a few days to be fully grown and will provide red bitter herbs when harvested.",
          "harvest_text": "harvesting snow poppy"
       },
       "daisy": {
          "display_name": "Daisy",
-         "description": "What do you know, it's exactly like a wild Daisy! Dani, you should change this text!",
+         "description": "A simple and adorable flower. Needs a bunch of days to be fully grown and will provide white aromatic herbs when harvested.",
          "harvest_text": "harvesting daisy"
       },
       "foxlily": {
-         "display_name": "Foxlily",
-         "description": "What do you know, it's exactly like a wild Foxlily! Dani, you should change this text!",
+         "display_name": "Fox Lily",
+         "description": "A rare and valuable flower that resembles a furry tail. Needs a bunch of days to be fully grown and will provide red and yellow aromatic herbs when harvested.",
          "harvest_text": "harvesting foxlily"
       },
       "highland_vine": {
          "display_name": "Highland Vine",
-         "description": "What do you know, it's exactly like a wild Highland Vine! Dani, you should change this text!",
+         "description": "A thick and resistant ivy that spreads to all directions. Needs a bunch of days to be fully grown and will provide green bitter herbs and sometimes fiber when harvested.",
          "harvest_text": "harvesting highland vine"
       },
       "marblesprout": {
          "display_name": "Marblesprout",
-         "description": "What do you know, it's exactly like a wild Marblesprout! Dani, you should change this text!",
+         "description": "A curious bloom from the highlands, can be dried into marble stone. Needs some days to be fully grown and will provide white bitter herbs when harvested.",
          "harvest_text": "harvesting marblesprout"
       },
       "moonbell": {
          "display_name": "Moonbell",
-         "description": "What do you know, it's exactly like a wild Moonbell! Dani, you should change this text!",
+         "description": "A glowy and pale highland bloom. Needs a few days to be fully grown and will provide blue bitter herbs when harvested.",
          "harvest_text": "harvesting moonbell"
       },
       "sunflower": {
          "display_name": "Sunflower",
-         "description": "What do you know, it's exactly like a wild Sunflower! Dani, you should change this text!",
+         "description": "A bright and joyful flower loved by all. Needs a bunch of days to be fully grown and will provide yellow and white aromatic herbs when harvested.",
          "harvest_text": "harvesting sunflower"
       },
       "silkweed": {
          "display_name": "Silkweed",
-         "description": "What do you know, it's exactly like a wild Silkweed! Dani, you should change this text!",
+         "description": "A fibrous and resilient weed quite common in bogs. Needs a couple of days to be fully grown and will provide green bitter herbs and sometimes fiber when harvested.",
          "harvest_text": "harvesting silkweed"
       },
       "earthbud": {
          "display_name": "Hearthbud",
-         "description": "What do you know, it's exactly like a wild Hearthbud! Dani, you should change this text!",
+         "description": "A mysterious bloom able to condensate hearth magic. Needs a long time to be fully grown and will provide hearth essences when harvested.",
          "harvest_text": "harvesting hearthbud"
       },
       "sugarbell": {
          "display_name": "Sugarbell",
-         "description": "What do you know, it's exactly like a wild Sugarbell! Dani, you should change this text!",
+         "description": "A hearty vegetable that glows with sweetness. Needs a bunch of days to be fully grown and will provide resources to be refined into sugar.",
          "harvest_text": "harvesting sugarbell"
       },
       "wax_plant_green": {
          "display_name": "Green Wax Plant",
-         "description": "What do you know, it's exactly like a wild Green Wax Plant! Dani, you should change this text!",
+         "description": "A chunky, cute desert plant. Needs some days to be fully grown and will provide green bitter herbs when harvested.",
          "harvest_text": "harvesting green wax plant"
       },
       "wax_plant_purple": {
          "display_name": "Purple Wax Plant",
-         "description": "What do you know, it's exactly like a wild Purple Wax Plant! Dani, you should change this text!",
+         "description": "A chunky, cute desert plant. Needs some days to be fully grown and will provide purple aromatic herbs when harvested.",
          "harvest_text": "harvesting purple wax plant"
+      },
+      "poppy": {
+         "display_name": "Poppy",
+         "description": "A common sight among the rolling hills of the highlands. Needs a few days to be fully grown and will provide red bitter herbs when harvested.",
+         "harvest_text": "harvesting poppy"
+      },
+      "rose": {
+         "display_name": "Rose",
+         "description": "A beautiful layered flower. Needs a couple of days to be fully grown and will provide red aromatic herbs when harvested.",
+         "harvest_text": "harvesting rose"
+      },
+      "dill": {
+         "display_name": "Dill",
+         "description": "A delicious seasoning traditional to the highlanders. Grows very quickly and will provide green and yellow aromatic herbs when harvested.",
+         "harvest_text": "harvesting dill"
+      },
+      "chives": {
+         "display_name": "Chives",
+         "description": "Flavorful favorite of the northern cooks. Grows very quickly and will provide green and red aromatic herbs when harvested.",
+         "harvest_text": "harvesting chives"
+      },
+      "bog_myrtle": {
+         "display_name": "Bog Myrtle",
+         "description": "A small and velvety bush that grows by the wetlands. Needs a few days to be fully grown and will provide green bitter herbs when harvested.",
+         "harvest_text": "harvesting bog myrtle"
+      },
+      "nightshade": {
+         "display_name": "Nightshade",
+         "description": "A highly poisonous and mesmerizingly beautiful blossom. Needs some days to be fully grown and will provide purple bitter herbs when harvested.",
+         "harvest_text": "harvesting nightshade"
+      },
+      "daylily": {
+         "display_name": "Daylily",
+         "description": "A happy and delicate summer flower. Needs a couple of days to be fully grown and will provide yellow aromatic herbs when harvested.",
+         "harvest_text": "harvesting daylily"
+      },
+      "oleander": {
+         "display_name": "Oleander",
+         "description": "Bushy and slightly toxic flowers common in warmer climates. Needs a few days to be fully grown and will provide red bitter herbs when harvested.",
+         "harvest_text": "harvesting oleander"
+      },
+      "parsley": {
+         "display_name": "Parsley",
+         "description": "A tasty seasoning that can grow on most climates. Grows very quickly and will provide green and white aromatic herbs when harvested.",
+         "harvest_text": "harvesting parsley"
+      },
+      "sage": {
+         "display_name": "Sage",
+         "description": "Fresh with a pinch of mint, popular across the woodlands. Grows very quickly and will provide green and blue aromatic herbs when harvested.",
+         "harvest_text": "harvesting sage"
       },
       "water_lily_pad": {
          "display_name": "Lily Pad",
-         "description": "What do you know, it's exactly like wild Lily Pads! Dani, you should change this text!",
+         "description": "Neat and leafy water plants. Takes a long time to be fully grown. Provides green aromatic herbs and sometimes leeches when harvested.",
          "harvest_text": "harvesting lily pad"
       },
       "water_lily_pink": {
          "display_name": "Pink Water Lily",
-         "description": "What do you know, it's exactly like wild Pink Water Lilies! Dani, you should change this text!",
+         "description": "Pleasant and valuable water flowers. Takes a long time to be fully grown. Provides red bitter herbs and sometimes green aromatic ones or leeches.",
          "harvest_text": "harvesting pink water lily"
       },
       "water_lily_purple": {
          "display_name": "Purple Water Lily",
-         "description": "What do you know, it's exactly like wild Purple Water Lilies! Dani, you should change this text!",
+         "description": "Pleasant and valuable water flowers. Takes a long time to be fully grown. Provides purple bitter herbs and sometimes green aromatic ones or leeches.",
          "harvest_text": "harvesting purple water lily"
       },
       "water_lily_white": {
          "display_name": "White Water Lily",
-         "description": "What do you know, it's exactly like wild White Water Lilies! Dani, you should change this text!",
+         "description": "Pleasant and valuable water flowers. Takes a long time to be fully grown. Provides white bitter herbs and sometimes green aromatic ones or leeches.",
          "harvest_text": "harvesting white water lily"
       },
       "water_lily_yellow": {
          "display_name": "Yellow Water Lily",
-         "description": "What do you know, it's exactly like wild Yellow Water Lilies! Dani, you should change this text!",
+         "description": "Pleasant and valuable water flowers. Takes a long time to be fully grown. Provides yellow bitter herbs and sometimes green aromatic ones or leeches.",
          "harvest_text": "harvesting yellow water lily"
       },
       "algae_brown": {
          "display_name": "Brown Alga",
-         "description": "What do you know, it's exactly like wild brown algae! Dani, you should change this text!",
+         "description": "An useful water weed. Takes some days to be fully grown. Provides brown algae and sometimes leeches when harvested.",
          "harvest_text": "harvesting brown alga"
       },
       "algae_green": {
          "display_name": "Green Alga",
-         "description": "What do you know, it's exactly like wild green algae! Dani, you should change this text!",
+         "description": "An useful water weed. Takes some days to be fully grown. Provides green algae and sometimes leeches when harvested.",
          "harvest_text": "harvesting green alga"
       },
       "algae_red": {
          "display_name": "Red Alga",
-         "description": "What do you know, it's exactly like wild red algae! Dani, you should change this text!",
+         "description": "An useful water weed. Takes some days to be fully grown. Provides red algae and sometimes leeches when harvested.",
          "harvest_text": "harvesting red alga"
       },
       "oak_sapling": {
          "display_name": "Oak Sapling",
-         "description": "What do you know, it's exactly like a wild oak tree! Dani, you should change this text!",
+         "description": "A sturdy and large temperate forest tree. Needs some days before it has grown enough to be replanted somewhere else.",
          "harvest_text": "harvesting oak sapling"
       },
       "pine_sapling": {
-         "description": "What do you know, it's exactly like a wild pine tree! Dani, you should change this text!",
+         "description": "A tall and neatly shaped temperate forest evergreen tree. Needs some days before it has grown enough to be replanted somewhere else.",
          "harvest_text": "harvesting pine sapling",
          "display_name": "Pine Sapling"
       },
       "juniper_sapling": {
          "display_name": "Juniper Sapling",
-         "description": "What do you know, it's exactly like a wild juniper tree! Dani, you should change this text!",
+         "description": "Sleek and strong temperate forest evergreen tree. Needs some days before it has grown enough to be replanted somewhere else.",
          "harvest_text": "harvesting juniper sapling"
       },
       "cactus_sapling": {
          "display_name": "Cactus Sapling",
-         "description": "What do you know, it's exactly like a wild cactus! Dani, you should change this text!",
+         "description": "A hearty, large desert plant capable of being used as a wood source. Needs some days before it has grown enough to be replanted somewhere else.",
          "harvest_text": "harvesting cactus sapling"
       },
       "acacia_sapling": {
          "display_name": "Acacia Sapling",
-         "description": "What do you know, it's exactly like a wild acacia tree! Dani, you should change this text!",
+         "description": "Rigid and reliable desert tree with sprawling branches. Needs some days before it has grown enough to be replanted somewhere else.",
          "harvest_text": "harvesting acacia sapling"
       },
       "almond_sapling": {
          "display_name": "Almond Tree Sapling",
-         "description": "What do you know, it's exactly like a wild almond tree! Dani, you should change this text!",
+         "description": "A nut-bearing tree from more arid regions. Needs some days before it has grown enough to be replanted somewhere else.",
          "harvest_text": "harvesting almond tree sapling"
       },
       "hazelnut_sapling": {
          "display_name": "Hazel Tree Sapling",
-         "description": "What do you know, it's exactly like a wild hazel tree! Dani, you should change this text!",
+         "description": "A nut-bearing tree common in the highlands. Needs some days before it has grown enough to be replanted somewhere else.",
          "harvest_text": "harvesting hazel tree sapling"
       },
       "chestnut_sapling": {
          "display_name": "Chestnut Tree Sapling",
-         "description": "What do you know, it's exactly like a wild chestnut tree! Dani, you should change this text!",
+         "description": "A nut-bearing temperate forest tree. Needs some days before it has grown enough to be replanted somewhere else.",
          "harvest_text": "harvesting chestnut tree sapling"
       },
       "walnut_sapling": {
          "display_name": "Walnut Tree Sapling",
-         "description": "What do you know, it's exactly like a wild walnut tree! Dani, you should change this text!",
+         "description": "A common nut-bearing tree from the northern regions. Needs some days before it has grown enough to be replanted somewhere else.",
          "harvest_text": "harvesting walnut tree sapling"
       },
       "arctic_juniper_sapling": {
          "display_name": "Arctic Juniper Sapling",
-         "description": "What do you know, it's exactly like a wild arctic juniper tree! Dani, you should change this text!",
+         "description": "Sleek evergreen tree well adapted to the coldest areas. Needs some days before it has grown enough to be replanted somewhere else.",
          "harvest_text": "harvesting arctic juniper sapling"
       },
       "arctic_pine_sapling": {
          "display_name": "Arctic Pine Sapling",
-         "description": "What do you know, it's exactly like a wild arctic pine tree! Dani, you should change this text!",
+         "description": "Strong, tall and resilient evergreen tree from the north. Needs some days before it has grown enough to be replanted somewhere else.",
          "harvest_text": "harvesting arctic pine sapling"
       },
       "birch_sapling": {
          "display_name": "Birch Sapling",
-         "description": "What do you know, it's exactly like a wild birch tree! Dani, you should change this text!",
+         "description": "A beautiful tree with a remarkable bark. Needs some days before it has grown enough to be replanted somewhere else.",
          "harvest_text": "harvesting birch sapling"
       },
       "highland_pine_sapling": {
          "display_name": "Highland Pine Sapling",
-         "description": "What do you know, it's exactly like a wild highland pine tree! Dani, you should change this text!",
+         "description": "Incredibly strong and tall evergreen tree found in the highlands. Needs some days before it has grown enough to be replanted somewhere else.",
          "harvest_text": "harvesting highland pine sapling"
       },
       "parana_pine_sapling": {
          "display_name": "Parana Pine Sapling",
-         "description": "What do you know, it's exactly like a wild parana pine tree! Dani, you should change this text!",
+         "description": "This nut-bearing evergreen tree is a recognizable sight from distant lands. Needs some days before it has grown enough to be replanted somewhere else.",
          "harvest_text": "harvesting parana pine sapling"
       },
       "willow_sapling": {
          "display_name": "Willow Sapling",
-         "description": "What do you know, it's exactly like a wild willow tree! Dani, you should change this text!",
+         "description": "Traditionally found near marshes or lowlands. Needs some days before it has grown enough to be replanted somewhere else.",
          "harvest_text": "harvesting willow sapling"
       },
       "yew_sapling": {
          "display_name": "Yew Sapling",
-         "description": "What do you know, it's exactly like a wild yew tree! Dani, you should change this text!",
+         "description": "A thick and sturdy evergreen tree from the highlands. Needs some days before it has grown enough to be replanted somewhere else.",
          "harvest_text": "harvesting yew sapling"
-      },
-      "poppy": {
-         "display_name": "Poppy",
-         "description": "What do you know, it's exactly like a wild Poppy! Dani, you should change this text!",
-         "harvest_text": "harvesting poppy"
-      },
-      "rose": {
-         "display_name": "Rose",
-         "description": "What do you know, it's exactly like a wild Rose! Dani, you should change this text!",
-         "harvest_text": "harvesting rose"
-      },
-      "dill": {
-         "display_name": "Dill",
-         "description": "What do you know, it's exactly like a wild Dill! Dani, you should change this text!",
-         "harvest_text": "harvesting dill"
-      },
-      "chives": {
-         "display_name": "Chives",
-         "description": "What do you know, it's exactly like a wild Chives! Dani, you should change this text!",
-         "harvest_text": "harvesting chives"
-      },
-      "bog_myrtle": {
-         "display_name": "Bog Myrtle",
-         "description": "What do you know, it's exactly like a wild Bog Myrtle! Dani, you should change this text!",
-         "harvest_text": "harvesting bog myrtle"
-      },
-      "nightshade": {
-         "display_name": "Nightshade",
-         "description": "What do you know, it's exactly like a wild Nightshade! Dani, you should change this text!",
-         "harvest_text": "harvesting nightshade"
-      },
-      "daylily": {
-         "display_name": "Daylily",
-         "description": "What do you know, it's exactly like a wild Daylily! Dani, you should change this text!",
-         "harvest_text": "harvesting daylily"
-      },
-      "oleander": {
-         "display_name": "Oleander",
-         "description": "What do you know, it's exactly like a wild Oleander! Dani, you should change this text!",
-         "harvest_text": "harvesting oleander"
-      },
-      "parsley": {
-         "display_name": "Parsley",
-         "description": "What do you know, it's exactly like a wild Parsley! Dani, you should change this text!",
-         "harvest_text": "harvesting parsley"
-      },
-      "sage": {
-         "display_name": "Sage",
-         "description": "What do you know, it's exactly like a wild Sage! Dani, you should change this text!",
-         "harvest_text": "harvesting sage"
       }
    },
    "plants": {
@@ -13303,7 +13632,7 @@
             "choose_crop_type": "Choose Resource",
             "queued_crop": "Queued for Planting: ",
             "harvest_crop": "Enable Harvesting",
-            "harvest_crop_description": "If enabled, whenever the resource is fully grown, the herbalist will harvest it.",
+            "harvest_crop_description": "If enabled, whenever the resource is fully grown, the herbalist or grower will harvest it. Disabling this can be useful when a plus sign (+) is displayed next to the amount harvested - it means this planter will also provide resources over time without having to harvest and wait for it to grow again.",
             "produces": "Produces per Harvest: "
          },
          "military_mode": {

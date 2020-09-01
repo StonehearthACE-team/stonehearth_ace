@@ -1,34 +1,32 @@
 {
    "components": {
-      "model_variants": {
-         "half_renewed": {
-            "models": [
-               "file(cactus_plant_half_renewed.qb)"
-            ]
-         }
-      },
-      "stonehearth:renewable_resource_node": {
-         "half_renewed_model_variant": true,
-			"biomes": {
-				"stonehearth:biome:temperate": {
-               "renewal_time_multiplier": 2
-            },
-				"stonehearth_ace:biome:highlands": {
-               "renewal_time_multiplier": 3
-            },
-            "stonehearth:biome:arctic": {
-               "renewal_time_multiplier": 4
-            }
-         },
-         "seasons": {
-            "summer": {
-               "renewal_time_multiplier": 1.5
-            },
-            "autumn": {
-               "renewal_time_multiplier": 2
-            },
-				"winter": {
-               "renewal_time_multiplier": 4
+		"mixintypes": {
+			"stonehearth:renewable_resource_node": "remove"
+		},
+      "stonehearth:resource_node": {
+         "resource": "stonehearth:resources:herb:cactus_flower",
+         "category": "harvest",
+         "harvest_overlay_effect": "stonehearth:effects:harvest_plant_overlay_effect",
+         "resource_spawn_effect": "stonehearth:effects:harvest_plants_effect",
+         "description": "harvest_plant",
+         "resource_loot_table": {
+            "entries": {
+               "optional": {
+                  "items": {
+                     "none": {
+                        "uri": "",
+                        "weight": 5
+                     },
+                     "extra_herb": {
+                        "uri": "stonehearth:resources:herb:cactus_flower",
+                        "weight": 5
+                     },
+                     "seed": {
+                        "uri": "stonehearth:plants:cactus:seed",
+                        "weight": 1
+                     }
+                  }
+               }
             }
          }
       }

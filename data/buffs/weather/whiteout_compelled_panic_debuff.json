@@ -1,0 +1,14 @@
+{
+   "type": "buff",
+   "axis": "debuff",
+   "duration": "20m",
+   "invisible_to_player": true,
+   "repeat_add_action": "renew_duration",
+   "injected_ai": {
+      "actions": [
+         "stonehearth_ace:actions:compelled_behaviors:cower"
+      ]
+   },
+   "set_posture": "stonehearth:panic",
+   "gained_statistics_key": "whiteout"
+}

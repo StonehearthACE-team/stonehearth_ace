@@ -1,35 +1,28 @@
 {
    "components": {
-      "model_variants": {
-         "half_renewed": {
-            "models": [
-               "file(earthbud_half_renewed.qb)"
-            ]
-         }
-      },
-      "stonehearth:renewable_resource_node": {
-			"resource_loot_table": {
+      "mixintypes": {
+			"stonehearth:renewable_resource_node": "remove"
+		},
+      "stonehearth:resource_node": {
+         "resource": "stonehearth:resources:earth_essence",
+         "category": "harvest",
+         "harvest_overlay_effect": "stonehearth:effects:harvest_plant_overlay_effect",
+         "resource_spawn_effect": "stonehearth:effects:harvest_plants_effect",
+         "description": "harvest_plant",
+         "resource_loot_table": {
             "entries": {
                "optional": {
                   "items": {
                      "none": {
                         "uri": "",
-                        "weight": 8
+                        "weight": 10
+                     },
+                     "seed": {
+                        "uri": "stonehearth:plants:earthbud:seed",
+                        "weight": 1
                      }
                   }
                }
-            }
-         },
-         "half_renewed_model_variant": true,
-			"seasons": {
-            "summer": {
-               "renewal_time_multiplier": 2
-            },
-            "autumn": {
-               "renewal_time_multiplier": 4
-            },
-				"winter": {
-               "renewal_time_multiplier": 8
             }
          }
       }

@@ -49,7 +49,7 @@
                   "items": {
                      "extra_honey": {
                         "uri": "stonehearth_ace:food:honey",
-                        "weight": 10
+                        "weight": 8
                      },
                      "royal_jelly": {
                         "uri": "stonehearth_ace:consumables:royal_jelly",
@@ -116,9 +116,37 @@
                }
             }
          }
-      }
+      },
+      "stonehearth_ace:transform": {}
    },
    "entity_data": {
+      "stonehearth_ace:transform_data": {
+         "default_key": "collect_bees",
+         "transform_options": {
+            "collect_bees": {
+               "transform_uri": "stonehearth_ace:herbalist:bee_skep:regrowing",
+               "command": "stonehearth_ace:commands:collect_bees",
+               "request_action": "stonehearth_ace:transform",
+               "request_action_overlay_effect": "stonehearth_ace:effects:harvest_bee_overlay_effect",
+               "transform_ingredient_uri": "stonehearth_ace:consumables:royal_jelly",
+               "worker_required_job": {
+                  "stonehearth:jobs:herbalist": true
+               },
+               "apply_ingredient_quality": false,
+               "additional_items": {
+                  "entries": {
+                     "captive_bees": {
+                        "items": {
+                           "bees": {
+                              "uri": "stonehearth_ace:consumables:captive:bees"
+                           }
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      },
       "stonehearth:net_worth": {
          "value_in_gold": 20,
          "rarity": "common",

@@ -1,8 +1,24 @@
 {
+	"mixins": [
+		"stonehearth_ace:mixins:inflicted_wounds:pierce:insane",
+		"stonehearth_ace:mixins:inflicted_wounds:impact:hard"
+	],
    "components": {},
    "entity_data": {
       "stonehearth:catalog": {
          "category": "varanus"
+      },
+		"stonehearth:buffs": {
+         "inflictable_debuffs": {
+            "light_burn": {
+               "uri": "stonehearth_ace:buffs:wounds:light_burn",
+               "chance": 0.08
+            },
+            "bad_burn": {
+               "uri": "stonehearth_ace:buffs:wounds:bad_burn",
+               "chance": 0.05
+            }
+         }
       }
    }
 }

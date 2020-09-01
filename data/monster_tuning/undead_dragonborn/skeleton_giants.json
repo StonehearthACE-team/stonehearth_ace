@@ -1,0 +1,68 @@
+{
+   "type": "monster_tuning",
+   "estimated_difficulty": "s3",
+   "unit_info": {
+      "display_name": "i18n(stonehearth:data.monster_tuning.undead.skeleton_giants.display_name)",
+      "description": "i18n(stonehearth:data.monster_tuning.undead.skeleton_giants.description)"
+   },
+   "scale": 0.25,
+   "equipment": {
+      "weapon": [
+         "stonehearth:weapons:two_handed_sword"
+      ],
+      "abilities": "stonehearth:abilities:door_breaker_abilities",
+      "cut": "stonehearth_ace:weapons:inflicted_wounds:cut:very_hard",
+		"impact": "stonehearth_ace:weapons:inflicted_wounds:impact:very_hard"
+   },
+   "equipment_scale": 0.25,
+   "attributes": {
+      "max_health": {
+         "base": 400,
+         "net_worth_effect": {
+            "increase_by": 25,
+            "per": 200
+         },
+         "max": 10000
+      },
+      "muscle": {
+         "base": 10,
+         "net_worth_effect": {
+            "increase_by": 5,
+            "per": 1000
+         },
+         "max": 300
+      },
+      "menace": 80,
+      "courage": {
+         "base": 100,
+         "net_worth_effect": {
+            "increase_by": 10,
+            "per": 1500
+         },
+         "max": 300
+      },
+      "speed": 40,
+      "exp_reward": {
+         "base": 40,
+         "net_worth_effect": {
+            "increase_by": 25,
+            "per": 500
+         },
+         "max": 300
+      }
+   },
+   "loot_drops": {
+      "entries": {
+         "items": {
+            "num_rolls": 1,
+            "items": {
+               "stone": {
+                  "uri": "stonehearth:loot_bag:undead_dragonborn",
+                  "type": "bag",
+                  "weight": 10
+               }
+            }
+         }
+      }
+   }
+}

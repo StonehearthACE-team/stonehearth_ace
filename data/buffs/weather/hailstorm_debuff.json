@@ -1,0 +1,36 @@
+{
+   "type": "buff",
+   "axis": "debuff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.weather.hailstorm_debuff.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.weather.hailstorm_debuff.description)",
+   "duration": "20m",
+   "repeat_add_action": "renew_duration",
+   "icon": "file(hailstorm.png)",
+   "modifiers": {
+      "willpower": {
+         "multiply": 0.9
+      },
+      "speed": {
+         "multiply": 0.95
+      }
+   },
+   "script": "stonehearth:buff_scripts:periodic_health_modification",
+   "script_info": {
+      "health_change": -0.01,
+      "min_health": 0.8,
+      "cannot_kill": true,
+      "is_percentage": true,
+      "pulse": "10m",
+      "pulse_immediately": true,
+      "buff_modifiers": {
+         "stonehearth_ace:buffs:weather:sunstroke_resist": {
+            "min_health": {
+               "add": 0.1
+            },
+            "health_change": {
+               "multiply": 0.5
+            }
+         }
+      }
+   }
+}

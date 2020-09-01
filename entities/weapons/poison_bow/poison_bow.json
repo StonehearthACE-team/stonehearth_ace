@@ -1,0 +1,43 @@
+{
+   "mixins": "stonehearth:weapons:bow",
+   "type": "entity",
+   "components": {
+      "mixintypes": {
+         "model_variants": "override"
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(poison_bow_equipped.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:buffs": {
+         "inflictable_debuffs": {
+            "poison": {
+               "uri": "stonehearth_ace:buffs:poison:poison",
+               "chance": 0.7
+            }
+         }
+      },
+      "stonehearth:combat:weapon_data": {
+         "base_damage": 18,
+         "base_ranged_damage": 18,
+         "range": 24,
+         "projectile_speed": 32,
+         "projectile_uri": "stonehearth_ace:weapons:arrow:poison_arrow"
+      },
+      "stonehearth:combat:ranged_attacks": [
+         {
+            "name": "archer_1h_shoot",
+            "effect": "archer_1h_shoot",
+            "active_frame": 21,
+            "target_armor_multiplier": 0.7,
+            "cooldown": 0,
+            "priority": 0
+         }
+      ]
+   }
+}

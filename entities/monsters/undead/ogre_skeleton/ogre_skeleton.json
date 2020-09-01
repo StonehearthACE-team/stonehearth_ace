@@ -1,6 +1,9 @@
 {
    "type": "entity",
-   "mixins": "stonehearth:mixins:monster",
+   "mixins": [
+		"stonehearth:mixins:undead",
+		"stonehearth_ace:mixins:inflicted_wounds:impact:hard"
+	],
    "components": {
       "render_info": {
          "animation_table": "/stonehearth/data/rigs/entities/monster/ogre",
@@ -46,30 +49,6 @@
       "stonehearth:carry_block": {}
    },
    "entity_data": {
-      "stonehearth:buffs": {
-         "inflictable_debuffs": {
-            "severe_concussion": {
-               "uri": "stonehearth_ace:buffs:wounds:severe_concussion",
-               "chance": 0.12
-            },
-            "crushing_blow": {
-               "uri": "stonehearth_ace:buffs:wounds:crushing_blow",
-               "chance": 0.08
-            },
-            "scratch": {
-               "uri": "stonehearth_ace:buffs:wounds:scratch",
-               "chance": 0.05
-            },
-            "minor_sting": {
-               "uri": "stonehearth_ace:buffs:wounds:minor_sting",
-               "chance": 0.02
-            },
-            "infection": {
-               "uri": "stonehearth:buffs:undead_infection",
-               "chance": 0.5
-            }
-         }
-      },
       "stonehearth:species": {
          "id": "skeleton",
          "display_name": "i18n(stonehearth_ace:entities.peoples.skeleton.species)"

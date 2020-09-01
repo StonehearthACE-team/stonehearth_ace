@@ -1,0 +1,66 @@
+{
+   "type": "monster_tuning",
+   "estimated_difficulty": 1,
+   "attributes": {
+      "max_health": {
+         "base": 150,
+         "net_worth_effect": {
+            "increase_by": 5,
+            "per": 200
+         },
+         "max": 10000
+      },
+      "muscle": {
+         "base": 5,
+         "net_worth_effect": {
+            "increase_by": 1,
+            "per": 100
+         },
+         "max": 300
+      },
+      "menace": 70,
+      "courage": {
+         "base": 150,
+         "net_worth_effect": {
+            "increase_by": 15,
+            "per": 1500
+         },
+         "max": 300
+      },
+      "speed": 120,
+      "exp_reward": {
+         "base": 80,
+         "net_worth_effect": {
+            "increase_by": 10,
+            "per": 500
+         },
+         "max": 300
+      },
+      "additive_armor_modifier": 2
+   },
+   "equipment": {
+      "weapon": [
+         "stonehearth:weapons:animals:wolf_undead_dragonborn_teeth"
+      ],
+      "abilities": "stonehearth:abilities:wolf_rider_abilities",
+      "cut": "stonehearth_ace:weapons:inflicted_wounds:cut:hard",
+      "pierce": "stonehearth_ace:weapons:inflicted_wounds:pierce:very_hard"
+   },
+   "unit_info": {
+      "description": "i18n(stonehearth:data.gm.campaigns.ambient_threats.thief_with_friends.raid_stockpiles.goblin_wolf.description)"
+   },
+   "loot_drops": {
+      "entries": {
+         "items": {
+            "num_rolls": 1,
+            "items": {
+               "stone": {
+                  "uri": "stonehearth:loot_bag:undead_dragonborn",
+                  "type": "bag",
+                  "weight": 10
+               }
+            }
+         }
+      }
+   }
+}

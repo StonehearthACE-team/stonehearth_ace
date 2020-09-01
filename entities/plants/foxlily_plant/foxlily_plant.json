@@ -3,15 +3,22 @@
       "stonehearth:resource_node": {
 			"resource": "stonehearth_ace:resources:herb:foxlily",
 			"resource_loot_table": {
+				"mixintypes": {
+					"entries": "override"
+				},
             "entries": {
                "second_herb": {
-                  "num_rolls": {
-                     "min": 0,
-                     "max": 1
-                  },
                   "items": {
-                     "pelt": {
+							"none": {
+                        "uri": "",
+                        "weight": 5
+                     },
+                     "extra_herb": {
                         "uri": "stonehearth_ace:resources:herb:foxlily",
+                        "weight": 5
+                     },						
+                     "seed": {
+                        "uri": "stonehearth:plants:foxlily:seed",
                         "weight": 1
                      }
                   }

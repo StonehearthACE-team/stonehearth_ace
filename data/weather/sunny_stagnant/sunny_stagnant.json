@@ -4,10 +4,13 @@
    "icon": "file(sunny_stagnant.png)",
    "sky_settings": "stonehearth_ace:sky_settings:sunny:stagnant",
    "unsheltered_debuff": [
-      "stonehearth_ace:buffs:weather:hot"
+      "stonehearth_ace:buffs:weather:sweltering"
    ],
    "unsheltered_animal_debuff": [
-      "stonehearth_ace:buffs:weather:hot:animal"
+      "stonehearth_ace:buffs:weather:sweltering:animal"
+   ],
+   "unsheltered_npc_debuff": [
+      "stonehearth_ace:buffs:weather:hot:npc"
    ],
    "ambient_sound_key": "sunny_stagnant",
    "thoughts": [
@@ -17,8 +20,9 @@
    ],
    "subject_matter": "stonehearth_ace:subjects:weather:sunny:stagnant",
    "snow_accumulation_per_minute": -0.002,
-   "humidity": -0.3,
-   "sunlight": 1.1,
+   "humidity": -0.4,
+   "sunlight": 1.2,
    "hot_weather": true,
-   "hide_cloud_shadows": true
+   "hide_cloud_shadows": true,
+   "is_bad_weather": true
 }

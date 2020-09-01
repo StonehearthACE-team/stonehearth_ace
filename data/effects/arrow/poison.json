@@ -1,0 +1,31 @@
+{
+   "type": "effect",
+   "tracks": {
+      "cubemitter_poison": {
+         "type": "cubemitter",
+         "start_time": 0,
+         "_end_time": 100,
+         "loop": true,
+         "cubemitter": "/stonehearth_ace/data/horde/particles/poison/poison_arrow_trail.cubemitter.json",
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 180,
+            "ry": 0,
+            "rz": 0
+         },
+         "bone": "attPoint"
+      },
+      "cubemitter_skulls": {
+         "type": "cubemitter",
+         "start_time": 0,
+         "_end_time": 100,
+         "loop": true,
+         "cubemitter": "/stonehearth_ace/data/horde/particles/poison/poison_arrow_skulls.cubemitter.json",
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 180,
+            "ry": 0,
+            "rz": 0
+         },
+         "bone": "attPoint"
+      }
+   }
+}

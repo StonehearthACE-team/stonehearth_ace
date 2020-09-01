@@ -66,9 +66,30 @@
 				}
          }
       },
+		"refinement_ingredients" : {
+			"ordinal": 25,
+         "name": "i18n(stonehearth:jobs.herbalist.recipes.refined_name)",
+			"recipes" : {
+				"algae_drying" : {
+					"recipe" : "file(algae_drying_recipe.json)"
+				},
+				"marblesprout_drying" : {
+					"recipe" : "file(marblesprout_drying_recipe.json)"
+				},
+				"gruit" : {
+					"recipe" : "file(gruit_recipe.json)"
+				}
+			}
+		},
 		"refinement" : {
 			"name": "i18n(stonehearth_ace:jobs.herbalist.recipes.refinement_name)",
 			"recipes" : {
+				"mixintypes": {
+					"berry_bush_transmute": "remove",
+					"pear_cactus": "remove",
+					"wintermoss_transmute": "remove",
+					"tumbleweed_transmute": "remove"
+				},
 				"moonbell_herbalist" : {
 					"recipe" : "file(moonbell_transmute_recipe.json)"
 				},
@@ -87,26 +108,8 @@
 				"carrot_transmute": {
 					"recipe": "file(carrot_transmute_recipe.json)"
 				},
-				"dwarfsbeard_transmute": {
-					"recipe": "file(dwarfsbeard_transmute_recipe.json)"
-				},
-				"cherry_bush_transmute": {
-					"recipe": "file(cherry_bush_transmute_recipe.json)"
-				},
 				"sugarbell_transmute": {
 					"recipe": "file(sugarbell_transmute_recipe.json)"
-				},
-				"hazelnut_transmute": {
-					"recipe": "file(hazelnut_transmute_recipe.json)"
-				},
-				"chestnut_transmute": {
-					"recipe": "file(chestnut_transmute_recipe.json)"
-				},
-				"walnut_transmute": {
-					"recipe": "file(walnut_transmute_recipe.json)"
-				},
-				"almond_transmute": {
-					"recipe": "file(almond_transmute_recipe.json)"
 				},
 				"poppy_transmute": {
 					"recipe": "file(poppy_transmute_recipe.json)"
@@ -140,23 +143,44 @@
 				}
 			}
 		},
-		"refinement_ingredients" : {
-			"ordinal": 31,
-         "name": "i18n(stonehearth:jobs.herbalist.recipes.refined_name)",
+		"refinement_large" : {
+			"ordinal": 35,
+			"name": "i18n(stonehearth_ace:jobs.herbalist.recipes.refinement_large_name)",
 			"recipes" : {
-				"algae_drying" : {
-					"recipe" : "file(algae_drying_recipe.json)"
+				"dwarfsbeard_transmute": {
+					"recipe": "file(dwarfsbeard_transmute_recipe.json)"
 				},
-				"marblesprout_drying" : {
-					"recipe" : "file(marblesprout_drying_recipe.json)"
+				"cherry_bush_transmute": {
+					"recipe": "file(cherry_bush_transmute_recipe.json)"
 				},
-				"gruit" : {
-					"recipe" : "file(gruit_recipe.json)"
+				"hazelnut_transmute": {
+					"recipe": "file(hazelnut_transmute_recipe.json)"
+				},
+				"chestnut_transmute": {
+					"recipe": "file(chestnut_transmute_recipe.json)"
+				},
+				"walnut_transmute": {
+					"recipe": "file(walnut_transmute_recipe.json)"
+				},
+				"almond_transmute": {
+					"recipe": "file(almond_transmute_recipe.json)"
+				},
+				"berry_bush_transmute": {
+					"recipe": "/stonehearth/jobs/herbalist/recipes/berry_bush_transmute_recipe.json"
+				},
+				"wintermoss_transmute": {
+					"recipe": "/stonehearth/jobs/herbalist/recipes/wintermoss_transmute_recipe.json"
+				},
+				"tumbleweed_transmute": {
+					"recipe": "/stonehearth/jobs/herbalist/recipes/tumbleweed_transmute_recipe.json"
+				},
+				"pear_cactus": {
+					"recipe": "/stonehearth/jobs/herbalist/recipes/pear_cactus_recipe.json"
 				}
 			}
 		},
 		"refinement_fungi": {
-			"ordinal": 32,
+			"ordinal": 45,
          "name": "i18n(stonehearth_ace:jobs.herbalist.recipes.refined_fungi_name)",
          "recipes": {
             "bolete_colony_recipe": {
@@ -180,7 +204,7 @@
 			}
 		},
 		"refinement_seeds": {
-         "ordinal": 33,
+         "ordinal": 50,
          "name": "i18n(stonehearth_ace:jobs.herbalist.recipes.refined_seeds_name)",
          "recipes": {
 				"oak_tree_seeds_recipe": {
@@ -258,7 +282,7 @@
 			}
 		},
 		"farming_enhancements": {
-         "ordinal": 34,
+         "ordinal": 55,
          "name": "i18n(stonehearth_ace:jobs.herbalist.recipes.farming_enhancements_name)",
          "recipes": {
 				"fertilizer": {

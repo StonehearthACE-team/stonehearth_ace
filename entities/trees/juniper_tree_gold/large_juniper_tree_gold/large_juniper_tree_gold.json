@@ -78,6 +78,30 @@
                      "weight": 8
                   }
                }
+            },
+				"bough_bale": {
+               "mixintypes": {
+                  "season": "remove"
+               },
+               "items": {
+                  "bough_bale": {
+                     "uri": "stonehearth_ace:resources:bough_bale:evergreen"
+                  }
+               }
+            },
+            "maybe_bough_bale": {
+               "mixintypes": {
+                  "season": "remove"
+               },
+					"num_rolls": {
+                  "min": 0,
+                  "max": 2
+               },
+               "items": {
+                  "bough_bale": {
+                     "uri": "stonehearth_ace:resources:bough_bale:evergreen"
+                  }
+               }
             }
          }
       }

@@ -17,6 +17,11 @@
             "models": [
                "file(bough_bale_spring.qb)"
             ]
+         },
+         "decay_1": {
+            "models": [
+               "file(bough_bale_decay.qb)"
+            ]
          }
       },
       "stonehearth:seasonal_model_switcher": {
@@ -24,7 +29,7 @@
             "spring": "spring",
             "summer": "default",
             "autumn": "autumn",
-            "winter": "autumn"
+            "winter": "decay_1"
          }
       },
       "mob": {
@@ -67,6 +72,8 @@
             "resource",
             "thatch",
             "bough_bale",
+            "standard",
+            "preferred_ingredient",
             "stockpile_fuel",
             "low_fuel",
             "any_fuel",

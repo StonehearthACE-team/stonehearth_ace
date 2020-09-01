@@ -1,0 +1,39 @@
+{
+   "type": "buff",
+   "axis": "debuff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.weather.whiteout_debuff.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.weather.whiteout_debuff.description)",
+   "duration": "30m",
+   "repeat_add_action": "stack_and_refresh",
+   "thought": "stonehearth:thoughts:weather:whiteout_debuff",
+   "max_stacks": 6,
+   "remove_stacks_on_expire": 1,
+   "evolve_chance": 0.33,
+   "buff_evolve": "stonehearth_ace:buffs:weather:whiteout:compelled_panic",
+   "icon": "file(whiteout_debuff.png)",
+   "modifiers": {
+      "willpower": {
+         "multiply": 0.75
+      },
+      "speed": {
+         "multiply": 0.6,
+         "min": 8
+      },
+      "diligence": {
+         "multiply": 0.75
+      },
+      "calorie_burn_multiplier": {
+         "multiply": 1.5,
+         "max": 3
+      }
+   },
+   "script": "stonehearth_ace:buff_scripts:periodic_buff_chance",
+   "script_info": {
+      "periodic_chance_buff": {
+         "buff_uri": "stonehearth_ace:buffs:wounds:frostbite",
+         "immunity_uri": "stonehearth_ace:buffs:weather:freezing_resist"
+      },
+      "chance": 0.06,
+      "tick": "25m"
+   }
+}

@@ -1,6 +1,10 @@
 {
    "type": "entity",
-   "mixins": "/stonehearth/entities/monsters/undead/zombie/zombie.json",
+   "mixins": [
+		"/stonehearth/entities/monsters/undead/zombie/zombie.json",
+		"stonehearth_ace:mixins:inflicted_wounds:cut:easy",
+		"stonehearth_ace:mixins:inflicted_wounds:pierce:medium"
+	],
    "components": {
       "render_info": {
          "animation_table": "/stonehearth/data/rigs/entities/monster/goblins/goblin",

@@ -7,7 +7,7 @@ local PeriodicBuffChance = class()
 function PeriodicBuffChance:on_buff_added(entity, buff)
    local json = buff:get_json()
    self._tuning = json.script_info
-   if not self._tuning or not self._tuning.periodic_chance_buff then
+   if not self._tuning or not self._tuning.periodic_chance_buff.buff_uri then
       return
    end
    local tick_duration = self._tuning.tick or "1h"
@@ -26,7 +26,12 @@ function PeriodicBuffChance:on_buff_added(entity, buff)
 end
 
 function PeriodicBuffChance:_on_tick()
-   local periodic_chance_buff = self._tuning.periodic_chance_buff
+	-- check if the entity has an immunity buff that prevents this periodic buff to have a chance to be added
+	if self._tuning.periodic_chance_buff.immunity_uri and radiant.entities.has_buff(self._entity, self._tuning.periodic_chance_buff.immunity_uri) then
+		return
+	end
+
+   local periodic_chance_buff = self._tuning.periodic_chance_buff.buff_uri
    local stacks = self._buff:get_stacks() or 1
    local chance = self._tuning.chance and math.min(1, self._tuning.chance * stacks) or 0.5
    if rng:get_real(0, 1) < chance then

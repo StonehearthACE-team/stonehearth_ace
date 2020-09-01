@@ -185,6 +185,10 @@
                "happiness_delta": -4,
                "stackable": false
             },
+            "blizzard_negative": {
+               "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.weather.values.blizzard_negative.display_name)",
+               "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.weather.values.blizzard_negative.tooltip)"
+            },
             "hailstorm_positive": {
                "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.weather.values.hailstorm_positive.display_name)",
                "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.weather.values.hailstorm_positive.tooltip)",
@@ -193,8 +197,8 @@
                "stackable": false
             },
             "hailstorm_negative": {
-               "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.weather.values.hailstorm_negative.display_name)",
-               "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.weather.values.hailstorm_negative.tooltip)",
+               "display_name": "i18n(stonehearth:data.happiness.thoughts.weather.values.blizzard_negative.display_name)",
+               "tooltip": "i18n(stonehearth:data.happiness.thoughts.weather.values.blizzard_negative.tooltip)",
                "duration": "1d",
                "happiness_delta": -5,
                "stackable": false
@@ -323,6 +327,13 @@
                "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.weather.values.whiteout_negative.tooltip)",
                "duration": "1d",
                "happiness_delta": -3,
+               "stackable": false
+            },
+            "whiteout_debuff": {
+               "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.weather.values.whiteout_debuff.display_name)",
+               "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.weather.values.whiteout_debuff.tooltip)",
+               "duration": "30m",
+               "happiness_delta": -12,
                "stackable": false
             },
             "windy_chilly_positive": {

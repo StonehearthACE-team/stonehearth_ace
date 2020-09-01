@@ -1,7 +1,19 @@
 {
-   "components": {},
+   "components": {
+		"render_info": {
+         "scale": 0.13
+      },
+		"mob": {
+			"model_origin": {
+				"x": -0.05,
+				"y": 0,
+				"z": 0.05
+			}
+		}
+	},
    "entity_data": {
       "stonehearth:catalog": {
+			"description": "i18n(stonehearth_ace:entities.plants.wax_plant_green.description)",
          "material_tags": ["decoration"],
 			"icon": "file(wax_plant_green.png)"
       }

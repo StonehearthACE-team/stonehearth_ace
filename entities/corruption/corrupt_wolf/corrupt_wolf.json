@@ -1,0 +1,16 @@
+{
+   "mixins": [
+		"stonehearth_ace:mixins:inflicted_wounds:pierce:very_hard",
+		"stonehearth_ace:mixins:inflicted_wounds:cut:hard"
+	],
+   "entity_data": {
+		"stonehearth:buffs": {
+         "inflictable_debuffs": {
+            "corrupted_laceration": {
+               "uri": "stonehearth_ace:buffs:wounds:corrupted_laceration",
+               "chance": 0.06
+            }
+         }
+      }
+   }
+}

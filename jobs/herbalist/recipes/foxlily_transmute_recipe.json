@@ -1,11 +1,21 @@
 {
+	"recipe_name": "i18n(stonehearth_ace:jobs.herbalist.recipes.foxlily_transmute_recipe.recipe_name)",
 	"mixintypes": {
-		"ingredients": "override"
+		"ingredients": "override",
+		"produces": "override"
 	},
 	"ingredients": [
       {
          "uri": "stonehearth_ace:resources:herb:foxlily",
          "count": 1
+      }
+   ],
+	"produces": [
+      {
+         "item": "stonehearth:plants:foxlily:seed"
+      },
+      {
+         "item": "stonehearth:plants:foxlily:seed"
       }
    ]
 }

@@ -1,5 +1,9 @@
 {
-   "mixins": "stonehearth:mixins:undead",
+   "mixins": [
+		"stonehearth:mixins:undead",
+		"stonehearth_ace:mixins:inflicted_wounds:cut:very_easy",
+		"stonehearth_ace:mixins:inflicted_wounds:impact:very_easy"
+	],
    "components": {
       "render_info": {
          "color_map": "stonehearth:color_map:mob",
@@ -35,14 +39,6 @@
       }
    },
    "entity_data": {
-      "stonehearth:buffs": {
-         "inflictable_debuffs": {
-            "scratch": {
-               "uri": "stonehearth_ace:buffs:wounds:scratch",
-               "chance": 0.1
-            }
-         }
-      },
       "stonehearth:entity_radius": 0.75,
       "stonehearth:entity_reach": 0.5,
       "stonehearth:combat:melee_attacks": [

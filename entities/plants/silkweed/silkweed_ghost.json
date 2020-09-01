@@ -1,7 +1,20 @@
 {
-   "components": {},
+   "components": {
+		"render_info": {
+         "scale": 0.12
+      },
+		"mob": {
+			"model_origin": {
+				"x": 0,
+				"y": 0,
+				"z": -0.05
+			}
+		}
+	},
    "entity_data": {
       "stonehearth:catalog": {
+			"display_name": "i18n(stonehearth_ace:entities.plants.silkweed_plant.display_name)",
+         "description": "i18n(stonehearth_ace:entities.plants.silkweed_plant.description)",
          "material_tags": ["decoration"]
       }
    }

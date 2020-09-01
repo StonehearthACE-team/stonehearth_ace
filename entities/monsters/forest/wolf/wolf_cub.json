@@ -1,6 +1,9 @@
 {
    "type": "entity",
-   "mixins": "stonehearth:mixins:monster",
+   "mixins": [
+		"stonehearth:mixins:monster",
+		"stonehearth_ace:mixins:inflicted_wounds:pierce:very_easy"
+	],
    "player_id": "animals",
    "components": {
       "render_info": {
@@ -67,18 +70,6 @@
       }
    },
    "entity_data": {
-      "stonehearth:buffs": {
-         "inflictable_debuffs": {
-            "scratch": {
-               "uri": "stonehearth_ace:buffs:wounds:scratch",
-               "chance": 0.01
-            },
-            "minor_sting": {
-               "uri": "stonehearth_ace:buffs:wounds:minor_sting",
-               "chance": 0.06
-            }
-         }
-      },
       "stonehearth:catalog": {
          "player_id": "animals",
          "display_name": "i18n(stonehearth_ace:entities.monsters.forest.wolf_cub.display_name)",

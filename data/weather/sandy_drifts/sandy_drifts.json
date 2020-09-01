@@ -11,7 +11,6 @@
    ],
    "renderer": "stonehearth_ace:weather_renderers:sandy_drifts",
    "ambient_sound_key": "sandstorm",
-   "is_dark_during_daytime": true,
    "thoughts": [
       "stonehearth:thoughts:weather:sandy_drifts_negative",
       "stonehearth:thoughts:weather:sandy_drifts_negative",
@@ -19,7 +18,8 @@
    ],
    "is_bad_weather": true,
    "subject_matter": "stonehearth_ace:subjects:weather:sandy_drifts",
-   "humidity": -0.8,
-   "sunlight": 0.8,
+   "humidity": -0.2,
+   "sunlight": 1,
+   "vision_multiplier": 0.9,
    "hot_weather": true
 }
