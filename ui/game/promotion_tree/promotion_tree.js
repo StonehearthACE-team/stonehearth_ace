@@ -134,6 +134,39 @@ App.StonehearthPromotionTree.reopen({
       }
    },
 
+   // also trace the properties to track if the selected citizen has their job locked
+   _getCitizenData: function(jobData) {
+      var self = this;
+      var citizenId = this.get('citizen');
+
+      // Get the info for the citizen.
+      self._citizenTrace = new StonehearthDataTrace(citizenId, {
+         'stonehearth:job': {
+            'job_controllers': {
+               '*': {}
+            },
+            'allowed_jobs': {}
+         },
+         'stonehearth:unit_info': {},
+         'stonehearth:properties': {},
+      });
+
+      // Finally, build the tree.
+      self._citizenTrace.progress(function(o) {
+         var props = o['stonehearth:properties'];
+         var jobLocked = props && props.properties['job_locked'] || false;
+         self.set('jobLocked', jobLocked);
+         self.set('jobLockedTitle', jobLocked && i18n.t('stonehearth_ace:ui.game.promotion_tree.job_locked') || '');
+         self._startingJob = o['stonehearth:job'].job_uri;
+         self._citizenJobData = o['stonehearth:job'].job_controllers;
+         self._citizenAllowedJobs = o['stonehearth:job'].allowed_jobs;
+         self.set('selectedJobAlias', self._startingJob);
+         self._updateTalismanData();
+         self.set('citizen', o);
+         self._citizenTrace.destroy();
+      })
+   },
+
    getParentJobs: function(jobDescription) {
       var self = this;
       var parents = jobDescription.parent_jobs || [{"job": jobDescription.parent_job, "level_requirement": jobDescription.parent_level_requirement}];
@@ -525,7 +558,7 @@ App.StonehearthPromotionTree.reopen({
       // Need to also check if the class requires another class as a pre-req
       // For example: if the parent job is NOT worker, we need to be level 3 at that job in order to allow upgrade
       var requirementsMet = self._jobData[jobAlias].available || jobAlias == self._startingJob;
-      var promoteOk = jobAlias != self._startingJob && requirementsMet;
+      var promoteOk = !self.get('jobLocked') && jobAlias != self._startingJob && requirementsMet;
 
       if (jobAlias != self._startingJob) {
          self.$('#innerCur').hide();
