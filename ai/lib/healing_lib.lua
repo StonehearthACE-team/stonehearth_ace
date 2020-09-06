@@ -119,6 +119,11 @@ function healing_lib.filter_healing_item(item, conditions, level)
          return false
       end
 
+      -- make sure it's actually a healing_item (the previous checks are faster so we do them first)
+      if not radiant.entities.is_material(item, 'healing_item') then
+         return false
+      end
+
       conditions = conditions or {}
       -- we want to prioritize using cures *for* curing; if they don't require a cure, ideally don't use a cure consumable
       -- but this will be done in the rater so that we can still use items that also cure if they're the only items
