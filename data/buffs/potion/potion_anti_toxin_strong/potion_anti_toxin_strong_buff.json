@@ -1,0 +1,16 @@
+{
+   "type": "buff",
+   "axis": "buff",
+   "category": "anti_toxin",
+   "rank": 3,
+   "unique_in_category": true,
+   "duration": "8h",
+   "repeat_add_action": "renew_duration",
+   "effect": "stonehearth:effects:item_created",
+   "display_name": "i18n(stonehearth_ace:data.buffs.potion.anti_toxin_strong.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.potion.anti_toxin_strong.description)",
+   "icon": "file(../potion_anti_toxin_small/anti_toxin_small.png)",
+   "disallowed_categories": [
+      "toxin"
+   ]
+}

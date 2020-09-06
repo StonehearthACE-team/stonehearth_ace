@@ -2553,6 +2553,26 @@
             "toxin_sleeping": {
                "display_name": "Sleeping Toxin",
                "description": "This is a weak toxin. It sticks for longer the more it is applied and will rapidly reduce its target's consciousness, putting them to sleep."
+            },
+            "toxin_panic": {
+               "display_name": "Disheartening Toxin",
+               "description": "This is a weak toxin. It reduces courage, induces panic, and can be stacked."
+            },
+            "toxin_starvation": {
+               "display_name": "Denutrition Toxin",
+               "description": "This is a moderate toxin. The longer it affects someone, the more hungry they will be! Watch out for starvation!"
+            },
+            "toxin_weakness": {
+               "display_name": "Weakening Toxin",
+               "description": "This is a moderate toxin. The more it stacks, the lower the muscle and damage output of the intoxicated hearthling will be."
+            },
+            "toxin_healing_received": {
+               "display_name": "Healing Mitigation Toxin",
+               "description": "This is a strong toxin. The higher it is stacked, the less effective healing spells and abilities will be when used on this hearthling."
+            },
+            "toxin_paralysis": {
+               "display_name": "Paralyzing Toxin",
+               "description": "This is a strong toxin. The intoxicated hearthling will remain paralyzed in place while affected by it."
             }
          },
          "infection": {
@@ -2850,6 +2870,20 @@
             "recently_treated_buff": {
                "description": "This hearthling has recently received medical attention and will need to rest before further treatment.<ul><li>No new infections will develop while this effect is active</li><li>Existing infections will remain and require specific treatment</li></ul>"
             }
+         },
+         "potion": {
+            "anti_toxin_small": {
+               "display_name": "Weak Anti-Toxin Protection",
+               "description": "The effects of an anti-toxin potion are protecting this hearthling from weak toxins for a while."
+            },
+            "anti_toxin_large": {
+               "display_name": "Moderate Anti-Toxin Protection",
+               "description": "The effects of an anti-toxin potion are protecting this hearthling from weak and moderate toxins for a while."
+            },
+            "anti_toxin_strong": {
+               "display_name": "Strong Anti-Toxin Protection",
+               "description": "The effects of an anti-toxin potion are protecting this hearthling from all toxins for a while."
+            }
          }
       },
       "loadouts": {
@@ -3146,6 +3180,7 @@
             "planters_name": "Herb Planters",
             "farming_enhancements_name": "Farming: Enhancements & Seeds",
             "bandages_name": "Healing Items",
+            "potions_name": "Equippable Potions",
             "brewing_name": "Brewing Ingredients",
             "decorated_frostfeast_tree_recipe": {
                "recipe_name": "Decorated Frostfeast Pine",
@@ -3373,6 +3408,31 @@
                "recipe_name": "Sugarbell Seeds (x2)",
                "description": "Separate seeds from the harvest",
                "flavor": "Only a skilled hand can harvest the weaker seeds, but the sugarbells are lost in the process."
+            },
+            "water_lily_pad_transmute_recipe": {
+               "recipe_name": "Lily Pad Seed Pods (x2)",
+               "description": "Separate seeds from the leaves",
+               "flavor": "Only a skilled hand can harvest the weaker seeds, but the lily pads are lost in the process."
+            },
+            "water_lily_white_transmute_recipe": {
+               "recipe_name": "White Water Lily Seed Pods (x2)",
+               "description": "Separate seeds from the flower",
+               "flavor": "Only a skilled hand can harvest the weaker seeds, but the lily is lost in the process."
+            },
+            "water_lily_pink_transmute_recipe": {
+               "recipe_name": "Pink Water Lily Seed Pods (x2)",
+               "description": "Separate seeds from the flower",
+               "flavor": "Only a skilled hand can harvest the weaker seeds, but the lily is lost in the process."
+            },
+            "water_lily_yellow_transmute_recipe": {
+               "recipe_name": "Yellow Water Lily Seed Pods (x2)",
+               "description": "Separate seeds from the flower",
+               "flavor": "Only a skilled hand can harvest the weaker seeds, but the lily is lost in the process."
+            },
+            "water_lily_purple_transmute_recipe": {
+               "recipe_name": "Purple Water Lily Seed Pods (x2)",
+               "description": "Separate seeds from the flower",
+               "flavor": "Only a skilled hand can harvest the weaker seeds, but the lily is lost in the process."
             },
             "marblesprout_transmute_recipe": {
                "recipe_name": "Marblesprout Seeds (x2)",
@@ -3763,7 +3823,7 @@
             "courage_tonic_2_recipe": {
                "recipe_name": "Enhanced Courage Tonic",
                "description": "Increases the Courage and the Armor value of all citizens for a while.",
-               "flavor": "Referred as 'Bearskin Potion' by the alchemical textbooks of Lady Marie Gem"
+               "flavor": "Referred as 'Bearskin Philter' by the alchemical textbooks of Lady Marie Gem"
             },
             "fever_cordial_recipe": {
                "recipe_name": "Fever Cordial",
@@ -3836,6 +3896,36 @@
                "recipe_name": "Hearthbud Ointment",
                "description": "A magical, arcane fluid that will efficiently heal many types of wounds up to high severity.",
                "flavor": "The power of the hearth is also the only known treatment to corrupted wounds"
+            },
+            "potion_healing_small_recipe": {
+               "recipe_name": "Small Healing Potion",
+               "description": "This small vial of potion will be carried by combatants and used when they're hurt, restoring some health.",
+               "flavor": "A hearthling can only carry one potion"
+            },
+            "potion_healing_large_recipe": {
+               "recipe_name": "Large Healing Potion",
+               "description": "This large vial of potion will be carried by combatants and used when they're hurt, restoring a bunch of health.",
+               "flavor": ""
+            },
+            "potion_healing_hearth_recipe": {
+               "recipe_name": "Hearth Healing Potion",
+               "description": "This magical vial of potion will be carried by combatants and used when they're hurt, restoring a lot of health.",
+               "flavor": ""
+            },
+            "potion_anti_toxin_small_recipe": {
+               "recipe_name": "Weak Anti-Toxin Potion",
+               "description": "This small draught will be carried by combatants and used when they are affected by a toxin, protecting them from weak toxins for a while and restoring some health.",
+               "flavor": ""
+            },
+            "potion_anti_toxin_large_recipe": {
+               "recipe_name": "Anti-Toxin Potion",
+               "description": "This draught will be carried by combatants and used when they are affected by a toxin, protecting them from weak and moderate toxins for a while and restoring a bunch of health.",
+               "flavor": ""
+            },
+            "potion_anti_toxin_strong_recipe": {
+               "recipe_name": "Strong Anti-Toxin Potion",
+               "description": "This large draught will be carried by combatants and used when they are affected by a toxin, protecting them from all toxins for a while but restore only a bit of health.",
+               "flavor": ""
             },
             "gruit_recipe": {
                "recipe_name": "Wrap of Gruit",
@@ -4332,6 +4422,11 @@
                "description": "Allows hearthlings to traverse between both sides of the counter.",
                "flavor": "Keep it closed, keep it clean"
             },
+            "clay_comfy_bed_herbalist_recipe": {
+               "recipe_name": "Herbalist Clay Comfy Bed",
+               "description": "Wounded or incapacitated hearthlings will prefer this bed, which can be placed closer to their medications and recovers them slightly faster.",
+               "flavor": "Herbalist beds can't be personally owned"
+            },
             "golden_clay_wall_planter_recipe": {
                "recipe_name": "Window Planter with Oleanders",
                "description": "A decorative planter to be placed under window frames. Comes with Oleanders but a different herb can be chosen and planted by the Herbalist."
@@ -4370,7 +4465,7 @@
       "geomancer": {
          "recipes": {
             "earthbud_seeds_recipe": {
-               "recipe_name": "Hearthbud Seeds (x3)"
+               "recipe_name": "Hearthbud Seeds (x2)"
             },
             "legendary_silk_recipe": {
                "recipe_name": "Woodland Silk",
@@ -4759,6 +4854,11 @@
                "recipe_name": "Stone Counter Door",
                "description": "Allows hearthlings to traverse between both sides of the counter.",
                "flavor": "That top part must be quite heavy..."
+            },
+            "stone_comfy_bed_herbalist_recipe": {
+               "recipe_name": "Herbalist Stone Comfy Bed",
+               "description": "Wounded or incapacitated hearthlings will prefer this bed, which can be placed closer to their medications and recovers them slightly faster.",
+               "flavor": "Herbalist beds can't be personally owned"
             },
             "wall_mounted_paw_recipe": {
                "description": "Mark of the hunter, never seen or heard... Until it is too late."
@@ -5848,6 +5948,11 @@
                "description": "Allows hearthlings to traverse between both sides of the counter.",
                "flavor": "Only authorized per-- oh, nevermind..."
             },
+            "comfy_bed_herbalist_recipe": {
+               "recipe_name": "Herbalist Comfy Bed",
+               "description": "Wounded or incapacitated hearthlings will prefer this bed, which can be placed closer to their medications and recovers them slightly faster.",
+               "flavor": "Herbalist beds can't be personally owned"
+            },
             "rc_bow_valor_recipe": {
                "flavor": "A bow that demands skill of its wielder, but returns it in gales of arrows over their foes"
             },
@@ -6744,6 +6849,42 @@
          "leeches": {
             "display_name": "Leeches",
             "description": "Can be used for treating infections or poisons. Might leave Light Burns."
+         },
+         "potion": {
+            "healing": {
+               "small": {
+                  "display_name": "Small Healing Potion",
+                  "description": "This small vial of potion will recover some health when used.",
+                  "iconic_description": "Potions can be equipped and used anytime. This one is a combat potion."
+               },
+               "large": {
+                  "display_name": "Large Healing Potion",
+                  "description": "This large vial of potion will recover quite a bit of health when used.",
+                  "iconic_description": "Potions can be equipped and used anytime. This one is a combat potion."
+               },
+               "hearth": {
+                  "display_name": "Hearthbud Healing Potion",
+                  "description": "This magical vial of potion will recover a lot of health when used.",
+                  "iconic_description": "Potions can be equipped and used anytime. This one is a combat potion."
+               }
+            },
+            "anti_toxin": {
+               "small": {
+                  "display_name": "Weak Anti-Toxin Potion",
+                  "description": "Provides protection against weak toxins and recover some health.",
+                  "iconic_description": "Potions can be equipped and used anytime. This one is a combat potion."
+               },
+               "large": {
+                  "display_name": "Anti-Toxin Potion",
+                  "description": "Provides protection against moderate toxins and recover health.",
+                  "iconic_description": "Potions can be equipped and used anytime. This one is a combat potion."
+               },
+               "strong": {
+                  "display_name": "Strong Anti-Toxin Potion",
+                  "description": "Provides protection against strong toxins but only recovers some health.",
+                  "iconic_description": "Potions can be equipped and used anytime. This one is a combat potion."
+               }
+            }
          }
       },
       "construction": {
@@ -8601,6 +8742,18 @@
          "clay_stool": {
             "display_name": "Clay Stool",
             "description": "Hopefully shouldn't break so easily."
+         },
+         "comfy_bed_herbalist": {
+            "display_name": "Herbalist Comfy Bed",
+            "description": "A comfortable bed with a support table to provide the best treatments."
+         },
+         "clay_comfy_bed_herbalist": {
+            "display_name": "Herbalist Clay Comfy Bed",
+            "description": "A comfortable bed with a support table to provide the best treatments."
+         },
+         "stone_comfy_bed_herbalist": {
+            "display_name": "Herbalist Stone Comfy Bed",
+            "description": "A comfortable bed with a support table to provide the best treatments."
          }
       },
       "recipes": {
@@ -13590,7 +13743,7 @@
                   "tooltip_raw_food_meat": "Raw Meats",
                   "tooltip_prepared_food_baked": "Baked Goods",
                   "tooltip_raw_food_fungi": "Raw Fungi",
-                  "tooltip_potions": "Potions & Tonics",
+                  "tooltip_potions": "Tonics & Potions",
                   "fuels": "Fuels",
                   "tooltip_cooking": "Cooking",
                   "tooltip_brewing": "Brewing",
@@ -13608,7 +13761,10 @@
                   "tooltip_job_tool": "Job Tools",
                   "tooltip_worker_outfit": "Worker Outfits & Hats",
                   "tooltip_worker_tools": "Worker Tools",
-                  "tooltip_backpack": "Worker Backpacks"
+                  "tooltip_backpack": "Worker Backpacks",
+                  "tooltip_magic_weapon": "Magic Artifacts",
+                  "tooltip_combat_cape": "Capes & Cloaks",
+                  "tooltip_combat_consumable": "Combat Potions"
                }
             },
             "pasture": {
@@ -13691,6 +13847,7 @@
                "medium_armor": "Medium Armor",
                "heavy_armor": "Heavy Armor",
                "tool": "Tool",
+               "consumable": "Equippable Consumable",
                "accessory": "Accessory",
                "cape": "Cover",
                "backpack": "Backpack",

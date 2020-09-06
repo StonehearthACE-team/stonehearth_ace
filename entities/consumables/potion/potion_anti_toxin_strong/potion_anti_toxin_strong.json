@@ -1,0 +1,67 @@
+{
+   "mixins": "stonehearth_ace:mixins:equippable_consumable:combat_potion",
+   "type": "entity",
+   "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(potion_anti_toxin_strong_iconic.json)"
+      },
+      "stonehearth:equipment_piece": {
+         "ilevel": 6
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 19,
+         "rarity": "rare",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 3,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:consumable": {
+         "script": "stonehearth:consumables:scripts:heal_target",
+         "applies_effects": {
+            "stonehearth_ace:buffs:potion:anti_toxin:strong": 1
+         },
+         "consumable_qualities": [
+            {
+               "health_healed": 60,
+               "guts_healed": 0
+            },
+            {
+               "health_healed": 70,
+               "guts_healed": 0
+            },
+            {
+               "health_healed": 80,
+               "guts_healed": 0
+            },
+            {
+               "health_healed": 100,
+               "guts_healed": 0
+            }
+         ],
+         "use_condition": {
+            "conditions": [
+               {
+                  "type": "stonehearth:buffs",
+                  "buff_category": "toxin",
+                  "has_buff": true
+               }
+            ]
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.consumables.potion.anti_toxin.strong.display_name)",
+         "description": "i18n(stonehearth_ace:entities.consumables.potion.anti_toxin.strong.description)",
+         "icon": "file(potion_anti_toxin_strong.png)",
+         "category": "consumable",
+         "material_tags": [
+            "anti_toxin",
+            "strong"
+         ]
+      }
+   }
+}

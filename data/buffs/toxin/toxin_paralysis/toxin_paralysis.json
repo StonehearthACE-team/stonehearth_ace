@@ -1,0 +1,30 @@
+{
+   "type": "buff",
+   "axis": "debuff",
+   "category": "toxin",
+   "rank": 3,
+   "display_name": "i18n(stonehearth_ace:data.buffs.toxin.toxin_paralysis.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.toxin.toxin_paralysis.description)",
+   "icon": "file(toxin_paralysis.png)",
+   "duration": "15m",
+   "cant_affect_siege": true,
+   "repeat_add_action": "extend_duration",
+   "effect": "stonehearth_ace:effects:toxin_added",
+   "modifiers": {
+      "speed": {
+         "max": 0
+      }
+   },
+   "can_only_affect": [
+      "hearthling",
+      "dwarf"
+   ],
+   "injected_ai": {
+      "actions": [
+         "stonehearth:actions:compelled_behaviors:struggle"
+      ]
+   },
+   "tags": [
+      "snared"
+   ]
+}

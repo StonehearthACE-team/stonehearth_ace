@@ -1,0 +1,26 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "components": {
+      "stonehearth:equipment_piece": {
+         "slot": "consumable",
+         "render_type": "none",
+         "injected_buffs": [
+            "stonehearth_ace:buffs:equipped_consumable"
+         ],
+         "equipment_types": [
+            "consumable"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      },
+      "stonehearth:catalog": {
+         "category": "consumable",
+         "material_tags": [
+            "equippable_consumable"
+         ]
+      }
+   }
+}

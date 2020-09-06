@@ -1,0 +1,35 @@
+{
+	"type": "recipe",
+   "effort": 26,
+	"work_units": 10,
+   "recipe_name": "i18n(stonehearth_ace:jobs.potter.recipes.clay_comfy_bed_herbalist_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.potter.recipes.clay_comfy_bed_herbalist_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.potter.recipes.clay_comfy_bed_herbalist_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/furniture/clay_comfy_bed_herbalist/clay_comfy_bed_herbalist.png",
+	"workshop": "stonehearth:potter:kiln",
+   "work_effect": "work_wait",
+   "level_requirement": 4,
+   "ingredients": [
+      {
+         "material": "clay resource",
+         "count": 3
+      },
+      {
+         "material": "cloth resource",
+         "count": 1
+      },
+	   {
+         "material": "feather resource",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth:consumables:light_bandage",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:furniture:clay_comfy_bed:herbalist"
+      }
+   ]
+}

@@ -24,11 +24,18 @@
    },
    "entity_data": {
       "stonehearth:catalog": {
-         "display_name": "Stone Comfy Bed",
-         "description": "Much warmer and softer than the stone itself.",
+         "display_name": "i18n(stonehearth_ace:entities.furniture.comfy_bed_herbalist.display_name)",
+         "description": "i18n(stonehearth_ace:entities.furniture.comfy_bed_herbalist.description)",
          "icon": "file(comfy_bed_herbalist.png)",
          "category": "furniture",
-         "material_tags":["stone", "furniture", "crafted", "stockpile_furniture"]
+         "material_tags": [
+            "wood",
+            "furniture",
+            "priority_care",
+            "bed",
+            "crafted",
+            "stockpile_furniture"
+         ]
       }
    }
 }

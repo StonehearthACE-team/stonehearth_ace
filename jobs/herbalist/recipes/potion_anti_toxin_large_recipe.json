@@ -1,0 +1,35 @@
+{
+   "type": "recipe",
+   "effort": 20,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.herbalist.recipes.potion_anti_toxin_large_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.potion_anti_toxin_large_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.potion_anti_toxin_large_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/consumables/potion/potion_anti_toxin_large/potion_anti_toxin_large.png",
+   "workshop": "stonehearth_ace:herbalist:metal_cauldron",
+	"work_effect": "fiddle",
+   "level_requirement": 4,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:consumables:potion:healing:large",
+         "count": 1
+      },
+		{
+         "material": "herb red bitter resource",
+         "count": 2
+      },
+		{
+         "material": "herb green aromatic resource",
+         "count": 1
+      },
+		{
+         "material": "herb yellow bitter resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:consumables:potion:anti_toxin:large"
+      }
+   ]
+}

@@ -1,3 +1,14 @@
 {
-   "recipe_name": "i18n(stonehearth_ace:jobs.geomancer.recipes.earthbud_seeds_recipe.recipe_name)"
+   "recipe_name": "i18n(stonehearth_ace:jobs.geomancer.recipes.earthbud_seeds_recipe.recipe_name)",
+	"mixintypes": {
+		"produces": "override"
+	},
+	"produces": [
+      {
+         "item": "stonehearth:plants:earthbud:seed"
+      },
+      {
+         "item": "stonehearth:plants:earthbud:seed"
+      }
+   ]
 }

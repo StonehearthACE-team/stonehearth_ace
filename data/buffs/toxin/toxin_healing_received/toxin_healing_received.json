@@ -1,0 +1,23 @@
+{
+   "type": "buff",
+   "axis": "debuff",
+   "category": "toxin",
+   "rank": 3,
+   "display_name": "i18n(stonehearth_ace:data.buffs.toxin.toxin_healing_received.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.toxin.toxin_healing_received.description)",
+   "icon": "file(toxin_healing_received.png)",
+   "duration": "40m",
+   "cant_affect_siege": true,
+   "repeat_add_action": "stack_and_refresh",
+   "max_stacks": 5,
+   "effect": "stonehearth_ace:effects:toxin_added",
+   "modifiers": {
+      "multiplicative_heal_received_modifier": {
+         "multiply": 0.7
+      }
+   },
+   "can_only_affect": [
+      "hearthling",
+      "dwarf"
+   ]
+}

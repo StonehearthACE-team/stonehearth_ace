@@ -1,0 +1,30 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "render_info": {
+         "color_map": "stonehearth_ace:color_map:ace",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/glass_material_map.json",
+            "/stonehearth/data/materials/material_maps/mob_material_map.json"
+         ],
+         "scale": 0.08
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(potion_healing_hearth.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "description": "i18n(stonehearth_ace:entities.consumables.potion.healing.hearth.iconic_description)",
+         "is_item": true
+      }
+   }
+}

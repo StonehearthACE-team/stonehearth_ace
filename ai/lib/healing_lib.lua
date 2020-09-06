@@ -109,7 +109,12 @@ function healing_lib.filter_healing_item(item, conditions, level)
    -- just filters whether this item *can* be used to heal, not if it's the best item for it
    local consumable_data = ConsumablesLib.get_consumable_data(item)
    if consumable_data then
-      -- if it requires a level to use, check that first
+      -- if it is an equipped consumable only, check that first
+		if consumable_data.equipped_only then
+			return false
+		end
+		
+		-- then if it requires a level to use, check that second
       if level < (consumable_data.required_level or level) then
          return false
       end

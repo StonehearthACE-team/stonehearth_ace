@@ -1,0 +1,39 @@
+{
+   "mixins": "stonehearth_ace:mixins:equippable_consumable",
+   "components": {
+      "stonehearth:equipment_piece": {
+         "roles": [
+            "combat"
+         ],
+         "equipment_types": [
+            "combat_potion"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:consumable": {
+         "equipped_only": true,
+         "use_effect": "combat_potion",
+         "applies_effects": {
+            "stonehearth_ace:buffs:potion:cooldown": 1
+         },
+         "use_condition": {
+            "type": "and",
+            "conditions": [
+               {
+                  "type": "stonehearth:buffs",
+                  "buff_uri": "stonehearth_ace:buffs:potion:cooldown",
+                  "has_buff": false
+               }
+            ]
+         }
+      },
+      "stonehearth:catalog": {
+         "material_tags": [
+            "potion",
+            "combat",
+            "stockpile_combat_consumable"
+         ]
+      }
+   }
+}
