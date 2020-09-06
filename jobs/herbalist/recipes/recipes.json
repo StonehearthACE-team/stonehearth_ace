@@ -140,6 +140,21 @@
 				},
 				"sage_transmute": {
 					"recipe": "file(sage_transmute_recipe.json)"
+				},
+				"water_lily_pad_transmute": {
+					"recipe": "file(water_lily_pad_transmute_recipe.json)"
+				},
+				"water_lily_white_transmute": {
+					"recipe": "file(water_lily_white_transmute_recipe.json)"
+				},
+				"water_lily_pink_transmute": {
+					"recipe": "file(water_lily_pink_transmute_recipe.json)"
+				},
+				"water_lily_yellow_transmute": {
+					"recipe": "file(water_lily_yellow_transmute_recipe.json)"
+				},
+				"water_lily_purple_transmute": {
+					"recipe": "file(water_lily_purple_transmute_recipe.json)"
 				}
 			}
 		},
@@ -422,6 +437,30 @@
             },
 				"hearthbud_ointment": {
                "recipe": "file(hearthbud_ointment_recipe.json)"
+            }
+			}
+		},
+		"potions": {
+			"name": "i18n(stonehearth_ace:jobs.herbalist.recipes.potions_name)",
+			"ordinal": 70,
+			"recipes" : {
+				"potion_healing_small": {
+               "recipe": "file(potion_healing_small_recipe.json)"
+            },
+				"potion_healing_large": {
+               "recipe": "file(potion_healing_large_recipe.json)"
+            },
+				"potion_healing_hearth": {
+               "recipe": "file(potion_healing_hearth_recipe.json)"
+            },
+				"potion_anti_toxin_small": {
+               "recipe": "file(potion_anti_toxin_small_recipe.json)"
+            },
+				"potion_anti_toxin_large": {
+               "recipe": "file(potion_anti_toxin_large_recipe.json)"
+            },
+				"potion_anti_toxin_strong": {
+               "recipe": "file(potion_anti_toxin_strong_recipe.json)"
             }
 			}
 		},

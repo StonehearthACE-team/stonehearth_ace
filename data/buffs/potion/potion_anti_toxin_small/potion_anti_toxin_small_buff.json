@@ -1,0 +1,17 @@
+{
+   "type": "buff",
+   "axis": "buff",
+   "category": "anti_toxin",
+   "rank": 1,
+   "unique_in_category": true,
+   "duration": "4h",
+   "repeat_add_action": "renew_duration",
+   "effect": "stonehearth:effects:item_created",
+   "display_name": "i18n(stonehearth_ace:data.buffs.potion.anti_toxin_small.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.potion.anti_toxin_small.description)",
+   "icon": "file(anti_toxin_small.png)",
+   "disallowed_buffs": [
+      "stonehearth_ace:buffs:toxin:sleeping",
+      "stonehearth_ace:buffs:toxin:panic"
+   ]
+}

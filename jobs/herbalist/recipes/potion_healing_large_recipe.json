@@ -1,0 +1,27 @@
+{
+   "type": "recipe",
+   "effort": 24,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.herbalist.recipes.potion_healing_large_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.potion_healing_large_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.potion_healing_large_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/consumables/potion/potion_healing_large/potion_healing_large.png",
+   "workshop": "stonehearth_ace:herbalist:cauldron",
+	"work_effect": "fiddle",
+   "level_requirement": 3,
+   "ingredients": [
+      {
+         "material": "herb red aromatic resource",
+         "count": 3
+      },
+		{
+         "material": "herb white aromatic resource",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:consumables:potion:healing:large"
+      }
+   ]
+}

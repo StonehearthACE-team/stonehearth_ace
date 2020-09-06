@@ -1,0 +1,25 @@
+{
+   "type": "recipe",
+   "effort": 18,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.herbalist.recipes.water_lily_pad_transmute_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.water_lily_pad_transmute_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.water_lily_pad_transmute_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/plants/water_lily_pad/seed/water_lily_pad_seed.png",
+   "workshop": "stonehearth:herbalist:workbench",
+   "level_requirement": 1,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:resources:herb:water_lily:lily_pad",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:plants:water_lily:lily_pad:seed"
+      },
+      {
+         "item": "stonehearth_ace:plants:water_lily:lily_pad:seed"
+      }
+   ]
+}

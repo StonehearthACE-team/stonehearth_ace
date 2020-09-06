@@ -1,0 +1,26 @@
+{
+   "type": "buff",
+   "axis": "debuff",
+   "category": "toxin",
+   "rank": 2,
+   "display_name": "i18n(stonehearth_ace:data.buffs.toxin.toxin_weakness.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.toxin.toxin_weakness.description)",
+   "icon": "file(toxin_weakness.png)",
+   "duration": "20m",
+   "cant_affect_siege": true,
+   "repeat_add_action": "stack_and_refresh",
+   "max_stacks": 5,
+   "effect": "stonehearth_ace:effects:toxin_added",
+   "modifiers": {
+      "muscle": {
+         "add": -6
+      },
+      "multiplicative_dmg_modifier": {
+         "multiply": 0.9
+      }
+   },
+   "can_only_affect": [
+      "hearthling",
+      "dwarf"
+   ]
+}

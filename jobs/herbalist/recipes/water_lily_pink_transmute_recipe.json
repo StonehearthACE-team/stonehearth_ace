@@ -1,0 +1,25 @@
+{
+   "type": "recipe",
+   "effort": 24,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.herbalist.recipes.water_lily_pink_transmute_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.water_lily_pink_transmute_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.water_lily_pink_transmute_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/plants/water_lily_pink/seed/water_lily_pink_seed.png",
+   "workshop": "stonehearth:herbalist:workbench",
+   "level_requirement": 2,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:resources:herb:water_lily:pink",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:plants:water_lily:pink:seed"
+      },
+      {
+         "item": "stonehearth_ace:plants:water_lily:pink:seed"
+      }
+   ]
+}

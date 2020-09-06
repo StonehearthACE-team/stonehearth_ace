@@ -1,0 +1,60 @@
+{
+   "type" : "effect",
+   "tracks": {
+      "animation": {
+         "type": "animation_effect",
+         "start_time": 0,
+         "animation": "combat_potion.json",
+         "loop": false,
+         "response_frame": 20
+      },
+      "poof": {
+         "type": "cubemitter",
+         "start_time" : 360,
+         "end_time" : 600,
+         "cubemitter": "/stonehearth/data/horde/particles/dust_poof/dust_poof.cubemitter.json",
+         "transforms": {
+            "x":0,
+            "y":0,
+            "z":0,
+            "rx":-90,
+            "ry":0,
+            "rz":0
+         },
+         "bone": "mainHand"
+      },
+      "glitter": {
+         "type": "cubemitter",
+         "start_time" : 305,
+         "end_time" : 600,
+         "cubemitter": "/stonehearth_ace/data/horde/particles/sparkle/potion_sparkle.cubemitter.json",
+         "transforms": {
+            "x":0,
+            "y":0,
+            "z":0,
+            "rx":-90,
+            "ry":0,
+            "rz":0
+         },
+         "bone": "mainHand"
+      },
+      "sound": {
+         "type": "sound_effect",
+         "duration": 1000,
+         "start_time": 0,
+         "min_distance": 23,
+         "falloff" : 2.5,
+         "volume": 60,
+         "track" : "stonehearth:sounds:building_select_menu"
+      },
+      "sound_2": {
+         "type": "sound_effect",
+         "duration": 1000,
+         "start_time": 280,
+         "min_distance": 25,
+         "falloff" : 2.5,
+         "volume": 100,
+         "track" : "stonehearth:sounds:confetti_01"
+      }
+   }
+}

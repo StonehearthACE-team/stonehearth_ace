@@ -1,0 +1,23 @@
+{
+   "type": "buff",
+   "axis": "debuff",
+   "category": "toxin",
+   "rank": 1,
+   "display_name": "i18n(stonehearth_ace:data.buffs.toxin.toxin_panic.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.toxin.toxin_panic.description)",
+   "icon": "file(toxin_panic.png)",
+   "duration": "25m",
+   "cant_affect_siege": true,
+   "repeat_add_action": "stack_and_refresh",
+   "max_stacks": 5,
+   "effect": "stonehearth_ace:effects:toxin_added",
+   "modifiers": {
+      "courage": {
+         "add": -8
+      }
+   },
+   "can_only_affect": [
+      "hearthling",
+      "dwarf"
+   ]
+}

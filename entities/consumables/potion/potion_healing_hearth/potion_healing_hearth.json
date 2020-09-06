@@ -1,0 +1,64 @@
+{
+   "mixins": "stonehearth_ace:mixins:equippable_consumable:combat_potion",
+   "type": "entity",
+   "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(potion_healing_hearth_iconic.json)"
+      },
+      "stonehearth:equipment_piece": {
+         "ilevel": 5
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 15,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:consumable": {
+         "script": "stonehearth:consumables:scripts:heal_target",
+         "consumable_qualities": [
+            {
+               "health_healed": 270,
+               "guts_healed": 0
+            },
+            {
+               "health_healed": 320,
+               "guts_healed": 0
+            },
+            {
+               "health_healed": 370,
+               "guts_healed": 0
+            },
+            {
+               "health_healed": 470,
+               "guts_healed": 0
+            }
+         ],
+         "use_condition": {
+            "conditions": [
+               {
+                  "type": "stonehearth:expendable_resources",
+                  "resource_name": "health",
+                  "comparison": "<",
+                  "use_percent": true,
+                  "value": 0.3
+               }
+            ]
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.consumables.potion.healing.hearth.display_name)",
+         "description": "i18n(stonehearth_ace:entities.consumables.potion.healing.hearth.description)",
+         "icon": "file(potion_healing_hearth.png)",
+         "category": "consumable",
+         "material_tags": [
+            "healing",
+            "hearth"
+         ]
+      }
+   }
+}
