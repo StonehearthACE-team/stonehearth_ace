@@ -7,13 +7,13 @@ AdmireFire.status_text_key = 'stonehearth:ai.actions.status_text.resting_by_fire
 AdmireFire.priority = 0
 
 function AdmireFire:start_thinking(ai, entity, args)
-   local player_id = radiant.entities.get_player_id(entity)
+   --local player_id = radiant.entities.get_player_id(entity)
 	local work_player_id = radiant.entities.get_work_player_id(entity)
 
    self._entity = entity
-   local filter_fn = stonehearth.ai:filter_from_key('stonehearth:admire_fire', player_id, function(item)
+   local filter_fn = stonehearth.ai:filter_from_key('stonehearth:admire_fire', work_player_id, function(item)
          local fire_player_id = radiant.entities.get_player_id(item)
-         if fire_player_id ~= player_id and not radiant.entities.is_material(entity, 'friendly_npc') then
+         if fire_player_id ~= work_player_id and not radiant.entities.is_material(entity, 'friendly_npc') then
             return false
          end
 

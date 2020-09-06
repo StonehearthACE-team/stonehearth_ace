@@ -1,17 +1,47 @@
+-- changed self._craftable_recipes to contain an array of recipes for each product uri
+-- so multiple different recipes for a particular product can be properly considered
+
 local AceJobInfoController = class()
 
-function AceJobInfoController:queue_order_if_possible(product_uri, amount, building)
-   -- if we can craft this product, queue it up and return true
+function AceJobInfoController:foreach_available_recipes(fn)
+   for _, recipe_data_tbl in pairs(self._craftable_recipes) do
+      for _, recipe_data in ipairs(recipe_data_tbl) do
+         if not recipe_data.manual_unlock or self._sv.manually_unlocked[recipe_data.recipe_key] then
+            fn(recipe_data)
+         end
+      end
+   end
+end
+
+function AceJobInfoController:job_can_craft(product_uri, require_unlocked)
    if not self._sv.order_list then
       return false
    end
 
-   local recipe = self._craftable_recipes[product_uri]
-   if not recipe then
+   local recipes = self._craftable_recipes[product_uri]
+   if not recipes or not next(recipes) then
       return false
    end
 
-   if recipe.manual_unlock and not self._sv.manually_unlocked[recipe.recipe_key] then
+   if require_unlocked then
+      local available_recipe = false
+      for _, recipe in ipairs(recipes) do
+         if not recipe.manual_unlock or self._sv.manually_unlocked[recipe.recipe_key] then
+            available_recipe = true
+            break
+         end
+      end
+      if not available_recipe then
+         return false
+      end
+   end
+
+   return true
+end
+
+function AceJobInfoController:queue_order_if_possible(product_uri, amount, building)
+   -- if we can craft this product, queue it up and return true
+   if not self:job_can_craft(product_uri, true) then
       return false
    end
 
@@ -85,6 +115,35 @@ function AceJobInfoController:manually_lock_recipe_category(category_key, ignore
    end
 
    return true
+end
+
+-- Prep the recipe data with any default values
+function AceJobInfoController:_initialize_recipe_data(recipe_key, recipe_data)
+   if not recipe_data.level_requirement then
+      recipe_data.level_requirement = 0
+   end
+   recipe_data.recipe_key = recipe_key
+   if recipe_data.produces then
+      local uri = recipe_data.produces[1].item
+      recipe_data.product_uri = uri
+
+      local canonical = radiant.resources.convert_to_canonical_path(uri)
+      radiant.verify(canonical, 'Crafter job %s has a recipe named "%s" that produces an item not in the manifest %s', self._sv.alias, recipe_key, uri)
+
+      local products = {}
+      for _, product in ipairs(recipe_data.produces) do
+         local product_uri = product.item
+         if not products[product_uri] then
+            products[product_uri] = true
+            local recipes = self._craftable_recipes[product_uri]
+            if not recipes then
+               recipes = {}
+               self._craftable_recipes[product_uri] = recipes
+            end
+            table.insert(recipes, recipe_data)
+         end
+      end
+   end
 end
 
 return AceJobInfoController

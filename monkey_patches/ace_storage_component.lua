@@ -49,7 +49,7 @@ function AceStorageComponent:activate()
    local priority_range = bounds.MAX_PRIORITY - bounds.MIN_PRIORITY
    local priority = math.min(math.max(json.priority or 1, bounds.MIN_PRIORITY), bounds.MAX_PRIORITY)
    self._is_input_bin_highest_priority = (priority == bounds.MAX_PRIORITY)
-   self._input_bin_priority = (priority_range / (priority_range + 1)) * (priority - bounds.MIN_PRIORITY) / priority_range
+   self._input_bin_priority = (priority - bounds.MIN_PRIORITY) / (priority_range + 1)
 
    -- communicate this setting to the renderer
 	self._sv.render_filter_model = json.render_filter_model

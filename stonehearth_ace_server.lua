@@ -48,6 +48,7 @@ local monkey_patches = {
    ace_drop_crafting_ingredients = 'stonehearth.ai.actions.drop_crafting_ingredients',
    ace_put_another_restockable_item_into_backpack_action = 'stonehearth.ai.actions.put_another_restockable_item_into_backpack_action',
    ace_produce_crafted_items = 'stonehearth.ai.actions.produce_crafted_items',
+   ace_repair_entity_adjacent_action = 'stonehearth.ai.actions.repair_entity_adjacent_action',
    ace_trapping_grounds_component = 'stonehearth.components.trapping.trapping_grounds_component',
    ace_collection_quest_shakedown = 'stonehearth.services.server.game_master.controllers.scripts.collection_quest_shakedown',
    ace_firepit_component = 'stonehearth.components.firepit.firepit_component',
