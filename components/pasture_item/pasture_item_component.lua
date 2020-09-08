@@ -53,7 +53,7 @@ end
 function PastureItemComponent:_create_restock_tasks()
    self:_destroy_restock_tasks()
 
-   if self._pasture then
+   if self._pasture and self:is_trough() then
       if self:is_empty() then
          local feed_material = self._pasture:add_component('stonehearth:shepherd_pasture'):get_animal_feed_material()
 
@@ -110,6 +110,14 @@ end
 
 function PastureItemComponent:get_pasture()
    return self._pasture
+end
+
+function PastureItemComponent:get_type()
+   return self._type
+end
+
+function PastureItemComponent:is_trough()
+   return self._type == 'trough'
 end
 
 function PastureItemComponent:is_empty()
