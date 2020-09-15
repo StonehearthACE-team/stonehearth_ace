@@ -16,7 +16,6 @@
       "sunflower": true,
       "silkweed": true,
       "sugarbell": true,
-      "earthbud": true,
       "wax_plant_green": true,
       "wax_plant_purple": true,
       "poppy": true,
@@ -1936,6 +1935,227 @@
          "description": "i18n(stonehearth_ace:herbalist_crops.yew_sapling.description)",
          "harvest_status_text": "i18n(stonehearth_ace:herbalist_crops.yew_sapling.harvest_text)",
          "icon": "file(crops/sapling_planter/yew_sapling/yew_sapling.png)"
+      },
+      "bolete": {
+         "seed_uri": "stonehearth_ace:fungi:bolete:colony",
+         "product_uri": "stonehearth_ace:food:bolete:bolete_basket",
+         "harvester_effect": "fiddle",
+         "render_scale": 0.08,
+         "tending_multiplier": 0.25,
+         "level": 3,
+         "growth_time": "14h+4h",
+         "growth_levels": [
+            {
+               "model": "file(crops/fungi_planter/bolete/bolete_1.qb)",
+               "offset": { "x": 5, "y": 0, "z": 5 }
+            },
+            {
+               "model": "file(crops/fungi_planter/bolete/bolete_2.qb)",
+               "offset": { "x": 5, "y": 0, "z": 5 }
+            },
+            {
+               "model": "file(crops/fungi_planter/bolete/bolete_3.qb)",
+               "offset": { "x": 5, "y": 0, "z": 5 }
+            },
+            {
+               "model": "file(crops/fungi_planter/bolete/bolete_4.qb)",
+               "offset": { "x": 5, "y": 0, "z": 5 }
+            }
+         ],
+         "display_name": "i18n(stonehearth_ace:herbalist_crops.bolete.display_name)",
+         "description": "i18n(stonehearth_ace:herbalist_crops.bolete.description)",
+         "harvest_status_text": "i18n(stonehearth_ace:herbalist_crops.bolete.harvest_text)",
+         "icon": "file(crops/fungi_planter/bolete/bolete.png)"
+      },
+      "desert_truffle": {
+         "seed_uri": "stonehearth_ace:fungi:desert_truffle:colony",
+         "product_uri": "stonehearth_ace:food:desert_truffle:desert_truffle_basket",
+         "harvester_effect": "fiddle",
+         "render_scale": 0.08,
+         "tending_multiplier": 0.25,
+         "level": 3,
+         "growth_time": "14h+4h",
+         "growth_levels": [
+            {
+               "model": "file(crops/fungi_planter/desert_truffle/desert_truffle_1.qb)",
+               "offset": { "x": 5, "y": 0, "z": 5 }
+            },
+            {
+               "model": "file(crops/fungi_planter/desert_truffle/desert_truffle_2.qb)",
+               "offset": { "x": 5, "y": 0, "z": 5 }
+            },
+            {
+               "model": "file(crops/fungi_planter/desert_truffle/desert_truffle_3.qb)",
+               "offset": { "x": 5, "y": 0, "z": 5 }
+            },
+            {
+               "model": "file(crops/fungi_planter/desert_truffle/desert_truffle_4.qb)",
+               "offset": { "x": 5, "y": 0, "z": 5 }
+            }
+         ],
+         "display_name": "i18n(stonehearth_ace:herbalist_crops.desert_truffle.display_name)",
+         "description": "i18n(stonehearth_ace:herbalist_crops.desert_truffle.description)",
+         "harvest_status_text": "i18n(stonehearth_ace:herbalist_crops.desert_truffle.harvest_text)",
+         "icon": "file(crops/fungi_planter/desert_truffle/desert_truffle.png)"
+      },
+      "chanterelle": {
+         "seed_uri": "stonehearth_ace:fungi:chanterelle:colony",
+         "product_uri": "stonehearth_ace:food:chanterelle:chanterelle_basket",
+         "harvester_effect": "fiddle",
+         "render_scale": 0.08,
+         "tending_multiplier": 0.25,
+         "level": 3,
+         "growth_time": "14h+4h",
+         "growth_levels": [
+            {
+               "model": "file(crops/fungi_planter/chanterelle/chanterelle_1.qb)",
+               "offset": { "x": 5, "y": 0, "z": 5 }
+            },
+            {
+               "model": "file(crops/fungi_planter/chanterelle/chanterelle_2.qb)",
+               "offset": { "x": 5, "y": 0, "z": 5 }
+            },
+            {
+               "model": "file(crops/fungi_planter/chanterelle/chanterelle_3.qb)",
+               "offset": { "x": 5, "y": 0, "z": 5 }
+            },
+            {
+               "model": "file(crops/fungi_planter/chanterelle/chanterelle_4.qb)",
+               "offset": { "x": 5, "y": 0, "z": 5 }
+            }
+         ],
+         "display_name": "i18n(stonehearth_ace:herbalist_crops.chanterelle.display_name)",
+         "description": "i18n(stonehearth_ace:herbalist_crops.chanterelle.description)",
+         "harvest_status_text": "i18n(stonehearth_ace:herbalist_crops.chanterelle.harvest_text)",
+         "icon": "file(crops/fungi_planter/chanterelle/chanterelle.png)"
+      },
+      "winter_morel": {
+         "seed_uri": "stonehearth_ace:fungi:winter_morel:colony",
+         "product_uri": "stonehearth_ace:food:winter_morel:winter_morel_basket",
+         "harvester_effect": "fiddle",
+         "render_scale": 0.075,
+         "tending_multiplier": 0.25,
+         "level": 3,
+         "growth_time": "14h+4h",
+         "growth_levels": [
+            {
+               "model": "file(crops/fungi_planter/winter_morel/winter_morel_1.qb)",
+               "offset": { "x": 5, "y": 0, "z": 5 }
+            },
+            {
+               "model": "file(crops/fungi_planter/winter_morel/winter_morel_2.qb)",
+               "offset": { "x": 5, "y": 0, "z": 5 }
+            },
+            {
+               "model": "file(crops/fungi_planter/winter_morel/winter_morel_3.qb)",
+               "offset": { "x": 5, "y": 0, "z": 5 }
+            },
+            {
+               "model": "file(crops/fungi_planter/winter_morel/winter_morel_4.qb)",
+               "offset": { "x": 5, "y": 0, "z": 5 }
+            }
+         ],
+         "display_name": "i18n(stonehearth_ace:herbalist_crops.winter_morel.display_name)",
+         "description": "i18n(stonehearth_ace:herbalist_crops.winter_morel.description)",
+         "harvest_status_text": "i18n(stonehearth_ace:herbalist_crops.winter_morel.harvest_text)",
+         "icon": "file(crops/fungi_planter/winter_morel/winter_morel.png)"
+      },
+      "parasol": {
+         "seed_uri": "stonehearth_ace:fungi:parasol:colony",
+         "product_uri": "stonehearth_ace:food:parasol:parasol_basket",
+         "harvester_effect": "fiddle",
+         "render_scale": 0.04,
+         "tending_multiplier": 0.25,
+         "level": 1,
+         "growth_time": "12h+3h",
+         "growth_levels": [
+            {
+               "model": "file(crops/fungi_planter/parasol/parasol_1.qb)",
+               "offset": { "x": 9, "y": 0, "z": 9 }
+            },
+            {
+               "model": "file(crops/fungi_planter/parasol/parasol_2.qb)",
+               "offset": { "x": 9, "y": 0, "z": 9 }
+            },
+            {
+               "model": "file(crops/fungi_planter/parasol/parasol_3.qb)",
+               "offset": { "x": 9, "y": 0, "z": 9 }
+            },
+            {
+               "model": "file(crops/fungi_planter/parasol/parasol_4.qb)",
+               "offset": { "x": 9, "y": 0, "z": 9 }
+            }
+         ],
+         "display_name": "i18n(stonehearth_ace:herbalist_crops.parasol.display_name)",
+         "description": "i18n(stonehearth_ace:herbalist_crops.parasol.description)",
+         "harvest_status_text": "i18n(stonehearth_ace:herbalist_crops.parasol.harvest_text)",
+         "icon": "file(crops/fungi_planter/parasol/parasol.png)"
+      },
+      "sweet_tooth": {
+         "seed_uri": "stonehearth_ace:fungi:sweet_tooth:colony",
+         "product_uri": "stonehearth_ace:food:sweet_tooth:sweet_tooth_basket",
+         "harvester_effect": "fiddle",
+         "render_scale": 0.07,
+         "tending_multiplier": 0.25,
+         "level": 1,
+         "growth_time": "12h+3h",
+         "growth_levels": [
+            {
+               "model": "file(crops/fungi_planter/sweet_tooth/sweet_tooth_1.qb)",
+               "offset": { "x": 5, "y": 0, "z": 5 }
+            },
+            {
+               "model": "file(crops/fungi_planter/sweet_tooth/sweet_tooth_2.qb)",
+               "offset": { "x": 5, "y": 0, "z": 5 }
+            },
+            {
+               "model": "file(crops/fungi_planter/sweet_tooth/sweet_tooth_3.qb)",
+               "offset": { "x": 5, "y": 0, "z": 5 }
+            },
+            {
+               "model": "file(crops/fungi_planter/sweet_tooth/sweet_tooth_4.qb)",
+               "offset": { "x": 5, "y": 0, "z": 5 }
+            }
+         ],
+         "display_name": "i18n(stonehearth_ace:herbalist_crops.sweet_tooth.display_name)",
+         "description": "i18n(stonehearth_ace:herbalist_crops.sweet_tooth.description)",
+         "harvest_status_text": "i18n(stonehearth_ace:herbalist_crops.sweet_tooth.harvest_text)",
+         "icon": "file(crops/fungi_planter/sweet_tooth/sweet_tooth.png)"
+      },
+      "glowshroom": {
+         "seed_uri": "stonehearth:resources:wood:oak_log",
+         "product_uri": "stonehearth_ace:resources:fungi:glowshroom",
+         "harvester_effect": "fiddle",
+         "render_scale": 0.08,
+         "tending_multiplier": 0.2,
+         "level": 5,
+         "growth_time": "12h+6h",
+         "growth_levels": [
+            {
+               "model": "file(crops/fungi_planter/glowshroom/glowshroom_1.qb)",
+               "material": "materials/glowy_voxel.material.json",
+               "offset": { "x": 5, "y": 0, "z": 5 }
+            },
+            {
+               "model": "file(crops/fungi_planter/glowshroom/glowshroom_2.qb)",
+               "material": "materials/glowy_voxel.material.json",
+               "offset": { "x": 5, "y": 0, "z": 5 }
+            },
+            {
+               "model": "file(crops/fungi_planter/glowshroom/glowshroom_3.qb)",
+               "material": "materials/glowy_voxel.material.json",
+               "offset": { "x": 5, "y": 0, "z": 5 }
+            },
+            {
+               "model": "file(crops/fungi_planter/glowshroom/glowshroom_4.qb)",
+               "material": "materials/glowy_voxel.material.json",
+               "offset": { "x": 5, "y": 0, "z": 5 }
+            }
+         ],
+         "display_name": "i18n(stonehearth_ace:herbalist_crops.glowshroom.display_name)",
+         "description": "i18n(stonehearth_ace:herbalist_crops.glowshroom.description)",
+         "harvest_status_text": "i18n(stonehearth_ace:herbalist_crops.glowshroom.harvest_text)",
+         "icon": "file(crops/fungi_planter/glowshroom/glowshroom.png)"
       }
    }
 }

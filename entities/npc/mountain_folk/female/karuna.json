@@ -1,0 +1,53 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth_ace:mixins:base_dwarf_npc",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(karuna.qb)"
+            ]
+         }
+      },
+      "stonehearth:job": {
+         "initial_job": "stonehearth_ace:jobs:npc:warrior"
+      },
+      "equipment": {
+         "weapon": [
+            "stonehearth_ace:weapons:iron_axe"
+         ],
+         "shield": [
+            "stonehearth_ace:armor:light_iron_shield"
+         ]
+      },
+      "stonehearth:attributes": {
+         "max_health": {
+            "type": "basic",
+            "value": 463
+         },
+         "speed": {
+            "type": "basic",
+            "value": 56
+         },
+         "menace": {
+            "type": "basic",
+            "value": 80
+         },
+         "courage": {
+            "type": "basic",
+            "value": 260
+         },
+         "muscle": {
+            "type": "basic",
+            "value": 52
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.npc.mountain_folk.female.karuna.display_name)",
+         "description": "i18n(stonehearth_ace:entities.npc.mountain_folk.female.karuna.description)",
+         "icon": "file(karuna.png)"
+      }
+   }
+}

@@ -15,18 +15,34 @@
       "tend_planter": 5
    },
    "level_data": {
-      "2": {
+		"1": {
          "mixintypes": {
             "perks": "override"
          },
          "perks": [
             {
-               "name": "i18n(stonehearth:jobs.herbalist.herbalist_description.level_2_data.perk_000_name)",
-               "id": "crafter_recipe_unlock_2",
-               "icon": "/stonehearth/jobs/common/images/collaborative_insight.png",
-               "description": "i18n(stonehearth_ace:jobs.herbalist.herbalist_description.level_2_data.collaborative_insight_description)",
-               "level": 2
+               "type": "increase_attended_hearthlings",
+               "name": "i18n(stonehearth_ace:jobs.herbalist.herbalist_description.level_1_data.perk_000_name)",
+               "id": "herbalist_increase_attended",
+               "icon": "/stonehearth/jobs/herbalist/images/level_0.png",
+               "description": "i18n(stonehearth_ace:jobs.herbalist.herbalist_description.level_1_data.perk_000_description)",
+               "max_num_attended_hearthlings": 2,
+               "level": 1
             },
+            {
+               "type": "apply_buff",
+               "id": "herbalist_willpower_up_1",
+               "buff_name": "stonehearth:buffs:herbalist:willpower_1",
+               "level": 1,
+               "demote_fn": "remove_buff"
+            }
+         ]
+      },
+      "2": {
+         "mixintypes": {
+            "perks": "override"
+         },
+         "perks": [
             {
                "name": "i18n(stonehearth_ace:jobs.herbalist.herbalist_description.level_2_data.taming_local_flora_name)",
                "icon": "file(images/taming_local_flora.png)",
@@ -43,10 +59,10 @@
          "perks": [
             {
 			      "type": "increase_healing_item_effect",
-               "name": "i18n(stonehearth:jobs.herbalist.herbalist_description.level_3_data.perk_000_name)",
+               "name": "i18n(stonehearth_ace:jobs.herbalist.herbalist_description.level_3_data.perk_000_name)",
                "id": "increase_healing_item_effect_50_percent",
                "icon": "/stonehearth/jobs/herbalist/images/level_3.png",
-               "description": "i18n(stonehearth:jobs.herbalist.herbalist_description.level_3_data.perk_000_description)",
+               "description": "i18n(stonehearth_ace:jobs.herbalist.herbalist_description.level_3_data.perk_000_description)",
 			      "healing_item_effect_multiplier": 1.5,
                "level": 3
             },

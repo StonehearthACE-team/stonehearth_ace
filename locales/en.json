@@ -19,32 +19,80 @@
       "saved_objects": {
          "building_templates": {
             "northern_alliance": {
-               "workshop_weaver": {
-                  "display_name": "Weaver's Workshop"
+					"turf_stone_hut_t1_ace": {
+						"display_name": "⛺ Turf Hut"
+					},
+					"stone_hut_t2_ace": {
+						"display_name": " 🏘️ Stone Hut"
+					},
+               "turf_stone_cottage_t1_ace": {
+						"display_name": "⛺ Turf Cottage for Two"
+					},
+					"stone_cottage_t2_ace": {
+						"display_name": " 🏘️ Stone Cottage for Two"
+					},
+               "stone_dining_hall_t1_ace": {
+						"display_name": "⛺ Turf Dining Hall"
+					},
+					"stone_dining_hall_t2_ace": {
+						"display_name": " 🏘️ Stone Dining Hall"
+					},
+               "stone_sleeping_quarters_t1_ace": {
+						"display_name": "⛺ Turf Sleeping Quarters"
+					},
+               "stone_sleeping_quarters_t2_ace": {
+						"display_name": " 🏘️ Stone Sleeping Quarters"
+					},
+					"stone_cozy_home_for_two_t2_ace": {
+						"display_name": " 🏘️ Stone Homestead for Two"
+					},
+					"stone_cozy_cottage_for_four_t2_ace": {
+						"display_name": " 🏘️ Stone Homestead for Four"
+					},
+               "workshop_weaver_t1_ace": {
+                  "display_name": "⛺ Weaver's Turf Hovel"
                },
-               "workshop_carpenter": {
-                  "display_name": "Carpenter's Workshop"
+					"workshop_weaver_t2_ace": {
+                  "display_name": " 🏘️ Weaver's Workshop"
                },
-               "workshop_cook": {
-                  "display_name": "Cook's Kitchen"
+               "workshop_carpenter_t1_ace": {
+                  "display_name": "⛺ Carpenter's Turf Hovel"
                },
-               "workshop_herbalist": {
-                  "display_name": "Herbalist's Workshop"
+					"workshop_carpenter_t2_ace": {
+                  "display_name": " 🏘️ Carpenter's Workshop"
                },
-               "workshop_mason": {
-                  "display_name": "Mason's Workshop"
+               "workshop_cook_t1_ace": {
+                  "display_name": "⛺ Cook's Turf Hovel"
                },
-               "workshop_potter": {
-                  "display_name": "Pottery Studio"
+					"workshop_cook_t2_ace": {
+                  "display_name": " 🏘️ Cook's Kitchen"
                },
-               "workshop_engineer": {
-                  "display_name": "Engineer's Workshop"
+               "workshop_herbalist_t1_ace": {
+                  "display_name": "⛺ Herbalist's Turf Hovel"
                },
-               "workshop_blacksmith": {
-                  "display_name": "Blacksmith's Workshop"
+					"workshop_herbalist_t2_ace": {
+                  "display_name": " 🏘️ Herbalist's Workshop"
                },
-               "mead_hall_ace": {
-                  "display_name": "Mead Hall"
+               "workshop_mason_t1_ace": {
+                  "display_name": "⛺ Mason's Turf Hovel"
+               },
+					"workshop_mason_t2_ace": {
+                  "display_name": " 🏘️ Mason's Workshop"
+               },
+               "workshop_potter_t2_ace": {
+                  "display_name": " 🏘️ Pottery Studio"
+               },
+               "workshop_engineer_t2_ace": {
+                  "display_name": " 🏘️ Engineer's Workshop"
+               },
+               "workshop_blacksmith_t2_ace": {
+                  "display_name": " 🏘️ Blacksmith's Workshop"
+               },
+               "mead_hall_t2_ace": {
+                  "display_name": " 🏘️ Mead Hall"
+               },
+               "great_hall_t2_ace": {
+                  "display_name": " 🏘️ Great Hall"
                }
             },
             "rayyas_children": {
@@ -58,11 +106,11 @@
             "mason_house": {
                "display_name": "Mason House"
             },
-            "shepherd_coop": {
-               "display_name": "Shepherd's Animal Shelter"
+            "shepherd_coop_t2_ace": {
+               "display_name": "🏘️ Shepherd's Animal Shelter"
             },
-            "shepherd_barn": {
-               "display_name": "Shepherd's Large Animal Barn"
+            "shepherd_barn_t2_ace": {
+               "display_name": "🏘️ Shepherd's Large Animal Barn"
             }
          }
       },
@@ -85,7 +133,7 @@
                                     "dialog_nodes": {
                                        "simple_message": {
                                           "bulletin_message": {
-                                             "00": "\"Your wayfaring student of Geomancy has returned as a full-fledged Geomancer! They proved themselves an able practitioner of the magic arts indeed!\"<br><br>\"Here - these precious Hearthbud flowers coalesce traces of Hearth's magic into Hearth Essence, which Geomancers can use in their craft - be sure to plant them.\""
+                                             "00": "\"Your wayfaring student of Geomancy has returned as a full-fledged Geomancer! They proved themselves an able practitioner of the magic arts indeed!\"<br><br>\"Here - these precious Hearthbud flowers coalesce traces of Hearth's magic into Hearth Essence, which Geomancers can use in their craft - be sure to tend to their planters.\""
                                           }
                                        }
                                     }
@@ -3232,6 +3280,26 @@
                "description": "The Herbalist can use this large pot to cultivate tree saplings.",
                "flavor": "Saplings are cultivated from the seeds of the tree"
             },
+            "herbalist_planter_pot_amberstone_recipe": {
+               "recipe_name": "Amberstone Herbalist Pot",
+               "description": "The Herbalist can use this pot to cultivate a single renewable herb.",
+               "flavor": "This planter is able to cultivate Hearthbud flowers"
+            },
+            "herbalist_planter_small_amberstone_recipe": {
+               "recipe_name": "Amberstone Herbalist Planter",
+               "description": "The Herbalist can use this container to cultivate two renewable herbs.",
+               "flavor": "This planter is able to cultivate Hearthbud flowers"
+            },
+            "herbalist_planter_fungi_wall_recipe": {
+               "recipe_name": "Wall-Mounted Mushroom Planter",
+               "description": "The Herbalist can use this wall-mounted box to cultivate two renewable fungi.",
+               "flavor": "Changing the cultivated fungus requires the respective fungal colony"
+            },
+            "herbalist_planter_fungi_recipe": {
+               "recipe_name": "Large Mushroom Planter",
+               "description": "The Herbalist can use these standing boxes to cultivate four renewable fungi.",
+               "flavor": "Changing the cultivated fungus requires the respective fungal colony"
+            },
             "professional_beekeeping_hat_recipe": {
                "recipe_name": "Professional Beekeeping Hat",
                "description": "Provides protection when working with bees.",
@@ -3949,13 +4017,15 @@
          },
          "herbalist_description": {
             "level_2_data": {
-               "taming_local_flora_name": "Botanical Studies",
-               "taming_local_flora_description": "The Herbalist has acquired sufficient knowledge of the area to learn how to cultivate the local flora",
+               "taming_local_flora_name": "Botanical & Collaborative Insight",
+               "taming_local_flora_description": "The Herbalist has acquired sufficient knowledge of the area to learn how to cultivate the local flora. They are also now skillful enough to use materials created by the other crafters, become a Cleric or follow a career as a Brewer.",
                "collaborative_insight_description": "The Herbalist is now skillful enough to use materials created by the other crafters and is also able to become a Cleric"
             },
             "level_3_data": {
                "unlock_quality_name": "Journeyman's Knowledge",
-               "unlock_quality_description": "When inspiration strikes, the Herbalist may now craft an especially Fine quality of item. Planting and tending in planters also increases the chance of Fine quality harvests."
+               "unlock_quality_description": "When inspiration strikes, the Herbalist may now craft an especially Fine quality of item. Planting and tending in planters also increases the chance of Fine quality harvests.",
+               "perk_000_name": "Profession & Item Proficiency",
+               "perk_000_description": "The Herbalist is now able to tend planters, improving their contents. Their medical prowess also increases the effectiveness of healing items by 50%."
             },
             "level_5_data": {
                "item_proficiency_2_name": "Item Mastery",
@@ -3965,9 +4035,13 @@
             },
             "level_6_data": {
                "power_medic_3_name": "Great Physician",
-               "power_medic_3_description": "The Herbalist can now attend to up to 6 hearthlings at a time."
+               "power_medic_3_description": "The Herbalist can now attend to up to 6 hearthlings at a time. They will also be able to improve the qualities of their plants faster."
             },
-            "description": "A performer of healing practices, the Herbalist can craft and use tonics, medications and potions but also work with plants, seeds and other foraging goods."
+            "description": "A performer of healing practices, the Herbalist can craft and use tonics, medications and potions but also work with plants, seeds and other foraging goods.",
+            "level_1_data": {
+               "perk_000_name": "Junior Practitioner & Natural Regeneration",
+               "perk_000_description": "The Herbalist can attend to up to two hurt hearthlings at a time. Additionally, the Herbalist channels the spirits of the forest and gains natural regeneration. Willpower and Diligence increased."
+            }
          },
          "herbalist_mortar_pewter": {
             "display_name": "Herbalist's Pewter Mortar",
@@ -6600,6 +6674,11 @@
       "simple_beekeeping_hat": {
          "display_name": "Simple Beekeeping Hat",
          "description": "Very useful for being safe while hauling and moving around bee skeps."
+      },
+      "warrior": {
+         "warrior_description": {
+            "display_name": "Warrior"
+         }
       }
    },
    "entities": {
@@ -7412,6 +7491,30 @@
          "planter_pot_sapling": {
             "display_name": "Herbalist Tree-Planting Pot",
             "description": "This large pot can be used for growing tree saplings."
+         },
+         "planter_small_amberstone": {
+            "display_name": "Amberstone Herbalist Planter",
+            "description": "Can be used to cultivate renewable herbs in it, including the Hearthbud."
+         },
+         "planter_pot_amberstone": {
+            "display_name": "Amberstone Herbalist Pot",
+            "description": "Can be used to cultivate a single renewable herb, including the Hearthbud."
+         },
+         "planter_pot_amberstone_hearthbud": {
+            "display_name": "Amberstone Hearthbud Pot",
+            "description": "A precious gift to a rabbit-friend, this pot comes with a planted Hearthbud flower."
+         },
+         "planter_fungi_wall": {
+            "display_name": "Wall-Mounted Mushroom Planter",
+            "description": "Can be used to cultivate two renewable fungi colonies in it."
+         },
+         "planter_fungi": {
+            "display_name": "Large Mushroom Planter",
+            "description": "The Herbalist can cultivate up to four renewable fungi colonies in it."
+         },
+         "planter_glowshroom": {
+            "display_name": "Glowshroom Planter",
+            "description": "Your town has accepted to temporarily take care of these glowshroom."
          }
       },
       "resources": {
@@ -7779,6 +7882,12 @@
          "bough_bale_evergreen": {
             "display_name": "Bale of Evergreen Boughs",
             "description": "Full of green needles! Can be used as thatching, fuel and even in recipes!"
+         },
+         "fungi": {
+            "glowshroom": {
+               "display_name": "Basket of Glowshrooms",
+               "description": "The contained essence retains their glow even after they've been picked."
+            }
          }
       },
       "refined": {
@@ -12887,6 +12996,20 @@
                   "description": "Prestigious blacksmith from the southern lands"
                }
             }
+         },
+         "mountain_folk": {
+            "male": {
+               "dwalek": {
+                  "display_name": "Dwalek Cinderheart",
+                  "description": "Mountain Folk Artificer & Investor"
+               }
+            },
+            "female": {
+               "karuna": {
+                  "display_name": "Karuna Steelfist",
+                  "description": "Protector of the dwarrow"
+               }
+            }
          }
       },
       "loot": {
@@ -13151,7 +13274,7 @@
          },
          "peoples": {
             "dwarves": {
-               "species": "Dwarf"
+               "species": "dwarf"
             }
          }
       }
@@ -13425,6 +13548,41 @@
          "display_name": "Yew Sapling",
          "description": "A thick and sturdy evergreen tree from the highlands. Needs some days before it has grown enough to be replanted somewhere else.",
          "harvest_text": "harvesting yew sapling"
+      },
+      "bolete": {
+         "display_name": "Bolete",
+         "harvest_text": "harvesting bolete",
+         "description": "Soft and tasty forest mushrooms. Needs a couple of days to be fully grown."
+      },
+      "chanterelle": {
+         "display_name": "Chanterelle",
+         "harvest_text": "harvesting chanterelle",
+         "description": "Buttery and flavorful highland fungi. Needs a couple of days to be fully grown."
+      },
+      "sweet_tooth": {
+         "display_name": "Sweet Tooth",
+         "harvest_text": "harvesting sweet tooth",
+         "description": "Delicious mushrooms commonly found almost everywhere. Grows very quickly."
+      },
+      "parasol": {
+         "display_name": "Parasol",
+         "harvest_text": "harvesting parasol",
+         "description": "Tender mushrooms but toxic when raw, commonly found almost everywhere. Grows very quickly."
+      },
+      "winter_morel": {
+         "display_name": "Winter Morel",
+         "harvest_text": "harvesting winter morel",
+         "description": "A true arctic delicacy, able to grow on the snow. Needs a couple of days to be fully grown."
+      },
+      "desert_truffle": {
+         "display_name": "Desert Truffle",
+         "harvest_text": "harvesting desert truffle",
+         "description": "A rare and spicy desert mushroom. Needs a couple of days to be fully grown."
+      },
+      "glowshroom": {
+         "display_name": "Glowshroom",
+         "description": "A small mushroom with a peculiar glow, almost magical! Needs a day or two to grow.",
+         "harvest_text": "harvesting glowshroom"
       }
    },
    "plants": {
@@ -14330,6 +14488,12 @@
          "decay_brewing_ingredient": {
             "description": "It will spoil in some days, needs to be prepared soon!"
          }
+      }
+   },
+   "stonehearth_mixins": {
+      "base_dwarf_npc": {
+         "display_name": "[str(self.stonehearth:unit_info.custom_name)]",
+         "description": "A visitor from the mountains"
       }
    }
 }

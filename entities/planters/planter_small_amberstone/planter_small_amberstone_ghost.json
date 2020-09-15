@@ -1,0 +1,38 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(planter_small_amberstone.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "align_to_grid": [
+            "x"
+         ],
+         "model_origin": { "x": 0, "y": 0.01, "z": 0 },
+         "region_origin": { "x": 0, "y": 0, "z": 0.5 },
+         "allow_vertical_adjacent": true
+      },
+      "render_info": {
+         "scale": 0.1
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.herbalist_planters.planter_small_amberstone.display_name)",
+         "description": "i18n(stonehearth_ace:entities.herbalist_planters.planter_small_amberstone.description)",
+         "icon": "file(planter_small_amberstone.png)",
+         "category": "herbalist_planter",
+         "material_tags": [
+            "crafted",
+            "amberstone",
+            "herbalist_planter",
+            "tool",
+            "stockpile_tool"
+         ]
+      }
+   }
+}

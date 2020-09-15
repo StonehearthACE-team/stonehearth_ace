@@ -1,0 +1,41 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth_ace:mixins:base_dwarf_npc",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(dwalek.qb)"
+            ]
+         }
+      },
+      "stonehearth:expendable_resources": {
+         "resources": {
+            "social_satisfaction": {
+               "initial_value": {
+                  "type": "random_between",
+                  "min": 20,
+                  "max": 50
+               }
+            }
+         }
+      },
+      "stonehearth:attributes": {
+         "social_loss_amount": {
+            "type": "derived",
+            "equation": "1.5"
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.npc.mountain_folk.male.dwalek.display_name)",
+         "description": "i18n(stonehearth_ace:entities.npc.mountain_folk.male.dwalek.description)",
+         "icon": "file(dwalek.png)"
+      },
+      "stonehearth:town_patrol": {
+         "auto_patrol": true,
+         "patrol_pattern": "perimeter"
+      }
+   }
+}

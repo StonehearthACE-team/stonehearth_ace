@@ -1,0 +1,102 @@
+{
+   "type": "entity",
+   "mixins": [
+      "file(planter_small_amberstone_ghost.json)",
+      "stonehearth_ace:mixins:herbalist_planter"
+   ],
+   "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(planter_small_amberstone_iconic.json)",
+         "ghost_form": "file(planter_small_amberstone_ghost.json)",
+         "placeable_on_ground": true
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": 0 },
+               "max": { "x": 1, "y": 1, "z": 1 }
+            }
+         ]
+      },
+      "movement_modifier_shape": {
+         "modifier": -0.5,
+         "nav_preference_modifier": -0.5,
+         "region": [
+            {
+               "min": { "x": -1, "y": 1, "z": 0 },
+               "max": { "x": 1, "y": 2, "z": 1 }
+            }
+         ]
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -1, "y": -1, "z": 0 },
+               "max": { "x": 1, "y": 2, "z": 1 }
+            }
+         ]
+      },
+      "stonehearth_ace:herbalist_planter": {
+         "allowed_crops": {
+            "earthbud": true,
+            "brightbell": true,
+            "frostsnap": true,
+            "violet": true,
+            "cactus_flower": true,
+            "cactus_tulip_blue": true,
+            "cactus_tulip_red": true,
+            "cactus_tulip_yellow": true,
+            "highland_vine": true,
+            "snow_poppy": true,
+            "moonbell": true,
+            "marblesprout": true,
+            "daisy": true,
+            "foxlily": true,
+            "sunflower": true,
+            "silkweed": true,
+            "sugarbell": true,
+            "wax_plant_green": true,
+            "wax_plant_purple": true,
+            "poppy": true,
+            "rose": true,
+            "dill": true,
+            "chives": true,
+            "bog_myrtle": true,
+            "nightshade": true,
+            "daylily": true,
+            "oleander": true,
+            "parsley": true,
+            "sage": true
+         },
+         "scale_multiplier": 1,
+         "plant_locations": [
+            {
+               "offset": { "x": 0.475, "y": 0.9, "z": 0.05 }
+            },
+            {
+               "offset": { "x": -0.375, "y": 0.9, "z": -0.05 },
+               "rotation": 90
+            }
+         ]
+      },
+      "stonehearth:storage": {
+         "capacity": 2
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 26,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 13
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

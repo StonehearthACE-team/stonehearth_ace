@@ -5,9 +5,12 @@ local AceFoodDecayService = class()
 function AceFoodDecayService:_get_decay_rate(entity, tuning, rate)
    if tuning.storage_modifiers or tuning.any_storage_modifier then
       local player_id = entity:get_player_id()
-      if player_id then
+      if player_id and player_id ~= '' then
          local inventory = stonehearth.inventory:get_inventory(player_id)
-         local storage = inventory:container_for(entity)
+			local storage = nil
+			if inventory then
+				storage = inventory:container_for(entity)
+			end
          if storage then
             local best_rate = 1
             -- check if the storage matches any materials in the decay modifiers

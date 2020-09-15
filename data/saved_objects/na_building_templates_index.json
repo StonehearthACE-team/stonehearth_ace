@@ -5,93 +5,146 @@
          "categories": {
             "outpost": {
                "templates": {
-				  "mixintypes": {
-					 "workshop_mason": "remove",
-					 "workshop_carpenter": "remove",
-					 "workshop_cook": "remove",
-					 "workshop_herbalist": "remove",
-					 "workshop_potter": "remove",
-					 "workshop_weaver": "remove"
-				  },
-                  "workshop_mason_ace": {
+						"mixintypes": {
+							"workshop_mason": "remove",
+							"workshop_carpenter": "remove",
+							"workshop_cook": "remove",
+							"workshop_herbalist": "remove",
+							"workshop_potter": "remove",
+							"workshop_weaver": "remove",
+							"thatched_stone_hut": "remove",
+							"thatched_stone_cottage": "remove",
+							"stone_dining_hall": "remove",
+							"stone_sleeping_quarters": "remove"
+						},
+						"turf_stone_hut_t1_ace": "file(building_templates/northern_alliance/turf_stone_hut_t1_ace.json)",
+                  "turf_stone_cottage_t1_ace": "file(building_templates/northern_alliance/turf_stone_cottage_t1_ace.json)",
+                  "stone_dining_hall_t1_ace": "file(building_templates/northern_alliance/stone_dining_hall_t1_ace.json)",
+                  "stone_sleeping_quarters_t1_ace": "file(building_templates/northern_alliance/stone_sleeping_quarters_t1_ace.json)",
+                  "workshop_mason_t1_ace": {
                      "unlock_requirement": {
                         "type": "has_job",
                         "value": "stonehearth:jobs:mason"
                      },
-                     "file": "file(building_templates/northern_alliance/workshop_mason_ace.json)"
+                     "file": "file(building_templates/northern_alliance/workshop_mason_t1_ace.json)"
                   },
-                  "workshop_carpenter_ace": {
+                  "workshop_carpenter_t1_ace": {
                      "unlock_requirement": {
                         "type": "has_job",
                         "value": "stonehearth:jobs:carpenter"
                      },
-                     "file": "file(building_templates/northern_alliance/workshop_carpenter_ace.json)"
+                     "file": "file(building_templates/northern_alliance/workshop_carpenter_t1_ace.json)"
                   },
-                  "workshop_cook_ace": {
+                  "workshop_cook_t1_ace": {
                      "unlock_requirement": {
                         "type": "has_job",
                         "value": "stonehearth:jobs:cook"
                      },
-                     "file": "file(building_templates/northern_alliance/workshop_cook_ace.json)"
+                     "file": "file(building_templates/northern_alliance/workshop_cook_t1_ace.json)"
                   },
-                  "workshop_herbalist_ace": {
+                  "workshop_herbalist_t1_ace": {
                      "unlock_requirement": {
                         "type": "has_job",
                         "value": "stonehearth:jobs:herbalist"
                      },
-                     "file": "file(building_templates/northern_alliance/workshop_herbalist_ace.json)"
+                     "file": "file(building_templates/northern_alliance/workshop_herbalist_t1_ace.json)"
                   },
-                  "workshop_potter_ace": {
-                     "unlock_requirement": {
-                        "type": "has_job",
-                        "value": "stonehearth:jobs:potter"
-                     },
-                     "file": "file(building_templates/northern_alliance/workshop_potter_ace.json)"
-                  },
-                  "workshop_weaver_ace": {
+                  "workshop_weaver_t1_ace": {
                      "unlock_requirement": {
                         "type": "has_job",
                         "value": "stonehearth:jobs:weaver"
                      },
-                     "file": "file(building_templates/northern_alliance/workshop_weaver_ace.json)"
-                  },
-                  "na_shepherd_barn_ace": {
-                     "unlock_requirement": {
-                        "type": "has_job",
-                        "value": "stonehearth:jobs:shepherd"
-                     },
-                     "file": "file(building_templates/northern_alliance/na_shepherd_barn_ace.json)"
-                  },
-                  "na_shepherd_coop_ace": {
-                     "unlock_requirement": {
-                        "type": "has_job",
-                        "value": "stonehearth:jobs:shepherd"
-                     },
-                     "file": "file(building_templates/northern_alliance/na_shepherd_coop_ace.json)"
+                     "file": "file(building_templates/northern_alliance/workshop_weaver_t1_ace.json)"
                   }
                }
             },
             "settlement": {
                "templates": {
-				  "mixintypes": {
-					 "workshop_blacksmith": "remove",
-					 "workshop_engineer": "remove"
-				  },
-                  "workshop_engineer_ace": {
+						"mixintypes": {
+							"workshop_blacksmith": "remove",
+							"workshop_engineer": "remove",
+							"cozy_stone_cottage": "remove",
+							"cozy_stone_cottage_for_two": "remove",
+							"great_hall": "remove"
+						},
+						"stone_hut_t2_ace": "file(building_templates/northern_alliance/tier2/stone_hut_t2_ace.json)",
+                  "stone_cottage_t2_ace": "file(building_templates/northern_alliance/tier2/stone_cottage_t2_ace.json)",
+                  "stone_dining_hall_t2_ace": "file(building_templates/northern_alliance/tier2/stone_dining_hall_t2_ace.json)",
+                  "stone_sleeping_quarters_t2_ace": "file(building_templates/northern_alliance/tier2/stone_sleeping_quarters_t2_ace.json)",
+                  "workshop_mason_t2_ace": {
+                     "unlock_requirement": {
+                        "type": "has_job",
+                        "value": "stonehearth:jobs:mason"
+                     },
+                     "file": "file(building_templates/northern_alliance/tier2/workshop_mason_t2_ace.json)"
+                  },
+                  "workshop_carpenter_t2_ace": {
+                     "unlock_requirement": {
+                        "type": "has_job",
+                        "value": "stonehearth:jobs:carpenter"
+                     },
+                     "file": "file(building_templates/northern_alliance/tier2/workshop_carpenter_t2_ace.json)"
+                  },
+                  "workshop_cook_t2_ace": {
+                     "unlock_requirement": {
+                        "type": "has_job",
+                        "value": "stonehearth:jobs:cook"
+                     },
+                     "file": "file(building_templates/northern_alliance/tier2/workshop_cook_t2_ace.json)"
+                  },
+                  "workshop_herbalist_t2_ace": {
+                     "unlock_requirement": {
+                        "type": "has_job",
+                        "value": "stonehearth:jobs:herbalist"
+                     },
+                     "file": "file(building_templates/northern_alliance/tier2/workshop_herbalist_t2_ace.json)"
+                  },
+                  "workshop_weaver_t2_ace": {
+                     "unlock_requirement": {
+                        "type": "has_job",
+                        "value": "stonehearth:jobs:weaver"
+                     },
+                     "file": "file(building_templates/northern_alliance/tier2/workshop_weaver_t2_ace.json)"
+                  },
+                  "workshop_engineer_t2_ace": {
                      "unlock_requirement": {
                         "type": "has_job",
                         "value": "stonehearth:jobs:engineer"
                      },
-                     "file": "file(building_templates/northern_alliance/tier2/workshop_engineer_ace.json)"
+                     "file": "file(building_templates/northern_alliance/tier2/workshop_engineer_t2_ace.json)"
                   },
-                  "workshop_blacksmith_ace": {
+                  "workshop_blacksmith_t2_ace": {
                      "unlock_requirement": {
                         "type": "has_job",
                         "value": "stonehearth:jobs:blacksmith"
                      },
-                     "file": "file(building_templates/northern_alliance/tier2/workshop_blacksmith_ace.json)"
+                     "file": "file(building_templates/northern_alliance/tier2/workshop_blacksmith_t2_ace.json)"
                   },
-						"mead_hall_ace": "file(building_templates/northern_alliance/tier2/mead_hall_ace.json)"
+                  "workshop_potter_t2_ace": {
+                     "unlock_requirement": {
+                        "type": "has_job",
+                        "value": "stonehearth:jobs:potter"
+                     },
+                     "file": "file(building_templates/northern_alliance/tier2/workshop_potter_t2_ace.json)"
+                  },
+                  "na_shepherd_barn_t2_ace": {
+                     "unlock_requirement": {
+                        "type": "has_job",
+                        "value": "stonehearth:jobs:shepherd"
+                     },
+                     "file": "file(building_templates/northern_alliance/tier2/na_shepherd_barn_t2_ace.json)"
+                  },
+                  "na_shepherd_coop_t2_ace": {
+                     "unlock_requirement": {
+                        "type": "has_job",
+                        "value": "stonehearth:jobs:shepherd"
+                     },
+                     "file": "file(building_templates/northern_alliance/tier2/na_shepherd_coop_t2_ace.json)"
+                  },
+						"mead_hall_t2_ace": "file(building_templates/northern_alliance/tier2/mead_hall_t2_ace.json)",
+						"stone_cozy_cottage_for_four_t2_ace": "file(building_templates/northern_alliance/tier2/stone_cozy_cottage_for_four_t2_ace.json)",
+                  "stone_cozy_home_for_two_t2_ace": "file(building_templates/northern_alliance/tier2/stone_cozy_home_for_two_t2_ace.json)",
+                  "great_hall_t2_ace": "file(building_templates/northern_alliance/tier2/great_hall_t2_ace.json)"
                }
             }
          }

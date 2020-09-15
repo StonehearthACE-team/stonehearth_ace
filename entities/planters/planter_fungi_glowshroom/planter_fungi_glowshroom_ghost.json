@@ -1,0 +1,41 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(../planter_fungi/planter_fungi.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "align_to_grid": [
+            "x"
+         ],
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0, "y": 0, "z": 0.5 },
+         "allow_vertical_adjacent": true
+      },
+      "render_info": {
+         "color_map": "stonehearth_ace:color_map:brass",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/mob_material_map.json"
+         ],
+         "scale": 0.1
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.herbalist_planters.planter_glowshroom.display_name)",
+         "description": "i18n(stonehearth_ace:entities.herbalist_planters.planter_glowshroom.description)",
+         "icon": "file(../planter_fungi/planter_fungi.png)",
+         "category": "herbalist_planter",
+         "material_tags": [
+            "crafted",
+            "herbalist_planter",
+            "tool",
+            "stockpile_tool"
+         ]
+      }
+   }
+}

@@ -1,7 +1,7 @@
 local SoloBasicNeedsTaskGroup = class()
 SoloBasicNeedsTaskGroup.name = 'solo basic needs'
 SoloBasicNeedsTaskGroup.does = 'stonehearth:top'
-SoloBasicNeedsTaskGroup.priority = {0.21, 0.3}
+SoloBasicNeedsTaskGroup.priority = {0, 0.3}
 
 return stonehearth.ai:create_task_group(SoloBasicNeedsTaskGroup)
          :declare_permanent_task('stonehearth:rest_when_injured', {}, {0.45, 0.9})  -- Only humans have actions that perform this

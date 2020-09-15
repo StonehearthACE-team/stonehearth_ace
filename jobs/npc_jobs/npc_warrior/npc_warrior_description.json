@@ -1,0 +1,20 @@
+{
+   "type": "job",
+   "alias": "stonehearth_ace:jobs:npc:warrior",
+   "is_npc_job": true,
+   "display_name": "i18n(stonehearth_ace:jobs.warrior.warrior_description.display_name)",
+   "controller": "stonehearth:class:worker",
+   "default_stance": "aggressive",
+   "abilities": "file(npc_warrior_abilities)",
+   "roles": [
+      "warrior_job",
+      "combat"
+   ],
+   "icon": "file(../../warrior/images/icon.png)",
+   "max_level": 6,
+   "level_data": {
+      "1": {
+         "title": "i18n(stonehearth_ace:jobs.warrior.warrior_description.display_name)"
+      }
+   }
+}

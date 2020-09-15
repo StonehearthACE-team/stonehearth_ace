@@ -6,7 +6,7 @@
          "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
       },
       "render_info": {
-         "color_map": "stonehearth_ace:color_map:ace",
+         "color_map": "stonehearth_ace:color_map:brass",
          "material_maps": [
             "/stonehearth/data/materials/material_maps/mob_material_map.json"
          ],
@@ -27,7 +27,10 @@
          "description": "i18n(stonehearth_ace:mountain_folk.jobs.grower.grower_workbench.grower_workbench_ghost.description)",
          "icon": "file(grower_workbench.png)",
          "category": "workshops",
-         "material_tags":["tool", "stockpile_tool"]
+         "material_tags": [
+            "tool",
+            "stockpile_tool"
+         ]
       }
    }
 }

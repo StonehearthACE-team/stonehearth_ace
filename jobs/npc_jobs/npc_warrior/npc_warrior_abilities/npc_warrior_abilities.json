@@ -1,0 +1,27 @@
+{
+   "type": "entity",
+   "components": {
+      "stonehearth:equipment_piece": {
+         "injected_ai": {
+            "ai_packs": [
+               "stonehearth:ai_pack:patrolling",
+               "stonehearth:ai_pack:wimpy",
+               "stonehearth:ai_pack:panic:flee"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:combat:melee_defenses": [
+         {
+            "name": "combat_1h_dodge",
+            "effect": "combat_1h_dodge",
+            "active_frame": 8,
+            "cooldown": 12000,
+            "priority": 1,
+            "chance_of_success": 0.25,
+            "defense_attribute": "dodge_chance"
+         }
+      ]
+   }
+}
