@@ -1,6 +1,8 @@
 local EatingLib = require 'stonehearth.ai.lib.eating_lib'
 local AceEatingLib = class()
 
+local log = radiant.log.create_logger('eating_lib')
+
 function AceEatingLib.get_current_hour_type()
    local hour = stonehearth.calendar:get_time_and_date().hour
    return AceEatingLib.get_hour_type(hour)
@@ -38,7 +40,7 @@ function AceEatingLib.get_quality(food_stuff, food_preferences, food_intolerance
 
    local qualities = stonehearth.constants.food_qualities
 
-	if food_intolerances ~= '' then
+	if food_intolerances and food_intolerances ~= '' then
       if radiant.entities.is_material(food_stuff, food_intolerances) then
          return qualities.INTOLERABLE
       end
@@ -46,7 +48,7 @@ function AceEatingLib.get_quality(food_stuff, food_preferences, food_intolerance
 
    local quality = food_data.quality or stonehearth.constants.food_qualities.RAW_BLAND
 	
-   if food_preferences ~= '' then
+   if food_preferences and food_preferences ~= '' then
       if radiant.entities.is_material(food_stuff, food_preferences) then
          return quality * stonehearth.constants.food.PREFERRED_FOOD_BONUS
       end
@@ -96,9 +98,16 @@ function AceEatingLib.get_quality(food_stuff, food_preferences, food_intolerance
 end
 
 function AceEatingLib.make_food_filter(food_preferences, food_intolerances, hour_type, weather_type)
-   return stonehearth.ai:filter_from_key('food_filter', tostring(food_preferences, food_intolerances, hour_type, weather_type), function(item)
+   local key = tostring(food_preferences) .. '|' .. tostring(food_intolerances) .. '|' .. tostring(hour_type) .. '|' .. tostring(weather_type)
+   local filter_fn = stonehearth.ai:filter_from_key('food_filter', key, function(item)
             return AceEatingLib.get_quality(item, food_preferences, food_intolerances, hour_type, weather_type) ~= nil
          end)
+   -- log:debug('made eating filter_fn for %s: %s', key, tostring(filter_fn))
+   -- if not stonehearth_ace.eating_filter_fn then
+   --    stonehearth_ace.eating_filter_fn = {}
+   -- end
+   -- stonehearth_ace.eating_filter_fn[key] = filter_fn
+   return filter_fn
 end
 
 function AceEatingLib.make_food_rater(food_preferences, food_intolerances, hour_type, weather_type)

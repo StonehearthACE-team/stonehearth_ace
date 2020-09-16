@@ -418,6 +418,7 @@ App.StonehearthUnitFrameView.reopen({
          };
       }
       var commands = radiant.map_to_array(self.get('model.stonehearth:commands.commands'), filterFn);
+      var totalCommands = commands.length;
       var groups = {};
       commands.forEach(command => {
          var group = command.group;
@@ -438,8 +439,8 @@ App.StonehearthUnitFrameView.reopen({
       
       var groupedCommands = [];
       radiant.each(groups, function(group, groupCommands) {
-         if (groupCommands.length > 1) {
-            // if there's more than one command in the group, add the group instead
+         if (groupCommands.length > 1 && totalCommands > 2) {
+            // if there's more than one command in the group, and there's at least one other command (or more than two commands in the group), add the group instead
             var groupData = stonehearth_ace.getCommandGroup(group);
             if (groupData) {
                var groupData = radiant.shallow_copy(groupData);

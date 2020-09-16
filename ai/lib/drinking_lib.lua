@@ -88,7 +88,8 @@ function DrinkingLib.get_quality(drink_stuff, drink_preferences, drink_intoleran
 end
 
 function DrinkingLib.make_drink_filter(drink_preferences, drink_intolerances, hour_type, weather_type)
-   return stonehearth.ai:filter_from_key('drink_filter', tostring(drink_preferences, drink_intolerances, hour_type, weather_type), function(item)
+   local key = tostring(drink_preferences) .. '|' .. tostring(drink_intolerances) .. '|' .. tostring(hour_type) .. '|' .. tostring(weather_type)
+   return stonehearth.ai:filter_from_key('drink_filter', key, function(item)
             local quality = DrinkingLib.get_quality(item, drink_preferences, drink_intolerances, hour_type, weather_type)
             return quality and quality >= stonehearth.constants.drink_qualities.MINIMUM_VIABLE
          end)

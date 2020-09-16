@@ -43,6 +43,8 @@ end
 
 function CrafterInfoController:_create_maps()
    self._recipe_map:clear()
+
+   log:debug('creating maps for %s...', self._sv.player_id)
    
    local player_id = self._sv.player_id
    local pop = stonehearth.population:get_population(player_id)
@@ -96,6 +98,8 @@ function CrafterInfoController:_create_maps()
       end
    end
    self.__saved_variables:mark_changed()
+
+   log:debug('finished creating maps for %s', self._sv.player_id)
 end
 
 function CrafterInfoController:_format_recipe(name, recipe)

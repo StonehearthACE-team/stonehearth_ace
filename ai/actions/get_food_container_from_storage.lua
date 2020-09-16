@@ -27,7 +27,6 @@ function GetFoodFromContainerFromStorage:start_thinking(ai, entity, args)
    local owner_id = radiant.entities.get_player_id(entity)
    local key = tostring(args.food_filter_fn) .. ':' .. owner_id
    ai:set_think_output({
-         owner_player_id = owner_id,
          food_container_filter_fn = stonehearth.ai:filter_from_key('food_container_filter', key, make_food_container_filter(owner_id, args.food_filter_fn)),
       })
 end
@@ -48,12 +47,12 @@ return ai:create_compound_action(GetFoodFromContainerFromStorage)
             filter_fn = ai.ARGS.food_filter_fn,
             rating_fn = ai.ARGS.food_rating_fn,
             storage = ai.PREV.storage,
-            owner_player_id = ai.BACK(3).owner_player_id,
             description = 'find path to food container',
          })
          :execute('stonehearth:goto_entity_in_storage', {
             entity = ai.PREV.item,
          })
-         :execute('stonehearth:reserve_entity', { entity = ai.BACK(2).item })
-         :execute('stonehearth:drop_carrying_now', {})
-         :execute('stonehearth:get_food_from_container_adjacent', { container = ai.BACK(4).item })
+         :execute('stonehearth:reserve_entity', {
+            entity = ai.BACK(2).item,
+         })
+         :execute('stonehearth:get_food_from_container_adjacent', { container = ai.BACK(3).item })

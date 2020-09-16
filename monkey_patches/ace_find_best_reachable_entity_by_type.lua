@@ -3,10 +3,37 @@ local Entity = _radiant.om.Entity
 local FindBestReachableEntityByType = require 'stonehearth.ai.actions.find_best_reachable_entity_by_type'
 local AceFindBestReachableEntityByType = class()
 
+local log = radiant.log.create_logger('find_best_reachable_entity_by_type')
+
 AceFindBestReachableEntityByType.think_output = {
    item = Entity,                      -- the destination
    rating = 'number',                  -- the rating of the found item (1 if no rating_fn)
 }
+
+function AceFindBestReachableEntityByType:start(ai, entity, args)
+   if not radiant.entities.exists(self._result) or not args.filter_fn(self._result) then
+      if not stonehearth_ace.failed_filter_fn then
+         stonehearth_ace.failed_filter_fn = {}
+      end
+      table.insert(stonehearth_ace.failed_filter_fn,
+         {
+            filter_fn = args.filter_fn,
+            entity = entity,
+            result = self._result
+         }
+      )
+      log:debug('failed to match %s for %s in filter_fn %s: stonehearth_ace.failed_filter_fn[%s]', self._result, entity, tostring(args.filter_fn), #stonehearth_ace.failed_filter_fn)
+      
+      ai:abort(string.format('destination %s is no longer valid at start. filter description: %s', tostring(self._result), tostring(self._description)))
+   end
+
+   if not radiant.entities.exists_in_world(self._result) then
+      ai:abort(string.format('destination %s is no longer in world.', tostring(self._result)))
+   end
+
+   self._log:debug('start with %s at %s', self._result, radiant.entities.get_world_grid_location(self._result))
+   self._started = true
+end
 
 function AceFindBestReachableEntityByType:_set_result(item, rating, args, entity)
    if self._started or not self._if then
