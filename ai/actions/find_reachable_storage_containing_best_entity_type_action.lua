@@ -101,7 +101,7 @@ local function make_storage_rating_fn(item_filter_fn, item_rating_fn)
 end
 
 function FindReachableStorageContainingBestEntityType:start_thinking(ai, entity, args)
-   local key = tostring(args.filter_fn) .. args.ignore_workbenches
+   local key = tostring(args.filter_fn) .. tostring(args.ignore_workbenches)
    local storage_filter_fn = stonehearth.ai:filter_from_key('stonehearth:find_reachable_storage_containing_best_entity_type', key,
                                                             make_storage_filter_fn(entity, args.filter_fn, args.owner_player_id, args.ignore_workbenches))
    ai:set_think_output({
