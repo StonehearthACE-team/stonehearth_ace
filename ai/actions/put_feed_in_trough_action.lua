@@ -1,7 +1,7 @@
 local Entity = _radiant.om.Entity
 
 local FeedPastureTrough = radiant.class()
-FeedPastureTrough.name = 'feed pasture animals'
+FeedPastureTrough.name = 'feed pasture trough'
 FeedPastureTrough.status_text_key = 'stonehearth:ai.actions.status_text.feed_pasture_animals'
 FeedPastureTrough.does = 'stonehearth_ace:feed_pasture_trough'
 FeedPastureTrough.args = {

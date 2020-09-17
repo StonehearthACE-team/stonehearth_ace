@@ -435,20 +435,21 @@ function AceShepherdPastureComponent:_find_grass_spawn_points()
 	return grass
 end
 
-AceShepherdPastureComponent._ace_old__create_pasture_tasks = ShepherdPastureComponent._create_pasture_tasks
-function AceShepherdPastureComponent:_create_pasture_tasks()
-   self:_ace_old__create_pasture_tasks()
+-- stonehearth_ace:feed_pasture_trough ai is done differently now
+-- AceShepherdPastureComponent._ace_old__create_pasture_tasks = ShepherdPastureComponent._create_pasture_tasks
+-- function AceShepherdPastureComponent:_create_pasture_tasks()
+--    self:_ace_old__create_pasture_tasks()
    
-   local town = stonehearth.town:get_town(self._entity)
+--    local town = stonehearth.town:get_town(self._entity)
 
-   local feed_trough_task = town:create_task_for_group(
-      'stonehearth:task_groups:herding',
-      'stonehearth_ace:feed_pasture_trough',
-      {pasture = self._entity})
-         :set_source(self._entity)
-         :start()
-   table.insert(self._added_pasture_tasks, feed_trough_task)
-end
+--    local feed_trough_task = town:create_task_for_group(
+--       'stonehearth:task_groups:herding',
+--       'stonehearth_ace:feed_pasture_trough',
+--       {pasture = self._entity})
+--          :set_source(self._entity)
+--          :start()
+--    table.insert(self._added_pasture_tasks, feed_trough_task)
+-- end
 
 function AceShepherdPastureComponent:_start_grass_spawn()
    -- if the timer already existed, rebind it

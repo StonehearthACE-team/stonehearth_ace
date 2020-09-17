@@ -99,7 +99,7 @@ function AceTerrainPatchComponent:_place_block(location)
    -- remove the collision region for this point
    local rcs = self._entity:get_component('region_collision_shape')
    if rcs then
-      local offset = location - self:_get_origin()
+      local offset = self:_world_to_local(location)
       local region = rcs:get_region()
       --log:debug('removing %s from region_collision_shape (%s: %s)', offset, region:get(), region:get():get_bounds())
       region:modify(function(cursor)
@@ -110,6 +110,16 @@ function AceTerrainPatchComponent:_place_block(location)
    end
 
    self:_ace_old__place_block(location)
+end
+
+function AceTerrainPatchComponent:_world_to_local(pt)
+   local mob = self._entity:add_component('mob')
+   local region_origin = mob:get_region_origin()
+   --local new_pt = (pt - mob:get_world_grid_location() - region_origin):rotated(-mob:get_facing()) + region_origin
+   local new_pt = (pt - mob:get_world_grid_location()):rotated(-mob:get_facing())
+
+   --log:debug('world_to_local for %s: %s => %s', entity, pt, new_pt)
+   return new_pt
 end
 
 function AceTerrainPatchComponent:_ensure_water_obstruction()

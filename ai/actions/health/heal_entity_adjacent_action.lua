@@ -13,10 +13,12 @@ HealEntityAdjacent.priority = 0
 function HealEntityAdjacent:run(ai, entity, args)
    local injured_entity = nil
    if args.container == entity then
-      if radiant.entities.has_buff(entity, 'stonehearth:buffs:injured') or
-         radiant.entities.has_buff(entity, 'stonehearth:buffs:severely_injured') then
-         injured_entity = entity
-      end
+      injured_entity = entity
+      -- this check is unnecessary because they won't pick this ai action unless they're at least injured or suffering a condition
+      -- if radiant.entities.has_buff(entity, 'stonehearth:buffs:injured') or
+      --    radiant.entities.has_buff(entity, 'stonehearth:buffs:severely_injured') then
+      --       injured_entity = entity
+      -- end
    else
       local container_user = args.container:get_component('stonehearth:mount'):get_user()
       if container_user and radiant.entities.has_buff(container_user, 'stonehearth:buffs:hidden:needs_medical_attention') and
