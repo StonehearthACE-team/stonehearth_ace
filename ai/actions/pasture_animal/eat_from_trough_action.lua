@@ -59,7 +59,7 @@ function EatTroughFeed:_rethink(trough)
    local troughs = trough and trough.trough and {trough.trough} or pasture_comp:get_fed_troughs()
 
    self._ai:set_debug_progress(string.format('hunger = %s; min to eat now = %s', hunger_score, min_hunger_to_eat))
-   if troughs and hunger_score >= min_hunger_to_eat then
+   if #troughs > 0 and hunger_score >= min_hunger_to_eat then
       self:_mark_ready(troughs)
    else
       self:_mark_unready()
