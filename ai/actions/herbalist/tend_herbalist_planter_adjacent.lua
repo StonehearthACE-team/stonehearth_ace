@@ -1,6 +1,6 @@
 local Entity = _radiant.om.Entity
 local rng = _radiant.math.get_default_rng()
-local all_crop_data = radiant.resources.load_json('stonehearth_ace:data:herbalist_planter_crops')
+local all_crop_data = radiant.resources.load_json('stonehearth_ace:data:herbalist_planter:crops')
 
 local TendHerbalistPlanterAdjacent = radiant.class()
 TendHerbalistPlanterAdjacent.name = 'tend herbalist planter adjacent'

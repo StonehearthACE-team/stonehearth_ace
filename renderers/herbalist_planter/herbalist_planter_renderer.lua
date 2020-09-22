@@ -5,7 +5,7 @@ local Region3 = _radiant.csg.Region3
 local HerbalistPlanterRenderer = class()
 local log = radiant.log.create_logger('herbalist_planter.renderer')
 
-local all_plant_data = radiant.resources.load_json('stonehearth_ace:data:herbalist_planter_crops')
+local all_plant_data = radiant.resources.load_json('stonehearth_ace:data:herbalist_planter:crops')
 
 function HerbalistPlanterRenderer:initialize(render_entity, datastore)
    self._entity = render_entity:get_entity()

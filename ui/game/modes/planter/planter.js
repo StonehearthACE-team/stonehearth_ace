@@ -177,16 +177,7 @@ App.AcePlanterTypePaletteView = App.View.extend({
 
       var cropDataArray = [];
 
-      var no_crop = self.planter_data.no_crop;
-      cropDataArray.push({
-         type: 'no_crop',
-         icon: no_crop.icon,
-         level: -1,
-         display_name: i18n.t(no_crop.display_name),
-         description: i18n.t(no_crop.description)
-      });
-
-      var allowed_crops = self.allowed_crops || self.planter_data.default_allowed_crops;
+      var allowed_crops = self.allowed_crops;
       radiant.each(self.planter_data.crops, function(key, data) {
          if (allowed_crops[key]) {
             var planterData = {
@@ -204,6 +195,18 @@ App.AcePlanterTypePaletteView = App.View.extend({
             cropDataArray.push(planterData);
          }
       });
+
+      // add no_crop only if it's not explicitly disallowed or there are no crops allowed for the planter
+      if (allowed_crops.no_crop !== false || cropDataArray.length < 1) {
+         var no_crop = self.planter_data.no_crop;
+         cropDataArray.push({
+            type: 'no_crop',
+            icon: no_crop.icon,
+            level: -1,
+            display_name: i18n.t(no_crop.display_name),
+            description: i18n.t(no_crop.description)
+         });
+      }
 
       cropDataArray.sort(self.available_seeds ? self._sortWithQuality : self._sortWithoutQuality);
       self.set('cropTypes', cropDataArray);

@@ -42,13 +42,9 @@
       "stonehearth_ace:herbalist_planter": {
          "scale_multiplier": 1,
          "num_products": 2,
-         "allowed_crops": {
-            "bolete": true,
-            "chanterelle": true,
-            "winter_morel": true,
-            "desert_truffle": true,
-            "sweet_tooth": true,
-            "parasol": true
+         "allowed_crops": "fungi",
+         "allowed_crops_mod": {
+            "no_crop": false
          },
          "plant_locations": [
             {

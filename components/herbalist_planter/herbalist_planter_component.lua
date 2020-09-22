@@ -17,7 +17,8 @@ local item_quality_lib = require 'stonehearth_ace.lib.item_quality.item_quality_
 local LootTable = require 'stonehearth.lib.loot_table.loot_table'
 
 local HerbalistPlanterComponent = class()
-local all_plant_data = radiant.resources.load_json('stonehearth_ace:data:herbalist_planter_crops')
+local all_plant_data = radiant.resources.load_json('stonehearth_ace:data:herbalist_planter:crops')
+local allowed_plants_data = radiant.resources.load_json('stonehearth_ace:data:herbalist_planter:allowed_crops')
 
 local PLANT_ACTION = 'stonehearth_ace:plant_herbalist_planter'
 local CLEAR_ACTION = 'stonehearth_ace:clear_herbalist_planter'
@@ -29,7 +30,18 @@ end
 function HerbalistPlanterComponent:create()
    self._is_create = true
    
-   self._sv.allowed_crops = self._json.allowed_crops or all_plant_data.default_allowed_crops
+   local allowed_crops = self._json.allowed_crops
+   if not radiant.util.is_table(allowed_crops) then
+      allowed_crops = radiant.shallow_copy(allowed_plants_data[allowed_crops] or allowed_plants_data.default)
+   end
+   
+   if self._json.allowed_crops_mod then
+      for crop, enabled in pairs(self._json.allowed_crops_mod) do
+         allowed_crops[crop] = enabled
+      end
+   end
+
+   self._sv.allowed_crops = allowed_crops
 
    if self._json.default_crop and self._sv.allowed_crops[self._json.default_crop] then
       self:set_current_crop(self._json.default_crop)
