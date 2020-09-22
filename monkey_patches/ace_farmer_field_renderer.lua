@@ -142,7 +142,7 @@ function AceFarmerFieldRenderer:_render_water_signal_region(data)
       self._water_signal_region_node = nil
    end
 
-   if not self._show_water_region or not self:_in_appropriate_mode() then
+   if not data or not self._show_water_region or not self:_in_appropriate_mode() then
       return
    end
 
