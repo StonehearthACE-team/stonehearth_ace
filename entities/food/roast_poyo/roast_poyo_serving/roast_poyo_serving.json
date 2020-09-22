@@ -1,4 +1,16 @@
 {
+	"components": {
+		"mixintypes": {
+			"model_variants": "override"
+		},
+		"model_variants": {
+         "default": {
+            "models": [
+               "file(roast_poyo_serving.qb)"
+            ]
+         }
+      }
+	},
    "entity_data": {
       "stonehearth:food": {
          "stonehearth:sitting_on_chair": {

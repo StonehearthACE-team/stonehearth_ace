@@ -19,64 +19,64 @@
       "saved_objects": {
          "building_templates": {
             "northern_alliance": {
-					"turf_stone_hut_t1_ace": {
-						"display_name": "⛺ Turf Hut"
-					},
-					"stone_hut_t2_ace": {
-						"display_name": " 🏘️ Stone Hut"
-					},
+               "turf_stone_hut_t1_ace": {
+                  "display_name": "⛺ Turf Hut"
+               },
+               "stone_hut_t2_ace": {
+                  "display_name": " 🏘️ Stone Hut"
+               },
                "turf_stone_cottage_t1_ace": {
-						"display_name": "⛺ Turf Cottage for Two"
-					},
-					"stone_cottage_t2_ace": {
-						"display_name": " 🏘️ Stone Cottage for Two"
-					},
+                  "display_name": "⛺ Turf Cottage for Two"
+               },
+               "stone_cottage_t2_ace": {
+                  "display_name": " 🏘️ Stone Cottage for Two"
+               },
                "stone_dining_hall_t1_ace": {
-						"display_name": "⛺ Turf Dining Hall"
-					},
-					"stone_dining_hall_t2_ace": {
-						"display_name": " 🏘️ Stone Dining Hall"
-					},
+                  "display_name": "⛺ Turf Dining Hall"
+               },
+               "stone_dining_hall_t2_ace": {
+                  "display_name": " 🏘️ Stone Dining Hall"
+               },
                "stone_sleeping_quarters_t1_ace": {
-						"display_name": "⛺ Turf Sleeping Quarters"
-					},
+                  "display_name": "⛺ Turf Sleeping Quarters"
+               },
                "stone_sleeping_quarters_t2_ace": {
-						"display_name": " 🏘️ Stone Sleeping Quarters"
-					},
-					"stone_cozy_home_for_two_t2_ace": {
-						"display_name": " 🏘️ Stone Homestead for Two"
-					},
-					"stone_cozy_cottage_for_four_t2_ace": {
-						"display_name": " 🏘️ Stone Homestead for Four"
-					},
+                  "display_name": " 🏘️ Stone Sleeping Quarters"
+               },
+               "stone_cozy_home_for_two_t2_ace": {
+                  "display_name": " 🏘️ Stone Homestead for Two"
+               },
+               "stone_cozy_cottage_for_four_t2_ace": {
+                  "display_name": " 🏘️ Stone Homestead for Four"
+               },
                "workshop_weaver_t1_ace": {
                   "display_name": "⛺ Weaver's Turf Hovel"
                },
-					"workshop_weaver_t2_ace": {
+               "workshop_weaver_t2_ace": {
                   "display_name": " 🏘️ Weaver's Workshop"
                },
                "workshop_carpenter_t1_ace": {
                   "display_name": "⛺ Carpenter's Turf Hovel"
                },
-					"workshop_carpenter_t2_ace": {
+               "workshop_carpenter_t2_ace": {
                   "display_name": " 🏘️ Carpenter's Workshop"
                },
                "workshop_cook_t1_ace": {
                   "display_name": "⛺ Cook's Turf Hovel"
                },
-					"workshop_cook_t2_ace": {
+               "workshop_cook_t2_ace": {
                   "display_name": " 🏘️ Cook's Kitchen"
                },
                "workshop_herbalist_t1_ace": {
                   "display_name": "⛺ Herbalist's Turf Hovel"
                },
-					"workshop_herbalist_t2_ace": {
+               "workshop_herbalist_t2_ace": {
                   "display_name": " 🏘️ Herbalist's Workshop"
                },
                "workshop_mason_t1_ace": {
                   "display_name": "⛺ Mason's Turf Hovel"
                },
-					"workshop_mason_t2_ace": {
+               "workshop_mason_t2_ace": {
                   "display_name": " 🏘️ Mason's Workshop"
                },
                "workshop_potter_t2_ace": {
@@ -4941,6 +4941,10 @@
                "recipe_name": "Window Planter with Violets",
                "description": "A decorative planter to be placed under window frames. Comes with Violets but a different herb can be chosen and planted by the Herbalist.",
                "flavor": "For when your window view is boring enough"
+            },
+            "stone_bench_recipe": {
+               "recipe_name": "Stone Wide Chair",
+               "description": "Perfect for sitting by the hearth at night or somewhere outside."
             }
          },
          "mason_workbench_bone": {
@@ -5419,6 +5423,7 @@
          "recipes": {
             "food_preparation_name": "Preparation",
             "brewing_name": "Brewing Ingredients",
+            "animal_feed_name": "Pet Kibble & Pasture Animal Feed",
             "cook_cheese_vat_recipe": {
                "recipe_name": "Cheese Vat",
                "description": "The Cook or Shepherd can use this to make cheese by crafting curdling mixtures. The longer it rests the more valuable it gets.",
@@ -5508,6 +5513,16 @@
                "recipe_name": "Slice of Roast Fish",
                "description": "A nutritious and flavorful meal.",
                "flavor": "Straight from the sea! Or lake. Or the nearby stream..."
+            },
+            "roast_duck_recipe": {
+               "recipe_name": "Roast Duck",
+               "description": "A delicious and plump bird grilled with quality.",
+               "flavor": ""
+            },
+            "fruity_duck_recipe": {
+               "recipe_name": "Fruity Mallard",
+               "description": "The meat of a whole duck flavored with mushrooms and braised in sweet sauce.",
+               "flavor": "Exquisite!"
             },
             "fish_stew_recipe": {
                "recipe_name": "Peculiar Fish Stew",
@@ -5691,6 +5706,10 @@
             "poyo_feed_recipe": {
                "recipe_name": "Poyo Feed (x3)",
                "description": "Nicely milled food for poyos. Improves the quality of animal produce."
+            },
+            "duck_feed_recipe": {
+               "recipe_name": "Duck Feed (x3)",
+               "description": "Grain and seeds for ducks. Improves the quality of animal produce."
             },
             "sheep_feed_recipe": {
                "recipe_name": "Sheep Feed (x3)",
@@ -7144,6 +7163,26 @@
          },
          "simple_water_well_ghost": {
             "description": "Will require some digging and hammering before it's working..."
+         },
+         "marble_door": {
+            "display_name": "Marble Door",
+            "description": "For when a stone door just wouldn't cut it."
+         },
+         "marble_double_door": {
+            "display_name": "Double Marble Door",
+            "description": "You must be really polite to go through such a polished door."
+         },
+         "marble_window": {
+            "display_name": "Marble Window",
+            "description": "Tiny squares, high value."
+         },
+         "marble_window_large": {
+            "display_name": "Large Marble Window",
+            "description": "The perfect center piece."
+         },
+         "marble_window_tall": {
+            "display_name": "Tall Marble Window",
+            "description": "Required for promoting a houseling into a Manor."
          }
       },
       "crops": {
@@ -7887,6 +7926,12 @@
             "glowshroom": {
                "display_name": "Basket of Glowshrooms",
                "description": "The contained essence retains their glow even after they've been picked."
+            }
+         },
+         "feathers": {
+            "duck_feathers": {
+               "display_name": "Duck Feathers",
+               "description": "Shiny and curly feathers from wild, aquatic fowl."
             }
          }
       },
@@ -8863,6 +8908,12 @@
          "stone_comfy_bed_herbalist": {
             "display_name": "Herbalist Stone Comfy Bed",
             "description": "A comfortable bed with a support table to provide the best treatments."
+         },
+         "stone_bench": {
+            "stone_bench_ghost": {
+               "display_name": "Stone Wide Chair",
+               "description": "Sit by the fire with plenty of room."
+            }
          }
       },
       "recipes": {
@@ -9803,7 +9854,7 @@
             },
             "mega_watermelon": {
                "display_name": "Mega Watermelon",
-               "description": "It's huge! Harvest, use it as a decoration or carve it open for the refreshing juice!"
+               "description": "It's huge! Harvest it for a special feed for ducks or carve it open for refreshing juice!"
             },
             "mega_watermelon_juice": {
                "display_name": "Mega Watermelon Juice",
@@ -10160,6 +10211,22 @@
          "beehive_dead": {
             "display_name": "Dead Bee Nest",
             "description": "There are no bees here anymore... Harvest if for what's left of the resources!"
+         },
+         "duck": {
+            "display_name": "Duck",
+            "description": "Quack! What a fowl surprise!",
+            "egg": {
+               "display_name": "Fertilized Duck Egg",
+               "description": "Are you sure it isn't a swan egg?"
+            },
+            "young": {
+               "display_name": "Duckling",
+               "description": "Aww, it's adorable!"
+            },
+            "nest": {
+               "display_name": "Duck Nest",
+               "description": "Duck eggs are very nutritious. Just saying."
+            }
          }
       },
       "food": {
@@ -11022,6 +11089,59 @@
          "vinegar": {
             "display_name": "Jug of Vinegar",
             "description": "Smells strong and tastes very acid. Useful for cooking and even for certain medicine."
+         },
+         "egg": {
+            "display_name": "Poyo Egg"
+         },
+         "duck_meat": {
+            "display_name": "Duck Meat",
+            "description": "It tastes like poyo, but more spicy and exotic."
+         },
+         "roast_duck": {
+            "roast_duck": {
+               "display_name": "Roast Duck",
+               "description": "Plump and succulent roasted meat."
+            },
+            "roast_duck_serving": {
+               "display_name": "Serving of Roast Duck"
+            }
+         },
+         "fruity_duck": {
+            "fruity_duck": {
+               "display_name": "Fruity Mallard",
+               "description": "An extremely refined and elaborate dish!"
+            },
+            "fruity_duck_serving": {
+               "display_name": "Serving of Fruity Mallard"
+            }
+         },
+         "duck_meat_rotten": {
+            "display_name": "Rotten Duck Meat",
+            "description": "Eww! It's sad to waste food..."
+         },
+         "egg_duck": {
+            "display_name": "Duck Egg",
+            "description": "A plumpy and tasty cooking ingredient."
+         },
+         "duck_feed": {
+            "duck_feed": {
+               "display_name": "Duck Feed",
+               "description": "For feeding cute ducks"
+            },
+            "duck_feed_ground": {
+               "display_name": "Duck Feed",
+               "description": "They go all quack over it!"
+            }
+         },
+         "megacrop_duck_feed": {
+            "megacrop_duck_feed": {
+               "display_name": "Mega Watermelon Feed",
+               "description": "Oh! Such a huge, sweet and juicy watermelon will be a treat for ducks!"
+            },
+            "megacrop_duck_feed_ground": {
+               "display_name": "Mega Watermelon Feed",
+               "description": "The ducks love it! This meal will last a good while!"
+            }
          }
       },
       "terrain": {
@@ -13938,7 +14058,9 @@
                "sheep_pasture_description": "Sheep produce wool and, seldom, some milk. Slaughtering sheep will produce raw mutton, jerky, and bone",
                "moomoo_pasture_description": "Moo-moos eat a lot but will produce nice amounts of milk. Slaughtering them yields pelts, steak, jerky and bone",
                "rabbit_pasture_description": "Rabbits reproduce quickly and can be slaughtered for jerky, pelts and sometimes bone",
-               "poyo_pasture_description": "Poyos lay eggs, a fine cooking ingredient. Slaughtering poyo will yield meat and, often, feathers and bone"
+               "poyo_pasture_description": "Poyos lay eggs, a fine cooking ingredient. Slaughtering poyo will yield meat and, often, feathers and bone",
+               "duck_pasture_description": "Ducks lay eggs, but require more space and time than poyos. Slaughtering duck will yield meat and, often, feathers and bone",
+               "duck_pasture_name": "Duck Badling"
             }
          },
          "herbalist_planter": {
@@ -14371,7 +14493,8 @@
             "herb_blue_bitter_resource_name": "Any Blue Bitter Herb",
             "herb_yellow_bitter_resource_name": "Any Yellow Bitter Herb",
             "herb_white_bitter_resource_name": "Any White Bitter Herb",
-            "herb_purple_bitter_resource_name": "Any Purple Bitter Herb"
+            "herb_purple_bitter_resource_name": "Any Purple Bitter Herb",
+            "egg_small_resource_name": "Any Small Egg"
          }
       }
    },

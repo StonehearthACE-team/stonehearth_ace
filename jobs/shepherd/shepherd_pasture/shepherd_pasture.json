@@ -1,13 +1,13 @@
 {
    "components": {
-		"mob": {
+      "mob": {
          "allow_vertical_adjacent": true
       },
       "stonehearth:shepherd_pasture": {
          "pasture_data": {
-				"mixintypes": {
-					"stonehearth:rabbit": "remove"
-				},
+            "mixintypes": {
+               "stonehearth:rabbit": "remove"
+            },
             "stonehearth_ace:ostrich": {
                "name": "i18n(stonehearth_ace:ui.game.zones_mode.pasture.ostrich_pasture_name)",
                "description": "i18n(stonehearth_ace:ui.game.zones_mode.pasture.ostrich_pasture_description)",
@@ -18,11 +18,11 @@
                "base_reproduction_period": "48h",
                "min_reproduction_period": "24h",
                "feed_uri": "stonehearth_ace:food:ostrich_feed",
-					"feed_material": "ostrich_feed_bag",
+               "feed_material": "ostrich_feed_bag",
                "level_requirement": 5,
-               "ordinal": 5
+               "ordinal": 7
             },
-				"stonehearth_ace:moomoo": {
+            "stonehearth_ace:moomoo": {
                "name": "i18n(stonehearth_ace:ui.game.zones_mode.pasture.moomoo_pasture_name)",
                "description": "i18n(stonehearth_ace:ui.game.zones_mode.pasture.moomoo_pasture_description)",
                "icon": "/stonehearth_ace/entities/critters/moomoo/moomoo.png",
@@ -32,16 +32,16 @@
                "base_reproduction_period": "72h",
                "min_reproduction_period": "36h",
                "feed_uri": "stonehearth_ace:food:moomoo_feed",
-					"feed_material": "moomoo_feed_bag",
-               "level_requirement": 4,              
-               "ordinal": 4
+               "feed_material": "moomoo_feed_bag",
+               "level_requirement": 4,
+               "ordinal": 5
             },
             "stonehearth_ace:rabbit:pasture": {
-					"name": "i18n(stonehearth:ui.game.zones_mode.pasture.rabbit_pasture_name)",
+               "name": "i18n(stonehearth:ui.game.zones_mode.pasture.rabbit_pasture_name)",
                "icon": "/stonehearth/entities/critters/rabbit/rabbit.png",
                "min_population": 2,
                "max_num_per_10_square_unit": 1,
-               "feed_uri": "stonehearth:food:rabbit_feed",					
+               "feed_uri": "stonehearth:food:rabbit_feed",
                "description": "i18n(stonehearth_ace:ui.game.zones_mode.pasture.rabbit_pasture_description)",
                "reproduction_uri": "stonehearth_ace:rabbit:young",
                "base_reproduction_period": "24h",
@@ -50,21 +50,35 @@
                "level_requirement": 1,
                "ordinal": 1
             },
+            "stonehearth_ace:duck": {
+               "name": "i18n(stonehearth_ace:ui.game.zones_mode.pasture.duck_pasture_name)",
+               "icon": "/stonehearth_ace/entities/critters/duck/duck.png",
+               "min_population": 2,
+               "max_num_per_10_square_unit": 0.64,
+               "feed_uri": "stonehearth_ace:food:duck_feed",
+               "description": "i18n(stonehearth_ace:ui.game.zones_mode.pasture.duck_pasture_description)",
+               "reproduction_uri": "stonehearth_ace:duck:egg",
+               "base_reproduction_period": "32h",
+               "min_reproduction_period": "16h",
+               "feed_material": "duck_feed_bag",
+               "level_requirement": 1,
+               "ordinal": 2
+            },
             "stonehearth:poyo": {
                "description": "i18n(stonehearth_ace:ui.game.zones_mode.pasture.poyo_pasture_description)",
                "base_reproduction_period": "36h",
                "min_reproduction_period": "18h",
                "level_requirement": 2,
                "feed_material": "poyo_feed_bag",
-               "ordinal": 2
+               "ordinal": 3
             },
             "stonehearth:sheep": {
                "description": "i18n(stonehearth_ace:ui.game.zones_mode.pasture.sheep_pasture_description)",
                "base_reproduction_period": "56h",
-               "min_reproduction_period": "24h",              
+               "min_reproduction_period": "24h",
                "level_requirement": 3,
-					"feed_material": "sheep_feed_bag",
-               "ordinal": 3
+               "feed_material": "sheep_feed_bag",
+               "ordinal": 4
             }
          }
       },

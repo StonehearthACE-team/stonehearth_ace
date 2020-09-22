@@ -1,0 +1,33 @@
+{
+   "type": "entity",
+   "mixins": [
+      "stonehearth:mixins:portals:double_door:ghost",
+      "stonehearth:mixins:placed_object"
+   ],
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(marble_double_door.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.construction.marble_double_door.display_name)",
+         "description": "i18n(stonehearth_ace:entities.construction.marble_double_door.description)",
+         "icon": "file(marble_double_door.png)",
+         "category": "door",
+         "material_tags": [
+            "stone",
+            "marble",
+            "double",
+            "portal",
+            "crafted",
+            "door",
+            "stockpile_portal"
+         ]
+      }
+   }
+}

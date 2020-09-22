@@ -1,0 +1,94 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth_ace:duck",
+   "player_id": "animals",
+   "components": {
+      "mixintypes": {
+         "stonehearth:renewable_resource_node": "remove",
+         "stonehearth:commands": "override",
+         "stonehearth:resource_node": "override"
+      },
+      "stonehearth:attributes": {
+         "mixintypes": {
+            "min_calories": "remove",
+            "max_calories": "remove",
+            "reproduction_rate_multiplier": "remove",
+            "renewable_resource_rate_multiplier": "remove",
+            "max_social_satisfaction": "remove"
+         },
+         "menace": {
+            "type": "basic",
+            "value": 0.001
+         }
+      },
+      "stonehearth:expendable_resources": {
+         "resources": {
+            "mixintypes": {
+               "calories": "remove",
+               "social_satisfaction": "remove"
+            }
+         }
+      },
+      "stonehearth:resource_node": {
+         "category": "harvest",
+         "harvest_overlay_effect": "stonehearth:effects:chop_overlay_effect",
+         "harvester_effect": "fiddle",
+         "description": "harvest_animal",
+         "harvestable_by_harvest_tool": false,
+         "check_owner": true
+      },
+      "stonehearth:loot_drops": {
+         "force_auto_loot": true,
+         "entries": {
+            "meat": {
+               "num_rolls": {
+                  "min": 1,
+                  "max": 1
+               },
+               "items": {
+                  "jerky": {
+                     "uri": "stonehearth_ace:food:duck_meat"
+                  }
+               }
+            },
+            "bones": {
+               "num_rolls": {
+                  "min": 0,
+                  "max": 1
+               },
+               "items": {
+                  "jerky": {
+                     "uri": "stonehearth_ace:resources:bone:bone_material"
+                  }
+               }
+            },
+            "wool": {
+               "num_rolls": {
+                  "min": 0,
+                  "max": 1
+               },
+               "items": {
+                  "pelt": {
+                     "uri": "stonehearth_ace:resources:feathers:duck_feathers"
+                  }
+               }
+            }
+         }
+      },
+      "stonehearth:commands": {
+         "commands": [
+            "stonehearth_ace:commands:slaughter:wild_animal"
+         ]
+      }
+   },
+   "entity_data": {
+      "mixintypes": {
+         "stonehearth:pasture_animal": "remove",
+         "stonehearth:calories": "remove",
+         "stonehearth:conversation_type": "remove"
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 0
+      }
+   }
+}

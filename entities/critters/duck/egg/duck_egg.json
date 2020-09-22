@@ -1,0 +1,33 @@
+{
+   "type": "entity",
+   "mixins": "file(duck_egg_ghost.json)",
+   "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(duck_egg_iconic.json)",
+         "ghost_form": "file(duck_egg_ghost.json)",
+         "placeable_on_ground": true,
+         "hide_undeploy_ui": true
+      },
+      "stonehearth:evolve": {}
+   },
+   "entity_data": {
+      "stonehearth:evolve_data": {
+         "current_stage": "egg",
+         "next_stage": "stonehearth_ace:duck:young",
+         "evolve_time": "16h",
+         "evolve_effect": "stonehearth:effects:fursplosion_effect"
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 2,
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.critters.duck.egg.display_name)",
+         "description": "i18n(stonehearth_ace:entities.critters.duck.egg.description)",
+         "category": "uncategorized"
+      }
+   }
+}

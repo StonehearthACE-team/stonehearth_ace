@@ -1,0 +1,39 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(roast_duck_serving.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:item": {
+         "category": "food",
+         "destroy_on_uncarry": true
+      },
+      "stonehearth:food": {
+         "stonehearth:sitting_on_chair": {
+            "satisfaction": 85
+         },
+         "default": {
+            "satisfaction": 65
+         },
+         "quality": 6
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.roast_duck.roast_duck_serving.display_name)",
+         "description": "",
+         "material_tags": [
+            "food",
+            "roast_duck_serving",
+            "meat",
+            "lunch_time"
+         ],
+         "subject_override": "stonehearth_ace:food:roast_duck"
+      }
+   }
+}

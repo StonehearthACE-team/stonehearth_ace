@@ -1,0 +1,33 @@
+{
+   "type": "entity",
+   "mixins": [
+      "file(marble_door_ghost.json)",
+      "stonehearth:mixins:portals:single_door",
+      "stonehearth:mixins:destructable_reinforced_door"
+   ],
+   "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(marble_door_iconic.json)",
+         "ghost_form": "file(marble_door_ghost.json)",
+         "hide_placement_ui": false
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 21,
+         "rarity": "uncommon",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 3,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 20
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

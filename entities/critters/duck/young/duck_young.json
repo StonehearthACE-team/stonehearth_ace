@@ -1,0 +1,157 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:mob",
+   "components": {
+      "stonehearth:ai": {},
+      "mob": {
+         "mob_collision_type": "tiny"
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(duck_young.qb)"
+            ]
+         }
+      },
+      "stonehearth:attributes": {
+         "max_health": {
+            "type": "basic",
+            "value": 10
+         },
+         "min_calories": {
+            "type": "basic",
+            "value": -25
+         },
+         "max_calories": {
+            "type": "basic",
+            "value": 25
+         },
+         "speed": {
+            "type": "basic",
+            "value": 14
+         },
+         "max_social_satisfaction": {
+            "type": "basic",
+            "value": 72
+         },
+         "min_sleepiness": {
+            "type": "basic",
+            "value": 0
+         },
+         "max_sleepiness": {
+            "type": "basic",
+            "value": 32
+         }
+      },
+      "stonehearth:expendable_resources": {
+         "resources": {
+            "calories": {
+               "min": {
+                  "linked_attribute": "min_calories"
+               },
+               "max": {
+                  "linked_attribute": "max_calories"
+               },
+               "initial_value": "max_value"
+            },
+            "social_satisfaction": {
+               "min": {
+                  "value": 0
+               },
+               "max": {
+                  "linked_attribute": "max_social_satisfaction"
+               },
+               "initial_value": {
+                  "type": "random_between",
+                  "min": 61,
+                  "max": "max_value"
+               }
+            },
+            "sleepiness": {
+               "min": {
+                  "linked_attribute": "min_sleepiness"
+               },
+               "max": {
+                  "linked_attribute": "max_sleepiness"
+               },
+               "initial_value": 0
+            }
+         }
+      },
+      "render_info": {
+         "animation_table": "/stonehearth_ace/data/rigs/entities/critters/duck_young",
+         "scale": 0.1
+      },
+      "stonehearth:trivial_death": {},
+      "stonehearth:evolve": {},
+      "stonehearth:unit_info": {}
+   },
+   "entity_data": {
+      "stonehearth:entity_radius": 0.4,
+      "stonehearth:species": {
+         "id": "duck_young",
+         "display_name": "duck"
+      },
+      "stonehearth:ai_packs": {
+         "packs": [
+            "stonehearth:ai_pack:critter",
+            "stonehearth:ai_pack:death",
+            "stonehearth:ai_pack:idle",
+            "stonehearth:ai_pack:idle:bored:idle_effects",
+            "stonehearth:ai_pack:idle:bored:wander"
+         ]
+      },
+      "stonehearth:idle_effects": {
+         "effects": [
+            {
+               "name": "idle_breathe",
+               "weight": 6
+            },
+            {
+               "name": "idle_look_around",
+               "weight": 3
+            },
+            {
+               "name": "idle_peck",
+               "weight": 6
+            }
+         ]
+      },
+      "stonehearth:evolve_data": {
+         "current_stage": "young",
+         "next_stage": "stonehearth_ace:duck",
+         "evolve_time": "2d+36h",
+         "evolve_effect": "stonehearth:effects:fursplosion_effect"
+      },
+      "stonehearth:pasture_animal": {
+         "added_equipment": [
+            "stonehearth:pasture_equipment:young_animal_collar"
+         ],
+         "food_material": "duck_feed_edible",
+         "type": "stonehearth_ace:duck",
+         "size": "small"
+      },
+      "stonehearth:calories": {
+         "hungry_threshold": 0,
+         "famished_threshold": 0,
+         "malnourished_threshold": -10,
+         "hourly_calorie_loss": 0.25,
+         "breakfast_hour": 6,
+         "dinner_hour": 19
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 3,
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:conversation_type": "animal",
+      "stonehearth:catalog": {
+         "player_id": "animals",
+         "display_name": "i18n(stonehearth_ace:entities.critters.duck.young.display_name)",
+         "description": "i18n(stonehearth_ace:entities.critters.duck.young.description)",
+         "icon": "file(duck_young.png)"
+      }
+   }
+}

@@ -10,9 +10,9 @@
                   "type": "one_of",
                   "items": [
                      "file(egg.qb)",
-					 "file(egg_1.qb)",
-					 "file(egg_2.qb)",
-					 "file(egg_3.qb)"
+							"file(egg_1.qb)",
+							"file(egg_2.qb)",
+							"file(egg_3.qb)"
                   ]
                }
             ]
@@ -29,8 +29,9 @@
          "value_in_gold": 3
       },
       "stonehearth:catalog": {
+			"display_name": "i18n(stonehearth_ace:entities.food.egg.display_name)",
          "icon": "file(egg.png)",
-			"material_tags": ["animal_ingredient", "small", "standard"]
+			"material_tags": ["animal_ingredient", "poyo", "small", "standard"]
       }
    }
 }

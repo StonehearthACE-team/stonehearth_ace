@@ -1,0 +1,30 @@
+{
+   "type" : "effect",
+   "tracks": {
+      "animation": {
+            "type": "animation_effect",
+            "start_time": 0,
+            "animation": "idle_look_around.json",
+            "loop": false
+      },
+      "sound": {
+         "type": "sound_effect",
+         "duration": 1000,
+         "start_time": 200,
+         "min_distance": 20,
+         "falloff" : 7,
+         "volume": 65,
+         "track" : {
+            "type": "one_of",
+            "items": [
+               "stonehearth_ace:sounds:duck_01",
+               "stonehearth_ace:sounds:duck_02",
+               "stonehearth_ace:sounds:duck_03",
+               "stonehearth_ace:sounds:duck_04",
+               "stonehearth_ace:sounds:duck_05",
+               "stonehearth_ace:sounds:duck_06"
+            ]    
+         }
+      }
+   }
+}

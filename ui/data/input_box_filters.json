@@ -770,6 +770,12 @@
                "icon": "/stonehearth_ace/entities/food/steak/steak.png",
                "filter": "cooking_ingredient steak"
             },
+            "duck_meat": {
+               "ordinal": 5.1,
+               "display_name": "i18n(stonehearth_ace:entities.food.duck_meat.display_name)",
+               "icon": "/stonehearth_ace/entities/food/duck_meat/duck_meat.png",
+               "filter": "cooking_ingredient duck_meat"
+            },
             "wheat": {
                "ordinal": 1.999
             },
@@ -820,10 +826,18 @@
             },
             "egg": {
                "ordinal": 2.4,
-               "filter": "cooking_ingredient egg standard"
+               "display_name": "i18n(stonehearth_ace:entities.food.egg.display_name)",
+               "icon": "/stonehearth_ace/entities/food/egg/egg.png",
+               "filter": "cooking_ingredient egg poyo"
+            },
+            "egg_duck": {
+               "ordinal": 2.41,
+               "display_name": "i18n(stonehearth_ace:entities.food.egg_duck.display_name)",
+               "icon": "/stonehearth_ace/entities/food/egg_duck/egg_duck.png",
+               "filter": "cooking_ingredient egg duck"
             },
             "egg_large": {
-               "ordinal": 2.41,
+               "ordinal": 2.45,
                "display_name": "i18n(stonehearth:entities.food.egg_large.display_name)",
                "icon": "/stonehearth/entities/food/egg_large/egg_large.png",
                "filter": "cooking_ingredient egg_large"

@@ -45,8 +45,10 @@
          "value_in_gold": 30,
          "rarity": "rare",
          "shop_info": {
-            "buyable": false,
-            "sellable": true
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 1,
+            "shopkeeper_type": "caravan"
          }
       },
       "stonehearth:catalog": {
@@ -55,7 +57,8 @@
          "icon": "file(mega_cactus_flower_helm.png)",
          "category": "armor",
          "material_tags": [
-            "cactus"
+            "cactus",
+            "rc_made"
          ]
       }
    }

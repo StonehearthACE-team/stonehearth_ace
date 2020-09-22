@@ -18,11 +18,26 @@
       "stonehearth:traveler_attraction": {},
       "stonehearth_ace:transform": {},
       "stonehearth:resource_node": {
-         "resource": "stonehearth:food:watermelon:watermelon_basket",
+         "resource": "stonehearth_ace:food:megacrop:duck_feed",
          "harvest_overlay_effect": "stonehearth:effects:harvest_plant_overlay_effect",
-         "harvester_effect": "fiddle",
+         "harvester_effect": "chop_block",
          "description": "harvest",
-         "durability": 3
+         "durability": 1,
+         "resource_loot_table": {
+            "entries": {
+               "optional": {
+                  "num_rolls": {
+                     "min": 1,
+                     "max": 1
+                  },
+                  "items": {
+                     "other_half": {
+                        "uri": "stonehearth_ace:food:megacrop:duck_feed"
+                     }
+                  }
+               }
+            }
+         }
       }
    },
    "entity_data": {

@@ -1,0 +1,39 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(fruity_duck_serving.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:item": {
+         "category": "food",
+         "destroy_on_uncarry": true
+      },
+      "stonehearth:food": {
+         "stonehearth:sitting_on_chair": {
+            "satisfaction": 110
+         },
+         "default": {
+            "satisfaction": 80
+         },
+         "quality": 6
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.fruity_duck.fruity_duck_serving.display_name)",
+         "description": "",
+         "material_tags": [
+            "food",
+            "fruity_duck_serving",
+            "meat",
+            "lunch_time"
+         ],
+         "subject_override": "stonehearth_ace:food:fruity_duck"
+      }
+   }
+}

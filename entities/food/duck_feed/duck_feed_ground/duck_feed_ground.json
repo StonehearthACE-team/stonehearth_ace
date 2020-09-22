@@ -1,0 +1,45 @@
+{
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(duck_feed_ground.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "mob_collision_type": "tiny"
+      },
+      "stonehearth:stacks": {
+         "max_stacks": 9
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.duck_feed.duck_feed_ground.display_name)",
+         "description": "i18n(stonehearth_ace:entities.food.duck_feed.duck_feed_ground.description)",
+         "icon": "file(../duck_feed/duck_feed.png)",
+         "material_tags": [
+            "animal_feed",
+            "duck_feed_edible",
+            "feed_on_ground"
+         ],
+         "subject_override": "stonehearth_ace:food:duck_feed"
+      },
+      "stonehearth:animal_feed": {
+         "calorie_gain": 30,
+         "effect_loops": 4,
+         "quality_chances": [
+            [
+               3,
+               0.001
+            ],
+            [
+               2,
+               0.01
+            ]
+         ]
+      }
+   }
+}

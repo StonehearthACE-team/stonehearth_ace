@@ -1,5 +1,15 @@
 {
    "components": {
+		"mixintypes": {
+			"model_variants": "override"
+		},
+		"model_variants": {
+         "default": {
+            "models": [
+               "file(roast_poyo.qb)"
+            ]
+         }
+      },
       "stonehearth:stacks": {
          "max_stacks": 2
       }
@@ -12,6 +22,7 @@
          "value_in_gold": 13
       },
 		"stonehearth:catalog": {
+			"icon": "file(roast_poyo.png)",
          "material_tags": [
             "lunch_time"
          ]

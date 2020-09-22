@@ -1,0 +1,29 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(duck_egg.qb)"
+            ]
+         }
+      },
+      "render_info": {
+         "scale": 0.11
+      },
+      "mob": {
+         "model_origin": { "x": -0.05, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "icon": "file(duck_egg.png)",
+         "category": "uncategorized",
+         "material_tags": [
+            "fertilized_egg",
+            "duck"
+         ]
+      }
+   }
+}

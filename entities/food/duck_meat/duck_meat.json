@@ -1,0 +1,65 @@
+{
+   "mixins": "stonehearth:mixins:food_decay",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(duck_meat.qb)"
+            ]
+         },
+         "decay_1": {
+            "models": [
+               "file(duck_meat_rotting.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": -0.05, "y": 0, "z": 0 }
+      },
+      "render_info": {
+         "scale": 0.08
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 4,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 2,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:food_decay": {
+         "initial_decay": {
+            "min": 400,
+            "max": 425
+         },
+         "decay_stages": {
+            "decay_1": {
+               "description": "i18n(stonehearth:stonehearth_mixins.food.food_decay.egg.decay_1.description)"
+            }
+         },
+         "rotten_entity_alias": "stonehearth_ace:food:rotten:duck_meat"
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.duck_meat.display_name)",
+         "description": "i18n(stonehearth_ace:entities.food.duck_meat.description)",
+         "icon": "file(duck_meat.png)",
+         "is_item": true,
+         "category": "cooking_ingredient",
+         "material_tags": [
+            "stockpile_cooking_ingredient",
+            "cooking_ingredient",
+            "meat",
+            "raw",
+            "duck_meat"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": 0
+      }
+   }
+}

@@ -125,28 +125,31 @@
             "nutty_poultry": {
                "recipe": "file(nutty_poultry_recipe.json)"
             },
-			"roast_steak": {
-			   "recipe": "file(roast_steak_recipe.json)"
-			},
-			"sushi": {
-			   "recipe": "file(sushi_recipe.json)"
-			},
-			"sushi_vegetarian": {
-			   "recipe": "file(sushi_vegetarian_recipe.json)"
-			},
-			"fish_pot_pie": {
-			   "recipe": "file(fish_pot_pie_recipe.json)"
-			},
-			"pasta": {
-			   "recipe": "file(pasta_recipe.json)"
-			},
-			"faction_fish_dish": {
-			   "recipe": "file(fisherman_soup_recipe.json)"
-			},
-			"melted_poyo": {
-               "recipe": "file(melted_poyo_recipe.json)"
-            },
-			"seared_meat_veggies": {
+				"roast_steak": {
+					"recipe": "file(roast_steak_recipe.json)"
+				},
+				"roast_duck": {
+					"recipe": "file(roast_duck_recipe.json)"
+				},
+				"sushi": {
+					"recipe": "file(sushi_recipe.json)"
+				},
+				"sushi_vegetarian": {
+					"recipe": "file(sushi_vegetarian_recipe.json)"
+				},
+				"fish_pot_pie": {
+					"recipe": "file(fish_pot_pie_recipe.json)"
+				},
+				"pasta": {
+					"recipe": "file(pasta_recipe.json)"
+				},
+				"faction_fish_dish": {
+					"recipe": "file(fisherman_soup_recipe.json)"
+				},
+				"melted_poyo": {
+					"recipe": "file(melted_poyo_recipe.json)"
+				},
+				"seared_meat_veggies": {
                "recipe": "file(seared_meat_veggies_recipe.json)"
             },
 				"nutty_meatballs": {
@@ -154,6 +157,9 @@
 				},
 				"glazed_pork_ribs": {
 					"recipe": "file(glazed_pork_ribs_recipe.json)"
+				},
+				"fruity_duck": {
+					"recipe": "file(fruity_duck_recipe.json)"
 				}
          }
       },
@@ -168,19 +174,19 @@
             "nut_pralines": {
                "recipe": "file(nut_pralines_recipe.json)"
             },
-			"sugar_loaf": {
+				"sugar_loaf": {
                "recipe": "file(sugar_loaf_recipe.json)"
             },
             "panettone": {
                "recipe": "file(panettone_recipe.json)"
             },
-			"fruit_yogurt": {
+				"fruit_yogurt": {
                "recipe": "file(fruit_yogurt_recipe.json)"
             },
-			"butter_cookies": {
+				"butter_cookies": {
                "recipe": "file(butter_cookies_recipe.json)"
             },
-			"cheesecake": {
+				"cheesecake": {
                "recipe": "file(cheesecake_recipe.json)"
             },
 				"nut_cake": {
@@ -195,23 +201,27 @@
          }
       },
 	   "animal_feed": {
+			"name": "i18n(stonehearth_ace:jobs.cook.recipes.animal_feed_name)",
          "recipes": {
             "fodder": {
                "recipe": "file(fodder_recipe.json)"
             },
+				"duck_feed": {
+               "recipe": "file(duck_feed_recipe.json)"
+            },
             "ostrich_feed": {
                "recipe": "file(ostrich_feed_recipe.json)"
             },
-			"moomoo_feed": {
+				"moomoo_feed": {
                "recipe": "file(moomoo_feed_recipe.json)"
             },
-			"kibble": {
+				"kibble": {
                "recipe": "file(kibble_recipe.json)"
             },
             "kibble_fish": {
                "recipe": "file(kibble_fish_recipe.json)"
             },
-			"kibble_veggie": {
+				"kibble_veggie": {
                "recipe": "file(kibble_veggie_recipe.json)"
             },
 				"hearth_fodder": {

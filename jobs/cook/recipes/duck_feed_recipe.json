@@ -1,0 +1,32 @@
+{
+   "type": "recipe",
+   "effort": 14,
+   "work_units": 1,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.duck_feed_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.duck_feed_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.duck_feed_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/duck_feed/duck_feed/duck_feed.png",
+   "workshop": "stonehearth:cook:mill",
+   "level_requirement": 4,
+   "ingredients": [
+      {
+         "material": "grain",
+         "count": 1
+      },
+	   {
+         "material": "seed_hard",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:duck_feed"
+      },
+		{
+         "item": "stonehearth_ace:food:duck_feed"
+      },
+		{
+         "item": "stonehearth_ace:food:duck_feed"
+      }
+   ]
+}
