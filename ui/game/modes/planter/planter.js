@@ -5,7 +5,8 @@ App.AceHerbalistPlanterView = App.StonehearthBaseZonesModeView.extend({
 
    components: {
       "stonehearth:storage" : {},
-      "stonehearth_ace:herbalist_planter" : {}
+      "stonehearth:expendable_resources": {},
+      "stonehearth_ace:herbalist_planter" : {},
    },
 
    init: function() {
@@ -57,6 +58,12 @@ App.AceHerbalistPlanterView = App.StonehearthBaseZonesModeView.extend({
 
       // tooltips
       App.guiHelper.addTooltip(self.$('#enableHarvest'), 'stonehearth_ace:ui.game.herbalist_planter.harvest_crop_description');
+
+      App.tooltipHelper.createDynamicTooltip(self.$('#produces'), function () {
+         var quality = self.get('tendQuality');
+         var tooltipString = quality ? i18n.t('stonehearth_ace:ui.game.herbalist_planter.quality.quality-' + quality) : '';
+         return $(App.tooltipHelper.createTooltip('', tooltipString));
+      });
 
       self._updateTooltip();
    },
@@ -128,6 +135,13 @@ App.AceHerbalistPlanterView = App.StonehearthBaseZonesModeView.extend({
       
       self.set('produces', produces + (produces && bonus_items ? ' (+)' : ''));
    }.observes('model.stonehearth:storage.num_items'),
+
+   _updateTendQuality: function() {
+      var self = this;
+      var tendQuality = Math.min(4, Math.floor(self.get('model.stonehearth:expendable_resources.resources.tend_quality')));
+      self.set('tendQuality', tendQuality);
+      self.set('tendQualityClass', 'quality' + tendQuality);
+   }.observes('model.stonehearth:expendable_resources.resources.tend_quality'),
 
    _harvestEnabledChanged: function() {
       var self = this;

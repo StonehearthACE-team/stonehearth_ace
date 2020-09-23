@@ -34,9 +34,10 @@
             </a>
          </div>
          {{/if}}
-         <div id="produces">
+         <div id="produces" {{bind-attr class="view.tendQualityClass"}}>
             <span class="producesTitle">{{i18n stonehearth_ace:ui.game.herbalist_planter.produces}}</span>
             <span>{{view.produces}}</span>
+            <div class="qualityDiv"></div>
          </div>
          <div id="enableHarvest" class="setting">
             <input id="enableHarvestCheckbox" type="checkbox" value="enableHarvest">

@@ -67,6 +67,7 @@
    }
 
    #produces {
+      //position:relative;
       font-family: @controlFontFamily;
       font-size: 18px;
       margin: 10px 0px 5px;
@@ -74,6 +75,11 @@
       .producesTitle {
          color: #459236;
          margin-right: 10px;
+      }
+
+      .qualityDiv {
+         display: inline-block;
+         position: inherit;
       }
    }
 
@@ -83,6 +89,37 @@
 
    .hidden {
       display: none;
+   }
+}
+
+.qualityDiv {
+   display: none;
+   position: absolute;
+   top: 4px;
+   right: 4px;
+   height: 16px;
+   width: 16px;
+   background-size: contain;
+}
+
+&.quality2 {
+   .qualityDiv {
+      display: block;
+      background-image: url('/stonehearth/ui/common/images/quality_fine.png');
+   }
+}
+
+&.quality3 {
+   .qualityDiv {
+      display: block;
+      background-image: url('/stonehearth/ui/common/images/quality_excellent.png');
+   }
+}
+
+&.quality4 {
+   .qualityDiv {
+      display: block;
+      background-image: url('/stonehearth/ui/common/images/quality_masterwork.png');
    }
 }
 
@@ -101,40 +138,9 @@
 
       tr {
          .button;
-
-         .qualityDiv {
-            display: none;
-            position: absolute;
-            top: 4px;
-            right: 4px;
-            height: 16px;
-            width: 16px;
-            background-size: contain;
-         }
-
+         
          &.quality0 {
             opacity: 0.5;
-         }
-
-         &.quality2 {
-            .qualityDiv {
-               display: block;
-               background-image: url('/stonehearth/ui/common/images/quality_fine.png');
-            }
-         }
-
-         &.quality3 {
-            .qualityDiv {
-               display: block;
-               background-image: url('/stonehearth/ui/common/images/quality_excellent.png');
-            }
-         }
-
-         &.quality4 {
-            .qualityDiv {
-               display: block;
-               background-image: url('/stonehearth/ui/common/images/quality_masterwork.png');
-            }
          }
       }
 
