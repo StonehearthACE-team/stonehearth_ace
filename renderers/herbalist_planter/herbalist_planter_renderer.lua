@@ -19,6 +19,10 @@ function HerbalistPlanterRenderer:initialize(render_entity, datastore)
    local planter_data = radiant.entities.get_component_data(self._entity, 'stonehearth_ace:herbalist_planter')
    self._plant_locations = planter_data.plant_locations or {}
    self._scale_multiplier = planter_data.scale_multiplier or 1
+   self._matrix_name = planter_data.planter_matrix or 'planter'
+
+   -- The advantage of using skeleton bone nodes is nodes being their children follow parents if they are animated.
+   self._planter_node = render_entity:get_skeleton():get_bone_node(self._matrix_name)
 
    self._datastore_trace = self._datastore:trace('drawing planter')
                                           :on_changed(function ()
@@ -86,7 +90,7 @@ function HerbalistPlanterRenderer:_create_node(location, scale, node_data)
    local offset = Point3(node_data.offset.x or 0, node_data.offset.y or 0, node_data.offset.z or 0)
    local matrix = node_data.matrix or 'crop'
 
-   local node = _radiant.client.create_qubicle_matrix_node(self._entity_node, model, matrix, offset)
+   local node = _radiant.client.create_qubicle_matrix_node(self._planter_node, model, matrix, offset)
 
    if node then
       local position = Point3(-location.offset.x or 0, location.offset.y or 0, -location.offset.z or 0)
