@@ -6339,7 +6339,9 @@
          "farmer_description": {
             "level_2_data": {
                "perk_000_name": "Bountiful Harvest",
-               "perk_000_description": "The farmer coaxes up to 25% greater yield from each plant."
+               "perk_000_description": "The farmer coaxes up to 25% greater yield from each plant.",
+               "perk_001_name": "Flower Power",
+               "perk_001_description": "The farmer can plant flowers to make a lovely garden! (They can grow decorative flowers.)"
             },
             "level_3_data": {
                "perk_000_name": "Fertilizer",
@@ -7193,7 +7195,7 @@
       "crops": {
          "moonbell_crop": {
             "display_name": "Moonbell Flower",
-            "description": "Can be used as a healing herb",
+            "description": "If grown by a Herbalist can be used as a blue aromatic herb",
             "growth_stage": {
                "000": {
                   "name": "Moonbell Seedling",
@@ -7274,7 +7276,7 @@
          },
          "violet_crop": {
             "display_name": "Violet Flower",
-            "description": "Can be used as a healing herb",
+            "description": "If grown by a Herbalist can be used as a purple aromatic herb",
             "growth_stage": {
                "000": {
                   "name": "Violet Seedlings",
@@ -7290,13 +7292,13 @@
                },
                "003": {
                   "name": "Violets",
-                  "description": "Can be harvested for healing herbs"
+                  "description": "If grown by a Herbalist can be harvested for purple aromatic herbs"
                }
             }
          },
          "snow_poppy_crop": {
             "display_name": "Snow Poppy Flower",
-            "description": "Can be used as a healing herb",
+            "description": "If grown by a Herbalist can be used as a red aromatic herb",
             "growth_stage": {
                "000": {
                   "name": "Snow Poppy Seedlings",
@@ -7312,7 +7314,7 @@
                },
                "003": {
                   "name": "Snow Poppies",
-                  "description": "Can be harvested for healing herbs"
+                  "description": "If grown by a Herbalist can be harvested for red aromatic herbs"
                }
             }
          },
@@ -7460,7 +7462,7 @@
          },
          "poppy_crop": {
             "display_name": "Poppy Flower",
-            "description": "Can be used as a healing herb",
+            "description": "If grown by a Herbalist can be used as a red bitter herb",
             "growth_stage": {
                "000": {
                   "description": "Still growing!",
@@ -7476,7 +7478,95 @@
                },
                "003": {
                   "name": "Poppies",
-                  "description": "Can be harvested for healing herbs."
+                  "description": "If grown by a Herbalist can be harvested for red bitter herbs."
+               }
+            }
+         },
+         "rose_crop": {
+            "display_name": "Rose Flower",
+            "description": "If grown by a Herbalist can be used as a healing herb",
+            "growth_stage": {
+               "000": {
+                  "description": "Still growing!",
+                  "name": "Rose Seedlings"
+               },
+               "001": {
+                  "name": "Rose Sprouts",
+                  "description": "Just need some time and care."
+               },
+               "002": {
+                  "name": "Rose Buds",
+                  "description": "It's almost there!  Look, it has buds!"
+               },
+               "003": {
+                  "name": "Roses",
+                  "description": "If grown by a Herbalist can be harvested for healing herbs."
+               }
+            }
+         },
+         "oleander_crop": {
+            "display_name": "Oleander Flower",
+            "description": "If grown by a Herbalist can be used as a red bitter herb",
+            "growth_stage": {
+               "000": {
+                  "description": "Still growing!",
+                  "name": "Oleander Seedlings"
+               },
+               "001": {
+                  "name": "Oleander Sprouts",
+                  "description": "Just need some time and care."
+               },
+               "002": {
+                  "name": "Oleander Buds",
+                  "description": "It's almost there!  Look, it has buds!"
+               },
+               "003": {
+                  "name": "Oleanders",
+                  "description": "If grown by a Herbalist can be harvested for red bitter herbs."
+               }
+            }
+         },
+         "daylily_crop": {
+            "display_name": "Daylily Flower",
+            "description": "If grown by a Herbalist can be used as a yellow aromatic herb",
+            "growth_stage": {
+               "000": {
+                  "description": "Still growing!",
+                  "name": "Daylily Seedlings"
+               },
+               "001": {
+                  "name": "Daylily Sprouts",
+                  "description": "Just need some time and care."
+               },
+               "002": {
+                  "name": "Daylily Buds",
+                  "description": "It's almost there!  Look, it has buds!"
+               },
+               "003": {
+                  "name": "Daylilies",
+                  "description": "If grown by a Herbalist can be harvested for yellow aromatic herbs."
+               }
+            }
+         },
+         "nightshade_crop": {
+            "display_name": "Nightshade Flower",
+            "description": "If grown by a Herbalist can be used as a purple bitter herb",
+            "growth_stage": {
+               "000": {
+                  "description": "Still growing!",
+                  "name": "Nightshade Seedlings"
+               },
+               "001": {
+                  "name": "Nightshade Sprouts",
+                  "description": "Just need some time and care."
+               },
+               "002": {
+                  "name": "Nightshade Buds",
+                  "description": "It's almost there!  Look, it has buds!"
+               },
+               "003": {
+                  "name": "Nightshades",
+                  "description": "If grown by a Herbalist can be harvested for purple bitter herbs."
                }
             }
          }

@@ -1,0 +1,112 @@
+{
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "/stonehearth_ace/entities/plants/daylily_plant/sprout/daylily_plant_sprout.qb"
+            ]
+         },
+         "daylily_1": {
+            "models": [
+               "/stonehearth_ace/entities/plants/daylily_plant/sprout/daylily_plant_sprout.qb"
+            ]
+         },
+         "daylily_2": {
+            "models": [
+               "/stonehearth_ace/entities/plants/daylily_plant/stem/daylily_plant_stem.qb"
+            ]
+         },
+         "daylily_3": {
+            "models": [
+               "/stonehearth_ace/entities/plants/daylily_plant/bud/daylily_plant_bud.qb"
+            ]
+         },
+         "daylily_4": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "/stonehearth_ace/entities/plants/daylily_plant/daylily_plant.qb",
+                     "/stonehearth_ace/entities/plants/daylily_plant/daylily_plant_2.qb"
+                  ]
+               }
+            ]
+         }
+      },
+      "render_info": {
+         "scale": 0.13
+      },
+      "mob": {
+         "model_origin": { "x": -0.13, "y": -0.1, "z": 0.13 },
+         "mob_collision_type": "clutter"
+      },
+      "stonehearth:crop": {
+         "resource_pairings": {
+            "snow_daylily_4": "stonehearth_ace:resources:herb:daylily"
+         },
+         "harvest_threshhold": "daylily_4",
+         "plant_overlay_effect": "stonehearth:effects:plant_crop_overlay_effect"
+      },
+      "stonehearth:growing": {
+         "growth_period": "32h",
+         "preferred_seasons": {
+            "stonehearth:biome:temperate": [
+               "summer",
+               "autumn"
+            ],
+            "stonehearth:biome:desert": [
+               "spring"
+            ],
+            "stonehearth:biome:arctic": [
+               "summer"
+            ]
+         },
+         "preferred_climate": "temperate_staple",
+         "growth_stages": [
+            {
+               "model_name": "daylily_1",
+               "name": "i18n(stonehearth_ace:entities.crops.daylily_crop.growth_stage.000.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.daylily_crop.growth_stage.000.description)"
+            },
+            {
+               "model_name": "daylily_2",
+               "name": "i18n(stonehearth_ace:entities.crops.daylily_crop.growth_stage.001.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.daylily_crop.growth_stage.001.description)"
+            },
+            {
+               "model_name": "daylily_3",
+               "name": "i18n(stonehearth_ace:entities.crops.daylily_crop.growth_stage.002.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.daylily_crop.growth_stage.002.description)"
+            },
+            {
+               "model_name": "daylily_4",
+               "name": "i18n(stonehearth_ace:entities.crops.daylily_crop.growth_stage.003.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.daylily_crop.growth_stage.003.description)"
+            }
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 1,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.crops.daylily_crop.display_name)",
+         "description": "i18n(stonehearth_ace:entities.crops.daylily_crop.description)",
+         "icon": "/stonehearth_ace/entities/plants/daylily_plant/daylily_plant.png",
+         "material_tags": [
+            "crop",
+            "daylily"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": 1
+      }
+   }
+}
