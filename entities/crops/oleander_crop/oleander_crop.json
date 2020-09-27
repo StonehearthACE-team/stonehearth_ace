@@ -1,0 +1,112 @@
+{
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "/stonehearth_ace/entities/plants/oleander_plant/sprout/oleander_plant_sprout.qb"
+            ]
+         },
+         "oleander_1": {
+            "models": [
+               "/stonehearth_ace/entities/plants/oleander_plant/sprout/oleander_plant_sprout.qb"
+            ]
+         },
+         "oleander_2": {
+            "models": [
+               "/stonehearth_ace/entities/plants/oleander_plant/stem/oleander_plant_stem.qb"
+            ]
+         },
+         "oleander_3": {
+            "models": [
+               "/stonehearth_ace/entities/plants/oleander_plant/bud/oleander_plant_bud.qb"
+            ]
+         },
+         "oleander_4": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "/stonehearth_ace/entities/plants/oleander_plant/oleander_plant.qb",
+                     "/stonehearth_ace/entities/plants/oleander_plant/oleander_plant_2.qb"
+                  ]
+               }
+            ]
+         }
+      },
+      "render_info": {
+         "scale": 0.13
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": -0.1, "z": -0.065 },
+         "mob_collision_type": "clutter"
+      },
+      "stonehearth:crop": {
+         "resource_pairings": {
+            "snow_oleander_4": "stonehearth_ace:resources:herb:oleander"
+         },
+         "harvest_threshhold": "oleander_4",
+         "plant_overlay_effect": "stonehearth:effects:plant_crop_overlay_effect"
+      },
+      "stonehearth:growing": {
+         "growth_period": "32h",
+         "preferred_seasons": {
+            "stonehearth:biome:temperate": [
+               "summer"
+            ],
+            "stonehearth:biome:desert": [
+               "spring",
+               "autumn"
+            ],
+            "stonehearth:biome:arctic": [
+               "summer"
+            ]
+         },
+         "preferred_climate": "desert_staple",
+         "growth_stages": [
+            {
+               "model_name": "oleander_1",
+               "name": "i18n(stonehearth_ace:entities.crops.oleander_crop.growth_stage.000.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.oleander_crop.growth_stage.000.description)"
+            },
+            {
+               "model_name": "oleander_2",
+               "name": "i18n(stonehearth_ace:entities.crops.oleander_crop.growth_stage.001.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.oleander_crop.growth_stage.001.description)"
+            },
+            {
+               "model_name": "oleander_3",
+               "name": "i18n(stonehearth_ace:entities.crops.oleander_crop.growth_stage.002.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.oleander_crop.growth_stage.002.description)"
+            },
+            {
+               "model_name": "oleander_4",
+               "name": "i18n(stonehearth_ace:entities.crops.oleander_crop.growth_stage.003.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.oleander_crop.growth_stage.003.description)"
+            }
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 1,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.crops.oleander_crop.display_name)",
+         "description": "i18n(stonehearth_ace:entities.crops.oleander_crop.description)",
+         "icon": "/stonehearth_ace/entities/plants/oleander_plant/oleander_plant.png",
+         "material_tags": [
+            "crop",
+            "oleander"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": 1
+      }
+   }
+}

@@ -1,0 +1,20 @@
+{
+   "effort": 15,
+   "recipe_name": "i18n(stonehearth_ace:jobs.mason.recipes.window_box_snow_poppy_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.mason.recipes.window_box_snow_poppy_recipe.description)",
+	"flavor": "i18n(stonehearth_ace:jobs.mason.recipes.window_box_snow_poppy_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/decoration/window_box_stone_snow_poppy/window_box_stone_snow_poppy.png",
+	"mixintypes": {
+		"ingredients": "override"
+	},
+   "ingredients": [
+      {
+         "material": "stone resource",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth:plants:snow_poppy:seed",
+         "count": 2
+      }
+   ]
+}
