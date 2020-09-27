@@ -458,7 +458,9 @@ function AceFarmerFieldComponent:try_harvest_crop(harvester, x, z, num_stacks, a
             local iconic = true
             if auto_harvest_type == 'place' then
                -- if it's an iconic, make sure we get the actual root entity
-               primary_item = entity_forms_lib.get_root_entity(primary_item)
+               if primary_item:get_component("stonehearth:entity_forms") then
+                  primary_item = entity_forms_lib.get_root_entity(primary_item)
+               end
                primary_item:add_component('stonehearth:crop'):set_field(self, x, z)
                primary_item:add_component('stonehearth_ace:output'):set_parent_output(self._entity)
                dirt_plot.post_harvest_contents = primary_item

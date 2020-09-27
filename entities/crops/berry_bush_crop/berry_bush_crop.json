@@ -9,14 +9,12 @@
          },
          "berry_bush_1": {
             "models": [
-               "/stonehearth/entities/plants/dirt_pile/dirt_pile_1.qb",
-               "/stonehearth/entities/plants/dirt_pile/dirt_pile_2.qb",
-               "/stonehearth/entities/plants/dirt_pile/dirt_pile_3.qb"
+               "file(berry_bush_1.qb)"
             ]
          },
          "berry_bush_2": {
             "models": [
-               "/stonehearth/entities/plants/berry_bush/sprout/berry_bush_sprout.qb"
+               "file(berry_bush_2.qb)"
             ]
          },
          "berry_bush_3": {
@@ -31,15 +29,15 @@
          }
       },
       "render_info": {
-         "scale": 0.1
+         "scale": 0.11
       },
       "mob": {
-         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "model_origin": { "x": -0.055, "y": -0.1, "z": 0.055 },
          "mob_collision_type": "clutter"
       },
       "stonehearth:crop": {
          "resource_pairings": {
-            "default": "stonehearth:plants:berry_bush"
+            "default": "stonehearth_ace:crops:berry_bush_crop:final"
          },
          "harvest_threshhold": "default",
          "plant_overlay_effect": "stonehearth:effects:plant_crop_overlay_effect",
@@ -52,28 +50,28 @@
          "growth_stages": [
             {
                "model_name": "berry_bush_1",
-               "name": "Yew Seed",
-               "description": "Even a large tree has humble beginnings."
+               "name": "i18n(stonehearth_ace:entities.crops.berry_bush_crop.growth_stage.000.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.berry_bush_crop.growth_stage.000.description)"
             },
             {
                "model_name": "berry_bush_2",
-               "name": "Yew Seedling",
-               "description": "It's just getting started."
+               "name": "i18n(stonehearth_ace:entities.crops.berry_bush_crop.growth_stage.001.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.berry_bush_crop.growth_stage.001.description)"
             },
             {
                "model_name": "berry_bush_3",
-               "name": "Yew Sprout",
-               "description": "Getting closer and closer..."
+               "name": "i18n(stonehearth_ace:entities.crops.berry_bush_crop.growth_stage.002.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.berry_bush_crop.growth_stage.002.description)"
             },
             {
                "model_name": "berry_bush_4",
-               "name": "Yew Sapling",
-               "description": "Ready to be transferred to a bigger plot."
+               "name": "i18n(stonehearth_ace:entities.crops.berry_bush_crop.growth_stage.003.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.berry_bush_crop.growth_stage.003.description)"
             },
             {
                "model_name": "default",
-               "name": "Yew Sapling",
-               "description": "Ready to be transferred to a bigger plot."
+               "name": "i18n(stonehearth_ace:entities.crops.berry_bush_crop.growth_stage.003.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.berry_bush_crop.growth_stage.003.description)"
             }
          ]
       }
@@ -88,12 +86,12 @@
          }
       },
       "stonehearth:catalog": {
-         "display_name": "Yew Tree Sapling",
-         "description": "Need more Yew wood? Prepare your plots for reforestation!",
-         "icon": "file(berry_bush_crop.png)",
+         "display_name": "i18n(stonehearth_ace:entities.crops.berry_bush_crop.display_name)",
+         "description": "i18n(stonehearth_ace:entities.crops.berry_bush_crop.description)",
+         "icon": "/stonehearth/entities/plants/berry_bush/berry_bush.png",
          "material_tags": [
             "crop",
-            "yew_tree_sapling"
+            "berry_bush_sapling"
          ]
       },
       "stonehearth:appeal": {

@@ -47,9 +47,9 @@
                   }
                ]
             },
-            "tree": {
+            "flower": {
                "tilled_dirt": {
-                  "model": "file(/entities/farming/dirt/plantable_dirt.qb)",
+                  "model": "file(/entities/farming/dirt/flower/plantable_dirt.qb)",
                   "offset": { "x": 5, "y": 0, "z": 5 }
                },
                "furrow_dirt": {
@@ -57,7 +57,7 @@
                   "offset": { "x": 5, "y": 0, "z": 5 }
                },
                "tilled_dirt_water_partial": {
-                  "model": "file(/entities/farming/dirt/plantable_dirt_water_partial.qb)",
+                  "model": "file(/entities/farming/dirt/flower/plantable_dirt_water_partial.qb)",
                   "offset": { "x": 5, "y": 0, "z": 5 }
                },
                "furrow_dirt_water_partial": {
@@ -65,7 +65,95 @@
                   "offset": { "x": 5, "y": 0, "z": 5 }
                },
                "tilled_dirt_water_full": {
-                  "model": "file(/entities/farming/dirt/plantable_dirt_water_full.qb)",
+                  "model": "file(/entities/farming/dirt/flower/plantable_dirt_water_full.qb)",
+                  "offset": { "x": 5, "y": 0, "z": 5 }
+               },
+               "furrow_dirt_water_full": {
+                  "model": "file(/entities/farming/dirt/furrow_dirt_water_full.qb)",
+                  "offset": { "x": 5, "y": 0, "z": 5 }
+               },
+               "overwatered_dirt": [
+                  {
+                     "model": "file(/entities/farming/dirt/furrow_dirt_overwatered.qb)",
+                     "offset": { "x": 5, "y": 0, "z": 5 }
+                  },
+                  {
+                     "model": "file(/entities/farming/dirt/furrow_dirt_overwatered_2.qb)",
+                     "offset": { "x": 5, "y": 0, "z": 5 }
+                  },
+                  {
+                     "model": "file(/entities/farming/dirt/furrow_dirt_overwatered_3.qb)",
+                     "offset": { "x": 5, "y": 0, "z": 5 }
+                  },
+                  {
+                     "model": "file(/entities/farming/dirt/furrow_dirt_overwatered_4.qb)",
+                     "offset": { "x": 5, "y": 0, "z": 5 }
+                  }
+               ]
+            },
+            "bush": {
+               "tilled_dirt": {
+                  "model": "file(/entities/farming/dirt/bush/plantable_dirt.qb)",
+                  "offset": { "x": 5, "y": 0, "z": 5 }
+               },
+               "furrow_dirt": {
+                  "model": "file(/entities/farming/dirt/furrow_dirt.qb)",
+                  "offset": { "x": 5, "y": 0, "z": 5 }
+               },
+               "tilled_dirt_water_partial": {
+                  "model": "file(/entities/farming/dirt/bush/plantable_dirt_water_partial.qb)",
+                  "offset": { "x": 5, "y": 0, "z": 5 }
+               },
+               "furrow_dirt_water_partial": {
+                  "model": "file(/entities/farming/dirt/furrow_dirt_water_partial.qb)",
+                  "offset": { "x": 5, "y": 0, "z": 5 }
+               },
+               "tilled_dirt_water_full": {
+                  "model": "file(/entities/farming/dirt/bush/plantable_dirt_water_full.qb)",
+                  "offset": { "x": 5, "y": 0, "z": 5 }
+               },
+               "furrow_dirt_water_full": {
+                  "model": "file(/entities/farming/dirt/furrow_dirt_water_full.qb)",
+                  "offset": { "x": 5, "y": 0, "z": 5 }
+               },
+               "overwatered_dirt": [
+                  {
+                     "model": "file(/entities/farming/dirt/furrow_dirt_overwatered.qb)",
+                     "offset": { "x": 5, "y": 0, "z": 5 }
+                  },
+                  {
+                     "model": "file(/entities/farming/dirt/furrow_dirt_overwatered_2.qb)",
+                     "offset": { "x": 5, "y": 0, "z": 5 }
+                  },
+                  {
+                     "model": "file(/entities/farming/dirt/furrow_dirt_overwatered_3.qb)",
+                     "offset": { "x": 5, "y": 0, "z": 5 }
+                  },
+                  {
+                     "model": "file(/entities/farming/dirt/furrow_dirt_overwatered_4.qb)",
+                     "offset": { "x": 5, "y": 0, "z": 5 }
+                  }
+               ]
+            },
+            "tree": {
+               "tilled_dirt": {
+                  "model": "file(/entities/farming/dirt/tree/plantable_dirt.qb)",
+                  "offset": { "x": 5, "y": 0, "z": 5 }
+               },
+               "furrow_dirt": {
+                  "model": "file(/entities/farming/dirt/furrow_dirt.qb)",
+                  "offset": { "x": 5, "y": 0, "z": 5 }
+               },
+               "tilled_dirt_water_partial": {
+                  "model": "file(/entities/farming/dirt/tree/plantable_dirt_water_partial.qb)",
+                  "offset": { "x": 5, "y": 0, "z": 5 }
+               },
+               "furrow_dirt_water_partial": {
+                  "model": "file(/entities/farming/dirt/furrow_dirt_water_partial.qb)",
+                  "offset": { "x": 5, "y": 0, "z": 5 }
+               },
+               "tilled_dirt_water_full": {
+                  "model": "file(/entities/farming/dirt/tree/plantable_dirt_water_full.qb)",
                   "offset": { "x": 5, "y": 0, "z": 5 }
                },
                "furrow_dirt_water_full": {

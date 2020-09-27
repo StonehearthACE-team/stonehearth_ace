@@ -1,0 +1,101 @@
+{
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "/stonehearth_ace/entities/plants/cherry_bush/cherry_bush.qb"
+            ]
+         },
+         "cherry_bush_1": {
+            "models": [
+               "file(cherry_bush_1.qb)"
+            ]
+         },
+         "cherry_bush_2": {
+            "models": [
+               "file(cherry_bush_2.qb)"
+            ]
+         },
+         "cherry_bush_3": {
+            "models": [
+               "/stonehearth_ace/entities/plants/cherry_bush/stem/cherry_bush_stem.qb"
+            ]
+         },
+         "cherry_bush_4": {
+            "models": [
+               "/stonehearth_ace/entities/plants/cherry_bush/bud/cherry_bush_bud.qb"
+            ]
+         }
+      },
+      "render_info": {
+         "scale": 0.1
+      },
+      "mob": {
+         "model_origin": { "x": -0.05, "y": -0.1, "z": 0.05 },
+         "mob_collision_type": "clutter"
+      },
+      "stonehearth:crop": {
+         "resource_pairings": {
+            "default": "stonehearth_ace:crops:cherry_bush_crop:final"
+         },
+         "harvest_threshhold": "default",
+         "plant_overlay_effect": "stonehearth:effects:plant_crop_overlay_effect",
+         "megacrop_chance": 0,
+         "auto_harvest": "place"
+      },
+      "stonehearth:growing": {
+         "growth_period": "3h",
+         "preferred_climate": "highlands_staple",
+         "growth_stages": [
+            {
+               "model_name": "cherry_bush_1",
+               "name": "i18n(stonehearth_ace:entities.crops.cherry_bush_crop.growth_stage.000.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.cherry_bush_crop.growth_stage.000.description)"
+            },
+            {
+               "model_name": "cherry_bush_2",
+               "name": "i18n(stonehearth_ace:entities.crops.cherry_bush_crop.growth_stage.001.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.cherry_bush_crop.growth_stage.001.description)"
+            },
+            {
+               "model_name": "cherry_bush_3",
+               "name": "i18n(stonehearth_ace:entities.crops.cherry_bush_crop.growth_stage.002.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.cherry_bush_crop.growth_stage.002.description)"
+            },
+            {
+               "model_name": "cherry_bush_4",
+               "name": "i18n(stonehearth_ace:entities.crops.cherry_bush_crop.growth_stage.003.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.cherry_bush_crop.growth_stage.003.description)"
+            },
+            {
+               "model_name": "default",
+               "name": "i18n(stonehearth_ace:entities.crops.cherry_bush_crop.growth_stage.003.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.cherry_bush_crop.growth_stage.003.description)"
+            }
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 1,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.crops.cherry_bush_crop.display_name)",
+         "description": "i18n(stonehearth_ace:entities.crops.cherry_bush_crop.description)",
+         "icon": "/stonehearth_ace/entities/plants/cherry_bush/cherry_bush.png",
+         "material_tags": [
+            "crop",
+            "cherry_bush_sapling"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": 1
+      }
+   }
+}

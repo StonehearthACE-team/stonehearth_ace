@@ -1,0 +1,23 @@
+{
+   "type": "recipe",
+   "effort": 120,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.herbalist.recipes.berry_bush_seeds_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.berry_bush_seeds_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.berry_bush_seeds_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/consumables/seeds/berry_bush_seeds/berry_bush_seeds.png",
+   "workshop": "stonehearth:herbalist:workbench",
+   "level_requirement": 2,
+   "manual_unlock": true,
+   "ingredients": [
+      {
+         "uri": "stonehearth:plants:berry_bush:seed",
+         "count": 10
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:consumables:seeds:berry_bush_seeds"
+      }
+   ]
+}
