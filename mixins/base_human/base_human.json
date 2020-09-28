@@ -18,6 +18,12 @@
             "type": "basic",
             "value": 1
          },
+         "debuff_resistance": {
+            "type": "basic",
+            "value": 0,
+            "min": 0,
+            "max": 1
+         },
          "sleep_duration": {
             "equation": "360 - 1.5 * diligence",
             "min": 120,

@@ -1,5 +1,22 @@
 {
 	"recipe_name": "i18n(stonehearth_ace:jobs.weaver.recipes.na_worker_outfit_winter_recipe.recipe_name)",
    "effort": 70,
-   "level_requirement": 4
+   "level_requirement": 4,
+	"mixintypes": {
+		"ingredients": "override"
+	},
+	"ingredients": [
+      {
+         "material": "cloth resource",
+         "count": 2
+      },
+      {
+         "material": "thread resource",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth_ace:refined:fine_stuffing",
+         "count": 1
+      }
+   ]
 }

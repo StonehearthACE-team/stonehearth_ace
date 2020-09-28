@@ -38,6 +38,9 @@
          "script": "stonehearth:consumables:scripts:heal_target",
          "work_units": 5,
          "health_healed": 0,
+         "applies_effects": {
+            "stonehearth_ace:buffs:recently_treated:remover": 1
+         },
          "cures_conditions": {
             "infection": 1,
             "poison": 1

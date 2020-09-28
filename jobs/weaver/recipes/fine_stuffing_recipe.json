@@ -1,0 +1,26 @@
+{
+   "type": "recipe",
+   "effort": 13,
+   "work_units": 1,
+   "recipe_name": "i18n(stonehearth_ace:jobs.weaver.recipes.fine_stuffing_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.weaver.recipes.fine_stuffing_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.weaver.recipes.fine_stuffing_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/refined/fine_stuffing/fine_stuffing.png",
+   "workshop": "stonehearth:weaver:workbench",
+   "level_requirement": 3,
+   "ingredients": [
+      {
+         "material": "stuffing resource",
+         "count": 1
+      },
+		{
+         "material": "thread resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:refined:fine_stuffing"
+      }
+   ]
+}

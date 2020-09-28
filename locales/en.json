@@ -107,10 +107,10 @@
                "display_name": "Mason House"
             },
             "shepherd_coop_t2_ace": {
-               "display_name": "🏘️ Shepherd's Animal Shelter"
+               "display_name": " 🏘️ Shepherd's Small Shelter"
             },
             "shepherd_barn_t2_ace": {
-               "display_name": "🏘️ Shepherd's Large Animal Barn"
+               "display_name": " 🏘️ Shepherd's Animal Barn"
             }
          }
       },
@@ -2386,15 +2386,15 @@
          },
          "armor_light": {
             "display_name": "Lightly Geared",
-            "description": "This hearthling is lightly armored and has no speed penalty but reduced courage and menace."
+            "description": "This hearthling is lightly armored and has no speed penalty but reduced courage and menace.<ul><li>No speed penalty</li><li>Courage and Menace are slightly reduced</li><li>Minimally improved odds of resisting certain inflictable conditions</li></ul>"
          },
          "armor_medium": {
             "display_name": "Fairly Geared",
-            "description": "This hearthling wears medium armor and has increased courage but slightly lowered speed."
+            "description": "This hearthling wears medium armor.<ul><li>Slight speed penalty</li><li>Courage is slightly increased</li><li>Slightly improved odds of resisting certain inflictable conditions</li></ul>"
          },
          "armor_heavy": {
             "display_name": "Heavily Geared",
-            "description": "This hearthling is heavily armored and has increased courage and menace but reduced speed."
+            "description": "This hearthling is heavily armored.<ul><li>Fair speed penalty</li><li>Courage and Menace are increased</li><li>Fairly improved odds of resisting certain inflictable conditions</li></ul>"
          },
          "shield_heavy": {
             "display_name": "Heavy Shield",
@@ -2846,7 +2846,7 @@
          "strength_tonic_2": {
             "strength_tonic_2_buff": {
                "display_name": "Enhanced Strength Tonic",
-               "description": "Muscle is increased for a while, greatly boosting their combat damage. Armor Penetration is also increased."
+               "description": "Muscle is increased for a while, greatly boosting their combat damage. Passive resistance to some inflictable conditions is also increased."
             }
          },
          "warmth_tonic": {
@@ -3851,7 +3851,7 @@
             },
             "strength_tonic_2_recipe": {
                "recipe_name": "Enhanced Strength Tonic",
-               "description": "Increases Muscle and the Armor Penetration of all the hearthlings for a while.",
+               "description": "Increases Muscle and the passive resistance to some inflictable conditions of all the hearthlings for a while.",
                "flavor": "Referred as 'Giant's Breath' by the alchemical textbooks of Lady Marie Gem"
             },
             "stamina_tonic_recipe": {
@@ -6085,6 +6085,11 @@
                "description": "Spin animal wool into a versatile resource that can be used as both fiber or thread.",
                "flavor": "You might want to store these far away from kittens..."
             },
+				"fine_stuffing_recipe": {
+               "recipe_name": "Fine Stuffing",
+               "description": "Craft a neat and useful wadding that can be used as a filling in several objects or pieces of clothing.",
+               "flavor": "Warm and comfy!"
+            },
             "worker_holiday_hat_recipe": {
                "recipe_name": "Holiday Cheer Cap",
                "description": "A traditional hat for enjoying the frostfeast holidays that will also protect from chilly weather.",
@@ -6852,7 +6857,7 @@
          },
          "strength_tonic_2": {
             "display_name": "Enhanced Strength Tonic",
-            "description": "Temporarily buffs Muscle and Armor Penetration."
+            "description": "Temporarily buffs Muscle and the resistance to inflictable conditions."
          },
          "stamina_tonic_2": {
             "display_name": "Enhanced Stamina Tonic",
@@ -8122,6 +8127,10 @@
          "serving_keg_stone": {
             "description": "A small serving container that the Brewer can fill with a drink.",
             "display_name": "Stone Serving Keg"
+         },
+         "fine_stuffing": {
+            "display_name": "Fine Stuffing",
+            "description": "A neatly made, comfortable and warm bit of wadding."
          }
       },
       "trees": {
@@ -13615,7 +13624,7 @@
       },
       "chives": {
          "display_name": "Chives",
-         "description": "Flavorful favorite of the northern cooks. Grows very quickly and will provide green and red aromatic herbs when harvested.",
+         "description": "Flavorful favorite of the northern cooks. Grows very quickly and will provide green and purple aromatic herbs when harvested.",
          "harvest_text": "harvesting chives"
       },
       "bog_myrtle": {
@@ -14599,7 +14608,8 @@
             "herb_yellow_bitter_resource_name": "Any Yellow Bitter Herb",
             "herb_white_bitter_resource_name": "Any White Bitter Herb",
             "herb_purple_bitter_resource_name": "Any Purple Bitter Herb",
-            "egg_small_resource_name": "Any Small Egg"
+            "egg_small_resource_name": "Any Small Egg",
+            "stuffing_resource_name": "Any Feathers, Wool or Cotton"
          }
       }
    },

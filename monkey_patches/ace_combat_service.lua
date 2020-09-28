@@ -1,3 +1,4 @@
+local rng = _radiant.math.get_default_rng()
 local CombatService = require 'stonehearth.services.server.combat.combat_service'
 local AceCombatService = class()
 
@@ -215,6 +216,24 @@ function AceCombatService:choose_attack_action(entity, actions)
       end
    end
    return self:_choose_combat_action(entity, actions, filter_fn)
+end
+
+-- Adds resistance to wounds
+function AceCombatService:try_inflict_debuffs(target, debuff_list)
+	local debuff_resistance = target:get_component('stonehearth:attributes'):get_attribute('debuff_resistance', 0)
+   for i, debuff_data in ipairs(debuff_list) do
+      for name, debuff in pairs(debuff_data) do
+         local infliction_chance = debuff.chance or 1
+         local n = 100 * infliction_chance
+         local i = rng:get_int(1,100)
+			if debuff.resistable and debuff_resistance ~= 0 then
+				i = i + (debuff_resistance * 100)
+			end
+         if i <= n then
+            target:add_component('stonehearth:buffs'):add_buff(debuff.uri)
+         end
+      end
+   end
 end
 
 return AceCombatService
