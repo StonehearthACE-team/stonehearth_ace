@@ -1,0 +1,101 @@
+{
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "/stonehearth/entities/plants/pear_cactus/pear_cactus.qb"
+            ]
+         },
+         "pear_cactus_1": {
+            "models": [
+               "file(pear_cactus_1.qb)"
+            ]
+         },
+         "pear_cactus_2": {
+            "models": [
+               "/stonehearth/entities/plants/pear_cactus/sprout/pear_cactus_sprout.qb"
+            ]
+         },
+         "pear_cactus_3": {
+            "models": [
+               "/stonehearth/entities/plants/pear_cactus/stem/pear_cactus_stem.qb"
+            ]
+         },
+         "pear_cactus_4": {
+            "models": [
+               "/stonehearth/entities/plants/pear_cactus/bud/pear_cactus_bud.qb"
+            ]
+         }
+      },
+      "render_info": {
+         "scale": 0.11
+      },
+      "mob": {
+         "model_origin": { "x": -0.055, "y": -0.1, "z": 0.055 },
+         "mob_collision_type": "clutter"
+      },
+      "stonehearth:crop": {
+         "resource_pairings": {
+            "default": "stonehearth_ace:crops:pear_cactus_crop:final"
+         },
+         "harvest_threshhold": "default",
+         "plant_overlay_effect": "stonehearth:effects:plant_crop_overlay_effect",
+         "megacrop_chance": 0,
+         "auto_harvest": "place"
+      },
+      "stonehearth:growing": {
+         "growth_period": "13h+2h",
+         "preferred_climate": "desert_staple",
+         "growth_stages": [
+            {
+               "model_name": "pear_cactus_1",
+               "name": "i18n(stonehearth_ace:entities.crops.pear_cactus_crop.growth_stage.000.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.pear_cactus_crop.growth_stage.000.description)"
+            },
+            {
+               "model_name": "pear_cactus_2",
+               "name": "i18n(stonehearth_ace:entities.crops.pear_cactus_crop.growth_stage.001.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.pear_cactus_crop.growth_stage.001.description)"
+            },
+            {
+               "model_name": "pear_cactus_3",
+               "name": "i18n(stonehearth_ace:entities.crops.pear_cactus_crop.growth_stage.002.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.pear_cactus_crop.growth_stage.002.description)"
+            },
+            {
+               "model_name": "pear_cactus_4",
+               "name": "i18n(stonehearth_ace:entities.crops.pear_cactus_crop.growth_stage.003.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.pear_cactus_crop.growth_stage.003.description)"
+            },
+            {
+               "model_name": "default",
+               "name": "i18n(stonehearth_ace:entities.crops.pear_cactus_crop.growth_stage.003.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.pear_cactus_crop.growth_stage.003.description)"
+            }
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 1,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.crops.pear_cactus_crop.display_name)",
+         "description": "i18n(stonehearth_ace:entities.crops.pear_cactus_crop.description)",
+         "icon": "/stonehearth/entities/plants/pear_cactus/pear_cactus.png",
+         "material_tags": [
+            "crop",
+            "pear_cactus_sapling"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": 1
+      }
+   }
+}

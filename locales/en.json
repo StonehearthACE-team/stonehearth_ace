@@ -3647,6 +3647,36 @@
                "description": "Trade or gift it to allow other cultures to cultivate snow poppies!",
                "flavor": "This farming crop is already known to your farmers by default"
             },
+            "berry_bush_seeds_recipe": {
+               "recipe_name": "Dried Berries",
+               "description": "Domesticate Berry Bushes and learn how to farm them.",
+               "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
+            },
+            "cherry_bush_seeds_recipe": {
+               "recipe_name": "Dried Cherries",
+               "description": "Domesticate Cherry Bushes and learn how to farm them.",
+               "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
+            },
+            "pear_cactus_seeds_recipe": {
+               "recipe_name": "Dried Prickly Pears",
+               "description": "Domesticate Prickly Pear Cacti and learn how to farm them.",
+               "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
+            },
+            "dwarfsbeard_seeds_recipe": {
+               "recipe_name": "Dwarfsbeard Seeds",
+               "description": "Domesticate Dwarfsbeard bushes and learn how to farm them.",
+               "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
+            },
+            "tumbleweed_seeds_recipe": {
+               "recipe_name": "Tumbleweed Seeds",
+               "description": "Domesticate Tumbleweed bushes and learn how to farm them.",
+               "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
+            },
+            "wintermoss_seeds_recipe": {
+               "recipe_name": "Wintermoss Seeds",
+               "description": "Domesticate Wintermoss bushes and learn how to farm them.",
+               "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
+            },
             "birch_tree_seeds_recipe": {
                "recipe_name": "Birch Catkins",
                "description": "Domesticate Birch trees and learn how to farm them.",
@@ -6759,6 +6789,30 @@
                "display_name": "Dried Yew Berries",
                "description": "Learn to grow yew trees."
             },
+            "berry_bush_seeds": {
+               "display_name": "Dried Berries",
+               "description": "Learn to grow berry bushes."
+            },
+            "cherry_bush_seeds": {
+               "display_name": "Dried Cherries",
+               "description": "Learn to grow cherry bushes."
+            },
+            "pear_cactus_seeds": {
+               "display_name": "Dried Prickly Pears",
+               "description": "Learn to grow pear cacti."
+            },
+            "dwarfsbeard_seeds": {
+               "display_name": "Dwarfsbeard Seeds",
+               "description": "Learn to grow dwarfsbeard bushes."
+            },
+            "tumbleweed_seeds": {
+               "display_name": "Tumbleweed Seeds",
+               "description": "Learn to grow tumbleweed bushes."
+            },
+            "wintermoss_seeds": {
+               "display_name": "Wintermoss Seeds",
+               "description": "Learn to grow wintermoss bushes."
+            },
             "birch_tree_seeds": {
                "display_name": "Birch Catkins",
                "description": "Learn to grow birch trees."
@@ -7366,6 +7420,138 @@
             },
             "description": "Need more Yew wood? Prepare your plots for reforestation!",
             "display_name": "Yew Tree Sapling"
+         },
+         "berry_bush_crop": {
+            "growth_stage": {
+               "000": {
+                  "description": "Planted to grow a meager food supply.",
+                  "name": "Berry Bush Seed"
+               },
+               "001": {
+                  "description": "Just needs some time and care.",
+                  "name": "Berry Bush Sproutling"
+               },
+               "002": {
+                  "description": "Still growing!",
+                  "name": "Stemming Berry Bush"
+               },
+               "003": {
+                  "description": "It's almost there!  Look, it has buds!",
+                  "name": "Budding Berry Bush"
+               }
+            },
+            "description": "Harvestable for a meager food supply.",
+            "display_name": "Berry Bush"
+         },
+         "cherry_bush_crop": {
+            "growth_stage": {
+               "000": {
+                  "description": "Planted to grow a meager food supply.",
+                  "name": "Cherry Bush Seed"
+               },
+               "001": {
+                  "description": "Just needs some time and care.",
+                  "name": "Cherry Bush Sproutling"
+               },
+               "002": {
+                  "description": "Still growing!",
+                  "name": "Stemming Cherry Bush"
+               },
+               "003": {
+                  "description": "It's almost there!  Look, it has buds!",
+                  "name": "Budding Cherry Bush"
+               }
+            },
+            "description": "Harvestable for a meager food supply.",
+            "display_name": "Cherry Bush"
+         },
+         "pear_cactus_crop": {
+            "growth_stage": {
+               "000": {
+                  "description": "Planted to grow some prickly pears.",
+                  "name": "Pear Cactus Seed"
+               },
+               "001": {
+                  "description": "Just needs some time and care.",
+                  "name": "Pear Cactus Sproutling"
+               },
+               "002": {
+                  "description": "Still growing!",
+                  "name": "Stemming Pear Cactus"
+               },
+               "003": {
+                  "description": "It's almost there!  Look, it has buds!",
+                  "name": "Budding Pear Cactus"
+               }
+            },
+            "description": "Harvest carefully for prickly pears.",
+            "display_name": "Pear Cactus"
+         },
+         "tumbleweed_crop": {
+            "growth_stage": {
+               "000": {
+                  "description": "Planted to grow a fiber of scratchy quality.",
+                  "name": "Tumbleweed Seed"
+               },
+               "001": {
+                  "description": "Just needs some time and care.",
+                  "name": "Tumbleweed Sproutling"
+               },
+               "002": {
+                  "description": "Still growing!",
+                  "name": "Stemming Tumbleweed"
+               },
+               "003": {
+                  "description": "It's almost full grown! But then it has to dry out!",
+                  "name": "Budding Tumbleweed"
+               }
+            },
+            "description": "After drying out can be harvested for fiber of scratchy quality.",
+            "display_name": "Tumbleweed"
+         },
+         "wintermoss_crop": {
+            "growth_stage": {
+               "000": {
+                  "description": "Planted to grow a fiber of scratchy quality.",
+                  "name": "Wintermoss Seed"
+               },
+               "001": {
+                  "description": "Just needs some time and care.",
+                  "name": "Wintermoss Sproutling"
+               },
+               "002": {
+                  "description": "Still growing!",
+                  "name": "Stemming Wintermoss"
+               },
+               "003": {
+                  "description": "It's almost full grown!",
+                  "name": "Budding Wintermoss"
+               }
+            },
+            "description": "Can be harvested for fiber of scratchy quality.",
+            "display_name": "Wintermoss"
+         },
+         "dwarfsbeard_crop": {
+            "growth_stage": {
+               "000": {
+                  "description": "Planted to grow a fiber of scratchy quality.",
+                  "name": "Dwarfsbeard Seed"
+               },
+               "001": {
+                  "description": "Just needs some time and care.",
+                  "name": "Dwarfsbeard Sproutling"
+               },
+               "002": {
+                  "description": "Still growing!",
+                  "name": "Stemming Dwarfsbeard"
+               },
+               "003": {
+                  "description": "It's almost full grown!",
+                  "name": "Budding Dwarfsbeard"
+               }
+            },
+            "description": "Can be harvested for fiber of scratchy quality.",
+            "display_name": "Dwarfsbeard"
          },
          "paddy_crop": {
             "display_name": "Paddy Field",
