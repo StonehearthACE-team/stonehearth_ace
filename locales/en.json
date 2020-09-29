@@ -107,10 +107,10 @@
                "display_name": "Mason House"
             },
             "shepherd_coop_t2_ace": {
-               "display_name": "🏘️ Shepherd's Animal Shelter"
+               "display_name": " 🏘️ Shepherd's Small Shelter"
             },
             "shepherd_barn_t2_ace": {
-               "display_name": "🏘️ Shepherd's Large Animal Barn"
+               "display_name": " 🏘️ Shepherd's Animal Barn"
             }
          }
       },
@@ -2386,15 +2386,15 @@
          },
          "armor_light": {
             "display_name": "Lightly Geared",
-            "description": "This hearthling is lightly armored and has no speed penalty but reduced courage and menace."
+            "description": "This hearthling is lightly armored and has no speed penalty but reduced courage and menace.<ul><li>No speed penalty</li><li>Courage and Menace are slightly reduced</li><li>Minimally improved odds of resisting certain inflictable conditions</li></ul>"
          },
          "armor_medium": {
             "display_name": "Fairly Geared",
-            "description": "This hearthling wears medium armor and has increased courage but slightly lowered speed."
+            "description": "This hearthling wears medium armor.<ul><li>Slight speed penalty</li><li>Courage is slightly increased</li><li>Slightly improved odds of resisting certain inflictable conditions</li></ul>"
          },
          "armor_heavy": {
             "display_name": "Heavily Geared",
-            "description": "This hearthling is heavily armored and has increased courage and menace but reduced speed."
+            "description": "This hearthling is heavily armored.<ul><li>Fair speed penalty</li><li>Courage and Menace are increased</li><li>Fairly improved odds of resisting certain inflictable conditions</li></ul>"
          },
          "shield_heavy": {
             "display_name": "Heavy Shield",
@@ -2846,7 +2846,7 @@
          "strength_tonic_2": {
             "strength_tonic_2_buff": {
                "display_name": "Enhanced Strength Tonic",
-               "description": "Muscle is increased for a while, greatly boosting their combat damage. Armor Penetration is also increased."
+               "description": "Muscle is increased for a while, greatly boosting their combat damage. Passive resistance to some inflictable conditions is also increased."
             }
          },
          "warmth_tonic": {
@@ -3851,7 +3851,7 @@
             },
             "strength_tonic_2_recipe": {
                "recipe_name": "Enhanced Strength Tonic",
-               "description": "Increases Muscle and the Armor Penetration of all the hearthlings for a while.",
+               "description": "Increases Muscle and the passive resistance to some inflictable conditions of all the hearthlings for a while.",
                "flavor": "Referred as 'Giant's Breath' by the alchemical textbooks of Lady Marie Gem"
             },
             "stamina_tonic_recipe": {
@@ -4941,6 +4941,11 @@
                "recipe_name": "Window Planter with Violets",
                "description": "A decorative planter to be placed under window frames. Comes with Violets but a different herb can be chosen and planted by the Herbalist.",
                "flavor": "For when your window view is boring enough"
+            },
+            "window_box_snow_poppy_recipe": {
+               "recipe_name": "Window Planter with Snow Poppies",
+               "description": "A decorative planter to be placed under window frames. Comes with Snow Poppies but a different herb can be chosen and planted by the Herbalist.",
+               "flavor": "A dark arctic morning is always made brighter with a poppy."
             },
             "stone_bench_recipe": {
                "recipe_name": "Stone Wide Chair",
@@ -6080,6 +6085,11 @@
                "description": "Spin animal wool into a versatile resource that can be used as both fiber or thread.",
                "flavor": "You might want to store these far away from kittens..."
             },
+				"fine_stuffing_recipe": {
+               "recipe_name": "Fine Stuffing",
+               "description": "Craft a neat and useful wadding that can be used as a filling in several objects or pieces of clothing.",
+               "flavor": "Warm and comfy!"
+            },
             "worker_holiday_hat_recipe": {
                "recipe_name": "Holiday Cheer Cap",
                "description": "A traditional hat for enjoying the frostfeast holidays that will also protect from chilly weather.",
@@ -6334,7 +6344,9 @@
          "farmer_description": {
             "level_2_data": {
                "perk_000_name": "Bountiful Harvest",
-               "perk_000_description": "The farmer coaxes up to 25% greater yield from each plant."
+               "perk_000_description": "The farmer coaxes up to 25% greater yield from each plant.",
+               "perk_001_name": "Flower Power",
+               "perk_001_description": "The farmer can plant flowers to make a lovely garden! (They can grow decorative flowers.)"
             },
             "level_3_data": {
                "perk_000_name": "Fertilizer",
@@ -6845,7 +6857,7 @@
          },
          "strength_tonic_2": {
             "display_name": "Enhanced Strength Tonic",
-            "description": "Temporarily buffs Muscle and Armor Penetration."
+            "description": "Temporarily buffs Muscle and the resistance to inflictable conditions."
          },
          "stamina_tonic_2": {
             "display_name": "Enhanced Stamina Tonic",
@@ -7188,7 +7200,7 @@
       "crops": {
          "moonbell_crop": {
             "display_name": "Moonbell Flower",
-            "description": "Can be used as a healing herb",
+            "description": "If grown by a Herbalist can be used as a blue aromatic herb",
             "growth_stage": {
                "000": {
                   "name": "Moonbell Seedling",
@@ -7269,7 +7281,7 @@
          },
          "violet_crop": {
             "display_name": "Violet Flower",
-            "description": "Can be used as a healing herb",
+            "description": "If grown by a Herbalist can be used as a purple aromatic herb",
             "growth_stage": {
                "000": {
                   "name": "Violet Seedlings",
@@ -7285,13 +7297,13 @@
                },
                "003": {
                   "name": "Violets",
-                  "description": "Can be harvested for healing herbs"
+                  "description": "If grown by a Herbalist can be harvested for purple aromatic herbs"
                }
             }
          },
          "snow_poppy_crop": {
             "display_name": "Snow Poppy Flower",
-            "description": "Can be used as a healing herb",
+            "description": "If grown by a Herbalist can be used as a red aromatic herb",
             "growth_stage": {
                "000": {
                   "name": "Snow Poppy Seedlings",
@@ -7307,7 +7319,7 @@
                },
                "003": {
                   "name": "Snow Poppies",
-                  "description": "Can be harvested for healing herbs"
+                  "description": "If grown by a Herbalist can be harvested for red aromatic herbs"
                }
             }
          },
@@ -7455,7 +7467,7 @@
          },
          "poppy_crop": {
             "display_name": "Poppy Flower",
-            "description": "Can be used as a healing herb",
+            "description": "If grown by a Herbalist can be used as a red bitter herb",
             "growth_stage": {
                "000": {
                   "description": "Still growing!",
@@ -7471,7 +7483,95 @@
                },
                "003": {
                   "name": "Poppies",
-                  "description": "Can be harvested for healing herbs."
+                  "description": "If grown by a Herbalist can be harvested for red bitter herbs."
+               }
+            }
+         },
+         "rose_crop": {
+            "display_name": "Rose Flower",
+            "description": "If grown by a Herbalist can be used as a healing herb",
+            "growth_stage": {
+               "000": {
+                  "description": "Still growing!",
+                  "name": "Rose Seedlings"
+               },
+               "001": {
+                  "name": "Rose Sprouts",
+                  "description": "Just need some time and care."
+               },
+               "002": {
+                  "name": "Rose Buds",
+                  "description": "It's almost there!  Look, it has buds!"
+               },
+               "003": {
+                  "name": "Roses",
+                  "description": "If grown by a Herbalist can be harvested for healing herbs."
+               }
+            }
+         },
+         "oleander_crop": {
+            "display_name": "Oleander Flower",
+            "description": "If grown by a Herbalist can be used as a red bitter herb",
+            "growth_stage": {
+               "000": {
+                  "description": "Still growing!",
+                  "name": "Oleander Seedlings"
+               },
+               "001": {
+                  "name": "Oleander Sprouts",
+                  "description": "Just need some time and care."
+               },
+               "002": {
+                  "name": "Oleander Buds",
+                  "description": "It's almost there!  Look, it has buds!"
+               },
+               "003": {
+                  "name": "Oleanders",
+                  "description": "If grown by a Herbalist can be harvested for red bitter herbs."
+               }
+            }
+         },
+         "daylily_crop": {
+            "display_name": "Daylily Flower",
+            "description": "If grown by a Herbalist can be used as a yellow aromatic herb",
+            "growth_stage": {
+               "000": {
+                  "description": "Still growing!",
+                  "name": "Daylily Seedlings"
+               },
+               "001": {
+                  "name": "Daylily Sprouts",
+                  "description": "Just need some time and care."
+               },
+               "002": {
+                  "name": "Daylily Buds",
+                  "description": "It's almost there!  Look, it has buds!"
+               },
+               "003": {
+                  "name": "Daylilies",
+                  "description": "If grown by a Herbalist can be harvested for yellow aromatic herbs."
+               }
+            }
+         },
+         "nightshade_crop": {
+            "display_name": "Nightshade Flower",
+            "description": "If grown by a Herbalist can be used as a purple bitter herb",
+            "growth_stage": {
+               "000": {
+                  "description": "Still growing!",
+                  "name": "Nightshade Seedlings"
+               },
+               "001": {
+                  "name": "Nightshade Sprouts",
+                  "description": "Just need some time and care."
+               },
+               "002": {
+                  "name": "Nightshade Buds",
+                  "description": "It's almost there!  Look, it has buds!"
+               },
+               "003": {
+                  "name": "Nightshades",
+                  "description": "If grown by a Herbalist can be harvested for purple bitter herbs."
                }
             }
          }
@@ -7502,6 +7602,10 @@
          "window_box_stone_violet": {
             "display_name": "Stone Window Planter",
             "description": "A decorative planter. Comes with Violets but another herb can be chosen."
+         },
+         "window_box_stone_snow_poppy": {
+            "display_name": "Carved Window Planter",
+            "description": "A decorative planter. Includes Snow Poppies but another herb can be chosen."
          },
          "golden_clay_wall_planter": {
             "display_name": "Clay Window Planter",
@@ -8023,6 +8127,10 @@
          "serving_keg_stone": {
             "description": "A small serving container that the Brewer can fill with a drink.",
             "display_name": "Stone Serving Keg"
+         },
+         "fine_stuffing": {
+            "display_name": "Fine Stuffing",
+            "description": "A neatly made, comfortable and warm bit of wadding."
          }
       },
       "trees": {
@@ -13516,7 +13624,7 @@
       },
       "chives": {
          "display_name": "Chives",
-         "description": "Flavorful favorite of the northern cooks. Grows very quickly and will provide green and red aromatic herbs when harvested.",
+         "description": "Flavorful favorite of the northern cooks. Grows very quickly and will provide green and purple aromatic herbs when harvested.",
          "harvest_text": "harvesting chives"
       },
       "bog_myrtle": {
@@ -14500,7 +14608,8 @@
             "herb_yellow_bitter_resource_name": "Any Yellow Bitter Herb",
             "herb_white_bitter_resource_name": "Any White Bitter Herb",
             "herb_purple_bitter_resource_name": "Any Purple Bitter Herb",
-            "egg_small_resource_name": "Any Small Egg"
+            "egg_small_resource_name": "Any Small Egg",
+            "stuffing_resource_name": "Any Feathers, Wool or Cotton"
          }
       }
    },

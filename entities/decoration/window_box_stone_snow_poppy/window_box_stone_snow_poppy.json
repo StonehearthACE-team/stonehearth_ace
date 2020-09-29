@@ -1,0 +1,33 @@
+{
+   "type": "entity",
+   "mixins": [
+		"stonehearth_ace:mixins:herbalist_planter:window_box",
+		"/northern_alliance/entities/decoration/window_box_stone_snow_poppy/window_box_stone_snow_poppy_ghost.json"
+	],
+	"components": {
+		"stonehearth_ace:herbalist_planter": {
+         "default_crop": "snow_poppy",
+			"mixintypes": {
+				"plant_locations": "override"
+			},
+			"plant_locations": [
+            {
+               "offset": { "x": -0.35, "y": 0.4, "z": 0.05 },
+					"rotation": 90
+            },
+            {
+               "offset": { "x": 0.35, "y": 0.4, "z": 0.05 },
+					"rotation": 270
+            }
+         ]
+      }
+	},
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 12
+      },
+      "stonehearth:appeal": {
+         "appeal": 8
+      }
+   }
+}

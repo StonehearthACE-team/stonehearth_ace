@@ -8,9 +8,10 @@ local log = radiant.log.create_logger('herbalist_planter.renderer')
 local all_plant_data = radiant.resources.load_json('stonehearth_ace:data:herbalist_planter:crops')
 
 function HerbalistPlanterRenderer:initialize(render_entity, datastore)
+   -- self._render_entity = render_entity
    self._entity = render_entity:get_entity()
    self._entity_node = render_entity:get_node()
-   self._node = self._entity_node:add_group_node('plants node')
+   -- self._node = self._entity_node:add_group_node('plants node')
 
    self._datastore = datastore
    self._plant_nodes = {}
@@ -18,6 +19,10 @@ function HerbalistPlanterRenderer:initialize(render_entity, datastore)
    local planter_data = radiant.entities.get_component_data(self._entity, 'stonehearth_ace:herbalist_planter')
    self._plant_locations = planter_data.plant_locations or {}
    self._scale_multiplier = planter_data.scale_multiplier or 1
+   self._matrix_name = planter_data.planter_matrix or 'planter'
+
+   -- The advantage of using skeleton bone nodes is nodes being their children follow parents if they are animated.
+   self._planter_node = render_entity:get_skeleton():get_bone_node(self._matrix_name)
 
    self._datastore_trace = self._datastore:trace('drawing planter')
                                           :on_changed(function ()
@@ -28,10 +33,10 @@ end
 
 function HerbalistPlanterRenderer:destroy()
    self:_destroy_plant_nodes()
-   if self._node then
-      self._node:destroy()
-      self._node = nil
-   end
+   -- if self._node then
+   --    self._node:destroy()
+   --    self._node = nil
+   -- end
    if self._datastore_trace and self._datastore_trace.destroy then
       self._datastore_trace:destroy()
       self._datastore_trace = nil
@@ -82,17 +87,20 @@ end
 
 function HerbalistPlanterRenderer:_create_node(location, scale, node_data)
    local model = node_data.model
-   local offset = node_data.offset or Point3.zero
+   local offset = Point3(node_data.offset.x or 0, node_data.offset.y or 0, node_data.offset.z or 0)
    local matrix = node_data.matrix or 'crop'
 
-   local node = _radiant.client.create_qubicle_matrix_node(self._node, model, matrix, Point3(offset.x, offset.y, offset.z))
+   local node = _radiant.client.create_qubicle_matrix_node(self._planter_node, model, matrix, offset)
 
    if node then
-      local position = location.offset or Point3.zero
-      local rotation = node_data.rotation or location.rotation or 0
+      local position = Point3(-location.offset.x or 0, location.offset.y or 0, -location.offset.z or 0)
+      local rotation = Point3(0, node_data.rotation or location.rotation or 0, 0)
       local material = node_data.material or 'materials/voxel.material.json'
       --log:debug('%s rendering %s at %s scale at %s', self._entity, model, scale, position)
-      node:set_transform(position.x, position.y, position.z, 0, rotation, 0, scale, scale, scale)
+      node:set_scale(Point3.one * scale)
+      node:set_rotation(rotation)
+      node:set_position(position)
+      --node:set_transform(position.x, position.y, position.z, 0, rotation, 0, scale, scale, scale)
       node:set_material(material)
       --node:set_visible(true)
       table.insert(self._plant_nodes, node)
