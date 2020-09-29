@@ -1,5 +1,5 @@
 {
-   "mixins": "stonehearth:mixins:placed_object",
+   "mixins": ["stonehearth:mixins:placed_object", "stonehearth_ace:mixins:protected_from_targeting"],
    "type": "entity",
    "components": {
       "model_variants": {

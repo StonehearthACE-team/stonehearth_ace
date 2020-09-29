@@ -6,6 +6,15 @@ local HARVEST_ACTION = 'stonehearth:harvest_resource'
 local ResourceNodeComponent = require 'stonehearth.components.resource_node.resource_node_component'
 local AceResourceNodeComponent = class()
 
+AceResourceNodeComponent._ace_old_create = ResourceNodeComponent.create
+function AceResourceNodeComponent:create()
+   if self._ace_old_create then
+      self:_ace_old_create()
+   end
+
+   self._is_create = true
+end
+
 AceResourceNodeComponent._ace_old_activate = ResourceNodeComponent.activate
 function AceResourceNodeComponent:activate()
    if self._ace_old_activate then
@@ -21,8 +30,76 @@ function AceResourceNodeComponent:activate()
    end
 end
 
+AceResourceNodeComponent._ace_old_post_activate = ResourceNodeComponent.post_activate
+function AceResourceNodeComponent:post_activate()
+   if self._ace_old_post_activate then
+      self:_ace_old_post_activate()
+   end
+
+   if self._is_create then
+      self._added_to_world_listener = self._entity:add_component('mob'):trace_parent('resource node entity added or removed')
+            :on_changed(function(parent)
+               if parent then
+                  self:_destroy_added_to_world_listener()
+                  self:auto_request_harvest()
+               end
+            end)
+   end
+end
+
+AceResourceNodeComponent._ace_old_destroy = ResourceNodeComponent.__user_destroy
+function AceResourceNodeComponent:destroy()
+   self:_destroy_added_to_world_listener()
+
+   if self._ace_old_destroy then
+      self:_ace_old_destroy()
+   end
+end
+
+function AceResourceNodeComponent:_destroy_added_to_world_listener()
+   if self._added_to_world_listener then
+      self._added_to_world_listener:destroy()
+      self._added_to_world_listener = nil
+   end
+end
+
 function AceResourceNodeComponent:get_durability()
    return self._sv.durability
+end
+
+function AceResourceNodeComponent:auto_request_harvest()
+   -- only consider auto harvesting if it's done growing
+   if self._entity:get_component('stonehearth:evolve') then
+      return
+   end
+
+   local player_id = self._entity:get_player_id()
+
+   -- only try fully auto-harvesting if there are any inputs
+   local output = self._entity:get_component('stonehearth_ace:output')
+   if output and output:has_any_input(true) then
+      -- TODO: set up full auto-harvesting of entity's entire "durability" (or as much as there is room in the input containers)
+      local item = self:spawn_resource(nil, radiant.entities.get_world_grid_location(self._entity), player_id, false)
+      if item then
+         -- successfully auto-harvested; no need to request a manual harvest
+         return
+      end
+   end
+
+   -- if a player has moved or harvested this item, that player has gained ownership of it
+   -- if they haven't, there's no need to request it to be harvested because it's just growing in the wild with no owner
+   
+   if player_id ~= '' then
+      local auto_harvest
+      -- if it's a crop, check the farm's harvest setting
+      local crop_comp = self._entity:get_component('stonehearth:crop')
+      if crop_comp then
+         auto_harvest = crop_comp:get_field():is_harvest_enabled()
+      end
+      if auto_harvest then
+         self:request_harvest(player_id)
+      end
+   end
 end
 
 AceResourceNodeComponent._ace_old_set_harvestable_by_harvest_tool = ResourceNodeComponent.set_harvestable_by_harvest_tool
@@ -155,12 +232,15 @@ function AceResourceNodeComponent:request_harvest(player_id, replant)
    local result = self:_ace_old_request_harvest(player_id)
 
    if result then
-      if replant and radiant.entities.get_entity_data(self._entity, 'stonehearth_ace:replant_data') then
-         self._entity:remove_component('stonehearth_ace:stump')
-         self._entity:add_component('stonehearth_ace:replant')
-      else
-         self._entity:remove_component('stonehearth_ace:replant')
-         self._entity:add_component('stonehearth_ace:stump')
+      -- don't want a stump or new seed planted if it's in a farm
+      if not self._entity:get_component('stonehearth:crop') then
+         if replant and radiant.entities.get_entity_data(self._entity, 'stonehearth_ace:replant_data') then
+            self._entity:remove_component('stonehearth_ace:stump')
+            self._entity:add_component('stonehearth_ace:replant')
+         else
+            self._entity:remove_component('stonehearth_ace:replant')
+            self._entity:add_component('stonehearth_ace:stump')
+         end
       end
       radiant.events.trigger(self._entity, 'stonehearth:resource_node:harvest_requested')
    end

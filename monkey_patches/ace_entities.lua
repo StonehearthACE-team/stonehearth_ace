@@ -390,4 +390,9 @@ function ace_entities.is_solid_location(location)
    return false
 end
 
+function ace_entities.is_entity_protected_from_targeting(entity)
+   -- perhaps add a property that can be set dynamically? for now just use a material
+   return radiant.entities.is_material(entity, 'protected_from_targeting')
+end
+
 return ace_entities
