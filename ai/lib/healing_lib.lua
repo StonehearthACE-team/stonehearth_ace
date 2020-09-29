@@ -9,6 +9,34 @@ local healing_lib = {}
 local log = radiant.log.create_logger('healing_lib')
 local max_percent_health_redux
 
+-- cache lists of healing items by conditions they cure, so the condition can be looked up and then an item tracker checked for those uris
+-- also cache the uris so they easily just get indexed once
+local healing_item_cache = {}
+local cached_healing_item_uris = {}
+
+function healing_lib.cache_healing_item(uri, item)
+   if cached_healing_item_uris[uri] == nil then
+      cached_healing_item_uris[uri] = true
+
+      local consumable_data = ConsumablesLib.get_consumable_data(item)
+      if not consumable_data or consumable_data.equipped_only then
+         cached_healing_item_uris[uri] = false
+         return
+      end
+
+      if consumable_data.cures_conditions then
+         for condition, rank in pairs(consumable_data.cures_conditions) do
+            local condition_cache = healing_item_cache[condition]
+            if not condition_cache then
+               condition_cache = {}
+               healing_item_cache[condition] = condition_cache
+            end
+            condition_cache[uri] = rank
+         end
+      end
+   end
+end
+
 function healing_lib.get_conditions_needing_cure(entity)
    -- determine if the entity is suffering from a special condition and return that condition
    local conditions = {}
@@ -107,20 +135,16 @@ end
 
 function healing_lib.filter_healing_item(item, conditions, level)
    -- just filters whether this item *can* be used to heal, not if it's the best item for it
+   local uri = item:get_uri()
+   -- if the healing_item_tracker isn't caching these before this gets called, we'll have a problem
+   if not cached_healing_item_uris[uri] then
+      return false
+   end
+
    local consumable_data = ConsumablesLib.get_consumable_data(item)
    if consumable_data then
-      -- if it is an equipped consumable only, check that first
-		if consumable_data.equipped_only then
-			return false
-		end
-		
 		-- then if it requires a level to use, check that second
-      if level < (consumable_data.required_level or level) then
-         return false
-      end
-
-      -- make sure it's actually a healing_item (the previous checks are faster so we do them first)
-      if not radiant.entities.is_material(item, 'healing_item') then
+      if level and level < (consumable_data.required_level or level) then
          return false
       end
 

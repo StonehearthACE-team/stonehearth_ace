@@ -421,15 +421,6 @@ function AceFarmerFieldComponent:try_harvest_crop(harvester, x, z, num_stacks, a
          return false
       end
 
-      local stage = crop_comp:get_post_harvest_stage()
-      local crop_uri = self:get_current_crop_alias()
-      if stage and crop:get_uri() == crop_uri then
-         crop:get_component('stonehearth:growing'):set_growth_stage(stage)
-         self:_update_crop_fertilized(x, z, false)
-      else
-         radiant.entities.kill_entity(crop)
-      end
-
       if primary_item then
          if harvester then
             local carrying = radiant.entities.get_carrying(harvester)
@@ -469,6 +460,15 @@ function AceFarmerFieldComponent:try_harvest_crop(harvester, x, z, num_stacks, a
             self:_create_post_harvest_crop_listeners(dirt_plot)
             self.__saved_variables:mark_changed()
          end
+      end
+
+      local stage = crop_comp:get_post_harvest_stage()
+      local crop_uri = self:get_current_crop_alias()
+      if stage and crop:get_uri() == crop_uri then
+         crop:get_component('stonehearth:growing'):set_growth_stage(stage)
+         self:_update_crop_fertilized(x, z, false)
+      else
+         radiant.entities.kill_entity(crop)
       end
 
       return true
