@@ -1,0 +1,37 @@
+{
+   "type": "entity",
+   "mixins": [
+      "/stonehearth_ace/entities/plants/dwarfsbeard/dwarfsbeard.json"
+   ],
+   "components": {
+      "mixintypes": {
+         "stonehearth:commands": "remove",
+         "stonehearth:entity_forms": "remove"
+      },
+      "render_info": {
+         "scale": 0.11
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": -0.1, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      },
+      "destination": {
+         "mixintypes": {"region": "override"},
+         "region": [
+            {
+               "min": { "x": 0, "y": 0, "z": 0 },
+               "max": { "x": 1, "y": 1, "z": 1 }
+            }
+         ]
+      },
+      "region_collision_shape": {
+         "mixintypes": {"region": "override"},
+         "region": [
+            {
+               "min": { "x": 0, "y": 0, "z": 0 },
+               "max": { "x": 1, "y": 1.1, "z": 1 }
+            }
+         ]
+      }
+   }
+}

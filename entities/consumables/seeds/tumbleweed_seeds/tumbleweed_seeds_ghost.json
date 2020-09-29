@@ -1,0 +1,24 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "type": "entity",
+   "components": {
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 }
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(tumbleweed_seeds.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.consumables.seeds.tumbleweed_seeds.display_name)",
+         "description": "i18n(stonehearth_ace:entities.consumables.seeds.tumbleweed_seeds.description)",
+         "icon": "file(tumbleweed_seeds.png)",
+         "category": "consumable"
+      }
+   }
+}
