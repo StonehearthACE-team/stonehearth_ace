@@ -11,4 +11,6 @@ end
 local ai = stonehearth.ai
 return ai:create_compound_action(RestWhenSufferingCondition)
             :execute('stonehearth_ace:wait_for_special_attention_condition')
-            :execute('stonehearth:rest_from_injuries')
+            :execute('stonehearth:rest_from_injuries', {
+               rest_from_conditions = true,
+            })

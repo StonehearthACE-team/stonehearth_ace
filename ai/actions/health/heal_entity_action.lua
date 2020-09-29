@@ -91,10 +91,13 @@ return ai:create_compound_action(HealEntity)
          :execute('stonehearth_ace:pickup_healing_item', {
             target = ai.BACK(3).item
          })
+         :execute('stonehearth:reserve_entity', {
+            entity = ai.BACK(4).item
+         })
          :execute('stonehearth:goto_entity', {
-            entity = ai.BACK(3).mount
+            entity = ai.BACK(4).mount
          })
          :execute('stonehearth:heal_entity_adjacent', {
-            container = ai.BACK(4).mount,
-            item = ai.BACK(2).item
+            container = ai.BACK(5).mount,
+            item = ai.BACK(3).item
          })

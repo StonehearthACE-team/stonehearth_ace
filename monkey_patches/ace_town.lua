@@ -1,5 +1,6 @@
 local csg_lib = require 'stonehearth.lib.csg.csg_lib'
 local entity_forms_lib = require 'stonehearth.lib.entity_forms.entity_forms_lib'
+local healing_lib = require 'stonehearth_ace.ai.lib.healing_lib'
 local rng = _radiant.math.get_default_rng()
 
 local Town = require 'stonehearth.services.server.town.town'
@@ -244,6 +245,61 @@ function AceTown:pop_entity_into_iconic(entity)
       radiant.terrain.remove_entity(root)
       radiant.terrain.place_entity_at_exact_location(iconic, location)
    end
+end
+
+-- Returns true if the town has an available medic and we've successfully requested one
+-- Returns false if no medics available
+-- ACE: added rest_from_conditions parameter to verify that we have an applicable cure available before proceeding
+function AceTown:try_request_medic(requester, rest_from_conditions)
+   local requester_id = requester:get_id()
+   if self._medic_requests[requester_id] then
+      return true -- We've already requested a medic and gotten one. we're good
+   end
+
+   if self._medic_requests_count >= self._medic_slots_available then
+      return false
+   end
+
+   --If the requester is a medic, they can heal themselves so they shouldn't try to request a medic
+   if self._medics_available[requester_id] ~= nil then
+      return false
+   end
+
+   -- check if there are conditions that need to be cured, and whether we have a cure available
+   if rest_from_conditions then
+      local has_healing_item = false
+      local conditions = healing_lib.get_conditions_needing_cure(requester)
+      local inventory = stonehearth.inventory:get_inventory(self._sv.player_id)
+      if inventory then
+         local tracker = inventory:add_item_tracker('stonehearth_ace:healing_item_tracker')
+         for id, item in tracker:get_tracking_data():each() do
+            if item and item:is_valid() then
+               if self:is_healing_item_valid(item, requester, conditions) then
+                  has_healing_item = true
+                  break
+               end
+            end
+         end
+      end
+
+      if not has_healing_item then
+         return false
+      end
+   end
+
+   self._log:detail('%s successfully requested a medic', requester)
+
+   self._medic_requests[requester_id] = requester
+   self._medic_requests_count = self._medic_requests_count + 1
+   return true
+end
+
+function AceTown:is_healing_item_valid(item, requester, conditions)
+   if not conditions then
+      conditions = healing_lib.get_conditions_needing_cure(requester)
+   end
+
+   return healing_lib.filter_healing_item(item, conditions) and stonehearth.ai:can_acquire_ai_lease(item, requester)
 end
 
 AceTown._ace_old_spawn_traveler = Town.spawn_traveler
