@@ -5,7 +5,7 @@ radiant.events.listen(micro_world_server, 'radiant:new_game', function(args)
       -- read the config file for the world to use.  this will read the
       -- mods.microworld.world key, returning it's value or 'mini_game'
       -- if that key does not exist.
-      local world_name = radiant.util.get_config('world', 'mini_game')
+      local world_name = _host:get_config('mods.microworld.world') or 'mini_game'
 
       -- generate the name of the script to load for this world from the
       -- world name.  it must be placed in the worlds directory.
