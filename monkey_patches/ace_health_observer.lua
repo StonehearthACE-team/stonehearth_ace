@@ -11,6 +11,8 @@ end
 
 AceHealthObserver.__ace_old_destroy = HealthObserver.__user_destroy
 function AceHealthObserver:destroy()
+   self:__ace_old_destroy()
+
    if self._sv._recently_magically_treated_timer then
       self._sv._recently_magically_treated_timer:destroy()
       self._sv._recently_magically_treated_timer = nil
@@ -49,7 +51,7 @@ function AceHealthObserver:_on_magically_healed(e)
    end
 end
 
-function HealthObserver:_enable_magical_treatment(e)
+function AceHealthObserver:_enable_magical_treatment(e)
    local entity = self._sv.entity
    radiant.entities.remove_buff(entity, 'stonehearth_ace:buffs:recently_magically_treated')
    self._sv._recently_magically_treated_timer:destroy()
