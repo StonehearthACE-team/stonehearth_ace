@@ -58,6 +58,48 @@
                   ]
                },	
                "demote_fn": "remove_equipment_role_buffs"
+            },
+            {
+               "type": "set_medic_capabilities",
+               "id": "novice_medic_capabilities",
+               "level": 2,
+               "medic_capabilities": {
+                  "num_conditions_to_cure": 1,
+                  "cure_conditions": {
+                     "wound_pierce": 1,
+                     "wound_impact": 1,
+                     "wound_cut": 1,
+                     "wound_cold": 1
+                  },
+                  "health_healed": 50,
+                  "guts_healed": 5,
+                  "cooldown": "8h"
+               },
+               "demote_fn": "remove_medic_capabilities"
+            }
+         ]
+      },
+      "4": {
+         "perks": [
+            {
+               "type": "set_medic_capabilities",
+               "id": "adept_medic_capabilities",
+               "level": 4,
+               "medic_capabilities": {
+                  "num_conditions_to_cure": 2,
+                  "cure_conditions": {
+                     "poison": 1,
+                     "wound_pierce": 2,
+                     "wound_impact": 2,
+                     "wound_cut": 2,
+                     "wound_cold": 2,
+                     "toxin": 1
+                  },
+                  "health_healed": 100,
+                  "guts_healed": 10,
+                  "cooldown": "4h"
+               },
+               "demote_fn": "remove_medic_capabilities"
             }
          ]
       },
@@ -82,6 +124,33 @@
                   ]
                },	
                "demote_fn": "remove_equipment_role_buffs"
+            }
+         ]
+      },
+      "6": {
+         "perks": [
+            {
+               "type": "set_medic_capabilities",
+               "id": "master_medic_capabilities",
+               "level": 6,
+               "medic_capabilities": {
+                  "num_conditions_to_cure": 3,
+                  "cure_conditions": {
+                     "wound_corrupt": 1,
+                     "infection": 1,
+                     "wound_fire": 1,
+                     "poison": 2,
+                     "wound_pierce": 3,
+                     "wound_impact": 3,
+                     "wound_cut": 3,
+                     "wound_cold": 3,
+                     "toxin": 2
+                  },
+                  "health_healed": 200,
+                  "guts_healed": 20,
+                  "cooldown": "2h"
+               },
+               "demote_fn": "remove_medic_capabilities"
             }
          ]
       }

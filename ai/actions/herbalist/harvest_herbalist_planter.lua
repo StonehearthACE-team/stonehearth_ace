@@ -24,7 +24,7 @@ local function _harvest_rating_fn(desires_tracker, item)
          rating = planter:get_unit_crop_level()
 
          if desires_tracker then
-            rating = rating * 0.5 + desires_tracker:get_item_or_resource_need_score(resource) * 0.5
+            rating = rating * 0.2 + desires_tracker:get_item_or_resource_need_score(resource) * 0.8
          end
       end
    end
@@ -38,15 +38,15 @@ function HarvestHerbalistPlanter:start_thinking(ai, entity, args)
          return _harvest_filter_fn(player_id, item)
       end)
       
-   -- local desires_tracker = stonehearth.inventory:get_inventory(player_id):get_desires()
-   -- local rating_fn = function(item)
-   --       return _harvest_rating_fn(desires_tracker, item)
-   --    end
+   local desires_tracker = stonehearth.inventory:get_inventory(player_id):get_desires()
+   local rating_fn = function(item)
+         return _harvest_rating_fn(desires_tracker, item)
+      end
 
    if not ai.CURRENT.carrying then
       ai:set_think_output({
          harvest_filter_fn = filter_fn,
-         --harvest_rating_fn = rating_fn,
+         harvest_rating_fn = rating_fn,
          owner_player_id = player_id
       })
    end
@@ -61,7 +61,7 @@ return ai:create_compound_action(HarvestHerbalistPlanter)
          :execute('stonehearth:wait_for_town_inventory_space')
          :execute('stonehearth:find_best_reachable_entity_by_type', {
             filter_fn = ai.BACK(2).harvest_filter_fn,
-            --rating_fn = ai.BACK(2).harvest_rating_fn,
+            rating_fn = ai.BACK(2).harvest_rating_fn,
             description = 'finding harvestable herbalist planters',
             owner_player_id = ai.BACK(2).owner_player_id
          })

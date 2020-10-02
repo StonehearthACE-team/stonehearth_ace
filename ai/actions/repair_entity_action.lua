@@ -17,8 +17,9 @@ function RepairEntity:start_thinking(ai, entity, args)
    local job = entity:add_component('stonehearth:job')
    local job_uri = job:get_job_uri()
    local job_info = stonehearth.job:get_job_info(player_id, job_uri)
+   local key = player_id .. '|' .. job_uri
 
-   local filter_fn = stonehearth.ai:filter_from_key('stonehearth:repair', player_id, function(item)
+   local filter_fn = stonehearth.ai:filter_from_key('stonehearth:repair', key, function(item)
          if not item or not item:is_valid() then
             return false
          end

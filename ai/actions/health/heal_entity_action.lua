@@ -8,7 +8,7 @@ HealEntity.priority = 0
 
 local MIN_GUTS_PERCENTAGE_TO_PREFER = 90
 
-function make_is_healable_entity_filter(player_id)
+local function make_is_healable_entity_filter(player_id)
    return stonehearth.ai:filter_from_key('stonehearth:healing:heal_entity', player_id, function(target)
          if target:get_player_id() ~= player_id then
             return false
@@ -31,17 +31,16 @@ function make_is_healable_entity_filter(player_id)
       end)
 end
 
-function rate_healable_entity(target)
+local function rate_healable_entity(target)
    local species = radiant.entities.get_entity_data(target, 'stonehearth:species', false)
    local is_hearthling = species and species.id == 'hearthling'
-   local is_pet = target:get_component('pet') ~= nil
+   local is_pet = target:get_component('stonehearth:pet') ~= nil
 
    local score
    if is_hearthling then
       -- Prefer hearthlings who would probably be revived by this healing.
       local resources = target:get_component('stonehearth:expendable_resources')
-      local guts_percentage = resources:get_value('guts') / resources:get_max_value('guts')
-      local will_revive = guts_percentage >= MIN_GUTS_PERCENTAGE_TO_PREFER
+      local will_revive = resources:get_percentage('guts') >= MIN_GUTS_PERCENTAGE_TO_PREFER
       
       -- Prefer higher level hearthlings.
       local level_score = 0

@@ -107,7 +107,7 @@ function RestInBed:destroy()
    self:_clear_listener()
 end
 
-function make_is_available_bed_filter()
+local function make_is_available_bed_filter()
    return stonehearth.ai:filter_from_key('stonehearth:rest_from_injuries:rest_in_bed', 'none', function(target)
          local bed_data = radiant.entities.get_entity_data(target, 'stonehearth:bed')
          if bed_data and not target:add_component('stonehearth:mount'):is_in_use() then
@@ -117,7 +117,7 @@ function make_is_available_bed_filter()
       end)
 end
 
-function make_is_available_bed_rater()
+local function make_is_available_bed_rater()
    return function(target)
          -- rate priority care beds highest, then owned beds, then unowned beds, then anything else
          local bed_data = radiant.entities.get_entity_data(target, 'stonehearth:bed')

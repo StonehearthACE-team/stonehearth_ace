@@ -8,7 +8,8 @@ function RestWhenInjured:start_thinking(ai, entity, args)
    -- check if it's a combat job; if so, use the combat rest when injured percentage
    local injured_percentage
    local job = entity:get_component('stonehearth:job')
-   if job and job:get_job_info():is_combat_job() then
+   local job_info = job and job:get_job_info()
+   if job_info and job_info:is_combat_job() then
       injured_percentage = stonehearth.constants.health.COMBAT_REST_WHEN_INJURED_PERCENTAGE
    else
       injured_percentage = stonehearth.constants.health.REST_WHEN_INJURED_PERCENTAGE

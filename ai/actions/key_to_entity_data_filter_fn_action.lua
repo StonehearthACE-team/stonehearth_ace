@@ -21,7 +21,7 @@ function KeyToEntityDataFilter:start_thinking(ai, entity, args)
    local key = args.key
    local owner = args.owner
 
-   local filter_fn = stonehearth.ai:filter_from_key('stonehearth:key_to_entity_data_filter_fn', key, function(item)
+   local filter_fn = stonehearth.ai:filter_from_key('stonehearth:key_to_entity_data_filter_fn', key .. '|' .. tostring(owner), function(item)
          if owner and owner ~= item:get_player_id() then
             return false
          end

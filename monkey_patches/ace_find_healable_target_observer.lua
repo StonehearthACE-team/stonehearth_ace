@@ -1,4 +1,19 @@
+local FindHealableTargetObserver = require 'stonehearth.ai.observers.find_healable_target_observer'
 local AceFindHealableTargetObserver = class()
+
+AceFindHealableTargetObserver.__ace_old_activate = FindHealableTargetObserver.activate
+function AceFindHealableTargetObserver:activate()
+   self._medic_capabilities_changed_listener = radiant.events.listen(self._entity,
+         'stonehearth_ace:medic_capabilities_changed', self, self._on_medic_capabilities_changed)
+   
+   self:__ace_old_activate()
+end
+
+function AceFindHealableTargetObserver:_on_medic_capabilities_changed(capabilities)
+   self._medic_capabilities = capabilities
+   self:_update_all_target_scores()
+   self:_check_for_target()
+end
 
 -- just replaced radiant.entities.get_health_percentage with radiant.entities.get_effective_health_percentage (ACE)
 function AceFindHealableTargetObserver:_get_target_score(target)

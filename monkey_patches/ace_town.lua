@@ -269,14 +269,20 @@ function AceTown:try_request_medic(requester, rest_from_conditions)
    if rest_from_conditions then
       local has_healing_item = false
       local conditions = healing_lib.get_conditions_needing_cure(requester)
-      local inventory = stonehearth.inventory:get_inventory(self._sv.player_id)
-      if inventory then
-         local tracker = inventory:add_item_tracker('stonehearth_ace:healing_item_tracker')
-         for id, item in tracker:get_tracking_data():each() do
-            if item and item:is_valid() then
-               if self:is_healing_item_valid(item, requester, conditions) then
-                  has_healing_item = true
-                  break
+      
+      -- first check if there's a medic who can handle any of these conditions without an item
+      if self:can_any_medic_treat_any_conditions(conditions) then
+         has_healing_item = true
+      else
+         local inventory = stonehearth.inventory:get_inventory(self._sv.player_id)
+         if inventory then
+            local tracker = inventory:add_item_tracker('stonehearth_ace:healing_item_tracker')
+            for id, item in tracker:get_tracking_data():each() do
+               if item and item:is_valid() then
+                  if self:is_healing_item_valid(item, requester, conditions) then
+                     has_healing_item = true
+                     break
+                  end
                end
             end
          end
@@ -292,6 +298,39 @@ function AceTown:try_request_medic(requester, rest_from_conditions)
    self._medic_requests[requester_id] = requester
    self._medic_requests_count = self._medic_requests_count + 1
    return true
+end
+
+function AceTown:can_any_medic_treat_any_conditions(conditions)
+   for id, data in pairs(self._medics_available) do
+      if data and data.entity and data.entity:is_valid() then
+         if self:can_medic_treat_any_conditions(data.entity, conditions) then
+            return true
+         end
+      end
+   end
+
+   return false
+end
+
+function AceTown:can_medic_treat_any_conditions(medic, conditions)
+   if not medic or not medic:is_valid() then
+      return false
+   end
+
+   local job = entity:get_component('stonehearth:job')
+   local medic_capabilities = job and job:get_curr_job_controller():get_medic_capabilities()
+   if not medic_capabilities or not medic_capabilities.cure_conditions then
+      return false
+   end
+
+   -- go through conditions that need healing and check to see if the medic can cure any of them
+   for _, condition in ipairs(conditions) do
+      if medic_capabilities.cure_conditions[condition.condition] then
+         return true
+      end
+   end
+
+   return false
 end
 
 function AceTown:is_healing_item_valid(item, requester, conditions)

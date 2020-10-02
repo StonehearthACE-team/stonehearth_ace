@@ -53,7 +53,7 @@ function WaitForUnfedPasture:_on_feed_changed(pasture, needs_feed)
       self._ready = true
       local material = self._pasture_component:get_animal_feed_material()
       local owner = radiant.entities.get_player_id(pasture)
-      local filter_fn = stonehearth.ai:filter_from_key('stonehearth:wait_for_unfed_pasture', material, make_filter_fn(material, owner))
+      local filter_fn = stonehearth.ai:filter_from_key('stonehearth:wait_for_unfed_pasture', material .. '|' .. owner, make_filter_fn(material, owner))
       self._ai:set_think_output({
          filter_fn = filter_fn
       })

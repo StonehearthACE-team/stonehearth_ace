@@ -1,7 +1,7 @@
 --[[
    Task that represents a worker bringing a piece of wood to a firepit and setting it on fire.
 ]]
-FirepitComponent  = require 'components.firepit.firepit_component'
+FirepitComponent  = require 'stonehearth.components.firepit.firepit_component'
 
 local LightFirepit = radiant.class()
 LightFirepit.name = 'light fire'

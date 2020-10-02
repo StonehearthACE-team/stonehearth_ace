@@ -111,8 +111,14 @@ function UseConsumableOnCondition:_consider_using_condition(condition)
             local value
             if condition.use_percent then
                value = expendable_resources:get_percentage(condition.resource_name)
+               if condition.from_max then
+                  value = 1 - value
+               end
             else
                value = expendable_resources:get_value(condition.resource_name)
+               if condition.from_max then
+                  value = expendable_resources:get_max_value(condition.resource_name) - value
+               end
             end
             if value then
                return (condition.comparison == '<' and value < condition.value) or

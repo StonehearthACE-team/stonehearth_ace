@@ -1,5 +1,5 @@
 local Entity = _radiant.om.Entity
-local ConsumablesLib = require 'ai.lib.consumables_lib'
+local ConsumablesLib = require 'stonehearth.ai.lib.consumables_lib'
 
 local HealEntityAdjacent = radiant.class()
 HealEntityAdjacent.name = 'heal entity adjacent'

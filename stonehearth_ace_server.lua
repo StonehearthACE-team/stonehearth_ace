@@ -18,6 +18,7 @@ local monkey_patches = {
 	ace_darkness_observer = 'stonehearth.ai.observers.darkness_observer',
    ace_door_component = 'stonehearth.components.door.door_component',
    ace_portal_component = 'stonehearth.components.portal.portal_component',
+   ace_health_observer = 'stonehearth.ai.observers.health_observer',
    ace_job_component = 'stonehearth.components.job.job_component',
    ace_job_info_controller = 'stonehearth.services.server.job.job_info_controller',
    ace_find_equipment_upgrade_action = 'stonehearth.ai.actions.upgrade_equipment.find_equipment_upgrade_action',

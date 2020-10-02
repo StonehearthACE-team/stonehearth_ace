@@ -23,7 +23,7 @@ local get_fertilizer_preference = function(fertilizable_layer)
 end
 
 local create_farmer_field_filter_fn = function(owner)
-   local filter_fn = stonehearth.ai:filter_from_key('stonehearth_ace:fertilize_field', 'uri', function(item)
+   local filter_fn = stonehearth.ai:filter_from_key('stonehearth_ace:fertilize_field', 'uri' .. tostring(owner), function(item)
       if owner and owner ~= item:get_player_id() then
          return false
       end
@@ -42,9 +42,9 @@ end
 
 local create_fertilizer_filter_fn = function(owner, fertilizable_layer)
    local fertilizer_preference = get_fertilizer_preference(fertilizable_layer)
-   local key = fertilizer_preference.uri .. '|' .. (owner or '')
+   local key = fertilizer_preference.uri .. '|' .. tostring(owner)
 
-   local filter_fn = stonehearth.ai:filter_from_key('stonehearth_ace:fertilizer', key, function(item)
+   local filter_fn = stonehearth.ai:filter_from_key('stonehearth_ace:fertilizer:uri', key, function(item)
          if owner and owner ~= item:get_player_id() then
             return false
          end

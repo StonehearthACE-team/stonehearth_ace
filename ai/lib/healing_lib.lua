@@ -77,6 +77,30 @@ function healing_lib.get_highest_priority_condition(entity)
    end
 end
 
+function healing_lib.cure_conditions(target, cures_conditions, reduce_rank)
+   local buffs_component = target:get_component('stonehearth:buffs')
+   if buffs_component and cures_conditions then
+      for condition, cures_rank in pairs(cures_conditions) do
+         if cures_rank then
+            -- default to reducing rank if not enough to cure
+            buffs_component:remove_category_buffs(condition, cures_rank, reduce_rank ~= false)
+         end
+      end
+   end
+end
+
+function healing_lib.heal_target(healer, target, health, guts)
+   local current_health = radiant.entities.get_health(target)
+   if current_health > 0 then
+      local healed_amount = health * healing_lib.get_healing_multiplier(healer)
+
+      radiant.entities.modify_health(target, healed_amount)
+   else
+      local guts_healed = guts or 1
+      radiant.entities.modify_resource(target, 'guts', guts_healed)
+   end
+end
+
 function healing_lib.get_filter_guts_health_missing(entity)
    local expendable = entity and entity:is_valid() and entity:get_component('stonehearth:expendable_resources')
    local guts, health

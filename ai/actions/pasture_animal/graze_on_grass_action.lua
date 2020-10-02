@@ -31,7 +31,7 @@ function GrazeOnGround:start_thinking(ai, entity, args)
 
    -- Mutable state
    self._ready = false
-   self._food_filter_fn = stonehearth.ai:filter_from_key('food_filter', 'grazing grass', function(food)
+   self._food_filter_fn = stonehearth.ai:filter_from_key('food_filter:grazing_grass', owner_id, function(food)
          if owner_id ~= '' and radiant.entities.get_player_id(food) ~= owner_id then
             return false
          end

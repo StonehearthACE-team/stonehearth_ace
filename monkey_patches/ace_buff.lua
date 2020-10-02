@@ -258,6 +258,10 @@ function AceBuff:get_stacks()
    return self._sv.stacks
 end
 
+function AceBuff:get_expire_time()
+   return self._sv.expire_time
+end
+
 function AceBuff:get_rank()
    return self._sv.rank or self._json.rank or 1
 end

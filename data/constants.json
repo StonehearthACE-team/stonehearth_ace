@@ -3,83 +3,83 @@
    "constants": {
       "climates": {
          "temperate_staple": {
-				"plant_water_affinity": "IRRELEVANT",
+            "plant_water_affinity": "IRRELEVANT",
             "plant_light_affinity": "MEDIUM"
          },
-			"temperate_easy": {
-				"plant_water_affinity": "SIMPLE",
+         "temperate_easy": {
+            "plant_water_affinity": "SIMPLE",
             "plant_light_affinity": "MEDIUM"
          },
-			"temperate_medium": {
-				"plant_water_affinity": "MEDIUM",
+         "temperate_medium": {
+            "plant_water_affinity": "MEDIUM",
             "plant_light_affinity": "MEDIUM"
          },
-			"temperate_complex": {
-				"plant_water_affinity": "HIGH",
+         "temperate_complex": {
+            "plant_water_affinity": "HIGH",
             "plant_light_affinity": "HIGH"
          },
-			"desert_staple": {
-				"plant_water_affinity": "IRRELEVANT",
+         "desert_staple": {
+            "plant_water_affinity": "IRRELEVANT",
             "plant_light_affinity": "HIGH"
          },
-			"desert_easy": {
-				"plant_water_affinity": "VERY_LOW",
+         "desert_easy": {
+            "plant_water_affinity": "VERY_LOW",
             "plant_light_affinity": "VERY_HIGH"
          },
-			"desert_medium": {
-				"plant_water_affinity": "LOW",
+         "desert_medium": {
+            "plant_water_affinity": "LOW",
             "plant_light_affinity": "VERY_HIGH"
          },
-			"desert_complex": {
-				"plant_water_affinity": "MEDIUM",
+         "desert_complex": {
+            "plant_water_affinity": "MEDIUM",
             "plant_light_affinity": "EXTREME"
          },
-			"arctic_staple": {
-				"plant_water_affinity": "IRRELEVANT",
+         "arctic_staple": {
+            "plant_water_affinity": "IRRELEVANT",
             "plant_light_affinity": "VERY_LOW"
          },
-			"arctic_easy": {
-				"plant_water_affinity": "LOW",
+         "arctic_easy": {
+            "plant_water_affinity": "LOW",
             "plant_light_affinity": "LOW"
          },
-			"arctic_medium": {
-				"plant_water_affinity": "MEDIUM",
+         "arctic_medium": {
+            "plant_water_affinity": "MEDIUM",
             "plant_light_affinity": "LOW"
          },
-			"arctic_complex": {
-				"plant_water_affinity": "HIGH",
+         "arctic_complex": {
+            "plant_water_affinity": "HIGH",
             "plant_light_affinity": "MEDIUM"
          },
-			"highlands_staple": {
-				"plant_water_affinity": "IRRELEVANT",
+         "highlands_staple": {
+            "plant_water_affinity": "IRRELEVANT",
             "plant_light_affinity": "LOW"
          },
-			"highlands_easy": {
-				"plant_water_affinity": "SIMPLE",
+         "highlands_easy": {
+            "plant_water_affinity": "SIMPLE",
             "plant_light_affinity": "MEDIUM"
          },
-			"highlands_medium": {
-				"plant_water_affinity": "HIGH",
+         "highlands_medium": {
+            "plant_water_affinity": "HIGH",
             "plant_light_affinity": "MEDIUM"
          },
-			"highlands_complex": {
-				"plant_water_affinity": "VERY_HIGH",
+         "highlands_complex": {
+            "plant_water_affinity": "VERY_HIGH",
             "plant_light_affinity": "HIGH"
          },
-			"tropical_staple": {
-				"plant_water_affinity": "IRRELEVANT",
+         "tropical_staple": {
+            "plant_water_affinity": "IRRELEVANT",
             "plant_light_affinity": "HIGH"
          },
-			"tropical_easy": {
-				"plant_water_affinity": "HIGH",
+         "tropical_easy": {
+            "plant_water_affinity": "HIGH",
             "plant_light_affinity": "HIGH"
          },
-			"tropical_medium": {
-				"plant_water_affinity": "VERY_HIGH",
+         "tropical_medium": {
+            "plant_water_affinity": "VERY_HIGH",
             "plant_light_affinity": "VERY_HIGH"
          },
-			"tropical_complex": {
-				"plant_water_affinity": "EXTREME",
+         "tropical_complex": {
+            "plant_water_affinity": "EXTREME",
             "plant_light_affinity": "VERY_HIGH"
          },
          "underground": {
@@ -88,18 +88,18 @@
          }
       },
       "plant_water_affinity": {
-			"IRRELEVANT": [
-				{
+         "IRRELEVANT": [
+            {
                "min_level": 0,
                "period_multiplier": 1
             }
-			],
+         ],
          "UNDESIRABLE": [
             {
                "min_level": -10,
                "period_multiplier": 0.95
             },
-				{
+            {
                "min_level": 0.1,
                "period_multiplier": 1
             },
@@ -119,13 +119,13 @@
                "min_level": 1.6,
                "period_multiplier": 6
             },
-				{
+            {
                "min_level": 2.5,
                "period_multiplier": 10
             }
          ],
          "VERY_LOW": [
-				{
+            {
                "min_level": -10,
                "period_multiplier": 1.5
             },
@@ -153,13 +153,13 @@
                "min_level": 1.6,
                "period_multiplier": 1.5
             },
-				{
+            {
                "min_level": 2.8,
                "period_multiplier": 10
             }
          ],
          "LOW": [
-				{
+            {
                "min_level": -10,
                "period_multiplier": 2
             },
@@ -183,13 +183,13 @@
                "min_level": 1.6,
                "period_multiplier": 1.1
             },
-				{
+            {
                "min_level": 3,
                "period_multiplier": 10
             }
          ],
-			"SIMPLE": [
-				{
+         "SIMPLE": [
+            {
                "min_level": -10,
                "period_multiplier": 2
             },
@@ -205,17 +205,17 @@
                "min_level": 0.5,
                "period_multiplier": 0.9
             },
-				{
+            {
                "min_level": 2.5,
                "period_multiplier": 1
             },
-				{
+            {
                "min_level": 3.2,
                "period_multiplier": 6
             }
          ],
          "MEDIUM": [
-				{
+            {
                "min_level": -10,
                "period_multiplier": 2
             },
@@ -239,13 +239,13 @@
                "min_level": 2,
                "period_multiplier": 1.1
             },
-				{
+            {
                "min_level": 3.2,
                "period_multiplier": 10
             }
          ],
          "HIGH": [
-				{
+            {
                "min_level": -10,
                "period_multiplier": 3
             },
@@ -269,13 +269,13 @@
                "min_level": 1.2,
                "period_multiplier": 0.9
             },
-				{
+            {
                "min_level": 3.5,
                "period_multiplier": 10
             }
          ],
          "VERY_HIGH": [
-				{
+            {
                "min_level": -10,
                "period_multiplier": 3
             },
@@ -299,13 +299,13 @@
                "min_level": 1.8,
                "period_multiplier": 0.9
             },
-				{
+            {
                "min_level": 3.8,
                "period_multiplier": 10
             }
          ],
          "EXTREME": [
-				{
+            {
                "min_level": -10,
                "period_multiplier": 5
             },
@@ -337,23 +337,23 @@
                "min_level": 2.2,
                "period_multiplier": 0.85
             },
-				{
+            {
                "min_level": 6,
                "period_multiplier": 1
             },
-				{
+            {
                "min_level": 8,
                "period_multiplier": 10
             }
          ]
       },
       "plant_light_affinity": {
-			"IRRELEVANT": [
-				{
+         "IRRELEVANT": [
+            {
                "min_level": 0,
                "period_multiplier": 1
             }
-			],
+         ],
          "UNDESIRABLE": [
             {
                "min_level": 0,
@@ -423,7 +423,7 @@
                "min_level": 0.3,
                "period_multiplier": 1.5
             },
-				{
+            {
                "min_level": 0.4,
                "period_multiplier": 1
             },
@@ -461,7 +461,7 @@
                "min_level": 0.6,
                "period_multiplier": 1
             },
-				{
+            {
                "min_level": 0.65,
                "period_multiplier": 0.95
             },
@@ -479,7 +479,7 @@
                "min_level": 0,
                "period_multiplier": 40
             },
-				{
+            {
                "min_level": 0.1,
                "period_multiplier": 5
             },
@@ -487,7 +487,7 @@
                "min_level": 0.3,
                "period_multiplier": 3
             },
-				{
+            {
                "min_level": 0.4,
                "period_multiplier": 2.6
             },
@@ -499,7 +499,7 @@
                "min_level": 0.6,
                "period_multiplier": 1.1
             },
-				{
+            {
                "min_level": 0.65,
                "period_multiplier": 1
             },
@@ -517,7 +517,7 @@
                "min_level": 0,
                "period_multiplier": 50
             },
-				{
+            {
                "min_level": 0.1,
                "period_multiplier": 8
             },
@@ -533,11 +533,11 @@
                "min_level": 0.6,
                "period_multiplier": 2
             },
-				{
+            {
                "min_level": 0.7,
                "period_multiplier": 1.2
             },
-				{
+            {
                "min_level": 0.75,
                "period_multiplier": 1
             },
@@ -555,7 +555,7 @@
                "min_level": 0,
                "period_multiplier": 60
             },
-				{
+            {
                "min_level": 0.1,
                "period_multiplier": 10
             },
@@ -563,7 +563,7 @@
                "min_level": 0.5,
                "period_multiplier": 4
             },
-				{
+            {
                "min_level": 0.6,
                "period_multiplier": 3
             },
@@ -575,7 +575,7 @@
                "min_level": 0.8,
                "period_multiplier": 1.2
             },
-				{
+            {
                "min_level": 0.85,
                "period_multiplier": 1
             },
@@ -583,7 +583,7 @@
                "min_level": 0.9,
                "period_multiplier": 0.95
             },
-				{
+            {
                "min_level": 0.95,
                "period_multiplier": 0.9
             },
@@ -593,7 +593,7 @@
             }
          ]
       },
-		"attributes": {
+      "attributes": {
          "defaults": {
             "drink_satiety_loss_multiplier": 1.0
          }
@@ -603,37 +603,37 @@
             "INTOLERABLE": "stonehearth:thoughts:eating:ate_intolerable",
             "LOVELY": "stonehearth:thoughts:eating:ate_lovely"
          },
-			"drink_quality": {
-				"INTOLERABLE": "stonehearth:thoughts:drinking:intolerable",
+         "drink_quality": {
+            "INTOLERABLE": "stonehearth:thoughts:drinking:intolerable",
             "UNPALATABLE": "stonehearth:thoughts:drinking:unpalatable",
             "RAW": "stonehearth:thoughts:drinking:raw",
-				"BLAND": "stonehearth:thoughts:drinking:bland",
+            "BLAND": "stonehearth:thoughts:drinking:bland",
             "PREPARED": "stonehearth:thoughts:drinking:prepared",
-				"AVERAGE": "stonehearth:thoughts:drinking:average",
+            "AVERAGE": "stonehearth:thoughts:drinking:average",
             "TASTY": "stonehearth:thoughts:drinking:tasty",
-				"LOVELY": "stonehearth:thoughts:drinking:lovely"
+            "LOVELY": "stonehearth:thoughts:drinking:lovely"
          },
-			"drink_item_quality": {
-				"FINE": "stonehearth:thoughts:drinking:had_item_quality_fine",
+         "drink_item_quality": {
+            "FINE": "stonehearth:thoughts:drinking:had_item_quality_fine",
             "EXCELLENT": "stonehearth:thoughts:drinking:had_item_quality_excellent",
             "MASTERWORK": "stonehearth:thoughts:drinking:had_item_quality_masterwork"
          }
       },
-		"food_satisfaction_thresholds": {
-			"AVERAGE": 45,
-			"HIGH": 80
-		},
+      "food_satisfaction_thresholds": {
+         "AVERAGE": 45,
+         "HIGH": 80
+      },
       "food_qualities": {
          "INTOLERABLE": -1,
          "LOVELY": 7,
          "MAXIMUM": 7
       },
-		"drink_satisfaction_thresholds": {
-			"AVERAGE": 65,
-			"HIGH": 90
-		},
-		"drink_qualities" : {
-			"INTOLERABLE": -1,
+      "drink_satisfaction_thresholds": {
+         "AVERAGE": 65,
+         "HIGH": 90
+      },
+      "drink_qualities" : {
+         "INTOLERABLE": -1,
          "UNPALATABLE": 0,
          "MINIMUM_VIABLE": 0,
          "RAW_BLAND": 1,
@@ -642,7 +642,7 @@
          "PREPARED_BLAND": 4,
          "PREPARED_AVERAGE": 5,
          "PREPARED_TASTY": 6,
-			"LOVELY": 7,
+         "LOVELY": 7,
          "MAXIMUM": 7
       },
       "drink_satiety" : {
@@ -654,23 +654,23 @@
          "HOURLY_DRINK_SATIETY_LOSS" : 1.2,
          "DRINKTIME_MORNING_START": 3,
          "DRINKTIME_AFTERNOON_START" : 15,
-			"DRINKTIME_NIGHT_START" : 20,
+         "DRINKTIME_NIGHT_START" : 20,
          "DRINK_TIME_WINDOW": "2h",
          "PREFERRED_DRINK_BONUS": 1.5,
          "HAD_DRINK_RECENTLY_WINDOW": 2200
       },
-		"drink_satiety_levels": {
+      "drink_satiety_levels": {
          "SATED": 1,
          "NEUTRAL": 2,
          "THIRSTY": 3,
          "VERY_THIRSTY": 4
       },
-		"drink_max_distance": {
+      "drink_max_distance": {
          "DEFAULT": 80,
          "THIRSTY": 160,
          "VERY_THIRSTY": 240
       },
-		"score": {
+      "score": {
          "drink": {
             "RAW_DRINK_COUNT_MULTIPLIER": 1,
             "PREPARED_DRINK_COUNT_MULTIPLIER": 1,
@@ -679,38 +679,38 @@
             "NO_LUXURY_DRINK_PENALTY": -15
          }
       },
-		"sleep": {
-			"HOURLY_SLEEPINESS": 1,
+      "sleep": {
+         "HOURLY_SLEEPINESS": 1,
          "SLEEP_ON_GROUND_DURATION_MULTIPLIER": 1.05,
          "TIRED_THOUGHT_THRESHOLD": 14,
          "FATIGUED_THOUGHT_THRESHOLD": 20,
-			"EXHAUSTED_THOUGHT_THRESHOLD": 26,
+         "EXHAUSTED_THOUGHT_THRESHOLD": 26,
          "PET_SLEEP_DURATION": 4800,
          "BEDTIME_START_HOUR": 1,
          "BEDTIME_END_HOUR": 6,
          "BEDTIME_SLEEPINESS_BOOST": 8,
-			"MIN_SLEEPINESS_TO_SLEEP": 22,
+         "MIN_SLEEPINESS_TO_SLEEP": 22,
          "MIN_SLEEPINESS_TO_SLEEP_ON_GROUND": 25,
-			"MAX_SLEEPINESS": 32
+         "MAX_SLEEPINESS": 32
       },
       "healing": {
          "SPECIAL_ATTENTION_CONDITIONS": {
-				"wound_corrupt": 1,
-				"infection": 0.9,
-				"wound_fire": 0.8,
-				"poison": 0.7,
+            "wound_corrupt": 1,
+            "infection": 0.9,
+            "wound_fire": 0.8,
+            "poison": 0.7,
             "wound_pierce": 0.6,
             "wound_impact": 0.6,
-				"wound_cut": 0.6,
-				"wound_cold": 0.5,
-				"toxin": 0.4	
+            "wound_cut": 0.6,
+            "wound_cold": 0.5,
+            "toxin": 0.4
          },
-			"__comment": "Basic conditions are conditions that will always be healed by any treatment if rank 1",
-			"BASIC_CONDITIONS": {
-				"wound_pierce": true,
-				"wound_impact": true,
-				"wound_cut": true
-			},
+         "__comment": "Basic conditions are conditions that will always be healed by any treatment if rank 1",
+         "BASIC_CONDITIONS": {
+            "wound_pierce": true,
+            "wound_impact": true,
+            "wound_cut": true
+         },
          "FILTER_GUTS_DIVISOR": 3,
          "FILTER_GUTS_MAX_DIFF": 10,
          "FILTER_HEALTH_DIVISOR": 20,
@@ -719,10 +719,10 @@
       "health": {
          "COMBAT_REST_WHEN_INJURED_PERCENTAGE": 0.9
       },
-		"item_quality": {
+      "item_quality": {
          "mixintypes": {
-				"bonuses": "override"
-			},
+            "bonuses": "override"
+         },
          "bonuses": {
             "net_worth": [
                0,
@@ -738,10 +738,10 @@
             ]
          }
       },
-		"crafting": {
-			"mixintypes": {
-				"ITEM_QUALITY_CHANCES": "override"
-			},
+      "crafting": {
+         "mixintypes": {
+            "ITEM_QUALITY_CHANCES": "override"
+         },
          "GAME_TIME_PER_EFFORT": "90s",
          "ITEM_QUALITY_CHANCES": [
             [[1, 1]],
@@ -753,7 +753,7 @@
          ]
       },
       "darkness": {
-			"DEFAULT_LIGHT_RADIUS": 16,
+         "DEFAULT_LIGHT_RADIUS": 16,
          "SEARCH_RADIUS": 16,
          "SAMPLING_PERIOD": "10m+10m",
          "MIN_SLEEPINESS_TO_PREFER_DARKNESS": 20
@@ -809,6 +809,12 @@
                }
             ]
          }
+      },
+      "effect_times": {
+         "SINGLE_TARGET_HEAL_CAST_TIME": 2200
+      },
+      "effects": {
+         "CAST_HEAL": "combat_1h_heal"
       },
       "entity_mover": {
          "movement_types": {
@@ -970,35 +976,35 @@
       },
       "equipment": {
          "SLOT_TO_BONE_MAP": {
-				"beekeeping_hat": "head",
-				"mask": "head",
+            "beekeeping_hat": "head",
+            "mask": "head",
             "accessory": "pelvis",
-				"cape": "back",
+            "cape": "back",
             "backpack": "torso",
-				"worker_mining_pick": "mainhand",
-				"worker_axe": "mainhand",
-				"rightArm": "rightArm",
-				"consumable": "root",
-				"combat_default_skill": "root",
-				"combat_skill_1": "root",
-				"combat_skill_2": "root",
-				"combat_skill_3": "root"
+            "worker_mining_pick": "mainhand",
+            "worker_axe": "mainhand",
+            "rightArm": "rightArm",
+            "consumable": "root",
+            "combat_default_skill": "root",
+            "combat_skill_1": "root",
+            "combat_skill_2": "root",
+            "combat_skill_3": "root"
          }
       },
-		"weather": {
-			"kingdoms_affected_by_weather": { 
-				"goblins": true, 
-				"human_npcs": true,
-				"rabbit_biped_npcs": true,
-				"orc_npcs": true,
-				"orcs": true,
-				"mountain_folk_npcs": true
+      "weather": {
+         "kingdoms_affected_by_weather": { 
+            "goblins": true, 
+            "human_npcs": true,
+            "rabbit_biped_npcs": true,
+            "orc_npcs": true,
+            "orcs": true,
+            "mountain_folk_npcs": true
          },
          "weather_types": {
             "COLD": "cold_weather",
             "HOT": "hot_weather"
          }
-		},
+      },
       "farming": {
          "NONPREFERRED_SEASON_GROWTH_TIME_MULTIPLIER": 1.5,
          "DEFAULT_FLOODED_GROWTH_TIME_MULTIPLIER": 3,
@@ -1030,8 +1036,8 @@
       },
       "inventory": {
          "MAX_INSIGNIFICANT_PATH_LENGTH": 12,
-			"MIN_COUNT_FOR_PLENTIFUL_ITEMS": 20,
-			"restock_director": {
+         "MIN_COUNT_FOR_PLENTIFUL_ITEMS": 20,
+         "restock_director": {
             "FAILED_ITEM_REQUEUE_DELAY": "30m"
          },
          "input_bins": {

@@ -481,4 +481,20 @@ function BaseJob:_add_current_role_buffs()
    end
 end
 
+function BaseJob:get_medic_capabilities()
+   return self._sv._medic_capabilities
+end
+
+function BaseJob:set_medic_capabilities(args)
+   if args.medic_capabilities then
+      self._sv._medic_capabilities = args.medic_capabilities
+      radiant.events.trigger_async(self._sv._entity, 'stonehearth_ace:medic_capabilities_changed', args.medic_capabilities)
+   end
+end
+
+function BaseJob:remove_medic_capabilities(args)
+   self._sv._medic_capabilities = nil
+   radiant.events.trigger_async(self._sv._entity, 'stonehearth_ace:medic_capabilities_changed')
+end
+
 return BaseJob
