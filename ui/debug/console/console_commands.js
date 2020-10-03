@@ -33,4 +33,20 @@ $(document).ready(function(){
       // },
       debugMenuNameOverride: "Dump to QB"
    });
+
+   radiant.console.register('show_debug_ui', {
+      stringToString: function(string) {
+         switch(string.toLowerCase()){
+            case "true": case "yes": case "1": return "block";
+            case "false": case "no": case "0": case null: return "none";
+            default: return "block";
+         }
+      },
+
+      call: function(cmdobj, fn, args) {
+         var shouldShow = args._.length > 0 ? this.stringToString(args._[0]) : "block";
+         $(".debugDock").css("display", shouldShow);
+      },
+      description: "Use to change visibility of the debugtools panel. Usage: show_debug_ui true/false"
+   });
 });
