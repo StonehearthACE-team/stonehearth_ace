@@ -1,12 +1,12 @@
 local FindHealableTargetObserver = require 'stonehearth.ai.observers.find_healable_target_observer'
 local AceFindHealableTargetObserver = class()
 
-AceFindHealableTargetObserver.__ace_old_activate = FindHealableTargetObserver.activate
+AceFindHealableTargetObserver._ace_old_activate = FindHealableTargetObserver.activate
 function AceFindHealableTargetObserver:activate()
    self._medic_capabilities_changed_listener = radiant.events.listen(self._entity,
          'stonehearth_ace:medic_capabilities_changed', self, self._on_medic_capabilities_changed)
    
-   self:__ace_old_activate()
+   self:_ace_old_activate()
 end
 
 function AceFindHealableTargetObserver:_on_medic_capabilities_changed(capabilities)

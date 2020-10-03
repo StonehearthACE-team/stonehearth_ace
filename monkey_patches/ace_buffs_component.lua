@@ -106,7 +106,11 @@ end
 function AceBuffsComponent:get_reembarkable_buffs()
    local buffs = {}
    for buff_id, buff in pairs(self._sv.buffs) do
-      if buff:is_reembarkable() then
+      if not buff.is_reembarkable then
+         -- this is fixed for future buffs, but existing ones need to be removed
+         buffs[buff_id] = nil
+         self.__saved_variables:mark_changed()
+      elseif buff:is_reembarkable() then
          buffs[buff_id] = buff:get_options()
       end
    end
@@ -226,6 +230,11 @@ function AceBuffsComponent:add_buff(uri, options)
 
    if cur_count == 0 then
       buff = radiant.create_controller('stonehearth:buff', self._entity, uri, json, options)
+      -- scripts can destroy the buff during the on_buff_added function! we don't want to continue if the buff has already been destroyed
+      if buff.__destroyed then
+         return
+      end
+
       self._sv.buffs[uri] = buff
 
       -- if this buff disallows others, track that and remove any that are currently active

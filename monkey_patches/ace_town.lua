@@ -317,7 +317,7 @@ function AceTown:can_medic_treat_any_conditions(medic, conditions)
       return false
    end
 
-   local job = entity:get_component('stonehearth:job')
+   local job = medic:get_component('stonehearth:job')
    local medic_capabilities = job and job:get_curr_job_controller():get_medic_capabilities()
    if not medic_capabilities or not medic_capabilities.cure_conditions then
       return false

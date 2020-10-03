@@ -28,13 +28,11 @@ function AceBuff:destroy()
       self:_update_duration_stat()
    end
 
-	if self._json.thought and self._json.thought_remove_on_destroy and radiant.entities.has_thought(self._sv._entity, self._json.thought) then
-		radiant.entities.remove_thought(self._sv._entity, self._json.thought)
-	end
-	
-   if self._ace_old_destroy then
-      self:_ace_old_destroy()
+   if self._json.thought and self._json.thought_remove_on_destroy and radiant.entities.has_thought(self._sv._entity, self._json.thought) then
+      radiant.entities.remove_thought(self._sv._entity, self._json.thought)
    end
+   
+   self:_ace_old_destroy()
 end
 
 AceBuff._ace_old__create_buff = Buff._create_buff
@@ -48,27 +46,27 @@ function AceBuff:_create_buff()
          self:on_repeat_add(self._options)
       end
    end
-	
-	if self._sv.stacks == self._sv.max_stacks and self._json.buff_evolve then
-		self:_try_evolve()
-	end
-	
-	if self._json.thought then
-		radiant.entities.add_thought(self._sv._entity, self._json.thought)
-	end
-	
-	if self._json.queue_crafting_order and self._sv.stacks == 1 then
-		local player_id = radiant.entities.get_player_id(self._sv._entity)
-		local should_queue = stonehearth.client_state:get_client_gameplay_setting(player_id, 'stonehearth_ace', 'auto_queue_medicine', true)
-		if should_queue then
-			local inventory = {}
-			inventory = stonehearth.inventory:get_inventory(player_id)
-			if inventory and not inventory:get_items_of_type(self._json.queue_crafting_order) then
-				local player_jobs_controller = stonehearth.job:get_jobs_controller(player_id)
-				player_jobs_controller:request_craft_product(self._json.queue_crafting_order, 1)
-			end
-		end
-	end
+   
+   if self._sv.stacks == self._sv.max_stacks and self._json.buff_evolve then
+      self:_try_evolve()
+   end
+   
+   if self._json.thought then
+      radiant.entities.add_thought(self._sv._entity, self._json.thought)
+   end
+   
+   if self._json.queue_crafting_order and self._sv.stacks == 1 then
+      local player_id = radiant.entities.get_player_id(self._sv._entity)
+      local should_queue = stonehearth.client_state:get_client_gameplay_setting(player_id, 'stonehearth_ace', 'auto_queue_medicine', true)
+      if should_queue then
+         local inventory = {}
+         inventory = stonehearth.inventory:get_inventory(player_id)
+         if inventory and not inventory:get_items_of_type(self._json.queue_crafting_order) then
+            local player_jobs_controller = stonehearth.job:get_jobs_controller(player_id)
+            player_jobs_controller:request_craft_product(self._json.queue_crafting_order, 1)
+         end
+      end
+   end
 
    if self._json.duration_statistics_key and self._sv._entity:get_component('stonehearth_ace:statistics') then
       self:_create_duration_timer()
@@ -126,7 +124,7 @@ function AceBuff:remove_stack(allow_complete_removal)
 end
 
 function AceBuff:get_stacks()
-	return self._sv.stacks
+   return self._sv.stacks
 end
 
 -- override to allow removing stacks instead of entire buff on expire
@@ -195,9 +193,9 @@ function AceBuff:on_repeat_add(options)
       for i = 1, options.stacks do
          self:_add_stack()
       end
-		if self._sv.stacks == self._sv.max_stacks and self._json.buff_evolve then
-			self:_try_evolve()
-		end
+      if self._json.buff_evolve and self._sv.stacks == self._sv.max_stacks then
+         self:_try_evolve()
+      end
       self:_destroy_timer()
       self:_create_timer()
       return true
@@ -211,13 +209,13 @@ function AceBuff:on_repeat_add(options)
 end
 
 function AceBuff:_try_evolve()
-	if self._json.evolve_chance then
-		if rng:get_real(0, 1) < self._json.evolve_chance then
-		radiant.entities.add_buff(self._sv._entity, self._json.buff_evolve)
-		end
-	else
-	radiant.entities.add_buff(self._sv._entity, self._json.buff_evolve)
-	end
+   if self._json.evolve_chance then
+      if rng:get_real(0, 1) < self._json.evolve_chance then
+         radiant.entities.add_buff(self._sv._entity, self._json.buff_evolve)
+      end
+   else
+      radiant.entities.add_buff(self._sv._entity, self._json.buff_evolve)
+   end
 end
 
 function AceBuff:_create_duration_timer()

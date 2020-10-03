@@ -3,15 +3,15 @@ local AceHealthObserver = class()
 
 local log = radiant.log.create_logger('health_observer')
 
-AceHealthObserver.__ace_old_activate = HealthObserver.activate
+AceHealthObserver._ace_old_activate = HealthObserver.activate
 function AceHealthObserver:activate()
-   self:__ace_old_activate()
+   self:_ace_old_activate()
    self._magically_healed_listener = radiant.events.listen(self._sv.entity, 'stonehearth_ace:entity:magically_healed', self, self._on_magically_healed)
 end
 
-AceHealthObserver.__ace_old_destroy = HealthObserver.__user_destroy
+AceHealthObserver._ace_old_destroy = HealthObserver.__user_destroy
 function AceHealthObserver:destroy()
-   self:__ace_old_destroy()
+   self:_ace_old_destroy()
 
    if self._sv._recently_magically_treated_timer then
       self._sv._recently_magically_treated_timer:destroy()

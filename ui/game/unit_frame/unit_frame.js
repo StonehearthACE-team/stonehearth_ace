@@ -713,9 +713,25 @@ App.StonehearthUnitFrameView.reopen({
          maxHealableHealth = Math.ceil(maxHealth * modifier);
       }
       maxHealth = Math.ceil(maxHealth);
+      var hasDiffMaxHealth = maxHealableHealth && maxHealableHealth != maxHealth;
       
       self.set('maxHealth', maxHealth);
-      self.set('maxHealableHealth', maxHealableHealth && maxHealableHealth != maxHealth ? maxHealableHealth : null);
+      self.set('maxHealableHealth', hasDiffMaxHealth ? maxHealableHealth : null);
+
+      if (hasDiffMaxHealth) {
+         Ember.run.scheduleOnce('afterRender', self, function() {
+            var tooltipString = i18n.t('stonehearth_ace:ui.game.unit_frame.max_healable_health.tooltip_description', {max_health: maxHealableHealth});
+            var maxHealthTooltip = App.tooltipHelper.createTooltip(
+               i18n.t('stonehearth_ace:ui.game.unit_frame.max_healable_health.tooltip_title'),
+               tooltipString);
+            self.$('#bubble').tooltipster({
+               content: $(maxHealthTooltip)
+            });
+         });
+      }
+      else if (self.$('#bubble').hasClass('tooltipstered')) {
+         self.$('#bubble').tooltipster('destroy');
+      }
    }.observes('model.stonehearth:expendable_resources', 'model.stonehearth:attributes.attributes.max_health'),
 
    _updateBuffs: function() {

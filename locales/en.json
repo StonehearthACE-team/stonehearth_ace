@@ -14397,6 +14397,10 @@
             }
          },
          "unit_frame": {
+            "max_healable_health": {
+               "tooltip_title": "Wounded!",
+               "tooltip_description": "If their health drops below <span class='maxHealableHealth'>[str(max_health)]</span>, it can't be healed above it until they receive medical treatment."
+            },
             "show_promotion_tree": {
                "tooltip_title": "Change Jobs",
                "tooltip_description": "Click to promote this hearthling to a different job."
