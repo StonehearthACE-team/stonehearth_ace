@@ -11,6 +11,7 @@ local service_creation_order = {
 
 local monkey_patches = {
    ace_building_service = 'stonehearth.services.server.building.building_service',
+   ace_charging_pedestal_component = 'stonehearth.entities.gizmos.charging_pedestal.charging_pedestal_component',
    ace_craft_order_list = 'stonehearth.components.workshop.craft_order_list',
    ace_craft_order = 'stonehearth.components.workshop.craft_order',
    ace_crafter_component = 'stonehearth.components.crafter.crafter_component',
@@ -147,7 +148,6 @@ local monkey_patches = {
    ace_safety_observer = 'stonehearth.ai.observers.safety_observer',
    ace_cleric = 'stonehearth.jobs.cleric.cleric',
    ace_encounter = 'stonehearth.services.server.game_master.controllers.encounter',
-   ace_node = 'stonehearth.services.server.game_master.controllers.node',
    ace_collect_starting_resources = 'stonehearth.scenarios.quests.collect_starting_resources.collect_starting_resources',
    ace_pillage_mission = 'stonehearth.services.server.game_master.controllers.missions.pillage_mission',
    ace_raid_crops_mission = 'stonehearth.services.server.game_master.controllers.missions.raid_crops_mission',

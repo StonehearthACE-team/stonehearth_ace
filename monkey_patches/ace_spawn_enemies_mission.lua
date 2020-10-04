@@ -2,8 +2,8 @@ local Mission = require 'stonehearth.services.server.game_master.controllers.mis
 local AceSpawnEnemiesMission = class()
 
 function AceSpawnEnemiesMission:destroy()
-   Mission.__user_destroy(self)
    self:stop()
+   Mission.__user_destroy(self)
 end
 
 return AceSpawnEnemiesMission

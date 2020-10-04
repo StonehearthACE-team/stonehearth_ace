@@ -293,6 +293,18 @@ function ace_entities.can_output_spawned_items(items, output, inputs)
    return item_io_lib.can_output(items, inputs, options)
 end
 
+function ace_entities.get_successfully_output_items(output_table)
+   -- combine the spilled and succeeded tables into an array
+   local combined = {}
+   for _, category in ipairs({'succeeded', 'spilled'}) do
+      for _, item in pairs(output_table[category]) do
+         table.insert(combined, item)
+      end
+   end
+
+   return combined
+end
+
 function ace_entities.get_empty_output_table()
    return {spilled = {}, succeeded = {}, failed = {}}
 end
