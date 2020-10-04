@@ -120,6 +120,18 @@ function Node:check_requirement_met(ctx, name, rule)
    end
 
    -- grab the lhs...
+   local return_true, lhs = self:_get_requirement_value(ctx, item, rule)
+   if return_true then
+      return true
+   end
+
+   -- compare against rhs based on deny rule.
+   return self:_compare_requirement_condition(typ, lhs, rhs)
+end
+
+function Node:_get_requirement_value(ctx, item, rule)
+   local lhs
+   
    if item == 'kingdom' then
       lhs = stonehearth.player:get_kingdom(ctx.player_id)
    -- TODO: replace these items with score
@@ -260,7 +272,10 @@ function Node:check_requirement_met(ctx, name, rule)
       return true
    end
 
-   -- compare against rhs based on deny rule.
+   return false, lhs
+end
+
+function Node:_compare_requirement_condition(typ, lhs, rhs)
    local matches
    if typ == 'deny_if' then
       return not (lhs == rhs)
@@ -276,9 +291,8 @@ function Node:check_requirement_met(ctx, name, rule)
       return not (lhs < rhs.min or lhs > rhs.max)
    else
       self._log:error('unknown check type \"%s\" in can_start check.', tostring(typ))
+      return true
    end
-
-   return true;
 end
 
 -- A test is a set of rules. Every rule must pass for the test to pass

@@ -2,8 +2,8 @@ local Mission = require 'stonehearth.services.server.game_master.controllers.mis
 local AcePillageMission = class()
 
 function AcePillageMission:destroy()
-   Mission.__user_destroy(self)
    self:stop()
+   Mission.__user_destroy(self)
 end
 
 return AcePillageMission
