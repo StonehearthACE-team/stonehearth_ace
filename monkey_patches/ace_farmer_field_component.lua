@@ -333,6 +333,10 @@ function AceFarmerFieldComponent:_create_post_harvest_crop_listeners(dirt_plot)
          parent_changed = radiant.events.listen(entity, 'radiant:mob:parent_changed', function()
             if radiant.entities.get_world_grid_location(entity) == nil then
                entity:remove_component('stonehearth:crop')
+               local output = entity:get_component('stonehearth_ace:output')
+               if output then
+                  output:set_parent_output()
+               end
                on_removed()
             end
          end)
@@ -360,6 +364,34 @@ function AceFarmerFieldComponent:_destroy_post_harvest_crop_listeners(dirt_plot)
    end
 end
 
+function AceFarmerFieldComponent:_replace_crop_with_post_harvest(dirt_plot, product, auto_harvest_type)
+   local crop_comp = dirt_plot.contents:get_component('stonehearth:crop')
+   local x, z = crop_comp:get_field_offset()
+   local iconic = true
+
+   if product then
+      if auto_harvest_type == 'place' then
+         iconic = false
+         product = entity_forms_lib.get_root_entity(product) or product
+
+         dirt_plot.post_harvest_contents = product
+         product:add_component('stonehearth:crop'):set_field(self, x, z)
+         product:add_component('stonehearth_ace:output'):set_parent_output(self._entity)
+      end
+   end
+
+   radiant.entities.kill_entity(dirt_plot.contents)
+   dirt_plot.contents = nil
+   if product then
+      radiant.terrain.place_entity_at_exact_location(product, self._location + Point3(x - 1, 0, z - 1), {force_iconic = iconic})
+      self:_create_post_harvest_crop_listeners(dirt_plot)
+   end
+
+   self.__saved_variables:mark_changed()
+
+   return product
+end
+
 function AceFarmerFieldComponent:auto_harvest_crop(auto_harvest_type, x, z)
    -- automatically harvest the crop; if the type is 'place', place it 
    self:_update_crop_fertilized(x, z, false)
@@ -367,21 +399,7 @@ function AceFarmerFieldComponent:auto_harvest_crop(auto_harvest_type, x, z)
    if dirt_plot and dirt_plot.contents then
       local product_uri = dirt_plot.contents:get_component('stonehearth:crop'):get_product()
       local product = product_uri and radiant.entities.create_entity(product_uri, { owner = self._entity })
-
-      local iconic = true
-      if auto_harvest_type == 'place' then
-         product:add_component('stonehearth:crop'):set_field(self, x, z)
-         dirt_plot.post_harvest_contents = product
-         iconic = false
-      end
-
-      radiant.entities.kill_entity(dirt_plot.contents)
-      dirt_plot.contents = nil
-      if product then
-         radiant.terrain.place_entity_at_exact_location(product, self._location + Point3(x - 1, 0, z - 1), {force_iconic = iconic})
-         self:_create_post_harvest_crop_listeners(dirt_plot)
-      end
-      self.__saved_variables:mark_changed()
+      self:_replace_crop_with_post_harvest(dirt_plot, product, auto_harvest_type)
    end
 end
 
@@ -445,22 +463,6 @@ function AceFarmerFieldComponent:try_harvest_crop(harvester, x, z, num_stacks, a
             else
                self:_replace_harvester_carrying(harvester, primary_item)
             end
-         elseif auto_harvest_type then
-            local iconic = true
-            if auto_harvest_type == 'place' then
-               -- if it's an iconic, make sure we get the actual root entity
-               if primary_item:get_component("stonehearth:entity_forms") then
-                  primary_item = entity_forms_lib.get_root_entity(primary_item)
-               end
-               primary_item:add_component('stonehearth:crop'):set_field(self, x, z)
-               primary_item:add_component('stonehearth_ace:output'):set_parent_output(self._entity)
-               dirt_plot.post_harvest_contents = primary_item
-               iconic = false
-            end
-
-            radiant.terrain.place_entity_at_exact_location(primary_item, origin, {force_iconic = iconic})
-            self:_create_post_harvest_crop_listeners(dirt_plot)
-            self.__saved_variables:mark_changed()
          end
       end
 
@@ -470,7 +472,7 @@ function AceFarmerFieldComponent:try_harvest_crop(harvester, x, z, num_stacks, a
          crop:get_component('stonehearth:growing'):set_growth_stage(stage)
          self:_update_crop_fertilized(x, z, false)
       else
-         radiant.entities.kill_entity(crop)
+         self:_replace_crop_with_post_harvest(dirt_plot, not harvester and primary_item, auto_harvest_type)
       end
 
       return true
@@ -953,6 +955,8 @@ end
 
 AceFarmerFieldComponent._ace_old__on_destroy = FarmerFieldComponent._on_destroy
 function AceFarmerFieldComponent:_on_destroy()
+   self:_destroy_post_harvest_crops()
+
    self:_ace_old__on_destroy()
    
    radiant.entities.destroy_entity(self._sv._fertilizable_layer)
@@ -966,6 +970,41 @@ function AceFarmerFieldComponent:_destroy_listeners()
    self:_destroy_water_listener()
    self:_destroy_climate_listeners()
    self:_destroy_all_post_harvest_crop_listeners()
+end
+
+-- go through post_harvest contents:
+-- destroy if not RN, remove crop component if they are
+function AceFarmerFieldComponent:_destroy_post_harvest_crops()
+   local contents = self._sv.contents
+   if contents then
+      for x=1, self._sv.size.x do
+         for y=1, self._sv.size.y do
+            local dirt_plot = contents[x][y]
+            local post_harvest_contents = dirt_plot and dirt_plot.post_harvest_contents
+            if post_harvest_contents then
+               -- if it's an RRN, it won't have commands for moving/undeploying, so we need to destroy it
+               local resource_node = post_harvest_contents:get_component('stonehearth:resource_node')
+               if resource_node then
+                  local crop = post_harvest_contents:get_component('stonehearth:crop')
+                  if crop then
+                     crop:set_field()
+                     post_harvest_contents:remove_component('stonehearth:crop')
+                  end
+                  local output = post_harvest_contents:get_component('stonehearth_ace:output')
+                  if output then
+                     output:set_parent_output()
+                  end
+
+                  -- also trigger a harvest request for them
+                  resource_node:request_harvest(radiant.entities.get_player_id(self._entity))
+               else
+                  radiant.entities.destroy_entity(post_harvest_contents)
+               end
+               dirt_plot.post_harvest_contents = nil
+            end
+         end
+      end
+   end
 end
 
 function AceFarmerFieldComponent:_get_field_layers()

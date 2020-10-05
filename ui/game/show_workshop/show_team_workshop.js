@@ -1,4 +1,16 @@
+var _showSelectedWorkshopCrafting = false;
+
 $(top).on('stonehearthReady', function() {
+   // need to apply the setting on load as well
+   radiant.call('radiant:get_config', 'mods.stonehearth_ace.show_selected_workshop_crafting')
+   .done(function(o) {
+      var show_selected_workshop_crafting = o['mods.stonehearth_ace.show_selected_workshop_crafting'];   // defaults to false
+      var e = {
+         value: show_selected_workshop_crafting
+      };
+      $(top).trigger('show_selected_workshop_crafting_changed', e);
+   });
+
    // Create a proxy for the workshops object, so we know when a new StonehearthTeamCrafterView is created
    // and can then update it with our own logic.
    App.workshopManager.ace_workshops = App.workshopManager.workshops;
@@ -41,6 +53,10 @@ $(top).on('stonehearthReady', function() {
       }
    });
 
+   $(top).on("show_selected_workshop_crafting_changed", function (_, e) {
+      _showSelectedWorkshopCrafting = e.value;
+   });
+   
    App.workshopManager.pauseOrResumeTrackingItems = $.debounce(1, function () {
       var self = this;
       if (!self.usableItemTracker) return;  // We'll be called later.
@@ -184,11 +200,18 @@ $(top).on('stonehearthReady', function() {
             self._updateCraftOrderPreference();
 
             $(top).on("selected_workshop_entity_changed", function (_, e) {
-               self._updateSelectedWorkshopEntity(e);
+               if (_showSelectedWorkshopCrafting) {
+                  self._updateSelectedWorkshopEntity(e, true);
+               }
+            });
+
+            $(top).on("show_selected_workshop_crafting_changed", function (_, e) {
+               // in case _showSelectedWorkshopCrafting hasn't been updated yet, use e.value
+               self._updateSelectedWorkshopEntity(null, e.value);
             });
          },
 
-         _updateSelectedWorkshopEntity: function(e) {
+         _updateSelectedWorkshopEntity: function(e, showSelectedWorkshopCrafting) {
             var self = this;
             
             if (!e) {
@@ -199,16 +222,19 @@ $(top).on('stonehearthReady', function() {
             var recipes = self.get('recipes');
             radiant.each(recipes, function(_, recipeCategory) {
                radiant.each(recipeCategory.recipes, function(_, recipe) {
-                  var isWorkshopSelected = !recipe.workshop;
-                  if (recipe.workshop && uri) {
-                     if (recipe.workshop.uri == uri) {
-                        isWorkshopSelected = true;
-                     }
-                     else if (recipe.workshop.equivalents) {
-                        for (var i = 0; i < recipe.workshop.equivalents.length; i++) {
-                           if (recipe.workshop.equivalents[i] == uri) {
-                              isWorkshopSelected = true;
-                              break;
+                  var isWorkshopSelected = false;
+                  if (showSelectedWorkshopCrafting == true) {
+                     isWorkshopSelected = !recipe.workshop;
+                     if (recipe.workshop && uri) {
+                        if (recipe.workshop.uri == uri) {
+                           isWorkshopSelected = true;
+                        }
+                        else if (recipe.workshop.equivalents) {
+                           for (var i = 0; i < recipe.workshop.equivalents.length; i++) {
+                              if (recipe.workshop.equivalents[i] == uri) {
+                                 isWorkshopSelected = true;
+                                 break;
+                              }
                            }
                         }
                      }

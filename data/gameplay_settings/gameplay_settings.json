@@ -194,6 +194,16 @@
          },
          "ordinal": 100
       },
+      "show_selected_workshop_crafting": {
+         "type": "boolean",
+         "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.show_selected_workshop_crafting)",
+         "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.show_selected_workshop_crafting_description)",
+         "default": false,
+         "on_change": {
+            "fire_event": "show_selected_workshop_crafting_changed"
+         },
+         "ordinal": 100
+      },
       "auto_save_unique_files": {
          "host_only": true,
          "type": "boolean",
