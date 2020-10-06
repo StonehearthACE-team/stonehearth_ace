@@ -92,16 +92,6 @@ App.RootView.reopen({
                             {warning: 'warning'});
             });
       };
-
-      App.stonehearthClient.deactivateAllTools = function() {
-         var self = this;
-         return radiant.call('stonehearth:deactivate_all_tools')
-            .always(function() {
-               if (self._activeTool && (self._activeTool.state() == "resolved" || self._activeTool.state() == "rejected")) {
-                  self._activeTool.state() = null;
-               }
-            });
-      };
      
       App.stonehearthClient.showPromotionTree = function(entity_id, job_index) {
          var view = App.stonehearth.promotionTreeView;
@@ -160,7 +150,7 @@ App.RootView.reopen({
       App.stonehearthClient.createFarm = function(fieldType) {
          var self = this;
 
-         App.setGameMode('zones');
+         App.setGameMode('farm');
          var tip = self.showTipWithKeyBindings('stonehearth:ui.game.menu.zone_menu.items.create_farm.tip_title',
                'stonehearth_ace:ui.game.menu.zone_menu.items.create_farm.tip_description',
                {left_binding: 'build:rotate:left', right_binding: 'build:rotate:right'});

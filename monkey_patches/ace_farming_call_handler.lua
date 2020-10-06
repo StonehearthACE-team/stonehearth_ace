@@ -189,7 +189,7 @@ function AceFarmingCallHandler:create_new_field(session, response, location, siz
    validator.expect.num.range(size.y, field_size.min or 1, field_size.max or 11)
 
    local entity = stonehearth.farming:create_new_field(session, location, size, field_type, rotation)
-   return { field = entity }
+   response:resolve({ field = entity })
 end
 
 return AceFarmingCallHandler

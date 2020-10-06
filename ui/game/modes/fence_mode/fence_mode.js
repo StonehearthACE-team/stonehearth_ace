@@ -26,6 +26,9 @@ App.AceBuildFenceModeView = App.View.extend({
             self.buildFence();
          }
       }
+      else {
+         self.buildFence();
+      }
    },
 
    didInsertElement: function() {

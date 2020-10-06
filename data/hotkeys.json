@@ -137,25 +137,39 @@
 		"zone:farm": {
          "combo1": "shift+keyf"
       },
-		"zone:underfarm": {
-         "display_name": "i18n(stonehearth_ace:data.hotkeys.keys.zone_underfarm.display_name)",
+		"zone:bush_farm": {
+         "display_name": "i18n(stonehearth_ace:data.hotkeys.keys.bush_farm.display_name)",
          "category": "zone",
          "ordinal": 21,
-         "combo1": "ctrl+keyf",
+         "combo1": "",
          "combo2": ""
       },
-		"zone:treefarm": {
-         "display_name": "i18n(stonehearth_ace:data.hotkeys.keys.zone_treefarm.display_name)",
+		"zone:decorative_flowers": {
+         "display_name": "i18n(stonehearth_ace:data.hotkeys.keys.decorative_flowers.display_name)",
          "category": "zone",
-         "ordinal": 23,
-         "combo1": "ctrl+shift+keyf",
+         "ordinal": 22,
+         "combo1": "",
          "combo2": ""
       },
 		"zone:orchard": {
          "display_name": "i18n(stonehearth_ace:data.hotkeys.keys.zone_orchard.display_name)",
          "category": "zone",
-         "ordinal": 22,
+         "ordinal": 23,
          "combo1": "alt+keyf",
+         "combo2": ""
+      },
+		"zone:treefarm": {
+         "display_name": "i18n(stonehearth_ace:data.hotkeys.keys.zone_treefarm.display_name)",
+         "category": "zone",
+         "ordinal": 24,
+         "combo1": "ctrl+shift+keyf",
+         "combo2": ""
+      },
+		"zone:underfarm": {
+         "display_name": "i18n(stonehearth_ace:data.hotkeys.keys.zone_underfarm.display_name)",
+         "category": "zone",
+         "ordinal": 25,
+         "combo1": "ctrl+keyf",
          "combo2": ""
       }
    }

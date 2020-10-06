@@ -18,7 +18,8 @@ function AceAuraBuff:_on_pulse()
       for id, target in sensor:each_contents() do
          if id ~= self._entity:get_id() or self._tuning.affect_self then
             local target_player_id = radiant.entities.get_player_id(target)
-               if stonehearth.player:are_player_ids_friendly(player_id, target_player_id) or stonehearth.player:are_player_ids_hostile(player_id, target_player_id) and self._tuning.target_enemies then
+               if (not self._tuning.target_enemies and stonehearth.player:are_player_ids_friendly(player_id, target_player_id)) or
+                     (self._tuning.target_enemies and stonehearth.player:are_player_ids_hostile(player_id, target_player_id)) then
                   local can_target = true
                   -- If we can only target specific type of entity, make sure the entity's target_type matches
                   if self._tuning.target_type then

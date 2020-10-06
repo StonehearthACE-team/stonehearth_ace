@@ -1,13 +1,4 @@
 {
-   "debugtools": {
-      "show_debugtools_on_load": {
-         "type": "boolean",
-         "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.show_debugtools_on_load)",
-         "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.show_debugtools_on_load_description)",
-         "default": true,
-         "ordinal": 1
-      }
-   },
    "stonehearth": {
       "auto_loot": {},
       "building_auto_queue_crafters": {},
@@ -181,7 +172,7 @@
          "on_change": {
             "fire_event": "show_processing_meter_changed"
          },
-         "ordinal": 98
+         "ordinal": 90
       },
       "show_component_info": {
          "type": "boolean",
@@ -191,7 +182,7 @@
          "on_change": {
             "fire_event": "show_component_info_changed"
          },
-         "ordinal": 99
+         "ordinal": 91
       },
       "show_job_toggle_button": {
          "type": "boolean",
@@ -201,7 +192,7 @@
          "on_change": {
             "fire_event": "show_job_toggle_button_changed"
          },
-         "ordinal": 100
+         "ordinal": 92
       },
       "show_selected_workshop_crafting": {
          "type": "boolean",
@@ -211,6 +202,13 @@
          "on_change": {
             "fire_event": "show_selected_workshop_crafting_changed"
          },
+         "ordinal": 93
+      },
+      "show_debugtools_on_load": {
+         "type": "boolean",
+         "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.show_debugtools_on_load)",
+         "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.show_debugtools_on_load_description)",
+         "default": true,
          "ordinal": 100
       },
       "auto_save_unique_files": {

@@ -41,6 +41,32 @@ function AceCrafterComponent:is_auto_crafter()
    return self._is_auto_crafter
 end
 
+--If the crafter dies or is demoted, spray all the items in their crafting
+--ingredients "pack" onto the ground
+-- ACE: have to override because of a nil error if the crafter is "out of town" (out of the world)
+function AceCrafterComponent:_distribute_all_crafting_ingredients()
+   if not stonehearth.player:is_npc(self._entity) then
+      local items = {}
+      while self._storage_component and self._storage_component:num_items() > 0 do
+         local item = self:remove_first_item()
+         if item and item:is_valid() then
+            items[item:get_id()] = item
+         end
+      end
+
+      if next(items) then
+         local location = radiant.entities.get_world_grid_location(self._entity)
+         local player_id = radiant.entities.get_player_id(self._entity)
+         local default_storage
+         if not location then
+            local town = stonehearth.town:get_town(player_id)
+            default_storage = town and town:get_default_storage()
+         end
+         radiant.entities.output_spawned_items(items, location, 1, 4, nil, nil, default_storage, true)
+      end
+   end
+end
+
 --If you stop being a crafter, b/c you're killed or demoted,
 --drop all your stuff, and release your crafting order, if you have one.
 function AceCrafterComponent:clean_up_order()

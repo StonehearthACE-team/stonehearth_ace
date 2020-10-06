@@ -151,7 +151,11 @@ $(document).ready(function() {
                radiant.call('stonehearth:set_ui_mode', hudMode);
                this._hudMode = hudMode;
             }
-         } else if (mode == 'normal') {
+         }
+         else if (this._currentView) {
+            this._currentView.show();
+         }
+         else if (mode == 'normal') {
             App.stonehearthClient.deactivateAllTools();
          }
       },
