@@ -239,6 +239,26 @@ var stonehearth_ace = {
 
    getCommandGroup: function(name) {
       return stonehearth_ace._command_groups[name];
+   },
+
+   getModConfigSetting: function(mod, setting, callbackFn) {
+      var configPath = `mods.${mod}.${setting}`;
+      radiant.call('radiant:get_config', configPath)
+      .done(function(o) {
+         var value = o[configPath];
+         if (value == null)
+         {
+            value = stonehearth_ace.getGameplaySettingDefaultValue(mod, setting);
+         }
+         
+         callbackFn(value);
+      });
+   },
+
+   getGameplaySettingDefaultValue: function(mod, setting) {
+      var modSettings = stonehearth_ace._gameplay_settings[mod];
+      var settingData = modSettings && modSettings[setting];
+      return settingData && settingData.default;
    }
 }
 
@@ -271,3 +291,9 @@ $.getJSON('/stonehearth_ace/ui/data/fence_types.json', function(data) {
 $.getJSON('/stonehearth_ace/ui/data/command_groups.json', function(data) {
    stonehearth_ace._command_groups = data.groups;
 });
+
+$.getJSON('/stonehearth_ace/data/gameplay_settings/gameplay_settings.json', function(data) {
+   stonehearth_ace._gameplay_settings = data;
+})
+
+$(top).trigger('stonehearth_ace:initialized');

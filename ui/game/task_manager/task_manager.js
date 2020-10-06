@@ -25,20 +25,17 @@ $(top).on("show_processing_meter_changed", function (_, e) {
 });
 
 // need to apply the setting on load as well
-radiant.call('radiant:get_config', 'mods.stonehearth_ace.show_processing_meter')
-.done(function(o) {
-   var show_processing_meter = o['mods.stonehearth_ace.show_processing_meter'] != false;
-   var e = {
-      value: show_processing_meter
-   };
-   $(top).trigger('show_processing_meter_changed', e);
-});
+$(document).ready(function(){
+   App.StonehearthTaskManagerView.reopen({
+      didInsertElement: function() {
+         var self = this;
+         self._super();
 
-App.StonehearthTaskManagerView.reopen({
-   didInsertElement: function() {
-      var self = this;
-      self._super();
-
-      _updateProcessingMeterShown();
-   }
+         Ember.run.scheduleOnce('afterRender', this, function() {
+            stonehearth_ace.getModConfigSetting('stonehearth_ace', 'show_processing_meter', function(value) {
+               $(top).trigger('show_processing_meter_changed', { value: value });
+            });
+         });
+      }
+   });
 });

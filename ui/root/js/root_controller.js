@@ -8,9 +8,8 @@ App.RootController.reopen({
 
       self._autoSaveInterval = self._minAutoSaveInterval * 60 * 1000
 
-      radiant.call('radiant:get_config', 'mods.stonehearth_ace.auto_save_interval')
-         .done(function(response) {
-            self._setAutoSaveInterval(response['mods.stonehearth_ace.auto_save_interval']);
+      stonehearth_ace.getModConfigSetting('stonehearth_ace', 'auto_save_interval', function(value) {
+            self._setAutoSaveInterval(value);
          });
       $(top).on("auto_save_interval_changed", function (_, e) {
          self._setAutoSaveInterval(e.value);

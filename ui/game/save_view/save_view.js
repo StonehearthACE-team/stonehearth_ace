@@ -5,9 +5,8 @@ App.SaveView.reopen({
 
       self._autoSaveUnique = false;
 
-      radiant.call('radiant:get_config', 'mods.stonehearth_ace.auto_save_unique_files')
-         .done(function(response) {
-            self._autoSaveUnique = response['mods.stonehearth_ace.auto_save_unique_files'];
+      stonehearth_ace.getModConfigSetting('stonehearth_ace', 'auto_save_unique_files', function(value) {
+            self._autoSaveUnique = value;
          });
       $(top).on("auto_save_unique_files_changed", function (_, e) {
          self._autoSaveUnique = e.value;
@@ -38,10 +37,8 @@ App.SaveView.reopen({
 
             // Update saves if any saves added/removed
             if (changed || !self.cachedSaves) {
-               radiant.call('radiant:get_config', 'mods.stonehearth_ace.auto_save_max_files')
-                  .done(function(response) {
-                     var max_files = response['mods.stonehearth_ace.auto_save_max_files'];
-                     var maxNum = parseInt(max_files);
+               stonehearth_ace.getModConfigSetting('stonehearth_ace', 'auto_save_max_files', function(value) {
+                     var maxNum = parseInt(value);
                      if (maxNum && maxNum > 0) {
                         self._deleteOldAutoSaves(json, maxNum);
                      }

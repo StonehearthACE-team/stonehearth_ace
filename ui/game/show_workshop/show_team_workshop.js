@@ -2,13 +2,8 @@ var _showSelectedWorkshopCrafting = false;
 
 $(top).on('stonehearthReady', function() {
    // need to apply the setting on load as well
-   radiant.call('radiant:get_config', 'mods.stonehearth_ace.show_selected_workshop_crafting')
-   .done(function(o) {
-      var show_selected_workshop_crafting = o['mods.stonehearth_ace.show_selected_workshop_crafting'];   // defaults to false
-      var e = {
-         value: show_selected_workshop_crafting
-      };
-      $(top).trigger('show_selected_workshop_crafting_changed', e);
+   stonehearth_ace.getModConfigSetting('stonehearth_ace', 'show_selected_workshop_crafting', function(value) {
+      $(top).trigger('show_selected_workshop_crafting_changed', { value: value });
    });
 
    // Create a proxy for the workshops object, so we know when a new StonehearthTeamCrafterView is created
@@ -276,16 +271,11 @@ $(top).on('stonehearthReady', function() {
          _updateCraftOrderPreference: function() {
             var self = this;
             
-            radiant.call('radiant:get_config', 'mods.stonehearth_ace.default_craft_order_prefer_high_quality')
-            .done(function(o) {
+            stonehearth_ace.getModConfigSetting('stonehearth_ace', 'default_craft_order_prefer_high_quality', function(value) {
                if (self.isDestroyed || self.isDestroying) {
                   return;
                }
-               var prefer_high_quality = o['mods.stonehearth_ace.default_craft_order_prefer_high_quality'];
-               if (prefer_high_quality != false) {
-                  prefer_high_quality = true;
-               }
-               self.set('prefer_high_quality', prefer_high_quality);
+               self.set('prefer_high_quality', value);
             });
          },
 

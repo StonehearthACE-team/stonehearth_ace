@@ -1,4 +1,23 @@
+function setDebugUIVisible(visible)
+{
+   $(".debugDock").css("display", visible ? 'block' : 'none');
+}
+
 $(document).ready(function(){
+   if (App.StonehearthDebugDockView) {
+      App.StonehearthDebugDockView.reopen({
+         didInsertElement: function() {
+            this._super();
+
+            Ember.run.scheduleOnce('afterRender', this, function() {
+               stonehearth_ace.getModConfigSetting('debugtools', 'show_debugtools_on_load', function(value) {
+                  setDebugUIVisible(value);
+               });
+            });
+         }
+      });
+   }
+   
    //var _buildStatusView;
 
    radiant.console.register('dump_building', {
@@ -32,5 +51,20 @@ $(document).ready(function(){
       //    return false;
       // },
       debugMenuNameOverride: "Dump to QB"
+   });
+
+   radiant.console.register('show_debug_ui', {
+      parseString: function(string) {
+         switch(string.toLowerCase()){
+            case "false": case "no": case "0": case null: return false;
+            case "true": case "yes": case "1": default: return true;
+         }
+      },
+
+      call: function(cmdobj, fn, args) {
+         var shouldShow = args._.length > 0 ? this.parseString(args._[0]) : false;
+         setDebugUIVisible(shouldShow);
+      },
+      description: "Use to change visibility of the debugtools panel. Usage: show_debug_ui true/false"
    });
 });
