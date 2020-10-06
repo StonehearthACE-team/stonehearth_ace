@@ -18,8 +18,8 @@ function AceRepairEntityAdjacent:run(ai, entity, args)
    local health = radiant.entities.get_health(target)
 
    local weapon = stonehearth.combat:get_main_weapon(entity)
-   local repair_data = radiant.entities.get_entity_data(weapon, 'stonehearth:repair_data')
-   radiant.verify(repair_data, 'repair_data missing from mainhand weapon %s of entity %s who is trying to repair', weapon, entity)
+   local repair_data = radiant.entities.get_entity_data(weapon, 'stonehearth:repair_data') or {}
+   --radiant.verify(repair_data, 'repair_data missing from mainhand weapon %s of entity %s who is trying to repair', weapon, entity)
    local base_repair_amount = repair_data and repair_data.base_repair_amount or 1
    local repair_effect = siege_data.repair_effect or repair_data.repair_effect
    if not repair_effect then
