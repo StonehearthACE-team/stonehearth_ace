@@ -10,7 +10,7 @@ $(document).ready(function(){
             this._super();
 
             Ember.run.scheduleOnce('afterRender', this, function() {
-               stonehearth_ace.getModConfigSetting('debugtools', 'show_debugtools_on_load', function(value) {
+               stonehearth_ace.getModConfigSetting('stonehearth_ace', 'show_debugtools_on_load', function(value) {
                   setDebugUIVisible(value);
                });
             });
