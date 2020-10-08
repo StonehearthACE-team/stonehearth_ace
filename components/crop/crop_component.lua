@@ -121,21 +121,15 @@ function CropComponent:_on_grow_period(e)
    self._sv.stage = e.stage
    if e.stage then
       local resource_pairing_uri = self._resource_pairings[self._sv.stage]
-      if resource_pairing_uri then
-         if resource_pairing_uri == "" then
-            resource_pairing_uri = nil
-         end
-         self._sv.product = resource_pairing_uri
-      end
+      self._sv.product = resource_pairing_uri ~= '' and resource_pairing_uri or nil
+
       if self._sv.stage == self._harvest_threshhold and self._sv._field then
          self._sv.harvestable = true
          self:_became_harvestable()
-      else
+      elseif not resource_pairing_uri and self._sv.harvestable then
          -- when resetting to an earlier stage, make it no longer harvestable
-         if self._sv.harvestable then
-            self._sv.harvestable = false
-            self:_notify_unharvestable()
-         end
+         self._sv.harvestable = false
+         self:_notify_unharvestable()
       end
    end
    if e.finished and not self._post_harvest_stage then

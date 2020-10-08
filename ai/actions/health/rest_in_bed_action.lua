@@ -101,10 +101,10 @@ function RestInBed:_clear_listener()
 end
 
 function RestInBed:destroy()
+   self:_clear_listener()
    if self._town then
       self._town:unrequest_medic(self._entity_id)
    end
-   self:_clear_listener()
 end
 
 local function make_is_available_bed_filter()
