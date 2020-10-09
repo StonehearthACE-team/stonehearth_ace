@@ -467,6 +467,10 @@ function AceBuffsComponent:_remove_managed_property(name, details)
 end
 
 function AceBuffsComponent:_buff_is_disallowed(uri)
+   local buff_data = radiant.entities.get_entity_data(self._entity, 'stonehearth:buffs')
+   if buff_data and buff_data.not_affected_by_buffs then
+      return true
+   end
    return self._sv.disallowed_buffs[uri] ~= nil
 end
 
