@@ -388,17 +388,21 @@ end
 
 function FishTrapComponent:_update_description()
    -- update description based on status, volume, and conflicting traps
+   local description
    if self._sv.trap_tripped then
-      radiant.entities.set_description(self._entity, 'i18n(stonehearth_ace:jobs.trapper.fish_trap.trap_tripped_description)')
+      description = self._settings.trap_tripped_description or 'i18n(stonehearth_ace:jobs.trapper.fish_trap.trap_tripped_description)'
    elseif self._conflicting_traps > 0 then
-      radiant.entities.set_description(self._entity, 'i18n(stonehearth_ace:jobs.trapper.fish_trap.conflicting_traps_description)')
+      description = self._settings.conflicting_traps_description or 'i18n(stonehearth_ace:jobs.trapper.fish_trap.conflicting_traps_description)'
    elseif self._settings.low_water_volume and self._settings.low_water_volume > self._effective_water_volume then
-      radiant.entities.set_description(self._entity, 'i18n(stonehearth_ace:jobs.trapper.fish_trap.low_water_description)')
+      description = self._settings.low_water_description or 'i18n(stonehearth_ace:jobs.trapper.fish_trap.low_water_description)'
    elseif self._settings.high_water_volume and self._settings.high_water_volume <= self._effective_water_volume then
-      radiant.entities.set_description(self._entity, 'i18n(stonehearth_ace:jobs.trapper.fish_trap.high_water_description)')
+      description = self._settings.high_water_description or 'i18n(stonehearth_ace:jobs.trapper.fish_trap.high_water_description)'
    else
-      radiant.entities.set_description(self._entity, 'i18n(stonehearth_ace:jobs.trapper.fish_trap.description)')
+      local catalog_data = stonehearth.catalog:get_catalog_data(self._entity:get_uri())
+      description = catalog_data and catalog_data.description or 'i18n(stonehearth_ace:jobs.trapper.fish_trap.description)')
    end
+
+   radiant.entities.set_description(self._entity, description)
 end
 
 function FishTrapComponent:trace(reason)

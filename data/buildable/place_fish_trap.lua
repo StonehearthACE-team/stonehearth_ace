@@ -24,4 +24,13 @@ function place_fish_trap.placement_filter_fn(selector, fish_trap, terrain_entity
    return water ~= nil
 end
 
+function place_fish_trap.designation_filter_fn(selector, fish_trap, terrain_entity, location, normal, designation_data)
+   -- don't allow placement on designation zones
+   if designation_data then
+      return false
+   end
+
+   return true
+end
+
 return place_fish_trap

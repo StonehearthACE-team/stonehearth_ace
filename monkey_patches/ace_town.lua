@@ -267,28 +267,10 @@ function AceTown:try_request_medic(requester, rest_from_conditions)
 
    -- check if there are conditions that need to be cured, and whether we have a cure available
    if rest_from_conditions then
-      local has_healing_item = false
       local conditions = healing_lib.get_conditions_needing_cure(requester)
       
       -- first check if there's a medic who can handle any of these conditions without an item
-      if self:can_any_medic_treat_any_conditions(conditions) then
-         has_healing_item = true
-      else
-         local inventory = stonehearth.inventory:get_inventory(self._sv.player_id)
-         if inventory then
-            local tracker = inventory:add_item_tracker('stonehearth_ace:healing_item_tracker')
-            for id, item in tracker:get_tracking_data():each() do
-               if item and item:is_valid() then
-                  if self:is_healing_item_valid(item, requester, conditions) then
-                     has_healing_item = true
-                     break
-                  end
-               end
-            end
-         end
-      end
-
-      if not has_healing_item then
+      if not self:can_any_medic_treat_any_conditions(conditions) and not self:is_any_healing_item_valid(requester, conditions) then
          return false
       end
    end
@@ -327,6 +309,22 @@ function AceTown:can_medic_treat_any_conditions(medic, conditions)
    for _, condition in ipairs(conditions) do
       if medic_capabilities.cure_conditions[condition.condition] then
          return true
+      end
+   end
+
+   return false
+end
+
+function AceTown:is_any_healing_item_valid(requester, conditions)
+   local inventory = stonehearth.inventory:get_inventory(self._sv.player_id)
+   if inventory then
+      local tracker = inventory:add_item_tracker('stonehearth_ace:healing_item_tracker')
+      for id, item in tracker:get_tracking_data():each() do
+         if item and item:is_valid() then
+            if self:is_healing_item_valid(item, requester, conditions) then
+               return true
+            end
+         end
       end
    end
 

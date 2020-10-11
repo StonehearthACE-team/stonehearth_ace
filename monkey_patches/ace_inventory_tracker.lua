@@ -5,6 +5,11 @@ local AceInventoryTracker = class()
 -- If the tracking data for this uri contains item quality info,
 -- update the item quality for this entity's tracking data entry
 function AceInventoryTracker:_on_item_quality_added(e)
+   -- this event is triggered async, so it's possible the entity was immediately destroyed
+   if not e.entity:is_valid() then
+      return
+   end
+
    local tracking_data = self._sv.tracking_data
    local key = e.uri
    if key and tracking_data:contains(key) then

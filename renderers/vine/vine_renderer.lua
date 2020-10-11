@@ -155,7 +155,10 @@ end
 
 function VineRenderer:_create_nodes(options, rotation, casts_shadows)
    -- if this node data is an array, process through and create each node
-   if type(options.model) == 'string' then
+   if not options.model then
+      -- is there a problem with seasons for this biome?
+      log:error('no model specified for node; invalid season?')
+   elseif type(options.model) == 'string' then
       self:_create_node(options, {model = options.model}, rotation, casts_shadows)
    elseif type(options.model.model) == 'string' then
       self:_create_node(options, options.model, rotation, casts_shadows)

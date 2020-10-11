@@ -328,12 +328,18 @@ end
 
 function ResourceCallHandler:place_buildable_entity(session, response, uri)
    local entity = radiant.entities.create_entity(uri)
+   local entity_id = entity:get_id()
    local buildable_data = radiant.entities.get_entity_data(entity, 'stonehearth_ace:buildable_data')
    local requires_terrain = buildable_data.requires_terrain
    local placement_filter_fn
    if buildable_data.placement_filter_script then
       local script = radiant.mods.load_script(buildable_data.placement_filter_script)
       placement_filter_fn = script and script.placement_filter_fn
+   end
+   local designation_filter_fn
+   if buildable_data.designation_filter_script then
+      local script = radiant.mods.load_script(buildable_data.designation_filter_script)
+      designation_filter_fn = script and script.designation_filter_fn
    end
 
    stonehearth.selection:deactivate_all_tools()
@@ -349,6 +355,14 @@ function ResourceCallHandler:place_buildable_entity(session, response, uri)
 
             if not this_entity then
                return stonehearth.selection.FILTER_IGNORE
+            end
+
+            if designation_filter_fn then
+               -- treat true as ignore; false is still false
+               local designation_data = radiant.entities.get_entity_data(this_entity, 'stonehearth:designation')
+               if designation_filter_fn(selector, entity, this_entity, brick, normal, designation_data) == false then
+                  return false
+               end
             end
 
             local rcs = this_entity:get_component('region_collision_shape')
@@ -371,7 +385,7 @@ function ResourceCallHandler:place_buildable_entity(session, response, uri)
 
             -- if the entity we're looking at is a child entity of our primary entity, ignore it
             local parent = radiant.entities.get_parent(this_entity)
-            if not parent or parent == entity then
+            if parent and parent:get_id() == entity_id then
                return stonehearth.selection.FILTER_IGNORE
             end
 
