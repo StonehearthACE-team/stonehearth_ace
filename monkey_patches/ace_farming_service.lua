@@ -134,28 +134,68 @@ function AceFarmingService:get_crop_details(crop_type)
    return details
 end
 
-function AceFarmingService.rate_field_for_fertilize(field_layer, entity)
-   local field = field_layer:get_component('stonehearth:farmer_field_layer'):get_farmer_field()
-   local fertilizer_preference = field:get_fertilizer_preference()
+-- changed the way this works to be similar to other tasks being generated instead of a constant searching for fertilizable fields
+-- function AceFarmingService.rate_field_for_fertilize(field_layer, entity)
+--    local field = field_layer:get_component('stonehearth:farmer_field_layer'):get_farmer_field()
+--    local fertilizer_preference = field:get_fertilizer_preference()
    
-   -- we only care about fields that are limited by fertilizer uri
-   -- if it's available, prioritize that field first (1)
-   -- if it's not available, prioritize it last (0)
-   if fertilizer_preference.uri then
-      local inventory = stonehearth.inventory:get_inventory(radiant.entities.get_player_id(field_layer))
-      local tracking_data = inventory:get_items_of_type(fertilizer_preference.uri)
-      if tracking_data and tracking_data.items then
-         for id, item in pairs(tracking_data.items) do
-            if radiant.entities.can_acquire_lease(item, 'stonehearth_ace:fertilize', entity) then
-               return 1
+--    -- we only care about fields that are limited by fertilizer uri
+--    -- if it's available, prioritize that field first (1)
+--    -- if it's not available, prioritize it last (0)
+--    if fertilizer_preference.uri then
+--       local inventory = stonehearth.inventory:get_inventory(radiant.entities.get_player_id(field_layer))
+--       local tracking_data = inventory:get_items_of_type(fertilizer_preference.uri)
+--       if tracking_data and tracking_data.items then
+--          for id, item in pairs(tracking_data.items) do
+--             if radiant.entities.can_acquire_lease(item, 'stonehearth_ace:fertilize', entity) then
+--                return 1
+--             end
+--          end
+--       end
+
+--       return 0
+--    else
+--       return self.rate_field(field_layer, entity)
+--    end
+-- end
+
+function AceFarmingService:get_fertilizer_quality_range()
+   local fertilizer_quality_range = self._fertilizer_quality_range
+   if not fertilizer_quality_range then
+      -- get the min and max ilevels of fertilizers in the game and use that to bound the rating function
+      local fertilizer = stonehearth.catalog:get_material_object('fertilizer')
+      if fertilizer then
+         local fertilizers = stonehearth.catalog:get_materials_to_matching_uris()[fertilizer:get_id()]
+         local min, max
+         for uri, _ in pairs(fertilizers) do
+            local data = radiant.entities.get_entity_data(uri, 'stonehearth_ace:fertilizer')
+            local ilevel = data and data.ilevel
+            if ilevel then
+               min = math.min(min or ilevel, ilevel)
+               max = math.max(max or ilevel, ilevel)
             end
+         end
+
+         if min and max then
+            fertilizer_quality_range = {
+               min = min,
+               max = max
+            }
          end
       end
 
-      return 0
-   else
-      return self.rate_field(field_layer, entity)
+      if not fertilizer_quality_range then
+         fertilizer_quality_range = {
+            min = 0,
+            max = 1
+         }
+      end
+   
+      fertilizer_quality_range.range = math.max(1, fertilizer_quality_range.max - fertilizer_quality_range.min)
+      self._fertilizer_quality_range = fertilizer_quality_range
    end
+
+   return fertilizer_quality_range
 end
 
 return AceFarmingService

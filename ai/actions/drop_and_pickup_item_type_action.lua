@@ -32,7 +32,7 @@ local log = radiant.log.create_logger('drop_and_pickup_type')
 
 function DropAndPickupItemType:start_thinking(ai, entity, args)
    local carrying = ai.CURRENT.carrying
-   local rating = nil
+   local rating = -1
 
    if carrying then
       -- evaluate what we're carrying and see if it matches our filter and rating
@@ -43,7 +43,7 @@ function DropAndPickupItemType:start_thinking(ai, entity, args)
 
    ai:set_think_output({
       description = 'considering picking up ' .. args.description,
-      carrying_rating = rating or stonehearth.ai.NIL
+      carrying_rating = rating
    })
 end
 

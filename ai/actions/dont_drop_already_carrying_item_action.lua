@@ -11,7 +11,7 @@ DontDropAlreadyCarryingItem.args = {
    },
    carrying_rating = {
       type = 'number',
-      default = stonehearth.ai.NIL
+      default = 0
    }
 }
 DontDropAlreadyCarryingItem.think_output = {

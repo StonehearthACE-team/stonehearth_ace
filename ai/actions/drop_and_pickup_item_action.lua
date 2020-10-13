@@ -11,7 +11,7 @@ DropAndPickupItem.args = {
    },
    carrying_rating = {
       type = 'number',
-      default = stonehearth.ai.NIL
+      default = 0
    },
    owner_player_id = {
       type = 'string',

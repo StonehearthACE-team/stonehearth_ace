@@ -54,10 +54,10 @@
          "default": false,
          "ordinal": 11
       },
-      "default_fertilizer": {
+      "default_farm_fertilizer": {
          "type": "list",
-         "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.default_fertilizer)",
-         "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.default_fertilizer_description)",
+         "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.default_farm_fertilizer)",
+         "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.default_farm_fertilizer_description)",
          "values": {
             "0": {
                "ordinal": 1,
@@ -93,10 +93,260 @@
                "ordinal": 40,
                "display_name": "i18n(stonehearth_ace:entities.consumables.fertilizer_megacrop.display_name)",
                "description": "i18n(stonehearth_ace:entities.consumables.fertilizer_megacrop.description)"
+            },
+            "stonehearth_ace:consumables:fertilizer_hearth": {
+               "ordinal": 50,
+               "display_name": "i18n(stonehearth_ace:entities.consumables.fertilizer_hearth.display_name)",
+               "description": "i18n(stonehearth_ace:entities.consumables.fertilizer_hearth.description)"
             }
          },
          "default": "1",
          "ordinal": 12
+      },
+      "default_bush_farm_fertilizer": {
+         "type": "list",
+         "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.default_bush_farm_fertilizer)",
+         "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.default_bush_farm_fertilizer_description)",
+         "values": {
+            "0": {
+               "ordinal": 1,
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.farm.fertilizer_settings.none)",
+               "description": "i18n(stonehearth_ace:ui.game.zones_mode.farm.fertilizer_settings.none_description)"
+            },
+            "-1": {
+               "ordinal": 2,
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.farm.fertilizer_settings.low_quality)",
+               "description": "i18n(stonehearth_ace:ui.game.zones_mode.farm.fertilizer_settings.low_quality_description)"
+            },
+            "1": {
+               "ordinal": 3,
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.farm.fertilizer_settings.high_quality)",
+               "description": "i18n(stonehearth_ace:ui.game.zones_mode.farm.fertilizer_settings.high_quality_description)"
+            },
+            "stonehearth_ace:consumables:fertilizer": {
+               "ordinal": 10,
+               "display_name": "i18n(stonehearth_ace:entities.consumables.fertilizer.display_name)",
+               "description": "i18n(stonehearth_ace:entities.consumables.fertilizer.description)"
+            },
+            "stonehearth_ace:consumables:fertilizer_upgrade": {
+               "ordinal": 20,
+               "display_name": "i18n(stonehearth_ace:entities.consumables.fertilizer_upgrade.display_name)",
+               "description": "i18n(stonehearth_ace:entities.consumables.fertilizer_upgrade.description)"
+            },
+            "stonehearth_ace:consumables:fertilizer_upgrade_2": {
+               "ordinal": 30,
+               "display_name": "i18n(stonehearth_ace:entities.consumables.fertilizer_upgrade_2.display_name)",
+               "description": "i18n(stonehearth_ace:entities.consumables.fertilizer_upgrade_2.description)"
+            },
+            "stonehearth_ace:consumables:fertilizer_megacrop": {
+               "ordinal": 40,
+               "display_name": "i18n(stonehearth_ace:entities.consumables.fertilizer_megacrop.display_name)",
+               "description": "i18n(stonehearth_ace:entities.consumables.fertilizer_megacrop.description)"
+            },
+            "stonehearth_ace:consumables:fertilizer_hearth": {
+               "ordinal": 50,
+               "display_name": "i18n(stonehearth_ace:entities.consumables.fertilizer_hearth.display_name)",
+               "description": "i18n(stonehearth_ace:entities.consumables.fertilizer_hearth.description)"
+            }
+         },
+         "default": "1",
+         "ordinal": 12.1
+      },
+      "default_decorative_flowers_fertilizer": {
+         "type": "list",
+         "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.default_decorative_flowers_fertilizer)",
+         "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.default_decorative_flowers_fertilizer_description)",
+         "values": {
+            "0": {
+               "ordinal": 1,
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.farm.fertilizer_settings.none)",
+               "description": "i18n(stonehearth_ace:ui.game.zones_mode.farm.fertilizer_settings.none_description)"
+            },
+            "-1": {
+               "ordinal": 2,
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.farm.fertilizer_settings.low_quality)",
+               "description": "i18n(stonehearth_ace:ui.game.zones_mode.farm.fertilizer_settings.low_quality_description)"
+            },
+            "1": {
+               "ordinal": 3,
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.farm.fertilizer_settings.high_quality)",
+               "description": "i18n(stonehearth_ace:ui.game.zones_mode.farm.fertilizer_settings.high_quality_description)"
+            },
+            "stonehearth_ace:consumables:fertilizer": {
+               "ordinal": 10,
+               "display_name": "i18n(stonehearth_ace:entities.consumables.fertilizer.display_name)",
+               "description": "i18n(stonehearth_ace:entities.consumables.fertilizer.description)"
+            },
+            "stonehearth_ace:consumables:fertilizer_upgrade": {
+               "ordinal": 20,
+               "display_name": "i18n(stonehearth_ace:entities.consumables.fertilizer_upgrade.display_name)",
+               "description": "i18n(stonehearth_ace:entities.consumables.fertilizer_upgrade.description)"
+            },
+            "stonehearth_ace:consumables:fertilizer_upgrade_2": {
+               "ordinal": 30,
+               "display_name": "i18n(stonehearth_ace:entities.consumables.fertilizer_upgrade_2.display_name)",
+               "description": "i18n(stonehearth_ace:entities.consumables.fertilizer_upgrade_2.description)"
+            },
+            "stonehearth_ace:consumables:fertilizer_megacrop": {
+               "ordinal": 40,
+               "display_name": "i18n(stonehearth_ace:entities.consumables.fertilizer_megacrop.display_name)",
+               "description": "i18n(stonehearth_ace:entities.consumables.fertilizer_megacrop.description)"
+            },
+            "stonehearth_ace:consumables:fertilizer_hearth": {
+               "ordinal": 50,
+               "display_name": "i18n(stonehearth_ace:entities.consumables.fertilizer_hearth.display_name)",
+               "description": "i18n(stonehearth_ace:entities.consumables.fertilizer_hearth.description)"
+            }
+         },
+         "default": "0",
+         "ordinal": 12.2
+      },
+      "default_orchard_fertilizer": {
+         "type": "list",
+         "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.default_orchard_fertilizer)",
+         "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.default_orchard_fertilizer_description)",
+         "values": {
+            "0": {
+               "ordinal": 1,
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.farm.fertilizer_settings.none)",
+               "description": "i18n(stonehearth_ace:ui.game.zones_mode.farm.fertilizer_settings.none_description)"
+            },
+            "-1": {
+               "ordinal": 2,
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.farm.fertilizer_settings.low_quality)",
+               "description": "i18n(stonehearth_ace:ui.game.zones_mode.farm.fertilizer_settings.low_quality_description)"
+            },
+            "1": {
+               "ordinal": 3,
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.farm.fertilizer_settings.high_quality)",
+               "description": "i18n(stonehearth_ace:ui.game.zones_mode.farm.fertilizer_settings.high_quality_description)"
+            },
+            "stonehearth_ace:consumables:fertilizer": {
+               "ordinal": 10,
+               "display_name": "i18n(stonehearth_ace:entities.consumables.fertilizer.display_name)",
+               "description": "i18n(stonehearth_ace:entities.consumables.fertilizer.description)"
+            },
+            "stonehearth_ace:consumables:fertilizer_upgrade": {
+               "ordinal": 20,
+               "display_name": "i18n(stonehearth_ace:entities.consumables.fertilizer_upgrade.display_name)",
+               "description": "i18n(stonehearth_ace:entities.consumables.fertilizer_upgrade.description)"
+            },
+            "stonehearth_ace:consumables:fertilizer_upgrade_2": {
+               "ordinal": 30,
+               "display_name": "i18n(stonehearth_ace:entities.consumables.fertilizer_upgrade_2.display_name)",
+               "description": "i18n(stonehearth_ace:entities.consumables.fertilizer_upgrade_2.description)"
+            },
+            "stonehearth_ace:consumables:fertilizer_megacrop": {
+               "ordinal": 40,
+               "display_name": "i18n(stonehearth_ace:entities.consumables.fertilizer_megacrop.display_name)",
+               "description": "i18n(stonehearth_ace:entities.consumables.fertilizer_megacrop.description)"
+            },
+            "stonehearth_ace:consumables:fertilizer_hearth": {
+               "ordinal": 50,
+               "display_name": "i18n(stonehearth_ace:entities.consumables.fertilizer_hearth.display_name)",
+               "description": "i18n(stonehearth_ace:entities.consumables.fertilizer_hearth.description)"
+            }
+         },
+         "default": "1",
+         "ordinal": 12.3
+      },
+      "default_treefarm_fertilizer": {
+         "type": "list",
+         "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.default_treefarm_fertilizer)",
+         "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.default_treefarm_fertilizer_description)",
+         "values": {
+            "0": {
+               "ordinal": 1,
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.farm.fertilizer_settings.none)",
+               "description": "i18n(stonehearth_ace:ui.game.zones_mode.farm.fertilizer_settings.none_description)"
+            },
+            "-1": {
+               "ordinal": 2,
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.farm.fertilizer_settings.low_quality)",
+               "description": "i18n(stonehearth_ace:ui.game.zones_mode.farm.fertilizer_settings.low_quality_description)"
+            },
+            "1": {
+               "ordinal": 3,
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.farm.fertilizer_settings.high_quality)",
+               "description": "i18n(stonehearth_ace:ui.game.zones_mode.farm.fertilizer_settings.high_quality_description)"
+            },
+            "stonehearth_ace:consumables:fertilizer": {
+               "ordinal": 10,
+               "display_name": "i18n(stonehearth_ace:entities.consumables.fertilizer.display_name)",
+               "description": "i18n(stonehearth_ace:entities.consumables.fertilizer.description)"
+            },
+            "stonehearth_ace:consumables:fertilizer_upgrade": {
+               "ordinal": 20,
+               "display_name": "i18n(stonehearth_ace:entities.consumables.fertilizer_upgrade.display_name)",
+               "description": "i18n(stonehearth_ace:entities.consumables.fertilizer_upgrade.description)"
+            },
+            "stonehearth_ace:consumables:fertilizer_upgrade_2": {
+               "ordinal": 30,
+               "display_name": "i18n(stonehearth_ace:entities.consumables.fertilizer_upgrade_2.display_name)",
+               "description": "i18n(stonehearth_ace:entities.consumables.fertilizer_upgrade_2.description)"
+            },
+            "stonehearth_ace:consumables:fertilizer_megacrop": {
+               "ordinal": 40,
+               "display_name": "i18n(stonehearth_ace:entities.consumables.fertilizer_megacrop.display_name)",
+               "description": "i18n(stonehearth_ace:entities.consumables.fertilizer_megacrop.description)"
+            },
+            "stonehearth_ace:consumables:fertilizer_hearth": {
+               "ordinal": 50,
+               "display_name": "i18n(stonehearth_ace:entities.consumables.fertilizer_hearth.display_name)",
+               "description": "i18n(stonehearth_ace:entities.consumables.fertilizer_hearth.description)"
+            }
+         },
+         "default": "1",
+         "ordinal": 12.4
+      },
+      "default_underfarm_fertilizer": {
+         "type": "list",
+         "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.default_underfarm_fertilizer)",
+         "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.default_underfarm_fertilizer_description)",
+         "values": {
+            "0": {
+               "ordinal": 1,
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.farm.fertilizer_settings.none)",
+               "description": "i18n(stonehearth_ace:ui.game.zones_mode.farm.fertilizer_settings.none_description)"
+            },
+            "-1": {
+               "ordinal": 2,
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.farm.fertilizer_settings.low_quality)",
+               "description": "i18n(stonehearth_ace:ui.game.zones_mode.farm.fertilizer_settings.low_quality_description)"
+            },
+            "1": {
+               "ordinal": 3,
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.farm.fertilizer_settings.high_quality)",
+               "description": "i18n(stonehearth_ace:ui.game.zones_mode.farm.fertilizer_settings.high_quality_description)"
+            },
+            "stonehearth_ace:consumables:fertilizer": {
+               "ordinal": 10,
+               "display_name": "i18n(stonehearth_ace:entities.consumables.fertilizer.display_name)",
+               "description": "i18n(stonehearth_ace:entities.consumables.fertilizer.description)"
+            },
+            "stonehearth_ace:consumables:fertilizer_upgrade": {
+               "ordinal": 20,
+               "display_name": "i18n(stonehearth_ace:entities.consumables.fertilizer_upgrade.display_name)",
+               "description": "i18n(stonehearth_ace:entities.consumables.fertilizer_upgrade.description)"
+            },
+            "stonehearth_ace:consumables:fertilizer_upgrade_2": {
+               "ordinal": 30,
+               "display_name": "i18n(stonehearth_ace:entities.consumables.fertilizer_upgrade_2.display_name)",
+               "description": "i18n(stonehearth_ace:entities.consumables.fertilizer_upgrade_2.description)"
+            },
+            "stonehearth_ace:consumables:fertilizer_megacrop": {
+               "ordinal": 40,
+               "display_name": "i18n(stonehearth_ace:entities.consumables.fertilizer_megacrop.display_name)",
+               "description": "i18n(stonehearth_ace:entities.consumables.fertilizer_megacrop.description)"
+            },
+            "stonehearth_ace:consumables:fertilizer_hearth": {
+               "ordinal": 50,
+               "display_name": "i18n(stonehearth_ace:entities.consumables.fertilizer_hearth.display_name)",
+               "description": "i18n(stonehearth_ace:entities.consumables.fertilizer_hearth.description)"
+            }
+         },
+         "default": "1",
+         "ordinal": 12.5
       },
       "show_farm_water_regions": {
          "type": "boolean",

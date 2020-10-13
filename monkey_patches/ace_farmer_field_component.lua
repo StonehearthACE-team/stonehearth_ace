@@ -65,14 +65,11 @@ function AceFarmerFieldComponent:post_activate()
 
    self:_ensure_crop_counts()
    self:_ensure_fertilize_layer()
-   self:_ensure_fertilizer_preference()
 
    self._post_harvest_crop_listeners = {}
    if self._is_restore then
       self:_load_field_type()
       self:_create_listeners()
-   else
-      self._sv.harvest_enabled = true
    end
 end
 
@@ -81,6 +78,7 @@ function AceFarmerFieldComponent:_create_listeners()
       self:_create_water_listener()
       self:_create_climate_listeners()
       self:_create_all_post_harvest_crop_listeners()
+      self:_create_fertilize_task()
    end
 end
 
@@ -168,7 +166,13 @@ function AceFarmerFieldComponent:_ensure_fertilizer_preference()
 end
 
 function AceFarmerFieldComponent:_get_default_fertilizer_preference()
-   local default = stonehearth.client_state:get_client_gameplay_setting(self._entity:get_player_id(), 'stonehearth_ace', 'default_fertilizer', '1')
+   local player_id = self._entity:get_player_id()
+   local key = 'default_' .. self._sv.field_type .. '_fertilizer'
+   local default = stonehearth.client_state:get_client_gameplay_setting(player_id, 'stonehearth_ace', key)
+   if not default then
+      default = stonehearth.client_state:get_client_gameplay_setting(player_id, 'stonehearth_ace', 'default_farm_fertilizer', '1')
+   end
+
    if tonumber(default) then
       return { quality = tonumber(default) }
    else
@@ -196,6 +200,8 @@ function AceFarmerFieldComponent:_load_field_type()
    self._sv.allow_disable_harvest = self._field_type_data.allow_disable_harvest
 
    self._dirt_models = self._field_type_data.dirt_models and self._json.dirt_models[self._field_type_data.dirt_models] or self._json.dirt_models.default
+   
+   self:_ensure_fertilizer_preference()
 end
 
 AceFarmerFieldComponent._ace_old_on_field_created = FarmerFieldComponent.on_field_created
@@ -212,6 +218,9 @@ function AceFarmerFieldComponent:on_field_created(town, size, field_type, rotati
    -- end
 
    self:_load_field_type()
+   if self._sv.harvest_enabled == nil then
+      self._sv.harvest_enabled = not self._field_type_data.default_disable_harvest
+   end
 
    local soil_layer = self._sv._soil_layer
    local soil_layer_region = soil_layer:get_component('destination'):get_region()
@@ -287,6 +296,7 @@ function AceFarmerFieldComponent:notify_plant_location_finished(location)
    fertilizable_layer_region:modify(function(cursor)
       cursor:add_point(p)
    end)
+   self:_ensure_fertilize_task()
 end
 
 function AceFarmerFieldComponent:_create_all_post_harvest_crop_listeners()
@@ -519,6 +529,7 @@ function AceFarmerFieldComponent:_remove_from_fertilizable(location)
    fertilizable_layer_region:modify(function(cursor)
       cursor:subtract_point(location)
    end)
+   self:_ensure_fertilize_task()
 end
 
 function AceFarmerFieldComponent:_remove_from_harvestable(x, z)
@@ -589,9 +600,11 @@ function AceFarmerFieldComponent:set_fertilizer_preference(preference)
 
          self.__saved_variables:mark_changed()
          radiant.events.trigger(self, 'stonehearth_ace:farmer_field:fertilizer_preference_changed')
-         if self._sv._fertilizable_layer then
-            stonehearth.ai:reconsider_entity(self._sv._fertilizable_layer, 'fertilizer preference changed')
-         end
+         self:_create_fertilize_task()
+
+         -- if self._sv._fertilizable_layer then
+         --    stonehearth.ai:reconsider_entity(self._sv._fertilizable_layer, 'fertilizer preference changed')
+         -- end
       end
    end
 end
@@ -963,6 +976,7 @@ function AceFarmerFieldComponent:_on_destroy()
    self._sv._fertilizable_layer = nil
 
    self:_destroy_listeners()
+   self:_destroy_fertilize_task()
 end
 
 function AceFarmerFieldComponent:_destroy_listeners()
@@ -1015,6 +1029,106 @@ AceFarmerFieldComponent._ace_old__reconsider_fields = FarmerFieldComponent._reco
 function AceFarmerFieldComponent:_reconsider_fields()
    for _, layer in ipairs(self:_get_field_layers()) do
       stonehearth.ai:reconsider_entity(layer, 'worker count changed')
+   end
+end
+
+function AceFarmerFieldComponent:_get_fertilizer_filter_and_rater()
+   local owner = radiant.entities.get_player_id(self._entity)
+   local preference = self:get_fertilizer_preference()
+
+   if preference.uri then
+      local uri = preference.uri
+
+      local filter_fn = stonehearth.ai:filter_from_key('stonehearth_ace:fertilizer:uri', uri .. '|' .. tostring(owner), function(item)
+            if owner and owner ~= item:get_player_id() then
+               return false
+            end
+            
+            local data = radiant.entities.get_entity_data(item, 'stonehearth_ace:fertilizer')
+            if not data then
+               return false
+            end
+
+            return uri == item:get_uri()
+         end)
+      
+      return filter_fn
+   elseif preference.quality ~= 0 then
+      local filter_fn = stonehearth.ai:filter_from_key('stonehearth_ace:fertilizer:quality', owner, function(item)
+            if owner and owner ~= item:get_player_id() then
+               return false
+            end
+            
+            local data = radiant.entities.get_entity_data(item, 'stonehearth_ace:fertilizer')
+            if not data then
+               return false
+            end
+
+            return data.ilevel ~= nil
+         end)
+      
+      local quality_range = stonehearth.farming:get_fertilizer_quality_range()
+      local rating_fn
+      if preference.quality > 0 then
+         rating_fn = function(item)
+            local data = radiant.entities.get_entity_data(item, 'stonehearth_ace:fertilizer')
+            local rating = (data.ilevel - quality_range.min) / quality_range.range
+            return rating
+         end
+      else
+         rating_fn = function(item)
+            local data = radiant.entities.get_entity_data(item, 'stonehearth_ace:fertilizer')
+            local rating = (quality_range.max - data.ilevel) / quality_range.range
+            return rating
+         end
+      end
+
+      return filter_fn, rating_fn
+   end
+end
+
+function AceFarmerFieldComponent:_destroy_fertilize_task()
+   if self._fertilize_task then
+      self._fertilize_task:destroy()
+      self._fertilize_task = nil
+   end
+end
+
+function AceFarmerFieldComponent:_is_any_plot_fertilizable()
+   local fertilizable_layer = self._sv._fertilizable_layer
+   return fertilizable_layer and fertilizable_layer:get_component('destination'):get_region():get():get_area() > 0
+end
+
+function AceFarmerFieldComponent:_ensure_fertilize_task()
+   if not self:_is_any_plot_fertilizable() then
+      self:_destroy_fertilize_task()
+   elseif not self._fertilize_task then
+      self:_create_fertilize_task(true)
+   end
+end
+
+function AceFarmerFieldComponent:_create_fertilize_task(skip_is_any_plot_check)
+   self:_destroy_fertilize_task()
+
+   if not skip_is_any_plot_check and not self:_is_any_plot_fertilizable() then
+      return
+   end
+   
+   local town = stonehearth.town:get_town(self._entity)
+   local fertilizer_filter_fn, fertilizer_rating_fn = self:_get_fertilizer_filter_and_rater()
+
+   if fertilizer_filter_fn then
+      local fertilize_task = town:create_task_for_group(
+         'stonehearth:task_groups:farming',
+         'stonehearth_ace:fertilize_field',
+         {
+            field = self._sv._fertilizable_layer,
+            fertilizer_filter_fn = fertilizer_filter_fn,
+            fertilizer_rating_fn = fertilizer_rating_fn,
+         })
+            :set_source(self._entity)
+            :start()
+      self._fertilize_task = fertilize_task
    end
 end
 

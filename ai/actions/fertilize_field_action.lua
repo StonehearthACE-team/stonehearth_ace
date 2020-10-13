@@ -12,7 +12,12 @@ FertilizeField.args = {
       default = stonehearth.ai.NIL
    }
 }
-FertilizeField.priority = 0
+FertilizeField.priority = {0, 1}
+
+function FertilizeField:start_thinking(ai, entity, args)
+   ai:set_utility(stonehearth.farming.rate_field(args.field, entity))
+   ai:set_think_output({})
+end
 
 local ai = stonehearth.ai
 return ai:create_compound_action(FertilizeField)

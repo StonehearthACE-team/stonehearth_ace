@@ -3,10 +3,10 @@ stonehearth_ace = {}
 local service_creation_order = {
    'connection',
    'crafter_info',
+   'mechanical',
+   'persistence',
    'water_processor',
    'water_signal',
-   'mechanical',
-   'persistence'
 }
 
 local monkey_patches = {
@@ -153,6 +153,7 @@ local monkey_patches = {
    ace_unlock_recipe_encounter = 'stonehearth.services.server.game_master.controllers.encounters.unlock_recipe_encounter',
    ace_util = 'radiant.lib.util',
    ace_wander_mission = 'stonehearth.services.server.game_master.controllers.missions.wander_mission',
+   ace_wait_for_closest_storage_space = 'stonehearth.ai.actions.wait_for_closest_storage_space',
    ace_water_component = 'stonehearth.components.water.water_component',
    ace_waterfall_component = 'stonehearth.components.waterfall.waterfall_component',
    ace_weather_service = 'stonehearth.services.server.weather.weather_service',

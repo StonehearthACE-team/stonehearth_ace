@@ -65,7 +65,7 @@ function AceStorageComponent:_on_contents_changed()
 
 	if not self:is_empty() and self._sv.filter and self._sv.render_filter_model then
 		if (self._sv.num_items / self._sv.capacity) >= self._sv.render_filter_model_threshold then
-			self._entity:get_component('render_info'):set_model_variant(tostring(self._sv._cached_filter_key))
+			self._entity:get_component('render_info'):set_model_variant(tostring(self._cached_filter_key))
 		else
 			self._entity:get_component('render_info'):set_model_variant('')
 		end
@@ -83,16 +83,7 @@ end
 
 function AceStorageComponent:get_filter_key()
    if not self._cached_filter_key then
-      local filter = self._sv.filter
-      if filter then
-         if filter.is_exact_filter then
-            self._cached_filter_key = filter.uri
-         else
-            self._cached_filter_key = table.concat(filter, '+')
-         end
-      else
-         self._cached_filter_key = 'hash_tag_no_filter'
-      end
+      self._cached_filter_key = stonehearth.inventory:get_inventory(radiant.entities.get_player_id(self._entity)):filter_to_key(self._sv.filter)
    end
 
    return self._cached_filter_key

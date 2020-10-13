@@ -12,9 +12,9 @@
 stonehearth_ace = {}
 
 local service_creation_order = {
+   'connection_client',
    'heatmap',
    'gameplay_settings',
-   'connection_client'
 }
 
 local monkey_patches = {
