@@ -163,6 +163,33 @@ function AceWorkshopComponent:cancel_crafting_progress()
    self:finish_crafting_progress()
 end
 
+function AceWorkshopComponent:_redistribute_ingredients()
+   local location = radiant.entities.get_world_grid_location(self._entity)
+   local ec_children = {}
+   local entity_container = self._entity:get_component('entity_container')
+   if entity_container then
+      for id, child in entity_container:each_child() do
+         if item and item:is_valid() then
+            ec_children[id] = child
+         end
+      end
+
+      if next(ec_children) then
+         local location = radiant.entities.get_world_grid_location(self._entity)
+         local player_id = radiant.entities.get_player_id(self._entity)
+         local default_storage
+         if not location then
+            local town = stonehearth.town:get_town(player_id)
+            if town then
+               default_storage = town:get_default_storage()
+               location = town:get_landing_location()
+            end
+         end
+         radiant.entities.output_spawned_items(ec_children, location, 1, 4, nil, nil, default_storage, true)
+      end
+   end
+end
+
 function AceWorkshopComponent:available_for_work(crafter)
    if not self._sv.crafting_progress then
       if not self:uses_fuel() or self:reserve_fuel(crafter) then

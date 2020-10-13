@@ -60,7 +60,10 @@ function AceCrafterComponent:_distribute_all_crafting_ingredients()
          local default_storage
          if not location then
             local town = stonehearth.town:get_town(player_id)
-            default_storage = town and town:get_default_storage()
+            if town then
+               default_storage = town:get_default_storage()
+               location = town:get_landing_location()
+            end
          end
          radiant.entities.output_spawned_items(items, location, 1, 4, nil, nil, default_storage, true)
       end

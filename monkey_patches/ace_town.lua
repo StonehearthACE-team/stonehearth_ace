@@ -562,4 +562,14 @@ function AceTown:_continue_suspendable_entities()
    end
 end
 
+AceTown._ace_old__suspend_citizen = Town._suspend_citizen
+function AceTown:_suspend_citizen(citizen_id, citizen)
+   local crafter_component = citizen:get_component('stonehearth:crafter')
+   if crafter_component then
+      crafter_component:clean_up_order()
+   end
+
+   self:_ace_old__suspend_citizen(citizen_id, citizen)
+end
+
 return AceTown
