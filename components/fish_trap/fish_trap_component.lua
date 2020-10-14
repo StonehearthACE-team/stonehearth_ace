@@ -399,7 +399,7 @@ function FishTrapComponent:_update_description()
       description = self._settings.high_water_description or 'i18n(stonehearth_ace:jobs.trapper.fish_trap.high_water_description)'
    else
       local catalog_data = stonehearth.catalog:get_catalog_data(self._entity:get_uri())
-      description = catalog_data and catalog_data.description or 'i18n(stonehearth_ace:jobs.trapper.fish_trap.description)')
+      description = catalog_data and catalog_data.description or 'i18n(stonehearth_ace:jobs.trapper.fish_trap.description)'
    end
 
    radiant.entities.set_description(self._entity, description)
