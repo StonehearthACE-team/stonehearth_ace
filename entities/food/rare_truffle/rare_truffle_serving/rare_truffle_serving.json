@@ -1,0 +1,38 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(rare_truffle_serving.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:item": {
+         "category": "food",
+         "destroy_on_uncarry": true
+      },
+      "stonehearth:food": {
+         "stonehearth:sitting_on_chair": {
+            "satisfaction": 60
+         },
+         "default": {
+            "satisfaction": 48
+         },
+         "quality": 3
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.rare_truffle.rare_truffle_serving.display_name)",
+         "description": "i18n(stonehearth_ace:entities.food.rare_truffle.rare_truffle_serving.description)",
+         "material_tags": [
+            "food",
+            "fungi",
+            "dinner_time"
+         ],
+         "subject_override": "stonehearth_ace:food:rare_truffle:rare_truffle_basket"
+      }
+   }
+}

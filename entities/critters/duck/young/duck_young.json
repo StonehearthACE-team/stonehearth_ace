@@ -84,6 +84,17 @@
       },
       "stonehearth:trivial_death": {},
       "stonehearth:evolve": {},
+      "stonehearth_ace:aquatic_object": {
+         "swimming_object": {
+            "vertical_offset": -0.2,
+            "surface": true
+         }
+      },
+      "stonehearth:buffs": {
+         "buffs": {
+            "stonehearth_ace:buffs:swimmer": true
+         }
+      },
       "stonehearth:unit_info": {}
    },
    "entity_data": {
@@ -151,7 +162,8 @@
          "player_id": "animals",
          "display_name": "i18n(stonehearth_ace:entities.critters.duck.young.display_name)",
          "description": "i18n(stonehearth_ace:entities.critters.duck.young.description)",
-         "icon": "file(duck_young.png)"
+         "icon": "file(duck_young.png)",
+         "category": "aquatic"
       }
    }
 }

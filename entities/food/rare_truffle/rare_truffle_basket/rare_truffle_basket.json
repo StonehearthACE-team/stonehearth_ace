@@ -1,0 +1,57 @@
+{
+   "mixins": "stonehearth:mixins:food_decay",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(rare_truffle_basket.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0.05 }
+      },
+      "stonehearth:stacks": {
+         "max_stacks": 3
+      },
+      "effect_list": {
+         "default": "stonehearth:effects:treasure_glow"
+      }
+   },
+   "entity_data": {
+      "stonehearth:food_container": {
+         "effect": "fiddle",
+         "food": "stonehearth_ace:food:rare_truffle:rare_truffle_serving",
+         "stacks_per_serving": 1
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 12,
+         "rarity": "rare",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 3,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.rare_truffle.rare_truffle_basket.display_name)",
+         "description": "i18n(stonehearth_ace:entities.food.rare_truffle.rare_truffle_basket.description)",
+         "icon": "file(rare_truffle_basket.png)",
+         "is_item": true,
+         "category": "food",
+         "material_tags": [
+            "food_container",
+            "raw_food",
+            "fungi",
+            "rare_truffle",
+            "stockpile_raw_food",
+            "dinner_time"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": 3
+      }
+   }
+}

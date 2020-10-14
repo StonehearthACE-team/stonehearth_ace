@@ -29,7 +29,6 @@ function AceDarknessObserver:_update()
    end
 
    radiant.entities.add_thought(self._sv._entity, 'stonehearth:thoughts:darkness', { value = score })
-   self:_visualize_darkness(score)
 end
 
 return AceDarknessObserver

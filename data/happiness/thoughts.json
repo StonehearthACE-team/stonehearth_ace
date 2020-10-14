@@ -15,6 +15,47 @@
             }
          }
       },
+      "darkness": {
+         "time_average": true,
+         "mutually_exclusive": true,
+         "averaging_period": "1m",
+         "thresholds": {
+            "mixintypes": {
+               "very_dark": "remove"
+            },
+            "dark": {
+               "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.darkness.dark.display_name)",
+               "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.darkness.dark.tooltip)",
+               "happiness_delta": -6,
+               "max_threshold": -6
+            },
+            "shade": {
+               "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.darkness.shade.display_name)",
+               "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.darkness.shade.tooltip)",
+               "happiness_delta": -3,
+               "max_threshold": -3
+            },
+            "dim_light": {
+               "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.darkness.dim_light.display_name)",
+               "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.darkness.dim_light.tooltip)",
+               "happiness_delta": -1,
+               "max_threshold": 0
+            },
+            "light": {
+               "display_name": "",
+               "tooltip": "",
+               "happiness_delta": 0,
+               "max_threshold": 5,
+               "hide": true
+            },
+            "bright": {
+               "display_name": "i18n(stonehearth:data.happiness.thoughts.darkness.dark.display_name)",
+               "tooltip": "i18n(stonehearth:data.happiness.thoughts.darkness.dark.tooltip)",
+               "happiness_delta": 3,
+               "max_threshold": 10
+            }
+         }
+      },
       "traits": {
          "values": {
             "heliophile": {

@@ -4,7 +4,9 @@ local validator = radiant.validator
 local constants = require 'stonehearth.constants'
 local NUM_STARTING_CITIZENS = constants.game_creation.num_starting_citizens
 local MIN_STARTING_ITEM_RADIUS = 0
+local MIN_STARTING_ITEM_CONTAINER_RADIUS = 6
 local MAX_STARTING_ITEM_RADIUS = 5
+local MAX_STARTING_ITEM_CONTAINER_RADIUS = 8
 
 local AceGameCreationService = class()
 
@@ -122,8 +124,8 @@ function AceGameCreationService:create_camp_command(session, response, pt)
       
       -- if it hasn't already been placed, find a place for it
       if not radiant.entities.get_world_grid_location(starting_items_container) then
-         local placement_location = radiant.terrain.find_placement_point(location, MIN_STARTING_ITEM_RADIUS, MAX_STARTING_ITEM_RADIUS)
-         radiant.terrain.place_entity(starting_items_container, placement_location)
+			local placement_location = Point3(camp_x, pt.y, camp_z-6)
+			radiant.terrain.place_entity(starting_items_container, placement_location, { facing = 90 })
       end
       starting_items_container:add_component('stonehearth_ace:input')
       town:add_default_storage(starting_items_container)

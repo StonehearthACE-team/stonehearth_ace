@@ -8,34 +8,6 @@
             "mixintypes": {
                "stonehearth:rabbit": "remove"
             },
-            "stonehearth_ace:ostrich": {
-               "name": "i18n(stonehearth_ace:ui.game.zones_mode.pasture.ostrich_pasture_name)",
-               "description": "i18n(stonehearth_ace:ui.game.zones_mode.pasture.ostrich_pasture_description)",
-               "icon": "/stonehearth_ace/entities/critters/ostrich/ostrich.png",
-               "min_population": 2,
-               "reproduction_uri": "stonehearth:ostrich:egg:fertilized",
-               "max_num_per_10_square_unit": 0.64,
-               "base_reproduction_period": "48h",
-               "min_reproduction_period": "24h",
-               "feed_uri": "stonehearth_ace:food:ostrich_feed",
-               "feed_material": "ostrich_feed_bag",
-               "level_requirement": 5,
-               "ordinal": 7
-            },
-            "stonehearth_ace:moomoo": {
-               "name": "i18n(stonehearth_ace:ui.game.zones_mode.pasture.moomoo_pasture_name)",
-               "description": "i18n(stonehearth_ace:ui.game.zones_mode.pasture.moomoo_pasture_description)",
-               "icon": "/stonehearth_ace/entities/critters/moomoo/moomoo.png",
-               "min_population": 2,
-               "reproduction_uri": "stonehearth_ace:moomoo:young",
-               "max_num_per_10_square_unit": 0.4,
-               "base_reproduction_period": "72h",
-               "min_reproduction_period": "36h",
-               "feed_uri": "stonehearth_ace:food:moomoo_feed",
-               "feed_material": "moomoo_feed_bag",
-               "level_requirement": 4,
-               "ordinal": 5
-            },
             "stonehearth_ace:rabbit:pasture": {
                "name": "i18n(stonehearth:ui.game.zones_mode.pasture.rabbit_pasture_name)",
                "icon": "/stonehearth/entities/critters/rabbit/rabbit.png",
@@ -79,6 +51,48 @@
                "level_requirement": 3,
                "feed_material": "sheep_feed_bag",
                "ordinal": 4
+            },
+            "stonehearth_ace:oinker": {
+               "name": "i18n(stonehearth_ace:ui.game.zones_mode.pasture.oinker_pasture_name)",
+               "icon": "/stonehearth_ace/entities/critters/oinker/oinker.png",
+               "min_population": 2,
+               "max_num_per_10_square_unit": 0.48,
+               "feed_uri": "stonehearth_ace:food:oinker_feed",
+               "description": "i18n(stonehearth_ace:ui.game.zones_mode.pasture.oinker_pasture_description)",
+               "reproduction_uri": "stonehearth_ace:oinker:young",
+               "base_reproduction_period": "56h",
+               "min_reproduction_period": "24h",
+               "feed_material": "oinker_feed_bag",
+               "level_requirement": 4,
+               "ordinal": 5
+            },
+            "stonehearth_ace:moomoo": {
+               "name": "i18n(stonehearth_ace:ui.game.zones_mode.pasture.moomoo_pasture_name)",
+               "description": "i18n(stonehearth_ace:ui.game.zones_mode.pasture.moomoo_pasture_description)",
+               "icon": "/stonehearth_ace/entities/critters/moomoo/moomoo.png",
+               "min_population": 2,
+               "reproduction_uri": "stonehearth_ace:moomoo:young",
+               "max_num_per_10_square_unit": 0.4,
+               "base_reproduction_period": "72h",
+               "min_reproduction_period": "36h",
+               "feed_uri": "stonehearth_ace:food:moomoo_feed",
+               "feed_material": "moomoo_feed_bag",
+               "level_requirement": 4,
+               "ordinal": 6
+            },
+            "stonehearth_ace:ostrich": {
+               "name": "i18n(stonehearth_ace:ui.game.zones_mode.pasture.ostrich_pasture_name)",
+               "description": "i18n(stonehearth_ace:ui.game.zones_mode.pasture.ostrich_pasture_description)",
+               "icon": "/stonehearth_ace/entities/critters/ostrich/ostrich.png",
+               "min_population": 2,
+               "reproduction_uri": "stonehearth:ostrich:egg:fertilized",
+               "max_num_per_10_square_unit": 0.64,
+               "base_reproduction_period": "48h",
+               "min_reproduction_period": "24h",
+               "feed_uri": "stonehearth_ace:food:ostrich_feed",
+               "feed_material": "ostrich_feed_bag",
+               "level_requirement": 5,
+               "ordinal": 7
             }
          }
       },

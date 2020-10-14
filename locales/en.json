@@ -1413,6 +1413,20 @@
                      "tooltip": "The fever is unbearable, the discomfort is horrible... I can see a light... Should I go to the light?"
                   }
                }
+            },
+            "darkness": {
+               "dark": {
+                  "tooltip": "I can hardly see anything!",
+                  "display_name": "Complete Darkness"
+               },
+               "shade": {
+                  "display_name": "In the Shade",
+                  "tooltip": "I'm in the shade and could really use some light..."
+               },
+               "dim_light": {
+                  "display_name": "Dim Light",
+                  "tooltip": "The light level here is just fine... If you squint the eyes a little!"
+               }
             }
          }
       },
@@ -2708,7 +2722,7 @@
             },
             "crushing_blow": {
                "display_name": "Wound: Crushing Blow",
-               "description": "Gah! This hurts and looks... Very swollen.<ul><li>💬 Type & Severity: Impact (High)</li><li>💜🔻 Effective maximum health is somewhat lowered</li><li>💊 This wound can be treated with any compress but requires at least a Herbal Compress to be completely removed with a single treatment</li><li>❌ This wound will never heal on its own</li><li>🌡️ If left untreated, this wound may cause High Fever</li></ul>"
+               "description": "Gah! This hurts and looks... Very swollen.<ul><li>💬 Type & Severity: Impact (High)</li><li>💜🔻 Effective maximum health is somewhat lowered</li><li>💊 This wound can be treated with any compress but requires at least an Herbal Compress to be completely removed with a single treatment</li><li>❌ This wound will never heal on its own</li><li>🌡️ If left untreated, this wound may cause High Fever</li></ul>"
             },
             "broken_bone": {
                "display_name": "Wound: Broken Bone",
@@ -2936,6 +2950,10 @@
                "display_name": "Strong Anti-Toxin Protection",
                "description": "The effects of an anti-toxin potion are protecting this hearthling from all toxins for a while."
             }
+         },
+         "kibble_hearth": {
+            "display_name": "Hearthbud Kibble",
+            "description": "Recovering health over time"
          }
       },
       "loadouts": {
@@ -5750,6 +5768,10 @@
                "recipe_name": "Duck Feed (x3)",
                "description": "Grain and seeds for ducks. Improves the quality of animal produce."
             },
+            "oinker_feed_recipe": {
+               "recipe_name": "Oinker Feed (x3)",
+               "description": "A bit of anything, really. Improves the quality of animal produce."
+            },
             "sheep_feed_recipe": {
                "recipe_name": "Sheep Feed (x3)",
                "description": "Tasty grasses for sheep. Improves the quality of animal produce."
@@ -5783,6 +5805,11 @@
                "recipe_name": "Veggie Kibble (x5)",
                "description": "Bake delicious and healthy rations for pets. Exclusively carnivore animals will not eat this kibble.",
                "flavor": ""
+            },
+            "kibble_hearth_recipe": {
+               "recipe_name": "Hearthbud Kibble (x4)",
+               "description": "Bake magically enhanced rations that will make your pets extremely satisfied! All animals will eat this kibble.",
+               "flavor": "Our pets deserve all the love"
             },
             "malted_grains_recipe": {
                "recipe_name": "Sack of Malted Grains",
@@ -6119,7 +6146,7 @@
                "description": "Spin animal wool into a versatile resource that can be used as both fiber or thread.",
                "flavor": "You might want to store these far away from kittens..."
             },
-				"fine_stuffing_recipe": {
+            "fine_stuffing_recipe": {
                "recipe_name": "Fine Stuffing",
                "description": "Craft a neat and useful wadding that can be used as a filling in several objects or pieces of clothing.",
                "flavor": "Warm and comfy!"
@@ -6225,6 +6252,26 @@
                "description": "A quiver equippable by an archer. The bolts encased by it will slow down enemies.",
                "flavor": "A bolt quiver can only be worn with crossbows"
             },
+            "curtain_door_recipe": {
+               "recipe_name": "Curtain Door",
+               "description": "A pretty yet weak passage.",
+               "flavor": "Can it even be called a door?"
+            },
+            "double_curtain_door_recipe": {
+               "recipe_name": "Curtain Double Door",
+               "description": "Sometimes a single curtain just won't cut it.",
+               "flavor": ""
+            },
+            "ornate_curtain_door_recipe": {
+               "recipe_name": "Ornate Curtain Door",
+               "description": "Absolutely the fanciest way to separate two rooms.",
+               "flavor": "Might as well use it as a dress!"
+            },
+            "ornate_double_curtain_door_recipe": {
+               "recipe_name": "Ornate Curtain Double Door",
+               "description": "For those really special places.",
+               "flavor": ""
+            },
             "curtains_wide_recipe": {
                "recipe_name": "Wide Curtains",
                "description": "For when the regular curtains are not enough.",
@@ -6296,7 +6343,8 @@
                "flavor": "Your faith is your shield... but some leather will probably help"
             },
             "clothing_armor_name": "Clothing & Accessories",
-            "weapons_name": "Combat Equipment"
+            "weapons_name": "Combat Equipment",
+            "furniture_name": "Building Parts & Furniture"
          },
          "weaver_description": {
             "level_2_data": {
@@ -7257,12 +7305,28 @@
          "marble_window_tall": {
             "display_name": "Tall Marble Window",
             "description": "Required for promoting a houseling into a Manor."
+         },
+         "curtain_door": {
+            "display_name": "Curtain Door",
+            "description": "Can it even be called a door?"
+         },
+         "double_curtain_door": {
+            "display_name": "Curtain Double Door",
+            "description": "Watch your privacy sliding away!"
+         },
+         "ornate_curtain_door": {
+            "display_name": "Ornate Curtain Door",
+            "description": "Not a curtain anymore. A style statement."
+         },
+         "ornate_double_curtain_door": {
+            "display_name": "Ornate Curtain Double Door",
+            "description": "You feel like you need to be well dressed to go through these."
          }
       },
       "crops": {
          "moonbell_crop": {
             "display_name": "Moonbell Flower",
-            "description": "If grown by a Herbalist can be used as a blue aromatic herb",
+            "description": "If grown by an Herbalist can be used as a blue aromatic herb",
             "growth_stage": {
                "000": {
                   "name": "Moonbell Seedling",
@@ -7343,7 +7407,7 @@
          },
          "violet_crop": {
             "display_name": "Violet Flower",
-            "description": "If grown by a Herbalist can be used as a purple aromatic herb",
+            "description": "If grown by an Herbalist can be used as a purple aromatic herb",
             "growth_stage": {
                "000": {
                   "name": "Violet Seedlings",
@@ -7359,13 +7423,13 @@
                },
                "003": {
                   "name": "Violets",
-                  "description": "If grown by a Herbalist can be harvested for purple aromatic herbs"
+                  "description": "If grown by an Herbalist can be harvested for purple aromatic herbs"
                }
             }
          },
          "snow_poppy_crop": {
             "display_name": "Snow Poppy Flower",
-            "description": "If grown by a Herbalist can be used as a red aromatic herb",
+            "description": "If grown by an Herbalist can be used as a red aromatic herb",
             "growth_stage": {
                "000": {
                   "name": "Snow Poppy Seedlings",
@@ -7381,7 +7445,7 @@
                },
                "003": {
                   "name": "Snow Poppies",
-                  "description": "If grown by a Herbalist can be harvested for red aromatic herbs"
+                  "description": "If grown by an Herbalist can be harvested for red aromatic herbs"
                }
             }
          },
@@ -7661,7 +7725,7 @@
          },
          "poppy_crop": {
             "display_name": "Poppy Flower",
-            "description": "If grown by a Herbalist can be used as a red bitter herb",
+            "description": "If grown by an Herbalist can be used as a red bitter herb",
             "growth_stage": {
                "000": {
                   "description": "Still growing!",
@@ -7677,13 +7741,13 @@
                },
                "003": {
                   "name": "Poppies",
-                  "description": "If grown by a Herbalist can be harvested for red bitter herbs."
+                  "description": "If grown by an Herbalist can be harvested for red bitter herbs."
                }
             }
          },
          "rose_crop": {
             "display_name": "Rose Flower",
-            "description": "If grown by a Herbalist can be used as a healing herb",
+            "description": "If grown by an Herbalist can be used as a healing herb",
             "growth_stage": {
                "000": {
                   "description": "Still growing!",
@@ -7699,13 +7763,13 @@
                },
                "003": {
                   "name": "Roses",
-                  "description": "If grown by a Herbalist can be harvested for healing herbs."
+                  "description": "If grown by an Herbalist can be harvested for healing herbs."
                }
             }
          },
          "oleander_crop": {
             "display_name": "Oleander Flower",
-            "description": "If grown by a Herbalist can be used as a red bitter herb",
+            "description": "If grown by an Herbalist can be used as a red bitter herb",
             "growth_stage": {
                "000": {
                   "description": "Still growing!",
@@ -7721,13 +7785,13 @@
                },
                "003": {
                   "name": "Oleanders",
-                  "description": "If grown by a Herbalist can be harvested for red bitter herbs."
+                  "description": "If grown by an Herbalist can be harvested for red bitter herbs."
                }
             }
          },
          "daylily_crop": {
             "display_name": "Daylily Flower",
-            "description": "If grown by a Herbalist can be used as a yellow aromatic herb",
+            "description": "If grown by an Herbalist can be used as a yellow aromatic herb",
             "growth_stage": {
                "000": {
                   "description": "Still growing!",
@@ -7743,13 +7807,13 @@
                },
                "003": {
                   "name": "Daylilies",
-                  "description": "If grown by a Herbalist can be harvested for yellow aromatic herbs."
+                  "description": "If grown by an Herbalist can be harvested for yellow aromatic herbs."
                }
             }
          },
          "nightshade_crop": {
             "display_name": "Nightshade Flower",
-            "description": "If grown by a Herbalist can be used as a purple bitter herb",
+            "description": "If grown by an Herbalist can be used as a purple bitter herb",
             "growth_stage": {
                "000": {
                   "description": "Still growing!",
@@ -7765,7 +7829,7 @@
                },
                "003": {
                   "name": "Nightshades",
-                  "description": "If grown by a Herbalist can be harvested for purple bitter herbs."
+                  "description": "If grown by an Herbalist can be harvested for purple bitter herbs."
                }
             }
          }
@@ -8094,6 +8158,10 @@
             "deer_horn": {
                "display_name": "Antler",
                "description": "Hard and sharp. Can be used as bone material."
+            },
+            "oinker_pelt": {
+               "display_name": "Oinker Pelt",
+               "description": "A thin and leathery hide with a very short fur."
             }
          },
          "bone_material": {
@@ -10139,7 +10207,7 @@
          "megacrop": {
             "mega_pumpkin": {
                "display_name": "Mega Pumpkin",
-               "description": "Woah, look at the size! Harvest it, place it as a decoration, or prepare a hearty soup!"
+               "description": "Woah, look at the size! Harvest it for special oinker food or prepare a hearty soup!"
             },
             "mega_pumpkin_soup": {
                "display_name": "Mega Pumpkin Soup",
@@ -10529,6 +10597,15 @@
                "display_name": "Duck Nest",
                "description": "Duck eggs are very nutritious. Just saying."
             }
+         },
+         "oinker": {
+            "species": "oinker",
+            "display_name": "Oinker",
+            "description": "Smelly fellows that love sniffling 'em truffles! Oh, and the bacon..."
+         },
+         "oinker_young": {
+            "display_name": "Oinklet",
+            "description": "It's a tiny oinker! Oink, oink!"
          }
       },
       "food": {
@@ -11444,6 +11521,46 @@
                "display_name": "Mega Watermelon Feed",
                "description": "The ducks love it! This meal will last a good while!"
             }
+         },
+         "rare_truffle": {
+            "rare_truffle_basket": {
+               "display_name": "Basket of Rare Truffles",
+               "description": "Delicious and extremely flavorful black truffles dug up by an oinker!"
+            },
+            "rare_truffle_serving": {
+               "display_name": "Serving of Rare Truffles",
+               "description": "Exquisite."
+            }
+         },
+         "oinker_jerky": {
+            "display_name": "Oinker Jerky"
+         },
+         "oinker_feed": {
+            "oinker_feed": {
+               "display_name": "Oinker Feed",
+               "description": "For feeding swine"
+            },
+            "oinker_feed_ground": {
+               "display_name": "Oinker Feed",
+               "description": "They will eat anything!"
+            }
+         },
+         "megacrop_oinker_feed": {
+            "megacrop_oinker_feed": {
+               "display_name": "Mega Pumpkin Feed",
+               "description": "A drove of oinkers would have a blast with this big pumpkin half!"
+            },
+            "megacrop_oinker_feed_ground": {
+               "display_name": "Mega Pumpkin Feed",
+               "description": "Tender and chonky bits of pumpkin for oinkers. This meal will last a good while!"
+            }
+         },
+         "kibble_hearth": {
+            "display_name": "Hearthbud Kibble",
+            "description": "Magical and highly efficient food for pets. A kibble bowl can be used for serving."
+         },
+         "pork": {
+            "description": "Raw meat from a swine"
          }
       },
       "terrain": {
@@ -11634,6 +11751,10 @@
                   "description": "The fungi are sprawling and will soon be large enough!"
                }
             }
+         },
+         "oinker_hole": {
+            "display_name": "Oinker Hole",
+            "description": "A snouty pig has dug into the ground here... Did they find anything?"
          }
       },
       "monsters": {
@@ -12927,6 +13048,10 @@
          "refrigerator_small": {
             "display_name": "Small Refrigerator",
             "description": "Keeps up to 16 items fresh for a really long time."
+         },
+         "embark_wagon": {
+            "display_name": "Wooden Wagon",
+            "description": "Provides initial storage. Harvest it to let go of road trip memories and get some wood."
          }
       },
       "tools": {
@@ -14362,7 +14487,9 @@
                "rabbit_pasture_description": "Rabbits reproduce quickly and can be slaughtered for jerky, pelts and sometimes bone",
                "poyo_pasture_description": "Poyos lay eggs, a fine cooking ingredient. Slaughtering poyo will yield meat and, often, feathers and bone",
                "duck_pasture_description": "Ducks lay eggs, but require more space and time than poyos. Slaughtering duck will yield meat and, often, feathers and bone",
-               "duck_pasture_name": "Duck Badling"
+               "duck_pasture_name": "Duck Badling",
+               "oinker_pasture_name": "Oinker Drove",
+               "oinker_pasture_description": "Oinkers eat well and occasionally dig up truffles, a valuable cooking ingredient. They yield pelts, bone, and good amounts of pork and jerky"
             }
          },
          "herbalist_planter": {
@@ -14668,7 +14795,7 @@
                "auto_save_unique_files": "Auto Save Unique Files",
                "auto_save_unique_files_description": "When auto-saving, create a separate save with the date and time.<span class='warn'>WARNING:</span>Frequent auto-saving requires a lot of storage space!",
                "show_debugtools_on_load": "Show Debug UI On Load",
-               "show_debugtools_on_load_description": "When the Debug Tools mod is enabled, show the Debug UI by default."
+               "show_debugtools_on_load_description": "Show the Debug UI by default. It can be hidden or shown again by using the 'show_debug_ui' (true/false) console command. This setting only applies if the DebugTools mod is active."
             },
             "controls_tab": {
                "key_binding_names": {

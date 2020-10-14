@@ -1,0 +1,86 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "render_info": {
+         "scale": 0.1,
+         "animation_table": "/stonehearth_ace/data/rigs/entities/containers/embark_wagon/embark_wagon.json"
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(embark_wagon.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "align_to_grid": [
+            "x",
+            "z"
+         ],
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0, "y": 0, "z": 0 }
+      },
+      "stonehearth:resource_node": {
+         "durability": 8,
+         "resource": "stonehearth:resources:wood:oak_log",
+         "harvest_overlay_effect": "stonehearth:effects:chop_overlay_effect",
+         "harvester_effect": "saw"
+      },
+      "stonehearth:storage": {
+         "type": "crate",
+         "filter_list": "stonehearth_ace:ui:stockpile:filters:zone",
+         "render_contents": true,
+         "reposition_items": "fill",
+         "capacity": 96
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -3 },
+               "max": { "x": 1, "y": 2, "z": 3 }
+            }
+         ],
+         "adjacency_flags": [
+            "back"
+         ]
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -2, "y": 0, "z": -3 },
+               "max": { "x": 2, "y": 2, "z": 3 }
+            }
+         ]
+      },
+      "effect_list": {
+         "default": "/stonehearth_ace/data/rigs/entities/containers/embark_wagon/effects/idle.json"
+      }
+   },
+   "entity_data": {
+      "stonehearth:town_patrol": {
+         "auto_patrol": true,
+         "patrol_pattern": "perimeter"
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 0,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.containers.embark_wagon.display_name)",
+         "description": "i18n(stonehearth_ace:entities.containers.embark_wagon.description)",
+         "icon": "file(embark_wagon.png)",
+         "category": "storage",
+         "material_tags": [
+            "wood"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": -1
+      }
+   }
+}

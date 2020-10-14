@@ -14,6 +14,11 @@
                   "type": "one_of",
                   "items": [
                      "file(duck.qb)",
+                     "file(duck.qb)",
+                     "file(duck.qb)",
+                     "file(duck.qb)",
+                     "file(duck.qb)",
+                     "file(duck.qb)",
                      "file(duck_drake.qb)"
                   ]
                }
@@ -178,6 +183,17 @@
          "animation_table": "/stonehearth_ace/data/rigs/entities/critters/duck",
          "scale": 0.11
       },
+      "stonehearth_ace:aquatic_object": {
+         "swimming_object": {
+            "vertical_offset": -0.4,
+            "surface": true
+         }
+      },
+      "stonehearth:buffs": {
+         "buffs": {
+            "stonehearth_ace:buffs:swimmer": true
+         }
+      },
       "stonehearth:unit_info": {}
    },
    "entity_data": {
@@ -239,7 +255,8 @@
          "player_id": "animals",
          "display_name": "i18n(stonehearth_ace:entities.critters.duck.display_name)",
          "description": "i18n(stonehearth_ace:entities.critters.duck.description)",
-         "icon": "file(duck.png)"
+         "icon": "file(duck.png)",
+         "category": "aquatic"
       }
    }
 }

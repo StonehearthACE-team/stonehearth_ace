@@ -1,6 +1,7 @@
 local Point3 = _radiant.csg.Point3
 local Region3 = _radiant.csg.Region3
 local Cube3 = _radiant.csg.Cube3
+local rng = _radiant.math.get_default_rng()
 
 local log = radiant.log.create_logger('aquatic_object')
 
@@ -8,6 +9,8 @@ local AquaticObjectComponent = class()
 
 function AquaticObjectComponent:initialize()
 	self._sv.in_the_water = nil
+	
+	self._sv.original_origin = self._entity:get_component('mob'):get_model_origin() or Point3(0,0,0)
    
    self._json = radiant.entities.get_json(self)
    if self._json then
@@ -15,6 +18,7 @@ function AquaticObjectComponent:initialize()
       self._destroy_if_out_of_water = self._json.destroy_if_out_of_water
       self._suffocate_if_out_of_water = self._json.suffocate_if_out_of_water
       self._floating_object = self._json.floating_object
+		self._swimming_object = self._json.swimming_object
    end
 end
 
@@ -50,10 +54,10 @@ function AquaticObjectComponent:_create_listeners()
    end
 
    local monitor_types = {}
-   if self._require_water_to_grow or self._destroy_if_out_of_water or self._suffocate_if_out_of_water then
+   if self._require_water_to_grow or self._destroy_if_out_of_water or self._suffocate_if_out_of_water or self._swimming_object then
       table.insert(monitor_types, 'water_exists')
    end
-   if self._suffocate_if_out_of_water or self._floating_object then
+   if self._suffocate_if_out_of_water or self._floating_object or self._swimming_object then
       table.insert(monitor_types, 'water_surface_level')
    end
    
@@ -86,6 +90,7 @@ function AquaticObjectComponent:_on_water_exists_changed(exists)
    -- if water goes away completely, water_surface_level may not get reported, but it should definitely suffocate
 	if not exists then
 		self:suffocate_entity()
+		self:stop_swim()
 	end
 	
 	if self._destroy_if_out_of_water and not self._sv.in_the_water and not self._queued_destruction then
@@ -99,7 +104,7 @@ function AquaticObjectComponent:_on_water_surface_level_changed(level)
    end
 
    self:float(level)
-   
+   self:swim(level)
    -- if a surface level is getting reported, water exists, so this handles the case of water suddenly appearing
    self:suffocate_entity(level)
 end
@@ -161,6 +166,49 @@ function AquaticObjectComponent:float(level)
       
       radiant.entities.move_to(self._entity, location)
    end
+end
+
+function AquaticObjectComponent:swim(level)
+	if not self._swimming_object then
+		return
+   end
+   
+	local vertical_offset = self._swimming_object.vertical_offset or 0
+	local location = radiant.entities.get_world_location(self._entity)
+	local mob_component = self._entity:get_component('mob')
+	local model_origin = mob_component:get_model_origin()
+	
+   if location and model_origin then
+      local lowest = radiant.terrain.get_standable_point(location).y
+		local depth = nil
+		if level then
+			depth = (level - lowest) + vertical_offset
+		else
+			return
+		end
+		
+		if self._swimming_object.minimum_depth and self._swimming_object.minimum_depth > depth then
+			model_origin.y = model_origin.y
+      else
+			if self._swimming_object.surface then
+				model_origin.y = math.max(model_origin.y, depth) * -1
+			elseif self._swimming_object.bottom then
+				model_origin.y = math.max(model_origin.y, (depth / rng:get_real(4, 5))) * -1
+			else
+				model_origin.y = math.max(model_origin.y, (depth / rng:get_real(2, 5))) * -1
+			end 
+      end
+      
+      mob_component:set_model_origin(model_origin)
+   end
+end
+
+function AquaticObjectComponent:stop_swim()
+	if not self._swimming_object then
+		return
+   end
+
+   self._entity:get_component('mob'):set_model_origin(self._sv.original_origin)
 end
 
 function AquaticObjectComponent:timers_resume(resume)

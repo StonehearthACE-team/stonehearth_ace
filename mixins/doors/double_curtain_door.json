@@ -1,0 +1,31 @@
+{
+   "components": {
+      "stonehearth:entity_forms": {
+         "placeable_on_walls": true,
+         "placeable_on_ground": true
+      },
+      "sensor_list": {
+         "sensors": {
+            "door_sensor": {
+               "type": "sensor",
+               "radius": 3
+            }
+         }
+      },
+      "stonehearth:door": {
+         "sensor": "door_sensor"
+      },
+      "region_collision_shape": {
+         "region_collision_type": "none",
+         "region": [
+            {
+               "min": { "x": -2, "y": 0, "z": -0.5 },
+               "max": { "x": 3, "y": 4, "z": 1.5 }
+            }
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:entity_radius": 0.5
+   }
+}

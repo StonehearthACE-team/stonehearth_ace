@@ -1,0 +1,26 @@
+{
+   "type": "recipe",
+   "effort": 18,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.weaver.recipes.double_curtain_door_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.weaver.recipes.double_curtain_door_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.weaver.recipes.double_curtain_door_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/construction/double_curtain_door/double_curtain_door.png",
+   "workshop": "stonehearth:weaver:workbench",
+   "level_requirement": 3,
+   "ingredients": [
+      {
+         "material": "cloth resource",
+         "count": 2
+      },
+      {
+         "material": "wood resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:portals:double_curtain_door"
+      }
+   ]
+}

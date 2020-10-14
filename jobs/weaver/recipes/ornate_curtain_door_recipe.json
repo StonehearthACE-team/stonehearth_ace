@@ -1,0 +1,30 @@
+{
+   "type": "recipe",
+   "effort": 17,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.weaver.recipes.ornate_curtain_door_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.weaver.recipes.ornate_curtain_door_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.weaver.recipes.ornate_curtain_door_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/construction/ornate_curtain_door/ornate_curtain_door.png",
+   "workshop": "stonehearth:weaver:workbench",
+   "level_requirement": 5,
+   "ingredients": [
+      {
+         "material": "cloth resource",
+         "count": 1
+      },
+      {
+         "material": "wood resource",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth:refined:gold_flakes",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:portals:ornate_curtain_door"
+      }
+   ]
+}

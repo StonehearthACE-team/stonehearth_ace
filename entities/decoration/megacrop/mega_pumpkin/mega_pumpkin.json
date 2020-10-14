@@ -21,23 +21,38 @@
          "entries": {
             "default": {
                "num_rolls": {
-                  "min": 1,
-                  "max": 3
+                  "min": 2,
+                  "max": 2
                },
                "items": {
                   "pumkpin": {
-                     "uri": "stonehearth:food:pumpkin:pumpkin_basket"
+                     "uri": "stonehearth_ace:food:megacrop:oinker_feed"
                   }
                }
             }
          }
       },
       "stonehearth:resource_node": {
-         "resource": "stonehearth:food:pumpkin:pumpkin_basket",
+         "resource": "stonehearth_ace:food:megacrop:oinker_feed",
          "harvest_overlay_effect": "stonehearth:effects:harvest_plant_overlay_effect",
-         "harvester_effect": "fiddle",
+         "harvester_effect": "chop_block",
          "description": "harvest",
-         "durability": 3
+         "durability": 1,
+         "resource_loot_table": {
+            "entries": {
+               "optional": {
+                  "num_rolls": {
+                     "min": 1,
+                     "max": 1
+                  },
+                  "items": {
+                     "additional_half": {
+                        "uri": "stonehearth_ace:food:megacrop:oinker_feed"
+                     }
+                  }
+               }
+            }
+         }
       }
    },
    "entity_data": {

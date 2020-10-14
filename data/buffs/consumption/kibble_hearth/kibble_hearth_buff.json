@@ -1,0 +1,17 @@
+{
+   "type": "buff",
+   "axis": "buff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.kibble_hearth.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.kibble_hearth.description)",
+   "icon": "file(kibble_hearth_buff.png)",
+   "duration": "12h",
+   "repeat_add_action": "renew_duration",
+   "script": "stonehearth:buff_scripts:periodic_health_modification",
+   "script_info": {
+      "health_change": 0.2,
+      "pulse": "30m",
+      "pulse_immediately": false,
+      "pulse_on_destroy": true,
+      "is_percentage": true
+   }
+}

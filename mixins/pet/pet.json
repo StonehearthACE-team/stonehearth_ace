@@ -1,5 +1,18 @@
 {
    "mixintypes": {
       "type": "remove"
+   },
+	"components": {
+      "stonehearth:attributes": {
+         "max_calories": {
+            "type": "basic",
+            "value": 60
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:calories": {
+         "hourly_calorie_loss": 0.8
+      }
    }
 }

@@ -6,7 +6,21 @@
       "mixintypes": {
          "stonehearth:renewable_resource_node": "remove",
          "stonehearth:commands": "override",
-         "stonehearth:resource_node": "override"
+         "stonehearth:resource_node": "override",
+         "model_variants": "override"
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(duck_wild.qb)",
+                     "file(duck_wild_drake.qb)"
+                  ]
+               }
+            ]
+         }
       },
       "stonehearth:attributes": {
          "mixintypes": {
@@ -89,6 +103,9 @@
       },
       "stonehearth:net_worth": {
          "value_in_gold": 0
+      },
+      "stonehearth:catalog": {
+         "icon": "file(duck_wild.png)"
       }
    }
 }

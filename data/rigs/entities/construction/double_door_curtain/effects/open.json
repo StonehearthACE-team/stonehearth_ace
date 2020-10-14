@@ -1,0 +1,21 @@
+{
+   "type" : "effect",
+   "tracks": {
+      "animation": {
+         "type": "animation_effect",
+         "start_time": 0,
+			"speed": 1.8,
+         "animation": "open.json",
+         "loop": false
+      },
+      "sound": {
+         "type": "sound_effect",
+         "duration": 1000,
+         "start_time": 0,
+         "min_distance": 20,
+         "falloff" : 15,
+         "volume": 60,
+         "track" : "stonehearth_ace:sounds:curtain_door:open"
+      }
+   }
+}

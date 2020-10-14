@@ -1,0 +1,43 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(egged_nut_pancakes_serving.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:item": {
+         "category": "food",
+         "destroy_on_uncarry": true
+      },
+      "stonehearth:food": {
+         "stonehearth:sitting_on_chair": {
+            "satisfaction": 60,
+            "drink_satisfaction": 10
+         },
+         "default": {
+            "satisfaction": 60,
+            "drink_satisfaction": 5
+         },
+         "quality": 4
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.egged_nut_pancakes.egged_nut_pancakes_serving.display_name)",
+         "description": "",
+         "material_tags": [
+            "food",
+            "egged_nut_pancakes_serving",
+            "vegetarian",
+            "fungi",
+            "breakfast_time",
+            "lunch_time"
+         ],
+         "subject_override": "stonehearth_ace:food:egged_nut_pancakes"
+      }
+   }
+}

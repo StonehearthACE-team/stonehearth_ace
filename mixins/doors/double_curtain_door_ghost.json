@@ -1,0 +1,36 @@
+{
+   "components": {
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": -0.05 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      },
+      "render_info": {
+         "animation_table": "/stonehearth_ace/data/rigs/entities/construction/double_door_curtain/double_door_curtain.json"
+      },
+      "effect_list": {
+         "default": "/stonehearth_ace/data/rigs/entities/construction/double_door_curtain/effects/closed.json",
+         "initial_pose_animation": "closed.json"
+      },
+      "stonehearth:fixture": {
+         "valign": "bottom",
+         "cursor": "stonehearth:cursors:create_door",
+         "margin": {
+            "left": 1,
+            "right": 1,
+            "top": 1
+         },
+         "bounds": {
+            "min": { "x": -2, "y": 0 },
+            "max": { "x": 3, "y": 4 }
+         }
+      },
+      "stonehearth:portal": {
+         "cutter": [
+            {
+               "min": { "x": -2, "y": 0 },
+               "max": { "x": 3, "y": 4 }
+            }
+         ]
+      }
+   }
+}

@@ -1,0 +1,43 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(oinker_feed.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 3,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 2,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.oinker_feed.oinker_feed.display_name)",
+         "description": "i18n(stonehearth_ace:entities.food.oinker_feed.oinker_feed.description)",
+         "icon": "file(oinker_feed.png)",
+         "is_item": true,
+         "category": "refined",
+         "material_tags": [
+            "stockpile_fodder",
+            "oinker_feed_bag",
+            "animal_feed"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": -1
+      }
+   }
+}

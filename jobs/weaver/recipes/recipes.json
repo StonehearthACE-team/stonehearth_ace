@@ -111,9 +111,22 @@
          }
 	  },
 	  "furniture": {
+			"name": "i18n(stonehearth_ace:jobs.weaver.recipes.furniture_name)",
          "recipes": {
             "sleeping_bag": {
                "recipe": "file(sleeping_bag_recipe.json)"
+            },
+				"curtain_door": {
+               "recipe": "file(curtain_door_recipe.json)"
+            },
+				"double_curtain_door": {
+               "recipe": "file(double_curtain_door_recipe.json)"
+            },
+				"ornate_curtain_door": {
+               "recipe": "file(ornate_curtain_door_recipe.json)"
+            },
+				"ornate_double_curtain_door": {
+               "recipe": "file(ornate_double_curtain_door_recipe.json)"
             }
          }
       },

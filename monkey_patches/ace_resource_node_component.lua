@@ -96,6 +96,11 @@ function AceResourceNodeComponent:auto_request_harvest()
       if crop_comp then
          auto_harvest = crop_comp:get_field():is_harvest_enabled()
       end
+		-- Or check if it simply requires an auto-harvest
+		if self._json.auto_harvest then
+			auto_harvest = self._json.auto_harvest
+		end
+		
       if auto_harvest then
          self:request_harvest(player_id)
       end

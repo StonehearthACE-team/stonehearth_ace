@@ -58,6 +58,18 @@ function AcePopulationFaction:set_kingdom(kingdom)
    return no_kingdom
 end
 
+AcePopulationFaction._ace_old_set_game_options = PopulationFaction.set_game_options
+function AcePopulationFaction:set_game_options(options)
+	self:_ace_old_set_game_options(options)
+
+   if not self._sv._game_options.starting_items_container then
+      self._sv._game_options.starting_items_container = self._data.starting_items_container or 'stonehearth_ace:containers:embark_wagon'
+		if self._sv._game_options.starting_items_container == 'none' or self._sv._game_options.starting_items_container == '' then
+			self._sv._game_options.starting_items_container = nil
+		end
+   end
+end
+
 AcePopulationFaction._ace_old_create_new_citizen_from_role_data = PopulationFaction.create_new_citizen_from_role_data
 function AcePopulationFaction:create_new_citizen_from_role_data(role, role_data, gender, options)
    local citizen = self:_ace_old_create_new_citizen_from_role_data(role, role_data, gender, options)

@@ -1,0 +1,32 @@
+{
+   "type": "entity",
+   "mixins": [
+      "stonehearth_ace:mixins:portals:double_door:curtain:ghost",
+      "stonehearth:mixins:placed_object"
+   ],
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(ornate_double_curtain_door.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.construction.ornate_double_curtain_door.display_name)",
+         "description": "i18n(stonehearth_ace:entities.construction.ornate_double_curtain_door.description)",
+         "icon": "file(ornate_double_curtain_door.png)",
+         "category": "door",
+         "material_tags": [
+            "cloth",
+            "ornate",
+            "portal",
+            "crafted",
+            "door",
+            "stockpile_portal"
+         ]
+      }
+   }
+}
