@@ -140,7 +140,7 @@ function util.eval_property_and(value, rules)
    return true
 end
 
-function util.get_current_conditions_loot_table_filter_args()
+function util.get_current_conditions_loot_table_filter_args(looter)
    -- get biome, season, weather, and hour of day
    local biome = stonehearth.world_generation:get_biome_alias()
    local season = stonehearth.seasons:get_current_season()
@@ -164,23 +164,71 @@ function util.get_current_conditions_loot_table_filter_args()
       } },
       min_hour = {
          {
-            comparator = '>=',
-            value = hour,
+            comparator = 'none'
          },
          {
-            comparator = 'none'
+            comparator = '>=',
+            value = hour,
          },
       },
       max_hour = {
          {
+            comparator = 'none'
+         },
+         {
             comparator = '<=',
             value = hour,
          },
-         {
-            comparator = 'none'
-         },
       },
    }
+
+   if looter and looter:is_valid() then
+      -- if a looter is specified, add conditions related to them and their town
+      local player_id = radiant.entities.get_player_id(looter)
+      local player_jobs = player_id and stonehearth.job:get_jobs_controller(player_id)
+      if player_jobs then
+         local highest_lvls = {}
+         for uri, job_info in pairs(player_jobs:get_jobs()) do
+            local lvl = job_info:get_highest_level()
+            if lvl > 0 then
+               highest_lvls[uri] = lvl
+            end
+         end
+
+         if next(highest_lvls) then
+            for uri, lvl in pairs(highest_lvls) do
+               args['highest_level_' .. uri] = {
+                  {
+                     comparator = 'none'
+                  },
+                  {
+                     comparator = '>=',
+                     value = lvl,
+                  },
+               }
+            end
+         end
+      end
+
+      local job = looter:get_component('stonehearth:job')
+      if job then
+         local job_uri = job:get_job_uri()
+         local job_level = job:get_current_job_level()
+         args.current_job = { {
+            comparator = '==|none',
+            value = job_uri,
+         } }
+         args.current_job_level = {
+            {
+               comparator = 'none'
+            },
+            {
+               comparator = '>=',
+               value = job_uri,
+            },
+         }
+      end
+   end
 
    return args
 end

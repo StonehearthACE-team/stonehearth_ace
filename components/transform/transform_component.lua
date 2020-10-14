@@ -31,6 +31,7 @@ local transform_lib = require 'stonehearth_ace.lib.transform.transform_lib'
 local log = radiant.log.create_logger('transform')
 local LootTable = require 'stonehearth.lib.loot_table.loot_table'
 
+local TRANSFORM_TASK_GROUP = 'stonehearth_ace:task_groups:transform'
 local TRANSFORM_ACTION = 'stonehearth_ace:transform_entity'
 local TRANSFORM_WITH_INGREDIENT_ACTION = 'stonehearth_ace:transform_entity_with_ingredient'
 
@@ -130,7 +131,7 @@ function TransformComponent:_create_transform_tasks()
 
    local town = stonehearth.town:get_town(self._sv._is_transformable_player_id)
 
-   if town then
+   if town and town:get_task_group(TRANSFORM_TASK_GROUP) then
       local data = self:get_transform_options()
       local ingredient = self:_get_transform_ingredient()
       
@@ -143,12 +144,14 @@ function TransformComponent:_create_transform_tasks()
       self._sv._transform_ingredient = ingredient
       
       local transform_task = town:create_task_for_group(
-         'stonehearth_ace:task_groups:transform',
+         TRANSFORM_TASK_GROUP,
          action,
          args)
             :set_source(self._entity)
             :start()
       table.insert(self._added_transform_tasks, transform_task)
+   else
+      log:debug('cannot create transform task for %s: town "%s" doesn\'t exist or has no transform task group', self._entity, tostring(self._sv._is_transformable_player_id))
    end
 end
 
