@@ -169,7 +169,7 @@ function AceWorkshopComponent:_redistribute_ingredients()
    local entity_container = self._entity:get_component('entity_container')
    if entity_container then
       for id, child in entity_container:each_child() do
-         if item and item:is_valid() then
+         if child and child:is_valid() then
             ec_children[id] = child
          end
       end

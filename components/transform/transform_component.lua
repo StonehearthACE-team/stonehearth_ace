@@ -150,7 +150,7 @@ function TransformComponent:_create_transform_tasks()
             :set_source(self._entity)
             :start()
       table.insert(self._added_transform_tasks, transform_task)
-   else
+   elseif town then
       log:debug('cannot create transform task for %s: town "%s" doesn\'t exist or has no transform task group', self._entity, tostring(self._sv._is_transformable_player_id))
    end
 end
