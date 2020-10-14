@@ -1,0 +1,71 @@
+{
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(foraging_spot.qb)"
+            ]
+         }
+      },
+      "stonehearth:resource_node": {
+         "category": "harvesting",
+         "harvester_effect": "fiddle",
+         "harvest_overlay_effect": "stonehearth:effects:harvest_plant_overlay_effect",
+         "description": "harvest_plant",
+         "resource_loot_table": {
+            "entries": {
+               "optional": {
+                  "items": {
+                     "nothing": {
+                        "uri": "",
+                        "weight": 5
+                     },
+                     "bolete": {
+                        "uri": "stonehearth_ace:food:bolete:bolete_basket",
+                        "weight": 2
+                     },
+                     "brightbell": {
+                        "uri": "stonehearth:resources:herb:brightbell",
+                        "weight": 2
+                     },
+                     "thatch": {
+                        "uri": "stonehearth_ace:resources:thatch_bale",
+                        "weight": 3
+                     },
+                     "duck_feathers": {
+                        "uri": "stonehearth_ace:resources:feathers:duck_feathers",
+                        "weight": 1
+                     }
+                  }
+               }
+            }
+         }
+      },
+      "render_info": {
+         "scale": 0.1
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": 0, "y": 0, "z": 0 },
+               "max": { "x": 1, "y": 1, "z": 1 }
+            }
+         ],
+         "region_collision_type": "none"
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.terrain.foraging_spot.display_name)",
+         "description": "i18n(stonehearth_ace:entities.terrain.foraging_spot.description)"
+      },
+      "stonehearth:appeal": {
+         "appeal": 1
+      }
+   }
+}
