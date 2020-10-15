@@ -166,12 +166,12 @@ function AceFarmerFieldComponent:_ensure_fertilizer_preference()
 end
 
 function AceFarmerFieldComponent:_get_default_fertilizer_preference()
-   local player_id = self._entity:get_player_id()
-   local key = 'default_' .. self._sv.field_type .. '_fertilizer'
-   local default = stonehearth.client_state:get_client_gameplay_setting(player_id, 'stonehearth_ace', key)
-   if not default then
-      default = stonehearth.client_state:get_client_gameplay_setting(player_id, 'stonehearth_ace', 'default_farm_fertilizer', '1')
+   if not self._sv.allow_fertilizing then
+      return { quality = 0 }
    end
+   
+   local player_id = self._entity:get_player_id()
+   local default = stonehearth.client_state:get_client_gameplay_setting(player_id, 'stonehearth_ace', 'default_fertilizer', '1')
 
    if tonumber(default) then
       return { quality = tonumber(default) }
@@ -198,6 +198,7 @@ function AceFarmerFieldComponent:_load_field_type()
    self._field_type_data = stonehearth.farming:get_field_type(self._sv.field_type or 'farm') or {}
    self._field_pattern = self._field_type_data.pattern or farming_lib.DEFAULT_PATTERN
    self._sv.allow_disable_harvest = self._field_type_data.allow_disable_harvest
+   self._sv.allow_fertilizing = self._field_type_data.allow_fertilizing ~= false
 
    self._dirt_models = self._field_type_data.dirt_models and self._json.dirt_models[self._field_type_data.dirt_models] or self._json.dirt_models.default
    

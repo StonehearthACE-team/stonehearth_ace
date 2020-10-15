@@ -504,7 +504,10 @@ App.StonehearthFarmView.reopen({
       self.set('cropStatuses', cropStatuses);
 
       var allowDisableHarvest = this.get('model.stonehearth:farmer_field.allow_disable_harvest');
-      this.set('allowDisableHarvest', allowDisableHarvest);
+      self.set('allowDisableHarvest', allowDisableHarvest);
+
+      var allowFertilizing = this.get('model.stonehearth:farmer_field.allow_fertilizing');
+      self.set('allowFertilizing', allowFertilizing);
    }.observes('model.stonehearth:farmer_field'),
 
    // same as properties, statuses can be added by overriding this function
@@ -953,8 +956,8 @@ App.StonehearthFarmView.reopen({
    // TODO: the level should not be hard-coded here; there should be a better check for whether fertilizer use is available
    _showFertilizer: function() {
       var self = this;
-      self.set('showFertilizer', self.get('highest_level') >= 3);
-   }.observes('highest_level'),
+      self.set('showFertilizer', self.get('highest_level') >= 3 && self.get('allowFertilizing'));
+   }.observes('highest_level', 'allowFertilizing'),
 
    isFallow: function() {
       return this.get('cropProperties') == null;
