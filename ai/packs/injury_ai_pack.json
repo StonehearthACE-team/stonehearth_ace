@@ -1,6 +1,10 @@
 {
    "type" : "ai_pack",
    "actions" : [
+      "stonehearth_ace:actions:health:goto_other_owned_bed",
+      "stonehearth_ace:actions:health:goto_owned_bed",
+      "stonehearth_ace:actions:health:goto_priority_care_bed",
+      "stonehearth_ace:actions:health:goto_unowned_bed",
       "stonehearth_ace:actions:health:rest_when_suffering_condition",
       "stonehearth_ace:actions:wait_for_special_attention_condition"
    ]

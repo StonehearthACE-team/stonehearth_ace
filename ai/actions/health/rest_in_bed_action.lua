@@ -25,9 +25,9 @@ function RestInBed:start_thinking(ai, entity, args)
    self._medics_unavailable_listener = radiant.events.listen(self._entity, 'stonehearth:town:medic_unavailable', self, self._on_medics_unavailable)
 
    if self._rest_from_conditions then
-      self._inventory = stonehearth.inventory:get_inventory(player_id)
-      if self._inventory then
-         self._tracker = self._inventory:add_item_tracker('stonehearth_ace:healing_item_tracker')
+      local inventory = stonehearth.inventory:get_inventory(player_id)
+      if inventory then
+         self._tracker = inventory:add_item_tracker('stonehearth_ace:healing_item_tracker')
          self._medicine_available_listener = radiant.events.listen(self._tracker, 'stonehearth:inventory_tracker:item_added', self, self._on_medicine_available)
       end
    end
@@ -107,44 +107,10 @@ function RestInBed:destroy()
    end
 end
 
-local function make_is_available_bed_filter()
-   return stonehearth.ai:filter_from_key('stonehearth:rest_from_injuries:rest_in_bed', 'none', function(target)
-         local bed_data = radiant.entities.get_entity_data(target, 'stonehearth:bed')
-         if bed_data and not target:add_component('stonehearth:mount'):is_in_use() then
-            return true
-         end
-         return false
-      end)
-end
-
-local function make_is_available_bed_rater()
-   return function(target)
-         -- rate priority care beds highest, then owned beds, then unowned beds, then anything else
-         local bed_data = radiant.entities.get_entity_data(target, 'stonehearth:bed')
-         if bed_data.priority_care then
-            return 1
-         else
-            local ownable_component = target:get_component('stonehearth:ownable_object')
-            local owner = ownable_component:get_owner()
-            if not owner or not owner:is_valid() then
-               return 0.5
-            elseif owner:get_id() == self._entity_id then
-               return 0.75
-            else
-               return 0
-            end
-         end
-      end
-end
-
 local ai = stonehearth.ai
 return ai:create_compound_action(RestInBed)
          :execute('stonehearth:clear_carrying_now')
-         :execute('stonehearth:goto_entity_type', {
-            filter_fn = make_is_available_bed_filter(),
-            rating_fn = make_is_available_bed_rater(),
-            description = 'rest in bed'
-         })
+         :execute('stonehearth_ace:goto_bed')
          :execute('stonehearth:reserve_entity', { entity = ai.PREV.destination_entity })
          :execute('stonehearth:add_buff', {buff = 'stonehearth:buffs:bed_ridden', target = ai.ENTITY, immediate = false})
          :execute('stonehearth:rest_in_bed_adjacent', { bed = ai.BACK(2).entity })
