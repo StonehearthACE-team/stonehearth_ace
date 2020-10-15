@@ -1,0 +1,20 @@
+{
+   "type": "buff",
+   "axis": "buff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.earthly_flavors.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.earthly_flavors.description)",
+   "icon": "file(earthly_flavors_buff.png)",
+   "duration": "6h",
+   "repeat_add_action": "renew_duration",
+   "modifiers": {
+      "multiplicative_heal_received_modifier": {
+         "add": 1
+      },
+      "willpower": {
+         "add": 20
+      },
+      "inspiration": {
+         "add": 10
+      }
+   }
+}

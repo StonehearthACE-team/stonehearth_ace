@@ -25,7 +25,16 @@
          "content": {
             "mixintypes": {
                "berries": "remove",
-               "carrots": "remove"
+               "carrots": "remove",
+               "farmer": "remove"
+            },
+            "shepherd": {
+               "ordinal": 1,
+               "display_name": "i18n(stonehearth:jobs.shepherd.shepherd_description.display_name)",
+               "type": "entity",
+               "uri": "stonehearth:shepherd:talisman",
+               "icon": "file(images/items/shepherd_crook.png)",
+               "amount": 1
             },
             "prickly_pear": {
                "ordinal": 2.5,

@@ -1,3 +1,20 @@
 {
-   "workshop": "stonehearth_ace:blacksmith:workbench_advanced"
+   "workshop": "stonehearth_ace:blacksmith:workbench_advanced",
+	"mixintypes": {
+		"ingredients": "override"
+	},
+	"ingredients": [
+      {
+         "material": "clay resource",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth:refined:gold_ingot",
+         "count": 1
+      },
+      {
+         "material": "herb white aromatic resource",
+         "count": 1
+      }
+   ]
 }

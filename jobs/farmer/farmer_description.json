@@ -14,6 +14,9 @@
    "description": "i18n(stonehearth_ace:jobs.farmer.farmer_description.description)",
    "level_data": {
       "2": {
+			"mixintypes": {
+            "perks": "override"
+         },
          "perks": [
             {
                "type": "set_lookup_values",
@@ -34,6 +37,13 @@
                "level": 2,
                "type": "unlock_town_ability",
                "unlock_ability": "field_type_decorative_flowers"
+            },
+				{
+               "name": "i18n(stonehearth_ace:jobs.farmer.farmer_description.level_2_data.perk_002_name)",
+               "id": "farmer_job_opportunities",
+               "icon": "/stonehearth_ace/jobs/farmer/images/job_opportunities.png",
+               "description": "i18n(stonehearth_ace:jobs.farmer.farmer_description.level_2_data.perk_002_description)",
+               "level": 2
             }
          ]
       },

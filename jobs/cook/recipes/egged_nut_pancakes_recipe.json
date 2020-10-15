@@ -1,0 +1,34 @@
+{
+   "type": "recipe",
+   "effort": 21,
+   "work_units": 10,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.egged_nut_pancakes_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.egged_nut_pancakes_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.egged_nut_pancakes_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/egged_nut_pancakes/egged_nut_pancakes/egged_nut_pancakes.png",
+   "workshop": "stonehearth:cook:workbench",
+   "level_requirement": 4,
+   "ingredients": [
+      {
+         "material": "egg small cooking_ingredient",
+         "count": 2
+      },
+	   {
+         "uri": "stonehearth_ace:food:nut_flour",
+         "count": 1
+      },
+		{
+			"material": "oil cooking_ingredient",
+			"count": 1
+		},
+		{
+			"uri": "stonehearth_ace:food:rare_truffle:rare_truffle_basket",
+			"count": 1
+		}
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:egged_nut_pancakes"
+      }
+   ]
+}

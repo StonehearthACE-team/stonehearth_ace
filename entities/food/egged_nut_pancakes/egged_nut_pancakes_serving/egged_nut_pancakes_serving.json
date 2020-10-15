@@ -17,14 +17,15 @@
       },
       "stonehearth:food": {
          "stonehearth:sitting_on_chair": {
-            "satisfaction": 60,
-            "drink_satisfaction": 10
+            "satisfaction": 54
          },
          "default": {
-            "satisfaction": 60,
-            "drink_satisfaction": 5
+            "satisfaction": 45
          },
-         "quality": 4
+         "applied_buffs": [
+            "stonehearth_ace:buffs:consumption:earthly_flavors"
+         ],
+         "quality": 6
       },
       "stonehearth:catalog": {
          "display_name": "i18n(stonehearth_ace:entities.food.egged_nut_pancakes.egged_nut_pancakes_serving.display_name)",

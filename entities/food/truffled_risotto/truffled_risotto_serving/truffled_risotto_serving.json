@@ -17,20 +17,24 @@
       },
       "stonehearth:food": {
          "stonehearth:sitting_on_chair": {
-            "satisfaction": 120
+            "satisfaction": 142
          },
          "default": {
-            "satisfaction": 90
+            "satisfaction": 120
          },
+         "applied_buffs": [
+            "stonehearth_ace:buffs:consumption:earthly_flavors"
+         ],
          "quality": 6
       },
       "stonehearth:catalog": {
          "display_name": "i18n(stonehearth_ace:entities.food.truffled_risotto.truffled_risotto_serving.display_name)",
-         "description": "",
+         "description": "i18n(stonehearth_ace:entities.food.truffled_risotto.truffled_risotto_serving.description)",
          "material_tags": [
             "food",
             "truffled_risotto_serving",
             "vegetarian",
+            "dairy",
             "fungi",
             "lunch_time"
          ],
