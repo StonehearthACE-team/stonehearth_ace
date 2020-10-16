@@ -108,6 +108,7 @@ function AceSeasonsService:_get_season_data(biome_uri, palette, config, id)
       biome = biome_uri,
       weather = config.weather,
       terrain_palette = palette,
+      foraging_spot_uri = config.foraging_spot_uri,
    }
 end
 

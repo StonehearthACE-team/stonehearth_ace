@@ -4909,6 +4909,14 @@
          "controller": "file(call_handlers/resource_call_handler.lua)",
          "endpoint": "server"
       },
+      "box_forage": {
+         "controller": "file(call_handlers/resource_call_handler.lua)",
+         "endpoint": "client"
+      },
+      "server_box_forage": {
+         "controller": "file(call_handlers/resource_call_handler.lua)",
+         "endpoint": "server"
+      },
       "choose_fence_location_command": {
          "controller": "file(call_handlers/fence_call_handler.lua)",
          "endpoint": "client"
