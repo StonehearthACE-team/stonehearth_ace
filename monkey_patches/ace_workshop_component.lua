@@ -327,7 +327,7 @@ function AceWorkshopComponent:unreserve_fuel(crafter_id)
          local expendable_resources = self._entity:get_component('stonehearth:expendable_resources')
          expendable_resources:modify_value('reserved_fuel_level', -fuel)
          expendable_resources:modify_value('fuel_level', fuel)
-      elseif fuel:is_valid()
+      elseif fuel:is_valid() then
          -- it's a fuel entity
          self._reserved_fuel_items[fuel:get_id()] = nil
          self:_reconsider_item_lease(fuel)
@@ -355,7 +355,7 @@ function AceWorkshopComponent:consume_fuel(crafter)
          if expendable_resources then
             expendable_resources:modify_value('reserved_fuel_level', -fuel)
          end
-      elseif fuel:is_valid()
+      elseif fuel:is_valid() then
          -- first check if there's now a high enough fuel level that we can just take from that
          -- instead of consuming the fuel entity
          local fuel_per_craft = self:get_fuel_per_craft()
