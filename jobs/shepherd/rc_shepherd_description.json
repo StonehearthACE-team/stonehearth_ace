@@ -1,23 +1,26 @@
 {
    "type": "job",
    "mixins": "stonehearth:jobs:shepherd",
+	"display_order": 6,
    "equipment": {
       "helmet": "file(rc_shepherd_outfit/rc_shepherd_hood)",
       "torso": "file(rc_shepherd_outfit)"
    },
    "mixintypes": {
-      "parent_jobs": "override"
+      "parent_jobs": "remove"
    },
-   "parent_jobs": [
-      {
-         "job": "stonehearth:jobs:farmer",
-         "level_requirement": 4,
-         "one_of": true
-      },
-      {
-         "job": "stonehearth:jobs:trapper",
-         "level_requirement": 2,
-         "one_of": true
+   "parent_job": "stonehearth:jobs:worker",
+	"level_data": {
+      "2": {
+         "perks": [
+				{
+               "name": "i18n(stonehearth_ace:jobs.shepherd.shepherd_description.level_2_data.perk_000_name)",
+               "id": "shepherd_job_opportunities",
+               "icon": "/stonehearth_ace/jobs/shepherd/images/job_opportunities.png",
+               "description": "i18n(stonehearth_ace:jobs.shepherd.shepherd_description.level_2_data.perk_000_description)",
+               "level": 2
+            }
+         ]
       }
-   ]
+   }
 }

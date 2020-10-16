@@ -8,9 +8,9 @@ local log = radiant.log.create_logger('aquatic_object')
 local AquaticObjectComponent = class()
 
 function AquaticObjectComponent:initialize()
-	self._sv.in_the_water = nil
-	
-	self._sv.original_origin = self._entity:get_component('mob'):get_model_origin() or Point3(0,0,0)
+   self._sv.in_the_water = nil
+   
+   self._sv.original_origin = self._entity:get_component('mob'):get_model_origin() or Point3.zero
    
    self._json = radiant.entities.get_json(self)
    if self._json then
@@ -18,7 +18,7 @@ function AquaticObjectComponent:initialize()
       self._destroy_if_out_of_water = self._json.destroy_if_out_of_water
       self._suffocate_if_out_of_water = self._json.suffocate_if_out_of_water
       self._floating_object = self._json.floating_object
-		self._swimming_object = self._json.swimming_object
+      self._swimming_object = self._json.swimming_object
    end
 end
 
@@ -76,31 +76,31 @@ function AquaticObjectComponent:_on_water_signal_changed(changes)
 end
 
 function AquaticObjectComponent:_on_water_exists_changed(exists)
-	if exists == nil then
-		exists = self._water_signal:get_water_exists()
+   if exists == nil then
+      exists = self._water_signal:get_water_exists()
    end
 
-	self._sv.in_the_water = exists
-	self.__saved_variables:mark_changed()
+   self._sv.in_the_water = exists
+   self.__saved_variables:mark_changed()
 
-	if self._require_water_to_grow then
-		self:timers_resume(exists)
-	end
+   if self._require_water_to_grow then
+      self:timers_resume(exists)
+   end
    
    -- if water goes away completely, water_surface_level may not get reported, but it should definitely suffocate
-	if not exists then
-		self:suffocate_entity()
-		self:stop_swim()
-	end
-	
-	if self._destroy_if_out_of_water and not self._sv.in_the_water and not self._queued_destruction then
-		self:queue_destruction()
-	end
+   if not exists then
+      self:suffocate_entity()
+      self:stop_swim()
+   end
+   
+   if self._destroy_if_out_of_water and not self._sv.in_the_water and not self._queued_destruction then
+      self:queue_destruction()
+   end
 end
 
 function AquaticObjectComponent:_on_water_surface_level_changed(level)
-	if level == nil then
-		level = self._water_signal:get_water_surface_level()
+   if level == nil then
+      level = self._water_signal:get_water_surface_level()
    end
 
    self:float(level)
@@ -110,30 +110,30 @@ function AquaticObjectComponent:_on_water_surface_level_changed(level)
 end
 
 function AquaticObjectComponent:suffocate_entity(level)
-	if not self._suffocate_if_out_of_water then 
-		return
-	end
-	
-	local entity_height = self._suffocate_if_out_of_water.entity_height or 1
-	local entity_location = radiant.entities.get_world_location(self._entity)
-	local entity_breathing_line = nil
+   if not self._suffocate_if_out_of_water then 
+      return
+   end
    
-	if entity_location then
-		entity_breathing_line = entity_location.y + entity_height
-		if level == nil then
-			radiant.entities.add_buff(self._entity, 'stonehearth_ace:buffs:suffocating')
-		elseif level < entity_breathing_line then
-			radiant.entities.add_buff(self._entity, 'stonehearth_ace:buffs:suffocating')
-		else 
-			radiant.entities.remove_buff(self._entity, 'stonehearth_ace:buffs:suffocating')
-		end
-	end
+   local entity_height = self._suffocate_if_out_of_water.entity_height or 1
+   local entity_location = radiant.entities.get_world_location(self._entity)
+   local entity_breathing_line = nil
+   
+   if entity_location then
+      entity_breathing_line = entity_location.y + entity_height
+      if level == nil then
+         radiant.entities.add_buff(self._entity, 'stonehearth_ace:buffs:suffocating')
+      elseif level < entity_breathing_line then
+         radiant.entities.add_buff(self._entity, 'stonehearth_ace:buffs:suffocating')
+      else 
+         radiant.entities.remove_buff(self._entity, 'stonehearth_ace:buffs:suffocating')
+      end
+   end
 end
 
 function AquaticObjectComponent:queue_destruction()
-	self._queued_destruction = function()
+   self._queued_destruction = function()
       if not self._sv.in_the_water then
-         radiant.entities.kill_entity(self._entity)			
+         radiant.entities.kill_entity(self._entity)         
       end
    end
 
@@ -148,12 +148,12 @@ function AquaticObjectComponent:set_float_enabled(enabled)
 end
 
 function AquaticObjectComponent:float(level)
-	if not self._floating_object or not self._sv._floating_enabled then
-		return
+   if not self._floating_object or not self._sv._floating_enabled then
+      return
    end
    
-	local vertical_offset = self._floating_object.vertical_offset or 0
-	local location = radiant.entities.get_world_location(self._entity)
+   local vertical_offset = self._floating_object.vertical_offset or 0
+   local location = radiant.entities.get_world_location(self._entity)
    if location then
       local lowest = radiant.terrain.get_standable_point(location).y
 
@@ -169,34 +169,27 @@ function AquaticObjectComponent:float(level)
 end
 
 function AquaticObjectComponent:swim(level)
-	if not self._swimming_object then
-		return
+   if not self._swimming_object then
+      return
    end
    
-	local vertical_offset = self._swimming_object.vertical_offset or 0
-	local location = radiant.entities.get_world_location(self._entity)
-	local mob_component = self._entity:get_component('mob')
-	local model_origin = mob_component:get_model_origin()
-	
-   if location and model_origin then
+   local vertical_offset = self._swimming_object.vertical_offset or 0
+   local location = radiant.entities.get_world_location(self._entity)
+   local mob_component = self._entity:get_component('mob')
+   local model_origin = mob_component:get_model_origin()
+   
+   if location and model_origin and level then
       local lowest = radiant.terrain.get_standable_point(location).y
-		local depth = nil
-		if level then
-			depth = (level - lowest) + vertical_offset
-		else
-			return
-		end
-		
-		if self._swimming_object.minimum_depth and self._swimming_object.minimum_depth > depth then
-			model_origin.y = model_origin.y
-      else
-			if self._swimming_object.surface then
-				model_origin.y = math.max(model_origin.y, depth) * -1
-			elseif self._swimming_object.bottom then
-				model_origin.y = math.max(model_origin.y, (depth / rng:get_real(4, 5))) * -1
-			else
-				model_origin.y = math.max(model_origin.y, (depth / rng:get_real(2, 5))) * -1
-			end 
+      local depth = (level - lowest) + vertical_offset
+      
+      if depth >= (self._swimming_object.minimum_depth or 0) then
+         if self._swimming_object.surface then
+            model_origin.y = math.max(model_origin.y, depth) * -1
+         elseif self._swimming_object.bottom then
+            model_origin.y = math.max(model_origin.y, (depth / rng:get_real(4, 5))) * -1
+         else
+            model_origin.y = math.max(model_origin.y, (depth / rng:get_real(2, 5))) * -1
+         end 
       end
       
       mob_component:set_model_origin(model_origin)
@@ -204,52 +197,52 @@ function AquaticObjectComponent:swim(level)
 end
 
 function AquaticObjectComponent:stop_swim()
-	if not self._swimming_object then
-		return
+   if not self._swimming_object then
+      return
    end
 
    self._entity:get_component('mob'):set_model_origin(self._sv.original_origin)
 end
 
 function AquaticObjectComponent:timers_resume(resume)
-	local renewable_resource_node_component = self._entity:get_component('stonehearth:renewable_resource_node')
-	local evolve_component = self._entity:get_component('stonehearth:evolve')
-	--local growing_component = self._entity:get_component('stonehearth:growing')
-	
-	if renewable_resource_node_component then
-		if resume then
-			renewable_resource_node_component:resume_resource_timer()
-		else
-			renewable_resource_node_component:pause_resource_timer()
-		end
-	end
-	
-	if evolve_component then
-		if resume then
-			evolve_component:_start_evolve_timer()
-		else
-			evolve_component:_stop_evolve_timer()
-		end
-	end
-	
-	-- if growing_component then
-	-- 	if resume then
-	-- 		growing_component:start_growing()
-	-- 	else
-	-- 		growing_component:stop_growing()
-	-- 	end
-	-- end
+   local renewable_resource_node_component = self._entity:get_component('stonehearth:renewable_resource_node')
+   local evolve_component = self._entity:get_component('stonehearth:evolve')
+   --local growing_component = self._entity:get_component('stonehearth:growing')
+   
+   if renewable_resource_node_component then
+      if resume then
+         renewable_resource_node_component:resume_resource_timer()
+      else
+         renewable_resource_node_component:pause_resource_timer()
+      end
+   end
+   
+   if evolve_component then
+      if resume then
+         evolve_component:_start_evolve_timer()
+      else
+         evolve_component:_stop_evolve_timer()
+      end
+   end
+   
+   -- if growing_component then
+   --    if resume then
+   --       growing_component:start_growing()
+   --    else
+   --       growing_component:stop_growing()
+   --    end
+   -- end
 end
 
 function AquaticObjectComponent:destroy()
-	self:_destroy_listeners()
+   self:_destroy_listeners()
 end
 
 function AquaticObjectComponent:_destroy_listeners()
-	if self._water_listener then
-		self._water_listener:destroy()
-		self._water_listener = nil
-	end
+   if self._water_listener then
+      self._water_listener:destroy()
+      self._water_listener = nil
+   end
 end
 
 return AquaticObjectComponent

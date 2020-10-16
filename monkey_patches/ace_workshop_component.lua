@@ -108,7 +108,7 @@ end
 function AceWorkshopComponent:_reconsider_item_lease(item)
    local storage = self._entity:get_component('stonehearth:storage')
    if storage then
-      if radiant.entities.get_entity_data(item, 'stonehearth_ace:fuel') and (self._reserved_fuel_items[item:get_id()] or storage:passes(item)) then
+      if item:is_valid() and radiant.entities.get_entity_data(item, 'stonehearth_ace:fuel') and (self._reserved_fuel_items[item:get_id()] or storage:passes(item)) then
          self:_acquire_item_lease(item)
       else
          self:_release_item_lease(item)
@@ -169,7 +169,7 @@ function AceWorkshopComponent:_redistribute_ingredients()
    local entity_container = self._entity:get_component('entity_container')
    if entity_container then
       for id, child in entity_container:each_child() do
-         if item and item:is_valid() then
+         if child and child:is_valid() then
             ec_children[id] = child
          end
       end
@@ -327,7 +327,7 @@ function AceWorkshopComponent:unreserve_fuel(crafter_id)
          local expendable_resources = self._entity:get_component('stonehearth:expendable_resources')
          expendable_resources:modify_value('reserved_fuel_level', -fuel)
          expendable_resources:modify_value('fuel_level', fuel)
-      else
+      elseif fuel:is_valid() then
          -- it's a fuel entity
          self._reserved_fuel_items[fuel:get_id()] = nil
          self:_reconsider_item_lease(fuel)
@@ -355,7 +355,7 @@ function AceWorkshopComponent:consume_fuel(crafter)
          if expendable_resources then
             expendable_resources:modify_value('reserved_fuel_level', -fuel)
          end
-      else
+      elseif fuel:is_valid() then
          -- first check if there's now a high enough fuel level that we can just take from that
          -- instead of consuming the fuel entity
          local fuel_per_craft = self:get_fuel_per_craft()

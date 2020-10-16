@@ -48,6 +48,10 @@
       "actions:get_drink_on_ground": "file(ai/actions/drinking/get_drink_on_ground_action.lua)",
       "actions:get_drink_trivial": "file(ai/actions/drinking/get_drink_trivial_action.lua)",
       "actions:health:find_healing_item": "file(ai/actions/health/find_healing_item_action.lua)",
+      "actions:health:goto_other_owned_bed": "file(ai/actions/health/goto_other_owned_bed_action.lua)",
+      "actions:health:goto_owned_bed": "file(ai/actions/health/goto_owned_bed_action.lua)",
+      "actions:health:goto_priority_care_bed": "file(ai/actions/health/goto_priority_care_bed_action.lua)",
+      "actions:health:goto_unowned_bed": "file(ai/actions/health/goto_unowned_bed_action.lua)",
       "actions:health:heal_entity_adjacent_with_magic": "file(ai/actions/health/heal_entity_adjacent_with_magic_action.lua)",
       "actions:health:heal_entity_with_magic": "file(ai/actions/health/heal_entity_with_magic_action.lua)",
       "actions:health:pickup_healing_item": "file(ai/actions/health/pickup_healing_item_action.lua)",
@@ -376,6 +380,7 @@
       "buffs:cleric:minor_debuff_aura_effect": "file(jobs/cleric/cleric_buffs/minor_debuff_aura_effect_buff.json)",
       "buffs:cleric:ornate_cleric_armor": "file(jobs/cleric/cleric_buffs/ornate_cleric_armor_buff.json)",
       "buffs:consumption:divine_flavors": "file(data/buffs/consumption/divine_flavors/divine_flavors_buff.json)",
+      "buffs:consumption:earthly_flavors": "file(data/buffs/consumption/earthly_flavors/earthly_flavors_buff.json)",
       "buffs:consumption:fruity_flavors": "file(data/buffs/consumption/fruity_flavors/fruity_flavors_buff.json)",
       "buffs:consumption:harmony": "file(data/buffs/consumption/harmony/harmony_buff.json)",
       "buffs:consumption:harmony_major": "file(data/buffs/consumption/harmony_major/harmony_major_buff.json)",
@@ -2905,6 +2910,7 @@
       "rayyas_children/jobs/cook/recipes/golden_gourd_curry_recipe.json": "file(jobs/cook/recipes/golden_gourd_curry_recipe.json)",
       "rayyas_children/jobs/cook/recipes/meat_tagine_recipe.json": "file(jobs/cook/recipes/meat_tagine_recipe.json)",
       "rayyas_children/jobs/cook/recipes/vegetable_tagine_recipe.json": "file(jobs/cook/recipes/vegetable_tagine_recipe.json)",
+      "rayyas_children/jobs/herbalist/recipes/legendary_rc_stave_recipe.json": "file(jobs/herbalist/recipes/legendary_rc_stave_recipe.json)",
       "rayyas_children/jobs/potter/potter_kiln_upgrade/potter_kiln_upgrade.json": "stonehearth_ace:mixins:workbench:potter_kiln",
       "rayyas_children/jobs/potter/potter_kiln_upgrade/potter_kiln_upgrade_ghost.json": "file(jobs/potter/potter_kiln_upgrade/potter_kiln_upgrade_ghost.json)",
       "rayyas_children/jobs/potter/potter_workbench_upgrade/potter_workbench_upgrade.json": "file(jobs/potter/potter_workbench_upgrade/potter_workbench_upgrade.json)",
@@ -3503,6 +3509,7 @@
       "stonehearth/jobs/cook/recipes/roast_varanus_recipe.json": "file(jobs/cook/recipes/roast_varanus_recipe.json)",
       "stonehearth/jobs/cook/recipes/roast_venison_recipe.json": "file(jobs/cook/recipes/roast_venison_recipe.json)",
       "stonehearth/jobs/cook/recipes/roasted_sweet_potato_recipe.json": "file(jobs/cook/recipes/roasted_sweet_potato_recipe.json)",
+      "stonehearth/jobs/cook/recipes/sausage_recipe.json": "file(jobs/cook/recipes/sausage_recipe.json)",
       "stonehearth/jobs/cook/recipes/sheep_feed_recipe.json": "file(jobs/cook/recipes/sheep_feed_recipe.json)",
       "stonehearth/jobs/cook/recipes/veggie_stew_recipe.json": "file(jobs/cook/recipes/veggie_stew_recipe.json)",
       "stonehearth/jobs/engineer/engineer_abilities/engineer_abilities.json": "file(jobs/engineer/engineer_abilities/engineer_abilities.json)",
@@ -3522,6 +3529,7 @@
       "stonehearth/jobs/geomancer/geomancer_workbench/geomancer_workbench.json": "file(jobs/geomancer/geomancer_workbench/geomancer_workbench.json)",
       "stonehearth/jobs/geomancer/recipes/earthbud_seeds_recipe.json": "file(jobs/geomancer/recipes/earthbud_seeds_recipe.json)",
       "stonehearth/jobs/geomancer/recipes/geomancer_recipes.json": "file(jobs/geomancer/recipes/recipes.json)",
+      "stonehearth/jobs/geomancer/recipes/summon_stone_rock_field_recipe.json": "file(jobs/geomancer/recipes/summon_stone_rock_field_recipe.json)",
       "stonehearth/jobs/herbalist/herbalist_abilities/herbalist_abilities.json": "file(jobs/herbalist/herbalist_abilities/herbalist_abilities.json)",
       "stonehearth/jobs/herbalist/herbalist_description.json": "file(jobs/herbalist/herbalist_description.json)",
       "stonehearth/jobs/herbalist/herbalist_workbench/herbalist_workbench.json": "file(jobs/herbalist/herbalist_workbench/herbalist_workbench.json)",
@@ -3549,6 +3557,7 @@
       "stonehearth/jobs/herbalist/recipes/sweet_potato_transmute_recipe.json": "file(jobs/herbalist/recipes/sweet_potato_transmute_recipe.json)",
       "stonehearth/jobs/herbalist/recipes/tumbleweed_transmute_recipe.json": "file(jobs/herbalist/recipes/tumbleweed_transmute_recipe.json)",
       "stonehearth/jobs/herbalist/recipes/violet_transmute_recipe.json": "file(jobs/herbalist/recipes/violet_transmute_recipe.json)",
+      "stonehearth/jobs/herbalist/recipes/wall_hanging_berrywreath_recipe.json": "file(jobs/herbalist/recipes/wall_hanging_berrywreath_recipe.json)",
       "stonehearth/jobs/herbalist/recipes/wax_plant_green_transmute_recipe.json": "file(jobs/herbalist/recipes/wax_plant_green_transmute_recipe.json)",
       "stonehearth/jobs/herbalist/recipes/wax_plant_purple_transmute_recipe.json": "file(jobs/herbalist/recipes/wax_plant_purple_transmute_recipe.json)",
       "stonehearth/jobs/herbalist/recipes/wintermoss_transmute_recipe.json": "file(jobs/herbalist/recipes/wintermoss_transmute_recipe.json)",
@@ -4898,6 +4907,14 @@
          "endpoint": "server"
       },
       "toggle_fish_trap_capture": {
+         "controller": "file(call_handlers/resource_call_handler.lua)",
+         "endpoint": "server"
+      },
+      "box_forage": {
+         "controller": "file(call_handlers/resource_call_handler.lua)",
+         "endpoint": "client"
+      },
+      "server_box_forage": {
          "controller": "file(call_handlers/resource_call_handler.lua)",
          "endpoint": "server"
       },

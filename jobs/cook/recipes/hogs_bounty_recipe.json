@@ -1,0 +1,39 @@
+{
+   "type": "recipe",
+   "effort": 42,
+   "work_units": 10,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.hogs_bounty_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.hogs_bounty_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.hogs_bounty_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/hogs_bounty/hogs_bounty/hogs_bounty.png",
+   "workshop": "stonehearth:cook:oven",
+   "work_effect": "work_wait",
+   "level_requirement": 5,
+   "ingredients": [
+      {
+         "material": "raw meat piece",
+         "count": 1
+      },
+	   {
+         "uri": "stonehearth:food:egg_large",
+         "count": 2
+      },
+	   {
+         "material": "butter cooking_ingredient",
+         "count": 1
+      },
+	   {
+         "material": "herb aromatic resource",
+         "count": 1
+      },
+		{
+			"uri": "stonehearth_ace:food:rare_truffle:rare_truffle_basket",
+			"count": 1
+		}
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:hogs_bounty"
+      }
+   ]
+}

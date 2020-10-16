@@ -1,0 +1,34 @@
+{
+   "type": "recipe",
+   "effort": 35,
+   "work_units": 10,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.truffled_risotto_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.truffled_risotto_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.truffled_risotto_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/truffled_risotto/truffled_risotto/truffled_risotto.png",
+   "workshop": "stonehearth:cook:workbench",
+   "level_requirement": 6,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:food:rice:raw_rice",
+         "count": 1
+      },
+	   {
+         "uri": "stonehearth_ace:food:dairy:cheese_aged",
+         "count": 1
+      },
+	   {
+         "material": "seasoning",
+         "count": 1
+      },
+		{
+			"uri": "stonehearth_ace:food:rare_truffle:rare_truffle_basket",
+			"count": 1
+		}
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:truffled_risotto"
+      }
+   ]
+}

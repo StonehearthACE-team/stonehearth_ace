@@ -1,6 +1,8 @@
 {
    "type": "job",
    "mixins": "stonehearth:jobs:farmer",
+	"parent_job": "stonehearth:jobs:shepherd",
+	"parent_level_requirement": 2,
    "equipment": {
       "helmet": "file(rc_farmer_outfit/rc_farmer_outfit_hat)",
       "torso": "file(rc_farmer_outfit)"
@@ -30,17 +32,6 @@
                "level": 2,
                "type": "unlock_town_ability",
                "unlock_ability": "field_type_decorative_flowers"
-            }
-         ]
-      },
-      "4": {
-         "perks": [
-            {
-               "name": "i18n(stonehearth_ace:jobs.farmer.farmer_description.level_4_data.perk_001_name)",
-               "id": "farmer_job_opportunities_2",
-               "icon": "/stonehearth_ace/jobs/farmer/images/job_opportunities_2.png",
-               "description": "i18n(stonehearth_ace:jobs.farmer.farmer_description.level_4_data.perk_001_description)",
-               "level": 4
             }
          ]
       }

@@ -2955,6 +2955,10 @@
          "kibble_hearth": {
             "display_name": "Hearthbud Kibble",
             "description": "Recovering health over time"
+         },
+         "earthly_flavors": {
+            "display_name": "Earthly Flavors",
+            "description": "It tastes like brown... does it make sense? Willpower is increased.<ul><li>Crafting has increased chances for better quality</li><li>Healing received is doubled</li></ul>"
          }
       },
       "loadouts": {
@@ -4055,7 +4059,7 @@
             },
             "rc_gruit_recipe": {
                "recipe_name": "Wrap of Gruit",
-               "description": "A bundle of bitter herbs and seasonings. Gruit is often made with wax plant seeds in the desert.",
+               "description": "A bundle of bitter herbs and seasonings. Gruit is often made with wax plants in the desert.",
                "flavor": "The Brewer needs gruit for making beer"
             },
             "na_gruit_recipe": {
@@ -4206,6 +4210,9 @@
       },
       "potter": {
          "recipes": {
+				"rc_shepherds_crook_recipe": {
+               "flavor": "The herding of animals in the desert is a tradition coming for as long as the children of Rayya have been walking these dunes"
+            },
             "present_small_recipe": {
                "recipe_name": "Small Frostfeast Present",
                "description": "Buy a delicate present for your town. Can be used as decoration or unwrapped.",
@@ -4637,6 +4644,9 @@
             "bone_weapons_armor_name": "Weapons & Armor, Bone Carving",
             "bone_furniture_name": "Furniture & Decoration, Bone Carving",
             "bone_building_parts_name": "Building Parts, Bone Carving",
+				"na_shepherds_crook_recipe": {
+               "flavor": "Sooner or later winter will come - and you'll need wool and hides..."
+            },
             "present_small_recipe": {
                "recipe_name": "Small Frostfeast Present",
                "description": "Buy a delicate present for your town. Can be used as decoration or unwrapped.",
@@ -5745,7 +5755,22 @@
             "melted_poyo_recipe": {
                "recipe_name": "Melted Poyo",
                "description": "A savory roasted poyo filled with veggies and covered in melted cheese.",
-               "flavor": "Hmm... Melted cheese."
+               "flavor": "Hmm... Melted cheese"
+            },
+            "egged_nut_pancakes_recipe": {
+               "recipe_name": "Egged Nut Pancakes",
+               "description": "Delicious nut pancakes and poached eggs topped with sliced truffles.",
+               "flavor": "Tastes great with chestnut"
+            },
+            "hogs_bounty_recipe": {
+               "recipe_name": "Hog's Bounty",
+               "description": "A perfectly grilled piece of meat with scrambled large eggs and truffles.",
+               "flavor": "Such delightful flavors!"
+            },
+            "truffled_risotto_recipe": {
+               "recipe_name": "Truffled Risotto",
+               "description": "A real treat from the southern lands, grated with cheese and seasoned to perfection.",
+               "flavor": ""
             },
             "legendary_ink_recipe": {
                "recipe_name": "Sacred Ink",
@@ -5767,7 +5792,8 @@
             },
             "duck_feed_recipe": {
                "recipe_name": "Duck Feed (x3)",
-               "description": "Grain and seeds for ducks. Improves the quality of animal produce."
+               "description": "Grain and seeds for ducks. Improves the quality of animal produce.",
+               "flavor": "Really good quack-lity food"
             },
             "oinker_feed_recipe": {
                "recipe_name": "Oinker Feed (x3)",
@@ -6123,6 +6149,9 @@
             "window_box_frostsnap_recipe": {
                "recipe_name": "Window Planter with Frostsnaps",
                "description": "A decorative planter to be placed under window frames. Comes with Frostsnaps but a different herb can be chosen and planted by the Herbalist."
+            },
+            "shepherds_crook_recipe": {
+               "flavor": "Can you tell me another story about The Shepherd?"
             }
          },
          "carpenter_description": {
@@ -6408,6 +6437,10 @@
                "small_animals_name": "Apprentice Animal Tamer",
                "small_animals_description": "The shepherd has just started mastering the techniques of animal taming and can only tame small animals."
             },
+				"level_2_data": {
+               "perk_000_name": "Job Opportunities",
+               "perk_000_description": "The Shepherd has learned how to wander these lands and tame its animals. Now it's time to learn how to settle down - and work the land itself. See the promotion menu for details."
+				},
             "level_3_data": {
                "big_animals_name": "Adept Animal Tamer",
                "big_animals_description": "The shepherd is now much more experienced with animals and can tame large animals."
@@ -6433,7 +6466,10 @@
                "perk_000_name": "Bountiful Harvest",
                "perk_000_description": "The farmer coaxes up to 25% greater yield from each plant.",
                "perk_001_name": "Flower Power",
-               "perk_001_description": "The farmer can plant flowers to make a lovely garden! (They can grow decorative flowers.)"
+               "perk_001_description": "The farmer can plant flowers to make a lovely garden! (They can grow decorative flowers.)",
+               "perk_002_name": "Job Opportunities",
+               "perk_002_description": "Exposure to fresh food has given the farmer ideas about cooked food, and too much time with crops and plants has made the farmer contemplate the possibilities of caring for more exciting and interactive beings. See the promotion menu for details.",
+					"perk_002_description_2": "Too much time with crops and plants has made the farmer contemplate the possibilities of caring for more exciting and interactive beings. See the promotion menu for details."
             },
             "level_3_data": {
                "perk_000_name": "Fertilizer",
@@ -6441,9 +6477,7 @@
             },
             "level_4_data": {
                "perk_000_name": "Bountiful Harvest (Upgrade)",
-               "perk_000_description": "The farmer coaxes up to 50% greater yield from each plant.",
-               "perk_001_name": "Job Opportunities",
-               "perk_001_description": "Spending too much time with crops and plants has made the farmer contemplate the possibilities of caring for more exciting and interactive beings."
+               "perk_000_description": "The farmer coaxes up to 50% greater yield from each plant."
             },
             "level_6_data": {
                "perk_000_name": "Bountiful Harvest (Max)",
@@ -6451,7 +6485,7 @@
                "perk_001_name": "Mega Crops",
                "perk_001_description": "The farmer's masterful skills can now occasionally cause a crop to grow much larger and become a mega crop. These rare giant plants will provide extra resources or unique rewards."
             },
-            "description": "Farmers till fields, sow seeds and harvest crops, taming the land to provide a consistent supply of food, ingredients for cooking, fibers, herbs and more."
+            "description": "Farmers till fields, sow seeds and harvest crops, taming the land to provide a consistent supply of food, ingredients for cooking, fibers and more."
          },
          "farmer_mega_watermelon_hat": {
             "display_name": "Farmer's Watermelon Cap",
@@ -11562,6 +11596,35 @@
          },
          "pork": {
             "description": "Raw meat from a swine"
+         },
+         "egged_nut_pancakes": {
+            "egged_nut_pancakes": {
+               "display_name": "Egged Nut Pancakes",
+               "description": "Nut pancakes, poached eggs and sliced truffles."
+            },
+            "egged_nut_pancakes_serving": {
+               "display_name": "Serving of Egged Nut Pancakes"
+            }
+         },
+         "hogs_bounty": {
+            "hogs_bounty": {
+               "display_name": "Hog's Bounty",
+               "description": "A grilled piece of meat with scrambled eggs and truffles."
+            },
+            "hogs_bounty_serving": {
+               "display_name": "Serving of Hog's Bounty",
+               "description": "So refined!"
+            }
+         },
+         "truffled_risotto": {
+            "truffled_risotto": {
+               "display_name": "Truffled Risotto",
+               "description": "Cooked rice grated with cheese and seasoned to perfection."
+            },
+            "truffled_risotto_serving": {
+               "display_name": "Serving of Truffled Risotto",
+               "description": "The taste of cheese and truffles together is simply divine."
+            }
          }
       },
       "terrain": {
@@ -14740,18 +14803,8 @@
                "auto_harvest_tree_stumps_description": "When trees are cut down, harvestable stumps remain. Enabling this option will automatically queue stumps to be harvested.",
                "default_to_worst_fertilizer": "Default to Worst Fertilizer",
                "default_to_worst_fertilizer_description": "When farmers fertilize crops, they use the best fertilizer available unless directed to use a specific type. Select this to have them use the worst available instead.",
-               "default_farm_fertilizer": "Default Farm Fertilizer:",
-               "default_farm_fertilizer_description": "When creating a new farm, set its fertilizer preference to this.",
-               "default_bush_farm_fertilizer": "Default Bush Farm Fertilizer:",
-               "default_bush_farm_fertilizer_description": "When creating a new bush farm, set its fertilizer preference to this.",
-               "default_decorative_flowers_fertilizer": "Default Decorative Flowers Farm Fertilizer:",
-               "default_decorative_flowers_fertilizer_description": "When creating a new decorative flowers farm, set its fertilizer preference to this.",
-               "default_orchard_fertilizer": "Default Orchard Fertilizer:",
-               "default_orchard_fertilizer_description": "When creating a new orchard, set its fertilizer preference to this.",
-               "default_treefarm_fertilizer": "Default Tree Farm Fertilizer:",
-               "default_treefarm_fertilizer_description": "When creating a new tree farm, set its fertilizer preference to this.",
-               "default_underfarm_fertilizer": "Default Underfarm Fertilizer:",
-               "default_underfarm_fertilizer_description": "When creating a new underfarm, set its fertilizer preference to this.",
+               "default_fertilizer": "Default Fertilizer:",
+               "default_fertilizer_description": "When creating a new farm, set its fertilizer preference to this.",
                "show_farm_water_regions": "Show Farm Water Regions",
                "show_farm_water_regions_description": "In grid view, show an outline of the region a farm will look for water if its crop will benefit from it.",
                "show_connector_regions": "Show Connector Regions",
@@ -14953,7 +15006,9 @@
             "herb_white_bitter_resource_name": "Any White Bitter Herb",
             "herb_purple_bitter_resource_name": "Any Purple Bitter Herb",
             "egg_small_resource_name": "Any Small Egg",
-            "stuffing_resource_name": "Any Feathers, Wool or Cotton"
+            "stuffing_resource_name": "Any Feathers, Wool or Cotton",
+            "raw_meat_piece_resource_name": "Any Whole Meat Piece",
+            "seasoning_resource_name": "Any Seasoning"
          }
       }
    },

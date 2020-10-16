@@ -1,8 +1,10 @@
 local Point3 = _radiant.csg.Point3
 local Cube3 = _radiant.csg.Cube3
+local Region3 = _radiant.csg.Region3
 local Color4 = _radiant.csg.Color4
 local entity_forms_lib = require 'stonehearth.lib.entity_forms.entity_forms_lib'
 local validator = radiant.validator
+local rng = _radiant.math.get_default_rng()
 
 local ResourceCallHandler = class()
 
@@ -445,6 +447,93 @@ function ResourceCallHandler:toggle_fish_trap_capture(session, response, entity,
    local fish_trap = entity:get_component('stonehearth_ace:fish_trap')
    if fish_trap then
       fish_trap:set_capture_enabled(enabled)
+   end
+end
+
+function ResourceCallHandler:box_forage(session, response)
+   stonehearth.selection:select_xz_region('box_forage')
+      :set_max_size(50)
+      :require_supported(true)
+      :use_outline_marquee(Color4(224, 224, 0, 32), Color4(224, 224, 0, 255))
+      :set_cursor('stonehearth:cursors:harvest')
+      -- Allow selection on buildings/other items that aren't selectable
+      :allow_unselectable_support_entities(true)
+      :set_find_support_filter(function(result)
+            if self:_is_ground(result.entity) then
+               return true
+            end
+            return stonehearth.selection.FILTER_IGNORE
+         end)
+      :done(function(selector, box)
+            _radiant.call('stonehearth_ace:server_box_forage', box)
+            response:resolve(true)
+         end)
+      :fail(function(selector)
+            response:reject('no region')
+         end)
+      :go()
+end
+
+function ResourceCallHandler:server_box_forage(session, response, box)
+   validator.expect_argument_types({'Cube3'}, box)
+
+   local cube = Cube3(Point3(box.min.x, box.min.y, box.min.z),
+                      Point3(box.max.x, box.max.y, box.max.z))
+
+   local entities = radiant.terrain.get_entities_in_cube(cube)
+
+   for _, entity in pairs(entities) do
+      -- if any of these are forage entities, simply cancel
+      if stonehearth.catalog:is_category(entity:get_uri(), 'foraging_spot') then
+         return
+      end
+   end
+
+   -- see if there's a foraging entity override for the biome/season
+   local season = stonehearth.seasons:get_current_season()
+   local biome = stonehearth.world_generation:get_biome_alias()
+   local biome_data = radiant.resources.load_json(biome)
+
+   local foraging_spot_uri = (season and season.foraging_spot_uri) or
+      (biome_data and biome_data.foraging_spot_uri) or
+      'stonehearth_ace:terrain:foraging_spot'
+   local foraging_spot_frequency = (season and season.foraging_spot_frequency) or
+      (biome_data and biome_data.foraging_spot_frequency) or
+      stonehearth.constants.foraging.FORAGING_SPOT_FREQUENCY
+
+   -- extend the cube down by 1 and intersect with the terrain to see where and how much we can "plant"
+   local region = radiant.terrain.intersect_region(Region3(cube:extruded('y', 0, 1)))
+   for cube in region:each_cube() do
+      local kind = cube.tag and radiant.terrain.get_block_kind_from_tag(cube.tag)
+      if kind ~= 'grass' then
+         region:subtract_cube(cube)
+      end
+   end
+
+   local area = region:get_area()
+   local num_to_spawn = math.floor(area / foraging_spot_frequency)
+   if num_to_spawn > 0 then
+      -- choose random indexes to spawn them, store in a table, then process through the cubes
+      local locations = {}
+      for i = 1, num_to_spawn do
+         locations[rng:get_int(1, area)] = true
+      end
+
+      local index = 1
+      for cube in region:each_cube() do
+         if not next(locations) then
+            break
+         end
+         if locations[index] then
+            -- create a foraging entity at this location
+            local entity = radiant.entities.create_entity(foraging_spot_uri)
+            radiant.terrain.place_entity(entity, cube.min, { force_iconic = false })
+            radiant.entities.turn_to(entity, rng:get_int(0, 3) * 90)
+            entity:add_component('stonehearth:resource_node'):request_harvest(session.player_id)
+
+            locations[index] = nil
+         end
+      end
    end
 end
 

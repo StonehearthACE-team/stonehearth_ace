@@ -9,8 +9,8 @@ $(document).ready(function(){
    });
 
    var buildFishTrap = function() {
-      var tip = App.stonehearthClient.showTipWithKeyBindings('stonehearth_ace:data.commands.build_fish_trap.tip_title',
-                                                             'stonehearth_ace:data.commands.build_fish_trap.tip_description',
+      var tip = App.stonehearthClient.showTipWithKeyBindings('stonehearth_ace:data.commands.place_fish_trap.tip_title',
+                                                             'stonehearth_ace:data.commands.place_fish_trap.tip_description',
                                                              { left_binding: 'build:rotate:left', right_binding: 'build:rotate:right'});
 
       App.setGameMode('place');
