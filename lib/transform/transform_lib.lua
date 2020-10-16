@@ -110,11 +110,10 @@ function transform_lib.transform(entity, transformer, into_uri, options)
 
       local crop = entity:get_component('stonehearth:crop')
       if crop then
-         local field = crop:get_field()
-         local x, y = crop:get_field_offset()
-         transformed_form:add_component('stonehearth:crop'):set_field(field, x, y)
+         transformed_form:add_component('stonehearth:crop'):copy_data(crop)
          crop:set_field()  -- we set the old crop to nil so it won't alert the field when it gets destroyed
          transformed_form:remove_component('stonehearth_ace:stump')  -- don't want a stump after it gets harvested
+         local field = crop:get_field()
          if field then
             field:update_post_harvest_crop(x, y, transformed_form)
          end
