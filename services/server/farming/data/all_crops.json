@@ -266,6 +266,7 @@
          "crop_type": "stonehearth_ace:crops:berry_bush_crop",
          "ordinal": 1,
          "level_requirement": 1,
+         "destroy_on_crop_change": true,
          "field_types": {
             "bush_farm": true
          }
@@ -274,6 +275,7 @@
          "crop_type": "stonehearth_ace:crops:pear_cactus_crop",
          "ordinal": 1,
          "level_requirement": 1,
+         "destroy_on_crop_change": true,
          "field_types": {
             "bush_farm": true
          }
@@ -282,6 +284,7 @@
          "crop_type": "stonehearth_ace:crops:cherry_bush_crop",
          "ordinal": 1,
          "level_requirement": 1,
+         "destroy_on_crop_change": true,
          "field_types": {
             "bush_farm": true
          }
@@ -313,6 +316,7 @@
    },
    "field_types": {
       "farm": {
+         "allow_disable_harvest": true,
          "sample_crop": "stonehearth:crops:turnip_crop",
          "terrain": {
             "grass": true,
@@ -332,6 +336,7 @@
          ]
       },
       "underfarm": {
+         "allow_disable_harvest": true,
          "color": [
             113,
             82,

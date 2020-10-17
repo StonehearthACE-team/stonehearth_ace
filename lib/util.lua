@@ -140,6 +140,7 @@ function util.eval_property_and(value, rules)
    return true
 end
 
+-- we may need to cache this or limit its usage
 function util.get_current_conditions_loot_table_filter_args(looter)
    -- get biome, season, weather, and hour of day
    local biome = stonehearth.world_generation:get_biome_alias()

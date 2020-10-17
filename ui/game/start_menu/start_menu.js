@@ -29,6 +29,9 @@ App.StonehearthStartMenuView.reopen({
       self.menuActions.build_fence = function(){
          //self.buildFence();
       };
+      self.menuActions.box_forage = function() {
+         self.boxForage();
+      }
       self.menuActions.create_farm = function(nodeData) {
          // if there's only one type of farm unlocked, go ahead and click that type
          var unlocked = null;
@@ -250,6 +253,24 @@ App.StonehearthStartMenuView.reopen({
             .done(function(response) {
                radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:place_structure'} );
                self.buildFence();
+            })
+            .fail(function(response) {
+               App.stonehearthClient.hideTip(tip);
+            });
+      });
+   },
+
+   boxForage: function() {
+      var self = this;
+
+      var tip = App.stonehearthClient.showTip('stonehearth_ace:ui.game.menu.harvest_menu.items.box_forage.tip_title',
+            'stonehearth_ace:ui.game.menu.harvest_menu.items.box_forage.tip_description', {i18n : true});
+
+      return App.stonehearthClient._callTool('boxForage', function() {
+         return radiant.call('stonehearth_ace:box_forage')
+            .done(function(response) {
+               radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:ui:start_menu:popup'} );
+               self.boxForage();
             })
             .fail(function(response) {
                App.stonehearthClient.hideTip(tip);

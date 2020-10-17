@@ -78,10 +78,26 @@ function CropComponent:post_activate()
    end
 end
 
+-- when having a crop mature into a different entity, copy its data
+function CropComponent:copy_data(crop_comp)
+   local field = crop_comp:get_field()
+   local x, y = crop_comp:get_field_offset()
+   self:set_field(field, x, y)
+   self:set_destroy_on_crop_change(crop_comp:get_destroy_on_crop_change())
+end
+
 function CropComponent:set_field(field, x, y)
    self._sv._field = field
    self._sv._field_offset_x = x
    self._sv._field_offset_y = y
+end
+
+function CropComponent:set_destroy_on_crop_change(value)
+   self._sv._destroy_on_crop_change = value
+end
+
+function CropComponent:get_destroy_on_crop_change()
+   return self._sv._destroy_on_crop_change
 end
 
 function CropComponent:get_field()

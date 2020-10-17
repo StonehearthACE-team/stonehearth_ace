@@ -403,6 +403,17 @@ function AceFarmerFieldComponent:_replace_crop_with_post_harvest(dirt_plot, prod
    return product
 end
 
+function AceFarmerFieldComponent:_destroy_plot_contents(dirt_plot)
+   if dirt_plot.contents then
+      radiant.entities.kill_entity(dirt_plot.contents)
+      dirt_plot.contents = nil
+   end
+
+   if dirt_plot.post_harvest_contents then
+      radiant.entities.kill_entity(dirt_plot.post_harvest_contents)
+   end
+end
+
 function AceFarmerFieldComponent:auto_harvest_crop(auto_harvest_type, x, z)
    -- automatically harvest the crop; if the type is 'place', place it 
    self:_update_crop_fertilized(x, z, false)
@@ -504,6 +515,14 @@ end
 
 AceFarmerFieldComponent._ace_old__try_mark_for_plant = FarmerFieldComponent._try_mark_for_plant
 function AceFarmerFieldComponent:_try_mark_for_plant(dirt_plot)
+   local existing_crop = dirt_plot.contents or dirt_plot.post_harvest_contents
+   if existing_crop then
+      local crop_comp = existing_crop:get_component('stonehearth:crop')
+      if crop_comp and crop_comp:get_destroy_on_crop_change() then
+         self:_destroy_plot_contents(dirt_plot)
+      end
+   end
+   
    if not dirt_plot.post_harvest_contents then
       self:_ace_old__try_mark_for_plant(dirt_plot)
    end
@@ -556,25 +575,36 @@ end
 AceFarmerFieldComponent._ace_old_plant_crop_at = FarmerFieldComponent.plant_crop_at
 function AceFarmerFieldComponent:plant_crop_at(x_offset, z_offset)
    local crop = self:_ace_old_plant_crop_at(x_offset, z_offset)
-   radiant.entities.turn_to(crop, self._sv.rotation * 90)
 
-   local growing_comp = crop and crop:add_component('stonehearth:growing')
-	if growing_comp then
-      growing_comp:set_environmental_growth_time_modifier(self._sv.growth_time_modifier)
-      growing_comp:set_flooded(self._sv.flooded)
+   if crop then
+      radiant.entities.turn_to(crop, self._sv.rotation * 90)
+
+      local growing_comp = crop:add_component('stonehearth:growing')
+      if growing_comp then
+         growing_comp:set_environmental_growth_time_modifier(self._sv.growth_time_modifier)
+         growing_comp:set_flooded(self._sv.flooded)
+      end
+      crop:get_component('stonehearth:crop'):set_destroy_on_crop_change(self._sv.current_crop_details.destroy_on_crop_change)
+
+      crop:add_component('stonehearth_ace:output'):set_parent_output(self._entity)
    end
-   crop:add_component('stonehearth_ace:output'):set_parent_output(self._entity)
 end
 
-AceFarmerFieldComponent._ace_old_set_crop = FarmerFieldComponent.set_crop
 function AceFarmerFieldComponent:set_crop(session, response, new_crop_id)
-   local result = self:_ace_old_set_crop(session, response, new_crop_id)
+   self._sv.current_crop_details = stonehearth.farming:get_crop_details(new_crop_id)
+   self._sv.has_set_crop = true
+
+   if self._sv.current_crop_alias ~= new_crop_id then
+      self._sv.current_crop_alias = new_crop_id
+      self.__saved_variables:mark_changed()
+      self:_update_plantable_layer()
+   end
 
    self:_cache_best_levels()
    self:_update_effective_humidity_level()
    self:_set_growth_factors()
 
-   return result
+   return true
 end
 
 -- fertilizer preference is either a number (-1, 0, or 1) or a string (uri)

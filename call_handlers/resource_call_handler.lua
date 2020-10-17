@@ -5,8 +5,10 @@ local Color4 = _radiant.csg.Color4
 local entity_forms_lib = require 'stonehearth.lib.entity_forms.entity_forms_lib'
 local validator = radiant.validator
 local rng = _radiant.math.get_default_rng()
+local wilderness_util = require 'stonehearth_ace.lib.wilderness.wilderness_util'
 
 local ResourceCallHandler = class()
+local log = radiant.log.create_logger('resource_call_handler')
 
 local boxed_entities = {}
 
@@ -452,18 +454,12 @@ end
 
 function ResourceCallHandler:box_forage(session, response)
    stonehearth.selection:select_xz_region('box_forage')
+      :set_min_size(20)
       :set_max_size(50)
       :require_supported(true)
       :use_outline_marquee(Color4(224, 224, 0, 32), Color4(224, 224, 0, 255))
-      :set_cursor('stonehearth:cursors:harvest')
-      -- Allow selection on buildings/other items that aren't selectable
-      :allow_unselectable_support_entities(true)
-      :set_find_support_filter(function(result)
-            if self:_is_ground(result.entity) then
-               return true
-            end
-            return stonehearth.selection.FILTER_IGNORE
-         end)
+      :set_cursor('stonehearth:cursors:terrain')
+      :set_find_support_filter(stonehearth.selection.valid_terrain_blocks_only_xz_region_support_filter({ grass = true }))
       :done(function(selector, box)
             _radiant.call('stonehearth_ace:server_box_forage', box)
             response:resolve(true)
@@ -477,16 +473,27 @@ end
 function ResourceCallHandler:server_box_forage(session, response, box)
    validator.expect_argument_types({'Cube3'}, box)
 
-   local cube = Cube3(Point3(box.min.x, box.min.y, box.min.z),
-                      Point3(box.max.x, box.max.y, box.max.z))
+   local orig_cube = Cube3(Point3(box.min.x, box.min.y, box.min.z),
+                           Point3(box.max.x, box.max.y, box.max.z))
+   local orig_region = Region3(orig_cube)
 
-   local entities = radiant.terrain.get_entities_in_cube(cube)
+   local entities = radiant.terrain.get_entities_in_cube(orig_cube)
+   local wilderness_score = 0
 
    for _, entity in pairs(entities) do
       -- if any of these are forage entities, simply cancel
       if stonehearth.catalog:is_category(entity:get_uri(), 'foraging_spot') then
+         log:debug('found %s in foraging area, canceling request', entity)
          return
       end
+
+      wilderness_score = wilderness_score + wilderness_util.get_value_from_entity(entity, nil, orig_region)
+   end
+
+   local area = orig_cube:get_area()
+   local avg_wilderness_score = wilderness_score / area
+   if avg_wilderness_score < stonehearth.constants.foraging.MIN_AVG_WILDERNESS_SCORE then
+      return
    end
 
    -- see if there's a foraging entity override for the biome/season
@@ -497,43 +504,40 @@ function ResourceCallHandler:server_box_forage(session, response, box)
    local foraging_spot_uri = (season and season.foraging_spot_uri) or
       (biome_data and biome_data.foraging_spot_uri) or
       'stonehearth_ace:terrain:foraging_spot'
-   local foraging_spot_frequency = (season and season.foraging_spot_frequency) or
+   local foraging_spot_frequency = ((season and season.foraging_spot_frequency) or
       (biome_data and biome_data.foraging_spot_frequency) or
-      stonehearth.constants.foraging.FORAGING_SPOT_FREQUENCY
+      stonehearth.constants.foraging.FORAGING_SPOT_FREQUENCY)
+   local wilderness_score_multiplier = (season and season.wilderness_score_multiplier) or
+      (biome_data and biome_data.wilderness_score_multiplier) or
+      stonehearth.constants.foraging.WILDERNESS_SCORE_MULTIPLIER
+   local wilderness_modifier = avg_wilderness_score * wilderness_score_multiplier
 
-   -- extend the cube down by 1 and intersect with the terrain to see where and how much we can "plant"
-   local region = radiant.terrain.intersect_region(Region3(cube:extruded('y', 0, 1)))
-   for cube in region:each_cube() do
-      local kind = cube.tag and radiant.terrain.get_block_kind_from_tag(cube.tag)
-      if kind ~= 'grass' then
-         region:subtract_cube(cube)
-      end
-   end
+   log:debug('creating "%s" foraging entities at %s frequency (%s from wilderness)', foraging_spot_uri, foraging_spot_frequency, wilderness_modifier)
 
-   local area = region:get_area()
-   local num_to_spawn = math.floor(area / foraging_spot_frequency)
+   local num_to_spawn = math.floor(area * (foraging_spot_frequency + wilderness_modifier))
+
+   log:debug('%s area within bounds %s; creating %s foraging spots', area, orig_cube, num_to_spawn)
+
    if num_to_spawn > 0 then
-      -- choose random indexes to spawn them, store in a table, then process through the cubes
+      -- choose random locations to spawn them within the bounds of the cube
+      local x_min, x_max = box.min.x, box.max.x - 1
+      local z_min, z_max = box.min.z, box.max.z - 1
+      local y = box.min.y
       local locations = {}
       for i = 1, num_to_spawn do
-         locations[rng:get_int(1, area)] = true
-      end
-
-      local index = 1
-      for cube in region:each_cube() do
-         if not next(locations) then
-            break
-         end
-         if locations[index] then
-            -- create a foraging entity at this location
+         local location = Point3(rng:get_int(x_min, x_max), y, rng:get_int(z_min, z_max))
+         -- try to create a foraging entity at this location
+         log:debug('trying to find placement point near %s', location)
+         local spot = radiant.terrain.find_placement_point(location, 0, 1)
+         if spot then
             local entity = radiant.entities.create_entity(foraging_spot_uri)
-            radiant.terrain.place_entity(entity, cube.min, { force_iconic = false })
+            radiant.terrain.place_entity(entity, spot, { force_iconic = false })
             radiant.entities.turn_to(entity, rng:get_int(0, 3) * 90)
             entity:add_component('stonehearth:resource_node'):request_harvest(session.player_id)
-
-            locations[index] = nil
          end
       end
+
+      return true
    end
 end
 
