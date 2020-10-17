@@ -31,3 +31,4 @@ return ai:create_compound_action(GotoOwnedBed)
             filter_fn = ai.PREV.filter_fn,
             description = 'rest in own bed'
          })
+         :set_think_output({destination_entity = ai.PREV.destination_entity})
