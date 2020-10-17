@@ -1,0 +1,23 @@
+{
+  "type": "entity",
+  "mixins": [
+    "stonehearth:trees:juniper:medium"
+  ],
+  "components": {
+    "mixintypes": {
+      "stonehearth:entity_forms": "remove",
+      "stonehearth:evolve": "remove"
+    }
+  },
+  "entity_data": {
+    "mixintypes": {
+      "stonehearth:evolve_data": "remove"
+    },
+    "stonehearth:net_worth": {
+      "shop_info": {
+        "buyable": false,
+        "sellable": false
+      }
+    }
+  }
+}
