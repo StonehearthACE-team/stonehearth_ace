@@ -5,6 +5,7 @@ local Color4 = _radiant.csg.Color4
 local entity_forms_lib = require 'stonehearth.lib.entity_forms.entity_forms_lib'
 local validator = radiant.validator
 local rng = _radiant.math.get_default_rng()
+local wilderness_util = require 'stonehearth_ace.lib.wilderness.wilderness_util'
 
 local ResourceCallHandler = class()
 local log = radiant.log.create_logger('resource_call_handler')
@@ -474,8 +475,10 @@ function ResourceCallHandler:server_box_forage(session, response, box)
 
    local orig_cube = Cube3(Point3(box.min.x, box.min.y, box.min.z),
                            Point3(box.max.x, box.max.y, box.max.z))
+   local orig_region = Region3(orig_cube)
 
    local entities = radiant.terrain.get_entities_in_cube(orig_cube)
+   local wilderness_score = 0
 
    for _, entity in pairs(entities) do
       -- if any of these are forage entities, simply cancel
@@ -483,6 +486,14 @@ function ResourceCallHandler:server_box_forage(session, response, box)
          log:debug('found %s in foraging area, canceling request', entity)
          return
       end
+
+      wilderness_score = wilderness_score + wilderness_util.get_value_from_entity(entity, nil, orig_region)
+   end
+
+   local area = orig_cube:get_area()
+   local avg_wilderness_score = wilderness_score / area
+   if avg_wilderness_score < stonehearth.constants.foraging.MIN_AVG_WILDERNESS_SCORE then
+      return
    end
 
    -- see if there's a foraging entity override for the biome/season
@@ -493,14 +504,17 @@ function ResourceCallHandler:server_box_forage(session, response, box)
    local foraging_spot_uri = (season and season.foraging_spot_uri) or
       (biome_data and biome_data.foraging_spot_uri) or
       'stonehearth_ace:terrain:foraging_spot'
-   local foraging_spot_frequency = (season and season.foraging_spot_frequency) or
+   local foraging_spot_frequency = ((season and season.foraging_spot_frequency) or
       (biome_data and biome_data.foraging_spot_frequency) or
-      stonehearth.constants.foraging.FORAGING_SPOT_FREQUENCY
+      stonehearth.constants.foraging.FORAGING_SPOT_FREQUENCY)
+   local wilderness_score_multiplier = (season and season.wilderness_score_multiplier) or
+      (biome_data and biome_data.wilderness_score_multiplier) or
+      stonehearth.constants.foraging.WILDERNESS_SCORE_MULTIPLIER
+   local wilderness_modifier = avg_wilderness_score * wilderness_score_multiplier
 
-   log:debug('creating "%s" foraging entities at %s frequency', foraging_spot_uri, foraging_spot_frequency)
+   log:debug('creating "%s" foraging entities at %s frequency (%s from wilderness)', foraging_spot_uri, foraging_spot_frequency, wilderness_modifier)
 
-   local area = orig_cube:get_area()
-   local num_to_spawn = math.floor(area * foraging_spot_frequency)
+   local num_to_spawn = math.floor(area * (foraging_spot_frequency + wilderness_modifier))
 
    log:debug('%s area within bounds %s; creating %s foraging spots', area, orig_cube, num_to_spawn)
 
