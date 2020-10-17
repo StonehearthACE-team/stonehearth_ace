@@ -21,3 +21,4 @@ return ai:create_compound_action(GotoPriorityCareBed)
             filter_fn = make_is_available_bed_filter(),
             description = 'rest in priority care bed'
          })
+         :set_think_output({destination_entity = ai.PREV.destination_entity})
