@@ -1,13 +1,31 @@
 {
    "components": {
       "stonehearth:trapping_grounds": {
+         "trappable_animals": {
+            "medium": {
+               "ordinal": 2,
+               "level_requirement": 3,
+               "experience_multiplier": 1.5,
+               "wilderness_requirement_multiplier": 0.24
+            },
+            "bugs": {
+               "icon": "/stonehearth_ace/entities/critters/ladybug_beetle/ladybug_beetle.png",
+               "ordinal": 3,
+               "level_requirement": 4,
+               "experience_multiplier": 2,
+               "wilderness_requirement_multiplier": 0.18
+            },
+            "big_game": {
+               "level_requirement": 6
+            }
+         },
          "trappable_animal_weights": {
             "bugs": {
                "stonehearth:doodles": 100,
                "stonehearth_ace:ladybug_beetle": 100,
                "stonehearth_ace:grasshopper": 100,
-			   "stonehearth:bitsy_ant": 0,
-			   "stonehearth:beetle": 0
+               "stonehearth:bitsy_ant": 0,
+               "stonehearth:beetle": 0
             }
          },
          "terrain_spawn_intervals": {
@@ -15,11 +33,11 @@
                "spawn_interval_min": "90m",
                "spawn_interval_max": "160m"
             },
-				"grass": {
+            "grass": {
                "spawn_interval_min": "50m",
                "spawn_interval_max": "80m"
             },
-				"dirt": {
+            "dirt": {
                "spawn_interval_min": "100m",
                "spawn_interval_max": "140m"
             },

@@ -1,6 +1,27 @@
 {
    "components": {
       "stonehearth:trapping_grounds": {
+         "trappable_animals": {
+            "bugs": {
+               "icon": "/stonehearth_ace/entities/critters/stag_beetle/stag_beetle.png",
+               "ordinal": 1,
+               "level_requirement": 0,
+               "experience_multiplier": 1,
+               "wilderness_requirement_multiplier": 0.36
+            },
+            "critters": {
+               "ordinal": 2,
+               "level_requirement": 2,
+               "experience_multiplier": 1.5,
+               "wilderness_requirement_multiplier": 0.24
+            },
+            "medium": {
+               "level_requirement": 4
+            },
+            "big_game": {
+               "level_requirement": 6
+            }
+         },
          "trappable_animal_weights": {
             "critters": {
                "stonehearth:rabbit": 100,
@@ -15,16 +36,16 @@
                "stonehearth:beetle": 0
             }
          },
-		 "terrain_spawn_intervals": {
+         "terrain_spawn_intervals": {
             "rock": {
                "spawn_interval_min": "120m",
                "spawn_interval_max": "200m"
             },
-				"grass": {
+            "grass": {
                "spawn_interval_min": "80m",
                "spawn_interval_max": "120m"
             },
-				"dirt": {
+            "dirt": {
                "spawn_interval_min": "100m",
                "spawn_interval_max": "140m"
             },

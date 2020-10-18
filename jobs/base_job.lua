@@ -497,4 +497,12 @@ function BaseJob:remove_medic_capabilities(args)
    radiant.events.trigger_async(self._sv._entity, 'stonehearth_ace:medic_capabilities_changed')
 end
 
+function BaseJob:is_trapper()
+   return false
+end
+
+function BaseJob:is_farmer()
+   return false
+end
+
 return BaseJob

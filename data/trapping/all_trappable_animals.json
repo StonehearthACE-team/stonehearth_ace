@@ -2,9 +2,11 @@
    "type": "index",
    "trappable_animals": {
       "bugs": {
+         "experience_multiplier": 1.5,
          "wilderness_requirement_multiplier": 0.45
       },
       "critters": {
+         "experience_multiplier": 1,
          "wilderness_requirement_multiplier": 0.2
       },
       "big_game": {
@@ -13,6 +15,7 @@
          "icon": "/stonehearth/entities/critters/deer/deer.png",
          "ordinal": 3,
          "level_requirement": 6,
+         "experience_multiplier": 3,
          "wilderness_requirement_multiplier": 0.12
       }
    }

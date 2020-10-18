@@ -11,6 +11,7 @@ function AceCheckBaitTrapAdjacent:run(ai, entity, args)
 
    local trapped_entity = trap_component:get_trapped_entity()
    local trapped_entity_id = nil
+   local experience_multiplier = trap_component:get_grounds_experience_multiplier()
 
    ai:execute('stonehearth:turn_to_face_entity', { entity = args.trap })
    ai:execute('stonehearth:run_effect', { effect = 'fiddle' })
@@ -41,7 +42,7 @@ function AceCheckBaitTrapAdjacent:run(ai, entity, args)
    ai:unprotect_argument(args.trap)
    radiant.entities.kill_entity(args.trap)
 
-   radiant.events.trigger_async(entity, 'stonehearth:clear_trap', {trapped_entity_id = trapped_entity_id})
+   radiant.events.trigger_async(entity, 'stonehearth:clear_trap', {trapped_entity_id = trapped_entity_id, experience_multiplier = experience_multiplier})
 end
 
 function AceCheckBaitTrapAdjacent:_spawn_loot(target, trapping_grounds)

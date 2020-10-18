@@ -829,6 +829,7 @@
          }
       },
       "trapping": {
+         "UNSUCCESSFUL_SPAWN_RETRY_TIME": "15m",
          "fish_traps": {
             "MIN_EFFECTIVE_WATER_VOLUME": 100
          }
@@ -863,7 +864,7 @@
                   0.4,
                   0.4
                ],
-               "spawn_duration_multiplier": 10
+               "spawn_duration_multiplier": 5
             },
             {
                "ui_label": "i18n(stonehearth_ace:data.heatmaps.wilderness.thresholds.little.display_name)",
@@ -881,7 +882,7 @@
                   0.6,
                   0
                ],
-               "spawn_duration_multiplier": 5
+               "spawn_duration_multiplier": 3
             },
             {
                "ui_label": "i18n(stonehearth_ace:data.heatmaps.wilderness.thresholds.some.display_name)",
@@ -899,7 +900,7 @@
                   0.8,
                   0
                ],
-               "spawn_duration_multiplier": 3
+               "spawn_duration_multiplier": 2
             },
             {
                "ui_label": "i18n(stonehearth_ace:data.heatmaps.wilderness.thresholds.lots.display_name)",
@@ -917,7 +918,7 @@
                   0.6,
                   0
                ],
-               "spawn_duration_multiplier": 1.2
+               "spawn_duration_multiplier": 1
             },
             {
                "ui_label": "i18n(stonehearth_ace:data.heatmaps.wilderness.thresholds.tons.display_name)",
