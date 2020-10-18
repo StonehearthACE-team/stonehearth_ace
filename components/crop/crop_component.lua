@@ -116,6 +116,12 @@ function CropComponent:get_post_harvest_stage()
    return self._post_harvest_stage
 end
 
+function CropComponent:update_post_harvest_crop()
+   if self._sv._field then
+      self._sv._field:update_post_harvest_crop(self._sv._field_offset_x, self._sv._field_offset_y, self._entity)
+   end
+end
+
 function CropComponent:destroy()
    if self._sv._field then
       self._sv._field:notify_crop_destroyed(self._sv._field_offset_x, self._sv._field_offset_y)

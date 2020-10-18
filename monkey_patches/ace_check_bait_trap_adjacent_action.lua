@@ -11,7 +11,7 @@ function AceCheckBaitTrapAdjacent:run(ai, entity, args)
 
    local trapped_entity = trap_component:get_trapped_entity()
    local trapped_entity_id = nil
-   local experience_multiplier = trap_component:get_grounds_experience_multiplier()
+   local experience_multiplier = trapping_grounds:add_component('stonehearth:trapping_grounds'):get_grounds_experience_multiplier()
 
    ai:execute('stonehearth:turn_to_face_entity', { entity = args.trap })
    ai:execute('stonehearth:run_effect', { effect = 'fiddle' })
