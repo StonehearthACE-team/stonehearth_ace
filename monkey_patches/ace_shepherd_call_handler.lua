@@ -22,16 +22,14 @@ function AceShepherdCallHandler:_get_pasture_region_selector(session, response)
       return return_val
    end
    
-   local region_selector = stonehearth.selection:select_designation_region(stonehearth.constants.xz_region_reasons.PASTURE)
-   -- this is a hack so it doesn't create the intersection node underneath the cursor
-   region_selector._intersection_node = true
-   return region_selector
+   return stonehearth.selection:select_designation_region(stonehearth.constants.xz_region_reasons.PASTURE)
       :set_min_size(10)
       :set_max_size(50)
       :require_unblocked(false)
       :use_designation_marquee(Color4(56, 80, 0, 255))
       :require_supported(false)                    -- ACE: override the default for a designation region selector
       :allow_unselectable_support_entities(false)  -- ACE: override the default for a designation region selector
+      :set_create_intersection_node(false)
       :set_find_support_filter(filter_fn)
       :set_can_contain_entity_filter(function(entity)
             -- avoid other designations.
@@ -67,11 +65,6 @@ function AceShepherdCallHandler:_get_pasture_region_selector(session, response)
          function(selector)
             selector:destroy()
             response:reject('no region')
-         end
-      )
-      :always(
-         function(selector)
-            selector._intersection_node = nil
          end
       )
 end

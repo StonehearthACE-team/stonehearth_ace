@@ -132,4 +132,15 @@ function AceTrappingService:get_num_fish_traps_in_water(water_id)
    return trap_data and radiant.size(trap_data.traps) or 0
 end
 
+function AceTrappingService:get_all_trappable_animals_command(session, response)
+   -- no longer player based, it's biome-based (just get it from the component data of the trapping zone entity)
+   -- base game initializes self._trappable_animals as an empty table, so check if it's not empty
+   local trappable_animals = self._trappable_animals
+   if not trappable_animals or not next(trappable_animals) then
+      trappable_animals = radiant.entities.get_component_data('stonehearth:trapper:trapping_grounds', 'stonehearth:trapping_grounds').trappable_animals
+      self._trappable_animals = trappable_animals
+   end
+   response:resolve({ animals = trappable_animals})
+end
+
 return AceTrappingService

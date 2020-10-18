@@ -2,28 +2,89 @@
    "type": "entity",
    "components": {
       "stonehearth:trapping_grounds": {
-         "trappable_animal_weights": {
+         "trappable_animals": {
+            "critters": {
+               "name": "i18n(stonehearth:data.trapping.all_trappable_animals.trappable_animals.critters.name)",
+               "description": "i18n(stonehearth:data.trapping.all_trappable_animals.trappable_animals.critters.description)",
+               "icon": "/stonehearth/entities/critters/rabbit/rabbit.png",
+               "ordinal": 1,
+               "level_requirement": 0,
+               "experience_multiplier": 1,
+               "wilderness_requirement_multiplier": 0.36
+            },
+            "bugs": {
+               "name": "i18n(stonehearth:data.trapping.all_trappable_animals.trappable_animals.bugs.name)",
+               "description": "i18n(stonehearth:data.trapping.all_trappable_animals.trappable_animals.bugs.description)",
+               "icon": "/stonehearth/entities/critters/beetle/beetle.png",
+               "ordinal": 2,
+               "level_requirement": 2,
+               "experience_multiplier": 1.5,
+               "wilderness_requirement_multiplier": 0.24
+            },
+            "medium": {
+               "name": "i18n(stonehearth_ace:data.trapping.all_trappable_animals.trappable_animals.medium.name)",
+               "description": "i18n(stonehearth_ace:data.trapping.all_trappable_animals.trappable_animals.medium.description)",
+               "icon": "/stonehearth/entities/monsters/forest/boar/boar.png",
+               "ordinal": 3,
+               "level_requirement": 3,
+               "experience_multiplier": 2,
+               "wilderness_requirement_multiplier": 0.18
+            },
             "big_game": {
-               "stonehearth:deer": 100,
-               "stonehearth:monsters:forest:boar": 75,
-               "stonehearth:deer_horned": 75,
-					"stonehearth_ace:deer:young": 60,
-					"stonehearth:monsters:avian:ostrich": 50,
-					"stonehearth:monsters:avian:duckduck": 25,
-					"stonehearth_ace:monsters:forest:bear_cub": 20,
-					"stonehearth_ace:monsters:forest:bear": 5		   
+               "name": "i18n(stonehearth_ace:data.trapping.all_trappable_animals.trappable_animals.big_game.name)",
+               "description": "i18n(stonehearth_ace:data.trapping.all_trappable_animals.trappable_animals.big_game.description)",
+               "icon": "/stonehearth/entities/critters/deer/deer.png",
+               "ordinal": 4,
+               "level_requirement": 5,
+               "experience_multiplier": 2.5,
+               "wilderness_requirement_multiplier": 0.12
+            },
+            "exotic": {
+               "name": "i18n(stonehearth_ace:data.trapping.all_trappable_animals.trappable_animals.exotic.name)",
+               "description": "i18n(stonehearth_ace:data.trapping.all_trappable_animals.trappable_animals.exotic.description)",
+               "icon": "/stonehearth/entities/monsters/avian/duckduck/duckduck.png",
+               "ordinal": 5,
+               "level_requirement": 6,
+               "experience_multiplier": 3,
+               "wilderness_requirement_multiplier": 0.08
             }
          },
-			"terrain_spawn_intervals": {
+         "trappable_animal_weights": {
+            "medium": {
+               "stonehearth:monsters:forest:boar": 75,
+               "stonehearth_ace:deer:young": 60,
+               "stonehearth_ace:monsters:forest:bear_cub": 20
+            },
+            "big_game": {
+               "stonehearth:deer": 100,
+               "stonehearth:deer_horned": 75,
+               "stonehearth:monsters:avian:ostrich": 50,
+               "stonehearth_ace:monsters:forest:bear": 5
+            },
+            "exotic": {
+               "stonehearth:monsters:avian:duckduck": 25
+            }
+         },
+         "seasonal_trappable_animal_weights": {
+            "winter": {
+               "medium": {
+                  "stonehearth_ace:monsters:forest:bear_cub": 0
+               },
+               "big_game": {
+                  "stonehearth_ace:monsters:forest:bear": 0
+               }
+            }
+         },
+         "terrain_spawn_intervals": {
             "rock": {
                "spawn_interval_min": "100m",
                "spawn_interval_max": "180m"
             },
-				"grass": {
+            "grass": {
                "spawn_interval_min": "40m",
                "spawn_interval_max": "70m"
             },
-				"dirt": {
+            "dirt": {
                "spawn_interval_min": "70m",
                "spawn_interval_max": "120m"
             },
@@ -32,10 +93,17 @@
                "spawn_interval_max": "100m"
             }
          },
+         "seasonal_spawn_interval_multipliers": {
+            "spring": 1.2,
+            "autumn": 0.9,
+            "winter": 0.7
+         },
          "trap_types": {
             "critters": "stonehearth:trapper:snare_trap",
             "bugs": "stonehearth:trapper:snare_trap",
-            "big_game": "stonehearth_ace:trapper:clamp_trap"
+            "medium": "stonehearth_ace:trapper:clamp_trap",
+            "big_game": "stonehearth_ace:trapper:clamp_trap",
+            "exotic": "stonehearth_ace:trapper:clamp_trap"
          }
       },
       "stonehearth_ace:output": {}
