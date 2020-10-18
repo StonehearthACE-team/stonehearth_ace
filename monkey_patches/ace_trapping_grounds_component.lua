@@ -1,7 +1,9 @@
 local Point3 = _radiant.csg.Point3
 local Cube3 = _radiant.csg.Cube3
 local Region3 = _radiant.csg.Region3
+local rng = _radiant.math.get_default_rng()
 local log = radiant.log.create_logger('trapping')
+local WeightedSet = require 'stonehearth.lib.algorithms.weighted_set'
 local TrappingGroundsComponent = require 'stonehearth.components.trapping.trapping_grounds_component'
 
 local AceTrappingGroundsComponent = class()
