@@ -107,6 +107,12 @@
             "mason_house": {
                "display_name": "Mason House"
             },
+            "shepherd_coop_t1_ace": {
+               "display_name": "⛺ Shepherd's Small Shelter"
+            },
+            "shepherd_barn_t1_ace": {
+               "display_name": "⛺ Shepherd's Animal Barn"
+            },
             "shepherd_coop_t2_ace": {
                "display_name": " 🏘️ Shepherd's Small Shelter"
             },
@@ -3131,6 +3137,10 @@
       "build": {
          "building_brushes": {
             "patterns": {
+					"red_slate_peaked_roof": "A stone roof made of Light Volcano, Volcano, and Rustic Red.",
+					"blue_slate_peaked_roof": "A stone roof made of Bahama Blue, Regal Blue, and Dark Regal Blue.",
+					"castle_roof": "A stone castle roof made of Tuna, Shuttle Grey, and Mid Grey.",
+					"slate_peaked_roof": "A stone roof made of Slate Dark, Slate Shade, Slate, and Slate Light.",
                "thatch_peaked_roof": "A thatch roof made of Pesto, Lemon Ginger, Yukon Gold, and Antique Brass.",
                "thatch_light_peaked_roof": "A thatch roof made of Sandal, Muesli and Shadow.",
                "dry_turf_peaked_roof": "A thatch roof made of Pale Grass, Dry Turf, Dark Turf, and Stomped Path.",
@@ -3148,7 +3158,12 @@
                "#626139": "Pale Grass",
                "#54533A": "Dry Turf",
                "#4E4C33": "Dark Turf",
-               "#464530": "Stomped Path"
+               "#464530": "Stomped Path",
+					"#7B6157": "Light Congo Brown",
+					"#292C2D": "Slate Dark",
+					"#333637": "Slate Shade",
+					"#373B3D": "Slate",
+					"#3D4144": "Slate Light"
             }
          }
       }
@@ -6200,7 +6215,7 @@
                "rc_recipe_name": "Summer Work Turban",
                "description": "Simple and efficient. Protects from hot weather and sunstrokes.",
                "na_description": "Simple and efficient. Protects the wearer from sunstrokes.",
-               "flavor": "This item can only be equipped by workers and other civillians that work outside, like Shepherds, Farmers or Trappers"
+               "flavor": "This item can only be equipped by workers and other civillians that work mostly outside, like Shepherds, Farmers or Trappers"
             },
             "sunstroke_crafter_outfit_recipe": {
                "recipe_name": "Summer Felt Crafter Hat",
@@ -6208,7 +6223,7 @@
                "rc_recipe_name": "Summer Crafter Fez",
                "description": "A finely tailored hat. Protects from hot weather and sunstrokes.",
                "na_description": "A finely tailored hat. Protects the wearer from sunstrokes.",
-               "flavor": "This item can only be equipped by civillian crafters, like Carpenters, Blacksmiths or Cooks"
+               "flavor": "This item can only be equipped by main civillian crafters that work inside, like Carpenters, Blacksmiths or Cooks"
             },
             "freezing_field_work_outfit_recipe": {
                "recipe_name": "Field Worker Comfy Hood",
@@ -6216,7 +6231,7 @@
                "na_recipe_name": "Field Worker Comfy Cowl",
                "description": "A warm, decorated hood. Protects from freezing weather.",
                "rc_description": "A decorated hood. Protects from cold weather.",
-               "flavor": "This item can only be equipped by civillians that work outside, like Shepherds, Farmers or Trappers"
+               "flavor": "This item can only be equipped by civillians that work mostly outside, like Shepherds, Farmers or Trappers"
             },
             "freezing_crafter_outfit_recipe": {
                "recipe_name": "Crafter Woven Scarf",
@@ -6224,7 +6239,7 @@
                "na_recipe_name": "Crafter Adorned Shawl",
                "description": "A fuzzy and ornate wool scarf. Protects from freezing weather.",
                "rc_description": "An ornate wool scarf. Protects from cold weather.",
-               "flavor": "This item can only be equipped by civillian crafters, like Carpenters, Blacksmiths or Cooks"
+               "flavor": "This item can only be equipped by main civillian crafters that work inside, like Carpenters, Blacksmiths or Cooks"
             },
             "freezing_combat_outfit_recipe": {
                "recipe_name": "Combatant Fur Cloak",
@@ -11191,7 +11206,7 @@
             },
             "fruit_yogurt_serving": {
                "display_name": "Serving of Fruit Yogurt",
-               "description": "Best served cold."
+               "description": "Sour or sweet?"
             }
          },
          "cereals_corn": {
@@ -14271,6 +14286,12 @@
             },
             "crafter_menu": {
                "items": {
+                  "engineer": {
+                     "description": "Make contraptions and defensive weaponry."
+                  },
+                  "geomancer": {
+                     "description": "Imbue summoning stones and golems."
+                  },
                   "artificer": {
                      "display_name": "Artificer Craft Menu",
                      "description": "Build wooden furniture and decor.",
@@ -14283,7 +14304,7 @@
                   },
                   "brewer": {
                      "display_name": "Brewer Craft Menu",
-                     "description": "Provides the town with beverages and joy",
+                     "description": "Provides the town with beverages and joy.",
                      "required_job_text": "Requires a brewer"
                   }
                }
@@ -14292,50 +14313,50 @@
                "items": {
                   "harvest_and_replant": {
                      "display_name": "Gather & Replant",
-                     "description": "Gather trees, plants, and stones from the surface of the land, replanting when possible.",
+                     "description": "Gather trees, plants, and stones from the surface of the land, replanting when possible",
                      "tip_title": "Click and drag to harvest resources",
                      "tip_description": "Right click to exit this mode"
                   },
                   "box_move": {
                      "display_name": "Move Items",
                      "description": "Move items to another location",
-                     "tip_title": "Click and drag to select the items to move, then click new locations for each of them as prompted.",
+                     "tip_title": "Click and drag to select the items to move, then click new locations for each of them as prompted",
                      "tip_description": "Right click to exit this mode"
                   },
                   "box_undeploy": {
                      "display_name": "Undeploy Items",
-                     "description": "Undeploy these items and return them to a stockpile.",
-                     "tip_title": "Click and drag to select the items to undeploy.",
+                     "description": "Undeploy these items and return them to a stockpile",
+                     "tip_title": "Click and drag to select the items to undeploy",
                      "tip_description": "Right click to exit this mode"
                   },
                   "box_cancel_placement": {
                      "display_name": "Cancel Placement",
-                     "description": "Cancel placement or building of the ghost forms of items.",
-                     "tip_title": "Click and drag to select the ghost items to cancel.",
+                     "description": "Cancel placement or building of the ghost forms of items",
+                     "tip_title": "Click and drag to select the ghost items to cancel",
                      "tip_description": "Right click to exit this mode"
                   },
                   "box_enable_auto_harvest": {
                      "display_name": "Enable Auto-Harvest",
-                     "description": "Enable auto-harvesting of renewable resources that you own (you'll still need to instruct your hearthlings to harvest them).",
-                     "tip_title": "Click and drag to select renewable resources you own to enable auto-harvesting.",
+                     "description": "Enable auto-harvesting of renewable resources that you own (you'll still need to instruct your hearthlings to harvest them)",
+                     "tip_title": "Click and drag to select renewable resources you own to enable auto-harvesting",
                      "tip_description": "Right click to exit this mode"
                   },
                   "box_disable_auto_harvest": {
                      "display_name": "Disable Auto-Harvest",
-                     "description": "Disable auto-harvesting of renewable resources that you own.",
-                     "tip_title": "Click and drag to select renewable resources you own to disable auto-harvesting.",
+                     "description": "Disable auto-harvesting of renewable resources that you own",
+                     "tip_title": "Click and drag to select renewable resources you own to disable auto-harvesting",
                      "tip_description": "Right click to exit this mode"
                   },
                   "box_forage": {
                      "display_name": "Forage",
-                     "description": "Look for natural resources in this area.",
-                     "tip_title": "Click and drag to mark the area to search.",
-                     "tip_description": "Right click to exit this mode"
+                     "description": "Look for natural resources in this area",
+                     "tip_title": "Click and drag to mark the area to search",
+                     "tip_description": "Minimum search area is 20 x 20<br/>Higher wilderness will provide better results<br/>Right click to exit this mode"
                   },
                   "box_hunt": {
                      "display_name": "Hunt",
-                     "description": "Mark specific animals for hunting.",
-                     "tip_title": "Click and drag to mark them.",
+                     "description": "Mark specific animals for hunting",
+                     "tip_title": "Click and drag to mark them",
                      "tip_description": "Right click to exit this mode"
                   }
                }

@@ -1,0 +1,29 @@
+{
+   "type" : "effect",
+   "tracks": {
+      "animation": {
+         "type": "animation_effect",
+         "start_time": 0,
+         "animation": "emote_cute.json",
+         "loop": false,
+         "response_frame": 20
+      },
+      "sound": {
+         "type": "sound_effect",
+         "duration": 2000,
+         "start_time": 200,
+         "min_distance": 80,
+         "falloff" : 7,
+         "volume": 80,
+         "track" : {
+            "type": "one_of",
+            "items": [
+               "stonehearth_ace:sounds:oinker:oinklet_02",
+               "stonehearth_ace:sounds:oinker:oink_01",
+					"stonehearth_ace:sounds:oinker:oink_02",
+					"stonehearth_ace:sounds:oinker:oink_03"
+            ]    
+         }
+      }
+   }
+}
