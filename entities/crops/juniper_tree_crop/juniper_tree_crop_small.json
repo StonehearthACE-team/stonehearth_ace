@@ -1,0 +1,16 @@
+{
+  "type": "entity",
+  "mixins": [
+    "stonehearth:trees:juniper:small"
+  ],
+  "components": {
+    "mixintypes": {
+      "stonehearth:entity_forms": "remove"
+    }
+  },
+  "entity_data": {
+    "stonehearth:evolve_data": {
+      "next_stage": "stonehearth_ace:crops:juniper_tree_crop:medium"
+    }
+  }
+}

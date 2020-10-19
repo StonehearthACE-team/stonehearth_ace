@@ -1,15 +1,32 @@
 {
    "components": {
+      "model_variants": {
+         "default": {
+            "mixintypes": {"models": "override"},
+            "models": [
+               "file(cactus_tree_4.qb)"
+            ]
+         },
+         "cactus_tree_4": {
+            "mixintypes": {"models": "override"},
+            "models": [
+               "file(cactus_tree_4.qb)"
+            ]
+         }
+      },
       "render_info": {
-         "scale": 0.2
+         "scale": 0.15
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": -0.1, "z": 0 }
       },
       "stonehearth:crop": {
          "megacrop_chance": 0,
          "auto_harvest": "place"
       },
-	  "stonehearth:growing": {
-			"growth_period": "36h",
-			"preferred_climate": "desert_complex"
+     "stonehearth:growing": {
+         "growth_period": "36h",
+         "preferred_climate": "desert_complex"
       }
    }
 }

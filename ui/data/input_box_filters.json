@@ -498,19 +498,26 @@
                "filter": "resource herb silkweed"
             },
             "silkweed": {
-               "display_name": "i18n(stonehearth_ace:entities.resources.fiber.silkweed_bundle.display_name)"
+               "display_name": "i18n(stonehearth_ace:entities.resources.fiber.silkweed_bundle.display_name)",
+               "filter": "fiber resource plant silkweed"
+            },
+            "tumbleweed": {
+               "filter": "fiber resource plant tumbleweed"
+            },
+            "wintermoss": {
+               "filter": "fiber resource plant wintermoss"
             },
             "dwarfsbeard": {
                "ordinal": 4.21,
                "display_name": "i18n(stonehearth_ace:entities.resources.fiber.dwarfsbeard_bundle.display_name)",
                "icon": "/stonehearth_ace/entities/resources/fiber/dwarfsbeard_bundle/dwarfsbeard_bundle.png",
-               "filter": "resource plant dwarfsbeard"
+               "filter": "fiber resource plant dwarfsbeard"
             },
             "cotton": {
                "ordinal": 4.22,
                "display_name": "i18n(stonehearth_ace:entities.resources.fiber.cotton_bundle.display_name)",
                "icon": "/stonehearth_ace/entities/resources/fiber/cotton_bundle/cotton_bundle.png",
-               "filter": "resource plant cotton"
+               "filter": "fiber resource plant cotton"
             },
             "any_algae": {
                "ordinal": 4.5,

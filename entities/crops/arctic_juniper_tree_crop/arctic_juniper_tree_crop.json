@@ -15,13 +15,7 @@
          },
          "arctic_juniper_tree_1": {
             "models": [
-               {
-                  "type": "one_of",
-                  "items": [
-                     "/stonehearth/entities/trees/juniper_tree_snowy/seed/tree_juniper_seed_iconic.qb",
-                     "/stonehearth/entities/trees/juniper_tree_gold/seed/tree_juniper_seed_iconic.qb"
-                  ]
-               }
+               "file(../juniper_tree_crop/juniper_tree_crop_1.qb)"
             ]
          },
          "arctic_juniper_tree_2": {
@@ -59,10 +53,10 @@
          }
       },
       "render_info": {
-         "scale": 0.2
+         "scale": 0.21
       },
       "mob": {
-         "model_origin": { "x": -0.05, "y": 0, "z": 0.05 },
+         "model_origin": { "x": -0.105, "y": -0.1, "z": 0.105 },
          "mob_collision_type": "clutter"
       },
       "stonehearth:crop": {

@@ -1,50 +1,72 @@
-{	
-	"components": {
-		"stonehearth:loot_drops": {
+{  
+   "components": {
+      "stonehearth:loot_drops": {
          "entries": {
             "beehive": {
                "num_rolls": {
-						"min": 0,
-						"max": 0
-					}
+                  "min": 0,
+                  "max": 0
+               }
             },
-				"bough_bale": {
+            "bough_bale": {
                "num_rolls": {
-						"min": 0,
-						"max": 0
-					}
+                  "min": 0,
+                  "max": 0
+               }
             },
             "maybe_bough_bale": {
-					"num_rolls": {
-						"min": 0,
-						"max": 0
-					}
+               "num_rolls": {
+                  "min": 0,
+                  "max": 0
+               }
             }
          }
       },
-		"stonehearth:seasonal_model_switcher": {
+      "stonehearth:seasonal_model_switcher": {
          "*": {
             "spring": "spring",
             "summer": "default",
             "autumn": "autumn",
             "winter": "winter"
          }
-      }	
-	},
-	"entity_data": {
-		"stonehearth:stump_data": {
-			"stump_alias": "stonehearth_ace:trees:cactus:small:stump"
-		},
+      },
+      "mob": {
+         "mixintypes": {"align_to_grid": "remove"},
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      },
+      "destination": {
+         "mixintypes": {"region": "override"},
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 2, "y": 1, "z": 2 }
+            }
+         ]
+      },
+      "region_collision_shape": {
+         "mixintypes": {"region": "override"},
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 2, "y": 3, "z": 2 }
+            }
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:stump_data": {
+         "stump_alias": "stonehearth_ace:trees:cactus:small:stump"
+      },
       "stonehearth_ace:replant_data": {
          "seed_alias": "stonehearth:trees:cactus:seed",
-			"sapling_alias": "stonehearth:trees:cactus:sapling"
+         "sapling_alias": "stonehearth:trees:cactus:sapling"
       },
-		"stonehearth:evolve_data": {
+      "stonehearth:evolve_data": {
          "biomes": {
-				"stonehearth:biome:temperate": {
+            "stonehearth:biome:temperate": {
                "evolve_time_multiplier": 2
             },
-				"stonehearth_ace:biome:highlands": {
+            "stonehearth_ace:biome:highlands": {
                "evolve_time_multiplier": 3
             },
             "stonehearth:biome:arctic": {
@@ -52,10 +74,10 @@
             }
          },
          "seasons": {
-				"spring": {
+            "spring": {
                "evolve_time_multiplier": 1.5
             },
-				"autumn": {
+            "autumn": {
                "evolve_time_multiplier": 2
             },
             "winter": {
@@ -63,5 +85,5 @@
             }
          }
       }
-	}
+   }
 }
