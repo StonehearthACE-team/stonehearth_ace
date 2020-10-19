@@ -2,6 +2,7 @@
 local Material = require 'stonehearth.components.material.material'
 local Inventory = require 'stonehearth.services.server.inventory.inventory'
 local AceInventory = class()
+local log = radiant.log.create_logger('inventory')
 
 AceInventory._ace_old__pre_activate = Inventory._pre_activate
 function AceInventory:_pre_activate()

@@ -6,7 +6,7 @@ GotoPriorityCareBed.args = {}
 GotoPriorityCareBed.priority = 1.0
 
 local function make_is_available_bed_filter()
-   return stonehearth.ai:filter_from_key('stonehearth:rest_from_injuries:rest_in_bed', 'none', function(target)
+   return stonehearth.ai:filter_from_key('stonehearth:rest_from_injuries:rest_in_bed', 'priority_care', function(target)
          local bed_data = radiant.entities.get_entity_data(target, 'stonehearth:bed')
          if bed_data and bed_data.priority_care and not target:add_component('stonehearth:mount'):is_in_use() then
             return true

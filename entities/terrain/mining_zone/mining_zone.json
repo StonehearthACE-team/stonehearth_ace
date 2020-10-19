@@ -1,0 +1,19 @@
+{
+   "components": {
+      "stonehearth_ace:auto_io": {
+         "output": true
+      },
+      "stonehearth_ace:output": {},
+      "stonehearth_ace:connection": {
+         "i_o": {
+            "connectors": {
+               "mining_region": {
+                  "region_component": "stonehearth:mining_zone",
+                  "max_connections": 4
+               }
+            },
+            "max_connections": 4
+         }
+      }
+   }
+}

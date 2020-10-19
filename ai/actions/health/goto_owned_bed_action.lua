@@ -8,7 +8,7 @@ GotoOwnedBed.priority = 0.75
 function GotoOwnedBed:start_thinking(ai, entity, args)
    local entity_id = entity:get_id()
 
-   local filter_fn = stonehearth.ai:filter_from_key('stonehearth:rest_from_injuries:rest_in_bed', 'none', function(target)
+   local filter_fn = stonehearth.ai:filter_from_key('stonehearth:rest_from_injuries:rest_in_bed', 'owned', function(target)
       local bed_data = radiant.entities.get_entity_data(target, 'stonehearth:bed')
       if bed_data and not bed_data.priority_care and not target:add_component('stonehearth:mount'):is_in_use() then
          local ownable_component = target:get_component('stonehearth:ownable_object')

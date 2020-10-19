@@ -26,6 +26,7 @@ function item_io_lib.try_output(items, inputs, options)
    local successes = {}
    local fails = {}
    options = options or {}
+   local location = options.location
 
    local ranked_inputs = item_io_lib._rank_inputs(inputs)
    item_io_lib._output_to_inputs(items, ranked_inputs, successes, fails)
@@ -51,7 +52,7 @@ function item_io_lib.try_output(items, inputs, options)
       if #ranked_inputs > 0 then
          items = fails
          fails = {}
-         item_io_lib._output_to_inputs(items, ranked_inputs, successes, fails)
+         item_io_lib._output_to_inputs(items, ranked_inputs, successes, fails, location)
       end
       
       output = output_comp:get_parent_output()
@@ -82,10 +83,10 @@ function item_io_lib.try_output(items, inputs, options)
    }
 end
 
-function item_io_lib._output_to_inputs(items, inputs, successes, fails)
+function item_io_lib._output_to_inputs(items, inputs, successes, fails, location)
    for id, item in pairs(items) do
       for _, input in ipairs(inputs) do
-         if input:try_input(item) then
+         if input:try_input(item, location) then
             successes[id] = item
             break
          end
@@ -105,9 +106,10 @@ function item_io_lib.can_output(items, inputs, options)
    local successes = {}
    local fails = {}
    options = options or {}
+   local location = options.location
 
    local ranked_inputs = item_io_lib._rank_inputs(inputs)
-   item_io_lib._can_output_to_inputs(items, ranked_inputs, successes, fails)
+   item_io_lib._can_output_to_inputs(items, ranked_inputs, successes, fails, location)
    
    local prev_outputs = {}
    local output = options.output
@@ -130,7 +132,7 @@ function item_io_lib.can_output(items, inputs, options)
       if #ranked_inputs > 0 then
          items = fails
          fails = {}
-         item_io_lib._can_output_to_inputs(items, ranked_inputs, successes, fails)
+         item_io_lib._can_output_to_inputs(items, ranked_inputs, successes, fails, location)
       end
       
       output = output_comp:get_parent_output()
@@ -152,10 +154,10 @@ function item_io_lib.can_output(items, inputs, options)
    end
 end
 
-function item_io_lib._can_output_to_inputs(items, inputs, successes, fails)
+function item_io_lib._can_output_to_inputs(items, inputs, successes, fails, location)
    for id, item in pairs(items) do
       for _, input in ipairs(inputs) do
-         local result = input:can_input(item)
+         local result = input:can_input(item, location)
          if result then
             successes[id] = {
                output = function()
@@ -163,7 +165,7 @@ function item_io_lib._can_output_to_inputs(items, inputs, successes, fails)
                   -- first destroy the space reservation
                   result.destroy()
                   -- then force input the item
-                  input:try_input(item, true)
+                  input:try_input(item, location, true)
                end
             }
             break

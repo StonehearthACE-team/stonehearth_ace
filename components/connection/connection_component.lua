@@ -125,8 +125,8 @@ function ConnectionComponent:_get_extrusions_key(extrusions)
    if extrusions then
       for _, dim in ipairs({'x', 'y', 'z'}) do
          local extrusion = extrusions[dim]
-         if extrusion then
-            key = key .. dim .. extrusion[0] .. ',' .. extrusion[1] .. '|'
+         if extrusion and #extrusion == 2 then
+            key = key .. dim .. extrusion[1] .. ',' .. extrusion[2] .. '|'
          end
       end
    end
@@ -183,30 +183,36 @@ function ConnectionComponent:_get_region_trace(type, name, connector, get_only)
                   local specific_region = trace.region
                   if extrusions then
                      for dim, args in pairs(extrusions) do
-                        specific_region = specific_region:extruded(dim, args[0], args[1])
+                        if #args == 2 then
+                           specific_region = specific_region:extruded(dim, args[1], args[2])
+                        end
                      end
                   end
-                  trace.regions[extr_key] = specific_region
+                  trace.extrusion_regions[extr_key] = specific_region
                end
             end
          end
          update_region()
 
+         connector.region = Region3(trace.extrusion_regions[extrusions_key])
          trace.update_region = update_region
          trace.trace = region:trace('dynamic connection region')
             :on_changed(function()
-               if self._entity:is_valid() then
+               if not self._entity:is_valid() then
+                  trace.trace:destroy()
+               else
                   update_region()
-                  log:debug('updated %s trace region to %s', key, trace.regions:get_bounds())
+                  log:debug('updated %s trace region to %s', key, trace.region:get_bounds())
                   --trace.regions[extrusions_key]:optimize('dynamic connection region')
 
                   for _, conn in pairs(trace.connectors) do
                      log:debug('updating connector %s|%s|%s', self._entity, conn.type, conn.name)
-                     conn.connector.region = Region3(trace.regions[conn.connector.extrusions_key])
-                     self.__saved_variables:mark_changed()
+                     conn.connector.region = Region3(trace.extrusion_regions[conn.connector.extrusions_key])
 
                      stonehearth_ace.connection:update_connector(self._entity, conn.type, conn.connection_max_connections, conn.name, conn.connector)
                   end
+
+                  self.__saved_variables:mark_changed()
                end
             end)
       end
@@ -295,8 +301,6 @@ function ConnectionComponent:_setup_dynamic_connector(type, connection_max_conne
       name = name,
       connector = connector
    }
-
-   connector.region = trace.region
 
    local connections = self._sv.dynamic_connections[type]
    if not connections then

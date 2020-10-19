@@ -6,6 +6,29 @@ local log = radiant.log.create_logger('mining')
 
 local AceMiningZoneComponent = class()
 
+function AceMiningZoneComponent:set_region(region)
+   region:modify(function(cursor)
+         cursor:optimize('new mining zone region')
+      end)
+
+   -- if the region object already exists, simply copy the region into it
+   if self._sv.region then
+      self._sv.region:modify(function(cursor)
+            cursor:copy_region(region)
+         end)
+   else
+      self._sv.region = region
+   end
+   self:_trace_region()
+   self:_on_region_changed()
+   self.__saved_variables:mark_changed()
+
+   -- have the collision shape use the same region
+   self._collision_shape_component:set_region(self._sv.region)
+
+   return self
+end
+
 -- point is in world space
 -- need to override to handle loot quantity/quality properly when doubling loot from strength town bonus
 function AceMiningZoneComponent:mine_point(point)
