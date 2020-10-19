@@ -263,7 +263,7 @@ function PlayerConnections:_register_connector(entity, type, connection_max_conn
    connect.entity_id = entity_id
    connect.connection = type
    connect.region = connector.region
-   connect.region_area = connector.region:get_area()
+   connect.region_area = connector.region and connector.region:get_area() or 0
    connect.region_intersection_threshold = connector.region_intersection_threshold or 0
    
    connect.num_connections = connect.num_connections or 0
@@ -272,7 +272,7 @@ function PlayerConnections:_register_connector(entity, type, connection_max_conn
    
    self._connectors[connector_id] = connect
 
-   log:debug('registered connector %s with region %s', connector_id, connect.region:get_bounds())
+   log:debug('registered connector %s with region %s', connector_id, connect.region and connect.region:get_bounds() or '[nil]')
 
    return connect
 end
@@ -1010,7 +1010,7 @@ function PlayerConnections:_update_connector_locations(entity_struct, new_locati
             if not only_connector or only_connector == connector_id then
                local connector = self._connectors[connector_id]
                --log:debug('rotating region %s by %s°, then translating by %s', connector.region, new_rotation, new_location or '[NIL]')
-               if new_location then
+               if new_location and connector.region then
                   connector.trans_region = radiant.entities.local_to_world(connector.region, entity_struct.entity)   --:translated(connection.origin_offset)
                   -- connector.trans_region = rotate_region(connector.region, connection.origin_offset, new_rotation, entity_struct.align_x, entity_struct.align_z)
                   --       :translated(new_location)

@@ -68,6 +68,7 @@ end
 
 function HealEntityWithMagic:start_thinking(ai, entity, args)
    local set_ready = function()
+         self:_destroy_timers()
          local player_id = radiant.entities.get_work_player_id(entity)
          ai:set_think_output({
             filter_healable_entity = make_is_healable_entity_filter(player_id)
@@ -102,6 +103,10 @@ function HealEntityWithMagic:start_thinking(ai, entity, args)
 end
 
 function HealEntityWithMagic:stop_thinking(ai, entity, args)
+   self:_destroy_timers()
+end
+
+function HealEntityWithMagic:_destroy_timers()
    self:_destroy_cooldown_timer()
    self:_destroy_medic_capabilities_changed_listener()
 end

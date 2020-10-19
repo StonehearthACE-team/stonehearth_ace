@@ -10,6 +10,7 @@ function InputComponent:initialize()
    -- if no default priority, set it to an arbitrary negative value
    -- this way non-prioritized inputs are always sorted in a reliable (if somewhat arbitrary) order
    self._sv._priority = self._json.priority or -self._entity:get_id()
+   self._sv._max_distance = self._json.max_distance
    self._sv.require_matching_filter = self._json.require_matching_filter
 end
 
@@ -21,9 +22,18 @@ function InputComponent:set_priority(priority)
    self._sv._priority = priority
 end
 
-function InputComponent:try_input(item, force_add)
+function InputComponent:set_max_distance(distance)
+   self._sv._max_distance = distance
+end
+
+function InputComponent:try_input(item, location, force_add)
    local storage = self._entity:get_component('stonehearth:storage')
    if storage then
+      -- if a location is specified and there's a max_distance for this input to collect from, cancel out
+      if location and self._sv._max_distance and radiant.entities.distance_between(location, self._entity) > self._sv._max_distance then
+         return
+      end
+
       -- if it has an iconic form, use that
       local entity_forms = item:get_component('stonehearth:entity_forms')
       if entity_forms then
@@ -55,7 +65,7 @@ function InputComponent:try_input(item, force_add)
 end
 
 -- either returns nil for a failed attempt, or returns a "lease" on a storage space
-function InputComponent:can_input(item)
+function InputComponent:can_input(item, location)
    local storage = self._entity:get_component('stonehearth:storage')
    if storage then
       -- if it has an iconic form, use that
