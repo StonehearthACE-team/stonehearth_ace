@@ -1,0 +1,26 @@
+{
+   "type": "recipe",
+   "effort": 15,
+   "work_units": 1,
+   "recipe_name": "i18n(stonehearth_ace:jobs.shepherd.recipes.cream_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.shepherd.recipes.cream_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.shepherd.recipes.cream_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/dairy/cream/cream.png",
+   "workshop": "stonehearth_ace:shepherd:churn",
+   "work_effect": "fiddle",
+   "level_requirement": 4,
+   "ingredients": [
+      {
+         "material": "drink_container milk",
+         "count": 3
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:dairy:cream"
+      },
+		{
+         "item": "stonehearth_ace:food:dairy:cream"
+      }
+   ]
+}

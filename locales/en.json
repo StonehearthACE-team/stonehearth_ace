@@ -107,11 +107,17 @@
             "mason_house": {
                "display_name": "Mason House"
             },
+            "shepherd_home_t1_ace": {
+               "display_name": "⛺ Shepherd's Homestead"
+            },
             "shepherd_coop_t1_ace": {
                "display_name": "⛺ Shepherd's Small Shelter"
             },
             "shepherd_barn_t1_ace": {
                "display_name": "⛺ Shepherd's Animal Barn"
+            },
+            "shepherd_home_t2_ace": {
+               "display_name": " 🏘️ Shepherd's Workshop"
             },
             "shepherd_coop_t2_ace": {
                "display_name": " 🏘️ Shepherd's Small Shelter"
@@ -2070,12 +2076,12 @@
                "description": "Make this bed a little more comfortable by adding some thatch to it!"
             },
             "cheese_vat_fill": {
-               "display_name": "Fill Cheese Vat",
-               "description": "Order the Cook to pour a curdling mixture in this cheese vat to start the production of cheese!"
+               "display_name": "Make Cheese",
+               "description": "Order the Shepherd to pour a curdling mixture in this cheese vat to start the production of cheese!"
             },
             "cheese_vat_drain": {
                "display_name": "Drain Cheese Vat",
-               "description": "Order the Cook to remove the leftover whey and treat the curds, forming fresh cheese!"
+               "description": "Order the Shepherd to remove the leftover whey and treat the curds, forming fresh cheese!"
             },
             "carve_furniture": {
                "display_name": "Carve Furniture",
@@ -2162,6 +2168,10 @@
             "wine_cask_fill_vinegar": {
                "display_name": "Produce Vinegar from Wine",
                "description": "Order the Brewer to fill this fermenting cask with any wine. The existing drink will then turn into three jugs of vinegar! The Cask will continue producing Vinegar unless a new command is given."
+            },
+            "cheese_vat_fill_cream": {
+               "display_name": "Make Sour Cream",
+               "description": "Order the Shepherd to pour a bowl of cream in this cheese vat to let it ferment into sour cream after a day or two."
             }
          },
          "slaughter": {
@@ -4233,7 +4243,7 @@
       },
       "potter": {
          "recipes": {
-				"rc_shepherds_crook_recipe": {
+            "rc_shepherds_crook_recipe": {
                "flavor": "The herding of animals in the desert is a tradition coming for as long as the children of Rayya have been walking these dunes"
             },
             "present_small_recipe": {
@@ -4469,16 +4479,6 @@
                "description": "Hearthlings can put kibble in this clay bowl for their pets to eat.",
                "flavor": "Often lost by pet owners with lawns"
             },
-            "pasture_bed_small_recipe": {
-               "recipe_name": "Small Pasture Bedding",
-               "description": "Small pasture animals will go to these during the night or bad weather, place them under shelter.",
-               "flavor": "Must be placed inside a pasture. Small animals include poyos and rabbits"
-            },
-            "pasture_bed_recipe": {
-               "recipe_name": "Pasture Bedding",
-               "description": "Large pasture animals will go to these during the night or bad weather, place them under shelter.",
-               "flavor": "Must be placed inside a pasture. Large animals include sheep, ostriches and moo-moos"
-            },
             "tall_urn_recipe": {
                "recipe_name": "Tall Urn",
                "description": "For compactly storing up to 64 items.",
@@ -4667,7 +4667,7 @@
             "bone_weapons_armor_name": "Weapons & Armor, Bone Carving",
             "bone_furniture_name": "Furniture & Decoration, Bone Carving",
             "bone_building_parts_name": "Building Parts, Bone Carving",
-				"na_shepherds_crook_recipe": {
+            "na_shepherds_crook_recipe": {
                "flavor": "Sooner or later winter will come - and you'll need wool and hides..."
             },
             "present_small_recipe": {
@@ -4904,16 +4904,6 @@
                "recipe_name": "Stone Kibble Bowl",
                "description": "Hearthlings can put kibble in this stone bowl for their pets to eat.",
                "flavor": "Heavy enough to not be moved around... much"
-            },
-            "pasture_bed_small_recipe": {
-               "recipe_name": "Small Pasture Bedding",
-               "description": "Small pasture animals will go to these during the night or bad weather, place them under shelter.",
-               "flavor": "Small animals include poyos and rabbits"
-            },
-            "pasture_bed_recipe": {
-               "recipe_name": "Pasture Bedding",
-               "description": "Large pasture animals will go to these during the night or bad weather, place them under shelter.",
-               "flavor": "Large animals include sheep, ostriches and moo-moos"
             },
             "firepit_small_recipe": {
                "recipe_name": "Small Firepit",
@@ -5514,26 +5504,11 @@
          "recipes": {
             "food_preparation_name": "Preparation",
             "brewing_name": "Brewing Ingredients",
-            "animal_feed_name": "Pet Kibble & Pasture Animal Feed",
-            "cook_cheese_vat_recipe": {
-               "recipe_name": "Cheese Vat",
-               "description": "The Cook or Shepherd can use this to make cheese by crafting curdling mixtures. The longer it rests the more valuable it gets.",
-               "flavor": "You can harvest the cheese at any time during the maturation process"
-            },
-            "curdling_mixture_recipe": {
-               "recipe_name": "Curdling Mixture",
-               "description": "A fermentation mixture of milk and some other additives. Within a cheese vat this can be turned into cheese!",
-               "flavor": "Vinegar can be provided by the Brewer"
-            },
+            "animal_feed_name": "Pet Kibble",
             "cereals_corn_recipe": {
                "recipe_name": "Bowl of Corn Cereal",
                "description": "Pour milk on top of delicious baked flakes of corn.",
                "flavor": "'Cereal first, milk afterwards. It is the natural order.' - Sir Edwin Butterfingers"
-            },
-            "butter_recipe": {
-               "recipe_name": "Slab of Butter",
-               "description": "Churn a creamy and flavorful paste that is often used as a cooking ingredient.",
-               "flavor": "With bread it goes like bread and... Eh, nevermind"
             },
             "nutty_poultry_recipe": {
                "recipe_name": "Stirred Poultry & Nuts",
@@ -5549,6 +5524,11 @@
                "recipe_name": "Fruit Yogurt",
                "description": "Fermented, creamy milk sweetened with sugar and fruits.",
                "flavor": "A family favorite"
+            },
+            "ice_cream_recipe": {
+               "recipe_name": "Ice Cream",
+               "description": "A quite flavorful and extremely refreshing summer favorite.",
+               "flavor": "Careful, it melts in a couple of days!"
             },
             "pie_cherry_recipe": {
                "recipe_name": "Sweet Cherry Pie",
@@ -5805,42 +5785,6 @@
                "description": "Store a large amount of thatching for later use.",
                "flavor": ""
             },
-            "rabbit_feed_recipe": {
-               "recipe_name": "Rabbit Feed (x3)",
-               "description": "Selected carrots for rabbits. Improves the quality of animal produce."
-            },
-            "poyo_feed_recipe": {
-               "recipe_name": "Poyo Feed (x3)",
-               "description": "Nicely milled food for poyos. Improves the quality of animal produce."
-            },
-            "duck_feed_recipe": {
-               "recipe_name": "Duck Feed (x3)",
-               "description": "Grain and seeds for ducks. Improves the quality of animal produce.",
-               "flavor": "Really good quack-lity food"
-            },
-            "oinker_feed_recipe": {
-               "recipe_name": "Oinker Feed (x3)",
-               "description": "A bit of anything, really. Improves the quality of animal produce."
-            },
-            "sheep_feed_recipe": {
-               "recipe_name": "Sheep Feed (x3)",
-               "description": "Tasty grasses for sheep. Improves the quality of animal produce."
-            },
-            "fodder_recipe": {
-               "recipe_name": "Animal Fodder (x4)",
-               "description": "Cheap and efficient for feeding animals, even if not exactly their favorite food...",
-               "flavor": ""
-            },
-            "ostrich_feed_recipe": {
-               "recipe_name": "Ostrich Feed (x3)",
-               "description": "A nutritious supplement for ostriches. Improves the quality of animal produce.",
-               "flavor": ""
-            },
-            "moomoo_feed_recipe": {
-               "recipe_name": "Moo-Moo Feed (x3)",
-               "description": "Tasty and hearty food appreciated by large ruminants. Improves the quality of animal produce.",
-               "flavor": ""
-            },
             "kibble_recipe": {
                "recipe_name": "Kibble (x5)",
                "description": "Bake simple, basic rations for pets. All animals will eat this kibble.",
@@ -5905,30 +5849,6 @@
                "display_name": "Pumpkin Cauldron",
                "description": "An exotic cauldron used for delicious recipes. Requires lower grade fuel."
             }
-         },
-         "cook_cheese_vat_empty": {
-            "display_name": "Empty Cheese Vat",
-            "description": "Used by the Cook or Shepherd to make cheese. The longer it rests, the better!"
-         },
-         "cook_cheese_vat_filled": {
-            "display_name": "Curdling Cheese Vat",
-            "description": "The milk is curdling and shall take some time before it can be drained and formed."
-         },
-         "cook_cheese_vat_curdled": {
-            "display_name": "Curdled Cheese Vat",
-            "description": "Curds have formed. Drain the leftover whey or harvest for Cottage Cheese."
-         },
-         "cook_cheese_vat_cheese_fresh": {
-            "display_name": "Fresh Cheese Vat",
-            "description": "Fresh cheese has formed! Harvest it or let it mature some more."
-         },
-         "cook_cheese_vat_cheese_mild": {
-            "display_name": "Mild Cheese Vat",
-            "description": "Mild cheese has formed! Harvest it or let it mature even more for a lot of time."
-         },
-         "cook_cheese_vat_cheese_aged": {
-            "display_name": "Aged Cheese Vat",
-            "description": "This cheese is quite mature, firm and flavorful! It is time to harvest this delicacy."
          },
          "cook_spoon_copper": {
             "display_name": "Cook's Copper Spoon",
@@ -6061,16 +5981,6 @@
                "recipe_name": "Wooden Kibble Bowl",
                "description": "Hearthlings can put kibble in this wooden bowl for their pets to eat.",
                "flavor": "Hopefully they won't make much of a mess..."
-            },
-            "pasture_bed_small_recipe": {
-               "recipe_name": "Small Pasture Bedding",
-               "description": "Small pasture animals will go to these during the night or bad weather, place them under shelter.",
-               "flavor": "Small animals include poyos and rabbits"
-            },
-            "pasture_bed_recipe": {
-               "recipe_name": "Pasture Bedding",
-               "description": "Large pasture animals will go to these during the night or bad weather, place them under shelter.",
-               "flavor": "Large animals include sheep, ostriches and moo-moos"
             },
             "fish_trap_recipe": {
                "recipe_name": "Fish Trap",
@@ -6449,6 +6359,132 @@
          }
       },
       "shepherd": {
+         "recipes": {
+            "workbenches_name": "Workbenches",
+            "refining_name": "Refinement",
+            "animal_feed_name": "Animal Feed",
+            "animal_furniture_name": "Animal Furniture",
+				"decorations_name": "Decorations",
+				"shepherd_churn_recipe": {
+               "recipe_name": "Shepherd's Churn",
+               "description": "A tool required by the Shepherd to stir, mix and churn different products like butter or cream.",
+               "flavor": ""
+            },
+				"shepherd_workbench_recipe": {
+               "recipe_name": "Shepherd's Bin & Grinder",
+               "description": "This tool can be used by the Shepherd for various things like preparing different types of animal feed.",
+               "flavor": ""
+            },
+            "shepherd_cheese_vat_recipe": {
+               "recipe_name": "Cheese Vat",
+               "description": "The Shepherd can use this to make cheese by crafting curdling mixtures. It can also be used to make sour cream.",
+               "flavor": "The longer it rests the more valuable it gets but you can harvest the cheese at any time during the maturation"
+            },
+            "curdling_mixture_recipe": {
+               "recipe_name": "Curdling Mixture",
+               "description": "A fermentation mixture of milk and some other additives. Within a cheese vat this can be turned into cheese!",
+               "flavor": "Vinegar can be provided by the Brewer"
+            },
+            "butter_recipe": {
+               "recipe_name": "Slab of Butter",
+               "description": "Churn a creamy and flavorful paste that is often used as a cooking ingredient.",
+               "flavor": "With bread it goes like bread and... Eh, nevermind"
+            },
+            "cream_recipe": {
+               "recipe_name": "Bowl of Cream (x2)",
+               "description": "Stir the milk to bring up its layers and skim the fatty, denser top layer. Used as a fine cooking ingredient.",
+               "flavor": ""
+            },
+            "mayonnaise_recipe": {
+               "recipe_name": "Mayonnaise (x3)",
+               "description": "A tangy mixture of egg yolk, oils and acids that is rather appreciated as a sauce or cooking ingredient.",
+               "flavor": "Love it or hate it"
+            },
+            "pasture_bed_small_recipe": {
+               "recipe_name": "Small Pasture Bedding",
+               "description": "Small pasture animals will go to these during the night or bad weather, place them under shelter.",
+               "flavor": "Must be placed inside a pasture. Small animals include ducks, poyos and rabbits"
+            },
+            "pasture_bed_recipe": {
+               "recipe_name": "Pasture Bedding",
+               "description": "Large pasture animals will go to these during the night or bad weather, place them under shelter.",
+               "flavor": "Must be placed inside a pasture. Large animals include oinkers, sheep, ostriches and moo-moos"
+            },
+            "rabbit_feed_recipe": {
+               "recipe_name": "Rabbit Feed (x3)",
+               "description": "Selected carrots for rabbits. Improves the quality of animal produce."
+            },
+            "poyo_feed_recipe": {
+               "recipe_name": "Poyo Feed (x3)",
+               "description": "Nicely milled food for poyos. Improves the quality of animal produce.",
+               "flavor": "Cluck cluck!"
+            },
+            "duck_feed_recipe": {
+               "recipe_name": "Duck Feed (x3)",
+               "description": "Grain and seeds for ducks. Improves the quality of animal produce.",
+               "flavor": "Really good quack-lity food"
+            },
+            "oinker_feed_recipe": {
+               "recipe_name": "Oinker Feed (x3)",
+               "description": "A bit of anything, really. Improves the quality of animal produce."
+            },
+            "sheep_feed_recipe": {
+               "recipe_name": "Sheep Feed (x3)",
+               "description": "Tasty grasses for sheep. Improves the quality of animal produce."
+            },
+            "fodder_recipe": {
+               "recipe_name": "Animal Fodder (x4)",
+               "description": "Cheap and efficient for feeding animals, even if not exactly their favorite food...",
+               "flavor": ""
+            },
+            "ostrich_feed_recipe": {
+               "recipe_name": "Ostrich Feed (x3)",
+               "description": "A nutritious supplement for ostriches. Improves the quality of animal produce.",
+               "flavor": ""
+            },
+            "moomoo_feed_recipe": {
+               "recipe_name": "Moo-Moo Feed (x3)",
+               "description": "Tasty and hearty food appreciated by large ruminants. Improves the quality of animal produce.",
+               "flavor": ""
+            },
+				"wooden_sign_shepherd_recipe": {
+               "recipe_name": "Shepherd's Wall-Mounted Sign",
+               "description": "A sign with the mark of the Shepherd, to be placed on buildings.",
+               "flavor": "Say CHEESE!"
+            }
+         },
+         "shepherd_cheese_vat_empty": {
+            "display_name": "Empty Cheese Vat",
+            "description": "Used by the Shepherd to make cheese. The longer it rests, the better!"
+         },
+         "shepherd_cheese_vat_filled": {
+            "display_name": "Curdling Cheese Vat",
+            "description": "The milk is curdling and shall take some time before it can be drained and formed."
+         },
+         "shepherd_cheese_vat_cream": {
+            "display_name": "Fermenting Cream Vat",
+            "description": "The cream is fermenting and should be done in a day or so."
+         },
+         "shepherd_cheese_vat_cream_sour": {
+            "display_name": "Sour Cream Vat",
+            "description": "Foamy and soft... The cream is sour and ready to be used!"
+         },
+         "shepherd_cheese_vat_curdled": {
+            "display_name": "Curdled Cheese Vat",
+            "description": "Curds have formed. Drain the leftover whey or harvest for Cottage Cheese."
+         },
+         "shepherd_cheese_vat_cheese_fresh": {
+            "display_name": "Fresh Cheese Vat",
+            "description": "Fresh cheese has formed! Harvest it or let it mature some more."
+         },
+         "shepherd_cheese_vat_cheese_mild": {
+            "display_name": "Mild Cheese Vat",
+            "description": "Mild cheese has formed! Harvest it or let it mature even more for a lot of time."
+         },
+         "shepherd_cheese_vat_cheese_aged": {
+            "display_name": "Aged Cheese Vat",
+            "description": "This cheese is quite mature, firm and flavorful! It is time to harvest this delicacy."
+         },
          "shepherd_outfit": {
             "shepherd_hood": {
                "display_name": "Shepherd's Hood",
@@ -6460,10 +6496,10 @@
                "small_animals_name": "Apprentice Animal Tamer",
                "small_animals_description": "The shepherd has just started mastering the techniques of animal taming and can only tame small animals."
             },
-				"level_2_data": {
+            "level_2_data": {
                "perk_000_name": "Job Opportunities",
                "perk_000_description": "The Shepherd has learned how to wander these lands and tame its animals. Now it's time to learn how to settle down - and work the land itself. See the promotion menu for details."
-				},
+            },
             "level_3_data": {
                "big_animals_name": "Adept Animal Tamer",
                "big_animals_description": "The shepherd is now much more experienced with animals and can tame large animals."
@@ -6476,11 +6512,19 @@
                "level_6_name": "One With the Herd",
                "level_6_description": "Complete mastery of the shepherd's trade allows them to form a stronger bond with any animal. The positive effects of compassion on animals will last longer and the negative effects of slaughtering will be shorter."
             },
-            "description": "Nature-loving loners, shepherds will domesticate gentle wild animals to care for them and harvest their resources like eggs, wool and meat."
+            "description": "Nature-loving loners, shepherds domesticate gentle animals to care for them, harvest their resources like wool or meat and even process some of them like milk or eggs."
          },
          "shepherd_crook_corn": {
             "display_name": "Shepherd's Corn Crook",
             "description": "This beautiful crook increases the Shepherd's Compassion and the happiness of the animals."
+         },
+         "shepherd_churn": {
+            "display_name": "Shepherd Churn",
+            "description": "Used by the Shepherd to churn, stir and skim different products."
+         },
+         "shepherd_workbench": {
+            "display_name": "Shepherd Bin & Grinder",
+            "description": "Used by the Shepherd for assembling materials or milling feed."
          }
       },
       "farmer": {
@@ -6492,7 +6536,7 @@
                "perk_001_description": "The farmer can plant flowers to make a lovely garden! (They can grow decorative flowers.)",
                "perk_002_name": "Job Opportunities",
                "perk_002_description": "Exposure to fresh food has given the farmer ideas about cooked food, and too much time with crops and plants has made the farmer contemplate the possibilities of caring for more exciting and interactive beings. See the promotion menu for details.",
-					"perk_002_description_2": "Too much time with crops and plants has made the farmer contemplate the possibilities of caring for more exciting and interactive beings. See the promotion menu for details."
+               "perk_002_description_2": "Too much time with crops and plants has made the farmer contemplate the possibilities of caring for more exciting and interactive beings. See the promotion menu for details."
             },
             "level_3_data": {
                "perk_000_name": "Fertilizer",
@@ -10457,6 +10501,10 @@
          "wooden_sign_brewer": {
             "display_name": "Brewer's Sign",
             "description": "A sign with the mark of the Brewer"
+         },
+         "wooden_sign_shepherd": {
+            "display_name": "Shepherd's Sign",
+            "description": "A sign with the mark of the Shepherd"
          }
       },
       "pets": {
@@ -11194,6 +11242,14 @@
             "whey_butter": {
                "display_name": "Whey Butter",
                "description": "A by-product of cheese making, whey butter has less fat and is saltier."
+            },
+            "cream": {
+               "display_name": "Bowl of Cream",
+               "description": "Almost sweet and soft layer of fat skimmed from milk."
+            },
+            "cream_sour": {
+               "display_name": "Bowl of Sour Cream",
+               "description": "Fermented cream. Has a stronger, bitter taste but is greatly appreciated!"
             }
          },
          "beef_jerky": {
@@ -11647,6 +11703,29 @@
             "truffled_risotto_serving": {
                "display_name": "Serving of Truffled Risotto",
                "description": "The taste of cheese and truffles together is simply divine."
+            }
+         },
+         "mayonnaise": {
+            "mayonnaise": {
+               "display_name": "Mayonnaise",
+               "description": "A creamy and a bit tangy sauce. Eat it raw or use it in cooking!"
+            },
+            "mayonnaise_serving": {
+               "display_name": "Serving of Mayonnaise",
+               "description": "Eek! Ugh! Gah! Meh! Hmm... Tasty!"
+            }
+         },
+         "ice_cream": {
+            "ice_cream": {
+               "display_name": "Ice Cream",
+               "description": "Sweet, flavorful and extremely refreshing! Perfect for a sunny day."
+            },
+            "ice_cream_serving": {
+               "display_name": "Serving of Ice Cream",
+               "description": "Eat it before it melts!"
+            },
+            "ice_cream_decay": {
+               "display_name": "It's melting! Better eat it fast!"
             }
          }
       },
@@ -14291,6 +14370,11 @@
                   },
                   "geomancer": {
                      "description": "Imbue summoning stones and golems."
+                  },
+                  "shepherd": {
+                     "display_name": "Shepherd Craft Menu",
+                     "description": "Crafts the feed and livestock resources.",
+                     "required_job_text": "Requires a shepherd"
                   },
                   "artificer": {
                      "display_name": "Artificer Craft Menu",

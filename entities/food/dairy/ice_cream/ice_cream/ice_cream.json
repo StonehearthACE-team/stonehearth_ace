@@ -1,0 +1,71 @@
+{
+   "mixins": "stonehearth:mixins:prepared_food_decay",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(ice_cream.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0.05 }
+      },
+      "stonehearth:stacks": {
+         "max_stacks": 6
+      }
+   },
+   "entity_data": {
+      "stonehearth:food_container": {
+         "effect": "fiddle",
+         "food": "stonehearth_ace:food:dairy:ice_cream:ice_cream_serving",
+         "stacks_per_serving": 1
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 38,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.ice_cream.ice_cream.display_name)",
+         "description": "i18n(stonehearth_ace:entities.food.ice_cream.ice_cream.description)",
+         "icon": "file(ice_cream.png)",
+         "is_item": true,
+         "category": "food",
+         "material_tags": [
+            "food_container",
+            "prepared_dessert",
+            "prepared_food",
+            "ice_cream",
+            "refined",
+            "stockpile_prepared_food",
+            "dairy",
+            "refreshing",
+            "lunch_time",
+            "dinner_time"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": 10
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      },
+      "stonehearth:food_decay": {
+         "initial_decay": {
+            "min": 128,
+            "max": 192
+         },
+         "decay_stages": {
+            "decay_1": {
+               "trigger_decay_value": 48,
+               "description": "i18n(stonehearth_ace:entities.food.ice_cream.ice_cream_decay.display_name)"
+            }
+         }
+      }
+   }
+}

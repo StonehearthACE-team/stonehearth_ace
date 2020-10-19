@@ -1,0 +1,28 @@
+{
+   "type": "recipe",
+   "effort": 14,
+   "work_units": 1,
+   "recipe_name": "i18n(stonehearth_ace:jobs.shepherd.recipes.poyo_feed_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.shepherd.recipes.poyo_feed_recipe.description)",
+   "flavor": "i18n(stonehearth:jobs.cook.recipes.poyo_feed_recipe.flavor)",
+   "portrait": "/stonehearth/entities/food/poyo_feed/poyo_feed/poyo_feed.png",
+   "workshop": "stonehearth_ace:shepherd:workbench",
+   "level_requirement": 2,
+   "ingredients": [
+      {
+         "uri": "stonehearth:food:corn:corn_basket",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth:food:poyo_feed"
+      },
+		{
+         "item": "stonehearth:food:poyo_feed"
+      },
+		{
+         "item": "stonehearth:food:poyo_feed"
+      }
+   ]
+}

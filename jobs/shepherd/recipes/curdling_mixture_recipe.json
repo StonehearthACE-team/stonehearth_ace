@@ -1,0 +1,26 @@
+{
+   "type": "recipe",
+   "effort": 40,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.shepherd.recipes.curdling_mixture_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.shepherd.recipes.curdling_mixture_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.shepherd.recipes.curdling_mixture_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/dairy/curdling_mixture/curdling_mixture.png",
+   "level_requirement": 4,
+   "workshop": "stonehearth_ace:shepherd:churn",
+   "ingredients": [
+      {
+         "material": "drink_container milk",
+         "count": 3
+      },
+      {
+         "uri": "stonehearth_ace:food:vinegar",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:dairy:curdling_mixture"
+      }
+   ]
+}

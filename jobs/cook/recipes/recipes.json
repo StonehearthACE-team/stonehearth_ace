@@ -1,11 +1,7 @@
 {
    "craftable_recipes": {
 	  "workbenches": {
-		 "recipes": {
-			"cheese_vat": {
-			   "recipe": "file(cheese_vat_recipe.json)"
-			}
-		 }
+		 "recipes": {}
 	  },
       "legendary": {
          "ordinal": 2,
@@ -27,9 +23,6 @@
 				"nut_flour": {
                "recipe": "file(nut_flour_recipe.json)"
             },
-				"butter": {
-					"recipe": "file(butter_recipe.json)"
-				},
 				"cooking_oil": {
 					"recipe": "file(cooking_oil_recipe.json)"
 				},
@@ -59,9 +52,6 @@
             },
 				"sausage": {
 					"recipe": "/stonehearth/jobs/cook/recipes/sausage_recipe.json"
-				},			
-				"curdling_mixture": {
-					"recipe": "file(curdling_mixture_recipe.json)"
 				},
 				"nuts_basket": {
 					"recipe": "file(nuts_basket_recipe.json)"
@@ -192,6 +182,9 @@
 				"fruit_yogurt": {
                "recipe": "file(fruit_yogurt_recipe.json)"
             },
+				"ice_cream": {
+               "recipe": "file(ice_cream_recipe.json)"
+            },
 				"butter_cookies": {
                "recipe": "file(butter_cookies_recipe.json)"
             },
@@ -212,21 +205,11 @@
 	   "animal_feed": {
 			"name": "i18n(stonehearth_ace:jobs.cook.recipes.animal_feed_name)",
          "recipes": {
-            "fodder": {
-               "recipe": "file(fodder_recipe.json)"
-            },
-				"duck_feed": {
-               "recipe": "file(duck_feed_recipe.json)"
-            },
-            "ostrich_feed": {
-               "recipe": "file(ostrich_feed_recipe.json)"
-            },
-				"oinker_feed": {
-               "recipe": "file(oinker_feed_recipe.json)"
-            },
-				"moomoo_feed": {
-               "recipe": "file(moomoo_feed_recipe.json)"
-            },
+				"mixintypes": {
+					"sheep_feed": "remove",
+					"poyo_feed": "remove",
+					"rabbit_feed": "remove"
+				},
 				"kibble": {
                "recipe": "file(kibble_recipe.json)"
             },
@@ -238,9 +221,6 @@
             },
 				"kibble_hearth": {
                "recipe": "file(kibble_hearth_recipe.json)"
-            },
-				"hearth_fodder": {
-               "recipe": "file(hearth_fodder_recipe.json)"
             }
          }
       },

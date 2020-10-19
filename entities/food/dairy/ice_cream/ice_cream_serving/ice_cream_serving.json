@@ -1,0 +1,54 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(ice_cream_serving.qb)",
+                     "file(ice_cream_serving_2.qb)",
+                     "file(ice_cream_serving_3.qb)"
+                  ]
+               }
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:item": {
+         "category": "food",
+         "destroy_on_uncarry": true
+      },
+      "stonehearth:food": {
+         "stonehearth:sitting_on_chair": {
+            "satisfaction": 90,
+            "drink_satisfaction": 34
+         },
+         "default": {
+            "satisfaction": 70,
+            "drink_satisfaction": 20
+         },
+         "applied_buffs": [
+            "stonehearth_ace:buffs:consumption:sweet_energy",
+            "stonehearth_ace:buffs:consumption:refreshed_belly"
+         ],
+         "quality": 6
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.ice_cream.ice_cream_serving.display_name)",
+         "description": "i18n(stonehearth_ace:entities.food.ice_cream.ice_cream_serving.description)",
+         "material_tags": [
+            "food",
+            "prepared_dessert",
+            "dairy",
+            "refreshing",
+            "lunch_time",
+            "dinner_time"
+         ],
+         "subject_override": "stonehearth_ace:food:dairy:ice_cream"
+      }
+   }
+}

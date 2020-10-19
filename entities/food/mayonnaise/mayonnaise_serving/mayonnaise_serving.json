@@ -1,0 +1,41 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(mayonnaise_serving.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:item": {
+         "category": "food",
+         "destroy_on_uncarry": true
+      },
+      "stonehearth:food": {
+         "stonehearth:sitting_on_chair": {
+            "satisfaction": 30,
+            "drink_satisfaction": 8
+         },
+         "default": {
+            "satisfaction": 25,
+            "drink_satisfaction": 6
+         },
+         "quality": 2
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.mayonnaise.mayonnaise_serving.display_name)",
+         "description": "i18n(stonehearth_ace:entities.food.mayonnaise.mayonnaise_serving.description)",
+         "material_tags": [
+            "food",
+            "mayonnaise_serving",
+            "vegetarian",
+            "lunch_time"
+         ],
+         "subject_override": "stonehearth_ace:food:mayonnaise"
+      }
+   }
+}

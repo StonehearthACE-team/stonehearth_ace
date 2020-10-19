@@ -1,0 +1,37 @@
+{
+   "type": "recipe",
+   "effort": 30,
+   "work_units": 1,
+   "recipe_name": "i18n(stonehearth_ace:jobs.shepherd.recipes.mayonnaise_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.shepherd.recipes.mayonnaise_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.shepherd.recipes.mayonnaise_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/mayonnaise/mayonnaise/mayonnaise.png",
+   "workshop": "stonehearth_ace:shepherd:churn",
+   "work_effect": "fiddle",
+   "level_requirement": 1,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:food:cooking_oil",
+         "count": 1
+      },
+		{
+         "material": "egg small cooking_ingredient",
+         "count": 2
+      },
+		{
+         "uri": "stonehearth_ace:food:vinegar",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:mayonnaise"
+      },
+		{
+         "item": "stonehearth_ace:food:mayonnaise"
+      },
+		{
+         "item": "stonehearth_ace:food:mayonnaise"
+      }
+   ]
+}

@@ -2,15 +2,17 @@ local log = radiant.log.create_logger('shepherd')
 local rng = _radiant.math.get_default_rng()
 
 local ShepherdClass = radiant.mods.require('stonehearth.jobs.shepherd.shepherd')
-local BaseJob = require 'stonehearth.jobs.base_job'
+local CraftingJob = require 'stonehearth.jobs.crafting_job'
+
 local AceShepherdClass = class()
+radiant.mixin(AceShepherdClass, CraftingJob)
 
 function AceShepherdClass:destroy()
    if self._sv.is_current_class then
       self:_abandon_following_animals()
    end
 
-   BaseJob.__user_destroy(self)
+   CraftingJob.__user_destroy(self)
 end
 
 AceShepherdClass._ace_old_can_find_animal_in_world = ShepherdClass.can_find_animal_in_world

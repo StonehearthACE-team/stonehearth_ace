@@ -1,0 +1,101 @@
+{
+   "type": "entity",
+   "mixins": "file(shepherd_cheese_vat_curdled_ghost.json)",
+   "components": {
+      "stonehearth:entity_forms": {
+         "ghost_form": "file(shepherd_cheese_vat_curdled_ghost.json)",
+         "iconic_form": "file(shepherd_cheese_vat_curdled_iconic.json)",
+         "placeable_on_ground": true,
+         "hide_undeploy_ui": true
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 1, "y": 1, "z": 1 }
+            }
+         ]
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 1, "y": 2, "z": 1 }
+            }
+         ]
+      },
+      "stonehearth_ace:transform": {},
+      "stonehearth_ace:stump": {},
+      "stonehearth:resource_node": {
+         "category": "cheesemaking",
+         "resource": "stonehearth_ace:food:dairy:cheese_cottage",
+         "harvest_overlay_effect": "stonehearth_ace:effects:harvest_cheese_overlay_effect",
+         "harvester_effect": "fiddle",
+         "durability": 1,
+         "resource_loot_table": {
+            "entries": {
+               "optional": {
+                  "num_rolls": {
+                     "min": 2,
+                     "max": 4
+                  },
+                  "items": {
+                     "cheese_slice": {
+                        "uri": "stonehearth_ace:food:dairy:cheese_cottage"
+                     }
+                  }
+               }
+            }
+         }
+      },
+      "stonehearth:loot_drops": {
+         "entries": {
+            "default": {
+               "num_rolls": {
+                  "min": 0,
+                  "max": 2
+               },
+               "items": {
+                  "whey_butter": {
+                     "uri": "stonehearth_ace:food:dairy:whey_butter"
+                  }
+               }
+            }
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:stump_data": {
+         "stump_alias": "stonehearth_ace:shepherd:cheese_vat:empty",
+         "apply_quality": false
+      },
+      "stonehearth_ace:transform_data": {
+         "transform_uri": "stonehearth_ace:shepherd:cheese_vat:cheese_fresh",
+         "command": "stonehearth_ace:commands:transform:cheese_vat_drain",
+         "request_action": "stonehearth_ace:transform",
+         "request_action_overlay_effect": "stonehearth_ace:effects:transform_cook_overlay_effect",
+         "transforming_worker_effect": "fiddle",
+         "transforming_worker_effect_times": 4,
+         "transform_effect": "stonehearth:effects:item_created",
+         "auto_request": true,
+         "worker_required_job": {
+            "stonehearth:jobs:shepherd": true
+         },
+         "kill_entity": true
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 24,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": -5
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

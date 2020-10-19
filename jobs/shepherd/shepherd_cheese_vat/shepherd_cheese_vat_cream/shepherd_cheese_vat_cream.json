@@ -1,0 +1,49 @@
+{
+   "type": "entity",
+   "mixins": "file(shepherd_cheese_vat_cream_ghost.json)",
+   "components": {
+      "stonehearth:entity_forms": {
+         "ghost_form": "file(shepherd_cheese_vat_cream_ghost.json)",
+         "iconic_form": "file(shepherd_cheese_vat_cream_iconic.json)",
+         "placeable_on_ground": true,
+         "hide_undeploy_ui": true
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 1, "y": 1, "z": 1 }
+            }
+         ]
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 1, "y": 2, "z": 1 }
+            }
+         ]
+      },
+      "stonehearth:evolve": {}
+   },
+   "entity_data": {
+      "stonehearth:evolve_data": {
+         "next_stage": "stonehearth_ace:shepherd:cheese_vat:cream:sour",
+         "evolve_time": "24h+24h"
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 11,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": -1
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

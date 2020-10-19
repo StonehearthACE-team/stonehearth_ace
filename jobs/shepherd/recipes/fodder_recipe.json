@@ -1,0 +1,35 @@
+{
+   "type": "recipe",
+   "effort": 10,
+   "work_units": 1,
+   "recipe_name": "i18n(stonehearth_ace:jobs.shepherd.recipes.fodder_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.shepherd.recipes.fodder_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.shepherd.recipes.fodder_recipe.flavor)",
+   "portrait": "/stonehearth/entities/food/fodder/fodder/fodder.png",
+   "workshop": "stonehearth_ace:shepherd:workbench",
+   "level_requirement": 1,
+   "ingredients": [
+      {
+         "material": "thatch resource",
+         "count": 1
+      },
+	  {
+         "material": "food_container raw_food vegetable",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth:food:feed:fodder"
+      },
+		{
+         "item": "stonehearth:food:feed:fodder"
+      },
+		{
+         "item": "stonehearth:food:feed:fodder"
+      },
+		{
+         "item": "stonehearth:food:feed:fodder"
+      }
+   ]
+}

@@ -1,0 +1,21 @@
+{
+   "type" : "effect",
+   "tracks": {
+		"animation": {
+         "type": "animation_effect",
+         "start_time": 0,
+			"speed": 0.9,
+         "animation": "work.json",
+         "loop": true
+       },
+      "sound": {
+         "type": "sound_effect",
+         "loop": true,
+         "start_time": 200,
+         "min_distance": 35,
+         "falloff": 4,
+         "volume": 90,
+        "track": "stonehearth_ace:sounds:shepherd_churn"
+      }            
+   }
+}

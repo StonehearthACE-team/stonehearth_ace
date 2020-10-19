@@ -1,0 +1,56 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(mayonnaise.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 }
+      },
+      "stonehearth:stacks": {
+         "max_stacks": 3
+      }
+   },
+   "entity_data": {
+      "stonehearth:food_container": {
+         "effect": "fiddle",
+         "food": "stonehearth_ace:food:mayonnaise:mayonnaise_serving",
+         "stacks_per_serving": 1
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 6,
+         "rarity": "uncommon",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 2,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.mayonnaise.mayonnaise.display_name)",
+         "description": "i18n(stonehearth_ace:entities.food.mayonnaise.mayonnaise.description)",
+         "icon": "file(mayonnaise.png)",
+         "is_item": true,
+         "category": "cooking_ingredient",
+         "material_tags": [
+            "food_container",
+            "stockpile_cooking_ingredient",
+            "cooking_ingredient",
+            "mayonnaise",
+            "raw_food",
+            "vegetarian",
+            "animal_ingredient",
+            "lunch_time"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": 1
+      }
+   }
+}

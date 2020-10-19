@@ -1,0 +1,15 @@
+{
+   "type": "command",
+   "name": "cheese_vat_fill_cream",
+   "group": "stonehearth_ace:transform",
+   "display_name": "i18n(stonehearth_ace:data.commands.transform.cheese_vat_fill_cream.display_name)",
+   "description": "i18n(stonehearth_ace:data.commands.transform.cheese_vat_fill_cream.description)",
+   "default_enabled": true,
+   "ordinal": 99,
+   "icon": "file(cheese_vat_fill_cream.png)",
+   "action": "call",
+   "function": "stonehearth_ace:transform_command",
+   "args": [
+      "cream"
+   ]
+}

@@ -17,13 +17,33 @@
          "one_of": true
       }
    ],
+	"crafter": {
+      "work_effect": "fiddle",
+      "recipe_list": "/stonehearth_ace/jobs/shepherd/recipes/recipes.json"
+   },
+   "workshop": {
+      "portrait": "file(/jobs/shepherd/shepherd_workbench/shepherd_workbench.png)",
+      "workbench_type": "stonehearth_ace:shepherd:workbench",
+      "skin_class": "shepherd",
+		"job_name": "shepherd",
+      "open_sound": "stonehearth:sounds:ui:weaver_menu:menu_open",
+      "close_sound": "stonehearth:sounds:ui:carpenter_menu:menu_closed"
+   },
    "xp_rewards": {
       "tame_animal": 35,
       "harvest_animal_resources": 25,
       "harvest_animal": 50,
-      "feed_pasture": 18
+      "feed_pasture": 18,
+		"craft_level_0": 4,
+      "craft_level_1": 6,
+      "craft_level_2": 8,
+      "craft_level_3": 10,
+      "craft_level_4": 12,
+      "craft_level_5": 14,
+      "craft_level_6": 16
    },
 	"task_groups": [
+		"stonehearth:task_groups:crafting",
       "stonehearth_ace:task_groups:cheesemaking",
       "stonehearth_ace:task_groups:transform"
    ],

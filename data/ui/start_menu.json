@@ -224,20 +224,33 @@
          "mason": {
             "ordinal": 3
          },
-         "blacksmith": {
+			"weaver": {
             "ordinal": 4
          },
-         "engineer": {
+         "blacksmith": {
             "ordinal": 5
          },
-         "weaver": {
+         "engineer": {
+				"description": "i18n(stonehearth_ace:ui.game.menu.crafter_menu.items.engineer.description)",
             "ordinal": 6
-         },
+         },        
          "cook": {
             "ordinal": 7
-         },
-         "herbalist": {
+         },        
+         "shepherd": {
+            "name": "i18n(stonehearth_ace:ui.game.menu.crafter_menu.items.shepherd.display_name)",
+            "description": "i18n(stonehearth_ace:ui.game.menu.crafter_menu.items.shepherd.description)",
+            "class": "button",
+            "required_job": "stonehearth:jobs:shepherd",
+            "required_job_text": "i18n(stonehearth:ui.game.menu.crafter_menu.items.shepherd.required_job_text)",
+            "icon": "/stonehearth_ace/jobs/shepherd/images/shepherd_menu_icon.png",
+            "sticky": true,
+            "menu_action": "show_crafter_ui",
+            "hotkey_action": "craft:shepherd",
             "ordinal": 8
+         },
+			"herbalist": {
+            "ordinal": 9
          },
          "brewer": {
             "name": "i18n(stonehearth_ace:ui.game.menu.crafter_menu.items.brewer.display_name)",
@@ -249,10 +262,11 @@
             "sticky": true,
             "menu_action": "show_crafter_ui",
             "hotkey_action": "craft:brewer",
-            "ordinal": 9
+            "ordinal": 10
          },
          "geomancer": {
-            "ordinal": 10
+				"description": "i18n(stonehearth_ace:ui.game.menu.crafter_menu.items.geomancer.description)",
+            "ordinal": 99
          }
       }
    },

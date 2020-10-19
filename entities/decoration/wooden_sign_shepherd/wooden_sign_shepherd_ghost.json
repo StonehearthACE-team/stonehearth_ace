@@ -1,0 +1,38 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(wooden_sign_shepherd.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": -0.5, "z": -0.5 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "allow_vertical_adjacent": true
+      },
+      "render_info": {
+         "scale": 0.1,
+         "color_map": "stonehearth:color_map:gold",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/gold_material_map.json"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.decoration.wooden_sign_shepherd.display_name)",
+         "description": "i18n(stonehearth_ace:entities.decoration.wooden_sign_shepherd.description)",
+         "icon": "file(wooden_sign_shepherd.png)",
+         "category": "decoration",
+         "material_tags": [
+            "decoration",
+            "crafted",
+            "sign",
+            "stockpile_decoration"
+         ]
+      }
+   }
+}

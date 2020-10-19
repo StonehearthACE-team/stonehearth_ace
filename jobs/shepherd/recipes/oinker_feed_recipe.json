@@ -1,0 +1,28 @@
+{
+   "type": "recipe",
+   "effort": 16,
+   "work_units": 1,
+   "recipe_name": "i18n(stonehearth_ace:jobs.shepherd.recipes.oinker_feed_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.shepherd.recipes.oinker_feed_recipe.description)",
+   "flavor": "",
+   "portrait": "/stonehearth_ace/entities/food/oinker_feed/oinker_feed/oinker_feed.png",
+   "workshop": "stonehearth_ace:shepherd:workbench",
+   "level_requirement": 4,
+   "ingredients": [
+      {
+         "material": "food_container raw_food vegetable",
+         "count": 3
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:oinker_feed"
+      },
+		{
+         "item": "stonehearth_ace:food:oinker_feed"
+      },
+		{
+         "item": "stonehearth_ace:food:oinker_feed"
+      }
+   ]
+}

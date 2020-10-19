@@ -1,0 +1,40 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "mob": {
+         "align_to_grid": [
+            "x",
+            "z"
+         ],
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0, "y": 0, "z": 0 }
+      },
+      "render_info": {
+         "scale": 0.105,
+         "animation_table": "file(/data/rigs/jobs/shepherd/shepherd_churn/shepherd_churn.json)"
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(shepherd_churn.qb)"
+            ]
+         }
+      },
+      "effect_list": {
+         "default": "file(/data/rigs/jobs/shepherd/shepherd_churn/effects/idle.json)"
+      }
+   },
+   "entity_data": {
+      "stonehearth:hide_child_entities_from_pathfinder": true,
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:jobs.shepherd.shepherd_churn.display_name)",
+         "description": "i18n(stonehearth_ace:jobs.shepherd.shepherd_churn.description)",
+         "icon": "file(shepherd_churn.png)",
+         "category": "workshops",
+         "material_tags": [
+            "tool",
+            "stockpile_tool"
+         ]
+      }
+   }
+}

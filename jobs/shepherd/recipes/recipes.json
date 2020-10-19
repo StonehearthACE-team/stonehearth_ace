@@ -1,0 +1,91 @@
+{
+   "craftable_recipes": {
+	   "workbenches": {
+			"ordinal": 1,
+         "name": "i18n(stonehearth_ace:jobs.shepherd.recipes.workbenches_name)",
+		   "recipes": {
+				"shepherd_workbench": {
+			      "recipe": "file(shepherd_workbench_recipe.json)"
+			   },
+				"shepherd_churn": {
+			      "recipe": "file(shepherd_churn_recipe.json)"
+			   },
+			   "cheese_vat": {
+			      "recipe": "file(cheese_vat_recipe.json)"
+			   }
+		   }
+	   },
+		"refining": {
+			"ordinal": 10,
+         "name": "i18n(stonehearth_ace:jobs.shepherd.recipes.refining_name)",
+		   "recipes": {
+			   "curdling_mixture": {
+			      "recipe": "file(curdling_mixture_recipe.json)"
+			   },
+				"butter": {
+			      "recipe": "file(butter_recipe.json)"
+			   },
+				"mayonnaise": {
+			      "recipe": "file(mayonnaise_recipe.json)"
+			   },
+				"cream": {
+			      "recipe": "file(cream_recipe.json)"
+			   }
+		   }
+	   },
+	   "animal_feed": {
+			"ordinal": 20,
+         "name": "i18n(stonehearth_ace:jobs.shepherd.recipes.animal_feed_name)",
+         "recipes": {
+            "fodder": {
+               "recipe": "file(fodder_recipe.json)"
+            },
+				"rabbit_feed": {
+               "recipe": "file(rabbit_feed_recipe.json)"
+            },
+				"duck_feed": {
+               "recipe": "file(duck_feed_recipe.json)"
+            },
+				"poyo_feed": {
+               "recipe": "file(poyo_feed_recipe.json)"
+            },
+				"sheep_feed": {
+					"recipe": "file(sheep_feed_recipe.json)"
+				},
+				"oinker_feed": {
+               "recipe": "file(oinker_feed_recipe.json)"
+            },
+				"moomoo_feed": {
+               "recipe": "file(moomoo_feed_recipe.json)"
+            },
+            "ostrich_feed": {
+               "recipe": "file(ostrich_feed_recipe.json)"
+            },
+				"hearth_fodder": {
+               "recipe": "file(hearth_fodder_recipe.json)"
+            }
+         }
+      },
+		"animal_furniture": {
+			"ordinal": 30,
+         "name": "i18n(stonehearth_ace:jobs.shepherd.recipes.animal_furniture_name)",
+		   "recipes": {
+			   "pasture_bed_small": {
+			      "recipe": "file(pasture_bed_small_recipe.json)"
+			   },
+				"pasture_bed": {
+			      "recipe": "file(pasture_bed_recipe.json)"
+			   }
+		   }
+	   },
+		"decorations": {
+         "ordinal": 85,
+         "name": "i18n(stonehearth_ace:jobs.shepherd.recipes.decorations_name)",
+         "recipes": {
+            "wooden_sign_shepherd": {
+               "recipe": "file(wooden_sign_shepherd_recipe.json)"
+            }
+         }
+      }
+   }
+}

@@ -1,0 +1,50 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(cream_sour.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 8,
+         "rarity": "rare",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 2,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.dairy.cream_sour.display_name)",
+         "description": "i18n(stonehearth_ace:entities.food.dairy.cream_sour.description)",
+         "icon": "file(cream_sour.png)",
+         "is_item": true,
+         "category": "food",
+         "material_tags": [
+            "cream",
+            "sour",
+            "dairy",
+            "cooking_ingredient",
+            "other_fluid",
+            "stockpile_cooking_ingredient",
+            "animal_ingredient"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": -1
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

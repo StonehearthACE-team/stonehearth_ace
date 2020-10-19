@@ -1,0 +1,39 @@
+{
+   "type": "recipe",
+   "effort": 30,
+   "work_units": 10,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.ice_cream_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.ice_cream_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.ice_cream_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/dairy/ice_cream/ice_cream/ice_cream.png",
+   "level_requirement": 5,
+   "workshop": "stonehearth:cook:workbench",
+   "work_effect": "work_cook_dough",
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:food:dairy:cream",
+         "count": 1
+      },
+      {
+         "material": "sweetener cooking_ingredient",
+         "count": 1
+      },
+		{
+			"uri": "stonehearth_ace:consumables:cold_tonic",
+			"count": 1
+		},
+	  {
+         "material": "herb yellow aromatic resource",
+         "count": 1
+      },
+	  {
+         "material": "herb red aromatic resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:dairy:ice_cream"
+      }
+   ]
+}

@@ -1,0 +1,28 @@
+{
+   "type": "recipe",
+   "effort": 14,
+   "work_units": 1,
+   "recipe_name": "i18n(stonehearth_ace:jobs.shepherd.recipes.rabbit_feed_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.shepherd.recipes.rabbit_feed_recipe.description)",
+   "flavor": "",
+   "portrait": "/stonehearth/entities/food/rabbit_feed/rabbit_feed.png",
+   "workshop": "stonehearth_ace:shepherd:workbench",
+   "level_requirement": 1,
+   "ingredients": [
+      {
+         "uri": "stonehearth:food:carrot:carrot_basket",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth:food:rabbit_feed"
+      },
+		{
+         "item": "stonehearth:food:rabbit_feed"
+      },
+		{
+         "item": "stonehearth:food:rabbit_feed"
+      }
+   ]
+}

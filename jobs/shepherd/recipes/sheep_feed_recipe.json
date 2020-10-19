@@ -1,0 +1,28 @@
+{
+   "type": "recipe",
+   "effort": 16,
+   "work_units": 1,
+   "recipe_name": "i18n(stonehearth_ace:jobs.shepherd.recipes.sheep_feed_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.shepherd.recipes.sheep_feed_recipe.description)",
+   "flavor": "",
+   "portrait": "/stonehearth/entities/food/sheep_feed/sheep_feed.png",
+   "workshop": "stonehearth_ace:shepherd:workbench",
+   "level_requirement": 3,
+   "ingredients": [
+      {
+         "uri": "stonehearth:food:wheat:wheat_bale",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth:food:sheep_feed"
+      },
+		{
+         "item": "stonehearth:food:sheep_feed"
+      },
+		{
+         "item": "stonehearth:food:sheep_feed"
+      }
+   ]
+}

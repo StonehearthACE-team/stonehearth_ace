@@ -51,6 +51,13 @@
                         "value": "stonehearth:jobs:shepherd"
                      },
                      "file": "file(building_templates/shepherd_coop_ace.json)"
+                  },
+                  "shepherd_home_t1_ace": {
+                     "unlock_requirement": {
+                        "type": "has_job",
+                        "value": "stonehearth:jobs:shepherd"
+                     },
+                     "file": "file(building_templates/shepherd_home_t1_ace.json)"
                   }
                }
             },
