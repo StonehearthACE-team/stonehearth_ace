@@ -1,11 +1,16 @@
 {
+   "components": {
+      "mob": {
+         "model_origin": { "x": -0.1, "y": 0, "z": 0.1 }
+      }
+   },
    "entity_data": {
       "stonehearth:evolve_data": {
          "biomes": {
-				"stonehearth_ace:biome:highlands": {
+            "stonehearth_ace:biome:highlands": {
                "evolve_time_multiplier": 1.5
             },
-				"stonehearth:biome:arctic": {
+            "stonehearth:biome:arctic": {
                "evolve_time_multiplier": 2
             },
             "stonehearth:biome:desert": {
@@ -13,10 +18,10 @@
             }
          },
          "seasons": {
-				"spring": {
+            "spring": {
                "evolve_time_multiplier": 1.5
             },
-				"summer": {
+            "summer": {
                "evolve_time_multiplier": 1.2
             },
             "winter": {

@@ -1,24 +1,24 @@
-{	
-	"components": {
-		"stonehearth:loot_drops": {
+{  
+   "components": {
+      "stonehearth:loot_drops": {
          "entries": {
             "beehive": {
                "num_rolls": {
-						"min": 0,
-						"max": 0
-					}
+                  "min": 0,
+                  "max": 0
+               }
             },
-				"bough_bale": {
+            "bough_bale": {
                "num_rolls": {
-						"min": 0,
-						"max": 0
-					}
+                  "min": 0,
+                  "max": 0
+               }
             },
             "maybe_bough_bale": {
-					"num_rolls": {
-						"min": 0,
-						"max": 0
-					}
+               "num_rolls": {
+                  "min": 0,
+                  "max": 0
+               }
             }
          }
       },
@@ -40,17 +40,17 @@
             }
          ]
       }
-	},
-	"entity_data": {
+   },
+   "entity_data": {
       "mixintypes": {
          "stonehearth:stump_data": "remove"
       },
-		"stonehearth:evolve_data": {
+      "stonehearth:evolve_data": {
          "biomes": {
-				"stonehearth_ace:biome:highlands": {
+            "stonehearth_ace:biome:highlands": {
                "evolve_time_multiplier": 1.5
             },
-				"stonehearth:biome:arctic": {
+            "stonehearth:biome:arctic": {
                "evolve_time_multiplier": 2
             },
             "stonehearth:biome:desert": {
@@ -58,10 +58,10 @@
             }
          },
          "seasons": {
-				"spring": {
+            "spring": {
                "evolve_time_multiplier": 1.5
             },
-				"summer": {
+            "summer": {
                "evolve_time_multiplier": 1.2
             },
             "winter": {
