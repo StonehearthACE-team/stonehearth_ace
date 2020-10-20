@@ -9,7 +9,7 @@ local OutputComponent = class()
 
 function OutputComponent:initialize()
    self._sv.inputs = {}
-   self._json = radiant.entities.get_json(self)
+   self._json = radiant.entities.get_json(self) or {}
    self._output_type = self._json.output_type
 end
 
