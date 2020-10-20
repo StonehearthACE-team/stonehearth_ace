@@ -1,31 +1,9 @@
 {
-   "mixins": "stonehearth:mixins:placed_object",
+   "mixins": [
+      "stonehearth:mixins:placed_object",
+      "file(../large_walnut_tree/large_walnut_tree_shell.json)"
+   ],
    "type": "entity",
-   "components": {
-      "render_info": {
-         "scale": 1
-      },
-      "model_variants": {
-         "default": {
-            "models": [
-               {
-                  "type": "one_of",
-                  "items": [
-                     "file(../large_walnut_tree/large_walnut_tree.qb)"
-                  ]
-               }
-            ]
-         }
-      },
-      "mob": {
-         "model_origin": { "x": 0, "y": 0, "z": 0 },
-         "region_origin": { "x": 0, "y": 0, "z": 0 },
-         "align_to_grid": [
-            "x",
-            "z"
-         ]
-      }
-   },
    "entity_data": {
       "stonehearth:catalog": {
          "display_name": "i18n(stonehearth_ace:entities.trees.walnut_tree.seed.tree_walnut_seed_ghost.display_name)",
