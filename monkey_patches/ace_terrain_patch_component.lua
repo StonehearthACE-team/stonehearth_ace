@@ -33,8 +33,10 @@ end
 
 AceTerrainPatchComponent._ace_old__start_placement = TerrainPatchComponent._start_placement
 function AceTerrainPatchComponent:_start_placement()
+   -- make sure it's actually placed on the grid
+   radiant.entities.move_to_grid_aligned(self._entity, radiant.entities.get_world_grid_location(self._entity))
    self:_ace_old__start_placement()
-   self:_ensure_water_obstruction()
+   --self:_ensure_water_obstruction()
 end
 
 function AceTerrainPatchComponent:_get_terrain_tag(location)
@@ -106,7 +108,7 @@ function AceTerrainPatchComponent:_place_block(location)
             cursor:subtract_point(offset)
          end)
    else
-      log:debug('no region_collision_shape component!')
+      --log:debug('no region_collision_shape component!')
    end
 
    self:_ace_old__place_block(location)
@@ -117,6 +119,7 @@ function AceTerrainPatchComponent:_ensure_water_obstruction()
    local index = self._sv._current_index
    local max_index = self._sv._max_index
    local origin = self:_get_origin()
+   local displaces_water = false
 
    while index < max_index do
       local location_offset
@@ -146,6 +149,10 @@ function AceTerrainPatchComponent:_ensure_water_obstruction()
                location = nil
                break
             end
+
+            if entity:get_component('stonehearth:water') then
+               displaces_water = true
+            end
          end
       until location or index >= max_index
 
@@ -154,7 +161,8 @@ function AceTerrainPatchComponent:_ensure_water_obstruction()
       end
    end
 
-   if not region:empty() then
+   -- first check if there's actually any water in this region; only bother with the collision if we're displacing water
+   if not region:empty() and displaces_water then
       --log:debug('setting region_collision_shape to %s (%s) at %s', region, region:get_bounds(), origin)
       local rcs = self._entity:add_component('region_collision_shape')
       rcs:set_region_collision_type(_radiant.om.RegionCollisionShape.SOLID)
