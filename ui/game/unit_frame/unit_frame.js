@@ -394,6 +394,7 @@ App.StonehearthUnitFrameView.reopen({
    }.observes('model.uri'),
 
    _updateCommandsWidth: function() {
+      this._resetCommandsWidthCheck();
       this._updateUnitFrameWidth(true);
    }.observes('groupedCommands'),
 

@@ -63,7 +63,7 @@ function AceTerrainPatchComponent:_advance_to_next_location()
    repeat
       local offset = self:_location_in_spiral(self._sv._current_index)
       self._sv._current_index = self._sv._current_index + 1
-      location = self:_get_origin() + Point3(offset[1], 0, offset[2])
+      location = radiant.entities.local_to_world(Point3(offset[1], 0, offset[2]), self._entity)
       
       local entities_in_cube = radiant.terrain.get_entities_in_cube(self:_location_to_cube(location))
       for _, entity in pairs(entities_in_cube) do
@@ -99,7 +99,7 @@ function AceTerrainPatchComponent:_place_block(location)
    -- remove the collision region for this point
    local rcs = self._entity:get_component('region_collision_shape')
    if rcs then
-      local offset = self:_world_to_local(location)
+      local offset = radiant.entities.world_to_local(location, self._entity)
       local region = rcs:get_region()
       --log:debug('removing %s from region_collision_shape (%s: %s)', offset, region:get(), region:get():get_bounds())
       region:modify(function(cursor)
@@ -110,16 +110,6 @@ function AceTerrainPatchComponent:_place_block(location)
    end
 
    self:_ace_old__place_block(location)
-end
-
-function AceTerrainPatchComponent:_world_to_local(pt)
-   local mob = self._entity:add_component('mob')
-   local region_origin = mob:get_region_origin()
-   --local new_pt = (pt - mob:get_world_grid_location() - region_origin):rotated(-mob:get_facing()) + region_origin
-   local new_pt = (pt - mob:get_world_grid_location()):rotated(-mob:get_facing())
-
-   --log:debug('world_to_local for %s: %s => %s', entity, pt, new_pt)
-   return new_pt
 end
 
 function AceTerrainPatchComponent:_ensure_water_obstruction()
