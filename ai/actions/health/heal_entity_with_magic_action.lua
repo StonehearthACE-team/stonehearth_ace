@@ -67,23 +67,30 @@ local function rate_healable_entity(target)
 end
 
 function HealEntityWithMagic:start_thinking(ai, entity, args)
-   local set_ready = function()
-         self:_destroy_timers()
-         local player_id = radiant.entities.get_work_player_id(entity)
-         ai:set_think_output({
-            filter_healable_entity = make_is_healable_entity_filter(player_id)
-         })
+   self._ready = false
+
+   local set_ready = function(ready)
+         if ready ~= self._ready then
+            self._ready = ready
+            if ready then
+               local player_id = radiant.entities.get_work_player_id(entity)
+               ai:set_think_output({
+                  filter_healable_entity = make_is_healable_entity_filter(player_id)
+               })
+            else
+               ai:clear_think_output()
+            end
+         end
       end
 
    local check_cooldown = function()
          local combat_state = entity:add_component('stonehearth:combat_state')
          local cooldown = combat_state:get_cooldown_end_time('stonehearth_ace:magic_medic')
-         if not cooldown then
-            set_ready()
-         else
+         if cooldown then
             local duration = cooldown - radiant.gamestate.now()
-            self._cooldown_timer = stonehearth.combat:set_timer('stonehearth_ace:magic_medic cooldown', duration, set_ready)
+            self._cooldown_timer = stonehearth.combat:set_timer('stonehearth_ace:magic_medic cooldown', duration, function() set_ready(true) end)
          end
+         set_ready(not cooldown)
       end
 
    -- do we even have any magical medical capabilities?
@@ -127,8 +134,12 @@ end
 
 local ai = stonehearth.ai
 return ai:create_compound_action(HealEntityWithMagic)
+         :execute('stonehearth:abort_on_event_triggered', {
+            source = ai.ENTITY,
+            event_name = 'stonehearth:work_order:job:work_player_id_changed',
+         })
          :execute('stonehearth:find_best_reachable_entity_by_type', {
-            filter_fn = ai.BACK(1).filter_healable_entity,
+            filter_fn = ai.BACK(2).filter_healable_entity,
             rating_fn = rate_healable_entity,
             description = 'find healable entity',
             ignore_leases = true,
@@ -137,7 +148,7 @@ return ai:create_compound_action(HealEntityWithMagic)
             entity = ai.PREV.item,
          })
          :execute('stonehearth:abort_on_reconsider_rejected', {
-            filter_fn = ai.BACK(3).filter_healable_entity,
+            filter_fn = ai.BACK(4).filter_healable_entity,
             item = ai.BACK(2).item,
          })
          :execute('stonehearth:reserve_entity', {

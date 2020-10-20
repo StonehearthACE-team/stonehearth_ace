@@ -10,10 +10,15 @@ local OutputComponent = class()
 function OutputComponent:initialize()
    self._sv.inputs = {}
    self._json = radiant.entities.get_json(self)
+   self._output_type = self._json.output_type
 end
 
 function OutputComponent:activate()
    -- TODO: load up default settings from json and any saved overrides
+end
+
+function OutputComponent:get_output_type()
+   return self._output_type
 end
 
 function OutputComponent:has_input(input_id, check_parents)
