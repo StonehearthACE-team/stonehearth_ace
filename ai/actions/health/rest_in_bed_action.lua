@@ -10,9 +10,40 @@ RestInBed.args = {
 }
 RestInBed.priority = 0
 
+local function make_bed_filter()
+   return stonehearth.ai:filter_from_key('stonehearth:rest_from_injuries:rest_in_bed', 'none', function(target)
+         local bed_data = radiant.entities.get_entity_data(target, 'stonehearth:bed')
+         if bed_data and not target:add_component('stonehearth:mount'):is_in_use() then
+            return true
+         end
+         return false
+      end)
+end
+
+local function make_bed_rater()
+   return function(target)
+         -- rate priority care beds highest, then owned beds, then unowned beds, then anything else
+         local bed_data = radiant.entities.get_entity_data(target, 'stonehearth:bed')
+         if bed_data.priority_care then
+            return 1
+         else
+            local ownable_component = target:get_component('stonehearth:ownable_object')
+            local owner = ownable_component:get_owner()
+            if not owner or not owner:is_valid() then
+               return 0.5
+            elseif owner:get_id() == self._entity_id then
+               return 0.75
+            else
+               return 0
+            end
+         end
+      end
+end
+
 function RestInBed:start_thinking(ai, entity, args)
    -- Can only start thinking if we have a medic and that medic can attend to us
    local player_id = radiant.entities.get_player_id(entity)
+   self._player_id = player_id
    self._entity_id = entity:get_id()
    self._entity = entity
    self._ai = ai
@@ -64,7 +95,12 @@ function RestInBed:_try_request_medic(bypass_rest_from_conditions_check)
    local do_rest_from_conditions_check = not bypass_rest_from_conditions_check and self._rest_from_conditions
    if not self._signaled and self._town:try_request_medic(self._entity, do_rest_from_conditions_check) then
       self._signaled = true
-      self._ai:set_think_output()
+      self._ai:set_think_output({
+         filter_fn = make_bed_filter(),
+         rating_fn = make_bed_rater(),
+         description = 'find bed to rest in',
+         owner_player_id = self._player_id,
+      })
    end
 end
 
@@ -110,7 +146,16 @@ end
 local ai = stonehearth.ai
 return ai:create_compound_action(RestInBed)
          :execute('stonehearth:clear_carrying_now')
-         :execute('stonehearth_ace:goto_bed')
-         :execute('stonehearth:reserve_entity', { entity = ai.PREV.destination_entity })
+         :execute('stonehearth:find_best_reachable_entity_by_type', {
+            filter_fn = ai.BACK(2).filter_fn,
+            rating_fn = ai.BACK(2).rating_fn,
+            description = ai.BACK(2).description,
+            owner_player_id = ai.BACK(2).owner_player_id,
+         })
+         :execute('stonehearth:find_path_to_reachable_entity', {
+            destination = ai.PREV.item
+         })
+         :execute('stonehearth:follow_path', { path = ai.PREV.path })
+         :execute('stonehearth:reserve_entity', { entity = ai.BACK(3).item })
          :execute('stonehearth:add_buff', {buff = 'stonehearth:buffs:bed_ridden', target = ai.ENTITY, immediate = false})
          :execute('stonehearth:rest_in_bed_adjacent', { bed = ai.BACK(2).entity })
