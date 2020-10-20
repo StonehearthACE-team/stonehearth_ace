@@ -55,6 +55,7 @@ local monkey_patches = {
    ace_encounter = 'stonehearth.services.server.game_master.controllers.encounter',
    ace_entities = 'radiant.modules.entities',
    ace_entities_call_handler = 'stonehearth.call_handlers.entities_call_handler',
+   ace_entity_forms_lib = 'stonehearth.lib.entity_forms.entity_forms_lib',
    ace_equipment_component = 'stonehearth.components.equipment.equipment_component',
    ace_equipment_piece_component = 'stonehearth.components.equipment_piece.equipment_piece_component',
    ace_evolve_component = 'stonehearth.components.evolve.evolve_component',
