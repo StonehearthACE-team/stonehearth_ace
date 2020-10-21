@@ -33,10 +33,8 @@ end
 
 AceTerrainPatchComponent._ace_old__start_placement = TerrainPatchComponent._start_placement
 function AceTerrainPatchComponent:_start_placement()
-   -- make sure it's actually placed on the grid
-   radiant.entities.move_to_grid_aligned(self._entity, radiant.entities.get_world_grid_location(self._entity))
    self:_ace_old__start_placement()
-   --self:_ensure_water_obstruction()
+   self:_ensure_water_obstruction()
 end
 
 function AceTerrainPatchComponent:_get_terrain_tag(location)
@@ -55,8 +53,8 @@ end
 
 function AceTerrainPatchComponent:_location_to_cube(location)
    local tag = self:_get_terrain_tag(location)
-   return Cube3(Point3(location.x - 1, location.y,     location.z - 1),
-                Point3(location.x,     location.y + 1, location.z),
+   return Cube3(Point3(location.x, location.y,     location.z),
+                Point3(location.x + 1,     location.y + 1, location.z + 1),
                 tag)
 end
 
@@ -65,9 +63,10 @@ function AceTerrainPatchComponent:_advance_to_next_location()
    repeat
       local offset = self:_location_in_spiral(self._sv._current_index)
       self._sv._current_index = self._sv._current_index + 1
-      location = radiant.entities.local_to_world(Point3(offset[1], 0, offset[2]), self._entity)
+      location = Point3(offset[1], 0, offset[2])
+      local world_cube = radiant.entities.local_to_world(self:_location_to_cube(location), self._entity)
       
-      local entities_in_cube = radiant.terrain.get_entities_in_cube(self:_location_to_cube(location))
+      local entities_in_cube = radiant.terrain.get_entities_in_cube(world_cube)
       for _, entity in pairs(entities_in_cube) do
          if entity:get_id() == self._entity:get_id() then
             -- it's our reserved collision region
@@ -96,57 +95,74 @@ function AceTerrainPatchComponent:_advance_to_next_location()
    return location
 end
 
+-- changed to receive a point in local space and translate that to world space
 AceTerrainPatchComponent._ace_old__place_block = TerrainPatchComponent._place_block
 function AceTerrainPatchComponent:_place_block(location)
+   local last_point
+   
    -- remove the collision region for this point
    local rcs = self._entity:get_component('region_collision_shape')
    if rcs then
-      local offset = radiant.entities.world_to_local(location, self._entity)
+      log:debug('%s removing collision at %s', self._entity, location)
       local region = rcs:get_region()
       --log:debug('removing %s from region_collision_shape (%s: %s)', offset, region:get(), region:get():get_bounds())
       region:modify(function(cursor)
-            cursor:subtract_point(offset)
+            cursor:subtract_point(location)
          end)
+      if region:get():empty() then
+         last_point = true
+      end
    else
       --log:debug('no region_collision_shape component!')
    end
 
-   self:_ace_old__place_block(location)
+   local cube = radiant.entities.local_to_world(self:_location_to_cube(location), self._entity)
+   radiant.terrain.add_cube(cube)
+   
+   local proxy = radiant.entities.create_entity('stonehearth:object:transient', { debug_text = 'terrain patch effect anchor' })
+   radiant.terrain.place_entity_at_exact_location(proxy, cube:get_centroid())
+   local effect = radiant.effects.run_effect(proxy, 'stonehearth:effects:terrain_patch_spawn')
+   effect:set_finished_cb(function()
+      radiant.entities.destroy_entity(proxy)
+   end)
+
+   if last_point then
+      self._sv._current_index = self._sv._max_index
+   end
 end
 
 function AceTerrainPatchComponent:_ensure_water_obstruction()
    local region = Region3()
-   local index = self._sv._current_index
+   local index = 0
    local max_index = self._sv._max_index
-   local origin = self:_get_origin()
    local displaces_water = false
 
    while index < max_index do
       local location_offset
-      local location
+      local cube
 
       repeat
          local offset = self:_location_in_spiral(index)
          index = index + 1
          location_offset = Point3(offset[1], 0, offset[2])
-         location = location_offset + origin
+         cube = radiant.entities.local_to_world(self:_location_to_cube(location_offset), self._entity)
          
-         local entities_in_cube = radiant.terrain.get_entities_in_cube(self:_location_to_cube(location))
+         local entities_in_cube = radiant.terrain.get_entities_in_cube(cube)
          for _, entity in pairs(entities_in_cube) do
             if entity:get('terrain') then
-               location = nil
+               cube = nil
                break
             end
 
             local rcs = entity:get_component('region_collision_shape')
             if rcs and rcs:get_region_collision_type() ~= _radiant.om.RegionCollisionShape.NONE then
-               location = nil
+               cube = nil
                break
             end
 
             local designation = radiant.entities.get_entity_data(entity, 'stonehearth:designation')
             if designation and not designation.allow_placed_items then
-               location = nil
+               cube = nil
                break
             end
 
@@ -154,9 +170,9 @@ function AceTerrainPatchComponent:_ensure_water_obstruction()
                displaces_water = true
             end
          end
-      until location or index >= max_index
+      until cube or index >= max_index
 
-      if location then
+      if cube then
          region:add_point(location_offset)
       end
    end
