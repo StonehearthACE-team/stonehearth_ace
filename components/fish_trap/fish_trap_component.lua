@@ -171,11 +171,11 @@ function FishTrapComponent:_run_trip_effects()
    if self._sv.trap_tripped then
       self:_stop_trip_effects()
       if self._settings.trip_effect then
-         self._trip_effect = radiant.effects.run(self._entity, self._settings.trip_effect)
+         self._trip_effect = radiant.effects.run_effect(self._entity, self._settings.trip_effect)
       end
       if self._settings.trap_tripped_effect then
          self:_ensure_trap_entity()
-         self._trap_tripped_effect = radiant.effects.run(self._sv._trap_entity, self._settings.trap_tripped_effect)
+         self._trap_tripped_effect = radiant.effects.run_effect(self._sv._trap_entity, self._settings.trap_tripped_effect)
       end
    end
 end
@@ -188,6 +188,72 @@ function FishTrapComponent:_stop_trip_effects()
    if self._trap_tripped_effect then
       self._trap_tripped_effect:stop()
       self._trap_tripped_effect = nil
+   end
+end
+
+function FishTrapComponent:_run_raise_trap_effects()
+   self:_stop_raise_trap_effects()
+   if self._settings.raise_trap_effect then
+      self._raise_trap_effect = radiant.effects.run_effect(self._entity, self._settings.raise_trap_effect)
+   end
+   if self._settings.trap_raising_effect then
+      self:_ensure_trap_entity()
+      self._trap_raising_effect = radiant.effects.run_effect(self._sv._trap_entity, self._settings.trap_raising_effect)
+   end
+end
+
+function FishTrapComponent:_stop_raise_trap_effects()
+   if self._raise_trap_effect then
+      self._raise_trap_effect:stop()
+      self._raise_trap_effect = nil
+   end
+   if self._trap_raise_trap_effect then
+      self._trap_raise_trap_effect:stop()
+      self._trap_raise_trap_effect = nil
+   end
+end
+
+function FishTrapComponent:_run_open_trap_effects()
+   self:_stop_open_trap_effects()
+   if self._settings.open_trap_effect then
+      self._open_trap_effect = radiant.effects.run_effect(self._entity, self._settings.open_trap_effect)
+   end
+   if self._settings.trap_opening_effect then
+      self:_ensure_trap_entity()
+      self._trap_opening_effect = radiant.effects.run_effect(self._sv._trap_entity, self._settings.trap_opening_effect)
+   end
+end
+
+function FishTrapComponent:_stop_open_trap_effects()
+   if self._open_trap_effect then
+      self._open_trap_effect:stop()
+      self._open_trap_effect = nil
+   end
+   if self._trap_opening_effect then
+      self._trap_opening_effect:stop()
+      self._trap_opening_effect = nil
+   end
+end
+
+function FishTrapComponent:_run_lower_trap_effects()
+   self:_stop_lower_trap_effects()
+   if self._settings.lower_trap_effect then
+      self._lower_trap_effect = radiant.effects.run_effect(self._entity, self._settings.lower_trap_effect)
+   end
+   if self._settings.trap_lowering_effect then
+      self:_ensure_trap_entity()
+      self._trap_lowering_effect = radiant.effects.run_effect(self._sv._trap_entity, self._settings.trap_lowering_effect)
+   end
+end
+
+function FishTrapComponent:_stop_lower_trap_effects()
+   if self._lower_trap_effect then
+      self._lower_trap_effect:stop()
+      self._lower_trap_effect = nil
+   end
+   if self._trap_lowering_effect then
+      self._trap_lowering_effect:stop()
+      self._trap_lowering_effect = nil
    end
 end
 
@@ -224,12 +290,15 @@ function FishTrapComponent:_drop_trap()
       return
    end
 
+   self:_run_lower_trap_effects()
+
    self._sv._trap_entity:add_component('stonehearth_ace:entity_mover')
       :set_destinations({destination})
       :set_movement_type(stonehearth.constants.entity_mover.movement_types.DIRECT)
       :set_facing_type(stonehearth.constants.entity_mover.facing_types.NONE)
       :set_speed(5)
       :start_nonpersistent_movement(nil, function()
+            self:_stop_lower_trap_effects()
             self._sv._trap_entity:add_component('stonehearth_ace:aquatic_object'):set_float_enabled(true)
          end)
 end
@@ -247,10 +316,17 @@ end
 
 function FishTrapComponent:raise_trap(finish_cb)
    self:_prep_raise_trap()
+   self:_run_raise_trap_effects()
+
+   local callback = function()
+      self:_stop_raise_trap_effects()
+      self:_run_open_trap_effects()
+      finish_cb()
+   end
 
    self._sv._trap_entity:add_component('stonehearth_ace:aquatic_object'):set_float_enabled(false)
    self._sv._trap_entity:add_component('stonehearth_ace:entity_mover')
-      :start_nonpersistent_movement(nil, finish_cb)
+      :start_nonpersistent_movement(nil, callback)
 end
 
 function FishTrapComponent:_get_trap_move_time()
