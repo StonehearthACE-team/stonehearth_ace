@@ -4,12 +4,15 @@
          "scale": 0.2
       },
       "stonehearth:crop": {
+         "resource_pairings": {
+            "pine_tree_4": "stonehearth_ace:crops:pine_tree_crop:sapling"
+         },
          "megacrop_chance": 0,
          "auto_harvest": "place"
       },
-		"stonehearth:growing": {
-			"growth_period": "36h",
-			"preferred_climate": "temperate_complex"
+      "stonehearth:growing": {
+         "growth_period": "36h",
+         "preferred_climate": "temperate_complex"
       }
    }
 }

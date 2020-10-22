@@ -1,0 +1,69 @@
+{
+  "type": "entity",
+  "mixins": [
+    "stonehearth_ace:trees:highland_pine:small"
+  ],
+  "components": {
+    "mixintypes": {
+      "stonehearth:entity_forms": "remove"
+    },
+    "mob": {
+      "mixintypes": {
+        "align_to_grid": "remove"
+      },
+      "model_origin": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "region_origin": {
+        "x": 0.5,
+        "y": 0,
+        "z": 0.5
+      }
+    },
+    "destination": {
+      "mixintypes": {
+        "region": "override"
+      },
+      "region": [
+        {
+          "min": {
+            "x": -1.5,
+            "y": 0,
+            "z": -1.5
+          },
+          "max": {
+            "x": 2.5,
+            "y": 1,
+            "z": 2.5
+          }
+        }
+      ]
+    },
+    "region_collision_shape": {
+      "mixintypes": {
+        "region": "override"
+      },
+      "region": [
+        {
+          "min": {
+            "x": -0.5,
+            "y": 0,
+            "z": -0.5
+          },
+          "max": {
+            "x": 1.5,
+            "y": 23,
+            "z": 1.5
+          }
+        }
+      ]
+    }
+  },
+  "entity_data": {
+    "stonehearth:evolve_data": {
+      "next_stage": "stonehearth_ace:crops:highland_pine_crop:medium"
+    }
+  }
+}
