@@ -1,0 +1,75 @@
+{
+  "type": "entity",
+  "mixins": [
+    "stonehearth_ace:trees:yew:sapling"
+  ],
+  "components": {
+    "mixintypes": {
+      "stonehearth:entity_forms": "remove"
+    },
+    "mob": {
+      "mixintypes": {
+        "align_to_grid": "remove"
+      },
+      "model_origin": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "region_origin": {
+        "x": 0.5,
+        "y": 0,
+        "z": 0.5
+      }
+    },
+    "destination": {
+      "mixintypes": {
+        "region": "override"
+      },
+      "region": [
+        {
+          "min": {
+            "x": -1.5,
+            "y": 0,
+            "z": -1.5
+          },
+          "max": {
+            "x": 2.5,
+            "y": 1,
+            "z": 2.5
+          }
+        }
+      ]
+    },
+    "region_collision_shape": {
+      "mixintypes": {
+        "region": "override"
+      },
+      "region": [
+        {
+          "min": {
+            "x": -1.5,
+            "y": 0,
+            "z": -1.5
+          },
+          "max": {
+            "x": 2.5,
+            "y": 6,
+            "z": 2.5
+          }
+        }
+      ]
+    }
+  },
+  "entity_data": {
+    "stonehearth:evolve_data": {
+      "next_stage": "stonehearth_ace:crops:yew_tree_crop:small"
+    },
+    "stonehearth:net_worth": {
+      "shop_info": {
+        "buyable": false,
+        "sellable": false
+      }
+    }
+  }
+}

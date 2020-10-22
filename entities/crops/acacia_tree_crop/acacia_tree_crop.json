@@ -1,9 +1,25 @@
 {
    "components": {
+      "model_variants": {
+         "mixintypes": {
+            "acacia_tree_1": "override"
+         },
+         "acacia_tree_1": {
+            "models": [
+               "file(acacia_tree_1.qb)"
+            ]
+         }
+      },
       "render_info": {
          "scale": 0.2
       },
+      "mob": {
+         "model_origin": { "x": 0, "y": -0.1, "z": 0 }
+      },
       "stonehearth:crop": {
+         "resource_pairings": {
+            "acacia_tree_4": "stonehearth_ace:crops:acacia_tree_crop:sapling"
+         },
          "megacrop_chance": 0,
          "auto_harvest": "place"
       },

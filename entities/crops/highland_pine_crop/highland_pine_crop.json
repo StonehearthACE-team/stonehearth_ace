@@ -9,7 +9,7 @@
          },
          "highland_pine_tree_1": {
             "models": [
-               "file(../../trees/highland_pine_tree/seed/tree_highland_pine_seed_iconic.qb)"
+               "file(highland_pine_1.qb)"
             ]
          },
          "highland_pine_tree_2": {
@@ -29,15 +29,15 @@
          }
       },
       "render_info": {
-         "scale": 0.2
+         "scale": 0.21
       },
       "mob": {
-         "model_origin": { "x": -0.05, "y": 0, "z": 0.05 },
+         "model_origin": { "x": -0.105, "y": -0.1, "z": 0.105 },
          "mob_collision_type": "clutter"
       },
       "stonehearth:crop": {
          "resource_pairings": {
-            "highland_pine_tree_4": "stonehearth_ace:trees:highland_pine:sapling"
+            "highland_pine_tree_4": "stonehearth_ace:crops:highland_pine_crop:sapling"
          },
          "harvest_threshhold": "highland_pine_tree_4",
          "plant_overlay_effect": "stonehearth:effects:plant_crop_overlay_effect",

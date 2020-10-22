@@ -1,0 +1,70 @@
+{
+  "type": "entity",
+  "mixins": [
+    "stonehearth:trees:acacia:large"
+  ],
+  "components": {
+    "mixintypes": {
+      "stonehearth:entity_forms": "remove",
+      "stonehearth:evolve": "remove"
+    },
+    "mob": {
+      "mixintypes": {
+        "align_to_grid": "remove"
+      },
+      "model_origin": {
+        "x": -1,
+        "y": 0,
+        "z": 0
+      },
+      "region_origin": {
+        "x": 0.5,
+        "y": 0,
+        "z": 0.5
+      }
+    },
+    "destination": {
+      "mixintypes": {
+        "region": "override"
+      },
+      "region": [
+        {
+          "min": {
+            "x": -1.5,
+            "y": 0,
+            "z": -1.5
+          },
+          "max": {
+            "x": 2.5,
+            "y": 1,
+            "z": 2.5
+          }
+        }
+      ]
+    },
+    "region_collision_shape": {
+      "mixintypes": {
+        "region": "override"
+      },
+      "region": [
+        {
+          "min": {
+            "x": -1.5,
+            "y": 0,
+            "z": -1.5
+          },
+          "max": {
+            "x": 2.5,
+            "y": 16,
+            "z": 2.5
+          }
+        }
+      ]
+    }
+  },
+  "entity_data": {
+    "mixintypes": {
+      "stonehearth:evolve_data": "remove"
+    }
+  }
+}
