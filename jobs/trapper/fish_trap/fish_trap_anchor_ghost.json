@@ -3,7 +3,7 @@
    "mixins": "stonehearth:mixins:placed_object",
    "components": {
       "render_info": {
-         "scale": 0.1
+         "scale": 0.11
       },
       "model_variants": {
          "default": {
@@ -39,9 +39,9 @@
    },
    "entity_data": {
       "stonehearth:catalog": {
-         "display_name": "i18n(stonehearth_ace:entities.construction.simple_water_well.display_name)",
-         "description": "i18n(stonehearth_ace:entities.construction.simple_water_well_ghost.description)",
-         "icon": "file(simple_water_well.png)",
+         "display_name": "i18n(stonehearth_ace:jobs.trapper.fish_trap.display_name)",
+         "description": "i18n(stonehearth_ace:jobs.trapper.fish_trap_ghost.description)",
+         "icon": "file(fish_trap.png)",
          "category": "construction",
          "material_tags": [
             "construction"
@@ -60,8 +60,8 @@
          "auto_request": true,
          "request_action": "stonehearth_ace:transform",
          "request_action_overlay_effect": "stonehearth_ace:effects:transform_worker_upgrade_overlay_effect",
-         "transforming_worker_effect": "fiddle",
-         "transforming_worker_effect_times": 1,
+         "transforming_worker_effect": "work",
+         "transforming_worker_effect_times": 3,
          "transform_effect": "stonehearth:effects:poof_effect",
          "worker_required_job": {
             "stonehearth:jobs:trapper": true

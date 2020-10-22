@@ -1,9 +1,16 @@
 {
    "type": "entity",
-   "mixins": "stonehearth:mixins:placed_object",
+   "mixins": [
+      "stonehearth:mixins:placed_object",
+      "stonehearth_ace:data:trapping:fish_trap:loot_table"
+   ],
    "components": {
       "render_info": {
-         "scale": 0.1
+         "scale": 0.11,
+         "animation_table": "/stonehearth_ace/data/rigs/jobs/trapper/fish_trap_anchor/fish_trap_anchor.json"
+      },
+      "effect_list": {
+         "default": "/stonehearth_ace/data/rigs/jobs/trapper/fish_trap_anchor/effects/idle.json"
       },
       "model_variants": {
          "default": {
@@ -33,88 +40,15 @@
          ]
       },
       "stonehearth_ace:fish_trap": {
-         "trap_timer": "45m+30m",
+         "trap_timer": "2h+4h",
          "min_effective_water_volume": 100,
-         "low_water_volume": 200,
+         "low_water_volume": 180,
          "high_water_volume": 300,
-         "capture_loot": {
-            "entries": {
-               "optional": {
-                  "items": {
-                     "none": {
-                        "weight": 10
-                     },
-                     "silver": {
-                        "uri": "stonehearth_ace:consumables:captive:fish:silver",
-                        "weight": 1
-                     },
-                     "long": {
-                        "uri": "stonehearth_ace:consumables:captive:fish:long",
-                        "weight": 3
-                     },
-                     "dark": {
-                        "uri": "stonehearth_ace:consumables:captive:fish:dark",
-                        "weight": 3
-                     },
-                     "big": {
-                        "uri": "stonehearth_ace:consumables:captive:fish:big",
-                        "weight": 3,
-                        "min_water_volume": 200
-                     },
-                     "catfish": {
-                        "uri": "stonehearth_ace:consumables:captive:fish:catfish",
-                        "weight": 2,
-                        "min_water_volume": 200
-                     },
-                     "carp": {
-                        "uri": "stonehearth_ace:consumables:captive:fish:carp",
-                        "weight": 1,
-                        "min_water_volume": 200
-                     },
-                     "salmon": {
-                        "uri": "stonehearth_ace:consumables:captive:fish:salmon",
-                        "weight": 1,
-                        "min_water_volume": 300
-                     },
-                     "trout": {
-                        "uri": "stonehearth_ace:consumables:captive:fish:trout",
-                        "weight": 1,
-                        "min_water_volume": 300
-                     }
-                  }
-               }
-            }
-         },
-         "harvest_loot": {
-            "entries": {
-               "meat": {
-                  "num_rolls": {
-                     "min": 2,
-                     "max": 3
-                  },
-                  "items": {
-                     "meat": {
-                        "uri": "stonehearth_ace:food:fish_meat"
-                     },
-                     "trout": {
-                        "uri": "stonehearth_ace:food:fish_meat:trout",
-                        "min_water_volume": 250
-                     }
-                  }
-               },
-               "optional": {
-                  "num_rolls": {
-                     "min": 0,
-                     "max": 1
-                  },
-                  "items": {
-                     "roe": {
-                        "uri": "stonehearth_ace:food:fish_roe:fish_big_roe_basket"
-                     }
-                  }
-               }
-            }
-         }
+         "trip_effect": "trap_tripped",
+         "trap_tripped_effect": "trap_tripped",
+         "raise_trap_effect": "pull_back",
+         "trap_opening_effect": "harvest",
+         "open_trap_effect": "pull_back"
       },
       "stonehearth_ace:transform": {},
       "stonehearth:commands": {

@@ -1,7 +1,22 @@
 {
+	"components": {
+		"mixintypes": {
+			"model_variants": "override"
+		},
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(blacksmith_hammer_equipped.qb)"
+            ]
+         }
+      }
+	},
    "entity_data": {
       "stonehearth:repair_data": {
          "base_repair_amount": 10
+      },
+		"stonehearth:catalog": {
+         "icon": "file(blacksmith_hammer.png)"
       }
    }
 }

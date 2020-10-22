@@ -4,11 +4,22 @@
    ],
 	"type": "entity",
    "components": {
+      "model_variants": {
+			"mixintypes": {
+				"default": "override"
+			},
+         "default": {
+            "models": [
+               "/stonehearth_ace/entities/armor/knights_shield/knights_shield.qb"
+            ]
+         }
+      },
       "stonehearth:equipment_piece": {}
 	},
    "entity_data": {
       "stonehearth:catalog": {
-         "material_tags":["iron", "shield", "heavy_shield", "heavy_armor", "knights_shield"]
+         "material_tags":["iron", "shield", "heavy_shield", "heavy_armor", "knights_shield"],
+         "icon": "file(knights_shield.png)"
       }
    }
 }

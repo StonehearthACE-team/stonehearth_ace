@@ -22,19 +22,13 @@
    },
    "level_data": {
       "1": {
-         "mixintypes": {
-            "perks": "override"
-         },	
          "perks": [
-            {
-               "type": "apply_buff",
-               "name": "i18n(stonehearth:jobs.trapper.trapper_description.level_1_data.perk_000_name)",
-               "id": "trapper_speed_up_1",
-               "icon": "/stonehearth/jobs/trapper/images/speed_up.png",
-               "buff_name": "stonehearth:buffs:trapper:speed_1",
-               "description": "i18n(stonehearth_ace:jobs.trapper.trapper_description.level_1_data.trapper_level_1_description)",
-               "level": 1,
-               "demote_fn": "remove_buff"
+				{
+               "name": "i18n(stonehearth_ace:jobs.trapper.trapper_description.level_1_data.perk_001_name)",
+               "id": "fish_trap",
+               "icon": "file(images/fish_trap.png)",
+               "description": "i18n(stonehearth_ace:jobs.trapper.trapper_description.level_1_data.perk_001_description)",
+               "level": 1
             }
          ]
       },

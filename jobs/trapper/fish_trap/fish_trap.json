@@ -2,6 +2,12 @@
    "type": "entity",
    "mixins": "file(fish_trap_ghost.json)",
    "components": {
+      "render_info": {
+         "animation_table": "/stonehearth_ace/data/rigs/jobs/trapper/fish_trap/fish_trap.json"
+      },
+      "effect_list": {
+         "default": "/stonehearth_ace/data/rigs/jobs/trapper/fish_trap/effects/idle.json"
+      },
       "stonehearth_ace:aquatic_object": {
          "floating_object": {
             "floating_enabled": false,

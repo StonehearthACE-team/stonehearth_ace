@@ -1,7 +1,33 @@
 {
+   "mixins": "stonehearth:mixins:placed_object",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+			"mixintypes": {
+				"default": "override"
+			},
+         "default": {
+            "models": [
+               "file(golem_restocking_auto.qb)"
+            ]
+         }
+      },
+      "render_info": {
+         "animation_table": "/stonehearth/data/rigs/entities/golems/golem_beetle",
+         "scale": 0.1
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0, "y": 0, "z": 0 }
+      }
+   },
    "entity_data": {
       "stonehearth:catalog": {
-         "category": "automatons_and_golems"
+         "display_name": "i18n(stonehearth:entities.monsters.golems.golem_restocking.golem_restocking_ghost_auto.display_name)",
+         "description": "i18n(stonehearth:entities.monsters.golems.golem_restocking.golem_restocking_ghost_auto.description)",
+         "icon": "file(golem_restocking_auto.png)",
+         "category": "automatons_and_golems",
+         "material_tags": ["stone", "crafted", "stockpile_tool"]
       }
    }
 }

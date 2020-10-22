@@ -2322,6 +2322,18 @@
          "collect_bees": {
             "display_name": "Start a New Colony!",
             "description": "Order the Herbalist to start a new bee colony from this skep by developing some eggs into a new queen. This action requires one unit of Royal Jelly and the existing skep will not be able to produce for a few days."
+         },
+         "remove_fish_trap": {
+            "display_name": "Remove Fish Trap",
+            "description": "Fish everywhere will rejoice!"
+         },
+         "toggle_fish_trap_capture": {
+            "display_name": "Harvesting Fish",
+            "description": "This trap is currently set to have its prey harvested. Click here to change!"
+         },
+         "toggle_fish_trap_harvest": {
+            "display_name": "Capturing Fish",
+            "description": "This trap is currently set to capture the animal in a small box so it can be moved elsewhere. Click here to change!"
          }
       },
       "buffs": {
@@ -3147,10 +3159,10 @@
       "build": {
          "building_brushes": {
             "patterns": {
-					"red_slate_peaked_roof": "A stone roof made of Light Volcano, Volcano, and Rustic Red.",
-					"blue_slate_peaked_roof": "A stone roof made of Bahama Blue, Regal Blue, and Dark Regal Blue.",
-					"castle_roof": "A stone castle roof made of Tuna, Shuttle Grey, and Mid Grey.",
-					"slate_peaked_roof": "A stone roof made of Slate Dark, Slate Shade, Slate, and Slate Light.",
+               "red_slate_peaked_roof": "A stone roof made of Light Volcano, Volcano, and Rustic Red.",
+               "blue_slate_peaked_roof": "A stone roof made of Bahama Blue, Regal Blue, and Dark Regal Blue.",
+               "castle_roof": "A stone castle roof made of Tuna, Shuttle Grey, and Mid Grey.",
+               "slate_peaked_roof": "A stone roof made of Slate Dark, Slate Shade, Slate, and Slate Light.",
                "thatch_peaked_roof": "A thatch roof made of Pesto, Lemon Ginger, Yukon Gold, and Antique Brass.",
                "thatch_light_peaked_roof": "A thatch roof made of Sandal, Muesli and Shadow.",
                "dry_turf_peaked_roof": "A thatch roof made of Pale Grass, Dry Turf, Dark Turf, and Stomped Path.",
@@ -3169,11 +3181,11 @@
                "#54533A": "Dry Turf",
                "#4E4C33": "Dark Turf",
                "#464530": "Stomped Path",
-					"#7B6157": "Light Congo Brown",
-					"#292C2D": "Slate Dark",
-					"#333637": "Slate Shade",
-					"#373B3D": "Slate",
-					"#3D4144": "Slate Light"
+               "#7B6157": "Light Congo Brown",
+               "#292C2D": "Slate Dark",
+               "#333637": "Slate Shade",
+               "#373B3D": "Slate",
+               "#3D4144": "Slate Light"
             }
          }
       }
@@ -5527,8 +5539,8 @@
             },
             "ice_cream_recipe": {
                "recipe_name": "Ice Cream",
-               "description": "A quite flavorful and extremely refreshing summer favorite.",
-               "flavor": "Careful, it melts in a couple of days!"
+               "description": "A quite flavorful and extremely refreshing summer favorite. Careful, it melts in a couple of days!",
+               "flavor": "I scream, you scream, we all scream for ice cream!"
             },
             "pie_cherry_recipe": {
                "recipe_name": "Sweet Cherry Pie",
@@ -6327,7 +6339,7 @@
       "trapper": {
          "fish_trap": {
             "display_name": "Fish Trap",
-            "description": "Safely capture fish. Will float when placed in the water.",
+            "description": "Provides fish meat and roe but can be set to capture the fish alive.",
             "trap_tripped_description": "The trap was tripped! It will soon be harvested by a Trapper...",
             "conflicting_traps_description": "Multiple traps share the same fishing area and will all have reduced efficiency.",
             "low_water_description": "There's not enough water in this area to catch much.",
@@ -6342,7 +6354,8 @@
          },
          "trapper_description": {
             "level_1_data": {
-               "trapper_level_1_description": "Long walks have increased the trapper's foot speed. The Trapper is also able to handle up to 3 fish traps for your town."
+               "perk_001_name": "Fish Trapping",
+					"perk_001_description": "The Trapper is capable of placing and utilizing fish traps for providing your town with fish meat and, sometimes, fish roe.<br>To place a Fish Trap use the button found on the Trapper itself.<br>Fish Traps can only be placed on water edges and will work more efficiently when distant from each other and with lots of water available around or underneath it."
             },
             "level_3_data": {
                "trapper_level_3_description": "Long practice helps the trapper salvage more from each animal. The added agility allows the Trapper to occupy themselves with 3 additional fish traps."
@@ -6351,6 +6364,9 @@
                "trapper_level_6_description": "The trapper can now use metal clamp traps to capture big game and also has a thing or two to teach the Engineer about setting traps. Increases town trap limit and the fish trap limit by 6."
             },
             "description": "The Trapper can arm snares to capture and (ahem) &quot;harvest&quot; wild critters for a reliable source of food, pelts and bones."
+         },
+         "fish_trap_ghost": {
+            "description": "Must be built by the Trapper before it can be used."
          }
       },
       "shepherd": {
@@ -6359,13 +6375,13 @@
             "refining_name": "Refinement",
             "animal_feed_name": "Animal Feed",
             "animal_furniture_name": "Animal Furniture",
-				"decorations_name": "Decorations",
-				"shepherd_churn_recipe": {
+            "decorations_name": "Decorations",
+            "shepherd_churn_recipe": {
                "recipe_name": "Shepherd's Churn",
                "description": "A tool required by the Shepherd to stir, mix and churn different products like butter or cream.",
                "flavor": ""
             },
-				"shepherd_workbench_recipe": {
+            "shepherd_workbench_recipe": {
                "recipe_name": "Shepherd's Bin & Grinder",
                "description": "This tool can be used by the Shepherd for various things like preparing different types of animal feed.",
                "flavor": ""
@@ -6442,7 +6458,7 @@
                "description": "Tasty and hearty food appreciated by large ruminants. Improves the quality of animal produce.",
                "flavor": ""
             },
-				"wooden_sign_shepherd_recipe": {
+            "wooden_sign_shepherd_recipe": {
                "recipe_name": "Shepherd's Wall-Mounted Sign",
                "description": "A sign with the mark of the Shepherd, to be placed on buildings.",
                "flavor": "Say CHEESE!"

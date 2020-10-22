@@ -8,9 +8,12 @@
             ]
          }
       },
+      "effect_list": {
+         "default": "stonehearth:effects:treasure_glow"
+      },
       "stonehearth:resource_node": {
          "harvester_effect": "fiddle",
-         "harvest_overlay_effect": "stonehearth:effects:harvest_plant_overlay_effect",
+         "harvest_overlay_effect": "stonehearth_ace:effects:harvest_foraging_spot_overlay_effect",
          "description": "harvest_plant",
          "resource_loot_table": {
             "entries": {

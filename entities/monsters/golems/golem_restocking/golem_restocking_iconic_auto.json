@@ -1,4 +1,16 @@
 {
+	"components": {
+		"mixintypes": {
+			"model_variants": "override"
+		},
+		"model_variants": {
+         "default": {
+            "models": [
+               "file(golem_restocking_auto_iconic.qb)"
+            ]
+         }
+      }
+	},
    "entity_data": {
       "stonehearth:catalog": {
          "category": "automatons_and_golems"

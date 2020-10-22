@@ -271,6 +271,7 @@ function FishTrapComponent:_ensure_trap_entity()
    if not self._sv._trap_entity then
       local trap = radiant.entities.create_entity(self._json.trap_uri or 'stonehearth_ace:trapper:fish_trap', {ignore_gravity = true, owner = self._entity})
       radiant.terrain.place_entity_at_exact_location(trap, radiant.entities.get_grid_in_front(self._entity), {force_iconic = false})
+      radiant.entities.turn_to(trap, (radiant.entities.get_facing(self._entity) + 270) % 360)
 
       self._sv._trap_entity = trap
    end

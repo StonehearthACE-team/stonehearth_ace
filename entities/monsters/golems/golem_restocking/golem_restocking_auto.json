@@ -1,5 +1,11 @@
 {
+   "mixins": [
+      "file(golem_restocking_ghost_auto.json)"
+   ],
    "components": {
+      "stonehearth:entity_forms": {
+         "ghost_form": "file(golem_restocking_ghost_auto.json)"
+      },
 		"mob": {
          "mob_collision_type": "tiny"
       }
