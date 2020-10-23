@@ -2,6 +2,7 @@ local Point3 = _radiant.csg.Point3
 local Cube3 = _radiant.csg.Cube3
 local Region3 = _radiant.csg.Region3
 local rng = _radiant.math.get_default_rng()
+local util = require 'stonehearth_ace.lib.util'
 
 local TrappingService = require 'stonehearth.services.server.trapping.trapping_service'
 AceTrappingService = class()
@@ -26,6 +27,84 @@ AceTrappingService = class()
 --       trap_data.water_predestroy_listener = nil
 --    end
 -- end
+
+function AceTrappingService:_setup_fish_trapping()
+   -- load up trapping data from json
+   -- set up a season listener to inform the trapping service that the loot cache is no longer valid
+   self._all_fish_trap_loot = radiant.resources.load_json('stonehearth_ace:data:trapping:fish_trap:loot_table')
+   self._season_listener = radiant.events.listen(stonehearth.seasons, 'stonehearth:seasons:changed', function()
+      self._fish_trap_season_cached = false
+   end)
+end
+
+function AceTrappingService:get_fish_trap_capture_loot_table()
+   self:_ensure_fish_trap_loot_tables()
+
+   return self._fish_trap_capture_biome_loot_table
+end
+
+function AceTrappingService:get_fish_trap_harvest_loot_table()
+   self:_ensure_fish_trap_loot_tables()
+
+   return self._fish_trap_harvest_loot_table
+end
+
+function AceTrappingService:_ensure_fish_trap_loot_tables()
+   if not self._fish_trap_biome_cached then
+      self:_cache_fish_trap_biome_loot_tables()
+   end
+
+   if not self._fish_trap_season_cached then
+      self:_cache_fish_trap_season_loot_tables()
+   end
+end
+
+function AceTrappingService:_cache_fish_trap_biome_loot_tables()
+   self._fish_trap_biome_cached = true
+   self._fish_trap_season_cached = false
+
+   local biome_uri = stonehearth.world_generation:get_biome_alias()
+
+   local all_capture_loot = self._all_fish_trap_loot.capture_loot
+   local biome_capture_loot = all_capture_loot.biomes and all_capture_loot.biomes[biome_uri]
+   self._biome_capture_seasons_loot = biome_capture_loot and biome_capture_loot.seasons or {}
+
+   local all_harvest_loot = self._all_fish_trap_loot.harvest_loot
+   local biome_harvest_loot = all_harvest_loot.biomes and all_harvest_loot.biomes[biome_uri]
+   self._biome_harvest_seasons_loot = biome_harvest_loot and biome_harvest_loot.seasons or {}
+   
+   self._fish_trap_capture_biome_loot_table = self:_merge_loot_tables(all_capture_loot.default, biome_capture_loot and biome_capture_loot.default)
+   self._fish_trap_harvest_biome_loot_table = self:_merge_loot_tables(all_harvest_loot.default, biome_harvest_loot and biome_harvest_loot.default)
+end
+
+function AceTrappingService:_cache_fish_trap_season_loot_tables()
+   self._fish_trap_season_cached = true
+
+   local season_id = stonehearth.seasons:get_current_season().id
+
+   local all_capture_loot = self._all_fish_trap_loot.capture_loot
+   local season_capture_loot = all_capture_loot.seasons and all_capture_loot.seasons[season_id]
+   local biome_season_capture_loot = self._biome_capture_seasons_loot[season_id]
+   local biome_capture_loot = radiant.deep_copy(self._fish_trap_capture_biome_loot_table)
+
+   local all_harvest_loot = self._all_fish_trap_loot.harvest_loot
+   local season_harvest_loot = all_harvest_loot.seasons and all_harvest_loot.seasons[season_id]
+   local biome_season_harvest_loot = self._biome_harvest_seasons_loot[season_id]
+   local biome_harvest_loot = radiant.deep_copy(self._fish_trap_harvest_biome_loot_table)
+   
+   -- deep copy the biome loot table so we don't have to recreate it when the season changes
+   self._fish_trap_capture_loot_table = self:_merge_loot_tables(self:_merge_loot_tables(biome_capture_loot, season_capture_loot), biome_season_capture_loot)
+   self._fish_trap_harvest_loot_table = self:_merge_loot_tables(self:_merge_loot_tables(biome_harvest_loot, season_harvest_loot), biome_season_harvest_loot)
+end
+
+function AceTrappingService:_merge_loot_tables(t1, t2)
+   -- if they have values, assume they're tables
+   if t1 and t2 then
+      return util.deep_merge(t1, t2)
+   else
+      return t1 or t2
+   end
+end
 
 -- register fish traps and index them by the water entity they fish from
 -- making it easy for a trap to check what other traps it might be contesting

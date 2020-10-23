@@ -26,6 +26,21 @@ function util.deep_compare(t1, t2, ignore_mt)
    return true
 end
 
+function util.deep_merge(merge_into, merge_from)
+   for k, v in pairs(merge_from) do
+      local vtype = type(v)
+      if type(merge_into[k]) == 'table' and vtype == 'table' then
+         util.deep_merge(merge_into[k], v)
+      elseif vtype == 'table' then
+         merge_into[k] = radiant.deep_copy(v)
+      else
+         merge_into[k] = v
+      end
+   end
+
+   return merge_into
+end
+
 function util.itable_append(t1, t2)
    for _, v in pairs(t2) do
       t1[#t1+1] = v
