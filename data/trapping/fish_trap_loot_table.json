@@ -23,10 +23,9 @@
                         "uri": "stonehearth_ace:consumables:captive:fish:silver",
                         "weight": 2
                      },
-                     "carp": {
+                     "biome_fish": {
                         "uri": "stonehearth_ace:consumables:captive:fish:carp",
-                        "weight": 1.5,
-                        "min_water_volume": 150
+                        "weight": 1.5
                      }
                   }
                }
@@ -56,11 +55,9 @@
                         "uri": "stonehearth_ace:food:fish_meat",
                         "weight": 2
                      },
-                     "carp": {
+                     "biome_fish": {
                         "uri": "stonehearth_ace:food:fish_meat:carp",
-                        "weight": 1.5,
-                        "min_water_volume": 150,
-                        "num_rolls": 2
+                        "weight": 1.5
                      }
                   }
                },
@@ -86,269 +83,26 @@
                }
             }
          },
-         "summer": {
-            "capture_loot": {
-               "entries": {
-                  "optional": {
-                     "items": {
-                        "big": {
-                           "uri": "stonehearth_ace:consumables:captive:fish:big",
-                           "weight": 2,
-                           "min_water_volume": 300
-                        },
-                        "dark": {
-                           "uri": "stonehearth_ace:consumables:captive:fish:dark",
-                           "weight": 1
-                        },
-                        "long": {
-                           "uri": "stonehearth_ace:consumables:captive:fish:long",
-                           "weight": 1,
-                           "min_water_volume": 200
-                        },
-                        "silver": {
-                           "uri": "stonehearth_ace:consumables:captive:fish:silver",
-                           "weight": 2
-                        },
-                        "carp": {
-                           "uri": "stonehearth_ace:consumables:captive:fish:carp",
-                           "weight": 1,
-                           "min_water_volume": 150
-                        }
-                     }
-                  }
-               }
-            },
-            "harvest_loot": {
-               "entries": {
-                  "meat": {
-                     "items": {
-                        "big": {
-                           "uri": "stonehearth_ace:food:fish_meat",
-                           "weight": 2,
-                           "min_water_volume": 300,
-                           "num_rolls": 3
-                        },
-                        "dark": {
-                           "uri": "stonehearth_ace:food:fish_meat",
-                           "weight": 1
-                        },
-                        "long": {
-                           "uri": "stonehearth_ace:food:fish_meat",
-                           "weight": 1,
-                           "min_water_volume": 200,
-                           "num_rolls": 2
-                        },
-                        "silver": {
-                           "uri": "stonehearth_ace:food:fish_meat",
-                           "weight": 2
-                        },
-                        "carp": {
-                           "uri": "stonehearth_ace:food:fish_meat:carp",
-                           "weight": 1,
-                           "min_water_volume": 150,
-                           "num_rolls": 2
-                        }
-                     }
-                  },
-                  "optional": {
-                     "num_rolls": {
-                        "min": 0,
-                        "max": 1
-                     },
-                     "items": {
-                        "fish_roe": {
-                           "uri": "stonehearth_ace:food:fish_roe:fish_roe_basket",
-                           "weight": 3
-                        },
-                        "fish_big_roe": {
-                           "uri": "stonehearth_ace:food:fish_roe:fish_big_roe_basket",
-                           "weight": 1
-                        }
-                     }
-                  }
-               }
-            }
-         },
-         "winter": {
-            "capture_loot": {
-               "entries": {
-                  "optional": {
-                     "items": {
-                        "big": {
-                           "uri": "stonehearth_ace:consumables:captive:fish:big",
-                           "weight": 1,
-                           "min_water_volume": 300
-                        },
-                        "dark": {
-                           "uri": "stonehearth_ace:consumables:captive:fish:dark",
-                           "weight": 1
-                        },
-                        "long": {
-                           "uri": "stonehearth_ace:consumables:captive:fish:long",
-                           "weight": 0.5,
-                           "min_water_volume": 200
-                        },
-                        "silver": {
-                           "uri": "stonehearth_ace:consumables:captive:fish:silver",
-                           "weight": 1
-                        },
-                        "carp": {
-                           "uri": "stonehearth_ace:consumables:captive:fish:carp",
-                           "weight": 4,
-                           "min_water_volume": 150
-                        }
-                     }
-                  }
-               }
-            },
-            "harvest_loot": {
-               "entries": {
-                  "meat": {
-                     "items": {
-                        "big": {
-                           "uri": "stonehearth_ace:food:fish_meat",
-                           "weight": 1,
-                           "min_water_volume": 300,
-                           "num_rolls": 3
-                        },
-                        "dark": {
-                           "uri": "stonehearth_ace:food:fish_meat",
-                           "weight": 1
-                        },
-                        "long": {
-                           "uri": "stonehearth_ace:food:fish_meat",
-                           "weight": 0.5,
-                           "min_water_volume": 200,
-                           "num_rolls": 2
-                        },
-                        "silver": {
-                           "uri": "stonehearth_ace:food:fish_meat",
-                           "weight": 1
-                        },
-                        "carp": {
-                           "uri": "stonehearth_ace:food:fish_meat:carp",
-                           "weight": 4,
-                           "min_water_volume": 150,
-                           "num_rolls": 2
-                        }
-                     }
-                  }
-               }
-            }
-         },
-         "stonehearth:biome:desert": {
-            "capture_loot": {
-               "entries": {
-                  "optional": {
-                     "items": {
-                        "big": {
-                           "uri": "stonehearth_ace:consumables:captive:fish:big",
-                           "weight": 1,
-                           "min_water_volume": 300
-                        },
-                        "dark": {
-                           "uri": "stonehearth_ace:consumables:captive:fish:dark",
-                           "weight": 2
-                        },
-                        "long": {
-                           "uri": "stonehearth_ace:consumables:captive:fish:long",
-                           "weight": 2,
-                           "min_water_volume": 200
-                        },
-                        "silver": {
-                           "uri": "stonehearth_ace:consumables:captive:fish:silver",
-                           "weight": 2
-                        },
-                        "catfish": {
-                           "uri": "stonehearth_ace:consumables:captive:fish:catfish",
-                           "weight": 1.5,
-                           "min_water_volume": 150
-                        }
-                     }
-                  }
-               }
-            },
-            "harvest_loot": {
-               "entries": {
-                  "meat": {
-                     "items": {
-                        "big": {
-                           "uri": "stonehearth_ace:food:fish_meat",
-                           "weight": 1,
-                           "min_water_volume": 300,
-                           "num_rolls": 3
-                        },
-                        "dark": {
-                           "uri": "stonehearth_ace:food:fish_meat",
-                           "weight": 2
-                        },
-                        "long": {
-                           "uri": "stonehearth_ace:food:fish_meat",
-                           "weight": 2,
-                           "min_water_volume": 200,
-                           "num_rolls": 2
-                        },
-                        "silver": {
-                           "uri": "stonehearth_ace:food:fish_meat",
-                           "weight": 2
-                        },
-                        "catfish": {
-                           "uri": "stonehearth_ace:food:fish_meat:catfish",
-                           "weight": 1.5,
-                           "min_water_volume": 150,
-                           "num_rolls": 2
-                        }
-                     }
-                  },
-                  "optional": {
-                     "num_rolls": {
-                        "min": 0,
-                        "max": 1
-                     },
-                     "items": {
-                        "none": {
-                           "uri": "",
-                           "weight": 4
-                        },
-                        "fish_roe": {
-                           "uri": "stonehearth_ace:food:fish_roe:fish_roe_basket",
-                           "weight": 3
-                        },
-                        "fish_big_roe": {
-                           "uri": "stonehearth_ace:food:fish_roe:fish_big_roe_basket",
-                           "weight": 1
-                        }
-                     }
-                  }
-               }
-            },
+         "seasons": {
             "summer": {
                "capture_loot": {
                   "entries": {
                      "optional": {
                         "items": {
                            "big": {
-                              "uri": "stonehearth_ace:consumables:captive:fish:big",
-                              "weight": 2,
-                              "min_water_volume": 300
+                              "weight": 2
                            },
                            "dark": {
-                              "uri": "stonehearth_ace:consumables:captive:fish:dark",
                               "weight": 1
                            },
                            "long": {
-                              "uri": "stonehearth_ace:consumables:captive:fish:long",
-                              "weight": 1,
-                              "min_water_volume": 200
+                              "weight": 1
                            },
                            "silver": {
-                              "uri": "stonehearth_ace:consumables:captive:fish:silver",
                               "weight": 2
                            },
-                           "catfish": {
-                              "uri": "stonehearth_ace:consumables:captive:fish:catfish",
-                              "weight": 1,
-                              "min_water_volume": 150
+                           "biome_fish": {
+                              "weight": 1
                            }
                         }
                      }
@@ -359,46 +113,30 @@
                      "meat": {
                         "items": {
                            "big": {
-                              "uri": "stonehearth_ace:food:fish_meat",
-                              "weight": 2,
-                              "min_water_volume": 300,
-                              "num_rolls": 3
+                              "weight": 2
                            },
                            "dark": {
-                              "uri": "stonehearth_ace:food:fish_meat",
                               "weight": 1
                            },
                            "long": {
-                              "uri": "stonehearth_ace:food:fish_meat",
-                              "weight": 1,
-                              "min_water_volume": 200,
-                              "num_rolls": 2
+                              "weight": 1
                            },
                            "silver": {
-                              "uri": "stonehearth_ace:food:fish_meat",
                               "weight": 2
                            },
-                           "catfish": {
-                              "uri": "stonehearth_ace:food:fish_meat:catfish",
-                              "weight": 1,
-                              "min_water_volume": 150,
-                              "num_rolls": 2
+                           "biome_fish": {
+                              "weight": 1
                            }
                         }
                      },
                      "optional": {
                         "num_rolls": {
                            "min": 0,
-                           "max": 1
+                           "max": 2
                         },
                         "items": {
-                           "fish_roe": {
-                              "uri": "stonehearth_ace:food:fish_roe:fish_roe_basket",
-                              "weight": 3
-                           },
-                           "fish_big_roe": {
-                              "uri": "stonehearth_ace:food:fish_roe:fish_big_roe_basket",
-                              "weight": 1
+                           "none": {
+                              "weight": 0
                            }
                         }
                      }
@@ -411,27 +149,19 @@
                      "optional": {
                         "items": {
                            "big": {
-                              "uri": "stonehearth_ace:consumables:captive:fish:big",
-                              "weight": 1,
-                              "min_water_volume": 300
+                              "weight": 1
                            },
                            "dark": {
-                              "uri": "stonehearth_ace:consumables:captive:fish:dark",
                               "weight": 1
                            },
                            "long": {
-                              "uri": "stonehearth_ace:consumables:captive:fish:long",
-                              "weight": 0.5,
-                              "min_water_volume": 200
+                              "weight": 0.5
                            },
                            "silver": {
-                              "uri": "stonehearth_ace:consumables:captive:fish:silver",
                               "weight": 1
                            },
-                           "catfish": {
-                              "uri": "stonehearth_ace:consumables:captive:fish:catfish",
-                              "weight": 4,
-                              "min_water_volume": 150
+                           "biome_fish": {
+                              "weight": 4
                            }
                         }
                      }
@@ -442,387 +172,40 @@
                      "meat": {
                         "items": {
                            "big": {
-                              "uri": "stonehearth_ace:food:fish_meat",
-                              "weight": 1,
-                              "min_water_volume": 300,
-                              "num_rolls": 3
+                              "weight": 1
                            },
                            "dark": {
-                              "uri": "stonehearth_ace:food:fish_meat",
                               "weight": 1
                            },
                            "long": {
-                              "uri": "stonehearth_ace:food:fish_meat",
-                              "weight": 0.5,
-                              "min_water_volume": 200,
-                              "num_rolls": 2
+                              "weight": 0.5
                            },
                            "silver": {
-                              "uri": "stonehearth_ace:food:fish_meat",
                               "weight": 1
                            },
-                           "catfish": {
-                              "uri": "stonehearth_ace:food:fish_meat:catfish",
-                              "weight": 4,
-                              "min_water_volume": 150,
-                              "num_rolls": 2
-                           }
-                        }
-                     }
-                  }
-               }
-            }
-         },
-         "stonehearth:biome:arctic": {
-            "capture_loot": {
-               "entries": {
-                  "optional": {
-                     "items": {
-                        "big": {
-                           "uri": "stonehearth_ace:consumables:captive:fish:big",
-                           "weight": 1,
-                           "min_water_volume": 300
-                        },
-                        "dark": {
-                           "uri": "stonehearth_ace:consumables:captive:fish:dark",
-                           "weight": 2
-                        },
-                        "long": {
-                           "uri": "stonehearth_ace:consumables:captive:fish:long",
-                           "weight": 2,
-                           "min_water_volume": 200
-                        },
-                        "silver": {
-                           "uri": "stonehearth_ace:consumables:captive:fish:silver",
-                           "weight": 2
-                        },
-                        "salmon": {
-                           "uri": "stonehearth_ace:consumables:captive:fish:salmon",
-                           "weight": 1.5,
-                           "min_water_volume": 150
-                        }
-                     }
-                  }
-               }
-            },
-            "harvest_loot": {
-               "entries": {
-                  "meat": {
-                     "items": {
-                        "big": {
-                           "uri": "stonehearth_ace:food:fish_meat",
-                           "weight": 1,
-                           "min_water_volume": 300,
-                           "num_rolls": 3
-                        },
-                        "dark": {
-                           "uri": "stonehearth_ace:food:fish_meat",
-                           "weight": 2
-                        },
-                        "long": {
-                           "uri": "stonehearth_ace:food:fish_meat",
-                           "weight": 2,
-                           "min_water_volume": 200,
-                           "num_rolls": 2
-                        },
-                        "silver": {
-                           "uri": "stonehearth_ace:food:fish_meat",
-                           "weight": 2
-                        },
-                        "salmon": {
-                           "uri": "stonehearth_ace:food:fish_meat:salmon",
-                           "weight": 1.5,
-                           "min_water_volume": 150,
-                           "num_rolls": 2
-                        }
-                     }
-                  },
-                  "optional": {
-                     "num_rolls": {
-                        "min": 0,
-                        "max": 1
-                     },
-                     "items": {
-                        "none": {
-                           "uri": "",
-                           "weight": 4
-                        },
-                        "fish_roe": {
-                           "uri": "stonehearth_ace:food:fish_roe:fish_roe_basket",
-                           "weight": 3
-                        },
-                        "fish_big_roe": {
-                           "uri": "stonehearth_ace:food:fish_roe:fish_big_roe_basket",
-                           "weight": 1
-                        }
-                     }
-                  }
-               }
-            },
-            "summer": {
-               "capture_loot": {
-                  "entries": {
-                     "optional": {
-                        "items": {
-                           "big": {
-                              "uri": "stonehearth_ace:consumables:captive:fish:big",
-                              "weight": 2,
-                              "min_water_volume": 300
-                           },
-                           "dark": {
-                              "uri": "stonehearth_ace:consumables:captive:fish:dark",
-                              "weight": 1
-                           },
-                           "long": {
-                              "uri": "stonehearth_ace:consumables:captive:fish:long",
-                              "weight": 1,
-                              "min_water_volume": 200
-                           },
-                           "silver": {
-                              "uri": "stonehearth_ace:consumables:captive:fish:silver",
-                              "weight": 2
-                           },
-                           "salmon": {
-                              "uri": "stonehearth_ace:consumables:captive:fish:salmon",
-                              "weight": 1,
-                              "min_water_volume": 150
-                           }
-                        }
-                     }
-                  }
-               },
-               "harvest_loot": {
-                  "entries": {
-                     "meat": {
-                        "items": {
-                           "big": {
-                              "uri": "stonehearth_ace:food:fish_meat",
-                              "weight": 2,
-                              "min_water_volume": 300,
-                              "num_rolls": 3
-                           },
-                           "dark": {
-                              "uri": "stonehearth_ace:food:fish_meat",
-                              "weight": 1
-                           },
-                           "long": {
-                              "uri": "stonehearth_ace:food:fish_meat",
-                              "weight": 1,
-                              "min_water_volume": 200,
-                              "num_rolls": 2
-                           },
-                           "silver": {
-                              "uri": "stonehearth_ace:food:fish_meat",
-                              "weight": 2
-                           },
-                           "salmon": {
-                              "uri": "stonehearth_ace:food:fish_meat:salmon",
-                              "weight": 1,
-                              "min_water_volume": 150,
-                              "num_rolls": 2
+                           "biome_fish": {
+                              "weight": 4
                            }
                         }
                      },
                      "optional": {
                         "num_rolls": {
                            "min": 0,
-                           "max": 1
-                        },
-                        "items": {
-                           "fish_roe": {
-                              "uri": "stonehearth_ace:food:fish_roe:fish_roe_basket",
-                              "weight": 3
-                           },
-                           "fish_big_roe": {
-                              "uri": "stonehearth_ace:food:fish_roe:fish_big_roe_basket",
-                              "weight": 1
-                           }
-                        }
-                     }
-                  }
-               }
-            },
-            "winter": {
-               "capture_loot": {
-                  "entries": {
-                     "optional": {
-                        "items": {
-                           "big": {
-                              "uri": "stonehearth_ace:consumables:captive:fish:big",
-                              "weight": 1,
-                              "min_water_volume": 300
-                           },
-                           "dark": {
-                              "uri": "stonehearth_ace:consumables:captive:fish:dark",
-                              "weight": 1
-                           },
-                           "long": {
-                              "uri": "stonehearth_ace:consumables:captive:fish:long",
-                              "weight": 0.5,
-                              "min_water_volume": 200
-                           },
-                           "silver": {
-                              "uri": "stonehearth_ace:consumables:captive:fish:silver",
-                              "weight": 1
-                           },
-                           "salmon": {
-                              "uri": "stonehearth_ace:consumables:captive:fish:salmon",
-                              "weight": 4,
-                              "min_water_volume": 150
-                           }
-                        }
-                     }
-                  }
-               },
-               "harvest_loot": {
-                  "entries": {
-                     "meat": {
-                        "items": {
-                           "big": {
-                              "uri": "stonehearth_ace:food:fish_meat",
-                              "weight": 1,
-                              "min_water_volume": 300,
-                              "num_rolls": 3
-                           },
-                           "dark": {
-                              "uri": "stonehearth_ace:food:fish_meat",
-                              "weight": 1
-                           },
-                           "long": {
-                              "uri": "stonehearth_ace:food:fish_meat",
-                              "weight": 0.5,
-                              "min_water_volume": 200,
-                              "num_rolls": 2
-                           },
-                           "silver": {
-                              "uri": "stonehearth_ace:food:fish_meat",
-                              "weight": 1
-                           },
-                           "salmon": {
-                              "uri": "stonehearth_ace:food:fish_meat:salmon",
-                              "weight": 4,
-                              "min_water_volume": 150,
-                              "num_rolls": 2
-                           }
+                           "max": 0
                         }
                      }
                   }
                }
             }
          },
-         "stonehearth_ace:biome:highlands": {
-            "capture_loot": {
-               "entries": {
-                  "optional": {
-                     "items": {
-                        "big": {
-                           "uri": "stonehearth_ace:consumables:captive:fish:big",
-                           "weight": 1,
-                           "min_water_volume": 300
-                        },
-                        "dark": {
-                           "uri": "stonehearth_ace:consumables:captive:fish:dark",
-                           "weight": 2
-                        },
-                        "long": {
-                           "uri": "stonehearth_ace:consumables:captive:fish:long",
-                           "weight": 2,
-                           "min_water_volume": 200
-                        },
-                        "silver": {
-                           "uri": "stonehearth_ace:consumables:captive:fish:silver",
-                           "weight": 2
-                        },
-                        "trout": {
-                           "uri": "stonehearth_ace:consumables:captive:fish:trout",
-                           "weight": 1.5,
-                           "min_water_volume": 150
-                        }
-                     }
-                  }
-               }
-            },
-            "harvest_loot": {
-               "entries": {
-                  "meat": {
-                     "items": {
-                        "big": {
-                           "uri": "stonehearth_ace:food:fish_meat",
-                           "weight": 1,
-                           "min_water_volume": 300,
-                           "num_rolls": 3
-                        },
-                        "dark": {
-                           "uri": "stonehearth_ace:food:fish_meat",
-                           "weight": 2
-                        },
-                        "long": {
-                           "uri": "stonehearth_ace:food:fish_meat",
-                           "weight": 2,
-                           "min_water_volume": 200,
-                           "num_rolls": 2
-                        },
-                        "silver": {
-                           "uri": "stonehearth_ace:food:fish_meat",
-                           "weight": 2
-                        },
-                        "trout": {
-                           "uri": "stonehearth_ace:food:fish_meat:trout",
-                           "weight": 1.5,
-                           "min_water_volume": 150,
-                           "num_rolls": 2
-                        }
-                     }
-                  },
-                  "optional": {
-                     "num_rolls": {
-                        "min": 0,
-                        "max": 1
-                     },
-                     "items": {
-                        "none": {
-                           "uri": "",
-                           "weight": 4
-                        },
-                        "fish_roe": {
-                           "uri": "stonehearth_ace:food:fish_roe:fish_roe_basket",
-                           "weight": 3
-                        },
-                        "fish_big_roe": {
-                           "uri": "stonehearth_ace:food:fish_roe:fish_big_roe_basket",
-                           "weight": 1
-                        }
-                     }
-                  }
-               }
-            },
-            "summer": {
+         "biomes": {
+            "stonehearth:biome:temperate": {
                "capture_loot": {
                   "entries": {
                      "optional": {
                         "items": {
-                           "big": {
-                              "uri": "stonehearth_ace:consumables:captive:fish:big",
-                              "weight": 2,
-                              "min_water_volume": 300
-                           },
-                           "dark": {
-                              "uri": "stonehearth_ace:consumables:captive:fish:dark",
-                              "weight": 1
-                           },
-                           "long": {
-                              "uri": "stonehearth_ace:consumables:captive:fish:long",
-                              "weight": 1,
-                              "min_water_volume": 200
-                           },
-                           "silver": {
-                              "uri": "stonehearth_ace:consumables:captive:fish:silver",
-                              "weight": 2
-                           },
-                           "trout": {
-                              "uri": "stonehearth_ace:consumables:captive:fish:trout",
-                              "weight": 1,
-                              "min_water_volume": 150
+                           "biome_fish": {
+                              "uri": "stonehearth_ace:consumables:captive:fish:carp"
                            }
                         }
                      }
@@ -832,80 +215,21 @@
                   "entries": {
                      "meat": {
                         "items": {
-                           "big": {
-                              "uri": "stonehearth_ace:food:fish_meat",
-                              "weight": 2,
-                              "min_water_volume": 300,
-                              "num_rolls": 3
-                           },
-                           "dark": {
-                              "uri": "stonehearth_ace:food:fish_meat",
-                              "weight": 1
-                           },
-                           "long": {
-                              "uri": "stonehearth_ace:food:fish_meat",
-                              "weight": 1,
-                              "min_water_volume": 200,
-                              "num_rolls": 2
-                           },
-                           "silver": {
-                              "uri": "stonehearth_ace:food:fish_meat",
-                              "weight": 2
-                           },
-                           "trout": {
-                              "uri": "stonehearth_ace:food:fish_meat:trout",
-                              "weight": 1,
-                              "min_water_volume": 150,
-                              "num_rolls": 2
-                           }
-                        }
-                     },
-                     "optional": {
-                        "num_rolls": {
-                           "min": 0,
-                           "max": 1
-                        },
-                        "items": {
-                           "fish_roe": {
-                              "uri": "stonehearth_ace:food:fish_roe:fish_roe_basket",
-                              "weight": 3
-                           },
-                           "fish_big_roe": {
-                              "uri": "stonehearth_ace:food:fish_roe:fish_big_roe_basket",
-                              "weight": 1
+                           "biome_fish": {
+                              "uri": "stonehearth_ace:food:fish_meat:carp"
                            }
                         }
                      }
                   }
                }
             },
-            "winter": {
+            "stonehearth:biome:desert": {
                "capture_loot": {
                   "entries": {
                      "optional": {
                         "items": {
-                           "big": {
-                              "uri": "stonehearth_ace:consumables:captive:fish:big",
-                              "weight": 1,
-                              "min_water_volume": 300
-                           },
-                           "dark": {
-                              "uri": "stonehearth_ace:consumables:captive:fish:dark",
-                              "weight": 1
-                           },
-                           "long": {
-                              "uri": "stonehearth_ace:consumables:captive:fish:long",
-                              "weight": 0.5,
-                              "min_water_volume": 200
-                           },
-                           "silver": {
-                              "uri": "stonehearth_ace:consumables:captive:fish:silver",
-                              "weight": 1
-                           },
-                           "trout": {
-                              "uri": "stonehearth_ace:consumables:captive:fish:trout",
-                              "weight": 4,
-                              "min_water_volume": 150
+                           "biome_fish": {
+                              "uri": "stonehearth_ace:consumables:captive:fish:catfish"
                            }
                         }
                      }
@@ -915,31 +239,56 @@
                   "entries": {
                      "meat": {
                         "items": {
-                           "big": {
-                              "uri": "stonehearth_ace:food:fish_meat",
-                              "weight": 1,
-                              "min_water_volume": 300,
-                              "num_rolls": 3
-                           },
-                           "dark": {
-                              "uri": "stonehearth_ace:food:fish_meat",
-                              "weight": 1
-                           },
-                           "long": {
-                              "uri": "stonehearth_ace:food:fish_meat",
-                              "weight": 0.5,
-                              "min_water_volume": 200,
-                              "num_rolls": 2
-                           },
-                           "silver": {
-                              "uri": "stonehearth_ace:food:fish_meat",
-                              "weight": 1
-                           },
-                           "trout": {
-                              "uri": "stonehearth_ace:food:fish_meat:trout",
-                              "weight": 4,
-                              "min_water_volume": 150,
-                              "num_rolls": 2
+                           "biome_fish": {
+                              "uri": "stonehearth_ace:food:fish_meat:catfish"
+                           }
+                        }
+                     }
+                  }
+               }
+            },
+            "stonehearth:biome:arctic": {
+               "capture_loot": {
+                  "entries": {
+                     "optional": {
+                        "items": {
+                           "biome_fish": {
+                              "uri": "stonehearth_ace:consumables:captive:fish:salmon"
+                           }
+                        }
+                     }
+                  }
+               },
+               "harvest_loot": {
+                  "entries": {
+                     "meat": {
+                        "items": {
+                           "biome_fish": {
+                              "uri": "stonehearth_ace:food:fish_meat:salmon"
+                           }
+                        }
+                     }
+                  }
+               }
+            },
+            "stonehearth_ace:biome:highlands": {
+               "capture_loot": {
+                  "entries": {
+                     "optional": {
+                        "items": {
+                           "biome_fish": {
+                              "uri": "stonehearth_ace:consumables:captive:fish:trout"
+                           }
+                        }
+                     }
+                  }
+               },
+               "harvest_loot": {
+                  "entries": {
+                     "meat": {
+                        "items": {
+                           "biome_fish": {
+                              "uri": "stonehearth_ace:food:fish_meat:trout"
                            }
                         }
                      }
