@@ -31,7 +31,7 @@ AceTrappingService = class()
 function AceTrappingService:_setup_fish_trapping()
    -- load up trapping data from json
    -- set up a season listener to inform the trapping service that the loot cache is no longer valid
-   self._all_fish_trap_loot = radiant.resources.load_json('stonehearth_ace:data:trapping:fish_trap:loot_table')
+   self._all_fish_trap_loot = radiant.resources.load_json('stonehearth_ace:trapper:fish_trap:loot_table')
    self._season_listener = radiant.events.listen(stonehearth.seasons, 'stonehearth:seasons:changed', function()
       self._fish_trap_season_cached = false
    end)
