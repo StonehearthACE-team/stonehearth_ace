@@ -20,7 +20,7 @@ local function make_bed_filter()
       end)
 end
 
-local function make_bed_rater()
+local function make_bed_rater(entity_id)
    return function(target)
          -- rate priority care beds highest, then owned beds, then unowned beds, then anything else
          local bed_data = radiant.entities.get_entity_data(target, 'stonehearth:bed')
@@ -28,10 +28,10 @@ local function make_bed_rater()
             return 1
          else
             local ownable_component = target:get_component('stonehearth:ownable_object')
-            local owner = ownable_component:get_owner()
-            if not owner or not owner:is_valid() then
+            local owner = ownable_component and ownable_component:get_owner()
+            if not ownable_component or not owner or not owner:is_valid() then
                return 0.5
-            elseif owner:get_id() == self._entity_id then
+            elseif owner:get_id() == entity_id then
                return 0.75
             else
                return 0
@@ -97,7 +97,7 @@ function RestInBed:_try_request_medic(bypass_rest_from_conditions_check)
       self._signaled = true
       self._ai:set_think_output({
          filter_fn = make_bed_filter(),
-         rating_fn = make_bed_rater(),
+         rating_fn = make_bed_rater(self._entity_id),
          description = 'find bed to rest in',
          owner_player_id = self._player_id,
       })
