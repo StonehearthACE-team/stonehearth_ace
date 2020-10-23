@@ -348,9 +348,9 @@ function FishTrapComponent:_update_transform_options()
          }
       }
       if self._sv._is_capture_enabled then
-         overrides.additional_items = self._settings.capture_loot
+         overrides.additional_items = stonehearth.trapping:get_fish_trap_capture_loot_table()
       else
-         overrides.additional_items = self._settings.harvest_loot
+         overrides.additional_items = stonehearth.trapping:get_fish_trap_harvest_loot_table()
       end
       self:_prep_raise_trap()
       overrides.transforming_effect_duration = self:_get_trap_move_time() + (self._settings.harvest_effect_time or 90)

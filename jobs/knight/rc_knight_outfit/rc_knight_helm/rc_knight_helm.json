@@ -1,8 +1,12 @@
 {
-   "mixins": "stonehearth:mixins:item_properties",
+   "mixins": "/stonehearth/jobs/knight/knight_helm/knight_helm.json",
    "type": "entity",
    "components": {
       "model_variants": {
+			"mixintypes": {
+            "default": "override",
+            "female": "override"
+         },
          "default": {
             "layer": "hat",
             "transparent": "false",
@@ -17,29 +21,11 @@
                "file(rc_knight_helm_female.qb)"
             ]
          }
-      },
-      "stonehearth:equipment_piece": {
-         "render_type": "merge_with_model",
-         "slot": "helmet",
-         "ilevel": 4,
-			"injected_buffs": [
-            "stonehearth_ace:buffs:weather:sunstroke_resist"
-         ],
-         "roles":["knight_job"],
-         "no_drop": true
       }
    },
    "entity_data": {
-      "stonehearth:combat:armor_data": {
-         "base_damage_reduction": 4
-      },
       "stonehearth:catalog": {
-         "display_name": "i18n(stonehearth:jobs.knight.knight_helm.display_name)",
-         "description": "i18n(stonehearth:jobs.knight.knight_helm.description)",
-         "icon": "file(rc_knight_helm.png)",
-         "is_item": true,
-         "category": "armor",
-         "material_tags":["iron", "armor", "heavy_armor"]
+         "icon": "file(rc_knight_helm.png)"
       }
    }
 }

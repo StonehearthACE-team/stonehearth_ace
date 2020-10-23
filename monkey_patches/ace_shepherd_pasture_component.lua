@@ -669,7 +669,7 @@ function AceShepherdPastureComponent:_collect_strays()
             local region_shape = self._entity:add_component('region_collision_shape'):get_region():get()
 
             local pasture_location = radiant.entities.get_world_grid_location(self._entity)
-            local world_region_shape = region_shape:translated(pasture_location):extruded('y', -10, 10)
+            local world_region_shape = region_shape:translated(pasture_location):extruded('y', 10, 10)
 
             local equipment_component = critter:get_component('stonehearth:equipment')
             local pasture_collar = equipment_component:has_item_type('stonehearth:pasture_equipment:tag')

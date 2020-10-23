@@ -296,7 +296,8 @@ function AceMiningCallHandler:designate_mining_zone(session, response, tool_mode
             if is_ctrl_held() then
                mode = 'remove'
             end
-            _radiant.call('stonehearth:add_mining_zone', region, mode, { start_suspended = radiant.util.get_config('default_mining_zones_suspended', false) })
+            local start_suspended = radiant.util.get_global_config('mods.stonehearth.default_mining_zones_suspended', false)
+            _radiant.call('stonehearth:add_mining_zone', region, mode, { start_suspended = start_suspended })
                :done(function(r)
                      response:resolve({ mining_zone = r.mining_zone })
                      if not stonehearth.subterranean_view:clip_height_initialized() then
