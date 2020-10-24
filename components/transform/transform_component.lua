@@ -248,14 +248,25 @@ function TransformComponent:_set_transform_option(key, overrides)
    self:_set_up_commands()
 end
 
+function TransformComponent:reconsider_commands()
+   self:_set_up_commands()
+end
+
 function TransformComponent:_set_up_commands()
    -- if there's a transform_command, add that command
    local options = self._all_transform_data.transform_options or { default = self._all_transform_data }
    for key, options in pairs(options) do
-      if options.command then
+      local command = options.command
+      if command then
+         -- also evaluate whether conditions are met for this command to be added
          local command_comp = self._entity:add_component('stonehearth:commands')
-         if not command_comp:has_command(options.command) then
-            command_comp:add_command(options.command)
+         local has_command = command_comp:has_command(command)
+         local meets_requirements = self:_meets_commmand_requirements(options.command_requirements)
+
+         if meets_requirements and not has_command then
+            command_comp:add_command(command)
+         elseif not meets_requirements and has_command then
+            command_comp:remove_command(command)
          end
       end
    end
@@ -277,6 +288,7 @@ function TransformComponent:transform()
       kill_entity = transform_data.kill_entity,
 		model_variant = transform_data.model_variant,
       destroy_entity = transform_data.destroy_entity,
+      remove_components = transform_data.remove_components,
       transform_event = function(transformed_form)
          radiant.events.trigger(self._entity, 'stonehearth_ace:on_transformed', {entity = self._entity, transformed_form = transformed_form})
       end
@@ -372,8 +384,6 @@ function TransformComponent:perform_transform(use_finish_cb)
       self.__saved_variables:mark_changed()
    end
 
-   local max_progress
-   local duration
    if data.transforming_effect_duration then
       self._sv.progress:start_time_tracking(data.transforming_effect_duration)
    end
@@ -446,6 +456,38 @@ function TransformComponent:_refresh_attention_effect()
    end
 end
 ]]
+
+function TransformComponent:_meets_commmand_requirements(requirements)
+   if not requirements then
+      return true
+   end
+
+   if requirements.all_of_components then
+      for component, require in pairs(requirements.all_of_components) do
+         -- true means it needs the component, false means it needs to not have it!
+         if (self._entity:get_component(component) and true or false) ~= require then
+            return false
+         end
+      end
+   end
+
+   if requirements.any_of_components then
+      local meets_requirement = false
+      for component, require in pairs(requirements.any_of_components) do
+         -- true means it needs the component, false means it needs to not have it!
+         if (self._entity:get_component(component) and true or false) == require then
+            meets_requirement = true
+            break
+         end
+      end
+
+      if not meets_requirement then
+         return false
+      end
+   end
+
+   return true
+end
 
 function TransformComponent:_place_additional_items(owner, collect_location)
    local data = self:get_transform_options()

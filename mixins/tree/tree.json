@@ -52,6 +52,31 @@
                }
             }
          }
+      },
+      "stonehearth_ace:transform": {}
+   },
+   "entity_data": {
+      "stonehearth:evolve_data": {
+         "allow_manual_stunting": true
+      },
+      "stonehearth_ace:transform_data": {
+         "command": "stonehearth_ace:commands:transform:stunt_growth",
+         "command_requirements": {
+            "all_of_components": {
+               "stonehearth:evolve": true
+            }
+         },
+         "request_action": "stonehearth_ace:transform",
+         "request_action_overlay_effect": "stonehearth_ace:effects:transform_herbalist_overlay_effect",
+         "transforming_worker_effect": "fiddle",
+         "transforming_worker_effect_times": 1,
+         "worker_required_job": {
+            "stonehearth:jobs:worker": true,
+            "stonehearth:jobs:farmer": true,
+            "stonehearth:jobs:herbalist": true
+         },
+         "destroy_entity": false,
+         "remove_components": ["stonehearth:evolve"]
       }
    }
 }

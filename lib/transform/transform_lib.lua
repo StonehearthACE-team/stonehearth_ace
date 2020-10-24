@@ -105,6 +105,10 @@ function transform_lib.transform(entity, transformer, into_uri, options)
          -- but first check if it should get "stunted"
          if not transformed_form_data.stunted_chance or rng:get_real(0, 1) > transformed_form_data.stunted_chance then
             transformed_form:add_component('stonehearth:evolve')
+            -- if it allows for manually stunting growth, make sure the transform option is set up
+            if transformed_form_data.allow_manual_stunting then
+               transformed_form:add_component('stonehearth_ace:transform'):reconsider_commands()
+            end
          end
       end
 
@@ -168,6 +172,14 @@ function transform_lib.transform(entity, transformer, into_uri, options)
       radiant.entities.kill_entity(entity)
    elseif options.destroy_entity ~= false then
       radiant.entities.destroy_entity(entity)
+   elseif options.remove_components then
+      for _, component in ipairs(options.remove_components) do
+         entity:remove_component(component)
+      end
+      local transform_comp = entity:get_component('stonehearth_ace:transform')
+      if transform_comp then
+         transform_comp:reconsider_commands()
+      end
    end
 	
 	if options.model_variant then
