@@ -1993,17 +1993,25 @@
       "trapping": {
          "all_trappable_animals": {
             "trappable_animals": {
+               "critters": {
+                  "name": "Small Animals",
+                  "description": "Small animals like rabbits or squirrels produce meat and sometimes bones, pelt or feathers"
+               },
+               "bugs": {
+                  "name": "Bugs",
+                  "description": "Beetles, Bitsy Ants and other bugs will produce bug meat and chitin, a resource used in some recipes"
+               },
                "medium": {
-                  "name": "Midsize Animals",
-                  "description": "Larger than critters, smaller than big game."
+                  "name": "Common Game",
+                  "description": "Larger than small critters, like foxes, deer and the occasional boar. They provide plenty of meat, pelts, bones and sometimes special meat chunks"
                },
                "big_game": {
                   "name": "Big Game",
-                  "description": "Large animals produce large cuts of meat, jerky, pelts, and other useful items"
+                  "description": "The largest animals like bears, stags and boars will provide lots of meat, rare pelts, bones and special meat chunks"
                },
                "exotic": {
-                  "name": "Exotic",
-                  "description": "Unusual creatures that provide uncommon resources."
+                  "name": "Exotic Game",
+                  "description": "Unusual and uncommon creatures like large flightless birds or stray lizards can provide several unique resources like feathers or varanus skins"
                }
             }
          }
@@ -2105,7 +2113,7 @@
             },
             "stunt_growth": {
                "display_name": "Stunt Growth",
-               "description": "Order a Worker, Farmer, or Herbalist to stunt this tree's growth so it stays this size."
+               "description": "Order a Worker, Farmer, or Herbalist to stunt this tree.<br>A stunted tree will never grow past its current size.<br><br>Very useful for gardening and landscaping!"
             },
             "release_fish": {
                "display_name": "Release Fish",
@@ -5818,6 +5826,11 @@
                "recipe_name": "Fish Kibble (x5)",
                "description": "Bake savory, crunchy rations for pets. Exclusively vegetarian animals will not eat this kibble.",
                "flavor": "Particularly tasty for kittens"
+            },
+            "kibble_meat_recipe": {
+               "recipe_name": "Meat Kibble (x5)",
+               "description": "Bake hearty, proteic rations for pets. Exclusively vegetarian animals will not eat this kibble.",
+               "flavor": "More efficient than fish, but not as tasty"
             },
             "kibble_veggie_recipe": {
                "recipe_name": "Veggie Kibble (x5)",
@@ -11755,6 +11768,10 @@
             "ice_cream_decay": {
                "display_name": "It's melting! Better eat it fast!"
             }
+         },
+         "kibble_meat": {
+            "display_name": "Meat Kibble",
+            "description": "Carnivore food made exclusively for pets. A kibble bowl can be used for serving."
          }
       },
       "terrain": {
@@ -11998,6 +12015,10 @@
             "mila": {
                "display_name": "Spirit of Mila",
                "description": "Ready to defend others!"
+            },
+            "alligator_young": {
+               "display_name": "Young Varanus",
+               "description": "Just a juvenile lizard dreaming of knocking doors down..."
             }
          },
          "avian": {
@@ -13812,6 +13833,11 @@
          },
          "undead": {
             "species": "Undead"
+         }
+      },
+      "rabbit": {
+         "rabbit_statue": {
+            "display_name": "Ancient Monument"
          }
       }
    },

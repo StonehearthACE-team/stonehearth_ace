@@ -5,7 +5,7 @@
       "model_variants": {
          "default": {
             "models": [
-               "file(kibble_veggie.qb)"
+               "file(kibble_meat.qb)"
             ]
          }
       },
@@ -22,35 +22,35 @@
       },
       "stonehearth:food": {
          "stonehearth:sitting_on_chair": {
-            "satisfaction": 65
+            "satisfaction": 80
          },
          "default": {
-            "satisfaction": 65
+            "satisfaction": 80
          },
-         "quality": 6
+         "quality": 5
       },
       "stonehearth:net_worth": {
-         "value_in_gold": 5,
+         "value_in_gold": 4,
          "rarity": "common",
          "shop_info": {
             "buyable": true,
             "sellable": true,
-            "shopkeeper_level": 2,
+            "shopkeeper_level": 1,
             "shopkeeper_type": "caravan"
          }
       },
       "stonehearth:catalog": {
-         "display_name": "i18n(stonehearth_ace:entities.food.kibble_veggie.display_name)",
-         "description": "i18n(stonehearth_ace:entities.food.kibble_veggie.description)",
-         "icon": "file(kibble_veggie.png)",
+         "display_name": "i18n(stonehearth_ace:entities.food.kibble_meat.display_name)",
+         "description": "i18n(stonehearth_ace:entities.food.kibble_meat.description)",
+         "icon": "file(kibble_meat.png)",
          "is_item": true,
          "category": "food",
          "material_tags": [
             "pet_food",
             "animal_feed",
-            "kibble_veggie",
+            "kibble_meat",
             "stockpile_fodder",
-            "vegetarian"
+            "meat"
          ]
       },
       "stonehearth:appeal": {

@@ -1,0 +1,26 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:monsters:forest:alligator",
+   "components": {
+      "render_info": {
+         "scale": 0.11
+      },
+      "stonehearth:attributes": {
+         "max_health": {
+            "type": "basic",
+            "value": 80
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:bait_trap": {
+         "can_trap": true,
+         "catch_chance": 0.4,
+         "trigger_trap_on_failure_chance": 1
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.monsters.forest.alligator_young.display_name)",
+         "description": "i18n(stonehearth_ace:entities.monsters.forest.alligator_young.description)"
+      }
+   }
+}
