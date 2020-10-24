@@ -106,7 +106,8 @@ function transform_lib.transform(entity, transformer, into_uri, options)
          if not transformed_form_data.stunted_chance or rng:get_real(0, 1) > transformed_form_data.stunted_chance then
             transformed_form:add_component('stonehearth:evolve')
             -- if it allows for manually stunting growth, make sure the transform option is set up
-            if transformed_form_data.allow_manual_stunting then
+            local modifiers = radiant.entities.get_entity_data(transformed_form, 'stonehearth_ace:evolve_modifiers')
+            if modifiers and modifiers.allow_manual_stunting then
                transformed_form:add_component('stonehearth_ace:transform'):reconsider_commands()
             end
          end
