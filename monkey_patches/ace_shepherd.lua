@@ -7,13 +7,14 @@ local CraftingJob = require 'stonehearth.jobs.crafting_job'
 local AceShepherdClass = class()
 radiant.mixin(AceShepherdClass, CraftingJob)
 
-function AceShepherdClass:destroy()
-   if self._sv.is_current_class then
-      self:_abandon_following_animals()
-   end
+-- don't think this is necessary since it isn't really adding anything? maybe it used to
+-- function AceShepherdClass:destroy()
+--    if self._sv.is_current_class then
+--       self:_abandon_following_animals()
+--    end
 
-   CraftingJob.__user_destroy(self)
-end
+--    CraftingJob.__user_destroy(self)
+-- end
 
 AceShepherdClass._ace_old_can_find_animal_in_world = ShepherdClass.can_find_animal_in_world
 function AceShepherdClass:can_find_animal_in_world()

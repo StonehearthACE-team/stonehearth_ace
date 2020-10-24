@@ -1,0 +1,42 @@
+{
+   "type": "recipe",
+   "effort": 16,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.kibble_meat_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.kibble_meat_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.kibble_meat_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/kibble_meat/kibble_meat/kibble_meat.png",
+   "level_requirement": 4,
+   "workshop": "stonehearth:cook:oven",
+   "ingredients": [
+      {
+         "material": "grain_flour cooking_ingredient",
+         "count": 1
+      },
+      {
+         "material": "food meat raw",
+         "count": 1
+      },
+		{
+         "material": "butter cooking_ingredient",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:kibble_meat"
+      },
+		{
+         "item": "stonehearth_ace:food:kibble_meat"
+      },
+		{
+         "item": "stonehearth_ace:food:kibble_meat"
+      },
+		{
+         "item": "stonehearth_ace:food:kibble_meat"
+      },
+		{
+         "item": "stonehearth_ace:food:kibble_meat"
+      }
+   ]
+}

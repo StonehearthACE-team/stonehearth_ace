@@ -1,6 +1,8 @@
 local rng = _radiant.math.get_default_rng()
 local EatTroughFeed = radiant.class()
 
+local log = radiant.log.create_logger('eat_from_trough_action')
+
 EatTroughFeed.name = 'eat feed from trough'
 EatTroughFeed.does = 'stonehearth:eat'
 EatTroughFeed.args = {
@@ -50,7 +52,7 @@ function EatTroughFeed:_rethink(trough)
    local pasture = self._pasture
 
    if not pasture or not pasture:is_valid() then
-      self._log:warning('pasture destroyed')
+      log:warning('pasture destroyed')
       return
    end
 

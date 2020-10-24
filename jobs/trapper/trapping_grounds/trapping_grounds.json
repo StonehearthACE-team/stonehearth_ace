@@ -4,8 +4,8 @@
       "stonehearth:trapping_grounds": {
          "trappable_animals": {
             "critters": {
-               "name": "i18n(stonehearth:data.trapping.all_trappable_animals.trappable_animals.critters.name)",
-               "description": "i18n(stonehearth:data.trapping.all_trappable_animals.trappable_animals.critters.description)",
+               "name": "i18n(stonehearth_ace:data.trapping.all_trappable_animals.trappable_animals.critters.name)",
+               "description": "i18n(stonehearth_ace:data.trapping.all_trappable_animals.trappable_animals.critters.description)",
                "icon": "/stonehearth/entities/critters/rabbit/rabbit.png",
                "ordinal": 1,
                "level_requirement": 1,
@@ -13,8 +13,8 @@
                "wilderness_requirement_multiplier": 0.32
             },
             "bugs": {
-               "name": "i18n(stonehearth:data.trapping.all_trappable_animals.trappable_animals.bugs.name)",
-               "description": "i18n(stonehearth:data.trapping.all_trappable_animals.trappable_animals.bugs.description)",
+               "name": "i18n(stonehearth_ace:data.trapping.all_trappable_animals.trappable_animals.bugs.name)",
+               "description": "i18n(stonehearth_ace:data.trapping.all_trappable_animals.trappable_animals.bugs.description)",
                "icon": "/stonehearth/entities/critters/beetle/beetle.png",
                "ordinal": 2,
                "level_requirement": 2,
@@ -24,7 +24,7 @@
             "medium": {
                "name": "i18n(stonehearth_ace:data.trapping.all_trappable_animals.trappable_animals.medium.name)",
                "description": "i18n(stonehearth_ace:data.trapping.all_trappable_animals.trappable_animals.medium.description)",
-               "icon": "/stonehearth/entities/monsters/forest/boar/boar.png",
+               "icon": "/stonehearth/entities/critters/deer/deer.png",               
                "ordinal": 3,
                "level_requirement": 3,
                "experience_multiplier": 2,
@@ -33,7 +33,7 @@
             "big_game": {
                "name": "i18n(stonehearth_ace:data.trapping.all_trappable_animals.trappable_animals.big_game.name)",
                "description": "i18n(stonehearth_ace:data.trapping.all_trappable_animals.trappable_animals.big_game.description)",
-               "icon": "/stonehearth/entities/critters/deer/deer.png",
+					"icon": "/stonehearth/entities/monsters/forest/boar/boar.png",
                "ordinal": 4,
                "level_requirement": 5,
                "experience_multiplier": 2.4,
@@ -81,21 +81,21 @@
             "exotic": {
                "stonehearth:monsters:avian:duckduck": 75,
 					"stonehearth:monsters:avian:ostrich": 75,
-					"stonehearth:monsters:forest:alligator": 25
+					"stonehearth_ace:monsters:forest:alligator:young": 25
             }
          },
          "seasonal_trappable_animal_weights": {
 				"spring": {
 					"medium": {
-                  "stonehearth:monsters:forest:boar": 80,
+                  "stonehearth:monsters:forest:boar": 80
                },
                "big_game": {
-                  "stonehearth:monsters:forest:boar": 90,
+                  "stonehearth:monsters:forest:boar": 90
                }
 				},
 				"summer": {
 					"exotic": {
-                  "stonehearth:monsters:forest:alligator": 50
+                  "stonehearth_ace:monsters:forest:alligator:young": 50
                }
             },
 				"autumn": {
@@ -116,7 +116,7 @@
 						"stonehearth_ace:monsters:forest:bear_cub": 0
                },
 					"exotic": {
-                  "stonehearth:monsters:forest:alligator": 0
+                  "stonehearth_ace:monsters:forest:alligator:young": 0
                }
             }
          },

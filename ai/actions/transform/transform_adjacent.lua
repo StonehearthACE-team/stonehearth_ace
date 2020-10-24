@@ -59,6 +59,7 @@ function TransformItemAdjacent:run(ai, entity, args)
       local effect = data.transforming_worker_effect
       local times = data.transforming_worker_effect_times
       local duration = data.transforming_effect_duration
+      local use_timed_progress = (times or 1) < 2
       local ingredient = data.transform_ingredient_uri or data.transform_ingredient_material
       local ing_item
       
@@ -82,7 +83,16 @@ function TransformItemAdjacent:run(ai, entity, args)
             log:debug('running effect %s for %s (of %s)', effect, this_duration, duration)
             ai:execute('stonehearth:run_effect_timed', { effect = effect, duration = this_duration})
          else
-            progress:set_max_progress(data.transforming_worker_effect_times)
+            -- if the effect will run fewer than 2 times, use time tracking instead
+            -- briefly create an effect in order to get its duration
+            if use_timed_progress then
+               local temp_effect = radiant.effects.run_effect(entity, effect)
+               local duration = stonehearth.calendar:realtime_to_game_seconds(temp_effect._finish_timer:get_duration() * (times or 1), true)
+               progress:start_time_tracking(duration)
+               temp_effect:stop()
+            else
+               progress:set_max_progress(data.transforming_worker_effect_times)
+            end
 
             for i = 1, times or 1 do
                if progress:is_finished() then
@@ -90,7 +100,9 @@ function TransformItemAdjacent:run(ai, entity, args)
                end
 
                ai:execute('stonehearth:run_effect', { effect = effect})
-               progress:increment_progress()
+               if not use_timed_progress then
+                  progress:increment_progress()
+               end
             end
          end
          self._completed_work = true
