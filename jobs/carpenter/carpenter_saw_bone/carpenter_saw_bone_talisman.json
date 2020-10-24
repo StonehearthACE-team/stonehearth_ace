@@ -11,9 +11,6 @@
       },
       "effect_list": {
          "default": "stonehearth:effects:talisman_glow"
-      },
-      "stonehearth:promotion_talisman": {
-         "job": "stonehearth:jobs:carpenter"
       }
    },
    "entity_data": {
@@ -34,6 +31,11 @@
          "material_tags": [
             "stockpile_tool"
          ]
+      },
+      "stonehearth_ace:promotion_talisman": {
+         "equipment_overrides": {
+            "mainhand": "stonehearth_ace:carpenter:saw:bone"
+         }
       }
    }
 }

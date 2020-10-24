@@ -163,6 +163,10 @@ function ConnectionRenderer:_update()
    --local facing = radiant.entities.get_facing(self._entity)
 
    local data = self._datastore:get_data()
+   if not data then
+      return
+   end
+
    local connected_stats = data.connected_stats
    local hilight = {priority = -1}
 

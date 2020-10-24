@@ -65,17 +65,14 @@
       </div>
          <div class="requiresBlock">
             <h2 id="requires">{{i18n stonehearth:ui.game.promotion_tree.requires}}</h2>
-            {{#if view.selectedJobTalisman}}
-               <div id='requiredTalisman'>
-                  <img {{bind-attr src=view.selectedJobTalisman.icon}}></image>
-                  <div id='talismanName' {{bind-attr class=view.requirementsMet:requirementsMet:requirementsUnmet}}>
-                        {{i18n_key view.selectedJobTalisman.display_name}}
-                  </div>
-                  <div id='talismanDescription' >{{i18n_key view.selectedJob.requirements}}</div>
+            <div id="requiredTalisman" {{bind-attr class=view.selectedJobTalisman::hidden}}>
+               <img {{bind-attr src=view.selectedJobTalisman.icon}}></image>
+               <div id="talismanName" {{bind-attr class=view.requirementsMet:requirementsMet:requirementsUnmet}}>
+                     {{i18n_key view.selectedJobTalisman.display_name}}
                </div>
-            {{else}}
-               <div id="requiredDescription">{{i18n_key view.selectedJob.requirements}}</div>
-            {{/if}}
+               <div id="talismanDescription" >{{i18n_key view.selectedJob.requirements}}</div>
+            </div>
+            <div id="requiredDescription" {{bind-attr class=view.selectedJobTalisman:hidden:}}>{{i18n_key view.selectedJob.requirements}}</div>
             <div id="parentRequiredLevel">
                {{#each view.parentJobs}}
                   <div {{bind-attr class="this.requirement_met:requirementsMet:requirementsUnmet"}}>
