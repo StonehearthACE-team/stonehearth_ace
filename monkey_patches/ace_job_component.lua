@@ -247,7 +247,7 @@ function AceJobComponent:promote_to(job_uri, options)
       -- equip your equipment, unless you're an npc, in which case the game is responsible for manually
       -- adding the proper equipment
       if not is_npc then
-         self:_equip_equipment(self._job_json)
+         self:_equip_equipment(self._job_json, talisman_entity)
       end
 
       self:reset_to_default_combat_stance()
@@ -345,6 +345,8 @@ function AceJobComponent:promote_to(job_uri, options)
 
    self:_register_entity_types()
 
+   self._sv.current_talisman_uri = talisman_entity and talisman_entity:get_uri()
+
 	--radiant.events.trigger(self._entity, 'stonehearth_ace:on_promote', { job_uri = job_uri, options = options })
 end
 
@@ -365,35 +367,65 @@ function AceJobComponent:demote(old_job_json, dont_drop_talisman)
 end
 
 AceJobComponent._ace_old__equip_equipment = JobComponent._equip_equipment
-function AceJobComponent:_equip_equipment(json)
+function AceJobComponent:_equip_equipment(json, talisman_entity)
    self._sv._job_equipment_uris = {}
    
    local equipment_component = self._entity:add_component('stonehearth:equipment')
    if json and json.equipment then
+      local talisman_data = talisman_entity and radiant.entities.get_entity_data(talisman_entity, 'stonehearth_ace:promotion_talisman')
+      local equipment_overrides = talisman_data and talisman_data.equipment_overrides or {}
       -- iterate through the equipment in the table, placing one item from each value
       -- on the entity.  they of the entry are irrelevant: they're just for documenation
-      for _, items in pairs(json.equipment) do
-         local equipment
+      for slot, json_items in pairs(json.equipment) do
+         local items = equipment_overrides[slot] or json_items
+         local item
          if type(items) == 'string' then
             -- create this piece
-            equipment = radiant.entities.create_entity(items)
+            item = items
          elseif type(items) == 'table' then
-            -- pick an random item from the array
-            equipment = radiant.entities.create_entity(items[rng:get_int(1, #items)])
+            -- pick a random item from the array
+            item = items[rng:get_int(1, #items)]
          end
-         local unequipped_item = equipment_component:equip_item(equipment, false)
-         if unequipped_item then
-            local location = radiant.entities.get_world_grid_location(self._entity)
-            if location then
-               local placement_point = radiant.terrain.find_placement_point(location, 1, 4)
-               radiant.terrain.place_entity(unequipped_item, placement_point)
-            else
-               -- can happen duing re-embarkation with classes upgraded from classes that have equipment to drop.
-               radiant.entities.destroy_entity(unequipped_item)
+
+         if item and item ~= '' then
+            local equipment = radiant.entities.create_entity(item)
+            local unequipped_item = equipment_component:equip_item(equipment, false)
+            if unequipped_item then
+               local location = radiant.entities.get_world_grid_location(self._entity)
+               if location then
+                  local placement_point = radiant.terrain.find_placement_point(location, 1, 4)
+                  radiant.terrain.place_entity(unequipped_item, placement_point)
+               else
+                  -- can happen duing re-embarkation with classes upgraded from classes that have equipment to drop.
+                  radiant.entities.destroy_entity(unequipped_item)
+               end
+            end
+            table.insert(self._sv._job_equipment, equipment)
+            self._sv._job_equipment_uris[equipment:get_component('stonehearth:equipment_piece'):get_slot()] = equipment:get_uri()
+         end
+      end
+   end
+end
+
+-- Drops the talisman near the location of the entity, returns the talisman entity
+-- If the class has something to say about the talisman before it goes, do that first
+function AceJobComponent:_drop_talisman(old_job_json)
+   if old_job_json and not stonehearth.player:is_npc(self._entity) then
+      local talisman_uri = self._sv.current_talisman_uri or old_job_json.talisman_uri
+      if talisman_uri then
+         self._sv.current_talisman_uri = nil
+         local location = radiant.entities.get_world_grid_location(self._entity)
+         local player_id = radiant.entities.get_player_id(self._entity)
+         local output_table = {}
+         output_table[talisman_uri] = 1
+         --TODO: is it possible that this gets dumped onto an inaccessible location?
+         local items = radiant.entities.spawn_items(output_table, location, 1, 2, { owner = player_id })
+         local inventory = stonehearth.inventory:get_inventory(radiant.entities.get_player_id(self._entity))
+         if inventory then
+            for _, item in pairs(items) do
+               inventory:add_item(item) -- Force add talisman to inventory
             end
          end
-         table.insert(self._sv._job_equipment, equipment)
-         self._sv._job_equipment_uris[equipment:get_component('stonehearth:equipment_piece'):get_slot()] = equipment:get_uri()
       end
    end
 end
