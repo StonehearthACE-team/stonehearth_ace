@@ -3,7 +3,10 @@
 	"mixins": "/stonehearth/data/rigs/entities/humans/effects/saw.json",
    "tracks": {
       "grab_saw" : {
-         "item": "stonehearth_ace:tools:carpenter_saw_steel"
+			"mixintypes": {
+				"item": "remove"
+			},
+         "item_in_slot": "mainhand"
       }
    }
 }
