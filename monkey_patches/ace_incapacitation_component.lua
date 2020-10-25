@@ -12,6 +12,30 @@ local STATES = {
    DEAD = 'dead',
 }
 
+function AceIncapacitationComponent:_drop_equipment()
+   local location = radiant.entities.get_world_grid_location(self._entity)
+
+   if not location then
+      return
+   end
+
+   -- Drop all equipment that is droppable.
+   local ec = self._entity:get_component('stonehearth:equipment')
+   local equipped_items = ec and ec:get_all_dropable_items() or {}
+
+   for key, item in pairs(equipped_items) do
+      ec:unequip_item(item)
+      -- drop_item will destroy any items that are destroy_on_drop
+      ec:drop_item(item)
+   end
+
+   -- If you have a job, re-equip your default equipment.
+   local jc = self._entity:get_component('stonehearth:job')
+   if jc and ec then
+      jc:_equip_equipment(jc:get_job_data(), jc:get_current_talisman_uri())
+   end
+end
+
 AceIncapacitationComponent._ace_old__declare_state_transitions = IncapacitationComponent._declare_state_transitions
 function AceIncapacitationComponent:_declare_state_transitions(sm)
    self:_ace_old__declare_state_transitions(sm)

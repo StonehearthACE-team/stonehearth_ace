@@ -562,6 +562,23 @@ $(top).on('stonehearthReady', function() {
                      }
                      $ingredientDiv.find('.numHave').text(numHave);
                   });
+
+                  // also update the primary product
+                  self.$('#productCount').html('');
+                  var uri = recipe.product_uri;
+                  if (uri) {
+                     var count = self._usableUris[uri] || 0;
+                     if (count > 99999) {
+                        count = i18n.t('stonehearth:ui.game.show_workshop.too_many_symbol');
+                     }
+                     self.$('#productCount').text('(' + count + ')');
+                     if (count == 0) {
+                        self.$('#productCount').addClass('noProductsInInventory');
+                     }
+                     else {
+                        self.$('#productCount').removeClass('noProductsInInventory');
+                     }
+                  }
                }
       
                //Handle level requirements styling
