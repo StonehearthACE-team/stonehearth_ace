@@ -2,6 +2,7 @@
 var stonehearth_ace = {
    _allTitles: {},
    _fence_mode: {},
+   _storageFilterPresets: {},
 
    mergeInto: function(to_obj, from_obj) {
       radiant.each(from_obj, function(name, data) {
@@ -237,6 +238,15 @@ var stonehearth_ace = {
       });
    },
 
+   getStorageFilterPresets: function() {
+      return stonehearth_ace._storageFilterPresets;
+   },
+
+   updateStorageFilterPresets: function(custom_presets) {
+      stonehearth_ace._storageFilterPresets.custom_presets = custom_presets;
+      return radiant.call('radiant:set_config', 'mods.stonehearth_ace.storage_filter_custom_presets', stonehearth_ace._storageFilterPresets.custom_presets);
+   },
+
    getCommandGroup: function(name) {
       return stonehearth_ace._command_groups[name];
    },
@@ -285,6 +295,15 @@ $.getJSON('/stonehearth_ace/ui/data/fence_types.json', function(data) {
          var settings = response['mods.stonehearth_ace.fence_mode'] || {};
          stonehearth_ace._fence_mode.selected_segments = settings.selected_segments;
          stonehearth_ace._fence_mode.custom_presets = settings.custom_presets || {};
+      });
+});
+
+$.getJSON('/stonehearth_ace/ui/data/storage_filter_presets.json', function(data) {
+   stonehearth_ace._storageFilterPresets.default_presets = data.default_presets;
+
+   radiant.call('radiant:get_config', 'mods.stonehearth_ace.storage_filter_custom_presets')
+      .done(function(response) {
+         stonehearth_ace._storageFilterPresets.custom_presets = response['mods.stonehearth_ace.storage_filter_custom_presets'] || {};
       });
 });
 

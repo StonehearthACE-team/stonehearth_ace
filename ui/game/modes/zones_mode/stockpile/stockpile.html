@@ -32,6 +32,52 @@
          <div class="tab" tabPage="filterTab">{{i18n stonehearth:ui.game.zones_mode.stockpile.filter}}</div>
          <div class="tab" tabPage="contentsTab">{{i18n stonehearth:ui.game.zones_mode.stockpile.contents}}</div>
       </div>
+
+      <div id="presetSelection">
+         <input id="presetSearch" type="text" {{bind-attr value=view.presetSearch}} />
+         {{#if view.inSaveMode}}
+         <div class="presetButtons">
+            <a href="#" {{action "saveCurrentPreset" target="view"}} {{bind-attr class=":savePreset :button view.saveAllowed:enabled:disabled"}}>
+               <img class="savePresetImg"/>
+            </a>
+         </div>
+         {{/if}}
+         <div id="presetList">
+            {{#each preset in view.presets}}
+            {{#if preset.has_valid}}
+            <div {{bind-attr data-name=preset.name class=":presetRow preset.default:default: preset.available::unavailable preset.has_invalid:hasInvalid:"}}>
+               <div class="presetPreview">
+                  {{#each material in preset.preview_materials}}
+                  <img {{bind-attr src=material.icon}} class="presetMaterialImg"/>
+                  {{/each}}
+                  {{#if preset.show_ellipsis}}...{{/if}}
+               </div>
+               <div class="presetButtons">
+                  {{#if view.inLoadMode}}
+                  <a class="loadPreset button" href="#" {{action "loadPreset" preset target="view"}}>
+                     <img class="loadPresetImg"/>
+                  </a>
+                  {{/if}}
+                  {{#if view.inSaveMode}}
+                     {{#if preset.default}}
+                     {{else}}
+                     <a class="savePreset button" href="#" {{action "savePreset" preset target="view"}}>
+                        <img class="savePresetImg"/>
+                     </a>
+                     {{/if}}
+                  {{/if}}
+                  {{#if preset.default}}
+                  {{else}}
+                  <a class="deletePreset button" href="#" {{action "deletePreset" preset target="view"}}>
+                     <img class="deletePresetImg"/>
+                  </a>
+                  {{/if}}
+               </div>
+            </div>
+            {{/if}}
+            {{/each}}
+         </div>
+      </div>
    </div>
 </script>
 
@@ -43,6 +89,15 @@
 
 <script type="text/x-handlebars" data-template-name="_filterTab">
    <div id="filterTab" class="tabPage">
+      <div id="presetControls" {{bind-attr class="view.isSingleFilter:hidden"}}>
+         <a id="showLoadPreset" class="button" href="#" {{action "showLoadPreset" target="view"}}>
+            <img class="loadPresetImg"/>
+         </a>
+         <a id="showSavePreset" class="button" href="#" {{action "showSavePreset" target="view"}}>
+            <img class="savePresetImg"/>
+         </a>
+      </div>
+
       {{#if view.isSingleFilter}}
          <p>{{i18n stonehearth:ui.game.zones_mode.stockpile.help_single_filter}}</p>
       {{else}}
