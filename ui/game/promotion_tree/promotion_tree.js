@@ -525,7 +525,7 @@ App.StonehearthPromotionTree.reopen({
             if (jobData.description) {
                var talismanUri = jobData.description.talisman_uri;
                if (talismanUri) {
-                  var uris = typeof talismanUri == 'string' ? [uris] : talismanUri;
+                  var uris = typeof talismanUri == 'string' ? [talismanUri] : talismanUri;
                   for (var i = 0; i < uris.length; i++) {
                      var uri = uris[i];
                      if (inventory_data[uri] && inventory_data[uri].first_item) {

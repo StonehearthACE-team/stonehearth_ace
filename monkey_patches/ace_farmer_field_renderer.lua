@@ -210,8 +210,13 @@ function AceFarmerFieldRenderer:_update_and_get_dirt_node_array(data)
             if not node then
                local model = dirt_plot.overwatered_model or
                      dirt_plot.is_furrow and self._furrow_dirt_model or self._tilled_dirt_model
-               node = self:_create_node(Point3(dirt_plot.x - 1, 0, dirt_plot.y - 1), model)
-               self:_set_dirt_node(x, y, node)
+               if model.model then
+                  node = self:_create_node(Point3(dirt_plot.x - 1, 0, dirt_plot.y - 1), model)
+                  self:_set_dirt_node(x, y, node)
+               else
+                  self:_set_dirt_node(x, y, nil)
+                  log:error('%s no dirt model specified for [%s, %s]', self._entity, x, y)
+               end
             end
             table.insert(dirt_node_array, node)
          end
