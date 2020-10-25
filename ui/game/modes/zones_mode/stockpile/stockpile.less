@@ -1,6 +1,131 @@
 #stockpileWindow {
+   .loadPresetImg {
+      content: url(images/load_icon.png);
+   }
+   .savePresetImg {
+      content: url(images/save_icon.png);
+   }
+   .deletePresetImg {
+      content: url(images/delete_icon.png);
+   }
+
+   #filterTab {
+      position: relative;
+   }
+
+   #presetControls {
+      &.hidden {
+         display: none;
+      }
+
+      position: absolute;
+      top: -5px;
+      right: -4px;
+      justify-content: space-around;
+      flex-direction: row;
+      display: flex;
+
+      img {
+         height: 30px;
+      }
+   }
+
+   #presetSelection {
+      position: absolute;
+      top: 10px;
+      left: 100%;
+      padding-left: 4px;
+      display: none;
+
+      #presetSearch {
+         //position: absolute;
+         //top: -33px;
+         //display: none;
+         width: 410px;
+         height: 30px;
+         background-color: @paperDarkGrey;
+      }
+
+      #presetList {
+         .presetRow {
+            position: relative;
+            color: white;
+            background-color: @paperDarkBlue;
+            border: @paperOuterBorderStyle;
+            width: 424px;
+
+            .presetPreview {
+               width: 354px;
+               padding: 3px;
+               overflow: hidden;
+               white-space: nowrap;
+
+               .presetMaterialImg {
+                  padding-right: -5px;
+                  height: 30px;
+
+                  &.disabled {
+                     opacity: 0.5;
+                  }
+               }
+            }
+
+            .presetButtons {
+               display: none;
+            }
+
+            &.default {
+               background-color: @paperDarkerBorderBlue;
+            }
+
+            &.hasInvalid {
+               background-color: #661818;
+               color: #ff9999;
+            }
+
+            &:hover {
+               background-color: @paperBlue;
+
+               &.hasInvalid {
+                  background-color: #993333;
+               }
+   
+               .presetButtons {
+                  display: block;
+               }
+            }
+         }
+      }
+
+      .presetButtons {
+         position: absolute;
+         right: 5px;
+         top: 0px;
+         bottom: 0px;
+         margin: auto;
+
+         .button {
+            display: inline-block;
+
+            img {
+               height: 30px;
+               margin-top: 5px;
+            }
+
+            &.disabled {
+               filter: grayscale(100%);
+               opacity: 0.75;
+            }
+         }
+      }
+   }
+
    #defaultStorageDiv {
       padding-bottom: 5px;
       float: right;
    }
+}
+
+.tooltipInvalidMaterials {
+   color: #cc3333;
 }

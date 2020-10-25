@@ -14656,6 +14656,43 @@
                   "display_name": "Default Storage",
                   "tooltip": "Quest rewards and traded goods will be directly placed in designated default storage if possible."
                },
+               "filter_presets": {
+                  "preset_description": "[str(good_count)] selected material filters",
+                  "preset_with_invalid_description": "[str(good_count)] selected material filters<br/><span class='tooltipInvalidMaterials'>[str(bad_count)] inapplicable material filters</span>",
+                  "default_presets": {
+                     "wealth": "Default Preset: Wealth",
+                     "combat": "Default Preset: Combat"
+                  },
+                  "preset_filter": {
+                     "save_mode": {
+                        "description": "Specify preset name here and press Enter or click a Save button to save."
+                     },
+                     "load_mode": {
+                        "description": "Type here to filter presets by name."
+                     }
+                  },
+                  "buttons": {
+                     "show_load": {
+                        "title": "Load Preset...",
+                        "description": "Select from a default or custom preset for your storage filter."
+                     },
+                     "show_save": {
+                        "title": "Save Preset...",
+                        "description": "Specify a name for your preset, then press Enter or click a Save button to save."
+                     },
+                     "load_preset": {
+                        "title": "Load Preset"
+                     },
+                     "save_preset": {
+                        "title": "Overwrite Custom Preset",
+                        "description": "Default presets cannot be overwritten."
+                     },
+                     "delete_preset": {
+                        "title": "Delete Custom Preset",
+                        "description": "Default presets cannot be deleted."
+                     }
+                  }
+               },
                "filters": {
                   "tooltip_coal": "Coals",
                   "tooltip_fuel": "Other Fuels",
