@@ -118,6 +118,10 @@ function AceJobComponent:get_population_override()
    return self._sv.population_override
 end
 
+function AceJobComponent:get_current_talisman_uri()
+   return self._sv.current_talisman_uri
+end
+
 -- this is just for the sake of the UI, so that opening the promotion tree doesn't require requesting the job index
 -- as such, we need to store it in _sv
 function AceJobComponent:_update_job_index()
