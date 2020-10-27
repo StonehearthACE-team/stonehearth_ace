@@ -1,20 +1,66 @@
 {
-   "default_presets": {
-      "wealth": [
-         "stockpile_gold_money",
-         "stockpile_trophy",
-         "stockpile_precious_metal",
-         "stockpile_gem"
-      ],
-      "combat": [
-         "stockpile_combat_cape",
-         "stockpile_combat_consumable",
-         "stockpile_equipment armor",
-         "stockpile_equipment shield",
-         "stockpile_exotic_equipment",
-         "stockpile_magic_weapon",
-         "stockpile_weapon melee_weapon",
-         "stockpile_weapon ranged_weapon"
-      ]
+   "default_preset_list": "stonehearth:ui:stockpile:filters",
+   "presets": {
+      "stonehearth:ui:stockpile:filters": {
+         "wealth": [
+            "stockpile_gold_money",
+            "stockpile_trophy",
+            "stockpile_precious_metal",
+            "stockpile_gem"
+         ],
+         "combat": [
+            "stockpile_combat_cape",
+            "stockpile_combat_consumable",
+            "stockpile_equipment armor",
+            "stockpile_equipment shield",
+            "stockpile_exotic_equipment",
+            "stockpile_magic_weapon",
+            "stockpile_weapon melee_weapon",
+            "stockpile_weapon ranged_weapon"
+         ]
+      },
+      "stonehearth_ace:ui:decayables:filters": {
+         "raw_food": [
+            "raw_food turnip",
+            "raw_food carrot",
+            "raw_food pumpkin",
+            "raw_food corn",
+            "raw_food gourd",
+            "raw_food pear",
+            "raw_food watermelon",
+            "raw_food berry",
+            "raw_food sweet_potato",
+            "raw_food vegetable heirbloom",
+            "raw_food cherry",
+            "food_container chanterelle",
+            "food_container bolete",
+            "food_container desert_truffle",
+            "food_container winter_morel",
+            "food_container parasol",
+            "food_container sweet_tooth",
+            "food_container chestnut",
+            "food_container almond",
+            "food_container walnut",
+            "food_container hazelnut",
+            "food_container fish_roe_fish_roe",
+            "food_container fish_big_roe",
+            "cooking_ingredient sugarbell",
+            "cooking_ingredient bug_meat",
+            "cooking_ingredient jerky",
+            "cooking_ingredient poyo_meat",
+            "cooking_ingredient mutton",
+            "cooking_ingredient varanus_meat",
+            "cooking_ingredient pork",
+            "cooking_ingredient venison",
+            "cooking_ingredient poultry_large",
+            "cooking_ingredient steak",
+            "cooking_ingredient duck_meat",
+            "raw fish_meat_fish_meat",
+            "raw fish_carp_meat",
+            "raw fish_catfish_meat",
+            "raw fish_salmon_meat",
+            "raw fish_trout_meat"
+         ]
+      }
    }
 }

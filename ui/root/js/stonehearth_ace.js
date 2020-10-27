@@ -299,7 +299,10 @@ $.getJSON('/stonehearth_ace/ui/data/fence_types.json', function(data) {
 });
 
 $.getJSON('/stonehearth_ace/ui/data/storage_filter_presets.json', function(data) {
-   stonehearth_ace._storageFilterPresets.default_presets = data.default_presets;
+   stonehearth_ace._storageFilterPresets = {
+      'default_presets': data.presets,
+      'default_preset_list': data.default_preset_list,
+   };
 
    radiant.call('radiant:get_config', 'mods.stonehearth_ace.storage_filter_custom_presets')
       .done(function(response) {
