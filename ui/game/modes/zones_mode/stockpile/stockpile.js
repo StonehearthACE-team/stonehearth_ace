@@ -164,17 +164,32 @@ App.StonehearthStockpileView.reopen({
       self._defaultPresets = {};
       self._customPresets = {};
 
-      radiant.each(self._filterPresets.default_presets, function(name, materials) {
+      var defaultPresetList = self._filterPresets.default_preset_list;
+      var filterListUri = self.get('model.stonehearth:storage.filter_list.__self') || defaultPresetList;
+      var defaultPresets = self._filterPresets.default_presets[filterListUri] || self._filterPresets.default_presets[defaultPresetList];
+
+      radiant.each(defaultPresets, function(name, materials) {
          var preset = self._createPresetObj(name, materials, true);
          presets.push(preset);
          self._defaultPresets[name] = preset;
       });
 
+      var customPresets = [];
       radiant.each(self._filterPresets.custom_presets, function(name, materials) {
          var preset = self._createPresetObj(name, materials);
-         presets.push(preset);
+         customPresets.push(preset);
          self._customPresets[name] = preset;
       });
+
+      // sort the custom ones based on whether they have any invalid filter materials in them
+      customPresets.sort((a, b) => {
+         if (a.has_invalid != b.has_invalid) {
+            return b.invalid_materials.length - a.invalid_materials.length;
+         }
+         return a.title.localeCompare(b.title);
+      });
+
+      presets = presets.concat(customPresets);
 
       self.set('presets', presets);
       self.$('#presetSearch').val('');
