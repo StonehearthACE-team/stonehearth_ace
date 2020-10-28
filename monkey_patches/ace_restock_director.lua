@@ -143,7 +143,7 @@ end
 
 function AceRestockDirector:_is_storage_higher_priority_for_item(item, new_storage_comp)
    local current_storage = self._inventory:container_for(item)
-   if not current_storage then
+   if not current_storage or current_storage:get_component('stonehearth:storage'):get_type() ~= 'input_crate' then
       return true
    end
 

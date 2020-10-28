@@ -8,9 +8,11 @@ ExecuteRestockErrand.args = {
 }
 ExecuteRestockErrand.priority = {0, 1}
 
+local _no_fill_backpack_predicate = function() return true end
+
 local function make_fill_backpack_predicate(player_id, bin)
    if not radiant.entities.exists(bin) then
-      return stonehearth.ai.NIL
+      return _no_fill_backpack_predicate
    end
 
    local storage = bin:get_component('stonehearth:storage')
@@ -39,7 +41,7 @@ local function make_fill_backpack_predicate(player_id, bin)
       end)
    end
 
-   return stonehearth.ai.NIL
+   return _no_fill_backpack_predicate
 end
 
 function ExecuteRestockErrand:start_thinking(ai, entity, args)
