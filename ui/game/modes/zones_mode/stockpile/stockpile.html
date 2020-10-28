@@ -34,14 +34,16 @@
       </div>
 
       <div id="presetSelection">
-         <input id="presetSearch" type="text" {{bind-attr value=view.presetSearch}} />
-         {{#if view.inSaveMode}}
-         <div class="presetButtons">
-            <a href="#" {{action "saveCurrentPreset" target="view"}} {{bind-attr class=":savePreset :button view.saveAllowed:enabled:disabled"}}>
-               <img class="savePresetImg"/>
-            </a>
+         <div id="presetSearchContainer">
+            <input id="presetSearch" type="text" {{bind-attr value=view.presetSearch}} />
+            {{#if view.inSaveMode}}
+            <div class="presetButtons">
+               <a href="#" {{action "saveCurrentPreset" target="view"}} {{bind-attr class=":savePreset :button view.saveAllowed:enabled:disabled"}}>
+                  <img class="savePresetImg"/>
+               </a>
+            </div>
+            {{/if}}
          </div>
-         {{/if}}
          <div id="presetList">
             {{#each preset in view.presets}}
             {{#if preset.has_valid}}

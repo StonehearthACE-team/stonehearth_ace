@@ -2,22 +2,93 @@
    "default_preset_list": "stonehearth:ui:stockpile:filters",
    "presets": {
       "stonehearth:ui:stockpile:filters": {
-         "wealth": [
-            "stockpile_gold_money",
-            "stockpile_trophy",
-            "stockpile_precious_metal",
-            "stockpile_gem"
+			"crafting": [
+				"stockpile_wood",
+				"stockpile_stone",
+				"stockpile_clay",		
+				"stockpile_bone",
+				"stockpile_fuel",
+				"stockpile_tool"
+			],
+			"weaver": [
+				"fiber resource",
+				"stockpile_animal_part",
+				"stockpile_refined_goods",
+				"stockpile_refined_weaver",
+				"civillian_equipment"
          ],
-         "combat": [
-            "stockpile_combat_cape",
-            "stockpile_combat_consumable",
-            "stockpile_equipment armor",
-            "stockpile_equipment shield",
-            "stockpile_exotic_equipment",
-            "stockpile_magic_weapon",
-            "stockpile_weapon melee_weapon",
-            "stockpile_weapon ranged_weapon"
-         ]
+			"blacksmith": [
+				"stockpile_fuel",
+				"stockpile_coal",
+				"stockpile_wood",
+				"stockpile_ore",
+				"stockpile_refined_ore",
+				"stockpile_precious_metal",
+				"stockpile_gizmos"
+         ],			
+			"herbalist": [
+				"stockpile_fuel",
+				"stockpile_fungi",
+				"herb aromatic resource",
+				"herb bitter resource",
+				"stockpile_plant algae",
+				"stockpile_healing_item",
+				"stockpile_fertilizer",
+				"stockpile_consumable"
+         ],
+			"cook": [
+				"stockpile_fuel",
+				"stockpile_raw_food vegetable",
+				"stockpile_raw_food fruit",
+				"stockpile_cooking_ingredient meat_ingredient",
+				"stockpile_cooking_ingredient animal_ingredient",
+				"stockpile_cooking_ingredient nuts",
+				"stockpile_raw_food fungi",
+				"stockpile_cooking_ingredient other_ingredient"
+         ],
+			"brewer": [
+				"stockpile_fuel",
+				"stockpile_raw_food fruit",
+				"stockpile_brewing_ingredient",
+				"stockpile_drink",
+				"stockpile_prepared_drink"
+         ],
+			"larder": [
+				"stockpile_prepared_food baked",
+				"stockpile_prepared_food",
+				"stockpile_serving_vessel",
+				"stockpile_drink",
+				"stockpile_prepared_drink"
+			],
+			"shepherd": [
+				"stockpile_plant seed",
+				"stockpile_plant",
+				"stockpile_fodder"
+         ],         
+			"construction": [   			
+				"stockpile_wood",
+				"stockpile_stone",
+				"stockpile_clay",				
+				"stockpile_portal",				
+				"stockpile_defense",
+				"stockpile_geomancer",
+				"resource_pile"
+         ],
+			"furniture": [				
+				"stockpile_plant decoration",
+				"stockpile_furniture",
+				"stockpile_decoration",
+				"stockpile_trophy"
+			],	
+			"landscaping": [
+				"stockpile_plant",
+				"stockpile_fungi",
+				"stockpile_plant tree",
+				"stockpile_plant decoration",
+				"stockpile_plant seed",
+				"stockpile_seeds_consumable",
+				"stockpile_fish"
+			]
       },
       "stonehearth_ace:ui:decayables:filters": {
          "raw_food": [
