@@ -37,21 +37,33 @@
       padding-left: 4px;
       display: none;
 
-      #presetSearch {
+      #presetSearchContainer {
          //position: absolute;
          //top: -33px;
          //display: none;
+         position: relative;
          width: 410px;
-         height: 30px;
-         background-color: @paperDarkGrey;
+
+         #presetSearch {
+            width: 410px;
+            height: 30px;
+            background-color: @kingdomColorTitleDark;
+         }
+
+         .presetButtons {
+            right: -10px;
+         }
       }
 
       #presetList {
+         max-height: 588px;
+         overflow-y: auto;
+
          .presetRow {
             position: relative;
             color: white;
-            background-color: @paperDarkBlue;
-            border: @paperOuterBorderStyle;
+            background-color: @kingdomColorPanel;
+            border: 1px solid @kingdomColorTitleBorder;
             width: 424px;
 
             .presetPreview {
@@ -75,7 +87,7 @@
             }
 
             &.default {
-               background-color: @paperDarkerBorderBlue;
+               background-color: @kingdomColorPanelLight;
             }
 
             &.hasInvalid {
@@ -84,7 +96,7 @@
             }
 
             &:hover {
-               background-color: @paperBlue;
+               background-color: @kingdomColorPanelDark;
 
                &.hasInvalid {
                   background-color: #993333;
