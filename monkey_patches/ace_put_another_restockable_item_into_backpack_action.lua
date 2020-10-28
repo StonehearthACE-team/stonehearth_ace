@@ -1,24 +1,13 @@
 local Entity = _radiant.om.Entity
 
+local PutAnotherRestockableItemIntoBackpack = require 'stonehearth.ai.actions.put_another_restockable_item_into_backpack_action'
 local AcePutAnotherRestockableItemIntoBackpack = radiant.class()
+--AcePutAnotherRestockableItemIntoBackpack.ACE_USE_MERGE_INTO_TABLE = true
 
-AcePutAnotherRestockableItemIntoBackpack.args = {
-   range = 'number',
-   candidates = 'table',
-   storage = Entity,
-   owner_player_id = {
-      type = 'string',
-      default = stonehearth.ai.NIL,
-   },
-   reserve_space = {
-      type = 'boolean',
-      default = true,
-   },
-   filter_fn = {            -- an optional filter function to limit what gets picked up
+PutAnotherRestockableItemIntoBackpack.args.filter_fn = {            -- an optional filter function to limit what gets picked up
       type = 'function',
       default = stonehearth.ai.NIL,
-   },
-}
+   }
 
 function AcePutAnotherRestockableItemIntoBackpack:_find_path_to_item(ai, entity, args)
    if not ai.CURRENT.storage then
@@ -54,7 +43,7 @@ function AcePutAnotherRestockableItemIntoBackpack:_find_path_to_item(ai, entity,
          return false
       end
 
-      if args.filter_fn and type(args.filter_fn) == 'function' then
+      if args.filter_fn then
          return args.filter_fn(item)
       end
 

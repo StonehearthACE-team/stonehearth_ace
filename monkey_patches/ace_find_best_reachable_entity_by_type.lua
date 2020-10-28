@@ -2,10 +2,11 @@ local Entity = _radiant.om.Entity
 
 local FindBestReachableEntityByType = require 'stonehearth.ai.actions.find_best_reachable_entity_by_type'
 local AceFindBestReachableEntityByType = class()
+--AceFindBestReachableEntityByType.ACE_USE_MERGE_INTO_TABLE = true
 
 local log = radiant.log.create_logger('find_best_reachable_entity_by_type')
 
-AceFindBestReachableEntityByType.think_output = {
+FindBestReachableEntityByType.think_output = {
    item = Entity,                      -- the destination
    rating = 'number',                  -- the rating of the found item (1 if no rating_fn)
 }
