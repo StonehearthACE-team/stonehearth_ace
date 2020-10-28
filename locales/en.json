@@ -14659,43 +14659,52 @@
             "stockpile": {
                "default_storage": {
                   "display_name": "Default Storage",
-                  "tooltip": "Quest rewards and traded goods will be directly placed in designated default storage if possible."
+                  "tooltip": "Quest rewards and traded goods will be directly placed in designated default storage if possible"
                },
                "filter_presets": {
                   "preset_description": "[str(good_count)] selected material filters",
                   "preset_with_invalid_description": "[str(good_count)] selected material filters<br/><span class='tooltipInvalidMaterials'>[str(bad_count)] inapplicable material filters</span>",
                   "default_presets": {
-                     "wealth": "Default Preset: Wealth",
-                     "combat": "Default Preset: Combat",
-                     "raw_food": "Default Preset: Raw Food"
+                     "construction": "Construction Site (Default)",
+							"furniture": "Furniture & Decoration",
+							"weaver": "Weaver Storage (Default)",
+							"blacksmith": "Metalworker Storage (Default)",
+							"cook": "Cook Storage (Default)",
+							"larder": "Larder (Default)",
+							"shepherd": "Shepherd Storage (Default)",
+							"herbalist": "Herbalist Storage (Default)",
+							"landscaping": "Landscaping (Default)",
+							"brewer": "Brewer Storage (Default)",
+                     "raw_food": "Default Preset: Raw Food",
+							"crafting": "Basic Crafting Storage (Default)"
                   },
                   "preset_filter": {
                      "save_mode": {
-                        "description": "Specify preset name here and press Enter or click a Save button to save."
+                        "description": "Specify preset name here and press Enter or click the 'Save Preset' button to save"
                      },
                      "load_mode": {
-                        "description": "Type here to filter presets by name."
+                        "description": "Type here to filter presets by name"
                      }
                   },
                   "buttons": {
                      "show_load": {
                         "title": "Load Preset...",
-                        "description": "Select from a default or custom preset for your storage filter."
+                        "description": "Select from a default or custom preset for your storage filter"
                      },
                      "show_save": {
                         "title": "Save Preset...",
-                        "description": "Specify a name for your preset, then press Enter or click a Save button to save."
+                        "description": "Specify a name for the preset then press Enter or click the 'Save Preset' button to save"
                      },
                      "load_preset": {
-                        "title": "Load Preset"
+                        "title": "Load Storage Preset"
                      },
                      "save_preset": {
                         "title": "Overwrite Custom Preset",
-                        "description": "Default presets cannot be overwritten."
+                        "description": "Default presets cannot be overwritten"
                      },
                      "delete_preset": {
                         "title": "Delete Custom Preset",
-                        "description": "Default presets cannot be deleted."
+                        "description": "Default presets cannot be deleted"
                      }
                   }
                },
@@ -14976,39 +14985,39 @@
             },
             "preset_filter": {
                "save_mode": {
-                  "description": "Specify preset name here and press Enter or click a Save button to save."
+                  "description": "Specify preset name here and press Enter or click the 'Save Fence Preset' button to save"
                },
                "load_mode": {
-                  "description": "Type here to filter presets by name."
+                  "description": "Type here to filter presets by name"
                }
             },
             "buttons": {
                "segment_enabled": {
                   "title": "Segment Enabled",
-                  "description": "Click to disable this segment. Right-click to remove this segment."
+                  "description": "Click to disable this segment. Right-click to remove this segment"
                },
                "segment_disabled": {
                   "title": "Segment Disabled",
-                  "description": "Click to enable this segment. Right-click to remove this segment."
+                  "description": "Click to enable this segment. Right-click to remove this segment"
                },
                "show_load": {
-                  "title": "Load Preset...",
-                  "description": "Select from a default or custom preset for your fence."
+                  "title": "Fence Presets",
+                  "description": "Select from a default or custom preset for your fence"
                },
                "show_save": {
-                  "title": "Save Preset...",
-                  "description": "Specify a name for your preset, then press Enter or click a Save button to save."
+                  "title": "Save Fence Preset",
+                  "description": "Specify a preset name then press Enter or click the 'Save Fence Preset' button to save"
                },
                "load_preset": {
-                  "title": "Load Preset"
+                  "title": "Load Fence Preset"
                },
                "save_preset": {
                   "title": "Overwrite Custom Preset",
-                  "description": "Default presets cannot be overwritten."
+                  "description": "Default presets cannot be overwritten"
                },
                "delete_preset": {
                   "title": "Delete Custom Preset",
-                  "description": "Default presets cannot be deleted."
+                  "description": "Default presets cannot be deleted"
                }
             }
          }

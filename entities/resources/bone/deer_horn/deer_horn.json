@@ -5,7 +5,7 @@
 		    "mixintypes": {
 			   "models": "override"
 			},
-            "models": [
+         "models": [
                "/stonehearth/entities/resources/pelt/deer_horn/deer_horn.qb"
             ]
          }
@@ -17,6 +17,9 @@
          "description": "i18n(stonehearth_ace:entities.resources.pelt.deer_horn.description)",
          "is_item": true,
          "category": "resources",
+			"mixintypes": {
+			   "material_tags": "override"
+			},
          "material_tags":["stockpile_animal_part", "bone", "resource", "horn", "animal_part"]
       }
    }
