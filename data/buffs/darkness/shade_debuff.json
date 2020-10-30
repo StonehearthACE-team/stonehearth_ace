@@ -1,0 +1,21 @@
+{
+   "type": "buff",
+   "axis": "debuff",
+   "category": "darkness",
+   "unique_in_category": true,
+   "rank": 2,
+   "display_name": "i18n(stonehearth_ace:data.buffs.darkness.shade_debuff.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.darkness.shade_debuff.description)",
+   "icon": "file(shade_debuff.png)",
+   "modifiers": {
+      "diligence": {
+         "multiply": 0.8
+      },
+      "multiplicative_work_rate_modifier": {
+         "multiply": 0.75
+      },
+      "speed": {
+         "max": 50
+      }
+   }
+}

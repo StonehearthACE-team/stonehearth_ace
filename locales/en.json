@@ -1359,21 +1359,21 @@
                   "tooltip": "After finishing this [str(drinkname)] I just can't really think anything other than how bad it was."
                },
                "raw": {
-                  "display_name": "Had a simple drink",
+                  "display_name": "My drink was somewhat simple",
                   "tooltip": "After a sip or two of the [str(drinkname)] I already knew it wasn't... much."
                },
                "values": {
                   "prepared": {
-                     "display_name": "Had a prepared drink",
+                     "display_name": "My drink was well prepared",
                      "tooltip": "The effort put into the [str(drinkname)] I just enjoyed is noticeable and can't be denied!"
                   }
                },
                "bland": {
-                  "display_name": "Had a bland drink",
+                  "display_name": "Had a bland tasting drink",
                   "tooltip": "I had that [str(drinkname)] and it wasn't particularly tasty... I've had better things before!"
                },
                "tasty": {
-                  "display_name": "Had a tasty drink",
+                  "display_name": "Had a very tasty drink",
                   "tooltip": "Shortly after drinking [str(drinkname)] I already feel like I could drink much more! It was delicious!"
                },
                "lovely": {
@@ -1381,7 +1381,7 @@
                   "tooltip": "Ah, what a wonderful day! Enjoying that lovely [str(drinkname)] has made everything better already."
                },
                "average": {
-                  "display_name": "Had a decent drink",
+                  "display_name": "Had a decent tasting drink",
                   "tooltip": "[str(drinkname)] was not the best but it wasn't bad either! Honestly, it was quite alright!"
                },
                "relaxing_time": {
@@ -3038,6 +3038,34 @@
          "joyful_time": {
             "display_name": "Joyful Time",
             "description": "The hearthling's mood is extremely increased for a shorter time."
+         },
+         "recuperating": {
+            "recuperating_buff": {
+               "description": "Still incapacitated, but slowly recovering over time. Proper healing beds will speed up the recovery time."
+            }
+         },
+         "bed_ridden": {
+            "bed_ridden_buff": {
+               "description": "Slowly recovering from injuries. Can receive medical care from healers. While resting in bed, a hearthling will get thirsty, hungry, sleepy and lonely in much lower rates than normal."
+            }
+         },
+         "darkness": {
+            "dark_debuff": {
+               "display_name": "Complete Darkness",
+               "description": "This hearthling can't really see much past the reach of their own hands."
+            },
+            "shade_debuff": {
+               "display_name": "In the Shade",
+               "description": "This hearthlings can barely see their immediate surroundings."
+            },
+            "dim_light_debuff": {
+               "display_name": "Dim Light",
+               "description": "This hearthling can see mostly alright under this low light level."
+            },
+            "bright_buff": {
+               "display_name": "Brightness",
+               "description": "This area radiates with brightness, keeping this hearthling alert and with a good visibility!"
+            }
          }
       },
       "loadouts": {
