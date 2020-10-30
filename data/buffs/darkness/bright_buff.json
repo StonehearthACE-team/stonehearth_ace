@@ -1,0 +1,21 @@
+{
+   "type": "buff",
+   "axis": "buff",
+   "category": "darkness",
+   "unique_in_category": true,
+   "rank": 5,
+   "display_name": "i18n(stonehearth_ace:data.buffs.darkness.bright_buff.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.darkness.bright_buff.description)",
+   "icon": "file(bright_buff.png)",
+   "modifiers": {
+      "diligence": {
+         "multiply": 1.1
+      },
+      "willpower": {
+         "multiply": 1.1
+      },
+      "multiplicative_work_rate_modifier": {
+         "multiply": 1.05
+      }
+   }
+}

@@ -1,4 +1,23 @@
 {
+	"description": "i18n(stonehearth_ace:data.buffs.bed_ridden.bed_ridden_buff.description)",
+	"script": "stonehearth:buff_scripts:periodic_attribute_modification",
+   "script_info": {
+      "attribute": "sleepiness",
+      "value_change": -0.8,
+      "cannot_reach_zero": false,
+      "pulse": "1h"
+   },
+	"modifiers": {
+      "calorie_burn_multiplier": {
+         "multiply": 0.2
+      },
+      "drink_satiety_loss_multiplier": {
+         "multiply": 0.2
+      },
+      "social_loss_amount": {
+         "multiply": 0.2
+      }
+   },
    "disallowed_buffs": [
       "stonehearth_ace:buffs:weather:soaked"
    ]

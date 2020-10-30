@@ -1,5 +1,17 @@
 {
    "mixins": "/stonehearth/entities/trees/juniper_tree_gold/seed/tree_juniper_seed_iconic.json",
+	"components": {
+		"mixintypes": {
+			"model_variants": "override"
+		},
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(tree_juniper_seed_iconic.qb)"
+            ]
+         }
+      }
+   },
    "entity_data": {
       "stonehearth:catalog": {
          "mixintypes": {

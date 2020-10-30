@@ -45,7 +45,7 @@ function WhiteoutWeather:_start_whiteout()
 end
 
 function WhiteoutWeather:_update()
-	local add_buff = function(entity)
+	local add_buff = function(entity, buff)
       local location = radiant.entities.get_world_grid_location(entity)
       if not location then
          return
@@ -54,14 +54,14 @@ function WhiteoutWeather:_update()
          return
       end
       
-      radiant.entities.add_buff(entity, "stonehearth_ace:buffs:weather:whiteout")
+      radiant.entities.add_buff(entity, buff)
    end
 
-   self:_for_each_player_character(function(citizen)
+   self:_for_each_player_character(function(citizen, "stonehearth_ace:buffs:weather:whiteout")
        add_buff(citizen)
    end)
 
-	self:_for_common_npc_character(function(npc)
+	self:_for_common_npc_character(function(npc, "stonehearth_ace:buffs:weather:whiteout:npc")
       add_buff(npc)
    end)
 end

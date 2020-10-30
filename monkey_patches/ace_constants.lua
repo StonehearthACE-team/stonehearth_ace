@@ -4,6 +4,7 @@ local ace_constants = {}
 ace_constants.ACE_USE_MERGE_INTO_TABLE = true
 
 ace_constants.food_quality_thoughts = constants.food_quality_thoughts
+ace_constants.food_quality_thoughts[constants.food_qualities.RAW_TASTY] = { constants.thoughts.food_quality.TASTY }                                                                       
 ace_constants.food_quality_thoughts[constants.food_qualities.INTOLERABLE] = { constants.thoughts.food_quality.INTOLERABLE }
 ace_constants.food_quality_thoughts[constants.food_qualities.LOVELY] = { constants.thoughts.food_quality.LOVELY }
 

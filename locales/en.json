@@ -1228,6 +1228,12 @@
                   "distant_storm_negative": {
                      "display_name": "There's a storm coming",
                      "tooltip": "It might not be here yet but it will get to us, sooner or later... Ugh."
+                  },
+                  "sunny_negative": {
+                     "display_name": "Sunny weather"
+                  },
+                  "snow_sunny_negative": {
+                     "display_name": "Shiny snow annoyance"
                   }
                }
             },
@@ -1299,7 +1305,7 @@
             },
             "drinking": {
                "merry_time": {
-                  "display_name": "Having a good time!",
+                  "display_name": "Having a merry time!",
                   "tooltip": "Friends, drinks and a good time! What else could anyone wish for?"
                },
                "morning_after": {
@@ -1353,21 +1359,21 @@
                   "tooltip": "After finishing this [str(drinkname)] I just can't really think anything other than how bad it was."
                },
                "raw": {
-                  "display_name": "Had a simple drink",
+                  "display_name": "My drink was somewhat simple",
                   "tooltip": "After a sip or two of the [str(drinkname)] I already knew it wasn't... much."
                },
                "values": {
                   "prepared": {
-                     "display_name": "Had a prepared drink",
+                     "display_name": "My drink was well prepared",
                      "tooltip": "The effort put into the [str(drinkname)] I just enjoyed is noticeable and can't be denied!"
                   }
                },
                "bland": {
-                  "display_name": "Had a bland drink",
+                  "display_name": "Had a bland tasting drink",
                   "tooltip": "I had that [str(drinkname)] and it wasn't particularly tasty... I've had better things before!"
                },
                "tasty": {
-                  "display_name": "Had a tasty drink",
+                  "display_name": "Had a very tasty drink",
                   "tooltip": "Shortly after drinking [str(drinkname)] I already feel like I could drink much more! It was delicious!"
                },
                "lovely": {
@@ -1375,8 +1381,16 @@
                   "tooltip": "Ah, what a wonderful day! Enjoying that lovely [str(drinkname)] has made everything better already."
                },
                "average": {
-                  "display_name": "Had a decent drink",
+                  "display_name": "Had a decent tasting drink",
                   "tooltip": "[str(drinkname)] was not the best but it wasn't bad either! Honestly, it was quite alright!"
+               },
+               "relaxing_time": {
+                  "display_name": "Having a relaxing time!",
+                  "tooltip": "A light drink feels very relaxing after a hard day's work!"
+               },
+               "jolly_time": {
+                  "display_name": "Having a jolly time!",
+                  "tooltip": "Enjoying a lot of good company and delicious beverages! This is so good!"
                }
             },
             "thirst": {
@@ -2582,7 +2596,8 @@
             },
             "whiteout_debuff": {
                "display_name": "Caught in the Whiteout",
-               "description": "I can't see anything! I can't even tell if my eyes are burning from the cold or the brightness!<ul><li>This hearthling is blinded and lost in the middle of the whiteout and will slow down and feel hunger much faster.</li><li>When this debuff is stacked enough, panic may take over and they'll just wander around until it's over or something worse happens...</li><li>Seek shelter immediately! Try disabling jobs or calling the alarm to force all hearthlings inside.</li></ul>"
+               "description": "I can't see anything! I can't even tell if my eyes are burning from the cold or the brightness!<ul><li>This hearthling is blinded and lost in the middle of the whiteout and will slow down and feel hunger much faster.</li><li>When this debuff is stacked enough, panic may take over and they'll just wander around until it's over or something worse happens...</li><li>Seek shelter immediately! Try disabling jobs or calling the alarm to force all hearthlings inside.</li></ul>",
+               "npc_description": "Can't see much, can't do much!"
             }
          },
          "shepherding": {
@@ -2619,8 +2634,8 @@
             "description": "Ouch... Next time I shouldn't exaggerate so much! Diligence, Willpower and Stamina are greatly reduced.<ul><li>Crafting takes longer</li><li>This hearthling will not be willing to start conversations</li></ul>"
          },
          "merry_time": {
-            "display_name": "Good Time",
-            "description": "The hearthling's mood is greatly increased."
+            "display_name": "Merry Time",
+            "description": "The hearthling's mood is greatly increased for some time."
          },
          "fruity_flavors": {
             "display_name": "Fruity Flavors",
@@ -3015,6 +3030,42 @@
          "earthly_flavors": {
             "display_name": "Earthly Flavors",
             "description": "It tastes like brown... does it make sense? Willpower is increased.<ul><li>Crafting has increased chances for better quality</li><li>Healing received is doubled</li></ul>"
+         },
+         "relaxing_time": {
+            "display_name": "Relaxing Time",
+            "description": "The hearthling's mood is increased for a good time."
+         },
+         "joyful_time": {
+            "display_name": "Joyful Time",
+            "description": "The hearthling's mood is extremely increased for a shorter time."
+         },
+         "recuperating": {
+            "recuperating_buff": {
+               "description": "Still incapacitated, but slowly recovering over time. Proper healing beds will speed up the recovery time."
+            }
+         },
+         "bed_ridden": {
+            "bed_ridden_buff": {
+               "description": "Slowly recovering from injuries. Can receive medical care from healers. While resting in bed, a hearthling will get thirsty, hungry, sleepy and lonely in much lower rates than normal."
+            }
+         },
+         "darkness": {
+            "dark_debuff": {
+               "display_name": "Complete Darkness",
+               "description": "This hearthling can't really see much past the reach of their own hands."
+            },
+            "shade_debuff": {
+               "display_name": "In the Shade",
+               "description": "This hearthlings can barely see their immediate surroundings."
+            },
+            "dim_light_debuff": {
+               "display_name": "Dim Light",
+               "description": "This hearthling can see mostly alright under this low light level."
+            },
+            "bright_buff": {
+               "display_name": "Brightness",
+               "description": "This area radiates with brightness, keeping this hearthling alert and with a good visibility!"
+            }
          }
       },
       "loadouts": {
@@ -3421,6 +3472,31 @@
                "recipe_name": "Hazel Tree Seeds (x2)",
                "description": "Select the best nuts from the basket",
                "flavor": "Only a skilled hand can choose the best nuts, but the rest are destroyed in the process."
+            },
+            "tree_pine_gold_seed_recipe": {
+               "recipe_name": "Gold Pine Tree Seed",
+               "description": "Select the correct cone from other arctic cones.",
+               "flavor": "Only a skilled hand can find the correct seed, but the rest are destroyed in the process."
+            },
+            "tree_pine_silver_seed_recipe": {
+               "recipe_name": "Silver Pine Tree Seed",
+               "description": "Select the correct cone from other arctic cones.",
+               "flavor": "Only a skilled hand can find the correct seed, but the rest are destroyed in the process."
+            },
+            "tree_pine_snowy_seed_recipe": {
+               "recipe_name": "Snowy Pine Tree Seed",
+               "description": "Select the correct cone from other arctic cones.",
+               "flavor": "Only a skilled hand can find the correct seed, but the rest are destroyed in the process."
+            },
+            "tree_juniper_gold_seed_recipe": {
+               "recipe_name": "Gold Juniper Tree Seed",
+               "description": "Select the correct fruit from other arctic fruits.",
+               "flavor": "Only a skilled hand can find the correct seed, but the rest are destroyed in the process."
+            },
+            "tree_juniper_snowy_seed_recipe": {
+               "recipe_name": "Snowy Juniper Tree Seed",
+               "description": "Select the correct fruit from other arctic fruits.",
+               "flavor": "Only a skilled hand can find the correct seed, but the rest are destroyed in the process."
             },
             "daisy_transmute_recipe": {
                "recipe_name": "Daisy Seeds (x2)",
@@ -14666,17 +14742,17 @@
                   "preset_with_invalid_description": "[str(good_count)] selected material filters<br/><span class='tooltipInvalidMaterials'>[str(bad_count)] inapplicable material filters</span>",
                   "default_presets": {
                      "construction": "Construction Site (Default)",
-							"furniture": "Furniture & Decoration",
-							"weaver": "Weaver Storage (Default)",
-							"blacksmith": "Metalworker Storage (Default)",
-							"cook": "Cook Storage (Default)",
-							"larder": "Larder (Default)",
-							"shepherd": "Shepherd Storage (Default)",
-							"herbalist": "Herbalist Storage (Default)",
-							"landscaping": "Landscaping (Default)",
-							"brewer": "Brewer Storage (Default)",
+                     "furniture": "Furniture & Decoration",
+                     "weaver": "Weaver Storage (Default)",
+                     "blacksmith": "Metalworker Storage (Default)",
+                     "cook": "Cook Storage (Default)",
+                     "larder": "Larder (Default)",
+                     "shepherd": "Shepherd Storage (Default)",
+                     "herbalist": "Herbalist Storage (Default)",
+                     "landscaping": "Landscaping (Default)",
+                     "brewer": "Brewer Storage (Default)",
                      "raw_food": "Default Preset: Raw Food",
-							"crafting": "Basic Crafting Storage (Default)"
+                     "crafting": "Basic Crafting Storage (Default)"
                   },
                   "preset_filter": {
                      "save_mode": {

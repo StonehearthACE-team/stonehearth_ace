@@ -1,0 +1,15 @@
+{
+   "type": "buff",
+   "axis": "buff",
+   "category": "consumption_relaxing_time",
+   "unique_in_category": true,
+   "rank": 1,
+   "display_name": "i18n(stonehearth_ace:data.buffs.relaxing_time.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.relaxing_time.description)",
+   "icon": "file(relaxing_time_buff.png)",
+   "duration": "6h",
+   "repeat_add_action": "renew_duration",
+   "thought": "stonehearth_ace:thoughts:drinking:relaxing_time",
+   "modifiers": {},
+   "disallowed_buffs": []
+}
