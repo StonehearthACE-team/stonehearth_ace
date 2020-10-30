@@ -1,5 +1,17 @@
 {
    "mixins": "/stonehearth/entities/trees/pine_tree_snowy/seed/tree_pine_seed_iconic.json",
+	"components": {
+		"mixintypes": {
+			"model_variants": "override"
+		},
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(tree_pine_seed_iconic.qb)"
+            ]
+         }
+      }
+   },
    "entity_data": {
       "stonehearth:catalog": {
          "mixintypes": {

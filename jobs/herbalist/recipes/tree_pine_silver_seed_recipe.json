@@ -1,0 +1,22 @@
+{
+   "type": "recipe",
+   "effort": 10,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.herbalist.recipes.tree_pine_silver_seed_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.tree_pine_silver_seed_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.tree_pine_silver_seed_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/trees/pine_tree_silver/seed/tree_pine_seed.png",
+   "workshop": "stonehearth:herbalist:workbench",
+   "level_requirement": 4,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:trees:arctic_pine:seed",
+         "count": 3
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth:trees:silver:pine:seed"
+      }
+   ]
+}

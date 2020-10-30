@@ -121,10 +121,10 @@
                "happiness_delta": -2
             },
             "fatigued": {
-               "happiness_delta": -10
+               "happiness_delta": -9
             },
             "exhausted": {
-               "happiness_delta": -25
+               "happiness_delta": -18
             },
             "good_dream": {
                "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.sleepiness.values.good_dream.display_name)",
@@ -142,6 +142,12 @@
       },
       "weather": {
          "values": {
+            "snow_sunny_negative": {
+               "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.weather.values.snow_sunny_negative.display_name)"
+            },
+            "sunny_negative": {
+               "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.weather.values.sunny_negative.display_name)"
+            },
             "snow_early_positive": {
                "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.weather.values.snow_early_positive.display_name)",
                "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.weather.values.snow_early_positive.tooltip)",
@@ -425,13 +431,13 @@
             "thirsty": {
                "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.thirst.thirsty.display_name)",
                "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.thirst.thirsty.tooltip)",
-               "happiness_delta": -4,
+               "happiness_delta": -3,
                "stackable": false
             },
             "very_thirsty": {
                "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.thirst.very_thirsty.display_name)",
                "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.thirst.very_thirsty.tooltip)",
-               "happiness_delta": -8,
+               "happiness_delta": -6,
                "stackable": false
             }
          }
@@ -439,17 +445,31 @@
       "drinking": {
          "mutually_exclusive": false,
          "values": {
+            "jolly_time": {
+               "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.drinking.jolly_time.display_name)",
+               "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.drinking.jolly_time.tooltip)",
+               "happiness_delta": 18,
+               "duration": "4h",
+               "stackable": false
+            },
             "merry_time": {
                "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.drinking.merry_time.display_name)",
                "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.drinking.merry_time.tooltip)",
-               "happiness_delta": 18,
+               "happiness_delta": 12,
+               "duration": "5h",
+               "stackable": false
+            },
+            "relaxing_time": {
+               "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.drinking.relaxing_time.display_name)",
+               "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.drinking.relaxing_time.tooltip)",
+               "happiness_delta": 8,
                "duration": "6h",
                "stackable": false
             },
             "morning_after": {
                "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.drinking.morning_after.display_name)",
                "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.drinking.morning_after.tooltip)",
-               "happiness_delta": -12,
+               "happiness_delta": -8,
                "duration": "16h",
                "stackable": false
             },
@@ -511,7 +531,7 @@
             "lovely": {
                "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.drinking.lovely.display_name)",
                "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.drinking.lovely.tooltip)",
-               "happiness_delta": 12,
+               "happiness_delta": 10,
                "duration": "24h",
                "stackable": true,
                "max_stacks": 3
@@ -519,7 +539,7 @@
             "dairy_intolerant_had_dairy": {
                "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.drinking.dairy_intolerant_had_dairy.display_name)",
                "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.drinking.dairy_intolerant_had_dairy.tooltip)",
-               "happiness_delta": -30,
+               "happiness_delta": -16,
                "duration": "16h",
                "stackable": true,
                "max_stacks": 3
@@ -527,7 +547,7 @@
             "alcohol_intolerant_had_alcohol": {
                "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.drinking.alcohol_intolerant_had_alcohol.display_name)",
                "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.drinking.alcohol_intolerant_had_alcohol.tooltip)",
-               "happiness_delta": -30,
+               "happiness_delta": -16,
                "duration": "16h",
                "stackable": true,
                "max_stacks": 3
@@ -535,7 +555,7 @@
             "alcohol_lover_had_alcohol": {
                "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.drinking.alcohol_lover_had_alcohol.display_name)",
                "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.drinking.alcohol_lover_had_alcohol.tooltip)",
-               "happiness_delta": 15,
+               "happiness_delta": 14,
                "duration": "24h",
                "stackable": true,
                "max_stacks": 3
@@ -543,7 +563,7 @@
             "juice_lover_had_juice": {
                "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.drinking.juice_lover_had_juice.display_name)",
                "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.drinking.juice_lover_had_juice.tooltip)",
-               "happiness_delta": 15,
+               "happiness_delta": 14,
                "duration": "24h",
                "stackable": true,
                "max_stacks": 3
@@ -551,7 +571,7 @@
             "tea_lover_had_tea": {
                "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.drinking.tea_lover_had_tea.display_name)",
                "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.drinking.tea_lover_had_tea.tooltip)",
-               "happiness_delta": 15,
+               "happiness_delta": 14,
                "duration": "24h",
                "stackable": true,
                "max_stacks": 3
@@ -559,7 +579,7 @@
             "dairy_lover_had_dairy": {
                "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.drinking.dairy_lover_had_dairy.display_name)",
                "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.drinking.dairy_lover_had_dairy.tooltip)",
-               "happiness_delta": 15,
+               "happiness_delta": 14,
                "duration": "24h",
                "stackable": true,
                "max_stacks": 3
@@ -602,7 +622,7 @@
             "ate_intolerable": {
                "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.eating.ate_intolerable.display_name)",
                "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.eating.ate_intolerable.tooltip)",
-               "happiness_delta": -25,
+               "happiness_delta": -10,
                "duration": "16h",
                "stackable": true,
                "max_stacks": 3
@@ -618,7 +638,7 @@
             "dairy_lover_ate_dairy": {
                "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.eating.dairy_lover_ate_dairy.display_name)",
                "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.eating.dairy_lover_ate_dairy.tooltip)",
-               "happiness_delta": 12,
+               "happiness_delta": 16,
                "duration": "24h",
                "stackable": true,
                "max_stacks": 3
@@ -626,7 +646,7 @@
             "meat_lover_ate_meat": {
                "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.eating.meat_lover_ate_meat.display_name)",
                "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.eating.meat_lover_ate_meat.tooltip)",
-               "happiness_delta": 12,
+               "happiness_delta": 16,
                "duration": "24h",
                "stackable": true,
                "max_stacks": 3
@@ -634,7 +654,7 @@
             "vegetable_lover_ate_vegetable": {
                "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.eating.vegetable_lover_ate_vegetable.display_name)",
                "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.eating.vegetable_lover_ate_vegetable.tooltip)",
-               "happiness_delta": 12,
+               "happiness_delta": 16,
                "duration": "24h",
                "stackable": true,
                "max_stacks": 3
@@ -642,7 +662,7 @@
             "fungi_lover_ate_fungi": {
                "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.eating.fungi_lover_ate_fungi.display_name)",
                "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.eating.fungi_lover_ate_fungi.tooltip)",
-               "happiness_delta": 12,
+               "happiness_delta": 16,
                "duration": "24h",
                "stackable": true,
                "max_stacks": 3
@@ -650,7 +670,7 @@
             "dairy_intolerant_ate_dairy": {
                "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.eating.dairy_intolerant_ate_dairy.display_name)",
                "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.eating.dairy_intolerant_ate_dairy.tooltip)",
-               "happiness_delta": -25,
+               "happiness_delta": -18,
                "duration": "16h",
                "stackable": true,
                "max_stacks": 3
@@ -658,7 +678,7 @@
             "nuts_intolerant_ate_nuts": {
                "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.eating.nuts_intolerant_ate_nuts.display_name)",
                "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.eating.nuts_intolerant_ate_nuts.tooltip)",
-               "happiness_delta": -25,
+               "happiness_delta": -18,
                "duration": "16h",
                "stackable": true,
                "max_stacks": 3
@@ -666,7 +686,7 @@
             "fish_intolerant_ate_fish": {
                "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.eating.fish_intolerant_ate_fish.display_name)",
                "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.eating.fish_intolerant_ate_fish.tooltip)",
-               "happiness_delta": -25,
+               "happiness_delta": -18,
                "duration": "16h",
                "stackable": true,
                "max_stacks": 3
